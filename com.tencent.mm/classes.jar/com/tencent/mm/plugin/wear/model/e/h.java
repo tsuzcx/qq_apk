@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.wear.model.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.d;
-import com.tencent.mm.protocal.c.cjk;
-import com.tencent.mm.protocal.c.cjl;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cwx;
+import com.tencent.mm.protocal.protobuf.cwy;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,23 +13,26 @@ import java.util.List;
 public final class h
   extends a
 {
-  public final List<Integer> bYY()
+  public final List<Integer> cYL()
   {
+    AppMethodBeat.i(26401);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(11000));
     localArrayList.add(Integer.valueOf(11003));
     localArrayList.add(Integer.valueOf(11035));
+    AppMethodBeat.o(26401);
     return localArrayList;
   }
   
-  public final boolean bYZ()
+  public final boolean cYM()
   {
     return false;
   }
   
-  protected final byte[] p(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] q(int paramInt, byte[] paramArrayOfByte)
   {
     int i = 0;
+    AppMethodBeat.i(26402);
     String str2;
     if (paramInt == 11000)
     {
@@ -36,7 +40,7 @@ public final class h
       paramArrayOfByte = "";
       try
       {
-        localObject = e.bP(str2);
+        localObject = e.cS(str2);
         paramArrayOfByte = (byte[])localObject;
       }
       catch (IOException localIOException1)
@@ -44,12 +48,12 @@ public final class h
         for (;;)
         {
           Object localObject;
-          y.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException1, "handleData", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException1, "handleData", new Object[0]);
         }
         if (localIOException1.size() <= 0) {
-          break label145;
+          break label151;
         }
-        com.tencent.mm.plugin.report.service.h.nFQ.q("WearCrash", localIOException1);
+        com.tencent.mm.plugin.report.service.h.qsU.r("WearCrash", localIOException1);
         localIOException1.clear();
         e.deleteFile(str2);
       }
@@ -61,7 +65,7 @@ public final class h
         ((List)localObject).add(paramArrayOfByte[paramInt]);
         if (paramInt % 50 == 9)
         {
-          com.tencent.mm.plugin.report.service.h.nFQ.q("WearCrash", (List)localObject);
+          com.tencent.mm.plugin.report.service.h.qsU.r("WearCrash", (List)localObject);
           ((List)localObject).clear();
         }
         paramInt += 1;
@@ -69,7 +73,8 @@ public final class h
     }
     for (;;)
     {
-      label145:
+      label151:
+      AppMethodBeat.o(26402);
       return null;
       if (paramInt == 11003)
       {
@@ -77,7 +82,7 @@ public final class h
         paramArrayOfByte = "";
         try
         {
-          String str1 = e.bP(str2);
+          String str1 = e.cS(str2);
           paramArrayOfByte = str1;
         }
         catch (IOException localIOException2)
@@ -85,7 +90,7 @@ public final class h
           for (;;)
           {
             int j;
-            y.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException2, "handleData", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.Wear.HttpLogServer", localIOException2, "handleData", new Object[0]);
           }
           e.deleteFile(str2);
         }
@@ -94,7 +99,7 @@ public final class h
         paramInt = i;
         while (paramInt < j)
         {
-          y.i("MicroMsg.Wear.LOG", paramArrayOfByte[paramInt]);
+          ab.i("MicroMsg.Wear.LOG", paramArrayOfByte[paramInt]);
           paramInt += 1;
         }
         continue;
@@ -102,21 +107,21 @@ public final class h
       if (paramInt != 11035) {
         continue;
       }
-      cjk localcjk = new cjk();
+      cwx localcwx = new cwx();
       try
       {
-        localcjk.aH(paramArrayOfByte);
-        label267:
-        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.bYL().qRu.qRL.qSA;
+        localcwx.parseFrom(paramArrayOfByte);
+        label279:
+        paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.cYy().uGC.uGT.uHH;
         if (paramArrayOfByte == null) {
           continue;
         }
-        y.v("MicroMsg.Wear.HttpLogServer", "report kv id=%d %s %s %s %s data=%s", new Object[] { Integer.valueOf(localcjk.kWl), paramArrayOfByte.hQd, paramArrayOfByte.tXi, Integer.valueOf(paramArrayOfByte.swP), paramArrayOfByte.tXj, localcjk.tTD });
-        com.tencent.mm.plugin.report.service.h.nFQ.f(localcjk.kWl, new Object[] { paramArrayOfByte.hQd, paramArrayOfByte.tXi, Integer.valueOf(paramArrayOfByte.swP), paramArrayOfByte.tXj, localcjk.tTD });
+        ab.v("MicroMsg.Wear.HttpLogServer", "report kv id=%d %s %s %s %s data=%s", new Object[] { Integer.valueOf(localcwx.nuk), paramArrayOfByte.jJF, paramArrayOfByte.yeC, Integer.valueOf(paramArrayOfByte.wpR), paramArrayOfByte.yeD, localcwx.yaU });
+        com.tencent.mm.plugin.report.service.h.qsU.e(localcwx.nuk, new Object[] { paramArrayOfByte.jJF, paramArrayOfByte.yeC, Integer.valueOf(paramArrayOfByte.wpR), paramArrayOfByte.yeD, localcwx.yaU });
       }
       catch (IOException paramArrayOfByte)
       {
-        break label267;
+        break label279;
       }
     }
   }

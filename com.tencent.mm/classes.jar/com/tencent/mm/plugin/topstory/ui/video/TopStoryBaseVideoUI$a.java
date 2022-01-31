@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.support.v7.widget.RecyclerView.v;
-import android.support.v7.widget.x;
-import com.tencent.mm.sdk.platformtools.y;
+import android.support.v7.widget.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class TopStoryBaseVideoUI$a
-  extends x
+  extends v
 {
   private TopStoryBaseVideoUI$a(TopStoryBaseVideoUI paramTopStoryBaseVideoUI) {}
   
-  public final void z(RecyclerView.v paramv)
+  public final void E(RecyclerView.v paramv)
   {
-    super.z(paramv);
-    this.pFv.bOf();
-    this.pFv.pFc.b(this.pFv);
-    y.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "onRemoveFinished %d", new Object[] { Integer.valueOf(paramv.id()) });
+    AppMethodBeat.i(1729);
+    super.E(paramv);
+    this.tiT.cJS();
+    this.tiT.tiy.b(this.tiT);
+    ab.i("MicroMsg.TopStory.TopStoryBaseVideoUI", "onRemoveFinished %d", new Object[] { Integer.valueOf(paramv.jN()) });
+    AppMethodBeat.o(1729);
   }
 }
 

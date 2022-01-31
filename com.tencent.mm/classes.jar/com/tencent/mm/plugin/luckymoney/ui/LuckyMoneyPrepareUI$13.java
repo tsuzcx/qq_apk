@@ -1,14 +1,25 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LuckyMoneyPrepareUI$13
-  implements Runnable
+  implements TextWatcher
 {
-  LuckyMoneyPrepareUI$13(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
+  LuckyMoneyPrepareUI$13(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, EditText paramEditText) {}
   
-  public final void run()
+  public final void afterTextChanged(Editable paramEditable)
   {
-    this.lXg.finish();
+    AppMethodBeat.i(142065);
+    this.ojR.setContentDescription(paramEditable.toString());
+    AppMethodBeat.o(142065);
   }
+  
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

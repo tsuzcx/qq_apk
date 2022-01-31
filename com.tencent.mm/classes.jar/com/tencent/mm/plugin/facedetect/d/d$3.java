@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.facedetect.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.FaceProNative;
 import com.tencent.mm.plugin.facedetect.model.f;
 import com.tencent.mm.plugin.facedetect.model.g;
 import com.tencent.mm.plugin.facedetect.service.FaceDetectProcessService;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 
 final class d$3
@@ -14,31 +15,33 @@ final class d$3
   
   public final void run()
   {
+    AppMethodBeat.i(312);
     for (;;)
     {
-      synchronized (this.jPM.jPG)
+      synchronized (this.mkc.mjW)
       {
-        if (this.jPM.jPt >= this.jPM.jPs.length - 1)
+        if (this.mkc.mjJ >= this.mkc.mjI.length - 1)
         {
-          y.i("MicroMsg.NumberFaceMotion", "hy: already last. handle upper judge.");
-          this.jPM.jPb = true;
-          Object localObject3 = f.jNM;
-          byte[] arrayOfByte = e.c(this.jPM.jPr.jOS, -1, -1);
-          localObject3 = ((f)localObject3).jNN.jPP;
-          if (((g)localObject3).jNQ == null)
+          ab.i("MicroMsg.NumberFaceMotion", "hy: already last. handle upper judge.");
+          this.mkc.mjr = true;
+          Object localObject3 = f.mhY;
+          byte[] arrayOfByte = e.i(this.mkc.mjH.mji, -1, -1);
+          localObject3 = ((f)localObject3).mhZ.mkf;
+          if (((g)localObject3).mic == null)
           {
-            y.e("MicroMsg.FaceDetectNativeManager", "hy: set face data instance null!");
+            ab.e("MicroMsg.FaceDetectNativeManager", "hy: set face data instance null!");
+            AppMethodBeat.o(312);
             return;
           }
-          ((g)localObject3).jNQ.engineSetVoiceData(arrayOfByte);
+          ((g)localObject3).mic.engineSetVoiceData(arrayOfByte);
         }
       }
-      y.i("MicroMsg.NumberFaceMotion", "hy: startShowNext");
-      d locald = this.jPM;
-      locald.jPt += 1;
-      this.jPM.jPu = -1;
-      this.jPM.fP(true);
-      this.jPM.aOR();
+      ab.i("MicroMsg.NumberFaceMotion", "hy: startShowNext");
+      d locald = this.mkc;
+      locald.mjJ += 1;
+      this.mkc.mjK = -1;
+      this.mkc.hs(true);
+      this.mkc.buV();
     }
   }
 }

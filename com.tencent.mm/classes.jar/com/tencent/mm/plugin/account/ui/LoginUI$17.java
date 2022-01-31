@@ -1,30 +1,24 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.network.c;
-import com.tencent.mm.network.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginUI$17
-  implements bi.a
+  implements DialogInterface.OnCancelListener
 {
   LoginUI$17(LoginUI paramLoginUI) {}
   
-  public final void a(e parame)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (parame == null) {
-      return;
-    }
-    parame = parame.KR();
-    g.DN();
-    int i = a.CK();
-    parame.w(new byte[0], i);
+    AppMethodBeat.i(152563);
+    LoginUI.k(this.gFf);
+    AppMethodBeat.o(152563);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginUI.17
  * JD-Core Version:    0.7.0.1
  */

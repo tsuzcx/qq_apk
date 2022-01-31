@@ -3,9 +3,9 @@ package com.tencent.mm.ui.chatting.viewitems;
 import com.tencent.mm.storage.bi;
 
 public final class ChattingItemTranslate$a
-  extends aw
+  extends az
 {
-  public int ivk = 1;
+  public int kwo = 1;
   
   public ChattingItemTranslate$a(bi parambi, boolean paramBoolean, int paramInt)
   {
@@ -14,7 +14,7 @@ public final class ChattingItemTranslate$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate.a
  * JD-Core Version:    0.7.0.1
  */

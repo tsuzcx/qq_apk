@@ -1,41 +1,75 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.text.SpanWatcher;
-import android.text.Spannable;
-import com.tencent.mm.sdk.platformtools.ah;
+import android.text.TextUtils;
+import android.view.inputmethod.BaseInputConnection;
+import android.view.inputmethod.InputConnection;
+import android.view.inputmethod.InputConnectionWrapper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class y$2
-  implements SpanWatcher
+  extends InputConnectionWrapper
 {
-  y$2(y paramy) {}
-  
-  public final void onSpanAdded(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
+  y$2(y paramy, InputConnection paramInputConnection1, InputConnection paramInputConnection2)
   {
-    if (ai.be(paramObject)) {
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanAdded %s, %s", new Object[] { paramSpannable, paramObject.getClass().getSimpleName() });
-    }
+    super(paramInputConnection1, false);
   }
   
-  public final void onSpanChanged(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final boolean commitText(CharSequence paramCharSequence, int paramInt)
   {
-    if (ai.be(paramObject)) {
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanChanged %s, %s", new Object[] { paramSpannable, paramObject.getClass().getSimpleName() });
+    AppMethodBeat.i(123818);
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.jnJ.jnI = paramCharSequence.charAt(paramCharSequence.length() - 1);
     }
+    boolean bool = super.commitText(paramCharSequence, paramInt);
+    AppMethodBeat.o(123818);
+    return bool;
   }
   
-  public final void onSpanRemoved(Spannable paramSpannable, Object paramObject, int paramInt1, int paramInt2)
+  public final boolean deleteSurroundingText(int paramInt1, int paramInt2)
   {
-    if (ai.be(paramObject))
+    AppMethodBeat.i(123819);
+    this.jnJ.jnI = '\b';
+    boolean bool = super.deleteSurroundingText(paramInt1, paramInt2);
+    AppMethodBeat.o(123819);
+    return bool;
+  }
+  
+  public final boolean finishComposingText()
+  {
+    AppMethodBeat.i(123820);
+    if ((this.jnK instanceof BaseInputConnection)) {}
+    for (Object localObject = ((BaseInputConnection)this.jnK).getEditable();; localObject = this.jnJ.getEditableText())
     {
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.EditTextComposingTextDismissedObserver", "[bindInput] onSpanRemoved %s, %s", new Object[] { paramSpannable, paramObject.getClass().getSimpleName() });
-      this.hvH.hcZ.removeCallbacks(this.hvH.hvG);
-      this.hvH.hcZ.postDelayed(this.hvH.hvG, 100L);
+      boolean bool1 = aj.B((CharSequence)localObject);
+      boolean bool2 = super.finishComposingText();
+      if ((bool2) && (y.b(this.jnJ) == this) && (bool1))
+      {
+        localObject = y.c(this.jnJ);
+        ((z)localObject).iMP.removeCallbacks(((z)localObject).jnT);
+        if (((z)localObject).jnR) {
+          ((z)localObject).jnT.run();
+        }
+      }
+      AppMethodBeat.o(123820);
+      return bool2;
     }
+  }
+  
+  public final boolean setComposingText(CharSequence paramCharSequence, int paramInt)
+  {
+    AppMethodBeat.i(123817);
+    if (!TextUtils.isEmpty(paramCharSequence)) {
+      this.jnJ.jnI = paramCharSequence.charAt(paramCharSequence.length() - 1);
+    }
+    boolean bool = super.setComposingText(paramCharSequence, paramInt);
+    AppMethodBeat.o(123817);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.y.2
  * JD-Core Version:    0.7.0.1
  */

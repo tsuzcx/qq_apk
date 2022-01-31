@@ -6,10 +6,10 @@ import com.tencent.mm.ui.MMImageView;
 public final class l$a
   extends a.b
 {
-  TextView eXO;
-  TextView eXP;
-  MMImageView kff;
-  TextView kiv;
+  TextView gpL;
+  TextView gpM;
+  TextView mCZ;
+  MMImageView mzO;
 }
 
 

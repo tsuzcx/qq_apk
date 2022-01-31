@@ -1,24 +1,21 @@
 package com.tencent.mm.plugin.multitalk.ui;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.plugin.multitalk.a.f;
-import com.tencent.mm.plugin.multitalk.a.p;
-import com.tencent.mm.plugin.multitalk.ui.widget.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.multitalk.model.f;
+import com.tencent.mm.plugin.multitalk.model.p;
 
 final class MultiTalkMainUI$3
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
   MultiTalkMainUI$3(MultiTalkMainUI paramMultiTalkMainUI) {}
   
-  public final void onReceive(Context paramContext, Intent paramIntent)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) && (p.blF().mtG == e.mvX))
-    {
-      p.blF().stopRing();
-      MultiTalkMainUI.a(this.mvm);
-    }
+    AppMethodBeat.i(54120);
+    p.bTF().f(false, false, false);
+    AppMethodBeat.o(54120);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.fts.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FtsWebVideoView$7
   implements View.OnClickListener
@@ -10,10 +11,12 @@ final class FtsWebVideoView$7
   
   public final void onClick(View paramView)
   {
-    if (!this.raW.ake()) {}
+    AppMethodBeat.i(5832);
+    if (!this.uQE.aEQ()) {}
     for (boolean bool = true;; bool = false)
     {
-      this.raW.lb(bool);
+      this.uQE.ok(bool);
+      AppMethodBeat.o(5832);
       return;
     }
   }

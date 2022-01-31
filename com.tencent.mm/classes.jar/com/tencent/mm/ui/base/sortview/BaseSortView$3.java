@@ -3,6 +3,7 @@ package com.tencent.mm.ui.base.sortview;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseSortView$3
   implements AdapterView.OnItemLongClickListener
@@ -11,9 +12,14 @@ final class BaseSortView$3
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (BaseSortView.d(this.veh) != null) {
-      return BaseSortView.d(this.veh).onItemLongClick(paramAdapterView, paramView, paramInt, paramLong);
+    AppMethodBeat.i(107306);
+    if (BaseSortView.d(this.zsH) != null)
+    {
+      boolean bool = BaseSortView.d(this.zsH).onItemLongClick(paramAdapterView, paramView, paramInt, paramLong);
+      AppMethodBeat.o(107306);
+      return bool;
     }
+    AppMethodBeat.o(107306);
     return false;
   }
 }

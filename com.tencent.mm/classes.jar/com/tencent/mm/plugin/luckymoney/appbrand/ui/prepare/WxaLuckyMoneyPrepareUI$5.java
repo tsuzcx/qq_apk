@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WxaLuckyMoneyPrepareUI$5
   implements View.OnFocusChangeListener
@@ -11,10 +12,12 @@ final class WxaLuckyMoneyPrepareUI$5
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.eYi.setOnClickListener(null);
-    this.lMy.setOnClickListener(null);
-    this.lMx.J(WxaLuckyMoneyPrepareUI.b(this.lMx), 2);
-    this.lMx.J(WxaLuckyMoneyPrepareUI.c(this.lMx), 0);
+    AppMethodBeat.i(42057);
+    this.val$hintTv.setOnClickListener(null);
+    this.ojR.setOnClickListener(null);
+    this.ojQ.Z(WxaLuckyMoneyPrepareUI.b(this.ojQ), 2);
+    this.ojQ.Z(WxaLuckyMoneyPrepareUI.c(this.ojQ), 0);
+    AppMethodBeat.o(42057);
   }
 }
 

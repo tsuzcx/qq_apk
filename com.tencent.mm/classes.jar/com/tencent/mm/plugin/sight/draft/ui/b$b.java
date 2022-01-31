@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sight.draft.ui;
 
 import android.view.View;
 import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.j;
 
 final class b$b
@@ -11,13 +12,25 @@ final class b$b
   
   public final boolean onLongClick(View paramView)
   {
-    if (!(paramView.getTag() instanceof b.e)) {}
-    do
+    AppMethodBeat.i(24999);
+    if (!(paramView.getTag() instanceof b.e))
     {
+      AppMethodBeat.o(24999);
       return true;
-      paramView = (b.e)paramView.getTag();
-    } while ((paramView.ogR == null) || (-1 == paramView.ogR.field_fileStatus));
-    this.ogK.a(b.d.ogM, true);
+    }
+    paramView = (b.e)paramView.getTag();
+    if (paramView.qVg == null)
+    {
+      AppMethodBeat.o(24999);
+      return true;
+    }
+    if (-1 == paramView.qVg.field_fileStatus)
+    {
+      AppMethodBeat.o(24999);
+      return true;
+    }
+    this.qUZ.a(b.d.qVb, true);
+    AppMethodBeat.o(24999);
     return true;
   }
 }

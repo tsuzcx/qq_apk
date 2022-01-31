@@ -6,35 +6,35 @@ import com.google.a.a.e;
 public final class a$ae
   extends e
 {
-  public int lpD = 0;
-  public long lpE = 0L;
+  public int nMZ = 0;
+  public long nNa = 0L;
   
   public a$ae()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if (this.lpD != 0) {
-      paramb.aL(1, this.lpD);
+    if (this.nMZ != 0) {
+      paramb.bj(1, this.nMZ);
     }
-    if (this.lpE != 0L) {
-      paramb.i(2, this.lpE);
+    if (this.nNa != 0L) {
+      paramb.n(2, this.nNa);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.lpD != 0) {
-      i = j + b.aN(1, this.lpD);
+    if (this.nMZ != 0) {
+      i = j + b.bl(1, this.nMZ);
     }
     j = i;
-    if (this.lpE != 0L) {
-      j = i + b.k(2, this.lpE);
+    if (this.nNa != 0L) {
+      j = i + b.p(2, this.nNa);
     }
     return j;
   }

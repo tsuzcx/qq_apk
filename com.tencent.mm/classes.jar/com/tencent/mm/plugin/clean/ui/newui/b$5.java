@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.clean.ui.newui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class b$5
   implements AbsListView.OnScrollListener
@@ -15,20 +16,23 @@ final class b$5
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    o.ON().bR(paramInt);
+    AppMethodBeat.i(18851);
+    o.ahG().bX(paramInt);
     if (paramInt != 2)
     {
-      b.a(this.iDX, false);
-      b.c(this.iDX).removeCallbacksAndMessages(null);
-      b.c(this.iDX).sendEmptyMessageDelayed(0, 200L);
+      b.a(this.kJe, false);
+      b.c(this.kJe).removeCallbacksAndMessages(null);
+      b.c(this.kJe).sendEmptyMessageDelayed(0, 200L);
+      AppMethodBeat.o(18851);
       return;
     }
-    b.a(this.iDX, true);
+    b.a(this.kJe, true);
+    AppMethodBeat.o(18851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.newui.b.5
  * JD-Core Version:    0.7.0.1
  */

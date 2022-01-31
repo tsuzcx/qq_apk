@@ -3,10 +3,8 @@ package com.tencent.mm.plugin.nearby.ui;
 import android.content.res.Resources;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.nearby.b.h;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class NearbySayHiListUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -15,7 +13,9 @@ final class NearbySayHiListUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    h.a(this.mDP.mController.uMN, true, this.mDP.getResources().getString(b.h.say_hi_clean_all_title), "", this.mDP.getResources().getString(b.h.say_hi_clean_all_btn), this.mDP.getString(b.h.app_cancel), new NearbySayHiListUI.5.1(this), null);
+    AppMethodBeat.i(55498);
+    h.a(this.pdR.getContext(), true, this.pdR.getResources().getString(2131302875), "", this.pdR.getResources().getString(2131302874), this.pdR.getString(2131296888), new NearbySayHiListUI.5.1(this), null);
+    AppMethodBeat.o(55498);
     return true;
   }
 }

@@ -7,9 +7,9 @@ public abstract interface e
 {
   public abstract void a(f paramf);
   
-  public abstract BannerModel apq();
+  public abstract BannerModel aMG();
   
-  public abstract void apr();
+  public abstract void aMH();
   
   public abstract void b(f paramf);
 }

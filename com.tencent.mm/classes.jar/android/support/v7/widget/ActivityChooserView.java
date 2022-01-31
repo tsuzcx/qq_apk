@@ -7,11 +7,7 @@ import android.database.DataSetObserver;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.b;
-import android.support.v7.a.a.d;
-import android.support.v7.a.a.f;
-import android.support.v7.a.a.g;
-import android.support.v7.a.a.h;
-import android.support.v7.a.a.j;
+import android.support.v7.a.a.a;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -29,24 +25,24 @@ import android.widget.PopupWindow.OnDismissListener;
 public class ActivityChooserView
   extends ViewGroup
 {
-  PopupWindow.OnDismissListener UT;
-  final ActivityChooserView.a YH;
-  private final ActivityChooserView.b YI;
-  final View YJ;
-  final Drawable YK;
-  final FrameLayout YL;
-  private final ImageView YM;
-  final FrameLayout YN;
-  final ImageView YO;
-  private final int YP;
-  b YQ;
-  final DataSetObserver YR = new ActivityChooserView.1(this);
-  private final ViewTreeObserver.OnGlobalLayoutListener YS = new ActivityChooserView.2(this);
-  private ListPopupWindow YT;
-  boolean YU;
-  int YV = 4;
-  int YW;
-  private boolean hD;
+  PopupWindow.OnDismissListener VG;
+  private final int ZA;
+  b ZB;
+  final DataSetObserver ZC = new ActivityChooserView.1(this);
+  private final ViewTreeObserver.OnGlobalLayoutListener ZD = new ActivityChooserView.2(this);
+  private ListPopupWindow ZE;
+  boolean ZF;
+  int ZG = 4;
+  int ZH;
+  final ActivityChooserView.a Zs;
+  private final ActivityChooserView.b Zt;
+  final View Zu;
+  final Drawable Zv;
+  final FrameLayout Zw;
+  private final ImageView Zx;
+  final FrameLayout Zy;
+  final ImageView Zz;
+  private boolean iA;
   
   public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -56,234 +52,234 @@ public class ActivityChooserView
   public ActivityChooserView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ActivityChooserView, paramInt, 0);
-    this.YV = ((TypedArray)localObject).getInt(a.j.ActivityChooserView_initialActivityCount, 4);
-    paramAttributeSet = ((TypedArray)localObject).getDrawable(a.j.ActivityChooserView_expandActivityOverflowButtonDrawable);
+    Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ActivityChooserView, paramInt, 0);
+    this.ZG = ((TypedArray)localObject).getInt(0, 4);
+    paramAttributeSet = ((TypedArray)localObject).getDrawable(1);
     ((TypedArray)localObject).recycle();
-    LayoutInflater.from(getContext()).inflate(a.g.abc_activity_chooser_view, this, true);
-    this.YI = new ActivityChooserView.b(this);
-    this.YJ = findViewById(a.f.activity_chooser_view_content);
-    this.YK = this.YJ.getBackground();
-    this.YN = ((FrameLayout)findViewById(a.f.default_activity_button));
-    this.YN.setOnClickListener(this.YI);
-    this.YN.setOnLongClickListener(this.YI);
-    this.YO = ((ImageView)this.YN.findViewById(a.f.image));
-    localObject = (FrameLayout)findViewById(a.f.expand_activities_button);
-    ((FrameLayout)localObject).setOnClickListener(this.YI);
+    LayoutInflater.from(getContext()).inflate(2130968590, this, true);
+    this.Zt = new ActivityChooserView.b(this);
+    this.Zu = findViewById(2131820925);
+    this.Zv = this.Zu.getBackground();
+    this.Zy = ((FrameLayout)findViewById(2131820927));
+    this.Zy.setOnClickListener(this.Zt);
+    this.Zy.setOnLongClickListener(this.Zt);
+    this.Zz = ((ImageView)this.Zy.findViewById(2131820629));
+    localObject = (FrameLayout)findViewById(2131820926);
+    ((FrameLayout)localObject).setOnClickListener(this.Zt);
     ((FrameLayout)localObject).setAccessibilityDelegate(new ActivityChooserView.3(this));
     ((FrameLayout)localObject).setOnTouchListener(new ActivityChooserView.4(this, (View)localObject));
-    this.YL = ((FrameLayout)localObject);
-    this.YM = ((ImageView)((FrameLayout)localObject).findViewById(a.f.image));
-    this.YM.setImageDrawable(paramAttributeSet);
-    this.YH = new ActivityChooserView.a(this);
-    this.YH.registerDataSetObserver(new ActivityChooserView.5(this));
+    this.Zw = ((FrameLayout)localObject);
+    this.Zx = ((ImageView)((FrameLayout)localObject).findViewById(2131820629));
+    this.Zx.setImageDrawable(paramAttributeSet);
+    this.Zs = new ActivityChooserView.a(this);
+    this.Zs.registerDataSetObserver(new ActivityChooserView.5(this));
     paramContext = paramContext.getResources();
-    this.YP = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(a.d.abc_config_prefDialogWidth));
+    this.ZA = Math.max(paramContext.getDisplayMetrics().widthPixels / 2, paramContext.getDimensionPixelSize(2131427360));
   }
   
-  final void bj(int paramInt)
+  final void bh(int paramInt)
   {
-    if (this.YH.YY == null) {
+    if (this.Zs.ZJ == null) {
       throw new IllegalStateException("No data model. Did you call #setDataModel?");
     }
-    getViewTreeObserver().addOnGlobalLayoutListener(this.YS);
+    getViewTreeObserver().addOnGlobalLayoutListener(this.ZD);
     boolean bool;
     int i;
     label62:
-    label94:
+    label93:
     ListPopupWindow localListPopupWindow;
-    if (this.YN.getVisibility() == 0)
+    if (this.Zy.getVisibility() == 0)
     {
       bool = true;
-      int j = this.YH.YY.fO();
+      int j = this.Zs.ZJ.gI();
       if (!bool) {
-        break label213;
+        break label212;
       }
       i = 1;
       if ((paramInt == 2147483647) || (j <= i + paramInt)) {
-        break label218;
+        break label217;
       }
-      this.YH.setShowFooterView(true);
-      this.YH.bk(paramInt - 1);
+      this.Zs.setShowFooterView(true);
+      this.Zs.bi(paramInt - 1);
       localListPopupWindow = getListPopupWindow();
-      if (!localListPopupWindow.afe.isShowing())
+      if (!localListPopupWindow.aht.isShowing())
       {
-        if ((!this.YU) && (bool)) {
-          break label237;
+        if ((!this.ZF) && (bool)) {
+          break label236;
         }
-        this.YH.f(true, bool);
+        this.Zs.g(true, bool);
       }
     }
     for (;;)
     {
-      localListPopupWindow.setContentWidth(Math.min(this.YH.fY(), this.YP));
+      localListPopupWindow.setContentWidth(Math.min(this.Zs.gV(), this.ZA));
       localListPopupWindow.show();
-      if (this.YQ != null) {
-        this.YQ.E(true);
+      if (this.ZB != null) {
+        this.ZB.E(true);
       }
-      localListPopupWindow.aeH.setContentDescription(getContext().getString(a.h.abc_activitychooserview_choose_application));
-      localListPopupWindow.aeH.setSelector(new ColorDrawable(0));
+      localListPopupWindow.agW.setContentDescription(getContext().getString(2131296261));
+      localListPopupWindow.agW.setSelector(new ColorDrawable(0));
       return;
       bool = false;
       break;
-      label213:
+      label212:
       i = 0;
       break label62;
-      label218:
-      this.YH.setShowFooterView(false);
-      this.YH.bk(paramInt);
-      break label94;
-      label237:
-      this.YH.f(false, false);
+      label217:
+      this.Zs.setShowFooterView(false);
+      this.Zs.bi(paramInt);
+      break label93;
+      label236:
+      this.Zs.g(false, false);
     }
   }
   
-  public final boolean fV()
+  public final boolean gS()
   {
-    if ((getListPopupWindow().afe.isShowing()) || (!this.hD)) {
+    if ((getListPopupWindow().aht.isShowing()) || (!this.iA)) {
       return false;
     }
-    this.YU = false;
-    bj(this.YV);
+    this.ZF = false;
+    bh(this.ZG);
     return true;
   }
   
-  public final boolean fW()
+  public final boolean gT()
   {
-    if (getListPopupWindow().afe.isShowing())
+    if (getListPopupWindow().aht.isShowing())
     {
       getListPopupWindow().dismiss();
       ViewTreeObserver localViewTreeObserver = getViewTreeObserver();
       if (localViewTreeObserver.isAlive()) {
-        localViewTreeObserver.removeGlobalOnLayoutListener(this.YS);
+        localViewTreeObserver.removeGlobalOnLayoutListener(this.ZD);
       }
     }
     return true;
   }
   
-  public final boolean fX()
+  public final boolean gU()
   {
-    return getListPopupWindow().afe.isShowing();
+    return getListPopupWindow().aht.isShowing();
   }
   
-  public d getDataModel()
+  public c getDataModel()
   {
-    return this.YH.YY;
+    return this.Zs.ZJ;
   }
   
   ListPopupWindow getListPopupWindow()
   {
-    if (this.YT == null)
+    if (this.ZE == null)
     {
-      this.YT = new ListPopupWindow(getContext());
-      this.YT.setAdapter(this.YH);
-      this.YT.aeU = this;
-      this.YT.setModal(true);
-      this.YT.aeW = this.YI;
-      this.YT.setOnDismissListener(this.YI);
+      this.ZE = new ListPopupWindow(getContext());
+      this.ZE.setAdapter(this.Zs);
+      this.ZE.ahj = this;
+      this.ZE.setModal(true);
+      this.ZE.ahl = this.Zt;
+      this.ZE.setOnDismissListener(this.Zt);
     }
-    return this.YT;
+    return this.ZE;
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    d locald = this.YH.YY;
-    if (locald != null) {
-      locald.registerObserver(this.YR);
+    c localc = this.Zs.ZJ;
+    if (localc != null) {
+      localc.registerObserver(this.ZC);
     }
-    this.hD = true;
+    this.iA = true;
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    Object localObject = this.YH.YY;
+    Object localObject = this.Zs.ZJ;
     if (localObject != null) {
-      ((d)localObject).unregisterObserver(this.YR);
+      ((c)localObject).unregisterObserver(this.ZC);
     }
     localObject = getViewTreeObserver();
     if (((ViewTreeObserver)localObject).isAlive()) {
-      ((ViewTreeObserver)localObject).removeGlobalOnLayoutListener(this.YS);
+      ((ViewTreeObserver)localObject).removeGlobalOnLayoutListener(this.ZD);
     }
-    if (fX()) {
-      fW();
+    if (gU()) {
+      gT();
     }
-    this.hD = false;
+    this.iA = false;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.YJ.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    if (!fX()) {
-      fW();
+    this.Zu.layout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    if (!gU()) {
+      gT();
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    View localView = this.YJ;
+    View localView = this.Zu;
     int i = paramInt2;
-    if (this.YN.getVisibility() != 0) {
+    if (this.Zy.getVisibility() != 0) {
       i = View.MeasureSpec.makeMeasureSpec(View.MeasureSpec.getSize(paramInt2), 1073741824);
     }
     measureChild(localView, paramInt1, i);
     setMeasuredDimension(localView.getMeasuredWidth(), localView.getMeasuredHeight());
   }
   
-  public void setActivityChooserModel(d paramd)
+  public void setActivityChooserModel(c paramc)
   {
-    ActivityChooserView.a locala = this.YH;
-    d locald = locala.YX.YH.YY;
-    if ((locald != null) && (locala.YX.isShown())) {
-      locald.unregisterObserver(locala.YX.YR);
+    ActivityChooserView.a locala = this.Zs;
+    c localc = locala.ZI.Zs.ZJ;
+    if ((localc != null) && (locala.ZI.isShown())) {
+      localc.unregisterObserver(locala.ZI.ZC);
     }
-    locala.YY = paramd;
-    if ((paramd != null) && (locala.YX.isShown())) {
-      paramd.registerObserver(locala.YX.YR);
+    locala.ZJ = paramc;
+    if ((paramc != null) && (locala.ZI.isShown())) {
+      paramc.registerObserver(locala.ZI.ZC);
     }
     locala.notifyDataSetChanged();
-    if (getListPopupWindow().afe.isShowing())
+    if (getListPopupWindow().aht.isShowing())
     {
-      fW();
-      fV();
+      gT();
+      gS();
     }
   }
   
   public void setDefaultActionButtonContentDescription(int paramInt)
   {
-    this.YW = paramInt;
+    this.ZH = paramInt;
   }
   
   public void setExpandActivityOverflowButtonContentDescription(int paramInt)
   {
     String str = getContext().getString(paramInt);
-    this.YM.setContentDescription(str);
+    this.Zx.setContentDescription(str);
   }
   
   public void setExpandActivityOverflowButtonDrawable(Drawable paramDrawable)
   {
-    this.YM.setImageDrawable(paramDrawable);
+    this.Zx.setImageDrawable(paramDrawable);
   }
   
   public void setInitialActivityCount(int paramInt)
   {
-    this.YV = paramInt;
+    this.ZG = paramInt;
   }
   
   public void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.UT = paramOnDismissListener;
+    this.VG = paramOnDismissListener;
   }
   
   public void setProvider(b paramb)
   {
-    this.YQ = paramb;
+    this.ZB = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.ActivityChooserView
  * JD-Core Version:    0.7.0.1
  */

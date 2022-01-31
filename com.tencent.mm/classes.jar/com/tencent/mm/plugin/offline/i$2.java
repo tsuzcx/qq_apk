@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.offline;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class i$2
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class i$2
   
   public final void run()
   {
-    this.mKq.dy(this.mKr, this.mKs);
+    AppMethodBeat.i(43338);
+    this.pkF.eY(this.pkG, this.pkH);
+    AppMethodBeat.o(43338);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.i.2
  * JD-Core Version:    0.7.0.1
  */

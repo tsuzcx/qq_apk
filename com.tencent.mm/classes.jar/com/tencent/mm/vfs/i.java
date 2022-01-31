@@ -2,7 +2,7 @@ package com.tencent.mm.vfs;
 
 public abstract interface i
 {
-  public abstract boolean gx(String paramString);
+  public abstract boolean nf(String paramString);
 }
 
 

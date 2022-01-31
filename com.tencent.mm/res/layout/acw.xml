@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/l2"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/b25" android:paddingTop="@dimen/mq" android:layout_width="fill_parent" android:layout_height="@dimen/a6v" android:layout_marginBottom="@dimen/mq">
-        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/k9" android:textColorHint="@color/pe" android:layout_gravity="center_vertical" android:id="@id/ji" android:background="@null" android:paddingLeft="0.0dip" android:layout_width="0.0dip" android:layout_height="@dimen/mn" android:singleLine="true" android:layout_weight="1.0" android:imeOptions="actionDone" android:textCursorDrawable="@null" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/b2b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/p6" android:contentDescription="@string/ang" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/v4" android:gravity="center_horizontal" android:id="@id/cxu" android:paddingBottom="@dimen/mq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>

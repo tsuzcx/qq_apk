@@ -1,557 +1,385 @@
 package com.tencent.mm.plugin.expt.c;
 
-import com.tencent.mm.cf.h;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentName;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.k;
+import com.tencent.mm.g.b.a.s;
+import com.tencent.mm.g.b.a.y;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  extends i<a>
+  implements Application.ActivityLifecycleCallbacks, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.expt.a.c
 {
-  public static final String[] cqY = new String[0];
-  public static final String[] dXp = { i.a(a.buS, "ExptItem") };
-  private e dXw;
+  private static int[] mcf = { 10, 1000, 10000, 100000 };
+  private static boolean mcg = false;
+  private static d mch;
+  private com.tencent.mm.sdk.b.c<k> appListener;
+  private boolean mci;
+  private boolean mcj;
+  private String mck;
+  private HashSet<String> mcl;
+  private com.tencent.mm.sdk.b.c mcm;
   
-  public d(e parame)
+  private d()
   {
-    super(parame, a.buS, "ExptItem", cqY);
-    this.dXw = parame;
+    AppMethodBeat.i(73537);
+    this.mci = false;
+    this.mcj = false;
+    this.mck = "";
+    this.mcl = new HashSet();
+    this.appListener = new d.2(this);
+    this.mcm = new d.3(this);
+    if (!ah.brt()) {
+      mcg = true;
+    }
+    AppMethodBeat.o(73537);
   }
   
-  private boolean a(a parama)
+  private void a(Activity paramActivity, com.tencent.mm.plugin.expt.a.c.a parama)
   {
-    if (parama == null) {
-      return false;
+    AppMethodBeat.i(73540);
+    if (paramActivity != null) {
+      a(paramActivity.getComponentName().getClassName(), parama, paramActivity.hashCode());
     }
-    try
+    AppMethodBeat.o(73540);
+  }
+  
+  private void a(String paramString, com.tencent.mm.plugin.expt.a.c.a parama, int paramInt1, int paramInt2, long paramLong)
+  {
+    AppMethodBeat.i(73542);
+    long l1 = bo.yB();
+    if (!ah.brt())
     {
-      bool = super.a(parama);
-      y.d("MicroMsg.ExptStorage", "replace expt ret[%b] item[%s]", new Object[] { Boolean.valueOf(bool), parama.toString() });
-      return bool;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.ExptStorage", "replace expt error [%s]", new Object[] { localException.toString() });
-        boolean bool = false;
+      if (c.mcd == null) {
+        c.mcd = new c();
       }
-    }
-  }
-  
-  private boolean qE(int paramInt)
-  {
-    try
-    {
-      paramInt = this.dXw.delete("ExptItem", "exptId=?", new String[] { String.valueOf(paramInt) });
-      if (paramInt > 0) {
-        return true;
+      Object localObject1 = c.mcd;
+      ab.i("MicroMsg.MMPageFlowSenderByIPCInvoker", "%s send page flow [%s-%d-%d] [%s]", new Object[] { localObject1.hashCode(), paramString, Integer.valueOf(paramInt1), Long.valueOf(paramLong), parama });
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putInt("key_page_flow_type", parama.value);
+      ((Bundle)localObject1).putString("key_page_flow_name", paramString);
+      ((Bundle)localObject1).putInt("key_page_flow_hashcode", paramInt1);
+      ((Bundle)localObject1).putLong("key_page_flow_time_stamp", paramLong);
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(932L, 100L, 1L, false);
+      Object localObject3 = ((Bundle)localObject1).getString("key_page_flow_name");
+      int i = ((Bundle)localObject1).getInt("key_page_flow_type");
+      int j = ((Bundle)localObject1).getInt("key_page_flow_hashcode", 0);
+      long l2 = ((Bundle)localObject1).getLong("key_page_flow_time_stamp", 0L);
+      String str = new StringBuilder().append(j).append("_").append(l2).toString().hashCode();
+      Object localObject2 = new s();
+      ((s)localObject2).cSJ = j;
+      localObject3 = ((s)localObject2).fp((String)localObject3);
+      ((s)localObject3).cSH = i;
+      ((s)localObject3).bx(l2);
+      localObject3 = b.bsO();
+      localObject2 = ((s)localObject2).Ff();
+      localObject3 = ((b)localObject3).aND();
+      if (localObject3 != null) {
+        ((as)localObject3).putString(str, (String)localObject2);
       }
+      f.a("com.tencent.mm", (Parcelable)localObject1, c.a.class, null);
+      ab.d("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process NOT");
+      mcg = true;
     }
-    catch (Exception localException)
+    if (!mcg)
     {
-      for (;;)
-      {
-        y.e("MicroMsg.ExptStorage", "delete expt by id [%s]", new Object[] { localException.toString() });
-        paramInt = 0;
-      }
+      ab.e("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process isAccReady = FALSE");
+      AppMethodBeat.o(73542);
+      return;
     }
-    return false;
+    ab.d("MicroMsg.MMPageFlowService", "reportPageFlow: mm-process YES");
+    if (ah.brt()) {
+      bsR();
+    }
+    a(paramString, parama, paramInt1, paramLong, paramInt2);
+    ab.v("MicroMsg.MMPageFlowService", "report page Flow cost[%d]", new Object[] { Long.valueOf(bo.av(l1)) });
+    AppMethodBeat.o(73542);
   }
   
-  public final int aNk()
+  private void a(String paramString, com.tencent.mm.plugin.expt.a.c.a parama, int paramInt1, long paramLong, int paramInt2)
   {
-    try
+    AppMethodBeat.i(73545);
+    if ((paramString.contains("WeChatSplashActivity")) || (paramString.contains("FakeSwitchAccountUI")))
     {
-      int i = this.dXw.delete("ExptItem", null, null);
-      return i;
+      AppMethodBeat.o(73545);
+      return;
     }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.ExptStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
-    }
-    return 0;
-  }
-  
-  /* Error */
-  public final List<a> aNl()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 38	com/tencent/mm/plugin/expt/c/d:dXw	Lcom/tencent/mm/sdk/e/e;
-    //   4: ldc 95
-    //   6: aconst_null
-    //   7: invokeinterface 99 3 0
-    //   12: astore_2
-    //   13: aload_2
-    //   14: ifnull +170 -> 184
-    //   17: aload_2
-    //   18: astore_3
-    //   19: new 101	java/util/LinkedList
-    //   22: dup
-    //   23: invokespecial 103	java/util/LinkedList:<init>	()V
-    //   26: astore_1
-    //   27: aload_2
-    //   28: astore_3
-    //   29: aload_2
-    //   30: invokeinterface 109 1 0
-    //   35: ifeq +75 -> 110
-    //   38: aload_2
-    //   39: astore_3
-    //   40: new 16	com/tencent/mm/plugin/expt/c/a
-    //   43: dup
-    //   44: invokespecial 110	com/tencent/mm/plugin/expt/c/a:<init>	()V
-    //   47: astore 4
-    //   49: aload_2
-    //   50: astore_3
-    //   51: aload 4
-    //   53: aload_2
-    //   54: invokevirtual 113	com/tencent/mm/plugin/expt/c/a:d	(Landroid/database/Cursor;)V
-    //   57: aload_2
-    //   58: astore_3
-    //   59: aload_1
-    //   60: aload 4
-    //   62: invokeinterface 119 2 0
-    //   67: pop
-    //   68: goto -41 -> 27
-    //   71: astore 4
-    //   73: aload_2
-    //   74: astore_3
-    //   75: ldc 46
-    //   77: ldc 121
-    //   79: iconst_1
-    //   80: anewarray 50	java/lang/Object
-    //   83: dup
-    //   84: iconst_0
-    //   85: aload 4
-    //   87: invokevirtual 69	java/lang/Exception:toString	()Ljava/lang/String;
-    //   90: aastore
-    //   91: invokestatic 72	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   94: aload_1
-    //   95: astore_3
-    //   96: aload_2
-    //   97: ifnull +11 -> 108
-    //   100: aload_2
-    //   101: invokeinterface 124 1 0
-    //   106: aload_1
-    //   107: astore_3
-    //   108: aload_3
-    //   109: areturn
-    //   110: aload_2
-    //   111: astore_3
-    //   112: ldc 46
-    //   114: ldc 126
-    //   116: iconst_1
-    //   117: anewarray 50	java/lang/Object
-    //   120: dup
-    //   121: iconst_0
-    //   122: aload_1
-    //   123: invokeinterface 129 1 0
-    //   128: invokestatic 134	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   131: aastore
-    //   132: invokestatic 66	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   135: aload_1
-    //   136: astore_3
-    //   137: aload_2
-    //   138: ifnull -30 -> 108
-    //   141: aload_2
-    //   142: invokeinterface 124 1 0
-    //   147: aload_1
-    //   148: areturn
-    //   149: astore_1
-    //   150: aconst_null
-    //   151: astore_3
-    //   152: aload_3
-    //   153: ifnull +9 -> 162
-    //   156: aload_3
-    //   157: invokeinterface 124 1 0
-    //   162: aload_1
-    //   163: athrow
-    //   164: astore_1
-    //   165: goto -13 -> 152
-    //   168: astore 4
-    //   170: aconst_null
-    //   171: astore_2
-    //   172: aconst_null
-    //   173: astore_1
-    //   174: goto -101 -> 73
-    //   177: astore 4
-    //   179: aconst_null
-    //   180: astore_1
-    //   181: goto -108 -> 73
-    //   184: aconst_null
-    //   185: astore_1
-    //   186: goto -51 -> 135
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	189	0	this	d
-    //   26	122	1	localLinkedList	LinkedList
-    //   149	14	1	localObject1	Object
-    //   164	1	1	localObject2	Object
-    //   173	13	1	localObject3	Object
-    //   12	160	2	localCursor	android.database.Cursor
-    //   18	139	3	localObject4	Object
-    //   47	14	4	locala	a
-    //   71	15	4	localException1	Exception
-    //   168	1	4	localException2	Exception
-    //   177	1	4	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   29	38	71	java/lang/Exception
-    //   40	49	71	java/lang/Exception
-    //   51	57	71	java/lang/Exception
-    //   59	68	71	java/lang/Exception
-    //   112	135	71	java/lang/Exception
-    //   0	13	149	finally
-    //   19	27	164	finally
-    //   29	38	164	finally
-    //   40	49	164	finally
-    //   51	57	164	finally
-    //   59	68	164	finally
-    //   75	94	164	finally
-    //   112	135	164	finally
-    //   0	13	168	java/lang/Exception
-    //   19	27	177	java/lang/Exception
-  }
-  
-  /* Error */
-  public final java.util.ArrayList<Integer> aNm()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 38	com/tencent/mm/plugin/expt/c/d:dXw	Lcom/tencent/mm/sdk/e/e;
-    //   4: ldc 140
-    //   6: aconst_null
-    //   7: invokeinterface 99 3 0
-    //   12: astore_2
-    //   13: aload_2
-    //   14: ifnull +91 -> 105
-    //   17: aload_2
-    //   18: astore_3
-    //   19: new 142	java/util/ArrayList
-    //   22: dup
-    //   23: invokespecial 143	java/util/ArrayList:<init>	()V
-    //   26: astore 5
-    //   28: aload 5
-    //   30: astore_1
-    //   31: aload_2
-    //   32: astore_3
-    //   33: aload_2
-    //   34: invokeinterface 109 1 0
-    //   39: ifeq +68 -> 107
-    //   42: aload_2
-    //   43: astore_3
-    //   44: aload 5
-    //   46: aload_2
-    //   47: iconst_0
-    //   48: invokeinterface 147 2 0
-    //   53: invokestatic 134	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   56: invokevirtual 148	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   59: pop
-    //   60: goto -32 -> 28
-    //   63: astore 4
-    //   65: aload 5
-    //   67: astore_1
-    //   68: aload_2
-    //   69: astore_3
-    //   70: ldc 46
-    //   72: ldc 150
-    //   74: iconst_1
-    //   75: anewarray 50	java/lang/Object
-    //   78: dup
-    //   79: iconst_0
-    //   80: aload 4
-    //   82: invokevirtual 69	java/lang/Exception:toString	()Ljava/lang/String;
-    //   85: aastore
-    //   86: invokestatic 72	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   89: aload_1
-    //   90: astore_3
-    //   91: aload_2
-    //   92: ifnull +11 -> 103
-    //   95: aload_2
-    //   96: invokeinterface 124 1 0
-    //   101: aload_1
-    //   102: astore_3
-    //   103: aload_3
-    //   104: areturn
-    //   105: aconst_null
-    //   106: astore_1
-    //   107: aload_1
-    //   108: astore_3
-    //   109: aload_2
-    //   110: ifnull -7 -> 103
-    //   113: aload_2
-    //   114: invokeinterface 124 1 0
-    //   119: aload_1
-    //   120: areturn
-    //   121: astore_1
-    //   122: aconst_null
-    //   123: astore_3
-    //   124: aload_3
-    //   125: ifnull +9 -> 134
-    //   128: aload_3
-    //   129: invokeinterface 124 1 0
-    //   134: aload_1
-    //   135: athrow
-    //   136: astore_1
-    //   137: goto -13 -> 124
-    //   140: astore 4
-    //   142: aconst_null
-    //   143: astore_2
-    //   144: aconst_null
-    //   145: astore_1
-    //   146: goto -78 -> 68
-    //   149: astore 4
-    //   151: aconst_null
-    //   152: astore_1
-    //   153: goto -85 -> 68
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	156	0	this	d
-    //   30	90	1	localArrayList1	java.util.ArrayList
-    //   121	14	1	localObject1	Object
-    //   136	1	1	localObject2	Object
-    //   145	8	1	localObject3	Object
-    //   12	132	2	localCursor	android.database.Cursor
-    //   18	111	3	localObject4	Object
-    //   63	18	4	localException1	Exception
-    //   140	1	4	localException2	Exception
-    //   149	1	4	localException3	Exception
-    //   26	40	5	localArrayList2	java.util.ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   33	42	63	java/lang/Exception
-    //   44	60	63	java/lang/Exception
-    //   0	13	121	finally
-    //   19	28	136	finally
-    //   33	42	136	finally
-    //   44	60	136	finally
-    //   70	89	136	finally
-    //   0	13	140	java/lang/Exception
-    //   19	28	149	java/lang/Exception
-  }
-  
-  public final int bh(List<Integer> paramList)
-  {
-    long l = -1L;
-    int k = 0;
-    int i = 0;
-    int j = i;
-    if (paramList != null)
-    {
-      if (paramList.size() <= 0) {
-        j = i;
-      }
-    }
-    else {
-      return j;
-    }
-    h localh;
-    if ((this.dXw instanceof h))
-    {
-      localh = (h)this.dXw;
-      l = localh.eV(-1L);
+    int i;
+    if (parama.value <= 2) {
+      i = 0;
     }
     for (;;)
     {
-      try
+      if (parama == com.tencent.mm.plugin.expt.a.c.a.lZt) {
+        this.mcj = true;
+      }
+      if (parama == com.tencent.mm.plugin.expt.a.c.a.lZu) {
+        this.mcj = false;
+      }
+      Object localObject = new y();
+      ((y)localObject).cRR = paramInt2;
+      paramString = ((y)localObject).fu(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.RI().Rj()).mProcessName).fv(paramString);
+      localObject = mcf;
+      paramInt2 = localObject[i];
+      localObject[i] = (paramInt2 + 1);
+      paramString.cTR = paramInt2;
+      paramString.cSH = parama.value;
+      paramString = paramString.by(paramLong);
+      paramString.cSJ = paramInt1;
+      e.bsT().a(paramString);
+      ab.d("MicroMsg.MMPageFlowService", "%s pure report [%s]", new Object[] { bau(), paramString.Fg() });
+      if ((parama == com.tencent.mm.plugin.expt.a.c.a.lZt) || (parama == com.tencent.mm.plugin.expt.a.c.a.lZu)) {
+        ab.i("MicroMsg.MMPageFlowService", "habbyge-mali, %s frontback-pure-report [%s]", new Object[] { bau(), paramString.Fg() });
+      }
+      if ((ah.brt()) && ((parama == com.tencent.mm.plugin.expt.a.c.a.lZt) || (parama == com.tencent.mm.plugin.expt.a.c.a.lZu)))
       {
-        paramList = paramList.iterator();
-        i = k;
-        if (paramList.hasNext())
+        r(paramLong, this.mcj);
+        com.tencent.mm.plugin.expt.hellhound.a.a.b.vr(mcf[3]);
+      }
+      AppMethodBeat.o(73545);
+      return;
+      if (parama.value <= 4) {
+        i = 1;
+      } else if (parama.value <= 6) {
+        i = 2;
+      } else {
+        i = 3;
+      }
+    }
+  }
+  
+  private String bau()
+  {
+    AppMethodBeat.i(73539);
+    String str = hashCode();
+    AppMethodBeat.o(73539);
+    return str;
+  }
+  
+  public static d bsP()
+  {
+    AppMethodBeat.i(73538);
+    if (mch == null) {
+      mch = new d();
+    }
+    d locald = mch;
+    AppMethodBeat.o(73538);
+    return locald;
+  }
+  
+  public static boolean bsQ()
+  {
+    return mcg;
+  }
+  
+  private void r(long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(73552);
+    if (!mcg)
+    {
+      AppMethodBeat.o(73552);
+      return;
+    }
+    int i = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lUy, 0);
+    if (i <= 0)
+    {
+      AppMethodBeat.o(73552);
+      return;
+    }
+    long l = com.tencent.mm.kernel.g.RL().Ru().a(ac.a.yLB, 0L);
+    if (bo.aox() - l < i)
+    {
+      AppMethodBeat.o(73552);
+      return;
+    }
+    com.tencent.mm.sdk.g.d.ysm.remove("calc_unread_task");
+    com.tencent.mm.sdk.g.d.ysm.b(new d.4(this, paramLong, paramBoolean), "calc_unread_task", 5000L);
+    AppMethodBeat.o(73552);
+  }
+  
+  private static void reset()
+  {
+    mcf = new int[] { 10, 1000, 10000, 100000 };
+    mcg = false;
+  }
+  
+  public final void a(String paramString, com.tencent.mm.plugin.expt.a.c.a parama, int paramInt)
+  {
+    AppMethodBeat.i(73543);
+    a(paramString, parama, paramInt, Process.myPid(), System.currentTimeMillis());
+    AppMethodBeat.o(73543);
+  }
+  
+  public final void a(String paramString, com.tencent.mm.plugin.expt.a.c.a parama, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(73546);
+    a(paramString, parama, paramInt, paramLong, Process.myPid());
+    AppMethodBeat.o(73546);
+  }
+  
+  protected final void bsR()
+  {
+    AppMethodBeat.i(73544);
+    if (!ah.brt())
+    {
+      AppMethodBeat.o(73544);
+      return;
+    }
+    long l = bo.yB();
+    Object localObject1 = b.bsO().allKeys();
+    ArrayList localArrayList = new ArrayList();
+    Object localObject2;
+    if ((localObject1 != null) && (localObject1.length > 0))
+    {
+      int j = localObject1.length;
+      int i = 0;
+      if (i < j)
+      {
+        localObject2 = localObject1[i];
+        if (!this.mcl.contains(localObject2))
         {
-          boolean bool = qE(((Integer)paramList.next()).intValue());
-          if (bool)
+          String str = b.bsO().get((String)localObject2, "");
+          if (!bo.isNullOrNil(str))
           {
-            i += 1;
-            continue;
+            s locals = new s(str);
+            if ((locals.cSJ > 0L) && (locals.cSI > 0L))
+            {
+              localArrayList.add(new s(str));
+              this.mcl.add(localObject2);
+            }
+            b.bsO().remove((String)localObject2);
           }
-          continue;
         }
-        j = i;
-        return i;
-      }
-      finally
-      {
-        if (localh != null) {
-          localh.hI(l);
+        for (;;)
+        {
+          i += 1;
+          break;
+          b.bsO().remove((String)localObject2);
         }
       }
-      localh = null;
     }
+    if (!localArrayList.isEmpty())
+    {
+      Collections.sort(localArrayList, new d.1(this));
+      localObject1 = localArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (s)((Iterator)localObject1).next();
+        a(((s)localObject2).cSG, com.tencent.mm.plugin.expt.a.c.a.vk((int)((s)localObject2).cSH), (int)((s)localObject2).cSJ, ((s)localObject2).cSI);
+      }
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(932L, 102L, localArrayList.size(), false);
+      ab.i("MicroMsg.MMPageFlowService", "check mmkv list[%d] cost[%d]", new Object[] { Integer.valueOf(localArrayList.size()), Long.valueOf(bo.av(l)) });
+    }
+    ab.d("MicroMsg.MMPageFlowService", "check mm kv cost[%d]", new Object[] { Long.valueOf(bo.av(l)) });
+    AppMethodBeat.o(73544);
   }
   
-  public final List<a> bl(List<a> paramList)
+  public final void logout()
   {
-    long l = -1L;
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return null;
-    }
-    h localh;
-    if ((this.dXw instanceof h))
-    {
-      localh = (h)this.dXw;
-      l = localh.eV(-1L);
-    }
+    AppMethodBeat.i(73541);
+    mcg = false;
+    com.tencent.mm.plugin.expt.hellhound.a.a.c.s(106, null, null);
+    com.tencent.mm.plugin.expt.hellhound.a.a.c.brV();
+    com.tencent.mm.plugin.expt.hellhound.a.a.a.vq(8);
+    com.tencent.mm.plugin.expt.hellhound.core.v2.activity.a.vm(8);
+    com.tencent.mm.plugin.expt.hellhound.a.a.a.hi(true);
+    ab.i("MicroMsg.MMPageFlowService", "habbyge-mali, MMPageFlowService: logout补偿上报");
+    AppMethodBeat.o(73541);
+  }
+  
+  public final void onAccountInitialized(e.c paramc)
+  {
+    int i = 1;
+    AppMethodBeat.i(73547);
+    reset();
+    mcg = true;
+    com.tencent.mm.plugin.expt.e.c.btm();
+    if (bo.getInt(com.tencent.mm.plugin.expt.e.c.a(a.a.lUG, "", false), 0) > 0) {}
     for (;;)
     {
-      LinkedList localLinkedList;
-      try
-      {
-        localLinkedList = new LinkedList();
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          a locala = (a)paramList.next();
-          if (!a(locala)) {
-            continue;
-          }
-          localLinkedList.add(locala);
-          continue;
-        }
-        if (localh == null) {
-          break label132;
-        }
+      if (i != 0) {
+        com.tencent.mm.sdk.b.a.ymk.b(this.appListener);
       }
-      finally
-      {
-        if (localh != null) {
-          localh.hI(l);
-        }
-      }
-      localh.hI(l);
-      label132:
-      return localLinkedList;
-      localh = null;
+      com.tencent.mm.sdk.b.a.ymk.b(this.mcm);
+      AppMethodBeat.o(73547);
+      return;
+      i = 0;
     }
   }
   
-  /* Error */
-  public final a qD(int paramInt)
+  public final void onAccountRelease()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 38	com/tencent/mm/plugin/expt/c/d:dXw	Lcom/tencent/mm/sdk/e/e;
-    //   4: ldc 22
-    //   6: aconst_null
-    //   7: ldc 76
-    //   9: iconst_1
-    //   10: anewarray 14	java/lang/String
-    //   13: dup
-    //   14: iconst_0
-    //   15: iload_1
-    //   16: invokestatic 79	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   19: aastore
-    //   20: aconst_null
-    //   21: aconst_null
-    //   22: aconst_null
-    //   23: invokeinterface 195 8 0
-    //   28: astore_3
-    //   29: aload_3
-    //   30: ifnull +130 -> 160
-    //   33: aload_3
-    //   34: astore 4
-    //   36: aload_3
-    //   37: invokeinterface 198 1 0
-    //   42: ifeq +118 -> 160
-    //   45: aload_3
-    //   46: astore 4
-    //   48: new 16	com/tencent/mm/plugin/expt/c/a
-    //   51: dup
-    //   52: invokespecial 110	com/tencent/mm/plugin/expt/c/a:<init>	()V
-    //   55: astore_2
-    //   56: aload_3
-    //   57: astore 4
-    //   59: aload_2
-    //   60: aload_3
-    //   61: invokevirtual 113	com/tencent/mm/plugin/expt/c/a:d	(Landroid/database/Cursor;)V
-    //   64: aload_2
-    //   65: astore 4
-    //   67: aload_3
-    //   68: ifnull +12 -> 80
-    //   71: aload_3
-    //   72: invokeinterface 124 1 0
-    //   77: aload_2
-    //   78: astore 4
-    //   80: aload 4
-    //   82: areturn
-    //   83: astore 5
-    //   85: aconst_null
-    //   86: astore_3
-    //   87: aconst_null
-    //   88: astore_2
-    //   89: aload_3
-    //   90: astore 4
-    //   92: ldc 46
-    //   94: ldc 200
-    //   96: iconst_1
-    //   97: anewarray 50	java/lang/Object
-    //   100: dup
-    //   101: iconst_0
-    //   102: aload 5
-    //   104: invokevirtual 69	java/lang/Exception:toString	()Ljava/lang/String;
-    //   107: aastore
-    //   108: invokestatic 72	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   111: aload_2
-    //   112: astore 4
-    //   114: aload_3
-    //   115: ifnull -35 -> 80
-    //   118: aload_3
-    //   119: invokeinterface 124 1 0
-    //   124: aload_2
-    //   125: areturn
-    //   126: astore_2
-    //   127: aconst_null
-    //   128: astore 4
-    //   130: aload 4
-    //   132: ifnull +10 -> 142
-    //   135: aload 4
-    //   137: invokeinterface 124 1 0
-    //   142: aload_2
-    //   143: athrow
-    //   144: astore_2
-    //   145: goto -15 -> 130
-    //   148: astore 5
-    //   150: aconst_null
-    //   151: astore_2
-    //   152: goto -63 -> 89
-    //   155: astore 5
-    //   157: goto -68 -> 89
-    //   160: aconst_null
-    //   161: astore_2
-    //   162: goto -98 -> 64
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	165	0	this	d
-    //   0	165	1	paramInt	int
-    //   55	70	2	locala	a
-    //   126	17	2	localObject1	Object
-    //   144	1	2	localObject2	Object
-    //   151	11	2	localObject3	Object
-    //   28	91	3	localCursor	android.database.Cursor
-    //   34	102	4	localObject4	Object
-    //   83	20	5	localException1	Exception
-    //   148	1	5	localException2	Exception
-    //   155	1	5	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   0	29	83	java/lang/Exception
-    //   0	29	126	finally
-    //   36	45	144	finally
-    //   48	56	144	finally
-    //   59	64	144	finally
-    //   92	111	144	finally
-    //   36	45	148	java/lang/Exception
-    //   48	56	148	java/lang/Exception
-    //   59	64	155	java/lang/Exception
+    AppMethodBeat.i(73548);
+    reset();
+    com.tencent.mm.sdk.b.a.ymk.d(this.appListener);
+    com.tencent.mm.sdk.b.a.ymk.d(this.mcm);
+    this.mci = false;
+    AppMethodBeat.o(73548);
   }
+  
+  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+  
+  public final void onActivityDestroyed(Activity paramActivity)
+  {
+    AppMethodBeat.i(73551);
+    String str = paramActivity.getComponentName().getClassName();
+    if ((mcg) && ("com.tencent.mm.ui.LauncherUI".equals(str)) && (this.mcj))
+    {
+      str = bau();
+      if (paramActivity == null) {
+        break label82;
+      }
+    }
+    label82:
+    for (int i = paramActivity.hashCode();; i = -1)
+    {
+      ab.i("MicroMsg.MMPageFlowService", "%s launcher ui ondestroyed but wechat in foreground hashcode[%d]", new Object[] { str, Integer.valueOf(i) });
+      AppMethodBeat.o(73551);
+      return;
+    }
+  }
+  
+  public final void onActivityPaused(Activity paramActivity)
+  {
+    AppMethodBeat.i(73550);
+    a(paramActivity, com.tencent.mm.plugin.expt.a.c.a.lZq);
+    AppMethodBeat.o(73550);
+  }
+  
+  public final void onActivityResumed(Activity paramActivity)
+  {
+    AppMethodBeat.i(73549);
+    a(paramActivity, com.tencent.mm.plugin.expt.a.c.a.lZp);
+    AppMethodBeat.o(73549);
+  }
+  
+  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+  
+  public final void onActivityStarted(Activity paramActivity) {}
+  
+  public final void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.c.d
  * JD-Core Version:    0.7.0.1
  */

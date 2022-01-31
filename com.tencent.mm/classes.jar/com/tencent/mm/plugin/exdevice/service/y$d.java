@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.exdevice.service;
 
 final class y$d
 {
-  String ghs = null;
-  int jsT = 0;
-  int jtf = 0;
-  long jyG = 0L;
+  String hyJ = null;
+  int lCE = 0;
+  int lCs = 0;
+  long lIf = 0L;
 }
 
 

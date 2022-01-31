@@ -1,52 +1,65 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.nx;
-import com.tencent.mm.protocal.c.ny;
+import com.tencent.mm.protocal.protobuf.qz;
+import com.tencent.mm.protocal.protobuf.ra;
+import com.tencent.mm.sdk.platformtools.g;
 
 public final class a
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
+  private f callback;
+  private b rr;
   
   public a(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(37655);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new nx();
-    ((b.a)localObject).ecI = new ny();
+    ((b.a)localObject).fsX = new qz();
+    ((b.a)localObject).fsY = new ra();
     ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/channelpkginfo";
-    ((b.a)localObject).ecG = 1210;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (nx)this.dmK.ecE.ecN;
-    ((nx)localObject).sLv = paramString2;
-    ((nx)localObject).sLu = paramString1;
-    ((nx)localObject).sLw = com.tencent.mm.sdk.platformtools.e.cqq();
+    ((b.a)localObject).funcId = 1210;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (qz)this.rr.fsV.fta;
+    ((qz)localObject).wJj = paramString2;
+    ((qz)localObject).wJi = paramString1;
+    ((qz)localObject).wJk = g.dsn();
+    AppMethodBeat.o(37655);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(37657);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(37657);
+    return i;
   }
   
   public final int getType()
   {
-    return this.dmK.ecG;
+    AppMethodBeat.i(145332);
+    int i = this.rr.getType();
+    AppMethodBeat.o(145332);
+    return i;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(37656);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(37656);
   }
 }
 

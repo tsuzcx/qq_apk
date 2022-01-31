@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.websearch.widget.c.a;
 
 public abstract interface a
 {
-  public abstract boolean RE(String paramString);
+  public abstract boolean agF(String paramString);
   
-  public abstract boolean RF(String paramString);
+  public abstract boolean agG(String paramString);
   
-  public abstract boolean gQ(long paramLong);
+  public abstract boolean nm(long paramLong);
 }
 
 

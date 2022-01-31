@@ -1,5 +1,6 @@
 package com.tencent.mm.vfs;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.OutputStreamWriter;
 
 public final class h
@@ -7,12 +8,16 @@ public final class h
 {
   public h(b paramb)
   {
-    super(e.a(paramb.mUri, paramb.cLo(), false));
+    super(e.a(paramb.mUri, paramb.dQG(), false));
+    AppMethodBeat.i(54668);
+    AppMethodBeat.o(54668);
   }
   
   public h(String paramString)
   {
-    super(e.I(paramString, false));
+    super(e.M(paramString, false));
+    AppMethodBeat.i(54667);
+    AppMethodBeat.o(54667);
   }
 }
 

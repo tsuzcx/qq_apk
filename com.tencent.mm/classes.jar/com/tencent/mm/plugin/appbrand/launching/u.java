@@ -1,13 +1,24 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-final class u
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.appcache.ba.a;
+
+abstract class u
+  implements ba.a
 {
-  final String appId;
+  final int hcr;
   
-  u(String paramString)
+  u(int paramInt)
   {
-    this.appId = paramString;
+    this.hcr = paramInt;
   }
+  
+  abstract String aGZ();
+  
+  protected void b(WxaPkgLoadProgress paramWxaPkgLoadProgress) {}
+  
+  abstract void c(WxaPkgWrappingInfo paramWxaPkgWrappingInfo);
 }
 
 

@@ -1,61 +1,69 @@
 package com.tencent.mm.plugin.remittance.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.ng;
-import com.tencent.mm.protocal.c.nh;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.qi;
+import com.tencent.mm.protocal.protobuf.qj;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class n
   extends m
   implements k
 {
-  private f dmL;
-  private b eWr;
-  private ng nyq;
+  private f callback;
+  private b goo;
+  private qi qjq;
   
   public n(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
+    AppMethodBeat.i(44752);
     b.a locala = new b.a();
-    locala.ecH = new ng();
-    locala.ecI = new nh();
-    locala.ecG = 1273;
+    locala.fsX = new qi();
+    locala.fsY = new qj();
+    locala.funcId = 1273;
     locala.uri = "/cgi-bin/mmpay-bin/f2fpaycheck";
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.eWr = locala.Kt();
-    this.nyq = ((ng)this.eWr.ecE.ecN);
-    this.nyq.swc = paramString1;
-    this.nyq.swd = paramString2;
-    this.nyq.sKU = paramString3;
-    this.nyq.sKV = paramString4;
-    this.nyq.amount = paramInt;
-    y.d("MicroMsg.NetSceneF2fPayCheck", "NetSceneF2fPayCheck, f2fId: %s, transId: %s, extendStr: %s, amount: %s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.goo = locala.ado();
+    this.qjq = ((qi)this.goo.fsV.fta);
+    this.qjq.wpp = paramString1;
+    this.qjq.wpq = paramString2;
+    this.qjq.wIJ = paramString3;
+    this.qjq.wIK = paramString4;
+    this.qjq.okH = paramInt;
+    ab.d("MicroMsg.NetSceneF2fPayCheck", "NetSceneF2fPayCheck, f2fId: %s, transId: %s, extendStr: %s, amount: %s", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(44752);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.eWr, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneF2fPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(44753);
+    this.callback = paramf;
+    int i = dispatch(parame, this.goo, this);
+    AppMethodBeat.o(44753);
+    return i;
   }
   
   public final int getType()
   {
     return 1273;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(44754);
+    ab.i("MicroMsg.NetSceneF2fPayCheck", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(44754);
   }
 }
 

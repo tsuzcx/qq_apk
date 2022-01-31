@@ -1,6 +1,7 @@
 package com.tencent.liteav.network;
 
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.Vector;
 import java.util.Vector<Lcom.tencent.liteav.network.e;>;
@@ -12,17 +13,19 @@ class g$1
   
   public void a(int paramInt, String paramString, Vector<e> paramVector)
   {
+    AppMethodBeat.i(67572);
     g.a(this.f, this.a);
     g.b(this.f, this.b);
     g.a(this.f, paramInt);
     g.c(this.f, paramString);
     if ((paramVector != null) && (!paramVector.isEmpty()))
     {
-      localVector = new Vector();
-      localIterator = paramVector.iterator();
+      Vector localVector = new Vector();
+      Iterator localIterator = paramVector.iterator();
+      Object localObject;
       while (localIterator.hasNext())
       {
-        locale = (e)localIterator.next();
+        e locale = (e)localIterator.next();
         localObject = locale.a;
         paramVector = (Vector<e>)localObject;
         if (((String)localObject).indexOf("?") != -1) {
@@ -40,21 +43,18 @@ class g$1
         }
         this.e.a(paramInt, paramString, localVector);
       }
-    }
-    while (this.e == null)
-    {
-      Vector localVector;
-      Iterator localIterator;
-      e locale;
-      Object localObject;
+      AppMethodBeat.o(67572);
       return;
     }
-    this.e.a(paramInt, paramString, null);
+    if (this.e != null) {
+      this.e.a(paramInt, paramString, null);
+    }
+    AppMethodBeat.o(67572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.liteav.network.g.1
  * JD-Core Version:    0.7.0.1
  */

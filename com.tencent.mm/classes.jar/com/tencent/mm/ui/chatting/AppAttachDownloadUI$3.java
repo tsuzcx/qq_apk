@@ -1,42 +1,35 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.app.al;
+import com.tencent.mm.pluginsdk.model.app.b;
+import com.tencent.mm.pluginsdk.model.app.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.vfs.e;
 
 final class AppAttachDownloadUI$3
-  implements h.d
+  implements Runnable
 {
-  AppAttachDownloadUI$3(AppAttachDownloadUI paramAppAttachDownloadUI) {}
+  AppAttachDownloadUI$3(AppAttachDownloadUI paramAppAttachDownloadUI, b paramb1, b paramb2) {}
   
-  public final void bF(int paramInt1, int paramInt2)
+  public final void run()
   {
-    switch (paramInt2)
+    AppMethodBeat.i(30266);
+    long l1 = System.currentTimeMillis();
+    long l2 = e.C(this.zvN.field_fileFullPath, this.zvO.field_fileFullPath);
+    if (l2 > 0L)
     {
-    case 1: 
-    default: 
-      return;
-    case 0: 
-      AppAttachDownloadUI.c(this.vgK);
-      return;
-    case 2: 
-      AppAttachDownloadUI.d(this.vgK);
-      return;
-    case 3: 
-      AppAttachDownloadUI.e(this.vgK);
-      return;
-    case 4: 
-      AppAttachDownloadUI.f(this.vgK);
-      return;
-    case 5: 
-      AppAttachDownloadUI.g(this.vgK);
-      return;
-    case 7: 
-      AppAttachDownloadUI.h(this.vgK);
-      return;
-    case 6: 
-      AppAttachDownloadUI.i(this.vgK);
+      this.zvO.field_offset = l2;
+      if (AppAttachDownloadUI.c(this.zvO)) {
+        this.zvO.field_status = 199L;
+      }
+    }
+    for (boolean bool = al.aUJ().a(this.zvO, new String[0]);; bool = false)
+    {
+      ab.i("MicroMsg.AppAttachDownloadUI", "summerapp copyAttachFromLocal size[%d], id[%d, %d], ret[%b], new status[%d], take[%d]ms", new Object[] { Long.valueOf(l2), Long.valueOf(this.zvN.field_msgInfoId), Long.valueOf(this.zvO.field_msgInfoId), Boolean.valueOf(bool), Long.valueOf(this.zvO.field_status), Long.valueOf(System.currentTimeMillis() - l1) });
+      AppMethodBeat.o(30266);
       return;
     }
-    AppAttachDownloadUI.j(this.vgK);
   }
 }
 

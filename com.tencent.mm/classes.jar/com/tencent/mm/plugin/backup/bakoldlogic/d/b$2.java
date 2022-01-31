@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.d;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class b$2
   implements Runnable
@@ -11,14 +12,16 @@ public final class b$2
   
   public final void run()
   {
-    y.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb closeTempDB ok");
-    y.cqL();
-    au.DS().a(new b.2.1(this));
+    AppMethodBeat.i(18009);
+    ab.i("MicroMsg.BakOldTempDbModel", "bakoldRecoverFromTempDb closeTempDB ok");
+    ab.dsI();
+    aw.RO().a(new b.2.1(this));
+    AppMethodBeat.o(18009);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.d.b.2
  * JD-Core Version:    0.7.0.1
  */

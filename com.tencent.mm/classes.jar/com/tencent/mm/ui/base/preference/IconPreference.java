@@ -3,60 +3,56 @@ package com.tencent.mm.ui.base.preference;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.d;
-import com.tencent.mm.ac.a.e;
-import com.tencent.mm.ac.a.f;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 
 public class IconPreference
   extends Preference
 {
   private Context context;
-  private String desc = "";
+  private String desc;
   public Drawable drawable;
-  private TextView gaI;
-  private int height = -1;
-  public ImageView lZf = null;
+  private int height;
+  private TextView hsI;
   private View mView;
-  private String nSg = "";
-  private int nSh = -1;
-  private int nSi = 8;
-  public int uGS = -1;
-  private Bitmap uJy = null;
-  RelativeLayout.LayoutParams vcA;
-  private TextView vcB;
-  private TextView vcC;
-  public ImageView vcD;
-  private boolean vcE = false;
-  public boolean vcF = false;
-  private int vcG = -1;
-  public boolean vcH = false;
-  private int vck = 8;
-  private int vcl = 0;
-  private int vcm = 8;
-  private ImageView vcn = null;
-  private ViewGroup vco = null;
-  private TextView vcp;
-  private int vcr = 8;
-  private String vcs = "";
-  private int vct = -1;
-  private int vcu = 8;
-  private int vcv = -1;
-  private int vcw = 8;
-  private int vcx = 8;
-  private View vcy = null;
-  private View vcz = null;
+  protected ImageView oyN;
+  private String pAS;
+  private String pAT;
+  private int qGe;
+  private int qGf;
+  protected int yUb;
+  private Bitmap yXe;
+  private int zqL;
+  private int zqM;
+  private int zqN;
+  private ImageView zqO;
+  private ViewGroup zqP;
+  private TextView zqQ;
+  RelativeLayout.LayoutParams zqS;
+  private int zqT;
+  private int zqU;
+  private int zqV;
+  private int zqW;
+  private int zqX;
+  private int zqY;
+  private View zqZ;
+  private View zra;
+  private TextView zrb;
+  private TextView zrc;
+  protected ImageView zrd;
+  private boolean zre;
+  public boolean zrf;
+  private int zrg;
+  public boolean zrh;
   
   public IconPreference(Context paramContext)
   {
@@ -71,305 +67,383 @@ public class IconPreference
   public IconPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107166);
+    this.yUb = -1;
+    this.oyN = null;
+    this.pAS = "";
+    this.qGe = -1;
+    this.qGf = 8;
+    this.zqL = 8;
+    this.zqT = 8;
+    this.desc = "";
+    this.pAT = "";
+    this.zqU = -1;
+    this.zqV = 8;
+    this.zqW = -1;
+    this.yXe = null;
+    this.zqX = 8;
+    this.zqM = 0;
+    this.zqN = 8;
+    this.zqY = 8;
+    this.zqO = null;
+    this.zqP = null;
+    this.zqZ = null;
+    this.zra = null;
+    this.height = -1;
+    this.zre = false;
+    this.zrf = false;
+    this.zrg = -1;
+    this.zrh = false;
     this.context = paramContext;
-    setLayoutResource(a.h.mm_preference);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(107166);
   }
   
-  public final void Gt(int paramInt)
+  public final void OL(int paramInt)
   {
-    this.nSi = paramInt;
-    if (this.vcC != null) {
-      this.vcC.setVisibility(paramInt);
+    AppMethodBeat.i(107171);
+    this.qGf = paramInt;
+    if (this.zrc != null) {
+      this.zrc.setVisibility(paramInt);
     }
+    AppMethodBeat.o(107171);
   }
   
-  public final void Gu(int paramInt)
+  public final void OM(int paramInt)
   {
-    this.vcu = paramInt;
-    if (this.vcB != null) {
-      this.vcB.setVisibility(paramInt);
+    AppMethodBeat.i(107172);
+    this.zqV = paramInt;
+    if (this.zrb != null) {
+      this.zrb.setVisibility(paramInt);
     }
+    AppMethodBeat.o(107172);
   }
   
-  public final void Gv(int paramInt)
+  public final void ON(int paramInt)
   {
-    this.vck = paramInt;
-    if (this.vcn != null) {
-      this.vcn.setVisibility(paramInt);
+    AppMethodBeat.i(107175);
+    this.zqL = paramInt;
+    if (this.zqO != null) {
+      this.zqO.setVisibility(paramInt);
     }
+    AppMethodBeat.o(107175);
   }
   
-  public final void Gw(int paramInt)
+  public final void OO(int paramInt)
   {
-    this.uGS = paramInt;
-    this.uJy = null;
-    if (this.lZf != null) {
-      this.lZf.setImageResource(paramInt);
+    AppMethodBeat.i(107177);
+    this.yUb = paramInt;
+    this.yXe = null;
+    if (this.oyN != null) {
+      this.oyN.setImageResource(paramInt);
     }
+    AppMethodBeat.o(107177);
   }
   
-  public final void Gx(int paramInt)
+  public final void OP(int paramInt)
   {
-    this.vcw = paramInt;
-    if (this.lZf != null) {
-      this.lZf.setVisibility(this.vcw);
+    AppMethodBeat.i(107178);
+    this.zqX = paramInt;
+    if (this.oyN != null) {
+      this.oyN.setVisibility(this.zqX);
     }
+    AppMethodBeat.o(107178);
   }
   
-  public final void Gy(int paramInt)
+  public final void OQ(int paramInt)
   {
-    this.vcl = paramInt;
-    if (this.vco != null) {
-      this.vco.setVisibility(this.vcl);
+    AppMethodBeat.i(107179);
+    this.zqM = paramInt;
+    if (this.zqP != null) {
+      this.zqP.setVisibility(this.zqM);
     }
+    AppMethodBeat.o(107179);
   }
   
-  public final void Gz(int paramInt)
+  public final void OR(int paramInt)
   {
-    this.vcm = paramInt;
-    if (this.vcy != null) {
-      this.vcy.setVisibility(this.vcm);
+    AppMethodBeat.i(107180);
+    this.zqN = paramInt;
+    if (this.zqZ != null) {
+      this.zqZ.setVisibility(this.zqN);
     }
+    AppMethodBeat.o(107180);
   }
   
-  public final void Z(Bitmap paramBitmap)
+  public final void aG(String paramString, int paramInt1, int paramInt2)
   {
-    this.uJy = paramBitmap;
-    this.uGS = -1;
-    if (this.lZf != null) {
-      this.lZf.setImageBitmap(paramBitmap);
-    }
-  }
-  
-  public final void ap(String paramString, int paramInt1, int paramInt2)
-  {
-    this.vcs = paramString;
-    this.vct = paramInt1;
-    this.vcv = paramInt2;
-    if (this.vcB != null)
+    AppMethodBeat.i(107170);
+    this.pAT = paramString;
+    this.zqU = paramInt1;
+    this.zqW = paramInt2;
+    if (this.zrb != null)
     {
-      this.vcB.setText(paramString);
+      this.zrb.setText(paramString);
       if (paramInt1 != -1) {
-        this.vcB.setBackgroundDrawable(a.g(this.context, paramInt1));
+        this.zrb.setBackgroundDrawable(this.context.getResources().getDrawable(paramInt1));
       }
       if (paramInt2 != -1) {
-        this.vcB.setTextColor(paramInt2);
+        this.zrb.setTextColor(paramInt2);
       }
     }
+    AppMethodBeat.o(107170);
   }
   
-  public final void cBu()
+  public final void ap(Bitmap paramBitmap)
   {
-    this.vcr = 0;
-    if (this.gaI != null) {
-      this.gaI.setVisibility(0);
+    AppMethodBeat.i(107176);
+    this.yXe = paramBitmap;
+    this.yUb = -1;
+    if (this.oyN != null) {
+      this.oyN.setImageBitmap(paramBitmap);
     }
+    AppMethodBeat.o(107176);
   }
   
-  public final void dD(String paramString, int paramInt)
+  public final void dEJ()
   {
-    this.nSg = paramString;
-    this.nSh = paramInt;
-  }
-  
-  public final void dE(String paramString, int paramInt)
-  {
-    ap(paramString, paramInt, this.vcv);
-  }
-  
-  public final void fv(int paramInt1, int paramInt2)
-  {
-    this.vck = paramInt1;
-    this.vcG = paramInt2;
-  }
-  
-  public final void fw(int paramInt1, int paramInt2)
-  {
-    this.vcA = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
-    this.vcA.addRule(13);
-    if (this.lZf == null) {
-      return;
+    AppMethodBeat.i(107173);
+    this.zqT = 0;
+    if (this.hsI != null) {
+      this.hsI.setVisibility(0);
     }
-    this.lZf.setLayoutParams(this.vcA);
+    AppMethodBeat.o(107173);
   }
   
-  public final void ne(boolean paramBoolean)
+  public final ImageView dEK()
   {
-    this.vcE = paramBoolean;
-    if (this.vcB != null)
+    return this.oyN;
+  }
+  
+  public final void eN(String paramString, int paramInt)
+  {
+    this.pAS = paramString;
+    this.qGe = paramInt;
+  }
+  
+  public final void eO(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(107168);
+    aG(paramString, paramInt, this.zqW);
+    AppMethodBeat.o(107168);
+  }
+  
+  public final void hB(int paramInt1, int paramInt2)
+  {
+    this.zqL = paramInt1;
+    this.zrg = paramInt2;
+  }
+  
+  public final void hC(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(107181);
+    this.zqS = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
+    this.zqS.addRule(13);
+    if (this.oyN == null)
     {
-      if (paramBoolean)
-      {
-        this.vcB.setCompoundDrawablesWithIntrinsicBounds(0, 0, a.f.unread_dot_shape, 0);
-        this.vcB.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.e.SmallPadding));
-      }
-    }
-    else {
+      AppMethodBeat.o(107181);
       return;
     }
-    this.vcB.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+    this.oyN.setLayoutParams(this.zqS);
+    AppMethodBeat.o(107181);
   }
   
-  public void onBindView(View paramView)
+  protected void onBindView(View paramView)
   {
+    AppMethodBeat.i(107182);
     super.onBindView(paramView);
-    this.vcD = ((ImageView)paramView.findViewById(a.g.image_iv));
+    this.zrd = ((ImageView)paramView.findViewById(2131822243));
+    label80:
     Object localObject;
-    if (this.vcD != null)
+    if (this.zrd != null)
     {
       if (this.drawable != null)
       {
-        this.vcD.setImageDrawable(this.drawable);
-        this.vcD.setVisibility(0);
+        this.zrd.setImageDrawable(this.drawable);
+        this.zrd.setVisibility(0);
+        if (this.zsg == 0) {
+          break label778;
+        }
+        this.zrd.getDrawable().setColorFilter(this.zsg, PorterDuff.Mode.SRC_ATOP);
       }
     }
     else
     {
-      localObject = (LinearLayout)paramView.findViewById(a.g.mm_preference_ll_id);
-      ((LinearLayout)localObject).setMinimumHeight((int)(paramView.getResources().getDimensionPixelSize(a.e.SmallListHeight) * a.fg(this.context)));
+      localObject = (LinearLayout)paramView.findViewById(2131822408);
+      ((LinearLayout)localObject).setMinimumHeight(paramView.getResources().getDimensionPixelSize(2131427780));
       if (this.height != -1) {
         ((LinearLayout)localObject).setMinimumHeight(this.height);
       }
-      this.vcC = ((TextView)paramView.findViewById(a.g.text_tv_one));
-      if (this.vcC != null)
+      this.zrc = ((TextView)paramView.findViewById(2131822409));
+      if (this.zrc != null)
       {
-        if (!this.vcF) {
-          break label722;
+        if (!this.zrf) {
+          break label801;
         }
-        this.vcC.setCompoundDrawablesWithIntrinsicBounds(a.f.unread_dot_shape, 0, 0, 0);
-        this.vcC.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.e.SmallPadding));
-        label165:
-        this.vcC.setVisibility(this.nSi);
-        this.vcC.setText(this.nSg);
-        if (this.nSh != -1) {
-          this.vcC.setBackgroundDrawable(a.g(this.context, this.nSh));
+        this.zrc.setCompoundDrawablesWithIntrinsicBounds(2130840641, 0, 0, 0);
+        this.zrc.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
+        label183:
+        this.zrc.setVisibility(this.qGf);
+        this.zrc.setText(this.pAS);
+        if (this.qGe != -1) {
+          this.zrc.setBackgroundDrawable(this.context.getResources().getDrawable(this.qGe));
         }
       }
-      this.vcB = ((TextView)paramView.findViewById(a.g.text_tv_two));
-      if (this.vcB != null)
+      this.zrb = ((TextView)paramView.findViewById(2131822411));
+      if (this.zrb != null)
       {
-        this.vcB.setVisibility(this.vcu);
-        this.vcB.setText(this.vcs);
-        if (this.vct != -1) {
-          this.vcB.setBackgroundDrawable(a.g(this.context, this.vct));
+        this.zrb.setVisibility(this.zqV);
+        this.zrb.setText(this.pAT);
+        if (this.zqU != -1)
+        {
+          this.zrb.setBackgroundDrawable(this.context.getResources().getDrawable(this.zqU));
+          if (this.zqU == 2130839787) {
+            this.zrb.setTextSize(0, a.ap(this.context, 2131428776) * a.gr(this.context));
+          }
         }
-        if (this.vcv != -1) {
-          this.vcB.setTextColor(this.vcv);
+        if (this.zqW != -1) {
+          this.zrb.setTextColor(this.zqW);
         }
-        if (!this.vcE) {
-          break label736;
+        if (!this.zre) {
+          break label815;
         }
-        this.vcB.setCompoundDrawablesWithIntrinsicBounds(0, 0, a.f.unread_dot_shape, 0);
-        this.vcB.setCompoundDrawablePadding((int)this.context.getResources().getDimension(a.e.SmallPadding));
+        this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840641, 0);
+        this.zrb.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
       }
-      label342:
-      this.vcn = ((ImageView)paramView.findViewById(a.g.text_prospect));
-      this.vcn.setVisibility(this.vck);
-      if (this.vcG != -1) {
-        this.vcn.setImageResource(this.vcG);
+      label403:
+      this.zqO = ((ImageView)paramView.findViewById(2131822410));
+      this.zqO.setVisibility(this.zqL);
+      if (this.zrg != -1) {
+        this.zqO.setImageResource(this.zrg);
       }
-      this.lZf = ((ImageView)paramView.findViewById(a.g.image_right_iv));
-      this.lZf.setScaleType(ImageView.ScaleType.CENTER_CROP);
-      this.vco = ((ViewGroup)paramView.findViewById(a.g.right_rl));
-      this.vcz = paramView.findViewById(a.g.right_center_prospect);
-      this.vcz.setVisibility(this.vcx);
-      this.vcy = paramView.findViewById(a.g.right_prospect);
-      this.vcy.setVisibility(this.vcm);
-      if (this.uJy == null) {
-        break label750;
+      this.oyN = ((ImageView)paramView.findViewById(2131822413));
+      this.zqP = ((ViewGroup)paramView.findViewById(2131822412));
+      this.zra = paramView.findViewById(2131822415);
+      this.zra.setVisibility(this.zqY);
+      this.zqZ = paramView.findViewById(2131822414);
+      this.zqZ.setVisibility(this.zqN);
+      if (this.yXe == null) {
+        break label829;
       }
-      this.lZf.setImageBitmap(this.uJy);
-      label486:
-      this.lZf.setVisibility(this.vcw);
-      this.vco.setVisibility(this.vcl);
-      if (this.vcA != null) {
-        this.lZf.setLayoutParams(this.vcA);
+      this.oyN.setImageBitmap(this.yXe);
+      label537:
+      this.oyN.setVisibility(this.zqX);
+      this.zqP.setVisibility(this.zqM);
+      if (this.zqS != null) {
+        this.oyN.setLayoutParams(this.zqS);
       }
-      this.vcp = ((TextView)paramView.findViewById(16908310));
-      this.gaI = ((TextView)paramView.findViewById(a.g.desc));
-      if (this.gaI != null)
+      this.zqQ = ((TextView)paramView.findViewById(16908310));
+      this.hsI = ((TextView)paramView.findViewById(2131821115));
+      if (this.hsI != null)
       {
-        this.gaI.setVisibility(this.vcr);
-        this.gaI.setText(this.desc);
-        if (!this.vcH) {
-          break label772;
+        this.hsI.setVisibility(this.zqT);
+        this.hsI.setText(this.desc);
+        if (!this.zrh) {
+          break label851;
         }
-        this.gaI.setTextColor(this.context.getResources().getColor(a.d.disable_text_color));
+        this.hsI.setTextColor(this.context.getResources().getColor(2131689963));
       }
-      label610:
-      if (this.vcp != null)
+      label661:
+      if (this.zqQ != null)
       {
-        if (!this.vcH) {
-          break label795;
+        if (!this.zrh) {
+          break label874;
         }
-        this.vcp.setTextColor(this.context.getResources().getColor(a.d.disable_text_color));
+        this.zqQ.setTextColor(this.context.getResources().getColor(2131689963));
       }
-      label644:
-      if (this.vcH) {
-        break label818;
+      label695:
+      if (this.zrh) {
+        break label897;
       }
     }
-    label772:
-    label795:
-    label818:
+    label897:
     for (boolean bool = true;; bool = false)
     {
       paramView.setEnabled(bool);
+      AppMethodBeat.o(107182);
       return;
-      if (this.Ub != 0)
+      if (this.UM != 0)
       {
-        localObject = this.vcD;
-        Drawable localDrawable = this.mContext.getResources().getDrawable(this.Ub);
+        localObject = this.zrd;
+        Drawable localDrawable = this.mContext.getResources().getDrawable(this.UM);
         this.drawable = localDrawable;
         ((ImageView)localObject).setImageDrawable(localDrawable);
-        this.vcD.setVisibility(0);
+        this.zrd.setVisibility(0);
         break;
       }
-      this.vcD.setVisibility(8);
+      this.zrd.setVisibility(8);
       break;
-      label722:
-      this.vcC.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label165;
-      label736:
-      this.vcB.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-      break label342;
-      label750:
-      if (this.uGS == -1) {
-        break label486;
+      label778:
+      if (this.zrd.getDrawable() == null) {
+        break label80;
       }
-      this.lZf.setImageResource(this.uGS);
-      break label486;
-      this.gaI.setTextColor(this.context.getResources().getColor(a.d.hint_text_color));
-      break label610;
-      this.vcp.setTextColor(this.context.getResources().getColor(a.d.normal_text_color));
-      break label644;
+      this.zrd.getDrawable().clearColorFilter();
+      break label80;
+      label801:
+      this.zrc.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label183;
+      label815:
+      this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+      break label403;
+      label829:
+      if (this.yUb == -1) {
+        break label537;
+      }
+      this.oyN.setImageResource(this.yUb);
+      break label537;
+      label851:
+      this.hsI.setTextColor(this.context.getResources().getColor(2131690168));
+      break label661;
+      label874:
+      this.zqQ.setTextColor(this.context.getResources().getColor(2131690322));
+      break label695;
     }
   }
   
-  public View onCreateView(ViewGroup paramViewGroup)
+  protected View onCreateView(ViewGroup paramViewGroup)
   {
-    if (this.mView == null)
+    AppMethodBeat.i(107167);
+    paramViewGroup = super.onCreateView(paramViewGroup);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
+    localViewGroup.removeAllViews();
+    View.inflate(this.mContext, 2130970203, localViewGroup);
+    this.mView = paramViewGroup;
+    paramViewGroup = this.mView;
+    AppMethodBeat.o(107167);
+    return paramViewGroup;
+  }
+  
+  public final void qI(boolean paramBoolean)
+  {
+    AppMethodBeat.i(107174);
+    this.zre = paramBoolean;
+    if (this.zrb != null)
     {
-      paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.g.content);
-      localViewGroup.removeAllViews();
-      View.inflate(this.mContext, a.h.mm_preference_content_icon, localViewGroup);
-      this.mView = paramViewGroup;
+      if (paramBoolean)
+      {
+        this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130840641, 0);
+        this.zrb.setCompoundDrawablePadding((int)this.context.getResources().getDimension(2131427854));
+        AppMethodBeat.o(107174);
+        return;
+      }
+      this.zrb.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
     }
-    return this.mView;
+    AppMethodBeat.o(107174);
   }
   
   public final void setDesc(String paramString)
   {
+    AppMethodBeat.i(107169);
     this.desc = paramString;
-    if (this.gaI != null) {
-      this.gaI.setText(paramString);
+    if (this.hsI != null) {
+      this.hsI.setText(paramString);
     }
+    AppMethodBeat.o(107169);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.IconPreference
  * JD-Core Version:    0.7.0.1
  */

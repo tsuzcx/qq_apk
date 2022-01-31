@@ -1,39 +1,51 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
-import com.tencent.mm.plugin.wallet_core.ui.g;
-import com.tencent.mm.plugin.wallet_core.ui.o;
-import com.tencent.mm.plugin.wallet_core.ui.o.c;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.plugin.wallet_core.ui.i;
+import com.tencent.mm.plugin.wallet_core.ui.q;
+import com.tencent.mm.plugin.wallet_core.ui.q.c;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletChangeBankcardUI$5
-  implements o.c
+  implements q.c
 {
   WalletChangeBankcardUI$5(WalletChangeBankcardUI paramWalletChangeBankcardUI) {}
   
   public final void a(String paramString, FavorPayInfo paramFavorPayInfo, boolean paramBoolean)
   {
-    this.qmD.qmA = paramFavorPayInfo;
-    this.qmD.BX.putParcelable("key_favor_pay_info", this.qmD.qmA);
-    if ((this.qmD.qmA != null) && (paramBoolean))
+    AppMethodBeat.i(45962);
+    if (WalletChangeBankcardUI.b(this.tVU))
     {
-      if (this.qmD.qmA != null)
-      {
-        this.qmD.ku(true);
-        this.qmD.qmy.e(this.qmD.qgr, false);
-      }
-      if (this.qmD.qgo != null) {
-        this.qmD.qgo.dismiss();
-      }
-      this.qmD.aZ();
-      this.qmD.vN(0);
+      ab.w("MicroMsg.WalletChangeBankcardUI", "has receive cancel");
+      h.qsU.j(965L, 3L, 1L);
+      AppMethodBeat.o(45962);
       return;
     }
-    this.qmD.frT = paramString;
-    this.qmD.XM();
-    this.qmD.Qj(paramString);
-    this.qmD.qmC = null;
+    this.tVU.tVQ = paramFavorPayInfo;
+    this.tVU.getInput().putParcelable("key_favor_pay_info", this.tVU.tVQ);
+    if ((this.tVU.tVQ != null) && (paramBoolean))
+    {
+      if (this.tVU.tVQ != null)
+      {
+        this.tVU.nx(true);
+        this.tVU.tVO.g(this.tVU.tNG, false);
+      }
+      if (this.tVU.tVM != null) {
+        this.tVU.tVM.dismiss();
+      }
+      this.tVU.bJ();
+      this.tVU.setContentViewVisibility(0);
+      AppMethodBeat.o(45962);
+      return;
+    }
+    this.tVU.gJv = paramString;
+    this.tVU.hideVKB();
+    this.tVU.afb(paramString);
+    this.tVU.tVS = null;
+    AppMethodBeat.o(45962);
   }
 }
 

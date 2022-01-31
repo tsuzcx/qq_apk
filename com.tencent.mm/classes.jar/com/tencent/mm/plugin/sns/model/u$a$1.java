@@ -1,67 +1,75 @@
 package com.tencent.mm.plugin.sns.model;
 
 import android.os.Message;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.bug;
-import com.tencent.mm.protocal.c.buh;
-import com.tencent.mm.protocal.c.qv;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.cev;
+import com.tencent.mm.protocal.protobuf.cew;
+import com.tencent.mm.protocal.protobuf.ud;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.z;
 import java.util.LinkedList;
 
 final class u$a$1
-  extends ah
+  extends ak
 {
   u$a$1(u.a parama) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    g.DQ();
-    if (!g.DN().Dc()) {
+    AppMethodBeat.i(36303);
+    g.RM();
+    if (!g.RJ().QU())
+    {
+      AppMethodBeat.o(36303);
       return;
     }
-    if ((this.oqB.jZU == null) || (this.oqB.jZU.isEmpty()))
+    if ((this.rfl.mcO == null) || (this.rfl.mcO.isEmpty()))
     {
-      paramMessage = this.oqB.oqy;
-      buh localbuh = (buh)paramMessage.dmK.ecF.ecN;
-      bug localbug = (bug)paramMessage.dmK.ecE.ecN;
-      byte[] arrayOfByte = localbuh.sIi.tFM.toByteArray();
-      arrayOfByte = com.tencent.mm.protocal.z.g(localbug.sIi.tFM.toByteArray(), arrayOfByte);
+      paramMessage = this.rfl.rfi;
+      cew localcew = (cew)paramMessage.rr.fsW.fta;
+      cev localcev = (cev)paramMessage.rr.fsV.fta;
+      byte[] arrayOfByte = localcew.wFR.getBuffer().toByteArray();
+      arrayOfByte = com.tencent.mm.protocal.ab.j(localcev.wFR.getBuffer().toByteArray(), arrayOfByte);
       if ((arrayOfByte != null) && (arrayOfByte.length > 0))
       {
-        g.DQ();
-        g.DP().Dz().o(8195, bk.bG(arrayOfByte));
+        g.RM();
+        g.RL().Ru().set(8195, bo.cg(arrayOfByte));
       }
-      localbug.sIi.bs(arrayOfByte);
-      if ((localbuh.sFD & localbug.sIh) == 0)
+      localcev.wFR.setBuffer(arrayOfByte);
+      if ((localcew.wBX & localcev.wFQ) == 0)
       {
-        paramMessage.dmL.onSceneEnd(0, 0, "", paramMessage);
+        paramMessage.callback.onSceneEnd(0, 0, "", paramMessage);
+        AppMethodBeat.o(36303);
         return;
       }
-      paramMessage.a(paramMessage.edc, paramMessage.dmL);
+      paramMessage.doScene(paramMessage.dispatcher(), paramMessage.callback);
+      AppMethodBeat.o(36303);
       return;
     }
-    paramMessage = (qv)this.oqB.jZU.getFirst();
-    y.d("MicroMsg.NetSceneNewSyncAlbum", "cmdId = " + paramMessage.sOA);
-    this.oqB.jZU.removeFirst();
-    switch (paramMessage.sOA)
+    paramMessage = (ud)this.rfl.mcO.getFirst();
+    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.NetSceneNewSyncAlbum", "cmdId = " + paramMessage.wMC);
+    this.rfl.mcO.removeFirst();
+    switch (paramMessage.wMC)
     {
     default: 
-      this.oqB.jZV.sendEmptyMessage(0);
+      this.rfl.mur.sendEmptyMessage(0);
+      AppMethodBeat.o(36303);
       return;
     case 45: 
-      af.bDp().post(new u.a.1.1(this, paramMessage));
+      ag.coO().post(new u.a.1.1(this, paramMessage));
+      AppMethodBeat.o(36303);
       return;
     }
-    af.bDp().post(new u.a.1.2(this, paramMessage));
+    ag.coO().post(new u.a.1.2(this, paramMessage));
+    AppMethodBeat.o(36303);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 public abstract interface s$a
 {
-  public abstract void bl(boolean paramBoolean);
+  public abstract void bL(boolean paramBoolean);
 }
 
 

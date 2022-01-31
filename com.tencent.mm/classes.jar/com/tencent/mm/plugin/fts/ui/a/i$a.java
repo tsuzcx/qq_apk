@@ -9,9 +9,9 @@ public final class i$a
   extends a.a
 {
   public View contentView;
-  public ImageView gSx;
-  public View kCO;
-  public TextView kCv;
+  public ImageView ivs;
+  public View mYK;
+  public TextView mYs;
   
   public i$a(i parami)
   {

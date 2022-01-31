@@ -3,40 +3,49 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 import android.content.Context;
 import android.graphics.PointF;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.af;
+import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$1
-  extends af
+  extends ae
 {
   f$1(f paramf, Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final float a(DisplayMetrics paramDisplayMetrics)
+  public final PointF bI(int paramInt)
+  {
+    AppMethodBeat.i(14347);
+    PointF localPointF = ((LinearLayoutManager)this.jZB.jZy.getLayoutManager()).bI(paramInt);
+    AppMethodBeat.o(14347);
+    return localPointF;
+  }
+  
+  public final int bM(int paramInt)
+  {
+    AppMethodBeat.i(14346);
+    paramInt = super.bM(paramInt);
+    AppMethodBeat.o(14346);
+    return paramInt;
+  }
+  
+  public final float c(DisplayMetrics paramDisplayMetrics)
   {
     return 80.0F / paramDisplayMetrics.densityDpi;
   }
   
-  public final PointF bD(int paramInt)
-  {
-    return ((LinearLayoutManager)this.ihO.ihL.getLayoutManager()).bD(paramInt);
-  }
-  
-  protected final int bH(int paramInt)
-  {
-    return super.bH(paramInt);
-  }
-  
-  protected final int he()
+  public final int iA()
   {
     return -1;
   }
   
-  protected final void onStop()
+  public final void onStop()
   {
+    AppMethodBeat.i(14348);
     super.onStop();
+    AppMethodBeat.o(14348);
   }
 }
 

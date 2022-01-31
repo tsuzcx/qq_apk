@@ -3,84 +3,129 @@ package com.tencent.mm.plugin.gallery.ui;
 import android.graphics.Bitmap;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
-import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
+import com.tencent.mm.a.f.b;
+import com.tencent.mm.memory.a.b;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.az.a;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 
 final class d
 {
-  private av egH = new av(1, "album-image-gallery-lazy-loader");
-  SparseArray<WeakReference<MultiTouchImageView>> kJp = new SparseArray();
-  HashMap<String, Integer> kJq = new HashMap();
-  SparseArray<String> kJr = new SparseArray();
-  SparseArray<Bitmap> kJs = new SparseArray();
-  protected f<String, Bitmap> kJt = new f(5, new d.1(this));
-  protected SparseIntArray kJu = new SparseIntArray();
-  LinkedList<String> kJv = new LinkedList();
-  c kJw;
-  boolean kJx = false;
-  private int lf = 0;
+  private az fwL;
+  private int mScrollState;
+  SparseArray<WeakReference<MultiTouchImageView>> nfN;
+  HashMap<String, Integer> nfO;
+  SparseArray<String> nfP;
+  SparseArray<Bitmap> nfQ;
+  protected f<String, Bitmap> nfR;
+  protected SparseIntArray nfS;
+  LinkedList<String> nfT;
+  c nfU;
+  boolean nfV;
   
   public d(c paramc)
   {
-    this.kJw = paramc;
+    AppMethodBeat.i(21488);
+    this.fwL = new az(1, "album-image-gallery-lazy-loader");
+    this.nfN = new SparseArray();
+    this.nfO = new HashMap();
+    this.nfP = new SparseArray();
+    this.nfQ = new SparseArray();
+    this.mScrollState = 0;
+    this.nfR = new b(5, new f.b() {}, getClass());
+    this.nfS = new SparseIntArray();
+    this.nfT = new LinkedList();
+    this.nfV = false;
+    this.nfU = paramc;
+    AppMethodBeat.o(21488);
   }
   
   private void a(int paramInt, Bitmap paramBitmap)
   {
-    if (this.kJp.get(paramInt) == null) {
+    AppMethodBeat.i(21493);
+    if (this.nfN.get(paramInt) == null)
+    {
+      AppMethodBeat.o(21493);
       return;
     }
-    MultiTouchImageView localMultiTouchImageView = (MultiTouchImageView)((WeakReference)this.kJp.get(paramInt)).get();
-    String str = (String)this.kJr.get(paramInt);
+    MultiTouchImageView localMultiTouchImageView = (MultiTouchImageView)((WeakReference)this.nfN.get(paramInt)).get();
+    String str = (String)this.nfP.get(paramInt);
     if ((paramBitmap != null) && (localMultiTouchImageView != null))
     {
       int i = paramBitmap.hashCode();
-      int j = this.kJu.indexOfValue(paramInt);
+      int j = this.nfS.indexOfValue(paramInt);
       if (j >= 0) {
-        this.kJu.removeAt(j);
+        this.nfS.removeAt(j);
       }
-      this.kJu.put(i, paramInt);
+      this.nfS.put(i, paramInt);
     }
-    this.kJw.kIX.remove(str);
-    TextView localTextView;
-    if (localMultiTouchImageView != null)
-    {
-      localTextView = (TextView)localMultiTouchImageView.getTag();
-      if (paramBitmap == null) {
-        break label147;
-      }
-      c.a(localMultiTouchImageView, paramBitmap);
-      if (localTextView != null) {
-        localTextView.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      sa(paramInt);
-      return;
-      label147:
-      if (localTextView != null)
-      {
-        localTextView.setText(str);
-        localTextView.setVisibility(0);
-      }
-    }
+    this.nfU.a(localMultiTouchImageView, str, paramBitmap);
+    wW(paramInt);
+    AppMethodBeat.o(21493);
   }
   
-  public final void Q(int paramInt)
+  private void bEy()
+  {
+    AppMethodBeat.i(21490);
+    this.nfR.a(new d.2(this));
+    AppMethodBeat.o(21490);
+  }
+  
+  final void Dh()
+  {
+    AppMethodBeat.i(21494);
+    if (this.nfV)
+    {
+      AppMethodBeat.o(21494);
+      return;
+    }
+    if (this.nfT.size() == 0)
+    {
+      AppMethodBeat.o(21494);
+      return;
+    }
+    Object localObject = (String)this.nfT.removeLast();
+    if (!this.nfO.containsKey(localObject))
+    {
+      AppMethodBeat.o(21494);
+      return;
+    }
+    this.nfV = true;
+    localObject = new d.3(this, (String)localObject);
+    this.fwL.e((az.a)localObject);
+    AppMethodBeat.o(21494);
+  }
+  
+  final boolean bEz()
+  {
+    return this.mScrollState == 0;
+  }
+  
+  public final void detach()
+  {
+    AppMethodBeat.i(21489);
+    this.nfU = null;
+    this.nfN.clear();
+    this.nfQ.clear();
+    this.nfP.clear();
+    this.nfO.clear();
+    bEy();
+    AppMethodBeat.o(21489);
+  }
+  
+  public final void onPageScrollStateChanged(int paramInt)
   {
     int j = 0;
-    this.lf = paramInt;
-    if (aXR())
+    AppMethodBeat.i(21491);
+    this.mScrollState = paramInt;
+    if (bEz())
     {
-      int[] arrayOfInt = new int[this.kJs.size()];
+      int[] arrayOfInt = new int[this.nfQ.size()];
       int i = 0;
       for (;;)
       {
@@ -88,54 +133,31 @@ final class d
         if (i >= arrayOfInt.length) {
           break;
         }
-        arrayOfInt[i] = this.kJs.keyAt(i);
+        arrayOfInt[i] = this.nfQ.keyAt(i);
         i += 1;
       }
       while (paramInt < arrayOfInt.length)
       {
         i = arrayOfInt[paramInt];
-        a(i, (Bitmap)this.kJs.get(i));
+        a(i, (Bitmap)this.nfQ.get(i));
         paramInt += 1;
       }
     }
+    AppMethodBeat.o(21491);
   }
   
-  final void aXQ()
+  final void wW(int paramInt)
   {
-    this.kJt.a(new d.2(this));
-  }
-  
-  final boolean aXR()
-  {
-    return this.lf == 0;
-  }
-  
-  final void ahX()
-  {
-    if (this.kJx) {}
-    do
+    AppMethodBeat.i(21492);
+    if (this.nfP.get(paramInt) != null)
     {
-      do
-      {
-        return;
-      } while (this.kJv.size() == 0);
-      localObject = (String)this.kJv.removeLast();
-    } while (!this.kJq.containsKey(localObject));
-    this.kJx = true;
-    Object localObject = new d.3(this, (String)localObject);
-    this.egH.c((av.a)localObject);
-  }
-  
-  final void sa(int paramInt)
-  {
-    if (this.kJr.get(paramInt) != null)
-    {
-      String str = (String)this.kJr.get(paramInt);
-      this.kJp.remove(paramInt);
-      this.kJr.remove(paramInt);
-      this.kJq.remove(str);
-      this.kJs.remove(paramInt);
+      String str = (String)this.nfP.get(paramInt);
+      this.nfN.remove(paramInt);
+      this.nfP.remove(paramInt);
+      this.nfO.remove(str);
+      this.nfQ.remove(paramInt);
     }
+    AppMethodBeat.o(21492);
   }
 }
 

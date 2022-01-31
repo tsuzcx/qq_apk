@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShuffleView$2
   implements Animator.AnimatorListener
@@ -12,16 +13,20 @@ final class ShuffleView$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    ShuffleView.a(this.lPv, false);
-    ShuffleView.a(this.lPv, null);
-    ShuffleView.d(this.lPv, -1);
+    AppMethodBeat.i(42226);
+    ShuffleView.a(this.omN, false);
+    ShuffleView.a(this.omN, null);
+    ShuffleView.d(this.omN, -1);
+    AppMethodBeat.o(42226);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    ShuffleView.a(this.lPv, true);
+    AppMethodBeat.i(42225);
+    ShuffleView.a(this.omN, true);
+    AppMethodBeat.o(42225);
   }
 }
 

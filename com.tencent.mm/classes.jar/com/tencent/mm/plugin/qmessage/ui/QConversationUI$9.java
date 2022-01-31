@@ -4,12 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.h.c.as;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.plugin.qmessage.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.storage.ak;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class QConversationUI$9
   implements AdapterView.OnItemClickListener
@@ -18,12 +17,14 @@ final class QConversationUI$9
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (ak)QConversationUI.b(this.ncU).getItem(paramInt);
+    AppMethodBeat.i(24135);
+    paramAdapterView = (ak)QConversationUI.b(this.pIm).getItem(paramInt);
     paramView = new Intent();
     paramView.addFlags(67108864);
     paramView.putExtra("Chat_User", paramAdapterView.field_username);
     paramView.putExtra("key_need_send_video", false);
-    a.eUR.e(paramView, this.ncU.mController.uMN);
+    a.gmO.d(paramView, this.pIm.getContext());
+    AppMethodBeat.o(24135);
   }
 }
 

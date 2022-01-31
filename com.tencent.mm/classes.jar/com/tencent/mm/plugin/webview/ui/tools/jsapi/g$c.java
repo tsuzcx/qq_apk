@@ -4,13 +4,13 @@ import com.tencent.mm.plugin.webview.stub.e;
 
 final class g$c
 {
-  public e rgh;
-  public i rym;
+  public e uWu;
+  public i vpn;
   
   public g$c(g paramg, i parami, e parame)
   {
-    this.rym = parami;
-    this.rgh = parame;
+    this.vpn = parami;
+    this.uWu = parame;
   }
 }
 

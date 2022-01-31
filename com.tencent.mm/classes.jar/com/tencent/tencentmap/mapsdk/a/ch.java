@@ -1,17 +1,133 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.Locale;
+import android.graphics.Color;
+import android.location.Location;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class ch
+public class ch
+  extends bt
 {
-  public static final String[][] a = new String[4][];
+  private ar a;
+  private bn b;
+  private bp c;
+  private ad.a d;
+  private ad e;
+  private boolean f;
+  private dc g;
+  private co h;
+  private ah.n i;
+  private df j;
+  private int k;
+  private Location l;
   
-  static
+  public ch(ar paramar, bn parambn, bp parambp)
   {
-    a[0] = { "t_event", String.format(Locale.US, "CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s int , %s int , %s int , %s int , %s blob)", new Object[] { "t_event", "_id", "_time", "_type", "_prority", "_length", "_datas" }) };
-    a[1] = { "t_strategy", String.format(Locale.US, "CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s int unique , %s int , %s blob)", new Object[] { "t_strategy", "_id", "_key", "_ut", "_datas" }) };
-    a[2] = { "t_req_data", String.format(Locale.US, "CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s text unique , %s int , %s int , %s blob)", new Object[] { "t_req_data", "_id", "_rid", "_time", "_cnt", "_datas" }) };
-    a[3] = { "t_conf", String.format(Locale.US, "CREATE TABLE %s ( %s INTEGER PRIMARY KEY AUTOINCREMENT, %s text unique , %s text , %s int , %s int)", new Object[] { "t_conf", "_id", "_key", "_value", "_vdate", "_time" }) };
+    AppMethodBeat.i(149986);
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    this.d = null;
+    this.e = null;
+    this.f = false;
+    this.g = null;
+    this.h = null;
+    this.i = null;
+    this.j = new df();
+    this.k = Color.argb(102, 0, 163, 255);
+    this.l = null;
+    this.a = paramar;
+    this.b = parambn;
+    this.c = parambp;
+    this.d = f();
+    AppMethodBeat.o(149986);
+  }
+  
+  private ad.a f()
+  {
+    AppMethodBeat.i(149989);
+    ch.1 local1 = new ch.1(this);
+    AppMethodBeat.o(149989);
+    return local1;
+  }
+  
+  void a()
+  {
+    AppMethodBeat.i(149988);
+    if (this.f == true)
+    {
+      AppMethodBeat.o(149988);
+      return;
+    }
+    this.f = true;
+    if (this.d == null) {
+      this.d = f();
+    }
+    if (this.g != null) {
+      this.g.b(true);
+    }
+    if (this.h != null) {
+      this.h.a(true);
+    }
+    if (this.e != null) {
+      this.e.a(this.d);
+    }
+    AppMethodBeat.o(149988);
+  }
+  
+  void b()
+  {
+    AppMethodBeat.i(100935);
+    if (this.g != null)
+    {
+      this.g.b(false);
+      this.g.b();
+      this.g = null;
+    }
+    if (this.h != null)
+    {
+      this.h.a(false);
+      this.h.b();
+      this.h = null;
+    }
+    if (!this.f)
+    {
+      AppMethodBeat.o(100935);
+      return;
+    }
+    this.f = false;
+    this.d = null;
+    if (this.e != null) {
+      this.e.a();
+    }
+    AppMethodBeat.o(100935);
+  }
+  
+  boolean c()
+  {
+    return this.f;
+  }
+  
+  Location d()
+  {
+    AppMethodBeat.i(149990);
+    if (this.l == null)
+    {
+      AppMethodBeat.o(149990);
+      return null;
+    }
+    Location localLocation = new Location(this.l);
+    AppMethodBeat.o(149990);
+    return localLocation;
+  }
+  
+  public void e()
+  {
+    AppMethodBeat.i(149987);
+    b();
+    this.a = null;
+    this.b = null;
+    this.c = null;
+    AppMethodBeat.o(149987);
   }
 }
 

@@ -1,31 +1,36 @@
 package com.tencent.mm.plugin.subapp.c;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class j$3
-  implements am.a
+  implements ap.a
 {
   j$3(j paramj) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.d("MicroMsg.VoiceRemindService", "onTimerExpired");
+    AppMethodBeat.i(25309);
+    ab.d("MicroMsg.VoiceRemindService", "onTimerExpired");
     try
     {
-      j.h(this.pvX);
+      j.h(this.sXD);
+      AppMethodBeat.o(25309);
       return false;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.VoiceRemindService", localException, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.VoiceRemindService", localException, "", new Object[0]);
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.c.j.3
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.account.model.i;
-import com.tencent.mm.plugin.account.model.i.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.model.j;
+import com.tencent.mm.plugin.account.model.j.a;
 
 final class o$9
   implements DialogInterface.OnClickListener
@@ -12,8 +13,10 @@ final class o$9
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.fpr.fpj.finish();
-    i.a(i.a.fjH);
+    AppMethodBeat.i(125258);
+    this.gGO.gGG.finish();
+    j.a(j.a.gAY);
+    AppMethodBeat.o(125258);
   }
 }
 

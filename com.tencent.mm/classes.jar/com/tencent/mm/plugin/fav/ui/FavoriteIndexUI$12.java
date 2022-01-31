@@ -1,24 +1,33 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.fav.ui.widget.c;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavoriteIndexUI$12
-  implements f
+  implements View.OnTouchListener
 {
   FavoriteIndexUI$12(FavoriteIndexUI paramFavoriteIndexUI) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    y.i("MicroMsg.FavoriteIndexUI", "onUsedCapacityChanged");
-    this.kee.kbe.post(new FavoriteIndexUI.12.1(this));
+    AppMethodBeat.i(74238);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(74238);
+      return false;
+      FavoriteIndexUI.c(this.myP)[0] = ((int)paramMotionEvent.getRawX());
+      FavoriteIndexUI.c(this.myP)[1] = ((int)paramMotionEvent.getRawY());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.FavoriteIndexUI.12
  * JD-Core Version:    0.7.0.1
  */

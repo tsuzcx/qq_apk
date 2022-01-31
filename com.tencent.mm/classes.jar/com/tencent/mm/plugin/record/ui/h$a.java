@@ -10,7 +10,7 @@ public abstract interface h$a
   
   public abstract void a(h.a.a parama);
   
-  public abstract void bvC();
+  public abstract void cfT();
 }
 
 

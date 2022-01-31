@@ -6,15 +6,15 @@ import android.widget.TextView;
 
 public abstract interface a
 {
-  public abstract void aW(String paramString, boolean paramBoolean);
-  
-  public abstract void bAX();
-  
-  public abstract boolean bAY();
+  public abstract void bl(String paramString, boolean paramBoolean);
   
   public abstract void clear();
   
-  public abstract void dL(int paramInt1, int paramInt2);
+  public abstract void cmx();
+  
+  public abstract boolean cmy();
+  
+  public abstract void ft(int paramInt1, int paramInt2);
   
   public abstract Object getTagObject();
   

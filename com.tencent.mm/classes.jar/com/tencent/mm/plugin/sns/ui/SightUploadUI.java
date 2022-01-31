@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.label.a.a;
 import com.tencent.mm.plugin.label.a.b;
-import com.tencent.mm.plugin.sns.i.c;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.pluginsdk.e;
+import com.tencent.mm.pluginsdk.f;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.e.h;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.e.j;
+import com.tencent.mm.ui.q.b;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -28,89 +26,103 @@ public class SightUploadUI
   extends MMActivity
 {
   private String desc = "";
-  DisplayMetrics npm;
-  private String oSV = "";
-  private String oSW = "";
-  private SnsEditText oTp;
-  private y oTq = null;
-  private LinearLayout oTr;
-  private SnsSightUploadSayFooter oTs;
-  private int oTt = 0;
-  private int oTu = 0;
-  private ArrayList<String> oTv;
-  private boolean oTw = false;
-  private int oTx = 0;
-  private boolean oTy = false;
-  private long oTz = 0L;
+  DisplayMetrics pUA;
+  private String rKQ = "";
+  private String rKR = "";
+  private SnsEditText rLm;
+  private y rLn = null;
+  private LinearLayout rLo;
+  private SnsSightUploadSayFooter rLp;
+  private int rLq = 0;
+  private int rLr = 0;
+  private ArrayList<String> rLs;
+  private boolean rLt = false;
+  private int rLu = 0;
+  private boolean rLv = false;
+  private long rLw = 0L;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return i.g.sns_sight_upload_ui;
+    return 2130970864;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.oTp = ((SnsEditText)findViewById(i.f.sns_desc_tv));
-    int i = this.oTp.getPaddingLeft();
-    int j = this.oTr.getPaddingRight();
-    int k = this.npm.widthPixels;
-    this.oTp.postDelayed(new SightUploadUI.1(this, k - (i + j)), 100L);
-    if (!bk.bl(getIntent().getStringExtra(e.h.uHV))) {
-      this.oTp.setText(getIntent().getStringExtra(e.h.uHV));
+    AppMethodBeat.i(38592);
+    this.rLm = ((SnsEditText)findViewById(2131825537));
+    int i = this.rLm.getPaddingLeft();
+    int j = this.rLo.getPaddingRight();
+    int k = this.pUA.widthPixels;
+    this.rLm.postDelayed(new SightUploadUI.1(this, k - (i + j)), 100L);
+    if (!bo.isNullOrNil(getIntent().getStringExtra(e.j.yVi))) {
+      this.rLm.setText(getIntent().getStringExtra(e.j.yVi));
     }
-    this.oTp.setBackListener(new SightUploadUI.2(this));
-    this.oTs = ((SnsSightUploadSayFooter)findViewById(i.f.say_footer));
-    this.oTs.setMMEditText(this.oTp);
-    this.oTs.setVisibility(0);
+    this.rLm.setBackListener(new SightUploadUI.2(this));
+    this.rLp = ((SnsSightUploadSayFooter)findViewById(2131828085));
+    this.rLp.setMMEditText(this.rLm);
+    this.rLp.setVisibility(0);
     setBackBtn(new SightUploadUI.3(this));
     if (getIntent().getBooleanExtra("KSightDraftEntrance", true)) {
-      addIconOptionMenu(1, i.i.sight_draft_menu, new SightUploadUI.4(this));
+      addIconOptionMenu(1, 2131231985, new SightUploadUI.4(this));
     }
-    a(0, getString(i.j.app_send), new SightUploadUI.5(this), s.b.uNz);
+    addTextOptionMenu(0, getString(2131297067), new SightUploadUI.5(this), null, q.b.zbA);
     enableOptionMenu(true);
+    AppMethodBeat.o(38592);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(38596);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt2 != -1) {
+    if (paramInt2 != -1)
+    {
+      AppMethodBeat.o(38596);
       return;
     }
     Object localObject1;
     if ((paramInt1 == 6) || (paramInt1 == 5) || (paramInt1 == 10))
     {
-      localObject1 = this.oTs;
+      localObject1 = this.rLp;
       if (paramIntent != null)
       {
         if (paramInt1 != 10) {
-          break label285;
+          break label81;
         }
-        ((SnsSightUploadSayFooter)localObject1).pdr.U(paramIntent);
+        ((SnsSightUploadSayFooter)localObject1).rVZ.an(paramIntent);
       }
     }
-    label56:
-    if ((paramInt1 == 5) && (paramIntent != null))
+    for (;;)
     {
-      paramInt2 = paramIntent.getIntExtra("Ktag_range_index", 0);
-      if (paramInt2 < 2) {
-        break label475;
-      }
-      this.oSV = paramIntent.getStringExtra("Klabel_name_list");
-      this.oSW = paramIntent.getStringExtra("Kother_user_name_list");
-      localObject1 = Arrays.asList(this.oSV.split(","));
-      if (bk.bl(this.oSW)) {
-        break label503;
+      if (paramInt1 == 5) {
+        if (paramIntent == null)
+        {
+          AppMethodBeat.o(38596);
+          return;
+          label81:
+          if (paramInt1 == 5) {
+            ((SnsSightUploadSayFooter)localObject1).rVY.a(paramInt1, paramInt2, paramIntent, null);
+          }
+        }
+        else
+        {
+          paramInt2 = paramIntent.getIntExtra("Ktag_range_index", 0);
+          if (paramInt2 >= 2)
+          {
+            this.rKQ = paramIntent.getStringExtra("Klabel_name_list");
+            this.rKR = paramIntent.getStringExtra("Kother_user_name_list");
+            localObject1 = Arrays.asList(this.rKQ.split(","));
+            if (bo.isNullOrNil(this.rKR)) {
+              break label531;
+            }
+          }
+        }
       }
     }
-    label170:
-    label306:
-    label475:
-    label500:
-    label501:
-    label503:
-    for (paramIntent = Arrays.asList(this.oSW.split(","));; paramIntent = null)
+    label528:
+    label531:
+    for (paramIntent = Arrays.asList(this.rKR.split(","));; paramIntent = null)
     {
-      this.oTv = new ArrayList();
+      this.rLs = new ArrayList();
       Object localObject2;
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
@@ -118,118 +130,128 @@ public class SightUploadUI
         if (localIterator.hasNext())
         {
           localObject2 = (String)localIterator.next();
-          localObject2 = a.bdA().Go(a.bdA().Gl((String)localObject2));
+          localObject2 = a.bKV().RR(a.bKV().RO((String)localObject2));
           if ((localObject2 != null) && (((List)localObject2).size() != 0)) {
-            break label306;
+            break label324;
           }
-          com.tencent.mm.sdk.platformtools.y.e("MicroMsg.SightUploadUI", "dz: getContactNamesFromLabels,namelist get bu label is null");
+          ab.e("MicroMsg.SightUploadUI", "dz: getContactNamesFromLabels,namelist get bu label is null");
         }
       }
       if (localObject1 != null)
       {
         localObject1 = ((List)localObject1).iterator();
         paramInt1 = 0;
-        label252:
+        label291:
         if (((Iterator)localObject1).hasNext())
         {
-          if (bk.bl((String)((Iterator)localObject1).next())) {
-            break label500;
+          if (bo.isNullOrNil((String)((Iterator)localObject1).next())) {
+            break label528;
           }
           paramInt1 += 1;
         }
       }
       for (;;)
       {
-        break label252;
-        if (paramInt1 != 5) {
-          break label501;
-        }
-        ((SnsSightUploadSayFooter)localObject1).pdq.a(paramInt1, paramInt2, paramIntent, null);
-        break label56;
-        break;
+        break label291;
+        label324:
         localObject2 = ((List)localObject2).iterator();
         while (((Iterator)localObject2).hasNext())
         {
           String str = (String)((Iterator)localObject2).next();
-          if (!this.oTv.contains(str))
+          if (!this.rLs.contains(str))
           {
-            this.oTv.add(str);
-            com.tencent.mm.sdk.platformtools.y.d("MicroMsg.SightUploadUI", "dz:name : %s", new Object[] { str });
+            this.rLs.add(str);
+            ab.d("MicroMsg.SightUploadUI", "dz:name : %s", new Object[] { str });
           }
         }
-        break label170;
-        this.oTt = paramInt1;
-        this.oTu = 0;
+        break;
+        this.rLq = paramInt1;
+        this.rLr = 0;
         if ((paramIntent != null) && (paramIntent.size() > 0))
         {
           paramIntent = paramIntent.iterator();
           while (paramIntent.hasNext())
           {
             localObject1 = (String)paramIntent.next();
-            if (!this.oTv.contains(localObject1))
+            if (!this.rLs.contains(localObject1))
             {
-              this.oTv.add(localObject1);
-              this.oTu += 1;
+              this.rLs.add(localObject1);
+              this.rLr += 1;
             }
           }
         }
         if (paramInt2 == 2) {}
-        for (this.oTw = false; 1 == paramInt2; this.oTw = true)
+        for (this.rLt = false; 1 == paramInt2; this.rLt = true)
         {
-          this.oTx = 1;
+          this.rLu = 1;
+          AppMethodBeat.o(38596);
           return;
         }
-        this.oTx = 0;
+        this.rLu = 0;
+        AppMethodBeat.o(38596);
         return;
       }
-      break label56;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    e.k(this);
+    AppMethodBeat.i(38591);
+    f.m(this);
     super.onCreate(paramBundle);
-    this.npm = getResources().getDisplayMetrics();
-    this.oTq = new ak(this);
-    this.oTq.E(paramBundle);
-    this.oTr = ((LinearLayout)findViewById(i.f.widget_content));
-    this.oTr.addView(this.oTq.bHr());
-    setMMTitle(i.j.sns_timeline_ui_title);
-    getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(i.c.black));
-    this.oTy = getIntent().getBooleanExtra("KSnsPostManu", false);
-    this.oTz = getIntent().getLongExtra("KTouchCameraTime", 0L);
+    this.pUA = getResources().getDisplayMetrics();
+    this.rLn = new ak(this);
+    this.rLn.V(paramBundle);
+    this.rLo = ((LinearLayout)findViewById(2131828084));
+    this.rLo.addView(this.rLn.ctv());
+    setMMTitle(2131304020);
+    getSupportActionBar().setBackgroundDrawable(getResources().getDrawable(2131689763));
+    this.rLv = getIntent().getBooleanExtra("KSnsPostManu", false);
+    this.rLw = getIntent().getLongExtra("KTouchCameraTime", 0L);
     initView();
-    e.l(this);
+    f.n(this);
+    AppMethodBeat.o(38591);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(38594);
     super.onDestroy();
-    this.oTq.bHs();
-    this.oTs.pdr.stop();
-    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.oTs;
-    if (localSnsSightUploadSayFooter.jpC != null)
+    this.rLn.ctw();
+    this.rLp.rVZ.stop();
+    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.rLp;
+    if (localSnsSightUploadSayFooter.eys != null)
     {
-      localSnsSightUploadSayFooter.jpC.sj();
-      localSnsSightUploadSayFooter.jpC.destroy();
+      localSnsSightUploadSayFooter.eys.Ay();
+      localSnsSightUploadSayFooter.eys.destroy();
     }
+    AppMethodBeat.o(38594);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(38595);
     super.onPause();
-    XM();
+    hideVKB();
+    AppMethodBeat.o(38595);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(38593);
     super.onResume();
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.SightUploadUI", "onResume");
-    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.oTs;
-    if (localSnsSightUploadSayFooter.jpC.getVisibility() == 8) {
-      localSnsSightUploadSayFooter.bER.showVKB();
+    ab.d("MicroMsg.SightUploadUI", "onResume");
+    SnsSightUploadSayFooter localSnsSightUploadSayFooter = this.rLp;
+    if (localSnsSightUploadSayFooter.eys.getVisibility() == 8) {
+      localSnsSightUploadSayFooter.cmc.showVKB();
     }
+    AppMethodBeat.o(38593);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -8,11 +8,11 @@ public abstract interface i
 {
   public abstract void a(int paramInt, q paramq);
   
-  public abstract void bZl();
+  public abstract void cZf();
   
-  public abstract void bZm();
+  public abstract void cZg();
   
-  public abstract void c(List<WidgetData> paramList, String paramString1, String paramString2);
+  public abstract void d(List<WidgetData> paramList, String paramString1, String paramString2);
   
   public abstract void hide();
   

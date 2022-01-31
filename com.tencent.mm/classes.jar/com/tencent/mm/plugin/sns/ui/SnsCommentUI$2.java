@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.m.b;
-import com.tencent.mm.ui.tools.a.c;
+import com.tencent.mm.ui.tools.b.c;
 
 final class SnsCommentUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -12,15 +13,17 @@ final class SnsCommentUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (SnsCommentUI.a(this.oXZ) == 0) {
-      b.Ad();
+    AppMethodBeat.i(38917);
+    if (SnsCommentUI.a(this.rQs) == 0) {
+      b.MS();
     }
-    if (SnsCommentUI.a(this.oXZ) == 2) {}
-    for (int i = 200;; i = b.Ac())
+    if (SnsCommentUI.a(this.rQs) == 2) {}
+    for (int i = 200;; i = b.MR())
     {
-      paramMenuItem = c.d(SnsCommentUI.b(this.oXZ)).Ig(i);
-      paramMenuItem.wfM = true;
+      paramMenuItem = c.d(SnsCommentUI.b(this.rQs)).QS(i);
+      paramMenuItem.AyD = true;
       paramMenuItem.a(new SnsCommentUI.2.1(this));
+      AppMethodBeat.o(38917);
       return false;
     }
   }

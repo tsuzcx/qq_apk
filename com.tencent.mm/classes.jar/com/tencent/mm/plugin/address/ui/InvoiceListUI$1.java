@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class InvoiceListUI$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class InvoiceListUI$1
   
   public final void onClick(View paramView)
   {
-    InvoiceListUI.a(this.fuL);
+    AppMethodBeat.i(16857);
+    InvoiceListUI.a(this.gMn);
+    AppMethodBeat.o(16857);
   }
 }
 

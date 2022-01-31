@@ -7,33 +7,40 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.plugin.product.b.n.a;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
 import java.util.List;
 
 public final class l
   extends BaseAdapter
 {
   private Context mContext;
-  List<n.a> mUI;
+  List<n.a> pwN;
   
   public l(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private n.a vS(int paramInt)
+  private n.a Br(int paramInt)
   {
-    return (n.a)this.mUI.get(paramInt);
+    AppMethodBeat.i(44134);
+    n.a locala = (n.a)this.pwN.get(paramInt);
+    AppMethodBeat.o(44134);
+    return locala;
   }
   
   public final int getCount()
   {
-    if (this.mUI != null) {
-      return this.mUI.size();
+    AppMethodBeat.i(44133);
+    if (this.pwN != null)
+    {
+      int i = this.pwN.size();
+      AppMethodBeat.o(44133);
+      return i;
     }
+    AppMethodBeat.o(44133);
     return 0;
   }
   
@@ -44,22 +51,24 @@ public final class l
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject = vS(paramInt);
+    AppMethodBeat.i(44135);
+    Object localObject = Br(paramInt);
     if ((paramView == null) || (paramView.getTag() == null))
     {
       paramViewGroup = new m();
-      paramView = View.inflate(this.mContext, a.g.product_sold_out_cell, null);
-      paramViewGroup.eXr = ((TextView)paramView.findViewById(a.f.mall_product_sold_out_cell_price_iv));
-      paramViewGroup.heN = ((ImageView)paramView.findViewById(a.f.mall_product_sold_out_cell_img_iv));
+      paramView = View.inflate(this.mContext, 2130970456, null);
+      paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131826812));
+      paramViewGroup.iQd = ((ImageView)paramView.findViewById(2131826811));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.mUJ = ((n.a)localObject);
-      paramViewGroup.eXr.setText(((n.a)localObject).title);
+      paramViewGroup.pwO = ((n.a)localObject);
+      paramViewGroup.titleTv.setText(((n.a)localObject).title);
       localObject = x.a(new c(((n.a)localObject).iconUrl));
-      paramViewGroup.heN.setImageBitmap((Bitmap)localObject);
+      paramViewGroup.iQd.setImageBitmap((Bitmap)localObject);
       x.a(paramViewGroup);
+      AppMethodBeat.o(44135);
       return paramView;
       paramViewGroup = (m)paramView.getTag();
     }

@@ -1,5 +1,6 @@
 package com.tencent.wcdb.database;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.support.CancellationSignal;
 
 public final class SQLiteStatement
@@ -12,11 +13,14 @@ public final class SQLiteStatement
   
   public final void execute()
   {
+    AppMethodBeat.i(12629);
     execute(null);
+    AppMethodBeat.o(12629);
   }
   
   public final void execute(CancellationSignal paramCancellationSignal)
   {
+    AppMethodBeat.i(12630);
     acquireReference();
     try
     {
@@ -26,21 +30,27 @@ public final class SQLiteStatement
     catch (SQLiteException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
+      AppMethodBeat.o(12630);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
+      AppMethodBeat.o(12630);
     }
   }
   
   public final long executeInsert()
   {
-    return executeInsert(null);
+    AppMethodBeat.i(12633);
+    long l = executeInsert(null);
+    AppMethodBeat.o(12633);
+    return l;
   }
   
   public final long executeInsert(CancellationSignal paramCancellationSignal)
   {
+    AppMethodBeat.i(12634);
     acquireReference();
     try
     {
@@ -50,21 +60,27 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
+      AppMethodBeat.o(12634);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
+      AppMethodBeat.o(12634);
     }
   }
   
   public final int executeUpdateDelete()
   {
-    return executeUpdateDelete(null);
+    AppMethodBeat.i(12631);
+    int i = executeUpdateDelete(null);
+    AppMethodBeat.o(12631);
+    return i;
   }
   
   public final int executeUpdateDelete(CancellationSignal paramCancellationSignal)
   {
+    AppMethodBeat.i(12632);
     acquireReference();
     try
     {
@@ -74,21 +90,27 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
+      AppMethodBeat.o(12632);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
+      AppMethodBeat.o(12632);
     }
   }
   
   public final long simpleQueryForLong()
   {
-    return simpleQueryForLong(null);
+    AppMethodBeat.i(12635);
+    long l = simpleQueryForLong(null);
+    AppMethodBeat.o(12635);
+    return l;
   }
   
   public final long simpleQueryForLong(CancellationSignal paramCancellationSignal)
   {
+    AppMethodBeat.i(12636);
     acquireReference();
     try
     {
@@ -98,21 +120,27 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
+      AppMethodBeat.o(12636);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
+      AppMethodBeat.o(12636);
     }
   }
   
   public final String simpleQueryForString()
   {
-    return simpleQueryForString(null);
+    AppMethodBeat.i(12637);
+    String str = simpleQueryForString(null);
+    AppMethodBeat.o(12637);
+    return str;
   }
   
   public final String simpleQueryForString(CancellationSignal paramCancellationSignal)
   {
+    AppMethodBeat.i(12638);
     acquireReference();
     try
     {
@@ -122,17 +150,22 @@ public final class SQLiteStatement
     catch (SQLiteDatabaseCorruptException paramCancellationSignal)
     {
       checkCorruption(paramCancellationSignal);
+      AppMethodBeat.o(12638);
       throw paramCancellationSignal;
     }
     finally
     {
       releaseReference();
+      AppMethodBeat.o(12638);
     }
   }
   
   public final String toString()
   {
-    return "SQLiteProgram: " + getSql();
+    AppMethodBeat.i(12639);
+    String str = "SQLiteProgram: " + getSql();
+    AppMethodBeat.o(12639);
+    return str;
   }
 }
 

@@ -1,36 +1,16 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
-import android.os.Bundle;
-import android.os.Message;
-import android.widget.ProgressBar;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.widget.a.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 final class i$1
-  extends ah
+  implements DialogInterface.OnCancelListener
 {
   i$1(i parami) {}
   
-  public final void handleMessage(Message paramMessage)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (((i.a(this.fjd) != null) && (!i.a(this.fjd).isShowing())) || (i.b(this.fjd))) {}
-    do
-    {
-      return;
-      i.a(this.fjd, i.c(this.fjd) + 1);
-      i.d(this.fjd).setProgress(i.c(this.fjd));
-      if (i.c(this.fjd) < i.d(this.fjd).getMax() - 2)
-      {
-        sendEmptyMessageDelayed(0, 1000L);
-        return;
-      }
-      i.e(this.fjd);
-      i.d(this.fjd).setIndeterminate(true);
-    } while (i.f(this.fjd));
-    if (i.a(this.fjd) != null) {
-      i.a(this.fjd).dismiss();
-    }
-    i.a(this.fjd, new Bundle());
+    this.gAw.eUJ = true;
   }
 }
 

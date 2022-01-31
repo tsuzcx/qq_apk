@@ -7,14 +7,14 @@ import com.tencent.mm.ui.base.NoMeasuredTextView;
 
 public final class b$b
 {
-  public ImageView doU;
-  public TextView hZk;
-  public NoMeasuredTextView veJ;
-  public NoMeasuredTextView veK;
-  public NoMeasuredTextView veL;
-  public ImageView veM;
-  public ImageView veN;
-  public View veO;
+  public ImageView egq;
+  public TextView jSi;
+  public NoMeasuredTextView zti;
+  public NoMeasuredTextView ztj;
+  public NoMeasuredTextView ztk;
+  public ImageView ztl;
+  public ImageView ztm;
+  public View ztn;
 }
 
 

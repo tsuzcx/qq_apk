@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 
 public final class m
   extends n
@@ -8,7 +8,7 @@ public final class m
   public static final int CTRL_INDEX = 496;
   public static final String NAME = "setGlobalStorage";
   
-  protected final String o(c paramc)
+  protected final String c(h paramh)
   {
     return "wxGlobal";
   }

@@ -4,57 +4,56 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.n.c;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
-import com.tencent.mm.plugin.fav.ui.n.h;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yl;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acs;
 
 public final class d
   extends a
 {
-  private static int kiw;
+  private static int mDa;
   
   public d(l paraml)
   {
     super(paraml);
-    kiw = com.tencent.mm.cb.a.aa(paraml.context, n.c.FavImageSize);
+    AppMethodBeat.i(74620);
+    mDa = com.tencent.mm.cb.a.ao(paraml.context, 2131427653);
+    AppMethodBeat.o(74620);
   }
   
   public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
   {
+    AppMethodBeat.i(74621);
     Object localObject = paramViewGroup.getContext();
     if (paramView == null)
     {
-      paramViewGroup = new a();
-      paramView = a(View.inflate((Context)localObject, n.f.fav_listitem_image, null), paramViewGroup, paramg);
-      paramViewGroup.kix = ((ImageView)paramView.findViewById(n.e.fav_image));
+      paramViewGroup = new d.a();
+      paramView = a(View.inflate((Context)localObject, 2130969544, null), paramViewGroup, paramg);
+      paramViewGroup.mDc = ((ImageView)paramView.findViewById(2131824033));
     }
     for (;;)
     {
       a(paramViewGroup, paramg);
       localObject = b.c(paramg);
-      l.a(paramViewGroup.kix, n.h.fav_list_img_default, (xv)localObject, paramg, false, kiw, kiw);
+      paramViewGroup = paramViewGroup.mDc;
+      int i = mDa;
+      l.a(paramViewGroup, (aca)localObject, paramg, false, i, i);
+      AppMethodBeat.o(74621);
       return paramView;
-      paramViewGroup = (a)paramView.getTag();
+      paramViewGroup = (d.a)paramView.getTag();
     }
   }
   
-  public final void a(View paramView, yl paramyl)
+  public final void a(View paramView, acs paramacs)
   {
-    a locala = (a)paramView.getTag();
+    AppMethodBeat.i(74622);
+    d.a locala = (d.a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.r(y.class)).a(paramView, locala.jZN, paramyl);
-  }
-  
-  public static final class a
-    extends a.b
-  {
-    ImageView kix;
+    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
+    AppMethodBeat.o(74622);
   }
 }
 

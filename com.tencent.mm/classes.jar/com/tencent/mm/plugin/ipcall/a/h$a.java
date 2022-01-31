@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.ipcall.a;
 
-import com.tencent.mm.protocal.c.bgb;
+import com.tencent.mm.protocal.protobuf.boh;
 
 public abstract interface h$a
 {
-  public abstract void a(bgb parambgb);
+  public abstract void a(boh paramboh);
 }
 
 

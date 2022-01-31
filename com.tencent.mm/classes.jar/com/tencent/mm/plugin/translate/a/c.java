@@ -1,15 +1,12 @@
 package com.tencent.mm.plugin.translate.a;
 
 import android.util.SparseArray;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.s;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.byz;
-import com.tencent.mm.protocal.c.bza;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.clt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,38 +18,47 @@ import java.util.Set;
 public final class c
   implements a
 {
-  public ArrayList<c.a> dFz = new ArrayList(1);
-  public int iks = 0;
-  public final d[] pKD = new d[1];
-  public Queue<c.c> pKE = new LinkedList();
-  public HashMap<String, Integer> pKF = new HashMap();
+  public ArrayList<c.a> eDb;
+  public int evn;
+  public final d[] toQ;
+  public Queue<c.c> toR;
+  public HashMap<String, Integer> toS;
+  
+  private c()
+  {
+    AppMethodBeat.i(26063);
+    this.evn = 0;
+    this.eDb = new ArrayList(1);
+    this.toR = new LinkedList();
+    this.toS = new HashMap();
+    this.toQ = new d[1];
+    AppMethodBeat.o(26063);
+  }
   
   private void b(int paramInt, SparseArray<c.c> paramSparseArray)
   {
-    Iterator localIterator = this.dFz.iterator();
+    AppMethodBeat.i(26064);
+    Iterator localIterator = this.eDb.iterator();
     while (localIterator.hasNext()) {
       ((c.a)localIterator.next()).a(paramInt, paramSparseArray);
     }
+    AppMethodBeat.o(26064);
   }
   
-  public final boolean PT(String paramString)
+  public final void a(int paramInt, SparseArray<c.c> paramSparseArray, LinkedList<clt> paramLinkedList)
   {
-    return this.pKF.containsKey(paramString);
-  }
-  
-  public final void a(int paramInt, SparseArray<c.c> paramSparseArray, LinkedList<bza> paramLinkedList)
-  {
-    this.iks -= 1;
+    AppMethodBeat.i(26067);
+    this.evn -= 1;
     Object localObject;
     int i;
     if ((paramLinkedList == null) || (paramSparseArray.size() != paramLinkedList.size()))
     {
-      y.d("MicroMsg.TranslateServiceManager", "originals.size() != translatedMsg.size()");
+      ab.d("MicroMsg.TranslateServiceManager", "originals.size() != translatedMsg.size()");
       localObject = new HashMap();
       i = 0;
       while (i < paramSparseArray.size())
       {
-        ((HashMap)localObject).put(((c.c)paramSparseArray.valueAt(i)).id, Integer.valueOf(((c.c)paramSparseArray.valueAt(i)).pKI));
+        ((HashMap)localObject).put(((c.c)paramSparseArray.valueAt(i)).id, Integer.valueOf(((c.c)paramSparseArray.valueAt(i)).toU));
         i += 1;
       }
     }
@@ -61,159 +67,104 @@ public final class c
       if (paramLinkedList != null)
       {
         Iterator localIterator = paramLinkedList.iterator();
-        if (localIterator.hasNext())
+        clt localclt;
+        c.c localc;
+        for (;;)
         {
-          bza localbza = (bza)localIterator.next();
-          c.c localc = (c.c)paramSparseArray.get(localbza.tPa);
-          String str = localbza.tPd;
-          paramLinkedList = str;
-          if (localc.type == 1)
-          {
-            paramLinkedList = bd.Z(str, localc.pKJ);
-            localc.cbK = bd.Z(localc.cbK, localc.pKJ);
+          if (!localIterator.hasNext()) {
+            break label408;
           }
-          localc.cbR = paramLinkedList;
-          localc.ret = localbza.sze;
-          localc.cad = localbza.tPe;
-          if ((localbza.sZU != null) && (localbza.sZU.tFM != null)) {}
-          for (paramLinkedList = localbza.sZU.tFM.oY;; paramLinkedList = null)
-          {
-            localc.cQQ = paramLinkedList;
-            localc.pKH = localbza.tPf;
-            this.pKF.remove(localc.id);
-            if (localObject == null) {
-              break;
-            }
-            ((HashMap)localObject).remove(localc.id);
+          localclt = (clt)localIterator.next();
+          localc = (c.c)paramSparseArray.get(localclt.xVJ);
+          if (localc != null) {
             break;
           }
+          ab.w("MicroMsg.TranslateServiceManager", "[onTranslateEnd] message is null! %s %s %s", new Object[] { Integer.valueOf(localclt.xVJ), Integer.valueOf(localclt.Ret), bo.aqg(localclt.xVM) });
         }
-      }
-      else
-      {
-        i = 0;
-        while (i < paramSparseArray.size())
+        String str = localclt.xVM;
+        paramLinkedList = str;
+        if (localc.type == 1)
         {
-          paramLinkedList = (c.c)paramSparseArray.valueAt(i);
-          if (paramLinkedList.type == 1) {
-            paramLinkedList.cbK = bd.Z(paramLinkedList.cbK, paramLinkedList.pKJ);
+          paramLinkedList = bf.ap(str, localc.toV);
+          localc.cKn = bf.ap(localc.cKn, localc.toV);
+        }
+        localc.cKw = paramLinkedList;
+        localc.ret = localclt.Ret;
+        localc.cID = localclt.xVN;
+        if ((localclt.wYl != null) && (localclt.wYl.getBuffer() != null)) {}
+        for (paramLinkedList = localclt.wYl.getBufferToBytes();; paramLinkedList = null)
+        {
+          localc.dHc = paramLinkedList;
+          localc.cKx = localclt.xVO;
+          this.toS.remove(localc.id);
+          if (localObject == null) {
+            break;
           }
-          i += 1;
+          ((HashMap)localObject).remove(localc.id);
+          break;
         }
       }
+      i = 0;
+      while (i < paramSparseArray.size())
+      {
+        paramLinkedList = (c.c)paramSparseArray.valueAt(i);
+        if (paramLinkedList.type == 1) {
+          paramLinkedList.cKn = bf.ap(paramLinkedList.cKn, paramLinkedList.toV);
+        }
+        i += 1;
+      }
+      label408:
       if ((localObject != null) && (((HashMap)localObject).size() > 0))
       {
         paramLinkedList = ((HashMap)localObject).entrySet().iterator();
         while (paramLinkedList.hasNext())
         {
           localObject = (Map.Entry)paramLinkedList.next();
-          this.pKF.remove(((Map.Entry)localObject).getKey());
-          y.d("MicroMsg.TranslateServiceManager", "we found missing translate, msgId : %s, clientId : %s", new Object[] { ((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue() });
+          this.toS.remove(((Map.Entry)localObject).getKey());
+          ab.d("MicroMsg.TranslateServiceManager", "we found missing translate, msgId : %s, clientId : %s", new Object[] { ((Map.Entry)localObject).getKey(), ((Map.Entry)localObject).getValue() });
         }
       }
       b(paramInt, paramSparseArray);
-      bOW();
+      cKT();
+      AppMethodBeat.o(26067);
       return;
       localObject = null;
     }
   }
   
-  public final void bOW()
+  public final boolean aew(String paramString)
   {
-    y.d("MicroMsg.TranslateServiceManager", "current waitings : %s", new Object[] { Integer.valueOf(this.pKE.size()) });
-    if (this.pKE.size() == 0) {}
-    while (this.iks > this.pKD.length) {
-      return;
-    }
-    int j = 0;
-    label53:
-    d locald;
-    Queue localQueue;
-    int i;
-    if (j < this.pKD.length)
-    {
-      if (this.pKD[j] == null)
-      {
-        this.pKD[j] = new d(j, this);
-        locald = this.pKD[j];
-        au.Dk().a(631, locald);
-      }
-      if (!this.pKD[j].pKM)
-      {
-        locald = this.pKD[j];
-        localQueue = this.pKE;
-        if (!locald.pKM) {
-          break label162;
-        }
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (i != 0) {
-        this.iks += 1;
-      }
-      j += 1;
-      break label53;
-      break;
-      label162:
-      locald.pKL = new SparseArray();
-      if (localQueue.size() == 0)
-      {
-        i = 0;
-      }
-      else
-      {
-        locald.pKM = true;
-        LinkedList localLinkedList = new LinkedList();
-        i = 0;
-        if ((i < 512) && (localQueue.size() > 0))
-        {
-          c.c localc = (c.c)localQueue.peek();
-          int k = localc.cbK.getBytes().length;
-          byz localbyz;
-          if ((i == 0) || (i + k <= 512))
-          {
-            localQueue.poll();
-            localbyz = new byz();
-            localbyz.tPa = localc.pKI;
-            localbyz.tPb = localc.cbK;
-            localbyz.sZU = new bmk().bs(localc.cQQ);
-            if ((localc.type == 1) || (s.fn(localc.aWf))) {
-              localbyz.tPc = localc.aWf;
-            }
-            switch (localc.type)
-            {
-            }
-          }
-          for (;;)
-          {
-            y.d("MicroMsg.WorkingTranslate", "eventMsg.type: %d, msg.Scene:%d, id: %s", new Object[] { Integer.valueOf(localc.type), Integer.valueOf(localbyz.pyo), localc.id });
-            localLinkedList.add(localbyz);
-            locald.pKL.put(localc.pKI, localc);
-            i += k;
-            break;
-            localbyz.pyo = 4;
-            continue;
-            localbyz.pyo = 1;
-            continue;
-            localbyz.pyo = 2;
-            continue;
-            localbyz.pyo = 3;
-          }
-        }
-        locald.pKN = new b(localLinkedList);
-        au.Dk().a(locald.pKN, 0);
-        locald.start = System.currentTimeMillis();
-        locald.pKP.S(60000L, 60000L);
-        i = 1;
-      }
-    }
+    AppMethodBeat.i(26066);
+    boolean bool = this.toS.containsKey(paramString);
+    AppMethodBeat.o(26066);
+    return bool;
   }
   
-  private static final class b
+  public final void cKT()
   {
-    public static final c pKG = new c((byte)0);
+    int i = 0;
+    AppMethodBeat.i(26065);
+    ab.d("MicroMsg.TranslateServiceManager", "current waitings : %s", new Object[] { Integer.valueOf(this.toR.size()) });
+    if (this.toR.size() == 0)
+    {
+      AppMethodBeat.o(26065);
+      return;
+    }
+    if (this.evn <= this.toQ.length) {
+      while (i < this.toQ.length)
+      {
+        if (this.toQ[i] == null)
+        {
+          this.toQ[i] = new d(i, this);
+          this.toQ[i].init();
+        }
+        if ((!this.toQ[i].toY) && (this.toQ[i].e(this.toR))) {
+          this.evn += 1;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(26065);
   }
 }
 

@@ -1,30 +1,39 @@
 package com.google.android.gms.common;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import java.lang.ref.WeakReference;
 
-public class zzc
-  extends zza
+abstract class zzc
+  extends GoogleCertificates.CertData
 {
-  public static final Parcelable.Creator<zzc> CREATOR = new zzd();
-  public final String name;
-  public final int version;
+  private static final WeakReference<byte[]> zzbf = new WeakReference(null);
+  private WeakReference<byte[]> zzbe = zzbf;
   
-  public zzc(String paramString, int paramInt)
+  zzc(byte[] paramArrayOfByte)
   {
-    this.name = paramString;
-    this.version = paramInt;
+    super(paramArrayOfByte);
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  final byte[] getBytes()
   {
-    zzd.zza(this, paramParcel, paramInt);
+    try
+    {
+      byte[] arrayOfByte2 = (byte[])this.zzbe.get();
+      byte[] arrayOfByte1 = arrayOfByte2;
+      if (arrayOfByte2 == null)
+      {
+        arrayOfByte1 = zzf();
+        this.zzbe = new WeakReference(arrayOfByte1);
+      }
+      return arrayOfByte1;
+    }
+    finally {}
   }
+  
+  protected abstract byte[] zzf();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.zzc
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,9 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.clean.c.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 final class CleanMsgUI$2
@@ -15,7 +14,9 @@ final class CleanMsgUI$2
   
   public final void onClick(View paramView)
   {
-    h.a(this.iDv, this.iDv.getString(R.l.clean_other_acc_tips, new Object[] { bk.ht(j.aEb().iBm) }), "", this.iDv.getString(R.l.app_ok), this.iDv.getString(R.l.app_cancel), new CleanMsgUI.2.1(this), null, R.e.red);
+    AppMethodBeat.i(18799);
+    h.a(this.kIC, this.kIC.getString(2131298391, new Object[] { bo.nV(j.bhb().kGt) }), "", this.kIC.getString(2131297018), this.kIC.getString(2131296888), new CleanMsgUI.2.1(this), null, 2131690391);
+    AppMethodBeat.o(18799);
   }
 }
 

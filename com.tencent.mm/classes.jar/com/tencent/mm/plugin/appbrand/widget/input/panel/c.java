@@ -3,38 +3,49 @@ package com.tencent.mm.plugin.appbrand.widget.input.panel;
 import android.content.Context;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public class c
 {
-  boolean hxQ = false;
-  b hxS;
-  f hxT;
-  int hxU;
-  int hxV;
-  Context hxz;
+  Context jpJ;
+  boolean jqa = false;
+  b jqc;
+  f jqd;
+  int jqe;
+  int jqf;
   
-  public static int[] api()
+  public static int[] aMu()
   {
-    Display localDisplay = ((WindowManager)ae.getContext().getSystemService("window")).getDefaultDisplay();
-    return new int[] { localDisplay.getWidth(), localDisplay.getHeight() };
+    AppMethodBeat.i(134331);
+    Display localDisplay = ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay();
+    int i = localDisplay.getWidth();
+    int j = localDisplay.getHeight();
+    AppMethodBeat.o(134331);
+    return new int[] { i, j };
   }
   
-  public final a asJ()
+  public final a aRO()
   {
-    if (this.hxS == null)
+    AppMethodBeat.i(134330);
+    if (this.jqc == null)
     {
-      this.hxS = new b();
-      this.hxS.hxz = this.hxz;
-      this.hxS.setPanelManager(this);
+      this.jqc = new b();
+      this.jqc.jpJ = this.jpJ;
+      this.jqc.setPanelManager(this);
     }
-    return this.hxS;
+    b localb = this.jqc;
+    AppMethodBeat.o(134330);
+    return localb;
   }
   
-  public e asu()
+  protected e aRy()
   {
-    return e.csH();
+    AppMethodBeat.i(134332);
+    e locale = e.dve();
+    AppMethodBeat.o(134332);
+    return locale;
   }
 }
 

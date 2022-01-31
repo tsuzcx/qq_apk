@@ -1,28 +1,28 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.modelvideo.s;
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e.e;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$6
-  implements Runnable
+  implements e.e
 {
-  j$6(j paramj, int paramInt) {}
+  j$6(j paramj) {}
   
-  public final void run()
+  public final void bSk()
   {
-    Object localObject = j.a(this.vwT);
-    int i = this.gAv;
-    localObject = u.oe((String)localObject);
-    if (localObject != null)
+    AppMethodBeat.i(32321);
+    ab.i("MicroMsg.Imagegallery.handler.video", "%d on texture update.", new Object[] { Integer.valueOf(this.zNd.hashCode()) });
+    try
     {
-      int j = ((s)localObject).eHH;
-      if ((j <= 0) || (Math.abs(j - i) > 2))
-      {
-        ((s)localObject).eHH = i;
-        ((s)localObject).bcw = 4096;
-        y.i("MicroMsg.VideoLogic", "repair video duration ret %b, duration[%d, %d]", new Object[] { Boolean.valueOf(u.f((s)localObject)), Integer.valueOf(j), Integer.valueOf(i) });
-      }
+      this.zNd.zJI.dJY().a(true, 1.0F);
+      AppMethodBeat.o(32321);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.Imagegallery.handler.video", "texture view update. error " + localException.toString());
+      AppMethodBeat.o(32321);
     }
   }
 }

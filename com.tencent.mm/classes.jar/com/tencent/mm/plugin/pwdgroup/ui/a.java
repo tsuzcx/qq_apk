@@ -7,69 +7,94 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.pwdgroup.b.a;
-import com.tencent.mm.protocal.c.xr;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.abw;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class a
   extends BaseAdapter
 {
-  private LinkedList<xr> hkd = new LinkedList();
-  private Animation lwn;
+  private LinkedList<abw> lqf;
   private Context mContext;
-  private Animation nbx;
-  private Animation nby;
-  private HashMap<String, Boolean> nbz = new HashMap();
+  private Animation nTC;
+  private Animation pGP;
+  private Animation pGQ;
+  private HashMap<String, Boolean> pGR;
   
   public a(Context paramContext)
   {
+    AppMethodBeat.i(24033);
+    this.lqf = new LinkedList();
+    this.pGR = new HashMap();
     this.mContext = paramContext;
-    this.lwn = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
-    this.nby = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_in);
-    this.nbx = AnimationUtils.loadAnimation(this.mContext, R.a.alpha_out);
-    this.lwn.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.nby.setInterpolator(new AccelerateInterpolator());
-    this.nbx.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.lwn.setDuration(300L);
-    this.nby.setDuration(1000L);
-    this.nbx.setDuration(1000L);
+    this.nTC = AnimationUtils.loadAnimation(this.mContext, 2131034125);
+    this.pGQ = AnimationUtils.loadAnimation(this.mContext, 2131034125);
+    this.pGP = AnimationUtils.loadAnimation(this.mContext, 2131034126);
+    this.nTC.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.pGQ.setInterpolator(new AccelerateInterpolator());
+    this.pGP.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.nTC.setDuration(300L);
+    this.pGQ.setDuration(1000L);
+    this.pGP.setDuration(1000L);
+    AppMethodBeat.o(24033);
   }
   
-  private static String a(xr paramxr)
+  private static String a(abw paramabw)
   {
-    if (paramxr == null) {
+    AppMethodBeat.i(24038);
+    if (paramabw == null)
+    {
+      AppMethodBeat.o(24038);
       return "";
     }
-    if (bk.bl(paramxr.hPY)) {
-      return paramxr.sUr;
+    if (bo.isNullOrNil(paramabw.jJA))
+    {
+      paramabw = paramabw.wSo;
+      AppMethodBeat.o(24038);
+      return paramabw;
     }
-    return paramxr.hPY;
+    paramabw = paramabw.jJA;
+    AppMethodBeat.o(24038);
+    return paramabw;
   }
   
   public final int getCount()
   {
-    if (this.hkd == null) {
+    AppMethodBeat.i(24035);
+    if (this.lqf == null)
+    {
+      AppMethodBeat.o(24035);
       return 1;
     }
-    return this.hkd.size() + 1;
+    int i = this.lqf.size();
+    AppMethodBeat.o(24035);
+    return i + 1;
   }
   
   public final Object getItem(int paramInt)
   {
-    if (this.hkd == null) {}
-    while (paramInt >= this.hkd.size()) {
+    AppMethodBeat.i(24036);
+    if (this.lqf == null)
+    {
+      AppMethodBeat.o(24036);
       return null;
     }
-    return this.hkd.get(paramInt);
+    if (paramInt >= this.lqf.size())
+    {
+      AppMethodBeat.o(24036);
+      return null;
+    }
+    Object localObject = this.lqf.get(paramInt);
+    AppMethodBeat.o(24036);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -77,76 +102,92 @@ public final class a
     return paramInt;
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final View getView(int paramInt, final View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(24037);
     Object localObject;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(R.i.facing_create_chatroom_detail_item, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(2130969523, null);
       paramViewGroup = new a.a(this, paramView);
       paramView.setTag(paramViewGroup);
-      localObject = (xr)getItem(paramInt);
+      localObject = (abw)getItem(paramInt);
       if (localObject != null)
       {
-        if (!bk.bl(((xr)localObject).hRf)) {
-          break label251;
+        if (!bo.isNullOrNil(((abw)localObject).jKG)) {
+          break label260;
         }
-        paramViewGroup.fcy.setText(((xr)localObject).hPY);
-        label79:
-        if (bk.bl(((xr)localObject).hPY)) {
-          break label266;
+        paramViewGroup.gui.setText(((abw)localObject).jJA);
+        label84:
+        if (bo.isNullOrNil(((abw)localObject).jJA)) {
+          break label275;
         }
-        b.a.a(paramViewGroup.hic, ((xr)localObject).hPY);
+        b.a.c(paramViewGroup.iTH, ((abw)localObject).jJA);
       }
     }
     for (;;)
     {
-      localObject = a((xr)localObject);
+      localObject = a((abw)localObject);
       paramView.clearAnimation();
-      if ((this.nbz.containsKey(localObject)) && (!((Boolean)this.nbz.get(localObject)).booleanValue()))
+      if ((this.pGR.containsKey(localObject)) && (!((Boolean)this.pGR.get(localObject)).booleanValue()))
       {
-        paramView.startAnimation(this.lwn);
-        this.nbz.put(localObject, Boolean.valueOf(true));
+        paramView.startAnimation(this.nTC);
+        this.pGR.put(localObject, Boolean.TRUE);
       }
       if (paramInt + 1 == getCount())
       {
-        paramViewGroup.fcy.setText("");
-        paramViewGroup.hic.setImageResource(R.g.account_avatar_bg_pwd);
+        paramViewGroup.gui.setText("");
+        paramViewGroup.iTH.setImageResource(2130837611);
         if (paramView != null)
         {
-          this.nby.setAnimationListener(new a.1(this, paramView));
-          this.nbx.setAnimationListener(new a.2(this, paramView));
-          paramView.startAnimation(this.nby);
+          this.pGQ.setAnimationListener(new a.1(this, paramView));
+          this.pGP.setAnimationListener(new Animation.AnimationListener()
+          {
+            public final void onAnimationEnd(Animation paramAnonymousAnimation)
+            {
+              AppMethodBeat.i(24031);
+              paramView.startAnimation(a.b(a.this));
+              AppMethodBeat.o(24031);
+            }
+            
+            public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+            
+            public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+          });
+          paramView.startAnimation(this.pGQ);
         }
       }
+      AppMethodBeat.o(24037);
       return paramView;
       paramViewGroup = (a.a)paramView.getTag();
       break;
-      label251:
-      paramViewGroup.fcy.setText(((xr)localObject).hRf);
-      break label79;
-      label266:
-      b.a.a(paramViewGroup.hic, ((xr)localObject).sUr);
+      label260:
+      paramViewGroup.gui.setText(((abw)localObject).jKG);
+      break label84;
+      label275:
+      b.a.c(paramViewGroup.iTH, ((abw)localObject).wSo);
     }
   }
   
-  public final void setData(LinkedList<xr> paramLinkedList)
+  public final void setData(LinkedList<abw> paramLinkedList)
   {
-    this.hkd = paramLinkedList;
-    if ((this.hkd != null) && (this.hkd.size() > 0))
+    AppMethodBeat.i(24034);
+    this.lqf = paramLinkedList;
+    if ((this.lqf != null) && (this.lqf.size() > 0))
     {
-      int j = this.hkd.size();
+      int j = this.lqf.size();
       int i = 0;
       while (i < j)
       {
-        paramLinkedList = a((xr)this.hkd.get(i));
-        if (!this.nbz.containsKey(paramLinkedList)) {
-          this.nbz.put(paramLinkedList, Boolean.valueOf(false));
+        paramLinkedList = a((abw)this.lqf.get(i));
+        if (!this.pGR.containsKey(paramLinkedList)) {
+          this.pGR.put(paramLinkedList, Boolean.FALSE);
         }
         i += 1;
       }
     }
     notifyDataSetChanged();
+    AppMethodBeat.o(24034);
   }
 }
 

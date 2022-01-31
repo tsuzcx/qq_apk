@@ -4,33 +4,42 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.PointF;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.af;
+import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
-  extends af
+  extends ae
 {
-  private final LinearLayoutManager hjT;
-  private final int hjU;
-  private final int hjV;
+  private final LinearLayoutManager iVA;
+  private final int iVB;
+  private final int iVC;
   
   public p(Context paramContext, LinearLayoutManager paramLinearLayoutManager)
   {
     super(paramContext);
-    this.hjT = paramLinearLayoutManager;
-    this.hjU = 3000;
-    this.hjV = Math.round(paramContext.getResources().getDisplayMetrics().heightPixels * 0.75F);
+    AppMethodBeat.i(133541);
+    this.iVA = paramLinearLayoutManager;
+    this.iVB = 3000;
+    this.iVC = Math.round(paramContext.getResources().getDisplayMetrics().heightPixels * 0.75F);
+    AppMethodBeat.o(133541);
   }
   
-  public final PointF bD(int paramInt)
+  public final PointF bI(int paramInt)
   {
-    return this.hjT.bD(paramInt);
+    AppMethodBeat.i(133543);
+    PointF localPointF = this.iVA.bI(paramInt);
+    AppMethodBeat.o(133543);
+    return localPointF;
   }
   
-  protected final int bH(int paramInt)
+  public final int bM(int paramInt)
   {
-    paramInt = Math.min(this.hjU, paramInt);
-    return super.bH(Math.max(this.hjV, paramInt));
+    AppMethodBeat.i(133542);
+    paramInt = Math.min(this.iVB, paramInt);
+    paramInt = super.bM(Math.max(this.iVC, paramInt));
+    AppMethodBeat.o(133542);
+    return paramInt;
   }
 }
 

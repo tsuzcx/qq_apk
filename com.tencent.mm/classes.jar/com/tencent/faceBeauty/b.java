@@ -3,7 +3,7 @@ package com.tencent.faceBeauty;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
-import com.tencent.util.g;
+import com.tencent.util.i;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +11,12 @@ public abstract class b
 {
   public static final int FACE_FEATURE_NUM = 83;
   public static final String TAG = "FaceDetect";
-  public int faceCount = 0;
-  public boolean mDetectedFace;
+  protected int faceCount = 0;
+  protected boolean mDetectedFace;
   public List<FaceParam> mFaceParams = new ArrayList();
-  public List<Boolean> mFemale = new ArrayList();
-  public boolean mGetFaceFeatures = false;
-  public boolean mGetFaceGender = false;
+  protected List<Boolean> mFemale = new ArrayList();
+  protected boolean mGetFaceFeatures = false;
+  protected boolean mGetFaceGender = false;
   
   public static Rect boundingRect(int[][] paramArrayOfInt, int paramInt1, int paramInt2)
   {
@@ -75,7 +75,7 @@ public abstract class b
   {
     long l = System.currentTimeMillis();
     doDetectFace(paramBitmap);
-    g.h("FaceDetect", "detectFace() :" + (System.currentTimeMillis() - l));
+    i.l("FaceDetect", "detectFace() :" + (System.currentTimeMillis() - l));
   }
   
   public final boolean detectedFace()
@@ -83,18 +83,18 @@ public abstract class b
     return this.mDetectedFace;
   }
   
-  public abstract void doDetectFace(Bitmap paramBitmap);
+  protected abstract void doDetectFace(Bitmap paramBitmap);
   
-  public abstract void doInitial();
+  protected abstract void doInitial();
   
-  public abstract void doRelease();
+  protected abstract void doRelease();
   
   public Rect getEyes(int paramInt)
   {
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bcs;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsU;
   }
   
   public int getFaceCount()
@@ -107,7 +107,7 @@ public abstract class b
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bcu;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsW;
   }
   
   public boolean getFaceFemale(int paramInt)
@@ -131,7 +131,7 @@ public abstract class b
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bcn;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsP;
   }
   
   public Point getLeftEyeCenters(int paramInt)
@@ -139,7 +139,7 @@ public abstract class b
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bcq;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsS;
   }
   
   public Rect getLeftEyes(int paramInt)
@@ -147,7 +147,7 @@ public abstract class b
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bco;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsQ;
   }
   
   public Rect getMouths(int paramInt)
@@ -155,7 +155,7 @@ public abstract class b
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bct;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsV;
   }
   
   public Point getRightEyeCenters(int paramInt)
@@ -163,7 +163,7 @@ public abstract class b
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bcr;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsT;
   }
   
   public Rect getRightEyes(int paramInt)
@@ -171,7 +171,7 @@ public abstract class b
     if (paramInt > this.mFaceParams.size() - 1) {
       return null;
     }
-    return ((FaceParam)this.mFaceParams.get(paramInt)).bcp;
+    return ((FaceParam)this.mFaceParams.get(paramInt)).bsR;
   }
   
   public void needDetectFaceFeatures(boolean paramBoolean)
@@ -201,40 +201,40 @@ public abstract class b
         float f2 = paramInt2 / localFaceParam.height;
         localFaceParam.height = ((int)(localFaceParam.height * f2));
         localFaceParam.width = ((int)(localFaceParam.width * f1));
-        Object localObject = localFaceParam.bcn;
+        Object localObject = localFaceParam.bsP;
         ((Rect)localObject).left = ((int)(((Rect)localObject).left * f1));
         ((Rect)localObject).top = ((int)(((Rect)localObject).top * f2));
         ((Rect)localObject).right = ((int)(((Rect)localObject).right * f1));
         ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom * f2));
-        localObject = localFaceParam.bco;
+        localObject = localFaceParam.bsQ;
         ((Rect)localObject).left = ((int)(((Rect)localObject).left * f1));
         ((Rect)localObject).top = ((int)(((Rect)localObject).top * f2));
         ((Rect)localObject).right = ((int)(((Rect)localObject).right * f1));
         ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom * f2));
-        localObject = localFaceParam.bcq;
+        localObject = localFaceParam.bsS;
         ((Point)localObject).x = ((int)(((Point)localObject).x * f1));
         ((Point)localObject).y = ((int)(((Point)localObject).y * f2));
-        localObject = localFaceParam.bcp;
+        localObject = localFaceParam.bsR;
         ((Rect)localObject).left = ((int)(((Rect)localObject).left * f1));
         ((Rect)localObject).top = ((int)(((Rect)localObject).top * f2));
         ((Rect)localObject).right = ((int)(((Rect)localObject).right * f1));
         ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom * f2));
-        localObject = localFaceParam.bcr;
+        localObject = localFaceParam.bsT;
         ((Point)localObject).x = ((int)(((Point)localObject).x * f1));
         ((Point)localObject).y = ((int)(((Point)localObject).y * f2));
-        localObject = localFaceParam.bcs;
+        localObject = localFaceParam.bsU;
         ((Rect)localObject).left = ((int)(((Rect)localObject).left * f1));
         ((Rect)localObject).top = ((int)(((Rect)localObject).top * f2));
         ((Rect)localObject).right = ((int)(((Rect)localObject).right * f1));
         ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom * f2));
-        localObject = localFaceParam.bct;
+        localObject = localFaceParam.bsV;
         ((Rect)localObject).left = ((int)(((Rect)localObject).left * f1));
         ((Rect)localObject).top = ((int)(((Rect)localObject).top * f2));
         ((Rect)localObject).right = ((int)(((Rect)localObject).right * f1));
         ((Rect)localObject).bottom = ((int)(((Rect)localObject).bottom * f2));
-        if (localFaceParam.bcu != null)
+        if (localFaceParam.bsW != null)
         {
-          localObject = localFaceParam.bcu;
+          localObject = localFaceParam.bsW;
           int j = 0;
           while (j < localObject.length)
           {
@@ -252,7 +252,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.faceBeauty.b
  * JD-Core Version:    0.7.0.1
  */

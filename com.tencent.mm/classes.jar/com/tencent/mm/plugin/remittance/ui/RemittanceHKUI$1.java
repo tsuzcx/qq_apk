@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.remittance.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class RemittanceHKUI$1
   implements View.OnClickListener
@@ -16,14 +15,16 @@ final class RemittanceHKUI$1
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.RemittanceHKUI", "hy: on click banner");
-    if (!bk.bl(RemittanceHKUI.a(this.nDW)))
+    AppMethodBeat.i(45073);
+    ab.i("MicroMsg.RemittanceHKUI", "hy: on click banner");
+    if (!bo.isNullOrNil(RemittanceHKUI.a(this.qqP)))
     {
       paramView = new Intent();
-      paramView.putExtra("rawUrl", RemittanceHKUI.a(this.nDW));
+      paramView.putExtra("rawUrl", RemittanceHKUI.a(this.qqP));
       paramView.putExtra("showShare", false);
-      d.b(this.nDW.mController.uMN, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
+      d.b(this.qqP.getContext(), "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", paramView);
     }
+    AppMethodBeat.o(45073);
   }
 }
 

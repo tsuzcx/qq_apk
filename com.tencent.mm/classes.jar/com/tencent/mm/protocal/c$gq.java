@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$gq
+final class c$gq
   extends c.g
 {
-  public c$gq()
+  c$gq()
   {
-    super("removeVideoPlayer", "", 10000, false);
+    super("opVoteAdData", "", -2, false);
   }
 }
 

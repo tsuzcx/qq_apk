@@ -7,104 +7,124 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 
 public final class e
 {
-  private ImageView bQf;
-  private MMActivity hxN;
-  View iqg;
-  b iqh;
-  protected LinearLayout iqi;
-  protected LinearLayout iqj;
-  private TextView iqk;
+  private ImageView cxy;
+  private MMActivity jpX;
+  View kro;
+  b krp;
+  protected LinearLayout krq;
+  protected LinearLayout krr;
+  private TextView krs;
   
   public e(MMActivity paramMMActivity)
   {
-    this.hxN = paramMMActivity;
+    this.jpX = paramMMActivity;
   }
   
-  private void aBd()
+  private void bcN()
   {
-    this.iqi.setVisibility(8);
-    this.iqj.setVisibility(8);
+    AppMethodBeat.i(88151);
+    this.krq.setVisibility(8);
+    this.krr.setVisibility(8);
+    AppMethodBeat.o(88151);
   }
   
-  public final void aBa()
+  private void bcQ()
   {
-    if (this.iqg == null)
-    {
-      this.iqg = View.inflate(this.hxN, a.e.card_othercity_footer, null);
-      this.bQf = ((ImageView)this.iqg.findViewById(a.d.album_next_progress));
-      this.iqk = ((TextView)this.iqg.findViewById(a.d.show_other_city));
-      this.iqi = ((LinearLayout)this.iqg.findViewById(a.d.loading_more_state));
-      this.iqj = ((LinearLayout)this.iqg.findViewById(a.d.loading_end));
-      this.iqi.setVisibility(8);
-      this.iqj.setVisibility(8);
-      RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
-      localRotateAnimation.setDuration(1000L);
-      localRotateAnimation.setRepeatCount(-1);
-      localRotateAnimation.setInterpolator(new LinearInterpolator());
-      this.bQf.startAnimation(localRotateAnimation);
-    }
-    aZ();
+    AppMethodBeat.i(88154);
+    this.krq.setVisibility(8);
+    this.krr.setVisibility(8);
+    AppMethodBeat.o(88154);
   }
   
-  public final void aBb()
+  public final void bJ()
   {
-    this.iqi.setVisibility(0);
-    this.iqj.setVisibility(8);
-  }
-  
-  public final void aBc()
-  {
-    this.iqi.setVisibility(8);
-  }
-  
-  public final void aBe()
-  {
-    aBd();
-    this.iqk.setVisibility(8);
-  }
-  
-  public final void aZ()
-  {
-    Integer localInteger2 = (Integer)am.aAx().getValue("key_share_card_show_type");
+    AppMethodBeat.i(88156);
+    Integer localInteger2 = (Integer)am.bci().getValue("key_share_card_show_type");
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    if ((this.iqh != null) && (b.aAU()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.aAR()))
+    if ((this.krp != null) && (b.bcF()) && ((localInteger1.intValue() == 1) || (localInteger1.intValue() == 4)) && (b.bcC()))
     {
-      this.iqk.setVisibility(0);
-      aBd();
+      this.krs.setVisibility(0);
+      bcQ();
     }
     do
     {
+      AppMethodBeat.o(88156);
       return;
-      this.iqk.setVisibility(8);
-      if (this.iqh == null) {
+      this.krs.setVisibility(8);
+      if (this.krp == null) {
         break;
       }
-      y.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.aAU()), Boolean.valueOf(b.aAV()) });
-      if ((!b.aAU()) || (!b.aAV()))
+      ab.d("MicroMsg.ShareCardFooterController", "updateView isLocalEnd %s isOtherEnd %s ", new Object[] { Boolean.valueOf(b.bcF()), Boolean.valueOf(b.bcG()) });
+      if ((!b.bcF()) || (!b.bcG()))
       {
-        aBb();
+        bcO();
+        AppMethodBeat.o(88156);
         return;
       }
-    } while ((!b.aAU()) || (!b.aAV()));
-    this.iqi.setVisibility(8);
-    this.iqj.setVisibility(8);
+    } while ((!b.bcF()) || (!b.bcG()));
+    bcN();
+    AppMethodBeat.o(88156);
+  }
+  
+  public final void bcM()
+  {
+    AppMethodBeat.i(88150);
+    if (this.kro == null)
+    {
+      this.kro = View.inflate(this.jpX, 2130968976, null);
+      this.cxy = ((ImageView)this.kro.findViewById(2131822312));
+      this.krs = ((TextView)this.kro.findViewById(2131822310));
+      this.krq = ((LinearLayout)this.kro.findViewById(2131822311));
+      this.krr = ((LinearLayout)this.kro.findViewById(2131822313));
+      this.krq.setVisibility(8);
+      this.krr.setVisibility(8);
+      RotateAnimation localRotateAnimation = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
+      localRotateAnimation.setDuration(1000L);
+      localRotateAnimation.setRepeatCount(-1);
+      localRotateAnimation.setInterpolator(new LinearInterpolator());
+      this.cxy.startAnimation(localRotateAnimation);
+    }
+    bJ();
+    AppMethodBeat.o(88150);
+  }
+  
+  public final void bcO()
+  {
+    AppMethodBeat.i(88152);
+    this.krq.setVisibility(0);
+    this.krr.setVisibility(8);
+    AppMethodBeat.o(88152);
+  }
+  
+  public final void bcP()
+  {
+    AppMethodBeat.i(88153);
+    this.krq.setVisibility(8);
+    AppMethodBeat.o(88153);
+  }
+  
+  public final void bcR()
+  {
+    AppMethodBeat.i(88155);
+    bcQ();
+    this.krs.setVisibility(8);
+    AppMethodBeat.o(88155);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.e
  * JD-Core Version:    0.7.0.1
  */

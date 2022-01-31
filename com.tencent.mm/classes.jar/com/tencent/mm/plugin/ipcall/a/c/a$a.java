@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.ipcall.a.c;
 
 public abstract interface a$a
 {
-  public abstract void bbE();
+  public abstract void bIM();
   
-  public abstract void bbF();
+  public abstract void bIN();
   
-  public abstract void sD(int paramInt);
+  public abstract void xD(int paramInt);
 }
 
 

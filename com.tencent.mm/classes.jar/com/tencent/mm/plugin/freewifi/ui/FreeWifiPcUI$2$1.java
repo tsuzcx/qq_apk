@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class FreeWifiPcUI$2$1
-  implements am.a
+  implements ap.a
 {
   FreeWifiPcUI$2$1(FreeWifiPcUI.2 param2) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    FreeWifiPcUI.a(this.ksG.ksF, h.b(this.ksG.ksF.mController.uMN, this.ksG.ksF.getString(R.l.connect_state_connecting_ing), true, new FreeWifiPcUI.2.1.1(this)));
+    AppMethodBeat.i(21062);
+    FreeWifiPcUI.a(this.mOv.mOu, h.b(this.mOv.mOu.getContext(), this.mOv.mOu.getString(2131298512), true, new FreeWifiPcUI.2.1.1(this)));
+    AppMethodBeat.o(21062);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiPcUI.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,29 @@
 package com.tencent.mm.plugin.setting.ui.qrcode;
 
 import android.os.Bundle;
-import com.tencent.mm.plugin.account.model.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.model.i;
 
 final class ShareToQQUI$5
-  extends h
+  extends i
 {
   ShareToQQUI$5(ShareToQQUI paramShareToQQUI) {}
   
-  public final void l(Bundle paramBundle)
-  {
-    super.l(paramBundle);
-  }
-  
   public final void onError(int paramInt, String paramString)
   {
+    AppMethodBeat.i(126924);
     super.onError(paramInt, paramString);
     if (paramInt == 3) {
-      ShareToQQUI.d(this.nRC);
+      ShareToQQUI.d(this.qFA);
     }
+    AppMethodBeat.o(126924);
+  }
+  
+  public final void u(Bundle paramBundle)
+  {
+    AppMethodBeat.i(126923);
+    super.u(paramBundle);
+    AppMethodBeat.o(126923);
   }
 }
 

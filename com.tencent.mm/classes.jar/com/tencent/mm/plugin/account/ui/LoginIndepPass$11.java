@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginIndepPass$11
   implements TextView.OnEditorActionListener
@@ -11,11 +12,14 @@ final class LoginIndepPass$11
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(124977);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      LoginIndepPass.a(this.fnl);
+      LoginIndepPass.a(this.gEE);
+      AppMethodBeat.o(124977);
       return true;
     }
+    AppMethodBeat.o(124977);
     return false;
   }
 }

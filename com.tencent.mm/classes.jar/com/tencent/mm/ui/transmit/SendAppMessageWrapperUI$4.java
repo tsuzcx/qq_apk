@@ -1,22 +1,27 @@
 package com.tencent.mm.ui.transmit;
 
-import android.content.Intent;
-import com.tencent.mm.pluginsdk.ui.applet.q.a;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelappbrand.i;
 
 final class SendAppMessageWrapperUI$4
-  implements q.a
+  implements DialogInterface.OnDismissListener
 {
-  SendAppMessageWrapperUI$4(SendAppMessageWrapperUI paramSendAppMessageWrapperUI) {}
+  SendAppMessageWrapperUI$4(SendAppMessageWrapperUI paramSendAppMessageWrapperUI, String paramString, View paramView) {}
   
-  public final void a(boolean paramBoolean, String paramString, int paramInt)
+  public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.whK.setResult(-1, new Intent().putExtra("Select_stay_in_wx", true));
-    this.whK.finish();
+    AppMethodBeat.i(154016);
+    ((i)g.E(i.class)).a(this.hpi, this.val$view);
+    AppMethodBeat.o(154016);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SendAppMessageWrapperUI.4
  * JD-Core Version:    0.7.0.1
  */

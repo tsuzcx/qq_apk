@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -13,14 +14,16 @@ final class WalletBindDepositUI$2
   
   public final void onClick(View paramView)
   {
-    if (WalletBindDepositUI.e(this.rRi)) {
-      this.rRi.cNk().m(new Object[] { WalletBindDepositUI.a(this.rRi).getText(), WalletBindDepositUI.d(this.rRi).mOb, WalletBindDepositUI.f(this.rRi).getText(), WalletBindDepositUI.d(this.rRi).qvi, Boolean.valueOf(false) });
+    AppMethodBeat.i(48673);
+    if (WalletBindDepositUI.e(this.vHY)) {
+      this.vHY.getNetController().p(new Object[] { WalletBindDepositUI.a(this.vHY).getText(), WalletBindDepositUI.d(this.vHY).poq, WalletBindDepositUI.f(this.vHY).getText(), WalletBindDepositUI.d(this.vHY).uhA, Boolean.FALSE });
     }
+    AppMethodBeat.o(48673);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletBindDepositUI.2
  * JD-Core Version:    0.7.0.1
  */

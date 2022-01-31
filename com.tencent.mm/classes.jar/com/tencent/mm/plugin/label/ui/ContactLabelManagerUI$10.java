@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.label.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactLabelManagerUI$10
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class ContactLabelManagerUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.lBw.finish();
+    AppMethodBeat.i(22595);
+    this.nYI.finish();
+    AppMethodBeat.o(22595);
     return false;
   }
 }

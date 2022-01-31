@@ -1,5 +1,6 @@
 package com.tencent.tmassistantsdk.logreport;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.network.GetSettingHttpRequest;
 import com.tencent.tmassistantsdk.network.IGetSettingHttpListener;
 import com.tencent.tmassistantsdk.protocol.ProtocolPackage;
@@ -22,10 +23,12 @@ public class GetSettingEngine
   {
     try
     {
+      AppMethodBeat.i(75811);
       if (mInstance == null) {
         mInstance = new GetSettingEngine();
       }
       GetSettingEngine localGetSettingEngine = mInstance;
+      AppMethodBeat.o(75811);
       return localGetSettingEngine;
     }
     finally {}
@@ -35,22 +38,21 @@ public class GetSettingEngine
   {
     try
     {
+      AppMethodBeat.i(75812);
       if (this.httpRequest != null)
       {
         this.httpRequest.cancleRequest();
         this.httpRequest = null;
       }
+      AppMethodBeat.o(75812);
       return;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    finally {}
   }
   
   public void onSettingHttpRequestFinish(GetSettingsRequest paramGetSettingsRequest, GetSettingsResponse paramGetSettingsResponse, boolean paramBoolean)
   {
+    AppMethodBeat.i(75814);
     this.httpRequest = null;
     if (paramBoolean)
     {
@@ -61,7 +63,7 @@ public class GetSettingEngine
         {
           paramGetSettingsRequest = (StatCfg)ProtocolPackage.bytes2JceObj(paramGetSettingsRequest.cfg, StatCfg.class);
           if (paramGetSettingsRequest == null) {
-            break label84;
+            break label94;
           }
           GlobalUtil.getInstance().setNetTypeValue(paramGetSettingsRequest.netType);
         }
@@ -69,27 +71,33 @@ public class GetSettingEngine
       for (;;)
       {
         TMLog.i("GetSettingEngine", "response.settings is null !");
+        AppMethodBeat.o(75814);
         return;
-        label84:
+        label94:
         TMLog.i("GetSettingEngine", "response  StatCfg is null !");
       }
     }
     TMLog.i("GetSettingEngine", "get settings failed!");
+    AppMethodBeat.o(75814);
   }
   
   public void sendRequest()
   {
-    if (this.httpRequest != null) {
+    AppMethodBeat.i(75813);
+    if (this.httpRequest != null)
+    {
+      AppMethodBeat.o(75813);
       return;
     }
     this.httpRequest = new GetSettingHttpRequest();
     this.httpRequest.setGetSettingHttpListener(this);
     this.httpRequest.sendSettingRequest();
+    AppMethodBeat.o(75813);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.GetSettingEngine
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.fav.a;
 
 final class i$a
 {
-  String bUo;
   int in;
-  long jYZ;
+  long mtr;
+  String pageId;
   String sid;
 }
 

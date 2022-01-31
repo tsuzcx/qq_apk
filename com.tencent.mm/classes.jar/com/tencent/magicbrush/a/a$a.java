@@ -1,12 +1,12 @@
 package com.tencent.magicbrush.a;
 
-import com.github.henryye.nativeiv.bitmap.IBitmap;
-import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
-import java.io.InputStream;
+import android.graphics.drawable.Drawable;
 
 public abstract interface a$a
 {
-  public abstract IBitmap<NativeBitmapStruct> a(String paramString, InputStream paramInputStream);
+  public abstract int n(String paramString, int paramInt);
+  
+  public abstract Drawable o(String paramString, int paramInt);
 }
 
 

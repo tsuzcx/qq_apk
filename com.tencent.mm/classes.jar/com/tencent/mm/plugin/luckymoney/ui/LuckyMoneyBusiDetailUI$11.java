@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 
 final class LuckyMoneyBusiDetailUI$11
@@ -9,7 +10,9 @@ final class LuckyMoneyBusiDetailUI$11
   
   public final void run()
   {
-    j.p(this.lUH);
+    AppMethodBeat.i(42593);
+    j.q(this.orQ);
+    AppMethodBeat.o(42593);
   }
 }
 

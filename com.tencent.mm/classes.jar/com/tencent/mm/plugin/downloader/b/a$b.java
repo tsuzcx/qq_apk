@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.downloader.b;
 
 public abstract interface a$b
 {
-  public abstract void X(int paramInt, String paramString);
+  public abstract void H(int paramInt, long paramLong);
 }
 
 

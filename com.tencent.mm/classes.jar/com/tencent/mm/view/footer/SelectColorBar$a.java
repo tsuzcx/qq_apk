@@ -2,7 +2,7 @@ package com.tencent.mm.view.footer;
 
 public abstract interface SelectColorBar$a
 {
-  public abstract void IL(int paramInt);
+  public abstract void RE(int paramInt);
 }
 
 

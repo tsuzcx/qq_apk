@@ -3,21 +3,21 @@ package com.tencent.tinker.a.a;
 public final class t$a
   implements Comparable<a>
 {
+  public final short BpZ;
+  public boolean Bqa;
+  public int byteCount = 0;
   public int off = -1;
   public int size = 0;
-  public final short wTt;
-  public boolean wTu;
-  public int wTv = 0;
   
   public t$a(int paramInt, boolean paramBoolean)
   {
-    this.wTt = ((short)paramInt);
-    this.wTu = paramBoolean;
+    this.BpZ = ((short)paramInt);
+    this.Bqa = paramBoolean;
     if (paramInt == 0)
     {
       this.off = 0;
       this.size = 1;
-      this.wTv = 112;
+      this.byteCount = 112;
     }
     while (paramInt != 4096) {
       return;
@@ -25,12 +25,12 @@ public final class t$a
     this.size = 1;
   }
   
-  private static int Jz(int paramInt)
+  private static int Su(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      throw new IllegalArgumentException("unknown section type: " + paramInt);
+      throw new IllegalArgumentException("unknown section type: ".concat(String.valueOf(paramInt)));
     case 0: 
       return 0;
     case 1: 
@@ -76,7 +76,7 @@ public final class t$a
   
   public final String toString()
   {
-    return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.wTt), Integer.valueOf(this.off), Integer.valueOf(this.size) });
+    return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.BpZ), Integer.valueOf(this.off), Integer.valueOf(this.size) });
   }
 }
 

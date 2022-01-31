@@ -3,12 +3,12 @@ package com.tencent.mm.modelappbrand;
 public abstract class ad
   implements m
 {
-  public abstract void b(boolean paramBoolean1, String paramString, boolean paramBoolean2);
-  
   public final String getName()
   {
-    return "OnTapCallback";
+    return "makePhoneCall";
   }
+  
+  public abstract void qt(String paramString);
 }
 
 

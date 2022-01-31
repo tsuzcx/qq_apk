@@ -1,29 +1,32 @@
 package com.google.android.exoplayer2.source.b.a;
 
 import com.google.android.exoplayer2.Format;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.List;
 
 public final class a
   extends c
 {
-  public final List<Format> aJu;
-  public final List<a.a> aKS;
-  public final List<a.a> aKT;
-  public final List<a.a> aKU;
-  public final Format aKs;
+  public final Format aRW;
+  public final List<Format> aRa;
+  public final List<a.a> aSm;
+  public final List<a.a> aSn;
+  public final List<a.a> aSo;
   
   public a(String paramString, List<String> paramList, List<a.a> paramList1, List<a.a> paramList2, List<a.a> paramList3, Format paramFormat, List<Format> paramList4)
   {
     super(paramString, paramList);
-    this.aKS = Collections.unmodifiableList(paramList1);
-    this.aKT = Collections.unmodifiableList(paramList2);
-    this.aKU = Collections.unmodifiableList(paramList3);
-    this.aKs = paramFormat;
+    AppMethodBeat.i(125962);
+    this.aSm = Collections.unmodifiableList(paramList1);
+    this.aSn = Collections.unmodifiableList(paramList2);
+    this.aSo = Collections.unmodifiableList(paramList3);
+    this.aRW = paramFormat;
     if (paramList4 != null) {}
     for (paramString = Collections.unmodifiableList(paramList4);; paramString = null)
     {
-      this.aJu = paramString;
+      this.aRa = paramString;
+      AppMethodBeat.o(125962);
       return;
     }
   }

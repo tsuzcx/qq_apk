@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sight.decode.a;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 final class b$d
@@ -10,15 +11,19 @@ final class b$d
   
   public final void run()
   {
-    if (b.k(this.oeY).get() == null) {
+    AppMethodBeat.i(70240);
+    if (b.l(this.qTn).get() == null)
+    {
+      AppMethodBeat.o(70240);
       return;
     }
-    ((View)b.k(this.oeY).get()).startAnimation(b.l(this.oeY));
+    ((View)b.l(this.qTn).get()).startAnimation(b.m(this.qTn));
+    AppMethodBeat.o(70240);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.a.b.d
  * JD-Core Version:    0.7.0.1
  */

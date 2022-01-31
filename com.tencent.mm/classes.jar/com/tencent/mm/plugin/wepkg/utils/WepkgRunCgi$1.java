@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
 
 public final class WepkgRunCgi$1
   implements w.a
@@ -11,9 +12,11 @@ public final class WepkgRunCgi$1
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    if (this.rQn != null) {
-      this.rQn.a(paramInt1, paramInt2, paramString, paramb);
+    AppMethodBeat.i(63638);
+    if (this.vHf != null) {
+      this.vHf.a(paramInt1, paramInt2, paramString, paramb);
     }
+    AppMethodBeat.o(63638);
     return 0;
   }
 }

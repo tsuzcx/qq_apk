@@ -2,6 +2,7 @@ package com.tencent.mm.wallet_core.d;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -12,10 +13,12 @@ final class h$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.b(this.qlW, null, this.bEg);
-    if (this.qlW.aSk()) {
-      this.qlW.finish();
+    AppMethodBeat.i(49130);
+    a.b(this.tVi, null, this.val$errCode);
+    if (this.tVi.isTransparent()) {
+      this.tVi.finish();
     }
+    AppMethodBeat.o(49130);
   }
 }
 

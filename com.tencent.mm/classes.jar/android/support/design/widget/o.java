@@ -1,29 +1,48 @@
 package android.support.design.widget;
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import android.support.v7.a.a.a;
+import android.support.v4.view.t;
+import android.view.View;
 
 final class o
 {
-  private static final int[] mc = { a.a.colorPrimary };
+  private final View mView;
+  int nd;
+  private int ne;
+  int nf;
+  int ng;
   
-  static void G(Context paramContext)
+  public o(View paramView)
   {
-    int i = 0;
-    paramContext = paramContext.obtainStyledAttributes(mc);
-    if (!paramContext.hasValue(0)) {
-      i = 1;
+    this.mView = paramView;
+  }
+  
+  public final void bS()
+  {
+    this.nd = this.mView.getTop();
+    this.ne = this.mView.getLeft();
+    bT();
+  }
+  
+  final void bT()
+  {
+    t.q(this.mView, this.nf - (this.mView.getTop() - this.nd));
+    t.s(this.mView, this.ng - (this.mView.getLeft() - this.ne));
+  }
+  
+  public final boolean p(int paramInt)
+  {
+    if (this.nf != paramInt)
+    {
+      this.nf = paramInt;
+      bT();
+      return true;
     }
-    paramContext.recycle();
-    if (i != 0) {
-      throw new IllegalArgumentException("You need to use a Theme.AppCompat theme (or descendant) with the design library.");
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,86 @@
 package com.tencent.mm.storage;
 
-import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.storage.emotion.c;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 
 public final class aq
 {
-  public boolean mInit = false;
-  public String uAD;
-  public int uAE = 2;
-  public int uAF = 32;
-  HashMap<String, String> uAG = new HashMap();
-  public HashMap<String, ArrayList<String>> uAH = new HashMap();
-  public HashMap<String, String> uAI = new HashMap();
-  public HashMap<String, ArrayList<aq.a>> uAJ = new HashMap();
-  public Comparator uAK = new aq.1(this);
+  public boolean mInit;
+  public String yMM;
+  public int yMN;
+  public int yMO;
+  HashMap<String, String> yMP;
+  public HashMap<String, ArrayList<String>> yMQ;
+  public HashMap<String, String> yMR;
+  public HashMap<String, ArrayList<a>> yMS;
+  public Comparator yMT;
   
-  public final String Aw(String paramString)
+  public aq()
   {
-    Object localObject;
-    if ((this.uAG != null) && (this.uAG.containsKey(paramString))) {
-      localObject = (String)this.uAG.get(paramString);
-    }
-    c localc;
-    String str1;
-    String str2;
-    do
+    AppMethodBeat.i(62703);
+    this.mInit = false;
+    this.yMN = 2;
+    this.yMO = 32;
+    this.yMP = new HashMap();
+    this.yMQ = new HashMap();
+    this.yMR = new HashMap();
+    this.yMS = new HashMap();
+    this.yMT = new aq.1(this);
+    AppMethodBeat.o(62703);
+  }
+  
+  public final String Kx(String paramString)
+  {
+    AppMethodBeat.i(62706);
+    if ((this.yMP != null) && (this.yMP.containsKey(paramString)))
     {
-      return localObject;
-      localc = ((d)g.t(d.class)).getEmojiStorageMgr().uBd;
-      str1 = null;
-      str2 = String.format("select %s from %s where %s=?", new Object[] { "desc", "EmojiInfoDesc", "md5_lang" });
-      localObject = paramString + x.cqJ().toLowerCase();
-      localObject = localc.dXw.a(str2, new String[] { localObject }, 2);
-      if (((Cursor)localObject).moveToFirst()) {
-        str1 = ((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("desc"));
-      }
-      ((Cursor)localObject).close();
-      localObject = str1;
-    } while (!bk.bl(str1));
-    paramString = paramString + "default";
-    paramString = localc.dXw.a(str2, new String[] { paramString }, 2);
-    if (paramString.moveToFirst()) {
-      str1 = paramString.getString(paramString.getColumnIndex("desc"));
+      paramString = (String)this.yMP.get(paramString);
+      AppMethodBeat.o(62706);
+      return paramString;
     }
-    paramString.close();
-    return str1;
+    paramString = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiStorageMgr().yNp.Kx(paramString);
+    AppMethodBeat.o(62706);
+    return paramString;
   }
   
   public final void clear()
   {
-    if (this.uAG != null) {
-      this.uAG.clear();
+    AppMethodBeat.i(62704);
+    if (this.yMP != null) {
+      this.yMP.clear();
     }
-    if (this.uAH != null) {
-      this.uAH.clear();
+    if (this.yMQ != null) {
+      this.yMQ.clear();
     }
-    if (this.uAI != null) {
-      this.uAI.clear();
+    if (this.yMR != null) {
+      this.yMR.clear();
     }
-    if (this.uAJ != null) {
-      this.uAJ.clear();
+    if (this.yMS != null) {
+      this.yMS.clear();
     }
+    AppMethodBeat.o(62704);
   }
   
-  public final void cuR()
+  public final void dxs()
   {
-    g.DS().O(new aq.2(this));
+    AppMethodBeat.i(62705);
+    com.tencent.mm.sdk.g.d.ysn.a(new aq.2(this), "MicroMsg.emoji.EmojiDescNewMgr|newinit");
+    AppMethodBeat.o(62705);
+  }
+  
+  public final class a
+  {
+    public String cqq;
+    int index;
+    
+    a(String paramString, int paramInt)
+    {
+      this.cqq = paramString;
+      this.index = paramInt;
+    }
   }
 }
 

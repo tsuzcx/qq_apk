@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class SnsTagPartlyUI$a$a
 {
-  Button fks;
-  TextView pdX;
-  TextView pdY;
+  Button gBJ;
+  TextView rWK;
+  TextView rWL;
   
   SnsTagPartlyUI$a$a(SnsTagPartlyUI.a parama) {}
 }

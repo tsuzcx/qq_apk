@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.webview.stub;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WebViewStubProxyUI$5$1
   implements Runnable
@@ -12,22 +13,25 @@ final class WebViewStubProxyUI$5$1
   
   public final void run()
   {
-    h.Db(WebViewStubProxyUI.b(this.rjY.rjS)).a(null, null, null);
-    this.rjY.rjS.finish();
+    AppMethodBeat.i(7073);
+    h.KW(WebViewStubProxyUI.b(this.uZq.uZk)).a(null, null, null);
+    this.uZq.uZk.finish();
     try
     {
-      WebViewStubProxyUI.a(this.rjY.rjS).a(this.rjU, this.rjV, this.rjW, this.rjX);
+      WebViewStubProxyUI.a(this.uZq.uZk).a(this.uZm, this.uZn, this.uZo, this.uZp);
+      AppMethodBeat.o(7073);
       return;
     }
     catch (Exception localException)
     {
-      y.w("MicroMsg.callbackerWrapper", "wrapper onHandleEnd, ex = " + localException.getMessage());
+      ab.w("MicroMsg.callbackerWrapper", "wrapper onHandleEnd, ex = " + localException.getMessage());
+      AppMethodBeat.o(7073);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.WebViewStubProxyUI.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,44 @@
 package com.tencent.mm.plugin.boots;
 
-import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.boots.a.c;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
+import com.tencent.mm.plugin.boots.a.d;
+import com.tencent.mm.plugin.boots.a.e;
 import java.util.List;
 
 public final class a
-  implements com.tencent.mm.pluginsdk.cmd.a
+  implements c
 {
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public final List<com.tencent.mm.plugin.boots.a.a> aWg()
   {
-    paramContext = paramArrayOfString[1];
-    int i;
-    if (b.cqk())
-    {
-      i = -1;
-      switch (paramContext.hashCode())
-      {
-      }
+    AppMethodBeat.i(90513);
+    List localList = ((d)g.G(d.class)).getTinkerLogic().aWg();
+    AppMethodBeat.o(90513);
+    return localList;
+  }
+  
+  public final void dH(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(90512);
+    if (((d)g.G(d.class)).getTinkerLogic() != null) {
+      ((d)g.G(d.class)).getTinkerLogic().dH(paramInt1, paramInt2);
     }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        paramContext.hashCode();
-        return false;
-        if (paramContext.equals("showall"))
-        {
-          i = 0;
-          continue;
-          if (paramContext.equals("apkg")) {
-            i = 1;
-          }
-        }
-        break;
-      }
+    AppMethodBeat.o(90512);
+  }
+  
+  public final void rQ(int paramInt)
+  {
+    AppMethodBeat.i(90511);
+    if (((d)g.G(d.class)).getTinkerLogic() != null) {
+      ((d)g.G(d.class)).getTinkerLogic().rQ(paramInt);
     }
-    paramContext = ((c)g.r(c.class)).awD();
-    if (!paramContext.isEmpty())
-    {
-      y.e("MicroMsg.Boots.BootsCommand", "start day active keys");
-      paramContext = paramContext.iterator();
-      while (paramContext.hasNext())
-      {
-        paramArrayOfString = (com.tencent.mm.plugin.boots.a.a)paramContext.next();
-        y.i("MicroMsg.Boots.BootsCommand", "key:%s active:%d", new Object[] { Integer.toHexString(paramArrayOfString.field_key), Integer.valueOf(paramArrayOfString.field_dau) });
-      }
-    }
-    return true;
-    if (paramArrayOfString.length < 5) {
-      y.i("MicroMsg.Boots.BootsCommand", "must include url,md5 and appId");
-    }
-    return true;
+    AppMethodBeat.o(90511);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.boots.a
  * JD-Core Version:    0.7.0.1
  */

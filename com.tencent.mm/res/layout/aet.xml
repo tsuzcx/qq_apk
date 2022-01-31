@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/fs" android:layout_marginTop="@dimen/l3" android:layout_marginRight="@dimen/fs" android:layout_marginBottom="@dimen/fs"
+<RelativeLayout android:background="@drawable/b_0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/mr" android:gravity="center" android:id="@id/d1r" android:layout_width="@dimen/fy" android:layout_height="wrap_content" />
-    <SeekBar android:id="@id/d1s" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxHeight="@dimen/mx" android:progressDrawable="@drawable/sg" android:minHeight="@dimen/mx" android:thumb="@drawable/si" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/mr" android:gravity="center" android:id="@id/c2v" android:layout_width="@dimen/fy" android:layout_height="wrap_content" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dcr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.TabIconView android:gravity="center" android:id="@id/sg" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerInParent="true" />
+            <TextView android:id="@id/dcs" android:visibility="invisible" android:layout_marginLeft="-8.0dip" android:layout_toRightOf="@id/sg" android:layout_alignTop="@id/sg" style="@style/v8" />
+            <ImageView android:id="@id/l0" android:visibility="invisible" android:layout_marginTop="1.0dip" android:layout_marginRight="-3.0dip" android:layout_alignTop="@id/sg" android:layout_alignRight="@id/sg" style="@style/v9" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/e6" android:textColor="@color/a6q" android:gravity="center" android:id="@id/dct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cy3" />
+    </LinearLayout>
+</RelativeLayout>

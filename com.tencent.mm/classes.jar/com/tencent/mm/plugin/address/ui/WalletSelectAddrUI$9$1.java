@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.address.ui;
 
-import com.tencent.mm.h.a.jz;
-import com.tencent.mm.h.a.jz.b;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.km;
+import com.tencent.mm.g.a.km.b;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 
 final class WalletSelectAddrUI$9$1
@@ -14,14 +15,16 @@ final class WalletSelectAddrUI$9$1
   
   public final void run()
   {
-    if (this.fvM.fvL.bSF.bIe)
+    AppMethodBeat.i(16986);
+    if (this.gNs.gNr.cAk.cpz)
     {
-      au.Hx();
-      String str1 = bk.pm((String)c.Dz().get(46, null));
-      au.Hx();
-      String str2 = bk.pm((String)c.Dz().get(72, null));
-      WalletSelectAddrUI.a(this.fvM.fvI, str1, str2);
+      aw.aaz();
+      String str1 = bo.nullAsNil((String)c.Ru().get(46, null));
+      aw.aaz();
+      String str2 = bo.nullAsNil((String)c.Ru().get(72, null));
+      WalletSelectAddrUI.a(this.gNs.gNo, str1, str2);
     }
+    AppMethodBeat.o(16986);
   }
 }
 

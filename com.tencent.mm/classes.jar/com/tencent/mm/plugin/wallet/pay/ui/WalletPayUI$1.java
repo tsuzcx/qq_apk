@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
-import com.tencent.mm.h.a.tw;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletPayUI$1
-  extends c<tw>
+  implements Runnable
 {
-  WalletPayUI$1(WalletPayUI paramWalletPayUI)
+  WalletPayUI$1(WalletPayUI paramWalletPayUI) {}
+  
+  public final void run()
   {
-    this.udX = tw.class.getName().hashCode();
+    AppMethodBeat.i(46034);
+    ab.i(this.tXq.TAG, "auto reset create flag");
+    WalletPayUI.Pt();
+    AppMethodBeat.o(46034);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.1
  * JD-Core Version:    0.7.0.1
  */

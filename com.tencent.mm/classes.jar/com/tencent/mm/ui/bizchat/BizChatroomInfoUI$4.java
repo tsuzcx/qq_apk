@@ -1,9 +1,7 @@
 package com.tencent.mm.ui.bizchat;
 
 import android.view.View;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.preference.MMPreference;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizChatroomInfoUI$4
   implements Runnable
@@ -12,10 +10,12 @@ final class BizChatroomInfoUI$4
   
   public final void run()
   {
-    View localView = ((com.tencent.mm.ui.base.preference.a)BizChatroomInfoUI.a(this.vfX)).a(this.doB, this.vfX.lwE);
+    AppMethodBeat.i(30200);
+    View localView = ((com.tencent.mm.ui.base.preference.a)BizChatroomInfoUI.a(this.zuv)).a(this.efX, this.zuv.getListView());
     if (localView != null) {
-      com.tencent.mm.ui.g.a.a(this.vfX.mController.uMN, localView);
+      com.tencent.mm.ui.h.a.b(this.zuv.getContext(), localView);
     }
+    AppMethodBeat.o(30200);
   }
 }
 

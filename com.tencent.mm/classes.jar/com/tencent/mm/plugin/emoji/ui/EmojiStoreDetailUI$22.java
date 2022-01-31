@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class EmojiStoreDetailUI$22
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class EmojiStoreDetailUI$22
   
   public final void run()
   {
-    EmojiStoreDetailUI.m(this.jeK).fullScroll(130);
+    AppMethodBeat.i(53439);
+    EmojiStoreDetailUI.m(this.lnA).fullScroll(130);
+    AppMethodBeat.o(53439);
   }
 }
 

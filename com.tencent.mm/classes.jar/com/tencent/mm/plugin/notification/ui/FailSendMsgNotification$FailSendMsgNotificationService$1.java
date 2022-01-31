@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.notification.ui;
 
-import com.tencent.mm.h.a.kk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ky;
 import com.tencent.mm.sdk.b.c;
 
 final class FailSendMsgNotification$FailSendMsgNotificationService$1
-  extends c<kk>
+  extends c<ky>
 {
   FailSendMsgNotification$FailSendMsgNotificationService$1(FailSendMsgNotification.FailSendMsgNotificationService paramFailSendMsgNotificationService)
   {
-    this.udX = kk.class.getName().hashCode();
+    AppMethodBeat.i(23192);
+    this.__eventId = ky.class.getName().hashCode();
+    AppMethodBeat.o(23192);
   }
 }
 

@@ -1,112 +1,35 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.c;
-import com.tencent.mm.plugin.fts.a.d;
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.List;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.expt.a.a.a;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigAllowOpenGL3;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableAlert", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
 public final class b
-  extends com.tencent.mm.plugin.fts.a.b
+  extends g<Boolean>
 {
-  m dBO;
-  private j.a gaA = new b.1(this);
-  a gaz;
+  public static final b hsd;
   
-  protected final boolean BB()
+  static
   {
-    i.onDestroy();
-    i.f(this.gaA);
-    this.gaz = null;
-    this.dBO = null;
+    AppMethodBeat.i(134605);
+    hsd = new b();
+    AppMethodBeat.o(134605);
+  }
+  
+  protected final String aAs()
+  {
+    return "opengl3";
+  }
+  
+  protected final a.a aAt()
+  {
+    return null;
+  }
+  
+  protected final boolean aAu()
+  {
     return true;
-  }
-  
-  public final com.tencent.mm.plugin.fts.a.a.a a(com.tencent.mm.plugin.fts.a.a.i parami)
-  {
-    parami = new b.c(this, parami);
-    return this.dBO.a(-65536, parami);
-  }
-  
-  public final String getName()
-  {
-    return "FTS5SearchMiniGameLogic";
-  }
-  
-  protected final boolean onCreate()
-  {
-    if (!((n)g.t(n.class)).isFTSContextReady())
-    {
-      y.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "Create Fail!");
-      return false;
-    }
-    y.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "Create Success!");
-    this.gaz = ((a)((n)g.t(n.class)).getFTSIndexStorage(8));
-    this.dBO = ((n)g.t(n.class)).getFTSTaskDaemon();
-    this.dBO.a(65601, new b.d(this));
-    i.onCreate();
-    i.e(this.gaA);
-    return true;
-  }
-  
-  final class b
-    extends com.tencent.mm.plugin.fts.a.a.a
-  {
-    private int gaD;
-    private List<String> idList;
-    
-    public b(List paramList)
-    {
-      this.idList = paramList;
-    }
-    
-    public final String afJ()
-    {
-      return String.format("{insertSize: %d}", new Object[] { Integer.valueOf(this.gaD) });
-    }
-    
-    public final boolean execute()
-    {
-      if (bk.dk(this.idList)) {
-        return false;
-      }
-      this.gaD = this.idList.size();
-      y.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "inserted MiniGame info id listSize:%d", new Object[] { Integer.valueOf(this.gaD) });
-      b.this.gaz.beginTransaction();
-      Iterator localIterator = this.idList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        b.this.gaz.b(c.kuS, str);
-        com.tencent.mm.plugin.appbrand.game.a.a.b localb = i.tr(str);
-        if ((localb != null) && (!bk.bl(localb.field_AppName)))
-        {
-          long l = System.currentTimeMillis();
-          str = bk.pm(localb.field_RecordId);
-          int i = str.hashCode();
-          b.this.gaz.a(458752, 1, i, str, l, localb.field_AppName);
-          b.this.gaz.a(458752, 2, i, str, l, d.aD(localb.field_AppName, false));
-          b.this.gaz.a(458752, 3, i, str, l, d.aD(localb.field_AppName, true));
-          y.v("MicroMsg.FTS.FTS5SearchMiniGameLogic", "inserted MiniGame info id = %s, name = %s", new Object[] { str, localb.field_AppName });
-        }
-        else
-        {
-          y.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "inserted miniGame info is null. id:%s", new Object[] { str });
-        }
-      }
-      b.this.gaz.commit();
-      return true;
-    }
-    
-    public final String getName()
-    {
-      return "InsertMiniGameTask";
-    }
   }
 }
 

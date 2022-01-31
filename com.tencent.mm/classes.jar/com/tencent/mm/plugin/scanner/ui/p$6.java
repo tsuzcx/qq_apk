@@ -1,11 +1,8 @@
 package com.tencent.mm.plugin.scanner.ui;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 final class p$6
   implements Runnable
@@ -14,18 +11,12 @@ final class p$6
   
   public final void run()
   {
-    p localp = this.nMw;
+    AppMethodBeat.i(81206);
+    p localp = this.qAf;
     Activity localActivity = this.val$activity;
-    this.val$activity.getString(R.l.app_tip);
-    localp.dnm = h.b(localActivity, this.val$activity.getString(R.l.qrcode_reading_file), true, new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        p.6.this.nMw.nMm = false;
-        p.6.this.nMw.nMl.set(false);
-        p.6.this.nMw.nMn = false;
-      }
-    });
+    this.val$activity.getString(2131297087);
+    localp.eeN = h.b(localActivity, this.val$activity.getString(2131302249), true, new p.6.1(this));
+    AppMethodBeat.o(81206);
   }
 }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MaxListView
   extends ListView
@@ -20,7 +21,9 @@ public class MaxListView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(106972);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
+    AppMethodBeat.o(106972);
   }
 }
 

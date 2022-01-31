@@ -2,7 +2,7 @@ package com.tencent.mm.ui;
 
 public abstract interface c$a
 {
-  public abstract void qc(int paramInt);
+  public abstract void onTabClick(int paramInt);
 }
 
 

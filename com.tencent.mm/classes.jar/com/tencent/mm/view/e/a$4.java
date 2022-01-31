@@ -1,5 +1,8 @@
 package com.tencent.mm.view.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class a$4
   implements Runnable
 {
@@ -7,7 +10,10 @@ final class a$4
   
   public final void run()
   {
-    a.h(this.wzg).ew(a.g(this.wzg));
+    AppMethodBeat.i(63026);
+    ab.v("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "onLayoutChange handle");
+    this.AUz.dRg();
+    AppMethodBeat.o(63026);
   }
 }
 

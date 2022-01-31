@@ -3,32 +3,35 @@ package com.tencent.mm.modelmulti;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class l$1
   extends BroadcastReceiver
 {
-  l$1(l paraml, l.a parama, boolean paramBoolean) {}
+  l$1(l paraml, l.a parama) {}
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
+    AppMethodBeat.i(78414);
     if (paramIntent == null)
     {
       paramIntent = "";
-      y.i("MicroMsg.ScreenState", "ScreenReceiver action [%s] ", new Object[] { paramIntent });
+      ab.i("MicroMsg.ScreenState", "ScreenReceiver action [%s] ", new Object[] { paramIntent });
       if (!"android.intent.action.SCREEN_OFF".equals(paramIntent)) {
-        break label89;
+        break label98;
       }
     }
-    label89:
-    for (this.etB.ety = Boolean.valueOf(false);; this.etB.ety = Boolean.valueOf(true))
+    label98:
+    for (this.fJo.fJl = Boolean.FALSE;; this.fJo.fJl = Boolean.TRUE)
     {
-      if (this.etz != null) {
-        this.etz.bX(this.etB.ety.booleanValue());
+      if (this.fJm != null) {
+        this.fJm.da(this.fJo.fJl.booleanValue());
       }
-      if (this.etA) {
+      if (this.fJn) {
         paramContext.unregisterReceiver(this);
       }
+      AppMethodBeat.o(78414);
       return;
       paramIntent = paramIntent.getAction();
       break;

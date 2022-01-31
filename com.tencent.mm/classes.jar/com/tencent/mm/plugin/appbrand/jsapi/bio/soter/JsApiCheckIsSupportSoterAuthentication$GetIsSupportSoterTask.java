@@ -2,53 +2,73 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.soter;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.h.a.hr;
-import com.tencent.mm.h.a.hr.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.hv;
+import com.tencent.mm.g.a.hv.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.u.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.s.h;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.Map;
 
 class JsApiCheckIsSupportSoterAuthentication$GetIsSupportSoterTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<GetIsSupportSoterTask> CREATOR = new JsApiCheckIsSupportSoterAuthentication.GetIsSupportSoterTask.1();
-  private int bhx = -1;
-  private c gfZ = null;
-  private JsApiCheckIsSupportSoterAuthentication glr;
-  private int gls = 0;
+  public static final Parcelable.Creator<GetIsSupportSoterTask> CREATOR;
+  private int bxX;
+  private c hAC;
+  private JsApiCheckIsSupportSoterAuthentication hFh;
+  private int hFi;
+  
+  static
+  {
+    AppMethodBeat.i(3222);
+    CREATOR = new JsApiCheckIsSupportSoterAuthentication.GetIsSupportSoterTask.1();
+    AppMethodBeat.o(3222);
+  }
   
   protected JsApiCheckIsSupportSoterAuthentication$GetIsSupportSoterTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(3220);
+    this.hAC = null;
+    this.bxX = -1;
+    this.hFi = 0;
+    f(paramParcel);
+    AppMethodBeat.o(3220);
   }
   
   public JsApiCheckIsSupportSoterAuthentication$GetIsSupportSoterTask(c paramc, int paramInt, JsApiCheckIsSupportSoterAuthentication paramJsApiCheckIsSupportSoterAuthentication)
   {
-    this.gfZ = paramc;
-    this.bhx = paramInt;
-    this.glr = paramJsApiCheckIsSupportSoterAuthentication;
+    this.hAC = null;
+    this.bxX = -1;
+    this.hFi = 0;
+    this.hAC = paramc;
+    this.bxX = paramInt;
+    this.hFh = paramJsApiCheckIsSupportSoterAuthentication;
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    hr localhr = new hr();
-    com.tencent.mm.sdk.b.a.udP.m(localhr);
-    this.gls = localhr.bPK.bPL;
-    y.i("MicroMsg.GetIsSupportSoterTask", "hy: supportMode: %d", new Object[] { Integer.valueOf(this.gls) });
-    ahI();
+    AppMethodBeat.i(3218);
+    hv localhv = new hv();
+    com.tencent.mm.sdk.b.a.ymk.l(localhv);
+    this.hFi = localhv.cxd.cxe;
+    ab.i("MicroMsg.GetIsSupportSoterTask", "hy: supportMode: %d", new Object[] { Integer.valueOf(this.hFi) });
+    aBp();
+    AppMethodBeat.o(3218);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    super.Zv();
-    y.d("MicroMsg.GetIsSupportSoterTask", "hy: callback. supportMode: %d", new Object[] { Integer.valueOf(this.gls) });
+    AppMethodBeat.i(3217);
+    super.atb();
+    ab.d("MicroMsg.GetIsSupportSoterTask", "hy: callback. supportMode: %d", new Object[] { Integer.valueOf(this.hFi) });
     HashMap localHashMap = new HashMap(2);
-    localHashMap.put("supportMode", a.lj(this.gls));
-    this.gfZ.C(this.bhx, this.glr.h("ok", localHashMap));
-    i.aa(this);
+    localHashMap.put("supportMode", a.nS(this.hFi));
+    this.hAC.h(this.bxX, this.hFh.j("ok", localHashMap));
+    h.ai(this);
+    AppMethodBeat.o(3217);
   }
   
   public int describeContents()
@@ -56,21 +76,25 @@ class JsApiCheckIsSupportSoterAuthentication$GetIsSupportSoterTask
     return 0;
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    super.e(paramParcel);
-    this.gls = paramParcel.readInt();
+    AppMethodBeat.i(3221);
+    super.f(paramParcel);
+    this.hFi = paramParcel.readInt();
+    AppMethodBeat.o(3221);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(3219);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.gls);
+    paramParcel.writeInt(this.hFi);
+    AppMethodBeat.o(3219);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bio.soter.JsApiCheckIsSupportSoterAuthentication.GetIsSupportSoterTask
  * JD-Core Version:    0.7.0.1
  */

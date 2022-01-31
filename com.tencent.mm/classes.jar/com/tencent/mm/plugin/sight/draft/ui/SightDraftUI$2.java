@@ -1,20 +1,24 @@
 package com.tencent.mm.plugin.sight.draft.ui;
 
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SightDraftUI$2
   implements a
 {
   SightDraftUI$2(SightDraftUI paramSightDraftUI) {}
   
-  public final void bBu()
+  public final void cmU()
   {
-    this.ohe.addTextOptionMenu(SightDraftUI.a(this.ohe), this.ohe.getString(R.l.sight_draft_save), new SightDraftUI.2.1(this));
+    AppMethodBeat.i(25026);
+    this.qVt.addTextOptionMenu(SightDraftUI.a(this.qVt), this.qVt.getString(2131303714), new SightDraftUI.2.1(this));
+    AppMethodBeat.o(25026);
   }
   
-  public final void bBv()
+  public final void cmV()
   {
-    this.ohe.removeOptionMenu(SightDraftUI.a(this.ohe));
+    AppMethodBeat.i(25027);
+    this.qVt.removeOptionMenu(SightDraftUI.a(this.qVt));
+    AppMethodBeat.o(25027);
   }
 }
 

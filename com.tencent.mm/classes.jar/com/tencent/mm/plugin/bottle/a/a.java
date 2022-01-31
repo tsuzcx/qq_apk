@@ -1,27 +1,40 @@
 package com.tencent.mm.plugin.bottle.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
 {
-  int bcw = -1;
-  String content = "";
-  int dXk = 0;
-  String dXm = "";
-  String dXn = "";
-  int emn = 0;
-  String hYd = "";
-  int hYe = 0;
-  String hYf = "";
-  int hYg = 0;
-  int hYh = 0;
-  long hYi = 0L;
-  int msgType = 0;
+  private int bsY;
+  String content;
+  int fCK;
+  int fns;
+  String fnu;
+  String fnv;
+  String jRR;
+  int jRS;
+  String jRT;
+  int jRU;
+  int jRV;
+  long jRW;
+  int msgType;
   
-  public final String awE()
+  public a()
   {
-    if (this.hYf == null) {
-      return "";
-    }
-    return this.hYf;
+    AppMethodBeat.i(18532);
+    this.bsY = -1;
+    this.jRR = "";
+    this.jRS = 0;
+    this.jRT = "";
+    this.jRU = 0;
+    this.msgType = 0;
+    this.jRV = 0;
+    this.content = "";
+    this.jRW = 0L;
+    this.fns = 0;
+    this.fCK = 0;
+    this.fnu = "";
+    this.fnv = "";
+    AppMethodBeat.o(18532);
   }
   
   public final String getContent()

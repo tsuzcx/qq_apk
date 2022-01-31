@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ay.a.a;
-import com.tencent.mm.ay.a.c;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.kernel.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.az.b.a;
+import com.tencent.mm.az.b.c;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.openim.a.a;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.bcm;
-import com.tencent.mm.protocal.c.bcn;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.sr;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bjp;
+import com.tencent.mm.protocal.protobuf.bjq;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.wr;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.be;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,123 +32,134 @@ import java.util.List;
 final class UnfamiliarContactDetailUI$d
   implements f, Runnable
 {
-  int index = 0;
-  int mdx = 0;
-  UnfamiliarContactDetailUI.g nXm;
-  Collection<Integer> nXn;
-  int nXo = 0;
-  LinkedList<String> nXp = new LinkedList();
-  LinkedList<i.b> nXq = new LinkedList();
+  int index;
+  int oDT;
+  LinkedList<j.b> qLA;
+  UnfamiliarContactDetailUI.g qLw;
+  Collection<Integer> qLx;
+  int qLy;
+  LinkedList<String> qLz;
   
   UnfamiliarContactDetailUI$d(Collection<Integer> paramCollection, UnfamiliarContactDetailUI.g paramg)
   {
-    this.nXn = paramg;
+    AppMethodBeat.i(127663);
+    this.oDT = 0;
+    this.qLy = 0;
+    this.index = 0;
+    this.qLz = new LinkedList();
+    this.qLA = new LinkedList();
+    this.qLx = paramg;
     Object localObject;
-    this.nXm = localObject;
+    this.qLw = localObject;
+    AppMethodBeat.o(127663);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(127665);
     if (paramm.getType() == 681)
     {
-      if ((((com.tencent.mm.ay.a)paramm).evQ != null) && ((a.c)((com.tencent.mm.ay.a)paramm).evQ.evT != null)) {
-        break label50;
-      }
-      y.e("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] rr is null!");
-    }
-    label50:
-    Object localObject;
-    do
-    {
-      return;
-      localObject = ((a.c)((com.tencent.mm.ay.a)paramm).evQ.evT).evV;
-      if ((((bcm)localObject).sze != 0) || (((bcm)localObject).txP == null) || (((bcm)localObject).txP.tcC == null))
+      if ((((com.tencent.mm.az.b)paramm).fLG == null) || ((b.c)((com.tencent.mm.az.b)paramm).fLG.getRespObj() == null))
       {
-        y.e("MicroMsg.UnfamiliarContactUI", "summeroplog tryStartNetscene onSceneEnd Ret:%d  not ok and no retry.", new Object[] { Integer.valueOf(((bcm)localObject).sze) });
+        ab.e("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] rr is null!");
+        AppMethodBeat.o(127665);
         return;
       }
-      paramString = ((com.tencent.mm.ay.a)paramm).evR;
-      paramm = ((bcm)localObject).txP.tcC;
-      y.i("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] list size:%s, result:%s", new Object[] { Integer.valueOf(paramString.size()), Integer.valueOf(paramm.size()) });
+      Object localObject = ((b.c)((com.tencent.mm.az.b)paramm).fLG.getRespObj()).fLL;
+      if ((((bjp)localObject).Ret != 0) || (((bjp)localObject).xxX == null) || (((bjp)localObject).xxX.xaU == null))
+      {
+        ab.e("MicroMsg.UnfamiliarContactUI", "summeroplog tryStartNetscene onSceneEnd Ret:%d  not ok and no retry.", new Object[] { Integer.valueOf(((bjp)localObject).Ret) });
+        AppMethodBeat.o(127665);
+        return;
+      }
+      paramString = ((com.tencent.mm.az.b)paramm).fLH;
+      paramm = ((bjp)localObject).xxX.xaU;
+      ab.i("MicroMsg.UnfamiliarContactUI", "[onSceneEnd] list size:%s, result:%s", new Object[] { Integer.valueOf(paramString.size()), Integer.valueOf(paramm.size()) });
       paramInt1 = 0;
       if (paramInt1 < paramString.size())
       {
-        localObject = (i.b)paramString.get(paramInt1);
-        if (((i.b)localObject).getCmdId() != 4) {
-          y.w("MicroMsg.UnfamiliarContactUI", "cmdId:%s operation:%s", new Object[] { Integer.valueOf(((i.b)localObject).getCmdId()), localObject.toString() });
+        localObject = (j.b)paramString.get(paramInt1);
+        if (((j.b)localObject).getCmdId() != 4) {
+          ab.w("MicroMsg.UnfamiliarContactUI", "cmdId:%s operation:%s", new Object[] { Integer.valueOf(((j.b)localObject).getCmdId()), localObject.toString() });
         }
         for (;;)
         {
           paramInt1 += 1;
           break;
-          this.mdx -= 1;
-          localObject = (sr)((i.b)localObject).mdD;
+          this.oDT -= 1;
+          localObject = (wr)((j.b)localObject).oDZ;
           if (((Integer)paramm.get(paramInt1)).intValue() == 0)
           {
-            this.nXo += 1;
-            localObject = ((j)g.r(j.class)).Fw().abl(aa.a(((sr)localObject).sQs));
+            this.qLy += 1;
+            localObject = ((j)g.E(j.class)).YA().arw(aa.a(((wr)localObject).wOT));
             if (localObject != null)
             {
-              ((ad)localObject).AI();
-              com.tencent.mm.model.bd.a(((ao)localObject).field_username, null);
-              ((j)g.r(j.class)).Fw().a(((ao)localObject).field_username, (ad)localObject);
-              ((j)g.r(j.class)).FB().abu(((ao)localObject).field_username);
-              this.nXp.add(((ao)localObject).field_username);
+              ((ad)localObject).Ny();
+              bf.a(((aq)localObject).field_username, null);
+              ((j)g.E(j.class)).YA().b(((aq)localObject).field_username, (ad)localObject);
+              ((j)g.E(j.class)).YF().arF(((aq)localObject).field_username);
+              this.qLz.add(((aq)localObject).field_username);
             }
           }
           else
           {
-            y.e("MicroMsg.UnfamiliarContactUI", "delete contact fail! ret:%s", new Object[] { paramm.get(paramInt1), aa.a(((sr)localObject).sQs) });
+            ab.e("MicroMsg.UnfamiliarContactUI", "delete contact fail! ret:%s", new Object[] { paramm.get(paramInt1), aa.a(((wr)localObject).wOT) });
           }
         }
       }
-    } while (this.mdx > 0);
-    paramString = this.nXp.iterator();
-    while (paramString.hasNext())
-    {
-      paramm = (String)paramString.next();
-      localObject = UnfamiliarContactDetailUI.f(this.nWX).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        if (((UnfamiliarContactDetailUI.b)((Iterator)localObject).next()).dnp.field_username.equals(paramm)) {
-          ((Iterator)localObject).remove();
+      if (this.oDT <= 0)
+      {
+        paramString = this.qLz.iterator();
+        while (paramString.hasNext())
+        {
+          paramm = (String)paramString.next();
+          localObject = UnfamiliarContactDetailUI.f(this.qLi).iterator();
+          while (((Iterator)localObject).hasNext()) {
+            if (((UnfamiliarContactDetailUI.b)((Iterator)localObject).next()).contact.field_username.equals(paramm)) {
+              ((Iterator)localObject).remove();
+            }
+          }
         }
+        UnfamiliarContactDetailUI.a(this.qLi, UnfamiliarContactDetailUI.f(this.qLi));
+        this.qLi.runOnUiThread(new UnfamiliarContactDetailUI.d.1(this));
       }
     }
-    UnfamiliarContactDetailUI.a(this.nWX, UnfamiliarContactDetailUI.f(this.nWX));
-    this.nWX.runOnUiThread(new UnfamiliarContactDetailUI.d.1(this));
+    AppMethodBeat.o(127665);
   }
   
   public final void run()
   {
-    this.mdx = this.nXn.size();
-    Iterator localIterator = this.nXn.iterator();
+    AppMethodBeat.i(127664);
+    this.oDT = this.qLx.size();
+    Iterator localIterator = this.qLx.iterator();
     while (localIterator.hasNext())
     {
       int i = ((Integer)localIterator.next()).intValue();
       this.index += 1;
-      int j = this.nXn.size();
+      int j = this.qLx.size();
       int k = this.index;
-      if (UnfamiliarContactDetailUI.e(this.nWX) != null)
+      if (UnfamiliarContactDetailUI.e(this.qLi) != null)
       {
-        ad localad = UnfamiliarContactDetailUI.e(this.nWX).xi(i).dnp;
-        if (ad.aaU(localad.field_username))
+        ad localad = UnfamiliarContactDetailUI.e(this.qLi).Dg(i).contact;
+        if (ad.arf(localad.field_username))
         {
-          ((com.tencent.mm.openim.a.a)g.r(com.tencent.mm.openim.a.a.class)).oO(localad.field_username);
+          ((a)g.E(a.class)).wg(localad.field_username);
         }
         else
         {
-          sr localsr = new sr();
-          localsr.sQs = new bml().YI(bk.pm(localad.field_username));
-          this.nXq.add(new i.a(4, localsr));
-          if ((this.nXq.size() % 20 == 0) || (k == j))
+          wr localwr = new wr();
+          localwr.wOT = new bwc().aoF(bo.nullAsNil(localad.field_username));
+          this.qLA.add(new j.a(4, localwr));
+          if ((this.qLA.size() % 20 == 0) || (k == j))
           {
-            g.DQ();
-            g.DO().dJT.a(new com.tencent.mm.ay.a(this.nXq), 0);
-            this.nXq.clear();
+            g.RM();
+            g.RK().eHt.a(new com.tencent.mm.az.b(this.qLA), 0);
+            this.qLA.clear();
           }
         }
       }
     }
+    AppMethodBeat.o(127664);
   }
 }
 

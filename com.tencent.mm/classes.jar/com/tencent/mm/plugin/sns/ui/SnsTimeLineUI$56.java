@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.h.a.qy;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kx;
 import com.tencent.mm.sdk.b.c;
 
 final class SnsTimeLineUI$56
-  extends c<qy>
+  extends c<kx>
 {
   SnsTimeLineUI$56(SnsTimeLineUI paramSnsTimeLineUI)
   {
-    this.udX = qy.class.getName().hashCode();
+    AppMethodBeat.i(39531);
+    this.__eventId = kx.class.getName().hashCode();
+    AppMethodBeat.o(39531);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.56
  * JD-Core Version:    0.7.0.1
  */

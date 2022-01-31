@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.h.a.cj;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cm;
 import com.tencent.mm.sdk.b.c;
 
 public final class a
-  extends c<cj>
+  extends c<cm>
 {
   public a()
   {
-    this.udX = cj.class.getName().hashCode();
+    AppMethodBeat.i(73914);
+    this.__eventId = cm.class.getName().hashCode();
+    AppMethodBeat.o(73914);
   }
 }
 

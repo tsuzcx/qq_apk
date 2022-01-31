@@ -1,37 +1,47 @@
 package com.tencent.mm.plugin.extqlauncher;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class b$1
-  implements m.b
+  implements n.b
 {
   b$1(b paramb) {}
   
-  public final void a(int paramInt, m paramm, Object paramObject)
+  public final void a(int paramInt, n paramn, Object paramObject)
   {
-    y.d("MicroMsg.SubCoreExtQLauncher", "onNotifyChange");
-    if (this.jMb.jLS) {}
-    do
+    AppMethodBeat.i(20473);
+    ab.d("MicroMsg.SubCoreExtQLauncher", "onNotifyChange");
+    if (this.mgf.mfW)
     {
-      return;
-      au.Hx();
-    } while (paramm != c.FB());
-    if ((paramm == null) || (paramObject == null))
-    {
-      y.e("MicroMsg.SubCoreExtQLauncher", "onConversationChange, wrong args");
+      AppMethodBeat.o(20473);
       return;
     }
-    if ((ae.getContext() == null) || (!au.DK()))
+    aw.aaz();
+    if (paramn != c.YF())
     {
-      y.w("MicroMsg.SubCoreExtQLauncher", "wrong account status");
+      AppMethodBeat.o(20473);
       return;
     }
-    this.jMb.aNR();
+    if ((paramn == null) || (paramObject == null))
+    {
+      ab.e("MicroMsg.SubCoreExtQLauncher", "onConversationChange, wrong args");
+      AppMethodBeat.o(20473);
+      return;
+    }
+    if ((ah.getContext() == null) || (!aw.RG()))
+    {
+      ab.w("MicroMsg.SubCoreExtQLauncher", "wrong account status");
+      AppMethodBeat.o(20473);
+      return;
+    }
+    this.mgf.btU();
+    AppMethodBeat.o(20473);
   }
 }
 

@@ -1,56 +1,63 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.h.a.s;
-import com.tencent.mm.h.a.s.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.s;
+import com.tencent.mm.g.a.s.b;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$a
   extends a
 {
   public String appId = "";
-  public String bFM = "";
+  public String ceu = "";
   public boolean error = false;
-  private i gfG;
-  public int gfg;
-  public c ggu;
+  public int hry;
+  private m hxs;
+  public c hyO;
   
-  public e$a(i parami, c paramc, int paramInt)
+  public e$a(m paramm, c paramc, int paramInt)
   {
-    this.gfG = parami;
-    this.ggu = paramc;
-    this.gfg = paramInt;
+    this.hxs = paramm;
+    this.hyO = paramc;
+    this.hry = paramInt;
   }
   
-  public final void ahX()
+  public final void Dh()
   {
-    y.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "runTask");
-    String str = this.bFM;
-    y.i("MicroMsg.AudioPlayerHelper", "destroyAudio, audioId:%s", new Object[] { str });
+    AppMethodBeat.i(137723);
+    ab.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "runTask");
+    String str = this.ceu;
+    ab.i("MicroMsg.AudioPlayerHelper", "destroyAudio, audioId:%s", new Object[] { str });
     s locals = new s();
-    locals.bFK.action = 5;
-    locals.bFK.bFM = str;
+    locals.cmS.action = 5;
+    locals.cmS.ceu = str;
     com.tencent.mm.plugin.music.b.a.a(locals);
-    this.error = locals.bFL.bFQ;
-    pQ();
+    this.error = locals.cmT.cmX;
+    tU();
+    AppMethodBeat.o(137723);
   }
   
-  public final void pQ()
+  public final void tU()
   {
-    super.pQ();
-    y.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "callback");
-    if (this.ggu == null)
+    AppMethodBeat.i(137724);
+    super.tU();
+    ab.i("MicroMsg.Audio.JsApiDestroyInstanceAudio", "callback");
+    if (this.hyO == null)
     {
-      y.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "server is null");
+      ab.e("MicroMsg.Audio.JsApiDestroyInstanceAudio", "server is null");
+      AppMethodBeat.o(137724);
       return;
     }
     if (this.error)
     {
-      this.ggu.C(this.gfg, this.gfG.h("fail", null));
+      this.hyO.h(this.hry, this.hxs.j("fail", null));
+      AppMethodBeat.o(137724);
       return;
     }
-    this.ggu.C(this.gfg, this.gfG.h("ok", null));
+    this.hyO.h(this.hry, this.hxs.j("ok", null));
+    AppMethodBeat.o(137724);
   }
 }
 

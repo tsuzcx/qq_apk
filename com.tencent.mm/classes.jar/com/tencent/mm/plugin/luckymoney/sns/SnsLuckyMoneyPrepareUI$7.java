@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.luckymoney.sns;
 import android.view.View;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.ScaleAnimation;
-import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsLuckyMoneyPrepareUI$7
   implements Runnable
@@ -12,12 +12,14 @@ final class SnsLuckyMoneyPrepareUI$7
   
   public final void run()
   {
-    SnsLuckyMoneyPrepareUI.l(this.lTI).setVisibility(0);
+    AppMethodBeat.i(42513);
+    SnsLuckyMoneyPrepareUI.l(this.oqN).setVisibility(0);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(800L);
     localScaleAnimation.setStartOffset(200L);
     localScaleAnimation.setInterpolator(new BounceInterpolator());
-    this.lTI.findViewById(a.f.lucky_money_prepare_ready_packet_ll).startAnimation(localScaleAnimation);
+    this.oqN.findViewById(2131825802).startAnimation(localScaleAnimation);
+    AppMethodBeat.o(42513);
   }
 }
 

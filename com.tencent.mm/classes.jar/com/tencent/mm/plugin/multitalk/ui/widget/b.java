@@ -2,40 +2,62 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import android.content.Context;
 import android.graphics.Point;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.ui.af;
 
 public final class b
 {
-  public static final int mvA = a.fromDPToPix(ae.getContext(), 26);
-  public static final int mvB = a.fromDPToPix(ae.getContext(), 32);
-  public static final int mvC = a.fromDPToPix(ae.getContext(), 96);
-  public static final int mvD = a.fromDPToPix(ae.getContext(), 76);
-  public static final int mvE = a.fromDPToPix(ae.getContext(), 230);
-  private static int mvF = 0;
-  public static final int mvu = a.fromDPToPix(ae.getContext(), 3);
-  public static final int mvv = a.fromDPToPix(ae.getContext(), 4);
-  public static final int mvw = a.fromDPToPix(ae.getContext(), 8);
-  public static final int mvx = a.fromDPToPix(ae.getContext(), 10);
-  public static final int mvy = a.fromDPToPix(ae.getContext(), 14);
-  public static final int mvz = a.fromDPToPix(ae.getContext(), 30);
+  public static final int oVm;
+  public static final int oVn;
+  public static final int oVo;
+  public static final int oVp;
+  public static final int oVq;
+  public static final int oVr;
+  public static final int oVs;
+  public static final int oVt;
+  public static final int oVu;
+  public static final int oVv;
+  public static final int oVw;
+  private static int oVx;
   
-  public static int dS(Context paramContext)
+  static
   {
-    if (mvF <= 0)
+    AppMethodBeat.i(54187);
+    oVm = a.fromDPToPix(ah.getContext(), 3);
+    oVn = a.fromDPToPix(ah.getContext(), 4);
+    oVo = a.fromDPToPix(ah.getContext(), 8);
+    oVp = a.fromDPToPix(ah.getContext(), 10);
+    oVq = a.fromDPToPix(ah.getContext(), 14);
+    oVr = a.fromDPToPix(ah.getContext(), 30);
+    oVs = a.fromDPToPix(ah.getContext(), 26);
+    oVt = a.fromDPToPix(ah.getContext(), 32);
+    oVu = a.fromDPToPix(ah.getContext(), 96);
+    oVv = a.fromDPToPix(ah.getContext(), 76);
+    oVw = a.fromDPToPix(ah.getContext(), 230);
+    oVx = 0;
+    AppMethodBeat.o(54187);
+  }
+  
+  public static int eF(Context paramContext)
+  {
+    AppMethodBeat.i(54186);
+    if (oVx <= 0)
     {
-      paramContext = ak.gx(paramContext);
-      mvF = paramContext.y - mvE;
-      y.i("MicroMsg.MultiTalkDimensUtil", "getMultiTalkAvatarBoardHeight, displaySize: %s, MultiTalkAvatarBoardHeight: %s", new Object[] { paramContext, Integer.valueOf(mvF) });
+      paramContext = af.hQ(paramContext);
+      oVx = paramContext.y - oVw;
+      ab.i("MicroMsg.MultiTalkDimensUtil", "getMultiTalkAvatarBoardHeight, displaySize: %s, MultiTalkAvatarBoardHeight: %s", new Object[] { paramContext, Integer.valueOf(oVx) });
     }
-    return mvF;
+    int i = oVx;
+    AppMethodBeat.o(54186);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.b
  * JD-Core Version:    0.7.0.1
  */

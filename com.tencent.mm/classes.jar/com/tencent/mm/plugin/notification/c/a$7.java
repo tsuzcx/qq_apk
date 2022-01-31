@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.notification.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$7
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$7
   
   public final void run()
   {
-    a.a(this.mIE, this.byn);
+    AppMethodBeat.i(23109);
+    a.a(this.piT, this.cap);
+    AppMethodBeat.o(23109);
   }
 }
 

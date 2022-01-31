@@ -1,17 +1,17 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.j.d;
+import com.tencent.mm.i.d;
 
 public final class n$a
 {
-  public String bRS;
-  public String czr;
-  public d eGu;
-  public String eHd;
-  public String eHe;
-  public String eHf;
-  public int eHg;
-  public int eHh;
+  public String czt;
+  public String dns;
+  public String fWT;
+  public String fWU;
+  public String fWV;
+  public int fWW;
+  public int fWX;
+  public d fWk;
   public long startTime;
   public String toUser;
   
@@ -19,7 +19,7 @@ public final class n$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelvideo.n.a
  * JD-Core Version:    0.7.0.1
  */

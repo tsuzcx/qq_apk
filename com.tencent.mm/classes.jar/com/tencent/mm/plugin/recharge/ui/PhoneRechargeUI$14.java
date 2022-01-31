@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.recharge.ui;
 
-import com.tencent.mm.h.a.tp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vk;
 import com.tencent.mm.sdk.b.c;
 
 final class PhoneRechargeUI$14
-  extends c<tp>
+  extends c<vk>
 {
   PhoneRechargeUI$14(PhoneRechargeUI paramPhoneRechargeUI)
   {
-    this.udX = tp.class.getName().hashCode();
+    AppMethodBeat.i(44267);
+    this.__eventId = vk.class.getName().hashCode();
+    AppMethodBeat.o(44267);
   }
 }
 

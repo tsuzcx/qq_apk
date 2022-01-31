@@ -1,68 +1,82 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.ub;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.vx;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class af
   implements f
 {
-  c dii = new af.1(this);
+  c dZC;
   
   public af()
   {
-    a.udP.c(this.dii);
+    AppMethodBeat.i(19410);
+    this.dZC = new af.1(this);
+    a.ymk.c(this.dZC);
+    AppMethodBeat.o(19410);
   }
   
-  private static void as(String paramString, boolean paramBoolean)
+  private static void aD(String paramString, boolean paramBoolean)
   {
-    y.i("MicroMsg.WearHardDeviceLogic", "publish auth response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    ub localub = new ub();
-    localub.cez.bHz = 8;
-    localub.cez.bKQ = paramBoolean;
-    localub.cez.bwK = paramString;
-    a.udP.m(localub);
+    AppMethodBeat.i(19412);
+    ab.i("MicroMsg.WearHardDeviceLogic", "publish auth response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    vx localvx = new vx();
+    localvx.cNm.coO = 8;
+    localvx.cNm.csk = paramBoolean;
+    localvx.cNm.bYu = paramString;
+    a.ymk.l(localvx);
+    AppMethodBeat.o(19412);
   }
   
-  private static void at(String paramString, boolean paramBoolean)
+  private static void aE(String paramString, boolean paramBoolean)
   {
-    y.i("MicroMsg.WearHardDeviceLogic", "publish send response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    ub localub = new ub();
-    localub.cez.bHz = 5;
-    localub.cez.bKQ = paramBoolean;
-    localub.cez.bwK = paramString;
-    a.udP.m(localub);
+    AppMethodBeat.i(19413);
+    ab.i("MicroMsg.WearHardDeviceLogic", "publish send response deviceId=%s | isSuccess=%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    vx localvx = new vx();
+    localvx.cNm.coO = 5;
+    localvx.cNm.csk = paramBoolean;
+    localvx.cNm.bYu = paramString;
+    a.ymk.l(localvx);
+    AppMethodBeat.o(19413);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(19411);
     if ((paramm instanceof r))
     {
-      au.Dk().b(541, this);
+      aw.Rc().b(541, this);
       paramString = (r)paramm;
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        as(paramString.jvX, true);
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        aD(paramString.lFw, true);
+        AppMethodBeat.o(19411);
+        return;
       }
+      aD(paramString.lFw, false);
+      AppMethodBeat.o(19411);
+      return;
     }
-    while (!(paramm instanceof w))
+    if ((paramm instanceof w))
     {
-      return;
-      as(paramString.jvX, false);
-      return;
+      aw.Rc().b(538, this);
+      paramString = (w)paramm;
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        aE(paramString.lFy, true);
+        AppMethodBeat.o(19411);
+        return;
+      }
+      aE(paramString.lFy, false);
     }
-    au.Dk().b(538, this);
-    paramString = (w)paramm;
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      at(paramString.jvZ, true);
-      return;
-    }
-    at(paramString.jvZ, false);
+    AppMethodBeat.o(19411);
   }
 }
 

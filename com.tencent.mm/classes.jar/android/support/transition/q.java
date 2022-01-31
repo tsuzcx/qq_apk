@@ -8,25 +8,25 @@ import android.util.Property;
 
 final class q
 {
-  private static final t rh = new r();
+  private static final t sf = new r();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      rh = new s();
+      sf = new s();
       return;
     }
   }
   
   static <T> ObjectAnimator a(T paramT, Property<T, PointF> paramProperty, Path paramPath)
   {
-    return rh.a(paramT, paramProperty, paramPath);
+    return sf.a(paramT, paramProperty, paramPath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.transition.q
  * JD-Core Version:    0.7.0.1
  */

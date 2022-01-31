@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.support.v4.app.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
 final class JsApiChooseMedia$3
@@ -13,19 +14,23 @@ final class JsApiChooseMedia$3
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
+    AppMethodBeat.i(131156);
     if (paramInt != 120)
     {
-      y.e("MicroMsg.JsApiChooseMedia", "requestAudioPermission requestCode is not for choose media");
+      ab.e("MicroMsg.JsApiChooseMedia", "requestAudioPermission requestCode is not for choose media");
+      AppMethodBeat.o(131156);
       return;
     }
     if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
     {
-      y.i("MicroMsg.JsApiChooseMedia", "requestAudioPermission permission is grant for choose media");
-      this.gvD.a(this.ggH, this.gbZ, this.dIS);
+      ab.i("MicroMsg.JsApiChooseMedia", "requestAudioPermission permission is grant for choose media");
+      this.hQU.a(this.hxW, this.bBa, this.bAX);
+      AppMethodBeat.o(131156);
       return;
     }
-    y.e("MicroMsg.JsApiChooseMedia", "requestAudioPermission sys perm denied for choose media");
-    this.ggH.C(this.dIS, this.gvD.h("fail:system permission denied", null));
+    ab.e("MicroMsg.JsApiChooseMedia", "requestAudioPermission sys perm denied for choose media");
+    this.hxW.h(this.bAX, this.hQU.j("fail:system permission denied", null));
+    AppMethodBeat.o(131156);
   }
 }
 

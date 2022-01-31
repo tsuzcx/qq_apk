@@ -3,46 +3,41 @@ package com.tencent.mm.plugin.webview.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WebViewJSSDKVideoItem
   extends WebViewJSSDKFileItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebViewJSSDKVideoItem> CREATOR = new WebViewJSSDKVideoItem.1();
+  public static final Parcelable.Creator<WebViewJSSDKVideoItem> CREATOR;
   public int duration;
-  public int height;
-  public int size;
-  public int width;
+  
+  static
+  {
+    AppMethodBeat.i(6731);
+    CREATOR = new WebViewJSSDKVideoItem.1();
+    AppMethodBeat.o(6731);
+  }
   
   public WebViewJSSDKVideoItem()
   {
-    this.bLN = 4;
+    this.cth = 4;
   }
   
   protected WebViewJSSDKVideoItem(Parcel paramParcel)
   {
     super(paramParcel);
-    this.bLN = paramParcel.readInt();
+    AppMethodBeat.i(6729);
     this.duration = paramParcel.readInt();
-    this.size = paramParcel.readInt();
-    this.width = paramParcel.readInt();
-    this.height = paramParcel.readInt();
+    AppMethodBeat.o(6729);
   }
   
-  public final WebViewJSSDKFileItem cbT()
+  public final WebViewJSSDKFileItem dca()
   {
-    this.bMB = am.So(this.fMZ);
+    AppMethodBeat.i(6728);
+    this.ctV = ar.ahn(this.hgj);
+    AppMethodBeat.o(6728);
     return this;
-  }
-  
-  public final String cbU()
-  {
-    return "mp4";
-  }
-  
-  public final String cbV()
-  {
-    return "video";
   }
   
   public int describeContents()
@@ -50,14 +45,22 @@ public class WebViewJSSDKVideoItem
     return 0;
   }
   
+  public final String dyR()
+  {
+    return "mp4";
+  }
+  
+  public final String dzk()
+  {
+    return "video";
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(6730);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeInt(this.bLN);
     paramParcel.writeInt(this.duration);
-    paramParcel.writeInt(this.size);
-    paramParcel.writeInt(this.width);
-    paramParcel.writeInt(this.height);
+    AppMethodBeat.o(6730);
   }
 }
 

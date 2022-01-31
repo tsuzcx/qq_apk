@@ -1,36 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f.d;
 
 final class b$7
-  implements AppBrandLivePlayerView.c
+  implements AppBrandLivePusherView.c
 {
-  b$7(b paramb, int paramInt, e parame) {}
+  b$7(b paramb, e parame, f.d paramd, f.b paramb1) {}
   
-  public final void f(boolean paramBoolean, int paramInt)
+  public final void aDj()
   {
-    b.a locala = new b.a((byte)0);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("fullScreen", paramBoolean);
-      localJSONObject.put("direction", paramInt);
-      localJSONObject.put("livePlayerId", this.gkY);
-      label48:
-      this.gkV.b(locala.tM(localJSONObject.toString()));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      break label48;
-    }
+    AppMethodBeat.i(96095);
+    this.hEL.b(this.hNG);
+    this.hEL.b(this.hNF);
+    AppMethodBeat.o(96095);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.b.7
  * JD-Core Version:    0.7.0.1
  */

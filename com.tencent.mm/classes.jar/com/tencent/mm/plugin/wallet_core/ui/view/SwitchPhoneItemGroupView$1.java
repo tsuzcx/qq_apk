@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet_core.ui.view;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.wxpay.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -14,14 +14,16 @@ final class SwitchPhoneItemGroupView$1
   
   public final void onClick(View paramView)
   {
-    Iterator localIterator = this.qHQ.qHN.iterator();
+    AppMethodBeat.i(47880);
+    Iterator localIterator = this.uwB.uwy.iterator();
     while (localIterator.hasNext()) {
-      ((SwitchPhoneItemView)localIterator.next()).qHT.setImageResource(a.h.radio_off);
+      ((SwitchPhoneItemView)localIterator.next()).uwE.setImageResource(2131231905);
     }
-    ((SwitchPhoneItemView)paramView).qHT.setImageResource(a.h.radio_on);
-    if (SwitchPhoneItemGroupView.a(this.qHQ) != null) {
-      SwitchPhoneItemGroupView.a(this.qHQ).dp(paramView);
+    ((SwitchPhoneItemView)paramView).uwE.setImageResource(2131231906);
+    if (SwitchPhoneItemGroupView.a(this.uwB) != null) {
+      SwitchPhoneItemGroupView.a(this.uwB).eu(paramView);
     }
+    AppMethodBeat.o(47880);
   }
 }
 

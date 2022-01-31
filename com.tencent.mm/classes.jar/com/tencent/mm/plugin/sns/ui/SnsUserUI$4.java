@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.statusbar.c.a;
 import com.tencent.mm.ui.statusbar.d;
 
@@ -9,10 +10,12 @@ final class SnsUserUI$4
 {
   SnsUserUI$4(SnsUserUI paramSnsUserUI) {}
   
-  public final void ml(int paramInt)
+  public final void pB(int paramInt)
   {
-    SnsUserUI.n(this.pjB).setPadding(0, paramInt, 0, 0);
-    d.a(this.pjB.getWindow());
+    AppMethodBeat.i(39788);
+    SnsUserUI.n(this.sce).setPadding(0, paramInt, 0, 0);
+    d.a(this.sce.getWindow());
+    AppMethodBeat.o(39788);
   }
 }
 

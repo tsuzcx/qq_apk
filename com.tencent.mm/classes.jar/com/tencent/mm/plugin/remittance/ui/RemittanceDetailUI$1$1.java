@@ -2,21 +2,23 @@ package com.tencent.mm.plugin.remittance.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.a.nl;
-import com.tencent.mm.h.a.nl.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ok;
+import com.tencent.mm.g.a.ok.a;
 import com.tencent.mm.plugin.remittance.model.u;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class RemittanceDetailUI$1$1
   implements DialogInterface.OnClickListener
 {
-  RemittanceDetailUI$1$1(RemittanceDetailUI.1 param1, nl paramnl) {}
+  RemittanceDetailUI$1$1(RemittanceDetailUI.1 param1, ok paramok) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new u(this.nDn.bXc.bMY, this.nDn.bXc.bQR, this.nDn.bXc.bXd, "refuse", this.nDn.bXc.bXe, this.nDn.bXc.bXf);
-    paramDialogInterface.dIA = "RemittanceProcess";
-    this.nDo.nDm.a(paramDialogInterface, true, true);
+    AppMethodBeat.i(44992);
+    paramDialogInterface = new u(this.qpZ.cEV.cnJ, this.qpZ.cEV.cyr, this.qpZ.cEV.cEW, "refuse", this.qpZ.cEV.cEX, this.qpZ.cEV.cEY);
+    paramDialogInterface.setProcessName("RemittanceProcess");
+    this.qqa.qpY.doSceneProgress(paramDialogInterface);
+    AppMethodBeat.o(44992);
   }
 }
 

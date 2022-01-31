@@ -1,62 +1,88 @@
 package com.tencent.mm.plugin.mall.b;
 
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.h.a.rp;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.g.a.tg;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.text.SimpleDateFormat;
 
 public final class a
 {
-  private static SimpleDateFormat izc = null;
-  private static SimpleDateFormat izd = null;
-  private static final String maC = e.bkH + "wallet/mall";
+  private static SimpleDateFormat kCj;
+  private static SimpleDateFormat kCk;
+  private static final String oBb;
   
-  public static void bgU()
+  static
   {
-    rp localrp = new rp();
-    localrp.cbe.cbf = false;
-    com.tencent.mm.sdk.b.a.udP.m(localrp);
+    AppMethodBeat.i(43283);
+    kCj = null;
+    kCk = null;
+    oBb = e.eQz + "wallet/mall";
+    AppMethodBeat.o(43283);
   }
   
-  public static void f(ImageView paramImageView, String paramString, int paramInt)
+  private static String SA(String paramString)
   {
-    Object localObject = null;
-    if (paramImageView == null) {}
-    do
+    AppMethodBeat.i(43282);
+    if (bo.isNullOrNil(paramString))
     {
-      return;
-      paramImageView.setImageBitmap(null);
-      if (!bk.bl(paramString))
-      {
-        c.a locala = new c.a();
-        if (bk.bl(paramString)) {}
-        for (;;)
-        {
-          locala.eri = ((String)localObject);
-          locala.erf = true;
-          locala.erC = true;
-          locala.erD = false;
-          if (paramInt != 0) {
-            locala.eru = paramInt;
-          }
-          localObject = locala.OV();
-          o.ON().a(paramString, paramImageView, (c)localObject);
-          return;
-          localObject = String.format("%s/%s", new Object[] { maC, g.o(paramString.getBytes()) });
-        }
-      }
-    } while (paramInt == 0);
-    paramImageView.setImageResource(paramInt);
+      AppMethodBeat.o(43282);
+      return null;
+    }
+    paramString = String.format("%s/%s", new Object[] { oBb, g.w(paramString.getBytes()) });
+    AppMethodBeat.o(43282);
+    return paramString;
   }
   
-  public static void j(ImageView paramImageView, String paramString)
+  public static void bOS()
   {
-    f(paramImageView, paramString, 0);
+    AppMethodBeat.i(43279);
+    tg localtg = new tg();
+    localtg.cJH.cJI = false;
+    com.tencent.mm.sdk.b.a.ymk.l(localtg);
+    AppMethodBeat.o(43279);
+  }
+  
+  public static void d(ImageView paramImageView, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(43281);
+    if (paramImageView == null)
+    {
+      AppMethodBeat.o(43281);
+      return;
+    }
+    paramImageView.setImageBitmap(null);
+    if (!bo.isNullOrNil(paramString))
+    {
+      Object localObject = new c.a();
+      ((c.a)localObject).eNP = SA(paramString);
+      ((c.a)localObject).eNM = true;
+      ((c.a)localObject).eOe = true;
+      ((c.a)localObject).eOk = false;
+      if (paramInt != 0) {
+        ((c.a)localObject).eNY = paramInt;
+      }
+      localObject = ((c.a)localObject).ahY();
+      o.ahG().a(paramString, paramImageView, (c)localObject);
+      AppMethodBeat.o(43281);
+      return;
+    }
+    if (paramInt != 0) {
+      paramImageView.setImageResource(paramInt);
+    }
+    AppMethodBeat.o(43281);
+  }
+  
+  public static void o(ImageView paramImageView, String paramString)
+  {
+    AppMethodBeat.i(43280);
+    d(paramImageView, paramString, 0);
+    AppMethodBeat.o(43280);
   }
 }
 

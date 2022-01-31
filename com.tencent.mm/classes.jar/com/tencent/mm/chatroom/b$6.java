@@ -1,14 +1,17 @@
 package com.tencent.mm.chatroom;
 
-import com.tencent.mm.h.a.rn;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.te;
 import com.tencent.mm.sdk.b.c;
 
 final class b$6
-  extends c<rn>
+  extends c<te>
 {
   b$6(b paramb)
   {
-    this.udX = rn.class.getName().hashCode();
+    AppMethodBeat.i(103884);
+    this.__eventId = te.class.getName().hashCode();
+    AppMethodBeat.o(103884);
   }
 }
 

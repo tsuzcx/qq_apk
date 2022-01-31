@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import android.os.Bundle;
-import com.tencent.mm.protocal.c.bna;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bwv;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -11,55 +12,62 @@ final class JsApiLogin$LoginTask$1
 {
   JsApiLogin$LoginTask$1(JsApiLogin.LoginTask paramLoginTask) {}
   
-  public final void G(int paramInt, String paramString)
+  public final void Q(int paramInt, String paramString)
   {
-    y.i("MicroMsg.JsApiLogin", "onFailure !");
-    this.gjU.gjM = "fail";
-    this.gjU.errCode = paramInt;
-    this.gjU.aox = paramString;
-    JsApiLogin.LoginTask.b(this.gjU);
+    AppMethodBeat.i(130855);
+    ab.i("MicroMsg.JsApiLogin", "onFailure !");
+    this.hDP.hDz = "fail";
+    this.hDP.errCode = paramInt;
+    this.hDP.errMsg = paramString;
+    JsApiLogin.LoginTask.b(this.hDP);
+    AppMethodBeat.o(130855);
   }
   
-  public final void a(LinkedList<bna> paramLinkedList, String paramString1, String paramString2, String paramString3)
+  public final void a(LinkedList<bwv> paramLinkedList, String paramString1, String paramString2, String paramString3)
   {
-    y.i("MicroMsg.JsApiLogin", "onConfirm !");
-    this.gjU.gjO = paramLinkedList.size();
+    AppMethodBeat.i(130856);
+    ab.i("MicroMsg.JsApiLogin", "onConfirm !");
+    this.hDP.hDH = paramLinkedList.size();
     int i = 0;
-    while (i < this.gjU.gjO)
+    while (i < this.hDP.hDH)
     {
-      bna localbna = (bna)paramLinkedList.get(i);
+      bwv localbwv = (bwv)paramLinkedList.get(i);
       try
       {
-        this.gjU.gjP.putByteArray(String.valueOf(i), localbna.toByteArray());
+        this.hDP.hDI.putByteArray(String.valueOf(i), localbwv.toByteArray());
         i += 1;
       }
       catch (IOException paramLinkedList)
       {
-        y.e("MicroMsg.JsApiLogin", "IOException %s", new Object[] { paramLinkedList.getMessage() });
-        y.printErrStackTrace("MicroMsg.JsApiLogin", paramLinkedList, "", new Object[0]);
-        this.gjU.gjM = "fail";
-        JsApiLogin.LoginTask.c(this.gjU);
+        ab.e("MicroMsg.JsApiLogin", "IOException %s", new Object[] { paramLinkedList.getMessage() });
+        ab.printErrStackTrace("MicroMsg.JsApiLogin", paramLinkedList, "", new Object[0]);
+        this.hDP.hDz = "fail";
+        JsApiLogin.LoginTask.c(this.hDP);
+        AppMethodBeat.o(130856);
         return;
       }
     }
-    this.gjU.gif = paramString3;
-    this.gjU.mAppName = paramString1;
-    this.gjU.fXS = paramString2;
-    this.gjU.gjM = "needConfirm";
-    JsApiLogin.LoginTask.d(this.gjU);
+    this.hDP.hBt = paramString3;
+    this.hDP.mAppName = paramString1;
+    this.hDP.hDB = paramString2;
+    this.hDP.hDz = "needConfirm";
+    JsApiLogin.LoginTask.d(this.hDP);
+    AppMethodBeat.o(130856);
   }
   
   public final void onSuccess(String paramString)
   {
-    y.i("MicroMsg.JsApiLogin", "onSuccess !");
-    this.gjU.code = paramString;
-    this.gjU.gjM = "ok";
-    JsApiLogin.LoginTask.a(this.gjU);
+    AppMethodBeat.i(130854);
+    ab.i("MicroMsg.JsApiLogin", "onSuccess !");
+    this.hDP.code = paramString;
+    this.hDP.hDz = "ok";
+    JsApiLogin.LoginTask.a(this.hDP);
+    AppMethodBeat.o(130854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.JsApiLogin.LoginTask.1
  * JD-Core Version:    0.7.0.1
  */

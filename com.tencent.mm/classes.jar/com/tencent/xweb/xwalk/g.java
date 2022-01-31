@@ -1,78 +1,91 @@
 package com.tencent.xweb.xwalk;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.webkit.ValueCallback;
-import com.tencent.xweb.d;
-import java.net.URL;
-import java.nio.ByteBuffer;
-import org.xwalk.core.XWalkV8;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.webkit.WebChromeClient.CustomViewCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.c.f;
+import com.tencent.xweb.i;
+import com.tencent.xweb.j;
+import org.xwalk.core.XWalkView;
 
 public final class g
-  implements com.tencent.xweb.c.g
+  implements f
 {
-  HandlerThread xlH = new HandlerThread("j2v8");
-  private Handler xlI;
-  XWalkV8 xlX;
+  l BJD;
+  m BJE;
+  XWalkView BJF;
   
-  public g()
+  public g(XWalkView paramXWalkView)
   {
-    this.xlH.start();
-    this.xlI = new Handler(this.xlH.getLooper());
+    AppMethodBeat.i(85230);
+    this.BJF = paramXWalkView;
+    this.BJD = new l(paramXWalkView);
+    this.BJE = new m(paramXWalkView);
+    AppMethodBeat.o(85230);
   }
   
-  public final void a(d paramd) {}
-  
-  public final void addJavascriptInterface(Object paramObject, String paramString)
+  public final boolean a(String paramString1, String paramString2, j paramj)
   {
-    this.xlI.post(new g.4(this, paramObject, paramString));
-  }
-  
-  public final boolean cSJ()
-  {
+    AppMethodBeat.i(85234);
+    if ((paramj instanceof f.c))
+    {
+      boolean bool = this.BJD.b(this.BJF, paramString1, paramString2, ((f.c)paramj).BJA);
+      AppMethodBeat.o(85234);
+      return bool;
+    }
+    AppMethodBeat.o(85234);
     return false;
   }
   
-  public final boolean cSj()
+  public final boolean a(String paramString1, String paramString2, String paramString3, i parami)
   {
+    AppMethodBeat.i(85236);
+    if ((parami instanceof f.e))
+    {
+      boolean bool = this.BJD.a(this.BJF, paramString1, paramString2, paramString3, ((f.e)parami).BJA);
+      AppMethodBeat.o(85236);
+      return bool;
+    }
+    AppMethodBeat.o(85236);
     return false;
   }
   
-  public final void cleanup()
+  public final boolean b(String paramString1, String paramString2, j paramj)
   {
-    this.xlI.post(new g.2(this));
+    AppMethodBeat.i(85235);
+    if ((paramj instanceof f.c))
+    {
+      boolean bool = this.BJD.a(this.BJF, paramString1, paramString2, ((f.c)paramj).BJA);
+      AppMethodBeat.o(85235);
+      return bool;
+    }
+    AppMethodBeat.o(85235);
+    return false;
   }
   
-  public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
+  public final void onHideCustomView()
   {
-    this.xlI.post(new g.3(this, paramString, paramValueCallback));
+    AppMethodBeat.i(85233);
+    this.BJD.dZW();
+    AppMethodBeat.o(85233);
   }
   
-  public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback, URL paramURL)
+  public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    evaluateJavascript(paramString, paramValueCallback);
+    AppMethodBeat.i(85232);
+    if ((paramCustomViewCallback instanceof f.a)) {
+      this.BJD.a(paramView, ((f.a)paramCustomViewCallback).BJy);
+    }
+    AppMethodBeat.o(85232);
   }
   
-  public final ByteBuffer getNativeBuffer(int paramInt)
+  public final void w(String paramString, Bitmap paramBitmap)
   {
-    return null;
+    AppMethodBeat.i(85231);
+    this.BJD.a(this.BJF, paramString);
+    AppMethodBeat.o(85231);
   }
-  
-  public final int getNativeBufferId()
-  {
-    return 0;
-  }
-  
-  public final void init(int paramInt)
-  {
-    this.xlI.post(new g.1(this, paramInt));
-  }
-  
-  public final void pause() {}
-  
-  public final void resume() {}
-  
-  public final void setNativeBuffer(int paramInt, ByteBuffer paramByteBuffer) {}
 }
 
 

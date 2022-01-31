@@ -1,34 +1,24 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.c.a;
-import com.tencent.mm.pluginsdk.f.i;
-import com.tencent.mm.protocal.c.bxs;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.vfs.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j$4
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  j$4(j paramj, bxs parambxs) {}
+  j$4(j paramj) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.vTo != null) && (this.vTo.lnA.equalsIgnoreCase(i.eU(ae.getContext()))))
-    {
-      if ((e.bK(this.vTo.tNK)) && (a.cd(this.vTo.tNK))) {
-        ai.d(new j.4.1(this));
-      }
-    }
-    else {
-      return;
-    }
-    ai.d(new j.4.2(this));
+    AppMethodBeat.i(34465);
+    paramDialogInterface.dismiss();
+    AppMethodBeat.o(34465);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.j.4
  * JD-Core Version:    0.7.0.1
  */

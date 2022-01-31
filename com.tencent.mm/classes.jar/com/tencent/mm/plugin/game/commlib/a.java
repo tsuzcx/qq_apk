@@ -1,312 +1,475 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import android.content.Context;
-import com.tencent.mm.loader.a.b;
+import android.content.SharedPreferences;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.j.b;
 import com.tencent.mm.m.e;
 import com.tencent.mm.m.g;
-import com.tencent.mm.plugin.game.d.ab;
-import com.tencent.mm.plugin.game.d.aj;
-import com.tencent.mm.plugin.game.d.ax;
-import com.tencent.mm.plugin.game.d.ct;
-import com.tencent.mm.plugin.game.d.dc;
+import com.tencent.mm.plugin.game.d.ac;
+import com.tencent.mm.plugin.game.d.ak;
+import com.tencent.mm.plugin.game.d.ay;
+import com.tencent.mm.plugin.game.d.cu;
+import com.tencent.mm.plugin.game.d.dd;
 import com.tencent.mm.plugin.game.d.dm;
+import com.tencent.mm.plugin.game.d.do;
+import com.tencent.mm.plugin.game.d.dp;
 import com.tencent.mm.plugin.game.d.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.game.d.r;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
 {
-  private static final String kLX = b.dOP + "game/";
-  private static final String kLY = kLX + "globalconfig";
-  private static ax kLZ;
+  private static final String niR;
+  public static final String niS;
+  private static ay niT;
+  
+  static
+  {
+    AppMethodBeat.i(116984);
+    niR = b.eQv + "game/";
+    niS = niR + "globalconfig";
+    AppMethodBeat.o(116984);
+  }
   
   /* Error */
-  public static void a(ax paramax)
+  public static void a(ay paramay)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: putstatic 44	com/tencent/mm/plugin/game/commlib/a:kLZ	Lcom/tencent/mm/plugin/game/d/ax;
-    //   4: aload_0
-    //   5: getfield 50	com/tencent/mm/plugin/game/d/ax:kUl	Lcom/tencent/mm/plugin/game/d/r;
-    //   8: ifnull +27 -> 35
-    //   11: invokestatic 56	com/tencent/mm/kernel/g:DP	()Lcom/tencent/mm/kernel/e;
-    //   14: invokevirtual 62	com/tencent/mm/kernel/e:Dz	()Lcom/tencent/mm/storage/z;
-    //   17: getstatic 68	com/tencent/mm/storage/ac$a:uzR	Lcom/tencent/mm/storage/ac$a;
-    //   20: getstatic 44	com/tencent/mm/plugin/game/commlib/a:kLZ	Lcom/tencent/mm/plugin/game/d/ax;
-    //   23: getfield 50	com/tencent/mm/plugin/game/d/ax:kUl	Lcom/tencent/mm/plugin/game/d/r;
-    //   26: getfield 74	com/tencent/mm/plugin/game/d/r:kST	Z
-    //   29: invokestatic 80	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   32: invokevirtual 86	com/tencent/mm/storage/z:c	(Lcom/tencent/mm/storage/ac$a;Ljava/lang/Object;)V
-    //   35: new 88	java/io/File
-    //   38: dup
-    //   39: getstatic 33	com/tencent/mm/plugin/game/commlib/a:kLX	Ljava/lang/String;
-    //   42: invokespecial 91	java/io/File:<init>	(Ljava/lang/String;)V
-    //   45: astore_1
-    //   46: aload_1
-    //   47: invokevirtual 95	java/io/File:exists	()Z
-    //   50: ifeq +10 -> 60
-    //   53: aload_1
-    //   54: invokevirtual 98	java/io/File:isDirectory	()Z
-    //   57: ifne +8 -> 65
-    //   60: aload_1
-    //   61: invokevirtual 101	java/io/File:mkdirs	()Z
-    //   64: pop
-    //   65: aload_0
-    //   66: invokevirtual 105	com/tencent/mm/plugin/game/d/ax:toByteArray	()[B
-    //   69: astore_1
-    //   70: new 107	java/io/FileOutputStream
-    //   73: dup
-    //   74: getstatic 37	com/tencent/mm/plugin/game/commlib/a:kLY	Ljava/lang/String;
-    //   77: invokespecial 108	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   80: astore_0
-    //   81: aload_0
-    //   82: aload_1
-    //   83: invokevirtual 112	java/io/FileOutputStream:write	([B)V
+    //   0: ldc 53
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: putstatic 55	com/tencent/mm/plugin/game/commlib/a:niT	Lcom/tencent/mm/plugin/game/d/ay;
+    //   9: aload_0
+    //   10: getfield 61	com/tencent/mm/plugin/game/d/ay:nsl	Lcom/tencent/mm/plugin/game/d/s;
+    //   13: ifnull +27 -> 40
+    //   16: invokestatic 67	com/tencent/mm/kernel/g:RL	()Lcom/tencent/mm/kernel/e;
+    //   19: invokevirtual 73	com/tencent/mm/kernel/e:Ru	()Lcom/tencent/mm/storage/z;
+    //   22: getstatic 79	com/tencent/mm/storage/ac$a:yKJ	Lcom/tencent/mm/storage/ac$a;
+    //   25: getstatic 55	com/tencent/mm/plugin/game/commlib/a:niT	Lcom/tencent/mm/plugin/game/d/ay;
+    //   28: getfield 61	com/tencent/mm/plugin/game/d/ay:nsl	Lcom/tencent/mm/plugin/game/d/s;
+    //   31: getfield 85	com/tencent/mm/plugin/game/d/s:nqT	Z
+    //   34: invokestatic 91	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   37: invokevirtual 97	com/tencent/mm/storage/z:set	(Lcom/tencent/mm/storage/ac$a;Ljava/lang/Object;)V
+    //   40: new 99	java/io/File
+    //   43: dup
+    //   44: getstatic 40	com/tencent/mm/plugin/game/commlib/a:niR	Ljava/lang/String;
+    //   47: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;)V
+    //   50: astore_1
+    //   51: aload_1
+    //   52: invokevirtual 106	java/io/File:exists	()Z
+    //   55: ifeq +10 -> 65
+    //   58: aload_1
+    //   59: invokevirtual 109	java/io/File:isDirectory	()Z
+    //   62: ifne +8 -> 70
+    //   65: aload_1
+    //   66: invokevirtual 112	java/io/File:mkdirs	()Z
+    //   69: pop
+    //   70: aload_0
+    //   71: invokevirtual 116	com/tencent/mm/plugin/game/d/ay:toByteArray	()[B
+    //   74: astore_1
+    //   75: new 118	java/io/FileOutputStream
+    //   78: dup
+    //   79: getstatic 44	com/tencent/mm/plugin/game/commlib/a:niS	Ljava/lang/String;
+    //   82: invokespecial 119	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   85: astore_0
     //   86: aload_0
-    //   87: ifnull +7 -> 94
-    //   90: aload_0
-    //   91: invokevirtual 115	java/io/FileOutputStream:close	()V
-    //   94: invokestatic 120	com/tencent/mm/plugin/game/commlib/e:aYs	()V
-    //   97: return
-    //   98: astore_1
-    //   99: aconst_null
-    //   100: astore_0
-    //   101: ldc 122
-    //   103: new 13	java/lang/StringBuilder
-    //   106: dup
-    //   107: ldc 124
-    //   109: invokespecial 125	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   112: aload_1
-    //   113: invokevirtual 128	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   116: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: invokevirtual 31	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokestatic 134	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   125: goto -39 -> 86
-    //   128: astore_0
-    //   129: goto -35 -> 94
-    //   132: astore_1
-    //   133: goto -32 -> 101
+    //   87: aload_1
+    //   88: invokevirtual 123	java/io/FileOutputStream:write	([B)V
+    //   91: aload_0
+    //   92: ifnull +7 -> 99
+    //   95: aload_0
+    //   96: invokevirtual 126	java/io/FileOutputStream:close	()V
+    //   99: invokestatic 131	com/tencent/mm/plugin/game/commlib/e:bFk	()V
+    //   102: ldc 53
+    //   104: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: return
+    //   108: astore_1
+    //   109: aconst_null
+    //   110: astore_0
+    //   111: ldc 133
+    //   113: new 20	java/lang/StringBuilder
+    //   116: dup
+    //   117: ldc 135
+    //   119: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   122: aload_1
+    //   123: invokevirtual 139	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   126: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   132: invokestatic 145	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: goto -44 -> 91
+    //   138: astore_0
+    //   139: goto -40 -> 99
+    //   142: astore_1
+    //   143: goto -32 -> 111
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	136	0	paramax	ax
-    //   45	38	1	localObject	Object
-    //   98	15	1	localIOException1	java.io.IOException
-    //   132	1	1	localIOException2	java.io.IOException
+    //   0	146	0	paramay	ay
+    //   50	38	1	localObject	Object
+    //   108	15	1	localIOException1	java.io.IOException
+    //   142	1	1	localIOException2	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   65	81	98	java/io/IOException
-    //   90	94	128	java/io/IOException
-    //   81	86	132	java/io/IOException
+    //   70	86	108	java/io/IOException
+    //   95	99	138	java/io/IOException
+    //   86	91	142	java/io/IOException
   }
   
   /* Error */
-  public static void aYj()
+  public static void bEY()
   {
     // Byte code:
-    //   0: invokestatic 143	java/lang/System:currentTimeMillis	()J
-    //   3: lstore_0
-    //   4: new 88	java/io/File
-    //   7: dup
-    //   8: getstatic 37	com/tencent/mm/plugin/game/commlib/a:kLY	Ljava/lang/String;
-    //   11: invokespecial 91	java/io/File:<init>	(Ljava/lang/String;)V
-    //   14: astore_3
-    //   15: new 145	java/io/FileInputStream
-    //   18: dup
-    //   19: aload_3
-    //   20: invokespecial 148	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   23: astore_2
-    //   24: aload_3
-    //   25: invokevirtual 151	java/io/File:length	()J
-    //   28: l2i
-    //   29: newarray byte
-    //   31: astore_3
-    //   32: aload_2
-    //   33: aload_3
-    //   34: invokevirtual 155	java/io/FileInputStream:read	([B)I
-    //   37: pop
-    //   38: new 46	com/tencent/mm/plugin/game/d/ax
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 149
+    //   5: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 55	com/tencent/mm/plugin/game/commlib/a:niT	Lcom/tencent/mm/plugin/game/d/ay;
+    //   11: ifnull +12 -> 23
+    //   14: ldc 149
+    //   16: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: ldc 2
+    //   21: monitorexit
+    //   22: return
+    //   23: invokestatic 155	java/lang/System:currentTimeMillis	()J
+    //   26: lstore_0
+    //   27: new 99	java/io/File
+    //   30: dup
+    //   31: getstatic 44	com/tencent/mm/plugin/game/commlib/a:niS	Ljava/lang/String;
+    //   34: invokespecial 102	java/io/File:<init>	(Ljava/lang/String;)V
+    //   37: astore_3
+    //   38: new 157	java/io/FileInputStream
     //   41: dup
-    //   42: invokespecial 156	com/tencent/mm/plugin/game/d/ax:<init>	()V
-    //   45: astore 4
-    //   47: aload 4
-    //   49: putstatic 44	com/tencent/mm/plugin/game/commlib/a:kLZ	Lcom/tencent/mm/plugin/game/d/ax;
-    //   52: aload 4
-    //   54: aload_3
-    //   55: invokevirtual 160	com/tencent/mm/plugin/game/d/ax:aH	([B)Lcom/tencent/mm/bv/a;
-    //   58: pop
-    //   59: aload_2
-    //   60: ifnull +7 -> 67
-    //   63: aload_2
-    //   64: invokevirtual 161	java/io/FileInputStream:close	()V
-    //   67: ldc 122
-    //   69: new 13	java/lang/StringBuilder
-    //   72: dup
-    //   73: ldc 163
-    //   75: invokespecial 125	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   78: invokestatic 143	java/lang/System:currentTimeMillis	()J
-    //   81: lload_0
-    //   82: lsub
-    //   83: invokevirtual 166	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   86: invokevirtual 31	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   89: invokestatic 169	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   92: return
-    //   93: astore_3
-    //   94: aconst_null
-    //   95: astore_2
-    //   96: ldc 122
-    //   98: new 13	java/lang/StringBuilder
-    //   101: dup
-    //   102: ldc 171
-    //   104: invokespecial 125	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   107: aload_3
-    //   108: invokevirtual 172	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   111: invokevirtual 25	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: invokevirtual 31	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   117: invokestatic 134	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   120: goto -61 -> 59
+    //   42: aload_3
+    //   43: invokespecial 160	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   46: astore_2
+    //   47: aload_3
+    //   48: invokevirtual 163	java/io/File:length	()J
+    //   51: l2i
+    //   52: newarray byte
+    //   54: astore_3
+    //   55: aload_2
+    //   56: aload_3
+    //   57: invokevirtual 167	java/io/FileInputStream:read	([B)I
+    //   60: pop
+    //   61: new 57	com/tencent/mm/plugin/game/d/ay
+    //   64: dup
+    //   65: invokespecial 168	com/tencent/mm/plugin/game/d/ay:<init>	()V
+    //   68: astore 4
+    //   70: aload 4
+    //   72: putstatic 55	com/tencent/mm/plugin/game/commlib/a:niT	Lcom/tencent/mm/plugin/game/d/ay;
+    //   75: aload 4
+    //   77: aload_3
+    //   78: invokevirtual 172	com/tencent/mm/plugin/game/d/ay:parseFrom	([B)Lcom/tencent/mm/bv/a;
+    //   81: pop
+    //   82: aload_2
+    //   83: ifnull +7 -> 90
+    //   86: aload_2
+    //   87: invokevirtual 173	java/io/FileInputStream:close	()V
+    //   90: ldc 133
+    //   92: new 20	java/lang/StringBuilder
+    //   95: dup
+    //   96: ldc 175
+    //   98: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   101: invokestatic 155	java/lang/System:currentTimeMillis	()J
+    //   104: lload_0
+    //   105: lsub
+    //   106: invokevirtual 178	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   109: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokestatic 180	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   115: ldc 149
+    //   117: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   120: goto -101 -> 19
     //   123: astore_2
-    //   124: goto -57 -> 67
-    //   127: astore_3
-    //   128: goto -32 -> 96
+    //   124: ldc 2
+    //   126: monitorexit
+    //   127: aload_2
+    //   128: athrow
+    //   129: astore_3
+    //   130: aconst_null
+    //   131: astore_2
+    //   132: ldc 133
+    //   134: new 20	java/lang/StringBuilder
+    //   137: dup
+    //   138: ldc 182
+    //   140: invokespecial 136	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   143: aload_3
+    //   144: invokevirtual 183	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   147: invokevirtual 32	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: invokevirtual 38	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   153: invokestatic 145	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   156: goto -74 -> 82
+    //   159: astore_2
+    //   160: goto -70 -> 90
+    //   163: astore_3
+    //   164: goto -32 -> 132
     // Local variable table:
     //   start	length	slot	name	signature
-    //   3	79	0	l	long
-    //   23	73	2	localFileInputStream	java.io.FileInputStream
-    //   123	1	2	localIOException	java.io.IOException
-    //   14	41	3	localObject	Object
-    //   93	15	3	localException1	java.lang.Exception
-    //   127	1	3	localException2	java.lang.Exception
-    //   45	8	4	localax	ax
+    //   26	79	0	l	long
+    //   46	41	2	localFileInputStream	java.io.FileInputStream
+    //   123	5	2	localObject1	Object
+    //   131	1	2	localObject2	Object
+    //   159	1	2	localIOException	java.io.IOException
+    //   37	41	3	localObject3	Object
+    //   129	15	3	localException1	java.lang.Exception
+    //   163	1	3	localException2	java.lang.Exception
+    //   68	8	4	localay	ay
     // Exception table:
     //   from	to	target	type
-    //   4	24	93	java/lang/Exception
-    //   63	67	123	java/io/IOException
-    //   24	59	127	java/lang/Exception
+    //   3	19	123	finally
+    //   23	27	123	finally
+    //   27	47	123	finally
+    //   47	82	123	finally
+    //   86	90	123	finally
+    //   90	120	123	finally
+    //   132	156	123	finally
+    //   27	47	129	java/lang/Exception
+    //   86	90	159	java/io/IOException
+    //   47	82	163	java/lang/Exception
   }
   
-  public static boolean aYk()
+  public static boolean bEZ()
   {
+    AppMethodBeat.i(116974);
     boolean bool;
-    if (kLZ != null)
+    if (niT != null)
     {
-      bool = kLZ.kUd;
-      y.i("MicroMsg.GameConfigManager", "getShowEntrance : " + bool);
+      bool = niT.nsd;
+      ab.i("MicroMsg.GameConfigManager", "getShowEntrance : ".concat(String.valueOf(bool)));
+      AppMethodBeat.o(116974);
       return bool;
     }
-    aYj();
-    String str = x.d(ae.getContext().getSharedPreferences(ae.cqR(), 0));
-    y.i("MicroMsg.GameConfigManager", "getShowEntrance, lang = %s", new Object[] { str });
-    if ("zh_CN".equals(str)) {}
-    for (str = "0";; str = "1")
+    bEY();
+    Object localObject = ah.getContext().getSharedPreferences(ah.dsP(), 0);
+    ah.getContext();
+    localObject = aa.f((SharedPreferences)localObject);
+    ab.i("MicroMsg.GameConfigManager", "getShowEntrance, lang = %s", new Object[] { localObject });
+    if ("zh_CN".equals(localObject)) {}
+    for (localObject = "0";; localObject = "1")
     {
-      str = bk.aM(g.AA().getValue("HideGameCenter"), str);
-      y.i("MicroMsg.GameConfigManager", "hide game center:[%s]", new Object[] { str });
-      bool = str.equalsIgnoreCase("0");
+      localObject = bo.bf(g.Nq().getValue("HideGameCenter"), (String)localObject);
+      ab.i("MicroMsg.GameConfigManager", "hide game center:[%s]", new Object[] { localObject });
+      bool = ((String)localObject).equalsIgnoreCase("0");
       break;
     }
   }
   
-  public static aj aYl()
+  public static ak bFa()
   {
-    if (kLZ != null)
+    AppMethodBeat.i(116975);
+    Object localObject = null;
+    if (niT != null)
     {
-      aj localaj = kLZ.kUe;
-      if (localaj != null) {
-        y.i("MicroMsg.GameConfigManager", "getGameIndexSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localaj.kTh), localaj.kRP });
+      ak localak = niT.nse;
+      localObject = localak;
+      if (localak != null)
+      {
+        ab.i("MicroMsg.GameConfigManager", "getGameIndexSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localak.nrh), localak.npR });
+        localObject = localak;
       }
-      return localaj;
     }
-    aYj();
-    return null;
+    for (;;)
+    {
+      AppMethodBeat.o(116975);
+      return localObject;
+      bEY();
+    }
   }
   
-  public static ab aYm()
+  public static ac bFb()
   {
-    if (kLZ != null)
+    AppMethodBeat.i(116976);
+    Object localObject = null;
+    if (niT != null)
     {
-      ab localab = kLZ.kUg;
-      if (localab != null) {
-        y.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localab.kTh), localab.kRP });
+      ac localac = niT.nsg;
+      localObject = localac;
+      if (localac != null)
+      {
+        ab.i("MicroMsg.GameConfigManager", "getGameDetailSettingControl jumpType:%d, jumpUrl:%s", new Object[] { Integer.valueOf(localac.nrh), localac.npR });
+        localObject = localac;
       }
-      return localab;
     }
-    aYj();
-    return null;
-  }
-  
-  public static dc aYn()
-  {
-    if (kLZ != null) {
-      return kLZ.kUi;
-    }
-    aYj();
-    return null;
-  }
-  
-  public static boolean aYo()
-  {
-    if (kLZ != null)
+    for (;;)
     {
-      if (kLZ.kUk != null) {
-        return kLZ.kUk.kWp;
+      AppMethodBeat.o(116976);
+      return localObject;
+      bEY();
+    }
+  }
+  
+  public static dd bFc()
+  {
+    AppMethodBeat.i(116977);
+    if (niT != null)
+    {
+      dd localdd = niT.nsi;
+      AppMethodBeat.o(116977);
+      return localdd;
+    }
+    bEY();
+    AppMethodBeat.o(116977);
+    return null;
+  }
+  
+  public static boolean bFd()
+  {
+    AppMethodBeat.i(116978);
+    if (niT != null)
+    {
+      if (niT.nsk != null)
+      {
+        boolean bool = niT.nsk.nuq;
+        AppMethodBeat.o(116978);
+        return bool;
       }
     }
     else {
-      aYj();
+      bEY();
     }
+    AppMethodBeat.o(116978);
     return false;
   }
   
-  public static String aYp()
+  public static String bFe()
   {
-    if (kLZ != null)
+    AppMethodBeat.i(116979);
+    if (niT != null)
     {
-      if (kLZ.kUj != null) {
-        return kLZ.kUj.kSE;
+      if (niT.nsj != null)
+      {
+        String str = niT.nsj.nqD;
+        AppMethodBeat.o(116979);
+        return str;
       }
     }
     else {
-      aYj();
+      bEY();
     }
+    AppMethodBeat.o(116979);
     return null;
   }
   
-  public static List<String> aYq()
+  public static List<String> bFf()
   {
-    if (kLZ != null)
+    AppMethodBeat.i(116980);
+    if (niT != null)
     {
-      if (kLZ.kUk != null)
+      if (niT.nsk != null)
       {
-        Object localObject = kLZ.kUk.kWq;
-        if (!bk.dk((List)localObject))
+        Object localObject = niT.nsk.nur;
+        if (!bo.es((List)localObject))
         {
           ArrayList localArrayList = new ArrayList();
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            ct localct = (ct)((Iterator)localObject).next();
-            if ((localct != null) && (!bk.bl(localct.kSE))) {
-              localArrayList.add(localct.kSE);
+            cu localcu = (cu)((Iterator)localObject).next();
+            if ((localcu != null) && (!bo.isNullOrNil(localcu.nqD))) {
+              localArrayList.add(localcu.nqD);
             }
           }
+          AppMethodBeat.o(116980);
           return localArrayList;
         }
       }
     }
     else {
-      aYj();
+      bEY();
     }
+    AppMethodBeat.o(116980);
+    return null;
+  }
+  
+  public static List<String> bFg()
+  {
+    AppMethodBeat.i(116981);
+    if (niT != null)
+    {
+      if (niT.nsk != null)
+      {
+        Object localObject = niT.nsk.nus;
+        if (!bo.es((List)localObject))
+        {
+          ArrayList localArrayList = new ArrayList();
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            cu localcu = (cu)((Iterator)localObject).next();
+            if ((localcu != null) && (!bo.isNullOrNil(localcu.nqD))) {
+              localArrayList.add(localcu.nqD);
+            }
+          }
+          AppMethodBeat.o(116981);
+          return localArrayList;
+        }
+      }
+    }
+    else {
+      bEY();
+    }
+    AppMethodBeat.o(116981);
+    return null;
+  }
+  
+  public static int bFh()
+  {
+    AppMethodBeat.i(116982);
+    if (niT != null)
+    {
+      if (niT.nsm != null)
+      {
+        int i = niT.nsm.nup;
+        AppMethodBeat.o(116982);
+        return i;
+      }
+      AppMethodBeat.o(116982);
+      return 0;
+    }
+    bEY();
+    AppMethodBeat.o(116982);
+    return 0;
+  }
+  
+  public static List<String> bFi()
+  {
+    AppMethodBeat.i(116983);
+    if (niT != null)
+    {
+      if (niT.nsn != null)
+      {
+        Object localObject = niT.nsn.nqS;
+        if (!bo.es((List)localObject))
+        {
+          ArrayList localArrayList = new ArrayList();
+          localObject = ((List)localObject).iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            dm localdm = (dm)((Iterator)localObject).next();
+            if ((localdm != null) && (!bo.isNullOrNil(localdm.nuo))) {
+              localArrayList.add(localdm.nuo);
+            }
+          }
+          AppMethodBeat.o(116983);
+          return localArrayList;
+        }
+      }
+    }
+    else {
+      bEY();
+    }
+    AppMethodBeat.o(116983);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.a
  * JD-Core Version:    0.7.0.1
  */

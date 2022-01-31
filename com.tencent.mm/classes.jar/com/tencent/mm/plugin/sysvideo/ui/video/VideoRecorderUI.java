@@ -1,235 +1,282 @@
 package com.tencent.mm.plugin.sysvideo.ui.video;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.compatible.e.d;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.compatible.e.v;
-import com.tencent.mm.model.ad;
-import com.tencent.mm.model.au;
+import com.tencent.mm.compatible.e.y;
+import com.tencent.mm.model.ae;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.i.a;
 import com.tencent.mm.pluginsdk.i.b;
-import com.tencent.mm.pluginsdk.i.e;
 import com.tencent.mm.pluginsdk.i.f;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.i.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.q.b;
 
 public class VideoRecorderUI
   extends MMActivity
 {
-  private static VideoRecorderUI pzx;
-  private ProgressDialog dnm = null;
-  private SurfaceView gab = null;
-  private am ibI = new am(new VideoRecorderUI.1(this), true);
-  private long ibp = -1L;
-  private boolean nOX;
-  private String pzA = null;
-  private String pzB = null;
-  private View pzC;
-  private View pzD;
-  private ah pzE = new VideoRecorderUI.9(this);
-  SurfaceHolder.Callback pzF = new VideoRecorderUI.3(this);
-  private String pze = null;
-  private SurfaceHolder pzi = null;
-  private b pzj;
-  private ImageButton pzk;
-  private boolean pzl = false;
-  private boolean pzm = false;
-  private TextView pzn;
-  private LinearLayout pzo;
-  private ImageView pzp;
-  private ImageButton pzq = null;
-  private ImageView pzr;
-  private TextView pzs;
-  private TextView pzt;
-  private TextView pzu;
-  private int pzv = 0;
-  private ImageButton pzw;
-  private boolean pzy = false;
-  private boolean pzz = true;
-  private String talker = null;
-  private String videoPath = null;
+  private static VideoRecorderUI tbl;
+  private ProgressDialog eeN;
+  private String iaf;
+  private long mwM;
+  private ap mwY;
+  private ak oVd;
+  private boolean qCR;
+  private String taR;
+  private SurfaceView taV;
+  private SurfaceHolder taW;
+  private b taX;
+  private ImageButton taY;
+  private boolean taZ;
+  private String talker;
+  private boolean tba;
+  private TextView tbb;
+  private LinearLayout tbc;
+  private ImageView tbd;
+  private ImageButton tbe;
+  private ImageView tbf;
+  private TextView tbg;
+  private TextView tbh;
+  private TextView tbi;
+  private int tbj;
+  private ImageButton tbk;
+  private boolean tbm;
+  private boolean tbn;
+  private String tbo;
+  private View tbp;
+  private View tbq;
+  SurfaceHolder.Callback tbr;
+  private String videoPath;
   
-  private void bMm()
+  public VideoRecorderUI()
   {
-    if (this.pzl)
+    AppMethodBeat.i(25657);
+    this.taV = null;
+    this.taW = null;
+    this.talker = null;
+    this.eeN = null;
+    this.taZ = false;
+    this.tba = false;
+    this.mwM = -1L;
+    this.tbe = null;
+    this.tbj = 0;
+    this.tbm = false;
+    this.tbn = true;
+    this.videoPath = null;
+    this.taR = null;
+    this.iaf = null;
+    this.tbo = null;
+    this.mwY = new ap(new VideoRecorderUI.1(this), true);
+    this.oVd = new VideoRecorderUI.9(this);
+    this.tbr = new VideoRecorderUI.3(this);
+    AppMethodBeat.o(25657);
+  }
+  
+  private void aEa()
+  {
+    AppMethodBeat.i(25665);
+    getSupportActionBar().hide();
+    this.tbg.setText(f.mH(0));
+    this.tbp.setVisibility(8);
+    this.tbq.setVisibility(8);
+    this.tbf.setVisibility(0);
+    this.taZ = false;
+    this.tbc.setVisibility(0);
+    this.taV.setVisibility(0);
+    this.tbb.setVisibility(8);
+    this.tbe.setVisibility(8);
+    this.tbg.setText(f.mH(0));
+    this.tbd.setVisibility(8);
+    this.taY.setEnabled(true);
+    this.tbk.setVisibility(0);
+    AppMethodBeat.o(25665);
+  }
+  
+  private void cHl()
+  {
+    AppMethodBeat.i(25664);
+    if (this.taZ)
     {
-      h.a(this, getString(R.l.video_recorder_cancel), getString(R.l.app_tip), new VideoRecorderUI.11(this), new VideoRecorderUI.12(this));
+      h.a(this, getString(2131304532), getString(2131297087), new VideoRecorderUI.11(this), new VideoRecorderUI.12(this));
+      AppMethodBeat.o(25664);
       return;
     }
     finish();
+    AppMethodBeat.o(25664);
   }
   
-  private void bMn()
+  private void cHm()
   {
-    h.a(this, R.l.video_dev_create_failed, R.l.app_tip, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        VideoRecorderUI.h(VideoRecorderUI.this).clT();
-        VideoRecorderUI.this.finish();
-      }
-    });
-  }
-  
-  private void bcB()
-  {
-    getSupportActionBar().hide();
-    this.pzs.setText(e.jL(0));
-    this.pzC.setVisibility(8);
-    this.pzD.setVisibility(8);
-    this.pzr.setVisibility(0);
-    this.pzl = false;
-    this.pzo.setVisibility(0);
-    this.gab.setVisibility(0);
-    this.pzn.setVisibility(8);
-    this.pzq.setVisibility(8);
-    this.pzs.setText(e.jL(0));
-    this.pzp.setVisibility(8);
-    this.pzk.setEnabled(true);
-    this.pzw.setVisibility(0);
+    AppMethodBeat.i(25669);
+    h.a(this, 2131304509, 2131297087, new VideoRecorderUI.4(this));
+    AppMethodBeat.o(25669);
   }
   
   private void releaseWakeLock()
   {
-    this.gab.setKeepScreenOn(false);
+    AppMethodBeat.i(25670);
+    this.taV.setKeepScreenOn(false);
+    AppMethodBeat.o(25670);
   }
   
-  protected final void dealContentView(View paramView)
+  public void dealContentView(View paramView)
   {
-    ak.g(ak.a(getWindow(), null), this.mController.uMz);
-    ((ViewGroup)this.mController.uMz.getParent()).removeView(this.mController.uMz);
-    ((ViewGroup)getWindow().getDecorView()).addView(this.mController.uMz, 0);
+    AppMethodBeat.i(25662);
+    af.h(af.a(getWindow(), null), getBodyView());
+    ((ViewGroup)getBodyView().getParent()).removeView(getBodyView());
+    ((ViewGroup)getWindow().getDecorView()).addView(getBodyView(), 0);
+    AppMethodBeat.o(25662);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    if (d.yN()) {}
+    AppMethodBeat.i(25671);
+    if (d.Ll()) {}
     for (boolean bool = true;; bool = false)
     {
-      this.nOX = bool;
-      if (this.nOX) {
+      this.qCR = bool;
+      if (this.qCR) {
         break;
       }
-      return R.i.video_recorder;
+      AppMethodBeat.o(25671);
+      return 2130971071;
     }
     getWindow().setFlags(1024, 1024);
     setRequestedOrientation(0);
-    return R.i.video_recorder_land;
+    AppMethodBeat.o(25671);
+    return 2130971072;
   }
   
-  protected final void initView()
+  public void initView()
   {
     int j = 1;
-    this.gab = ((SurfaceView)findViewById(R.h.surface_camera));
-    this.pzo = ((LinearLayout)findViewById(R.h.video_recorder_preview_area));
-    this.pzi = this.gab.getHolder();
-    this.pzi.addCallback(this.pzF);
-    this.pzi.setType(3);
-    this.pzr = ((ImageView)findViewById(R.h.video_recorder_recording_icon));
-    this.pzw = ((ImageButton)findViewById(R.h.videorecord_camera_switch));
-    this.pzs = ((TextView)findViewById(R.h.video_recorder_recorded_time));
-    this.pzC = findViewById(R.h.video_recorder_recorded_time_area);
-    this.pzD = findViewById(R.h.video_recorder_data_area);
-    this.pzs.setText(e.jL(0));
-    this.pzj = new b();
-    this.pzn = ((TextView)findViewById(R.h.videorecord_time_limit_tv));
-    this.pzt = ((TextView)findViewById(R.h.video_recorder_size));
-    this.pzu = ((TextView)findViewById(R.h.video_recorder_length));
-    this.pzk = ((ImageButton)findViewById(R.h.videorecord_control_btn));
-    this.pzk.setOnClickListener(new VideoRecorderUI.7(this));
+    AppMethodBeat.i(25661);
+    this.taV = ((SurfaceView)findViewById(2131827769));
+    this.tbc = ((LinearLayout)findViewById(2131821743));
+    this.taW = this.taV.getHolder();
+    this.taW.addCallback(this.tbr);
+    this.taW.setType(3);
+    this.tbf = ((ImageView)findViewById(2131828726));
+    this.tbk = ((ImageButton)findViewById(2131828728));
+    this.tbg = ((TextView)findViewById(2131828727));
+    this.tbp = findViewById(2131828725);
+    this.tbq = findViewById(2131828730);
+    this.tbg.setText(f.mH(0));
+    this.taX = new b();
+    this.tbb = ((TextView)findViewById(2131828729));
+    this.tbh = ((TextView)findViewById(2131828732));
+    this.tbi = ((TextView)findViewById(2131828731));
+    this.taY = ((ImageButton)findViewById(2131822783));
+    this.taY.setOnClickListener(new VideoRecorderUI.7(this));
     b localb;
-    label308:
+    label314:
     Object localObject;
     if (d.getNumberOfCameras() > 1)
     {
-      this.pzw.setVisibility(0);
-      this.pzw.setOnClickListener(new VideoRecorderUI.8(this));
-      this.pzq = ((ImageButton)findViewById(R.h.video_play_btn));
-      this.pzp = ((ImageView)findViewById(R.h.video_recorder_play_view));
-      this.pzq.setOnClickListener(new VideoRecorderUI.10(this));
-      localb = this.pzj;
-      if (this.nOX) {
-        break label567;
+      this.tbk.setVisibility(0);
+      this.tbk.setOnClickListener(new VideoRecorderUI.8(this));
+      this.tbe = ((ImageButton)findViewById(2131828733));
+      this.tbd = ((ImageView)findViewById(2131828724));
+      this.tbe.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(25655);
+          paramAnonymousView = new Intent(VideoRecorderUI.this, VideoRecorderPreviewUI.class);
+          paramAnonymousView.putExtra("VideoRecorder_FileName", VideoRecorderUI.h(VideoRecorderUI.this).filename);
+          paramAnonymousView.putExtra("VideoRecorder_VideoLength", VideoRecorderUI.h(VideoRecorderUI.this).qWJ.fXx);
+          paramAnonymousView.putExtra("VideoRecorder_VideoSize", VideoRecorderUI.h(VideoRecorderUI.this).fileSize);
+          paramAnonymousView.putExtra("VideoRecorder_ToUser", VideoRecorderUI.i(VideoRecorderUI.this));
+          paramAnonymousView.putExtra("VideoRecorder_VideoFullPath", VideoRecorderUI.t(VideoRecorderUI.this));
+          VideoRecorderUI.this.startActivityForResult(paramAnonymousView, 0);
+          VideoRecorderUI.this.overridePendingTransition(0, 0);
+          AppMethodBeat.o(25655);
+        }
+      });
+      localb = this.taX;
+      if (this.qCR) {
+        break label579;
       }
       i = 1;
       localObject = this.videoPath;
-      String str1 = this.pze;
-      String str2 = this.pzA;
-      String str3 = this.pzB;
-      localb.eFO = 0;
-      if (1 != localb.eFO) {
-        break label572;
+      String str1 = this.taR;
+      String str2 = this.iaf;
+      String str3 = this.tbo;
+      localb.fVF = 0;
+      if (1 != localb.fVF) {
+        break label584;
       }
-      localb.oiw = a.clS();
-      label352:
-      if (q.dyf.dyH)
+      localb.qWJ = a.dmG();
+      label358:
+      if (ac.erw.erh)
       {
-        localb.oiw.mhT = q.dyf.mVideoHeight;
-        localb.oiw.mhU = q.dyf.mVideoWidth;
-        localb.oiw.mhS = q.dyf.dyJ;
+        localb.qWJ.oHZ = ac.erw.mVideoHeight;
+        localb.qWJ.oIa = ac.erw.mVideoWidth;
+        localb.qWJ.oHY = ac.erw.erj;
       }
       localb.filename = str3;
-      localb.oiw.mib = str1;
-      localb.oiw.mhZ = str2;
-      localb.oiw.mhY = ((String)localObject + "temp.pcm");
-      localb.oiw.mhX = ((String)localObject + "temp.yuv");
-      localb.oiw.mia = ((String)localObject + "temp.vid");
-      localb.oiw.jlS = d.getNumberOfCameras();
-      localObject = localb.oiw;
+      localb.qWJ.oIh = str1;
+      localb.qWJ.oIf = str2;
+      localb.qWJ.oIe = ((String)localObject + "temp.pcm");
+      localb.qWJ.oId = ((String)localObject + "temp.yuv");
+      localb.qWJ.oIg = ((String)localObject + "temp.vid");
+      localb.qWJ.oIj = d.getNumberOfCameras();
+      localObject = localb.qWJ;
       if (i == 0) {
-        break label582;
+        break label594;
       }
     }
-    label567:
-    label572:
-    label582:
+    label579:
+    label584:
+    label594:
     for (int i = j;; i = 0)
     {
       ((a)localObject).rotate = i;
-      localb.oiw.eHH = 0;
-      localb.rYj = new f();
+      localb.qWJ.fXx = 0;
+      localb.vPa = new g();
+      AppMethodBeat.o(25661);
       return;
-      this.pzw.setVisibility(4);
+      this.tbk.setVisibility(4);
       break;
       i = 0;
-      break label308;
-      localb.oiw = a.clR();
-      break label352;
+      break label314;
+      localb.qWJ = a.dmF();
+      break label358;
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt2 != -1) {
+    AppMethodBeat.i(25668);
+    if (paramInt2 != -1)
+    {
+      AppMethodBeat.o(25668);
       return;
     }
     if (paramInt1 == 0)
@@ -238,108 +285,120 @@ public class VideoRecorderUI
       finish();
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(25668);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(25658);
     super.onCreate(paramBundle);
-    s.initLanguage(this);
-    pzx = this;
+    MMActivity.initLanguage(this);
+    tbl = this;
     getWindow().setFlags(1024, 1024);
     getSupportActionBar().hide();
-    setMMTitle(R.l.video_recorder_title);
-    a(0, getString(R.l.app_send), new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        paramAnonymousMenuItem = new Intent();
-        paramAnonymousMenuItem.putExtra("VideoRecorder_FileName", VideoRecorderUI.h(VideoRecorderUI.this).filename);
-        paramAnonymousMenuItem.putExtra("VideoRecorder_VideoLength", VideoRecorderUI.h(VideoRecorderUI.this).oiw.eHH);
-        paramAnonymousMenuItem.putExtra("VideoRecorder_ToUser", VideoRecorderUI.i(VideoRecorderUI.this));
-        VideoRecorderUI.this.setResult(-1, paramAnonymousMenuItem);
-        VideoRecorderUI.this.finish();
-        return true;
-      }
-    }, s.b.uNx);
+    setMMTitle(2131304534);
+    addTextOptionMenu(0, getString(2131297067), new VideoRecorderUI.5(this), null, q.b.zby);
     setBackBtn(new VideoRecorderUI.6(this));
     this.talker = getIntent().getStringExtra("VideoRecorder_ToUser");
     this.videoPath = getIntent().getStringExtra("VideoRecorder_VideoPath");
-    this.pze = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
-    this.pzA = getIntent().getStringExtra("VideoRecorder_VideoThumbPath");
-    this.pzB = getIntent().getStringExtra("VideoRecorder_FileName");
-    y.d("MicroMsg.VideoRecorderUI", "talker :" + this.talker);
-    y.d("MicroMsg.VideoRecorderUI", "videoPath :" + this.videoPath + " videoFullPath " + this.pze + " videoThumbPath " + this.pzA + " KFileName " + this.pzB);
+    this.taR = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
+    this.iaf = getIntent().getStringExtra("VideoRecorder_VideoThumbPath");
+    this.tbo = getIntent().getStringExtra("VideoRecorder_FileName");
+    ab.d("MicroMsg.VideoRecorderUI", "talker :" + this.talker);
+    ab.d("MicroMsg.VideoRecorderUI", "videoPath :" + this.videoPath + " videoFullPath " + this.taR + " videoThumbPath " + this.iaf + " KFileName " + this.tbo);
     initView();
-    bcB();
-    au.tu().vT();
+    aEa();
+    aw.BY().Ic();
+    AppMethodBeat.o(25658);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    pzx = null;
-    y.v("MicroMsg.VideoRecorderUI", "on destroy");
-    au.tu().vS();
+    AppMethodBeat.i(25660);
+    tbl = null;
+    ab.v("MicroMsg.VideoRecorderUI", "on destroy");
+    aw.BY().Ib();
     super.onDestroy();
+    AppMethodBeat.o(25660);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(25663);
     if (paramInt == 4)
     {
-      y.d("MicroMsg.VideoRecorderUI", "KEYCODE_BACK");
-      if (this.pzm) {
+      ab.d("MicroMsg.VideoRecorderUI", "KEYCODE_BACK");
+      if (this.tba)
+      {
+        AppMethodBeat.o(25663);
         return true;
       }
-      bMm();
+      cHl();
+      AppMethodBeat.o(25663);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(25663);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    if (this.pzm)
+    AppMethodBeat.i(25667);
+    if (this.tba)
     {
-      b localb = this.pzj;
-      if (localb.mjf != null)
+      b localb = this.taX;
+      if (localb.oJm != null)
       {
-        localb.mjf.stop();
-        localb.mjf.release();
-        localb.mjf = null;
+        localb.oJm.stop();
+        localb.oJm.release();
+        localb.oJm = null;
       }
-      bcB();
-      this.pzm = false;
+      aEa();
+      this.tba = false;
       releaseWakeLock();
-      this.pzk.setImageResource(R.g.video_recorder_start_btn);
-      this.ibI.stopTimer();
-      this.pzn.setVisibility(8);
-      this.pzo.setVisibility(0);
-      this.gab.setVisibility(0);
+      this.taY.setImageResource(2130840666);
+      this.mwY.stopTimer();
+      this.tbb.setVisibility(8);
+      this.tbc.setVisibility(0);
+      this.taV.setVisibility(0);
     }
-    this.pzj.clT();
-    y.v("MicroMsg.VideoRecorderUI", "onPause");
+    this.taX.dmH();
+    ab.v("MicroMsg.VideoRecorderUI", "onPause");
     super.onPause();
+    AppMethodBeat.o(25667);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    if ((!this.pzz) && ((this.pzj.a(this, false) != 0) || (this.pzj.b(this.pzi) != 0))) {
-      bMn();
+    AppMethodBeat.i(25666);
+    if ((!this.tbn) && ((this.taX.b(this, false) != 0) || (this.taX.b(this.taW) != 0))) {
+      cHm();
     }
-    this.pzz = false;
-    y.v("MicroMsg.VideoRecorderUI", "onResume");
+    this.tbn = false;
+    ab.v("MicroMsg.VideoRecorderUI", "onResume");
     super.onResume();
+    AppMethodBeat.o(25666);
   }
   
   public void onStart()
   {
+    AppMethodBeat.i(25659);
     super.onStart();
-    if (this.nOX)
+    if (this.qCR)
     {
       setRequestedOrientation(0);
+      AppMethodBeat.o(25659);
       return;
     }
     setRequestedOrientation(1);
+    AppMethodBeat.o(25659);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

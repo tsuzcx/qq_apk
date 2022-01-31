@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import android.support.v7.widget.RecyclerView.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -9,18 +10,20 @@ final class o$1
 {
   o$1(o paramo) {}
   
-  public final void hQ()
+  public final void jx()
   {
-    Iterator localIterator = this.hjP.hjy.iterator();
+    AppMethodBeat.i(133503);
+    Iterator localIterator = this.iVw.iVf.iterator();
     while (localIterator.hasNext()) {
-      ((RecyclerView.f.a)localIterator.next()).hQ();
+      ((RecyclerView.f.a)localIterator.next()).jx();
     }
-    this.hjP.hjO = false;
+    this.iVw.iVv = false;
+    AppMethodBeat.o(133503);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.o.1
  * JD-Core Version:    0.7.0.1
  */

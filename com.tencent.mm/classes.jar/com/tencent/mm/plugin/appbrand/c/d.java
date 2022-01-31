@@ -9,13 +9,13 @@ public abstract interface d
   
   public static abstract interface c
   {
-    public abstract void V(String paramString, int paramInt);
+    public abstract void ad(String paramString, int paramInt);
     
-    public abstract void bL(int paramInt1, int paramInt2);
+    public abstract void cW(int paramInt1, int paramInt2);
     
-    public abstract void bM(int paramInt1, int paramInt2);
+    public abstract void cX(int paramInt1, int paramInt2);
     
-    public abstract void bN(int paramInt1, int paramInt2);
+    public abstract void cY(int paramInt1, int paramInt2);
   }
 }
 

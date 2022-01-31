@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webwx.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebWXPopupUnlockUI$2
   implements DialogInterface.OnDismissListener
@@ -10,12 +11,14 @@ final class WebWXPopupUnlockUI$2
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.rEk.finish();
+    AppMethodBeat.i(26569);
+    this.vuM.finish();
+    AppMethodBeat.o(26569);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webwx.ui.WebWXPopupUnlockUI.2
  * JD-Core Version:    0.7.0.1
  */

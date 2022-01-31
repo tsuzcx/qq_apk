@@ -10,20 +10,20 @@ public abstract class JobIntentService
   extends Service
 {
   static final Object sLock = new Object();
-  static final HashMap<ComponentName, Object> xg = new HashMap();
+  static final HashMap<ComponentName, Object> xt = new HashMap();
+  boolean mDestroyed = false;
   boolean mStopped = false;
-  boolean vF = false;
-  boolean xe = false;
-  final ArrayList<Object> xf;
+  boolean xr = false;
+  final ArrayList<Object> xs;
   
   public JobIntentService()
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.xf = null;
+      this.xs = null;
       return;
     }
-    this.xf = new ArrayList();
+    this.xs = new ArrayList();
   }
 }
 

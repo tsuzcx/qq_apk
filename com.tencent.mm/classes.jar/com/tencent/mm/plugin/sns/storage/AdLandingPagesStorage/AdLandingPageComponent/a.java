@@ -6,76 +6,76 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.v4.content.d;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.i;
-import com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class a
-  extends i
+  extends h
 {
-  public boolean oCa;
-  protected boolean oCb = SnsAdNativeLandingPagesUI.oUq;
-  public boolean oCc;
-  private BroadcastReceiver zm = new a.1(this);
+  private BroadcastReceiver receiver = new a.1(this);
+  private boolean rrA = true;
+  public boolean rrB;
+  public boolean rrz;
   
-  public a(Context paramContext, s params, ViewGroup paramViewGroup)
+  public a(Context paramContext, t paramt, ViewGroup paramViewGroup)
   {
-    super(paramContext, params, paramViewGroup);
-    d.Q(this.context).a(this.zm, new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice"));
-    y.v("AbsVideoPlayComp", "register receiver " + this.zm);
+    super(paramContext, paramt, paramViewGroup);
+    d.R(this.context).a(this.receiver, new IntentFilter("com.tencent.mm.adlanding.close_exposure_voice"));
+    ab.v("AbsVideoPlayComp", "register receiver " + this.receiver);
   }
   
-  public void W(int paramInt1, int paramInt2, int paramInt3)
+  public void cqA()
   {
-    super.W(paramInt1, paramInt2, paramInt3);
+    super.cqA();
+    this.rrB = true;
   }
   
-  public void bER()
+  public void cqB()
   {
-    this.oCa = false;
+    super.cqB();
+    this.rrB = false;
   }
   
-  public void bES()
+  public void cqC()
   {
-    super.bES();
-    d.Q(this.context).unregisterReceiver(this.zm);
-    this.oCc = true;
-    y.v("AbsVideoPlayComp", "unregister receiver " + this.zm);
-  }
-  
-  public void bET()
-  {
-    super.bET();
-    this.oCc = true;
-  }
-  
-  public void bEU()
-  {
-    super.bEU();
-    this.oCc = false;
-  }
-  
-  public void bEV()
-  {
-    this.oCa = true;
-  }
-  
-  public final void bEW()
-  {
-    Intent localIntent = new Intent("com.tencent.mm.adlanding.close_exposure_voice");
-    localIntent.putExtra("para_id", bFm().oDg);
-    d.Q(this.context).a(localIntent);
-  }
-  
-  protected final void bEX()
-  {
-    super.bEX();
-    if (!this.oCb)
+    super.cqC();
+    if (this.rrA)
     {
-      bER();
+      this.rrA = false;
+      if (!crc().rtg) {
+        cqy();
+      }
+    }
+    else
+    {
       return;
     }
-    bEV();
+    cqD();
+  }
+  
+  public void cqD()
+  {
+    this.rrz = true;
+  }
+  
+  public final void cqE()
+  {
+    Intent localIntent = new Intent("com.tencent.mm.adlanding.close_exposure_voice");
+    localIntent.putExtra("para_id", cqV().rsI);
+    d.R(this.context).c(localIntent);
+  }
+  
+  public void cqy()
+  {
+    this.rrz = false;
+  }
+  
+  public void cqz()
+  {
+    super.cqz();
+    d.R(this.context).unregisterReceiver(this.receiver);
+    this.rrB = true;
+    ab.v("AbsVideoPlayComp", "unregister receiver " + this.receiver);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.d;
 
 public final class c$a
 {
-  public static c sjo;
+  public static c wbU;
 }
 
 

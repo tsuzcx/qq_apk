@@ -1,18 +1,23 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class k$2
-  implements am.a
+  implements ap.a
 {
   k$2(k paramk) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (-1L == k.c(this.rJk)) {
+    AppMethodBeat.i(26832);
+    if (-1L == k.c(this.vzP))
+    {
+      AppMethodBeat.o(26832);
       return false;
     }
-    this.rJk.ciF();
+    this.vzP.diW();
+    AppMethodBeat.o(26832);
     return true;
   }
 }

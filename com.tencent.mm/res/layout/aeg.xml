@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/d04" android:background="@drawable/vw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/t2">
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/t7" android:textColor="@color/ta" android:id="@id/b9a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t3" />
-            <TextView android:textSize="@dimen/t6" android:textColor="@color/fn" android:id="@id/d05" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t3" android:layout_marginTop="2.0dip" />
-        </LinearLayout>
-        <CheckBox android:gravity="right" android:id="@id/d06" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="@dimen/t3" style="@style/ka" />
-    </LinearLayout>
-    <ImageView android:layout_gravity="bottom" android:id="@id/nc" android:layout_marginLeft="@dimen/t3" style="@style/gs" />
+    <com.tencent.mm.ui.DoubleTabView android:id="@id/dc4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.ui.base.CustomViewPager android:id="@id/dc5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

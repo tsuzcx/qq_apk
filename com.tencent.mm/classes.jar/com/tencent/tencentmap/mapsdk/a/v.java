@@ -1,240 +1,162 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import java.io.Closeable;
+import android.util.Log;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Stack;
+import java.security.MessageDigest;
 
 public class v
 {
-  public static final long a(InputStream paramInputStream, OutputStream paramOutputStream)
+  static final byte[] a = { -128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  
+  public static String a(File paramFile)
   {
-    long l2;
-    if ((paramInputStream == null) || (paramOutputStream == null)) {
-      l2 = -1L;
+    AppMethodBeat.i(150404);
+    FileInputStream localFileInputStream = new FileInputStream(paramFile);
+    byte[] arrayOfByte = new byte[1024];
+    paramFile = new char[16];
+    paramFile[0] = 48;
+    paramFile[1] = 49;
+    paramFile[2] = 50;
+    paramFile[3] = 51;
+    paramFile[4] = 52;
+    paramFile[5] = 53;
+    paramFile[6] = 54;
+    paramFile[7] = 55;
+    paramFile[8] = 56;
+    paramFile[9] = 57;
+    paramFile[10] = 97;
+    paramFile[11] = 98;
+    paramFile[12] = 99;
+    paramFile[13] = 100;
+    paramFile[14] = 101;
+    paramFile[15] = 102;
+    paramFile;
+    Object localObject;
+    int i;
+    int j;
+    try
+    {
+      localObject = MessageDigest.getInstance("MD5");
+      for (;;)
+      {
+        i = localFileInputStream.read(arrayOfByte, 0, 1024);
+        if (i == -1) {
+          break;
+        }
+        ((MessageDigest)localObject).update(arrayOfByte, 0, i);
+      }
+      while (i >= 16) {}
+    }
+    catch (Exception paramFile)
+    {
+      dw.b(Log.getStackTraceString(paramFile));
+      j.a(localFileInputStream);
+      paramFile = null;
+      for (;;)
+      {
+        AppMethodBeat.o(150404);
+        return paramFile;
+        arrayOfByte = ((MessageDigest)localObject).digest();
+        localObject = new char[32];
+        i = 0;
+        j = 0;
+        break;
+        paramFile = new String((char[])localObject);
+        j.a(localFileInputStream);
+      }
+    }
+    finally
+    {
+      j.a(localFileInputStream);
+      AppMethodBeat.o(150404);
     }
     for (;;)
     {
-      return l2;
-      try
-      {
-        byte[] arrayOfByte = new byte[4096];
-        int i;
-        for (long l1 = 0L;; l1 += i)
-        {
-          i = paramInputStream.read(arrayOfByte);
-          l2 = l1;
-          if (i <= 0) {
-            break;
-          }
-          paramOutputStream.write(arrayOfByte, 0, i);
-        }
-        return -1L;
-      }
-      catch (IOException paramInputStream) {}
+      int m = arrayOfByte[i];
+      int k = j + 1;
+      localObject[j] = paramFile[(m >>> 4 & 0xF)];
+      localObject[k] = paramFile[(m & 0xF)];
+      i += 1;
+      j = k + 1;
     }
   }
   
-  public static void a(Bitmap paramBitmap)
+  public static String a(byte[] paramArrayOfByte)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
-      paramBitmap.recycle();
-    }
-  }
-  
-  public static final void a(Closeable paramCloseable)
-  {
-    if (paramCloseable != null) {}
-    try
-    {
-      paramCloseable.close();
-      return;
-    }
-    catch (IOException paramCloseable) {}
-  }
-  
-  public static boolean a(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    try
-    {
-      paramString = new File(paramString);
-      if ((paramString.exists()) && (paramString.isDirectory())) {
-        return true;
-      }
-      if ((paramString.exists()) && (paramString.isFile())) {
-        paramString.delete();
-      }
-      boolean bool = paramString.mkdirs();
-      return bool;
-    }
-    catch (Exception paramString) {}
-    return false;
-  }
-  
-  /* Error */
-  public static final byte[] a(InputStream paramInputStream)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: new 75	java/io/ByteArrayOutputStream
-    //   9: dup
-    //   10: invokespecial 77	java/io/ByteArrayOutputStream:<init>	()V
-    //   13: astore_2
-    //   14: sipush 4096
-    //   17: newarray byte
-    //   19: astore_3
-    //   20: aload_0
-    //   21: aload_3
-    //   22: iconst_0
-    //   23: sipush 4096
-    //   26: invokevirtual 80	java/io/InputStream:read	([BII)I
-    //   29: istore_1
-    //   30: iload_1
-    //   31: iconst_m1
-    //   32: if_icmpeq +20 -> 52
-    //   35: aload_2
-    //   36: aload_3
-    //   37: iconst_0
-    //   38: iload_1
-    //   39: invokevirtual 81	java/io/ByteArrayOutputStream:write	([BII)V
-    //   42: goto -22 -> 20
-    //   45: astore_0
-    //   46: aload_2
-    //   47: invokestatic 83	com/tencent/tencentmap/mapsdk/a/v:a	(Ljava/io/Closeable;)V
-    //   50: aconst_null
-    //   51: areturn
-    //   52: aload_2
-    //   53: invokevirtual 86	java/io/ByteArrayOutputStream:flush	()V
-    //   56: aload_2
-    //   57: invokevirtual 90	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   60: astore_0
-    //   61: aload_2
-    //   62: invokestatic 83	com/tencent/tencentmap/mapsdk/a/v:a	(Ljava/io/Closeable;)V
-    //   65: aload_0
-    //   66: areturn
-    //   67: astore_0
-    //   68: aconst_null
-    //   69: astore_2
-    //   70: aload_2
-    //   71: invokestatic 83	com/tencent/tencentmap/mapsdk/a/v:a	(Ljava/io/Closeable;)V
-    //   74: aload_0
-    //   75: athrow
-    //   76: astore_0
-    //   77: goto -7 -> 70
-    //   80: astore_0
-    //   81: aconst_null
-    //   82: astore_2
-    //   83: goto -37 -> 46
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	86	0	paramInputStream	InputStream
-    //   29	10	1	i	int
-    //   13	70	2	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   19	18	3	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   14	20	45	java/lang/Throwable
-    //   20	30	45	java/lang/Throwable
-    //   35	42	45	java/lang/Throwable
-    //   52	61	45	java/lang/Throwable
-    //   6	14	67	finally
-    //   14	20	76	finally
-    //   20	30	76	finally
-    //   35	42	76	finally
-    //   52	61	76	finally
-    //   6	14	80	java/lang/Throwable
-  }
-  
-  public static final InputStream b(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
+    AppMethodBeat.i(150403);
+    char[] arrayOfChar = new char[16];
+    char[] tmp13_11 = arrayOfChar;
+    tmp13_11[0] = 48;
+    char[] tmp18_13 = tmp13_11;
+    tmp18_13[1] = 49;
+    char[] tmp23_18 = tmp18_13;
+    tmp23_18[2] = 50;
+    char[] tmp28_23 = tmp23_18;
+    tmp28_23[3] = 51;
+    char[] tmp33_28 = tmp28_23;
+    tmp33_28[4] = 52;
+    char[] tmp38_33 = tmp33_28;
+    tmp38_33[5] = 53;
+    char[] tmp43_38 = tmp38_33;
+    tmp43_38[6] = 54;
+    char[] tmp49_43 = tmp43_38;
+    tmp49_43[7] = 55;
+    char[] tmp55_49 = tmp49_43;
+    tmp55_49[8] = 56;
+    char[] tmp61_55 = tmp55_49;
+    tmp61_55[9] = 57;
+    char[] tmp67_61 = tmp61_55;
+    tmp67_61[10] = 97;
+    char[] tmp73_67 = tmp67_61;
+    tmp73_67[11] = 98;
+    char[] tmp79_73 = tmp73_67;
+    tmp79_73[12] = 99;
+    char[] tmp85_79 = tmp79_73;
+    tmp85_79[13] = 100;
+    char[] tmp91_85 = tmp85_79;
+    tmp91_85[14] = 101;
+    char[] tmp97_91 = tmp91_85;
+    tmp97_91[15] = 102;
+    tmp97_91;
     for (;;)
     {
-      return null;
+      Object localObject;
+      int i;
+      int j;
       try
       {
-        paramString = new File(paramString);
-        if ((paramString.exists()) && (paramString.isFile()) && (paramString.canRead()))
-        {
-          paramString = new FileInputStream(paramString);
-          return paramString;
-        }
+        localObject = MessageDigest.getInstance("MD5");
+        ((MessageDigest)localObject).update(paramArrayOfByte);
+        paramArrayOfByte = ((MessageDigest)localObject).digest();
+        localObject = new char[32];
+        i = 0;
+        j = 0;
       }
-      catch (IOException paramString) {}
-    }
-    return null;
-  }
-  
-  public static boolean c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
-    }
-    Stack localStack = new Stack();
-    localStack.push(paramString);
-    while (!localStack.isEmpty())
-    {
-      File localFile = new File((String)localStack.peek());
-      if (localFile.exists())
+      catch (Exception paramArrayOfByte)
       {
-        if (localFile.isDirectory())
-        {
-          paramString = localFile.listFiles();
-          if ((paramString == null) || (paramString.length == 0))
-          {
-            localFile.delete();
-            localStack.pop();
-          }
-          else
-          {
-            int j = paramString.length;
-            int i = 0;
-            label96:
-            if (i < j)
-            {
-              localFile = paramString[i];
-              if (!localFile.isDirectory()) {
-                break label131;
-              }
-              localStack.push(localFile.getAbsolutePath());
-            }
-            for (;;)
-            {
-              i += 1;
-              break label96;
-              break;
-              label131:
-              localFile.delete();
-            }
-          }
-        }
-        else
-        {
-          localFile.delete();
-          localStack.pop();
-        }
+        paramArrayOfByte = null;
+        continue;
       }
-      else {
-        localStack.pop();
+      paramArrayOfByte = new String((char[])localObject);
+      AppMethodBeat.o(150403);
+      return paramArrayOfByte;
+      while (i < 16)
+      {
+        int m = paramArrayOfByte[i];
+        int k = j + 1;
+        localObject[j] = arrayOfChar[(m >>> 4 & 0xF)];
+        localObject[k] = arrayOfChar[(m & 0xF)];
+        i += 1;
+        j = k + 1;
       }
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.v
  * JD-Core Version:    0.7.0.1
  */

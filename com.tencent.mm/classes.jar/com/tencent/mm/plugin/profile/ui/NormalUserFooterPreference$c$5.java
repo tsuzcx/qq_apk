@@ -1,35 +1,38 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.am.b.a;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.ao.b.a;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.ui.applet.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bd;
 import java.util.LinkedList;
 
 final class NormalUserFooterPreference$c$5
-  implements am.b.a
+  implements ao.b.a
 {
   NormalUserFooterPreference$c$5(NormalUserFooterPreference.c paramc, a parama, String paramString, LinkedList paramLinkedList) {}
   
-  public final void m(String paramString, boolean paramBoolean)
+  public final void p(String paramString, boolean paramBoolean)
   {
-    au.Hx();
-    paramString = c.Fw().abl(NormalUserFooterPreference.a(this.mYO.mYC).field_username);
+    AppMethodBeat.i(23703);
+    aw.aaz();
+    paramString = c.YA().arw(NormalUserFooterPreference.a(this.pCn.pCe).field_username);
     if (paramString != null) {}
-    for (paramString = bk.aM(paramString.cCQ, "");; paramString = "")
+    for (paramString = bo.bf(paramString.dra, "");; paramString = "")
     {
-      this.mYR.WA(paramString);
-      this.mYR.b(NormalUserFooterPreference.a(this.mYO.mYC).field_username, this.mYS, this.mYT);
+      this.pxA.amg(paramString);
+      this.pxA.c(NormalUserFooterPreference.a(this.pCn.pCe).field_username, this.pxB, this.pxC);
+      AppMethodBeat.o(23703);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference.c.5
  * JD-Core Version:    0.7.0.1
  */

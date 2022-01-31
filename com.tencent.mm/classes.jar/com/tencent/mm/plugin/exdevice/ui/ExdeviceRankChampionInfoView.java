@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.TextUtils;
@@ -8,100 +9,124 @@ import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.s;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class ExdeviceRankChampionInfoView
   extends LinearLayout
 {
-  private int dOA = 0;
-  private TextPaint gI;
-  private String hcm;
-  private TextView iuO;
-  private ImageView jAk;
+  private int eMi;
+  private TextPaint hB;
+  private String ikj;
+  private TextView kvS;
+  private ImageView lJJ;
   
-  public ExdeviceRankChampionInfoView(Context paramContext, AttributeSet paramAttributeSet)
+  public ExdeviceRankChampionInfoView(final Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(R.i.exdevice_rank_champion_info_view, this, true);
-    this.gI = new TextPaint(1);
-    this.iuO = ((TextView)paramAttributeSet.findViewById(R.h.titleTV));
-    this.jAk = ((ImageView)paramAttributeSet.findViewById(R.h.avatarIV));
-    this.jAk.setOnClickListener(new ExdeviceRankChampionInfoView.1(this, paramContext));
-    this.iuO.setOnClickListener(new ExdeviceRankChampionInfoView.2(this, paramContext));
+    AppMethodBeat.i(20112);
+    this.eMi = 0;
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2130969468, this, true);
+    this.hB = new TextPaint(1);
+    this.kvS = ((TextView)paramAttributeSet.findViewById(2131823739));
+    this.lJJ = ((ImageView)paramAttributeSet.findViewById(2131823768));
+    this.lJJ.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(20109);
+        if (bo.isNullOrNil(ExdeviceRankChampionInfoView.a(ExdeviceRankChampionInfoView.this)))
+        {
+          ab.w("MicroMsg.ExdeviceRankChampionInfoView", "username is null.");
+          AppMethodBeat.o(20109);
+          return;
+        }
+        paramAnonymousView = new Intent(paramContext, ExdeviceProfileUI.class);
+        paramAnonymousView.putExtra("username", ExdeviceRankChampionInfoView.a(ExdeviceRankChampionInfoView.this));
+        paramContext.startActivity(paramAnonymousView);
+        AppMethodBeat.o(20109);
+      }
+    });
+    this.kvS.setOnClickListener(new ExdeviceRankChampionInfoView.2(this, paramContext));
     try
     {
-      this.dOA = paramContext.getResources().getDimensionPixelSize(R.f.ExdeviceUserNameWidth);
+      this.eMi = paramContext.getResources().getDimensionPixelSize(2131427630);
+      if (this.eMi <= 0) {
+        this.eMi = 128;
+      }
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.ExdeviceRankChampionInfoView", paramContext, "", new Object[0]);
-        if (this.dOA <= 0) {
-          this.dOA = 128;
+        ab.printErrStackTrace("MicroMsg.ExdeviceRankChampionInfoView", paramContext, "", new Object[0]);
+        if (this.eMi <= 0) {
+          this.eMi = 128;
         }
       }
     }
     finally
     {
-      if (this.dOA > 0) {
-        break label191;
+      if (this.eMi > 0) {
+        break label199;
       }
-      this.dOA = 128;
+      this.eMi = 128;
+      AppMethodBeat.o(20112);
     }
-    y.d("MicroMsg.ExdeviceRankChampionInfoView", "ap: ellipsizewidth: %d", new Object[] { Integer.valueOf(this.dOA) });
+    ab.d("MicroMsg.ExdeviceRankChampionInfoView", "ap: ellipsizewidth: %d", new Object[] { Integer.valueOf(this.eMi) });
+    AppMethodBeat.o(20112);
   }
   
-  public final void BQ(String paramString)
+  public final void LS(String paramString)
   {
-    this.hcm = paramString;
-    if (this.iuO != null)
+    AppMethodBeat.i(20113);
+    this.ikj = paramString;
+    if (this.kvS != null)
     {
-      if (bk.bl(paramString)) {
-        break label164;
+      if (bo.isNullOrNil(paramString)) {
+        break label168;
       }
-      this.iuO.setVisibility(0);
+      this.kvS.setVisibility(0);
       Object localObject = getContext();
-      int i = R.l.exdevice_champion_occupy_cover;
-      String str = this.hcm;
-      int j = this.dOA;
-      localObject = ((Context)localObject).getString(i, new Object[] { TextUtils.ellipsize(j.b(getContext(), r.gV(str)), this.gI, j, TextUtils.TruncateAt.END) });
-      y.d("MicroMsg.ExdeviceRankChampionInfoView", "title : %s", new Object[] { j.b(getContext(), (CharSequence)localObject) });
-      this.iuO.setText(j.a(getContext(), (CharSequence)localObject, this.iuO.getTextSize()));
+      String str = this.ikj;
+      int i = this.eMi;
+      localObject = ((Context)localObject).getString(2131299369, new Object[] { TextUtils.ellipsize(j.b(getContext(), s.nE(str)), this.hB, i, TextUtils.TruncateAt.END) });
+      ab.d("MicroMsg.ExdeviceRankChampionInfoView", "title : %s", new Object[] { j.b(getContext(), (CharSequence)localObject) });
+      this.kvS.setText(j.b(getContext(), (CharSequence)localObject, this.kvS.getTextSize()));
     }
-    for (;;)
-    {
-      if (this.jAk != null)
+    while (this.lJJ != null) {
+      if (!bo.isNullOrNil(paramString))
       {
-        if (bk.bl(paramString)) {
-          break;
-        }
-        a.b.n(this.jAk, paramString);
-        this.jAk.setVisibility(0);
+        a.b.s(this.lJJ, paramString);
+        this.lJJ.setVisibility(0);
+        AppMethodBeat.o(20113);
+        return;
+        label168:
+        this.kvS.setVisibility(8);
+        this.kvS.setText("");
       }
-      return;
-      label164:
-      this.iuO.setVisibility(8);
-      this.iuO.setText("");
+      else
+      {
+        this.lJJ.setVisibility(4);
+      }
     }
-    this.jAk.setVisibility(4);
+    AppMethodBeat.o(20113);
   }
   
   public void setAlpha(float paramFloat)
   {
-    this.iuO.setAlpha(paramFloat);
-    this.jAk.setAlpha(paramFloat);
+    AppMethodBeat.i(20111);
+    this.kvS.setAlpha(paramFloat);
+    this.lJJ.setAlpha(paramFloat);
+    AppMethodBeat.o(20111);
   }
 }
 

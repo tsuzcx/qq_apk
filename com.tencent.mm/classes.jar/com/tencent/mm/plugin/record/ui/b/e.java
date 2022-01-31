@@ -2,108 +2,122 @@ package com.tencent.mm.plugin.record.ui.b;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.h.a.gf;
-import com.tencent.mm.h.a.gf.b;
-import com.tencent.mm.modelvoice.q;
-import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.record.b.m;
-import com.tencent.mm.plugin.record.b.m.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gi;
+import com.tencent.mm.g.a.gi.b;
+import com.tencent.mm.plugin.record.b.s.a;
 import com.tencent.mm.plugin.record.ui.RecordVoiceBaseView;
+import com.tencent.mm.plugin.record.ui.a.b;
 import com.tencent.mm.plugin.record.ui.h.b;
-import com.tencent.mm.protocal.c.xv;
+import com.tencent.mm.protocal.protobuf.aca;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.List;
 
 public final class e
   implements h.b
 {
-  RecordVoiceBaseView nuH;
-  private m nup = new m();
+  private com.tencent.mm.plugin.record.b.s pZX;
+  RecordVoiceBaseView qaz;
   
-  public final void a(View paramView, int paramInt, com.tencent.mm.plugin.record.ui.a.b paramb)
+  public e()
   {
-    Object localObject = paramView.findViewById(R.h.empty_voice);
-    this.nuH = ((RecordVoiceBaseView)paramView.findViewById(R.h.voice_player));
-    if (paramb.aYU == 0)
+    AppMethodBeat.i(24374);
+    this.pZX = new com.tencent.mm.plugin.record.b.s();
+    AppMethodBeat.o(24374);
+  }
+  
+  public final void a(View paramView, int paramInt, b paramb, Object paramObject)
+  {
+    AppMethodBeat.i(153645);
+    paramObject = paramView.findViewById(2131827118);
+    this.qaz = ((RecordVoiceBaseView)paramView.findViewById(2131824122));
+    if (paramb.dataType == 0)
     {
-      this.nuH.setVisibility(8);
-      ((View)localObject).setVisibility(0);
-    }
-    while (paramb.aYU != 1) {
+      this.qaz.setVisibility(8);
+      paramObject.setVisibility(0);
+      AppMethodBeat.o(153645);
       return;
     }
-    ((View)localObject).setVisibility(8);
-    this.nuH.setVisibility(0);
-    paramView = com.tencent.mm.plugin.record.b.b.a(paramb);
-    gf localgf = new gf();
-    localgf.bNF.type = 17;
-    localgf.bNF.bNH = paramb.bNt;
-    a.udP.m(localgf);
-    paramInt = localgf.bNG.ret;
-    if (!com.tencent.mm.a.e.bK(paramView))
+    if (paramb.dataType == 1)
     {
-      if (!bk.bl(paramb.bNt.sUG)) {
-        break label238;
+      paramObject.setVisibility(8);
+      this.qaz.setVisibility(0);
+      paramView = com.tencent.mm.plugin.record.b.g.a(paramb);
+      gi localgi = new gi();
+      localgi.cuX.type = 17;
+      localgi.cuX.cuZ = paramb.cuL;
+      a.ymk.l(localgi);
+      paramInt = localgi.cuY.ret;
+      if (!com.tencent.mm.a.e.cN(paramView))
+      {
+        if (!bo.isNullOrNil(paramb.cuL.wSC)) {
+          break label251;
+        }
+        paramObject.setVisibility(0);
+        this.qaz.setVisibility(8);
       }
-      ((View)localObject).setVisibility(0);
-      this.nuH.setVisibility(8);
     }
     for (;;)
     {
-      localObject = this.nuH;
-      int i = paramb.bNt.duration;
-      ((RecordVoiceBaseView)localObject).path = bk.aM(paramView, "");
-      ((RecordVoiceBaseView)localObject).bNM = paramInt;
-      if (((RecordVoiceBaseView)localObject).duration == i) {
-        break;
+      paramObject = this.qaz;
+      int i = paramb.cuL.duration;
+      paramObject.path = bo.bf(paramView, "");
+      paramObject.cve = paramInt;
+      if (paramObject.duration != i)
+      {
+        paramObject.duration = i;
+        paramObject.setText((int)com.tencent.mm.modelvoice.s.hi(i) + "''");
       }
-      ((RecordVoiceBaseView)localObject).duration = i;
-      ((RecordVoiceBaseView)localObject).setText((int)q.ck(i) + "''");
+      AppMethodBeat.o(153645);
       return;
-      label238:
-      y.d("MicroMsg.VoiceViewWrapper", "restart voice %s, url %s", new Object[] { Long.valueOf(paramb.khA.field_localId), paramb.bNt.sUG });
-      localObject = new gf();
-      ((gf)localObject).bNF.type = 16;
-      ((gf)localObject).bNF.bIr = paramb.khA.field_localId;
-      a.udP.m((com.tencent.mm.sdk.b.b)localObject);
+      label251:
+      ab.d("MicroMsg.VoiceViewWrapper", "restart voice %s, url %s", new Object[] { Long.valueOf(paramb.mCk.field_localId), paramb.cuL.wSC });
+      paramObject = new gi();
+      paramObject.cuX.type = 16;
+      paramObject.cuX.cpM = paramb.mCk.field_localId;
+      a.ymk.l(paramObject);
     }
   }
   
-  public final View dZ(Context paramContext)
+  public final View createView(Context paramContext)
   {
-    paramContext = View.inflate(paramContext, R.i.record_listitem_voice, null);
-    ((RecordVoiceBaseView)paramContext.findViewById(R.h.voice_player)).setVoiceHelper(this.nup);
+    AppMethodBeat.i(24375);
+    paramContext = View.inflate(paramContext, 2130970544, null);
+    ((RecordVoiceBaseView)paramContext.findViewById(2131824122)).setVoiceHelper(this.pZX);
+    AppMethodBeat.o(24375);
     return paramContext;
   }
   
   public final void destroy()
   {
-    m localm = this.nup;
-    localm.stopPlay();
-    localm.axa();
-    m.iah = null;
-    localm.dhm.clear();
+    AppMethodBeat.i(24377);
+    com.tencent.mm.plugin.record.b.s locals = this.pZX;
+    locals.stopPlay();
+    locals.bwC();
+    com.tencent.mm.plugin.record.b.s.mub = null;
+    locals.callbacks.clear();
+    AppMethodBeat.o(24377);
   }
   
   public final void pause()
   {
-    if ((this.nup != null) && (this.nup.dhm.size() > 0))
+    AppMethodBeat.i(24378);
+    if ((this.pZX != null) && (this.pZX.callbacks.size() > 0))
     {
-      Iterator localIterator = this.nup.dhm.iterator();
+      Iterator localIterator = this.pZX.callbacks.iterator();
       while (localIterator.hasNext()) {
-        ((m.a)localIterator.next()).onFinish();
+        ((s.a)localIterator.next()).onFinish();
       }
     }
+    AppMethodBeat.o(24378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.b.e
  * JD-Core Version:    0.7.0.1
  */

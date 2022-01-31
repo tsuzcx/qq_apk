@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ShowCommentImageView$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class ShowCommentImageView$2
   
   public final void run()
   {
-    ShowCommentImageView.a(this.oTo, false);
+    AppMethodBeat.i(38571);
+    ShowCommentImageView.a(this.rLl, false);
+    AppMethodBeat.o(38571);
   }
 }
 

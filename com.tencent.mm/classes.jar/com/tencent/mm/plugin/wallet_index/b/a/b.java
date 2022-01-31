@@ -1,18 +1,27 @@
 package com.tencent.mm.plugin.wallet_index.b.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class b
 {
-  public Map<String, c> qKX = new HashMap();
+  public Map<String, c> uzT;
   
-  b() {}
+  b()
+  {
+    AppMethodBeat.i(48169);
+    this.uzT = new HashMap();
+    AppMethodBeat.o(48169);
+  }
   
   b(String paramString, c paramc)
   {
-    this.qKX.clear();
-    this.qKX.put(paramString, paramc);
+    AppMethodBeat.i(48170);
+    this.uzT = new HashMap();
+    this.uzT.clear();
+    this.uzT.put(paramString, paramc);
+    AppMethodBeat.o(48170);
   }
 }
 

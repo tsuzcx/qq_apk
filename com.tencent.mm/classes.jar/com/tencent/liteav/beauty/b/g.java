@@ -1,127 +1,141 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
 public class g
-  extends d
+  extends com.tencent.liteav.basic.d.g
 {
-  protected List<d> r;
-  protected List<d> s;
+  protected List<com.tencent.liteav.basic.d.g> r;
+  protected List<com.tencent.liteav.basic.d.g> s;
   private int[] t;
   private int[] u;
-  private d v;
+  private com.tencent.liteav.basic.d.g v;
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(66910);
     int k = this.s.size();
     k();
     int j = 0;
     int i = 0;
     if (j < k)
     {
-      d locald = (d)this.s.get(j);
+      com.tencent.liteav.basic.d.g localg = (com.tencent.liteav.basic.d.g)this.s.get(j);
       if (i != 0)
       {
-        paramInt1 = locald.a(paramInt1, paramInt2, paramInt3);
-        label58:
+        paramInt1 = localg.a(paramInt1, paramInt2, paramInt3);
+        label63:
         if (i == 0) {
-          break label97;
+          break label102;
         }
       }
-      label97:
+      label102:
       for (i = 0;; i = 1)
       {
         j += 1;
         break;
-        paramInt1 = locald.a(paramInt1, this.t[0], this.u[0]);
-        break label58;
+        paramInt1 = localg.a(paramInt1, this.t[0], this.u[0]);
+        break label63;
       }
     }
     if (i != 0) {
       this.v.a(paramInt1, paramInt2, paramInt3);
     }
+    AppMethodBeat.o(66910);
     return paramInt3;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((this.e == paramInt1) && (this.f == paramInt2)) {}
-    for (;;)
+    AppMethodBeat.i(66909);
+    if ((this.e == paramInt1) && (this.f == paramInt2))
     {
+      AppMethodBeat.o(66909);
       return;
-      if (this.t != null) {
-        f();
-      }
-      super.a(paramInt1, paramInt2);
-      int j = this.s.size();
-      int i = 0;
-      while (i < j)
+    }
+    if (this.t != null) {
+      f();
+    }
+    super.a(paramInt1, paramInt2);
+    int j = this.s.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((com.tencent.liteav.basic.d.g)this.s.get(i)).a(paramInt1, paramInt2);
+      i += 1;
+    }
+    this.v.a(paramInt1, paramInt2);
+    if ((this.s != null) && (this.s.size() > 0))
+    {
+      this.s.size();
+      this.t = new int[2];
+      this.u = new int[2];
+      i = 0;
+      while (i < 2)
       {
-        ((d)this.s.get(i)).a(paramInt1, paramInt2);
+        GLES20.glGenFramebuffers(1, this.t, i);
+        GLES20.glGenTextures(1, this.u, i);
+        GLES20.glBindTexture(3553, this.u[i]);
+        GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
+        GLES20.glTexParameterf(3553, 10240, 9729.0F);
+        GLES20.glTexParameterf(3553, 10241, 9729.0F);
+        GLES20.glTexParameterf(3553, 10242, 33071.0F);
+        GLES20.glTexParameterf(3553, 10243, 33071.0F);
+        GLES20.glBindFramebuffer(36160, this.t[i]);
+        GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.u[i], 0);
+        GLES20.glBindTexture(3553, 0);
+        GLES20.glBindFramebuffer(36160, 0);
         i += 1;
       }
-      this.v.a(paramInt1, paramInt2);
-      if ((this.s != null) && (this.s.size() > 0))
-      {
-        this.s.size();
-        this.t = new int[2];
-        this.u = new int[2];
-        i = 0;
-        while (i < 2)
-        {
-          GLES20.glGenFramebuffers(1, this.t, i);
-          GLES20.glGenTextures(1, this.u, i);
-          GLES20.glBindTexture(3553, this.u[i]);
-          GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
-          GLES20.glTexParameterf(3553, 10240, 9729.0F);
-          GLES20.glTexParameterf(3553, 10241, 9729.0F);
-          GLES20.glTexParameterf(3553, 10242, 33071.0F);
-          GLES20.glTexParameterf(3553, 10243, 33071.0F);
-          GLES20.glBindFramebuffer(36160, this.t[i]);
-          GLES20.glFramebufferTexture2D(36160, 36064, 3553, this.u[i], 0);
-          GLES20.glBindTexture(3553, 0);
-          GLES20.glBindFramebuffer(36160, 0);
-          i += 1;
-        }
-      }
     }
+    AppMethodBeat.o(66909);
   }
   
   public boolean b()
   {
+    AppMethodBeat.i(66906);
     boolean bool2 = super.b();
     boolean bool1 = bool2;
     if (bool2)
     {
       Iterator localIterator = this.r.iterator();
-      d locald;
+      com.tencent.liteav.basic.d.g localg;
       do
       {
         if (!localIterator.hasNext()) {
           break;
         }
-        locald = (d)localIterator.next();
-        locald.a();
-      } while (locald.m());
+        localg = (com.tencent.liteav.basic.d.g)localIterator.next();
+        localg.a();
+      } while (localg.m());
       bool1 = this.v.a();
     }
-    return (bool1) && (GLES20.glGetError() == 0);
+    if ((bool1) && (GLES20.glGetError() == 0))
+    {
+      AppMethodBeat.o(66906);
+      return true;
+    }
+    AppMethodBeat.o(66906);
+    return false;
   }
   
   public void e()
   {
+    AppMethodBeat.i(66907);
     super.e();
     Iterator localIterator = this.r.iterator();
     while (localIterator.hasNext()) {
-      ((d)localIterator.next()).d();
+      ((com.tencent.liteav.basic.d.g)localIterator.next()).d();
     }
+    AppMethodBeat.o(66907);
   }
   
   public void f()
   {
+    AppMethodBeat.i(66908);
     super.f();
     if (this.u != null)
     {
@@ -133,6 +147,7 @@ public class g
       GLES20.glDeleteFramebuffers(2, this.t, 0);
       this.t = null;
     }
+    AppMethodBeat.o(66908);
   }
 }
 

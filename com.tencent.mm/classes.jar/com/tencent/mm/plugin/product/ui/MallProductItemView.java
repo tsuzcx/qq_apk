@@ -9,21 +9,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wxpay.a.a;
 
 public class MallProductItemView
   extends LinearLayout
 {
-  private TextView haW;
-  private Object mData = null;
-  private String mRw;
-  private int mTX = 1;
+  private TextView iJG;
+  private Object mData;
   private String mTitle;
-  private TextView mTp;
-  private ImageView mTq;
-  private int mType = 0;
+  private int mType;
+  private String prJ;
+  private TextView pvv;
+  private ImageView pvw;
+  private int pwd;
   
   public MallProductItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,24 +32,29 @@ public class MallProductItemView
   public MallProductItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
-    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.k.MallProductItemView, paramInt, 0);
-    paramInt = paramAttributeSet.getResourceId(a.k.MallProductItemView_mallProductTitle, 0);
+    AppMethodBeat.i(44079);
+    this.pwd = 1;
+    this.mType = 0;
+    this.mData = null;
+    paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.MallProductItemView, paramInt, 0);
+    paramInt = paramAttributeSet.getResourceId(2, 0);
     if (paramInt != 0) {
       this.mTitle = paramContext.getString(paramInt);
     }
-    paramInt = paramAttributeSet.getResourceId(a.k.MallProductItemView_mallProductSummary, 0);
+    paramInt = paramAttributeSet.getResourceId(3, 0);
     if (paramInt != 0) {
-      this.mRw = paramContext.getString(paramInt);
+      this.prJ = paramContext.getString(paramInt);
     }
-    this.mTX = paramAttributeSet.getInt(a.k.MallProductItemView_android_lines, 1);
+    this.pwd = paramAttributeSet.getInt(0, 1);
     paramAttributeSet.recycle();
-    paramContext = LayoutInflater.from(paramContext).inflate(a.g.product_item_view, this, true);
-    this.haW = ((TextView)paramContext.findViewById(a.f.title_tv));
-    this.mTp = ((TextView)paramContext.findViewById(a.f.summary_tv));
-    this.mTq = ((ImageView)paramContext.findViewById(a.f.indecator_iv));
-    this.haW.setText(this.mTitle);
-    this.mTp.setText(this.mRw);
-    this.mTp.setLines(this.mTX);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970448, this, true);
+    this.iJG = ((TextView)paramContext.findViewById(2131821212));
+    this.pvv = ((TextView)paramContext.findViewById(2131826794));
+    this.pvw = ((ImageView)paramContext.findViewById(2131826795));
+    this.iJG.setText(this.mTitle);
+    this.pvv.setText(this.prJ);
+    this.pvv.setLines(this.pwd);
+    AppMethodBeat.o(44079);
   }
   
   public Object getData()
@@ -65,20 +69,26 @@ public class MallProductItemView
   
   public void setSummary(Spanned paramSpanned)
   {
-    this.mRw = paramSpanned.toString();
-    this.mTp.setText(this.mRw);
+    AppMethodBeat.i(44082);
+    this.prJ = paramSpanned.toString();
+    this.pvv.setText(this.prJ);
+    AppMethodBeat.o(44082);
   }
   
   public void setSummary(String paramString)
   {
-    this.mRw = paramString;
-    this.mTp.setText(this.mRw);
+    AppMethodBeat.i(44081);
+    this.prJ = paramString;
+    this.pvv.setText(this.prJ);
+    AppMethodBeat.o(44081);
   }
   
   public void setTitle(String paramString)
   {
+    AppMethodBeat.i(44080);
     this.mTitle = paramString;
-    this.haW.setText(this.mTitle);
+    this.iJG.setText(this.mTitle);
+    AppMethodBeat.o(44080);
   }
 }
 

@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.facedetect.d;
 
 public final class b$a
 {
-  public String aox;
-  public int jOY;
-  public int jOZ;
+  public String errMsg;
+  public int mjo;
+  public int mjp;
   
   b$a()
   {
-    this.jOY = 1;
+    this.mjo = 1;
   }
   
   b$a(String paramString)
   {
-    this.jOZ = 7;
-    this.aox = paramString;
+    this.mjp = 7;
+    this.errMsg = paramString;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileInputUI$12
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class MobileInputUI$12
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    MobileInputUI.b(this.foH);
+    AppMethodBeat.i(125172);
+    MobileInputUI.b(this.gGb);
+    AppMethodBeat.o(125172);
     return true;
   }
 }

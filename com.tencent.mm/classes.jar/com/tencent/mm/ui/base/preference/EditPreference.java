@@ -7,20 +7,19 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.EditText;
-import com.tencent.mm.ac.a.e;
-import com.tencent.mm.ac.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.widget.b.c;
 
 public class EditPreference
   extends Preference
 {
-  private c few;
-  private EditText kEp;
+  private c gwf;
+  private EditText naN;
   String value;
-  private Preference.a vcc;
-  EditPreference.a vch;
+  private Preference.a zqD;
+  EditPreference.a zqI;
   
   public EditPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,14 +33,15 @@ public class EditPreference
   
   public final void a(Preference.a parama)
   {
-    this.vcc = parama;
+    this.zqD = parama;
   }
   
   public final void showDialog()
   {
+    AppMethodBeat.i(107162);
     EditText localEditText;
-    if (this.kEp != null) {
-      localEditText = this.kEp;
+    if (this.naN != null) {
+      localEditText = this.naN;
     }
     for (;;)
     {
@@ -49,7 +49,7 @@ public class EditPreference
       if ((localObject instanceof ViewGroup.MarginLayoutParams))
       {
         localObject = (ViewGroup.MarginLayoutParams)localObject;
-        int i = localEditText.getResources().getDimensionPixelSize(a.e.LargePadding);
+        int i = localEditText.getResources().getDimensionPixelSize(2131427772);
         ((ViewGroup.MarginLayoutParams)localObject).leftMargin = i;
         ((ViewGroup.MarginLayoutParams)localObject).rightMargin = i;
         ((ViewGroup.MarginLayoutParams)localObject).topMargin = i;
@@ -58,7 +58,8 @@ public class EditPreference
       if (localEditText.getParent() != null) {
         ((ViewGroup)localEditText.getParent()).removeView(localEditText);
       }
-      this.few = h.a(this.mContext, getTitle().toString(), localEditText, a.ac(this.mContext, a.k.app_ok), a.ac(this.mContext, a.k.app_cancel), new EditPreference.1(this, localEditText), new EditPreference.2(this));
+      this.gwf = h.a(this.mContext, getTitle().toString(), localEditText, a.aq(this.mContext, 2131297018), a.aq(this.mContext, 2131296888), new EditPreference.1(this, localEditText), new EditPreference.2(this));
+      AppMethodBeat.o(107162);
       return;
       localEditText = new EditText(this.mContext);
       localEditText.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));

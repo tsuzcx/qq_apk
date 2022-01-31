@@ -5,7 +5,7 @@ public final class w
 {
   public w()
   {
-    this.xqq = 288;
+    this.CMD = 288;
   }
 }
 

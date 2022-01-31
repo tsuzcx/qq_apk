@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.header.a;
 
 public abstract interface a$a
 {
-  public abstract void dS(boolean paramBoolean);
+  public abstract void fn(boolean paramBoolean);
 }
 
 

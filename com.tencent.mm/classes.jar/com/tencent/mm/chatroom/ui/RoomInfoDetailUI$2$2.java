@@ -3,8 +3,9 @@ package com.tencent.mm.chatroom.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.c.aq;
 
 final class RoomInfoDetailUI$2$2
   implements DialogInterface.OnClickListener
@@ -13,11 +14,13 @@ final class RoomInfoDetailUI$2$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RoomInfoDetailUI.a(this.dqg.dqf, true);
+    AppMethodBeat.i(104187);
+    RoomInfoDetailUI.a(this.ehE.ehD, true);
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("Chat_User", RoomInfoDetailUI.b(this.dqg.dqf).field_username);
+    paramDialogInterface.putExtra("Chat_User", RoomInfoDetailUI.b(this.ehE.ehD).field_username);
     paramDialogInterface.addFlags(67108864);
-    d.e(this.dqg.dqf, ".ui.chatting.ChattingUI", paramDialogInterface);
+    d.f(this.ehE.ehD, ".ui.chatting.ChattingUI", paramDialogInterface);
+    AppMethodBeat.o(104187);
   }
 }
 

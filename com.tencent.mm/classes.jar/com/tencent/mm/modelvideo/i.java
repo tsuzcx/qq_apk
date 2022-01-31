@@ -1,56 +1,70 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.h.b.a.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.video.c;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.z;
 import java.util.LinkedList;
 
 public final class i
   implements f.a
 {
-  public boolean eGA = false;
-  public boolean eGB = false;
-  private boolean eGC = false;
-  private boolean eGD = false;
-  f eGE = null;
-  long eGF = 0L;
-  LinkedList<bi> eGw = new LinkedList();
-  long eGx = 0L;
-  private int eGy = 0;
-  private int eGz = 0;
+  LinkedList<bi> fWm;
+  long fWn;
+  private int fWo;
+  private int fWp;
+  public boolean fWq;
+  public boolean fWr;
+  private boolean fWs;
+  private boolean fWt;
+  f fWu;
+  long fWv;
   
-  public final void Sk()
+  public i()
   {
-    g.DS().O(new i.2(this));
+    AppMethodBeat.i(50718);
+    this.fWm = new LinkedList();
+    this.fWn = 0L;
+    this.fWo = 0;
+    this.fWp = 0;
+    this.fWq = false;
+    this.fWr = false;
+    this.fWs = false;
+    this.fWt = false;
+    this.fWu = null;
+    this.fWv = 0L;
+    AppMethodBeat.o(50718);
   }
   
   public final void a(f paramf, boolean paramBoolean, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(50721);
     if (paramf == null)
     {
-      y.e("MicroMsg.PreloadVideoService", "%d on preload finish but scene is null?", new Object[] { Integer.valueOf(hashCode()) });
+      ab.e("MicroMsg.PreloadVideoService", "%d on preload finish but scene is null?", new Object[] { Integer.valueOf(hashCode()) });
+      AppMethodBeat.o(50721);
       return;
     }
-    if (this.eGE != paramf) {
-      y.w("MicroMsg.PreloadVideoService", "%d on preload finish, but scene callback not same object.", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.fWu != paramf) {
+      ab.w("MicroMsg.PreloadVideoService", "%d on preload finish, but scene callback not same object.", new Object[] { Integer.valueOf(hashCode()) });
     }
-    y.i("MicroMsg.PreloadVideoService", "%d preload video[%s] finish success[%b] range[%d, %d]", new Object[] { Integer.valueOf(hashCode()), paramf.getTips(), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    g.DS().O(new i.3(this, paramf));
+    ab.i("MicroMsg.PreloadVideoService", "%d preload video[%s] finish success[%b] range[%d, %d]", new Object[] { Integer.valueOf(hashCode()), paramf.alv(), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    g.RO().ac(new i.3(this, paramf));
+    AppMethodBeat.o(50721);
   }
   
   public final void a(String paramString1, int paramInt1, long paramLong, String paramString2, String paramString3, int paramInt2, String paramString4, String paramString5, String paramString6)
   {
+    AppMethodBeat.i(50724);
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(bk.UX()).append(",");
-    localStringBuffer.append(bk.UX()).append(",");
+    localStringBuffer.append(bo.aox()).append(",");
+    localStringBuffer.append(bo.aox()).append(",");
     localStringBuffer.append(0).append(",");
     localStringBuffer.append(paramString1).append(",");
     localStringBuffer.append(paramInt1).append(",");
@@ -62,93 +76,110 @@ public final class i
     localStringBuffer.append(paramInt2).append(",");
     localStringBuffer.append(paramString4).append(",");
     localStringBuffer.append(paramString5).append(",");
-    localStringBuffer.append(c.PU(paramString6));
+    localStringBuffer.append(c.aeA(paramString6));
     paramString1 = localStringBuffer.toString();
-    y.d("MicroMsg.PreloadVideoService", "%d rpt content[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1 });
-    new p(paramString1).QX();
+    ab.d("MicroMsg.PreloadVideoService", "%d rpt content[%s]", new Object[] { Integer.valueOf(hashCode()), paramString1 });
+    new com.tencent.mm.g.b.a.z(paramString1).ake();
+    AppMethodBeat.o(50724);
   }
   
-  public final void cf(boolean paramBoolean)
+  public final void alw()
   {
+    AppMethodBeat.i(50720);
+    g.RO().ac(new i.2(this));
+    AppMethodBeat.o(50720);
+  }
+  
+  public final void di(boolean paramBoolean)
+  {
+    AppMethodBeat.i(50722);
     if (paramBoolean)
     {
-      this.eGy = ((Integer)g.DP().Dz().get(ac.a.uwF, Integer.valueOf(0))).intValue();
-      this.eGy += 1;
-      g.DP().Dz().c(ac.a.uwF, Integer.valueOf(this.eGy));
+      this.fWo = ((Integer)g.RL().Ru().get(ac.a.yGN, Integer.valueOf(0))).intValue();
+      this.fWo += 1;
+      g.RL().Ru().set(ac.a.yGN, Integer.valueOf(this.fWo));
+      AppMethodBeat.o(50722);
       return;
     }
-    this.eGz = ((Integer)g.DP().Dz().get(ac.a.uwG, Integer.valueOf(0))).intValue();
-    this.eGz += 1;
-    g.DP().Dz().c(ac.a.uwG, Integer.valueOf(this.eGz));
+    this.fWp = ((Integer)g.RL().Ru().get(ac.a.yGO, Integer.valueOf(0))).intValue();
+    this.fWp += 1;
+    g.RL().Ru().set(ac.a.yGO, Integer.valueOf(this.fWp));
+    AppMethodBeat.o(50722);
   }
   
-  public final boolean cg(boolean paramBoolean)
+  public final boolean dj(boolean paramBoolean)
   {
     int k = 100;
-    this.eGx = ((Long)g.DP().Dz().get(ac.a.uwE, Long.valueOf(-1L))).longValue();
-    if (bk.co(this.eGx) >= 86400000L)
+    AppMethodBeat.i(50723);
+    this.fWn = ((Long)g.RL().Ru().get(ac.a.yGM, Long.valueOf(-1L))).longValue();
+    if (bo.hl(this.fWn) >= 86400000L)
     {
-      this.eGx = bk.UY();
-      g.DP().Dz().c(ac.a.uwE, Long.valueOf(this.eGx));
-      g.DP().Dz().c(ac.a.uwF, Integer.valueOf(0));
-      g.DP().Dz().c(ac.a.uwG, Integer.valueOf(0));
-      this.eGD = false;
-      this.eGC = false;
+      this.fWn = bo.aoy();
+      g.RL().Ru().set(ac.a.yGM, Long.valueOf(this.fWn));
+      g.RL().Ru().set(ac.a.yGN, Integer.valueOf(0));
+      g.RL().Ru().set(ac.a.yGO, Integer.valueOf(0));
+      this.fWt = false;
+      this.fWs = false;
     }
-    this.eGy = ((Integer)g.DP().Dz().get(ac.a.uwF, Integer.valueOf(0))).intValue();
-    this.eGz = ((Integer)g.DP().Dz().get(ac.a.uwG, Integer.valueOf(0))).intValue();
+    this.fWo = ((Integer)g.RL().Ru().get(ac.a.yGN, Integer.valueOf(0))).intValue();
+    this.fWp = ((Integer)g.RL().Ru().get(ac.a.yGO, Integer.valueOf(0))).intValue();
     int j;
     int i;
     if (paramBoolean)
     {
-      j = this.eGy;
-      i = ((a)g.r(a.class)).AA().getInt("C2CMaxPreloadVideo", 100);
+      j = this.fWo;
+      i = ((a)g.E(a.class)).Nq().getInt("C2CMaxPreloadVideo", 100);
       if (i > 0) {
-        break label380;
+        break label392;
       }
       i = k;
     }
-    label212:
-    label351:
-    label380:
+    label392:
     for (;;)
     {
       boolean bool;
       if (j >= i)
       {
         bool = true;
-        y.i("MicroMsg.PreloadVideoService", "%d check more preload count result[%b] config[%d] hadPreloadCount[%d %d %d] ", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.eGy), Integer.valueOf(this.eGz) });
+        label218:
+        ab.i("MicroMsg.PreloadVideoService", "%d check more preload count result[%b] config[%d] hadPreloadCount[%d %d %d] ", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(this.fWo), Integer.valueOf(this.fWp) });
         if (bool)
         {
           if (!paramBoolean) {
-            break label351;
+            break label363;
           }
-          if (!this.eGC)
+          if (!this.fWs)
           {
-            this.eGC = true;
-            h.nFQ.a(354L, 127L, 1L, false);
+            this.fWs = true;
+            h.qsU.idkeyStat(354L, 127L, 1L, false);
           }
         }
       }
-      while (this.eGD)
+      for (;;)
       {
+        AppMethodBeat.o(50723);
         return bool;
-        j = this.eGz;
-        i = ((a)g.r(a.class)).AA().getInt("SnsMaxPreloadVideo", 100);
+        j = this.fWp;
+        i = ((a)g.E(a.class)).Nq().getInt("SnsMaxPreloadVideo", 100);
         break;
         bool = false;
-        break label212;
+        break label218;
+        label363:
+        if (!this.fWt)
+        {
+          this.fWt = true;
+          h.qsU.idkeyStat(354L, 128L, 1L, false);
+        }
       }
-      this.eGD = true;
-      h.nFQ.a(354L, 128L, 1L, false);
-      return bool;
     }
   }
   
   public final void stopDownload()
   {
-    y.i("MicroMsg.PreloadVideoService", "%d stop download", new Object[] { Integer.valueOf(hashCode()) });
-    g.DS().O(new i.1(this));
+    AppMethodBeat.i(50719);
+    ab.i("MicroMsg.PreloadVideoService", "%d stop download", new Object[] { Integer.valueOf(hashCode()) });
+    g.RO().ac(new i.1(this));
+    AppMethodBeat.o(50719);
   }
 }
 

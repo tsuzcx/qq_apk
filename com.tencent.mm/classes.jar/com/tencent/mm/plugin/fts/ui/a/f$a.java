@@ -6,12 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class f$a
   extends com.tencent.mm.plugin.fts.a.d.a.a.b
@@ -23,43 +22,47 @@ public class f$a
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.e.fts_conv_talker_header_item, paramViewGroup, false);
-    paramViewGroup = (f.b)this.kCW.kCV;
-    paramViewGroup.kCX = ((TextView)paramContext.findViewById(n.d.header_1_tv));
-    paramViewGroup.kCY = ((ImageView)paramContext.findViewById(n.d.avatar_1_iv));
-    paramViewGroup.kCZ = ((TextView)paramContext.findViewById(n.d.header_2_tv));
-    paramViewGroup.kDa = ((ImageView)paramContext.findViewById(n.d.avatar_2_iv));
-    paramViewGroup.kDb = ((TextView)paramContext.findViewById(n.d.info_tv));
-    paramViewGroup.contentView = paramContext.findViewById(n.d.search_item_content_layout);
-    paramViewGroup.kCO = paramContext.findViewById(n.d.padding_view);
+    AppMethodBeat.i(61982);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969652, paramViewGroup, false);
+    paramViewGroup = (f.b)this.mYS.mYR;
+    paramViewGroup.mYT = ((TextView)paramContext.findViewById(2131824339));
+    paramViewGroup.mYU = ((ImageView)paramContext.findViewById(2131824338));
+    paramViewGroup.mYV = ((TextView)paramContext.findViewById(2131824342));
+    paramViewGroup.mYW = ((ImageView)paramContext.findViewById(2131824341));
+    paramViewGroup.mYX = ((TextView)paramContext.findViewById(2131824340));
+    paramViewGroup.contentView = paramContext.findViewById(2131821209);
+    paramViewGroup.mYK = paramContext.findViewById(2131820910);
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(61982);
     return paramContext;
   }
   
   public void a(Context paramContext, a.a parama, a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(61983);
     paramContext = (f.b)parama;
-    m.a(this.kCW.kCP, paramContext.kCX);
-    com.tencent.mm.pluginsdk.ui.a.b.a(paramContext.kCY, this.kCW.kCQ);
-    m.a(this.kCW.kCR, paramContext.kCZ);
-    if (!bk.bl(this.kCW.kCS))
+    m.a(this.mYS.mYL, paramContext.mYT);
+    com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.mYU, this.mYS.mYM);
+    m.a(this.mYS.mYN, paramContext.mYV);
+    if (!bo.isNullOrNil(this.mYS.mYO))
     {
-      paramContext.kDa.setVisibility(0);
-      com.tencent.mm.pluginsdk.ui.a.b.a(paramContext.kDa, this.kCW.kCS);
-      m.l(paramContext.contentView, this.kCW.kxT);
-      if (this.kCW.position != 0) {
-        break label138;
+      paramContext.mYW.setVisibility(0);
+      com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.mYW, this.mYS.mYO);
+      m.r(paramContext.contentView, this.mYS.mTH);
+      if (this.mYS.position != 0) {
+        break label148;
       }
-      paramContext.kCO.setVisibility(8);
+      paramContext.mYK.setVisibility(8);
     }
     for (;;)
     {
-      paramContext.kDb.setVisibility(0);
+      paramContext.mYX.setVisibility(0);
+      AppMethodBeat.o(61983);
       return;
-      paramContext.kDa.setVisibility(8);
+      paramContext.mYW.setVisibility(8);
       break;
-      label138:
-      paramContext.kCO.setVisibility(0);
+      label148:
+      paramContext.mYK.setVisibility(0);
     }
   }
   
@@ -70,7 +73,7 @@ public class f$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.f.a
  * JD-Core Version:    0.7.0.1
  */

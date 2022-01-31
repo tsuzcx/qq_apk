@@ -3,137 +3,162 @@ package com.tencent.mm.plugin.fingerprint.b;
 import android.content.Context;
 import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.fingerprint.FingerPrintAuth;
 import com.tencent.mm.plugin.fingerprint.c.f;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.wallet.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.pluginsdk.wallet.k;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.u;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.w;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public final class h
-  implements j
+  implements k
 {
-  private String bOV = null;
-  private String foR = null;
-  ah klf = new ah(new h.1(this));
-  com.tencent.mm.pluginsdk.wallet.a klj = null;
-  private com.tencent.mm.pluginsdk.wallet.a klk = null;
-  WalletBaseUI kll = null;
-  private String klm = null;
+  private String cwm;
+  private String gGl;
+  ak mFT;
+  com.tencent.mm.pluginsdk.wallet.a mFX;
+  private com.tencent.mm.pluginsdk.wallet.a mFY;
+  WalletBaseUI mFZ;
+  private String mGa;
+  
+  public h()
+  {
+    AppMethodBeat.i(41485);
+    this.mFX = null;
+    this.mFY = null;
+    this.mFZ = null;
+    this.mGa = null;
+    this.cwm = null;
+    this.gGl = null;
+    this.mFT = new ak(new h.1(this));
+    AppMethodBeat.o(41485);
+  }
   
   public final void a(Context paramContext, com.tencent.mm.pluginsdk.wallet.a parama, String paramString)
   {
-    this.kll = ((WalletBaseUI)paramContext);
-    this.klj = parama;
-    this.foR = paramString;
-    paramContext = FingerPrintAuth.getRsaKey(e.dj(ae.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.zg());
-    com.tencent.mm.plugin.soter.d.a.bKN();
+    AppMethodBeat.i(41486);
+    this.mFZ = ((WalletBaseUI)paramContext);
+    this.mFX = parama;
+    this.gGl = paramString;
+    paramContext = FingerPrintAuth.getRsaKey(e.dU(ah.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.LK());
+    com.tencent.mm.plugin.soter.d.a.cxZ();
     if (TextUtils.isEmpty(paramContext))
     {
-      y.e("MicroMsg.HwFingerprintOpenDelegate", "FingerPrintAuth.getRsaKey() is null");
-      new q(new h.a(this, (byte)0)).aTf();
+      ab.e("MicroMsg.HwFingerprintOpenDelegate", "FingerPrintAuth.getRsaKey() is null");
+      new q(new h.a(this, (byte)0)).aBi();
+      AppMethodBeat.o(41486);
       return;
     }
-    y.i("MicroMsg.HwFingerprintOpenDelegate", "do NetSceneTenpayGetOpenTouchCert");
+    ab.i("MicroMsg.HwFingerprintOpenDelegate", "do NetSceneTenpayGetOpenTouchCert");
     paramContext = new com.tencent.mm.plugin.fingerprint.c.e(paramContext);
-    this.kll.a(paramContext, false, false);
+    this.mFZ.doSceneProgress(paramContext, false);
+    AppMethodBeat.o(41486);
   }
   
   public final void a(com.tencent.mm.pluginsdk.wallet.a parama, String paramString, int paramInt)
   {
-    this.klk = parama;
-    if (TextUtils.isEmpty(this.foR))
+    AppMethodBeat.i(41488);
+    this.mFY = parama;
+    if (TextUtils.isEmpty(this.gGl))
     {
-      y.e("MicroMsg.HwFingerprintOpenDelegate", "get user pwd error");
-      parama.ai(-1, this.kll.getString(a.i.fingerprint_open_fail));
+      ab.e("MicroMsg.HwFingerprintOpenDelegate", "get user pwd error");
+      parama.aC(-1, this.mFZ.getString(2131299968));
+      AppMethodBeat.o(41488);
       return;
     }
     String str1 = e.getUserId();
-    String str2 = com.tencent.mm.compatible.e.q.zg();
-    String str3 = u.cMz();
+    String str2 = com.tencent.mm.compatible.e.q.LK();
+    String str3 = w.dSo();
     parama = "";
-    if (e.aSK())
+    if (e.bzf())
     {
-      paramString = FingerPrintAuth.genOpenFPEncrypt(e.dj(ae.getContext()), str1, str2, paramString, str3, "", this.klm, this.bOV, Build.MODEL);
-      parama = FingerPrintAuth.genOpenFPSign(e.dj(ae.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.zg(), paramString);
+      paramString = FingerPrintAuth.genOpenFPEncrypt(e.dU(ah.getContext()), str1, str2, paramString, str3, "", this.mGa, this.cwm, Build.MODEL);
+      parama = FingerPrintAuth.genOpenFPSign(e.dU(ah.getContext()), e.getUserId(), com.tencent.mm.compatible.e.q.LK(), paramString);
     }
     for (;;)
     {
-      if (TextUtils.isEmpty(this.klm)) {
-        y.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypted_device_info which return by FingerPrintAuth.genOpenFPEncrypt is null");
+      if (TextUtils.isEmpty(this.mGa)) {
+        ab.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypted_device_info which return by FingerPrintAuth.genOpenFPEncrypt is null");
       }
       for (;;)
       {
-        parama = new f(paramString, parama, this.foR, paramInt);
-        this.kll.a(parama, false, false);
+        parama = new f(paramString, parama, this.gGl, paramInt);
+        this.mFZ.doSceneProgress(parama, false);
+        AppMethodBeat.o(41488);
         return;
         if (TextUtils.isEmpty(parama)) {
-          y.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypto_open_sign which return by FingerPrintAuth.genOpenFPSign is null");
+          ab.e("MicroMsg.HwFingerprintOpenDelegate", "The value of encrypto_open_sign which return by FingerPrintAuth.genOpenFPSign is null");
         }
       }
       paramString = "";
     }
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void clear() {}
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    boolean bool = false;
     int i = 0;
-    if ((paramm instanceof com.tencent.mm.plugin.fingerprint.c.e)) {
+    AppMethodBeat.i(41487);
+    if ((paramm instanceof com.tencent.mm.plugin.fingerprint.c.e))
+    {
+      Object localObject;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        y.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert success");
+        ab.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert success");
         paramString = (com.tencent.mm.plugin.fingerprint.c.e)paramm;
-        this.klm = paramString.klm;
-        this.bOV = paramString.bOV;
-        localObject = this.klj;
+        this.mGa = paramString.mGa;
+        this.cwm = paramString.cwm;
+        localObject = this.mFX;
         paramm = "";
         paramInt1 = i;
-        ((com.tencent.mm.pluginsdk.wallet.a)localObject).ai(paramInt1, paramm);
-        bool = true;
       }
-    }
-    while (!(paramm instanceof f)) {
       for (;;)
       {
-        return bool;
-        y.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert error");
-        com.tencent.mm.pluginsdk.wallet.a locala = this.klj;
+        ((com.tencent.mm.pluginsdk.wallet.a)localObject).aC(paramInt1, paramm);
+        AppMethodBeat.o(41487);
+        return true;
+        ab.i("MicroMsg.HwFingerprintOpenDelegate", "get FingerPrint cert error");
+        com.tencent.mm.pluginsdk.wallet.a locala = this.mFX;
         paramInt2 = -1;
         paramInt1 = paramInt2;
-        Object localObject = locala;
+        localObject = locala;
         paramm = paramString;
-        if (bk.bl(paramString))
+        if (bo.isNullOrNil(paramString))
         {
-          paramm = this.kll.getString(a.i.fingerprint_open_fail);
+          paramm = this.mFZ.getString(2131299968);
           paramInt1 = paramInt2;
           localObject = locala;
         }
       }
     }
-    if ((paramInt1 == 0) && (paramInt2 == 0))
+    if ((paramm instanceof f))
     {
-      com.tencent.mm.plugin.soter.d.a.bKO();
-      com.tencent.mm.plugin.soter.d.a.c(0, 0, 0, "OK");
-      this.klk.ai(0, "");
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        com.tencent.mm.plugin.soter.d.a.cya();
+        com.tencent.mm.plugin.soter.d.a.d(0, 0, 0, "OK");
+        this.mFY.aC(0, "");
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(41487);
+        return true;
+        this.mFY.aC(-2, "");
+      }
     }
-    for (;;)
-    {
-      return true;
-      this.klk.ai(-2, "");
-    }
+    AppMethodBeat.o(41487);
+    return false;
   }
-  
-  public final void clear() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.h
  * JD-Core Version:    0.7.0.1
  */

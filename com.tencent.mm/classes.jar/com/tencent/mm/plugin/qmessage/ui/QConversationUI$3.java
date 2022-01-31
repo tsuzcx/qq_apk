@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qmessage.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class QConversationUI$3
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class QConversationUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    QConversationUI.h(this.ncU);
+    AppMethodBeat.i(24128);
+    QConversationUI.h(this.pIm);
+    AppMethodBeat.o(24128);
   }
 }
 

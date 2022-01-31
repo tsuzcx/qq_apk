@@ -1,5 +1,7 @@
 package com.tencent.luggage.bridge;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class n$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class n$1
   
   public final void run()
   {
-    this.bhI.h(this.bhH, false);
+    AppMethodBeat.i(90730);
+    this.byi.j(this.byh, false);
+    AppMethodBeat.o(90730);
   }
 }
 

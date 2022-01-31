@@ -3,13 +3,10 @@ package com.tencent.mm.plugin.product.ui;
 import android.content.res.Resources;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.c;
-import com.tencent.mm.plugin.wxpay.a.b;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +17,8 @@ final class MallProductUI$7
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = this.mVg.getResources().getStringArray(a.b.mall_product_share_opt_list);
+    AppMethodBeat.i(44164);
+    paramMenuItem = this.pxl.getResources().getStringArray(2131755035);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramMenuItem.length)
@@ -28,14 +26,15 @@ final class MallProductUI$7
       localArrayList.add(paramMenuItem[i]);
       i += 1;
     }
-    if ((this.mVg.mTL.brQ().mTH & 0x1) > 0) {}
+    if ((this.pxl.pvR.caW().pvN & 0x1) > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      y.d("MicroMsg.MallProductConfig", "isShowSellerEntry, ret = " + bool);
+      ab.d("MicroMsg.MallProductConfig", "isShowSellerEntry, ret = ".concat(String.valueOf(bool)));
       if (bool) {
-        localArrayList.add(this.mVg.getString(a.i.mall_product_seller_opt));
+        localArrayList.add(this.pxl.getString(2131301485));
       }
-      h.a(this.mVg.mController.uMN, null, (String[])localArrayList.toArray(new String[localArrayList.size()]), null, false, new MallProductUI.7.1(this));
+      h.a(this.pxl.getContext(), null, (String[])localArrayList.toArray(new String[localArrayList.size()]), null, false, new MallProductUI.7.1(this));
+      AppMethodBeat.o(44164);
       return true;
     }
   }

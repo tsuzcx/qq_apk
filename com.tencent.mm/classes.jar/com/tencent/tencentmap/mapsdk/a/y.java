@@ -1,245 +1,152 @@
 package com.tencent.tencentmap.mapsdk.a;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.os.Process;
-import android.telephony.TelephonyManager;
-import android.util.Log;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class y
 {
-  public static String a = "TencentMapSDK";
-  private static String b;
-  private static String c;
-  private static String d;
-  private static String e;
-  private static String f;
-  private static String g;
-  private static String h;
+  private static volatile y a;
+  private SharedPreferences b;
   
-  public static String a()
+  private y(Context paramContext)
   {
-    return c;
+    AppMethodBeat.i(150406);
+    this.b = paramContext.getSharedPreferences("com.tencent.tencentmap.vector.dynamic", 0);
+    AppMethodBeat.o(150406);
   }
   
-  private static String a(String paramString)
+  public static y a(Context paramContext)
   {
-    if (paramString == null) {
-      return "";
-    }
-    return paramString.replace("&", "").replace("#", "").replace("?", "");
-  }
-  
-  public static void a(Context paramContext)
-  {
-    String str;
-    if (b == null)
-    {
-      str = b(paramContext);
-      b = str;
-      b = a(str);
-    }
-    if (c == null)
-    {
-      str = c(paramContext);
-      c = str;
-      c = a(str);
-    }
-    if (d == null)
-    {
-      str = Build.MODEL;
-      d = str;
-      d = a(str);
-    }
-    if (e == null) {
-      e = Build.VERSION.RELEASE;
-    }
-    if (f == null)
-    {
-      str = d(paramContext);
-      f = str;
-      f = a(str);
-    }
-    if (g == null)
-    {
-      str = paramContext.getPackageName();
-      g = str;
-      g = a(str);
-    }
-    if (h == null)
-    {
-      paramContext = e(paramContext);
-      h = paramContext;
-      h = a(paramContext);
-    }
-  }
-  
-  public static String b()
-  {
-    return d;
-  }
-  
-  private static String b(Context paramContext)
-  {
-    Object localObject;
-    if (Build.VERSION.SDK_INT < 21)
-    {
-      localObject = "armeabi-v7a";
-      return localObject;
-    }
-    if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 23)) {
-      for (paramContext = paramContext.getClassLoader();; paramContext = Build.SUPPORTED_32_BIT_ABIS[0])
-      {
-        try
-        {
-          paramContext = ClassLoader.class.getDeclaredMethod("findLibrary", new Class[] { String.class }).invoke(paramContext, new Object[] { "art" });
-          if (paramContext == null) {
-            break label129;
-          }
-          if (!((String)paramContext).contains("lib64")) {
-            continue;
-          }
-          paramContext = Build.SUPPORTED_64_BIT_ABIS[0];
-        }
-        catch (NoSuchMethodException paramContext)
-        {
-          for (;;)
-          {
-            paramContext = "";
-          }
-        }
-        catch (IllegalAccessException paramContext)
-        {
-          for (;;)
-          {
-            paramContext = "";
-          }
-        }
-        catch (InvocationTargetException paramContext)
-        {
-          for (;;)
-          {
-            paramContext = "";
-          }
-        }
-        catch (NullPointerException paramContext)
-        {
-          for (;;)
-          {
-            paramContext = "";
-          }
-        }
-        localObject = paramContext;
-        if (paramContext != null) {
-          break;
-        }
-        return Build.SUPPORTED_ABIS[0];
-      }
-    }
-    label129:
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      if (Process.is64Bit()) {
-        return Build.SUPPORTED_64_BIT_ABIS[0];
-      }
-      return Build.SUPPORTED_32_BIT_ABIS[0];
-    }
-    return "";
-  }
-  
-  public static String c()
-  {
-    return e;
-  }
-  
-  private static String c(Context paramContext)
-  {
-    if (paramContext == null) {
-      return "";
-    }
-    TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
-    if (localTelephonyManager == null) {
-      return "";
-    }
-    if (Build.VERSION.SDK_INT > 22)
-    {
-      if (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {
-        return "no permission";
-      }
-      return localTelephonyManager.getDeviceId();
-    }
-    return localTelephonyManager.getDeviceId();
-  }
-  
-  public static String d()
-  {
-    return f;
-  }
-  
-  private static String d(Context paramContext)
-  {
-    if (paramContext == null) {
-      return "";
-    }
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    String str = "unknown";
+    AppMethodBeat.i(150407);
+    if (a == null) {}
     try
     {
-      paramContext = localPackageManager.getApplicationInfo(paramContext.getPackageName(), 128).loadLabel(localPackageManager);
-      return paramContext.toString();
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      for (;;)
-      {
-        rh.b(Log.getStackTraceString(paramContext));
-        paramContext = str;
+      if (a == null) {
+        a = new y(paramContext);
       }
+      paramContext = a;
+      AppMethodBeat.o(150407);
+      return paramContext;
+    }
+    finally
+    {
+      AppMethodBeat.o(150407);
     }
   }
   
-  public static String e()
+  public boolean a(String paramString)
   {
-    return g;
+    AppMethodBeat.i(150410);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(150410);
+      return false;
+    }
+    if (this.b.getString("supportVectorOtaVersions", null) == null)
+    {
+      bool = this.b.edit().putString("supportVectorOtaVersions", paramString).commit();
+      AppMethodBeat.o(150410);
+      return bool;
+    }
+    Object localObject = a();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(150410);
+      return false;
+    }
+    localObject = new LinkedHashSet(Arrays.asList((Object[])localObject));
+    ((Set)localObject).add(paramString);
+    boolean bool = a((String[])((Set)localObject).toArray(new String[((Set)localObject).size()]));
+    AppMethodBeat.o(150410);
+    return bool;
   }
   
-  private static String e(Context paramContext)
+  public boolean a(String[] paramArrayOfString)
   {
-    if (paramContext == null) {
-      return "";
-    }
-    String str = paramContext.getPackageName();
-    Object localObject = null;
-    try
+    int i = 0;
+    AppMethodBeat.i(150408);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
-      paramContext = paramContext.getPackageManager().getApplicationInfo(str, 128);
-      if (paramContext == null) {
-        return "";
-      }
-      if (paramContext.metaData == null) {
-        return "";
-      }
-      return paramContext.metaData.getString(a);
+      AppMethodBeat.o(150408);
+      return false;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    StringBuffer localStringBuffer = new StringBuffer();
+    while (i < paramArrayOfString.length - 1)
     {
-      for (;;)
-      {
-        paramContext = localObject;
-      }
+      localStringBuffer.append(paramArrayOfString[i] + ";");
+      i += 1;
     }
+    localStringBuffer.append(paramArrayOfString[(paramArrayOfString.length - 1)]);
+    boolean bool = this.b.edit().putString("supportVectorOtaVersions", localStringBuffer.toString()).commit();
+    AppMethodBeat.o(150408);
+    return bool;
   }
   
-  public static String f()
+  public String[] a()
   {
-    return h;
+    AppMethodBeat.i(150409);
+    Object localObject = this.b.getString("supportVectorOtaVersions", null);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(150409);
+      return null;
+    }
+    localObject = ((String)localObject).split(";");
+    AppMethodBeat.o(150409);
+    return localObject;
+  }
+  
+  public String b()
+  {
+    AppMethodBeat.i(150412);
+    String str = this.b.getString("vectorMapConfigMd5", null);
+    AppMethodBeat.o(150412);
+    return str;
+  }
+  
+  public boolean b(String paramString)
+  {
+    AppMethodBeat.i(150411);
+    boolean bool = this.b.edit().putString("vectorMapConfigMd5", paramString).commit();
+    AppMethodBeat.o(150411);
+    return bool;
+  }
+  
+  public String c()
+  {
+    AppMethodBeat.i(150414);
+    String str = this.b.getString("vectorMapPoiIconMd5", null);
+    AppMethodBeat.o(150414);
+    return str;
+  }
+  
+  public boolean c(String paramString)
+  {
+    AppMethodBeat.i(150413);
+    boolean bool = this.b.edit().putString("vectorMapPoiIconMd5", paramString).commit();
+    AppMethodBeat.o(150413);
+    return bool;
+  }
+  
+  public String d()
+  {
+    AppMethodBeat.i(150415);
+    String str = this.b.getString("dynamicMapSdkVectorVersion", "");
+    AppMethodBeat.o(150415);
+    return str;
+  }
+  
+  public boolean d(String paramString)
+  {
+    AppMethodBeat.i(150416);
+    boolean bool = this.b.edit().putString("dynamicMapSdkVectorVersion", paramString).commit();
+    AppMethodBeat.o(150416);
+    return bool;
   }
 }
 

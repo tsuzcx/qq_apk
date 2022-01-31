@@ -67,7 +67,7 @@ public abstract class IContentObserver$Stub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.wcdb.IContentObserver.Stub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,63 @@
 package com.tencent.mm.plugin.appbrand.g;
 
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.List;
 
 final class b$1
-  implements j.a
+  implements k.a
 {
   b$1(b paramb) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
-    y.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "WeApp storage change: event=%s | eventData=%s", new Object[] { paramString, paraml });
-    switch (paraml.gbI)
+    AppMethodBeat.i(129956);
+    ab.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "WeApp storage change: event=%s | eventData=%s", new Object[] { paramString, paramm });
+    switch (paramm.htj)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(129956);
       return;
       if ("batch".equals(paramString))
       {
-        if ((paraml.obj != null) && ((paraml.obj instanceof List)))
+        if ((paramm.obj != null) && ((paramm.obj instanceof List)))
         {
-          paramString = ((List)paraml.obj).iterator();
+          paramString = ((List)paramm.obj).iterator();
           while (paramString.hasNext())
           {
-            paraml = (String)paramString.next();
-            this.fYv.dBO.a(65616, new b.b(this.fYv, paraml));
+            paramm = (String)paramString.next();
+            this.hrJ.ezf.a(65616, new b.b(this.hrJ, paramm));
           }
+          AppMethodBeat.o(129956);
         }
       }
       else
       {
-        this.fYv.dBO.a(65616, new b.b(this.fYv, paraml.obj.toString()));
+        this.hrJ.ezf.a(65616, new b.b(this.hrJ, paramm.obj.toString()));
+        AppMethodBeat.o(129956);
         return;
-        if (!"batch".equals(paramString)) {
-          break;
-        }
-        if ((paraml.obj != null) && ((paraml.obj instanceof List)))
+        if ("batch".equals(paramString))
         {
-          paramString = ((List)paraml.obj).iterator();
-          while (paramString.hasNext())
+          if ((paramm.obj != null) && ((paramm.obj instanceof List)))
           {
-            paraml = (String)paramString.next();
-            this.fYv.dBO.a(65616, new b.a(this.fYv, paraml));
+            paramString = ((List)paramm.obj).iterator();
+            while (paramString.hasNext())
+            {
+              paramm = (String)paramString.next();
+              this.hrJ.ezf.a(65616, new b.a(this.hrJ, paramm));
+            }
+            AppMethodBeat.o(129956);
           }
+        }
+        else {
+          this.hrJ.ezf.a(65616, new b.a(this.hrJ, paramm.obj.toString()));
         }
       }
     }
-    this.fYv.dBO.a(65616, new b.a(this.fYv, paraml.obj.toString()));
   }
 }
 

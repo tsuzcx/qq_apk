@@ -1,24 +1,37 @@
 package com.tencent.mm.modelappbrand.a;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.sdk.platformtools.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.d;
 
 public final class f
   implements b.f
 {
-  public static final f eaL = new f();
+  public static final f fqU;
   
-  public final String pU()
+  static
+  {
+    AppMethodBeat.i(77384);
+    fqU = new f();
+    AppMethodBeat.o(77384);
+  }
+  
+  public final String tX()
   {
     return "WxaIcon";
   }
   
-  public final Bitmap q(Bitmap paramBitmap)
+  public final Bitmap x(Bitmap paramBitmap)
   {
-    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0)) {
+    AppMethodBeat.i(77383);
+    if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
+    {
+      AppMethodBeat.o(77383);
       return paramBitmap;
     }
-    return c.a(paramBitmap, false, paramBitmap.getWidth() / 2, false);
+    paramBitmap = d.a(paramBitmap, false, paramBitmap.getWidth() / 2, false);
+    AppMethodBeat.o(77383);
+    return paramBitmap;
   }
 }
 

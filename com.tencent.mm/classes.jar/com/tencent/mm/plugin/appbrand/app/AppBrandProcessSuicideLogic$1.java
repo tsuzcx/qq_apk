@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.app;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AppBrandProcessSuicideLogic$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class AppBrandProcessSuicideLogic$1
   
   public final void run()
   {
-    AppBrandProcessSuicideLogic.a(this.fAQ, this.fAP);
+    AppMethodBeat.i(129196);
+    AppBrandProcessSuicideLogic.a(this.gSF, this.gSE);
+    AppMethodBeat.o(129196);
   }
 }
 

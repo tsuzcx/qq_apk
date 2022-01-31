@@ -1,175 +1,294 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
-import com.tencent.mm.h.b.a.ae;
-import com.tencent.mm.h.b.a.ae.a;
-import com.tencent.mm.h.b.a.ae.b;
-import com.tencent.mm.h.b.a.aj;
-import com.tencent.mm.h.b.a.aj.a;
-import com.tencent.mm.h.b.a.aj.b;
-import com.tencent.mm.h.b.a.ap;
-import com.tencent.mm.h.b.a.ap.a;
-import com.tencent.mm.h.b.a.ap.b;
-import com.tencent.mm.h.b.a.ar;
-import com.tencent.mm.h.b.a.ar.a;
-import com.tencent.mm.h.b.a.ar.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.cd;
+import com.tencent.mm.g.b.a.cd.a;
+import com.tencent.mm.g.b.a.ch;
+import com.tencent.mm.g.b.a.ch.a;
+import com.tencent.mm.g.b.a.cm;
+import com.tencent.mm.g.b.a.cm.a;
+import com.tencent.mm.g.b.a.co;
+import com.tencent.mm.g.b.a.co.a;
+import com.tencent.mm.g.b.a.ct;
+import com.tencent.mm.g.b.a.ct.a;
+import com.tencent.mm.g.b.a.cv;
+import com.tencent.mm.g.b.a.cv.a;
 import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.report.g;
+import com.tencent.mm.plugin.appbrand.report.j;
 import com.tencent.mm.plugin.appbrand.task.AppBrandPreloadProfiler;
+import com.tencent.mm.plugin.appbrand.task.g;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class b
+  extends c
 {
-  public static void a(String paramString, AppBrandPreloadProfiler paramAppBrandPreloadProfiler)
+  public static void a(g paramg, String paramString, long paramLong, com.tencent.mm.plugin.appbrand.report.c paramc)
   {
-    long l2 = 0L;
-    ap localap = new ap();
-    paramString = a.wg(paramString);
-    if (paramString == null) {
-      return;
+    long l1 = 0L;
+    AppMethodBeat.i(132688);
+    ch localch = new ch();
+    int i;
+    if (paramg != null) {
+      i = 1;
     }
-    localap.ckG = paramString.appId;
-    localap.ckF = paramString.gKi;
-    localap.coC = ap.a.eV(paramString.ham);
-    localap.coD = ap.b.eW(paramString.apptype);
-    localap.ckH = paramString.han;
-    if ((paramAppBrandPreloadProfiler.endTime == 9223372036854775807L) || (paramAppBrandPreloadProfiler.hbd == 9223372036854775807L))
+    long l2;
+    for (;;)
     {
-      l1 = 0L;
-      localap.aP(l1);
-      l1 = l2;
-      if (paramAppBrandPreloadProfiler.hbf != 9223372036854775807L) {
-        if (paramAppBrandPreloadProfiler.endTime != 9223372036854775807L) {
-          break label160;
+      if (i == 0)
+      {
+        paramg = a.EM(paramString);
+        if (paramg == null)
+        {
+          AppMethodBeat.o(132688);
+          return;
+          i = 0;
+        }
+        else
+        {
+          localch.hn(paramg.appId);
+          localch.hm(paramg.ikX);
+          localch.daW = ch.a.gU(paramg.iIF);
+          localch.cZD = paramg.apptype;
+          localch.cZB = paramg.iIG;
+          localch.cRG = paramg.scene;
+          if (paramg.iIQ)
+          {
+            l2 = 2L;
+            localch.daa = l2;
+            if (paramg.bAa) {
+              l1 = 1L;
+            }
+            localch.daX = l1;
+            label148:
+            localch.eR(paramLong);
+            localch.GZ();
+            localch.eQ(localch.dav - paramLong);
+            switch (b.1.iIq[paramc.ordinal()])
+            {
+            default: 
+              localch.cYC = 2147483647L;
+            }
+          }
         }
       }
     }
-    label160:
-    for (long l1 = l2;; l1 = paramAppBrandPreloadProfiler.endTime - paramAppBrandPreloadProfiler.hbf)
+    for (;;)
     {
-      localap.aQ(l1);
-      localap.QX();
+      localch.ake();
+      AppMethodBeat.o(132688);
       return;
-      l1 = paramAppBrandPreloadProfiler.endTime - paramAppBrandPreloadProfiler.hbd;
+      l2 = 0L;
       break;
+      localch.daa = 1L;
+      if (paramg == g.iKT) {
+        l1 = 1L;
+      }
+      localch.daX = l1;
+      break label148;
+      localch.cYC = 1L;
+      continue;
+      localch.cYC = 2L;
+      continue;
+      localch.cYC = 3L;
+      continue;
+      localch.cYC = 4L;
+      continue;
+      localch.cYC = 5L;
+      continue;
+      localch.cYC = 6L;
     }
   }
   
-  public static void a(boolean paramBoolean, String paramString, long paramLong, com.tencent.mm.plugin.appbrand.report.a parama)
+  public static void a(String paramString, i parami)
   {
-    ae localae = new ae();
+    AppMethodBeat.i(143521);
+    paramString = a.EM(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(143521);
+      return;
+    }
+    co localco = new co();
+    localco.hK(paramString.appId);
+    localco.hJ(paramString.ikX);
+    localco.dbP = co.a.hb(paramString.iIF);
+    localco.cZD = paramString.apptype;
+    localco.cZB = paramString.iIG;
+    localco.cRG = paramString.scene;
+    localco.dce = paramString.iIO.get();
+    localco.Hf();
+    localco.Hg();
+    localco.He();
+    localco.dbQ = parami.fps;
+    localco.dbR = Math.round(parami.iIX);
+    int i;
+    if (parami.iIS == h.a.iIU) {
+      i = 1;
+    }
+    for (;;)
+    {
+      localco.dbZ = i;
+      localco.dca = parami.iIY;
+      localco.dcb = parami.iIZ;
+      localco.dcc = parami.iJa;
+      localco.dbV = parami.bAT;
+      localco.dbW = parami.bAU;
+      localco.dbT = parami.bAS;
+      localco.dbU = parami.iJb;
+      localco.dbX = (parami.iJc / 1000);
+      localco.dbY = parami.hsW;
+      localco.dbS = parami.iJd;
+      localco.dcd = parami.iJe;
+      localco.ake();
+      AppMethodBeat.o(143521);
+      return;
+      if (parami.iIS == h.a.iIV) {
+        i = 2;
+      } else {
+        i = 0;
+      }
+    }
+  }
+  
+  public static void a(String paramString, AppBrandPreloadProfiler paramAppBrandPreloadProfiler)
+  {
+    AppMethodBeat.i(132686);
+    ct localct = new ct();
+    paramString = a.EM(paramString);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(132686);
+      return;
+    }
+    localct.hV(paramString.appId);
+    localct.hU(paramString.ikX);
+    localct.ddd = ct.a.hh(paramString.iIF);
+    localct.cZD = paramString.apptype;
+    localct.cZB = paramString.iIG;
+    localct.ft(paramAppBrandPreloadProfiler.aLI());
+    localct.fu(paramAppBrandPreloadProfiler.aLH());
+    localct.ake();
+    AppMethodBeat.o(132686);
+  }
+  
+  public static void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    AppMethodBeat.i(143522);
+    cd localcd = new cd();
     if (!paramBoolean)
     {
-      paramString = a.wg(paramString);
-      if (paramString == null) {
+      paramString = a.EM(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(143522);
         return;
       }
-      localae.ckG = paramString.appId;
-      localae.ckF = paramString.gKi;
-      localae.ckI = ae.a.eA(paramString.ham);
-      localae.ckJ = ae.b.eB(paramString.apptype);
-      localae.ckH = paramString.han;
-      localae.cic = paramString.scene;
+      localcd.hf(paramString.appId);
+      localcd.he(paramString.ikX);
+      localcd.daA = cd.a.gQ(paramString.iIF);
+      localcd.cZD = paramString.apptype;
+      localcd.cRG = paramString.scene;
     }
-    long l;
-    if (paramBoolean)
+    localcd.eG(paramLong);
+    localcd.GY();
+    localcd.eF(localcd.dav - localcd.dau);
+    if (paramBoolean) {}
+    for (paramLong = 1L;; paramLong = 0L)
     {
-      l = 1L;
-      localae.ckN = l;
-      localae.ar(paramLong);
-      localae.uS();
-      localae.aq(localae.ckM - paramLong);
-      switch (1.gZX[parama.ordinal()])
+      localcd.daB = paramLong;
+      localcd.ake();
+      AppMethodBeat.o(143522);
+      return;
+    }
+  }
+  
+  public static void a(boolean paramBoolean, String paramString, long paramLong, j paramj)
+  {
+    AppMethodBeat.i(132687);
+    cv localcv = new cv();
+    long l;
+    if (!paramBoolean)
+    {
+      paramString = a.EM(paramString);
+      if (paramString == null)
       {
-      default: 
-        localae.ckO = 2147483647L;
+        AppMethodBeat.o(132687);
+        return;
+      }
+      localcv.hZ(paramString.appId);
+      localcv.hY(paramString.ikX);
+      localcv.ddz = cv.a.hj(paramString.iIF);
+      localcv.cZD = paramString.apptype;
+      localcv.cZB = paramString.iIG;
+      localcv.cRG = paramString.scene;
+      if (paramString.iIQ)
+      {
+        l = 2L;
+        localcv.daa = l;
+        label116:
+        localcv.fy(paramLong);
+        localcv.Hi();
+        localcv.fx(localcv.dav - paramLong);
+        switch (b.1.iIp[paramj.ordinal()])
+        {
+        default: 
+          localcv.cYC = 2147483647L;
+        }
       }
     }
     for (;;)
     {
-      localae.QX();
+      localcv.ake();
+      AppMethodBeat.o(132687);
       return;
       l = 0L;
       break;
-      localae.ckO = 1L;
+      localcv.daa = 1L;
+      break label116;
+      localcv.cYC = 2L;
       continue;
-      localae.ckO = 2L;
+      localcv.cYC = 4L;
       continue;
-      localae.ckO = 3L;
-      continue;
-      localae.ckO = 4L;
-    }
-  }
-  
-  public static void a(boolean paramBoolean, String paramString, long paramLong, g paramg)
-  {
-    ar localar = new ar();
-    if (!paramBoolean)
-    {
-      paramString = a.wg(paramString);
-      if (paramString == null) {
-        return;
-      }
-      localar.ckG = paramString.appId;
-      localar.ckF = paramString.gKi;
-      localar.cpp = ar.a.eZ(paramString.ham);
-      localar.cpq = ar.b.fa(paramString.apptype);
-      localar.ckH = paramString.han;
-      localar.cic = paramString.scene;
-    }
-    localar.aU(paramLong);
-    localar.vc();
-    localar.aT(localar.ckM - paramLong);
-    if (paramBoolean)
-    {
-      paramLong = 1L;
-      localar.ckN = paramLong;
-      switch (1.gZW[paramg.ordinal()])
-      {
-      default: 
-        localar.ckO = 2147483647L;
-      }
-    }
-    for (;;)
-    {
-      localar.QX();
-      return;
-      paramLong = 0L;
-      break;
-      localar.ckO = 2L;
-      continue;
-      localar.ckO = 4L;
-      continue;
-      localar.ckO = 3L;
+      localcv.cYC = 3L;
     }
   }
   
   public static void a(boolean paramBoolean, String paramString1, long paramLong1, String paramString2, long paramLong2)
   {
-    aj localaj = new aj();
+    AppMethodBeat.i(132689);
+    cm localcm = new cm();
+    long l;
     if (!paramBoolean)
     {
-      paramString1 = a.wg(paramString1);
-      if (paramString1 == null) {
+      paramString1 = a.EM(paramString1);
+      if (paramString1 == null)
+      {
+        AppMethodBeat.o(132689);
         return;
       }
-      localaj.ckG = paramString1.appId;
-      localaj.ckF = paramString1.gKi;
-      localaj.cmk = aj.a.eK(paramString1.ham);
-      localaj.cml = aj.b.eL(paramString1.apptype);
-      localaj.ckH = paramString1.han;
-      localaj.cic = paramString1.scene;
+      localcm.hC(paramString1.appId);
+      localcm.hB(paramString1.ikX);
+      localcm.dbC = cm.a.gZ(paramString1.iIF);
+      localcm.cZD = paramString1.apptype;
+      localcm.cZB = paramString1.iIG;
+      localcm.cRG = paramString1.scene;
+      if (paramString1.iIQ) {
+        l = 2L;
+      }
     }
-    localaj.aB(paramLong1);
-    localaj.uX();
-    localaj.aA(localaj.ckM - paramLong1);
-    localaj.cmm = paramString2;
-    localaj.clr = paramLong2;
-    if (paramBoolean) {}
-    for (paramLong1 = 1L;; paramLong1 = 0L)
+    for (localcm.daa = l;; localcm.daa = 1L)
     {
-      localaj.ckN = paramLong1;
-      localaj.cmn = WxaCommLibRuntimeReader.getVersionName();
-      localaj.QX();
+      localcm.eZ(paramLong1);
+      localcm.Hd();
+      localcm.eY(localcm.dav - paramLong1);
+      localcm.hD(paramString2);
+      localcm.dbi = paramLong2;
+      localcm.hE(WxaCommLibRuntimeReader.getVersionName());
+      localcm.ake();
+      AppMethodBeat.o(132689);
       return;
+      l = 0L;
+      break;
     }
   }
 }

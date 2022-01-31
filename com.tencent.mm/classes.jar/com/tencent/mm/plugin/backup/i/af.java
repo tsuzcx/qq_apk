@@ -1,87 +1,111 @@
 package com.tencent.mm.plugin.backup.i;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 import java.util.LinkedList;
 
 public final class af
   extends com.tencent.mm.bv.a
 {
-  public String hPQ;
-  public LinkedList<Long> hRn = new LinkedList();
-  public LinkedList<String> hRo = new LinkedList();
-  public LinkedList<String> hRp = new LinkedList();
+  public String jJs;
+  public LinkedList<Long> jKO;
+  public LinkedList<String> jKP;
+  public LinkedList<String> jKQ;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public af()
   {
+    AppMethodBeat.i(18081);
+    this.jKO = new LinkedList();
+    this.jKP = new LinkedList();
+    this.jKQ = new LinkedList();
+    AppMethodBeat.o(18081);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(18082);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.hPQ == null) {
-        throw new b("Not all required fields were included: BakChatName");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.jJs == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BakChatName");
+        AppMethodBeat.o(18082);
+        throw paramVarArgs;
       }
-      paramVarArgs.d(1, 3, this.hRn);
-      paramVarArgs.d(2, 1, this.hRo);
-      paramVarArgs.d(3, 1, this.hRp);
-      if (this.hPQ != null) {
-        paramVarArgs.d(4, this.hPQ);
+      paramVarArgs.e(1, 3, this.jKO);
+      paramVarArgs.e(2, 1, this.jKP);
+      paramVarArgs.e(3, 1, this.jKQ);
+      if (this.jJs != null) {
+        paramVarArgs.e(4, this.jJs);
       }
-      paramInt = 0;
+      AppMethodBeat.o(18082);
+      return 0;
     }
-    int i;
-    do
+    if (paramInt == 1)
     {
-      return paramInt;
-      if (paramInt != 1) {
-        break;
-      }
-      i = d.a.a.a.c(1, 3, this.hRn) + 0 + d.a.a.a.c(2, 1, this.hRo) + d.a.a.a.c(3, 1, this.hRp);
+      int i = e.a.a.a.c(1, 3, this.jKO) + 0 + e.a.a.a.c(2, 1, this.jKP) + e.a.a.a.c(3, 1, this.jKQ);
       paramInt = i;
-    } while (this.hPQ == null);
-    return i + d.a.a.b.b.a.e(4, this.hPQ);
+      if (this.jJs != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.jJs);
+      }
+      AppMethodBeat.o(18082);
+      return paramInt;
+    }
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.hRn.clear();
-      this.hRo.clear();
-      this.hRp.clear();
-      paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      this.jKO.clear();
+      this.jKP.clear();
+      this.jKQ.clear();
+      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
-      if (this.hPQ == null) {
-        throw new b("Not all required fields were included: BakChatName");
+      if (this.jJs == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BakChatName");
+        AppMethodBeat.o(18082);
+        throw paramVarArgs;
       }
+      AppMethodBeat.o(18082);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       af localaf = (af)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(18082);
         return -1;
       case 1: 
-        localaf.hRn.add(Long.valueOf(locala.xpH.oE()));
+        localaf.jKO.add(Long.valueOf(locala.CLY.sm()));
+        AppMethodBeat.o(18082);
         return 0;
       case 2: 
-        localaf.hRo.add(locala.xpH.readString());
+        localaf.jKP.add(locala.CLY.readString());
+        AppMethodBeat.o(18082);
         return 0;
       case 3: 
-        localaf.hRp.add(locala.xpH.readString());
+        localaf.jKQ.add(locala.CLY.readString());
+        AppMethodBeat.o(18082);
         return 0;
       }
-      localaf.hPQ = locala.xpH.readString();
+      localaf.jJs = locala.CLY.readString();
+      AppMethodBeat.o(18082);
       return 0;
     }
+    AppMethodBeat.o(18082);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.af
  * JD-Core Version:    0.7.0.1
  */

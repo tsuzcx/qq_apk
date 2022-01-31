@@ -1,13 +1,33 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.widget.d;
+import com.tencent.mm.sdk.platformtools.al;
+
 final class j$2
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  j$2(j paramj, String paramString1, String paramString2) {}
+  j$2(Runnable paramRunnable, i parami) {}
   
-  public final void run()
+  public final void onAnimationEnd(Animation paramAnimation)
   {
-    j.a(this.heB, this.doz, this.eOB);
+    AppMethodBeat.i(133155);
+    if (this.inP != null) {
+      al.d(this.inP);
+    }
+    AppMethodBeat.o(133155);
+  }
+  
+  public final void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public final void onAnimationStart(Animation paramAnimation)
+  {
+    AppMethodBeat.i(133156);
+    this.gWQ.gPC.setWillNotDraw(false);
+    AppMethodBeat.o(133156);
   }
 }
 

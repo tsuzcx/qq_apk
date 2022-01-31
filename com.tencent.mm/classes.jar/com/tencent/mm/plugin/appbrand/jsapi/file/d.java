@@ -1,48 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 import org.json.JSONObject;
 
-abstract class d
-  implements f
+abstract class d<T extends f>
+  extends a
 {
-  i gqG;
+  static final ThreadPoolExecutor hLQ = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+  private final T hLP;
   
-  static {}
-  
-  abstract f.a a(c paramc, String paramString, JSONObject paramJSONObject);
-  
-  public final f.a b(c paramc, JSONObject paramJSONObject)
+  public d(T paramT)
   {
-    String str = v(paramJSONObject);
-    if (bk.bl(str)) {
-      return new f.a("fail invalid path", new Object[0]);
-    }
-    if (!paramc.isRunning()) {
-      return new f.a("fail:interrupted", new Object[0]);
-    }
-    return a(paramc, str, paramJSONObject);
+    this.hLP = paramT;
+    this.hLP.hLS = this;
   }
   
-  protected String v(JSONObject paramJSONObject)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    Object localObject2 = paramJSONObject.optString("filePath", null);
-    Object localObject1 = localObject2;
-    if (bk.bl((String)localObject2)) {
-      localObject1 = paramJSONObject.optString("dirPath", null);
-    }
-    localObject2 = localObject1;
-    if (bk.bl((String)localObject1)) {
-      localObject2 = paramJSONObject.optString("path", null);
-    }
-    return localObject2;
+    hLQ.submit(new d.1(this, paramc, paramJSONObject, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.d
  * JD-Core Version:    0.7.0.1
  */

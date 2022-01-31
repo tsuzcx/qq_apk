@@ -2,7 +2,7 @@ package com.tencent.mm.ui.transmit;
 
 public abstract interface c$a
 {
-  public abstract void cJv();
+  public abstract void dOl();
 }
 
 

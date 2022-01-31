@@ -1,51 +1,86 @@
 package com.tencent.mm.plugin.offline.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.a.r;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
-  extends i<r>
+  extends j<r>
 {
-  public static final String[] dXp = { i.a(r.buS, "OfflineOrderStatus") };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(43442);
+    SQL_CREATE = new String[] { j.getCreateSQLs(r.info, "OfflineOrderStatus") };
+    AppMethodBeat.o(43442);
+  }
   
   public a(e parame)
   {
-    super(parame, r.buS, "OfflineOrderStatus", null);
-    this.dXw = parame;
+    super(parame, r.info, "OfflineOrderStatus", null);
+    this.db = parame;
   }
   
-  public final r Km(String paramString)
+  private boolean b(r paramr)
+  {
+    boolean bool = true;
+    AppMethodBeat.i(43436);
+    paramr = this.db.a("select * from OfflineOrderStatus where reqkey=?", new String[] { paramr.field_reqkey }, 2);
+    if (paramr == null)
+    {
+      AppMethodBeat.o(43436);
+      return false;
+    }
+    paramr.moveToFirst();
+    if (!paramr.isAfterLast()) {}
+    for (;;)
+    {
+      paramr.close();
+      AppMethodBeat.o(43436);
+      return bool;
+      bool = false;
+    }
+  }
+  
+  public final r Wl(String paramString)
   {
     Object localObject = null;
-    Cursor localCursor = this.dXw.a("select * from OfflineOrderStatus where reqkey=?", new String[] { paramString }, 2);
-    if (localCursor == null) {
+    AppMethodBeat.i(43437);
+    Cursor localCursor = this.db.a("select * from OfflineOrderStatus where reqkey=?", new String[] { paramString }, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(43437);
       return null;
     }
     localCursor.moveToFirst();
-    y.i("MicroMsg.OfflineOrderStatusStorage", "in getOrderStatusByTranId: cursor.isAfterLast() = " + localCursor.isAfterLast());
+    ab.i("MicroMsg.OfflineOrderStatusStorage", "in getOrderStatusByTranId: cursor.isAfterLast() = " + localCursor.isAfterLast());
     paramString = localObject;
     if (!localCursor.isAfterLast())
     {
       paramString = new r();
-      paramString.d(localCursor);
+      paramString.convertFrom(localCursor);
     }
     localCursor.close();
+    AppMethodBeat.o(43437);
     return paramString;
   }
   
-  public final void Kn(String paramString)
+  public final void Wm(String paramString)
   {
-    r localr = Km(paramString);
+    AppMethodBeat.i(43439);
+    r localr = Wl(paramString);
     if (localr != null) {
       localr.field_status = -1;
     }
     for (paramString = localr;; paramString = localr)
     {
-      b(paramString);
+      c(paramString);
+      AppMethodBeat.o(43439);
       return;
       localr = new r();
       localr.field_reqkey = paramString;
@@ -53,77 +88,55 @@ public final class a
     }
   }
   
-  public final void b(r paramr)
-  {
-    if (paramr.field_reqkey == null)
-    {
-      y.e("MicroMsg.OfflineOrderStatusStorage", "status.field_reqkey is null");
-      return;
-    }
-    Cursor localCursor = this.dXw.a("select * from OfflineOrderStatus where reqkey=?", new String[] { paramr.field_reqkey }, 2);
-    int i;
-    if (localCursor == null)
-    {
-      i = 0;
-      if (i == 0)
-      {
-        y.i("MicroMsg.OfflineOrderStatusStorage", "saveOfflineOrderStatus: insert reqKey: %s,  status: %d ", new Object[] { paramr.field_reqkey, Integer.valueOf(paramr.field_status) });
-        b(paramr);
-      }
-    }
-    else
-    {
-      localCursor.moveToFirst();
-      if (!localCursor.isAfterLast()) {}
-      for (i = 1;; i = 0)
-      {
-        localCursor.close();
-        break;
-      }
-    }
-    y.i("MicroMsg.OfflineOrderStatusStorage", "saveOfflineOrderStatus: update reqKey: %s,  status: %d ", new Object[] { paramr.field_reqkey, Integer.valueOf(paramr.field_status) });
-    c(paramr, new String[0]);
-  }
-  
-  public final r bqf()
+  public final r bYL()
   {
     int i = 1;
     r localr = null;
-    y.i("MicroMsg.OfflineOrderStatusStorage", "in getLastestOrder: orders count: %d, latest 3 orders: %s", new Object[] { Integer.valueOf(bqh()), bqg() });
-    Cursor localCursor = this.dXw.a("SELECT * FROM OfflineOrderStatus WHERE status!=-1 ORDER BY rowid DESC LIMIT 1", null, 2);
-    if (localCursor == null) {
+    AppMethodBeat.i(43435);
+    ab.i("MicroMsg.OfflineOrderStatusStorage", "in getLastestOrder: orders count: %d, latest 3 orders: %s", new Object[] { Integer.valueOf(bYN()), bYM() });
+    Cursor localCursor = this.db.a("SELECT * FROM OfflineOrderStatus WHERE status!=-1 ORDER BY rowid DESC LIMIT 1", null, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(43435);
       return null;
     }
     localCursor.moveToFirst();
-    if (!localCursor.isAfterLast()) {}
-    for (;;)
+    if (!localCursor.isAfterLast())
     {
       if (i != 0)
       {
         localr = new r();
-        localr.d(localCursor);
+        localr.convertFrom(localCursor);
       }
       localCursor.close();
       if (localr == null) {
-        break;
+        break label141;
       }
-      y.i("MicroMsg.OfflineOrderStatusStorage", "getLastestOrder status = " + localr.field_status);
+      ab.i("MicroMsg.OfflineOrderStatusStorage", "getLastestOrder status = " + localr.field_status);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(43435);
       return localr;
       i = 0;
+      break;
+      label141:
+      ab.i("MicroMsg.OfflineOrderStatusStorage", "getLastestOrder null");
     }
-    y.i("MicroMsg.OfflineOrderStatusStorage", "getLastestOrder null");
-    return localr;
   }
   
-  public final String bqg()
+  public final String bYM()
   {
+    AppMethodBeat.i(43440);
     String str = String.format("SELECT * FROM %s ORDER BY %s DESC LIMIT %d;", new Object[] { "OfflineOrderStatus", "rowid", Integer.valueOf(3) });
-    Cursor localCursor = this.dXw.a(str, null, 2);
+    Cursor localCursor = this.db.a(str, null, 2);
     str = "";
     if (localCursor == null)
     {
-      y.e("MicroMsg.OfflineOrderStatusStorage", "getAllOrdersInfo: error.cursor is null\n");
-      return "";
+      ab.e("MicroMsg.OfflineOrderStatusStorage", "getAllOrdersInfo: error.cursor is null\n");
+      AppMethodBeat.o(43440);
+      return str;
+      label68:
       str = str + ";";
     }
     int j;
@@ -140,34 +153,59 @@ public final class a
             str = str + localCursor.getColumnName(i) + ": " + localCursor.getString(i) + ", ";
             i += 1;
           }
-          break;
+          break label68;
         }
       }
       localCursor.close();
-      return str;
+      break;
     }
   }
   
-  public final int bqh()
+  public final int bYN()
   {
     int j = 0;
+    int i = 0;
+    AppMethodBeat.i(43441);
     Object localObject = String.format("SELECT COUNT(*) FROM %s;", new Object[] { "OfflineOrderStatus" });
-    localObject = this.dXw.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      y.e("MicroMsg.OfflineOrderStatusStorage", "getOrdersCount: error.cursor is null\n");
-      return 0;
+    localObject = this.db.a((String)localObject, null, 2);
+    if (localObject == null) {
+      ab.e("MicroMsg.OfflineOrderStatusStorage", "getOrdersCount: error.cursor is null\n");
     }
-    int i = j;
-    if (((Cursor)localObject).moveToNext())
+    for (;;)
     {
+      AppMethodBeat.o(43441);
+      return i;
       i = j;
-      if (((Cursor)localObject).getColumnCount() > 0) {
-        i = ((Cursor)localObject).getInt(0);
+      if (((Cursor)localObject).moveToNext())
+      {
+        i = j;
+        if (((Cursor)localObject).getColumnCount() > 0) {
+          i = ((Cursor)localObject).getInt(0);
+        }
       }
+      ((Cursor)localObject).close();
     }
-    ((Cursor)localObject).close();
-    return i;
+  }
+  
+  public final void c(r paramr)
+  {
+    AppMethodBeat.i(43438);
+    if (paramr.field_reqkey == null)
+    {
+      ab.e("MicroMsg.OfflineOrderStatusStorage", "status.field_reqkey is null");
+      AppMethodBeat.o(43438);
+      return;
+    }
+    if (!b(paramr))
+    {
+      ab.i("MicroMsg.OfflineOrderStatusStorage", "saveOfflineOrderStatus: insert reqKey: %s,  status: %d ", new Object[] { paramr.field_reqkey, Integer.valueOf(paramr.field_status) });
+      insert(paramr);
+      AppMethodBeat.o(43438);
+      return;
+    }
+    ab.i("MicroMsg.OfflineOrderStatusStorage", "saveOfflineOrderStatus: update reqKey: %s,  status: %d ", new Object[] { paramr.field_reqkey, Integer.valueOf(paramr.field_status) });
+    update(paramr, new String[0]);
+    AppMethodBeat.o(43438);
   }
 }
 

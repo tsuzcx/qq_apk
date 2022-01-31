@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.contact;
 
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatroomContactUI$5$1
   implements Runnable
@@ -9,7 +10,9 @@ final class ChatroomContactUI$5$1
   
   public final void run()
   {
-    ChatroomContactUI.b(this.vKi.vKh).setSelection(0);
+    AppMethodBeat.i(33575);
+    ChatroomContactUI.b(this.AbI.AbH).setSelection(0);
+    AppMethodBeat.o(33575);
   }
 }
 

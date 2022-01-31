@@ -1,39 +1,42 @@
 package com.tencent.mm.plugin.shake.ui;
 
 import android.os.Message;
-import com.tencent.mm.ay.j;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.k;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 final class a$2
-  extends ah
+  extends ak
 {
   a$2(boolean paramBoolean) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    int j = q.Gu();
-    if (this.hZO) {}
+    AppMethodBeat.i(24690);
+    int j = r.Zy();
+    if (this.ldm) {}
     for (int i = j & 0xFFFFFEFF;; i = j | 0x100)
     {
-      y.i("MicroMsg.ContactWidgetShake", "setInstall pluginFlag install:%b  pluginFlag : %d -> %d", new Object[] { Boolean.valueOf(this.hZO), Integer.valueOf(j), Integer.valueOf(i) });
-      au.Hx();
-      c.Dz().o(34, Integer.valueOf(i));
-      au.Hx();
-      c.Fv().b(new j("", "", "", "", "", "", "", "", i, "", ""));
-      if (!this.hZO) {
-        m.bzX();
+      ab.i("MicroMsg.ContactWidgetShake", "setInstall pluginFlag install:%b  pluginFlag : %d -> %d", new Object[] { Boolean.valueOf(this.ldm), Integer.valueOf(j), Integer.valueOf(i) });
+      aw.aaz();
+      c.Ru().set(34, Integer.valueOf(i));
+      aw.aaz();
+      c.Yz().c(new k("", "", "", "", "", "", "", "", i, "", ""));
+      if (!this.ldm) {
+        m.clq();
       }
-      if (this.hZP != null) {
-        this.hZP.a(null, null);
+      if (this.oBt != null) {
+        this.oBt.a(null, null);
       }
+      AppMethodBeat.o(24690);
       return;
     }
   }

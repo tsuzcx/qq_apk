@@ -1,15 +1,32 @@
 package com.tencent.mm.plugin.scanner.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class n
 {
-  public volatile int nPG;
-  public n.b nPH;
-  public n.a nPI;
+  private static n qDr;
+  byte[] qDs = null;
+  private byte[] qDt = null;
   
-  public final void ceJ()
+  public static n cjJ()
   {
-    this.nPG = 0;
-    this.nPH = null;
+    AppMethodBeat.i(81461);
+    if (qDr == null) {
+      qDr = new n();
+    }
+    n localn = qDr;
+    AppMethodBeat.o(81461);
+    return localn;
+  }
+  
+  public final void cjK()
+  {
+    if (this.qDs != null) {
+      this.qDs = null;
+    }
+    if (this.qDt != null) {
+      this.qDt = null;
+    }
   }
 }
 

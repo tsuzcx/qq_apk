@@ -1,33 +1,42 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.b;
-import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.pluginsdk.ui.tools.u;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WebViewUI$c
   implements b
 {
   private WebViewUI$c(WebViewUI paramWebViewUI) {}
   
-  public final boolean Tq(String paramString)
+  public final boolean ait(String paramString)
   {
-    if (!this.rpH.gGo.cdI().hi(17))
+    AppMethodBeat.i(7890);
+    if (!this.vgz.igV.ddV().jy(17))
     {
-      y.e("MicroMsg.WebViewUI", "close window permission fail");
+      ab.e("MicroMsg.WebViewUI", "close window permission fail");
+      AppMethodBeat.o(7890);
       return true;
     }
-    this.rpH.finish();
+    this.vgz.finish();
+    AppMethodBeat.o(7890);
     return true;
   }
   
-  public final boolean Ty(String paramString)
+  public final boolean aiz(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(7889);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(7889);
       return false;
     }
-    return s.n(paramString, "weixin://webview/close/");
+    boolean bool = u.x(paramString, "weixin://webview/close/");
+    AppMethodBeat.o(7889);
+    return bool;
   }
 }
 

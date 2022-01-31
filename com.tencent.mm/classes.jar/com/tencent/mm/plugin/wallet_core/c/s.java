@@ -1,81 +1,51 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class s
-  extends j
+  extends m
 {
-  public String qqS;
-  public int qqT;
-  public String qqU;
-  public String qqV;
-  
-  public s(String paramString1, String paramString2)
+  public s(String paramString)
   {
+    AppMethodBeat.i(46528);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("token", paramString1);
-    localHashMap.put("use_touch", "1");
-    D(localHashMap);
-    paramString1 = new HashMap();
-    paramString1.put("soter_req", paramString2);
-    aC(paramString1);
+    localHashMap.put("wallet_tpa_country", paramString);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(46528);
   }
   
-  public s(String paramString1, String paramString2, byte paramByte)
+  public final int getFuncId()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("passwd", paramString1);
-    localHashMap.put("token", paramString2);
-    D(localHashMap);
-    aC(new HashMap());
+    return 1663;
   }
   
-  public s(String paramString1, String paramString2, char paramChar)
+  public final int getTenpayCgicmd()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("passwd", paramString1);
-    localHashMap.put("token", paramString2);
-    localHashMap.put("resend", "1");
-    D(localHashMap);
-    aC(new HashMap());
+    return 1663;
   }
   
-  public final int HH()
+  public final int getType()
   {
-    return 1515;
-  }
-  
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    y.d("Micromsg.NetSceneTenpayCheckPwdByToken", "errCode " + paramInt + " errMsg: " + paramString);
-    this.qqS = paramJSONObject.optString("usertoken");
-    this.qqT = paramJSONObject.optInt("is_free_sms");
-    this.qqU = paramJSONObject.optString("mobile_no");
-    this.qqV = paramJSONObject.optString("relation_key");
-  }
-  
-  public final int aEC()
-  {
-    return 100;
-  }
-  
-  public final boolean bUI()
-  {
-    return this.qqT == 0;
+    AppMethodBeat.i(46529);
+    int i = super.getType();
+    AppMethodBeat.o(46529);
+    return i;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/getusertoken";
+    return "/cgi-bin/mmpay-bin/tenpay/setuserwallet";
   }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.s
  * JD-Core Version:    0.7.0.1
  */

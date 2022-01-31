@@ -5,14 +5,13 @@ import android.content.res.Resources;
 import android.os.Looper;
 import android.os.Message;
 import android.widget.TextView;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.map.a.g;
-import com.tencent.mm.plugin.map.a.h;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class j$1
-  extends ah
+  extends ak
 {
   j$1(j paramj, Looper paramLooper)
   {
@@ -21,107 +20,113 @@ final class j$1
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(113521);
     super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
-    default: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    case 9: 
-      do
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(113521);
+      return;
+      this.odM.Nx.setText(this.odM.odL);
+      AppMethodBeat.o(113521);
+      return;
+      ab.d("MicroMsg.ShareHeaderMsgMgr", "update member num, isMyselfTalking=%b, isOtherTalking=%b", new Object[] { Boolean.valueOf(this.odM.odq), Boolean.valueOf(this.odM.odK) });
+      if ((!this.odM.odq) && (!this.odM.odK))
       {
-        do
+        Object localObject = this.odM;
+        ((j)localObject).Nx.setTextColor(((j)localObject).odH);
+        ((j)localObject).Nx.invalidate();
+        int i = ((Integer)paramMessage.obj).intValue();
+        if (i == 0)
         {
-          Object localObject;
-          do
-          {
-            do
-            {
-              return;
-              this.lGz.NI.setText(this.lGz.lGy);
-              return;
-              y.d("MicroMsg.ShareHeaderMsgMgr", "update member num, isMyselfTalking=%b, isOtherTalking=%b", new Object[] { Boolean.valueOf(this.lGz.lGd), Boolean.valueOf(this.lGz.lGx) });
-            } while ((this.lGz.lGd) || (this.lGz.lGx));
-            localObject = this.lGz;
-            ((j)localObject).NI.setTextColor(((j)localObject).lGu);
-            ((j)localObject).NI.invalidate();
-            int i = ((Integer)paramMessage.obj).intValue();
-            if (i == 0)
-            {
-              this.lGz.NI.setText(this.lGz.context.getString(a.h.track_none_contact_num));
-              return;
-            }
-            this.lGz.NI.setText(this.lGz.context.getResources().getQuantityString(a.g.track_contact_num, i, new Object[] { Integer.valueOf(i) }));
-            return;
-            if ((this.lGz.lGx) || (this.lGz.lGd))
-            {
-              removeMessages(3);
-              localObject = Message.obtain();
-              ((Message)localObject).what = 3;
-              ((Message)localObject).obj = paramMessage.obj;
-              sendMessage((Message)localObject);
-              return;
-            }
-            this.lGz.lGy = this.lGz.NI.getText().toString();
-            j.a(this.lGz);
-            paramMessage = r.gV((String)paramMessage.obj);
-            this.lGz.NI.setText(this.lGz.context.getString(a.h.track_somebody_enter, new Object[] { paramMessage }));
-          } while ((!this.lGz.lGd) && (!this.lGz.lGx));
-          j.b(this.lGz);
+          this.odM.Nx.setText(this.odM.context.getString(2131304382));
+          AppMethodBeat.o(113521);
           return;
-          if ((this.lGz.lGx) || (this.lGz.lGd))
+        }
+        this.odM.Nx.setText(this.odM.context.getResources().getQuantityString(2131361825, i, new Object[] { Integer.valueOf(i) }));
+        AppMethodBeat.o(113521);
+        return;
+        if ((this.odM.odK) || (this.odM.odq))
+        {
+          removeMessages(3);
+          localObject = Message.obtain();
+          ((Message)localObject).what = 3;
+          ((Message)localObject).obj = paramMessage.obj;
+          sendMessage((Message)localObject);
+          AppMethodBeat.o(113521);
+          return;
+        }
+        this.odM.odL = this.odM.Nx.getText().toString();
+        j.a(this.odM);
+        paramMessage = s.nE((String)paramMessage.obj);
+        this.odM.Nx.setText(this.odM.context.getString(2131304388, new Object[] { paramMessage }));
+        if ((this.odM.odq) || (this.odM.odK))
+        {
+          j.b(this.odM);
+          AppMethodBeat.o(113521);
+          return;
+          if ((this.odM.odK) || (this.odM.odq))
           {
             removeMessages(4);
             localObject = Message.obtain();
             ((Message)localObject).what = 4;
             ((Message)localObject).obj = paramMessage.obj;
             sendMessage((Message)localObject);
+            AppMethodBeat.o(113521);
             return;
           }
-          this.lGz.lGy = this.lGz.NI.getText().toString();
-          j.a(this.lGz);
-          paramMessage = r.gV((String)paramMessage.obj);
-          this.lGz.NI.setText(this.lGz.context.getString(a.h.track_somebody_exit, new Object[] { paramMessage }));
-        } while ((!this.lGz.lGd) && (!this.lGz.lGx));
-        j.b(this.lGz);
-        return;
-        this.lGz.lGx = true;
-        this.lGz.lGd = false;
-        j.a(this.lGz);
-        paramMessage = r.gV((String)paramMessage.obj);
-        this.lGz.NI.setText(this.lGz.context.getString(a.h.track_somebody_saying, new Object[] { paramMessage }));
-        return;
-        this.lGz.lGd = true;
-        this.lGz.lGx = false;
-        j.a(this.lGz);
-        this.lGz.NI.setText(this.lGz.context.getString(a.h.track_self_saying));
-        return;
-        this.lGz.lGd = false;
-      } while (this.lGz.lGx);
-      this.lGz.hi(true);
-      return;
-    case 7: 
-      this.lGz.lGx = true;
-      paramMessage = this.lGz;
-      paramMessage.NI.setTextColor(paramMessage.lGv);
-      paramMessage.NI.invalidate();
-      this.lGz.NI.setText(this.lGz.context.getString(a.h.track_talk_conflict));
-      this.lGz.lGy = this.lGz.NI.getText().toString();
-      j.b(this.lGz);
-      return;
-    case 8: 
-      paramMessage = this.lGz;
-      paramMessage.NI.setTextColor(paramMessage.lGw);
-      paramMessage.NI.invalidate();
-      this.lGz.NI.setText(this.lGz.context.getString(a.h.track_talk_preparing));
-      return;
+          this.odM.odL = this.odM.Nx.getText().toString();
+          j.a(this.odM);
+          paramMessage = s.nE((String)paramMessage.obj);
+          this.odM.Nx.setText(this.odM.context.getString(2131304389, new Object[] { paramMessage }));
+          if ((this.odM.odq) || (this.odM.odK))
+          {
+            j.b(this.odM);
+            AppMethodBeat.o(113521);
+            return;
+            this.odM.odK = true;
+            this.odM.odq = false;
+            j.a(this.odM);
+            paramMessage = s.nE((String)paramMessage.obj);
+            this.odM.Nx.setText(this.odM.context.getString(2131304390, new Object[] { paramMessage }));
+            AppMethodBeat.o(113521);
+            return;
+            this.odM.odq = true;
+            this.odM.odK = false;
+            j.a(this.odM);
+            this.odM.Nx.setText(this.odM.context.getString(2131304387));
+            AppMethodBeat.o(113521);
+            return;
+            this.odM.odq = false;
+            if (!this.odM.odK)
+            {
+              this.odM.iS(true);
+              AppMethodBeat.o(113521);
+              return;
+              this.odM.odK = true;
+              paramMessage = this.odM;
+              paramMessage.Nx.setTextColor(paramMessage.odI);
+              paramMessage.Nx.invalidate();
+              this.odM.Nx.setText(this.odM.context.getString(2131304392));
+              this.odM.odL = this.odM.Nx.getText().toString();
+              j.b(this.odM);
+              AppMethodBeat.o(113521);
+              return;
+              paramMessage = this.odM;
+              paramMessage.Nx.setTextColor(paramMessage.odJ);
+              paramMessage.Nx.invalidate();
+              this.odM.Nx.setText(this.odM.context.getString(2131304393));
+              AppMethodBeat.o(113521);
+              return;
+              this.odM.odK = false;
+              this.odM.iS(false);
+            }
+          }
+        }
+      }
     }
-    this.lGz.lGx = false;
-    this.lGz.hi(false);
   }
 }
 

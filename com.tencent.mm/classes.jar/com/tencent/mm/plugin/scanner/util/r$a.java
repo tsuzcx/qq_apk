@@ -1,14 +1,12 @@
 package com.tencent.mm.plugin.scanner.util;
 
-public final class r$a
+public abstract interface r$a
 {
-  public String bZd;
-  public String iln;
-  public int ilo;
+  public abstract void a(String paramString, r.b paramb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.r.a
  * JD-Core Version:    0.7.0.1
  */

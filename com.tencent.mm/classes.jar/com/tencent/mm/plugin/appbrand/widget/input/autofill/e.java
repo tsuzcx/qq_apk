@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 import android.content.Context;
 import android.content.res.Resources;
 import android.widget.PopupWindow;
-import com.tencent.luggage.l.a.a.a;
-import com.tencent.luggage.l.a.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
   extends AutoFillListPopupWindowBase
@@ -14,21 +13,24 @@ public final class e
   e(Context paramContext)
   {
     super(paramContext, null, 0);
+    AppMethodBeat.i(123905);
     this.mContext = paramContext;
-    this.afe.setInputMethodMode(2);
-    paramContext = paramContext.getResources().getDrawable(a.c.abc_popup_background_mtrl_mult);
-    this.afe.setBackgroundDrawable(paramContext);
-    this.afd = true;
-    this.afe.setFocusable(false);
-    this.aeP = false;
-    this.aeQ = true;
-    int i = a.a.appbrand_autofill_dropdown;
-    this.afe.setAnimationStyle(i);
+    this.aht.setInputMethodMode(2);
+    paramContext = paramContext.getResources().getDrawable(2130837574);
+    this.aht.setBackgroundDrawable(paramContext);
+    this.ahs = true;
+    this.aht.setFocusable(false);
+    this.ahe = false;
+    this.ahf = true;
+    this.aht.setAnimationStyle(2131034136);
+    AppMethodBeat.o(123905);
   }
   
   public final void show()
   {
+    AppMethodBeat.i(123906);
     super.show();
+    AppMethodBeat.o(123906);
   }
 }
 

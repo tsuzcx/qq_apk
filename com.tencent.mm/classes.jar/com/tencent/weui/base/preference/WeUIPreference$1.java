@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WeUIPreference$1
   implements Preference.OnPreferenceChangeListener
@@ -12,28 +13,37 @@ final class WeUIPreference$1
   
   public final boolean onPreferenceChange(Preference paramPreference, Object paramObject)
   {
-    if ((!WeUIPreference.a(this.xfT)) && (paramPreference.isEnabled()) && (paramPreference.isSelectable()))
+    AppMethodBeat.i(113260);
+    if ((!WeUIPreference.a(this.BCz)) && (paramPreference.isEnabled()) && (paramPreference.isSelectable()))
     {
-      WeUIPreference.a(this.xfT, true);
+      WeUIPreference.a(this.BCz, true);
       if (!(paramPreference instanceof CheckBoxPreference)) {
-        break label137;
+        break label162;
       }
       paramObject = (CheckBoxPreference)paramPreference;
-      paramObject.rHo = paramObject.isChecked();
+      paramObject.vxW = paramObject.isChecked();
       if (paramObject.isPersistent()) {
-        WeUIPreference.b(this.xfT).edit().putBoolean(paramPreference.getKey(), paramObject.isChecked()).commit();
+        WeUIPreference.b(this.BCz).edit().putBoolean(paramPreference.getKey(), paramObject.isChecked()).commit();
       }
-      WeUIPreference.c(this.xfT);
+      WeUIPreference.c(this.BCz);
     }
-    label137:
+    label162:
     for (int i = 1;; i = 0)
     {
-      paramPreference.getKey();
-      if (i != 0) {
-        WeUIPreference.d(this.xfT).notifyDataSetChanged();
+      if (paramPreference.getKey() != null) {
+        WeUIPreference.d(this.BCz);
       }
-      WeUIPreference.a(this.xfT, false);
-      return i != 0;
+      if (i != 0) {
+        WeUIPreference.d(this.BCz).notifyDataSetChanged();
+      }
+      WeUIPreference.a(this.BCz, false);
+      if (i != 0)
+      {
+        AppMethodBeat.o(113260);
+        return true;
+      }
+      AppMethodBeat.o(113260);
+      return false;
     }
   }
 }

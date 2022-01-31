@@ -1,25 +1,18 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.storage.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.a.b.g;
 
 final class SnsCommentDetailUI$26
-  implements View.OnClickListener
+  implements Runnable
 {
-  SnsCommentDetailUI$26(SnsCommentDetailUI paramSnsCommentDetailUI, n paramn, ad paramad) {}
+  SnsCommentDetailUI$26(SnsCommentDetailUI paramSnsCommentDetailUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    i.a(new SnsAdClick(SnsCommentDetailUI.f(this.oWW), 2, this.oNX.field_snsId, 24, 0));
-    SnsCommentDetailUI.b(this.oWW).setCommentFlag(1);
-    SnsCommentDetailUI.b(this.oWW).setCommentHint(this.drE.Bq());
-    SnsCommentDetailUI.b(this.oWW).jw(true);
-    SnsCommentDetailUI.F(this.oWW).setVisibility(8);
-    SnsCommentDetailUI.y(this.oWW);
+    AppMethodBeat.i(38808);
+    SnsCommentDetailUI.x(this.rPu).kZ(false);
+    AppMethodBeat.o(38808);
   }
 }
 

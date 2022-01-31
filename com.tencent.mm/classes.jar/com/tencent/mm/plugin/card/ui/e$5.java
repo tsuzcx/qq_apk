@@ -2,11 +2,10 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 final class e$5
@@ -16,14 +15,17 @@ final class e$5
   
   public final void onClick(View paramView)
   {
-    if (this.isQ.ikk == null)
+    AppMethodBeat.i(88342);
+    if (this.ktX.klk == null)
     {
-      y.e("MicroMsg.CardDetailUIContoller", "mCardInfo is null, err");
+      ab.e("MicroMsg.CardDetailUIContoller", "mCardInfo is null, err");
+      AppMethodBeat.o(88342);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.nFQ.f(11582, new Object[] { "CardDetailUiMenu", Integer.valueOf(1), Integer.valueOf(this.isQ.ikk.azx().ilo), this.isQ.ikk.azC(), this.isQ.ikk.azB(), this.isQ.isN.irV });
-    paramView = (String[])this.isQ.isL.toArray(new String[this.isQ.isL.size()]);
-    com.tencent.mm.ui.base.h.a(this.isQ.isl.mController.uMN, null, paramView, null, false, new e.5.1(this));
+    com.tencent.mm.plugin.report.service.h.qsU.e(11582, new Object[] { "CardDetailUiMenu", Integer.valueOf(1), Integer.valueOf(this.ktX.klk.bbd().iFL), this.ktX.klk.bbi(), this.ktX.klk.bbh(), this.ktX.ktU.ktc });
+    paramView = (String[])this.ktX.ktS.toArray(new String[this.ktX.ktS.size()]);
+    com.tencent.mm.ui.base.h.a(this.ktX.kts.getContext(), null, paramView, null, false, new e.5.1(this));
+    AppMethodBeat.o(88342);
   }
 }
 

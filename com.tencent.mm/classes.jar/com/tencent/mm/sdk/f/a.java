@@ -1,44 +1,39 @@
 package com.tencent.mm.sdk.f;
 
-import android.os.HandlerThread;
-import java.util.concurrent.atomic.AtomicInteger;
-import junit.framework.Assert;
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContextWrapper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private ThreadGroup eqG;
-  private final AtomicInteger ukc = new AtomicInteger(1);
-  private e.b ukd;
-  
-  a(e.b paramb)
+  public static Activity hr(Context paramContext)
   {
-    this.ukd = paramb;
-    this.eqG = new ThreadGroup("MM_FREE_THREAD_GROUP");
-  }
-  
-  static HandlerThread dr(String paramString, int paramInt)
-  {
-    Assert.assertNotNull("newThread arg name is null!", paramString);
-    return new a("mmt_h" + paramString, paramInt);
-  }
-  
-  static final class a
-    extends HandlerThread
-  {
-    a(String paramString, int paramInt)
+    AppMethodBeat.i(146184);
+    for (;;)
     {
-      super(paramInt);
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(146184);
+        return null;
+      }
+      if ((paramContext instanceof Activity))
+      {
+        paramContext = (Activity)paramContext;
+        AppMethodBeat.o(146184);
+        return paramContext;
+      }
+      if (!(paramContext instanceof ContextWrapper)) {
+        break;
+      }
+      Context localContext = ((ContextWrapper)paramContext).getBaseContext();
+      if (localContext == paramContext) {
+        break;
+      }
+      paramContext = localContext;
     }
-    
-    public final void run()
-    {
-      super.run();
-    }
-    
-    public final void start()
-    {
-      super.start();
-    }
+    AppMethodBeat.o(146184);
+    return null;
   }
 }
 

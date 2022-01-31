@@ -2,7 +2,7 @@ package com.tencent.mm.vending.base;
 
 public abstract interface Vending$b<_Index>
 {
-  public abstract void ce(_Index param_Index);
+  public abstract void cI(_Index param_Index);
 }
 
 

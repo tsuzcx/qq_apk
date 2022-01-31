@@ -1,60 +1,64 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.text.TextUtils;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.fk;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class ad
+  extends fk
 {
-  public ArrayList<Bankcard> qyY = new ArrayList();
-  public String qyZ;
+  public static c.a info;
   
-  public final Bankcard Qs(String paramString)
+  static
   {
-    Bankcard localBankcard;
-    if (this.qyY.size() > 0)
-    {
-      Iterator localIterator = this.qyY.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localBankcard = (Bankcard)localIterator.next();
-      } while (!localBankcard.field_bindSerial.equals(paramString));
-    }
-    for (paramString = localBankcard;; paramString = null)
-    {
-      if (paramString == null)
-      {
-        y.e("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo return null");
-        return paramString;
-      }
-      y.i("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo succ");
-      return paramString;
-      y.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list size is 0");
-      return null;
-    }
+    AppMethodBeat.i(46913);
+    c.a locala = new c.a();
+    locala.yrK = new Field[6];
+    locala.columns = new String[7];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "mNativeUrl";
+    locala.yrM.put("mNativeUrl", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" mNativeUrl TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    locala.yrL = "mNativeUrl";
+    locala.columns[1] = "hbType";
+    locala.yrM.put("hbType", "INTEGER");
+    localStringBuilder.append(" hbType INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "receiveAmount";
+    locala.yrM.put("receiveAmount", "LONG");
+    localStringBuilder.append(" receiveAmount LONG");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "receiveTime";
+    locala.yrM.put("receiveTime", "LONG");
+    localStringBuilder.append(" receiveTime LONG");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "receiveStatus";
+    locala.yrM.put("receiveStatus", "INTEGER");
+    localStringBuilder.append(" receiveStatus INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "hbStatus";
+    locala.yrM.put("hbStatus", "INTEGER");
+    localStringBuilder.append(" hbStatus INTEGER");
+    locala.columns[6] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(46913);
   }
   
-  public final boolean bVD()
+  public final void convertFrom(Cursor paramCursor)
   {
-    return this.qyY.size() > 0;
+    AppMethodBeat.i(46912);
+    super.convertFrom(paramCursor);
+    AppMethodBeat.o(46912);
   }
   
-  public final Bankcard bVE()
+  public final c.a getDBInfo()
   {
-    if (bVD())
-    {
-      if (!TextUtils.isEmpty(this.qyZ)) {
-        return Qs(this.qyZ);
-      }
-      y.i("MicroMsg.WalletRepaymentBankcardMgr", "last_use_card_serialno is empty,return the first one");
-      return (Bankcard)this.qyY.get(0);
-    }
-    y.e("MicroMsg.WalletRepaymentBankcardMgr", "Repayment card list is null");
-    return null;
+    return info;
   }
 }
 

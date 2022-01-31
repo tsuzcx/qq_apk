@@ -2,97 +2,104 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.widget.EditText;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.b.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$3
   implements DialPad.a
 {
   b$3(b paramb) {}
   
-  public final void FF(String paramString)
+  public final void Rh(String paramString)
   {
-    this.ltx.ltn = this.ltx.ltf.getText().toString();
-    if (this.ltx.ltr)
+    AppMethodBeat.i(21972);
+    this.nQQ.nQG = this.nQQ.nQy.getText().toString();
+    if (this.nQQ.nQK)
     {
-      this.ltx.ltm += paramString;
-      this.ltx.lte.setText(this.ltx.ltm);
-      if ((a.Gb(this.ltx.ltm.replace("+", ""))) || (this.ltx.ltm.replace("+", "").length() >= 4))
+      this.nQQ.nQF += paramString;
+      this.nQQ.nQx.setText(this.nQQ.nQF);
+      if ((a.RD(this.nQQ.nQF.replace("+", ""))) || (this.nQQ.nQF.replace("+", "").length() >= 4))
       {
-        h.nFQ.f(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
-        this.ltx.ltr = false;
-        this.ltx.ltl = a.FY(this.ltx.ltm.replace("+", ""));
-        this.ltx.ltn = b.dB(this.ltx.ltm.replace("+", ""), this.ltx.ltn);
-        this.ltx.bL(this.ltx.ltn, -1);
+        h.qsU.e(12061, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+        this.nQQ.nQK = false;
+        this.nQQ.nQE = a.RA(this.nQQ.nQF.replace("+", ""));
+        this.nQQ.nQG = b.eT(this.nQQ.nQF.replace("+", ""), this.nQQ.nQG);
+        this.nQQ.cy(this.nQQ.nQG, -1);
+        AppMethodBeat.o(21972);
       }
-      return;
     }
-    String str = this.ltx.lte.getText().toString().replace("+", "");
-    if (this.ltx.ltu)
+    else
     {
-      StringBuffer localStringBuffer = new StringBuffer(this.ltx.ltn);
-      localStringBuffer.insert(this.ltx.ltf.getSelectionStart(), paramString);
-      this.ltx.ltn = localStringBuffer.toString();
-      label329:
-      if (this.ltx.ltn.equals("00"))
+      String str = this.nQQ.nQx.getText().toString().replace("+", "");
+      if (!this.nQQ.nQN) {
+        break label726;
+      }
+      StringBuffer localStringBuffer = new StringBuffer(this.nQQ.nQG);
+      localStringBuffer.insert(this.nQQ.nQy.getSelectionStart(), paramString);
+      this.nQQ.nQG = localStringBuffer.toString();
+      if (this.nQQ.nQG.equals("00"))
       {
-        this.ltx.lte.setText("+");
-        this.ltx.ltr = true;
-        this.ltx.ltm = "+";
-        this.ltx.ltn = "";
+        this.nQQ.nQx.setText("+");
+        this.nQQ.nQK = true;
+        this.nQQ.nQF = "+";
+        this.nQQ.nQG = "";
       }
-      if (a.Gb(this.ltx.ltm.replace("+", "") + this.ltx.ltn))
+      if (a.RD(this.nQQ.nQF.replace("+", "") + this.nQQ.nQG))
       {
-        this.ltx.lte.setText("+" + this.ltx.ltm.replace("+", "") + this.ltx.ltn);
-        this.ltx.ltl = a.FY(this.ltx.ltm.replace("+", ""));
-        this.ltx.ltr = false;
-        this.ltx.ltm = (this.ltx.ltm.replace("+", "") + this.ltx.ltn);
-        this.ltx.ltn = "";
+        this.nQQ.nQx.setText("+" + this.nQQ.nQF.replace("+", "") + this.nQQ.nQG);
+        this.nQQ.nQE = a.RA(this.nQQ.nQF.replace("+", ""));
+        this.nQQ.nQK = false;
+        this.nQQ.nQF = (this.nQQ.nQF.replace("+", "") + this.nQQ.nQG);
+        this.nQQ.nQG = "";
       }
-      paramString = this.ltx.ltn;
-      this.ltx.ltn = b.dB(str, this.ltx.ltn);
-      if (!this.ltx.ltu) {
-        break label850;
+      paramString = this.nQQ.nQG;
+      this.nQQ.nQG = b.eT(str, this.nQQ.nQG);
+      if (!this.nQQ.nQN) {
+        break label868;
       }
-      if (paramString.length() >= this.ltx.ltn.length()) {
-        break label742;
+      if (paramString.length() >= this.nQQ.nQG.length()) {
+        break label760;
       }
-      this.ltx.bL(this.ltx.ltn, this.ltx.ltf.getSelectionEnd() + 2);
+      this.nQQ.cy(this.nQQ.nQG, this.nQQ.nQy.getSelectionEnd() + 2);
     }
-    label850:
+    label726:
+    label868:
     for (;;)
     {
-      this.ltx.ltq = System.currentTimeMillis();
-      if ((this.ltx.ltn.length() <= a.lAh) || (bk.bl(this.ltx.ltm + this.ltx.ltn))) {
-        break;
+      this.nQQ.nQJ = System.currentTimeMillis();
+      if ((this.nQQ.nQG.length() > a.nXt) && (!bo.isNullOrNil(this.nQQ.nQF + this.nQQ.nQG))) {
+        this.nQQ.bJZ();
       }
-      this.ltx.bcQ();
+      AppMethodBeat.o(21972);
       return;
-      this.ltx.ltn += paramString;
-      break label329;
-      label742:
-      if (paramString.length() == this.ltx.ltn.length())
+      this.nQQ.nQG += paramString;
+      break;
+      label760:
+      if (paramString.length() == this.nQQ.nQG.length())
       {
-        this.ltx.bL(this.ltx.ltn, this.ltx.ltf.getSelectionEnd() + 1);
+        this.nQQ.cy(this.nQQ.nQG, this.nQQ.nQy.getSelectionEnd() + 1);
       }
-      else if (paramString.length() > this.ltx.ltn.length())
+      else if (paramString.length() > this.nQQ.nQG.length())
       {
-        this.ltx.bL(this.ltx.ltn, this.ltx.ltf.getSelectionEnd() + 1 - (paramString.length() - this.ltx.ltn.length()));
+        this.nQQ.cy(this.nQQ.nQG, this.nQQ.nQy.getSelectionEnd() + 1 - (paramString.length() - this.nQQ.nQG.length()));
         continue;
-        this.ltx.bL(this.ltx.ltn, -1);
+        this.nQQ.cy(this.nQQ.nQG, -1);
       }
     }
   }
   
-  public final void FG(String paramString)
+  public final void Ri(String paramString)
   {
+    AppMethodBeat.i(21973);
     if (paramString.equals("0"))
     {
-      this.ltx.lte.setText("+");
-      this.ltx.ltr = true;
-      this.ltx.ltm = "+";
+      this.nQQ.nQx.setText("+");
+      this.nQQ.nQK = true;
+      this.nQQ.nQF = "+";
     }
+    AppMethodBeat.o(21973);
   }
 }
 

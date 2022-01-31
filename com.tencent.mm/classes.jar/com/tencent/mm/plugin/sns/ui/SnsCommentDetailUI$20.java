@@ -1,33 +1,35 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.widget.ImageView;
-import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.f.a;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class SnsCommentDetailUI$20
   implements f.a
 {
-  SnsCommentDetailUI$20(SnsCommentDetailUI paramSnsCommentDetailUI, ImageView paramImageView) {}
+  SnsCommentDetailUI$20(SnsCommentDetailUI paramSnsCommentDetailUI, SnsAvatarImageView paramSnsAvatarImageView) {}
   
-  public final void Op(String paramString)
+  public final void abi(String paramString)
   {
-    y.i("MicroMsg.SnsCommentDetailUI", "download img %s", new Object[] { paramString });
-    if ((!bk.H(new String[] { (String)this.oWY.getTag(i.f.sns_prefer_avatar_url), paramString })) && (paramString.equals(h.eS("adId", (String)this.oWY.getTag(i.f.sns_prefer_avatar_url)))))
+    AppMethodBeat.i(38800);
+    ab.i("MicroMsg.SnsCommentDetailUI", "download img %s", new Object[] { paramString });
+    if ((!bo.Q(new String[] { (String)this.rPw.getTag(2131820667), paramString })) && (paramString.equals(h.gy("adId", (String)this.rPw.getTag(2131820667)))))
     {
-      paramString = c.decodeFile(paramString, null);
+      paramString = d.decodeFile(paramString, null);
       if (paramString != null) {
-        this.oWY.setImageBitmap(paramString);
+        this.rPw.setImageBitmap(paramString);
       }
     }
+    AppMethodBeat.o(38800);
   }
   
-  public final void bCF() {}
+  public final void coe() {}
   
-  public final void bFl() {}
+  public final void cqU() {}
 }
 
 

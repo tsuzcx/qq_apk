@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.voip.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMSuperAlert$1$2
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class MMSuperAlert$1$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.pWx.pWw.finish();
+    AppMethodBeat.i(4781);
+    this.tCa.tBZ.finish();
+    AppMethodBeat.o(4781);
   }
 }
 

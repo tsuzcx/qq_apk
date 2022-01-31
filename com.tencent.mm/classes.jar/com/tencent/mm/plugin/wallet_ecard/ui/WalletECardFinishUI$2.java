@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.wallet_ecard.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.a.lk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.lz;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.c;
 
 final class WalletECardFinishUI$2
@@ -17,18 +16,22 @@ final class WalletECardFinishUI$2
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletECardFinishUI", "click finish");
-    paramView = new lk();
-    a.udP.m(paramView);
-    paramView = this.qKO.cNj();
+    AppMethodBeat.i(48145);
+    ab.i("MicroMsg.WalletECardFinishUI", "click finish");
+    paramView = new lz();
+    a.ymk.l(paramView);
+    paramView = this.uzL.getProcess();
     if (paramView != null)
     {
       Bundle localBundle = new Bundle();
-      paramView.b(this.qKO.mController.uMN, localBundle);
+      localBundle.putInt("key_process_result_code", -1);
+      paramView.b(this.uzL.getContext(), localBundle);
+      AppMethodBeat.o(48145);
       return;
     }
-    y.w("MicroMsg.WalletECardFinishUI", "process is null");
-    this.qKO.finish();
+    ab.w("MicroMsg.WalletECardFinishUI", "process is null");
+    this.uzL.finish();
+    AppMethodBeat.o(48145);
   }
 }
 

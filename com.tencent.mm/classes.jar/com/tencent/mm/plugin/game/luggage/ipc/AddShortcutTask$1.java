@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.game.luggage.ipc;
 
-import com.tencent.mm.plugin.base.model.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.av.a;
 
 final class AddShortcutTask$1
-  implements d.a
+  implements av.a
 {
   AddShortcutTask$1(AddShortcutTask paramAddShortcutTask) {}
   
-  public final void el(boolean paramBoolean)
+  public final void ia(boolean paramBoolean)
   {
-    this.kNe.success = paramBoolean;
-    AddShortcutTask.a(this.kNe);
+    AppMethodBeat.i(135846);
+    this.njA.success = paramBoolean;
+    AddShortcutTask.a(this.njA);
+    AppMethodBeat.o(135846);
   }
 }
 

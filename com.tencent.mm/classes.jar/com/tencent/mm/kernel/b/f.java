@@ -1,11 +1,9 @@
 package com.tencent.mm.kernel.b;
 
-import com.tencent.mm.kernel.a.a.a.a;
 import com.tencent.mm.kernel.c.e;
 import com.tencent.mm.kernel.h;
-import com.tencent.mm.kernel.k;
+import com.tencent.mm.kernel.j;
 import java.util.HashSet;
-import java.util.concurrent.ConcurrentHashMap;
 import junit.framework.Assert;
 
 public abstract class f
@@ -21,22 +19,16 @@ public abstract class f
   
   private void checkIfNeedDefaultDependency()
   {
-    Object localObject = h.DT().DL();
+    Object localObject = h.RP().RH();
     Class localClass = getClass();
-    localObject = (a.a)((com.tencent.mm.kernel.c)localObject).dKh.dMd.get(localClass);
-    if ((localObject != null) && ((((a.a)localObject).Ee()) || (((a.a)localObject).Eg()))) {}
-    for (int i = 1;; i = 0)
+    if (!((com.tencent.mm.kernel.c)localObject).eHF.aw(localClass))
     {
-      if (i == 0)
+      localObject = h.RP().RH().eHI;
+      if (localObject != null)
       {
-        localObject = h.DT().DL().dKk;
-        if (localObject != null)
-        {
-          dependsOn((Class)localObject);
-          k.i("MMKernel.Plugin", "plugin[%s] not specific any depOn, we using default one [%s]", new Object[] { this, localObject });
-        }
+        dependsOn((Class)localObject);
+        j.i("MMKernel.Plugin", "plugin[%s] not specific any depOn, we using default one [%s]", new Object[] { this, localObject });
       }
-      return;
     }
   }
   
@@ -59,31 +51,31 @@ public abstract class f
   {
     Assert.assertNotNull(paramClass);
     Assert.assertTrue(paramClass.isInstance(this));
-    h.DT().DL().c(getClass(), paramClass);
+    h.RP().RH().d(getClass(), paramClass);
   }
   
   public void configure(g paramg) {}
   
   public void dependency() {}
   
-  public void dependsOn(Class<? extends a> paramClass)
+  protected void dependsOn(Class<? extends a> paramClass)
   {
     if (!this.mMakingDependencies)
     {
-      k.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
+      j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.DT().DL().d(getClass(), paramClass);
+    h.RP().RH().e(getClass(), paramClass);
   }
   
-  public void dependsOnRoot()
+  protected void dependsOnRoot()
   {
     if (!this.mMakingDependencies)
     {
-      k.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
+      j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.DT().DL().d(getClass(), getClass());
+    h.RP().RH().e(getClass(), getClass());
   }
   
   public int hashCode()
@@ -157,7 +149,7 @@ public abstract class f
       if (!this.mPins.contains(paramc))
       {
         this.mPins.add(paramc);
-        h.DT().DL().a(paramc.getClass(), new e(paramc));
+        h.RP().RH().a(paramc.getClass(), new e(paramc));
       }
       return;
     }
@@ -186,7 +178,7 @@ public abstract class f
       if (this.mPins.contains(paramc))
       {
         this.mPins.remove(paramc);
-        h.DT().DL().s(paramc.getClass());
+        h.RP().RH().F(paramc.getClass());
       }
       return;
     }

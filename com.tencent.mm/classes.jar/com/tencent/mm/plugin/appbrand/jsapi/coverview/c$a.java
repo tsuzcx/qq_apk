@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
 
 final class c$a
-  extends ac
+  extends ai
 {
   private static final int CTRL_INDEX = 256;
   private static final String NAME = "onImageViewClick";

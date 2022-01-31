@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.ui.LanguagePreference;
 import com.tencent.mm.plugin.account.ui.LanguagePreference.a;
-import com.tencent.mm.plugin.setting.a.b;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.w;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.z;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.q.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,78 +22,95 @@ import java.util.List;
 public class SettingsLanguageUI
   extends MMPreference
 {
-  private static final String[] nUs = w.nUs;
-  private f dnn;
-  private String frp;
-  private List<LanguagePreference.a> nUt;
-  private boolean nUu = false;
+  private static final String[] qIy = z.qIy;
+  private String gIR;
+  private boolean qIA = false;
+  private List<LanguagePreference.a> qIz;
+  private f screen;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    if ((paramPreference instanceof LanguagePreference))
-    {
-      paramPreference = ((LanguagePreference)paramPreference).fmi;
-      if (paramPreference == null) {
-        return false;
-      }
-      this.frp = paramPreference.fml;
-      Iterator localIterator = this.nUt.iterator();
-      while (localIterator.hasNext()) {
-        ((LanguagePreference.a)localIterator.next()).fmm = false;
-      }
-      paramPreference.fmm = true;
-      paramf.notifyDataSetChanged();
-      return true;
-    }
-    return false;
+    return -1;
   }
   
-  protected final void initView()
+  public void initView()
   {
     int i = 0;
-    setMMTitle(a.i.settings_language_title);
+    AppMethodBeat.i(127243);
+    setMMTitle(2131303286);
     setBackBtn(new SettingsLanguageUI.1(this));
-    a(0, getString(a.i.settings_language_save), new SettingsLanguageUI.2(this), s.b.uNx);
-    this.nUu = getIntent().getBooleanExtra("not_auth_setting", false);
-    this.dnn.removeAll();
-    Object localObject1 = getResources().getStringArray(a.b.language_setting);
-    this.frp = x.e(getSharedPreferences(ae.cqR(), 0));
-    this.nUt = new ArrayList();
+    addTextOptionMenu(0, getString(2131303285), new SettingsLanguageUI.2(this), null, q.b.zby);
+    this.qIA = getIntent().getBooleanExtra("not_auth_setting", false);
+    this.screen.removeAll();
+    Object localObject1 = getResources().getStringArray(2131755024);
+    this.gIR = aa.g(getSharedPreferences(ah.dsP(), 0));
+    this.qIz = new ArrayList();
     Object localObject2;
-    while (i < nUs.length)
+    while (i < qIy.length)
     {
-      localObject2 = nUs[i];
-      this.nUt.add(new LanguagePreference.a(localObject1[i], "", (String)localObject2, this.frp.equalsIgnoreCase((String)localObject2)));
+      localObject2 = qIy[i];
+      this.qIz.add(new LanguagePreference.a(localObject1[i], "", (String)localObject2, this.gIR.equalsIgnoreCase((String)localObject2)));
       i += 1;
     }
-    localObject1 = this.nUt.iterator();
+    localObject1 = this.qIz.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (LanguagePreference.a)((Iterator)localObject1).next();
       LanguagePreference localLanguagePreference = new LanguagePreference(this);
       localLanguagePreference.a((LanguagePreference.a)localObject2);
-      this.dnn.a(localLanguagePreference);
+      this.screen.b(localLanguagePreference);
     }
     localObject1 = new PreferenceCategory(this);
-    this.dnn.a((Preference)localObject1);
-    this.dnn.notifyDataSetChanged();
+    this.screen.b((Preference)localObject1);
+    this.screen.notifyDataSetChanged();
+    AppMethodBeat.o(127243);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127240);
     super.onCreate(paramBundle);
-    this.dnn = this.vdd;
+    this.screen = getPreferenceScreen();
     initView();
+    AppMethodBeat.o(127240);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(127241);
     super.onDestroy();
+    AppMethodBeat.o(127241);
   }
   
-  public final int xj()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
-    return -1;
+    AppMethodBeat.i(127244);
+    if ((paramPreference instanceof LanguagePreference))
+    {
+      paramPreference = ((LanguagePreference)paramPreference).gDC;
+      if (paramPreference == null)
+      {
+        AppMethodBeat.o(127244);
+        return false;
+      }
+      this.gIR = paramPreference.gDF;
+      Iterator localIterator = this.qIz.iterator();
+      while (localIterator.hasNext()) {
+        ((LanguagePreference.a)localIterator.next()).gDG = false;
+      }
+      paramPreference.gDG = true;
+      paramf.notifyDataSetChanged();
+      AppMethodBeat.o(127244);
+      return true;
+    }
+    AppMethodBeat.o(127244);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

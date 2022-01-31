@@ -5,14 +5,14 @@ import java.util.Map.Entry;
 public final class b$c<K, V>
   implements Map.Entry<K, V>
 {
-  final K bM;
-  c<K, V> bN;
-  public c<K, V> bO;
+  final K bQ;
+  c<K, V> bR;
+  public c<K, V> bS;
   final V mValue;
   
   b$c(K paramK, V paramV)
   {
-    this.bM = paramK;
+    this.bQ = paramK;
     this.mValue = paramV;
   }
   
@@ -26,13 +26,13 @@ public final class b$c<K, V>
         return false;
       }
       paramObject = (c)paramObject;
-    } while ((this.bM.equals(paramObject.bM)) && (this.mValue.equals(paramObject.mValue)));
+    } while ((this.bQ.equals(paramObject.bQ)) && (this.mValue.equals(paramObject.mValue)));
     return false;
   }
   
   public final K getKey()
   {
-    return this.bM;
+    return this.bQ;
   }
   
   public final V getValue()
@@ -47,12 +47,12 @@ public final class b$c<K, V>
   
   public final String toString()
   {
-    return this.bM + "=" + this.mValue;
+    return this.bQ + "=" + this.mValue;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.arch.a.b.b.c
  * JD-Core Version:    0.7.0.1
  */

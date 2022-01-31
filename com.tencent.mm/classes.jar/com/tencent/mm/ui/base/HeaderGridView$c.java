@@ -8,130 +8,187 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ListAdapter;
 import android.widget.WrapperListAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class HeaderGridView$c
   implements Filterable, WrapperListAdapter
 {
-  private final ListAdapter NK;
-  public final DataSetObservable mDataSetObservable = new DataSetObservable();
-  int mNumColumns = 1;
-  ArrayList<HeaderGridView.a> uSY;
-  boolean uTb;
-  private final boolean uTc;
+  public final DataSetObservable mDataSetObservable;
+  int mNumColumns;
+  private final ListAdapter xw;
+  boolean zhB;
+  private final boolean zhC;
+  ArrayList<HeaderGridView.a> zhy;
   
   public HeaderGridView$c(ArrayList<HeaderGridView.a> paramArrayList, ListAdapter paramListAdapter)
   {
-    this.NK = paramListAdapter;
-    this.uTc = (paramListAdapter instanceof Filterable);
-    if (paramArrayList == null) {
-      throw new IllegalArgumentException("headerViewInfos cannot be null");
+    AppMethodBeat.i(106288);
+    this.mDataSetObservable = new DataSetObservable();
+    this.mNumColumns = 1;
+    this.xw = paramListAdapter;
+    this.zhC = (paramListAdapter instanceof Filterable);
+    if (paramArrayList == null)
+    {
+      paramArrayList = new IllegalArgumentException("headerViewInfos cannot be null");
+      AppMethodBeat.o(106288);
+      throw paramArrayList;
     }
-    this.uSY = paramArrayList;
-    this.uTb = ah(this.uSY);
+    this.zhy = paramArrayList;
+    this.zhB = aq(this.zhy);
+    AppMethodBeat.o(106288);
   }
   
-  private static boolean ah(ArrayList<HeaderGridView.a> paramArrayList)
+  private static boolean aq(ArrayList<HeaderGridView.a> paramArrayList)
   {
+    AppMethodBeat.i(106290);
     if (paramArrayList != null)
     {
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext()) {
-        if (!((HeaderGridView.a)paramArrayList.next()).isSelectable) {
+        if (!((HeaderGridView.a)paramArrayList.next()).isSelectable)
+        {
+          AppMethodBeat.o(106290);
           return false;
         }
       }
     }
+    AppMethodBeat.o(106290);
     return true;
   }
   
   public final boolean areAllItemsEnabled()
   {
-    return (this.NK == null) || ((this.uTb) && (this.NK.areAllItemsEnabled()));
+    AppMethodBeat.i(106292);
+    if (this.xw != null)
+    {
+      if ((this.zhB) && (this.xw.areAllItemsEnabled()))
+      {
+        AppMethodBeat.o(106292);
+        return true;
+      }
+      AppMethodBeat.o(106292);
+      return false;
+    }
+    AppMethodBeat.o(106292);
+    return true;
   }
   
   public final int getCount()
   {
-    if (this.NK != null) {
-      return this.uSY.size() * this.mNumColumns + this.NK.getCount();
+    AppMethodBeat.i(106291);
+    if (this.xw != null)
+    {
+      i = this.zhy.size();
+      j = this.mNumColumns;
+      int k = this.xw.getCount();
+      AppMethodBeat.o(106291);
+      return i * j + k;
     }
-    return this.uSY.size() * this.mNumColumns;
+    int i = this.zhy.size();
+    int j = this.mNumColumns;
+    AppMethodBeat.o(106291);
+    return i * j;
   }
   
   public final Filter getFilter()
   {
-    if (this.uTc) {
-      return ((Filterable)this.NK).getFilter();
+    AppMethodBeat.i(106302);
+    if (this.zhC)
+    {
+      Filter localFilter = ((Filterable)this.xw).getFilter();
+      AppMethodBeat.o(106302);
+      return localFilter;
     }
+    AppMethodBeat.o(106302);
     return null;
   }
   
   public final Object getItem(int paramInt)
   {
-    Object localObject2 = null;
-    int i = this.uSY.size() * this.mNumColumns;
-    Object localObject1;
+    AppMethodBeat.i(106294);
+    int i = this.zhy.size() * this.mNumColumns;
+    Object localObject;
     if (paramInt < i)
     {
-      localObject1 = localObject2;
-      if (paramInt % this.mNumColumns == 0) {
-        localObject1 = ((HeaderGridView.a)this.uSY.get(paramInt / this.mNumColumns)).data;
-      }
-    }
-    do
-    {
-      do
+      if (paramInt % this.mNumColumns == 0)
       {
-        return localObject1;
-        paramInt -= i;
-        localObject1 = localObject2;
-      } while (this.NK == null);
-      localObject1 = localObject2;
-    } while (paramInt >= this.NK.getCount());
-    return this.NK.getItem(paramInt);
+        localObject = ((HeaderGridView.a)this.zhy.get(paramInt / this.mNumColumns)).data;
+        AppMethodBeat.o(106294);
+        return localObject;
+      }
+      AppMethodBeat.o(106294);
+      return null;
+    }
+    paramInt -= i;
+    if ((this.xw != null) && (paramInt < this.xw.getCount()))
+    {
+      localObject = this.xw.getItem(paramInt);
+      AppMethodBeat.o(106294);
+      return localObject;
+    }
+    AppMethodBeat.o(106294);
+    return null;
   }
   
   public final long getItemId(int paramInt)
   {
-    int i = this.uSY.size() * this.mNumColumns;
-    if ((this.NK != null) && (paramInt >= i))
+    AppMethodBeat.i(106295);
+    int i = this.zhy.size() * this.mNumColumns;
+    if ((this.xw != null) && (paramInt >= i))
     {
       paramInt -= i;
-      if (paramInt < this.NK.getCount()) {
-        return this.NK.getItemId(paramInt);
+      if (paramInt < this.xw.getCount())
+      {
+        long l = this.xw.getItemId(paramInt);
+        AppMethodBeat.o(106295);
+        return l;
       }
     }
+    AppMethodBeat.o(106295);
     return -1L;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    int i = this.uSY.size() * this.mNumColumns;
+    AppMethodBeat.i(106298);
+    int i = this.zhy.size() * this.mNumColumns;
     if ((paramInt < i) && (paramInt % this.mNumColumns != 0))
     {
-      if (this.NK != null) {
-        return this.NK.getViewTypeCount();
+      if (this.xw != null)
+      {
+        paramInt = this.xw.getViewTypeCount();
+        AppMethodBeat.o(106298);
+        return paramInt;
       }
+      AppMethodBeat.o(106298);
       return 1;
     }
-    if ((this.NK != null) && (paramInt >= i))
+    if ((this.xw != null) && (paramInt >= i))
     {
       paramInt -= i;
-      if (paramInt < this.NK.getCount()) {
-        return this.NK.getItemViewType(paramInt);
+      if (paramInt < this.xw.getCount())
+      {
+        paramInt = this.xw.getItemViewType(paramInt);
+        AppMethodBeat.o(106298);
+        return paramInt;
       }
     }
+    AppMethodBeat.o(106298);
     return -2;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int i = this.uSY.size() * this.mNumColumns;
+    AppMethodBeat.i(106297);
+    int i = this.zhy.size() * this.mNumColumns;
     if (paramInt < i)
     {
-      ViewGroup localViewGroup = ((HeaderGridView.a)this.uSY.get(paramInt / this.mNumColumns)).uSZ;
-      if (paramInt % this.mNumColumns == 0) {
+      ViewGroup localViewGroup = ((HeaderGridView.a)this.zhy.get(paramInt / this.mNumColumns)).zhz;
+      if (paramInt % this.mNumColumns == 0)
+      {
+        AppMethodBeat.o(106297);
         return localViewGroup;
       }
       localView = paramView;
@@ -140,73 +197,111 @@ public final class HeaderGridView$c
       }
       localView.setVisibility(4);
       localView.setMinimumHeight(localViewGroup.getHeight());
+      AppMethodBeat.o(106297);
       return localView;
     }
     paramInt -= i;
-    if ((this.NK != null) && (paramInt < this.NK.getCount())) {
-      return this.NK.getView(paramInt, paramView, paramViewGroup);
+    if ((this.xw != null) && (paramInt < this.xw.getCount()))
+    {
+      paramView = this.xw.getView(paramInt, paramView, paramViewGroup);
+      AppMethodBeat.o(106297);
+      return paramView;
     }
     View localView = paramView;
     if (paramView == null) {
       localView = new View(paramViewGroup.getContext());
     }
     localView.setVisibility(4);
+    AppMethodBeat.o(106297);
     return localView;
   }
   
   public final int getViewTypeCount()
   {
-    if (this.NK != null) {
-      return this.NK.getViewTypeCount() + 1;
+    AppMethodBeat.i(106299);
+    if (this.xw != null)
+    {
+      int i = this.xw.getViewTypeCount();
+      AppMethodBeat.o(106299);
+      return i + 1;
     }
+    AppMethodBeat.o(106299);
     return 2;
   }
   
   public final ListAdapter getWrappedAdapter()
   {
-    return this.NK;
+    return this.xw;
   }
   
   public final boolean hasStableIds()
   {
-    if (this.NK != null) {
-      return this.NK.hasStableIds();
+    AppMethodBeat.i(106296);
+    if (this.xw != null)
+    {
+      boolean bool = this.xw.hasStableIds();
+      AppMethodBeat.o(106296);
+      return bool;
     }
+    AppMethodBeat.o(106296);
     return false;
   }
   
   public final boolean isEmpty()
   {
-    return ((this.NK == null) || (this.NK.isEmpty())) && (this.uSY.size() == 0);
+    AppMethodBeat.i(106289);
+    if (((this.xw == null) || (this.xw.isEmpty())) && (this.zhy.size() == 0))
+    {
+      AppMethodBeat.o(106289);
+      return true;
+    }
+    AppMethodBeat.o(106289);
+    return false;
   }
   
   public final boolean isEnabled(int paramInt)
   {
-    int i = this.uSY.size() * this.mNumColumns;
-    if (paramInt < i) {
-      return (paramInt % this.mNumColumns == 0) && (((HeaderGridView.a)this.uSY.get(paramInt / this.mNumColumns)).isSelectable);
+    AppMethodBeat.i(106293);
+    int i = this.zhy.size() * this.mNumColumns;
+    if (paramInt < i)
+    {
+      if ((paramInt % this.mNumColumns == 0) && (((HeaderGridView.a)this.zhy.get(paramInt / this.mNumColumns)).isSelectable))
+      {
+        AppMethodBeat.o(106293);
+        return true;
+      }
+      AppMethodBeat.o(106293);
+      return false;
     }
     paramInt -= i;
-    if ((this.NK != null) && (paramInt < this.NK.getCount())) {
-      return this.NK.isEnabled(paramInt);
+    if ((this.xw != null) && (paramInt < this.xw.getCount()))
+    {
+      boolean bool = this.xw.isEnabled(paramInt);
+      AppMethodBeat.o(106293);
+      return bool;
     }
+    AppMethodBeat.o(106293);
     return false;
   }
   
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
+    AppMethodBeat.i(106300);
     this.mDataSetObservable.registerObserver(paramDataSetObserver);
-    if (this.NK != null) {
-      this.NK.registerDataSetObserver(paramDataSetObserver);
+    if (this.xw != null) {
+      this.xw.registerDataSetObserver(paramDataSetObserver);
     }
+    AppMethodBeat.o(106300);
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
+    AppMethodBeat.i(106301);
     this.mDataSetObservable.unregisterObserver(paramDataSetObserver);
-    if (this.NK != null) {
-      this.NK.unregisterDataSetObserver(paramDataSetObserver);
+    if (this.xw != null) {
+      this.xw.unregisterDataSetObserver(paramDataSetObserver);
     }
+    AppMethodBeat.o(106301);
   }
 }
 

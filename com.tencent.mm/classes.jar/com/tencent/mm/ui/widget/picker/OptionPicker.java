@@ -5,75 +5,91 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.NumberPicker;
-import com.tencent.mm.ci.a.e;
-import com.tencent.mm.ui.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.al;
 
 public class OptionPicker
   extends NumberPicker
 {
-  private int Un;
-  private int eg;
-  private String[] hAc;
-  private int hAd;
+  private String[] jsr;
+  private int jss;
   private Context mContext;
+  private int mMaxWidth;
+  private int mMinWidth;
   
   public OptionPicker(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(112857);
     this.mContext = paramContext;
     init();
+    AppMethodBeat.o(112857);
   }
   
   public OptionPicker(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(112858);
     this.mContext = paramContext;
     init();
+    AppMethodBeat.o(112858);
   }
   
   private void init()
   {
-    this.Un = ap.fromDPToPix(this.mContext, 120);
-    this.hAd = ap.fromDPToPix(this.mContext, 20);
-    e.a(this, getResources().getDrawable(a.e.picker_divider));
+    AppMethodBeat.i(112859);
+    this.mMinWidth = al.fromDPToPix(this.mContext, 120);
+    this.jss = al.fromDPToPix(this.mContext, 20);
+    e.a(this, getResources().getDrawable(2130839945));
     setDescendantFocusability(393216);
+    AppMethodBeat.o(112859);
   }
   
-  public final String asP()
+  public final String aRR()
   {
-    if ((this.hAc == null) || (this.hAc.length <= 0)) {
+    AppMethodBeat.i(112861);
+    if ((this.jsr == null) || (this.jsr.length <= 0))
+    {
+      AppMethodBeat.o(112861);
       return "";
     }
-    return this.hAc[getValue()];
+    String str = this.jsr[getValue()];
+    AppMethodBeat.o(112861);
+    return str;
   }
   
   protected void onAttachedToWindow()
   {
+    AppMethodBeat.i(112865);
     super.onAttachedToWindow();
+    AppMethodBeat.o(112865);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(112864);
     if ((View.MeasureSpec.getMode(paramInt1) == -2147483648) || (View.MeasureSpec.getMode(paramInt1) == 1073741824)) {
-      this.eg = View.MeasureSpec.getSize(paramInt1);
+      this.mMaxWidth = View.MeasureSpec.getSize(paramInt1);
     }
     super.onMeasure(View.MeasureSpec.makeMeasureSpec(0, 0), paramInt2);
-    if ((getMeasuredWidth() <= this.Un) && ((this.eg <= 0) || (this.Un <= this.eg)))
+    if ((getMeasuredWidth() <= this.mMinWidth) && ((this.mMaxWidth <= 0) || (this.mMinWidth <= this.mMaxWidth)))
     {
-      setMeasuredDimension(this.Un, getMeasuredHeight());
+      setMeasuredDimension(this.mMinWidth, getMeasuredHeight());
+      AppMethodBeat.o(112864);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.hAd * 2;
+    paramInt2 = getMeasuredWidth() + this.jss * 2;
     paramInt1 = paramInt2;
-    if (this.eg > 0) {
-      if (this.eg <= paramInt2) {
-        break label119;
+    if (this.mMaxWidth > 0) {
+      if (this.mMaxWidth <= paramInt2) {
+        break label134;
       }
     }
-    label119:
-    for (paramInt1 = paramInt2;; paramInt1 = this.eg)
+    label134:
+    for (paramInt1 = paramInt2;; paramInt1 = this.mMaxWidth)
     {
       setMeasuredDimension(paramInt1, getMeasuredHeight());
+      AppMethodBeat.o(112864);
       return;
     }
   }
@@ -81,30 +97,37 @@ public class OptionPicker
   @Deprecated
   public void setDisplayedValues(String[] paramArrayOfString)
   {
+    AppMethodBeat.i(112863);
     super.setDisplayedValues(paramArrayOfString);
+    AppMethodBeat.o(112863);
   }
   
   public final void setExtraPadding(int paramInt)
   {
-    this.hAd = Math.max(paramInt, 0);
+    AppMethodBeat.i(112862);
+    this.jss = Math.max(paramInt, 0);
+    AppMethodBeat.o(112862);
   }
   
   public final void setMaxWidth(int paramInt)
   {
-    this.eg = paramInt;
+    this.mMaxWidth = paramInt;
   }
   
   public final void setMinWidth(int paramInt)
   {
-    this.Un = paramInt;
+    this.mMinWidth = paramInt;
   }
   
   public void setOptionsArray(String[] paramArrayOfString)
   {
-    if (paramArrayOfString == null) {
+    AppMethodBeat.i(112860);
+    if (paramArrayOfString == null)
+    {
+      AppMethodBeat.o(112860);
       return;
     }
-    this.hAc = paramArrayOfString;
+    this.jsr = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));
@@ -114,6 +137,7 @@ public class OptionPicker
       arrayOfString = null;
     }
     super.setDisplayedValues(arrayOfString);
+    AppMethodBeat.o(112860);
   }
 }
 

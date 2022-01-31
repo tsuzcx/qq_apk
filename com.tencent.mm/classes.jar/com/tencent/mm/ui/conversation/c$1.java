@@ -11,12 +11,12 @@ final class c$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.vPx.value = true;
+    this.Ahi.value = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.c.1
  * JD-Core Version:    0.7.0.1
  */

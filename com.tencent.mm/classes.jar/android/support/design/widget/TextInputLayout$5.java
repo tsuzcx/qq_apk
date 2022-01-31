@@ -10,12 +10,12 @@ final class TextInputLayout$5
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.lY.hd.h(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.mT.hW.h(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.design.widget.TextInputLayout.5
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 public abstract interface c<T>
 {
-  public abstract void U(T paramT);
+  public abstract void ad(T paramT);
 }
 
 

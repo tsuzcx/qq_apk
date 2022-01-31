@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.bizui.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class StoryListView
   extends ListView
 {
-  private boolean hTb;
+  private boolean jMV;
   
   public StoryListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -16,14 +17,16 @@ public class StoryListView
   
   protected void layoutChildren()
   {
-    if (!this.hTb) {
+    AppMethodBeat.i(70048);
+    if (!this.jMV) {
       super.layoutChildren();
     }
+    AppMethodBeat.o(70048);
   }
   
   public void setBlockLayoutChildren(boolean paramBoolean)
   {
-    this.hTb = paramBoolean;
+    this.jMV = paramBoolean;
   }
 }
 

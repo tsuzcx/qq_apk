@@ -1,7 +1,7 @@
 package com.tencent.mm.sandbox.updater;
 
-import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.f.i;
 
 final class AppInstallerUI$3
   implements Runnable
@@ -10,9 +10,10 @@ final class AppInstallerUI$3
   
   public final void run()
   {
-    Intent localIntent = bk.ZF(this.uca);
-    this.ubZ.startActivity(localIntent);
-    AppInstallerUI.d(this.ubZ);
+    AppMethodBeat.i(28799);
+    i.aC(this.yko, this.ykp);
+    AppInstallerUI.d(this.yko);
+    AppMethodBeat.o(28799);
   }
 }
 

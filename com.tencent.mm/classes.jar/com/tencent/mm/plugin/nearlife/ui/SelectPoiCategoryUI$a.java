@@ -1,60 +1,65 @@
 package com.tencent.mm.plugin.nearlife.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
-import com.tencent.mm.h.a.mb;
-import com.tencent.mm.h.a.mb.a;
+import com.tencent.mm.g.a.mt;
+import com.tencent.mm.g.a.mt.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 
 final class SelectPoiCategoryUI$a
-  extends c<mb>
+  extends c<mt>
 {
-  SelectPoiCategoryUI mFP;
+  SelectPoiCategoryUI pfV;
   
   public SelectPoiCategoryUI$a(SelectPoiCategoryUI paramSelectPoiCategoryUI)
   {
     super(0);
-    this.udX = mb.class.getName().hashCode();
+    AppMethodBeat.i(23000);
+    this.__eventId = mt.class.getName().hashCode();
+    AppMethodBeat.o(23000);
   }
   
-  private boolean a(mb parammb)
+  private boolean a(mt parammt)
   {
+    AppMethodBeat.i(23001);
     SelectPoiCategoryUI localSelectPoiCategoryUI;
     Object localObject;
-    if ((parammb instanceof mb))
+    if ((parammt instanceof mt))
     {
-      localSelectPoiCategoryUI = this.mFP;
-      parammb = parammb.bVg.content;
-      localObject = new File(SelectPoiCategoryUI.mFJ);
+      localSelectPoiCategoryUI = this.pfV;
+      parammt = parammt.cCO.content;
+      localObject = new File(SelectPoiCategoryUI.pfP);
       if (!((File)localObject).exists()) {
         ((File)localObject).mkdir();
       }
     }
     try
     {
-      localObject = SelectPoiCategoryUI.mFJ + "/lastest_poi_categories.dat";
+      localObject = SelectPoiCategoryUI.pfP + "/lastest_poi_categories.dat";
       File localFile = new File((String)localObject);
       if (!localFile.exists()) {
         localFile.createNewFile();
       }
-      e.b((String)localObject, parammb, parammb.length);
+      e.b((String)localObject, parammt, parammt.length);
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.SelectPoiCategoryUI", "write file failed: " + localException.getMessage());
+        ab.e("MicroMsg.SelectPoiCategoryUI", "write file failed: " + localException.getMessage());
       }
     }
-    localSelectPoiCategoryUI.aF(parammb);
-    localSelectPoiCategoryUI.bor();
+    localSelectPoiCategoryUI.bd(parammt);
+    localSelectPoiCategoryUI.bWQ();
+    AppMethodBeat.o(23001);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.SelectPoiCategoryUI.a
  * JD-Core Version:    0.7.0.1
  */

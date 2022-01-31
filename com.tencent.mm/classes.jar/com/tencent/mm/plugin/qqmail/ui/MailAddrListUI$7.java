@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,17 +16,19 @@ final class MailAddrListUI$7
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = MailAddrListUI.e(this.nia);
+    AppMethodBeat.i(68317);
+    paramMenuItem = MailAddrListUI.e(this.pNn);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramMenuItem.nid.keySet().iterator();
+    Iterator localIterator = paramMenuItem.pNq.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localArrayList.add(paramMenuItem.nid.get(str));
+      localArrayList.add(paramMenuItem.pNq.get(str));
     }
-    ComposeUI.cb(localArrayList);
-    this.nia.setResult(-1);
-    this.nia.finish();
+    ComposeUI.cD(localArrayList);
+    this.pNn.setResult(-1);
+    this.pNn.finish();
+    AppMethodBeat.o(68317);
     return true;
   }
 }

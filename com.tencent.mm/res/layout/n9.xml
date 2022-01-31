@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/l2" android:paddingBottom="@dimen/l2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="13.0dip">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/ok" android:layout_width="@dimen/la" android:layout_height="@dimen/la" android:layout_marginRight="8.0dip" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/mv" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:id="@id/om" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/ks" />
-            <TextView android:id="@id/jv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/kr" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/x7" android:paddingRight="@dimen/mq" android:layout_width="64.0dip" android:layout_height="fill_parent">
-            <View android:background="#18000000" android:layout_width="1.0dip" android:layout_height="32.0dip" android:layout_centerVertical="true" />
-            <CheckBox android:id="@id/x8" android:background="@drawable/r4" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/er" android:layout_height="@dimen/er" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <RelativeLayout android:id="@id/ar0" android:background="@drawable/jj" android:paddingLeft="@dimen/l2" android:paddingRight="@dimen/n_" android:paddingBottom="@dimen/l2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="81.0dip">
+        <ImageView android:id="@id/aud" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@drawable/aew" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/aue" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="@dimen/m1" android:layout_marginRight="@dimen/dp" android:src="@raw/chatting_item_harddevice_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.base.NoMeasuredTextView android:textSize="@dimen/m2" android:ellipsize="end" android:id="@id/auf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:singleLine="true" android:layout_toLeftOf="@id/aue" android:layout_toRightOf="@id/aud" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.plugin.wallet_core.model.ad;
-import com.tencent.mm.plugin.wallet_core.model.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.aj;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.wallet_core.c.a;
 
 final class WalletLoanRepaymentUI$6
@@ -11,27 +12,32 @@ final class WalletLoanRepaymentUI$6
 {
   WalletLoanRepaymentUI$6(WalletLoanRepaymentUI paramWalletLoanRepaymentUI) {}
   
-  public final Intent m(int paramInt, Bundle paramBundle)
+  public final Intent p(int paramInt, Bundle paramBundle)
   {
-    if (paramInt == -1)
-    {
-      WalletLoanRepaymentUI.b(this.qmQ, WalletLoanRepaymentUI.b(this.qmQ));
-      return null;
+    AppMethodBeat.i(45996);
+    if (paramInt == -1) {
+      WalletLoanRepaymentUI.b(this.tWh, WalletLoanRepaymentUI.b(this.tWh));
     }
-    paramBundle = o.bVt();
-    if (paramBundle.bVD())
+    for (;;)
     {
-      paramBundle = paramBundle.bVE();
-      WalletLoanRepaymentUI.a(this.qmQ, paramBundle, WalletLoanRepaymentUI.d(this.qmQ), WalletLoanRepaymentUI.e(this.qmQ));
+      AppMethodBeat.o(45996);
       return null;
+      paramBundle = t.cTO();
+      if (paramBundle.cTZ())
+      {
+        paramBundle = paramBundle.cUa();
+        WalletLoanRepaymentUI.a(this.tWh, paramBundle, WalletLoanRepaymentUI.d(this.tWh), WalletLoanRepaymentUI.e(this.tWh));
+      }
+      else
+      {
+        this.tWh.setResult(0, null);
+      }
     }
-    this.qmQ.setResult(0, null);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletLoanRepaymentUI.6
  * JD-Core Version:    0.7.0.1
  */

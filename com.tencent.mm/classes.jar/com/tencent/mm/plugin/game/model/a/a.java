@@ -3,46 +3,47 @@ package com.tencent.mm.plugin.game.model.a;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
 {
-  public static a.a aZS()
+  public static a.a bGY()
   {
+    AppMethodBeat.i(111496);
     Object localObject = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    Intent localIntent = ae.getContext().registerReceiver(null, (IntentFilter)localObject);
+    Intent localIntent = ah.getContext().registerReceiver(null, (IntentFilter)localObject);
     localObject = new a.a();
     if (localIntent != null) {}
-    label117:
     for (;;)
     {
       try
       {
-        int i = localIntent.getIntExtra("status", -1);
-        if (i != 2) {
-          if (i == 5)
-          {
-            break label117;
-            ((a.a)localObject).hlS = bool;
-            i = localIntent.getIntExtra("level", -1);
-            int j = localIntent.getIntExtra("scale", -1);
-            ((a.a)localObject).kFN = (i / j);
-            return localObject;
-          }
-          else
-          {
-            bool = false;
-            continue;
-          }
+        i = localIntent.getIntExtra("status", -1);
+        if (i == 2) {
+          continue;
         }
-        boolean bool = true;
+        if (i != 5) {
+          continue;
+        }
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.BatteryHelper", "err:%s", new Object[] { localException.getMessage() });
-        return localObject;
+        int i;
+        int j;
+        ab.e("MicroMsg.BatteryHelper", "err:%s", new Object[] { localException.getMessage() });
+        continue;
+        boolean bool = true;
+        continue;
       }
+      ((a.a)localObject).iYt = bool;
+      i = localIntent.getIntExtra("level", -1);
+      j = localIntent.getIntExtra("scale", -1);
+      ((a.a)localObject).npG = (i / j);
+      AppMethodBeat.o(111496);
+      return localObject;
+      bool = false;
     }
   }
 }

@@ -7,9 +7,9 @@ import com.tencent.filter.m.d;
 import com.tencent.filter.m.f;
 import com.tencent.filter.m.i;
 import com.tencent.filter.m.j;
+import com.tencent.ttpic.baseutils.FileUtils;
 import com.tencent.ttpic.model.WMElement;
 import com.tencent.ttpic.util.MatrixUtil;
-import com.tencent.ttpic.util.VideoFileUtil;
 import com.tencent.ttpic.util.VideoGlobalContext;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public abstract class WMAnimationFilterBase
   
   public WMAnimationFilterBase(WMElement paramWMElement, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/WMAnimationVertexShader.dat"), VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/WMAnimationFragmentShader.dat"));
+    super(FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/WMAnimationVertexShader.dat"), FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/WMAnimationFragmentShader.dat"));
     initParams(paramWMElement, paramInt1, paramInt2, paramInt3);
   }
   
@@ -78,7 +78,7 @@ public abstract class WMAnimationFilterBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.ttpic.filter.WMAnimationFilterBase
  * JD-Core Version:    0.7.0.1
  */

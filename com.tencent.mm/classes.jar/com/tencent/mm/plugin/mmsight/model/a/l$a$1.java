@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class l$a$1
   implements Runnable
 {
@@ -7,14 +9,16 @@ final class l$a$1
   
   public final void run()
   {
-    if (this.mjW.mjO.mjJ != null) {
-      this.mjW.mjO.mjJ.Zf();
+    AppMethodBeat.i(76601);
+    if (this.oJu.oJt.fcz != null) {
+      this.oJu.oJt.fcz.asO();
     }
+    AppMethodBeat.o(76601);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.l.a.1
  * JD-Core Version:    0.7.0.1
  */

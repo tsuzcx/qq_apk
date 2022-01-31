@@ -4,8 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsPersonalInfoUI$2
   implements View.OnClickListener
@@ -14,8 +13,10 @@ final class SettingsPersonalInfoUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.nVl, PreviewHdHeadImg.class);
-    this.nVl.mController.uMN.startActivity(paramView);
+    AppMethodBeat.i(127366);
+    paramView = new Intent(this.qJr, PreviewHdHeadImg.class);
+    this.qJr.getContext().startActivity(paramView);
+    AppMethodBeat.o(127366);
   }
 }
 

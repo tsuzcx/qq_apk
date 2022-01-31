@@ -7,31 +7,37 @@ import android.webkit.CookieSyncManager;
 import android.webkit.WebIconDatabase;
 import android.webkit.WebStorage;
 import android.webkit.WebViewDatabase;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView.c;
 import com.tencent.xweb.c.b.a;
 import com.tencent.xweb.c.b.b;
 import com.tencent.xweb.c.g;
 import com.tencent.xweb.c.h;
-import com.tencent.xweb.c.j.a;
-import com.tencent.xweb.g.a;
+import com.tencent.xweb.c.i;
+import com.tencent.xweb.c.l.a;
+import com.tencent.xweb.k.a;
 import org.xwalk.core.Log;
 import org.xwalk.core.WebViewExtensionListener;
 
 public class SysWebFactory
-  implements j.a
+  implements l.a
 {
   static SysWebFactory sInstance;
   
   public static SysWebFactory getInstance()
   {
+    AppMethodBeat.i(84662);
     if (sInstance == null) {
       sInstance = new SysWebFactory();
     }
-    return sInstance;
+    SysWebFactory localSysWebFactory = sInstance;
+    AppMethodBeat.o(84662);
+    return localSysWebFactory;
   }
   
   public void clearAllWebViewCache(Context paramContext, boolean paramBoolean)
   {
+    AppMethodBeat.i(84668);
     try
     {
       android.webkit.WebView localWebView = new android.webkit.WebView(paramContext);
@@ -52,39 +58,63 @@ public class SysWebFactory
       WebViewDatabase.getInstance(paramContext).clearFormData();
       WebStorage.getInstance().deleteAllData();
       WebIconDatabase.getInstance().removeAllIcons();
+      AppMethodBeat.o(84668);
       return;
     }
     catch (Exception paramContext)
     {
       Log.e("SysWebFactory", "clearAllWebViewCache failed " + paramContext.getMessage());
+      AppMethodBeat.o(84668);
     }
   }
   
-  public h createWebView(com.tencent.xweb.WebView paramWebView)
+  public i createWebView(com.tencent.xweb.WebView paramWebView)
   {
-    return new e(paramWebView);
+    AppMethodBeat.i(84664);
+    paramWebView = new e(paramWebView);
+    AppMethodBeat.o(84664);
+    return paramWebView;
+  }
+  
+  public h createWebviewStorage()
+  {
+    return null;
   }
   
   public Object excute(String paramString, Object[] paramArrayOfObject)
   {
-    if ((paramString == null) || (paramString.isEmpty())) {}
-    while ((paramString.equals("STR_CMD_GET_DEBUG_VIEW")) || (!paramString.equals("STR_CMD_GET_UPDATER"))) {
+    AppMethodBeat.i(84663);
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      AppMethodBeat.o(84663);
       return null;
     }
+    if ((!paramString.equals("STR_CMD_GET_DEBUG_VIEW")) && (paramString.equals("STR_CMD_GET_UPDATER")))
+    {
+      AppMethodBeat.o(84663);
+      return null;
+    }
+    AppMethodBeat.o(84663);
     return null;
   }
   
   public b.a getCookieManager()
   {
-    return new a();
+    AppMethodBeat.i(84669);
+    a locala = new a();
+    AppMethodBeat.o(84669);
+    return locala;
   }
   
   public b.b getCookieSyncManager()
   {
-    return new b();
+    AppMethodBeat.i(84670);
+    b localb = new b();
+    AppMethodBeat.o(84670);
+    return localb;
   }
   
-  public g getJsCore(g.a parama, Context paramContext)
+  public g getJsCore(k.a parama, Context paramContext)
   {
     return null;
   }
@@ -96,10 +126,18 @@ public class SysWebFactory
   
   public boolean hasInitedCallback()
   {
-    return SysWebFactory.a.hasInitedCallback();
+    AppMethodBeat.i(84667);
+    boolean bool = SysWebFactory.a.hasInitedCallback();
+    AppMethodBeat.o(84667);
+    return bool;
   }
   
-  public void initCallback(WebViewExtensionListener paramWebViewExtensionListener) {}
+  public void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
+  {
+    AppMethodBeat.i(84666);
+    SysWebFactory.a.dYY();
+    AppMethodBeat.o(84666);
+  }
   
   public void initEnviroment(Context paramContext) {}
   
@@ -107,9 +145,11 @@ public class SysWebFactory
   
   public boolean initWebviewCore(Context paramContext, WebView.c paramc)
   {
+    AppMethodBeat.i(84665);
     if (paramc != null) {
       paramc.onCoreInitFinished();
     }
+    AppMethodBeat.o(84665);
     return true;
   }
   
@@ -120,7 +160,7 @@ public class SysWebFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.sys.SysWebFactory
  * JD-Core Version:    0.7.0.1
  */

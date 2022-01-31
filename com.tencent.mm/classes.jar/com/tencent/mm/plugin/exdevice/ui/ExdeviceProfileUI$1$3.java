@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ExdeviceProfileUI$1$3
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class ExdeviceProfileUI$1$3
   
   public final void run()
   {
-    ExdeviceProfileUI.k(this.jEO.jEM);
-    ExdeviceProfileUI.l(this.jEO.jEM).notifyDataSetChanged();
+    AppMethodBeat.i(20022);
+    ExdeviceProfileUI.k(this.lOn.lOl);
+    ExdeviceProfileUI.l(this.lOn.lOl).notifyDataSetChanged();
+    AppMethodBeat.o(20022);
   }
 }
 

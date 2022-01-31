@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.aa.a.c;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.protocal.c.x;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.x;
 import com.tencent.mm.vending.g.b;
 
 final class a$1

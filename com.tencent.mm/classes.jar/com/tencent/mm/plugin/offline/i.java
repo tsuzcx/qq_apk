@@ -2,49 +2,87 @@ package com.tencent.mm.plugin.offline;
 
 import android.text.TextUtils;
 import com.tencent.mars.smc.IDKey;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.offline.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.at;
 import java.util.ArrayList;
 
 public final class i
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  public ah mHandler = new ah();
-  private boolean mKg = false;
-  private boolean mKh = false;
-  private int mKi = 10;
-  private int mKj = 0;
-  private String mKk = "";
-  i.a mKl;
-  private com.tencent.mm.plugin.offline.a.m mKm;
-  public i.b mKn = new i.b(this, (byte)0);
-  int mKo = 14400000;
-  am mKp = new am(new i.1(this), false);
+  public ak mHandler;
+  i.a pkA;
+  private com.tencent.mm.plugin.offline.a.m pkB;
+  public i.b pkC;
+  int pkD;
+  ap pkE;
+  private boolean pkv;
+  private boolean pkw;
+  private int pkx;
+  private int pky;
+  private String pkz;
   
   public i()
   {
+    AppMethodBeat.i(43340);
+    this.pkv = false;
+    this.pkw = false;
+    this.pkx = 10;
+    this.pky = 0;
+    this.pkz = "";
+    this.mHandler = new ak();
+    this.pkC = new i.b(this, (byte)0);
+    this.pkD = 14400000;
+    this.pkE = new ap(new ap.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(43337);
+        if (!g.RG())
+        {
+          localap = i.this.pkE;
+          l = i.this.pkD;
+          localap.ag(l, l);
+          AppMethodBeat.o(43337);
+          return false;
+        }
+        i.this.eX(5, 5);
+        ap localap = i.this.pkE;
+        i locali = i.this;
+        long l = a.bZR();
+        if (l <= 0L) {}
+        for (l = locali.pkD;; l = 1000L * l)
+        {
+          localap.ag(l, l);
+          AppMethodBeat.o(43337);
+          return false;
+          ab.i("MicroMsg.OfflineTokensMgr", "OfflineTokensMgr updateInterval:".concat(String.valueOf(l)));
+        }
+      }
+    }, false);
     try
     {
-      com.tencent.mm.wallet_core.c.a.cMr();
-      com.tencent.mm.wallet_core.c.a.init(ae.getContext());
-      g.DQ();
-      g.DO().dJT.a(385, this);
-      k.bpX();
-      Object localObject = k.vA(196649);
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!com.tencent.mm.plugin.offline.c.a.yS((String)localObject)))
+      com.tencent.mm.wallet_core.c.b.dSi().init(ah.getContext());
+      g.RM();
+      g.RK().eHt.a(385, this);
+      k.bYF();
+      Object localObject = k.AY(196649);
+      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!a.isNumeric((String)localObject)))
       {
-        y.i("MicroMsg.OfflineTokensMgr", "genInitInterval: update_interval is empty or is not number,update token");
-        y.i("MicroMsg.OfflineTokensMgr", "autoPusher startTimer interval=" + l1);
-        localObject = this.mKp;
+        ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval: update_interval is empty or is not number,update token");
+        ab.i("MicroMsg.OfflineTokensMgr", "autoPusher startTimer interval=".concat(String.valueOf(l1)));
+        localObject = this.pkE;
         l1 *= 1000L;
-        ((am)localObject).S(l1, l1);
+        ((ap)localObject).ag(l1, l1);
+        AppMethodBeat.o(43340);
         return;
       }
     }
@@ -52,382 +90,420 @@ public final class i
     {
       for (;;)
       {
-        y.e("MicroMsg.OfflineTokensMgr", "NO MPERMISSION for READ_PHONE_STATE:%s.", new Object[] { localException });
+        ab.e("MicroMsg.OfflineTokensMgr", "NO MPERMISSION for READ_PHONE_STATE:%s.", new Object[] { localException });
         continue;
-        String str = com.tencent.mm.plugin.offline.c.a.bqP();
-        y.i("MicroMsg.OfflineTokensMgr", "genInitInterval: token is not over update interval,lastUpdate is " + str);
+        String str = a.bZF();
+        ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval: token is not over update interval,lastUpdate is ".concat(String.valueOf(str)));
         long l2 = Long.valueOf(localException).longValue();
         if (TextUtils.isEmpty(str))
         {
-          y.i("MicroMsg.OfflineTokensMgr", "genInitInterval lastUpdate is empty, update token");
+          ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval lastUpdate is empty, update token");
         }
         else
         {
           l1 = Long.valueOf(str).longValue();
           long l3 = System.currentTimeMillis() / 1000L;
-          y.i("MicroMsg.OfflineTokensMgr", "genInitInterval token is not over update interval,curTime = " + l3 + ";");
+          ab.i("MicroMsg.OfflineTokensMgr", "genInitInterval token is not over update interval,curTime = " + l3 + ";");
           l1 = l2 - (l3 - l1);
         }
       }
     }
   }
   
-  public static int bpW()
+  private static void AX(int paramInt)
   {
-    k.bpX();
-    String str = k.vA(196617);
-    com.tencent.mm.wallet_core.c.a.cMr();
-    int i = com.tencent.mm.wallet_core.c.a.afd(str);
-    y.i("MicroMsg.OfflineTokensMgr", "offline tokens count:" + i);
-    return i;
-  }
-  
-  public final void dx(int paramInt1, int paramInt2)
-  {
-    if ((aq.isNetworkConnected(ae.getContext())) && (com.tencent.mm.plugin.offline.c.a.bqH()))
-    {
-      y.i("MicroMsg.OfflineTokensMgr", "onNotify return false, token is invalid, do doNetSceneToken");
-      dy(paramInt1, paramInt2);
-    }
-  }
-  
-  public final void dy(int paramInt1, int paramInt2)
-  {
-    int j = 0;
-    if (this.mKg) {
-      return;
-    }
-    this.mKg = true;
-    Object localObject = new com.tencent.mm.plugin.offline.a.m(System.currentTimeMillis() / 1000L, paramInt1, paramInt2);
-    g.DQ();
-    g.DO().dJT.a((com.tencent.mm.ah.m)localObject, 0);
-    boolean bool1 = com.tencent.mm.plugin.offline.c.a.dR(ae.getContext());
-    boolean bool2 = aq.isNetworkConnected(ae.getContext());
-    localObject = com.tencent.mm.plugin.report.service.h.nFQ;
+    int k = 0;
+    AppMethodBeat.i(43347);
+    boolean bool1 = a.eD(ah.getContext());
+    boolean bool2 = at.isNetworkConnected(ah.getContext());
+    Object localObject = com.tencent.mm.plugin.report.service.h.qsU;
     int i;
+    int j;
     if (bool1)
     {
-      paramInt2 = 0;
+      i = 0;
       if (!bool2) {
-        break label465;
+        break label411;
       }
-      i = 1;
-      label99:
-      if (k.mKz) {
-        j = 1;
+      j = 1;
+      label42:
+      if (k.pkO) {
+        k = 1;
       }
-      ((com.tencent.mm.plugin.report.service.h)localObject).f(14163, new Object[] { Integer.valueOf(4), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(j) });
+      ((com.tencent.mm.plugin.report.service.h)localObject).e(14163, new Object[] { Integer.valueOf(4), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(k) });
       localObject = new ArrayList();
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool2) {
-        break label470;
+        break label416;
       }
-      paramInt2 = 36;
-      label204:
-      localIDKey.SetKey(paramInt2);
+      i = 36;
+      label145:
+      localIDKey.SetKey(i);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool1) {
-        break label476;
+        break label422;
       }
-      paramInt2 = 38;
-      label249:
-      localIDKey.SetKey(paramInt2);
+      i = 38;
+      label190:
+      localIDKey.SetKey(i);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
-      if (!k.mKz) {
-        break label482;
+      if (!k.pkO) {
+        break label428;
       }
-      paramInt2 = 40;
-      label295:
-      localIDKey.SetKey(paramInt2);
+      i = 40;
+      label236:
+      localIDKey.SetKey(i);
       ((ArrayList)localObject).add(localIDKey);
-      if (paramInt1 != 2) {
-        break label506;
+      if (paramInt != 2) {
+        break label452;
       }
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
-      if (!k.mKz) {
-        break label488;
+      if (!k.pkO) {
+        break label434;
       }
-      paramInt1 = 42;
-      label346:
-      localIDKey.SetKey(paramInt1);
+      paramInt = 42;
+      label287:
+      localIDKey.SetKey(paramInt);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool1) {
-        break label494;
+        break label440;
       }
-      paramInt1 = 44;
-      label391:
-      localIDKey.SetKey(paramInt1);
+      paramInt = 44;
+      label332:
+      localIDKey.SetKey(paramInt);
       ((ArrayList)localObject).add(localIDKey);
       localIDKey = new IDKey();
       localIDKey.SetID(135);
       localIDKey.SetValue(1L);
       if (!bool2) {
-        break label500;
+        break label446;
       }
-      paramInt1 = 46;
-      label436:
-      localIDKey.SetKey(paramInt1);
+      paramInt = 46;
+      label377:
+      localIDKey.SetKey(paramInt);
       ((ArrayList)localObject).add(localIDKey);
     }
-    label465:
-    label470:
-    label476:
-    label482:
-    label488:
-    label494:
-    label500:
-    label506:
+    label411:
+    label416:
+    label422:
+    label428:
+    label434:
+    label440:
+    label446:
+    label452:
+    label490:
     do
     {
-      com.tencent.mm.plugin.report.service.h.nFQ.b((ArrayList)localObject, true);
+      com.tencent.mm.plugin.report.service.h.qsU.b((ArrayList)localObject, true);
+      AppMethodBeat.o(43347);
       return;
-      paramInt2 = 1;
+      i = 1;
       break;
-      i = 0;
-      break label99;
-      paramInt2 = 37;
-      break label204;
-      paramInt2 = 39;
-      break label249;
-      paramInt2 = 41;
-      break label295;
-      paramInt1 = 43;
-      break label346;
-      paramInt1 = 45;
-      break label391;
-      paramInt1 = 47;
-      break label436;
-      if (paramInt1 == 6)
+      j = 0;
+      break label42;
+      i = 37;
+      break label145;
+      i = 39;
+      break label190;
+      i = 41;
+      break label236;
+      paramInt = 43;
+      break label287;
+      paramInt = 45;
+      break label332;
+      paramInt = 47;
+      break label377;
+      if (paramInt == 6)
       {
         localIDKey = new IDKey();
         localIDKey.SetID(135);
         localIDKey.SetValue(1L);
-        if (k.mKz)
+        if (k.pkO)
         {
-          paramInt1 = 48;
-          localIDKey.SetKey(paramInt1);
+          paramInt = 48;
+          localIDKey.SetKey(paramInt);
           ((ArrayList)localObject).add(localIDKey);
           localIDKey = new IDKey();
           localIDKey.SetID(135);
           localIDKey.SetValue(1L);
           if (!bool1) {
-            break label657;
+            break label603;
           }
-          paramInt1 = 50;
-          localIDKey.SetKey(paramInt1);
+          paramInt = 50;
+          localIDKey.SetKey(paramInt);
           ((ArrayList)localObject).add(localIDKey);
           localIDKey = new IDKey();
           localIDKey.SetID(135);
           localIDKey.SetValue(1L);
           if (!bool2) {
-            break label663;
+            break label609;
           }
         }
-        for (paramInt1 = 52;; paramInt1 = 53)
+        for (paramInt = 52;; paramInt = 53)
         {
-          localIDKey.SetKey(paramInt1);
+          localIDKey.SetKey(paramInt);
           ((ArrayList)localObject).add(localIDKey);
           break;
-          paramInt1 = 49;
-          break label544;
-          paramInt1 = 51;
-          break label589;
+          paramInt = 49;
+          break label490;
+          paramInt = 51;
+          break label535;
         }
       }
-    } while (paramInt1 != 6);
-    label544:
-    label589:
+    } while (paramInt != 6);
+    label535:
+    label603:
+    label609:
     IDKey localIDKey = new IDKey();
-    label657:
-    label663:
     localIDKey.SetID(135);
     localIDKey.SetValue(1L);
     if (bool1) {}
-    for (paramInt1 = 54;; paramInt1 = 55)
+    for (paramInt = 54;; paramInt = 55)
     {
-      localIDKey.SetKey(paramInt1);
+      localIDKey.SetKey(paramInt);
       ((ArrayList)localObject).add(localIDKey);
       break;
     }
   }
   
-  public final boolean hZ(boolean paramBoolean)
+  public static int bYE()
   {
-    if (!com.tencent.mm.plugin.offline.c.a.bqH()) {
-      y.e("MicroMsg.OfflineTokensMgr", "offline is not create!");
-    }
-    do
-    {
-      return false;
-      if (bpW() < k.mKA)
-      {
-        y.i("MicroMsg.OfflineTokensMgr", "getTokenCount < %s, do doNetSceneToken", new Object[] { Integer.valueOf(k.mKA) });
-        com.tencent.mm.wallet_core.c.a.cMr();
-        int i = com.tencent.mm.wallet_core.c.a.getLastError();
-        if (i != 0)
-        {
-          y.e("MicroMsg.OfflineTokensMgr", "getTokenCount occurs error, the error is " + i + ", don't  doNetSceneToken");
-          return false;
-        }
-        y.i("MicroMsg.OfflineTokensMgr", "getTokenCount is success! do doNetSceneToken");
-        if (paramBoolean) {
-          vz(9);
-        }
-        for (;;)
-        {
-          return true;
-          vz(2);
-        }
-      }
-      if (com.tencent.mm.plugin.offline.c.a.brd())
-      {
-        y.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isTokenOverUpdateInterval() return false, token is over update_interval, do doNetSceneToken");
-        if (paramBoolean) {
-          dy(5, 9);
-        }
-        for (;;)
-        {
-          return true;
-          dy(5, 5);
-        }
-      }
-    } while (com.tencent.mm.plugin.offline.c.a.bra());
-    y.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isSameMD5ForBindSerial() return false, bindserial is change, do doNetSceneToken");
-    if (paramBoolean) {
-      dy(3, 9);
-    }
-    for (;;)
-    {
-      return true;
-      dy(3, 3);
-    }
+    AppMethodBeat.i(43341);
+    k.bYF();
+    String str = k.AY(196617);
+    com.tencent.mm.wallet_core.c.b.dSi();
+    int i = com.tencent.mm.wallet_core.c.b.avW(str);
+    ab.i("MicroMsg.OfflineTokensMgr", "offline tokens count:".concat(String.valueOf(i)));
+    AppMethodBeat.o(43341);
+    return i;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public final void AW(int paramInt)
+  {
+    AppMethodBeat.i(43344);
+    if (bYE() > 2)
+    {
+      this.mHandler.postDelayed(new i.2(this, paramInt), 3000L);
+      AppMethodBeat.o(43344);
+      return;
+    }
+    eY(2, paramInt);
+    AppMethodBeat.o(43344);
+  }
+  
+  public final void eX(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(43342);
+    if ((at.isNetworkConnected(ah.getContext())) && (a.bZw()))
+    {
+      ab.i("MicroMsg.OfflineTokensMgr", "onNotify return false, token is invalid, do doNetSceneToken");
+      eY(paramInt1, paramInt2);
+      AppMethodBeat.o(43342);
+      return;
+    }
+    AppMethodBeat.o(43342);
+  }
+  
+  public final void eY(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(43345);
+    if (this.pkv)
+    {
+      AppMethodBeat.o(43345);
+      return;
+    }
+    this.pkv = true;
+    com.tencent.mm.plugin.offline.a.m localm = new com.tencent.mm.plugin.offline.a.m(System.currentTimeMillis() / 1000L, paramInt1, paramInt2);
+    g.RM();
+    g.RK().eHt.a(localm, 0);
+    AX(paramInt1);
+    AppMethodBeat.o(43345);
+  }
+  
+  public final boolean jV(boolean paramBoolean)
+  {
+    AppMethodBeat.i(43343);
+    if (!a.bZw())
+    {
+      ab.e("MicroMsg.OfflineTokensMgr", "offline is not create!");
+      AppMethodBeat.o(43343);
+      return false;
+    }
+    if (bYE() < k.pkP)
+    {
+      ab.i("MicroMsg.OfflineTokensMgr", "getTokenCount < %s, do doNetSceneToken", new Object[] { Integer.valueOf(k.pkP) });
+      com.tencent.mm.wallet_core.c.b.dSi();
+      int i = com.tencent.mm.wallet_core.c.b.getLastError();
+      if (i != 0)
+      {
+        ab.e("MicroMsg.OfflineTokensMgr", "getTokenCount occurs error, the error is " + i + ", don't  doNetSceneToken");
+        AppMethodBeat.o(43343);
+        return false;
+      }
+      ab.i("MicroMsg.OfflineTokensMgr", "getTokenCount is success! do doNetSceneToken");
+      if (paramBoolean) {
+        AW(9);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(43343);
+        return true;
+        AW(2);
+      }
+    }
+    if (a.bZS())
+    {
+      ab.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isTokenOverUpdateInterval() return false, token is over update_interval, do doNetSceneToken");
+      if (paramBoolean) {
+        eY(5, 9);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(43343);
+        return true;
+        eY(5, 5);
+      }
+    }
+    if (!a.bZP())
+    {
+      ab.i("MicroMsg.OfflineTokensMgr", "WalletOfflineUtil.isSameMD5ForBindSerial() return false, bindserial is change, do doNetSceneToken");
+      if (paramBoolean) {
+        eY(3, 9);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(43343);
+        return true;
+        eY(3, 3);
+      }
+    }
+    AppMethodBeat.o(43343);
+    return false;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
     int i = 6;
-    if ((!(paramm instanceof com.tencent.mm.plugin.offline.a.h)) && (!(paramm instanceof com.tencent.mm.plugin.offline.a.f))) {}
-    label353:
-    do
+    AppMethodBeat.i(43346);
+    if ((!(paramm instanceof com.tencent.mm.plugin.offline.a.h)) && (!(paramm instanceof com.tencent.mm.plugin.offline.a.f)))
     {
-      do
-      {
-        do
-        {
-          return;
-          paramString = new ArrayList();
-          if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
-          {
-            IDKey localIDKey = new IDKey();
-            localIDKey.SetID(135);
-            localIDKey.SetValue(1L);
-            localIDKey.SetKey(2);
-            paramString.add(localIDKey);
-            if ((paramInt1 != 0) || (paramInt2 != 0))
-            {
-              localIDKey = new IDKey();
-              localIDKey.SetID(135);
-              localIDKey.SetValue(1L);
-              localIDKey.SetKey(3);
-              paramString.add(localIDKey);
-            }
-            com.tencent.mm.plugin.report.service.h.nFQ.b(paramString, true);
-          }
-          if (((paramm instanceof com.tencent.mm.plugin.offline.a.f)) && (((paramInt1 == 0) && (paramInt2 == 0)) || (paramInt1 != 0)))
-          {
-            y.i("MicroMsg.OfflineTokensMgr", "onSceneEnd NetSceneOfflineVerifyToken errType %d errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-            if (this.mKm != null)
-            {
-              boolean bool = this.mKm.bqe();
-              this.mKm = null;
-              if ((bool) && (this.mKl != null)) {
-                this.mKl.bpR();
-              }
-            }
-          }
-          if ((paramInt1 != 0) || (paramInt2 != 0)) {
-            break label353;
-          }
-          if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
-          {
-            this.mKj = 0;
-            this.mKg = false;
-            this.mHandler.removeCallbacks(this.mKn);
-            this.mKm = ((com.tencent.mm.plugin.offline.a.m)paramm);
-            paramString = this.mKm.mLm;
-            k.bpX();
-            paramString = new com.tencent.mm.plugin.offline.a.f(paramString, k.vA(196617));
-            g.DQ();
-            g.DO().dJT.a(paramString, 0);
-            return;
-          }
-          if (!(paramm instanceof l)) {
-            break;
-          }
-          this.mKh = false;
-          this.mKk = ((l)paramm).mKk;
-        } while (this.mKl == null);
-        this.mKl.bpR();
-        return;
-      } while (!(paramm instanceof com.tencent.mm.plugin.offline.a.f));
+      AppMethodBeat.o(43346);
       return;
-      if (!(paramm instanceof com.tencent.mm.plugin.offline.a.m)) {
-        break;
+    }
+    paramString = new ArrayList();
+    if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
+    {
+      IDKey localIDKey = new IDKey();
+      localIDKey.SetID(135);
+      localIDKey.SetValue(1L);
+      localIDKey.SetKey(2);
+      paramString.add(localIDKey);
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        localIDKey = new IDKey();
+        localIDKey.SetID(135);
+        localIDKey.SetValue(1L);
+        localIDKey.SetKey(3);
+        paramString.add(localIDKey);
       }
-      y.e("MicroMsg.OfflineTokensMgr", "gettoken is failed!");
-      this.mKj += 1;
-      this.mKg = false;
+      com.tencent.mm.plugin.report.service.h.qsU.b(paramString, true);
+    }
+    if (((paramm instanceof com.tencent.mm.plugin.offline.a.f)) && (((paramInt1 == 0) && (paramInt2 == 0)) || (paramInt1 != 0)))
+    {
+      ab.i("MicroMsg.OfflineTokensMgr", "onSceneEnd NetSceneOfflineVerifyToken errType %d errCode %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (this.pkB != null)
+      {
+        boolean bool = this.pkB.bYK();
+        this.pkB = null;
+        if ((bool) && (this.pkA != null)) {
+          this.pkA.bYy();
+        }
+      }
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
+      {
+        this.pky = 0;
+        this.pkv = false;
+        this.mHandler.removeCallbacks(this.pkC);
+        this.pkB = ((com.tencent.mm.plugin.offline.a.m)paramm);
+        paramString = this.pkB.plD;
+        k.bYF();
+        paramString = new com.tencent.mm.plugin.offline.a.f(paramString, k.AY(196617));
+        g.RM();
+        g.RK().eHt.a(paramString, 0);
+        AppMethodBeat.o(43346);
+        return;
+      }
+      if ((paramm instanceof l))
+      {
+        this.pkw = false;
+        this.pkz = ((l)paramm).pkz;
+        if (this.pkA != null) {
+          this.pkA.bYy();
+        }
+        AppMethodBeat.o(43346);
+        return;
+      }
+      if ((paramm instanceof com.tencent.mm.plugin.offline.a.f)) {
+        AppMethodBeat.o(43346);
+      }
+    }
+    else if ((paramm instanceof com.tencent.mm.plugin.offline.a.m))
+    {
+      ab.e("MicroMsg.OfflineTokensMgr", "gettoken is failed!");
+      this.pky += 1;
+      this.pkv = false;
       if (paramInt2 == 411)
       {
-        y.i("MicroMsg.OfflineTokensMgr", "errcode is  411, do clearAllOfflineData");
-        com.tencent.mm.plugin.offline.c.a.bqS();
+        ab.i("MicroMsg.OfflineTokensMgr", "errcode is  411, do clearAllOfflineData");
+        a.bZH();
+        AppMethodBeat.o(43346);
         return;
       }
-    } while (this.mKj >= this.mKi);
-    this.mHandler.removeCallbacks(this.mKn);
-    paramInt1 = this.mKj - 1;
-    if (paramInt1 > 6) {
-      paramInt1 = i;
+      if (this.pky < this.pkx)
+      {
+        this.mHandler.removeCallbacks(this.pkC);
+        paramInt1 = this.pky - 1;
+        if (paramInt1 <= 6) {
+          break label556;
+        }
+        paramInt1 = i;
+      }
     }
+    label556:
     for (;;)
     {
       paramInt1 = (int)Math.pow(2.0D, paramInt1);
-      this.mHandler.postDelayed(this.mKn, paramInt1 * 60 * 1000);
+      this.mHandler.postDelayed(this.pkC, paramInt1 * 60 * 1000);
+      AppMethodBeat.o(43346);
       return;
       if ((paramm instanceof l))
       {
-        this.mKh = false;
+        this.pkw = false;
+        AppMethodBeat.o(43346);
         return;
       }
-      if (!(paramm instanceof com.tencent.mm.plugin.offline.a.f)) {
-        break;
+      if ((paramm instanceof com.tencent.mm.plugin.offline.a.f)) {
+        this.pkB = null;
       }
-      this.mKm = null;
+      AppMethodBeat.o(43346);
       return;
     }
-  }
-  
-  public final void vz(int paramInt)
-  {
-    if (bpW() > 2)
-    {
-      this.mHandler.postDelayed(new i.2(this, paramInt), 3000L);
-      return;
-    }
-    dy(2, paramInt);
   }
 }
 

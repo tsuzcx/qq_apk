@@ -8,64 +8,64 @@ import java.util.Arrays;
 
 public final class a
 {
-  public static final byte[] hFK = { 68, 88, 68, 73, 70, 70 };
-  private short version;
-  public final com.tencent.tinker.a.a.a.a wUQ;
-  public int wUR;
-  private int wUS;
-  public int wUT;
-  public int wUU;
-  public int wUV;
-  public int wUW;
-  public int wUX;
-  public int wUY;
-  public int wUZ;
-  public int wVa;
-  public int wVb;
-  public int wVc;
-  public int wVd;
-  public int wVe;
-  public int wVf;
-  public int wVg;
-  public int wVh;
-  public int wVi;
-  public int wVj;
-  public byte[] wVk;
+  public static final byte[] jzh = { 68, 88, 68, 73, 70, 70 };
+  public int BrA;
+  public int BrB;
+  public int BrC;
+  public int BrD;
+  public int BrE;
+  public int BrF;
+  public int BrG;
+  public int BrH;
+  public int BrI;
+  public int BrJ;
+  public int BrK;
+  public int BrL;
+  public int BrM;
+  public int BrN;
+  public int BrO;
+  public byte[] BrP;
+  public final com.tencent.tinker.a.a.a.a Bru;
+  private short Brv;
+  public int Brw;
+  private int Brx;
+  public int Bry;
+  public int Brz;
   
   public a(InputStream paramInputStream)
   {
-    this.wUQ = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.r(paramInputStream)));
-    paramInputStream = this.wUQ.JB(hFK.length);
-    if (c.l(paramInputStream, hFK) != 0) {
+    this.Bru = new com.tencent.tinker.a.a.a.a(ByteBuffer.wrap(d.u(paramInputStream)));
+    paramInputStream = this.Bru.Sw(jzh.length);
+    if (c.o(paramInputStream, jzh) != 0) {
       throw new IllegalStateException("bad dex patch file magic: " + Arrays.toString(paramInputStream));
     }
-    this.version = this.wUQ.ayD.getShort();
-    if (c.b(this.version, (short)2) != 0) {
-      throw new IllegalStateException("bad dex patch file version: " + this.version + ", expected: 2");
+    this.Brv = this.Bru.aAS.getShort();
+    if (c.b(this.Brv, (short)2) != 0) {
+      throw new IllegalStateException("bad dex patch file version: " + this.Brv + ", expected: 2");
     }
-    this.wUR = this.wUQ.ayD.getInt();
-    this.wUS = this.wUQ.ayD.getInt();
-    this.wUT = this.wUQ.ayD.getInt();
-    this.wUU = this.wUQ.ayD.getInt();
-    this.wUV = this.wUQ.ayD.getInt();
-    this.wUW = this.wUQ.ayD.getInt();
-    this.wUX = this.wUQ.ayD.getInt();
-    this.wUY = this.wUQ.ayD.getInt();
-    this.wUZ = this.wUQ.ayD.getInt();
-    this.wVa = this.wUQ.ayD.getInt();
-    this.wVb = this.wUQ.ayD.getInt();
-    this.wVc = this.wUQ.ayD.getInt();
-    this.wVd = this.wUQ.ayD.getInt();
-    this.wVe = this.wUQ.ayD.getInt();
-    this.wVf = this.wUQ.ayD.getInt();
-    this.wVg = this.wUQ.ayD.getInt();
-    this.wVh = this.wUQ.ayD.getInt();
-    this.wVi = this.wUQ.ayD.getInt();
-    this.wVj = this.wUQ.ayD.getInt();
-    this.wVk = this.wUQ.JB(20);
-    paramInputStream = this.wUQ;
-    int i = this.wUS;
-    paramInputStream.ayD.position(i);
+    this.Brw = this.Bru.aAS.getInt();
+    this.Brx = this.Bru.aAS.getInt();
+    this.Bry = this.Bru.aAS.getInt();
+    this.Brz = this.Bru.aAS.getInt();
+    this.BrA = this.Bru.aAS.getInt();
+    this.BrB = this.Bru.aAS.getInt();
+    this.BrC = this.Bru.aAS.getInt();
+    this.BrD = this.Bru.aAS.getInt();
+    this.BrE = this.Bru.aAS.getInt();
+    this.BrF = this.Bru.aAS.getInt();
+    this.BrG = this.Bru.aAS.getInt();
+    this.BrH = this.Bru.aAS.getInt();
+    this.BrI = this.Bru.aAS.getInt();
+    this.BrJ = this.Bru.aAS.getInt();
+    this.BrK = this.Bru.aAS.getInt();
+    this.BrL = this.Bru.aAS.getInt();
+    this.BrM = this.Bru.aAS.getInt();
+    this.BrN = this.Bru.aAS.getInt();
+    this.BrO = this.Bru.aAS.getInt();
+    this.BrP = this.Bru.Sw(20);
+    paramInputStream = this.Bru;
+    int i = this.Brx;
+    paramInputStream.aAS.position(i);
   }
 }
 

@@ -5,24 +5,24 @@ import com.tencent.mm.plugin.exdevice.e.e;
 
 public abstract class c
 {
-  public long hXu = -1L;
-  public short jsV = -1;
-  public e jsW = null;
-  protected a jsX = null;
+  public long jRn = -1L;
+  public short lCu = -1;
+  public e lCv = null;
+  protected a lCw = null;
   
-  protected final e Z(int paramInt, String paramString)
+  protected final e as(int paramInt, String paramString)
   {
-    this.jsW = new e();
-    this.jsW.jxl = paramInt;
-    this.jsW.jxm = paramString;
-    return this.jsW;
+    this.lCv = new e();
+    this.lCv.lGK = paramInt;
+    this.lCv.lGL = paramString;
+    return this.lCv;
   }
   
-  public abstract short aLh();
+  public abstract short bpu();
   
-  public abstract short aLi();
+  public abstract short bpv();
   
-  public abstract byte[] aLj();
+  public abstract byte[] bpw();
 }
 
 

@@ -1,81 +1,85 @@
 package com.tencent.mm.plugin.voip.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip.a.a;
-import com.tencent.mm.plugin.voip.model.j;
-import com.tencent.mm.plugin.voip.model.r;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.cfj;
-import com.tencent.mm.protocal.c.cfp;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.voip.model.k;
+import com.tencent.mm.plugin.voip.model.t;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.csu;
+import com.tencent.mm.protocal.protobuf.cta;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1$1
   implements Runnable
 {
-  b$1$1(b.1 param1, cfj paramcfj) {}
+  b$1$1(b.1 param1, csu paramcsu) {}
   
   public final void run()
   {
-    com.tencent.mm.plugin.voip.b.bPx().bRn();
-    a.Logi(this.pUi.pUh.TAG, "steve:doublelink timer started!");
-    this.pUi.pUh.pQA.a(this.pUf.tTY, this.pUf.tTZ, this.pUf.tUg, this.pUf.tUz);
-    if (this.pUf.tSF.szp.tFM != null)
+    AppMethodBeat.i(4697);
+    com.tencent.mm.plugin.voip.b.cLC().cNZ();
+    a.Logi(this.tzK.tzJ.TAG, "steve:doublelink timer started!");
+    this.tzK.tzJ.tvE.a(this.tzH.ybp, this.tzH.ybq, this.tzH.ybx, this.tzH.ybQ);
+    if (this.tzH.xZX.wtq.getBuffer() != null)
     {
-      this.pUi.pUh.pQA.aR(this.pUf.tSF.szp.tFM.toByteArray());
-      if ((this.pUf.tUe != null) && (this.pUf.tUe.tFM != null) && (this.pUf.tUq != null) && (this.pUf.tUq.tFM != null)) {
-        this.pUi.pUh.pQA.a(this.pUf.tUe.tFM.toByteArray(), this.pUf.tUd, this.pUf.lpZ, this.pUf.tUq.tFM.toByteArray());
+      this.tzK.tzJ.tvE.br(this.tzH.xZX.wtq.getBuffer().toByteArray());
+      if ((this.tzH.ybv != null) && (this.tzH.ybv.getBuffer() != null) && (this.tzH.ybH != null) && (this.tzH.ybH.getBuffer() != null)) {
+        this.tzK.tzJ.tvE.a(this.tzH.ybv.getBuffer().toByteArray(), this.tzH.ybu, this.tzH.nNv, this.tzH.ybH.getBuffer().toByteArray());
       }
-      this.pUi.pUh.pQA.h(this.pUf.tUh, this.pUf.tUi, this.pUf.tUj, this.pUf.tUk, this.pUf.tUl);
-      this.pUi.pUh.pQA.Ab(this.pUf.tUp);
-      if ((this.pUf.tUn != null) && (this.pUf.tUo != null) && (this.pUf.tUn.tFM != null) && (this.pUf.tUo.tFM != null)) {
-        this.pUi.pUh.pQA.b(this.pUf.tUm, this.pUf.tUn.tFM.toByteArray(), this.pUf.tUo.tFM.toByteArray());
+      this.tzK.tzJ.tvE.i(this.tzH.yby, this.tzH.ybz, this.tzH.ybA, this.tzH.ybB, this.tzH.ybC);
+      this.tzK.tzJ.tvE.Ho(this.tzH.ybG);
+      if ((this.tzH.ybE != null) && (this.tzH.ybF != null) && (this.tzH.ybE.getBuffer() != null) && (this.tzH.ybF.getBuffer() != null)) {
+        this.tzK.tzJ.tvE.c(this.tzH.ybD, this.tzH.ybE.getBuffer().toByteArray(), this.tzH.ybF.getBuffer().toByteArray());
       }
-      if (this.pUf.tSG.szp.tFM == null) {
-        break label626;
+      if (this.tzH.xZY.wtq.getBuffer() == null) {
+        break label638;
       }
-      this.pUi.pUh.pQA.aS(this.pUf.tSG.szp.tFM.toByteArray());
-      label411:
-      this.pUi.pUh.pQA.Aa(this.pUf.tUs);
-      this.pUi.pUh.pQA.pQe.pVC = this.pUf.tUt;
-      if ((this.pUf.tUv != null) && (this.pUf.tUv.tFM != null)) {
-        this.pUi.pUh.pQA.pQe.pUK = this.pUf.tUv.tFM.toByteArray();
+      this.tzK.tzJ.tvE.bs(this.tzH.xZY.wtq.getBuffer().toByteArray());
+      label417:
+      this.tzK.tzJ.tvE.Hn(this.tzH.ybJ);
+      this.tzK.tzJ.tvE.tvj.tBh = this.tzH.ybK;
+      if ((this.tzH.ybM != null) && (this.tzH.ybM.getBuffer() != null)) {
+        this.tzK.tzJ.tvE.tvj.tAl = this.tzH.ybM.getBuffer().toByteArray();
       }
-      if (!this.pUi.pUh.pQA.pPG) {
-        break label714;
+      if (!this.tzK.tzJ.tvE.tuL) {
+        break label732;
       }
-      this.pUi.pUh.pQA.pPG = false;
-      if (this.pUi.pUh.pQA.pPC != true) {
-        break label644;
+      this.tzK.tzJ.tvE.tuL = false;
+      if (this.tzK.tzJ.tvE.tuH != true) {
+        break label656;
       }
-      a.Logi(this.pUi.pUh.TAG, "channel pre-connect already success, start talk");
-      this.pUi.pUh.pQA.bQa();
+      a.Logi(this.tzK.tzJ.TAG, "channel pre-connect already success, start talk");
+      this.tzK.tzJ.tvE.cMf();
     }
     for (;;)
     {
-      this.pUi.pUh.pQA.bQi();
-      this.pUi.pUh.pQA.bQg();
+      this.tzK.tzJ.tvE.cMm();
+      this.tzK.tzJ.tvE.cMk();
+      AppMethodBeat.o(4697);
       return;
-      y.e(this.pUi.pUh.TAG, "multiRelayData.PeerId.Buffer.getBuffer() is null");
+      ab.e(this.tzK.tzJ.TAG, "multiRelayData.PeerId.Buffer.getBuffer() is null");
       break;
-      label626:
-      y.e(this.pUi.pUh.TAG, "multiRelayData.CapInfo.Buffer.getBuffer() is null");
-      break label411;
-      label644:
-      if (this.pUi.pUh.pQA.pPF == true)
+      label638:
+      ab.e(this.tzK.tzJ.TAG, "multiRelayData.CapInfo.Buffer.getBuffer() is null");
+      break label417;
+      label656:
+      if (this.tzK.tzJ.tvE.tuK == true)
       {
-        a.Logi(this.pUi.pUh.TAG, "channel pre-connect already failed");
-        this.pUi.pUh.pQA.s(1, -9000, "");
+        a.Logi(this.tzK.tzJ.TAG, "channel pre-connect already failed");
+        this.tzK.tzJ.tvE.y(1, -9000, "");
+        AppMethodBeat.o(4697);
         return;
       }
-      a.Logi(this.pUi.pUh.TAG, "channel pre-connect still connecting...");
+      a.Logi(this.tzK.tzJ.TAG, "channel pre-connect still connecting...");
       continue;
-      label714:
-      y.i(this.pUi.pUh.TAG, "isPreConnect is false");
+      label732:
+      ab.i(this.tzK.tzJ.TAG, "isPreConnect is false");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.b.1.1
  * JD-Core Version:    0.7.0.1
  */

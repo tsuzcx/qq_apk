@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tenpay.android.wechat.MyKeyboardWindow;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.i;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class LuckyMoneyPrepareUI$6
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  LuckyMoneyPrepareUI$6(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, EditText paramEditText1, EditText paramEditText2) {}
+  LuckyMoneyPrepareUI$6(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.eYi.setOnClickListener(null);
-    this.lMy.setOnClickListener(null);
-    this.lXg.J(LuckyMoneyPrepareUI.b(this.lXg), 2);
-    this.lXg.J(LuckyMoneyPrepareUI.a(this.lXg), 0);
-    this.lXg.mKeyboard.setXMode(2);
-    this.lXg.mKeyboard.setInputEditText((EditText)paramView);
-    this.lXg.lMr.setVisibility(0);
+    AppMethodBeat.i(142059);
+    if ((LuckyMoneyPrepareUI.e(this.owL) != null) && (!bo.isNullOrNil(LuckyMoneyPrepareUI.e(this.owL).onm))) {
+      e.m(this.owL.getContext(), LuckyMoneyPrepareUI.e(this.owL).onm, false);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(142059);
+      return true;
+      e.m(this.owL.getContext(), "https://hkwallet.moneydata.hk/hybrid/www/weixin/hongbao_hk_v2/zh_hk/faq.shtml", false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.6
  * JD-Core Version:    0.7.0.1
  */

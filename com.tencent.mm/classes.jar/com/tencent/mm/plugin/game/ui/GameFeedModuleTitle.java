@@ -4,14 +4,14 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class GameFeedModuleTitle
   extends LinearLayout
 {
-  private TextView haW;
+  private TextView iJG;
   
   public GameFeedModuleTitle(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -20,19 +20,24 @@ public class GameFeedModuleTitle
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111937);
     super.onFinishInflate();
-    this.haW = ((TextView)findViewById(g.e.game_feed_title));
+    this.iJG = ((TextView)findViewById(2131824620));
+    AppMethodBeat.o(111937);
   }
   
-  public void setData(e parame)
+  public void setData(d paramd)
   {
-    if ((parame == null) || (bk.bl(parame.kOt)))
+    AppMethodBeat.i(111938);
+    if ((paramd == null) || (bo.isNullOrNil(paramd.nmq)))
     {
       setVisibility(8);
+      AppMethodBeat.o(111938);
       return;
     }
     setVisibility(0);
-    this.haW.setText(parame.kOt);
+    this.iJG.setText(paramd.nmq);
+    AppMethodBeat.o(111938);
   }
 }
 

@@ -1,25 +1,51 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.wearable.Channel.GetInputStreamResult;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 
-public class zzbg
-  extends zza
+final class zzbg
+  implements Channel.GetInputStreamResult
 {
-  public static final Parcelable.Creator<zzbg> CREATOR = new zzbf();
-  public final boolean enabled;
-  public final int statusCode;
+  private final InputStream zzct;
+  private final Status zzp;
   
-  public zzbg(int paramInt, boolean paramBoolean)
+  zzbg(Status paramStatus, @Nullable InputStream paramInputStream)
   {
-    this.statusCode = paramInt;
-    this.enabled = paramBoolean;
+    AppMethodBeat.i(71070);
+    this.zzp = ((Status)Preconditions.checkNotNull(paramStatus));
+    this.zzct = paramInputStream;
+    AppMethodBeat.o(71070);
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  @Nullable
+  public final InputStream getInputStream()
   {
-    zzbf.zza(this, paramParcel, paramInt);
+    return this.zzct;
+  }
+  
+  public final Status getStatus()
+  {
+    return this.zzp;
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(71071);
+    if (this.zzct != null) {
+      try
+      {
+        this.zzct.close();
+        AppMethodBeat.o(71071);
+        return;
+      }
+      catch (IOException localIOException) {}
+    }
+    AppMethodBeat.o(71071);
   }
 }
 

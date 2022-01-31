@@ -1,63 +1,89 @@
 package com.tencent.mm.plugin.mmsight;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.concurrent.ConcurrentSkipListSet;
 
 public final class c
 {
-  private static ConcurrentSkipListSet<Integer> meZ = new ConcurrentSkipListSet();
+  private static ConcurrentSkipListSet<Integer> oFy;
   
-  public static void tR(int paramInt)
+  static
+  {
+    AppMethodBeat.i(60270);
+    oFy = new ConcurrentSkipListSet();
+    AppMethodBeat.o(60270);
+  }
+  
+  public static void zk(int paramInt)
   {
     try
     {
-      y.i("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxing: %s", new Object[] { Integer.valueOf(paramInt) });
-      meZ.add(Integer.valueOf(paramInt));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      AppMethodBeat.i(60267);
+      try
       {
-        y.e("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxing error: %s", new Object[] { localException.getMessage() });
+        ab.i("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxing: %s", new Object[] { Integer.valueOf(paramInt) });
+        oFy.add(Integer.valueOf(paramInt));
+        AppMethodBeat.o(60267);
       }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ab.e("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxing error: %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(60267);
+        }
+      }
+      return;
     }
     finally {}
   }
   
-  public static void tS(int paramInt)
+  public static void zl(int paramInt)
   {
     try
     {
-      y.i("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxingFinish: %s", new Object[] { Integer.valueOf(paramInt) });
-      meZ.remove(Integer.valueOf(paramInt));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      AppMethodBeat.i(60268);
+      try
       {
-        y.e("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxingFinish error: %s", new Object[] { localException.getMessage() });
+        ab.i("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxingFinish: %s", new Object[] { Integer.valueOf(paramInt) });
+        oFy.remove(Integer.valueOf(paramInt));
+        AppMethodBeat.o(60268);
       }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ab.e("MicroMsg.MMSightCaptureVideoRemuxStatus", "markMsgRemuxingFinish error: %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(60268);
+        }
+      }
+      return;
     }
     finally {}
   }
   
-  public static boolean tT(int paramInt)
+  public static boolean zm(int paramInt)
   {
     try
     {
-      bool = meZ.contains(Integer.valueOf(paramInt));
-      y.d("MicroMsg.MMSightCaptureVideoRemuxStatus", "isMsgRemuxing: %s, %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+      AppMethodBeat.i(60269);
+      try
+      {
+        bool = oFy.contains(Integer.valueOf(paramInt));
+        ab.d("MicroMsg.MMSightCaptureVideoRemuxStatus", "isMsgRemuxing: %s, %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+        AppMethodBeat.o(60269);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ab.e("MicroMsg.MMSightCaptureVideoRemuxStatus", "isMsgRemuxing error: %s", new Object[] { localException.getMessage() });
+          AppMethodBeat.o(60269);
+          boolean bool = false;
+        }
+      }
       return bool;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.MMSightCaptureVideoRemuxStatus", "isMsgRemuxing error: %s", new Object[] { localException.getMessage() });
-        boolean bool = false;
-      }
     }
     finally {}
   }

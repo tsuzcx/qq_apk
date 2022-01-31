@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.welab.a;
 
-import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.welab.e.a;
-import com.tencent.mm.protocal.c.atd;
-import com.tencent.mm.protocal.c.ate;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.welab.d;
+import com.tencent.mm.plugin.welab.d.a;
+import com.tencent.mm.protocal.protobuf.azg;
+import com.tencent.mm.protocal.protobuf.azh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -20,125 +19,149 @@ import java.util.Map;
 public final class b
   implements com.tencent.mm.plugin.welab.a.a.a
 {
-  private Map<String, Integer> rEw = new HashMap();
-  private String tag = "";
+  private String tag;
+  private Map<String, Integer> vuY;
   
   public b()
   {
-    chf();
+    AppMethodBeat.i(80562);
+    this.vuY = new HashMap();
+    this.tag = "";
+    AppMethodBeat.o(80562);
   }
   
-  private void chf()
+  public final boolean ajw(String paramString)
   {
-    this.tag = ((String)g.DP().Dz().get(ac.a.uww, null));
-    y.i("LabAppLifeService", "load red tag " + this.tag);
-    if (!TextUtils.isEmpty(this.tag))
+    AppMethodBeat.i(80565);
+    com.tencent.mm.plugin.welab.d.a.a locala = com.tencent.mm.plugin.welab.a.dhl().ajs(paramString);
+    paramString = new StringBuilder("isOnline ").append(paramString).append(", ");
+    if (locala.dhv()) {}
+    for (boolean bool = true;; bool = false)
     {
-      String[] arrayOfString = this.tag.split("&");
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = arrayOfString[i];
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          localObject = ((String)localObject).split("=");
-          if ((localObject != null) && (localObject.length == 2)) {
-            this.rEw.put(localObject[0], Integer.valueOf(bk.ZR(localObject[1])));
-          }
-        }
-        i += 1;
+      ab.i("LabAppLifeService", bool);
+      if (!locala.dhv()) {
+        break;
       }
-    }
-  }
-  
-  public final boolean Uj(String paramString)
-  {
-    if (com.tencent.mm.plugin.welab.b.chc().Uf(paramString).field_Switch == 2)
-    {
-      y.i("LabAppLifeService", "appid %s is open ", new Object[] { paramString });
+      AppMethodBeat.o(80565);
       return true;
     }
-    y.i("LabAppLifeService", "appid %s is close", new Object[] { paramString });
+    AppMethodBeat.o(80565);
     return false;
   }
   
-  public final boolean Uk(String paramString)
+  public final boolean ajx(String paramString)
   {
-    return (this.rEw.get(paramString) == null) || (((Integer)this.rEw.get(paramString)).intValue() == 0);
-  }
-  
-  public final boolean Ul(String paramString)
-  {
-    com.tencent.mm.plugin.welab.c.a.a locala = com.tencent.mm.plugin.welab.b.chc().Uf(paramString);
+    AppMethodBeat.i(80568);
+    com.tencent.mm.plugin.welab.d.a.a locala = com.tencent.mm.plugin.welab.a.dhl().ajs(paramString);
     paramString = new StringBuilder("hitExp ").append(paramString).append(", ");
     if (locala.isRunning()) {}
     for (boolean bool = true;; bool = false)
     {
-      y.i("LabAppLifeService", bool);
+      ab.i("LabAppLifeService", bool);
       if (!locala.isRunning()) {
         break;
       }
+      AppMethodBeat.o(80568);
       return true;
     }
+    AppMethodBeat.o(80568);
     return false;
   }
   
-  public final void br(String paramString, boolean paramBoolean)
+  public final String ajy(String paramString)
+  {
+    AppMethodBeat.i(80570);
+    paramString = com.tencent.mm.plugin.welab.a.dhl().ajs(paramString).field_WeAppUser;
+    AppMethodBeat.o(80570);
+    return paramString;
+  }
+  
+  public final int ajz(String paramString)
+  {
+    AppMethodBeat.i(80571);
+    int i = com.tencent.mm.plugin.welab.a.dhl().ajs(paramString).field_WeAppDebugMode;
+    AppMethodBeat.o(80571);
+    return i;
+  }
+  
+  public final void bR(String paramString, boolean paramBoolean)
   {
     int j = 1;
-    y.i("LabAppLifeService", "switchEntry " + paramString + "," + paramBoolean);
-    com.tencent.mm.plugin.welab.c.a.a locala = com.tencent.mm.plugin.welab.b.chc().Uf(paramString);
+    AppMethodBeat.i(80569);
+    ab.i("LabAppLifeService", "switchEntry " + paramString + "," + paramBoolean);
+    com.tencent.mm.plugin.welab.d.a.a locala = com.tencent.mm.plugin.welab.a.dhl().ajs(paramString);
     if (paramBoolean)
     {
       i = 2;
       if (locala.field_Switch != i)
       {
         locala.field_Switch = i;
-        com.tencent.mm.plugin.welab.b.chc().rEr.c(locala, new String[0]);
-        Object localObject = new ate();
-        atd localatd = new atd();
-        localatd.toJ = bk.ZR(locala.field_expId);
-        localatd.toK = locala.field_LabsAppId;
+        com.tencent.mm.plugin.welab.a.dhl().vuT.update(locala, new String[0]);
+        Object localObject = new azh();
+        azg localazg = new azg();
+        if (!locala.dhx()) {
+          break label219;
+        }
+        i = 0;
+        label112:
+        localazg.xoD = i;
+        localazg.xoE = locala.field_LabsAppId;
         if (locala.field_Switch != 2) {
-          break label206;
+          break label231;
         }
         i = j;
-        label132:
-        localatd.sYX = i;
-        ((ate)localObject).dtH.add(localatd);
-        localObject = new i.a(207, (com.tencent.mm.bv.a)localObject);
-        ((j)g.r(j.class)).Fv().b((i.b)localObject);
+        label140:
+        localazg.wzE = i;
+        ((azh)localObject).elu.add(localazg);
+        localObject = new j.a(207, (com.tencent.mm.bv.a)localObject);
+        ((j)g.E(j.class)).Yz().c((j.b)localObject);
         if (locala.field_Switch != 2) {
-          break label211;
+          break label236;
         }
       }
     }
-    label206:
-    label211:
+    label219:
+    label231:
+    label236:
     for (int i = 4;; i = 5)
     {
-      com.tencent.mm.plugin.welab.e.q(paramString, i, false);
+      d.t(paramString, i, false);
+      AppMethodBeat.o(80569);
       return;
       i = 1;
       break;
+      i = bo.apV(locala.field_expId);
+      break label112;
       i = 2;
-      break label132;
+      break label140;
     }
   }
   
   public final void open(String paramString)
   {
-    this.rEw.put(paramString, Integer.valueOf(1));
-    this.tag = (this.tag + "&" + paramString + "=1");
-    g.DP().Dz().c(ac.a.uww, this.tag);
-    com.tencent.mm.plugin.welab.c.a.a locala = com.tencent.mm.plugin.welab.b.chc().Uf(paramString);
-    e.a locala1 = new e.a();
-    locala1.bOL = paramString;
-    locala1.rEu = locala.field_expId;
+    AppMethodBeat.i(80567);
+    com.tencent.mm.plugin.welab.d.a.a locala = com.tencent.mm.plugin.welab.a.dhl().ajs(paramString);
+    d.a locala1 = new d.a();
+    locala1.cwc = paramString;
+    locala1.vuW = locala.field_expId;
     locala1.timeStamp = System.currentTimeMillis();
     locala1.action = 3;
-    com.tencent.mm.plugin.welab.e.a(locala1);
+    d.a(locala1);
+    AppMethodBeat.o(80567);
+  }
+  
+  public final boolean yi(String paramString)
+  {
+    AppMethodBeat.i(80564);
+    if (com.tencent.mm.plugin.welab.a.dhl().ajs(paramString).field_Switch == 2)
+    {
+      ab.i("LabAppLifeService", "appid %s is open ", new Object[] { paramString });
+      AppMethodBeat.o(80564);
+      return true;
+    }
+    ab.i("LabAppLifeService", "appid %s is close", new Object[] { paramString });
+    AppMethodBeat.o(80564);
+    return false;
   }
 }
 

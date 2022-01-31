@@ -1,105 +1,54 @@
 package com.tencent.mm.i;
 
-import android.content.Context;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.comm.a.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.base.h;
-
 public final class a
 {
-  public String bGw;
-  public String desc;
-  private c dkA;
-  public int showType;
-  public String url;
+  public static int MediaType_FAVORITE_FILE;
+  public static int MediaType_FAVORITE_VIDEO;
+  public static int MediaType_FILE;
+  public static int MediaType_FRIENDS = 20201;
+  public static int MediaType_FULLSIZEIMAGE;
+  public static int MediaType_IMAGE;
+  public static int MediaType_THUMBIMAGE;
+  public static int MediaType_TinyVideo;
+  public static int MediaType_VIDEO;
+  public static int ecE = 1;
+  public static int ecF = 2;
+  public static int ecG = 3;
+  public static int ecH;
+  public static int ecI;
+  public static int ecJ;
+  public static int ecK;
+  public static int ecL = 20202;
+  public static int ecM = 20301;
+  public static int ecN = 20302;
+  public static int ecO = 20304;
+  public static int ecP = 20303;
+  public static int ecQ = 20321;
+  public static int ecR = 20322;
+  public static int ecS = 30001;
+  public static int ecT = 30002;
+  public static int ecU = 30003;
+  public static int ecV = 30004;
+  public static int ecW = 30005;
+  public static int ecX = 30006;
+  public static int ecY = 50001;
+  public static int ecZ = 32768;
+  public static final int[] eda = { -5103073, -5103084, -5103081, -5103082, -5103083, -5103210 };
   
-  public static a eI(String paramString)
+  static
   {
-    paramString = c.eK(paramString);
-    if (paramString != null)
-    {
-      a locala = new a();
-      locala.dkA = paramString;
-      locala.url = paramString.url;
-      locala.desc = paramString.desc;
-      locala.showType = paramString.showType;
-      locala.bGw = paramString.bGw;
-      return locala;
-    }
-    return null;
-  }
-  
-  public final boolean a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
-  {
-    if ((this.showType == 3) || (this.showType == 4))
-    {
-      String str3 = this.dkA.dkM;
-      String str4 = this.dkA.dkN;
-      String str1 = str3;
-      String str2 = str4;
-      int i;
-      if (bk.bl(str3))
-      {
-        str1 = str3;
-        str2 = str4;
-        if (bk.bl(str4))
-        {
-          if (this.showType != 3) {
-            break label166;
-          }
-          i = a.h.app_yes;
-          str1 = paramContext.getString(i);
-          if (this.showType != 3) {
-            break label174;
-          }
-          i = a.h.app_no;
-          label100:
-          str2 = paramContext.getString(i);
-        }
-      }
-      if ((bk.bl(str1)) || (bk.bl(str2)))
-      {
-        str3 = this.desc;
-        str4 = this.bGw;
-        if (bk.bl(str1))
-        {
-          label144:
-          if (!bk.bl(str1)) {
-            break label189;
-          }
-          label152:
-          h.a(paramContext, str3, str4, str2, paramOnClickListener2);
-        }
-      }
-      for (;;)
-      {
-        return true;
-        label166:
-        i = a.h.app_ok;
-        break;
-        label174:
-        i = a.h.app_cancel;
-        break label100;
-        str2 = str1;
-        break label144;
-        label189:
-        paramOnClickListener2 = paramOnClickListener1;
-        break label152;
-        h.a(paramContext, this.desc, this.bGw, str1, str2, paramOnClickListener1, paramOnClickListener2);
-      }
-    }
-    if (this.showType == 1)
-    {
-      h.b(paramContext, this.desc, this.bGw, true);
-      return true;
-    }
-    if (this.showType == 5)
-    {
-      h.b(paramContext, this.desc, this.bGw, true);
-      return true;
-    }
-    return false;
+    MediaType_FULLSIZEIMAGE = 1;
+    MediaType_IMAGE = 2;
+    MediaType_THUMBIMAGE = 3;
+    MediaType_VIDEO = 4;
+    MediaType_FILE = 5;
+    MediaType_TinyVideo = 6;
+    ecH = 7;
+    ecI = 9;
+    ecJ = 10;
+    MediaType_FAVORITE_FILE = 10001;
+    MediaType_FAVORITE_VIDEO = 10002;
+    ecK = 10011;
   }
 }
 

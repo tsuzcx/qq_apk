@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.readerapp;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
@@ -14,21 +15,21 @@ final class PluginReaderApp$1
   
   public final void run()
   {
-    long l = ((Long)g.DP().Dz().get(ac.a.uzl, Long.valueOf(0L))).longValue();
+    AppMethodBeat.i(76739);
+    long l = ((Long)g.RL().Ru().get(ac.a.yJZ, Long.valueOf(0L))).longValue();
     if (System.currentTimeMillis() - l >= 604800000L)
     {
-      g.DQ();
-      if (bk.g((Integer)g.DP().Dz().get(15, null)) == 0) {
-        break label74;
+      g.RM();
+      if (bo.g((Integer)g.RL().Ru().get(15, null)) != 0) {}
+      for (int i = 1; i != 0; i = 0)
+      {
+        PluginReaderApp.access$000(this.pTF);
+        AppMethodBeat.o(76739);
+        return;
       }
+      g.Rc().a(138, PluginReaderApp.access$100(this.pTF));
     }
-    label74:
-    for (int i = 1; i != 0; i = 0)
-    {
-      PluginReaderApp.access$000(this.nor);
-      return;
-    }
-    g.Dk().a(138, PluginReaderApp.access$100(this.nor));
+    AppMethodBeat.o(76739);
   }
 }
 

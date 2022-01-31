@@ -1,38 +1,57 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.c;
 
-import com.tencent.mm.plugin.appbrand.appcache.b.b.b;
-import com.tencent.mm.plugin.appbrand.appcache.b.b.c;
-import com.tencent.mm.plugin.appbrand.appcache.b.b.d;
-import com.tencent.mm.plugin.appbrand.appcache.b.b.e;
-import com.tencent.mm.plugin.appbrand.appcache.b.b.f;
-import com.tencent.mm.plugin.appbrand.appcache.b.b.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public enum a
 {
-  public static final a.a fFC = new a.1();
-  public static final a.a fFD = new a.a() {};
-  public static final a.a fFE = new a.a() {};
-  public static final a.a fFF = new a.4();
+  public static final a.a gXX;
+  public static final a.a gXY;
+  public static final a.a gXZ;
+  public static final a.a gYa;
+  
+  static
+  {
+    AppMethodBeat.i(129502);
+    gXW = new a("INSTANCE");
+    gYb = new a[] { gXW };
+    gXX = new a.1();
+    gXY = new a.2();
+    gXZ = new a.3();
+    gYa = new a.4();
+    AppMethodBeat.o(129502);
+  }
   
   private a() {}
   
-  public static void s(long paramLong1, long paramLong2)
+  public static void B(long paramLong1, long paramLong2)
   {
-    if (paramLong2 < 0L) {
-      y.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    }
-    do
+    AppMethodBeat.i(129501);
+    if (paramLong2 < 0L)
     {
+      ab.e("MicroMsg.AppBrand.PredownloadReporter", "idkeyStat with invalid ID(%d), key (%d)", new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      AppMethodBeat.o(129501);
       return;
-      if (paramLong1 > 0L)
-      {
-        com.tencent.mm.plugin.report.service.h.nFQ.h(paramLong1, paramLong2, 1L);
-        com.tencent.mm.plugin.report.service.h.nFQ.f(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-      }
-    } while (843L == paramLong1);
-    com.tencent.mm.plugin.report.service.h.nFQ.h(843L, paramLong2, 1L);
-    com.tencent.mm.plugin.report.service.h.nFQ.f(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
+    }
+    if (paramLong1 > 0L)
+    {
+      h.qsU.j(paramLong1, paramLong2, 1L);
+      h.qsU.e(15272, new Object[] { Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    }
+    if (843L != paramLong1)
+    {
+      h.qsU.j(843L, paramLong2, 1L);
+      h.qsU.e(15272, new Object[] { Integer.valueOf(843), Long.valueOf(paramLong2) });
+    }
+    AppMethodBeat.o(129501);
+  }
+  
+  public static void cT(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(156894);
+    B(paramInt1, paramInt2);
+    AppMethodBeat.o(156894);
   }
 }
 

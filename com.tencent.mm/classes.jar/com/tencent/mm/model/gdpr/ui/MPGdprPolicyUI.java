@@ -1,6 +1,7 @@
 package com.tencent.mm.model.gdpr.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.ResultReceiver;
@@ -8,22 +9,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.u.q;
-import com.tencent.mm.plugin.appbrand.u.q.a;
-import com.tencent.mm.plugin.m.a.b;
+import com.tencent.mm.plugin.appbrand.s.q;
+import com.tencent.mm.plugin.appbrand.s.q.a;
+import com.tencent.mm.plugin.webview.ui.tools.widget.a.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.c;
 import com.tencent.mm.plugin.webview.ui.tools.widget.c.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.f;
 import com.tencent.mm.plugin.webview.ui.tools.widget.f.a;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMFalseProgressBar;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.n;
+import com.tencent.xweb.t;
 import java.io.File;
 import java.util.Locale;
 
@@ -31,149 +32,174 @@ import java.util.Locale;
 public class MPGdprPolicyUI
   extends MMActivity
 {
-  private MMFalseProgressBar dYE;
-  private MMWebView dYF;
-  private com.tencent.mm.model.gdpr.a dYG;
-  private ResultReceiver dYH;
+  private MMFalseProgressBar foI;
+  private MMWebView foJ;
+  private com.tencent.mm.model.gdpr.a foK;
+  private ResultReceiver foL;
   private String mAppID;
   
-  private void bI(boolean paramBoolean)
+  private void cK(boolean paramBoolean)
   {
+    AppMethodBeat.i(1506);
     ResultReceiver localResultReceiver;
-    if (this.dYH != null)
+    if (this.foL != null)
     {
-      localResultReceiver = this.dYH;
+      localResultReceiver = this.foL;
       if (!paramBoolean) {
-        break label25;
+        break label37;
       }
     }
-    label25:
+    label37:
     for (int i = 1;; i = -1)
     {
       localResultReceiver.send(i, null);
+      AppMethodBeat.o(1506);
       return;
     }
   }
   
   @SuppressLint({"SetJavaScriptEnabled", "InlinedApi"})
-  protected final void dealContentView(View paramView)
+  public void dealContentView(View paramView)
   {
+    AppMethodBeat.i(1508);
     super.dealContentView(paramView);
-    this.dYF = f.a.rBZ.cO(this);
-    this.dYF.getSettings().cSs();
-    this.dYF.getSettings().setJavaScriptEnabled(true);
-    this.dYF.getSettings().setMediaPlaybackRequiresUserGesture(false);
-    this.dYF.getSettings().cSu();
-    this.dYF.getSettings().setUserAgentString(q.a(this.mController.uMN, this.dYF.getSettings().getUserAgentString(), (q.a)com.tencent.luggage.b.e.i(q.a.class)));
-    this.dYF.getView().setHorizontalScrollBarEnabled(false);
-    this.dYF.getView().setVerticalScrollBarEnabled(false);
-    this.dYF.getSettings().setBuiltInZoomControls(true);
-    this.dYF.getSettings().setUseWideViewPort(true);
-    this.dYF.getSettings().setLoadWithOverviewMode(true);
-    this.dYF.getSettings().cSn();
-    this.dYF.getSettings().cSm();
-    this.dYF.getSettings().setGeolocationEnabled(true);
-    this.dYF.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-    this.dYF.getSettings().cSq();
-    this.dYF.getSettings().setAppCachePath(this.mController.uMN.getDir("webviewcache", 0).getAbsolutePath());
-    this.dYF.getSettings().cSp();
-    this.dYF.getSettings().cSr();
-    this.dYF.getSettings().setDatabasePath(com.tencent.mm.compatible.util.e.dOO + "databases/");
+    this.foJ = f.a.vsl.dz(this);
+    this.foJ.getSettings().dYx();
+    this.foJ.getSettings().setJavaScriptEnabled(true);
+    this.foJ.getSettings().setMediaPlaybackRequiresUserGesture(false);
+    this.foJ.getSettings().dYz();
+    this.foJ.getSettings().setUserAgentString(q.a(getContext(), this.foJ.getSettings().getUserAgentString(), (q.a)com.tencent.luggage.a.e.q(q.a.class)));
+    this.foJ.getView().setHorizontalScrollBarEnabled(false);
+    this.foJ.getView().setVerticalScrollBarEnabled(false);
+    this.foJ.getSettings().setBuiltInZoomControls(true);
+    this.foJ.getSettings().setUseWideViewPort(true);
+    this.foJ.getSettings().setLoadWithOverviewMode(true);
+    this.foJ.getSettings().dYs();
+    this.foJ.getSettings().dYr();
+    this.foJ.getSettings().setGeolocationEnabled(true);
+    this.foJ.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    this.foJ.getSettings().dYv();
+    this.foJ.getSettings().setAppCachePath(getContext().getDir("webviewcache", 0).getAbsolutePath());
+    this.foJ.getSettings().dYu();
+    this.foJ.getSettings().dYw();
+    this.foJ.getSettings().setDatabasePath(com.tencent.mm.compatible.util.e.eQu + "databases/");
     Bundle localBundle = new Bundle(1);
     localBundle.putBoolean("KInitialParam_Force_wcPrivacyPolicyResult_DoInService", true);
-    this.dYF.setWebViewClient(c.a.rBY.a(this.dYF, new MPGdprPolicyUI.1(this), localBundle));
-    this.dYF.setWebChromeClient(com.tencent.mm.plugin.webview.ui.tools.widget.a.a.rBX.a(this.dYF, new MPGdprPolicyUI.2(this)));
-    ((FrameLayout)paramView).addView(this.dYF, -1, -1);
-    this.dYE = new MMFalseProgressBar(this);
-    this.dYE.setProgressDrawable(com.tencent.mm.cb.a.g(this, com.tencent.mm.plugin.m.a.a.mm_webview_progress_horizontal));
-    ((FrameLayout)paramView).addView(this.dYE, -1, com.tencent.mm.cb.a.fromDPToPix(this, 3));
+    this.foJ.setWebViewClient(c.a.vsk.a(this.foJ, new MPGdprPolicyUI.1(this), localBundle));
+    this.foJ.setWebChromeClient(a.a.vsj.a(this.foJ, new MPGdprPolicyUI.2(this)));
+    ((FrameLayout)paramView).addView(this.foJ, -1, -1);
+    this.foI = new MMFalseProgressBar(this);
+    this.foI.setProgressDrawable(com.tencent.mm.cb.a.k(this, 2130839677));
+    ((FrameLayout)paramView).addView(this.foI, -1, com.tencent.mm.cb.a.fromDPToPix(this, 3));
+    AppMethodBeat.o(1508);
   }
   
   public void finish()
   {
+    AppMethodBeat.i(1507);
     super.finish();
-    if (this.dYH != null)
+    if (this.foL != null)
     {
-      bI(false);
-      this.dYH = null;
+      cK(false);
+      this.foL = null;
     }
+    AppMethodBeat.o(1507);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
     return -1;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(1505);
     super.onCreate(paramBundle);
     try
     {
       if (getIntent() != null)
       {
         paramBundle = (ResultReceiver)getIntent().getParcelableExtra("MPGdprPolicyUI_KEY_RECEIVER");
-        this.dYH = paramBundle;
+        this.foL = paramBundle;
         if (paramBundle != null) {}
       }
       else
       {
         finish();
+        AppMethodBeat.o(1505);
         return;
       }
     }
     catch (Exception paramBundle)
     {
-      y.e("MicroMsg.MPGdprPolicyUI", "onCreate get receiver ex = %s", new Object[] { paramBundle });
+      ab.e("MicroMsg.MPGdprPolicyUI", "onCreate get receiver ex = %s", new Object[] { paramBundle });
       finish();
+      AppMethodBeat.o(1505);
       return;
     }
-    this.dYG = com.tencent.mm.model.gdpr.a.jg(getIntent().getStringExtra("MPGdprPolicyUI_KEY_BUSINESS"));
-    if (this.dYG == null)
+    this.foK = com.tencent.mm.model.gdpr.a.pU(getIntent().getStringExtra("MPGdprPolicyUI_KEY_BUSINESS"));
+    if (this.foK == null)
     {
-      y.e("MicroMsg.MPGdprPolicyUI", "onCreate get empty business");
-      bI(false);
+      ab.e("MicroMsg.MPGdprPolicyUI", "onCreate get empty business");
+      cK(false);
       finish();
+      AppMethodBeat.o(1505);
       return;
     }
     this.mAppID = getIntent().getStringExtra("MPGdprPolicyUI_KEY_APPID");
+    AppMethodBeat.o(1505);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(1510);
     super.onDestroy();
     try
     {
-      this.dYF.destroy();
+      this.foJ.destroy();
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.MPGdprPolicyUI", "destroy WebView e = %s", new Object[] { localException });
+      ab.e("MicroMsg.MPGdprPolicyUI", "destroy WebView e = %s", new Object[] { localException });
       return;
     }
     finally
     {
-      this.dYF = null;
+      this.foJ = null;
+      AppMethodBeat.o(1510);
     }
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (this.dYF.canGoBack()))
+    AppMethodBeat.i(1511);
+    if ((paramInt == 4) && (this.foJ.canGoBack()))
     {
-      this.dYF.goBack();
+      this.foJ.goBack();
+      AppMethodBeat.o(1511);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(1511);
+    return bool;
   }
   
-  protected void onPostCreate(Bundle paramBundle)
+  public void onPostCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(1509);
     super.onPostCreate(paramBundle);
-    setBackBtn(new MPGdprPolicyUI.3(this), a.b.actionbar_icon_dark_close);
-    ta(-1);
-    paramBundle = String.format(Locale.US, "https://weixin.qq.com/cgi-bin/newreadtemplate?t=gdpr/confirm&business=%s&lang=%s&cc=%s", new Object[] { this.dYG.dYw, x.fB(this), (String)g.DP().Dz().get(274436, null) });
-    this.dYF.loadUrl(paramBundle);
+    setBackBtn(new MPGdprPolicyUI.3(this), 2131230739);
+    setActionbarColor(-1);
+    paramBundle = String.format(Locale.US, "https://weixin.qq.com/cgi-bin/newreadtemplate?t=gdpr/confirm&business=%s&lang=%s&cc=%s", new Object[] { this.foK.foB, aa.gP(this), (String)g.RL().Ru().get(274436, null) });
+    this.foJ.loadUrl(paramBundle);
+    AppMethodBeat.o(1509);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

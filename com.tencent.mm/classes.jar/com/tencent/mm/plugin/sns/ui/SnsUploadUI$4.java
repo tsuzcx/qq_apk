@@ -1,15 +1,32 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.compatible.util.j;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.normsg.a.b;
 
 final class SnsUploadUI$4
-  implements Runnable
+  implements View.OnTouchListener
 {
-  SnsUploadUI$4(SnsUploadUI paramSnsUploadUI) {}
+  SnsUploadUI$4(SnsUploadUI paramSnsUploadUI, boolean[] paramArrayOfBoolean) {}
   
-  public final void run()
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    j.p(this.pjp);
+    AppMethodBeat.i(145654);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(145654);
+      return false;
+      this.gFg[0] = true;
+      b.pgQ.fD("ce_sns_upload", "<SnsUpload>");
+      continue;
+      b.pgQ.a("ce_sns_upload", paramMotionEvent);
+      b.pgQ.Wa("ce_sns_upload");
+    }
   }
 }
 

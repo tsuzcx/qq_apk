@@ -2,9 +2,9 @@ package com.tencent.mm.ui.base;
 
 public abstract interface MMViewPager$b
 {
-  public abstract void X(float paramFloat1, float paramFloat2);
+  public abstract void ae(float paramFloat1, float paramFloat2);
   
-  public abstract void Y(float paramFloat1, float paramFloat2);
+  public abstract void af(float paramFloat1, float paramFloat2);
 }
 
 

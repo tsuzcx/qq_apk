@@ -2,8 +2,8 @@ package com.google.android.exoplayer2.a;
 
 public final class b$a
 {
-  int avS = 0;
-  int avT = 1;
+  int ayi = 0;
+  int ayj = 1;
   int flags = 0;
 }
 

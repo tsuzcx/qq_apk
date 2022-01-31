@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.emoji;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PreViewEmojiView
   extends MMEmojiView
@@ -20,10 +21,12 @@ public class PreViewEmojiView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(62488);
     super.onMeasure(paramInt1, paramInt2);
     if (this.mSize > 0) {
       setMeasuredDimension(this.mSize, this.mSize);
     }
+    AppMethodBeat.o(62488);
   }
   
   public void setSize(int paramInt)

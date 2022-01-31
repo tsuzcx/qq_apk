@@ -1,29 +1,26 @@
 package com.tencent.mm.d.a;
 
-import com.eclipsesource.v8.V8Object;
-
-final class d
-  extends c
+abstract interface d
 {
-  a byZ;
+  public abstract boolean Cl();
   
-  d(a parama)
-  {
-    this.byZ = parama;
-  }
+  public abstract void a(d.a parama);
   
-  protected final void a(b paramb, V8Object paramV8Object)
-  {
-    paramV8Object.registerJavaMethod(new d.1(this), "getNativeBufferId");
-    paramV8Object.registerJavaMethod(new d.2(this, paramb), "getNativeBuffer");
-    paramV8Object.registerJavaMethod(new d.3(this), "setNativeBuffer");
-  }
+  public abstract void g(Runnable paramRunnable, long paramLong);
   
-  public final void cleanup() {}
+  public abstract void loop();
+  
+  public abstract void m(Runnable paramRunnable);
+  
+  public abstract void pause();
+  
+  public abstract void quit();
+  
+  public abstract void resume();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.d.a.d
  * JD-Core Version:    0.7.0.1
  */

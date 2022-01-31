@@ -1,21 +1,20 @@
 package com.tencent.mm.bf;
 
-import com.tencent.mm.protocal.c.bxc;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 
-public abstract interface b
+public final class b
 {
-  public abstract boolean RF();
-  
-  public abstract void a(a parama);
-  
-  public abstract void a(String paramString1, LinkedList<bxc> paramLinkedList, String paramString2, String paramString3, int paramInt);
-  
-  public abstract void b(a parama);
-  
-  public abstract LinkedList<bxc> nw(String paramString);
-  
-  public abstract boolean nx(String paramString);
+  public static String aki()
+  {
+    AppMethodBeat.i(116538);
+    Object localObject = new StringBuilder();
+    g.RM();
+    localObject = g.RL().eHR + "speextemp/";
+    AppMethodBeat.o(116538);
+    return localObject;
+  }
 }
 
 

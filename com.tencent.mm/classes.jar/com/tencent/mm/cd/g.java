@@ -1,64 +1,97 @@
 package com.tencent.mm.cd;
 
 import android.text.SpannableString;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.d.d;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class g
   implements d
 {
-  private static g ult;
-  private int uls = 300;
+  private static g yuX;
+  private int yuW = 300;
   
-  public static g csM()
+  public static g dvk()
   {
-    if (ult == null) {
-      ult = new g();
+    AppMethodBeat.i(62691);
+    if (yuX == null) {
+      yuX = new g();
     }
-    return ult;
+    g localg = yuX;
+    AppMethodBeat.o(62691);
+    return localg;
   }
   
-  public final SpannableString a(CharSequence paramCharSequence, float paramFloat)
+  private SpannableString q(CharSequence paramCharSequence, int paramInt)
   {
-    if ((paramCharSequence == null) || (bk.bl(paramCharSequence.toString()))) {
-      return new SpannableString("");
-    }
-    return g(paramCharSequence, (int)paramFloat);
-  }
-  
-  public final SpannableString g(CharSequence paramCharSequence, int paramInt)
-  {
-    if ((paramCharSequence == null) || (bk.bl(paramCharSequence.toString()))) {
-      return new SpannableString("");
-    }
-    if ((paramCharSequence == null) || (bk.bl(paramCharSequence.toString()))) {
-      return new SpannableString("");
+    AppMethodBeat.i(62694);
+    if ((paramCharSequence == null) || (bo.isNullOrNil(paramCharSequence.toString())))
+    {
+      paramCharSequence = new SpannableString("");
+      AppMethodBeat.o(62694);
+      return paramCharSequence;
     }
     if ((paramCharSequence instanceof SpannableString)) {}
     for (paramCharSequence = (SpannableString)paramCharSequence;; paramCharSequence = new SpannableString(paramCharSequence))
     {
       PInt localPInt = new PInt();
-      localPInt.value = this.uls;
-      paramCharSequence = b.csC().a(paramCharSequence, paramInt, localPInt);
-      return f.csI().b(paramCharSequence, paramInt, localPInt.value);
+      localPInt.value = this.yuW;
+      paramCharSequence = b.duW().a(paramCharSequence, paramInt, localPInt);
+      paramCharSequence = f.dvf().b(paramCharSequence, paramInt, localPInt.value);
+      AppMethodBeat.o(62694);
+      return paramCharSequence;
     }
   }
   
-  public final boolean v(CharSequence paramCharSequence)
+  public final boolean E(CharSequence paramCharSequence)
   {
-    b.csC();
-    return b.aas(paramCharSequence.toString());
+    AppMethodBeat.i(62696);
+    b.duW();
+    boolean bool = b.aqB(paramCharSequence.toString());
+    AppMethodBeat.o(62696);
+    return bool;
   }
   
-  public final boolean w(CharSequence paramCharSequence)
+  public final boolean F(CharSequence paramCharSequence)
   {
-    return f.csI().aau(paramCharSequence.toString()) != null;
+    AppMethodBeat.i(62695);
+    boolean bool = f.dvf().aqD(paramCharSequence.toString());
+    AppMethodBeat.o(62695);
+    return bool;
+  }
+  
+  public final SpannableString b(CharSequence paramCharSequence, float paramFloat)
+  {
+    AppMethodBeat.i(62693);
+    if ((paramCharSequence == null) || (bo.isNullOrNil(paramCharSequence.toString())))
+    {
+      paramCharSequence = new SpannableString("");
+      AppMethodBeat.o(62693);
+      return paramCharSequence;
+    }
+    paramCharSequence = p(paramCharSequence, (int)paramFloat);
+    AppMethodBeat.o(62693);
+    return paramCharSequence;
+  }
+  
+  public final SpannableString p(CharSequence paramCharSequence, int paramInt)
+  {
+    AppMethodBeat.i(62692);
+    if ((paramCharSequence == null) || (bo.isNullOrNil(paramCharSequence.toString())))
+    {
+      paramCharSequence = new SpannableString("");
+      AppMethodBeat.o(62692);
+      return paramCharSequence;
+    }
+    paramCharSequence = q(paramCharSequence, paramInt);
+    AppMethodBeat.o(62692);
+    return paramCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cd.g
  * JD-Core Version:    0.7.0.1
  */

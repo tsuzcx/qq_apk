@@ -12,10 +12,11 @@ public class TXCStreamDownloader$DownloadStats
   public long firstVideoTS;
   public String serverIP;
   public long startTS;
+  public long videoGop;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamDownloader.DownloadStats
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,47 @@
 package com.tencent.mm.ui.contact;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.j;
-import android.support.v4.app.o;
+import android.support.v4.app.g;
+import android.support.v4.app.k;
 import android.view.MenuItem;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.animation.AnimationUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.x;
+import com.tencent.mm.ui.MMFragment;
 
 public class OpenIMAddressUI
   extends MMActivity
 {
-  public x vIR;
+  public MMFragment Aan;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.open_im_address_ui;
+    return 2130970391;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(33800);
     super.onCreate(paramBundle);
     paramBundle = getSupportFragmentManager();
-    if (paramBundle.Z(16908290) == null)
+    if (paramBundle.findFragmentById(16908290) == null)
     {
-      this.vIR = new OpenIMAddressUI.a();
-      this.vIR.setArguments(getIntent().getExtras());
-      paramBundle.bP().a(R.h.inner_content, this.vIR).commit();
+      this.Aan = new OpenIMAddressUI.OpenIMAddressUIFragment();
+      this.Aan.setArguments(getIntent().getExtras());
+      paramBundle.beginTransaction().a(2131826641, this.Aan).commit();
     }
+    AppMethodBeat.o(33800);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

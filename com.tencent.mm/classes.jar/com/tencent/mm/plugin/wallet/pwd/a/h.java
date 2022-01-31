@@ -1,47 +1,55 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
-import java.util.Map;
 import org.json.JSONObject;
 
 public final class h
-  extends j
+  extends m
 {
   public h(String paramString1, String paramString2)
   {
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    localHashMap1.put("resetpwd_token", paramString2);
-    localHashMap1.put("passwd", paramString1);
-    D(localHashMap1);
-    aC(localHashMap2);
+    AppMethodBeat.i(46176);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("auth_token", paramString1);
+    localHashMap.put("passwd", String.valueOf(paramString2));
+    localHashMap.put("timestamp", System.currentTimeMillis());
+    setRequestData(localHashMap);
+    AppMethodBeat.o(46176);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1371;
+    return 2514;
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final int getTenpayCgicmd()
   {
-    y.d("MicroMsg.NetSceneTenpayResetPwdByToken", " json %s", new Object[] { paramJSONObject.toString() });
-  }
-  
-  public final int aEC()
-  {
-    return 1371;
+    return 2514;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/resetpwdbytoken";
+    return "/cgi-bin/mmpay-bin/resetpaypwdbyface";
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(46177);
+    d.i("MicroMsg.NetSceneResetPayPwdByFace", "onGYNetEnd, errCode: %s, errMsg: %s, json: %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+    if (paramInt == 0)
+    {
+      paramJSONObject.optString("retcode");
+      paramJSONObject.optString("retmsg");
+    }
+    AppMethodBeat.o(46177);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.h
  * JD-Core Version:    0.7.0.1
  */

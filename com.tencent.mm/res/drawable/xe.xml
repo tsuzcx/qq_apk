@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle" android:useLevel="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@color/zm" />
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/cp" />
-            <corners android:topLeftRadius="0.0dip" android:topRightRadius="@dimen/f4" android:bottomLeftRadius="0.0dip" android:bottomRightRadius="@dimen/f4" />
-        </shape>
-    </item>
-    <item android:drawable="@color/zm" />
-</selector>
+    <solid android:color="@color/cv" />
+    <corners android:radius="9.0dip" />
+    <padding android:left="7.0dip" android:right="7.0dip" />
+    <size android:height="18.0dip" />
+</shape>

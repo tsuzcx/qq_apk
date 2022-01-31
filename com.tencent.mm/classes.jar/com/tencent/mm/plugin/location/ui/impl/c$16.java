@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.location.ui.impl;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 
 final class c$16
@@ -11,13 +12,15 @@ final class c$16
   
   public final void onClick(View paramView)
   {
-    if (!c.q(this.lJp)) {
-      c.u(this.lJp);
+    AppMethodBeat.i(113612);
+    if (!c.q(this.ogD)) {
+      c.u(this.ogD);
     }
-    c.v(this.lJp).clean();
-    c.w(this.lJp).setAdapter(c.v(this.lJp));
-    c.v(this.lJp).notifyDataSetChanged();
-    c.x(this.lJp).setVisibility(8);
+    c.v(this.ogD).clean();
+    c.w(this.ogD).setAdapter(c.v(this.ogD));
+    c.v(this.ogD).notifyDataSetChanged();
+    c.x(this.ogD).setVisibility(8);
+    AppMethodBeat.o(113612);
   }
 }
 

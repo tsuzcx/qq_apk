@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qmessage.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -14,23 +15,19 @@ import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.c.agq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.protocal.protobuf.all;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.bd;
@@ -38,7 +35,6 @@ import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 import java.util.Iterator;
 import java.util.List;
 import junit.framework.Assert;
@@ -48,21 +44,33 @@ public class QConversationUI
   implements f
 {
   private TextView emptyTipTv;
-  private n.d hZq = new QConversationUI.5(this);
-  private boolean isDeleteCancel = false;
-  private ad jgl;
-  private boolean mbA = false;
-  private ListView ncM;
-  private c ncN;
-  private com.tencent.mm.plugin.qmessage.a.c ncO;
-  private boolean ncP = false;
-  private String ncQ;
-  private String ncR;
-  private boolean ncS = false;
-  private String ncT;
+  private boolean isDeleteCancel;
+  private n.d jSn;
+  private ad lpe;
+  private boolean oCb;
+  private ListView pIe;
+  private c pIf;
+  private com.tencent.mm.plugin.qmessage.a.c pIg;
+  private boolean pIh;
+  private String pIi;
+  private String pIj;
+  private boolean pIk;
+  private String pIl;
   
-  private static String aF(Context paramContext, String paramString)
+  public QConversationUI()
   {
+    AppMethodBeat.i(24140);
+    this.oCb = false;
+    this.pIh = false;
+    this.pIk = false;
+    this.isDeleteCancel = false;
+    this.jSn = new QConversationUI.5(this);
+    AppMethodBeat.o(24140);
+  }
+  
+  private static String aO(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(24147);
     paramContext = paramContext.getPackageManager();
     try
     {
@@ -71,220 +79,265 @@ public class QConversationUI
       localIntent.addCategory("android.intent.category.LAUNCHER");
       localIntent.setPackage(paramString.packageName);
       paramContext = (ResolveInfo)paramContext.queryIntentActivities(localIntent, 0).iterator().next();
-      if (paramContext != null)
-      {
-        paramContext = paramContext.activityInfo.name;
-        return paramContext;
+      if (paramContext == null) {
+        break label99;
       }
+      paramContext = paramContext.activityInfo.name;
     }
     catch (Exception paramContext)
     {
-      y.printErrStackTrace("MicroMsg.QConversationUI", paramContext, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.QConversationUI", paramContext, "", new Object[0]);
+        paramContext = null;
+      }
     }
-    return null;
+    AppMethodBeat.o(24147);
+    return paramContext;
   }
   
-  private static void btn()
+  private void cdA()
   {
-    au.Hx();
-    Object localObject = com.tencent.mm.model.c.Fy().tE(2);
-    if ((localObject != null) && (((cs)localObject).field_msgId > 0L))
+    AppMethodBeat.i(24149);
+    removeAllOptionMenu();
+    cdz();
+    addIconOptionMenu(2, 2131296404, 2131230758, new QConversationUI.2(this));
+    AppMethodBeat.o(24149);
+  }
+  
+  private static void cdy()
+  {
+    AppMethodBeat.i(24144);
+    aw.aaz();
+    Object localObject = com.tencent.mm.model.c.YC().yU(2);
+    if ((localObject != null) && (((dd)localObject).field_msgId > 0L))
     {
-      y.d("MicroMsg.QConversationUI", "resetUnread: lastReadTime = " + ((cs)localObject).field_createTime);
-      au.Hx();
-      com.tencent.mm.model.c.Dz().o(12295, Long.valueOf(((cs)localObject).field_createTime));
+      ab.d("MicroMsg.QConversationUI", "resetUnread: lastReadTime = " + ((dd)localObject).field_createTime);
+      aw.aaz();
+      com.tencent.mm.model.c.Ru().set(12295, Long.valueOf(((dd)localObject).field_createTime));
     }
-    au.Hx();
-    localObject = com.tencent.mm.model.c.FB().abv("qmessage");
-    if ((localObject == null) || (bk.pm(((as)localObject).field_username).length() <= 0)) {
-      y.e("MicroMsg.QConversationUI", "resetUnread: can not find QMessage");
-    }
-    do
+    aw.aaz();
+    localObject = com.tencent.mm.model.c.YF().arH("qmessage");
+    if ((localObject == null) || (bo.nullAsNil(((au)localObject).field_username).length() <= 0))
     {
+      ab.e("MicroMsg.QConversationUI", "resetUnread: can not find QMessage");
+      AppMethodBeat.o(24144);
       return;
-      ((ak)localObject).fy(0);
-      au.Hx();
-    } while (com.tencent.mm.model.c.FB().a((ak)localObject, ((as)localObject).field_username) != -1);
-    y.e("MicroMsg.QConversationUI", "reset qmessage unread failed");
+    }
+    ((ak)localObject).hJ(0);
+    aw.aaz();
+    if (com.tencent.mm.model.c.YF().a((ak)localObject, ((au)localObject).field_username) == -1) {
+      ab.e("MicroMsg.QConversationUI", "reset qmessage unread failed");
+    }
+    AppMethodBeat.o(24144);
   }
   
-  private void bto()
+  private void cdz()
   {
-    this.mController.removeAllOptionMenu();
-    if (!bk.bl(this.ncQ))
+    AppMethodBeat.i(24148);
+    if (bo.isNullOrNil(this.pIi))
     {
-      this.ncP = true;
-      addIconOptionMenu(0, R.l.actionbar_open_qq, R.k.qq, new QConversationUI.13(this));
+      AppMethodBeat.o(24148);
+      return;
     }
-    addIconOptionMenu(2, R.l.actionbar_setting, R.k.actionbar_setting_icon, new QConversationUI.2(this));
+    this.pIh = true;
+    addIconOptionMenu(0, 2131296401, 2131231888, new QConversationUI.13(this));
+    AppMethodBeat.o(24148);
   }
   
   private void goBack()
   {
-    if (this.mbA)
+    AppMethodBeat.i(24154);
+    if (this.oCb)
     {
       finish();
+      AppMethodBeat.o(24154);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.addFlags(67108864);
-    com.tencent.mm.plugin.qmessage.a.eUR.q(localIntent, this);
-    overridePendingTransition(R.a.anim_not_change, R.a.pop_out);
+    com.tencent.mm.plugin.qmessage.a.gmO.p(localIntent, this);
+    overridePendingTransition(2131034130, 2131034222);
+    AppMethodBeat.o(24154);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.tmessage;
+    return 2130971000;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.mbA = getIntent().getBooleanExtra("finish_direct", false);
-    y.d("MicroMsg.QConversationUI", "isFromSearch  " + this.mbA);
-    au.Hx();
-    this.jgl = com.tencent.mm.model.c.Fw().abl("qmessage");
-    if ((this.jgl != null) && ((int)this.jgl.dBe > 0)) {}
+    AppMethodBeat.i(24146);
+    this.oCb = getIntent().getBooleanExtra("finish_direct", false);
+    ab.d("MicroMsg.QConversationUI", "isFromSearch  " + this.oCb);
+    aw.aaz();
+    this.lpe = com.tencent.mm.model.c.YA().arw("qmessage");
+    if ((this.lpe != null) && ((int)this.lpe.euF > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("can not find qmessage", bool);
-      this.ncM = ((ListView)findViewById(R.h.tmessage_lv));
-      this.emptyTipTv = ((TextView)findViewById(R.h.empty_msg_tip_tv));
-      this.emptyTipTv.setText(R.l.empty_qmsg_tip);
-      this.ncN = new c(this, new QConversationUI.1(this));
-      this.ncN.setGetViewPositionCallback(new QConversationUI.6(this));
-      this.ncN.setPerformItemClickListener(new QConversationUI.7(this));
-      this.ncN.a(new QConversationUI.8(this));
-      this.ncM.setAdapter(this.ncN);
-      this.ncM.setOnItemClickListener(new QConversationUI.9(this));
-      com.tencent.mm.ui.widget.b.a locala = new com.tencent.mm.ui.widget.b.a(this);
-      this.ncM.setOnItemLongClickListener(new QConversationUI.10(this, locala));
-      com.tencent.mm.plugin.qmessage.a.ncr.es(1010);
+      this.pIe = ((ListView)findViewById(2131823736));
+      this.emptyTipTv = ((TextView)findViewById(2131821852));
+      this.emptyTipTv.setText(2131299294);
+      this.pIf = new c(this, new QConversationUI.1(this));
+      this.pIf.setGetViewPositionCallback(new QConversationUI.6(this));
+      this.pIf.setPerformItemClickListener(new QConversationUI.7(this));
+      this.pIf.a(new QConversationUI.8(this));
+      this.pIe.setAdapter(this.pIf);
+      this.pIe.setOnItemClickListener(new QConversationUI.9(this));
+      com.tencent.mm.ui.widget.c.a locala = new com.tencent.mm.ui.widget.c.a(this);
+      this.pIe.setOnItemLongClickListener(new QConversationUI.10(this, locala));
+      com.tencent.mm.plugin.qmessage.a.pHJ.gf(1010);
       setBackBtn(new QConversationUI.11(this));
-      new QConversationUI.12(this);
-      au.Hx();
-      this.ncQ = ((String)com.tencent.mm.model.c.Dz().get(77, ""));
-      au.Hx();
-      this.ncR = ((String)com.tencent.mm.model.c.Dz().get(78, ""));
-      if (this.ncO == null)
+      setToTop(new QConversationUI.12(this));
+      aw.aaz();
+      this.pIi = ((String)com.tencent.mm.model.c.Ru().get(77, ""));
+      aw.aaz();
+      this.pIj = ((String)com.tencent.mm.model.c.Ru().get(78, ""));
+      if (this.pIg == null)
       {
-        this.ncO = new com.tencent.mm.plugin.qmessage.a.c();
-        au.Dk().a(this.ncO.getType(), this);
+        this.pIg = new com.tencent.mm.plugin.qmessage.a.c();
+        aw.Rc().a(this.pIg.getType(), this);
       }
-      au.Dk().a(this.ncO, 0);
-      bto();
-      com.tencent.mm.plugin.qmessage.a.ncr.es(1010);
+      aw.Rc().a(this.pIg, 0);
+      cdA();
+      com.tencent.mm.plugin.qmessage.a.pHJ.gf(1010);
+      AppMethodBeat.o(24146);
       return;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(24141);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(24141);
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(24155);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    paramView = (ak)this.ncN.getItem(paramView.position);
-    au.Hx();
-    paramContextMenu.setHeaderTitle(com.tencent.mm.model.c.Fw().abl(paramView.field_username).Bq());
-    paramContextMenu.add(0, 0, 0, R.l.main_delete);
-    this.ncT = paramView.field_username;
+    paramView = (ak)this.pIf.getItem(paramView.position);
+    aw.aaz();
+    paramContextMenu.setHeaderTitle(com.tencent.mm.model.c.YA().arw(paramView.field_username).Of());
+    paramContextMenu.add(0, 0, 0, 2131301410);
+    this.pIl = paramView.field_username;
+    AppMethodBeat.o(24155);
   }
   
   public void onDestroy()
   {
-    this.ncN.bcS();
-    if (this.ncO != null)
+    AppMethodBeat.i(24142);
+    this.pIf.bKb();
+    if (this.pIg != null)
     {
-      au.Dk().c(this.ncO);
-      au.Dk().b(this.ncO.getType(), this);
-      this.ncO = null;
+      aw.Rc().a(this.pIg);
+      aw.Rc().b(this.pIg.getType(), this);
+      this.pIg = null;
     }
     super.onDestroy();
+    AppMethodBeat.o(24142);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(24153);
     if (paramInt == 4)
     {
       goBack();
+      AppMethodBeat.o(24153);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(24153);
+    return bool;
   }
   
   public void onPause()
   {
-    y.v("MicroMsg.QConversationUI", "on pause");
-    au.Hx();
-    com.tencent.mm.model.c.FB().b(this.ncN);
-    btn();
-    this.ncN.onPause();
+    AppMethodBeat.i(24145);
+    ab.v("MicroMsg.QConversationUI", "on pause");
+    aw.aaz();
+    com.tencent.mm.model.c.YF().b(this.pIf);
+    cdy();
+    this.pIf.onPause();
     super.onPause();
+    AppMethodBeat.o(24145);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(24143);
     super.onResume();
-    btn();
-    au.Hx();
-    com.tencent.mm.model.c.FB().a(this.ncN);
-    this.ncN.a(null, null);
+    cdy();
+    aw.aaz();
+    com.tencent.mm.model.c.YF().a(this.pIf);
+    this.pIf.a(null, null);
+    AppMethodBeat.o(24143);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
     Object localObject2 = null;
-    y.d("MicroMsg.QConversationUI", "on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(24156);
+    ab.d("MicroMsg.QConversationUI", "on scene end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     switch (paramm.getType())
     {
     }
     do
     {
+      AppMethodBeat.o(24156);
       return;
     } while ((paramInt1 != 0) || (paramInt2 != 0));
     Object localObject3 = (com.tencent.mm.plugin.qmessage.a.c)paramm;
-    if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).eDB != null)
+    if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).fTs != null)
     {
-      paramString = (agq)((com.tencent.mm.plugin.qmessage.a.c)localObject3).eDB.ecF.ecN;
+      paramString = (all)((com.tencent.mm.plugin.qmessage.a.c)localObject3).fTs.fsW.fta;
       if (paramString == null) {}
     }
-    for (paramString = paramString.tej;; paramString = null)
+    for (paramString = paramString.xcj;; paramString = null)
     {
-      if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).eDB != null)
+      if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).fTs != null)
       {
-        paramm = (agq)((com.tencent.mm.plugin.qmessage.a.c)localObject3).eDB.ecF.ecN;
+        paramm = (all)((com.tencent.mm.plugin.qmessage.a.c)localObject3).fTs.fsW.fta;
         if (paramm == null) {}
       }
-      for (paramm = paramm.sww;; paramm = null)
+      for (paramm = paramm.wxa;; paramm = null)
       {
         Object localObject1 = localObject2;
-        if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).eDB != null)
+        if (((com.tencent.mm.plugin.qmessage.a.c)localObject3).fTs != null)
         {
-          localObject3 = (agq)((com.tencent.mm.plugin.qmessage.a.c)localObject3).eDB.ecF.ecN;
+          localObject3 = (all)((com.tencent.mm.plugin.qmessage.a.c)localObject3).fTs.fsW.fta;
           localObject1 = localObject2;
           if (localObject3 != null) {
-            localObject1 = ((agq)localObject3).tek;
+            localObject1 = ((all)localObject3).xck;
           }
         }
-        if (!bk.bl((String)localObject1))
+        if (!bo.isNullOrNil((String)localObject1))
         {
-          this.ncQ = ((String)localObject1);
-          au.Hx();
-          com.tencent.mm.model.c.Dz().o(77, localObject1);
+          this.pIi = ((String)localObject1);
+          aw.aaz();
+          com.tencent.mm.model.c.Ru().set(77, localObject1);
         }
-        this.ncR = paramm;
-        au.Hx();
-        com.tencent.mm.model.c.Dz().o(78, paramm);
-        if (!this.ncP) {
-          bto();
+        this.pIj = paramm;
+        aw.aaz();
+        com.tencent.mm.model.c.Ru().set(78, paramm);
+        if (!this.pIh) {
+          cdA();
         }
-        y.d("MicroMsg.QConversationUI", "diaplayName: %s, url: %s, qqScheme: %s", new Object[] { paramString, paramm, localObject1 });
-        return;
+        ab.d("MicroMsg.QConversationUI", "diaplayName: %s, url: %s, qqScheme: %s", new Object[] { paramString, paramm, localObject1 });
+        break;
       }
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

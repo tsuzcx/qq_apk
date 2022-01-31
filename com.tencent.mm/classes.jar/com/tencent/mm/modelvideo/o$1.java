@@ -1,13 +1,38 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.blink.b;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
 
 final class o$1
-  implements h.d
+  extends j.a
 {
-  public final String[] rK()
+  o$1(o paramo) {}
+  
+  public final void onAppBackground(String paramString)
   {
-    return t.dXp;
+    AppMethodBeat.i(139645);
+    if ((g.RG()) && (g.RJ().eHg))
+    {
+      g.RJ();
+      a.QP();
+    }
+    AppMethodBeat.o(139645);
+  }
+  
+  public final void onAppForeground(String paramString)
+  {
+    AppMethodBeat.i(139644);
+    if ((g.RG()) && (g.RJ().eHg))
+    {
+      g.RJ();
+      if (!a.QP()) {
+        b.HP().o(new o.1.1(this));
+      }
+    }
+    AppMethodBeat.o(139644);
   }
 }
 

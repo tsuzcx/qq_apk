@@ -3,50 +3,55 @@ package com.tencent.mm.plugin.emoji.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.view.SmileySubGrid;
 
 public class EmojiDetailGridView
   extends SmileySubGrid
 {
-  private String iZD;
-  private EmojiDetailScrollView jdm;
-  private volatile boolean jdn = true;
+  private String liu;
+  private EmojiDetailScrollView llW;
+  private volatile boolean llX = true;
   
   public EmojiDetailGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  protected int getLongTouchTime()
+  public int getLongTouchTime()
   {
     return 200;
   }
   
   public String getProductId()
   {
-    return this.iZD;
+    return this.liu;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(53367);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
+    AppMethodBeat.o(53367);
   }
   
   public void setEmojiDetailScrollView(EmojiDetailScrollView paramEmojiDetailScrollView)
   {
-    this.jdm = paramEmojiDetailScrollView;
+    this.llW = paramEmojiDetailScrollView;
   }
   
   public void setProductId(String paramString)
   {
-    this.iZD = paramString;
+    this.liu = paramString;
   }
   
-  protected void setScrollEnable(boolean paramBoolean)
+  public void setScrollEnable(boolean paramBoolean)
   {
-    if (this.jdm != null) {
-      this.jdm.setScrollEnable(paramBoolean);
+    AppMethodBeat.i(53368);
+    if (this.llW != null) {
+      this.llW.setScrollEnable(paramBoolean);
     }
+    AppMethodBeat.o(53368);
   }
 }
 

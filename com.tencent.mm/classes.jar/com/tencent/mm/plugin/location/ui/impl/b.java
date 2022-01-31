@@ -9,17 +9,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.p.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class b
   extends a
 {
   public Activity activity;
-  protected float hZz = 0.0F;
-  protected float kXk = 0.0F;
-  protected com.tencent.mm.plugin.p.d lFy;
+  protected float nvl = 0.0F;
+  protected float nvm = 0.0F;
+  protected com.tencent.mm.plugin.k.d ocL;
   protected int type = 0;
   
   public b(Activity paramActivity)
@@ -27,37 +26,20 @@ public abstract class b
     this.activity = paramActivity;
   }
   
-  protected final void XM()
-  {
-    InputMethodManager localInputMethodManager = (InputMethodManager)this.activity.getSystemService("input_method");
-    if (localInputMethodManager == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.activity.getCurrentFocus();
-      } while (localObject == null);
-      localObject = ((View)localObject).getWindowToken();
-    } while (localObject == null);
-    localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
-  }
-  
-  public final boolean beL()
+  public final boolean bMf()
   {
     return false;
   }
   
-  public abstract com.tencent.mm.plugin.p.d beM();
+  public abstract com.tencent.mm.plugin.k.d bMg();
   
-  public void beN() {}
+  public void bMh() {}
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      y.d("MicroMsg.MMBaseMapUI", "dispatchKeyEvent");
+      ab.d("MicroMsg.MMBaseMapUI", "dispatchKeyEvent");
       this.activity.finish();
       return true;
     }
@@ -74,11 +56,26 @@ public abstract class b
     return this.activity.findViewById(paramInt);
   }
   
-  public abstract int getLayoutId();
-  
   public final String getString(int paramInt)
   {
     return this.activity.getString(paramInt);
+  }
+  
+  protected final void hideVKB()
+  {
+    InputMethodManager localInputMethodManager = (InputMethodManager)this.activity.getSystemService("input_method");
+    if (localInputMethodManager == null) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        localObject = this.activity.getCurrentFocus();
+      } while (localObject == null);
+      localObject = ((View)localObject).getWindowToken();
+    } while (localObject == null);
+    localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
   }
   
   public final void onBackPressed() {}
@@ -86,18 +83,18 @@ public abstract class b
   public void onCreate(Bundle paramBundle)
   {
     this.activity.requestWindowFeature(1);
-    this.activity.setContentView(getLayoutId());
+    this.activity.setContentView(2130970424);
     this.type = this.activity.getIntent().getIntExtra("map_view_type", 0);
-    y.i("MicroMsg.MMBaseMapUI", "init oncreate type %d", new Object[] { Integer.valueOf(this.type) });
-    ((FrameLayout)findViewById(a.e.mapview_content)).addView(d.dH(this.activity));
-    this.lFy = beM();
-    this.lFy.setMapViewOnTouchListener(new b.1(this));
-    this.lFy.setMapAnchor(0.5F, 0.5F);
+    ab.i("MicroMsg.MMBaseMapUI", "init oncreate type %d", new Object[] { Integer.valueOf(this.type) });
+    ((FrameLayout)findViewById(2131824802)).addView(d.et(this.activity));
+    this.ocL = bMg();
+    this.ocL.setMapViewOnTouchListener(new b.1(this));
+    this.ocL.setMapAnchor(0.5F, 0.5F);
   }
   
   public void onDestroy()
   {
-    this.lFy.destroy();
+    this.ocL.destroy();
   }
   
   public void onPause() {}
@@ -119,7 +116,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.b
  * JD-Core Version:    0.7.0.1
  */

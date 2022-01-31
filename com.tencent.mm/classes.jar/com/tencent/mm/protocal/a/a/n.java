@@ -1,78 +1,103 @@
 package com.tencent.mm.protocal.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class n
   extends com.tencent.mm.bv.a
 {
-  public int sqt;
-  public int srd;
-  public int sre;
-  public int srf;
-  public int srg;
-  public int srh;
-  public int sri;
   public int type;
+  public int wjK;
+  public int wjL;
+  public int wjM;
+  public int wjN;
+  public int wjO;
+  public int wjP;
+  public int wjb;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(72834);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.gB(1, this.sqt);
-      paramVarArgs.gB(2, this.srd);
-      paramVarArgs.gB(3, this.sre);
-      paramVarArgs.gB(4, this.srf);
-      paramVarArgs.gB(5, this.srg);
-      paramVarArgs.gB(6, this.srh);
-      paramVarArgs.gB(7, this.sri);
-      paramVarArgs.gB(8, this.type);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aO(1, this.wjb);
+      paramVarArgs.aO(2, this.wjK);
+      paramVarArgs.aO(3, this.wjL);
+      paramVarArgs.aO(4, this.wjM);
+      paramVarArgs.aO(5, this.wjN);
+      paramVarArgs.aO(6, this.wjO);
+      paramVarArgs.aO(7, this.wjP);
+      paramVarArgs.aO(8, this.type);
+      AppMethodBeat.o(72834);
       return 0;
     }
-    if (paramInt == 1) {
-      return d.a.a.a.gy(1, this.sqt) + 0 + d.a.a.a.gy(2, this.srd) + d.a.a.a.gy(3, this.sre) + d.a.a.a.gy(4, this.srf) + d.a.a.a.gy(5, this.srg) + d.a.a.a.gy(6, this.srh) + d.a.a.a.gy(7, this.sri) + d.a.a.a.gy(8, this.type);
+    if (paramInt == 1)
+    {
+      paramInt = e.a.a.b.b.a.bl(1, this.wjb);
+      int i = e.a.a.b.b.a.bl(2, this.wjK);
+      int j = e.a.a.b.b.a.bl(3, this.wjL);
+      int k = e.a.a.b.b.a.bl(4, this.wjM);
+      int m = e.a.a.b.b.a.bl(5, this.wjN);
+      int n = e.a.a.b.b.a.bl(6, this.wjO);
+      int i1 = e.a.a.b.b.a.bl(7, this.wjP);
+      int i2 = e.a.a.b.b.a.bl(8, this.type);
+      AppMethodBeat.o(72834);
+      return paramInt + 0 + i + j + k + m + n + i1 + i2;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(72834);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       n localn = (n)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(72834);
         return -1;
       case 1: 
-        localn.sqt = locala.xpH.oD();
+        localn.wjb = locala.CLY.sl();
+        AppMethodBeat.o(72834);
         return 0;
       case 2: 
-        localn.srd = locala.xpH.oD();
+        localn.wjK = locala.CLY.sl();
+        AppMethodBeat.o(72834);
         return 0;
       case 3: 
-        localn.sre = locala.xpH.oD();
+        localn.wjL = locala.CLY.sl();
+        AppMethodBeat.o(72834);
         return 0;
       case 4: 
-        localn.srf = locala.xpH.oD();
+        localn.wjM = locala.CLY.sl();
+        AppMethodBeat.o(72834);
         return 0;
       case 5: 
-        localn.srg = locala.xpH.oD();
+        localn.wjN = locala.CLY.sl();
+        AppMethodBeat.o(72834);
         return 0;
       case 6: 
-        localn.srh = locala.xpH.oD();
+        localn.wjO = locala.CLY.sl();
+        AppMethodBeat.o(72834);
         return 0;
       case 7: 
-        localn.sri = locala.xpH.oD();
+        localn.wjP = locala.CLY.sl();
+        AppMethodBeat.o(72834);
         return 0;
       }
-      localn.type = locala.xpH.oD();
+      localn.type = locala.CLY.sl();
+      AppMethodBeat.o(72834);
       return 0;
     }
+    AppMethodBeat.o(72834);
     return -1;
   }
 }

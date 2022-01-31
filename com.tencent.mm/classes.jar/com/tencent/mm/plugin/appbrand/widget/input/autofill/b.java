@@ -3,137 +3,184 @@ package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
 import android.widget.Filter;
 import android.widget.Filter.FilterListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mm.plugin.appbrand.widget.input.aa;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.input.ab;
+import com.tencent.mm.plugin.appbrand.widget.input.d.a.b;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.ArrayList;
 
 public final class b
 {
-  final aa hwK;
-  public final e hwL;
-  private final Filter.FilterListener hwM;
-  public final c hwN;
-  final b.a hwO;
-  f hwP = f.hxm;
-  public a hwQ;
-  private int hwR;
-  private int hwS;
+  final ab joU;
+  public final e joV;
+  private final Filter.FilterListener joW;
+  public final c joX;
+  private final b.a joY;
+  private f joZ;
+  public a jpa;
+  private int jpb;
+  private int jpc;
   
-  public b(aa paramaa)
+  public b(ab paramab)
   {
-    this.hwK = paramaa;
-    this.hwL = new e(paramaa.getContext());
-    this.hwN = new c(paramaa, this.hwL);
-    this.hwK.a(new b.1(this));
-    this.hwK.a(new b.2(this));
-    this.hwK.a(new View.OnFocusChangeListener()
+    AppMethodBeat.i(123890);
+    this.joZ = f.jpw;
+    this.joU = paramab;
+    this.joV = new e(paramab.getContext());
+    this.joX = new c(paramab, this.joV);
+    this.joU.a(new b.1(this));
+    this.joU.a(new b.2(this));
+    this.joU.a(new b.3(this));
+    this.joU.addTextChangedListener(new TextWatcher()
     {
-      public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
-      {
-        if (paramAnonymousBoolean) {
-          b.this.asz();
-        }
-        do
-        {
-          return;
-          paramAnonymousView = b.this;
-        } while (!paramAnonymousView.hwL.afe.isShowing());
-        g localg = (g)paramAnonymousView.hwL.hxe.getAdapter();
-        paramAnonymousView.hwL.dismiss();
-        localg.asx();
-      }
-    });
-    this.hwK.addTextChangedListener(new TextWatcher()
-    {
-      private boolean hwU = false;
+      private boolean jpe = false;
       
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        if ((this.hwU) && (!b.this.hwL.afe.isShowing())) {
+        AppMethodBeat.i(123885);
+        if ((this.jpe) && (!b.this.joV.aht.isShowing()))
+        {
+          AppMethodBeat.o(123885);
           return;
         }
-        if (!b.this.hwL.afe.isShowing()) {
-          b.this.asz();
+        if (!b.this.joV.aht.isShowing()) {
+          b.this.aRD();
         }
-        b.this.t(paramAnonymousEditable);
+        b.this.C(paramAnonymousEditable);
+        AppMethodBeat.o(123885);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        this.hwU = b.this.hwL.afe.isShowing();
+        AppMethodBeat.i(123884);
+        this.jpe = b.this.joV.aht.isShowing();
+        AppMethodBeat.o(123884);
       }
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    this.hwM = new b.5(this);
-    this.hwO = new b.6(this);
+    this.joW = new b.5(this);
+    this.joY = new b.6(this);
+    AppMethodBeat.o(123890);
   }
   
-  final void asy()
+  final void C(CharSequence paramCharSequence)
   {
-    switch (b.7.hwV[this.hwP.ordinal()])
+    AppMethodBeat.i(123891);
+    if (this.jpa == null)
+    {
+      AppMethodBeat.o(123891);
+      return;
+    }
+    this.jpa.getFilter().filter(paramCharSequence, this.joW);
+    AppMethodBeat.o(123891);
+  }
+  
+  final void a(f paramf)
+  {
+    AppMethodBeat.i(123895);
+    if (paramf != null) {
+      this.joZ = paramf;
+    }
+    aRC();
+    AppMethodBeat.o(123895);
+  }
+  
+  final void a(h paramh)
+  {
+    this.joY.jpg = paramh;
+  }
+  
+  final void aRC()
+  {
+    AppMethodBeat.i(123893);
+    switch (b.7.jpf[this.joZ.ordinal()])
     {
     }
     for (;;)
     {
-      if (this.hwR != 0)
+      if (this.jpb != 0)
       {
-        this.hwL.aeJ = this.hwR;
-        this.hwL.aal -= this.hwR;
+        this.joV.agY = this.jpb;
+        this.joV.aaV -= this.jpb;
       }
-      if (this.hwS != 0) {
-        this.hwL.aal -= this.hwS;
+      if (this.jpc != 0) {
+        this.joV.aaV -= this.jpc;
       }
+      AppMethodBeat.o(123893);
       return;
-      this.hwL.aal = com.tencent.mm.plugin.appbrand.ui.l.api()[0];
+      this.joV.aaV = com.tencent.mm.plugin.appbrand.ui.o.aMu()[0];
       continue;
-      this.hwL.aal = this.hwK.getView().getMeasuredWidth();
+      this.joV.aaV = this.joU.getView().getMeasuredWidth();
     }
   }
   
-  final void asz()
+  final void aRD()
   {
-    if (this.hwQ == null) {}
-    Object localObject;
-    c localc;
-    do
+    AppMethodBeat.i(123896);
+    if (this.jpa == null)
     {
+      AppMethodBeat.o(123896);
       return;
-      localObject = this.hwK.getText();
-      if (!bk.L((CharSequence)localObject)) {
-        t((CharSequence)localObject);
+    }
+    Object localObject = this.joU.getText();
+    if (!bo.aa((CharSequence)localObject)) {
+      C((CharSequence)localObject);
+    }
+    this.joV.ahj = this.joU.getView();
+    this.joV.show();
+    ((g)this.joV.jpo.getAdapter()).a(this);
+    c localc = this.joX;
+    localc.qD(2);
+    localc.jpj = -2147483648;
+    if (!bo.aa((CharSequence)localObject)) {
+      localc.jpk = true;
+    }
+    localObject = localc.joV.jpo;
+    if (localObject != null) {
+      ((ListView)localObject).getAdapter().registerDataSetObserver(new c.2(localc));
+    }
+    AppMethodBeat.o(123896);
+  }
+  
+  final void s(ArrayList<a.b> paramArrayList)
+  {
+    AppMethodBeat.i(123892);
+    this.jpa = new a(this.joU.getContext(), paramArrayList);
+    this.jpa.joN = this.joY;
+    paramArrayList = this.joV;
+    a locala = this.jpa;
+    if (paramArrayList.mObserver == null) {
+      paramArrayList.mObserver = new AutoFillListPopupWindowBase.c(paramArrayList, (byte)0);
+    }
+    for (;;)
+    {
+      paramArrayList.xw = locala;
+      if (paramArrayList.xw != null) {
+        locala.registerDataSetObserver(paramArrayList.mObserver);
       }
-      this.hwL.aeU = this.hwK.getView();
-      this.hwL.show();
-      ((g)this.hwL.hxe.getAdapter()).a(this);
-      localc = this.hwN;
-      localc.mZ(2);
-      localc.hwZ = -2147483648;
-      if (!bk.L((CharSequence)localObject)) {
-        localc.hxa = true;
+      if (paramArrayList.jpo != null) {
+        paramArrayList.jpo.setAdapter(paramArrayList.xw);
       }
-      localObject = localc.hwL.hxe;
-    } while (localObject == null);
-    ((ListView)localObject).getAdapter().registerDataSetObserver(new c.2(localc));
+      AppMethodBeat.o(123892);
+      return;
+      if (paramArrayList.xw != null) {
+        paramArrayList.xw.unregisterDataSetObserver(paramArrayList.mObserver);
+      }
+    }
   }
   
   public final void setOnDismissListener(PopupWindow.OnDismissListener paramOnDismissListener)
   {
-    this.hwL.afe.setOnDismissListener(paramOnDismissListener);
-  }
-  
-  final void t(CharSequence paramCharSequence)
-  {
-    if (this.hwQ == null) {
-      return;
-    }
-    this.hwQ.getFilter().filter(paramCharSequence, this.hwM);
+    AppMethodBeat.i(123894);
+    this.joV.setOnDismissListener(paramOnDismissListener);
+    AppMethodBeat.o(123894);
   }
 }
 

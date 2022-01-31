@@ -11,11 +11,11 @@ abstract interface d$c
   
   public abstract MediaCodecInfo getCodecInfoAt(int paramInt);
   
-  public abstract boolean ms();
+  public abstract boolean oJ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.e.d.c
  * JD-Core Version:    0.7.0.1
  */

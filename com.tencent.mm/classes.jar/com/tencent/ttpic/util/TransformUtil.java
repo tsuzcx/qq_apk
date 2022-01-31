@@ -1,6 +1,7 @@
 package com.tencent.ttpic.util;
 
 import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.model.VideoMaterial;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,12 @@ public class TransformUtil
 {
   public static List<PointF> getFullPoints(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 90)) {
-      return new ArrayList();
+    AppMethodBeat.i(83977);
+    if ((paramList == null) || (paramList.size() < 90))
+    {
+      paramList = new ArrayList();
+      AppMethodBeat.o(83977);
+      return paramList;
     }
     while (paramList.size() > 90) {
       paramList.remove(paramList.size() - 1);
@@ -39,21 +44,30 @@ public class TransformUtil
     f1 = (((PointF)paramList.get(81)).x + f1) / 2.0F;
     f2 = ((PointF)paramList.get(73)).y;
     paramList.add(new PointF(f1, (((PointF)paramList.get(81)).y + f2) / 2.0F));
+    AppMethodBeat.o(83977);
     return paramList;
   }
   
   public static boolean isTransformMaterial(VideoMaterial paramVideoMaterial)
   {
-    if (paramVideoMaterial == null) {}
-    while ((paramVideoMaterial.getShaderType() != VideoMaterialUtil.SHADER_TYPE.TRANSFORM.value) && (paramVideoMaterial.getShaderType() != VideoMaterialUtil.SHADER_TYPE.FACE_OFF_TRANSFORM.value)) {
+    AppMethodBeat.i(83978);
+    if (paramVideoMaterial == null)
+    {
+      AppMethodBeat.o(83978);
       return false;
     }
-    return true;
+    if ((paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.TRANSFORM.value) || (paramVideoMaterial.getShaderType() == VideoMaterialUtil.SHADER_TYPE.FACE_OFF_TRANSFORM.value))
+    {
+      AppMethodBeat.o(83978);
+      return true;
+    }
+    AppMethodBeat.o(83978);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.ttpic.util.TransformUtil
  * JD-Core Version:    0.7.0.1
  */

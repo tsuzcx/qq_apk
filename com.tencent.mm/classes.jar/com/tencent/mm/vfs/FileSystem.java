@@ -2,6 +2,7 @@ package com.tencent.mm.vfs;
 
 import android.os.CancellationSignal;
 import android.os.Parcelable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
@@ -10,88 +11,101 @@ import java.util.Map;
 public abstract interface FileSystem
   extends Parcelable
 {
-  public abstract OutputStream I(String paramString, boolean paramBoolean);
+  public abstract boolean A(String paramString, long paramLong);
   
-  public abstract List<a> J(String paramString, boolean paramBoolean);
+  public abstract OutputStream M(String paramString, boolean paramBoolean);
   
-  public abstract boolean K(String paramString, boolean paramBoolean);
+  public abstract List<a> N(String paramString, boolean paramBoolean);
   
-  public abstract String L(String paramString, boolean paramBoolean);
+  public abstract boolean O(String paramString, boolean paramBoolean);
   
-  public abstract int Qd();
+  public abstract String P(String paramString, boolean paramBoolean);
   
   public abstract void a(CancellationSignal paramCancellationSignal);
   
-  public abstract boolean aC(String paramString1, String paramString2);
+  public abstract boolean aV(String paramString1, String paramString2);
+  
+  public abstract int ajj();
   
   public abstract boolean exists(String paramString);
   
-  public abstract boolean jJ(String paramString);
-  
-  public abstract void m(Map<String, String> paramMap);
-  
-  public abstract b mZ(String paramString);
-  
-  public abstract a na(String paramString);
-  
-  public abstract boolean nb(String paramString);
-  
   public abstract InputStream openRead(String paramString);
   
-  public abstract boolean r(String paramString, long paramLong);
+  public abstract void q(Map<String, String> paramMap);
+  
+  public abstract boolean qD(String paramString);
+  
+  public abstract b uk(String paramString);
+  
+  public abstract a ul(String paramString);
+  
+  public abstract boolean um(String paramString);
   
   public static final class a
   {
+    public final String APr;
+    public final long APs;
+    public final long APt;
+    public final boolean APu;
+    private final FileSystem APv;
     public final String name;
     public final long size;
-    public final String wus;
-    public final long wut;
-    public final long wuu;
-    public final boolean wuv;
-    private FileSystem wuw;
     
     public a(FileSystem paramFileSystem, String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
     {
-      this.wuw = paramFileSystem;
-      this.wus = paramString1;
+      this.APv = paramFileSystem;
+      this.APr = paramString1;
       this.name = paramString2;
       this.size = paramLong1;
-      this.wut = paramLong2;
-      this.wuu = paramLong3;
-      this.wuv = paramBoolean;
+      this.APs = paramLong2;
+      this.APt = paramLong3;
+      this.APu = paramBoolean;
     }
     
-    public final InputStream cLi()
+    public final InputStream dQA()
     {
-      return this.wuw.openRead(this.wus);
+      AppMethodBeat.i(54504);
+      InputStream localInputStream = this.APv.openRead(this.APr);
+      AppMethodBeat.o(54504);
+      return localInputStream;
     }
     
     public final boolean delete()
     {
-      if (this.wuv) {
-        return this.wuw.K(this.wus, false);
+      AppMethodBeat.i(54505);
+      if (this.APu)
+      {
+        bool = this.APv.O(this.APr, false);
+        AppMethodBeat.o(54505);
+        return bool;
       }
-      return this.wuw.jJ(this.wus);
+      boolean bool = this.APv.qD(this.APr);
+      AppMethodBeat.o(54505);
+      return bool;
     }
     
     public final String toString()
     {
-      String str2 = this.wus + " -> " + this.wuw.toString();
-      String str1 = str2;
-      if (this.wuv) {
-        str1 = "[DIR] " + str2;
+      AppMethodBeat.i(54506);
+      String str = this.APr + " -> " + this.APv.toString();
+      if (this.APu)
+      {
+        str = "[DIR] ".concat(String.valueOf(str));
+        AppMethodBeat.o(54506);
+        return str;
       }
-      return str1;
+      AppMethodBeat.o(54506);
+      return str;
     }
   }
   
   public static final class b
   {
-    public long uhY;
-    public long uia;
-    public long uib;
-    public long wux;
-    public long wuy;
+    public long APw;
+    public long bau;
+    public long yqe;
+    public long yqg;
+    public long yqh;
   }
 }
 

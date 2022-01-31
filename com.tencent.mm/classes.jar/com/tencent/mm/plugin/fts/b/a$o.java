@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.l;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,10 +18,11 @@ public final class a$o
     super(parami);
   }
   
-  protected final void a(j paramj)
+  public final void a(j paramj)
   {
-    Object localObject2 = bk.G(this.kwT.bVk.split(","));
-    Object localObject1 = a.a(this.kyt);
+    AppMethodBeat.i(136687);
+    Object localObject2 = bo.P(this.mSJ.query.split(","));
+    Object localObject1 = a.a(this.mUg);
     Object localObject3 = new StringBuffer();
     ((StringBuffer)localObject3).append("member IN (");
     int i = 0;
@@ -35,8 +37,8 @@ public final class a$o
       i += 1;
     }
     ((StringBuffer)localObject3).append(")");
-    localObject2 = String.format("SELECT member, chatroom, entity_id FROM FTS5ChatRoomMembers, %s WHERE %s AND chatroom = aux_index", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject1).aVs(), ((StringBuffer)localObject3).toString() });
-    localObject3 = ((com.tencent.mm.plugin.fts.a.a)localObject1).kuE.rawQuery((String)localObject2, null);
+    localObject2 = String.format("SELECT member, chatroom, entity_id FROM FTS5ChatRoomMembers, %s WHERE %s AND chatroom = aux_index", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject1).bBR(), ((StringBuffer)localObject3).toString() });
+    localObject3 = ((com.tencent.mm.plugin.fts.a.a)localObject1).mQr.rawQuery((String)localObject2, null);
     localObject2 = new HashMap();
     if (((Cursor)localObject3).moveToNext())
     {
@@ -45,18 +47,19 @@ public final class a$o
       for (localObject1 = (List)((HashMap)localObject2).get(str);; localObject1 = new ArrayList())
       {
         l locall = new l();
-        locall.kwg = ((Cursor)localObject3).getString(1);
-        locall.kxk = ((Cursor)localObject3).getLong(2);
+        locall.mRV = ((Cursor)localObject3).getString(1);
+        locall.mSZ = ((Cursor)localObject3).getLong(2);
         ((List)localObject1).add(locall);
         ((HashMap)localObject2).put(str, localObject1);
         break;
       }
     }
     ((Cursor)localObject3).close();
-    paramj.kxh = new ArrayList();
+    paramj.mSW = new ArrayList();
     localObject1 = new l();
     ((l)localObject1).userData = localObject2;
-    paramj.kxh.add(localObject1);
+    paramj.mSW.add(localObject1);
+    AppMethodBeat.o(136687);
   }
   
   public final String getName()

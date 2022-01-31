@@ -1,22 +1,28 @@
 package com.github.henryye.nativeiv;
 
 import com.github.henryye.nativeiv.bitmap.IBitmap;
-import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
 import com.github.henryye.nativeiv.bitmap.b;
+import com.github.henryye.nativeiv.bitmap.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
-  implements com.github.henryye.nativeiv.bitmap.a<NativeBitmapStruct>
+  implements b
 {
   a$1(a parama) {}
   
-  public final boolean a(b paramb)
+  public final boolean a(c paramc)
   {
     return false;
   }
   
-  public final IBitmap<NativeBitmapStruct> km()
+  public final void destroy() {}
+  
+  public final IBitmap mt()
   {
-    return new b.b();
+    AppMethodBeat.i(115739);
+    b.b localb = new b.b();
+    AppMethodBeat.o(115739);
+    return localb;
   }
 }
 

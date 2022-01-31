@@ -3,11 +3,10 @@ package com.tencent.mm.plugin.sight.decode.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.ai.a.e;
-import com.tencent.mm.plugin.ai.a.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.k;
 import com.tencent.mm.ui.base.h;
 import java.io.File;
 
@@ -18,21 +17,24 @@ final class c$1$1
   
   public final void run()
   {
-    Object localObject = (ImageView)this.ofX.ofW.findViewById(a.e.videoplayer_maskview);
-    ((ImageView)localObject).setImageBitmap(this.nui);
+    AppMethodBeat.i(70277);
+    Object localObject = (ImageView)this.qUm.qUl.findViewById(2131824109);
+    ((ImageView)localObject).setImageBitmap(this.pZR);
     ((ImageView)localObject).setVisibility(0);
     localObject = new Intent();
     ((Intent)localObject).setAction("android.intent.action.VIEW");
-    ((Intent)localObject).setDataAndType(Uri.fromFile(new File(this.gBs)), "video/*");
+    k.a(this.qUm.qUl.getContext(), (Intent)localObject, new File(this.hZn), "video/*");
     try
     {
-      this.ofX.ofW.getContext().startActivity(Intent.createChooser((Intent)localObject, this.ofX.ofW.getContext().getString(a.h.app_video_for_icon)));
+      this.qUm.qUl.getContext().startActivity(Intent.createChooser((Intent)localObject, this.qUm.qUl.getContext().getString(2131297103)));
+      AppMethodBeat.o(70277);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.VideoPopupHelper", "startActivity fail, activity not found");
-      h.h(this.ofX.ofW.getContext(), a.h.no_match_application_msg, a.h.no_match_application_title);
+      ab.e("MicroMsg.VideoPopupHelper", "startActivity fail, activity not found");
+      h.h(this.qUm.qUl.getContext(), 2131301863, 2131301864);
+      AppMethodBeat.o(70277);
     }
   }
 }

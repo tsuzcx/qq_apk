@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.c;
 
 final class SnsHeader$1$1
@@ -7,16 +8,20 @@ final class SnsHeader$1$1
 {
   SnsHeader$1$1(SnsHeader.1 param1, long paramLong) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(38946);
     switch (paramInt)
     {
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(38946);
       return;
-    } while (SnsHeader.g(this.oYs.oYq));
-    SnsHeader.a(this.oYs.oYq, this.oYr);
+      if (!SnsHeader.g(this.rQL.rQJ)) {
+        SnsHeader.a(this.rQL.rQJ, this.rQK);
+      }
+    }
   }
 }
 

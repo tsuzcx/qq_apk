@@ -1,26 +1,31 @@
 package com.tencent.mm.plugin.offline.c;
 
-import com.tencent.mm.model.bi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.c;
 import com.tencent.mm.network.e;
 
 final class a$3
-  implements bi.a
+  implements bk.a
 {
   public final void a(e parame)
   {
-    if ((parame == null) || (parame.KR() == null)) {}
-    do
+    AppMethodBeat.i(43648);
+    if ((parame == null) || (parame.adI() == null))
     {
+      AppMethodBeat.o(43648);
       return;
-      if (a.access$000() != null) {
-        parame.KR().i("offline_token", a.access$000().getBytes());
-      }
-      if (a.mNN != null) {
-        parame.KR().i("offline_token_V2", a.mNN.getBytes());
-      }
-    } while (a.mNQ == null);
-    parame.KR().i("offline_key_list", a.mNQ.getBytes());
+    }
+    if (a.access$000() != null) {
+      parame.adI().o("offline_token", a.access$000().getBytes());
+    }
+    if (a.poc != null) {
+      parame.adI().o("offline_token_V2", a.poc.getBytes());
+    }
+    if (a.pof != null) {
+      parame.adI().o("offline_key_list", a.pof.getBytes());
+    }
+    AppMethodBeat.o(43648);
   }
 }
 

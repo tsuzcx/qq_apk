@@ -1,35 +1,29 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.plugin.location.model.f;
-import com.tencent.mm.plugin.location.ui.MyLocationButton;
-import com.tencent.mm.plugin.location.ui.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.location.model.o.a;
+import com.tencent.mm.ui.widget.b.c;
+import com.tencent.mm.ui.widget.b.c.a;
 
 final class g$4
-  implements a.a
+  implements o.a
 {
   g$4(g paramg) {}
   
-  public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
+  public final void ayM()
   {
-    if (!paramBoolean) {
-      return false;
-    }
-    y.d("MicroMsg.ShareMapUI", "onGetLocation, latitude=%f, longtitude=%f, speed=%f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Double.valueOf(paramDouble1) });
-    if ((f.t(paramDouble1)) && (!this.lKi.lJV.lHj))
-    {
-      y.d("MicroMsg.ShareMapUI", "set driving mode");
-      this.lKi.lJV.lHm = false;
-      this.lKi.lJV.hj(true);
-      this.lKi.lJT.beo();
-    }
-    return true;
+    AppMethodBeat.i(113672);
+    g localg = this.ohw;
+    c.a locala = new c.a(localg.activity);
+    locala.Rf(2131304394);
+    locala.Ri(2131297018).a(new g.2(localg));
+    locala.aLZ().show();
+    AppMethodBeat.o(113672);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.g.4
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,7 @@ package com.tencent.mm.plugin.game.commlib.a;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract byte[] Ey(String paramString);
-  
-  public abstract void Ez(String paramString);
+  public abstract byte[] PN(String paramString);
   
   public abstract void a(String paramString, com.tencent.mm.bv.a parama);
 }

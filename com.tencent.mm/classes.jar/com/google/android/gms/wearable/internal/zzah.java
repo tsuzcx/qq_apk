@@ -1,169 +1,155 @@
 package com.google.android.gms.wearable.internal;
 
-import android.content.IntentFilter;
-import android.net.Uri;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.wearable.Asset;
-import com.google.android.gms.wearable.DataApi;
-import com.google.android.gms.wearable.DataApi.DataItemResult;
-import com.google.android.gms.wearable.DataApi.DataListener;
-import com.google.android.gms.wearable.DataApi.DeleteDataItemsResult;
-import com.google.android.gms.wearable.DataApi.GetFdForAssetResult;
-import com.google.android.gms.wearable.DataItemAsset;
-import com.google.android.gms.wearable.DataItemBuffer;
-import com.google.android.gms.wearable.PutDataRequest;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
+import com.google.android.gms.wearable.CapabilityInfo;
+import com.google.android.gms.wearable.Node;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.concurrent.GuardedBy;
 
+@SafeParcelable.Class(creator="CapabilityInfoParcelableCreator")
+@SafeParcelable.Reserved({1})
 public final class zzah
-  implements DataApi
+  extends AbstractSafeParcelable
+  implements CapabilityInfo
 {
-  private PendingResult<Status> zza(GoogleApiClient paramGoogleApiClient, DataApi.DataListener paramDataListener, IntentFilter[] paramArrayOfIntentFilter)
+  public static final Parcelable.Creator<zzah> CREATOR;
+  private final Object lock;
+  @SafeParcelable.Field(getter="getName", id=2)
+  private final String name;
+  @GuardedBy("lock")
+  private Set<Node> zzbt;
+  @SafeParcelable.Field(getter="getNodeParcelables", id=3)
+  private final List<zzfo> zzca;
+  
+  static
   {
-    return zzb.zza(paramGoogleApiClient, zza(paramArrayOfIntentFilter), paramDataListener);
+    AppMethodBeat.i(70995);
+    CREATOR = new zzai();
+    AppMethodBeat.o(70995);
   }
   
-  private static zzb.zza<DataApi.DataListener> zza(IntentFilter[] paramArrayOfIntentFilter)
+  @SafeParcelable.Constructor
+  public zzah(@SafeParcelable.Param(id=2) String paramString, @SafeParcelable.Param(id=3) List<zzfo> paramList)
   {
-    return new zzah.8(paramArrayOfIntentFilter);
+    AppMethodBeat.i(70989);
+    this.lock = new Object();
+    this.name = paramString;
+    this.zzca = paramList;
+    this.zzbt = null;
+    Preconditions.checkNotNull(this.name);
+    Preconditions.checkNotNull(this.zzca);
+    AppMethodBeat.o(70989);
   }
   
-  private void zza(Asset paramAsset)
+  public final boolean equals(Object paramObject)
   {
-    if (paramAsset == null) {
-      throw new IllegalArgumentException("asset is null");
-    }
-    if (paramAsset.getDigest() == null) {
-      throw new IllegalArgumentException("invalid asset");
-    }
-    if (paramAsset.getData() != null) {
-      throw new IllegalArgumentException("invalid asset");
-    }
-  }
-  
-  public final PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, DataApi.DataListener paramDataListener)
-  {
-    return zza(paramGoogleApiClient, paramDataListener, new IntentFilter[] { zzcv.zzip("com.google.android.gms.wearable.DATA_CHANGED") });
-  }
-  
-  public final PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, DataApi.DataListener paramDataListener, Uri paramUri, int paramInt)
-  {
-    if (paramUri != null)
+    AppMethodBeat.i(70993);
+    if (this == paramObject)
     {
-      bool = true;
-      zzac.zzb(bool, "uri must not be null");
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break label63;
+      AppMethodBeat.o(70993);
+      return true;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(70993);
+      return false;
+    }
+    paramObject = (zzah)paramObject;
+    if (this.name != null)
+    {
+      if (this.name.equals(paramObject.name)) {}
+    }
+    else {
+      while (paramObject.name != null)
+      {
+        AppMethodBeat.o(70993);
+        return false;
       }
     }
-    label63:
-    for (boolean bool = true;; bool = false)
+    if (this.zzca != null)
     {
-      zzac.zzb(bool, "invalid filter type");
-      return zza(paramGoogleApiClient, paramDataListener, new IntentFilter[] { zzcv.zza("com.google.android.gms.wearable.DATA_CHANGED", paramUri, paramInt) });
-      bool = false;
-      break;
+      if (this.zzca.equals(paramObject.zzca)) {}
     }
-  }
-  
-  public final PendingResult<DataApi.DeleteDataItemsResult> deleteDataItems(GoogleApiClient paramGoogleApiClient, Uri paramUri)
-  {
-    return deleteDataItems(paramGoogleApiClient, paramUri, 0);
-  }
-  
-  public final PendingResult<DataApi.DeleteDataItemsResult> deleteDataItems(GoogleApiClient paramGoogleApiClient, Uri paramUri, int paramInt)
-  {
-    boolean bool2 = false;
-    if (paramUri != null) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      zzac.zzb(bool1, "uri must not be null");
-      if (paramInt != 0)
+    else {
+      while (paramObject.zzca != null)
       {
-        bool1 = bool2;
-        if (paramInt != 1) {}
+        AppMethodBeat.o(70993);
+        return false;
       }
-      else
-      {
-        bool1 = true;
-      }
-      zzac.zzb(bool1, "invalid filter type");
-      return paramGoogleApiClient.zza(new zzah.5(this, paramGoogleApiClient, paramUri, paramInt));
     }
+    AppMethodBeat.o(70993);
+    return true;
   }
   
-  public final PendingResult<DataApi.DataItemResult> getDataItem(GoogleApiClient paramGoogleApiClient, Uri paramUri)
+  public final String getName()
   {
-    return paramGoogleApiClient.zza(new zzah.2(this, paramGoogleApiClient, paramUri));
+    return this.name;
   }
   
-  public final PendingResult<DataItemBuffer> getDataItems(GoogleApiClient paramGoogleApiClient)
+  public final Set<Node> getNodes()
   {
-    return paramGoogleApiClient.zza(new zzah.3(this, paramGoogleApiClient));
-  }
-  
-  public final PendingResult<DataItemBuffer> getDataItems(GoogleApiClient paramGoogleApiClient, Uri paramUri)
-  {
-    return getDataItems(paramGoogleApiClient, paramUri, 0);
-  }
-  
-  public final PendingResult<DataItemBuffer> getDataItems(GoogleApiClient paramGoogleApiClient, Uri paramUri, int paramInt)
-  {
-    boolean bool2 = false;
-    if (paramUri != null) {}
-    for (boolean bool1 = true;; bool1 = false)
+    AppMethodBeat.i(70990);
+    synchronized (this.lock)
     {
-      zzac.zzb(bool1, "uri must not be null");
-      if (paramInt != 0)
-      {
-        bool1 = bool2;
-        if (paramInt != 1) {}
+      if (this.zzbt == null) {
+        this.zzbt = new HashSet(this.zzca);
       }
-      else
-      {
-        bool1 = true;
-      }
-      zzac.zzb(bool1, "invalid filter type");
-      return paramGoogleApiClient.zza(new zzah.4(this, paramGoogleApiClient, paramUri, paramInt));
+      Set localSet = this.zzbt;
+      AppMethodBeat.o(70990);
+      return localSet;
     }
   }
   
-  public final PendingResult<DataApi.GetFdForAssetResult> getFdForAsset(GoogleApiClient paramGoogleApiClient, Asset paramAsset)
+  public final int hashCode()
   {
-    zza(paramAsset);
-    return paramGoogleApiClient.zza(new zzah.6(this, paramGoogleApiClient, paramAsset));
-  }
-  
-  public final PendingResult<DataApi.GetFdForAssetResult> getFdForAsset(GoogleApiClient paramGoogleApiClient, DataItemAsset paramDataItemAsset)
-  {
-    return paramGoogleApiClient.zza(new zzah.7(this, paramGoogleApiClient, paramDataItemAsset));
-  }
-  
-  public final PendingResult<DataApi.DataItemResult> putDataItem(GoogleApiClient paramGoogleApiClient, final PutDataRequest paramPutDataRequest)
-  {
-    paramGoogleApiClient.zza(new zzm(paramGoogleApiClient)
+    int j = 0;
+    AppMethodBeat.i(70994);
+    if (this.name != null) {}
+    for (int i = this.name.hashCode();; i = 0)
     {
-      protected void zza(zzcx paramAnonymouszzcx)
-      {
-        paramAnonymouszzcx.zza(this, paramPutDataRequest);
+      if (this.zzca != null) {
+        j = this.zzca.hashCode();
       }
-      
-      public DataApi.DataItemResult zzbW(Status paramAnonymousStatus)
-      {
-        return new zzah.zza(paramAnonymousStatus, null);
-      }
-    });
+      AppMethodBeat.o(70994);
+      return (i + 31) * 31 + j;
+    }
   }
   
-  public final PendingResult<Status> removeListener(GoogleApiClient paramGoogleApiClient, DataApi.DataListener paramDataListener)
+  public final String toString()
   {
-    return paramGoogleApiClient.zza(new zzah.9(this, paramGoogleApiClient, paramDataListener));
+    AppMethodBeat.i(70992);
+    String str1 = this.name;
+    String str2 = String.valueOf(this.zzca);
+    str1 = String.valueOf(str1).length() + 18 + String.valueOf(str2).length() + "CapabilityInfo{" + str1 + ", " + str2 + "}";
+    AppMethodBeat.o(70992);
+    return str1;
+  }
+  
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    AppMethodBeat.i(70991);
+    paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
+    SafeParcelWriter.writeString(paramParcel, 2, getName(), false);
+    SafeParcelWriter.writeTypedList(paramParcel, 3, this.zzca, false);
+    SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
+    AppMethodBeat.o(70991);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzah
  * JD-Core Version:    0.7.0.1
  */

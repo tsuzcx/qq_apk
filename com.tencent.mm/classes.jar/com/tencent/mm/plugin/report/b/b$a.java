@@ -1,35 +1,46 @@
 package com.tencent.mm.plugin.report.b;
 
-import com.tencent.mm.protocal.c.ast;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.k;
-import com.tencent.mm.protocal.k.b;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.y;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.aa;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.ayu;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b$a
-  extends k.d
-  implements k.b
+  extends l.d
+  implements l.b
 {
-  public ast nES = new ast();
+  public ayu qrU;
   
-  public final byte[] HG()
+  public b$a()
   {
-    this.spM = y.cpi();
-    this.nES.sBt = new bmk().bs(bk.crT());
-    this.nES.tEX = k.a(this);
-    return this.nES.toByteArray();
-  }
-  
-  public final int HH()
-  {
-    return 694;
+    AppMethodBeat.i(72669);
+    this.qrU = new ayu();
+    AppMethodBeat.o(72669);
   }
   
   public final int getCmdId()
   {
     return 0;
+  }
+  
+  public final int getFuncId()
+  {
+    return 694;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(72670);
+    setRsaInfo(aa.dqF());
+    this.qrU.wvN = new SKBuiltinBuffer_t().setBuffer(bo.dtR());
+    this.qrU.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.qrU.toByteArray();
+    AppMethodBeat.o(72670);
+    return arrayOfByte;
   }
 }
 

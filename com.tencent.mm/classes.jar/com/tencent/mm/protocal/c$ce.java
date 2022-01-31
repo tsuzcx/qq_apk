@@ -5,7 +5,7 @@ public final class c$ce
 {
   public c$ce()
   {
-    super("getOpenDeviceId", "getOpenDeviceId", 227, false);
+    super("getH5TransactionRequest", "getH5TransactionRequest", 138, true);
   }
 }
 

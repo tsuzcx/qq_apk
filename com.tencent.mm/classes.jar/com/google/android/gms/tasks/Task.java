@@ -5,6 +5,21 @@ import java.util.concurrent.Executor;
 
 public abstract class Task<TResult>
 {
+  public Task<TResult> addOnCanceledListener(Activity paramActivity, OnCanceledListener paramOnCanceledListener)
+  {
+    throw new UnsupportedOperationException("addOnCanceledListener is not implemented.");
+  }
+  
+  public Task<TResult> addOnCanceledListener(OnCanceledListener paramOnCanceledListener)
+  {
+    throw new UnsupportedOperationException("addOnCanceledListener is not implemented.");
+  }
+  
+  public Task<TResult> addOnCanceledListener(Executor paramExecutor, OnCanceledListener paramOnCanceledListener)
+  {
+    throw new UnsupportedOperationException("addOnCanceledListener is not implemented");
+  }
+  
   public Task<TResult> addOnCompleteListener(Activity paramActivity, OnCompleteListener<TResult> paramOnCompleteListener)
   {
     throw new UnsupportedOperationException("addOnCompleteListener is not implemented");
@@ -58,13 +73,25 @@ public abstract class Task<TResult>
   
   public abstract <X extends Throwable> TResult getResult(Class<X> paramClass);
   
+  public abstract boolean isCanceled();
+  
   public abstract boolean isComplete();
   
   public abstract boolean isSuccessful();
+  
+  public <TContinuationResult> Task<TContinuationResult> onSuccessTask(SuccessContinuation<TResult, TContinuationResult> paramSuccessContinuation)
+  {
+    throw new UnsupportedOperationException("onSuccessTask is not implemented");
+  }
+  
+  public <TContinuationResult> Task<TContinuationResult> onSuccessTask(Executor paramExecutor, SuccessContinuation<TResult, TContinuationResult> paramSuccessContinuation)
+  {
+    throw new UnsupportedOperationException("onSuccessTask is not implemented");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.tasks.Task
  * JD-Core Version:    0.7.0.1
  */

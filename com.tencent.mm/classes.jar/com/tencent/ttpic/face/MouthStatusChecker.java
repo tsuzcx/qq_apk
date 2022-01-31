@@ -1,26 +1,34 @@
 package com.tencent.ttpic.face;
 
-import com.tencent.ttpic.model.StickerItem.FeatureStatValueRange;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.model.StickerItem.ValueRange;
 
 public class MouthStatusChecker
   implements FaceStatusChecker
 {
-  private static MouthStatusChecker instance = new MouthStatusChecker();
+  private static MouthStatusChecker instance;
+  
+  static
+  {
+    AppMethodBeat.i(81899);
+    instance = new MouthStatusChecker();
+    AppMethodBeat.o(81899);
+  }
   
   public static MouthStatusChecker getInstance()
   {
     return instance;
   }
   
-  public float getLevel(FaceRangeStatus paramFaceRangeStatus, StickerItem.FeatureStatValueRange paramFeatureStatValueRange)
+  public float getLevel(FaceRangeStatus paramFaceRangeStatus, StickerItem.ValueRange paramValueRange)
   {
     return paramFaceRangeStatus.mouth;
   }
   
-  public boolean isInRange(FaceRangeStatus paramFaceRangeStatus, StickerItem.FeatureStatValueRange paramFeatureStatValueRange)
+  public boolean isInRange(FaceRangeStatus paramFaceRangeStatus, StickerItem.ValueRange paramValueRange)
   {
-    if ((paramFaceRangeStatus == null) || (paramFeatureStatValueRange == null)) {}
-    while ((paramFaceRangeStatus.mouth < paramFeatureStatValueRange.min) || (paramFaceRangeStatus.mouth > paramFeatureStatValueRange.max)) {
+    if ((paramFaceRangeStatus == null) || (paramValueRange == null)) {}
+    while ((paramFaceRangeStatus.mouth < paramValueRange.min) || (paramFaceRangeStatus.mouth > paramValueRange.max)) {
       return false;
     }
     return true;

@@ -1,62 +1,71 @@
 package com.tencent.mm.cm;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import java.lang.reflect.Field;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.j;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
-  implements Application.ActivityLifecycleCallbacks
 {
-  private Application application;
+  private long AZx;
+  private final byte[] eFQ;
   
-  private b(Application paramApplication)
+  public b()
   {
-    this.application = paramApplication;
+    AppMethodBeat.i(123364);
+    this.eFQ = new byte[1];
+    this.AZx = -1L;
+    AppMethodBeat.o(123364);
   }
   
-  public static void g(Application paramApplication)
+  public final void dTf()
   {
-    if ((Build.MANUFACTURER.equals("samsung")) && (Build.VERSION.SDK_INT >= 19) && (Build.VERSION.SDK_INT <= 24)) {
-      paramApplication.registerActivityLifecycleCallbacks(new b(paramApplication));
+    AppMethodBeat.i(123365);
+    for (;;)
+    {
+      synchronized (this.eFQ)
+      {
+        if (this.eFQ[0] == 0)
+        {
+          this.eFQ[0] = 1;
+          this.AZx = Thread.currentThread().getId();
+          j.i("MicroMsg.WxConsumedLock", "lock %s", new Object[] { this });
+          AppMethodBeat.o(123365);
+          return;
+        }
+        try
+        {
+          if (this.AZx != Thread.currentThread().getId())
+          {
+            j.i("MicroMsg.WxConsumedLock", "lock waiting %s", new Object[] { this });
+            this.eFQ.wait();
+            j.d("MicroMsg.WxConsumedLock", "unlock waiting %s", new Object[] { this });
+          }
+        }
+        catch (InterruptedException localInterruptedException)
+        {
+          ab.printErrStackTrace("MicroMsg.WxConsumedLock", localInterruptedException, "", new Object[0]);
+        }
+      }
+      j.d("MicroMsg.WxConsumedLock", "reenter lock not need waiting %s", new Object[] { this });
     }
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityDestroyed(Activity paramActivity)
+  public final void done()
   {
-    try
+    AppMethodBeat.i(123366);
+    synchronized (this.eFQ)
     {
-      paramActivity = Class.forName("com.samsung.android.emergencymode.SemEmergencyManager");
-      Object localObject = paramActivity.getDeclaredField("sInstance");
-      ((Field)localObject).setAccessible(true);
-      localObject = ((Field)localObject).get(null);
-      paramActivity = paramActivity.getDeclaredField("mContext");
-      paramActivity.setAccessible(true);
-      paramActivity.set(localObject, this.application);
-      label45:
-      this.application.unregisterActivityLifecycleCallbacks(this);
+      if (this.eFQ[0] != 0)
+      {
+        this.eFQ[0] = 0;
+        this.AZx = -1L;
+        this.eFQ.notifyAll();
+        j.i("MicroMsg.WxConsumedLock", "notify done %s", new Object[] { this });
+      }
+      AppMethodBeat.o(123366);
       return;
     }
-    catch (Exception paramActivity)
-    {
-      break label45;
-    }
   }
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
 }
 
 

@@ -1,143 +1,155 @@
 package com.tencent.mm.game.report.api;
 
-import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameWebPerformanceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameWebPerformanceInfo> CREATOR = new GameWebPerformanceInfo.1();
-  private static Map<String, GameWebPerformanceInfo> dCW = new HashMap();
-  public int dCA;
-  public int dCB;
-  public int dCC;
-  public String dCD;
-  public long dCE;
-  public long dCF;
-  public long dCG;
-  public long dCH;
-  public long dCI;
-  public long dCJ;
-  public long dCK;
-  public long dCL;
-  public long dCM;
-  public long dCN;
-  public long dCO;
-  public long dCP;
-  public long dCQ;
-  public long dCR;
-  public long dCS;
-  public long dCT;
-  public long dCU;
-  public long dCV;
+  public static final Parcelable.Creator<GameWebPerformanceInfo> CREATOR;
+  private static Map<String, GameWebPerformanceInfo> eAw;
+  public long eAa;
+  public long eAb;
+  public long eAc;
+  public long eAd;
+  public long eAe;
+  public long eAf;
+  public long eAg;
+  public long eAh;
+  public long eAi;
+  public long eAj;
+  public long eAk;
+  public long eAl;
+  public long eAm;
+  public long eAn;
+  public long eAo;
+  public long eAp;
+  public long eAq;
+  public long eAr;
+  public long eAs;
+  public String eAt;
+  public String eAu;
+  public String eAv;
+  public String ezP;
+  public int ezQ;
+  public int ezR;
+  public int ezS;
+  public int ezT;
+  public int ezU;
+  public int ezV;
+  public int ezW;
+  public int ezX;
+  public String ezY;
+  public long ezZ;
   public long startTime;
   public String url;
+  
+  static
+  {
+    AppMethodBeat.i(128618);
+    CREATOR = new GameWebPerformanceInfo.1();
+    eAw = new HashMap();
+    AppMethodBeat.o(128618);
+  }
   
   public GameWebPerformanceInfo() {}
   
   private GameWebPerformanceInfo(Parcel paramParcel)
   {
+    AppMethodBeat.i(128613);
     this.url = paramParcel.readString();
-    this.dCA = paramParcel.readInt();
-    this.dCB = paramParcel.readInt();
-    this.dCC = paramParcel.readInt();
-    this.dCD = paramParcel.readString();
+    this.ezP = paramParcel.readString();
+    this.ezQ = paramParcel.readInt();
+    this.ezR = paramParcel.readInt();
+    this.ezS = paramParcel.readInt();
+    this.ezT = paramParcel.readInt();
+    this.ezU = paramParcel.readInt();
+    this.ezV = paramParcel.readInt();
+    this.ezW = paramParcel.readInt();
+    this.ezX = paramParcel.readInt();
+    this.ezY = paramParcel.readString();
     this.startTime = paramParcel.readLong();
-    this.dCE = paramParcel.readLong();
-    this.dCF = paramParcel.readLong();
-    this.dCG = paramParcel.readLong();
-    this.dCH = paramParcel.readLong();
-    this.dCI = paramParcel.readLong();
-    this.dCJ = paramParcel.readLong();
-    this.dCK = paramParcel.readLong();
-    this.dCL = paramParcel.readLong();
-    this.dCM = paramParcel.readLong();
-    this.dCN = paramParcel.readLong();
-    this.dCO = paramParcel.readLong();
-    this.dCP = paramParcel.readLong();
-    this.dCQ = paramParcel.readLong();
-    this.dCR = paramParcel.readLong();
-    this.dCS = paramParcel.readLong();
-    this.dCT = paramParcel.readLong();
-    this.dCU = paramParcel.readLong();
-    this.dCV = paramParcel.readLong();
+    this.ezZ = paramParcel.readLong();
+    this.eAa = paramParcel.readLong();
+    this.eAb = paramParcel.readLong();
+    this.eAc = paramParcel.readLong();
+    this.eAd = paramParcel.readLong();
+    this.eAe = paramParcel.readLong();
+    this.eAf = paramParcel.readLong();
+    this.eAg = paramParcel.readLong();
+    this.eAh = paramParcel.readLong();
+    this.eAi = paramParcel.readLong();
+    this.eAj = paramParcel.readLong();
+    this.eAk = paramParcel.readLong();
+    this.eAl = paramParcel.readLong();
+    this.eAm = paramParcel.readLong();
+    this.eAn = paramParcel.readLong();
+    this.eAo = paramParcel.readLong();
+    this.eAp = paramParcel.readLong();
+    this.eAq = paramParcel.readLong();
+    this.eAr = paramParcel.readLong();
+    this.eAs = paramParcel.readLong();
+    this.eAt = paramParcel.readString();
+    this.eAu = paramParcel.readString();
+    this.eAv = paramParcel.readString();
+    AppMethodBeat.o(128613);
   }
   
-  /* Error */
-  public static GameWebPerformanceInfo fv(String paramString)
+  public static GameWebPerformanceInfo lN(String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokestatic 127	com/tencent/mm/game/report/api/GameWebPerformanceInfo:fx	(Ljava/lang/String;)Ljava/lang/String;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: invokestatic 133	com/tencent/mm/sdk/platformtools/bk:bl	(Ljava/lang/String;)Z
-    //   12: ifeq +16 -> 28
-    //   15: new 2	com/tencent/mm/game/report/api/GameWebPerformanceInfo
-    //   18: dup
-    //   19: invokespecial 134	com/tencent/mm/game/report/api/GameWebPerformanceInfo:<init>	()V
-    //   22: astore_0
-    //   23: ldc 2
-    //   25: monitorexit
-    //   26: aload_0
-    //   27: areturn
-    //   28: getstatic 53	com/tencent/mm/game/report/api/GameWebPerformanceInfo:dCW	Ljava/util/Map;
-    //   31: aload_1
-    //   32: invokeinterface 140 2 0
-    //   37: ifeq +19 -> 56
-    //   40: getstatic 53	com/tencent/mm/game/report/api/GameWebPerformanceInfo:dCW	Ljava/util/Map;
-    //   43: aload_1
-    //   44: invokeinterface 144 2 0
-    //   49: checkcast 2	com/tencent/mm/game/report/api/GameWebPerformanceInfo
-    //   52: astore_0
-    //   53: goto -30 -> 23
-    //   56: new 2	com/tencent/mm/game/report/api/GameWebPerformanceInfo
-    //   59: dup
-    //   60: invokespecial 134	com/tencent/mm/game/report/api/GameWebPerformanceInfo:<init>	()V
-    //   63: astore_0
-    //   64: getstatic 53	com/tencent/mm/game/report/api/GameWebPerformanceInfo:dCW	Ljava/util/Map;
-    //   67: aload_1
-    //   68: aload_0
-    //   69: invokeinterface 148 3 0
-    //   74: pop
-    //   75: goto -52 -> 23
-    //   78: astore_0
-    //   79: ldc 2
-    //   81: monitorexit
-    //   82: aload_0
-    //   83: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	84	0	paramString	String
-    //   7	61	1	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	23	78	finally
-    //   28	53	78	finally
-    //   56	75	78	finally
-  }
-  
-  public static GameWebPerformanceInfo fw(String paramString)
-  {
-    return (GameWebPerformanceInfo)dCW.remove(fx(paramString));
-  }
-  
-  private static String fx(String paramString)
-  {
-    if (bk.bl(paramString)) {
-      return "";
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(128615);
+        if (bo.isNullOrNil(paramString))
+        {
+          paramString = new GameWebPerformanceInfo();
+          AppMethodBeat.o(128615);
+          return paramString;
+        }
+        if (eAw.containsKey(paramString))
+        {
+          paramString = (GameWebPerformanceInfo)eAw.get(paramString);
+          AppMethodBeat.o(128615);
+          continue;
+        }
+        localGameWebPerformanceInfo = new GameWebPerformanceInfo();
+      }
+      finally {}
+      GameWebPerformanceInfo localGameWebPerformanceInfo;
+      eAw.put(paramString, localGameWebPerformanceInfo);
+      AppMethodBeat.o(128615);
+      paramString = localGameWebPerformanceInfo;
     }
-    paramString = Uri.parse(paramString);
-    paramString = paramString.getScheme() + "://" + paramString.getHost() + paramString.getPath();
-    y.i("MicroMsg.GameWebPerformanceInfo", "getDomainAndPath, newUrl: %s", new Object[] { paramString });
+  }
+  
+  public static GameWebPerformanceInfo lO(String paramString)
+  {
+    try
+    {
+      AppMethodBeat.i(128616);
+      if (eAw.containsKey(paramString)) {
+        eAw.remove(paramString);
+      }
+      GameWebPerformanceInfo localGameWebPerformanceInfo = new GameWebPerformanceInfo();
+      eAw.put(paramString, localGameWebPerformanceInfo);
+      AppMethodBeat.o(128616);
+      return localGameWebPerformanceInfo;
+    }
+    finally {}
+  }
+  
+  public static GameWebPerformanceInfo lP(String paramString)
+  {
+    AppMethodBeat.i(128617);
+    paramString = (GameWebPerformanceInfo)eAw.remove(paramString);
+    AppMethodBeat.o(128617);
     return paramString;
   }
   
@@ -146,37 +158,58 @@ public class GameWebPerformanceInfo
     return 0;
   }
   
+  public String toString()
+  {
+    AppMethodBeat.i(128614);
+    String str = String.format("url: %s, isLuggage: %d, isWePkg: %d, isPreloadWebCore: %d, isFirstPage: %d, usedCacheUinKey: %d, jsapiCanUsed: %d, hasFloatLayer: %d, pkgId: %s,startTime: %d, gameCenterUICreate: %d, startWebUI: %d, preloadWePkgBgn: %d,preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d, webUICreate: %d, webUIOnShowBgn: %d, createViewBgn: %d,createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d,onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInFront: %d, webUIDestroy: %d, commJsVersion: %s, pkgVersion: %s, jsBridgeErrMsg: %s", new Object[] { this.url, Integer.valueOf(this.ezQ), Integer.valueOf(this.ezR), Integer.valueOf(this.ezS), Integer.valueOf(this.ezT), Integer.valueOf(this.ezU), Integer.valueOf(this.ezW), Integer.valueOf(this.ezX), this.ezY, Long.valueOf(this.startTime), Long.valueOf(this.ezZ), Long.valueOf(this.eAa), Long.valueOf(this.eAd), Long.valueOf(this.eAc), Long.valueOf(this.eAd), Long.valueOf(this.eAe), Long.valueOf(this.eAf), Long.valueOf(this.eAg), Long.valueOf(this.eAh), Long.valueOf(this.eAi), Long.valueOf(this.eAj), Long.valueOf(this.eAk), Long.valueOf(this.eAl), Long.valueOf(this.eAm), Long.valueOf(this.eAn), Long.valueOf(this.eAo), Long.valueOf(this.eAp), Long.valueOf(this.eAq), this.eAt, this.eAu, this.eAv });
+    AppMethodBeat.o(128614);
+    return str;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(128612);
     paramParcel.writeString(this.url);
-    paramParcel.writeInt(this.dCA);
-    paramParcel.writeInt(this.dCB);
-    paramParcel.writeInt(this.dCC);
-    paramParcel.writeString(this.dCD);
+    paramParcel.writeString(this.ezP);
+    paramParcel.writeInt(this.ezQ);
+    paramParcel.writeInt(this.ezR);
+    paramParcel.writeInt(this.ezS);
+    paramParcel.writeInt(this.ezT);
+    paramParcel.writeInt(this.ezU);
+    paramParcel.writeInt(this.ezV);
+    paramParcel.writeInt(this.ezW);
+    paramParcel.writeInt(this.ezX);
+    paramParcel.writeString(this.ezY);
     paramParcel.writeLong(this.startTime);
-    paramParcel.writeLong(this.dCE);
-    paramParcel.writeLong(this.dCF);
-    paramParcel.writeLong(this.dCG);
-    paramParcel.writeLong(this.dCH);
-    paramParcel.writeLong(this.dCI);
-    paramParcel.writeLong(this.dCJ);
-    paramParcel.writeLong(this.dCK);
-    paramParcel.writeLong(this.dCL);
-    paramParcel.writeLong(this.dCM);
-    paramParcel.writeLong(this.dCN);
-    paramParcel.writeLong(this.dCO);
-    paramParcel.writeLong(this.dCP);
-    paramParcel.writeLong(this.dCQ);
-    paramParcel.writeLong(this.dCR);
-    paramParcel.writeLong(this.dCS);
-    paramParcel.writeLong(this.dCT);
-    paramParcel.writeLong(this.dCU);
-    paramParcel.writeLong(this.dCV);
+    paramParcel.writeLong(this.ezZ);
+    paramParcel.writeLong(this.eAa);
+    paramParcel.writeLong(this.eAb);
+    paramParcel.writeLong(this.eAc);
+    paramParcel.writeLong(this.eAd);
+    paramParcel.writeLong(this.eAe);
+    paramParcel.writeLong(this.eAf);
+    paramParcel.writeLong(this.eAg);
+    paramParcel.writeLong(this.eAh);
+    paramParcel.writeLong(this.eAi);
+    paramParcel.writeLong(this.eAj);
+    paramParcel.writeLong(this.eAk);
+    paramParcel.writeLong(this.eAl);
+    paramParcel.writeLong(this.eAm);
+    paramParcel.writeLong(this.eAn);
+    paramParcel.writeLong(this.eAo);
+    paramParcel.writeLong(this.eAp);
+    paramParcel.writeLong(this.eAq);
+    paramParcel.writeLong(this.eAr);
+    paramParcel.writeLong(this.eAs);
+    paramParcel.writeString(this.eAt);
+    paramParcel.writeString(this.eAu);
+    paramParcel.writeString(this.eAv);
+    AppMethodBeat.o(128612);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.game.report.api.GameWebPerformanceInfo
  * JD-Core Version:    0.7.0.1
  */

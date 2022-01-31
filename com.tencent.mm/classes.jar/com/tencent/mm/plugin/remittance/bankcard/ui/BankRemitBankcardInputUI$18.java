@@ -5,9 +5,10 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.bankcard.model.TransferRecordParcel;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class BankRemitBankcardInputUI$18
   implements AdapterView.OnItemClickListener
@@ -16,14 +17,16 @@ final class BankRemitBankcardInputUI$18
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    y.i("MicroMsg.BankRemitBankcardInputUI", "popup window click: %d", new Object[] { Integer.valueOf(paramInt) });
-    BankRemitBankcardInputUI.a(this.nwd, false);
-    BankRemitBankcardInputUI.a(this.nwd, (TransferRecordParcel)paramAdapterView.getAdapter().getItem(paramInt));
-    BankRemitBankcardInputUI.E(this.nwd);
-    BankRemitBankcardInputUI.a(this.nwd, BankRemitBankcardInputUI.F(this.nwd).nvy, BankRemitBankcardInputUI.A(this.nwd), BankRemitBankcardInputUI.F(this.nwd).mOb);
-    ai.l(new BankRemitBankcardInputUI.18.1(this), 500L);
-    BankRemitBankcardInputUI.f(this.nwd).dismiss();
-    this.nwd.XM();
+    AppMethodBeat.i(44533);
+    ab.i("MicroMsg.BankRemitBankcardInputUI", "popup window click: %d", new Object[] { Integer.valueOf(paramInt) });
+    BankRemitBankcardInputUI.a(this.qhe, false);
+    BankRemitBankcardInputUI.a(this.qhe, (TransferRecordParcel)paramAdapterView.getAdapter().getItem(paramInt));
+    BankRemitBankcardInputUI.R(this.qhe);
+    BankRemitBankcardInputUI.a(this.qhe, BankRemitBankcardInputUI.S(this.qhe).qgu, BankRemitBankcardInputUI.L(this.qhe), BankRemitBankcardInputUI.S(this.qhe).poq);
+    al.p(new BankRemitBankcardInputUI.18.1(this), 500L);
+    BankRemitBankcardInputUI.f(this.qhe).dismiss();
+    this.qhe.hideVKB();
+    AppMethodBeat.o(44533);
   }
 }
 

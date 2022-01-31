@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fts.ui.widget;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSEditTextView$7
   implements View.OnFocusChangeListener
@@ -10,9 +11,11 @@ final class FTSEditTextView$7
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (FTSEditTextView.h(this.kEA) != null) {
-      FTSEditTextView.h(this.kEA).gn(paramBoolean);
+    AppMethodBeat.i(62111);
+    if (FTSEditTextView.h(this.naY) != null) {
+      FTSEditTextView.h(this.naY).hQ(paramBoolean);
     }
+    AppMethodBeat.o(62111);
   }
 }
 

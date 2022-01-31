@@ -1,84 +1,59 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.content.Context;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mm.sdk.platformtools.y;
+import android.graphics.Bitmap;
 
-public final class e
-  implements r.a
+public abstract interface e
 {
-  public static e sma = null;
-  public boolean hasInit = false;
-  private SensorEventListener ryR;
-  private float[] slW = new float[3];
-  int slX = -10000;
-  int slY = -10000;
-  private SensorManager slZ;
+  public abstract void A(double paramDouble);
   
-  private void coi()
-  {
-    y.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-    if ((this.slZ != null) && (this.ryR != null))
-    {
-      y.d("MicroMsg.HeadingPitchSensorMgr", "releaseSensor");
-      this.slZ.unregisterListener(this.ryR);
-      this.slZ = null;
-      this.ryR = null;
-    }
-    this.hasInit = false;
-  }
+  public abstract void e(double paramDouble, boolean paramBoolean);
   
-  public final void cfi()
-  {
-    sma = null;
-    coi();
-  }
+  public abstract int getCurrentPosition();
   
-  public final void cfj()
-  {
-    coi();
-  }
+  public abstract int getDuration();
   
-  public final int coh()
-  {
-    y.d("MicroMsg.HeadingPitchSensorMgr", "getHeading() " + this.slX);
-    return this.slX;
-  }
+  public abstract double getLastProgresstime();
   
-  public final void eA(Context paramContext)
-  {
-    eZ(paramContext);
-  }
+  public abstract long getLastSurfaceUpdateTime();
   
-  public final void eZ(Context paramContext)
-  {
-    y.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() ");
-    if (paramContext == null)
-    {
-      y.e("MicroMsg.HeadingPitchSensorMgr", "initSensor() context == null");
-      return;
-    }
-    if (this.slZ == null) {
-      this.slZ = ((SensorManager)paramContext.getSystemService("sensor"));
-    }
-    if (this.ryR == null) {
-      this.ryR = new e.1(this);
-    }
-    boolean bool = this.slZ.registerListener(this.ryR, this.slZ.getDefaultSensor(3), 3);
-    this.hasInit = true;
-    y.d("MicroMsg.HeadingPitchSensorMgr", "initSensor() finish, %s", new Object[] { Boolean.valueOf(bool) });
-  }
+  public abstract String getVideoPath();
   
-  public final String getName()
-  {
-    return "HeadingPitchSensorMgr";
-  }
+  public abstract boolean isPlaying();
   
-  public final int getPitch()
+  public abstract void onDetach();
+  
+  public abstract void pause();
+  
+  public abstract void setLoop(boolean paramBoolean);
+  
+  public abstract void setMute(boolean paramBoolean);
+  
+  public abstract void setOnInfoCallback(e.b paramb);
+  
+  public abstract void setOnSeekCompleteCallback(e.c paramc);
+  
+  public abstract void setOnSurfaceCallback(d paramd);
+  
+  public abstract void setOneTimeVideoTextureUpdateCallback(e.e parame);
+  
+  public abstract void setPlayProgressCallback(boolean paramBoolean);
+  
+  public abstract void setThumb(Bitmap paramBitmap);
+  
+  public abstract void setVideoCallback(e.a parama);
+  
+  public abstract void setVideoPath(String paramString);
+  
+  public abstract boolean start();
+  
+  public abstract void stop();
+  
+  public abstract boolean w(Context paramContext, boolean paramBoolean);
+  
+  public static abstract interface d
   {
-    y.d("MicroMsg.HeadingPitchSensorMgr", "getPitch() " + this.slY);
-    return this.slY;
+    public abstract void alr();
   }
 }
 

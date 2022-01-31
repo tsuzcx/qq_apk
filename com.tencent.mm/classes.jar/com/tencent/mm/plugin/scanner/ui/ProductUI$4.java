@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import com.tencent.mm.av.a;
-import com.tencent.mm.av.a.7;
-import com.tencent.mm.av.f;
-import com.tencent.mm.plugin.scanner.c;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.a;
+import com.tencent.mm.aw.a.7;
+import com.tencent.mm.aw.f;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -19,72 +21,78 @@ final class ProductUI$4
   
   public final void d(MusicPreference paramMusicPreference)
   {
-    if (paramMusicPreference == null) {
-      y.e("MicroMsg.scanner.ProductUI", "onMusicPrefClick, musicPref == null");
-    }
-    do
+    AppMethodBeat.i(81082);
+    if (paramMusicPreference == null)
     {
+      ab.e("MicroMsg.scanner.ProductUI", "onMusicPrefClick, musicPref == null");
+      AppMethodBeat.o(81082);
       return;
-      if ((!bk.bl(paramMusicPreference.nGD)) || (!bk.bl(paramMusicPreference.nGE))) {
-        break;
+    }
+    if ((bo.isNullOrNil(paramMusicPreference.qtT)) && (bo.isNullOrNil(paramMusicPreference.qtU)))
+    {
+      ab.w("MicroMsg.scanner.ProductUI", "wifiurl = null,  wapurl = null");
+      if (!bo.isNullOrNil(paramMusicPreference.qtV)) {
+        ProductUI.a(this.qyh, paramMusicPreference.qtV);
       }
-      y.w("MicroMsg.scanner.ProductUI", "wifiurl = null,  wapurl = null");
-    } while (bk.bl(paramMusicPreference.nGF));
-    ProductUI.a(this.nKF, paramMusicPreference.nGF);
-    return;
-    String str1 = String.format("%s_cd_%s", new Object[] { paramMusicPreference.nGD, paramMusicPreference.mKey });
+      AppMethodBeat.o(81082);
+      return;
+    }
+    String str1 = String.format("%s_cd_%s", new Object[] { paramMusicPreference.qtT, paramMusicPreference.mKey });
     int j;
-    label124:
     ArrayList localArrayList;
     int i;
-    label173:
+    label193:
     MusicPreference localMusicPreference;
     String str2;
-    if (!ProductUI.Me(str1))
+    if (!ProductUI.YG(str1))
     {
       if (paramMusicPreference.getTitle() == null)
       {
-        y.e("MicroMsg.scanner.ProductUI", "onPlayBtnClick, getTitle() == null");
+        ab.e("MicroMsg.scanner.ProductUI", "onPlayBtnClick, getTitle() == null");
+        AppMethodBeat.o(81082);
         return;
       }
       j = -1;
-      if (ProductUI.m(this.nKF) == null)
+      if (ProductUI.o(this.qyh) == null)
       {
         str1 = null;
-        paramMusicPreference = String.format("%s_cd_%s", new Object[] { paramMusicPreference.nGD, paramMusicPreference.mKey });
+        paramMusicPreference = String.format("%s_cd_%s", new Object[] { paramMusicPreference.qtT, paramMusicPreference.mKey });
         localArrayList = new ArrayList();
-        Iterator localIterator = ProductUI.n(this.nKF).iterator();
+        Iterator localIterator = ProductUI.p(this.qyh).iterator();
         i = 0;
         if (!localIterator.hasNext()) {
-          break label307;
+          break label330;
         }
         localMusicPreference = (MusicPreference)localIterator.next();
-        str2 = String.format("%s_cd_%s", new Object[] { localMusicPreference.nGD, localMusicPreference.mKey });
+        str2 = String.format("%s_cd_%s", new Object[] { localMusicPreference.qtT, localMusicPreference.mKey });
         if (!paramMusicPreference.equals(str2)) {
-          break label354;
+          break label388;
         }
         j = i;
       }
     }
-    label307:
-    label354:
+    label388:
     for (;;)
     {
-      localArrayList.add(f.a(5, str1, localMusicPreference.getTitle().toString(), "", localMusicPreference.nGF, localMusicPreference.nGE, localMusicPreference.nGD, str2, c.FU(), str1, "", "wx482a4001c37e2b74"));
+      localArrayList.add(f.a(5, str1, localMusicPreference.getTitle().toString(), "", localMusicPreference.qtV, localMusicPreference.qtU, localMusicPreference.qtT, str2, g.RL().eHR, str1, "", "wx482a4001c37e2b74"));
       i += 1;
-      break label173;
-      str1 = ProductUI.m(this.nKF).UO();
-      break label124;
-      if (j < 0) {
-        break;
+      break label193;
+      str1 = ProductUI.o(this.qyh).aon();
+      break;
+      label330:
+      if (j < 0)
+      {
+        AppMethodBeat.o(81082);
+        return;
       }
-      ai.d(new a.7(localArrayList, j));
+      al.d(new a.7(localArrayList, j));
       for (;;)
       {
-        ProductUI.o(this.nKF);
+        ProductUI.q(this.qyh);
+        AppMethodBeat.o(81082);
         return;
-        a.Ps();
-        y.d("MicroMsg.scanner.ProductUI", "isTheSameId, playMusicId : [%s]", new Object[] { str1 });
+        a.aiu();
+        ab.d("MicroMsg.scanner.ProductUI", "isTheSameId, playMusicId : [%s]", new Object[] { str1 });
       }
     }
   }

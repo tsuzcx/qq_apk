@@ -2,32 +2,34 @@ package com.tencent.mm.app.plugin;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.modelsimple.aa;
-import com.tencent.mm.pluginsdk.d.a;
-import com.tencent.mm.protocal.c.byy;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.modelsimple.ab;
+import com.tencent.mm.pluginsdk.e.a;
+import com.tencent.mm.protocal.protobuf.clr;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 
 final class URISpanHandlerSet$DeeplinkUriSpanHandler$4
-  implements d.a
+  implements e.a
 {
   URISpanHandlerSet$DeeplinkUriSpanHandler$4(URISpanHandlerSet.DeeplinkUriSpanHandler paramDeeplinkUriSpanHandler, p paramp) {}
   
   public final void a(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
   {
-    if ((this.byu != null) && (this.byu.isShowing())) {
-      this.byu.dismiss();
+    AppMethodBeat.i(15648);
+    if ((this.caw != null) && (this.caw.isShowing())) {
+      this.caw.dismiss();
     }
-    if ((paramm != null) && (paramInt1 != 0) && (paramInt2 != 0) && ((paramm instanceof aa)))
+    if ((paramm != null) && (paramInt1 != 0) && (paramInt2 != 0) && ((paramm instanceof ab)))
     {
-      paramString = ((aa)paramm).QR();
-      if ((paramString != null) && (URISpanHandlerSet.a(this.bys.byk) != null)) {
-        s.makeText(URISpanHandlerSet.a(this.bys.byk), URISpanHandlerSet.a(this.bys.byk).getString(R.l.app_tip) + " : " + bk.pm(paramString.tOY), 0).show();
+      paramString = ((ab)paramm).ajY();
+      if ((paramString != null) && (URISpanHandlerSet.a(this.cau.cam) != null)) {
+        t.makeText(URISpanHandlerSet.a(this.cau.cam), URISpanHandlerSet.a(this.cau.cam).getString(2131297087) + " : " + bo.nullAsNil(paramString.xVH), 0).show();
       }
     }
+    AppMethodBeat.o(15648);
   }
 }
 

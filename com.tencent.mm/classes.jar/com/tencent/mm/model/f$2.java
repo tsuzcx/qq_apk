@@ -1,7 +1,8 @@
 package com.tencent.mm.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.secinforeport.a.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 
 final class f$2
@@ -11,13 +12,16 @@ final class f$2
   
   public final void run()
   {
-    int i = bk.getInt((String)this.dUG.get(".sysmsg.ClientCheckGetExtInfo.ReportContext"), 0);
-    if (bk.getInt((String)this.dUG.get(".sysmsg.ClientCheckGetExtInfo.Basic"), 0) != 0)
+    AppMethodBeat.i(16264);
+    int i = bo.getInt((String)this.fkP.get(".sysmsg.ClientCheckGetExtInfo.ReportContext"), 0);
+    if (bo.getInt((String)this.fkP.get(".sysmsg.ClientCheckGetExtInfo.Basic"), 0) != 0)
     {
-      d.nQr.dI(i, 0);
+      d.qEo.fq(i, 0);
+      AppMethodBeat.o(16264);
       return;
     }
-    d.nQr.dI(i, 15);
+    d.qEo.fq(i, 15);
+    AppMethodBeat.o(16264);
   }
 }
 

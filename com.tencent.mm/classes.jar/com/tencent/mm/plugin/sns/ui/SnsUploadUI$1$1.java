@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsUploadUI$1$1
   implements Runnable
@@ -9,9 +10,11 @@ final class SnsUploadUI$1$1
   
   public final void run()
   {
-    SnsUploadUI.a(this.pjq.pjp).bJW();
-    SnsUploadUI.a(this.pjq.pjp).postInvalidate();
-    SnsUploadUI.b(this.pjq.pjp).postInvalidate();
+    AppMethodBeat.i(39735);
+    SnsUploadUI.a(this.sbS.sbR).baa();
+    SnsUploadUI.a(this.sbS.sbR).postInvalidate();
+    SnsUploadUI.b(this.sbS.sbR).postInvalidate();
+    AppMethodBeat.o(39735);
   }
 }
 

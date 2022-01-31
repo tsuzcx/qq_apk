@@ -1,52 +1,27 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.plugin.sns.ui.be;
-import com.tencent.mm.protocal.c.bxk;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.data.g;
+import com.tencent.mm.pluginsdk.model.k;
+import com.tencent.mm.sdk.g.b.a;
+import java.io.OutputStream;
 
 public final class at
-  implements e
+  extends k<g, String, Boolean>
 {
-  public List<WeakReference<e>> otS = new LinkedList();
+  private String cBO;
+  private String fileName;
+  private String fss;
+  private OutputStream output = null;
+  private String reC;
+  private String reG = "";
   
-  public final void a(int paramInt, String paramString, long paramLong, bxk parambxk, boolean paramBoolean)
+  public final a cjN()
   {
-    Iterator localIterator = this.otS.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((e)localWeakReference.get()).a(paramInt, paramString, paramLong, parambxk, paramBoolean);
-      }
-    }
-  }
-  
-  public final void a(int paramInt, String paramString, long paramLong, bxk parambxk, boolean paramBoolean, be parambe)
-  {
-    Iterator localIterator = this.otS.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((e)localWeakReference.get()).a(paramInt, paramString, paramLong, parambxk, paramBoolean, parambe);
-      }
-    }
-  }
-  
-  public final void a(e parame)
-  {
-    Iterator localIterator = this.otS.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((e)localWeakReference.get()).equals(parame))) {
-        return;
-      }
-    }
-    this.otS.add(new WeakReference(parame));
+    AppMethodBeat.i(36667);
+    a locala = ag.coR();
+    AppMethodBeat.o(36667);
+    return locala;
   }
 }
 

@@ -11,19 +11,19 @@ public final class d
     super(paramAuthen, paramOrders, paramBoolean);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 1536;
+    return 1867;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sns_ff_authen";
+    return "/cgi-bin/mmpay-bin/tenpay/dc_authen";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.a.d
  * JD-Core Version:    0.7.0.1
  */

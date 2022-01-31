@@ -5,7 +5,8 @@ import android.text.Editable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class MMTagPanel$6
@@ -15,18 +16,20 @@ final class MMTagPanel$6
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.MMTagPanel", "on panel click, enableEditMode %B", new Object[] { Boolean.valueOf(MMTagPanel.f(this.uYn)) });
-    if (MMTagPanel.f(this.uYn))
+    AppMethodBeat.i(106815);
+    ab.d("MicroMsg.MMTagPanel", "on panel click, enableEditMode %B", new Object[] { Boolean.valueOf(MMTagPanel.f(this.zmE)) });
+    if (MMTagPanel.f(this.zmE))
     {
-      this.uYn.cBd();
-      MMTagPanel.a(this.uYn).requestFocus();
-      MMTagPanel.a(this.uYn).setSelection(MMTagPanel.a(this.uYn).getText().length());
-      ((InputMethodManager)this.uYn.getContext().getSystemService("input_method")).showSoftInput(MMTagPanel.a(this.uYn), 0);
-      y.d("MicroMsg.MMTagPanel", "on content click");
-      if (MMTagPanel.e(this.uYn) != null) {
-        MMTagPanel.e(this.uYn).aJI();
+      this.zmE.dEq();
+      MMTagPanel.a(this.zmE).requestFocus();
+      MMTagPanel.a(this.zmE).setSelection(MMTagPanel.a(this.zmE).getText().length());
+      ((InputMethodManager)this.zmE.getContext().getSystemService("input_method")).showSoftInput(MMTagPanel.a(this.zmE), 0);
+      ab.d("MicroMsg.MMTagPanel", "on content click");
+      if (MMTagPanel.e(this.zmE) != null) {
+        MMTagPanel.e(this.zmE).bnq();
       }
     }
+    AppMethodBeat.o(106815);
   }
 }
 

@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.luckymoney.f2f;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.media.SoundPool;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -18,33 +20,43 @@ public final class a$1
   
   public final void run()
   {
+    AppMethodBeat.i(42141);
     try
     {
-      Iterator localIterator = this.lNd.iterator();
-      while (localIterator.hasNext())
+      Iterator localIterator = this.okw.iterator();
+      for (;;)
       {
-        String str = (String)localIterator.next();
-        if ((this.lNe.get() == null) || (this.lNf.hMo)) {
-          break label124;
+        if (!localIterator.hasNext()) {
+          break label185;
         }
-        this.lNf.lNb.put(str, Integer.valueOf(this.lNf.lNa.load(((Context)this.lNe.get()).getResources().getAssets().openFd(str), 0)));
+        String str = (String)localIterator.next();
+        if ((this.okx.get() == null) || (this.oky.jFQ)) {
+          break;
+        }
+        AssetFileDescriptor localAssetFileDescriptor = ((Context)this.okx.get()).getResources().getAssets().openFd(str);
+        this.oky.oku.put(str, Integer.valueOf(this.oky.okt.load(localAssetFileDescriptor, 0)));
+        localAssetFileDescriptor.close();
       }
-      return;
+      ab.i("AsyncSoundPool", "context = null or soundPool is stopped");
     }
     catch (Exception localException)
     {
-      y.e("AsyncSoundPool", "load sound file error:" + localException.getMessage());
+      ab.e("AsyncSoundPool", "load sound file error:" + localException.getMessage());
+      AppMethodBeat.o(42141);
+      return;
     }
-    label124:
-    y.i("AsyncSoundPool", "context = null or soundPool is stopped");
-    this.lNf.lNa.release();
-    this.lNf.lNb.clear();
-    this.lNf.lNc.clear();
+    this.oky.okt.release();
+    this.oky.oku.clear();
+    this.oky.okv.clear();
+    AppMethodBeat.o(42141);
+    return;
+    label185:
+    AppMethodBeat.o(42141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.a.1
  * JD-Core Version:    0.7.0.1
  */

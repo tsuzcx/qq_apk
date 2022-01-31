@@ -1,36 +1,39 @@
 package com.tencent.mm.console;
 
-import com.tencent.mm.model.bi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.a.c;
 import com.tencent.mm.network.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$13
-  implements bi.a
+  implements bk.a
 {
   public final void a(e parame)
   {
-    if (parame == null) {}
-    for (;;)
+    AppMethodBeat.i(16094);
+    if (parame == null)
     {
+      AppMethodBeat.o(16094);
       return;
-      String[] arrayOfString = parame.getIPsString(true);
-      int i = 0;
-      while (i < arrayOfString.length)
-      {
-        y.d("MicroMsg.CommandProcessor", "dkip long:%d  %s", new Object[] { Integer.valueOf(i), arrayOfString[i] });
-        y.d("MicroMsg.CommandProcessor", "dkip long:%d %s", new Object[] { Integer.valueOf(i), c.oN(arrayOfString[i]).toString() });
-        i += 1;
-      }
-      parame = parame.getIPsString(false);
-      i = 0;
-      while (i < parame.length)
-      {
-        y.d("MicroMsg.CommandProcessor", "dkip short:%d %s", new Object[] { Integer.valueOf(i), parame[i] });
-        y.d("MicroMsg.CommandProcessor", "dkip long:%d %s", new Object[] { Integer.valueOf(i), c.oN(parame[i]).toString() });
-        i += 1;
-      }
     }
+    String[] arrayOfString = parame.getIPsString(true);
+    int i = 0;
+    while (i < arrayOfString.length)
+    {
+      ab.d("MicroMsg.CommandProcessor", "dkip long:%d  %s", new Object[] { Integer.valueOf(i), arrayOfString[i] });
+      ab.d("MicroMsg.CommandProcessor", "dkip long:%d %s", new Object[] { Integer.valueOf(i), c.wf(arrayOfString[i]).toString() });
+      i += 1;
+    }
+    parame = parame.getIPsString(false);
+    i = 0;
+    while (i < parame.length)
+    {
+      ab.d("MicroMsg.CommandProcessor", "dkip short:%d %s", new Object[] { Integer.valueOf(i), parame[i] });
+      ab.d("MicroMsg.CommandProcessor", "dkip long:%d %s", new Object[] { Integer.valueOf(i), c.wf(parame[i]).toString() });
+      i += 1;
+    }
+    AppMethodBeat.o(16094);
   }
 }
 

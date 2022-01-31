@@ -1,33 +1,25 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.widget.ScrollView;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.wallet_core.ui.a;
-import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletLqtSaveFetchUI$7
-  implements a
+  implements View.OnClickListener
 {
   WalletLqtSaveFetchUI$7(WalletLqtSaveFetchUI paramWalletLqtSaveFetchUI) {}
   
-  public final void gK(boolean paramBoolean)
+  public final void onClick(View paramView)
   {
-    if (paramBoolean) {
-      if (WalletLqtSaveFetchUI.h(this.qiZ) == 2) {
-        WalletLqtSaveFetchUI.p(this.qiZ);
-      }
-    }
-    do
+    AppMethodBeat.i(155073);
+    if (!WalletLqtSaveFetchUI.p(this.tRZ).isChecked()) {}
+    for (boolean bool = true;; bool = false)
     {
-      do
-      {
-        return;
-      } while (WalletLqtSaveFetchUI.h(this.qiZ) != 1);
-      WalletLqtSaveFetchUI.q(this.qiZ).post(new WalletLqtSaveFetchUI.7.1(this));
+      WalletLqtSaveFetchUI.p(this.tRZ).setChecked(bool);
+      AppMethodBeat.o(155073);
       return;
-      WalletLqtSaveFetchUI.q(this.qiZ).scrollTo(0, 0);
-    } while ((WalletLqtSaveFetchUI.h(this.qiZ) != 2) || (!bk.bl(WalletLqtSaveFetchUI.c(this.qiZ).getText())));
-    WalletLqtSaveFetchUI.s(this.qiZ);
+    }
   }
 }
 

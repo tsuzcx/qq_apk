@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class a$1
   
   public final void run()
   {
-    if (!this.okP.okc) {
-      this.okP.bCc();
+    AppMethodBeat.i(35700);
+    if (!this.qYY.qYn) {
+      this.qYY.kY(false);
     }
+    AppMethodBeat.o(35700);
   }
 }
 

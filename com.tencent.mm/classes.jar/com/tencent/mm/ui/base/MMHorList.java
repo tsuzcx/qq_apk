@@ -2,11 +2,9 @@ package com.tencent.mm.ui.base;
 
 import android.content.Context;
 import android.database.DataSetObserver;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.GestureDetector.OnGestureListener;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -16,98 +14,84 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ListAdapter;
 import android.widget.Scroller;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class MMHorList
   extends AdapterView<ListAdapter>
 {
-  private boolean mBn = false;
   private int offset;
-  private a uVV;
-  private int uVW;
-  private int uVX;
-  private int uVY;
-  private int uVZ;
-  private int uWa = 536870912;
-  private Queue<View> uWb = new LinkedList();
-  private boolean uWc = false;
-  private boolean uWd = false;
-  protected Scroller uWe;
-  private GestureDetector uWf;
-  private AdapterView.OnItemSelectedListener uWg;
-  private AdapterView.OnItemClickListener uWh;
-  private ListAdapter uWi;
-  private Runnable uWj = new MMHorList.1(this);
-  private boolean uWk = false;
-  private boolean uWl = false;
-  private int uWm = 0;
-  private int uWn = 0;
-  private boolean uWo = false;
-  private DataSetObserver uWp = new MMHorList.2(this);
-  private GestureDetector.OnGestureListener uWq = new GestureDetector.SimpleOnGestureListener()
-  {
-    public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
-    {
-      return MMHorList.this.cAs();
-    }
-    
-    public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
-    {
-      return MMHorList.this.aM(paramAnonymousFloat1);
-    }
-    
-    public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
-    {
-      MMHorList.a(MMHorList.this, MMHorList.c(MMHorList.this) + (int)paramAnonymousFloat1);
-      MMHorList.this.requestLayout();
-      return true;
-    }
-    
-    public final boolean onSingleTapConfirmed(MotionEvent paramAnonymousMotionEvent)
-    {
-      Rect localRect = new Rect();
-      int i = 0;
-      for (;;)
-      {
-        if (i < MMHorList.this.getChildCount())
-        {
-          View localView = MMHorList.this.getChildAt(i);
-          int j = localView.getLeft();
-          int k = localView.getRight();
-          localRect.set(j, localView.getTop(), k, localView.getBottom());
-          if (!localRect.contains((int)paramAnonymousMotionEvent.getX(), (int)paramAnonymousMotionEvent.getY())) {
-            break label207;
-          }
-          if (MMHorList.d(MMHorList.this) != null) {
-            MMHorList.d(MMHorList.this).onItemClick(MMHorList.this, localView, MMHorList.e(MMHorList.this) + 1 + i, MMHorList.f(MMHorList.this).getItemId(MMHorList.e(MMHorList.this) + 1 + i));
-          }
-          if (MMHorList.g(MMHorList.this) != null) {
-            MMHorList.g(MMHorList.this).onItemSelected(MMHorList.this, localView, MMHorList.e(MMHorList.this) + 1 + i, MMHorList.f(MMHorList.this).getItemId(MMHorList.e(MMHorList.this) + 1 + i));
-          }
-        }
-        return true;
-        label207:
-        i += 1;
-      }
-    }
-  };
+  private boolean pbs;
+  private AdapterView.OnItemClickListener zkA;
+  private ListAdapter zkB;
+  private Runnable zkC;
+  private boolean zkD;
+  private boolean zkE;
+  private int zkF;
+  private int zkG;
+  private boolean zkH;
+  private DataSetObserver zkI;
+  private GestureDetector.OnGestureListener zkJ;
+  private a zko;
+  private int zkp;
+  private int zkq;
+  private int zkr;
+  private int zks;
+  private int zkt;
+  private Queue<View> zku;
+  private boolean zkv;
+  private boolean zkw;
+  protected Scroller zkx;
+  private GestureDetector zky;
+  private AdapterView.OnItemSelectedListener zkz;
   
   public MMHorList(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(106662);
+    this.zkt = 536870912;
+    this.zku = new LinkedList();
+    this.zkv = false;
+    this.zkw = false;
+    this.zkC = new MMHorList.1(this);
+    this.zkD = false;
+    this.zkE = false;
+    this.zkF = 0;
+    this.zkG = 0;
+    this.pbs = false;
+    this.zkH = false;
+    this.zkI = new MMHorList.2(this);
+    this.zkJ = new MMHorList.3(this);
     init();
+    AppMethodBeat.o(106662);
   }
   
   public MMHorList(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(106661);
+    this.zkt = 536870912;
+    this.zku = new LinkedList();
+    this.zkv = false;
+    this.zkw = false;
+    this.zkC = new MMHorList.1(this);
+    this.zkD = false;
+    this.zkE = false;
+    this.zkF = 0;
+    this.zkG = 0;
+    this.pbs = false;
+    this.zkH = false;
+    this.zkI = new MMHorList.2(this);
+    this.zkJ = new MMHorList.3(this);
     init();
+    AppMethodBeat.o(106661);
   }
   
-  private void T(View paramView, int paramInt)
+  private void am(View paramView, int paramInt)
   {
-    this.uWd = true;
+    AppMethodBeat.i(106666);
+    this.zkw = true;
     ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
     if (localLayoutParams2 == null) {
@@ -115,99 +99,117 @@ public class MMHorList
     }
     addViewInLayout(paramView, paramInt, localLayoutParams1, true);
     paramView.measure(View.MeasureSpec.makeMeasureSpec(getWidth(), -2147483648), View.MeasureSpec.makeMeasureSpec(getHeight(), -2147483648));
+    AppMethodBeat.o(106666);
   }
   
   private int getChildViewTotalWidth()
   {
-    return this.uWi.getCount() * this.uWm;
+    AppMethodBeat.i(106664);
+    int i = this.zkB.getCount();
+    int j = this.zkF;
+    AppMethodBeat.o(106664);
+    return i * j;
   }
   
   private void init()
   {
-    this.uWe = new Scroller(getContext());
-    this.uVW = -1;
-    this.uVX = 0;
+    AppMethodBeat.i(106660);
+    this.zkx = new Scroller(getContext());
+    this.zkp = -1;
+    this.zkq = 0;
     this.offset = 0;
-    this.uVY = 0;
-    this.uVZ = 0;
-    this.uWc = false;
-    this.uWa = 536870912;
-    this.uWf = new GestureDetector(getContext(), this.uWq);
+    this.zkr = 0;
+    this.zks = 0;
+    this.zkv = false;
+    this.zkt = 536870912;
+    this.zky = new GestureDetector(getContext(), this.zkJ);
+    AppMethodBeat.o(106660);
   }
   
   private void reset()
   {
+    AppMethodBeat.i(106672);
     init();
     removeAllViewsInLayout();
     requestLayout();
+    AppMethodBeat.o(106672);
   }
   
-  public final void Gq(int paramInt)
+  public final void OI(int paramInt)
   {
-    this.uWe.forceFinished(true);
-    this.uWe.startScroll(this.uVY, 0, paramInt - this.uVY, 0);
-    this.uWo = true;
+    AppMethodBeat.i(106670);
+    this.zkx.forceFinished(true);
+    this.zkx.startScroll(this.zkr, 0, paramInt - this.zkr, 0);
+    this.zkH = true;
     requestLayout();
+    AppMethodBeat.o(106670);
   }
   
-  protected final boolean aM(float paramFloat)
+  protected final boolean bt(float paramFloat)
   {
-    this.uWe.fling(this.uVZ, 0, (int)-paramFloat, 0, 0, this.uWa, 0, 0);
+    AppMethodBeat.i(106671);
+    this.zkx.fling(this.zks, 0, (int)-paramFloat, 0, 0, this.zkt, 0, 0);
     requestLayout();
+    AppMethodBeat.o(106671);
     return true;
   }
   
-  protected final boolean cAs()
+  protected final boolean dDC()
   {
-    this.uWe.forceFinished(true);
+    AppMethodBeat.i(106669);
+    this.zkx.forceFinished(true);
+    AppMethodBeat.o(106669);
     return true;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = this.uWf.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(106668);
+    boolean bool = this.zky.onTouchEvent(paramMotionEvent);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.mBn = true;
-      if (this.uVV != null) {
-        this.uVV.bMM();
+      this.pbs = true;
+      if (this.zko != null) {
+        this.zko.cHQ();
       }
     }
-    while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1)) {
+    while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1))
+    {
+      AppMethodBeat.o(106668);
       return bool;
     }
-    if (this.uWl)
+    if (this.zkE)
     {
       if (getChildViewTotalWidth() <= getWidth()) {
-        break label182;
+        break label193;
       }
-      if (this.uVY >= 0) {
-        break label134;
+      if (this.zkr >= 0) {
+        break label145;
       }
-      this.uWe.forceFinished(true);
-      this.uWe.startScroll(this.uVY, 0, 0 - this.uVY, 0);
+      this.zkx.forceFinished(true);
+      this.zkx.startScroll(this.zkr, 0, 0 - this.zkr, 0);
       requestLayout();
     }
     for (;;)
     {
-      this.mBn = false;
-      if (this.uVV == null) {
+      this.pbs = false;
+      if (this.zko == null) {
         break;
       }
-      this.uVV.bMN();
-      return bool;
-      label134:
-      if (this.uVY > this.uWa)
+      this.zko.crx();
+      break;
+      label145:
+      if (this.zkr > this.zkt)
       {
-        this.uWe.forceFinished(true);
-        this.uWe.startScroll(this.uVY, 0, this.uWa - this.uVY, 0);
+        this.zkx.forceFinished(true);
+        this.zkx.startScroll(this.zkr, 0, this.zkt - this.zkr, 0);
         requestLayout();
         continue;
-        label182:
-        if (this.uVY != this.uWn * -1)
+        label193:
+        if (this.zkr != this.zkG * -1)
         {
-          this.uWe.forceFinished(true);
-          this.uWe.startScroll(this.uVY, 0, 0 - this.uVY, 0);
+          this.zkx.forceFinished(true);
+          this.zkx.startScroll(this.zkr, 0, 0 - this.zkr, 0);
           requestLayout();
         }
       }
@@ -216,17 +218,17 @@ public class MMHorList
   
   public ListAdapter getAdapter()
   {
-    return this.uWi;
+    return this.zkB;
   }
   
   public int getCurrentPosition()
   {
-    return this.uVY;
+    return this.zkr;
   }
   
   public boolean getIsTouching()
   {
-    return this.mBn;
+    return this.pbs;
   }
   
   public View getSelectedView()
@@ -236,85 +238,88 @@ public class MMHorList
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(106665);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.uWi == null) {
+    if (this.zkB == null)
+    {
+      AppMethodBeat.o(106665);
       return;
     }
-    this.uWd = true;
-    if (this.uWc)
+    this.zkw = true;
+    if (this.zkv)
     {
-      paramInt1 = this.uVY;
+      paramInt1 = this.zkr;
       init();
       removeAllViewsInLayout();
-      this.uVZ = paramInt1;
-      if (this.uWk)
+      this.zks = paramInt1;
+      if (this.zkD)
       {
-        this.uWn = Math.max(0, (getWidth() - getChildViewTotalWidth()) / 2);
-        this.offset = this.uWn;
+        this.zkG = Math.max(0, (getWidth() - getChildViewTotalWidth()) / 2);
+        this.offset = this.zkG;
       }
-      this.uWc = false;
+      this.zkv = false;
     }
-    if (this.uWe.computeScrollOffset()) {
-      this.uVZ = this.uWe.getCurrX();
+    if (this.zkx.computeScrollOffset()) {
+      this.zks = this.zkx.getCurrX();
     }
-    if (this.uWl) {
+    if (this.zkE) {
       if (getChildViewTotalWidth() > getWidth())
       {
-        if (this.uVZ < getWidth() * -1)
+        if (this.zks < getWidth() * -1)
         {
-          this.uVZ = (getWidth() * -1 + 1);
-          this.uWe.forceFinished(true);
+          this.zks = (getWidth() * -1 + 1);
+          this.zkx.forceFinished(true);
         }
-        if (this.uVZ > this.uWa + getWidth())
+        if (this.zks > this.zkt + getWidth())
         {
-          this.uVZ = (this.uWa + getWidth() - 1);
-          this.uWe.forceFinished(true);
+          this.zks = (this.zkt + getWidth() - 1);
+          this.zkx.forceFinished(true);
         }
       }
     }
     for (;;)
     {
-      paramInt2 = this.uVY - this.uVZ;
+      paramInt2 = this.zkr - this.zks;
       localView = getChildAt(0);
       while ((localView != null) && (localView.getRight() + paramInt2 <= 0))
       {
         this.offset += localView.getMeasuredWidth();
-        this.uWb.offer(localView);
+        this.zku.offer(localView);
         removeViewInLayout(localView);
-        this.uVW += 1;
+        this.zkp += 1;
         localView = getChildAt(0);
-        this.uWd = true;
+        this.zkw = true;
       }
-      if (this.uVZ < getWidth() * -1 + this.uWn)
+      if (this.zks < getWidth() * -1 + this.zkG)
       {
-        this.uVZ = (getWidth() * -1 + this.uWn + 1);
-        this.uWe.forceFinished(true);
+        this.zks = (getWidth() * -1 + this.zkG + 1);
+        this.zkx.forceFinished(true);
       }
-      if (this.uVZ > getWidth() - this.uWn)
+      if (this.zks > getWidth() - this.zkG)
       {
-        this.uVZ = (getWidth() - this.uWn - 1);
-        this.uWe.forceFinished(true);
+        this.zks = (getWidth() - this.zkG - 1);
+        this.zkx.forceFinished(true);
         continue;
-        if (this.uVZ < 0)
+        if (this.zks < 0)
         {
-          this.uVZ = 0;
-          this.uWe.forceFinished(true);
+          this.zks = 0;
+          this.zkx.forceFinished(true);
         }
-        if (this.uVZ > this.uWa)
+        if (this.zks > this.zkt)
         {
-          this.uVZ = this.uWa;
-          this.uWe.forceFinished(true);
+          this.zks = this.zkt;
+          this.zkx.forceFinished(true);
         }
       }
     }
     View localView = getChildAt(getChildCount() - 1);
     while ((localView != null) && (localView.getLeft() + paramInt2 >= getWidth()))
     {
-      this.uWb.offer(localView);
+      this.zku.offer(localView);
       removeViewInLayout(localView);
-      this.uVX -= 1;
+      this.zkq -= 1;
       localView = getChildAt(getChildCount() - 1);
-      this.uWd = true;
+      this.zkw = true;
     }
     localView = getChildAt(getChildCount() - 1);
     if (localView != null) {
@@ -322,15 +327,15 @@ public class MMHorList
     }
     for (;;)
     {
-      if ((paramInt1 + paramInt2 < getWidth()) && (this.uVX < this.uWi.getCount()))
+      if ((paramInt1 + paramInt2 < getWidth()) && (this.zkq < this.zkB.getCount()))
       {
-        localView = this.uWi.getView(this.uVX, (View)this.uWb.poll(), this);
-        T(localView, -1);
+        localView = this.zkB.getView(this.zkq, (View)this.zku.poll(), this);
+        am(localView, -1);
         paramInt1 = localView.getMeasuredWidth() + paramInt1;
-        if (this.uVX == this.uWi.getCount() - 1) {
-          this.uWa = (this.uVY + paramInt1 - getWidth());
+        if (this.zkq == this.zkB.getCount() - 1) {
+          this.zkt = (this.zkr + paramInt1 - getWidth());
         }
-        this.uVX += 1;
+        this.zkq += 1;
       }
       else
       {
@@ -340,18 +345,18 @@ public class MMHorList
         }
         for (;;)
         {
-          if ((paramInt1 + paramInt2 > 0) && (this.uVW >= 0))
+          if ((paramInt1 + paramInt2 > 0) && (this.zkp >= 0))
           {
-            localView = this.uWi.getView(this.uVW, (View)this.uWb.poll(), this);
-            T(localView, 0);
+            localView = this.zkB.getView(this.zkp, (View)this.zku.poll(), this);
+            am(localView, 0);
             paramInt3 = localView.getMeasuredWidth();
-            this.uVW -= 1;
+            this.zkp -= 1;
             this.offset -= localView.getMeasuredWidth();
             paramInt1 -= paramInt3;
           }
           else
           {
-            if ((getChildCount() > 0) && (this.uWd))
+            if ((getChildCount() > 0) && (this.zkw))
             {
               this.offset += paramInt2;
               paramInt2 = this.offset;
@@ -365,17 +370,19 @@ public class MMHorList
                 paramInt1 += 1;
               }
             }
-            this.uVY = this.uVZ;
-            if (!this.uWe.isFinished())
+            this.zkr = this.zks;
+            if (!this.zkx.isFinished())
             {
-              post(this.uWj);
+              post(this.zkC);
+              AppMethodBeat.o(106665);
               return;
             }
-            if ((this.uVV == null) || (!this.uWo)) {
-              break;
+            if ((this.zko != null) && (this.zkH))
+            {
+              this.zko.aQl();
+              this.zkH = false;
             }
-            this.uVV.arA();
-            this.uWo = false;
+            AppMethodBeat.o(106665);
             return;
             paramInt1 = 0;
           }
@@ -387,16 +394,19 @@ public class MMHorList
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if ((this.uWi != null) && (this.uWi.getCount() > 0))
+    AppMethodBeat.i(106667);
+    if ((this.zkB != null) && (this.zkB.getCount() > 0))
     {
       View localView = getChildAt(0);
       if (localView != null)
       {
         super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(localView.getMeasuredHeight(), -2147483648));
+        AppMethodBeat.o(106667);
         return;
       }
     }
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(106667);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -406,57 +416,59 @@ public class MMHorList
   
   public void setAdapter(ListAdapter paramListAdapter)
   {
-    if (this.uWi == null) {
-      paramListAdapter.registerDataSetObserver(this.uWp);
+    AppMethodBeat.i(106663);
+    if (this.zkB == null) {
+      paramListAdapter.registerDataSetObserver(this.zkI);
     }
-    this.uWi = paramListAdapter;
+    this.zkB = paramListAdapter;
     reset();
+    AppMethodBeat.o(106663);
   }
   
   public void setCenterInParent(boolean paramBoolean)
   {
-    this.uWk = paramBoolean;
+    this.zkD = paramBoolean;
   }
   
   public void setHorListLitener(a parama)
   {
-    this.uVV = parama;
+    this.zko = parama;
   }
   
   public void setItemWidth(int paramInt)
   {
-    this.uWm = paramInt;
+    this.zkF = paramInt;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.uWh = paramOnItemClickListener;
+    this.zkA = paramOnItemClickListener;
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.uWg = paramOnItemSelectedListener;
+    this.zkz = paramOnItemSelectedListener;
   }
   
   public void setOverScrollEnabled(boolean paramBoolean)
   {
-    this.uWl = paramBoolean;
+    this.zkE = paramBoolean;
   }
   
   public void setSelection(int paramInt) {}
   
   public static abstract interface a
   {
-    public abstract void arA();
+    public abstract void aQl();
     
-    public abstract void bMM();
+    public abstract void cHQ();
     
-    public abstract void bMN();
+    public abstract void crx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMHorList
  * JD-Core Version:    0.7.0.1
  */

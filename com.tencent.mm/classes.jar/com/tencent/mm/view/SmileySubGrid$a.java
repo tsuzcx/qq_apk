@@ -2,7 +2,8 @@ package com.tencent.mm.view;
 
 import android.view.View;
 import android.widget.ListAdapter;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SmileySubGrid$a
   extends SmileySubGrid.d
@@ -15,22 +16,25 @@ final class SmileySubGrid$a
   
   public final void run()
   {
-    y.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "LongPress run");
-    int i = this.wwJ.acg;
-    View localView = this.wwJ.getChildAt(i - this.wwJ.getFirstVisiblePosition());
-    if (localView != null)
+    AppMethodBeat.i(62955);
+    ab.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "LongPress run");
+    int i = this.ARL.acS;
+    Object localObject = this.ARL;
+    localObject = ((SmileySubGrid)localObject).getChildAt(i - ((SmileySubGrid)localObject).getFirstVisiblePosition());
+    if (localObject != null)
     {
-      int j = this.wwJ.acg;
-      long l = this.wwJ.getAdapter().getItemId(this.wwJ.acg);
-      if (cIE())
+      int j = this.ARL.acS;
+      long l = this.ARL.getAdapter().getItemId(this.ARL.acS);
+      if (dNo())
       {
-        y.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "CheckForLongPress performLongPress position:[%d] id:[%d]", new Object[] { Integer.valueOf(j), Long.valueOf(l) });
-        SmileySubGrid.a(this.wwJ, localView, i);
-        this.wwJ.alA = -1;
-        this.wwJ.uTR = 5;
-        this.wwJ.setScrollEnable(false);
+        ab.i("MicroMsg.emoji.SmileyPanel.SmileySubGrid", "CheckForLongPress performLongPress position:[%d] id:[%d]", new Object[] { Integer.valueOf(j), Long.valueOf(l) });
+        SmileySubGrid.a(this.ARL, (View)localObject, i);
+        this.ARL.anS = -1;
+        this.ARL.zis = 5;
+        this.ARL.setScrollEnable(false);
       }
     }
+    AppMethodBeat.o(62955);
   }
 }
 

@@ -1,52 +1,18 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.protocal.c.aqz;
-import com.tencent.mm.protocal.c.arq;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.app.ai;
 
 final class ab$2
-  implements b.a
+  implements ai
 {
-  ab$2(ab paramab, a.a parama, int paramInt) {}
+  ab$2(ab paramab, bh.a parama) {}
   
-  public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
+  public final void dZ(boolean paramBoolean)
   {
-    y.i("MicroMsg.JsApiLogin", "errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramInt1 != 0) || (paramInt2 != 0))
-    {
-      this.kNj.a("fail", null);
-      return;
-    }
-    if (this.fVh == 2)
-    {
-      y.d("MicroMsg.JsApiLogin", "press reject button");
-      this.kNj.a("fail", null);
-      return;
-    }
-    paramString = (arq)paramb.ecF.ecN;
-    if ((paramString == null) || (paramString.tnb == null))
-    {
-      this.kNj.a("fail", null);
-      return;
-    }
-    paramInt1 = paramString.tnb.bLB;
-    paramb = paramString.tnb.bLC;
-    y.i("MicroMsg.JsApiLogin", "jsErrcode = %d", new Object[] { Integer.valueOf(paramInt1) });
-    if (paramInt1 == 0)
-    {
-      paramString = paramString.tne;
-      new HashMap().put("code", paramString);
-      this.kNj.a("", null);
-      y.d("MicroMsg.JsApiLogin", "resp data code [%s]", new Object[] { paramString });
-      return;
-    }
-    this.kNj.a("fail", null);
-    y.e("MicroMsg.JsApiLogin", "errMsg = %s", new Object[] { paramb });
+    AppMethodBeat.i(6324);
+    this.lax.c(null, null);
+    AppMethodBeat.o(6324);
   }
 }
 

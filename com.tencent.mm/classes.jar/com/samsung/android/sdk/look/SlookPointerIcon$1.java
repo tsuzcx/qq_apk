@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import android.view.PointerIcon;
 import android.view.View;
 import android.view.View.OnHoverListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class SlookPointerIcon$1
   implements View.OnHoverListener
@@ -13,28 +14,26 @@ class SlookPointerIcon$1
   
   public boolean onHover(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(117192);
     switch (paramMotionEvent.getAction())
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(117192);
       return false;
-    case 9: 
       try
       {
         PointerIcon.setHoveringSpenIcon(0, SlookPointerIcon.access$000(this.this$0));
-        return false;
       }
-      catch (RemoteException paramView)
+      catch (RemoteException paramView) {}
+      continue;
+      try
       {
-        return false;
+        PointerIcon.setHoveringSpenIcon(1, -1);
       }
+      catch (RemoteException paramView) {}
     }
-    try
-    {
-      PointerIcon.setHoveringSpenIcon(1, -1);
-      return false;
-    }
-    catch (RemoteException paramView) {}
-    return false;
   }
 }
 

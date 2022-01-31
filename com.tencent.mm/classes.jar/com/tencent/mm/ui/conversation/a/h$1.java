@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.account.ui.FacebookFriendUI;
 import com.tencent.mm.storage.z;
@@ -17,10 +18,12 @@ final class h$1
   
   public final void onClick(View paramView)
   {
-    au.Hx();
-    c.Dz().o(65833, Integer.valueOf(0));
-    ((Context)this.vUH.sdy.get()).startActivity(new Intent((Context)this.vUH.sdy.get(), FacebookFriendUI.class));
-    this.vUH.view.setVisibility(8);
+    AppMethodBeat.i(34655);
+    aw.aaz();
+    c.Ru().set(65833, Integer.valueOf(0));
+    ((Context)this.AmE.vUD.get()).startActivity(new Intent((Context)this.AmE.vUD.get(), FacebookFriendUI.class));
+    this.AmE.view.setVisibility(8);
+    AppMethodBeat.o(34655);
   }
 }
 

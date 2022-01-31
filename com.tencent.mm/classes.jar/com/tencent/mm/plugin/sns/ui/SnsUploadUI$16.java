@@ -1,17 +1,35 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 final class SnsUploadUI$16
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
   SnsUploadUI$16(SnsUploadUI paramSnsUploadUI) {}
   
-  public final boolean onLongClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SnsUploadUI.l(this.pjp);
-    return false;
+    AppMethodBeat.i(39752);
+    if (SnsUploadUI.g(this.sbR) == 9)
+    {
+      g.RM();
+      g.RL().Ru().set(ac.a.yzV, "");
+    }
+    for (;;)
+    {
+      SnsUploadUI.h(this.sbR);
+      SnsUploadUI.k(this.sbR);
+      AppMethodBeat.o(39752);
+      return;
+      g.RM();
+      g.RL().Ru().set(ac.a.yzU, "");
+    }
   }
 }
 

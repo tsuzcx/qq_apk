@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.text.InputFilter;
 import android.text.Spanned;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class BindMContactVerifyUI$1
   implements InputFilter
@@ -11,7 +12,10 @@ final class BindMContactVerifyUI$1
   
   public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    return bk.M(paramCharSequence);
+    AppMethodBeat.i(13479);
+    paramCharSequence = bo.ab(paramCharSequence);
+    AppMethodBeat.o(13479);
+    return paramCharSequence;
   }
 }
 

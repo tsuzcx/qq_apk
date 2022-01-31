@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote.b;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 final class i$2
@@ -11,8 +12,10 @@ final class i$2
   
   public final void onClick(View paramView)
   {
-    this.rNp.rMZ.cit();
-    this.rNp.rMZ.requestFocus();
+    AppMethodBeat.i(27166);
+    this.vDT.vDD.diK();
+    this.vDT.vDD.requestFocus();
+    AppMethodBeat.o(27166);
   }
 }
 

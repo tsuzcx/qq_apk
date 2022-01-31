@@ -4,12 +4,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.s;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.voicesearch.b;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.mm.ui.widget.c.a;
 
 final class ChatroomContactUI$12
   implements AdapterView.OnItemLongClickListener
@@ -18,21 +19,28 @@ final class ChatroomContactUI$12
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    y.d("MicroMsg.ChatroomContactUI", "onItemLongClick, targetview is SearchBar::ListView, pos = " + paramInt);
-    if (paramInt < ChatroomContactUI.b(this.vKh).getHeaderViewsCount())
+    AppMethodBeat.i(33584);
+    ab.d("MicroMsg.ChatroomContactUI", "onItemLongClick, targetview is SearchBar::ListView, pos = ".concat(String.valueOf(paramInt)));
+    if (paramInt < ChatroomContactUI.b(this.AbH).getHeaderViewsCount())
     {
-      y.w("MicroMsg.ChatroomContactUI", "on item long click, but match header view");
+      ab.w("MicroMsg.ChatroomContactUI", "on item long click, but match header view");
+      AppMethodBeat.o(33584);
       return true;
     }
-    if ((ChatroomContactUI.d(this.vKh) != null) && (ChatroomContactUI.d(this.vKh).wiO)) {
+    if ((ChatroomContactUI.d(this.AbH) != null) && (ChatroomContactUI.d(this.AbH).ABF))
+    {
+      AppMethodBeat.o(33584);
       return true;
     }
-    paramAdapterView = ((ad)ChatroomContactUI.f(this.vKh).getItem(paramInt - ChatroomContactUI.b(this.vKh).getHeaderViewsCount())).field_username;
-    if ((s.hK(paramAdapterView)) || (s.hL(paramAdapterView))) {
+    paramAdapterView = ((ad)ChatroomContactUI.f(this.AbH).getItem(paramInt - ChatroomContactUI.b(this.AbH).getHeaderViewsCount())).field_username;
+    if ((t.ot(paramAdapterView)) || (t.ou(paramAdapterView)))
+    {
+      AppMethodBeat.o(33584);
       return true;
     }
-    ChatroomContactUI.c(this.vKh, paramAdapterView);
-    ChatroomContactUI.j(this.vKh).a(paramView, paramInt, paramLong, this.vKh, ChatroomContactUI.g(this.vKh), ChatroomContactUI.h(this.vKh), ChatroomContactUI.i(this.vKh));
+    ChatroomContactUI.c(this.AbH, paramAdapterView);
+    ChatroomContactUI.j(this.AbH).a(paramView, paramInt, paramLong, this.AbH, ChatroomContactUI.g(this.AbH), ChatroomContactUI.h(this.AbH), ChatroomContactUI.i(this.AbH));
+    AppMethodBeat.o(33584);
     return true;
   }
 }

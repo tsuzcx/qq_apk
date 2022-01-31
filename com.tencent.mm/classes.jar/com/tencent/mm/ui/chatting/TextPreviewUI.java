@@ -1,37 +1,33 @@
 package com.tencent.mm.ui.chatting;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewStub;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.cd.g;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bf;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.CustomScrollView;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.textview.a.a;
 
 @com.tencent.mm.ui.base.a(3)
@@ -39,168 +35,189 @@ public class TextPreviewUI
   extends MMActivity
   implements f
 {
-  private bi bWO;
   private int bottom = 0;
-  private TextView lh = null;
-  private Animation ogr;
-  private Animation ogs;
-  private int qQ;
-  private boolean shi = false;
+  private bi cEE;
+  private TextView md = null;
+  private Animation qUG;
+  private Animation qUH;
+  private int rN;
   private CharSequence text = null;
-  private TextView vkr = null;
-  private com.tencent.mm.ui.widget.textview.a vna;
-  private com.tencent.mm.ui.widget.b.a vnb;
-  private CharSequence vnc;
-  private View vnd;
-  private View vne;
-  private View vnf;
-  private CustomScrollView vng;
-  private final int vnh = 0;
-  private final int vni = 1;
-  private final int vnj = 2;
-  private boolean vnk = false;
-  private ToolsBar vnl;
-  private View vnm;
+  private boolean vZB = false;
+  private View zCA;
+  private View zCB;
+  private CustomScrollView zCC;
+  private final int zCD = 0;
+  private final int zCE = 1;
+  private final int zCF = 2;
+  private boolean zCG = false;
+  private ToolsBar zCH;
+  private View zCI;
+  private com.tencent.mm.ui.widget.textview.a zCw;
+  private com.tencent.mm.ui.widget.c.a zCx;
+  private CharSequence zCy;
+  private View zCz;
+  private TextView zzS = null;
   
-  private void aQ(bi parambi)
+  private void bb(bi parambi)
   {
-    com.tencent.mm.ui.chatting.view.b localb = new com.tencent.mm.ui.chatting.view.b(this.mController.uMN);
-    localb.vAD = new TextPreviewUI.4(this, localb, parambi);
+    AppMethodBeat.i(31063);
+    com.tencent.mm.ui.chatting.view.b localb = new com.tencent.mm.ui.chatting.view.b(getContext());
+    localb.zRc = new TextPreviewUI.4(this, localb, parambi);
     localb.show();
+    AppMethodBeat.o(31063);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.chatting_item_full_screen;
+    return 2130969092;
   }
   
   public void onBackPressed()
   {
+    AppMethodBeat.i(31062);
     finish();
+    AppMethodBeat.o(31062);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(31060);
     requestWindowFeature(1);
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
-    if (d.gF(19)) {
+    if (d.fv(19)) {
       getWindow().setFlags(67109888, 67109888);
     }
-    this.vnd = findViewById(R.h.text_screen);
+    this.zCz = findViewById(2131822698);
     this.text = getIntent().getCharSequenceExtra("key_chat_text");
     long l = getIntent().getLongExtra("Chat_Msg_Id", 0L);
-    au.Hx();
-    this.bWO = c.Fy().fd(l);
-    this.lh = ((TextView)findViewById(R.h.full_screen_text));
-    this.vkr = ((TextView)findViewById(R.h.full_screen_text_span));
-    Object localObject1 = this.text;
-    Object localObject2 = this.vkr;
-    paramBundle = (Bundle)localObject1;
-    if ((localObject1 instanceof SpannableString))
+    aw.aaz();
+    this.cEE = c.YC().kB(l);
+    this.md = ((TextView)findViewById(2131822701));
+    this.zzS = ((TextView)findViewById(2131822699));
+    Object localObject = this.text;
+    TextView localTextView = this.zzS;
+    paramBundle = (Bundle)localObject;
+    if ((localObject instanceof SpannableString))
     {
-      ((TextView)localObject2).setText(((SpannableString)localObject1).toString());
-      j.h((TextView)localObject2, 1);
-      paramBundle = ((TextView)localObject2).getText();
+      localTextView.setText(((SpannableString)localObject).toString());
+      j.k(localTextView, 1);
+      paramBundle = localTextView.getText();
     }
     this.text = paramBundle;
-    paramBundle = this.lh;
-    localObject1 = com.tencent.mm.cd.g.csM();
-    localObject2 = this.mController.uMN;
-    paramBundle.setText(((com.tencent.mm.cd.g)localObject1).a(this.text, this.lh.getTextSize()));
-    this.vne = findViewById(R.h.know_more_btn_container);
-    this.vnf = this.vne.findViewById(R.h.jump_tip_btn);
-    this.vng = ((CustomScrollView)findViewById(R.h.full_screen_scroll_container));
-    this.lh.getViewTreeObserver().addOnPreDrawListener(new TextPreviewUI.1(this));
-    this.ogs = AnimationUtils.loadAnimation(this.mController.uMN, R.a.push_up_in);
-    this.ogr = AnimationUtils.loadAnimation(this.mController.uMN, R.a.push_down_out);
-    this.vnb = new com.tencent.mm.ui.widget.b.a(this.mController.uMN, this.lh);
-    this.vnb.woh = true;
-    this.vnb.wog = new TextPreviewUI.8(this);
-    this.vnb.phI = new TextPreviewUI.9(this);
-    if ((this.vna == null) && (bk.bl(bf.n(this.bWO))))
+    paramBundle = this.md;
+    localObject = g.dvk();
+    getContext();
+    paramBundle.setText(((g)localObject).b(this.text, this.md.getTextSize()));
+    this.zCA = findViewById(2131822703);
+    this.zCB = this.zCA.findViewById(2131822704);
+    this.zCC = ((CustomScrollView)findViewById(2131822700));
+    this.md.getViewTreeObserver().addOnPreDrawListener(new TextPreviewUI.1(this));
+    this.qUH = AnimationUtils.loadAnimation(getContext(), 2131034230);
+    this.qUG = AnimationUtils.loadAnimation(getContext(), 2131034228);
+    this.zCx = new com.tencent.mm.ui.widget.c.a(getContext(), this.md);
+    this.zCx.AIH = true;
+    this.zCx.AIG = new TextPreviewUI.8(this);
+    this.zCx.sap = new TextPreviewUI.9(this);
+    if ((this.zCw == null) && (!bh.o(this.cEE)))
     {
-      paramBundle = new a.a(this.lh, this.vnb);
-      paramBundle.wss = R.e.selected_blue;
-      paramBundle.wsA = 18;
-      paramBundle.wst = R.e.cursor_handle_color;
-      this.vna = new com.tencent.mm.ui.widget.textview.a(paramBundle);
-      this.vna.wsn = new TextPreviewUI.10(this);
+      paramBundle = new a.a(this.md, this.zCx);
+      paramBundle.ANa = 2131690431;
+      paramBundle.ANb = 2131689914;
+      this.zCw = paramBundle.dPX();
+      this.zCw.AMS = new TextPreviewUI.10(this);
     }
-    this.vnd.setOnClickListener(new TextPreviewUI.11(this));
-    this.lh.setOnClickListener(new TextPreviewUI.12(this));
-    if (!bk.bl(bf.n(this.bWO)))
+    this.zCz.setOnClickListener(new TextPreviewUI.11(this));
+    this.md.setOnClickListener(new TextPreviewUI.12(this));
+    if (!bo.isNullOrNil(bh.r(this.cEE)))
     {
-      this.vne.setVisibility(0);
-      this.vnf.setOnClickListener(new TextPreviewUI.13(this));
+      this.zCA.setVisibility(0);
+      this.zCB.setOnClickListener(new TextPreviewUI.13(this));
     }
     for (;;)
     {
       setBackBtn(new TextPreviewUI.14(this));
-      this.vng.setOnTouchListener(new TextPreviewUI.15(this));
-      this.vng.setOnScrollChangeListener(new TextPreviewUI.2(this));
-      au.Dk().a(525, this);
+      this.zCC.setOnTouchListener(new TextPreviewUI.15(this));
+      this.zCC.setOnScrollChangeListener(new TextPreviewUI.2(this));
+      aw.Rc().a(525, this);
+      AppMethodBeat.o(31060);
       return;
-      if (!bf.k(this.bWO))
+      if (!bh.o(this.cEE))
       {
-        paramBundle = (ViewStub)findViewById(R.h.viewstub_text_more_btn);
+        paramBundle = (ViewStub)findViewById(2131822702);
         if (paramBundle != null) {
-          this.vnm = paramBundle.inflate();
+          this.zCI = paramBundle.inflate();
         }
-        this.vnl = ((ToolsBar)findViewById(R.h.tools_bar));
-        this.vnl.setVisibility(0);
-        if (this.vnl != null)
+        this.zCH = ((ToolsBar)findViewById(2131828507));
+        this.zCH.setVisibility(0);
+        if (this.zCH != null)
         {
-          this.vnl.c(0, new TextPreviewUI.5(this));
-          this.vnl.c(1, new TextPreviewUI.6(this));
-          this.vnl.c(2, new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              TextPreviewUI.b(TextPreviewUI.this, TextPreviewUI.d(TextPreviewUI.this));
-            }
-          });
+          this.zCH.c(0, new TextPreviewUI.5(this));
+          this.zCH.c(1, new TextPreviewUI.6(this));
+          this.zCH.c(2, new TextPreviewUI.7(this));
         }
       }
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(31064);
     super.onDestroy();
-    au.Dk().b(525, this);
+    aw.Rc().b(525, this);
+    AppMethodBeat.o(31064);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(31061);
     super.onResume();
-    if ((this.vna != null) && (!this.vna.cbz)) {
-      this.vna.cKK();
+    if (this.zCw != null)
+    {
+      if (!this.zCw.ANj) {
+        this.zCw.dPW();
+      }
+      if (!this.zCw.ANk) {
+        this.zCw.dPS();
+      }
     }
+    AppMethodBeat.o(31061);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+    AppMethodBeat.i(31065);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
       switch (paramm.getType())
       {
+      default: 
+        AppMethodBeat.o(31065);
+        return;
       }
+      ab.i("MicroMsg.TextPreviewUI", "set msg remind!");
+      com.tencent.mm.ui.widget.snackbar.b.a(getContext(), getContext().getResources().getString(2131300635), "", null);
+      AppMethodBeat.o(31065);
+      return;
     }
-    while (paramm.getType() != 525)
+    if (paramm.getType() == 525)
     {
-      return;
-      y.i("MicroMsg.TextPreviewUI", "set msg remind!");
-      com.tencent.mm.ui.widget.snackbar.b.a(this.mController.uMN, this.mController.uMN.getResources().getString(R.l.has_remind_tip), "", null);
-      return;
+      ab.e("MicroMsg.TextPreviewUI", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bo.nullAsNil(paramString) });
+      AppCompatActivity localAppCompatActivity = getContext();
+      paramm = paramString;
+      if (bo.isNullOrNil(paramString)) {
+        paramm = getResources().getString(2131302506);
+      }
+      com.tencent.mm.ui.base.h.b(localAppCompatActivity, paramm, getContext().getResources().getString(2131302507), true);
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(795L, 4L, 1L, false);
     }
-    y.e("MicroMsg.TextPreviewUI", "[setMsgRemind] scene type:%s errCode:%s, errType:%s, errMsg:%s", new Object[] { Integer.valueOf(525), Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), bk.pm(paramString) });
-    AppCompatActivity localAppCompatActivity = this.mController.uMN;
-    paramm = paramString;
-    if (bk.bl(paramString)) {
-      paramm = getResources().getString(R.l.remind_err_desc);
-    }
-    com.tencent.mm.ui.base.h.b(localAppCompatActivity, paramm, this.mController.uMN.getResources().getString(R.l.remind_err_title), true);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(795L, 4L, 1L, false);
+    AppMethodBeat.o(31065);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

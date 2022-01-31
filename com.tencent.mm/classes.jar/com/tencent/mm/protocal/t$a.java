@@ -1,44 +1,37 @@
 package com.tencent.mm.protocal;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bgi;
 
 public final class t$a
-  extends k.d
-  implements k.b
+  extends l.d
+  implements l.b
 {
-  public byte[] bNE = null;
-  public long eud = -1L;
+  public bgi wiM;
   
-  public final byte[] HG()
+  public t$a()
   {
-    byte[] arrayOfByte = new byte[this.bNE.length + 8];
-    int i = (int)(bk.UY() - this.eud);
-    arrayOfByte[0] = ((byte)(i >> 24 & 0xFF));
-    arrayOfByte[1] = ((byte)(i >> 16 & 0xFF));
-    arrayOfByte[2] = ((byte)(i >> 8 & 0xFF));
-    arrayOfByte[3] = ((byte)(i & 0xFF));
-    arrayOfByte[4] = ((byte)(this.bNE.length >> 24 & 0xFF));
-    arrayOfByte[5] = ((byte)(this.bNE.length >> 16 & 0xFF));
-    arrayOfByte[6] = ((byte)(this.bNE.length >> 8 & 0xFF));
-    arrayOfByte[7] = ((byte)(this.bNE.length & 0xFF));
-    System.arraycopy(this.bNE, 0, arrayOfByte, 8, this.bNE.length);
-    bk.bD(arrayOfByte);
-    return arrayOfByte;
-  }
-  
-  public final int HH()
-  {
-    return 268369922;
-  }
-  
-  public final boolean Lb()
-  {
-    return false;
+    AppMethodBeat.i(58856);
+    this.wiM = new bgi();
+    AppMethodBeat.o(58856);
   }
   
   public final int getCmdId()
   {
-    return 1000000190;
+    return 121;
+  }
+  
+  public final int getFuncId()
+  {
+    return 138;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(58857);
+    byte[] arrayOfByte = this.wiM.toByteArray();
+    AppMethodBeat.o(58857);
+    return arrayOfByte;
   }
 }
 

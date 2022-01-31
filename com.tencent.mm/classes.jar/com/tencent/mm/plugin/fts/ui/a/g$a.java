@@ -6,13 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
-import com.tencent.mm.plugin.fts.ui.n.b;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class g$a
   extends m.b
@@ -24,40 +22,44 @@ public final class g$a
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(paramContext).inflate(n.e.fts_message_item, paramViewGroup, false);
-    m.a locala = (m.a)this.kDe.kDF;
-    locala.doU = ((ImageView)paramViewGroup.findViewById(n.d.avatar_iv));
-    locala.doV = ((TextView)paramViewGroup.findViewById(n.d.nickname_tv));
-    locala.dsy = ((TextView)paramViewGroup.findViewById(n.d.msg_tv));
-    locala.contentView = paramViewGroup.findViewById(n.d.search_item_content_layout);
-    locala.dsz = ((TextView)paramViewGroup.findViewById(n.d.time_tv));
-    locala.doU.getLayoutParams().width = com.tencent.mm.cb.a.aa(paramContext, n.b.SettingCatalogPadding);
-    locala.doU.getLayoutParams().height = com.tencent.mm.cb.a.aa(paramContext, n.b.SettingCatalogPadding);
+    AppMethodBeat.i(61986);
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(2130969672, paramViewGroup, false);
+    m.a locala = (m.a)this.mZa.mZB;
+    locala.egq = ((ImageView)paramViewGroup.findViewById(2131821210));
+    locala.egr = ((TextView)paramViewGroup.findViewById(2131823254));
+    locala.ekg = ((TextView)paramViewGroup.findViewById(2131822982));
+    locala.hrR = paramViewGroup.findViewById(2131821148);
+    locala.ekh = ((TextView)paramViewGroup.findViewById(2131821004));
+    locala.egq.getLayoutParams().width = com.tencent.mm.cb.a.ao(paramContext, 2131427844);
+    locala.egq.getLayoutParams().height = com.tencent.mm.cb.a.ao(paramContext, 2131427844);
     paramViewGroup.setTag(locala);
+    AppMethodBeat.o(61986);
     return paramViewGroup;
   }
   
   public final void a(Context paramContext, a.a parama, com.tencent.mm.plugin.fts.a.d.a.a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(61987);
     paramContext = (g)parama1;
     parama = (m.a)parama;
-    com.tencent.mm.plugin.fts.ui.m.k(parama.contentView, this.kDe.kxT);
-    if (bk.bl(paramContext.fYx.talker)) {
-      a.b.a(parama.doU, paramContext.fYx.kwg);
+    com.tencent.mm.plugin.fts.ui.m.p(parama.hrR, this.mZa.mTH);
+    if (bo.isNullOrNil(paramContext.hrL.talker)) {
+      a.b.c(parama.egq, paramContext.hrL.mRV);
     }
     for (;;)
     {
-      com.tencent.mm.plugin.fts.ui.m.a(paramContext.kDd, parama.doV);
-      com.tencent.mm.plugin.fts.ui.m.a(paramContext.eXL, parama.dsy);
-      com.tencent.mm.plugin.fts.ui.m.a(paramContext.kDD, parama.dsz);
+      com.tencent.mm.plugin.fts.ui.m.a(paramContext.mYZ, parama.egr);
+      com.tencent.mm.plugin.fts.ui.m.a(paramContext.gpI, parama.ekg);
+      com.tencent.mm.plugin.fts.ui.m.a(paramContext.mZz, parama.ekh);
+      AppMethodBeat.o(61987);
       return;
-      a.b.a(parama.doU, paramContext.fYx.talker);
+      a.b.c(parama.egq, paramContext.hrL.talker);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.g.a
  * JD-Core Version:    0.7.0.1
  */

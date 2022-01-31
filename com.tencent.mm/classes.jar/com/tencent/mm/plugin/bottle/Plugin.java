@@ -1,29 +1,43 @@
 package com.tencent.mm.plugin.bottle;
 
-import com.tencent.mm.model.ar;
-import com.tencent.mm.plugin.bottle.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
+import com.tencent.mm.plugin.bottle.a.d;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class Plugin
   implements c
 {
-  private b hYb = new Plugin.1(this);
+  private b jRP;
   
-  public final n createApplication()
+  public Plugin()
   {
-    return new a();
+    AppMethodBeat.i(18529);
+    this.jRP = new Plugin.1(this);
+    AppMethodBeat.o(18529);
   }
   
-  public final ar createSubCore()
+  public final o createApplication()
   {
-    return new i();
+    AppMethodBeat.i(18530);
+    a locala = new a();
+    AppMethodBeat.o(18530);
+    return locala;
+  }
+  
+  public final at createSubCore()
+  {
+    AppMethodBeat.i(18531);
+    d locald = new d();
+    AppMethodBeat.o(18531);
+    return locald;
   }
   
   public final b getContactWidgetFactory()
   {
-    return this.hYb;
+    return this.jRP;
   }
 }
 

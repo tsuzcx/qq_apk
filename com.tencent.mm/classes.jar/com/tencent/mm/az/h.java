@@ -1,59 +1,32 @@
 package com.tencent.mm.az;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import com.tencent.mm.protocal.protobuf.ayz;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
+@Deprecated
 public final class h
-  extends com.tencent.mm.bv.a
+  extends j.b
 {
-  public LinkedList<g> ewM = new LinkedList();
+  private ayz fLR;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public h(List<h.a> paramList)
   {
-    if (paramInt == 0)
-    {
-      ((d.a.a.c.a)paramVarArgs[0]).d(1, 8, this.ewM);
-      return 0;
+    super(36);
+    AppMethodBeat.i(59997);
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      localLinkedList.add(((h.a)localIterator.next()).fLS);
     }
-    if (paramInt == 1) {
-      return d.a.a.a.c(1, 8, this.ewM) + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.ewM.clear();
-      paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
-        }
-      }
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
-      h localh = (h)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        return -1;
-      }
-      paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new g();
-        localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((g)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-        localh.ewM.add(localObject1);
-        paramInt += 1;
-      }
-      return 0;
-    }
-    return -1;
+    this.fLR = new ayz();
+    this.fLR.jJu = paramList.size();
+    this.fLR.jJv = localLinkedList;
+    this.oDZ = this.fLR;
+    AppMethodBeat.o(59997);
   }
 }
 

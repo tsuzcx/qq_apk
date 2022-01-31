@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.talkroom.component;
 
 import android.os.IBinder;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$a$a
   implements b
@@ -20,6 +21,7 @@ final class b$a$a
   
   public final void keep_OnError(int paramInt)
   {
+    AppMethodBeat.i(25701);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -34,11 +36,13 @@ final class b$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(25701);
     }
   }
   
   public final void keep_OnOpenSuccess()
   {
+    AppMethodBeat.i(25700);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
@@ -52,12 +56,13 @@ final class b$a$a
     {
       localParcel2.recycle();
       localParcel1.recycle();
+      AppMethodBeat.o(25700);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.b.a.a
  * JD-Core Version:    0.7.0.1
  */

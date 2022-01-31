@@ -6,21 +6,21 @@ import com.google.a.a.e;
 public final class a$ah
   extends e
 {
-  public a.au[] wHW = a.au.cOe();
+  public a.au[] Bfw = a.au.dTQ();
   
   public a$ah()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if ((this.wHW != null) && (this.wHW.length > 0))
+    if ((this.Bfw != null) && (this.Bfw.length > 0))
     {
       int i = 0;
-      while (i < this.wHW.length)
+      while (i < this.Bfw.length)
       {
-        a.au localau = this.wHW[i];
+        a.au localau = this.Bfw[i];
         if (localau != null) {
           paramb.a(1, localau);
         }
@@ -30,23 +30,23 @@ public final class a$ah
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int i = super.oQ();
+    int i = super.sz();
     int k = i;
-    if (this.wHW != null)
+    if (this.Bfw != null)
     {
       k = i;
-      if (this.wHW.length > 0)
+      if (this.Bfw.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.wHW.length) {
+          if (j >= this.Bfw.length) {
             break;
           }
-          a.au localau = this.wHW[j];
+          a.au localau = this.Bfw[j];
           k = i;
           if (localau != null) {
             k = i + b.b(1, localau);

@@ -5,97 +5,106 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.j;
 
 public class SightDraftContainerView
   extends ListView
 {
-  private boolean ogT;
-  private a ogU;
-  b ogV;
+  private boolean qVi;
+  private a qVj;
+  b qVk;
   
   public SightDraftContainerView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(25018);
     init();
+    AppMethodBeat.o(25018);
   }
   
   public SightDraftContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(25017);
     init();
+    AppMethodBeat.o(25017);
   }
   
   public SightDraftContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(25016);
     init();
+    AppMethodBeat.o(25016);
   }
   
   private void init()
   {
-    setBackgroundColor(getResources().getColor(R.e.black));
-    setSelector(R.e.transparent);
-    int i = getResources().getDimensionPixelSize(R.f.SmallPadding);
-    int j = getResources().getDimensionPixelSize(R.f.LargePadding);
+    AppMethodBeat.i(25019);
+    setBackgroundColor(getResources().getColor(2131689763));
+    setSelector(2131690605);
+    int i = getResources().getDimensionPixelSize(2131427854);
+    int j = getResources().getDimensionPixelSize(2131427772);
     TextView localTextView = new TextView(getContext());
-    localTextView.setText(R.l.sight_draft_tips);
-    localTextView.setTextSize(0, com.tencent.mm.cb.a.aa(getContext(), R.f.HintTextSize));
+    localTextView.setText(2131303719);
+    localTextView.setTextSize(0, com.tencent.mm.cb.a.ao(getContext(), 2131427758));
     localTextView.setGravity(17);
-    localTextView.setTextColor(getResources().getColor(R.e.hint_text_color_dark_bg));
+    localTextView.setTextColor(getResources().getColor(2131690169));
     localTextView.setTextSize(1, 11.0F);
     localTextView.setPadding(0, i, 0, j);
     addFooterView(localTextView);
     setOnTouchListener(new SightDraftContainerView.1(this));
+    AppMethodBeat.o(25019);
   }
   
-  public final void bBx()
+  public final void cmX()
   {
-    if (this.ogT)
+    AppMethodBeat.i(25020);
+    if (this.qVi)
     {
-      this.ogV.ogF = 12;
-      this.ogV.a(b.d.ogL, false);
-      this.ogV.a(null, null);
+      this.qVk.qUU = 12;
+      this.qVk.a(b.d.qVa, false);
+      this.qVk.a(null, null);
       setSelection(0);
+      AppMethodBeat.o(25020);
       return;
     }
-    this.ogT = true;
-    this.ogV = new b(getContext(), this.ogU);
-    this.ogV.ogF = 12;
-    setAdapter(this.ogV);
+    this.qVi = true;
+    this.qVk = new b(getContext(), this.qVj);
+    this.qVk.qUU = 12;
+    setAdapter(this.qVk);
+    AppMethodBeat.o(25020);
   }
   
   public j getLastDrafInfo()
   {
-    b localb = this.ogV;
-    if (localb.ogJ == null) {
+    b localb = this.qVk;
+    if (localb.qUY == null) {
       return null;
     }
-    return localb.ogJ.ogR;
+    return localb.qUY.qVg;
   }
   
   public void setSightDraftCallback(a parama)
   {
-    this.ogU = parama;
-    if (this.ogV != null) {
-      this.ogV.ogD = parama;
+    this.qVj = parama;
+    if (this.qVk != null) {
+      this.qVk.qUS = parama;
     }
   }
   
   public void setTipsResId(int paramInt)
   {
-    if (this.ogV == null) {
+    if (this.qVk == null) {
       return;
     }
-    this.ogV.ogE = paramInt;
+    this.qVk.qUT = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.SightDraftContainerView
  * JD-Core Version:    0.7.0.1
  */

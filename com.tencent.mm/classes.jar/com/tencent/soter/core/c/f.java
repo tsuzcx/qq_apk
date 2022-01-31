@@ -1,32 +1,40 @@
 package com.tencent.soter.core.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class f
 {
-  public String aox;
   public int errCode;
+  public String errMsg;
   
   public f(int paramInt)
   {
+    AppMethodBeat.i(73034);
     this.errCode = paramInt;
     switch (this.errCode)
     {
     case 1: 
     default: 
-      this.aox = "errmsg not specified";
+      this.errMsg = "errmsg not specified";
+      AppMethodBeat.o(73034);
       return;
     case 0: 
-      this.aox = "ok";
+      this.errMsg = "ok";
+      AppMethodBeat.o(73034);
       return;
     }
-    this.aox = "device not support soter";
+    this.errMsg = "device not support soter";
+    AppMethodBeat.o(73034);
   }
   
   public f(int paramInt, String paramString)
   {
     this(paramInt);
-    if (!g.bl(paramString)) {
-      this.aox = paramString;
+    AppMethodBeat.i(73033);
+    if (!g.isNullOrNil(paramString)) {
+      this.errMsg = paramString;
     }
+    AppMethodBeat.o(73033);
   }
   
   public boolean equals(Object paramObject)
@@ -41,12 +49,15 @@ public class f
   
   public String toString()
   {
-    return "SoterCoreResult{errCode=" + this.errCode + ", errMsg='" + this.aox + '\'' + '}';
+    AppMethodBeat.i(73035);
+    String str = "SoterCoreResult{errCode=" + this.errCode + ", errMsg='" + this.errMsg + '\'' + '}';
+    AppMethodBeat.o(73035);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.soter.core.c.f
  * JD-Core Version:    0.7.0.1
  */

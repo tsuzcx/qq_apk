@@ -10,17 +10,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
 
 public class SOSEditTextView
   extends FTSEditTextView
 {
-  private View vWm;
-  private View vWn;
-  private View vWo;
+  private View Aou;
+  private View Aov;
+  private View Aow;
   
   public SOSEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -32,66 +30,84 @@ public class SOSEditTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected final void aWw()
+  public final void bDd()
   {
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(R.i.sos_edittext_view, this, true);
+    AppMethodBeat.i(91594);
+    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2130970902, this, true);
+    AppMethodBeat.o(91594);
   }
   
-  public final void cIy()
+  public final void dNi()
   {
-    getEditText().setOnFocusChangeListener(this.kEz);
+    AppMethodBeat.i(91596);
+    getEditText().setOnFocusChangeListener(this.naX);
+    AppMethodBeat.o(91596);
   }
   
   @SuppressLint({"WrongViewCast"})
-  protected final void init()
+  public final void init()
   {
+    AppMethodBeat.i(91595);
     super.init();
-    this.vWm = findViewById(R.h.voice_btn_container);
-    this.vWn = findViewById(R.h.text_cancel);
-    this.vWo = findViewById(R.h.search_bar_cancel_text_container);
+    this.Aou = findViewById(2131828189);
+    this.Aov = findViewById(2131828191);
+    this.Aow = findViewById(2131828190);
     getEditText().setOnFocusChangeListener(null);
-    getEditText().setHintTextColor(getResources().getColor(R.e.light_bg_hint_color));
-    getEditText().setTextColor(getResources().getColor(R.e.normal_text_color));
+    getEditText().setHintTextColor(getResources().getColor(2131690205));
+    getEditText().setTextColor(getResources().getColor(2131690322));
+    AppMethodBeat.o(91595);
   }
   
   public void setCancelTextViewClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (this.vWn != null) {
-      this.vWn.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(91602);
+    if (this.Aov != null) {
+      this.Aov.setOnClickListener(paramOnClickListener);
     }
+    AppMethodBeat.o(91602);
   }
   
   public void setCancelTextViewVisibile(int paramInt)
   {
-    if (this.vWn != null) {
-      this.vWn.setVisibility(paramInt);
+    AppMethodBeat.i(91601);
+    if (this.Aov != null) {
+      this.Aov.setVisibility(paramInt);
     }
+    AppMethodBeat.o(91601);
   }
   
   public void setIconRes(Drawable paramDrawable)
   {
+    AppMethodBeat.i(91597);
     getIconView().setImageDrawable(paramDrawable);
+    AppMethodBeat.o(91597);
   }
   
   public void setSearchBarCancelTextContainerVisibile(int paramInt)
   {
-    if (this.vWo != null) {
-      this.vWo.setVisibility(paramInt);
+    AppMethodBeat.i(91598);
+    if (this.Aow != null) {
+      this.Aow.setVisibility(paramInt);
     }
+    AppMethodBeat.o(91598);
   }
   
   public void setVoiceBtnClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (this.vWm != null) {
-      this.vWm.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(91600);
+    if (this.Aou != null) {
+      this.Aou.setOnClickListener(paramOnClickListener);
     }
+    AppMethodBeat.o(91600);
   }
   
   public void setVoiceImageButtonVisibile(int paramInt)
   {
-    if (this.vWm != null) {
-      this.vWm.setVisibility(paramInt);
+    AppMethodBeat.i(91599);
+    if (this.Aou != null) {
+      this.Aou.setVisibility(paramInt);
     }
+    AppMethodBeat.o(91599);
   }
 }
 

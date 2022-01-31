@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.sns;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelsns.e;
 import com.tencent.mm.plugin.sns.b.m;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.g;
 import com.tencent.mm.plugin.sns.storage.n;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.vi;
 import com.tencent.mm.storage.az;
 import java.util.LinkedList;
 
@@ -18,36 +19,53 @@ public final class o
 {
   public final void a(long paramLong, ImageView paramImageView, int paramInt)
   {
-    Object localObject = af.bDF().gt(paramLong);
-    if (localObject == null) {}
-    do
+    AppMethodBeat.i(35639);
+    Object localObject = ag.cpf().lZ(paramLong);
+    if (localObject == null)
     {
-      return;
-      localObject = ((n)localObject).bGe();
-    } while (((bxk)localObject).tNr.sPJ.size() <= 0);
-    localObject = (awd)((bxk)localObject).tNr.sPJ.get(0);
-    Bitmap localBitmap = af.bDC().b((awd)localObject);
-    if (localBitmap != null)
-    {
-      paramImageView.setImageBitmap(localBitmap);
+      AppMethodBeat.o(35639);
       return;
     }
-    af.bDC().b((awd)localObject, paramImageView, paramInt, az.uBK);
+    localObject = ((n)localObject).csh();
+    if (((TimeLineObject)localObject).xTS.wOa.size() > 0)
+    {
+      localObject = (bcs)((TimeLineObject)localObject).xTS.wOa.get(0);
+      Bitmap localBitmap = ag.cpc().b((bcs)localObject);
+      if (localBitmap != null)
+      {
+        paramImageView.setImageBitmap(localBitmap);
+        AppMethodBeat.o(35639);
+        return;
+      }
+      ag.cpc().b((bcs)localObject, paramImageView, paramInt, az.yNU);
+    }
+    AppMethodBeat.o(35639);
   }
   
-  public final boolean fE(long paramLong)
+  public final boolean lh(long paramLong)
   {
-    n localn = af.bDF().gt(paramLong);
-    if (localn == null) {}
-    while (localn.bGe().tNr.sPJ.size() <= 0) {
+    AppMethodBeat.i(35638);
+    n localn = ag.cpf().lZ(paramLong);
+    if (localn == null)
+    {
+      AppMethodBeat.o(35638);
       return false;
     }
-    return true;
+    if (localn.csh().xTS.wOa.size() > 0)
+    {
+      AppMethodBeat.o(35638);
+      return true;
+    }
+    AppMethodBeat.o(35638);
+    return false;
   }
   
-  public final bxk nn(String paramString)
+  public final TimeLineObject uA(String paramString)
   {
-    return e.nn(paramString);
+    AppMethodBeat.i(35637);
+    paramString = e.uA(paramString);
+    AppMethodBeat.o(35637);
+    return paramString;
   }
 }
 

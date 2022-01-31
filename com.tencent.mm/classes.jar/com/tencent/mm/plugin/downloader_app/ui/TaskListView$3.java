@@ -1,19 +1,34 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
-import android.content.Context;
+import android.support.v7.widget.RecyclerView.a;
+import android.support.v7.widget.RecyclerView.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.b.d;
+import com.tencent.mm.plugin.downloader_app.b.d.a;
 import com.tencent.mm.plugin.downloader_app.b.h;
-import com.tencent.mm.plugin.downloader_app.b.d.b;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.plugin.downloader_app.b.i;
+import java.util.Iterator;
 
 final class TaskListView$3
-  implements d.b
+  implements d.a
 {
   TaskListView$3(TaskListView paramTaskListView) {}
   
-  public final void onClick()
+  public final void gx(boolean paramBoolean)
   {
-    TaskListView localTaskListView = this.iUe;
-    h.a(localTaskListView.getContext(), localTaskListView.getContext().getString(b.h.delete_task_tips), "", localTaskListView.getContext().getString(b.h.task_delete), localTaskListView.getContext().getString(b.h.task_cancel), new TaskListView.8(localTaskListView), new TaskListView.9(localTaskListView));
+    AppMethodBeat.i(136293);
+    TaskListView localTaskListView = this.ldh;
+    Iterator localIterator = localTaskListView.lcX.lcP.iterator();
+    while (localIterator.hasNext())
+    {
+      i locali = (i)localIterator.next();
+      if (locali.bjS()) {
+        locali.gDG = paramBoolean;
+      }
+    }
+    localTaskListView.lcX.ajb.notifyChanged();
+    d.gw(paramBoolean);
+    AppMethodBeat.o(136293);
   }
 }
 

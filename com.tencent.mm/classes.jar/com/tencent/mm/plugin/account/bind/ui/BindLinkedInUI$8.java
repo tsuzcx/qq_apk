@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.account.bind.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class BindLinkedInUI$8
@@ -12,7 +12,9 @@ final class BindLinkedInUI$8
   
   public final void onClick(View paramView)
   {
-    h.a(this.fbn, this.fbn.getString(a.i.contact_info_linkedin_account_unbind_alert), null, new BindLinkedInUI.8.1(this), new BindLinkedInUI.8.2(this));
+    AppMethodBeat.i(13395);
+    h.a(this.gtf, this.gtf.getString(2131298644), null, new BindLinkedInUI.8.1(this), new BindLinkedInUI.8.2(this));
+    AppMethodBeat.o(13395);
   }
 }
 

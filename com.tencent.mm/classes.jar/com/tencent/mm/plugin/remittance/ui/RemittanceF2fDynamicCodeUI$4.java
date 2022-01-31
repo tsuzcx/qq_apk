@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.ui.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.t;
 
 final class RemittanceF2fDynamicCodeUI$4
-  extends u
+  extends t
 {
   RemittanceF2fDynamicCodeUI$4(RemittanceF2fDynamicCodeUI paramRemittanceF2fDynamicCodeUI) {}
   
-  public final void aEI()
+  public final void bhX()
   {
-    RemittanceF2fDynamicCodeUI.a(this.nDP, 2);
+    AppMethodBeat.i(45054);
+    RemittanceF2fDynamicCodeUI.a(this.qqI, 2);
+    AppMethodBeat.o(45054);
   }
 }
 

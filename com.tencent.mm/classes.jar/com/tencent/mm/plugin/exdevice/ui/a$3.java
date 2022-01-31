@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$3
   implements View.OnClickListener
@@ -10,9 +11,14 @@ final class a$3
   
   public final void onClick(View paramView)
   {
-    if (a.c(this.jDT) != null) {
-      a.c(this.jDT).aMG();
+    AppMethodBeat.i(20004);
+    if (a.c(this.lNr) != null)
+    {
+      paramView = a.c(this.lNr);
+      a.a(this.lNr);
+      paramView.bqU();
     }
+    AppMethodBeat.o(20004);
   }
 }
 

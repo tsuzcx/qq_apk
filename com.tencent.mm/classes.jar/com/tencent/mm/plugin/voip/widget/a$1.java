@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.voip.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip.video.OpenGlRender;
 import com.tencent.mm.plugin.voip.video.OpenGlView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
   implements Runnable
@@ -11,13 +12,16 @@ final class a$1
   
   public final void run()
   {
-    y.i("MicroMsg.Voip.TalkingSmallView", "on mDismissLocalView");
-    if (a.a(this.qcB).qbz)
+    AppMethodBeat.i(5137);
+    ab.i("MicroMsg.Voip.TalkingSmallView", "on mDismissLocalView");
+    if (a.a(this.tJq).tHl)
     {
-      a.b(this.qcB).kf(true);
+      a.b(this.tJq).nd(true);
+      AppMethodBeat.o(5137);
       return;
     }
-    a.a(this.qcB).setVisibility(4);
+    a.a(this.tJq).setVisibility(4);
+    AppMethodBeat.o(5137);
   }
 }
 

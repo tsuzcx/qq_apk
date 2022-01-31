@@ -5,10 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,59 +17,78 @@ import java.util.List;
 public final class c
   implements ServiceConnection
 {
-  public c.a jyW;
-  public volatile boolean jyX;
-  private List<Runnable> jyY = new LinkedList();
+  public c.a lIv;
+  public volatile boolean lIw;
+  private List<Runnable> lIx;
   
-  public final boolean I(Runnable paramRunnable)
+  public c()
   {
-    if (this.jyX) {
+    AppMethodBeat.i(19571);
+    this.lIx = new LinkedList();
+    AppMethodBeat.o(19571);
+  }
+  
+  public final boolean R(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(19575);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(19575);
+      return false;
+    }
+    if (this.lIw) {
       paramRunnable.run();
     }
     for (;;)
     {
+      AppMethodBeat.o(19575);
       return true;
-      synchronized (this.jyY)
+      synchronized (this.lIx)
       {
-        this.jyY.add(paramRunnable);
+        this.lIx.add(paramRunnable);
       }
     }
   }
   
-  public final void da(Context paramContext)
+  public final void dM(Context paramContext)
   {
-    if (!d.db(paramContext))
+    AppMethodBeat.i(19574);
+    if (!d.dN(paramContext))
     {
-      y.i("MicroMsg.exdevice.ExDeviceServiceConnection", "ensureServiceInstance return false");
+      ab.i("MicroMsg.exdevice.ExDeviceServiceConnection", "ensureServiceInstance return false");
+      AppMethodBeat.o(19574);
       return;
     }
-    if (paramContext.bindService(new Intent(paramContext, ExDeviceService.class), this, 1))
+    if (com.tencent.mm.bq.d.a(new Intent(paramContext, ExDeviceService.class), this, "exdevice"))
     {
-      y.i("MicroMsg.exdevice.ExDeviceServiceConnection", "bind exdeviceservice success");
+      ab.i("MicroMsg.exdevice.ExDeviceServiceConnection", "bind exdeviceservice success");
+      AppMethodBeat.o(19574);
       return;
     }
-    y.e("MicroMsg.exdevice.ExDeviceServiceConnection", "bind exdeviceservice failed");
+    ab.e("MicroMsg.exdevice.ExDeviceServiceConnection", "bind exdeviceservice failed");
+    AppMethodBeat.o(19574);
   }
   
   public final void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
   {
-    y.i("MicroMsg.exdevice.ExDeviceServiceConnection", "onServiceConnected");
+    AppMethodBeat.i(19572);
+    ab.i("MicroMsg.exdevice.ExDeviceServiceConnection", "onServiceConnected");
     ??? = new x(h.a.t(paramIBinder));
     u.a(???);
-    ae.cqZ();
-    ???.a(com.tencent.mm.plugin.exdevice.b.a.aLf());
-    ???.b(com.tencent.mm.plugin.exdevice.model.a.aLq());
-    if (!???.a(ad.aLX())) {
-      y.e("MicroMsg.exdevice.ExDeviceServiceConnection", "simpleBluetoothRegistOnRecv error");
+    ah.dsY();
+    ???.a(com.tencent.mm.plugin.exdevice.b.a.bps());
+    ???.b(com.tencent.mm.plugin.exdevice.model.a.bpD());
+    if (!???.a(ad.bqk())) {
+      ab.e("MicroMsg.exdevice.ExDeviceServiceConnection", "simpleBluetoothRegistOnRecv error");
     }
-    if (this.jyW != null) {
-      this.jyW.onServiceConnected();
+    if (this.lIv != null) {
+      this.lIv.onServiceConnected();
     }
-    this.jyX = true;
-    synchronized (this.jyY)
+    this.lIw = true;
+    synchronized (this.lIx)
     {
-      paramIBinder = new ArrayList(this.jyY);
-      this.jyY.clear();
+      paramIBinder = new ArrayList(this.lIx);
+      this.lIx.clear();
       int i = 0;
       if (i < paramIBinder.size())
       {
@@ -80,20 +100,24 @@ public final class c
       }
     }
     paramIBinder.clear();
+    AppMethodBeat.o(19572);
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    y.i("MicroMsg.exdevice.ExDeviceServiceConnection", "onServiceDisconnected");
-    this.jyX = false;
+    AppMethodBeat.i(19573);
+    ab.i("MicroMsg.exdevice.ExDeviceServiceConnection", "onServiceDisconnected");
+    this.lIw = false;
     u.a(null);
-    ae.cqZ();
-    if ((au.Hz()) && (!au.CW()))
+    ah.dsY();
+    if ((aw.aaB()) && (!aw.QP()))
     {
-      da(ae.getContext());
+      dM(ah.getContext());
+      AppMethodBeat.o(19573);
       return;
     }
-    y.i("MicroMsg.exdevice.ExDeviceServiceConnection", "no user login, ignore this disconnection");
+    ab.i("MicroMsg.exdevice.ExDeviceServiceConnection", "no user login, ignore this disconnection");
+    AppMethodBeat.o(19573);
   }
 }
 

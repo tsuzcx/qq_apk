@@ -1,50 +1,18 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.internal.PendingResultUtil.ResultConverter;
 
-public class zzck
-  extends zza
+final class zzck
+  implements PendingResultUtil.ResultConverter
 {
-  public static final Parcelable.Creator<zzck> CREATOR = new zzcl();
-  final int zzaiI;
-  public final zzbv zzbTB;
+  static final PendingResultUtil.ResultConverter zzbx;
   
-  zzck(int paramInt, IBinder paramIBinder)
-  {
-    this.zzaiI = paramInt;
-    if (paramIBinder != null)
-    {
-      this.zzbTB = zzbv.zza.zzfC(paramIBinder);
-      return;
-    }
-    this.zzbTB = null;
-  }
-  
-  public zzck(zzbv paramzzbv)
-  {
-    this.zzaiI = 1;
-    this.zzbTB = paramzzbv;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    zzcl.zza(this, paramParcel, paramInt);
-  }
-  
-  IBinder zzAg()
-  {
-    if (this.zzbTB == null) {
-      return null;
-    }
-    return this.zzbTB.asBinder();
-  }
+  public final Object convert(Result arg1) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzck
  * JD-Core Version:    0.7.0.1
  */

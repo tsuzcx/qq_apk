@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas.widget;
 
 import android.view.View;
 import android.view.ViewParent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MCanvasView$1
   implements Runnable
@@ -10,7 +11,8 @@ final class MCanvasView$1
   
   public final void run()
   {
-    Object localObject = this.fMS.getParent();
+    AppMethodBeat.i(103711);
+    Object localObject = this.hgc.getParent();
     ViewParent localViewParent;
     do
     {
@@ -21,8 +23,9 @@ final class MCanvasView$1
     if (localViewParent != null)
     {
       localViewParent.requestLayout();
-      this.fMS.invalidate();
+      this.hgc.invalidate();
     }
+    AppMethodBeat.o(103711);
   }
 }
 

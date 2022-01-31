@@ -1,5 +1,6 @@
 package com.tencent.mapsdk.raster.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -7,44 +8,69 @@ import java.util.List;
 
 public final class PolygonOptions
 {
-  private int fillColor = -16777216;
-  private boolean isVisible = true;
-  private final List<LatLng> points = new ArrayList();
-  private int strokeColor = -16777216;
-  private float strokeWidth = 10.0F;
-  private float zIndex = 0.0F;
+  private int fillColor;
+  private int iLevel;
+  private boolean isVisible;
+  private final List<LatLng> points;
+  private int strokeColor;
+  private float strokeWidth;
+  private float zIndex;
+  
+  public PolygonOptions()
+  {
+    AppMethodBeat.i(101216);
+    this.strokeColor = -16777216;
+    this.fillColor = -16777216;
+    this.strokeWidth = 10.0F;
+    this.isVisible = true;
+    this.zIndex = 0.0F;
+    this.iLevel = OverlayLevel.OverlayLevelAboveLabels;
+    this.points = new ArrayList();
+    AppMethodBeat.o(101216);
+  }
   
   public final PolygonOptions add(LatLng paramLatLng)
   {
-    if (paramLatLng == null) {
+    AppMethodBeat.i(101217);
+    if (paramLatLng == null)
+    {
+      AppMethodBeat.o(101217);
       return this;
     }
     this.points.add(paramLatLng);
+    AppMethodBeat.o(101217);
     return this;
   }
   
   public final PolygonOptions add(LatLng... paramVarArgs)
   {
-    if (paramVarArgs == null) {
+    AppMethodBeat.i(101218);
+    if (paramVarArgs == null)
+    {
+      AppMethodBeat.o(101218);
       return this;
     }
     this.points.addAll(Arrays.asList(paramVarArgs));
+    AppMethodBeat.o(101218);
     return this;
   }
   
   public final PolygonOptions addAll(Iterable<LatLng> paramIterable)
   {
-    if (paramIterable == null) {}
-    for (;;)
+    AppMethodBeat.i(101219);
+    if (paramIterable == null)
     {
+      AppMethodBeat.o(101219);
       return this;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        LatLng localLatLng = (LatLng)paramIterable.next();
-        this.points.add(localLatLng);
-      }
     }
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext())
+    {
+      LatLng localLatLng = (LatLng)paramIterable.next();
+      this.points.add(localLatLng);
+    }
+    AppMethodBeat.o(101219);
+    return this;
   }
   
   public final PolygonOptions fillColor(int paramInt)
@@ -56,6 +82,11 @@ public final class PolygonOptions
   public final int getFillColor()
   {
     return this.fillColor;
+  }
+  
+  public final int getLevel()
+  {
+    return this.iLevel;
   }
   
   public final List<LatLng> getPoints()
@@ -81,6 +112,15 @@ public final class PolygonOptions
   public final boolean isVisible()
   {
     return this.isVisible;
+  }
+  
+  public final PolygonOptions level(int paramInt)
+  {
+    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+      return this;
+    }
+    this.iLevel = paramInt;
+    return this;
   }
   
   public final PolygonOptions strokeColor(int paramInt)
@@ -113,7 +153,7 @@ public final class PolygonOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.PolygonOptions
  * JD-Core Version:    0.7.0.1
  */

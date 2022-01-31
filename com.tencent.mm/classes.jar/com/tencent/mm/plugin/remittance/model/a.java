@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.remittance.model;
 
-import com.tencent.mm.protocal.c.co;
-import com.tencent.mm.protocal.c.jy;
-import com.tencent.mm.protocal.c.yz;
-import com.tencent.mm.protocal.c.za;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.adg;
+import com.tencent.mm.protocal.protobuf.adh;
+import com.tencent.mm.protocal.protobuf.cz;
+import com.tencent.mm.protocal.protobuf.mk;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,121 +14,152 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static JSONObject a(co paramco)
+  public static JSONObject a(adg paramadg)
   {
-    if (paramco == null) {
-      return new JSONObject();
+    AppMethodBeat.i(44717);
+    if (paramadg == null)
+    {
+      paramadg = new JSONObject();
+      AppMethodBeat.o(44717);
+      return paramadg;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("channel", paramco.bUR);
-      localJSONObject.put("favor_compose_info", a(paramco.swf));
-      localJSONObject.put("f2f_id", paramco.swc);
-      localJSONObject.put("payok_checksign", paramco.swe);
-      localJSONObject.put("receiver_openid", paramco.nzl);
-      localJSONObject.put("receiver_username", paramco.swg);
-      localJSONObject.put("scan_scene", paramco.nxO);
-      localJSONObject.put("scene", paramco.scene);
-      localJSONObject.put("total_amount", paramco.swh);
-      localJSONObject.put("trans_id", paramco.swd);
+      localJSONObject.put("favor_compose_id", paramadg.wVK);
+      LinkedList localLinkedList = paramadg.wAS;
+      new adh();
+      localJSONObject.put("favor_info_list,", cM(localLinkedList));
+      localJSONObject.put("show_favor_amount,", paramadg.wVL);
+      localJSONObject.put("show_pay_amount,", paramadg.wVM);
+      localJSONObject.put("total_favor_amount,", paramadg.wVN);
+      localJSONObject.put("favor_desc", paramadg.qiO);
+      localJSONObject.put("compose_sort_flag", paramadg.wVO);
+      localJSONObject.put("extend_str", paramadg.wIJ);
+      AppMethodBeat.o(44717);
       return localJSONObject;
     }
-    catch (Exception paramco)
+    catch (Exception paramadg)
     {
-      y.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramco, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramadg, "", new Object[0]);
+      }
     }
-    return localJSONObject;
   }
   
-  public static JSONObject a(jy paramjy)
+  private static JSONObject a(adh paramadh)
   {
-    if (paramjy == null) {
-      return new JSONObject();
+    AppMethodBeat.i(44715);
+    if (paramadh == null)
+    {
+      paramadh = new JSONObject();
+      AppMethodBeat.o(44715);
+      return paramadh;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      LinkedList localLinkedList = paramjy.sEJ;
-      new za();
-      localJSONObject.put("favor_info_list", cj(localLinkedList));
-      localLinkedList = paramjy.sEK;
-      new yz();
-      localJSONObject.put("favor_compose_result_list", ck(localLinkedList));
-      localJSONObject.put("default_fav_compose_id", paramjy.sEL);
-      localJSONObject.put("favor_resp_sign", paramjy.sEM);
-      localJSONObject.put("no_compose_wording", paramjy.sEN);
+      localJSONObject.put("fav_type", paramadh.wVP);
+      localJSONObject.put("fav_sub_type", paramadh.wVQ);
+      localJSONObject.put("fav_property", paramadh.wVR);
+      localJSONObject.put("favor_type_desc", paramadh.wVS);
+      localJSONObject.put("fav_id", paramadh.wVT);
+      localJSONObject.put("fav_name", paramadh.wVU);
+      localJSONObject.put("fav_desc", paramadh.wVV);
+      localJSONObject.put("favor_use_manual", paramadh.wVW);
+      localJSONObject.put("favor_remarks", paramadh.wVX);
+      localJSONObject.put("fav_price", paramadh.wVY);
+      localJSONObject.put("real_fav_fee", paramadh.wVZ);
+      localJSONObject.put("fav_scope_type", paramadh.wWa);
+      localJSONObject.put("business_receipt_no", paramadh.wWb);
+      localJSONObject.put("unavailable", paramadh.wWc);
+      AppMethodBeat.o(44715);
       return localJSONObject;
     }
-    catch (Exception paramjy)
+    catch (Exception paramadh)
     {
-      y.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramjy, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramadh, "", new Object[0]);
+      AppMethodBeat.o(44715);
     }
     return localJSONObject;
   }
   
-  public static JSONObject a(yz paramyz)
+  public static JSONObject a(cz paramcz)
   {
-    if (paramyz == null) {
-      return new JSONObject();
+    AppMethodBeat.i(44718);
+    if (paramcz == null)
+    {
+      paramcz = new JSONObject();
+      AppMethodBeat.o(44718);
+      return paramcz;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("favor_compose_id", paramyz.sXL);
-      LinkedList localLinkedList = paramyz.sEJ;
-      new za();
-      localJSONObject.put("favor_info_list,", cj(localLinkedList));
-      localJSONObject.put("show_favor_amount,", paramyz.sXM);
-      localJSONObject.put("show_pay_amount,", paramyz.sXN);
-      localJSONObject.put("total_favor_amount,", paramyz.sXO);
-      localJSONObject.put("favor_desc", paramyz.nxN);
-      localJSONObject.put("compose_sort_flag", paramyz.sXP);
-      localJSONObject.put("extend_str", paramyz.sKU);
+      localJSONObject.put("channel", paramcz.cCy);
+      localJSONObject.put("favor_compose_info", a(paramcz.wps));
+      localJSONObject.put("f2f_id", paramcz.wpp);
+      localJSONObject.put("payok_checksign", paramcz.wpr);
+      localJSONObject.put("receiver_openid", paramcz.qkn);
+      localJSONObject.put("receiver_username", paramcz.wpt);
+      localJSONObject.put("scan_scene", paramcz.qiP);
+      localJSONObject.put("scene", paramcz.scene);
+      localJSONObject.put("total_amount", paramcz.wpu);
+      localJSONObject.put("trans_id", paramcz.wpq);
+      AppMethodBeat.o(44718);
       return localJSONObject;
     }
-    catch (Exception paramyz)
+    catch (Exception paramcz)
     {
-      y.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramyz, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramcz, "", new Object[0]);
+      }
     }
-    return localJSONObject;
   }
   
-  private static JSONObject a(za paramza)
+  public static JSONObject a(mk parammk)
   {
-    if (paramza == null) {
-      return new JSONObject();
+    AppMethodBeat.i(44713);
+    if (parammk == null)
+    {
+      parammk = new JSONObject();
+      AppMethodBeat.o(44713);
+      return parammk;
     }
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("fav_type", paramza.sXQ);
-      localJSONObject.put("fav_sub_type", paramza.sXR);
-      localJSONObject.put("fav_property", paramza.sXS);
-      localJSONObject.put("favor_type_desc", paramza.sXT);
-      localJSONObject.put("fav_id", paramza.sXU);
-      localJSONObject.put("fav_name", paramza.sXV);
-      localJSONObject.put("fav_desc", paramza.sXW);
-      localJSONObject.put("favor_use_manual", paramza.sXX);
-      localJSONObject.put("favor_remarks", paramza.sXY);
-      localJSONObject.put("fav_price", paramza.sXZ);
-      localJSONObject.put("real_fav_fee", paramza.sYa);
-      localJSONObject.put("fav_scope_type", paramza.sYb);
-      localJSONObject.put("business_receipt_no", paramza.sYc);
-      localJSONObject.put("unavailable", paramza.sYd);
+      LinkedList localLinkedList = parammk.wAS;
+      new adh();
+      localJSONObject.put("favor_info_list", cM(localLinkedList));
+      localLinkedList = parammk.wAT;
+      new adg();
+      localJSONObject.put("favor_compose_result_list", cN(localLinkedList));
+      localJSONObject.put("default_fav_compose_id", parammk.wAU);
+      localJSONObject.put("favor_resp_sign", parammk.wAV);
+      localJSONObject.put("no_compose_wording", parammk.wAW);
+      AppMethodBeat.o(44713);
       return localJSONObject;
     }
-    catch (Exception paramza)
+    catch (Exception parammk)
     {
-      y.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramza, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", parammk, "", new Object[0]);
+      }
     }
-    return localJSONObject;
   }
   
-  private static JSONArray cj(List<za> paramList)
+  private static JSONArray cM(List<adh> paramList)
   {
-    if (paramList == null) {
-      return new JSONArray();
+    AppMethodBeat.i(44714);
+    if (paramList == null)
+    {
+      paramList = new JSONArray();
+      AppMethodBeat.o(44714);
+      return paramList;
     }
     localJSONArray = new JSONArray();
     try
@@ -136,21 +168,26 @@ public final class a
       int i = 0;
       while (paramList.hasNext())
       {
-        localJSONArray.put(i, a((za)paramList.next()));
+        localJSONArray.put(i, a((adh)paramList.next()));
         i += 1;
       }
       return localJSONArray;
     }
     catch (Exception paramList)
     {
-      y.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
+      AppMethodBeat.o(44714);
     }
   }
   
-  private static JSONArray ck(List<yz> paramList)
+  private static JSONArray cN(List<adg> paramList)
   {
-    if (paramList == null) {
-      return new JSONArray();
+    AppMethodBeat.i(44716);
+    if (paramList == null)
+    {
+      paramList = new JSONArray();
+      AppMethodBeat.o(44716);
+      return paramList;
     }
     localJSONArray = new JSONArray();
     try
@@ -159,14 +196,15 @@ public final class a
       int i = 0;
       while (paramList.hasNext())
       {
-        localJSONArray.put(i, a((yz)paramList.next()));
+        localJSONArray.put(i, a((adg)paramList.next()));
         i += 1;
       }
       return localJSONArray;
     }
     catch (Exception paramList)
     {
-      y.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BusiF2FFavorHelper", paramList, "", new Object[0]);
+      AppMethodBeat.o(44716);
     }
   }
 }

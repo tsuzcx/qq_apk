@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExdeviceConnectWifiUI$5$1
   implements DialogInterface.OnCancelListener
@@ -11,10 +12,12 @@ final class ExdeviceConnectWifiUI$5$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "On progress cancel, stop airkiss");
-    if (ExdeviceConnectWifiUI.d(this.jCD.jCy) != ExdeviceConnectWifiUI.b.jCL) {
-      ExdeviceConnectWifiUI.r(this.jCD.jCy);
+    AppMethodBeat.i(19876);
+    ab.i("MicroMsg.exdevice.ExdeviceConnectWifiUI", "On progress cancel, stop airkiss");
+    if (ExdeviceConnectWifiUI.d(this.lMa.lLW) != ExdeviceConnectWifiUI.b.lMi) {
+      ExdeviceConnectWifiUI.r(this.lMa.lLW);
     }
+    AppMethodBeat.o(19876);
   }
 }
 

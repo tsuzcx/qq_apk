@@ -1,88 +1,79 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.bv.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.IOException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.ds;
+import com.tencent.mm.plugin.game.d.e;
+import com.tencent.mm.plugin.game.d.q;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class x
-  extends i<w>
+public class x
 {
-  public static final String[] dXp = { i.a(w.buS, "GamePBCache") };
-  
-  public x(e parame)
+  public static c a(e parame)
   {
-    super(parame, w.buS, "GamePBCache", null);
-  }
-  
-  public final byte[] Ey(String paramString)
-  {
-    if (bk.bl(paramString)) {}
-    w localw;
-    do
+    AppMethodBeat.i(111358);
+    if (parame == null)
     {
-      do
-      {
-        return null;
-      } while (!com.tencent.mm.sdk.platformtools.x.cqJ().equals(f.aYZ()));
-      localw = new w();
-      localw.field_key = paramString;
-    } while (!super.b(localw, new String[0]));
-    return localw.field_value;
-  }
-  
-  public final boolean b(String paramString, a parama)
-  {
-    if ((bk.bl(paramString)) || (parama == null)) {
-      return false;
+      ab.e("MicroMsg.GamePBData", "Invalid pb object");
+      AppMethodBeat.o(111358);
+      return null;
     }
-    try
+    if (bo.isNullOrNil(parame.npZ))
     {
-      parama = parama.toByteArray();
-      return o(paramString, parama);
+      ab.e("MicroMsg.GamePBData", "No AppID field, abort");
+      AppMethodBeat.o(111358);
+      return null;
     }
-    catch (IOException paramString)
+    ab.i("MicroMsg.GamePBData", "Parsing AppID: %s", new Object[] { parame.npZ });
+    c localc = new c();
+    localc.field_appId = parame.npZ;
+    localc.field_appName = parame.Name;
+    localc.field_appIconUrl = parame.nqa;
+    localc.field_appType = ",1,";
+    localc.field_packageName = parame.nqc;
+    localc.field_appVersion = parame.Version;
+    localc.field_appInfoFlag = parame.nqf;
+    if (parame.nqe != null)
     {
-      y.e("MicroMsg.GamePBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
+      localc.iV(parame.nqe.nqK);
+      localc.iY(parame.nqe.nqL);
+      localc.ho(parame.nqe.nqO);
+      localc.iZ(parame.nqe.nqM);
+      localc.nmn = parame.nqe.nqQ;
+      localc.nmo = parame.nqe.nqP;
+      localc.cvQ = parame.nqe.nqR;
     }
-    return false;
-  }
-  
-  public final boolean o(String paramString, byte[] paramArrayOfByte)
-  {
-    boolean bool1 = false;
-    boolean bool2 = bool1;
-    if (paramArrayOfByte != null)
+    if ((parame.nqe != null) && (parame.nqe.nqN != null))
     {
-      if (paramArrayOfByte.length == 0) {
-        bool2 = bool1;
-      }
+      localc.je(parame.nqe.nqN.nqK);
+      localc.jf(parame.nqe.nqN.nux);
+      localc.jc(parame.nqe.nqN.nuy);
+      localc.jd(parame.nqe.nqN.nuz);
+      localc.hp(parame.nqe.nqN.nuB);
     }
-    else {
-      return bool2;
-    }
-    w localw = new w();
-    localw.field_key = paramString;
-    if (super.b(localw, new String[0])) {
-      localw.field_value = paramArrayOfByte;
-    }
-    for (bool1 = super.c(localw, new String[0]);; bool1 = super.b(localw))
+    localc.nlU = parame.Desc;
+    localc.nlT = parame.nqb;
+    localc.status = parame.jJS;
+    localc.nlW = parame.npU;
+    localc.versionCode = parame.nqd;
+    localc.cnG = parame.npW;
+    localc.nlY = parame.nqg;
+    localc.nmg = parame.nql;
+    if ((parame.nqe != null) && (parame.nqe.nqN != null))
     {
-      bool2 = bool1;
-      if (bool1) {
-        break;
-      }
-      y.e("MicroMsg.GamePBCacheStorage", "Saving cache failed (update or insert)");
-      return bool1;
-      localw.field_value = paramArrayOfByte;
+      localc.nlZ = parame.nqe.nqN.nuA;
+      localc.nma = parame.nqe.nqN.nuC;
+      localc.nmb = parame.nqe.nqN.nuD;
     }
+    localc.edl = parame.nqn;
+    localc.nmp = parame.nqo;
+    AppMethodBeat.o(111358);
+    return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.x
  * JD-Core Version:    0.7.0.1
  */

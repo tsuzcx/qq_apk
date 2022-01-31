@@ -2,57 +2,62 @@ package com.tencent.mm.plugin.remittance.ui;
 
 import android.view.View;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tenpay.android.wechat.TenpaySecureEditText;
 
 final class RemittanceBusiUI$a
 {
-  private View hNa;
-  private float nCI;
-  private float nCJ;
-  private float nCK;
-  private TenpaySecureEditText nCL;
-  private TextView nCM;
-  private View nCN;
+  private View jIo;
+  private float marginTop;
+  private float qoO;
+  private float qoP;
+  private TenpaySecureEditText qoQ;
+  private TextView qoR;
+  private RelativeLayout qoS;
   
   RemittanceBusiUI$a(RemittanceBusiUI paramRemittanceBusiUI, int paramInt1, int paramInt2, float paramFloat)
   {
-    this.nCI = paramInt1;
-    this.nCJ = paramInt2;
-    this.nCK = paramFloat;
+    AppMethodBeat.i(44930);
+    this.qoO = paramInt1;
+    this.qoP = paramInt2;
+    this.marginTop = paramFloat;
+    AppMethodBeat.o(44930);
   }
   
   final void update()
   {
-    RemittanceBusiUI.b(this.nCA).setTextSize(1, RemittanceBusiUI.a(this.nCA).nCJ);
-    RemittanceBusiUI.c(this.nCA).setTextSize(1, RemittanceBusiUI.a(this.nCA).nCI);
-    if (this.nCM == null) {
-      this.nCM = ((TextView)RemittanceBusiUI.d(this.nCA).findViewById(a.f.wallet_title));
+    AppMethodBeat.i(44931);
+    RemittanceBusiUI.a(this.qoF).setTextSize(1, this.qoP);
+    RemittanceBusiUI.b(this.qoF).setTextSize(1, this.qoO);
+    if (this.qoR == null) {
+      this.qoR = ((TextView)RemittanceBusiUI.c(this.qoF).findViewById(2131820696));
     }
-    if (this.nCM != null) {
-      this.nCM.setTextSize(this.nCI);
+    if (this.qoR != null) {
+      this.qoR.setTextSize(this.qoO);
     }
-    if (this.nCL == null) {
-      this.nCL = ((TenpaySecureEditText)RemittanceBusiUI.d(this.nCA).findViewById(a.f.wallet_content));
+    if (this.qoQ == null) {
+      this.qoQ = ((TenpaySecureEditText)RemittanceBusiUI.c(this.qoF).findViewById(2131820689));
     }
-    if (this.nCL != null) {
-      this.nCL.setTextSize(this.nCJ);
+    if (this.qoQ != null) {
+      this.qoQ.setTextSize(this.qoP);
     }
-    if (this.hNa == null) {
-      this.hNa = this.nCL.findViewById(a.f.money_et_layout);
+    if (this.jIo == null) {
+      this.jIo = this.qoQ.findViewById(2131829383);
     }
-    if (this.hNa != null) {
-      this.hNa.setMinimumHeight(BackwardSupportUtil.b.b(this.nCA, RemittanceBusiUI.a(this.nCA).nCJ));
+    if (this.jIo != null) {
+      this.jIo.setMinimumHeight(BackwardSupportUtil.b.b(this.qoF, RemittanceBusiUI.d(this.qoF).qoP));
     }
-    if (this.nCN == null) {
-      this.nCN = this.nCA.findViewById(a.f.walletformline);
+    if (this.qoS == null) {
+      this.qoS = ((RelativeLayout)this.qoF.findViewById(2131827221));
     }
-    if (this.nCN != null) {
-      ((LinearLayout.LayoutParams)this.nCN.getLayoutParams()).topMargin = BackwardSupportUtil.b.b(this.nCA, this.nCK);
+    if (this.qoS != null) {
+      ((LinearLayout.LayoutParams)this.qoS.getLayoutParams()).topMargin = BackwardSupportUtil.b.b(this.qoF, this.marginTop);
     }
+    AppMethodBeat.o(44931);
   }
 }
 

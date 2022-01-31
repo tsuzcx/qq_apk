@@ -8,14 +8,14 @@ import android.widget.LinearLayout;
 public class ActivityChooserView$InnerLayout
   extends LinearLayout
 {
-  private static final int[] Vb = { 16842964 };
+  private static final int[] VO = { 16842964 };
   
   public ActivityChooserView$InnerLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = ax.a(paramContext, paramAttributeSet, Vb);
+    paramContext = az.a(paramContext, paramAttributeSet, VO);
     setBackgroundDrawable(paramContext.getDrawable(0));
-    paramContext.alZ.recycle();
+    paramContext.aoo.recycle();
   }
 }
 

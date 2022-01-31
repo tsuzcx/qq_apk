@@ -3,9 +3,7 @@ package com.tencent.mm.ui.chatting.gallery;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImageGalleryGridUI$6$1
   implements Runnable
@@ -14,9 +12,11 @@ final class ImageGalleryGridUI$6$1
   
   public final void run()
   {
-    Animation localAnimation = AnimationUtils.loadAnimation(this.vuV.vuT.mController.uMN, R.a.fast_faded_out);
-    ImageGalleryGridUI.b(this.vuV.vuT).startAnimation(localAnimation);
-    ImageGalleryGridUI.b(this.vuV.vuT).setVisibility(8);
+    AppMethodBeat.i(32040);
+    Animation localAnimation = AnimationUtils.loadAnimation(this.zKW.zKU.getContext(), 2131034182);
+    ImageGalleryGridUI.b(this.zKW.zKU).startAnimation(localAnimation);
+    ImageGalleryGridUI.b(this.zKW.zKU).setVisibility(8);
+    AppMethodBeat.o(32040);
   }
 }
 

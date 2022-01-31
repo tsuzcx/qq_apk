@@ -1,5 +1,7 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class SystemWebChromeClient$f
   implements WebStorage.QuotaUpdater
 {
@@ -12,7 +14,9 @@ class SystemWebChromeClient$f
   
   public void updateQuota(long paramLong)
   {
+    AppMethodBeat.i(64170);
     this.a.updateQuota(paramLong);
+    AppMethodBeat.o(64170);
   }
 }
 

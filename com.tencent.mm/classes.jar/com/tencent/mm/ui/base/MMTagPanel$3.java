@@ -2,7 +2,8 @@ package com.tencent.mm.ui.base;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMTagPanel$3
   implements View.OnFocusChangeListener
@@ -11,10 +12,12 @@ final class MMTagPanel$3
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    y.d("MicroMsg.MMTagPanel", "on edittext focus changed %B", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((paramBoolean) && (MMTagPanel.e(this.uYn) != null)) {
-      MMTagPanel.e(this.uYn).aJI();
+    AppMethodBeat.i(106812);
+    ab.d("MicroMsg.MMTagPanel", "on edittext focus changed %B", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((paramBoolean) && (MMTagPanel.e(this.zmE) != null)) {
+      MMTagPanel.e(this.zmE).bnq();
     }
+    AppMethodBeat.o(106812);
   }
 }
 

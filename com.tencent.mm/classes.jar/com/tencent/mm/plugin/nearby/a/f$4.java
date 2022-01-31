@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.nearby.a;
 
-import com.tencent.mm.h.a.kf;
+import com.tencent.mm.g.a.ks;
 import com.tencent.mm.pluginsdk.c.c;
 
 final class f$4
-  extends c<kf>
+  extends c<ks>
 {
   f$4(f paramf) {}
   
-  public final int xf()
+  public final int Jx()
   {
     return 377;
   }

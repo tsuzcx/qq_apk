@@ -1,35 +1,35 @@
 package com.google.android.exoplayer2.source.a;
 
 import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.h.f;
-import com.google.android.exoplayer2.h.i;
-import com.google.android.exoplayer2.h.r.c;
+import com.google.android.exoplayer2.h.g;
+import com.google.android.exoplayer2.h.j;
+import com.google.android.exoplayer2.h.t.c;
 
 public abstract class a
-  implements r.c
+  implements t.c
 {
-  public final i aJa;
-  public final Format aJb;
-  public final int aJc;
-  public final Object aJd;
-  public final long aJe;
-  public final long aJf;
-  public final f ayZ;
+  protected final g aBo;
+  public final j aQI;
+  public final Format aQJ;
+  public final int aQK;
+  public final Object aQL;
+  public final long aQM;
+  public final long aQN;
   public final int type;
   
-  public a(f paramf, i parami, int paramInt1, Format paramFormat, int paramInt2, Object paramObject, long paramLong1, long paramLong2)
+  public a(g paramg, j paramj, int paramInt1, Format paramFormat, int paramInt2, Object paramObject, long paramLong1, long paramLong2)
   {
-    this.ayZ = ((f)com.google.android.exoplayer2.i.a.E(paramf));
-    this.aJa = ((i)com.google.android.exoplayer2.i.a.E(parami));
+    this.aBo = ((g)com.google.android.exoplayer2.i.a.checkNotNull(paramg));
+    this.aQI = ((j)com.google.android.exoplayer2.i.a.checkNotNull(paramj));
     this.type = paramInt1;
-    this.aJb = paramFormat;
-    this.aJc = paramInt2;
-    this.aJd = paramObject;
-    this.aJe = paramLong1;
-    this.aJf = paramLong2;
+    this.aQJ = paramFormat;
+    this.aQK = paramInt2;
+    this.aQL = paramObject;
+    this.aQM = paramLong1;
+    this.aQN = paramLong2;
   }
   
-  public abstract long mQ();
+  public abstract long pt();
 }
 
 

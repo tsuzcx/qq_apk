@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.widget.input.autofill;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AutoFillListPopupWindowBase$b
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class AutoFillListPopupWindowBase$b
   
   public final void run()
   {
-    this.hxk.clearListSelection();
+    AppMethodBeat.i(123915);
+    this.jpu.clearListSelection();
+    AppMethodBeat.o(123915);
   }
 }
 

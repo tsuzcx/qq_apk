@@ -1,13 +1,15 @@
 package com.tencent.wcdb.database;
 
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.wcdb.extension.SQLiteExtension;
+import java.util.LinkedHashSet;
 import java.util.Locale;
 
 public final class SQLiteDatabaseConfiguration
 {
   public static final String MEMORY_DB_PATH = ":memory:";
-  public final ArrayList<SQLiteCustomFunction> customFunctions = new ArrayList();
   public boolean customWALHookEnabled;
+  public final LinkedHashSet<SQLiteExtension> extensions;
   public boolean foreignKeyConstraintsEnabled;
   public final String label;
   public Locale locale;
@@ -21,18 +23,29 @@ public final class SQLiteDatabaseConfiguration
   
   public SQLiteDatabaseConfiguration(SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration)
   {
-    if (paramSQLiteDatabaseConfiguration == null) {
-      throw new IllegalArgumentException("other must not be null.");
+    AppMethodBeat.i(12541);
+    this.extensions = new LinkedHashSet();
+    if (paramSQLiteDatabaseConfiguration == null)
+    {
+      paramSQLiteDatabaseConfiguration = new IllegalArgumentException("other must not be null.");
+      AppMethodBeat.o(12541);
+      throw paramSQLiteDatabaseConfiguration;
     }
     this.path = paramSQLiteDatabaseConfiguration.path;
     this.label = paramSQLiteDatabaseConfiguration.label;
     updateParametersFrom(paramSQLiteDatabaseConfiguration);
+    AppMethodBeat.o(12541);
   }
   
   public SQLiteDatabaseConfiguration(String paramString, int paramInt)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("path must not be null.");
+    AppMethodBeat.i(12540);
+    this.extensions = new LinkedHashSet();
+    if (paramString == null)
+    {
+      paramString = new IllegalArgumentException("path must not be null.");
+      AppMethodBeat.o(12540);
+      throw paramString;
     }
     this.path = paramString;
     this.label = paramString;
@@ -44,22 +57,33 @@ public final class SQLiteDatabaseConfiguration
     for (paramString = "vfslog";; paramString = null)
     {
       this.vfsName = paramString;
+      AppMethodBeat.o(12540);
       return;
     }
   }
   
   public final boolean isInMemoryDb()
   {
-    return this.path.equalsIgnoreCase(":memory:");
+    AppMethodBeat.i(12543);
+    boolean bool = this.path.equalsIgnoreCase(":memory:");
+    AppMethodBeat.o(12543);
+    return bool;
   }
   
   public final void updateParametersFrom(SQLiteDatabaseConfiguration paramSQLiteDatabaseConfiguration)
   {
-    if (paramSQLiteDatabaseConfiguration == null) {
-      throw new IllegalArgumentException("other must not be null.");
+    AppMethodBeat.i(12542);
+    if (paramSQLiteDatabaseConfiguration == null)
+    {
+      paramSQLiteDatabaseConfiguration = new IllegalArgumentException("other must not be null.");
+      AppMethodBeat.o(12542);
+      throw paramSQLiteDatabaseConfiguration;
     }
-    if (!this.path.equals(paramSQLiteDatabaseConfiguration.path)) {
-      throw new IllegalArgumentException("other configuration must refer to the same database.");
+    if (!this.path.equals(paramSQLiteDatabaseConfiguration.path))
+    {
+      paramSQLiteDatabaseConfiguration = new IllegalArgumentException("other configuration must refer to the same database.");
+      AppMethodBeat.o(12542);
+      throw paramSQLiteDatabaseConfiguration;
     }
     this.openFlags = paramSQLiteDatabaseConfiguration.openFlags;
     this.maxSqlCacheSize = paramSQLiteDatabaseConfiguration.maxSqlCacheSize;
@@ -70,8 +94,9 @@ public final class SQLiteDatabaseConfiguration
     this.updateNotificationRowID = paramSQLiteDatabaseConfiguration.updateNotificationRowID;
     this.synchronousMode = paramSQLiteDatabaseConfiguration.synchronousMode;
     this.vfsName = paramSQLiteDatabaseConfiguration.vfsName;
-    this.customFunctions.clear();
-    this.customFunctions.addAll(paramSQLiteDatabaseConfiguration.customFunctions);
+    this.extensions.clear();
+    this.extensions.addAll(paramSQLiteDatabaseConfiguration.extensions);
+    AppMethodBeat.o(12542);
   }
 }
 

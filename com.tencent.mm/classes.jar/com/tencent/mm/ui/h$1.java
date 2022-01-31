@@ -1,27 +1,17 @@
 package com.tencent.mm.ui;
 
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ik;
+import com.tencent.mm.sdk.b.c;
 
 final class h$1
-  extends ah
+  extends c<ik>
 {
-  h$1(h paramh, Looper paramLooper)
+  h$1(h paramh)
   {
-    super(paramLooper);
-  }
-  
-  public final void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-    } while (h.a(this.uJi) == null);
-    h.b(this.uJi);
+    AppMethodBeat.i(29306);
+    this.__eventId = ik.class.getName().hashCode();
+    AppMethodBeat.o(29306);
   }
 }
 

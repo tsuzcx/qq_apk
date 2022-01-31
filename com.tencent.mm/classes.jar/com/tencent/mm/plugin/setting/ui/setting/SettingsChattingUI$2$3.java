@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class SettingsChattingUI$2$3
@@ -12,10 +13,12 @@ final class SettingsChattingUI$2$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(3), "" });
-    SettingsChattingUI.a(this.nUg.nUf).show();
-    SettingsChattingUI.a(this.nUg.nUf, false);
-    SettingsChattingUI.b(this.nUg.nUf);
+    AppMethodBeat.i(127212);
+    h.qsU.e(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(3), "" });
+    SettingsChattingUI.a(this.qIg.qIf).show();
+    SettingsChattingUI.a(this.qIg.qIf, false);
+    SettingsChattingUI.b(this.qIg.qIf);
+    AppMethodBeat.o(127212);
   }
 }
 

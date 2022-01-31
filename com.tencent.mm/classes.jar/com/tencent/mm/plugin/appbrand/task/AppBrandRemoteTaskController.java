@@ -1,219 +1,339 @@
 package com.tencent.mm.plugin.appbrand.task;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.os.Process;
+import android.util.Log;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.b;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.report.model.f.a;
+import com.tencent.mm.plugin.appbrand.report.model.e;
+import com.tencent.mm.plugin.appbrand.report.model.e.a;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandEmbedUI;
 import com.tencent.mm.sdk.platformtools.MultiProcessSharedPreferences;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 import junit.framework.Assert;
 
 public class AppBrandRemoteTaskController
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<AppBrandRemoteTaskController> CREATOR = new AppBrandRemoteTaskController.3();
-  private static long hbD;
-  public String fAR;
-  public h fyY = null;
-  public e fzL = null;
-  public int gJA;
-  public long hbA;
-  public AppBrandRemoteTaskController.a hbB = AppBrandRemoteTaskController.a.hbH;
-  int hbC;
-  private f hbE = f.hbW;
+  public static final Parcelable.Creator<AppBrandRemoteTaskController> CREATOR;
+  public static boolean iKC;
+  private static long iKy;
+  private i gQB = null;
+  private f gRu = null;
+  private String gSG;
+  String iKA;
+  private transient boolean iKB = false;
+  private long iKv;
+  public AppBrandRemoteTaskController.a iKw = AppBrandRemoteTaskController.a.iKF;
+  int iKx;
+  private g iKz = g.iKU;
+  public int ikk;
   public String mAppId;
   private long mTimestamp;
   
-  private void aoK()
+  static
   {
-    i locali;
-    Object localObject;
-    if (this.fAR.endsWith(".AppBrandEmbedUI"))
+    AppMethodBeat.i(132841);
+    iKC = false;
+    CREATOR = new AppBrandRemoteTaskController.3();
+    AppMethodBeat.o(132841);
+  }
+  
+  private void ET(String paramString)
+  {
+    try
     {
-      locali = g.a(new g.a()
-      {
-        public final boolean a(i paramAnonymousi)
-        {
-          return ((paramAnonymousi instanceof a)) && (((a)paramAnonymousi).hbb == AppBrandRemoteTaskController.a(AppBrandRemoteTaskController.this));
-        }
-      });
-      localObject = locali;
-      if (locali == null) {
-        localObject = new a(this.hbA);
+      AppMethodBeat.i(143577);
+      ab.i("MicroMsg.AppBrandRemoteTaskController", "clearDuplicatedImplByMainProcess");
+      this.iKB = true;
+      h.EU(paramString);
+      this.iKB = false;
+      AppMethodBeat.o(143577);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  private void aLR()
+  {
+    AppMethodBeat.i(132835);
+    j localj;
+    Object localObject;
+    if (this.gSG.endsWith(".AppBrandEmbedUI"))
+    {
+      localj = h.a(new AppBrandRemoteTaskController.1(this));
+      localObject = localj;
+      if (localj == null) {
+        localObject = new a(this.iKv);
       }
     }
     do
     {
-      ((i)localObject).a(this.mAppId, this.gJA, this);
-      g.b((i)localObject);
+      ((j)localObject).a(this.mAppId, this.ikk, this);
+      h.b((j)localObject);
+      h.a(this.mAppId, this);
+      AppMethodBeat.o(132835);
       return;
-      locali = g.wq(this.fAR);
-      localObject = locali;
-    } while (locali != null);
+      localj = h.EY(this.gSG);
+      localObject = localj;
+    } while (localj != null);
+    AppMethodBeat.o(132835);
   }
   
-  private void aoL()
+  private void aLS()
   {
-    if (g.cc(this.mAppId, this.fAR) == null) {
+    AppMethodBeat.i(132836);
+    if (h.cS(this.mAppId, this.gSG) == null)
+    {
+      h.a(this.mAppId, this);
+      AppMethodBeat.o(132836);
       return;
     }
-    g.wi(this.mAppId);
+    h.EN(this.mAppId);
+    AppMethodBeat.o(132836);
   }
   
-  public final void Zu()
+  public final void EQ(String paramString)
   {
-    switch (AppBrandRemoteTaskController.4.hbG[this.hbB.ordinal()])
+    AppMethodBeat.i(143576);
+    this.iKw = AppBrandRemoteTaskController.a.iKI;
+    this.mAppId = paramString;
+    AppBrandMainProcessService.a(this);
+    AppMethodBeat.o(143576);
+  }
+  
+  public final void ER(String paramString)
+  {
+    AppMethodBeat.i(132831);
+    this.iKw = AppBrandRemoteTaskController.a.iKO;
+    this.mAppId = paramString;
+    AppBrandMainProcessService.a(this);
+    AppMethodBeat.o(132831);
+  }
+  
+  final void ES(String paramString)
+  {
+    AppMethodBeat.i(132832);
+    ab.i("MicroMsg.AppBrandRemoteTaskController", "removeForMainProcess appId[%s] mIgnoreRemovalForMainProcessOnce[%b], stack = %s", new Object[] { paramString, Boolean.valueOf(this.iKB), Log.getStackTraceString(new Throwable()) });
+    if (this.iKB)
+    {
+      ab.i("MicroMsg.AppBrandRemoteTaskController", "removeForMainProcess, ignore once");
+      AppMethodBeat.o(132832);
+      return;
+    }
+    this.iKw = AppBrandRemoteTaskController.a.iKI;
+    this.mAppId = paramString;
+    aLS();
+    aBp();
+    AppMethodBeat.o(132832);
+  }
+  
+  public final void a(i parami, f paramf)
+  {
+    AppMethodBeat.i(143575);
+    Activity localActivity = parami.getContext();
+    this.gSG = localActivity.getClass().getName();
+    if ((localActivity instanceof AppBrandEmbedUI)) {
+      this.iKv = ((AppBrandEmbedUI)localActivity).iLR;
+    }
+    this.gQB = parami;
+    this.gRu = paramf;
+    AppMethodBeat.o(143575);
+  }
+  
+  public final void a(String paramString, int paramInt, g paramg)
+  {
+    AppMethodBeat.i(132830);
+    this.iKw = AppBrandRemoteTaskController.a.iKG;
+    this.mAppId = paramString;
+    this.ikk = paramInt;
+    this.iKz = paramg;
+    this.iKA = com.tencent.mm.plugin.appbrand.report.quality.a.EM(paramString).ikX;
+    AppBrandMainProcessService.a(this);
+    AppMethodBeat.o(132830);
+  }
+  
+  final boolean aLQ()
+  {
+    AppMethodBeat.i(132833);
+    this.iKw = AppBrandRemoteTaskController.a.iKM;
+    boolean bool = aBp();
+    AppMethodBeat.o(132833);
+    return bool;
+  }
+  
+  public final void ata()
+  {
+    AppMethodBeat.i(132834);
+    switch (AppBrandRemoteTaskController.4.iKE[this.iKw.ordinal()])
     {
     }
-    Object localObject2;
-    do
+    for (;;)
     {
+      AppMethodBeat.o(132834);
       return;
-      aoK();
+      aLR();
       try
       {
-        if (hbD == 0L)
+        long l;
+        if (iKy == 0L)
         {
-          long l = System.currentTimeMillis();
-          hbD = l;
-          SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(ae.getContext(), "pref_appbrand_process", 4).edit();
+          l = System.currentTimeMillis();
+          iKy = l;
+        }
+        try
+        {
+          SharedPreferences.Editor localEditor = MultiProcessSharedPreferences.getSharedPreferences(ah.getContext(), "pref_appbrand_process", 4).edit();
           localEditor.putLong("on_wxa_process_connected_time", l);
           localEditor.commit();
-          y.v("MicroMsg.AppBrandReporter", "update timestamp(%s)", new Object[] { Long.valueOf(l) });
+          ab.v("MicroMsg.AppBrandReporter", "update timestamp(%s)", new Object[] { Long.valueOf(l) });
+          this.mTimestamp = iKy;
+          aBp();
+          AppMethodBeat.o(132834);
+          return;
         }
-        this.mTimestamp = hbD;
-        ahI();
-        return;
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            ab.printErrStackTrace("MicroMsg.AppBrandReporter", localThrowable, "updateTimestamp(%d)", new Object[] { Long.valueOf(l) });
+          }
+        }
+        aLR();
       }
-      finally {}
-      aoK();
-      return;
-      aoL();
-      return;
-      g.mo(this.hbC);
-      return;
-      g.wm(this.mAppId);
-      return;
-      g.b(this.hbE);
-      return;
-      localObject2 = com.tencent.mm.plugin.appbrand.report.model.f.gYu;
-      String str = this.mAppId;
-      localObject2 = (f.a)((com.tencent.mm.plugin.appbrand.report.model.f)localObject2).gYv.get(str);
-    } while (localObject2 == null);
-    ((f.a)localObject2).gYx = bk.UY();
-  }
-  
-  public final void Zv()
-  {
-    switch (AppBrandRemoteTaskController.4.hbG[this.hbB.ordinal()])
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    default: 
-      return;
-    case 3: 
-      this.fzL.finish();
-      return;
-    case 8: 
-      switch (this.hbC)
+      finally
       {
-      default: 
-        return;
-      case 0: 
-        b.jr(ae.getProcessName());
-        this.fyY.finish();
-        Process.killProcess(Process.myPid());
-        return;
+        AppMethodBeat.o(132834);
       }
-      this.fyY.a(new AppBrandRemoteTaskController.2(this));
+      AppMethodBeat.o(132834);
       return;
-    case 9: 
-      Assert.assertTrue("AppBrand Test Assert", false);
+      aLS();
+      AppMethodBeat.o(132834);
       return;
+      h.pA(this.iKx);
+      AppMethodBeat.o(132834);
+      return;
+      ET(this.mAppId);
+      AppMethodBeat.o(132834);
+      return;
+      h.a(this.iKz, true);
+      AppMethodBeat.o(132834);
+      return;
+      Object localObject2 = e.iGL;
+      String str = this.mAppId;
+      localObject2 = (e.a)((e)localObject2).iGM.get(str);
+      if (localObject2 != null) {
+        ((e.a)localObject2).iGO = bo.aoy();
+      }
     }
-    this.fzL.onNetworkChange();
   }
   
-  public final void a(String paramString, int paramInt, f paramf)
+  public final void atb()
   {
-    this.hbB = AppBrandRemoteTaskController.a.hbI;
-    this.mAppId = paramString;
-    this.gJA = paramInt;
-    this.hbE = paramf;
-    AppBrandMainProcessService.a(this);
+    AppMethodBeat.i(132837);
+    switch (AppBrandRemoteTaskController.4.iKE[this.iKw.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(132837);
+      return;
+      this.gRu.ni(hashCode());
+      AppMethodBeat.o(132837);
+      return;
+      switch (this.iKx)
+      {
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(132837);
+        return;
+        b.qf(ah.getProcessName());
+        this.gQB.finish();
+        Process.killProcess(Process.myPid());
+        AppMethodBeat.o(132837);
+        return;
+        this.gQB.a(new AppBrandRemoteTaskController.2(this));
+      }
+      Assert.assertTrue("AppBrand Test Assert", false);
+      AppMethodBeat.o(132837);
+      return;
+      this.gRu.onNetworkChange(hashCode());
+    }
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
-    Object localObject = null;
+    Object localObject2 = null;
+    AppMethodBeat.i(132839);
     this.mAppId = paramParcel.readString();
-    this.gJA = paramParcel.readInt();
-    this.fAR = paramParcel.readString();
-    this.hbA = paramParcel.readLong();
+    this.ikk = paramParcel.readInt();
+    this.gSG = paramParcel.readString();
+    this.iKv = paramParcel.readLong();
     int i = paramParcel.readInt();
-    AppBrandRemoteTaskController.a locala;
     if (i == -1)
     {
-      locala = null;
-      this.hbB = locala;
-      this.hbC = paramParcel.readInt();
+      localObject1 = null;
+      this.iKw = ((AppBrandRemoteTaskController.a)localObject1);
+      this.iKx = paramParcel.readInt();
       this.mTimestamp = paramParcel.readLong();
       i = paramParcel.readInt();
       if (i != -1) {
-        break label96;
+        break label116;
       }
     }
-    label96:
-    for (paramParcel = localObject;; paramParcel = f.values()[i])
+    label116:
+    for (Object localObject1 = localObject2;; localObject1 = g.values()[i])
     {
-      this.hbE = paramParcel;
+      this.iKz = ((g)localObject1);
+      this.iKA = paramParcel.readString();
+      AppMethodBeat.o(132839);
       return;
-      locala = AppBrandRemoteTaskController.a.values()[i];
+      localObject1 = AppBrandRemoteTaskController.a.values()[i];
       break;
     }
-  }
-  
-  final void wl(String paramString)
-  {
-    this.hbB = AppBrandRemoteTaskController.a.hbK;
-    this.mAppId = paramString;
-    aoL();
-    ahI();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = -1;
+    AppMethodBeat.i(132838);
     paramParcel.writeString(this.mAppId);
-    paramParcel.writeInt(this.gJA);
-    paramParcel.writeString(this.fAR);
-    paramParcel.writeLong(this.hbA);
-    if (this.hbB == null)
+    paramParcel.writeInt(this.ikk);
+    paramParcel.writeString(this.gSG);
+    paramParcel.writeLong(this.iKv);
+    if (this.iKw == null)
     {
       paramInt = -1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.hbC);
+      paramParcel.writeInt(this.iKx);
       paramParcel.writeLong(this.mTimestamp);
-      if (this.hbE != null) {
-        break label90;
+      if (this.iKz != null) {
+        break label110;
       }
     }
-    label90:
-    for (paramInt = i;; paramInt = this.hbE.ordinal())
+    label110:
+    for (paramInt = i;; paramInt = this.iKz.ordinal())
     {
       paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.iKA);
+      AppMethodBeat.o(132838);
       return;
-      paramInt = this.hbB.ordinal();
+      paramInt = this.iKw.ordinal();
       break;
     }
   }

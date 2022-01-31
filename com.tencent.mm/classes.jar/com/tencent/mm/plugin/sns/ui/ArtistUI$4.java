@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ArtistUI$4
   extends f.b
 {
   ArtistUI$4(ArtistUI paramArtistUI) {}
   
-  public final void yv(int paramInt)
+  public final void EB(int paramInt)
   {
+    AppMethodBeat.i(38116);
     Intent localIntent = new Intent();
     localIntent.putExtra("sns_gallery_is_artist", true);
     localIntent.putExtra("sns_gallery_position", paramInt);
-    localIntent.putExtra("sns_gallery_artist_lan", ArtistUI.b(this.oNf));
+    localIntent.putExtra("sns_gallery_artist_lan", ArtistUI.b(this.rEQ));
     localIntent.putExtra("sns_gallery_showtype", 2);
-    localIntent.setClass(this.oNf, ArtistBrowseUI.class);
-    this.oNf.startActivity(localIntent);
+    localIntent.setClass(this.rEQ, ArtistBrowseUI.class);
+    this.rEQ.startActivity(localIntent);
+    AppMethodBeat.o(38116);
   }
 }
 

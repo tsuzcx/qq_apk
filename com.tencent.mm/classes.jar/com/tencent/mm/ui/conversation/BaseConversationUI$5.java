@@ -1,8 +1,9 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.ui.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.ui.IChattingUIProxy;
 import com.tencent.mm.ui.tools.TestTimeForChatting;
 
 final class BaseConversationUI$5
@@ -12,19 +13,24 @@ final class BaseConversationUI$5
   
   public final void run()
   {
-    au.DS().cre();
-    ai.Fd(0);
-    this.vPi.onSwipe(1.0F);
-    if ((BaseConversationUI.access$200(this.vPi) != null) && (BaseConversationUI.access$100(this.vPi) != null)) {
-      BaseConversationUI.access$200(this.vPi).cJm();
+    AppMethodBeat.i(34049);
+    aw.RO().dtd();
+    al.Nf(0);
+    this.AgT.onSwipe(1.0F);
+    if ((BaseConversationUI.access$200(this.AgT) != null) && (BaseConversationUI.access$100(this.AgT) != null)) {
+      BaseConversationUI.access$200(this.AgT).dOc();
     }
-    BaseConversationUI.access$500(this.vPi).cyU();
-    BaseConversationUI.access$600(this.vPi);
+    BaseConversationUI.access$500(this.AgT).onEnterEnd();
+    BaseConversationUI.access$600(this.AgT);
+    AppMethodBeat.o(34049);
   }
   
   public final String toString()
   {
-    return super.toString() + "|chattingView_onAnimationEnd";
+    AppMethodBeat.i(34050);
+    String str = super.toString() + "|chattingView_onAnimationEnd";
+    AppMethodBeat.o(34050);
+    return str;
   }
 }
 

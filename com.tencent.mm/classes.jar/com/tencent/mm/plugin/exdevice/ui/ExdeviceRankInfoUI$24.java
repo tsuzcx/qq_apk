@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMPullDownView.a;
 import java.util.List;
 
@@ -11,11 +12,13 @@ final class ExdeviceRankInfoUI$24
   
   public final boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    paramMotionEvent = this.jFV;
-    if ((ExdeviceRankInfoUI.a(this.jFV) != null) && (ExdeviceRankInfoUI.a(this.jFV).size() != 0)) {}
+    AppMethodBeat.i(20162);
+    paramMotionEvent = this.lPt;
+    if ((ExdeviceRankInfoUI.a(this.lPt) != null) && (ExdeviceRankInfoUI.a(this.lPt).size() != 0)) {}
     for (boolean bool = true;; bool = false)
     {
       ExdeviceRankInfoUI.b(paramMotionEvent, bool);
+      AppMethodBeat.o(20162);
       return false;
     }
   }

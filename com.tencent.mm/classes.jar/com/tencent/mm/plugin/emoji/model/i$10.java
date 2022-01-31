@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.storage.emotion.p;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.storage.emotion.j;
 
 final class i$10
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return p.dXp;
+    return j.SQL_CREATE;
   }
 }
 

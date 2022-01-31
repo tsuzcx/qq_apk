@@ -2,86 +2,93 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.mm.R.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class l$a
+final class l$a
 {
-  String bVO;
-  long ekr;
+  String cDz;
+  long fAH;
   String id;
-  int rsB;
-  int rsC;
-  JSONObject rsD;
   int scene;
-  public String url;
+  String url;
+  int viH;
+  int viI;
+  JSONObject viJ;
   
   public l$a()
   {
-    g.DQ();
-    Object localObject = (String)g.DP().Dz().get(ac.a.uzt, null);
-    y.i("MicroMsg.WebViewBagMgr", "BagInfo#load %s", new Object[] { localObject });
-    if (bk.bl((String)localObject))
+    AppMethodBeat.i(8216);
+    g.RM();
+    Object localObject = (String)g.RL().Ru().get(ac.a.yKh, null);
+    ab.i("MicroMsg.WebViewBagMgr", "BagInfo#load %s", new Object[] { localObject });
+    if (bo.isNullOrNil((String)localObject))
     {
       this.id = null;
       this.url = null;
-      this.bVO = null;
-      this.rsC = (a.fj(ae.getContext()) - b.rrl - b.rrm);
-      this.rsB = (b.rrk + ae.getContext().getResources().getDimensionPixelSize(R.f.webview_bag_init_top_margin));
-      this.rsD = new JSONObject();
-      y.i("MicroMsg.WebViewBagMgr", "BAG_INIT_X:%d BAG_INIT_Y:%d", new Object[] { Integer.valueOf(this.rsC), Integer.valueOf(this.rsB) });
+      this.cDz = null;
+      this.viI = (a.gw(ah.getContext()) - b.vhq - b.vhr);
+      this.viH = (b.vhp + ah.getContext().getResources().getDimensionPixelSize(2131428835));
+      this.viJ = new JSONObject();
+      ab.i("MicroMsg.WebViewBagMgr", "BAG_INIT_X:%d BAG_INIT_Y:%d", new Object[] { Integer.valueOf(this.viI), Integer.valueOf(this.viH) });
+      AppMethodBeat.o(8216);
       return;
     }
     try
     {
       localObject = new JSONObject((String)localObject);
       this.url = ((JSONObject)localObject).getString("url");
-      this.id = ((JSONObject)localObject).optString("id", ad.bB(String.format("bagId#%d#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), this.url })));
-      this.bVO = ((JSONObject)localObject).getString("icon");
-      this.rsB = ((JSONObject)localObject).getInt("pos_y");
-      this.rsC = ((JSONObject)localObject).getInt("pos_x");
-      this.ekr = ((JSONObject)localObject).getLong("last_active_time");
-      this.rsD = ((JSONObject)localObject).getJSONObject("extras");
+      this.id = ((JSONObject)localObject).optString("id", ag.cE(String.format("bagId#%d#%s", new Object[] { Long.valueOf(System.currentTimeMillis()), this.url })));
+      this.cDz = ((JSONObject)localObject).getString("icon");
+      this.viH = ((JSONObject)localObject).getInt("pos_y");
+      this.viI = ((JSONObject)localObject).getInt("pos_x");
+      this.fAH = ((JSONObject)localObject).getLong("last_active_time");
+      this.viJ = ((JSONObject)localObject).getJSONObject("extras");
       this.scene = ((JSONObject)localObject).optInt("scene", 0);
+      AppMethodBeat.o(8216);
       return;
     }
     catch (JSONException localJSONException)
     {
-      y.e("MicroMsg.WebViewBagMgr", "BagInfo#load exp:%s", new Object[] { localJSONException });
+      ab.e("MicroMsg.WebViewBagMgr", "BagInfo#load exp:%s", new Object[] { localJSONException });
+      AppMethodBeat.o(8216);
     }
   }
   
   final void save()
   {
+    AppMethodBeat.i(8217);
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("id", bk.pm(this.id));
-      ((JSONObject)localObject).put("url", bk.pm(this.url));
-      ((JSONObject)localObject).put("icon", bk.pm(this.bVO));
-      ((JSONObject)localObject).put("pos_y", this.rsB);
-      ((JSONObject)localObject).put("pos_x", this.rsC);
-      ((JSONObject)localObject).put("last_active_time", this.ekr);
-      ((JSONObject)localObject).put("extras", this.rsD);
+      ((JSONObject)localObject).put("id", bo.nullAsNil(this.id));
+      ((JSONObject)localObject).put("url", bo.nullAsNil(this.url));
+      ((JSONObject)localObject).put("icon", bo.nullAsNil(this.cDz));
+      ((JSONObject)localObject).put("pos_y", this.viH);
+      ((JSONObject)localObject).put("pos_x", this.viI);
+      ((JSONObject)localObject).put("last_active_time", this.fAH);
+      ((JSONObject)localObject).put("extras", this.viJ);
       ((JSONObject)localObject).put("scene", this.scene);
       localObject = ((JSONObject)localObject).toString();
-      g.DQ();
-      g.DP().Dz().c(ac.a.uzt, localObject);
+      g.RM();
+      g.RL().Ru().set(ac.a.yKh, localObject);
+      AppMethodBeat.o(8217);
       return;
     }
     catch (JSONException localJSONException)
     {
-      y.e("MicroMsg.WebViewBagMgr", "BagInfo#save exp:%s", new Object[] { localJSONException });
+      ab.e("MicroMsg.WebViewBagMgr", "BagInfo#save exp:%s", new Object[] { localJSONException });
+      AppMethodBeat.o(8217);
     }
   }
 }

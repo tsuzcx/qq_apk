@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView.b;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import com.tencent.mm.plugin.setting.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 
 final class UnfamiliarContactDetailUI$1
@@ -15,37 +15,39 @@ final class UnfamiliarContactDetailUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = this.nWX;
+    AppMethodBeat.i(127632);
+    paramMenuItem = this.qLi;
     boolean bool;
-    if (!UnfamiliarContactDetailUI.a(this.nWX))
+    if (!UnfamiliarContactDetailUI.a(this.qLi))
     {
       bool = true;
       UnfamiliarContactDetailUI.a(paramMenuItem, bool);
-      UnfamiliarContactDetailUI.b(this.nWX).clear();
-      UnfamiliarContactDetailUI.b(this.nWX, UnfamiliarContactDetailUI.a(this.nWX));
-      if (!UnfamiliarContactDetailUI.a(this.nWX)) {
-        break label127;
+      UnfamiliarContactDetailUI.b(this.qLi).clear();
+      UnfamiliarContactDetailUI.b(this.qLi, UnfamiliarContactDetailUI.a(this.qLi));
+      if (!UnfamiliarContactDetailUI.a(this.qLi)) {
+        break label136;
       }
-      UnfamiliarContactDetailUI.c(this.nWX).setEnabled(false);
-      UnfamiliarContactDetailUI.d(this.nWX).setEnabled(false);
-      this.nWX.updateOptionMenuText(1, this.nWX.getString(a.i.unfamiliar_cancel_contact_member_multi_select));
+      UnfamiliarContactDetailUI.c(this.qLi).setEnabled(false);
+      UnfamiliarContactDetailUI.d(this.qLi).setEnabled(false);
+      this.qLi.updateOptionMenuText(1, this.qLi.getString(2131304409));
     }
     for (;;)
     {
-      if (UnfamiliarContactDetailUI.e(this.nWX) != null) {
-        UnfamiliarContactDetailUI.e(this.nWX).agL.notifyChanged();
+      if (UnfamiliarContactDetailUI.e(this.qLi) != null) {
+        UnfamiliarContactDetailUI.e(this.qLi).ajb.notifyChanged();
       }
+      AppMethodBeat.o(127632);
       return true;
       bool = false;
       break;
-      label127:
-      this.nWX.updateOptionMenuText(1, this.nWX.getString(a.i.unfamiliar_contact_member_multi_select));
+      label136:
+      this.qLi.updateOptionMenuText(1, this.qLi.getString(2131304415));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.UnfamiliarContactDetailUI.1
  * JD-Core Version:    0.7.0.1
  */

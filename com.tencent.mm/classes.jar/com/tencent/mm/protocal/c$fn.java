@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$fn
+public final class c$fn
   extends c.g
 {
-  c$fn()
+  public c$fn()
   {
-    super("openSearchWebView", "openSearchWebView", 10000, true);
+    super("openGameDetail", "openGameDetail", 131, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.fn
  * JD-Core Version:    0.7.0.1
  */

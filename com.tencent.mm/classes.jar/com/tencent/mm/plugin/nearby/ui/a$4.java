@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.nearby.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.nearby.a.c;
-import com.tencent.mm.plugin.nearby.b.h;
 import com.tencent.mm.ui.base.h;
 
 final class a$4
@@ -16,12 +16,14 @@ final class a$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.a(this.mCU, new c(2, 0.0F, 0.0F, 0, 0, "", ""));
-    g.Dk().a(a.c(this.mCU), 0);
-    paramDialogInterface = this.mCU;
-    Context localContext = a.a(this.mCU);
-    a.a(this.mCU).getString(b.h.app_tip);
-    a.a(paramDialogInterface, h.b(localContext, a.a(this.mCU).getString(b.h.nearby_friend_clearing_location), true, new a.4.1(this)));
+    AppMethodBeat.i(55414);
+    a.a(this.pcO, new c(2, 0.0F, 0.0F, 0, 0, "", ""));
+    g.Rc().a(a.c(this.pcO), 0);
+    paramDialogInterface = this.pcO;
+    Context localContext = a.a(this.pcO);
+    a.a(this.pcO).getString(2131297087);
+    a.a(paramDialogInterface, h.b(localContext, a.a(this.pcO).getString(2131301752), true, new a.4.1(this)));
+    AppMethodBeat.o(55414);
   }
 }
 

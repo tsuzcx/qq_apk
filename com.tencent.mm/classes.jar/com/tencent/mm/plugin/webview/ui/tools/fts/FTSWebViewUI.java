@@ -1,76 +1,102 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import android.app.Activity;
 import android.view.View;
-import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.websearch.api.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.websearch.api.an;
 
 public class FTSWebViewUI
   extends FTSBaseWebViewUI
 {
-  private void cfH()
+  private void dfQ()
   {
+    AppMethodBeat.i(8546);
     if (this.scene == 21) {
-      ao.BG(19);
+      an.Jw(19);
     }
+    AppMethodBeat.o(8546);
   }
   
-  protected final void aoX()
+  public final void aMf()
   {
-    super.aoX();
-    ao.BE(this.scene);
+    AppMethodBeat.i(8540);
+    super.aMf();
+    an.Ju(this.scene);
     if (this.scene == 21) {
-      ao.BG(17);
+      an.Jw(17);
     }
+    AppMethodBeat.o(8540);
   }
   
-  protected final void cew()
+  public final void deE()
   {
-    cfH();
-    super.cew();
+    AppMethodBeat.i(8547);
+    dfQ();
+    super.deE();
+    AppMethodBeat.o(8547);
   }
   
   protected final String getHint()
   {
-    return getString(R.l.app_search);
+    AppMethodBeat.i(8539);
+    String str = getString(2131297065);
+    AppMethodBeat.o(8539);
+    return str;
   }
   
   public void onBackPressed()
   {
+    AppMethodBeat.i(8544);
     super.onBackPressed();
-    cfH();
+    dfQ();
+    AppMethodBeat.o(8544);
   }
   
   public void onClickCancelBtn(View paramView)
   {
+    AppMethodBeat.i(8545);
     super.onClickCancelBtn(paramView);
     finish();
+    AppMethodBeat.o(8545);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(8543);
     super.onDestroy();
-    ao.bZO();
-    ao.bZP();
+    an.cZJ();
+    an.cZK();
     if (this.scene == 21) {
-      ao.BG(18);
+      an.Jw(18);
     }
+    AppMethodBeat.o(8543);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(8542);
     super.onPause();
-    ao.bZN();
+    an.cZI();
+    AppMethodBeat.o(8542);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(8541);
     super.onResume();
-    ao.bZM();
+    an.cZH();
+    AppMethodBeat.o(8541);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSWebViewUI
  * JD-Core Version:    0.7.0.1
  */

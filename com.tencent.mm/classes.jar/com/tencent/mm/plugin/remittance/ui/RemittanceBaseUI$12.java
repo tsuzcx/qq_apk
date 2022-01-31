@@ -1,53 +1,62 @@
 package com.tencent.mm.plugin.remittance.ui;
 
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.u;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class RemittanceBaseUI$12
-  extends u
+  extends com.tencent.mm.ui.t
 {
   RemittanceBaseUI$12(RemittanceBaseUI paramRemittanceBaseUI) {}
   
-  public final void aEI()
+  public final void bhX()
   {
-    if (this.nAH.nzY == 33)
+    AppMethodBeat.i(44836);
+    RemittanceBaseUI localRemittanceBaseUI;
+    String str;
+    if (this.qmk.mPayScene == 33)
     {
-      this.nAH.a(this.nAH.dkv, this.nAH.nAl, "", null);
-      if (RemittanceBaseUI.a(this.nAH) == 0.0D)
+      localRemittanceBaseUI = this.qmk;
+      str = this.qmk.mDesc;
+      RemittanceBaseUI.a(this.qmk);
+      localRemittanceBaseUI.Yl(str);
+      if (RemittanceBaseUI.b(this.qmk) == 0.0D)
       {
-        if (this.nAH.fzn != 1) {
-          break label241;
+        if (this.qmk.mScene != 1) {
+          break label260;
         }
-        h.nFQ.f(12689, new Object[] { Integer.valueOf(15), Integer.valueOf(1) });
+        h.qsU.e(12689, new Object[] { Integer.valueOf(15), Integer.valueOf(1) });
       }
     }
     for (;;)
     {
-      if ((this.nAH.fzn == 1) && (!bk.bl(this.nAH.dkv))) {
-        h.nFQ.f(14074, new Object[] { Integer.valueOf(2) });
+      if ((this.qmk.mScene == 1) && (!bo.isNullOrNil(this.qmk.mDesc))) {
+        h.qsU.e(14074, new Object[] { Integer.valueOf(2) });
       }
+      AppMethodBeat.o(44836);
       return;
-      this.nAH.nzU = bk.getDouble(this.nAH.iKG.getText(), 0.0D);
-      if (!this.nAH.iKG.YL())
+      this.qmk.qlk = bo.getDouble(this.qmk.kRl.getText(), 0.0D);
+      if (!this.qmk.kRl.asv())
       {
-        com.tencent.mm.ui.base.s.makeText(this.nAH.mController.uMN, a.i.wallet_balance_save_input_invalid, 0).show();
+        com.tencent.mm.ui.base.t.makeText(this.qmk.getContext(), 2131304847, 0).show();
         break;
       }
-      if (this.nAH.nzU < 0.01D)
+      if (this.qmk.qlk < 0.01D)
       {
-        this.nAH.bwr();
+        this.qmk.chh();
         break;
       }
-      this.nAH.VH();
-      this.nAH.a(this.nAH.dkv, null, "", null);
+      this.qmk.hideTenpayKB();
+      RemittanceBaseUI.chq();
+      localRemittanceBaseUI = this.qmk;
+      str = this.qmk.mDesc;
+      RemittanceBaseUI.a(this.qmk);
+      localRemittanceBaseUI.Yl(str);
       break;
-      label241:
-      h.nFQ.f(12689, new Object[] { Integer.valueOf(6), Integer.valueOf(1) });
+      label260:
+      h.qsU.e(12689, new Object[] { Integer.valueOf(6), Integer.valueOf(1) });
     }
   }
 }

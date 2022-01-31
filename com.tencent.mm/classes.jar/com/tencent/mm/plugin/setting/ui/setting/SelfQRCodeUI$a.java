@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 abstract interface SelfQRCodeUI$a
 {
-  public abstract byte[] byM();
+  public abstract byte[] cjX();
   
-  public abstract String byN();
+  public abstract String cjY();
   
-  public abstract String byO();
+  public abstract String cjZ();
 }
 
 

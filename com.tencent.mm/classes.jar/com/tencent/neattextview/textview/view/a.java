@@ -1,14 +1,12 @@
 package com.tencent.neattextview.textview.view;
 
-import com.tencent.neattextview.textview.layout.b;
-
 public abstract interface a
 {
-  public abstract boolean cNP();
+  public abstract boolean dTA();
   
   public abstract float getHorizontalOffset();
   
-  public abstract b getLayout();
+  public abstract com.tencent.neattextview.textview.layout.a getLayout();
   
   public abstract NeatTextView.b getOnDoubleClickListener();
   

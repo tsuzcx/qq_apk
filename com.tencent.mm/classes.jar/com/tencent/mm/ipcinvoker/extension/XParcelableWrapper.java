@@ -3,12 +3,20 @@ package com.tencent.mm.ipcinvoker.extension;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class XParcelableWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<XParcelableWrapper> CREATOR = new Parcelable.Creator() {};
-  public f dHj;
+  public static final Parcelable.Creator<XParcelableWrapper> CREATOR;
+  public f eEM;
+  
+  static
+  {
+    AppMethodBeat.i(114105);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(114105);
+  }
   
   public int describeContents()
   {
@@ -17,14 +25,17 @@ public class XParcelableWrapper
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.dHj != null)
+    AppMethodBeat.i(114104);
+    if (this.eEM != null)
     {
       paramParcel.writeInt(1);
-      paramParcel.writeString(this.dHj.getClass().getName());
-      this.dHj.d(paramParcel);
+      paramParcel.writeString(this.eEM.getClass().getName());
+      this.eEM.e(paramParcel);
+      AppMethodBeat.o(114104);
       return;
     }
     paramParcel.writeInt(0);
+    AppMethodBeat.o(114104);
   }
 }
 

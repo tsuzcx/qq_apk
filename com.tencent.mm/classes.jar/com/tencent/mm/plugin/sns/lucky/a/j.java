@@ -1,107 +1,111 @@
 package com.tencent.mm.plugin.sns.lucky.a;
 
-import com.tencent.mm.ah.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bx.a;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class j
-  implements bx.a
+  implements bz.a
 {
   public static String TAG = "MicroMsg.NewYearSnsTips2016NotifyLsn";
   
   public final void a(e.a parama)
   {
-    y.i(TAG, "receivemsg NewYearSnsTips2016NotifyLsn");
-    b.jdMethod_if(74);
-    if ((parama == null) || (parama.dBs == null))
+    AppMethodBeat.i(35888);
+    ab.i(TAG, "receivemsg NewYearSnsTips2016NotifyLsn");
+    b.kS(74);
+    if ((parama == null) || (parama.eyJ == null))
     {
-      y.e(TAG, "onPreAddMessage cmdAM is null");
+      ab.e(TAG, "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(35888);
       return;
     }
     i locali = new i();
-    String str1 = aa.a(parama.dBs.svH);
-    locali.hJQ = new StringBuffer();
-    Map localMap = bn.s(str1, "sysmsg");
-    locali.ood.clear();
+    String str1 = aa.a(parama.eyJ.woR);
+    locali.jDt = new StringBuffer();
+    Map localMap = br.F(str1, "sysmsg");
+    locali.rcu.clear();
     if (localMap == null)
     {
-      y.i("MicroMsg.NewYearSnsTips", "errr for paser %s", new Object[] { str1 });
-      b.jdMethod_if(75);
+      ab.i("MicroMsg.NewYearSnsTips", "errr for paser %s", new Object[] { str1 });
+      b.kS(75);
     }
     for (;;)
     {
-      y.i("MicroMsg.NewYearSnsTips", "dump NewYearSnsTips " + locali.hJQ.toString());
-      g.DQ();
-      g.DP().Dz().c(ac.a.urE, str1);
-      g.DQ();
-      g.DP().Dz().mC(true);
+      ab.i("MicroMsg.NewYearSnsTips", "dump NewYearSnsTips " + locali.jDt.toString());
+      g.RM();
+      g.RL().Ru().set(ac.a.yBE, str1);
+      g.RM();
+      g.RL().Ru().dww();
+      AppMethodBeat.o(35888);
       return;
       int i = 0;
-      label179:
+      label193:
       long l1;
-      label248:
+      label262:
       long l2;
-      label319:
+      label333:
       String str2;
       if (i == 0)
       {
         parama = "";
-        l1 = bk.ZS((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "BeginTime" })));
-        locali.hJQ.append("BeginTime:" + l1 + ";");
+        l1 = bo.apW((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "BeginTime" })));
+        locali.jDt.append("BeginTime:" + l1 + ";");
         if (i != 0) {
-          break label525;
+          break label539;
         }
         parama = "";
-        l2 = bk.ZS((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "EndTime" })));
-        locali.hJQ.append("EndTime:" + l2 + ";");
+        l2 = bo.apW((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "EndTime" })));
+        locali.jDt.append("EndTime:" + l2 + ";");
         if (i != 0) {
-          break label533;
+          break label547;
         }
         parama = "";
-        str2 = bk.aM((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "ActionID" })), "");
-        locali.hJQ.append("ActionID:" + str2 + ";");
-        if (bk.bl(str2)) {
-          break label549;
+        str2 = bo.bf((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "ActionID" })), "");
+        locali.jDt.append("ActionID:" + str2 + ";");
+        if (bo.isNullOrNil(str2)) {
+          break label563;
         }
         if (i != 0) {
-          break label541;
+          break label555;
         }
       }
-      label525:
-      label533:
-      label541:
+      label539:
+      label547:
+      label555:
       for (parama = "";; parama = String.valueOf(i))
       {
-        parama = bk.aM((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "TipsMessage" })), "");
-        locali.hJQ.append("TipsMessage:" + parama + ";\n");
+        parama = bo.bf((String)localMap.get(String.format(".sysmsg.NewYearSNSTips2016.Tips%s.%s", new Object[] { parama, "TipsMessage" })), "");
+        locali.jDt.append("TipsMessage:" + parama + ";\n");
         h localh = new h();
-        localh.ooa = str2;
-        localh.euQ = l1;
-        localh.hRd = l2;
-        localh.oob = parama;
-        locali.ood.add(localh);
+        localh.rcr = str2;
+        localh.fKC = l1;
+        localh.jKE = l2;
+        localh.rcs = parama;
+        locali.rcu.add(localh);
         i += 1;
         break;
         parama = String.valueOf(i);
-        break label179;
+        break label193;
         parama = String.valueOf(i);
-        break label248;
+        break label262;
         parama = String.valueOf(i);
-        break label319;
+        break label333;
       }
-      label549:
-      if (locali.ood.size() == 0) {
-        b.jdMethod_if(76);
+      label563:
+      if (locali.rcu.size() == 0) {
+        b.kS(76);
       }
     }
   }

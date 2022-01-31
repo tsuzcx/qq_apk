@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.topstory.ui.video.list;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.a;
 import com.tencent.mm.plugin.topstory.ui.video.r;
 
@@ -12,11 +13,13 @@ final class f$4
   
   public final void onClick(View paramView)
   {
-    this.pHJ.bNU();
-    f.f(this.pHJ).akG();
-    this.pHJ.getListVideoUIComponent().bNt().pGp = 2;
-    this.pHJ.getListVideoUIComponent().bNx().a(this.pHJ.getListVideoUIComponent(), f.g(this.pHJ), f.h(this.pHJ), f.i(this.pHJ).bNr());
-    this.pHJ.bNN();
+    AppMethodBeat.i(2038);
+    this.tlr.cJH();
+    f.g(this.tlr).aFn();
+    this.tlr.getListVideoUIComponent().cJd().tjK = 2;
+    this.tlr.getListVideoUIComponent().cJh().a(this.tlr.getListVideoUIComponent(), f.h(this.tlr), f.i(this.tlr), f.j(this.tlr).cJb());
+    this.tlr.cJB();
+    AppMethodBeat.o(2038);
   }
 }
 

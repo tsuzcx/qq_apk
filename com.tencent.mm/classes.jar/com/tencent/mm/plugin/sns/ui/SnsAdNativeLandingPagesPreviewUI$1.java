@@ -3,12 +3,15 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.w.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.w.a;
 import com.tencent.mm.plugin.sns.storage.x;
-import com.tencent.mm.protocal.c.aaw;
-import com.tencent.mm.protocal.c.ahq;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.sns.storage.y;
+import com.tencent.mm.protocal.protobuf.afo;
+import com.tencent.mm.protocal.protobuf.amr;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 
 final class SnsAdNativeLandingPagesPreviewUI$1
@@ -16,12 +19,13 @@ final class SnsAdNativeLandingPagesPreviewUI$1
 {
   SnsAdNativeLandingPagesPreviewUI$1(SnsAdNativeLandingPagesPreviewUI paramSnsAdNativeLandingPagesPreviewUI, View paramView, int paramInt, String paramString1, String paramString2, long paramLong, Intent paramIntent) {}
   
-  public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.b paramb, com.tencent.mm.ah.m paramm)
+  public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.b paramb, com.tencent.mm.ai.m paramm)
   {
-    this.oTP.setVisibility(8);
+    AppMethodBeat.i(38607);
+    this.val$progressBar.setVisibility(8);
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      if (this.oTQ == 1) {
-        com.tencent.mm.sdk.platformtools.y.e("SnsAdNativeLandingPagesPreviewUI", "cgi fail canvas id %s, canvas ext %s, errType %d,errCode %s", new Object[] { this.oTR, this.oTS, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (this.rLN == 1) {
+        ab.e("SnsAdNativeLandingPagesPreviewUI", "cgi fail canvas id %s, canvas ext %s, errType %d,errCode %s", new Object[] { this.rLO, this.rLP, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       }
     }
     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.m localm;
@@ -32,50 +36,53 @@ final class SnsAdNativeLandingPagesPreviewUI$1
       {
         for (;;)
         {
-          this.oTT.finish();
+          this.rLQ.finish();
+          AppMethodBeat.o(38607);
           return 0;
-          com.tencent.mm.sdk.platformtools.y.e("SnsAdNativeLandingPagesPreviewUI", "cgi fail page id %d, errType %d,errCode %d", new Object[] { Long.valueOf(this.oLe), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+          ab.e("SnsAdNativeLandingPagesPreviewUI", "cgi fail page id %d, errType %d,errCode %d", new Object[] { Long.valueOf(this.rCP), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
         }
-        if (this.oTQ != 1) {
+        if (this.rLN != 1) {
           break;
         }
-        paramm = ((ahq)paramb.ecF.ecN).tff.coM();
-        com.tencent.mm.sdk.platformtools.y.i("SnsAdNativeLandingPagesPreviewUI", "getCanvasInfo canvasid %s, canvasext %s, xml %s", new Object[] { this.oTR, this.oTS, paramm });
+        paramm = ((amr)paramb.fsW.fta).xdq.dqj();
+        ab.i("SnsAdNativeLandingPagesPreviewUI", "getCanvasInfo canvasid %s, canvasext %s, xml %s", new Object[] { this.rLO, this.rLP, paramm });
       } while (TextUtils.isEmpty(paramm));
       this.val$intent.putExtra("sns_landing_pages_xml", paramm);
       if (!SnsAdNativeLandingPagesPreviewUI.h(this.val$intent, paramm))
       {
-        this.oTT.finish();
+        this.rLQ.finish();
+        AppMethodBeat.o(38607);
         return 0;
       }
-      SnsAdNativeLandingPagesPreviewUI.a(this.oTT, this.val$intent, paramm);
-      localm = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.m.bFY();
-      paramb = this.oTR;
-      str = this.oTS;
+      SnsAdNativeLandingPagesPreviewUI.a(this.rLQ, this.val$intent, paramm);
+      localm = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.m.csa();
+      paramb = this.rLO;
+      str = this.rLP;
     } while ((TextUtils.isEmpty(paramm)) || (TextUtils.isEmpty(paramb)));
-    if (!bk.bl(str)) {}
+    if (!bo.isNullOrNil(str)) {}
     for (paramString = paramb + str;; paramString = paramb)
     {
-      localm.oLc.put(paramString, paramm);
+      localm.rCN.put(paramString, paramm);
       paramString = new x();
       paramString.field_canvasId = paramb;
       paramString.field_canvasXml = paramm;
       paramString.field_canvasExt = str;
-      localm.oLb.a(paramString);
+      localm.rCM.a(paramString);
       break;
-      paramString = (aaw)paramb.ecF.ecN;
-      com.tencent.mm.sdk.platformtools.y.i("SnsAdNativeLandingPagesPreviewUI", "getCanvasInfo pageid %d ,xml %s", new Object[] { Long.valueOf(this.oLe), paramString.tau });
-      if (TextUtils.isEmpty(paramString.tau)) {
+      paramString = (afo)paramb.fsW.fta;
+      ab.i("SnsAdNativeLandingPagesPreviewUI", "getCanvasInfo pageid %d ,xml %s", new Object[] { Long.valueOf(this.rCP), paramString.wYL });
+      if (TextUtils.isEmpty(paramString.wYL)) {
         break;
       }
-      this.val$intent.putExtra("sns_landing_pages_xml", paramString.tau);
-      if (!SnsAdNativeLandingPagesPreviewUI.h(this.val$intent, paramString.tau))
+      this.val$intent.putExtra("sns_landing_pages_xml", paramString.wYL);
+      if (!SnsAdNativeLandingPagesPreviewUI.h(this.val$intent, paramString.wYL))
       {
-        this.oTT.finish();
+        this.rLQ.finish();
+        AppMethodBeat.o(38607);
         return 0;
       }
-      SnsAdNativeLandingPagesPreviewUI.a(this.oTT, this.val$intent, paramString.tau);
-      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.m.bFY().t(this.oLe, paramString.tau);
+      SnsAdNativeLandingPagesPreviewUI.a(this.rLQ, this.val$intent, paramString.wYL);
+      com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.m.csa().u(this.rCP, paramString.wYL);
       break;
     }
   }

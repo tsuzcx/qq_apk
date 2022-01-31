@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 abstract interface a$a
 {
-  public abstract void jT(int paramInt);
+  public abstract void mP(int paramInt);
 }
 
 

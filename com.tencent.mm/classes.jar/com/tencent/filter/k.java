@@ -1,60 +1,65 @@
 package com.tencent.filter;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
   extends BaseFilter
 {
-  float bfK = 0.5F;
-  float bfL = 0.5F;
-  float bfM = 0.5F;
-  float bfN = -1.0F;
-  float bfO = -1.0F;
-  float bfP = -1.0F;
-  float bfQ = -1.0F;
-  int bfR = -1;
+  float bwn = 0.5F;
+  float bwo = 0.5F;
+  float bwp = 0.5F;
+  float bwq = -1.0F;
+  float bwr = -1.0F;
+  float bws = -1.0F;
+  float bwt = -1.0F;
+  int bwu = -1;
   
   public k()
   {
-    super(GLSLRender.bfh);
+    super(GLSLRender.bvK);
   }
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    switch (this.bfR)
+    AppMethodBeat.i(86384);
+    switch (this.bwu)
     {
     default: 
-      this.glsl_programID = GLSLRender.bfh;
+      this.glsl_programID = GLSLRender.bvK;
     }
     for (;;)
     {
-      addParam(new m.f("fh", this.bfK));
-      addParam(new m.f("fs", this.bfL));
-      addParam(new m.f("fv", this.bfM));
-      addParam(new m.f("flb", this.bfN));
-      addParam(new m.f("fld", this.bfO));
-      addParam(new m.f("frd", this.bfP));
-      addParam(new m.f("frb", this.bfQ));
-      addParam(new m.i("channelflag", this.bfR));
+      addParam(new m.f("fh", this.bwn));
+      addParam(new m.f("fs", this.bwo));
+      addParam(new m.f("fv", this.bwp));
+      addParam(new m.f("flb", this.bwq));
+      addParam(new m.f("fld", this.bwr));
+      addParam(new m.f("frd", this.bws));
+      addParam(new m.f("frb", this.bwt));
+      addParam(new m.i("channelflag", this.bwu));
       super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+      AppMethodBeat.o(86384);
       return;
-      this.glsl_programID = GLSLRender.bfd;
+      this.glsl_programID = GLSLRender.bvG;
       continue;
-      this.glsl_programID = GLSLRender.bfe;
+      this.glsl_programID = GLSLRender.bvH;
       continue;
-      this.glsl_programID = GLSLRender.bff;
+      this.glsl_programID = GLSLRender.bvI;
       continue;
-      this.glsl_programID = GLSLRender.bfg;
+      this.glsl_programID = GLSLRender.bvJ;
     }
   }
   
   public final void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7)
   {
-    this.bfN = (paramFloat4 / 360.0F);
-    this.bfO = (paramFloat5 / 360.0F);
-    this.bfP = (paramFloat6 / 360.0F);
-    this.bfQ = (paramFloat7 / 360.0F);
-    this.bfK = (paramFloat1 / 180.0F * 0.5F);
-    this.bfL = (paramFloat2 / 100.0F);
-    this.bfM = (paramFloat3 / 100.0F);
+    AppMethodBeat.i(86383);
+    this.bwq = (paramFloat4 / 360.0F);
+    this.bwr = (paramFloat5 / 360.0F);
+    this.bws = (paramFloat6 / 360.0F);
+    this.bwt = (paramFloat7 / 360.0F);
+    this.bwn = (paramFloat1 / 180.0F * 0.5F);
+    this.bwo = (paramFloat2 / 100.0F);
+    this.bwp = (paramFloat3 / 100.0F);
     double d1 = paramFloat4;
     double d2 = paramFloat5;
     double d3 = paramFloat6;
@@ -65,16 +70,17 @@ public final class k
     }
     for (;;)
     {
-      this.bfR = i;
-      addParam(new m.f("fh", this.bfK));
-      addParam(new m.f("fs", this.bfL));
-      addParam(new m.f("fv", this.bfM));
-      addParam(new m.f("flb", this.bfN));
-      addParam(new m.f("fld", this.bfO));
-      addParam(new m.f("frd", this.bfP));
-      addParam(new m.f("frb", this.bfQ));
-      addParam(new m.i("channelflag", this.bfR));
-      this.glsl_programID = GLSLRender.bfh;
+      this.bwu = i;
+      addParam(new m.f("fh", this.bwn));
+      addParam(new m.f("fs", this.bwo));
+      addParam(new m.f("fv", this.bwp));
+      addParam(new m.f("flb", this.bwq));
+      addParam(new m.f("fld", this.bwr));
+      addParam(new m.f("frd", this.bws));
+      addParam(new m.f("frb", this.bwt));
+      addParam(new m.i("channelflag", this.bwu));
+      this.glsl_programID = GLSLRender.bvK;
+      AppMethodBeat.o(86383);
       return;
       if ((d1 < d2) && (d3 < d4) && (d1 > d4)) {
         i = 1;

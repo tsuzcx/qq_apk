@@ -1,6 +1,5 @@
 package android.support.v4.media.session;
 
-import android.media.session.MediaSession.Token;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.os.Parcel;
@@ -11,8 +10,8 @@ public final class MediaSessionCompat$Token
   implements Parcelable
 {
   public static final Parcelable.Creator<Token> CREATOR = new Parcelable.Creator() {};
-  final Object CA;
-  final b Cn;
+  final b CW;
+  final Object Dj;
   
   MediaSessionCompat$Token(Object paramObject)
   {
@@ -21,18 +20,14 @@ public final class MediaSessionCompat$Token
   
   private MediaSessionCompat$Token(Object paramObject, b paramb)
   {
-    this.CA = paramObject;
-    this.Cn = paramb;
+    this.Dj = paramObject;
+    this.CW = paramb;
   }
   
   public static Token a(Object paramObject, b paramb)
   {
-    if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21))
-    {
-      if ((paramObject instanceof MediaSession.Token)) {
-        return new Token(paramObject, paramb);
-      }
-      throw new IllegalArgumentException("token is not a valid MediaSession.Token object");
+    if ((paramObject != null) && (Build.VERSION.SDK_INT >= 21)) {
+      return new Token(d.y(paramObject), paramb);
     }
     return null;
   }
@@ -57,38 +52,38 @@ public final class MediaSessionCompat$Token
         return false;
       }
       paramObject = (Token)paramObject;
-      if (this.CA != null) {
+      if (this.Dj != null) {
         break;
       }
-    } while (paramObject.CA == null);
+    } while (paramObject.Dj == null);
     return false;
-    if (paramObject.CA == null) {
+    if (paramObject.Dj == null) {
       return false;
     }
-    return this.CA.equals(paramObject.CA);
+    return this.Dj.equals(paramObject.Dj);
   }
   
   public final int hashCode()
   {
-    if (this.CA == null) {
+    if (this.Dj == null) {
       return 0;
     }
-    return this.CA.hashCode();
+    return this.Dj.hashCode();
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramParcel.writeParcelable((Parcelable)this.CA, paramInt);
+      paramParcel.writeParcelable((Parcelable)this.Dj, paramInt);
       return;
     }
-    paramParcel.writeStrongBinder((IBinder)this.CA);
+    paramParcel.writeStrongBinder((IBinder)this.Dj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.v4.media.session.MediaSessionCompat.Token
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.samsung.android.sdk;
 
 import android.os.Build;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SsdkVendorCheck
 {
@@ -9,16 +10,24 @@ public class SsdkVendorCheck
   
   public static boolean isSamsungDevice()
   {
-    if ((strBrand == null) || (strManufacturer == null)) {}
-    while ((strBrand.compareToIgnoreCase("Samsung") != 0) && (strManufacturer.compareToIgnoreCase("Samsung") != 0)) {
+    AppMethodBeat.i(123523);
+    if ((strBrand == null) || (strManufacturer == null))
+    {
+      AppMethodBeat.o(123523);
       return false;
     }
+    if ((strBrand.compareToIgnoreCase("Samsung") != 0) && (strManufacturer.compareToIgnoreCase("Samsung") != 0))
+    {
+      AppMethodBeat.o(123523);
+      return false;
+    }
+    AppMethodBeat.o(123523);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.samsung.android.sdk.SsdkVendorCheck
  * JD-Core Version:    0.7.0.1
  */

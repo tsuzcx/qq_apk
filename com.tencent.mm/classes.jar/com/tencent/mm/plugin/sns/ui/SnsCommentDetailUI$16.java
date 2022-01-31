@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SnsCommentDetailUI$16
   implements Runnable
 {
@@ -7,14 +9,16 @@ final class SnsCommentDetailUI$16
   
   public final void run()
   {
-    this.oWW.XM();
-    SnsCommentDetailUI.m(this.oWW).ixe = SnsCommentDetailUI.A(this.oWW);
-    SnsCommentDetailUI.m(this.oWW).run();
+    AppMethodBeat.i(38795);
+    this.rPu.hideVKB();
+    SnsCommentDetailUI.m(this.rPu).itemHeight = SnsCommentDetailUI.A(this.rPu);
+    SnsCommentDetailUI.m(this.rPu).run();
+    AppMethodBeat.o(38795);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.16
  * JD-Core Version:    0.7.0.1
  */

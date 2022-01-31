@@ -1,24 +1,42 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.g.a.c.u;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  public static Object lock = new Object();
-  private static volatile b rOe;
-  h rOf = new h(TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new u("WepkgDownloaderPool", "WepkgDownloaderThread"));
+  public static Object lock;
+  private static volatile b vEP;
+  h vEQ;
   
-  public static b cjQ()
+  static
   {
-    if (rOe == null) {}
+    AppMethodBeat.i(63420);
+    lock = new Object();
+    AppMethodBeat.o(63420);
+  }
+  
+  private b()
+  {
+    AppMethodBeat.i(63419);
+    this.vEQ = new h(TimeUnit.MILLISECONDS, new LinkedBlockingQueue(24), new u("WepkgDownloaderPool", "WepkgDownloaderThread"));
+    AppMethodBeat.o(63419);
+  }
+  
+  public static b dkv()
+  {
+    AppMethodBeat.i(63418);
+    if (vEP == null) {}
     synchronized (lock)
     {
-      if (rOe == null) {
-        rOe = new b();
+      if (vEP == null) {
+        vEP = new b();
       }
-      return rOe;
+      ??? = vEP;
+      AppMethodBeat.o(63418);
+      return ???;
     }
   }
 }

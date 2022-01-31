@@ -1,45 +1,49 @@
 package com.tencent.mm.plugin.appbrand.dynamic.e;
 
-import android.webkit.ValueCallback;
-import com.tencent.mm.aa.b.d;
-import com.tencent.mm.plugin.appbrand.i.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i.c;
+import com.tencent.mm.plugin.appbrand.i.r;
+import com.tencent.mm.z.b.d;
 
 public final class a
+  extends c
   implements d
 {
-  public com.tencent.mm.plugin.appbrand.i.a fWr = new com.tencent.mm.plugin.appbrand.i.a();
-  
   public a(Object paramObject)
   {
-    this.fWr.addJavascriptInterface(paramObject, "WeixinJSCore");
+    AppMethodBeat.i(10902);
+    addJavascriptInterface(paramObject, "WeixinJSCore");
+    AppMethodBeat.o(10902);
   }
   
-  public final void cleanup()
+  public final boolean Qw()
   {
-    if (this.fWr != null) {
-      this.fWr.destroy();
+    AppMethodBeat.i(141925);
+    if (v(r.class) != null)
+    {
+      AppMethodBeat.o(141925);
+      return true;
     }
-  }
-  
-  public final void evaluateJavascript(String paramString, ValueCallback<String> paramValueCallback)
-  {
-    if (this.fWr != null) {
-      this.fWr.evaluateJavascript(paramString, paramValueCallback);
-    }
+    AppMethodBeat.o(141925);
+    return false;
   }
   
   public final void pause()
   {
-    if (this.fWr != null) {
-      ((m)this.fWr.I(m.class)).pause();
+    AppMethodBeat.i(10905);
+    if (Qw()) {
+      ((r)v(r.class)).pause();
     }
+    AppMethodBeat.o(10905);
   }
   
   public final void resume()
   {
-    if (this.fWr != null) {
-      ((m)this.fWr.I(m.class)).resume();
+    AppMethodBeat.i(10906);
+    if (Qw()) {
+      ((r)v(r.class)).resume();
     }
+    AppMethodBeat.o(10906);
   }
 }
 

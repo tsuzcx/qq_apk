@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.downloader_app.b;
 
 public abstract interface g$a
 {
-  public abstract void eR(boolean paramBoolean);
+  public abstract void gu(boolean paramBoolean);
 }
 
 

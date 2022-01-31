@@ -1,22 +1,21 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
 final class FTSBaseWebViewUI$7
-  implements Runnable
+  implements View.OnLongClickListener
 {
   FTSBaseWebViewUI$7(FTSBaseWebViewUI paramFTSBaseWebViewUI) {}
   
-  public final void run()
+  public final boolean onLongClick(View paramView)
   {
-    if (FTSBaseWebViewUI.a(this.rtV) != null) {
-      FTSBaseWebViewUI.b(this.rtV).a(this.rtV.getTotalQuery(), this.rtV.getInEditTextQuery(), this.rtV.cfw(), 0);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSBaseWebViewUI.7
  * JD-Core Version:    0.7.0.1
  */

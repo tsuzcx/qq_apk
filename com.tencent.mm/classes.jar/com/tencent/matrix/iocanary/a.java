@@ -1,20 +1,24 @@
 package com.tencent.matrix.iocanary;
 
 import android.app.Application;
-import com.tencent.matrix.b.c;
-import com.tencent.matrix.iocanary.core.IOCanaryJniBridge;
+import com.tencent.matrix.d.b;
+import com.tencent.matrix.d.c;
+import com.tencent.matrix.iocanary.core.IOCanaryCore;
 
 public final class a
-  extends com.tencent.matrix.b.b
+  extends b
 {
-  public final com.tencent.matrix.iocanary.a.a bog = com.tencent.matrix.iocanary.a.a.boi;
-  private com.tencent.matrix.iocanary.core.a boh;
+  private IOCanaryCore bNE;
+  public final com.tencent.matrix.iocanary.a.a mIOConfig;
   
-  public final void a(Application paramApplication, c paramc)
+  public a(com.tencent.matrix.iocanary.a.a parama)
   {
-    super.a(paramApplication, paramc);
-    com.tencent.matrix.iocanary.c.a.ag(paramApplication);
-    this.boh = new com.tencent.matrix.iocanary.core.a(this);
+    this.mIOConfig = parama;
+  }
+  
+  public final void destroy()
+  {
+    super.destroy();
   }
   
   public final String getTag()
@@ -22,51 +26,23 @@ public final class a
     return "io";
   }
   
+  public final void init(Application paramApplication, c paramc)
+  {
+    super.init(paramApplication, paramc);
+    com.tencent.matrix.iocanary.c.a.setPackageName(paramApplication);
+    this.bNE = new IOCanaryCore(this);
+  }
+  
   public final void start()
   {
     super.start();
-    com.tencent.matrix.iocanary.core.a locala = this.boh;
-    Object localObject1 = locala.bog;
-    if ((!com.tencent.matrix.iocanary.core.a.$assertionsDisabled) && (localObject1 == null)) {
-      throw new AssertionError();
-    }
-    if ((((com.tencent.matrix.iocanary.a.a)localObject1).ed(1)) || (((com.tencent.matrix.iocanary.a.a)localObject1).ed(4)) || (((com.tencent.matrix.iocanary.a.a)localObject1).ed(2))) {
-      IOCanaryJniBridge.a((com.tencent.matrix.iocanary.a.a)localObject1, locala);
-    }
-    if (((com.tencent.matrix.iocanary.a.a)localObject1).ed(8))
-    {
-      locala.bos = new com.tencent.matrix.iocanary.b.a(locala);
-      localObject1 = locala.bos;
-      com.tencent.matrix.d.b.i("Matrix.CloseGuardHooker", "hook sIsTryHook=%b", new Object[] { Boolean.valueOf(((com.tencent.matrix.iocanary.b.a)localObject1).bow) });
-      if (!((com.tencent.matrix.iocanary.b.a)localObject1).bow)
-      {
-        com.tencent.matrix.d.b.i("Matrix.CloseGuardHooker", "hook hookRet=%b", new Object[] { Boolean.valueOf(((com.tencent.matrix.iocanary.b.a)localObject1).rc()) });
-        ((com.tencent.matrix.iocanary.b.a)localObject1).bow = true;
-      }
-    }
-    try
-    {
-      locala.bnh = true;
-      return;
-    }
-    finally {}
+    this.bNE.start();
   }
   
   public final void stop()
   {
     super.stop();
-    synchronized (this.boh)
-    {
-      ((com.tencent.matrix.iocanary.core.a)???).bnh = false;
-      if (((com.tencent.matrix.iocanary.core.a)???).bos != null)
-      {
-        ??? = ((com.tencent.matrix.iocanary.core.a)???).bos;
-        com.tencent.matrix.d.b.i("Matrix.CloseGuardHooker", "unHook unHookRet=%b", new Object[] { Boolean.valueOf(com.tencent.matrix.iocanary.b.a.rd()) });
-        ((com.tencent.matrix.iocanary.b.a)???).bow = false;
-      }
-      IOCanaryJniBridge.ra();
-      return;
-    }
+    this.bNE.stop();
   }
 }
 

@@ -1,25 +1,30 @@
 package com.tencent.mm.ui.transmit;
 
-import android.content.Intent;
-import com.tencent.mm.pluginsdk.model.app.ReportUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.ui.applet.q.a;
 
 final class SendAppMessageWrapperUI$5
   implements q.a
 {
-  SendAppMessageWrapperUI$5(SendAppMessageWrapperUI paramSendAppMessageWrapperUI) {}
+  SendAppMessageWrapperUI$5(SendAppMessageWrapperUI paramSendAppMessageWrapperUI, WXMediaMessage paramWXMediaMessage) {}
   
   public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.whK.setResult(-1);
-    this.whK.finish();
-    paramString = ReportUtil.c(this.whK.getIntent().getExtras(), 0);
-    ReportUtil.a(this.whK, paramString, false);
+    AppMethodBeat.i(35216);
+    if (paramBoolean)
+    {
+      SendAppMessageWrapperUI.a(this.AAH, this.cac, paramString, paramInt);
+      AppMethodBeat.o(35216);
+      return;
+    }
+    SendAppMessageWrapperUI.e(this.AAH);
+    AppMethodBeat.o(35216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SendAppMessageWrapperUI.5
  * JD-Core Version:    0.7.0.1
  */

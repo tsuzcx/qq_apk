@@ -5,26 +5,26 @@ import java.lang.reflect.Method;
 
 final class SearchView$a
 {
-  Method ajU;
-  Method ajV;
-  private Method ajW;
+  private Method amk;
+  private Method aml;
+  private Method amm;
   
   SearchView$a()
   {
     try
     {
-      this.ajU = AutoCompleteTextView.class.getDeclaredMethod("doBeforeTextChanged", new Class[0]);
-      this.ajU.setAccessible(true);
+      this.amk = AutoCompleteTextView.class.getDeclaredMethod("doBeforeTextChanged", new Class[0]);
+      this.amk.setAccessible(true);
       try
       {
         label27:
-        this.ajV = AutoCompleteTextView.class.getDeclaredMethod("doAfterTextChanged", new Class[0]);
-        this.ajV.setAccessible(true);
+        this.aml = AutoCompleteTextView.class.getDeclaredMethod("doAfterTextChanged", new Class[0]);
+        this.aml.setAccessible(true);
         try
         {
           label50:
-          this.ajW = AutoCompleteTextView.class.getMethod("ensureImeVisible", new Class[] { Boolean.TYPE });
-          this.ajW.setAccessible(true);
+          this.amm = AutoCompleteTextView.class.getMethod("ensureImeVisible", new Class[] { Boolean.TYPE });
+          this.amm.setAccessible(true);
           return;
         }
         catch (NoSuchMethodException localNoSuchMethodException1) {}
@@ -42,10 +42,32 @@ final class SearchView$a
   
   final void a(AutoCompleteTextView paramAutoCompleteTextView)
   {
-    if (this.ajW != null) {}
+    if (this.amk != null) {}
     try
     {
-      this.ajW.invoke(paramAutoCompleteTextView, new Object[] { Boolean.valueOf(true) });
+      this.amk.invoke(paramAutoCompleteTextView, new Object[0]);
+      return;
+    }
+    catch (Exception paramAutoCompleteTextView) {}
+  }
+  
+  final void b(AutoCompleteTextView paramAutoCompleteTextView)
+  {
+    if (this.aml != null) {}
+    try
+    {
+      this.aml.invoke(paramAutoCompleteTextView, new Object[0]);
+      return;
+    }
+    catch (Exception paramAutoCompleteTextView) {}
+  }
+  
+  final void c(AutoCompleteTextView paramAutoCompleteTextView)
+  {
+    if (this.amm != null) {}
+    try
+    {
+      this.amm.invoke(paramAutoCompleteTextView, new Object[] { Boolean.TRUE });
       return;
     }
     catch (Exception paramAutoCompleteTextView) {}

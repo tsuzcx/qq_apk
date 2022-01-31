@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import org.json.JSONObject;
 
@@ -11,7 +12,9 @@ public final class JsApiWriteCommData
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(114340);
     AppBrandMainProcessService.a(new JsApiWriteCommData.WriteCommDataTask(this, paramc, paramInt, paramJSONObject));
+    AppMethodBeat.o(114340);
   }
 }
 

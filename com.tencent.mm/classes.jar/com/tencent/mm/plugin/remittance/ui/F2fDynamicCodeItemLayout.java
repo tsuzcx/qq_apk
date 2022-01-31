@@ -6,38 +6,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class F2fDynamicCodeItemLayout
   extends LinearLayout
 {
-  TextView iUE;
-  TextView nzG;
+  TextView ldI;
+  TextView qkT;
   
   public F2fDynamicCodeItemLayout(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(44804);
     init();
+    AppMethodBeat.o(44804);
   }
   
   public F2fDynamicCodeItemLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(44805);
     init();
+    AppMethodBeat.o(44805);
   }
   
   public F2fDynamicCodeItemLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(44806);
     init();
+    AppMethodBeat.o(44806);
   }
   
   private void init()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(a.g.remittance_f2f_dynamic_code_item_layout, this);
-    this.nzG = ((TextView)localView.findViewById(a.f.rfdi_left_tv));
-    this.iUE = ((TextView)localView.findViewById(a.f.rfdi_right_tv));
+    AppMethodBeat.i(44807);
+    View localView = LayoutInflater.from(getContext()).inflate(2130970571, this);
+    this.qkT = ((TextView)localView.findViewById(2131827285));
+    this.ldI = ((TextView)localView.findViewById(2131827286));
+    AppMethodBeat.o(44807);
   }
 }
 

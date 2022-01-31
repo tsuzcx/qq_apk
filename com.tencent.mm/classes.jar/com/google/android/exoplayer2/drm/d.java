@@ -7,8 +7,8 @@ import android.media.MediaCrypto;
 public final class d
   implements c
 {
-  public final MediaCrypto ayT;
-  public final boolean ayU;
+  public final MediaCrypto aBi;
+  public final boolean aBj;
 }
 
 

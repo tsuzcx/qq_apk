@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizTimeLineNewMsgUI$4
   implements View.OnTouchListener
@@ -11,14 +12,16 @@ final class BizTimeLineNewMsgUI$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(14159);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(14159);
       return false;
-      BizTimeLineNewMsgUI.a(this.igE, (int)paramMotionEvent.getRawX());
-      BizTimeLineNewMsgUI.b(this.igE, (int)paramMotionEvent.getRawY());
+      BizTimeLineNewMsgUI.a(this.jWx, (int)paramMotionEvent.getRawX());
+      BizTimeLineNewMsgUI.b(this.jWx, (int)paramMotionEvent.getRawY());
     }
   }
 }

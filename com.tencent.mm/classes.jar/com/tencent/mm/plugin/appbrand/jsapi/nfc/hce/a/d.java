@@ -5,50 +5,71 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import android.os.Build.VERSION;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class d
 {
-  @TargetApi(21)
-  public static boolean ajL()
+  private static boolean aEj()
   {
-    boolean bool = false;
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        bool = ae.getContext().getPackageManager().hasSystemFeature("android.hardware.nfc.hce");
-      }
-      return bool;
-    }
+    return Build.VERSION.SDK_INT >= 21;
   }
   
-  public static boolean ajM()
+  @TargetApi(21)
+  public static boolean aEk()
   {
-    Context localContext = ae.getContext();
-    if (!localContext.getPackageManager().hasSystemFeature("android.hardware.nfc")) {}
-    while (NfcAdapter.getDefaultAdapter(localContext) == null) {
+    AppMethodBeat.i(137936);
+    if (aEj())
+    {
+      boolean bool = ah.getContext().getPackageManager().hasSystemFeature("android.hardware.nfc.hce");
+      AppMethodBeat.o(137936);
+      return bool;
+    }
+    AppMethodBeat.o(137936);
+    return false;
+  }
+  
+  public static boolean aEl()
+  {
+    AppMethodBeat.i(137937);
+    Context localContext = ah.getContext();
+    if (!localContext.getPackageManager().hasSystemFeature("android.hardware.nfc"))
+    {
+      AppMethodBeat.o(137937);
       return false;
     }
+    if (NfcAdapter.getDefaultAdapter(localContext) == null)
+    {
+      AppMethodBeat.o(137937);
+      return false;
+    }
+    AppMethodBeat.o(137937);
     return true;
   }
   
-  public static boolean ajN()
+  public static boolean aEm()
   {
-    NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(ae.getContext());
-    if (localNfcAdapter == null) {
-      y.i("MicroMsg.HceUtils", "alvinluo no nfc chip !");
-    }
-    while (!localNfcAdapter.isEnabled()) {
+    AppMethodBeat.i(137938);
+    NfcAdapter localNfcAdapter = NfcAdapter.getDefaultAdapter(ah.getContext());
+    if (localNfcAdapter == null)
+    {
+      ab.i("MicroMsg.HceUtils", "alvinluo no nfc chip !");
+      AppMethodBeat.o(137938);
       return false;
     }
+    if (!localNfcAdapter.isEnabled())
+    {
+      AppMethodBeat.o(137938);
+      return false;
+    }
+    AppMethodBeat.o(137938);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.d
  * JD-Core Version:    0.7.0.1
  */

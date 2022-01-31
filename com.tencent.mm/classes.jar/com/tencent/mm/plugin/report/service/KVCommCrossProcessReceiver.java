@@ -4,255 +4,237 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import android.os.Parcelable;
 import android.os.Process;
 import com.tencent.mars.BaseEvent;
 import com.tencent.mars.smc.IDKey;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.l;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class KVCommCrossProcessReceiver
   extends BroadcastReceiver
 {
   private static String className;
-  private static Object lock = new Object();
-  private static ah nFl;
-  private static int nFm;
-  private static volatile long nFn;
-  private static volatile int nFo;
-  private static BroadCastData nFp;
+  private static Object lock;
+  private static ak qsn;
+  private static int qso;
+  private static volatile long qsp;
+  private static volatile int qsq;
+  private static BroadCastData qsr;
   
   static
   {
-    HandlerThread localHandlerThread = e.aap("kv_report");
+    AppMethodBeat.i(72717);
+    HandlerThread localHandlerThread = d.aqu("kv_report");
     localHandlerThread.start();
-    nFl = new ah(localHandlerThread.getLooper())
+    qsn = new ak(localHandlerThread.getLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
+        AppMethodBeat.i(72703);
         super.handleMessage(paramAnonymousMessage);
         if (paramAnonymousMessage.what == 1) {
           KVCommCrossProcessReceiver.access$000();
         }
+        AppMethodBeat.o(72703);
       }
     };
     className = "";
-    nFm = 10000;
-    nFn = 10000L;
-    nFo = -1;
-    nFp = new BroadCastData();
+    qso = 10000;
+    qsp = 10000L;
+    qsq = -1;
+    qsr = new BroadCastData();
+    lock = new Object();
+    AppMethodBeat.o(72717);
   }
   
-  public static void M(ArrayList<IDKey> paramArrayList)
+  public static void O(ArrayList<IDKey> paramArrayList)
   {
-    y.d("MicroMsg.ReportManagerKvCheck", "receive group id size:%d, isImportant:%b", new Object[] { Integer.valueOf(paramArrayList.size()), Boolean.valueOf(false) });
-    do
+    AppMethodBeat.i(72711);
+    ab.d("MicroMsg.ReportManagerKvCheck", "receive group id size:%d, isImportant:%b", new Object[] { Integer.valueOf(paramArrayList.size()), Boolean.FALSE });
+    synchronized (lock)
     {
-      synchronized (lock)
+      BroadCastData localBroadCastData = qsr;
+      paramArrayList = new GroupIDKeyDataInfo(paramArrayList);
+      localBroadCastData.qsg.add(paramArrayList);
+      if ((qsp == 0L) || (chL()))
       {
-        BroadCastData localBroadCastData = nFp;
-        paramArrayList = new GroupIDKeyDataInfo(paramArrayList);
-        localBroadCastData.nFe.add(paramArrayList);
-        if ((nFn == 0L) || (bwS()))
-        {
-          bwR();
-          return;
-        }
+        qsn.obtainMessage(1).sendToTarget();
+        AppMethodBeat.o(72711);
+        return;
       }
-    } while (nFl.hasMessages(1));
-    nFl.sendEmptyMessageDelayed(1, nFn);
+    }
+    if (qsn.hasMessages(1))
+    {
+      AppMethodBeat.o(72711);
+      return;
+    }
+    qsn.sendEmptyMessageDelayed(1, qsp);
+    AppMethodBeat.o(72711);
   }
   
   public static void a(KVReportDataInfo paramKVReportDataInfo)
   {
-    y.d("MicroMsg.ReportManagerKvCheck", "receive kv logid:%d, type:%d, isImportant: %b,isReportNow: %b", new Object[] { Long.valueOf(paramKVReportDataInfo.nFC), Long.valueOf(paramKVReportDataInfo.bGn), Boolean.valueOf(paramKVReportDataInfo.nFg), Boolean.valueOf(paramKVReportDataInfo.nFD) });
-    do
+    AppMethodBeat.i(72709);
+    ab.d("MicroMsg.ReportManagerKvCheck", "receive kv logid:%d, type:%d, isImportant: %b,isReportNow: %b, ignoreFreqLimit", new Object[] { Long.valueOf(paramKVReportDataInfo.qsF), Long.valueOf(paramKVReportDataInfo.cnw), Boolean.valueOf(paramKVReportDataInfo.qsi), Boolean.valueOf(paramKVReportDataInfo.qsG) });
+    synchronized (lock)
     {
-      synchronized (lock)
+      qsr.qse.add(paramKVReportDataInfo);
+      if ((qsp == 0L) || (chL()))
       {
-        nFp.nFc.add(paramKVReportDataInfo);
-        if (nFn == 0L)
-        {
-          bwR();
-          return;
-        }
+        qsn.obtainMessage(1).sendToTarget();
+        AppMethodBeat.o(72709);
+        return;
       }
-    } while (nFl.hasMessages(1));
-    nFl.sendEmptyMessageDelayed(1, nFn);
+    }
+    if (qsn.hasMessages(1))
+    {
+      AppMethodBeat.o(72709);
+      return;
+    }
+    qsn.sendEmptyMessageDelayed(1, qsp);
+    AppMethodBeat.o(72709);
   }
   
   public static void a(StIDKeyDataInfo paramStIDKeyDataInfo)
   {
-    y.d("MicroMsg.ReportManagerKvCheck", "receive id ID:%d, key:%d,value:%d, isImportant:%b", new Object[] { Long.valueOf(paramStIDKeyDataInfo.nGh), Long.valueOf(paramStIDKeyDataInfo.key), Long.valueOf(paramStIDKeyDataInfo.value), Boolean.valueOf(paramStIDKeyDataInfo.nFg) });
-    do
+    AppMethodBeat.i(72710);
+    ab.d("MicroMsg.ReportManagerKvCheck", "receive id ID:%d, key:%d,value:%d, isImportant:%b", new Object[] { Long.valueOf(paramStIDKeyDataInfo.ltw), Long.valueOf(paramStIDKeyDataInfo.key), Long.valueOf(paramStIDKeyDataInfo.value), Boolean.valueOf(paramStIDKeyDataInfo.qsi) });
+    synchronized (lock)
     {
-      synchronized (lock)
+      qsr.qsf.add(paramStIDKeyDataInfo);
+      if ((qsp == 0L) || (chL()))
       {
-        nFp.nFd.add(paramStIDKeyDataInfo);
-        if ((nFn == 0L) || (bwS()))
-        {
-          bwR();
-          return;
-        }
+        qsn.obtainMessage(1).sendToTarget();
+        AppMethodBeat.o(72710);
+        return;
       }
-    } while (nFl.hasMessages(1));
-    nFl.sendEmptyMessageDelayed(1, nFn);
+    }
+    if (qsn.hasMessages(1))
+    {
+      AppMethodBeat.o(72710);
+      return;
+    }
+    qsn.sendEmptyMessageDelayed(1, qsp);
+    AppMethodBeat.o(72710);
   }
   
-  public static void bwP()
+  public static void chJ()
   {
     if (100L < 0L) {
       return;
     }
-    nFn = 100L;
+    qsp = 100L;
   }
   
-  public static void bwQ()
+  public static void chK()
   {
-    nFo = 1000;
+    qsq = 1000;
   }
   
-  private static void bwR()
+  private static boolean chL()
   {
-    Object localObject5;
-    Object localObject6;
-    synchronized (lock)
+    AppMethodBeat.i(72712);
+    if (qsq <= 0)
     {
-      Object localObject2 = new BroadCastData(nFp);
-      localObject5 = nFp;
-      ((BroadCastData)localObject5).nFc.clear();
-      ((BroadCastData)localObject5).nFd.clear();
-      ((BroadCastData)localObject5).nFe.clear();
-      localObject6 = ((BroadCastData)localObject2).nFe;
-      localObject5 = ((BroadCastData)localObject2).nFd;
-      ??? = ((BroadCastData)localObject2).nFc;
-      if ((!l.bn(ae.getContext())) && (ae.cra())) {
-        break label226;
-      }
-      y.i("MicroMsg.ReportManagerKvCheck", "sendKVBroadcast shut_down_weixin, no need to notify worker");
-      localObject2 = ((ArrayList)localObject6).iterator();
-      if (((Iterator)localObject2).hasNext())
-      {
-        localObject6 = (GroupIDKeyDataInfo)((Iterator)localObject2).next();
-        f.d(((GroupIDKeyDataInfo)localObject6).nFf, ((GroupIDKeyDataInfo)localObject6).nFg);
-      }
+      AppMethodBeat.o(72712);
+      return false;
     }
-    Object localObject4 = ((ArrayList)localObject5).iterator();
-    while (((Iterator)localObject4).hasNext())
+    if (qsr == null)
     {
-      localObject5 = (StIDKeyDataInfo)((Iterator)localObject4).next();
-      f.c((int)((StIDKeyDataInfo)localObject5).nGh, (int)((StIDKeyDataInfo)localObject5).key, (int)((StIDKeyDataInfo)localObject5).value, ((StIDKeyDataInfo)localObject5).nFg);
-    }
-    ??? = ((ArrayList)???).iterator();
-    label226:
-    Intent localIntent;
-    while (((Iterator)???).hasNext())
-    {
-      localObject4 = (KVReportDataInfo)((Iterator)???).next();
-      f.a((int)((KVReportDataInfo)localObject4).nFC, (int)((KVReportDataInfo)localObject4).bGn, ((KVReportDataInfo)localObject4).value, ((KVReportDataInfo)localObject4).nFD, ((KVReportDataInfo)localObject4).nFg);
-      continue;
-      localIntent = new Intent();
-      localIntent.setAction("com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver");
-      localIntent.setComponent(new ComponentName(ae.getPackageName(), getClassName()));
-      localIntent.putExtra("type", 1);
-      Bundle localBundle = new Bundle();
-      localBundle.putParcelable("BUNDLE_IDKEYGROUP", (Parcelable)localObject4);
-      localIntent.putExtra("INTENT_IDKEYGROUP", localBundle);
-      y.d("MicroMsg.ReportManagerKvCheck", "try sendBroadcast kvdata lenght: %d, idkey data lenght:%d,group lenght:%d", new Object[] { Integer.valueOf(((ArrayList)???).size()), Integer.valueOf(((ArrayList)localObject5).size()), Integer.valueOf(((ArrayList)localObject6).size()) });
+      AppMethodBeat.o(72712);
+      return false;
     }
     try
     {
-      ae.getContext().sendBroadcast(localIntent);
-      return;
+      int i = qsr.qsf.size();
+      int j = qsr.qsg.size();
+      int k = qsr.qse.size();
+      int m = qsq;
+      if (i + j + k >= m)
+      {
+        AppMethodBeat.o(72712);
+        return true;
+      }
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.ReportManagerKvCheck", localException, "sendBroadcastMessageDirectly", new Object[0]);
-    }
-  }
-  
-  private static boolean bwS()
-  {
-    if (nFo <= 0) {}
-    for (;;)
-    {
-      return false;
-      if (nFp != null) {
-        try
-        {
-          int i = nFp.nFd.size();
-          int j = nFp.nFe.size();
-          int k = nFp.nFc.size();
-          int m = nFo;
-          if (i + j + k >= m) {
-            return true;
-          }
-        }
-        catch (Exception localException)
-        {
-          y.e("MicroMsg.ReportManagerKvCheck", "checkExceedCacheItemCountLimit e = %s", new Object[] { localException });
-        }
-      }
+      ab.e("MicroMsg.ReportManagerKvCheck", "checkExceedCacheItemCountLimit e = %s", new Object[] { localException });
+      AppMethodBeat.o(72712);
     }
     return false;
   }
   
-  public static void bwT()
+  public static void chM()
   {
-    if ((l.bn(ae.getContext())) || (!ae.cra()))
+    AppMethodBeat.i(72713);
+    if ((l.bR(ah.getContext())) || (!ah.dsZ()))
     {
-      y.w("MicroMsg.ReportManagerKvCheck", "sendOnCrashOrExceptionBroadCast shut_down_weixin, NO MM Process , return.");
+      ab.w("MicroMsg.ReportManagerKvCheck", "sendOnCrashOrExceptionBroadCast shut_down_weixin, NO MM Process , return.");
+      AppMethodBeat.o(72713);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.setAction("com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver");
-    localIntent.setComponent(new ComponentName(ae.getPackageName(), getClassName()));
+    localIntent.setComponent(new ComponentName(ah.getPackageName(), getClassName()));
     localIntent.putExtra("type", 2);
-    ae.getContext().sendBroadcast(localIntent);
+    ah.getContext().sendBroadcast(localIntent);
+    AppMethodBeat.o(72713);
   }
   
-  public static void bwU()
+  public static void chN()
   {
-    if (nFl == null) {
+    AppMethodBeat.i(72714);
+    if (qsn == null)
+    {
+      AppMethodBeat.o(72714);
       return;
     }
-    nFl.removeMessages(1);
-    nFl.handleMessage(nFl.obtainMessage(1));
+    qsn.removeMessages(1);
+    ak localak = qsn;
+    localak.handleMessage(localak.obtainMessage(1));
+    AppMethodBeat.o(72714);
   }
   
   private static String getClassName()
   {
-    if (bk.bl(className)) {
-      className = ae.getPackageName() + ".plugin.report.service.KVCommCrossProcessReceiver";
+    AppMethodBeat.i(72708);
+    if (bo.isNullOrNil(className)) {
+      className = ah.getPackageName() + ".plugin.report.service.KVCommCrossProcessReceiver";
     }
-    return className;
+    String str = className;
+    AppMethodBeat.o(72708);
+    return str;
   }
   
   public void onReceive(Context paramContext, final Intent paramIntent)
   {
+    AppMethodBeat.i(72706);
     if (paramIntent == null)
     {
-      y.e("MicroMsg.ReportManagerKvCheck", "onReceive intent == null");
+      ab.e("MicroMsg.ReportManagerKvCheck", "onReceive intent == null");
+      AppMethodBeat.o(72706);
       return;
     }
-    nFl.post(new Runnable()
+    qsn.post(new Runnable()
     {
       public final void run()
       {
-        y.i("MicroMsg.ReportManagerKvCheck", "summeranrt true report runnable run tid:%d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
+        AppMethodBeat.i(72704);
+        ab.i("MicroMsg.ReportManagerKvCheck", "summeranrt true report runnable run tid:%d", new Object[] { Long.valueOf(Thread.currentThread().getId()) });
         KVCommCrossProcessReceiver.a(KVCommCrossProcessReceiver.this, paramIntent);
+        AppMethodBeat.o(72704);
       }
     });
+    AppMethodBeat.o(72706);
   }
 }
 

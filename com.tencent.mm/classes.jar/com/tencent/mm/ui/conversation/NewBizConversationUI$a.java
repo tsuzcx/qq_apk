@@ -2,116 +2,128 @@ package com.tencent.mm.ui.conversation;
 
 import android.content.Context;
 import android.net.Uri;
-import com.tencent.mm.ae.l;
-import com.tencent.mm.ae.m;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.p;
+import com.tencent.mm.af.q;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.biz.a.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.p.a;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 final class NewBizConversationUI$a
   extends e
 {
-  private String bUU;
-  HashMap<String, NewBizConversationUI.b> igI;
+  private String cCC;
+  HashMap<String, NewBizConversationUI.b> jWA;
   
-  public NewBizConversationUI$a(Context paramContext, String paramString, r.a parama)
+  public NewBizConversationUI$a(Context paramContext, String paramString, p.a parama)
   {
     super(paramContext, parama);
-    this.bUU = paramString;
-    this.igI = new HashMap();
+    AppMethodBeat.i(34554);
+    this.cCC = paramString;
+    this.jWA = new HashMap();
+    AppMethodBeat.o(34554);
+  }
+  
+  public final void Ku()
+  {
+    AppMethodBeat.i(34555);
+    aw.aaz();
+    setCursor(c.YF().c(t.flc, this.ejc, this.cCC));
+    if (this.zaq != null) {
+      this.zaq.apT();
+    }
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(34555);
   }
   
   public final void a(ak paramak, int paramInt)
   {
-    au.Hx();
-    a(paramak, c.FB().g(paramak), paramInt, true);
+    AppMethodBeat.i(34557);
+    aw.aaz();
+    a(paramak, c.YF().g(paramak), paramInt, true);
+    AppMethodBeat.o(34557);
   }
   
   protected final void a(ak paramak, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    if (paramak == null) {}
-    label330:
+    AppMethodBeat.i(34556);
+    if (paramak == null)
+    {
+      AppMethodBeat.o(34556);
+      return;
+    }
+    NewBizConversationUI.b localb = (NewBizConversationUI.b)this.jWA.get(paramak.field_username);
+    if (localb == null)
+    {
+      localb = new NewBizConversationUI.b((byte)0);
+      this.jWA.put(paramak.field_username, localb);
+    }
     for (;;)
     {
-      return;
-      NewBizConversationUI.b localb = (NewBizConversationUI.b)this.igI.get(paramak.field_username);
-      if (localb == null)
+      if (localb.fQt > 0)
       {
-        localb = new NewBizConversationUI.b((byte)0);
-        this.igI.put(paramak.field_username, localb);
+        AppMethodBeat.o(34556);
+        return;
       }
-      for (;;)
+      localb.xHg = paramBoolean1;
+      if ((localb.xHj) || (paramak.field_unReadCount > 0)) {}
+      for (paramBoolean1 = true;; paramBoolean1 = false)
       {
-        if (localb.eAB > 0) {
-          break label330;
+        localb.xHj = paramBoolean1;
+        localb.ntX = (paramInt + 1);
+        if (paramBoolean2) {
+          localb.fQt = localb.ntX;
         }
-        localb.tEq = paramBoolean1;
-        if ((localb.tEt) || (paramak.field_unReadCount > 0)) {
-          paramBoolean1 = true;
+        localb.xHi = ((int)(System.currentTimeMillis() / 1000L));
+        if (paramak.field_lastSeq != localb.xyE) {
+          break;
         }
-        for (;;)
-        {
-          localb.tEt = paramBoolean1;
-          localb.kVX = (paramInt + 1);
-          if (paramBoolean2) {
-            localb.eAB = localb.kVX;
-          }
-          localb.tEs = ((int)(System.currentTimeMillis() / 1000L));
-          if (paramak.field_lastSeq == localb.tIh) {
-            break;
-          }
-          localb.tIh = paramak.field_lastSeq;
-          paramak = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().HA(paramak.field_username);
-          if ((paramak == null) || (!paramak.ctz())) {
-            break;
-          }
-          paramak = ((a)com.tencent.mm.kernel.g.r(a.class)).d(paramak.field_msgId, paramak.field_content);
-          if ((paramak == null) || (bk.dk(paramak.dTx)) || (bk.bl(((m)paramak.dTx.get(0)).url))) {
-            break;
-          }
+        AppMethodBeat.o(34556);
+        return;
+      }
+      localb.xyE = paramak.field_lastSeq;
+      paramak = ((j)g.E(j.class)).bPQ().Tm(paramak.field_username);
+      if ((paramak != null) && (paramak.dvV()))
+      {
+        paramak = ((a)g.E(a.class)).b(paramak.field_msgId, paramak.field_content);
+        if ((paramak != null) && (!bo.es(paramak.fjy)) && (!bo.isNullOrNil(((q)paramak.fjy.get(0)).url))) {
           try
           {
-            paramak = Uri.parse(((m)paramak.dTx.get(0)).url);
-            localb.tEo = bk.getLong(paramak.getQueryParameter("mid"), 0L);
-            localb.tEp = bk.getInt(paramak.getQueryParameter("idx"), 0);
+            paramak = Uri.parse(((q)paramak.fjy.get(0)).url);
+            localb.xHe = bo.getLong(paramak.getQueryParameter("mid"), 0L);
+            localb.xHf = bo.getInt(paramak.getQueryParameter("idx"), 0);
+            AppMethodBeat.o(34556);
             return;
           }
           catch (UnsupportedOperationException paramak)
           {
-            y.w("MicroMsg.ConversationAdapter", "exposeLog exp %s", new Object[] { paramak.getMessage() });
+            ab.w("MicroMsg.ConversationAdapter", "exposeLog exp %s", new Object[] { paramak.getMessage() });
+            AppMethodBeat.o(34556);
             return;
-            paramBoolean1 = false;
           }
           catch (Exception paramak)
           {
-            y.w("MicroMsg.ConversationAdapter", "exposeLog exp %s", new Object[] { paramak.getMessage() });
-            return;
+            ab.w("MicroMsg.ConversationAdapter", "exposeLog exp %s", new Object[] { paramak.getMessage() });
           }
         }
       }
+      AppMethodBeat.o(34556);
+      return;
     }
-  }
-  
-  public final void yc()
-  {
-    au.Hx();
-    setCursor(c.FB().c(s.dUT, this.dru, this.bUU));
-    if (this.uMi != null) {
-      this.uMi.Wp();
-    }
-    super.notifyDataSetChanged();
   }
 }
 

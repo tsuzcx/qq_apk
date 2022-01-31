@@ -3,11 +3,12 @@ package com.tencent.mm.pluginsdk.ui.chat;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class ChatFooter$12
-  extends ah
+  extends ak
 {
   ChatFooter$12(ChatFooter paramChatFooter) {}
   
@@ -15,22 +16,24 @@ final class ChatFooter$12
   @TargetApi(11)
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(27799);
     switch (paramMessage.what)
     {
     }
     do
     {
+      AppMethodBeat.o(27799);
       return;
-    } while ((ChatFooter.a(this.sgd) == null) || (paramMessage.obj == null));
+    } while ((ChatFooter.a(this.vXU) == null) || (paramMessage.obj == null));
     boolean bool = ((Boolean)paramMessage.obj).booleanValue();
     if (bool) {
-      ChatFooter.a(this.sgd).setAlpha(1.0F);
+      ChatFooter.a(this.vXU).setAlpha(1.0F);
     }
     for (;;)
     {
-      ChatFooter.a(this.sgd, bool);
-      return;
-      ChatFooter.a(this.sgd).setAlpha(0.5F);
+      ChatFooter.a(this.vXU, bool);
+      break;
+      ChatFooter.a(this.vXU).setAlpha(0.5F);
     }
   }
 }

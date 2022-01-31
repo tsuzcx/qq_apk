@@ -1,19 +1,25 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class i$2
   implements k.b
 {
   i$2(i parami) {}
   
-  public final boolean gk(int paramInt)
+  public final boolean iz(int paramInt)
   {
-    if ((!this.scC.scu.scO) || (!this.scC.scu.Ec(paramInt))) {}
-    while (this.scC.scu.Eb(paramInt)) {
+    AppMethodBeat.i(79732);
+    if ((!this.vTI.vTA.vTS) || (!this.vTI.vTA.Ma(paramInt)))
+    {
+      AppMethodBeat.o(79732);
       return true;
     }
-    y.d("MicroMsg.ContactListArchor", "onItemLongClick " + paramInt);
+    if (!this.vTI.vTA.LY(paramInt)) {
+      ab.d("MicroMsg.ContactListArchor", "onItemLongClick ".concat(String.valueOf(paramInt)));
+    }
+    AppMethodBeat.o(79732);
     return true;
   }
 }

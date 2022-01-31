@@ -30,21 +30,11 @@ final class Normsg$J2CBridge
   
   private static native boolean ak();
   
-  private static native byte[] ba(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  private static native byte[] bb(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2);
-  
-  private static native boolean bc(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt);
-  
-  private static native boolean bd(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, PInt paramPInt);
-  
   private static native String be();
   
   private static native String bf(int paramInt);
   
   private static native boolean bg(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
-  
-  private static native boolean bh(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2, PByteArray paramPByteArray);
   
   private static native boolean ca(Object paramObject, Class<?> paramClass);
   
@@ -72,7 +62,7 @@ final class Normsg$J2CBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.Normsg.J2CBridge
  * JD-Core Version:    0.7.0.1
  */

@@ -1,97 +1,113 @@
 package com.tencent.mm.ba;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.ajk;
-import com.tencent.mm.protocal.c.ajl;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.z;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends m
-  implements k
 {
-  private final b dmK;
-  private f dmL = null;
-  public String exc = null;
-  public String exd = null;
-  public byte[] exe = null;
+  int bsY;
+  public int fMk;
+  private String fsf;
+  private String fsg;
+  private int fsh;
+  private int fsi;
+  private String path;
+  public String username;
   
   public a()
   {
-    this(com.tencent.mm.model.q.Gj(), bk.g((Integer)g.DP().Dz().get(66561, null)), 0);
+    AppMethodBeat.i(78430);
+    this.bsY = -1;
+    this.username = "";
+    this.fMk = 0;
+    this.path = "";
+    this.fsf = "";
+    this.fsg = "";
+    this.fsh = 0;
+    this.fsi = 0;
+    AppMethodBeat.o(78430);
   }
   
-  public a(String paramString, int paramInt)
+  public final void convertFrom(Cursor paramCursor)
   {
-    this(paramString, paramInt, 0);
+    AppMethodBeat.i(78431);
+    this.username = paramCursor.getString(0);
+    this.fMk = paramCursor.getInt(1);
+    this.path = paramCursor.getString(2);
+    this.fsf = paramCursor.getString(3);
+    this.fsg = paramCursor.getString(4);
+    this.fsh = paramCursor.getInt(5);
+    this.fsi = paramCursor.getInt(6);
+    AppMethodBeat.o(78431);
   }
   
-  public a(String paramString, int paramInt1, int paramInt2)
+  public final ContentValues convertTo()
   {
-    Object localObject = new b.a();
-    ((b.a)localObject).ecH = new ajk();
-    ((b.a)localObject).ecI = new ajl();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getqrcode";
-    ((b.a)localObject).ecG = 168;
-    ((b.a)localObject).ecJ = 67;
-    ((b.a)localObject).ecK = 1000000067;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (ajk)this.dmK.ecE.ecN;
-    ((ajk)localObject).sQs = aa.pj(paramString);
-    ((ajk)localObject).tga = paramInt1;
-    ((ajk)localObject).ssq = paramInt2;
-    y.i("MicroMsg.NetSceneGetQRCode", "username:%s, style:%d, opcode:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-  }
-  
-  public final int a(com.tencent.mm.network.e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneGetQRCode", "onGYNetEnd errType:" + paramInt2 + " errCode" + paramInt3);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    AppMethodBeat.i(78432);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.bsY & 0x1) != 0) {
+      localContentValues.put("username", getUsername());
+    }
+    if ((this.bsY & 0x2) != 0) {
+      localContentValues.put("bgflag", Integer.valueOf(this.fMk));
+    }
+    if ((this.bsY & 0x4) != 0)
     {
-      paramArrayOfByte = (ajk)this.dmK.ecE.ecN;
-      paramq = (ajl)this.dmK.ecF.ecN;
-      paramArrayOfByte = aa.a(paramArrayOfByte.sQs);
-      this.exe = aa.a(paramq.tgb, new byte[0]);
-      this.exc = paramq.tgc;
-      y.i("MicroMsg.NetSceneGetQRCode", "expiredWording:%s, revokeId:%s, revokeWording:%s", new Object[] { this.exc, paramq.tgd, paramq.tge });
-      if (com.tencent.mm.model.q.Gj().equals(paramArrayOfByte))
+      if (this.path == null)
       {
-        paramArrayOfByte = paramq.tgd;
-        String str = (String)g.DP().Dz().get(66563, "");
-        if ((paramArrayOfByte != null) && (!str.equals(paramArrayOfByte)))
-        {
-          g.DP().Dz().o(66563, paramArrayOfByte);
-          this.exd = paramq.tge;
-        }
-        g.DP().Dz().o(66561, Integer.valueOf(paramq.tga));
+        str = "";
+        localContentValues.put("path", str);
       }
     }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    else
+    {
+      if ((this.bsY & 0x8) != 0)
+      {
+        if (this.fsf != null) {
+          break label195;
+        }
+        str = "";
+        label100:
+        localContentValues.put("reserved1", str);
+      }
+      if ((this.bsY & 0x10) != 0) {
+        if (this.fsg != null) {
+          break label203;
+        }
+      }
+    }
+    label195:
+    label203:
+    for (String str = "";; str = this.fsg)
+    {
+      localContentValues.put("reserved2", str);
+      if ((this.bsY & 0x20) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.fsh));
+      }
+      if ((this.bsY & 0x40) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.fsi));
+      }
+      AppMethodBeat.o(78432);
+      return localContentValues;
+      str = this.path;
+      break;
+      str = this.fsf;
+      break label100;
+    }
   }
   
-  public final int getType()
+  public final String getUsername()
   {
-    return 168;
+    if (this.username == null) {
+      return "";
+    }
+    return this.username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ba.a
  * JD-Core Version:    0.7.0.1
  */

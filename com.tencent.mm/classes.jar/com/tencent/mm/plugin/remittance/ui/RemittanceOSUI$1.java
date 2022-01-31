@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import com.tencent.mm.h.a.uh;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.wb;
 import com.tencent.mm.sdk.b.c;
 
 final class RemittanceOSUI$1
-  extends c<uh>
+  extends c<wb>
 {
   RemittanceOSUI$1(RemittanceOSUI paramRemittanceOSUI)
   {
-    this.udX = uh.class.getName().hashCode();
+    AppMethodBeat.i(45091);
+    this.__eventId = wb.class.getName().hashCode();
+    AppMethodBeat.o(45091);
   }
 }
 

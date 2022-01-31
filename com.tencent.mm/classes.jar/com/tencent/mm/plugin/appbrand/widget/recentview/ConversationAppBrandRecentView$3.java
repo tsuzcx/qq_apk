@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 import android.support.v7.widget.RecyclerView.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.List;
 
 final class ConversationAppBrandRecentView$3
@@ -11,29 +12,31 @@ final class ConversationAppBrandRecentView$3
   
   public final void run()
   {
-    Object localObject = this.hDh;
-    if (((BaseAppBrandRecentView)localObject).hCI)
+    AppMethodBeat.i(134363);
+    Object localObject = this.jvI;
+    if (((BaseAppBrandRecentView)localObject).jvk)
     {
-      int i = ((BaseAppBrandRecentView)localObject).hCE.size();
-      if ((i - 1 < ((BaseAppBrandRecentView)localObject).heL.size()) && ((a)((BaseAppBrandRecentView)localObject).heL.get(i - 1) != null))
+      int i = ((BaseAppBrandRecentView)localObject).jvg.size();
+      if ((i - 1 < ((BaseAppBrandRecentView)localObject).jfV.size()) && ((a)((BaseAppBrandRecentView)localObject).jfV.get(i - 1) != null))
       {
-        y.i("MicroMsg.BaseAppBrandRecentView", "alvinluo addCacheItemAtLast pos: %d", new Object[] { Integer.valueOf(i) });
-        ((BaseAppBrandRecentView)localObject).hCE.add(i, ((BaseAppBrandRecentView)localObject).heL.get(i - 1));
-        ((BaseAppBrandRecentView)localObject).getAdapter().bM(i);
-        ((BaseAppBrandRecentView)localObject).getAdapter().ah(i, 5);
+        ab.i("MicroMsg.BaseAppBrandRecentView", "alvinluo addCacheItemAtLast pos: %d", new Object[] { Integer.valueOf(i) });
+        ((BaseAppBrandRecentView)localObject).jvg.add(i, ((BaseAppBrandRecentView)localObject).jfV.get(i - 1));
+        ((BaseAppBrandRecentView)localObject).getAdapter().bS(i);
+        ((BaseAppBrandRecentView)localObject).getAdapter().an(i, 5);
       }
     }
-    if (this.hDh.getOnDataChangedListener() != null)
+    if (this.jvI.getOnDataChangedListener() != null)
     {
-      localObject = this.hDh.getOnDataChangedListener();
-      this.hDh.getPreviewItemList().size();
-      ((AppBrandRecentView.d)localObject).arB();
+      localObject = this.jvI.getOnDataChangedListener();
+      this.jvI.getPreviewItemList().size();
+      ((AppBrandRecentView.d)localObject).aQm();
     }
+    AppMethodBeat.o(134363);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView.3
  * JD-Core Version:    0.7.0.1
  */

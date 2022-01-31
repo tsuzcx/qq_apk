@@ -1,38 +1,47 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class v$b
   extends AsyncTask<v.d, Integer, v.d>
   implements n.a
 {
-  private n nev;
-  v.d jdField_new;
+  private n pJK;
+  v.d pJL;
   
   private v$b(v paramv) {}
   
   public final boolean b(v.d paramd)
   {
-    if (!paramd.neF.onReady()) {
+    AppMethodBeat.i(67995);
+    if (!paramd.pJU.onReady())
+    {
+      AppMethodBeat.o(67995);
       return false;
     }
-    this.jdField_new = paramd;
+    this.pJL = paramd;
     super.execute(new v.d[] { paramd });
+    AppMethodBeat.o(67995);
     return true;
   }
   
-  public final void btt()
+  public final void cdD()
   {
+    AppMethodBeat.i(67996);
     publishProgress(new Integer[] { Integer.valueOf(0) });
+    AppMethodBeat.o(67996);
   }
   
   protected final void onCancelled()
   {
-    g.DQ();
-    g.DS().O(new v.b.1(this));
+    AppMethodBeat.i(67997);
+    g.RM();
+    g.RO().ac(new v.b.1(this));
     super.onCancelled();
+    AppMethodBeat.o(67997);
   }
 }
 

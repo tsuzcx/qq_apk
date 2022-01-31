@@ -1,20 +1,25 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class FreeWifiFrontPageUI$6
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
   FreeWifiFrontPageUI$6(FreeWifiFrontPageUI paramFreeWifiFrontPageUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    d.a(this.krP.ssid, 4, this.krP.getIntent());
-    y.i("MicroMsg.FreeWifi.FreeWifiFrontPageUI", "sessionKey=%s, step=%d, method=Protocol.toConnecting.ProgressDlg.onCancel, desc=it changes the connect state of the model to CONNECT_STATE_WAIT_START because the user cancles the connect process in progress. state=%d", new Object[] { m.B(this.krP.getIntent()), Integer.valueOf(m.C(this.krP.getIntent())), Integer.valueOf(4) });
+    AppMethodBeat.i(20964);
+    paramView = new Intent();
+    paramView.putExtra("rawUrl", this.mND.mNz);
+    paramView.putExtra("showShare", false);
+    paramView.putExtra("show_bottom", false);
+    d.b(this.mND.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(20964);
   }
 }
 

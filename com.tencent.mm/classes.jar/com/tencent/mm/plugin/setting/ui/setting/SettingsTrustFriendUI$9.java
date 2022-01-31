@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsTrustFriendUI$9
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class SettingsTrustFriendUI$9
   
   public final void onClick(View paramView)
   {
-    SettingsTrustFriendUI.f(this.nWp).setVisibility(8);
+    AppMethodBeat.i(127540);
+    SettingsTrustFriendUI.f(this.qKz).setVisibility(8);
+    AppMethodBeat.o(127540);
   }
 }
 

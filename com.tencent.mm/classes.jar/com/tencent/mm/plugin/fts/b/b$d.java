@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fts.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.PluginFTS;
 import com.tencent.mm.plugin.fts.a.a.a;
@@ -19,15 +20,17 @@ final class b$d
   
   public final boolean execute()
   {
-    Object localObject = b.Eb(this.path);
-    this.kyU.kyT.beginTransaction();
-    this.kyU.kyT.bB((List)localObject);
-    this.kyU.kyT.commit();
-    this.kyU.kyT.k(c.kuP);
-    this.kyU.dBO.a(131132, new b.a(this.kyU, (byte)0));
-    localObject = ((PluginFTS)g.t(PluginFTS.class)).getTopHitsLogic();
-    int[] arrayOfInt = c.kuP;
-    ((e)localObject).kzv.f(arrayOfInt, 1);
+    AppMethodBeat.i(136723);
+    Object localObject = b.Pl(this.path);
+    this.mUJ.mUI.beginTransaction();
+    this.mUJ.mUI.bW((List)localObject);
+    this.mUJ.mUI.commit();
+    this.mUJ.mUI.u(c.mQC);
+    this.mUJ.ezf.a(131132, new b.a(this.mUJ, (byte)0));
+    localObject = ((PluginFTS)g.G(PluginFTS.class)).getTopHitsLogic();
+    int[] arrayOfInt = c.mQC;
+    ((e)localObject).mVl.g(arrayOfInt, 1);
+    AppMethodBeat.o(136723);
     return true;
   }
   
@@ -38,7 +41,7 @@ final class b$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.b.d
  * JD-Core Version:    0.7.0.1
  */

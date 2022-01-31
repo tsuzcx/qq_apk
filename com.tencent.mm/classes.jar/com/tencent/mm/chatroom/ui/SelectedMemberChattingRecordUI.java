@@ -1,21 +1,28 @@
 package com.tencent.mm.chatroom.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.model.m;
-import com.tencent.mm.model.s;
-import com.tencent.mm.modelvoice.n;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.n;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
+import com.tencent.mm.modelvoice.p;
+import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.b.a.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bi.a;
 import com.tencent.mm.storage.bi.b;
 import com.tencent.mm.storage.bi.d;
@@ -27,19 +34,27 @@ import java.util.Map;
 public class SelectedMemberChattingRecordUI
   extends MMActivity
 {
-  private static final f<Integer, c> dss = new f(32);
-  private String dpj;
-  private View drT;
-  private MMLoadMoreListView dso;
-  private SelectedMemberChattingRecordUI.a dsp;
-  private String dsq;
-  private int dsr = 0;
+  private static final f<Integer, com.tencent.mm.protocal.b.a.c> eka;
+  private String egF;
+  private View ejB;
+  private MMLoadMoreListView ejW;
+  private SelectedMemberChattingRecordUI.a ejX;
+  private String ejY;
+  private int ejZ = 0;
   private String mTitle;
+  
+  static
+  {
+    AppMethodBeat.i(104450);
+    eka = new com.tencent.mm.memory.a.c(32);
+    AppMethodBeat.o(104450);
+  }
   
   public static String a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
+    AppMethodBeat.i(104448);
     String str = "";
-    g.a locala = g.a.gp(paramString1);
+    j.b localb = j.b.mY(paramString1);
     Object localObject;
     switch (paramInt1)
     {
@@ -55,45 +70,57 @@ public class SelectedMemberChattingRecordUI
     case 48: 
     case 42: 
     case 66: 
+      label224:
       do
       {
-        return localObject;
-        return paramString1.substring(paramString1.indexOf(":\n") + 1);
-        paramString1 = new n(paramString1);
-        return paramContext.getString(a.i.record_voice_with_time, new Object[] { Integer.valueOf((int)com.tencent.mm.modelvoice.q.ck(paramString1.time)) });
-        return paramContext.getString(a.i.app_pic);
-        if (62 == paramInt1) {}
-        for (paramInt1 = a.i.app_shortvideo;; paramInt1 = a.i.app_video) {
-          return paramContext.getString(paramInt1);
+        for (;;)
+        {
+          AppMethodBeat.o(104448);
+          return localObject;
+          localObject = paramString1.substring(paramString1.indexOf(":\n") + 1);
+          continue;
+          localObject = paramContext.getString(2131302366, new Object[] { Integer.valueOf((int)s.hi(new p(paramString1).time)) });
+          continue;
+          localObject = paramContext.getString(2131297036);
+          continue;
+          if (62 == paramInt1) {}
+          for (paramInt1 = 2131297077;; paramInt1 = 2131297102)
+          {
+            localObject = paramContext.getString(paramInt1);
+            break;
+          }
+          localObject = paramContext.getString(2131302357, new Object[] { ((j)g.E(j.class)).bPQ().Tz(paramString1).label });
         }
-        paramString1 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().HO(paramString1);
-        return paramContext.getString(a.i.record_location_with_title, new Object[] { paramString1.label });
         localObject = str;
-      } while (bk.pm(paramString1).length() <= 0);
-      localObject = com.tencent.mm.model.bd.iI(paramString1);
+      } while (bo.nullAsNil(paramString1).length() <= 0);
+      localObject = bf.pu(paramString1);
       if (!TextUtils.isEmpty((CharSequence)localObject)) {
         break;
       }
     }
     for (;;)
     {
-      localObject = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().HN(paramString1);
-      paramString2 = ((j)com.tencent.mm.kernel.g.r(j.class)).Fw().abl(paramString2).Bq();
+      localObject = ((j)g.E(j.class)).bPQ().Ty(paramString1);
+      paramString2 = ((j)g.E(j.class)).YA().arw(paramString2).Of();
       paramString1 = paramString2;
-      if (s.fn(paramString2)) {
-        paramString1 = m.J(m.gN(paramString2));
+      if (t.lA(paramString2)) {
+        paramString1 = n.Q(n.nw(paramString2));
       }
-      if (paramInt2 == 1) {
-        return paramContext.getString(a.i.fmt_card_from, new Object[] { paramString1, ((bi.a)localObject).getDisplayName() });
-      }
-      return paramContext.getString(a.i.fmt_card_to, new Object[] { paramString1, ((bi.a)localObject).getDisplayName() });
-      if (locala == null)
+      if (paramInt2 == 1)
       {
-        y.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
+        localObject = paramContext.getString(2131300025, new Object[] { paramString1, ((bi.a)localObject).getDisplayName() });
+        break;
+      }
+      localObject = paramContext.getString(2131300026, new Object[] { paramString1, ((bi.a)localObject).getDisplayName() });
+      break;
+      if (localb == null)
+      {
+        ab.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
+        AppMethodBeat.o(104448);
         return "";
       }
       localObject = str;
-      switch (locala.type)
+      switch (localb.type)
       {
       case 7: 
       case 9: 
@@ -109,218 +136,276 @@ public class SelectedMemberChattingRecordUI
       case 22: 
       case 23: 
       default: 
-        return "";
+        localObject = "";
+        break;
       case 6: 
-        return paramContext.getString(a.i.record_file_with_title, new Object[] { locala.title });
+        localObject = paramContext.getString(2131302354, new Object[] { localb.title });
+        break;
       case 5: 
-        return paramContext.getString(a.i.record_url_with_title, new Object[] { locala.getTitle() });
+        localObject = paramContext.getString(2131302364, new Object[] { localb.getTitle() });
+        break;
       case 8: 
-        return paramContext.getString(a.i.app_emoji2);
+        localObject = paramContext.getString(2131296916);
+        break;
       case 15: 
       case 26: 
       case 27: 
-        return paramContext.getString(a.i.app_emoji);
+        localObject = paramContext.getString(2131296915);
+        break;
       case 25: 
-        return paramContext.getString(a.i.app_designer_share);
+        localObject = paramContext.getString(2131296903);
+        break;
       case 17: 
-        return paramContext.getString(a.i.record_location_with_title, new Object[] { locala.title });
+        localObject = paramContext.getString(2131302357, new Object[] { localb.title });
+        break;
       case 19: 
-        return paramContext.getString(a.i.record_record_with_title, new Object[] { locala.title });
+        localObject = paramContext.getString(2131302360, new Object[] { localb.title });
+        break;
       case 24: 
-        paramString2 = locala.dRd;
-        if (bk.bl(paramString2))
+        paramString2 = localb.fhc;
+        if (bo.isNullOrNil(paramString2))
         {
-          y.e("MicroMsg.SelectedMemberChattingRecordUI", "xml is null");
+          ab.e("MicroMsg.SelectedMemberChattingRecordUI", "xml is null");
           paramString1 = null;
           if (paramString1 != null) {
-            break label967;
+            break label1028;
           }
         }
         for (paramString1 = "";; paramString1 = paramString1.desc)
         {
-          return paramContext.getString(a.i.record_note_with_title, new Object[] { bk.aM(paramString1, "") });
+          localObject = paramContext.getString(2131302359, new Object[] { bo.bf(paramString1, "") });
+          break;
           paramInt1 = paramString2.hashCode();
-          paramString1 = (c)dss.get(Integer.valueOf(paramInt1));
+          paramString1 = (com.tencent.mm.protocal.b.a.c)eka.get(Integer.valueOf(paramInt1));
           if (paramString1 != null)
           {
-            y.d("MicroMsg.SelectedMemberChattingRecordUI", "get record msg data from cache");
-            break;
+            ab.d("MicroMsg.SelectedMemberChattingRecordUI", "get record msg data from cache");
+            break label810;
           }
           if (paramString2.trim().startsWith("<recordinfo>")) {}
-          for (paramString1 = bn.s(paramString2, "recordinfo");; paramString1 = bn.s("<recordinfo>" + paramString2 + "</recordinfo>", "recordinfo"))
+          for (paramString1 = br.F(paramString2, "recordinfo");; paramString1 = br.F("<recordinfo>" + paramString2 + "</recordinfo>", "recordinfo"))
           {
             if (paramString1 != null) {
-              break label894;
+              break label953;
             }
-            y.e("MicroMsg.SelectedMemberChattingRecordUI", "values is null: %s", new Object[] { paramString2 });
+            ab.e("MicroMsg.SelectedMemberChattingRecordUI", "values is null: %s", new Object[] { paramString2 });
             paramString1 = null;
             break;
           }
-          paramString2 = new c();
+          paramString2 = new com.tencent.mm.protocal.b.a.c();
           paramString2.title = ((String)paramString1.get(".recordinfo.title"));
           paramString2.desc = ((String)paramString1.get(".recordinfo.desc"));
-          paramString2.srn = ((String)paramString1.get(".recordinfo.favusername"));
-          dss.put(Integer.valueOf(paramInt1), paramString2);
+          paramString2.wjU = ((String)paramString1.get(".recordinfo.favusername"));
+          eka.put(Integer.valueOf(paramInt1), paramString2);
           paramString1 = paramString2;
-          break;
+          break label810;
         }
       case 3: 
-        label967:
-        return paramContext.getString(a.i.record_music_with_title, new Object[] { locala.title });
+        localObject = paramContext.getString(2131302358, new Object[] { localb.title });
+        break;
       case 4: 
-        label894:
-        return paramContext.getString(a.i.record_video_with_title, new Object[] { locala.title });
-      }
-      return paramContext.getString(a.i.app_pic);
-      return paramContext.getString(a.i.app_emoji);
-      localObject = paramContext.getString(a.i.record_remittance_with_title);
-      if (locala == null) {
+        localObject = paramContext.getString(2131302365, new Object[] { localb.title });
         break;
-      }
-      if (paramInt2 == 1) {}
-      for (paramInt1 = 1;; paramInt1 = 0) {
-        switch (locala.dRE)
-        {
-        case 2: 
-        default: 
-          return bk.pm(locala.title);
+      case 2: 
+        label810:
+        label953:
+        localObject = paramContext.getString(2131297036);
+        label1028:
+        break;
+        localObject = paramContext.getString(2131296915);
+        break;
+        localObject = paramContext.getString(2131302361);
+        if (localb == null) {
+          break;
         }
-      }
-      if (paramInt1 != 0) {
-        return paramContext.getString(a.i.appmsg_remittance_digest_payer_wait);
-      }
-      return paramContext.getString(a.i.appmsg_remittance_digest_receiver_wait);
-      if (paramInt1 != 0) {
-        return paramContext.getString(a.i.appmsg_remittance_digest_receiver_collected);
-      }
-      return paramContext.getString(a.i.appmsg_remittance_digest_payer_collected);
-      if (paramInt1 != 0) {
-        return paramContext.getString(a.i.appmsg_remittance_digest_receiver_refused);
-      }
-      return paramContext.getString(a.i.appmsg_remittance_digest_payer_refused);
-      if (locala == null)
-      {
-        y.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
-        return "";
-      }
-      if (paramInt2 == 1) {
-        return paramContext.getString(a.i.record_c2c_with_title, new Object[] { locala.dSf, locala.dSc });
-      }
-      return paramContext.getString(a.i.record_c2c_with_title, new Object[] { locala.dSf, locala.dSb });
-      if (locala == null)
-      {
-        y.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
-        return "";
-      }
-      if (paramInt2 == 1) {
-        return paramContext.getString(a.i.record_c2c_with_title, new Object[] { locala.dSf, locala.dSt });
-      }
-      return paramContext.getString(a.i.record_c2c_with_title, new Object[] { locala.dSf, locala.dSs });
-      return paramContext.getString(a.i.record_card_with_title, new Object[] { locala.title });
-      return paramContext.getString(a.i.record_card_with_title, new Object[] { "" });
-      return paramContext.getString(a.i.record_app_with_title, new Object[] { locala.title });
-      return paramContext.getString(a.i.record_share_location_with_title, new Object[] { locala.title });
-      localObject = str;
-      if (paramString1 == null) {
+        if (paramInt2 == 1) {}
+        for (paramInt1 = 1;; paramInt1 = 0) {
+          switch (localb.fhD)
+          {
+          case 2: 
+          default: 
+            localObject = bo.nullAsNil(localb.title);
+            break label224;
+          }
+        }
+        if (paramInt1 != 0)
+        {
+          localObject = paramContext.getString(2131297205);
+          break;
+        }
+        localObject = paramContext.getString(2131297208);
+        break;
+        if (paramInt1 != 0)
+        {
+          localObject = paramContext.getString(2131297206);
+          break;
+        }
+        localObject = paramContext.getString(2131297203);
+        break;
+        if (paramInt1 != 0)
+        {
+          localObject = paramContext.getString(2131297207);
+          break;
+        }
+        localObject = paramContext.getString(2131297204);
+        break;
+        if (localb == null)
+        {
+          ab.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
+          AppMethodBeat.o(104448);
+          return "";
+        }
+        if (paramInt2 == 1)
+        {
+          localObject = paramContext.getString(2131302351, new Object[] { localb.fie, localb.fib });
+          break;
+        }
+        localObject = paramContext.getString(2131302351, new Object[] { localb.fie, localb.fia });
+        break;
+        if (localb == null)
+        {
+          ab.e("MicroMsg.SelectedMemberChattingRecordUI", "decode msg content failed");
+          AppMethodBeat.o(104448);
+          return "";
+        }
+        if (paramInt2 == 1)
+        {
+          localObject = paramContext.getString(2131302351, new Object[] { localb.fie, localb.fis });
+          break;
+        }
+        localObject = paramContext.getString(2131302351, new Object[] { localb.fie, localb.fir });
+        break;
+        localObject = paramContext.getString(2131302352, new Object[] { localb.title });
+        break;
+        localObject = paramContext.getString(2131302352, new Object[] { "" });
+        break;
+        localObject = paramContext.getString(2131302350, new Object[] { localb.title });
+        break;
+        localObject = paramContext.getString(2131302363, new Object[] { localb.title });
+        break;
+        localObject = str;
+        if (paramString1 == null) {
+          break;
+        }
+        localObject = str;
+        if (paramString1.length() <= 0) {
+          break;
+        }
+        paramString1 = bi.d.asm(paramString1);
+        localObject = str;
+        if (paramString1.tac == null) {
+          break;
+        }
+        localObject = str;
+        if (paramString1.tac.length() <= 0) {
+          break;
+        }
+        switch (paramString1.scene)
+        {
+        case 19: 
+        case 20: 
+        case 21: 
+        default: 
+          localObject = paramContext.getString(2131300111, new Object[] { paramString1.getDisplayName() });
+          break;
+        case 18: 
+          localObject = paramContext.getString(2131300092, new Object[] { paramString1.getDisplayName() });
+          break;
+        case 22: 
+        case 23: 
+        case 24: 
+        case 26: 
+        case 27: 
+        case 28: 
+        case 29: 
+          localObject = paramContext.getString(2131300102, new Object[] { paramString1.getDisplayName() });
+          break;
+        case 25: 
+          localObject = paramContext.getString(2131300024, new Object[] { paramString1.getDisplayName() });
+          break;
+          paramString2 = (String)localObject;
+        }
         break;
       }
-      localObject = str;
-      if (paramString1.length() <= 0) {
-        break;
-      }
-      paramString1 = bi.d.acc(paramString1);
-      localObject = str;
-      if (paramString1.pyp == null) {
-        break;
-      }
-      localObject = str;
-      if (paramString1.pyp.length() <= 0) {
-        break;
-      }
-      switch (paramString1.scene)
-      {
-      case 19: 
-      case 20: 
-      case 21: 
-      default: 
-        return paramContext.getString(a.i.fmt_want_to_be_your_friend, new Object[] { paramString1.getDisplayName() });
-      case 18: 
-        return paramContext.getString(a.i.fmt_say_hello_to_you, new Object[] { paramString1.getDisplayName() });
-      case 22: 
-      case 23: 
-      case 24: 
-      case 26: 
-      case 27: 
-      case 28: 
-      case 29: 
-        return paramContext.getString(a.i.fmt_shake_say_hello_to_you, new Object[] { paramString1.getDisplayName() });
-      }
-      return paramContext.getString(a.i.fmt_bottle_say_hello_to_you, new Object[] { paramString1.getDisplayName() });
-      paramString2 = (String)localObject;
     }
   }
   
   protected static String a(u paramu, String paramString)
   {
-    if (paramu == null) {
+    AppMethodBeat.i(104447);
+    if (paramu == null)
+    {
+      AppMethodBeat.o(104447);
       return null;
     }
-    return paramu.gV(paramString);
+    paramu = paramu.nE(paramString);
+    AppMethodBeat.o(104447);
+    return paramu;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.f.select_member_chatting_record_ui;
+    return 2130970655;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(104446);
     super.initView();
-    setMMTitle(bk.pm(this.mTitle));
-    this.dso = ((MMLoadMoreListView)findViewById(a.e.member_list));
-    this.dso.cAO();
-    this.dsp = new SelectedMemberChattingRecordUI.a(this, this, this.dpj, this.dsq, this.dsr);
-    this.dso.setAdapter(this.dsp);
-    this.drT = findViewById(a.e.select_member_ui_hint_ll);
-    if (this.dsr == 0) {}
+    setMMTitle(bo.nullAsNil(this.mTitle));
+    this.ejW = ((MMLoadMoreListView)findViewById(2131827538));
+    this.ejW.dDY();
+    this.ejX = new SelectedMemberChattingRecordUI.a(this, this, this.egF, this.ejY, this.ejZ);
+    this.ejW.setAdapter(this.ejX);
+    this.ejB = findViewById(2131827539);
+    if (this.ejZ == 0) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.drT.setVisibility(0);
-        this.dso.setVisibility(8);
+        this.ejB.setVisibility(0);
+        this.ejW.setVisibility(8);
       }
-      this.dso.setOnItemClickListener(new SelectedMemberChattingRecordUI.1(this));
-      this.dso.setOnLoadMoreListener(new SelectedMemberChattingRecordUI.2(this));
+      this.ejW.setOnItemClickListener(new SelectedMemberChattingRecordUI.1(this));
+      this.ejW.setOnLoadMoreListener(new SelectedMemberChattingRecordUI.2(this));
       setBackBtn(new SelectedMemberChattingRecordUI.3(this));
+      AppMethodBeat.o(104446);
       return;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(104445);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.SelectedMemberChattingRecordUI", "[onCreate]");
-    this.dpj = getIntent().getStringExtra("RoomInfo_Id");
-    this.dsq = getIntent().getStringExtra("room_member");
-    y.i("MicroMsg.SelectedMemberChattingRecordUI", "roomId:%s", new Object[] { this.dpj });
+    ab.i("MicroMsg.SelectedMemberChattingRecordUI", "[onCreate]");
+    this.egF = getIntent().getStringExtra("RoomInfo_Id");
+    this.ejY = getIntent().getStringExtra("room_member");
+    ab.i("MicroMsg.SelectedMemberChattingRecordUI", "roomId:%s", new Object[] { this.egF });
     this.mTitle = getIntent().getStringExtra("title");
-    if ((!bk.bl(this.dsq)) && (com.tencent.mm.model.q.gS(this.dsq))) {
-      this.dsr = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().HY(this.dpj);
+    if ((!bo.isNullOrNil(this.ejY)) && (r.nB(this.ejY))) {
+      this.ejZ = ((j)g.E(j.class)).bPQ().TH(this.egF);
     }
     for (;;)
     {
       initView();
+      AppMethodBeat.o(104445);
       return;
-      if (!com.tencent.mm.model.q.gS(this.dsq)) {
-        this.dsr = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().dR(this.dpj, this.dsq);
+      if (!r.nB(this.ejY)) {
+        this.ejZ = ((j)g.E(j.class)).bPQ().fk(this.egF, this.ejY);
       }
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectedMemberChattingRecordUI
  * JD-Core Version:    0.7.0.1
  */

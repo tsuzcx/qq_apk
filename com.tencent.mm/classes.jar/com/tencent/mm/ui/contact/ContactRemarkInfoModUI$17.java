@@ -1,21 +1,20 @@
 package com.tencent.mm.ui.contact;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.platformtools.ah;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactRemarkInfoModUI$17
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   ContactRemarkInfoModUI$17(ContactRemarkInfoModUI paramContactRemarkInfoModUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((ah.bl(ContactRemarkInfoModUI.m(this.vKT))) || (ContactRemarkInfoModUI.p(this.vKT)))
-    {
-      ContactRemarkInfoModUI.a(this.vKT, false);
-      ContactRemarkInfoModUI.k(this.vKT);
-    }
+    AppMethodBeat.i(33646);
+    ContactRemarkInfoModUI.q(this.Acv);
+    AppMethodBeat.o(33646);
+    return true;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.ui.conversation;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NewBizConversationUI$7
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class NewBizConversationUI$7
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    NewBizConversationUI.l(this.vTG);
+    AppMethodBeat.i(34538);
+    NewBizConversationUI.l(this.AlC);
+    AppMethodBeat.o(34538);
   }
 }
 

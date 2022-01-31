@@ -3,24 +3,34 @@ package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class JsApiNavigateToDevMiniProgram$DevPkgInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DevPkgInfo> CREATOR = new JsApiNavigateToDevMiniProgram.DevPkgInfo.1();
+  public static final Parcelable.Creator<DevPkgInfo> CREATOR;
   String appId;
-  String cav;
-  String caw;
-  String gwV;
+  String cIU;
+  String cIV;
+  String hTi;
+  
+  static
+  {
+    AppMethodBeat.i(131341);
+    CREATOR = new JsApiNavigateToDevMiniProgram.DevPkgInfo.1();
+    AppMethodBeat.o(131341);
+  }
   
   JsApiNavigateToDevMiniProgram$DevPkgInfo() {}
   
   JsApiNavigateToDevMiniProgram$DevPkgInfo(Parcel paramParcel)
   {
+    AppMethodBeat.i(131340);
     this.appId = paramParcel.readString();
-    this.cav = paramParcel.readString();
-    this.caw = paramParcel.readString();
-    this.gwV = paramParcel.readString();
+    this.cIU = paramParcel.readString();
+    this.cIV = paramParcel.readString();
+    this.hTi = paramParcel.readString();
+    AppMethodBeat.o(131340);
   }
   
   public final int describeContents()
@@ -30,15 +40,17 @@ final class JsApiNavigateToDevMiniProgram$DevPkgInfo
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(131339);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.cav);
-    paramParcel.writeString(this.caw);
-    paramParcel.writeString(this.gwV);
+    paramParcel.writeString(this.cIU);
+    paramParcel.writeString(this.cIV);
+    paramParcel.writeString(this.hTi);
+    AppMethodBeat.o(131339);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.JsApiNavigateToDevMiniProgram.DevPkgInfo
  * JD-Core Version:    0.7.0.1
  */

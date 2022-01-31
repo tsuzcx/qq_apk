@@ -1,40 +1,69 @@
 package android.support.v4.widget;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.view.LayoutInflater;
+import android.os.Build.VERSION;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ListView;
 
-public abstract class m
-  extends f
+public final class m
+  extends a
 {
-  private int Ls;
-  private int Lt;
-  private LayoutInflater Lu;
+  private final ListView KE;
   
-  @Deprecated
-  public m(Context paramContext, int paramInt)
+  public m(ListView paramListView)
   {
-    super(paramContext);
-    this.Lt = paramInt;
-    this.Ls = paramInt;
-    this.Lu = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
+    super(paramListView);
+    this.KE = paramListView;
   }
   
-  public final View newDropDownView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  public final boolean aA(int paramInt)
   {
-    return this.Lu.inflate(this.Lt, paramViewGroup, false);
+    ListView localListView = this.KE;
+    int i = localListView.getCount();
+    if (i == 0) {}
+    int j;
+    int k;
+    do
+    {
+      return false;
+      j = localListView.getChildCount();
+      k = localListView.getFirstVisiblePosition();
+      if (paramInt <= 0) {
+        break;
+      }
+    } while ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight()));
+    do
+    {
+      return true;
+      if (paramInt >= 0) {
+        break;
+      }
+    } while ((k > 0) || (localListView.getChildAt(0).getTop() < 0));
+    return false;
   }
   
-  public View newView(Context paramContext, Cursor paramCursor, ViewGroup paramViewGroup)
+  public final void az(int paramInt)
   {
-    return this.Lu.inflate(this.Ls, paramViewGroup, false);
+    ListView localListView = this.KE;
+    if (Build.VERSION.SDK_INT >= 19) {
+      localListView.scrollListBy(paramInt);
+    }
+    int i;
+    View localView;
+    do
+    {
+      do
+      {
+        return;
+        i = localListView.getFirstVisiblePosition();
+      } while (i == -1);
+      localView = localListView.getChildAt(0);
+    } while (localView == null);
+    localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.widget.m
  * JD-Core Version:    0.7.0.1
  */

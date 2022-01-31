@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 public abstract interface MMSightCircularProgressBar$a
 {
-  public abstract void aKR();
+  public abstract void boZ();
 }
 
 

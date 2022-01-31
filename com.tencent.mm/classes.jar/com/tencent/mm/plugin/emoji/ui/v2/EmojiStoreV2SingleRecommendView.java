@@ -13,223 +13,281 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.at.o;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.emoji.e.e;
-import com.tencent.mm.plugin.emoji.f.e;
-import com.tencent.mm.plugin.emoji.f.f;
-import com.tencent.mm.plugin.emoji.f.h;
 import com.tencent.mm.plugin.emoji.model.h.b;
 import com.tencent.mm.plugin.emoji.model.i;
 import com.tencent.mm.plugin.emoji.ui.EmojiStoreDetailUI;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.RecommendView;
-import com.tencent.mm.protocal.c.vn;
+import com.tencent.mm.protocal.protobuf.EmotionSummary;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.at;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
+import com.tencent.mm.ui.w;
 
 public class EmojiStoreV2SingleRecommendView
   extends ChatFooterPanel.RecommendView
   implements View.OnClickListener, h.b
 {
-  private ViewGroup gVj;
-  private String iZs;
-  private com.tencent.mm.plugin.emoji.f.h jbe;
-  protected final int jbt = 131074;
-  private final int jbu = 131075;
-  private final int jbv = 131076;
-  private final String jbw = "product_id";
-  private final String jbx = "progress";
-  private final String jby = "status";
-  private ImageView jdY;
-  private String jer;
-  private ah jge = new EmojiStoreV2SingleRecommendView.1(this);
-  private ImageView jiK;
-  private TextView jiL;
-  private TextView jiM;
-  private Button jiN;
-  private ProgressBar jiO;
-  private EmojiGroupInfo jiP;
-  private boolean jiQ = true;
-  private c jiR = new EmojiStoreV2SingleRecommendView.2(this);
+  private ViewGroup iux;
+  private String lig;
+  private com.tencent.mm.plugin.emoji.f.g ljN;
+  protected final int lkc;
+  private final int lkd;
+  private final int lke;
+  private final String lkf;
+  private final String lkg;
+  private final String lkh;
+  private ImageView lmL;
+  private String lne;
+  private ak loX;
+  private ImageView lrB;
+  private TextView lrC;
+  private TextView lrD;
+  private Button lrE;
+  private ProgressBar lrF;
+  private EmojiGroupInfo lrG;
+  private boolean lrH;
+  private c lrI;
   
   public EmojiStoreV2SingleRecommendView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(53787);
+    this.lkc = 131074;
+    this.lkd = 131075;
+    this.lke = 131076;
+    this.lkf = "product_id";
+    this.lkg = "progress";
+    this.lkh = "status";
+    this.lrH = true;
+    this.loX = new EmojiStoreV2SingleRecommendView.1(this);
+    this.lrI = new EmojiStoreV2SingleRecommendView.2(this);
     init();
+    AppMethodBeat.o(53787);
   }
   
   @TargetApi(11)
   public EmojiStoreV2SingleRecommendView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(53788);
+    this.lkc = 131074;
+    this.lkd = 131075;
+    this.lke = 131076;
+    this.lkf = "product_id";
+    this.lkg = "progress";
+    this.lkh = "status";
+    this.lrH = true;
+    this.loX = new EmojiStoreV2SingleRecommendView.1(this);
+    this.lrI = new EmojiStoreV2SingleRecommendView.2(this);
     init();
+    AppMethodBeat.o(53788);
   }
   
   public EmojiStoreV2SingleRecommendView(Context paramContext, boolean paramBoolean)
   {
     super(paramContext);
-    this.jiQ = paramBoolean;
+    AppMethodBeat.i(53786);
+    this.lkc = 131074;
+    this.lkd = 131075;
+    this.lke = 131076;
+    this.lkf = "product_id";
+    this.lkg = "progress";
+    this.lkh = "status";
+    this.lrH = true;
+    this.loX = new EmojiStoreV2SingleRecommendView.1(this);
+    this.lrI = new EmojiStoreV2SingleRecommendView.2(this);
+    this.lrH = paramBoolean;
     init();
+    AppMethodBeat.o(53786);
   }
   
-  private void c(vn paramvn)
+  private void f(EmotionSummary paramEmotionSummary)
   {
+    AppMethodBeat.i(53796);
     Intent localIntent = new Intent();
     localIntent.setClass(getContext(), EmojiStoreDetailUI.class);
-    localIntent.putExtra("extra_id", paramvn.syc);
-    localIntent.putExtra("extra_name", paramvn.sSc);
-    localIntent.putExtra("extra_copyright", paramvn.sSm);
-    localIntent.putExtra("extra_coverurl", paramvn.sSk);
-    localIntent.putExtra("extra_description", paramvn.sSd);
-    localIntent.putExtra("extra_price", paramvn.sSf);
-    localIntent.putExtra("extra_type", paramvn.sSg);
-    localIntent.putExtra("extra_flag", paramvn.sSh);
-    localIntent.putExtra("extra_price_num", paramvn.sSn);
-    localIntent.putExtra("extra_price_type", paramvn.sSo);
+    localIntent.putExtra("extra_id", paramEmotionSummary.ProductID);
+    localIntent.putExtra("extra_name", paramEmotionSummary.PackName);
+    localIntent.putExtra("extra_copyright", paramEmotionSummary.PackCopyright);
+    localIntent.putExtra("extra_coverurl", paramEmotionSummary.CoverUrl);
+    localIntent.putExtra("extra_description", paramEmotionSummary.PackDesc);
+    localIntent.putExtra("extra_price", paramEmotionSummary.PackPrice);
+    localIntent.putExtra("extra_type", paramEmotionSummary.PackType);
+    localIntent.putExtra("extra_flag", paramEmotionSummary.PackFlag);
+    localIntent.putExtra("extra_price_num", paramEmotionSummary.PriceNum);
+    localIntent.putExtra("extra_price_type", paramEmotionSummary.PriceType);
     localIntent.putExtra("preceding_scence", 108);
     localIntent.putExtra("call_by", 1);
     localIntent.putExtra("download_entrance_scene", 8);
     localIntent.putExtra("check_clickflag", false);
     getContext().startActivity(localIntent);
+    AppMethodBeat.o(53796);
   }
   
   private void init()
   {
-    if (this.jiQ) {}
-    for (this.gVj = ((ViewGroup)com.tencent.mm.ui.y.gt(getContext()).inflate(f.f.emoji_store_v2_single_recommend, this));; this.gVj = ((ViewGroup)com.tencent.mm.ui.y.gt(getContext()).inflate(f.f.emoji_store_v2_single_recommend_land, this)))
+    AppMethodBeat.i(53791);
+    if (this.lrH) {}
+    for (this.iux = ((ViewGroup)w.hM(getContext()).inflate(2130969415, this));; this.iux = ((ViewGroup)w.hM(getContext()).inflate(2130969416, this)))
     {
-      this.jdY = ((ImageView)this.gVj.findViewById(f.e.emoji_close));
-      this.jiK = ((ImageView)this.gVj.findViewById(f.e.emoji_icon));
-      this.jiL = ((TextView)this.gVj.findViewById(f.e.emoji_title));
-      this.jiM = ((TextView)this.gVj.findViewById(f.e.emoji_word));
-      this.jiN = ((Button)this.gVj.findViewById(f.e.emoji_download));
-      this.jiO = ((ProgressBar)this.gVj.findViewById(f.e.emoji_download_progress));
+      this.lmL = ((ImageView)this.iux.findViewById(2131823634));
+      this.lrB = ((ImageView)this.iux.findViewById(2131823707));
+      this.lrC = ((TextView)this.iux.findViewById(2131823628));
+      this.lrD = ((TextView)this.iux.findViewById(2131823708));
+      this.lrE = ((Button)this.iux.findViewById(2131823709));
+      this.lrF = ((ProgressBar)this.iux.findViewById(2131823633));
+      AppMethodBeat.o(53791);
       return;
     }
   }
   
   private void setTitleName(EmojiGroupInfo paramEmojiGroupInfo)
   {
-    if (this.jiN != null) {
+    AppMethodBeat.i(53793);
+    if (this.lrE != null) {
       switch (paramEmojiGroupInfo.field_buttonType)
       {
       default: 
-        this.jiN.setVisibility(8);
+        this.lrE.setVisibility(8);
       }
     }
     for (;;)
     {
-      if (!bk.bl(paramEmojiGroupInfo.field_packName)) {
-        this.jiL.setText(paramEmojiGroupInfo.field_packName);
+      if (!bo.isNullOrNil(paramEmojiGroupInfo.field_packName)) {
+        this.lrC.setText(paramEmojiGroupInfo.field_packName);
       }
-      if (this.jiM != null)
-      {
-        if (bk.bl(paramEmojiGroupInfo.field_recommandWord)) {
-          break;
-        }
-        this.jiM.setVisibility(0);
-        this.jiM.setText(paramEmojiGroupInfo.field_recommandWord);
+      if (this.lrD == null) {
+        break label164;
       }
+      if (bo.isNullOrNil(paramEmojiGroupInfo.field_recommandWord)) {
+        break;
+      }
+      this.lrD.setVisibility(0);
+      this.lrD.setText(paramEmojiGroupInfo.field_recommandWord);
+      AppMethodBeat.o(53793);
       return;
-      this.jiN.setVisibility(0);
-      this.jiN.setText(f.h.emoji_store_download);
+      this.lrE.setVisibility(0);
+      this.lrE.setText(2131299193);
       continue;
-      this.jiN.setVisibility(0);
-      this.jiN.setText(f.h.menu_show_emoji_detail);
+      this.lrE.setVisibility(0);
+      this.lrE.setText(2131301555);
     }
-    this.jiM.setVisibility(8);
+    this.lrD.setVisibility(8);
+    label164:
+    AppMethodBeat.o(53793);
   }
   
-  public final void aHM() {}
+  public final void blm() {}
   
   public final void i(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramString1 = new com.tencent.mm.plugin.emoji.f.h(paramString1, paramString2, paramString3);
-    g.DO().dJT.a(paramString1, 0);
+    AppMethodBeat.i(53794);
+    paramString1 = new com.tencent.mm.plugin.emoji.f.g(paramString1, paramString2, paramString3);
+    com.tencent.mm.kernel.g.RK().eHt.a(paramString1, 0);
+    AppMethodBeat.o(53794);
   }
   
-  public final void j(Message paramMessage)
+  public final void o(Message paramMessage)
   {
-    if (this.jge != null) {
-      this.jge.sendMessage(paramMessage);
+    AppMethodBeat.i(53795);
+    if (this.loX != null) {
+      this.loX.sendMessage(paramMessage);
     }
+    AppMethodBeat.o(53795);
   }
   
   protected void onAttachedToWindow()
   {
+    AppMethodBeat.i(53789);
     super.onAttachedToWindow();
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "onAttachedToWindow");
-    com.tencent.mm.sdk.b.a.udP.c(this.jiR);
+    ab.d("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "onAttachedToWindow");
+    com.tencent.mm.sdk.b.a.ymk.c(this.lrI);
+    AppMethodBeat.o(53789);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdY)
+    AppMethodBeat.i(53797);
+    if (paramView == this.lmL)
     {
-      i.getEmojiStorageMgr().uBc.acy(this.iZs);
-      com.tencent.mm.plugin.report.service.h.nFQ.f(12068, new Object[] { Integer.valueOf(2), this.iZs, Integer.valueOf(this.jiP.field_recommandType) });
+      i.getEmojiStorageMgr().yNo.asK(this.lig);
+      h.qsU.e(12068, new Object[] { Integer.valueOf(2), this.lig, Integer.valueOf(this.lrG.field_recommandType) });
+      AppMethodBeat.o(53797);
       return;
     }
-    if (paramView == this.gVj)
+    if (paramView == this.iux)
     {
-      c(this.jiP.cwf());
-      com.tencent.mm.plugin.report.service.h.nFQ.f(12068, new Object[] { Integer.valueOf(4), this.iZs, Integer.valueOf(this.jiP.field_recommandType) });
+      f(this.lrG.dzm());
+      h.qsU.e(12068, new Object[] { Integer.valueOf(4), this.lig, Integer.valueOf(this.lrG.field_recommandType) });
+      AppMethodBeat.o(53797);
       return;
     }
-    if (paramView == this.jiN)
+    if (paramView == this.lrE)
     {
-      if (this.jiP.field_buttonType == 1)
+      if (this.lrG.field_buttonType == 1)
       {
-        this.jbe = new com.tencent.mm.plugin.emoji.f.h(this.iZs);
-        g.DO().dJT.a(this.jbe, 0);
-        com.tencent.mm.plugin.report.service.h.nFQ.f(12068, new Object[] { Integer.valueOf(3), this.iZs, Integer.valueOf(this.jiP.field_recommandType) });
-        com.tencent.mm.plugin.report.service.h.nFQ.f(12066, new Object[] { Integer.valueOf(0), Integer.valueOf(8), "", this.iZs });
+        this.ljN = new com.tencent.mm.plugin.emoji.f.g(this.lig);
+        com.tencent.mm.kernel.g.RK().eHt.a(this.ljN, 0);
+        h.qsU.e(12068, new Object[] { Integer.valueOf(3), this.lig, Integer.valueOf(this.lrG.field_recommandType) });
+        h.qsU.e(12066, new Object[] { Integer.valueOf(0), Integer.valueOf(8), "", this.lig });
+        AppMethodBeat.o(53797);
         return;
       }
-      if (this.jiP.field_buttonType == 2)
+      if (this.lrG.field_buttonType == 2)
       {
-        c(this.jiP.cwf());
-        com.tencent.mm.plugin.report.service.h.nFQ.f(12068, new Object[] { Integer.valueOf(4), this.iZs, Integer.valueOf(this.jiP.field_recommandType) });
+        f(this.lrG.dzm());
+        h.qsU.e(12068, new Object[] { Integer.valueOf(4), this.lig, Integer.valueOf(this.lrG.field_recommandType) });
+        AppMethodBeat.o(53797);
         return;
       }
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "unknown buttonType do nothing.");
+      ab.i("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "unknown buttonType do nothing.");
+      AppMethodBeat.o(53797);
       return;
     }
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "do nothing");
+    ab.d("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "do nothing");
+    AppMethodBeat.o(53797);
   }
   
   protected void onDetachedFromWindow()
   {
+    AppMethodBeat.i(53790);
     super.onDetachedFromWindow();
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "onDetachedFromWindow");
-    com.tencent.mm.sdk.b.a.udP.d(this.jiR);
+    ab.d("MicroMsg.emoji.EmojiStoreV2SingleRecommendView", "onDetachedFromWindow");
+    com.tencent.mm.sdk.b.a.ymk.d(this.lrI);
+    AppMethodBeat.o(53790);
   }
   
   public void setProductID(String paramString)
   {
-    this.iZs = paramString;
-    if (bk.bl(this.iZs))
+    AppMethodBeat.i(53792);
+    this.lig = paramString;
+    if (bo.isNullOrNil(this.lig))
     {
-      this.gVj.setVisibility(8);
+      this.iux.setVisibility(8);
+      AppMethodBeat.o(53792);
       return;
     }
-    this.jiP = i.getEmojiStorageMgr().uBc.bE(this.iZs, false);
-    this.jdY.setOnClickListener(this);
-    this.jiN.setOnClickListener(this);
-    this.gVj.setOnClickListener(this);
-    setTitleName(this.jiP);
-    this.jiO.setVisibility(8);
-    o.ON().a(this.jiP.field_BigIconUrl, this.jiK, e.h(this.iZs, this.jiP.field_BigIconUrl, new Object[0]));
+    this.lrG = i.getEmojiStorageMgr().yNo.cg(this.lig, false);
+    this.lmL.setOnClickListener(this);
+    this.lrE.setOnClickListener(this);
+    this.iux.setOnClickListener(this);
+    setTitleName(this.lrG);
+    this.lrF.setVisibility(8);
+    o.ahG().a(this.lrG.field_BigIconUrl, this.lrB, com.tencent.mm.plugin.emoji.e.g.h(this.lig, this.lrG.field_BigIconUrl, new Object[0]));
+    AppMethodBeat.o(53792);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2SingleRecommendView
  * JD-Core Version:    0.7.0.1
  */

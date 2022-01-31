@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.content.Context;
-import com.tencent.mm.plugin.wallet_core.ui.q.b;
+import com.tencent.mm.plugin.wallet_core.ui.s.b;
 
 final class WalletBindUI$1
-  implements q.b
+  implements s.b
 {
   WalletBindUI$1(WalletBindUI paramWalletBindUI) {}
   
-  public final int bgT()
+  public final int bOO()
   {
     return 1;
   }
   
   public final Context getContext()
   {
-    return this.qkw;
+    return this.tTw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.bind.ui.WalletBindUI.1
  * JD-Core Version:    0.7.0.1
  */

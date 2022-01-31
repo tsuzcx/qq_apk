@@ -6,44 +6,48 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.view.MotionEvent;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   extends View
 {
-  private int dsI;
+  private int mPadding;
   private Paint mPaint;
-  private int mType = 2;
-  private int qQq;
-  private RectF rJl;
-  private RectF rJm;
-  private RectF rJn;
-  private RectF rJo;
-  private int rJp;
-  private int rJq;
-  private int rJr;
-  private a.a rJs;
+  private int mType;
+  private int sKW;
+  private int uFy;
+  private RectF vzQ;
+  private RectF vzR;
+  private RectF vzS;
+  private RectF vzT;
+  private int vzU;
+  private int vzV;
+  private a.a vzW;
   
   public a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, a.a parama)
   {
     super(paramContext);
+    AppMethodBeat.i(26851);
+    this.mType = 2;
     this.mType = paramInt1;
-    this.rJq = paramInt2;
-    this.qQq = paramInt3;
-    this.rJp = (this.rJq * 2 / 5);
-    this.dsI = this.rJp;
-    this.rJr = (this.rJp * 3 / 4);
+    this.vzV = paramInt2;
+    this.uFy = paramInt3;
+    this.vzU = (this.vzV * 2 / 5);
+    this.mPadding = this.vzU;
+    this.sKW = (this.vzU * 3 / 4);
     this.mPaint = new Paint(1);
     this.mPaint.setColor(paramInt4);
-    this.rJs = parama;
-    this.rJl = new RectF(this.dsI, this.rJq, this.dsI + this.rJp * 2, this.rJq + this.rJp * 2);
-    this.rJm = new RectF(this.rJr - this.rJp, this.rJq, this.rJr + this.rJp, this.rJq + this.rJp * 2);
-    this.rJn = new RectF(this.dsI, this.rJq, this.dsI + this.rJp * 2, this.rJq + this.rJp * 2);
-    this.rJo = new RectF(this.dsI + this.qQq, this.rJq, this.dsI + this.qQq + this.rJp * 2, this.rJq + this.rJp * 2);
+    this.vzW = parama;
+    this.vzQ = new RectF(this.mPadding, this.vzV, this.mPadding + this.vzU * 2, this.vzV + this.vzU * 2);
+    this.vzR = new RectF(this.sKW - this.vzU, this.vzV, this.sKW + this.vzU, this.vzV + this.vzU * 2);
+    this.vzS = new RectF(this.mPadding, this.vzV, this.mPadding + this.vzU * 2, this.vzV + this.vzU * 2);
+    this.vzT = new RectF(this.mPadding + this.uFy, this.vzV, this.mPadding + this.uFy + this.vzU * 2, this.vzV + this.vzU * 2);
+    AppMethodBeat.o(26851);
   }
   
   public final int getOffsetForCursorMid()
   {
-    return this.dsI + this.rJp + 1;
+    return this.mPadding + this.vzU + 1;
   }
   
   public final int getType()
@@ -53,49 +57,55 @@ public final class a
   
   public final int getViewHeight()
   {
-    return this.rJq + this.rJp * 2 + this.dsI;
+    return this.vzV + this.vzU * 2 + this.mPadding;
   }
   
   public final int getViewPadding()
   {
-    return this.dsI;
+    return this.mPadding;
   }
   
   public final int getViewWidth()
   {
     if ((this.mType == 3) || (this.mType == 4)) {
-      return this.dsI + this.rJp + this.rJr;
+      return this.mPadding + this.vzU + this.sKW;
     }
-    return this.qQq + (this.dsI + this.rJp) * 2;
+    return this.uFy + (this.mPadding + this.vzU) * 2;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(26852);
     switch (this.mType)
     {
-    default: 
-      return;
-    case 2: 
-      paramCanvas.drawRect(this.dsI + this.rJp, 0.0F, this.dsI + this.rJp + this.qQq, this.rJq + this.rJp * 2, this.mPaint);
-      paramCanvas.drawArc(this.rJn, 90.0F, 180.0F, true, this.mPaint);
-      paramCanvas.drawArc(this.rJo, 270.0F, 180.0F, true, this.mPaint);
-      return;
-    case 3: 
-      paramCanvas.drawRect(this.dsI + this.rJp + this.rJr - this.qQq, 0.0F, this.dsI + this.rJp + this.rJr, this.rJq, this.mPaint);
-      paramCanvas.drawArc(this.rJl, 90.0F, 180.0F, true, this.mPaint);
-      paramCanvas.drawRect(this.dsI + this.rJp, this.rJq, this.dsI + this.rJp + this.rJr, this.rJq + this.rJp * 2, this.mPaint);
-      return;
     }
-    paramCanvas.drawRect(0.0F, 0.0F, this.qQq, this.rJq, this.mPaint);
-    paramCanvas.drawRect(0.0F, this.rJq, this.rJr, this.rJq + this.rJp * 2, this.mPaint);
-    paramCanvas.drawArc(this.rJm, 270.0F, 180.0F, true, this.mPaint);
+    for (;;)
+    {
+      AppMethodBeat.o(26852);
+      return;
+      paramCanvas.drawRect(this.mPadding + this.vzU, 0.0F, this.mPadding + this.vzU + this.uFy, this.vzV + this.vzU * 2, this.mPaint);
+      paramCanvas.drawArc(this.vzS, 90.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.vzT, 270.0F, 180.0F, true, this.mPaint);
+      AppMethodBeat.o(26852);
+      return;
+      paramCanvas.drawRect(this.mPadding + this.vzU + this.sKW - this.uFy, 0.0F, this.mPadding + this.vzU + this.sKW, this.vzV, this.mPaint);
+      paramCanvas.drawArc(this.vzQ, 90.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawRect(this.mPadding + this.vzU, this.vzV, this.mPadding + this.vzU + this.sKW, this.vzV + this.vzU * 2, this.mPaint);
+      AppMethodBeat.o(26852);
+      return;
+      paramCanvas.drawRect(0.0F, 0.0F, this.uFy, this.vzV, this.mPaint);
+      paramCanvas.drawRect(0.0F, this.vzV, this.sKW, this.vzV + this.vzU * 2, this.mPaint);
+      paramCanvas.drawArc(this.vzR, 270.0F, 180.0F, true, this.mPaint);
+    }
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.rJs != null) {
-      this.rJs.a(this.mType, paramMotionEvent);
+    AppMethodBeat.i(26853);
+    if (this.vzW != null) {
+      this.vzW.a(this.mType, paramMotionEvent);
     }
+    AppMethodBeat.o(26853);
     return true;
   }
 }

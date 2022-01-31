@@ -1,15 +1,28 @@
 package org.xwalk.core.extension;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class BindingObject
 {
-  private String TAG = "BindingObject";
-  protected MessageHandler mHandler = new MessageHandler();
+  private String TAG;
+  protected MessageHandler mHandler;
   protected ExtensionInstanceHelper mInstanceHelper;
   protected String mObjectId;
   
+  public BindingObject()
+  {
+    AppMethodBeat.i(86069);
+    this.TAG = "BindingObject";
+    this.mHandler = new MessageHandler();
+    AppMethodBeat.o(86069);
+  }
+  
   public Object handleMessage(MessageInfo paramMessageInfo)
   {
-    return this.mHandler.handleMessage(paramMessageInfo);
+    AppMethodBeat.i(86070);
+    paramMessageInfo = this.mHandler.handleMessage(paramMessageInfo);
+    AppMethodBeat.o(86070);
+    return paramMessageInfo;
   }
   
   public void initBindingInfo(String paramString, ExtensionInstanceHelper paramExtensionInstanceHelper)
@@ -34,7 +47,7 @@ public class BindingObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     org.xwalk.core.extension.BindingObject
  * JD-Core Version:    0.7.0.1
  */

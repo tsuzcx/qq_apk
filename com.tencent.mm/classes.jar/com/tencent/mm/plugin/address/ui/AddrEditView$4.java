@@ -4,7 +4,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class AddrEditView$4
   implements View.OnClickListener
@@ -13,19 +14,21 @@ final class AddrEditView$4
   
   public final void onClick(View paramView)
   {
-    if (AddrEditView.f(this.fuv).getVisibility() == 0)
+    AppMethodBeat.i(16808);
+    if (AddrEditView.f(this.gLX).getVisibility() == 0)
     {
-      if ((!this.fuv.fun) || (AddrEditView.d(this.fuv) == 2) || (bk.bl(this.fuv.getText()))) {
-        break label77;
+      if ((this.gLX.gLP) && (AddrEditView.d(this.gLX) != 2) && (!bo.isNullOrNil(this.gLX.getText())))
+      {
+        this.gLX.gLJ.setText("");
+        AddrEditView.b(this.gLX, AddrEditView.e(this.gLX).isFocused());
+        AppMethodBeat.o(16808);
+        return;
       }
-      this.fuv.fuh.setText("");
-      AddrEditView.b(this.fuv, AddrEditView.e(this.fuv).isFocused());
+      if (AddrEditView.g(this.gLX) != null) {
+        AddrEditView.g(this.gLX).onClick();
+      }
     }
-    label77:
-    while (AddrEditView.g(this.fuv) == null) {
-      return;
-    }
-    AddrEditView.g(this.fuv).onClick();
+    AppMethodBeat.o(16808);
   }
 }
 

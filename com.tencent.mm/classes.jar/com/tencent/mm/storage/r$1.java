@@ -1,9 +1,9 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.l;
 
 final class r$1
-  extends k<r.c, r.a>
+  extends l<r.c, r.a>
 {
   r$1(r paramr) {}
 }

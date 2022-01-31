@@ -1,14 +1,19 @@
 package com.tencent.mm.plugin.subapp.ui.gallery;
 
-import com.tencent.mm.h.a.km;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d.a;
 
 final class GestureGalleryUI$2
-  extends c<km>
+  implements d.a
 {
-  GestureGalleryUI$2(GestureGalleryUI paramGestureGalleryUI)
+  GestureGalleryUI$2(GestureGalleryUI paramGestureGalleryUI) {}
+  
+  public final void onDismiss()
   {
-    this.udX = km.class.getName().hashCode();
+    AppMethodBeat.i(153670);
+    GestureGalleryUI.c(this.sYB, null);
+    GestureGalleryUI.d(this.sYB, null);
+    AppMethodBeat.o(153670);
   }
 }
 

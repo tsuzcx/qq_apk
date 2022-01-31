@@ -3,96 +3,111 @@ package com.google.android.exoplayer2.h;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
 
 public final class c
-  implements f
+  implements g
 {
-  private final AssetManager aQM;
-  private final t<? super c> aQN;
-  private InputStream aQO;
-  private long aQP;
+  private final AssetManager aYp;
+  private final w<? super c> aYq;
+  private InputStream aYr;
+  private long aYs;
   private boolean opened;
   private Uri uri;
   
-  public c(Context paramContext, t<? super c> paramt)
+  public c(Context paramContext, w<? super c> paramw)
   {
-    this.aQM = paramContext.getAssets();
-    this.aQN = paramt;
+    AppMethodBeat.i(95787);
+    this.aYp = paramContext.getAssets();
+    this.aYq = paramw;
+    AppMethodBeat.o(95787);
   }
   
-  public final long a(i parami)
+  public final long a(j paramj)
   {
+    AppMethodBeat.i(95788);
     for (;;)
     {
       String str2;
       try
       {
-        this.uri = parami.uri;
+        this.uri = paramj.uri;
         str2 = this.uri.getPath();
         if (str2.startsWith("/android_asset/"))
         {
           str1 = str2.substring(15);
-          this.aQO = this.aQM.open(str1, 1);
-          if (this.aQO.skip(parami.position) >= parami.position) {
+          this.aYr = this.aYp.open(str1, 1);
+          if (this.aYr.skip(paramj.position) >= paramj.position) {
             break;
           }
-          throw new EOFException();
+          paramj = new EOFException();
+          AppMethodBeat.o(95788);
+          throw paramj;
         }
       }
-      catch (IOException parami)
+      catch (IOException paramj)
       {
-        throw new c.a(parami);
+        paramj = new c.a(paramj);
+        AppMethodBeat.o(95788);
+        throw paramj;
       }
       String str1 = str2;
       if (str2.startsWith("/")) {
         str1 = str2.substring(1);
       }
     }
-    if (parami.aQW != -1L) {
-      this.aQP = parami.aQW;
+    if (paramj.aPF != -1L) {
+      this.aYs = paramj.aPF;
     }
     for (;;)
     {
       this.opened = true;
-      if (this.aQN != null) {
-        this.aQN.nT();
+      if (this.aYq != null) {
+        this.aYq.qq();
       }
-      return this.aQP;
-      this.aQP = this.aQO.available();
-      if (this.aQP == 2147483647L) {
-        this.aQP = -1L;
+      long l = this.aYs;
+      AppMethodBeat.o(95788);
+      return l;
+      this.aYs = this.aYr.available();
+      if (this.aYs == 2147483647L) {
+        this.aYs = -1L;
       }
     }
   }
   
   public final void close()
   {
+    AppMethodBeat.i(95790);
     this.uri = null;
     try
     {
-      if (this.aQO != null) {
-        this.aQO.close();
+      if (this.aYr != null) {
+        this.aYr.close();
       }
       return;
     }
     catch (IOException localIOException)
     {
-      throw new c.a(localIOException);
+      c.a locala = new c.a(localIOException);
+      AppMethodBeat.o(95790);
+      throw locala;
     }
     finally
     {
-      this.aQO = null;
+      this.aYr = null;
       if (this.opened)
       {
         this.opened = false;
-        if (this.aQN != null) {
-          this.aQN.nU();
+        if (this.aYq != null) {
+          this.aYq.qr();
         }
       }
+      AppMethodBeat.o(95790);
     }
+    AppMethodBeat.o(95790);
   }
   
   public final Uri getUri()
@@ -102,55 +117,58 @@ public final class c
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int j = -1;
-    int i;
-    if (paramInt2 == 0) {
-      i = 0;
-    }
-    for (;;)
+    AppMethodBeat.i(95789);
+    if (paramInt2 == 0)
     {
-      return i;
-      i = j;
-      if (this.aQP != 0L) {
-        try
-        {
-          if (this.aQP == -1L) {}
-          for (;;)
-          {
-            paramInt1 = this.aQO.read(paramArrayOfByte, paramInt1, paramInt2);
-            if (paramInt1 != -1) {
-              break label111;
-            }
-            i = j;
-            if (this.aQP == -1L) {
-              break;
-            }
-            throw new c.a(new EOFException());
-            long l = Math.min(this.aQP, paramInt2);
-            paramInt2 = (int)l;
-          }
-          if (this.aQP == -1L) {
-            break label133;
-          }
+      AppMethodBeat.o(95789);
+      return 0;
+    }
+    if (this.aYs == 0L)
+    {
+      AppMethodBeat.o(95789);
+      return -1;
+    }
+    try
+    {
+      if (this.aYs == -1L) {}
+      for (;;)
+      {
+        paramInt1 = this.aYr.read(paramArrayOfByte, paramInt1, paramInt2);
+        if (paramInt1 != -1) {
+          break label134;
         }
-        catch (IOException paramArrayOfByte)
-        {
-          throw new c.a(paramArrayOfByte);
+        if (this.aYs == -1L) {
+          break;
         }
+        paramArrayOfByte = new c.a(new EOFException());
+        AppMethodBeat.o(95789);
+        throw paramArrayOfByte;
+        long l = Math.min(this.aYs, paramInt2);
+        paramInt2 = (int)l;
       }
+      AppMethodBeat.o(95789);
     }
-    label111:
-    this.aQP -= paramInt1;
-    label133:
-    if (this.aQN != null) {
-      this.aQN.dx(paramInt1);
+    catch (IOException paramArrayOfByte)
+    {
+      paramArrayOfByte = new c.a(paramArrayOfByte);
+      AppMethodBeat.o(95789);
+      throw paramArrayOfByte;
     }
+    return -1;
+    label134:
+    if (this.aYs != -1L) {
+      this.aYs -= paramInt1;
+    }
+    if (this.aYq != null) {
+      this.aYq.el(paramInt1);
+    }
+    AppMethodBeat.o(95789);
     return paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.google.android.exoplayer2.h.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class k$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class k$2
   
   public final void run()
   {
-    this.rCv.TH(this.val$url);
+    AppMethodBeat.i(9922);
+    this.vsH.PW(this.val$url);
+    AppMethodBeat.o(9922);
   }
 }
 

@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.readerapp.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.readerapp.b.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 final class ReaderAppUI$8
   implements MenuItem.OnMenuItemClickListener
@@ -13,7 +14,9 @@ final class ReaderAppUI$8
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    a.eUR.d(new Intent().putExtra("Contact_User", ReaderAppUI.f(this.noS)), this.noS);
+    AppMethodBeat.i(76820);
+    a.gmO.c(new Intent().putExtra("Contact_User", ReaderAppUI.f(this.pUg)), this.pUg);
+    AppMethodBeat.o(76820);
     return true;
   }
 }

@@ -2,29 +2,31 @@ package com.tencent.mm.plugin.fts.a.d;
 
 import android.view.View;
 import com.tencent.mm.plugin.fts.a.d.a.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashSet;
 import java.util.LinkedList;
 
 public abstract interface e
 {
-  public abstract void a(String paramString, ah paramah, HashSet<String> paramHashSet);
+  public abstract void a(String paramString, ak paramak, HashSet<String> paramHashSet, long paramLong);
   
   public abstract boolean a(View paramView, a parama, boolean paramBoolean);
   
-  public abstract void aVC();
+  public abstract void bCd();
   
-  public abstract LinkedList<Integer> aVD();
+  public abstract LinkedList<Integer> bCe();
   
-  public abstract int aVE();
+  public abstract int bCf();
   
-  public abstract void adg();
+  public abstract long bCg();
+  
+  public abstract void clearData();
   
   public abstract int getType();
   
-  public abstract int rx(int paramInt);
+  public abstract int wt(int paramInt);
   
-  public abstract a ry(int paramInt);
+  public abstract a wu(int paramInt);
 }
 
 

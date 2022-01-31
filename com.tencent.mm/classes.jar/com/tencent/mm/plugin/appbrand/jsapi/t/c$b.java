@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.t;
 
 public abstract interface c$b
 {
-  public abstract void cleanup();
+  public abstract void Es();
 }
 
 

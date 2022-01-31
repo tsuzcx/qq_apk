@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class a$a$1
@@ -14,12 +15,15 @@ final class a$a$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.iSM.iSK.iSy;
+    AppMethodBeat.i(136163);
+    paramView = this.lbw.lbu.lbi;
     paramView.mContext.getSharedPreferences("search_history_href", 0).edit().putString("search_history_list", "").commit();
-    if (paramView.iSO != null) {
-      paramView.iSO.clear();
+    if (paramView.lby != null) {
+      paramView.lby.clear();
     }
     paramView.setData(null);
+    com.tencent.mm.plugin.downloader_app.c.a.a(13, 1302, 21, 81, "", "", "");
+    AppMethodBeat.o(136163);
   }
 }
 

@@ -1,23 +1,28 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 final class MobileInputUI$18
-  implements View.OnClickListener
+  implements n.c
 {
   MobileInputUI$18(MobileInputUI paramMobileInputUI) {}
   
-  public final void onClick(View paramView)
+  public final void onCreateMMMenu(l paraml)
   {
-    paramView = this.foH.getString(q.j.freeze_account_url, new Object[] { x.cqJ() });
-    MobileInputUI.O(this.foH, paramView);
+    AppMethodBeat.i(125178);
+    if (paraml.dEc())
+    {
+      paraml.hx(5001, 2131305945);
+      paraml.hx(5002, 2131305943);
+    }
+    AppMethodBeat.o(125178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileInputUI.18
  * JD-Core Version:    0.7.0.1
  */

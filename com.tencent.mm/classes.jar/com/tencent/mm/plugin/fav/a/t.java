@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.sdk.e.j;
 import java.util.List;
 
 public abstract interface t
-  extends com.tencent.mm.sdk.e.f
+  extends g
 {
-  public static final String[] dXp = { i.a(f.buS, "FavEditInfo") };
+  public static final String[] SQL_CREATE = { j.getCreateSQLs(f.info, "FavEditInfo") };
   
   public abstract boolean a(f paramf);
   
   public abstract boolean a(f paramf, String... paramVarArgs);
   
-  public abstract List<f> aQs();
+  public abstract List<f> bwH();
   
-  public abstract f eD(long paramLong);
+  public abstract f ka(long paramLong);
   
-  public abstract void p(long paramLong, int paramInt);
+  public abstract void u(long paramLong, int paramInt);
 }
 
 

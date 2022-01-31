@@ -7,64 +7,75 @@ import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.modelgeo.c;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.f;
-import com.tencent.mm.plugin.p.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
 
 public class NewMyLocationButton
   extends FrameLayout
 {
   private Context context;
-  private a.a dig = new NewMyLocationButton.1(this);
-  private ImageButton lES;
-  private LinearLayout lET;
-  private d lEU;
-  private boolean lEV = true;
+  private b.a dZA;
+  private ImageButton ocg;
+  private LinearLayout och;
+  private com.tencent.mm.plugin.k.d oci;
+  private boolean ocj;
   
   public NewMyLocationButton(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(113464);
+    this.ocj = true;
+    this.dZA = new NewMyLocationButton.1(this);
     this.context = paramContext;
     init();
+    AppMethodBeat.o(113464);
   }
   
   public NewMyLocationButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(113463);
+    this.ocj = true;
+    this.dZA = new NewMyLocationButton.1(this);
     this.context = paramContext;
     init();
+    AppMethodBeat.o(113463);
   }
   
   private void init()
   {
-    View localView = View.inflate(this.context, a.f.new_my_location_btn, this);
-    this.lES = ((ImageButton)localView.findViewById(a.e.new_locate_btn));
-    this.lET = ((LinearLayout)localView.findViewById(a.e.new_progress_bar));
+    AppMethodBeat.i(113465);
+    View localView = View.inflate(this.context, 2130970359, this);
+    this.ocg = ((ImageButton)localView.findViewById(2131826547));
+    this.och = ((LinearLayout)localView.findViewById(2131826548));
+    AppMethodBeat.o(113465);
   }
   
   public void setAnimToSelf(boolean paramBoolean)
   {
-    this.lEV = paramBoolean;
+    this.ocj = paramBoolean;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.lES.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(113466);
+    this.ocg.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(113466);
   }
   
-  public void setProgressBar(d paramd)
+  public void setProgressBar(com.tencent.mm.plugin.k.d paramd)
   {
-    this.lEU = paramd;
-    this.lET.setVisibility(0);
-    this.lES.setVisibility(8);
-    c.Ob().b(this.dig, true);
+    AppMethodBeat.i(113467);
+    this.oci = paramd;
+    this.och.setVisibility(0);
+    this.ocg.setVisibility(8);
+    com.tencent.mm.modelgeo.d.agQ().b(this.dZA, true);
+    AppMethodBeat.o(113467);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.NewMyLocationButton
  * JD-Core Version:    0.7.0.1
  */

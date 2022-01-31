@@ -5,11 +5,11 @@ import android.text.TextUtils;
 import com.tencent.filter.h;
 import com.tencent.filter.m;
 import com.tencent.ttpic.gles.AttributeParam;
+import com.tencent.ttpic.gles.GlUtil;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
 import com.tencent.ttpic.shader.Shader;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.shader.ShaderManager;
-import com.tencent.ttpic.util.VideoFilterUtil;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,7 +19,7 @@ public abstract class ShakaFilterBase
 {
   private Map<String, AttributeParam> mAttrParams;
   private int mCoordNum;
-  private VideoFilterUtil.DRAW_MODE mDrawMode;
+  private GlUtil.DRAW_MODE mDrawMode;
   private Map<String, m> mParamList;
   private int mRenderMode;
   protected int mSTextureHandle;
@@ -33,7 +33,7 @@ public abstract class ShakaFilterBase
     this.mParamList = new HashMap();
     this.mSTextureHandle = -1;
     this.mCoordNum = 4;
-    this.mDrawMode = VideoFilterUtil.DRAW_MODE.TRIANGLE_FAN;
+    this.mDrawMode = GlUtil.DRAW_MODE.TRIANGLE_FAN;
   }
   
   public ShakaFilterBase(ShaderCreateFactory.PROGRAM_TYPE paramPROGRAM_TYPE)
@@ -193,8 +193,8 @@ public abstract class ShakaFilterBase
   
   public void initAttribParams()
   {
-    setPositions(VideoFilterUtil.ORIGIN_POSITION_COORDS);
-    setTexCords(VideoFilterUtil.ORIGIN_TEX_COORDS);
+    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
+    setTexCords(GlUtil.ORIGIN_TEX_COORDS);
   }
   
   public abstract void initParams();
@@ -208,7 +208,7 @@ public abstract class ShakaFilterBase
     GLES20.glTexParameterf(3553, 10242, 33071.0F);
     GLES20.glTexParameterf(3553, 10243, 33071.0F);
     GLES20.glUniform1i(this.mSTextureHandle, 0);
-    if (this.mDrawMode == VideoFilterUtil.DRAW_MODE.TRIANGLE_STRIP)
+    if (this.mDrawMode == GlUtil.DRAW_MODE.TRIANGLE_STRIP)
     {
       GLES20.glDrawArrays(5, 0, this.mCoordNum);
       if (this.mRenderMode != 0) {
@@ -220,17 +220,17 @@ public abstract class ShakaFilterBase
     while (this.mRenderMode != 1)
     {
       return true;
-      if (this.mDrawMode == VideoFilterUtil.DRAW_MODE.TRIANGLES)
+      if (this.mDrawMode == GlUtil.DRAW_MODE.TRIANGLES)
       {
         GLES20.glDrawArrays(4, 0, this.mCoordNum);
         break;
       }
-      if (this.mDrawMode == VideoFilterUtil.DRAW_MODE.TRIANGLE_FAN)
+      if (this.mDrawMode == GlUtil.DRAW_MODE.TRIANGLE_FAN)
       {
         GLES20.glDrawArrays(6, 0, this.mCoordNum);
         break;
       }
-      if (this.mDrawMode != VideoFilterUtil.DRAW_MODE.LINES) {
+      if (this.mDrawMode != GlUtil.DRAW_MODE.LINES) {
         break;
       }
       GLES20.glDrawArrays(1, 0, this.mCoordNum);
@@ -246,7 +246,7 @@ public abstract class ShakaFilterBase
     return true;
   }
   
-  public void setDrawMode(VideoFilterUtil.DRAW_MODE paramDRAW_MODE)
+  public void setDrawMode(GlUtil.DRAW_MODE paramDRAW_MODE)
   {
     this.mDrawMode = paramDRAW_MODE;
   }
@@ -302,7 +302,7 @@ public abstract class ShakaFilterBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.ttpic.filter.ShakaFilterBase
  * JD-Core Version:    0.7.0.1
  */

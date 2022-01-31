@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.h.a.hn;
-import com.tencent.mm.h.a.hn.b;
-import com.tencent.mm.plugin.luckymoney.b.f;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.hr;
+import com.tencent.mm.g.a.hr.b;
+import com.tencent.mm.plugin.luckymoney.model.k;
+import com.tencent.mm.plugin.luckymoney.model.x;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class LuckyMoneyBusiDetailUI$3
   implements Runnable
 {
-  LuckyMoneyBusiDetailUI$3(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI, hn paramhn, f paramf) {}
+  LuckyMoneyBusiDetailUI$3(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI, hr paramhr, k paramk) {}
   
   public final void run()
   {
-    if (this.lUI.bPw.bPy)
+    AppMethodBeat.i(42585);
+    if (this.orR.cwP.cwR)
     {
-      y.i("MicroMsg.LuckyMoneyDetailUI", "Get res Ok, path=" + this.lUI.bPw.bPz);
-      AppCompatActivity localAppCompatActivity = this.lUH.mController.uMN;
-      o.e(LuckyMoneyBusiDetailUI.i(this.lUH), this.lUI.bPw.bPz, a.e.lucky_money_busi_default_avatar);
-    }
-    do
-    {
+      ab.i("MicroMsg.LuckyMoneyDetailUI", "Get res Ok, path=" + this.orR.cwP.cwS);
+      this.orQ.getContext();
+      x.n(LuckyMoneyBusiDetailUI.i(this.orQ), this.orR.cwP.cwS);
+      AppMethodBeat.o(42585);
       return;
-      y.i("MicroMsg.LuckyMoneyDetailUI", "Get res fail & load from url.");
-    } while (bk.bl(this.lUJ.lPV));
-    o.a(LuckyMoneyBusiDetailUI.i(this.lUH), this.lUJ.lPV, this.lUJ.lQp);
+    }
+    ab.i("MicroMsg.LuckyMoneyDetailUI", "Get res fail & load from url.");
+    if (!bo.isNullOrNil(this.orS.ont)) {
+      x.b(LuckyMoneyBusiDetailUI.i(this.orQ), this.orS.ont, this.orS.onN);
+    }
+    AppMethodBeat.o(42585);
   }
 }
 

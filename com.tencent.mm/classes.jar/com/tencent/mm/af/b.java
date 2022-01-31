@@ -1,33 +1,88 @@
 package com.tencent.mm.af;
 
-public final class b
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.d;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Map;
+
+public class b
+  extends f
 {
-  public String appId = "";
-  public String bFM = "";
-  public int bFN = 0;
-  public String ceM = "";
-  public int eaN = 0;
-  public boolean eaO = false;
-  public boolean eaP = false;
-  public long eaQ = 0L;
-  public double eaR = 1.0D;
-  public long eaS = 0L;
-  public long eaT = 0L;
-  public long eaU = 0L;
-  public e eaV;
-  public String filePath = "";
-  public int fromScene = 0;
-  public String processName = "";
-  public int startTime = 0;
+  public String cEg;
+  public String ffA;
+  public String ffB;
+  public String ffC;
+  public String ffD;
+  public String ffE;
+  public String ffF;
+  public String ffG;
+  public String ffH;
+  public String ffI;
+  public String ffJ;
+  public String ffK;
+  public String ffL;
+  public String ffM;
+  public String ffN;
+  public String ffO;
+  public String ffP;
+  public String ffQ;
+  public String ffR;
+  public String ffS;
+  public String ffT;
+  public String ffU;
+  public String ffy;
+  public String ffz;
   
-  public final boolean a(b paramb)
+  private static String d(Map<String, String> paramMap, String paramString)
   {
-    if (paramb == null) {}
-    while ((this.bFM == null) || (!this.bFM.equalsIgnoreCase(paramb.bFM)) || (this.ceM == null) || (!this.ceM.equalsIgnoreCase(paramb.ceM))) {
-      return false;
-    }
-    return true;
+    AppMethodBeat.i(16186);
+    paramMap = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpaythirdinfo.".concat(String.valueOf(paramString))));
+    AppMethodBeat.o(16186);
+    return paramMap;
   }
+  
+  public final f Yk()
+  {
+    AppMethodBeat.i(16184);
+    b localb = new b();
+    AppMethodBeat.o(16184);
+    return localb;
+  }
+  
+  public final void a(Map<String, String> paramMap, j.b paramb)
+  {
+    AppMethodBeat.i(16185);
+    if (paramb.type == 2002)
+    {
+      this.ffy = d(paramMap, "templateid");
+      this.ffz = d(paramMap, "senderurl");
+      this.ffA = d(paramMap, "sendernativeurl");
+      this.ffB = d(paramMap, "receiverurl");
+      this.ffC = d(paramMap, "receivernativeurl");
+      this.ffD = d(paramMap, "iconurl");
+      this.ffE = d(paramMap, "miniiconurl");
+      this.ffF = d(paramMap, "backgroundurl");
+      this.ffG = d(paramMap, "backgroundname");
+      this.ffH = d(paramMap, "backgroundcolor");
+      this.ffI = d(paramMap, "receivertitle");
+      this.ffJ = d(paramMap, "sendertitle");
+      this.ffK = d(paramMap, "titlecolor");
+      this.ffL = d(paramMap, "senderscenetext");
+      this.ffM = d(paramMap, "receiverscenetext");
+      this.ffN = d(paramMap, "senderdes");
+      this.ffO = d(paramMap, "receiverdes");
+      this.ffP = d(paramMap, "descolor");
+      this.ffQ = d(paramMap, "sceneid");
+      this.cEg = d(paramMap, "paymsgid");
+      this.ffR = d(paramMap, "senderbackgroundname");
+      this.ffS = d(paramMap, "senderbackgroundurl");
+      this.ffT = d(paramMap, "receiverbackgroundname");
+      this.ffU = d(paramMap, "receiverbackgroundurl");
+    }
+    AppMethodBeat.o(16185);
+  }
+  
+  public final void b(StringBuilder paramStringBuilder, j.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
 }
 
 

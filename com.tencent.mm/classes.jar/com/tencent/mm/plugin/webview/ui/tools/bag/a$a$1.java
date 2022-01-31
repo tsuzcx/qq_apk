@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.view.animation.Animation;
-import com.tencent.mm.ui.widget.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.c;
 
 final class a$a$1
-  extends b
+  extends c
 {
   a$a$1(a.a parama) {}
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    this.rrh.setVisibility(8);
+    AppMethodBeat.i(8142);
+    this.vhm.setVisibility(8);
+    AppMethodBeat.o(8142);
   }
 }
 

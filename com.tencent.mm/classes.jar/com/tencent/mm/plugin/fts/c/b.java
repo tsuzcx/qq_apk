@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.fts.c;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a;
 import com.tencent.mm.plugin.fts.a.a.c;
 import com.tencent.mm.plugin.fts.a.h;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,99 +16,114 @@ import java.util.List;
 public final class b
   extends a
 {
-  private SQLiteStatement kzO;
+  private SQLiteStatement mVE;
   
-  protected final boolean BA()
+  public final void Pn()
   {
-    return !cT(-101, 2);
-  }
-  
-  protected final boolean BB()
-  {
-    super.BB();
-    this.kzO.close();
-    return true;
-  }
-  
-  protected final void Bz()
-  {
-    if (BA())
+    AppMethodBeat.i(136821);
+    if (Po())
     {
       localObject = String.format("DROP TABLE IF EXISTS %s", new Object[] { "Feature" });
-      this.kuE.execSQL((String)localObject);
-      A(-101L, 2L);
+      this.mQr.execSQL((String)localObject);
+      M(-101L, 2L);
     }
-    if (!this.kuE.DJ("Feature"))
+    if (!this.mQr.OS("Feature"))
     {
       localObject = new StringBuilder();
       ((StringBuilder)localObject).append("CREATE TABLE IF NOT EXISTS Feature ( ");
-      ((StringBuilder)localObject).append(c.buS.sql);
+      ((StringBuilder)localObject).append(c.info.sql);
       ((StringBuilder)localObject).append(");");
       localObject = ((StringBuilder)localObject).toString();
-      this.kuE.execSQL((String)localObject);
+      this.mQr.execSQL((String)localObject);
     }
     Object localObject = String.format("INSERT INTO %s (featureId, title, titlePY, titleShortPY, tag, actionType, url, helpUrl, updateUrl, androidUrl, iconPath, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", new Object[] { "Feature" });
-    this.kzO = this.kuE.compileStatement((String)localObject);
+    this.mVE = this.mQr.compileStatement((String)localObject);
+    AppMethodBeat.o(136821);
   }
   
-  public final List<b.a> aVS()
+  public final boolean Po()
   {
+    AppMethodBeat.i(136822);
+    if (!er(-101, 2))
+    {
+      AppMethodBeat.o(136822);
+      return true;
+    }
+    AppMethodBeat.o(136822);
+    return false;
+  }
+  
+  public final boolean Pp()
+  {
+    AppMethodBeat.i(136826);
+    super.Pp();
+    this.mVE.close();
+    AppMethodBeat.o(136826);
+    return true;
+  }
+  
+  public final boolean bBT()
+  {
+    return true;
+  }
+  
+  public final List<b.a> bCv()
+  {
+    AppMethodBeat.i(136823);
     ArrayList localArrayList = new ArrayList();
     HashSet localHashSet = new HashSet();
-    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { aVs() });
-    localObject = this.kuE.rawQuery((String)localObject, null);
+    Object localObject = String.format("SELECT entity_id, timestamp FROM %s", new Object[] { bBR() });
+    localObject = this.mQr.rawQuery((String)localObject, null);
     while (((Cursor)localObject).moveToNext())
     {
       int i = ((Cursor)localObject).getInt(0);
       if (localHashSet.add(Integer.valueOf(i)))
       {
         b.a locala = new b.a();
-        locala.kzP = i;
+        locala.mVF = i;
         locala.timestamp = ((Cursor)localObject).getLong(1);
         localArrayList.add(locala);
       }
     }
     ((Cursor)localObject).close();
+    AppMethodBeat.o(136823);
     return localArrayList;
   }
   
-  protected final boolean aVu()
+  public final boolean bW(List<c> paramList)
   {
-    return true;
-  }
-  
-  public final boolean bB(List<c> paramList)
-  {
-    boolean bool = this.kuE.inTransaction();
+    AppMethodBeat.i(136824);
+    boolean bool = this.mQr.inTransaction();
     if (!bool) {
-      this.kuE.beginTransaction();
+      this.mQr.beginTransaction();
     }
-    this.kuE.execSQL("Delete from Feature");
+    this.mQr.execSQL("Delete from Feature");
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       c localc = (c)paramList.next();
       try
       {
-        this.kzO.bindLong(1, localc.field_featureId);
-        this.kzO.bindString(2, localc.field_title);
-        this.kzO.bindString(3, localc.field_titlePY);
-        this.kzO.bindString(4, localc.field_titleShortPY);
-        this.kzO.bindString(5, localc.field_tag);
-        this.kzO.bindLong(6, localc.field_actionType);
-        this.kzO.bindString(7, localc.field_url);
-        this.kzO.bindString(8, localc.field_helpUrl);
-        this.kzO.bindString(9, localc.field_updateUrl);
-        this.kzO.bindString(10, localc.field_androidUrl);
-        this.kzO.bindString(11, localc.field_iconPath);
-        this.kzO.bindLong(12, localc.field_timestamp);
-        y.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.kzO.executeInsert()), Long.valueOf(localc.field_timestamp) });
+        this.mVE.bindLong(1, localc.field_featureId);
+        this.mVE.bindString(2, localc.field_title);
+        this.mVE.bindString(3, localc.field_titlePY);
+        this.mVE.bindString(4, localc.field_titleShortPY);
+        this.mVE.bindString(5, localc.field_tag);
+        this.mVE.bindLong(6, localc.field_actionType);
+        this.mVE.bindString(7, localc.field_url);
+        this.mVE.bindString(8, localc.field_helpUrl);
+        this.mVE.bindString(9, localc.field_updateUrl);
+        this.mVE.bindString(10, localc.field_androidUrl);
+        this.mVE.bindString(11, localc.field_iconPath);
+        this.mVE.bindLong(12, localc.field_timestamp);
+        ab.d("MicroMsg.FTS.FTS5FeatureStorage", "insertFeatureItem rowid=%d timestamp=%d", new Object[] { Long.valueOf(this.mVE.executeInsert()), Long.valueOf(localc.field_timestamp) });
       }
       catch (Exception localException) {}
     }
     if (!bool) {
-      this.kuE.commit();
+      this.mQr.commit();
     }
+    AppMethodBeat.o(136824);
     return true;
   }
   
@@ -121,7 +137,7 @@ public final class b
     return 17;
   }
   
-  protected final String getTableName()
+  public final String getTableName()
   {
     return "Feature";
   }
@@ -131,10 +147,11 @@ public final class b
     return 17;
   }
   
-  public final c rz(int paramInt)
+  public final c wv(int paramInt)
   {
-    Object localObject1 = "Select * from Feature where featureId = " + paramInt;
-    localObject1 = this.kuE.rawQuery((String)localObject1, null);
+    AppMethodBeat.i(136825);
+    Object localObject1 = "Select * from Feature where featureId = ".concat(String.valueOf(paramInt));
+    localObject1 = this.mQr.rawQuery((String)localObject1, null);
     try
     {
       boolean bool = ((Cursor)localObject1).moveToFirst();
@@ -142,12 +159,13 @@ public final class b
         return null;
       }
       c localc = new c();
-      localc.d((Cursor)localObject1);
+      localc.convertFrom((Cursor)localObject1);
       return localc;
     }
     finally
     {
       ((Cursor)localObject1).close();
+      AppMethodBeat.o(136825);
     }
   }
 }

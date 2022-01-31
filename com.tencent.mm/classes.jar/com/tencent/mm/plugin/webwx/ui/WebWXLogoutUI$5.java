@@ -1,8 +1,12 @@
 package com.tencent.mm.plugin.webwx.ui;
 
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webwx.a;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WebWXLogoutUI$5
   implements View.OnClickListener
@@ -11,8 +15,14 @@ final class WebWXLogoutUI$5
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.WebWXLogoutUI", "logout webwx");
-    WebWXLogoutUI.f(this.rEh);
+    AppMethodBeat.i(26542);
+    paramView = new Intent();
+    paramView.putExtra("Chat_User", "filehelper");
+    paramView.putExtra("key_show_bottom_app_panel", true);
+    a.gmO.d(paramView, this.vuJ);
+    ab.d("MicroMsg.WebWXLogoutUI", "clicked file transfer bt, start filehelper");
+    this.vuJ.finish();
+    AppMethodBeat.o(26542);
   }
 }
 

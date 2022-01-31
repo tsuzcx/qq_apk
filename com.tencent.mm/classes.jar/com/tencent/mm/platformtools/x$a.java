@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 public abstract interface x$a
 {
-  public abstract void l(String paramString, Bitmap paramBitmap);
+  public abstract void m(String paramString, Bitmap paramBitmap);
 }
 
 

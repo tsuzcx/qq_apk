@@ -6,98 +6,147 @@ import android.support.v7.widget.RecyclerView.v;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
 final class s
   extends RecyclerView.a
 {
-  private LayoutInflater Lu;
-  final SparseArray<t> hjZ = new SparseArray();
-  private final ArrayList<?> hka;
+  final SparseArray<t> iVG;
+  private final ArrayList<?> iVH;
+  private LayoutInflater mInflater;
   
   s(ArrayList<?> paramArrayList)
   {
-    this.hka = paramArrayList;
+    AppMethodBeat.i(133553);
+    this.iVG = new SparseArray();
+    this.iVH = paramArrayList;
+    AppMethodBeat.o(133553);
   }
   
   public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
   {
-    t localt = (t)this.hjZ.get(paramInt);
-    if (localt == null) {
+    AppMethodBeat.i(133556);
+    t localt = (t)this.iVG.get(paramInt);
+    if (localt == null)
+    {
+      AppMethodBeat.o(133556);
       return null;
     }
     Context localContext = paramViewGroup.getContext();
-    if (this.Lu == null) {
-      this.Lu = LayoutInflater.from(localContext);
+    if (this.mInflater == null) {
+      this.mInflater = LayoutInflater.from(localContext);
     }
-    return localt.a(this.Lu, paramViewGroup);
+    paramViewGroup = localt.a(this.mInflater, paramViewGroup);
+    AppMethodBeat.o(133556);
+    return paramViewGroup;
   }
   
   public final void a(RecyclerView.v paramv, int paramInt)
   {
-    t localt = (t)this.hjZ.get(getItemViewType(paramInt));
+    AppMethodBeat.i(133557);
+    t localt = (t)this.iVG.get(getItemViewType(paramInt));
     if (localt != null) {
-      localt.a(paramv, mt(paramInt));
+      localt.c(paramv, pJ(paramInt));
     }
+    AppMethodBeat.o(133557);
   }
   
   public final void a(RecyclerView.v paramv, int paramInt, List paramList)
   {
-    t localt = (t)this.hjZ.get(getItemViewType(paramInt));
-    if (localt == null) {
+    AppMethodBeat.i(133558);
+    t localt = (t)this.iVG.get(getItemViewType(paramInt));
+    if (localt == null)
+    {
       super.a(paramv, paramInt, paramList);
-    }
-    while ((paramList.size() > 0) && (localt.a(paramv, mt(paramInt), paramList.get(0)))) {
+      AppMethodBeat.o(133558);
       return;
     }
-    localt.a(paramv, mt(paramInt));
+    if (paramList.size() > 0)
+    {
+      pJ(paramInt);
+      if (localt.b(paramv, paramList.get(0)))
+      {
+        AppMethodBeat.o(133558);
+        return;
+      }
+    }
+    localt.c(paramv, pJ(paramInt));
+    AppMethodBeat.o(133558);
   }
   
   public final int getItemCount()
   {
-    if (this.hka == null) {
+    AppMethodBeat.i(133561);
+    if (this.iVH == null)
+    {
+      AppMethodBeat.o(133561);
       return 0;
     }
-    return this.hka.size();
+    int i = this.iVH.size();
+    AppMethodBeat.o(133561);
+    return i;
   }
   
   public final long getItemId(int paramInt)
   {
-    Object localObject = mt(paramInt);
-    t localt = (t)this.hjZ.get(getItemViewType(paramInt));
-    if ((localObject == null) || (localt == null)) {
+    AppMethodBeat.i(133560);
+    Object localObject = pJ(paramInt);
+    t localt = (t)this.iVG.get(getItemViewType(paramInt));
+    if ((localObject == null) || (localt == null))
+    {
+      AppMethodBeat.o(133560);
       return 0L;
     }
-    return localt.aT(localObject);
+    long l = localt.bp(localObject);
+    AppMethodBeat.o(133560);
+    return l;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    Object localObject = mt(paramInt);
-    if (localObject == null) {
+    AppMethodBeat.i(133559);
+    Object localObject = pJ(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(133559);
       return 0;
     }
-    return localObject.getClass().hashCode();
+    paramInt = localObject.getClass().hashCode();
+    AppMethodBeat.o(133559);
+    return paramInt;
   }
   
   final boolean isEmpty()
   {
-    return (this.hka == null) || (bk.dk(this.hka));
+    AppMethodBeat.i(133554);
+    if ((this.iVH == null) || (bo.es(this.iVH)))
+    {
+      AppMethodBeat.o(133554);
+      return true;
+    }
+    AppMethodBeat.o(133554);
+    return false;
   }
   
-  final Object mt(int paramInt)
+  final Object pJ(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > getItemCount())) {
+    AppMethodBeat.i(133555);
+    if ((paramInt < 0) || (paramInt >= getItemCount()))
+    {
+      AppMethodBeat.o(133555);
       return null;
     }
-    return this.hka.get(paramInt);
+    Object localObject = this.iVH.get(paramInt);
+    AppMethodBeat.o(133555);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.s
  * JD-Core Version:    0.7.0.1
  */

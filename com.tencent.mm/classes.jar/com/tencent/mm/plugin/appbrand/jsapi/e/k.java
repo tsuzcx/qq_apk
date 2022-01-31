@@ -1,26 +1,32 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.plugin.appbrand.page.a.c.a;
+import com.tencent.mm.plugin.appbrand.s.m;
 
-public final class k
+final class k
 {
-  int giU = 0;
-  long grI = 0L;
+  long hNf = 0L;
+  c.a hNg;
   
-  public final void q(i parami)
+  final void A(i parami)
   {
-    ai.d(new k.1(this, parami));
+    AppMethodBeat.i(74749);
+    m.runOnUiThread(new k.1(this, parami));
+    AppMethodBeat.o(74749);
   }
   
-  public final void r(i parami)
+  final void aDg()
   {
-    ai.d(new k.2(this, parami));
+    AppMethodBeat.i(74750);
+    m.runOnUiThread(new k.2(this));
+    AppMethodBeat.o(74750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.e.k
  * JD-Core Version:    0.7.0.1
  */

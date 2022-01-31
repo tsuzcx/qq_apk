@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletCheckPwdUI$4
   implements View.OnClickListener
@@ -10,17 +11,19 @@ final class WalletCheckPwdUI$4
   
   public final void onClick(View paramView)
   {
-    
-    if (WalletCheckPwdUI.e(this.qDk) == 0)
+    AppMethodBeat.i(47335);
+    WalletCheckPwdUI.cVF();
+    if (WalletCheckPwdUI.e(this.uqg) == 0)
     {
-      WalletCheckPwdUI.a(this.qDk, 1);
-      WalletCheckPwdUI.f(this.qDk);
+      WalletCheckPwdUI.a(this.uqg, 1);
+      WalletCheckPwdUI.f(this.uqg);
     }
     for (;;)
     {
-      WalletCheckPwdUI.g(this.qDk);
+      WalletCheckPwdUI.g(this.uqg);
+      AppMethodBeat.o(47335);
       return;
-      WalletCheckPwdUI.a(this.qDk, 0);
+      WalletCheckPwdUI.a(this.uqg, 0);
     }
   }
 }

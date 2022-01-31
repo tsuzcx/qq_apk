@@ -1,52 +1,51 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
-import android.graphics.Point;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class n$a
 {
-  public static Bundle X(Bundle paramBundle)
+  public static Bundle ao(Bundle paramBundle)
   {
-    boolean bool = true;
+    AppMethodBeat.i(8253);
     int i = paramBundle.getInt("key_action", -1);
     Bundle localBundle = new Bundle();
-    if (!g.DN().Dc())
+    if (!g.RJ().QU())
     {
-      y.w("MicroMsg.WebViewUIBagHelper", "MM doBagLogic not ready");
+      ab.w("MicroMsg.WebViewUIBagHelper", "MM doBagLogic not ready");
+      AppMethodBeat.o(8253);
       return localBundle;
     }
-    y.i("MicroMsg.WebViewUIBagHelper", "MM doBagLogic action:%d", new Object[] { Integer.valueOf(i) });
+    if (9 != i) {
+      ab.i("MicroMsg.WebViewUIBagHelper", "MM doBagLogic action:%d", new Object[] { Integer.valueOf(i) });
+    }
     switch (i)
     {
     default: 
-      ai.d(new n.a.1(i, paramBundle));
+      y(i, paramBundle);
     }
     for (;;)
     {
+      AppMethodBeat.o(8253);
       return localBundle;
       paramBundle = paramBundle.getString("key_bag_id");
-      l locall = l.rss;
-      y.i("MicroMsg.WebViewBagMgr", "hasBagOfThePage targetId:%s currentId:%s", new Object[] { paramBundle, locall.rsw.id });
-      if ((!bk.bl(locall.rsw.url)) && (bk.pm(paramBundle).equals(locall.rsw.id))) {}
-      for (;;)
-      {
-        localBundle.putBoolean("key_has_bag", bool);
-        break;
-        bool = false;
-      }
-      locall = l.rss;
-      bool = paramBundle.getBoolean("key_in_webviewui_from_bag", false);
-      y.i("MicroMsg.WebViewBagMgr", "markInWebViewUIFromBag inWebViewUIFromBag:%b", new Object[] { Boolean.valueOf(bool) });
-      locall.rsv = bool;
+      localBundle.putBoolean("key_has_bag", l.vix.aiG(paramBundle));
       continue;
-      paramBundle = l.rss;
-      localBundle.putParcelable("key_current_bag_pos", new Point(paramBundle.rsw.rsC, paramBundle.rsw.rsB));
+      l.vix.oy(paramBundle.getBoolean("key_in_webviewui_from_bag", false));
+      continue;
+      localBundle.putParcelable("key_current_bag_pos", l.vix.dfk());
     }
+  }
+  
+  private static void y(int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(8254);
+    al.d(new n.a.1(paramInt, paramBundle));
+    AppMethodBeat.o(8254);
   }
 }
 

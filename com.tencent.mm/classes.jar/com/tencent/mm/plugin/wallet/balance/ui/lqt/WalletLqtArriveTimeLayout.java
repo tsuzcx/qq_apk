@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,11 +9,11 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.protocal.c.bjx;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bsw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -22,153 +23,188 @@ import java.util.List;
 public class WalletLqtArriveTimeLayout
   extends LinearLayout
 {
-  private View.OnClickListener laS = new WalletLqtArriveTimeLayout.1(this);
-  List<bjx> qhG = new ArrayList();
-  List<WeakReference<WalletLqtArriveTimeLayout.b>> qhH = new ArrayList();
-  bjx qhI;
-  private a qhJ;
-  boolean qhK = false;
+  private View.OnClickListener nyO;
+  List<bsw> tPb;
+  List<WeakReference<WalletLqtArriveTimeLayout.b>> tPc;
+  bsw tPd;
+  private WalletLqtArriveTimeLayout.a tPe;
+  boolean tPf;
   
   public WalletLqtArriveTimeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(45505);
+    this.tPb = new ArrayList();
+    this.tPc = new ArrayList();
+    this.tPf = false;
+    this.nyO = new WalletLqtArriveTimeLayout.1(this);
+    AppMethodBeat.o(45505);
   }
   
   public WalletLqtArriveTimeLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(45506);
+    this.tPb = new ArrayList();
+    this.tPc = new ArrayList();
+    this.tPf = false;
+    this.nyO = new WalletLqtArriveTimeLayout.1(this);
+    AppMethodBeat.o(45506);
   }
   
   private static void a(WalletLqtArriveTimeLayout.b paramb, boolean paramBoolean)
   {
-    paramb.Vd.setEnabled(paramBoolean);
-    paramb.haW.setEnabled(paramBoolean);
-    paramb.iIV.setEnabled(paramBoolean);
-    paramb.ipf.setEnabled(paramBoolean);
+    AppMethodBeat.i(45509);
+    paramb.VQ.setEnabled(paramBoolean);
+    paramb.iJG.setEnabled(paramBoolean);
+    paramb.kPB.setEnabled(paramBoolean);
+    paramb.iCk.setEnabled(paramBoolean);
+    AppMethodBeat.o(45509);
   }
   
-  private void bTu()
+  private void cRj()
   {
-    if (this.qhJ != null) {
-      this.qhJ.bTv();
+    AppMethodBeat.i(45507);
+    if (this.tPe != null) {
+      this.tPe.cRk();
     }
+    AppMethodBeat.o(45507);
   }
   
-  public final void Qi(String paramString)
+  public final void aeR(String paramString)
   {
-    y.i("MicroMsg.WalletLqtArriveTimeLayout", "input money: %s", new Object[] { paramString });
-    if ((this.qhG == null) || (this.qhG.isEmpty())) {
+    AppMethodBeat.i(45510);
+    ab.i("MicroMsg.WalletLqtArriveTimeLayout", "input money: %s", new Object[] { paramString });
+    if ((this.tPb == null) || (this.tPb.isEmpty()))
+    {
+      AppMethodBeat.o(45510);
       return;
     }
-    int j = e.gI(paramString, "100");
-    paramString = this.qhG.iterator();
-    int i = 0;
-    label54:
-    Object localObject;
-    if (paramString.hasNext())
+    this.tPd = null;
+    Object localObject1 = this.tPc.iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject = (bjx)paramString.next();
-      if ((((bjx)localObject).tDK < 0) || (j <= ((bjx)localObject).tDK)) {
-        break label177;
-      }
-      y.i("MicroMsg.WalletLqtArriveTimeLayout", "disable item: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((bjx)localObject).tDK) });
-      localObject = (WalletLqtArriveTimeLayout.b)((WeakReference)this.qhH.get(i)).get();
-      if (localObject != null)
+      localObject2 = (WeakReference)((Iterator)localObject1).next();
+      if (((WeakReference)localObject2).get() != null)
       {
-        ((WalletLqtArriveTimeLayout.b)localObject).Vd.setChecked(false);
-        a((WalletLqtArriveTimeLayout.b)localObject, false);
-        this.qhI = null;
-        bTu();
+        ((WalletLqtArriveTimeLayout.b)((WeakReference)localObject2).get()).VQ.setEnabled(true);
+        ((WalletLqtArriveTimeLayout.b)((WeakReference)localObject2).get()).VQ.setChecked(false);
       }
     }
-    for (;;)
+    int j = e.iL(paramString, "100");
+    paramString = this.tPb.iterator();
+    int i = 0;
+    if (paramString.hasNext())
     {
-      i += 1;
-      break label54;
-      break;
-      label177:
-      WalletLqtArriveTimeLayout.b localb = (WalletLqtArriveTimeLayout.b)((WeakReference)this.qhH.get(i)).get();
-      if (localb != null)
+      localObject1 = (bsw)paramString.next();
+      if ((((bsw)localObject1).xGy >= 0) && (j > ((bsw)localObject1).xGy))
       {
-        a(localb, true);
-        if (this.qhI == null)
+        ab.i("MicroMsg.WalletLqtArriveTimeLayout", "disable item: %s, %s", new Object[] { Integer.valueOf(i), Integer.valueOf(((bsw)localObject1).xGy) });
+        localObject1 = (WalletLqtArriveTimeLayout.b)((WeakReference)this.tPc.get(i)).get();
+        if (localObject1 != null)
         {
-          y.i("MicroMsg.WalletLqtArriveTimeLayout", "auto select type: %s", new Object[] { Integer.valueOf(((bjx)localObject).tAb) });
-          localb.Vd.setChecked(true);
-          this.qhI = ((bjx)localObject);
-          bTu();
+          ((WalletLqtArriveTimeLayout.b)localObject1).VQ.setChecked(false);
+          a((WalletLqtArriveTimeLayout.b)localObject1, false);
+          this.tPd = null;
+          cRj();
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localObject2 = (WalletLqtArriveTimeLayout.b)((WeakReference)this.tPc.get(i)).get();
+        if (localObject2 != null)
+        {
+          a((WalletLqtArriveTimeLayout.b)localObject2, true);
+          if (this.tPd == null)
+          {
+            ab.i("MicroMsg.WalletLqtArriveTimeLayout", "auto select type: %s", new Object[] { Integer.valueOf(((bsw)localObject1).xBD) });
+            ((WalletLqtArriveTimeLayout.b)localObject2).VQ.setChecked(true);
+            this.tPd = ((bsw)localObject1);
+            cRj();
+            if (i > 0) {
+              ((WalletLqtArriveTimeLayout.b)localObject2).iJG.setTextColor(ah.getContext().getResources().getColor(2131690139));
+            } else {
+              ((WalletLqtArriveTimeLayout.b)localObject2).cRl();
+            }
+          }
+          else
+          {
+            ((WalletLqtArriveTimeLayout.b)localObject2).cRl();
+          }
         }
       }
     }
+    AppMethodBeat.o(45510);
   }
   
-  public List<bjx> getRedeemTypeList()
+  public List<bsw> getRedeemTypeList()
   {
-    return this.qhG;
+    return this.tPb;
   }
   
-  public bjx getSelectRedeemType()
+  public bsw getSelectRedeemType()
   {
-    return this.qhI;
+    return this.tPd;
   }
   
-  public void setCallback(a parama)
+  public void setCallback(WalletLqtArriveTimeLayout.a parama)
   {
-    this.qhJ = parama;
+    this.tPe = parama;
   }
   
-  public void setRedeemTypeList(List<bjx> paramList)
+  public void setRedeemTypeList(List<bsw> paramList)
   {
-    this.qhK = true;
-    this.qhG.addAll(paramList);
-    this.qhH.clear();
+    AppMethodBeat.i(45508);
+    this.tPf = true;
+    this.tPb.addAll(paramList);
+    this.tPc.clear();
     removeAllViews();
     setVisibility(0);
-    if ((this.qhG != null) && (!this.qhG.isEmpty()))
+    if ((this.tPb != null) && (!this.tPb.isEmpty()))
     {
-      paramList = this.qhG.iterator();
+      paramList = this.tPb.iterator();
       int i = 0;
       if (paramList.hasNext())
       {
-        bjx localbjx = (bjx)paramList.next();
-        LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(a.g.wallet_lqt_save_arrive_time_item, this, false);
+        bsw localbsw = (bsw)paramList.next();
+        LinearLayout localLinearLayout = (LinearLayout)LayoutInflater.from(getContext()).inflate(2130971199, this, false);
         WalletLqtArriveTimeLayout.b localb = new WalletLqtArriveTimeLayout.b((byte)0);
-        localb.ipf = localLinearLayout;
-        localb.haW = ((TextView)localLinearLayout.findViewById(a.f.lqt_save_arrive_time_item_title));
-        localb.iIV = ((TextView)localLinearLayout.findViewById(a.f.lqt_save_arrive_time_item_desc));
-        localb.Vd = ((RadioButton)localLinearLayout.findViewById(a.f.lqt_save_arrive_time_rb));
-        localb.haW.setText(localbjx.tDI);
-        if (!bk.bl(localbjx.tDJ)) {
-          localb.iIV.setText(localbjx.tDJ);
+        localb.iCk = localLinearLayout;
+        localb.iJG = ((TextView)localLinearLayout.findViewById(2131829189));
+        localb.kPB = ((TextView)localLinearLayout.findViewById(2131829190));
+        localb.VQ = ((RadioButton)localLinearLayout.findViewById(2131829191));
+        ab.d("MicroMsg.WalletLqtArriveTimeLayout", "arrive wording: %s", new Object[] { localbsw.xGw });
+        localb.iJG.setText(localbsw.xGw);
+        if (!bo.isNullOrNil(localbsw.xGx)) {
+          localb.kPB.setText(localbsw.xGx);
         }
         for (;;)
         {
           if (i == 0)
           {
-            localb.Vd.setChecked(true);
-            this.qhI = localbjx;
+            localb.VQ.setChecked(true);
+            this.tPd = localbsw;
           }
           localb.index = i;
           localLinearLayout.setTag(localb);
-          localLinearLayout.setOnClickListener(this.laS);
-          this.qhH.add(new WeakReference(localb));
+          localLinearLayout.setOnClickListener(this.nyO);
+          this.tPc.add(new WeakReference(localb));
           addView(localLinearLayout);
           i += 1;
           break;
-          localb.iIV.setVisibility(8);
+          localb.kPB.setVisibility(8);
         }
       }
     }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void bTv();
+    AppMethodBeat.o(45508);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtArriveTimeLayout
  * JD-Core Version:    0.7.0.1
  */

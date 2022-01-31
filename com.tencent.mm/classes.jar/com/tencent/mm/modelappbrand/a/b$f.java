@@ -5,9 +5,7 @@ import android.graphics.Bitmap;
 public abstract interface b$f
   extends c
 {
-  public abstract String pU();
-  
-  public abstract Bitmap q(Bitmap paramBitmap);
+  public abstract Bitmap x(Bitmap paramBitmap);
 }
 
 

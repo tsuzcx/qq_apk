@@ -6,155 +6,95 @@ import java.util.List;
 
 final class StaggeredGridLayoutManager$LazySpanLookup
 {
-  List<StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem> akE;
+  List<StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem> amX;
   int[] mData;
   
-  public final void a(StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem paramFullSpanItem)
+  private void aJ(int paramInt1, int paramInt2)
   {
-    if (this.akE == null) {
-      this.akE = new ArrayList();
-    }
-    int j = this.akE.size();
-    int i = 0;
-    while (i < j)
-    {
-      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i);
-      if (localFullSpanItem.mPosition == paramFullSpanItem.mPosition) {
-        this.akE.remove(i);
-      }
-      if (localFullSpanItem.mPosition >= paramFullSpanItem.mPosition)
-      {
-        this.akE.add(i, paramFullSpanItem);
-        return;
-      }
-      i += 1;
-    }
-    this.akE.add(paramFullSpanItem);
-  }
-  
-  final void ax(int paramInt1, int paramInt2)
-  {
-    if ((this.mData == null) || (paramInt1 >= this.mData.length)) {}
-    do
-    {
+    if (this.amX == null) {
       return;
-      ck(paramInt1 + paramInt2);
-      System.arraycopy(this.mData, paramInt1 + paramInt2, this.mData, paramInt1, this.mData.length - paramInt1 - paramInt2);
-      Arrays.fill(this.mData, this.mData.length - paramInt2, this.mData.length, -1);
-    } while (this.akE == null);
-    int i = this.akE.size() - 1;
-    label87:
+    }
+    int i = this.amX.size() - 1;
+    label20:
     StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem;
     if (i >= 0)
     {
-      localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i);
+      localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i);
       if (localFullSpanItem.mPosition >= paramInt1)
       {
         if (localFullSpanItem.mPosition >= paramInt1 + paramInt2) {
-          break label144;
+          break label77;
         }
-        this.akE.remove(i);
+        this.amX.remove(i);
       }
     }
     for (;;)
     {
       i -= 1;
-      break label87;
+      break label20;
       break;
-      label144:
+      label77:
       localFullSpanItem.mPosition -= paramInt2;
     }
   }
   
-  final void ay(int paramInt1, int paramInt2)
+  private void aL(int paramInt1, int paramInt2)
   {
-    if ((this.mData == null) || (paramInt1 >= this.mData.length)) {}
+    if (this.amX == null) {}
     for (;;)
     {
       return;
-      ck(paramInt1 + paramInt2);
-      System.arraycopy(this.mData, paramInt1, this.mData, paramInt1 + paramInt2, this.mData.length - paramInt1 - paramInt2);
-      Arrays.fill(this.mData, paramInt1, paramInt1 + paramInt2, -1);
-      if (this.akE != null)
-      {
-        int i = this.akE.size() - 1;
-        while (i >= 0)
-        {
-          StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i);
-          if (localFullSpanItem.mPosition >= paramInt1) {
-            localFullSpanItem.mPosition += paramInt2;
-          }
-          i -= 1;
-        }
-      }
-    }
-  }
-  
-  final int ci(int paramInt)
-  {
-    if (this.akE != null)
-    {
-      int i = this.akE.size() - 1;
+      int i = this.amX.size() - 1;
       while (i >= 0)
       {
-        if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i)).mPosition >= paramInt) {
-          this.akE.remove(i);
+        StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i);
+        if (localFullSpanItem.mPosition >= paramInt1) {
+          localFullSpanItem.mPosition += paramInt2;
         }
         i -= 1;
       }
     }
-    return cj(paramInt);
   }
   
-  final int cj(int paramInt)
+  private int cA(int paramInt)
   {
-    if (this.mData == null) {
+    if (this.amX == null) {
       return -1;
     }
-    if (paramInt >= this.mData.length) {
-      return -1;
+    StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = cB(paramInt);
+    if (localFullSpanItem != null) {
+      this.amX.remove(localFullSpanItem);
     }
-    StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem;
-    int i;
-    if (this.akE != null)
-    {
-      localFullSpanItem = cl(paramInt);
-      if (localFullSpanItem != null) {
-        this.akE.remove(localFullSpanItem);
-      }
-      int j = this.akE.size();
-      i = 0;
-      if (i >= j) {
-        break label178;
-      }
-      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i)).mPosition < paramInt) {}
+    int j = this.amX.size();
+    int i = 0;
+    if (i < j) {
+      if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i)).mPosition < paramInt) {}
     }
     for (;;)
     {
       if (i != -1)
       {
-        localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i);
-        this.akE.remove(i);
-      }
-      for (i = localFullSpanItem.mPosition;; i = -1)
-      {
-        if (i != -1) {
-          break label162;
-        }
-        Arrays.fill(this.mData, paramInt, this.mData.length, -1);
-        return this.mData.length;
+        localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i);
+        this.amX.remove(i);
+        return localFullSpanItem.mPosition;
         i += 1;
         break;
       }
-      label162:
-      Arrays.fill(this.mData, paramInt, i + 1, -1);
-      return i + 1;
-      label178:
+      return -1;
       i = -1;
     }
   }
   
-  final void ck(int paramInt)
+  private int cy(int paramInt)
+  {
+    int i = this.mData.length;
+    while (i <= paramInt) {
+      i *= 2;
+    }
+    return i;
+  }
+  
+  private void cz(int paramInt)
   {
     if (this.mData == null)
     {
@@ -165,30 +105,80 @@ final class StaggeredGridLayoutManager$LazySpanLookup
       return;
     }
     int[] arrayOfInt = this.mData;
-    int i = this.mData.length;
-    while (i <= paramInt) {
-      i *= 2;
-    }
-    this.mData = new int[i];
+    this.mData = new int[cy(paramInt)];
     System.arraycopy(arrayOfInt, 0, this.mData, 0, arrayOfInt.length);
     Arrays.fill(this.mData, arrayOfInt.length, this.mData.length, -1);
   }
   
-  public final StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem cl(int paramInt)
+  final void a(int paramInt, StaggeredGridLayoutManager.b paramb)
+  {
+    cz(paramInt);
+    this.mData[paramInt] = paramb.mIndex;
+  }
+  
+  public final void a(StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem paramFullSpanItem)
+  {
+    if (this.amX == null) {
+      this.amX = new ArrayList();
+    }
+    int j = this.amX.size();
+    int i = 0;
+    while (i < j)
+    {
+      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i);
+      if (localFullSpanItem.mPosition == paramFullSpanItem.mPosition) {
+        this.amX.remove(i);
+      }
+      if (localFullSpanItem.mPosition >= paramFullSpanItem.mPosition)
+      {
+        this.amX.add(i, paramFullSpanItem);
+        return;
+      }
+      i += 1;
+    }
+    this.amX.add(paramFullSpanItem);
+  }
+  
+  final void aI(int paramInt1, int paramInt2)
+  {
+    if ((this.mData == null) || (paramInt1 >= this.mData.length)) {
+      return;
+    }
+    cz(paramInt1 + paramInt2);
+    int[] arrayOfInt1 = this.mData;
+    int[] arrayOfInt2 = this.mData;
+    System.arraycopy(arrayOfInt1, paramInt1 + paramInt2, arrayOfInt2, paramInt1, arrayOfInt2.length - paramInt1 - paramInt2);
+    Arrays.fill(this.mData, this.mData.length - paramInt2, this.mData.length, -1);
+    aJ(paramInt1, paramInt2);
+  }
+  
+  final void aK(int paramInt1, int paramInt2)
+  {
+    if ((this.mData == null) || (paramInt1 >= this.mData.length)) {
+      return;
+    }
+    cz(paramInt1 + paramInt2);
+    int[] arrayOfInt = this.mData;
+    System.arraycopy(arrayOfInt, paramInt1, arrayOfInt, paramInt1 + paramInt2, this.mData.length - paramInt1 - paramInt2);
+    Arrays.fill(this.mData, paramInt1, paramInt1 + paramInt2, -1);
+    aL(paramInt1, paramInt2);
+  }
+  
+  public final StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem cB(int paramInt)
   {
     Object localObject;
-    if (this.akE == null)
+    if (this.amX == null)
     {
       localObject = null;
       return localObject;
     }
-    int i = this.akE.size() - 1;
+    int i = this.amX.size() - 1;
     for (;;)
     {
       if (i < 0) {
         break label61;
       }
-      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i);
+      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i);
       localObject = localFullSpanItem;
       if (localFullSpanItem.mPosition == paramInt) {
         break;
@@ -204,25 +194,66 @@ final class StaggeredGridLayoutManager$LazySpanLookup
     if (this.mData != null) {
       Arrays.fill(this.mData, -1);
     }
-    this.akE = null;
+    this.amX = null;
+  }
+  
+  final int cv(int paramInt)
+  {
+    if (this.amX != null)
+    {
+      int i = this.amX.size() - 1;
+      while (i >= 0)
+      {
+        if (((StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i)).mPosition >= paramInt) {
+          this.amX.remove(i);
+        }
+        i -= 1;
+      }
+    }
+    return cw(paramInt);
+  }
+  
+  final int cw(int paramInt)
+  {
+    if (this.mData == null) {}
+    while (paramInt >= this.mData.length) {
+      return -1;
+    }
+    int i = cA(paramInt);
+    if (i == -1)
+    {
+      int[] arrayOfInt = this.mData;
+      Arrays.fill(arrayOfInt, paramInt, arrayOfInt.length, -1);
+      return this.mData.length;
+    }
+    Arrays.fill(this.mData, paramInt, i + 1, -1);
+    return i + 1;
+  }
+  
+  final int cx(int paramInt)
+  {
+    if ((this.mData == null) || (paramInt >= this.mData.length)) {
+      return -1;
+    }
+    return this.mData[paramInt];
   }
   
   public final StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem p(int paramInt1, int paramInt2, int paramInt3)
   {
     Object localObject;
-    if (this.akE == null)
+    if (this.amX == null)
     {
       localObject = null;
       return localObject;
     }
-    int j = this.akE.size();
+    int j = this.amX.size();
     int i = 0;
     for (;;)
     {
       if (i >= j) {
         break label112;
       }
-      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.akE.get(i);
+      StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem localFullSpanItem = (StaggeredGridLayoutManager.LazySpanLookup.FullSpanItem)this.amX.get(i);
       if (localFullSpanItem.mPosition >= paramInt2) {
         return null;
       }
@@ -233,11 +264,11 @@ final class StaggeredGridLayoutManager$LazySpanLookup
           break;
         }
         localObject = localFullSpanItem;
-        if (localFullSpanItem.akF == paramInt3) {
+        if (localFullSpanItem.amY == paramInt3) {
           break;
         }
         localObject = localFullSpanItem;
-        if (localFullSpanItem.akH) {
+        if (localFullSpanItem.ana) {
           break;
         }
       }

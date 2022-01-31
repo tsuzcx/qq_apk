@@ -5,36 +5,43 @@ import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.ComponentName;
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.walletlock.a.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.List;
 
 public final class d
   implements b.b
 {
-  private static d qQS = null;
+  private static d uGa = null;
   
-  public static d bYu()
+  public static d cYf()
   {
-    if (qQS == null) {
-      qQS = new d();
+    AppMethodBeat.i(51691);
+    if (uGa == null) {
+      uGa = new d();
     }
-    return qQS;
+    d locald = uGa;
+    AppMethodBeat.o(51691);
+    return locald;
   }
   
-  public final boolean Q(Activity paramActivity)
+  public final boolean al(Activity paramActivity)
   {
-    Object localObject = ((ActivityManager.RunningTaskInfo)((ActivityManager)ae.getContext().getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
+    AppMethodBeat.i(51690);
+    Object localObject = ((ActivityManager.RunningTaskInfo)((ActivityManager)ah.getContext().getSystemService("activity")).getRunningTasks(1).get(0)).topActivity;
     if (localObject != null) {}
     for (localObject = ((ComponentName)localObject).getClassName();; localObject = "")
     {
-      y.d("MicroMsg.WalletGuardFilter", "coveredPage: " + (String)localObject);
-      if ((localObject == null) || (((String)localObject).equals(paramActivity.getClass().getName())) || (!((String)localObject).contains(ae.cqQ())) || ((!((String)localObject).contains("plugin.mall")) && (!((String)localObject).contains("plugin.card")) && (!((String)localObject).contains("plugin.wallet")) && (!((String)localObject).contains("plugin.wallet_index")) && (!((String)localObject).contains("plugin.webview")) && (!((String)localObject).contains("plugin.offline")) && (!((String)localObject).contains("plugin.recharge")))) {
+      ab.d("MicroMsg.WalletGuardFilter", "coveredPage: ".concat(String.valueOf(localObject)));
+      if ((localObject == null) || (((String)localObject).equals(paramActivity.getClass().getName())) || (!((String)localObject).contains(ah.dsO())) || ((!((String)localObject).contains("plugin.mall")) && (!((String)localObject).contains("plugin.card")) && (!((String)localObject).contains("plugin.wallet")) && (!((String)localObject).contains("plugin.wallet_index")) && (!((String)localObject).contains("plugin.webview")) && (!((String)localObject).contains("plugin.offline")) && (!((String)localObject).contains("plugin.recharge")))) {
         break;
       }
+      AppMethodBeat.o(51690);
       return false;
     }
+    AppMethodBeat.o(51690);
     return true;
   }
 }

@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 abstract class CharsetRecog_mbcs
@@ -121,15 +122,21 @@ abstract class CharsetRecog_mbcs
     
     CharsetMatch match(CharsetDetector paramCharsetDetector)
     {
+      AppMethodBeat.i(104763);
       int i = match(paramCharsetDetector, commonChars);
-      if (i == 0) {
+      if (i == 0)
+      {
+        AppMethodBeat.o(104763);
         return null;
       }
-      return new CharsetMatch(paramCharsetDetector, this, i);
+      paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+      AppMethodBeat.o(104763);
+      return paramCharsetDetector;
     }
     
     boolean nextChar(CharsetRecog_mbcs.iteratedChar paramiteratedChar, CharsetDetector paramCharsetDetector)
     {
+      AppMethodBeat.i(104762);
       paramiteratedChar.error = false;
       int i = paramiteratedChar.nextByte(paramCharsetDetector);
       paramiteratedChar.charValue = i;
@@ -138,6 +145,7 @@ abstract class CharsetRecog_mbcs
       }
       while (!paramiteratedChar.done)
       {
+        AppMethodBeat.o(104762);
         return true;
         if (i > 128)
         {
@@ -162,6 +170,7 @@ abstract class CharsetRecog_mbcs
           }
         }
       }
+      AppMethodBeat.o(104762);
       return false;
     }
   }

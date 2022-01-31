@@ -2,7 +2,8 @@ package com.tencent.mm.view;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.bt.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bs.b;
 
 final class a$6
   implements View.OnClickListener
@@ -11,12 +12,15 @@ final class a$6
   
   public final void onClick(View paramView)
   {
-    if (this.wvE.getTextEditView().getVisibility() == 0)
+    AppMethodBeat.i(116377);
+    if (this.AQD.getTextEditView().getVisibility() == 0)
     {
-      this.wvE.getPresenter().coG();
+      this.AQD.getPresenter().dqb();
+      AppMethodBeat.o(116377);
       return;
     }
-    this.wvE.getPresenter().rX();
+    this.AQD.getPresenter().onExit();
+    AppMethodBeat.o(116377);
   }
 }
 

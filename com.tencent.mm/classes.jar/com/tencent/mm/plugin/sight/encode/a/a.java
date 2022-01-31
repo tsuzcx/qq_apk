@@ -4,13 +4,13 @@ import android.hardware.Camera.PreviewCallback;
 
 public abstract interface a
 {
-  public abstract long bBA();
+  public abstract boolean Cp();
   
-  public abstract a.a bBB();
+  public abstract long cmZ();
   
-  public abstract Camera.PreviewCallback bBC();
+  public abstract a.a cna();
   
-  public abstract boolean bBz();
+  public abstract Camera.PreviewCallback cnb();
   
   public abstract int getDuration();
   
@@ -18,7 +18,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.a.a
  * JD-Core Version:    0.7.0.1
  */

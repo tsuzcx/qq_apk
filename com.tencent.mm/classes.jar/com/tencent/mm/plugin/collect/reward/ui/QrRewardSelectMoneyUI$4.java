@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.collect.reward.a.a.a;
 import com.tencent.mm.plugin.collect.reward.a.f;
-import com.tencent.mm.protocal.c.nn;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.qp;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class QrRewardSelectMoneyUI$4
   implements a.a
 {
   QrRewardSelectMoneyUI$4(QrRewardSelectMoneyUI paramQrRewardSelectMoneyUI, f paramf) {}
   
-  public final void i(m paramm)
+  public final void h(m paramm)
   {
-    y.e("MicroMsg.QrRewardSelectMoneyUI", "scan response error");
-    if (!bk.bl(this.iJA.iIf.iHr)) {
-      Toast.makeText(this.iJz, this.iJA.iIf.iHr, 1).show();
+    AppMethodBeat.i(41135);
+    ab.e("MicroMsg.QrRewardSelectMoneyUI", "scan response error");
+    if (!bo.isNullOrNil(this.kQg.kOK.kNv)) {
+      Toast.makeText(this.kQf, this.kQg.kOK.kNv, 1).show();
     }
-    this.iJz.finish();
+    this.kQf.finish();
+    AppMethodBeat.o(41135);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.ui.QrRewardSelectMoneyUI.4
  * JD-Core Version:    0.7.0.1
  */

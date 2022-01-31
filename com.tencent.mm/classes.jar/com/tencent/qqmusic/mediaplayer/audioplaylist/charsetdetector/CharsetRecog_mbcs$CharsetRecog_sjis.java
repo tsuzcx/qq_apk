@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_mbcs$CharsetRecog_sjis
   extends CharsetRecog_mbcs
 {
@@ -17,38 +19,51 @@ class CharsetRecog_mbcs$CharsetRecog_sjis
   
   CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104736);
     int i = match(paramCharsetDetector, commonChars);
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(104736);
       return null;
     }
-    return new CharsetMatch(paramCharsetDetector, this, i);
+    paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+    AppMethodBeat.o(104736);
+    return paramCharsetDetector;
   }
   
   boolean nextChar(CharsetRecog_mbcs.iteratedChar paramiteratedChar, CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104735);
     paramiteratedChar.error = false;
     int i = paramiteratedChar.nextByte(paramCharsetDetector);
     paramiteratedChar.charValue = i;
-    if (i < 0) {}
-    int j;
-    do
+    if (i < 0)
     {
+      AppMethodBeat.o(104735);
       return false;
-      if ((i <= 127) || ((i > 160) && (i <= 223))) {
-        return true;
-      }
-      j = paramiteratedChar.nextByte(paramCharsetDetector);
-    } while (j < 0);
+    }
+    if ((i <= 127) || ((i > 160) && (i <= 223)))
+    {
+      AppMethodBeat.o(104735);
+      return true;
+    }
+    int j = paramiteratedChar.nextByte(paramCharsetDetector);
+    if (j < 0)
+    {
+      AppMethodBeat.o(104735);
+      return false;
+    }
     paramiteratedChar.charValue = (i << 8 | j);
     if (((j < 64) || (j > 127)) && ((j < 128) || (j > 255))) {
       paramiteratedChar.error = true;
     }
+    AppMethodBeat.o(104735);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_mbcs.CharsetRecog_sjis
  * JD-Core Version:    0.7.0.1
  */

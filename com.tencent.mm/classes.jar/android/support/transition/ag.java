@@ -1,14 +1,32 @@
 package android.support.transition;
 
-import android.view.ViewGroup;
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.TypeEvaluator;
+import android.graphics.Matrix;
 
-public abstract class ag
+final class ag
 {
-  public abstract long a(ViewGroup paramViewGroup, Transition paramTransition, ai paramai1, ai paramai2);
+  static Animator a(Animator paramAnimator1, Animator paramAnimator2)
+  {
+    if (paramAnimator1 == null) {
+      return paramAnimator2;
+    }
+    if (paramAnimator2 == null) {
+      return paramAnimator1;
+    }
+    AnimatorSet localAnimatorSet = new AnimatorSet();
+    localAnimatorSet.playTogether(new Animator[] { paramAnimator1, paramAnimator2 });
+    return localAnimatorSet;
+  }
   
-  public abstract void c(ai paramai);
-  
-  public abstract String[] getPropagationProperties();
+  static final class a
+    implements TypeEvaluator<Matrix>
+  {
+    final Matrix re = new Matrix();
+    final float[] tM = new float[9];
+    final float[] tN = new float[9];
+  }
 }
 
 

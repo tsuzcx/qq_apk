@@ -1,22 +1,26 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class n$3
   implements c.a
 {
   n$3(n paramn) {}
   
-  public final void bjj()
+  public final void XF()
   {
-    y.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "onPcmReady");
-    if (this.mkk.mjn.mkz != d.c.miH)
+    AppMethodBeat.i(76631);
+    ab.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "onPcmReady");
+    if (this.oJA.Xw() != d.c.oIN)
     {
-      y.w("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "not MediaStatus.Initialized, maybe canceled by user");
+      ab.w("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "not MediaStatus.Initialized, maybe canceled by user");
+      AppMethodBeat.o(76631);
       return;
     }
-    this.mkk.mkb.start();
-    this.mkk.mjn.a(d.c.miA);
+    this.oJA.oJw.start();
+    this.oJA.fcm.a(d.c.oIG);
+    AppMethodBeat.o(76631);
   }
 }
 

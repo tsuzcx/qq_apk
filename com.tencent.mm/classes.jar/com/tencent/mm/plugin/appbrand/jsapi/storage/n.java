@@ -1,70 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.i;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.sdk.platformtools.bk;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.sdk.g.d;
 
 public class n
-  extends a
+  extends a<h>
 {
   public static final int CTRL_INDEX = 16;
   public static final String NAME = "setStorage";
+  private n.a iaD;
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public n()
   {
-    String str1 = paramJSONObject.optString("key");
-    String str2 = paramJSONObject.optString("data");
-    paramJSONObject = paramJSONObject.optString("dataType");
-    if (bk.bl(str1))
-    {
-      paramc.C(paramInt, h("fail:key is empty", null));
-      return;
-    }
-    String str3 = o(paramc);
-    if (bk.bl(str3))
-    {
-      paramc.C(paramInt, h("fail:appID is empty", null));
-      return;
-    }
-    int i;
-    int k;
-    if (!(paramc instanceof p))
-    {
-      i = 1048576;
-      k = str1.length();
-      if (str2 != null) {
-        break label148;
-      }
-    }
-    label148:
-    for (int j = 0;; j = str2.length())
-    {
-      if (j + k <= i) {
-        break label158;
-      }
-      paramc.C(paramInt, h("fail:entry size limit reached", null));
-      return;
-      i = ((p)paramc).getRuntime().aaa().fQq.fOE;
-      break;
-    }
-    label158:
-    JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
-    localJsApiSetStorageTask.appId = str3;
-    localJsApiSetStorageTask.B(str1, str2, paramJSONObject);
-    localJsApiSetStorageTask.gfD = new n.1(this, paramc, paramInt, localJsApiSetStorageTask);
-    localJsApiSetStorageTask.ahC();
-    AppBrandMainProcessService.a(localJsApiSetStorageTask);
+    AppMethodBeat.i(102075);
+    this.iaD = new n.1(this);
+    AppMethodBeat.o(102075);
   }
   
-  protected String o(c paramc)
+  private void a(h paramh, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, n.a parama)
   {
-    return paramc.getAppId();
+    AppMethodBeat.i(102076);
+    d.post(new n.2(this, paramh, paramInt2, paramString4, paramString1, paramString2, paramString3, parama, paramInt1, System.currentTimeMillis()), "JsApiSetStorage");
+    AppMethodBeat.o(102076);
+  }
+  
+  private void b(h paramh, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, n.a parama)
+  {
+    AppMethodBeat.i(102077);
+    long l = System.currentTimeMillis();
+    JsApiSetStorageTask localJsApiSetStorageTask = new JsApiSetStorageTask();
+    localJsApiSetStorageTask.appId = paramString4;
+    localJsApiSetStorageTask.ias = paramInt2;
+    localJsApiSetStorageTask.E(paramString1, paramString2, paramString3);
+    localJsApiSetStorageTask.hxp = new n.3(this, parama, localJsApiSetStorageTask, paramh, paramInt1, paramString1, paramString2, l);
+    localJsApiSetStorageTask.aBj();
+    AppBrandMainProcessService.a(localJsApiSetStorageTask);
+    AppMethodBeat.o(102077);
+  }
+  
+  protected String c(h paramh)
+  {
+    AppMethodBeat.i(102078);
+    paramh = paramh.getRuntime().mAppId;
+    AppMethodBeat.o(102078);
+    return paramh;
   }
 }
 

@@ -1,8 +1,11 @@
 package com.tencent.mm.plugin.emojicapture.ui;
 
+import a.l;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class EmojiCaptureBeautySettingUI$a
   implements MenuItem.OnMenuItemClickListener
 {
@@ -10,7 +13,9 @@ final class EmojiCaptureBeautySettingUI$a
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.joe.finish();
+    AppMethodBeat.i(2856);
+    this.lwW.finish();
+    AppMethodBeat.o(2856);
     return false;
   }
 }

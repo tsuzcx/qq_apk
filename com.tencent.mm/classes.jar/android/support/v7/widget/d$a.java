@@ -1,50 +1,22 @@
 package android.support.v7.widget;
 
-import android.content.pm.ResolveInfo;
-import java.math.BigDecimal;
-
-public final class d$a
-  implements Comparable<a>
+abstract interface d$a
 {
-  public final ResolveInfo resolveInfo;
-  public float weight;
+  public abstract void K(int paramInt1, int paramInt2);
   
-  public d$a(ResolveInfo paramResolveInfo)
-  {
-    this.resolveInfo = paramResolveInfo;
-  }
+  public abstract void L(int paramInt1, int paramInt2);
   
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (a)paramObject;
-    } while (Float.floatToIntBits(this.weight) == Float.floatToIntBits(paramObject.weight));
-    return false;
-  }
+  public abstract void M(int paramInt1, int paramInt2);
   
-  public final int hashCode()
-  {
-    return Float.floatToIntBits(this.weight) + 31;
-  }
+  public abstract void N(int paramInt1, int paramInt2);
   
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[");
-    localStringBuilder.append("resolveInfo:").append(this.resolveInfo.toString());
-    localStringBuilder.append("; weight:").append(new BigDecimal(this.weight));
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
-  }
+  public abstract RecyclerView.v bn(int paramInt);
+  
+  public abstract void d(int paramInt1, int paramInt2, Object paramObject);
+  
+  public abstract void d(d.b paramb);
+  
+  public abstract void e(d.b paramb);
 }
 
 

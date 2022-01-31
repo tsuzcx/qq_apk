@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.nfc.hce;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$3
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class a$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.HCEActivityMgr", "alvinluo user click cancel button of NFC tips dialog.");
-    a.a(this.gyo, "system NFC switch not opened");
+    AppMethodBeat.i(137887);
+    ab.i("MicroMsg.HCEActivityMgr", "alvinluo user click cancel button of NFC tips dialog.");
+    a.a(this.hUN, "system NFC switch not opened");
+    AppMethodBeat.o(137887);
   }
 }
 

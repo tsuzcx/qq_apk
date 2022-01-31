@@ -14,47 +14,48 @@ import android.view.KeyEvent;
 import android.view.View.MeasureSpec;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.e.b.a;
-import com.tencent.mm.ui.e.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.f.b.a;
+import com.tencent.mm.ui.f.b.c;
 
 public class MultiTouchImageView
   extends ImageView
   implements g
 {
-  private float aqM = 1.0F;
-  protected Matrix aqz = new Matrix();
+  protected Matrix asS;
+  private float atf;
   private int imageHeight;
   private int imageWidth;
-  private boolean isInited = false;
-  private int jsq;
-  private int jsr;
-  protected ah mHandler = new ah();
-  protected Bitmap oJZ = null;
-  private boolean oYK = true;
-  private MultiTouchImageView.a oZh;
-  private final float[] tz = new float[9];
-  protected Matrix uZJ = new Matrix();
-  private final Matrix uZK = new Matrix();
-  int uZL = -1;
-  int uZM = -1;
-  private float uZN = 0.0F;
-  private float uZO = 0.0F;
-  private float uZP = 0.0F;
-  private float uZQ;
-  private boolean uZR = false;
-  private float uZS = 2.0F;
-  private float uZT = 0.75F;
-  private float uZU = 20.0F;
-  private boolean uZV = false;
-  public boolean uZW = false;
-  public boolean uZX = false;
-  private float uZY;
-  private float uZZ;
-  float vaa = 0.0F;
-  public boolean vab = false;
-  public Drawable vac;
+  private boolean isInited;
+  private boolean jeA;
+  private int jgD;
+  private int jgE;
+  protected ak mHandler;
+  private MultiTouchImageView.a rRA;
+  private boolean rRd;
+  protected Bitmap rzS;
+  private final float[] uA;
+  protected Matrix zoa;
+  private final Matrix zob;
+  int zoc;
+  int zod;
+  private float zoe;
+  private float zof;
+  private float zog;
+  private float zoh;
+  private float zoi;
+  private float zoj;
+  private float zok;
+  private boolean zol;
+  public boolean zom;
+  public boolean zon;
+  private float zoo;
+  private float zop;
+  float zoq;
+  public boolean zor;
+  public Drawable zos;
   
   public MultiTouchImageView(Context paramContext, int paramInt1, int paramInt2)
   {
@@ -64,10 +65,35 @@ public class MultiTouchImageView
   public MultiTouchImageView(Context paramContext, int paramInt1, int paramInt2, MultiTouchImageView.a parama)
   {
     super(paramContext);
+    AppMethodBeat.i(106977);
+    this.zoa = new Matrix();
+    this.asS = new Matrix();
+    this.zob = new Matrix();
+    this.uA = new float[9];
+    this.rzS = null;
+    this.zoc = -1;
+    this.zod = -1;
+    this.zoe = 0.0F;
+    this.zof = 0.0F;
+    this.zog = 0.0F;
+    this.isInited = false;
+    this.jeA = false;
+    this.zoi = 2.0F;
+    this.zoj = 0.75F;
+    this.zok = 20.0F;
+    this.zol = false;
+    this.zom = false;
+    this.zon = false;
+    this.rRd = true;
+    this.mHandler = new ak();
+    this.atf = 1.0F;
+    this.zoq = 0.0F;
+    this.zor = false;
     this.imageHeight = paramInt2;
     this.imageWidth = paramInt1;
-    this.oZh = parama;
+    this.rRA = parama;
     init();
+    AppMethodBeat.o(106977);
   }
   
   public MultiTouchImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -78,69 +104,102 @@ public class MultiTouchImageView
   private MultiTouchImageView(Context paramContext, AttributeSet paramAttributeSet, byte paramByte)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(106978);
+    this.zoa = new Matrix();
+    this.asS = new Matrix();
+    this.zob = new Matrix();
+    this.uA = new float[9];
+    this.rzS = null;
+    this.zoc = -1;
+    this.zod = -1;
+    this.zoe = 0.0F;
+    this.zof = 0.0F;
+    this.zog = 0.0F;
+    this.isInited = false;
+    this.jeA = false;
+    this.zoi = 2.0F;
+    this.zoj = 0.75F;
+    this.zok = 20.0F;
+    this.zol = false;
+    this.zom = false;
+    this.zon = false;
+    this.rRd = true;
+    this.mHandler = new ak();
+    this.atf = 1.0F;
+    this.zoq = 0.0F;
+    this.zor = false;
     this.imageHeight = 0;
     this.imageWidth = 0;
     init();
+    AppMethodBeat.o(106978);
   }
   
-  private void Y(boolean paramBoolean1, boolean paramBoolean2)
+  private void aj(boolean paramBoolean1, boolean paramBoolean2)
   {
     float f2 = 0.0F;
-    if ((this.oJZ == null) && (!this.vab)) {}
-    while ((this.vac == null) && (this.vab)) {
+    AppMethodBeat.i(106986);
+    if ((this.rzS == null) && (!this.zor))
+    {
+      AppMethodBeat.o(106986);
+      return;
+    }
+    if ((this.zos == null) && (this.zor))
+    {
+      AppMethodBeat.o(106986);
       return;
     }
     Matrix localMatrix = getImageViewMatrix();
     RectF localRectF;
     float f1;
     float f4;
-    if (this.vab)
+    if (this.zor)
     {
-      localRectF = new RectF(0.0F, 0.0F, this.vac.getIntrinsicWidth(), this.vac.getIntrinsicHeight());
+      localRectF = new RectF(0.0F, 0.0F, this.zos.getIntrinsicWidth(), this.zos.getIntrinsicHeight());
       localMatrix.mapRect(localRectF);
       f1 = localRectF.height();
       f4 = localRectF.width();
       if (!paramBoolean2) {
-        break label275;
+        break label296;
       }
-      if (f1 >= this.jsr) {
-        break label226;
+      if (f1 >= this.jgE) {
+        break label247;
       }
-      f1 = (this.jsr - f1) / 2.0F - localRectF.top;
+      f1 = (this.jgE - f1) / 2.0F - localRectF.top;
     }
     for (;;)
     {
-      label123:
+      label139:
       if (paramBoolean1) {
-        if (f4 < this.jsq) {
-          f2 = (this.jsq - f4) / 2.0F - localRectF.left;
+        if (f4 < this.jgD) {
+          f2 = (this.jgD - f4) / 2.0F - localRectF.left;
         }
       }
       for (;;)
       {
-        ae(f2, f1);
+        ap(f2, f1);
         localMatrix = getImageViewMatrix();
         setImageMatrix(localMatrix);
         localMatrix.mapRect(localRectF);
         localRectF.height();
         localRectF.width();
+        AppMethodBeat.o(106986);
         return;
-        localRectF = new RectF(0.0F, 0.0F, this.oJZ.getWidth(), this.oJZ.getHeight());
+        localRectF = new RectF(0.0F, 0.0F, this.rzS.getWidth(), this.rzS.getHeight());
         break;
-        label226:
+        label247:
         if (localRectF.top > 0.0F)
         {
           f1 = -localRectF.top;
-          break label123;
+          break label139;
         }
-        if (localRectF.bottom >= this.jsr) {
-          break label498;
+        if (localRectF.bottom >= this.jgE) {
+          break label519;
         }
-        f1 = this.jsr - localRectF.bottom;
-        break label123;
-        label275:
+        f1 = this.jgE - localRectF.bottom;
+        break label139;
+        label296:
         f1 = localRectF.top;
-        float f5 = this.jsr - localRectF.bottom;
+        float f5 = this.jgE - localRectF.bottom;
         float f3 = (f1 + f5) / 2.0F;
         f1 = f3;
         if (f3 < 0.0F) {
@@ -149,23 +208,23 @@ public class MultiTouchImageView
         if (localRectF.top > 0.0F)
         {
           f1 -= localRectF.top;
-          break label123;
+          break label139;
         }
-        if (localRectF.bottom >= this.jsr) {
-          break label498;
+        if (localRectF.bottom >= this.jgE) {
+          break label519;
         }
         f1 = f5 - f1;
-        break label123;
+        break label139;
         if (localRectF.left > 0.0F)
         {
           f2 = -localRectF.left;
         }
-        else if (localRectF.right < this.jsq)
+        else if (localRectF.right < this.jgD)
         {
-          f2 = this.jsq - localRectF.right;
+          f2 = this.jgD - localRectF.right;
           continue;
           f3 = localRectF.left;
-          f5 = this.jsq - localRectF.right;
+          f5 = this.jgD - localRectF.right;
           f4 = (f3 + f5) / 2.0F;
           f3 = f4;
           if (f4 < 0.0F) {
@@ -173,38 +232,38 @@ public class MultiTouchImageView
           }
           if (localRectF.left > 0.0F) {
             f2 = f3 - localRectF.left;
-          } else if (localRectF.right < this.jsq) {
+          } else if (localRectF.right < this.jgD) {
             f2 = f5 - f3;
           }
         }
       }
-      label498:
+      label519:
       f1 = 0.0F;
     }
   }
   
-  private void cBk()
+  private void dEz()
   {
     boolean bool2 = true;
-    this.uZY = (this.jsq / this.imageWidth);
-    this.uZZ = (this.jsr / this.imageHeight);
+    this.zoo = (this.jgD / this.imageWidth);
+    this.zop = (this.jgE / this.imageHeight);
     if (this.imageWidth > this.imageHeight * 2.2F)
     {
       bool1 = true;
-      this.uZW = bool1;
+      this.zom = bool1;
       if (this.imageHeight <= this.imageWidth * 2.2F) {
         break label215;
       }
       bool1 = true;
       label79:
-      this.uZX = bool1;
-      if ((!this.uZW) || (this.imageWidth <= this.jsq)) {
+      this.zon = bool1;
+      if ((!this.zom) || (this.imageWidth <= this.jgD)) {
         break label221;
       }
       bool1 = true;
       label106:
-      this.uZW = bool1;
-      if ((!this.uZX) || (this.imageHeight <= this.jsr)) {
+      this.zom = bool1;
+      if ((!this.zon) || (this.imageHeight <= this.jgE)) {
         break label227;
       }
     }
@@ -213,21 +272,21 @@ public class MultiTouchImageView
     label227:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.uZX = bool1;
+      this.zon = bool1;
       float f3 = this.imageHeight / this.imageWidth;
       float f2 = 1.8F;
       float f1 = f2;
-      if (this.jsq != 0)
+      if (this.jgD != 0)
       {
         f1 = f2;
-        if (this.jsr != 0) {
-          f1 = this.jsr / this.jsq;
+        if (this.jgE != 0) {
+          f1 = this.jgE / this.jgD;
         }
       }
       if ((f3 <= f1) || (f3 > 2.2D)) {
         break label233;
       }
-      this.uZQ = this.uZZ;
+      this.zoh = this.zop;
       return;
       bool1 = false;
       break;
@@ -237,106 +296,117 @@ public class MultiTouchImageView
       break label106;
     }
     label233:
-    this.uZQ = this.uZY;
+    this.zoh = this.zoo;
   }
   
   private void init()
   {
-    y.d("dktest", "init screenWidth:" + this.jsq + " screenHeight :" + this.jsr);
+    AppMethodBeat.i(106987);
+    ab.d("dktest", "init screenWidth:" + this.jgD + " screenHeight :" + this.jgE);
     setScaleType(ImageView.ScaleType.MATRIX);
     float f = getContext().getResources().getDisplayMetrics().widthPixels / 720.0F;
     if (f > 1.0F) {
-      this.aqM = f;
+      this.atf = f;
     }
-    cAy();
+    dDJ();
+    AppMethodBeat.o(106987);
   }
   
   private void l(float paramFloat1, float paramFloat2, float paramFloat3)
   {
+    AppMethodBeat.i(106995);
     paramFloat1 = (paramFloat1 - getScale()) / 128.0F;
     float f = getScale();
     long l = System.currentTimeMillis();
     this.mHandler.post(new MultiTouchImageView.1(this, l, f, paramFloat1, paramFloat2, paramFloat3));
+    AppMethodBeat.o(106995);
   }
   
-  public final void ac(float paramFloat1, float paramFloat2)
+  public final void an(float paramFloat1, float paramFloat2)
   {
-    cBk();
-    l(this.uZQ, paramFloat1, paramFloat2);
+    AppMethodBeat.i(106983);
+    dEz();
+    l(this.zoh, paramFloat1, paramFloat2);
+    AppMethodBeat.o(106983);
   }
   
-  public final void ad(float paramFloat1, float paramFloat2)
+  public final void ao(float paramFloat1, float paramFloat2)
   {
-    this.uZN = getDoubleTabScale();
-    l(this.uZN, paramFloat1, paramFloat2);
+    AppMethodBeat.i(106994);
+    this.zoe = getDoubleTabScale();
+    l(this.zoe, paramFloat1, paramFloat2);
+    AppMethodBeat.o(106994);
   }
   
-  public final void ae(float paramFloat1, float paramFloat2)
+  public final void ap(float paramFloat1, float paramFloat2)
   {
-    this.aqz.postTranslate(paramFloat1, paramFloat2);
+    AppMethodBeat.i(106997);
+    this.asS.postTranslate(paramFloat1, paramFloat2);
     setImageMatrix(getImageViewMatrix());
+    AppMethodBeat.o(106997);
   }
   
-  public final boolean cAw()
-  {
-    return this.uZW;
-  }
-  
-  public final boolean cAx()
-  {
-    return this.uZX;
-  }
-  
-  public final void cAy()
-  {
-    this.aqz.reset();
-    cBk();
-    k(this.uZQ, 0.0F, 0.0F);
-  }
-  
-  public final void cAz()
-  {
-    if ((this.uZV) && (0.0F == this.uZN)) {
-      this.uZN = getDoubleTabScale();
-    }
-  }
-  
-  public final void cBl()
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((!this.oYK) || (!this.uZW))
-    {
-      bool1 = true;
-      if (this.uZX) {
-        break label37;
-      }
-    }
-    for (;;)
-    {
-      Y(bool1, bool2);
-      return;
-      bool1 = false;
-      break;
-      label37:
-      bool2 = false;
-    }
-  }
-  
-  public final void fs(int paramInt1, int paramInt2)
+  public final void cb(int paramInt1, int paramInt2)
   {
     this.imageWidth = paramInt1;
     this.imageHeight = paramInt2;
   }
   
-  public final void ft(int paramInt1, int paramInt2)
+  public final boolean dDH()
   {
-    this.jsr = paramInt2;
-    this.jsq = paramInt1;
+    return this.zom;
+  }
+  
+  public final boolean dDI()
+  {
+    return this.zon;
+  }
+  
+  public final void dDJ()
+  {
+    AppMethodBeat.i(106982);
+    this.asS.reset();
+    dEz();
+    k(this.zoh, 0.0F, 0.0F);
+    AppMethodBeat.o(106982);
+  }
+  
+  public final void dDK()
+  {
+    AppMethodBeat.i(106991);
+    if ((this.zol) && (0.0F == this.zoe)) {
+      this.zoe = getDoubleTabScale();
+    }
+    AppMethodBeat.o(106991);
+  }
+  
+  public final void dEA()
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(106990);
+    boolean bool1;
+    if ((!this.rRd) || (!this.zom))
+    {
+      bool1 = true;
+      if (this.zon) {
+        break label49;
+      }
+    }
+    for (;;)
+    {
+      aj(bool1, bool2);
+      AppMethodBeat.o(106990);
+      return;
+      bool1 = false;
+      break;
+      label49:
+      bool2 = false;
+    }
   }
   
   public float getDoubleTabScale()
   {
+    AppMethodBeat.i(106993);
     float f1 = getScaleRate();
     if (getScaleWidth() * 0.7F > f1) {
       f1 = getScaleWidth();
@@ -351,11 +421,12 @@ public class MultiTouchImageView
       if (f2 > getMaxZoom()) {
         f1 = getMaxZoom();
       }
+      AppMethodBeat.o(106993);
       return f1;
       if (getScaleHeight() * 0.7F > f1) {
         f1 = getScaleHeight();
       } else {
-        f1 = getScaleRate() * this.uZS;
+        f1 = getScaleRate() * this.zoi;
       }
     }
   }
@@ -367,9 +438,12 @@ public class MultiTouchImageView
   
   protected Matrix getImageViewMatrix()
   {
-    this.uZK.set(this.uZJ);
-    this.uZK.postConcat(this.aqz);
-    return this.uZK;
+    AppMethodBeat.i(106989);
+    this.zob.set(this.zoa);
+    this.zob.postConcat(this.asS);
+    Matrix localMatrix = this.zob;
+    AppMethodBeat.o(106989);
+    return localMatrix;
   }
   
   public int getImageWidth()
@@ -379,115 +453,132 @@ public class MultiTouchImageView
   
   public float getMaxZoom()
   {
-    return this.uZO;
+    return this.zof;
   }
   
   public float getMinZoom()
   {
-    return this.uZP;
+    return this.zog;
   }
   
   public float getRealWidth()
   {
-    return getScale() * getImageWidth();
+    AppMethodBeat.i(106996);
+    float f1 = getScale();
+    float f2 = getImageWidth();
+    AppMethodBeat.o(106996);
+    return f1 * f2;
   }
   
   public float getScale()
   {
-    this.aqz.getValues(this.tz);
-    cBk();
-    this.uZO = (this.uZU * this.aqM);
-    this.uZP = (this.uZQ * this.uZT);
-    if (this.uZO < 1.0F) {
-      this.uZO = 1.0F;
+    AppMethodBeat.i(106988);
+    this.asS.getValues(this.uA);
+    dEz();
+    this.zof = (this.zok * this.atf);
+    this.zog = (this.zoh * this.zoj);
+    if (this.zof < 1.0F) {
+      this.zof = 1.0F;
     }
-    if (this.uZP > 1.0F) {
-      this.uZP = 1.0F;
+    if (this.zog > 1.0F) {
+      this.zog = 1.0F;
     }
-    return this.tz[0];
+    float f = this.uA[0];
+    AppMethodBeat.o(106988);
+    return f;
   }
   
   public float getScaleHeight()
   {
-    return this.uZZ;
+    return this.zop;
   }
   
   public float getScaleRate()
   {
-    return this.uZQ;
+    return this.zoh;
   }
   
   public float getScaleWidth()
   {
-    return this.uZY;
+    return this.zoo;
+  }
+  
+  public final void hz(int paramInt1, int paramInt2)
+  {
+    this.jgE = paramInt2;
+    this.jgD = paramInt1;
   }
   
   public final void k(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(106992);
     float f2 = getScale();
     float f1;
-    label72:
+    label78:
     boolean bool1;
-    if (this.uZV)
+    if (this.zol)
     {
-      if (0.0F == this.uZN)
+      if (0.0F == this.zoe)
       {
-        f1 = this.uZU * this.aqM;
-        this.uZO = f1;
+        f1 = this.zok * this.atf;
+        this.zof = f1;
       }
     }
     else
     {
-      if (paramFloat1 <= this.uZO * 2.0F) {
-        break label169;
+      if (paramFloat1 <= this.zof * 2.0F) {
+        break label181;
       }
-      f1 = this.uZO * 2.0F + (paramFloat1 - this.uZO) * 0.1F;
+      f1 = this.zof * 2.0F + (paramFloat1 - this.zof) * 0.1F;
       paramFloat1 = f1 / f2;
-      if (!this.vab)
+      if (!this.zor)
       {
         setImageMatrix(getImageViewMatrix());
-        this.aqz.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
+        this.asS.postScale(paramFloat1, paramFloat1, paramFloat2, paramFloat3);
       }
-      if ((this.oYK) && (this.uZW)) {
-        break label190;
+      if ((this.rRd) && (this.zom)) {
+        break label202;
       }
       bool1 = true;
-      label122:
-      if (this.uZX) {
-        break label196;
-      }
-      label129:
-      Y(bool1, bool2);
-      if (this.oZh != null)
-      {
-        if (paramFloat1 <= 1.0F) {
-          break label202;
-        }
-        this.oZh.bIV();
+      label128:
+      if (this.zon) {
+        break label208;
       }
     }
-    label169:
-    label190:
-    label196:
-    label202:
-    while (paramFloat1 >= 1.0F)
+    for (;;)
     {
-      return;
-      f1 = this.uZN;
-      break;
-      f1 = paramFloat1;
-      if (paramFloat1 >= this.uZP) {
-        break label72;
+      aj(bool1, bool2);
+      if (this.rRA == null) {
+        break label229;
       }
-      f1 = this.uZP;
-      break label72;
+      if (paramFloat1 <= 1.0F) {
+        break label214;
+      }
+      this.rRA.cvq();
+      AppMethodBeat.o(106992);
+      return;
+      f1 = this.zoe;
+      break;
+      label181:
+      f1 = paramFloat1;
+      if (paramFloat1 >= this.zog) {
+        break label78;
+      }
+      f1 = this.zog;
+      break label78;
+      label202:
       bool1 = false;
-      break label122;
+      break label128;
+      label208:
       bool2 = false;
-      break label129;
     }
-    this.oZh.bIU();
+    label214:
+    if (paramFloat1 < 1.0F) {
+      this.rRA.cvp();
+    }
+    label229:
+    AppMethodBeat.o(106992);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
@@ -499,100 +590,123 @@ public class MultiTouchImageView
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if ((!this.vab) && (this.oJZ != null) && (this.oJZ.isRecycled()))
+    AppMethodBeat.i(106981);
+    if ((!this.zor) && (this.rzS != null) && (this.rzS.isRecycled()))
     {
-      y.e("MicroMsg.MultiTouchImageView", "this bitmap is recycled! draw nothing!");
+      ab.e("MicroMsg.MultiTouchImageView", "this bitmap is recycled! draw nothing!");
+      AppMethodBeat.o(106981);
       return;
     }
     super.onDraw(paramCanvas);
+    AppMethodBeat.o(106981);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(106984);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       f.c(paramKeyEvent);
+      AppMethodBeat.o(106984);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(106984);
+    return bool;
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(106985);
     if ((paramInt == 4) && (f.d(paramKeyEvent)) && (!f.e(paramKeyEvent)) && (getScale() > 1.0F))
     {
-      k(1.0F, this.jsq / 2.0F, this.jsr / 2.0F);
+      k(1.0F, this.jgD / 2.0F, this.jgE / 2.0F);
+      AppMethodBeat.o(106985);
       return true;
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(106985);
+    return bool;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(106979);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.jsq != View.MeasureSpec.getSize(paramInt1)) || (this.jsr != View.MeasureSpec.getSize(paramInt2))) {}
-    for (this.uZR = true;; this.uZR = false)
+    if ((this.jgD != View.MeasureSpec.getSize(paramInt1)) || (this.jgE != View.MeasureSpec.getSize(paramInt2))) {}
+    for (this.jeA = true;; this.jeA = false)
     {
-      this.jsq = View.MeasureSpec.getSize(paramInt1);
-      this.jsr = View.MeasureSpec.getSize(paramInt2);
+      this.jgD = View.MeasureSpec.getSize(paramInt1);
+      this.jgE = View.MeasureSpec.getSize(paramInt2);
       if (!this.isInited)
       {
         this.isInited = true;
         init();
       }
-      if (this.uZR) {
-        cAy();
+      if (this.jeA) {
+        dDJ();
       }
+      AppMethodBeat.o(106979);
       return;
     }
   }
   
   public void setDoubleTabScaleLimit(float paramFloat)
   {
+    AppMethodBeat.i(106976);
     if (Float.compare(paramFloat, 0.0F) < 0)
     {
-      y.w("MicroMsg.MultiTouchImageView", "double tab scale limit is less than 0.0, change nothing, return");
+      ab.w("MicroMsg.MultiTouchImageView", "double tab scale limit is less than 0.0, change nothing, return");
+      AppMethodBeat.o(106976);
       return;
     }
-    this.uZS = paramFloat;
+    this.zoi = paramFloat;
+    AppMethodBeat.o(106976);
   }
   
   public void setEnableHorLongBmpMode(boolean paramBoolean)
   {
-    this.oYK = paramBoolean;
+    this.rRd = paramBoolean;
   }
   
   public void setGifDrawable(Drawable paramDrawable)
   {
-    this.vab = true;
-    this.vac = paramDrawable;
-    setImageDrawable(this.vac);
+    AppMethodBeat.i(106999);
+    this.zor = true;
+    this.zos = paramDrawable;
+    setImageDrawable(this.zos);
+    AppMethodBeat.o(106999);
   }
   
   public void setGifPath(String paramString)
   {
-    this.vab = true;
+    AppMethodBeat.i(106998);
+    this.zor = true;
     try
     {
-      this.vac = c.gy(paramString, paramString);
-      setImageDrawable(this.vac);
-      if (this.vac != null) {
-        fs(this.vac.getIntrinsicWidth(), this.vac.getIntrinsicHeight());
+      this.zos = c.iB(paramString, paramString);
+      setImageDrawable(this.zos);
+      if (this.zos != null) {
+        cb(this.zos.getIntrinsicWidth(), this.zos.getIntrinsicHeight());
       }
+      AppMethodBeat.o(106998);
       return;
     }
     catch (Exception paramString)
     {
-      this.vab = false;
+      this.zor = false;
+      AppMethodBeat.o(106998);
     }
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    this.vab = false;
-    this.oJZ = paramBitmap;
+    AppMethodBeat.i(106980);
+    this.zor = false;
+    this.rzS = paramBitmap;
     this.isInited = false;
     super.setImageBitmap(paramBitmap);
+    AppMethodBeat.o(106980);
   }
   
   public void setImageHeight(int paramInt)
@@ -607,44 +721,53 @@ public class MultiTouchImageView
   
   public void setMaxZoomDoubleTab(boolean paramBoolean)
   {
-    this.uZV = paramBoolean;
+    this.zol = paramBoolean;
   }
   
   public void setMaxZoomLimit(float paramFloat)
   {
+    AppMethodBeat.i(106974);
     if (Float.compare(paramFloat, 1.0F) < 0)
     {
-      y.w("MicroMsg.MultiTouchImageView", "max scale limit is less than 1.0, change nothing, return");
+      ab.w("MicroMsg.MultiTouchImageView", "max scale limit is less than 1.0, change nothing, return");
+      AppMethodBeat.o(106974);
       return;
     }
-    this.uZU = paramFloat;
+    this.zok = paramFloat;
+    AppMethodBeat.o(106974);
   }
   
   public void setMinZoomLimit(float paramFloat)
   {
+    AppMethodBeat.i(106975);
     if (Float.compare(paramFloat, 1.0F) > 0)
     {
-      y.w("MicroMsg.MultiTouchImageView", "min scale limit is greater than 1.0, change nothing, return");
+      ab.w("MicroMsg.MultiTouchImageView", "min scale limit is greater than 1.0, change nothing, return");
+      AppMethodBeat.o(106975);
       return;
     }
     if (Float.compare(paramFloat, 0.0F) < 0)
     {
-      y.w("MicroMsg.MultiTouchImageView", "min scale limit is less than 0.0, change nothing, return");
+      ab.w("MicroMsg.MultiTouchImageView", "min scale limit is less than 0.0, change nothing, return");
+      AppMethodBeat.o(106975);
       return;
     }
-    this.uZT = paramFloat;
+    this.zoj = paramFloat;
+    AppMethodBeat.o(106975);
   }
   
   public final void start()
   {
-    if ((this.vab) && (this.vac != null)) {
-      ((a)this.vac).start();
+    AppMethodBeat.i(107000);
+    if ((this.zor) && (this.zos != null)) {
+      ((a)this.zos).start();
     }
+    AppMethodBeat.o(107000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.base.MultiTouchImageView
  * JD-Core Version:    0.7.0.1
  */

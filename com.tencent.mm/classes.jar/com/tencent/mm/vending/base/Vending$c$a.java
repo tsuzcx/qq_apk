@@ -2,9 +2,9 @@ package com.tencent.mm.vending.base;
 
 public abstract interface Vending$c$a<_Index>
 {
-  public abstract void cancel();
+  public abstract void cJ(_Index param_Index);
   
-  public abstract void cf(_Index param_Index);
+  public abstract void cancel();
 }
 
 

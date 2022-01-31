@@ -1,29 +1,23 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import com.tencent.mm.h.a.ti;
-import com.tencent.mm.h.a.ti.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.t;
 
 final class WalletBalanceFetchUI$16
-  implements Runnable
+  extends t
 {
-  WalletBalanceFetchUI$16(WalletBalanceFetchUI paramWalletBalanceFetchUI, ti paramti) {}
+  WalletBalanceFetchUI$16(WalletBalanceFetchUI paramWalletBalanceFetchUI) {}
   
-  public final void run()
+  public final void bhX()
   {
-    if (!bk.bl(this.iLQ.ccV.ccW))
-    {
-      e.a(WalletBalanceFetchUI.i(this.qgO), this.iLQ.ccV.ccW, this.iLQ.ccV.content, this.iLQ.ccV.url);
-      return;
-    }
-    y.i("MicroMsg.WalletBalanceFetchUI", "no bulletin data");
+    AppMethodBeat.i(45376);
+    WalletBalanceFetchUI.g(this.tOj);
+    AppMethodBeat.o(45376);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceFetchUI.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:layout_below="@id/ag" style="@style/gf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gh">
+        <TextView android:layout_gravity="right" android:id="@id/ox" android:visibility="gone" style="@style/gl" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/au4" style="@style/gp" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/av1" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/av2" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <com.tencent.mm.ui.widget.MMTextView android:id="@id/oy" android:background="@drawable/k6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/xc" android:minHeight="@dimen/eg" style="@style/gr" />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/m2" />
+</LinearLayout>

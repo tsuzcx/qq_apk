@@ -11,27 +11,27 @@ import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskState;
 public abstract interface a
   extends IInterface
 {
+  public abstract boolean IO(String paramString);
+  
+  public abstract boolean IP(String paramString);
+  
+  public abstract CDNTaskState IQ(String paramString);
+  
   public abstract int a(CDNTaskInfo paramCDNTaskInfo);
   
   public abstract void a(b paramb);
-  
-  public abstract void aDs();
-  
-  public abstract void aDt();
-  
-  public abstract void aDu();
   
   public abstract int b(CDNTaskInfo paramCDNTaskInfo);
   
   public abstract void b(b paramb);
   
-  public abstract void pi(int paramInt);
+  public abstract void bfP();
   
-  public abstract boolean zf(String paramString);
+  public abstract void bfQ();
   
-  public abstract boolean zg(String paramString);
+  public abstract void bfR();
   
-  public abstract CDNTaskState zh(String paramString);
+  public abstract void tx(int paramInt);
   
   public static abstract class a
     extends Binder
@@ -93,7 +93,7 @@ public abstract interface a
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = zf(paramParcel1.readString());
+        bool = IO(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (bool) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -103,7 +103,7 @@ public abstract interface a
         }
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = zg(paramParcel1.readString());
+        bool = IP(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -113,7 +113,7 @@ public abstract interface a
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        paramParcel1 = zh(paramParcel1.readString());
+        paramParcel1 = IQ(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -135,22 +135,22 @@ public abstract interface a
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        pi(paramParcel1.readInt());
+        tx(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        aDs();
+        bfP();
         paramParcel2.writeNoException();
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        aDt();
+        bfQ();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-      aDu();
+      bfR();
       paramParcel2.writeNoException();
       return true;
     }
@@ -158,7 +158,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.a.a
  * JD-Core Version:    0.7.0.1
  */

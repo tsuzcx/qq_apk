@@ -8,33 +8,31 @@ import android.view.ViewStub;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.d.ac;
-import com.tencent.mm.plugin.game.d.ar;
-import com.tencent.mm.plugin.game.d.x;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.ad;
+import com.tencent.mm.plugin.game.d.as;
+import com.tencent.mm.plugin.game.d.y;
 import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.plugin.game.model.l;
-import com.tencent.mm.plugin.game.model.y;
+import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.plugin.game.model.x;
 import com.tencent.mm.plugin.game.widget.AutoResizeTextView;
 import com.tencent.mm.plugin.game.widget.GameTagListView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 
 public class GameBestSellingItemView
   extends LinearLayout
   implements View.OnClickListener
 {
-  AutoResizeTextView kXq;
-  ImageView kXr;
-  TextView kXs;
-  GameTagListView kXt;
-  GameDownloadView kXu;
-  View kXv;
-  private int kXw;
-  private x kXx;
-  private com.tencent.mm.plugin.game.model.e kXy;
+  private d nvA;
+  AutoResizeTextView nvs;
+  ImageView nvt;
+  TextView nvu;
+  GameTagListView nvv;
+  GameDownloadView nvw;
+  View nvx;
+  private int nvy;
+  private y nvz;
   
   public GameBestSellingItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,80 +41,90 @@ public class GameBestSellingItemView
   
   public void onClick(View paramView)
   {
-    if ((this.kXx == null) || (bk.bl(this.kXx.kRQ.kRS))) {
+    AppMethodBeat.i(111731);
+    if ((this.nvz == null) || (bo.isNullOrNil(this.nvz.npS.npU)))
+    {
+      AppMethodBeat.o(111731);
       return;
     }
-    int i = c.an(getContext(), this.kXx.kRQ.kRS);
-    b.a(getContext(), 10, 1022, this.kXy.kOv + 1, i, this.kXx.kRQ.kRX, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.fy(this.kXy.kOu.kSs));
+    int i = com.tencent.mm.plugin.game.f.c.ax(getContext(), this.nvz.npS.npU);
+    com.tencent.mm.game.report.c.a(getContext(), 10, 1022, this.nvA.nms + 1, i, this.nvz.npS.npZ, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.lR(this.nvA.nmr.nqt));
+    AppMethodBeat.o(111731);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111729);
     super.onFinishInflate();
-    this.kXq = ((AutoResizeTextView)findViewById(g.e.game_num));
-    this.kXr = ((ImageView)findViewById(g.e.game_icon));
-    this.kXs = ((TextView)findViewById(g.e.game_name));
-    this.kXt = ((GameTagListView)findViewById(g.e.tag_list));
-    this.kXu = ((GameDownloadView)findViewById(g.e.game_btn_container));
-    this.kXv = findViewById(g.e.social_stub);
-    this.kXw = (c.getScreenWidth(getContext()) - com.tencent.mm.cb.a.fromDPToPix(getContext(), 190));
+    this.nvs = ((AutoResizeTextView)findViewById(2131824424));
+    this.nvt = ((ImageView)findViewById(2131821573));
+    this.nvu = ((TextView)findViewById(2131821575));
+    this.nvv = ((GameTagListView)findViewById(2131824426));
+    this.nvw = ((GameDownloadView)findViewById(2131824425));
+    this.nvx = findViewById(2131824427);
+    this.nvy = (com.tencent.mm.plugin.game.f.c.getScreenWidth(getContext()) - com.tencent.mm.cb.a.fromDPToPix(getContext(), 190));
     setOnClickListener(this);
+    AppMethodBeat.o(111729);
   }
   
-  public void setData(com.tencent.mm.plugin.game.model.e parame)
+  public void setData(d paramd)
   {
-    if ((parame == null) || (parame.kOu == null) || (parame.kOu.kTo == null) || (bk.dk(parame.kOu.kTo.kSr))) {
+    AppMethodBeat.i(111730);
+    if ((paramd == null) || (paramd.nmr == null) || (paramd.nmr.nro == null) || (bo.es(paramd.nmr.nro.nqs)))
+    {
+      setVisibility(8);
+      AppMethodBeat.o(111730);
+      return;
+    }
+    this.nvA = paramd;
+    y localy = (y)paramd.nmr.nro.nqs.get(paramd.nms);
+    int i = paramd.nms + 1;
+    if ((localy == null) || (localy.npS == null)) {
       setVisibility(8);
     }
     for (;;)
     {
-      return;
-      this.kXy = parame;
-      x localx = (x)parame.kOu.kTo.kSr.get(parame.kOv);
-      int i = parame.kOv + 1;
-      if ((localx == null) || (localx.kRQ == null)) {
-        setVisibility(8);
-      }
-      while (!parame.kOw)
+      if (!paramd.nmt)
       {
-        com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1022, parame.kOv + 1, localx.kRQ.kRX, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.fy(parame.kOu.kSs));
-        parame.kOw = true;
-        return;
-        this.kXx = localx;
-        d locald = y.a(this.kXx.kRQ);
-        locald.scene = 10;
-        locald.bXn = 1022;
-        locald.position = (this.kXy.kOv + 1);
-        this.kXu.setDownloadInfo(new l(locald));
-        setVisibility(0);
-        this.kXq.setText(String.valueOf(i));
-        if (i == 1) {
-          this.kXq.setTextColor(c.parseColor("#EED157"));
-        }
-        for (;;)
-        {
-          com.tencent.mm.plugin.game.f.e.baw().a(this.kXr, localx.kRQ.kRX, com.tencent.mm.cb.a.getDensity(getContext()));
-          this.kXs.setText(localx.kRQ.kRZ);
-          this.kXt.f(localx.kRQ.kSo, this.kXw);
-          if ((bk.dk(localx.kSZ)) && (localx.kTa == null) && (localx.kRN == null)) {
-            break label422;
-          }
-          if ((this.kXv instanceof ViewStub)) {
-            this.kXv = ((ViewStub)this.kXv).inflate();
-          }
-          ((GameFeedSocialInfoView)this.kXv.findViewById(g.e.game_social_info)).setData(localx);
-          break;
-          if (i == 2) {
-            this.kXq.setTextColor(c.parseColor("#BDC5CB"));
-          } else if (i == 3) {
-            this.kXq.setTextColor(c.parseColor("#D4B897"));
-          } else {
-            this.kXq.setTextColor(c.parseColor("#B2B2B2"));
-          }
-        }
-        label422:
-        this.kXv.setVisibility(8);
+        com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1022, paramd.nms + 1, localy.npS.npZ, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.lR(paramd.nmr.nqt));
+        paramd.nmt = true;
       }
+      AppMethodBeat.o(111730);
+      return;
+      this.nvz = localy;
+      com.tencent.mm.plugin.game.model.c localc = x.a(this.nvz.npS);
+      localc.scene = 10;
+      localc.cFj = 1022;
+      localc.position = (this.nvA.nms + 1);
+      this.nvw.setDownloadInfo(new k(localc));
+      setVisibility(0);
+      this.nvs.setText(String.valueOf(i));
+      if (i == 1) {
+        this.nvs.setTextColor(com.tencent.mm.plugin.game.f.c.parseColor("#EED157"));
+      }
+      for (;;)
+      {
+        com.tencent.mm.plugin.game.f.e.bHE().a(this.nvt, localy.npS.npZ, com.tencent.mm.cb.a.getDensity(getContext()));
+        this.nvu.setText(localy.npS.Name);
+        this.nvv.f(localy.npS.nqp, this.nvy);
+        if ((bo.es(localy.nqZ)) && (localy.nra == null) && (localy.Desc == null)) {
+          break label437;
+        }
+        if ((this.nvx instanceof ViewStub)) {
+          this.nvx = ((ViewStub)this.nvx).inflate();
+        }
+        ((GameFeedSocialInfoView)this.nvx.findViewById(2131824770)).setData(localy);
+        break;
+        if (i == 2) {
+          this.nvs.setTextColor(com.tencent.mm.plugin.game.f.c.parseColor("#BDC5CB"));
+        } else if (i == 3) {
+          this.nvs.setTextColor(com.tencent.mm.plugin.game.f.c.parseColor("#D4B897"));
+        } else {
+          this.nvs.setTextColor(com.tencent.mm.plugin.game.f.c.parseColor("#B2B2B2"));
+        }
+      }
+      label437:
+      this.nvx.setVisibility(8);
     }
   }
 }

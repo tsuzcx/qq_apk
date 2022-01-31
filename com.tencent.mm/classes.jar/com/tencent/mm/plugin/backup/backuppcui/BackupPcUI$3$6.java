@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.backuppcui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BackupPcUI$3$6
   implements View.OnClickListener
@@ -10,12 +11,14 @@ final class BackupPcUI$3$6
   
   public final void onClick(View paramView)
   {
-    BackupPcUI.m(this.hLn.hLm);
+    AppMethodBeat.i(17599);
+    BackupPcUI.m(this.jEQ.jEP);
+    AppMethodBeat.o(17599);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backuppcui.BackupPcUI.3.6
  * JD-Core Version:    0.7.0.1
  */

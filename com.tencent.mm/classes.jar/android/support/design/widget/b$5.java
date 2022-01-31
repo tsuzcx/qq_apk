@@ -3,29 +3,29 @@ package android.support.design.widget;
 import android.view.View;
 
 final class b$5
-  implements n.a
+  implements SwipeDismissBehavior.a
 {
   b$5(b paramb) {}
   
   public final void onDismiss(View paramView)
   {
     paramView.setVisibility(8);
-    ??? = this.eX;
-    paramView = l.aT();
-    l.a locala = ((b)???).eW;
+    ??? = this.fW;
+    paramView = l.bD();
+    l.a locala = ((b)???).fV;
     synchronized (paramView.mLock)
     {
       if (paramView.d(locala)) {
-        paramView.a(paramView.jF);
+        paramView.a(paramView.kD);
       }
       while (!paramView.e(locala)) {
         return;
       }
-      paramView.a(paramView.jG);
+      paramView.a(paramView.kE);
     }
   }
   
-  public final void s(int paramInt)
+  public final void r(int paramInt)
   {
     switch (paramInt)
     {
@@ -33,10 +33,10 @@ final class b$5
       return;
     case 1: 
     case 2: 
-      l.aT().a(this.eX.eW);
+      l.bD().a(this.fW.fV);
       return;
     }
-    l.aT().b(this.eX.eW);
+    l.bD().b(this.fW.fV);
   }
 }
 

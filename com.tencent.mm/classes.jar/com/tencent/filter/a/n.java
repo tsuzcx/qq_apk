@@ -2,39 +2,44 @@ package com.tencent.filter.a;
 
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
+import com.tencent.filter.m.f;
 import com.tencent.filter.m.g;
-import com.tencent.filter.m.i;
 import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class n
   extends BaseFilter
 {
-  private BaseFilter bgJ = null;
-  private int bgY = 0;
-  
   public n()
   {
-    super(GLSLRender.bcE);
+    super(GLSLRender.btg);
   }
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    this.bgJ = new BaseFilter(GLSLRender.beJ);
-    this.bgJ.addParam(new m.o("inputImageTexture2", "sh/darkcornermask_s.png", 33986));
-    this.bgJ.addParam(new m.o("inputImageTexture3", "sh/darkcornermask_l.png", 33987));
-    this.bgJ.addParam(new m.g("levelMinimum", new float[] { 0.0F, 0.0F, 0.0F }));
-    this.bgJ.addParam(new m.g("levelMiddle", new float[] { 0.3F, 0.3F, 0.3F }));
-    this.bgJ.addParam(new m.g("levelMaximum", new float[] { 1.0F, 1.0F, 1.0F }));
-    this.bgJ.addParam(new m.g("minOutput", new float[] { 0.0F, 0.0F, 0.0F }));
-    this.bgJ.addParam(new m.g("maxOutput", new float[] { 1.0F, 1.0F, 1.0F }));
-    this.bgJ.addParam(new m.i("maskType", this.bgY));
-    setNextFilter(this.bgJ, null);
+    AppMethodBeat.i(86454);
+    BaseFilter localBaseFilter2 = new BaseFilter(GLSLRender.bun);
+    localBaseFilter2.addParam(new m.g("channelparam", new float[] { 0.4F, 0.4F, 0.2F }));
+    localBaseFilter2.addParam(new m.g("mixparam", new float[] { 1.0F, 1.0F, 1.0F }));
+    setNextFilter(localBaseFilter2, null);
+    BaseFilter localBaseFilter1 = new BaseFilter(GLSLRender.buj);
+    localBaseFilter1.addParam(new m.o("inputImageTexture2", "sh/coffee_curve.png", 33986));
+    localBaseFilter2.setNextFilter(localBaseFilter1, null);
+    localBaseFilter2 = new BaseFilter(GLSLRender.bvt);
+    localBaseFilter2.addParam(new m.g("color2", new float[] { 0.2235294F, 0.1921569F, 0.1607843F, 1.0F }));
+    localBaseFilter2.addParam(new m.f("transparency", 1.0F));
+    localBaseFilter1.setNextFilter(localBaseFilter2, null);
+    localBaseFilter1 = new BaseFilter(GLSLRender.bvt);
+    localBaseFilter1.addParam(new m.g("color2", new float[] { 0.4431373F, 0.3921569F, 0.3607843F, 1.0F }));
+    localBaseFilter1.addParam(new m.f("transparency", 1.0F));
+    localBaseFilter2.setNextFilter(localBaseFilter1, null);
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(86454);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.filter.a.n
  * JD-Core Version:    0.7.0.1
  */

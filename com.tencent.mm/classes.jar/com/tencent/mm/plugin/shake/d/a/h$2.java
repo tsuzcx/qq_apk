@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.shake.d.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.b.l.a;
 
 final class h$2
@@ -9,7 +10,9 @@ final class h$2
   
   public final void run()
   {
-    h.a(this.oaS).a(null, 8L);
+    AppMethodBeat.i(24620);
+    h.a(this.qPb).b(null, 8L);
+    AppMethodBeat.o(24620);
   }
 }
 

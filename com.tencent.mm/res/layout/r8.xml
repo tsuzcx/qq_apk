@@ -1,31 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/hz" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.ui.TaskItemView android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/a10">
-            <ImageView android:id="@id/b29" android:visibility="gone" android:layout_width="@dimen/vf" android:layout_height="@dimen/vf" android:src="@drawable/ap6" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" android:layout_alignParentStart="true" />
-            <com.tencent.mm.plugin.downloader_app.ui.AppIconView android:layout_gravity="center_vertical" android:id="@id/hu" android:layout_width="@dimen/a11" android:layout_height="@dimen/a11" android:layout_toRightOf="@id/b29" android:layout_centerVertical="true" android:layout_marginStart="16.0dip" android:layout_marginEnd="12.0dip" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/ol" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_toStartOf="@id/b3x" android:layout_toEndOf="@id/hu">
-                <TextView android:textSize="@dimen/a12" android:textStyle="bold" android:textColor="@color/q5" android:ellipsize="end" android:id="@id/b3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip" android:singleLine="true" />
-                <TextView android:textSize="@dimen/a0y" android:textColor="@color/q4" android:ellipsize="end" android:id="@id/b3z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            </LinearLayout>
-            <FrameLayout android:id="@id/b3x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_alignParentEnd="true">
-                <FrameLayout android:id="@id/b40" android:visibility="visible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginStart="5.0dip" android:layout_marginEnd="32.0dip">
-                    <ProgressBar android:id="@id/mm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:max="100" android:progress="100" android:layout_centerVertical="true" android:layout_alignParentEnd="true" style="@style/ye" />
-                    <ImageView android:layout_gravity="center" android:id="@id/b41" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/apx" />
-                </FrameLayout>
-                <Button android:textColor="@color/a1x" android:id="@id/b42" android:background="@drawable/jy" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginStart="5.0dip" android:layout_marginEnd="16.0dip" />
-            </FrameLayout>
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/b43" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_marginStart="78.0dip" android:layout_marginEnd="20.0dip">
-            <FrameLayout android:id="@id/b44" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:textSize="@dimen/a6y" android:textColor="@color/zw" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/b45" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_weight="1.0" />
-                <LinearLayout android:layout_gravity="end|bottom|center" android:id="@id/b46" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip">
-                    <ImageView android:layout_gravity="center_vertical" android:layout_width="32.0dip" android:layout_height="16.0dip" android:src="@drawable/aq5" />
-                    <TextView android:textSize="@dimen/a6y" android:textColor="@color/zx" android:layout_gravity="center_vertical" android:background="@color/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cus" />
-                </LinearLayout>
-            </FrameLayout>
-            <TextView android:textSize="@dimen/a6y" android:textColor="@color/zx" android:id="@id/b47" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/d54" android:layout_below="@id/b44" android:layout_alignParentEnd="true" />
-        </RelativeLayout>
-    </com.tencent.mm.plugin.downloader_app.ui.TaskItemView>
-</LinearLayout>
+<TextView android:textSize="@dimen/na" android:textColor="@color/l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/l2"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

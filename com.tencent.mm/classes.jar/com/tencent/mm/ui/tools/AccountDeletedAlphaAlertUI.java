@@ -1,10 +1,11 @@
 package com.tencent.mm.ui.tools;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.w;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.w;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -12,40 +13,51 @@ import com.tencent.mm.ui.base.h;
 public class AccountDeletedAlphaAlertUI
   extends MMActivity
 {
-  private static AccountDeletedAlphaAlertUI vXC = null;
+  private static AccountDeletedAlphaAlertUI ApP = null;
   
-  public static AccountDeletedAlphaAlertUI cIH()
+  public static AccountDeletedAlphaAlertUI dNv()
   {
-    return vXC;
+    return ApP;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
     return -1;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(34741);
     super.onCreate(paramBundle);
-    vXC = this;
+    ApP = this;
     paramBundle = new w();
-    com.tencent.mm.sdk.b.a.udP.m(paramBundle);
-    au.hold();
-    paramBundle = com.tencent.mm.i.a.eI(getIntent().getStringExtra("errmsg"));
+    com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
+    aw.hold();
+    paramBundle = com.tencent.mm.h.a.kO(getIntent().getStringExtra("errmsg"));
     if (paramBundle != null)
     {
       paramBundle.a(this, new AccountDeletedAlphaAlertUI.1(this), null);
+      AppMethodBeat.o(34741);
       return;
     }
-    h.a(this, getString(R.l.main_err_account_delete), null, false, new AccountDeletedAlphaAlertUI.2(this));
+    h.a(this, getString(2131301415), null, false, new AccountDeletedAlphaAlertUI.2(this));
+    AppMethodBeat.o(34741);
   }
   
   public void onDestroy()
   {
-    if (equals(vXC)) {
-      vXC = null;
+    AppMethodBeat.i(34742);
+    if (equals(ApP)) {
+      ApP = null;
     }
     super.onDestroy();
+    AppMethodBeat.o(34742);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

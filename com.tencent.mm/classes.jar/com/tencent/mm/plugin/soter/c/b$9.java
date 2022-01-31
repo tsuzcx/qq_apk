@@ -3,9 +3,7 @@ package com.tencent.mm.plugin.soter.c;
 import android.content.res.Resources;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.soter.a.b;
-import com.tencent.mm.plugin.soter.a.c;
-import com.tencent.mm.plugin.soter.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$9
   implements Runnable
@@ -14,9 +12,11 @@ final class b$9
   
   public final void run()
   {
-    this.psa.gSp.setTextColor(this.psa.gSp.getResources().getColor(a.b.hint_color));
-    this.psa.gSp.setText(this.psa.gSp.getResources().getString(a.f.soter_mp_fingerprint_hint));
-    this.psa.prT.setImageResource(a.c.fingerprint_luggage_icon);
+    AppMethodBeat.i(73880);
+    this.soc.iuP.setTextColor(this.soc.iuP.getResources().getColor(2131690166));
+    this.soc.iuP.setText(this.soc.iuP.getResources().getString(2131304070));
+    this.soc.snV.setImageResource(2130838874);
+    AppMethodBeat.o(73880);
   }
 }
 

@@ -1,50 +1,56 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bhd;
-import com.tencent.mm.protocal.c.bhe;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n;
+import com.tencent.mm.protocal.protobuf.bpn;
+import com.tencent.mm.protocal.protobuf.bpo;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p;
 
 public final class k
-  extends n
+  extends p
 {
-  private final String TAG = "MicroMsg.NetSceneQryHoneyPayCardDetail";
-  public bhe ljQ;
+  private final String TAG;
+  public bpo nHm;
   
   public k(String paramString)
   {
+    AppMethodBeat.i(41737);
+    this.TAG = "MicroMsg.NetSceneQryHoneyPayCardDetail";
     b.a locala = new b.a();
-    locala.ecH = new bhd();
-    locala.ecI = new bhe();
-    locala.ecG = 2851;
+    locala.fsX = new bpn();
+    locala.fsY = new bpo();
+    locala.funcId = getType();
     locala.uri = "/cgi-bin/mmpay-bin/qryhpcarddetail";
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((bhd)this.dmK.ecE.ecN).tef = paramString;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((bpn)this.rr.fsV.fta).xcf = paramString;
+    AppMethodBeat.o(41737);
   }
   
   public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    y.i("MicroMsg.NetSceneQryHoneyPayCardDetail", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.ljQ = ((bhe)((b)paramq).ecF.ecN);
-    y.i("MicroMsg.NetSceneQryHoneyPayCardDetail", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.ljQ.ino), this.ljQ.inp });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(41738);
+    ab.i("MicroMsg.NetSceneQryHoneyPayCardDetail", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.nHm = ((bpo)((b)paramq).fsW.fta);
+    ab.i("MicroMsg.NetSceneQryHoneyPayCardDetail", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.nHm.koj), this.nHm.kok });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
+    AppMethodBeat.o(41738);
   }
   
-  protected final void f(q paramq)
+  public final void e(q paramq)
   {
-    paramq = (bhe)((b)paramq).ecF.ecN;
-    this.wAx = paramq.ino;
-    this.wAy = paramq.inp;
+    paramq = (bpo)((b)paramq).fsW.fta;
+    this.AXb = paramq.koj;
+    this.AXc = paramq.kok;
   }
   
   public final int getType()

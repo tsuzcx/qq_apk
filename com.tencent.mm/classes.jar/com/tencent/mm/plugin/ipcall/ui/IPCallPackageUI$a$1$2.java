@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.e.f;
 
 final class IPCallPackageUI$a$1$2
@@ -11,9 +12,11 @@ final class IPCallPackageUI$a$1$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = IPCallPackageUI.b(IPCallPackageUI.a.a(this.lxj.lxh));
-    paramDialogInterface.lsd += 1;
-    IPCallPackageUI.b(IPCallPackageUI.a.a(this.lxj.lxh)).finish();
+    AppMethodBeat.i(22225);
+    paramDialogInterface = IPCallPackageUI.b(IPCallPackageUI.a.a(this.nUw.nUu));
+    paramDialogInterface.nPz += 1;
+    IPCallPackageUI.b(IPCallPackageUI.a.a(this.nUw.nUu)).finish();
+    AppMethodBeat.o(22225);
   }
 }
 

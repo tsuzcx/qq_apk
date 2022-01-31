@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.card.ui.view;
 
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.ui.MMActivity;
 
@@ -15,26 +14,26 @@ public final class s
   
   public final void a(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean aCV()
-  {
-    return true;
-  }
-  
-  public final boolean aCW()
-  {
-    return true;
-  }
-  
   public final void b(ViewGroup paramViewGroup, b paramb) {}
+  
+  public final boolean bfr()
+  {
+    return true;
+  }
+  
+  public final boolean bfs()
+  {
+    return true;
+  }
   
   public final int getLayoutId()
   {
-    return a.e.card_code_member_qrcode;
+    return 2130968918;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.s
  * JD-Core Version:    0.7.0.1
  */

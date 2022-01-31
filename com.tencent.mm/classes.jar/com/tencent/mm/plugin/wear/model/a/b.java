@@ -7,31 +7,31 @@ import java.util.HashSet;
 
 public abstract interface b
 {
+  public abstract b.a B(String paramString, byte[] paramArrayOfByte);
+  
+  public abstract b.a C(String paramString, byte[] paramArrayOfByte);
+  
   public abstract byte[] a(Asset paramAsset);
   
-  public abstract void bYT();
+  public abstract void cYG();
   
-  public abstract GoogleApiClient bYU();
+  public abstract GoogleApiClient cYH();
   
-  public abstract HashSet<String> bYV();
+  public abstract HashSet<String> cYI();
   
-  public abstract boolean bYW();
+  public abstract boolean cYJ();
   
-  public abstract void bYX();
+  public abstract void cYK();
   
   public abstract void finish();
   
-  public abstract boolean h(Uri paramUri);
-  
   public abstract boolean isAvailable();
   
-  public abstract b.a t(String paramString, byte[] paramArrayOfByte);
-  
-  public abstract b.a u(String paramString, byte[] paramArrayOfByte);
+  public abstract boolean j(Uri paramUri);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.a.b
  * JD-Core Version:    0.7.0.1
  */

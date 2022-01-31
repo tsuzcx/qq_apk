@@ -1,55 +1,70 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.a.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public class ContactQZoneWebView
   extends WebViewUI
 {
-  private String mSy = "";
-  private boolean rkD = false;
-  private String rkE = "";
+  private String puE = "";
+  private boolean uZZ = false;
+  private String vaa = "";
   
-  final void SX(String paramString)
+  final void ahZ(String paramString)
   {
-    if (this.rkD) {
+    AppMethodBeat.i(7352);
+    if (this.uZZ)
+    {
+      AppMethodBeat.o(7352);
       return;
     }
-    this.rkD = true;
+    this.uZZ = true;
     Object localObject = paramString.substring(19);
-    y.d("MicroMsg.ContactQZoneWebView", "get url :" + (String)localObject);
+    ab.d("MicroMsg.ContactQZoneWebView", "get url :".concat(String.valueOf(localObject)));
     paramString = new Intent();
     paramString.putExtra("nowUrl", (String)localObject);
-    paramString.putExtra("tweetid", bk.pm(getIntent().getStringExtra("tweetid")));
-    paramString.putExtra("htmlData", this.rkE);
+    paramString.putExtra("tweetid", bo.nullAsNil(getIntent().getStringExtra("tweetid")));
+    paramString.putExtra("htmlData", this.vaa);
     paramString.putExtra("type", getIntent().getIntExtra("type", 0));
     localObject = new Bundle();
     ((Bundle)localObject).putInt("stat_scene", 4);
-    ((Bundle)localObject).putString("stat_url", cdR());
+    ((Bundle)localObject).putString("stat_url", dek());
     paramString.putExtra("_stat_obj", (Bundle)localObject);
     startActivity(paramString);
-    a.eUR.r(paramString, this);
+    a.gmO.q(paramString, this);
+    AppMethodBeat.o(7352);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(7350);
     super.onCreate(paramBundle);
-    setMMTitle(getString(R.l.contact_info_qq_view_qzone));
-    this.niQ.setWebViewClient(new ContactQZoneWebView.1(this));
-    this.niQ.loadUrl(this.caS);
-    y.d("MicroMsg.ContactQZoneWebView", "loadUrl:loadUrl, url = " + this.caS);
+    setMMTitle(getString(2131306014));
+    this.pOd.setWebViewClient(new ContactQZoneWebView.1(this));
+    this.pOd.loadUrl(this.cJr);
+    ab.d("MicroMsg.ContactQZoneWebView", "loadUrl:loadUrl, url = " + this.cJr);
+    AppMethodBeat.o(7350);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(7351);
     super.onResume();
-    this.rkD = false;
+    this.uZZ = false;
+    AppMethodBeat.o(7351);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

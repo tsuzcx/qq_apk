@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
 
 final class b$1$1
@@ -9,9 +10,11 @@ final class b$1$1
   
   public final void run()
   {
-    if (this.fVW.fVU != null) {
-      this.fVW.fVU.reset();
+    AppMethodBeat.i(10882);
+    if (this.hpz.hpx != null) {
+      this.hpz.hpx.reset();
     }
+    AppMethodBeat.o(10882);
   }
 }
 

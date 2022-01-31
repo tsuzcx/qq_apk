@@ -7,7 +7,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.design.a.d;
 import android.support.v7.view.menu.h;
 import android.support.v7.view.menu.j;
 import android.support.v7.view.menu.o;
@@ -25,47 +24,47 @@ import java.util.ArrayList;
 public final class c
   implements o
 {
-  public ColorStateList dE;
-  public NavigationMenuView dJ;
-  public LinearLayout dK;
-  private o.a dL;
-  public c.b dM;
-  int dN;
-  boolean dO;
-  public ColorStateList dP;
-  public Drawable dQ;
-  public int dR;
-  int dS;
-  h dm;
+  public ColorStateList eG;
+  public NavigationMenuView eL;
+  public LinearLayout eM;
+  private o.a eN;
+  public c.b eO;
+  int eP;
+  boolean eQ;
+  public ColorStateList eR;
+  public Drawable eS;
+  public int eT;
+  int eU;
+  h eq;
   public int mId;
   public LayoutInflater mLayoutInflater;
   final View.OnClickListener mOnClickListener = new c.1(this);
   
-  public final boolean V()
-  {
-    return false;
-  }
-  
   public final void a(Context paramContext, h paramh)
   {
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.dm = paramh;
-    this.dS = paramContext.getResources().getDimensionPixelOffset(a.d.design_navigation_separator_vertical_padding);
+    this.eq = paramh;
+    this.eU = paramContext.getResources().getDimensionPixelOffset(2131428299);
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    if (this.dL != null) {
-      this.dL.a(paramh, paramBoolean);
+    if (this.eN != null) {
+      this.eN.a(paramh, paramBoolean);
     }
   }
   
   public final void a(o.a parama)
   {
-    this.dL = parama;
+    this.eN = parama;
   }
   
   public final boolean a(u paramu)
+  {
+    return false;
+  }
+  
+  public final boolean aG()
   {
     return false;
   }
@@ -85,13 +84,20 @@ public final class c
     return this.mId;
   }
   
+  public final void n(boolean paramBoolean)
+  {
+    if (this.eO != null)
+    {
+      c.b localb = this.eO;
+      localb.aH();
+      localb.ajb.notifyChanged();
+    }
+  }
+  
   public final void o(boolean paramBoolean)
   {
-    if (this.dM != null)
-    {
-      c.b localb = this.dM;
-      localb.W();
-      localb.agL.notifyChanged();
+    if (this.eO != null) {
+      this.eO.et = paramBoolean;
     }
   }
   
@@ -103,19 +109,19 @@ public final class c
       paramParcelable = (Bundle)paramParcelable;
       Object localObject1 = paramParcelable.getSparseParcelableArray("android:menu:list");
       if (localObject1 != null) {
-        this.dJ.restoreHierarchyState((SparseArray)localObject1);
+        this.eL.restoreHierarchyState((SparseArray)localObject1);
       }
       Object localObject2 = paramParcelable.getBundle("android:menu:adapter");
       if (localObject2 != null)
       {
-        localObject1 = this.dM;
+        localObject1 = this.eO;
         int k = ((Bundle)localObject2).getInt("android:menu:checked", 0);
         int m;
         int i;
         if (k != 0)
         {
-          ((c.b)localObject1).dp = true;
-          m = ((c.b)localObject1).dU.size();
+          ((c.b)localObject1).et = true;
+          m = ((c.b)localObject1).mItems.size();
           i = 0;
         }
         for (;;)
@@ -123,10 +129,10 @@ public final class c
           Object localObject3;
           if (i < m)
           {
-            localObject3 = (c.d)((c.b)localObject1).dU.get(i);
+            localObject3 = (c.d)((c.b)localObject1).mItems.get(i);
             if ((localObject3 instanceof c.f))
             {
-              localObject3 = ((c.f)localObject3).dY;
+              localObject3 = ((c.f)localObject3).eX;
               if ((localObject3 != null) && (((j)localObject3).getItemId() == k)) {
                 ((c.b)localObject1).d((j)localObject3);
               }
@@ -134,20 +140,20 @@ public final class c
           }
           else
           {
-            ((c.b)localObject1).dp = false;
-            ((c.b)localObject1).W();
+            ((c.b)localObject1).et = false;
+            ((c.b)localObject1).aH();
             localObject2 = ((Bundle)localObject2).getSparseParcelableArray("android:menu:action_views");
             if (localObject2 == null) {
               break;
             }
-            k = ((c.b)localObject1).dU.size();
+            k = ((c.b)localObject1).mItems.size();
             i = j;
             while (i < k)
             {
-              localObject3 = (c.d)((c.b)localObject1).dU.get(i);
+              localObject3 = (c.d)((c.b)localObject1).mItems.get(i);
               if ((localObject3 instanceof c.f))
               {
-                Object localObject4 = ((c.f)localObject3).dY;
+                Object localObject4 = ((c.f)localObject3).eX;
                 if (localObject4 != null)
                 {
                   localObject3 = ((j)localObject4).getActionView();
@@ -168,7 +174,7 @@ public final class c
       }
       paramParcelable = paramParcelable.getSparseParcelableArray("android:menu:header");
       if (paramParcelable != null) {
-        this.dK.restoreHierarchyState(paramParcelable);
+        this.eM.restoreHierarchyState(paramParcelable);
       }
     }
   }
@@ -179,19 +185,19 @@ public final class c
     {
       Bundle localBundle = new Bundle();
       SparseArray localSparseArray;
-      if (this.dJ != null)
+      if (this.eL != null)
       {
         localSparseArray = new SparseArray();
-        this.dJ.saveHierarchyState(localSparseArray);
+        this.eL.saveHierarchyState(localSparseArray);
         localBundle.putSparseParcelableArray("android:menu:list", localSparseArray);
       }
-      if (this.dM != null) {
-        localBundle.putBundle("android:menu:adapter", this.dM.X());
+      if (this.eO != null) {
+        localBundle.putBundle("android:menu:adapter", this.eO.aI());
       }
-      if (this.dK != null)
+      if (this.eM != null)
       {
         localSparseArray = new SparseArray();
-        this.dK.saveHierarchyState(localSparseArray);
+        this.eM.saveHierarchyState(localSparseArray);
         localBundle.putSparseParcelableArray("android:menu:header", localSparseArray);
       }
       return localBundle;
@@ -199,36 +205,29 @@ public final class c
     return null;
   }
   
-  public final void p(boolean paramBoolean)
-  {
-    if (this.dM != null) {
-      this.dM.dp = paramBoolean;
-    }
-  }
-  
   public final void setItemBackground(Drawable paramDrawable)
   {
-    this.dQ = paramDrawable;
-    o(false);
+    this.eS = paramDrawable;
+    n(false);
   }
   
   public final void setItemIconTintList(ColorStateList paramColorStateList)
   {
-    this.dE = paramColorStateList;
-    o(false);
+    this.eG = paramColorStateList;
+    n(false);
   }
   
   public final void setItemTextAppearance(int paramInt)
   {
-    this.dN = paramInt;
-    this.dO = true;
-    o(false);
+    this.eP = paramInt;
+    this.eQ = true;
+    n(false);
   }
   
   public final void setItemTextColor(ColorStateList paramColorStateList)
   {
-    this.dP = paramColorStateList;
-    o(false);
+    this.eR = paramColorStateList;
+    n(false);
   }
 }
 

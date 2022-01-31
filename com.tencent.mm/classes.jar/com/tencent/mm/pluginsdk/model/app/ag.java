@@ -1,62 +1,108 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.aus;
-import com.tencent.mm.protocal.c.aut;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.s.a.a;
+import com.tencent.mm.plugin.s.a.a.a;
+import com.tencent.mm.protocal.protobuf.cak;
+import com.tencent.mm.protocal.protobuf.cal;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class ag
-  extends m
-  implements k
+  extends x
 {
-  public b dmK;
-  private f dmL;
+  private int cmdId;
+  private String vLK;
   
-  public ag(int paramInt, String paramString)
+  public ag(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(27366);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new aus();
-    ((b.a)localObject).ecI = new aut();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/getserviceapplist";
-    ((b.a)localObject).ecG = 1060;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (aus)this.dmK.ecE.ecN;
-    ((aus)localObject).offset = paramInt;
-    ((aus)localObject).limit = 20;
-    ((aus)localObject).lang = paramString;
-    g.DQ();
-    ((aus)localObject).tqj = String.valueOf(((Integer)g.DP().Dz().get(ac.a.usE, Integer.valueOf(0))).intValue());
+    ((b.a)localObject).fsX = new cak();
+    ((b.a)localObject).fsY = new cal();
+    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/setappsetting";
+    ((b.a)localObject).funcId = 396;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.lFp = ((b.a)localObject).ado();
+    localObject = (cak)this.lFp.fsV.fta;
+    ((cak)localObject).npZ = paramString1;
+    ((cak)localObject).xLQ = 0;
+    ((cak)localObject).xLR = paramString2;
+    this.cmdId = 0;
+    this.vLK = paramString2;
+    AppMethodBeat.o(27366);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final void bJ(byte[] paramArrayOfByte)
   {
-    this.dmL = paramf;
-    y.i("MicroMsg.NetSceneGetServiceAppList", "do scene");
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneGetServiceAppList", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(27369);
+    if (paramArrayOfByte == null)
+    {
+      ab.e("MicroMsg.NetSceneSetAppSetting", "buf is null");
+      AppMethodBeat.o(27369);
+      return;
     }
+    try
+    {
+      this.lFp.fsW.fromProtoBuf(paramArrayOfByte);
+      AppMethodBeat.o(27369);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ab.e("MicroMsg.NetSceneSetAppSetting", "parse error: " + paramArrayOfByte.getMessage());
+      ab.printErrStackTrace("MicroMsg.NetSceneSetAppSetting", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(27369);
+    }
+  }
+  
+  public final byte[] dli()
+  {
+    AppMethodBeat.i(27368);
+    try
+    {
+      byte[] arrayOfByte = ((b.b)this.lFp.getReqObj()).toProtoBuf();
+      AppMethodBeat.o(27368);
+      return arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.NetSceneSetAppSetting", "toProtBuf failed: " + localException.getMessage());
+      AppMethodBeat.o(27368);
+    }
+    return null;
   }
   
   public final int getType()
   {
-    return 1060;
+    return 2;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(27367);
+    ab.i("MicroMsg.NetSceneSetAppSetting", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    if ((paramInt2 == 0) && (paramInt2 == 0))
+    {
+      paramString = (cal)this.lFp.fsW.fta;
+      if (paramString != null)
+      {
+        paramq = a.a.caj().cah();
+        paramArrayOfByte = g.ca(paramString.npZ, false);
+        if (paramArrayOfByte != null)
+        {
+          paramArrayOfByte.field_authFlag = paramString.wrd;
+          boolean bool = paramq.a(paramArrayOfByte, new String[0]);
+          ab.d("MicroMsg.NetSceneSetAppSetting", "onGYNetEnd, update ret = " + bool + ", appId = " + paramString.npZ);
+        }
+      }
+    }
+    AppMethodBeat.o(27367);
   }
 }
 

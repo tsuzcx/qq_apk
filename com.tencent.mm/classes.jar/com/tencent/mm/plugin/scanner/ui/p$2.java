@@ -1,26 +1,28 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.scanner.b;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.util.i.a;
 
 final class p$2
-  implements View.OnClickListener
+  implements i.a
 {
   p$2(p paramp) {}
   
-  public final void onClick(View paramView)
+  public final void ciY()
   {
-    if (this.nMw.nLB == null)
-    {
-      y.e("MicroMsg.scanner.ScanModeQRCode", "toMyQRCodeOnclickListener scanUICallback == null");
-      return;
-    }
-    h.nFQ.f(11264, new Object[] { Integer.valueOf(3) });
-    b.eUR.aO(this.nMw.nLB.getContext());
+    AppMethodBeat.i(151678);
+    this.qAf.kn(true);
+    AppMethodBeat.o(151678);
+  }
+  
+  public final void onCancel()
+  {
+    this.qAf.qzT = false;
+  }
+  
+  public final void onError()
+  {
+    this.qAf.qzT = false;
   }
 }
 

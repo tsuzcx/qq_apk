@@ -8,22 +8,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class HeadImgNewPreference
   extends Preference
 {
-  private int height = -1;
-  public ImageView hic;
-  private TextView nXT;
-  private View nXU;
-  public String nXV;
-  public View.OnClickListener nXW;
-  public boolean nXX = false;
-  private boolean nXY = false;
+  private int height;
+  private ImageView iTH;
+  private TextView qMd;
+  private View qMe;
+  private String qMf;
+  public View.OnClickListener qMg;
+  private boolean qMh;
+  private boolean qMi;
   
   public HeadImgNewPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,61 +32,88 @@ public final class HeadImgNewPreference
   public HeadImgNewPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.g.mm_preference);
+    AppMethodBeat.i(127698);
+    this.height = -1;
+    this.qMh = false;
+    this.qMi = false;
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(127698);
   }
   
-  protected final void onBindView(View paramView)
+  public final void YZ(String paramString)
   {
+    AppMethodBeat.i(127700);
+    this.qMf = null;
+    if (this.iTH != null) {
+      a.b.c(this.iTH, paramString);
+    }
+    while (paramString == null)
+    {
+      this.qMh = false;
+      AppMethodBeat.o(127700);
+      return;
+      this.qMf = paramString;
+    }
+    this.qMh = true;
+    AppMethodBeat.o(127700);
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(127701);
     super.onBindView(paramView);
-    if (this.hic == null) {
-      this.hic = ((ImageView)paramView.findViewById(a.f.image_headimg));
+    if (this.iTH == null) {
+      this.iTH = ((ImageView)paramView.findViewById(2131826214));
     }
-    if (this.nXT == null) {
-      this.nXT = ((TextView)paramView.findViewById(a.f.no_header_icon_tip));
+    if (this.qMd == null) {
+      this.qMd = ((TextView)paramView.findViewById(2131826216));
     }
-    if (this.nXU == null) {
-      this.nXU = paramView.findViewById(a.f.mask_header_icon);
+    if (this.qMe == null) {
+      this.qMe = paramView.findViewById(2131821062);
     }
-    if (this.nXW != null) {
-      this.nXU.setOnClickListener(this.nXW);
+    if (this.qMg != null) {
+      this.qMe.setOnClickListener(this.qMg);
     }
-    if (this.nXV != null)
+    if (this.qMf != null)
     {
-      a.b.a(this.hic, this.nXV);
-      this.nXV = null;
+      a.b.c(this.iTH, this.qMf);
+      this.qMf = null;
     }
-    if (!this.nXX)
+    if (!this.qMh)
     {
-      this.nXU.setVisibility(8);
-      this.nXT.setVisibility(0);
+      this.qMe.setVisibility(8);
+      this.qMd.setVisibility(0);
     }
     for (;;)
     {
-      paramView = (RelativeLayout)paramView.findViewById(a.f.mm_preference_ll_id);
+      paramView = (RelativeLayout)paramView.findViewById(2131822408);
       if (this.height != -1) {
         paramView.setMinimumHeight(this.height);
       }
+      AppMethodBeat.o(127701);
       return;
-      this.nXT.setVisibility(8);
-      this.nXU.setVisibility(0);
+      this.qMd.setVisibility(8);
+      this.qMe.setVisibility(0);
     }
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(127699);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.f.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    if (this.nXY) {
-      View.inflate(this.mContext, a.g.more_tab_personal_info, localViewGroup);
+    if (this.qMi) {
+      View.inflate(this.mContext, 2130970301, localViewGroup);
     }
     for (;;)
     {
-      this.hic = ((ImageView)paramViewGroup.findViewById(a.f.image_headimg));
-      this.nXT = ((TextView)paramViewGroup.findViewById(a.f.no_header_icon_tip));
-      this.nXU = paramViewGroup.findViewById(a.f.mask_header_icon);
+      this.iTH = ((ImageView)paramViewGroup.findViewById(2131826214));
+      this.qMd = ((TextView)paramViewGroup.findViewById(2131826216));
+      this.qMe = paramViewGroup.findViewById(2131821062);
+      AppMethodBeat.o(127699);
       return paramViewGroup;
-      View.inflate(this.mContext, a.g.mm_preference_content_headimg_new, localViewGroup);
+      View.inflate(this.mContext, 2130970202, localViewGroup);
     }
   }
 }

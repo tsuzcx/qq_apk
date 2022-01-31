@@ -1,5 +1,7 @@
 package com.tencent.ttpic.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class WMLogicPair
   implements Comparable<WMLogicPair>
 {
@@ -14,9 +16,13 @@ public class WMLogicPair
   
   public int compareTo(WMLogicPair paramWMLogicPair)
   {
-    if (Integer.parseInt(this.key) > Integer.parseInt(paramWMLogicPair.key)) {
+    AppMethodBeat.i(83602);
+    if (Integer.parseInt(this.key) > Integer.parseInt(paramWMLogicPair.key))
+    {
+      AppMethodBeat.o(83602);
       return 1;
     }
+    AppMethodBeat.o(83602);
     return -1;
   }
 }

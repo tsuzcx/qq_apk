@@ -1,5 +1,6 @@
 package com.tencent.wcdb.database;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.Cursor;
 import com.tencent.wcdb.support.CancellationSignal;
 
@@ -27,8 +28,9 @@ public final class SQLiteDirectCursorDriver
   
   public final void cursorRequeried(Cursor paramCursor) {}
   
-  public final Cursor query(SQLiteDatabase.CursorFactory paramCursorFactory, String[] paramArrayOfString)
+  public final Cursor query(SQLiteDatabase.CursorFactory paramCursorFactory, Object[] paramArrayOfObject)
   {
+    AppMethodBeat.i(12570);
     Object localObject = paramCursorFactory;
     if (paramCursorFactory == null) {
       localObject = DEFAULT_FACTORY;
@@ -36,29 +38,36 @@ public final class SQLiteDirectCursorDriver
     paramCursorFactory = null;
     try
     {
-      paramArrayOfString = ((SQLiteDatabase.CursorFactory)localObject).newQuery(this.mDatabase, this.mSql, paramArrayOfString, this.mCancellationSignal);
-      paramCursorFactory = paramArrayOfString;
-      localObject = ((SQLiteDatabase.CursorFactory)localObject).newCursor(this.mDatabase, this, this.mEditTable, paramArrayOfString);
-      this.mQuery = paramArrayOfString;
+      paramArrayOfObject = ((SQLiteDatabase.CursorFactory)localObject).newQuery(this.mDatabase, this.mSql, paramArrayOfObject, this.mCancellationSignal);
+      paramCursorFactory = paramArrayOfObject;
+      localObject = ((SQLiteDatabase.CursorFactory)localObject).newCursor(this.mDatabase, this, this.mEditTable, paramArrayOfObject);
+      this.mQuery = paramArrayOfObject;
+      AppMethodBeat.o(12570);
       return localObject;
     }
-    catch (RuntimeException paramArrayOfString)
+    catch (RuntimeException paramArrayOfObject)
     {
       if (paramCursorFactory != null) {
         paramCursorFactory.close();
       }
-      throw paramArrayOfString;
+      AppMethodBeat.o(12570);
+      throw paramArrayOfObject;
     }
   }
   
   public final void setBindArguments(String[] paramArrayOfString)
   {
+    AppMethodBeat.i(12571);
     this.mQuery.bindAllArgsAsStrings(paramArrayOfString);
+    AppMethodBeat.o(12571);
   }
   
   public final String toString()
   {
-    return "SQLiteDirectCursorDriver: " + this.mSql;
+    AppMethodBeat.i(12572);
+    String str = "SQLiteDirectCursorDriver: " + this.mSql;
+    AppMethodBeat.o(12572);
+    return str;
   }
 }
 

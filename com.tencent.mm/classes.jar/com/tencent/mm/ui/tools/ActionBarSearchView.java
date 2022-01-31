@@ -26,17 +26,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mm.ac.a.d;
-import com.tencent.mm.ac.a.e;
-import com.tencent.mm.ac.a.f;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.tools.a.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.widget.AutoMatchKeywordEditText;
 import com.tencent.mm.ui.widget.AutoMatchKeywordEditText.a;
 import java.lang.ref.WeakReference;
@@ -46,438 +41,630 @@ public class ActionBarSearchView
   extends LinearLayout
   implements d
 {
-  private boolean nST = false;
-  private TextWatcher sgm = new TextWatcher()
-  {
-    public final void afterTextChanged(Editable paramAnonymousEditable) {}
-    
-    public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-    
-    public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-    {
-      ActionBarSearchView.a(ActionBarSearchView.this);
-      r localr = ActionBarSearchView.b(ActionBarSearchView.this);
-      EditText localEditText;
-      Object localObject;
-      if (localr.wfu)
-      {
-        localEditText = (EditText)localr.wfs.get();
-        if (localEditText != null) {}
-      }
-      else if (ActionBarSearchView.c(ActionBarSearchView.this) != null)
-      {
-        localObject = ActionBarSearchView.c(ActionBarSearchView.this);
-        if (paramAnonymousCharSequence != null) {
-          break label243;
-        }
-      }
-      label243:
-      for (paramAnonymousCharSequence = "";; paramAnonymousCharSequence = paramAnonymousCharSequence.toString())
-      {
-        ((ActionBarSearchView.b)localObject).GH(paramAnonymousCharSequence);
-        return;
-        if (((paramAnonymousCharSequence != null) && (paramAnonymousCharSequence.toString() != null) && (paramAnonymousCharSequence.toString().length() != 0)) || ((localr.hnV == null) || (localr.hnV.length() == 0) || ((localr.hnV != null) && (paramAnonymousCharSequence != null) && (localr.hnV.equals(paramAnonymousCharSequence.toString())))))
-        {
-          y.d("MicroMsg.WordsChecker", "text not change, new : %s, old : %s", new Object[] { paramAnonymousCharSequence, localr.hnV });
-          break;
-        }
-        if (paramAnonymousCharSequence != null) {}
-        for (localObject = paramAnonymousCharSequence.toString();; localObject = "")
-        {
-          localr.hnV = ((String)localObject);
-          localr.wfr = r.k(localr.hnV, localr.wft);
-          if (!r.a(localEditText, localr.wft)) {
-            break;
-          }
-          y.d("MicroMsg.WordsChecker", "decorate text succ.");
-          break;
-        }
-      }
-    }
-  };
-  private View vXE;
-  private ActionBarEditText vXF;
-  private ImageButton vXG;
-  private c vXH = c.vXS;
-  private boolean vXI = false;
-  private r vXJ;
-  private b vXK;
-  private a vXL;
-  private View.OnFocusChangeListener vXM = new View.OnFocusChangeListener()
-  {
-    public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
-    {
-      y.v("MicroMsg.ActionBarSearchView", "on edittext focus changed, hasFocus %B", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-      if (ActionBarSearchView.d(ActionBarSearchView.this) != null) {
-        ActionBarSearchView.d(ActionBarSearchView.this).onFocusChange(paramAnonymousView, paramAnonymousBoolean);
-      }
-    }
-  };
-  private View.OnFocusChangeListener vXN;
-  private View.OnClickListener vXO = new View.OnClickListener()
-  {
-    public final void onClick(View paramAnonymousView)
-    {
-      if (ActionBarSearchView.c.vXS == ActionBarSearchView.e(ActionBarSearchView.this))
-      {
-        y.d("MicroMsg.ActionBarSearchView", "on status btn click, cur status is clear");
-        ActionBarSearchView.this.nI(true);
-        if (ActionBarSearchView.c(ActionBarSearchView.this) != null) {
-          ActionBarSearchView.c(ActionBarSearchView.this).Wn();
-        }
-      }
-      do
-      {
-        return;
-        y.d("MicroMsg.ActionBarSearchView", "on status btn click, cur status is voice search");
-      } while (ActionBarSearchView.c(ActionBarSearchView.this) == null);
-      ActionBarSearchView.c(ActionBarSearchView.this).beR();
-    }
-  };
-  private View.OnClickListener vXP = new View.OnClickListener()
-  {
-    public final void onClick(View paramAnonymousView)
-    {
-      if (ActionBarSearchView.f(ActionBarSearchView.this) != null) {
-        ActionBarSearchView.f(ActionBarSearchView.this).beS();
-      }
-    }
-  };
+  private View ApR;
+  protected ActionBarEditText ApS;
+  private ImageButton ApT;
+  private c ApU;
+  private boolean ApV;
+  private u ApW;
+  private b ApX;
+  private a ApY;
+  private View.OnFocusChangeListener ApZ;
+  private View.OnFocusChangeListener Aqa;
+  private View.OnClickListener Aqb;
+  private View.OnClickListener Aqc;
+  private boolean qGO;
+  private TextWatcher vYh;
   
   public ActionBarSearchView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(107564);
+    this.ApU = c.Aqf;
+    this.ApV = false;
+    this.qGO = false;
+    this.vYh = new TextWatcher()
+    {
+      public final void afterTextChanged(Editable paramAnonymousEditable) {}
+      
+      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(107549);
+        ActionBarSearchView.a(ActionBarSearchView.this);
+        u localu = ActionBarSearchView.b(ActionBarSearchView.this);
+        EditText localEditText;
+        Object localObject;
+        if (localu.Ayk)
+        {
+          localEditText = (EditText)localu.Ayi.get();
+          if (localEditText != null) {}
+        }
+        else if (ActionBarSearchView.c(ActionBarSearchView.this) != null)
+        {
+          localObject = ActionBarSearchView.c(ActionBarSearchView.this);
+          if (paramAnonymousCharSequence != null) {
+            break label253;
+          }
+        }
+        label253:
+        for (paramAnonymousCharSequence = "";; paramAnonymousCharSequence = paramAnonymousCharSequence.toString())
+        {
+          ((ActionBarSearchView.b)localObject).Sk(paramAnonymousCharSequence);
+          AppMethodBeat.o(107549);
+          return;
+          if (((paramAnonymousCharSequence != null) && (paramAnonymousCharSequence.toString() != null) && (paramAnonymousCharSequence.toString().length() != 0)) || ((localu.mText == null) || (localu.mText.length() == 0) || ((localu.mText != null) && (paramAnonymousCharSequence != null) && (localu.mText.equals(paramAnonymousCharSequence.toString())))))
+          {
+            ab.d("MicroMsg.WordsChecker", "text not change, new : %s, old : %s", new Object[] { paramAnonymousCharSequence, localu.mText });
+            break;
+          }
+          if (paramAnonymousCharSequence != null) {}
+          for (localObject = paramAnonymousCharSequence.toString();; localObject = "")
+          {
+            localu.mText = ((String)localObject);
+            localu.Ayh = u.m(localu.mText, localu.Ayj);
+            if (!u.a(localEditText, localu.Ayj)) {
+              break;
+            }
+            ab.d("MicroMsg.WordsChecker", "decorate text succ.");
+            break;
+          }
+        }
+      }
+    };
+    this.ApZ = new View.OnFocusChangeListener()
+    {
+      public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(107550);
+        ab.v("MicroMsg.ActionBarSearchView", "on edittext focus changed, hasFocus %B", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (ActionBarSearchView.d(ActionBarSearchView.this) != null) {
+          ActionBarSearchView.d(ActionBarSearchView.this).onFocusChange(paramAnonymousView, paramAnonymousBoolean);
+        }
+        AppMethodBeat.o(107550);
+      }
+    };
+    this.Aqb = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(107551);
+        if (ActionBarSearchView.c.Aqf == ActionBarSearchView.e(ActionBarSearchView.this))
+        {
+          ab.d("MicroMsg.ActionBarSearchView", "on status btn click, cur status is clear");
+          ActionBarSearchView.this.rs(true);
+          if (ActionBarSearchView.c(ActionBarSearchView.this) != null)
+          {
+            ActionBarSearchView.c(ActionBarSearchView.this).apP();
+            AppMethodBeat.o(107551);
+          }
+        }
+        else
+        {
+          ab.d("MicroMsg.ActionBarSearchView", "on status btn click, cur status is voice search");
+          if (ActionBarSearchView.c(ActionBarSearchView.this) != null) {
+            ActionBarSearchView.c(ActionBarSearchView.this).bMm();
+          }
+        }
+        AppMethodBeat.o(107551);
+      }
+    };
+    this.Aqc = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(107552);
+        if (ActionBarSearchView.f(ActionBarSearchView.this) != null) {
+          ActionBarSearchView.f(ActionBarSearchView.this).bMn();
+        }
+        AppMethodBeat.o(107552);
+      }
+    };
     init();
+    AppMethodBeat.o(107564);
   }
   
   public ActionBarSearchView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(107563);
+    this.ApU = c.Aqf;
+    this.ApV = false;
+    this.qGO = false;
+    this.vYh = new TextWatcher()
+    {
+      public final void afterTextChanged(Editable paramAnonymousEditable) {}
+      
+      public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
+      
+      public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
+      {
+        AppMethodBeat.i(107549);
+        ActionBarSearchView.a(ActionBarSearchView.this);
+        u localu = ActionBarSearchView.b(ActionBarSearchView.this);
+        EditText localEditText;
+        Object localObject;
+        if (localu.Ayk)
+        {
+          localEditText = (EditText)localu.Ayi.get();
+          if (localEditText != null) {}
+        }
+        else if (ActionBarSearchView.c(ActionBarSearchView.this) != null)
+        {
+          localObject = ActionBarSearchView.c(ActionBarSearchView.this);
+          if (paramAnonymousCharSequence != null) {
+            break label253;
+          }
+        }
+        label253:
+        for (paramAnonymousCharSequence = "";; paramAnonymousCharSequence = paramAnonymousCharSequence.toString())
+        {
+          ((ActionBarSearchView.b)localObject).Sk(paramAnonymousCharSequence);
+          AppMethodBeat.o(107549);
+          return;
+          if (((paramAnonymousCharSequence != null) && (paramAnonymousCharSequence.toString() != null) && (paramAnonymousCharSequence.toString().length() != 0)) || ((localu.mText == null) || (localu.mText.length() == 0) || ((localu.mText != null) && (paramAnonymousCharSequence != null) && (localu.mText.equals(paramAnonymousCharSequence.toString())))))
+          {
+            ab.d("MicroMsg.WordsChecker", "text not change, new : %s, old : %s", new Object[] { paramAnonymousCharSequence, localu.mText });
+            break;
+          }
+          if (paramAnonymousCharSequence != null) {}
+          for (localObject = paramAnonymousCharSequence.toString();; localObject = "")
+          {
+            localu.mText = ((String)localObject);
+            localu.Ayh = u.m(localu.mText, localu.Ayj);
+            if (!u.a(localEditText, localu.Ayj)) {
+              break;
+            }
+            ab.d("MicroMsg.WordsChecker", "decorate text succ.");
+            break;
+          }
+        }
+      }
+    };
+    this.ApZ = new View.OnFocusChangeListener()
+    {
+      public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(107550);
+        ab.v("MicroMsg.ActionBarSearchView", "on edittext focus changed, hasFocus %B", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        if (ActionBarSearchView.d(ActionBarSearchView.this) != null) {
+          ActionBarSearchView.d(ActionBarSearchView.this).onFocusChange(paramAnonymousView, paramAnonymousBoolean);
+        }
+        AppMethodBeat.o(107550);
+      }
+    };
+    this.Aqb = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(107551);
+        if (ActionBarSearchView.c.Aqf == ActionBarSearchView.e(ActionBarSearchView.this))
+        {
+          ab.d("MicroMsg.ActionBarSearchView", "on status btn click, cur status is clear");
+          ActionBarSearchView.this.rs(true);
+          if (ActionBarSearchView.c(ActionBarSearchView.this) != null)
+          {
+            ActionBarSearchView.c(ActionBarSearchView.this).apP();
+            AppMethodBeat.o(107551);
+          }
+        }
+        else
+        {
+          ab.d("MicroMsg.ActionBarSearchView", "on status btn click, cur status is voice search");
+          if (ActionBarSearchView.c(ActionBarSearchView.this) != null) {
+            ActionBarSearchView.c(ActionBarSearchView.this).bMm();
+          }
+        }
+        AppMethodBeat.o(107551);
+      }
+    };
+    this.Aqc = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(107552);
+        if (ActionBarSearchView.f(ActionBarSearchView.this) != null) {
+          ActionBarSearchView.f(ActionBarSearchView.this).bMn();
+        }
+        AppMethodBeat.o(107552);
+      }
+    };
     init();
+    AppMethodBeat.o(107563);
   }
   
-  private void cII()
+  private void dNw()
   {
-    if ((this.vXF.getEditableText() != null) && (!bk.bl(this.vXF.getEditableText().toString())))
+    AppMethodBeat.i(107573);
+    if ((this.ApS.getEditableText() != null) && (!bo.isNullOrNil(this.ApS.getEditableText().toString())))
     {
-      fE(a.f.search_clear, getResources().getDimensionPixelSize(a.e.NormalIconSize));
-      this.vXH = c.vXS;
+      hM(2130840216, getResources().getDimensionPixelSize(2131427806));
+      this.ApU = c.Aqf;
+      AppMethodBeat.o(107573);
       return;
     }
-    if (this.vXI)
+    if (this.ApV)
     {
-      fE(a.f.voicesearch_enter_btn, getResources().getDimensionPixelSize(a.e.NormalIconSize));
-      this.vXH = c.vXT;
+      hM(2130840709, getResources().getDimensionPixelSize(2131427806));
+      this.ApU = c.Aqg;
+      AppMethodBeat.o(107573);
       return;
     }
-    fE(0, 0);
-    this.vXH = c.vXS;
+    hM(0, 0);
+    this.ApU = c.Aqf;
+    AppMethodBeat.o(107573);
   }
   
-  private void fE(int paramInt1, int paramInt2)
+  private void hM(int paramInt1, int paramInt2)
   {
-    this.vXG.setImageResource(paramInt1);
-    this.vXG.setBackgroundResource(0);
-    if (paramInt1 == a.f.voicesearch_enter_btn) {
-      this.vXG.setContentDescription(getContext().getString(a.k.voice_Input));
+    AppMethodBeat.i(107572);
+    this.ApT.setImageResource(paramInt1);
+    this.ApT.setBackgroundResource(0);
+    if (paramInt1 == 2130840709) {
+      this.ApT.setContentDescription(getContext().getString(2131304544));
     }
     for (;;)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.vXG.getLayoutParams();
+      ViewGroup.LayoutParams localLayoutParams = this.ApT.getLayoutParams();
       localLayoutParams.width = paramInt2;
-      this.vXG.setLayoutParams(localLayoutParams);
+      this.ApT.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(107572);
       return;
-      this.vXG.setContentDescription(getContext().getString(a.k.clear_btn));
+      this.ApT.setContentDescription(getContext().getString(2131298408));
     }
   }
   
   private void init()
   {
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(a.h.actionbar_searchview, this, true);
-    this.vXE = findViewById(a.g.ab_back_container);
-    this.vXE.setOnClickListener(this.vXP);
-    this.vXF = ((ActionBarEditText)findViewById(a.g.edittext));
-    this.vXJ = new r(this.vXF);
-    this.vXF.setSearchView(this);
-    this.vXF.post(new Runnable()
+    AppMethodBeat.i(107565);
+    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(getLayoutId(), this, true);
+    this.ApR = findViewById(2131820992);
+    this.ApR.setOnClickListener(this.Aqc);
+    this.ApS = ((ActionBarEditText)findViewById(2131820995));
+    this.ApW = new u(this.ApS);
+    this.ApS.setSearchView(this);
+    this.ApS.post(new Runnable()
     {
       public final void run()
       {
-        ActionBarSearchView.g(ActionBarSearchView.this).setText("");
+        AppMethodBeat.i(107553);
+        ActionBarSearchView.this.ApS.setText("");
         if (ActionBarSearchView.c(ActionBarSearchView.this) != null) {
-          ActionBarSearchView.c(ActionBarSearchView.this).beQ();
+          ActionBarSearchView.c(ActionBarSearchView.this).bMl();
         }
+        AppMethodBeat.o(107553);
       }
     });
-    this.vXG = ((ImageButton)findViewById(a.g.status_btn));
-    this.vXF.addTextChangedListener(this.sgm);
-    this.vXF.setOnKeyListener(new View.OnKeyListener()
+    this.ApT = ((ImageButton)findViewById(2131820996));
+    this.ApS.addTextChangedListener(this.vYh);
+    this.ApS.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
+        AppMethodBeat.i(107554);
         if (paramAnonymousInt == 67)
         {
-          y.d("MicroMsg.ActionBarSearchView", "on back key click.");
+          ab.d("MicroMsg.ActionBarSearchView", "on back key click.");
           Object localObject = ActionBarSearchView.b(ActionBarSearchView.this);
-          if (((r)localObject).wfu)
+          if (((u)localObject).Ayk)
           {
-            paramAnonymousView = (EditText)((r)localObject).wfs.get();
-            if ((paramAnonymousView != null) && (((r)localObject).wfr != null)) {}
+            paramAnonymousView = (EditText)((u)localObject).Ayi.get();
+            if ((paramAnonymousView != null) && (((u)localObject).Ayh != null)) {}
           }
           else
           {
+            AppMethodBeat.o(107554);
             return false;
           }
           paramAnonymousKeyEvent = paramAnonymousView.getText();
           paramAnonymousInt = paramAnonymousView.getSelectionStart();
           if (paramAnonymousInt == paramAnonymousView.getSelectionEnd())
           {
-            localObject = ((r)localObject).Ie(paramAnonymousInt);
-            if ((localObject != null) && (((r.b)localObject).wfx))
+            localObject = ((u)localObject).QQ(paramAnonymousInt);
+            if ((localObject != null) && (((u.b)localObject).Ayn))
             {
-              paramAnonymousKeyEvent.delete(((r.b)localObject).start, ((r.b)localObject).start + ((r.b)localObject).length);
+              paramAnonymousKeyEvent.delete(((u.b)localObject).start, ((u.b)localObject).start + ((u.b)localObject).length);
               paramAnonymousView.setTextKeepState(paramAnonymousKeyEvent);
-              paramAnonymousView.setSelection(((r.b)localObject).start);
+              paramAnonymousView.setSelection(((u.b)localObject).start);
+              AppMethodBeat.o(107554);
               return true;
             }
           }
+          AppMethodBeat.o(107554);
           return false;
         }
+        AppMethodBeat.o(107554);
         return false;
       }
     });
-    this.vXF.setOnSelectionChangeListener(new AutoMatchKeywordEditText.a()
+    this.ApS.setOnSelectionChangeListener(new AutoMatchKeywordEditText.a()
     {
       public final void b(EditText paramAnonymousEditText, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        y.d("MicroMsg.ActionBarSearchView", "start : %d, stop : %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        AppMethodBeat.i(107555);
+        ab.d("MicroMsg.ActionBarSearchView", "start : %d, stop : %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         Object localObject = ActionBarSearchView.b(ActionBarSearchView.this);
         EditText localEditText;
-        if (((r)localObject).wfu)
+        if (((u)localObject).Ayk)
         {
-          localEditText = (EditText)((r)localObject).wfs.get();
-          if ((localEditText != null) && (paramAnonymousEditText == localEditText)) {
-            break label67;
-          }
+          localEditText = (EditText)((u)localObject).Ayi.get();
+          if ((localEditText != null) && (paramAnonymousEditText == localEditText)) {}
         }
-        label67:
-        do
+        else
         {
-          int i;
-          do
-          {
-            do
-            {
-              return;
-              paramAnonymousEditText = localEditText.getText();
-              paramAnonymousInt2 = localEditText.getSelectionStart();
-              i = localEditText.getSelectionEnd();
-            } while ((paramAnonymousInt2 < 0) || (i < paramAnonymousInt2));
-            if (paramAnonymousInt2 != i) {
-              break;
-            }
-            localObject = ((r)localObject).Ie(paramAnonymousInt2);
-          } while ((localObject == null) || (!((r.b)localObject).wfx));
-          localEditText.setTextKeepState(paramAnonymousEditText);
-          paramAnonymousInt1 = ((r.b)localObject).start;
-          localEditText.setSelection(((r.b)localObject).length + paramAnonymousInt1);
+          AppMethodBeat.o(107555);
           return;
-          r.b localb = ((r)localObject).Ie(paramAnonymousInt2);
-          paramAnonymousInt1 = paramAnonymousInt2;
-          if (localb != null)
-          {
-            paramAnonymousInt1 = paramAnonymousInt2;
-            if (localb.wfx) {
-              paramAnonymousInt1 = localb.start + localb.length;
-            }
-          }
-          if (paramAnonymousInt1 >= i)
+        }
+        paramAnonymousEditText = localEditText.getText();
+        paramAnonymousInt2 = localEditText.getSelectionStart();
+        int i = localEditText.getSelectionEnd();
+        if ((paramAnonymousInt2 < 0) || (i < paramAnonymousInt2))
+        {
+          AppMethodBeat.o(107555);
+          return;
+        }
+        if (paramAnonymousInt2 == i)
+        {
+          localObject = ((u)localObject).QQ(paramAnonymousInt2);
+          if ((localObject != null) && (((u.b)localObject).Ayn))
           {
             localEditText.setTextKeepState(paramAnonymousEditText);
-            localEditText.setSelection(paramAnonymousInt1);
-            return;
+            paramAnonymousInt1 = ((u.b)localObject).start;
+            localEditText.setSelection(((u.b)localObject).length + paramAnonymousInt1);
           }
-          localObject = ((r)localObject).Ie(i);
-        } while ((localObject == null) || (!((r.b)localObject).wfx));
-        paramAnonymousInt2 = ((r.b)localObject).start;
-        localEditText.setTextKeepState(paramAnonymousEditText);
-        localEditText.setSelection(paramAnonymousInt1, paramAnonymousInt2);
+          AppMethodBeat.o(107555);
+          return;
+        }
+        u.b localb = ((u)localObject).QQ(paramAnonymousInt2);
+        paramAnonymousInt1 = paramAnonymousInt2;
+        if (localb != null)
+        {
+          paramAnonymousInt1 = paramAnonymousInt2;
+          if (localb.Ayn) {
+            paramAnonymousInt1 = localb.start + localb.length;
+          }
+        }
+        if (paramAnonymousInt1 >= i)
+        {
+          localEditText.setTextKeepState(paramAnonymousEditText);
+          localEditText.setSelection(paramAnonymousInt1);
+          AppMethodBeat.o(107555);
+          return;
+        }
+        localObject = ((u)localObject).QQ(i);
+        if ((localObject != null) && (((u.b)localObject).Ayn))
+        {
+          paramAnonymousInt2 = ((u.b)localObject).start;
+          localEditText.setTextKeepState(paramAnonymousEditText);
+          localEditText.setSelection(paramAnonymousInt1, paramAnonymousInt2);
+        }
+        AppMethodBeat.o(107555);
       }
     });
-    this.vXF.setOnFocusChangeListener(this.vXM);
-    c.d(this.vXF).Ig(100).a(null);
-    this.vXG.setOnClickListener(this.vXO);
+    this.ApS.setOnFocusChangeListener(this.ApZ);
+    c.d(this.ApS).QS(100).a(null);
+    this.ApT.setOnClickListener(this.Aqb);
+    AppMethodBeat.o(107565);
   }
   
-  public final void cIJ()
+  public final void dNx()
   {
-    this.vXF.clearFocus();
+    AppMethodBeat.i(107576);
+    this.ApS.clearFocus();
+    AppMethodBeat.o(107576);
   }
   
-  public final boolean cIK()
+  public final boolean dNy()
   {
-    if (this.vXF != null) {
-      return this.vXF.hasFocus();
+    AppMethodBeat.i(107577);
+    if (this.ApS != null)
+    {
+      boolean bool = this.ApS.hasFocus();
+      AppMethodBeat.o(107577);
+      return bool;
     }
+    AppMethodBeat.o(107577);
     return false;
   }
   
-  public final boolean cIL()
+  public final boolean dNz()
   {
-    if (this.vXF != null) {
-      return this.vXF.requestFocus();
+    AppMethodBeat.i(107578);
+    if (this.ApS != null)
+    {
+      boolean bool = this.ApS.requestFocus();
+      AppMethodBeat.o(107578);
+      return bool;
     }
+    AppMethodBeat.o(107578);
     return false;
   }
   
-  public final void fF(int paramInt1, int paramInt2)
+  protected int getLayoutId()
   {
-    if (this.vXF != null) {
-      this.vXF.setSelection(paramInt1, paramInt2);
-    }
+    return 2130968616;
   }
   
   public String getSearchContent()
   {
-    if (this.vXF.getEditableText() != null) {
-      return this.vXF.getEditableText().toString();
+    AppMethodBeat.i(107566);
+    if (this.ApS.getEditableText() != null)
+    {
+      String str = this.ApS.getEditableText().toString();
+      AppMethodBeat.o(107566);
+      return str;
     }
+    AppMethodBeat.o(107566);
     return "";
   }
   
   public int getSelectionEnd()
   {
-    if (this.vXF != null) {
-      return this.vXF.getSelectionEnd();
+    AppMethodBeat.i(107584);
+    if (this.ApS != null)
+    {
+      int i = this.ApS.getSelectionEnd();
+      AppMethodBeat.o(107584);
+      return i;
     }
+    AppMethodBeat.o(107584);
     return -1;
   }
   
   public int getSelectionStart()
   {
-    if (this.vXF != null) {
-      return this.vXF.getSelectionStart();
+    AppMethodBeat.i(107583);
+    if (this.ApS != null)
+    {
+      int i = this.ApS.getSelectionStart();
+      AppMethodBeat.o(107583);
+      return i;
     }
+    AppMethodBeat.o(107583);
     return -1;
   }
   
-  public final void nH(boolean paramBoolean)
+  public final void rr(boolean paramBoolean)
   {
-    this.vXI = paramBoolean;
-    cII();
+    AppMethodBeat.i(107569);
+    this.ApV = paramBoolean;
+    dNw();
+    AppMethodBeat.o(107569);
   }
   
-  public final void nI(boolean paramBoolean)
+  public final void rs(boolean paramBoolean)
   {
+    AppMethodBeat.i(107575);
     if (!paramBoolean)
     {
-      this.vXF.removeTextChangedListener(this.sgm);
-      this.vXF.setText("");
-      this.vXF.addTextChangedListener(this.sgm);
+      this.ApS.removeTextChangedListener(this.vYh);
+      this.ApS.setText("");
+      this.ApS.addTextChangedListener(this.vYh);
+      AppMethodBeat.o(107575);
       return;
     }
-    this.vXF.setText("");
+    this.ApS.setText("");
+    AppMethodBeat.o(107575);
   }
   
   public void setAutoMatchKeywords(boolean paramBoolean)
   {
-    if (this.vXJ != null) {
-      this.vXJ.wfu = paramBoolean;
+    if (this.ApW != null) {
+      this.ApW.Ayk = paramBoolean;
     }
   }
   
   public void setBackClickCallback(a parama)
   {
-    this.vXL = parama;
+    this.ApY = parama;
   }
   
   public void setCallBack(b paramb)
   {
-    this.vXK = paramb;
+    this.ApX = paramb;
   }
   
   public void setEditTextClickListener(View.OnClickListener paramOnClickListener)
   {
-    if (this.vXF != null)
+    AppMethodBeat.i(107579);
+    if (this.ApS != null)
     {
-      this.vXF.setFocusable(false);
-      this.vXF.setOnClickListener(paramOnClickListener);
+      this.ApS.setFocusable(false);
+      this.ApS.setOnClickListener(paramOnClickListener);
     }
+    AppMethodBeat.o(107579);
   }
   
   public void setEditTextEnabled(boolean paramBoolean)
   {
-    this.vXF.setEnabled(paramBoolean);
+    AppMethodBeat.i(107570);
+    this.ApS.setEnabled(paramBoolean);
+    AppMethodBeat.o(107570);
   }
   
   public void setFocusChangeListener(View.OnFocusChangeListener paramOnFocusChangeListener)
   {
-    this.vXN = paramOnFocusChangeListener;
+    this.Aqa = paramOnFocusChangeListener;
   }
   
   public void setHint(CharSequence paramCharSequence)
   {
-    this.vXF.setHint(paramCharSequence);
+    AppMethodBeat.i(107568);
+    this.ApS.setHint(paramCharSequence);
+    AppMethodBeat.o(107568);
   }
   
   public void setKeywords(ArrayList<String> paramArrayList)
   {
-    if (this.vXJ != null)
+    AppMethodBeat.i(107580);
+    if (this.ApW != null)
     {
-      r localr = this.vXJ;
-      localr.wft = paramArrayList;
-      if (localr.wfu)
+      u localu = this.ApW;
+      localu.Ayj = paramArrayList;
+      if (localu.Ayk)
       {
-        paramArrayList = (EditText)localr.wfs.get();
+        paramArrayList = (EditText)localu.Ayi.get();
         if (paramArrayList != null) {
-          r.a(paramArrayList, localr.wft);
+          u.a(paramArrayList, localu.Ayj);
         }
       }
     }
+    AppMethodBeat.o(107580);
   }
   
   public void setNotRealCallBack(SearchViewNotRealTimeHelper.a parama) {}
   
   public void setOnEditorActionListener(TextView.OnEditorActionListener paramOnEditorActionListener)
   {
-    this.vXF.setOnEditorActionListener(paramOnEditorActionListener);
+    AppMethodBeat.i(107574);
+    this.ApS.setOnEditorActionListener(paramOnEditorActionListener);
+    AppMethodBeat.o(107574);
   }
   
   public void setSearchContent(String paramString)
   {
+    AppMethodBeat.i(107567);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
-    this.vXF.setText(str);
-    this.vXF.setSelection(str.length());
+    this.ApS.setText(str);
+    this.ApS.setSelection(str.length());
+    AppMethodBeat.o(107567);
   }
   
   public void setSearchTipIcon(int paramInt)
   {
-    if (this.vXF != null) {
-      this.vXF.setCompoundDrawables(ae.getResources().getDrawable(paramInt), null, null, null);
+    AppMethodBeat.i(107581);
+    if (this.ApS != null) {
+      this.ApS.setCompoundDrawables(ah.getResources().getDrawable(paramInt), null, null, null);
     }
+    AppMethodBeat.o(107581);
   }
   
   public void setSelectedTag(String paramString)
   {
-    if (this.vXF != null)
+    AppMethodBeat.i(107582);
+    if (this.ApS != null)
     {
-      this.vXF.setCompoundDrawables(new d(this.vXF, paramString), null, null, null);
-      this.vXF.setHint("");
+      this.ApS.setCompoundDrawables(new d(this.ApS, paramString), null, null, null);
+      this.ApS.setHint("");
     }
+    AppMethodBeat.o(107582);
   }
   
   public void setStatusBtnEnabled(boolean paramBoolean)
   {
-    this.vXG.setEnabled(paramBoolean);
+    AppMethodBeat.i(107571);
+    this.ApT.setEnabled(paramBoolean);
+    AppMethodBeat.o(107571);
   }
   
   public static class ActionBarEditText
     extends AutoMatchKeywordEditText
   {
-    private ActionBarSearchView vXR;
+    private ActionBarSearchView Aqe;
     
     public ActionBarEditText(Context paramContext, AttributeSet paramAttributeSet)
     {
@@ -491,102 +678,121 @@ public class ActionBarSearchView
     
     public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
     {
-      y.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme");
+      AppMethodBeat.i(107556);
+      ab.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme");
       if (paramInt == 4)
       {
         KeyEvent.DispatcherState localDispatcherState;
         if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
         {
-          y.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme action down");
+          ab.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme action down");
           localDispatcherState = getKeyDispatcherState();
           if (localDispatcherState != null) {
             localDispatcherState.startTracking(paramKeyEvent, this);
           }
+          AppMethodBeat.o(107556);
           return true;
         }
         if (paramKeyEvent.getAction() == 1)
         {
-          y.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme action up");
+          ab.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme action up");
           localDispatcherState = getKeyDispatcherState();
           if (localDispatcherState != null) {
             localDispatcherState.handleUpEvent(paramKeyEvent);
           }
           if ((paramKeyEvent.isTracking()) && (!paramKeyEvent.isCanceled()))
           {
-            y.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme action up is tracking");
-            this.vXR.clearFocus();
+            ab.v("MicroMsg.ActionBarSearchView", "on onKeyPreIme action up is tracking");
+            this.Aqe.clearFocus();
             paramKeyEvent = (InputMethodManager)getContext().getSystemService("input_method");
             if (paramKeyEvent != null) {
               paramKeyEvent.hideSoftInputFromWindow(getWindowToken(), 0);
             }
+            AppMethodBeat.o(107556);
             return true;
           }
         }
       }
-      return super.onKeyPreIme(paramInt, paramKeyEvent);
+      boolean bool = super.onKeyPreIme(paramInt, paramKeyEvent);
+      AppMethodBeat.o(107556);
+      return bool;
     }
     
     public void setSearchView(ActionBarSearchView paramActionBarSearchView)
     {
-      this.vXR = paramActionBarSearchView;
+      this.Aqe = paramActionBarSearchView;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void beS();
+    public abstract void bMn();
   }
   
   public static abstract interface b
   {
-    public abstract void GH(String paramString);
+    public abstract void Sk(String paramString);
     
-    public abstract void Wn();
+    public abstract void apP();
     
-    public abstract void beQ();
+    public abstract void bMl();
     
-    public abstract void beR();
+    public abstract void bMm();
   }
   
-  private static enum c
+  static enum c
   {
+    static
+    {
+      AppMethodBeat.i(107559);
+      Aqf = new c("CLEAR", 0);
+      Aqg = new c("VOICE_SEARCH", 1);
+      Aqh = new c[] { Aqf, Aqg };
+      AppMethodBeat.o(107559);
+    }
+    
     private c() {}
   }
   
   final class d
     extends Drawable
   {
-    private RectF fS;
-    private String hnV;
-    private Paint vXV;
-    private int vXW = BackwardSupportUtil.b.b(ae.getContext(), 2.0F);
-    private float vXX;
-    private float vXY;
+    private int Aqi;
+    private float Aqj;
+    private float Aqk;
+    private RectF gM;
+    private String mText;
+    private Paint oqV;
     
     d(EditText paramEditText, String paramString)
     {
-      this.vXV = new Paint(paramEditText.getPaint());
-      this.hnV = paramString;
-      this.vXV.setColor(ae.getResources().getColor(a.d.green_text_color));
-      this.vXX = this.vXV.measureText(this.hnV);
-      this$1 = this.vXV.getFontMetrics();
-      this.vXY = ((float)Math.ceil(ActionBarSearchView.this.bottom - ActionBarSearchView.this.top));
-      float f = this.vXY;
-      setBounds(0, 0, (int)(this.vXX + this.vXW * 2 + this.vXW * 2 + 2.0F), (int)f);
+      AppMethodBeat.i(107560);
+      this.Aqi = BackwardSupportUtil.b.b(ah.getContext(), 2.0F);
+      this.oqV = new Paint(paramEditText.getPaint());
+      this.mText = paramString;
+      this.oqV.setColor(ah.getResources().getColor(2131689778));
+      this.Aqj = this.oqV.measureText(this.mText);
+      this$1 = this.oqV.getFontMetrics();
+      this.Aqk = ((float)Math.ceil(ActionBarSearchView.this.bottom - ActionBarSearchView.this.top));
+      float f = this.Aqk;
+      setBounds(0, 0, (int)(this.Aqj + this.Aqi * 2 + this.Aqi * 2 + 2.0F), (int)f);
+      AppMethodBeat.o(107560);
     }
     
     public final void draw(Canvas paramCanvas)
     {
-      Paint.FontMetricsInt localFontMetricsInt = this.vXV.getFontMetricsInt();
+      AppMethodBeat.i(107561);
+      Paint.FontMetricsInt localFontMetricsInt = this.oqV.getFontMetricsInt();
       Rect localRect = getBounds();
       int i = localRect.right;
       i = localRect.left;
-      float f = this.fS.right;
-      f = this.fS.left;
+      float f = this.gM.right;
+      f = this.gM.left;
       i = localRect.top;
       int j = (localRect.bottom - localRect.top - localFontMetricsInt.bottom + localFontMetricsInt.top) / 2;
       int k = localFontMetricsInt.top;
-      paramCanvas.drawText(this.hnV, localRect.left + 2, i + j - k, this.vXV);
+      paramCanvas.drawText(this.mText, localRect.left + 2, i + j - k, this.oqV);
+      AppMethodBeat.o(107561);
     }
     
     public final int getOpacity()
@@ -598,12 +804,14 @@ public class ActionBarSearchView
     
     public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
+      AppMethodBeat.i(107562);
       super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
-      Paint.FontMetrics localFontMetrics = this.vXV.getFontMetrics();
-      float f1 = this.vXW + paramInt1;
+      Paint.FontMetrics localFontMetrics = this.oqV.getFontMetrics();
+      float f1 = this.Aqi + paramInt1;
       float f2 = paramInt2;
-      this.fS = new RectF(f1, localFontMetrics.ascent - localFontMetrics.top + f2, paramInt3 - this.vXW, paramInt4);
+      this.gM = new RectF(f1, localFontMetrics.ascent - localFontMetrics.top + f2, paramInt3 - this.Aqi, paramInt4);
       invalidateSelf();
+      AppMethodBeat.o(107562);
     }
     
     public final void setColorFilter(ColorFilter paramColorFilter) {}

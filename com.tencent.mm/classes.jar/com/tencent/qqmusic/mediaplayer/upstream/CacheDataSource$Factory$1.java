@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.io.File;
 import java.io.IOException;
@@ -14,18 +15,20 @@ final class CacheDataSource$Factory$1
   
   public final void close()
   {
+    AppMethodBeat.i(104582);
     try
     {
       super.close();
-      label4:
+      label9:
       if (!this.val$bufferFile.delete()) {
         Logger.w("CacheDataSource", "failed to delete buffer file: " + this.val$bufferFile);
       }
+      AppMethodBeat.o(104582);
       return;
     }
     catch (IOException localIOException)
     {
-      break label4;
+      break label9;
     }
   }
 }

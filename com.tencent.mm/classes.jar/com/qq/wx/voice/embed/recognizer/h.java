@@ -3,6 +3,7 @@ package com.qq.wx.voice.embed.recognizer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h
   extends Handler
@@ -11,17 +12,21 @@ final class h
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(123224);
     switch (paramMessage.what)
     {
-    default: 
-      return;
-    case 100: 
-      int i = paramMessage.getData().getInt("errorCode");
-      this.aVx.aVy.dX(i);
-      return;
     }
-    paramMessage = (a)paramMessage.obj;
-    this.aVx.aVy.a(paramMessage);
+    for (;;)
+    {
+      AppMethodBeat.o(123224);
+      return;
+      int i = paramMessage.getData().getInt("errorCode");
+      this.bmf.bmg.fn(i);
+      AppMethodBeat.o(123224);
+      return;
+      paramMessage = (a)paramMessage.obj;
+      this.bmf.bmg.a(paramMessage);
+    }
   }
 }
 

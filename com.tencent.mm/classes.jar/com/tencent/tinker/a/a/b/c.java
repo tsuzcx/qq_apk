@@ -2,6 +2,17 @@ package com.tencent.tinker.a.a.b;
 
 public final class c
 {
+  private static int a(byte paramByte1, byte paramByte2)
+  {
+    if (paramByte1 == paramByte2) {
+      return 0;
+    }
+    if ((paramByte1 & 0xFF) < (paramByte2 & 0xFF)) {
+      return -1;
+    }
+    return 1;
+  }
+  
   public static <T extends Comparable<T>> int a(T[] paramArrayOfT1, T[] paramArrayOfT2)
   {
     int m = paramArrayOfT1.length;
@@ -89,7 +100,7 @@ public final class c
       if (j >= m) {
         break label59;
       }
-      int k = gi(paramArrayOfInt1[j], paramArrayOfInt2[j]);
+      int k = iq(paramArrayOfInt1[j], paramArrayOfInt2[j]);
       i = k;
       if (k != 0) {
         break;
@@ -100,7 +111,7 @@ public final class c
     return 0;
   }
   
-  public static int gh(int paramInt1, int paramInt2)
+  public static int ip(int paramInt1, int paramInt2)
   {
     if (paramInt1 == paramInt2) {
       return 0;
@@ -111,7 +122,7 @@ public final class c
     return 1;
   }
   
-  public static int gi(int paramInt1, int paramInt2)
+  public static int iq(int paramInt1, int paramInt2)
   {
     if (paramInt1 == paramInt2) {
       return 0;
@@ -122,35 +133,32 @@ public final class c
     return 1;
   }
   
-  public static int l(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static int o(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    int k = paramArrayOfByte1.length;
+    int m = paramArrayOfByte1.length;
     int i = paramArrayOfByte2.length;
-    if (k < i) {
-      return -1;
+    if (m < i)
+    {
+      i = -1;
+      return i;
     }
-    if (k > i) {
+    if (m > i) {
       return 1;
     }
     int j = 0;
-    while (j < k)
+    for (;;)
     {
-      i = paramArrayOfByte1[j];
-      int m = paramArrayOfByte2[j];
-      if (i == m) {
-        i = 0;
+      if (j >= m) {
+        break label59;
       }
-      while (i != 0)
-      {
-        return i;
-        if ((i & 0xFF) < (m & 0xFF)) {
-          i = -1;
-        } else {
-          i = 1;
-        }
+      int k = a(paramArrayOfByte1[j], paramArrayOfByte2[j]);
+      i = k;
+      if (k != 0) {
+        break;
       }
       j += 1;
     }
+    label59:
     return 0;
   }
 }

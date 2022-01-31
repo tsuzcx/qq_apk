@@ -3,8 +3,7 @@ package com.tencent.mm.ui;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class ServiceNotifySettingsUI$a$1
@@ -14,32 +13,36 @@ final class ServiceNotifySettingsUI$a$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(29856);
     String str = (String)paramView.getTag();
-    if (TextUtils.isEmpty(str)) {
+    if (TextUtils.isEmpty(str))
+    {
+      AppMethodBeat.o(29856);
       return;
     }
     paramView = paramView.getContext();
     int i;
-    if (this.uQO == 1)
+    if (this.zeY == 1)
     {
-      i = R.l.notify_message_settings_receive_app_brand_custom_session_msg_title;
-      if (this.uQO != 1) {
-        break label88;
+      i = 2131301985;
+      if (this.zeY != 1) {
+        break label101;
       }
     }
-    label88:
-    for (int j = R.l.notify_message_settings_receive_app_brand_custom_session_msg_title_ok;; j = R.l.app_ok)
+    label101:
+    for (int j = 2131301986;; j = 2131297018)
     {
-      h.a(paramView, i, 0, j, R.l.cancel, false, new ServiceNotifySettingsUI.a.1.1(this, str), new ServiceNotifySettingsUI.a.1.2(this), R.e.green_text_color);
+      h.a(paramView, i, 0, j, 2131297837, false, new ServiceNotifySettingsUI.a.1.1(this, str), new ServiceNotifySettingsUI.a.1.2(this), 2131690139);
+      AppMethodBeat.o(29856);
       return;
-      i = R.l.notify_message_settings_receive_app_brand_msg_title;
+      i = 2131301989;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.ServiceNotifySettingsUI.a.1
  * JD-Core Version:    0.7.0.1
  */

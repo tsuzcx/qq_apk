@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
 public abstract interface g$a
 {
-  public abstract void cin();
+  public abstract void diE();
   
-  public abstract void cio();
+  public abstract void diF();
   
-  public abstract void cip();
+  public abstract void diG();
   
-  public abstract void ciq();
+  public abstract void diH();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.manager.g.a
  * JD-Core Version:    0.7.0.1
  */

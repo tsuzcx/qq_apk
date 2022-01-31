@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$n
+public final class c$n
   extends c.g
 {
-  c$n()
+  public c$n()
   {
-    super("authorize", "authorize", 232, true);
+    super("adDataReport", "ad_data_report", 221, false);
   }
 }
 

@@ -1,241 +1,299 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Looper;
 import android.widget.Toast;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.i.m;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.an;
-import com.tencent.mm.plugin.sns.model.aw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ao;
 import com.tencent.mm.plugin.sns.model.ax;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.sns.model.ay;
+import com.tencent.mm.plugin.sns.storage.l;
+import com.tencent.mm.plugin.sns.storage.m;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.t;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SettingSnsBackgroundUI
   extends MMPreference
 {
-  private SharedPreferences dnD;
-  private f dnn;
   protected String filePath;
+  private f screen;
+  private SharedPreferences sp;
   
-  private void awX()
+  private void bEq()
   {
-    if (!com.tencent.mm.pluginsdk.ui.tools.l.c(this, com.tencent.mm.compatible.util.e.dzD, "microMsg." + System.currentTimeMillis() + ".jpg", 2)) {
-      Toast.makeText(this, getString(i.j.selectcameraapp_none), 1).show();
+    AppMethodBeat.i(38567);
+    if (!com.tencent.mm.pluginsdk.ui.tools.n.c(this, com.tencent.mm.compatible.util.e.esr, "microMsg." + System.currentTimeMillis() + ".jpg", 2)) {
+      Toast.makeText(this, getString(2131303074), 1).show();
     }
+    AppMethodBeat.o(38567);
   }
   
-  private void e(int paramInt, Intent paramIntent)
+  private void k(int paramInt, Intent paramIntent)
   {
+    AppMethodBeat.i(38563);
     switch (paramInt)
     {
     case 3: 
     case 4: 
     default: 
-      y.e("MicroMsg.SettingSnsBackgroundUI", "onActivityResult: not found this requestCode");
-    }
-    do
-    {
-      do
+      ab.e("MicroMsg.SettingSnsBackgroundUI", "onActivityResult: not found this requestCode");
+      AppMethodBeat.o(38563);
+      return;
+    case 2: 
+      ab.d("MicroMsg.SettingSnsBackgroundUI", "onActivityResult CONTEXT_MENU_TAKE_PICTURE");
+      this.filePath = com.tencent.mm.pluginsdk.ui.tools.n.h(getApplicationContext(), paramIntent, ag.getAccSnsTmpPath());
+      if (this.filePath == null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              y.d("MicroMsg.SettingSnsBackgroundUI", "onActivityResult CONTEXT_MENU_TAKE_PICTURE");
-              this.filePath = com.tencent.mm.pluginsdk.ui.tools.l.f(getApplicationContext(), paramIntent, af.getAccSnsTmpPath());
-            } while (this.filePath == null);
-            paramIntent = new Intent();
-            paramIntent.putExtra("CropImageMode", 1);
-            paramIntent.putExtra("CropImage_ImgPath", this.filePath);
-            localObject1 = com.tencent.mm.a.g.o((this.filePath + System.currentTimeMillis()).getBytes());
-            paramIntent.putExtra("CropImage_OutputPath", af.getAccSnsTmpPath() + (String)localObject1);
-            com.tencent.mm.plugin.sns.c.a.eUR.a(this, paramIntent, 6);
-            return;
-            y.d("MicroMsg.SettingSnsBackgroundUI", "onActivityResult CONTEXT_MENU_IMAGE_BROUND");
-          } while (paramIntent == null);
-          this.filePath = com.tencent.mm.pluginsdk.ui.tools.l.f(getApplicationContext(), paramIntent, af.getAccSnsTmpPath());
-        } while (this.filePath == null);
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtra("CropImageMode", 1);
-        ((Intent)localObject1).putExtra("CropImage_ImgPath", this.filePath);
-        com.tencent.mm.plugin.sns.c.a.eUR.a(this, paramIntent, (Intent)localObject1, af.getAccSnsTmpPath(), 6, new SettingSnsBackgroundUI.1(this));
+        AppMethodBeat.o(38563);
         return;
-        y.d("MicroMsg.SettingSnsBackgroundUI", "onActivityResult REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM");
-        new ah(Looper.getMainLooper()).post(new SettingSnsBackgroundUI.2(this));
-      } while (paramIntent == null);
-      this.filePath = paramIntent.getStringExtra("CropImage_OutputPath");
-    } while (this.filePath == null);
-    y.d("MicroMsg.SettingSnsBackgroundUI", "REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM   " + this.filePath);
-    Object localObject1 = af.bDB();
+      }
+      paramIntent = new Intent();
+      paramIntent.putExtra("CropImageMode", 1);
+      paramIntent.putExtra("CropImage_ImgPath", this.filePath);
+      localObject1 = com.tencent.mm.a.g.w((this.filePath + System.currentTimeMillis()).getBytes());
+      paramIntent.putExtra("CropImage_OutputPath", ag.getAccSnsTmpPath() + (String)localObject1);
+      com.tencent.mm.plugin.sns.c.a.gmO.a(this, paramIntent, 6);
+      AppMethodBeat.o(38563);
+      return;
+    case 5: 
+      ab.d("MicroMsg.SettingSnsBackgroundUI", "onActivityResult CONTEXT_MENU_IMAGE_BROUND");
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(38563);
+        return;
+      }
+      this.filePath = com.tencent.mm.pluginsdk.ui.tools.n.h(getApplicationContext(), paramIntent, ag.getAccSnsTmpPath());
+      if (this.filePath == null)
+      {
+        AppMethodBeat.o(38563);
+        return;
+      }
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("CropImageMode", 1);
+      ((Intent)localObject1).putExtra("CropImage_ImgPath", this.filePath);
+      com.tencent.mm.plugin.sns.c.a.gmO.a(this, paramIntent, (Intent)localObject1, ag.getAccSnsTmpPath(), 6, new SettingSnsBackgroundUI.1(this));
+      AppMethodBeat.o(38563);
+      return;
+    }
+    ab.d("MicroMsg.SettingSnsBackgroundUI", "onActivityResult REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM");
+    new ak(Looper.getMainLooper()).post(new SettingSnsBackgroundUI.2(this));
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(38563);
+      return;
+    }
+    this.filePath = paramIntent.getStringExtra("CropImage_OutputPath");
+    if (this.filePath == null)
+    {
+      AppMethodBeat.o(38563);
+      return;
+    }
+    ab.d("MicroMsg.SettingSnsBackgroundUI", "REQUEST_CODE_IMAGE_BROUND_SEND_COMFIRM   " + this.filePath);
+    Object localObject1 = ag.cpb();
     paramIntent = this.filePath;
     new LinkedList().add(new com.tencent.mm.plugin.sns.data.h(paramIntent, 2));
-    if ((((aw)localObject1).bDl() != null) && (!((aw)localObject1).bDl().equals("")))
+    if ((((ax)localObject1).coK() != null) && (!((ax)localObject1).coK().equals("")))
     {
-      Object localObject2 = an.eJ(af.getAccSnsPath(), ((aw)localObject1).bDl());
-      com.tencent.mm.vfs.e.nb((String)localObject2);
-      com.tencent.mm.vfs.e.deleteFile((String)localObject2 + ((aw)localObject1).bDl() + "bg_");
-      com.tencent.mm.vfs.e.r(paramIntent, (String)localObject2 + ((aw)localObject1).bDl() + "bg_");
-      localObject2 = af.bDJ();
-      com.tencent.mm.plugin.sns.storage.l locall = ((com.tencent.mm.plugin.sns.storage.m)localObject2).OF(((aw)localObject1).bDl());
+      Object localObject2 = ao.gl(ag.getAccSnsPath(), ((ax)localObject1).coK());
+      com.tencent.mm.vfs.e.um((String)localObject2);
+      com.tencent.mm.vfs.e.deleteFile((String)localObject2 + ((ax)localObject1).coK() + "bg_");
+      com.tencent.mm.vfs.e.C(paramIntent, (String)localObject2 + ((ax)localObject1).coK() + "bg_");
+      localObject2 = ag.cpj();
+      l locall = ((m)localObject2).abz(((ax)localObject1).coK());
       locall.field_bgId = "";
-      ((com.tencent.mm.plugin.sns.storage.m)localObject2).c(locall);
+      ((m)localObject2).c(locall);
     }
-    ((aw)localObject1).bEo();
-    ((aw)localObject1).bDl();
-    localObject1 = new ax(7);
-    ((ax)localObject1).eO(paramIntent, "");
-    ((ax)localObject1).xT(1);
-    ((ax)localObject1).commit();
+    ((ax)localObject1).cpN();
+    ((ax)localObject1).coK();
+    localObject1 = new ay(7);
+    ((ay)localObject1).gq(paramIntent, "");
+    ((ay)localObject1).DT(1);
+    ((ay)localObject1).commit();
     setResult(-1);
     finish();
+    AppMethodBeat.o(38563);
   }
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    paramf = paramPreference.mKey;
-    y.i("MicroMsg.SettingSnsBackgroundUI", paramf + " item has been clicked!");
-    if (paramf.equals("settings_sns_bg_select_from_album"))
-    {
-      com.tencent.mm.kernel.g.DQ();
-      if (!com.tencent.mm.kernel.g.DP().isSDCardAvailable()) {
-        com.tencent.mm.ui.base.s.gM(this);
-      }
-    }
-    do
-    {
-      boolean bool;
-      do
-      {
-        return false;
-        com.tencent.mm.pluginsdk.ui.tools.l.a(this, 5, null);
-        return true;
-        if (!paramf.equals("settings_sns_bg_take_photo")) {
-          break;
-        }
-        com.tencent.mm.kernel.g.DQ();
-        if (!com.tencent.mm.kernel.g.DP().isSDCardAvailable())
-        {
-          com.tencent.mm.ui.base.s.gM(this);
-          return false;
-        }
-        bool = com.tencent.mm.pluginsdk.permission.a.a(this.mController.uMN, "android.permission.CAMERA", 16, "", "");
-        y.i("MicroMsg.SettingSnsBackgroundUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this.mController.uMN });
-      } while (!bool);
-      awX();
-      return true;
-    } while (!paramf.equals("settings_sns_bg_select_bg"));
-    startActivity(new Intent(this, ArtistUI.class));
-    return true;
+    return 2131165294;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(i.j.settings_sns_bg_title);
-    SnsArtistPreference localSnsArtistPreference = (SnsArtistPreference)this.dnn.add("settings_sns_bg_select_bg");
+    AppMethodBeat.i(38565);
+    setMMTitle(2131303437);
+    SnsArtistPreference localSnsArtistPreference = (SnsArtistPreference)this.screen.atx("settings_sns_bg_select_bg");
     if (localSnsArtistPreference != null)
     {
-      String str = this.dnD.getString("artist_name", "");
-      y.d("MicroMsg.SettingSnsBackgroundUI", "artistName" + str);
-      localSnsArtistPreference.oVr = str;
-      localSnsArtistPreference.bIs();
-      this.dnn.notifyDataSetChanged();
+      String str = this.sp.getString("artist_name", "");
+      ab.d("MicroMsg.SettingSnsBackgroundUI", "artistName".concat(String.valueOf(str)));
+      localSnsArtistPreference.rNM = str;
+      localSnsArtistPreference.cuM();
+      this.screen.notifyDataSetChanged();
     }
     setBackBtn(new SettingSnsBackgroundUI.5(this));
+    AppMethodBeat.o(38565);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    y.i("MicroMsg.SettingSnsBackgroundUI", "onAcvityResult requestCode:" + paramInt1 + " " + paramInt2);
+    AppMethodBeat.i(38564);
+    ab.i("MicroMsg.SettingSnsBackgroundUI", "onAcvityResult requestCode:" + paramInt1 + " " + paramInt2);
     if (paramInt2 != -1)
     {
       if ((paramInt1 == 2) || (paramInt1 == 5) || (paramInt1 == 6)) {
-        new ah(Looper.getMainLooper()).post(new SettingSnsBackgroundUI.3(this));
+        new ak(Looper.getMainLooper()).post(new SettingSnsBackgroundUI.3(this));
       }
+      AppMethodBeat.o(38564);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder("result ok ");
-    com.tencent.mm.kernel.g.DQ();
-    y.d("MicroMsg.SettingSnsBackgroundUI", com.tencent.mm.kernel.g.DN().Dc());
-    if (af.bDo())
+    com.tencent.mm.kernel.g.RM();
+    ab.d("MicroMsg.SettingSnsBackgroundUI", com.tencent.mm.kernel.g.RJ().QU());
+    if (ag.coN())
     {
-      new ah(Looper.myLooper()).postDelayed(new SettingSnsBackgroundUI.4(this, paramInt1, paramInt2, paramIntent), 2000L);
+      new ak(Looper.myLooper()).postDelayed(new SettingSnsBackgroundUI.4(this, paramInt1, paramInt2, paramIntent), 2000L);
+      AppMethodBeat.o(38564);
       return;
     }
-    y.d("MicroMsg.SettingSnsBackgroundUI", "isInValid ok");
-    e(paramInt1, paramIntent);
+    ab.d("MicroMsg.SettingSnsBackgroundUI", "isInValid ok");
+    k(paramInt1, paramIntent);
+    AppMethodBeat.o(38564);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    y.d("MicroMsg.SettingSnsBackgroundUI", "onCreate");
+    AppMethodBeat.i(38559);
+    ab.d("MicroMsg.SettingSnsBackgroundUI", "onCreate");
     super.onCreate(paramBundle);
-    this.dnn = this.vdd;
-    this.dnD = getSharedPreferences(ae.cqR(), 0);
+    this.screen = getPreferenceScreen();
+    this.sp = getSharedPreferences(ah.dsP(), 0);
     initView();
+    AppMethodBeat.o(38559);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(38561);
     super.onDestroy();
-    y.d("MicroMsg.SettingSnsBackgroundUI", "onDestroy");
+    ab.d("MicroMsg.SettingSnsBackgroundUI", "onDestroy");
+    AppMethodBeat.o(38561);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
-    y.d("MicroMsg.SettingSnsBackgroundUI", "onNewIntent");
+    AppMethodBeat.i(38560);
+    ab.d("MicroMsg.SettingSnsBackgroundUI", "onNewIntent");
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
     setResult(-1);
     finish();
+    AppMethodBeat.o(38560);
+  }
+  
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  {
+    AppMethodBeat.i(38566);
+    paramf = paramPreference.mKey;
+    ab.i("MicroMsg.SettingSnsBackgroundUI", paramf + " item has been clicked!");
+    if (paramf.equals("settings_sns_bg_select_from_album"))
+    {
+      com.tencent.mm.kernel.g.RM();
+      if (!com.tencent.mm.kernel.g.RL().isSDCardAvailable())
+      {
+        t.ii(this);
+        AppMethodBeat.o(38566);
+        return false;
+      }
+      com.tencent.mm.pluginsdk.ui.tools.n.a(this, 5, null);
+      AppMethodBeat.o(38566);
+      return true;
+    }
+    if (paramf.equals("settings_sns_bg_take_photo"))
+    {
+      com.tencent.mm.kernel.g.RM();
+      if (!com.tencent.mm.kernel.g.RL().isSDCardAvailable())
+      {
+        t.ii(this);
+        AppMethodBeat.o(38566);
+        return false;
+      }
+      boolean bool = b.a(getContext(), "android.permission.CAMERA", 16, "", "");
+      ab.i("MicroMsg.SettingSnsBackgroundUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), getContext() });
+      if (!bool)
+      {
+        AppMethodBeat.o(38566);
+        return false;
+      }
+      bEq();
+      AppMethodBeat.o(38566);
+      return true;
+    }
+    if (paramf.equals("settings_sns_bg_select_bg"))
+    {
+      startActivity(new Intent(this, ArtistUI.class));
+      AppMethodBeat.o(38566);
+      return true;
+    }
+    AppMethodBeat.o(38566);
+    return false;
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length == 0))
+    AppMethodBeat.i(38568);
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      y.i("MicroMsg.SettingSnsBackgroundUI", "summerper onRequestPermissionsResult grantResults[%s] invalid", new Object[] { paramArrayOfInt });
+      ab.i("MicroMsg.SettingSnsBackgroundUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(38568);
       return;
     }
-    y.i("MicroMsg.SettingSnsBackgroundUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    ab.i("MicroMsg.SettingSnsBackgroundUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    if (paramArrayOfInt[0] == 0)
+    for (;;)
     {
-      awX();
+      AppMethodBeat.o(38568);
       return;
+      if (paramArrayOfInt[0] == 0)
+      {
+        bEq();
+        AppMethodBeat.o(38568);
+        return;
+      }
+      com.tencent.mm.ui.base.h.a(this, getString(2131302067), getString(2131302083), getString(2131300996), getString(2131296888), false, new SettingSnsBackgroundUI.6(this), null);
     }
-    com.tencent.mm.ui.base.h.a(this, getString(i.j.permission_camera_request_again_msg), getString(i.j.permission_tips_title), getString(i.j.jump_to_settings), getString(i.j.app_cancel), false, new SettingSnsBackgroundUI.6(this), null);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(38562);
     super.onResume();
-    if (this.dnn != null) {
-      this.dnn.notifyDataSetChanged();
+    if (this.screen != null) {
+      this.screen.notifyDataSetChanged();
     }
+    AppMethodBeat.o(38562);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return i.m.settings_sns_background;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

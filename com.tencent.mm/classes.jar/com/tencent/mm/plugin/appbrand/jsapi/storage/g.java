@@ -1,40 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.customize.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.f;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import java.util.ArrayList;
 
 public class g
-  extends a
+  extends a<h>
 {
   public static final int CTRL_INDEX = 113;
   public static final String NAME = "getStorageInfo";
   
-  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
+  protected String w(c paramc)
   {
-    paramJSONObject = new JsApiGetStorageInfoTask();
-    paramJSONObject.appId = o(paramc);
-    paramJSONObject.gfD = new Runnable()
-    {
-      public final void run()
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("keys", paramJSONObject.gCb);
-        localHashMap.put("currentSize", Integer.valueOf(paramJSONObject.size));
-        localHashMap.put("limitSize", Integer.valueOf(paramJSONObject.limit));
-        paramc.C(paramInt, g.this.h("ok", localHashMap));
-      }
-    };
-    paramJSONObject.ahC();
-    AppBrandMainProcessService.a(paramJSONObject);
-  }
-  
-  protected String o(c paramc)
-  {
-    return paramc.getAppId();
+    AppMethodBeat.i(102042);
+    paramc = paramc.getAppId();
+    AppMethodBeat.o(102042);
+    return paramc;
   }
 }
 

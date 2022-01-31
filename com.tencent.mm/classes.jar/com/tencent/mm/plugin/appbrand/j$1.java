@@ -1,28 +1,58 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.widget.input.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
+import com.tencent.mm.plugin.appbrand.report.quality.a;
+import com.tencent.mm.plugin.appbrand.task.e;
+import com.tencent.mm.plugin.appbrand.task.e.b;
+import com.tencent.mm.plugin.appbrand.task.g;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$1
   implements Runnable
 {
-  j$1(j paramj, i parami, AppBrandInitConfig paramAppBrandInitConfig) {}
+  j$1(j paramj, o paramo, i.c paramc, e.b paramb) {}
   
   public final void run()
   {
-    m.u(this.fzc.fyk);
-    if (this.fza == null) {
-      this.fzc.ZX();
-    }
-    i locali = this.fzc.qD(this.fzb.appId);
-    if (locali == null)
+    int j = 0;
+    AppMethodBeat.i(128955);
+    o localo = this.gQq;
+    i.c localc = this.gQr;
+    e.b localb = this.gQs;
+    int i = j;
+    if (!localo.mFinished)
     {
-      locali = this.fzc.ZU();
-      this.fzc.a(this.fza, locali, this.fzb);
-      locali.Zw();
-      return;
+      if (!localo.mInitialized) {
+        break label59;
+      }
+      i = j;
     }
-    this.fzc.b(this.fza, locali, this.fzb);
+    for (;;)
+    {
+      if (i == 0) {
+        this.gQr.tT();
+      }
+      AppMethodBeat.o(128955);
+      return;
+      label59:
+      i = j;
+      if (e.aLM())
+      {
+        g localg = g.c(localo.atS());
+        i = j;
+        if (localg == g.iKS)
+        {
+          ab.i("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", "tryPreloadBeforeResourceDone, entered, reason[%s], appId[%s]", new Object[] { localb.name(), localo.mAppId });
+          QualitySessionRuntime localQualitySessionRuntime = a.EM(localo.mAppId);
+          if (localQualitySessionRuntime != null) {
+            localQualitySessionRuntime.iIQ = true;
+          }
+          e.a(localg, new j.a(localb, localo, localc), true, null);
+          i = 1;
+        }
+      }
+    }
   }
 }
 

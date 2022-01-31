@@ -1,12 +1,10 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.ai.a.c;
-import com.tencent.mm.kernel.c.a;
-
 public abstract interface g
-  extends a
 {
-  public abstract c aj(long paramLong);
+  public abstract void onExit();
+  
+  public abstract void onFinish();
 }
 
 

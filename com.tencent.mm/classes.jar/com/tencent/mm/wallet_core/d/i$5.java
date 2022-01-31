@@ -3,8 +3,9 @@ package com.tencent.mm.wallet_core.d;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import java.util.HashSet;
@@ -17,23 +18,25 @@ final class i$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.wBi.ftk != null) && (this.wBi.fti.isEmpty()))
+    AppMethodBeat.i(49143);
+    if ((this.AXG.gKM != null) && (this.AXG.gKK.isEmpty()))
     {
-      this.wBi.ftk.dismiss();
-      paramDialogInterface = this.wBi.ftj.iterator();
+      this.AXG.gKM.dismiss();
+      paramDialogInterface = this.AXG.gKL.iterator();
       while (paramDialogInterface.hasNext())
       {
         m localm = (m)paramDialogInterface.next();
-        g.DQ();
-        g.DO().dJT.c(localm);
+        g.RM();
+        g.RK().eHt.a(localm);
       }
-      this.wBi.ftj.clear();
+      this.AXG.gKL.clear();
     }
+    AppMethodBeat.o(49143);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.d.i.5
  * JD-Core Version:    0.7.0.1
  */

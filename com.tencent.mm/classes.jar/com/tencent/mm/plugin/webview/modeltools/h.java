@@ -1,70 +1,47 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.os.Looper;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ah.a;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ak.a;
 import com.tencent.mm.ui.widget.MMWebView;
-import java.io.IOException;
-import java.util.Locale;
 
 public final class h
 {
-  ah hcZ = new ah(Looper.getMainLooper(), this.riK);
-  MMWebView riH;
-  public String riI;
-  h.c riJ;
-  private ah.a riK = new h.1(this);
+  ak iMP;
+  MMWebView uYh;
+  public String uYi;
+  h.c uYj;
+  private ak.a uYk;
+  
+  public h()
+  {
+    AppMethodBeat.i(7011);
+    this.uYk = new h.1(this);
+    this.iMP = new ak(Looper.getMainLooper(), this.uYk);
+    AppMethodBeat.o(7011);
+  }
   
   public final void a(MMWebView paramMMWebView, h.c paramc)
   {
-    this.riH = paramMMWebView;
-    this.riJ = paramc;
-    this.hcZ.sendEmptyMessage(1);
+    AppMethodBeat.i(7012);
+    this.uYh = paramMMWebView;
+    this.uYj = paramc;
+    this.iMP.sendEmptyMessage(1);
+    AppMethodBeat.o(7012);
   }
   
-  public final void ccQ()
+  public final void dcJ()
   {
-    com.tencent.mm.sdk.f.e.post(new h.a(this, (byte)0), "ViewCaptureHelper_DeleteBitmap");
-  }
-  
-  private final class b
-    implements Runnable
-  {
-    private Bitmap mBitmap;
-    
-    public b(Bitmap paramBitmap)
-    {
-      this.mBitmap = paramBitmap;
-    }
-    
-    public final void run()
-    {
-      h.this.riI = String.format(Locale.US, "%s%s_%08x.jpg", new Object[] { com.tencent.mm.compatible.util.e.bkH, Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.mBitmap.hashCode()) });
-      try
-      {
-        c.a(this.mBitmap, 100, Bitmap.CompressFormat.JPEG, h.this.riI, true);
-        this.mBitmap.recycle();
-        h.this.hcZ.sendEmptyMessage(2);
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          y.e("MicroMsg.ViewCaptureHelper", "saveBitmapToImage failed, " + localIOException.getMessage());
-          h.this.riI = null;
-        }
-      }
-    }
+    AppMethodBeat.i(7013);
+    d.post(new h.a(this, (byte)0), "ViewCaptureHelper_DeleteBitmap");
+    AppMethodBeat.o(7013);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.h
  * JD-Core Version:    0.7.0.1
  */

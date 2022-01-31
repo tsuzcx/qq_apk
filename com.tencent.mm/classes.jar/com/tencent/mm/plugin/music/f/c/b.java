@@ -1,36 +1,55 @@
 package com.tencent.mm.plugin.music.f.c;
 
 import android.content.Context;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  private static b mAY = null;
+  private static b pbd = null;
   private Context ctx;
-  private ConcurrentHashMap<Class<? extends a>, a> mAZ = new ConcurrentHashMap();
+  private ConcurrentHashMap<Class<? extends a>, a> pbe;
   
   private b(Context paramContext)
   {
+    AppMethodBeat.i(137662);
+    this.pbe = new ConcurrentHashMap();
     this.ctx = paramContext;
+    AppMethodBeat.o(137662);
   }
   
-  public static <T extends a> T Q(Class<T> paramClass)
+  public static void F(Class<? extends a> paramClass)
   {
-    return (a)bnO().mAZ.get(paramClass);
+    AppMethodBeat.i(137667);
+    bWl().pbe.remove(paramClass);
+    AppMethodBeat.o(137667);
   }
   
   public static void a(Class<? extends a> paramClass, a parama)
   {
-    bnO().mAZ.put(paramClass, parama);
+    AppMethodBeat.i(137666);
+    bWl().pbe.put(paramClass, parama);
+    AppMethodBeat.o(137666);
   }
   
-  private static b bnO()
+  public static <T extends a> T am(Class<T> paramClass)
   {
-    if (mAY == null) {
+    AppMethodBeat.i(137668);
+    paramClass = (a)bWl().pbe.get(paramClass);
+    AppMethodBeat.o(137668);
+    return paramClass;
+  }
+  
+  private static b bWl()
+  {
+    AppMethodBeat.i(137664);
+    if (pbd == null) {
       init(null);
     }
-    return mAY;
+    b localb = pbd;
+    AppMethodBeat.o(137664);
+    return localb;
   }
   
   /* Error */
@@ -39,46 +58,51 @@ public final class b
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 15	com/tencent/mm/plugin/music/f/c/b:mAY	Lcom/tencent/mm/plugin/music/f/c/b;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: ldc 53
-    //   17: ldc 55
-    //   19: invokestatic 61	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: new 2	com/tencent/mm/plugin/music/f/c/b
-    //   25: dup
-    //   26: aload_0
-    //   27: invokespecial 63	com/tencent/mm/plugin/music/f/c/b:<init>	(Landroid/content/Context;)V
-    //   30: putstatic 15	com/tencent/mm/plugin/music/f/c/b:mAY	Lcom/tencent/mm/plugin/music/f/c/b;
-    //   33: goto -22 -> 11
-    //   36: astore_0
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_0
-    //   41: athrow
+    //   3: ldc 72
+    //   5: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 15	com/tencent/mm/plugin/music/f/c/b:pbd	Lcom/tencent/mm/plugin/music/f/c/b;
+    //   11: ifnull +12 -> 23
+    //   14: ldc 72
+    //   16: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: ldc 2
+    //   21: monitorexit
+    //   22: return
+    //   23: ldc 74
+    //   25: ldc 76
+    //   27: invokestatic 81	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   30: new 2	com/tencent/mm/plugin/music/f/c/b
+    //   33: dup
+    //   34: aload_0
+    //   35: invokespecial 83	com/tencent/mm/plugin/music/f/c/b:<init>	(Landroid/content/Context;)V
+    //   38: putstatic 15	com/tencent/mm/plugin/music/f/c/b:pbd	Lcom/tencent/mm/plugin/music/f/c/b;
+    //   41: ldc 72
+    //   43: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: goto -27 -> 19
+    //   49: astore_0
+    //   50: ldc 2
+    //   52: monitorexit
+    //   53: aload_0
+    //   54: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	42	0	paramContext	Context
-    //   6	2	1	localb	b
+    //   0	55	0	paramContext	Context
     // Exception table:
     //   from	to	target	type
-    //   3	7	36	finally
-    //   15	33	36	finally
+    //   3	19	49	finally
+    //   23	46	49	finally
   }
   
   public static void release()
   {
     try
     {
-      y.i("MicroMsg.Audio.AudioPlayerCoreService", "release");
-      b localb = mAY;
-      localb.mAZ.clear();
+      AppMethodBeat.i(137665);
+      ab.i("MicroMsg.Audio.AudioPlayerCoreService", "release");
+      b localb = pbd;
+      localb.pbe.clear();
       localb.ctx = null;
-      mAY = null;
+      pbd = null;
+      AppMethodBeat.o(137665);
       return;
     }
     finally
@@ -87,15 +111,10 @@ public final class b
       throw localObject;
     }
   }
-  
-  public static void s(Class<? extends a> paramClass)
-  {
-    bnO().mAZ.remove(paramClass);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.c.b
  * JD-Core Version:    0.7.0.1
  */

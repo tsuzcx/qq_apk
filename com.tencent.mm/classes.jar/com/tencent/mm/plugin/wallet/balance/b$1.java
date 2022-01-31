@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.wallet.balance;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.plugin.wallet.b.a;
-import com.tencent.mm.plugin.wallet_core.c.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.c.y;
-import com.tencent.mm.plugin.wallet_core.model.ag;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c;
@@ -21,47 +20,39 @@ final class b$1
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    this.qfj.a(this.gfb, 0, this.qfj.kke);
+    AppMethodBeat.i(45200);
+    this.tLW.a(this.hwZ, 0, this.tLW.mEJ);
+    AppMethodBeat.o(45200);
     return true;
   }
   
-  public final boolean s(Object... paramVarArgs)
+  public final boolean x(Object... paramVarArgs)
   {
-    paramVarArgs = null;
-    Object localObject = b.a(this.qfj);
-    p.bTK();
-    ((Bundle)localObject).putParcelable("key_history_bankcard", p.bTL().qze);
-    PayInfo localPayInfo = (PayInfo)this.qfj.kke.get("key_pay_info");
-    if (a.bUG())
+    AppMethodBeat.i(45199);
+    paramVarArgs = b.a(this.tLW);
+    s.cRG();
+    paramVarArgs.putParcelable("key_history_bankcard", s.cRH().ulO);
+    paramVarArgs = (PayInfo)this.tLW.mEJ.get("key_pay_info");
+    i locali = this.AXB;
+    if (paramVarArgs == null) {}
+    for (paramVarArgs = null;; paramVarArgs = paramVarArgs.cnI)
     {
-      localObject = this.wBd;
-      if (localPayInfo == null) {}
-      for (paramVarArgs = null;; paramVarArgs = localPayInfo.bMX)
-      {
-        ((i)localObject).a(new v(paramVarArgs), true);
-        return false;
-      }
-    }
-    localObject = this.wBd;
-    if (localPayInfo == null) {}
-    for (;;)
-    {
-      ((i)localObject).a(new y(paramVarArgs, 4), true);
-      break;
-      paramVarArgs = localPayInfo.bMX;
+      locali.a(new y(paramVarArgs), true);
+      AppMethodBeat.o(45199);
+      return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.b.1
  * JD-Core Version:    0.7.0.1
  */

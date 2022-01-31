@@ -1,14 +1,24 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import a.d.a.a;
-import a.d.b.h;
+import a.f.a.a;
+import a.f.b.k;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.b.e;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "invoke"})
 final class g$a
-  extends h
+  extends k
   implements a<e>
 {
-  public static final a fRH = new a();
+  public static final a hlh;
+  
+  static
+  {
+    AppMethodBeat.i(134597);
+    hlh = new a();
+    AppMethodBeat.o(134597);
+  }
   
   g$a()
   {

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.emoji.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.c;
 
 final class EmojiStoreV2SingleProductDialogUI$3
   implements View.OnClickListener
@@ -11,9 +12,13 @@ final class EmojiStoreV2SingleProductDialogUI$3
   
   public final void onClick(View paramView)
   {
-    this.jif.setResult(0);
-    this.jif.finish();
-    this.jif.overridePendingTransition(f.a.pop_in, f.a.pop_out);
+    AppMethodBeat.i(53732);
+    EmojiStoreV2SingleProductDialogUI.g(this.lqW).setOnDismissListener(null);
+    EmojiStoreV2SingleProductDialogUI.g(this.lqW).dismiss();
+    this.lqW.setResult(0);
+    this.lqW.finish();
+    this.lqW.overridePendingTransition(2131034217, 2131034222);
+    AppMethodBeat.o(53732);
   }
 }
 

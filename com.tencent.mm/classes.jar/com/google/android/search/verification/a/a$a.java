@@ -12,7 +12,7 @@ public abstract class a$a
   extends Binder
   implements a
 {
-  public static a f(IBinder paramIBinder)
+  public static a g(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;

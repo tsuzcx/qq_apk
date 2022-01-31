@@ -1,42 +1,53 @@
 package com.tencent.mm.plugin.soter.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.cae;
-import com.tencent.mm.protocal.k;
-import com.tencent.mm.protocal.k.b;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.y;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.aa;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.b;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.cne;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c$a
-  extends k.d
-  implements k.b
+  extends l.d
+  implements l.b
 {
-  public cae prI = new cae();
+  public cne snK;
   
-  public final byte[] HG()
+  public c$a()
   {
-    this.spM = y.cph();
-    this.prI.sBt = new bmk().bs(bk.crT());
-    this.prI.tEX = k.a(this);
-    this.spL = this.prI.sBt.tFM.toByteArray();
-    return this.prI.toByteArray();
-  }
-  
-  public final int HH()
-  {
-    return 627;
+    AppMethodBeat.i(59298);
+    this.snK = new cne();
+    AppMethodBeat.o(59298);
   }
   
   public final int getCmdId()
   {
     return 0;
   }
+  
+  public final int getFuncId()
+  {
+    return 627;
+  }
+  
+  public final byte[] toProtoBuf()
+  {
+    AppMethodBeat.i(59299);
+    setRsaInfo(aa.dqE());
+    this.snK.wvN = new SKBuiltinBuffer_t().setBuffer(bo.dtR());
+    this.snK.setBaseRequest(l.a(this));
+    setPassKey(this.snK.wvN.getBuffer().toByteArray());
+    byte[] arrayOfByte = this.snK.toByteArray();
+    AppMethodBeat.o(59299);
+    return arrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.c.a
  * JD-Core Version:    0.7.0.1
  */

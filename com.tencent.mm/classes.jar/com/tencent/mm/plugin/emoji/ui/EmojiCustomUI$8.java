@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.plugin.emoji.sync.BKGLoaderManager;
-import com.tencent.mm.plugin.emoji.sync.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.sync.EmojiSyncManager;
 import com.tencent.mm.plugin.report.service.h;
 
 final class EmojiCustomUI$8
@@ -14,10 +13,10 @@ final class EmojiCustomUI$8
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = i.aHQ().jan;
-    paramDialogInterface.jaA = true;
-    paramDialogInterface.aIn();
-    h.nFQ.f(11595, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.i(53307);
+    EmojiCustomUI.c(this.llF).start(true);
+    h.qsU.e(11595, new Object[] { Integer.valueOf(1), Integer.valueOf(EmojiCustomUI.l(this.llF)) });
+    AppMethodBeat.o(53307);
   }
 }
 

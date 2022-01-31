@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.music.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.e.e;
 import com.tencent.mm.plugin.music.f.c.b;
 import com.tencent.mm.plugin.music.model.e.a;
@@ -16,18 +17,22 @@ final class MusicMainUI$a
   
   public final void run()
   {
-    ((e)b.Q(e.class)).uL(this.position);
-    a locala = ((e)b.Q(e.class)).bna();
-    if (locala == null) {
+    AppMethodBeat.i(105105);
+    ((e)b.am(e.class)).Ah(this.position);
+    a locala = ((e)b.am(e.class)).bVw();
+    if (locala == null)
+    {
+      AppMethodBeat.o(105105);
       return;
     }
-    if (locala.bnz()) {
-      this.mCa.g(locala);
+    if (locala.bVW()) {
+      this.pcd.i(locala);
     }
-    if (((e)b.Q(e.class)).bni()) {
-      MusicMainUI.j(this.mCa).setCanSlide(true);
+    if (((e)b.am(e.class)).bVE()) {
+      MusicMainUI.j(this.pcd).setCanSlide(true);
     }
-    MusicMainUI.a(this.mCa, locala);
+    MusicMainUI.a(this.pcd, locala);
+    AppMethodBeat.o(105105);
   }
 }
 

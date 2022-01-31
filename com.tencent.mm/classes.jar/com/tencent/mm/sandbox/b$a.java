@@ -1,13 +1,13 @@
 package com.tencent.mm.sandbox;
 
-import com.tencent.mm.protocal.c.bly;
+import com.tencent.mm.protocal.protobuf.bvk;
 
 public abstract interface b$a
   extends a
 {
-  public abstract void b(int paramInt1, int paramInt2, bly parambly);
+  public abstract void b(int paramInt1, int paramInt2, bvk parambvk);
   
-  public abstract void cy(int paramInt1, int paramInt2);
+  public abstract void dW(int paramInt1, int paramInt2);
 }
 
 

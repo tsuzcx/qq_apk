@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.shake.ui;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.c.b.a.b;
 
 final class ShakeReportUI$17
@@ -8,10 +9,12 @@ final class ShakeReportUI$17
 {
   ShakeReportUI$17(ShakeReportUI paramShakeReportUI) {}
   
-  public final void bAj()
+  public final void clB()
   {
-    ShakeReportUI.b(this.odm, true);
-    ShakeReportUI.K(this.odm).setText("");
+    AppMethodBeat.i(24795);
+    ShakeReportUI.b(this.qRs, true);
+    ShakeReportUI.M(this.qRs).setText("");
+    AppMethodBeat.o(24795);
   }
 }
 

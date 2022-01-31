@@ -1,72 +1,52 @@
 package com.tencent.mm.plugin.appbrand.n;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.cip;
-import com.tencent.mm.protocal.c.ciq;
-import com.tencent.mm.protocal.c.cir;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.Locale;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.n.c.c;
+import com.tencent.mm.plugin.appbrand.n.c.d;
+import com.tencent.mm.plugin.appbrand.n.c.e;
+import com.tencent.mm.plugin.appbrand.n.c.f;
+import com.tencent.mm.plugin.appbrand.n.c.g;
+import com.tencent.mm.plugin.appbrand.n.c.h;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class b
-  extends m
-  implements k
 {
-  private f dIJ;
-  private com.tencent.mm.ah.b dZP;
-  private ciq gQu;
+  private static final Map<Integer, com.tencent.mm.plugin.appbrand.n.a.a> itY;
   
-  public b()
+  static
   {
-    b.a locala = new b.a();
-    locala.ecH = new cip();
-    locala.ecI = new ciq();
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/weappsearchtitle";
-    locala.ecG = 1170;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dZP = locala.Kt();
+    AppMethodBeat.i(102170);
+    itY = new HashMap();
+    a(new com.tencent.mm.plugin.appbrand.n.c.a());
+    a(new d());
+    a(new f());
+    a(new h());
+    a(new g());
+    a(new c());
+    a(new com.tencent.mm.plugin.appbrand.n.c.b());
+    a(new e());
+    AppMethodBeat.o(102170);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  private static void a(com.tencent.mm.plugin.appbrand.n.a.a parama)
   {
-    y.i("MicroMsg.NetSceneGetWeAppSearchTitle", "doScene");
-    this.dIJ = paramf;
-    return a(parame, this.dZP, this);
+    AppMethodBeat.i(102169);
+    itY.put(Integer.valueOf(parama.aIA()), parama);
+    AppMethodBeat.o(102169);
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public static com.tencent.mm.plugin.appbrand.n.a.a oY(int paramInt)
   {
-    y.i("MicroMsg.NetSceneGetWeAppSearchTitle", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.gQu = ((ciq)this.dZP.ecF.ecN);
-    if (this.dIJ != null) {
-      this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    if (this.gQu.tWY == null) {
-      return;
-    }
-    paramString = g.DP().Dz();
-    paramString.c(ac.a.uuN, Locale.getDefault().getLanguage());
-    paramString.c(ac.a.uuO, this.gQu.tWY.lsL);
-    paramString.c(ac.a.uuP, this.gQu.tWY.tWX);
-    paramString.c(ac.a.uuQ, Long.valueOf(System.currentTimeMillis()));
-  }
-  
-  public final int getType()
-  {
-    return 1170;
+    AppMethodBeat.i(102168);
+    com.tencent.mm.plugin.appbrand.n.a.a locala = (com.tencent.mm.plugin.appbrand.n.a.a)itY.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(102168);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.n.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,47 +2,51 @@ package com.tencent.mm.plugin.freewifi.ui;
 
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.h.a.bj;
-import com.tencent.mm.h.a.bj.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bl;
+import com.tencent.mm.g.a.bl.a;
+import com.tencent.mm.sdk.g.a.c;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class a$2$1$1
   implements Runnable
 {
-  a$2$1$1(a.2.1 param1, bj parambj) {}
+  a$2$1$1(a.2.1 param1, bl parambl) {}
   
   public final void run()
   {
-    if (bk.bl(this.kra.bHF.bHK))
+    AppMethodBeat.i(20923);
+    if (bo.isNullOrNil(this.mMN.coU.coZ))
     {
-      this.krb.kqY.setVisibility(8);
+      this.mMO.mML.setVisibility(8);
+      AppMethodBeat.o(20923);
       return;
     }
-    ((TextView)a.c(this.krb.kqZ.kqX).findViewById(R.h.free_wifi_banner_tv)).setText(this.kra.bHF.bHK);
-    String str2 = this.kra.bHF.bHH;
-    if ("0".equalsIgnoreCase(this.kra.bHF.bHG)) {}
+    a.c(this.mMO.mMM.mMK).setText(this.mMN.coU.coZ);
+    String str2 = this.mMN.coU.coW;
+    if ("0".equalsIgnoreCase(this.mMN.coU.coV)) {}
     String str3;
     String str4;
     String str5;
     String str6;
     for (String str1 = "0";; str1 = "1")
     {
-      str3 = this.kra.bHF.bHI;
-      str4 = this.kra.bHF.ssid;
-      str5 = this.kra.bHF.bssid;
-      str6 = this.kra.bHF.bHJ;
-      y.i("MicroMsg.FreeWifi.FreeWifiBanner", "desc=it tries to show bar. pingEnabled = %s,  pingUrl= %s", new Object[] { str1, str2 });
+      str3 = this.mMN.coU.coX;
+      str4 = this.mMN.coU.ssid;
+      str5 = this.mMN.coU.bssid;
+      str6 = this.mMN.coU.coY;
+      ab.i("MicroMsg.FreeWifi.FreeWifiBanner", "desc=it tries to show bar. pingEnabled = %s,  pingUrl= %s", new Object[] { str1, str2 });
       if ("1".equals(str1)) {
         break;
       }
-      this.krb.kqY.setVisibility(0);
+      this.mMO.mML.setVisibility(0);
+      AppMethodBeat.o(20923);
       return;
     }
-    au.DS().O(new a.2.1.1.1(this, str2, str4, str5, str6, str3));
+    d.ysn.aj(new a.2.1.1.1(this, str2, str4, str5, str6, str3));
+    AppMethodBeat.o(20923);
   }
 }
 

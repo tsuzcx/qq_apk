@@ -1,27 +1,20 @@
 package com.tencent.mm.plugin.bottle.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.storage.ak;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BottleConversationUI$8
-  implements AdapterView.OnItemClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   BottleConversationUI$8(BottleConversationUI paramBottleConversationUI) {}
   
-  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramAdapterView = (ak)BottleConversationUI.a(this.hZr).getItem(paramInt);
-    paramView = new Intent();
-    paramView.addFlags(67108864);
-    paramView.putExtra("Chat_User", paramAdapterView.field_username);
-    paramView.putExtra("finish_direct", true);
-    paramView.putExtra("key_need_send_video", false);
-    com.tencent.mm.plugin.bottle.a.eUR.e(paramView, this.hZr);
+    AppMethodBeat.i(18563);
+    this.jSo.finish();
+    AppMethodBeat.o(18563);
+    return true;
   }
 }
 

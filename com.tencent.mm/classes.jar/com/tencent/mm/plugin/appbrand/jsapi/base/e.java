@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.base;
 
 public abstract interface e
 {
-  public abstract boolean ail();
+  public abstract boolean aCe();
 }
 
 

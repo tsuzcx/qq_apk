@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$im
+final class c$im
   extends c.g
 {
-  public c$im()
+  c$im()
   {
-    super("setSnsObjectXmlDescList", "", 10000, false);
+    super("menuitem:gameSendDesktop", "menuitem:gameSendDesktop", 255, false);
   }
 }
 

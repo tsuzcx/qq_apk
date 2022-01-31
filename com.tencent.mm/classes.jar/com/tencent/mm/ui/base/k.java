@@ -7,75 +7,82 @@ import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class k
   extends AlertDialog
 {
-  private CharSequence BM;
-  private ListView Nn;
-  private View ipf;
-  public BaseAdapter iqN;
+  private CharSequence Cv;
+  private View iCk;
+  public BaseAdapter krV;
   private Context mContext;
-  public AdapterView.OnItemClickListener slt;
+  private ListView mListView;
+  public AdapterView.OnItemClickListener wdV;
   
   public k(Context paramContext)
   {
-    super(paramContext, a.l.mmalertdialog);
+    super(paramContext, 2131493881);
+    AppMethodBeat.i(106682);
     this.mContext = paramContext;
-    if (a.fh(this.mContext)) {}
-    for (this.ipf = View.inflate(this.mContext, a.h.mm_list_dialog_large, null);; this.ipf = View.inflate(this.mContext, a.h.mm_list_dialog, null))
+    if (a.gt(this.mContext)) {}
+    for (this.iCk = View.inflate(this.mContext, 2130970174, null);; this.iCk = View.inflate(this.mContext, 2130970173, null))
     {
-      this.Nn = ((ListView)this.ipf.findViewById(a.g.list));
+      this.mListView = ((ListView)this.iCk.findViewById(2131821002));
+      AppMethodBeat.o(106682);
       return;
     }
   }
   
   public final void dismiss()
   {
+    AppMethodBeat.i(106685);
     try
     {
       super.dismiss();
+      AppMethodBeat.o(106685);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.MMListDialog", "dismiss exception, e = " + localException.getMessage());
+      ab.e("MicroMsg.MMListDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(106685);
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(106683);
     super.onCreate(paramBundle);
-    setContentView(this.ipf);
+    setContentView(this.iCk);
+    AppMethodBeat.o(106683);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
     if (paramCharSequence != null)
     {
-      this.BM = paramCharSequence;
+      this.Cv = paramCharSequence;
       return;
     }
-    this.BM = null;
+    this.Cv = null;
   }
   
   public final void show()
   {
-    if (this.BM != null) {
-      this.BM.length();
+    AppMethodBeat.i(106684);
+    if (this.Cv != null) {
+      this.Cv.length();
     }
-    if (this.slt != null) {
-      this.Nn.setOnItemClickListener(this.slt);
+    if (this.wdV != null) {
+      this.mListView.setOnItemClickListener(this.wdV);
     }
-    if (this.iqN != null) {
-      this.Nn.setAdapter(this.iqN);
+    if (this.krV != null) {
+      this.mListView.setAdapter(this.krV);
     }
     super.show();
+    AppMethodBeat.o(106684);
   }
 }
 

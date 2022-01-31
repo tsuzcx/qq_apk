@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/au8" android:paddingLeft="@dimen/ku" android:paddingRight="@dimen/ku" android:focusable="false" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="78.599976dip"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/hr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="94.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/t7" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ag2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-    </LinearLayout>
+    <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/aid" android:background="@color/a3x" android:layout_width="@dimen/w3" android:layout_height="35.0dip" android:layout_marginLeft="@dimen/vw" />
+    <TextView android:textSize="21.0dip" android:textColor="#ff111111" android:id="@id/aie" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/vx" android:text="{invo}" android:layout_weight="1.0" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/w6" android:id="@id/aif" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{invo}" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/b0u" />
 </LinearLayout>

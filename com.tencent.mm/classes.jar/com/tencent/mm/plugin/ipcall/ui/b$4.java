@@ -5,7 +5,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$4
   implements View.OnClickListener
@@ -14,63 +15,64 @@ final class b$4
   
   public final void onClick(View paramView)
   {
-    paramView = this.ltx.ltf.getText().toString();
-    if (bk.bl(paramView))
+    AppMethodBeat.i(21974);
+    paramView = this.nQQ.nQy.getText().toString();
+    if (bo.isNullOrNil(paramView))
     {
-      paramView = this.ltx.lte.getText().toString();
-      if (!bk.bl(paramView))
+      paramView = this.nQQ.nQx.getText().toString();
+      if (!bo.isNullOrNil(paramView))
       {
         paramView = paramView.substring(0, paramView.length() - 1);
-        if ((!bk.bl(paramView)) && (!paramView.equals("+")))
+        if ((!bo.isNullOrNil(paramView)) && (!paramView.equals("+")))
         {
-          this.ltx.lte.setText(paramView);
-          this.ltx.ltm = paramView;
+          this.nQQ.nQx.setText(paramView);
+          this.nQQ.nQF = paramView;
+          AppMethodBeat.o(21974);
+          return;
         }
+        this.nQQ.nQx.setText("+");
+        this.nQQ.nQF = "+";
+        this.nQQ.nQK = true;
       }
-      else
-      {
-        return;
-      }
-      this.ltx.lte.setText("+");
-      this.ltx.ltm = "+";
-      this.ltx.ltr = true;
+      AppMethodBeat.o(21974);
       return;
     }
-    int i = this.ltx.ltf.getSelectionStart();
+    int i = this.nQQ.nQy.getSelectionStart();
     String str;
-    if ((this.ltx.ltu) && (i - 1 >= 0))
+    if ((this.nQQ.nQN) && (i - 1 >= 0))
     {
-      paramView = this.ltx.ltf.getText();
+      paramView = this.nQQ.nQy.getText();
       paramView.delete(i - 1, i);
       paramView = paramView.toString();
-      if (bk.bl(paramView)) {
-        break label344;
+      if (bo.isNullOrNil(paramView)) {
+        break label368;
       }
-      str = this.ltx.lte.getText().toString().replace("+", "");
-      if (!this.ltx.ltu) {
-        break label313;
+      str = this.nQQ.nQx.getText().toString().replace("+", "");
+      if (!this.nQQ.nQN) {
+        break label337;
       }
-      this.ltx.ltn = b.dB(str, paramView);
-      int j = this.ltx.ltn.length();
+      this.nQQ.nQG = b.eT(str, paramView);
+      int j = this.nQQ.nQG.length();
       int k = paramView.length();
-      this.ltx.bL(this.ltx.ltn, j - k + (i - 1));
-      label269:
-      this.ltx.bcQ();
+      this.nQQ.cy(this.nQQ.nQG, j - k + (i - 1));
+      label287:
+      this.nQQ.bJZ();
     }
     for (;;)
     {
-      this.ltx.lto = "";
-      this.ltx.eYn.setText("");
+      this.nQQ.nQH = "";
+      this.nQQ.gqe.setText("");
+      AppMethodBeat.o(21974);
       return;
       paramView = paramView.substring(0, paramView.length() - 1);
       break;
-      label313:
-      this.ltx.ltn = b.dB(str, paramView);
-      this.ltx.bL(this.ltx.ltn, -1);
-      break label269;
-      label344:
-      this.ltx.ltn = "";
-      this.ltx.bL("", -1);
+      label337:
+      this.nQQ.nQG = b.eT(str, paramView);
+      this.nQQ.cy(this.nQQ.nQG, -1);
+      break label287;
+      label368:
+      this.nQQ.nQG = "";
+      this.nQQ.cy("", -1);
     }
   }
 }

@@ -6,6 +6,7 @@ public abstract interface WXMediaMessage$IMediaObject
 {
   public static final int TYPE_APPBRAND = 33;
   public static final int TYPE_APPDATA = 7;
+  public static final int TYPE_BUSINESS_CARD = 45;
   public static final int TYPE_CARD_SHARE = 16;
   public static final int TYPE_DESIGNER_SHARED = 25;
   public static final int TYPE_DEVICE_ACCESS = 12;
@@ -25,6 +26,8 @@ public abstract interface WXMediaMessage$IMediaObject
   public static final int TYPE_NOTE = 24;
   public static final int TYPE_OLD_TV = 14;
   public static final int TYPE_OPENSDK_APPBRAND = 36;
+  public static final int TYPE_OPENSDK_APPBRAND_WEISHIVIDEO = 46;
+  public static final int TYPE_OPENSDK_WEWORK_OBJECT = 49;
   public static final int TYPE_PRODUCT = 10;
   public static final int TYPE_RECORD = 19;
   public static final int TYPE_TEXT = 1;
@@ -44,7 +47,7 @@ public abstract interface WXMediaMessage$IMediaObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject
  * JD-Core Version:    0.7.0.1
  */

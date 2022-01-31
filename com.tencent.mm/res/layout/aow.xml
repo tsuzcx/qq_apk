@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/ih" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/mq" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0" android:minHeight="48.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:id="@id/dw7" android:background="@raw/default_avatar" android:layout_width="@dimen/dn" android:layout_height="@dimen/dn" android:scaleType="centerCrop" />
-    <LinearLayout android:gravity="left" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/mq" android:layout_marginRight="@dimen/mq" android:layout_marginBottom="@dimen/mx">
-        <TextView android:id="@id/dw8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ll" android:maxLines="2" android:singleLine="false" style="@style/kl" />
-        <TextView android:id="@id/dw9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ll" android:singleLine="true" style="@style/kn" />
-        <TextView android:id="@id/dw_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mx" android:singleLine="true" style="@style/kn" />
-    </LinearLayout>
+    <AutoCompleteTextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:layout_gravity="center|left" android:id="@id/nk" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minWidth="130.0dip" android:minHeight="43.0dip" android:completionThreshold="1" android:dropDownSelector="@color/vy" android:layout_weight="1.0" android:dropDownWidth="fill_parent" android:dropDownHeight="wrap_content" android:dropDownHorizontalOffset="-20.0dip" android:dropDownVerticalOffset="-5.0dip" />
+    <TextView android:gravity="center|right" android:id="@id/e1h" android:paddingRight="5.0dip" android:focusable="false" android:visibility="gone" android:layout_width="120.0dip" android:layout_height="wrap_content" android:minWidth="120.0dip" android:minHeight="43.0dip" style="@style/lm" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/nl" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/ap1" android:scaleType="centerInside" android:minHeight="26.0dip" />
 </LinearLayout>

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="40.0dip" android:textColor="@color/fc" android:gravity="right" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" wallet:walletTypeFace="d2" />
-        <TextView android:id="@id/cx" style="@style/uf" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="40.0dip" android:textColor="@color/fc" android:gravity="left" android:id="@id/cs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:textCursorDrawable="@drawable/o_" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/iq" android:textColor="@color/qi" android:id="@id/c99" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="@dimen/iq" android:id="@id/c9_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" style="@style/k_" />
+    <TextView android:textSize="@dimen/iq" android:textColor="@color/qi" android:id="@id/c9a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:id="@id/c9b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/c9a" android:layout_alignParentLeft="true">
+        <ImageView android:id="@id/bnf" android:visibility="gone" android:layout_width="@dimen/jj" android:layout_height="@dimen/jj" android:layout_marginRight="@dimen/k4" />
+        <TextView android:textSize="@dimen/iq" android:textColor="@color/qo" android:ellipsize="end" android:layout_gravity="center" android:id="@id/nb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k4" android:singleLine="true" />
+        <TextView android:textSize="@dimen/iq" android:textColor="@color/qi" android:ellipsize="end" android:layout_gravity="center" android:id="@id/c9c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
     </LinearLayout>
-</merge>
+</RelativeLayout>

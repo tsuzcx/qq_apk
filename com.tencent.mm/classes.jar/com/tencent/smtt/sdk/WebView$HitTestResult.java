@@ -1,5 +1,6 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.IX5WebViewBase.HitTestResult;
 
 public class WebView$HitTestResult
@@ -39,26 +40,36 @@ public class WebView$HitTestResult
   
   public String getExtra()
   {
+    AppMethodBeat.i(64842);
     String str = "";
     if (this.a != null) {
       str = this.a.getExtra();
     }
-    while (this.b == null) {
+    for (;;)
+    {
+      AppMethodBeat.o(64842);
       return str;
+      if (this.b != null) {
+        str = this.b.getExtra();
+      }
     }
-    return this.b.getExtra();
   }
   
   public int getType()
   {
+    AppMethodBeat.i(64841);
     int i = 0;
     if (this.a != null) {
       i = this.a.getType();
     }
-    while (this.b == null) {
+    for (;;)
+    {
+      AppMethodBeat.o(64841);
       return i;
+      if (this.b != null) {
+        i = this.b.getType();
+      }
     }
-    return this.b.getType();
   }
 }
 

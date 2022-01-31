@@ -1,11 +1,12 @@
 package navsns;
 
-import com.tencent.tencentmap.mapsdk.a.nk;
-import com.tencent.tencentmap.mapsdk.a.nl;
-import com.tencent.tencentmap.mapsdk.a.nm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.k;
+import com.tencent.tencentmap.mapsdk.maps.a.l;
+import com.tencent.tencentmap.mapsdk.maps.a.m;
 
 public final class user_login_t
-  extends nm
+  extends m
 {
   public String channel = "";
   public String fr = "";
@@ -40,55 +41,59 @@ public final class user_login_t
     this.channel = paramString7;
   }
   
-  public final void readFrom(nk paramnk)
+  public final void readFrom(k paramk)
   {
-    this.user_id = paramnk.a(this.user_id, 0, true);
-    this.session_id = paramnk.a(1, true);
-    this.uin = paramnk.a(this.uin, 2, true);
-    this.uip = paramnk.a(this.uip, 3, true);
-    this.imei = paramnk.a(4, false);
-    this.x = paramnk.a(this.x, 5, false);
-    this.y = paramnk.a(this.y, 6, false);
-    this.pf = paramnk.a(7, false);
-    this.version = paramnk.a(8, false);
-    this.is_login = paramnk.a(this.is_login, 9, false);
-    this.fr = paramnk.a(10, false);
-    this.nettp = paramnk.a(11, false);
-    this.channel = paramnk.a(12, false);
+    AppMethodBeat.i(101145);
+    this.user_id = paramk.a(this.user_id, 0, true);
+    this.session_id = paramk.a(1, true);
+    this.uin = paramk.a(this.uin, 2, true);
+    this.uip = paramk.a(this.uip, 3, true);
+    this.imei = paramk.a(4, false);
+    this.x = paramk.a(this.x, 5, false);
+    this.y = paramk.a(this.y, 6, false);
+    this.pf = paramk.a(7, false);
+    this.version = paramk.a(8, false);
+    this.is_login = paramk.a(this.is_login, 9, false);
+    this.fr = paramk.a(10, false);
+    this.nettp = paramk.a(11, false);
+    this.channel = paramk.a(12, false);
+    AppMethodBeat.o(101145);
   }
   
-  public final void writeTo(nl paramnl)
+  public final void writeTo(l paraml)
   {
-    paramnl.a(this.user_id, 0);
-    paramnl.a(this.session_id, 1);
-    paramnl.a(this.uin, 2);
-    paramnl.a(this.uip, 3);
+    AppMethodBeat.i(101144);
+    paraml.a(this.user_id, 0);
+    paraml.a(this.session_id, 1);
+    paraml.a(this.uin, 2);
+    paraml.a(this.uip, 3);
     if (this.imei != null) {
-      paramnl.a(this.imei, 4);
+      paraml.a(this.imei, 4);
     }
-    paramnl.a(this.x, 5);
-    paramnl.a(this.y, 6);
+    paraml.a(this.x, 5);
+    paraml.a(this.y, 6);
     if (this.pf != null) {
-      paramnl.a(this.pf, 7);
+      paraml.a(this.pf, 7);
     }
     if (this.version != null) {
-      paramnl.a(this.version, 8);
+      paraml.a(this.version, 8);
     }
-    paramnl.a(this.is_login, 9);
+    paraml.a(this.is_login, 9);
     if (this.fr != null) {
-      paramnl.a(this.fr, 10);
+      paraml.a(this.fr, 10);
     }
     if (this.nettp != null) {
-      paramnl.a(this.nettp, 11);
+      paraml.a(this.nettp, 11);
     }
     if (this.channel != null) {
-      paramnl.a(this.channel, 12);
+      paraml.a(this.channel, 12);
     }
+    AppMethodBeat.o(101144);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     navsns.user_login_t
  * JD-Core Version:    0.7.0.1
  */

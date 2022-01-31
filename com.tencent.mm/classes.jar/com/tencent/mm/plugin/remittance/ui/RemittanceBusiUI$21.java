@@ -1,18 +1,25 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.remittance.model.i;
+import com.tencent.mm.protocal.protobuf.ccm;
+import com.tencent.mm.protocal.protobuf.mq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class RemittanceBusiUI$21
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  RemittanceBusiUI$21(RemittanceBusiUI paramRemittanceBusiUI) {}
+  RemittanceBusiUI$21(RemittanceBusiUI paramRemittanceBusiUI, i parami) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    h.nFQ.f(15235, new Object[] { Integer.valueOf(3) });
-    RemittanceBusiUI.z(this.nCA);
+    AppMethodBeat.i(142193);
+    ab.i("MicroMsg.RemittanceBusiUI", "goto h5: %s", new Object[] { this.qoJ.qji.wBn.kNB });
+    e.m(this.qoF.getContext(), this.qoJ.qji.wBn.kNB, false);
+    AppMethodBeat.o(142193);
   }
 }
 

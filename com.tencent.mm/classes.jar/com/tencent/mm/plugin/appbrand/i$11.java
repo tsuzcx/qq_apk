@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.ui.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.r.c;
 
 final class i$11
-  implements Runnable
+  implements r.c
 {
   i$11(i parami) {}
   
-  public final void run()
+  public final void atF()
   {
-    if (this.fyM.fyr != null) {
-      this.fyM.fyr.setProgress(100);
-    }
+    AppMethodBeat.i(86663);
+    i locali = this.gPY;
+    locali.z(new i.12(locali));
+    AppMethodBeat.o(86663);
   }
 }
 

@@ -1,148 +1,122 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.bh.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.d;
 import com.tencent.mm.model.a.e;
 import com.tencent.mm.model.a.f;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.an;
+import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.av;
-import com.tencent.mm.storage.aw;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.r.a;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.tools.l;
 
 public class FMessageConversationUI
   extends MMActivity
 {
-  private n.d hZq = new n.d()
-  {
-    public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
-    {
-      com.tencent.mm.bh.c.g(FMessageConversationUI.d(FMessageConversationUI.this), FMessageConversationUI.e(FMessageConversationUI.this));
-    }
-  };
-  private String ncT;
-  private b pwe;
-  private ListView pwt;
-  private a pwu;
-  private TextView pwv;
-  private long pww;
+  private n.d jSn;
+  private String pIl;
+  private b sXK;
+  private ListView sYa;
+  private a sYb;
+  private View sYc;
+  private View sYd;
+  private TextView sYe;
+  private long sYf;
   
-  protected final int getLayoutId()
+  public FMessageConversationUI()
   {
-    return R.i.fmessage_conversation;
+    AppMethodBeat.i(25365);
+    this.jSn = new FMessageConversationUI.7(this);
+    AppMethodBeat.o(25365);
   }
   
-  protected final void initView()
+  private void aMi()
   {
-    boolean bool = true;
-    Object localObject1;
-    int i;
-    if (com.tencent.mm.model.a.g.Iy().iX("1") != null)
+    AppMethodBeat.i(25371);
+    if (this.sXK.getCount() > 0)
     {
-      localObject1 = com.tencent.mm.model.a.g.Iy().iX("1").value;
-      if (((String)localObject1).equals("0"))
-      {
-        i = 0;
-        f.jb("1");
-      }
+      this.sYc.findViewById(2131823242).setVisibility(0);
+      this.sYd.findViewById(2131824219).setVisibility(8);
+      enableOptionMenu(0, true);
+      AppMethodBeat.o(25371);
+      return;
     }
-    for (;;)
+    this.sYc.findViewById(2131823242).setVisibility(8);
+    this.sYd.findViewById(2131824219).setVisibility(0);
+    enableOptionMenu(0, false);
+    AppMethodBeat.o(25371);
+  }
+  
+  public int getLayoutId()
+  {
+    return 2130969611;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(25370);
+    if (com.tencent.mm.model.a.g.abw().pL("1") != null)
     {
-      this.pwe = new b(this.mController.uMN);
-      d.RY().c(this.pwe);
-      this.pwe.uMi = new r.a()
-      {
-        public final void Wp()
-        {
-          if (FMessageConversationUI.a(FMessageConversationUI.this).getCount() >= 0)
-          {
-            FMessageConversationUI.this.enableOptionMenu(0, true);
-            return;
-          }
-          FMessageConversationUI.this.enableOptionMenu(0, false);
-        }
-      };
-      this.pwt = ((ListView)findViewById(R.h.fmessage_conversation_lv));
-      if (i != 0)
-      {
-        localObject1 = LayoutInflater.from(this.mController.uMN).inflate(R.i.fmessage_conversation_header, null);
-        ((View)localObject1).findViewById(R.h.fmsg_searchEt).setOnClickListener(new FMessageConversationUI.2(this));
-        this.pwt.addHeaderView((View)localObject1);
+      localObject = com.tencent.mm.model.a.g.abw().pL("1").value;
+      if (!((String)localObject).equals("0")) {
+        ((String)localObject).equals("1");
       }
-      this.pwt.setAdapter(this.pwe);
-      localObject1 = new com.tencent.mm.ui.tools.j(this);
-      this.pwt.setOnItemLongClickListener(new FMessageConversationUI.3(this, (com.tencent.mm.ui.tools.j)localObject1));
-      localObject1 = this.mController.uMN;
-      Object localObject2 = this.pwe;
-      if (this.pwt.getHeaderViewsCount() > 0)
-      {
-        label206:
-        this.pwu = new a((Context)localObject1, (b)localObject2, bool);
-        this.pwt.setOnItemClickListener(this.pwu);
-        if (i != 0) {
-          break label330;
-        }
-        localObject1 = findViewById(R.h.fmessage_conversation_empty_a);
-        ((View)localObject1).setVisibility(0);
-        ((TextView)findViewById(R.h.empty_tip_recommend_bind_tv)).setOnClickListener(new FMessageConversationUI.4(this));
-        this.pwt.setEmptyView((View)localObject1);
-      }
-      for (;;)
-      {
-        addTextOptionMenu(0, getString(R.l.menu_item_add_friend), new FMessageConversationUI.7(this));
-        setBackBtn(new FMessageConversationUI.8(this));
-        return;
-        if (!((String)localObject1).equals("1")) {
-          break label406;
-        }
-        i = 1;
-        break;
-        bool = false;
-        break label206;
-        label330:
-        localObject1 = findViewById(R.h.fmessage_conversation_empty_b);
-        ((View)localObject1).setVisibility(0);
-        this.pwv = ((TextView)((View)localObject1).findViewById(R.h.fmsg_msg_content));
-        localObject2 = (ListView)((View)localObject1).findViewById(R.h.fmsg_list);
-        ((ListView)localObject2).setAdapter(new FMessageConversationUI.5(this));
-        ((ListView)localObject2).setOnItemClickListener(new FMessageConversationUI.6(this));
-        this.pwt.setEmptyView((View)localObject1);
-      }
-      label406:
-      i = 1;
-      break;
-      i = 1;
+      f.pP("1");
+    }
+    this.sXK = new b(getContext());
+    d.ali().add(this.sXK);
+    this.sXK.a(new FMessageConversationUI.1(this));
+    this.sYa = ((ListView)findViewById(2131824216));
+    this.sYc = LayoutInflater.from(getContext()).inflate(2130969616, null);
+    this.sYc.findViewById(2131823242).setOnClickListener(new FMessageConversationUI.2(this));
+    this.sYa.addHeaderView(this.sYc);
+    this.sYd = LayoutInflater.from(getContext()).inflate(2130969612, null);
+    this.sYd.findViewById(2131824220).setOnClickListener(new FMessageConversationUI.3(this));
+    this.sYa.addHeaderView(this.sYd);
+    this.sYa.setAdapter(this.sXK);
+    aMi();
+    Object localObject = new l(this);
+    this.sYa.setOnItemLongClickListener(new FMessageConversationUI.4(this, (l)localObject));
+    localObject = getContext();
+    b localb = this.sXK;
+    if (this.sYa.getHeaderViewsCount() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.sYb = new a((Context)localObject, localb, bool);
+      this.sYa.setOnItemClickListener(this.sYb);
+      addTextOptionMenu(0, getString(2131301547), new FMessageConversationUI.5(this));
+      setBackBtn(new FMessageConversationUI.6(this));
+      AppMethodBeat.o(25370);
+      return;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(25366);
     super.onCreate(paramBundle);
-    setMMTitle(R.l.fmessage_conversation_title);
+    setMMTitle(2131300003);
     try
     {
-      au.getNotification().wp();
-      if (!au.DK())
+      com.tencent.mm.model.aw.getNotification().IG();
+      if (!com.tencent.mm.model.aw.RG())
       {
         finish();
+        AppMethodBeat.o(25366);
         return;
       }
     }
@@ -150,61 +124,80 @@ public class FMessageConversationUI
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.FMessageConversationUI", paramBundle, "try cancel notification fail", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.FMessageConversationUI", paramBundle, "try cancel notification fail", new Object[0]);
       }
       initView();
+      AppMethodBeat.o(25366);
     }
   }
   
   public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(25372);
     paramView = (AdapterView.AdapterContextMenuInfo)paramContextMenuInfo;
-    paramContextMenuInfo = (av)this.pwe.getItem(paramView.position);
+    paramContextMenuInfo = (av)this.sXK.getItem(paramView.position);
     if (paramContextMenuInfo == null)
     {
-      y.e("MicroMsg.FMessageConversationUI", "onItemLongClick, item is null, pos = " + paramView.position);
+      ab.e("MicroMsg.FMessageConversationUI", "onItemLongClick, item is null, pos = " + paramView.position);
+      AppMethodBeat.o(25372);
       return;
     }
-    if (!bk.bl(paramContextMenuInfo.field_displayName)) {
-      paramContextMenu.setHeaderTitle(com.tencent.mm.pluginsdk.ui.d.j.b(this, paramContextMenuInfo.field_displayName));
+    if (!bo.isNullOrNil(paramContextMenuInfo.field_displayName)) {
+      paramContextMenu.setHeaderTitle(j.b(this, paramContextMenuInfo.field_displayName));
     }
-    paramContextMenu.add(0, 0, 0, R.l.app_delete);
-    this.pww = paramContextMenuInfo.field_fmsgSysRowId;
-    this.ncT = paramContextMenuInfo.field_talker;
+    paramContextMenu.add(0, 0, 0, 2131296901);
+    this.sYf = paramContextMenuInfo.field_fmsgSysRowId;
+    this.pIl = paramContextMenuInfo.field_talker;
+    AppMethodBeat.o(25372);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(25369);
     super.onDestroy();
-    if (!com.tencent.mm.kernel.g.DN().Dc()) {
-      y.w("MicroMsg.FMessageConversationUI", "account not init.");
+    if (this.sXK != null) {
+      d.ali().remove(this.sXK);
     }
-    do
+    if (!com.tencent.mm.kernel.g.RJ().QU())
     {
+      ab.w("MicroMsg.FMessageConversationUI", "account not init.");
+      AppMethodBeat.o(25369);
       return;
-      f.jc("1");
-      d.RY().cuT();
-    } while (this.pwe == null);
-    d.RY().d(this.pwe);
+    }
+    f.pQ("1");
+    d.ali().dxx();
+    AppMethodBeat.o(25369);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(25367);
     super.onPause();
-    au.Hx();
-    com.tencent.mm.model.c.Dz().o(143618, Integer.valueOf(0));
+    com.tencent.mm.model.aw.aaz();
+    com.tencent.mm.model.c.Ru().set(143618, Integer.valueOf(0));
+    AppMethodBeat.o(25367);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(25368);
     super.onResume();
-    if (!au.DK()) {
+    if (!com.tencent.mm.model.aw.RG())
+    {
       finish();
-    }
-    while ((this.pwv == null) || (!bk.fV(this))) {
+      AppMethodBeat.o(25368);
       return;
     }
-    this.pwv.setText(R.l.fmessage_no_recommend_msg_google);
+    if ((this.sYe != null) && (bo.hl(this))) {
+      this.sYe.setText(2131300009);
+    }
+    AppMethodBeat.o(25368);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

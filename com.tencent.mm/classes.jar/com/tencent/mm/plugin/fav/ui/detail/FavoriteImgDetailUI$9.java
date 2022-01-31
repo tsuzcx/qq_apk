@@ -1,33 +1,32 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
+import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.aca;
+import java.util.HashMap;
 
 final class FavoriteImgDetailUI$9
-  implements View.OnTouchListener
+  implements View.OnLongClickListener
 {
   FavoriteImgDetailUI$9(FavoriteImgDetailUI paramFavoriteImgDetailUI) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final boolean onLongClick(View paramView)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    AppMethodBeat.i(74386);
+    paramView = (aca)paramView.getTag();
+    paramView = (FavoriteImgDetailUI.a)FavoriteImgDetailUI.c(this.mAv).get(paramView.mBq);
+    FavoriteImgDetailUI.a(this.mAv, paramView);
+    if (!paramView.mAG) {
+      FavoriteImgDetailUI.b(paramView);
     }
-    for (;;)
-    {
-      return false;
-      paramView = u.Hc().v("basescanui@datacenter", true);
-      paramView.h("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
-      paramView.h("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
-    }
+    AppMethodBeat.o(74386);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteImgDetailUI.9
  * JD-Core Version:    0.7.0.1
  */

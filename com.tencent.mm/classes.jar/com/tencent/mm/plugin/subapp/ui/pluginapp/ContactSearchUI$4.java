@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.subapp.ui.pluginapp;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactSearchUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class ContactSearchUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.pxO.XM();
-    this.pxO.finish();
+    AppMethodBeat.i(25528);
+    this.sZC.hideVKB();
+    this.sZC.finish();
+    AppMethodBeat.o(25528);
     return true;
   }
 }

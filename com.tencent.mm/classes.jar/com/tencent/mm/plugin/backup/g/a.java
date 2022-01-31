@@ -1,43 +1,48 @@
 package com.tencent.mm.plugin.backup.g;
 
-import com.tencent.mm.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.l;
 import com.tencent.mm.plugin.backup.b.c;
 import com.tencent.mm.plugin.backup.i.v;
 import com.tencent.mm.plugin.backup.i.w;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
   extends b
 {
-  public v hLu = new v();
-  public w hLv = new w();
-  final int hLw;
-  final String hLx;
-  final byte[] hLy;
-  final String hLz;
+  final String authId;
+  public v jEX;
+  public w jEY;
+  final int jEZ;
+  final String jFa;
+  final byte[] jFb;
   
   public a(String paramString1, String paramString2, byte[] paramArrayOfByte, String paramString3, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.BackupAuthScene", "BackupAuthScene init, backupType[%d], stack:%s", new Object[] { Integer.valueOf(paramInt2), bk.csb() });
-    this.hLu.hPF = new com.tencent.mm.bv.b(k.b(paramString1.getBytes(), paramArrayOfByte));
-    this.hLu.hQP = 0;
-    this.hLu.ID = paramString3;
-    this.hLu.hQQ = paramInt1;
-    this.hLx = paramString2;
-    this.hLz = paramString3;
-    this.hLy = paramArrayOfByte;
-    this.hLw = paramInt2;
+    AppMethodBeat.i(17636);
+    this.jEX = new v();
+    this.jEY = new w();
+    ab.i("MicroMsg.BackupAuthScene", "BackupAuthScene init, backupType[%d], stack:%s", new Object[] { Integer.valueOf(paramInt2), bo.dtY() });
+    this.jEX.jJh = new com.tencent.mm.bv.b(l.d(paramString1.getBytes(), paramArrayOfByte));
+    this.jEX.jKr = 0;
+    this.jEX.ID = paramString3;
+    this.jEX.Version = paramInt1;
+    this.jFa = paramString2;
+    this.authId = paramString3;
+    this.jFb = paramArrayOfByte;
+    this.jEZ = paramInt2;
+    AppMethodBeat.o(17636);
   }
   
-  public final com.tencent.mm.bv.a auJ()
+  public final com.tencent.mm.bv.a aUl()
   {
-    return this.hLv;
+    return this.jEY;
   }
   
-  public final com.tencent.mm.bv.a auK()
+  public final com.tencent.mm.bv.a aUm()
   {
-    return this.hLu;
+    return this.jEX;
   }
   
   public final int getType()
@@ -45,48 +50,56 @@ public final class a
     return 1;
   }
   
-  public final void nF(int paramInt)
+  public final void rt(int paramInt)
   {
-    if (this.hLv.hQq != 0)
+    AppMethodBeat.i(17637);
+    if (this.jEY.jJS != 0)
     {
-      y.e("MicroMsg.BackupAuthScene", "onSceneEnd errType[%d]", new Object[] { Integer.valueOf(this.hLv.hQq) });
-      j(4, this.hLv.hQq, "onSceneEnd status failed");
-    }
-    do
-    {
+      ab.e("MicroMsg.BackupAuthScene", "onSceneEnd errType[%d]", new Object[] { Integer.valueOf(this.jEY.jJS) });
+      n(4, this.jEY.jJS, "onSceneEnd status failed");
+      AppMethodBeat.o(17637);
       return;
-      if (!this.hLz.equals(this.hLv.ID))
-      {
-        y.e("MicroMsg.BackupAuthScene", "onSceneEnd not the same id");
-        j(4, -1, "onSceneEnd not the same id");
-        return;
+    }
+    if (!this.authId.equals(this.jEY.ID))
+    {
+      ab.e("MicroMsg.BackupAuthScene", "onSceneEnd not the same id");
+      n(4, -1, "onSceneEnd not the same id");
+      AppMethodBeat.o(17637);
+      return;
+    }
+    String str = new String(l.c(this.jEY.jJh.pW, this.jFb));
+    if (str.length() != this.jFa.length()) {}
+    for (boolean bool = false;; bool = str.equals(this.jFa))
+    {
+      ab.i("MicroMsg.BackupAuthScene", "onSceneEnd check ok result[%b]", new Object[] { Boolean.valueOf(bool) });
+      if (bool) {
+        break;
       }
-      String str = new String(k.a(this.hLv.hPF.oY, this.hLy));
-      if (str.length() != this.hLx.length()) {}
-      for (boolean bool = false;; bool = str.equals(this.hLx))
-      {
-        y.i("MicroMsg.BackupAuthScene", "onSceneEnd check ok result[%b]", new Object[] { Boolean.valueOf(bool) });
-        if (bool) {
-          break;
-        }
-        y.e("MicroMsg.BackupAuthScene", "onSceneEnd check ok failed");
-        j(4, -3, "onSceneEnd check ok failed");
-        return;
-      }
-      j(0, 0, "onSceneEnd auth success");
-    } while ((this.hLw == 22) && (this.hLv.hQQ < c.hFe));
-    this.hLu.hPF = new com.tencent.mm.bv.b(k.b(this.hLx.getBytes(), this.hLy));
-    this.hLu.hQP = 1;
-    this.hLu.ID = this.hLz;
+      ab.e("MicroMsg.BackupAuthScene", "onSceneEnd check ok failed");
+      n(4, -3, "onSceneEnd check ok failed");
+      AppMethodBeat.o(17637);
+      return;
+    }
+    n(0, 0, "onSceneEnd auth success");
+    if ((this.jEZ == 22) && (this.jEY.Version < c.jyx))
+    {
+      AppMethodBeat.o(17637);
+      return;
+    }
+    this.jEX.jJh = new com.tencent.mm.bv.b(l.d(this.jFa.getBytes(), this.jFb));
+    this.jEX.jKr = 1;
+    this.jEX.ID = this.authId;
     try
     {
-      y.i("MicroMsg.BackupAuthScene", "directSendAuthOk");
-      b.o(this.hLu.toByteArray(), 1, paramInt);
+      ab.i("MicroMsg.BackupAuthScene", "directSendAuthOk");
+      b.r(this.jEX.toByteArray(), getType(), paramInt);
+      AppMethodBeat.o(17637);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.BackupAuthScene", localException, "directSendAuthOk req to bur err.", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.BackupAuthScene", localException, "directSendAuthOk req to bur err.", new Object[0]);
+      AppMethodBeat.o(17637);
     }
   }
   
@@ -94,23 +107,23 @@ public final class a
   {
     if (paramBoolean1)
     {
-      localv = this.hLu;
-      localv.hQS |= c.hFi;
+      localv = this.jEX;
+      localv.jKt |= c.jyB;
     }
-    v localv = this.hLu;
-    localv.hQS |= c.hFj;
-    localv = this.hLu;
-    localv.hQS |= c.hFk;
+    v localv = this.jEX;
+    localv.jKt |= c.jyC;
+    localv = this.jEX;
+    localv.jKt |= c.jyD;
     if (paramBoolean2)
     {
-      localv = this.hLu;
-      localv.hQS |= c.hFl;
+      localv = this.jEX;
+      localv.jKt |= c.jyE;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.a
  * JD-Core Version:    0.7.0.1
  */

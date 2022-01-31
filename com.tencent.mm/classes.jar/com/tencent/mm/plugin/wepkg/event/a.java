@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wepkg.event;
 
 public abstract interface a
 {
-  public abstract void bI(Object paramObject);
+  public abstract void cm(Object paramObject);
 }
 
 

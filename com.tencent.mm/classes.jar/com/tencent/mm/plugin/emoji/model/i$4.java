@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.emoji.model;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 
 final class i$4
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
     return new String[] { "DROP TABLE IF EXISTS EmotionDetail ", "DROP TABLE IF EXISTS EmojiSummaryInfo", "DROP TABLE IF EXISTS RewardMagicInfo" };
   }

@@ -5,49 +5,56 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Parcel;
 import android.support.annotation.Keep;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.a;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.base.h;
 
 final class AppBrandLaunchErrorActionAlert
   extends AppBrandLaunchErrorAction
 {
-  final String fcY;
-  final String fcZ;
+  final String guJ;
+  final String guK;
   
   @Keep
   AppBrandLaunchErrorActionAlert(Parcel paramParcel)
   {
     super(paramParcel);
-    this.fcY = paramParcel.readString();
-    this.fcZ = paramParcel.readString();
+    AppMethodBeat.i(131696);
+    this.guJ = paramParcel.readString();
+    this.guK = paramParcel.readString();
+    AppMethodBeat.o(131696);
   }
   
   AppBrandLaunchErrorActionAlert(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     super(paramString1, paramInt);
-    this.fcY = paramString2;
-    this.fcZ = paramString3;
+    this.guJ = paramString2;
+    this.guK = paramString3;
   }
   
-  final void cr(Context paramContext)
+  final void cS(Context paramContext)
   {
-    String str1 = this.fcZ;
-    String str2 = this.fcY;
+    AppMethodBeat.i(131698);
+    String str1 = this.guK;
+    String str2 = this.guJ;
     if (!(paramContext instanceof Activity))
     {
-      a.a(null, str1, str2, ae.getResources().getString(y.j.app_ok), "", null, null, null);
+      a.a(null, str1, str2, ah.getResources().getString(2131297018), "", null, null, null);
+      AppMethodBeat.o(131698);
       return;
     }
     h.a(paramContext, str1, str2, false, null);
+    AppMethodBeat.o(131698);
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(131697);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.fcY);
-    paramParcel.writeString(this.fcZ);
+    paramParcel.writeString(this.guJ);
+    paramParcel.writeString(this.guK);
+    AppMethodBeat.o(131697);
   }
 }
 

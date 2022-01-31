@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
+import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class RemittanceBusiUI$2
-  implements View.OnClickListener
+  implements Runnable
 {
   RemittanceBusiUI$2(RemittanceBusiUI paramRemittanceBusiUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    h.nFQ.f(15235, new Object[] { Integer.valueOf(3) });
-    RemittanceBusiUI.z(this.nCA);
+    AppMethodBeat.i(142175);
+    RemittanceBusiUI.a(this.qoF, RemittanceBusiUI.v(this.qoF).getWidth());
+    RemittanceBusiUI.w(this.qoF).setVisibility(8);
+    ab.d("MicroMsg.RemittanceBusiUI", "post: mMaxUnitWidth:%s", new Object[] { Integer.valueOf(RemittanceBusiUI.x(this.qoF)) });
+    AppMethodBeat.o(142175);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBusiUI.2
  * JD-Core Version:    0.7.0.1
  */

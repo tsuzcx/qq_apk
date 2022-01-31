@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.sns.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.l;
 import com.tencent.mm.plugin.sns.storage.m;
-import com.tencent.mm.protocal.c.bxl;
-import com.tencent.mm.protocal.c.xs;
-import com.tencent.mm.protocal.c.zq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.abx;
+import com.tencent.mm.protocal.protobuf.aei;
+import com.tencent.mm.protocal.protobuf.cjz;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
 {
-  private static long H(long paramLong1, long paramLong2)
+  private static long W(long paramLong1, long paramLong2)
   {
     if (((paramLong1 > 0L) && (paramLong2 > 0L)) || ((paramLong1 < 0L) && (paramLong2 < 0L))) {
       return paramLong1 - paramLong2;
@@ -24,275 +25,285 @@ public final class c
   
   public static int a(long paramLong1, long paramLong2, String paramString)
   {
-    paramString = af.bDJ().OD(paramString);
-    Object localObject = paramString.sYR;
-    y.i("MicroMsg.FaultLogic", "getLastReqTimeByMinId fault.count %s", new Object[] { Integer.valueOf(paramString.sYR.size()) });
-    int j;
-    if (((LinkedList)localObject).isEmpty()) {
-      j = 0;
-    }
-    int i;
-    do
+    AppMethodBeat.i(36134);
+    paramString = ag.cpj().abx(paramString);
+    Object localObject = paramString.wXm;
+    ab.i("MicroMsg.FaultLogic", "getLastReqTimeByMinId fault.count %s", new Object[] { Integer.valueOf(paramString.wXm.size()) });
+    if (((LinkedList)localObject).isEmpty())
     {
-      return j;
-      paramString = (xs)((LinkedList)localObject).getFirst();
-      if ((paramLong1 == 0L) || (H(paramString.sUt, paramLong1) > 0L))
+      AppMethodBeat.o(36134);
+      return 0;
+    }
+    paramString = (abx)((LinkedList)localObject).getFirst();
+    if ((paramLong1 == 0L) || (W(paramString.wSq, paramLong1) > 0L))
+    {
+      ab.e("MicroMsg.FaultLogic", "has a fault  minId:" + paramLong2 + " fault.min:" + paramString.wSq);
+      AppMethodBeat.o(36134);
+      return 0;
+    }
+    if ((paramLong2 != 0L) && (W(paramString.wSp, paramLong2) < 0L))
+    {
+      ab.e("MicroMsg.FaultLogic", ":" + paramLong2 + " fault.max:" + paramString.wSp);
+      AppMethodBeat.o(36134);
+      return 0;
+    }
+    paramString = paramString.wSr;
+    if (paramString.isEmpty())
+    {
+      AppMethodBeat.o(36134);
+      return 0;
+    }
+    paramString = paramString.iterator();
+    int i = 2147483647;
+    while (paramString.hasNext())
+    {
+      localObject = (cjz)paramString.next();
+      if ((paramLong2 == 0L) || (W(paramLong2, ((cjz)localObject).xUb) >= 0L))
       {
-        y.e("MicroMsg.FaultLogic", "has a fault  minId:" + paramLong2 + " fault.min:" + paramString.sUt);
-        return 0;
-      }
-      if ((paramLong2 != 0L) && (H(paramString.sUs, paramLong2) < 0L))
-      {
-        y.e("MicroMsg.FaultLogic", ":" + paramLong2 + " fault.max:" + paramString.sUs);
-        return 0;
-      }
-      paramString = paramString.sUu;
-      if (paramString.isEmpty()) {
-        return 0;
-      }
-      paramString = paramString.iterator();
-      j = 2147483647;
-      do
-      {
-        do
-        {
-          if (!paramString.hasNext()) {
-            break;
-          }
-          localObject = (bxl)paramString.next();
-        } while ((paramLong2 != 0L) && (H(paramLong2, ((bxl)localObject).tNA) < 0L));
-        i = j;
-        if (((bxl)localObject).tNB < j) {
-          i = ((bxl)localObject).tNB;
+        int j = i;
+        if (((cjz)localObject).xUc < i) {
+          j = ((cjz)localObject).xUc;
         }
-        j = i;
-      } while (H(paramLong1, ((bxl)localObject).tNA) < 0L);
-      j = i;
-    } while (i != 2147483647);
-    return 0;
-    y.i("MicroMsg.FaultLogic", "should not to hear  minId:" + paramLong1);
+        i = j;
+        if (W(paramLong1, ((cjz)localObject).xUb) >= 0L)
+        {
+          if (j == 2147483647)
+          {
+            AppMethodBeat.o(36134);
+            return 0;
+          }
+          AppMethodBeat.o(36134);
+          return j;
+        }
+      }
+    }
+    ab.i("MicroMsg.FaultLogic", "should not to hear  minId:".concat(String.valueOf(paramLong1)));
+    AppMethodBeat.o(36134);
     return 0;
   }
   
-  private static xs a(xs paramxs1, xs paramxs2)
+  private static abx a(abx paramabx1, abx paramabx2)
   {
-    xs localxs = new xs();
-    if (H(paramxs1.sUs, paramxs2.sUs) > 0L)
+    AppMethodBeat.i(36133);
+    abx localabx = new abx();
+    if (W(paramabx1.wSp, paramabx2.wSp) > 0L)
     {
-      localxs.sUs = paramxs1.sUs;
-      if (H(paramxs1.sUt, paramxs2.sUt) >= 0L) {
-        break label127;
+      localabx.wSp = paramabx1.wSp;
+      if (W(paramabx1.wSq, paramabx2.wSq) >= 0L) {
+        break label132;
       }
-      localxs.sUt = paramxs1.sUt;
-      label59:
-      paramxs1 = paramxs1.sUu;
-      paramxs2 = paramxs2.sUu.iterator();
+      localabx.wSq = paramabx1.wSq;
+      label64:
+      paramabx1 = paramabx1.wSr;
+      paramabx2 = paramabx2.wSr.iterator();
     }
     for (;;)
     {
-      if (!paramxs2.hasNext()) {
-        break label634;
+      if (!paramabx2.hasNext()) {
+        break label639;
       }
-      bxl localbxl1 = (bxl)paramxs2.next();
-      if (paramxs1.isEmpty())
+      cjz localcjz1 = (cjz)paramabx2.next();
+      if (paramabx1.isEmpty())
       {
-        y.e("MicroMsg.FaultLogic", "fault's segments should not empty!!");
-        paramxs1.addFirst(localbxl1);
+        ab.e("MicroMsg.FaultLogic", "fault's segments should not empty!!");
+        paramabx1.addFirst(localcjz1);
         continue;
-        localxs.sUs = paramxs2.sUs;
+        localabx.wSp = paramabx2.wSp;
         break;
-        label127:
-        localxs.sUt = paramxs2.sUt;
-        break label59;
+        label132:
+        localabx.wSq = paramabx2.wSq;
+        break label64;
       }
-      long l1 = localbxl1.tNA;
-      int i = paramxs1.size() - 1;
-      label153:
-      label178:
+      long l1 = localcjz1.xUb;
+      int i = paramabx1.size() - 1;
+      label158:
+      label183:
       int j;
       if (i >= 0) {
-        if (H(l1, ((bxl)paramxs1.get(i)).tNz) <= 0L)
+        if (W(l1, ((cjz)paramabx1.get(i)).xUa) <= 0L)
         {
-          l1 = localbxl1.tNz;
+          l1 = localcjz1.xUa;
           j = 0;
-          label187:
-          if (j >= paramxs1.size()) {
-            break label249;
+          label192:
+          if (j >= paramabx1.size()) {
+            break label254;
           }
-          if (H(l1, ((bxl)paramxs1.get(j)).tNA) < 0L) {
-            break label242;
+          if (W(l1, ((cjz)paramabx1.get(j)).xUb) < 0L) {
+            break label247;
           }
         }
       }
       for (;;)
       {
         if (i != -1) {
-          break label257;
+          break label262;
         }
-        paramxs1.addFirst(localbxl1);
+        paramabx1.addFirst(localcjz1);
         break;
         i -= 1;
-        break label153;
+        break label158;
         i = -1;
-        break label178;
-        label242:
+        break label183;
+        label247:
         j += 1;
-        break label187;
-        label249:
-        j = paramxs1.size();
+        break label192;
+        label254:
+        j = paramabx1.size();
       }
-      label257:
-      if (j == paramxs1.size())
+      label262:
+      if (j == paramabx1.size())
       {
-        paramxs1.addLast(localbxl1);
+        paramabx1.addLast(localcjz1);
       }
       else
       {
-        bxl localbxl2 = (bxl)paramxs1.get(j);
+        cjz localcjz2 = (cjz)paramabx1.get(j);
         int k = i;
         int m = j;
-        bxl localbxl3;
-        if (H(localbxl1.tNz, localbxl2.tNz) < 0L)
+        cjz localcjz3;
+        if (W(localcjz1.xUa, localcjz2.xUa) < 0L)
         {
-          localbxl3 = new bxl();
-          localbxl3.tNz = localbxl2.tNz;
-          l1 = localbxl1.tNz;
+          localcjz3 = new cjz();
+          localcjz3.xUa = localcjz2.xUa;
+          l1 = localcjz1.xUa;
           if (l1 != 9223372036854775807L) {
-            break label488;
+            break label493;
           }
         }
-        label488:
+        label493:
         for (l1 = -9223372036854775808L;; l1 += 1L)
         {
-          localbxl3.tNA = l1;
-          localbxl3.tNB = localbxl2.tNB;
-          paramxs1.add(j, localbxl3);
+          localcjz3.xUb = l1;
+          localcjz3.xUc = localcjz2.xUc;
+          paramabx1.add(j, localcjz3);
           k = i + 1;
           m = j + 1;
-          localbxl2 = (bxl)paramxs1.get(k);
+          localcjz2 = (cjz)paramabx1.get(k);
           i = k;
-          if (H(localbxl1.tNA, localbxl2.tNA) > 0L)
+          if (W(localcjz1.xUb, localcjz2.xUb) > 0L)
           {
-            localbxl3 = new bxl();
-            localbxl3.tNA = localbxl2.tNA;
-            localbxl3.tNz = fR(localbxl1.tNA);
-            localbxl3.tNB = localbxl2.tNB;
-            paramxs1.add(k + 1, localbxl3);
+            localcjz3 = new cjz();
+            localcjz3.xUb = localcjz2.xUb;
+            localcjz3.xUa = lw(localcjz1.xUb);
+            localcjz3.xUc = localcjz2.xUc;
+            paramabx1.add(k + 1, localcjz3);
             i = k;
           }
           while (i >= m)
           {
-            paramxs1.remove(i);
+            paramabx1.remove(i);
             i -= 1;
           }
         }
-        paramxs1.add(m, localbxl1);
-        if (paramxs1.size() > 100)
+        paramabx1.add(m, localcjz1);
+        if (paramabx1.size() > 100)
         {
-          long l2 = ((bxl)paramxs1.getLast()).tNA;
-          l1 = ((bxl)paramxs1.getLast()).tNz;
-          for (i = ((bxl)paramxs1.getLast()).tNB; paramxs1.size() >= 100; i = j)
+          long l2 = ((cjz)paramabx1.getLast()).xUb;
+          l1 = ((cjz)paramabx1.getLast()).xUa;
+          for (i = ((cjz)paramabx1.getLast()).xUc; paramabx1.size() >= 100; i = j)
           {
-            localbxl1 = (bxl)paramxs1.removeLast();
-            l1 = localbxl1.tNz;
+            localcjz1 = (cjz)paramabx1.removeLast();
+            l1 = localcjz1.xUa;
             j = i;
-            if (localbxl1.tNB < i) {
-              j = localbxl1.tNB;
+            if (localcjz1.xUc < i) {
+              j = localcjz1.xUc;
             }
           }
-          localbxl1 = new bxl();
-          localbxl1.tNz = l1;
-          localbxl1.tNA = l2;
-          localbxl1.tNB = i;
-          paramxs1.addLast(localbxl1);
+          localcjz1 = new cjz();
+          localcjz1.xUa = l1;
+          localcjz1.xUb = l2;
+          localcjz1.xUc = i;
+          paramabx1.addLast(localcjz1);
         }
       }
     }
-    label634:
-    localxs.sUu = paramxs1;
-    return localxs;
+    label639:
+    localabx.wSr = paramabx1;
+    AppMethodBeat.o(36133);
+    return localabx;
   }
   
   public static void f(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
-    if (paramLong2 == 0L) {}
-    label488:
+    AppMethodBeat.i(36132);
+    if (paramLong2 == 0L)
+    {
+      AppMethodBeat.o(36132);
+      return;
+    }
+    Object localObject1 = ag.cpj().abx(paramString);
+    if (localObject1 == null) {
+      localObject1 = new aei();
+    }
     for (;;)
     {
-      return;
-      Object localObject1 = af.bDJ().OD(paramString);
-      if (localObject1 == null) {
-        localObject1 = new zq();
+      if ((paramLong1 == 0L) && (((aei)localObject1).wXm.isEmpty()))
+      {
+        AppMethodBeat.o(36132);
+        return;
       }
+      long l = paramLong1;
+      if (paramLong1 == 0L) {
+        l = ((abx)((aei)localObject1).wXm.getFirst()).wSp;
+      }
+      Object localObject2 = new abx();
+      ((abx)localObject2).wSp = l;
+      ((abx)localObject2).wSq = paramLong2;
+      Object localObject3 = new cjz();
+      ((cjz)localObject3).xUa = l;
+      ((cjz)localObject3).xUb = paramLong2;
+      ((cjz)localObject3).xUc = paramInt;
+      ((abx)localObject2).wSr.add(localObject3);
       for (;;)
       {
-        for (;;)
+        if (!((aei)localObject1).wXm.isEmpty())
         {
-          if ((paramLong1 == 0L) && (((zq)localObject1).sYR.isEmpty())) {
-            break label488;
-          }
-          long l = paramLong1;
-          if (paramLong1 == 0L) {
-            l = ((xs)((zq)localObject1).sYR.getFirst()).sUs;
-          }
-          Object localObject2 = new xs();
-          ((xs)localObject2).sUs = l;
-          ((xs)localObject2).sUt = paramLong2;
-          Object localObject3 = new bxl();
-          ((bxl)localObject3).tNz = l;
-          ((bxl)localObject3).tNA = paramLong2;
-          ((bxl)localObject3).tNB = paramInt;
-          ((xs)localObject2).sUu.add(localObject3);
-          for (;;)
-          {
-            if (!((zq)localObject1).sYR.isEmpty())
-            {
-              localObject3 = (xs)((zq)localObject1).sYR.getFirst();
-              if (H(((xs)localObject2).sUt, ((xs)localObject3).sUs) > 0L) {
-                y.e("MicroMsg.FaultLogic", "has a fault: newerMin:" + ((xs)localObject2).sUt + " fault.Max" + ((xs)localObject3).sUs);
-              }
-            }
-            else
-            {
-              ((zq)localObject1).sYR.addFirst(localObject2);
-              while (((zq)localObject1).sYR.size() > 100) {
-                ((zq)localObject1).sYR.removeLast();
-              }
-            }
-            ((zq)localObject1).sYR.removeFirst();
-            localObject2 = a((xs)localObject3, (xs)localObject2);
-          }
-          if (((zq)localObject1).sYR.size() > 0) {
-            y.d("MicroMsg.FaultLogic", "min " + ((xs)((zq)localObject1).sYR.get(0)).sUt + " max " + ((xs)((zq)localObject1).sYR.get(0)).sUs);
-          }
-          localObject2 = af.bDJ().OF(paramString);
-          try
-          {
-            ((l)localObject2).field_userName = paramString;
-            ((l)localObject2).field_faultS = ((zq)localObject1).toByteArray();
-            af.bDJ().c((l)localObject2);
-            label373:
-            if (((zq)localObject1).sYR.size() <= 1) {
-              break;
-            }
-            y.d("MicroMsg.FaultLogic", "fault size : " + ((zq)localObject1).sYR.size());
-            paramString = ((zq)localObject1).sYR.iterator();
-            while (paramString.hasNext())
-            {
-              localObject1 = (xs)paramString.next();
-              y.d("MicroMsg.FaultLogic", "min - max " + ((xs)localObject1).sUt + " " + ((xs)localObject1).sUs);
-            }
-          }
-          catch (Exception paramString)
-          {
-            break label373;
+          localObject3 = (abx)((aei)localObject1).wXm.getFirst();
+          if (W(((abx)localObject2).wSq, ((abx)localObject3).wSp) > 0L) {
+            ab.e("MicroMsg.FaultLogic", "has a fault: newerMin:" + ((abx)localObject2).wSq + " fault.Max" + ((abx)localObject3).wSp);
           }
         }
+        else
+        {
+          ((aei)localObject1).wXm.addFirst(localObject2);
+          while (((aei)localObject1).wXm.size() > 100) {
+            ((aei)localObject1).wXm.removeLast();
+          }
+        }
+        ((aei)localObject1).wXm.removeFirst();
+        localObject2 = a((abx)localObject3, (abx)localObject2);
+      }
+      if (((aei)localObject1).wXm.size() > 0) {
+        ab.d("MicroMsg.FaultLogic", "min " + ((abx)((aei)localObject1).wXm.get(0)).wSq + " max " + ((abx)((aei)localObject1).wXm.get(0)).wSp);
+      }
+      localObject2 = ag.cpj().abz(paramString);
+      try
+      {
+        ((l)localObject2).field_userName = paramString;
+        ((l)localObject2).field_faultS = ((aei)localObject1).toByteArray();
+        ag.cpj().c((l)localObject2);
+        label389:
+        if (((aei)localObject1).wXm.size() > 1)
+        {
+          ab.d("MicroMsg.FaultLogic", "fault size : " + ((aei)localObject1).wXm.size());
+          paramString = ((aei)localObject1).wXm.iterator();
+          while (paramString.hasNext())
+          {
+            localObject1 = (abx)paramString.next();
+            ab.d("MicroMsg.FaultLogic", "min - max " + ((abx)localObject1).wSq + " " + ((abx)localObject1).wSp);
+          }
+        }
+        AppMethodBeat.o(36132);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        break label389;
       }
     }
   }
   
-  public static long fR(long paramLong)
+  public static long lw(long paramLong)
   {
     if (paramLong == -9223372036854775808L) {
       return 9223372036854775807L;
@@ -302,7 +313,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.c
  * JD-Core Version:    0.7.0.1
  */

@@ -4,42 +4,42 @@ import android.util.SparseArray;
 
 public final class RecyclerView$s
 {
-  int ahA = -1;
-  private SparseArray<Object> ahK;
-  int ahL = 0;
-  int ahM = 0;
-  int ahN = 1;
-  int ahO = 0;
-  boolean ahP = false;
-  boolean ahQ = false;
-  boolean ahR = false;
-  boolean ahS = false;
-  boolean ahT = false;
-  boolean ahU = false;
-  int ahV;
-  long ahW;
-  int ahX;
-  int ahY;
-  int ahZ;
+  int ajQ = -1;
+  private SparseArray<Object> aka;
+  int akb = 0;
+  int akc = 0;
+  int akd = 1;
+  int ake = 0;
+  boolean akf = false;
+  public boolean akg = false;
+  boolean akh = false;
+  boolean aki = false;
+  boolean akj = false;
+  boolean akk = false;
+  int akl;
+  long akm;
+  int akn;
+  int ako;
+  int akp;
   
-  final void bZ(int paramInt)
+  final void ch(int paramInt)
   {
-    if ((this.ahN & paramInt) == 0) {
-      throw new IllegalStateException("Layout state should be one of " + Integer.toBinaryString(paramInt) + " but it is " + Integer.toBinaryString(this.ahN));
+    if ((this.akd & paramInt) == 0) {
+      throw new IllegalStateException("Layout state should be one of " + Integer.toBinaryString(paramInt) + " but it is " + Integer.toBinaryString(this.akd));
     }
   }
   
   public final int getItemCount()
   {
-    if (this.ahQ) {
-      return this.ahL - this.ahM;
+    if (this.akg) {
+      return this.akb - this.akc;
     }
-    return this.ahO;
+    return this.ake;
   }
   
   public final String toString()
   {
-    return "State{mTargetPosition=" + this.ahA + ", mData=" + this.ahK + ", mItemCount=" + this.ahO + ", mIsMeasuring=" + this.ahS + ", mPreviousLayoutItemCount=" + this.ahL + ", mDeletedInvisibleItemCountSincePreviousLayout=" + this.ahM + ", mStructureChanged=" + this.ahP + ", mInPreLayout=" + this.ahQ + ", mRunSimpleAnimations=" + this.ahT + ", mRunPredictiveAnimations=" + this.ahU + '}';
+    return "State{mTargetPosition=" + this.ajQ + ", mData=" + this.aka + ", mItemCount=" + this.ake + ", mIsMeasuring=" + this.aki + ", mPreviousLayoutItemCount=" + this.akb + ", mDeletedInvisibleItemCountSincePreviousLayout=" + this.akc + ", mStructureChanged=" + this.akf + ", mInPreLayout=" + this.akg + ", mRunSimpleAnimations=" + this.akj + ", mRunPredictiveAnimations=" + this.akk + '}';
   }
 }
 

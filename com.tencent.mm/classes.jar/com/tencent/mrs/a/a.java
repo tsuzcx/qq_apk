@@ -1,13 +1,19 @@
 package com.tencent.mrs.a;
 
+import android.content.Context;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mars.app.AppLogic;
+import com.tencent.matrix.g.c;
 import com.tencent.matrix.mrs.core.MatrixReport;
+import com.tencent.matrix.mrs.core.MatrixUploadDataSlice;
+import com.tencent.matrix.mrs.core.MatrixUploadIssue;
 import com.tencent.matrix.mrs.core.MrsCallback;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.r;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,61 +21,109 @@ import java.util.Iterator;
 public final class a
   implements MrsCallback
 {
-  private HashMap<String, Boolean> wDq = new HashMap();
+  private HashMap<String, Boolean> Bak = new HashMap();
+  
+  public final String getCryptKey(MatrixUploadDataSlice paramMatrixUploadDataSlice)
+  {
+    return com.tencent.mm.a.g.w(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.whH), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+  }
+  
+  public final String getHost(MatrixUploadDataSlice paramMatrixUploadDataSlice)
+  {
+    return "support.weixin.qq.com";
+  }
   
   public final String getPublicSharePath()
   {
-    return AppLogic.getAppFilePath() + "/mrs/";
+    try
+    {
+      Object localObject = ah.getContext().getFilesDir();
+      if (!((File)localObject).exists()) {
+        ((File)localObject).createNewFile();
+      }
+      localObject = ((File)localObject).toString();
+      c.i("Matrix.MrsCallbackImp", "[TEST-PATH] getPublicSharePath, path: %s", new Object[] { localObject });
+      localObject = (String)localObject + "/mrs/";
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      ab.e("Matrix.MrsCallbackImp", localException.toString());
+    }
+    return "";
   }
   
-  public final void onMrsReportDataReady(byte[] paramArrayOfByte)
+  public final String getUrl(MatrixUploadDataSlice paramMatrixUploadDataSlice)
   {
-    com.tencent.matrix.d.b.i("Matrix.MrsCallbackImp", "onMrsReportDataReady, try to report mars", new Object[0]);
-    if (paramArrayOfByte == null)
+    String str = com.tencent.mm.a.g.w(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.whH), Long.valueOf(paramMatrixUploadDataSlice.getDataSize()) }).getBytes()).toLowerCase();
+    StringBuilder localStringBuilder = new StringBuilder(512).append("/cgi-bin/mmsupport-bin/stackreport?version=").append(Integer.toHexString(d.whH)).append("&devicetype=").append("android-" + Build.VERSION.SDK_INT).append("&filelength=").append(paramMatrixUploadDataSlice.getDataSize()).append("&sum=").append(str);
+    long l;
+    if ((ah.brt()) && (com.tencent.mm.kernel.g.RG()))
     {
-      com.tencent.matrix.d.b.e("Matrix.ReportMrsUpload", "report mrs date is null", new Object[0]);
-      return;
+      str = r.Zn();
+      if ((str != null) && (str.length() != 0)) {
+        localStringBuilder.append("&username=").append(str);
+      }
+      if (1 != paramMatrixUploadDataSlice.getUploadIssue().getDataType()) {
+        break label282;
+      }
+      if (paramMatrixUploadDataSlice.getUploadIssue().getId() >= 0L) {
+        break label271;
+      }
+      l = -1L * paramMatrixUploadDataSlice.getUploadIssue().getId();
+      label191:
+      str = l + '.' + paramMatrixUploadDataSlice.getPackageIndex() + '.' + paramMatrixUploadDataSlice.getTotalPackage();
+      localStringBuilder.append("&reporttype=19860829&reportvalue=").append(str).append("&rtxname=").append(paramMatrixUploadDataSlice.getUploadIssue().getTag());
     }
-    e.post(new c.2(paramArrayOfByte), "ReportMrsUpload");
+    for (;;)
+    {
+      return localStringBuilder.toString();
+      str = null;
+      break;
+      label271:
+      l = paramMatrixUploadDataSlice.getUploadIssue().getId();
+      break label191;
+      label282:
+      localStringBuilder.append("&reporttype=1&NewReportType=111");
+    }
   }
   
   public final boolean onRequestGetMrsStrategy(byte[] paramArrayOfByte)
   {
     try
     {
-      if (!g.DK())
+      if (!com.tencent.mm.kernel.g.RG())
       {
-        y.e("Matrix.MrsCallbackImp", "onRequestGetMrsStrategy, account not ready");
+        ab.e("Matrix.MrsCallbackImp", "onRequestGetMrsStrategy, account not ready");
         return false;
       }
       try
       {
         if (b.isRunning())
         {
-          y.i("Matrix.MrsCallbackImp", "NetSceneGetMrsStrategy is already running, just return");
+          ab.i("Matrix.MrsCallbackImp", "NetSceneGetMrsStrategy is already running, just return");
           return false;
         }
       }
       finally {}
-      y.i("Matrix.MrsCallbackImp", "onRequestGetMrsStrategy, try to request mrs strategy");
+      ab.i("Matrix.MrsCallbackImp", "onRequestGetMrsStrategy, try to request mrs strategy");
     }
     catch (Exception paramArrayOfByte)
     {
-      y.e("Matrix.MrsCallbackImp", "error: " + paramArrayOfByte.getMessage());
+      ab.e("Matrix.MrsCallbackImp", "error: " + paramArrayOfByte.getMessage());
       return false;
     }
     paramArrayOfByte = new b(paramArrayOfByte);
-    g.DO().dJT.a(paramArrayOfByte, 0);
+    com.tencent.mm.kernel.g.RK().eHt.a(paramArrayOfByte, 0);
     return true;
   }
   
   public final void onStrategyNotify(String paramString, boolean paramBoolean)
   {
-    com.tencent.matrix.d.b.i("Matrix.MrsCallbackImp", "onStrategyNotify, strategy: %s, isReportProcess; %b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-    if (!com.tencent.matrix.a.isInstalled()) {}
-    label283:
-    label319:
-    label354:
+    c.i("Matrix.MrsCallbackImp", "onStrategyNotify, strategy: %s, isReportProcess; %b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    if (!com.tencent.matrix.b.isInstalled()) {}
+    label266:
+    label333:
     for (;;)
     {
       return;
@@ -77,65 +131,57 @@ public final class a
       {
         if (MatrixReport.with().isDebug())
         {
-          com.tencent.matrix.d.b.i("Matrix.MrsCallbackImp", "onStrategyNotify, matrix will report all for debug mode", new Object[0]);
+          c.i("Matrix.MrsCallbackImp", "onStrategyNotify, matrix will report all for debug mode", new Object[0]);
           return;
         }
-        this.wDq.clear();
-        Object localObject = this.wDq;
+        this.Bak.clear();
+        Object localObject = this.Bak;
         if ((TextUtils.isEmpty(paramString)) || (localObject == null))
         {
-          com.tencent.matrix.d.b.e("Matrix.MatrixUtil", "changeStrategyToMap, input params is illegal", new Object[0]);
-          paramString = com.tencent.matrix.a.qO().bmo.iterator();
+          c.e("Matrix.MatrixUtil", "changeStrategyToMap, input params is illegal", new Object[0]);
+          paramString = com.tencent.matrix.b.yD().bLY.iterator();
         }
         for (;;)
         {
-          label102:
           if (!paramString.hasNext()) {
-            break label354;
+            break label333;
           }
-          localObject = (com.tencent.matrix.b.b)paramString.next();
-          String str = ((com.tencent.matrix.b.b)localObject).getTag();
-          if ((this.wDq.containsKey(str)) && (!localObject.getClass().getName().equals(com.tencent.matrix.trace.a.class.getName())))
+          localObject = (com.tencent.matrix.d.b)paramString.next();
+          String str = ((com.tencent.matrix.d.b)localObject).getTag();
+          if (this.Bak.containsKey(str))
           {
-            paramBoolean = ((Boolean)this.wDq.get(str)).booleanValue();
-            if (paramBoolean)
+            paramBoolean = ((Boolean)this.Bak.get(str)).booleanValue();
+            if ((paramBoolean) && (((com.tencent.matrix.d.b)localObject).isPluginStopped()))
             {
-              if (((com.tencent.matrix.b.b)localObject).status == 4) {}
-              for (int i = 1;; i = 0)
+              c.w("Matrix.MrsCallbackImp", "matrix strategy change, try to turn on plugin %s", new Object[] { str });
+              ((com.tencent.matrix.d.b)localObject).start();
+              continue;
+              paramString = paramString.split(";");
+              int j = paramString.length;
+              int i = 0;
+              label212:
+              String[] arrayOfString;
+              if (i < j)
               {
-                if (i == 0) {
-                  break label319;
+                str = paramString[i];
+                arrayOfString = str.split(",", 2);
+                if (arrayOfString.length == 2) {
+                  break label266;
                 }
-                com.tencent.matrix.d.b.w("Matrix.MrsCallbackImp", "matrix strategy change, try to turn on plugin %s", new Object[] { str });
-                ((com.tencent.matrix.b.b)localObject).start();
-                break label102;
-                paramString = paramString.split(";");
-                int j = paramString.length;
-                i = 0;
-                label232:
-                String[] arrayOfString;
-                if (i < j)
-                {
-                  str = paramString[i];
-                  arrayOfString = str.split(",", 2);
-                  if (arrayOfString.length == 2) {
-                    break label283;
-                  }
-                  com.tencent.matrix.d.b.e("Matrix.MatrixUtil", "changeStrategyToMap, strategy format is illegal, value: %s", new Object[] { str });
-                }
-                for (;;)
-                {
-                  i += 1;
-                  break label232;
-                  break;
-                  ((HashMap)localObject).put(arrayOfString[0].trim(), Boolean.valueOf(arrayOfString[1].trim().equals("1")));
-                }
+                c.e("Matrix.MatrixUtil", "changeStrategyToMap, strategy format is illegal, value: %s", new Object[] { str });
+              }
+              for (;;)
+              {
+                i += 1;
+                break label212;
+                break;
+                ((HashMap)localObject).put(arrayOfString[0].trim(), Boolean.valueOf(arrayOfString[1].trim().equals("1")));
               }
             }
-            if ((!paramBoolean) && (((com.tencent.matrix.b.b)localObject).re()))
+            else if ((!paramBoolean) && (((com.tencent.matrix.d.b)localObject).isPluginStarted()))
             {
-              com.tencent.matrix.d.b.w("Matrix.MrsCallbackImp", "matrix strategy change, try to turn off plugin %s", new Object[] { str });
-              ((com.tencent.matrix.b.b)localObject).stop();
+              c.w("Matrix.MrsCallbackImp", "matrix strategy change, try to turn off plugin %s", new Object[] { str });
+              ((com.tencent.matrix.d.b)localObject).stop();
             }
           }
         }

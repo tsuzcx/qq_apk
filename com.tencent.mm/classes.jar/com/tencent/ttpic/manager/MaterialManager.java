@@ -1,12 +1,19 @@
 package com.tencent.ttpic.manager;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.model.VideoMaterial;
 
 public enum MaterialManager
 {
-  INSTANCE;
-  
   private VideoMaterial material;
+  
+  static
+  {
+    AppMethodBeat.i(83436);
+    INSTANCE = new MaterialManager("INSTANCE", 0);
+    $VALUES = new MaterialManager[] { INSTANCE };
+    AppMethodBeat.o(83436);
+  }
   
   private MaterialManager() {}
   
@@ -22,26 +29,25 @@ public enum MaterialManager
   
   public final void setCurrentMaterial(VideoMaterial paramVideoMaterial)
   {
-    if (paramVideoMaterial == null) {
+    AppMethodBeat.i(83435);
+    if (paramVideoMaterial == null)
+    {
+      AppMethodBeat.o(83435);
       return;
     }
-    if (paramVideoMaterial.getDataPath().equals("None"))
+    if ((this.material != null) && (this.material.getId() != null))
     {
-      this.material = null;
-      return;
-    }
-    if (this.material != null)
-    {
-      if ((paramVideoMaterial.getId() == null) || (this.material.getId() == null) || (!this.material.getId().equals(paramVideoMaterial.getId()))) {
-        break label76;
+      if (!this.material.getId().equals(paramVideoMaterial.getId())) {
+        break label66;
       }
       RandomGroupManager.getInstance().clearCurValue();
     }
     for (;;)
     {
       this.material = paramVideoMaterial;
+      AppMethodBeat.o(83435);
       return;
-      label76:
+      label66:
       RandomGroupManager.getInstance().clearAll();
     }
   }

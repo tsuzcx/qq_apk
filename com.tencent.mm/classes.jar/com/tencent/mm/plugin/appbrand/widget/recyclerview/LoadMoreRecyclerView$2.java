@@ -1,23 +1,22 @@
 package com.tencent.mm.plugin.appbrand.widget.recyclerview;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoadMoreRecyclerView$2
   extends RecyclerView.c
 {
   LoadMoreRecyclerView$2(LoadMoreRecyclerView paramLoadMoreRecyclerView, LinearLayoutManager paramLinearLayoutManager) {}
   
-  public final void an(int paramInt1, int paramInt2)
+  public final void at(int paramInt1, int paramInt2)
   {
-    super.an(paramInt1, paramInt2);
-    if ((this.hDS.hDP) && (this.hDR.ha() == this.hDS.hDT.getItemCount() - 1) && (LoadMoreRecyclerView.a(this.hDS) != null))
-    {
-      LoadMoreRecyclerView.a locala = LoadMoreRecyclerView.a(this.hDS);
-      RecyclerView.a locala1 = this.hDS.hDT.Sw;
-      locala.apj();
+    AppMethodBeat.i(77480);
+    super.at(paramInt1, paramInt2);
+    if ((this.jws.jwp) && (this.jwr.iv() == this.jws.jwt.getItemCount() - 1) && (LoadMoreRecyclerView.a(this.jws) != null)) {
+      LoadMoreRecyclerView.a(this.jws).aNj();
     }
+    AppMethodBeat.o(77480);
   }
 }
 

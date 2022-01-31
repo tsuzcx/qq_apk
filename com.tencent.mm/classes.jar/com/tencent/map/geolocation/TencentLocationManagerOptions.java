@@ -1,6 +1,6 @@
 package com.tencent.map.geolocation;
 
-import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TencentLocationManagerOptions
 {
@@ -19,10 +19,14 @@ public class TencentLocationManagerOptions
   
   public static boolean setKey(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    AppMethodBeat.i(136468);
+    if ((paramString == null) || (paramString.equals("")))
+    {
+      AppMethodBeat.o(136468);
       return false;
     }
     b = paramString;
+    AppMethodBeat.o(136468);
     return true;
   }
   

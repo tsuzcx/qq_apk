@@ -2,7 +2,7 @@ package android.support.design.widget;
 
 public abstract interface CoordinatorLayout$a
 {
-  public abstract CoordinatorLayout.Behavior aH();
+  public abstract CoordinatorLayout.Behavior bp();
 }
 
 

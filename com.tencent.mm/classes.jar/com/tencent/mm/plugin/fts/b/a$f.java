@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.h;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,35 +10,40 @@ import java.util.List;
 final class a$f
   extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private int kyI = 0;
-  private int kyJ = 0;
+  private int mUw = 0;
+  private int mUx = 0;
   
   private a$f(a parama) {}
   
-  public final String afJ()
+  public final String aAn()
   {
-    return String.format("{users: %d labels: %d}", new Object[] { Integer.valueOf(this.kyI), Integer.valueOf(this.kyJ) });
+    AppMethodBeat.i(136675);
+    String str = String.format("{users: %d labels: %d}", new Object[] { Integer.valueOf(this.mUw), Integer.valueOf(this.mUx) });
+    AppMethodBeat.o(136675);
+    return str;
   }
   
   public final boolean execute()
   {
-    Cursor localCursor = a.a(this.kyt).kuE.rawQuery("SELECT user, label_id FROM FTS5ContactLabels;", null);
+    AppMethodBeat.i(136674);
+    Cursor localCursor = a.a(this.mUg).mQr.rawQuery("SELECT user, label_id FROM FTS5ContactLabels;", null);
     while (localCursor.moveToNext())
     {
       String str = localCursor.getString(0);
       long l = localCursor.getLong(1);
-      List localList = (List)a.g(this.kyt).get(str);
+      List localList = (List)a.g(this.mUg).get(str);
       Object localObject = localList;
       if (localList == null)
       {
         localObject = new ArrayList(16);
-        a.g(this.kyt).put(str, localObject);
-        this.kyI += 1;
+        a.g(this.mUg).put(str, localObject);
+        this.mUw += 1;
       }
       ((List)localObject).add(Long.valueOf(l));
-      this.kyJ += 1;
+      this.mUx += 1;
     }
     localCursor.close();
+    AppMethodBeat.o(136674);
     return true;
   }
   
@@ -48,7 +54,7 @@ final class a$f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class w
-  extends c<ar>
+  extends e<as>
 {
-  private static final int CTRL_INDEX = 377;
-  private static final String NAME = "readdirSync";
+  private static final int CTRL_INDEX = 375;
+  private static final String NAME = "mkdirSync";
   
   public w()
   {
-    super(new ar());
+    super(new as());
+    AppMethodBeat.i(102793);
+    AppMethodBeat.o(102793);
   }
 }
 

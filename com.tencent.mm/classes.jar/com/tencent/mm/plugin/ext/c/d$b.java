@@ -1,32 +1,37 @@
 package com.tencent.mm.plugin.ext.c;
 
 import android.graphics.Rect;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d$b
 {
-  int apf;
-  int apg;
-  public String bIW;
-  byte[] bXE;
-  Rect jLf;
+  int arA;
+  int arz;
+  byte[] cFD;
+  public String cqq;
+  Rect mfj;
   int rotate;
   
   public d$b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, Rect paramRect, String paramString)
   {
-    this.bXE = paramArrayOfByte;
-    this.apf = paramInt1;
-    this.apg = paramInt2;
+    this.cFD = paramArrayOfByte;
+    this.arz = paramInt1;
+    this.arA = paramInt2;
     this.rotate = paramInt3;
-    this.jLf = paramRect;
-    this.bIW = paramString;
+    this.mfj = paramRect;
+    this.cqq = paramString;
   }
   
   public final String toString()
   {
+    AppMethodBeat.i(20413);
     StringBuilder localStringBuilder = new StringBuilder("RetrieveResult{yuvDataLength=");
-    if (this.bXE != null) {}
-    for (Object localObject = Integer.valueOf(this.bXE.length);; localObject = "null") {
-      return localObject + ", previewWidth=" + this.apf + ", previewHeight=" + this.apg + ", rotate=" + this.rotate + ", scanRect=" + this.jLf + ", md5=" + this.bIW + '}';
+    if (this.cFD != null) {}
+    for (Object localObject = Integer.valueOf(this.cFD.length);; localObject = "null")
+    {
+      localObject = localObject + ", previewWidth=" + this.arz + ", previewHeight=" + this.arA + ", rotate=" + this.rotate + ", scanRect=" + this.mfj + ", md5=" + this.cqq + '}';
+      AppMethodBeat.o(20413);
+      return localObject;
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class o
   implements HelperHeaderPreference.a
@@ -15,12 +15,17 @@ final class o
   
   public final void a(HelperHeaderPreference paramHelperHeaderPreference)
   {
-    paramHelperHeaderPreference.ig(true);
+    AppMethodBeat.i(23612);
+    paramHelperHeaderPreference.kf(true);
+    AppMethodBeat.o(23612);
   }
   
   public final CharSequence getHint()
   {
-    return this.context.getString(R.l.contact_info_fmessage_switch_tip);
+    AppMethodBeat.i(23611);
+    String str = this.context.getString(2131298619);
+    AppMethodBeat.o(23611);
+    return str;
   }
 }
 

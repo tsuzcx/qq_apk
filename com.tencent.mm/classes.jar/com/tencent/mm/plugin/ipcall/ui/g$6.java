@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$6
   implements View.OnClickListener
@@ -11,11 +12,13 @@ final class g$6
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(22156);
     g.a locala = (g.a)paramView.getTag();
-    if (!locala.lwr) {}
-    for (locala.lwr = true;; locala.lwr = false)
+    if (!locala.nTG) {}
+    for (locala.nTG = true;; locala.nTG = false)
     {
-      g.a(this.lwq, (TextView)paramView);
+      g.a(this.nTF, (TextView)paramView);
+      AppMethodBeat.o(22156);
       return;
     }
   }

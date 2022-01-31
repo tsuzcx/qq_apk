@@ -1,35 +1,43 @@
 package com.tencent.mm.modelappbrand.a;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.a.h;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.Reference;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 final class b$c$1
-  extends f<String, Reference<Bitmap>>
+  extends h<String, Reference<Bitmap>>
 {
-  private final Map<Reference<Bitmap>, Integer> eat = new ConcurrentHashMap();
+  private final Map<Reference<Bitmap>, Integer> fqC;
   
   b$c$1(b.c paramc)
   {
     super(31457280);
+    AppMethodBeat.i(77324);
+    this.fqC = new ConcurrentHashMap();
+    AppMethodBeat.o(77324);
   }
   
   public final void a(f.a<String, Reference<Bitmap>> parama)
   {
-    y.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "clear(OnClearListener)");
+    AppMethodBeat.i(77326);
+    ab.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "clear(OnClearListener)");
     super.a(parama);
-    this.eat.clear();
+    this.fqC.clear();
+    AppMethodBeat.o(77326);
   }
   
   public final void clear()
   {
-    y.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "clear");
+    AppMethodBeat.i(77325);
+    ab.d("MicroMsg.AppBrandSimpleImageLoader.DefaultMemoryCache", "clear");
     super.clear();
-    this.eat.clear();
+    this.fqC.clear();
+    AppMethodBeat.o(77325);
   }
 }
 

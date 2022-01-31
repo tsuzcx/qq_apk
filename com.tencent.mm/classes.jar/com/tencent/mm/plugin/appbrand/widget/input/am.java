@@ -1,72 +1,56 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class am
-  implements View.OnTouchListener
+public final class am
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private static final int EO = ;
-  private boolean hwA = false;
-  private final Handler hwx = new am.1(this, Looper.getMainLooper());
-  private float hwy;
-  private float hwz;
+  private final View joE;
+  private final am.a joF;
+  private boolean joG;
+  private int lastHeight;
+  private int lastWidth;
   
-  private void ct(View paramView)
+  private am(View paramView, am.a parama)
   {
-    paramView.setPressed(false);
-    this.hwA = false;
-    this.hwx.removeMessages(1);
-    this.hwx.removeMessages(2);
+    this.joE = paramView;
+    this.joF = parama;
   }
   
-  protected void akl() {}
-  
-  protected void asb() {}
-  
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(View paramView, am.a parama)
   {
-    switch (paramMotionEvent.getActionMasked())
+    AppMethodBeat.i(67826);
+    paramView = new am(paramView, parama);
+    paramView.joE.getViewTreeObserver().addOnGlobalLayoutListener(paramView);
+    AppMethodBeat.o(67826);
+  }
+  
+  public final void onGlobalLayout()
+  {
+    AppMethodBeat.i(67827);
+    if (!this.joG)
     {
-    default: 
-    case 3: 
-    case 1: 
-    case 2: 
-      int i;
-      float f1;
-      float f2;
-      do
-      {
-        return true;
-        ct(paramView);
-        return true;
-        if ((!this.hwA) && (this.hwx.hasMessages(1))) {
-          akl();
-        }
-        ct(paramView);
-        return true;
-        i = ViewConfiguration.get(paramView.getContext()).getScaledTouchSlop();
-        f1 = paramMotionEvent.getX();
-        f2 = paramMotionEvent.getY();
-      } while ((-i <= f1) && (f1 <= paramView.getWidth() + i) && (-i <= f2) && (f2 <= i + paramView.getHeight()));
-      this.hwA = true;
-      return true;
+      this.joG = true;
+      this.lastWidth = this.joE.getWidth();
+      this.lastHeight = this.joE.getHeight();
+      AppMethodBeat.o(67827);
+      return;
     }
-    paramView.setPressed(true);
-    this.hwx.sendMessageDelayed(Message.obtain(this.hwx, 1), EO);
-    this.hwy = paramMotionEvent.getX();
-    this.hwz = paramMotionEvent.getY();
-    return true;
+    if ((this.joE.getWidth() != this.lastWidth) || (this.joE.getHeight() != this.lastHeight))
+    {
+      this.joF.aQs();
+      this.lastWidth = this.joE.getWidth();
+      this.lastHeight = this.joE.getHeight();
+    }
+    AppMethodBeat.o(67827);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.am
  * JD-Core Version:    0.7.0.1
  */

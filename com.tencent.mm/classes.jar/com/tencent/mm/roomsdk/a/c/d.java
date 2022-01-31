@@ -1,44 +1,57 @@
 package com.tencent.mm.roomsdk.a.c;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.roomsdk.a.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
 {
-  private f eeo = new d.1(this);
-  private int ubD = 700;
-  protected a ubs;
-  protected a ubt;
-  protected a ubu;
+  private f fur;
+  protected a yjI;
+  protected a yjJ;
+  protected a yjK;
+  private int yjS;
   
-  public final d cpA()
+  public d()
   {
-    y.i("MicroMsg.RoomWatchCallbackFactory", "alive");
-    g.DQ();
-    g.DO().dJT.a(this.ubD, this.eeo);
-    return this;
+    AppMethodBeat.i(80271);
+    this.fur = new d.1(this);
+    this.yjS = 700;
+    AppMethodBeat.o(80271);
   }
   
   public final void dead()
   {
-    y.i("MicroMsg.RoomWatchCallbackFactory", "dead");
-    g.DQ();
-    g.DO().dJT.b(this.ubD, this.eeo);
+    AppMethodBeat.i(80273);
+    ab.i("MicroMsg.RoomWatchCallbackFactory", "dead");
+    g.RM();
+    g.RK().eHt.b(this.yjS, this.fur);
+    AppMethodBeat.o(80273);
+  }
+  
+  public final d dro()
+  {
+    AppMethodBeat.i(80272);
+    ab.i("MicroMsg.RoomWatchCallbackFactory", "alive");
+    g.RM();
+    g.RK().eHt.a(this.yjS, this.fur);
+    AppMethodBeat.o(80272);
+    return this;
   }
   
   public final d e(a parama)
   {
-    this.ubs = parama;
+    this.yjI = parama;
     return this;
   }
   
   public final d f(a parama)
   {
-    this.ubt = parama;
+    this.yjJ = parama;
     return this;
   }
 }

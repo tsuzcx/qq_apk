@@ -1,5 +1,6 @@
 package com.qq.taf.jce;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
@@ -10,22 +11,31 @@ public class HexUtil
   
   public static String byte2HexStr(byte paramByte)
   {
+    AppMethodBeat.i(117183);
     int i = digits[(paramByte & 0xF)];
     paramByte = (byte)(paramByte >>> 4);
-    return new String(new char[] { digits[(paramByte & 0xF)], i });
+    String str = new String(new char[] { digits[(paramByte & 0xF)], i });
+    AppMethodBeat.o(117183);
+    return str;
   }
   
   public static String bytes2HexStr(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    AppMethodBeat.i(117184);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      AppMethodBeat.o(117184);
       return null;
     }
     char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
     int i = 0;
     for (;;)
     {
-      if (i >= paramArrayOfByte.length) {
-        return new String(arrayOfChar);
+      if (i >= paramArrayOfByte.length)
+      {
+        paramArrayOfByte = new String(arrayOfChar);
+        AppMethodBeat.o(117184);
+        return paramArrayOfByte;
       }
       int j = paramArrayOfByte[i];
       arrayOfChar[(i * 2 + 1)] = digits[(j & 0xF)];
@@ -51,28 +61,33 @@ public class HexUtil
   
   public static byte hexStr2Byte(String paramString)
   {
-    byte b2 = 0;
-    byte b1 = b2;
-    if (paramString != null)
+    AppMethodBeat.i(117185);
+    if ((paramString != null) && (paramString.length() == 1))
     {
-      b1 = b2;
-      if (paramString.length() == 1) {
-        b1 = char2Byte(paramString.charAt(0));
-      }
+      byte b = char2Byte(paramString.charAt(0));
+      AppMethodBeat.o(117185);
+      return b;
     }
-    return b1;
+    AppMethodBeat.o(117185);
+    return 0;
   }
   
   public static byte[] hexStr2Bytes(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return emptybytes;
+    AppMethodBeat.i(117186);
+    if ((paramString == null) || (paramString.equals("")))
+    {
+      paramString = emptybytes;
+      AppMethodBeat.o(117186);
+      return paramString;
     }
     byte[] arrayOfByte = new byte[paramString.length() / 2];
     int i = 0;
     for (;;)
     {
-      if (i >= arrayOfByte.length) {
+      if (i >= arrayOfByte.length)
+      {
+        AppMethodBeat.o(117186);
         return arrayOfByte;
       }
       char c1 = paramString.charAt(i * 2);
@@ -84,18 +99,23 @@ public class HexUtil
   
   public static void main(String[] paramArrayOfString)
   {
+    AppMethodBeat.i(117187);
     try
     {
       paramArrayOfString = "Hello WebSocket World?".getBytes("gbk");
       System.out.println(bytes2HexStr(paramArrayOfString));
+      AppMethodBeat.o(117187);
       return;
     }
-    catch (UnsupportedEncodingException paramArrayOfString) {}
+    catch (UnsupportedEncodingException paramArrayOfString)
+    {
+      AppMethodBeat.o(117187);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.qq.taf.jce.HexUtil
  * JD-Core Version:    0.7.0.1
  */

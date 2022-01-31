@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.nearby.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.f;
@@ -14,13 +15,15 @@ final class NearbySayHiListUI$3
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    g.DN().CX();
-    ((j)g.r(j.class)).bhL().Hs(String.valueOf(NearbySayHiListUI.h(this.mDP)));
-    NearbySayHiListUI.b(this.mDP).a(null, null);
-    if (NearbySayHiListUI.c(this.mDP) > 0) {
-      NearbySayHiListUI.i(this.mDP);
+    AppMethodBeat.i(55495);
+    g.RJ().QQ();
+    ((j)g.E(j.class)).bPN().Te(String.valueOf(NearbySayHiListUI.h(this.pdR)));
+    NearbySayHiListUI.b(this.pdR).a(null, null);
+    if (NearbySayHiListUI.c(this.pdR) > 0) {
+      NearbySayHiListUI.i(this.pdR);
     }
-    NearbySayHiListUI.j(this.mDP);
+    NearbySayHiListUI.j(this.pdR);
+    AppMethodBeat.o(55495);
   }
 }
 

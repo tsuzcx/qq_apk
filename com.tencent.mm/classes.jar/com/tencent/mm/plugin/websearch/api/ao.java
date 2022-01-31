@@ -1,207 +1,139 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.net.Uri;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.protocal.c.blf;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.j;
+import com.tencent.xweb.util.d;
+import java.util.Iterator;
+import java.util.Properties;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class ao
 {
-  private static ao.a qUW = new ao.a();
+  private String uKk = "";
+  private int uKl = 1;
+  private long uKm;
+  private String uKn;
+  String uKo;
+  String uKp;
   
-  public static void BE(int paramInt)
+  public ao(String paramString1, String paramString2, String paramString3)
   {
-    qUW.scene = paramInt;
-    qUW.qTU = 1;
-    qUW.qUX = System.currentTimeMillis();
-    qUW.qUY = 0L;
-    qUW.mtJ = System.currentTimeMillis();
-    qUW.mrN = 0L;
-    qUW.nHq = false;
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "initReport %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(1) });
+    this.uKn = paramString1;
+    this.uKo = paramString2;
+    this.uKp = paramString3;
   }
   
-  public static void BF(int paramInt)
+  private static String agk()
   {
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchVisit %d", new Object[] { Integer.valueOf(paramInt) });
-    f.nEG.f(12041, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(aa.Bs(0)) });
+    AppMethodBeat.i(124246);
+    String str = com.tencent.mm.loader.j.b.eQw.replace("/data/user/0", "/data/data");
+    AppMethodBeat.o(124246);
+    return str;
   }
   
-  public static final void BG(int paramInt)
+  private com.tencent.mm.vfs.b cZN()
   {
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "reportIdKey649 %d", new Object[] { Integer.valueOf(paramInt) });
-    f.nEG.a(649L, paramInt, 1L, true);
+    AppMethodBeat.i(124245);
+    com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(aLw(), "config.conf");
+    AppMethodBeat.o(124245);
+    return localb;
   }
   
-  public static final void Ry(String paramString)
+  public final String aLw()
   {
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "reportWebSuggestClick %s", new Object[] { paramString });
-    f.nEG.aC(12721, paramString);
-  }
-  
-  public static void Z(int paramInt1, int paramInt2, int paramInt3)
-  {
-    a(paramInt1, 3, paramInt2, paramInt3, "");
-  }
-  
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
-  {
-    if (paramInt1 == 21) {}
-    for (int i = aa.Bs(1);; i = aa.Bs(0))
-    {
-      f.nEG.f(14457, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(i), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString });
-      return;
+    AppMethodBeat.i(124247);
+    Object localObject = new com.tencent.mm.vfs.b(agk(), this.uKn);
+    if (!((com.tencent.mm.vfs.b)localObject).exists()) {
+      ((com.tencent.mm.vfs.b)localObject).mkdirs();
     }
+    localObject = j.p(((com.tencent.mm.vfs.b)localObject).dQJ());
+    AppMethodBeat.o(124247);
+    return localObject;
   }
   
-  public static void a(int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, int paramInt5)
+  public final int agn()
   {
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchGuideDisplay %d %d %s %d %d %s %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString2, Integer.valueOf(paramInt5) });
-    f.nEG.f(12098, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(aa.Bs(0)), Integer.valueOf(paramInt2), paramString1, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString2, Integer.valueOf(paramInt5) });
-  }
-  
-  public static void a(int paramInt1, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
-  {
-    int i;
-    if (paramBoolean1) {
-      i = 3;
+    AppMethodBeat.i(124242);
+    if ((this.uKl <= 1) || (cZN().lastModified() > this.uKm)) {
+      cZM();
     }
-    for (;;)
+    int i = this.uKl;
+    AppMethodBeat.o(124242);
+    return i;
+  }
+  
+  public final String cZL()
+  {
+    AppMethodBeat.i(124243);
+    if ((bo.isNullOrNil(this.uKk)) || (cZN().lastModified() > this.uKm)) {
+      cZM();
+    }
+    String str = this.uKk;
+    AppMethodBeat.o(124243);
+    return str;
+  }
+  
+  public final void cZM()
+  {
+    AppMethodBeat.i(124244);
+    Properties localProperties = aa.l(cZN());
+    this.uKl = Integer.valueOf(localProperties.getProperty("version", "1")).intValue();
+    this.uKk = localProperties.getProperty("buildjsmd5", "");
+    this.uKm = System.currentTimeMillis();
+    AppMethodBeat.o(124244);
+  }
+  
+  public final String cZO()
+  {
+    AppMethodBeat.i(124248);
+    String str = j.p(new com.tencent.mm.vfs.b(aLw(), this.uKo).dQJ());
+    AppMethodBeat.o(124248);
+    return str;
+  }
+  
+  public final boolean cZP()
+  {
+    AppMethodBeat.i(124249);
+    Object localObject = aa.l(cZN()).getProperty("jsmd5");
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      f.nEG.f(12042, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(1), Integer.valueOf(i), Integer.valueOf(paramInt2), bk.aM(paramString, "").replace(",", " ") });
-      return;
-      if (paramBoolean2) {
-        i = 2;
-      } else {
-        i = 1;
+      AppMethodBeat.o(124249);
+      return true;
+    }
+    try
+    {
+      localObject = new JSONArray((String)localObject);
+      int i = 0;
+      while (i < ((JSONArray)localObject).length())
+      {
+        JSONObject localJSONObject = ((JSONArray)localObject).getJSONObject(i);
+        Iterator localIterator = localJSONObject.keys();
+        while (localIterator.hasNext())
+        {
+          String str1 = (String)localIterator.next();
+          String str2 = d.getMD5(aLw() + "/dist/" + str1);
+          String str3 = localJSONObject.getString(str1);
+          if ((TextUtils.isEmpty(str2)) || (!str2.equals(str3)))
+          {
+            ab.w("MicroMsg.WebSearch.WebSearchTemplate", "isMd5Valid fail, fileName %s, fileMd5 %s, expect md5 %s", new Object[] { str1, str2, str3 });
+            AppMethodBeat.o(124249);
+            return false;
+          }
+        }
+        i += 1;
       }
+      return true;
     }
-  }
-  
-  public static void a(String paramString1, String paramString2, long paramLong, String paramString3)
-  {
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchLocalPageExposure:");
-    f.nEG.f(14663, new Object[] { Uri.encode(paramString1), paramString2, Long.valueOf(paramLong), paramString3, Integer.valueOf(3) });
-  }
-  
-  public static void aS(int paramInt, String paramString)
-  {
-    f.nEG.aC(paramInt, paramString);
-  }
-  
-  public static void aT(int paramInt, String paramString)
-  {
-    f.nEG.f(12070, new Object[] { Integer.valueOf(paramInt), Integer.valueOf(aa.Bs(0)), paramString, Integer.valueOf(4), Integer.valueOf(0), "", Integer.valueOf(1), Integer.valueOf(0) });
-  }
-  
-  public static void aU(int paramInt, String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("recnondocreport=1");
-    localStringBuffer.append("&type=");
-    localStringBuffer.append(paramInt);
-    localStringBuffer.append("&content=");
-    localStringBuffer.append(paramString);
-    y.i("MicroMsg.TopStory", "reportTopStoryRedDot 14791 %s", new Object[] { localStringBuffer.toString() });
-    paramString = new blf();
-    paramString.tEQ = localStringBuffer.toString();
-    paramString = new w(paramString);
-    g.Dk().a(paramString, 0);
-  }
-  
-  public static void ag(String paramString1, String paramString2, String paramString3)
-  {
-    f.nEG.f(14752, new Object[] { Integer.valueOf(1), paramString1, paramString2, paramString3 });
-  }
-  
-  public static void b(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3)
-  {
-    f.nEG.f(13810, new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(0) });
-  }
-  
-  public static void bZM()
-  {
-    qUW.qUX = System.currentTimeMillis();
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "startH5Report %s", new Object[] { Long.valueOf(qUW.qUX) });
-  }
-  
-  public static void bZN()
-  {
-    ao.a locala = qUW;
-    locala.qUY += System.currentTimeMillis() - qUW.qUX;
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "stopH5Report %s", new Object[] { Long.valueOf(qUW.qUY) });
-  }
-  
-  public static void bZO()
-  {
-    ao.a locala = qUW;
-    locala.mrN += System.currentTimeMillis() - qUW.mtJ;
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "stopTotalReport %s", new Object[] { Long.valueOf(qUW.mrN) });
-  }
-  
-  public static void bZP()
-  {
-    ao.a locala = qUW;
-    if (!locala.nHq)
+    catch (JSONException localJSONException)
     {
-      f.nEG.f(12044, new Object[] { Integer.valueOf(locala.scene), Integer.valueOf(locala.qTU), Long.valueOf(locala.qUY / 1000L), Long.valueOf(locala.mrN / 1000L) });
-      locala.nHq = true;
+      ab.printErrStackTrace("MicroMsg.WebSearch.WebSearchTemplate", localJSONException, "", new Object[0]);
+      AppMethodBeat.o(124249);
     }
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "reportTime");
-  }
-  
-  public static void eB(int paramInt1, int paramInt2)
-  {
-    v(paramInt1, paramInt2, "");
-  }
-  
-  public static void f(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
-  {
-    int i = 1;
-    f localf = f.nEG;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localf.f(12845, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) });
-      return;
-      i = 0;
-    }
-  }
-  
-  public static void f(String paramString1, String paramString2, int paramInt, String paramString3)
-  {
-    y.v("MicroMsg.WebSearch.WebSearchReportLogic", "kvReportWebSearchLocalPageClick %s %s %d %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), paramString3 });
-    f.nEG.f(14657, new Object[] { Uri.encode(paramString1), paramString2, Integer.valueOf(paramInt), paramString3, Integer.valueOf(3) });
-  }
-  
-  public static void i(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    f.nEG.f(12639, new Object[] { bk.aM(paramString, "").replace(",", " "), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(paramInt3) });
-  }
-  
-  public static final void reportIdKey649ForLook(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 21) {
-      f.nEG.a(649L, paramInt2, 1L, true);
-    }
-  }
-  
-  public static void u(int paramInt1, int paramInt2, String paramString)
-  {
-    f(paramInt1, paramInt2, paramString, false);
-  }
-  
-  public static void v(int paramInt1, int paramInt2, String paramString)
-  {
-    a(paramInt1, paramInt2, 0, 0, paramString);
-  }
-  
-  public static void v(int paramInt, String paramString1, String paramString2)
-  {
-    f.nEG.f(13809, new Object[] { Integer.valueOf(paramInt), paramString1, paramString2, Integer.valueOf(0) });
   }
 }
 

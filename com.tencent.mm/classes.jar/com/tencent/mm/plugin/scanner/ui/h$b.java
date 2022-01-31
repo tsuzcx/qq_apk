@@ -1,30 +1,21 @@
 package com.tencent.mm.plugin.scanner.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.scanner.a.a.a;
-import com.tencent.mm.plugin.scanner.a.i;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.plugin.scanner.model.a.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,26 +26,37 @@ final class h$b
   extends BaseAdapter
   implements x.a
 {
-  private LayoutInflater Lu = null;
-  Map<String, WeakReference<ImageView>> nJT = new HashMap();
-  private int nJW;
-  List<a.a> nJX = new ArrayList();
+  private LayoutInflater mInflater;
+  private Map<String, WeakReference<ImageView>> qxv;
+  private int qxy;
+  private List<a.a> qxz;
   
   public h$b(h paramh)
   {
-    this.Lu = LayoutInflater.from(h.a(paramh));
+    AppMethodBeat.i(81063);
+    this.qxz = new ArrayList();
+    this.qxv = new HashMap();
+    this.mInflater = null;
+    this.mInflater = LayoutInflater.from(h.a(paramh));
     x.a(this);
-    this.nJW = h.a(paramh).getResources().getColor(R.e.grid_preference_thumb_bg_color);
+    this.qxy = h.a(paramh).getResources().getColor(2131690158);
+    AppMethodBeat.o(81063);
   }
   
   public final int getCount()
   {
-    return this.nJX.size();
+    AppMethodBeat.i(81065);
+    int i = this.qxz.size();
+    AppMethodBeat.o(81065);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.nJX.get(paramInt);
+    AppMethodBeat.i(81066);
+    Object localObject = this.qxz.get(paramInt);
+    AppMethodBeat.o(81066);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -64,65 +66,66 @@ final class h$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    final a.a locala;
+    AppMethodBeat.i(81067);
+    a.a locala;
     Object localObject;
     if (paramView == null)
     {
-      paramView = this.Lu.inflate(R.i.product_grid_preference_item, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2130970444, paramViewGroup, false);
       paramViewGroup = new h.b.a(this);
-      paramViewGroup.nHY = ((ImageView)paramView.findViewById(R.h.grid_preference_thumb));
-      paramViewGroup.iIV = ((TextView)paramView.findViewById(R.h.grid_preference_desc));
+      paramViewGroup.qvy = ((ImageView)paramView.findViewById(2131826776));
+      paramViewGroup.kPB = ((TextView)paramView.findViewById(2131826777));
       paramView.setTag(paramViewGroup);
-      locala = (a.a)this.nJX.get(paramInt);
+      locala = (a.a)this.qxz.get(paramInt);
       localObject = x.a(new h.a(locala.iconUrl));
       if ((localObject == null) || (((Bitmap)localObject).isRecycled())) {
-        break label210;
+        break label217;
       }
-      paramViewGroup.nHY.setImageBitmap((Bitmap)localObject);
-      paramViewGroup.nHY.setBackgroundColor(0);
+      paramViewGroup.qvy.setImageBitmap((Bitmap)localObject);
+      paramViewGroup.qvy.setBackgroundColor(0);
     }
     for (;;)
     {
-      localObject = locala.nGH;
-      paramViewGroup.nHY.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          paramAnonymousView = new i(this.iXv, locala.nGG, locala.type, this.iXv, h.b.this.getCount(), locala.showType);
-          au.Dk().a(paramAnonymousView, 0);
-          if (!bk.bl(this.iXv))
-          {
-            paramAnonymousView = new Intent();
-            paramAnonymousView.putExtra("key_Product_ID", this.iXv);
-            d.b(h.b.this.nJY.mContext, "scanner", ".ui.ProductUI", paramAnonymousView);
-          }
-        }
-      });
-      paramViewGroup.nHY.setTag(locala.iconUrl);
-      this.nJT.put(locala.iconUrl, new WeakReference(paramViewGroup.nHY));
-      paramViewGroup.iIV.setText(locala.name);
+      localObject = locala.qtX;
+      paramViewGroup.qvy.setOnClickListener(new h.b.1(this, (String)localObject, locala));
+      paramViewGroup.qvy.setTag(locala.iconUrl);
+      this.qxv.put(locala.iconUrl, new WeakReference(paramViewGroup.qvy));
+      paramViewGroup.kPB.setText(locala.name);
+      AppMethodBeat.o(81067);
       return paramView;
       paramViewGroup = (h.b.a)paramView.getTag();
       break;
-      label210:
-      paramViewGroup.nHY.setBackgroundColor(this.nJW);
-      paramViewGroup.nHY.setImageBitmap(null);
+      label217:
+      paramViewGroup.qvy.setBackgroundColor(this.qxy);
+      paramViewGroup.qvy.setImageBitmap(null);
     }
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bk.bl(paramString)))
+    AppMethodBeat.i(81068);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bo.isNullOrNil(paramString)))
     {
-      y.v("MicroMsg.ProductGridPreference", "On get pic, notifyKey=" + paramString);
-      if ((WeakReference)this.nJT.get(paramString) != null)
+      ab.v("MicroMsg.ProductGridPreference", "On get pic, notifyKey=".concat(String.valueOf(paramString)));
+      if ((WeakReference)this.qxv.get(paramString) != null)
       {
-        ImageView localImageView = (ImageView)((WeakReference)this.nJT.get(paramString)).get();
+        ImageView localImageView = (ImageView)((WeakReference)this.qxv.get(paramString)).get();
         if ((localImageView != null) && (paramString.equals((String)localImageView.getTag()))) {
-          ai.d(new h.b.2(this, localImageView, paramBitmap));
+          al.d(new h.b.2(this, localImageView, paramBitmap));
         }
       }
     }
+    AppMethodBeat.o(81068);
+  }
+  
+  public final void setItemList(List<a.a> paramList)
+  {
+    AppMethodBeat.i(81064);
+    this.qxv.clear();
+    this.qxz.clear();
+    this.qxz = paramList;
+    notifyDataSetChanged();
+    AppMethodBeat.o(81064);
   }
 }
 

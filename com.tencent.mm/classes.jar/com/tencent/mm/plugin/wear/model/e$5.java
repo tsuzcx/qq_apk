@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.h.a.li;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.lx;
 import com.tencent.mm.sdk.b.c;
 
 final class e$5
-  extends c<li>
+  extends c<lx>
 {
   e$5(e parame)
   {
-    this.udX = li.class.getName().hashCode();
+    AppMethodBeat.i(26304);
+    this.__eventId = lx.class.getName().hashCode();
+    AppMethodBeat.o(26304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.5
  * JD-Core Version:    0.7.0.1
  */

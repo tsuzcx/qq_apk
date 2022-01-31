@@ -1,6 +1,7 @@
 package com.tencent.ttpic.filter;
 
 import com.tencent.filter.m.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import java.util.Map;
 
@@ -16,8 +17,10 @@ public class ShakaUpDownFilter
   
   private void setParams(float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(82853);
     addParam(new m.f("l", paramFloat1));
     addParam(new m.f("r", paramFloat2));
+    AppMethodBeat.o(82853);
   }
   
   protected float getDefaultParamValue()
@@ -32,12 +35,16 @@ public class ShakaUpDownFilter
   
   public void initParams()
   {
+    AppMethodBeat.i(82852);
     setParams(0.0F, 0.0F);
+    AppMethodBeat.o(82852);
   }
   
   public void setParameterDic(Map<String, Float> paramMap)
   {
+    AppMethodBeat.i(82854);
     setParams(((Float)paramMap.get("translateL")).floatValue(), ((Float)paramMap.get("translateR")).floatValue());
+    AppMethodBeat.o(82854);
   }
 }
 

@@ -1,11 +1,14 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-public final class m$b
+import com.tencent.mm.modelgeo.b.a;
+
+final class m$b
+  implements b.a
 {
-  public K qwh;
-  public m.a qwi;
-  
-  public m$b(m paramm) {}
+  public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
+  {
+    return paramBoolean;
+  }
 }
 
 

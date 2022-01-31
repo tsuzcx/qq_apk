@@ -1,27 +1,31 @@
 package com.tencent.mm.svg.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 
 public final class b
 {
-  private static boolean dNk = false;
+  private static boolean mInitialized = false;
   private static String mPackageName = "";
-  private static boolean uFL = false;
-  private static boolean uFM = false;
+  private static boolean ySE = false;
+  private static boolean ySF = false;
   
-  private static final Object acR(String paramString)
+  private static final Object atf(String paramString)
   {
+    AppMethodBeat.i(70123);
     try
     {
       Class localClass = Class.forName(mPackageName + ".svg.SVGBuildConfig");
       paramString = localClass.getDeclaredField(paramString);
       paramString.setAccessible(true);
       paramString = paramString.get(localClass);
+      AppMethodBeat.o(70123);
       return paramString;
     }
     catch (NoSuchFieldException paramString)
     {
       c.printErrStackTrace("MicroMSG.WeChatSVGConfig", paramString, "NoSuchFieldException", new Object[0]);
+      AppMethodBeat.o(70123);
       return null;
     }
     catch (IllegalArgumentException paramString)
@@ -47,61 +51,75 @@ public final class b
     }
   }
   
-  public static void cq(String paramString)
+  public static final boolean dAj()
+  {
+    return ySF;
+  }
+  
+  public static final boolean dAk()
+  {
+    AppMethodBeat.i(70124);
+    Object localObject;
+    if (!mInitialized)
+    {
+      localObject = atf("WxSVGCode");
+      if (localObject != null) {
+        break label62;
+      }
+    }
+    label62:
+    for (ySE = false;; ySE = ((Boolean)localObject).booleanValue())
+    {
+      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(ySE) });
+      mInitialized = true;
+      if (ySE) {
+        break;
+      }
+      AppMethodBeat.o(70124);
+      return true;
+    }
+    AppMethodBeat.o(70124);
+    return false;
+  }
+  
+  public static final Class<?> dAl()
+  {
+    AppMethodBeat.i(70125);
+    Object localObject = atf("WxSVGRawClass");
+    if (localObject != null)
+    {
+      localObject = (Class)localObject;
+      AppMethodBeat.o(70125);
+      return localObject;
+    }
+    AppMethodBeat.o(70125);
+    return null;
+  }
+  
+  public static long dAm()
+  {
+    AppMethodBeat.i(70126);
+    long l = System.nanoTime();
+    AppMethodBeat.o(70126);
+    return l;
+  }
+  
+  public static void dC(String paramString)
   {
     mPackageName = paramString;
   }
   
-  public static final boolean cxr()
+  public static long ot(long paramLong)
   {
-    return uFM;
+    AppMethodBeat.i(70127);
+    paramLong = (System.nanoTime() - paramLong) / 1000L;
+    AppMethodBeat.o(70127);
+    return paramLong;
   }
   
-  public static final boolean cxs()
+  public static final void pW(boolean paramBoolean)
   {
-    Object localObject;
-    if (!dNk)
-    {
-      localObject = acR("WxSVGCode");
-      if (localObject != null) {
-        break label52;
-      }
-    }
-    label52:
-    for (uFL = false;; uFL = ((Boolean)localObject).booleanValue())
-    {
-      c.i("MicroMSG.WeChatSVGConfig", "Initialized mUsingWeChatSVGCode %s", new Object[] { Boolean.valueOf(uFL) });
-      dNk = true;
-      if (uFL) {
-        break;
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  public static final Class<?> cxt()
-  {
-    Object localObject = acR("WxSVGRawClass");
-    if (localObject != null) {
-      return (Class)localObject;
-    }
-    return null;
-  }
-  
-  public static long cxu()
-  {
-    return System.nanoTime();
-  }
-  
-  public static long hJ(long paramLong)
-  {
-    return (System.nanoTime() - paramLong) / 1000L;
-  }
-  
-  public static final void mE(boolean paramBoolean)
-  {
-    uFM = paramBoolean;
+    ySF = paramBoolean;
   }
 }
 

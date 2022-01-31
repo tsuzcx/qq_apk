@@ -1,75 +1,25 @@
 package com.tencent.mm.ax;
 
-import android.content.Context;
-import com.tencent.mm.plugin.chatroom.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bi;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Set;
-
 public final class b
-  extends a
 {
-  public String bJY = null;
-  public String evE;
-  public LinkedList<String> evF = new LinkedList();
-  public String evG = null;
-  public String text = null;
-  
-  public b(Map<String, String> paramMap, bi parambi)
-  {
-    super(paramMap, parambi);
-  }
-  
-  protected final boolean Ib()
-  {
-    if (this.values == null)
-    {
-      y.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] values == null ");
-      return false;
-    }
-    y.i("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type:%s, values size:%s", new Object[] { bk.pm(this.TYPE), Integer.valueOf(this.values.size()) });
-    if ((!bk.bl(this.TYPE)) && (this.TYPE.equalsIgnoreCase("NewXmlChatRoomAccessVerifyApproval")))
-    {
-      this.evE = ((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.RoomName"));
-      if (this.values.containsKey(evw)) {
-        this.text = bk.pm((String)this.values.get(evw));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text")) {
-        this.evG = bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.text"));
-      }
-      if (this.values.containsKey(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket")) {
-        this.bJY = bk.pm((String)this.values.get(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.ticket"));
-      }
-      this.evy = this.text;
-      if (!this.bWO.cvF())
-      {
-        this.evA.add(this.evG);
-        this.evB.add(Integer.valueOf(this.evy.length()));
-        this.evy += this.evG;
-        this.evC.add(Integer.valueOf(this.evy.length()));
-      }
-      for (;;)
-      {
-        Iterator localIterator = this.values.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          if (str.startsWith(".sysmsg.NewXmlChatRoomAccessVerifyApproval.link.memberlist.username")) {
-            this.evF.add(this.values.get(str));
-          }
-        }
-        this.evy = (this.evy + " " + ae.getContext().getString(b.a.has_send_invite));
-      }
-      return true;
-    }
-    y.e("MicroMsg.ChatroomAccessVerifyApprovalNewXmlMsg", "[parseXml] type err :%s", new Object[] { bk.pm(this.TYPE) });
-    return false;
-  }
+  public static int fKQ = 0;
+  public static int fKR = 1;
+  public static int fKS = 1;
+  public static int fKT = 2;
+  public static int fKU = 3;
+  public static String fKV = "me";
+  public static String fKW = "me_setting";
+  public static String fKX = "me_setting_general";
+  public static String fKY = "me_setting_privacy";
+  public static String fKZ = "me_setting_general_plugin";
+  public static int fLa = 0;
+  public static int fLb = 1;
+  public static int fLc = 2;
+  public static int fLd = 3;
+  public static int fLe = 4;
+  public static int fLf = 0;
+  public static int fLg = 1;
+  public static int fLh = 2;
 }
 
 

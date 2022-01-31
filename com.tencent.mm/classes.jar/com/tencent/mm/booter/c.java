@@ -1,192 +1,107 @@
 package com.tencent.mm.booter;
 
-import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.p.a.a;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bl;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.sdk.platformtools.z;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.xlog.app.XLogSetup;
-import java.util.HashMap;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.PowerManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.compatible.util.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
 {
-  private static c dhD;
-  private final String[] columns = { "_id", "key", "type", "value" };
-  private Context ctx;
-  public int dhC = -1;
-  private final HashMap<String, Object> values = new HashMap();
-  
-  private c(Context paramContext)
+  private static boolean If()
   {
-    this.ctx = paramContext;
-    Object localObject1 = paramContext.getContentResolver();
-    try
-    {
-      localObject1 = ((ContentResolver)localObject1).query(a.a.CONTENT_URI, this.columns, null, null, null);
-      if (localObject1 == null) {
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      Object localObject2;
-      for (;;)
-      {
-        localObject2 = null;
-      }
-      if (localObject2.getCount() <= 0)
-      {
-        localObject2.close();
-        return;
-      }
-      if (!"18c867f0717aa67b2ab7347505ba07ed".equals(bk.k("com.tencent.mm.coolassist", paramContext)))
-      {
-        localObject2.close();
-        return;
-      }
-      b.cqj();
-      int i = localObject2.getColumnIndex("key");
-      int j = localObject2.getColumnIndex("type");
-      int k = localObject2.getColumnIndex("value");
-      while (localObject2.moveToNext())
-      {
-        paramContext = a.j(localObject2.getInt(j), localObject2.getString(k));
-        this.values.put(localObject2.getString(i), paramContext);
-      }
-      localObject2.close();
-    }
+    AppMethodBeat.i(57747);
+    boolean bool = as.apq("service_launch_way").getBoolean("target26_start_service", false);
+    ab.i("MicroMsg.CoreServiceUtil", "ifTarget26StartService() result:%s", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(57747);
+    return bool;
   }
   
-  public static c aS(Context paramContext)
+  public static void Ig()
   {
-    if (dhD == null) {
-      dhD = new c(paramContext);
-    }
-    return dhD;
+    AppMethodBeat.i(57749);
+    Context localContext = ah.getContext();
+    Intent localIntent = new Intent().setClassName(localContext, "com.tencent.mm.pluginsdk.permission.PermissionActivity");
+    localIntent.putExtra("scene", 4);
+    localContext.startActivity(localIntent);
+    ab.i("MicroMsg.CoreServiceUtil", "ignoreBatteryOptimizations()");
+    AppMethodBeat.o(57749);
   }
   
-  public final void em(String paramString)
+  private static SharedPreferences Ih()
   {
-    boolean bool3 = true;
-    Integer localInteger = getInteger(".com.tencent.mm.debug.log.level");
-    boolean bool4 = bk.a(en(".com.tencent.mm.debug.log.append_mode"), false);
-    boolean bool2;
-    if ((bk.bl(getString(".com.tencent.mm.debug.log.mmlog"))) && (bk.a(en(".com.tencent.mm.debug.test.uploadLog"), false)))
+    AppMethodBeat.i(57751);
+    SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("service_launch_way", h.Mp());
+    AppMethodBeat.o(57751);
+    return localSharedPreferences;
+  }
+  
+  public static boolean Ii()
+  {
+    AppMethodBeat.i(57752);
+    if (d.fv(26))
     {
-      bool1 = true;
-      if (bool1)
+      int i = Ih().getInt("huawei_switch", 0);
+      ab.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() huaweiEnable:%s", new Object[] { Integer.valueOf(i) });
+      if (bo.hl(i, 0))
       {
-        String str = getString(".com.tencent.mm.debug.log.tag.skey");
-        if ((str != null) && (str.length() > 0)) {
-          com.tencent.mars.xlog.Xlog.logDecryptor = new z(str);
-        }
-      }
-      bool2 = this.ctx.getSharedPreferences("system_config_prefs", 4).getBoolean("first_launch_weixin", true);
-      if (!"MM".equalsIgnoreCase(paramString)) {
-        bool2 = false;
-      }
-      if (bool2) {
-        break label183;
-      }
-      bool2 = true;
-      label123:
-      XLogSetup.keep_setupXLog(bool2, ac.unx, e.dzJ, localInteger, Boolean.valueOf(bool4), Boolean.valueOf(bool1), paramString);
-      y.Fc(y.getLogLevel());
-      if (bk.getInt(bk.aM(getString(".com.tencent.mm.debug.monkeyEnv"), "0"), 0) != 1) {
-        break label188;
+        ab.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() true (huawei)");
+        AppMethodBeat.o(57752);
+        return true;
       }
     }
-    label183:
-    label188:
-    for (boolean bool1 = bool3;; bool1 = false)
+    if ((d.fv(26)) && (!If()))
     {
-      bl.my(bool1);
-      return;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label123;
+      ab.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() true");
+      AppMethodBeat.o(57752);
+      return true;
     }
+    ab.i("MicroMsg.CoreServiceUtil", "ifUseOnlyBindToCoreService() false");
+    AppMethodBeat.o(57752);
+    return false;
   }
   
-  public final Boolean en(String paramString)
+  public static void bD(boolean paramBoolean)
   {
-    Object localObject = this.values.get(paramString);
-    if (localObject == null) {
-      return null;
-    }
-    if ((localObject instanceof Boolean))
-    {
-      y.d("MicroMsg.Debugger", "getBoolean(): key=" + paramString + ", value=" + localObject.toString());
-      return (Boolean)localObject;
-    }
-    return null;
+    AppMethodBeat.i(57748);
+    as.apq("service_launch_way").edit().putBoolean("target26_start_service", paramBoolean).commit();
+    ab.i("MicroMsg.CoreServiceUtil", "setTarget26StartService() enable: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(57748);
   }
   
-  public final Integer getInteger(String paramString)
+  public static boolean bs(Context paramContext)
   {
-    Object localObject = this.values.get(paramString);
-    if ((localObject instanceof Integer))
+    AppMethodBeat.i(57750);
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      y.d("MicroMsg.Debugger", "getInteger(): key=" + paramString + ", value=" + localObject.toString());
-      return (Integer)localObject;
+      boolean bool = ((PowerManager)paramContext.getSystemService("power")).isIgnoringBatteryOptimizations(paramContext.getPackageName());
+      ab.i("MicroMsg.CoreServiceUtil", "ifIgnoreBatteryOptimizations() result=%s", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(57750);
+      return bool;
     }
-    return null;
+    AppMethodBeat.o(57750);
+    return true;
   }
   
-  public final String getString(String paramString)
+  public static void jdMethod_if(int paramInt)
   {
-    Object localObject = this.values.get(paramString);
-    if ((localObject instanceof String))
-    {
-      y.d("MicroMsg.Debugger", "getString(): key=" + paramString + ", value=" + localObject.toString());
-      return (String)localObject;
-    }
-    return null;
-  }
-  
-  public static final class a
-  {
-    public static Object j(int paramInt, String paramString)
-    {
-      String str = paramString;
-      switch (paramInt)
-      {
-      default: 
-      case 1: 
-      case 2: 
-      case 4: 
-      case 5: 
-      case 6: 
-        try
-        {
-          y.e("MicroMsg.Debugger.Resolver", "unknown type");
-        }
-        catch (Exception paramString)
-        {
-          str = null;
-        }
-        return Integer.valueOf(paramString);
-        return Long.valueOf(paramString);
-        return Boolean.valueOf(paramString);
-        return Float.valueOf(paramString);
-        paramString = Double.valueOf(paramString);
-        return paramString;
-      }
-      return str;
-    }
+    AppMethodBeat.i(57746);
+    Ih().edit().putInt("huawei_switch", paramInt).commit();
+    ab.i("MicroMsg.CoreServiceUtil", "setTarget26StartServiceHuawei() enable: %s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(57746);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.booter.c
  * JD-Core Version:    0.7.0.1
  */

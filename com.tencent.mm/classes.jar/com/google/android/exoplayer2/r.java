@@ -1,14 +1,14 @@
 package com.google.android.exoplayer2;
 
-import com.google.android.exoplayer2.i.f;
-import com.google.android.exoplayer2.source.i;
+import com.google.android.exoplayer2.i.i;
+import com.google.android.exoplayer2.source.l;
 
 public abstract interface r
   extends f.b
 {
-  public abstract void a(t paramt, Format[] paramArrayOfFormat, i parami, long paramLong1, boolean paramBoolean, long paramLong2);
+  public abstract void a(t paramt, Format[] paramArrayOfFormat, l paraml, long paramLong1, boolean paramBoolean, long paramLong2);
   
-  public abstract void a(Format[] paramArrayOfFormat, i parami, long paramLong);
+  public abstract void a(Format[] paramArrayOfFormat, l paraml, long paramLong);
   
   public abstract void disable();
   
@@ -20,23 +20,23 @@ public abstract interface r
   
   public abstract boolean isReady();
   
-  public abstract boolean kU();
+  public abstract boolean mA();
   
-  public abstract s kr();
+  public abstract void mB();
   
-  public abstract f ks();
+  public abstract boolean mC();
   
-  public abstract i kt();
+  public abstract void mD();
   
-  public abstract boolean ku();
+  public abstract s mx();
   
-  public abstract void kv();
+  public abstract i my();
   
-  public abstract boolean kw();
+  public abstract l mz();
   
-  public abstract void kx();
+  public abstract void n(long paramLong);
   
-  public abstract void p(long paramLong);
+  public abstract boolean nd();
   
   public abstract void setIndex(int paramInt);
   

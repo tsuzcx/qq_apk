@@ -3,9 +3,10 @@ package com.tencent.mm.ui.conversation;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mm.h.c.as;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.storage.ak;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.mm.ui.tools.l;
 
 final class AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$10
   implements AdapterView.OnItemLongClickListener
@@ -14,9 +15,11 @@ final class AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$10
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$402(this.vOR, (ak)AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$100(this.vOR).getItem(paramInt));
-    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$502(this.vOR, AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$400(this.vOR).field_username);
-    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$700(this.vOR).a(paramView, paramInt, paramLong, this.vOR, this.vOR);
+    AppMethodBeat.i(33995);
+    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$402(this.AgB, (ak)AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$100(this.AgB).getItem(paramInt));
+    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$502(this.AgB, AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$400(this.AgB).field_username);
+    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$700(this.AgB).a(paramView, paramInt, paramLong, this.AgB, this.AgB);
+    AppMethodBeat.o(33995);
     return true;
   }
 }

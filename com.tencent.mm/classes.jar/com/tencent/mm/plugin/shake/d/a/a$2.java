@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.protocal.c.bly;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bvk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class a$2
   implements Runnable
@@ -11,44 +12,50 @@ final class a$2
   
   public final void run()
   {
-    if (this.oaG)
+    AppMethodBeat.i(24590);
+    if (this.qOP)
     {
-      a.a(this.oaF, null, -1L, this.oaH);
+      a.a(this.qOO, null, -1L, this.qOQ);
+      AppMethodBeat.o(24590);
       return;
     }
-    if (!this.oaF.oau)
+    if (!this.qOO.qOD)
     {
-      y.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack netscen not return.");
+      ab.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack netscen not return.");
+      AppMethodBeat.o(24590);
       return;
     }
-    if (this.oaF.bCc != null)
+    if (this.qOO.ciR != null)
     {
-      y.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack device not ready!");
+      ab.w("MicroMsg.MusicFingerPrintRecorder", "tryCallBack device not ready!");
+      AppMethodBeat.o(24590);
       return;
     }
-    if (this.oaF.oav != null)
+    if (this.qOO.qOE != null)
     {
-      a locala = this.oaF;
-      bly localbly = this.oaF.oav.bAx();
-      e locale = this.oaF.oav;
-      long l2 = bk.UY();
+      a locala = this.qOO;
+      bvk localbvk = this.qOO.qOE.clR();
+      e locale = this.qOO.qOE;
+      long l2 = bo.aoy();
       long l1 = l2;
-      if (locale.oaL > 0L)
+      if (locale.qOU > 0L)
       {
         l1 = l2;
-        if (locale.oaL < l2) {
-          l1 = locale.oaL;
+        if (locale.qOU < l2) {
+          l1 = locale.qOU;
         }
       }
-      a.a(locala, localbly, l1, this.oaH);
+      a.a(locala, localbvk, l1, this.qOQ);
+      AppMethodBeat.o(24590);
       return;
     }
-    a.a(this.oaF, null, -1L, this.oaH);
+    a.a(this.qOO, null, -1L, this.qOQ);
+    AppMethodBeat.o(24590);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.a.2
  * JD-Core Version:    0.7.0.1
  */

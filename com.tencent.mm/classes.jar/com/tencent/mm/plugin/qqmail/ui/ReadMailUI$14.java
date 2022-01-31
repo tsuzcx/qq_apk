@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.v;
 import com.tencent.mm.plugin.qqmail.stub.ReadMailProxy;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.xweb.WebView.b;
 import com.tencent.xweb.b;
 
@@ -16,7 +17,8 @@ final class ReadMailUI$14
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    String str = this.njR.mExtra;
+    AppMethodBeat.i(68438);
+    String str = this.pPe.mExtra;
     paramMenuItem = str;
     if (str.contains("qqmail.weixin.qq.com"))
     {
@@ -28,15 +30,16 @@ final class ReadMailUI$14
     paramMenuItem = paramMenuItem.replaceFirst("%p2p0", "%25p2p0");
     try
     {
-      bool = ((Boolean)new ReadMailProxy(ReadMailUI.l(this.njK), null).REMOTE_CALL("isSDCardAvailable", new Object[0])).booleanValue();
-      s.a(this.njK, paramMenuItem, b.cSe().getCookie(v.btz()), bool);
+      bool = ((Boolean)new ReadMailProxy(ReadMailUI.l(this.pOX), null).REMOTE_CALL("isSDCardAvailable", new Object[0])).booleanValue();
+      u.a(this.pOX, paramMenuItem, b.dYg().getCookie(v.cdK()), bool);
+      AppMethodBeat.o(68438);
       return true;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.w("MicroMsg.ReadMailUI", "createContextMenu, isSDCardAvailable, ex = %s", new Object[] { localException.getMessage() });
+        ab.w("MicroMsg.ReadMailUI", "createContextMenu, isSDCardAvailable, ex = %s", new Object[] { localException.getMessage() });
         boolean bool = false;
       }
     }
@@ -44,7 +47,7 @@ final class ReadMailUI$14
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ReadMailUI.14
  * JD-Core Version:    0.7.0.1
  */

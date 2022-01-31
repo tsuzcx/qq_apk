@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class InviteFacebookFriendsUI$10$1$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class InviteFacebookFriendsUI$10$1$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    InviteFacebookFriendsUI.a(this.fmg.fmf.fmd).yc();
+    AppMethodBeat.i(124881);
+    InviteFacebookFriendsUI.a(this.gDA.gDz.gDx).Ku();
+    AppMethodBeat.o(124881);
   }
 }
 

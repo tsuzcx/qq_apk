@@ -1,41 +1,59 @@
 package com.tencent.mm.ui.transmit;
 
 import android.content.Intent;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.h.a.cj;
-import com.tencent.mm.h.a.cj.a;
-import com.tencent.mm.h.a.nd;
-import com.tencent.mm.h.a.nd.a;
-import com.tencent.mm.h.a.nd.b;
-import com.tencent.mm.plugin.record.b.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.chatting.l;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.c.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.pluginsdk.model.app.p;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.ui.widget.b.c.a.b;
 
 final class SelectConversationUI$15
   implements c.a.b
 {
-  SelectConversationUI$15(SelectConversationUI paramSelectConversationUI) {}
+  SelectConversationUI$15(SelectConversationUI paramSelectConversationUI, j.b paramb) {}
   
-  public final void aSe()
+  public final void byw()
   {
-    Object localObject = l.gQ(this.whw.mController.uMN);
-    localObject = g.a.gp(bk.ZQ(h.a(((nd)localObject).bWK.bWS.title, ((nd)localObject).bWK.bWS.desc, ((nd)localObject).bWK.bWm.bIw.bIy, ((nd)localObject).bWJ.bWQ)));
-    if (localObject == null) {
-      return;
+    AppMethodBeat.i(35139);
+    Object localObject2 = p.H(this.iaj.url, "message");
+    String str = p.H(this.iaj.fgv, "message");
+    Object localObject1;
+    if (at.isMobile(this.AAp.getContext()))
+    {
+      localObject1 = localObject2;
+      if (str != null)
+      {
+        if (str.length() > 0) {
+          break label117;
+        }
+        localObject1 = localObject2;
+      }
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("message_id", SelectConversationUI.i(this.whw));
-    localIntent.putExtra("record_xml", ((g.a)localObject).dRd);
-    localIntent.putExtra("record_show_share", false);
-    com.tencent.mm.br.d.b(this.whw.mController.uMN, "record", ".ui.RecordMsgDetailUI", localIntent);
+    for (;;)
+    {
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("rawUrl", (String)localObject1);
+      ((Intent)localObject2).putExtra("showShare", false);
+      d.b(this.AAp.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject2);
+      AppMethodBeat.o(35139);
+      return;
+      if (localObject2 != null)
+      {
+        localObject1 = localObject2;
+        if (((String)localObject2).length() > 0) {}
+      }
+      else
+      {
+        label117:
+        localObject1 = str;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SelectConversationUI.15
  * JD-Core Version:    0.7.0.1
  */

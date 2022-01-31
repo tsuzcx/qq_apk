@@ -1,43 +1,37 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionSortViewHolder;", "Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionVerticalListViewHolder;", "root", "Landroid/view/View;", "(Landroid/view/View;)V", "deleteHandle", "kotlin.jvm.PlatformType", "getDeleteHandle", "()Landroid/view/View;", "rightExtraBottomLine", "getRightExtraBottomLine", "sortHandle", "getSortHandle", "setBottomLineVisibility", "", "visibility", "", "plugin-appbrand-integration_release"})
 final class i
-  extends RecyclerView.h
+  extends l
 {
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  private final View iSb;
+  final View iSc;
+  final View iSd;
+  
+  public i(View paramView)
   {
-    if (paramRecyclerView != null)
-    {
-      paramView = paramRecyclerView.aT(paramView);
-      if ((paramView != null) && ((paramView instanceof j)))
-      {
-        paramRect = ((j)paramView).hgH;
-        int j = ((j)paramView).id();
-        paramView = paramRecyclerView.getAdapter();
-        if (paramView == null) {
-          break label73;
-        }
-        i = paramView.getItemCount();
-        if (j != i - 1) {
-          break label79;
-        }
-      }
+    super(paramView);
+    AppMethodBeat.i(135104);
+    this.iSb = paramView.findViewById(2131820550);
+    this.iSc = paramView.findViewById(2131821172);
+    this.iSd = paramView.findViewById(2131821173);
+    ViewGroup.LayoutParams localLayoutParams = this.iSh.getLayoutParams();
+    paramView = localLayoutParams;
+    if (!(localLayoutParams instanceof ViewGroup.MarginLayoutParams)) {
+      paramView = null;
     }
-    label73:
-    label79:
-    for (int i = 8;; i = 0)
-    {
-      paramRect.setVisibility(i);
-      return;
-      i = -1;
-      break;
+    paramView = (ViewGroup.MarginLayoutParams)paramView;
+    if (paramView != null) {
+      paramView.leftMargin = 0;
     }
+    this.iSh.requestLayout();
+    AppMethodBeat.o(135104);
   }
 }
 

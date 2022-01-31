@@ -5,8 +5,8 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.d;
-import android.support.v4.view.q;
-import android.support.v7.a.a.j;
+import android.support.v4.view.t;
+import android.support.v7.a.a.a;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -19,21 +19,26 @@ import android.view.accessibility.AccessibilityNodeInfo;
 public class LinearLayoutCompat
   extends ViewGroup
 {
-  private int An = 8388659;
-  private boolean adK = true;
-  private int adL = -1;
-  private int adM = 0;
-  private int adN;
-  private int adO;
-  private float adP;
-  private boolean adQ;
-  private int[] adR;
-  private int[] adS;
-  private Drawable adT;
-  private int adU;
-  private int adV;
-  private int adW;
-  private int adX;
+  private int AZ = 8388659;
+  private Drawable acK;
+  private boolean afZ = true;
+  private int aga = -1;
+  private int agb = 0;
+  private int agc;
+  private float agd;
+  private boolean age;
+  private int[] agf;
+  private int[] agg;
+  private int agh;
+  private int agi;
+  private int agj;
+  private int agk;
+  private int mOrientation;
+  
+  public LinearLayoutCompat(Context paramContext)
+  {
+    this(paramContext, null);
+  }
   
   public LinearLayoutCompat(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,29 +48,29 @@ public class LinearLayoutCompat
   public LinearLayoutCompat(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = ax.a(paramContext, paramAttributeSet, a.j.LinearLayoutCompat, paramInt, 0);
-    paramInt = paramContext.getInt(a.j.LinearLayoutCompat_android_orientation, -1);
+    paramContext = az.a(paramContext, paramAttributeSet, a.a.LinearLayoutCompat, paramInt, 0);
+    paramInt = paramContext.getInt(1, -1);
     if (paramInt >= 0) {
       setOrientation(paramInt);
     }
-    paramInt = paramContext.getInt(a.j.LinearLayoutCompat_android_gravity, -1);
+    paramInt = paramContext.getInt(0, -1);
     if (paramInt >= 0) {
       setGravity(paramInt);
     }
-    boolean bool = paramContext.getBoolean(a.j.LinearLayoutCompat_android_baselineAligned, true);
+    boolean bool = paramContext.getBoolean(2, true);
     if (!bool) {
       setBaselineAligned(bool);
     }
-    this.adP = paramContext.getFloat(a.j.LinearLayoutCompat_android_weightSum, -1.0F);
-    this.adL = paramContext.getInt(a.j.LinearLayoutCompat_android_baselineAlignedChildIndex, -1);
-    this.adQ = paramContext.getBoolean(a.j.LinearLayoutCompat_measureWithLargestChild, false);
-    setDividerDrawable(paramContext.getDrawable(a.j.LinearLayoutCompat_divider));
-    this.adW = paramContext.getInt(a.j.LinearLayoutCompat_showDividers, 0);
-    this.adX = paramContext.getDimensionPixelSize(a.j.LinearLayoutCompat_dividerPadding, 0);
-    paramContext.alZ.recycle();
+    this.agd = paramContext.getFloat(4, -1.0F);
+    this.aga = paramContext.getInt(3, -1);
+    this.age = paramContext.getBoolean(6, false);
+    setDividerDrawable(paramContext.getDrawable(5));
+    this.agj = paramContext.getInt(7, 0);
+    this.agk = paramContext.getDimensionPixelSize(8, 0);
+    paramContext.aoo.recycle();
   }
   
-  private void V(int paramInt1, int paramInt2)
+  private void Z(int paramInt1, int paramInt2)
   {
     int j = View.MeasureSpec.makeMeasureSpec(getMeasuredWidth(), 1073741824);
     int i = 0;
@@ -87,9 +92,9 @@ public class LinearLayoutCompat
     }
   }
   
-  private void W(int paramInt1, int paramInt2)
+  private void aa(int paramInt1, int paramInt2)
   {
-    this.adO = 0;
+    this.agc = 0;
     int m = 0;
     int j = 0;
     int i1 = 0;
@@ -101,13 +106,13 @@ public class LinearLayoutCompat
     int i11 = View.MeasureSpec.getMode(paramInt2);
     int n = 0;
     int i3 = 0;
-    if ((this.adR == null) || (this.adS == null))
+    if ((this.agf == null) || (this.agg == null))
     {
-      this.adR = new int[4];
-      this.adS = new int[4];
+      this.agf = new int[4];
+      this.agg = new int[4];
     }
-    Object localObject1 = this.adR;
-    Object localObject2 = this.adS;
+    Object localObject1 = this.agf;
+    Object localObject2 = this.agg;
     localObject1[3] = -1;
     localObject1[2] = -1;
     localObject1[1] = -1;
@@ -116,8 +121,8 @@ public class LinearLayoutCompat
     localObject2[2] = -1;
     localObject2[1] = -1;
     localObject2[0] = -1;
-    boolean bool1 = this.adK;
-    boolean bool2 = this.adQ;
+    boolean bool1 = this.afZ;
+    boolean bool2 = this.age;
     if (i12 == 1073741824) {}
     int i;
     int i4;
@@ -135,7 +140,7 @@ public class LinearLayoutCompat
         if (localObject3 != null) {
           break;
         }
-        this.adO += 0;
+        this.agc += 0;
         i5 = i4;
         i4 = m;
         m = i2;
@@ -153,15 +158,15 @@ public class LinearLayoutCompat
     int i9;
     if (((View)localObject3).getVisibility() != 8)
     {
-      if (bB(i4)) {
-        this.adO += this.adU;
+      if (bG(i4)) {
+        this.agc += this.agh;
       }
       localLayoutParams = (LayoutParams)((View)localObject3).getLayoutParams();
       f1 += localLayoutParams.weight;
       if ((i12 == 1073741824) && (localLayoutParams.width == 0) && (localLayoutParams.weight > 0.0F)) {
         if (i6 != 0)
         {
-          this.adO += localLayoutParams.leftMargin + localLayoutParams.rightMargin;
+          this.agc += localLayoutParams.leftMargin + localLayoutParams.rightMargin;
           if (!bool1) {
             break label622;
           }
@@ -169,7 +174,7 @@ public class LinearLayoutCompat
           ((View)localObject3).measure(i5, i5);
           i7 = 0;
           if ((i11 == 1073741824) || (localLayoutParams.height != -1)) {
-            break label2250;
+            break label2248;
           }
           i5 = 1;
           n = 1;
@@ -184,7 +189,7 @@ public class LinearLayoutCompat
               if (localLayoutParams.gravity >= 0) {
                 break label802;
               }
-              i9 = this.An;
+              i9 = this.AZ;
               label436:
               i9 = ((i9 & 0x70) >> 4 & 0xFFFFFFFE) >> 1;
               localObject1[i9] = Math.max(localObject1[i9], i13);
@@ -224,8 +229,8 @@ public class LinearLayoutCompat
       m = i7;
       i4 = i2;
       break;
-      i5 = this.adO;
-      this.adO = Math.max(i5, localLayoutParams.leftMargin + i5 + localLayoutParams.rightMargin);
+      i5 = this.agc;
+      this.agc = Math.max(i5, localLayoutParams.leftMargin + i5 + localLayoutParams.rightMargin);
       break label323;
       label622:
       i3 = 1;
@@ -243,9 +248,9 @@ public class LinearLayoutCompat
       }
       if (f1 == 0.0F)
       {
-        i7 = this.adO;
+        i7 = this.agc;
         label680:
-        f((View)localObject3, paramInt1, i7, paramInt2, 0);
+        h((View)localObject3, paramInt1, i7, paramInt2, 0);
         if (i5 != -2147483648) {
           localLayoutParams.width = i5;
         }
@@ -253,7 +258,7 @@ public class LinearLayoutCompat
         if (i6 == 0) {
           break label765;
         }
-        this.adO += localLayoutParams.leftMargin + i5 + localLayoutParams.rightMargin + 0;
+        this.agc += localLayoutParams.leftMargin + i5 + localLayoutParams.rightMargin + 0;
       }
       for (;;)
       {
@@ -264,8 +269,8 @@ public class LinearLayoutCompat
           i7 = 0;
           break label680;
           label765:
-          i7 = this.adO;
-          this.adO = Math.max(i7, i7 + i5 + localLayoutParams.leftMargin + localLayoutParams.rightMargin + 0);
+          i7 = this.agc;
+          this.agc = Math.max(i7, i7 + i5 + localLayoutParams.leftMargin + localLayoutParams.rightMargin + 0);
           continue;
           label802:
           i9 = localLayoutParams.gravity;
@@ -289,21 +294,21 @@ public class LinearLayoutCompat
             i7 = i8;
           }
           label865:
-          if ((this.adO > 0) && (bB(i10))) {
-            this.adO += this.adU;
+          if ((this.agc > 0) && (bG(i10))) {
+            this.agc += this.agh;
           }
           if ((localObject1[1] != -1) || (localObject1[0] != -1) || (localObject1[2] != -1) || (localObject1[3] != -1)) {}
           for (i4 = Math.max(m, Math.max(localObject1[3], Math.max(localObject1[0], Math.max(localObject1[1], localObject1[2]))) + Math.max(localObject2[3], Math.max(localObject2[0], Math.max(localObject2[1], localObject2[2]))));; i4 = m)
           {
             if ((bool2) && ((i12 == -2147483648) || (i12 == 0)))
             {
-              this.adO = 0;
+              this.agc = 0;
               m = 0;
               if (m < i10)
               {
                 localObject3 = getChildAt(m);
                 if (localObject3 == null) {
-                  this.adO += 0;
+                  this.agc += 0;
                 }
                 for (;;)
                 {
@@ -318,27 +323,27 @@ public class LinearLayoutCompat
                     localObject3 = (LayoutParams)((View)localObject3).getLayoutParams();
                     if (i6 != 0)
                     {
-                      i5 = this.adO;
+                      i5 = this.agc;
                       i7 = ((LayoutParams)localObject3).leftMargin;
-                      this.adO = (((LayoutParams)localObject3).rightMargin + (i7 + i) + 0 + i5);
+                      this.agc = (((LayoutParams)localObject3).rightMargin + (i7 + i) + 0 + i5);
                     }
                     else
                     {
-                      i5 = this.adO;
+                      i5 = this.agc;
                       i7 = ((LayoutParams)localObject3).leftMargin;
-                      this.adO = Math.max(i5, ((LayoutParams)localObject3).rightMargin + (i5 + i + i7) + 0);
+                      this.agc = Math.max(i5, ((LayoutParams)localObject3).rightMargin + (i5 + i + i7) + 0);
                     }
                   }
                 }
               }
             }
-            this.adO += getPaddingLeft() + getPaddingRight();
-            i8 = View.resolveSizeAndState(Math.max(this.adO, getSuggestedMinimumWidth()), paramInt1, 0);
-            i5 = (0xFFFFFF & i8) - this.adO;
+            this.agc += getPaddingLeft() + getPaddingRight();
+            i8 = View.resolveSizeAndState(Math.max(this.agc, getSuggestedMinimumWidth()), paramInt1, 0);
+            i5 = (0xFFFFFF & i8) - this.agc;
             if ((i3 != 0) || ((i5 != 0) && (f1 > 0.0F)))
             {
-              if (this.adP > 0.0F) {
-                f1 = this.adP;
+              if (this.agd > 0.0F) {
+                f1 = this.agd;
               }
               localObject1[3] = -1;
               localObject1[2] = -1;
@@ -349,7 +354,7 @@ public class LinearLayoutCompat
               localObject2[1] = -1;
               localObject2[0] = -1;
               m = -1;
-              this.adO = 0;
+              this.agc = 0;
               i2 = 0;
               i3 = k;
               i = i1;
@@ -361,12 +366,12 @@ public class LinearLayoutCompat
               {
                 localObject3 = getChildAt(i2);
                 if ((localObject3 == null) || (((View)localObject3).getVisibility() == 8)) {
-                  break label2224;
+                  break label2222;
                 }
                 localLayoutParams = (LayoutParams)((View)localObject3).getLayoutParams();
                 float f2 = localLayoutParams.weight;
                 if (f2 <= 0.0F) {
-                  break label2221;
+                  break label2219;
                 }
                 i4 = (int)(i1 * f2 / f1);
                 f1 -= f2;
@@ -383,41 +388,41 @@ public class LinearLayoutCompat
                   ((View)localObject3).measure(View.MeasureSpec.makeMeasureSpec(i1, 1073741824), i5);
                   m = View.combineMeasuredStates(m, ((View)localObject3).getMeasuredState() & 0xFF000000);
                   i1 = i3;
-                  label1492:
+                  label1491:
                   if (i6 == 0) {
-                    break label1753;
+                    break label1752;
                   }
-                  this.adO += ((View)localObject3).getMeasuredWidth() + localLayoutParams.leftMargin + localLayoutParams.rightMargin + 0;
-                  label1525:
+                  this.agc += ((View)localObject3).getMeasuredWidth() + localLayoutParams.leftMargin + localLayoutParams.rightMargin + 0;
+                  label1524:
                   if ((i11 == 1073741824) || (localLayoutParams.height != -1)) {
-                    break label1793;
+                    break label1792;
                   }
                   i3 = 1;
-                  label1544:
+                  label1543:
                   i7 = localLayoutParams.topMargin + localLayoutParams.bottomMargin;
                   i5 = ((View)localObject3).getMeasuredHeight() + i7;
                   i4 = Math.max(k, i5);
                   if (i3 == 0) {
-                    break label1799;
+                    break label1798;
                   }
                   k = i7;
-                  label1585:
+                  label1584:
                   i3 = Math.max(i, k);
                   if ((j == 0) || (localLayoutParams.height != -1)) {
-                    break label1806;
+                    break label1805;
                   }
                   i = 1;
-                  label1611:
+                  label1610:
                   if (bool1)
                   {
                     k = ((View)localObject3).getBaseline();
                     if (k != -1)
                     {
                       if (localLayoutParams.gravity >= 0) {
-                        break label1812;
+                        break label1811;
                       }
-                      j = this.An;
-                      label1643:
+                      j = this.AZ;
+                      label1642:
                       j = ((j & 0x70) >> 4 & 0xFFFFFFFE) >> 1;
                       localObject1[j] = Math.max(localObject1[j], k);
                       localObject2[j] = Math.max(localObject2[j], i5 - k);
@@ -446,23 +451,23 @@ public class LinearLayoutCompat
               }
               i1 = 0;
               break label1458;
-              label1753:
-              i3 = this.adO;
-              this.adO = Math.max(i3, ((View)localObject3).getMeasuredWidth() + i3 + localLayoutParams.leftMargin + localLayoutParams.rightMargin + 0);
-              break label1525;
-              label1793:
+              label1752:
+              i3 = this.agc;
+              this.agc = Math.max(i3, ((View)localObject3).getMeasuredWidth() + i3 + localLayoutParams.leftMargin + localLayoutParams.rightMargin + 0);
+              break label1524;
+              label1792:
               i3 = 0;
-              break label1544;
-              label1799:
+              break label1543;
+              label1798:
               k = i5;
-              break label1585;
-              label1806:
+              break label1584;
+              label1805:
               i = 0;
-              break label1611;
-              label1812:
+              break label1610;
+              label1811:
               j = localLayoutParams.gravity;
-              break label1643;
-              this.adO += getPaddingLeft() + getPaddingRight();
+              break label1642;
+              this.agc += getPaddingLeft() + getPaddingRight();
               if ((localObject1[1] == -1) && (localObject1[0] == -1) && (localObject1[2] == -1))
               {
                 i1 = k;
@@ -502,7 +507,7 @@ public class LinearLayoutCompat
                       continue;
                       i1 = Math.max(i1, i2);
                       if ((!bool2) || (i12 == 1073741824)) {
-                        break label2210;
+                        break label2208;
                       }
                       m = 0;
                       while (m < i10)
@@ -518,19 +523,19 @@ public class LinearLayoutCompat
                   return;
                   i = m;
                 }
-                label2210:
+                label2208:
                 i = i1;
               }
-              label2221:
-              break label1492;
-              label2224:
+              label2219:
+              break label1491;
+              label2222:
               i3 = i;
               i = k;
               k = j;
               j = i3;
             }
           }
-          label2250:
+          label2248:
           i5 = n;
           n = i7;
           break label369;
@@ -548,24 +553,14 @@ public class LinearLayoutCompat
   
   private void b(Canvas paramCanvas, int paramInt)
   {
-    this.adT.setBounds(getPaddingLeft() + this.adX, paramInt, getWidth() - getPaddingRight() - this.adX, this.adV + paramInt);
-    this.adT.draw(paramCanvas);
+    this.acK.setBounds(getPaddingLeft() + this.agk, paramInt, getWidth() - getPaddingRight() - this.agk, this.agi + paramInt);
+    this.acK.draw(paramCanvas);
   }
   
   private void c(Canvas paramCanvas, int paramInt)
   {
-    this.adT.setBounds(paramInt, getPaddingTop() + this.adX, this.adU + paramInt, getHeight() - getPaddingBottom() - this.adX);
-    this.adT.draw(paramCanvas);
-  }
-  
-  private void f(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  private static void g(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    paramView.layout(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+    this.acK.setBounds(paramInt, getPaddingTop() + this.agk, this.agh + paramInt, getHeight() - getPaddingBottom() - this.agk);
+    this.acK.draw(paramCanvas);
   }
   
   private static int getChildrenSkipCount$5359dca7()
@@ -583,10 +578,20 @@ public class LinearLayoutCompat
     return 0;
   }
   
-  protected final boolean bB(int paramInt)
+  private void h(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    measureChildWithMargins(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  private static void i(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramView.layout(paramInt1, paramInt2, paramInt1 + paramInt3, paramInt2 + paramInt4);
+  }
+  
+  protected final boolean bG(int paramInt)
   {
     if (paramInt == 0) {
-      if ((this.adW & 0x1) == 0) {}
+      if ((this.agj & 0x1) == 0) {}
     }
     do
     {
@@ -595,9 +600,9 @@ public class LinearLayoutCompat
       if (paramInt != getChildCount()) {
         break;
       }
-    } while ((this.adW & 0x4) != 0);
+    } while ((this.agj & 0x4) != 0);
     return false;
-    if ((this.adW & 0x2) != 0)
+    if ((this.agj & 0x2) != 0)
     {
       paramInt -= 1;
       for (;;)
@@ -626,17 +631,17 @@ public class LinearLayoutCompat
     return paramLayoutParams instanceof LayoutParams;
   }
   
-  public LayoutParams d(AttributeSet paramAttributeSet)
+  public LayoutParams f(AttributeSet paramAttributeSet)
   {
     return new LayoutParams(getContext(), paramAttributeSet);
   }
   
-  protected LayoutParams fN()
+  protected LayoutParams gH()
   {
-    if (this.adN == 0) {
+    if (this.mOrientation == 0) {
       return new LayoutParams(-2, -2);
     }
-    if (this.adN == 1) {
+    if (this.mOrientation == 1) {
       return new LayoutParams(-1, -2);
     }
     return null;
@@ -645,7 +650,7 @@ public class LinearLayoutCompat
   public int getBaseline()
   {
     int i = -1;
-    if (this.adL < 0) {
+    if (this.aga < 0) {
       i = super.getBaseline();
     }
     View localView;
@@ -653,20 +658,20 @@ public class LinearLayoutCompat
     do
     {
       return i;
-      if (getChildCount() <= this.adL) {
+      if (getChildCount() <= this.aga) {
         throw new RuntimeException("mBaselineAlignedChildIndex of LinearLayout set to an index that is out of bounds.");
       }
-      localView = getChildAt(this.adL);
+      localView = getChildAt(this.aga);
       j = localView.getBaseline();
       if (j != -1) {
         break;
       }
-    } while (this.adL == 0);
+    } while (this.aga == 0);
     throw new RuntimeException("mBaselineAlignedChildIndex of LinearLayout points to a View that doesn't know how to get its baseline.");
-    i = this.adM;
-    if (this.adN == 1)
+    i = this.agb;
+    if (this.mOrientation == 1)
     {
-      int k = this.An & 0x70;
+      int k = this.AZ & 0x70;
       if (k != 48) {
         switch (k)
         {
@@ -676,45 +681,45 @@ public class LinearLayoutCompat
     for (;;)
     {
       return ((LayoutParams)localView.getLayoutParams()).topMargin + i + j;
-      i = getBottom() - getTop() - getPaddingBottom() - this.adO;
+      i = getBottom() - getTop() - getPaddingBottom() - this.agc;
       continue;
-      i += (getBottom() - getTop() - getPaddingTop() - getPaddingBottom() - this.adO) / 2;
+      i += (getBottom() - getTop() - getPaddingTop() - getPaddingBottom() - this.agc) / 2;
     }
   }
   
   public int getBaselineAlignedChildIndex()
   {
-    return this.adL;
+    return this.aga;
   }
   
   public Drawable getDividerDrawable()
   {
-    return this.adT;
+    return this.acK;
   }
   
   public int getDividerPadding()
   {
-    return this.adX;
+    return this.agk;
   }
   
   public int getDividerWidth()
   {
-    return this.adU;
+    return this.agh;
   }
   
   public int getGravity()
   {
-    return this.An;
+    return this.AZ;
   }
   
   public int getOrientation()
   {
-    return this.adN;
+    return this.mOrientation;
   }
   
   public int getShowDividers()
   {
-    return this.adW;
+    return this.agj;
   }
   
   int getVirtualChildCount()
@@ -724,12 +729,12 @@ public class LinearLayoutCompat
   
   public float getWeightSum()
   {
-    return this.adP;
+    return this.agd;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.adT == null) {}
+    if (this.acK == null) {}
     int i;
     LayoutParams localLayoutParams;
     int k;
@@ -741,7 +746,7 @@ public class LinearLayoutCompat
       do
       {
         return;
-        if (this.adN != 1) {
+        if (this.mOrientation != 1) {
           break;
         }
         j = getVirtualChildCount();
@@ -749,17 +754,17 @@ public class LinearLayoutCompat
         while (i < j)
         {
           localView = getChildAt(i);
-          if ((localView != null) && (localView.getVisibility() != 8) && (bB(i)))
+          if ((localView != null) && (localView.getVisibility() != 8) && (bG(i)))
           {
             localLayoutParams = (LayoutParams)localView.getLayoutParams();
-            b(paramCanvas, localView.getTop() - localLayoutParams.topMargin - this.adV);
+            b(paramCanvas, localView.getTop() - localLayoutParams.topMargin - this.agi);
           }
           i += 1;
         }
-      } while (!bB(j));
+      } while (!bG(j));
       localView = getChildAt(j - 1);
       if (localView == null) {}
-      for (i = getHeight() - getPaddingBottom() - this.adV;; i = localLayoutParams.bottomMargin + i)
+      for (i = getHeight() - getPaddingBottom() - this.agi;; i = localLayoutParams.bottomMargin + i)
       {
         b(paramCanvas, i);
         return;
@@ -767,12 +772,12 @@ public class LinearLayoutCompat
         i = localView.getBottom();
       }
       k = getVirtualChildCount();
-      bool = bf.bF(this);
+      bool = bh.bY(this);
       i = 0;
       if (i < k)
       {
         localView = getChildAt(i);
-        if ((localView != null) && (localView.getVisibility() != 8) && (bB(i)))
+        if ((localView != null) && (localView.getVisibility() != 8) && (bG(i)))
         {
           localLayoutParams = (LayoutParams)localView.getLayoutParams();
           if (!bool) {
@@ -780,14 +785,14 @@ public class LinearLayoutCompat
           }
           j = localView.getRight();
         }
-        for (j = localLayoutParams.rightMargin + j;; j = localView.getLeft() - localLayoutParams.leftMargin - this.adU)
+        for (j = localLayoutParams.rightMargin + j;; j = localView.getLeft() - localLayoutParams.leftMargin - this.agh)
         {
           c(paramCanvas, j);
           i += 1;
           break;
         }
       }
-    } while (!bB(k));
+    } while (!bG(k));
     View localView = getChildAt(k - 1);
     if (localView == null) {
       if (bool) {
@@ -798,12 +803,12 @@ public class LinearLayoutCompat
     {
       c(paramCanvas, i);
       return;
-      i = getWidth() - getPaddingRight() - this.adU;
+      i = getWidth() - getPaddingRight() - this.agh;
       continue;
       localLayoutParams = (LayoutParams)localView.getLayoutParams();
       if (bool)
       {
-        i = localView.getLeft() - localLayoutParams.leftMargin - this.adU;
+        i = localView.getLeft() - localLayoutParams.leftMargin - this.agh;
       }
       else
       {
@@ -825,7 +830,7 @@ public class LinearLayoutCompat
     paramAccessibilityNodeInfo.setClassName(LinearLayoutCompat.class.getName());
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int i;
     int j;
@@ -835,15 +840,15 @@ public class LinearLayoutCompat
     int i1;
     label93:
     Object localObject1;
-    if (this.adN == 1)
+    if (this.mOrientation == 1)
     {
       i = getPaddingLeft();
       j = paramInt3 - paramInt1;
       k = getPaddingRight();
       m = getPaddingRight();
       n = getVirtualChildCount();
-      paramInt1 = this.An;
-      i1 = this.An;
+      paramInt1 = this.AZ;
+      i1 = this.AZ;
       switch (paramInt1 & 0x70)
       {
       default: 
@@ -865,9 +870,9 @@ public class LinearLayoutCompat
     {
       paramInt1 += 1;
       break label93;
-      paramInt1 = getPaddingTop() + paramInt4 - paramInt2 - this.adO;
+      paramInt1 = getPaddingTop() + paramInt4 - paramInt2 - this.agc;
       break;
-      paramInt1 = getPaddingTop() + (paramInt4 - paramInt2 - this.adO) / 2;
+      paramInt1 = getPaddingTop() + (paramInt4 - paramInt2 - this.agc) / 2;
       break;
       if (((View)localObject1).getVisibility() != 8)
       {
@@ -879,7 +884,7 @@ public class LinearLayoutCompat
         if (paramInt4 < 0) {
           paramInt3 = 0x800007 & i1;
         }
-        switch (d.getAbsoluteGravity(paramInt3, q.Q(this)) & 0x7)
+        switch (d.getAbsoluteGravity(paramInt3, t.T(this)) & 0x7)
         {
         default: 
           paramInt3 = ((LayoutParams)localObject2).leftMargin + i;
@@ -887,11 +892,11 @@ public class LinearLayoutCompat
         for (;;)
         {
           paramInt4 = paramInt2;
-          if (bB(paramInt1)) {
-            paramInt4 = paramInt2 + this.adV;
+          if (bG(paramInt1)) {
+            paramInt4 = paramInt2 + this.agi;
           }
           paramInt2 = paramInt4 + ((LayoutParams)localObject2).topMargin;
-          g((View)localObject1, paramInt3, paramInt2 + 0, i2, i3);
+          i((View)localObject1, paramInt3, paramInt2 + 0, i2, i3);
           paramInt2 += ((LayoutParams)localObject2).bottomMargin + i3 + 0;
           paramInt1 += 0;
           break;
@@ -899,18 +904,18 @@ public class LinearLayoutCompat
           continue;
           paramInt3 = j - k - i2 - ((LayoutParams)localObject2).rightMargin;
         }
-        paramBoolean = bf.bF(this);
+        paramBoolean = bh.bY(this);
         k = getPaddingTop();
         n = paramInt4 - paramInt2;
         i1 = getPaddingBottom();
         i2 = getPaddingBottom();
         i3 = getVirtualChildCount();
-        paramInt2 = this.An;
-        int i4 = this.An;
-        boolean bool = this.adK;
-        localObject1 = this.adR;
-        localObject2 = this.adS;
-        switch (d.getAbsoluteGravity(paramInt2 & 0x800007, q.Q(this)))
+        paramInt2 = this.AZ;
+        int i4 = this.AZ;
+        boolean bool = this.afZ;
+        localObject1 = this.agf;
+        localObject2 = this.agg;
+        switch (d.getAbsoluteGravity(paramInt2 & 0x800007, t.T(this)))
         {
         default: 
           paramInt1 = getPaddingLeft();
@@ -941,9 +946,9 @@ public class LinearLayoutCompat
           {
             paramInt2 = paramInt1 + 1;
             break label510;
-            paramInt1 = getPaddingLeft() + paramInt3 - paramInt1 - this.adO;
+            paramInt1 = getPaddingLeft() + paramInt3 - paramInt1 - this.agc;
             break;
-            paramInt1 = getPaddingLeft() + (paramInt3 - paramInt1 - this.adO) / 2;
+            paramInt1 = getPaddingLeft() + (paramInt3 - paramInt1 - this.agc) / 2;
             break;
             if (localView.getVisibility() != 8)
             {
@@ -973,13 +978,13 @@ public class LinearLayoutCompat
               label895:
               for (;;)
               {
-                if (bB(i7)) {
-                  paramInt3 = this.adU + paramInt3;
+                if (bG(i7)) {
+                  paramInt3 = this.agh + paramInt3;
                 }
                 for (;;)
                 {
                   paramInt3 += localLayoutParams.leftMargin;
-                  g(localView, paramInt3 + 0, paramInt1, i5, i6);
+                  i(localView, paramInt3 + 0, paramInt1, i5, i6);
                   paramInt3 += localLayoutParams.rightMargin + i5 + 0;
                   paramInt1 = paramInt2 + 0;
                   break;
@@ -1035,9 +1040,9 @@ public class LinearLayoutCompat
     label458:
     int i7;
     int i8;
-    if (this.adN == 1)
+    if (this.mOrientation == 1)
     {
-      this.adO = 0;
+      this.agc = 0;
       j = 0;
       i = 0;
       i1 = 0;
@@ -1049,8 +1054,8 @@ public class LinearLayoutCompat
       i11 = View.MeasureSpec.getMode(paramInt2);
       n = 0;
       i3 = 0;
-      int i12 = this.adL;
-      bool = this.adQ;
+      int i12 = this.aga;
+      bool = this.age;
       m = 0;
       i4 = 0;
       for (;;)
@@ -1060,7 +1065,7 @@ public class LinearLayoutCompat
           localObject = getChildAt(i4);
           if (localObject == null)
           {
-            this.adO += 0;
+            this.agc += 0;
             i5 = i4;
             i4 = j;
             j = i2;
@@ -1074,18 +1079,18 @@ public class LinearLayoutCompat
             if (((View)localObject).getVisibility() == 8) {
               break label1618;
             }
-            if (bB(i4)) {
-              this.adO += this.adV;
+            if (bG(i4)) {
+              this.agc += this.agi;
             }
             localLayoutParams = (LayoutParams)((View)localObject).getLayoutParams();
             f1 += localLayoutParams.weight;
             if ((i11 == 1073741824) && (localLayoutParams.height == 0) && (localLayoutParams.weight > 0.0F))
             {
-              i3 = this.adO;
-              this.adO = Math.max(i3, localLayoutParams.topMargin + i3 + localLayoutParams.bottomMargin);
+              i3 = this.agc;
+              this.agc = Math.max(i3, localLayoutParams.topMargin + i3 + localLayoutParams.bottomMargin);
               i3 = 1;
               if ((i12 >= 0) && (i12 == i4 + 1)) {
-                this.adM = this.adO;
+                this.agb = this.agc;
               }
               if ((i4 < i12) && (localLayoutParams.weight > 0.0F)) {
                 throw new RuntimeException("A child of LinearLayout with index less than mBaselineAlignedChildIndex has weight > 0, which won't work.  Either remove the weight, or don't set mBaselineAlignedChildIndex.");
@@ -1105,15 +1110,15 @@ public class LinearLayoutCompat
                 }
               }
               if (f1 == 0.0F) {}
-              for (i6 = this.adO;; i6 = 0)
+              for (i6 = this.agc;; i6 = 0)
               {
-                f((View)localObject, paramInt1, 0, paramInt2, i6);
+                h((View)localObject, paramInt1, 0, paramInt2, i6);
                 if (i5 != -2147483648) {
                   localLayoutParams.height = i5;
                 }
                 i5 = ((View)localObject).getMeasuredHeight();
-                i6 = this.adO;
-                this.adO = Math.max(i6, i6 + i5 + localLayoutParams.topMargin + localLayoutParams.bottomMargin + 0);
+                i6 = this.agc;
+                this.agc = Math.max(i6, i6 + i5 + localLayoutParams.topMargin + localLayoutParams.bottomMargin + 0);
                 if (!bool) {
                   break label1615;
                 }
@@ -1185,18 +1190,18 @@ public class LinearLayoutCompat
         break;
         i6 = i7;
       }
-      if ((this.adO > 0) && (bB(i9))) {
-        this.adO += this.adV;
+      if ((this.agc > 0) && (bG(i9))) {
+        this.agc += this.agi;
       }
       if ((bool) && ((i11 == -2147483648) || (i11 == 0)))
       {
-        this.adO = 0;
+        this.agc = 0;
         i4 = 0;
         if (i4 < i9)
         {
           localObject = getChildAt(i4);
           if (localObject == null) {
-            this.adO += 0;
+            this.agc += 0;
           }
           for (;;)
           {
@@ -1209,22 +1214,22 @@ public class LinearLayoutCompat
             else
             {
               localObject = (LayoutParams)((View)localObject).getLayoutParams();
-              i5 = this.adO;
+              i5 = this.agc;
               i6 = ((LayoutParams)localObject).topMargin;
-              this.adO = Math.max(i5, ((LayoutParams)localObject).bottomMargin + (i5 + m + i6) + 0);
+              this.agc = Math.max(i5, ((LayoutParams)localObject).bottomMargin + (i5 + m + i6) + 0);
             }
           }
         }
       }
-      this.adO += getPaddingTop() + getPaddingBottom();
-      i6 = View.resolveSizeAndState(Math.max(this.adO, getSuggestedMinimumHeight()), paramInt2, 0);
-      i4 = (0xFFFFFF & i6) - this.adO;
+      this.agc += getPaddingTop() + getPaddingBottom();
+      i6 = View.resolveSizeAndState(Math.max(this.agc, getSuggestedMinimumHeight()), paramInt2, 0);
+      i4 = (0xFFFFFF & i6) - this.agc;
       if ((i3 != 0) || ((i4 != 0) && (f1 > 0.0F)))
       {
-        if (this.adP > 0.0F) {
-          f1 = this.adP;
+        if (this.agd > 0.0F) {
+          f1 = this.agd;
         }
-        this.adO = 0;
+        this.agc = 0;
         i3 = 0;
         m = k;
         i2 = i1;
@@ -1279,10 +1284,10 @@ public class LinearLayoutCompat
             }
             i = 1;
             label1207:
-            j = this.adO;
+            j = this.agc;
             k = ((View)localObject).getMeasuredHeight();
             i5 = localLayoutParams.topMargin;
-            this.adO = Math.max(j, localLayoutParams.bottomMargin + (k + j + i5) + 0);
+            this.agc = Math.max(j, localLayoutParams.bottomMargin + (k + j + i5) + 0);
             k = i;
             j = i4;
           }
@@ -1315,7 +1320,7 @@ public class LinearLayoutCompat
         label1332:
         i = 0;
         break label1207;
-        this.adO += getPaddingTop() + getPaddingBottom();
+        this.agc += getPaddingTop() + getPaddingBottom();
         i1 = m;
         m = k;
         k = i1;
@@ -1328,7 +1333,7 @@ public class LinearLayoutCompat
           {
             setMeasuredDimension(View.resolveSizeAndState(Math.max(j + (getPaddingLeft() + getPaddingRight()), getSuggestedMinimumWidth()), paramInt1, k), i6);
             if (n != 0) {
-              V(i9, paramInt2);
+              Z(i9, paramInt2);
             }
             return;
             i2 = Math.max(i1, i2);
@@ -1344,7 +1349,7 @@ public class LinearLayoutCompat
               }
               i1 += 1;
             }
-            W(paramInt1, paramInt2);
+            aa(paramInt1, paramInt2);
             return;
             j = m;
           }
@@ -1384,7 +1389,7 @@ public class LinearLayoutCompat
   
   public void setBaselineAligned(boolean paramBoolean)
   {
-    this.adK = paramBoolean;
+    this.afZ = paramBoolean;
   }
   
   public void setBaselineAlignedChildIndex(int paramInt)
@@ -1392,20 +1397,20 @@ public class LinearLayoutCompat
     if ((paramInt < 0) || (paramInt >= getChildCount())) {
       throw new IllegalArgumentException("base aligned child index out of range (0, " + getChildCount() + ")");
     }
-    this.adL = paramInt;
+    this.aga = paramInt;
   }
   
   public void setDividerDrawable(Drawable paramDrawable)
   {
     boolean bool = false;
-    if (paramDrawable == this.adT) {
+    if (paramDrawable == this.acK) {
       return;
     }
-    this.adT = paramDrawable;
+    this.acK = paramDrawable;
     if (paramDrawable != null) {
-      this.adU = paramDrawable.getIntrinsicWidth();
+      this.agh = paramDrawable.getIntrinsicWidth();
     }
-    for (this.adV = paramDrawable.getIntrinsicHeight();; this.adV = 0)
+    for (this.agi = paramDrawable.getIntrinsicHeight();; this.agi = 0)
     {
       if (paramDrawable == null) {
         bool = true;
@@ -1413,18 +1418,18 @@ public class LinearLayoutCompat
       setWillNotDraw(bool);
       requestLayout();
       return;
-      this.adU = 0;
+      this.agh = 0;
     }
   }
   
   public void setDividerPadding(int paramInt)
   {
-    this.adX = paramInt;
+    this.agk = paramInt;
   }
   
   public void setGravity(int paramInt)
   {
-    if (this.An != paramInt)
+    if (this.AZ != paramInt)
     {
       if ((0x800007 & paramInt) != 0) {
         break label46;
@@ -1438,7 +1443,7 @@ public class LinearLayoutCompat
       if ((paramInt & 0x70) == 0) {
         i = paramInt | 0x30;
       }
-      this.An = i;
+      this.AZ = i;
       requestLayout();
       return;
     }
@@ -1447,48 +1452,48 @@ public class LinearLayoutCompat
   public void setHorizontalGravity(int paramInt)
   {
     paramInt &= 0x800007;
-    if ((this.An & 0x800007) != paramInt)
+    if ((this.AZ & 0x800007) != paramInt)
     {
-      this.An = (paramInt | this.An & 0xFF7FFFF8);
+      this.AZ = (paramInt | this.AZ & 0xFF7FFFF8);
       requestLayout();
     }
   }
   
   public void setMeasureWithLargestChildEnabled(boolean paramBoolean)
   {
-    this.adQ = paramBoolean;
+    this.age = paramBoolean;
   }
   
   public void setOrientation(int paramInt)
   {
-    if (this.adN != paramInt)
+    if (this.mOrientation != paramInt)
     {
-      this.adN = paramInt;
+      this.mOrientation = paramInt;
       requestLayout();
     }
   }
   
   public void setShowDividers(int paramInt)
   {
-    if (paramInt != this.adW) {
+    if (paramInt != this.agj) {
       requestLayout();
     }
-    this.adW = paramInt;
+    this.agj = paramInt;
   }
   
   public void setVerticalGravity(int paramInt)
   {
     paramInt &= 0x70;
-    if ((this.An & 0x70) != paramInt)
+    if ((this.AZ & 0x70) != paramInt)
     {
-      this.An = (paramInt | this.An & 0xFFFFFF8F);
+      this.AZ = (paramInt | this.AZ & 0xFFFFFF8F);
       requestLayout();
     }
   }
   
   public void setWeightSum(float paramFloat)
   {
-    this.adP = Math.max(0.0F, paramFloat);
+    this.agd = Math.max(0.0F, paramFloat);
   }
   
   public boolean shouldDelayChildPressedState()
@@ -1511,9 +1516,9 @@ public class LinearLayoutCompat
     public LayoutParams(Context paramContext, AttributeSet paramAttributeSet)
     {
       super(paramAttributeSet);
-      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.LinearLayoutCompat_Layout);
-      this.weight = paramContext.getFloat(a.j.LinearLayoutCompat_Layout_android_layout_weight, 0.0F);
-      this.gravity = paramContext.getInt(a.j.LinearLayoutCompat_Layout_android_layout_gravity, -1);
+      paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.LinearLayoutCompat_Layout);
+      this.weight = paramContext.getFloat(3, 0.0F);
+      this.gravity = paramContext.getInt(0, -1);
       paramContext.recycle();
     }
     

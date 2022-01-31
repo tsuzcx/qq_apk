@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.hp.tinker;
 
 public abstract interface a$a
 {
-  public abstract void bbg();
+  public abstract void bIk();
 }
 
 

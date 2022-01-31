@@ -4,6 +4,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
 import com.tencent.mm.plugin.fts.ui.widget.a;
 
@@ -14,8 +15,10 @@ final class FTSBaseUI$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    FTSBaseUI.a(this.kAY).getFtsEditText().kEp.clearFocus();
-    this.kAY.XM();
+    AppMethodBeat.i(61779);
+    FTSBaseUI.a(this.mWQ).getFtsEditText().naN.clearFocus();
+    this.mWQ.hideVKB();
+    AppMethodBeat.o(61779);
     return false;
   }
 }

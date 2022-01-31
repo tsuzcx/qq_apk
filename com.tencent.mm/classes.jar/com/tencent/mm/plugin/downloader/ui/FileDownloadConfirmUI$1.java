@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.downloader.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FileDownloadConfirmUI$1
   implements DialogInterface.OnClickListener
@@ -12,8 +13,10 @@ final class FileDownloadConfirmUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    d.aFP().dc(this.iPa);
-    y.i("MicroMsg.FileDownloadConfirmUI", "Remove task: %d", new Object[] { Long.valueOf(this.iPa) });
+    AppMethodBeat.i(2516);
+    f.bjl().iz(this.kYi);
+    ab.i("MicroMsg.FileDownloadConfirmUI", "Remove task: %d", new Object[] { Long.valueOf(this.kYi) });
+    AppMethodBeat.o(2516);
   }
 }
 

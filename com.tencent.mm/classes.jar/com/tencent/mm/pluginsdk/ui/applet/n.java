@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 public abstract interface n
 {
-  public abstract void lg(int paramInt);
+  public abstract void nP(int paramInt);
 }
 
 

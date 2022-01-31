@@ -3,7 +3,8 @@ package com.tencent.mm.graphics.b;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
 import android.content.Context;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,90 +12,123 @@ import java.util.List;
 public class b
   implements a
 {
-  private Context dDg;
-  private List<Double> dDh = new ArrayList(100);
-  private int dDi = 0;
-  public double dDj = 0.0D;
-  public double dDk = 0.0D;
-  public double dDl = 2147483647.0D;
-  public double dDm = 0.0D;
-  public double dDn = 0.0D;
+  private Context eAH;
+  private List<Double> eAI;
+  private int eAJ;
+  public double eAK;
+  public double eAL;
+  public double eAM;
+  public double eAN;
+  public double eAO;
   
   static
   {
+    AppMethodBeat.i(57079);
     if (!b.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
+      AppMethodBeat.o(57079);
       return;
     }
   }
   
   public b(Context paramContext)
   {
-    this.dDg = paramContext;
-    this.dDj = bl(paramContext);
-    y.v("MicroMsg.MemoryRecord", "hy: init mem to " + this.dDj);
+    AppMethodBeat.i(57075);
+    this.eAI = new ArrayList(100);
+    this.eAJ = 0;
+    this.eAK = 0.0D;
+    this.eAL = 0.0D;
+    this.eAM = 2147483647.0D;
+    this.eAN = 0.0D;
+    this.eAO = 0.0D;
+    this.eAH = paramContext;
+    this.eAK = bP(paramContext);
+    ab.v("MicroMsg.MemoryRecord", "hy: init mem to " + this.eAK);
+    AppMethodBeat.o(57075);
   }
   
-  private static double bl(Context paramContext)
+  private static double bP(Context paramContext)
   {
+    AppMethodBeat.i(57078);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
     ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-    assert (paramContext != null);
+    if ((!$assertionsDisabled) && (paramContext == null))
+    {
+      paramContext = new AssertionError();
+      AppMethodBeat.o(57078);
+      throw paramContext;
+    }
     paramContext.getMemoryInfo(localMemoryInfo);
-    return (localMemoryInfo.totalMem - localMemoryInfo.availMem) / 1024.0D / 1024.0D;
+    double d = (localMemoryInfo.totalMem - localMemoryInfo.availMem) / 1024.0D / 1024.0D;
+    AppMethodBeat.o(57078);
+    return d;
   }
   
-  public final void BJ()
+  public final void Pv()
   {
-    this.dDi = this.dDh.size();
-    if (this.dDi == 0)
+    AppMethodBeat.i(57076);
+    this.eAJ = this.eAI.size();
+    if (this.eAJ == 0)
     {
-      y.w("MicroMsg.MemoryRecord", "hy: check frames 0!");
+      ab.w("MicroMsg.MemoryRecord", "hy: check frames 0!");
+      AppMethodBeat.o(57076);
       return;
     }
-    Iterator localIterator = this.dDh.iterator();
+    Iterator localIterator = this.eAI.iterator();
     Double localDouble1 = Double.valueOf(0.0D);
     Double localDouble2;
     while (localIterator.hasNext())
     {
       localDouble2 = (Double)localIterator.next();
       localDouble1 = Double.valueOf(localDouble1.doubleValue() + localDouble2.doubleValue());
-      this.dDk = Math.max(this.dDk, localDouble2.doubleValue());
-      this.dDl = Math.min(this.dDl, localDouble2.doubleValue());
+      this.eAL = Math.max(this.eAL, localDouble2.doubleValue());
+      this.eAM = Math.min(this.eAM, localDouble2.doubleValue());
     }
-    localDouble1 = Double.valueOf(localDouble1.doubleValue() / this.dDi);
-    this.dDn = (localDouble1.doubleValue() - this.dDj);
-    this.dDk -= this.dDj;
-    this.dDl -= this.dDj;
-    localIterator = this.dDh.iterator();
+    localDouble1 = Double.valueOf(localDouble1.doubleValue() / this.eAJ);
+    this.eAO = (localDouble1.doubleValue() - this.eAK);
+    this.eAL -= this.eAK;
+    this.eAM -= this.eAK;
+    localIterator = this.eAI.iterator();
     double d;
     for (long l = 0L; localIterator.hasNext(); l = (Math.pow(localDouble2.doubleValue() - localDouble1.doubleValue(), 2.0D) + d))
     {
       localDouble2 = (Double)localIterator.next();
       d = l;
     }
-    this.dDm = Math.sqrt(l / this.dDi);
+    this.eAN = Math.sqrt(l / this.eAJ);
+    AppMethodBeat.o(57076);
   }
   
-  public final void BK()
+  public final void Pw()
   {
-    if (this.dDh == null) {}
-    while ((this.dDh.size() > 10000) || (this.dDg == null)) {
+    AppMethodBeat.i(57077);
+    if (this.eAI == null)
+    {
+      AppMethodBeat.o(57077);
       return;
     }
-    double d = bl(this.dDg);
-    this.dDj = Math.min(d, this.dDj);
-    if (this.dDj == d) {
-      y.v("MicroMsg.MemoryRecord", "hy: updating min mem to " + this.dDj);
+    if (this.eAI.size() > 10000)
+    {
+      AppMethodBeat.o(57077);
+      return;
     }
-    this.dDh.add(Double.valueOf(d));
+    if (this.eAH != null)
+    {
+      double d = bP(this.eAH);
+      this.eAK = Math.min(d, this.eAK);
+      if (this.eAK == d) {
+        ab.v("MicroMsg.MemoryRecord", "hy: updating min mem to " + this.eAK);
+      }
+      this.eAI.add(Double.valueOf(d));
+    }
+    AppMethodBeat.o(57077);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.graphics.b.b
  * JD-Core Version:    0.7.0.1
  */

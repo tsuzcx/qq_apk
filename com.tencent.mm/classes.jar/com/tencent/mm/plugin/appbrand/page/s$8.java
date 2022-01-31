@@ -1,16 +1,52 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.content.res.Configuration;
-import com.tencent.mm.plugin.appbrand.page.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.k.a.b;
+import com.tencent.mm.plugin.appbrand.k.a.d;
+import com.tencent.mm.plugin.report.service.h;
 
 final class s$8
-  implements Runnable
+  implements a.b
 {
-  s$8(s params, Configuration paramConfiguration) {}
+  s$8(s params, boolean paramBoolean, r.b paramb, String paramString, bf parambf) {}
   
-  public final void run()
+  public final void a(a.d paramd)
   {
-    this.gUs.gTS.onOrientationChanged(this.gUy.orientation);
+    AppMethodBeat.i(155939);
+    switch (s.2.hTG[paramd.ordinal()])
+    {
+    default: 
+      AppMethodBeat.o(155939);
+      return;
+    case 1: 
+      paramd = h.qsU;
+      if (this.iwY) {}
+      for (i = 6;; i = 2)
+      {
+        paramd.cT(937, i);
+        this.iwT.runOnUiThread(new s.8.1(this));
+        AppMethodBeat.o(155939);
+        return;
+      }
+    case 2: 
+      paramd = h.qsU;
+      if (this.iwY) {}
+      for (i = 8;; i = 4)
+      {
+        paramd.cT(937, i);
+        this.iwT.runOnUiThread(new s.8.2(this));
+        AppMethodBeat.o(155939);
+        return;
+      }
+    }
+    paramd = h.qsU;
+    if (this.iwY) {}
+    for (int i = 7;; i = 3)
+    {
+      paramd.cT(937, i);
+      this.iwT.runOnUiThread(new s.8.3(this));
+      break;
+    }
   }
 }
 

@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.c.xv;
+import com.tencent.mm.protocal.protobuf.aca;
 
 public final class d
 {
-  public xv bNH;
-  public g khA;
+  public aca cuZ;
+  public g mCk;
   
-  public d(g paramg, xv paramxv)
+  public d(g paramg, aca paramaca)
   {
-    this.khA = paramg;
-    this.bNH = paramxv;
+    this.mCk = paramg;
+    this.cuZ = paramaca;
   }
   
-  public final boolean aRQ()
+  public final boolean byj()
   {
-    return this.bNH.aYU == 4;
+    return this.cuZ.dataType == 4;
   }
   
-  public final boolean aRR()
+  public final boolean byk()
   {
-    return this.bNH.aYU == 15;
+    return this.cuZ.dataType == 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.gallery.d
  * JD-Core Version:    0.7.0.1
  */

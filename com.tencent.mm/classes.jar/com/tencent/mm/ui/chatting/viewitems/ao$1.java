@@ -1,36 +1,53 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.f;
-import com.tencent.mm.model.au;
-import com.tencent.mm.pluginsdk.model.app.ac;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fu;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.b.b.ai;
-import com.tencent.mm.ui.chatting.c.a;
-import com.tencent.mm.ui.chatting.d;
+import com.tencent.mm.ui.chatting.c.b.ag;
 
 final class ao$1
-  implements f
+  implements Runnable
 {
-  ao$1(ao paramao, bi parambi, String paramString, int paramInt) {}
+  ao$1(com.tencent.mm.ui.chatting.d.a parama, bi parambi) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void run()
   {
-    y.d("MicroMsg.ChattingItemVoiceRemindSys", "errType " + paramInt1 + " errCode " + paramInt2 + "  scene " + paramm.getType());
-    boolean bool = false;
-    if (am.a.dVB != null) {
-      bool = am.a.dVB.bB(this.vGM.field_msgId);
+    AppMethodBeat.i(33355);
+    Object localObject = this.zRK;
+    bi localbi = this.fkH;
+    ag localag = (ag)((com.tencent.mm.ui.chatting.d.a)localObject).ay(ag.class);
+    if ((localObject == null) || (localag == null))
+    {
+      ab.e("MicroMsg.ChattingItemVoice", "alvinluo ui or ui.transformImp null");
+      AppMethodBeat.o(33355);
+      return;
     }
-    if ((!bool) && (paramInt1 == 0) && (paramInt2 == 0) && (((ac)paramm).getMediaId().equals(this.BF))) {
-      ((ai)ao.a(this.vGO).ac(ai.class)).cFx().a(this.vGN, this.vGM);
+    int i;
+    if (localag.oJ(localbi.field_msgId)) {
+      i = 2;
     }
-    au.Dk().b(221, ao.b(this.vGO));
-    ao.c(this.vGO);
+    for (;;)
+    {
+      ab.i("MicroMsg.ChattingItemVoice", "alvinluo TransformText report clickScene: %d, msgId: %d", new Object[] { Integer.valueOf(i), Long.valueOf(localbi.field_msgId) });
+      localObject = new fu();
+      ((fu)localObject).cuc.cud = 1;
+      ((fu)localObject).cuc.scene = i;
+      ((fu)localObject).cuc.fileName = localbi.field_imgPath;
+      com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+      AppMethodBeat.o(33355);
+      return;
+      if (localag.oG(localbi.field_msgId)) {
+        i = 3;
+      } else if (!bo.isNullOrNil(localag.D(localbi.field_msgId, localbi.field_imgPath))) {
+        i = 5;
+      } else {
+        i = 1;
+      }
+    }
   }
 }
 

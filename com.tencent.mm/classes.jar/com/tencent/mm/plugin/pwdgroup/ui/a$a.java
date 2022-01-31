@@ -3,17 +3,19 @@ package com.tencent.mm.plugin.pwdgroup.ui;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$a
 {
-  TextView fcy;
-  ImageView hic;
+  TextView gui;
+  ImageView iTH;
   
   public a$a(a parama, View paramView)
   {
-    this.hic = ((ImageView)paramView.findViewById(R.h.facing_icon));
-    this.fcy = ((TextView)paramView.findViewById(R.h.facing_title));
+    AppMethodBeat.i(24032);
+    this.iTH = ((ImageView)paramView.findViewById(2131823993));
+    this.gui = ((TextView)paramView.findViewById(2131823994));
+    AppMethodBeat.o(24032);
   }
 }
 

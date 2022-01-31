@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.v.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.net.URLDecoder;
 import java.util.List;
 import java.util.Map;
@@ -17,20 +18,24 @@ final class CompressPreviewUI$5
   
   public final void onError(int paramInt, String paramString)
   {
+    AppMethodBeat.i(68244);
     if (paramInt == -5)
     {
-      CompressPreviewUI.j(this.nhe).a(new CompressPreviewUI.5.1(this));
+      CompressPreviewUI.j(this.pMs).a(new CompressPreviewUI.5.1(this));
+      AppMethodBeat.o(68244);
       return;
     }
-    CompressPreviewUI.k(this.nhe).setVisibility(8);
-    CompressPreviewUI.l(this.nhe).setVisibility(0);
-    CompressPreviewUI.d(this.nhe).setVisibility(8);
+    CompressPreviewUI.k(this.pMs).setVisibility(8);
+    CompressPreviewUI.l(this.pMs).setVisibility(0);
+    CompressPreviewUI.d(this.pMs).setVisibility(8);
+    AppMethodBeat.o(68244);
   }
   
   public final void onSuccess(String paramString, Map<String, String> paramMap)
   {
-    CompressPreviewUI.b(this.nhe, (String)paramMap.get(".Response.result.compressfilepath"));
-    int j = bk.getInt((String)paramMap.get(".Response.result.filelist.count"), 0);
+    AppMethodBeat.i(68243);
+    CompressPreviewUI.b(this.pMs, (String)paramMap.get(".Response.result.compressfilepath"));
+    int j = bo.getInt((String)paramMap.get(".Response.result.filelist.count"), 0);
     int i = 0;
     if (i < j) {}
     for (;;)
@@ -39,41 +44,42 @@ final class CompressPreviewUI$5
       {
         Object localObject = new StringBuilder(".Response.result.filelist.list.item");
         if (i <= 0) {
-          break label395;
+          break label405;
         }
         paramString = Integer.valueOf(i);
         paramString = paramString;
         localObject = (String)paramMap.get(paramString + ".path");
         if (localObject == null) {
-          break label388;
+          break label398;
         }
         localObject = URLDecoder.decode((String)localObject, "utf-8");
         String str1 = (String)paramMap.get(paramString + ".parentpath");
-        int k = bk.getInt((String)paramMap.get(paramString + ".size"), 0);
-        int m = bk.getInt((String)paramMap.get(paramString + ".type"), 0);
+        int k = bo.getInt((String)paramMap.get(paramString + ".size"), 0);
+        int m = bo.getInt((String)paramMap.get(paramString + ".type"), 0);
         boolean bool = ((String)paramMap.get(paramString + ".preview")).equals("1");
         String str2 = (String)paramMap.get(paramString + ".name");
-        List localList = CompressPreviewUI.h(this.nhe);
-        CompressPreviewUI localCompressPreviewUI = this.nhe;
+        List localList = CompressPreviewUI.h(this.pMs);
+        CompressPreviewUI localCompressPreviewUI = this.pMs;
         if (k == 0)
         {
           paramString = "";
           localList.add(new CompressPreviewUI.a(localCompressPreviewUI, (String)localObject, str2, str1, m, paramString, bool));
-          break label388;
+          break label398;
         }
-        paramString = "(" + bk.cm(k) + ")";
+        paramString = "(" + bo.hk(k) + ")";
         continue;
-        CompressPreviewUI.a(this.nhe, "");
+        CompressPreviewUI.a(this.pMs, "");
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.CompressPreviewUI", paramString, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.CompressPreviewUI", paramString, "", new Object[0]);
       }
+      AppMethodBeat.o(68243);
       return;
-      label388:
+      label398:
       i += 1;
       break;
-      label395:
+      label405:
       paramString = "";
     }
   }

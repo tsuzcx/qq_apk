@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
+import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
 
 public final class e
-  extends s<f>
+  extends u<d>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "remoteDebugInfo";

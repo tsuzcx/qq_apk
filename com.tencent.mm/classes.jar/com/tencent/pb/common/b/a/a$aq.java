@@ -10,23 +10,23 @@ public final class a$aq
   
   public a$aq()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.sceneType != 0) {
-      paramb.aL(1, this.sceneType);
+      paramb.bj(1, this.sceneType);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (this.sceneType != 0) {
-      i = j + b.aN(1, this.sceneType);
+      i = j + b.bl(1, this.sceneType);
     }
     return i;
   }

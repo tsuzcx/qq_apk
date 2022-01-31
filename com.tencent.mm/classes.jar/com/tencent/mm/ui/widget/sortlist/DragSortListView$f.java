@@ -1,171 +1,210 @@
 package com.tencent.mm.ui.widget.sortlist;
 
 import android.os.Environment;
-import com.tencent.mm.ui.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 import java.io.File;
 import java.io.IOException;
 
 final class DragSortListView$f
 {
-  File fDw = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
-  StringBuilder mBuilder = new StringBuilder();
-  int wrN = 0;
-  int wrO = 0;
-  boolean wrP = false;
+  int AMr;
+  int AMs;
+  boolean AMt;
+  File gVL;
+  StringBuilder mBuilder;
   
   DragSortListView$f(DragSortListView paramDragSortListView)
   {
-    if (!this.fDw.exists()) {}
-    try
-    {
-      if (!this.fDw.createNewFile()) {
-        ao.v("creat file fail!! file already exist", new Object[0]);
+    AppMethodBeat.i(113044);
+    this.mBuilder = new StringBuilder();
+    this.AMr = 0;
+    this.AMs = 0;
+    this.AMt = false;
+    this.gVL = new File(Environment.getExternalStorageDirectory(), "dslv_state.txt");
+    if (!this.gVL.exists()) {
+      try
+      {
+        if (!this.gVL.createNewFile()) {
+          ak.e("mobeta", "creat file fail!! file already exist", new Object[0]);
+        }
+        ak.d("mobeta", "file created", new Object[0]);
+        AppMethodBeat.o(113044);
+        return;
       }
-      ao.s("file created", new Object[0]);
-      return;
+      catch (IOException paramDragSortListView)
+      {
+        ak.w("mobeta", "Could not create dslv_state.txt", new Object[0]);
+        ak.d("mobeta", paramDragSortListView.getMessage(), new Object[0]);
+      }
     }
-    catch (IOException paramDragSortListView)
-    {
-      ao.u("Could not create dslv_state.txt", new Object[0]);
-      ao.s(paramDragSortListView.getMessage(), new Object[0]);
-    }
+    AppMethodBeat.o(113044);
   }
   
   /* Error */
   public final void flush()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 38	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:wrP	Z
-    //   4: ifne +4 -> 8
-    //   7: return
-    //   8: aload_0
-    //   9: getfield 36	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:wrO	I
-    //   12: ifne +159 -> 171
-    //   15: iconst_0
-    //   16: istore_1
-    //   17: new 86	java/io/BufferedWriter
-    //   20: dup
-    //   21: new 88	java/io/OutputStreamWriter
-    //   24: dup
-    //   25: new 90	java/io/FileOutputStream
-    //   28: dup
-    //   29: aload_0
-    //   30: getfield 53	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:fDw	Ljava/io/File;
-    //   33: iload_1
-    //   34: invokespecial 93	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   37: ldc 95
-    //   39: invokespecial 98	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   42: invokespecial 101	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   45: astore_2
-    //   46: aload_2
-    //   47: aload_0
-    //   48: getfield 32	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:mBuilder	Ljava/lang/StringBuilder;
-    //   51: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   54: invokevirtual 110	java/io/Writer:write	(Ljava/lang/String;)V
+    //   0: ldc 97
+    //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 45	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:AMt	Z
+    //   9: ifne +9 -> 18
+    //   12: ldc 97
+    //   14: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: return
+    //   18: aload_0
+    //   19: getfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:AMs	I
+    //   22: ifne +190 -> 212
+    //   25: iconst_0
+    //   26: istore_1
+    //   27: new 99	java/io/BufferedWriter
+    //   30: dup
+    //   31: new 101	java/io/OutputStreamWriter
+    //   34: dup
+    //   35: new 103	java/io/FileOutputStream
+    //   38: dup
+    //   39: aload_0
+    //   40: getfield 60	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:gVL	Ljava/io/File;
+    //   43: iload_1
+    //   44: invokespecial 106	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   47: ldc 108
+    //   49: invokespecial 111	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   52: invokespecial 114	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   55: astore_2
+    //   56: aload_2
     //   57: aload_0
-    //   58: getfield 32	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:mBuilder	Ljava/lang/StringBuilder;
-    //   61: iconst_0
-    //   62: aload_0
-    //   63: getfield 32	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:mBuilder	Ljava/lang/StringBuilder;
-    //   66: invokevirtual 114	java/lang/StringBuilder:length	()I
-    //   69: invokevirtual 118	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   72: pop
-    //   73: aload_2
-    //   74: invokevirtual 120	java/io/Writer:flush	()V
-    //   77: aload_0
-    //   78: aload_0
-    //   79: getfield 36	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:wrO	I
-    //   82: iconst_1
-    //   83: iadd
-    //   84: putfield 36	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:wrO	I
-    //   87: aload_2
-    //   88: invokevirtual 123	java/io/Writer:close	()V
-    //   91: return
-    //   92: astore_2
-    //   93: aload_2
-    //   94: ldc 125
-    //   96: iconst_0
-    //   97: anewarray 4	java/lang/Object
-    //   100: invokestatic 129	com/tencent/mm/ui/ao:a	(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   103: return
-    //   104: astore_2
-    //   105: aconst_null
-    //   106: astore_2
-    //   107: aload_2
-    //   108: ifnull -101 -> 7
-    //   111: aload_2
-    //   112: invokevirtual 123	java/io/Writer:close	()V
-    //   115: return
-    //   116: astore_2
-    //   117: aload_2
-    //   118: ldc 125
-    //   120: iconst_0
-    //   121: anewarray 4	java/lang/Object
-    //   124: invokestatic 129	com/tencent/mm/ui/ao:a	(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   127: return
+    //   58: getfield 39	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:mBuilder	Ljava/lang/StringBuilder;
+    //   61: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokevirtual 123	java/io/Writer:write	(Ljava/lang/String;)V
+    //   67: aload_0
+    //   68: getfield 39	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:mBuilder	Ljava/lang/StringBuilder;
+    //   71: iconst_0
+    //   72: aload_0
+    //   73: getfield 39	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:mBuilder	Ljava/lang/StringBuilder;
+    //   76: invokevirtual 127	java/lang/StringBuilder:length	()I
+    //   79: invokevirtual 131	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   82: pop
+    //   83: aload_2
+    //   84: invokevirtual 133	java/io/Writer:flush	()V
+    //   87: aload_0
+    //   88: aload_0
+    //   89: getfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:AMs	I
+    //   92: iconst_1
+    //   93: iadd
+    //   94: putfield 43	com/tencent/mm/ui/widget/sortlist/DragSortListView$f:AMs	I
+    //   97: aload_2
+    //   98: invokevirtual 136	java/io/Writer:close	()V
+    //   101: ldc 97
+    //   103: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   106: return
+    //   107: astore_2
+    //   108: ldc 138
+    //   110: aload_2
+    //   111: ldc 140
+    //   113: iconst_0
+    //   114: anewarray 4	java/lang/Object
+    //   117: invokestatic 144	com/tencent/mm/ui/ak:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   120: ldc 97
+    //   122: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   125: return
+    //   126: astore_2
+    //   127: aconst_null
     //   128: astore_2
-    //   129: aconst_null
-    //   130: astore_3
-    //   131: aload_3
-    //   132: ifnull +7 -> 139
-    //   135: aload_3
-    //   136: invokevirtual 123	java/io/Writer:close	()V
-    //   139: aload_2
-    //   140: athrow
-    //   141: astore_3
-    //   142: aload_3
-    //   143: ldc 125
-    //   145: iconst_0
-    //   146: anewarray 4	java/lang/Object
-    //   149: invokestatic 129	com/tencent/mm/ui/ao:a	(Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   152: goto -13 -> 139
-    //   155: astore_3
-    //   156: aload_2
-    //   157: astore 4
-    //   159: aload_3
-    //   160: astore_2
-    //   161: aload 4
-    //   163: astore_3
-    //   164: goto -33 -> 131
-    //   167: astore_3
-    //   168: goto -61 -> 107
-    //   171: iconst_1
-    //   172: istore_1
-    //   173: goto -156 -> 17
+    //   129: aload_2
+    //   130: ifnull +7 -> 137
+    //   133: aload_2
+    //   134: invokevirtual 136	java/io/Writer:close	()V
+    //   137: ldc 97
+    //   139: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   142: return
+    //   143: astore_2
+    //   144: ldc 138
+    //   146: aload_2
+    //   147: ldc 140
+    //   149: iconst_0
+    //   150: anewarray 4	java/lang/Object
+    //   153: invokestatic 144	com/tencent/mm/ui/ak:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   156: ldc 97
+    //   158: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   161: return
+    //   162: astore_2
+    //   163: aconst_null
+    //   164: astore_3
+    //   165: aload_3
+    //   166: ifnull +7 -> 173
+    //   169: aload_3
+    //   170: invokevirtual 136	java/io/Writer:close	()V
+    //   173: ldc 97
+    //   175: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   178: aload_2
+    //   179: athrow
+    //   180: astore_3
+    //   181: ldc 138
+    //   183: aload_3
+    //   184: ldc 140
+    //   186: iconst_0
+    //   187: anewarray 4	java/lang/Object
+    //   190: invokestatic 144	com/tencent/mm/ui/ak:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   193: goto -20 -> 173
+    //   196: astore_3
+    //   197: aload_2
+    //   198: astore 4
+    //   200: aload_3
+    //   201: astore_2
+    //   202: aload 4
+    //   204: astore_3
+    //   205: goto -40 -> 165
+    //   208: astore_3
+    //   209: goto -80 -> 129
+    //   212: iconst_1
+    //   213: istore_1
+    //   214: goto -187 -> 27
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	176	0	this	f
-    //   16	157	1	bool	boolean
-    //   45	43	2	localBufferedWriter	java.io.BufferedWriter
-    //   92	2	2	localIOException1	IOException
-    //   104	1	2	localIOException2	IOException
-    //   106	6	2	localObject1	Object
-    //   116	2	2	localIOException3	IOException
-    //   128	29	2	localObject2	Object
-    //   160	1	2	localObject3	Object
-    //   130	6	3	localObject4	Object
-    //   141	2	3	localIOException4	IOException
-    //   155	5	3	localObject5	Object
-    //   163	1	3	localObject6	Object
-    //   167	1	3	localIOException5	IOException
-    //   157	5	4	localObject7	Object
+    //   0	217	0	this	f
+    //   26	188	1	bool	boolean
+    //   55	43	2	localBufferedWriter	java.io.BufferedWriter
+    //   107	4	2	localIOException1	IOException
+    //   126	1	2	localIOException2	IOException
+    //   128	6	2	localObject1	Object
+    //   143	4	2	localIOException3	IOException
+    //   162	36	2	localObject2	Object
+    //   201	1	2	localObject3	Object
+    //   164	6	3	localObject4	Object
+    //   180	4	3	localIOException4	IOException
+    //   196	5	3	localObject5	Object
+    //   204	1	3	localObject6	Object
+    //   208	1	3	localIOException5	IOException
+    //   198	5	4	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   87	91	92	java/io/IOException
-    //   8	15	104	java/io/IOException
-    //   17	46	104	java/io/IOException
-    //   111	115	116	java/io/IOException
-    //   8	15	128	finally
-    //   17	46	128	finally
-    //   135	139	141	java/io/IOException
-    //   46	87	155	finally
-    //   46	87	167	java/io/IOException
+    //   97	101	107	java/io/IOException
+    //   18	25	126	java/io/IOException
+    //   27	56	126	java/io/IOException
+    //   133	137	143	java/io/IOException
+    //   18	25	162	finally
+    //   27	56	162	finally
+    //   169	173	180	java/io/IOException
+    //   56	97	196	finally
+    //   56	97	208	java/io/IOException
+  }
+  
+  public final void stopTracking()
+  {
+    AppMethodBeat.i(113046);
+    if (this.AMt)
+    {
+      this.mBuilder.append("</DSLVStates>\n");
+      flush();
+      this.AMt = false;
+    }
+    AppMethodBeat.o(113046);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.sortlist.DragSortListView.f
  * JD-Core Version:    0.7.0.1
  */

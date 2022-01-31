@@ -6,8 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 
 final class VoiceSearchEditText$1
@@ -17,58 +18,68 @@ final class VoiceSearchEditText$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.vbN;
-    if (paramView.getCompoundDrawables()[2] == null) {
+    AppMethodBeat.i(107088);
+    paramView = this.zqj;
+    if (paramView.getCompoundDrawables()[2] == null)
+    {
+      AppMethodBeat.o(107088);
       return false;
     }
-    if (paramMotionEvent.getAction() != 1) {
+    if (paramMotionEvent.getAction() != 1)
+    {
+      AppMethodBeat.o(107088);
       return true;
     }
-    VoiceSearchEditText.a(this.vbN, true);
-    if ((VoiceSearchEditText.a(this.vbN)) && (VoiceSearchEditText.b(this.vbN)) && (paramView.getText().toString().equals(""))) {
-      if (paramMotionEvent.getX() > paramView.getWidth() - paramView.getPaddingRight() - this.vbN.vbG.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramView), 25))
+    VoiceSearchEditText.a(this.zqj, true);
+    if ((VoiceSearchEditText.a(this.zqj)) && (VoiceSearchEditText.b(this.zqj)) && (paramView.getText().toString().equals(""))) {
+      if (paramMotionEvent.getX() > paramView.getWidth() - paramView.getPaddingRight() - this.zqj.zqc.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramView), 25))
       {
-        if (VoiceSearchEditText.d(this.vbN) != null)
+        if (VoiceSearchEditText.d(this.zqj) != null)
         {
-          y.i("MicroMsg.VoiceSearchEditText", "user clicked voice button");
-          if ((this.vbN.getContext() instanceof MMActivity)) {
-            ((MMActivity)this.vbN.getContext()).hideVKB(paramView);
+          ab.i("MicroMsg.VoiceSearchEditText", "user clicked voice button");
+          if ((this.zqj.getContext() instanceof MMActivity)) {
+            ((MMActivity)this.zqj.getContext()).hideVKB(paramView);
           }
-          VoiceSearchEditText.d(this.vbN).onClick(this.vbN);
+          VoiceSearchEditText.d(this.zqj).onClick(this.zqj);
+          AppMethodBeat.o(107088);
           return true;
         }
       }
       else
       {
         paramView.requestFocus();
-        if ((this.vbN.getContext() instanceof Activity)) {
-          MMActivity.showVKB((Activity)this.vbN.getContext());
+        if ((this.zqj.getContext() instanceof Activity)) {
+          MMActivity.showVKB((Activity)this.zqj.getContext());
         }
-        if (VoiceSearchEditText.d(this.vbN) != null) {
-          VoiceSearchEditText.d(this.vbN).onClick(null);
+        if (VoiceSearchEditText.d(this.zqj) != null) {
+          VoiceSearchEditText.d(this.zqj).onClick(null);
         }
       }
     }
     for (;;)
     {
+      AppMethodBeat.o(107088);
       return false;
       if (paramView.getText().toString().length() > 0)
       {
-        if (paramMotionEvent.getX() > paramView.getWidth() - paramView.getPaddingRight() - this.vbN.vbI.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramView), 25))
+        if (paramMotionEvent.getX() > paramView.getWidth() - paramView.getPaddingRight() - this.zqj.zqe.getIntrinsicWidth() - a.fromDPToPix(VoiceSearchEditText.c(paramView), 25))
         {
           paramView.setText("");
-          VoiceSearchEditText.e(this.vbN);
+          if (VoiceSearchEditText.e(this.zqj) != null) {
+            VoiceSearchEditText.e(this.zqj);
+          }
+          VoiceSearchEditText.f(this.zqj);
         }
         else if (!paramView.isFocused())
         {
           paramView.requestFocus();
-          if ((this.vbN.getContext() instanceof Activity)) {
-            MMActivity.showVKB((Activity)this.vbN.getContext());
+          if ((this.zqj.getContext() instanceof Activity)) {
+            MMActivity.showVKB((Activity)this.zqj.getContext());
           }
         }
       }
-      else if (VoiceSearchEditText.d(this.vbN) != null) {
-        VoiceSearchEditText.d(this.vbN).onClick(null);
+      else if (VoiceSearchEditText.d(this.zqj) != null) {
+        VoiceSearchEditText.d(this.zqj).onClick(null);
       }
     }
   }

@@ -3,8 +3,9 @@ package com.tencent.ttpic.model;
 import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import com.tencent.filter.BaseFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BitmapUtils;
 import com.tencent.ttpic.gles.GlUtil;
-import com.tencent.ttpic.util.VideoBitmapUtil;
 import com.tencent.ttpic.util.VideoGlobalContext;
 import java.io.File;
 import java.util.List;
@@ -20,6 +21,7 @@ public class StarActItem
   public StarActItem(List<ExpressionItem> paramList, String paramString, BaseFilter paramBaseFilter)
   {
     super(paramBaseFilter);
+    AppMethodBeat.i(83524);
     this.texId = new int[paramList.size()];
     this.filePaths = new String[paramList.size()];
     int i = 0;
@@ -28,11 +30,14 @@ public class StarActItem
       this.filePaths[i] = (paramString + File.separator + "expression" + File.separator + ((ExpressionItem)paramList.get(i)).expressionID);
       i += 1;
     }
+    AppMethodBeat.o(83524);
   }
   
   public void clear()
   {
+    AppMethodBeat.i(83526);
     GLES20.glDeleteTextures(this.texId.length, this.texId, 0);
+    AppMethodBeat.o(83526);
   }
   
   public int getOrigHeight(int paramInt)
@@ -53,12 +58,13 @@ public class StarActItem
   public void init()
   {
     int i = 0;
+    AppMethodBeat.i(83525);
     GLES20.glGenTextures(this.texId.length, this.texId, 0);
     while (i < this.filePaths.length)
     {
       Object localObject = this.filePaths[i];
-      localObject = VideoBitmapUtil.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, 720, 1280);
-      if (VideoBitmapUtil.isLegal((Bitmap)localObject))
+      localObject = BitmapUtils.decodeSampleBitmap(VideoGlobalContext.getContext(), (String)localObject, 720, 1280);
+      if (BitmapUtils.isLegal((Bitmap)localObject))
       {
         this.width = ((Bitmap)localObject).getWidth();
         this.height = ((Bitmap)localObject).getHeight();
@@ -67,6 +73,7 @@ public class StarActItem
       }
       i += 1;
     }
+    AppMethodBeat.o(83525);
   }
   
   public void reset() {}

@@ -2,7 +2,7 @@ package com.tencent.weui.base.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.mm.ci.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PreferenceSmallCategory
   extends PreferenceCategory
@@ -20,7 +20,9 @@ public class PreferenceSmallCategory
   public PreferenceSmallCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.g.mm_preference_header_catalog);
+    AppMethodBeat.i(113257);
+    setLayoutResource(2130970230);
+    AppMethodBeat.o(113257);
   }
 }
 

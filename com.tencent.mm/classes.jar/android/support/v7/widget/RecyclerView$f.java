@@ -5,18 +5,18 @@ import java.util.List;
 
 public abstract class RecyclerView$f
 {
-  RecyclerView.f.b agN = null;
-  private ArrayList<RecyclerView.f.a> agO = new ArrayList();
-  public long agP = 120L;
-  public long agQ = 120L;
-  public long agR = 250L;
-  public long agS = 250L;
+  RecyclerView.f.b ajd = null;
+  private ArrayList<RecyclerView.f.a> aje = new ArrayList();
+  public long ajf = 120L;
+  public long ajg = 120L;
+  public long ajh = 250L;
+  public long aji = 250L;
   
-  static int k(RecyclerView.v paramv)
+  static int l(RecyclerView.v paramv)
   {
-    int j = RecyclerView.v.v(paramv) & 0xE;
+    int j = RecyclerView.v.A(paramv) & 0xE;
     int i;
-    if (paramv.ij()) {
+    if (paramv.jU()) {
       i = 4;
     }
     int k;
@@ -32,8 +32,8 @@ public abstract class RecyclerView$f
             return i;
             i = j;
           } while ((j & 0x4) != 0);
-          k = paramv.aig;
-          m = paramv.id();
+          k = paramv.akw;
+          m = paramv.jN();
           i = j;
         } while (k == -1);
         i = j;
@@ -54,13 +54,13 @@ public abstract class RecyclerView$f
     if (parama != null)
     {
       if (!bool) {
-        parama.hQ();
+        parama.jx();
       }
     }
     else {
       return bool;
     }
-    this.agO.add(parama);
+    this.aje.add(parama);
     return bool;
   }
   
@@ -68,7 +68,7 @@ public abstract class RecyclerView$f
   
   public boolean a(RecyclerView.v paramv, List<Object> paramList)
   {
-    return n(paramv);
+    return o(paramv);
   }
   
   public abstract void d(RecyclerView.v paramv);
@@ -79,35 +79,35 @@ public abstract class RecyclerView$f
   
   public abstract boolean f(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
   
-  public abstract void gA();
+  public abstract void hA();
   
-  public abstract void gC();
-  
-  public final void hP()
-  {
-    int j = this.agO.size();
-    int i = 0;
-    while (i < j)
-    {
-      ((RecyclerView.f.a)this.agO.get(i)).hQ();
-      i += 1;
-    }
-    this.agO.clear();
-  }
+  public abstract void hC();
   
   public abstract boolean isRunning();
   
-  public final void l(RecyclerView.v paramv)
+  public final void jw()
   {
-    m(paramv);
-    if (this.agN != null) {
-      this.agN.m(paramv);
+    int j = this.aje.size();
+    int i = 0;
+    while (i < j)
+    {
+      ((RecyclerView.f.a)this.aje.get(i)).jx();
+      i += 1;
+    }
+    this.aje.clear();
+  }
+  
+  public final void m(RecyclerView.v paramv)
+  {
+    n(paramv);
+    if (this.ajd != null) {
+      this.ajd.n(paramv);
     }
   }
   
-  public void m(RecyclerView.v paramv) {}
+  public void n(RecyclerView.v paramv) {}
   
-  public boolean n(RecyclerView.v paramv)
+  public boolean o(RecyclerView.v paramv)
   {
     return true;
   }

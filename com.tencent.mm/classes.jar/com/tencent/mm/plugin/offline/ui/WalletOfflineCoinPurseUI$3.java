@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import com.tencent.mm.wallet_core.c.e;
+import com.tencent.mm.wallet_core.c.f;
 
 final class WalletOfflineCoinPurseUI$3
-  implements e
+  implements f
 {
   WalletOfflineCoinPurseUI$3(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI) {}
   
-  public final void bgs() {}
+  public final void bOi() {}
 }
 
 

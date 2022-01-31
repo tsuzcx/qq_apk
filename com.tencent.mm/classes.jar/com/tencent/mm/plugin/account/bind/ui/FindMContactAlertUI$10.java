@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class FindMContactAlertUI$10
@@ -12,17 +13,19 @@ final class FindMContactAlertUI$10
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (FindMContactAlertUI.h(this.fdg) != null)
+    AppMethodBeat.i(13572);
+    if (FindMContactAlertUI.h(this.guR) != null)
     {
-      g.Dk().b(431, FindMContactAlertUI.h(this.fdg));
-      FindMContactAlertUI.i(this.fdg);
-      FindMContactAlertUI.j(this.fdg);
+      g.Rc().b(431, FindMContactAlertUI.h(this.guR));
+      FindMContactAlertUI.i(this.guR);
+      FindMContactAlertUI.j(this.guR);
     }
+    AppMethodBeat.o(13572);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.FindMContactAlertUI.10
  * JD-Core Version:    0.7.0.1
  */

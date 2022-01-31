@@ -1,96 +1,107 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
-import com.tencent.mm.compatible.b.f;
-import com.tencent.mm.compatible.b.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.g;
+import com.tencent.mm.compatible.b.g.a;
 import com.tencent.mm.compatible.util.b;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelvoice.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelvoice.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class p
-  implements f.a
+  implements g.a
 {
-  public static int bEl = 100;
-  public k byP = null;
-  public b eLi;
+  public static int ckX = 100;
+  public m caR = null;
   public String fileName = "";
-  private int hYh = 0;
-  public long jlU = 0L;
-  public p.b pLH;
-  public String pLI;
-  public boolean pLJ = false;
-  public p.a pLK = null;
-  public boolean pvP = false;
-  public int pvS = 0;
+  public b gaP;
+  private int jRV = 0;
+  public long lvI = 0L;
+  public boolean sXv = false;
+  public int sXy = 0;
+  public p.b trD;
+  public String trE;
+  public boolean trF = false;
+  public p.a trG = null;
   
-  public final void ew(int paramInt)
-  {
-    y.d("MicroMsg.VoicePrintRecoder", " Recorder onBluetoothHeadsetStateChange :" + paramInt);
-    if (this.pvP) {
-      return;
-    }
-    this.pvP = true;
-    au.Hy().b(this);
-    this.byP = new k();
-    this.pLH = new p.b(this);
-    this.pLH.start();
-    this.pLJ = false;
-    this.pvS = 1;
-  }
-  
-  public final boolean un()
+  public final boolean Ez()
   {
     long l = 0L;
-    au.Hy().yl();
-    this.pLJ = false;
-    y.d("MicroMsg.VoicePrintRecoder", "stop Record :" + this.fileName);
+    AppMethodBeat.i(26127);
+    aw.aaA().KF();
+    this.trF = false;
+    ab.d("MicroMsg.VoicePrintRecoder", "stop Record :" + this.fileName);
     try
     {
-      y.d("MicroMsg.VoicePrintRecoder", "stop synchronized Record :" + this.fileName);
-      if (this.byP != null) {
-        this.byP.uh();
+      ab.d("MicroMsg.VoicePrintRecoder", "stop synchronized Record :" + this.fileName);
+      if (this.caR != null) {
+        this.caR.Et();
       }
-      if (this.pvS != 2)
+      if (this.sXy != 2)
       {
         this.fileName = null;
-        this.pLJ = false;
-        y.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName);
-        this.pvS = -1;
-        y.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.pLJ);
-        if (this.eLi != null) {
-          this.eLi.zE();
+        this.trF = false;
+        ab.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName);
+        this.sXy = -1;
+        ab.d("MicroMsg.VoicePrintRecoder", "bLongEnough " + this.trF);
+        if (this.gaP != null) {
+          this.gaP.Mh();
         }
-        return this.pLJ;
+        boolean bool = this.trF;
+        AppMethodBeat.o(26127);
+        return bool;
       }
     }
-    finally {}
-    if (this.jlU <= 0L)
+    finally
     {
-      label185:
-      this.hYh = ((int)l);
-      if (this.hYh >= 1000) {
-        break label268;
+      AppMethodBeat.o(26127);
+    }
+    if (this.lvI <= 0L)
+    {
+      label207:
+      this.jRV = ((int)l);
+      if (this.jRV >= 1000) {
+        break label290;
       }
-      y.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.hYh);
+      ab.d("MicroMsg.VoicePrintRecoder", "Stop " + this.fileName + " by voiceLen: " + this.jRV);
       this.fileName = "";
-      this.pLJ = false;
+      this.trF = false;
     }
     for (;;)
     {
       this.fileName = "";
       break;
-      l = bk.cp(this.jlU);
-      break label185;
-      label268:
-      this.pLJ = true;
-      y.d("MicroMsg.VoicePrintRecoder", "Stop file success: " + this.fileName);
+      l = bo.av(this.lvI);
+      break label207;
+      label290:
+      this.trF = true;
+      ab.d("MicroMsg.VoicePrintRecoder", "Stop file success: " + this.fileName);
     }
+  }
+  
+  public final void gy(int paramInt)
+  {
+    AppMethodBeat.i(26126);
+    ab.d("MicroMsg.VoicePrintRecoder", " Recorder onBluetoothHeadsetStateChange :".concat(String.valueOf(paramInt)));
+    if (this.sXv)
+    {
+      AppMethodBeat.o(26126);
+      return;
+    }
+    this.sXv = true;
+    aw.aaA().b(this);
+    this.caR = new m();
+    this.trD = new p.b(this);
+    this.trD.start();
+    this.trF = false;
+    this.sXy = 1;
+    AppMethodBeat.o(26126);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,120 @@
 package android.support.v4.d;
 
-import android.support.v4.f.l;
-import android.util.Base64;
-import java.util.List;
+import android.os.Build.VERSION;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Locale;
 
 public final class a
 {
-  final String CZ;
-  final String Da;
-  final String Db;
-  final List<List<byte[]>> Dc;
-  final int Dd;
-  final String De;
+  private static Method Ei;
+  private static Method Ej;
   
-  public a(String paramString1, String paramString2, String paramString3, List<List<byte[]>> paramList)
+  static
   {
-    this.CZ = ((String)l.E(paramString1));
-    this.Da = ((String)l.E(paramString2));
-    this.Db = ((String)l.E(paramString3));
-    this.Dc = ((List)l.E(paramList));
-    this.Dd = 0;
-    this.De = (this.CZ + "-" + this.Da + "-" + this.Db);
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (;;)
+    {
+      try
+      {
+        Ej = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
+        return;
+      }
+      catch (Exception localException1)
+      {
+        throw new IllegalStateException(localException1);
+      }
+      try
+      {
+        Class localClass = Class.forName("libcore.icu.ICU");
+        if (localClass != null)
+        {
+          Ei = localClass.getMethod("getScript", new Class[] { String.class });
+          Ej = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
+          return;
+        }
+      }
+      catch (Exception localException2)
+      {
+        Ei = null;
+        Ej = null;
+      }
+    }
   }
   
-  public final String toString()
+  public static String a(Locale paramLocale)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("FontRequest {mProviderAuthority: " + this.CZ + ", mProviderPackage: " + this.Da + ", mQuery: " + this.Db + ", mCertificates:");
-    int i = 0;
-    while (i < this.Dc.size())
+    String str1 = null;
+    if (Build.VERSION.SDK_INT >= 21) {}
+    try
     {
-      localStringBuilder.append(" [");
-      List localList = (List)this.Dc.get(i);
-      int j = 0;
-      while (j < localList.size())
-      {
-        localStringBuilder.append(" \"");
-        localStringBuilder.append(Base64.encodeToString((byte[])localList.get(j), 0));
-        localStringBuilder.append("\"");
-        j += 1;
-      }
-      localStringBuilder.append(" ]");
-      i += 1;
+      str1 = ((Locale)Ej.invoke(null, new Object[] { paramLocale })).getScript();
+      paramLocale = str1;
     }
-    localStringBuilder.append("}");
-    localStringBuilder.append("mCertificatesArray: " + this.Dd);
-    return localStringBuilder.toString();
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      String str2;
+      do
+      {
+        return paramLocale.getScript();
+        str2 = b(paramLocale);
+        paramLocale = localIllegalAccessException;
+      } while (str2 == null);
+      return getScript(str2);
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      break label37;
+    }
+    return paramLocale;
+  }
+  
+  private static String b(Locale paramLocale)
+  {
+    paramLocale = paramLocale.toString();
+    try
+    {
+      if (Ej != null)
+      {
+        String str = (String)Ej.invoke(null, new Object[] { paramLocale });
+        return str;
+      }
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      return paramLocale;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      label33:
+      break label33;
+    }
+  }
+  
+  private static String getScript(String paramString)
+  {
+    try
+    {
+      if (Ei != null)
+      {
+        paramString = (String)Ei.invoke(null, new Object[] { paramString });
+        return paramString;
+      }
+    }
+    catch (InvocationTargetException paramString)
+    {
+      return null;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      label28:
+      break label28;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.d.a
  * JD-Core Version:    0.7.0.1
  */

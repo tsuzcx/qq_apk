@@ -1,28 +1,28 @@
 package com.tencent.mm.memory;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 
 public final class g
   extends a<byte[]>
 {
-  public static final g dPb = new g();
+  public static final g fdI;
   
-  protected final long ER()
+  static
   {
-    return 5242880L;
+    AppMethodBeat.i(115377);
+    fdI = new g();
+    AppMethodBeat.o(115377);
   }
   
-  protected final long ES()
-  {
-    return 1048576L;
-  }
-  
-  public final void z(byte[] paramArrayOfByte)
+  public final void O(byte[] paramArrayOfByte)
   {
     try
     {
+      AppMethodBeat.i(115372);
       Arrays.fill(paramArrayOfByte, (byte)0);
-      super.ar(paramArrayOfByte);
+      super.aG(paramArrayOfByte);
+      AppMethodBeat.o(115372);
       return;
     }
     finally
@@ -30,6 +30,16 @@ public final class g
       paramArrayOfByte = finally;
       throw paramArrayOfByte;
     }
+  }
+  
+  protected final long XH()
+  {
+    return 5242880L;
+  }
+  
+  protected final long XI()
+  {
+    return 1048576L;
   }
 }
 

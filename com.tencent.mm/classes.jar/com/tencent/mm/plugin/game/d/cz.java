@@ -1,105 +1,84 @@
 package com.tencent.mm.plugin.game.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class cz
   extends com.tencent.mm.bv.a
 {
-  public String kRS;
-  public String kRY;
-  public String kWe;
-  public String kWf;
-  public String kWg;
-  public boolean kWh;
-  public boolean kWi;
+  public String IconUrl;
+  public String npR;
+  public String nuc;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111667);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kRY != null) {
-        paramVarArgs.d(1, this.kRY);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.nuc != null) {
+        paramVarArgs.e(1, this.nuc);
       }
-      if (this.kWe != null) {
-        paramVarArgs.d(2, this.kWe);
+      if (this.IconUrl != null) {
+        paramVarArgs.e(2, this.IconUrl);
       }
-      if (this.kWf != null) {
-        paramVarArgs.d(3, this.kWf);
+      if (this.npR != null) {
+        paramVarArgs.e(3, this.npR);
       }
-      if (this.kWg != null) {
-        paramVarArgs.d(4, this.kWg);
-      }
-      if (this.kRS != null) {
-        paramVarArgs.d(5, this.kRS);
-      }
-      paramVarArgs.aA(6, this.kWh);
-      paramVarArgs.aA(7, this.kWi);
+      AppMethodBeat.o(111667);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kRY == null) {
-        break label467;
+      if (this.nuc == null) {
+        break label334;
       }
     }
-    label467:
-    for (int i = d.a.a.b.b.a.e(1, this.kRY) + 0;; i = 0)
+    label334:
+    for (int i = e.a.a.b.b.a.f(1, this.nuc) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.kWe != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.kWe);
+      if (this.IconUrl != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.IconUrl);
       }
       i = paramInt;
-      if (this.kWf != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.kWf);
+      if (this.npR != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.npR);
       }
-      paramInt = i;
-      if (this.kWg != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.kWg);
-      }
-      i = paramInt;
-      if (this.kRS != null) {
-        i = paramInt + d.a.a.b.b.a.e(5, this.kRS);
-      }
-      return i + (d.a.a.b.b.a.dQ(6) + 1) + (d.a.a.b.b.a.dQ(7) + 1);
+      AppMethodBeat.o(111667);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(111667);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         cz localcz = (cz)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111667);
           return -1;
         case 1: 
-          localcz.kRY = locala.xpH.readString();
+          localcz.nuc = locala.CLY.readString();
+          AppMethodBeat.o(111667);
           return 0;
         case 2: 
-          localcz.kWe = locala.xpH.readString();
-          return 0;
-        case 3: 
-          localcz.kWf = locala.xpH.readString();
-          return 0;
-        case 4: 
-          localcz.kWg = locala.xpH.readString();
-          return 0;
-        case 5: 
-          localcz.kRS = locala.xpH.readString();
-          return 0;
-        case 6: 
-          localcz.kWh = locala.cUr();
+          localcz.IconUrl = locala.CLY.readString();
+          AppMethodBeat.o(111667);
           return 0;
         }
-        localcz.kWi = locala.cUr();
+        localcz.npR = locala.CLY.readString();
+        AppMethodBeat.o(111667);
         return 0;
       }
+      AppMethodBeat.o(111667);
       return -1;
     }
   }

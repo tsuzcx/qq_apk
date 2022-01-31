@@ -1,114 +1,51 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.app.e;
+import android.view.Display;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
+  extends e
 {
-  private List<b> lVF = new LinkedList();
-  private boolean lVG = false;
-  private boolean lVH = false;
-  private TextView lVI;
+  a.a oqT;
   
-  public final void a(b paramb)
+  public a(Context paramContext)
   {
-    if (paramb == null) {
-      return;
-    }
-    this.lVF.add(paramb);
+    super(paramContext, 2131493185);
+    AppMethodBeat.i(42555);
+    eS();
+    AppMethodBeat.o(42555);
   }
   
-  public final boolean bgi()
+  public final void onBackPressed()
   {
-    this.lVH = false;
-    this.lVG = false;
-    int i = 0;
-    if (i < this.lVF.size())
-    {
-      Object localObject = (b)this.lVF.get(i);
-      int j = ((b)localObject).bfp();
-      if (j != 0)
-      {
-        ((b)localObject).onError();
-        localObject = ((b)localObject).td(j);
-        if ((this.lVI != null) && (!bk.bl((String)localObject)))
-        {
-          if (!this.lVG) {
-            this.lVI.setText((CharSequence)localObject);
-          }
-          this.lVI.setVisibility(0);
-          this.lVG = true;
-        }
-        this.lVH = true;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((b)localObject).restore();
-      }
+    AppMethodBeat.i(42557);
+    if (this.oqT != null) {
+      this.oqT.bNL();
     }
-    if ((!this.lVH) && (this.lVI != null))
-    {
-      this.lVI.setVisibility(8);
-      this.lVG = false;
-    }
-    return this.lVH;
+    AppMethodBeat.o(42557);
   }
   
-  public final boolean bgj()
+  public final void onCreate(Bundle paramBundle)
   {
-    boolean bool2 = false;
-    int i = 0;
-    for (;;)
-    {
-      boolean bool1 = bool2;
-      if (i < this.lVF.size())
-      {
-        if (((b)this.lVF.get(i)).bfp() != 0) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
-      }
-      i += 1;
-    }
-  }
-  
-  public final void clear()
-  {
-    this.lVF.clear();
-    this.lVI = null;
-  }
-  
-  public final void g(TextView paramTextView)
-  {
-    if (paramTextView != null) {
-      this.lVI = paramTextView;
-    }
-  }
-  
-  public final void tR(String paramString)
-  {
-    if ((this.lVI != null) && (!bk.bl(paramString)))
-    {
-      this.lVI.setText(paramString);
-      this.lVI.setVisibility(0);
-      this.lVG = true;
-    }
-    while (this.lVI == null) {
-      return;
-    }
-    this.lVI.setVisibility(8);
-    this.lVG = false;
+    AppMethodBeat.i(42556);
+    super.onCreate(paramBundle);
+    getWindow().setGravity(80);
+    paramBundle = getWindow().getWindowManager().getDefaultDisplay();
+    WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+    localLayoutParams.width = paramBundle.getWidth();
+    getWindow().setAttributes(localLayoutParams);
+    AppMethodBeat.o(42556);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a
  * JD-Core Version:    0.7.0.1
  */

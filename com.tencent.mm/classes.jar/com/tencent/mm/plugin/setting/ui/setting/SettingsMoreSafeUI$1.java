@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsMoreSafeUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class SettingsMoreSafeUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nVg.XM();
-    this.nVg.finish();
+    AppMethodBeat.i(127324);
+    this.qJl.hideVKB();
+    this.qJl.finish();
+    AppMethodBeat.o(127324);
     return true;
   }
 }

@@ -2,69 +2,95 @@ package com.tencent.ttpic.filter;
 
 import android.graphics.PointF;
 import android.opengl.GLES20;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.HandActionCounter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.FileUtils;
+import com.tencent.ttpic.gles.GlUtil;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
 import com.tencent.ttpic.util.FaceOffUtil;
-import com.tencent.ttpic.util.VideoFileUtil;
-import com.tencent.ttpic.util.VideoFilterUtil;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
 import com.tencent.ttpic.util.VideoGlobalContext;
 import com.tencent.ttpic.util.VideoMaterialUtil;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class FaceLineFilter
   extends VideoFilterBase
 {
-  public static final String FRAGMENT_SHADER = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/FaceLineFragmentShader.dat");
-  private static final String TAG = FaceLineFilter.class.getSimpleName();
-  public static final String VERTEX_SHADER = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/FaceLineVertexShader.dat");
-  private float[] faceVertices = new float[2760];
+  public static final String FRAGMENT_SHADER;
+  private static final String TAG;
+  public static final String VERTEX_SHADER;
+  private float[] faceVertices;
+  private float[] irisVertices;
+  
+  static
+  {
+    AppMethodBeat.i(82402);
+    TAG = FaceLineFilter.class.getSimpleName();
+    VERTEX_SHADER = FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/FaceLineVertexShader.dat");
+    FRAGMENT_SHADER = FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/FaceLineFragmentShader.dat");
+    AppMethodBeat.o(82402);
+  }
   
   public FaceLineFilter()
   {
     super(VERTEX_SHADER, FRAGMENT_SHADER);
+    AppMethodBeat.i(82396);
+    this.faceVertices = new float[2760];
+    this.irisVertices = new float[96];
     initParams();
+    AppMethodBeat.o(82396);
   }
   
   public void ApplyGLSLFilter()
   {
+    AppMethodBeat.i(82398);
     super.ApplyGLSLFilter();
-    setDrawMode(VideoFilterUtil.DRAW_MODE.LINES);
+    setDrawMode(GlUtil.DRAW_MODE.LINES);
+    AppMethodBeat.o(82398);
   }
   
   public void initAttribParams()
   {
-    setPositions(VideoFilterUtil.ORIGIN_POSITION_COORDS);
+    AppMethodBeat.i(82397);
+    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
+    AppMethodBeat.o(82397);
   }
   
   public void initParams() {}
   
   public void render(int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(82400);
     GLES20.glLineWidth(3.0F);
-    VideoFilterUtil.setBlendMode(true);
+    GlUtil.setBlendMode(true);
     OnDrawFrameGLSL();
     renderTexture(paramInt1, paramInt2, paramInt3);
-    VideoFilterUtil.setBlendMode(false);
+    GlUtil.setBlendMode(false);
+    AppMethodBeat.o(82400);
+  }
+  
+  public void updateIrisPoints(List<PointF> paramList)
+  {
+    AppMethodBeat.i(82401);
+    setPositions(FaceOffUtil.initIrisLinePositions(VideoMaterialUtil.copyList(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.irisVertices));
+    setCoordNum(48);
+    AppMethodBeat.o(82401);
   }
   
   public void updatePoints(List<List<PointF>> paramList)
   {
+    AppMethodBeat.i(82399);
     if (paramList.size() == 0)
     {
-      setPositions(VideoFilterUtil.EMPTY_POSITIONS);
+      setPositions(GlUtil.EMPTY_POSITIONS);
       setCoordNum(4);
+      AppMethodBeat.o(82399);
       return;
     }
     paramList = VideoMaterialUtil.copyList((List)paramList.get(0));
     FaceOffUtil.getFullCoords(paramList, 2.0F);
     setPositions(FaceOffUtil.initFaceLinePositions(paramList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
     setCoordNum(1380);
+    AppMethodBeat.o(82399);
   }
-  
-  public void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong) {}
 }
 
 

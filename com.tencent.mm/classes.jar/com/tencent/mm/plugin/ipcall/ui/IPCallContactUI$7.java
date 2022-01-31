@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.a.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class IPCallContactUI$7
   implements a.a
 {
   IPCallContactUI$7(IPCallContactUI paramIPCallContactUI) {}
   
-  public final void aog()
+  public final void aLf()
   {
-    IPCallContactUI.f(this.luU).sendEmptyMessage(1);
+    AppMethodBeat.i(22081);
+    IPCallContactUI.f(this.nSm).sendEmptyMessage(1);
+    AppMethodBeat.o(22081);
   }
 }
 

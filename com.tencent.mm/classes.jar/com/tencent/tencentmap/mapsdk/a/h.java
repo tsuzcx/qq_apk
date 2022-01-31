@@ -1,42 +1,43 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.Arrays;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class h
 {
-  public static final double a = Double.longBitsToDouble(4368491638549381120L);
-  public static final double b = Double.longBitsToDouble(4503599627370496L);
-  private static final long c = Double.doubleToRawLongBits(0.0D);
-  private static final long d = Double.doubleToRawLongBits(0.0D);
-  private static final int e = Float.floatToRawIntBits(0.0F);
-  private static final int f = Float.floatToRawIntBits(0.0F);
+  private static Boolean a;
   
-  public static int a(Object[] paramArrayOfObject)
+  static
   {
-    return Arrays.hashCode(paramArrayOfObject);
+    AppMethodBeat.i(101149);
+    a = Boolean.FALSE;
+    AppMethodBeat.o(101149);
   }
   
-  public static String a(String paramString, Object paramObject)
+  public static void a(String paramString)
   {
-    return paramString + "=" + String.valueOf(paramObject);
+    AppMethodBeat.i(150433);
+    a(null, paramString, 'e');
+    AppMethodBeat.o(150433);
   }
   
-  public static String a(String... paramVarArgs)
+  public static void a(String paramString1, String paramString2)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int k = paramVarArgs.length;
-    int j = 0;
-    int i = 0;
-    while (j < k)
+    AppMethodBeat.i(150432);
+    a(paramString1, paramString2, 'v');
+    AppMethodBeat.o(150432);
+  }
+  
+  private static void a(String paramString1, String paramString2, char paramChar)
+  {
+    AppMethodBeat.i(150434);
+    if (!a.booleanValue())
     {
-      localStringBuilder.append(paramVarArgs[j]);
-      if (i != paramVarArgs.length - 1) {
-        localStringBuilder.append(",");
-      }
-      j += 1;
-      i += 1;
+      AppMethodBeat.o(150434);
+      return;
     }
-    return localStringBuilder.toString();
+    TextUtils.isEmpty(paramString1);
+    AppMethodBeat.o(150434);
   }
 }
 

@@ -1,337 +1,128 @@
 package com.tencent.ttpic.util;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetrics;
-import android.graphics.Rect;
 import android.graphics.Typeface;
-import android.text.TextPaint;
+import android.os.AsyncTask;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BitmapUtils;
 import com.tencent.ttpic.model.TextWMElement;
-import com.tencent.ttpic.model.WMElement;
-import com.tencent.util.g;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Executor;
 
 public class WMTextDrawer
 {
-  private static final String TAG = WMTextDrawer.class.getSimpleName();
+  protected static final String INT_D = "%d";
+  private static final String TAG;
+  private static Map<String, Typeface> typefaceCache;
+  private WMTextDrawer.AsyncDrawRunnable asyncDrawRunnable;
+  private boolean isAsyncDrawFinished = true;
+  public String lastDrawText = "";
   
-  private void adjustTextSize(TextWMElement paramTextWMElement, Paint paramPaint, String paramString, boolean paramBoolean)
+  static
   {
-    float f1 = 0.95F;
-    if (!paramBoolean)
-    {
-      m = paramTextWMElement.width / paramString.length();
-      paramPaint.setTextSize(m);
-      float f5 = getTextWidth(paramPaint, paramString, false);
-      float f4 = getTextHeight(paramPaint, paramString, false);
-      i = paramTextWMElement.width - (paramString.length() - 1) * paramTextWMElement.kern;
-      int n = paramTextWMElement.height;
-      j = i;
-      f2 = f4;
-      f3 = f5;
-      k = m;
-      if (f5 < i)
-      {
-        j = i;
-        f2 = f4;
-        f3 = f5;
-        k = m;
-        if (f4 < n)
-        {
-          f2 = f5;
-          while ((f2 < i) && (f4 < n))
-          {
-            j = m + 2;
-            paramPaint.setTextSize(j);
-            f3 = getTextWidth(paramPaint, paramString, false);
-            f5 = getTextHeight(paramPaint, paramString, false);
-            f4 = f5;
-            f2 = f3;
-            m = j;
-            if ("HYHeiLiZhiTiJ".equals(paramTextWMElement.fontName))
-            {
-              paramTextWMElement.kern *= j / 141;
-              i = paramTextWMElement.width - (paramString.length() - 1) * paramTextWMElement.kern;
-              f4 = f5;
-              f2 = f3;
-              m = j;
-            }
-          }
-          f2 = m - 2;
-          if (paramTextWMElement.fontItalics) {}
-          for (;;)
-          {
-            paramPaint.setTextSize(f1 * f2);
-            return;
-            f1 = 1.0F;
-          }
-        }
-      }
-      while ((f3 > j) || (f2 > n))
-      {
-        i = k - 2;
-        paramPaint.setTextSize(i);
-        f4 = getTextWidth(paramPaint, paramString, false);
-        f5 = getTextHeight(paramPaint, paramString, false);
-        f2 = f5;
-        f3 = f4;
-        k = i;
-        if ("HYHeiLiZhiTiJ".equals(paramTextWMElement.fontName))
-        {
-          paramTextWMElement.kern *= i / 141;
-          j = paramTextWMElement.width - (paramString.length() - 1) * paramTextWMElement.kern;
-          f2 = f5;
-          f3 = f4;
-          k = i;
-        }
-      }
-      f2 = k;
-      if (paramTextWMElement.fontItalics) {}
-      for (;;)
-      {
-        paramPaint.setTextSize(f1 * f2);
-        return;
-        f1 = 1.0F;
-      }
-    }
-    Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-    float f2 = localFontMetrics.descent - localFontMetrics.ascent;
-    int i = paramTextWMElement.height / paramString.length();
-    paramPaint.setTextSize(i);
-    int k = paramTextWMElement.width - (paramString.length() - 1) * paramTextWMElement.kern;
-    int m = paramTextWMElement.height;
-    int j = i;
-    float f3 = f2;
-    if (f2 < k)
-    {
-      j = i;
-      f3 = f2;
-      if (paramString.length() * f2 < m)
-      {
-        while ((f2 < k) && (f2 * paramString.length() < m))
-        {
-          i += 2;
-          paramPaint.setTextSize(i);
-          localFontMetrics = paramPaint.getFontMetrics();
-          f2 = localFontMetrics.bottom - localFontMetrics.top;
-        }
-        f2 = i - 2;
-        if (paramTextWMElement.fontItalics) {}
-        for (;;)
-        {
-          paramPaint.setTextSize(f1 * f2);
-          return;
-          f1 = 1.0F;
-        }
-      }
-    }
-    while ((f3 > k) || (f3 * paramString.length() > m))
-    {
-      j -= 2;
-      paramPaint.setTextSize(j);
-      localFontMetrics = paramPaint.getFontMetrics();
-      f3 = localFontMetrics.bottom - localFontMetrics.top;
-    }
-    f2 = j;
-    if (paramTextWMElement.fontItalics) {}
-    for (;;)
-    {
-      paramPaint.setTextSize(f1 * f2);
-      return;
-      f1 = 1.0F;
-    }
+    AppMethodBeat.i(84290);
+    TAG = WMTextDrawer.class.getSimpleName();
+    typefaceCache = new HashMap();
+    AppMethodBeat.o(84290);
   }
   
-  private void drawHorizontalText(TextWMElement paramTextWMElement, Canvas paramCanvas, String paramString)
+  private void drawHorizontalText(TextWMElement paramTextWMElement, Canvas paramCanvas, int paramInt1, int paramInt2, String paramString)
   {
-    new WMTextDrawer.TextHorizontalLayout(this, paramString, getStyledPaint(paramTextWMElement, paramString, false), paramTextWMElement).draw(paramCanvas);
+    AppMethodBeat.i(84283);
+    new WMTextDrawer.TextHorizontalLayout(this, paramTextWMElement, paramInt1, paramInt2, paramString).draw(paramCanvas);
+    AppMethodBeat.o(84283);
   }
   
-  private void drawNormalVerticalText(TextWMElement paramTextWMElement, Canvas paramCanvas, String paramString)
+  private void drawNormalVerticalText(TextWMElement paramTextWMElement, Canvas paramCanvas, int paramInt1, int paramInt2, String paramString)
   {
-    new WMTextDrawer.TextVerticalLayout(this, paramString, getStyledPaint(paramTextWMElement, paramString, true), paramTextWMElement).draw(paramCanvas);
+    AppMethodBeat.i(84285);
+    new WMTextDrawer.TextVerticalLayout(this, paramTextWMElement, paramInt1, paramInt2, paramString).draw(paramCanvas);
+    AppMethodBeat.o(84285);
   }
   
   private void drawRotatedVerticalText(TextWMElement paramTextWMElement, String paramString)
   {
-    swapWidthHeight(paramTextWMElement);
-    Bitmap localBitmap = Bitmap.createBitmap(paramTextWMElement.width, paramTextWMElement.height, Bitmap.Config.ARGB_8888);
-    drawHorizontalText(paramTextWMElement, new Canvas(localBitmap), paramString);
-    swapWidthHeight(paramTextWMElement);
-    if ((paramTextWMElement.bitmap != null) && (!paramTextWMElement.bitmap.isRecycled())) {
-      paramTextWMElement.bitmap.recycle();
+    AppMethodBeat.i(84286);
+    Bitmap localBitmap = Bitmap.createBitmap(paramTextWMElement.height, paramTextWMElement.width, Bitmap.Config.ARGB_8888);
+    drawHorizontalText(paramTextWMElement, new Canvas(localBitmap), localBitmap.getWidth(), localBitmap.getHeight(), paramString);
+    if (BitmapUtils.isLegal(paramTextWMElement.getIdleBitmap())) {
+      paramTextWMElement.getIdleBitmap().recycle();
     }
-    paramTextWMElement.bitmap = rotateBitmap(localBitmap, paramTextWMElement.rotate);
+    paramTextWMElement.setIdleBitmap(rotateBitmap(localBitmap, paramTextWMElement.rotate));
+    AppMethodBeat.o(84286);
   }
   
-  private void drawVerticalText(TextWMElement paramTextWMElement, Canvas paramCanvas, String paramString)
+  private void drawVerticalText(TextWMElement paramTextWMElement, Canvas paramCanvas, int paramInt1, int paramInt2, String paramString)
   {
+    AppMethodBeat.i(84284);
     if ((paramTextWMElement.rotate == 90) || (paramTextWMElement.rotate == -90))
     {
       drawRotatedVerticalText(paramTextWMElement, paramString);
+      AppMethodBeat.o(84284);
       return;
     }
-    drawNormalVerticalText(paramTextWMElement, paramCanvas, paramString);
-  }
-  
-  private TextPaint getStyledPaint(TextWMElement paramTextWMElement, String paramString, boolean paramBoolean)
-  {
-    TextPaint localTextPaint = new TextPaint();
-    localTextPaint.setAntiAlias(true);
-    if (!TextUtils.isEmpty(paramTextWMElement.fontName)) {}
-    try
-    {
-      if (paramTextWMElement.fontName.equals("sans_serif")) {
-        localTextPaint.setTypeface(Typeface.create(Typeface.SANS_SERIF, 0));
-      }
-      for (;;)
-      {
-        if ((paramTextWMElement.fontSize <= 0.0F) || (paramTextWMElement.fontFit != 0)) {
-          break label271;
-        }
-        localTextPaint.setTextSize(paramTextWMElement.fontSize);
-        localTextPaint.setFakeBoldText(paramTextWMElement.fontBold);
-        if (!paramTextWMElement.fontItalics) {
-          break label283;
-        }
-        f = -0.2F;
-        localTextPaint.setTextSkewX(f);
-        if (paramTextWMElement.shadowSize > 0.0F) {
-          localTextPaint.setShadowLayer(paramTextWMElement.shadowSize, paramTextWMElement.shadowDx, paramTextWMElement.shadowDy, Color.parseColor(paramTextWMElement.shadowColor));
-        }
-        localTextPaint.setColor(Color.parseColor(paramTextWMElement.color));
-        return localTextPaint;
-        if (!paramTextWMElement.fontName.equals("serif")) {
-          break;
-        }
-        localTextPaint.setTypeface(Typeface.create(Typeface.SERIF, 0));
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        float f;
-        g.i(TAG, localException.getMessage());
-        continue;
-        if (paramTextWMElement.fontName.equals("monospace"))
-        {
-          localTextPaint.setTypeface(Typeface.create(Typeface.MONOSPACE, 0));
-        }
-        else
-        {
-          String str = "fonts/" + paramTextWMElement.fontName + ".ttf";
-          localTextPaint.setTypeface(Typeface.createFromAsset(VideoGlobalContext.getContext().getAssets(), str));
-          continue;
-          label271:
-          adjustTextSize(paramTextWMElement, localTextPaint, paramString, paramBoolean);
-          continue;
-          label283:
-          f = 0.0F;
-        }
-      }
-    }
-  }
-  
-  private float getTextHeight(Paint paramPaint, String paramString, boolean paramBoolean)
-  {
-    Rect localRect = new Rect();
-    paramPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-    if (!paramBoolean) {
-      return localRect.height() * 1.1F;
-    }
-    int i = paramString.length();
-    return localRect.height() * i;
-  }
-  
-  private float getTextWidth(Paint paramPaint, String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    int i = 0;
-    float f2 = 0.0F;
-    float f1 = 0.0F;
-    if (!paramBoolean)
-    {
-      arrayOfFloat = new float[paramString.length()];
-      paramPaint.getTextWidths(paramString, arrayOfFloat);
-      for (;;)
-      {
-        f2 = f1;
-        if (i >= paramString.length()) {
-          break;
-        }
-        f1 += arrayOfFloat[i];
-        i += 1;
-      }
-    }
-    float[] arrayOfFloat = new float[paramString.length()];
-    paramPaint.getTextWidths(paramString, arrayOfFloat);
-    f1 = f2;
-    i = j;
-    for (;;)
-    {
-      f2 = f1;
-      if (i >= paramString.length()) {
-        break;
-      }
-      f2 = f1;
-      if (arrayOfFloat[i] > f1) {
-        f2 = arrayOfFloat[i];
-      }
-      i += 1;
-      f1 = f2;
-    }
-    return f2;
+    drawNormalVerticalText(paramTextWMElement, paramCanvas, paramInt1, paramInt2, paramString);
+    AppMethodBeat.o(84284);
   }
   
   private Bitmap rotateBitmap(Bitmap paramBitmap, float paramFloat)
   {
-    Object localObject;
-    if (paramBitmap == null) {
-      localObject = null;
-    }
-    Bitmap localBitmap;
-    do
+    AppMethodBeat.i(84287);
+    if (paramBitmap == null)
     {
+      AppMethodBeat.o(84287);
+      return null;
+    }
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    Object localObject = new Matrix();
+    ((Matrix)localObject).setRotate(paramFloat);
+    localObject = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, (Matrix)localObject, false);
+    if (localObject.equals(paramBitmap))
+    {
+      AppMethodBeat.o(84287);
       return localObject;
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      localObject = new Matrix();
-      ((Matrix)localObject).setRotate(paramFloat);
-      localBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, i, j, (Matrix)localObject, false);
-      localObject = localBitmap;
-    } while (localBitmap.equals(paramBitmap));
+    }
     paramBitmap.recycle();
-    return localBitmap;
+    AppMethodBeat.o(84287);
+    return localObject;
   }
   
-  private void swapWidthHeight(WMElement paramWMElement)
+  public void cancelAsyncDrawTask()
   {
-    int i = paramWMElement.width;
-    paramWMElement.width = paramWMElement.height;
-    paramWMElement.height = i;
+    if ((!this.isAsyncDrawFinished) && (this.asyncDrawRunnable != null))
+    {
+      this.asyncDrawRunnable.isTaskCanceled = true;
+      this.isAsyncDrawFinished = true;
+    }
   }
   
-  public void drawTextToBitmap(TextWMElement paramTextWMElement, String paramString)
+  public void drawTextToBitmap(TextWMElement paramTextWMElement, String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramTextWMElement.bitmap == null) || (paramTextWMElement.bitmap.isRecycled()) || (paramString == null)) {}
-    do
+    AppMethodBeat.i(84282);
+    if ((paramString != null) && (!TextUtils.isEmpty(paramString))) {
+      this.lastDrawText = paramString;
+    }
+    this.isAsyncDrawFinished = false;
+    this.asyncDrawRunnable = new WMTextDrawer.1(this, paramTextWMElement, paramString, paramBoolean1);
+    if (paramBoolean2)
     {
-      return;
-      paramTextWMElement.bitmap.eraseColor(0);
-    } while (paramString.length() == 0);
-    Canvas localCanvas = new Canvas(paramTextWMElement.bitmap);
-    if (paramTextWMElement.vertical == 0)
-    {
-      drawHorizontalText(paramTextWMElement, localCanvas, paramString);
+      this.asyncDrawRunnable.run();
+      AppMethodBeat.o(84282);
       return;
     }
-    drawVerticalText(paramTextWMElement, localCanvas, paramString);
+    AsyncTask.SERIAL_EXECUTOR.execute(this.asyncDrawRunnable);
+    AppMethodBeat.o(84282);
+  }
+  
+  public boolean isAsyncDrawFinished()
+  {
+    return this.isAsyncDrawFinished;
   }
 }
 

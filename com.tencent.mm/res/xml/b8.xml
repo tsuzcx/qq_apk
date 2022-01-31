@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:persistent="false" android:title="@string/axs" android:key="contact_info_subscribe_bizinfo" android:layout="@layout/ab8" />
-    <Preference android:title="@string/arm" android:layout="@layout/p7" />
+    <CheckBoxPreference android:title="@string/dx9" android:key="contact_is_mute" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/b3j" android:key="contact_info_subscribe_bizinfo" android:layout="@layout/afi" />
+    <Preference android:title="@string/aws" android:layout="@layout/rl" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:persistent="false" android:title="@string/au1" android:key="contact_info_locate" android:layout="@layout/ab8" />
-    <Preference android:title="@string/axt" android:key="contact_info_template_recv" android:layout="@layout/ab8" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/azb" android:key="contact_info_locate" android:layout="@layout/afi" />
+    <Preference android:title="@string/b3k" android:key="contact_info_template_recv" android:layout="@layout/afi" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/as8" android:key="contact_info_expose_btn" android:layout="@layout/ab8" />
+    <Preference android:title="@string/axg" android:key="contact_info_expose_btn" android:layout="@layout/afi" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/aqf" android:key="contact_info_add_shortcut_btn" android:layout="@layout/ab8" />
-    <Preference android:title="@string/aqw" android:key="contact_info_clear_msg" android:layout="@layout/ab8" />
+    <Preference android:title="@string/avl" android:key="contact_info_add_shortcut_btn" android:layout="@layout/afi" />
+    <Preference android:title="@string/aw2" android:key="contact_info_clear_msg" android:layout="@layout/afi" />
 </PreferenceScreen>

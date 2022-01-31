@@ -1,5 +1,6 @@
 package com.eclipsesource.v8;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 
 class NodeJS$2
@@ -9,6 +10,7 @@ class NodeJS$2
   
   public Object invoke(V8Object paramV8Object, V8Array paramV8Array)
   {
+    AppMethodBeat.i(74992);
     paramV8Object = new V8Array(NodeJS.access$100(this.this$0));
     try
     {
@@ -19,6 +21,7 @@ class NodeJS$2
     finally
     {
       paramV8Object.release();
+      AppMethodBeat.o(74992);
     }
   }
 }

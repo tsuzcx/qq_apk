@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.widget.Filter;
 import android.widget.Filter.FilterResults;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,42 +14,45 @@ final class c$a
   protected final Filter.FilterResults performFiltering(CharSequence arg1)
   {
     int i = 0;
+    AppMethodBeat.i(124717);
     Filter.FilterResults localFilterResults = new Filter.FilterResults();
-    if (c.a(this.fla) == null) {}
-    synchronized (c.b(this.fla))
+    if (c.a(this.gCr) == null) {}
+    synchronized (c.b(this.gCr))
     {
-      c.a(this.fla, new ArrayList(c.c(this.fla)));
+      c.a(this.gCr, new ArrayList(c.c(this.gCr)));
       if (??? != null) {
         if (???.length() != 0) {
-          break label132;
+          break label152;
         }
       }
     }
-    synchronized (c.b(this.fla))
+    synchronized (c.b(this.gCr))
     {
-      ??? = new ArrayList(c.a(this.fla));
+      ??? = new ArrayList(c.a(this.gCr));
       localFilterResults.values = ???;
       localFilterResults.count = ((ArrayList)???).size();
+      AppMethodBeat.o(124717);
       return localFilterResults;
       ??? = finally;
+      AppMethodBeat.o(124717);
       throw ???;
     }
-    label132:
+    label152:
     ??? = ???.toString().toLowerCase();
     String str1 = "";
     Object localObject3;
-    if ((c.d(this.fla) != null) && (c.d(this.fla).length() > 0))
+    if ((c.d(this.gCr) != null) && (c.d(this.gCr).length() > 0))
     {
-      localObject3 = ???.split(c.d(this.fla));
+      localObject3 = ???.split(c.d(this.gCr));
       if ((localObject3 != null) && (localObject3.length > 1))
       {
-        str1 = localObject3[0] + c.d(this.fla);
+        str1 = localObject3[0] + c.d(this.gCr);
         ??? = localObject3[1];
       }
     }
     for (;;)
     {
-      localObject3 = c.a(this.fla);
+      localObject3 = c.a(this.gCr);
       int j = ((ArrayList)localObject3).size();
       ArrayList localArrayList = new ArrayList(j);
       while (i < j)
@@ -61,19 +65,22 @@ final class c$a
       }
       localFilterResults.values = localArrayList;
       localFilterResults.count = localArrayList.size();
-      return localFilterResults;
+      break;
     }
   }
   
   protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    c.a(this.fla, (List)paramFilterResults.values);
+    AppMethodBeat.i(124718);
+    c.a(this.gCr, (List)paramFilterResults.values);
     if (paramFilterResults.count > 0)
     {
-      this.fla.notifyDataSetChanged();
+      this.gCr.notifyDataSetChanged();
+      AppMethodBeat.o(124718);
       return;
     }
-    this.fla.notifyDataSetInvalidated();
+    this.gCr.notifyDataSetInvalidated();
+    AppMethodBeat.o(124718);
   }
 }
 

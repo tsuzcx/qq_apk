@@ -1,65 +1,89 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.cco;
-import com.tencent.mm.protocal.c.ccp;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cpv;
+import com.tencent.mm.protocal.protobuf.cpw;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class s
   extends m
   implements k, e
 {
-  private b dmK;
-  private f dmL;
-  private boolean jMT = false;
+  private f callback;
+  private boolean mhc;
+  private b rr;
   
   public s(long paramLong, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(101);
+    this.mhc = false;
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cco();
-    ((b.a)localObject).ecI = new ccp();
+    ((b.a)localObject).fsX = new cpv();
+    ((b.a)localObject).fsY = new cpw();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/verifyface";
-    ((b.a)localObject).ecG = 797;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (cco)this.dmK.ecE.ecN;
-    ((cco)localObject).tbl = paramLong;
-    ((cco)localObject).tDR = paramString1;
-    ((cco)localObject).tDS = paramString2;
+    ((b.a)localObject).funcId = getType();
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (cpv)this.rr.fsV.fta;
+    ((cpv)localObject).wZC = paramLong;
+    ((cpv)localObject).xGH = paramString1;
+    ((cpv)localObject).xGI = paramString2;
+    AppMethodBeat.o(101);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final boolean btY()
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    return true;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final String btZ()
   {
-    paramq = (ccp)((b)paramq).ecF.ecN;
+    return null;
+  }
+  
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  {
+    AppMethodBeat.i(102);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(102);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 797;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(103);
+    paramq = (cpw)((b)paramq).fsW.fta;
     boolean bool;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      if (paramq.tDU == 0)
+      if (paramq.xGK == 0)
       {
         bool = true;
-        this.jMT = bool;
-        paramInt1 = paramq.tDU;
-        y.i("MicroMsg.NetSceneFaceVerifyFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.jMT) });
+        this.mhc = bool;
+        paramInt1 = paramq.xGK;
+        ab.i("MicroMsg.NetSceneFaceVerifyFace", "hy: is Verified: %b", new Object[] { Boolean.valueOf(this.mhc) });
       }
     }
     for (;;)
     {
-      if (this.dmL != null) {
-        this.dmL.onSceneEnd(paramInt2, paramInt1, paramString, this);
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt1, paramString, this);
       }
+      AppMethodBeat.o(103);
       return;
       bool = false;
       break;
@@ -67,28 +91,13 @@ public final class s
       if (paramq != null)
       {
         paramInt1 = paramInt3;
-        if (paramq.tDU != 0)
+        if (paramq.xGK != 0)
         {
-          y.i("MicroMsg.NetSceneFaceVerifyFace", "hy: has DetailRet, use it");
-          paramInt1 = paramq.tDU;
+          ab.i("MicroMsg.NetSceneFaceVerifyFace", "hy: has DetailRet, use it");
+          paramInt1 = paramq.xGK;
         }
       }
     }
-  }
-  
-  public final boolean aNV()
-  {
-    return true;
-  }
-  
-  public final String aNW()
-  {
-    return null;
-  }
-  
-  public final int getType()
-  {
-    return 797;
   }
 }
 

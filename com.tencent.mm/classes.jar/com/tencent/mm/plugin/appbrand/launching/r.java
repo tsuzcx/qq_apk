@@ -1,17 +1,50 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-import com.tencent.mm.plugin.appbrand.report.c;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionModuleInfo;
+import com.tencent.mm.plugin.appbrand.s.j;
+import com.tencent.mm.protocal.protobuf.ast;
+import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
-final class r
+class r
+  implements n
 {
-  static void a(r.b paramb, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  final String appId;
+  final int cxS;
+  final int hcr;
+  final String hiw;
+  final String hkj;
+  final int iln;
+  final int ilo;
+  private final AtomicInteger ilp;
+  private volatile boolean ilq;
+  final List<WxaAttributes.WxaVersionModuleInfo> moduleList;
+  
+  r(String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, int paramInt4, String paramString3, List<WxaAttributes.WxaVersionModuleInfo> paramList)
   {
-    int i = c.vY(paramString);
-    y.d("MicroMsg.AppBrand.LaunchStepCostReporter", "report %s | %s | %d | %d | %d", new Object[] { paramb.name(), paramString, Long.valueOf(paramLong), Integer.valueOf(i), Integer.valueOf(0) });
-    h.nFQ.f(13886, new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2 + 1), Integer.valueOf(paramb.gbI), "", "", Long.valueOf(paramLong), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(0) });
+    AppMethodBeat.i(131836);
+    this.ilp = new AtomicInteger(0);
+    this.ilq = false;
+    this.appId = paramString1;
+    this.hcr = paramInt1;
+    this.hiw = paramString2;
+    this.cxS = paramInt2;
+    this.iln = paramInt3;
+    this.ilo = paramInt4;
+    this.hkj = paramString3;
+    this.moduleList = paramList;
+    AppMethodBeat.o(131836);
   }
+  
+  public void aGL() {}
+  
+  public void aGQ() {}
+  
+  public void onDownloadProgress(int paramInt) {}
 }
 
 

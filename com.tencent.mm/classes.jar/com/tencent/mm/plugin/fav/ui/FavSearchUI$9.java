@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.a.c;
 import com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView;
 import com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView.a;
@@ -17,37 +18,51 @@ final class FavSearchUI$9
     super(paramContext);
   }
   
-  protected final void CW(String paramString)
+  public final void NY(String paramString)
   {
-    FavSearchActionView localFavSearchActionView = FavSearchUI.b(this.kcM);
-    localFavSearchActionView.kjD.add(paramString);
-    if (localFavSearchActionView.kdq == null) {}
-    do
+    AppMethodBeat.i(74076);
+    FavSearchActionView localFavSearchActionView = FavSearchUI.b(this.mxx);
+    localFavSearchActionView.mEi.add(paramString);
+    if (localFavSearchActionView.mya == null)
     {
+      AppMethodBeat.o(74076);
       return;
-      localFavSearchActionView.kdq.setEditHint("");
-      localFavSearchActionView.kdq.bH(paramString, true);
-    } while (localFavSearchActionView.kjF == null);
-    localFavSearchActionView.Dd(localFavSearchActionView.kdq.getEditText());
-    localFavSearchActionView.kjF.a(localFavSearchActionView.keI, localFavSearchActionView.kjE, localFavSearchActionView.kjD, false);
-    h.nFQ.f(11126, new Object[] { Integer.valueOf(2) });
+    }
+    localFavSearchActionView.mya.setEditHint("");
+    localFavSearchActionView.mya.cj(paramString, true);
+    if (localFavSearchActionView.mEk == null)
+    {
+      AppMethodBeat.o(74076);
+      return;
+    }
+    localFavSearchActionView.Of(localFavSearchActionView.mya.getEditText());
+    localFavSearchActionView.mEk.a(localFavSearchActionView.mzr, localFavSearchActionView.mEj, localFavSearchActionView.mEi, false);
+    h.qsU.e(11126, new Object[] { Integer.valueOf(2) });
+    AppMethodBeat.o(74076);
   }
   
-  protected final void CX(String paramString)
+  public final void NZ(String paramString)
   {
-    FavSearchActionView localFavSearchActionView = FavSearchUI.b(this.kcM);
-    localFavSearchActionView.kjD.remove(paramString);
-    if (localFavSearchActionView.kdq == null) {}
-    do
+    AppMethodBeat.i(74077);
+    FavSearchActionView localFavSearchActionView = FavSearchUI.b(this.mxx);
+    localFavSearchActionView.mEi.remove(paramString);
+    if (localFavSearchActionView.mya == null)
     {
+      AppMethodBeat.o(74077);
       return;
-      if (localFavSearchActionView.kjD.isEmpty()) {
-        localFavSearchActionView.kdq.setEditHint(localFavSearchActionView.getResources().getString(n.i.app_search));
-      }
-      localFavSearchActionView.kdq.removeTag(paramString);
-    } while (localFavSearchActionView.kjF == null);
-    localFavSearchActionView.Dd(localFavSearchActionView.kdq.getEditText());
-    localFavSearchActionView.kjF.a(localFavSearchActionView.keI, localFavSearchActionView.kjE, localFavSearchActionView.kjD, true);
+    }
+    if (localFavSearchActionView.mEi.isEmpty()) {
+      localFavSearchActionView.mya.setEditHint(localFavSearchActionView.getResources().getString(2131297065));
+    }
+    localFavSearchActionView.mya.removeTag(paramString);
+    if (localFavSearchActionView.mEk == null)
+    {
+      AppMethodBeat.o(74077);
+      return;
+    }
+    localFavSearchActionView.Of(localFavSearchActionView.mya.getEditText());
+    localFavSearchActionView.mEk.a(localFavSearchActionView.mzr, localFavSearchActionView.mEj, localFavSearchActionView.mEi, true);
+    AppMethodBeat.o(74077);
   }
 }
 

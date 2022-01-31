@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.h;
@@ -13,13 +14,15 @@ final class BaseFavDetailReportUI$3
   
   public final void run()
   {
-    this.kfb.keY.jYT = (((ae)g.t(ae.class)).getFavItemInfoStorage().qZ((int)this.kfb.keY.jYG) + 1);
-    h.a(this.kfb.keY);
+    AppMethodBeat.i(74319);
+    this.mzK.mzH.mtl = (((ae)g.G(ae.class)).getFavItemInfoStorage().vU((int)this.mzK.mzH.msZ) + 1);
+    h.a(this.mzK.mzH);
+    AppMethodBeat.o(74319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.BaseFavDetailReportUI.3
  * JD-Core Version:    0.7.0.1
  */

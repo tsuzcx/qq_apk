@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements View.OnClickListener
@@ -10,15 +11,19 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    if (this.kjm.kjl == null) {
+    AppMethodBeat.i(74665);
+    if (this.mDS.mDR == null)
+    {
+      AppMethodBeat.o(74665);
       return;
     }
-    this.kjm.kjl.aRe();
+    this.mDS.mDR.bxs();
+    AppMethodBeat.o(74665);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.a.1
  * JD-Core Version:    0.7.0.1
  */

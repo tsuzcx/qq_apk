@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 public abstract interface IPCallCountryCodeScrollbar$a
 {
-  public abstract void eU(String paramString);
+  public abstract void lf(String paramString);
 }
 
 

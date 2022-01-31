@@ -7,11 +7,11 @@ import android.view.KeyEvent;
 final class MediaControllerCompat$e
   implements MediaControllerCompat.b
 {
-  private b Cq;
+  private b CZ;
   
   public MediaControllerCompat$e(MediaSessionCompat.Token paramToken)
   {
-    this.Cq = b.a.c((IBinder)paramToken.CA);
+    this.CZ = b.a.d((IBinder)paramToken.Dj);
   }
   
   public final boolean dispatchMediaButtonEvent(KeyEvent paramKeyEvent)
@@ -21,7 +21,7 @@ final class MediaControllerCompat$e
     }
     try
     {
-      this.Cq.a(paramKeyEvent);
+      this.CZ.a(paramKeyEvent);
       label25:
       return false;
     }

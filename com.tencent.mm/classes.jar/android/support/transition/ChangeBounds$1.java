@@ -8,7 +8,7 @@ import android.util.Property;
 final class ChangeBounds$1
   extends Property<Drawable, PointF>
 {
-  private Rect pD = new Rect();
+  private Rect qA = new Rect();
   
   ChangeBounds$1(Class paramClass, String paramString)
   {
@@ -17,7 +17,7 @@ final class ChangeBounds$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.transition.ChangeBounds.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,16 @@
 package com.tencent.ttpic.shader;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ShaderManager$1
   extends ThreadLocal<ShaderManager>
 {
   protected final ShaderManager initialValue()
   {
-    return new ShaderManager();
+    AppMethodBeat.i(83735);
+    ShaderManager localShaderManager = new ShaderManager();
+    AppMethodBeat.o(83735);
+    return localShaderManager;
   }
 }
 

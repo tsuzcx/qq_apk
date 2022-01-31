@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
@@ -17,26 +18,28 @@ final class a$m
     super(parami);
   }
   
-  protected final void a(j paramj)
+  public final void a(j paramj)
   {
+    AppMethodBeat.i(136685);
     super.a(paramj);
-    Object localObject1 = a.a(this.kyt);
-    Object localObject2 = this.kwT.kwY;
-    Object localObject3 = paramj.kwi.aVy();
-    localObject3 = String.format("SELECT aux_index FROM %s NOT INDEXED JOIN (SELECT docid, aux_index, timestamp FROM %s NOT INDEXED JOIN FTS5ChatRoomMembers ON (aux_index = chatroom) WHERE member=?) as temp ON (%s.rowid = temp.docid) WHERE %s MATCH '%s' ORDER BY -timestamp;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVs(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), ((com.tencent.mm.plugin.fts.c.a)localObject1).aVt(), localObject3 });
-    localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).kuE.rawQuery((String)localObject3, new String[] { localObject2 });
+    Object localObject1 = a.a(this.mUg);
+    Object localObject2 = this.mSJ.mSN;
+    Object localObject3 = paramj.mRX.bBX();
+    localObject3 = String.format("SELECT aux_index FROM %s NOT INDEXED JOIN (SELECT docid, aux_index, timestamp FROM %s NOT INDEXED JOIN FTS5ChatRoomMembers ON (aux_index = chatroom) WHERE member=?) as temp ON (%s.rowid = temp.docid) WHERE %s MATCH '%s' ORDER BY -timestamp;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBR(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), ((com.tencent.mm.plugin.fts.c.a)localObject1).bBS(), localObject3 });
+    localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject1).mQr.rawQuery((String)localObject3, new String[] { localObject2 });
     localObject2 = new HashSet();
-    paramj.kxh = new ArrayList();
+    paramj.mSW = new ArrayList();
     while (((Cursor)localObject1).moveToNext())
     {
       localObject3 = new l();
-      ((l)localObject3).kwg = ((Cursor)localObject1).getString(0);
-      if (((HashSet)localObject2).add(((l)localObject3).kwg)) {
-        paramj.kxh.add(localObject3);
+      ((l)localObject3).mRV = ((Cursor)localObject1).getString(0);
+      if (((HashSet)localObject2).add(((l)localObject3).mRV)) {
+        paramj.mSW.add(localObject3);
       }
     }
     ((Cursor)localObject1).close();
-    paramj.aYY = 0;
+    paramj.bpE = 0;
+    AppMethodBeat.o(136685);
   }
   
   public final String getName()

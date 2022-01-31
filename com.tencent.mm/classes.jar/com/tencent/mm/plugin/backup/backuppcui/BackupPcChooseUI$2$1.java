@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.backuppcui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.backuppcmodel.a;
 import com.tencent.mm.plugin.backup.backuppcmodel.b;
 import com.tencent.mm.plugin.backup.backuppcmodel.c;
@@ -16,32 +17,34 @@ final class BackupPcChooseUI$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    b.auw().auA().E(this.hLi);
-    b.auw().aux().nB(2);
-    b.auw().atn().hFu = 12;
-    b.auw().auy().F(this.hLj);
-    b.auw().auy().cH(this.hLi.size());
-    h.nFQ.a(400L, 8L, 1L, false);
-    h.nFQ.f(13735, new Object[] { Integer.valueOf(10), Integer.valueOf(b.auw().aux().hKD) });
-    if ((BackupPcChooseUI.access$100() == 1) && (BackupPcChooseUI.auH() == 1))
+    AppMethodBeat.i(17574);
+    b.aTX().aUb().F(this.jEL);
+    b.aTX().aTY().rq(2);
+    b.aTX().aSL().jyN = 12;
+    b.aTX().aTZ().G(this.jEM);
+    b.aTX().aTZ().hJ(this.jEL.size());
+    h.qsU.idkeyStat(400L, 8L, 1L, false);
+    h.qsU.e(13735, new Object[] { Integer.valueOf(10), Integer.valueOf(b.aTX().aTY().jEg) });
+    if ((BackupPcChooseUI.access$100() == 1) && (BackupPcChooseUI.access$400() == 1))
     {
-      h.nFQ.a(400L, 32L, 1L, false);
-      h.nFQ.a(400L, 35L, 1L, false);
-      h.nFQ.f(13735, new Object[] { Integer.valueOf(13), Integer.valueOf(b.auw().aux().hKD) });
+      h.qsU.idkeyStat(400L, 32L, 1L, false);
+      h.qsU.idkeyStat(400L, 35L, 1L, false);
+      h.qsU.e(13735, new Object[] { Integer.valueOf(13), Integer.valueOf(b.aTX().aTY().jEg) });
     }
     for (;;)
     {
-      this.hLk.hLh.finish();
+      this.jEN.jEK.finish();
+      AppMethodBeat.o(17574);
       return;
       if (BackupPcChooseUI.access$100() == 1)
       {
-        h.nFQ.a(400L, 32L, 1L, false);
-        h.nFQ.f(13735, new Object[] { Integer.valueOf(11), Integer.valueOf(b.auw().aux().hKD) });
+        h.qsU.idkeyStat(400L, 32L, 1L, false);
+        h.qsU.e(13735, new Object[] { Integer.valueOf(11), Integer.valueOf(b.aTX().aTY().jEg) });
       }
-      else if (BackupPcChooseUI.auH() == 1)
+      else if (BackupPcChooseUI.access$400() == 1)
       {
-        h.nFQ.a(400L, 35L, 1L, false);
-        h.nFQ.f(13735, new Object[] { Integer.valueOf(12), Integer.valueOf(b.auw().aux().hKD) });
+        h.qsU.idkeyStat(400L, 35L, 1L, false);
+        h.qsU.e(13735, new Object[] { Integer.valueOf(12), Integer.valueOf(b.aTX().aTY().jEg) });
       }
     }
   }

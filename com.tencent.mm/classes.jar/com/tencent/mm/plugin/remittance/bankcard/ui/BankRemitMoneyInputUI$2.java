@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BankRemitMoneyInputUI$2
   implements Runnable
@@ -9,12 +10,14 @@ final class BankRemitMoneyInputUI$2
   
   public final void run()
   {
-    BankRemitMoneyInputUI.g(this.nxh).scrollBy(0, this.nxi);
+    AppMethodBeat.i(44631);
+    BankRemitMoneyInputUI.f(this.qij).scrollBy(0, this.val$scrollDistance);
+    AppMethodBeat.o(44631);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitMoneyInputUI.2
  * JD-Core Version:    0.7.0.1
  */

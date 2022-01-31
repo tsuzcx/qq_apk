@@ -2,28 +2,32 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.a.rc;
-import com.tencent.mm.plugin.wallet_core.model.Orders.ShowInfo;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Set;
 
 final class WalletOrderInfoNewUI$2
   implements View.OnClickListener
 {
-  WalletOrderInfoNewUI$2(WalletOrderInfoNewUI paramWalletOrderInfoNewUI, Orders.ShowInfo paramShowInfo) {}
+  WalletOrderInfoNewUI$2(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletOrderInfoNewUI", "onClick jump tinyApp, linkWeApp:%s, linkAddr:%s", new Object[] { this.qEs.qxU, this.qEs.qxV });
-    paramView = new rc();
-    paramView.caq.userName = this.qEs.qxU;
-    paramView.caq.cas = bk.aM(this.qEs.qxV, "");
-    paramView.caq.scene = 1060;
-    paramView.caq.bFv = WalletOrderInfoNewUI.l(this.qEr);
-    paramView.caq.cat = 0;
-    paramView.caq.context = this.qEr;
-    a.udP.m(paramView);
+    AppMethodBeat.i(47427);
+    if (!bo.isNullOrNil(WalletOrderInfoNewUI.n(this.ury)))
+    {
+      if (this.ury.uqP.contains(WalletOrderInfoNewUI.n(this.ury)))
+      {
+        this.ury.uqP.remove(WalletOrderInfoNewUI.n(this.ury));
+        WalletOrderInfoNewUI.o(this.ury).setChecked(false);
+        AppMethodBeat.o(47427);
+        return;
+      }
+      this.ury.uqP.add(WalletOrderInfoNewUI.n(this.ury));
+      WalletOrderInfoNewUI.o(this.ury).setChecked(true);
+    }
+    AppMethodBeat.o(47427);
   }
 }
 

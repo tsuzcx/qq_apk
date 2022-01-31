@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.sns;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsLuckyMoneyFreePwdSetting$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SnsLuckyMoneyFreePwdSetting$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.lTw.finish();
+    AppMethodBeat.i(42497);
+    this.oqD.finish();
+    AppMethodBeat.o(42497);
     return false;
   }
 }

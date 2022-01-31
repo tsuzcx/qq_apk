@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:title="@string/e0q" />
-    <CheckBoxPreference android1:contentDescription="@string/ec_" android:title="@string/ec_" android:icon="@raw/find_more_friend_photograph_icon" android:key="settings_sns_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/boq" android:title="@string/boq" android:icon="@raw/find_more_friend_scan" android:key="settings_scan_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/e93" android:title="@string/e93" android:icon="@raw/find_more_friend_shake" android:key="settings_shake_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/box" android:title="@string/box" android:icon="@raw/find_more_friend_look" android:key="settings_look_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/bp1" android:title="@string/bp1" android:icon="@raw/find_more_friend_search" android:key="settings_search_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/cyh" android:title="@string/cyh" android:icon="@raw/find_more_friend_near_icon" android:key="settings_nearby_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/a8c" android:title="@string/a8c" android:icon="@raw/find_more_friend_bottle" android:key="settings_bottle_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/bp2" android:title="@string/bp2" android:icon="@raw/jd_entrance_icon" android:key="settings_shopping_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/c24" android:title="@string/c24" android:icon="@raw/userguide_gamecenter_icon" android:key="settings_game_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/h6" android:title="@string/h6" android:icon="@drawable/zq" android:key="settings_miniprogram_switch" android:defaultValue="false" />
-    <CheckBoxPreference android1:contentDescription="@string/cb6" android:title="@string/cb6" android:icon="@raw/find_more_friend_ipcall" android:key="settings_wechatout_switch" android:defaultValue="false" />
-    <Preference android:title="@string/e0u" android:key="settings_switch_bottom_tip" android:layout="@layout/acq" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <CheckBoxPreference android:title="@string/egx" android:key="settings_voice_play_mode" android:defaultValue="false" />
+    <CheckBoxPreference android:title="@string/e_u" android:key="settings_enter_button_send" android:defaultValue="false" />
+    <Preference android:title="@string/e_b" android:key="settings_chatting_bg" android:layout="@layout/afi" />
+    <Preference android:title="@string/e_q" android:key="settings_emoji_manager" android:layout="@layout/afi" />
+    <PreferenceTitleCategory android:title="@string/e_8" />
+    <Preference android:title="@string/a2c" android:key="settings_bak_chat" android:layout="@layout/afi" />
+    <Preference android:title="@string/edz" android:key="settings_reset" android:layout="@layout/afi" />
+    <Preference android:title="@string/b60" android:key="settings_recovery" android:layout="@layout/afi" />
 </PreferenceScreen>

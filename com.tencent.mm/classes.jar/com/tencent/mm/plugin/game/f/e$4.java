@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.game.f;
 
 import android.graphics.Bitmap;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class e$4
   extends e.b
@@ -13,20 +14,22 @@ final class e$4
   
   public final void a(View paramView, Bitmap paramBitmap)
   {
-    y.d("MicroMsg.GameImageUtil", "getBitmapWithWH, onFinish");
+    AppMethodBeat.i(112332);
+    ab.d("MicroMsg.GameImageUtil", "getBitmapWithWH, onFinish");
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      Bitmap localBitmap = e.b(paramBitmap, this.aUo, this.aUp);
-      y.d("MicroMsg.GameImageUtil", "getBitmapWithWH, resizeBitmap end");
+      Bitmap localBitmap = e.c(paramBitmap, this.val$width, this.val$height);
+      ab.d("MicroMsg.GameImageUtil", "getBitmapWithWH, resizeBitmap end");
       paramBitmap = localBitmap;
-      if (this.lgx != 0) {
-        paramBitmap = c.a(localBitmap, true, this.lgx);
+      if (this.nEs != 0) {
+        paramBitmap = d.a(localBitmap, true, this.nEs);
       }
-      e.b(this.lgp).f(this.val$url, paramBitmap);
-      if (this.lgw != null) {
-        this.lgw.a(paramView, paramBitmap);
+      e.b(this.nEk).f(this.val$url, paramBitmap);
+      if (this.nEr != null) {
+        this.nEr.a(paramView, paramBitmap);
       }
     }
+    AppMethodBeat.o(112332);
   }
 }
 

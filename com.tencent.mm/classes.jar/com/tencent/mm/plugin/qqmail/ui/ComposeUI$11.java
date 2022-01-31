@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mm.plugin.qqmail.b.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
 
@@ -14,23 +14,28 @@ final class ComposeUI$11
   
   public final void onClick(View paramView)
   {
-    this.ngJ.XM();
-    ComposeUI.j(this.ngJ).getText().toString();
-    ComposeUI.D(this.ngJ);
-    if (!this.ngJ.btU()) {
-      return;
-    }
-    paramView = this.ngJ;
-    ComposeUI localComposeUI = this.ngJ;
-    this.ngJ.getString(b.j.app_tip);
-    ComposeUI.a(paramView, h.b(localComposeUI, this.ngJ.getString(b.j.plugin_qqmail_compose_send_ing), true, new ComposeUI.11.1(this)));
-    if (!ComposeUI.E(this.ngJ).bud())
+    AppMethodBeat.i(68183);
+    this.pLX.hideVKB();
+    ComposeUI.j(this.pLX).getText();
+    ComposeUI.D(this.pLX);
+    if (!this.pLX.ceg())
     {
-      ComposeUI.G(this.ngJ).setMessage(this.ngJ.getString(b.j.plugin_qqmail_attach_uploading));
-      ComposeUI.E(this.ngJ).nhG = new ComposeUI.11.2(this);
+      AppMethodBeat.o(68183);
       return;
     }
-    ComposeUI.a(this.ngJ, ComposeUI.H(this.ngJ));
+    paramView = this.pLX;
+    ComposeUI localComposeUI = this.pLX;
+    this.pLX.getString(2131297087);
+    ComposeUI.a(paramView, h.b(localComposeUI, this.pLX.getString(2131302114), true, new ComposeUI.11.1(this)));
+    if (!ComposeUI.E(this.pLX).cep())
+    {
+      ComposeUI.G(this.pLX).setMessage(this.pLX.getString(2131302111));
+      ComposeUI.E(this.pLX).pMT = new ComposeUI.11.2(this);
+      AppMethodBeat.o(68183);
+      return;
+    }
+    ComposeUI.a(this.pLX, ComposeUI.H(this.pLX));
+    AppMethodBeat.o(68183);
   }
 }
 

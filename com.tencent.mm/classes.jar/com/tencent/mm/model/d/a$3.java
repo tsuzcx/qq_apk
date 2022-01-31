@@ -1,5 +1,7 @@
 package com.tencent.mm.model.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$3
   implements Runnable
 {
@@ -7,12 +9,17 @@ final class a$3
   
   public final void run()
   {
-    a.a(this.dZq, a.Je(), this.val$log);
+    AppMethodBeat.i(16374);
+    a.a(this.fpv, a.acb(), this.val$log);
+    AppMethodBeat.o(16374);
   }
   
   public final String toString()
   {
-    return super.toString() + "|mark";
+    AppMethodBeat.i(16375);
+    String str = super.toString() + "|mark";
+    AppMethodBeat.o(16375);
+    return str;
   }
 }
 

@@ -5,249 +5,287 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
-import com.tencent.mm.plugin.l.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.emotion.q;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.emotion.SmileyInfo;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
 public final class f
 {
-  private static volatile f ulf = null;
-  public static Pattern ulq;
-  private static final Comparator<f.a> ulr = new f.1();
-  public String[] ulg = null;
-  public String[] ulh = null;
-  public String[] uli = null;
-  public String[] ulj = null;
-  public String[] ulk = null;
-  public String[] ull = null;
-  public ArrayList<q> ulm;
-  private ArrayList<f.a> uln = new ArrayList();
-  private HashMap<String, q> ulo = new HashMap();
-  private SparseArray<String> ulp = new SparseArray();
+  private static volatile f yuJ;
+  public static Pattern yuU;
+  private static final Comparator<f.a> yuV;
+  public String[] yuK;
+  public String[] yuL;
+  public String[] yuM;
+  public String[] yuN;
+  public String[] yuO;
+  public String[] yuP;
+  public ArrayList<SmileyInfo> yuQ;
+  private final List<f.a> yuR;
+  private HashMap<String, SmileyInfo> yuS;
+  private SparseArray<String> yuT;
+  
+  static
+  {
+    AppMethodBeat.i(62690);
+    yuJ = null;
+    yuV = new f.1();
+    AppMethodBeat.o(62690);
+  }
   
   private f(Context paramContext)
   {
+    AppMethodBeat.i(62676);
+    this.yuK = null;
+    this.yuL = null;
+    this.yuM = null;
+    this.yuN = null;
+    this.yuO = null;
+    this.yuP = null;
+    this.yuR = Collections.synchronizedList(new LinkedList());
+    this.yuS = new HashMap();
+    this.yuT = new SparseArray();
     long l = System.currentTimeMillis();
-    this.ulg = paramContext.getResources().getStringArray(a.a.smiley_values);
-    this.ulh = paramContext.getResources().getStringArray(a.a.smiley_values_old);
-    this.uli = paramContext.getResources().getStringArray(a.a.smiley_values_ch);
-    this.ulj = paramContext.getResources().getStringArray(a.a.smiley_values_tw);
-    this.ulk = paramContext.getResources().getStringArray(a.a.smiley_values_en);
-    this.ull = paramContext.getResources().getStringArray(a.a.smiley_values_th);
-    csJ();
-    y.d("MicroMsg.QQSmileyManager", "QQSmileyManager use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    this.yuK = paramContext.getResources().getStringArray(2131755053);
+    this.yuL = paramContext.getResources().getStringArray(2131755056);
+    this.yuM = paramContext.getResources().getStringArray(2131755054);
+    this.yuN = paramContext.getResources().getStringArray(2131755058);
+    this.yuO = paramContext.getResources().getStringArray(2131755055);
+    this.yuP = paramContext.getResources().getStringArray(2131755057);
+    dvh();
+    ab.d("MicroMsg.QQSmileyManager", "QQSmileyManager use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(62676);
+  }
+  
+  private static Drawable a(f.a parama)
+  {
+    AppMethodBeat.i(62686);
+    int i = parama.pos;
+    if (i >= 0) {}
+    for (parama = b.duW().qA(i);; parama = aqF(parama.name))
+    {
+      AppMethodBeat.o(62686);
+      return parama;
+    }
   }
   
   private boolean a(int paramInt1, SpannableString paramSpannableString, int paramInt2)
   {
-    boolean bool = false;
-    f.a locala = aau(paramSpannableString.subSequence(paramInt1, paramSpannableString.length()));
-    int i;
+    AppMethodBeat.i(62685);
+    f.a locala = aqE(paramSpannableString.subSequence(paramInt1, paramSpannableString.length()));
     if (locala != null)
     {
-      i = locala.pos;
-      if (i < 0) {
-        break label115;
+      Drawable localDrawable = a(locala);
+      if ((localDrawable != null) && (paramInt1 <= paramSpannableString.length()) && (locala.text.length() + paramInt1 <= paramSpannableString.length()))
+      {
+        b.duW().a(paramSpannableString, localDrawable, paramInt1, paramInt1 + locala.text.length(), paramInt2);
+        AppMethodBeat.o(62685);
+        return true;
       }
+      ab.i("MicroMsg.QQSmileyManager", "spanQQSmileyIcon failed. drawable not found. smiley:%s", new Object[] { locala.toString() });
     }
-    label115:
-    for (Drawable localDrawable = b.csC().mW(i); (localDrawable != null) && (paramInt1 <= paramSpannableString.length()) && (locala.text.length() + paramInt1 <= paramSpannableString.length()); localDrawable = aav(locala.name))
-    {
-      b.csC().a(paramSpannableString, localDrawable, paramInt1, paramInt1 + locala.text.length(), paramInt2);
-      bool = true;
-      return bool;
-    }
-    y.i("MicroMsg.QQSmileyManager", "spanQQSmileyIcon failed. drawable not found. smiley:%s", new Object[] { locala.toString() });
+    AppMethodBeat.o(62685);
     return false;
   }
   
   /* Error */
-  static Drawable aav(String paramString)
+  static Drawable aqF(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: new 135	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 136	java/lang/StringBuilder:<init>	()V
-    //   9: invokestatic 200	com/tencent/mm/an/a:Nz	()Ljava/lang/String;
-    //   12: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: aload_0
-    //   16: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: astore_2
-    //   23: aload_2
-    //   24: invokestatic 209	com/tencent/mm/vfs/e:bK	(Ljava/lang/String;)Z
-    //   27: ifeq +76 -> 103
-    //   30: aload_2
-    //   31: invokestatic 213	com/tencent/mm/vfs/e:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   34: astore_0
-    //   35: aload_0
-    //   36: astore_1
-    //   37: new 215	android/graphics/BitmapFactory$Options
-    //   40: dup
-    //   41: invokespecial 216	android/graphics/BitmapFactory$Options:<init>	()V
-    //   44: astore_2
-    //   45: aload_0
-    //   46: astore_1
-    //   47: aload_2
-    //   48: getstatic 222	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   51: putfield 225	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   54: aload_0
-    //   55: astore_1
-    //   56: aload_0
-    //   57: aconst_null
-    //   58: aload_2
-    //   59: invokestatic 231	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   62: astore_2
-    //   63: aload_2
-    //   64: ifnonnull +12 -> 76
-    //   67: aload_0
-    //   68: astore_1
-    //   69: ldc 117
-    //   71: ldc 233
-    //   73: invokestatic 236	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   76: aload_0
-    //   77: astore_1
-    //   78: new 238	android/graphics/drawable/BitmapDrawable
-    //   81: dup
-    //   82: invokestatic 244	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   85: invokevirtual 84	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   88: aload_2
-    //   89: invokespecial 247	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
-    //   92: astore_2
-    //   93: aload_0
-    //   94: ifnull +7 -> 101
-    //   97: aload_0
-    //   98: invokevirtual 252	java/io/InputStream:close	()V
-    //   101: aload_2
-    //   102: areturn
-    //   103: ldc 117
-    //   105: ldc 254
-    //   107: iconst_2
-    //   108: anewarray 4	java/lang/Object
-    //   111: dup
-    //   112: iconst_0
-    //   113: aload_2
-    //   114: aastore
-    //   115: dup
-    //   116: iconst_1
-    //   117: aload_0
-    //   118: aastore
-    //   119: invokestatic 257	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   122: invokestatic 244	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   125: invokevirtual 261	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
-    //   128: new 135	java/lang/StringBuilder
-    //   131: dup
-    //   132: ldc_w 263
-    //   135: invokespecial 266	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   138: aload_0
-    //   139: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   145: invokevirtual 271	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   148: astore_0
-    //   149: goto -114 -> 35
-    //   152: astore_0
-    //   153: ldc 117
-    //   155: aload_0
-    //   156: invokestatic 277	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   159: invokestatic 236	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   162: aload_2
-    //   163: areturn
-    //   164: astore_2
-    //   165: aconst_null
-    //   166: astore_0
-    //   167: aload_0
-    //   168: astore_1
-    //   169: ldc 117
-    //   171: aload_2
-    //   172: invokestatic 277	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   175: invokestatic 236	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   178: aload_0
-    //   179: ifnull +7 -> 186
-    //   182: aload_0
-    //   183: invokevirtual 252	java/io/InputStream:close	()V
-    //   186: aconst_null
-    //   187: areturn
-    //   188: astore_0
-    //   189: ldc 117
-    //   191: aload_0
-    //   192: invokestatic 277	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   195: invokestatic 236	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   198: goto -12 -> 186
-    //   201: astore_0
-    //   202: aload_1
-    //   203: ifnull +7 -> 210
-    //   206: aload_1
-    //   207: invokevirtual 252	java/io/InputStream:close	()V
-    //   210: aload_0
-    //   211: athrow
-    //   212: astore_1
-    //   213: ldc 117
-    //   215: aload_1
-    //   216: invokestatic 277	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   219: invokestatic 236	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   222: goto -12 -> 210
-    //   225: astore_0
-    //   226: goto -24 -> 202
-    //   229: astore_2
-    //   230: goto -63 -> 167
+    //   0: ldc 205
+    //   2: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 163	java/lang/StringBuilder
+    //   8: dup
+    //   9: invokespecial 164	java/lang/StringBuilder:<init>	()V
+    //   12: invokestatic 210	com/tencent/mm/ao/a:agm	()Ljava/lang/String;
+    //   15: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   18: aload_0
+    //   19: invokevirtual 213	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   25: astore_1
+    //   26: aload_1
+    //   27: invokestatic 219	com/tencent/mm/vfs/e:cN	(Ljava/lang/String;)Z
+    //   30: ifeq +81 -> 111
+    //   33: aload_1
+    //   34: invokestatic 223	com/tencent/mm/vfs/e:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   37: astore_0
+    //   38: aload_0
+    //   39: astore_1
+    //   40: new 225	android/graphics/BitmapFactory$Options
+    //   43: dup
+    //   44: invokespecial 226	android/graphics/BitmapFactory$Options:<init>	()V
+    //   47: astore_2
+    //   48: aload_0
+    //   49: astore_1
+    //   50: aload_2
+    //   51: getstatic 232	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   54: putfield 235	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   57: aload_0
+    //   58: astore_1
+    //   59: aload_0
+    //   60: aconst_null
+    //   61: aload_2
+    //   62: invokestatic 241	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   65: astore_2
+    //   66: aload_2
+    //   67: ifnonnull +12 -> 79
+    //   70: aload_0
+    //   71: astore_1
+    //   72: ldc 120
+    //   74: ldc 243
+    //   76: invokestatic 246	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: aload_0
+    //   80: astore_1
+    //   81: new 248	android/graphics/drawable/BitmapDrawable
+    //   84: dup
+    //   85: invokestatic 254	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   88: invokevirtual 102	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   91: aload_2
+    //   92: invokespecial 257	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   95: astore_2
+    //   96: aload_0
+    //   97: ifnull +7 -> 104
+    //   100: aload_0
+    //   101: invokevirtual 262	java/io/InputStream:close	()V
+    //   104: ldc 205
+    //   106: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: aload_2
+    //   110: areturn
+    //   111: ldc 120
+    //   113: ldc_w 264
+    //   116: iconst_2
+    //   117: anewarray 4	java/lang/Object
+    //   120: dup
+    //   121: iconst_0
+    //   122: aload_1
+    //   123: aastore
+    //   124: dup
+    //   125: iconst_1
+    //   126: aload_0
+    //   127: aastore
+    //   128: invokestatic 267	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   131: invokestatic 254	com/tencent/mm/sdk/platformtools/ah:getContext	()Landroid/content/Context;
+    //   134: invokevirtual 271	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   137: ldc_w 273
+    //   140: aload_0
+    //   141: invokestatic 276	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   144: invokevirtual 280	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   147: invokevirtual 285	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   150: astore_0
+    //   151: goto -113 -> 38
+    //   154: astore_0
+    //   155: ldc 120
+    //   157: aload_0
+    //   158: invokestatic 291	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   161: invokestatic 246	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   164: goto -60 -> 104
+    //   167: astore_2
+    //   168: aconst_null
+    //   169: astore_0
+    //   170: aload_0
+    //   171: astore_1
+    //   172: ldc 120
+    //   174: aload_2
+    //   175: invokestatic 291	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   178: invokestatic 246	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   181: aload_0
+    //   182: ifnull +7 -> 189
+    //   185: aload_0
+    //   186: invokevirtual 262	java/io/InputStream:close	()V
+    //   189: ldc 205
+    //   191: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   194: aconst_null
+    //   195: areturn
+    //   196: astore_0
+    //   197: ldc 120
+    //   199: aload_0
+    //   200: invokestatic 291	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   203: invokestatic 246	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   206: goto -17 -> 189
+    //   209: astore_0
+    //   210: aconst_null
+    //   211: astore_1
+    //   212: aload_1
+    //   213: ifnull +7 -> 220
+    //   216: aload_1
+    //   217: invokevirtual 262	java/io/InputStream:close	()V
+    //   220: ldc 205
+    //   222: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   225: aload_0
+    //   226: athrow
+    //   227: astore_1
+    //   228: ldc 120
+    //   230: aload_1
+    //   231: invokestatic 291	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   234: invokestatic 246	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   237: goto -17 -> 220
+    //   240: astore_0
+    //   241: goto -29 -> 212
+    //   244: astore_2
+    //   245: goto -75 -> 170
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	233	0	paramString	String
-    //   1	206	1	str	String
-    //   212	4	1	localIOException1	java.io.IOException
-    //   22	141	2	localObject	Object
-    //   164	8	2	localIOException2	java.io.IOException
-    //   229	1	2	localIOException3	java.io.IOException
+    //   0	248	0	paramString	String
+    //   25	192	1	str	String
+    //   227	4	1	localIOException1	java.io.IOException
+    //   47	63	2	localObject	Object
+    //   167	8	2	localIOException2	java.io.IOException
+    //   244	1	2	localIOException3	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   97	101	152	java/io/IOException
-    //   23	35	164	java/io/IOException
-    //   103	149	164	java/io/IOException
-    //   182	186	188	java/io/IOException
-    //   23	35	201	finally
-    //   103	149	201	finally
-    //   206	210	212	java/io/IOException
-    //   37	45	225	finally
-    //   47	54	225	finally
-    //   56	63	225	finally
-    //   69	76	225	finally
-    //   78	93	225	finally
-    //   169	178	225	finally
-    //   37	45	229	java/io/IOException
-    //   47	54	229	java/io/IOException
-    //   56	63	229	java/io/IOException
-    //   69	76	229	java/io/IOException
-    //   78	93	229	java/io/IOException
+    //   100	104	154	java/io/IOException
+    //   26	38	167	java/io/IOException
+    //   111	151	167	java/io/IOException
+    //   185	189	196	java/io/IOException
+    //   26	38	209	finally
+    //   111	151	209	finally
+    //   216	220	227	java/io/IOException
+    //   40	48	240	finally
+    //   50	57	240	finally
+    //   59	66	240	finally
+    //   72	79	240	finally
+    //   81	96	240	finally
+    //   172	181	240	finally
+    //   40	48	244	java/io/IOException
+    //   50	57	244	java/io/IOException
+    //   59	66	244	java/io/IOException
+    //   72	79	244	java/io/IOException
+    //   81	96	244	java/io/IOException
   }
   
-  public static f csI()
+  public static f dvf()
   {
-    if (ulf == null) {}
+    AppMethodBeat.i(62677);
+    if (yuJ == null) {}
     try
     {
-      if (ulf == null) {
-        ulf = new f(ae.getContext());
+      if (yuJ == null) {
+        yuJ = new f(ah.getContext());
       }
-      return ulf;
+      f localf = yuJ;
+      AppMethodBeat.o(62677);
+      return localf;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(62677);
+    }
   }
   
-  private int csJ()
+  private int dvg()
   {
     int i = 0;
     for (;;)
@@ -255,126 +293,157 @@ public final class f
       int j;
       try
       {
-        this.uln.clear();
-        if ((this.ulg != null) && (this.uli != null) && (this.ulg.length == this.uli.length))
+        AppMethodBeat.i(62678);
+        this.yuR.clear();
+        if ((this.yuK != null) && (this.yuM != null) && (this.yuK.length == this.yuM.length))
         {
-          j = this.ulg.length;
+          j = this.yuK.length;
           i = 0;
           if (i >= j) {
-            break label422;
+            break label448;
           }
-          String str6 = this.ulg[i];
-          String str7 = this.uli[i];
-          if ((this.ulh != null) && (this.ulh.length > i))
+          String str6 = this.yuK[i];
+          String str7 = this.yuM[i];
+          if ((this.yuL != null) && (this.yuL.length > i))
           {
-            String str1 = this.ulh[i];
-            if ((this.ulj == null) || (this.ulj.length <= i)) {
-              break label398;
+            String str1 = this.yuL[i];
+            if ((this.yuN == null) || (this.yuN.length <= i)) {
+              break label424;
             }
-            str3 = this.ulj[i];
-            if ((this.ulk == null) || (this.ulk.length <= i)) {
-              break label406;
+            str3 = this.yuN[i];
+            if ((this.yuO == null) || (this.yuO.length <= i)) {
+              break label432;
             }
-            str4 = this.ulk[i];
-            if ((this.ull == null) || (this.ull.length <= i)) {
-              break label414;
+            str4 = this.yuO[i];
+            if ((this.yuP == null) || (this.yuP.length <= i)) {
+              break label440;
             }
-            str5 = this.ull[i];
-            q localq = new q(str6, str1, str7, str3, str4, str5, i);
-            this.uln.add(new f.a(i, str6, ""));
-            this.uln.add(new f.a(i, str7, ""));
-            this.uln.add(new f.a(i, str1, ""));
-            this.uln.add(new f.a(i, str3, ""));
-            this.uln.add(new f.a(i, str4, ""));
-            this.uln.add(new f.a(i, str5, ""));
-            this.ulo.put(str6, localq);
-            this.ulp.put(localq.field_eggIndex, localq.field_key);
+            str5 = this.yuP[i];
+            SmileyInfo localSmileyInfo = new SmileyInfo(str6, str1, str7, str3, str4, str5, i);
+            this.yuR.add(new f.a(i, str6, ""));
+            this.yuR.add(new f.a(i, str7, ""));
+            this.yuR.add(new f.a(i, str1, ""));
+            this.yuR.add(new f.a(i, str3, ""));
+            this.yuR.add(new f.a(i, str4, ""));
+            this.yuR.add(new f.a(i, str5, ""));
+            this.yuS.put(str6, localSmileyInfo);
+            this.yuT.put(localSmileyInfo.field_eggIndex, localSmileyInfo.field_key);
             i += 1;
             continue;
-            if ((this.ulm == null) || (this.ulm.isEmpty())) {
-              Collections.sort(this.uln, ulr);
+            if ((this.yuQ == null) || (this.yuQ.isEmpty())) {
+              Collections.sort(this.yuR, yuV);
             }
+            AppMethodBeat.o(62678);
             return i;
           }
         }
         else
         {
-          y.i("MicroMsg.QQSmileyManager", "read smiley array failed.");
+          ab.i("MicroMsg.QQSmileyManager", "read smiley array failed.");
           continue;
         }
         String str2 = "";
       }
       finally {}
       continue;
-      label398:
+      label424:
       String str3 = "";
       continue;
-      label406:
+      label432:
       String str4 = "";
       continue;
-      label414:
+      label440:
       String str5 = "";
       continue;
-      label422:
+      label448:
       i = j;
     }
   }
   
-  public static void dm(List<q> paramList)
+  private static void eu(List<SmileyInfo> paramList)
   {
+    AppMethodBeat.i(62680);
     paramList = paramList.iterator();
-    q localq;
+    SmileyInfo localSmileyInfo;
     do
     {
       if (!paramList.hasNext()) {
         break;
       }
-      localq = (q)paramList.next();
-    } while (e.bK(com.tencent.mm.an.a.Nz() + localq.field_fileName));
+      localSmileyInfo = (SmileyInfo)paramList.next();
+    } while (com.tencent.mm.vfs.e.cN(com.tencent.mm.ao.a.agm() + localSmileyInfo.field_fileName));
     for (boolean bool = true;; bool = false)
     {
-      y.i("MicroMsg.QQSmileyManager", "checkFile %b", new Object[] { Boolean.valueOf(bool) });
+      ab.i("MicroMsg.QQSmileyManager", "checkFile %b", new Object[] { Boolean.valueOf(bool) });
       if (bool) {
-        ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aHl();
+        ((d)g.G(d.class)).getProvider().bkZ();
       }
+      AppMethodBeat.o(62680);
       return;
     }
   }
   
-  public final f.a aau(String paramString)
+  public final boolean aqD(String paramString)
   {
-    int i;
-    if (this.uln != null)
+    AppMethodBeat.i(62682);
+    if (aqE(paramString) != null)
     {
-      f.a locala = new f.a(0, paramString, "");
-      i = Collections.binarySearch(this.uln, locala, ulr);
-      if (i >= 0) {
-        break label80;
-      }
-      i = -i - 2;
+      AppMethodBeat.o(62682);
+      return true;
     }
-    label80:
+    AppMethodBeat.o(62682);
+    return false;
+  }
+  
+  public final f.a aqE(String paramString)
+  {
+    AppMethodBeat.i(62683);
     for (;;)
     {
-      if ((i >= 0) && (paramString.startsWith(((f.a)this.uln.get(i)).text))) {
-        return (f.a)this.uln.get(i);
+      synchronized (this.yuR)
+      {
+        f.a locala = new f.a(0, paramString, "");
+        int i = Collections.binarySearch(this.yuR, locala, yuV);
+        if (i < 0)
+        {
+          i = -i - 2;
+          if ((i >= 0) && (i < this.yuR.size()))
+          {
+            locala = (f.a)this.yuR.get(i);
+            if ((locala != null) && (paramString != null) && (paramString.startsWith(locala.text)))
+            {
+              paramString = (f.a)this.yuR.get(i);
+              AppMethodBeat.o(62683);
+              return paramString;
+            }
+          }
+          AppMethodBeat.o(62683);
+          return null;
+        }
       }
-      return null;
     }
   }
   
-  public final q aaw(String paramString)
+  public final SmileyInfo aqG(String paramString)
   {
-    if ((this.ulo != null) && (this.ulo.containsKey(paramString))) {
-      return (q)this.ulo.get(paramString);
+    AppMethodBeat.i(62688);
+    if ((this.yuS != null) && (this.yuS.containsKey(paramString)))
+    {
+      paramString = (SmileyInfo)this.yuS.get(paramString);
+      AppMethodBeat.o(62688);
+      return paramString;
     }
-    y.i("MicroMsg.QQSmileyManager", "getSmileyInfo failed. smiley map no contains key:%s", new Object[] { paramString.replace("\\", "\\\\") });
+    ab.i("MicroMsg.QQSmileyManager", "getSmileyInfo failed. smiley map no contains key:%s", new Object[] { paramString.replace("\\", "\\\\") });
+    AppMethodBeat.o(62688);
     return null;
   }
   
   public final SpannableString b(SpannableString paramSpannableString, int paramInt1, int paramInt2)
   {
-    if ((paramSpannableString == null) || (paramSpannableString.length() == 0)) {
+    AppMethodBeat.i(62684);
+    if ((paramSpannableString == null) || (paramSpannableString.length() == 0))
+    {
+      AppMethodBeat.o(62684);
       return paramSpannableString;
     }
     String str = paramSpannableString.toString();
@@ -425,85 +494,112 @@ public final class f
         }
       }
     }
+    AppMethodBeat.o(62684);
+    return paramSpannableString;
   }
   
-  public final void csK()
+  public final boolean dvh()
   {
-    y.i("MicroMsg.QQSmileyManager", "updateSmiley " + bk.csb());
-    long l = System.currentTimeMillis();
-    this.ulo.clear();
-    this.ulp.clear();
-    csJ();
-    this.ulm = ((PluginEmoji)g.t(PluginEmoji.class)).getEmojiMgr().aHh();
-    if ((this.ulm == null) || (this.ulm.isEmpty())) {
-      this.ulm = com.tencent.mm.u.b.a.a(new com.tencent.mm.vfs.b("assets:///newemoji/newemoji-config.xml"));
-    }
-    Iterator localIterator;
-    if ((this.ulm != null) && (!this.ulm.isEmpty())) {
-      localIterator = this.ulm.iterator();
-    }
-    while (localIterator.hasNext())
+    AppMethodBeat.i(62679);
+    ab.i("MicroMsg.QQSmileyManager", "checkNewEmoji");
+    ArrayList localArrayList = ((d)g.G(d.class)).getProvider().bkU();
+    if ((localArrayList == null) || (localArrayList.isEmpty()))
     {
-      q localq = (q)localIterator.next();
-      this.ulo.put(localq.field_key, localq);
-      this.ulp.put(localq.field_eggIndex, localq.field_key);
-      this.uln.add(new f.a(-1, localq.field_key, localq.field_fileName));
-      if ((bk.bl(localq.field_cnValue)) || ("null".equalsIgnoreCase(localq.field_cnValue)))
+      dvi();
+      AppMethodBeat.o(62679);
+      return true;
+    }
+    eu(localArrayList);
+    dvi();
+    AppMethodBeat.o(62679);
+    return false;
+  }
+  
+  public final void dvi()
+  {
+    long l;
+    for (;;)
+    {
+      SmileyInfo localSmileyInfo;
+      try
       {
-        this.uln.add(new f.a(-1, localq.field_key, localq.field_fileName));
-        label256:
-        if ((!bk.bl(localq.field_qqValue)) && (!"null".equalsIgnoreCase(localq.field_qqValue))) {
-          break label492;
+        AppMethodBeat.i(62681);
+        ab.i("MicroMsg.QQSmileyManager", "updateSmiley " + bo.dtY());
+        l = System.currentTimeMillis();
+        this.yuS.clear();
+        this.yuT.clear();
+        dvg();
+        this.yuQ = ((PluginEmoji)g.G(PluginEmoji.class)).getProvider().bkU();
+        if ((this.yuQ == null) || (this.yuQ.isEmpty())) {
+          this.yuQ = com.tencent.mm.emoji.e.a.a(new com.tencent.mm.vfs.b("assets:///newemoji/newemoji-config.xml"));
         }
-        this.uln.add(new f.a(-1, localq.field_key, localq.field_fileName));
-        label307:
-        if ((!bk.bl(localq.field_twValue)) && (!"null".equalsIgnoreCase(localq.field_twValue))) {
-          break label521;
+        if ((this.yuQ == null) || (this.yuQ.isEmpty())) {
+          break;
         }
-        this.uln.add(new f.a(-1, localq.field_key, localq.field_fileName));
-        label358:
-        if ((!bk.bl(localq.field_enValue)) && (!"null".equalsIgnoreCase(localq.field_enValue))) {
-          break label550;
+        Iterator localIterator = this.yuQ.iterator();
+        if (!localIterator.hasNext()) {
+          break label651;
         }
-        this.uln.add(new f.a(-1, localq.field_key, localq.field_fileName));
+        localSmileyInfo = (SmileyInfo)localIterator.next();
+        this.yuS.put(localSmileyInfo.field_key, localSmileyInfo);
+        this.yuT.put(localSmileyInfo.field_eggIndex, localSmileyInfo.field_key);
+        this.yuR.add(new f.a(-1, localSmileyInfo.field_key, localSmileyInfo.field_fileName));
+        if ((bo.isNullOrNil(localSmileyInfo.field_cnValue)) || ("null".equalsIgnoreCase(localSmileyInfo.field_cnValue)))
+        {
+          this.yuR.add(new f.a(-1, localSmileyInfo.field_key, localSmileyInfo.field_fileName));
+          if ((!bo.isNullOrNil(localSmileyInfo.field_qqValue)) && (!"null".equalsIgnoreCase(localSmileyInfo.field_qqValue))) {
+            break label519;
+          }
+          this.yuR.add(new f.a(-1, localSmileyInfo.field_key, localSmileyInfo.field_fileName));
+          if ((!bo.isNullOrNil(localSmileyInfo.field_twValue)) && (!"null".equalsIgnoreCase(localSmileyInfo.field_twValue))) {
+            break label550;
+          }
+          this.yuR.add(new f.a(-1, localSmileyInfo.field_key, localSmileyInfo.field_fileName));
+          if ((!bo.isNullOrNil(localSmileyInfo.field_enValue)) && (!"null".equalsIgnoreCase(localSmileyInfo.field_enValue))) {
+            break label581;
+          }
+          this.yuR.add(new f.a(-1, localSmileyInfo.field_key, localSmileyInfo.field_fileName));
+          if ((!bo.isNullOrNil(localSmileyInfo.field_thValue)) && (!"null".equalsIgnoreCase(localSmileyInfo.field_thValue))) {
+            break label612;
+          }
+          this.yuR.add(new f.a(-1, localSmileyInfo.field_key, localSmileyInfo.field_fileName));
+          continue;
+        }
+        this.yuR.add(new f.a(-1, localSmileyInfo.field_cnValue, localSmileyInfo.field_fileName));
       }
-      for (;;)
-      {
-        if ((!bk.bl(localq.field_thValue)) && (!"null".equalsIgnoreCase(localq.field_thValue))) {
-          break label579;
-        }
-        this.uln.add(new f.a(-1, localq.field_key, localq.field_fileName));
-        break;
-        this.uln.add(new f.a(-1, localq.field_cnValue, localq.field_fileName));
-        break label256;
-        label492:
-        this.uln.add(new f.a(-1, localq.field_qqValue, localq.field_fileName));
-        break label307;
-        label521:
-        this.uln.add(new f.a(-1, localq.field_twValue, localq.field_fileName));
-        break label358;
-        label550:
-        this.uln.add(new f.a(-1, localq.field_enValue, localq.field_fileName));
-      }
-      label579:
-      this.uln.add(new f.a(-1, localq.field_thValue, localq.field_fileName));
+      finally {}
       continue;
-      y.i("MicroMsg.QQSmileyManager", "newSmileys list is null.");
+      label519:
+      this.yuR.add(new f.a(-1, localSmileyInfo.field_qqValue, localSmileyInfo.field_fileName));
+      continue;
+      label550:
+      this.yuR.add(new f.a(-1, localSmileyInfo.field_twValue, localSmileyInfo.field_fileName));
+      continue;
+      label581:
+      this.yuR.add(new f.a(-1, localSmileyInfo.field_enValue, localSmileyInfo.field_fileName));
+      continue;
+      label612:
+      this.yuR.add(new f.a(-1, localSmileyInfo.field_thValue, localSmileyInfo.field_fileName));
     }
-    Collections.sort(this.uln, ulr);
-    y.i("MicroMsg.QQSmileyManager", "updateSmiley end use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.i("MicroMsg.QQSmileyManager", "newSmileys list is null.");
+    label651:
+    Collections.sort(this.yuR, yuV);
+    ab.i("MicroMsg.QQSmileyManager", "updateSmiley end use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(62681);
   }
   
-  public final ArrayList<String> csL()
+  public final ArrayList<String> dvj()
   {
+    AppMethodBeat.i(62689);
     ArrayList localArrayList = new ArrayList();
-    if (this.ulm != null)
+    if (this.yuQ != null)
     {
-      Iterator localIterator = this.ulm.iterator();
+      Iterator localIterator = this.yuQ.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(((q)localIterator.next()).field_key);
+        localArrayList.add(((SmileyInfo)localIterator.next()).field_key);
       }
     }
+    AppMethodBeat.o(62689);
     return localArrayList;
   }
 }

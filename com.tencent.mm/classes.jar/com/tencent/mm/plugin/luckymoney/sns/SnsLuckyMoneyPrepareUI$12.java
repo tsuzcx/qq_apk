@@ -5,8 +5,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsLuckyMoneyPrepareUI$12
   implements View.OnClickListener
@@ -15,16 +14,20 @@ final class SnsLuckyMoneyPrepareUI$12
   
   public final void onClick(View paramView)
   {
-    if ((!this.lTI.lMr.isShown()) && (!this.eYg))
+    AppMethodBeat.i(42521);
+    if ((!this.oqN.mKBLayout.isShown()) && (!this.val$isShowSysKB))
     {
-      SnsLuckyMoneyPrepareUI.k(this.lTI);
-      SnsLuckyMoneyPrepareUI.b(this.lTI, this.eYk);
-    }
-    while (!this.eYg) {
+      SnsLuckyMoneyPrepareUI.k(this.oqN);
+      SnsLuckyMoneyPrepareUI.b(this.oqN, this.val$editMode);
+      AppMethodBeat.o(42521);
       return;
     }
-    this.lTI.VH();
-    ((InputMethodManager)this.lTI.mController.uMN.getSystemService("input_method")).showSoftInput(this.eYi, 0);
+    if (this.val$isShowSysKB)
+    {
+      this.oqN.hideTenpayKB();
+      ((InputMethodManager)this.oqN.getContext().getSystemService("input_method")).showSoftInput(this.val$hintTv, 0);
+    }
+    AppMethodBeat.o(42521);
   }
 }
 

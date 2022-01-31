@@ -1,73 +1,39 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
-import android.annotation.TargetApi;
-import android.view.Choreographer;
-import android.view.Choreographer.FrameCallback;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@TargetApi(16)
 public final class d
-  implements Choreographer.FrameCallback
 {
-  boolean IL = true;
-  Choreographer brd = Choreographer.getInstance();
-  public a gWi;
-  int gWy = 0;
-  public volatile double gWz = 0.0D;
-  long mFrameStartTime = 0L;
-  public long mInterval = 200L;
-  boolean sn = false;
+  public static final int[] iAU;
+  public static final SparseArray<Integer> iAV;
   
-  public final void doFrame(long paramLong)
+  static
   {
-    double d1 = 60.0D;
-    double d2;
-    if ((this.IL) && (!this.sn))
-    {
-      paramLong /= 1000000L;
-      if (this.mFrameStartTime <= 0L) {
-        break label133;
-      }
-      long l = paramLong - this.mFrameStartTime;
-      this.gWy += 1;
-      if (l > this.mInterval)
-      {
-        d2 = this.gWy * 1000 / l;
-        if (d2 < 60.0D) {
-          break label141;
-        }
-      }
-    }
-    for (;;)
-    {
-      this.mFrameStartTime = paramLong;
-      this.gWy = 0;
-      this.gWz = d1;
-      if (this.gWi != null) {
-        this.gWi.r(d1);
-      }
-      for (;;)
-      {
-        if (this.IL) {
-          this.brd.postFrameCallback(this);
-        }
-        return;
-        label133:
-        this.mFrameStartTime = paramLong;
-      }
-      label141:
-      d1 = d2;
-    }
-  }
-  
-  public final void start()
-  {
-    this.IL = true;
-    this.brd.postFrameCallback(this);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void r(double paramDouble);
+    AppMethodBeat.i(114390);
+    iAU = new int[4];
+    iAV = new SparseArray();
+    iAU[0] = 2131296753;
+    iAU[1] = 2131296766;
+    iAU[2] = 2131296772;
+    iAU[3] = 2131296770;
+    iAV.put(101, Integer.valueOf(2131296754));
+    iAV.put(102, Integer.valueOf(2131296768));
+    iAV.put(103, Integer.valueOf(2131296769));
+    iAV.put(201, Integer.valueOf(2131296757));
+    iAV.put(202, Integer.valueOf(2131296767));
+    iAV.put(203, Integer.valueOf(2131296774));
+    iAV.put(301, Integer.valueOf(2131296764));
+    iAV.put(302, Integer.valueOf(2131296771));
+    iAV.put(303, Integer.valueOf(2131296765));
+    iAV.put(401, Integer.valueOf(2131296773));
+    iAV.put(402, Integer.valueOf(2131296776));
+    iAV.put(403, Integer.valueOf(2131296777));
+    iAV.put(404, Integer.valueOf(2131296778));
+    iAV.put(405, Integer.valueOf(2131296779));
+    iAV.put(406, Integer.valueOf(2131296780));
+    iAV.put(407, Integer.valueOf(2131296781));
+    AppMethodBeat.o(114390);
   }
 }
 

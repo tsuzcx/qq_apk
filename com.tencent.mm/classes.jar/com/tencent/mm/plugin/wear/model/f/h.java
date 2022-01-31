@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.wear.model.f;
 
-import com.tencent.mm.protocal.c.cjo;
-import com.tencent.mm.protocal.c.cjp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.s;
+import com.tencent.mm.plugin.wear.model.e.r;
+import com.tencent.mm.protocal.protobuf.cxb;
+import com.tencent.mm.protocal.protobuf.cxc;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,17 +12,17 @@ import java.util.List;
 public final class h
   extends b
 {
-  private long bIt;
-  private long ceq;
-  private String cer;
-  private List<String> ces;
+  private long cNd;
+  private String cNe;
+  private List<String> cNf;
+  private long cpO;
   
   public h(long paramLong1, long paramLong2, String paramString, List<String> paramList)
   {
-    this.bIt = paramLong1;
-    this.ceq = paramLong2;
-    this.cer = paramString;
-    this.ces = paramList;
+    this.cpO = paramLong1;
+    this.cNd = paramLong2;
+    this.cNe = paramString;
+    this.cNf = paramList;
   }
   
   public final String getName()
@@ -29,40 +32,43 @@ public final class h
   
   protected final void send()
   {
-    cjo localcjo = new cjo();
-    localcjo.tXr = this.ceq;
-    localcjo.tXq = this.bIt;
-    localcjo.tXs = this.cer;
+    AppMethodBeat.i(26446);
+    cxb localcxb = new cxb();
+    localcxb.yeJ = this.cNd;
+    localcxb.wsz = this.cpO;
+    localcxb.yeK = this.cNe;
     try
     {
-      if (this.ces != null)
+      if (this.cNf != null)
       {
-        Iterator localIterator = this.ces.iterator();
+        Iterator localIterator = this.cNf.iterator();
         while (localIterator.hasNext())
         {
           String[] arrayOfString = ((String)localIterator.next()).split("=");
-          cjp localcjp = new cjp();
-          localcjp.tXp = arrayOfString[0];
-          localcjp.hRf = arrayOfString[1];
-          if (localcjp.hRf.startsWith("wxid")) {
-            localcjp.hRf = com.tencent.mm.model.r.gV(localcjp.hRf);
+          cxc localcxc = new cxc();
+          localcxc.xlH = arrayOfString[0];
+          localcxc.jKG = arrayOfString[1];
+          if (localcxc.jKG.startsWith("wxid")) {
+            localcxc.jKG = s.nE(localcxc.jKG);
           }
-          localcjp.tXr = Long.valueOf(arrayOfString[2]).longValue();
-          localcjo.tXt.add(localcjp);
+          localcxc.yeJ = Long.valueOf(arrayOfString[2]).longValue();
+          localcxb.yeL.add(localcxc);
         }
       }
       return;
     }
     catch (Exception localException)
     {
-      while (this.ceq > 0L)
+      while (this.cNd > 0L)
       {
-        com.tencent.mm.plugin.wear.model.c.a.kX(true);
+        com.tencent.mm.plugin.wear.model.c.a.og(true);
+        AppMethodBeat.o(26446);
         return;
-        com.tencent.mm.plugin.wear.model.a.bYL();
-        com.tencent.mm.plugin.wear.model.e.r.b(20015, localException.toByteArray(), true);
+        com.tencent.mm.plugin.wear.model.a.cYy();
+        r.a(20015, localException.toByteArray(), true);
       }
-      com.tencent.mm.plugin.wear.model.c.a.kX(false);
+      com.tencent.mm.plugin.wear.model.c.a.og(false);
+      AppMethodBeat.o(26446);
     }
   }
 }

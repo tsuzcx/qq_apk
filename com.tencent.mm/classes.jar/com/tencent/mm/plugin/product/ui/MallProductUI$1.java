@@ -2,31 +2,39 @@ package com.tencent.mm.plugin.product.ui;
 
 import android.widget.Button;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallProductUI$1
   implements f.a
 {
   MallProductUI$1(MallProductUI paramMallProductUI) {}
   
-  public final void q(int paramInt1, int paramInt2, String paramString)
+  public final void w(int paramInt1, int paramInt2, String paramString)
   {
+    AppMethodBeat.i(44157);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.mVg.aZ();
-      if (MallProductUI.a(this.mVg) != null) {
-        MallProductUI.a(this.mVg).postDelayed(new MallProductUI.1.1(this), 200L);
+      this.pxl.bJ();
+      if (MallProductUI.a(this.pxl) != null)
+      {
+        MallProductUI.a(this.pxl).postDelayed(new MallProductUI.1.1(this), 200L);
+        AppMethodBeat.o(44157);
       }
-      return;
     }
-    if (paramInt2 == -10010003)
+    else
     {
-      this.mVg.vN(0);
-      MallProductUI.b(this.mVg).setVisibility(8);
-      MallProductUI.c(this.mVg).setVisibility(0);
-      MallProductUI.d(this.mVg);
-      return;
+      if (paramInt2 == -10010003)
+      {
+        this.pxl.setContentViewVisibility(0);
+        MallProductUI.b(this.pxl).setVisibility(8);
+        MallProductUI.c(this.pxl).setVisibility(0);
+        MallProductUI.d(this.pxl);
+        AppMethodBeat.o(44157);
+        return;
+      }
+      this.pxl.WW(paramString);
     }
-    this.mVg.KQ(paramString);
+    AppMethodBeat.o(44157);
   }
 }
 

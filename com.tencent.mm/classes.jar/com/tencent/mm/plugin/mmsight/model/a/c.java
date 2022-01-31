@@ -6,15 +6,15 @@ public abstract interface c
   
   public abstract int a(c.b paramb);
   
-  public abstract int au(int paramInt, String paramString);
+  public abstract void bRk();
   
-  public abstract void bjh();
-  
-  public abstract com.tencent.mm.f.b.c.a bji();
+  public abstract com.tencent.mm.audio.b.c.a bRl();
   
   public abstract void clear();
   
-  public abstract void ht(boolean paramBoolean);
+  public abstract void jn(boolean paramBoolean);
+  
+  public abstract int t(int paramInt, String paramString);
 }
 
 

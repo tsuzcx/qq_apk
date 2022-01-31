@@ -1,210 +1,169 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.graphics.Color;
-import android.os.Build.VERSION;
-import android.view.Display;
+import android.content.res.Resources;
+import android.graphics.drawable.GradientDrawable;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.appbrand.s.m;
+import com.tencent.mm.ui.statusbar.c;
+import com.tencent.mm.ui.statusbar.c.a;
 
-public enum l
+@SuppressLint({"ViewConstructor"})
+public final class l
+  extends LinearLayout
+  implements c.a
 {
-  public static void A(View paramView, int paramInt)
+  public final com.tencent.luggage.sdk.d.b bEZ;
+  private final a[] iPu;
+  private final SparseArray<b> iPw;
+  private final SparseArray<b> iPx;
+  private int iPy;
+  
+  public l(Context paramContext, com.tencent.luggage.sdk.d.b paramb)
   {
-    if ((paramView != null) && (paramView.getVisibility() != paramInt)) {
-      paramView.setVisibility(paramInt);
-    }
+    super(paramContext);
+    AppMethodBeat.i(102341);
+    this.bEZ = paramb;
+    this.iPw = new SparseArray();
+    this.iPx = new SparseArray();
+    this.iPu = new a[4];
+    setClickable(false);
+    int i = getContext().getResources().getDisplayMetrics().widthPixels;
+    int j = a.fromDPToPix(getContext(), 10);
+    int k = a.fromDPToPix(getContext(), 4);
+    paramContext = new FrameLayout.LayoutParams(i * 3 / 5, -2);
+    paramContext.gravity = 53;
+    setLayoutParams(paramContext);
+    aMs();
+    setPadding(j, j, j, j);
+    setOrientation(1);
+    paramContext = new GradientDrawable();
+    paramContext.setCornerRadius(k);
+    paramContext.setColor(-652403418);
+    setBackground(paramContext);
+    paramContext = new LinearLayout.LayoutParams(-1, -2);
+    paramb = new LinearLayout.LayoutParams(-1, 2);
+    TextView localTextView = new TextView(getContext());
+    View localView = new View(getContext());
+    localTextView.setTextColor(-1);
+    localTextView.setLayoutParams(paramContext);
+    localTextView.setTextSize(1, 14.0F);
+    localTextView.setText(getContext().getString(2131296775));
+    addView(localTextView);
+    paramb.setMargins(0, a.fromDPToPix(getContext(), 10), 0, 0);
+    localView.setLayoutParams(paramb);
+    localView.setBackgroundColor(1728053247);
+    addView(localView);
+    aMt();
+    c.aH((Activity)getContext()).a(this);
+    AppMethodBeat.o(102341);
   }
   
-  public static void a(Window paramWindow)
+  private void aMs()
   {
-    if (paramWindow == null) {}
-    while ((Build.VERSION.SDK_INT < 21) || (((paramWindow.getAttributes().flags & 0x80000000) != 0) && (paramWindow.getStatusBarColor() == 0))) {
-      return;
-    }
-    paramWindow.addFlags(-2147483648);
-    paramWindow.setStatusBarColor(0);
-  }
-  
-  public static boolean a(Window paramWindow, boolean paramBoolean)
-  {
-    if ((paramWindow == null) || (paramWindow.getDecorView() == null)) {}
-    while ((Build.VERSION.SDK_INT < 23) || ((b.zK()) && (b.zL()))) {
-      return false;
-    }
-    paramWindow = paramWindow.getDecorView();
-    int i = paramWindow.getSystemUiVisibility();
-    if (paramBoolean) {
-      i |= 0x2000;
-    }
-    for (;;)
+    AppMethodBeat.i(102342);
+    if ((getLayoutParams() != null) && ((getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
-      paramWindow.setSystemUiVisibility(i);
-      return true;
-      i &= 0xFFFFDFFF;
+      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (com.tencent.mm.plugin.appbrand.widget.b.di(getContext()) + this.iPy);
+      requestLayout();
     }
+    AppMethodBeat.o(102342);
   }
   
-  public static int[] api()
+  private void aMt()
   {
-    Display localDisplay = ((WindowManager)ae.getContext().getSystemService("window")).getDefaultDisplay();
-    return new int[] { localDisplay.getWidth(), localDisplay.getHeight() };
-  }
-  
-  private static int b(Window paramWindow, boolean paramBoolean)
-  {
-    int i = paramWindow.getDecorView().getSystemUiVisibility();
-    int j;
-    if (paramBoolean)
+    AppMethodBeat.i(102343);
+    int i = 0;
+    while (i < 4)
     {
-      j = i | 0x400 | 0x100;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j | 0x200 | 0x2;
-      }
-      j = i | 0x4;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j | 0x1000;
-      }
+      a locala = new a(getContext());
+      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.iAU[i]));
+      this.iPu[i] = locala;
+      addView(locala);
+      i += 1;
     }
-    for (;;)
+    AppMethodBeat.o(102343);
+  }
+  
+  public final void ae(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(102344);
+    m.runOnUiThread(new l.2(this, paramInt, paramString));
+    AppMethodBeat.o(102344);
+  }
+  
+  public final void cU(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(102345);
+    m.runOnUiThread(new l.3(this, paramString1, paramString2));
+    AppMethodBeat.o(102345);
+  }
+  
+  public final void pB(int paramInt)
+  {
+    AppMethodBeat.i(102346);
+    this.iPy = paramInt;
+    aMs();
+    AppMethodBeat.o(102346);
+  }
+  
+  @SuppressLint({"AppCompatCustomView"})
+  final class a
+    extends TextView
+  {
+    public a(Context paramContext)
     {
-      y.i("MicroMsg.AppBrandUIUtil", "hy: setting ui visibility: %d", new Object[] { Integer.valueOf(i) });
-      return i;
-      j = i & 0xFFFFFBFF & 0xFFFFFEFF;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 20) {
-        i = j & 0xFFFFFDFF & 0xFFFFFFFD;
-      }
-      j = i & 0xFFFFFFFB;
-      i = j;
-      if (Build.VERSION.SDK_INT >= 19) {
-        i = j & 0xFFFFEFFF;
-      }
+      super();
+      AppMethodBeat.i(102336);
+      this$1 = new LinearLayout.LayoutParams(-1, -2);
+      int i = a.fromDPToPix(getContext(), 5);
+      l.this.setMargins(0, i, 0, i);
+      setLayoutParams(l.this);
+      setTextSize(1, 12.0F);
+      setTextColor(-7171438);
+      AppMethodBeat.o(102336);
     }
   }
   
-  public static boolean b(Window paramWindow)
+  @SuppressLint({"AppCompatCustomView"})
+  final class b
+    extends TextView
   {
-    return a(paramWindow, true);
-  }
-  
-  public static boolean bW(View paramView)
-  {
-    if (Build.VERSION.SDK_INT < 24) {
-      return false;
-    }
-    if (paramView == null) {
-      return false;
-    }
-    Context localContext = paramView.getContext();
-    paramView = localContext;
-    if ((localContext instanceof ContextWrapper))
+    private String mTitle;
+    private String mValue;
+    
+    public b(Context paramContext)
     {
-      paramView = localContext;
-      if (!(localContext instanceof Activity)) {
-        paramView = ((ContextWrapper)localContext).getBaseContext();
-      }
+      super();
+      AppMethodBeat.i(102337);
+      setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+      setTextSize(1, 12.0F);
+      setTextColor(-419430401);
+      AppMethodBeat.o(102337);
     }
-    return ((paramView instanceof Activity)) && (s((Activity)paramView));
-  }
-  
-  public static int bb(String paramString, int paramInt)
-  {
-    return (int)x(paramString, Long.valueOf(paramInt).longValue());
-  }
-  
-  public static void c(Window paramWindow, boolean paramBoolean)
-  {
-    if (paramBoolean)
+    
+    private void update()
     {
-      i = b(paramWindow, true);
-      paramWindow.getDecorView().setSystemUiVisibility(i);
-      paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(new l.1(paramWindow));
-      paramWindow.addFlags(1024);
-      return;
+      AppMethodBeat.i(102338);
+      setText(String.format("%s: %s", new Object[] { this.mTitle, this.mValue }));
+      AppMethodBeat.o(102338);
     }
-    int i = b(paramWindow, false);
-    paramWindow.getDecorView().setSystemUiVisibility(i);
-    paramWindow.getDecorView().setOnSystemUiVisibilityChangeListener(null);
-    paramWindow.clearFlags(1024);
-  }
-  
-  public static boolean c(Window paramWindow)
-  {
-    if ((paramWindow == null) || (paramWindow.getDecorView() == null)) {}
-    while ((Build.VERSION.SDK_INT < 23) || ((paramWindow.getDecorView().getSystemUiVisibility() & 0x2000) == 0)) {
-      return false;
-    }
-    return true;
-  }
-  
-  public static Activity cx(Context paramContext)
-  {
-    if ((paramContext != null) && ((paramContext instanceof ContextWrapper)) && (!(paramContext instanceof Activity))) {
-      paramContext = ((ContextWrapper)paramContext).getBaseContext();
-    }
-    for (;;)
-    {
-      if ((paramContext instanceof Activity)) {
-        return (Activity)paramContext;
-      }
-      return null;
-    }
-  }
-  
-  public static boolean s(Activity paramActivity)
-  {
-    return (Build.VERSION.SDK_INT >= 24) && (paramActivity != null) && (paramActivity.isInMultiWindowMode());
-  }
-  
-  public static long wu(String paramString)
-  {
-    return x(paramString, -1L);
-  }
-  
-  private static long x(String paramString, long paramLong)
-  {
-    if (bk.bl(paramString)) {
-      return paramLong;
-    }
-    Object localObject = paramString;
-    if (paramString.startsWith("#"))
-    {
-      localObject = paramString;
-      if (paramString.length() == 4)
-      {
-        localObject = new StringBuilder(paramString);
-        ((StringBuilder)localObject).insert(2, paramString.charAt(1));
-        ((StringBuilder)localObject).insert(4, paramString.charAt(2));
-        ((StringBuilder)localObject).insert(6, paramString.charAt(3));
-        localObject = ((StringBuilder)localObject).toString();
-      }
-    }
-    try
-    {
-      int i = Color.parseColor((String)localObject);
-      return 0xFFFFFFFF & i;
-    }
-    catch (Exception paramString)
-    {
-      y.e("MicroMsg.AppBrandUIUtil", "Failed to parse color: %s", new Object[] { localObject });
-    }
-    return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.l
  * JD-Core Version:    0.7.0.1
  */

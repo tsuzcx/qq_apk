@@ -5,7 +5,7 @@ public final class c$fk
 {
   public c$fk()
   {
-    super("openProductViewWithPid", "open_product_view", 60, true);
+    super("openEnterpriseChat", "openEnterpriseChat", 165, false);
   }
 }
 

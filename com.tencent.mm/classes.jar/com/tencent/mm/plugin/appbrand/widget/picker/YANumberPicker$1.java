@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.support.v4.widget.n;
+import android.support.v4.widget.p;
 import android.widget.OverScroller;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class YANumberPicker$1
   extends Handler
@@ -17,56 +18,62 @@ final class YANumberPicker$1
   public final void handleMessage(Message paramMessage)
   {
     int j = 0;
+    AppMethodBeat.i(126757);
     switch (paramMessage.what)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(126757);
       return;
-    case 1: 
-      if (!YANumberPicker.a(this.hBM).iY.isFinished())
+      if (!YANumberPicker.a(this.jub).jR.isFinished())
       {
-        if (YANumberPicker.b(this.hBM) == 0) {
-          YANumberPicker.b(this.hBM, 1);
+        if (YANumberPicker.b(this.jub) == 0) {
+          YANumberPicker.b(this.jub, 1);
         }
-        YANumberPicker.c(this.hBM).sendMessageDelayed(YANumberPicker.c(1, 0, 0, paramMessage.obj), 32L);
+        YANumberPicker.c(this.jub).sendMessageDelayed(YANumberPicker.d(1, 0, 0, paramMessage.obj), 32L);
+        AppMethodBeat.o(126757);
         return;
       }
       int i;
-      if (YANumberPicker.d(this.hBM) != 0)
+      if (YANumberPicker.d(this.jub) != 0)
       {
-        if (YANumberPicker.b(this.hBM) == 0) {
-          YANumberPicker.b(this.hBM, 1);
+        if (YANumberPicker.b(this.jub) == 0) {
+          YANumberPicker.b(this.jub, 1);
         }
-        if (YANumberPicker.d(this.hBM) < -YANumberPicker.e(this.hBM) / 2)
+        if (YANumberPicker.d(this.jub) < -YANumberPicker.e(this.jub) / 2)
         {
-          j = (int)((YANumberPicker.e(this.hBM) + YANumberPicker.d(this.hBM)) * 300.0F / YANumberPicker.e(this.hBM));
-          n localn = YANumberPicker.a(this.hBM);
-          i = YANumberPicker.f(this.hBM);
-          int k = YANumberPicker.e(this.hBM);
-          localn.startScroll(0, i, 0, YANumberPicker.d(this.hBM) + k, j * 3);
-          i = YANumberPicker.c(this.hBM, YANumberPicker.f(this.hBM) + YANumberPicker.e(this.hBM) + YANumberPicker.d(this.hBM));
-          this.hBM.postInvalidate();
+          j = (int)((YANumberPicker.e(this.jub) + YANumberPicker.d(this.jub)) * 300.0F / YANumberPicker.e(this.jub));
+          p localp = YANumberPicker.a(this.jub);
+          i = YANumberPicker.f(this.jub);
+          int k = YANumberPicker.e(this.jub);
+          localp.startScroll(0, i, 0, YANumberPicker.d(this.jub) + k, j * 3);
+          i = YANumberPicker.c(this.jub, YANumberPicker.f(this.jub) + YANumberPicker.e(this.jub) + YANumberPicker.d(this.jub));
+          this.jub.postInvalidate();
         }
       }
       for (;;)
       {
-        paramMessage = YANumberPicker.c(2, YANumberPicker.g(this.hBM), i, paramMessage.obj);
-        if (!YANumberPicker.h(this.hBM)) {
-          break label399;
+        paramMessage = YANumberPicker.d(2, YANumberPicker.g(this.jub), i, paramMessage.obj);
+        if (!YANumberPicker.h(this.jub)) {
+          break label418;
         }
-        YANumberPicker.i(this.hBM).sendMessageDelayed(paramMessage, j * 2);
+        YANumberPicker.i(this.jub).sendMessageDelayed(paramMessage, j * 2);
+        AppMethodBeat.o(126757);
         return;
-        j = (int)(-YANumberPicker.d(this.hBM) * 300.0F / YANumberPicker.e(this.hBM));
-        YANumberPicker.a(this.hBM).startScroll(0, YANumberPicker.f(this.hBM), 0, YANumberPicker.d(this.hBM), j * 3);
-        i = YANumberPicker.c(this.hBM, YANumberPicker.f(this.hBM) + YANumberPicker.d(this.hBM));
+        j = (int)(-YANumberPicker.d(this.jub) * 300.0F / YANumberPicker.e(this.jub));
+        YANumberPicker.a(this.jub).startScroll(0, YANumberPicker.f(this.jub), 0, YANumberPicker.d(this.jub), j * 3);
+        i = YANumberPicker.c(this.jub, YANumberPicker.f(this.jub) + YANumberPicker.d(this.jub));
         break;
-        YANumberPicker.b(this.hBM, 0);
-        i = YANumberPicker.c(this.hBM, YANumberPicker.f(this.hBM));
+        YANumberPicker.b(this.jub, 0);
+        i = YANumberPicker.c(this.jub, YANumberPicker.f(this.jub));
       }
-      label399:
-      YANumberPicker.c(this.hBM).sendMessageDelayed(paramMessage, j * 2);
+      label418:
+      YANumberPicker.c(this.jub).sendMessageDelayed(paramMessage, j * 2);
+      AppMethodBeat.o(126757);
       return;
+      YANumberPicker.a(this.jub, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
     }
-    YANumberPicker.a(this.hBM, paramMessage.arg1, paramMessage.arg2, paramMessage.obj);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.recharge.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.ListViewInScrollView;
 
 final class RechargeUI$7
@@ -12,18 +13,21 @@ final class RechargeUI$7
   
   public final void onClick(View paramView)
   {
-    this.nrF.setVisibility(0);
-    this.nrG.setTextColor(this.nrH);
-    this.nrI.setVisibility(0);
-    this.nrJ.setVisibility(8);
-    this.nrK.setTextColor(this.nrL);
-    this.nrM.setVisibility(8);
-    if (RechargeUI.f(this.nrE).getCount() == 0)
+    AppMethodBeat.i(44312);
+    this.pWT.setVisibility(0);
+    this.pWU.setTextColor(this.pWV);
+    this.pWW.setVisibility(0);
+    this.pWX.setVisibility(8);
+    this.pWY.setTextColor(this.pWZ);
+    this.pXa.setVisibility(8);
+    if (RechargeUI.f(this.pWS).getCount() == 0)
     {
-      this.nrN.setVisibility(0);
+      this.pXb.setVisibility(0);
+      AppMethodBeat.o(44312);
       return;
     }
-    this.nrN.setVisibility(8);
+    this.pXb.setVisibility(8);
+    AppMethodBeat.o(44312);
   }
 }
 

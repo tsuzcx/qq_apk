@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.MenuItem;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.n.d;
 
 public final class l$4
@@ -14,12 +15,13 @@ public final class l$4
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    paramMenuItem = paramMenuItem.getTitle().toString().replace(" ", "").replace("(", "").replace(")", "").replace("-", "");
-    paramMenuItem = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + paramMenuItem));
+    AppMethodBeat.i(28134);
+    paramMenuItem = new Intent("android.intent.action.DIAL", Uri.parse("tel:".concat(String.valueOf(paramMenuItem.getTitle().toString().replace(" ", "").replace("(", "").replace(")", "").replace("-", "")))));
     paramMenuItem.addFlags(268435456);
-    if (bk.i(this.val$context, paramMenuItem)) {
+    if (bo.k(this.val$context, paramMenuItem)) {
       this.val$context.startActivity(paramMenuItem);
     }
+    AppMethodBeat.o(28134);
   }
 }
 

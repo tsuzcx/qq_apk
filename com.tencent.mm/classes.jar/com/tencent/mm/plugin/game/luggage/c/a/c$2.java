@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.game.luggage.c.a;
 
 import android.content.Context;
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.b.c;
 import com.tencent.mm.plugin.webview.ui.tools.game.menu.d;
-import com.tencent.mm.protocal.c.awk;
+import com.tencent.mm.protocal.protobuf.bcz;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -14,27 +15,29 @@ final class c$2
 {
   c$2(c paramc) {}
   
-  public final void f(MenuItem paramMenuItem)
+  public final void c(MenuItem paramMenuItem)
   {
-    Object localObject2 = this.kNs;
-    Object localObject1 = ((c)localObject2).kNq;
-    Context localContext = ((c)localObject2).kMl.mContext;
-    localObject2 = ((c)localObject2).kMl;
-    a locala = (a)((b)localObject1).kNo.get(Integer.valueOf(paramMenuItem.getItemId()));
-    Iterator localIterator = ((b)localObject1).kNn.iterator();
+    AppMethodBeat.i(135895);
+    Object localObject2 = this.njY;
+    Object localObject1 = ((c)localObject2).njW;
+    Context localContext = ((c)localObject2).njV.mContext;
+    localObject2 = ((c)localObject2).njV;
+    a locala = (a)((b)localObject1).njT.get(Integer.valueOf(paramMenuItem.getItemId()));
+    Iterator localIterator = ((b)localObject1).njS.iterator();
     do
     {
       if (!localIterator.hasNext()) {
         break;
       }
-      localObject1 = (awk)localIterator.next();
-    } while ((localObject1 == null) || (((awk)localObject1).sYX != paramMenuItem.getItemId()));
+      localObject1 = (bcz)localIterator.next();
+    } while ((localObject1 == null) || (((bcz)localObject1).wzE != paramMenuItem.getItemId()));
     for (paramMenuItem = (MenuItem)localObject1;; paramMenuItem = null)
     {
       if ((locala != null) && (paramMenuItem != null)) {
         locala.a(localContext, (com.tencent.mm.plugin.webview.luggage.e)localObject2, paramMenuItem);
       }
-      this.kNs.kNr.bFp();
+      this.njY.njX.cre();
+      AppMethodBeat.o(135895);
       return;
     }
   }

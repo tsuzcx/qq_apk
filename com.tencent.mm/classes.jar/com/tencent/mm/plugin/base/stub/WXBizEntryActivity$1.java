@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.base.stub;
 
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WXBizEntryActivity$1
   implements d.a
 {
   WXBizEntryActivity$1(WXBizEntryActivity paramWXBizEntryActivity) {}
   
-  public final void em(boolean paramBoolean)
+  public final void fH(boolean paramBoolean)
   {
+    AppMethodBeat.i(18135);
     if (paramBoolean) {
-      d.c(this.hSd, "game", ".ui.CreateOrJoinChatroomUI", this.hSd.getIntent());
+      d.c(this.jLI, "game", ".ui.CreateOrJoinChatroomUI", this.jLI.getIntent());
     }
     for (;;)
     {
-      this.hSd.finish();
+      this.jLI.finish();
+      AppMethodBeat.o(18135);
       return;
-      y.e("MicroMsg.WXBizEntryActivity", "openIdCheck false");
+      ab.e("MicroMsg.WXBizEntryActivity", "openIdCheck false");
     }
   }
 }

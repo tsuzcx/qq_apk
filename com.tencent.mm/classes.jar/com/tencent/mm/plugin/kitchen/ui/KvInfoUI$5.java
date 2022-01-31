@@ -5,30 +5,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.tencent.mm.plugin.kitchen.b.a;
-import com.tencent.mm.plugin.kitchen.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.d;
 
 final class KvInfoUI$5
   extends ArrayAdapter
 {
-  KvInfoUI$5(KvInfoUI paramKvInfoUI, Context paramContext, int paramInt1, int paramInt2)
+  KvInfoUI$5(KvInfoUI paramKvInfoUI, Context paramContext)
   {
-    super(paramContext, paramInt1, paramInt2);
+    super(paramContext, 2130969961, 2131825347);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(114445);
     paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (d)KvInfoUI.b(this.lAA).getItem(paramInt);
-    TextView localTextView = (TextView)paramView.findViewById(b.b.kv_info_ui_tv);
-    if ((paramViewGroup != null) && (paramViewGroup.nFx))
-    {
-      localTextView.setBackgroundResource(b.a.wechat_green);
-      return paramView;
+    paramViewGroup = (d)KvInfoUI.b(this.nXL).getItem(paramInt);
+    TextView localTextView = (TextView)paramView.findViewById(2131825347);
+    if ((paramViewGroup != null) && (paramViewGroup.qsA)) {
+      localTextView.setBackgroundResource(2131690701);
     }
-    localTextView.setBackgroundResource(b.a.transparent);
-    return paramView;
+    for (;;)
+    {
+      AppMethodBeat.o(114445);
+      return paramView;
+      localTextView.setBackgroundResource(2131690605);
+    }
   }
 }
 

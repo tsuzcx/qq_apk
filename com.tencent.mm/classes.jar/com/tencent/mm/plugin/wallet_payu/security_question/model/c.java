@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.security_question.model;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,9 +10,9 @@ import org.json.JSONObject;
 public final class c
   extends a
 {
-  public String bRP;
+  public String czq;
   public String id;
-  public String qON;
+  public String uDU;
   
   public c()
   {
@@ -20,21 +21,25 @@ public final class c
   
   public c(String paramString)
   {
-    this.bRP = paramString;
+    AppMethodBeat.i(48570);
+    this.czq = paramString;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("payu_reference", bk.aM(paramString, ""));
-    D(localHashMap);
+    localHashMap.put("payu_reference", bo.bf(paramString, ""));
+    setRequestData(localHashMap);
+    AppMethodBeat.o(48570);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    this.id = paramJSONObject.optString("id");
-    this.qON = paramJSONObject.optString("description");
-  }
-  
-  public final int bUM()
+  public final int cTa()
   {
     return 23;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48571);
+    this.id = paramJSONObject.optString("id");
+    this.uDU = paramJSONObject.optString("description");
+    AppMethodBeat.o(48571);
   }
 }
 

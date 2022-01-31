@@ -6,9 +6,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ToggleButton;
-import com.tencent.mm.R.h;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.a;
 import com.tencent.mm.storage.ad;
@@ -20,85 +20,98 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class SpecialCheckBoxPreference
   extends Preference
 {
-  private boolean bRz;
-  private String dmT;
-  private boolean dnJ = false;
-  private boolean dno;
-  private ad jgl;
+  private boolean czb;
+  private boolean eeO;
+  private String eeu;
+  private boolean efg;
+  private ad lpe;
   private Context mContext;
-  private ToggleButton sji;
-  private ToggleButton sjj;
-  private ToggleButton sjk;
-  private CompoundButton.OnCheckedChangeListener sjl = new SpecialCheckBoxPreference.1(this);
+  private ToggleButton wbO;
+  private ToggleButton wbP;
+  private ToggleButton wbQ;
+  private CompoundButton.OnCheckedChangeListener wbR;
   
   public SpecialCheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(28124);
+    this.wbR = new SpecialCheckBoxPreference.1(this);
+    this.efg = false;
     this.mContext = paramContext;
+    AppMethodBeat.o(28124);
   }
   
   public SpecialCheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(28125);
+    this.wbR = new SpecialCheckBoxPreference.1(this);
+    this.efg = false;
     this.mContext = paramContext;
+    AppMethodBeat.o(28125);
   }
   
-  private boolean cob()
+  private boolean dpn()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this.bRz) {
-      if (this.jgl.cCy == 0)
+    AppMethodBeat.i(28127);
+    boolean bool;
+    if (this.czb) {
+      if (this.lpe.dqK == 0)
       {
-        bool1 = true;
-        this.dnJ = bool1;
+        bool = true;
+        this.efg = bool;
       }
     }
     for (;;)
     {
-      bool1 = bool2;
       if ((this.mContext instanceof MMActivity))
       {
-        if (!this.dnJ) {
-          break label86;
+        if (this.efg)
+        {
+          ((MMActivity)this.mContext).setTitleMuteIconVisibility(0);
+          AppMethodBeat.o(28127);
+          return true;
+          bool = false;
+          break;
+          if (this.eeO) {
+            continue;
+          }
+          this.efg = this.lpe.DP();
+          continue;
         }
-        ((MMActivity)this.mContext).setTitleMuteIconVisibility(0);
-        bool1 = true;
-      }
-      return bool1;
-      bool1 = false;
-      break;
-      if (!this.dno) {
-        this.dnJ = this.jgl.Bj();
+        ((MMActivity)this.mContext).setTitleMuteIconVisibility(8);
+        AppMethodBeat.o(28127);
+        return false;
       }
     }
-    label86:
-    ((MMActivity)this.mContext).setTitleMuteIconVisibility(8);
+    AppMethodBeat.o(28127);
     return false;
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(28126);
     super.onBindView(paramView);
-    this.sji = ((ToggleButton)paramView.findViewById(R.h.room_placed_to_the_top));
-    this.sjj = ((ToggleButton)paramView.findViewById(R.h.room_notify_new_msg));
-    this.sjk = ((ToggleButton)paramView.findViewById(R.h.room_save_to_contact));
-    this.dmT = ((MMActivity)this.mContext).getIntent().getStringExtra("RoomInfo_Id");
-    this.bRz = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Chatroom", true);
-    this.dno = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Lbsroom", false);
-    au.Hx();
-    this.jgl = c.Fw().abl(this.dmT);
-    if (this.jgl != null)
+    this.wbO = ((ToggleButton)paramView.findViewById(2131826194));
+    this.wbP = ((ToggleButton)paramView.findViewById(2131826195));
+    this.wbQ = ((ToggleButton)paramView.findViewById(2131826196));
+    this.eeu = ((MMActivity)this.mContext).getIntent().getStringExtra("RoomInfo_Id");
+    this.czb = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Chatroom", true);
+    this.eeO = ((MMActivity)this.mContext).getIntent().getBooleanExtra("Is_Lbsroom", false);
+    aw.aaz();
+    this.lpe = c.YA().arw(this.eeu);
+    if (this.lpe != null)
     {
-      paramView = this.sji;
-      au.Hx();
-      paramView.setChecked(c.FB().abD(this.jgl.field_username));
-      this.sjk.setChecked(a.gR(this.jgl.field_type));
-      this.sjj.setChecked(cob());
+      paramView = this.wbO;
+      aw.aaz();
+      paramView.setChecked(c.YF().arP(this.lpe.field_username));
+      this.wbQ.setChecked(a.je(this.lpe.field_type));
+      this.wbP.setChecked(dpn());
     }
-    this.sji.setOnCheckedChangeListener(this.sjl);
-    this.sjj.setOnCheckedChangeListener(this.sjl);
-    this.sjk.setOnCheckedChangeListener(this.sjl);
+    this.wbO.setOnCheckedChangeListener(this.wbR);
+    this.wbP.setOnCheckedChangeListener(this.wbR);
+    this.wbQ.setOnCheckedChangeListener(this.wbR);
+    AppMethodBeat.o(28126);
   }
 }
 

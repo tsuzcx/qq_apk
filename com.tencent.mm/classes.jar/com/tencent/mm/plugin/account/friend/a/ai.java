@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.bpm;
-import com.tencent.mm.protocal.c.bpn;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.bzj;
+import com.tencent.mm.protocal.protobuf.bzk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,47 +21,55 @@ public final class ai
   extends m
   implements k
 {
-  private final b dmK;
-  private f dmL = null;
+  private f callback;
+  private final b rr;
   
   public ai(String paramString, List<String> paramList)
   {
+    AppMethodBeat.i(108478);
+    this.callback = null;
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bpm();
-    ((b.a)localObject).ecI = new bpn();
+    ((b.a)localObject).fsX = new bzj();
+    ((b.a)localObject).fsY = new bzk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendsmstomfriend";
-    ((b.a)localObject).ecG = 432;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bpm)this.dmK.ecE.ecN;
-    ((bpm)localObject).sRr = paramString;
-    ((bpm)localObject).tpC = new LinkedList();
-    ((bpm)localObject).tpB = paramList.size();
+    ((b.a)localObject).funcId = 432;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bzj)this.rr.fsV.fta;
+    ((bzj)localObject).wQf = paramString;
+    ((bzj)localObject).xpz = new LinkedList();
+    ((bzj)localObject).xpy = paramList.size();
     paramString = paramList.iterator();
     while (paramString.hasNext())
     {
       paramList = (String)paramString.next();
-      if (!bk.bl(paramList)) {
-        ((bpm)localObject).tpC.add(new bml().YI(paramList));
+      if (!bo.isNullOrNil(paramList)) {
+        ((bzj)localObject).xpz.add(new bwc().aoF(paramList));
       }
     }
+    AppMethodBeat.o(108478);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(108479);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(108479);
+    return i;
   }
   
   public final int getType()
   {
     return 432;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108480);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(108480);
   }
 }
 

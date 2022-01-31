@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.collector.c;
 
 final class WxaWidgetPerformanceUI$3
@@ -12,10 +13,12 @@ final class WxaWidgetPerformanceUI$3
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(11018);
     com.tencent.mm.ipcinvoker.f.a("com.tencent.mm:support", null, WxaWidgetPerformanceUI.a.class, null);
     c.clear();
     com.tencent.mm.plugin.appbrand.collector.f.reset();
-    this.fXC.setText(c.rV("jsapi_draw_canvas").toString());
+    this.hrc.setText(c.zL("jsapi_draw_canvas").toString());
+    AppMethodBeat.o(11018);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShowNonWeixinFriendUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class ShowNonWeixinFriendUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fsO.XM();
-    this.fsO.finish();
+    AppMethodBeat.i(125584);
+    this.gKq.hideVKB();
+    this.gKq.finish();
+    AppMethodBeat.o(125584);
     return true;
   }
 }

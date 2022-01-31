@@ -2,6 +2,7 @@ package com.tencent.ttpic.recorder;
 
 import android.opengl.EGLContext;
 import android.view.Surface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.gles.EglCore;
 import com.tencent.ttpic.gles.WindowSurface;
 
@@ -12,6 +13,7 @@ class RenderSrfTex$2
   
   public void run()
   {
+    AppMethodBeat.i(83708);
     RenderSrfTex.access$800();
     Surface localSurface = RenderSrfTex.access$700(this.this$0).getInputSurface();
     RenderSrfTex.access$800();
@@ -19,6 +21,7 @@ class RenderSrfTex$2
     {
       RenderSrfTex.access$602(this.this$0, null);
       RenderSrfTex.access$800();
+      AppMethodBeat.o(83708);
       return;
     }
     RenderSrfTex.access$800();
@@ -37,6 +40,7 @@ class RenderSrfTex$2
       RenderSrfTex.access$700(this.this$0).start();
       RenderSrfTex.access$800();
       RenderSrfTex.access$800();
+      AppMethodBeat.o(83708);
       return;
     }
     catch (Exception localException)
@@ -51,7 +55,7 @@ class RenderSrfTex$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.ttpic.recorder.RenderSrfTex.2
  * JD-Core Version:    0.7.0.1
  */

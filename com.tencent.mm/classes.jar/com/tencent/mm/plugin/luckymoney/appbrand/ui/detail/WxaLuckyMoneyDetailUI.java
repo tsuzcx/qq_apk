@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.ui.detail;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -13,232 +14,245 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.luckymoney.appbrand.a.i;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.WxaLuckyMoneyBaseUI;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.aog;
-import com.tencent.mm.protocal.c.bcf;
-import com.tencent.mm.protocal.c.bic;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.luckymoney.model.x;
+import com.tencent.mm.protocal.protobuf.aty;
+import com.tencent.mm.protocal.protobuf.bji;
+import com.tencent.mm.protocal.protobuf.bqs;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.wallet_core.ui.e;
-import java.util.LinkedList;
 import java.util.List;
 
 public class WxaLuckyMoneyDetailUI
   extends WxaLuckyMoneyBaseUI
   implements b
 {
-  private View VH;
-  private TextView iIV;
-  private TextView iKV;
-  private TextView lLM;
-  private final a lLS = new d();
-  private Intent lLT = null;
-  private ListView lLU;
-  private ImageView lLV;
-  private TextView lLW;
-  private ImageView lLX;
-  private View lLY;
-  private View lLZ;
-  private c lMa;
-  private AbsListView.OnScrollListener lMb = new WxaLuckyMoneyDetailUI.1(this);
-  private TextView lly;
-  private p tipDialog = null;
+  private View Ww;
+  private TextView kPB;
+  private TextView kRB;
+  private TextView nIU;
+  private TextView ojg;
+  private final a ojm;
+  private Intent ojn;
+  private ListView ojo;
+  private ImageView ojp;
+  private TextView ojq;
+  private ImageView ojr;
+  private View ojs;
+  private View ojt;
+  private c oju;
+  private AbsListView.OnScrollListener ojv;
+  private p tipDialog;
+  
+  public WxaLuckyMoneyDetailUI()
+  {
+    AppMethodBeat.i(42027);
+    this.ojm = new d();
+    this.tipDialog = null;
+    this.ojn = null;
+    this.ojv = new WxaLuckyMoneyDetailUI.1(this);
+    AppMethodBeat.o(42027);
+  }
   
   private void a(i parami)
   {
-    AppCompatActivity localAppCompatActivity = this.mController.uMN;
-    o.a(this.lLV, parami.lLj, parami.username);
-    o.a(localAppCompatActivity, this.lLW, parami.nickname);
-    o.a(localAppCompatActivity, this.lly, parami.lLm);
-    if (parami.lLl == 1)
+    AppMethodBeat.i(42037);
+    AppCompatActivity localAppCompatActivity = getContext();
+    x.b(this.ojp, parami.oiD, parami.username);
+    x.a(localAppCompatActivity, this.ojq, parami.nickname);
+    x.a(localAppCompatActivity, this.nIU, parami.oiG);
+    if (parami.oiF == 1)
     {
-      this.lLX.setVisibility(0);
-      this.lLX.setImageResource(a.e.lucky_money_group_icon);
-      if (parami.lLk != 2) {
-        break label196;
+      this.ojr.setVisibility(0);
+      this.ojr.setImageResource(2130839415);
+      if (parami.oiE != 2) {
+        break label201;
       }
-      this.lLM.setText(e.A(parami.ceq / 100.0D));
-      this.lMa.lLI = false;
-      this.lLY.setVisibility(0);
-      label116:
-      if (bk.bl(parami.lLn)) {
-        break label208;
+      this.ojg.setText(e.E(parami.cNd / 100.0D));
+      this.oju.ojc = false;
+      this.ojs.setVisibility(0);
+      label117:
+      if (bo.isNullOrNil(parami.oiH)) {
+        break label213;
       }
-      this.lLZ.setVisibility(0);
-      this.iKV.setText(parami.lLn);
-      this.iKV.setTextColor(getResources().getColor(a.c.lucky_money_operation_text_normal_color));
+      this.ojt.setVisibility(0);
+      this.kRB.setText(parami.oiH);
+      this.kRB.setTextColor(getResources().getColor(2131690258));
     }
     for (;;)
     {
-      if (bk.bl(parami.lLo)) {
-        break label220;
+      if (bo.isNullOrNil(parami.oiI)) {
+        break label225;
       }
-      this.iIV.setText(parami.lLo);
+      this.kPB.setText(parami.oiI);
+      AppMethodBeat.o(42037);
       return;
-      this.lLX.setVisibility(8);
+      this.ojr.setVisibility(8);
       break;
-      label196:
-      this.lLY.setVisibility(8);
-      break label116;
-      label208:
-      this.lLZ.setVisibility(8);
+      label201:
+      this.ojs.setVisibility(8);
+      break label117;
+      label213:
+      this.ojt.setVisibility(8);
     }
-    label220:
-    this.iIV.setText(null);
+    label225:
+    this.kPB.setText(null);
+    AppMethodBeat.o(42037);
   }
   
-  public final void K(Intent paramIntent)
+  public final void Sp(String paramString)
   {
-    this.lLT = paramIntent;
+    AppMethodBeat.i(42028);
+    h.bO(this, paramString);
+    AppMethodBeat.o(42028);
   }
   
-  public final void a(bcf parambcf)
+  public final void a(bji parambji)
   {
-    if (parambcf == null)
+    AppMethodBeat.i(42034);
+    if (parambji == null)
     {
-      localObject = null;
-      a((i)localObject);
-      int i = parambcf.txH;
-      localObject = parambcf.txC;
-      bK(parambcf.txC);
+      locali = null;
+      a(locali);
+      ch(parambji.xxI);
+      AppMethodBeat.o(42034);
       return;
     }
-    Object localObject = new i();
-    ((i)localObject).username = parambcf.txD;
-    ((i)localObject).lLj = parambcf.txF;
-    ((i)localObject).nickname = parambcf.txE;
-    ((i)localObject).ceq = parambcf.ceq;
-    ((i)localObject).lLn = parambcf.lLn;
-    ((i)localObject).lLo = parambcf.lLo;
-    if (parambcf.txH == 0) {}
+    i locali = new i();
+    locali.username = parambji.xxJ;
+    locali.oiD = parambji.xxL;
+    locali.nickname = parambji.xxK;
+    locali.cNd = parambji.cNd;
+    locali.oiH = parambji.oiH;
+    locali.oiI = parambji.oiI;
+    if (parambji.xxN == 0) {}
     for (boolean bool = false;; bool = true)
     {
-      ((i)localObject).lLp = bool;
-      ((i)localObject).lLl = parambcf.lLl;
-      ((i)localObject).lLk = parambcf.lLk;
-      ((i)localObject).lLm = parambcf.lLm;
+      locali.oiJ = bool;
+      locali.oiF = parambji.oiF;
+      locali.oiE = parambji.oiE;
+      locali.oiG = parambji.oiG;
       break;
     }
   }
   
-  public final void a(bic parambic)
+  public final void a(bqs parambqs)
   {
-    if (parambic == null)
+    AppMethodBeat.i(42035);
+    if (parambqs == null)
     {
-      localObject = null;
-      a((i)localObject);
-      int i = parambic.txH;
-      localObject = parambic.txC;
-      bK(parambic.txC);
+      locali = null;
+      a(locali);
+      ch(parambqs.xxI);
+      AppMethodBeat.o(42035);
       return;
     }
-    Object localObject = new i();
-    ((i)localObject).username = parambic.txD;
-    ((i)localObject).lLj = parambic.txF;
-    ((i)localObject).nickname = parambic.txE;
-    ((i)localObject).ceq = parambic.ceq;
-    ((i)localObject).lLn = parambic.lLn;
-    ((i)localObject).lLo = parambic.lLo;
-    if (parambic.txH == 0) {}
+    i locali = new i();
+    locali.username = parambqs.xxJ;
+    locali.oiD = parambqs.xxL;
+    locali.nickname = parambqs.xxK;
+    locali.cNd = parambqs.cNd;
+    locali.oiH = parambqs.oiH;
+    locali.oiI = parambqs.oiI;
+    if (parambqs.xxN == 0) {}
     for (boolean bool = false;; bool = true)
     {
-      ((i)localObject).lLp = bool;
-      ((i)localObject).lLl = parambic.lLl;
-      ((i)localObject).lLk = parambic.lLk;
-      ((i)localObject).lLm = parambic.lLm;
+      locali.oiJ = bool;
+      locali.oiF = parambqs.oiF;
+      locali.oiE = parambqs.oiE;
+      locali.oiG = parambqs.oiG;
       break;
     }
   }
   
-  public final void bK(List<aog> paramList)
+  public final void ad(Intent paramIntent)
   {
-    c localc = this.lMa;
-    if (paramList == null) {}
-    for (localc.lLG = new LinkedList();; localc.lLG = paramList)
-    {
-      localc.notifyDataSetChanged();
-      return;
-    }
+    this.ojn = paramIntent;
   }
   
-  public final MMActivity bfn()
+  public final MMActivity bMN()
   {
     return this;
   }
   
-  public final void bfo()
+  public final void bMO()
   {
+    AppMethodBeat.i(42029);
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
+    AppMethodBeat.o(42029);
   }
   
-  public final void error(String paramString)
+  public final void ch(List<aty> paramList)
   {
-    h.bC(this, paramString);
+    AppMethodBeat.i(42036);
+    this.oju.ci(paramList);
+    AppMethodBeat.o(42036);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.lucky_money_detail_ui;
+    return 2130970025;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(a.i.lucky_money_detail);
+    AppMethodBeat.i(42033);
+    setMMTitle(2131301210);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
+        AppMethodBeat.i(42025);
         if (WxaLuckyMoneyDetailUI.c(WxaLuckyMoneyDetailUI.this) != null) {
           WxaLuckyMoneyDetailUI.this.setResult(0, WxaLuckyMoneyDetailUI.c(WxaLuckyMoneyDetailUI.this));
         }
         for (;;)
         {
           WxaLuckyMoneyDetailUI.this.finish();
+          AppMethodBeat.o(42025);
           return true;
           WxaLuckyMoneyDetailUI.this.setResult(-1, null);
         }
       }
     });
-    this.lLU = ((ListView)findViewById(a.f.lucky_money_detail_record_list));
-    this.lMa = new c(this.mController.uMN);
-    this.VH = LayoutInflater.from(this).inflate(a.g.lucky_money_detail_header, null);
-    this.lLU.addHeaderView(this.VH);
-    this.lLU.setAdapter(this.lMa);
-    this.lMa.lLI = false;
-    this.lLU.setOnScrollListener(this.lMb);
-    this.lLV = ((ImageView)this.VH.findViewById(a.f.lucky_money_detail_sender_avatar));
-    this.lLW = ((TextView)this.VH.findViewById(a.f.lucky_money_detail_whose));
-    this.lLX = ((ImageView)this.VH.findViewById(a.f.lucky_money_detail_group_icon));
-    this.lly = ((TextView)this.VH.findViewById(a.f.lucky_money_detail_wishing));
-    this.lLY = this.VH.findViewById(a.f.lucky_money_detail_amount_area);
-    this.lLM = ((TextView)this.VH.findViewById(a.f.lucky_money_detail_amount));
-    this.lLZ = this.VH.findViewById(a.f.lucky_money_detail_layout);
-    this.iKV = ((TextView)this.VH.findViewById(a.f.lucky_money_detail_tips));
-    this.iIV = ((TextView)this.VH.findViewById(a.f.lucky_money_detail_desc));
-    this.tipDialog = h.b(this.mController.uMN, getString(a.i.loading_tips), true, new WxaLuckyMoneyDetailUI.3(this));
+    this.ojo = ((ListView)findViewById(2131825658));
+    this.oju = new c(getContext());
+    this.Ww = LayoutInflater.from(this).inflate(2130970022, null);
+    this.ojo.addHeaderView(this.Ww);
+    this.ojo.setAdapter(this.oju);
+    this.oju.ojc = false;
+    this.ojo.setOnScrollListener(this.ojv);
+    this.ojp = ((ImageView)this.Ww.findViewById(2131825606));
+    this.ojq = ((TextView)this.Ww.findViewById(2131825608));
+    this.ojr = ((ImageView)this.Ww.findViewById(2131825609));
+    this.nIU = ((TextView)this.Ww.findViewById(2131825610));
+    this.ojs = this.Ww.findViewById(2131825611);
+    this.ojg = ((TextView)this.Ww.findViewById(2131825612));
+    this.ojt = this.Ww.findViewById(2131825614);
+    this.kRB = ((TextView)this.Ww.findViewById(2131825616));
+    this.kPB = ((TextView)this.Ww.findViewById(2131825628));
+    this.tipDialog = h.b(getContext(), getString(2131301086), true, new WxaLuckyMoneyDetailUI.3(this));
     this.tipDialog.show();
+    AppMethodBeat.o(42033);
   }
   
   public void onBackPressed()
   {
-    if (this.lLT != null) {
-      setResult(0, this.lLT);
+    AppMethodBeat.i(42032);
+    if (this.ojn != null) {
+      setResult(0, this.ojn);
     }
     for (;;)
     {
       finish();
+      AppMethodBeat.o(42032);
       return;
       setResult(-1, null);
     }
@@ -246,27 +260,39 @@ public class WxaLuckyMoneyDetailUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(42030);
     super.onCreate(paramBundle);
     initView();
-    this.lLS.a(this, getIntent());
+    this.ojm.a(this, getIntent());
+    AppMethodBeat.o(42030);
   }
   
   public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
   {
+    AppMethodBeat.i(42031);
     boolean bool = super.onCreatePanelMenu(paramInt, paramMenu);
-    paramMenu = (TextView)findViewById(a.f.action_option_text);
+    paramMenu = (TextView)findViewById(2131820974);
     if (paramMenu != null) {
-      paramMenu.setTextColor(getResources().getColor(a.c.lucky_money_goldstyle_envelop_primary_text_color));
+      paramMenu.setTextColor(getResources().getColor(2131690237));
     }
+    AppMethodBeat.o(42031);
     return bool;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(42038);
     super.onDestroy();
     if ((this.tipDialog != null) && (this.tipDialog.isShowing())) {
       this.tipDialog.dismiss();
     }
+    AppMethodBeat.o(42038);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

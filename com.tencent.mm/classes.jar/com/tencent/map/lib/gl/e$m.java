@@ -11,7 +11,7 @@ public abstract interface e$m
   
   public abstract boolean a(GL10 paramGL10);
   
-  public abstract void a_();
+  public abstract void j();
 }
 
 

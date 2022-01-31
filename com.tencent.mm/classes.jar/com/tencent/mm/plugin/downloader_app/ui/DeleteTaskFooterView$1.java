@@ -5,8 +5,7 @@ import android.content.res.Resources;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.downloader_app.b.b;
-import com.tencent.mm.plugin.downloader_app.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader_app.b.d.c;
 
 final class DeleteTaskFooterView$1
@@ -14,19 +13,22 @@ final class DeleteTaskFooterView$1
 {
   DeleteTaskFooterView$1(DeleteTaskFooterView paramDeleteTaskFooterView) {}
   
-  public final void eV(boolean paramBoolean)
+  public final void gy(boolean paramBoolean)
   {
-    DeleteTaskFooterView localDeleteTaskFooterView = this.iTk;
+    AppMethodBeat.i(136215);
+    DeleteTaskFooterView localDeleteTaskFooterView = this.lbZ;
     if (paramBoolean)
     {
-      localDeleteTaskFooterView.iTf.setClickable(true);
-      localDeleteTaskFooterView.iTh.setImageResource(b.d.task_delete_able);
-      localDeleteTaskFooterView.iTg.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(b.b.item_name_color));
+      localDeleteTaskFooterView.lbU.setClickable(true);
+      localDeleteTaskFooterView.lbW.setImageResource(2130840544);
+      localDeleteTaskFooterView.lbV.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131690194));
+      AppMethodBeat.o(136215);
       return;
     }
-    localDeleteTaskFooterView.iTf.setClickable(false);
-    localDeleteTaskFooterView.iTh.setImageResource(b.d.task_delete_disable);
-    localDeleteTaskFooterView.iTg.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(b.b.item_desc_color));
+    localDeleteTaskFooterView.lbU.setClickable(false);
+    localDeleteTaskFooterView.lbW.setImageResource(2130840545);
+    localDeleteTaskFooterView.lbV.setTextColor(localDeleteTaskFooterView.getContext().getResources().getColor(2131690193));
+    AppMethodBeat.o(136215);
   }
 }
 

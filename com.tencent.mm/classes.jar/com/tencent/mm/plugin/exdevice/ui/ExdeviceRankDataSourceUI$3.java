@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.protocal.c.cch;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.cpn;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,20 +12,22 @@ final class ExdeviceRankDataSourceUI$3
   
   public final void run()
   {
-    ExdeviceRankDataSourceUI.b localb = ExdeviceRankDataSourceUI.b(this.jFt);
-    Object localObject = this.jFu;
-    localb.jFx.clear();
+    AppMethodBeat.i(20116);
+    ExdeviceRankDataSourceUI.b localb = ExdeviceRankDataSourceUI.b(this.lOR);
+    Object localObject = this.lOS;
+    localb.lOV.clear();
     if ((localObject == null) || (((List)localObject).size() == 0)) {}
     for (;;)
     {
-      ExdeviceRankDataSourceUI.b(this.jFt).notifyDataSetChanged();
+      ExdeviceRankDataSourceUI.b(this.lOR).notifyDataSetChanged();
+      AppMethodBeat.o(20116);
       return;
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        cch localcch = (cch)((Iterator)localObject).next();
-        if (localcch != null) {
-          localb.jFx.add(ExdeviceRankDataSourceUI.a(localcch));
+        cpn localcpn = (cpn)((Iterator)localObject).next();
+        if (localcpn != null) {
+          localb.lOV.add(ExdeviceRankDataSourceUI.a(localcpn));
         }
       }
     }

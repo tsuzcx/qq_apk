@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 
 final class ChatFooter$22
@@ -9,7 +10,9 @@ final class ChatFooter$22
   
   public final void run()
   {
-    j.p(ChatFooter.b(this.sgd));
+    AppMethodBeat.i(27813);
+    j.q(ChatFooter.b(this.vXU));
+    AppMethodBeat.o(27813);
   }
 }
 

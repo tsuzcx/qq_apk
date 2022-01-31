@@ -1,11 +1,7 @@
 package com.tencent.mm.plugin.base.stub;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.game.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 public final class a
@@ -16,24 +12,16 @@ public final class a
     super(paramContext, paramString1, paramString2, parama);
   }
   
-  protected final void UF()
+  protected final void aVD()
   {
-    h.a(this.context, R.l.game_openid_checker_fail_msg, R.l.app_tip, false, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        paramAnonymousDialogInterface = a.a.aYi();
-        if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.k(a.this.openId, q.Gm(), a.this.appId);
-        }
-        a.this.hRU.em(false);
-      }
-    });
+    AppMethodBeat.i(18110);
+    h.a(this.context, 2131300438, 2131297087, false, new a.1(this));
+    AppMethodBeat.o(18110);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.a
  * JD-Core Version:    0.7.0.1
  */

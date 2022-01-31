@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.aq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.am;
 
 final class a$1
   implements Runnable
@@ -10,8 +11,10 @@ final class a$1
   
   public final void run()
   {
-    a.a(this.hpC, aq.cD(a.a(this.hpC)));
-    y.i("MicroMsg.AppBrandDesktopAnimController", "[run] mScrollOffset:" + a.b(this.hpC));
+    AppMethodBeat.i(133664);
+    a.a(this.jcW, am.di(a.a(this.jcW)));
+    ab.i("MicroMsg.AppBrandDesktopAnimController", "[run] mScrollOffset:" + a.b(this.jcW));
+    AppMethodBeat.o(133664);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wear.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f.c;
 
@@ -13,15 +14,17 @@ final class a$1
     return "PhoneStartTask";
   }
   
-  protected final void send()
+  public final void send()
   {
-    r.b(20001, null, false);
-    r.b(20008, null, false);
+    AppMethodBeat.i(26265);
+    r.a(20001, null, false);
+    r.a(20008, null, false);
+    AppMethodBeat.o(26265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.a.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.account.friend.ui;
 import android.content.res.Resources;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.account.friend.a.f;
-import com.tencent.mm.plugin.account.friend.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.friend.a.i;
 import com.tencent.mm.plugin.account.friend.a.i.a;
 
@@ -15,36 +14,39 @@ final class FindMContactInviteUI$6
   
   public final void notifyDataSetChanged()
   {
-    if ((FindMContactInviteUI.d(this.fhx) != 2) && (FindMContactInviteUI.d(this.fhx) == 1))
+    AppMethodBeat.i(108543);
+    if ((FindMContactInviteUI.d(this.gzf) != 2) && (FindMContactInviteUI.d(this.gzf) == 1))
     {
-      FindMContactInviteUI.e(this.fhx).setText(this.fhx.getString(a.h.find_mcontact_invite_all_continue));
-      if (!FindMContactInviteUI.b(this.fhx).WK()) {
-        break label233;
+      FindMContactInviteUI.e(this.gzf).setText(this.gzf.getString(2131299933));
+      if (!FindMContactInviteUI.b(this.gzf).aqm()) {
+        break label240;
       }
-      if ((FindMContactInviteUI.d(this.fhx) != 1) && (FindMContactInviteUI.e(this.fhx).getVisibility() == 0) && (FindMContactInviteUI.f(this.fhx) != null))
+      if ((FindMContactInviteUI.d(this.gzf) != 1) && (FindMContactInviteUI.e(this.gzf).getVisibility() == 0) && (FindMContactInviteUI.f(this.gzf) != null))
       {
-        FindMContactInviteUI.e(this.fhx).setVisibility(8);
-        FindMContactInviteUI.f(this.fhx).setVisibility(0);
+        FindMContactInviteUI.e(this.gzf).setVisibility(8);
+        FindMContactInviteUI.f(this.gzf).setVisibility(0);
       }
     }
     for (;;)
     {
-      if ((FindMContactInviteUI.b(this.fhx).getSelectCount() <= 0) || (FindMContactInviteUI.d(this.fhx) == 1)) {
-        break label295;
+      if ((FindMContactInviteUI.b(this.gzf).getSelectCount() <= 0) || (FindMContactInviteUI.d(this.gzf) == 1)) {
+        break label302;
       }
-      FindMContactInviteUI.g(this.fhx).setText(this.fhx.getResources().getQuantityString(a.f.find_mcontact_already_invite_count, FindMContactInviteUI.b(this.fhx).getSelectCount(), new Object[] { Integer.valueOf(FindMContactInviteUI.b(this.fhx).getSelectCount()) }));
+      FindMContactInviteUI.g(this.gzf).setText(this.gzf.getResources().getQuantityString(2131361798, FindMContactInviteUI.b(this.gzf).getSelectCount(), new Object[] { Integer.valueOf(FindMContactInviteUI.b(this.gzf).getSelectCount()) }));
+      AppMethodBeat.o(108543);
       return;
-      FindMContactInviteUI.e(this.fhx).setText(this.fhx.getString(a.h.find_mcontact_invite_all, new Object[] { Integer.valueOf(FindMContactInviteUI.b(this.fhx).getCount()) }));
+      FindMContactInviteUI.e(this.gzf).setText(this.gzf.getString(2131299932, new Object[] { Integer.valueOf(FindMContactInviteUI.b(this.gzf).getCount()) }));
       break;
-      label233:
-      if ((FindMContactInviteUI.d(this.fhx) != 1) && (FindMContactInviteUI.e(this.fhx).getVisibility() == 8) && (FindMContactInviteUI.f(this.fhx) != null))
+      label240:
+      if ((FindMContactInviteUI.d(this.gzf) != 1) && (FindMContactInviteUI.e(this.gzf).getVisibility() == 8) && (FindMContactInviteUI.f(this.gzf) != null))
       {
-        FindMContactInviteUI.e(this.fhx).setVisibility(0);
-        FindMContactInviteUI.f(this.fhx).setVisibility(8);
+        FindMContactInviteUI.e(this.gzf).setVisibility(0);
+        FindMContactInviteUI.f(this.gzf).setVisibility(8);
       }
     }
-    label295:
-    FindMContactInviteUI.g(this.fhx).setText(this.fhx.getResources().getQuantityString(a.f.find_mcontact_invite_friend_cnt, FindMContactInviteUI.b(this.fhx).getCount(), new Object[] { Integer.valueOf(FindMContactInviteUI.b(this.fhx).getCount()) }));
+    label302:
+    FindMContactInviteUI.g(this.gzf).setText(this.gzf.getResources().getQuantityString(2131361799, FindMContactInviteUI.b(this.gzf).getCount(), new Object[] { Integer.valueOf(FindMContactInviteUI.b(this.gzf).getCount()) }));
+    AppMethodBeat.o(108543);
   }
 }
 

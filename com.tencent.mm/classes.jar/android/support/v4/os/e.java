@@ -1,13 +1,23 @@
 package android.support.v4.os;
 
-import android.os.Parcel;
+import android.os.Build.VERSION;
+import android.os.Trace;
 
-@Deprecated
-public abstract interface e<T>
+public final class e
 {
-  public abstract T createFromParcel(Parcel paramParcel, ClassLoader paramClassLoader);
+  public static void beginSection(String paramString)
+  {
+    if (Build.VERSION.SDK_INT >= 18) {
+      Trace.beginSection(paramString);
+    }
+  }
   
-  public abstract T[] newArray(int paramInt);
+  public static void endSection()
+  {
+    if (Build.VERSION.SDK_INT >= 18) {
+      Trace.endSection();
+    }
+  }
 }
 
 

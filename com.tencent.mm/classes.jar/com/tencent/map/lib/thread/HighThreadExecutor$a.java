@@ -1,5 +1,6 @@
 package com.tencent.map.lib.thread;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 import java.util.AbstractQueue;
 import java.util.Collection;
@@ -16,16 +17,23 @@ class HighThreadExecutor$a<E>
 {
   transient a<E>.b<E> a;
   private int c;
-  private final AtomicInteger d = new AtomicInteger();
-  private final ReentrantLock e = new ReentrantLock();
-  private final Condition f = this.e.newCondition();
-  private final ReentrantLock g = new ReentrantLock();
-  private final Condition h = this.g.newCondition();
+  private final AtomicInteger d;
+  private final ReentrantLock e;
+  private final Condition f;
+  private final ReentrantLock g;
+  private final Condition h;
   
   public HighThreadExecutor$a(HighThreadExecutor paramHighThreadExecutor, int paramInt)
   {
+    AppMethodBeat.i(98182);
+    this.d = new AtomicInteger();
+    this.e = new ReentrantLock();
+    this.f = this.e.newCondition();
+    this.g = new ReentrantLock();
+    this.h = this.g.newCondition();
     this.c = paramInt;
     this.a = new b(null);
+    AppMethodBeat.o(98182);
   }
   
   private void a(a<E>.b<E> parama)
@@ -50,12 +58,15 @@ class HighThreadExecutor$a<E>
   
   private void c()
   {
+    AppMethodBeat.i(98195);
     this.g.lock();
     this.e.lock();
+    AppMethodBeat.o(98195);
   }
   
   private void d()
   {
+    AppMethodBeat.i(98198);
     ReentrantLock localReentrantLock = this.g;
     localReentrantLock.lock();
     try
@@ -66,11 +77,13 @@ class HighThreadExecutor$a<E>
     finally
     {
       localReentrantLock.unlock();
+      AppMethodBeat.o(98198);
     }
   }
   
   private void e()
   {
+    AppMethodBeat.i(98199);
     ReentrantLock localReentrantLock = this.e;
     localReentrantLock.lock();
     try
@@ -81,27 +94,35 @@ class HighThreadExecutor$a<E>
     finally
     {
       localReentrantLock.unlock();
+      AppMethodBeat.o(98199);
     }
   }
   
   void a()
   {
+    AppMethodBeat.i(98196);
     this.e.unlock();
     this.g.unlock();
+    AppMethodBeat.o(98196);
   }
   
   void a(a<E>.b<E> parama1, a<E>.b<E> parama2)
   {
+    AppMethodBeat.i(98197);
     parama1.a = null;
     parama2.b = parama1.b;
     if (this.d.getAndDecrement() == this.c) {
       this.h.signal();
     }
+    AppMethodBeat.o(98197);
   }
   
   public int drainTo(Collection<? super E> paramCollection)
   {
-    return drainTo(paramCollection, 2147483647);
+    AppMethodBeat.i(98185);
+    int i = drainTo(paramCollection, 2147483647);
+    AppMethodBeat.o(98185);
+    return i;
   }
   
   /* Error */
@@ -109,172 +130,223 @@ class HighThreadExecutor$a<E>
   {
     // Byte code:
     //   0: iconst_1
-    //   1: istore 4
+    //   1: istore 7
     //   3: iconst_1
-    //   4: istore_3
-    //   5: aload_1
-    //   6: ifnonnull +11 -> 17
-    //   9: new 104	java/lang/NullPointerException
-    //   12: dup
-    //   13: invokespecial 105	java/lang/NullPointerException:<init>	()V
-    //   16: athrow
+    //   4: istore 5
+    //   6: iconst_0
+    //   7: istore 6
+    //   9: iconst_0
+    //   10: istore 8
+    //   12: ldc 120
+    //   14: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   17: aload_1
-    //   18: aload_0
-    //   19: if_acmpne +11 -> 30
-    //   22: new 107	java/lang/IllegalArgumentException
-    //   25: dup
-    //   26: invokespecial 108	java/lang/IllegalArgumentException:<init>	()V
-    //   29: athrow
-    //   30: iload_2
-    //   31: ifgt +5 -> 36
-    //   34: iconst_0
-    //   35: ireturn
-    //   36: aload_0
-    //   37: getfield 47	com/tencent/map/lib/thread/HighThreadExecutor$a:e	Ljava/util/concurrent/locks/ReentrantLock;
-    //   40: astore 8
-    //   42: aload 8
-    //   44: invokevirtual 81	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   47: iload_2
-    //   48: aload_0
-    //   49: getfield 42	com/tencent/map/lib/thread/HighThreadExecutor$a:d	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   52: invokevirtual 111	java/util/concurrent/atomic/AtomicInteger:get	()I
-    //   55: invokestatic 117	java/lang/Math:min	(II)I
-    //   58: istore 5
-    //   60: aload_0
-    //   61: getfield 64	com/tencent/map/lib/thread/HighThreadExecutor$a:a	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
-    //   64: astore 6
-    //   66: iconst_0
-    //   67: istore_2
-    //   68: iload_2
-    //   69: iload 5
-    //   71: if_icmpge +46 -> 117
-    //   74: aload 6
-    //   76: getfield 68	com/tencent/map/lib/thread/HighThreadExecutor$a$b:b	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
-    //   79: astore 7
-    //   81: aload_1
-    //   82: aload 7
-    //   84: getfield 77	com/tencent/map/lib/thread/HighThreadExecutor$a$b:a	Ljava/lang/Object;
-    //   87: invokeinterface 123 2 0
-    //   92: pop
-    //   93: aload 7
-    //   95: aconst_null
-    //   96: putfield 77	com/tencent/map/lib/thread/HighThreadExecutor$a$b:a	Ljava/lang/Object;
-    //   99: aload 6
-    //   101: aload 6
-    //   103: putfield 68	com/tencent/map/lib/thread/HighThreadExecutor$a$b:b	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
-    //   106: iload_2
-    //   107: iconst_1
-    //   108: iadd
-    //   109: istore_2
-    //   110: aload 7
-    //   112: astore 6
-    //   114: goto -46 -> 68
-    //   117: iload_2
-    //   118: ifle +122 -> 240
-    //   121: aload_0
-    //   122: aload 6
-    //   124: putfield 64	com/tencent/map/lib/thread/HighThreadExecutor$a:a	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
-    //   127: aload_0
-    //   128: getfield 42	com/tencent/map/lib/thread/HighThreadExecutor$a:d	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   131: iload_2
-    //   132: ineg
-    //   133: invokevirtual 127	java/util/concurrent/atomic/AtomicInteger:getAndAdd	(I)I
-    //   136: istore_2
-    //   137: aload_0
-    //   138: getfield 59	com/tencent/map/lib/thread/HighThreadExecutor$a:c	I
-    //   141: istore 4
-    //   143: iload_2
-    //   144: iload 4
-    //   146: if_icmpne +21 -> 167
-    //   149: iload_3
-    //   150: istore_2
-    //   151: aload 8
-    //   153: invokevirtual 89	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   156: iload_2
-    //   157: ifeq +7 -> 164
-    //   160: aload_0
-    //   161: invokespecial 129	com/tencent/map/lib/thread/HighThreadExecutor$a:d	()V
-    //   164: iload 5
-    //   166: ireturn
-    //   167: iconst_0
-    //   168: istore_2
-    //   169: goto -18 -> 151
-    //   172: astore_1
-    //   173: iload_2
-    //   174: ifle +61 -> 235
-    //   177: aload_0
-    //   178: aload 6
-    //   180: putfield 64	com/tencent/map/lib/thread/HighThreadExecutor$a:a	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
-    //   183: aload_0
-    //   184: getfield 42	com/tencent/map/lib/thread/HighThreadExecutor$a:d	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   187: iload_2
-    //   188: ineg
-    //   189: invokevirtual 127	java/util/concurrent/atomic/AtomicInteger:getAndAdd	(I)I
-    //   192: istore_2
-    //   193: aload_0
-    //   194: getfield 59	com/tencent/map/lib/thread/HighThreadExecutor$a:c	I
-    //   197: istore_3
-    //   198: iload_2
-    //   199: iload_3
-    //   200: if_icmpne +24 -> 224
-    //   203: iload 4
-    //   205: istore_2
-    //   206: aload_1
-    //   207: athrow
-    //   208: astore_1
-    //   209: aload 8
-    //   211: invokevirtual 89	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   214: iload_2
-    //   215: ifeq +7 -> 222
-    //   218: aload_0
-    //   219: invokespecial 129	com/tencent/map/lib/thread/HighThreadExecutor$a:d	()V
-    //   222: aload_1
-    //   223: athrow
-    //   224: iconst_0
-    //   225: istore_2
-    //   226: goto -20 -> 206
-    //   229: astore_1
-    //   230: iconst_0
-    //   231: istore_2
-    //   232: goto -23 -> 209
-    //   235: iconst_0
-    //   236: istore_2
-    //   237: goto -31 -> 206
-    //   240: iconst_0
-    //   241: istore_2
-    //   242: goto -91 -> 151
+    //   18: ifnonnull +18 -> 36
+    //   21: new 122	java/lang/NullPointerException
+    //   24: dup
+    //   25: invokespecial 123	java/lang/NullPointerException:<init>	()V
+    //   28: astore_1
+    //   29: ldc 120
+    //   31: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: aload_1
+    //   35: athrow
+    //   36: aload_1
+    //   37: aload_0
+    //   38: if_acmpne +18 -> 56
+    //   41: new 125	java/lang/IllegalArgumentException
+    //   44: dup
+    //   45: invokespecial 126	java/lang/IllegalArgumentException:<init>	()V
+    //   48: astore_1
+    //   49: ldc 120
+    //   51: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aload_1
+    //   55: athrow
+    //   56: iload_2
+    //   57: ifgt +10 -> 67
+    //   60: ldc 120
+    //   62: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   65: iconst_0
+    //   66: ireturn
+    //   67: aload_0
+    //   68: getfield 54	com/tencent/map/lib/thread/HighThreadExecutor$a:e	Ljava/util/concurrent/locks/ReentrantLock;
+    //   71: astore 12
+    //   73: aload 12
+    //   75: invokevirtual 93	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   78: iload 6
+    //   80: istore_3
+    //   81: iload_2
+    //   82: aload_0
+    //   83: getfield 49	com/tencent/map/lib/thread/HighThreadExecutor$a:d	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   86: invokevirtual 129	java/util/concurrent/atomic/AtomicInteger:get	()I
+    //   89: invokestatic 135	java/lang/Math:min	(II)I
+    //   92: istore 9
+    //   94: iload 6
+    //   96: istore_3
+    //   97: aload_0
+    //   98: getfield 71	com/tencent/map/lib/thread/HighThreadExecutor$a:a	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
+    //   101: astore 10
+    //   103: iconst_0
+    //   104: istore 4
+    //   106: iload 4
+    //   108: iload 9
+    //   110: if_icmpge +48 -> 158
+    //   113: aload 10
+    //   115: getfield 78	com/tencent/map/lib/thread/HighThreadExecutor$a$b:b	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
+    //   118: astore 11
+    //   120: aload_1
+    //   121: aload 11
+    //   123: getfield 88	com/tencent/map/lib/thread/HighThreadExecutor$a$b:a	Ljava/lang/Object;
+    //   126: invokeinterface 141 2 0
+    //   131: pop
+    //   132: aload 11
+    //   134: aconst_null
+    //   135: putfield 88	com/tencent/map/lib/thread/HighThreadExecutor$a$b:a	Ljava/lang/Object;
+    //   138: aload 10
+    //   140: aload 10
+    //   142: putfield 78	com/tencent/map/lib/thread/HighThreadExecutor$a$b:b	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
+    //   145: iload 4
+    //   147: iconst_1
+    //   148: iadd
+    //   149: istore 4
+    //   151: aload 11
+    //   153: astore 10
+    //   155: goto -49 -> 106
+    //   158: iload 4
+    //   160: ifle +151 -> 311
+    //   163: iload 6
+    //   165: istore_3
+    //   166: aload_0
+    //   167: aload 10
+    //   169: putfield 71	com/tencent/map/lib/thread/HighThreadExecutor$a:a	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
+    //   172: iload 6
+    //   174: istore_3
+    //   175: aload_0
+    //   176: getfield 49	com/tencent/map/lib/thread/HighThreadExecutor$a:d	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   179: iload 4
+    //   181: ineg
+    //   182: invokevirtual 145	java/util/concurrent/atomic/AtomicInteger:getAndAdd	(I)I
+    //   185: istore_2
+    //   186: iload 6
+    //   188: istore_3
+    //   189: aload_0
+    //   190: getfield 66	com/tencent/map/lib/thread/HighThreadExecutor$a:c	I
+    //   193: istore 4
+    //   195: iload_2
+    //   196: iload 4
+    //   198: if_icmpne +27 -> 225
+    //   201: iload 5
+    //   203: istore_2
+    //   204: aload 12
+    //   206: invokevirtual 102	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   209: iload_2
+    //   210: ifeq +7 -> 217
+    //   213: aload_0
+    //   214: invokespecial 147	com/tencent/map/lib/thread/HighThreadExecutor$a:d	()V
+    //   217: ldc 120
+    //   219: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   222: iload 9
+    //   224: ireturn
+    //   225: iconst_0
+    //   226: istore_2
+    //   227: goto -23 -> 204
+    //   230: astore_1
+    //   231: iload 8
+    //   233: istore_2
+    //   234: iload 4
+    //   236: ifle +38 -> 274
+    //   239: iload 6
+    //   241: istore_3
+    //   242: aload_0
+    //   243: aload 10
+    //   245: putfield 71	com/tencent/map/lib/thread/HighThreadExecutor$a:a	Lcom/tencent/map/lib/thread/HighThreadExecutor$a$b;
+    //   248: iload 6
+    //   250: istore_3
+    //   251: aload_0
+    //   252: getfield 49	com/tencent/map/lib/thread/HighThreadExecutor$a:d	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   255: iload 4
+    //   257: ineg
+    //   258: invokevirtual 145	java/util/concurrent/atomic/AtomicInteger:getAndAdd	(I)I
+    //   261: aload_0
+    //   262: getfield 66	com/tencent/map/lib/thread/HighThreadExecutor$a:c	I
+    //   265: if_icmpne +41 -> 306
+    //   268: iload 7
+    //   270: istore_2
+    //   271: goto +45 -> 316
+    //   274: iload_2
+    //   275: istore_3
+    //   276: ldc 120
+    //   278: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   281: iload_2
+    //   282: istore_3
+    //   283: aload_1
+    //   284: athrow
+    //   285: astore_1
+    //   286: aload 12
+    //   288: invokevirtual 102	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   291: iload_3
+    //   292: ifeq +7 -> 299
+    //   295: aload_0
+    //   296: invokespecial 147	com/tencent/map/lib/thread/HighThreadExecutor$a:d	()V
+    //   299: ldc 120
+    //   301: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   304: aload_1
+    //   305: athrow
+    //   306: iconst_0
+    //   307: istore_2
+    //   308: goto +8 -> 316
+    //   311: iconst_0
+    //   312: istore_2
+    //   313: goto -109 -> 204
+    //   316: goto -42 -> 274
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	245	0	this	a
-    //   0	245	1	paramCollection	Collection<? super E>
-    //   0	245	2	paramInt	int
-    //   4	197	3	i	int
-    //   1	203	4	j	int
-    //   58	107	5	k	int
-    //   64	115	6	localObject	Object
-    //   79	32	7	localb	b
-    //   40	170	8	localReentrantLock	ReentrantLock
+    //   0	319	0	this	a
+    //   0	319	1	paramCollection	Collection<? super E>
+    //   0	319	2	paramInt	int
+    //   80	212	3	i	int
+    //   104	152	4	j	int
+    //   4	198	5	k	int
+    //   7	242	6	m	int
+    //   1	268	7	n	int
+    //   10	222	8	i1	int
+    //   92	131	9	i2	int
+    //   101	143	10	localObject	Object
+    //   118	34	11	localb	b
+    //   71	216	12	localReentrantLock	ReentrantLock
     // Exception table:
     //   from	to	target	type
-    //   74	106	172	finally
-    //   206	208	208	finally
-    //   47	66	229	finally
-    //   121	143	229	finally
-    //   177	198	229	finally
+    //   113	145	230	finally
+    //   81	94	285	finally
+    //   97	103	285	finally
+    //   166	172	285	finally
+    //   175	186	285	finally
+    //   189	195	285	finally
+    //   242	248	285	finally
+    //   251	268	285	finally
+    //   276	281	285	finally
+    //   283	285	285	finally
   }
   
   public Iterator<E> iterator()
   {
-    return new HighThreadExecutor.a.a(this);
+    AppMethodBeat.i(98183);
+    HighThreadExecutor.a.a locala = new HighThreadExecutor.a.a(this);
+    AppMethodBeat.o(98183);
+    return locala;
   }
   
   public boolean offer(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
+    AppMethodBeat.i(98187);
+    if (paramE == null)
+    {
+      paramE = new NullPointerException();
+      AppMethodBeat.o(98187);
+      throw paramE;
     }
     AtomicInteger localAtomicInteger = this.d;
-    if (localAtomicInteger.get() == this.c) {
+    if (localAtomicInteger.get() == this.c)
+    {
+      AppMethodBeat.o(98187);
       return false;
     }
     int i = -1;
@@ -298,21 +370,29 @@ class HighThreadExecutor$a<E>
       if (i == 0) {
         e();
       }
-      if (i >= 0) {
+      if (i >= 0)
+      {
+        AppMethodBeat.o(98187);
         return true;
       }
     }
     finally
     {
       paramE.unlock();
+      AppMethodBeat.o(98187);
     }
+    AppMethodBeat.o(98187);
     return false;
   }
   
   public boolean offer(E paramE, long paramLong, TimeUnit paramTimeUnit)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
+    AppMethodBeat.i(98188);
+    if (paramE == null)
+    {
+      paramE = new NullPointerException();
+      AppMethodBeat.o(98188);
+      throw paramE;
     }
     paramLong = paramTimeUnit.toNanos(paramLong);
     paramTimeUnit = this.g;
@@ -341,17 +421,22 @@ class HighThreadExecutor$a<E>
       if (i == 0) {
         e();
       }
+      AppMethodBeat.o(98188);
       return true;
     }
     finally
     {
       paramTimeUnit.unlock();
+      AppMethodBeat.o(98188);
     }
   }
   
   public E peek()
   {
-    if (this.d.get() == 0) {
+    AppMethodBeat.i(98193);
+    if (this.d.get() == 0)
+    {
+      AppMethodBeat.o(98193);
       return null;
     }
     ReentrantLock localReentrantLock = this.e;
@@ -368,94 +453,99 @@ class HighThreadExecutor$a<E>
     finally
     {
       localReentrantLock.unlock();
+      AppMethodBeat.o(98193);
     }
   }
   
   public E poll()
   {
     Object localObject1 = null;
-    Object localObject3 = null;
+    AppMethodBeat.i(98194);
     AtomicInteger localAtomicInteger = this.d;
-    if (localAtomicInteger.get() == 0) {}
-    for (;;)
+    if (localAtomicInteger.get() == 0)
     {
-      return localObject3;
-      int i = -1;
-      ReentrantLock localReentrantLock = this.e;
-      localReentrantLock.lock();
-      try
+      AppMethodBeat.o(98194);
+      return null;
+    }
+    int i = -1;
+    ReentrantLock localReentrantLock = this.e;
+    localReentrantLock.lock();
+    try
+    {
+      if (localAtomicInteger.get() > 0)
       {
-        if (localAtomicInteger.get() > 0)
+        Object localObject3 = b();
+        int j = localAtomicInteger.getAndDecrement();
+        i = j;
+        localObject1 = localObject3;
+        if (j > 1)
         {
-          localObject3 = b();
-          int j = localAtomicInteger.getAndDecrement();
-          i = j;
+          this.f.signal();
           localObject1 = localObject3;
-          if (j > 1)
-          {
-            this.f.signal();
-            localObject1 = localObject3;
-            i = j;
-          }
+          i = j;
         }
-        localReentrantLock.unlock();
-        localObject3 = localObject1;
-        if (i != this.c) {
-          continue;
-        }
+      }
+      localReentrantLock.unlock();
+      if (i == this.c) {
         d();
-        return localObject1;
       }
-      finally
-      {
-        localReentrantLock.unlock();
-      }
+      AppMethodBeat.o(98194);
+      return localObject1;
+    }
+    finally
+    {
+      localReentrantLock.unlock();
+      AppMethodBeat.o(98194);
     }
   }
   
   public E poll(long paramLong, TimeUnit paramTimeUnit)
   {
+    AppMethodBeat.i(98189);
     paramLong = paramTimeUnit.toNanos(paramLong);
     AtomicInteger localAtomicInteger = this.d;
     paramTimeUnit = this.e;
     paramTimeUnit.lockInterruptibly();
     try
     {
-      int i = localAtomicInteger.get();
-      if (i == 0) {
-        if (paramLong <= 0L)
-        {
-          paramTimeUnit.unlock();
-          paramTimeUnit = null;
-        }
-      }
-      Object localObject1;
-      do
+      for (;;)
       {
-        return paramTimeUnit;
-        paramLong = this.f.awaitNanos(paramLong);
-        break;
-        localObject1 = b();
-        i = localAtomicInteger.getAndDecrement();
-        if (i > 1) {
-          this.f.signal();
+        i = localAtomicInteger.get();
+        if (i != 0) {
+          break;
         }
-        paramTimeUnit.unlock();
-        paramTimeUnit = localObject1;
-      } while (i != this.c);
-      d();
-      return localObject1;
+        if (paramLong <= 0L) {
+          return null;
+        }
+        paramLong = this.f.awaitNanos(paramLong);
+      }
+      Object localObject2 = b();
+      int i = localAtomicInteger.getAndDecrement();
+      if (i > 1) {
+        this.f.signal();
+      }
+      paramTimeUnit.unlock();
+      if (i == this.c) {
+        d();
+      }
+      AppMethodBeat.o(98189);
+      return localObject2;
     }
     finally
     {
       paramTimeUnit.unlock();
+      AppMethodBeat.o(98189);
     }
   }
   
   public void put(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
+    AppMethodBeat.i(98190);
+    if (paramE == null)
+    {
+      paramE = new NullPointerException();
+      AppMethodBeat.o(98190);
+      throw paramE;
     }
     b localb1 = new b(paramE);
     paramE = this.g;
@@ -471,6 +561,7 @@ class HighThreadExecutor$a<E>
     finally
     {
       paramE.unlock();
+      AppMethodBeat.o(98190);
     }
     int i = localAtomicInteger.getAndIncrement();
     if (i + 1 < this.c) {
@@ -480,20 +571,29 @@ class HighThreadExecutor$a<E>
     if (i == 0) {
       e();
     }
+    AppMethodBeat.o(98190);
   }
   
   public int remainingCapacity()
   {
-    return this.c - this.d.get();
+    AppMethodBeat.i(98191);
+    int i = this.c;
+    int j = this.d.get();
+    AppMethodBeat.o(98191);
+    return i - j;
   }
   
   public int size()
   {
-    return this.d.get();
+    AppMethodBeat.i(98184);
+    int i = this.d.get();
+    AppMethodBeat.o(98184);
+    return i;
   }
   
   public E take()
   {
+    AppMethodBeat.i(98192);
     AtomicInteger localAtomicInteger = this.d;
     ReentrantLock localReentrantLock = this.e;
     localReentrantLock.lockInterruptibly();
@@ -507,6 +607,7 @@ class HighThreadExecutor$a<E>
     finally
     {
       localReentrantLock.unlock();
+      AppMethodBeat.o(98192);
     }
     Object localObject2;
     int i = localObject1.getAndDecrement();
@@ -517,6 +618,7 @@ class HighThreadExecutor$a<E>
     if (i == this.c) {
       d();
     }
+    AppMethodBeat.o(98192);
     return localObject2;
   }
   
@@ -534,7 +636,7 @@ class HighThreadExecutor$a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.map.lib.thread.HighThreadExecutor.a
  * JD-Core Version:    0.7.0.1
  */

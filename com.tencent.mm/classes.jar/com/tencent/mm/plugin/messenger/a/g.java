@@ -1,21 +1,25 @@
 package com.tencent.mm.plugin.messenger.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class g
 {
-  public static d mcv;
+  public static d oCX;
   
-  public static d bhI()
+  public static d bPJ()
   {
-    if (mcv == null) {
-      mcv = new b();
+    AppMethodBeat.i(111118);
+    if (oCX == null) {
+      oCX = new b();
     }
-    if ((mcv instanceof b)) {
-      y.w("MicroMsg.SendMsgMgrFactory", "we are using dummy SendMsgMgr!!");
+    if ((oCX instanceof b)) {
+      ab.w("MicroMsg.SendMsgMgrFactory", "we are using dummy SendMsgMgr!!");
     }
-    return mcv;
+    d locald = oCX;
+    AppMethodBeat.o(111118);
+    return locald;
   }
 }
 

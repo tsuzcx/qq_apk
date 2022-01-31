@@ -1,5 +1,6 @@
 package com.tencent.mm.vending.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,8 +9,16 @@ import java.util.List;
 public final class c<_Target extends a>
   implements a, b<_Target>
 {
-  private List<WeakReference<_Target>> a = new ArrayList();
-  private boolean b = true;
+  private List<WeakReference<_Target>> a;
+  private boolean b;
+  
+  public c()
+  {
+    AppMethodBeat.i(126111);
+    this.a = new ArrayList();
+    this.b = true;
+    AppMethodBeat.o(126111);
+  }
   
   public final void dead()
   {
@@ -17,8 +26,10 @@ public final class c<_Target extends a>
     {
       try
       {
-        boolean bool = this.b;
-        if (!bool) {
+        AppMethodBeat.i(126113);
+        if (!this.b)
+        {
+          AppMethodBeat.o(126113);
           return;
         }
         Iterator localIterator = this.a.iterator();
@@ -35,6 +46,7 @@ public final class c<_Target extends a>
       }
       finally {}
       this.b = false;
+      AppMethodBeat.o(126113);
     }
   }
   
@@ -44,38 +56,44 @@ public final class c<_Target extends a>
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 25	com/tencent/mm/vending/e/c:b	Z
-    //   6: ifne +16 -> 22
-    //   9: aload_1
-    //   10: invokestatic 61	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
-    //   13: aload_1
-    //   14: invokeinterface 50 1 0
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: return
-    //   22: aload_0
-    //   23: getfield 23	com/tencent/mm/vending/e/c:a	Ljava/util/List;
-    //   26: new 45	java/lang/ref/WeakReference
-    //   29: dup
-    //   30: aload_1
-    //   31: invokespecial 63	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   34: invokeinterface 67 2 0
-    //   39: pop
-    //   40: goto -21 -> 19
-    //   43: astore_1
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: aload_1
-    //   47: athrow
+    //   2: ldc 67
+    //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 32	com/tencent/mm/vending/e/c:b	Z
+    //   11: ifne +21 -> 32
+    //   14: aload_1
+    //   15: invokestatic 73	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
+    //   18: aload_1
+    //   19: invokeinterface 61 1 0
+    //   24: ldc 67
+    //   26: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   29: aload_0
+    //   30: monitorexit
+    //   31: return
+    //   32: aload_0
+    //   33: getfield 30	com/tencent/mm/vending/e/c:a	Ljava/util/List;
+    //   36: new 56	java/lang/ref/WeakReference
+    //   39: dup
+    //   40: aload_1
+    //   41: invokespecial 75	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   44: invokeinterface 79 2 0
+    //   49: pop
+    //   50: ldc 67
+    //   52: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   55: goto -26 -> 29
+    //   58: astore_1
+    //   59: aload_0
+    //   60: monitorexit
+    //   61: aload_1
+    //   62: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	48	0	this	c
-    //   0	48	1	param_Target	_Target
+    //   0	63	0	this	c
+    //   0	63	1	param_Target	_Target
     // Exception table:
     //   from	to	target	type
-    //   2	19	43	finally
-    //   22	40	43	finally
+    //   2	29	58	finally
+    //   32	55	58	finally
   }
 }
 

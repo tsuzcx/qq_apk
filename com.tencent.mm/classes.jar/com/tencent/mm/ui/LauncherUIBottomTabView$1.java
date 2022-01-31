@@ -2,46 +2,51 @@ package com.tencent.mm.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.a.jm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jv;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class LauncherUIBottomTabView$1
   implements View.OnClickListener
 {
-  private final long peu = 300L;
+  private final long rXi = 300L;
   
   LauncherUIBottomTabView$1(LauncherUIBottomTabView paramLauncherUIBottomTabView) {}
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(29486);
     int i = ((Integer)paramView.getTag()).intValue();
-    if ((LauncherUIBottomTabView.a(this.uLD) == i) && (i == 0) && (System.currentTimeMillis() - LauncherUIBottomTabView.b(this.uLD) <= 300L))
+    if ((LauncherUIBottomTabView.a(this.yZI) == i) && (i == 0) && (System.currentTimeMillis() - LauncherUIBottomTabView.b(this.yZI) <= 300L))
     {
-      y.v("MicroMsg.LauncherUITabView", "onMainTabDoubleClick");
-      LauncherUIBottomTabView.c(this.uLD).removeMessages(0);
-      a.udP.m(new jm());
-      LauncherUIBottomTabView.a(this.uLD, System.currentTimeMillis());
-      LauncherUIBottomTabView.a(this.uLD, i);
+      ab.v("MicroMsg.LauncherUITabView", "onMainTabDoubleClick");
+      LauncherUIBottomTabView.c(this.yZI).removeMessages(0);
+      a.ymk.l(new jv());
+      LauncherUIBottomTabView.a(this.yZI, System.currentTimeMillis());
+      LauncherUIBottomTabView.a(this.yZI, i);
+      AppMethodBeat.o(29486);
       return;
     }
-    if (LauncherUIBottomTabView.d(this.uLD) != null)
+    if (LauncherUIBottomTabView.d(this.yZI) != null)
     {
-      if ((i != 0) || (LauncherUIBottomTabView.a(this.uLD) != 0))
+      if ((i != 0) || (LauncherUIBottomTabView.a(this.yZI) != 0))
       {
-        y.v("MicroMsg.LauncherUITabView", "directly dispatch tab click event");
-        LauncherUIBottomTabView.a(this.uLD, System.currentTimeMillis());
-        LauncherUIBottomTabView.a(this.uLD, i);
-        LauncherUIBottomTabView.d(this.uLD).qc(i);
+        ab.v("MicroMsg.LauncherUITabView", "directly dispatch tab click event");
+        LauncherUIBottomTabView.a(this.yZI, System.currentTimeMillis());
+        LauncherUIBottomTabView.a(this.yZI, i);
+        LauncherUIBottomTabView.d(this.yZI).onTabClick(i);
+        AppMethodBeat.o(29486);
         return;
       }
-      y.v("MicroMsg.LauncherUITabView", "do double click check");
-      LauncherUIBottomTabView.c(this.uLD).sendEmptyMessageDelayed(0, 300L);
+      ab.v("MicroMsg.LauncherUITabView", "do double click check");
+      LauncherUIBottomTabView.c(this.yZI).sendEmptyMessageDelayed(0, 300L);
     }
-    LauncherUIBottomTabView.a(this.uLD, System.currentTimeMillis());
-    LauncherUIBottomTabView.a(this.uLD, i);
-    y.w("MicroMsg.LauncherUITabView", "on tab click, index %d, but listener is null", new Object[] { (Integer)paramView.getTag() });
+    LauncherUIBottomTabView.a(this.yZI, System.currentTimeMillis());
+    LauncherUIBottomTabView.a(this.yZI, i);
+    ab.w("MicroMsg.LauncherUITabView", "on tab click, index %d, but listener is null", new Object[] { (Integer)paramView.getTag() });
+    AppMethodBeat.o(29486);
   }
 }
 

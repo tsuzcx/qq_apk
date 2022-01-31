@@ -1,29 +1,36 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.modelgeo.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.modelgeo.c;
 import com.tencent.mm.plugin.location.model.LocationInfo;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class i$5
-  implements a.a
+  implements b.a
 {
   i$5(i parami) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (!paramBoolean) {
+    AppMethodBeat.i(113743);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(113743);
       return false;
     }
-    y.d("MicroMsg.ViewMapUI", "onGetLocation flong " + paramFloat1 + " flat " + paramFloat2);
-    if ((paramFloat2 == 0.0D) && (paramFloat1 == 0.0D)) {
+    ab.d("MicroMsg.ViewMapUI", "onGetLocation flong " + paramFloat1 + " flat " + paramFloat2);
+    if ((paramFloat2 == 0.0D) && (paramFloat1 == 0.0D))
+    {
+      AppMethodBeat.o(113743);
       return true;
     }
-    y.d("MicroMsg.ViewMapUI", "myLocation " + this.lKF.lIa.lCJ + " " + this.lKF.lIa.lCK);
-    y.d("MicroMsg.ViewMapUI", "location my show");
-    this.lKF.lIa.lCJ = paramFloat2;
-    this.lKF.lIa.lCK = paramFloat1;
-    this.lKF.lIe.a(this.lKF.lIa.lCJ, this.lKF.lIa.lCK, this.lKF.lIl, this.lKF.lIa.lCI);
+    ab.d("MicroMsg.ViewMapUI", "myLocation " + this.ohX.ofn.nZV + " " + this.ohX.ofn.nZW);
+    ab.d("MicroMsg.ViewMapUI", "location my show");
+    this.ohX.ofn.nZV = paramFloat2;
+    this.ohX.ofn.nZW = paramFloat1;
+    this.ohX.ofr.a(this.ohX.ofn.nZV, this.ohX.ofn.nZW, this.ohX.ofy, this.ohX.ofn.nZU);
+    AppMethodBeat.o(113743);
     return true;
   }
 }

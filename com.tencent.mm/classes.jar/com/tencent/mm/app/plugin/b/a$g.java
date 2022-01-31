@@ -1,14 +1,17 @@
 package com.tencent.mm.app.plugin.b;
 
-import com.tencent.mm.h.a.fp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fs;
 import com.tencent.mm.sdk.b.c;
 
 public final class a$g
-  extends c<fp>
+  extends c<fs>
 {
   public a$g()
   {
-    this.udX = fp.class.getName().hashCode();
+    AppMethodBeat.i(15745);
+    this.__eventId = fs.class.getName().hashCode();
+    AppMethodBeat.o(15745);
   }
 }
 

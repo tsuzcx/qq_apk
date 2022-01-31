@@ -1,29 +1,26 @@
 package com.tencent.ttpic.util;
 
-public enum RetrieveDataManager
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public class RetrieveDataManager
 {
-  INSTANCE;
+  private static final ThreadLocal<RetrieveDataManager> INSTANCE;
+  private final TexSaveProcess mRGBATexSaveProcess;
+  private final TexSaveProcess mYUVTexSaveProcess;
   
-  private final TexSaveProcess mRGBATexSaveProcess = new RGBATexSaveProcess();
-  private final TexSaveProcess mYUVTexSaveProcess = new YUVTexSaveProcess();
-  
-  private RetrieveDataManager() {}
-  
-  private boolean checkBufSize(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  static
   {
-    if (paramInt1 == RetrieveDataManager.DATA_TYPE.RGBA.value) {
-      if (paramArrayOfByte.length != paramInt2 * paramInt3 * 4) {}
-    }
-    do
-    {
-      return true;
-      return false;
-      if (paramInt1 != RetrieveDataManager.DATA_TYPE.YUV.value) {
-        break;
-      }
-    } while (paramArrayOfByte.length == paramInt2 * paramInt3 * 3 / 2);
-    return false;
-    return false;
+    AppMethodBeat.i(83974);
+    INSTANCE = new RetrieveDataManager.1();
+    AppMethodBeat.o(83974);
+  }
+  
+  public RetrieveDataManager()
+  {
+    AppMethodBeat.i(83969);
+    this.mRGBATexSaveProcess = new RGBATexSaveProcess();
+    this.mYUVTexSaveProcess = new YUVTexSaveProcess();
+    AppMethodBeat.o(83969);
   }
   
   private TexSaveProcess createTexSaveProcess(int paramInt)
@@ -39,61 +36,56 @@ public enum RetrieveDataManager
   
   public static RetrieveDataManager getInstance()
   {
-    return INSTANCE;
+    AppMethodBeat.i(83970);
+    RetrieveDataManager localRetrieveDataManager = (RetrieveDataManager)INSTANCE.get();
+    AppMethodBeat.o(83970);
+    return localRetrieveDataManager;
   }
   
-  public final void clear()
+  public void clear()
   {
+    AppMethodBeat.i(83973);
     this.mRGBATexSaveProcess.clear();
     this.mYUVTexSaveProcess.clear();
+    AppMethodBeat.o(83973);
   }
   
-  public final boolean isValid(int paramInt)
+  public boolean isValid(int paramInt)
   {
-    boolean bool2 = false;
+    AppMethodBeat.i(83972);
     RetrieveDataManager.DATA_TYPE[] arrayOfDATA_TYPE = RetrieveDataManager.DATA_TYPE.values();
     int j = arrayOfDATA_TYPE.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
+      if (arrayOfDATA_TYPE[i].value == paramInt)
       {
-        if (arrayOfDATA_TYPE[i].value == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+        AppMethodBeat.o(83972);
+        return true;
       }
       i += 1;
     }
+    AppMethodBeat.o(83972);
+    return false;
   }
   
-  public final boolean retrieveData(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
+  public byte[] retrieveData(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (!checkBufSize(paramInt1, paramInt3, paramInt4, paramArrayOfByte)) {}
-    TexSaveProcess localTexSaveProcess;
-    do
+    AppMethodBeat.i(83971);
+    Object localObject = createTexSaveProcess(paramInt1);
+    if (localObject != null)
     {
-      return false;
-      localTexSaveProcess = createTexSaveProcess(paramInt1);
-    } while (localTexSaveProcess == null);
-    return localTexSaveProcess.retrieveData(paramInt2, paramInt3, paramInt4, paramArrayOfByte);
-  }
-  
-  public final byte[] retrieveData(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    TexSaveProcess localTexSaveProcess = createTexSaveProcess(paramInt1);
-    if (localTexSaveProcess != null) {
-      return localTexSaveProcess.retrieveData(paramInt2, paramInt3, paramInt4);
+      localObject = ((TexSaveProcess)localObject).retrieveData(paramInt2, paramInt3, paramInt4);
+      AppMethodBeat.o(83971);
+      return localObject;
     }
+    AppMethodBeat.o(83971);
     return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.ttpic.util.RetrieveDataManager
  * JD-Core Version:    0.7.0.1
  */

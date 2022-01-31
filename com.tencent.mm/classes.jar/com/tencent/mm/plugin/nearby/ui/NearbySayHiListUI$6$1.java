@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class NearbySayHiListUI$6$1
@@ -12,7 +13,9 @@ final class NearbySayHiListUI$6$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(NearbySayHiListUI.f(this.mDR.mDP));
+    AppMethodBeat.i(55499);
+    g.Rc().a(NearbySayHiListUI.f(this.pdT.pdR));
+    AppMethodBeat.o(55499);
   }
 }
 

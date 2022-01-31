@@ -1,25 +1,78 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.storage.bq;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bv.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.io.IOException;
 
 public abstract interface j
-  extends f
 {
-  public abstract bq Ic(String paramString);
+  public static final class a
+    extends j.b
+  {
+    private int cmdId;
+    
+    public a(int paramInt, a parama)
+    {
+      super();
+      this.cmdId = paramInt;
+      this.oDZ = parama;
+    }
+    
+    public final int getCmdId()
+    {
+      return this.cmdId;
+    }
+  }
   
-  public abstract void aK(String paramString, boolean paramBoolean);
-  
-  public abstract void bX(String paramString, int paramInt);
-  
-  public abstract List<bq> big();
-  
-  public abstract void c(String paramString, boolean paramBoolean1, boolean paramBoolean2);
-  
-  public abstract void delete(String paramString);
-  
-  public abstract boolean has(String paramString);
+  public static class b
+  {
+    public int bsY = -1;
+    public byte[] buffer;
+    public int cmdId;
+    public long fCI;
+    public int id;
+    public int oDV;
+    public long oDW;
+    public String oDX;
+    public String oDY;
+    public a oDZ;
+    
+    public b(int paramInt)
+    {
+      this.cmdId = paramInt;
+    }
+    
+    public final a bQh()
+    {
+      return this.oDZ;
+    }
+    
+    public final byte[] getBuffer()
+    {
+      AppMethodBeat.i(60022);
+      if ((this.buffer == null) && (this.oDZ != null)) {}
+      try
+      {
+        this.buffer = this.oDZ.toByteArray();
+        byte[] arrayOfByte = this.buffer;
+        AppMethodBeat.o(60022);
+        return arrayOfByte;
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          ab.e("MicroMsg.OpLog.Operation", "summeroplog Operation toByteArray err: " + localIOException.getMessage());
+        }
+      }
+    }
+    
+    public int getCmdId()
+    {
+      return this.cmdId;
+    }
+  }
 }
 
 

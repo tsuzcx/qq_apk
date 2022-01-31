@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.ui.base.h.c;
 
@@ -8,27 +9,34 @@ final class CardBaseUI$5
 {
   CardBaseUI$5(CardBaseUI paramCardBaseUI, b paramb, String paramString) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
-    if (this.ijQ.azl())
+    AppMethodBeat.i(87621);
+    if (this.kkQ.baR())
     {
       switch (paramInt)
       {
       default: 
+        AppMethodBeat.o(87621);
         return;
       case 0: 
-        this.ijO.a((CardInfo)this.ijQ);
+        this.kkO.a((CardInfo)this.kkQ);
+        AppMethodBeat.o(87621);
         return;
       }
-      CardBaseUI.b(this.ijO, this.ijP);
+      CardBaseUI.b(this.kkO, this.kkP);
+      AppMethodBeat.o(87621);
       return;
     }
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    CardBaseUI.b(this.ijO, this.ijP);
+    for (;;)
+    {
+      AppMethodBeat.o(87621);
+      return;
+      CardBaseUI.b(this.kkO, this.kkP);
+    }
   }
 }
 

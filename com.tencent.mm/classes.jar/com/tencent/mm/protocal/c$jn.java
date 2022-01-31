@@ -5,7 +5,7 @@ public final class c$jn
 {
   public c$jn()
   {
-    super("stopScanWXDevice", "stopScanWXDevice", 122, true);
+    super("showAllNonBaseMenuItem", "showAllNonBaseMenuItem", 92, false);
   }
 }
 

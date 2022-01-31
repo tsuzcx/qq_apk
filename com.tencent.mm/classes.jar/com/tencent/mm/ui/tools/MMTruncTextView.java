@@ -7,12 +7,13 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MMTruncTextView
   extends TextView
 {
-  private boolean wdD = false;
-  private boolean wdE = false;
+  private boolean Awl = false;
+  private boolean Awm = false;
   
   public MMTruncTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,68 +27,96 @@ public class MMTruncTextView
   
   public int getBaseline()
   {
+    AppMethodBeat.i(107739);
     try
     {
       int i = super.getBaseline();
+      AppMethodBeat.o(107739);
       return i;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(107739);
+    }
     return -1;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(107738);
     try
     {
       super.onDraw(paramCanvas);
+      AppMethodBeat.o(107738);
       return;
     }
-    catch (Throwable paramCanvas) {}
+    catch (Throwable paramCanvas)
+    {
+      AppMethodBeat.o(107738);
+    }
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(107735);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (!this.wdD) {}
-    CharSequence localCharSequence;
-    do
+    if (!this.Awl)
     {
+      AppMethodBeat.o(107735);
       return;
-      localCharSequence = getText();
-    } while (!(localCharSequence instanceof Spanned));
-    this.wdE = true;
+    }
+    CharSequence localCharSequence = getText();
+    if (!(localCharSequence instanceof Spanned))
+    {
+      AppMethodBeat.o(107735);
+      return;
+    }
+    this.Awm = true;
     setText(TextUtils.ellipsize(localCharSequence, getPaint(), getWidth() - getCompoundPaddingRight() - getCompoundPaddingLeft(), TextUtils.TruncateAt.END));
-    this.wdE = false;
+    this.Awm = false;
+    AppMethodBeat.o(107735);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(107737);
     try
     {
       super.onMeasure(paramInt1, paramInt2);
+      AppMethodBeat.o(107737);
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(107737);
+    }
   }
   
   public boolean onPreDraw()
   {
+    AppMethodBeat.i(107740);
     try
     {
       boolean bool = super.onPreDraw();
+      AppMethodBeat.o(107740);
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(107740);
+    }
     return true;
   }
   
   protected void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(107736);
     super.onTextChanged(paramCharSequence, paramInt1, paramInt2, paramInt3);
-    if (!this.wdE) {}
+    if (!this.Awm) {}
     for (boolean bool = true;; bool = false)
     {
-      this.wdD = bool;
+      this.Awl = bool;
+      AppMethodBeat.o(107736);
       return;
     }
   }

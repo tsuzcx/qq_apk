@@ -1,396 +1,204 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.app.Activity;
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.luggage.j.g;
-import com.tencent.luggage.l.a.d;
-import com.tencent.mm.plugin.appbrand.config.a.f;
-import com.tencent.mm.plugin.appbrand.widget.c;
-import com.tencent.mm.plugin.appbrand.widget.c.2;
-import com.tencent.mm.plugin.appbrand.widget.c.a;
-import com.tencent.mm.plugin.appbrand.widget.c.b;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.webkit.WebChromeClient.CustomViewCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.f.a;
+import java.util.Collections;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
-  extends k
 {
-  private ViewGroup fSV;
-  private String gDP;
-  private c gSA;
-  private FrameLayout gSB;
-  private q gSC = getContainer().getPageViewPrivate();
-  private Map<String, q> gSD = new HashMap();
-  private LinkedList<d.b> gSE = new LinkedList();
+  private static final d.a ivf;
+  private d.a ivg;
+  private View ivh;
+  WebChromeClient.CustomViewCallback ivi;
+  private int ivj;
+  private ViewGroup.LayoutParams ivk;
+  private ViewGroup ivl;
+  private int ivm;
+  private int ivn;
+  private WindowManager.LayoutParams ivo;
+  final Set<ao> ivp;
+  private Context mContext;
   
-  public d(Context paramContext, n paramn)
+  static
   {
-    super(paramContext, paramn);
-  }
-  
-  private c amS()
-  {
-    c localc = new c(getContext());
-    localc.setId(a.d.app_brand_multi_page_tabbar);
-    final com.tencent.mm.plugin.appbrand.config.a.e locale = getContainer().getAppConfig().fND;
-    localc.setPosition(locale.fNP);
-    localc.h(locale.color, locale.fNQ, locale.fNR, locale.fNS);
-    Iterator localIterator = locale.bTS.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(141801);
+    ivf = new d.a()
     {
-      Object localObject2 = (a.f)localIterator.next();
-      Object localObject1 = ((a.f)localObject2).url;
-      String str1 = ((a.f)localObject2).text;
-      String str2 = ((a.f)localObject2).bVO;
-      String str3 = ((a.f)localObject2).fNT;
-      localObject2 = new c.a((byte)0);
-      try
+      public final ViewGroup cs(View paramAnonymousView)
       {
-        ((c.a)localObject2).BP = c.wW(str2);
-        ((c.a)localObject2).hnU = c.wW(str3);
-        ((c.a)localObject2).hnV = str1;
-        ((c.a)localObject2).mUrl = ((String)localObject1);
-        if ((((c.a)localObject2).hnV == null) && ((((c.a)localObject2).BP == null) || (((c.a)localObject2).hnU == null))) {
-          y.e("MicroMsg.AppBrandPageTabBar", "illegal data");
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        AppMethodBeat.i(141799);
+        Activity localActivity = a.hr(paramAnonymousView.getContext());
+        if (localActivity == null)
         {
-          y.e("MicroMsg.AppBrandPageTabBar", localException.getMessage());
+          paramAnonymousView = (ViewGroup)paramAnonymousView.getRootView();
+          AppMethodBeat.o(141799);
+          return paramAnonymousView;
         }
-        localObject1 = (ViewGroup)LayoutInflater.from(localc.getContext()).inflate(com.tencent.luggage.l.a.e.app_brand_tab_bar_item, localc.hnF, false);
-        localc.a((View)localObject1, (c.a)localObject2);
-        ((ViewGroup)localObject1).setOnClickListener(new c.2(localc));
-        localc.hnK.add(localObject2);
-        localc.hnF.addView((View)localObject1);
+        paramAnonymousView = (ViewGroup)localActivity.getWindow().getDecorView();
+        AppMethodBeat.o(141799);
+        return paramAnonymousView;
       }
-    }
-    localc.setClickListener(new c.b()
-    {
-      public final void M(int paramAnonymousInt, String paramAnonymousString)
-      {
-        d.this.getContainer().vF(paramAnonymousString);
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("pagePath", paramAnonymousString);
-        localHashMap.put("text", ((a.f)locale.bTS.get(paramAnonymousInt)).text);
-        localHashMap.put("index", Integer.valueOf(paramAnonymousInt));
-        d.this.getCurrentPageView().b(new d.a((byte)0).o(localHashMap));
-      }
-    });
-    return localc;
+    };
+    AppMethodBeat.o(141801);
   }
   
-  private void amT()
+  d(Context paramContext, d.a parama)
   {
-    Iterator localIterator = this.gSE.iterator();
-    while (localIterator.hasNext())
-    {
-      d.b localb = (d.b)localIterator.next();
-      removeCallbacks(localb);
-      localb.pP = true;
-    }
-    this.gSE.clear();
+    AppMethodBeat.i(141800);
+    this.ivp = Collections.newSetFromMap(new ConcurrentHashMap());
+    this.mContext = paramContext;
+    this.ivg = parama;
+    AppMethodBeat.o(141800);
   }
   
-  /* Error */
-  private q vD(String paramString)
+  private void aIK()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 54	com/tencent/mm/plugin/appbrand/page/d:gSC	Lcom/tencent/mm/plugin/appbrand/page/q;
-    //   6: ifnull +41 -> 47
-    //   9: aload_0
-    //   10: getfield 54	com/tencent/mm/plugin/appbrand/page/d:gSC	Lcom/tencent/mm/plugin/appbrand/page/q;
-    //   13: astore_2
-    //   14: aload_0
-    //   15: aconst_null
-    //   16: putfield 54	com/tencent/mm/plugin/appbrand/page/d:gSC	Lcom/tencent/mm/plugin/appbrand/page/q;
-    //   19: aload_0
-    //   20: getfield 37	com/tencent/mm/plugin/appbrand/page/d:gSD	Ljava/util/Map;
-    //   23: aload_1
-    //   24: aload_2
-    //   25: invokeinterface 263 3 0
-    //   30: pop
-    //   31: aload_0
-    //   32: getfield 265	com/tencent/mm/plugin/appbrand/page/d:gSB	Landroid/widget/FrameLayout;
-    //   35: aload_2
-    //   36: invokevirtual 271	com/tencent/mm/plugin/appbrand/page/q:getContentView	()Landroid/view/View;
-    //   39: iconst_0
-    //   40: invokevirtual 276	android/widget/FrameLayout:addView	(Landroid/view/View;I)V
-    //   43: aload_0
-    //   44: monitorexit
-    //   45: aload_2
-    //   46: areturn
-    //   47: aload_0
-    //   48: invokevirtual 46	com/tencent/mm/plugin/appbrand/page/d:getContainer	()Lcom/tencent/mm/plugin/appbrand/page/n;
-    //   51: invokevirtual 52	com/tencent/mm/plugin/appbrand/page/n:getPageViewPrivate	()Lcom/tencent/mm/plugin/appbrand/page/q;
-    //   54: astore_2
-    //   55: goto -36 -> 19
-    //   58: astore_1
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: aload_1
-    //   62: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	63	0	this	d
-    //   0	63	1	paramString	String
-    //   13	42	2	localq	q
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	58	finally
-    //   19	43	58	finally
-    //   47	55	58	finally
+    AppMethodBeat.i(91085);
+    Iterator localIterator = this.ivp.iterator();
+    while (localIterator.hasNext()) {
+      ((ao)localIterator.next()).aJy();
+    }
+    AppMethodBeat.o(91085);
   }
   
-  private void vE(String paramString)
+  private void aIL()
   {
-    q localq2 = (q)this.gSD.get(g.bi(paramString));
-    localq2.getContentView().setVisibility(4);
-    paramString = null;
-    Iterator localIterator = this.gSD.values().iterator();
-    if (localIterator.hasNext())
-    {
-      q localq1 = (q)localIterator.next();
-      if (localq1.getContentView().getVisibility() != 0) {
-        break label116;
-      }
-      paramString = localq1;
+    AppMethodBeat.i(91086);
+    Iterator localIterator = this.ivp.iterator();
+    while (localIterator.hasNext()) {
+      ((ao)localIterator.next()).aDk();
     }
-    label116:
-    for (;;)
-    {
-      break;
-      localq2.getContentView().setVisibility(0);
-      if (paramString != null) {
-        paramString.getContentView().setVisibility(4);
-      }
-      localq2.pY();
-      if (paramString != null) {
-        paramString.qa();
-      }
-      super.agJ();
-      return;
-    }
+    AppMethodBeat.o(91086);
   }
   
-  protected final View agF()
+  public final void J(View paramView, int paramInt)
   {
-    RelativeLayout localRelativeLayout;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (this.fSV == null)
-    {
-      localRelativeLayout = new RelativeLayout(getContext());
-      this.gSB = new FrameLayout(getContext());
-      this.gSA = amS();
-      if (!"top".equals(getContainer().getAppConfig().fND.fNP)) {
-        break label125;
-      }
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(10);
-      localRelativeLayout.addView(this.gSB, localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(10);
-      localRelativeLayout.addView(this.gSA, localLayoutParams);
+    AppMethodBeat.i(91082);
+    aIJ();
+    Object localObject = this.ivg;
+    if (localObject == null) {
+      localObject = ivf;
     }
     for (;;)
     {
-      this.fSV = localRelativeLayout;
-      return this.fSV;
-      label125:
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      localLayoutParams.addRule(12);
-      localRelativeLayout.addView(this.gSA, localLayoutParams);
-      localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localLayoutParams.addRule(2, this.gSA.getId());
-      localRelativeLayout.addView(this.gSB, localLayoutParams);
-    }
-  }
-  
-  protected final void agG()
-  {
-    super.agG();
-    if (this.gSC != null) {
-      this.gSC.onDestroy();
-    }
-    Iterator localIterator = this.gSD.values().iterator();
-    while (localIterator.hasNext()) {
-      ((q)localIterator.next()).onDestroy();
-    }
-  }
-  
-  public final void agH()
-  {
-    super.agH();
-    getCurrentPageView().pY();
-  }
-  
-  public final void agI()
-  {
-    super.agI();
-    getCurrentPageView().qa();
-  }
-  
-  protected final void agJ()
-  {
-    super.agJ();
-  }
-  
-  public final void b(String paramString1, String paramString2, int[] paramArrayOfInt)
-  {
-    if ((this.gSC != null) && (e(paramArrayOfInt, this.gSC.hashCode()))) {
-      this.gSC.i(paramString1, paramString2, 0);
-    }
-    Iterator localIterator = this.gSD.values().iterator();
-    while (localIterator.hasNext())
-    {
-      q localq = (q)localIterator.next();
-      if (e(paramArrayOfInt, localq.hashCode())) {
-        localq.i(paramString1, paramString2, 0);
-      }
-    }
-  }
-  
-  public final void cleanup()
-  {
-    super.cleanup();
-    if (this.gSC != null) {
-      this.gSC.cleanup();
-    }
-    Iterator localIterator = this.gSD.values().iterator();
-    while (localIterator.hasNext()) {
-      ((q)localIterator.next()).cleanup();
-    }
-    amT();
-  }
-  
-  /* Error */
-  public final q getCurrentPageView()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 54	com/tencent/mm/plugin/appbrand/page/d:gSC	Lcom/tencent/mm/plugin/appbrand/page/q;
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: getfield 54	com/tencent/mm/plugin/appbrand/page/d:gSC	Lcom/tencent/mm/plugin/appbrand/page/q;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: aload_0
-    //   19: getfield 37	com/tencent/mm/plugin/appbrand/page/d:gSD	Ljava/util/Map;
-    //   22: aload_0
-    //   23: getfield 384	com/tencent/mm/plugin/appbrand/page/d:gDP	Ljava/lang/String;
-    //   26: invokestatic 282	com/tencent/luggage/j/g:bi	(Ljava/lang/String;)Ljava/lang/String;
-    //   29: invokeinterface 286 2 0
-    //   34: checkcast 267	com/tencent/mm/plugin/appbrand/page/q
-    //   37: astore_1
-    //   38: goto -24 -> 14
-    //   41: astore_1
-    //   42: aload_0
-    //   43: monitorexit
-    //   44: aload_1
-    //   45: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	46	0	this	d
-    //   13	25	1	localq	q
-    //   41	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	41	finally
-    //   18	38	41	finally
-  }
-  
-  public final String getCurrentUrl()
-  {
-    return this.gDP;
-  }
-  
-  public final c getTabBar()
-  {
-    return this.gSA;
-  }
-  
-  public final void loadUrl(String paramString)
-  {
-    if (paramString.equals(this.gDP)) {}
-    int i;
-    do
-    {
-      return;
-      i = this.gSA.wX(paramString);
-    } while (i < 0);
-    this.gDP = paramString;
-    this.gSA.mC(i);
-    if (this.gSD.get(g.bi(paramString)) == null)
-    {
-      q localq = vD(g.bi(paramString));
-      agK();
-      d.2 local2 = new d.2(this, paramString);
-      localq.a(new d.3(this, localq, local2, System.currentTimeMillis()));
-      if (this.gSD.size() > 1)
+      this.ivh = paramView;
+      if ((paramView.getParent() instanceof ViewGroup))
       {
-        this.gSE.add(local2);
-        postDelayed(local2, 500L);
-      }
-      localq.tB(paramString);
-      return;
-    }
-    amT();
-    vE(paramString);
-  }
-  
-  protected final void onMeasure(int paramInt1, int paramInt2)
-  {
-    super.onMeasure(paramInt1, paramInt2);
-    if ((getCurrentPageView() != null) && ("top".equals(this.gSA.getPosition())) && ((this.gSA.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
-    {
-      Object localObject1 = (ViewGroup.MarginLayoutParams)this.gSA.getLayoutParams();
-      Object localObject2 = getCurrentPageView().gTC;
-      paramInt1 = ((com.tencent.mm.plugin.appbrand.widget.actionbar.a)localObject2).getTop();
-      paramInt1 = ((com.tencent.mm.plugin.appbrand.widget.actionbar.a)localObject2).getMeasuredHeight() + paramInt1;
-      if (((ViewGroup.MarginLayoutParams)localObject1).topMargin != paramInt1)
-      {
-        ((ViewGroup.MarginLayoutParams)localObject1).topMargin = paramInt1;
-        this.gSA.requestLayout();
-      }
-      localObject1 = getCurrentPageView();
-      paramInt1 = this.gSA.getMeasuredHeight();
-      if ((!((q)localObject1).gTW) && ((((q)localObject1).gTC.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
-      {
-        localObject2 = (ViewGroup.MarginLayoutParams)((q)localObject1).gTC.getLayoutParams();
-        if (((ViewGroup.MarginLayoutParams)localObject2).bottomMargin != paramInt1)
+        this.ivl = ((ViewGroup)paramView.getParent());
+        this.ivj = this.ivl.indexOfChild(paramView);
+        this.ivk = paramView.getLayoutParams();
+        this.ivl.removeView(paramView);
+        localObject = ((d.a)localObject).cs(paramView);
+        ((ViewGroup)localObject).addView(paramView, new ViewGroup.LayoutParams(-1, -1));
+        ((ViewGroup)localObject).bringChildToFront(paramView);
+        paramView.setX(0.0F);
+        paramView.setY(0.0F);
+        paramView = a.hr(this.mContext);
+        if (paramView == null) {
+          break label325;
+        }
+        localObject = (ViewGroup)paramView.getWindow().getDecorView();
+        this.ivm = ((ViewGroup)localObject).getSystemUiVisibility();
+        if (!com.tencent.mm.compatible.util.d.fw(19)) {
+          break label290;
+        }
+        ((ViewGroup)localObject).setSystemUiVisibility(2);
+        label158:
+        this.ivo = new WindowManager.LayoutParams();
+        this.ivo.copyFrom(paramView.getWindow().getAttributes());
+        paramView.getWindow().addFlags(1024);
+        if (Build.VERSION.SDK_INT >= 28) {
+          paramView.getWindow().getAttributes().layoutInDisplayCutoutMode = 2;
+        }
+        this.ivn = paramView.getRequestedOrientation();
+        switch (paramInt)
         {
-          ((ViewGroup.MarginLayoutParams)localObject2).bottomMargin = paramInt1;
-          ((q)localObject1).gTC.requestLayout();
+        default: 
+          paramView.setRequestedOrientation(9);
         }
       }
+      for (;;)
+      {
+        aIK();
+        AppMethodBeat.o(91082);
+        return;
+        this.ivj = 0;
+        this.ivl = null;
+        this.ivk = null;
+        break;
+        label290:
+        ((ViewGroup)localObject).setSystemUiVisibility(4102);
+        break label158;
+        paramView.setRequestedOrientation(0);
+        continue;
+        paramView.setRequestedOrientation(8);
+        continue;
+        paramView.setRequestedOrientation(1);
+        continue;
+        label325:
+        com.tencent.luggage.g.d.e("Luggage.AppBrandCustomViewFullscreenImpl", "enterFullscreen, get NULL activity");
+        this.ivn = -1;
+        this.ivo = null;
+        this.ivm = 0;
+      }
     }
   }
   
-  public final boolean tz(String paramString)
+  public final void a(ao paramao)
   {
-    return this.gSA.wX(paramString) != -1;
+    AppMethodBeat.i(91084);
+    this.ivp.add(paramao);
+    AppMethodBeat.o(91084);
+  }
+  
+  public final boolean aIJ()
+  {
+    AppMethodBeat.i(91083);
+    if (this.ivh == null)
+    {
+      AppMethodBeat.o(91083);
+      return false;
+    }
+    if (this.ivi != null) {
+      this.ivi.onCustomViewHidden();
+    }
+    Activity localActivity = a.hr(this.mContext);
+    if (localActivity != null)
+    {
+      ((ViewGroup)localActivity.getWindow().getDecorView()).setSystemUiVisibility(this.ivm);
+      localActivity.getWindow().clearFlags(1024);
+      if (this.ivo != null) {
+        localActivity.getWindow().setAttributes(this.ivo);
+      }
+      localActivity.setRequestedOrientation(this.ivn);
+    }
+    for (;;)
+    {
+      if ((this.ivh.getParent() instanceof ViewGroup)) {
+        ((ViewGroup)this.ivh.getParent()).removeView(this.ivh);
+      }
+      if (this.ivl != null) {
+        this.ivl.addView(this.ivh, this.ivj, this.ivk);
+      }
+      this.ivh = null;
+      this.ivi = null;
+      aIL();
+      AppMethodBeat.o(91083);
+      return true;
+      com.tencent.luggage.g.d.e("Luggage.AppBrandCustomViewFullscreenImpl", "exitFullscreen, get NULL activity");
+    }
   }
 }
 

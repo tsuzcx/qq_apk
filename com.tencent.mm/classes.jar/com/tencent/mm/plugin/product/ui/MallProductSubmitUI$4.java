@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.product.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class MallProductSubmitUI$4
   implements View.OnClickListener
@@ -12,10 +13,12 @@ final class MallProductSubmitUI$4
   
   public final void onClick(View paramView)
   {
-    paramView = MallProductSubmitUI.d(this.mUW);
+    AppMethodBeat.i(44142);
+    paramView = MallProductSubmitUI.d(this.pxb);
     Intent localIntent = new Intent();
     localIntent.putExtra("launch_from_webview", true);
-    d.a(paramView.fyk, "address", ".ui.WalletSelectAddrUI", localIntent, 1, false);
+    d.a(paramView.gQx, "address", ".ui.WalletSelectAddrUI", localIntent, 1, false);
+    AppMethodBeat.o(44142);
   }
 }
 

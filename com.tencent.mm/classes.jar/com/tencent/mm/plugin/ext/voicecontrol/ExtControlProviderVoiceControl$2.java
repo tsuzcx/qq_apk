@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.ext.voicecontrol;
 
-import com.tencent.mm.protocal.c.ea;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.fb;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExtControlProviderVoiceControl$2
   implements Runnable
 {
-  ExtControlProviderVoiceControl$2(ExtControlProviderVoiceControl paramExtControlProviderVoiceControl, a parama, ea paramea) {}
+  ExtControlProviderVoiceControl$2(ExtControlProviderVoiceControl paramExtControlProviderVoiceControl, a parama, fb paramfb) {}
   
   public final void run()
   {
-    y.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] getResultMode getVoiceControlResult");
-    a locala = this.jLD;
-    int i = this.jLE.sxG;
-    y.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] setGetResultTimeOut %s", new Object[] { Integer.valueOf(i) });
-    locala.jLK = i;
-    this.jLC.a(this.jLD.jLF, this.jLD.appId, this.jLD.jLG);
+    AppMethodBeat.i(20441);
+    ab.i("MicroMsg.ext.ExtControlProviderVoiceControl", "[voiceControl] getResultMode getVoiceControlResult");
+    a locala = this.mfH;
+    int i = this.mfI.wrk;
+    ab.i("MicroMsg.ext.NetSceneAppVoiceControl", "[voiceControl] setGetResultTimeOut %s", new Object[] { Integer.valueOf(i) });
+    locala.mfO = i;
+    this.mfG.a(this.mfH.mfJ, this.mfH.appId, this.mfH.mfK);
+    AppMethodBeat.o(20441);
   }
 }
 

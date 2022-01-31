@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:orientation="vertical" android:id="@id/zi" android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/kl" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/tz" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:scaleType="centerCrop" />
-        <View android:layout_width="@dimen/kl" style="@style/n3" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:id="@id/u0" style="@style/km" />
-            <View style="@style/n3" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <TextView android:id="@id/awn" style="@style/kn" />
-                <View android:layout_width="fill_parent" android:layout_weight="1.0" style="@style/n3" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-    <TextView android:gravity="center|left" android:id="@id/u1" android:background="@color/a23" android:paddingLeft="@dimen/mg" android:paddingTop="@dimen/mq" android:paddingRight="@dimen/mg" android:paddingBottom="@dimen/mq" android:minHeight="@dimen/mp" android:singleLine="false" style="@style/k6" />
-</LinearLayout>
+    <TextView android:textSize="15.0dip" android:textColor="#ff888888" android:gravity="center" android:id="@id/axe" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lw" />
+    <android.support.v7.widget.RecyclerView android:id="@id/axf" android:background="#ff191919" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/n9" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/axg" android:background="@color/l_" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
+        <Button android:enabled="false" android:textSize="@dimen/m2" android:textColor="@color/a6s" android:gravity="center" android:id="@id/axh" android:layout_marginLeft="@dimen/l2" android:layout_marginRight="@dimen/l2" android:minWidth="64.0dip" android:text="@string/st" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_alignParentEnd="true" style="@style/ns" />
+    </RelativeLayout>
+</FrameLayout>

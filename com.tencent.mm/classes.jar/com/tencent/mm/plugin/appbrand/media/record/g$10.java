@@ -1,22 +1,26 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
-final class g$10
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class g$10
   implements Runnable
 {
-  g$10(g paramg) {}
+  public g$10(g paramg) {}
   
   public final void run()
   {
-    synchronized (g.f(this.gNX))
+    AppMethodBeat.i(105611);
+    synchronized (g.f(this.ipI))
     {
-      g.i(this.gNX);
+      g.h(this.ipI);
+      AppMethodBeat.o(105611);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.g.10
  * JD-Core Version:    0.7.0.1
  */

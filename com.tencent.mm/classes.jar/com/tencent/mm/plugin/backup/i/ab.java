@@ -1,78 +1,95 @@
 package com.tencent.mm.plugin.backup.i;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
 
 public final class ab
   extends com.tencent.mm.bv.a
 {
-  public int hPE;
-  public b hPF;
-  public long hQp;
-  public int hRg;
-  public int hRh;
-  public long hRi;
+  public long jJR;
+  public int jJg;
+  public b jJh;
+  public int jKH;
+  public int jKI;
+  public long jKJ;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(18077);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.gB(1, this.hPE);
-      if (this.hPF != null) {
-        paramVarArgs.b(2, this.hPF);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aO(1, this.jJg);
+      if (this.jJh != null) {
+        paramVarArgs.c(2, this.jJh);
       }
-      paramVarArgs.gB(3, this.hRg);
-      paramVarArgs.gB(4, this.hRh);
-      paramVarArgs.Y(5, this.hRi);
-      paramVarArgs.Y(6, this.hQp);
+      paramVarArgs.aO(3, this.jKH);
+      paramVarArgs.aO(4, this.jKI);
+      paramVarArgs.am(5, this.jKJ);
+      paramVarArgs.am(6, this.jJR);
+      AppMethodBeat.o(18077);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = d.a.a.a.gy(1, this.hPE) + 0;
+      int i = e.a.a.b.b.a.bl(1, this.jJg) + 0;
       paramInt = i;
-      if (this.hPF != null) {
-        paramInt = i + d.a.a.a.a(2, this.hPF);
+      if (this.jJh != null) {
+        paramInt = i + e.a.a.b.b.a.b(2, this.jJh);
       }
-      return paramInt + d.a.a.a.gy(3, this.hRg) + d.a.a.a.gy(4, this.hRh) + d.a.a.a.X(5, this.hRi) + d.a.a.a.X(6, this.hQp);
+      i = e.a.a.b.b.a.bl(3, this.jKH);
+      int j = e.a.a.b.b.a.bl(4, this.jKI);
+      int k = e.a.a.b.b.a.p(5, this.jKJ);
+      int m = e.a.a.b.b.a.p(6, this.jJR);
+      AppMethodBeat.o(18077);
+      return paramInt + i + j + k + m;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(18077);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       ab localab = (ab)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(18077);
         return -1;
       case 1: 
-        localab.hPE = locala.xpH.oD();
+        localab.jJg = locala.CLY.sl();
+        AppMethodBeat.o(18077);
         return 0;
       case 2: 
-        localab.hPF = locala.cUs();
+        localab.jJh = locala.CLY.eqS();
+        AppMethodBeat.o(18077);
         return 0;
       case 3: 
-        localab.hRg = locala.xpH.oD();
+        localab.jKH = locala.CLY.sl();
+        AppMethodBeat.o(18077);
         return 0;
       case 4: 
-        localab.hRh = locala.xpH.oD();
+        localab.jKI = locala.CLY.sl();
+        AppMethodBeat.o(18077);
         return 0;
       case 5: 
-        localab.hRi = locala.xpH.oE();
+        localab.jKJ = locala.CLY.sm();
+        AppMethodBeat.o(18077);
         return 0;
       }
-      localab.hQp = locala.xpH.oE();
+      localab.jJR = locala.CLY.sm();
+      AppMethodBeat.o(18077);
       return 0;
     }
+    AppMethodBeat.o(18077);
     return -1;
   }
 }

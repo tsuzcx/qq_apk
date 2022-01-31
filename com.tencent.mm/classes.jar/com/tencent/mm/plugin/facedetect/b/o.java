@@ -1,127 +1,143 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ah.m.a;
-import com.tencent.mm.ah.m.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m.a;
+import com.tencent.mm.ai.m.b;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.ayt;
-import com.tencent.mm.protocal.c.bkd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bfu;
+import com.tencent.mm.protocal.protobuf.btd;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class o
   extends p
   implements k, e
 {
-  private final q edR = new f();
-  private boolean jMT = false;
-  private String jMY = "";
+  private final q ftU;
+  private boolean mhc;
+  private String mhh;
   
   public o(long paramLong, String paramString1, String paramString2)
   {
-    j.a locala = (j.a)this.edR.Kv();
-    locala.jMI.tbj = p.jMZ;
-    locala.jMI.tbl = paramLong;
-    locala.jMI.tDR = paramString1;
-    locala.jMI.tDS = paramString2;
+    AppMethodBeat.i(88);
+    this.mhc = false;
+    this.mhh = "";
+    this.ftU = new f();
+    j.a locala = (j.a)this.ftU.getReqObj();
+    locala.mgO.wZA = p.mhi;
+    locala.mgO.wZC = paramLong;
+    locala.mgO.xGH = paramString1;
+    locala.mgO.xGI = paramString2;
+    AppMethodBeat.o(88);
   }
   
-  final void Cl(String paramString)
+  final void Nm(String paramString)
   {
-    ((j.a)this.edR.Kv()).jMI.tbj = paramString;
+    AppMethodBeat.i(91);
+    ((j.a)this.ftU.getReqObj()).mgO.wZA = paramString;
+    AppMethodBeat.o(91);
   }
   
-  protected final int Ka()
-  {
-    return 3;
-  }
-  
-  protected final void a(m.a parama) {}
-  
-  public final boolean aNV()
+  public final boolean btY()
   {
     return true;
   }
   
-  public final String aNW()
+  public final String btZ()
   {
-    return this.jMY;
-  }
-  
-  protected final m.b b(q paramq)
-  {
-    return m.b.edr;
+    return this.mhh;
   }
   
   public final void c(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     boolean bool2 = true;
-    y.d("MicroMsg.NetSceneFaceRegFaceRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
-    paramq = (j.b)paramq.HF();
+    AppMethodBeat.i(90);
+    ab.d("MicroMsg.NetSceneFaceRegFaceRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
+    paramq = (j.b)paramq.getRespObj();
     boolean bool1;
     int i;
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (paramq.jMJ.tDU == 0)
+      if (paramq.mgP.xGK == 0)
       {
         bool1 = true;
-        this.jMT = bool1;
-        this.jMY = paramq.jMJ.tDT;
-        i = paramq.jMJ.tDU;
-        boolean bool3 = this.jMT;
-        paramInt2 = paramq.jMJ.tDU;
-        if (bk.bl(this.jMY)) {
-          break label179;
+        this.mhc = bool1;
+        this.mhh = paramq.mgP.xGJ;
+        i = paramq.mgP.xGK;
+        boolean bool3 = this.mhc;
+        paramInt2 = paramq.mgP.xGK;
+        if (bo.isNullOrNil(this.mhh)) {
+          break label189;
         }
         bool1 = bool2;
-        label124:
-        y.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: is verify ok: %b, youtuRet; %d, has random pwd: %b", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(paramInt2), Boolean.valueOf(bool1) });
+        label129:
+        ab.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: is verify ok: %b, youtuRet; %d, has random pwd: %b", new Object[] { Boolean.valueOf(bool3), Integer.valueOf(paramInt2), Boolean.valueOf(bool1) });
       }
     }
     for (;;)
     {
-      this.dmL.onSceneEnd(paramInt1, i, paramString, this);
+      this.callback.onSceneEnd(paramInt1, i, paramString, this);
+      AppMethodBeat.o(90);
       return;
       bool1 = false;
       break;
-      label179:
+      label189:
       bool1 = false;
-      break label124;
+      break label129;
       i = paramInt2;
       if (paramq != null)
       {
         i = paramInt2;
-        if (paramq.jMJ != null)
+        if (paramq.mgP != null)
         {
           i = paramInt2;
-          if (paramq.jMJ.tDU != 0)
+          if (paramq.mgP.xGK != 0)
           {
-            y.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: has detail ret. use");
-            i = paramq.jMJ.tDU;
+            ab.i("MicroMsg.NetSceneFaceRegFaceRsa", "hy: has detail ret. use");
+            i = paramq.mgP.xGK;
           }
         }
       }
     }
   }
   
-  final int g(com.tencent.mm.network.e parame)
+  final int f(com.tencent.mm.network.e parame)
   {
-    this.edR.Kv();
-    return a(parame, this.edR, this);
+    AppMethodBeat.i(89);
+    this.ftU.getReqObj();
+    int i = dispatch(parame, this.ftU, this);
+    AppMethodBeat.o(89);
+    return i;
   }
   
-  protected final ayt g(q paramq)
+  protected final bfu f(q paramq)
   {
-    return ((j.b)paramq.HF()).jMJ.tbn;
+    AppMethodBeat.i(92);
+    paramq = ((j.b)paramq.getRespObj()).mgP.wZE;
+    AppMethodBeat.o(92);
+    return paramq;
   }
   
   public final int getType()
   {
     return 930;
   }
+  
+  public final int securityLimitCount()
+  {
+    return 3;
+  }
+  
+  public final m.b securityVerificationChecked(q paramq)
+  {
+    return m.b.ftu;
+  }
+  
+  public final void setSecurityCheckError(m.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.o
  * JD-Core Version:    0.7.0.1
  */

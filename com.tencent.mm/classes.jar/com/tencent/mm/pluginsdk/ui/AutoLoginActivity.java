@@ -1,43 +1,47 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.w;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
 public abstract class AutoLoginActivity
   extends MMActivity
 {
-  private void DT(int paramInt)
+  private void LP(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      y.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = " + paramInt);
-      a(AutoLoginActivity.a.rYY, getIntent());
+      ab.e("MicroMsg.AutoLoginActivity", "onNewIntent, should not reach here, resultCode = ".concat(String.valueOf(paramInt)));
+      a(AutoLoginActivity.a.vPO, getIntent());
       return;
     case -1: 
-      a(AutoLoginActivity.a.rYX, getIntent());
+      a(AutoLoginActivity.a.vPN, getIntent());
       return;
     case 0: 
-      boC();
+      bXc();
       return;
     }
-    a(AutoLoginActivity.a.rYZ, getIntent());
+    a(AutoLoginActivity.a.vPP, getIntent());
   }
   
-  public abstract void a(AutoLoginActivity.a parama, Intent paramIntent);
+  protected abstract boolean O(Intent paramIntent);
   
-  public boolean boC()
+  protected abstract void a(AutoLoginActivity.a parama, Intent paramIntent);
+  
+  protected boolean bXc()
   {
-    g.DN();
-    if ((!com.tencent.mm.kernel.a.Db()) || (com.tencent.mm.kernel.a.CW()))
+    g.RJ();
+    if ((!com.tencent.mm.kernel.a.QT()) || (com.tencent.mm.kernel.a.QP()))
     {
-      y.w("MicroMsg.AutoLoginActivity", "not login");
+      ab.w("MicroMsg.AutoLoginActivity", "not login");
       Intent localIntent1 = new Intent(this, getClass());
       localIntent1.putExtras(getIntent());
       localIntent1.addFlags(67108864);
@@ -63,32 +67,32 @@ public abstract class AutoLoginActivity
     paramBundle = getIntent();
     if (paramBundle == null)
     {
-      y.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
+      ab.e("MicroMsg.AutoLoginActivity", "onCreate intent is null");
       finish();
       return;
     }
-    d.coz();
-    y.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
-    int i = t.a(paramBundle, "wizard_activity_result_code", -2);
-    y.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = " + i);
+    d.dpU();
+    ab.i("MicroMsg.AutoLoginActivity", "onCreate, intent action = " + paramBundle.getAction());
+    int i = w.a(paramBundle, "wizard_activity_result_code", -2);
+    ab.i("MicroMsg.AutoLoginActivity", "onCreate, resultCode = ".concat(String.valueOf(i)));
     if (i != -2)
     {
-      DT(i);
+      LP(i);
       return;
     }
-    if (!w(paramBundle))
+    if (!O(paramBundle))
     {
-      y.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
+      ab.e("MicroMsg.AutoLoginActivity", "preLogin fail, no need to process");
       finish();
       return;
     }
-    if (boC())
+    if (bXc())
     {
       finish();
-      y.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
+      ab.w("MicroMsg.AutoLoginActivity", "not login, go to SimpleLogin");
       return;
     }
-    a(AutoLoginActivity.a.rYX, paramBundle);
+    a(AutoLoginActivity.a.vPN, paramBundle);
   }
   
   public void onDestroy()
@@ -96,19 +100,23 @@ public abstract class AutoLoginActivity
     super.onDestroy();
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
     if (paramIntent == null) {
       return;
     }
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
-    int i = t.a(paramIntent, "wizard_activity_result_code", 0);
-    y.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = " + i);
-    DT(i);
+    int i = w.a(paramIntent, "wizard_activity_result_code", 0);
+    ab.i("MicroMsg.AutoLoginActivity", "onNewIntent, resultCode = ".concat(String.valueOf(i)));
+    LP(i);
   }
   
-  public abstract boolean w(Intent paramIntent);
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
 }
 
 

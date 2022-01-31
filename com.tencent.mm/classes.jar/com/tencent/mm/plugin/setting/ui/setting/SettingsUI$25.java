@@ -1,17 +1,13 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import com.tencent.mm.ui.widget.a.d;
-import com.tencent.mm.ui.widget.a.d.a;
+import com.tencent.mm.ui.widget.b.d.a;
 
 final class SettingsUI$25
   implements d.a
 {
   SettingsUI$25(SettingsUI paramSettingsUI) {}
   
-  public final void onDismiss()
-  {
-    SettingsUI.c(this.nWB).bFp();
-  }
+  public final void onDismiss() {}
 }
 
 

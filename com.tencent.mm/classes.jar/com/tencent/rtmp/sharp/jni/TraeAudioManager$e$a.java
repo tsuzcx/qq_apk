@@ -1,5 +1,7 @@
 package com.tencent.rtmp.sharp.jni;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class TraeAudioManager$e$a
 {
   String a = "DEVICE_NONE";
@@ -20,12 +22,20 @@ public class TraeAudioManager$e$a
   
   public boolean a(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    while (TraeAudioManager.checkDevName(paramString) != true) {
+    AppMethodBeat.i(65824);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(65824);
+      return false;
+    }
+    if (TraeAudioManager.checkDevName(paramString) != true)
+    {
+      AppMethodBeat.o(65824);
       return false;
     }
     this.a = paramString;
     this.c = paramInt;
+    AppMethodBeat.o(65824);
     return true;
   }
   
@@ -41,7 +51,7 @@ public class TraeAudioManager$e$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.e.a
  * JD-Core Version:    0.7.0.1
  */

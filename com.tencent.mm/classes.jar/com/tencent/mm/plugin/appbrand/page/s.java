@@ -1,608 +1,576 @@
 package com.tencent.mm.plugin.appbrand.page;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.ColorMatrix;
-import android.graphics.ColorMatrixColorFilter;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mm.h.b.a.ak;
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.aq;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.ce;
+import com.tencent.mm.g.b.a.ce.a;
+import com.tencent.mm.plugin.appbrand.ReportStorageSizeTask;
 import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.config.a.b;
-import com.tencent.mm.plugin.appbrand.l;
-import com.tencent.mm.plugin.appbrand.menu.WxaMenuHelper;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.page.a.c.a;
-import com.tencent.mm.plugin.appbrand.performance.AppBrandPerformanceManager;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.plugin.appbrand.jsapi.f.e;
+import com.tencent.mm.plugin.appbrand.jsapi.v.d.d;
+import com.tencent.mm.plugin.appbrand.report.AppBrandRecommendStatObj;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.j;
-import com.tencent.mm.plugin.appbrand.v.k;
-import com.tencent.mm.plugin.appbrand.v.k.a;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.e;
-import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d.b;
-import com.tencent.mm.plugin.appbrand.y.e;
-import com.tencent.mm.plugin.appbrand.y.f;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.j;
+import com.tencent.mm.plugin.appbrand.report.model.f;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
+import com.tencent.mm.plugin.appbrand.task.e;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
+@SuppressLint({"ViewConstructor"})
 public class s
-  extends q
-  implements com.tencent.mm.plugin.appbrand.jsapi.f
+  extends r
+  implements r.a
 {
-  private com.tencent.mm.plugin.appbrand.n fzW;
-  public e gUh;
-  private AppBrandRecentView gUi;
-  public final com.tencent.mm.plugin.appbrand.report.model.c gUj = new com.tencent.mm.plugin.appbrand.report.model.c(hashCode());
-  private long gUk = System.currentTimeMillis();
-  private long gUl;
-  private long gUm;
-  private ak gUn = null;
-  public final Runnable gUo = new s.9(this);
-  private boolean gUp = false;
-  private boolean gUq = false;
-  private boolean gUr = false;
+  private ImageView iwH;
+  private volatile f iwI;
+  private g iwJ;
+  public boolean iwK;
+  public boolean iwL;
+  private long iwM;
+  private long iwN;
+  private long iwO;
+  private String iwP;
+  private com.tencent.mm.sdk.b.c<d> iwQ;
+  private long iwR;
+  public boolean iwS;
   
-  private void anu()
+  public s(Context paramContext, com.tencent.mm.plugin.appbrand.i parami, r.a parama)
   {
-    h.nFQ.a(370L, 1L, 1L, false);
-    k.a(ahK(), com.tencent.mm.plugin.appbrand.u.d.wB("wxa_library/android.js"), null);
-    String str = WxaCommLibRuntimeReader.qX("WAWebview.js");
-    final long l = System.currentTimeMillis();
-    if (str == null) {}
-    for (int i = 0;; i = str.length())
+    super(paramContext, parami);
+    AppMethodBeat.i(143477);
+    this.iwK = false;
+    this.iwL = false;
+    this.iwI = aHC();
+    this.iwQ = new com.tencent.mm.sdk.b.c() {};
+    this.iwR = 0L;
+    this.iwS = false;
+    super.setDelegate(parama);
+    AppMethodBeat.o(143477);
+  }
+  
+  public s(Context paramContext, com.tencent.mm.plugin.appbrand.o paramo)
+  {
+    super(paramContext, paramo);
+    AppMethodBeat.i(132351);
+    this.iwK = false;
+    this.iwL = false;
+    this.iwI = aHC();
+    this.iwQ = new com.tencent.mm.sdk.b.c() {};
+    this.iwR = 0L;
+    this.iwS = false;
+    super.setDelegate(this);
+    AppMethodBeat.o(132351);
+  }
+  
+  private void a(String paramString, bf parambf, r.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(132357);
+    h localh = h.qsU;
+    if (paramBoolean) {}
+    for (int i = 5;; i = 1)
     {
-      final boolean bool = aan();
-      k.a(ahK(), str, new k.a()
-      {
-        public final void fM(String paramAnonymousString)
-        {
-          int j = 0;
-          y.e("MicroMsg.AppBrandPageViewWC", "Inject SDK Page Script Failed: %s", new Object[] { paramAnonymousString });
-          h.nFQ.a(370L, 2L, 1L, false);
-          com.tencent.mm.plugin.appbrand.report.c.H(s.this.mAppId, 24, 0);
-          int i = -1;
-          if (s.b(s.this) != null)
-          {
-            j = s.b(s.this).aaa().fPS.fEN;
-            i = s.b(s.this).aaa().fPS.fEM;
-          }
-          com.tencent.mm.plugin.appbrand.report.c.a(s.this.mAppId, j, i, 370, 2);
-        }
-        
-        public final void onSuccess(String paramAnonymousString)
-        {
-          com.tencent.mm.plugin.appbrand.report.quality.a.aov();
-          com.tencent.mm.plugin.appbrand.report.quality.b.a(bool, s.this.mAppId, l, "WAWebview.js", this.fAf);
-          h.nFQ.a(370L, 3L, 1L, false);
-        }
-      });
+      localh.cT(937, i);
+      getRuntime().gPM.a(paramString, true, new s.8(this, paramBoolean, paramb, paramString, parambf));
+      AppMethodBeat.o(132357);
       return;
     }
   }
   
-  public final void E(int paramInt, boolean paramBoolean)
+  private void aJg()
   {
-    super.E(paramInt, paramBoolean);
-  }
-  
-  protected final void F(JSONObject paramJSONObject)
-  {
-    super.F(paramJSONObject);
-    com.tencent.mm.plugin.appbrand.e.d.o(paramJSONObject);
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.menu.n a(com.tencent.mm.plugin.appbrand.menu.o paramo)
-  {
-    if (paramo == null) {
-      return null;
-    }
-    return super.lY(paramo.ordinal());
-  }
-  
-  public final void a(Context paramContext, com.tencent.mm.plugin.appbrand.i parami)
-  {
-    this.fzW = ((com.tencent.mm.plugin.appbrand.n)parami);
-    super.a(paramContext, parami);
-    this.gUj.mAppId = parami.mAppId;
-    com.tencent.mm.plugin.appbrand.widget.input.n.v(this);
-    com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.appbrand.widget.recentview.d.class);
-    this.gUi = ((com.tencent.mm.plugin.appbrand.widget.recentview.d)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.appbrand.widget.recentview.d.class)).a(this.mContext, d.b.hDj, new s.5(this));
-    this.gUh = new e(this.mContext);
-    this.gUh.setWidth(-1);
-    this.gUh.setBackgroundDrawable(new ColorDrawable());
-    if (this.gUi != null)
+    AppMethodBeat.i(132371);
+    AppBrandRecommendStatObj localAppBrandRecommendStatObj;
+    if ((getCurrentPage() != null) && (getCurrentPage().getCurrentPageView() != null) && (getRuntime().wS().bDh.scene == 1118))
     {
-      this.gUi.refresh();
-      this.gUh.setHeight(this.gUi.getLayoutParams().height);
-      this.gUi.setBackground(com.tencent.mm.cb.a.g(this.mContext, y.f.app_brand_game_recent_popwindow_background));
-      this.gUh.setContentView(this.gUi);
-      this.gUi.setOnItemClickListener(new s.6(this));
+      if (getRuntime().wS().bDh != null) {
+        break label138;
+      }
+      localAppBrandRecommendStatObj = null;
+      if (localAppBrandRecommendStatObj != null)
+      {
+        ab.i("MicroMsg.AppBrandPageContainerWC", "recommendStatObj is got");
+        if ((TextUtils.isEmpty(localAppBrandRecommendStatObj.iFJ)) || (TextUtils.isEmpty(localAppBrandRecommendStatObj.iFK))) {
+          break label155;
+        }
+        this.iwP = (localAppBrandRecommendStatObj.iFJ + "?" + localAppBrandRecommendStatObj.iFK);
+      }
     }
     for (;;)
     {
-      this.gTC.setCapsuleHomeButtonLongClickListener(new s.7(this));
-      this.gTC.setCloseButtonClickListener(new View.OnClickListener()
+      this.iwK = true;
+      this.iwN = System.currentTimeMillis();
+      AppMethodBeat.o(132371);
+      return;
+      label138:
+      localAppBrandRecommendStatObj = getRuntime().wS().bDh.iFY;
+      break;
+      label155:
+      if (!TextUtils.isEmpty(localAppBrandRecommendStatObj.iFJ)) {
+        this.iwP = localAppBrandRecommendStatObj.iFJ;
+      } else {
+        this.iwP = getRuntime().ato();
+      }
+    }
+  }
+  
+  private void eB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(154344);
+    s.5 local5;
+    if (this.iwH != null)
+    {
+      ImageView localImageView = this.iwH;
+      local5 = new s.5(this, localImageView);
+      if (!paramBoolean) {
+        break label67;
+      }
+      localImageView.animate().alpha(0.0F).setInterpolator(new android.support.v4.view.b.a()).withEndAction(local5).start();
+    }
+    for (;;)
+    {
+      this.iwH = null;
+      AppMethodBeat.o(154344);
+      return;
+      label67:
+      local5.run();
+    }
+  }
+  
+  public final void Eg(String paramString)
+  {
+    AppMethodBeat.i(132354);
+    super.Eg(paramString);
+    if (getRuntime().atR().bDj) {
+      al.p(new s.6(this), 10000L);
+    }
+    try
+    {
+      com.tencent.mm.plugin.appbrand.report.quality.a.aLt();
+      a.f.b.j.q(this, "pagecontainer");
+      if ((getRuntime() instanceof com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.j)) {
+        break label305;
+      }
+      localce = new ce();
+      localQualitySessionRuntime = com.tencent.mm.plugin.appbrand.report.quality.a.EM(getAppId());
+      if (localQualitySessionRuntime == null) {
+        break label413;
+      }
+      if (localQualitySessionRuntime.iIR <= 0L) {
+        break label438;
+      }
+      localce.hg(localQualitySessionRuntime.ikX);
+      localce.hh(localQualitySessionRuntime.appId);
+      localce.cZB = localQualitySessionRuntime.iIG;
+      localce.daG = ce.a.gR(localQualitySessionRuntime.iIF);
+      localce.cZD = localQualitySessionRuntime.apptype;
+      localce.cRG = localQualitySessionRuntime.scene;
+      localce.eI(localQualitySessionRuntime.iIR);
+      localce.eJ(bo.aoy());
+      localce.eH(localce.dav - localce.dau);
+      paramString = getCurrentPage();
+      if (paramString == null) {
+        break label341;
+      }
+      paramString = paramString.getCurrentPageView();
+      String str = paramString;
+      if (!(paramString instanceof z)) {
+        str = null;
+      }
+      paramString = (z)str;
+      if (paramString == null) {
+        break label449;
+      }
+      if (!(paramString.iuy instanceof ad)) {
+        break label346;
+      }
+      paramString = (ad)paramString.iuy;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
       {
-        public final void onClick(View paramAnonymousView)
-        {
-          com.tencent.mm.plugin.appbrand.report.c.a(s.this.mAppId, s.this.getURL(), 22, "", bk.UX(), 1, 0);
-        }
-      });
-      this.geK = new com.tencent.mm.plugin.appbrand.c((com.tencent.mm.plugin.appbrand.n)parami, this);
-      return;
-      y.w("MicroMsg.AppBrandPageViewWC", "AppBrandRecentView is null, appId: %s", new Object[] { this.mAppId });
+        ce localce;
+        QualitySessionRuntime localQualitySessionRuntime;
+        label252:
+        int i;
+        label265:
+        ab.w("MicroMsg.AppBrandPageContainerWC", "pagecontainerInitReport %s", new Object[] { paramString });
+        continue;
+        paramString = localQualitySessionRuntime;
+        continue;
+        paramString = null;
+        continue;
+        paramString = null;
+      }
     }
-  }
-  
-  public final p aae()
-  {
-    return (p)super.Zy();
-  }
-  
-  protected final void aao()
-  {
-    anu();
-    this.gUp = true;
-  }
-  
-  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.i> aau()
-  {
-    return com.tencent.mm.plugin.appbrand.jsapi.m.ahP();
-  }
-  
-  public void agQ()
-  {
-    super.agQ();
-    this.fzW.fzG.n(4, System.currentTimeMillis() - this.gUm);
-    AppBrandPerformanceManager.b(this.mAppId, 203, System.currentTimeMillis() - this.gUl);
-    com.tencent.mm.plugin.appbrand.performance.a.a(this.mAppId, "Native", "PageLoad", this.gUl, System.currentTimeMillis(), "");
-    this.gUj.aog();
-  }
-  
-  public void agR()
-  {
-    super.agR();
-    this.gUj.pY();
-  }
-  
-  public void agS()
-  {
-    super.agS();
-    if (this.gUh != null) {
-      this.gUh.dismiss();
-    }
-    this.gUj.qa();
-  }
-  
-  public void agT()
-  {
-    super.agT();
-    Object localObject = this.gUj;
-    ((com.tencent.mm.plugin.appbrand.report.model.c)localObject).gYi.aof();
-    localObject = ((com.tencent.mm.plugin.appbrand.report.model.c)localObject).gYi;
-    ((j)localObject).quit();
-    ((j)localObject).mStopped = true;
-  }
-  
-  public void agV()
-  {
-    super.agV();
-    if (this.gUi != null) {
-      this.gUi.release();
-    }
-    if (this.gUh != null)
-    {
-      e locale = this.gUh;
-      locale.dismiss();
-      if (locale.hoZ != null)
+    if (paramString != null) {
+      if (paramString.isSysKernel())
       {
-        locale.hoZ.removeAllViews();
-        locale.hoZ = null;
+        i = 4;
+        localce.cYC = i;
+        localce.ake();
+        break label438;
       }
     }
-    com.tencent.mm.sdk.platformtools.ai.S(this.gUo);
-  }
-  
-  public View ahb()
-  {
-    if (anp())
+    for (;;)
     {
-      AppBrandActionHeaderLayout localAppBrandActionHeaderLayout = new AppBrandActionHeaderLayout(this.mContext);
-      localAppBrandActionHeaderLayout.setAppId(this.mAppId);
-      localAppBrandActionHeaderLayout.setActionHeaderStyle(this.gTO);
-      y.w("MicroMsg.AppBrandPageViewWC", "getActionSheetHeader orientation:%d,mActionSheetTitleStrId:%d", new Object[] { Integer.valueOf(((MMActivity)this.mContext).getRequestedOrientation()), Integer.valueOf(this.gTP) });
-      if (this.gTP > 0) {
-        localAppBrandActionHeaderLayout.setStatusId(this.gTP);
+      com.tencent.mm.plugin.appbrand.report.quality.c.a(paramString, "Null session with " + getAppId());
+      label305:
+      aJg();
+      if ((com.tencent.mm.plugin.appbrand.weishi.g.J(getRuntime())) && (this.iwQ != null)) {
+        this.iwQ.alive();
       }
-      localAppBrandActionHeaderLayout.bX(((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).aac().iconUrl, ((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).aac().bJw);
-      return localAppBrandActionHeaderLayout;
-    }
-    return super.ahb();
-  }
-  
-  public Bitmap ahe()
-  {
-    View localView = ((w)this.gTF).getView();
-    if (localView == null) {
-      return null;
-    }
-    int i = localView.getWidth();
-    int j = localView.getHeight();
-    int k = localView.getScrollX();
-    int m = localView.getScrollY();
-    if ((i == 0) || (j == 0)) {
-      return null;
-    }
-    localView.scrollTo(0, 0);
-    if (((w)this.gTF).isXWalkKernel())
-    {
-      localBitmap1 = e(localView, agO());
-      localBitmap2 = Bitmap.createBitmap(localBitmap1, 0, 0, i, j);
-      localBitmap1.recycle();
-      localView.postDelayed(new s.10(this, localView, k, m), 500L);
-      return localBitmap2;
-    }
-    Bitmap localBitmap1 = e(localView, agO());
-    Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1, 0, 0, i, j);
-    localBitmap1.recycle();
-    localView.scrollTo(k, m);
-    return localBitmap2;
-  }
-  
-  protected final List<com.tencent.mm.plugin.appbrand.menu.n> ane()
-  {
-    boolean bool2 = true;
-    Object localObject = this.mAppId;
-    LinkedList localLinkedList = new LinkedList();
-    WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPi.ordinal(), false);
-    WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPj.ordinal(), false);
-    WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPk.ordinal(), true);
-    WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPr.ordinal(), false);
-    localObject = com.tencent.mm.plugin.appbrand.a.qo((String)localObject);
-    if (!com.tencent.mm.sdk.a.b.cqk())
-    {
-      bool1 = bool2;
-      if (localObject != null) {
-        if (((com.tencent.mm.plugin.appbrand.config.i)localObject).aej() != 1) {
-          break label203;
-        }
-      }
-    }
-    label203:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPs.ordinal(), bool1);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPt.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPu.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPm.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPo.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPx.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPn.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPp.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPw.ordinal(), false);
-      WxaMenuHelper.c(localLinkedList, com.tencent.mm.plugin.appbrand.menu.o.gPq.ordinal(), false);
-      return localLinkedList;
-    }
-  }
-  
-  public final String ang()
-  {
-    if (this.fzW == null) {
-      return "https://servicewechat.com/" + "preload/";
-    }
-    return "https://servicewechat.com/" + String.format(Locale.US, "%s/%d/", new Object[] { this.mAppId, Integer.valueOf(this.fzW.aaa().fPS.fEN) });
-  }
-  
-  protected final void anj()
-  {
-    if (((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).aab().scene == 1023)
-    {
-      anl();
+      AppMethodBeat.o(132354);
       return;
-    }
-    if ((!((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).ZG()) && (((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).aad().getPageCount() == 1))
-    {
-      anl();
-      return;
-    }
-    ank();
-  }
-  
-  protected final String ano()
-  {
-    if ((this.fzW == null) || (this.fzW.fyz.amA())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.gUr = bool;
-      if (!this.gUr) {
-        break;
+      label341:
+      paramString = null;
+      break;
+      label346:
+      if (!(paramString.iuy instanceof ak)) {
+        break label444;
       }
-      return WxaCommLibRuntimeReader.qX("WAPageFrame.html");
+      paramString = ((ak)paramString.iuy).iuy;
+      if (!(paramString instanceof ad)) {
+        break label444;
+      }
+      paramString = (ad)paramString;
+      break label252;
+      if (paramString.getIsX5Kernel())
+      {
+        i = 2;
+        break label265;
+      }
+      boolean bool = paramString.isXWalkKernel();
+      if (bool)
+      {
+        i = 3;
+        break label265;
+      }
+      i = -1;
+      break label265;
+      label413:
+      paramString = null;
     }
-    return aq.a(this.fzW, "page-frame.html");
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.t.a ans()
+  public final o a(r paramr)
   {
-    View localView = getContentView().findViewById(y.g.app_brand_pageview_html_webview);
-    if ((localView instanceof com.tencent.mm.plugin.appbrand.jsapi.t.a)) {
-      return (com.tencent.mm.plugin.appbrand.jsapi.t.a)localView;
-    }
     return null;
   }
   
-  public final void ant()
+  protected final void a(o paramo1, o paramo2)
   {
-    int i = 1;
-    q.runOnUiThread(new q.23(this));
-    if (((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).aad().getPageCount() < 2) {
-      ((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).fyC = true;
-    }
-    c localc = new c(this.mContext);
-    com.tencent.mm.plugin.appbrand.n localn = (com.tencent.mm.plugin.appbrand.n)super.getRuntime();
-    c.inflate(localc.getContext(), y.h.app_brand_error_page_layout, localc);
-    localc.gSx = ((ImageView)localc.findViewById(y.g.app_brand_error_page_iv));
-    localc.gSy = ((TextView)localc.findViewById(y.g.app_brand_error_page_tips));
-    localc.gSz = ((Button)localc.findViewById(y.g.app_brand_error_page_index));
-    localc.gSy.setText(localc.getResources().getString(y.j.luggage_app_brand_error_guide, new Object[] { localn.ZB().bJw }));
-    Object localObject = (LinearLayout.LayoutParams)localc.gSx.getLayoutParams();
-    if ((localn.getAppConfig() != null) && (localn.getAppConfig().fNB != null) && (localn.getAppConfig().fNB.adW())) {}
-    for (;;)
+    AppMethodBeat.i(132358);
+    super.a(paramo1, paramo2);
+    this.iwI.aHD();
+    this.iwI.a((z)paramo2.getCurrentPageView(), (z)paramo1.getCurrentPageView(), bf.izS);
+    post(new s.9(this));
+    AppMethodBeat.o(132358);
+  }
+  
+  public final void a(o paramo1, o paramo2, bf parambf)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(132360);
+    super.a(paramo1, paramo2, parambf);
+    long l = System.currentTimeMillis() - this.iwR;
+    this.iwI.a(l, parambf);
+    ab.i("MicroMsg.AppBrandPageContainerWC", "onReady received, time: %d", new Object[] { Long.valueOf(l) });
+    if (this.iwJ != null)
     {
-      if ((i != 0) || (localn.ZH()))
-      {
-        ((LinearLayout.LayoutParams)localObject).topMargin = com.tencent.mm.cb.a.ab(localc.getContext(), y.e.app_brand_error_page_top_margin);
-        localc.gSx.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localc.requestLayout();
-      }
-      localObject = new ColorMatrix();
-      ((ColorMatrix)localObject).setSaturation(0.0F);
-      localObject = new ColorMatrixColorFilter((ColorMatrix)localObject);
-      localc.gSx.setColorFilter((ColorFilter)localObject);
-      com.tencent.mm.modelappbrand.a.b.JD().a(localc.gSx, localn.ZB().fPM, com.tencent.mm.modelappbrand.a.a.JC(), com.tencent.mm.modelappbrand.a.f.eaL);
-      localc.gSz.setVisibility(8);
-      localc.setBackgroundColor(-1);
-      com.tencent.mm.plugin.appbrand.report.c.H(localn.ZB().appId, 27, 0);
-      aha().addView(localc);
-      return;
-      i = 0;
+      this.iwJ.aIM();
+      this.iwJ = null;
     }
-  }
-  
-  protected final void az(List<com.tencent.mm.plugin.appbrand.menu.n> paramList)
-  {
-    new m(this, paramList).amW();
-  }
-  
-  public af cg(Context paramContext)
-  {
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = com.tencent.mm.sdk.platformtools.ae.getContext();
-    }
-    return new w(localContext, this.gTV);
-  }
-  
-  public ai ch(Context paramContext)
-  {
-    return new s.3(this, paramContext);
-  }
-  
-  public final void dw(boolean paramBoolean)
-  {
-    com.tencent.mm.plugin.appbrand.permission.d locald = ((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).fzB;
-    if ((locald.a(this, s.a.class)) || (locald.a((p)super.Zy(), com.tencent.mm.plugin.appbrand.jsapi.k.o.class)) || (locald.a(this, com.tencent.mm.plugin.appbrand.jsapi.k.o.class))) {
-      super.dw(paramBoolean);
-    }
-  }
-  
-  public final Bitmap e(View paramView1, View paramView2)
-  {
-    if (paramView1 == null) {
-      return null;
-    }
-    Bitmap localBitmap = Bitmap.createBitmap(paramView1.getWidth(), paramView1.getHeight(), Bitmap.Config.ARGB_8888);
-    Canvas localCanvas = new Canvas(localBitmap);
-    Drawable localDrawable = paramView1.getBackground();
-    if (localDrawable != null) {
-      localDrawable.draw(localCanvas);
-    }
-    if (((w)this.gTF).isXWalkKernel()) {
-      ((w)this.gTF).drawCanvas(localCanvas);
-    }
-    for (;;)
+    f localf = this.iwI;
+    z localz = (z)paramo2.getCurrentPageView();
+    if (paramo1 == null)
     {
-      if (!(paramView1 instanceof com.tencent.mm.plugin.appbrand.jsapi.coverview.n)) {
-        com.tencent.mm.sdk.platformtools.c.a(localCanvas, paramView2);
+      paramo2 = localObject;
+      localf.a(localz, paramo2, parambf);
+      if ((bf.izW != parambf) && (bf.izR != parambf)) {
+        post(new s.10(this, parambf));
       }
-      return localBitmap;
-      paramView1.draw(localCanvas);
-    }
-  }
-  
-  public final com.tencent.mm.plugin.appbrand.n getRuntime()
-  {
-    return (com.tencent.mm.plugin.appbrand.n)super.getRuntime();
-  }
-  
-  public void initView()
-  {
-    super.initView();
-    anf().a(new ae()
-    {
-      final void ajc()
-      {
-        com.tencent.mm.plugin.webview.ui.tools.widget.o.Dh(2);
-      }
-      
-      final void anw()
-      {
-        com.tencent.mm.plugin.webview.ui.tools.widget.o.Dh(1);
-      }
-    });
-  }
-  
-  public boolean isFullScreen()
-  {
-    return this.gTS.ahi() == c.a.gVY;
-  }
-  
-  public final void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    com.tencent.mm.sdk.platformtools.ai.d(new s.8(this, paramConfiguration));
-  }
-  
-  protected final void onCreate()
-  {
-    com.tencent.mm.plugin.appbrand.m.qI(this.mAppId).fzv.set(((w)this.gTF).getIsX5Kernel());
-    boolean bool = ((w)this.gTF).getIsX5Kernel();
-    Object localObject1 = h.nFQ;
-    int i;
-    label102:
-    Object localObject2;
-    if (bool)
-    {
-      i = 2;
-      ((h)localObject1).a(482, 482, 1, i, 1, 1, false);
-      ahK().evaluateJavascript(String.format(Locale.US, "history.pushState({},\"\",\"%s\");", new Object[] { anh() }), null);
-      if (this.gUp) {
-        break label246;
-      }
-      anu();
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (this.fzW.aaa().fPN)
-      {
-        localObject1 = localObject2;
-        if (!this.fzW.aah()) {
-          localObject1 = WxaCommLibRuntimeReader.qX("WAVConsole.js");
+      if ((paramo1 != null) && (parambf == bf.izR) && (getRuntime().wS().bDh.scene == 1118) && (this.iwK) && (!this.iwL)) {
+        if (paramo1.getCurrentPageView() != null) {
+          break label259;
         }
       }
-      if (bk.bl((String)localObject1)) {
-        break label254;
+    }
+    label259:
+    for (paramo2 = "";; paramo2 = paramo1.getCurrentPageView().iuB)
+    {
+      if ((this.iwP != null) && (this.iwP.equals(paramo2)))
+      {
+        ab.i("MicroMsg.AppBrandPageContainerWC", "statPageTime");
+        this.iwM = ((z)paramo1.getCurrentPageView()).ixF.aLg();
+        this.iwL = true;
       }
-      long l = System.currentTimeMillis();
-      bool = aan();
-      ahK().evaluateJavascript((String)localObject1, new s.2(this, bool, l, (String)localObject1));
+      AppMethodBeat.o(132360);
+      return;
+      paramo2 = (z)paramo1.getCurrentPageView();
+      break;
+    }
+  }
+  
+  public final void a(o paramo1, o paramo2, bf parambf, String paramString)
+  {
+    boolean bool = false;
+    AppMethodBeat.i(132359);
+    super.a(paramo1, paramo2, parambf, paramString);
+    this.iwR = System.currentTimeMillis();
+    if (bf.izV == parambf)
+    {
+      paramo1 = paramo2.getCurrentPageView();
+      eB(false);
+      if (!com.tencent.mm.plugin.appbrand.weishi.g.J(getRuntime())) {}
+    }
+    try
+    {
+      paramo2 = paramo1.ivI;
+      this.iwH = new ImageView(getContext());
+      this.iwH.setBackgroundColor(-16777216);
+      paramo2.addView(this.iwH, -1, new FrameLayout.LayoutParams(-1, -1));
+      com.tencent.mm.plugin.appbrand.weishi.b.a(getRuntime(), this.iwH, new s.3(this));
+      paramo1.a(new f.e()
+      {
+        public final void onReady()
+        {
+          AppMethodBeat.i(155933);
+          s.a(s.this);
+          AppMethodBeat.o(155933);
+        }
+      });
+      if (!getRuntime().vY()) {
+        if ((parambf == bf.izV) || (parambf == bf.izQ))
+        {
+          if (!paramString.startsWith(getRuntime().getAppConfig().ayn())) {
+            bool = true;
+          }
+          this.iwS = bool;
+          AppMethodBeat.o(132359);
+          return;
+        }
+      }
+    }
+    catch (NullPointerException paramo1)
+    {
+      for (;;)
+      {
+        eB(false);
+      }
+      if ((parambf == bf.izU) && (paramString.startsWith(getRuntime().getAppConfig().ayn()))) {
+        this.iwS = false;
+      }
+      AppMethodBeat.o(132359);
+    }
+  }
+  
+  public final boolean a(String paramString, bf parambf, r paramr, r.b paramb)
+  {
+    AppMethodBeat.i(143478);
+    paramr = getRuntime().gPM;
+    if (!paramr.aIe()) {
+      paramr.a(paramString, false, new s.7(this, paramb));
     }
     for (;;)
     {
-      if (!this.gUq)
+      AppMethodBeat.o(143478);
+      return true;
+      a(paramString, parambf, paramb, false);
+    }
+  }
+  
+  protected f aHC()
+  {
+    AppMethodBeat.i(132352);
+    com.tencent.mm.plugin.appbrand.report.model.a locala = new com.tencent.mm.plugin.appbrand.report.model.a(getRuntime());
+    AppMethodBeat.o(132352);
+    return locala;
+  }
+  
+  public final Object f(o paramo)
+  {
+    AppMethodBeat.i(132367);
+    paramo = AnimationUtils.loadAnimation(getContext(), 2131034266);
+    AppMethodBeat.o(132367);
+    return paramo;
+  }
+  
+  public final Object g(o paramo)
+  {
+    AppMethodBeat.i(132368);
+    paramo = AnimationUtils.loadAnimation(getContext(), 2131034263);
+    AppMethodBeat.o(132368);
+    return paramo;
+  }
+  
+  public f getReporter()
+  {
+    return this.iwI;
+  }
+  
+  public com.tencent.mm.plugin.appbrand.o getRuntime()
+  {
+    AppMethodBeat.i(132353);
+    com.tencent.mm.plugin.appbrand.o localo = (com.tencent.mm.plugin.appbrand.o)super.getRuntime();
+    AppMethodBeat.o(132353);
+    return localo;
+  }
+  
+  public final Object h(o paramo)
+  {
+    AppMethodBeat.i(132369);
+    paramo = AnimationUtils.loadAnimation(getContext(), 2131034262);
+    AppMethodBeat.o(132369);
+    return paramo;
+  }
+  
+  public final Object i(o paramo)
+  {
+    AppMethodBeat.i(132370);
+    paramo = AnimationUtils.loadAnimation(getContext(), 2131034267);
+    AppMethodBeat.o(132370);
+    return paramo;
+  }
+  
+  public final void onBackPressed()
+  {
+    AppMethodBeat.i(132355);
+    if (this.iwJ != null)
+    {
+      this.iwJ.dismiss();
+      this.iwJ = null;
+      AppMethodBeat.o(132355);
+      return;
+    }
+    super.onBackPressed();
+    AppMethodBeat.o(132355);
+  }
+  
+  public final void onBackground()
+  {
+    AppMethodBeat.i(132364);
+    super.onBackground();
+    if (getPageCount() > 0) {
+      this.iwI.b((z)getCurrentPage().getCurrentPageView());
+    }
+    Object localObject;
+    if ((getCurrentPage() != null) && (getCurrentPage().getCurrentPageView() != null) && (getRuntime().wS().bDh.scene == 1118)) {
+      if ((this.iwK) && (!this.iwL))
       {
-        this.gUq = true;
-        this.fzW.fzG.n(3, System.currentTimeMillis() - this.gUk);
-        com.tencent.mm.plugin.appbrand.performance.a.a(this.mAppId, "Native", "WebViewInit+PageFrameLoad", this.gUk, System.currentTimeMillis(), "");
+        localObject = getCurrentPage().getCurrentPageView().iuB;
+        if ((this.iwP != null) && (this.iwP.equals(localObject)))
+        {
+          ab.i("MicroMsg.AppBrandPageContainerWC", "statPageTime onBackground");
+          localObject = ((z)getCurrentPage().getCurrentPageView()).ixF;
+          if (localObject != null) {
+            break label256;
+          }
+        }
       }
+    }
+    label256:
+    for (long l = 0L;; l = ((com.tencent.mm.plugin.appbrand.report.model.b)localObject).aLg())
+    {
+      this.iwM = l;
+      this.iwL = true;
+      this.iwO = (System.currentTimeMillis() - this.iwN);
+      if ((this.iwK) && (this.iwL) && (getRuntime().wS().bDh != null))
+      {
+        ab.i("MicroMsg.AppBrandPageContainerWC", "report pageStayTime:%d, appStayTime:%d", new Object[] { Long.valueOf(this.iwM), Long.valueOf(this.iwO) });
+        com.tencent.mm.plugin.appbrand.appusage.a.i.b(1, this.iwM, this.iwO, getRuntime().wS().bDh.iFY);
+      }
+      AppMethodBeat.o(132364);
       return;
-      i = 3;
-      break;
-      label246:
-      this.gUp = false;
-      break label102;
-      label254:
-      localObject2 = new StringBuilder();
-      localObject1 = "";
-      if (AppBrandPerformanceManager.vS(this.mAppId)) {
-        localObject1 = WxaCommLibRuntimeReader.qX("WAPerf.js");
-      }
-      localObject2 = ((StringBuilder)localObject2).append((String)localObject1);
-      localObject1 = "";
-      if (this.fzW.aah()) {
-        localObject1 = ";" + WxaCommLibRuntimeReader.qX("WARemoteDebug.js");
-      }
-      localObject1 = (String)localObject1;
-      ahK().evaluateJavascript((String)localObject1, null);
     }
   }
   
-  public boolean tB(String paramString)
+  protected final void onDestroy()
   {
-    this.gUj.wc(paramString);
-    this.gUl = System.currentTimeMillis();
-    return super.tB(paramString);
+    AppMethodBeat.i(132362);
+    super.onDestroy();
+    if (getPageCount() > 0) {
+      this.iwI.a((z)getCurrentPage().getCurrentPageView());
+    }
+    if (this.iwJ != null)
+    {
+      this.iwJ.cleanup();
+      this.iwJ = null;
+    }
+    if (this.iwQ != null) {
+      this.iwQ.dead();
+    }
+    AppMethodBeat.o(132362);
   }
   
-  protected final void vJ(String paramString)
+  public final void onForeground()
   {
-    this.gUm = System.currentTimeMillis();
-    StringBuilder localStringBuilder;
-    if (this.gUr)
-    {
-      if (this.fzW.fyz.amA()) {
-        ahK().evaluateJavascript(aq.a(this.fzW, "app-wxss.js"), null);
-      }
+    AppMethodBeat.i(132363);
+    super.onForeground();
+    if (getPageCount() > 0) {
+      this.iwI.c((z)getCurrentPage().getCurrentPageView());
     }
-    else if (this.fzW.fyz.amA())
-    {
-      paramString = com.tencent.luggage.j.g.bi(paramString);
-      paramString = this.fzW.fyz.vk(paramString);
-      localStringBuilder = new StringBuilder().append(paramString);
-      if (!paramString.endsWith("/")) {
-        break label163;
-      }
-    }
-    label163:
-    for (paramString = "";; paramString = "/")
-    {
-      paramString = paramString + "page-frame.js";
-      ahK().evaluateJavascript(aq.a(this.fzW, paramString), null);
-      return;
-      ahK().evaluateJavascript(r.vN(ano()), null);
-      break;
-    }
+    aJg();
+    AppMethodBeat.o(132363);
   }
   
-  protected final void vK(String paramString)
+  protected final void onReady()
   {
-    if (!((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).fzB.a(this, s.b.class))
-    {
-      ant();
-      return;
+    AppMethodBeat.i(132361);
+    super.onReady();
+    ReportStorageSizeTask localReportStorageSizeTask = new ReportStorageSizeTask();
+    localReportStorageSizeTask.appId = getRuntime().mAppId;
+    AppBrandMainProcessService.a(localReportStorageSizeTask);
+    AppMethodBeat.o(132361);
+  }
+  
+  public void onViewAdded(View paramView)
+  {
+    AppMethodBeat.i(143479);
+    super.onViewAdded(paramView);
+    if ((paramView instanceof o)) {
+      bi.cv((o)paramView);
     }
-    y.i("MicroMsg.AppBrandPageViewWC", "publishPageNotFound url:%s", new Object[] { paramString });
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("path", com.tencent.luggage.j.g.bi(paramString));
-    localHashMap.put("query", com.tencent.luggage.j.g.bj(paramString));
-    localHashMap.put("rawPath", paramString);
-    localHashMap.put("isEntryPage", Boolean.valueOf(bk.pm(paramString).equals(((com.tencent.mm.plugin.appbrand.n)super.getRuntime()).ZF())));
-    b(new s.b((byte)0).o(localHashMap));
-    com.tencent.mm.sdk.platformtools.ai.l(this.gUo, 2000L);
+    AppMethodBeat.o(143479);
+  }
+  
+  public v vw()
+  {
+    AppMethodBeat.i(143480);
+    Object localObject = null;
+    if ((getRuntime().getAppConfig().hgR) || (!e.aLN())) {
+      localObject = e.EP(getAppId());
+    }
+    if (localObject != null)
+    {
+      AppMethodBeat.o(143480);
+      return localObject;
+    }
+    localObject = new z();
+    AppMethodBeat.o(143480);
+    return localObject;
+  }
+  
+  public final boolean vx()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.s
  * JD-Core Version:    0.7.0.1
  */

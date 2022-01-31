@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-import org.json.JSONObject;
+import a.g.a;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.by;
+import com.tencent.mm.g.b.a.by.a;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
+import java.io.File;
 
-abstract class b<T extends d>
-  extends a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"createSingleAllocReport", "Lcom/tencent/mm/autogen/mmdata/rpt/WeAppFileSystemTempFileSingleAllocStatStruct;", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySessionRuntime;", "lengthInKB", "", "Ljava/io/File;", "plugin-appbrand-integration_release"})
+public final class b
 {
-  private static final ThreadPoolExecutor gqE = new ThreadPoolExecutor(1, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
-  private final T gqD;
-  
-  public b(T paramT)
+  static final long E(File paramFile)
   {
-    this.gqD = paramT;
-    this.gqD.gqG = this;
+    AppMethodBeat.i(155955);
+    long l = a.H(paramFile.length() / 1024.0D);
+    AppMethodBeat.o(155955);
+    return l;
   }
   
-  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
+  static final by a(QualitySessionRuntime paramQualitySessionRuntime)
   {
-    gqE.submit(new Runnable()
-    {
-      public final void run()
-      {
-        f.a locala = b.a(b.this).b(paramc, paramJSONObject);
-        paramc.C(paramInt, b.this.a(paramc, locala.aox, locala.values));
-      }
-    });
+    AppMethodBeat.i(155954);
+    by localby = new by();
+    localby.gY(paramQualitySessionRuntime.appId);
+    localby.ez(paramQualitySessionRuntime.iIG);
+    localby.a(by.a.gM(paramQualitySessionRuntime.iIF));
+    localby.eA(paramQualitySessionRuntime.apptype);
+    AppMethodBeat.o(155954);
+    return localby;
   }
 }
 

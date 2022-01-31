@@ -3,23 +3,23 @@ package com.tencent.mm.modelcontrol;
 public final class f
   implements Comparable
 {
-  public int ejS;
-  public int ejT;
-  public int ejU;
-  public int ejV;
-  public int ejW;
-  public int ejX;
-  public int ejY;
+  public int fAa;
+  public int fAb;
+  public int fAc;
+  public int fAd;
+  public int fAe;
+  public int fAf;
+  public int fzZ;
   
   public f(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
-    this.ejS = paramInt1;
-    this.ejT = paramInt2;
-    this.ejU = paramInt3;
-    this.ejV = paramInt4;
-    this.ejW = paramInt5;
-    this.ejX = paramInt6;
-    this.ejY = paramInt7;
+    this.fzZ = paramInt1;
+    this.fAa = paramInt2;
+    this.fAb = paramInt3;
+    this.fAc = paramInt4;
+    this.fAd = paramInt5;
+    this.fAe = paramInt6;
+    this.fAf = paramInt7;
   }
   
   public final int compareTo(Object paramObject)
@@ -29,7 +29,7 @@ public final class f
       return 0;
     }
     paramObject = (f)paramObject;
-    return this.ejS - paramObject.ejS;
+    return this.fzZ - paramObject.fzZ;
   }
 }
 

@@ -3,6 +3,7 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.support.v4.view.t;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -12,14 +13,14 @@ import android.widget.FrameLayout;
 public class ContentFrameLayout
   extends FrameLayout
 {
-  private TypedValue abm;
-  private TypedValue abn;
-  private TypedValue abo;
-  private TypedValue abp;
-  private TypedValue abq;
-  private TypedValue abr;
-  public final Rect abs = new Rect();
-  private a abt;
+  private TypedValue abX;
+  private TypedValue abY;
+  private TypedValue abZ;
+  private TypedValue aca;
+  private TypedValue acb;
+  private TypedValue acc;
+  private final Rect acd = new Rect();
+  private a ace;
   
   public ContentFrameLayout(Context paramContext)
   {
@@ -43,50 +44,58 @@ public class ContentFrameLayout
   
   public TypedValue getFixedHeightMajor()
   {
-    if (this.abq == null) {
-      this.abq = new TypedValue();
+    if (this.acb == null) {
+      this.acb = new TypedValue();
     }
-    return this.abq;
+    return this.acb;
   }
   
   public TypedValue getFixedHeightMinor()
   {
-    if (this.abr == null) {
-      this.abr = new TypedValue();
+    if (this.acc == null) {
+      this.acc = new TypedValue();
     }
-    return this.abr;
+    return this.acc;
   }
   
   public TypedValue getFixedWidthMajor()
   {
-    if (this.abo == null) {
-      this.abo = new TypedValue();
+    if (this.abZ == null) {
+      this.abZ = new TypedValue();
     }
-    return this.abo;
+    return this.abZ;
   }
   
   public TypedValue getFixedWidthMinor()
   {
-    if (this.abp == null) {
-      this.abp = new TypedValue();
+    if (this.aca == null) {
+      this.aca = new TypedValue();
     }
-    return this.abp;
+    return this.aca;
   }
   
   public TypedValue getMinWidthMajor()
   {
-    if (this.abm == null) {
-      this.abm = new TypedValue();
+    if (this.abX == null) {
+      this.abX = new TypedValue();
     }
-    return this.abm;
+    return this.abX;
   }
   
   public TypedValue getMinWidthMinor()
   {
-    if (this.abn == null) {
-      this.abn = new TypedValue();
+    if (this.abY == null) {
+      this.abY = new TypedValue();
     }
-    return this.abn;
+    return this.abY;
+  }
+  
+  public final void j(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.acd.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (t.as(this)) {
+      requestLayout();
+    }
   }
   
   protected void onAttachedToWindow()
@@ -97,8 +106,8 @@ public class ContentFrameLayout
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.abt != null) {
-      this.abt.onDetachedFromWindow();
+    if (this.ace != null) {
+      this.ace.onDetachedFromWindow();
     }
   }
   
@@ -123,7 +132,7 @@ public class ContentFrameLayout
       if (j == 0) {
         break label353;
       }
-      localTypedValue = this.abp;
+      localTypedValue = this.aca;
       if ((localTypedValue == null) || (localTypedValue.type == 0)) {
         break label495;
       }
@@ -139,7 +148,7 @@ public class ContentFrameLayout
       int k;
       if (i > 0)
       {
-        m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.abs.left + this.abs.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
+        m = View.MeasureSpec.makeMeasureSpec(Math.min(i - (this.acd.left + this.acd.right), View.MeasureSpec.getSize(paramInt1)), 1073741824);
         k = 1;
       }
       for (;;)
@@ -150,7 +159,7 @@ public class ContentFrameLayout
           if (j == 0) {
             break label394;
           }
-          localTypedValue = this.abq;
+          localTypedValue = this.acb;
           label150:
           i = paramInt2;
           if (localTypedValue != null)
@@ -170,7 +179,7 @@ public class ContentFrameLayout
           label185:
           i = paramInt2;
           if (paramInt1 > 0) {
-            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.abs.top + this.abs.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
+            i = View.MeasureSpec.makeMeasureSpec(Math.min(paramInt1 - (this.acd.top + this.acd.bottom), View.MeasureSpec.getSize(paramInt2)), 1073741824);
           }
           super.onMeasure(m, i);
           i2 = getMeasuredWidth();
@@ -178,7 +187,7 @@ public class ContentFrameLayout
           if ((k == 0) && (i1 == -2147483648)) {
             if (j != 0)
             {
-              localTypedValue = this.abn;
+              localTypedValue = this.abY;
               label266:
               if ((localTypedValue == null) || (localTypedValue.type == 0)) {
                 break label476;
@@ -194,7 +203,7 @@ public class ContentFrameLayout
             label297:
             paramInt2 = paramInt1;
             if (paramInt1 > 0) {
-              paramInt2 = paramInt1 - (this.abs.left + this.abs.right);
+              paramInt2 = paramInt1 - (this.acd.left + this.acd.right);
             }
             if (i2 < paramInt2) {
               paramInt1 = View.MeasureSpec.makeMeasureSpec(paramInt2, 1073741824);
@@ -208,7 +217,7 @@ public class ContentFrameLayout
               j = 0;
               break;
               label353:
-              localTypedValue = this.abo;
+              localTypedValue = this.abZ;
               break label61;
               label362:
               if (localTypedValue.type != 6) {
@@ -217,7 +226,7 @@ public class ContentFrameLayout
               i = (int)localTypedValue.getFraction(localDisplayMetrics.widthPixels, localDisplayMetrics.widthPixels);
               break label92;
               label394:
-              localTypedValue = this.abr;
+              localTypedValue = this.acc;
               break label150;
               label403:
               if (localTypedValue.type != 6) {
@@ -225,7 +234,7 @@ public class ContentFrameLayout
               }
               paramInt1 = (int)localTypedValue.getFraction(localDisplayMetrics.heightPixels, localDisplayMetrics.heightPixels);
               break label185;
-              localTypedValue = this.abm;
+              localTypedValue = this.abX;
               break label266;
               label444:
               if (localTypedValue.type != 6) {
@@ -253,7 +262,7 @@ public class ContentFrameLayout
   
   public void setAttachListener(a parama)
   {
-    this.abt = parama;
+    this.ace = parama;
   }
   
   public static abstract interface a

@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list android:oneshot="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:color="#ffb2b2b2" />
-    <item android:color="@color/fc" />
-</selector>
+    <item android:duration="67" android:drawable="@drawable/b6j" />
+    <item android:duration="67" android:drawable="@drawable/b6u" />
+    <item android:duration="67" android:drawable="@drawable/b77" />
+    <item android:duration="67" android:drawable="@drawable/b78" />
+    <item android:duration="67" android:drawable="@drawable/b7_" />
+    <item android:duration="67" android:drawable="@drawable/b7a" />
+    <item android:duration="67" android:drawable="@drawable/b6k" />
+    <item android:duration="67" android:drawable="@drawable/b6l" />
+    <item android:duration="67" android:drawable="@drawable/b6n" />
+    <item android:duration="67" android:drawable="@drawable/b6o" />
+    <item android:duration="67" android:drawable="@drawable/b6q" />
+    <item android:duration="67" android:drawable="@drawable/b6r" />
+    <item android:duration="67" android:drawable="@drawable/b6t" />
+    <item android:duration="67" android:drawable="@drawable/b6v" />
+    <item android:duration="67" android:drawable="@drawable/b6x" />
+    <item android:duration="67" android:drawable="@drawable/b6y" />
+    <item android:duration="67" android:drawable="@drawable/b70" />
+    <item android:duration="67" android:drawable="@drawable/b71" />
+    <item android:duration="67" android:drawable="@drawable/b73" />
+    <item android:duration="67" android:drawable="@drawable/b74" />
+    <item android:duration="67" android:drawable="@drawable/b76" />
+</animation-list>

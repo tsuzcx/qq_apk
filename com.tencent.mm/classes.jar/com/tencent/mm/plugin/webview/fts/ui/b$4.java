@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.webview.fts.ui;
 
 import com.tencent.mm.plugin.webview.fts.c.a;
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 public final class b$4
-  extends bf<Boolean>
+  extends bj<Boolean>
 {
   public b$4(b paramb, Boolean paramBoolean, int paramInt, a parama, boolean paramBoolean1)
   {

@@ -1,6 +1,7 @@
 package com.tencent.mm.view;
 
 import android.widget.Switch;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.view.footer.SelectColorBar.a;
 
 final class a$8
@@ -8,15 +9,18 @@ final class a$8
 {
   a$8(a parama) {}
   
-  public final void IL(int paramInt)
+  public final void RE(int paramInt)
   {
-    if (a.c(this.wvE).isChecked())
+    AppMethodBeat.i(116379);
+    if (a.c(this.AQD).isChecked())
     {
-      a.c(this.wvE).setTag(Integer.valueOf(paramInt));
-      a.b(this.wvE).setTextBackground(paramInt);
+      a.c(this.AQD).setTag(Integer.valueOf(paramInt));
+      a.b(this.AQD).setTextBackground(paramInt);
+      AppMethodBeat.o(116379);
       return;
     }
-    a.b(this.wvE).setTextColor(paramInt);
+    a.b(this.AQD).setTextColor(paramInt);
+    AppMethodBeat.o(116379);
   }
 }
 

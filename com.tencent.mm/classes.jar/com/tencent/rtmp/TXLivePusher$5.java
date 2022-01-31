@@ -1,23 +1,21 @@
 package com.tencent.rtmp;
 
-import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.ugc.TXRecordCommon.ITXVideoRecordListener;
-import com.tencent.ugc.TXRecordCommon.TXRecordResult;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.rtmp.ui.TXCloudVideoView;
 
 class TXLivePusher$5
   implements Runnable
 {
-  TXLivePusher$5(TXLivePusher paramTXLivePusher) {}
+  TXLivePusher$5(TXLivePusher paramTXLivePusher, Bundle paramBundle, int paramInt) {}
   
   public void run()
   {
-    TXRecordCommon.TXRecordResult localTXRecordResult = new TXRecordCommon.TXRecordResult();
-    localTXRecordResult.retCode = -1;
-    localTXRecordResult.descMsg = "record video failed";
-    if (TXLivePusher.access$600(this.this$0) != null) {
-      TXLivePusher.access$600(this.this$0).onRecordComplete(localTXRecordResult);
+    AppMethodBeat.i(65929);
+    if (TXLivePusher.access$500(this.this$0) != null) {
+      TXLivePusher.access$500(this.this$0).setLogText(null, this.val$param, this.val$event);
     }
-    TXCLog.w(TXLivePusher.access$700(), "record complete fail");
+    AppMethodBeat.o(65929);
   }
 }
 

@@ -1,26 +1,20 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.d;
-import com.tencent.mm.ac.a.f;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.j;
-import com.tencent.mm.ac.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.h;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
 import java.io.File;
@@ -29,67 +23,83 @@ import java.util.Comparator;
 public class FileExplorerUI
   extends MMActivity
 {
-  private ListView slA;
-  private FileExplorerUI.a slB;
-  private TextView slC;
-  private TextView slD;
-  private View slE;
-  private View slF;
-  private String slG;
-  private String slH;
-  private File slI;
-  private File slJ;
-  private int slz = 0;
+  private int web = 0;
+  private ListView wec;
+  private FileExplorerUI.a wed;
+  private TextView wee;
+  private TextView wef;
+  private View weg;
+  private View weh;
+  private String wei;
+  private String wej;
+  private File wek;
+  private File wel;
   
-  private void Ex(int paramInt)
+  private void Mv(int paramInt)
   {
+    AppMethodBeat.i(105857);
     if (1 == paramInt)
     {
-      this.slz = 1;
-      this.slD.setTextColor(getResources().getColor(a.d.wechat_green));
-      this.slC.setTextColor(getResources().getColor(a.d.normal_text_color));
-      this.slE.setVisibility(4);
-      this.slF.setVisibility(0);
+      this.web = 1;
+      this.wef.setTextColor(getResources().getColor(2131690139));
+      this.wee.setTextColor(getResources().getColor(2131690322));
+      this.weg.setVisibility(4);
+      this.weh.setVisibility(0);
+      AppMethodBeat.o(105857);
       return;
     }
-    this.slz = 0;
-    this.slC.setTextColor(getResources().getColor(a.d.wechat_green));
-    this.slD.setTextColor(getResources().getColor(a.d.normal_text_color));
-    this.slE.setVisibility(0);
-    this.slF.setVisibility(4);
+    this.web = 0;
+    this.wee.setTextColor(getResources().getColor(2131690139));
+    this.wef.setTextColor(getResources().getColor(2131690322));
+    this.weg.setVisibility(0);
+    this.weh.setVisibility(4);
+    AppMethodBeat.o(105857);
   }
   
-  public static int WV(String paramString)
+  public static int amF(String paramString)
   {
     int j = 0;
+    AppMethodBeat.i(105862);
     paramString = paramString.toLowerCase();
-    String str = bk.pm(paramString).toLowerCase();
+    String str = bo.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".doc")) || (str.endsWith(".docx")) || (str.endsWith("wps"))) {}
-    for (int i = 1; i != 0; i = 0) {
-      return a.j.app_attach_file_icon_word;
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(105862);
+      return 2131230830;
     }
-    if (WW(paramString)) {
-      return a.f.qqmail_attach_img;
+    if (amG(paramString))
+    {
+      AppMethodBeat.o(105862);
+      return 2130840020;
     }
-    str = bk.pm(paramString).toLowerCase();
+    str = bo.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".rar")) || (str.endsWith(".zip")) || (str.endsWith(".7z")) || (str.endsWith("tar")) || (str.endsWith(".iso"))) {}
-    for (i = 1; i != 0; i = 0) {
-      return a.j.app_attach_file_icon_rar;
+    for (i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(105862);
+      return 2131230818;
     }
-    str = bk.pm(paramString).toLowerCase();
+    str = bo.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".txt")) || (str.endsWith(".rtf"))) {}
-    for (i = 1; i != 0; i = 0) {
-      return a.j.app_attach_file_icon_txt;
+    for (i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(105862);
+      return 2131230821;
     }
-    if (bk.pm(paramString).toLowerCase().endsWith(".pdf")) {
-      return a.j.app_attach_file_icon_pdf;
+    if (bo.nullAsNil(paramString).toLowerCase().endsWith(".pdf"))
+    {
+      AppMethodBeat.o(105862);
+      return 2131230813;
     }
-    str = bk.pm(paramString).toLowerCase();
+    str = bo.nullAsNil(paramString).toLowerCase();
     if ((str.endsWith(".ppt")) || (str.endsWith(".pptx"))) {}
-    for (i = 1; i != 0; i = 0) {
-      return a.j.app_attach_file_icon_ppt;
+    for (i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(105862);
+      return 2131230816;
     }
-    paramString = bk.pm(paramString).toLowerCase();
+    paramString = bo.nullAsNil(paramString).toLowerCase();
     if (!paramString.endsWith(".xls"))
     {
       i = j;
@@ -99,205 +109,203 @@ public class FileExplorerUI
     {
       i = 1;
     }
-    if (i != 0) {
-      return a.j.app_attach_file_icon_excel;
+    if (i != 0)
+    {
+      AppMethodBeat.o(105862);
+      return 2131230802;
     }
-    return a.j.app_attach_file_icon_unknow;
+    AppMethodBeat.o(105862);
+    return 2131230822;
   }
   
-  public static boolean WW(String paramString)
+  public static boolean amG(String paramString)
   {
-    paramString = bk.pm(paramString).toLowerCase();
-    return (paramString.endsWith(".bmp")) || (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".jpeg")) || (paramString.endsWith(".gif"));
+    AppMethodBeat.i(105863);
+    paramString = bo.nullAsNil(paramString).toLowerCase();
+    if ((paramString.endsWith(".bmp")) || (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".jpeg")) || (paramString.endsWith(".gif")))
+    {
+      AppMethodBeat.o(105863);
+      return true;
+    }
+    AppMethodBeat.o(105863);
+    return false;
   }
   
-  public static boolean WX(String paramString)
+  public static boolean amH(String paramString)
   {
-    paramString = bk.pm(paramString).toLowerCase();
-    return (paramString.endsWith(".mp3")) || (paramString.endsWith(".wma")) || (paramString.endsWith(".mp4")) || (paramString.endsWith(".rm"));
+    AppMethodBeat.i(105864);
+    paramString = bo.nullAsNil(paramString).toLowerCase();
+    if ((paramString.endsWith(".mp3")) || (paramString.endsWith(".wma")) || (paramString.endsWith(".mp4")) || (paramString.endsWith(".rm")))
+    {
+      AppMethodBeat.o(105864);
+      return true;
+    }
+    AppMethodBeat.o(105864);
+    return false;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.h.mail_file_explorer;
+    return 2130970063;
   }
   
-  protected final void initView()
+  public void initView()
   {
     boolean bool2 = true;
     Object localObject2 = null;
-    this.slA = ((ListView)findViewById(a.g.qqmail_file_explorer_list_lv));
-    this.slC = ((TextView)findViewById(a.g.root_tab));
-    this.slE = findViewById(a.g.root_tab_selector);
-    this.slD = ((TextView)findViewById(a.g.sdcard_tab));
-    this.slF = findViewById(a.g.sdcard_tab_selector);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        if (FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)) != null)
-        {
-          if (1 == FileExplorerUI.b(FileExplorerUI.this)) {
-            FileExplorerUI.a(FileExplorerUI.this, FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)));
-          }
-          for (;;)
-          {
-            FileExplorerUI.a(FileExplorerUI.this).g(FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)).getParentFile(), FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)));
-            FileExplorerUI.a(FileExplorerUI.this).notifyDataSetChanged();
-            FileExplorerUI.c(FileExplorerUI.this).setSelection(0);
-            FileExplorerUI.cog();
-            return true;
-            if (FileExplorerUI.b(FileExplorerUI.this) == 0) {
-              FileExplorerUI.b(FileExplorerUI.this, FileExplorerUI.a.a(FileExplorerUI.a(FileExplorerUI.this)));
-            }
-          }
-        }
-        g.DP().Dz().o(131074, FileExplorerUI.d(FileExplorerUI.this).getAbsolutePath());
-        g.DP().Dz().o(131073, FileExplorerUI.e(FileExplorerUI.this).getAbsolutePath());
-        FileExplorerUI.this.finish();
-        return true;
-      }
-    });
-    this.slG = getString(a.k.plugin_qqmail_file_explorer_root_tag);
-    this.slH = getString(a.k.plugin_qqmail_file_explorer_sdcard_tag);
+    AppMethodBeat.i(105856);
+    this.wec = ((ListView)findViewById(2131825874));
+    this.wee = ((TextView)findViewById(2131825870));
+    this.weg = findViewById(2131825871);
+    this.wef = ((TextView)findViewById(2131825872));
+    this.weh = findViewById(2131825873);
+    setBackBtn(new FileExplorerUI.1(this));
+    this.wei = getString(2131302138);
+    this.wej = getString(2131302139);
     File localFile1 = h.getRootDirectory();
     final File localFile2;
-    label128:
+    label126:
     Object localObject1;
     if (localFile1.canRead())
     {
-      if (!g.DP().isSDCardAvailable()) {
-        break label468;
+      if (!g.RL().isSDCardAvailable()) {
+        break label471;
       }
       localFile2 = h.getExternalStorageDirectory();
-      z localz = g.DP().Dz();
+      z localz = g.RL().Ru();
       if (localFile1 != null) {
-        break label499;
+        break label502;
       }
       localObject1 = null;
-      label143:
+      label141:
       localObject1 = (String)localz.get(131073, localObject1);
       if ((localObject1 == null) || (localFile1 == null) || (localFile1.getAbsolutePath().equals(localObject1))) {
-        break label508;
+        break label511;
       }
       localObject1 = new File((String)localObject1);
       if (!((File)localObject1).exists()) {
-        break label508;
+        break label511;
       }
-      label198:
-      this.slI = ((File)localObject1);
-      localz = g.DP().Dz();
+      label196:
+      this.wek = ((File)localObject1);
+      localz = g.RL().Ru();
       if (localFile2 != null) {
-        break label514;
+        break label517;
       }
       localObject1 = localObject2;
-      label221:
+      label219:
       localObject1 = (String)localz.get(131074, localObject1);
       if ((localObject1 == null) || (localFile2 == null) || (localFile2.getAbsolutePath().equals(localObject1))) {
-        break label524;
+        break label527;
       }
       localObject1 = new File((String)localObject1);
       if (!((File)localObject1).exists()) {
-        break label524;
+        break label527;
       }
-      label278:
-      this.slJ = ((File)localObject1);
-      this.slB = new FileExplorerUI.a(this, (byte)0);
+      label276:
+      this.wel = ((File)localObject1);
+      this.wed = new FileExplorerUI.a(this, (byte)0);
       if (localFile2 == null) {
-        break label531;
+        break label534;
       }
-      Ex(1);
-      this.slB.eFm = localFile2.getPath();
-      this.slB.g(this.slJ.getParentFile(), this.slJ);
-      label337:
-      localObject1 = this.slC;
+      Mv(1);
+      this.wed.fVd = localFile2.getPath();
+      this.wed.g(this.wel.getParentFile(), this.wel);
+      label335:
+      localObject1 = this.wee;
       if (localFile1 == null) {
-        break label582;
+        break label590;
       }
       bool1 = true;
-      label349:
+      label347:
       ((TextView)localObject1).setEnabled(bool1);
-      localObject1 = this.slD;
+      localObject1 = this.wef;
       if (localFile2 == null) {
-        break label587;
+        break label595;
       }
     }
-    label514:
-    label524:
-    label531:
-    label582:
-    label587:
+    label517:
+    label527:
+    label534:
+    label590:
+    label595:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       ((TextView)localObject1).setEnabled(bool1);
-      this.slA.setAdapter(this.slB);
-      this.slB.notifyDataSetChanged();
-      this.slA.setOnItemClickListener(new FileExplorerUI.2(this));
-      this.slC.setOnClickListener(new FileExplorerUI.3(this, localFile1));
-      this.slD.setOnClickListener(new View.OnClickListener()
+      this.wec.setAdapter(this.wed);
+      this.wed.notifyDataSetChanged();
+      this.wec.setOnItemClickListener(new FileExplorerUI.2(this));
+      this.wee.setOnClickListener(new FileExplorerUI.3(this, localFile1));
+      this.wef.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
+          AppMethodBeat.i(105843);
           FileExplorerUI.a(FileExplorerUI.this, 1);
-          FileExplorerUI.a(FileExplorerUI.this).eFm = localFile2.getPath();
+          FileExplorerUI.a(FileExplorerUI.this).fVd = localFile2.getPath();
           FileExplorerUI.a(FileExplorerUI.this).g(FileExplorerUI.d(FileExplorerUI.this).getParentFile(), FileExplorerUI.d(FileExplorerUI.this));
           FileExplorerUI.a(FileExplorerUI.this).notifyDataSetInvalidated();
           FileExplorerUI.a(FileExplorerUI.this).notifyDataSetChanged();
           FileExplorerUI.c(FileExplorerUI.this).setSelection(0);
+          AppMethodBeat.o(105843);
         }
       });
+      AppMethodBeat.o(105856);
       return;
       localFile1 = h.getDataDirectory();
       if (localFile1.canRead())
       {
-        this.slG = localFile1.getName();
+        this.wei = localFile1.getName();
         break;
       }
       localFile1 = null;
       break;
-      label468:
+      label471:
       localFile2 = h.getDownloadCacheDirectory();
       if (localFile2.canRead())
       {
-        this.slH = localFile2.getName();
-        break label128;
+        this.wej = localFile2.getName();
+        break label126;
       }
       localFile2 = null;
-      break label128;
-      label499:
+      break label126;
+      label502:
       localObject1 = localFile1.getAbsolutePath();
-      break label143;
-      label508:
+      break label141;
+      label511:
       localObject1 = localFile1;
-      break label198;
+      break label196;
       localObject1 = localFile2.getAbsolutePath();
-      break label221;
+      break label219;
       localObject1 = localFile2;
-      break label278;
+      break label276;
       if (localFile1 != null)
       {
-        Ex(0);
-        this.slB.eFm = localFile1.getPath();
-        this.slB.g(this.slI.getParentFile(), this.slI);
-        break label337;
+        Mv(0);
+        this.wed.fVd = localFile1.getPath();
+        this.wed.g(this.wek.getParentFile(), this.wek);
+        break label335;
       }
-      y.d("MicroMsg.FileExplorerUI", "left and right tag disabled in the same time.");
+      ab.d("MicroMsg.FileExplorerUI", "left and right tag disabled in the same time.");
+      AppMethodBeat.o(105856);
       return;
       bool1 = false;
-      break label349;
+      break label347;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(105851);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra("key_title");
-    if (bk.bl(paramBundle)) {
-      setMMTitle(a.k.plugin_qqmail_file_explorer_ui_title);
+    if (bo.isNullOrNil(paramBundle)) {
+      setMMTitle(2131302140);
     }
     for (;;)
     {
       initView();
+      AppMethodBeat.o(105851);
       return;
       setMMTitle(paramBundle);
     }
@@ -305,44 +313,60 @@ public class FileExplorerUI
   
   public void onDestroy()
   {
+    AppMethodBeat.i(105854);
     super.onDestroy();
+    AppMethodBeat.o(105854);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (FileExplorerUI.a.a(this.slB) != null))
+    AppMethodBeat.i(105855);
+    if ((paramInt == 4) && (FileExplorerUI.a.a(this.wed) != null))
     {
-      if (1 == this.slz) {
-        this.slJ = FileExplorerUI.a.a(this.slB);
+      if (1 == this.web) {
+        this.wel = FileExplorerUI.a.a(this.wed);
       }
       for (;;)
       {
-        this.slB.g(FileExplorerUI.a.a(this.slB).getParentFile(), FileExplorerUI.a.a(this.slB));
-        this.slB.notifyDataSetChanged();
-        this.slA.setSelection(0);
+        this.wed.g(FileExplorerUI.a.a(this.wed).getParentFile(), FileExplorerUI.a.a(this.wed));
+        this.wed.notifyDataSetChanged();
+        this.wec.setSelection(0);
+        AppMethodBeat.o(105855);
         return true;
-        if (this.slz == 0) {
-          this.slI = FileExplorerUI.a.a(this.slB);
+        if (this.web == 0) {
+          this.wek = FileExplorerUI.a.a(this.wed);
         }
       }
     }
-    if (this.slJ != null) {
-      g.DP().Dz().o(131074, this.slJ.getAbsolutePath());
+    if (this.wel != null) {
+      g.RL().Ru().set(131074, this.wel.getAbsolutePath());
     }
-    if (this.slI != null) {
-      g.DP().Dz().o(131073, this.slI.getAbsolutePath());
+    if (this.wek != null) {
+      g.RL().Ru().set(131073, this.wek.getAbsolutePath());
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(105855);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(105853);
     super.onPause();
+    AppMethodBeat.o(105853);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(105852);
     super.onResume();
+    AppMethodBeat.o(105852);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

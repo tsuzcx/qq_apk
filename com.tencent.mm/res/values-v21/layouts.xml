@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item type="layout" name="i4">false</item>
-    <item type="layout" name="ag1">false</item>
-    <item type="layout" name="ag2">false</item>
-    <item type="layout" name="ag9">false</item>
-    <item type="layout" name="b2d">false</item>
+    <item type="layout" name="aku">false</item>
+    <item type="layout" name="akv">false</item>
+    <item type="layout" name="al2">false</item>
+    <item type="layout" name="j4">false</item>
+    <item type="layout" name="ba0">false</item>
 </resources>

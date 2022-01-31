@@ -2,16 +2,24 @@ package com.tencent.mm.plugin.webview.model;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.modelvoice.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelvoice.s;
 
 public class WebViewJSSDKVoiceItem
   extends WebViewJSSDKFileItem
 {
-  public static final Parcelable.Creator<WebViewJSSDKVoiceItem> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<WebViewJSSDKVoiceItem> CREATOR;
+  
+  static
+  {
+    AppMethodBeat.i(6735);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(6735);
+  }
   
   public WebViewJSSDKVoiceItem()
   {
-    this.bLN = 2;
+    this.cth = 2;
   }
   
   protected WebViewJSSDKVoiceItem(Parcel paramParcel)
@@ -19,21 +27,13 @@ public class WebViewJSSDKVoiceItem
     super(paramParcel);
   }
   
-  public final WebViewJSSDKFileItem cbT()
+  public final WebViewJSSDKFileItem dca()
   {
-    this.fMZ = q.getFullPath(this.fileName);
-    this.bMB = am.So(this.fMZ);
+    AppMethodBeat.i(6733);
+    this.hgj = s.getFullPath(this.fileName);
+    this.ctV = ar.ahn(this.hgj);
+    AppMethodBeat.o(6733);
     return this;
-  }
-  
-  public final String cbU()
-  {
-    return "speex";
-  }
-  
-  public final String cbV()
-  {
-    return "voice";
   }
   
   public int describeContents()
@@ -41,9 +41,21 @@ public class WebViewJSSDKVoiceItem
     return 0;
   }
   
+  public final String dyR()
+  {
+    return "speex";
+  }
+  
+  public final String dzk()
+  {
+    return "voice";
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(6734);
     super.writeToParcel(paramParcel, paramInt);
+    AppMethodBeat.o(6734);
   }
 }
 

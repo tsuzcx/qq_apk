@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.appbrand.ui.banner;
 
+import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 @Deprecated
 public enum AppBrandStickyBannerLogic {}
 

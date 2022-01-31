@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.util.ParamPair;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class TMAssistantDownloadSDKMessageThread
   {
     try
     {
+      AppMethodBeat.i(75657);
       if (mInstance == null)
       {
         localObject1 = new HandlerThread("TMAssistantDownloadSDKMessageThread");
@@ -37,6 +39,7 @@ public class TMAssistantDownloadSDKMessageThread
         mInstance = new TMAssistantDownloadSDKMessageThread(mMessagehandlerThread.getLooper());
       }
       Object localObject1 = mInstance;
+      AppMethodBeat.o(75657);
       return localObject1;
     }
     finally {}
@@ -44,12 +47,14 @@ public class TMAssistantDownloadSDKMessageThread
   
   public void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(75658);
     super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(75658);
       return;
       Object localObject2 = (ParamPair)paramMessage.obj;
       Object localObject1 = (TMAssistantDownloadSDKClient)((ParamPair)localObject2).mFirstParam;
@@ -64,6 +69,7 @@ public class TMAssistantDownloadSDKMessageThread
       if (localObject2 != null)
       {
         ((ITMAssistantDownloadSDKClientListener)localObject2).OnDownloadSDKTaskStateChanged((TMAssistantDownloadSDKClient)localObject1, str1, i, j, str2, bool1, bool2);
+        AppMethodBeat.o(75658);
         return;
         localObject2 = (ParamPair)paramMessage.obj;
         localObject1 = (TMAssistantDownloadSDKClient)((ParamPair)localObject2).mFirstParam;
@@ -75,6 +81,7 @@ public class TMAssistantDownloadSDKMessageThread
         if (localObject2 != null)
         {
           ((ITMAssistantDownloadSDKClientListener)localObject2).OnDownloadSDKTaskProgressChanged((TMAssistantDownloadSDKClient)localObject1, str1, l1, l2);
+          AppMethodBeat.o(75658);
           return;
           localObject1 = (ParamPair)paramMessage.obj;
           paramMessage = (TMAssistantDownloadSDKClient)((ParamPair)localObject1).mFirstParam;
@@ -82,6 +89,7 @@ public class TMAssistantDownloadSDKMessageThread
           if (localObject1 != null)
           {
             ((ITMAssistantDownloadSDKClientListener)localObject1).OnDwonloadSDKServiceInvalid(paramMessage);
+            AppMethodBeat.o(75658);
             return;
             localObject1 = (ParamPair)paramMessage.obj;
             paramMessage = (byte[])((ParamPair)localObject1).mFirstParam;
@@ -105,6 +113,7 @@ public class TMAssistantDownloadSDKMessageThread
   
   public void postActionResult(byte[] paramArrayOfByte, ArrayList<IAssistantOnActionListener> paramArrayList)
   {
+    AppMethodBeat.i(75662);
     if ((paramArrayOfByte != null) && (paramArrayList != null))
     {
       Message localMessage = getInstance().obtainMessage();
@@ -112,24 +121,31 @@ public class TMAssistantDownloadSDKMessageThread
       localMessage.obj = new ParamPair(paramArrayOfByte, paramArrayList);
       localMessage.sendToTarget();
     }
+    AppMethodBeat.o(75662);
   }
   
   public void postSDKServiceInvalidMessage(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, ITMAssistantDownloadSDKClientListener paramITMAssistantDownloadSDKClientListener)
   {
-    if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null)) {
+    AppMethodBeat.i(75661);
+    if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null))
+    {
+      AppMethodBeat.o(75661);
       return;
     }
     Message localMessage = getInstance().obtainMessage();
     localMessage.what = 3;
     localMessage.obj = new ParamPair(paramTMAssistantDownloadSDKClient, paramITMAssistantDownloadSDKClientListener);
     localMessage.sendToTarget();
+    AppMethodBeat.o(75661);
   }
   
   public void postTaskProgressChangedMessage(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, ITMAssistantDownloadSDKClientListener paramITMAssistantDownloadSDKClientListener, String paramString, long paramLong1, long paramLong2)
   {
+    AppMethodBeat.i(75660);
     if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null))
     {
       TMLog.i("TMAssistantDownloadSDKMessageThread", "listenr:" + paramITMAssistantDownloadSDKClientListener + " === sdkClient" + paramTMAssistantDownloadSDKClient);
+      AppMethodBeat.o(75660);
       return;
     }
     Message localMessage = getInstance().obtainMessage();
@@ -141,11 +157,15 @@ public class TMAssistantDownloadSDKMessageThread
     paramTMAssistantDownloadSDKClient.putLong("totalDataLen", paramLong2);
     localMessage.setData(paramTMAssistantDownloadSDKClient);
     localMessage.sendToTarget();
+    AppMethodBeat.o(75660);
   }
   
   public void postTaskStateChangedMessage(TMAssistantDownloadSDKClient paramTMAssistantDownloadSDKClient, ITMAssistantDownloadSDKClientListener paramITMAssistantDownloadSDKClientListener, String paramString1, int paramInt1, int paramInt2, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null)) {
+    AppMethodBeat.i(75659);
+    if ((paramITMAssistantDownloadSDKClientListener == null) || (paramTMAssistantDownloadSDKClient == null))
+    {
+      AppMethodBeat.o(75659);
       return;
     }
     Message localMessage = getInstance().obtainMessage();
@@ -160,6 +180,7 @@ public class TMAssistantDownloadSDKMessageThread
     paramTMAssistantDownloadSDKClient.putBoolean("autoRetry", paramBoolean2);
     localMessage.setData(paramTMAssistantDownloadSDKClient);
     localMessage.sendToTarget();
+    AppMethodBeat.o(75659);
   }
 }
 

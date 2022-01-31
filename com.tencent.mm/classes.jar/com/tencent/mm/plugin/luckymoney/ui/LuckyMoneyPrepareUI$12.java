@@ -1,14 +1,20 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import com.tencent.mm.h.a.pt;
-import com.tencent.mm.sdk.b.c;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyPrepareUI$12
-  extends c<pt>
+  implements MenuItem.OnMenuItemClickListener
 {
-  LuckyMoneyPrepareUI$12(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI)
+  LuckyMoneyPrepareUI$12(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
+  
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.udX = pt.class.getName().hashCode();
+    AppMethodBeat.i(142064);
+    this.owL.finish();
+    AppMethodBeat.o(142064);
+    return true;
   }
 }
 

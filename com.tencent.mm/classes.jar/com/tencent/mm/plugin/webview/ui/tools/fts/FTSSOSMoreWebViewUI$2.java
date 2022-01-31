@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.fts.widget.SOSEditTextView;
 
 final class FTSSOSMoreWebViewUI$2
@@ -9,8 +10,10 @@ final class FTSSOSMoreWebViewUI$2
   
   public final void run()
   {
-    this.ruU.cfr().aWy();
-    this.ruU.cfr().aWx();
+    AppMethodBeat.i(8524);
+    this.vlj.dfA().bDf();
+    this.vlj.dfA().bDe();
+    AppMethodBeat.o(8524);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MMListPopupWindow$f
   implements Runnable
 {
@@ -7,11 +9,13 @@ final class MMListPopupWindow$f
   
   public final void run()
   {
-    if ((MMListPopupWindow.a(this.uWx) != null) && (MMListPopupWindow.a(this.uWx).getCount() > MMListPopupWindow.a(this.uWx).getChildCount()) && (MMListPopupWindow.a(this.uWx).getChildCount() <= this.uWx.aeR))
+    AppMethodBeat.i(112519);
+    if ((MMListPopupWindow.a(this.zkQ) != null) && (MMListPopupWindow.a(this.zkQ).getCount() > MMListPopupWindow.a(this.zkQ).getChildCount()) && (MMListPopupWindow.a(this.zkQ).getChildCount() <= this.zkQ.ahg))
     {
-      MMListPopupWindow.b(this.uWx).setInputMethodMode(2);
-      this.uWx.show();
+      MMListPopupWindow.b(this.zkQ).setInputMethodMode(2);
+      this.zkQ.show();
     }
+    AppMethodBeat.o(112519);
   }
 }
 

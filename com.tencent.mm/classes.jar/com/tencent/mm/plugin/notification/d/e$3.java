@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.notification.d;
 
-import com.tencent.mm.h.a.od;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pe;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$3
   implements Runnable
@@ -11,10 +12,12 @@ final class e$3
   
   public final void run()
   {
-    y.d("MicroMsg.SendSnsFailNotification", "resend snsInfo id:%d", new Object[] { Long.valueOf(this.byn) });
-    od localod = new od();
-    localod.bXQ.bXR = ((int)this.byn);
-    a.udP.m(localod);
+    AppMethodBeat.i(23157);
+    ab.d("MicroMsg.SendSnsFailNotification", "resend snsInfo id:%d", new Object[] { Long.valueOf(this.cap) });
+    pe localpe = new pe();
+    localpe.cFO.cFP = ((int)this.cap);
+    a.ymk.l(localpe);
+    AppMethodBeat.o(23157);
   }
 }
 

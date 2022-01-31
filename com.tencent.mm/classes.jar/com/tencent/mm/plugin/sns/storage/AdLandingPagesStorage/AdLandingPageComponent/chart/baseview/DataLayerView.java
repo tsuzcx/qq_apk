@@ -23,9 +23,9 @@ public abstract class DataLayerView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract int bEZ();
+  protected abstract int cqG();
   
-  public abstract int bFa();
+  protected abstract int cqH();
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -57,11 +57,11 @@ public abstract class DataLayerView
     {
       setMeasuredDimension(paramInt1, paramInt2);
       return;
-      paramInt1 = bFa();
+      paramInt1 = cqH();
       break;
       paramInt1 = getSuggestedMinimumWidth();
       break;
-      paramInt2 = bEZ();
+      paramInt2 = cqG();
       continue;
       paramInt2 = getSuggestedMinimumHeight();
     }

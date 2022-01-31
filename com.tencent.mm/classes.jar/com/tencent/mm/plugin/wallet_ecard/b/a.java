@@ -3,72 +3,87 @@ package com.tencent.mm.plugin.wallet_ecard.b;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.b.b;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.ui.WalletBankcardIdUI;
 import com.tencent.mm.plugin.wallet_core.ui.WalletCardImportUI;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.v;
-import com.tencent.mm.wallet_core.c.w;
+import com.tencent.mm.plugin.wallet_core.utils.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c;
+import com.tencent.mm.wallet_core.c.x;
+import com.tencent.mm.wallet_core.c.z;
 
 public class a
   extends b
 {
-  public final com.tencent.mm.wallet_core.c a(Activity paramActivity, Bundle paramBundle)
+  public final c a(Activity paramActivity, Bundle paramBundle)
   {
-    A(new Object[] { "start", paramActivity, paramBundle });
-    y.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
+    AppMethodBeat.i(48071);
+    G(new Object[] { "start", paramActivity, paramBundle });
+    ab.d("MicroMsg.BindCardProcess", "start Process : BindCardProcess");
     if (paramBundle != null)
     {
-      w.fT(6, paramBundle.getInt("key_bind_scene"));
-      v.IX(paramBundle.getInt("key_bind_scene"));
-    }
-    while (o.bVs().bVN()) {
-      if (paramBundle != null)
-      {
-        if (paramBundle.getBoolean("key_is_import_bind", false))
-        {
-          b(paramActivity, WalletCardImportUI.class, paramBundle);
-          return this;
-          w.fT(6, 0);
-          v.IX(0);
-        }
-        else
-        {
-          b(paramActivity, WalletBankcardIdUI.class, paramBundle);
-          return this;
-        }
+      z.id(6, paramBundle.getInt("key_bind_scene"));
+      x.RT(paramBundle.getInt("key_bind_scene"));
+      if (!t.cTN().cUl()) {
+        break label133;
       }
-      else {
-        return super.a(paramActivity, paramBundle);
+      if (paramBundle == null) {
+        break label119;
       }
+      if (!paramBundle.getBoolean("key_is_import_bind", false)) {
+        break label108;
+      }
+      b(paramActivity, WalletCardImportUI.class, paramBundle);
     }
+    for (;;)
+    {
+      AppMethodBeat.o(48071);
+      return this;
+      z.id(6, 0);
+      x.RT(0);
+      break;
+      label108:
+      b(paramActivity, WalletBankcardIdUI.class, paramBundle);
+    }
+    label119:
+    paramActivity = super.a(paramActivity, paramBundle);
+    AppMethodBeat.o(48071);
+    return paramActivity;
+    label133:
     if (paramBundle != null) {
-      com.tencent.mm.plugin.wallet_core.e.c.ev(paramBundle.getInt("key_bind_scene", 0), 1);
+      d.gz(paramBundle.getInt("key_bind_scene", 0), 1);
     }
     if ((paramBundle != null) && (paramBundle.getBoolean("key_is_import_bind", false)))
     {
       b(paramActivity, WalletCardImportUI.class, paramBundle);
+      AppMethodBeat.o(48071);
       return this;
     }
-    return super.a(paramActivity, paramBundle);
-  }
-  
-  public final String aTh()
-  {
-    return "OpenECardBindCardProcess";
+    paramActivity = super.a(paramActivity, paramBundle);
+    AppMethodBeat.o(48071);
+    return paramActivity;
   }
   
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
+    AppMethodBeat.i(48072);
     if ((paramBundle != null) && (paramBundle.getBoolean("intent_bind_end", false)))
     {
       a(paramActivity, "wallet_ecard", ".ui.WalletECardBindCardListUI", -1, new Intent(), true);
+      AppMethodBeat.o(48072);
       return;
     }
     a(paramActivity, "wallet_ecard", ".ui.WalletECardBindCardListUI", 0, new Intent(), true);
     paramActivity.finish();
+    AppMethodBeat.o(48072);
+  }
+  
+  public final String bzC()
+  {
+    return "OpenECardBindCardProcess";
   }
 }
 

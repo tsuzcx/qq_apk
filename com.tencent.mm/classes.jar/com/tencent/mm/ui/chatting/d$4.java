@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.chatting;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class d$4
   implements Runnable
@@ -9,12 +10,14 @@ final class d$4
   
   public final void run()
   {
-    this.vhN.iam = bk.UZ();
+    AppMethodBeat.i(30408);
+    this.zwH.lastShakeTime = bo.yB();
+    AppMethodBeat.o(30408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.4
  * JD-Core Version:    0.7.0.1
  */

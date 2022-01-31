@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.card.ui;
 
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,9 +9,11 @@ final class CardGiftImageUI$3
 {
   CardGiftImageUI$3(CardGiftImageUI paramCardGiftImageUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.e(0, this.itG.getString(a.g.save_to_local));
+    AppMethodBeat.i(88395);
+    paraml.e(0, this.kuL.getString(2131302871));
+    AppMethodBeat.o(88395);
   }
 }
 

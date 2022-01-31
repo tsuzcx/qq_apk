@@ -4,6 +4,7 @@ import android.webkit.JsPromptResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import com.tencent.luggage.webview.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class DefaultWebCore$6
   extends WebChromeClient
@@ -12,11 +13,15 @@ class DefaultWebCore$6
   
   public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    paramWebView = this.bjP.bg(paramString2);
-    if (paramWebView == null) {
+    AppMethodBeat.i(90929);
+    paramWebView = this.bFH.bH(paramString2);
+    if (paramWebView == null)
+    {
+      AppMethodBeat.o(90929);
       return false;
     }
     paramJsPromptResult.confirm(paramWebView);
+    AppMethodBeat.o(90929);
     return true;
   }
 }

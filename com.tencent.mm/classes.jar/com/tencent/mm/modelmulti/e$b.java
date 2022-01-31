@@ -1,25 +1,34 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.ah.k;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
-import com.tencent.mm.protocal.r.a;
-import com.tencent.mm.protocal.r.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.s.a;
+import com.tencent.mm.protocal.s.b;
 
 public final class e$b
   extends k
 {
-  private final r.a esI = new r.a();
-  private final r.b esJ = new r.b();
+  private final s.a fIv;
+  private final s.b fIw;
   
-  protected final k.d HE()
+  public e$b()
   {
-    return this.esI;
+    AppMethodBeat.i(58361);
+    this.fIv = new s.a();
+    this.fIw = new s.b();
+    AppMethodBeat.o(58361);
   }
   
-  public final k.e HF()
+  public final l.d getReqObjImp()
   {
-    return this.esJ;
+    return this.fIv;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.fIw;
   }
   
   public final int getType()
@@ -34,7 +43,7 @@ public final class e$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.modelmulti.e.b
  * JD-Core Version:    0.7.0.1
  */

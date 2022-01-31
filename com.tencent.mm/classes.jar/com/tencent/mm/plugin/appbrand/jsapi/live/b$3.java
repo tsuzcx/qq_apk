@@ -1,35 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import android.os.Bundle;
-import com.tencent.mm.plugin.appbrand.jsapi.e.b;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.rtmp.ITXLivePlayListener;
-import com.tencent.rtmp.TXLivePlayer;
+import android.app.Activity;
+import android.support.v4.app.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import org.json.JSONObject;
 
 final class b$3
-  implements e.b
+  implements a.a
 {
-  b$3(b paramb, AppBrandLivePlayerView paramAppBrandLivePlayerView) {}
+  b$3(b paramb, Activity paramActivity, c paramc, JSONObject paramJSONObject, int paramInt) {}
   
-  public final void qa()
+  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject = this.gsg.grW;
-    ((l)localObject).gsB = ((l)localObject).gsx.isPlaying();
-    if ((((l)localObject).gsB) && (((l)localObject).gsH)) {
-      if ((((l)localObject).gsa) && (((l)localObject).gsy != null)) {
-        ((l)localObject).gsy.onPlayEvent(6000, new Bundle());
-      }
-    }
-    for (localObject = ((l)localObject).ue("pause");; localObject = new j())
+    AppMethodBeat.i(96089);
+    ab.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback requestCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (paramInt == 117)
     {
-      y.i("MicroMsg.AppBrandLivePlayerView", "onBackground code:%d info:%s", new Object[] { Integer.valueOf(((j)localObject).errorCode), ((j)localObject).gst });
+      if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
+      {
+        al.p(new b.3.1(this), 50L);
+        AppMethodBeat.o(96089);
+        return;
+      }
+      ab.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback not grant");
+      this.hza.h(this.bAX, this.hNJ.j("fail:system permission denied", null));
+      AppMethodBeat.o(96089);
       return;
     }
+    if (paramInt == 118)
+    {
+      if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
+      {
+        al.p(new b.3.2(this), 50L);
+        AppMethodBeat.o(96089);
+        return;
+      }
+      ab.i("MicroMsg.JsApiInsertLivePusher", "onRequestPermissionsResult callback not grant");
+      this.hza.h(this.bAX, this.hNJ.j("fail:system permission denied", null));
+    }
+    AppMethodBeat.o(96089);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.b.3
  * JD-Core Version:    0.7.0.1
  */

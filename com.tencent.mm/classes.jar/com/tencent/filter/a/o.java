@@ -1,25 +1,16 @@
 package com.tencent.filter.a;
 
-import com.tencent.filter.BaseFilter;
-import com.tencent.filter.GLSLRender;
 import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
-  extends BaseFilter
+  extends ab
 {
-  private BaseFilter bgJ;
-  
   public o()
   {
-    super(GLSLRender.bcE);
-  }
-  
-  public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
-  {
-    this.bgJ = new x();
-    this.bgJ.addParam(new m.o("inputImageTexture2", "sh/dongjing_lf.png", 33986));
-    setNextFilter(this.bgJ, null);
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.i(86455);
+    addParam(new m.o("inputImageTexture2", "sh/dannai_lf.png", 33986));
+    AppMethodBeat.o(86455);
   }
 }
 

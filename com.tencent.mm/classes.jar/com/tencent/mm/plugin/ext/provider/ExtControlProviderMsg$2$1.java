@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.ext.provider;
 
 import android.database.MatrixCursor;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.d.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExtControlProviderMsg$2$1
   implements f
@@ -15,34 +16,37 @@ final class ExtControlProviderMsg$2$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.ExtControlProviderMsg", "onSceneEnd errType=%s, errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(20349);
+    ab.d("MicroMsg.ExtControlProviderMsg", "onSceneEnd errType=%s, errCode=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramm == null)
     {
-      y.e("MicroMsg.ExtControlProviderMsg", "scene == null");
-      au.Dk().b(522, this);
-      this.jKy.jKv.qF(4);
-      this.jKy.hSx.countDown();
+      ab.e("MicroMsg.ExtControlProviderMsg", "scene == null");
+      aw.Rc().b(522, this);
+      this.meC.mez.vA(4);
+      this.meC.jMg.countDown();
+      AppMethodBeat.o(20349);
       return;
     }
     switch (paramm.getType())
     {
     default: 
-      this.jKy.jKv.qF(0);
+      this.meC.mez.vA(0);
     }
     for (;;)
     {
-      this.jKy.hSx.countDown();
-      au.Dk().b(522, this);
+      this.meC.jMg.countDown();
+      aw.Rc().b(522, this);
+      AppMethodBeat.o(20349);
       return;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        y.d("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd ok, ");
-        ExtControlProviderMsg.a(this.jKy.jKv).addRow(new Object[] { this.jKx, Integer.valueOf(1) });
+        ab.d("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd ok, ");
+        ExtControlProviderMsg.a(this.meC.mez).addRow(new Object[] { this.meB, Integer.valueOf(1) });
         break;
       }
-      y.e("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd err, errType = " + paramInt1 + ", errCode = " + paramInt2);
-      ExtControlProviderMsg.a(this.jKy.jKv).addRow(new Object[] { this.jKx, Integer.valueOf(2) });
-      this.jKy.jKv.qF(4);
+      ab.e("MicroMsg.ExtControlProviderMsg", "rtSENDMSG onSceneEnd err, errType = " + paramInt1 + ", errCode = " + paramInt2);
+      ExtControlProviderMsg.a(this.meC.mez).addRow(new Object[] { this.meB, Integer.valueOf(2) });
+      this.meC.mez.vA(4);
     }
   }
 }

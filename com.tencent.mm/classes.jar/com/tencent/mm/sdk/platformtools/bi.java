@@ -1,72 +1,49 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.os.SystemClock;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class bi
+final class bi
 {
-  private boolean gUE;
-  private String mTag;
-  ArrayList<String> uiA;
-  private String uiy;
-  ArrayList<Long> uiz;
-  
-  public bi(String paramString1, String paramString2)
+  @TargetApi(8)
+  public static void c(ListView paramListView)
   {
-    this.mTag = paramString1;
-    this.uiy = paramString2;
-    this.gUE = false;
-    if (!this.gUE)
-    {
-      if (this.uiz != null) {
-        break label61;
-      }
-      this.uiz = new ArrayList();
-      this.uiA = new ArrayList();
+    AppMethodBeat.i(93591);
+    if (paramListView.getFirstVisiblePosition() > 10) {
+      paramListView.setSelection(10);
+    }
+    if (Build.VERSION.SDK_INT >= 8) {
+      paramListView.smoothScrollToPosition(0);
+    }
+    AppMethodBeat.o(93591);
+  }
+  
+  @TargetApi(8)
+  public static void d(ListView paramListView, int paramInt)
+  {
+    AppMethodBeat.i(93592);
+    int i = paramListView.getFirstVisiblePosition();
+    if ((i > paramInt) && (i - paramInt > 10)) {
+      paramListView.setSelection(paramInt + 10);
     }
     for (;;)
     {
-      addSplit(null);
+      if (Build.VERSION.SDK_INT >= 8) {
+        paramListView.smoothScrollToPosition(paramInt);
+      }
+      AppMethodBeat.o(93592);
       return;
-      label61:
-      this.uiz.clear();
-      this.uiA.clear();
+      if ((i < paramInt) && (paramInt - i > 10)) {
+        paramListView.setSelection(paramInt - 10);
+      }
     }
-  }
-  
-  public final void addSplit(String paramString)
-  {
-    if (this.gUE) {
-      return;
-    }
-    long l = SystemClock.elapsedRealtime();
-    this.uiz.add(Long.valueOf(l));
-    this.uiA.add(paramString);
-  }
-  
-  public final void dumpToLog()
-  {
-    if (this.gUE) {
-      return;
-    }
-    y.d(this.mTag, this.uiy + ": begin");
-    long l2 = ((Long)this.uiz.get(0)).longValue();
-    int i = 1;
-    long l1 = l2;
-    while (i < this.uiz.size())
-    {
-      l1 = ((Long)this.uiz.get(i)).longValue();
-      String str = (String)this.uiA.get(i);
-      long l3 = ((Long)this.uiz.get(i - 1)).longValue();
-      y.d(this.mTag, this.uiy + ":      " + (l1 - l3) + " ms, " + str);
-      i += 1;
-    }
-    y.d(this.mTag, this.uiy + ": end, " + (l1 - l2) + " ms");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.bi
  * JD-Core Version:    0.7.0.1
  */

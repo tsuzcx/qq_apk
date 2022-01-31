@@ -6,11 +6,11 @@ import java.util.Iterator;
 public abstract class AbstractDataBuffer<T>
   implements DataBuffer<T>
 {
-  public final DataHolder zzaBi;
+  protected final DataHolder mDataHolder;
   
   protected AbstractDataBuffer(DataHolder paramDataHolder)
   {
-    this.zzaBi = paramDataHolder;
+    this.mDataHolder = paramDataHolder;
   }
   
   @Deprecated
@@ -23,43 +23,43 @@ public abstract class AbstractDataBuffer<T>
   
   public int getCount()
   {
-    if (this.zzaBi == null) {
+    if (this.mDataHolder == null) {
       return 0;
     }
-    return this.zzaBi.getCount();
+    return this.mDataHolder.getCount();
+  }
+  
+  public Bundle getMetadata()
+  {
+    return this.mDataHolder.getMetadata();
   }
   
   @Deprecated
   public boolean isClosed()
   {
-    return (this.zzaBi == null) || (this.zzaBi.isClosed());
+    return (this.mDataHolder == null) || (this.mDataHolder.isClosed());
   }
   
   public Iterator<T> iterator()
   {
-    return new zzb(this);
+    return new DataBufferIterator(this);
   }
   
   public void release()
   {
-    if (this.zzaBi != null) {
-      this.zzaBi.close();
+    if (this.mDataHolder != null) {
+      this.mDataHolder.close();
     }
   }
   
   public Iterator<T> singleRefIterator()
   {
-    return new zzg(this);
-  }
-  
-  public Bundle zzxf()
-  {
-    return this.zzaBi.zzxf();
+    return new SingleRefDataBufferIterator(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.data.AbstractDataBuffer
  * JD-Core Version:    0.7.0.1
  */

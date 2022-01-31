@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 import org.json.JSONObject;
 
@@ -11,7 +12,9 @@ public final class b
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(137868);
     a(new b.1(this, paramc, paramInt));
+    AppMethodBeat.o(137868);
   }
 }
 

@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.appbrand.widget.recentview;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import com.tencent.mm.plugin.appbrand.service.j;
 
 final class MenuAppBrandRecentView$1
   implements AppBrandRecentView.b
@@ -12,31 +14,34 @@ final class MenuAppBrandRecentView$1
   
   public final boolean a(View paramView, a parama, float paramFloat1, float paramFloat2)
   {
-    if (MenuAppBrandRecentView.a(this.hDo) != null) {}
-    for (boolean bool = MenuAppBrandRecentView.a(this.hDo).a(paramView, parama, paramFloat1, paramFloat2);; bool = false)
+    AppMethodBeat.i(134382);
+    if (MenuAppBrandRecentView.a(this.jvP) != null) {}
+    for (boolean bool = MenuAppBrandRecentView.a(this.jvP).a(paramView, parama, paramFloat1, paramFloat2);; bool = false)
     {
-      if (bool) {
+      if (bool)
+      {
+        AppMethodBeat.o(134382);
         return true;
       }
-      if (parama.type == 2) {
-        ((d)g.r(d.class)).cE(this.hDo.getContext());
-      }
-      for (;;)
+      if (parama.type != 2)
       {
-        return false;
         paramView = new AppBrandStatObject();
         paramView.scene = 1090;
-        ((com.tencent.mm.plugin.appbrand.r.d)g.r(com.tencent.mm.plugin.appbrand.r.d.class)).a(this.hDo.getContext(), parama.hqw.username, null, parama.hqw.fJy, -1, null, paramView);
+        ((j)g.E(j.class)).a(this.jvP.getContext(), parama.jfk.username, null, parama.jfk.hcr, -1, null, paramView);
       }
+      AppMethodBeat.o(134382);
+      return false;
     }
   }
   
   public final boolean b(View paramView, a parama, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(134383);
     boolean bool = false;
-    if (MenuAppBrandRecentView.a(this.hDo) != null) {
-      bool = MenuAppBrandRecentView.a(this.hDo).b(paramView, parama, paramFloat1, paramFloat2);
+    if (MenuAppBrandRecentView.a(this.jvP) != null) {
+      bool = MenuAppBrandRecentView.a(this.jvP).b(paramView, parama, paramFloat1, paramFloat2);
     }
+    AppMethodBeat.o(134383);
     return bool;
   }
 }

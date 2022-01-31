@@ -28,7 +28,7 @@ public abstract class BaseMediaPlayer
   
   public long getCurPlayTime()
   {
-    if (this.startTime == 0L) {
+    if (this.startTime <= 0L) {
       return 0L;
     }
     if (this.isPaused) {
@@ -56,7 +56,9 @@ public abstract class BaseMediaPlayer
   protected void notifyPauseSong()
   {
     this.isPaused = true;
-    this.duration += SystemClock.elapsedRealtime() - this.startTime;
+    if (this.startTime > 0L) {
+      this.duration += SystemClock.elapsedRealtime() - this.startTime;
+    }
   }
   
   protected void notifyStartPlaySong()

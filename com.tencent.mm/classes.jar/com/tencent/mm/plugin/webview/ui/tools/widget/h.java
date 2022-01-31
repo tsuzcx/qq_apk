@@ -4,15 +4,15 @@ import android.view.View;
 
 public abstract interface h
 {
-  public abstract boolean cgL();
+  public abstract boolean dgS();
   
-  public abstract void cgM();
+  public abstract void dgT();
   
-  public abstract void cgN();
+  public abstract void dgU();
   
-  public abstract void cgO();
+  public abstract void dgV();
   
-  public abstract void lx(boolean paramBoolean);
+  public abstract void oH(boolean paramBoolean);
   
   public abstract void setEmbeddedBottomBar(View paramView);
   
@@ -20,7 +20,7 @@ public abstract interface h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.h
  * JD-Core Version:    0.7.0.1
  */

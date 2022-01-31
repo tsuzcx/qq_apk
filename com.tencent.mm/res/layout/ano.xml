@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/li" android:layout_width="fill_parent" android:layout_height="48.0dip"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/mw" android:textColor="#ff7a93af" android:id="@id/bpb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{more}" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/bpc" android:padding="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@raw/dialog_chatroom_detail_down" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/s4" android:id="@id/dw9" android:background="@drawable/abl" android:paddingLeft="@dimen/n_" android:paddingTop="@dimen/l2" android:paddingRight="@dimen/n_" android:paddingBottom="@dimen/ne" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dw_" android:background="@drawable/vw" android:layout_width="fill_parent" android:layout_height="@dimen/m0">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/n_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/dwa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/ln" />
+            <TextView android:id="@id/dwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <CheckBox android:id="@id/dwc" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.subapp.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.c;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.c;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.aly;
-import com.tencent.mm.protocal.c.alz;
-import com.tencent.mm.protocal.c.ccj;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.arn;
+import com.tencent.mm.protocal.protobuf.aro;
+import com.tencent.mm.protocal.protobuf.cpq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.LinkedList;
 
@@ -26,176 +27,188 @@ public final class a
   extends m
   implements k
 {
-  final b dmK;
-  private f dmL;
-  private am ebj = new am(new a.1(this), true);
-  int pvr = 0;
+  private f callback;
+  private ap frx;
+  final b rr;
+  int sWV;
   
   public a()
   {
-    au.Hx();
-    int j = bk.g((Integer)c.Dz().get(66052, null));
-    if (am.a.dVA.hN(j))
+    AppMethodBeat.i(25221);
+    this.sWV = 0;
+    this.frx = new ap(new a.1(this), true);
+    aw.aaz();
+    int j = bo.g((Integer)c.Ru().get(66052, null));
+    if (ao.a.flK.kz(j))
     {
-      au.Hx();
-      i = bk.g((Integer)c.Dz().get(66053, null));
+      aw.aaz();
+      i = bo.g((Integer)c.Ru().get(66053, null));
     }
     Object localObject = new StringBuilder("init: allfileid:").append(Integer.toBinaryString(j)).append(" inver:");
-    au.Hx();
-    y.d("MicroMsg.NetSceneGetVUserInfo", bk.g((Integer)c.Dz().get(66053, null)) + " reqver:" + i);
+    aw.aaz();
+    ab.d("MicroMsg.NetSceneGetVUserInfo", bo.g((Integer)c.Ru().get(66053, null)) + " reqver:" + i);
     localObject = new b.a();
-    ((b.a)localObject).ecH = new aly();
-    ((b.a)localObject).ecI = new alz();
+    ((b.a)localObject).fsX = new arn();
+    ((b.a)localObject).fsY = new aro();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getvuserinfo";
-    ((b.a)localObject).ecG = 167;
-    ((b.a)localObject).ecJ = 60;
-    ((b.a)localObject).ecK = 1000000060;
-    this.dmK = ((b.a)localObject).Kt();
-    ((aly)this.dmK.ecE.ecN).hQQ = i;
+    ((b.a)localObject).funcId = 167;
+    ((b.a)localObject).reqCmdId = 60;
+    ((b.a)localObject).respCmdId = 1000000060;
+    this.rr = ((b.a)localObject).ado();
+    ((arn)this.rr.fsV.fta).Version = i;
+    AppMethodBeat.o(25221);
   }
   
   /* Error */
   static boolean a(int paramInt, boolean paramBoolean, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: new 165	java/io/FileOutputStream
-    //   5: dup
-    //   6: getstatic 65	com/tencent/mm/model/am$a:dVA	Lcom/tencent/mm/model/am$c;
-    //   9: iload_0
-    //   10: iload_1
-    //   11: invokeinterface 169 3 0
-    //   16: invokespecial 170	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   19: astore 5
-    //   21: aload 5
+    //   0: sipush 25224
+    //   3: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 174	java/io/FileOutputStream
+    //   9: dup
+    //   10: getstatic 71	com/tencent/mm/model/ao$a:flK	Lcom/tencent/mm/model/ao$c;
+    //   13: iload_0
+    //   14: iload_1
+    //   15: invokeinterface 178 3 0
+    //   20: invokespecial 179	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   23: astore 4
-    //   25: aload 5
-    //   27: aload_2
-    //   28: invokevirtual 174	java/io/FileOutputStream:write	([B)V
-    //   31: aload 5
-    //   33: astore 4
-    //   35: aload 5
-    //   37: invokevirtual 177	java/io/FileOutputStream:close	()V
-    //   40: aload 5
-    //   42: invokevirtual 177	java/io/FileOutputStream:close	()V
-    //   45: iconst_1
-    //   46: istore_1
-    //   47: iload_1
-    //   48: ireturn
-    //   49: astore 6
-    //   51: aconst_null
-    //   52: astore_2
-    //   53: aload_2
-    //   54: astore 4
-    //   56: ldc 91
-    //   58: aload 6
-    //   60: ldc 179
-    //   62: iconst_0
-    //   63: anewarray 181	java/lang/Object
-    //   66: invokestatic 185	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   69: iload_3
-    //   70: istore_1
-    //   71: aload_2
-    //   72: ifnull -25 -> 47
-    //   75: aload_2
-    //   76: invokevirtual 177	java/io/FileOutputStream:close	()V
-    //   79: iconst_0
-    //   80: ireturn
-    //   81: astore_2
-    //   82: iconst_0
-    //   83: ireturn
-    //   84: astore_2
-    //   85: aconst_null
-    //   86: astore 4
-    //   88: aload 4
-    //   90: ifnull +8 -> 98
-    //   93: aload 4
-    //   95: invokevirtual 177	java/io/FileOutputStream:close	()V
-    //   98: aload_2
-    //   99: athrow
-    //   100: astore_2
-    //   101: goto -56 -> 45
-    //   104: astore 4
-    //   106: goto -8 -> 98
+    //   25: aload 4
+    //   27: astore_3
+    //   28: aload 4
+    //   30: aload_2
+    //   31: invokevirtual 183	java/io/FileOutputStream:write	([B)V
+    //   34: aload 4
+    //   36: astore_3
+    //   37: aload 4
+    //   39: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   42: aload 4
+    //   44: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   47: sipush 25224
+    //   50: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   53: iconst_1
+    //   54: ireturn
+    //   55: astore 5
+    //   57: aconst_null
+    //   58: astore_2
+    //   59: aload_2
+    //   60: astore_3
+    //   61: ldc 97
+    //   63: aload 5
+    //   65: ldc 188
+    //   67: iconst_0
+    //   68: anewarray 190	java/lang/Object
+    //   71: invokestatic 194	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   74: aload_2
+    //   75: ifnull +7 -> 82
+    //   78: aload_2
+    //   79: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   82: sipush 25224
+    //   85: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   88: iconst_0
+    //   89: ireturn
+    //   90: astore_2
+    //   91: aconst_null
+    //   92: astore_3
+    //   93: aload_3
+    //   94: ifnull +7 -> 101
+    //   97: aload_3
+    //   98: invokevirtual 186	java/io/FileOutputStream:close	()V
+    //   101: sipush 25224
+    //   104: invokestatic 167	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: aload_2
+    //   108: athrow
     //   109: astore_2
-    //   110: goto -22 -> 88
-    //   113: astore 6
-    //   115: aload 5
-    //   117: astore_2
-    //   118: goto -65 -> 53
+    //   110: goto -63 -> 47
+    //   113: astore_2
+    //   114: goto -32 -> 82
+    //   117: astore_3
+    //   118: goto -17 -> 101
+    //   121: astore_2
+    //   122: goto -29 -> 93
+    //   125: astore 5
+    //   127: aload 4
+    //   129: astore_2
+    //   130: goto -71 -> 59
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	121	0	paramInt	int
-    //   0	121	1	paramBoolean	boolean
-    //   0	121	2	paramArrayOfByte	byte[]
-    //   1	69	3	bool	boolean
-    //   23	71	4	localObject	Object
-    //   104	1	4	localException1	java.lang.Exception
-    //   19	97	5	localFileOutputStream	java.io.FileOutputStream
-    //   49	10	6	localException2	java.lang.Exception
-    //   113	1	6	localException3	java.lang.Exception
+    //   0	133	0	paramInt	int
+    //   0	133	1	paramBoolean	boolean
+    //   0	133	2	paramArrayOfByte	byte[]
+    //   27	71	3	localObject	Object
+    //   117	1	3	localException1	java.lang.Exception
+    //   23	105	4	localFileOutputStream	java.io.FileOutputStream
+    //   55	9	5	localException2	java.lang.Exception
+    //   125	1	5	localException3	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   2	21	49	java/lang/Exception
-    //   75	79	81	java/lang/Exception
-    //   2	21	84	finally
-    //   40	45	100	java/lang/Exception
-    //   93	98	104	java/lang/Exception
-    //   25	31	109	finally
-    //   35	40	109	finally
-    //   56	69	109	finally
-    //   25	31	113	java/lang/Exception
-    //   35	40	113	java/lang/Exception
+    //   6	25	55	java/lang/Exception
+    //   6	25	90	finally
+    //   42	47	109	java/lang/Exception
+    //   78	82	113	java/lang/Exception
+    //   97	101	117	java/lang/Exception
+    //   28	34	121	finally
+    //   37	42	121	finally
+    //   61	74	121	finally
+    //   28	34	125	java/lang/Exception
+    //   37	42	125	java/lang/Exception
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      y.e("MicroMsg.NetSceneGetVUserInfo", "errType:" + paramInt2 + " errCode:" + paramInt3);
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    paramq = (alz)((b)paramq).ecF.ecN;
-    paramArrayOfByte = new StringBuilder("onGYNetEnd new version:").append(paramq.hQQ).append(" old version:");
-    au.Hx();
-    y.d("MicroMsg.NetSceneGetVUserInfo", bk.g((Integer)c.Dz().get(66053, null)) + " Count:" + paramq.tig.size());
-    au.Hx();
-    c.Dz().o(66053, Integer.valueOf(paramq.hQQ));
-    if (paramq.tig.size() <= 0)
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    int i = 0;
-    paramInt1 = 0;
-    while (paramInt1 < paramq.tig.size())
-    {
-      i |= ((ccj)paramq.tig.get(paramInt1)).bxH;
-      paramInt1 += 1;
-    }
-    au.Hx();
-    c.Dz().o(66052, Integer.valueOf(i));
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    this.pvr = (paramq.tig.size() - 1);
-    this.ebj.S(50L, 50L);
+    AppMethodBeat.i(25222);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(25222);
+    return i;
   }
   
   public final int getType()
   {
     return 167;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(25223);
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      ab.e("MicroMsg.NetSceneGetVUserInfo", "errType:" + paramInt2 + " errCode:" + paramInt3);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(25223);
+      return;
+    }
+    paramq = (aro)((b)paramq).fsW.fta;
+    paramArrayOfByte = new StringBuilder("onGYNetEnd new version:").append(paramq.Version).append(" old version:");
+    aw.aaz();
+    ab.d("MicroMsg.NetSceneGetVUserInfo", bo.g((Integer)c.Ru().get(66053, null)) + " Count:" + paramq.xgT.size());
+    aw.aaz();
+    c.Ru().set(66053, Integer.valueOf(paramq.Version));
+    if (paramq.xgT.size() <= 0)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(25223);
+      return;
+    }
+    int i = 0;
+    paramInt1 = 0;
+    while (i < paramq.xgT.size())
+    {
+      int j = ((cpq)paramq.xgT.get(i)).ID;
+      i += 1;
+      paramInt1 |= j;
+    }
+    aw.aaz();
+    c.Ru().set(66052, Integer.valueOf(paramInt1));
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.sWV = (paramq.xgT.size() - 1);
+    this.frx.ag(50L, 50L);
+    AppMethodBeat.o(25223);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.a.a
  * JD-Core Version:    0.7.0.1
  */

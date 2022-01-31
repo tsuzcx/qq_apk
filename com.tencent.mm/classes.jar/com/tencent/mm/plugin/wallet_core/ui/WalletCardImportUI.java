@@ -1,235 +1,124 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.KeyListener;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CheckedTextView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet_core.e.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.plugin.wallet_core.model.q;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.plugin.wxpay.a.j;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import com.tencent.mm.plugin.wallet_core.utils.d;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.i;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.MMScrollView;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView.a;
+import java.util.List;
 
 public class WalletCardImportUI
   extends WalletBaseUI
   implements TextView.OnEditorActionListener, WalletFormView.a
 {
-  private static final String[] qCr = { "ABC_DEBIT", "ABC_CREDIT", "CITIC_CREDIT", "CMBC_DEBIT", "HSBC_DEBIT" };
-  private Button fpF;
-  private String lJI;
-  private String lJJ;
-  private Dialog mDialog = null;
-  private ah mHandler = new ah();
-  private PayInfo nDu = null;
-  private Orders nEh = null;
-  private WalletFormView qAx;
-  private WalletFormView qBA;
-  private WalletFormView qBB;
-  private WalletFormView qBC;
-  private WalletFormView qBD;
-  private WalletFormView qBE;
-  private WalletFormView qBF;
-  private WalletFormView qBG;
-  private WalletFormView qBJ = null;
-  private WalletFormView qBK;
-  private CheckBox qBO;
-  private String qBP;
-  private WalletFormView qBX;
-  private WalletFormView qBq;
-  private WalletFormView qBr;
-  private WalletFormView qBt;
-  private WalletFormView qBu;
-  private TextView qCs;
-  private MMScrollView qCt;
-  private Bankcard qCu = null;
-  private CheckBox qCv;
-  private BaseAdapter qCw = new WalletCardImportUI.9(this);
-  private Authen qmd = new Authen();
-  private WalletFormView qpk;
-  private int qpo = 1;
-  private ElementQuery qsa = new ElementQuery();
+  private static final String[] upb = { "ABC_DEBIT", "ABC_CREDIT", "CITIC_CREDIT", "CMBC_DEBIT", "HSBC_DEBIT" };
+  private Button gHb;
+  private Dialog mDialog;
+  private ak mHandler;
+  private PayInfo mPayInfo;
+  private String ogW;
+  private String ogX;
+  private Orders qrf;
+  private Authen tVs;
+  private int tZB;
+  private WalletFormView tZx;
+  private ElementQuery udb;
+  private WalletFormView unh;
+  private CheckBox uoA;
+  private String uoB;
+  private WalletFormView uoK;
+  private WalletFormView uob;
+  private WalletFormView uoc;
+  private WalletFormView uoe;
+  private WalletFormView uof;
+  private WalletFormView uom;
+  private WalletFormView uon;
+  private WalletFormView uoo;
+  private WalletFormView uop;
+  private WalletFormView uoq;
+  private WalletFormView uor;
+  private WalletFormView uos;
+  private WalletFormView uov;
+  private WalletFormView uow;
+  private TextView upc;
+  private MMScrollView upd;
+  private Bankcard upe;
+  private CheckBox upf;
+  private BaseAdapter upg;
   
-  private boolean YH()
+  public WalletCardImportUI()
   {
-    if (!this.qCv.isChecked()) {}
+    AppMethodBeat.i(47278);
+    this.mDialog = null;
+    this.uov = null;
+    this.mHandler = new ak();
+    this.udb = new ElementQuery();
+    this.tVs = new Authen();
+    this.qrf = null;
+    this.mPayInfo = null;
+    this.upe = null;
+    this.tZB = 1;
+    this.upg = new WalletCardImportUI.9(this);
+    AppMethodBeat.o(47278);
+  }
+  
+  private boolean asr()
+  {
+    AppMethodBeat.i(47287);
+    if (!this.upf.isChecked()) {}
     for (boolean bool = false;; bool = true)
     {
       if (bool)
       {
-        this.fpF.setEnabled(true);
-        this.fpF.setClickable(true);
+        this.gHb.setEnabled(true);
+        this.gHb.setClickable(true);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(47287);
         return bool;
+        this.gHb.setEnabled(false);
+        this.gHb.setClickable(false);
       }
-      this.fpF.setEnabled(false);
-      this.fpF.setClickable(false);
-      return bool;
     }
-  }
-  
-  private void aZ()
-  {
-    Object localObject1;
-    label86:
-    Object localObject2;
-    label189:
-    Object localObject3;
-    if (this.qCu != null)
-    {
-      findViewById(a.f.wallet_card_safeguard_tip).setVisibility(0);
-      if (bk.bl(this.BX.getString("key_bank_username"))) {
-        break label543;
-      }
-      localObject1 = this.BX.getString("key_recommand_desc");
-      if (!bk.bl((String)localObject1)) {
-        break label532;
-      }
-      this.qBO.setText(getString(a.i.wallet_card_follow_bank_tips, new Object[] { this.qCu.field_bankName }));
-      this.qBO.setVisibility(0);
-      this.qBA.setVisibility(8);
-      this.qBB.setVisibility(8);
-      this.qBC.setVisibility(8);
-      this.qBD.setVisibility(8);
-      this.qBE.setVisibility(8);
-      this.qBF.setVisibility(8);
-      this.qBG.setVisibility(8);
-      if ((bk.bl(this.qCu.field_bankcardTail)) || (!b(this.qBK, this.qCu.qtu))) {
-        break label555;
-      }
-      localObject1 = this.qBK;
-      localObject2 = this.qBK;
-      if (!this.qCu.bUS()) {
-        break label571;
-      }
-      localObject3 = getString(a.i.wallet_credit_card);
-      label207:
-      if ((bk.bl(this.qCu.field_bankName)) || (!b(this.qBX, this.qCu.field_bankName + " " + (String)localObject3))) {
-        break label582;
-      }
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.qBX;
-      }
-      localObject3 = this.qBX;
-    }
-    for (;;)
-    {
-      localObject1 = localObject2;
-      if (b(this.qAx, this.qCu.field_trueName))
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.qAx;
-        }
-        localObject3 = this.qAx;
-      }
-      localObject2 = localObject1;
-      if (b(this.qBt, o.bVA().O(this.mController.uMN, this.qCu.qsL)))
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = this.qBt;
-        }
-        localObject3 = this.qBt;
-      }
-      localObject1 = localObject2;
-      if (b(this.qpk, this.qCu.qtt))
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.qpk;
-        }
-        localObject3 = this.qpk;
-      }
-      localObject2 = localObject1;
-      if (b(this.qBu, this.qCu.field_mobile))
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = this.qBu;
-        }
-        localObject3 = this.qBu;
-      }
-      localObject1 = localObject2;
-      if (b(this.qBr, this.qCu.qsN))
-      {
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = this.qBr;
-        }
-        localObject3 = this.qBr;
-      }
-      localObject2 = localObject1;
-      if (b(this.qBq, this.qCu.qtv))
-      {
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = this.qBq;
-        }
-        localObject3 = this.qBq;
-      }
-      ((WalletFormView)localObject2).setBackgroundResource(a.e.comm_list_item_selector);
-      ((WalletFormView)localObject3).setBackgroundResource(a.e.comm_list_item_selector);
-      if (!o.bVs().bVK()) {
-        break label598;
-      }
-      this.fpF.setText(a.i.wallet_card_import_first);
-      return;
-      label532:
-      this.qBO.setText((CharSequence)localObject1);
-      break;
-      label543:
-      this.qBO.setVisibility(8);
-      break label86;
-      label555:
-      this.qBK.setVisibility(8);
-      localObject2 = null;
-      localObject1 = null;
-      break label189;
-      label571:
-      localObject3 = getString(a.i.wallet_deposit_card);
-      break label207;
-      label582:
-      this.qBX.setVisibility(8);
-      localObject3 = localObject2;
-      localObject2 = localObject1;
-    }
-    label598:
-    this.fpF.setText(a.i.wallet_card_import);
   }
   
   private static boolean b(WalletFormView paramWalletFormView, String paramString)
   {
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(47282);
+    if (!bo.isNullOrNil(paramString))
     {
       KeyListener localKeyListener = paramWalletFormView.getKeyListener();
       paramWalletFormView.setKeyListener(null);
@@ -238,186 +127,319 @@ public class WalletCardImportUI
       paramWalletFormView.setText(paramString);
       paramWalletFormView.setKeyListener(localKeyListener);
       paramWalletFormView.setVisibility(0);
+      AppMethodBeat.o(47282);
       return true;
     }
     paramWalletFormView.setVisibility(8);
+    AppMethodBeat.o(47282);
     return false;
   }
   
-  private void bWy()
+  private void bJ()
   {
-    if (YH())
+    AppMethodBeat.i(47281);
+    if (this.upe != null)
     {
-      c.bXt();
-      this.qmd = new Authen();
-      this.BX.putBoolean("key_is_follow_bank_username", this.qBO.isChecked());
-      if ((this.qCu != null) && (!bk.bl(this.qCu.qtG)))
+      findViewById(2131829041).setVisibility(0);
+      Object localObject1;
+      label89:
+      Object localObject2;
+      label133:
+      Object localObject3;
+      if (!bo.isNullOrNil(getInput().getString("key_bank_username")))
       {
-        this.qmd.qjv = this.qCu.qtG;
-        this.qmd.mOc = this.qCu.field_bindSerial;
-        this.qmd.mOb = this.qCu.field_bankcardType;
-        this.qmd.qsL = this.qCu.qsL;
-        this.qmd.qsI = this.BX.getString("key_pwd1");
-        this.qmd.token = this.BX.getString("kreq_token");
-        com.tencent.mm.wallet_core.a.aj(this);
-        if (!cNk().m(new Object[] { this.qmd, this.nEh })) {
-          break label591;
+        localObject1 = getInput().getString("key_recommand_desc");
+        if (bo.isNullOrNil((String)localObject1))
+        {
+          this.uoA.setText(getString(2131304937, new Object[] { this.upe.field_bankName }));
+          this.uoA.setVisibility(0);
+          cVA();
+          if ((bo.isNullOrNil(this.upe.field_bankcardTail)) || (!b(this.uow, this.upe.ufI))) {
+            break label500;
+          }
+          localObject1 = this.uow;
+          localObject2 = this.uow;
+          if (!this.upe.cTh()) {
+            break label516;
+          }
+          localObject3 = getString(2131305029);
+          label150:
+          if ((bo.isNullOrNil(this.upe.field_bankName)) || (!b(this.uoK, this.upe.field_bankName + " " + (String)localObject3))) {
+            break label527;
+          }
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = this.uoK;
+          }
+          localObject3 = this.uoK;
         }
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletCardElmentUI", "process controller deal with!!!");
       }
-    }
-    else
-    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+        if (b(this.unh, this.upe.field_trueName))
+        {
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = this.unh;
+          }
+          localObject3 = this.unh;
+        }
+        localObject2 = localObject1;
+        if (b(this.uoe, t.cTV().ab(getContext(), this.upe.ueY)))
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = this.uoe;
+          }
+          localObject3 = this.uoe;
+        }
+        localObject1 = localObject2;
+        if (b(this.tZx, this.upe.ufH))
+        {
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = this.tZx;
+          }
+          localObject3 = this.tZx;
+        }
+        localObject2 = localObject1;
+        if (b(this.uof, this.upe.field_mobile))
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = this.uof;
+          }
+          localObject3 = this.uof;
+        }
+        localObject1 = localObject2;
+        if (b(this.uoc, this.upe.ufa))
+        {
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = this.uoc;
+          }
+          localObject3 = this.uoc;
+        }
+        localObject2 = localObject1;
+        if (b(this.uob, this.upe.ufJ))
+        {
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = this.uob;
+          }
+          localObject3 = this.uob;
+        }
+        ((WalletFormView)localObject2).setBackgroundResource(2130838445);
+        ((WalletFormView)localObject3).setBackgroundResource(2130838445);
+        if (!t.cTN().cUn()) {
+          break label543;
+        }
+        this.gHb.setText(2131304949);
+        AppMethodBeat.o(47281);
+        return;
+        this.uoA.setText((CharSequence)localObject1);
+        break;
+        this.uoA.setVisibility(8);
+        break label89;
+        label500:
+        this.uow.setVisibility(8);
+        localObject2 = null;
+        localObject1 = null;
+        break label133;
+        label516:
+        localObject3 = getString(2131305049);
+        break label150;
+        label527:
+        this.uoK.setVisibility(8);
+        localObject3 = localObject2;
+        localObject2 = localObject1;
+      }
+      label543:
+      this.gHb.setText(2131304947);
+      AppMethodBeat.o(47281);
       return;
     }
-    Object localObject = this.BX.getString("key_card_id");
-    if (this.qBK.getVisibility() == 0) {
-      localObject = this.qBK.getText();
+    AppMethodBeat.o(47281);
+  }
+  
+  private void cVA()
+  {
+    AppMethodBeat.i(47283);
+    this.uom.setVisibility(8);
+    this.uon.setVisibility(8);
+    this.uoo.setVisibility(8);
+    this.uop.setVisibility(8);
+    this.uoq.setVisibility(8);
+    this.uor.setVisibility(8);
+    this.uos.setVisibility(8);
+    AppMethodBeat.o(47283);
+  }
+  
+  private void cVx()
+  {
+    AppMethodBeat.i(47284);
+    Object localObject;
+    if (asr())
+    {
+      d.cWY();
+      this.tVs = new Authen();
+      getInput().putBoolean("key_is_follow_bank_username", this.uoA.isChecked());
+      if ((this.upe != null) && (!bo.isNullOrNil(this.upe.ufU)))
+      {
+        this.tVs.tSv = this.upe.ufU;
+        this.tVs.por = this.upe.field_bindSerial;
+        this.tVs.poq = this.upe.field_bankcardType;
+        this.tVs.ueY = this.upe.ueY;
+        this.tVs.ueW = getInput().getString("key_pwd1");
+        this.tVs.token = getInput().getString("kreq_token");
+        com.tencent.mm.wallet_core.a.aM(this);
+        if (getNetController().p(new Object[] { this.tVs, this.qrf }))
+        {
+          com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletCardElmentUI", "process controller deal with!!!");
+          AppMethodBeat.o(47284);
+        }
+      }
+      else
+      {
+        localObject = getInput().getString("key_card_id");
+        if (this.uow.getVisibility() != 0) {
+          break label619;
+        }
+        localObject = this.uow.getText();
+      }
     }
+    label619:
     for (;;)
     {
-      this.qmd.nqa = ((PayInfo)this.BX.getParcelable("key_pay_info"));
-      this.qmd.qsM = ((String)localObject);
-      this.qmd.mOb = this.qsa.mOb;
-      this.qmd.qsL = this.qpo;
-      this.qmd.qsI = this.BX.getString("key_pwd1");
-      if (!bk.bl(this.qBr.getText())) {
-        this.qmd.qsN = this.qBr.getText();
+      this.tVs.pVo = ((PayInfo)getInput().getParcelable("key_pay_info"));
+      this.tVs.ueZ = ((String)localObject);
+      this.tVs.poq = this.udb.poq;
+      this.tVs.ueY = this.tZB;
+      this.tVs.ueW = getInput().getString("key_pwd1");
+      if (!bo.isNullOrNil(this.uoc.getText())) {
+        this.tVs.ufa = this.uoc.getText();
       }
-      this.qmd.qqU = this.qBu.getText();
-      this.qmd.qsR = this.qBA.getText();
-      this.qmd.qsS = this.qBB.getText();
-      this.qmd.country = this.qBP;
-      this.qmd.cCA = this.lJI;
-      this.qmd.cCB = this.lJJ;
-      this.qmd.ekZ = this.qBD.getText();
-      this.qmd.lnV = this.qBE.getText();
-      this.qmd.ftq = this.qBF.getText();
-      this.qmd.cCt = this.qBG.getText();
-      localObject = e.afk(this.qmd.qqU);
-      this.BX.putString("key_mobile", (String)localObject);
-      localObject = this.BX;
-      if (this.qsa.qqY == 2) {}
+      this.tVs.ubQ = this.uof.getText();
+      this.tVs.ufe = this.uom.getText();
+      this.tVs.uff = this.uon.getText();
+      this.tVs.country = this.uoB;
+      this.tVs.province = this.ogW;
+      this.tVs.city = this.ogX;
+      this.tVs.fBq = this.uop.getText();
+      this.tVs.nLs = this.uoq.getText();
+      this.tVs.gKS = this.uor.getText();
+      this.tVs.dqF = this.uos.getText();
+      localObject = e.awd(this.tVs.ubQ);
+      getInput().putString("key_mobile", (String)localObject);
+      localObject = getInput();
+      if (this.udb.ubU == 2) {}
       for (boolean bool = true;; bool = false)
       {
         ((Bundle)localObject).putBoolean("key_is_oversea", bool);
-        this.qmd.qsK = this.qpk.getText();
-        this.qmd.qsJ = this.qAx.getText();
-        this.qmd.qsO = this.qBq.getText();
-        com.tencent.mm.sdk.platformtools.y.d("MicroMsg.WalletCardElmentUI", "payInfo " + this.qmd.nqa + " elemt.bankcardTag : " + this.qsa.qqY);
+        this.tVs.ueX = this.tZx.getText();
+        this.tVs.ueu = this.unh.getText();
+        this.tVs.ufb = this.uob.getText();
+        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletCardElmentUI", "payInfo " + this.tVs.pVo + " elemt.bankcardTag : " + this.udb.ubU);
         break;
       }
-      label591:
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.WalletCardElmentUI", "error process in the tenpay!!");
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WalletCardElmentUI", "error process in the tenpay!!");
+      AppMethodBeat.o(47284);
       return;
     }
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public boolean getCancelable()
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.WalletCardElmentUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      paramString = this.BX;
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.WalletCardElmentUI", "PayInfo  " + this.nDu);
-      if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.y))
-      {
-        paramString.putBoolean("intent_bind_end", true);
-        com.tencent.mm.wallet_core.a.j(this, paramString);
-        h.bC(this, getString(a.i.wallet_bank_card_bind_success_tips));
-        return true;
-      }
-      return false;
-    }
     return false;
   }
   
-  public final void gG(boolean paramBoolean)
+  public int getLayoutId()
   {
-    YH();
+    return 2130971156;
   }
   
-  protected final int getLayoutId()
+  public void initView()
   {
-    return a.g.wallet_card_import_ui;
-  }
-  
-  protected final void initView()
-  {
-    this.qBK = ((WalletFormView)findViewById(a.f.wallet_card_forgot_id));
-    com.tencent.mm.wallet_core.ui.formview.a.b(this.qBK);
-    this.qBu = ((WalletFormView)findViewById(a.f.mobile_et));
-    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.qBu);
-    this.qAx = ((WalletFormView)findViewById(a.f.name_et));
-    com.tencent.mm.wallet_core.ui.formview.a.e(this, this.qAx);
-    this.qBt = ((WalletFormView)findViewById(a.f.wallet_cre_type));
-    this.qpk = ((WalletFormView)findViewById(a.f.identity_et));
-    com.tencent.mm.wallet_core.ui.formview.a.d(this.qpk);
-    this.qBX = ((WalletFormView)findViewById(a.f.wallet_card_type));
-    this.qBr = ((WalletFormView)findViewById(a.f.cvv_et));
-    com.tencent.mm.wallet_core.ui.formview.a.b(this, this.qBr);
-    this.qBq = ((WalletFormView)findViewById(a.f.date_et));
-    com.tencent.mm.wallet_core.ui.formview.a.a(this, this.qBq);
-    this.qCs = ((TextView)findViewById(a.f.wallet_power_by_tenpay));
-    this.qBA = ((WalletFormView)findViewById(a.f.first_name_et));
-    this.qBB = ((WalletFormView)findViewById(a.f.last_name_et));
-    this.qBC = ((WalletFormView)findViewById(a.f.area_et));
-    this.qBD = ((WalletFormView)findViewById(a.f.address_et));
-    this.qBE = ((WalletFormView)findViewById(a.f.phone_et));
-    this.qBF = ((WalletFormView)findViewById(a.f.post_et));
-    this.qBG = ((WalletFormView)findViewById(a.f.email_et));
-    com.tencent.mm.wallet_core.ui.formview.a.e(this.qBG);
-    this.qCv = ((CheckBox)findViewById(a.f.agree_wx_cb));
-    this.qBO = ((CheckBox)findViewById(a.f.agree_follow_bank_cb));
-    this.fpF = ((Button)findViewById(a.f.next_btn));
-    this.qCt = ((MMScrollView)findViewById(a.f.wallet_sv));
-    MMScrollView localMMScrollView = this.qCt;
+    AppMethodBeat.i(47280);
+    this.uow = ((WalletFormView)findViewById(2131829044));
+    com.tencent.mm.wallet_core.ui.formview.a.b(this.uow);
+    this.uof = ((WalletFormView)findViewById(2131828910));
+    com.tencent.mm.wallet_core.ui.formview.a.c(this, this.uof);
+    this.unh = ((WalletFormView)findViewById(2131829013));
+    com.tencent.mm.wallet_core.ui.formview.a.e(this, this.unh);
+    this.uoe = ((WalletFormView)findViewById(2131829051));
+    this.tZx = ((WalletFormView)findViewById(2131829052));
+    com.tencent.mm.wallet_core.ui.formview.a.d(this.tZx);
+    this.uoK = ((WalletFormView)findViewById(2131823480));
+    this.uoc = ((WalletFormView)findViewById(2131826695));
+    com.tencent.mm.wallet_core.ui.formview.a.b(this, this.uoc);
+    this.uob = ((WalletFormView)findViewById(2131826697));
+    com.tencent.mm.wallet_core.ui.formview.a.a(this, this.uob);
+    this.upc = ((TextView)findViewById(2131826699));
+    this.uom = ((WalletFormView)findViewById(2131829063));
+    this.uon = ((WalletFormView)findViewById(2131829064));
+    this.uoo = ((WalletFormView)findViewById(2131829065));
+    this.uop = ((WalletFormView)findViewById(2131829066));
+    this.uoq = ((WalletFormView)findViewById(2131829067));
+    this.uor = ((WalletFormView)findViewById(2131829068));
+    this.uos = ((WalletFormView)findViewById(2131829069));
+    com.tencent.mm.wallet_core.ui.formview.a.e(this.uos);
+    this.upf = ((CheckBox)findViewById(2131829071));
+    this.uoA = ((CheckBox)findViewById(2131829072));
+    this.gHb = ((Button)findViewById(2131822914));
+    this.upd = ((MMScrollView)findViewById(2131823477));
+    MMScrollView localMMScrollView = this.upd;
     localMMScrollView.a(localMMScrollView, localMMScrollView);
-    this.qCt.setOnSizeChangeListener(new WalletCardImportUI.1(this));
-    this.qAx.setOnInputValidChangeListener(this);
-    this.qBK.setOnInputValidChangeListener(this);
-    this.qBt.setOnInputValidChangeListener(this);
-    this.qpk.setOnInputValidChangeListener(this);
-    this.qBu.setOnInputValidChangeListener(this);
-    this.qBr.setOnInputValidChangeListener(this);
-    this.qBq.setOnInputValidChangeListener(this);
-    this.qBA.setOnInputValidChangeListener(this);
-    this.qBB.setOnInputValidChangeListener(this);
-    this.qBC.setOnInputValidChangeListener(this);
-    this.qBD.setOnInputValidChangeListener(this);
-    this.qBE.setOnInputValidChangeListener(this);
-    this.qBF.setOnInputValidChangeListener(this);
-    this.qBG.setOnInputValidChangeListener(this);
-    this.qAx.setOnEditorActionListener(this);
-    this.qBK.setOnEditorActionListener(this);
-    this.qBt.setOnEditorActionListener(this);
-    this.qpk.setOnEditorActionListener(this);
-    this.qBu.setOnEditorActionListener(this);
-    this.qBr.setOnEditorActionListener(this);
-    this.qBq.setOnEditorActionListener(this);
-    this.qBA.setOnEditorActionListener(this);
-    this.qBB.setOnEditorActionListener(this);
-    this.qBC.setOnEditorActionListener(this);
-    this.qBD.setOnEditorActionListener(this);
-    this.qBE.setOnEditorActionListener(this);
-    this.qBF.setOnEditorActionListener(this);
-    this.qBG.setOnEditorActionListener(this);
-    this.qBX.setOnClickListener(new WalletCardImportUI.2(this));
-    this.qBt.setOnClickListener(new WalletCardImportUI.3(this));
-    this.qCv.setChecked(true);
-    this.qCv.setOnCheckedChangeListener(new WalletCardImportUI.4(this));
-    this.qBO.setChecked(true);
-    findViewById(a.f.agree_btn).setOnClickListener(new WalletCardImportUI.5(this));
-    this.qBC.setOnClickListener(new WalletCardImportUI.6(this));
-    this.fpF.setOnClickListener(new WalletCardImportUI.7(this));
-    aZ();
-    YH();
+    this.upd.setOnSizeChangeListener(new WalletCardImportUI.1(this));
+    this.unh.setOnInputValidChangeListener(this);
+    this.uow.setOnInputValidChangeListener(this);
+    this.uoe.setOnInputValidChangeListener(this);
+    this.tZx.setOnInputValidChangeListener(this);
+    this.uof.setOnInputValidChangeListener(this);
+    this.uoc.setOnInputValidChangeListener(this);
+    this.uob.setOnInputValidChangeListener(this);
+    this.uom.setOnInputValidChangeListener(this);
+    this.uon.setOnInputValidChangeListener(this);
+    this.uoo.setOnInputValidChangeListener(this);
+    this.uop.setOnInputValidChangeListener(this);
+    this.uoq.setOnInputValidChangeListener(this);
+    this.uor.setOnInputValidChangeListener(this);
+    this.uos.setOnInputValidChangeListener(this);
+    this.unh.setOnEditorActionListener(this);
+    this.uow.setOnEditorActionListener(this);
+    this.uoe.setOnEditorActionListener(this);
+    this.tZx.setOnEditorActionListener(this);
+    this.uof.setOnEditorActionListener(this);
+    this.uoc.setOnEditorActionListener(this);
+    this.uob.setOnEditorActionListener(this);
+    this.uom.setOnEditorActionListener(this);
+    this.uon.setOnEditorActionListener(this);
+    this.uoo.setOnEditorActionListener(this);
+    this.uop.setOnEditorActionListener(this);
+    this.uoq.setOnEditorActionListener(this);
+    this.uor.setOnEditorActionListener(this);
+    this.uos.setOnEditorActionListener(this);
+    this.uoK.setOnClickListener(new WalletCardImportUI.2(this));
+    this.uoe.setOnClickListener(new WalletCardImportUI.3(this));
+    this.upf.setChecked(true);
+    this.upf.setOnCheckedChangeListener(new WalletCardImportUI.4(this));
+    this.uoA.setChecked(true);
+    findViewById(2131826245).setOnClickListener(new WalletCardImportUI.5(this));
+    this.uoo.setOnClickListener(new WalletCardImportUI.6(this));
+    this.gHb.setOnClickListener(new WalletCardImportUI.7(this));
+    bJ();
+    asr();
+    AppMethodBeat.o(47280);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletCardElmentUI", "onAcvityResult requestCode:" + paramInt1);
-    if (paramInt2 != -1) {
+    AppMethodBeat.i(47286);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletCardElmentUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    if (paramInt2 != -1)
+    {
+      AppMethodBeat.o(47286);
       return;
     }
     switch (paramInt1)
@@ -425,115 +447,180 @@ public class WalletCardImportUI
     }
     for (;;)
     {
-      YH();
+      asr();
+      AppMethodBeat.o(47286);
       return;
-      this.qsa = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
-      aZ();
+      this.udb = ((ElementQuery)paramIntent.getParcelableExtra("elemt_query"));
+      bJ();
       continue;
       String str1 = paramIntent.getStringExtra("CountryName");
       String str2 = paramIntent.getStringExtra("Country");
-      this.qBP = (str1 + "|" + str2);
+      this.uoB = (str1 + "|" + str2);
       String str3 = paramIntent.getStringExtra("ProviceName");
       String str4 = paramIntent.getStringExtra("CityName");
-      if (!bk.bl(paramIntent.getStringExtra("Contact_City")))
+      if (!bo.isNullOrNil(paramIntent.getStringExtra("Contact_City")))
       {
-        this.lJI = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
-        this.lJJ = (str4 + "|" + paramIntent.getStringExtra("Contact_City"));
-        this.qBC.setText(str1 + " " + str4);
+        this.ogW = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
+        this.ogX = (str4 + "|" + paramIntent.getStringExtra("Contact_City"));
+        this.uoo.setText(str1 + " " + str4);
       }
       for (;;)
       {
-        if ((!"US".equals(str2)) && (!"CA".equals(str2)) && (!this.qsa.qvs)) {
-          break label406;
+        if ((!"US".equals(str2)) && (!"CA".equals(str2)) && (!this.udb.uhK)) {
+          break label416;
         }
-        this.qBF.setVisibility(0);
+        this.uor.setVisibility(0);
         break;
-        if (!bk.bl(paramIntent.getStringExtra("Contact_Province")))
+        if (!bo.isNullOrNil(paramIntent.getStringExtra("Contact_Province")))
         {
-          this.lJJ = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
-          this.qBC.setText(str1 + " " + str3);
+          this.ogX = (str3 + "|" + paramIntent.getStringExtra("Contact_Province"));
+          this.uoo.setText(str1 + " " + str3);
         }
         else
         {
-          this.lJJ = this.qBP;
-          this.qBC.setText(str1);
+          this.ogX = this.uoB;
+          this.uoo.setText(str1);
         }
       }
-      label406:
-      this.qBF.setVisibility(8);
+      label416:
+      this.uor.setVisibility(8);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(47279);
     super.onCreate(paramBundle);
-    setMMTitle(a.i.wallet_elment_title);
-    this.qsa = ((ElementQuery)this.BX.getParcelable("elemt_query"));
-    this.nEh = ((Orders)this.BX.getParcelable("key_orders"));
-    this.nDu = ((PayInfo)this.BX.getParcelable("key_pay_info"));
-    this.qCu = ((Bankcard)this.BX.getParcelable("key_import_bankcard"));
-    if (this.nDu == null) {
-      this.nDu = new PayInfo();
+    setMMTitle(2131305055);
+    this.udb = ((ElementQuery)getInput().getParcelable("elemt_query"));
+    this.qrf = ((Orders)getInput().getParcelable("key_orders"));
+    this.mPayInfo = ((PayInfo)getInput().getParcelable("key_pay_info"));
+    this.upe = ((Bankcard)getInput().getParcelable("key_import_bankcard"));
+    if (this.mPayInfo == null) {
+      this.mPayInfo = new PayInfo();
     }
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.WalletCardElmentUI", "mPayInfo " + this.nDu);
+    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletCardElmentUI", "mPayInfo " + this.mPayInfo);
     initView();
-    this.qCt.pageScroll(33);
-    c.a(this, this.BX, 3);
+    this.upd.pageScroll(33);
+    d.a(this, getInput(), 3);
+    AppMethodBeat.o(47279);
   }
   
-  protected Dialog onCreateDialog(int paramInt)
+  public Dialog onCreateDialog(int paramInt)
   {
+    AppMethodBeat.i(47291);
     switch (paramInt)
     {
     default: 
-      return super.onCreateDialog(paramInt);
+      localObject = super.onCreateDialog(paramInt);
+      AppMethodBeat.o(47291);
+      return localObject;
     }
-    i locali = new i(this, a.j.SelectorDialog);
-    locali.setContentView(a.g.wallet_list_dialog);
-    ListView localListView = (ListView)locali.findViewById(a.f.address_contactlist);
-    localListView.setAdapter(this.qCw);
-    localListView.setOnItemClickListener(new WalletCardImportUI.8(this));
-    return locali;
+    Object localObject = new i(this, 2131493562);
+    ((Dialog)localObject).setContentView(2130971194);
+    ListView localListView = (ListView)((Dialog)localObject).findViewById(2131821074);
+    localListView.setAdapter(this.upg);
+    localListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    {
+      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      {
+        AppMethodBeat.i(47273);
+        WalletCardImportUI.this.dismissDialog(1);
+        paramAnonymousInt = ((Integer)WalletCardImportUI.c(WalletCardImportUI.this).cTw().get(paramAnonymousInt)).intValue();
+        if (WalletCardImportUI.f(WalletCardImportUI.this) != paramAnonymousInt)
+        {
+          WalletCardImportUI.a(WalletCardImportUI.this, paramAnonymousInt);
+          WalletCardImportUI.g(WalletCardImportUI.this).setText(((CheckedTextView)paramAnonymousView).getText().toString());
+          WalletCardImportUI.c(WalletCardImportUI.h(WalletCardImportUI.this), WalletCardImportUI.f(WalletCardImportUI.this));
+          WalletCardImportUI.h(WalletCardImportUI.this).cfK();
+          WalletCardImportUI.i(WalletCardImportUI.this);
+        }
+        AppMethodBeat.o(47273);
+      }
+    });
+    AppMethodBeat.o(47291);
+    return localObject;
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(47290);
     if ((this.mDialog != null) && (this.mDialog.isShowing()))
     {
       this.mDialog.dismiss();
       this.mDialog = null;
     }
     super.onDestroy();
+    AppMethodBeat.o(47290);
   }
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    com.tencent.mm.sdk.platformtools.y.d("MicroMsg.WalletCardElmentUI", "onEditorAction actionId : " + paramInt);
+    AppMethodBeat.i(47289);
+    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletCardElmentUI", "onEditorAction actionId : ".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 
-      if (this.qBJ == null) {
-        bWy();
+      if (this.uov == null) {
+        cVx();
       }
+      AppMethodBeat.o(47289);
       return false;
     }
-    if (this.qBJ != null) {
-      if ((this.qBJ.isEnabled()) && (!this.qBJ.isClickable()) && (this.qBJ.cNv())) {
-        this.qBJ.cNx();
+    if (this.uov != null) {
+      if ((this.uov.isEnabled()) && (!this.uov.isClickable()) && (this.uov.dSZ())) {
+        this.uov.dTc();
       }
     }
     for (;;)
     {
+      AppMethodBeat.o(47289);
       return true;
-      this.qBJ.performClick();
+      this.uov.performClick();
       continue;
-      bWy();
+      cVx();
     }
+  }
+  
+  public final void onInputValidChange(boolean paramBoolean)
+  {
+    AppMethodBeat.i(47288);
+    asr();
+    AppMethodBeat.o(47288);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(47285);
+    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletCardElmentUI", " errCode: " + paramInt2 + " errMsg :" + paramString);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      paramString = getInput();
+      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.WalletCardElmentUI", "PayInfo  " + this.mPayInfo);
+      if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.ab))
+      {
+        paramString.putBoolean("intent_bind_end", true);
+        com.tencent.mm.wallet_core.a.j(this, paramString);
+        h.bO(this, getString(2131304851));
+        AppMethodBeat.o(47285);
+        return true;
+      }
+      AppMethodBeat.o(47285);
+      return false;
+    }
+    AppMethodBeat.o(47285);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletCardImportUI
  * JD-Core Version:    0.7.0.1
  */

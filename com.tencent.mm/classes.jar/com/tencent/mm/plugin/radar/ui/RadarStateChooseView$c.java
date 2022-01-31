@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.d.a.a;
-import a.d.b.h;
+import a.f.a.a;
+import a.f.b.k;
+import a.l;
 import android.view.animation.Animation;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Landroid/view/animation/Animation;", "kotlin.jvm.PlatformType", "invoke"})
 final class RadarStateChooseView$c
-  extends h
+  extends k
   implements a<Animation>
 {
   RadarStateChooseView$c(RadarStateChooseView paramRadarStateChooseView)
@@ -15,7 +17,7 @@ final class RadarStateChooseView$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarStateChooseView.c
  * JD-Core Version:    0.7.0.1
  */

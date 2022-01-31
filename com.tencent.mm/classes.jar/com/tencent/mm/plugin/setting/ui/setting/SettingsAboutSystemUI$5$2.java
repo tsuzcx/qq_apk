@@ -1,25 +1,31 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.model.bd.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bf.a;
 
 final class SettingsAboutSystemUI$5$2
-  implements bd.a
+  implements bf.a
 {
   SettingsAboutSystemUI$5$2(SettingsAboutSystemUI.5 param5) {}
   
-  public final void xA()
+  public final boolean JS()
   {
-    if (SettingsAboutSystemUI.c(this.nTx.nTp) != null)
-    {
-      SettingsAboutSystemUI.c(this.nTx.nTp).dismiss();
-      SettingsAboutSystemUI.a(this.nTx.nTp, null);
-    }
+    AppMethodBeat.i(127114);
+    boolean bool = SettingsAboutSystemUI.b(this.qHx.qHp);
+    AppMethodBeat.o(127114);
+    return bool;
   }
   
-  public final boolean xz()
+  public final void JT()
   {
-    return SettingsAboutSystemUI.b(this.nTx.nTp);
+    AppMethodBeat.i(127115);
+    if (SettingsAboutSystemUI.c(this.qHx.qHp) != null)
+    {
+      SettingsAboutSystemUI.c(this.qHx.qHp).dismiss();
+      SettingsAboutSystemUI.a(this.qHx.qHp, null);
+    }
+    AppMethodBeat.o(127115);
   }
 }
 

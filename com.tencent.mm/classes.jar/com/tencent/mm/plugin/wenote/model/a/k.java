@@ -4,13 +4,13 @@ public final class k
   extends o
 {
   public int duration;
-  public boolean rGA = false;
-  public String rGz;
   public String thumbPath;
+  public String vxi;
+  public boolean vxj = false;
   
-  public final String chB()
+  public final String dhR()
   {
-    return this.rGz;
+    return this.vxi;
   }
   
   public final int getType()
@@ -20,7 +20,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.k
  * JD-Core Version:    0.7.0.1
  */

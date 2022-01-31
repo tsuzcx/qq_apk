@@ -1,98 +1,113 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.s.b;
-import com.tencent.mm.ui.tools.a.c.a;
+import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.widget.MMEditText;
 
 public class SettingsModifyNameUI
   extends MMActivity
   implements c.a
 {
-  private p dnV = null;
-  private com.tencent.mm.sdk.b.c dpQ = new SettingsModifyNameUI.1(this);
-  private MMEditText dpn;
-  private i.b nRK;
-  private boolean nRM = false;
+  private p efs;
+  private MMEditText egJ;
+  private com.tencent.mm.sdk.b.c ehn;
+  private j.b qFI;
+  private boolean qFK;
   
-  public final void eP(String paramString)
+  public SettingsModifyNameUI()
   {
-    y.i("MiroMsg.SettingsModifyNameUI", "Set New NickName : " + paramString);
-    this.nRM = true;
-    AppCompatActivity localAppCompatActivity = this.mController.uMN;
-    getString(a.i.app_tip);
-    this.dnV = h.b(localAppCompatActivity, getString(a.i.contact_info_change_remarkimage_save), false, null);
-    this.nRK = q.n(2, paramString);
+    AppMethodBeat.i(127310);
+    this.qFK = false;
+    this.efs = null;
+    this.ehn = new SettingsModifyNameUI.1(this);
+    AppMethodBeat.o(127310);
   }
   
-  protected final int getLayoutId()
+  public final void JU()
   {
-    return a.g.settings_modify_name;
+    AppMethodBeat.i(127315);
+    h.h(this, 2131303316, 2131303319);
+    AppMethodBeat.o(127315);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    setMMTitle(a.i.settings_modify_name);
-    this.dpn = ((MMEditText)findViewById(a.f.settings_modify_name_new_name_et));
-    this.dpn.setText(j.a(this, (String)g.DP().Dz().get(4, null), this.dpn.getTextSize()));
-    this.dpn.setSelection(this.dpn.getText().length());
-    this.dpn.addTextChangedListener(new SettingsModifyNameUI.2(this));
-    com.tencent.mm.ui.tools.a.c localc = com.tencent.mm.ui.tools.a.c.d(this.dpn).fJ(1, 32);
-    localc.wfM = false;
+    return 2130970696;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(127313);
+    setMMTitle(2131303315);
+    this.egJ = ((MMEditText)findViewById(2131827623));
+    this.egJ.setText(j.b(this, (String)g.RL().Ru().get(4, null), this.egJ.getTextSize()));
+    this.egJ.setSelection(this.egJ.getText().length());
+    this.egJ.addTextChangedListener(new SettingsModifyNameUI.2(this));
+    com.tencent.mm.ui.tools.b.c localc = com.tencent.mm.ui.tools.b.c.d(this.egJ).hR(1, 32);
+    localc.AyD = false;
     localc.a(null);
-    a(0, getString(a.i.app_save), new SettingsModifyNameUI.3(this), s.b.uNx);
+    addTextOptionMenu(0, getString(2131297063), new SettingsModifyNameUI.3(this), null, q.b.zby);
     enableOptionMenu(false);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        SettingsModifyNameUI.this.XM();
-        SettingsModifyNameUI.this.finish();
-        return true;
-      }
-    });
+    setBackBtn(new SettingsModifyNameUI.4(this));
+    AppMethodBeat.o(127313);
+  }
+  
+  public final void kY(String paramString)
+  {
+    AppMethodBeat.i(127314);
+    ab.i("MiroMsg.SettingsModifyNameUI", "Set New NickName : ".concat(String.valueOf(paramString)));
+    this.qFK = true;
+    AppCompatActivity localAppCompatActivity = getContext();
+    getString(2131297087);
+    this.efs = h.b(localAppCompatActivity, getString(2131298567), false, null);
+    this.qFI = r.u(2, paramString);
+    AppMethodBeat.o(127314);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127311);
     super.onCreate(paramBundle);
-    a.udP.c(this.dpQ);
+    a.ymk.c(this.ehn);
     initView();
+    AppMethodBeat.o(127311);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    a.udP.d(this.dpQ);
+    AppMethodBeat.i(127312);
+    a.ymk.d(this.ehn);
     super.onDestroy();
+    AppMethodBeat.o(127312);
   }
   
-  public final void xB()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    h.h(this, a.i.settings_modify_name_invalid_less, a.i.settings_modify_name_title);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void xC()
+  public final void vn()
   {
-    h.h(this, a.i.settings_modify_name_invalid_more, a.i.settings_modify_name_title);
+    AppMethodBeat.i(127316);
+    h.h(this, 2131303317, 2131303319);
+    AppMethodBeat.o(127316);
   }
 }
 

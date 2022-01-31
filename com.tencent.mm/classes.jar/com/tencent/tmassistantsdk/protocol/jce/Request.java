@@ -5,7 +5,8 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class Request
   extends JceStruct
@@ -19,10 +20,12 @@ public final class Request
   
   static
   {
+    AppMethodBeat.i(76105);
     if (!Request.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
+      AppMethodBeat.o(76105);
       return;
     }
   }
@@ -42,7 +45,8 @@ public final class Request
   
   public final Object clone()
   {
-    Object localObject1 = null;
+    AppMethodBeat.i(76100);
+    localObject1 = null;
     try
     {
       Object localObject2 = super.clone();
@@ -51,34 +55,48 @@ public final class Request
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
       while ($assertionsDisabled) {}
-      throw new AssertionError();
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(76100);
+      throw ((Throwable)localObject1);
     }
+    AppMethodBeat.o(76100);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
+    AppMethodBeat.i(76103);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.head, "head");
     paramStringBuilder.display(this.body, "body");
+    AppMethodBeat.o(76103);
   }
   
   public final void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
+    AppMethodBeat.i(76104);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.displaySimple(this.head, true);
     paramStringBuilder.displaySimple(this.body, false);
+    AppMethodBeat.o(76104);
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    AppMethodBeat.i(76098);
+    if (paramObject == null)
     {
+      AppMethodBeat.o(76098);
       return false;
-      paramObject = (Request)paramObject;
-    } while ((!JceUtil.equals(this.head, paramObject.head)) || (!JceUtil.equals(this.body, paramObject.body)));
-    return true;
+    }
+    paramObject = (Request)paramObject;
+    if ((JceUtil.equals(this.head, paramObject.head)) && (JceUtil.equals(this.body, paramObject.body)))
+    {
+      AppMethodBeat.o(76098);
+      return true;
+    }
+    AppMethodBeat.o(76098);
+    return false;
   }
   
   public final String fullClassName()
@@ -98,19 +116,24 @@ public final class Request
   
   public final int hashCode()
   {
+    AppMethodBeat.i(76099);
     try
     {
-      throw new Exception("Need define key first!");
+      Exception localException1 = new Exception("Need define key first!");
+      AppMethodBeat.o(76099);
+      throw localException1;
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
-      y.printErrStackTrace("Request", localException, "", new Object[0]);
+      ab.printErrStackTrace("Request", localException2, "", new Object[0]);
+      AppMethodBeat.o(76099);
     }
     return 0;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76102);
     if (cache_head == null) {
       cache_head = new ReqHead();
     }
@@ -122,6 +145,7 @@ public final class Request
       ((byte[])arrayOfByte)[0] = 0;
     }
     this.body = ((byte[])paramJceInputStream.read(cache_body, 1, false));
+    AppMethodBeat.o(76102);
   }
   
   public final void setBody(byte[] paramArrayOfByte)
@@ -136,10 +160,12 @@ public final class Request
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76101);
     paramJceOutputStream.write(this.head, 0);
     if (this.body != null) {
       paramJceOutputStream.write(this.body, 1);
     }
+    AppMethodBeat.o(76101);
   }
 }
 

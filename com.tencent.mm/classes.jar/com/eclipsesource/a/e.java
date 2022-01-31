@@ -1,5 +1,7 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,110 +10,226 @@ public final class e
   extends h
   implements Iterable<e.b>
 {
-  public final List<String> arD = new ArrayList();
-  public transient e.a arE = new e.a();
-  public final List<h> arx = new ArrayList();
+  public final List<h> atP;
+  public final List<String> atV;
+  public transient e.a atW;
   
-  public final h Y(String paramString)
+  public e()
   {
-    if (paramString == null) {
-      throw new NullPointerException("name is null");
+    AppMethodBeat.i(70539);
+    this.atV = new ArrayList();
+    this.atP = new ArrayList();
+    this.atW = new e.a();
+    AppMethodBeat.o(70539);
+  }
+  
+  private void readObject(ObjectInputStream paramObjectInputStream)
+  {
+    try
+    {
+      AppMethodBeat.i(70554);
+      paramObjectInputStream.defaultReadObject();
+      this.atW = new e.a();
+      int j = this.atV.size();
+      int i = 0;
+      while (i < j)
+      {
+        this.atW.g((String)this.atV.get(i), i);
+        i += 1;
+      }
+      AppMethodBeat.o(70554);
+      return;
     }
-    int i = indexOf(paramString);
-    if (i != -1) {
-      return (h)this.arx.get(i);
-    }
-    return null;
+    finally {}
   }
   
   public final e a(String paramString, h paramh)
   {
-    if (paramString == null) {
-      throw new NullPointerException("name is null");
+    AppMethodBeat.i(70540);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("name is null");
+      AppMethodBeat.o(70540);
+      throw paramString;
     }
-    if (paramh == null) {
-      throw new NullPointerException("value is null");
+    if (paramh == null)
+    {
+      paramString = new NullPointerException("value is null");
+      AppMethodBeat.o(70540);
+      throw paramString;
     }
-    this.arE.h(paramString, this.arD.size());
-    this.arD.add(paramString);
-    this.arx.add(paramh);
+    this.atW.g(paramString, this.atV.size());
+    this.atV.add(paramString);
+    this.atP.add(paramh);
+    AppMethodBeat.o(70540);
     return this;
   }
   
   final void a(i parami)
   {
-    parami.kf();
-    Iterator localIterator1 = this.arD.iterator();
-    Iterator localIterator2 = this.arx.iterator();
+    AppMethodBeat.i(70550);
+    parami.mo();
+    Iterator localIterator1 = this.atV.iterator();
+    Iterator localIterator2 = this.atP.iterator();
     for (int i = 1; localIterator1.hasNext(); i = 0)
     {
       if (i == 0) {
-        parami.ki();
+        parami.mr();
       }
-      parami.ad((String)localIterator1.next());
-      parami.kh();
+      parami.ai((String)localIterator1.next());
+      parami.mq();
       ((h)localIterator2.next()).a(parami);
     }
-    parami.kg();
+    parami.mp();
+    AppMethodBeat.o(70550);
   }
   
-  public final e b(String paramString, h paramh)
+  public final h ad(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("name is null");
-    }
-    if (paramh == null) {
-      throw new NullPointerException("value is null");
+    AppMethodBeat.i(70548);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("name is null");
+      AppMethodBeat.o(70548);
+      throw paramString;
     }
     int i = indexOf(paramString);
     if (i != -1)
     {
-      this.arx.set(i, paramh);
-      return this;
+      paramString = (h)this.atP.get(i);
+      AppMethodBeat.o(70548);
+      return paramString;
     }
-    this.arE.h(paramString, this.arD.size());
-    this.arD.add(paramString);
-    this.arx.add(paramh);
+    AppMethodBeat.o(70548);
+    return null;
+  }
+  
+  public final e b(String paramString, double paramDouble)
+  {
+    AppMethodBeat.i(70544);
+    b(paramString, a.l(paramDouble));
+    AppMethodBeat.o(70544);
+    return this;
+  }
+  
+  public final e b(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(70542);
+    b(paramString, a.l(paramLong));
+    AppMethodBeat.o(70542);
+    return this;
+  }
+  
+  public final e b(String paramString, h paramh)
+  {
+    AppMethodBeat.i(70547);
+    if (paramString == null)
+    {
+      paramString = new NullPointerException("name is null");
+      AppMethodBeat.o(70547);
+      throw paramString;
+    }
+    if (paramh == null)
+    {
+      paramString = new NullPointerException("value is null");
+      AppMethodBeat.o(70547);
+      throw paramString;
+    }
+    int i = indexOf(paramString);
+    if (i != -1) {
+      this.atP.set(i, paramh);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(70547);
+      return this;
+      this.atW.g(paramString, this.atV.size());
+      this.atV.add(paramString);
+      this.atP.add(paramh);
+    }
+  }
+  
+  public final e d(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(70543);
+    b(paramString, a.S(paramFloat));
+    AppMethodBeat.o(70543);
+    return this;
+  }
+  
+  public final e e(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(70545);
+    b(paramString, a.az(paramBoolean));
+    AppMethodBeat.o(70545);
     return this;
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(70552);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(70552);
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (getClass() != paramObject.getClass()) {
-        return false;
-      }
-      paramObject = (e)paramObject;
-    } while ((this.arD.equals(paramObject.arD)) && (this.arx.equals(paramObject.arx)));
+    }
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(70552);
+      return false;
+    }
+    if (getClass() != paramObject.getClass())
+    {
+      AppMethodBeat.o(70552);
+      return false;
+    }
+    paramObject = (e)paramObject;
+    if ((this.atV.equals(paramObject.atV)) && (this.atP.equals(paramObject.atP)))
+    {
+      AppMethodBeat.o(70552);
+      return true;
+    }
+    AppMethodBeat.o(70552);
     return false;
   }
   
-  public final e g(String paramString, int paramInt)
+  public final e f(String paramString, int paramInt)
   {
-    b(paramString, a.cy(paramInt));
+    AppMethodBeat.i(70541);
+    b(paramString, a.cR(paramInt));
+    AppMethodBeat.o(70541);
+    return this;
+  }
+  
+  public final e h(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(70546);
+    b(paramString1, a.Z(paramString2));
+    AppMethodBeat.o(70546);
     return this;
   }
   
   public final int hashCode()
   {
-    return (this.arD.hashCode() + 31) * 31 + this.arx.hashCode();
+    AppMethodBeat.i(70551);
+    int i = this.atV.hashCode();
+    int j = this.atP.hashCode();
+    AppMethodBeat.o(70551);
+    return (i + 31) * 31 + j;
   }
   
   public final int indexOf(String paramString)
   {
-    e.a locala = this.arE;
-    int i = locala.N(paramString);
-    i = (locala.arI[i] & 0xFF) - 1;
-    if ((i != -1) && (paramString.equals(this.arD.get(i)))) {
+    AppMethodBeat.i(70553);
+    int i = this.atW.get(paramString);
+    if ((i != -1) && (paramString.equals(this.atV.get(i))))
+    {
+      AppMethodBeat.o(70553);
       return i;
     }
-    return this.arD.lastIndexOf(paramString);
+    i = this.atV.lastIndexOf(paramString);
+    AppMethodBeat.o(70553);
+    return i;
   }
   
   public final boolean isObject()
@@ -121,10 +239,13 @@ public final class e
   
   public final Iterator<e.b> iterator()
   {
-    return new e.1(this, this.arD.iterator(), this.arx.iterator());
+    AppMethodBeat.i(70549);
+    e.1 local1 = new e.1(this, this.atV.iterator(), this.atP.iterator());
+    AppMethodBeat.o(70549);
+    return local1;
   }
   
-  public final e jS()
+  public final e lM()
   {
     return this;
   }

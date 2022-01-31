@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 
 final class ExdeviceBindDeviceUI$8
   implements Runnable
@@ -9,12 +10,14 @@ final class ExdeviceBindDeviceUI$8
   
   public final void run()
   {
-    ExdeviceBindDeviceUI.a(this.jBw, this.jBz, this.jBA, this.jBB, this.jBC);
+    AppMethodBeat.i(19832);
+    ExdeviceBindDeviceUI.a(this.lKV, this.lKY, this.lKZ, this.lLa, this.lLb);
+    AppMethodBeat.o(19832);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceUI.8
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.SnsAdNativeLandingPagesVideoPlayerLoadingBar;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
 
@@ -12,16 +13,18 @@ final class SnsAdNativeLandingTestUI$6
   
   public final void onClick(View paramView)
   {
-    if ((!"".equals(SnsAdNativeLandingTestUI.a(this.oVg).getVideoPath())) && (SnsAdNativeLandingTestUI.a(this.oVg).getVideoPath() != null))
+    AppMethodBeat.i(38711);
+    if ((!"".equals(SnsAdNativeLandingTestUI.a(this.rNi).getVideoPath())) && (SnsAdNativeLandingTestUI.a(this.rNi).getVideoPath() != null))
     {
-      if (this.oVg.oVf.getVisibility() == 0) {
-        this.oVg.oVf.setVisibility(4);
+      if (this.rNi.rNh.getVisibility() == 0)
+      {
+        this.rNi.rNh.setVisibility(4);
+        AppMethodBeat.o(38711);
+        return;
       }
+      this.rNi.rNh.setVisibility(0);
     }
-    else {
-      return;
-    }
-    this.oVg.oVf.setVisibility(0);
+    AppMethodBeat.o(38711);
   }
 }
 

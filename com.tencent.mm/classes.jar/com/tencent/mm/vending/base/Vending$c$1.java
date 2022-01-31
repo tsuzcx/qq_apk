@@ -3,6 +3,7 @@ package com.tencent.mm.vending.base;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -16,16 +17,19 @@ final class Vending$c$1
   
   public final void handleMessage(Message arg1)
   {
-    if (this.wtd.wtc.get())
+    AppMethodBeat.i(126164);
+    if (this.ANY.ANX.get())
     {
-      this.wtd.wtb.cancel();
+      this.ANY.ANW.cancel();
+      AppMethodBeat.o(126164);
       return;
     }
     Object localObject1 = ???.obj;
-    this.wtd.wtb.cf(localObject1);
-    synchronized (this.wtd.b)
+    this.ANY.ANW.cJ(localObject1);
+    synchronized (this.ANY.b)
     {
-      this.wtd.a.put(localObject1, Vending.c.b.wtg);
+      this.ANY.a.put(localObject1, Vending.c.b.AOb);
+      AppMethodBeat.o(126164);
       return;
     }
   }

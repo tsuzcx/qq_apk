@@ -2,7 +2,7 @@ package com.tencent.mm.modelmulti;
 
 abstract interface o$b
 {
-  public abstract boolean iU(int paramInt);
+  public abstract boolean lM(int paramInt);
 }
 
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.modelstat;
 
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class c$3
   implements Runnable
@@ -11,18 +12,21 @@ final class c$3
   
   public final void run()
   {
+    AppMethodBeat.i(78660);
     String str = this.val$intent.getStringExtra("ui");
     int i = this.val$intent.getIntExtra("uiHashCode", 0);
     int j = this.val$intent.getIntExtra("opCode", 0);
     long l1 = this.val$intent.getLongExtra("nowMilliSecond", 0L);
     long l2 = this.val$intent.getLongExtra("elapsedRealtime", 0L);
-    y.d("MicroMsg.ClickFlowStatReceiver", "onReceive op:%d ui:%s hash:0x%x time:%d, elapsed time:%d", new Object[] { Integer.valueOf(j), str, Integer.valueOf(i), Long.valueOf(bk.co(l1)), Long.valueOf(l2) });
+    ab.d("MicroMsg.ClickFlowStatReceiver", "onReceive op:%d ui:%s hash:0x%x time:%d, elapsed time:%d", new Object[] { Integer.valueOf(j), str, Integer.valueOf(i), Long.valueOf(bo.hl(l1)), Long.valueOf(l2) });
     if (2147483632 == j)
     {
-      c.a(this.eCm);
+      c.a(this.fSd);
+      AppMethodBeat.o(78660);
       return;
     }
-    c.a(this.eCm, j, str, i, l1, l2);
+    c.a(this.fSd, j, str, i, l1, l2);
+    AppMethodBeat.o(78660);
   }
 }
 

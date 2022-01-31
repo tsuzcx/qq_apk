@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class VoiceTransTextUI$3
   implements View.OnTouchListener
@@ -12,34 +13,35 @@ final class VoiceTransTextUI$3
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(25594);
     switch (paramMotionEvent.getAction())
     {
-    case 2: 
-    default: 
-    case 0: 
-      do
-      {
-        return false;
-        VoiceTransTextUI.c(this.pyO);
-        VoiceTransTextUI.a(this.pyO, paramView.getScrollY());
-        VoiceTransTextUI.b(this.pyO, VoiceTransTextUI.d(this.pyO));
-        VoiceTransTextUI.e(this.pyO).removeMessages(0);
-      } while (!VoiceTransTextUI.f(this.pyO));
-      VoiceTransTextUI.g(this.pyO);
-      VoiceTransTextUI.a(this.pyO, true);
-      return false;
     }
-    if (Math.abs(VoiceTransTextUI.h(this.pyO) - paramView.getScrollY()) > VoiceTransTextUI.i(this.pyO)) {
-      VoiceTransTextUI.e(this.pyO).sendMessage(VoiceTransTextUI.e(this.pyO).obtainMessage(0, paramView));
-    }
-    if ((VoiceTransTextUI.j(this.pyO) < 800L) && (Math.abs(VoiceTransTextUI.h(this.pyO) - paramView.getScrollY()) <= VoiceTransTextUI.i(this.pyO)) && (!VoiceTransTextUI.k(this.pyO)))
+    for (;;)
     {
-      VoiceTransTextUI.e(this.pyO).removeMessages(0);
-      VoiceTransTextUI.l(this.pyO);
-      this.pyO.finish();
+      AppMethodBeat.o(25594);
+      return false;
+      VoiceTransTextUI.c(this.taB);
+      VoiceTransTextUI.a(this.taB, paramView.getScrollY());
+      VoiceTransTextUI.b(this.taB, VoiceTransTextUI.d(this.taB));
+      VoiceTransTextUI.e(this.taB).removeMessages(0);
+      if (VoiceTransTextUI.f(this.taB))
+      {
+        VoiceTransTextUI.g(this.taB);
+        VoiceTransTextUI.a(this.taB, true);
+        continue;
+        if (Math.abs(VoiceTransTextUI.h(this.taB) - paramView.getScrollY()) > VoiceTransTextUI.i(this.taB)) {
+          VoiceTransTextUI.e(this.taB).sendMessage(VoiceTransTextUI.e(this.taB).obtainMessage(0, paramView));
+        }
+        if ((VoiceTransTextUI.j(this.taB) < 800L) && (Math.abs(VoiceTransTextUI.h(this.taB) - paramView.getScrollY()) <= VoiceTransTextUI.i(this.taB)) && (!VoiceTransTextUI.k(this.taB)))
+        {
+          VoiceTransTextUI.e(this.taB).removeMessages(0);
+          VoiceTransTextUI.l(this.taB);
+          this.taB.finish();
+        }
+        VoiceTransTextUI.a(this.taB, false);
+      }
     }
-    VoiceTransTextUI.a(this.pyO, false);
-    return false;
   }
 }
 

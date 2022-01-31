@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$cy
+public final class c$cy
   extends c.g
 {
-  c$cy()
+  public c$cy()
   {
-    super("getWePkgAuthResult", "getWePkgAuthResult", -3, false);
+    super("getSearchSuggestionData", "", 10000, false);
   }
 }
 

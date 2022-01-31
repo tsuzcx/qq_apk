@@ -4,47 +4,55 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public class EmbedWebView
   extends MMWebView
 {
-  private GestureDetector nhs = new GestureDetector(new EmbedWebView.1(this));
-  private boolean nht = false;
-  private float[] nhu = new float[2];
-  private float[] nhv = new float[2];
-  private float[] nhw = new float[2];
-  private float[] nhx = new float[2];
+  private GestureDetector pMF;
+  private boolean pMG;
+  private float[] pMH;
+  private float[] pMI;
+  private float[] pMJ;
+  private float[] pMK;
   
   public EmbedWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(68280);
+    this.pMG = false;
+    this.pMH = new float[2];
+    this.pMI = new float[2];
+    this.pMJ = new float[2];
+    this.pMK = new float[2];
+    this.pMF = new GestureDetector(new EmbedWebView.1(this));
     postDelayed(new EmbedWebView.2(this), 100L);
+    AppMethodBeat.o(68280);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     int j = 0;
     int i = 0;
-    this.nhs.onTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(68281);
+    this.pMF.onTouchEvent(paramMotionEvent);
     int m;
     int k;
-    if (this.nht)
+    if (this.pMG)
     {
       m = paramMotionEvent.getAction();
       k = paramMotionEvent.getPointerCount();
       if (k == 2) {
-        break label58;
+        break label65;
       }
     }
-    for (;;)
+    while (i == 0)
     {
-      if (i == 0) {
-        bool = super.onTouchEvent(paramMotionEvent);
-      }
+      boolean bool = super.onTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(68281);
       return bool;
-      label58:
+      label65:
       i = j;
       switch (m & 0xFF)
       {
@@ -52,37 +60,42 @@ public class EmbedWebView
       case 4: 
       default: 
         i = 1;
+        break;
+      case 5: 
+        while (i < k)
+        {
+          this.pMH[i] = paramMotionEvent.getX(i);
+          this.pMI[i] = paramMotionEvent.getY(i);
+          i += 1;
+        }
+      case 2: 
+        i = 0;
+        while (i < k)
+        {
+          this.pMJ[i] = paramMotionEvent.getX(i);
+          this.pMK[i] = paramMotionEvent.getY(i);
+          i += 1;
+        }
+        float f1 = (float)(Math.pow(this.pMH[1] - this.pMH[0], 2.0D) + Math.pow(this.pMI[1] - this.pMI[0], 2.0D));
+        float f2 = (float)(Math.pow(this.pMJ[1] - this.pMJ[0], 2.0D) + Math.pow(this.pMK[1] - this.pMK[0], 2.0D));
+        if (f1 - f2 > 20000.0F) {
+          zoomOut();
+        }
+        for (;;)
+        {
+          this.pMH[0] = this.pMJ[0];
+          this.pMH[1] = this.pMJ[1];
+          this.pMI[0] = this.pMK[0];
+          this.pMI[1] = this.pMK[1];
+          break;
+          if (f2 - f1 > 20000.0F) {
+            zoomIn();
+          }
+        }
       }
     }
-    while (i < k)
-    {
-      this.nhu[i] = paramMotionEvent.getX(i);
-      this.nhv[i] = paramMotionEvent.getY(i);
-      i += 1;
-    }
-    i = 0;
-    while (i < k)
-    {
-      this.nhw[i] = paramMotionEvent.getX(i);
-      this.nhx[i] = paramMotionEvent.getY(i);
-      i += 1;
-    }
-    float f1 = (float)(Math.pow(this.nhu[1] - this.nhu[0], 2.0D) + Math.pow(this.nhv[1] - this.nhv[0], 2.0D));
-    float f2 = (float)(Math.pow(this.nhw[1] - this.nhw[0], 2.0D) + Math.pow(this.nhx[1] - this.nhx[0], 2.0D));
-    if (f1 - f2 > 20000.0F) {
-      zoomOut();
-    }
-    for (;;)
-    {
-      this.nhu[0] = this.nhw[0];
-      this.nhu[1] = this.nhw[1];
-      this.nhv[0] = this.nhx[0];
-      this.nhv[1] = this.nhx[1];
-      break;
-      if (f2 - f1 > 20000.0F) {
-        zoomIn();
-      }
-    }
+    AppMethodBeat.o(68281);
+    return true;
   }
 }
 

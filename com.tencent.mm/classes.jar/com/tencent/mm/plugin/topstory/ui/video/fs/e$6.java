@@ -1,18 +1,31 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.topstory.ui.video.a;
-import com.tencent.mm.plugin.topstory.ui.video.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sight.decode.ui.b;
+import com.tencent.mm.plugin.websearch.api.a.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$6
-  implements View.OnClickListener
+  implements b
 {
   e$6(e parame) {}
   
-  public final void onClick(View paramView)
+  public final void aFf()
   {
-    this.pGX.getFSVideoUIComponent().zy(e.a(this.pGX).bNr());
+    AppMethodBeat.i(1890);
+    ab.i("MicroMsg.TopStory.TopStoryFSVideoContainer", "onSeekPre");
+    this.tkq.tkg.baj();
+    AppMethodBeat.o(1890);
+  }
+  
+  public final void on(int paramInt)
+  {
+    AppMethodBeat.i(1891);
+    ab.i("MicroMsg.TopStory.TopStoryFSVideoContainer", "onSeekTo %d", new Object[] { Integer.valueOf(paramInt) });
+    this.tkq.seekTo(paramInt);
+    this.tkq.tkg.aFn();
+    a.kS(22);
+    AppMethodBeat.o(1891);
   }
 }
 

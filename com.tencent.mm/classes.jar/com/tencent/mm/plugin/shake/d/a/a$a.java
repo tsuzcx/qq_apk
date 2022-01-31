@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.protocal.c.bly;
+import com.tencent.mm.protocal.protobuf.bvk;
 
 public abstract interface a$a
 {
-  public abstract void b(bly parambly, long paramLong, boolean paramBoolean);
+  public abstract void b(bvk parambvk, long paramLong, boolean paramBoolean);
 }
 
 

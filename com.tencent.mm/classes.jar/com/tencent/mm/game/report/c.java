@@ -1,80 +1,65 @@
 package com.tencent.mm.game.report;
 
-import android.os.Bundle;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.w;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.c.aad;
-import com.tencent.mm.protocal.c.aae;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.api.b;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-final class c
+public final class c
 {
-  private static LinkedList<com.tencent.mm.game.report.api.d> dCr = new LinkedList();
-  private static boolean dCs;
-  private static String dCt = "log_id";
-  private static String dCu = "log_ext";
-  
-  private static void BE()
+  public static String S(String paramString1, String paramString2)
   {
-    com.tencent.mm.game.report.api.d locald;
-    do
+    AppMethodBeat.i(140316);
+    if (paramString2 == null)
     {
-      if (dCs)
-      {
-        y.i("MicroMsg.ReportService", "tryDoScene isBusy");
-        return;
-      }
-      if (bk.dk(dCr))
-      {
-        y.i("MicroMsg.ReportService", "waitingList is null");
-        return;
-      }
-      locald = (com.tencent.mm.game.report.api.d)dCr.remove(0);
-    } while (locald == null);
-    dCs = true;
-    b.a locala = new b.a();
-    locala.uri = "/cgi-bin/micromsg-bin/gamereportkv";
-    locala.ecG = 427;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    aad localaad = new aad();
-    localaad.sEc = com.tencent.mm.protocal.d.soV;
-    localaad.sEd = com.tencent.mm.protocal.d.soU;
-    localaad.sEe = com.tencent.mm.protocal.d.soX;
-    localaad.sEf = com.tencent.mm.protocal.d.soY;
-    localaad.sEg = x.cqJ();
-    localaad.nFr = locald.dCy;
-    localaad.sEh = locald.dCz;
-    locala.ecH = localaad;
-    locala.ecI = new aae();
-    w.a(locala.Kt(), new c.1());
+      AppMethodBeat.o(140316);
+      return null;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("function_type", paramString1);
+      localJSONObject.put("function_value", paramString2);
+      label40:
+      paramString1 = com.tencent.mm.game.report.c.a.lR(localJSONObject.toString());
+      AppMethodBeat.o(140316);
+      return paramString1;
+    }
+    catch (JSONException paramString1)
+    {
+      break label40;
+    }
   }
   
-  public static void a(com.tencent.mm.game.report.api.d paramd)
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString)
   {
-    if (ae.cqV())
-    {
-      if ((!g.DN().Dc()) || (a.CW())) {
-        y.w("MicroMsg.ReportService", "report, account not ready");
-      }
-      while (paramd == null) {
-        return;
-      }
-      dCr.add(paramd);
-      BE();
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt(dCt, paramd.dCy);
-    localBundle.putString(dCu, paramd.dCz);
-    f.a("com.tencent.mm", localBundle, c.a.class, null);
+    AppMethodBeat.i(140312);
+    a(paramContext, paramInt1, paramInt2, paramInt3, paramInt4, 0, null, paramInt5, 0, null, null, paramString);
+    AppMethodBeat.o(140312);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, int paramInt6, int paramInt7, String paramString2, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(140315);
+    paramContext = b.b(12909, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), paramString1, Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), paramString2, Integer.valueOf(bo.getInt(paramString3, 0)), Integer.valueOf(com.tencent.mm.game.report.c.a.getNetworkType(paramContext)), paramString4 });
+    com.tencent.mm.game.report.api.a.ezM.a(paramContext);
+    AppMethodBeat.o(140315);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2)
+  {
+    AppMethodBeat.i(140313);
+    a(paramContext, paramInt1, paramInt2, paramInt3, paramInt4, 0, paramString1, paramInt5, 0, null, null, paramString2);
+    AppMethodBeat.o(140313);
+  }
+  
+  public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, int paramInt5, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(140314);
+    a(paramContext, paramInt1, paramInt2, paramInt3, paramInt4, 0, paramString1, paramInt5, 0, null, paramString2, paramString3);
+    AppMethodBeat.o(140314);
   }
 }
 

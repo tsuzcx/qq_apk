@@ -5,6 +5,7 @@ import android.content.res.Resources.NotFoundException;
 import android.content.res.XmlResourceParser;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class XWalkMixedResources
   extends Resources
@@ -14,168 +15,202 @@ class XWalkMixedResources
   XWalkMixedResources(Resources paramResources1, Resources paramResources2)
   {
     super(paramResources1.getAssets(), paramResources1.getDisplayMetrics(), paramResources1.getConfiguration());
+    AppMethodBeat.i(85703);
     this.mLibraryResource = paramResources2;
+    AppMethodBeat.o(85703);
   }
   
   private boolean isCalledInLibrary()
   {
-    boolean bool2 = false;
+    AppMethodBeat.i(85702);
     StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
     int j = arrayOfStackTraceElement.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      String str;
-      if (i < j)
+      String str = arrayOfStackTraceElement[i].getClassName();
+      if ((str.startsWith("org.chromium")) || (str.startsWith("org.xwalk.core.internal")))
       {
-        str = arrayOfStackTraceElement[i].getClassName();
-        if ((!str.startsWith("org.chromium")) && (!str.startsWith("org.xwalk.core.internal"))) {
-          break label58;
-        }
-        bool1 = true;
+        AppMethodBeat.o(85702);
+        return true;
       }
-      label58:
-      do
+      if ((str.startsWith("org.xwalk.core")) && (!str.endsWith("XWalkMixedResources")))
       {
-        return bool1;
-        if (!str.startsWith("org.xwalk.core")) {
-          break;
-        }
-        bool1 = bool2;
-      } while (!str.endsWith("XWalkMixedResources"));
+        AppMethodBeat.o(85702);
+        return false;
+      }
       i += 1;
     }
+    AppMethodBeat.o(85702);
+    return false;
   }
   
   public Drawable getDrawable(int paramInt)
   {
-    boolean bool = isCalledInLibrary();
+    AppMethodBeat.i(85709);
+    bool = isCalledInLibrary();
     if (bool) {}
     try
     {
-      return this.mLibraryResource.getDrawable(paramInt);
+      localDrawable1 = this.mLibraryResource.getDrawable(paramInt);
+      AppMethodBeat.o(85709);
+      return localDrawable1;
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
-      Drawable localDrawable;
+      Drawable localDrawable1;
       if (!bool) {
-        break label37;
+        break label61;
       }
-      return super.getDrawable(paramInt);
+      Drawable localDrawable2 = super.getDrawable(paramInt);
+      AppMethodBeat.o(85709);
+      return localDrawable2;
+      localDrawable2 = this.mLibraryResource.getDrawable(paramInt);
+      AppMethodBeat.o(85709);
+      return localDrawable2;
     }
-    localDrawable = super.getDrawable(paramInt);
-    return localDrawable;
-    label37:
-    return this.mLibraryResource.getDrawable(paramInt);
+    localDrawable1 = super.getDrawable(paramInt);
+    AppMethodBeat.o(85709);
+    return localDrawable1;
   }
   
   public int getIdentifier(String paramString1, String paramString2, String paramString3)
   {
-    int i;
+    AppMethodBeat.i(85708);
     if (isCalledInLibrary())
     {
       i = this.mLibraryResource.getIdentifier(paramString1, paramString2, paramString3);
-      if (i == 0) {}
-    }
-    int j;
-    do
-    {
+      if (i != 0)
+      {
+        AppMethodBeat.o(85708);
+        return i;
+      }
+      i = super.getIdentifier(paramString1, paramString2, paramString3);
+      AppMethodBeat.o(85708);
       return i;
-      return super.getIdentifier(paramString1, paramString2, paramString3);
-      j = super.getIdentifier(paramString1, paramString2, paramString3);
-      i = j;
-    } while (j != 0);
-    return this.mLibraryResource.getIdentifier(paramString1, paramString2, paramString3);
+    }
+    int i = super.getIdentifier(paramString1, paramString2, paramString3);
+    if (i != 0)
+    {
+      AppMethodBeat.o(85708);
+      return i;
+    }
+    i = this.mLibraryResource.getIdentifier(paramString1, paramString2, paramString3);
+    AppMethodBeat.o(85708);
+    return i;
   }
   
   public XmlResourceParser getLayout(int paramInt)
   {
-    boolean bool = isCalledInLibrary();
+    AppMethodBeat.i(85705);
+    bool = isCalledInLibrary();
     if (bool) {}
     try
     {
-      return this.mLibraryResource.getLayout(paramInt);
+      localXmlResourceParser1 = this.mLibraryResource.getLayout(paramInt);
+      AppMethodBeat.o(85705);
+      return localXmlResourceParser1;
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
-      XmlResourceParser localXmlResourceParser;
+      XmlResourceParser localXmlResourceParser1;
       if (!bool) {
-        break label37;
+        break label61;
       }
-      return super.getLayout(paramInt);
+      XmlResourceParser localXmlResourceParser2 = super.getLayout(paramInt);
+      AppMethodBeat.o(85705);
+      return localXmlResourceParser2;
+      localXmlResourceParser2 = this.mLibraryResource.getLayout(paramInt);
+      AppMethodBeat.o(85705);
+      return localXmlResourceParser2;
     }
-    localXmlResourceParser = super.getLayout(paramInt);
-    return localXmlResourceParser;
-    label37:
-    return this.mLibraryResource.getLayout(paramInt);
+    localXmlResourceParser1 = super.getLayout(paramInt);
+    AppMethodBeat.o(85705);
+    return localXmlResourceParser1;
   }
   
   public CharSequence getText(int paramInt)
   {
-    boolean bool = isCalledInLibrary();
+    AppMethodBeat.i(85704);
+    bool = isCalledInLibrary();
     if (bool) {}
     try
     {
-      return this.mLibraryResource.getText(paramInt);
+      localCharSequence1 = this.mLibraryResource.getText(paramInt);
+      AppMethodBeat.o(85704);
+      return localCharSequence1;
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
-      CharSequence localCharSequence;
+      CharSequence localCharSequence1;
       if (!bool) {
-        break label37;
+        break label61;
       }
-      return super.getText(paramInt);
+      CharSequence localCharSequence2 = super.getText(paramInt);
+      AppMethodBeat.o(85704);
+      return localCharSequence2;
+      localCharSequence2 = this.mLibraryResource.getText(paramInt);
+      AppMethodBeat.o(85704);
+      return localCharSequence2;
     }
-    localCharSequence = super.getText(paramInt);
-    return localCharSequence;
-    label37:
-    return this.mLibraryResource.getText(paramInt);
+    localCharSequence1 = super.getText(paramInt);
+    AppMethodBeat.o(85704);
+    return localCharSequence1;
   }
   
   public void getValue(int paramInt, TypedValue paramTypedValue, boolean paramBoolean)
   {
+    AppMethodBeat.i(85706);
     boolean bool = isCalledInLibrary();
     if (bool) {}
     try
     {
       this.mLibraryResource.getValue(paramInt, paramTypedValue, paramBoolean);
+      AppMethodBeat.o(85706);
       return;
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
       if (!bool) {
-        break label45;
+        break label65;
       }
       super.getValue(paramInt, paramTypedValue, paramBoolean);
+      AppMethodBeat.o(85706);
       return;
-      label45:
+      label65:
       this.mLibraryResource.getValue(paramInt, paramTypedValue, paramBoolean);
+      AppMethodBeat.o(85706);
     }
     super.getValue(paramInt, paramTypedValue, paramBoolean);
+    AppMethodBeat.o(85706);
     return;
   }
   
   public void getValueForDensity(int paramInt1, int paramInt2, TypedValue paramTypedValue, boolean paramBoolean)
   {
+    AppMethodBeat.i(85707);
     boolean bool = isCalledInLibrary();
     if (bool) {}
     try
     {
       this.mLibraryResource.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
+      AppMethodBeat.o(85707);
       return;
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
       if (!bool) {
-        break label51;
+        break label71;
       }
       super.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
+      AppMethodBeat.o(85707);
       return;
-      label51:
+      label71:
       this.mLibraryResource.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
+      AppMethodBeat.o(85707);
     }
     super.getValueForDensity(paramInt1, paramInt2, paramTypedValue, paramBoolean);
+    AppMethodBeat.o(85707);
     return;
   }
 }

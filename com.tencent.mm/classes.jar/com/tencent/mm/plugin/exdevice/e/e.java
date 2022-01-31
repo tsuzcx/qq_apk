@@ -1,64 +1,72 @@
 package com.tencent.mm.plugin.exdevice.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class e
   extends com.tencent.mm.bv.a
 {
-  public int jxl;
-  public String jxm;
+  public int lGK;
+  public String lGL;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(19422);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.gB(1, this.jxl);
-      if (this.jxm != null) {
-        paramVarArgs.d(2, this.jxm);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aO(1, this.lGK);
+      if (this.lGL != null) {
+        paramVarArgs.e(2, this.lGL);
       }
-      paramInt = 0;
+      AppMethodBeat.o(19422);
+      return 0;
     }
-    int i;
-    do
+    if (paramInt == 1)
     {
-      return paramInt;
-      if (paramInt != 1) {
-        break;
-      }
-      i = d.a.a.a.gy(1, this.jxl) + 0;
+      int i = e.a.a.b.b.a.bl(1, this.lGK) + 0;
       paramInt = i;
-    } while (this.jxm == null);
-    return i + d.a.a.b.b.a.e(2, this.jxm);
+      if (this.lGL != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.lGL);
+      }
+      AppMethodBeat.o(19422);
+      return paramInt;
+    }
     if (paramInt == 2)
     {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(19422);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       e locale = (e)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(19422);
         return -1;
       case 1: 
-        locale.jxl = locala.xpH.oD();
+        locale.lGK = locala.CLY.sl();
+        AppMethodBeat.o(19422);
         return 0;
       }
-      locale.jxm = locala.xpH.readString();
+      locale.lGL = locala.CLY.readString();
+      AppMethodBeat.o(19422);
       return 0;
     }
+    AppMethodBeat.o(19422);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.e.e
  * JD-Core Version:    0.7.0.1
  */

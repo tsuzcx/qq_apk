@@ -1,22 +1,41 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.util.Arrays;
 
 public final class r$d
 {
-  public final String[] fJi = new String[9];
+  public final String[] hca;
   
   public r$d()
   {
-    Arrays.fill(this.fJi, "0");
-    this.fJi[0] = ((String)g.DP().Dz().get(ac.a.usS, ""));
-    this.fJi[1] = String.valueOf(g.DP().Dz().get(ac.a.usT, Long.valueOf(0L)));
-    this.fJi[2] = String.valueOf(bk.UX());
+    AppMethodBeat.i(129628);
+    this.hca = new String[9];
+    Arrays.fill(this.hca, "0");
+    this.hca[0] = ((String)g.RL().Ru().get(ac.a.yCS, ""));
+    this.hca[1] = String.valueOf(g.RL().Ru().get(ac.a.yCT, Long.valueOf(0L)));
+    this.hca[2] = String.valueOf(bo.aox());
+    AppMethodBeat.o(129628);
+  }
+  
+  public final void axr()
+  {
+    this.hca[3] = "1";
+  }
+  
+  public final void axs()
+  {
+    this.hca[5] = "1";
+  }
+  
+  public final void axt()
+  {
+    this.hca[8] = "1";
   }
 }
 

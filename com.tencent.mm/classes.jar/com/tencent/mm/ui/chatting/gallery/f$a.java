@@ -7,7 +7,7 @@ import com.tencent.mm.ui.base.WxImageView;
 
 public abstract interface f$a
 {
-  public abstract Bitmap Hx(int paramInt);
+  public abstract Bitmap Qe(int paramInt);
   
   public abstract void a(WxImageView paramWxImageView, String paramString, a parama);
   

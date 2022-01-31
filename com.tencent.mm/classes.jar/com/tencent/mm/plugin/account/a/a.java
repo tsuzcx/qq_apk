@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.account.a;
 
-import com.tencent.mm.pluginsdk.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
-  implements n
+  implements o
 {
-  public static volatile m eUR;
-  public static volatile l eUS;
-  
-  public final void a(l paraml)
-  {
-    y.i("MicroMsg.AccountSyncApplication", "regitMMModelCallback %s", new Object[] { paraml });
-    eUS = paraml;
-  }
+  public static volatile n gmO;
+  public static volatile m gmP;
   
   public final void a(m paramm)
   {
-    eUR = paramm;
+    AppMethodBeat.i(73678);
+    ab.i("MicroMsg.AccountSyncApplication", "regitMMModelCallback %s", new Object[] { paramm });
+    gmP = paramm;
+    AppMethodBeat.o(73678);
+  }
+  
+  public final void a(n paramn)
+  {
+    gmO = paramn;
   }
 }
 

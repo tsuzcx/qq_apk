@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/oa" android:background="@color/dv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="@dimen/s8"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ob" android:layout_width="fill_parent" android:layout_height="170.0dip">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/multitask_bar_miniprogram_logo" />
-        <TextView android:textSize="12.0dip" android:textColor="@color/dz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/li" android:text="@string/gs" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/oc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="@dimen/li">
-        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/od" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" android:layout_marginBottom="@dimen/mq" />
-        <com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfItemView android:id="@id/oe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/mq" android:layout_marginBottom="@dimen/mq" />
-    </LinearLayout>
+    <ImageView android:id="@id/q_" android:paddingLeft="20.0dip" android:paddingRight="16.0dip" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@raw/app_brand_star_delete" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/g" android:paddingLeft="16.0dip" android:paddingRight="20.0dip" android:layout_width="52.0dip" android:layout_height="fill_parent" android:src="@raw/app_brand_collection_sort_handle_mark" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <View android:id="@id/qa" android:layout_alignLeft="@id/g" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/ww" />
+    <ViewStub android:id="@id/qb" android:background="@null" android:layout="@layout/ci" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/g" android:layout_toRightOf="@id/q_" android:layout_alignParentTop="true" />
 </RelativeLayout>

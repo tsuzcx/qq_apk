@@ -4,55 +4,67 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.Typeface;
-import com.tencent.mm.plugin.appbrand.u.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.l;
 import java.io.Serializable;
 
 public final class a
   extends Paint
   implements Serializable
 {
-  public a.a fMs = a.a.fMy;
-  private float fMt;
-  private String fMu;
-  private int fMv;
-  private float fMw = 3.4028235E+38F;
-  private int fMx = 2147483647;
+  public a.a hfC;
+  private float hfD;
+  private String hfE;
+  private int hfF;
+  private float hfG;
+  private int hfH;
   private int mColor;
   
   public a()
   {
+    AppMethodBeat.i(103653);
+    this.hfC = a.a.hfI;
+    this.hfG = 3.4028235E+38F;
+    this.hfH = 2147483647;
     init();
+    AppMethodBeat.o(103653);
   }
   
   private void init()
   {
-    this.fMt = 0.0F;
+    AppMethodBeat.i(103654);
+    this.hfD = 0.0F;
     this.mColor = 0;
-    this.fMu = null;
-    this.fMv = 0;
-    if (this.fMw == 3.4028235E+38F)
+    this.hfE = null;
+    this.hfF = 0;
+    if (this.hfG == 3.4028235E+38F)
     {
-      this.fMt = (getAlpha() / 255.0F);
-      this.fMw = this.fMt;
+      this.hfD = (getAlpha() / 255.0F);
+      this.hfG = this.hfD;
     }
-    while (this.fMx == 2147483647)
+    while (this.hfH == 2147483647)
     {
       this.mColor = getColor();
-      this.fMx = this.mColor;
+      this.hfH = this.mColor;
+      AppMethodBeat.o(103654);
       return;
-      this.fMt = this.fMw;
+      this.hfD = this.hfG;
     }
-    this.mColor = this.fMx;
+    this.mColor = this.hfH;
+    AppMethodBeat.o(103654);
   }
   
-  public final void ad(float paramFloat)
+  public final void ao(float paramFloat)
   {
-    this.fMt = paramFloat;
+    AppMethodBeat.i(103658);
+    this.hfD = paramFloat;
     setColor(this.mColor);
+    AppMethodBeat.o(103658);
   }
   
-  public final a adP()
+  public final a ayh()
   {
+    AppMethodBeat.i(103656);
     a locala = new a();
     locala.setColor(getColor());
     locala.setFlags(getFlags());
@@ -60,13 +72,13 @@ public final class a
     Shader localShader = getShader();
     if (localShader != null)
     {
-      Object localObject = m.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
+      Object localObject = l.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
       if ((localObject == null) || (!(localObject instanceof Shader))) {
-        break label155;
+        break label165;
       }
       localShader = (Shader)localObject;
     }
-    label155:
+    label165:
     for (;;)
     {
       locala.setShader(localShader);
@@ -78,26 +90,28 @@ public final class a
       locala.setTextSize(getTextSize());
       locala.setTextAlign(getTextAlign());
       locala.setTypeface(getTypeface());
-      locala.fMs = this.fMs;
+      locala.hfC = this.hfC;
+      AppMethodBeat.o(103656);
       return locala;
     }
   }
   
   public final a b(a parama)
   {
+    AppMethodBeat.i(103657);
     parama.setColor(getColor());
     parama.setFlags(getFlags());
     parama.setDither(isDither());
     Shader localShader = getShader();
     if (localShader != null)
     {
-      Object localObject = m.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
+      Object localObject = l.a(Shader.class, "copy", localShader, new Class[0], new Object[0]);
       if ((localObject == null) || (!(localObject instanceof Shader))) {
-        break label147;
+        break label157;
       }
       localShader = (Shader)localObject;
     }
-    label147:
+    label157:
     for (;;)
     {
       parama.setShader(localShader);
@@ -109,44 +123,58 @@ public final class a
       parama.setTextSize(getTextSize());
       parama.setTextAlign(getTextAlign());
       parama.setTypeface(getTypeface());
-      parama.fMs = this.fMs;
+      parama.hfC = this.hfC;
+      AppMethodBeat.o(103657);
       return parama;
     }
   }
   
   protected final Object clone()
   {
-    return super.clone();
+    AppMethodBeat.i(103655);
+    Object localObject = super.clone();
+    AppMethodBeat.o(103655);
+    return localObject;
   }
   
-  public final void kC(int paramInt)
+  public final void ny(int paramInt)
   {
-    this.fMv = paramInt;
-    setTypeface(Typeface.create(this.fMu, paramInt));
-  }
-  
-  public final void rN(String paramString)
-  {
-    this.fMu = paramString;
-    setTypeface(Typeface.create(paramString, this.fMv));
+    AppMethodBeat.i(103663);
+    this.hfF = paramInt;
+    setTypeface(Typeface.create(this.hfE, paramInt));
+    AppMethodBeat.o(103663);
   }
   
   public final void release()
   {
+    AppMethodBeat.i(103661);
     reset();
     init();
+    AppMethodBeat.o(103661);
   }
   
   public final void reset()
   {
+    AppMethodBeat.i(103660);
     super.reset();
-    this.fMs = a.a.fMy;
+    this.hfC = a.a.hfI;
+    AppMethodBeat.o(103660);
   }
   
   public final void setColor(int paramInt)
   {
+    AppMethodBeat.i(103659);
     this.mColor = paramInt;
-    super.setColor(((int)(Color.alpha(paramInt) * this.fMt) & 0xFF) << 24 | 0xFFFFFF & paramInt);
+    super.setColor(((int)(Color.alpha(paramInt) * this.hfD) & 0xFF) << 24 | 0xFFFFFF & paramInt);
+    AppMethodBeat.o(103659);
+  }
+  
+  public final void zD(String paramString)
+  {
+    AppMethodBeat.i(103662);
+    this.hfE = paramString;
+    setTypeface(Typeface.create(paramString, this.hfF));
+    AppMethodBeat.o(103662);
   }
 }
 

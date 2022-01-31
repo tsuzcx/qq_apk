@@ -1,5 +1,6 @@
 package com.tencent.qqvideo.proxy.api;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqvideo.proxy.common.PlayManagerImp;
 
 public class FactoryProxyManager
@@ -10,10 +11,12 @@ public class FactoryProxyManager
   {
     try
     {
+      AppMethodBeat.i(124390);
       if (playManager == null) {
         playManager = new PlayManagerImp();
       }
       IPlayManager localIPlayManager = playManager;
+      AppMethodBeat.o(124390);
       return localIPlayManager;
     }
     finally {}

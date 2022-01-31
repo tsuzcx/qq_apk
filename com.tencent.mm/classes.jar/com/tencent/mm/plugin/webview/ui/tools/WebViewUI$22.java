@@ -1,12 +1,17 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.content.Intent;
-import android.webkit.ValueCallback;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
 final class WebViewUI$22
-  implements ValueCallback<String>
+  implements View.OnLongClickListener
 {
-  WebViewUI$22(WebViewUI paramWebViewUI, Intent paramIntent) {}
+  WebViewUI$22(WebViewUI paramWebViewUI) {}
+  
+  public final boolean onLongClick(View paramView)
+  {
+    return true;
+  }
 }
 
 

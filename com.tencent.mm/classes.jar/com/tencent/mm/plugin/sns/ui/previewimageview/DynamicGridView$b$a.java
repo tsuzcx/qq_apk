@@ -3,31 +3,34 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DynamicGridView$b$a
   implements ViewTreeObserver.OnPreDrawListener
 {
-  private final int ahA;
-  private final View pqS;
-  private final int pqT;
+  private final int ajQ;
+  private final View slK;
+  private final int slL;
   
   DynamicGridView$b$a(DynamicGridView.b paramb, View paramView, int paramInt1, int paramInt2)
   {
-    this.pqS = paramView;
-    this.pqT = paramInt1;
-    this.ahA = paramInt2;
+    this.slK = paramView;
+    this.slL = paramInt1;
+    this.ajQ = paramInt2;
   }
   
   public final boolean onPreDraw()
   {
-    this.pqU.pqL.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.pqU.pqL, DynamicGridView.e(this.pqU.pqL) + DynamicGridView.b.a(this.pqU));
-    DynamicGridView.b(this.pqU.pqL, DynamicGridView.f(this.pqU.pqL) + DynamicGridView.b.b(this.pqU));
-    DynamicGridView.a(this.pqU.pqL, this.pqT, this.ahA);
-    this.pqS.setVisibility(0);
-    if (DynamicGridView.g(this.pqU.pqL) != null) {
-      DynamicGridView.g(this.pqU.pqL).setVisibility(4);
+    AppMethodBeat.i(40359);
+    this.slM.slD.getViewTreeObserver().removeOnPreDrawListener(this);
+    DynamicGridView.a(this.slM.slD, DynamicGridView.e(this.slM.slD) + DynamicGridView.b.a(this.slM));
+    DynamicGridView.b(this.slM.slD, DynamicGridView.f(this.slM.slD) + DynamicGridView.b.b(this.slM));
+    DynamicGridView.a(this.slM.slD, this.slL, this.ajQ);
+    this.slK.setVisibility(0);
+    if (DynamicGridView.g(this.slM.slD) != null) {
+      DynamicGridView.g(this.slM.slD).setVisibility(4);
     }
+    AppMethodBeat.o(40359);
     return true;
   }
 }

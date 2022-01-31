@@ -1,209 +1,380 @@
 package com.tencent.mm.modelvoice;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import com.tencent.mm.model.o;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
-import junit.framework.Assert;
+import android.content.Context;
+import android.media.MediaPlayer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.k;
+import com.tencent.mm.compatible.e.ac;
+import com.tencent.mm.compatible.util.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.e;
 
 public final class u
-  extends j
+  implements d
 {
-  public static final String[] dXp = { "CREATE TABLE IF NOT EXISTS voiceinfo ( FileName TEXT PRIMARY KEY, User TEXT, MsgId INT, NetOffset INT, FileNowSize INT, TotalLen INT, Status INT, CreateTime INT, LastModifyTime INT, ClientId TEXT, VoiceLength INT, MsgLocalId INT, Human TEXT, reserved1 INT, reserved2 TEXT, MsgSource TEXT, MsgFlag INT, MsgSeq INT, MasterBufId INT, checksum INT DEFAULT 0 )", "CREATE INDEX IF NOT EXISTS voiceinfomsgidindex ON voiceinfo ( MsgId ) ", "CREATE UNIQUE INDEX IF NOT EXISTS voiceinfouniqueindex ON voiceinfo ( FileName )" };
-  public com.tencent.mm.cf.h dXo;
-  Map<String, a> eLm = new HashMap();
-  Map<String, l> eLn = new HashMap();
-  Map<String, h> eLo = new HashMap();
+  boolean fZY;
+  String fileName;
+  MediaPlayer gaO;
+  com.tencent.mm.compatible.util.b gaP;
+  d.a gaf;
+  d.b gag;
+  int status;
   
-  public u(com.tencent.mm.cf.h paramh)
+  public u()
   {
-    b(paramh);
-    this.dXo = paramh;
+    AppMethodBeat.i(55841);
+    this.fileName = "";
+    this.gaf = null;
+    this.gag = null;
+    this.status = 0;
+    this.fZY = true;
+    this.gaO = new k();
+    amz();
+    amA();
+    ab.d("MicroMsg.VoicePlayer", "VoicePlayer");
+    AppMethodBeat.o(55841);
   }
   
-  private static void b(com.tencent.mm.cf.h paramh)
+  public u(Context paramContext)
   {
-    Cursor localCursor = paramh.a("PRAGMA table_info(voiceinfo)", null, 0);
-    if (localCursor == null)
-    {
-      y.i("MicroMsg.VoiceStorage", "addNewColIfNeed failed, cursor is null.");
-      return;
-    }
-    int i1 = localCursor.getColumnIndex("name");
-    int j = 0;
-    int i = 0;
-    int n = 0;
-    int m = 0;
-    int k = 0;
-    label46:
-    String str;
-    while (localCursor.moveToNext()) {
-      if (i1 >= 0)
-      {
-        str = localCursor.getString(i1);
-        if ("MsgSource".equals(str)) {
-          k = 1;
-        }
-        if ("MsgFlag".equals(str)) {
-          m = 1;
-        }
-        if ("MsgSeq".equals(str)) {
-          n = 1;
-        }
-        if (!"MasterBufId".equals(str)) {
-          break label212;
-        }
-        i = 1;
-      }
-    }
-    label212:
-    for (;;)
-    {
-      if ("checksum".equals(str)) {
-        j = 1;
-      }
-      break label46;
-      localCursor.close();
-      if (k == 0) {
-        paramh.gk("voiceinfo", "Alter table voiceinfo add MsgSource TEXT");
-      }
-      if (m == 0) {
-        paramh.gk("voiceinfo", "Alter table voiceinfo add MsgFlag INT");
-      }
-      if (n == 0) {
-        paramh.gk("voiceinfo", "Alter table voiceinfo add MsgSeq INT");
-      }
-      if (i == 0) {
-        paramh.gk("voiceinfo", "Alter table voiceinfo add MasterBufId INT");
-      }
-      if (j != 0) {
-        break;
-      }
-      paramh.gk("voiceinfo", "Alter table voiceinfo add checksum INT DEFAULT 0");
-      return;
-    }
+    this();
+    AppMethodBeat.i(55842);
+    this.gaP = new com.tencent.mm.compatible.util.b(paramContext);
+    ab.d("MicroMsg.VoicePlayer", "VoicePlayer context");
+    AppMethodBeat.o(55842);
   }
   
-  public static String oI(String paramString)
+  private void amA()
   {
-    return o.l(paramString, bk.UY());
+    AppMethodBeat.i(55844);
+    this.gaO.setOnErrorListener(new u.2(this));
+    AppMethodBeat.o(55844);
   }
   
-  public final boolean a(String paramString, p paramp)
+  private void amz()
   {
-    boolean bool;
-    if (paramString.length() > 0)
+    AppMethodBeat.i(55843);
+    this.gaO.setOnCompletionListener(new u.1(this));
+    AppMethodBeat.o(55843);
+  }
+  
+  private boolean e(String paramString, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(55848);
+    if (this.status != 0)
     {
-      bool = true;
-      Assert.assertTrue(bool);
-      if (paramp == null) {
-        break label49;
-      }
-      bool = true;
-      label19:
-      Assert.assertTrue(bool);
-      paramp = paramp.vf();
-      if (paramp.size() > 0) {
-        break label54;
-      }
-      y.e("MicroMsg.VoiceStorage", "update failed, no values set");
-    }
-    label49:
-    label54:
-    while (this.dXo.update("voiceinfo", paramp, "FileName= ?", new String[] { paramString }) <= 0)
-    {
+      ab.e("MicroMsg.VoicePlayer", "startPlay error status:" + this.status);
+      AppMethodBeat.o(55848);
       return false;
-      bool = false;
-      break;
-      bool = false;
-      break label19;
     }
-    doNotify();
-    return true;
-  }
-  
-  public final boolean b(p paramp)
-  {
-    boolean bool;
-    if (paramp != null)
+    ab.i("MicroMsg.VoicePlayer", "startPlay speakerOn:%s,seekTo:%s,", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) });
+    this.fileName = paramString;
+    try
     {
-      bool = true;
-      Assert.assertTrue(bool);
-      paramp = paramp.vf();
-      if (paramp.size() > 0) {
-        break label36;
-      }
-      y.e("MicroMsg.VoiceStorage", "insert falied, no values set");
-    }
-    label36:
-    while (this.dXo.insert("voiceinfo", "FileName", paramp) == -1L)
-    {
-      return false;
-      bool = false;
-      break;
-    }
-    doNotify();
-    return true;
-  }
-  
-  public final p cl(long paramLong)
-  {
-    p localp = null;
-    Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum" + " FROM voiceinfo WHERE MsgId=" + paramLong;
-    localObject = this.dXo.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localp = new p();
-      localp.d((Cursor)localObject);
-    }
-    ((Cursor)localObject).close();
-    return localp;
-  }
-  
-  public final boolean jJ(String paramString)
-  {
-    if (paramString.length() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      if (this.dXo.delete("voiceinfo", "FileName= ?", new String[] { paramString }) <= 0) {
-        y.w("MicroMsg.VoiceStorage", "delete failed, no such file:" + paramString);
-      }
+      h(paramBoolean, paramInt);
+      this.status = 1;
+      AppMethodBeat.o(55848);
       return true;
     }
+    catch (Exception paramString)
+    {
+      try
+      {
+        h(true, paramInt);
+      }
+      catch (Exception localException)
+      {
+        ab.e("MicroMsg.VoicePlayer", "startPlay File[" + this.fileName + "] failed");
+        ab.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bo.l(paramString) });
+        this.status = -1;
+        AppMethodBeat.o(55848);
+      }
+    }
+    return false;
   }
   
-  public final p jz(int paramInt)
+  private void h(boolean paramBoolean, int paramInt)
   {
-    p localp = null;
-    Object localObject = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum" + " FROM voiceinfo WHERE MsgLocalId=" + paramInt;
-    localObject = this.dXo.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
+    int j = 3;
+    AppMethodBeat.i(55849);
+    if (!e.cN(this.fileName))
     {
-      localp = new p();
-      localp.d((Cursor)localObject);
+      AppMethodBeat.o(55849);
+      return;
     }
-    ((Cursor)localObject).close();
-    return localp;
+    int i;
+    if (paramBoolean) {
+      i = 3;
+    }
+    label249:
+    for (;;)
+    {
+      try
+      {
+        ab.d("MicroMsg.VoicePlayer", "playImp speakerOn:%s,seekTo:%s,type:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i) });
+        if (!ac.erv.emD) {
+          break label249;
+        }
+        ac.erv.dump();
+        if (ac.erv.emK != 1) {
+          break label249;
+        }
+        i = j;
+        if ((this.gaP != null) && (this.fZY))
+        {
+          ab.d("MicroMsg.VoicePlayer", "playImp audioFocusHelper.requestFocus");
+          this.gaP.requestFocus();
+        }
+        this.gaO.setAudioStreamType(i);
+        this.gaO.setDataSource(this.fileName);
+        this.gaO.prepare();
+        if (paramInt > 0) {
+          this.gaO.seekTo(paramInt);
+        }
+        this.gaO.start();
+        AppMethodBeat.o(55849);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ab.e("MicroMsg.VoicePlayer", "playImp : fail, exception = " + localException.getMessage());
+        ab.e("MicroMsg.VoicePlayer", "exception:%s", new Object[] { bo.l(localException) });
+        if ((this.gaP == null) || (!this.fZY)) {
+          continue;
+        }
+        this.gaP.Mh();
+        AppMethodBeat.o(55849);
+        return;
+      }
+      i = 0;
+    }
   }
   
-  public final p oJ(String paramString)
+  public final boolean Eo()
   {
-    Object localObject1 = null;
-    Object localObject2 = "SELECT FileName, User, MsgId, NetOffset, FileNowSize, TotalLen, Status, CreateTime, LastModifyTime, ClientId, VoiceLength, MsgLocalId, Human, reserved1, reserved2, MsgSource, MsgFlag, MsgSeq, MasterBufId, checksum" + " FROM voiceinfo WHERE FileName= ?";
-    localObject2 = this.dXo.a((String)localObject2, new String[] { paramString }, 2);
-    paramString = localObject1;
-    if (((Cursor)localObject2).moveToFirst())
+    AppMethodBeat.i(55851);
+    if (this.status != 2)
     {
-      paramString = new p();
-      paramString.d((Cursor)localObject2);
+      ab.e("MicroMsg.VoicePlayer", "resume not STATUS_PAUSE error status:" + this.status);
+      AppMethodBeat.o(55851);
+      return false;
     }
-    ((Cursor)localObject2).close();
-    return paramString;
+    try
+    {
+      ab.d("MicroMsg.VoicePlayer", "resume mediaPlayer.start()");
+      this.gaO.start();
+      if ((this.gaP != null) && (this.fZY))
+      {
+        ab.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
+        this.gaP.requestFocus();
+      }
+      this.status = 1;
+      AppMethodBeat.o(55851);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.VoicePlayer", "resume File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      this.status = -1;
+      return false;
+    }
+    finally
+    {
+      if ((this.gaP != null) && (this.fZY))
+      {
+        ab.d("MicroMsg.VoicePlayer", "resume audioFocusHelper.requestFocus()");
+        this.gaP.requestFocus();
+      }
+      AppMethodBeat.o(55851);
+    }
+  }
+  
+  public final double Er()
+  {
+    AppMethodBeat.i(55853);
+    if ((this.status != 1) && (this.status != 2))
+    {
+      AppMethodBeat.o(55853);
+      return 0.0D;
+    }
+    int i;
+    int j;
+    try
+    {
+      i = this.gaO.getCurrentPosition();
+      j = this.gaO.getDuration();
+      if (j == 0)
+      {
+        ab.e("MicroMsg.VoicePlayer", "getDuration File[" + this.fileName + "] Failed");
+        AppMethodBeat.o(55853);
+        return 0.0D;
+      }
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.VoicePlayer", "getNowProgress File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      Ez();
+      AppMethodBeat.o(55853);
+      return 0.0D;
+    }
+    double d = i / j;
+    AppMethodBeat.o(55853);
+    return d;
+  }
+  
+  public final boolean Ez()
+  {
+    AppMethodBeat.i(55852);
+    if ((this.status != 1) && (this.status != 2))
+    {
+      ab.e("MicroMsg.VoicePlayer", "stop not STATUS_PLAYING or STATUS_PAUSE error status:" + this.status);
+      AppMethodBeat.o(55852);
+      return false;
+    }
+    try
+    {
+      ab.d("MicroMsg.VoicePlayer", "stop mediaPlayer.stop()");
+      this.gaO.stop();
+      this.gaO.release();
+      if ((this.gaP != null) && (this.fZY))
+      {
+        ab.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
+        this.gaP.Mh();
+      }
+      this.status = 0;
+      AppMethodBeat.o(55852);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.VoicePlayer", "stop File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      this.status = -1;
+      return false;
+    }
+    finally
+    {
+      if ((this.gaP != null) && (this.fZY))
+      {
+        ab.d("MicroMsg.VoicePlayer", "stop audioFocusHelper.abandonFocus()");
+        this.gaP.Mh();
+      }
+      AppMethodBeat.o(55852);
+    }
+  }
+  
+  public final boolean T(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(55846);
+    paramBoolean = e(paramString, paramBoolean, 0);
+    AppMethodBeat.o(55846);
+    return paramBoolean;
+  }
+  
+  public final void a(d.a parama)
+  {
+    this.gaf = parama;
+  }
+  
+  public final void a(d.b paramb)
+  {
+    this.gag = paramb;
+  }
+  
+  public final void ami()
+  {
+    this.fZY = false;
+  }
+  
+  public final void b(b.a parama)
+  {
+    AppMethodBeat.i(55854);
+    if ((this.gaP != null) && (parama != null)) {
+      this.gaP.a(parama);
+    }
+    AppMethodBeat.o(55854);
+  }
+  
+  public final boolean bw(boolean paramBoolean)
+  {
+    AppMethodBeat.i(55850);
+    if (this.status != 1)
+    {
+      ab.e("MicroMsg.VoicePlayer", "pause not STATUS_PLAYING error status:" + this.status);
+      AppMethodBeat.o(55850);
+      return false;
+    }
+    try
+    {
+      ab.d("MicroMsg.VoicePlayer", "pause mediaPlayer.pause()");
+      this.gaO.pause();
+      if ((this.gaP != null) && (paramBoolean) && (this.fZY))
+      {
+        ab.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
+        this.gaP.Mh();
+      }
+      this.status = 2;
+      AppMethodBeat.o(55850);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.VoicePlayer", "pause File[" + this.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
+      this.status = -1;
+      return false;
+    }
+    finally
+    {
+      if ((this.gaP != null) && (paramBoolean) && (this.fZY))
+      {
+        ab.d("MicroMsg.VoicePlayer", "pause audioFocusHelper.abandonFocus()");
+        this.gaP.Mh();
+      }
+      AppMethodBeat.o(55850);
+    }
+  }
+  
+  public final void bx(boolean paramBoolean)
+  {
+    AppMethodBeat.i(55845);
+    ab.d("MicroMsg.VoicePlayer", "setSpeakerOn=".concat(String.valueOf(paramBoolean)));
+    if (this.gaO == null)
+    {
+      AppMethodBeat.o(55845);
+      return;
+    }
+    if (ax.Ep())
+    {
+      ab.v("MicroMsg.VoicePlayer", "setSpeakOn return when calling");
+      AppMethodBeat.o(55845);
+      return;
+    }
+    int i = this.gaO.getCurrentPosition();
+    Ez();
+    this.gaO = new k();
+    amz();
+    amA();
+    e(this.fileName, paramBoolean, i);
+    AppMethodBeat.o(55845);
+  }
+  
+  public final boolean d(String paramString, boolean paramBoolean, int paramInt)
+  {
+    AppMethodBeat.i(55847);
+    paramBoolean = e(paramString, paramBoolean, paramInt);
+    AppMethodBeat.o(55847);
+    return paramBoolean;
+  }
+  
+  public final int getStatus()
+  {
+    return this.status;
+  }
+  
+  public final boolean isPlaying()
+  {
+    return this.status == 1;
   }
 }
 

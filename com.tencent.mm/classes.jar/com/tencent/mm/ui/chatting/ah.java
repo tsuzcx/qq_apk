@@ -1,28 +1,41 @@
 package com.tencent.mm.ui.chatting;
 
-import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kw;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public abstract interface ah
+public final class ah
 {
-  public abstract void am(Bundle paramBundle);
+  private static ah zBX;
+  int zBY = 0;
   
-  public abstract void an(Bundle paramBundle);
+  public static ah dGU()
+  {
+    AppMethodBeat.i(153833);
+    if (zBX == null) {
+      zBX = new ah();
+    }
+    ah localah = zBX;
+    AppMethodBeat.o(153833);
+    return localah;
+  }
   
-  public abstract void cCY();
-  
-  public abstract void cCZ();
-  
-  public abstract void cDa();
-  
-  public abstract int getBottomHeight();
-  
-  public abstract int getTopHeight();
-  
-  public abstract void nb(boolean paramBoolean);
-  
-  public abstract void setBottomViewVisible(boolean paramBoolean);
-  
-  public abstract void setIsBottomShowAll(boolean paramBoolean);
+  public final void Pw(int paramInt)
+  {
+    AppMethodBeat.i(153834);
+    if (this.zBY > 0)
+    {
+      this.zBY -= 1;
+      AppMethodBeat.o(153834);
+      return;
+    }
+    ab.i("MicroMsg.OrzChattingLifecycle", "notifyChattingStatus [%d]", new Object[] { Integer.valueOf(paramInt) });
+    kw localkw = new kw();
+    localkw.cBa.cBb = paramInt;
+    a.ymk.l(localkw);
+    AppMethodBeat.o(153834);
+  }
 }
 
 

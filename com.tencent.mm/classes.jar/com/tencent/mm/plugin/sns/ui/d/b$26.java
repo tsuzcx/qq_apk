@@ -2,9 +2,11 @@ package com.tencent.mm.plugin.sns.ui.d;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelsns.SnsAdClick;
+import com.tencent.mm.plugin.sns.a.b.g;
 import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
 
@@ -15,22 +17,44 @@ final class b$26
   
   public final void onClick(View paramView)
   {
-    this.ppl.cX(paramView);
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof com.tencent.mm.plugin.sns.data.b))) {}
-    n localn;
-    do
+    AppMethodBeat.i(40282);
+    this.skd.dN(paramView);
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof com.tencent.mm.plugin.sns.data.b)))
     {
+      AppMethodBeat.o(40282);
       return;
-      paramView = (com.tencent.mm.plugin.sns.data.b)paramView.getTag();
-      localn = af.bDF().OB(paramView.bJQ);
-    } while ((localn == null) || (!localn.yr(32)));
-    paramView.omN = System.currentTimeMillis();
-    int j = this.ppl.source;
-    if (this.ppl.source == 0) {}
-    for (int i = 1;; i = 2)
+    }
+    Object localObject = (com.tencent.mm.plugin.sns.data.b)paramView.getTag();
+    paramView = ag.cpf().abv(((com.tencent.mm.plugin.sns.data.b)localObject).crk);
+    if (paramView == null)
     {
-      i.a(new SnsAdClick(j, i, localn.field_snsId, 20, 0));
+      AppMethodBeat.o(40282);
       return;
+    }
+    int i;
+    if (paramView.Ex(32))
+    {
+      ((com.tencent.mm.plugin.sns.data.b)localObject).rbb = System.currentTimeMillis();
+      int j = this.skd.cpt;
+      if (this.skd.cpt != 0) {
+        break label153;
+      }
+      i = 1;
+      localObject = new SnsAdClick(j, i, paramView.field_snsId, 20, 0);
+      if (this.skd.rOU != null) {
+        break label158;
+      }
+    }
+    label153:
+    label158:
+    for (long l = 0L;; l = this.skd.rOU.di(paramView.csH(), 20))
+    {
+      ((SnsAdClick)localObject).fQA = l;
+      i.a((SnsAdClick)localObject);
+      AppMethodBeat.o(40282);
+      return;
+      i = 2;
+      break;
     }
   }
 }

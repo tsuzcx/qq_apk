@@ -3,13 +3,14 @@ package com.tencent.mm.plugin.fav.ui.d;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.av.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.a;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yp;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.t;
 import com.tencent.mm.vfs.j;
 
 final class g$1
@@ -19,44 +20,58 @@ final class g$1
   
   public final void onClick(View paramView)
   {
-    if (!com.tencent.mm.compatible.util.f.zF()) {
-      s.gM(this.kiA.kbg.context);
-    }
-    while (!(paramView.getTag() instanceof com.tencent.mm.plugin.fav.a.g)) {
-      return;
-    }
-    Object localObject = (com.tencent.mm.plugin.fav.a.g)paramView.getTag();
-    yp localyp = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.sXa;
-    xv localxv = com.tencent.mm.plugin.fav.a.b.c((com.tencent.mm.plugin.fav.a.g)localObject);
-    if (localxv == null)
+    AppMethodBeat.i(74628);
+    if (!com.tencent.mm.compatible.util.f.Mi())
     {
-      y.w("MicroMsg.FavBaseListItem", "data item is null");
+      t.ii(this.mDf.mvC.context);
+      AppMethodBeat.o(74628);
       return;
     }
-    if (com.tencent.mm.plugin.fav.a.b.e(localxv))
+    Object localObject;
+    acw localacw;
+    aca localaca;
+    if ((paramView.getTag() instanceof com.tencent.mm.plugin.fav.a.g))
     {
-      y.i("MicroMsg.FavBaseListItem", "same song, do release");
-      a.Ps();
-      g.a(this.kiA, null);
-      return;
-    }
-    localObject = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.c(localxv));
-    if (!((com.tencent.mm.vfs.b)localObject).exists()) {
-      if (localxv.bIm == null) {
-        localObject = "";
+      localObject = (com.tencent.mm.plugin.fav.a.g)paramView.getTag();
+      localacw = ((com.tencent.mm.plugin.fav.a.g)localObject).field_favProto.wVa;
+      localaca = com.tencent.mm.plugin.fav.a.b.c((com.tencent.mm.plugin.fav.a.g)localObject);
+      if (localaca == null)
+      {
+        ab.w("MicroMsg.FavBaseListItem", "data item is null");
+        AppMethodBeat.o(74628);
+        return;
       }
+      if (com.tencent.mm.plugin.fav.a.b.e(localaca))
+      {
+        ab.i("MicroMsg.FavBaseListItem", "same song, do release");
+        a.aiu();
+        g.a(this.mDf, null);
+        AppMethodBeat.o(74628);
+        return;
+      }
+      localObject = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.c(localaca));
+      if (((com.tencent.mm.vfs.b)localObject).exists()) {
+        break label271;
+      }
+      if (localaca.cpH != null) {
+        break label209;
+      }
+      localObject = "";
     }
     for (;;)
     {
-      a.b(com.tencent.mm.av.f.a(6, null, localxv.title, localxv.desc, localxv.sUN, localxv.sUR, localxv.sUP, localxv.kgC, com.tencent.mm.plugin.fav.a.b.aPP(), (String)localObject, "", localyp.appId));
-      g.a(this.kiA, (ImageView)paramView);
+      a.b(com.tencent.mm.aw.f.a(6, null, localaca.title, localaca.desc, localaca.wSJ, localaca.wSN, localaca.wSL, localaca.mBq, com.tencent.mm.plugin.fav.a.b.bwd(), (String)localObject, "", localacw.appId));
+      g.a(this.mDf, (ImageView)paramView);
+      AppMethodBeat.o(74628);
       return;
-      localObject = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.aPI() + com.tencent.mm.a.g.o(localxv.bIm.getBytes()));
+      label209:
+      localObject = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fav.a.b.bvW() + com.tencent.mm.a.g.w(localaca.cpH.getBytes()));
       if (((com.tencent.mm.vfs.b)localObject).exists()) {}
-      for (localObject = j.n(((com.tencent.mm.vfs.b)localObject).cLr());; localObject = "") {
+      for (localObject = j.p(((com.tencent.mm.vfs.b)localObject).dQJ());; localObject = "") {
         break;
       }
-      localObject = j.n(((com.tencent.mm.vfs.b)localObject).cLr());
+      label271:
+      localObject = j.p(((com.tencent.mm.vfs.b)localObject).dQJ());
     }
   }
 }

@@ -4,27 +4,29 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.emoji.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$a
 {
-  TextView eXO;
-  ImageView gSx;
-  View iVb;
-  ImageView iVc;
+  TextView gpL;
+  ImageView ivs;
+  View lef;
+  ImageView leg;
   
   public e$a(e parame, View paramView)
   {
-    this.iVc = ((ImageView)paramView.findViewById(f.e.emoji_store_manager_list_item_updonw));
-    this.gSx = ((ImageView)paramView.findViewById(f.e.emoji_store_manager_list_item_icon));
-    this.eXO = ((TextView)paramView.findViewById(f.e.emoji_store_manager_list_item_title));
-    this.iVb = paramView.findViewById(f.e.emoji_item_container);
+    AppMethodBeat.i(52739);
+    this.leg = ((ImageView)paramView.findViewById(2131823620));
+    this.ivs = ((ImageView)paramView.findViewById(2131823622));
+    this.gpL = ((TextView)paramView.findViewById(2131823623));
+    this.lef = paramView.findViewById(2131823621);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
     if (localLayoutParams != null)
     {
       localLayoutParams.height = e.a(parame);
       paramView.setLayoutParams(localLayoutParams);
     }
+    AppMethodBeat.o(52739);
   }
 }
 

@@ -2,39 +2,39 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 final class WalletOrderInfoNewUI$b
 {
-  public String bOT;
-  public String nzq;
-  public String qEA;
-  public String qEw;
-  public String qEx;
-  public String qEy;
-  public long qEz;
-  public String qrd;
-  public long qxP;
+  public String cwk;
+  public String qkt;
+  public String uca;
+  public long ukx;
+  public String urE;
+  public String urF;
+  public String urG;
+  public long urH;
+  public String urI;
   
   public WalletOrderInfoNewUI$b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong1, long paramLong2)
   {
-    this.qrd = paramString1;
-    this.qEw = paramString2;
-    this.qEx = paramString3;
-    this.qEy = paramString4;
-    this.bOT = paramString5;
-    this.nzq = paramString6;
-    this.qxP = paramLong1;
-    this.qEz = paramLong2;
-    this.qEA = null;
+    this.uca = paramString1;
+    this.urE = paramString2;
+    this.urF = paramString3;
+    this.urG = paramString4;
+    this.cwk = paramString5;
+    this.qkt = paramString6;
+    this.ukx = paramLong1;
+    this.urH = paramLong2;
+    this.urI = null;
   }
   
   public WalletOrderInfoNewUI$b(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7)
   {
-    this.qrd = paramString1;
-    this.qEw = paramString2;
-    this.qEx = paramString3;
-    this.qEy = paramString4;
-    this.bOT = paramString5;
-    this.nzq = paramString6;
-    this.qxP = paramLong;
-    this.qEA = paramString7;
+    this.uca = paramString1;
+    this.urE = paramString2;
+    this.urF = paramString3;
+    this.urG = paramString4;
+    this.cwk = paramString5;
+    this.qkt = paramString6;
+    this.ukx = paramLong;
+    this.urI = paramString7;
   }
 }
 

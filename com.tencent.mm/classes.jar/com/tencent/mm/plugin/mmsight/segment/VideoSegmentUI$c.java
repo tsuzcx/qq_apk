@@ -1,28 +1,35 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 final class VideoSegmentUI$c
   implements Runnable
 {
-  private WeakReference<c> aoA;
-  private int eAx;
-  private int mnI;
+  private WeakReference<c> aqT;
+  private int fQq;
+  private int oMQ;
   
   public VideoSegmentUI$c(c paramc, int paramInt1, int paramInt2)
   {
-    this.aoA = new WeakReference(paramc);
-    this.mnI = paramInt1;
-    this.eAx = paramInt2;
+    AppMethodBeat.i(55049);
+    this.aqT = new WeakReference(paramc);
+    this.oMQ = paramInt1;
+    this.fQq = paramInt2;
+    AppMethodBeat.o(55049);
   }
   
   public final void run()
   {
-    c localc = (c)this.aoA.get();
-    if (localc == null) {
+    AppMethodBeat.i(55050);
+    c localc = (c)this.aqT.get();
+    if (localc == null)
+    {
+      AppMethodBeat.o(55050);
       return;
     }
-    localc.setCurrentCursorPosition(this.mnI / this.eAx);
+    localc.setCurrentCursorPosition(this.oMQ / this.fQq);
+    AppMethodBeat.o(55050);
   }
 }
 

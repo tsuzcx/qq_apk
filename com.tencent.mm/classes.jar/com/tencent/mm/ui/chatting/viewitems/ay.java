@@ -1,12 +1,20 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
 final class ay
 {
-  String vHu;
-  String vHv;
-  int vHw = -16777216;
-  int vHx = -16777216;
-  boolean vHy = false;
+  TextView gui;
+  View jXr;
+  TextView nxi;
+  View zYA;
+  View zYB;
+  TextView zYC;
+  LinearLayout zYD;
+  View zYE;
+  View zYz;
 }
 
 

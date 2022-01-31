@@ -2,20 +2,22 @@ package com.tencent.mm.plugin.collect.ui;
 
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 
 final class a$a
 {
-  TextView iIV;
-  TextView iJR;
-  WalletTextView iJS;
+  TextView kGe;
+  TextView kPB;
+  WalletTextView kQx;
   
   public a$a(View paramView)
   {
-    this.iJR = ((TextView)paramView.findViewById(a.f.collect_bill_date_tv));
-    this.iJS = ((WalletTextView)paramView.findViewById(a.f.collect_bill_money_tv));
-    this.iIV = ((TextView)paramView.findViewById(a.f.collect_bill_desc_tv));
+    AppMethodBeat.i(41168);
+    this.kGe = ((TextView)paramView.findViewById(2131822897));
+    this.kQx = ((WalletTextView)paramView.findViewById(2131822898));
+    this.kPB = ((TextView)paramView.findViewById(2131822899));
+    AppMethodBeat.o(41168);
   }
 }
 

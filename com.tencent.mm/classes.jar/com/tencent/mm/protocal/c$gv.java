@@ -5,7 +5,7 @@ final class c$gv
 {
   c$gv()
   {
-    super("reportMiniProgramPageData", "reportMiniProgramPageData", 284, false);
+    super("preloadMiniProgramEnv", "preloadMiniProgramEnv", 302, false);
   }
 }
 

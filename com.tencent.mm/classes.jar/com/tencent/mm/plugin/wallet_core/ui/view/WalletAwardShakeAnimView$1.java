@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.ui.view;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WalletAwardShakeAnimView$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class WalletAwardShakeAnimView$1
   
   public final void run()
   {
-    WalletAwardShakeAnimView.a(this.qIg);
+    AppMethodBeat.i(47889);
+    WalletAwardShakeAnimView.a(this.uwO);
+    AppMethodBeat.o(47889);
   }
 }
 

@@ -1,11 +1,29 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public abstract class s<CONTEXT extends c>
-  extends i
+public final class s
+  extends p
 {
-  public abstract String a(CONTEXT paramCONTEXT, JSONObject paramJSONObject);
+  private static final int CTRL_INDEX = 248;
+  private static final String NAME = "onUserCaptureScreen";
+  private static s hxg;
+  
+  static
+  {
+    AppMethodBeat.i(86965);
+    hxg = new s();
+    AppMethodBeat.o(86965);
+  }
+  
+  public static void k(c paramc)
+  {
+    AppMethodBeat.i(86964);
+    ab.i("MicroMsg.AppBrandOnUserCaptureScreenEvent", "user capture screen event dispatch, appId:%s", new Object[] { paramc.getAppId() });
+    hxg.i(paramc).aBz();
+    AppMethodBeat.o(86964);
+  }
 }
 
 

@@ -2,9 +2,10 @@ package com.tencent.mm.sandbox.updater;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.c;
 
 final class AppUpdaterUI$5
   implements DialogInterface.OnClickListener
@@ -13,24 +14,26 @@ final class AppUpdaterUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.d("MicroMsg.AppUpdaterUI", "update dialog had been canceled");
-    if ((AppUpdaterUI.b(this.ucg) != null) && (AppUpdaterUI.b(this.ucg).isShowing())) {
-      AppUpdaterUI.b(this.ucg).dismiss();
+    AppMethodBeat.i(28818);
+    ab.d("MicroMsg.AppUpdaterUI", "update dialog had been canceled");
+    if ((AppUpdaterUI.b(this.ykv) != null) && (AppUpdaterUI.b(this.ykv).isShowing())) {
+      AppUpdaterUI.b(this.ykv).dismiss();
     }
-    AppUpdaterUI.a(this.ucg, 6);
-    if (AppUpdaterUI.e(this.ucg).udt)
+    AppUpdaterUI.a(this.ykv, 6);
+    if (AppUpdaterUI.e(this.ykv).ylI)
     {
-      h.nFQ.a(614L, 59L, 1L, true);
-      y.d("MicroMsg.AppUpdaterUI", "boots download cancel when downloading.");
+      h.qsU.idkeyStat(614L, 59L, 1L, true);
+      ab.d("MicroMsg.AppUpdaterUI", "boots download cancel when downloading.");
     }
-    AppUpdaterUI.e(this.ucg).cancel();
-    AppUpdaterUI.e(this.ucg).an(2, true);
-    AppUpdaterUI.f(this.ucg);
+    AppUpdaterUI.e(this.ykv).cancel();
+    AppUpdaterUI.e(this.ykv).aE(2, true);
+    AppUpdaterUI.f(this.ykv);
+    AppMethodBeat.o(28818);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sandbox.updater.AppUpdaterUI.5
  * JD-Core Version:    0.7.0.1
  */

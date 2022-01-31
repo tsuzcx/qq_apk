@@ -9,139 +9,154 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.d.ac;
-import com.tencent.mm.plugin.game.d.av;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.model.l;
-import com.tencent.mm.plugin.game.model.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.ad;
+import com.tencent.mm.plugin.game.d.aw;
+import com.tencent.mm.plugin.game.model.d;
+import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.plugin.game.model.x;
 import com.tencent.mm.plugin.game.widget.GameTagListView;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class GameFeedGameTemplateView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private TextView iIV;
-  private int kXw;
-  private com.tencent.mm.plugin.game.model.e kXy;
-  private ImageView kZD;
-  private TextView kZE;
-  private GameTagListView laX;
-  private FrameLayout laY;
-  private GameRoundImageView laZ;
-  private ImageView lba;
-  private GameFeedSubscriptView lbb;
-  private GameDownloadView lbc;
+  private TextView kPB;
+  private d nvA;
+  private int nvy;
+  private ImageView nxA;
+  private TextView nxB;
+  private GameTagListView nyT;
+  private FrameLayout nyU;
+  private GameRoundImageView nyV;
+  private ImageView nyW;
+  private GameFeedSubscriptView nyX;
+  private GameDownloadView nyY;
   
   public GameFeedGameTemplateView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private void b(ImageView paramImageView, String paramString)
+  private void d(ImageView paramImageView, String paramString)
   {
-    int i = getResources().getDimensionPixelSize(g.c.GameMatchImageWidth);
-    int j = getResources().getDimensionPixelSize(g.c.GameMatchImageHeight);
-    com.tencent.mm.plugin.game.f.e.baw().a(paramImageView, paramString, i, j, c.getScreenWidth(getContext()) - getPaddingLeft() - getPaddingRight());
+    AppMethodBeat.i(111930);
+    int i = getResources().getDimensionPixelSize(2131427728);
+    int j = getResources().getDimensionPixelSize(2131427727);
+    com.tencent.mm.plugin.game.f.e.bHE().a(paramImageView, paramString, i, j, com.tencent.mm.plugin.game.f.c.getScreenWidth(getContext()) - getPaddingLeft() - getPaddingRight());
+    AppMethodBeat.o(111930);
   }
   
   public void onAttachedToWindow()
   {
+    AppMethodBeat.i(111927);
     super.onAttachedToWindow();
+    AppMethodBeat.o(111927);
   }
   
   public void onClick(View paramView)
   {
-    if ((this.kXy == null) || (this.kXy.kOu == null)) {}
-    do
+    AppMethodBeat.i(111929);
+    if ((this.nvA == null) || (this.nvA.nmr == null))
     {
+      AppMethodBeat.o(111929);
       return;
-      if ((paramView.getId() == g.e.video_ly) && (!bk.bl(this.kXy.kOu.kTm.kTY)))
-      {
-        i = c.an(getContext(), this.kXy.kOu.kTm.kTY);
-        b.a(getContext(), 10, 1024, this.kXy.position, i, this.kXy.kOu.euK, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.O(this.kXy.kOu.kSs, "clickType", "middle"));
-        return;
-      }
-    } while (bk.bl(this.kXy.kOu.kRP));
-    int i = c.an(getContext(), this.kXy.kOu.kRP);
-    b.a(getContext(), 10, 1024, this.kXy.position, i, this.kXy.kOu.euK, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.O(this.kXy.kOu.kSs, "clickType", "card"));
+    }
+    int i;
+    if ((paramView.getId() == 2131824611) && (!bo.isNullOrNil(this.nvA.nmr.nrm.nrY)))
+    {
+      i = com.tencent.mm.plugin.game.f.c.ax(getContext(), this.nvA.nmr.nrm.nrY);
+      com.tencent.mm.game.report.c.a(getContext(), 10, 1024, this.nvA.position, i, this.nvA.nmr.fKw, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.V(this.nvA.nmr.nqt, "clickType", "middle"));
+      AppMethodBeat.o(111929);
+      return;
+    }
+    if (!bo.isNullOrNil(this.nvA.nmr.npR))
+    {
+      i = com.tencent.mm.plugin.game.f.c.ax(getContext(), this.nvA.nmr.npR);
+      com.tencent.mm.game.report.c.a(getContext(), 10, 1024, this.nvA.position, i, this.nvA.nmr.fKw, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.V(this.nvA.nmr.nqt, "clickType", "card"));
+    }
+    AppMethodBeat.o(111929);
   }
   
   public void onDetachedFromWindow()
   {
+    AppMethodBeat.i(111926);
     super.onDetachedFromWindow();
+    AppMethodBeat.o(111926);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111925);
     super.onFinishInflate();
-    this.kZD = ((ImageView)findViewById(g.e.game_icon));
-    this.kZE = ((TextView)findViewById(g.e.game_name));
-    this.laX = ((GameTagListView)findViewById(g.e.game_tag_list));
-    this.iIV = ((TextView)findViewById(g.e.desc));
-    this.laY = ((FrameLayout)findViewById(g.e.video_ly));
-    this.laZ = ((GameRoundImageView)findViewById(g.e.image));
-    this.lba = ((ImageView)findViewById(g.e.video_play));
-    this.lbb = ((GameFeedSubscriptView)findViewById(g.e.subscript));
-    this.lbc = ((GameDownloadView)findViewById(g.e.game_download_container));
+    this.nxA = ((ImageView)findViewById(2131821573));
+    this.nxB = ((TextView)findViewById(2131821575));
+    this.nyT = ((GameTagListView)findViewById(2131824610));
+    this.kPB = ((TextView)findViewById(2131821115));
+    this.nyU = ((FrameLayout)findViewById(2131824611));
+    this.nyV = ((GameRoundImageView)findViewById(2131820629));
+    this.nyW = ((ImageView)findViewById(2131824612));
+    this.nyX = ((GameFeedSubscriptView)findViewById(2131824613));
+    this.nyY = ((GameDownloadView)findViewById(2131824446));
     setOnClickListener(this);
-    this.kXw = (c.getScreenWidth(getContext()) - com.tencent.mm.cb.a.fromDPToPix(getContext(), 175));
+    this.nvy = (com.tencent.mm.plugin.game.f.c.getScreenWidth(getContext()) - com.tencent.mm.cb.a.fromDPToPix(getContext(), 175));
+    AppMethodBeat.o(111925);
   }
   
-  public void setData(com.tencent.mm.plugin.game.model.e parame)
+  public void setData(d paramd)
   {
-    if ((parame == null) || (parame.kOu == null) || (parame.kOu.kTm == null))
+    AppMethodBeat.i(111928);
+    if ((paramd == null) || (paramd.nmr == null) || (paramd.nmr.nrm == null))
     {
       setVisibility(8);
+      AppMethodBeat.o(111928);
       return;
     }
-    this.kXy = parame;
-    parame = parame.kOu;
+    this.nvA = paramd;
+    paramd = paramd.nmr;
     setVisibility(0);
-    com.tencent.mm.plugin.game.f.e.baw().a(this.kZD, parame.kTm.kRQ.kRX, com.tencent.mm.cb.a.getDensity(getContext()));
-    this.kZE.setText(parame.kTm.kRQ.kRZ);
-    this.laX.f(parame.kTm.kRQ.kSo, this.kXw);
-    if (!bk.bl(parame.kTm.kTX))
+    com.tencent.mm.plugin.game.f.e.bHE().a(this.nxA, paramd.nrm.npS.npZ, com.tencent.mm.cb.a.getDensity(getContext()));
+    this.nxB.setText(paramd.nrm.npS.Name);
+    this.nyT.f(paramd.nrm.npS.nqp, this.nvy);
+    if (!bo.isNullOrNil(paramd.nrm.nrX))
     {
-      this.iIV.setText(parame.kTm.kTX);
-      this.iIV.setVisibility(0);
-      label143:
-      this.laY.setVisibility(0);
-      if (bk.bl(parame.kTm.kTZ)) {
-        break label335;
+      this.kPB.setText(paramd.nrm.nrX);
+      this.kPB.setVisibility(0);
+      this.nyU.setVisibility(0);
+      if (bo.isNullOrNil(paramd.nrm.nrZ)) {
+        break label350;
       }
-      b(this.laZ, parame.kTm.kRO);
-      this.lba.setVisibility(0);
+      d(this.nyV, paramd.nrm.npQ);
+      this.nyW.setVisibility(0);
     }
     for (;;)
     {
-      this.laY.setOnClickListener(this);
-      this.lbb.setData(parame);
-      parame = y.a(this.kXy.kOu.kTm.kRQ);
-      parame.scene = 10;
-      parame.bXn = 1024;
-      parame.position = this.kXy.position;
-      this.lbc.setDownloadInfo(new l(parame));
-      if (this.kXy.kOw) {
-        break;
-      }
-      com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1024, this.kXy.position, this.kXy.kOu.euK, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.fy(this.kXy.kOu.kSs));
-      this.kXy.kOw = true;
-      return;
-      this.iIV.setVisibility(8);
-      break label143;
-      label335:
-      if (!bk.bl(parame.kTm.kRO))
+      this.nyU.setOnClickListener(this);
+      this.nyX.setData(paramd);
+      paramd = x.a(this.nvA.nmr.nrm.npS);
+      paramd.scene = 10;
+      paramd.cFj = 1024;
+      paramd.position = this.nvA.position;
+      this.nyY.setDownloadInfo(new k(paramd));
+      if (!this.nvA.nmt)
       {
-        b(this.laZ, parame.kTm.kRO);
-        this.lba.setVisibility(8);
+        com.tencent.mm.plugin.game.e.a.a(getContext(), 10, 1024, this.nvA.position, this.nvA.nmr.fKw, GameIndexListView.getSourceScene(), com.tencent.mm.plugin.game.e.a.lR(this.nvA.nmr.nqt));
+        this.nvA.nmt = true;
+      }
+      AppMethodBeat.o(111928);
+      return;
+      this.kPB.setVisibility(8);
+      break;
+      label350:
+      if (!bo.isNullOrNil(paramd.nrm.npQ))
+      {
+        d(this.nyV, paramd.nrm.npQ);
+        this.nyW.setVisibility(8);
       }
       else
       {
-        this.laY.setVisibility(8);
+        this.nyU.setVisibility(8);
       }
     }
   }

@@ -54,7 +54,7 @@ public abstract class BaseReportManager
   
   public void onLogReprotHttpRequestFinish(LogReportHttpRequest paramLogReportHttpRequest, boolean paramBoolean)
   {
-    TMLog.i("BaseReportManager", "onLogReprotHttpRequestFinish,result:" + paramBoolean);
+    TMLog.i("BaseReportManager", "onLogReprotHttpRequestFinish,result:".concat(String.valueOf(paramBoolean)));
     if ((paramBoolean) && (this.idLists != null) && (this.idLists.size() > 0)) {
       getLogTable().delete(this.idLists);
     }
@@ -117,7 +117,7 @@ public abstract class BaseReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tmassistantsdk.logreport.BaseReportManager
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMPhoneNumberEditText$1
   implements View.OnTouchListener
@@ -12,23 +13,30 @@ final class MMPhoneNumberEditText$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = this.saj;
-    if (paramView.getCompoundDrawables()[2] == null) {}
-    do
+    AppMethodBeat.i(27491);
+    paramView = this.vQZ;
+    if (paramView.getCompoundDrawables()[2] == null)
     {
-      do
-      {
-        return false;
-      } while ((paramMotionEvent.getAction() != 1) || (paramMotionEvent.getX() <= paramView.getWidth() - paramView.getPaddingRight() - this.saj.saf.getIntrinsicWidth()));
-      if (paramView.isFocused())
-      {
-        paramView.setText("");
-        MMPhoneNumberEditText.a(paramView);
-        return false;
+      AppMethodBeat.o(27491);
+      return false;
+    }
+    if ((paramMotionEvent.getAction() == 1) && (paramMotionEvent.getX() > paramView.getWidth() - paramView.getPaddingRight() - this.vQZ.vQV.getIntrinsicWidth()))
+    {
+      if (!paramView.isFocused()) {
+        break label90;
       }
-    } while (MMPhoneNumberEditText.b(this.saj) == null);
-    MMPhoneNumberEditText.b(this.saj).f(paramView);
-    return false;
+      paramView.setText("");
+      MMPhoneNumberEditText.a(paramView);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(27491);
+      return false;
+      label90:
+      if (MMPhoneNumberEditText.b(this.vQZ) != null) {
+        MMPhoneNumberEditText.b(this.vQZ).f(paramView);
+      }
+    }
   }
 }
 

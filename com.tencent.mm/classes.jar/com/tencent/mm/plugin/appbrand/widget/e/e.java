@@ -1,28 +1,32 @@
 package com.tencent.mm.plugin.appbrand.widget.e;
 
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import com.tencent.mm.plugin.appbrand.widget.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class e
-  extends Spannable.Factory
+public final class e
 {
-  private final int height;
+  public final double x;
+  public final double y;
   
-  public e(int paramInt)
+  public e(double paramDouble1, double paramDouble2)
   {
-    this.height = paramInt;
+    this.x = paramDouble1;
+    this.y = paramDouble2;
   }
   
-  public final Spannable newSpannable(CharSequence paramCharSequence)
+  public final boolean equals(Object paramObject)
   {
-    paramCharSequence = super.newSpannable(paramCharSequence);
-    if (paramCharSequence != null)
-    {
-      paramCharSequence.setSpan(new a(this.height), 0, paramCharSequence.length(), 18);
-      return paramCharSequence;
+    if (!(paramObject instanceof e)) {
+      return false;
     }
-    return null;
+    return (this.x == ((e)paramObject).x) && (this.y == ((e)paramObject).y);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(51275);
+    String str = "Point{x=" + this.x + ", y=" + this.y + '}';
+    AppMethodBeat.o(51275);
+    return str;
   }
 }
 

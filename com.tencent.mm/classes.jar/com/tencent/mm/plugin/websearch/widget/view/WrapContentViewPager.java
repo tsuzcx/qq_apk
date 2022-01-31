@@ -7,6 +7,11 @@ import android.util.AttributeSet;
 public class WrapContentViewPager
   extends ViewPager
 {
+  public WrapContentViewPager(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
   public WrapContentViewPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);

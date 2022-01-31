@@ -2,31 +2,31 @@ package com.tencent.mm.booter;
 
 public abstract class q
 {
-  public c diu;
+  public d dZN;
   
-  public q(c paramc)
+  public q(d paramd)
   {
-    this.diu = paramc;
-  }
-  
-  public final void em(String paramString)
-  {
-    this.diu.em(paramString);
-  }
-  
-  public final Boolean en(String paramString)
-  {
-    return this.diu.en(paramString);
+    this.dZN = paramd;
   }
   
   public final Integer getInteger(String paramString)
   {
-    return this.diu.getInteger(paramString);
+    return this.dZN.getInteger(paramString);
   }
   
   public final String getString(String paramString)
   {
-    return this.diu.getString(paramString);
+    return this.dZN.getString(paramString);
+  }
+  
+  public final void kt(String paramString)
+  {
+    this.dZN.kt(paramString);
+  }
+  
+  public final Boolean ku(String paramString)
+  {
+    return this.dZN.ku(paramString);
   }
 }
 

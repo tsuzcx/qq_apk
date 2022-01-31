@@ -2,10 +2,7 @@ package com.tencent.mm.plugin.fav.ui.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.base.MMTagPanel;
-import com.tencent.mm.ui.base.MMTagPanel.d;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class FavSearchActionView$2
@@ -15,29 +12,24 @@ final class FavSearchActionView$2
   
   public final void onClick(View paramView)
   {
-    if (FavSearchActionView.d(this.kjG) == null) {
+    AppMethodBeat.i(74688);
+    if (FavSearchActionView.d(this.mEl) == null)
+    {
+      AppMethodBeat.o(74688);
       return;
     }
-    paramView = FavSearchActionView.a(this.kjG);
-    Iterator localIterator = paramView.sXo.iterator();
-    while (localIterator.hasNext())
-    {
-      MMTagPanel.d locald = (MMTagPanel.d)localIterator.next();
-      paramView.removeView(locald.uYz);
-      paramView.a(locald);
-    }
-    paramView.sXo.clear();
-    paramView.cBd();
-    FavSearchActionView.a(this.kjG).cAZ();
-    FavSearchActionView.f(this.kjG).clear();
-    FavSearchActionView.b(this.kjG).clear();
-    FavSearchActionView.d(this.kjG).a(FavSearchActionView.e(this.kjG), FavSearchActionView.f(this.kjG), FavSearchActionView.b(this.kjG), true);
-    FavSearchActionView.c(this.kjG);
+    FavSearchActionView.a(this.mEl).dEr();
+    FavSearchActionView.a(this.mEl).dEm();
+    FavSearchActionView.f(this.mEl).clear();
+    FavSearchActionView.b(this.mEl).clear();
+    FavSearchActionView.d(this.mEl).a(FavSearchActionView.e(this.mEl), FavSearchActionView.f(this.mEl), FavSearchActionView.b(this.mEl), true);
+    FavSearchActionView.c(this.mEl);
+    AppMethodBeat.o(74688);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavSearchActionView.2
  * JD-Core Version:    0.7.0.1
  */

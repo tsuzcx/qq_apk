@@ -1,25 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.compat.a.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 class JsApiStopPlayVoice$StopPlayVoice
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<StopPlayVoice> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<StopPlayVoice> CREATOR;
   
-  public final void Zu()
+  static
   {
-    ai.d(new Runnable()
+    AppMethodBeat.i(130807);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(130807);
+  }
+  
+  public final void ata()
+  {
+    AppMethodBeat.i(130806);
+    al.d(new Runnable()
     {
       public final void run()
       {
-        ((b)g.r(b.class)).stop();
+        AppMethodBeat.i(130804);
+        ((b)g.E(b.class)).stop();
+        AppMethodBeat.o(130804);
       }
     });
+    AppMethodBeat.o(130806);
   }
 }
 

@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMPreference$2
   implements AdapterView.OnItemClickListener
@@ -12,28 +13,37 @@ final class MMPreference$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(107211);
     paramAdapterView = (Preference)paramAdapterView.getAdapter().getItem(paramInt);
-    if (paramAdapterView == null) {}
-    do
+    if (paramAdapterView == null)
     {
-      do
+      AppMethodBeat.o(107211);
+      return;
+    }
+    if ((paramAdapterView.isEnabled()) && (paramAdapterView.zsi))
+    {
+      if ((paramAdapterView instanceof CheckBoxPreference))
       {
+        AppMethodBeat.o(107211);
         return;
-      } while ((!paramAdapterView.isEnabled()) || (!paramAdapterView.vdI) || ((paramAdapterView instanceof CheckBoxPreference)));
+      }
       if ((paramAdapterView instanceof DialogPreference))
       {
         paramView = (DialogPreference)paramAdapterView;
         paramView.showDialog();
-        paramView.vcf = new MMPreference.2.1(this, paramView, paramAdapterView);
+        paramView.zqG = new MMPreference.2.1(this, paramView, paramAdapterView);
       }
       if ((paramAdapterView instanceof EditPreference))
       {
         paramView = (EditPreference)paramAdapterView;
         paramView.showDialog();
-        paramView.vch = new MMPreference.2.2(this, paramView, paramAdapterView);
+        paramView.zqI = new MMPreference.2.2(this, paramView, paramAdapterView);
       }
-    } while (paramAdapterView.mKey == null);
-    this.vdh.a(MMPreference.d(this.vdh), paramAdapterView);
+      if (paramAdapterView.mKey != null) {
+        this.zrE.onPreferenceTreeClick(MMPreference.access$300(this.zrE), paramAdapterView);
+      }
+    }
+    AppMethodBeat.o(107211);
   }
 }
 

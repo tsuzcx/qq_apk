@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import com.tencent.mm.bh.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bu;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 
@@ -10,15 +11,18 @@ final class ShakeSayHiListUI$6
 {
   ShakeSayHiListUI$6(ShakeSayHiListUI paramShakeSayHiListUI) {}
   
-  public final void bg(Object paramObject)
+  public final void bC(Object paramObject)
   {
+    AppMethodBeat.i(24879);
     if (paramObject == null)
     {
-      y.e("MicroMsg.SayHiListUI", "onItemDel object null");
+      ab.e("MicroMsg.SayHiListUI", "onItemDel object null");
+      AppMethodBeat.o(24879);
       return;
     }
-    d.Sa().Hs(paramObject.toString());
-    ShakeSayHiListUI.b(this.odv).a(null, null);
+    d.alk().Te(paramObject.toString());
+    ShakeSayHiListUI.b(this.qRC).a(null, null);
+    AppMethodBeat.o(24879);
   }
 }
 

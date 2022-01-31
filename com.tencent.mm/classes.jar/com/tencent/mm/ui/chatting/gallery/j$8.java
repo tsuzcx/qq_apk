@@ -1,37 +1,32 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.s.b;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.n.e;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class j$8
-  implements b
+  implements Runnable
 {
   j$8(j paramj) {}
   
-  public final long bin()
+  public final void run()
   {
-    y.i("MicroMsg.Imagegallery.handler.video", "%d video get online cache sec", new Object[] { Integer.valueOf(this.vwT.hashCode()) });
-    au.Hx();
-    c.Dz().c(ac.a.uuT, Boolean.valueOf(true));
-    try
+    AppMethodBeat.i(32323);
+    String str = e.bQs();
+    if (!bo.isNullOrNil(str))
     {
-      if ((j.c(this.vwT)) && (j.f(this.vwT) != null))
-      {
-        int i = j.f(this.vwT).eFy;
-        return i;
-      }
+      h.qsU.kvStat(14092, str);
+      AppMethodBeat.o(32323);
+      return;
     }
-    catch (Exception localException) {}
-    return 0L;
+    h.qsU.kvStat(14092, "0");
+    AppMethodBeat.o(32323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.j.8
  * JD-Core Version:    0.7.0.1
  */

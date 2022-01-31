@@ -1,37 +1,118 @@
 package android.support.v7.widget;
 
 import android.view.View;
+import android.view.animation.Interpolator;
 
 public abstract class RecyclerView$r
 {
-  RecyclerView acI;
-  RecyclerView.i afm;
-  public int ahA = -1;
-  boolean ahB;
-  boolean ahC;
-  View ahD;
-  private final RecyclerView.r.a ahE = new RecyclerView.r.a();
+  RecyclerView adt;
+  RecyclerView.i ahB;
+  public int ajQ = -1;
+  boolean ajR;
+  boolean ajS;
+  View ajT;
+  private final a ajU = new a();
   
-  protected abstract void a(int paramInt1, int paramInt2, RecyclerView.r.a parama);
+  protected abstract void a(int paramInt1, int paramInt2, a parama);
   
-  public abstract void a(View paramView, RecyclerView.r.a parama);
+  protected abstract void a(View paramView, a parama);
   
-  public abstract void onStop();
+  protected final void bN(View paramView)
+  {
+    if (RecyclerView.br(paramView) == this.ajQ) {
+      this.ajT = paramView;
+    }
+  }
+  
+  public final void cg(int paramInt)
+  {
+    this.ajQ = paramInt;
+  }
+  
+  protected abstract void onStop();
   
   protected final void stop()
   {
-    if (!this.ahC) {
+    if (!this.ajS) {
       return;
     }
-    this.ahC = false;
+    this.ajS = false;
     onStop();
-    this.acI.agu.ahA = -1;
-    this.ahD = null;
-    this.ahA = -1;
-    this.ahB = false;
-    RecyclerView.i.a(this.afm, this);
-    this.afm = null;
-    this.acI = null;
+    this.adt.aiK.ajQ = -1;
+    this.ajT = null;
+    this.ajQ = -1;
+    this.ajR = false;
+    RecyclerView.i.a(this.ahB, this);
+    this.ahB = null;
+    this.adt = null;
+  }
+  
+  public static final class a
+  {
+    private int ajV = 0;
+    private int ajW = 0;
+    int ajX = -1;
+    private boolean ajY = false;
+    private int ajZ = 0;
+    private int mDuration = -2147483648;
+    private Interpolator mInterpolator = null;
+    
+    public a()
+    {
+      this((byte)0);
+    }
+    
+    private a(byte paramByte) {}
+    
+    private void validate()
+    {
+      if ((this.mInterpolator != null) && (this.mDuration <= 0)) {
+        throw new IllegalStateException("If you provide an interpolator, you must set a positive duration");
+      }
+      if (this.mDuration <= 0) {
+        throw new IllegalStateException("Scroll duration must be a positive number");
+      }
+    }
+    
+    public final void a(int paramInt1, int paramInt2, int paramInt3, Interpolator paramInterpolator)
+    {
+      this.ajV = paramInt1;
+      this.ajW = paramInt2;
+      this.mDuration = paramInt3;
+      this.mInterpolator = paramInterpolator;
+      this.ajY = true;
+    }
+    
+    final void h(RecyclerView paramRecyclerView)
+    {
+      if (this.ajX >= 0)
+      {
+        int i = this.ajX;
+        this.ajX = -1;
+        paramRecyclerView.bO(i);
+        this.ajY = false;
+        return;
+      }
+      if (this.ajY)
+      {
+        validate();
+        if (this.mInterpolator == null) {
+          if (this.mDuration == -2147483648) {
+            paramRecyclerView.aiH.aC(this.ajV, this.ajW);
+          }
+        }
+        for (;;)
+        {
+          this.ajZ += 1;
+          this.ajY = false;
+          return;
+          paramRecyclerView.aiH.m(this.ajV, this.ajW, this.mDuration);
+          continue;
+          paramRecyclerView.aiH.b(this.ajV, this.ajW, this.mDuration, this.mInterpolator);
+        }
+      }
+      this.ajZ = 0;
+    }
   }
 }
 

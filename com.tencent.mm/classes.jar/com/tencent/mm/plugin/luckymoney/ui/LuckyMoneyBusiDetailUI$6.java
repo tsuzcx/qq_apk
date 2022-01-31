@@ -3,23 +3,24 @@ package com.tencent.mm.plugin.luckymoney.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.luckymoney.b.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.k;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class LuckyMoneyBusiDetailUI$6
   implements View.OnClickListener
 {
-  LuckyMoneyBusiDetailUI$6(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI, f paramf) {}
+  LuckyMoneyBusiDetailUI$6(LuckyMoneyBusiDetailUI paramLuckyMoneyBusiDetailUI, k paramk) {}
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11701, new Object[] { Integer.valueOf(LuckyMoneyBusiDetailUI.tr(this.lUJ.lQm)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(4) });
+    AppMethodBeat.i(42588);
+    h.qsU.e(11701, new Object[] { Integer.valueOf(LuckyMoneyBusiDetailUI.yv(this.orS.onK)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(4) });
     paramView = new Intent();
-    paramView.setClass(this.lUH.mController.uMN, LuckyMoneyMyRecordUI.class);
+    paramView.setClass(this.orQ.getContext(), LuckyMoneyMyRecordUI.class);
     paramView.putExtra("key_type", 2);
-    this.lUH.startActivity(paramView);
+    this.orQ.startActivity(paramView);
+    AppMethodBeat.o(42588);
   }
 }
 

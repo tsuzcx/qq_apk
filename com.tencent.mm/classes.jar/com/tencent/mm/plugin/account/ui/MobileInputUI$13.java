@@ -1,23 +1,17 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileInputUI$13
-  implements View.OnClickListener
+  implements Runnable
 {
-  MobileInputUI$13(MobileInputUI paramMobileInputUI) {}
+  MobileInputUI$13(MobileInputUI paramMobileInputUI, int paramInt) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    paramView = new Intent();
-    paramView.putExtra("country_name", this.foH.esg);
-    paramView.putExtra("couttry_code", this.foH.countryCode);
-    paramView.putExtra("iso_code", this.foH.fml);
-    a.eUR.b(paramView, this.foH);
+    AppMethodBeat.i(125173);
+    MobileInputUI.h(this.gGb).smoothScrollBy(0, this.val$height);
+    AppMethodBeat.o(125173);
   }
 }
 

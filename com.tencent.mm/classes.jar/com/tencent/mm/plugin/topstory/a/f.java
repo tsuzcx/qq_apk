@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.topstory.a;
 
 import com.tencent.mm.plugin.topstory.a.b.b;
-import com.tencent.mm.protocal.c.byf;
-import com.tencent.mm.protocal.c.byg;
+import com.tencent.mm.protocal.protobuf.ckw;
+import com.tencent.mm.protocal.protobuf.ckx;
 import java.util.HashSet;
 
 public abstract interface f
 {
-  public abstract void a(byf parambyf, byg parambyg, int paramInt1, int paramInt2, String paramString);
+  public abstract void a(ckw paramckw, ckx paramckx, int paramInt1, int paramInt2, String paramString);
   
-  public abstract void a(byf parambyf, HashSet<b> paramHashSet);
+  public abstract void a(ckw paramckw, HashSet<b> paramHashSet);
 }
 
 

@@ -1,54 +1,24 @@
 package com.tencent.mm.az;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import com.tencent.mm.protocal.protobuf.aek;
+
+@Deprecated
 public final class g
-  extends com.tencent.mm.bv.a
+  extends j.b
 {
-  public int ewK;
-  public int ewL;
-  public int ewz;
+  private aek fLQ;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public g(int paramInt1, int paramInt2)
   {
-    if (paramInt == 0)
-    {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.gB(1, this.ewz);
-      paramVarArgs.gB(2, this.ewK);
-      paramVarArgs.gB(3, this.ewL);
-      return 0;
-    }
-    if (paramInt == 1) {
-      return d.a.a.a.gy(1, this.ewz) + 0 + d.a.a.a.gy(2, this.ewK) + d.a.a.a.gy(3, this.ewL);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
-        }
-      }
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
-      g localg = (g)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
-      {
-      default: 
-        return -1;
-      case 1: 
-        localg.ewz = locala.xpH.oD();
-        return 0;
-      case 2: 
-        localg.ewK = locala.xpH.oD();
-        return 0;
-      }
-      localg.ewL = locala.xpH.oD();
-      return 0;
-    }
-    return -1;
+    super(23);
+    AppMethodBeat.i(989);
+    this.fLQ = new aek();
+    this.fLQ.wXn = paramInt1;
+    this.fLQ.pKC = paramInt2;
+    this.oDZ = this.fLQ;
+    AppMethodBeat.o(989);
   }
 }
 

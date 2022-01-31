@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mm.ui.tools.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.l;
 
 final class BankRemitSelectPayeeUI$3
   implements AdapterView.OnItemLongClickListener
@@ -12,7 +13,9 @@ final class BankRemitSelectPayeeUI$3
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    BankRemitSelectPayeeUI.b(this.nxC).a(paramView, paramInt, paramLong, this.nxC, this.nxC);
+    AppMethodBeat.i(44673);
+    BankRemitSelectPayeeUI.b(this.qiD).a(paramView, paramInt, paramLong, this.qiD, this.qiD);
+    AppMethodBeat.o(44673);
     return true;
   }
 }

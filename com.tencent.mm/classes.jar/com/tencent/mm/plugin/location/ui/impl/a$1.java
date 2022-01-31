@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.location.model.LocationInfo;
 import com.tencent.mm.plugin.location.ui.RemarkUI;
-import com.tencent.mm.plugin.map.a.h;
 
 final class a$1
   implements View.OnClickListener
@@ -15,14 +15,16 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.lIm.activity, RemarkUI.class);
+    AppMethodBeat.i(113589);
+    paramView = new Intent(this.ofz.activity, RemarkUI.class);
     paramView.putExtra("key_nullable", true);
-    paramView.putExtra("key_value", this.lIm.beI());
-    paramView.putExtra("key_hint", this.lIm.getString(a.h.location_remark_hint));
-    paramView.putExtra("Kwebmap_locaion", this.lIm.lHZ.lCM);
-    paramView.putExtra("kFavInfoLocalId", this.lIm.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
-    paramView.putExtra("kRemark", this.lIm.activity.getIntent().getStringExtra("kRemark"));
-    this.lIm.activity.startActivityForResult(paramView, 4096);
+    paramView.putExtra("key_value", this.ofz.bMc());
+    paramView.putExtra("key_hint", this.ofz.getString(2131301102));
+    paramView.putExtra("Kwebmap_locaion", this.ofz.ofm.nZY);
+    paramView.putExtra("kFavInfoLocalId", this.ofz.activity.getIntent().getLongExtra("kFavInfoLocalId", -1L));
+    paramView.putExtra("kRemark", this.ofz.activity.getIntent().getStringExtra("kRemark"));
+    this.ofz.activity.startActivityForResult(paramView, 4096);
+    AppMethodBeat.o(113589);
   }
 }
 

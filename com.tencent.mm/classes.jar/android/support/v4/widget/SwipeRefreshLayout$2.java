@@ -10,12 +10,12 @@ final class SwipeRefreshLayout$2
   
   public final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.MA.setAnimationProgress(paramFloat);
+    this.Mk.setAnimationProgress(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v4.widget.SwipeRefreshLayout.2
  * JD-Core Version:    0.7.0.1
  */

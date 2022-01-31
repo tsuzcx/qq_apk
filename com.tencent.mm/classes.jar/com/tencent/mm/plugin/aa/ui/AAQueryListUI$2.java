@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.aa.ui;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AAQueryListUI$2
   implements AbsListView.OnScrollListener
@@ -11,11 +12,13 @@ final class AAQueryListUI$2
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((AAQueryListUI.a(this.eXG).getLastVisiblePosition() == AAQueryListUI.a(this.eXG).getCount() - 1) && (AAQueryListUI.a(this.eXG).getCount() > 0) && (!AAQueryListUI.b(this.eXG)) && (!AAQueryListUI.c(this.eXG)))
+    AppMethodBeat.i(40729);
+    if ((AAQueryListUI.a(this.gpD).getLastVisiblePosition() == AAQueryListUI.a(this.gpD).getCount() - 1) && (AAQueryListUI.a(this.gpD).getCount() > 0) && (!AAQueryListUI.b(this.gpD)) && (!AAQueryListUI.c(this.gpD)))
     {
-      AAQueryListUI.a(this.eXG).addFooterView(AAQueryListUI.d(this.eXG));
-      AAQueryListUI.a(this.eXG, false, AAQueryListUI.e(this.eXG));
+      AAQueryListUI.a(this.gpD).addFooterView(AAQueryListUI.d(this.gpD));
+      AAQueryListUI.a(this.gpD, false, AAQueryListUI.e(this.gpD));
     }
+    AppMethodBeat.o(40729);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}

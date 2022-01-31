@@ -34,7 +34,7 @@ public abstract class b$a
     if (paramParcel1.readInt() != 0) {}
     for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
     {
-      g(paramParcel1);
+      o(paramParcel1);
       paramParcel2.writeNoException();
       return true;
     }

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.b;
 import com.tencent.mm.cd.c;
 import com.tencent.mm.cd.g;
@@ -23,23 +24,46 @@ import java.util.List;
 public class ShakeEggAnimFrame
   extends FrameLayout
 {
-  List<View> obn = new ArrayList();
-  int obo = 0;
-  int size = 0;
+  List<View> qPv;
+  int qPw;
+  int size;
   
   public ShakeEggAnimFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(24715);
+    this.qPv = new ArrayList();
+    this.size = 0;
+    this.qPw = 0;
+    AppMethodBeat.o(24715);
   }
   
-  static float L(float paramFloat1, float paramFloat2)
+  static float ab(float paramFloat1, float paramFloat2)
   {
-    return (float)Math.random() * (paramFloat2 - paramFloat1) + paramFloat1;
+    AppMethodBeat.i(24717);
+    float f = (float)Math.random();
+    AppMethodBeat.o(24717);
+    return f * (paramFloat2 - paramFloat1) + paramFloat1;
   }
   
-  public final void L(Activity paramActivity)
+  private int getSize()
   {
-    Object localObject1 = this.obn.iterator();
+    AppMethodBeat.i(24718);
+    if (this.size == 0)
+    {
+      i = (int)(new TextView(getContext()).getTextSize() * 1.2D);
+      AppMethodBeat.o(24718);
+      return i;
+    }
+    int i = this.size;
+    AppMethodBeat.o(24718);
+    return i;
+  }
+  
+  public final void ag(Activity paramActivity)
+  {
+    AppMethodBeat.i(24716);
+    Object localObject1 = this.qPv.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
@@ -54,9 +78,9 @@ public class ShakeEggAnimFrame
     while (i < 30)
     {
       paramActivity = new ShakeEggAnimFrame.b(this, ((DisplayMetrics)localObject1).widthPixels, ((DisplayMetrics)localObject1).heightPixels);
-      g.csM();
-      localObject2 = b.csC();
-      localObject2 = ((b)localObject2).a((c)((b)localObject2).ukM.get(107), true);
+      g.dvk();
+      localObject2 = b.duW();
+      localObject2 = ((b)localObject2).a((c)((b)localObject2).yuq.get(107), true);
       ((Drawable)localObject2).setBounds(0, 0, getSize(), getSize());
       Object localObject3 = new ImageSpan((Drawable)localObject2, 1);
       localObject2 = new SpannableString("  ");
@@ -68,22 +92,15 @@ public class ShakeEggAnimFrame
       ((TextView)localObject3).setTag(paramActivity);
       addView((View)localObject3);
       ((ShakeEggAnimFrame.a)paramActivity).targetView = ((View)localObject3);
-      this.obn.add(localObject3);
+      this.qPv.add(localObject3);
       i += 1;
     }
-  }
-  
-  int getSize()
-  {
-    if (this.size == 0) {
-      return (int)(new TextView(getContext()).getTextSize() * 1.2D);
-    }
-    return this.size;
+    AppMethodBeat.o(24716);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeEggAnimFrame
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.home;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 public final class c
@@ -11,14 +12,16 @@ public final class c
     super(paramMMActivity, true);
   }
   
-  protected final boolean bNn()
+  protected final boolean cIQ()
   {
     return false;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(1679);
     super.onCreate(paramBundle);
+    AppMethodBeat.o(1679);
   }
 }
 

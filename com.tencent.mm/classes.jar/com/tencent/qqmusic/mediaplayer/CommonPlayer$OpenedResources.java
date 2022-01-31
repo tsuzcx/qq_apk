@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.upstream.CacheDataSource;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import java.io.File;
@@ -11,12 +12,14 @@ class CommonPlayer$OpenedResources
   
   void release()
   {
+    AppMethodBeat.i(104483);
     if ((this.bufferFile != null) && (!this.bufferFile.delete())) {
       Logger.w("CommonPlayer", "[release] failed to delete buffer file: " + this.bufferFile);
     }
     if (this.dataSource != null) {
       this.dataSource.setListener(null);
     }
+    AppMethodBeat.o(104483);
   }
 }
 

@@ -1,8 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.auth;
 
 import android.os.Bundle;
-import com.tencent.mm.protocal.c.bna;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
+import com.tencent.mm.protocal.protobuf.axt;
+import com.tencent.mm.protocal.protobuf.bwv;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -11,53 +14,79 @@ final class JsApiAuthorize$AuthorizeTask$1
 {
   JsApiAuthorize$AuthorizeTask$1(JsApiAuthorize.AuthorizeTask paramAuthorizeTask) {}
   
-  public final void G(int paramInt, String paramString)
+  public final void Q(int paramInt, String paramString)
   {
-    y.e("MicroMsg.JsApiAuthorize", "onFailure !");
-    this.gjR.gjM = "fail";
-    this.gjR.errCode = paramInt;
-    this.gjR.aox = paramString;
-    JsApiAuthorize.AuthorizeTask.b(this.gjR);
+    AppMethodBeat.i(130831);
+    ab.e("MicroMsg.JsApiAuthorize", "onFailure !");
+    this.hDK.hDz = "fail";
+    this.hDK.errCode = paramInt;
+    this.hDK.errMsg = paramString;
+    JsApiAuthorize.AuthorizeTask.b(this.hDK);
+    AppMethodBeat.o(130831);
   }
   
-  public final void a(LinkedList<bna> paramLinkedList, String paramString1, String paramString2)
+  public final void a(axt paramaxt)
   {
-    y.d("MicroMsg.JsApiAuthorize", "onConfirm !");
-    this.gjR.gjO = paramLinkedList.size();
+    AppMethodBeat.i(130832);
+    ab.d("MicroMsg.JsApiAuthorize", "onConfirm !");
+    Object localObject = paramaxt.wYt;
+    this.hDK.hDH = ((LinkedList)localObject).size();
     int i = 0;
-    while (i < this.gjR.gjO)
+    while (i < this.hDK.hDH)
     {
-      bna localbna = (bna)paramLinkedList.get(i);
+      bwv localbwv = (bwv)((LinkedList)localObject).get(i);
       try
       {
-        this.gjR.gjP.putByteArray(String.valueOf(i), localbna.toByteArray());
+        this.hDK.hDI.putByteArray(String.valueOf(i), localbwv.toByteArray());
         i += 1;
       }
-      catch (IOException paramLinkedList)
+      catch (IOException paramaxt)
       {
-        y.e("MicroMsg.JsApiAuthorize", "IOException %s", new Object[] { paramLinkedList.getMessage() });
-        y.printErrStackTrace("MicroMsg.JsApiAuthorize", paramLinkedList, "", new Object[0]);
-        this.gjR.gjM = "fail";
-        JsApiAuthorize.AuthorizeTask.c(this.gjR);
+        ab.e("MicroMsg.JsApiAuthorize", "IOException %s", new Object[] { paramaxt.getMessage() });
+        ab.printErrStackTrace("MicroMsg.JsApiAuthorize", paramaxt, "", new Object[0]);
+        this.hDK.hDz = "fail";
+        JsApiAuthorize.AuthorizeTask.c(this.hDK);
+        AppMethodBeat.o(130832);
         return;
       }
     }
-    this.gjR.mAppName = paramString1;
-    this.gjR.fXS = paramString2;
-    this.gjR.gjM = "needConfirm";
-    JsApiAuthorize.AuthorizeTask.d(this.gjR);
+    this.hDK.mAppName = paramaxt.ntp;
+    this.hDK.hDB = paramaxt.wnz;
+    this.hDK.hDC = paramaxt.xmW;
+    this.hDK.hDE = paramaxt.xmV;
+    this.hDK.hDD = paramaxt.xmU;
+    this.hDK.hDz = "needConfirm";
+    if ((((LinkedList)localObject).size() > 0) && ("scope.userInfo".equals(((bwv)((LinkedList)localObject).get(0)).wAh)))
+    {
+      this.hDK.hDG = r.Zp();
+      localObject = new StringBuilder("userNickName=");
+      if (this.hDK.hDG == null) {}
+      for (paramaxt = "";; paramaxt = this.hDK.hDG)
+      {
+        ab.i("MicroMsg.JsApiAuthorize", paramaxt);
+        paramaxt = r.Zn();
+        localObject = e.hDq;
+        e.a.a(paramaxt, new JsApiAuthorize.AuthorizeTask.1.1(this));
+        AppMethodBeat.o(130832);
+        return;
+      }
+    }
+    JsApiAuthorize.AuthorizeTask.e(this.hDK);
+    AppMethodBeat.o(130832);
   }
   
   public final void onSuccess()
   {
-    y.d("MicroMsg.JsApiAuthorize", "onSuccess !");
-    this.gjR.gjM = "ok";
-    JsApiAuthorize.AuthorizeTask.a(this.gjR);
+    AppMethodBeat.i(130830);
+    ab.d("MicroMsg.JsApiAuthorize", "onSuccess !");
+    this.hDK.hDz = "ok";
+    JsApiAuthorize.AuthorizeTask.a(this.hDK);
+    AppMethodBeat.o(130830);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.auth.JsApiAuthorize.AuthorizeTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class IPCallShareCouponCardUI$10
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class IPCallShareCouponCardUI$10
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.lyq.finish();
+    AppMethodBeat.i(22292);
+    this.nVC.finish();
+    AppMethodBeat.o(22292);
   }
 }
 

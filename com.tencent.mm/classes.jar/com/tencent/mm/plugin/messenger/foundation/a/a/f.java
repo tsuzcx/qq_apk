@@ -1,21 +1,22 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
+import com.tencent.mm.sdk.e.g;
 import com.tencent.mm.storage.bf;
 
 public abstract interface f
-  extends com.tencent.mm.sdk.e.f
+  extends g
 {
-  public abstract void Hs(String paramString);
+  public abstract void Te(String paramString);
   
-  public abstract void Ht(String paramString);
+  public abstract void Tf(String paramString);
   
-  public abstract long Hu(String paramString);
+  public abstract long Tg(String paramString);
   
-  public abstract int aAo();
+  public abstract void axH();
   
-  public abstract void aUK();
+  public abstract bf bPW();
   
-  public abstract bf bhU();
+  public abstract int bbZ();
 }
 
 

@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.openSDK.param.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class IPCResponse
   extends JceStruct
@@ -22,6 +23,7 @@ public final class IPCResponse
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76001);
     if (cache_head == null) {
       cache_head = new IPCHead();
     }
@@ -33,17 +35,20 @@ public final class IPCResponse
       ((byte[])arrayOfByte)[0] = 0;
     }
     this.body = ((byte[])paramJceInputStream.read(cache_body, 1, true));
+    AppMethodBeat.o(76001);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76000);
     paramJceOutputStream.write(this.head, 0);
     paramJceOutputStream.write(this.body, 1);
+    AppMethodBeat.o(76000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.param.jce.IPCResponse
  * JD-Core Version:    0.7.0.1
  */

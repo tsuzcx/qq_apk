@@ -3,14 +3,14 @@ package com.tencent.mm.booter;
 public final class v
   extends q
 {
-  public v(c paramc)
+  public v(d paramd)
   {
-    super(paramc);
+    super(paramd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.booter.v
  * JD-Core Version:    0.7.0.1
  */

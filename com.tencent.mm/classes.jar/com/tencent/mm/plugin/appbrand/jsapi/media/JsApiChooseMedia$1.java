@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e;
+import com.tencent.mm.plugin.appbrand.e.c;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiChooseMedia$1
-  extends g.b
+  extends e.c
 {
   JsApiChooseMedia$1(JsApiChooseMedia paramJsApiChooseMedia, c paramc) {}
   
   public final void onResume()
   {
-    y.i("MicroMsg.JsApiChooseMedia", "chooseMedia, onResume, remove listener");
-    JsApiChooseMedia.BF();
-    g.b(this.ggH.getAppId(), this);
+    AppMethodBeat.i(131154);
+    ab.i("MicroMsg.JsApiChooseMedia", "chooseMedia, onResume, remove listener");
+    JsApiChooseMedia.Pt();
+    e.b(this.hxW.getAppId(), this);
+    AppMethodBeat.o(131154);
   }
 }
 

@@ -2,33 +2,40 @@ package com.google.android.gms.common.images;
 
 import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImageManager$zzd
   implements ComponentCallbacks2
 {
-  private final ImageManager.zza zzaEk;
+  private final ImageManager.zza zzpa;
   
   public ImageManager$zzd(ImageManager.zza paramzza)
   {
-    this.zzaEk = paramzza;
+    this.zzpa = paramzza;
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onLowMemory()
   {
-    this.zzaEk.evictAll();
+    AppMethodBeat.i(61213);
+    this.zzpa.evictAll();
+    AppMethodBeat.o(61213);
   }
   
   public final void onTrimMemory(int paramInt)
   {
-    if (paramInt >= 60) {
-      this.zzaEk.evictAll();
-    }
-    while (paramInt < 20) {
+    AppMethodBeat.i(61214);
+    if (paramInt >= 60)
+    {
+      this.zzpa.evictAll();
+      AppMethodBeat.o(61214);
       return;
     }
-    this.zzaEk.trimToSize(this.zzaEk.size() / 2);
+    if (paramInt >= 20) {
+      this.zzpa.trimToSize(this.zzpa.size() / 2);
+    }
+    AppMethodBeat.o(61214);
   }
 }
 

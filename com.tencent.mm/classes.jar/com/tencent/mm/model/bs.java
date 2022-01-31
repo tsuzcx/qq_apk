@@ -1,64 +1,54 @@
 package com.tencent.mm.model;
 
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
+import com.tencent.mm.ai.e.c;
+import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.storage.z;
+import java.util.Map;
+import junit.framework.Assert;
 
 public final class bs
-  extends com.tencent.mm.bv.a
+  implements e
 {
-  public LinkedList<br> dXB = new LinkedList();
+  public final void a(e.c paramc) {}
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final e.b b(e.a parama)
   {
-    if (paramInt == 0)
+    boolean bool2 = true;
+    AppMethodBeat.i(16347);
+    parama = parama.eyJ;
+    if (parama != null)
     {
-      ((d.a.a.c.a)paramVarArgs[0]).d(1, 8, this.dXB);
-      return 0;
+      bool1 = true;
+      Assert.assertTrue(bool1);
+      if (parama.woR == null) {
+        break label100;
+      }
     }
-    if (paramInt == 1) {
-      return d.a.a.a.c(1, 8, this.dXB) + 0;
-    }
-    if (paramInt == 2)
+    label100:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.dXB.clear();
-      paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
-        }
-      }
-      return 0;
+      Assert.assertTrue(bool1);
+      parama = (String)br.F(aa.a(parama.woR), "tips").get(".tips.tip.url");
+      ab.v("MicroMsg.SoftwareMsgExtension", "url:".concat(String.valueOf(parama)));
+      aw.aaz();
+      c.Ru().set(12308, parama);
+      AppMethodBeat.o(16347);
+      return null;
+      bool1 = false;
+      break;
     }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (d.a.a.a.a)paramVarArgs[0];
-      bs localbs = (bs)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        return -1;
-      }
-      paramVarArgs = ((d.a.a.a.a)localObject1).KN(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new br();
-        localObject2 = new d.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((br)localObject1).a((d.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.a((d.a.a.a.a)localObject2))) {}
-        localbs.dXB.add(localObject1);
-        paramInt += 1;
-      }
-      return 0;
-    }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.model.bs
  * JD-Core Version:    0.7.0.1
  */

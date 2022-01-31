@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.picker;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$3
   implements DialogInterface.OnCancelListener
@@ -10,8 +11,10 @@ final class a$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    a.a(this.wop, false, 0, 0, 0);
-    this.wop.hide();
+    AppMethodBeat.i(112810);
+    a.a(this.AIR, false, 0, 0, 0);
+    this.AIR.hide();
+    AppMethodBeat.o(112810);
   }
 }
 

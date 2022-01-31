@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.card.ui;
 
 import android.widget.ImageView;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class CardGiftVideoUI$4
   implements Runnable
@@ -16,25 +17,27 @@ final class CardGiftVideoUI$4
   
   public final void run()
   {
-    if (bk.bl(CardGiftVideoUI.a(this.iuJ)))
+    AppMethodBeat.i(88451);
+    if (bo.isNullOrNil(CardGiftVideoUI.a(this.kvN)))
     {
-      CardGiftVideoUI.f(this.iuJ).setVisibility(0);
+      CardGiftVideoUI.f(this.kvN).setVisibility(0);
       Object localObject = new c.a();
-      ((c.a)localObject).eri = e.bkH;
-      o.OO();
-      ((c.a)localObject).erB = null;
-      ((c.a)localObject).erh = m.yn(this.val$filePath);
-      ((c.a)localObject).erk = 1;
-      ((c.a)localObject).erf = true;
-      ((c.a)localObject).erd = true;
-      localObject = ((c.a)localObject).OV();
-      o.ON().a(this.val$filePath, CardGiftVideoUI.f(this.iuJ), (c)localObject);
+      ((c.a)localObject).eNP = e.eQz;
+      o.ahH();
+      ((c.a)localObject).eOd = null;
+      ((c.a)localObject).eNO = m.HO(this.val$filePath);
+      ((c.a)localObject).fHt = 1;
+      ((c.a)localObject).eNM = true;
+      ((c.a)localObject).eNK = true;
+      localObject = ((c.a)localObject).ahY();
+      o.ahG().a(this.val$filePath, CardGiftVideoUI.f(this.kvN), (c)localObject);
     }
+    AppMethodBeat.o(88451);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftVideoUI.4
  * JD-Core Version:    0.7.0.1
  */

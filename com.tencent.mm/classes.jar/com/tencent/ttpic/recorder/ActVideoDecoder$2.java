@@ -1,8 +1,9 @@
 package com.tencent.ttpic.recorder;
 
-import com.tencent.ttpic.VideoModuleConfig;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.gles.GLConfig;
 import com.tencent.ttpic.util.BenchUtil;
-import com.tencent.util.g;
+import com.tencent.util.i;
 
 class ActVideoDecoder$2
   implements Runnable
@@ -11,20 +12,23 @@ class ActVideoDecoder$2
   
   public void run()
   {
+    AppMethodBeat.i(83678);
     try
     {
       BenchUtil.benchStart(ActVideoDecoder.access$600() + "[decodeNext]");
       ActVideoDecoder.access$700(this.this$0);
       BenchUtil.benchEnd(ActVideoDecoder.access$600() + "[decodeNext]");
       ActVideoDecoder.access$802(this.this$0, false);
+      AppMethodBeat.o(83678);
       return;
     }
     catch (Exception localException)
     {
       do
       {
-        g.a(ActVideoDecoder.access$600(), "decodeNext error: ", localException);
-      } while (!VideoModuleConfig.DEBUG);
+        i.a(ActVideoDecoder.access$600(), "decodeNext error: ", localException);
+      } while (!GLConfig.DEBUG);
+      AppMethodBeat.o(83678);
       throw localException;
     }
   }

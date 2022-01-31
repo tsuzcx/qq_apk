@@ -2,7 +2,9 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 public final class b$a
 {
-  b.f gul;
+  b.h hPd;
+  public float rotate;
+  public float skew;
   public float zoom;
 }
 

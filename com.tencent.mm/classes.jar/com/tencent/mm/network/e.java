@@ -1,21 +1,11 @@
 package com.tencent.mm.network;
 
 import com.tencent.mm.network.a.b;
-import com.tencent.mm.protocal.x;
+import com.tencent.mm.protocal.z;
 import java.util.List;
 
 public abstract interface e
 {
-  public abstract boolean KH();
-  
-  public abstract c KR();
-  
-  public abstract i KS();
-  
-  public abstract void KT();
-  
-  public abstract void KU();
-  
   public abstract int a(r paramr, l paraml);
   
   public abstract int a(String paramString, boolean paramBoolean, List<String> paramList);
@@ -28,17 +18,29 @@ public abstract interface e
   
   public abstract void a(o paramo);
   
-  public abstract void a(x paramx);
+  public abstract void a(z paramz);
   
   public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
   
-  public abstract void bO(boolean paramBoolean);
+  public abstract c adI();
   
-  public abstract void bP(boolean paramBoolean);
+  public abstract i adJ();
   
-  public abstract void bQ(boolean paramBoolean);
+  public abstract void adK();
   
-  public abstract void bR(boolean paramBoolean);
+  public abstract void adL();
+  
+  public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  
+  public abstract boolean adu();
+  
+  public abstract void cQ(boolean paramBoolean);
+  
+  public abstract void cR(boolean paramBoolean);
+  
+  public abstract void cS(boolean paramBoolean);
+  
+  public abstract void cT(boolean paramBoolean);
   
   public abstract void cancel(int paramInt);
   
@@ -52,13 +54,13 @@ public abstract interface e
   
   public abstract void keepSignalling();
   
-  public abstract void kt(String paramString);
-  
-  public abstract void ku(String paramString);
-  
   public abstract void reportFailIp(String paramString);
   
   public abstract void reset();
+  
+  public abstract void rr(String paramString);
+  
+  public abstract void rs(String paramString);
   
   public abstract void setHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
   

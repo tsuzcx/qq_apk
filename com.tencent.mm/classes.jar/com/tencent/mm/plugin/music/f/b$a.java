@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.music.f;
 
 import android.media.MediaPlayer;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$a
   implements Runnable
@@ -12,22 +13,23 @@ final class b$a
   
   public final void run()
   {
-    y.i("MicroMsg.Music.MMMediaPlayer", "start run play progress task");
+    AppMethodBeat.i(137552);
+    ab.i("MicroMsg.Music.MMMediaPlayer", "start run play progress task");
     for (;;)
     {
       if (this.isStop) {
-        return;
+        break label128;
       }
       try
       {
-        if ((this.mAy.eLh != null) && (this.mAy.eLh.isPlaying()))
+        if ((this.paE.gaO != null) && (this.paE.gaO.isPlaying()))
         {
-          int i = this.mAy.eLh.getCurrentPosition();
-          int j = this.mAy.eLh.getDuration();
+          int i = this.paE.gaO.getCurrentPosition();
+          int j = this.paE.gaO.getDuration();
           if ((i > 0) && (j > 0))
           {
             i = i * 100 / j;
-            this.mAy.uU(i);
+            this.paE.Av(i);
           }
         }
       }
@@ -35,7 +37,7 @@ final class b$a
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "onPlayUpdate", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localException, "onPlayUpdate", new Object[0]);
         }
       }
       try
@@ -44,9 +46,11 @@ final class b$a
       }
       catch (InterruptedException localInterruptedException)
       {
-        y.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localInterruptedException, "sleep", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.Music.MMMediaPlayer", localInterruptedException, "sleep", new Object[0]);
       }
     }
+    label128:
+    AppMethodBeat.o(137552);
   }
 }
 

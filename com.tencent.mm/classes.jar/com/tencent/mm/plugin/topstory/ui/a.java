@@ -1,15 +1,22 @@
 package com.tencent.mm.plugin.topstory.ui;
 
-public abstract interface a
-  extends com.tencent.mm.kernel.b.d
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+
+public final class a
 {
-  public abstract com.tencent.mm.plugin.topstory.ui.home.d getWebViewMgr();
+  public static final int tfs;
   
-  public abstract void tryToCreateTopStoryWebView();
+  static
+  {
+    AppMethodBeat.i(141930);
+    tfs = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 56);
+    AppMethodBeat.o(141930);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.a
  * JD-Core Version:    0.7.0.1
  */

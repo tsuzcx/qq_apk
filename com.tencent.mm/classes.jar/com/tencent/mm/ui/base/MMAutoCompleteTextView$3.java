@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMAutoCompleteTextView$3
   implements View.OnFocusChangeListener
@@ -10,7 +11,9 @@ final class MMAutoCompleteTextView$3
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    MMAutoCompleteTextView.b(this.uUi);
+    AppMethodBeat.i(106474);
+    MMAutoCompleteTextView.b(this.ziJ);
+    AppMethodBeat.o(106474);
   }
 }
 

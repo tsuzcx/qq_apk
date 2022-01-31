@@ -9,6 +9,7 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeProvider;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tenpay.bankcard.LogUtil;
 import java.lang.reflect.Method;
 
@@ -43,7 +44,8 @@ public class TenpayAccessibilityDelegate
   
   public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    LogUtil.d("CFT", new Object[] { "sendAccessibilityEvent eventType=" + paramInt });
+    AppMethodBeat.i(5494);
+    LogUtil.d("CFT", new Object[] { "sendAccessibilityEvent eventType=".concat(String.valueOf(paramInt)) });
     Object localObject1;
     if ((paramView != null) && (paramInt == 128)) {
       if ((paramView instanceof EditText))
@@ -81,23 +83,24 @@ public class TenpayAccessibilityDelegate
       }
       else
       {
-        LogUtil.d("CFT", new Object[] { "content = " + localObject2 });
+        LogUtil.d("CFT", new Object[] { "content = ".concat(String.valueOf(localObject2)) });
         LogUtil.d("CFT", new Object[] { "host.getContentDescription() = " + paramView.getContentDescription() });
-        if (!TextUtils.isEmpty((CharSequence)localObject2)) {}
-        try
-        {
-          localObject1 = View.class.getMethod("clearAccessibilityFocus", null);
-          ((Method)localObject1).setAccessible(true);
-          ((Method)localObject1).invoke(paramView, null);
-          localObject1 = View.class.getMethod("requestAccessibilityFocus", null);
-          ((Method)localObject1).setAccessible(true);
-          ((Method)localObject1).invoke(paramView, null);
-          return;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          try
+          {
+            localObject1 = View.class.getMethod("clearAccessibilityFocus", null);
+            ((Method)localObject1).setAccessible(true);
+            ((Method)localObject1).invoke(paramView, null);
+            localObject1 = View.class.getMethod("requestAccessibilityFocus", null);
+            ((Method)localObject1).setAccessible(true);
+            ((Method)localObject1).invoke(paramView, null);
+            AppMethodBeat.o(5494);
+            return;
+          }
+          catch (Exception paramView) {}
         }
-        catch (Exception paramView)
-        {
-          return;
-        }
+        AppMethodBeat.o(5494);
+        return;
       }
       localObject1 = null;
     }
@@ -107,7 +110,7 @@ public class TenpayAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tenpay.android.wechat.TenpayAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

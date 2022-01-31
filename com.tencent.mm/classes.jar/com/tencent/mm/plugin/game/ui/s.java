@@ -10,79 +10,87 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.protocal.c.zw;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.aep;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class s
   extends BaseAdapter
 {
-  private String bGm = "";
+  private String cnv;
   private Context context;
-  private LinkedList<s.a> dTx = new LinkedList();
+  private LinkedList<s.a> fjy;
   
   public s(Context paramContext)
   {
+    AppMethodBeat.i(112182);
+    this.cnv = "";
+    this.fjy = new LinkedList();
     this.context = paramContext;
+    AppMethodBeat.o(112182);
   }
   
-  public final void a(String paramString1, String paramString2, LinkedList<zw> paramLinkedList)
+  public final void b(String paramString1, String paramString2, LinkedList<aep> paramLinkedList)
   {
-    if (bk.dk(paramLinkedList)) {
+    AppMethodBeat.i(112186);
+    if (bo.es(paramLinkedList))
+    {
+      AppMethodBeat.o(112186);
       return;
     }
-    this.bGm = paramString1;
-    this.dTx.clear();
+    this.cnv = paramString1;
+    this.fjy.clear();
     s.a locala;
-    if (bk.bl(paramString1))
+    if (bo.isNullOrNil(paramString1))
     {
       locala = new s.a();
       locala.type = 1;
-      if (!bk.bl(paramString2))
+      if (!bo.isNullOrNil(paramString2))
       {
         locala.text = paramString2;
-        this.dTx.add(locala);
+        this.fjy.add(locala);
       }
     }
     else
     {
       paramString2 = paramLinkedList.iterator();
-      label70:
+      label80:
       if (!paramString2.hasNext()) {
-        break label197;
+        break label206;
       }
-      paramLinkedList = (zw)paramString2.next();
+      paramLinkedList = (aep)paramString2.next();
       locala = new s.a();
-      if (!bk.bl(paramString1)) {
-        break label191;
+      if (!bo.isNullOrNil(paramString1)) {
+        break label200;
       }
     }
-    label191:
+    label200:
     for (int i = 2;; i = 3)
     {
       locala.type = i;
-      locala.appId = paramLinkedList.kRX;
-      locala.text = paramLinkedList.sZg;
-      locala.description = paramLinkedList.sxZ;
-      locala.actionType = paramLinkedList.sYX;
-      locala.lfl = paramLinkedList.sYY;
-      this.dTx.add(locala);
-      break label70;
-      locala.text = this.context.getString(g.i.game_search_recmd_title);
+      locala.appId = paramLinkedList.npZ;
+      locala.text = paramLinkedList.wXz;
+      locala.description = paramLinkedList.woO;
+      locala.actionType = paramLinkedList.wzE;
+      locala.nDg = paramLinkedList.wXs;
+      this.fjy.add(locala);
+      break label80;
+      locala.text = this.context.getString(2131300453);
       break;
     }
-    label197:
+    label206:
     notifyDataSetChanged();
+    AppMethodBeat.o(112186);
   }
   
   public final int getCount()
   {
-    return this.dTx.size();
+    AppMethodBeat.i(112184);
+    int i = this.fjy.size();
+    AppMethodBeat.o(112184);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -92,62 +100,68 @@ public final class s
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject = sn(paramInt);
+    AppMethodBeat.i(112183);
+    Object localObject = xn(paramInt);
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, g.f.game_search_recmd_item, null);
+      paramView = View.inflate(this.context, 2130969816, null);
       paramViewGroup = new s.b((byte)0);
-      paramViewGroup.fcy = ((TextView)paramView.findViewById(g.e.game_search_recmd_title));
-      paramViewGroup.lfm = ((ViewGroup)paramViewGroup.fcy.getParent());
-      paramViewGroup.lfn = ((TextView)paramView.findViewById(g.e.game_search_recmd_keyword_hot));
-      paramViewGroup.lfo = ((TextView)paramView.findViewById(g.e.game_search_description));
-      paramViewGroup.lfp = ((ViewGroup)paramViewGroup.lfn.getParent());
-      paramViewGroup.lfq = ((TextView)paramView.findViewById(g.e.game_search_recmd_keyword));
-      paramViewGroup.lfr = ((ViewGroup)paramViewGroup.lfq.getParent().getParent());
+      paramViewGroup.gui = ((TextView)paramView.findViewById(2131824753));
+      paramViewGroup.nDh = ((ViewGroup)paramViewGroup.gui.getParent());
+      paramViewGroup.nDi = ((TextView)paramView.findViewById(2131824754));
+      paramViewGroup.nDj = ((TextView)paramView.findViewById(2131824755));
+      paramViewGroup.nDk = ((ViewGroup)paramViewGroup.nDi.getParent());
+      paramViewGroup.nDl = ((TextView)paramView.findViewById(2131824756));
+      paramViewGroup.nDm = ((ViewGroup)paramViewGroup.nDl.getParent().getParent());
       paramView.setTag(paramViewGroup);
+      switch (((s.a)localObject).type)
+      {
+      }
     }
     for (;;)
     {
-      switch (((s.a)localObject).type)
+      AppMethodBeat.o(112183);
+      return paramView;
+      paramViewGroup = (s.b)paramView.getTag();
+      break;
+      paramViewGroup.nDh.setVisibility(0);
+      paramViewGroup.nDk.setVisibility(8);
+      paramViewGroup.nDm.setVisibility(8);
+      paramViewGroup.nDh.setOnClickListener(null);
+      paramViewGroup.gui.setText(((s.a)localObject).text);
+      continue;
+      paramViewGroup.nDh.setVisibility(8);
+      paramViewGroup.nDk.setVisibility(0);
+      paramViewGroup.nDm.setVisibility(8);
+      paramViewGroup.nDi.setText(((s.a)localObject).text);
+      paramViewGroup.nDj.setText(((s.a)localObject).description);
+      continue;
+      paramViewGroup.nDh.setVisibility(8);
+      paramViewGroup.nDk.setVisibility(8);
+      paramViewGroup.nDm.setVisibility(0);
+      paramInt = this.context.getResources().getColor(2131690322);
+      paramViewGroup.nDl.setTextColor(paramInt);
+      paramInt = this.context.getResources().getColor(2131690127);
+      int i = ((s.a)localObject).text.indexOf(this.cnv);
+      if (i >= 0)
       {
-      default: 
-        return paramView;
-        paramViewGroup = (s.b)paramView.getTag();
+        localObject = new SpannableString(((s.a)localObject).text);
+        ((Spannable)localObject).setSpan(new ForegroundColorSpan(paramInt), i, this.cnv.length() + i, 33);
+        paramViewGroup.nDl.setText((CharSequence)localObject);
+      }
+      else
+      {
+        paramViewGroup.nDl.setText(((s.a)localObject).text);
       }
     }
-    paramViewGroup.lfm.setVisibility(0);
-    paramViewGroup.lfp.setVisibility(8);
-    paramViewGroup.lfr.setVisibility(8);
-    paramViewGroup.lfm.setOnClickListener(null);
-    paramViewGroup.fcy.setText(((s.a)localObject).text);
-    return paramView;
-    paramViewGroup.lfm.setVisibility(8);
-    paramViewGroup.lfp.setVisibility(0);
-    paramViewGroup.lfr.setVisibility(8);
-    paramViewGroup.lfn.setText(((s.a)localObject).text);
-    paramViewGroup.lfo.setText(((s.a)localObject).description);
-    return paramView;
-    paramViewGroup.lfm.setVisibility(8);
-    paramViewGroup.lfp.setVisibility(8);
-    paramViewGroup.lfr.setVisibility(0);
-    paramInt = this.context.getResources().getColor(g.b.normal_text_color);
-    paramViewGroup.lfq.setTextColor(paramInt);
-    paramInt = this.context.getResources().getColor(g.b.gc_search_recmd_keyword_match);
-    int i = ((s.a)localObject).text.indexOf(this.bGm);
-    if (i >= 0)
-    {
-      localObject = new SpannableString(((s.a)localObject).text);
-      ((Spannable)localObject).setSpan(new ForegroundColorSpan(paramInt), i, this.bGm.length() + i, 33);
-      paramViewGroup.lfq.setText((CharSequence)localObject);
-      return paramView;
-    }
-    paramViewGroup.lfq.setText(((s.a)localObject).text);
-    return paramView;
   }
   
-  public final s.a sn(int paramInt)
+  public final s.a xn(int paramInt)
   {
-    return (s.a)this.dTx.get(paramInt);
+    AppMethodBeat.i(112185);
+    s.a locala = (s.a)this.fjy.get(paramInt);
+    AppMethodBeat.o(112185);
+    return locala;
   }
 }
 

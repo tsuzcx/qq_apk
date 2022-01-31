@@ -1,246 +1,185 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import android.view.View;
+import android.content.SharedPreferences;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ai.a.h;
-import com.tencent.mm.ai.a.j;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.ct;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.af;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.u;
-import com.tencent.mm.ui.chatting.viewitems.aw;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.compatible.util.h;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.pluginsdk.model.app.p;
+import com.tencent.mm.pluginsdk.ui.tools.j;
+import com.tencent.mm.pluginsdk.ui.tools.j.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vfs.e;
 
 public final class t
 {
-  public static final class a
-    extends t.b
+  long lIf;
+  public LinearLayout lrN;
+  Context mContext;
+  public String pOH;
+  String pOI;
+  String pOJ;
+  SharedPreferences sp;
+  public FrameLayout zAa;
+  public FrameLayout zAb;
+  public TextView zAc;
+  public ImageView zAd;
+  t.a zAe;
+  public int zAf;
+  public boolean zAg;
+  String zAh;
+  public String zAi;
+  public View.OnClickListener zAj;
+  public View.OnClickListener zAk;
+  private j.a zAl;
+  public ChatFooterCustom zzZ;
+  
+  public t(ChatFooterCustom paramChatFooterCustom)
   {
-    public a(com.tencent.mm.ui.chatting.c.a parama)
+    AppMethodBeat.i(30748);
+    this.lrN = null;
+    this.zAe = t.a.zAp;
+    this.zAf = -1;
+    this.zAh = null;
+    this.lIf = -1L;
+    this.zAj = new t.1(this);
+    this.zAk = new t.2(this);
+    this.zAl = new j.a()
     {
-      super();
-    }
-    
-    public final void a(Intent paramIntent, aw paramaw)
-    {
-      if (!bk.bl(paramaw.vHn)) {
-        paramIntent.putExtra("Contact_BIZ_KF_WORKER_ID", paramaw.vHn);
+      public final void cdV()
+      {
+        AppMethodBeat.i(30743);
+        t.this.zAc.setText(2131298126);
+        AppMethodBeat.o(30743);
       }
-    }
+      
+      public final void onSuccess(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(30742);
+        t.this.zAf = paramAnonymousInt;
+        t.this.dGE();
+        AppMethodBeat.o(30742);
+      }
+    };
+    this.mContext = paramChatFooterCustom.getContext();
+    this.zzZ = paramChatFooterCustom;
+    AppMethodBeat.o(30748);
   }
   
-  public static class b
-    implements View.OnClickListener
+  public final void dGC()
   {
-    private com.tencent.mm.ui.chatting.c.a vko;
-    
-    public b(com.tencent.mm.ui.chatting.c.a parama)
+    AppMethodBeat.i(30749);
+    if (this.zAe == t.a.zAt)
     {
-      this.vko = parama;
-    }
-    
-    public void a(Intent paramIntent, aw paramaw) {}
-    
-    public void onClick(View paramView)
-    {
-      boolean bool = false;
-      Object localObject1 = (aw)paramView.getTag();
-      paramView = ((aw)localObject1).userName;
-      if ((paramView == null) || (paramView.equals(""))) {}
-      do
-      {
-        return;
-        if (((com.tencent.mm.ui.chatting.b.b.s)this.vko.ac(com.tencent.mm.ui.chatting.b.b.s.class)).cEW())
-        {
-          localObject1 = this.vko.vtz.getContext();
-          localObject2 = new Intent();
-          ((Intent)localObject2).putExtra("Contact_User", paramView);
-          ((Intent)localObject2).putExtra("Contact_Encryptusername", true);
-          ((Intent)localObject2).putExtra("Contact_IsLBSFriend", true);
-          ((Intent)localObject2).putExtra("Contact_IsLbsChattingProfile", true);
-          d.b((Context)localObject1, "profile", ".ui.ContactInfoUI", (Intent)localObject2);
-          return;
-        }
-        localObject2 = (com.tencent.mm.ui.chatting.b.b.c)this.vko.ac(com.tencent.mm.ui.chatting.b.b.c.class);
-        if (!((com.tencent.mm.ui.chatting.b.b.c)localObject2).cDG()) {
-          break;
-        }
-        paramView = ((com.tencent.mm.ui.chatting.b.b.c)localObject2).cDE().lo(paramView);
-      } while (paramView == null);
-      if ((paramView == null) || (bk.bl(paramView.field_profileUrl)))
-      {
-        if (paramView == null) {}
-        for (bool = true;; bool = false)
-        {
-          y.w("MicroMsg.ChattingListAvatarListener", "onClick userInfo == null:%s", new Object[] { Boolean.valueOf(bool) });
-          return;
-        }
-      }
-      y.i("MicroMsg.ChattingListAvatarListener", "onClick Url:%s", new Object[] { paramView.field_profileUrl });
-      z.MG().aq(paramView.field_userId, paramView.field_brandUserName);
-      localObject1 = new Intent();
-      ((Intent)localObject1).putExtra("rawUrl", paramView.field_profileUrl);
-      ((Intent)localObject1).putExtra("useJs", true);
-      d.b(this.vko.vtz.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject1);
+      this.zAd.setImageResource(2131231885);
+      AppMethodBeat.o(30749);
       return;
-      Object localObject2 = new Intent();
-      ((Intent)localObject2).putExtra("Contact_User", paramView);
-      a((Intent)localObject2, (aw)localObject1);
-      au.Hx();
-      Object localObject3 = com.tencent.mm.model.c.Fw().abl(paramView);
-      if ((localObject3 != null) && ((int)((com.tencent.mm.n.a)localObject3).dBe > 0) && (com.tencent.mm.n.a.gR(((ao)localObject3).field_type))) {
-        com.tencent.mm.ui.contact.e.a((Intent)localObject2, paramView);
-      }
-      if (com.tencent.mm.model.s.fn(this.vko.getTalkerUserName()))
+    }
+    this.zAd.setImageResource(2131231886);
+    AppMethodBeat.o(30749);
+  }
+  
+  public final void dGD()
+  {
+    AppMethodBeat.i(30750);
+    Object localObject;
+    if (p.u(this.mContext, "com.tencent.androidqqmail")) {
+      localObject = t.a.zAt;
+    }
+    for (;;)
+    {
+      this.zAe = ((t.a)localObject);
+      dGC();
+      ab.i("MicroMsg.ChattingQQMailFooterHandler", "dz[initRightBtnTv: status:%s]", new Object[] { this.zAe.toString() });
+      switch (t.8.zAo[this.zAe.ordinal()])
       {
-        au.Hx();
-        localObject3 = com.tencent.mm.model.c.FF().io(this.vko.getTalkerUserName());
-        ((Intent)localObject2).putExtra("Contact_RoomNickname", ((u)localObject3).gV(paramView));
-        ((Intent)localObject2).putExtra("Contact_Scene", 14);
-        ((Intent)localObject2).putExtra("Contact_ChatRoomId", this.vko.getTalkerUserName());
-        ((Intent)localObject2).putExtra("room_name", this.vko.getTalkerUserName());
-        if (((u)localObject3).field_roomowner == null) {
-          ((Intent)localObject2).putExtra("Is_RoomOwner", bool);
-        }
-      }
-      else
-      {
-        if (((aw)localObject1).bWO != null) {}
-        switch (((aw)localObject1).bWO.getType())
+      default: 
+        j.a(this.zAl);
+        AppMethodBeat.o(30750);
+        return;
+        this.sp = this.mContext.getSharedPreferences("QQMAIL", h.Mp());
+        this.lIf = this.sp.getLong("qqmail_downloadid", -1L);
+        if (this.lIf < 0L)
         {
-        case 56: 
-        default: 
-          label504:
-          if (!this.vko.cFE()) {
-            break;
+          if (bo.isNullOrNil(this.pOH)) {
+            localObject = t.a.zAu;
+          } else {
+            localObject = t.a.zAq;
           }
         }
-      }
-      for (int i = 3;; i = 2)
-      {
-        ((Intent)localObject2).putExtra("CONTACT_INFO_UI_SOURCE", i);
-        d.b(this.vko.vtz.getContext(), "profile", ".ui.ContactInfoUI", (Intent)localObject2, 213);
-        return;
-        bool = ((u)localObject3).field_roomowner.equals(q.Gj());
+        else
+        {
+          localObject = f.bjl().iA(this.lIf);
+          int i = ((FileDownloadTaskInfo)localObject).status;
+          this.zAh = ((FileDownloadTaskInfo)localObject).path;
+          switch (i)
+          {
+          case 2: 
+          default: 
+            if (bo.isNullOrNil(this.pOH)) {
+              localObject = t.a.zAu;
+            }
+            break;
+          case 3: 
+            if (e.cN(this.zAh)) {
+              localObject = t.a.zAs;
+            } else if (bo.isNullOrNil(this.pOH)) {
+              localObject = t.a.zAu;
+            } else {
+              localObject = t.a.zAq;
+            }
+            break;
+          case 1: 
+            localObject = t.a.zAr;
+            continue;
+            localObject = t.a.zAq;
+          }
+        }
         break;
-        ((Intent)localObject2).putExtra("Contact_Scene", 34);
-        ((Intent)localObject2).putExtra("Contact_IsLBSFriend", true);
-        break label504;
       }
     }
+    this.zAc.setText(2131298119);
+    AppMethodBeat.o(30750);
+    return;
+    this.zAc.setText(2131298117);
+    AppMethodBeat.o(30750);
+    return;
+    j.a(this.zAl);
+    AppMethodBeat.o(30750);
   }
   
-  public static final class h
-    extends t.d
+  public final void dGE()
   {
-    public h(com.tencent.mm.ui.chatting.c.a parama)
+    AppMethodBeat.i(30751);
+    if (this.zAf == 0)
     {
-      super();
+      this.zAc.setText(2131298126);
+      AppMethodBeat.o(30751);
+      return;
     }
-    
-    public final void a(View paramView, com.tencent.mm.ui.chatting.c.a parama, bi parambi)
+    if (this.zAf > 99)
     {
-      paramView = (aw)paramView.getTag();
-      int i = paramView.designerUIN;
-      parambi = paramView.designerName;
-      String str = paramView.designerRediretctUrl;
-      if (i != 0)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("geta8key_username", parama.getTalkerUserName());
-        localIntent.putExtra("rawUrl", paramView.cQF);
-        localIntent.putExtra("uin", i);
-        localIntent.putExtra("name", parambi);
-        localIntent.putExtra("rediret_url", str);
-        localIntent.putExtra("extra_scence", 22);
-        d.b(parama.vtz.getContext(), "emoji", ".ui.v2.EmojiStoreV2DesignerUI", localIntent);
-      }
+      this.zAc.setText(2131298125);
+      AppMethodBeat.o(30751);
+      return;
     }
-  }
-  
-  public static final class i
-    extends t.d
-  {
-    public i(com.tencent.mm.ui.chatting.c.a parama)
-    {
-      super();
-    }
-    
-    public final void a(View paramView, com.tencent.mm.ui.chatting.c.a parama, bi parambi)
-    {
-      paramView = (aw)paramView.getTag();
-      int i = paramView.tid;
-      parambi = paramView.dSN;
-      String str1 = paramView.desc;
-      String str2 = paramView.iconUrl;
-      String str3 = paramView.secondUrl;
-      int j = paramView.pageType;
-      if (i != 0)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("geta8key_username", parama.getTalkerUserName());
-        localIntent.putExtra("rawUrl", paramView.cQF);
-        localIntent.putExtra("set_id", i);
-        localIntent.putExtra("set_title", parambi);
-        localIntent.putExtra("set_iconURL", str2);
-        localIntent.putExtra("set_desc", str1);
-        localIntent.putExtra("headurl", str3);
-        localIntent.putExtra("pageType", j);
-        d.b(parama.vtz.getContext(), "emoji", ".ui.v2.EmojiStoreV2SingleProductUI", localIntent);
-        return;
-      }
-      y.i("MicroMsg.DesignerClickListener", "topic id is zero.");
-    }
-  }
-  
-  public static final class k
-    extends t.d
-  {
-    public k(com.tencent.mm.ui.chatting.c.a parama)
-    {
-      super();
-    }
-    
-    public final void a(View paramView, com.tencent.mm.ui.chatting.c.a parama, bi parambi)
-    {
-      paramView = (aw)paramView.getTag();
-      int i = paramView.tid;
-      parambi = paramView.dSN;
-      String str1 = paramView.desc;
-      String str2 = paramView.iconUrl;
-      String str3 = paramView.secondUrl;
-      if (i != 0)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("geta8key_username", parama.getTalkerUserName());
-        localIntent.putExtra("rawUrl", paramView.cQF);
-        localIntent.putExtra("topic_id", i);
-        localIntent.putExtra("topic_name", parambi);
-        localIntent.putExtra("topic_desc", str1);
-        localIntent.putExtra("topic_icon_url", str2);
-        localIntent.putExtra("topic_ad_url", str3);
-        localIntent.putExtra("extra_scence", 22);
-        d.b(parama.vtz.getContext(), "emoji", ".ui.EmojiStoreTopicUI", localIntent);
-        return;
-      }
-      y.i("MicroMsg.DesignerClickListener", "topic id is zero.");
-    }
+    this.zAc.setText(String.format(a.aq(this.mContext, 2131298124), new Object[] { Integer.valueOf(this.zAf) }));
+    AppMethodBeat.o(30751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.t
  * JD-Core Version:    0.7.0.1
  */

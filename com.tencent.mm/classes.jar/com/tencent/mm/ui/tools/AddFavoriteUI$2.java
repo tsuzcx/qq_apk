@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.snackbar.a.c;
 
 final class AddFavoriteUI$2
@@ -7,11 +8,13 @@ final class AddFavoriteUI$2
 {
   AddFavoriteUI$2(AddFavoriteUI paramAddFavoriteUI) {}
   
-  public final void bSd() {}
+  public final void cPa() {}
   
   public final void onHide()
   {
-    this.vYd.finish();
+    AppMethodBeat.i(34745);
+    this.Aqp.finish();
+    AppMethodBeat.o(34745);
   }
   
   public final void onShow() {}

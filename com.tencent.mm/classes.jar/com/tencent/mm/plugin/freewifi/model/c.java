@@ -1,40 +1,46 @@
 package com.tencent.mm.plugin.freewifi.model;
 
 import android.os.HandlerThread;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class c
 {
-  private HandlerThread kou;
-  private ah kov;
+  private HandlerThread mKh;
+  private ak mKi;
   
-  public final ah aTT()
+  public final ak bAw()
   {
-    if (this.kou == null)
+    AppMethodBeat.i(20696);
+    if (this.mKh == null)
     {
-      this.kou = e.aap("FreeWifiHandlerThread_handlerThread");
-      this.kou.start();
+      this.mKh = d.aqu("FreeWifiHandlerThread_handlerThread");
+      this.mKh.start();
     }
-    if (this.kov == null) {
-      this.kov = new ah(this.kou.getLooper());
+    if (this.mKi == null) {
+      this.mKi = new ak(this.mKh.getLooper());
     }
-    return this.kov;
+    ak localak = this.mKi;
+    AppMethodBeat.o(20696);
+    return localak;
   }
   
   public final void release()
   {
-    if (this.kou != null)
+    AppMethodBeat.i(20697);
+    if (this.mKh != null)
     {
-      this.kou.quit();
-      this.kou = null;
+      this.mKh.quit();
+      this.mKh = null;
     }
-    this.kov = null;
+    this.mKi = null;
+    AppMethodBeat.o(20697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.c
  * JD-Core Version:    0.7.0.1
  */

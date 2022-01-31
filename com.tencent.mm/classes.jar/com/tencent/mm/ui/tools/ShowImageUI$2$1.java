@@ -1,10 +1,11 @@
 package com.tencent.mm.ui.tools;
 
 import android.content.Intent;
-import com.tencent.mm.h.a.cj;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cm;
 import com.tencent.mm.pluginsdk.model.e;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h.d;
 
 final class ShowImageUI$2$1
@@ -12,41 +13,45 @@ final class ShowImageUI$2$1
 {
   ShowImageUI$2$1(ShowImageUI.2 param2) {}
   
-  public final void bF(int paramInt1, int paramInt2)
+  public final void ca(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(34992);
     switch (paramInt2)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(34992);
       return;
-    case 0: 
-      ShowImageUI.b(this.weY.weX);
+      ShowImageUI.b(this.AxO.AxN);
+      AppMethodBeat.o(34992);
       return;
-    case 1: 
-      ShowImageUI localShowImageUI = this.weY.weX;
-      cj localcj = new cj();
+      ShowImageUI localShowImageUI = this.AxO.AxN;
+      cm localcm = new cm();
       long l = localShowImageUI.getIntent().getLongExtra("key_message_id", -1L);
       if (-1L == l)
       {
-        y.w("MicroMsg.ShowImageUI", "msg id error, try fav simple data");
-        e.a(localcj, localShowImageUI.getIntent().getIntExtra("key_favorite_source_type", 1), localShowImageUI.getIntent().getStringExtra("key_image_path"));
+        ab.w("MicroMsg.ShowImageUI", "msg id error, try fav simple data");
+        e.a(localcm, localShowImageUI.getIntent().getIntExtra("key_favorite_source_type", 1), localShowImageUI.getIntent().getStringExtra("key_image_path"));
       }
       for (;;)
       {
-        localcj.bIw.activity = localShowImageUI;
-        a.udP.m(localcj);
+        localcm.cpR.activity = localShowImageUI;
+        a.ymk.l(localcm);
+        AppMethodBeat.o(34992);
         return;
-        e.a(localcj, l);
+        e.a(localcm, l);
       }
-    case 2: 
-      ShowImageUI.c(this.weY.weX);
+      ShowImageUI.c(this.AxO.AxN);
+      AppMethodBeat.o(34992);
       return;
+      ShowImageUI.d(this.AxO.AxN);
     }
-    ShowImageUI.d(this.weY.weX);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShowImageUI.2.1
  * JD-Core Version:    0.7.0.1
  */

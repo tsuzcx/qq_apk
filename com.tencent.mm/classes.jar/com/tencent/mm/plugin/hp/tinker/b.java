@@ -1,124 +1,146 @@
 package com.tencent.mm.plugin.hp.tinker;
 
-import android.app.ActivityManager;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import com.tencent.mm.app.s;
-import com.tencent.mm.plugin.hp.b.b.a;
-import com.tencent.mm.plugin.hp.b.b.b;
-import com.tencent.mm.plugin.hp.d.c;
-import com.tencent.mm.sdk.platformtools.d;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
-import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
-import java.io.File;
-import java.util.Properties;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.as;
 
 public final class b
-  extends com.tencent.tinker.lib.b.a
 {
-  private final int lno;
+  private final String nKF;
+  private final String nKG;
   
-  public b(Context paramContext)
+  private b(String paramString1, String paramString2)
   {
-    super(paramContext);
-    this.lno = ((ActivityManager)paramContext.getSystemService("activity")).getMemoryClass();
-    com.tencent.tinker.lib.f.a.i("Tinker.TinkerPatchListener", "application maxMemory:" + this.lno, new Object[0]);
+    AppMethodBeat.i(156035);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = new IllegalArgumentException("baseClientVersion is empty.");
+      AppMethodBeat.o(156035);
+      throw paramString1;
+    }
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = new IllegalArgumentException("patchClientVersion is empty.");
+      AppMethodBeat.o(156035);
+      throw paramString1;
+    }
+    this.nKF = paramString1;
+    this.nKG = paramString2;
+    AppMethodBeat.o(156035);
   }
   
-  public final int dz(String paramString1, String paramString2)
+  private static int QP(String paramString)
   {
-    boolean bool = false;
-    Object localObject = new File(paramString1);
-    com.tencent.tinker.lib.f.a.i("Tinker.TinkerPatchListener", "receive a patch file: %s, file size:%d", new Object[] { paramString1, Long.valueOf(SharePatchFileUtil.ag((File)localObject)) });
-    int j = super.dz(paramString1, paramString2);
-    int i = j;
-    if (j == 0)
+    AppMethodBeat.i(156038);
+    Object localObject = paramString;
+    try
     {
-      if (this.lno < 45) {
-        i = -23;
-      }
-    }
-    else
-    {
-      j = i;
-      if (i == 0)
+      String str;
+      if (paramString.startsWith("0x"))
       {
-        com.tencent.tinker.lib.e.a.hN(this.context);
-        j = i;
-        if (i == 0)
+        localObject = paramString;
+        str = paramString.substring(2);
+      }
+      for (;;)
+      {
+        localObject = str;
+        int i = Integer.parseInt(str, 16);
+        AppMethodBeat.o(156038);
+        return i;
+        localObject = paramString;
+        if (!paramString.endsWith("h"))
         {
-          paramString1 = ShareTinkerInternals.K((File)localObject);
-          if (paramString1 != null) {
-            break label237;
-          }
-          j = -24;
+          str = paramString;
+          localObject = paramString;
+          if (!paramString.endsWith("H")) {}
         }
-      }
-      label103:
-      i = j;
-      if (j == 0)
-      {
-        i = j;
-        if (ShareTinkerInternals.cQP())
+        else
         {
-          i = j;
-          if (s.a(new Throwable().getStackTrace())) {
-            i = -26;
-          }
+          localObject = paramString;
+          str = paramString.substring(0, paramString.length() - 1);
         }
       }
-      localObject = c.K((File)localObject);
-      if (localObject == null) {
-        break label304;
-      }
-      paramString1 = d.CLIENT_VERSION;
-      paramString2 = ((Properties)localObject).getProperty("patch.client.ver");
-      localObject = ((Properties)localObject).getProperty("NEW_TINKER_ID");
-      int k = b.b.lmK.value;
-      if (i != 0) {
-        break label293;
-      }
-      j = b.a.lmG.value;
-      label195:
-      com.tencent.mm.plugin.hp.b.b.e(paramString1, paramString2, (String)localObject, k, j);
+      return 0;
     }
-    for (;;)
+    catch (Throwable paramString)
     {
-      if (i == 0) {
-        bool = true;
-      }
-      com.tencent.mm.plugin.hp.b.b.gM(bool);
-      return i;
-      if (!c.bbr())
-      {
-        i = -21;
-        break;
-      }
-      i = 0;
-      break;
-      label237:
-      paramString1 = paramString1.getProperty("patch.basepack.client.ver");
-      com.tencent.tinker.lib.f.a.i("Tinker.TinkerPatchListener", "get BASE_CLIENT_VERSION:" + paramString1, new Object[0]);
-      if (paramString1 != null)
-      {
-        j = i;
-        if (paramString1.equalsIgnoreCase(com.tencent.mm.loader.a.a.CLIENT_VERSION)) {
-          break label103;
-        }
-      }
-      j = -25;
-      break label103;
-      label293:
-      j = b.a.lmF.value;
-      break label195;
-      label304:
-      y.i("Tinker.TinkerPatchListener", "patchCheck properties is null.");
+      d.e("MicroMsg.TinkerDeployStatistic", "[-] Fail to parse hex string: %s", new Object[] { localObject });
+      AppMethodBeat.o(156038);
     }
+  }
+  
+  @SuppressLint({"ApplySharedPref"})
+  public static void ahe(String paramString)
+  {
+    AppMethodBeat.i(156787);
+    SharedPreferences localSharedPreferences = bIl();
+    if (!localSharedPreferences.contains(paramString))
+    {
+      long l = System.currentTimeMillis();
+      localSharedPreferences.edit().putLong(paramString, l).commit();
+    }
+    AppMethodBeat.o(156787);
+  }
+  
+  public static SharedPreferences bIl()
+  {
+    AppMethodBeat.i(156037);
+    try
+    {
+      as localas = as.apr("tinker_deploy_stats_ts");
+      AppMethodBeat.o(156037);
+      return localas;
+    }
+    catch (Throwable localThrowable)
+    {
+      d.printErrStackTrace("MicroMsg.TinkerDeployStatistic", localThrowable, "[-] Fail to init mmkv storage, fallback to system sp.", new Object[0]);
+      SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("tinker_deploy_stats_ts", 4);
+      AppMethodBeat.o(156037);
+      return localSharedPreferences;
+    }
+  }
+  
+  public static b eP(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(156036);
+    paramString1 = new b(paramString1, paramString2);
+    AppMethodBeat.o(156036);
+    return paramString1;
+  }
+  
+  public final void T(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(156040);
+    String str = String.valueOf(paramInt) + ',' + QP(this.nKF) + ',' + QP(this.nKG) + ',' + paramLong;
+    h.qsU.a(17676, str, true, true);
+    AppMethodBeat.o(156040);
+  }
+  
+  public final void dbX()
+  {
+    AppMethodBeat.i(156788);
+    ahe(xC(1));
+    AppMethodBeat.o(156788);
+  }
+  
+  public final String xC(int paramInt)
+  {
+    AppMethodBeat.i(156039);
+    String str = "mmkv_key_" + QP(this.nKF) + "_" + QP(this.nKG) + "_" + paramInt;
+    AppMethodBeat.o(156039);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,90 +5,94 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.plugin.shake.d.a.n;
 import com.tencent.mm.plugin.shake.d.a.o;
 import com.tencent.mm.pluginsdk.f.h;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMImageView;
-import com.tencent.mm.ui.r;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.p;
 import java.util.GregorianCalendar;
 
 final class ShakeTvHistoryListUI$a
-  extends r<n>
+  extends p<n>
 {
-  private LayoutInflater Lu;
+  private LayoutInflater mInflater;
   
   public ShakeTvHistoryListUI$a(ShakeTvHistoryListUI paramShakeTvHistoryListUI, Context paramContext)
   {
     super(paramContext, new n());
-    this.Lu = LayoutInflater.from(paramContext);
+    AppMethodBeat.i(24898);
+    this.mInflater = LayoutInflater.from(paramContext);
+    AppMethodBeat.o(24898);
+  }
+  
+  public final void Ku()
+  {
+    AppMethodBeat.i(24900);
+    setCursor(m.clp().clT());
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(24900);
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(24901);
+    Ku();
+    AppMethodBeat.o(24901);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(24899);
     Object localObject1;
     Object localObject2;
     long l1;
     if (paramView == null)
     {
-      paramViewGroup = this.Lu.inflate(R.i.shake_tv_history_item, paramViewGroup, false);
+      paramViewGroup = this.mInflater.inflate(2130970719, paramViewGroup, false);
       localObject1 = new ShakeTvHistoryListUI.a.a(this);
-      ((ShakeTvHistoryListUI.a.a)localObject1).odB = ((MMImageView)paramViewGroup.findViewById(R.h.shake_tv_history_item_icon));
-      ((ShakeTvHistoryListUI.a.a)localObject1).haW = ((TextView)paramViewGroup.findViewById(R.h.shake_tv_history_item_title));
-      ((ShakeTvHistoryListUI.a.a)localObject1).lLL = ((TextView)paramViewGroup.findViewById(R.h.shake_tv_history_item_time));
+      ((ShakeTvHistoryListUI.a.a)localObject1).qRI = ((MMImageView)paramViewGroup.findViewById(2131827755));
+      ((ShakeTvHistoryListUI.a.a)localObject1).iJG = ((TextView)paramViewGroup.findViewById(2131827756));
+      ((ShakeTvHistoryListUI.a.a)localObject1).ojf = ((TextView)paramViewGroup.findViewById(2131827757));
       paramViewGroup.setTag(localObject1);
       localObject2 = (n)getItem(paramInt);
-      e.a(((ShakeTvHistoryListUI.a.a)localObject1).odB, ((n)localObject2).field_iconurl, 0, true);
-      ((ShakeTvHistoryListUI.a.a)localObject1).haW.setText(((n)localObject2).field_title);
-      localObject1 = ((ShakeTvHistoryListUI.a.a)localObject1).lLL;
-      paramView = this.odz.mController.uMN;
+      e.a(((ShakeTvHistoryListUI.a.a)localObject1).qRI, ((n)localObject2).field_iconurl, 0, true);
+      ((ShakeTvHistoryListUI.a.a)localObject1).iJG.setText(((n)localObject2).field_title);
+      localObject1 = ((ShakeTvHistoryListUI.a.a)localObject1).ojf;
+      paramView = this.qRG.getContext();
       l1 = ((n)localObject2).field_createtime * 1000L;
       localObject2 = new GregorianCalendar();
       if (l1 >= 3600000L) {
-        break label188;
+        break label193;
       }
       paramView = "";
     }
     for (;;)
     {
       ((TextView)localObject1).setText(paramView);
+      AppMethodBeat.o(24899);
       return paramViewGroup;
       localObject1 = (ShakeTvHistoryListUI.a.a)paramView.getTag();
       paramViewGroup = paramView;
       break;
-      label188:
+      label193:
       localObject2 = new GregorianCalendar(((GregorianCalendar)localObject2).get(1), ((GregorianCalendar)localObject2).get(2), ((GregorianCalendar)localObject2).get(5));
       long l2 = l1 - ((GregorianCalendar)localObject2).getTimeInMillis();
       if ((l2 > 0L) && (l2 <= 86400000L))
       {
-        paramView = h.g(paramView.getString(R.l.fmt_normal_time_24), l1 / 1000L);
+        paramView = h.formatTime(paramView.getString(2131300062), l1 / 1000L);
       }
       else
       {
         l2 = l1 - ((GregorianCalendar)localObject2).getTimeInMillis() + 86400000L;
         if ((l2 > 0L) && (l2 <= 86400000L)) {
-          paramView = paramView.getString(R.l.fmt_pre_yesterday);
+          paramView = paramView.getString(2131300084);
         } else {
-          paramView = h.g(paramView.getString(R.l.fmt_longdate), l1 / 1000L);
+          paramView = h.formatTime(paramView.getString(2131300050), l1 / 1000L);
         }
       }
     }
-  }
-  
-  public final void yc()
-  {
-    setCursor(m.bzW().bAA());
-    super.notifyDataSetChanged();
-  }
-  
-  protected final void yd()
-  {
-    yc();
   }
 }
 

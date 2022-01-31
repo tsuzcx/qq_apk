@@ -7,7 +7,7 @@ final class BizTimeLineHotListView$2
 {
   BizTimeLineHotListView$2(BizTimeLineHotListView paramBizTimeLineHotListView) {}
   
-  public final boolean gM()
+  public final boolean ih()
   {
     return false;
   }

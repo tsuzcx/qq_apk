@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ProductPurchaseAreaUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class ProductPurchaseAreaUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nKd.finish();
+    AppMethodBeat.i(81072);
+    this.qxF.finish();
+    AppMethodBeat.o(81072);
     return false;
   }
 }

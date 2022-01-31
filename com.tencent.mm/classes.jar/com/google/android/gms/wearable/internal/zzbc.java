@@ -1,25 +1,14 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.Channel.GetOutputStreamResult;
 
-public class zzbc
-  extends zza
+final class zzbc
+  extends zzn<Channel.GetOutputStreamResult>
 {
-  public static final Parcelable.Creator<zzbc> CREATOR = new zzbb();
-  public final int statusCode;
-  public final boolean zzbUA;
-  
-  public zzbc(int paramInt, boolean paramBoolean)
+  zzbc(zzay paramzzay, GoogleApiClient paramGoogleApiClient)
   {
-    this.statusCode = paramInt;
-    this.zzbUA = paramBoolean;
-  }
-  
-  public void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    zzbb.zza(this, paramParcel, paramInt);
+    super(paramGoogleApiClient);
   }
 }
 

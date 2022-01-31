@@ -5,7 +5,7 @@ public final class c$cx
 {
   public c$cx()
   {
-    super("getWechatVerifyTicket", "getWechatVerifyTicket", 112, false);
+    super("getSearchSnsImageList", "", 10000, false);
   }
 }
 

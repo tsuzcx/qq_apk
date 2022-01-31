@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout style="@style/gf"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/ap9" android:layout_alignParentRight="true" style="@style/gc" layout="@layout/m2" />
+    <TextView android:id="@id/ox" android:visibility="gone" android:layout_toLeftOf="@id/ap9" android:layout_alignTop="@id/ap9" style="@style/gl" />
+    <TextView android:id="@id/aty" android:text="@string/aqs" android:layout_toLeftOf="@id/ap9" android:layout_below="@id/ox" android:layout_alignRight="@id/ox" style="@style/gj" />
+    <TextView android:id="@id/ava" android:background="@drawable/k6" android:layout_width="80.0dip" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:layout_toLeftOf="@id/ap9" android:layout_below="@id/aty" android:layout_alignRight="@id/ox" android:backgroundTintMode="src_atop" style="@style/gh" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/ava" android:layout_alignTop="@id/ava" android:layout_alignBottom="@id/ava">
+        <ProgressBar android:id="@id/avb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a0t" />
+    </LinearLayout>
+    <FrameLayout android:gravity="right" android:layout_gravity="right" android:id="@id/au0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/ap9" android:layout_alignRight="@id/ox" style="@style/gh">
+        <FrameLayout android:id="@id/au1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:id="@id/au2" android:background="@drawable/k6" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/eg" android:drawableRight="@raw/chatto_voice_playing" android:backgroundTintMode="src_atop" />
+            <com.tencent.mm.ui.base.AnimImageView android:id="@id/au3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="@dimen/eg" />
+            <TextView android:layout_gravity="center|right" android:id="@id/oy" android:layout_marginRight="26.0dip" android:layout_alignRight="@id/au2" style="@style/gv" />
+        </FrameLayout>
+    </FrameLayout>
+    <ViewStub android:id="@id/aqv" android:layout="@layout/o7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="@dimen/lb" android:layout_toLeftOf="@id/ap9" android:layout_below="@id/au0" android:layout_alignRight="@id/ox" />
+    <FrameLayout android:gravity="right" android:layout_gravity="right" android:id="@id/avc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/ap9" android:layout_below="@id/ava" android:layout_alignRight="@id/ox">
+        <ImageView android:background="@drawable/b35" android:layout_width="80.0dip" android:layout_height="fill_parent" android:minHeight="@dimen/eg" />
+        <ImageView android:id="@id/avd" android:background="@drawable/b34" android:layout_width="80.0dip" android:layout_height="fill_parent" android:minHeight="@dimen/eg" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/au0" android:layout_alignTop="@id/ap9" android:layout_alignBottom="@id/ap9">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/av2" android:paddingRight="@dimen/n_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+        <ImageView android:id="@id/au4" android:layout_centerVertical="true" style="@style/gp" />
+    </LinearLayout>
+</RelativeLayout>

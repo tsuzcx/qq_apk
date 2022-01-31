@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.wear.model.f;
 
-import com.tencent.mm.h.a.ub;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.g.a.vx;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class c
   extends d
 {
   protected final void execute()
   {
-    if (com.tencent.mm.plugin.wear.model.a.bYL().qRu.bYQ())
+    if (com.tencent.mm.plugin.wear.model.a.cYy().uGC.cYD())
     {
-      ub localub = new ub();
-      localub.cez.bHz = 11;
-      com.tencent.mm.sdk.b.a.udP.m(localub);
+      vx localvx = new vx();
+      localvx.cNm.coO = 11;
+      com.tencent.mm.sdk.b.a.ymk.l(localvx);
       send();
       return;
     }
-    y.i("MicroMsg.WearBaseSendTask", "can not send message to wear");
+    ab.i("MicroMsg.WearBaseSendTask", "can not send message to wear");
   }
   
-  public abstract void send();
+  protected abstract void send();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.c
  * JD-Core Version:    0.7.0.1
  */

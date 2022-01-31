@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class OpenFileChooserUI$6$2
@@ -10,12 +10,14 @@ final class OpenFileChooserUI$6$2
   
   public final void run()
   {
-    h.a(this.rlF.rlE, this.rlF.rlE.getString(R.l.webview_jssdk_choose_video_type_not_support), this.rlF.rlE.getString(R.l.app_tip), this.rlF.rlE.getString(R.l.app_i_known), false, new OpenFileChooserUI.6.2.1(this));
+    AppMethodBeat.i(7450);
+    h.a(this.vbh.vbg, this.vbh.vbg.getString(2131305869), this.vbh.vbg.getString(2131297087), this.vbh.vbg.getString(2131296977), false, new OpenFileChooserUI.6.2.1(this));
+    AppMethodBeat.o(7450);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.OpenFileChooserUI.6.2
  * JD-Core Version:    0.7.0.1
  */

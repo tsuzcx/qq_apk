@@ -1,80 +1,82 @@
 package com.tencent.mm.plugin.webview.ui.tools.a;
 
 import android.content.Context;
-import com.tencent.mm.h.a.dz;
-import com.tencent.mm.h.a.ea;
-import com.tencent.mm.h.a.ed;
-import com.tencent.mm.h.a.ed.b;
-import com.tencent.mm.h.a.ej;
-import com.tencent.mm.h.a.ej.b;
-import com.tencent.mm.h.a.lg;
-import com.tencent.mm.pluginsdk.ui.tools.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.eg;
+import com.tencent.mm.g.a.eg.b;
+import com.tencent.mm.g.a.em;
+import com.tencent.mm.g.a.em.b;
+import com.tencent.mm.pluginsdk.ui.tools.t.a;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
-  implements r.a
+  implements t.a
 {
-  private static final byte[] jwd = { -2, 1, 1 };
-  private static b rtl;
-  public String bJw;
+  private static final byte[] lFC = { -2, 1, 1 };
+  private static b vjr;
+  public String cqQ;
   public boolean hasInit = false;
-  public byte[] rtb = null;
-  public boolean rtd = false;
-  public b.a rtk;
-  public int rtm = -1;
-  public boolean rtn = false;
+  public byte[] vjh = null;
+  public boolean vjj = false;
+  public b.a vjq;
+  public int vjs = -1;
+  public boolean vjt = false;
   
-  public static boolean bg(byte[] paramArrayOfByte)
+  public static boolean bH(byte[] paramArrayOfByte)
   {
     return (paramArrayOfByte != null) && (paramArrayOfByte.length >= 9) && (paramArrayOfByte[(paramArrayOfByte.length - 7)] == 1) && (paramArrayOfByte[(paramArrayOfByte.length - 8)] == 1) && (paramArrayOfByte[(paramArrayOfByte.length - 9)] == -2);
   }
   
-  public static b cfk()
+  public static b dft()
   {
-    if (rtl == null) {
-      rtl = new b();
+    AppMethodBeat.i(8329);
+    if (vjr == null) {
+      vjr = new b();
     }
-    return rtl;
+    b localb = vjr;
+    AppMethodBeat.o(8329);
+    return localb;
   }
   
-  public final void cfi()
+  public final void dfr()
   {
-    y.i("MicroMsg.webview.WebViewExDeviceMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.rtd) });
-    if (this.rtd)
+    AppMethodBeat.i(8330);
+    ab.i("MicroMsg.webview.WebViewExDeviceMgr", "stopPlugin, isScaning = %s", new Object[] { Boolean.valueOf(this.vjj) });
+    if (this.vjj)
     {
-      localObject = new ed();
-      ((ed)localObject).bKD.bJx = false;
-      ((ed)localObject).bKD.bJw = this.bJw;
-      a.udP.m((com.tencent.mm.sdk.b.b)localObject);
-      if (!((ed)localObject).bKE.bJy) {
-        y.e("MicroMsg.webview.WebViewExDeviceMgr", "stopScanWXDevice fail");
+      localObject = new eg();
+      ((eg)localObject).crX.cqR = false;
+      ((eg)localObject).crX.cqQ = this.cqQ;
+      a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+      if (!((eg)localObject).crY.cqS) {
+        ab.e("MicroMsg.webview.WebViewExDeviceMgr", "stopScanWXDevice fail");
       }
-      this.rtd = false;
+      this.vjj = false;
     }
     this.hasInit = false;
-    if (this.rtk != null)
+    if (this.vjq != null)
     {
-      a.udP.d(this.rtk.rto);
-      a.udP.d(this.rtk.rtp);
-      a.udP.d(this.rtk.rtq);
-      a.udP.d(this.rtk.rte);
-      a.udP.d(this.rtk.odk);
-      this.rtk = null;
+      a.ymk.d(this.vjq.vju);
+      a.ymk.d(this.vjq.vjv);
+      a.ymk.d(this.vjq.vjw);
+      a.ymk.d(this.vjq.vjk);
+      a.ymk.d(this.vjq.qRq);
+      this.vjq = null;
     }
-    this.rtb = null;
-    Object localObject = new ej();
-    ((ej)localObject).bKU.bwK = "";
-    ((ej)localObject).bKU.direction = 0;
-    ((ej)localObject).bKU.clear = true;
-    a.udP.m((com.tencent.mm.sdk.b.b)localObject);
-    y.i("MicroMsg.webview.WebViewExDeviceMgr", "stop EcDeviceMgr for webview %s", new Object[] { Boolean.valueOf(((ej)localObject).bKV.bJy) });
+    this.vjh = null;
+    Object localObject = new em();
+    ((em)localObject).cso.bYu = "";
+    ((em)localObject).cso.direction = 0;
+    ((em)localObject).cso.clear = true;
+    a.ymk.l((com.tencent.mm.sdk.b.b)localObject);
+    ab.i("MicroMsg.webview.WebViewExDeviceMgr", "stop EcDeviceMgr for webview %s", new Object[] { Boolean.valueOf(((em)localObject).csp.cqS) });
+    AppMethodBeat.o(8330);
   }
   
-  public final void cfj() {}
+  public final void dfs() {}
   
-  public final void eA(Context paramContext) {}
+  public final void fz(Context paramContext) {}
   
   public final String getName()
   {

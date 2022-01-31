@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.sight.encode.ui;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.encode.a.b.a;
 import com.tencent.mm.ui.base.h;
 import java.util.List;
@@ -13,9 +13,11 @@ final class MainSightForwardContainerView$6
   
   public final void onError(int paramInt)
   {
-    if ((this.ohR.size() <= 1) || (-1 == paramInt)) {
-      h.bC(this.ohP.getContext(), this.ohP.getContext().getString(R.l.sendrequest_send_fail));
+    AppMethodBeat.i(25041);
+    if ((this.qWe.size() <= 1) || (-1 == paramInt)) {
+      h.bO(this.qWc.getContext(), this.qWc.getContext().getString(2131303126));
     }
+    AppMethodBeat.o(25041);
   }
 }
 

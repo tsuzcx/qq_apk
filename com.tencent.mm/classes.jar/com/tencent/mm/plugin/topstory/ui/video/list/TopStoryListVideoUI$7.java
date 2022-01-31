@@ -1,31 +1,38 @@
 package com.tencent.mm.plugin.topstory.ui.video.list;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.topstory.ui.video.TopStoryBaseVideoUI;
-import com.tencent.mm.plugin.topstory.ui.video.d;
-import com.tencent.mm.plugin.topstory.ui.video.r;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class TopStoryListVideoUI$7
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
   TopStoryListVideoUI$7(TopStoryListVideoUI paramTopStoryListVideoUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    g.DP().Dz().c(ac.a.uzO, Integer.valueOf(1));
-    this.pId.pFp.bMs();
-    TopStoryListVideoUI.h(this.pId).setVisibility(8);
-    TopStoryListVideoUI.i(this.pId).b(this.pId);
+    AppMethodBeat.i(2107);
+    if (this.tlQ.tkT.getVisibility() == 0)
+    {
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      if (TopStoryListVideoUI.g(this.tlQ.tkV, f1, f2))
+      {
+        ab.i("MicroMsg.TopStory.TopStoryVideoUI", "touch in mContentViewNotFull");
+        AppMethodBeat.o(2107);
+        return false;
+      }
+      this.tlQ.tkT.setVisibility(8);
+    }
+    AppMethodBeat.o(2107);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.TopStoryListVideoUI.7
  * JD-Core Version:    0.7.0.1
  */

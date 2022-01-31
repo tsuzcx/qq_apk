@@ -2,7 +2,7 @@ package com.tencent.mm.ui;
 
 import android.database.DataSetObserver;
 import android.view.View;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ServiceNotifySettingsUI$3
   extends DataSetObserver
@@ -11,11 +11,13 @@ final class ServiceNotifySettingsUI$3
   
   public final void onChanged()
   {
-    View localView = this.uQG.findViewById(R.h.listTitleTv);
-    if (ServiceNotifySettingsUI.a(this.uQG).isEmpty()) {}
+    AppMethodBeat.i(29852);
+    View localView = this.zeQ.findViewById(2131827579);
+    if (ServiceNotifySettingsUI.a(this.zeQ).isEmpty()) {}
     for (int i = 4;; i = 0)
     {
       localView.setVisibility(i);
+      AppMethodBeat.o(29852);
       return;
     }
   }

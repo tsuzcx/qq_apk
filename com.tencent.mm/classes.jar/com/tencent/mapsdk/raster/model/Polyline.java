@@ -7,9 +7,13 @@ public abstract interface Polyline
 {
   public abstract boolean equals(Object paramObject);
   
+  public abstract void eraseTo(int paramInt, LatLng paramLatLng);
+  
   public abstract int getColor();
   
   public abstract String getId();
+  
+  public abstract int getLevel();
   
   public abstract List<LatLng> getPoints();
   
@@ -33,7 +37,11 @@ public abstract interface Polyline
   
   public abstract void setDottedLine(boolean paramBoolean);
   
+  public abstract void setEraseable(boolean paramBoolean);
+  
   public abstract void setGeodesic(boolean paramBoolean);
+  
+  public abstract void setLevel(int paramInt);
   
   public abstract void setPoints(List<LatLng> paramList);
   
@@ -45,7 +53,7 @@ public abstract interface Polyline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.Polyline
  * JD-Core Version:    0.7.0.1
  */

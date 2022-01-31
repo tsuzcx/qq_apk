@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 
 final class SnsCommentFooter$2
@@ -9,11 +10,9 @@ final class SnsCommentFooter$2
   
   public final void run()
   {
-    if ((SnsCommentFooter.a(this.oXQ)) && (SnsCommentFooter.b(this.oXQ) != null))
-    {
-      SnsCommentFooter.b(this.oXQ).setVisibility(0);
-      SnsCommentFooter.c(this.oXQ);
-    }
+    AppMethodBeat.i(38876);
+    SnsCommentFooter.a(this.rQk).setVisibility(0);
+    AppMethodBeat.o(38876);
   }
 }
 

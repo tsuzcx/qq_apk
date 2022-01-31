@@ -5,10 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,21 +15,30 @@ public final class WalletCardSelectUI$a
   extends BaseAdapter
 {
   private Context context;
-  List<ElementQuery> items = new ArrayList();
+  List<ElementQuery> items;
   
   public WalletCardSelectUI$a(WalletCardSelectUI paramWalletCardSelectUI, Context paramContext)
   {
+    AppMethodBeat.i(47301);
+    this.items = new ArrayList();
     this.context = paramContext;
+    AppMethodBeat.o(47301);
   }
   
-  public final ElementQuery AU(int paramInt)
+  public final ElementQuery IF(int paramInt)
   {
-    return (ElementQuery)this.items.get(paramInt);
+    AppMethodBeat.i(47305);
+    ElementQuery localElementQuery = (ElementQuery)this.items.get(paramInt);
+    AppMethodBeat.o(47305);
+    return localElementQuery;
   }
   
   public final int getCount()
   {
-    return this.items.size();
+    AppMethodBeat.i(47304);
+    int i = this.items.size();
+    AppMethodBeat.o(47304);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -40,27 +48,32 @@ public final class WalletCardSelectUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(47303);
     paramViewGroup = new WalletCardSelectUI.a.a(this);
-    View localView = View.inflate(this.context, a.g.wallet_bank_select_item, null);
-    paramViewGroup.qCM = ((CheckedTextView)localView.findViewById(a.f.check_tv_cv));
+    View localView = View.inflate(this.context, 2130971136, null);
+    paramViewGroup.upw = ((CheckedTextView)localView.findViewById(2131828976));
     ElementQuery localElementQuery = (ElementQuery)this.items.get(paramInt);
-    paramView = bk.aM(localElementQuery.lnT, "");
-    if (!bk.bl(localElementQuery.qvl))
+    paramView = bo.bf(localElementQuery.nLq, "");
+    if (!bo.isNullOrNil(localElementQuery.uhD))
     {
-      paramView = paramView + "[" + localElementQuery.qvl + "]";
-      paramViewGroup.qCM.setEnabled(false);
+      paramView = paramView + "[" + localElementQuery.uhD + "]";
+      paramViewGroup.upw.setEnabled(false);
     }
     for (;;)
     {
-      paramViewGroup.qCM.setText(paramView);
+      paramViewGroup.upw.setText(paramView);
+      AppMethodBeat.o(47303);
       return localView;
-      paramViewGroup.qCM.setEnabled(true);
+      paramViewGroup.upw.setEnabled(true);
     }
   }
   
   public final boolean isEnabled(int paramInt)
   {
-    return bk.bl(((ElementQuery)this.items.get(paramInt)).qvl);
+    AppMethodBeat.i(47302);
+    boolean bool = bo.isNullOrNil(((ElementQuery)this.items.get(paramInt)).uhD);
+    AppMethodBeat.o(47302);
+    return bool;
   }
 }
 

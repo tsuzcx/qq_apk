@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class LoginHistoryUI$4
   implements View.OnClickListener
@@ -11,13 +12,15 @@ final class LoginHistoryUI$4
   
   public final void onClick(View paramView)
   {
-    this.fnc.XM();
-    this.fnd.cfU();
+    AppMethodBeat.i(124916);
+    this.gEw.hideVKB();
+    this.gEx.crd();
+    AppMethodBeat.o(124916);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginHistoryUI.4
  * JD-Core Version:    0.7.0.1
  */

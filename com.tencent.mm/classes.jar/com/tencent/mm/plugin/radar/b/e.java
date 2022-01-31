@@ -1,304 +1,372 @@
 package com.tencent.mm.plugin.radar.b;
 
-import a.k;
+import a.f.b.j;
+import a.l;
+import a.v;
 import android.content.Context;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.modelgeo.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.modelgeo.b.a;
+import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.pluginsdk.model.lbs.Location;
-import com.tencent.mm.protocal.c.bil;
-import com.tencent.mm.protocal.c.bim;
-import com.tencent.mm.protocal.c.bin;
-import com.tencent.mm.protocal.c.bio;
-import com.tencent.mm.protocal.c.biq;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.brd;
+import com.tencent.mm.protocal.protobuf.bre;
+import com.tencent.mm.protocal.protobuf.brf;
+import com.tencent.mm.protocal.protobuf.brg;
+import com.tencent.mm.protocal.protobuf.bri;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/model/RadarManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "delegate", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "delayRadarRemove", "com/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1", "Lcom/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1;", "delayRadarSearch", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "encodeUserNameMap", "", "", "getEncodeUserNameMap", "()Ljava/util/Map;", "setEncodeUserNameMap", "(Ljava/util/Map;)V", "isCancel", "", "lastStateTable", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getLastStateTable", "setLastStateTable", "location", "Lcom/tencent/mm/pluginsdk/model/lbs/Location;", "locationGeo", "Lcom/tencent/mm/modelgeo/LocationGeo;", "mOnLocationGet", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "members", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "radarMemberList", "Lcom/tencent/mm/protocal/protobuf/RadarMember;", "getRadarMemberList", "()Ljava/util/LinkedList;", "setRadarMemberList", "(Ljava/util/LinkedList;)V", "sceneRadarRelationChain", "Lcom/tencent/mm/plugin/radar/model/NetSceneRadarRelationChain;", "sceneRadarSearch", "Lcom/tencent/mm/plugin/radar/model/NetSceneRadarSearch;", "selectedStatusMap", "Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "getSelectedStatusMap", "setSelectedStatusMap", "stateTable", "getStateTable", "setStateTable", "status", "Lcom/tencent/mm/plugin/radar/model/RadarManager$Status;", "tempLatestChangeStatTable", "", "Lcom/tencent/mm/plugin/radar/model/RadarManager$LatestChangeStat;", "getTempLatestChangeStatTable", "setTempLatestChangeStatTable", "ticket", "doRadarRelationChain", "", "memList", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "getChooseStatus", "member", "getState", "old", "username", "getStateImpl", "onCreate", "onDestroy", "onLocationGot", "isOk", "onPause", "onRadarMemberReturn", "errType", "", "errCode", "radarMembers", "count", "onRadarRelationChainReturn", "onResume", "onSceneEnd", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "putState", "state", "radarRemove", "reset", "saveLastState", "name", "setChooseStatus", "startRadarSearch", "stop", "stopRadarSearch", "syncStateToLastState", "ChooseStatus", "Companion", "LatestChangeStat", "RadarDelegate", "RadarStatus", "Status", "plugin-radar_release"})
 public final class e
   implements f
 {
   private static final String TAG = "MicroMsg.Radar.RadarManager";
-  private static final int nlm = 3000;
-  private static final int nln = 5000;
-  private static final int nlo = 1;
-  public static final e.b nlp = new e.b((byte)0);
-  private String bJY;
+  private static final int pQB = 3000;
+  private static final int pQC = 5000;
+  private static final int pQD = 1;
+  public static final e.b pQE;
   private final Context context;
-  public final a.a dig;
-  private boolean edT;
-  public c egs;
-  private final LinkedList<bio> evN;
-  private Location nla;
-  private b nlb;
-  private e.f nlc;
-  public LinkedList<bim> nld;
-  public Map<String, String> nle;
-  private Map<String, c.e> nlf;
-  private Map<String, c.e> nlg;
-  public Map<Long, e.c> nlh;
-  public Map<String, e.a> nli;
-  private final am nlj;
-  private final e.g nlk;
-  private final e.d nll;
+  private String crs;
+  public final b.a dZA;
+  private boolean eUJ;
+  private final LinkedList<brg> fLA;
+  public d fwu;
+  private final e.d pQA;
+  private Location pQp;
+  private b pQq;
+  private e.f pQr;
+  public LinkedList<bre> pQs;
+  public Map<String, String> pQt;
+  private Map<String, c.e> pQu;
+  private Map<String, c.e> pQv;
+  public Map<Long, e.c> pQw;
+  public Map<String, e.a> pQx;
+  private final ap pQy;
+  private final e.g pQz;
+  
+  static
+  {
+    AppMethodBeat.i(102937);
+    pQE = new e.b((byte)0);
+    TAG = "MicroMsg.Radar.RadarManager";
+    pQB = 3000;
+    pQC = 5000;
+    pQD = 1;
+    AppMethodBeat.o(102937);
+  }
   
   public e(e.d paramd, Context paramContext)
   {
-    this.nll = paramd;
+    AppMethodBeat.i(102936);
+    this.pQA = paramd;
     this.context = paramContext;
-    this.nlc = e.f.nlB;
-    this.evN = new LinkedList();
-    this.nle = ((Map)new LinkedHashMap());
-    this.nlf = ((Map)new LinkedHashMap());
-    this.nlg = ((Map)new LinkedHashMap());
-    this.nlh = ((Map)new LinkedHashMap());
-    this.nli = ((Map)new LinkedHashMap());
-    this.nlj = new am((am.a)new e.h(this), false);
-    this.nlk = new e.g();
-    this.dig = ((a.a)new e.i(this));
+    this.pQr = e.f.pQQ;
+    this.fLA = new LinkedList();
+    this.pQt = ((Map)new LinkedHashMap());
+    this.pQu = ((Map)new LinkedHashMap());
+    this.pQv = ((Map)new LinkedHashMap());
+    this.pQw = ((Map)new LinkedHashMap());
+    this.pQx = ((Map)new LinkedHashMap());
+    this.pQy = new ap((ap.a)new e.h(this), false);
+    this.pQz = new e.g();
+    this.dZA = ((b.a)new e.i(this));
+    AppMethodBeat.o(102936);
   }
   
-  private final void a(int paramInt1, int paramInt2, LinkedList<bio> paramLinkedList)
+  private final void a(int paramInt1, int paramInt2, LinkedList<brg> paramLinkedList)
   {
-    this.nll.a(paramInt1, paramInt2, paramLinkedList);
+    AppMethodBeat.i(102926);
+    this.pQA.a(paramInt1, paramInt2, paramLinkedList);
+    AppMethodBeat.o(102926);
   }
   
-  private final c.e aS(String paramString, boolean paramBoolean)
+  private final void b(int paramInt1, int paramInt2, LinkedList<brd> paramLinkedList)
   {
-    if (paramBoolean) {
-      return (c.e)this.nlg.get(paramString);
+    AppMethodBeat.i(102927);
+    this.pQA.b(paramInt1, paramInt2, paramLinkedList);
+    AppMethodBeat.o(102927);
+  }
+  
+  private final c.e bh(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(102934);
+    if (paramBoolean)
+    {
+      paramString = (c.e)this.pQv.get(paramString);
+      AppMethodBeat.o(102934);
+      return paramString;
     }
-    return (c.e)this.nlf.get(paramString);
+    paramString = (c.e)this.pQu.get(paramString);
+    AppMethodBeat.o(102934);
+    return paramString;
   }
   
-  private final void b(int paramInt1, int paramInt2, LinkedList<bil> paramLinkedList)
+  private final void ceO()
   {
-    this.nll.b(paramInt1, paramInt2, paramLinkedList);
+    AppMethodBeat.i(102923);
+    this.pQz.sendEmptyMessageDelayed(pQD, pQC);
+    AppMethodBeat.o(102923);
   }
   
-  private final void buA()
+  public final c.e XI(String paramString)
   {
-    this.nlk.sendEmptyMessageDelayed(nlo, nln);
+    AppMethodBeat.i(102933);
+    j.q(paramString, "username");
+    paramString = bh(paramString, false);
+    AppMethodBeat.o(102933);
+    return paramString;
   }
   
-  public final c.e Ly(String paramString)
+  public final c.e a(brg parambrg, boolean paramBoolean)
   {
-    a.d.b.g.k(paramString, "username");
-    return aS(paramString, false);
-  }
-  
-  public final c.e a(bio parambio, boolean paramBoolean)
-  {
-    a.d.b.g.k(parambio, "member");
-    Object localObject = parambio.hPY;
-    a.d.b.g.j(localObject, "member.UserName");
-    c.e locale = aS((String)localObject, paramBoolean);
+    AppMethodBeat.i(102931);
+    j.q(parambrg, "member");
+    Object localObject = parambrg.jJA;
+    j.p(localObject, "member.UserName");
+    c.e locale = bh((String)localObject, paramBoolean);
     localObject = locale;
     if (locale == null)
     {
-      parambio = parambio.sUr;
-      a.d.b.g.j(parambio, "member.EncodeUserName");
-      localObject = aS(parambio, paramBoolean);
+      parambrg = parambrg.wSo;
+      j.p(parambrg, "member.EncodeUserName");
+      localObject = bh(parambrg, paramBoolean);
     }
+    AppMethodBeat.o(102931);
     return localObject;
   }
   
-  public final void a(bio parambio)
+  public final void a(brg parambrg)
   {
-    if (parambio != null)
+    AppMethodBeat.i(102935);
+    if (parambrg != null)
     {
-      com.tencent.mm.plugin.radar.ui.g localg = com.tencent.mm.plugin.radar.ui.g.nnt;
-      parambio = com.tencent.mm.plugin.radar.ui.g.b(parambio);
-      if (this.nli.containsKey(parambio)) {
-        this.nli.remove(parambio);
+      com.tencent.mm.plugin.radar.ui.g localg = com.tencent.mm.plugin.radar.ui.g.pSH;
+      parambrg = com.tencent.mm.plugin.radar.ui.g.b(parambrg);
+      if (this.pQx.containsKey(parambrg))
+      {
+        this.pQx.remove(parambrg);
+        AppMethodBeat.o(102935);
+        return;
       }
+      this.pQx.put(parambrg, e.a.pQF);
     }
-    else
-    {
-      return;
-    }
-    this.nli.put(parambio, e.a.nlq);
+    AppMethodBeat.o(102935);
   }
   
   public final void a(String paramString, c.e parame)
   {
-    c.e locale = (c.e)this.nlf.get(paramString);
-    if ((locale != null) && ((a.d.b.g.e(locale, parame) ^ true))) {
-      this.nlg.put(paramString, locale);
+    AppMethodBeat.i(102929);
+    c.e locale = (c.e)this.pQu.get(paramString);
+    if ((locale != null) && (locale != parame)) {
+      this.pQv.put(paramString, locale);
     }
+    AppMethodBeat.o(102929);
   }
   
   public final void b(String paramString, c.e parame)
   {
-    a.d.b.g.k(paramString, "username");
-    a.d.b.g.k(parame, "state");
-    if (!a.h.e.X((CharSequence)paramString))
+    AppMethodBeat.i(102930);
+    j.q(paramString, "username");
+    j.q(parame, "state");
+    if (!a.l.m.ap((CharSequence)paramString))
     {
       a(paramString, parame);
-      this.nlf.put(paramString, parame);
+      this.pQu.put(paramString, parame);
     }
+    AppMethodBeat.o(102930);
   }
   
-  public final void buy()
+  public final void ceM()
   {
-    buz();
-    this.edT = false;
-    this.nla = null;
-    this.nlc = e.f.nlB;
-    this.nlj.stopTimer();
-    y.d(TAG, "start radar");
-    if (this.egs == null) {
-      this.egs = c.Ob();
+    AppMethodBeat.i(102921);
+    ceN();
+    this.eUJ = false;
+    this.pQp = null;
+    this.pQr = e.f.pQQ;
+    this.pQy.stopTimer();
+    ab.d(TAG, "start radar");
+    if (this.fwu == null) {
+      this.fwu = d.agQ();
     }
-    this.nlc = e.f.nlC;
-    c localc = this.egs;
-    if (localc != null) {
-      localc.b(this.dig);
+    this.pQr = e.f.pQR;
+    d locald = this.fwu;
+    if (locald != null) {
+      locald.b(this.dZA);
     }
-    y.d(TAG, "status: %s", new Object[] { this.nlc });
+    ab.d(TAG, "status: %s", new Object[] { this.pQr });
+    AppMethodBeat.o(102921);
   }
   
-  public final void buz()
+  public final void ceN()
   {
-    e.f localf = this.nlc;
-    switch (f.fHS[localf.ordinal()])
+    AppMethodBeat.i(102922);
+    e.f localf = this.pQr;
+    switch (f.bLo[localf.ordinal()])
     {
     }
     for (;;)
     {
-      y.d(TAG, "stop radar");
+      ab.d(TAG, "stop radar");
+      AppMethodBeat.o(102922);
+      return;
+      AppMethodBeat.o(102922);
       return;
       stop();
       continue;
-      if (this.nlb != null)
+      if (this.pQq != null)
       {
         stop();
-        com.tencent.mm.kernel.g.Dk().c((m)this.nlb);
-        buA();
+        com.tencent.mm.kernel.g.Rc().a((com.tencent.mm.ai.m)this.pQq);
+        ceO();
         continue;
         stop();
-        buA();
+        ceO();
       }
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void onResume()
   {
-    Iterator localIterator = null;
-    a.d.b.g.k(paramm, "scene");
+    AppMethodBeat.i(102924);
+    d locald = this.fwu;
+    if (locald != null)
+    {
+      locald.b(this.dZA);
+      AppMethodBeat.o(102924);
+      return;
+    }
+    AppMethodBeat.o(102924);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    brg localbrg = null;
+    AppMethodBeat.i(102928);
+    j.q(paramm, "scene");
     switch (paramm.getType())
     {
-    default: 
-    case 425: 
-      do
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(102928);
+      return;
+      if (this.pQq == paramm)
       {
-        return;
-      } while (this.nlb != paramm);
-      if (((b)paramm).bMC == 1)
-      {
-        this.nlc = e.f.nlE;
-        if ((paramInt1 == 0) && (paramInt2 == 0))
+        if (((b)paramm).ctW == 1)
         {
-          y.d(TAG, "rader members count: %s ticket: %s", new Object[] { Integer.valueOf(((b)paramm).buw()), this.bJY });
-          this.nlj.hq(nlm);
-          paramString = ((b)paramm).dmK;
-          if (paramString != null) {}
-          for (paramString = paramString.Ko();; paramString = null)
+          this.pQr = e.f.pQT;
+          if ((paramInt1 == 0) && (paramInt2 == 0))
           {
-            Object localObject = (biq)paramString;
-            paramString = localIterator;
-            if (localObject != null) {
-              paramString = ((biq)localObject).svo;
-            }
-            if (paramString == null) {
-              break;
-            }
-            localIterator = paramString.iterator();
-            while (localIterator.hasNext())
+            Object localObject = TAG;
+            paramString = ((b)paramm).rr;
+            int i;
+            if (paramString != null)
             {
-              localObject = (bio)localIterator.next();
-              com.tencent.mm.plugin.c.a locala = com.tencent.mm.plugin.c.a.YT();
-              a.d.b.g.j(locala, "PinAntispam.instance()");
-              locala.Ga().gm(((bio)localObject).hPY, ((bio)localObject).tac);
+              paramString = paramString.adn();
+              paramString = (bri)paramString;
+              if (paramString == null) {
+                break label276;
+              }
+              i = paramString.eeF;
+              label129:
+              ab.d((String)localObject, "rader members count: %s ticket: %s", new Object[] { Integer.valueOf(i), this.crs });
+              this.pQy.nP(pQB);
+              paramString = ((b)paramm).rr;
+              if (paramString == null) {
+                break label282;
+              }
             }
+            label276:
+            label282:
+            for (paramString = paramString.adn();; paramString = null)
+            {
+              paramm = (bri)paramString;
+              paramString = localbrg;
+              if (paramm != null) {
+                paramString = paramm.wov;
+              }
+              if (paramString == null) {
+                break label287;
+              }
+              paramm = paramString.iterator();
+              while (paramm.hasNext())
+              {
+                localbrg = (brg)paramm.next();
+                localObject = com.tencent.mm.plugin.c.a.asD();
+                j.p(localObject, "PinAntispam.instance()");
+                ((com.tencent.mm.plugin.c.a)localObject).Zb().in(localbrg.jJA, localbrg.wYu);
+              }
+              paramString = null;
+              break;
+              i = 0;
+              break label129;
+            }
+            label287:
+            if (paramString != null)
+            {
+              this.fLA.clear();
+              this.fLA.addAll((Collection)paramString);
+            }
+            a(paramInt1, paramInt2, this.fLA);
+            ab.d(TAG, "status: %s", new Object[] { this.pQr });
+            AppMethodBeat.o(102928);
+            return;
           }
-          if (paramString != null)
-          {
-            this.evN.clear();
-            this.evN.addAll((Collection)paramString);
-          }
-          paramString = this.evN;
-          ((b)paramm).buw();
-          a(paramInt1, paramInt2, paramString);
-          y.d(TAG, "status: %s", new Object[] { this.nlc });
+          stop();
+          a(paramInt1, paramInt2, null);
+          AppMethodBeat.o(102928);
           return;
         }
-        stop();
         a(paramInt1, paramInt2, null);
+        AppMethodBeat.o(102928);
         return;
+        ab.d(TAG, " MMFunc_MMRadarRelationChain ");
+        if ((paramInt1 == 0) && (paramInt2 == 0))
+        {
+          paramString = ((a)paramm).rr.adn();
+          if (paramString == null)
+          {
+            paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RadarRelationChainResponse");
+            AppMethodBeat.o(102928);
+            throw paramString;
+          }
+          paramString = (brf)paramString;
+          this.crs = paramString.wQf;
+          if (paramString.eeF > 0)
+          {
+            b(paramInt1, paramInt2, paramString.wov);
+            AppMethodBeat.o(102928);
+            return;
+          }
+          b(paramInt1, paramInt2, null);
+          AppMethodBeat.o(102928);
+          return;
+        }
+        b(paramInt1, paramInt2, null);
       }
-      a(paramInt1, paramInt2, null);
-      return;
     }
-    y.d(TAG, " MMFunc_MMRadarRelationChain ");
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      paramString = ((a)paramm).dmK.Ko();
-      if (paramString == null) {
-        throw new k("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RadarRelationChainResponse");
-      }
-      paramString = (bin)paramString;
-      this.bJY = paramString.sRr;
-      if (paramString.dne > 0)
-      {
-        paramm = paramString.svo;
-        int i = paramString.dne;
-        b(paramInt1, paramInt2, paramm);
-        return;
-      }
-      b(paramInt1, paramInt2, null);
-      return;
-    }
-    b(paramInt1, paramInt2, null);
   }
   
   public final void stop()
   {
-    this.edT = true;
-    this.nlc = e.f.nlB;
-    this.nlj.stopTimer();
-  }
-  
-  public static enum e
-  {
-    static
-    {
-      e locale1 = new e("SEARCHING", 0);
-      nlv = locale1;
-      e locale2 = new e("SEARCH_RETRUN", 1);
-      nlw = locale2;
-      e locale3 = new e("RALATIONCHAIN", 2);
-      nlx = locale3;
-      e locale4 = new e("RALATIONCHAIN_RETRUN", 3);
-      nly = locale4;
-      e locale5 = new e("CREATING_CHAT", 4);
-      nlz = locale5;
-      nlA = new e[] { locale1, locale2, locale3, locale4, locale5 };
-    }
-    
-    private e() {}
+    AppMethodBeat.i(102925);
+    this.eUJ = true;
+    this.pQr = e.f.pQQ;
+    this.pQy.stopTimer();
+    AppMethodBeat.o(102925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.b.e
  * JD-Core Version:    0.7.0.1
  */

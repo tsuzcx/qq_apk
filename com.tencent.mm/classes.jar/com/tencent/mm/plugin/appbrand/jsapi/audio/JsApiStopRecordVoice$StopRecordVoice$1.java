@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.record.a;
 
 final class JsApiStopRecordVoice$StopRecordVoice$1
@@ -9,7 +10,9 @@ final class JsApiStopRecordVoice$StopRecordVoice$1
   
   public final void run()
   {
-    a.lS(1);
+    AppMethodBeat.i(130810);
+    a.oO(1);
+    AppMethodBeat.o(130810);
   }
 }
 

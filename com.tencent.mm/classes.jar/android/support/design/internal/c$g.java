@@ -1,6 +1,5 @@
 package android.support.design.internal;
 
-import android.support.design.a.h;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,8 +10,8 @@ final class c$g
 {
   public c$g(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    super(paramLayoutInflater.inflate(a.h.design_navigation_item, paramViewGroup, false));
-    this.aie.setOnClickListener(paramOnClickListener);
+    super(paramLayoutInflater.inflate(2130969311, paramViewGroup, false));
+    this.aku.setOnClickListener(paramOnClickListener);
   }
 }
 

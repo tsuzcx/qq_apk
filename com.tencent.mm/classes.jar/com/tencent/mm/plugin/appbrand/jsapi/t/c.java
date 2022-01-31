@@ -1,34 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import com.tencent.mm.ui.widget.MMWebView;
-import org.json.JSONObject;
+import com.tencent.luggage.a.b;
 
-public final class c
+public abstract interface c
+  extends b
 {
-  public static abstract interface c
-  {
-    public abstract void B(JSONObject paramJSONObject);
-    
-    public abstract void alh();
-    
-    public abstract boolean alj();
-    
-    public abstract void bd(String paramString);
-    
-    public abstract String getAppId();
-    
-    public abstract String[] getJsApiReportArgs();
-    
-    public abstract MMWebView getWebView();
-    
-    public abstract void k(String paramString1, int paramInt, String paramString2);
-    
-    public abstract void runOnUiThread(Runnable paramRunnable);
-    
-    public abstract void uI(String paramString);
-    
-    public abstract void uJ(String paramString);
-  }
+  public abstract g CU(String paramString);
+  
+  public abstract void a(c.b paramb);
+  
+  public abstract g aFY();
+  
+  public abstract g aFZ();
+  
+  public abstract void b(c.b paramb);
+  
+  public abstract void onDestroy();
 }
 
 

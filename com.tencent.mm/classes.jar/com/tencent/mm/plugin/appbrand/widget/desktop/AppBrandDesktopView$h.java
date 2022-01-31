@@ -1,34 +1,21 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.o;
-import android.support.v7.widget.RecyclerView.s;
-import com.tencent.mm.sdk.platformtools.y;
+import android.support.v7.widget.RecyclerView.v;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class AppBrandDesktopView$h
-  extends GridLayoutManager
+public final class AppBrandDesktopView$h
+  extends RecyclerView.v
 {
-  public AppBrandDesktopView$h(AppBrandDesktopView paramAppBrandDesktopView) {}
+  protected TextView titleTv;
   
-  public final void a(RecyclerView paramRecyclerView, int paramInt)
+  public AppBrandDesktopView$h(AppBrandDesktopView paramAppBrandDesktopView, View paramView)
   {
-    paramRecyclerView = new AppBrandDesktopView.g(this.hqv, AppBrandDesktopView.d(this.hqv));
-    paramRecyclerView.ahA = paramInt;
-    a(paramRecyclerView);
-  }
-  
-  public final void c(RecyclerView.o paramo, RecyclerView.s params)
-  {
-    try
-    {
-      super.c(paramo, params);
-      return;
-    }
-    catch (IndexOutOfBoundsException paramo)
-    {
-      y.e("MicroMsg.MyAppBrandHeader", "[onLayoutChildren] IndexOutOfBoundsException!!");
-    }
+    super(paramView);
+    AppMethodBeat.i(133853);
+    this.titleTv = ((TextView)paramView.findViewById(2131821184));
+    AppMethodBeat.o(133853);
   }
 }
 

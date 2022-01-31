@@ -1,43 +1,49 @@
 package com.tencent.mm.plugin.wenote.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.m;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.protocal.c.yj;
+import com.tencent.mm.protocal.protobuf.acq;
 import java.util.HashMap;
 
 final class g$2
   implements Runnable
 {
-  g$2(g paramg, yj paramyj) {}
+  g$2(g paramg, acq paramacq) {}
   
   public final void run()
   {
-    if (this.rFL != null)
+    AppMethodBeat.i(26618);
+    if (this.vwu != null)
     {
       com.tencent.mm.plugin.fav.a.g localg = new com.tencent.mm.plugin.fav.a.g();
-      localg.field_localId = g.a(this.rFM);
-      localg.field_favProto = this.rFL;
-      this.rFM.rFt = localg.field_favProto;
-      this.rFM.rFk = localg;
-      g.a(this.rFM, localg);
+      localg.field_localId = g.a(this.vwv);
+      localg.field_favProto = this.vwu;
+      this.vwv.vwc = localg.field_favProto;
+      this.vwv.vvT = localg;
+      g.a(this.vwv, localg);
     }
-    if (g.chx().containsKey(g.b(this.rFM))) {
-      this.rFM.rFj = ((m)g.chx().get(g.b(this.rFM)));
+    if (g.bGj().containsKey(g.b(this.vwv))) {
+      this.vwv.vvS = ((m)g.bGj().get(g.b(this.vwv)));
     }
     for (;;)
     {
-      this.rFM.df(this.rFM.rFj.ntu);
-      if (k.ciD() != null) {
-        k.ciH();
+      this.vwv.el(this.vwv.vvS.pZa);
+      if (k.diU() != null) {
+        k.diY();
       }
+      AppMethodBeat.o(26618);
       return;
-      g.c(this.rFM);
+      g.c(this.vwv);
     }
   }
   
   public final String toString()
   {
-    return super.toString() + "|dealWNoteInfo";
+    AppMethodBeat.i(26619);
+    String str = super.toString() + "|dealWNoteInfo";
+    AppMethodBeat.o(26619);
+    return str;
   }
 }
 

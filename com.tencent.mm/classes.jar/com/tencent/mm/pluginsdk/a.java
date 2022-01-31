@@ -9,9 +9,11 @@ import android.net.Uri;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
 import android.provider.ContactsContract.Contacts;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -19,295 +21,319 @@ import java.util.regex.Pattern;
 
 public final class a
 {
-  public static boolean Vw(String paramString)
-  {
-    return paramString.length() > 0;
-  }
-  
   public static Bitmap a(String paramString, Context paramContext, boolean paramBoolean)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
-      paramContext = null;
-    }
-    for (;;)
+    AppMethodBeat.i(79194);
+    if ((paramString == null) || (paramString.equals("")))
     {
+      AppMethodBeat.o(79194);
+      return null;
+    }
+    paramContext = paramContext.getContentResolver();
+    try
+    {
+      long l = bo.apW(paramString);
+      paramContext = ContactsContract.Contacts.openContactPhotoInputStream(paramContext, ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, l), paramBoolean);
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(79194);
+        return null;
+      }
+      Bitmap localBitmap = d.decodeStream(paramContext);
+      paramContext = localBitmap;
+      if (localBitmap != null) {
+        paramContext = d.a(localBitmap, true, 4.0F);
+      }
+      AppMethodBeat.o(79194);
       return paramContext;
-      paramContext = paramContext.getContentResolver();
-      try
-      {
-        long l = bk.ZS(paramString);
-        paramContext = ContactsContract.Contacts.openContactPhotoInputStream(paramContext, ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, l), paramBoolean);
-        if (paramContext == null) {
-          return null;
-        }
-        Bitmap localBitmap = c.decodeStream(paramContext);
-        paramContext = localBitmap;
-        if (localBitmap != null)
-        {
-          paramContext = c.a(localBitmap, true, 4.0F);
-          return paramContext;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        y.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getAvatar, contactId:%s", new Object[] { paramString });
-      }
+    }
+    catch (Exception paramContext)
+    {
+      ab.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getAvatar, contactId:%s", new Object[] { paramString });
+      AppMethodBeat.o(79194);
     }
     return null;
+  }
+  
+  public static boolean akS(String paramString)
+  {
+    AppMethodBeat.i(79186);
+    if (paramString.length() <= 0)
+    {
+      AppMethodBeat.o(79186);
+      return false;
+    }
+    AppMethodBeat.o(79186);
+    return true;
   }
   
   /* Error */
   public static boolean b(String paramString, Context paramContext, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: ifnull +12 -> 13
-    //   4: aload_0
-    //   5: ldc 19
-    //   7: invokevirtual 23	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   10: ifeq +5 -> 15
-    //   13: iconst_0
-    //   14: ireturn
-    //   15: aload_1
-    //   16: ldc 75
-    //   18: invokestatic 81	com/tencent/mm/pluginsdk/permission/a:j	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   21: ifne +12 -> 33
-    //   24: ldc 63
-    //   26: ldc 83
-    //   28: invokestatic 87	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   31: iconst_0
-    //   32: ireturn
-    //   33: aload_1
-    //   34: invokevirtual 29	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   37: astore 7
-    //   39: aload_0
-    //   40: invokestatic 35	com/tencent/mm/sdk/platformtools/bk:ZS	(Ljava/lang/String;)J
-    //   43: lstore 4
-    //   45: new 89	android/content/ContentValues
-    //   48: dup
-    //   49: invokespecial 93	android/content/ContentValues:<init>	()V
-    //   52: astore 8
-    //   54: ldc 95
-    //   56: iconst_4
-    //   57: anewarray 4	java/lang/Object
-    //   60: dup
-    //   61: iconst_0
-    //   62: ldc 97
-    //   64: aastore
-    //   65: dup
-    //   66: iconst_1
-    //   67: lload 4
-    //   69: invokestatic 103	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   72: aastore
-    //   73: dup
-    //   74: iconst_2
-    //   75: ldc 105
-    //   77: aastore
-    //   78: dup
-    //   79: iconst_3
-    //   80: ldc 107
-    //   82: aastore
-    //   83: invokestatic 111	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   86: astore_0
-    //   87: ldc 63
-    //   89: ldc 113
-    //   91: iconst_1
-    //   92: anewarray 4	java/lang/Object
-    //   95: dup
-    //   96: iconst_0
-    //   97: aload_0
-    //   98: aastore
-    //   99: invokestatic 117	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   102: aload 7
-    //   104: getstatic 120	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   107: aconst_null
-    //   108: aload_0
-    //   109: aconst_null
-    //   110: aconst_null
-    //   111: invokevirtual 126	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   114: astore_1
-    //   115: aload_1
-    //   116: ifnonnull +15 -> 131
-    //   119: aload_1
-    //   120: ifnull -107 -> 13
-    //   123: aload_1
-    //   124: invokeinterface 131 1 0
-    //   129: iconst_0
-    //   130: ireturn
-    //   131: aload_1
-    //   132: astore_0
-    //   133: aload_1
-    //   134: ldc 133
-    //   136: invokeinterface 137 2 0
-    //   141: istore_3
-    //   142: aload_1
-    //   143: astore_0
-    //   144: aload_1
-    //   145: invokeinterface 141 1 0
-    //   150: ifeq +221 -> 371
+    //   0: ldc 85
+    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ifnull +12 -> 18
+    //   9: aload_0
+    //   10: ldc 17
+    //   12: invokevirtual 23	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   15: ifeq +10 -> 25
+    //   18: ldc 85
+    //   20: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: iconst_0
+    //   24: ireturn
+    //   25: aload_1
+    //   26: ldc 87
+    //   28: invokestatic 92	com/tencent/mm/pluginsdk/permission/b:o	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   31: ifne +17 -> 48
+    //   34: ldc 66
+    //   36: ldc 94
+    //   38: invokestatic 98	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   41: ldc 85
+    //   43: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   46: iconst_0
+    //   47: ireturn
+    //   48: aload_1
+    //   49: invokevirtual 32	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   52: astore 7
+    //   54: aload_0
+    //   55: invokestatic 38	com/tencent/mm/sdk/platformtools/bo:apW	(Ljava/lang/String;)J
+    //   58: lstore 4
+    //   60: new 100	android/content/ContentValues
+    //   63: dup
+    //   64: invokespecial 104	android/content/ContentValues:<init>	()V
+    //   67: astore 8
+    //   69: ldc 106
+    //   71: iconst_4
+    //   72: anewarray 4	java/lang/Object
+    //   75: dup
+    //   76: iconst_0
+    //   77: ldc 108
+    //   79: aastore
+    //   80: dup
+    //   81: iconst_1
+    //   82: lload 4
+    //   84: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   87: aastore
+    //   88: dup
+    //   89: iconst_2
+    //   90: ldc 116
+    //   92: aastore
+    //   93: dup
+    //   94: iconst_3
+    //   95: ldc 118
+    //   97: aastore
+    //   98: invokestatic 122	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   101: astore_0
+    //   102: ldc 66
+    //   104: ldc 124
+    //   106: iconst_1
+    //   107: anewarray 4	java/lang/Object
+    //   110: dup
+    //   111: iconst_0
+    //   112: aload_0
+    //   113: aastore
+    //   114: invokestatic 128	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   117: aload 7
+    //   119: getstatic 131	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   122: aconst_null
+    //   123: aload_0
+    //   124: aconst_null
+    //   125: aconst_null
+    //   126: invokevirtual 137	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   129: astore_1
+    //   130: aload_1
+    //   131: ifnonnull +20 -> 151
+    //   134: aload_1
+    //   135: ifnull +9 -> 144
+    //   138: aload_1
+    //   139: invokeinterface 142 1 0
+    //   144: ldc 85
+    //   146: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   149: iconst_0
+    //   150: ireturn
+    //   151: aload_1
+    //   152: astore_0
     //   153: aload_1
-    //   154: astore_0
-    //   155: aload_1
-    //   156: iload_3
-    //   157: invokeinterface 145 2 0
-    //   162: istore_3
-    //   163: aload_1
-    //   164: astore_0
-    //   165: aload 8
-    //   167: ldc 97
-    //   169: lload 4
-    //   171: invokestatic 103	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   174: invokevirtual 149	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
-    //   177: aload_1
-    //   178: astore_0
-    //   179: aload 8
-    //   181: ldc 151
-    //   183: iconst_1
-    //   184: invokestatic 156	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   187: invokevirtual 159	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
-    //   190: aload_1
-    //   191: astore_0
-    //   192: aload 8
-    //   194: ldc 161
-    //   196: aload_2
-    //   197: invokevirtual 164	android/content/ContentValues:put	(Ljava/lang/String;[B)V
-    //   200: aload_1
-    //   201: astore_0
-    //   202: aload 8
-    //   204: ldc 105
-    //   206: ldc 107
-    //   208: invokevirtual 166	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
-    //   211: iload_3
-    //   212: iflt +59 -> 271
-    //   215: aload_1
-    //   216: astore_0
-    //   217: aload 7
-    //   219: getstatic 120	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   154: ldc 144
+    //   156: invokeinterface 148 2 0
+    //   161: istore_3
+    //   162: aload_1
+    //   163: astore_0
+    //   164: aload_1
+    //   165: invokeinterface 152 1 0
+    //   170: ifeq +234 -> 404
+    //   173: aload_1
+    //   174: astore_0
+    //   175: aload_1
+    //   176: iload_3
+    //   177: invokeinterface 156 2 0
+    //   182: istore_3
+    //   183: aload_1
+    //   184: astore_0
+    //   185: aload 8
+    //   187: ldc 108
+    //   189: lload 4
+    //   191: invokestatic 114	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   194: invokevirtual 160	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Long;)V
+    //   197: aload_1
+    //   198: astore_0
+    //   199: aload 8
+    //   201: ldc 162
+    //   203: iconst_1
+    //   204: invokestatic 167	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   207: invokevirtual 170	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/Integer;)V
+    //   210: aload_1
+    //   211: astore_0
+    //   212: aload 8
+    //   214: ldc 172
+    //   216: aload_2
+    //   217: invokevirtual 175	android/content/ContentValues:put	(Ljava/lang/String;[B)V
+    //   220: aload_1
+    //   221: astore_0
     //   222: aload 8
-    //   224: new 168	java/lang/StringBuilder
-    //   227: dup
-    //   228: ldc 170
-    //   230: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   233: iload_3
-    //   234: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: aconst_null
-    //   241: invokevirtual 185	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
-    //   244: istore_3
-    //   245: iload_3
-    //   246: ifle +19 -> 265
-    //   249: iconst_1
-    //   250: istore 6
-    //   252: aload_1
-    //   253: ifnull +9 -> 262
-    //   256: aload_1
-    //   257: invokeinterface 131 1 0
-    //   262: iload 6
-    //   264: ireturn
-    //   265: iconst_0
-    //   266: istore 6
-    //   268: goto -16 -> 252
-    //   271: aload_1
-    //   272: astore_0
-    //   273: aload 7
-    //   275: getstatic 120	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
-    //   278: aload 8
-    //   280: invokevirtual 189	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
-    //   283: pop
-    //   284: aload_1
-    //   285: ifnull +9 -> 294
-    //   288: aload_1
-    //   289: invokeinterface 131 1 0
-    //   294: iconst_1
-    //   295: ireturn
-    //   296: astore_2
-    //   297: aconst_null
-    //   298: astore_1
-    //   299: aload_1
-    //   300: astore_0
-    //   301: ldc 63
-    //   303: aload_2
-    //   304: ldc 19
-    //   306: iconst_0
-    //   307: anewarray 4	java/lang/Object
-    //   310: invokestatic 71	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   313: aload_1
-    //   314: ifnull +22 -> 336
-    //   317: aload_1
-    //   318: astore_0
-    //   319: aload_1
-    //   320: invokeinterface 192 1 0
-    //   325: ifne +11 -> 336
-    //   328: aload_1
-    //   329: astore_0
-    //   330: aload_1
-    //   331: invokeinterface 131 1 0
+    //   224: ldc 116
+    //   226: ldc 118
+    //   228: invokevirtual 177	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   231: iload_3
+    //   232: iflt +57 -> 289
+    //   235: aload_1
+    //   236: astore_0
+    //   237: aload 7
+    //   239: getstatic 131	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   242: aload 8
+    //   244: ldc 179
+    //   246: iload_3
+    //   247: invokestatic 182	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   250: invokevirtual 186	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   253: aconst_null
+    //   254: invokevirtual 190	android/content/ContentResolver:update	(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    //   257: istore_3
+    //   258: iload_3
+    //   259: ifle +24 -> 283
+    //   262: iconst_1
+    //   263: istore 6
+    //   265: aload_1
+    //   266: ifnull +9 -> 275
+    //   269: aload_1
+    //   270: invokeinterface 142 1 0
+    //   275: ldc 85
+    //   277: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   280: iload 6
+    //   282: ireturn
+    //   283: iconst_0
+    //   284: istore 6
+    //   286: goto -21 -> 265
+    //   289: aload_1
+    //   290: astore_0
+    //   291: aload 7
+    //   293: getstatic 131	android/provider/ContactsContract$Data:CONTENT_URI	Landroid/net/Uri;
+    //   296: aload 8
+    //   298: invokevirtual 194	android/content/ContentResolver:insert	(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
+    //   301: pop
+    //   302: aload_1
+    //   303: ifnull +9 -> 312
+    //   306: aload_1
+    //   307: invokeinterface 142 1 0
+    //   312: ldc 85
+    //   314: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   317: iconst_1
+    //   318: ireturn
+    //   319: astore_2
+    //   320: aconst_null
+    //   321: astore_1
+    //   322: aload_1
+    //   323: astore_0
+    //   324: ldc 66
+    //   326: aload_2
+    //   327: ldc 17
+    //   329: iconst_0
+    //   330: anewarray 4	java/lang/Object
+    //   333: invokestatic 74	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   336: aload_1
-    //   337: ifnull -324 -> 13
+    //   337: ifnull +22 -> 359
     //   340: aload_1
-    //   341: invokeinterface 131 1 0
-    //   346: iconst_0
-    //   347: ireturn
-    //   348: astore_1
-    //   349: aconst_null
-    //   350: astore_0
-    //   351: aload_0
-    //   352: ifnull +9 -> 361
-    //   355: aload_0
-    //   356: invokeinterface 131 1 0
-    //   361: aload_1
-    //   362: athrow
-    //   363: astore_1
-    //   364: goto -13 -> 351
-    //   367: astore_2
-    //   368: goto -69 -> 299
-    //   371: iconst_m1
-    //   372: istore_3
-    //   373: goto -210 -> 163
+    //   341: astore_0
+    //   342: aload_1
+    //   343: invokeinterface 197 1 0
+    //   348: ifne +11 -> 359
+    //   351: aload_1
+    //   352: astore_0
+    //   353: aload_1
+    //   354: invokeinterface 142 1 0
+    //   359: aload_1
+    //   360: ifnull +9 -> 369
+    //   363: aload_1
+    //   364: invokeinterface 142 1 0
+    //   369: ldc 85
+    //   371: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   374: iconst_0
+    //   375: ireturn
+    //   376: astore_1
+    //   377: aconst_null
+    //   378: astore_0
+    //   379: aload_0
+    //   380: ifnull +9 -> 389
+    //   383: aload_0
+    //   384: invokeinterface 142 1 0
+    //   389: ldc 85
+    //   391: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   394: aload_1
+    //   395: athrow
+    //   396: astore_1
+    //   397: goto -18 -> 379
+    //   400: astore_2
+    //   401: goto -79 -> 322
+    //   404: iconst_m1
+    //   405: istore_3
+    //   406: goto -223 -> 183
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	376	0	paramString	String
-    //   0	376	1	paramContext	Context
-    //   0	376	2	paramArrayOfByte	byte[]
-    //   141	232	3	i	int
-    //   43	127	4	l	long
-    //   250	17	6	bool	boolean
-    //   37	237	7	localContentResolver	ContentResolver
-    //   52	227	8	localContentValues	android.content.ContentValues
+    //   0	409	0	paramString	String
+    //   0	409	1	paramContext	Context
+    //   0	409	2	paramArrayOfByte	byte[]
+    //   161	245	3	i	int
+    //   58	132	4	l	long
+    //   263	22	6	bool	boolean
+    //   52	240	7	localContentResolver	ContentResolver
+    //   67	230	8	localContentValues	android.content.ContentValues
     // Exception table:
     //   from	to	target	type
-    //   33	115	296	java/lang/Exception
-    //   33	115	348	finally
-    //   133	142	363	finally
-    //   144	153	363	finally
-    //   155	163	363	finally
-    //   165	177	363	finally
-    //   179	190	363	finally
-    //   192	200	363	finally
-    //   202	211	363	finally
-    //   217	245	363	finally
-    //   273	284	363	finally
-    //   301	313	363	finally
-    //   319	328	363	finally
-    //   330	336	363	finally
-    //   133	142	367	java/lang/Exception
-    //   144	153	367	java/lang/Exception
-    //   155	163	367	java/lang/Exception
-    //   165	177	367	java/lang/Exception
-    //   179	190	367	java/lang/Exception
-    //   192	200	367	java/lang/Exception
-    //   202	211	367	java/lang/Exception
-    //   217	245	367	java/lang/Exception
-    //   273	284	367	java/lang/Exception
+    //   48	130	319	java/lang/Exception
+    //   48	130	376	finally
+    //   153	162	396	finally
+    //   164	173	396	finally
+    //   175	183	396	finally
+    //   185	197	396	finally
+    //   199	210	396	finally
+    //   212	220	396	finally
+    //   222	231	396	finally
+    //   237	258	396	finally
+    //   291	302	396	finally
+    //   324	336	396	finally
+    //   342	351	396	finally
+    //   353	359	396	finally
+    //   153	162	400	java/lang/Exception
+    //   164	173	400	java/lang/Exception
+    //   175	183	400	java/lang/Exception
+    //   185	197	400	java/lang/Exception
+    //   199	210	400	java/lang/Exception
+    //   212	220	400	java/lang/Exception
+    //   222	231	400	java/lang/Exception
+    //   237	258	400	java/lang/Exception
+    //   291	302	400	java/lang/Exception
   }
   
-  public static List<String[]> ck(Context paramContext)
+  public static List<String[]> cL(Context paramContext)
   {
+    AppMethodBeat.i(79190);
     LinkedList localLinkedList = new LinkedList();
     Object localObject2 = paramContext.getContentResolver();
-    if (!com.tencent.mm.pluginsdk.permission.a.j(paramContext, "android.permission.READ_CONTACTS"))
+    if (!b.o(paramContext, "android.permission.READ_CONTACTS"))
     {
-      y.e("MicroMsg.AddressBookUtil", "no contact permission");
+      ab.e("MicroMsg.AddressBookUtil", "no contact permission");
+      AppMethodBeat.o(79190);
       return localLinkedList;
     }
     try
@@ -315,7 +341,8 @@ public final class a
       paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, "sort_key_alt");
       if (paramContext == null)
       {
-        y.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
+        ab.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
+        AppMethodBeat.o(79190);
         return localLinkedList;
       }
     }
@@ -323,8 +350,8 @@ public final class a
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
-        y.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo(), [%s]", new Object[] { paramContext.getMessage() });
+        ab.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
+        ab.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo(), [%s]", new Object[] { paramContext.getMessage() });
         paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
       }
       try
@@ -339,25 +366,28 @@ public final class a
             bool = paramContext.moveToNext();
           } while (bool);
         }
+        paramContext.close();
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
-          y.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo()2, [%s]", new Object[] { localException.getMessage() });
+          ab.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
+          ab.e("MicroMsg.AddressBookUtil", "exception in getMoblieOrderInfo()2, [%s]", new Object[] { localException.getMessage() });
           paramContext.close();
         }
       }
       finally
       {
         paramContext.close();
+        AppMethodBeat.o(79190);
       }
+      AppMethodBeat.o(79190);
       return localLinkedList;
     }
   }
   
-  public static Uri ckj()
+  public static Uri dkO()
   {
     try
     {
@@ -369,459 +399,459 @@ public final class a
   }
   
   /* Error */
-  public static String[] e(Context paramContext, Uri paramUri)
+  public static String[] f(Context paramContext, Uri paramUri)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +12 -> 13
-    //   4: ldc 63
-    //   6: ldc 244
-    //   8: invokestatic 246	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   11: aconst_null
-    //   12: areturn
-    //   13: aload_0
-    //   14: ldc 75
-    //   16: invokestatic 81	com/tencent/mm/pluginsdk/permission/a:j	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   19: ifne +12 -> 31
-    //   22: ldc 63
-    //   24: ldc 83
-    //   26: invokestatic 87	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   29: aconst_null
-    //   30: areturn
-    //   31: aload_0
-    //   32: invokevirtual 29	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   35: aload_1
-    //   36: aconst_null
-    //   37: aconst_null
-    //   38: aconst_null
-    //   39: aconst_null
-    //   40: invokevirtual 126	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   43: astore_1
-    //   44: aload_1
-    //   45: ifnull +717 -> 762
-    //   48: aload_1
-    //   49: invokeinterface 214 1 0
-    //   54: ifle +708 -> 762
-    //   57: aload_1
-    //   58: invokeinterface 141 1 0
-    //   63: pop
+    //   0: ldc 250
+    //   2: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: ifnonnull +17 -> 23
+    //   9: ldc 66
+    //   11: ldc 252
+    //   13: invokestatic 254	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: ldc 250
+    //   18: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: aconst_null
+    //   22: areturn
+    //   23: aload_0
+    //   24: ldc 87
+    //   26: iconst_0
+    //   27: invokestatic 257	com/tencent/mm/pluginsdk/permission/b:i	(Landroid/content/Context;Ljava/lang/String;Z)Z
+    //   30: ifne +17 -> 47
+    //   33: ldc 66
+    //   35: ldc 94
+    //   37: invokestatic 98	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   40: ldc 250
+    //   42: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: aconst_null
+    //   46: areturn
+    //   47: aload_0
+    //   48: invokevirtual 32	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   51: aload_1
+    //   52: aconst_null
+    //   53: aconst_null
+    //   54: aconst_null
+    //   55: aconst_null
+    //   56: invokevirtual 137	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   59: astore_1
+    //   60: aload_1
+    //   61: ifnull +699 -> 760
     //   64: aload_1
-    //   65: ldc 248
-    //   67: invokeinterface 219 2 0
-    //   72: istore_2
-    //   73: iload_2
-    //   74: ifle +13 -> 87
-    //   77: aload_1
-    //   78: iload_2
-    //   79: invokeinterface 145 2 0
-    //   84: ifle +678 -> 762
-    //   87: aload_1
-    //   88: aload_1
-    //   89: ldc 133
-    //   91: invokeinterface 219 2 0
-    //   96: invokeinterface 223 2 0
-    //   101: astore 5
-    //   103: aload_0
-    //   104: invokevirtual 29	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   107: getstatic 200	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
-    //   110: aconst_null
-    //   111: new 168	java/lang/StringBuilder
-    //   114: dup
-    //   115: ldc 250
-    //   117: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   120: aload 5
-    //   122: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: aconst_null
-    //   129: aconst_null
-    //   130: invokevirtual 126	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   133: astore 10
-    //   135: aload 10
-    //   137: ifnull +342 -> 479
-    //   140: aload 10
-    //   142: invokeinterface 141 1 0
-    //   147: istore 4
-    //   149: iload 4
-    //   151: ifeq +328 -> 479
-    //   154: aconst_null
-    //   155: astore 6
-    //   157: aconst_null
-    //   158: astore_0
-    //   159: aload 6
-    //   161: astore 7
-    //   163: aload_0
-    //   164: astore 5
-    //   166: aload 6
-    //   168: astore 9
-    //   170: aload_0
-    //   171: astore 8
-    //   173: aload 10
-    //   175: invokeinterface 256 1 0
-    //   180: ifne +305 -> 485
-    //   183: aload 6
-    //   185: astore 9
-    //   187: aload_0
-    //   188: astore 8
-    //   190: aload 10
-    //   192: ldc 227
-    //   194: invokeinterface 219 2 0
-    //   199: istore_2
-    //   200: aload 6
-    //   202: astore 9
-    //   204: aload_0
-    //   205: astore 8
-    //   207: aload 10
-    //   209: ldc 216
-    //   211: invokeinterface 219 2 0
-    //   216: istore_3
-    //   217: aload 6
-    //   219: astore 9
-    //   221: aload_0
-    //   222: astore 8
-    //   224: aload 10
-    //   226: iload_2
-    //   227: invokeinterface 223 2 0
-    //   232: astore 12
-    //   234: aload 6
-    //   236: astore 9
-    //   238: aload_0
-    //   239: astore 8
-    //   241: aload 10
-    //   243: iload_3
-    //   244: invokeinterface 223 2 0
-    //   249: astore 11
-    //   251: aload_0
-    //   252: astore 5
-    //   254: ldc 63
-    //   256: new 168	java/lang/StringBuilder
-    //   259: dup
-    //   260: ldc_w 258
-    //   263: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   266: aload 11
-    //   268: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   271: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   274: invokestatic 246	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   277: aload_0
-    //   278: astore 7
-    //   280: aload 12
-    //   282: ifnull +108 -> 390
-    //   285: aload_0
-    //   286: astore 5
-    //   288: ldc 63
-    //   290: new 168	java/lang/StringBuilder
-    //   293: dup
-    //   294: ldc_w 260
-    //   297: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   300: aload 12
-    //   302: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   305: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   308: invokestatic 246	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   311: aload 12
-    //   313: ifnonnull +119 -> 432
-    //   316: aconst_null
-    //   317: astore 6
-    //   319: aload_0
-    //   320: astore 5
-    //   322: ldc 63
-    //   324: new 168	java/lang/StringBuilder
-    //   327: dup
-    //   328: ldc_w 260
-    //   331: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   334: aload 6
-    //   336: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   342: invokestatic 246	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   345: aload_0
-    //   346: astore 7
-    //   348: aload_0
-    //   349: astore 5
-    //   351: aload 6
-    //   353: invokestatic 265	android/telephony/PhoneNumberUtils:isGlobalPhoneNumber	(Ljava/lang/String;)Z
-    //   356: ifeq +7 -> 363
-    //   359: aload 6
-    //   361: astore 7
-    //   363: aload 7
-    //   365: astore 5
-    //   367: ldc 63
-    //   369: new 168	java/lang/StringBuilder
-    //   372: dup
-    //   373: ldc_w 267
-    //   376: invokespecial 173	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   379: aload 7
-    //   381: invokevirtual 253	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   384: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   387: invokestatic 246	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   390: aload 7
-    //   392: astore 5
-    //   394: aload 10
-    //   396: invokeinterface 235 1 0
-    //   401: pop
-    //   402: aload 11
-    //   404: astore 6
-    //   406: aload 7
-    //   408: astore_0
-    //   409: goto -250 -> 159
-    //   412: astore_0
-    //   413: ldc 63
+    //   65: invokeinterface 221 1 0
+    //   70: ifle +690 -> 760
+    //   73: aload_1
+    //   74: invokeinterface 152 1 0
+    //   79: pop
+    //   80: aload_1
+    //   81: ldc_w 259
+    //   84: invokeinterface 226 2 0
+    //   89: istore_2
+    //   90: iload_2
+    //   91: ifle +13 -> 104
+    //   94: aload_1
+    //   95: iload_2
+    //   96: invokeinterface 156 2 0
+    //   101: ifle +659 -> 760
+    //   104: aload_1
+    //   105: aload_1
+    //   106: ldc 144
+    //   108: invokeinterface 226 2 0
+    //   113: invokeinterface 229 2 0
+    //   118: astore 5
+    //   120: aload_0
+    //   121: invokevirtual 32	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   124: getstatic 206	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   127: aconst_null
+    //   128: ldc_w 261
+    //   131: aload 5
+    //   133: invokestatic 264	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   136: invokevirtual 186	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   139: aconst_null
+    //   140: aconst_null
+    //   141: invokevirtual 137	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   144: astore 10
+    //   146: aload 10
+    //   148: ifnull +314 -> 462
+    //   151: aload 10
+    //   153: invokeinterface 152 1 0
+    //   158: istore 4
+    //   160: iload 4
+    //   162: ifeq +300 -> 462
+    //   165: aconst_null
+    //   166: astore 6
+    //   168: aconst_null
+    //   169: astore_0
+    //   170: aload 6
+    //   172: astore 7
+    //   174: aload_0
+    //   175: astore 5
+    //   177: aload 6
+    //   179: astore 9
+    //   181: aload_0
+    //   182: astore 8
+    //   184: aload 10
+    //   186: invokeinterface 267 1 0
+    //   191: ifne +277 -> 468
+    //   194: aload 6
+    //   196: astore 9
+    //   198: aload_0
+    //   199: astore 8
+    //   201: aload 10
+    //   203: ldc 233
+    //   205: invokeinterface 226 2 0
+    //   210: istore_2
+    //   211: aload 6
+    //   213: astore 9
+    //   215: aload_0
+    //   216: astore 8
+    //   218: aload 10
+    //   220: ldc 223
+    //   222: invokeinterface 226 2 0
+    //   227: istore_3
+    //   228: aload 6
+    //   230: astore 9
+    //   232: aload_0
+    //   233: astore 8
+    //   235: aload 10
+    //   237: iload_2
+    //   238: invokeinterface 229 2 0
+    //   243: astore 12
+    //   245: aload 6
+    //   247: astore 9
+    //   249: aload_0
+    //   250: astore 8
+    //   252: aload 10
+    //   254: iload_3
+    //   255: invokeinterface 229 2 0
+    //   260: astore 11
+    //   262: aload_0
+    //   263: astore 5
+    //   265: ldc 66
+    //   267: ldc_w 269
+    //   270: aload 11
+    //   272: invokestatic 264	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   275: invokevirtual 186	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   278: invokestatic 254	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   281: aload_0
+    //   282: astore 7
+    //   284: aload 12
+    //   286: ifnull +87 -> 373
+    //   289: aload_0
+    //   290: astore 5
+    //   292: ldc 66
+    //   294: ldc_w 271
+    //   297: aload 12
+    //   299: invokestatic 264	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   302: invokevirtual 186	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   305: invokestatic 254	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   308: aload 12
+    //   310: ifnonnull +105 -> 415
+    //   313: aconst_null
+    //   314: astore 6
+    //   316: aload_0
+    //   317: astore 5
+    //   319: ldc 66
+    //   321: ldc_w 271
+    //   324: aload 6
+    //   326: invokestatic 264	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   329: invokevirtual 186	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   332: invokestatic 254	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   335: aload_0
+    //   336: astore 7
+    //   338: aload_0
+    //   339: astore 5
+    //   341: aload 6
+    //   343: invokestatic 276	android/telephony/PhoneNumberUtils:isGlobalPhoneNumber	(Ljava/lang/String;)Z
+    //   346: ifeq +7 -> 353
+    //   349: aload 6
+    //   351: astore 7
+    //   353: aload 7
+    //   355: astore 5
+    //   357: ldc 66
+    //   359: ldc_w 278
+    //   362: aload 7
+    //   364: invokestatic 264	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   367: invokevirtual 186	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   370: invokestatic 254	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   373: aload 7
+    //   375: astore 5
+    //   377: aload 10
+    //   379: invokeinterface 241 1 0
+    //   384: pop
+    //   385: aload 11
+    //   387: astore 6
+    //   389: aload 7
+    //   391: astore_0
+    //   392: goto -222 -> 170
+    //   395: astore_0
+    //   396: ldc 66
+    //   398: aload_0
+    //   399: ldc_w 280
+    //   402: iconst_0
+    //   403: anewarray 4	java/lang/Object
+    //   406: invokestatic 74	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   409: aconst_null
+    //   410: astore 10
+    //   412: goto -266 -> 146
     //   415: aload_0
-    //   416: ldc_w 269
-    //   419: iconst_0
-    //   420: anewarray 4	java/lang/Object
-    //   423: invokestatic 71	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   426: aconst_null
-    //   427: astore 10
-    //   429: goto -294 -> 135
-    //   432: aload_0
-    //   433: astore 5
-    //   435: aload 12
-    //   437: ldc_w 271
-    //   440: ldc 19
-    //   442: invokevirtual 275	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   445: astore 7
-    //   447: aload 7
-    //   449: astore 6
-    //   451: aload_0
-    //   452: astore 5
-    //   454: aload 7
-    //   456: ldc_w 277
-    //   459: invokevirtual 280	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   462: ifeq -143 -> 319
-    //   465: aload_0
+    //   416: astore 5
+    //   418: aload 12
+    //   420: ldc_w 282
+    //   423: ldc 17
+    //   425: invokevirtual 286	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   428: astore 7
+    //   430: aload 7
+    //   432: astore 6
+    //   434: aload_0
+    //   435: astore 5
+    //   437: aload 7
+    //   439: ldc_w 288
+    //   442: invokevirtual 291	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   445: ifeq -129 -> 316
+    //   448: aload_0
+    //   449: astore 5
+    //   451: aload 7
+    //   453: iconst_2
+    //   454: invokevirtual 294	java/lang/String:substring	(I)Ljava/lang/String;
+    //   457: astore 6
+    //   459: goto -143 -> 316
+    //   462: aconst_null
+    //   463: astore 7
+    //   465: aconst_null
     //   466: astore 5
     //   468: aload 7
-    //   470: iconst_2
-    //   471: invokevirtual 283	java/lang/String:substring	(I)Ljava/lang/String;
-    //   474: astore 6
-    //   476: goto -157 -> 319
-    //   479: aconst_null
-    //   480: astore 7
-    //   482: aconst_null
-    //   483: astore 5
-    //   485: aload 7
-    //   487: astore_0
-    //   488: aload 5
-    //   490: astore 6
-    //   492: aload 10
-    //   494: ifnull +50 -> 544
-    //   497: aload 7
-    //   499: astore_0
-    //   500: aload 5
-    //   502: astore 6
-    //   504: aload 7
-    //   506: astore 9
-    //   508: aload 5
-    //   510: astore 8
-    //   512: aload 10
-    //   514: invokeinterface 192 1 0
-    //   519: ifne +25 -> 544
-    //   522: aload 7
-    //   524: astore 9
-    //   526: aload 5
-    //   528: astore 8
-    //   530: aload 10
-    //   532: invokeinterface 131 1 0
-    //   537: aload 5
-    //   539: astore 6
-    //   541: aload 7
-    //   543: astore_0
-    //   544: aload_0
-    //   545: astore 7
-    //   547: aload 6
-    //   549: astore 8
-    //   551: aload_1
-    //   552: ifnull +32 -> 584
-    //   555: aload_0
-    //   556: astore 7
-    //   558: aload 6
-    //   560: astore 8
-    //   562: aload_1
-    //   563: invokeinterface 192 1 0
-    //   568: ifne +16 -> 584
-    //   571: aload_1
-    //   572: invokeinterface 131 1 0
-    //   577: aload 6
-    //   579: astore 8
-    //   581: aload_0
-    //   582: astore 7
-    //   584: aload 7
-    //   586: invokestatic 289	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   589: ifeq +103 -> 692
-    //   592: aload 8
-    //   594: invokestatic 289	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   597: ifeq +95 -> 692
-    //   600: aconst_null
-    //   601: areturn
-    //   602: astore 6
-    //   604: aconst_null
-    //   605: astore 5
-    //   607: aconst_null
-    //   608: astore_0
-    //   609: aconst_null
-    //   610: astore_1
-    //   611: ldc 63
-    //   613: aload 6
-    //   615: ldc_w 291
-    //   618: iconst_0
-    //   619: anewarray 4	java/lang/Object
-    //   622: invokestatic 71	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   625: aload_0
-    //   626: astore 7
-    //   628: aload_1
-    //   629: astore 8
-    //   631: aload 5
-    //   633: ifnull -49 -> 584
-    //   636: aload_0
-    //   637: astore 7
-    //   639: aload_1
-    //   640: astore 8
-    //   642: aload 5
-    //   644: invokeinterface 192 1 0
-    //   649: ifne -65 -> 584
-    //   652: aload 5
-    //   654: invokeinterface 131 1 0
-    //   659: aload_0
-    //   660: astore 7
-    //   662: aload_1
-    //   663: astore 8
-    //   665: goto -81 -> 584
-    //   668: astore_0
-    //   669: aconst_null
-    //   670: astore_1
-    //   671: aload_1
-    //   672: ifnull +18 -> 690
-    //   675: aload_1
-    //   676: invokeinterface 192 1 0
-    //   681: ifne +9 -> 690
-    //   684: aload_1
-    //   685: invokeinterface 131 1 0
-    //   690: aload_0
-    //   691: athrow
-    //   692: iconst_2
-    //   693: anewarray 8	java/lang/String
-    //   696: dup
-    //   697: iconst_0
-    //   698: aload 7
-    //   700: aastore
-    //   701: dup
-    //   702: iconst_1
-    //   703: aload 8
-    //   705: aastore
-    //   706: areturn
-    //   707: astore_0
-    //   708: goto -37 -> 671
-    //   711: astore_0
-    //   712: aload 5
-    //   714: astore_1
-    //   715: goto -44 -> 671
-    //   718: astore 6
-    //   720: aload_1
-    //   721: astore 5
+    //   470: astore_0
+    //   471: aload 5
+    //   473: astore 6
+    //   475: aload 10
+    //   477: ifnull +50 -> 527
+    //   480: aload 7
+    //   482: astore_0
+    //   483: aload 5
+    //   485: astore 6
+    //   487: aload 7
+    //   489: astore 9
+    //   491: aload 5
+    //   493: astore 8
+    //   495: aload 10
+    //   497: invokeinterface 197 1 0
+    //   502: ifne +25 -> 527
+    //   505: aload 7
+    //   507: astore 9
+    //   509: aload 5
+    //   511: astore 8
+    //   513: aload 10
+    //   515: invokeinterface 142 1 0
+    //   520: aload 5
+    //   522: astore 6
+    //   524: aload 7
+    //   526: astore_0
+    //   527: aload_0
+    //   528: astore 7
+    //   530: aload 6
+    //   532: astore 8
+    //   534: aload_1
+    //   535: ifnull +32 -> 567
+    //   538: aload_0
+    //   539: astore 7
+    //   541: aload 6
+    //   543: astore 8
+    //   545: aload_1
+    //   546: invokeinterface 197 1 0
+    //   551: ifne +16 -> 567
+    //   554: aload_1
+    //   555: invokeinterface 142 1 0
+    //   560: aload 6
+    //   562: astore 8
+    //   564: aload_0
+    //   565: astore 7
+    //   567: aload 7
+    //   569: invokestatic 300	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   572: ifeq +113 -> 685
+    //   575: aload 8
+    //   577: invokestatic 300	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   580: ifeq +105 -> 685
+    //   583: ldc 250
+    //   585: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   588: aconst_null
+    //   589: areturn
+    //   590: astore 6
+    //   592: aconst_null
+    //   593: astore 5
+    //   595: aconst_null
+    //   596: astore_0
+    //   597: aconst_null
+    //   598: astore_1
+    //   599: ldc 66
+    //   601: aload 6
+    //   603: ldc_w 302
+    //   606: iconst_0
+    //   607: anewarray 4	java/lang/Object
+    //   610: invokestatic 74	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   613: aload_0
+    //   614: astore 7
+    //   616: aload_1
+    //   617: astore 8
+    //   619: aload 5
+    //   621: ifnull -54 -> 567
+    //   624: aload_0
+    //   625: astore 7
+    //   627: aload_1
+    //   628: astore 8
+    //   630: aload 5
+    //   632: invokeinterface 197 1 0
+    //   637: ifne -70 -> 567
+    //   640: aload 5
+    //   642: invokeinterface 142 1 0
+    //   647: aload_0
+    //   648: astore 7
+    //   650: aload_1
+    //   651: astore 8
+    //   653: goto -86 -> 567
+    //   656: astore_0
+    //   657: aconst_null
+    //   658: astore_1
+    //   659: aload_1
+    //   660: ifnull +18 -> 678
+    //   663: aload_1
+    //   664: invokeinterface 197 1 0
+    //   669: ifne +9 -> 678
+    //   672: aload_1
+    //   673: invokeinterface 142 1 0
+    //   678: ldc 250
+    //   680: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   683: aload_0
+    //   684: athrow
+    //   685: ldc 250
+    //   687: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   690: iconst_2
+    //   691: anewarray 19	java/lang/String
+    //   694: dup
+    //   695: iconst_0
+    //   696: aload 7
+    //   698: aastore
+    //   699: dup
+    //   700: iconst_1
+    //   701: aload 8
+    //   703: aastore
+    //   704: areturn
+    //   705: astore_0
+    //   706: goto -47 -> 659
+    //   709: astore_0
+    //   710: aload 5
+    //   712: astore_1
+    //   713: goto -54 -> 659
+    //   716: astore 6
+    //   718: aload_1
+    //   719: astore 5
+    //   721: aconst_null
+    //   722: astore_0
     //   723: aconst_null
-    //   724: astore_0
-    //   725: aconst_null
-    //   726: astore_1
-    //   727: goto -116 -> 611
-    //   730: astore 6
-    //   732: aload_1
-    //   733: astore 7
-    //   735: aload 11
-    //   737: astore_0
-    //   738: aload 5
-    //   740: astore_1
-    //   741: aload 7
-    //   743: astore 5
-    //   745: goto -134 -> 611
-    //   748: astore 6
-    //   750: aload_1
-    //   751: astore 5
-    //   753: aload 9
-    //   755: astore_0
-    //   756: aload 8
-    //   758: astore_1
-    //   759: goto -148 -> 611
+    //   724: astore_1
+    //   725: goto -126 -> 599
+    //   728: astore 6
+    //   730: aload_1
+    //   731: astore 7
+    //   733: aload 11
+    //   735: astore_0
+    //   736: aload 5
+    //   738: astore_1
+    //   739: aload 7
+    //   741: astore 5
+    //   743: goto -144 -> 599
+    //   746: astore 6
+    //   748: aload_1
+    //   749: astore 5
+    //   751: aload 9
+    //   753: astore_0
+    //   754: aload 8
+    //   756: astore_1
+    //   757: goto -158 -> 599
+    //   760: aconst_null
+    //   761: astore_0
     //   762: aconst_null
-    //   763: astore_0
-    //   764: aconst_null
-    //   765: astore 6
-    //   767: goto -223 -> 544
+    //   763: astore 6
+    //   765: goto -238 -> 527
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	770	0	paramContext	Context
-    //   0	770	1	paramUri	Uri
-    //   72	155	2	i	int
-    //   216	28	3	j	int
-    //   147	3	4	bool	boolean
-    //   101	651	5	localObject1	Object
-    //   155	423	6	localObject2	Object
-    //   602	12	6	localException1	Exception
-    //   718	1	6	localException2	Exception
-    //   730	1	6	localException3	Exception
-    //   748	1	6	localException4	Exception
-    //   765	1	6	localObject3	Object
-    //   161	581	7	localObject4	Object
-    //   171	586	8	localObject5	Object
-    //   168	586	9	localObject6	Object
-    //   133	398	10	localCursor	Cursor
-    //   249	487	11	str1	String
-    //   232	204	12	str2	String
+    //   0	768	0	paramContext	Context
+    //   0	768	1	paramUri	Uri
+    //   89	149	2	i	int
+    //   227	28	3	j	int
+    //   158	3	4	bool	boolean
+    //   118	632	5	localObject1	Object
+    //   166	395	6	localObject2	Object
+    //   590	12	6	localException1	Exception
+    //   716	1	6	localException2	Exception
+    //   728	1	6	localException3	Exception
+    //   746	1	6	localException4	Exception
+    //   763	1	6	localObject3	Object
+    //   172	568	7	localObject4	Object
+    //   182	573	8	localObject5	Object
+    //   179	573	9	localObject6	Object
+    //   144	370	10	localCursor	Cursor
+    //   260	474	11	str1	String
+    //   243	176	12	str2	String
     // Exception table:
     //   from	to	target	type
-    //   103	135	412	java/lang/Exception
-    //   31	44	602	java/lang/Exception
-    //   31	44	668	finally
-    //   48	73	707	finally
-    //   77	87	707	finally
-    //   87	103	707	finally
-    //   103	135	707	finally
-    //   140	149	707	finally
-    //   173	183	707	finally
-    //   190	200	707	finally
-    //   207	217	707	finally
-    //   224	234	707	finally
-    //   241	251	707	finally
-    //   254	277	707	finally
-    //   288	311	707	finally
-    //   322	345	707	finally
-    //   351	359	707	finally
-    //   367	390	707	finally
-    //   394	402	707	finally
-    //   413	426	707	finally
-    //   435	447	707	finally
-    //   454	465	707	finally
-    //   468	476	707	finally
-    //   512	522	707	finally
-    //   530	537	707	finally
-    //   611	625	711	finally
-    //   48	73	718	java/lang/Exception
-    //   77	87	718	java/lang/Exception
-    //   87	103	718	java/lang/Exception
-    //   140	149	718	java/lang/Exception
-    //   413	426	718	java/lang/Exception
-    //   254	277	730	java/lang/Exception
-    //   288	311	730	java/lang/Exception
-    //   322	345	730	java/lang/Exception
-    //   351	359	730	java/lang/Exception
-    //   367	390	730	java/lang/Exception
-    //   394	402	730	java/lang/Exception
-    //   435	447	730	java/lang/Exception
-    //   454	465	730	java/lang/Exception
-    //   468	476	730	java/lang/Exception
-    //   173	183	748	java/lang/Exception
-    //   190	200	748	java/lang/Exception
-    //   207	217	748	java/lang/Exception
-    //   224	234	748	java/lang/Exception
-    //   241	251	748	java/lang/Exception
-    //   512	522	748	java/lang/Exception
-    //   530	537	748	java/lang/Exception
+    //   120	146	395	java/lang/Exception
+    //   47	60	590	java/lang/Exception
+    //   47	60	656	finally
+    //   64	90	705	finally
+    //   94	104	705	finally
+    //   104	120	705	finally
+    //   120	146	705	finally
+    //   151	160	705	finally
+    //   184	194	705	finally
+    //   201	211	705	finally
+    //   218	228	705	finally
+    //   235	245	705	finally
+    //   252	262	705	finally
+    //   265	281	705	finally
+    //   292	308	705	finally
+    //   319	335	705	finally
+    //   341	349	705	finally
+    //   357	373	705	finally
+    //   377	385	705	finally
+    //   396	409	705	finally
+    //   418	430	705	finally
+    //   437	448	705	finally
+    //   451	459	705	finally
+    //   495	505	705	finally
+    //   513	520	705	finally
+    //   599	613	709	finally
+    //   64	90	716	java/lang/Exception
+    //   94	104	716	java/lang/Exception
+    //   104	120	716	java/lang/Exception
+    //   151	160	716	java/lang/Exception
+    //   396	409	716	java/lang/Exception
+    //   265	281	728	java/lang/Exception
+    //   292	308	728	java/lang/Exception
+    //   319	335	728	java/lang/Exception
+    //   341	349	728	java/lang/Exception
+    //   357	373	728	java/lang/Exception
+    //   377	385	728	java/lang/Exception
+    //   418	430	728	java/lang/Exception
+    //   437	448	728	java/lang/Exception
+    //   451	459	728	java/lang/Exception
+    //   184	194	746	java/lang/Exception
+    //   201	211	746	java/lang/Exception
+    //   218	228	746	java/lang/Exception
+    //   235	245	746	java/lang/Exception
+    //   252	262	746	java/lang/Exception
+    //   495	505	746	java/lang/Exception
+    //   513	520	746	java/lang/Exception
   }
   
-  public static List<String[]> eG(Context paramContext)
+  public static List<String[]> fG(Context paramContext)
   {
+    AppMethodBeat.i(79189);
     LinkedList localLinkedList = new LinkedList();
     Object localObject2 = paramContext.getContentResolver();
-    if (!com.tencent.mm.pluginsdk.permission.a.j(paramContext, "android.permission.READ_CONTACTS"))
+    if (!b.o(paramContext, "android.permission.READ_CONTACTS"))
     {
-      y.e("MicroMsg.AddressBookUtil", "no contact permission");
+      ab.e("MicroMsg.AddressBookUtil", "no contact permission");
+      AppMethodBeat.o(79189);
       return localLinkedList;
     }
     try
@@ -829,7 +859,8 @@ public final class a
       paramContext = ((ContentResolver)localObject2).query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, null);
       if (paramContext == null)
       {
-        y.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
+        ab.e("MicroMsg.AddressBookUtil", "getMobileInfo: mobile is null");
+        AppMethodBeat.o(79189);
         return localLinkedList;
       }
     }
@@ -837,8 +868,8 @@ public final class a
     {
       for (;;)
       {
-        y.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception occured [%s]", new Object[] { paramContext.getMessage() });
-        y.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
+        ab.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception occured [%s]", new Object[] { paramContext.getMessage() });
+        ab.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "", new Object[0]);
         paramContext = null;
       }
       try
@@ -853,37 +884,44 @@ public final class a
             bool = paramContext.moveToNext();
           } while (bool);
         }
+        paramContext.close();
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          y.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception2 occured [%s]", new Object[] { localException.getMessage() });
-          y.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
+          ab.e("MicroMsg.AddressBookUtil", "getMobileInfo: exception2 occured [%s]", new Object[] { localException.getMessage() });
+          ab.printErrStackTrace("MicroMsg.AddressBookUtil", localException, "", new Object[0]);
           paramContext.close();
         }
       }
       finally
       {
         paramContext.close();
+        AppMethodBeat.o(79189);
       }
+      AppMethodBeat.o(79189);
       return localLinkedList;
     }
   }
   
-  public static List<String[]> eH(Context paramContext)
+  public static List<String[]> fH(Context paramContext)
   {
+    AppMethodBeat.i(79191);
     LinkedList localLinkedList = new LinkedList();
     Object localObject = paramContext.getContentResolver();
-    if (!com.tencent.mm.pluginsdk.permission.a.j(paramContext, "android.permission.READ_CONTACTS"))
+    if (!b.o(paramContext, "android.permission.READ_CONTACTS"))
     {
-      y.e("MicroMsg.AddressBookUtil", "no contact permission");
+      ab.e("MicroMsg.AddressBookUtil", "no contact permission");
+      AppMethodBeat.o(79191);
       return localLinkedList;
     }
     try
     {
       paramContext = ((ContentResolver)localObject).query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, null, null, null);
-      if (paramContext == null) {
+      if (paramContext == null)
+      {
+        AppMethodBeat.o(79191);
         return localLinkedList;
       }
       if (paramContext.moveToFirst()) {
@@ -899,184 +937,197 @@ public final class a
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getEmailInfo", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.AddressBookUtil", paramContext, "getEmailInfo", new Object[0]);
       }
     }
+    AppMethodBeat.o(79191);
     return localLinkedList;
   }
   
   /* Error */
-  public static List<String> eI(Context paramContext)
+  public static List<String> fI(Context paramContext)
   {
     // Byte code:
-    //   0: new 196	java/util/LinkedList
-    //   3: dup
-    //   4: invokespecial 197	java/util/LinkedList:<init>	()V
-    //   7: astore 4
-    //   9: aload_0
-    //   10: invokevirtual 29	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   13: astore_2
-    //   14: aload_0
-    //   15: ldc 75
-    //   17: invokestatic 81	com/tencent/mm/pluginsdk/permission/a:j	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   20: ifne +13 -> 33
-    //   23: ldc 63
-    //   25: ldc 83
-    //   27: invokestatic 87	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   30: aload 4
-    //   32: areturn
-    //   33: aload_2
-    //   34: getstatic 200	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
-    //   37: aconst_null
-    //   38: aconst_null
-    //   39: aconst_null
-    //   40: aconst_null
-    //   41: invokevirtual 126	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   44: astore_2
+    //   0: ldc_w 325
+    //   3: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 202	java/util/LinkedList
+    //   9: dup
+    //   10: invokespecial 203	java/util/LinkedList:<init>	()V
+    //   13: astore 4
+    //   15: aload_0
+    //   16: invokevirtual 32	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   19: astore_2
+    //   20: aload_0
+    //   21: ldc 87
+    //   23: invokestatic 92	com/tencent/mm/pluginsdk/permission/b:o	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   26: ifne +19 -> 45
+    //   29: ldc 66
+    //   31: ldc 94
+    //   33: invokestatic 98	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: ldc_w 325
+    //   39: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: aload 4
+    //   44: areturn
     //   45: aload_2
-    //   46: ifnonnull +26 -> 72
-    //   49: aload_2
-    //   50: astore_0
-    //   51: ldc 63
-    //   53: ldc_w 316
-    //   56: invokestatic 87	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   59: aload_2
-    //   60: ifnull +9 -> 69
-    //   63: aload_2
-    //   64: invokeinterface 131 1 0
-    //   69: aload 4
-    //   71: areturn
-    //   72: aload_2
-    //   73: astore_0
-    //   74: aload_2
-    //   75: invokeinterface 141 1 0
-    //   80: ifeq +40 -> 120
-    //   83: aload_2
-    //   84: astore_0
-    //   85: aload 4
-    //   87: aload_2
-    //   88: aload_2
-    //   89: ldc 227
-    //   91: invokeinterface 219 2 0
-    //   96: invokeinterface 223 2 0
-    //   101: invokeinterface 232 2 0
-    //   106: pop
-    //   107: aload_2
-    //   108: astore_0
-    //   109: aload_2
-    //   110: invokeinterface 235 1 0
-    //   115: istore_1
-    //   116: iload_1
-    //   117: ifne -34 -> 83
-    //   120: aload_2
-    //   121: ifnull +9 -> 130
-    //   124: aload_2
-    //   125: invokeinterface 131 1 0
-    //   130: aload 4
-    //   132: areturn
-    //   133: astore_3
-    //   134: aconst_null
-    //   135: astore_2
-    //   136: aload_2
-    //   137: astore_0
-    //   138: ldc 63
-    //   140: ldc_w 318
-    //   143: iconst_1
-    //   144: anewarray 4	java/lang/Object
-    //   147: dup
-    //   148: iconst_0
-    //   149: aload_3
-    //   150: invokevirtual 209	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   153: aastore
-    //   154: invokestatic 211	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   157: aload_2
-    //   158: astore_0
-    //   159: ldc 63
-    //   161: aload_3
-    //   162: ldc 19
-    //   164: iconst_0
-    //   165: anewarray 4	java/lang/Object
-    //   168: invokestatic 71	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   171: aload_2
-    //   172: ifnull -42 -> 130
-    //   175: aload_2
-    //   176: invokeinterface 131 1 0
-    //   181: goto -51 -> 130
-    //   184: astore_2
-    //   185: aconst_null
-    //   186: astore_0
-    //   187: aload_0
-    //   188: ifnull +9 -> 197
-    //   191: aload_0
-    //   192: invokeinterface 131 1 0
-    //   197: aload_2
-    //   198: athrow
-    //   199: astore_2
-    //   200: goto -13 -> 187
-    //   203: astore_3
-    //   204: goto -68 -> 136
+    //   46: getstatic 206	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   49: aconst_null
+    //   50: aconst_null
+    //   51: aconst_null
+    //   52: aconst_null
+    //   53: invokevirtual 137	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   56: astore_2
+    //   57: aload_2
+    //   58: ifnonnull +32 -> 90
+    //   61: aload_2
+    //   62: astore_0
+    //   63: ldc 66
+    //   65: ldc_w 327
+    //   68: invokestatic 98	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   71: aload_2
+    //   72: ifnull +9 -> 81
+    //   75: aload_2
+    //   76: invokeinterface 142 1 0
+    //   81: ldc_w 325
+    //   84: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   87: aload 4
+    //   89: areturn
+    //   90: aload_2
+    //   91: astore_0
+    //   92: aload_2
+    //   93: invokeinterface 152 1 0
+    //   98: ifeq +40 -> 138
+    //   101: aload_2
+    //   102: astore_0
+    //   103: aload 4
+    //   105: aload_2
+    //   106: aload_2
+    //   107: ldc 233
+    //   109: invokeinterface 226 2 0
+    //   114: invokeinterface 229 2 0
+    //   119: invokeinterface 238 2 0
+    //   124: pop
+    //   125: aload_2
+    //   126: astore_0
+    //   127: aload_2
+    //   128: invokeinterface 241 1 0
+    //   133: istore_1
+    //   134: iload_1
+    //   135: ifne -34 -> 101
+    //   138: aload_2
+    //   139: ifnull +9 -> 148
+    //   142: aload_2
+    //   143: invokeinterface 142 1 0
+    //   148: ldc_w 325
+    //   151: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   154: aload 4
+    //   156: areturn
+    //   157: astore_3
+    //   158: aconst_null
+    //   159: astore_2
+    //   160: aload_2
+    //   161: astore_0
+    //   162: ldc 66
+    //   164: ldc_w 329
+    //   167: iconst_1
+    //   168: anewarray 4	java/lang/Object
+    //   171: dup
+    //   172: iconst_0
+    //   173: aload_3
+    //   174: invokevirtual 216	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   177: aastore
+    //   178: invokestatic 218	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   181: aload_2
+    //   182: astore_0
+    //   183: ldc 66
+    //   185: aload_3
+    //   186: ldc 17
+    //   188: iconst_0
+    //   189: anewarray 4	java/lang/Object
+    //   192: invokestatic 74	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   195: aload_2
+    //   196: ifnull -48 -> 148
+    //   199: aload_2
+    //   200: invokeinterface 142 1 0
+    //   205: goto -57 -> 148
+    //   208: astore_2
+    //   209: aconst_null
+    //   210: astore_0
+    //   211: aload_0
+    //   212: ifnull +9 -> 221
+    //   215: aload_0
+    //   216: invokeinterface 142 1 0
+    //   221: ldc_w 325
+    //   224: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   227: aload_2
+    //   228: athrow
+    //   229: astore_2
+    //   230: goto -19 -> 211
+    //   233: astore_3
+    //   234: goto -74 -> 160
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	207	0	paramContext	Context
-    //   115	2	1	bool	boolean
-    //   13	163	2	localObject1	Object
-    //   184	14	2	localObject2	Object
-    //   199	1	2	localObject3	Object
-    //   133	29	3	localException1	Exception
-    //   203	1	3	localException2	Exception
-    //   7	124	4	localLinkedList	LinkedList
+    //   0	237	0	paramContext	Context
+    //   133	2	1	bool	boolean
+    //   19	181	2	localObject1	Object
+    //   208	20	2	localObject2	Object
+    //   229	1	2	localObject3	Object
+    //   157	29	3	localException1	Exception
+    //   233	1	3	localException2	Exception
+    //   13	142	4	localLinkedList	LinkedList
     // Exception table:
     //   from	to	target	type
-    //   33	45	133	java/lang/Exception
-    //   33	45	184	finally
-    //   51	59	199	finally
-    //   74	83	199	finally
-    //   85	107	199	finally
-    //   109	116	199	finally
-    //   138	157	199	finally
-    //   159	171	199	finally
-    //   51	59	203	java/lang/Exception
-    //   74	83	203	java/lang/Exception
-    //   85	107	203	java/lang/Exception
-    //   109	116	203	java/lang/Exception
+    //   45	57	157	java/lang/Exception
+    //   45	57	208	finally
+    //   63	71	229	finally
+    //   92	101	229	finally
+    //   103	125	229	finally
+    //   127	134	229	finally
+    //   162	181	229	finally
+    //   183	195	229	finally
+    //   63	71	233	java/lang/Exception
+    //   92	101	233	java/lang/Exception
+    //   103	125	233	java/lang/Exception
+    //   127	134	233	java/lang/Exception
   }
   
-  public static String h(String paramString, Context paramContext)
+  public static String j(String paramString, Context paramContext)
   {
-    if (!com.tencent.mm.pluginsdk.permission.a.j(paramContext, "android.permission.READ_CONTACTS")) {
-      y.e("MicroMsg.AddressBookUtil", "no contact permission");
-    }
-    for (;;)
+    AppMethodBeat.i(79193);
+    if (!b.o(paramContext, "android.permission.READ_CONTACTS"))
     {
+      ab.e("MicroMsg.AddressBookUtil", "no contact permission");
+      AppMethodBeat.o(79193);
       return "";
-      try
+    }
+    try
+    {
+      paramString = paramContext.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, new String[] { "display_name" }, "_id = ?", new String[] { paramString }, null);
+      if (paramString == null)
       {
-        paramString = paramContext.getContentResolver().query(ContactsContract.Contacts.CONTENT_URI, new String[] { "display_name" }, "_id = ?", new String[] { paramString }, null);
-        if (paramString == null) {
-          continue;
-        }
-        if (paramString.moveToFirst())
-        {
-          paramContext = paramString.getString(0);
-          paramString.close();
-          return paramContext;
-        }
+        AppMethodBeat.o(79193);
+        return "";
       }
-      catch (Exception paramString)
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          y.printErrStackTrace("MicroMsg.AddressBookUtil", paramString, "getContactNameById:", new Object[0]);
-          paramString = null;
-          continue;
-          paramContext = "";
-        }
+        ab.printErrStackTrace("MicroMsg.AddressBookUtil", paramString, "getContactNameById:", new Object[0]);
+        paramString = null;
       }
+    }
+    if (paramString.moveToFirst()) {}
+    for (paramContext = paramString.getString(0);; paramContext = "")
+    {
+      paramString.close();
+      AppMethodBeat.o(79193);
+      return paramContext;
     }
   }
   
-  public static String qa(String paramString)
+  public static String xw(String paramString)
   {
+    AppMethodBeat.i(79187);
     String str = paramString.trim();
     boolean bool = str.startsWith("+");
     paramString = str;
@@ -1088,15 +1139,17 @@ public final class a
       }
     }
     paramString = Pattern.compile("[^0-9]").matcher(paramString);
-    if (bool) {
-      return "+" + paramString.replaceAll("").trim();
+    if (bool) {}
+    for (paramString = "+" + paramString.replaceAll("").trim();; paramString = paramString.replaceAll("").trim())
+    {
+      AppMethodBeat.o(79187);
+      return paramString;
     }
-    return paramString.replaceAll("").trim();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.a
  * JD-Core Version:    0.7.0.1
  */

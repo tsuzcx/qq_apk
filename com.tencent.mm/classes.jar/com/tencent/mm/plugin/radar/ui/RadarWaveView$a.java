@@ -1,5 +1,8 @@
 package com.tencent.mm.plugin.radar.ui;
 
+import a.l;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/ui/RadarWaveView$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
 public final class RadarWaveView$a {}
 
 

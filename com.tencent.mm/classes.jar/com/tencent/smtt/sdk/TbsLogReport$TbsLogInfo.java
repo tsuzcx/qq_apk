@@ -1,6 +1,7 @@
 package com.tencent.smtt.sdk;
 
 import android.util.Log;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.utils.TbsLog;
 
 public class TbsLogReport$TbsLogInfo
@@ -26,17 +27,24 @@ public class TbsLogReport$TbsLogInfo
   
   private TbsLogReport$TbsLogInfo()
   {
+    AppMethodBeat.i(64484);
     resetArgs();
+    AppMethodBeat.o(64484);
   }
   
   protected Object clone()
   {
+    AppMethodBeat.i(64485);
     try
     {
       Object localObject = super.clone();
+      AppMethodBeat.o(64485);
       return localObject;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      AppMethodBeat.o(64485);
+    }
     return this;
   }
   
@@ -73,8 +81,10 @@ public class TbsLogReport$TbsLogInfo
   
   public void setCheckErrorDetail(String paramString)
   {
+    AppMethodBeat.i(64488);
     setErrorCode(108);
     this.o = paramString;
+    AppMethodBeat.o(64488);
   }
   
   public void setDownConsumeTime(long paramLong)
@@ -99,23 +109,28 @@ public class TbsLogReport$TbsLogInfo
   
   public void setDownloadUrl(String paramString)
   {
+    AppMethodBeat.i(64486);
     if (this.c == null)
     {
       this.c = paramString;
+      AppMethodBeat.o(64486);
       return;
     }
     this.c = (this.c + ";" + paramString);
+    AppMethodBeat.o(64486);
   }
   
   public void setErrorCode(int paramInt)
   {
+    AppMethodBeat.i(64487);
     if ((paramInt != 100) && (paramInt != 110) && (paramInt != 120) && (paramInt != 111) && (paramInt < 400)) {
-      TbsLog.i("TbsDownload", "error occured, errorCode:" + paramInt, true);
+      TbsLog.i("TbsDownload", "error occured, errorCode:".concat(String.valueOf(paramInt)), true);
     }
     if (paramInt == 111) {
       TbsLog.i("TbsDownload", "you are not in wifi, downloading stoped", true);
     }
     this.a = paramInt;
+    AppMethodBeat.o(64487);
   }
   
   public void setEventTime(long paramLong)
@@ -125,7 +140,10 @@ public class TbsLogReport$TbsLogInfo
   
   public void setFailDetail(String paramString)
   {
-    if (paramString == null) {
+    AppMethodBeat.i(64489);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(64489);
       return;
     }
     String str = paramString;
@@ -133,13 +151,16 @@ public class TbsLogReport$TbsLogInfo
       str = paramString.substring(0, 1024);
     }
     this.p = str;
+    AppMethodBeat.o(64489);
   }
   
   public void setFailDetail(Throwable paramThrowable)
   {
+    AppMethodBeat.i(64490);
     if (paramThrowable == null)
     {
       this.p = "";
+      AppMethodBeat.o(64490);
       return;
     }
     String str = Log.getStackTraceString(paramThrowable);
@@ -148,6 +169,7 @@ public class TbsLogReport$TbsLogInfo
       paramThrowable = str.substring(0, 1024);
     }
     this.p = paramThrowable;
+    AppMethodBeat.o(64490);
   }
   
   public void setHttpCode(int paramInt)
@@ -187,7 +209,7 @@ public class TbsLogReport$TbsLogInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLogReport.TbsLogInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ public final class c$bz
 {
   public c$bz()
   {
-    super("getLocalData", "getLocalData", 179, false);
+    super("getEnterpriseChat", "getEnterpriseChat", 244, false);
   }
 }
 

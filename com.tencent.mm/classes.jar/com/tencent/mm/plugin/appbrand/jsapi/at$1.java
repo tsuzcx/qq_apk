@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.s;
-import com.tencent.mm.sdk.platformtools.ai;
+import android.content.Intent;
+import com.tencent.luggage.g.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.r;
 
 final class at$1
-  implements Runnable
+  implements e.a
 {
-  at$1(at paramat, s params) {}
+  at$1(at paramat, r paramr, int paramInt) {}
   
-  public final void run()
+  public final void b(int paramInt, Intent paramIntent)
   {
-    ai.S(this.ggS.gUo);
-    this.ggS.ant();
+    AppMethodBeat.i(114329);
+    this.bAW.h(this.bAX, this.hyN.j("ok", null));
+    AppMethodBeat.o(114329);
   }
 }
 

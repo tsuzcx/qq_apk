@@ -14,7 +14,7 @@ import android.graphics.drawable.InsetDrawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.RippleDrawable;
 import android.os.Build.VERSION;
-import android.support.v4.a.a.a;
+import android.support.v4.graphics.drawable.a;
 import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.List;
 final class i
   extends h
 {
-  private InsetDrawable iW;
+  private InsetDrawable jP;
   
   i(VisibilityAwareImageButton paramVisibilityAwareImageButton, k paramk)
   {
@@ -31,42 +31,42 @@ final class i
   
   final void a(ColorStateList paramColorStateList, PorterDuff.Mode paramMode, int paramInt1, int paramInt2)
   {
-    this.iG = a.f(aO());
-    a.a(this.iG, paramColorStateList);
+    this.jz = a.e(bx());
+    a.a(this.jz, paramColorStateList);
     if (paramMode != null) {
-      a.a(this.iG, paramMode);
+      a.a(this.jz, paramMode);
     }
     if (paramInt2 > 0) {
-      this.iI = a(paramInt2, paramColorStateList);
+      this.jB = a(paramInt2, paramColorStateList);
     }
-    for (paramColorStateList = new LayerDrawable(new Drawable[] { this.iI, this.iG });; paramColorStateList = this.iG)
+    for (paramColorStateList = new LayerDrawable(new Drawable[] { this.jB, this.jz });; paramColorStateList = this.jz)
     {
-      this.iH = new RippleDrawable(ColorStateList.valueOf(paramInt1), paramColorStateList, null);
-      this.iJ = this.iH;
-      this.iO.setBackgroundDrawable(this.iH);
+      this.jA = new RippleDrawable(ColorStateList.valueOf(paramInt1), paramColorStateList, null);
+      this.jC = this.jA;
+      this.jH.setBackgroundDrawable(this.jA);
       return;
-      this.iI = null;
+      this.jB = null;
     }
   }
   
-  final void aJ() {}
+  final void bs() {}
   
-  final void aK()
+  final void bt()
   {
-    aL();
+    bu();
   }
   
-  final boolean aM()
+  final boolean bv()
   {
     return false;
   }
   
-  final d aN()
+  final d bw()
   {
     return new e();
   }
   
-  final GradientDrawable aP()
+  final GradientDrawable by()
   {
     return new i.a();
   }
@@ -75,10 +75,10 @@ final class i
   
   final void d(Rect paramRect)
   {
-    if (this.iO.aI())
+    if (this.jH.br())
     {
-      float f1 = this.iO.getRadius();
-      float f2 = this.iN.getElevation() + this.iL;
+      float f1 = this.jH.getRadius();
+      float f2 = this.jG.getElevation() + this.jE;
       int i = (int)Math.ceil(j.d(f2, f1, false));
       int j = (int)Math.ceil(j.c(f2, f1, false));
       paramRect.set(i, j, i, j);
@@ -89,74 +89,74 @@ final class i
   
   final void e(Rect paramRect)
   {
-    if (this.iO.aI())
+    if (this.jH.br())
     {
-      this.iW = new InsetDrawable(this.iH, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
-      this.iO.setBackgroundDrawable(this.iW);
+      this.jP = new InsetDrawable(this.jA, paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+      this.jH.setBackgroundDrawable(this.jP);
       return;
     }
-    this.iO.setBackgroundDrawable(this.iH);
+    this.jH.setBackgroundDrawable(this.jA);
   }
   
   public final float getElevation()
   {
-    return this.iN.getElevation();
+    return this.jG.getElevation();
   }
   
   final void o(float paramFloat1, float paramFloat2)
   {
     if (Build.VERSION.SDK_INT == 21) {
-      if (this.iN.isEnabled())
+      if (this.jG.isEnabled())
       {
-        this.iN.setElevation(paramFloat1);
-        if ((this.iN.isFocused()) || (this.iN.isPressed())) {
-          this.iN.setTranslationZ(paramFloat2);
+        this.jG.setElevation(paramFloat1);
+        if ((this.jG.isFocused()) || (this.jG.isPressed())) {
+          this.jG.setTranslationZ(paramFloat2);
         }
       }
     }
     for (;;)
     {
-      if (this.iO.aI()) {
-        aL();
+      if (this.jH.br()) {
+        bu();
       }
       return;
-      this.iN.setTranslationZ(0.0F);
+      this.jG.setTranslationZ(0.0F);
       continue;
-      this.iN.setElevation(0.0F);
-      this.iN.setTranslationZ(0.0F);
+      this.jG.setElevation(0.0F);
+      this.jG.setTranslationZ(0.0F);
       continue;
       StateListAnimator localStateListAnimator = new StateListAnimator();
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.play(ObjectAnimator.ofFloat(this.iN, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.iN, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
-      localAnimatorSet.setInterpolator(iC);
+      localAnimatorSet.play(ObjectAnimator.ofFloat(this.jG, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.jG, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
+      localAnimatorSet.setInterpolator(jv);
       localStateListAnimator.addState(PRESSED_ENABLED_STATE_SET, localAnimatorSet);
       localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.play(ObjectAnimator.ofFloat(this.iN, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.iN, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
-      localAnimatorSet.setInterpolator(iC);
-      localStateListAnimator.addState(iM, localAnimatorSet);
+      localAnimatorSet.play(ObjectAnimator.ofFloat(this.jG, "elevation", new float[] { paramFloat1 }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.jG, View.TRANSLATION_Z, new float[] { paramFloat2 }).setDuration(100L));
+      localAnimatorSet.setInterpolator(jv);
+      localStateListAnimator.addState(jF, localAnimatorSet);
       localAnimatorSet = new AnimatorSet();
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(ObjectAnimator.ofFloat(this.iN, "elevation", new float[] { paramFloat1 }).setDuration(0L));
+      localArrayList.add(ObjectAnimator.ofFloat(this.jG, "elevation", new float[] { paramFloat1 }).setDuration(0L));
       if ((Build.VERSION.SDK_INT >= 22) && (Build.VERSION.SDK_INT <= 24)) {
-        localArrayList.add(ObjectAnimator.ofFloat(this.iN, View.TRANSLATION_Z, new float[] { this.iN.getTranslationZ() }).setDuration(100L));
+        localArrayList.add(ObjectAnimator.ofFloat(this.jG, View.TRANSLATION_Z, new float[] { this.jG.getTranslationZ() }).setDuration(100L));
       }
-      localArrayList.add(ObjectAnimator.ofFloat(this.iN, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(100L));
+      localArrayList.add(ObjectAnimator.ofFloat(this.jG, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(100L));
       localAnimatorSet.playSequentially((Animator[])localArrayList.toArray(new ObjectAnimator[0]));
-      localAnimatorSet.setInterpolator(iC);
+      localAnimatorSet.setInterpolator(jv);
       localStateListAnimator.addState(ENABLED_STATE_SET, localAnimatorSet);
       localAnimatorSet = new AnimatorSet();
-      localAnimatorSet.play(ObjectAnimator.ofFloat(this.iN, "elevation", new float[] { 0.0F }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.iN, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(0L));
-      localAnimatorSet.setInterpolator(iC);
+      localAnimatorSet.play(ObjectAnimator.ofFloat(this.jG, "elevation", new float[] { 0.0F }).setDuration(0L)).with(ObjectAnimator.ofFloat(this.jG, View.TRANSLATION_Z, new float[] { 0.0F }).setDuration(0L));
+      localAnimatorSet.setInterpolator(jv);
       localStateListAnimator.addState(EMPTY_STATE_SET, localAnimatorSet);
-      this.iN.setStateListAnimator(localStateListAnimator);
+      this.jG.setStateListAnimator(localStateListAnimator);
     }
   }
   
   final void setRippleColor(int paramInt)
   {
-    if ((this.iH instanceof RippleDrawable))
+    if ((this.jA instanceof RippleDrawable))
     {
-      ((RippleDrawable)this.iH).setColor(ColorStateList.valueOf(paramInt));
+      ((RippleDrawable)this.jA).setColor(ColorStateList.valueOf(paramInt));
       return;
     }
     super.setRippleColor(paramInt);
@@ -164,7 +164,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.design.widget.i
  * JD-Core Version:    0.7.0.1
  */

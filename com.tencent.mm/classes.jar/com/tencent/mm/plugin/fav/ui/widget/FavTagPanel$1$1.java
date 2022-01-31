@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui.widget;
 
 import android.view.View;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavTagPanel$1$1
   implements Runnable
@@ -10,8 +11,10 @@ final class FavTagPanel$1$1
   
   public final void run()
   {
-    FavTagPanel.a(this.kjO.kjN);
-    ((TextView)this.hdG).getText().toString();
+    AppMethodBeat.i(74705);
+    FavTagPanel.a(this.mEt.mEs);
+    ((TextView)this.bTJ).getText().toString();
+    AppMethodBeat.o(74705);
   }
 }
 

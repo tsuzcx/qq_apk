@@ -3,61 +3,65 @@ package com.tencent.mm.plugin.card.ui.view;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.d.d;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.ra;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 final class n$2
   implements View.OnClickListener
 {
-  n$2(n paramn, ra paramra, com.tencent.mm.plugin.card.base.b paramb) {}
+  n$2(n paramn, uo paramuo, com.tencent.mm.plugin.card.base.b paramb) {}
   
   public final void onClick(View paramView)
   {
-    if ((!bk.bl(this.iyl.sIg)) && (!bk.bl(this.iyl.sIf)))
+    AppMethodBeat.i(88763);
+    if ((!bo.isNullOrNil(this.kBs.wFM)) && (!bo.isNullOrNil(this.kBs.wFL)))
     {
       int i;
-      if (this.iyk.hxN.getIntent() != null)
+      if (this.kBr.jpX.getIntent() != null)
       {
-        i = this.iyk.hxN.getIntent().getIntExtra("key_from_scene", 3);
-        if (this.iyk.hxN.getIntent() == null) {
-          break label171;
+        i = this.kBr.jpX.getIntent().getIntExtra("key_from_scene", 3);
+        if (this.kBr.jpX.getIntent() == null) {
+          break label181;
         }
       }
-      label171:
-      for (int j = this.iyk.hxN.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
+      label181:
+      for (int j = this.kBr.jpX.getIntent().getIntExtra("key_from_appbrand_type", 0);; j = 0)
       {
-        com.tencent.mm.plugin.card.d.b.a(this.iym.azB(), this.iyl, i, j);
-        h.nFQ.f(11941, new Object[] { Integer.valueOf(20), this.iym.azB(), this.iym.azC(), "", this.iyl.title });
+        com.tencent.mm.plugin.card.d.b.a(this.kBt.bbh(), this.kBs, i, j);
+        h.qsU.e(11941, new Object[] { Integer.valueOf(20), this.kBt.bbh(), this.kBt.bbi(), "", this.kBs.title });
+        AppMethodBeat.o(88763);
         return;
         i = 3;
         break;
       }
     }
-    if (!bk.bl(this.iyl.url))
+    if (!bo.isNullOrNil(this.kBs.url))
     {
-      paramView = l.y(this.iyl.url, this.iyl.sJq);
-      com.tencent.mm.plugin.card.d.b.a(this.iyk.hxN, paramView, 1);
-      h localh = h.nFQ;
-      String str1 = this.iym.azB();
-      String str2 = this.iym.azC();
-      if (this.iyl.title != null) {}
-      for (paramView = this.iyl.title;; paramView = "")
+      paramView = l.H(this.kBs.url, this.kBs.wGZ);
+      com.tencent.mm.plugin.card.d.b.a(this.kBr.jpX, paramView, 1);
+      h localh = h.qsU;
+      String str1 = this.kBt.bbh();
+      String str2 = this.kBt.bbi();
+      if (this.kBs.title != null) {}
+      for (paramView = this.kBs.title;; paramView = "")
       {
-        localh.f(11941, new Object[] { Integer.valueOf(9), str1, str2, "", paramView });
+        localh.e(11941, new Object[] { Integer.valueOf(9), str1, str2, "", paramView });
+        AppMethodBeat.o(88763);
         return;
       }
     }
-    d.a(this.iyk.hxN, this.iyk.hxN.getString(a.g.card_wallet_unknown_err), true);
+    d.a(this.kBr.jpX, this.kBr.jpX.getString(2131298085), true);
+    AppMethodBeat.o(88763);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.n.2
  * JD-Core Version:    0.7.0.1
  */

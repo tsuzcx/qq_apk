@@ -3,6 +3,7 @@ package com.tencent.mm.ui.conversation;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pointers.PBool;
 
@@ -13,15 +14,17 @@ final class c$8
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.doh.show();
-    this.vPx.value = false;
-    c.a(this.dAA, this.vPx, this.doh);
-    if (this.vPB) {
-      h.nFQ.f(14553, new Object[] { Integer.valueOf(1), Integer.valueOf(3), this.dAA });
+    AppMethodBeat.i(34162);
+    this.efE.show();
+    this.Ahi.value = false;
+    c.a(this.euc, this.Ahi, this.efE);
+    if (this.Ahm) {
+      h.qsU.e(14553, new Object[] { Integer.valueOf(1), Integer.valueOf(3), this.euc });
     }
-    if (this.vPz != null) {
-      this.vPz.run();
+    if (this.Ahk != null) {
+      this.Ahk.run();
     }
+    AppMethodBeat.o(34162);
   }
 }
 

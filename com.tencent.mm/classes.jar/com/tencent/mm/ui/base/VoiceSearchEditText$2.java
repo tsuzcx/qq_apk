@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoiceSearchEditText$2
   implements TextWatcher
@@ -14,8 +15,10 @@ final class VoiceSearchEditText$2
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    VoiceSearchEditText.a(this.vbN, true);
-    VoiceSearchEditText.e(this.vbN);
+    AppMethodBeat.i(107089);
+    VoiceSearchEditText.a(this.zqj, true);
+    VoiceSearchEditText.f(this.zqj);
+    AppMethodBeat.o(107089);
   }
 }
 

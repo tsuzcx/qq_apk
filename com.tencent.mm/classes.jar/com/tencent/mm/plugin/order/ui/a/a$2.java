@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.order.ui.a;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
 
 final class a$2
@@ -11,9 +12,11 @@ final class a$2
   
   public final void onClick(View paramView)
   {
-    paramView = this.mOH.desc + "\n" + this.mOH.mOP;
-    this.mRj.setContent(paramView);
-    this.hcx.notifyDataSetChanged();
+    AppMethodBeat.i(43885);
+    paramView = this.poX.desc + "\n" + this.poX.ppf;
+    this.prw.setContent(paramView);
+    this.iLO.notifyDataSetChanged();
+    AppMethodBeat.o(43885);
   }
 }
 

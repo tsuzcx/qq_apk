@@ -1,137 +1,191 @@
 package com.tencent.mm.sdk.platformtools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import junit.framework.Assert;
+
 public final class af
 {
-  public volatile boolean ufm;
+  private static af.b dYE;
+  private static int ynB;
+  private static Map<Integer, af> ynD;
+  private static boolean ynF;
+  private static boolean ynG;
+  private final boolean fqY;
+  private long interval;
+  private long ts;
+  private final int ynC;
+  private final af.a ynE;
   
-  public af()
+  static
   {
-    this.ufm = false;
+    AppMethodBeat.i(52050);
+    ynD = new HashMap();
+    ynF = false;
+    AppMethodBeat.o(52050);
   }
   
-  public af(boolean paramBoolean)
+  public af(af.a parama)
   {
-    this.ufm = paramBoolean;
+    AppMethodBeat.i(52045);
+    this.ts = 0L;
+    this.interval = 0L;
+    Assert.assertTrue("bumper not initialized", ynF);
+    this.ynE = parama;
+    this.fqY = true;
+    if (ynB >= 8192) {
+      ynB = 0;
+    }
+    int i = ynB + 1;
+    ynB = i;
+    this.ynC = i;
+    AppMethodBeat.o(52045);
   }
   
-  public final void block()
+  public static void a(af.b paramb)
   {
-    try
+    ynF = true;
+    dYE = paramb;
+  }
+  
+  public static long dsK()
+  {
+    AppMethodBeat.i(52046);
+    ynG = false;
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject = new HashSet();
+    ((Set)localObject).addAll(ynD.keySet());
+    localObject = ((Set)localObject).iterator();
+    long l1 = 9223372036854775807L;
+    if (((Iterator)localObject).hasNext())
     {
-      for (;;)
+      Integer localInteger = (Integer)((Iterator)localObject).next();
+      af localaf = (af)ynD.get(localInteger);
+      if (localaf == null) {
+        break label283;
+      }
+      long l3 = bo.av(localaf.ts);
+      long l2 = l3;
+      if (l3 < 0L) {
+        l2 = 0L;
+      }
+      if (l2 > localaf.interval)
       {
-        boolean bool = this.ufm;
-        if (bool) {
-          break;
+        if ((!localaf.ynE.onTimerExpired()) || (!localaf.fqY)) {
+          localLinkedList.add(localInteger);
         }
-        try
+        for (;;)
         {
-          wait();
+          localaf.ts = bo.yB();
+          break;
+          l1 = localaf.interval;
         }
-        catch (InterruptedException localInterruptedException) {}
       }
-      return;
-    }
-    finally {}
-  }
-  
-  public final void close()
-  {
-    try
-    {
-      this.ufm = false;
-      return;
-    }
-    finally {}
-  }
-  
-  /* Error */
-  public final boolean crb()
-  {
-    // Byte code:
-    //   0: ldc2_w 24
-    //   3: lconst_0
-    //   4: lcmp
-    //   5: ifeq +64 -> 69
-    //   8: aload_0
-    //   9: monitorenter
-    //   10: invokestatic 31	java/lang/System:currentTimeMillis	()J
-    //   13: lstore_1
-    //   14: ldc2_w 24
-    //   17: lload_1
-    //   18: ladd
-    //   19: lstore_3
-    //   20: aload_0
-    //   21: getfield 12	com/tencent/mm/sdk/platformtools/af:ufm	Z
-    //   24: istore 5
-    //   26: iload 5
-    //   28: ifne +23 -> 51
-    //   31: lload_1
-    //   32: lload_3
-    //   33: lcmp
-    //   34: ifge +17 -> 51
-    //   37: aload_0
-    //   38: lload_3
-    //   39: lload_1
-    //   40: lsub
-    //   41: invokevirtual 34	java/lang/Object:wait	(J)V
-    //   44: invokestatic 31	java/lang/System:currentTimeMillis	()J
-    //   47: lstore_1
-    //   48: goto -28 -> 20
-    //   51: aload_0
-    //   52: getfield 12	com/tencent/mm/sdk/platformtools/af:ufm	Z
-    //   55: istore 5
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: iload 5
-    //   61: ireturn
-    //   62: astore 6
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: aload 6
-    //   68: athrow
-    //   69: aload_0
-    //   70: invokevirtual 36	com/tencent/mm/sdk/platformtools/af:block	()V
-    //   73: iconst_1
-    //   74: ireturn
-    //   75: astore 6
-    //   77: goto -33 -> 44
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	80	0	this	af
-    //   13	35	1	l1	long
-    //   19	20	3	l2	long
-    //   24	36	5	bool	boolean
-    //   62	5	6	localObject	Object
-    //   75	1	6	localInterruptedException	InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   10	14	62	finally
-    //   20	26	62	finally
-    //   37	44	62	finally
-    //   44	48	62	finally
-    //   51	59	62	finally
-    //   64	66	62	finally
-    //   37	44	75	java/lang/InterruptedException
-  }
-  
-  public final void open()
-  {
-    try
-    {
-      boolean bool = this.ufm;
-      this.ufm = true;
-      if (!bool) {
-        notifyAll();
+      if (localaf.interval - l2 >= l1) {
+        break label283;
       }
-      return;
+      l1 = localaf.interval - l2;
     }
-    finally {}
+    label283:
+    for (;;)
+    {
+      break;
+      int i = 0;
+      while (i < localLinkedList.size())
+      {
+        ynD.remove(localLinkedList.get(i));
+        i += 1;
+      }
+      if ((!ynG) && (l1 == 9223372036854775807L) && (dYE != null))
+      {
+        dYE.cancel();
+        ab.v("MicroMsg.MAlarmHandler", "cancel bumper for no more handler");
+      }
+      AppMethodBeat.o(52046);
+      return l1;
+    }
   }
   
-  public final String toString()
+  private static boolean nO(long paramLong)
   {
-    return "MMConditionVariable[" + hashCode() + "," + this.ufm + "]";
+    AppMethodBeat.i(52049);
+    ab.d("MicroMsg.MAlarmHandler", "check need prepare: check=".concat(String.valueOf(paramLong)));
+    Iterator localIterator = ynD.entrySet().iterator();
+    long l1 = 9223372036854775807L;
+    while (localIterator.hasNext())
+    {
+      af localaf = (af)((Map.Entry)localIterator.next()).getValue();
+      if (localaf == null) {
+        break label162;
+      }
+      long l3 = bo.av(localaf.ts);
+      long l2 = l3;
+      if (l3 < 0L) {
+        l2 = 0L;
+      }
+      if (l2 > localaf.interval)
+      {
+        l1 = localaf.interval;
+      }
+      else
+      {
+        if (localaf.interval - l2 >= l1) {
+          break label162;
+        }
+        l1 = localaf.interval - l2;
+      }
+    }
+    label162:
+    for (;;)
+    {
+      break;
+      if (l1 > paramLong)
+      {
+        AppMethodBeat.o(52049);
+        return true;
+      }
+      AppMethodBeat.o(52049);
+      return false;
+    }
+  }
+  
+  public final void dsL()
+  {
+    AppMethodBeat.i(52047);
+    ynG = true;
+    this.interval = 50000L;
+    this.ts = bo.yB();
+    boolean bool = nO(this.interval);
+    stopTimer();
+    ynD.put(Integer.valueOf(this.ynC), this);
+    if ((dYE != null) && (bool))
+    {
+      ab.v("MicroMsg.MAlarmHandler", "prepare bumper");
+      dYE.prepare();
+    }
+    AppMethodBeat.o(52047);
+  }
+  
+  protected final void finalize()
+  {
+    AppMethodBeat.i(52044);
+    stopTimer();
+    super.finalize();
+    AppMethodBeat.o(52044);
+  }
+  
+  public final void stopTimer()
+  {
+    AppMethodBeat.i(52048);
+    ynD.remove(Integer.valueOf(this.ynC));
+    AppMethodBeat.o(52048);
   }
 }
 

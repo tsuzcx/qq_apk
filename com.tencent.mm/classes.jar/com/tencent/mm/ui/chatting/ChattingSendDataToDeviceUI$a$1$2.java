@@ -2,9 +2,8 @@ package com.tencent.mm.ui.chatting;
 
 import android.content.res.Resources;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 final class ChattingSendDataToDeviceUI$a$1$2
@@ -14,19 +13,21 @@ final class ChattingSendDataToDeviceUI$a$1$2
   
   public final void run()
   {
-    this.vlH.vlz.vnu.setProgress(0);
-    this.vlH.vlz.vnu.setVisibility(4);
-    this.vlH.vlz.vlE.setText(this.vlH.vlG.vlx.getText(R.l.chatting_send_failed));
-    this.vlH.vlz.vlE.setTextColor(this.vlH.vlG.vlx.getResources().getColor(R.e.send_state_text_failed));
-    this.vlH.vlA.bKT = "send_data_failed";
-    this.vlH.vlA.progress = 0;
-    ChattingSendDataToDeviceUI.d(this.vlH.vlG.vlx).put(this.vlH.vlA.deviceID, this.vlH.vlA);
-    y.i("MicroMsg.ChattingSendDataToDeviceUI", " deviceId %s SEND_DATA_FAILED!", new Object[] { this.vlH.vlA.deviceID });
+    AppMethodBeat.i(30775);
+    this.zBg.zAY.zCQ.Px(0);
+    this.zBg.zAY.zCQ.setVisibility(4);
+    this.zBg.zAY.zBd.setText(this.zBg.zBf.zAW.getText(2131298318));
+    this.zBg.zAY.zBd.setTextColor(this.zBg.zBf.zAW.getResources().getColor(2131690443));
+    this.zBg.zAZ.csn = "send_data_failed";
+    this.zBg.zAZ.progress = 0;
+    ChattingSendDataToDeviceUI.d(this.zBg.zBf.zAW).put(this.zBg.zAZ.deviceID, this.zBg.zAZ);
+    ab.i("MicroMsg.ChattingSendDataToDeviceUI", " deviceId %s SEND_DATA_FAILED!", new Object[] { this.zBg.zAZ.deviceID });
+    AppMethodBeat.o(30775);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingSendDataToDeviceUI.a.1.2
  * JD-Core Version:    0.7.0.1
  */

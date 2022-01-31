@@ -1,21 +1,12 @@
 package com.tencent.mm.bq;
 
-import android.os.Build.VERSION;
-import com.tencent.mm.bn.a.a.a;
-
-public final class a
+public abstract interface a
 {
-  public static int bSL()
-  {
-    if (Build.VERSION.SDK_INT < 19) {
-      return a.a.notification_icon;
-    }
-    return a.a.notification_icon_gray;
-  }
+  public abstract void onDone();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.bq.a
  * JD-Core Version:    0.7.0.1
  */

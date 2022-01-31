@@ -2,6 +2,7 @@ package com.tencent.tmassistantsdk.storage.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.storage.table.ClientInfoTable;
 import com.tencent.tmassistantsdk.storage.table.DownloadInfoTable;
 import com.tencent.tmassistantsdk.storage.table.DownloadLogTable;
@@ -26,6 +27,7 @@ public class AstSDKDBHelper
   {
     try
     {
+      AppMethodBeat.i(76182);
       if (mInstance == null)
       {
         localObject1 = GlobalUtil.getInstance().getContext();
@@ -34,6 +36,7 @@ public class AstSDKDBHelper
         }
       }
       Object localObject1 = mInstance;
+      AppMethodBeat.o(76182);
       return localObject1;
     }
     finally {}

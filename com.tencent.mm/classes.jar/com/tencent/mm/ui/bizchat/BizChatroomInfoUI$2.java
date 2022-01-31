@@ -1,29 +1,35 @@
 package com.tencent.mm.ui.bizchat;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ai.a.b;
-import com.tencent.mm.ai.a.d;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.model.bd.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.b;
+import com.tencent.mm.aj.a.d;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.model.bf.a;
 
 final class BizChatroomInfoUI$2
-  implements bd.a
+  implements bf.a
 {
   BizChatroomInfoUI$2(BizChatroomInfoUI paramBizChatroomInfoUI, ProgressDialog paramProgressDialog) {}
   
-  public final void xA()
+  public final boolean JS()
   {
-    if (this.doh != null)
-    {
-      z.MB().bL(BizChatroomInfoUI.g(this.vfX));
-      z.MA().bL(BizChatroomInfoUI.g(this.vfX));
-      this.doh.dismiss();
-    }
+    AppMethodBeat.i(30197);
+    boolean bool = BizChatroomInfoUI.f(this.zuv);
+    AppMethodBeat.o(30197);
+    return bool;
   }
   
-  public final boolean xz()
+  public final void JT()
   {
-    return BizChatroomInfoUI.f(this.vfX);
+    AppMethodBeat.i(30198);
+    if (this.efE != null)
+    {
+      z.afl().gG(BizChatroomInfoUI.g(this.zuv));
+      z.afk().gG(BizChatroomInfoUI.g(this.zuv));
+      this.efE.dismiss();
+    }
+    AppMethodBeat.o(30198);
   }
 }
 

@@ -1,141 +1,155 @@
 package com.tencent.mm.plugin.clean.c;
 
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 public final class d
 {
-  private static long iBB;
-  private static long iBC;
-  private static final ah iBK = new ah();
-  private static HashSet<String> iBL;
-  private static ArrayList<b> iBM;
-  private static int iBN = 0;
-  private static long iBl;
-  private static long iBm;
-  private static com.tencent.mm.plugin.clean.c.a.b iBw;
+  private static com.tencent.mm.plugin.clean.c.a.b kGD;
+  private static long kGI;
+  private static long kGJ;
+  private static final ak kGR;
+  private static HashSet<String> kGS;
+  private static ArrayList<b> kGT;
+  private static int kGU;
+  private static long kGs;
+  private static long kGt;
   
   static
   {
-    iBC = 0L;
-    iBB = 0L;
-    iBm = 0L;
-    iBl = 0L;
+    AppMethodBeat.i(18699);
+    kGR = new ak();
+    kGJ = 0L;
+    kGI = 0L;
+    kGt = 0L;
+    kGs = 0L;
+    kGU = 0;
+    AppMethodBeat.o(18699);
   }
   
   public static void a(com.tencent.mm.plugin.clean.c.a.b paramb)
   {
-    iBw = paramb;
-  }
-  
-  public static com.tencent.mm.plugin.clean.c.a.b aDO()
-  {
-    boolean bool = true;
-    if (iBw == null) {}
-    for (;;)
-    {
-      y.d("MicroMsg.CleanLogic", "getThreadController threadController is null? %b", new Object[] { Boolean.valueOf(bool) });
-      return iBw;
-      bool = false;
-    }
-  }
-  
-  public static HashSet<String> aDP()
-  {
-    return iBL;
-  }
-  
-  public static ArrayList<b> aDQ()
-  {
-    return iBM;
-  }
-  
-  public static long aDR()
-  {
-    return iBC;
-  }
-  
-  public static long aDS()
-  {
-    return iBl;
-  }
-  
-  public static long aDT()
-  {
-    return iBm;
-  }
-  
-  public static long aDU()
-  {
-    return iBB;
-  }
-  
-  public static final void aDV()
-  {
-    y.i("MicroMsg.CleanLogic", "startCleanDataNow");
-    iBK.removeCallbacksAndMessages(null);
-    iBC = 0L;
-    iBB = 0L;
-    p(null);
-    iBN = 0;
-  }
-  
-  public static final void aDW()
-  {
-    y.i("MicroMsg.CleanLogic", "start to post clean runnable!!");
-    iBK.removeCallbacksAndMessages(null);
-    iBK.postDelayed(new d.1(), 300000L);
-  }
-  
-  public static final void aDX()
-  {
-    iBN += 1;
-  }
-  
-  public static final void aDY()
-  {
-    iBN -= 1;
+    kGD = paramb;
   }
   
   public static void b(HashSet<String> paramHashSet)
   {
-    iBL = paramHashSet;
+    kGS = paramHashSet;
   }
   
-  public static void cU(long paramLong)
+  public static com.tencent.mm.plugin.clean.c.a.b bgO()
   {
-    iBC = paramLong;
+    boolean bool = true;
+    AppMethodBeat.i(18695);
+    if (kGD == null) {}
+    for (;;)
+    {
+      ab.d("MicroMsg.CleanLogic", "getThreadController threadController is null? %b", new Object[] { Boolean.valueOf(bool) });
+      com.tencent.mm.plugin.clean.c.a.b localb = kGD;
+      AppMethodBeat.o(18695);
+      return localb;
+      bool = false;
+    }
   }
   
-  public static void cV(long paramLong)
+  public static HashSet<String> bgP()
   {
-    iBl = paramLong;
+    return kGS;
   }
   
-  public static void cW(long paramLong)
+  public static ArrayList<b> bgQ()
+  {
+    return kGT;
+  }
+  
+  public static long bgR()
+  {
+    return kGJ;
+  }
+  
+  public static long bgS()
+  {
+    return kGs;
+  }
+  
+  public static long bgT()
+  {
+    return kGt;
+  }
+  
+  public static long bgU()
+  {
+    return kGI;
+  }
+  
+  public static final void bgV()
+  {
+    AppMethodBeat.i(18697);
+    ab.i("MicroMsg.CleanLogic", "startCleanDataNow");
+    kGR.removeCallbacksAndMessages(null);
+    kGJ = 0L;
+    kGI = 0L;
+    u(null);
+    kGU = 0;
+    AppMethodBeat.o(18697);
+  }
+  
+  public static final void bgW()
+  {
+    AppMethodBeat.i(18698);
+    ab.i("MicroMsg.CleanLogic", "start to post clean runnable!!");
+    kGR.removeCallbacksAndMessages(null);
+    kGR.postDelayed(new d.1(), 300000L);
+    AppMethodBeat.o(18698);
+  }
+  
+  public static final void bgX()
+  {
+    kGU += 1;
+  }
+  
+  public static final void bgY()
+  {
+    kGU -= 1;
+  }
+  
+  public static void iq(long paramLong)
+  {
+    kGJ = paramLong;
+  }
+  
+  public static void ir(long paramLong)
+  {
+    kGs = paramLong;
+  }
+  
+  public static void is(long paramLong)
   {
     long l = paramLong;
     if (paramLong <= 0L) {
       l = 0L;
     }
-    iBm = l;
+    kGt = l;
   }
   
-  public static void cX(long paramLong)
+  public static void it(long paramLong)
   {
-    iBB = paramLong;
+    kGI = paramLong;
   }
   
-  public static void p(ArrayList<b> paramArrayList)
+  public static void u(ArrayList<b> paramArrayList)
   {
     boolean bool = true;
+    AppMethodBeat.i(18696);
     if (paramArrayList == null) {}
     for (;;)
     {
-      y.i("MicroMsg.CleanLogic", "set analyse data: is null? %b", new Object[] { Boolean.valueOf(bool) });
-      iBM = paramArrayList;
+      ab.i("MicroMsg.CleanLogic", "set analyse data: is null? %b", new Object[] { Boolean.valueOf(bool) });
+      kGT = paramArrayList;
+      AppMethodBeat.o(18696);
       return;
       bool = false;
     }
@@ -143,7 +157,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.d
  * JD-Core Version:    0.7.0.1
  */

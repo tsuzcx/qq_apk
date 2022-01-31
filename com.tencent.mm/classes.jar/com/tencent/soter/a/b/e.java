@@ -6,7 +6,7 @@ import com.tencent.soter.core.c.g;
 public abstract class e<T>
   extends f
 {
-  public T wPx = null;
+  public T BmW = null;
   
   e()
   {
@@ -31,26 +31,26 @@ public abstract class e<T>
     }
     for (;;)
     {
-      if (!g.bl(paramString)) {
-        this.aox = paramString;
+      if (!g.isNullOrNil(paramString)) {
+        this.errMsg = paramString;
       }
-      this.wPx = paramT;
+      this.BmW = paramT;
       return;
-      this.aox = "get support soter failed remotely";
+      this.errMsg = "get support soter failed remotely";
       continue;
-      this.aox = "upload app secure key";
+      this.errMsg = "upload app secure key";
       continue;
-      this.aox = "upload auth key failed";
+      this.errMsg = "upload auth key failed";
       continue;
-      this.aox = "not initialized yet. please make sure you've already called SoterWrapperApi.init(...) and call backed";
+      this.errMsg = "not initialized yet. please make sure you've already called SoterWrapperApi.init(...) and call backed";
       continue;
-      this.aox = "context instance already released. should not happen normally, you can try to call again";
+      this.errMsg = "context instance already released. should not happen normally, you can try to call again";
       continue;
-      this.aox = "there must be at least 1 biometric enrolled in system to complete this process. please check it previously";
+      this.errMsg = "there must be at least 1 biometric enrolled in system to complete this process. please check it previously";
       continue;
-      this.aox = "get challenge failed";
+      this.errMsg = "get challenge failed";
       continue;
-      this.aox = "upload or verify signature in server side failed";
+      this.errMsg = "upload or verify signature in server side failed";
     }
   }
   
@@ -61,10 +61,10 @@ public abstract class e<T>
   
   public String toString()
   {
-    if (this.wPx == null) {
+    if (this.BmW == null) {
       return super.toString();
     }
-    return String.format("total: %s, extData: %s", new Object[] { super.toString(), this.wPx.toString() });
+    return String.format("total: %s, extData: %s", new Object[] { super.toString(), this.BmW.toString() });
   }
 }
 

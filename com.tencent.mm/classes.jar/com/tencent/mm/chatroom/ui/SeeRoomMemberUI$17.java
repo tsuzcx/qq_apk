@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.roomsdk.a.c.a;
 
 final class SeeRoomMemberUI$17
@@ -11,7 +12,9 @@ final class SeeRoomMemberUI$17
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.dok.cancel();
+    AppMethodBeat.i(104324);
+    this.efH.cancel();
+    AppMethodBeat.o(104324);
   }
 }
 

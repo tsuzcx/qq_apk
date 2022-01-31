@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.notification.ui;
 
 public abstract interface b
 {
-  public abstract void bpA();
+  public abstract void bYg();
 }
 
 

@@ -2,360 +2,420 @@ package com.tencent.mm.storage;
 
 import android.content.Context;
 import android.database.Cursor;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.h.a.kq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.g.a.le;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.d;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class aw
-  extends i<av>
-  implements d, j.a
+  extends com.tencent.mm.sdk.e.j<av>
+  implements d, k.a
 {
-  public static final String[] dXp = { i.a(av.buS, "fmessage_conversation") };
-  private static final String[] uno = { "CREATE INDEX IF NOT EXISTS  fmessageConversationTalkerIndex ON fmessage_conversation ( talker )", "CREATE INDEX IF NOT EXISTS  fmconversation_isnew_Index ON fmessage_conversation ( isNew )" };
-  private final int bxF = 1;
-  public com.tencent.mm.sdk.e.e dXw;
-  protected Context mContext = null;
-  private Runnable uBA = new Runnable()
+  public static final String[] SQL_CREATE;
+  private static final String[] yxa;
+  private final int bZH;
+  public com.tencent.mm.sdk.e.e db;
+  protected Context mContext;
+  private Runnable yNK;
+  
+  static
   {
-    public final void run()
-    {
-      int i = aw.this.cuU();
-      y.v("MicroMsg.FMessageConversationStorage", "onNotifyChange, newCount update to = %d", new Object[] { Integer.valueOf(i) });
-      g.DP().Dz().o(143618, Integer.valueOf(i));
-    }
-  };
+    AppMethodBeat.i(1293);
+    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(av.info, "fmessage_conversation") };
+    yxa = new String[] { "CREATE INDEX IF NOT EXISTS  fmessageConversationTalkerIndex ON fmessage_conversation ( talker )", "CREATE INDEX IF NOT EXISTS  fmconversation_isnew_Index ON fmessage_conversation ( isNew )" };
+    AppMethodBeat.o(1293);
+  }
   
   public aw(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, av.buS, "fmessage_conversation", uno);
-    this.dXw = parame;
-    this.mContext = ae.getContext();
+    super(parame, av.info, "fmessage_conversation", yxa);
+    AppMethodBeat.i(1280);
+    this.mContext = null;
+    this.bZH = 1;
+    this.yNK = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(1279);
+        int i = aw.this.dxy();
+        ab.v("MicroMsg.FMessageConversationStorage", "onNotifyChange, newCount update to = %d", new Object[] { Integer.valueOf(i) });
+        g.RL().Ru().set(143618, Integer.valueOf(i));
+        AppMethodBeat.o(1279);
+      }
+    };
+    this.db = parame;
+    this.mContext = ah.getContext();
+    AppMethodBeat.o(1280);
   }
   
-  public final av Hq(String paramString)
+  public final av Tc(String paramString)
   {
-    Object localObject;
+    AppMethodBeat.i(1288);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.w("MicroMsg.FMessageConversationStorage", "get fail, talker is null");
-      localObject = null;
+      ab.w("MicroMsg.FMessageConversationStorage", "get fail, talker is null");
+      AppMethodBeat.o(1288);
+      return null;
     }
-    av localav;
-    do
+    av localav = new av();
+    localav.field_talker = paramString;
+    if (super.get(localav, new String[0]))
     {
-      return localObject;
-      localav = new av();
-      localav.field_talker = paramString;
-      localObject = localav;
-    } while (super.b(localav, new String[0]));
-    y.i("MicroMsg.FMessageConversationStorage", "get fail, maybe not exist, talker = " + paramString);
+      AppMethodBeat.o(1288);
+      return localav;
+    }
+    ab.i("MicroMsg.FMessageConversationStorage", "get fail, maybe not exist, talker = ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(1288);
     return null;
   }
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
+    AppMethodBeat.i(1290);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.e("MicroMsg.FMessageConversationStorage", "onNotifyChange, id is null");
+      ab.e("MicroMsg.FMessageConversationStorage", "onNotifyChange, id is null");
+      AppMethodBeat.o(1290);
       return;
     }
     long l;
     try
     {
-      l = bk.getLong(paramString, 0L);
+      l = bo.getLong(paramString, 0L);
       if (l == 0L)
       {
-        y.w("MicroMsg.FMessageConversationStorage", "onNotifyChange fail, sysRowId is invalid");
+        ab.w("MicroMsg.FMessageConversationStorage", "onNotifyChange fail, sysRowId is invalid");
+        AppMethodBeat.o(1290);
         return;
       }
     }
-    catch (Exception paraml)
+    catch (Exception paramm)
     {
       for (;;)
       {
-        y.w("MicroMsg.FMessageConversationStorage", "onNotifyChange, id = " + paramString + ", ex = " + paraml.getMessage());
+        ab.w("MicroMsg.FMessageConversationStorage", "onNotifyChange, id = " + paramString + ", ex = " + paramm.getMessage());
         l = 0L;
       }
-      if (!g.DN().Dc())
+      if (!g.RJ().QU())
       {
-        y.e("MicroMsg.FMessageConversationStorage", "onNotifyChange, account not ready, can not insert fmessageconversation");
+        ab.e("MicroMsg.FMessageConversationStorage", "onNotifyChange, account not ready, can not insert fmessageconversation");
+        AppMethodBeat.o(1290);
         return;
       }
-      paraml = new ax();
-      if (!((ay)((j)g.r(j.class)).bhN()).b(l, paraml))
+      paramm = new ax();
+      if (!((ay)((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPP()).get(l, paramm))
       {
-        y.w("MicroMsg.FMessageConversationStorage", "onNotifyChange, get fail, id = " + l);
+        ab.w("MicroMsg.FMessageConversationStorage", "onNotifyChange, get fail, id = ".concat(String.valueOf(l)));
+        AppMethodBeat.o(1290);
         return;
       }
-      y.d("MicroMsg.FMessageConversationStorage", "onNotifyChange succ, sysRowId = " + l);
-      paramString = ((j)g.r(j.class)).bhM().Hq(paraml.field_talker);
+      ab.d("MicroMsg.FMessageConversationStorage", "onNotifyChange succ, sysRowId = ".concat(String.valueOf(l)));
+      paramString = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPO().Tc(paramm.field_talker);
       if (paramString != null) {
-        break label627;
+        break label658;
       }
     }
-    y.i("MicroMsg.FMessageConversationStorage", "onNotifyChange, fmessage conversation does not exist, insert a new one, talker = " + paraml.field_talker);
-    if (bk.bl(paraml.field_talker))
+    ab.i("MicroMsg.FMessageConversationStorage", "onNotifyChange, fmessage conversation does not exist, insert a new one, talker = " + paramm.field_talker);
+    if (bo.isNullOrNil(paramm.field_talker))
     {
-      y.i("MicroMsg.FMessageConversationStorage", "onNotifyChange, fmessage info talker is null, quit insert fmessage conversation.");
+      ab.i("MicroMsg.FMessageConversationStorage", "onNotifyChange, fmessage info talker is null, quit insert fmessage conversation.");
+      AppMethodBeat.o(1290);
       return;
     }
     paramString = new av();
     Object localObject;
-    if (paraml.field_type == 0)
+    if (paramm.field_type == 0)
     {
-      localObject = bi.a.abZ(paraml.field_msgContent);
+      localObject = bi.a.asj(paramm.field_msgContent);
       paramString.field_displayName = ((bi.a)localObject).getDisplayName();
-      if ((((bi.a)localObject).scene == 4) && (((bi.a)localObject).cvM() != null)) {
-        paramString.field_displayName = ((bi.a)localObject).cvM();
+      if ((((bi.a)localObject).scene == 4) && (((bi.a)localObject).dyu() != null)) {
+        paramString.field_displayName = ((bi.a)localObject).dyu();
       }
       paramString.field_addScene = ((bi.a)localObject).scene;
       paramString.field_isNew = 1;
-      paramString.field_contentFromUsername = ((bi.a)localObject).pyp;
+      paramString.field_contentFromUsername = ((bi.a)localObject).tac;
       paramString.field_contentNickname = ((bi.a)localObject).nickname;
-      paramString.field_contentPhoneNumMD5 = ((bi.a)localObject).uBW;
-      paramString.field_contentFullPhoneNumMD5 = ((bi.a)localObject).uBX;
-      y.i("MicroMsg.FMessageConversationStorage", "push, new friend Username: " + paramString.field_contentFromUsername + "new friend Nickname: " + paramString.field_contentNickname);
+      paramString.field_contentPhoneNumMD5 = ((bi.a)localObject).yOi;
+      paramString.field_contentFullPhoneNumMD5 = ((bi.a)localObject).yOj;
+      ab.i("MicroMsg.FMessageConversationStorage", "push, new friend Username: " + paramString.field_contentFromUsername + "new friend Nickname: " + paramString.field_contentNickname);
       paramString.field_lastModifiedTime = System.currentTimeMillis();
       paramString.field_state = 0;
-      paramString.field_talker = paraml.field_talker;
-      paramString.field_encryptTalker = paraml.field_encryptTalker;
+      paramString.field_talker = paramm.field_talker;
+      paramString.field_encryptTalker = paramm.field_encryptTalker;
       paramString.field_fmsgSysRowId = l;
-      paramString.field_fmsgIsSend = paraml.field_isSend;
-      paramString.field_fmsgType = paraml.field_type;
-      paramString.field_fmsgContent = paraml.field_msgContent;
-      if (!paraml.cuX()) {
-        break label622;
+      paramString.field_fmsgIsSend = paramm.field_isSend;
+      paramString.field_fmsgType = paramm.field_type;
+      paramString.field_fmsgContent = paramm.field_msgContent;
+      if (!paramm.dxA()) {
+        break label653;
       }
     }
-    label622:
-    for (int i = paraml.field_type;; i = 0)
+    label653:
+    for (int i = paramm.field_type;; i = 0)
     {
       paramString.field_recvFmsgType = i;
-      y.i("MicroMsg.FMessageConversationStorage", "field_fmsgContent: " + paramString.field_fmsgContent);
-      ((aw)((j)g.r(j.class)).bhM()).b(paramString);
-      cuW();
+      ab.i("MicroMsg.FMessageConversationStorage", "field_fmsgContent: " + paramString.field_fmsgContent);
+      ((aw)((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPO()).insert(paramString);
+      dxz();
+      AppMethodBeat.o(1290);
       return;
-      if (!paraml.cuX()) {
+      if (!paramm.dxA()) {
         break;
       }
-      localObject = bi.d.acc(paraml.field_msgContent);
+      localObject = bi.d.asm(paramm.field_msgContent);
       paramString.field_displayName = ((bi.d)localObject).getDisplayName();
       paramString.field_addScene = ((bi.d)localObject).scene;
       paramString.field_isNew = 1;
-      paramString.field_contentFromUsername = ((bi.d)localObject).pyp;
+      paramString.field_contentFromUsername = ((bi.d)localObject).tac;
       paramString.field_contentNickname = ((bi.d)localObject).nickname;
       paramString.field_contentVerifyContent = ((bi.d)localObject).content;
-      y.i("MicroMsg.FMessageConversationStorage", "receive, new friend Username: " + paramString.field_contentFromUsername + "new friend Nickname: " + paramString.field_contentNickname);
+      ab.i("MicroMsg.FMessageConversationStorage", "receive, new friend Username: " + paramString.field_contentFromUsername + "new friend Nickname: " + paramString.field_contentNickname);
       break;
     }
-    label627:
-    y.d("MicroMsg.FMessageConversationStorage", "onNotifyChange, fmessage conversation has existed, talker = " + paraml.field_talker);
-    if (paraml.cuX()) {
+    label658:
+    ab.d("MicroMsg.FMessageConversationStorage", "onNotifyChange, fmessage conversation has existed, talker = " + paramm.field_talker);
+    if (paramm.dxA()) {
       paramString.field_isNew = 1;
     }
     paramString.field_lastModifiedTime = System.currentTimeMillis();
-    paramString.field_encryptTalker = paraml.field_encryptTalker;
+    paramString.field_encryptTalker = paramm.field_encryptTalker;
     paramString.field_fmsgSysRowId = l;
-    paramString.field_fmsgIsSend = paraml.field_isSend;
-    paramString.field_fmsgType = paraml.field_type;
-    paramString.field_fmsgContent = paraml.field_msgContent;
-    if (paraml.cuX())
+    paramString.field_fmsgIsSend = paramm.field_isSend;
+    paramString.field_fmsgType = paramm.field_type;
+    paramString.field_fmsgContent = paramm.field_msgContent;
+    if (paramm.dxA())
     {
-      paramString.field_recvFmsgType = paraml.field_type;
-      y.i("MicroMsg.FMessageConversationStorage", "field_recvFmsgType: " + paramString.field_recvFmsgType);
+      paramString.field_recvFmsgType = paramm.field_type;
+      ab.i("MicroMsg.FMessageConversationStorage", "field_recvFmsgType: " + paramString.field_recvFmsgType);
     }
-    if (paraml.field_type == 0)
+    if (paramm.field_type == 0)
     {
-      paraml = bi.a.abZ(paraml.field_msgContent);
-      paramString.field_contentFromUsername = paraml.pyp;
-      paramString.field_contentNickname = paraml.nickname;
-      paramString.field_contentPhoneNumMD5 = paraml.uBW;
-      paramString.field_contentFullPhoneNumMD5 = paraml.uBX;
-      y.i("MicroMsg.FMessageConversationStorage", "TYPE_SYSTEM_PUSH, new friend Username: " + paramString.field_contentFromUsername + "new friend Nickname: " + paramString.field_contentNickname);
+      paramm = bi.a.asj(paramm.field_msgContent);
+      paramString.field_contentFromUsername = paramm.tac;
+      paramString.field_contentNickname = paramm.nickname;
+      paramString.field_contentPhoneNumMD5 = paramm.yOi;
+      paramString.field_contentFullPhoneNumMD5 = paramm.yOj;
+      ab.i("MicroMsg.FMessageConversationStorage", "TYPE_SYSTEM_PUSH, new friend Username: " + paramString.field_contentFromUsername + "new friend Nickname: " + paramString.field_contentNickname);
     }
-    label1053:
+    label1085:
     for (;;)
     {
-      ((aw)((j)g.r(j.class)).bhM()).c(paramString, new String[0]);
-      if (cuU() != 0) {
+      ((aw)((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).bPO()).update(paramString, new String[0]);
+      if (dxy() != 0) {
         break;
       }
-      g.DP().Dz().o(340225, Long.valueOf(System.currentTimeMillis()));
+      g.RL().Ru().set(340225, Long.valueOf(System.currentTimeMillis()));
       break;
-      if (paraml.cuX())
+      if (paramm.dxA())
       {
-        if (paraml.field_isSend >= 2) {}
+        if (paramm.field_isSend >= 2) {}
         for (i = 1;; i = 0)
         {
           if (i != 0) {
-            break label1053;
+            break label1085;
           }
-          paraml = bi.d.acc(paraml.field_msgContent);
-          paramString.field_contentVerifyContent = paraml.content;
-          paramString.field_contentFromUsername = paraml.pyp;
-          paramString.field_contentNickname = paraml.nickname;
-          y.i("MicroMsg.FMessageConversationStorage", "field_contentVerifyContent: " + paramString.field_contentVerifyContent + " receive, new friend Username: " + paramString.field_contentFromUsername + " new friend Nickname: " + paramString.field_contentNickname);
-          paraml = paramString.field_contentFromUsername;
+          paramm = bi.d.asm(paramm.field_msgContent);
+          paramString.field_contentVerifyContent = paramm.content;
+          paramString.field_contentFromUsername = paramm.tac;
+          paramString.field_contentNickname = paramm.nickname;
+          ab.i("MicroMsg.FMessageConversationStorage", "field_contentVerifyContent: " + paramString.field_contentVerifyContent + " receive, new friend Username: " + paramString.field_contentFromUsername + " new friend Nickname: " + paramString.field_contentNickname);
+          paramm = paramString.field_contentFromUsername;
           localObject = paramString.field_contentNickname;
-          kq localkq = new kq();
-          localkq.bTH.userName = paraml;
-          localkq.bTH.aVr = ((String)localObject);
-          localkq.bTH.type = 1;
-          com.tencent.mm.sdk.b.a.udP.m(localkq);
+          le localle = new le();
+          localle.cBo.userName = paramm;
+          localle.cBo.blZ = ((String)localObject);
+          localle.cBo.type = 1;
+          com.tencent.mm.sdk.b.a.ymk.l(localle);
           break;
         }
       }
     }
   }
   
-  public final Cursor aAn()
+  public final boolean asa(String paramString)
   {
-    return this.dXw.rawQuery("select * from fmessage_conversation  ORDER BY lastModifiedTime DESC", null);
-  }
-  
-  public final boolean abQ(String paramString)
-  {
+    AppMethodBeat.i(1287);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.w("MicroMsg.FMessageConversationStorage", "unsetNew fail, talker is null");
+      ab.w("MicroMsg.FMessageConversationStorage", "unsetNew fail, talker is null");
+      AppMethodBeat.o(1287);
       return false;
     }
-    av localav = Hq(paramString);
+    av localav = Tc(paramString);
     if ((localav == null) || (!paramString.equals(localav.field_talker)))
     {
-      y.w("MicroMsg.FMessageConversationStorage", "unsetNew fail, conversation does not exist, talker = " + paramString);
+      ab.w("MicroMsg.FMessageConversationStorage", "unsetNew fail, conversation does not exist, talker = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(1287);
       return false;
     }
     localav.field_isNew = 0;
-    return super.c(localav, new String[0]);
+    boolean bool = super.update(localav, new String[0]);
+    AppMethodBeat.o(1287);
+    return bool;
   }
   
-  public final av abR(String paramString)
+  public final av asb(String paramString)
   {
     Object localObject = null;
+    AppMethodBeat.i(1289);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.w("MicroMsg.FMessageConversationStorage", "get fail, encryptTalker is null");
+      ab.w("MicroMsg.FMessageConversationStorage", "get fail, encryptTalker is null");
+      AppMethodBeat.o(1289);
       return null;
     }
-    paramString = "select * from fmessage_conversation  where encryptTalker=" + h.fA(paramString);
-    Cursor localCursor = this.dXw.a(paramString, null, 2);
+    paramString = "select * from fmessage_conversation  where encryptTalker=" + h.escape(paramString);
+    Cursor localCursor = this.db.a(paramString, null, 2);
     paramString = localObject;
     if (localCursor.moveToFirst())
     {
       paramString = new av();
-      paramString.d(localCursor);
+      paramString.convertFrom(localCursor);
     }
     localCursor.close();
+    AppMethodBeat.o(1289);
     return paramString;
   }
   
-  public final boolean cuT()
+  public final List<av> dxw()
   {
-    if (this.dXw.gk("fmessage_conversation", "update fmessage_conversation set isNew = 0"))
+    AppMethodBeat.i(1282);
+    ab.v("MicroMsg.FMessageConversationStorage", "getNewLimit, limit = %d", new Object[] { Integer.valueOf(4) });
+    ArrayList localArrayList = new ArrayList();
+    Cursor localCursor = this.db.a("select * from fmessage_conversation  where isNew = 1 ORDER BY lastModifiedTime DESC limit 4", null, 2);
+    while (localCursor.moveToNext())
     {
-      y.d("MicroMsg.FMessageConversationStorage", "clearAllNew success");
+      av localav = new av();
+      localav.convertFrom(localCursor);
+      if (!bo.isNullOrNil(localav.field_talker)) {
+        localArrayList.add(localav);
+      }
+    }
+    localCursor.close();
+    AppMethodBeat.o(1282);
+    return localArrayList;
+  }
+  
+  public final boolean dxx()
+  {
+    AppMethodBeat.i(1285);
+    if (this.db.execSQL("fmessage_conversation", "update fmessage_conversation set isNew = 0"))
+    {
+      ab.d("MicroMsg.FMessageConversationStorage", "clearAllNew success");
       doNotify();
+      AppMethodBeat.o(1285);
       return true;
     }
-    y.e("MicroMsg.FMessageConversationStorage", "clearAllNew fail");
+    ab.e("MicroMsg.FMessageConversationStorage", "clearAllNew fail");
+    AppMethodBeat.o(1285);
     return false;
   }
   
-  public final int cuU()
+  public final int dxy()
   {
     int i = 0;
+    AppMethodBeat.i(1286);
     Object localObject = String.format("select count(*) from %s where %s = 1 and %s < 2", new Object[] { "fmessage_conversation", "isNew", "fmsgIsSend" });
-    localObject = this.dXw.a((String)localObject, null, 2);
+    localObject = this.db.a((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst()) {
       i = ((Cursor)localObject).getInt(0);
     }
     ((Cursor)localObject).close();
-    y.d("MicroMsg.FMessageConversationStorage", "getNewCount = " + i);
+    ab.d("MicroMsg.FMessageConversationStorage", "getNewCount = ".concat(String.valueOf(i)));
+    AppMethodBeat.o(1286);
     return i;
   }
   
-  public final List<String> cuV()
+  public final void dxz()
   {
-    Object localObject = String.format("select %s from %s where isNew = 1 ORDER BY lastModifiedTime DESC limit %d", new Object[] { "contentNickname", "fmessage_conversation", Integer.valueOf(2) });
-    localObject = this.dXw.a((String)localObject, null, 2);
-    ArrayList localArrayList = new ArrayList();
-    while (((Cursor)localObject).moveToNext()) {
-      localArrayList.add(((Cursor)localObject).getString(((Cursor)localObject).getColumnIndex("contentNickname")));
-    }
-    ((Cursor)localObject).close();
-    return localArrayList;
+    AppMethodBeat.i(1291);
+    al.ae(this.yNK);
+    al.p(this.yNK, 500L);
+    AppMethodBeat.o(1291);
   }
   
-  public final void cuW()
+  public final boolean eD(String paramString, int paramInt)
   {
-    ai.S(this.uBA);
-    ai.l(this.uBA, 500L);
-  }
-  
-  public final boolean du(String paramString, int paramInt)
-  {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      y.w("MicroMsg.FMessageConversationStorage", "updateState fail, talker is null");
-    }
-    av localav;
-    do
+    AppMethodBeat.i(1284);
+    if ((paramString == null) || (paramString.length() == 0))
     {
+      ab.w("MicroMsg.FMessageConversationStorage", "updateState fail, talker is null");
+      AppMethodBeat.o(1284);
       return false;
-      localav = Hq(paramString);
-      if (localav == null)
-      {
-        y.w("MicroMsg.FMessageConversationStorage", "updateState fail, get fail, talker = " + paramString);
-        return false;
-      }
-      if (paramInt == localav.field_state)
-      {
-        y.d("MicroMsg.FMessageConversationStorage", "updateState, no need to update");
-        return true;
-      }
-      localav.field_state = paramInt;
-      localav.field_lastModifiedTime = System.currentTimeMillis();
-    } while (!super.c(localav, new String[0]));
-    aam(paramString);
-    return true;
+    }
+    av localav = Tc(paramString);
+    if (localav == null)
+    {
+      ab.w("MicroMsg.FMessageConversationStorage", "updateState fail, get fail, talker = ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(1284);
+      return false;
+    }
+    if (paramInt == localav.field_state)
+    {
+      ab.d("MicroMsg.FMessageConversationStorage", "updateState, no need to update");
+      AppMethodBeat.o(1284);
+      return true;
+    }
+    localav.field_state = paramInt;
+    localav.field_lastModifiedTime = System.currentTimeMillis();
+    if (super.update(localav, new String[0]))
+    {
+      doNotify(paramString);
+      AppMethodBeat.o(1284);
+      return true;
+    }
+    AppMethodBeat.o(1284);
+    return false;
+  }
+  
+  public final Cursor getAll()
+  {
+    AppMethodBeat.i(1281);
+    Cursor localCursor = this.db.rawQuery("select * from fmessage_conversation  ORDER BY lastModifiedTime DESC", null);
+    AppMethodBeat.o(1281);
+    return localCursor;
   }
   
   public final int getCount()
   {
     int i = 0;
-    Cursor localCursor = this.dXw.a("select count(*) from fmessage_conversation", null, 2);
+    AppMethodBeat.i(1283);
+    Cursor localCursor = this.db.a("select count(*) from fmessage_conversation", null, 2);
     if (localCursor.moveToFirst()) {
       i = localCursor.getInt(0);
     }
     localCursor.close();
-    y.d("MicroMsg.FMessageConversationStorage", "getCount = " + i);
+    ab.d("MicroMsg.FMessageConversationStorage", "getCount = ".concat(String.valueOf(i)));
+    AppMethodBeat.o(1283);
     return i;
   }
   
   public final boolean p(long paramLong, String paramString)
   {
-    y.i("MicroMsg.FMessageConversationStorage", "deleteByTalker rowId: %d, talker: %s", new Object[] { Long.valueOf(paramLong), paramString });
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(1292);
+    ab.i("MicroMsg.FMessageConversationStorage", "deleteByTalker rowId: %d, talker: %s", new Object[] { Long.valueOf(paramLong), paramString });
+    if (bo.isNullOrNil(paramString)) {
       if (paramLong <= 0L) {}
     }
-    for (String str = "delete from fmessage_conversation where fmsgSysRowId = '" + paramLong + "'"; this.dXw.gk("fmessage_conversation", str); str = "delete from fmessage_conversation where talker = '" + bk.pl(paramString) + "'")
+    for (String str = "delete from fmessage_conversation where fmsgSysRowId = '" + paramLong + "'"; this.db.execSQL("fmessage_conversation", str); str = "delete from fmessage_conversation where talker = '" + bo.wC(paramString) + "'")
     {
-      y.i("MicroMsg.FMessageConversationStorage", "deleteByTalker success, rowId: %d, talker: %s", new Object[] { Long.valueOf(paramLong), paramString });
-      aam(paramString);
+      ab.i("MicroMsg.FMessageConversationStorage", "deleteByTalker success, rowId: %d, talker: %s", new Object[] { Long.valueOf(paramLong), paramString });
+      doNotify(paramString);
+      AppMethodBeat.o(1292);
       return true;
+      AppMethodBeat.o(1292);
       return false;
     }
+    AppMethodBeat.o(1292);
     return false;
   }
 }

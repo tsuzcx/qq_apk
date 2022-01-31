@@ -3,14 +3,12 @@ package com.tencent.ttpic.filter;
 import android.graphics.PointF;
 import com.tencent.filter.m.c;
 import com.tencent.filter.m.i;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.HandActionCounter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.PTDetectInfo;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
 import com.tencent.ttpic.util.VideoMaterialUtil;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class SnakeFaceFilter
   extends VideoFilterBase
@@ -24,15 +22,19 @@ public class SnakeFaceFilter
   private PointF[] dstPoints;
   private List<PointF> mFullscreenVertices;
   private List<PointF> mInitTextureCoordinates;
-  private PointF[] pDst = new PointF[90];
-  private PointF[] pSrc = new PointF[90];
+  private PointF[] pDst;
+  private PointF[] pSrc;
   private PointF[] srcPoints;
   
   public SnakeFaceFilter()
   {
     super(ShaderCreateFactory.PROGRAM_TYPE.SNAKE_FACE);
+    AppMethodBeat.i(82942);
+    this.pSrc = new PointF[90];
+    this.pDst = new PointF[90];
     initCoordinates();
     initParams();
+    AppMethodBeat.o(82942);
   }
   
   private void adjustPoints(int paramInt)
@@ -59,12 +61,15 @@ public class SnakeFaceFilter
   
   private void initCoordinates()
   {
+    AppMethodBeat.i(82943);
     this.mFullscreenVertices = VideoMaterialUtil.genFullScreenVertices(24, 32, -1.0F, 1.0F, -1.0F, 1.0F);
     this.mInitTextureCoordinates = VideoMaterialUtil.genFullScreenVertices(24, 32, 0.0F, 1.0F, 0.0F, 1.0F);
+    AppMethodBeat.o(82943);
   }
   
   private void refineSnakeEyePoint(PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2)
   {
+    AppMethodBeat.i(82948);
     PointF localPointF1 = paramArrayOfPointF2[44];
     PointF localPointF2 = paramArrayOfPointF2[54];
     int i = 35;
@@ -79,10 +84,12 @@ public class SnakeFaceFilter
       paramArrayOfPointF2[i] = new PointF(paramArrayOfPointF1[i].x + (paramArrayOfPointF1[i].x - localPointF2.x) * 0.4F, paramArrayOfPointF1[i].y + (paramArrayOfPointF1[i].y - localPointF2.y) * 0.4F);
       i += 1;
     }
+    AppMethodBeat.o(82948);
   }
   
   private void refineSnakeFacePoint(PointF[] paramArrayOfPointF1, PointF[] paramArrayOfPointF2)
   {
+    AppMethodBeat.i(82947);
     PointF localPointF1 = paramArrayOfPointF2[0];
     PointF localPointF2 = paramArrayOfPointF2[9];
     PointF localPointF3 = paramArrayOfPointF2[18];
@@ -103,35 +110,44 @@ public class SnakeFaceFilter
       paramArrayOfPointF2[i] = new PointF((f1 - f2) * 0.3F + paramArrayOfPointF1[i].x, (f3 - f4) * 0.3F + paramArrayOfPointF1[i].y);
       i += 1;
     }
+    AppMethodBeat.o(82947);
   }
   
   private void updateGLParams(int paramInt)
   {
+    AppMethodBeat.i(82946);
     addParam(new m.i(SnakeFaceFilter.SHADER_FIELD.NPOINT.name, paramInt));
     addParam(new m.c(SnakeFaceFilter.SHADER_FIELD.FSRC.name, VideoMaterialUtil.toFlatArray(this.srcPoints)));
     addParam(new m.c(SnakeFaceFilter.SHADER_FIELD.FDST.name, VideoMaterialUtil.toFlatArray(this.dstPoints)));
+    AppMethodBeat.o(82946);
   }
   
   public void ApplyGLSLFilter()
   {
+    AppMethodBeat.i(82949);
     super.ApplyGLSLFilter();
     setPositions(VideoMaterialUtil.toFlatArray((PointF[])this.mFullscreenVertices.toArray(new PointF[0])));
     setTexCords(VideoMaterialUtil.toFlatArray((PointF[])this.mInitTextureCoordinates.toArray(new PointF[0])));
-    setDrawMode(VideoFilterUtil.DRAW_MODE.TRIANGLE_STRIP);
+    setDrawMode(GlUtil.DRAW_MODE.TRIANGLE_STRIP);
     setCoordNum(1561);
+    AppMethodBeat.o(82949);
   }
   
   public void initParams()
   {
+    AppMethodBeat.i(82944);
     addParam(new m.i(SnakeFaceFilter.SHADER_FIELD.NPOINT.name, 0));
     addParam(new m.c(SnakeFaceFilter.SHADER_FIELD.FSRC.name, new float[0]));
     addParam(new m.c(SnakeFaceFilter.SHADER_FIELD.FDST.name, new float[0]));
+    AppMethodBeat.o(82944);
   }
   
-  public void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong)
+  public void updatePreview(PTDetectInfo paramPTDetectInfo)
   {
-    paramList1 = VideoMaterialUtil.copyList(paramList1);
-    if ((paramList1 == null) || (paramList1.size() < 90))
+    int j = 0;
+    AppMethodBeat.i(82945);
+    paramPTDetectInfo = VideoMaterialUtil.copyList(paramPTDetectInfo.facePoints);
+    if ((paramPTDetectInfo == null) || (paramPTDetectInfo.size() < 90))
     {
       this.srcPoints = new PointF[0];
       this.dstPoints = new PointF[0];
@@ -140,8 +156,9 @@ public class SnakeFaceFilter
     {
       adjustPoints(i);
       updateGLParams(i);
+      AppMethodBeat.o(82945);
       return;
-      VideoMaterialUtil.flipYPoints(paramList1, (int)(this.height * this.mFaceDetScale));
+      VideoMaterialUtil.flipYPoints(paramPTDetectInfo, (int)(this.height * this.mFaceDetScale));
       i = 0;
       while (i < 90)
       {
@@ -151,35 +168,41 @@ public class SnakeFaceFilter
         if (this.pDst[i] == null) {
           this.pDst[i] = new PointF();
         }
-        paramArrayOfFloat = this.pSrc[i];
-        paramMap = this.pDst[i];
-        paramFloat = ((PointF)paramList1.get(i)).x;
-        paramMap.x = paramFloat;
-        paramArrayOfFloat.x = paramFloat;
-        paramArrayOfFloat = this.pSrc[i];
-        paramMap = this.pDst[i];
-        paramFloat = ((PointF)paramList1.get(i)).y;
-        paramMap.y = paramFloat;
-        paramArrayOfFloat.y = paramFloat;
+        PointF localPointF1 = this.pSrc[i];
+        PointF localPointF2 = this.pDst[i];
+        f1 = ((PointF)paramPTDetectInfo.get(i)).x;
+        localPointF2.x = f1;
+        localPointF1.x = f1;
+        localPointF1 = this.pSrc[i];
+        localPointF2 = this.pDst[i];
+        f1 = ((PointF)paramPTDetectInfo.get(i)).y;
+        localPointF2.y = f1;
+        localPointF1.y = f1;
         i += 1;
       }
-      paramFloat = this.pSrc[9].x;
-      float f1 = this.pSrc[64].x;
-      float f2 = this.pSrc[9].y;
-      float f3 = this.pSrc[64].y;
-      paramList1 = this.pDst[9];
-      paramList1.x = ((paramFloat - f1) * 0.05F + paramList1.x);
-      paramList1 = this.pDst[9];
-      paramList1.y = ((f2 - f3) * 0.05F + paramList1.y);
+      float f1 = this.pSrc[9].x;
+      float f2 = this.pSrc[64].x;
+      float f3 = this.pSrc[9].y;
+      float f4 = this.pSrc[64].y;
+      paramPTDetectInfo = this.pDst[9];
+      paramPTDetectInfo.x = ((f1 - f2) * 0.05F + paramPTDetectInfo.x);
+      paramPTDetectInfo = this.pDst[9];
+      paramPTDetectInfo.y = ((f3 - f4) * 0.05F + paramPTDetectInfo.y);
       refineSnakeFacePoint(this.pSrc, this.pDst);
       refineSnakeEyePoint(this.pSrc, this.pDst);
       if ((this.srcPoints == null) || (this.srcPoints.length != 102)) {
         this.srcPoints = new PointF[102];
       }
-      if ((this.dstPoints == null) || (this.dstPoints.length != 102)) {
-        this.dstPoints = new PointF[102];
+      if (this.dstPoints != null)
+      {
+        i = j;
+        if (this.dstPoints.length == 102) {}
       }
-      i = 0;
+      else
+      {
+        this.dstPoints = new PointF[102];
+        i = j;
+      }
       while (i < 83)
       {
         this.srcPoints[i] = this.pSrc[i];
@@ -189,12 +212,12 @@ public class SnakeFaceFilter
       i = 83;
       while (i < 101)
       {
-        int j = i - 83;
+        j = i - 83;
         this.srcPoints[i] = new PointF((this.pSrc[j].x + this.pSrc[(j + 1)].x) / 2.0F, (this.pSrc[j].y + this.pSrc[(j + 1)].y) / 2.0F);
-        paramList1 = this.dstPoints;
-        paramFloat = (this.pDst[j].x + this.pDst[(j + 1)].x) / 2.0F;
-        f1 = this.pDst[j].y;
-        paramList1[i] = new PointF(paramFloat, (this.pDst[(j + 1)].y + f1) / 2.0F);
+        paramPTDetectInfo = this.dstPoints;
+        f1 = (this.pDst[j].x + this.pDst[(j + 1)].x) / 2.0F;
+        f2 = this.pDst[j].y;
+        paramPTDetectInfo[i] = new PointF(f1, (this.pDst[(j + 1)].y + f2) / 2.0F);
         i += 1;
       }
       this.srcPoints[101] = new PointF((float)(this.width * this.mFaceDetScale), (float)(this.height * this.mFaceDetScale));
@@ -204,7 +227,7 @@ public class SnakeFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.ttpic.filter.SnakeFaceFilter
  * JD-Core Version:    0.7.0.1
  */

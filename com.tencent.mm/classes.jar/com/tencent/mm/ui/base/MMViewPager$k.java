@@ -1,40 +1,42 @@
 package com.tencent.mm.ui.base;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.lang.ref.WeakReference;
 
 public final class MMViewPager$k
-  extends ah
+  extends ak
 {
-  long kLr;
-  WeakReference<MMViewPager> uZt;
+  long nhU;
+  WeakReference<MMViewPager> znK;
   
   public MMViewPager$k(WeakReference<MMViewPager> paramWeakReference)
   {
-    this.uZt = paramWeakReference;
+    this.znK = paramWeakReference;
   }
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(106920);
     super.handleMessage(paramMessage);
     removeMessages(paramMessage.what);
-    MMViewPager localMMViewPager;
-    if (this.uZt != null)
+    if (this.znK != null)
     {
-      localMMViewPager = (MMViewPager)this.uZt.get();
+      MMViewPager localMMViewPager = (MMViewPager)this.znK.get();
       if ((localMMViewPager != null) && (paramMessage.what == 1))
       {
-        if ((MMViewPager.x(localMMViewPager) == null) || (MMViewPager.x(localMMViewPager).aXY())) {
-          break label81;
+        if ((MMViewPager.v(localMMViewPager) != null) && (!MMViewPager.v(localMMViewPager).bEL()))
+        {
+          MMViewPager.v(localMMViewPager).play();
+          sendEmptyMessageDelayed(paramMessage.what, this.nhU);
+          AppMethodBeat.o(106920);
+          return;
         }
-        MMViewPager.x(localMMViewPager).play();
-        sendEmptyMessageDelayed(paramMessage.what, this.kLr);
+        MMViewPager.w(localMMViewPager);
       }
     }
-    return;
-    label81:
-    MMViewPager.y(localMMViewPager);
+    AppMethodBeat.o(106920);
   }
 }
 

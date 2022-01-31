@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.app.Dialog;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class ExdeviceAddDataSourceUI$10
@@ -11,7 +11,9 @@ final class ExdeviceAddDataSourceUI$10
   
   public final void run()
   {
-    h.a(this.jAD, R.l.exdevice_connect_failed_tips, R.l.exdevice_connect_failed, R.l.exdevice_connect_failed_confirm, R.l.exdevice_connect_help, false, new ExdeviceAddDataSourceUI.10.1(this), new ExdeviceAddDataSourceUI.10.2(this)).show();
+    AppMethodBeat.i(19786);
+    h.a(this.lKc, 2131299384, 2131299382, 2131299383, 2131299385, false, new ExdeviceAddDataSourceUI.10.1(this), new ExdeviceAddDataSourceUI.10.2(this)).show();
+    AppMethodBeat.o(19786);
   }
 }
 

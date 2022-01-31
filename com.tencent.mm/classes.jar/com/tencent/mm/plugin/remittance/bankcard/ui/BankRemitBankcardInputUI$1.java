@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.widget.TextView;
-import com.tencent.mm.h.a.ti;
-import com.tencent.mm.h.a.ti.b;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vd;
+import com.tencent.mm.g.a.vd.b;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class BankRemitBankcardInputUI$1
   implements Runnable
 {
-  BankRemitBankcardInputUI$1(BankRemitBankcardInputUI paramBankRemitBankcardInputUI, ti paramti) {}
+  BankRemitBankcardInputUI$1(BankRemitBankcardInputUI paramBankRemitBankcardInputUI, vd paramvd) {}
   
   public final void run()
   {
-    if (!bk.bl(this.iLQ.ccV.ccW)) {
-      e.a((TextView)this.nwd.findViewById(a.f.banner_tips), this.iLQ.ccV.ccW, this.iLQ.ccV.content, this.iLQ.ccV.url);
+    AppMethodBeat.i(44513);
+    if (!bo.isNullOrNil(this.kSA.cLF.cLG)) {
+      e.a((TextView)this.qhe.findViewById(2131821672), this.kSA.cLF.cLG, this.kSA.cLF.content, this.kSA.cLF.url);
     }
+    AppMethodBeat.o(44513);
   }
 }
 

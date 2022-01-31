@@ -13,11 +13,9 @@ import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
 import android.view.View.OnAttachStateChangeListener;
 import android.view.Window;
-import com.tencent.luggage.j.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.b;
-import com.tencent.mm.plugin.appbrand.canvas.d;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import org.json.JSONArray;
@@ -26,160 +24,227 @@ public class MTextureView
   extends TextureView
   implements TextureView.SurfaceTextureListener, a
 {
-  private final b fMQ = new b(this);
-  private final Set<View.OnAttachStateChangeListener> fMR = new LinkedHashSet();
-  private volatile ah fMU;
-  private Runnable fMV = new MTextureView.1(this);
-  private volatile boolean fMX;
-  private volatile Object mLock = new Object();
+  private final b hga;
+  private final Set<View.OnAttachStateChangeListener> hgb;
+  private volatile ak hge;
+  private Runnable hgf;
+  private volatile boolean hgh;
+  private volatile Object mLock;
   
   public MTextureView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(103812);
+    this.hga = new b(this);
+    this.hgb = new LinkedHashSet();
+    this.mLock = new Object();
+    this.hgf = new MTextureView.1(this);
     init();
+    AppMethodBeat.o(103812);
   }
   
   public MTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(103813);
+    this.hga = new b(this);
+    this.hgb = new LinkedHashSet();
+    this.mLock = new Object();
+    this.hgf = new MTextureView.1(this);
     init();
+    AppMethodBeat.o(103813);
   }
   
   public MTextureView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(103814);
+    this.hga = new b(this);
+    this.hgb = new LinkedHashSet();
+    this.mLock = new Object();
+    this.hgf = new MTextureView.1(this);
     init();
+    AppMethodBeat.o(103814);
   }
   
   private void init()
   {
+    AppMethodBeat.i(103815);
     setSurfaceTextureListener(this);
     ((Activity)getContext()).getWindow().setFlags(16777216, 16777216);
     Paint localPaint = new Paint();
     localPaint.setColor(-1);
-    this.fMQ.getDrawContext().fLu = localPaint;
+    this.hga.getDrawContext().heG = localPaint;
+    AppMethodBeat.o(103815);
+  }
+  
+  public final void B(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(103819);
+    if (this.hge == null)
+    {
+      AppMethodBeat.o(103819);
+      return;
+    }
+    this.hge.post(paramRunnable);
+    AppMethodBeat.o(103819);
   }
   
   public final void a(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
-    this.fMQ.a(paramDrawCanvasArg, parama);
+    AppMethodBeat.i(103825);
+    this.hga.a(paramDrawCanvasArg, parama);
+    AppMethodBeat.o(103825);
   }
   
   public final void a(JSONArray paramJSONArray, a.a parama)
   {
-    this.fMQ.a(paramJSONArray, parama);
-  }
-  
-  public final void adB()
-  {
-    if (this.fMU == null) {
-      return;
-    }
-    this.fMU.removeCallbacks(this.fMV);
-    this.fMU.post(this.fMV);
-  }
-  
-  public final void adC()
-  {
-    this.fMQ.adC();
-  }
-  
-  public final void adD()
-  {
-    this.fMQ.adD();
+    AppMethodBeat.i(103823);
+    this.hga.a(paramJSONArray, parama);
+    AppMethodBeat.o(103823);
   }
   
   public void addOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
-    if (this.fMR.contains(paramOnAttachStateChangeListener)) {
+    AppMethodBeat.i(103828);
+    if (this.hgb.contains(paramOnAttachStateChangeListener))
+    {
+      AppMethodBeat.o(103828);
       return;
     }
-    this.fMR.add(paramOnAttachStateChangeListener);
+    this.hgb.add(paramOnAttachStateChangeListener);
     super.addOnAttachStateChangeListener(paramOnAttachStateChangeListener);
+    AppMethodBeat.o(103828);
+  }
+  
+  public final void axT()
+  {
+    AppMethodBeat.i(103818);
+    if (this.hge == null)
+    {
+      AppMethodBeat.o(103818);
+      return;
+    }
+    this.hge.removeCallbacks(this.hgf);
+    this.hge.post(this.hgf);
+    AppMethodBeat.o(103818);
+  }
+  
+  public final void axU()
+  {
+    AppMethodBeat.i(103827);
+    this.hga.axU();
+    AppMethodBeat.o(103827);
+  }
+  
+  public final void axV()
+  {
+    AppMethodBeat.i(103834);
+    this.hga.axV();
+    AppMethodBeat.o(103834);
   }
   
   public final void b(DrawCanvasArg paramDrawCanvasArg, a.a parama)
   {
-    this.fMQ.b(paramDrawCanvasArg, parama);
+    AppMethodBeat.i(103826);
+    this.hga.b(paramDrawCanvasArg, parama);
+    AppMethodBeat.o(103826);
   }
   
   public final void b(JSONArray paramJSONArray, a.a parama)
   {
-    this.fMQ.b(paramJSONArray, parama);
+    AppMethodBeat.i(103824);
+    this.hga.b(paramJSONArray, parama);
+    AppMethodBeat.o(103824);
   }
   
   public final boolean f(Canvas paramCanvas)
   {
-    return this.fMQ.f(paramCanvas);
+    AppMethodBeat.i(103822);
+    boolean bool = this.hga.f(paramCanvas);
+    AppMethodBeat.o(103822);
+    return bool;
   }
   
-  public d getDrawContext()
+  public com.tencent.mm.plugin.appbrand.canvas.d getDrawContext()
   {
-    return this.fMQ.getDrawContext();
+    AppMethodBeat.i(103820);
+    com.tencent.mm.plugin.appbrand.canvas.d locald = this.hga.getDrawContext();
+    AppMethodBeat.o(103820);
+    return locald;
   }
   
   public String getSessionId()
   {
-    return this.fMQ.getSessionId();
+    AppMethodBeat.i(103831);
+    String str = this.hga.getSessionId();
+    AppMethodBeat.o(103831);
+    return str;
   }
   
   public String getTraceId()
   {
-    return this.fMQ.getTraceId();
+    AppMethodBeat.i(103817);
+    String str = this.hga.getTraceId();
+    AppMethodBeat.o(103817);
+    return str;
   }
   
   public final boolean isPaused()
   {
-    return this.fMQ.fKW;
-  }
-  
-  public final void onPause()
-  {
-    this.fMQ.onPause();
+    return this.hga.mPause;
   }
   
   public final void onResume()
   {
-    this.fMQ.onResume();
+    AppMethodBeat.i(103830);
+    this.hga.onResume();
+    AppMethodBeat.o(103830);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    c.v("MicroMsg.MTextureView", "onSurfaceTextureAvailable");
-    if (this.fMU == null)
+    AppMethodBeat.i(103835);
+    com.tencent.luggage.g.d.v("MicroMsg.MTextureView", "onSurfaceTextureAvailable");
+    if (this.hge == null)
     {
-      paramSurfaceTexture = e.ds("MTextureView#Rending-Thread", -19);
+      paramSurfaceTexture = com.tencent.mm.sdk.g.d.ey("MTextureView#Rending-Thread", -19);
       paramSurfaceTexture.start();
-      this.fMU = new ah(paramSurfaceTexture.getLooper());
+      this.hge = new ak(paramSurfaceTexture.getLooper());
     }
     paramSurfaceTexture = lockCanvas();
-    if (paramSurfaceTexture == null) {
+    if (paramSurfaceTexture == null)
+    {
+      AppMethodBeat.o(103835);
       return;
     }
     paramSurfaceTexture.drawColor(-1);
     unlockCanvasAndPost(paramSurfaceTexture);
+    AppMethodBeat.o(103835);
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture arg1)
   {
-    c.v("MicroMsg.MTextureView", "onSurfaceTextureDestroyed");
-    this.fMU.removeCallbacks(this.fMV);
-    this.fMU.getLooper().quit();
+    AppMethodBeat.i(103837);
+    com.tencent.luggage.g.d.v("MicroMsg.MTextureView", "onSurfaceTextureDestroyed");
+    this.hge.removeCallbacks(this.hgf);
+    this.hge.getLooper().quit();
     synchronized (this.mLock)
     {
-      boolean bool = this.fMX;
+      boolean bool = this.hgh;
       if (bool) {}
       try
       {
         this.mLock.wait(1000L);
-        this.fMU = null;
+        this.hge = null;
+        AppMethodBeat.o(103837);
         return true;
       }
       catch (InterruptedException localInterruptedException)
       {
         for (;;)
         {
-          c.e("MicroMsg.MTextureView", "await error : %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
+          com.tencent.luggage.g.d.e("MicroMsg.MTextureView", "await error : %s", new Object[] { Log.getStackTraceString(localInterruptedException) });
         }
       }
     }
@@ -187,43 +252,47 @@ public class MTextureView
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    c.v("MicroMsg.MTextureView", "onSurfaceTextureSizeChanged");
+    AppMethodBeat.i(103836);
+    com.tencent.luggage.g.d.v("MicroMsg.MTextureView", "onSurfaceTextureSizeChanged");
+    AppMethodBeat.o(103836);
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
   
   public void removeOnAttachStateChangeListener(View.OnAttachStateChangeListener paramOnAttachStateChangeListener)
   {
-    this.fMR.remove(paramOnAttachStateChangeListener);
+    AppMethodBeat.i(103829);
+    this.hgb.remove(paramOnAttachStateChangeListener);
     super.removeOnAttachStateChangeListener(paramOnAttachStateChangeListener);
+    AppMethodBeat.o(103829);
   }
   
   public void setDrawActionReportable(com.tencent.mm.plugin.appbrand.canvas.c.a parama)
   {
-    this.fMQ.setDrawActionReportable(parama);
+    AppMethodBeat.i(103821);
+    this.hga.setDrawActionReportable(parama);
+    AppMethodBeat.o(103821);
   }
   
   public void setSessionId(String paramString)
   {
-    this.fMQ.setSessionId(paramString);
+    AppMethodBeat.i(103832);
+    this.hga.setSessionId(paramString);
+    AppMethodBeat.o(103832);
   }
   
   public void setStartTime(long paramLong)
   {
-    this.fMQ.setStartTime(paramLong);
+    AppMethodBeat.i(103833);
+    this.hga.setStartTime(paramLong);
+    AppMethodBeat.o(103833);
   }
   
   public void setTraceId(String paramString)
   {
-    this.fMQ.setTraceId(paramString);
-  }
-  
-  public final void t(Runnable paramRunnable)
-  {
-    if (this.fMU == null) {
-      return;
-    }
-    this.fMU.post(paramRunnable);
+    AppMethodBeat.i(103816);
+    this.hga.setTraceId(paramString);
+    AppMethodBeat.o(103816);
   }
 }
 

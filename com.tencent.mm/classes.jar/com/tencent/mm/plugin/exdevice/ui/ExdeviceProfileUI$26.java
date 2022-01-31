@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class ExdeviceProfileUI$26
   implements MenuItem.OnMenuItemClickListener
@@ -13,10 +12,12 @@ final class ExdeviceProfileUI$26
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new d(this.jEM.mController.uMN, 1, false);
-    paramMenuItem.phH = new ExdeviceProfileUI.26.1(this);
-    paramMenuItem.phI = ExdeviceProfileUI.n(this.jEM);
-    paramMenuItem.cfU();
+    AppMethodBeat.i(20053);
+    paramMenuItem = new d(this.lOl.getContext(), 1, false);
+    paramMenuItem.sao = new ExdeviceProfileUI.26.1(this);
+    paramMenuItem.sap = ExdeviceProfileUI.n(this.lOl);
+    paramMenuItem.crd();
+    AppMethodBeat.o(20053);
     return true;
   }
 }

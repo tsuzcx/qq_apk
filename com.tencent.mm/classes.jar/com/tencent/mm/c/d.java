@@ -1,5 +1,6 @@
 package com.tencent.mm.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
@@ -14,17 +15,26 @@ public final class d
 {
   private static int a(RandomAccessFile paramRandomAccessFile, int paramInt1, byte[] paramArrayOfByte, int paramInt2, File paramFile, int paramInt3)
   {
-    if ((paramRandomAccessFile == null) || (paramInt1 <= 0)) {
+    AppMethodBeat.i(125687);
+    if ((paramRandomAccessFile == null) || (paramInt1 <= 0))
+    {
+      AppMethodBeat.o(125687);
       return 3;
     }
-    if (paramFile == null) {
+    if (paramFile == null)
+    {
+      AppMethodBeat.o(125687);
       return 4;
     }
-    if (paramInt2 <= 0) {
+    if (paramInt2 <= 0)
+    {
+      AppMethodBeat.o(125687);
       return 2;
     }
     int j = paramInt1 - paramInt3 - 2;
-    if (j <= 2) {
+    if (j <= 2)
+    {
+      AppMethodBeat.o(125687);
       return 3;
     }
     Object localObject1 = new DataInputStream(new ByteArrayInputStream(paramArrayOfByte, 0, paramInt2));
@@ -55,6 +65,7 @@ public final class d
         paramArrayOfByte.close();
         paramRandomAccessFile.close();
         paramFile.close();
+        AppMethodBeat.o(125687);
         return 1;
       }
       int i = 0;
@@ -66,6 +77,7 @@ public final class d
             break;
           }
           paramFile.close();
+          AppMethodBeat.o(125687);
           return 2;
         }
         arrayOfInt[i] = ((DataInputStream)localObject1).readInt();
@@ -75,12 +87,14 @@ public final class d
       if (!e.a((InputStream)localObject2, arrayOfByte1, arrayOfInt[0]))
       {
         paramFile.close();
+        AppMethodBeat.o(125687);
         return 2;
       }
       byte[] arrayOfByte2 = new byte[arrayOfInt[0]];
       if (paramRandomAccessFile.read(arrayOfByte2, 0, arrayOfInt[0]) < arrayOfInt[0])
       {
         paramFile.close();
+        AppMethodBeat.o(125687);
         return 2;
       }
       i = 0;
@@ -96,6 +110,7 @@ public final class d
             break;
           }
           paramFile.close();
+          AppMethodBeat.o(125687);
           return 2;
         }
         if (paramInt2 + i == j)
@@ -112,6 +127,7 @@ public final class d
       if (!e.a(paramArrayOfByte, arrayOfByte1, arrayOfInt[1]))
       {
         paramFile.close();
+        AppMethodBeat.o(125687);
         return 2;
       }
       paramFile.write(arrayOfByte1);
@@ -125,20 +141,27 @@ public final class d
   
   public static int a(RandomAccessFile paramRandomAccessFile, File paramFile1, File paramFile2, int paramInt)
   {
-    if (paramRandomAccessFile.length() <= 0L) {
+    AppMethodBeat.i(125686);
+    if (paramRandomAccessFile.length() <= 0L)
+    {
+      AppMethodBeat.o(125686);
       return 3;
     }
-    if (paramFile2.length() <= 0L) {
+    if (paramFile2.length() <= 0L)
+    {
+      AppMethodBeat.o(125686);
       return 2;
     }
     byte[] arrayOfByte = new byte[(int)paramFile2.length()];
     e.a(new FileInputStream(paramFile2), arrayOfByte, arrayOfByte.length);
-    return a(paramRandomAccessFile, (int)paramRandomAccessFile.length(), arrayOfByte, arrayOfByte.length, paramFile1, paramInt);
+    paramInt = a(paramRandomAccessFile, (int)paramRandomAccessFile.length(), arrayOfByte, arrayOfByte.length, paramFile1, paramInt);
+    AppMethodBeat.o(125686);
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.c.d
  * JD-Core Version:    0.7.0.1
  */

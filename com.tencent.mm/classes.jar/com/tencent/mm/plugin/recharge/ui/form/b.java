@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.recharge.ui.form;
 
 public abstract interface b
 {
-  public abstract String LF(String paramString);
+  public abstract String XQ(String paramString);
   
   public abstract boolean a(MallFormView paramMallFormView);
   
-  public abstract boolean bvo();
+  public abstract boolean cfH();
 }
 
 

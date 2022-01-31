@@ -2,7 +2,7 @@ package com.tencent.mm.ui.appbrand;
 
 public abstract interface c$a
 {
-  public abstract void cAm();
+  public abstract void dDw();
 }
 
 

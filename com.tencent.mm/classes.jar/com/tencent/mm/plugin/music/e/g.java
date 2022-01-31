@@ -1,22 +1,27 @@
 package com.tencent.mm.plugin.music.e;
 
-import com.tencent.mm.av.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.aw.e;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.net.URL;
 import java.util.List;
 
 public abstract class g
   implements a
 {
-  protected c myR;
-  protected e myS;
+  protected c oYX;
+  protected e oYY;
   
-  public String Jw(String paramString)
+  public boolean Af(int paramInt)
+  {
+    return true;
+  }
+  
+  public String Vu(String paramString)
   {
     return paramString;
   }
   
-  public URL Jx(String paramString)
+  public URL Vv(String paramString)
   {
     return new URL(paramString);
   }
@@ -25,37 +30,25 @@ public abstract class g
   
   public final void a(c paramc)
   {
-    this.myR = paramc;
+    this.oYX = paramc;
   }
   
-  public e bmW()
+  public e bVs()
   {
-    return this.myS;
+    return this.oYY;
   }
   
   public void d(List<e> paramList, boolean paramBoolean) {}
   
   public boolean g(e parame)
   {
-    this.myS = parame;
+    this.oYY = parame;
     return true;
   }
   
   public e h(e parame)
   {
     return parame;
-  }
-  
-  public e h(List<e> paramList, int paramInt)
-  {
-    if ((paramList == null) || (paramList.size() == 0) || (paramInt >= paramList.size()))
-    {
-      y.i("MicroMsg.Music.MusicBaseLogic", "music wrapper list error");
-      return null;
-    }
-    this.myS = ((e)paramList.get(paramInt));
-    y.i("MicroMsg.Music.MusicBaseLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(paramInt) });
-    return this.myS;
   }
   
   public e i(e parame)
@@ -67,23 +60,30 @@ public abstract class g
   
   public void j(e parame)
   {
-    this.myS = parame;
+    this.oYY = parame;
   }
   
   public void k(e parame) {}
   
   public void l(e parame) {}
   
+  public e m(List<e> paramList, int paramInt)
+  {
+    if ((paramList == null) || (paramList.size() == 0) || (paramInt >= paramList.size()))
+    {
+      ab.i("MicroMsg.Music.MusicBaseLogic", "music wrapper list error");
+      return null;
+    }
+    this.oYY = ((e)paramList.get(paramInt));
+    ab.i("MicroMsg.Music.MusicBaseLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(paramInt) });
+    return this.oYY;
+  }
+  
   public void m(e parame) {}
   
   public void n(e parame) {}
   
   public void o(e parame) {}
-  
-  public boolean uJ(int paramInt)
-  {
-    return true;
-  }
 }
 
 

@@ -4,59 +4,62 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeItemListUI$a$a
 {
-  TextView fdY;
-  ImageView ffK;
-  TextView ffL;
-  ImageView mDA;
-  TextView mDy;
-  TextView mDz;
-  View obI;
-  ImageView obJ;
-  TextView obK;
-  LinearLayout obL;
-  TextView obM;
+  TextView gvI;
+  ImageView gxs;
+  TextView gxt;
+  TextView pdA;
+  TextView pdB;
+  ImageView pdC;
+  View qPP;
+  ImageView qPQ;
+  TextView qPR;
+  LinearLayout qPS;
+  TextView qPT;
   
   ShakeItemListUI$a$a(ShakeItemListUI.a parama) {}
   
   public final void clear()
   {
-    if (this.ffK != null)
+    AppMethodBeat.i(24731);
+    if (this.gxs != null)
     {
-      this.ffK.setImageDrawable(null);
-      this.ffK.setVisibility(8);
+      this.gxs.setImageDrawable(null);
+      this.gxs.setVisibility(8);
     }
-    if (this.fdY != null)
+    if (this.gvI != null)
     {
-      this.fdY.setText("");
-      this.fdY.setVisibility(8);
+      this.gvI.setText("");
+      this.gvI.setVisibility(8);
     }
-    if (this.ffL != null) {
-      this.ffL.setVisibility(8);
+    if (this.gxt != null) {
+      this.gxt.setVisibility(8);
     }
-    if (this.obJ != null) {
-      this.obJ.setVisibility(8);
+    if (this.qPQ != null) {
+      this.qPQ.setVisibility(8);
     }
-    if (this.mDy != null)
+    if (this.pdA != null)
     {
-      this.mDy.setText("");
-      this.mDy.setVisibility(8);
+      this.pdA.setText("");
+      this.pdA.setVisibility(8);
     }
-    if (this.mDz != null)
+    if (this.pdB != null)
     {
-      this.mDz.setVisibility(8);
-      this.obI.setVisibility(8);
+      this.pdB.setVisibility(8);
+      this.qPP.setVisibility(8);
     }
-    if (this.mDA != null) {
-      this.mDA.setVisibility(8);
+    if (this.pdC != null) {
+      this.pdC.setVisibility(8);
     }
-    if (this.obK != null)
+    if (this.qPR != null)
     {
-      this.obK.setText("");
-      this.obK.setVisibility(8);
+      this.qPR.setText("");
+      this.qPR.setVisibility(8);
     }
+    AppMethodBeat.o(24731);
   }
 }
 

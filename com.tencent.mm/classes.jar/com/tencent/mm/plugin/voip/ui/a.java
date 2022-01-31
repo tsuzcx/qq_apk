@@ -4,13 +4,13 @@ import android.content.Intent;
 
 public abstract interface a
 {
-  public abstract void a(Intent paramIntent, h paramh);
+  public abstract void a(Intent paramIntent, e parame);
   
-  public abstract boolean bbL();
+  public abstract boolean bIS();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.a
  * JD-Core Version:    0.7.0.1
  */

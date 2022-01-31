@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -12,9 +13,16 @@ import org.json.JSONObject;
 public class SetLineDashActionArg
   extends BaseDrawActionArg
 {
-  public static final Parcelable.Creator<SetLineDashActionArg> CREATOR = new SetLineDashActionArg.1();
-  public float[] fLV = null;
-  public float fLW = 1.4E-45F;
+  public static final Parcelable.Creator<SetLineDashActionArg> CREATOR;
+  public float[] hff = null;
+  public float hfg = 1.4E-45F;
+  
+  static
+  {
+    AppMethodBeat.i(103519);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(103519);
+  }
   
   public SetLineDashActionArg() {}
   
@@ -30,75 +38,101 @@ public class SetLineDashActionArg
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(103517);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(103517);
       return true;
-      if (!(paramObject instanceof SetLineDashActionArg)) {
-        return false;
-      }
-      if (!super.equals(paramObject)) {
-        return false;
-      }
-      paramObject = (SetLineDashActionArg)paramObject;
-    } while ((Float.compare(paramObject.fLW, this.fLW) == 0) && (Arrays.equals(this.fLV, paramObject.fLV)));
+    }
+    if (!(paramObject instanceof SetLineDashActionArg))
+    {
+      AppMethodBeat.o(103517);
+      return false;
+    }
+    if (!super.equals(paramObject))
+    {
+      AppMethodBeat.o(103517);
+      return false;
+    }
+    paramObject = (SetLineDashActionArg)paramObject;
+    if ((Float.compare(paramObject.hfg, this.hfg) == 0) && (Arrays.equals(this.hff, paramObject.hff)))
+    {
+      AppMethodBeat.o(103517);
+      return true;
+    }
+    AppMethodBeat.o(103517);
     return false;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    super.f(paramParcel);
+    AppMethodBeat.i(103514);
+    super.h(paramParcel);
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.fLV = new float[i];
-      paramParcel.readFloatArray(this.fLV);
+      this.hff = new float[i];
+      paramParcel.readFloatArray(this.hff);
     }
-    this.fLW = paramParcel.readFloat();
+    this.hfg = paramParcel.readFloat();
+    AppMethodBeat.o(103514);
   }
   
   public int hashCode()
   {
-    return Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.fLW) }) * 31 + Arrays.hashCode(this.fLV);
+    AppMethodBeat.i(103518);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.hfg) });
+    int j = Arrays.hashCode(this.hff);
+    AppMethodBeat.o(103518);
+    return i * 31 + j;
   }
   
-  public final void j(JSONObject paramJSONObject)
+  public final void p(JSONObject paramJSONObject)
   {
     int i = 0;
-    super.j(paramJSONObject);
+    AppMethodBeat.i(103515);
+    super.p(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    if (paramJSONObject.length() < 2) {}
-    for (;;)
+    if (paramJSONObject.length() < 2)
     {
+      AppMethodBeat.o(103515);
       return;
-      try
+    }
+    try
+    {
+      JSONArray localJSONArray = paramJSONObject.getJSONArray(0);
+      if (localJSONArray == null)
       {
-        JSONArray localJSONArray = paramJSONObject.getJSONArray(0);
-        if (localJSONArray != null)
-        {
-          this.fLV = new float[localJSONArray.length()];
-          while (i < this.fLV.length)
-          {
-            this.fLV[i] = h.d(localJSONArray, i);
-            i += 1;
-          }
-          this.fLW = h.d(paramJSONObject, 1);
-          return;
-        }
+        AppMethodBeat.o(103515);
+        return;
       }
-      catch (JSONException paramJSONObject) {}
+      this.hff = new float[localJSONArray.length()];
+      while (i < this.hff.length)
+      {
+        this.hff[i] = g.d(localJSONArray, i);
+        i += 1;
+      }
+      this.hfg = g.d(paramJSONObject, 1);
+      AppMethodBeat.o(103515);
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      AppMethodBeat.o(103515);
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(103516);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.fLV != null)
+    if (this.hff != null)
     {
-      paramParcel.writeInt(this.fLV.length);
-      paramParcel.writeFloatArray(this.fLV);
+      paramParcel.writeInt(this.hff.length);
+      paramParcel.writeFloatArray(this.hff);
     }
-    paramParcel.writeFloat(this.fLW);
+    paramParcel.writeFloat(this.hfg);
+    AppMethodBeat.o(103516);
   }
 }
 

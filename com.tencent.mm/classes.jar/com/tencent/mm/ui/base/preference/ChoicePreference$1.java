@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base.preference;
 
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChoicePreference$1
   implements RadioGroup.OnCheckedChangeListener
@@ -10,20 +11,22 @@ final class ChoicePreference$1
   
   public final void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (ChoicePreference.a(this.vcd) != null)
+    AppMethodBeat.i(107145);
+    if (ChoicePreference.a(this.zqE) != null)
     {
       if (paramInt == -1) {
-        break label82;
+        break label92;
       }
-      ChoicePreference.a(this.vcd, ChoicePreference.b(this.vcd)[(paramInt - 1048576)]);
+      ChoicePreference.a(this.zqE, ChoicePreference.b(this.zqE)[(paramInt - 1048576)]);
     }
     for (;;)
     {
-      ChoicePreference.a(this.vcd, paramInt);
-      ChoicePreference.a(this.vcd).a(this.vcd, this.vcd.value);
+      ChoicePreference.a(this.zqE, paramInt);
+      ChoicePreference.a(this.zqE).a(this.zqE, this.zqE.value);
+      AppMethodBeat.o(107145);
       return;
-      label82:
-      ChoicePreference.a(this.vcd, null);
+      label92:
+      ChoicePreference.a(this.zqE, null);
     }
   }
 }

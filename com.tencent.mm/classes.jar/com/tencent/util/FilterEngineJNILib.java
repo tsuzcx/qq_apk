@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Environment;
 import com.tencent.filter.QImage;
-import com.tencent.view.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -19,18 +19,25 @@ public class FilterEngineJNILib
   
   public static String generateBundlePath(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(86584);
     if (paramString2 != null) {}
     for (paramString2 = paramString1 + "." + paramString2;; paramString2 = paramString1)
     {
-      if (new File(paramString2).exists()) {
+      if (new File(paramString2).exists())
+      {
+        AppMethodBeat.o(86584);
         return paramString2;
       }
-      Object localObject = b.xcZ;
-      if (localObject == null) {
+      Object localObject = com.tencent.view.b.BzH;
+      if (localObject == null)
+      {
+        AppMethodBeat.o(86584);
         return null;
       }
       localObject = ((Context)localObject).getDir("filter", 0);
-      if ((!((File)localObject).isDirectory()) && (!((File)localObject).mkdirs())) {
+      if ((!((File)localObject).isDirectory()) && (!((File)localObject).mkdirs()))
+      {
+        AppMethodBeat.o(86584);
         return null;
       }
       localObject = new File((File)localObject, paramString2);
@@ -41,9 +48,9 @@ public class FilterEngineJNILib
         ((File)localObject).delete();
         try
         {
-          paramString2 = b.agt(paramString2);
+          paramString2 = com.tencent.view.b.axl(paramString2);
           if (paramString2 == null) {
-            break label175;
+            break label202;
           }
           paramString1 = new byte[1024];
           ((File)localObject).createNewFile();
@@ -56,17 +63,20 @@ public class FilterEngineJNILib
             }
             localFileOutputStream.write(paramString1, 0, i);
           }
-          return ((File)localObject).getAbsolutePath();
+          paramString1 = ((File)localObject).getAbsolutePath();
         }
         catch (IOException paramString1) {}
       }
       for (;;)
       {
+        AppMethodBeat.o(86584);
+        return paramString1;
         paramString2.close();
         localFileOutputStream.close();
       }
-      label175:
-      g.h("filter", "generateBundlePath notfound" + paramString1);
+      label202:
+      i.l("filter", "generateBundlePath notfound".concat(String.valueOf(paramString1)));
+      AppMethodBeat.o(86584);
       return null;
     }
   }
@@ -77,144 +87,165 @@ public class FilterEngineJNILib
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 112	java/text/SimpleDateFormat
-    //   6: dup
-    //   7: ldc 114
-    //   9: invokespecial 115	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
-    //   12: new 117	java/util/Date
-    //   15: dup
-    //   16: lload_0
-    //   17: invokespecial 120	java/util/Date:<init>	(J)V
-    //   20: invokevirtual 124	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
-    //   23: astore_2
-    //   24: lload_0
-    //   25: ldc2_w 125
-    //   28: ldiv
-    //   29: getstatic 12	com/tencent/util/FilterEngineJNILib:mLastDate	J
-    //   32: ldc2_w 125
-    //   35: ldiv
-    //   36: lcmp
-    //   37: ifne +42 -> 79
-    //   40: getstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
-    //   43: iconst_1
-    //   44: iadd
-    //   45: putstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
-    //   48: new 24	java/lang/StringBuilder
-    //   51: dup
-    //   52: invokespecial 25	java/lang/StringBuilder:<init>	()V
-    //   55: aload_2
-    //   56: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: ldc 128
-    //   61: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: getstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
-    //   67: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   70: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   73: astore_2
-    //   74: ldc 2
-    //   76: monitorexit
-    //   77: aload_2
-    //   78: areturn
-    //   79: lload_0
-    //   80: putstatic 12	com/tencent/util/FilterEngineJNILib:mLastDate	J
-    //   83: iconst_0
-    //   84: putstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
-    //   87: goto -13 -> 74
-    //   90: astore_2
-    //   91: ldc 2
-    //   93: monitorexit
-    //   94: aload_2
-    //   95: athrow
+    //   3: ldc 130
+    //   5: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: new 132	java/text/SimpleDateFormat
+    //   11: dup
+    //   12: ldc 134
+    //   14: invokespecial 135	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
+    //   17: new 137	java/util/Date
+    //   20: dup
+    //   21: lload_0
+    //   22: invokespecial 140	java/util/Date:<init>	(J)V
+    //   25: invokevirtual 144	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+    //   28: astore_2
+    //   29: lload_0
+    //   30: ldc2_w 145
+    //   33: ldiv
+    //   34: getstatic 12	com/tencent/util/FilterEngineJNILib:mLastDate	J
+    //   37: ldc2_w 145
+    //   40: ldiv
+    //   41: lcmp
+    //   42: ifne +47 -> 89
+    //   45: getstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
+    //   48: iconst_1
+    //   49: iadd
+    //   50: putstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
+    //   53: new 31	java/lang/StringBuilder
+    //   56: dup
+    //   57: invokespecial 32	java/lang/StringBuilder:<init>	()V
+    //   60: aload_2
+    //   61: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: ldc 148
+    //   66: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: getstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
+    //   72: invokevirtual 151	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   75: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   78: astore_2
+    //   79: ldc 130
+    //   81: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: ldc 2
+    //   86: monitorexit
+    //   87: aload_2
+    //   88: areturn
+    //   89: lload_0
+    //   90: putstatic 12	com/tencent/util/FilterEngineJNILib:mLastDate	J
+    //   93: iconst_0
+    //   94: putstatic 14	com/tencent/util/FilterEngineJNILib:mSameSecondCount	I
+    //   97: goto -18 -> 79
+    //   100: astore_2
+    //   101: ldc 2
+    //   103: monitorexit
+    //   104: aload_2
+    //   105: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	96	0	paramLong	long
-    //   23	55	2	str	String
-    //   90	5	2	localObject	Object
+    //   0	106	0	paramLong	long
+    //   28	60	2	str	String
+    //   100	5	2	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   3	74	90	finally
-    //   79	87	90	finally
+    //   3	79	100	finally
+    //   79	84	100	finally
+    //   89	97	100	finally
   }
   
   public static byte[] getAssetContents(String paramString)
   {
-    if (b.xcZ == null) {
+    AppMethodBeat.i(86583);
+    if (com.tencent.view.b.BzH == null)
+    {
+      AppMethodBeat.o(86583);
       return null;
     }
-    paramString = b.xcZ.getAssets().open(paramString, 3);
+    paramString = com.tencent.view.b.BzH.getAssets().open(paramString, 3);
     byte[] arrayOfByte = new byte[paramString.available()];
     paramString.read(arrayOfByte);
+    AppMethodBeat.o(86583);
     return arrayOfByte;
   }
   
   private static String getSDPath()
   {
-    File localFile = null;
+    AppMethodBeat.i(86588);
+    Object localObject = null;
     if (Environment.getExternalStorageState().equals("mounted")) {
-      localFile = Environment.getExternalStorageDirectory();
+      localObject = Environment.getExternalStorageDirectory();
     }
-    return localFile.toString();
+    localObject = ((File)localObject).toString();
+    AppMethodBeat.o(86588);
+    return localObject;
   }
   
   public static native void nativeCopyImage(Bitmap paramBitmap, long paramLong);
   
   public static byte[] readBundleData(String paramString)
   {
+    AppMethodBeat.i(86585);
     Object localObject2 = null;
-    Object localObject1 = localObject2;
+    localObject1 = localObject2;
     try
     {
-      InputStream localInputStream = b.agt(paramString);
+      InputStream localInputStream = com.tencent.view.b.axl(paramString);
       if (localInputStream == null)
       {
         localObject1 = localObject2;
-        g.i("FilterDefault", "decodeBitmap  getStream " + paramString + " not exist");
+        i.n("FilterDefault", "decodeBitmap  getStream " + paramString + " not exist");
       }
       localObject1 = localObject2;
-      paramString = c.decryptFile(localInputStream);
+      paramString = e.L(localInputStream);
       localObject1 = paramString;
-      e.closeQuietly(localInputStream);
-      return paramString;
+      g.closeQuietly(localInputStream);
     }
     catch (Exception paramString)
     {
-      g.a("FilterDefault", "decodeBitmap  getStream", paramString);
+      for (;;)
+      {
+        i.a("FilterDefault", "decodeBitmap  getStream", paramString);
+        paramString = (String)localObject1;
+      }
     }
-    return localObject1;
+    AppMethodBeat.o(86585);
+    return paramString;
   }
   
   public static QImage readBundleImage(String paramString)
   {
-    paramString = b.pe(paramString);
+    AppMethodBeat.i(86586);
+    paramString = com.tencent.view.b.wv(paramString);
     if ((paramString != null) && (!paramString.isRecycled()))
     {
       QImage localQImage = QImage.Bitmap2QImage(paramString);
-      a.recycle(paramString);
+      b.recycle(paramString);
+      AppMethodBeat.o(86586);
       return localQImage;
     }
+    AppMethodBeat.o(86586);
     return null;
   }
   
   public static void recycleImage(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(86587);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {
       paramBitmap.recycle();
     }
     System.gc();
+    AppMethodBeat.o(86587);
   }
   
   /* Error */
   private static int saveBitmap(Bitmap paramBitmap, String paramString)
   {
     // Byte code:
-    //   0: ldc 52
-    //   2: new 24	java/lang/StringBuilder
-    //   5: dup
-    //   6: ldc 236
-    //   8: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   0: ldc_w 259
+    //   3: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc 62
+    //   8: ldc_w 261
     //   11: aload_1
-    //   12: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   18: invokestatic 108	com/tencent/util/g:h	(Ljava/lang/Object;Ljava/lang/String;)I
+    //   12: invokestatic 117	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   15: invokevirtual 121	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   18: invokestatic 127	com/tencent/util/i:l	(Ljava/lang/Object;Ljava/lang/String;)I
     //   21: pop
     //   22: aconst_null
     //   23: astore_3
@@ -222,129 +253,138 @@ public class FilterEngineJNILib
     //   25: astore 4
     //   27: aconst_null
     //   28: astore_2
-    //   29: new 37	java/io/File
+    //   29: new 44	java/io/File
     //   32: dup
     //   33: aload_1
-    //   34: invokespecial 40	java/io/File:<init>	(Ljava/lang/String;)V
+    //   34: invokespecial 47	java/io/File:<init>	(Ljava/lang/String;)V
     //   37: astore 5
     //   39: aload 5
-    //   41: invokevirtual 239	java/io/File:getParentFile	()Ljava/io/File;
+    //   41: invokevirtual 264	java/io/File:getParentFile	()Ljava/io/File;
     //   44: astore 6
     //   46: aload 6
-    //   48: invokevirtual 44	java/io/File:exists	()Z
+    //   48: invokevirtual 51	java/io/File:exists	()Z
     //   51: ifne +9 -> 60
     //   54: aload 6
-    //   56: invokevirtual 64	java/io/File:mkdirs	()Z
+    //   56: invokevirtual 74	java/io/File:mkdirs	()Z
     //   59: pop
     //   60: aload 5
-    //   62: invokevirtual 44	java/io/File:exists	()Z
+    //   62: invokevirtual 51	java/io/File:exists	()Z
     //   65: ifne +9 -> 74
     //   68: aload 5
-    //   70: invokevirtual 77	java/io/File:createNewFile	()Z
+    //   70: invokevirtual 87	java/io/File:createNewFile	()Z
     //   73: pop
-    //   74: ldc 52
-    //   76: new 24	java/lang/StringBuilder
+    //   74: ldc 62
+    //   76: new 31	java/lang/StringBuilder
     //   79: dup
-    //   80: ldc 241
-    //   82: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   85: aload 5
-    //   87: invokevirtual 44	java/io/File:exists	()Z
-    //   90: invokevirtual 244	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 35	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 108	com/tencent/util/g:h	(Ljava/lang/Object;Ljava/lang/String;)I
-    //   99: pop
-    //   100: new 79	java/io/FileOutputStream
-    //   103: dup
-    //   104: aload_1
-    //   105: invokespecial 245	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   108: astore_1
-    //   109: aload_0
-    //   110: ifnull +18 -> 128
-    //   113: aload_0
-    //   114: getstatic 251	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   117: bipush 95
-    //   119: aload_1
-    //   120: invokevirtual 255	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   123: pop
-    //   124: aload_1
-    //   125: invokevirtual 258	java/io/FileOutputStream:flush	()V
-    //   128: aload_1
-    //   129: invokestatic 261	com/tencent/util/e:closeQuietly	(Ljava/io/OutputStream;)V
-    //   132: iconst_1
-    //   133: ireturn
-    //   134: astore_0
-    //   135: aload_2
-    //   136: astore_0
-    //   137: aload_0
-    //   138: invokestatic 261	com/tencent/util/e:closeQuietly	(Ljava/io/OutputStream;)V
-    //   141: iconst_0
-    //   142: ireturn
+    //   80: ldc_w 266
+    //   83: invokespecial 197	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   86: aload 5
+    //   88: invokevirtual 51	java/io/File:exists	()Z
+    //   91: invokevirtual 269	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   94: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   97: invokestatic 127	com/tencent/util/i:l	(Ljava/lang/Object;Ljava/lang/String;)I
+    //   100: pop
+    //   101: new 89	java/io/FileOutputStream
+    //   104: dup
+    //   105: aload_1
+    //   106: invokespecial 270	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   109: astore_1
+    //   110: aload_0
+    //   111: ifnull +18 -> 129
+    //   114: aload_0
+    //   115: getstatic 276	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   118: bipush 95
+    //   120: aload_1
+    //   121: invokevirtual 280	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   124: pop
+    //   125: aload_1
+    //   126: invokevirtual 283	java/io/FileOutputStream:flush	()V
+    //   129: aload_1
+    //   130: invokestatic 286	com/tencent/util/g:closeQuietly	(Ljava/io/OutputStream;)V
+    //   133: ldc_w 259
+    //   136: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   139: iconst_1
+    //   140: ireturn
+    //   141: astore_0
+    //   142: aload_2
     //   143: astore_0
-    //   144: aload_3
-    //   145: astore_0
-    //   146: aload_0
-    //   147: invokestatic 261	com/tencent/util/e:closeQuietly	(Ljava/io/OutputStream;)V
-    //   150: iconst_0
-    //   151: ireturn
-    //   152: astore_0
-    //   153: aload 4
-    //   155: astore_1
-    //   156: aload_1
-    //   157: invokestatic 261	com/tencent/util/e:closeQuietly	(Ljava/io/OutputStream;)V
-    //   160: aload_0
-    //   161: athrow
-    //   162: astore_0
-    //   163: goto -7 -> 156
-    //   166: astore_0
-    //   167: aload_1
-    //   168: astore_0
-    //   169: goto -23 -> 146
-    //   172: astore_0
-    //   173: aload_1
-    //   174: astore_0
-    //   175: goto -38 -> 137
+    //   144: aload_0
+    //   145: invokestatic 286	com/tencent/util/g:closeQuietly	(Ljava/io/OutputStream;)V
+    //   148: ldc_w 259
+    //   151: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   154: iconst_0
+    //   155: ireturn
+    //   156: astore_0
+    //   157: aload_3
+    //   158: astore_0
+    //   159: aload_0
+    //   160: invokestatic 286	com/tencent/util/g:closeQuietly	(Ljava/io/OutputStream;)V
+    //   163: ldc_w 259
+    //   166: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   169: iconst_0
+    //   170: ireturn
+    //   171: astore_0
+    //   172: aload 4
+    //   174: astore_1
+    //   175: aload_1
+    //   176: invokestatic 286	com/tencent/util/g:closeQuietly	(Ljava/io/OutputStream;)V
+    //   179: ldc_w 259
+    //   182: invokestatic 54	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: aload_0
+    //   186: athrow
+    //   187: astore_0
+    //   188: goto -13 -> 175
+    //   191: astore_0
+    //   192: aload_1
+    //   193: astore_0
+    //   194: goto -35 -> 159
+    //   197: astore_0
+    //   198: aload_1
+    //   199: astore_0
+    //   200: goto -56 -> 144
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	178	0	paramBitmap	Bitmap
-    //   0	178	1	paramString	String
-    //   28	108	2	localObject1	Object
-    //   23	122	3	localObject2	Object
-    //   25	129	4	localObject3	Object
-    //   37	49	5	localFile1	File
+    //   0	203	0	paramBitmap	Bitmap
+    //   0	203	1	paramString	String
+    //   28	115	2	localObject1	Object
+    //   23	135	3	localObject2	Object
+    //   25	148	4	localObject3	Object
+    //   37	50	5	localFile1	File
     //   44	11	6	localFile2	File
     // Exception table:
     //   from	to	target	type
-    //   29	60	134	java/lang/Exception
-    //   60	74	134	java/lang/Exception
-    //   74	109	134	java/lang/Exception
-    //   29	60	143	java/lang/OutOfMemoryError
-    //   60	74	143	java/lang/OutOfMemoryError
-    //   74	109	143	java/lang/OutOfMemoryError
-    //   29	60	152	finally
-    //   60	74	152	finally
-    //   74	109	152	finally
-    //   113	128	162	finally
-    //   113	128	166	java/lang/OutOfMemoryError
-    //   113	128	172	java/lang/Exception
+    //   29	60	141	java/lang/Exception
+    //   60	74	141	java/lang/Exception
+    //   74	110	141	java/lang/Exception
+    //   29	60	156	java/lang/OutOfMemoryError
+    //   60	74	156	java/lang/OutOfMemoryError
+    //   74	110	156	java/lang/OutOfMemoryError
+    //   29	60	171	finally
+    //   60	74	171	finally
+    //   74	110	171	finally
+    //   114	129	187	finally
+    //   114	129	191	java/lang/OutOfMemoryError
+    //   114	129	197	java/lang/Exception
   }
   
   public static void writeToAlbum(long paramLong, int paramInt1, int paramInt2)
   {
-    if (b.xdc)
+    AppMethodBeat.i(86589);
+    if (com.tencent.view.b.ENABLE_DEBUG)
     {
       Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      g.h("filter", "writeToAlbum: " + paramInt1 + " " + paramInt2);
+      i.l("filter", "writeToAlbum: " + paramInt1 + " " + paramInt2);
       nativeCopyImage(localBitmap, paramLong);
       String str = generateName(System.currentTimeMillis());
-      paramInt1 = saveBitmap(localBitmap, getSDPath() + "/filter/" + str + ".jpg");
-      g.h("filter", "writeToAlbum ret: " + paramInt1);
+      i.l("filter", "writeToAlbum ret: ".concat(String.valueOf(saveBitmap(localBitmap, getSDPath() + "/filter/" + str + ".jpg"))));
       localBitmap.recycle();
     }
+    AppMethodBeat.o(86589);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.util.FilterEngineJNILib
  * JD-Core Version:    0.7.0.1
  */

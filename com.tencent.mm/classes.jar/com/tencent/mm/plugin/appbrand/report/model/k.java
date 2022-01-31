@@ -1,32 +1,40 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
-import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.report.l;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class k
 {
-  private String bFv;
-  public k.b gZc;
-  public int gZd;
-  public String gZe;
-  private long gZf;
-  public k.a gZg;
+  private String cmF;
+  public k.b iHs;
+  public int iHt;
+  public String iHu;
+  private long iHv;
+  public k.a iHw;
+  
+  public final void IE()
+  {
+    AppMethodBeat.i(132644);
+    if ((this.iHs == null) || (this.iHw == null))
+    {
+      AppMethodBeat.o(132644);
+      return;
+    }
+    ab.i("MicroMsg.AppBrand.kv_13917", "report " + toString());
+    this.iHv = bo.aoy();
+    h.qsU.e(13917, l.k(new Object[] { Integer.valueOf(this.iHs.value), Integer.valueOf(this.iHt), this.iHu, Long.valueOf(this.iHv), this.cmF, Integer.valueOf(this.iHw.value) }));
+    AppMethodBeat.o(132644);
+  }
   
   public final String toString()
   {
-    return "kv_13917{scene=" + this.gZc.value + ", appCount=" + this.gZd + ", nearbyListId='" + this.gZe + '\'' + ", clickTime=" + this.gZf + ", sceneNote='" + this.bFv + '\'' + ", openType=" + this.gZg.value + '}';
-  }
-  
-  public final void wn()
-  {
-    if ((this.gZc == null) || (this.gZg == null)) {
-      return;
-    }
-    y.i("MicroMsg.AppBrand.kv_13917", "report " + toString());
-    this.gZf = bk.UY();
-    h.nFQ.f(13917, i.j(new Object[] { Integer.valueOf(this.gZc.value), Integer.valueOf(this.gZd), this.gZe, Long.valueOf(this.gZf), this.bFv, Integer.valueOf(this.gZg.value) }));
+    AppMethodBeat.i(132643);
+    String str = "kv_13917{scene=" + this.iHs.value + ", appCount=" + this.iHt + ", nearbyListId='" + this.iHu + '\'' + ", clickTime=" + this.iHv + ", sceneNote='" + this.cmF + '\'' + ", openType=" + this.iHw.value + '}';
+    AppMethodBeat.o(132643);
+    return str;
   }
 }
 

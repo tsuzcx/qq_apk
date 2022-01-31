@@ -5,63 +5,67 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ag.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.d;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.ui.base.MaskLayout;
 
 public final class b
   extends RelativeLayout
 {
-  private TextView contentView = null;
+  private TextView contentView;
   private Context context;
-  private View eML = null;
-  private View fhl = null;
+  private View gcq;
+  private View gyT;
   
   public b(Context paramContext, b.a parama)
   {
     super(paramContext);
+    AppMethodBeat.i(33537);
+    this.gcq = null;
+    this.gyT = null;
+    this.contentView = null;
     this.context = paramContext;
-    View.inflate(getContext(), R.i.address_entrance_header_view, this);
-    this.eML = findViewById(R.h.container);
-    this.fhl = this.eML.findViewById(R.h.addressui_contact_entrance);
-    paramContext = this.fhl.getLayoutParams();
-    paramContext.height = ((int)(a.ab(this.context, R.f.ContactListHeight) * a.fg(this.context)));
-    this.fhl.setLayoutParams(paramContext);
-    this.contentView = ((TextView)this.fhl.findViewById(R.h.addressui_content));
-    this.eML.setOnClickListener(new b.1(this, parama));
-    this.fhl.setOnTouchListener(new b.2(this));
-    paramContext = (ImageView)((MaskLayout)this.fhl.findViewById(R.h.addressui_contact_entrance_avatar_iv)).getContentView();
-    switch (b.3.vJv[parama.ordinal()])
+    View.inflate(getContext(), 2130968641, this);
+    this.gcq = findViewById(2131821084);
+    this.gyT = this.gcq.findViewById(2131821085);
+    paramContext = this.gyT.getLayoutParams();
+    paramContext.height = ((int)(a.ap(this.context, 2131427549) * a.gs(this.context)));
+    this.gyT.setLayoutParams(paramContext);
+    this.contentView = ((TextView)this.gyT.findViewById(2131821088));
+    this.gcq.setOnClickListener(new b.1(this, parama));
+    this.gyT.setOnTouchListener(new b.2(this));
+    paramContext = (ImageView)((MaskLayout)this.gyT.findViewById(2131821086)).getContentView();
+    switch (b.3.AaR[parama.ordinal()])
     {
-    default: 
-      return;
-    case 1: 
-      this.contentView.setText(R.l.address_chatroom_contact_nick);
-      d.a(getContext(), paramContext, R.k.default_chatroom);
-      return;
-    case 2: 
-      this.contentView.setText(R.l.address_contact_label_nick);
-      d.a(getContext(), paramContext, R.k.default_contactlabel);
-      return;
     }
-    this.fhl.setBackgroundResource(R.g.comm_list_item_selector);
-    this.contentView.setText(R.l.address_contact_ipcall_nick);
-    d.a(getContext(), paramContext, R.k.default_ipcall);
+    for (;;)
+    {
+      AppMethodBeat.o(33537);
+      return;
+      this.contentView.setText(2131296450);
+      d.a(getContext(), paramContext, 2131231210);
+      AppMethodBeat.o(33537);
+      return;
+      this.contentView.setText(2131296454);
+      d.a(getContext(), paramContext, 2131231211);
+      AppMethodBeat.o(33537);
+      return;
+      this.gyT.setBackgroundResource(2130838445);
+      this.contentView.setText(2131296453);
+      d.a(getContext(), paramContext, 2131231217);
+    }
   }
   
   public final void setVisible(boolean paramBoolean)
   {
-    View localView = this.eML;
+    AppMethodBeat.i(33538);
+    View localView = this.gcq;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
+      AppMethodBeat.o(33538);
       return;
     }
   }

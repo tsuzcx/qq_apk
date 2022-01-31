@@ -10,7 +10,7 @@ final class PagerTabStrip$2
   
   public final void onClick(View paramView)
   {
-    this.FJ.FK.setCurrentItem(this.FJ.FK.getCurrentItem() + 1);
+    this.Gq.Gr.setCurrentItem(this.Gq.Gr.getCurrentItem() + 1);
   }
 }
 

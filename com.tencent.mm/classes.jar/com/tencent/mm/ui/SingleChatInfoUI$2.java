@@ -1,19 +1,19 @@
 package com.tencent.mm.ui;
 
-import android.view.View;
-import com.tencent.mm.ui.base.preference.MMPreference;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelmulti.n;
+import com.tencent.mm.modelmulti.o;
 
 final class SingleChatInfoUI$2
   implements Runnable
 {
-  SingleChatInfoUI$2(SingleChatInfoUI paramSingleChatInfoUI, int paramInt) {}
+  SingleChatInfoUI$2(SingleChatInfoUI paramSingleChatInfoUI) {}
   
   public final void run()
   {
-    View localView = ((com.tencent.mm.ui.base.preference.a)SingleChatInfoUI.a(this.uQS)).a(this.doB, this.uQS.lwE);
-    if (localView != null) {
-      com.tencent.mm.ui.g.a.a(this.uQS.mController.uMN, localView);
-    }
+    AppMethodBeat.i(29867);
+    n.aio().lL(7);
+    AppMethodBeat.o(29867);
   }
 }
 

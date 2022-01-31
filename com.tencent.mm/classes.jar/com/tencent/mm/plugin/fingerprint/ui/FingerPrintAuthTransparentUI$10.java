@@ -2,16 +2,18 @@ package com.tencent.mm.plugin.fingerprint.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FingerPrintAuthTransparentUI$10
   implements DialogInterface.OnClickListener
 {
-  FingerPrintAuthTransparentUI$10(FingerPrintAuthTransparentUI paramFingerPrintAuthTransparentUI, CheckBox paramCheckBox) {}
+  FingerPrintAuthTransparentUI$10(FingerPrintAuthTransparentUI paramFingerPrintAuthTransparentUI) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FingerPrintAuthTransparentUI.b(this.kma, this.klL.isChecked());
+    AppMethodBeat.i(41605);
+    FingerPrintAuthTransparentUI.c(this.mGQ);
+    AppMethodBeat.o(41605);
   }
 }
 

@@ -1,8 +1,16 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-public enum ar$a
+import com.tencent.mm.plugin.appbrand.appstorage.IWxaFileSystemWithModularizing;
+import com.tencent.mm.plugin.appbrand.appstorage.g;
+
+final class ar$a
+  extends g
+  implements IWxaFileSystemWithModularizing
 {
-  private ar$a() {}
+  public final ao findAppropriateModuleInfo(String paramString)
+  {
+    return null;
+  }
 }
 
 

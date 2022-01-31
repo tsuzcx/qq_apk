@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import com.tencent.mm.protocal.c.cmf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.czw;
 
 final class AppBrandIDKeyBatchReport$b$4
   implements Runnable
 {
-  AppBrandIDKeyBatchReport$b$4(cmf paramcmf) {}
+  AppBrandIDKeyBatchReport$b$4(czw paramczw) {}
   
   public final void run()
   {
-    AppBrandIDKeyBatchReport.b.d(this.gXu);
+    AppMethodBeat.i(132523);
+    AppBrandIDKeyBatchReport.b.d(this.iFx);
+    AppMethodBeat.o(132523);
   }
 }
 

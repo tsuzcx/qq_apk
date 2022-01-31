@@ -14,7 +14,7 @@ final class SearchView$2
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.ajT.j(paramCharSequence);
+    this.amj.m(paramCharSequence);
   }
 }
 

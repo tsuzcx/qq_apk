@@ -1,134 +1,90 @@
 package com.tencent.mm.plugin.wepkg.b;
 
 import android.database.Cursor;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.kernel.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wepkg.model.WepkgPreloadFile;
-import com.tencent.mm.plugin.wepkg.utils.d;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public class b
-  extends i<a>
+public final class b
+  extends j<a>
 {
-  public static final String[] dXp = { i.a(a.dUa, "WepkgPreloadFiles") };
-  private static volatile b rOc = null;
-  private final h dXo;
-  public final boolean gaO;
+  public static final String[] SQL_CREATE;
+  private static final Object lock;
+  private static b vEM;
+  private com.tencent.mm.sdk.e.e gVl;
   
-  private b(h paramh)
+  static
   {
-    super(paramh, a.dUa, "WepkgPreloadFiles", a.cqY);
-    this.dXo = paramh;
-    if (paramh != null) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(63390);
+    SQL_CREATE = new String[] { j.getCreateSQLs(a.fkk, "WePkgDiffPackage") };
+    lock = new Object();
+    AppMethodBeat.o(63390);
+  }
+  
+  private b(com.tencent.mm.sdk.e.e parame)
+  {
+    super(parame, a.fkk, "WePkgDiffPackage", a.INDEX_CREATE);
+    this.gVl = parame;
+  }
+  
+  private boolean ayz()
+  {
+    return this.gVl != null;
+  }
+  
+  public static b dko()
+  {
+    AppMethodBeat.i(63387);
+    if (vEM == null) {}
+    synchronized (lock)
     {
-      this.gaO = bool;
-      if (!this.gaO) {
-        y.e("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "storage can not work!!!");
+      if ((vEM == null) || (!vEM.ayz())) {
+        vEM = new b(g.RL().eHS);
       }
-      return;
+      ??? = vEM;
+      AppMethodBeat.o(63387);
+      return ???;
     }
   }
   
-  public static b cjM()
+  public final a akl(String paramString)
   {
-    if (!g.DK()) {
-      return new b(null);
-    }
-    if (rOc == null) {}
-    try
+    AppMethodBeat.i(63388);
+    if ((!ayz()) || (bo.isNullOrNil(paramString)))
     {
-      if ((rOc == null) || (!rOc.gaO)) {
-        rOc = new b(g.DP().dKu);
-      }
-      return rOc;
-    }
-    finally {}
-  }
-  
-  public final List<WepkgPreloadFile> UR(String paramString)
-  {
-    if ((!this.gaO) || (bk.bl(paramString))) {
+      AppMethodBeat.o(63388);
       return null;
     }
-    Object localObject = String.format("select * from %s where %s=?", new Object[] { "WepkgPreloadFiles", "pkgId" });
-    paramString = rawQuery((String)localObject, new String[] { paramString });
-    y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getPreLoadFileList queryStr:%s", new Object[] { localObject });
-    if (paramString == null)
+    paramString = rawQuery(String.format("select * from %s where %s=%s", new Object[] { "WePkgDiffPackage", "pkgId", "'" + paramString + "'" }), new String[0]);
+    if (paramString != null)
     {
-      y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "cursor is null");
-      return null;
-    }
-    if (paramString.moveToFirst())
-    {
-      localObject = new ArrayList();
-      do
+      if (paramString.moveToFirst())
       {
-        WepkgPreloadFile localWepkgPreloadFile = new WepkgPreloadFile();
         a locala = new a();
-        locala.d(paramString);
-        localWepkgPreloadFile.a(locala);
-        ((List)localObject).add(localWepkgPreloadFile);
-      } while (paramString.moveToNext());
+        locala.convertFrom(paramString);
+        paramString.close();
+        AppMethodBeat.o(63388);
+        return locala;
+      }
       paramString.close();
-      y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "record list size:%s", new Object[] { Integer.valueOf(((List)localObject).size()) });
-      return localObject;
-    }
-    paramString.close();
-    y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "no record");
-    return null;
-  }
-  
-  public final boolean US(String paramString)
-  {
-    if ((!this.gaO) || (bk.bl(paramString))) {
-      return false;
-    }
-    a locala = new a();
-    locala.field_pkgId = paramString;
-    boolean bool = super.a(locala, new String[] { "pkgId" });
-    y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "deleteRecordByPkgid pkgid:%s, ret:%s", new Object[] { paramString, Boolean.valueOf(bool) });
-    return bool;
-  }
-  
-  public final a fK(String paramString1, String paramString2)
-  {
-    if ((!this.gaO) || (bk.bl(paramString1)) || (bk.bl(paramString2))) {
+      AppMethodBeat.o(63388);
       return null;
     }
-    Object localObject = d.fO(paramString1, paramString2);
-    localObject = rawQuery(String.format("select * from %s where %s=?", new Object[] { "WepkgPreloadFiles", "key" }), new String[] { localObject });
-    if (((Cursor)localObject).moveToFirst())
-    {
-      paramString1 = new a();
-      paramString1.d((Cursor)localObject);
-      ((Cursor)localObject).close();
-      y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getRecordByRid exist record in DB, pkgid:%s, rid:%s, version:%s", new Object[] { paramString1.field_pkgId, paramString1.field_rid, paramString1.field_version });
-      return paramString1;
-    }
-    y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "getRecordByRid pkgid:%s, rid:%s, no record in DB", new Object[] { paramString1, paramString2 });
-    ((Cursor)localObject).close();
+    AppMethodBeat.o(63388);
     return null;
   }
   
-  public final boolean g(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public final boolean qD(String paramString)
   {
-    if ((!this.gaO) || (bk.bl(paramString1)) || (bk.bl(paramString2))) {}
-    a locala;
-    do
+    AppMethodBeat.i(63389);
+    if ((!ayz()) || (bo.isNullOrNil(paramString)))
     {
+      AppMethodBeat.o(63389);
       return false;
-      locala = fK(paramString1, paramString2);
-    } while (locala == null);
-    locala.field_completeDownload = paramBoolean;
-    locala.field_filePath = paramString3;
-    boolean bool = super.c(locala, new String[0]);
-    y.i("MicroMsg.Wepkg.WepkgPreloadFilesStorage", "updateDownloadCompleteState pkgid:%s, rid:%s, completeDownload:%s, filePath:%s, ret:%s", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean), paramString3, Boolean.valueOf(bool) });
+    }
+    boolean bool = execSQL("WePkgDiffPackage", String.format("delete from %s where %s=%s", new Object[] { "WePkgDiffPackage", "pkgId", "'" + paramString + "'" }));
+    AppMethodBeat.o(63389);
     return bool;
   }
 }

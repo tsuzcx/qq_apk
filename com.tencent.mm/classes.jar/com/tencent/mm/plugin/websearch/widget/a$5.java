@@ -1,30 +1,65 @@
 package com.tencent.mm.plugin.websearch.widget;
 
-import com.tencent.mm.modelappbrand.n;
-import com.tencent.mm.plugin.websearch.api.r;
-import com.tencent.mm.plugin.websearch.widget.c.b;
-import com.tencent.mm.sdk.platformtools.y;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AbsoluteLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.b.a;
+import com.tencent.mm.ipcinvoker.e;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.modelappbrand.u;
+import com.tencent.mm.plugin.websearch.api.WidgetData;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
+import java.util.Map;
 
 final class a$5
   implements Runnable
 {
-  a$5(a parama, int paramInt1, int paramInt2, String paramString1, n paramn, String paramString2) {}
+  a$5(a parama, WidgetData paramWidgetData, String paramString1, ThreeDotsLoadingView paramThreeDotsLoadingView, String paramString2, View paramView, AbsoluteLayout paramAbsoluteLayout) {}
   
   public final void run()
   {
-    b localb = new b(this.gUz, this.gUA, this.qWQ);
-    n localn = this.qWR;
-    if (localn == null) {
-      y.e("BaseJsapiEvent", "null JSBridgeAccessible ");
-    }
-    for (boolean bool = false; !bool; bool = localn.ad(localb.getName(), localb.caj()))
+    AppMethodBeat.i(91396);
+    int i;
+    if (!e.lZ(a.a(this.uLR)))
     {
-      y.i("FTSSearchWidgetMgr", "onTap fail: execute js event %s ", new Object[] { this.fVe });
-      a.j(this.qWF).a(this.qWQ, false, "onTap fail: execute js event  " + this.fVe, this.fVe);
-      return;
+      localObject = a.a(this.uLR);
+      b localb = b.PK();
+      if (localb.lX((String)localObject))
+      {
+        localObject = (b.a)localb.eDV.get(localObject);
+        if ((localObject == null) || (((b.a)localObject).eEd)) {}
+      }
+      for (i = 1; i == 0; i = 0)
+      {
+        u.i("FTSSearchWidgetMgr", "do not has connected ipc service for %s, set timeout %d", new Object[] { a.a(this.uLR), Integer.valueOf(30000) });
+        i = 30000;
+        u.i("FTSSearchWidgetMgr", "widget loading timeout is %d ms", new Object[] { Integer.valueOf(i) });
+        if (i > 0)
+        {
+          if (a.n(this.uLR) != null) {
+            al.ae(a.n(this.uLR));
+          }
+          a.a(this.uLR, new a.5.1(this));
+          al.p(a.n(this.uLR), i);
+        }
+        AppMethodBeat.o(91396);
+        return;
+      }
     }
-    a.b(this.qWF, this.qWQ);
-    com.tencent.mm.cg.a.postDelayed(new a.5.1(this), 1000L);
+    Object localObject = (Bundle)f.a("com.tencent.mm", new Bundle(), a.a.class);
+    if (localObject != null) {}
+    for (int j = ((Bundle)localObject).getInt("search_wa_widget_init_out_time");; j = 0)
+    {
+      i = j;
+      if (j != 0) {
+        break;
+      }
+      i = 30000;
+      break;
+    }
   }
 }
 

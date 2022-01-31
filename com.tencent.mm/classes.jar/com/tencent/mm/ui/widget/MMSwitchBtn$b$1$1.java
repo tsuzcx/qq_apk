@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.widget;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MMSwitchBtn$b$1$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class MMSwitchBtn$b$1$1
   
   public final void run()
   {
-    if (MMSwitchBtn.b(this.wkh.wkg.wke) != null) {
-      MMSwitchBtn.b(this.wkh.wkg.wke).cr(MMSwitchBtn.a(this.wkh.wkg.wke));
+    AppMethodBeat.i(112574);
+    if (MMSwitchBtn.b(this.ADP.ADO.ADM) != null) {
+      MMSwitchBtn.b(this.ADP.ADO.ADM).onStatusChange(MMSwitchBtn.a(this.ADP.ADO.ADM));
     }
+    AppMethodBeat.o(112574);
   }
 }
 

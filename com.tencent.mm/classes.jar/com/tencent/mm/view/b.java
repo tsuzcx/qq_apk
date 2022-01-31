@@ -1,38 +1,45 @@
 package com.tencent.mm.view;
 
 import android.content.Context;
-import com.tencent.mm.api.d;
-import com.tencent.mm.api.q.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.e;
+import com.tencent.mm.api.s.a;
 
 public final class b
   extends a
 {
-  public b(Context paramContext, q.a parama)
+  public b(Context paramContext, s.a parama)
   {
     super(paramContext, parama);
   }
   
-  protected final com.tencent.mm.view.b.a cLu()
+  protected final com.tencent.mm.view.b.a dQM()
   {
-    return new com.tencent.mm.view.b.b(getContext(), getPresenter());
+    AppMethodBeat.i(116386);
+    com.tencent.mm.view.b.b localb = new com.tencent.mm.view.b.b(getContext(), getPresenter());
+    AppMethodBeat.o(116386);
+    return localb;
   }
   
-  protected final com.tencent.mm.view.footer.a cLv()
+  protected final com.tencent.mm.view.footer.a dQN()
   {
-    return new com.tencent.mm.view.footer.b(getContext(), getPresenter());
+    AppMethodBeat.i(116387);
+    com.tencent.mm.view.footer.b localb = new com.tencent.mm.view.footer.b(getContext(), getPresenter());
+    AppMethodBeat.o(116387);
+    return localb;
   }
   
-  public final d[] getFeatures()
+  public final e[] getFeatures()
   {
-    if (this.wvv == null) {
-      this.wvv = new d[] { d.buL, d.buN, d.buM, d.buO, d.buP };
+    if (this.AQv == null) {
+      this.AQv = new e[] { e.bVW, e.bVY, e.bVX, e.bVZ, e.bWa };
     }
-    return this.wvv;
+    return this.AQv;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.view.b
  * JD-Core Version:    0.7.0.1
  */

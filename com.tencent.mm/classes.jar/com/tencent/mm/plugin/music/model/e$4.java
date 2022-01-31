@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.music.model;
 
-import com.tencent.mm.h.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.d;
 import com.tencent.mm.sdk.b.c;
 
 final class e$4
@@ -8,7 +9,9 @@ final class e$4
 {
   e$4(e parame)
   {
-    this.udX = d.class.getName().hashCode();
+    AppMethodBeat.i(104896);
+    this.__eventId = d.class.getName().hashCode();
+    AppMethodBeat.o(104896);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ipcall.a.a;
 
 final class IPCallContactUI$8
@@ -9,7 +10,9 @@ final class IPCallContactUI$8
   
   public final void run()
   {
-    a.bbR().a(IPCallContactUI.g(this.luU), false);
+    AppMethodBeat.i(22082);
+    a.bIY().a(IPCallContactUI.g(this.nSm), false);
+    AppMethodBeat.o(22082);
   }
 }
 

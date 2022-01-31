@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.freewifi.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiStateUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class FreeWifiStateUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    FreeWifiStateUI.c(this.ksM);
+    AppMethodBeat.i(21074);
+    FreeWifiStateUI.c(this.mOB);
+    AppMethodBeat.o(21074);
     return true;
   }
 }

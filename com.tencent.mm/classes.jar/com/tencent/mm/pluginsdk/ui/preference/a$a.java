@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk.ui.preference;
 
 public final class a$a
 {
-  public String kzG;
+  public String mVw;
   public int scene;
-  public String sii;
   public String talker;
   public int type;
+  public String waH;
 }
 
 

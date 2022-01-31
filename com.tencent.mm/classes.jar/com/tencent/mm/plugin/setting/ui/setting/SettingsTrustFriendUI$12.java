@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsTrustFriendUI$12
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class SettingsTrustFriendUI$12
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    SettingsTrustFriendUI.h(this.nWp);
+    AppMethodBeat.i(127543);
+    SettingsTrustFriendUI.h(this.qKz);
+    AppMethodBeat.o(127543);
     return true;
   }
 }

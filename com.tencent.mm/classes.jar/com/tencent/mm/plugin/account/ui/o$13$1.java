@@ -9,7 +9,7 @@ final class o$13$1
   
   public final void a(ProgressDialog paramProgressDialog)
   {
-    this.fpz.fpr.fpj.dnm = paramProgressDialog;
+    this.gGV.gGO.gGG.eeN = paramProgressDialog;
   }
 }
 

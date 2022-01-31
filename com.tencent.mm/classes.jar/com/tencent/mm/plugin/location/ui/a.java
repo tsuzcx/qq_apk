@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.location.ui;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.s;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.base.j;
 import com.tencent.mm.ui.base.j.a;
 import java.util.ArrayList;
@@ -17,50 +16,63 @@ import java.util.Iterator;
 public final class a
   extends j
 {
-  private int lEw = 8;
-  private ArrayList<String> lEx = new ArrayList();
+  private int obJ;
+  private ArrayList<String> obK;
   
-  public final void E(ArrayList<String> paramArrayList)
+  public a()
   {
-    this.lEx.clear();
+    AppMethodBeat.i(113418);
+    this.obJ = 8;
+    this.obK = new ArrayList();
+    AppMethodBeat.o(113418);
+  }
+  
+  public final void F(ArrayList<String> paramArrayList)
+  {
+    AppMethodBeat.i(113419);
+    this.obK.clear();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
     {
       String str = (String)paramArrayList.next();
-      this.lEx.add(str);
+      this.obK.add(str);
     }
-    if (this.uVL == null) {}
+    if (this.zke == null) {}
     for (boolean bool = true;; bool = false)
     {
-      y.i("MicroMsg.MMGridPaperAdapter", "notifyDataSetChange, notifier is null ? %B", new Object[] { Boolean.valueOf(bool) });
-      if (this.uVL != null) {
+      ab.i("MicroMsg.MMGridPaperAdapter", "notifyDataSetChange, notifier is null ? %B", new Object[] { Boolean.valueOf(bool) });
+      if (this.zke != null) {
         break;
       }
+      AppMethodBeat.o(113419);
       return;
     }
-    this.uVL.axW();
+    this.zke.aWN();
+    AppMethodBeat.o(113419);
   }
   
-  public final View c(int paramInt, View paramView)
+  public final View d(int paramInt, View paramView)
   {
+    AppMethodBeat.i(113421);
     a locala = new a();
     if (paramView == null)
     {
-      paramView = View.inflate(ae.getContext(), a.f.avatar_dialog_item, null);
-      locala.ffK = ((ImageView)paramView.findViewById(a.e.avatar_img));
-      locala.lEy = ((TextView)paramView.findViewById(a.e.username));
+      paramView = View.inflate(ah.getContext(), 2130968796, null);
+      locala.gxs = ((ImageView)paramView.findViewById(2131821593));
+      locala.obL = ((TextView)paramView.findViewById(2131821594));
       paramView.setTag(locala);
     }
     for (;;)
     {
-      Object localObject = (String)this.lEx.get(paramInt);
-      a.b.a(locala.ffK, (String)localObject);
-      String str = r.gV((String)localObject);
+      Object localObject = (String)this.obK.get(paramInt);
+      a.b.c(locala.gxs, (String)localObject);
+      String str = s.nE((String)localObject);
       localObject = str;
-      if (str.length() > this.lEw) {
-        localObject = str.subSequence(0, this.lEw + 1) + "...";
+      if (str.length() > this.obJ) {
+        localObject = str.subSequence(0, this.obJ + 1) + "...";
       }
-      locala.lEy.setText((CharSequence)localObject);
+      locala.obL.setText((CharSequence)localObject);
+      AppMethodBeat.o(113421);
       return paramView;
       locala = (a)paramView.getTag();
     }
@@ -68,12 +80,18 @@ public final class a
   
   public final int getCount()
   {
-    return this.lEx.size();
+    AppMethodBeat.i(113420);
+    int i = this.obK.size();
+    AppMethodBeat.o(113420);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.lEx.get(paramInt);
+    AppMethodBeat.i(113422);
+    Object localObject = this.obK.get(paramInt);
+    AppMethodBeat.o(113422);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -83,8 +101,8 @@ public final class a
   
   final class a
   {
-    ImageView ffK;
-    TextView lEy;
+    ImageView gxs;
+    TextView obL;
     
     a() {}
   }

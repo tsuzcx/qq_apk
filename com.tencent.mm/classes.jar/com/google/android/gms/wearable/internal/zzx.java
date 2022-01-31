@@ -1,111 +1,35 @@
 package com.google.android.gms.wearable.internal;
 
-import android.util.Log;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.wearable.ChannelIOException;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.wearable.CapabilityApi.GetAllCapabilitiesResult;
+import com.google.android.gms.wearable.CapabilityInfo;
+import java.util.Map;
 
 public final class zzx
-  extends OutputStream
+  implements CapabilityApi.GetAllCapabilitiesResult
 {
-  private volatile zzr zzbUi;
-  private final OutputStream zzbUk;
+  private final Map<String, CapabilityInfo> zzbu;
+  private final Status zzp;
   
-  public zzx(OutputStream paramOutputStream)
+  public zzx(Status paramStatus, Map<String, CapabilityInfo> paramMap)
   {
-    this.zzbUk = ((OutputStream)zzac.zzw(paramOutputStream));
+    this.zzp = paramStatus;
+    this.zzbu = paramMap;
   }
   
-  private IOException zza(IOException paramIOException)
+  public final Map<String, CapabilityInfo> getAllCapabilities()
   {
-    zzr localzzr = this.zzbUi;
-    if (localzzr != null)
-    {
-      Log.isLoggable("ChannelOutputStream", 2);
-      paramIOException = new ChannelIOException("Channel closed unexpectedly before stream was finished", localzzr.zzbTY, localzzr.zzbTZ);
-    }
-    return paramIOException;
+    return this.zzbu;
   }
   
-  public final void close()
+  public final Status getStatus()
   {
-    try
-    {
-      this.zzbUk.close();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      throw zza(localIOException);
-    }
-  }
-  
-  public final void flush()
-  {
-    try
-    {
-      this.zzbUk.flush();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      throw zza(localIOException);
-    }
-  }
-  
-  public final void write(int paramInt)
-  {
-    try
-    {
-      this.zzbUk.write(paramInt);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      throw zza(localIOException);
-    }
-  }
-  
-  public final void write(byte[] paramArrayOfByte)
-  {
-    try
-    {
-      this.zzbUk.write(paramArrayOfByte);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      throw zza(paramArrayOfByte);
-    }
-  }
-  
-  public final void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    try
-    {
-      this.zzbUk.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      throw zza(paramArrayOfByte);
-    }
-  }
-  
-  final zzad zzUt()
-  {
-    return new zzx.1(this);
-  }
-  
-  final void zzc(zzr paramzzr)
-  {
-    this.zzbUi = paramzzr;
+    return this.zzp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzx
  * JD-Core Version:    0.7.0.1
  */

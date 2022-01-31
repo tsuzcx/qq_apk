@@ -2,173 +2,226 @@ package com.tencent.mm.plugin.appbrand.media.record;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class AudioRecordVoIPInterruptListener
   implements f
 {
-  private boolean bSr = false;
-  private e gNW;
-  private AudioRecordVoIPInterruptListener.CheckInterruptTask gOh;
-  private StartInterruptEventListenTask gOi;
-  private AudioRecordVoIPInterruptListener.StopInterruptEventListenTask gOj;
+  private e ipH;
+  private AudioRecordVoIPInterruptListener.CheckInterruptTask ipS;
+  private StartInterruptEventListenTask ipT;
+  private AudioRecordVoIPInterruptListener.StopInterruptEventListenTask ipU;
+  private boolean isStart = false;
   
   public final void a(e parame)
   {
-    this.gNW = parame;
+    this.ipH = parame;
   }
   
-  public final boolean amj()
+  public final boolean aHQ()
   {
-    if (this.gNW == null)
+    AppMethodBeat.i(132187);
+    if (this.ipH == null)
     {
-      y.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "callback is invalid");
+      ab.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "callback is invalid");
+      AppMethodBeat.o(132187);
       return false;
     }
-    if (this.gOh == null) {
-      this.gOh = new AudioRecordVoIPInterruptListener.CheckInterruptTask(this.gNW);
+    if (this.ipS == null) {
+      this.ipS = new AudioRecordVoIPInterruptListener.CheckInterruptTask(this.ipH);
     }
-    AppBrandMainProcessService.b(this.gOh);
-    y.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "isInterrupted:%b", new Object[] { Boolean.valueOf(AudioRecordVoIPInterruptListener.CheckInterruptTask.a(this.gOh)) });
-    return AudioRecordVoIPInterruptListener.CheckInterruptTask.a(this.gOh);
+    AppBrandMainProcessService.b(this.ipS);
+    ab.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "isInterrupted:%b", new Object[] { Boolean.valueOf(AudioRecordVoIPInterruptListener.CheckInterruptTask.a(this.ipS)) });
+    boolean bool = AudioRecordVoIPInterruptListener.CheckInterruptTask.a(this.ipS);
+    AppMethodBeat.o(132187);
+    return bool;
   }
   
-  public final void amk()
+  public final void aHR()
   {
-    if (this.gNW == null)
+    AppMethodBeat.i(132188);
+    if (this.ipH == null)
     {
-      y.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "callback is invalid");
+      ab.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "callback is invalid");
+      AppMethodBeat.o(132188);
       return;
     }
-    if (this.gOi == null) {
-      this.gOi = new StartInterruptEventListenTask(this.gNW);
+    if (this.ipT == null) {
+      this.ipT = new StartInterruptEventListenTask(this.ipH);
     }
-    this.bSr = true;
-    AppBrandMainProcessService.a(this.gOi);
+    this.isStart = true;
+    AppBrandMainProcessService.a(this.ipT);
+    AppMethodBeat.o(132188);
   }
   
-  public final void aml()
+  public final void aHS()
   {
-    if (!this.bSr)
+    AppMethodBeat.i(132189);
+    if (!this.isStart)
     {
-      y.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "not start listen");
+      ab.e("MicroMsg.Record.AudioRecordVoIPInterruptListener", "not start listen");
+      AppMethodBeat.o(132189);
       return;
     }
-    this.bSr = false;
-    if (this.gOj == null) {
-      this.gOj = new AudioRecordVoIPInterruptListener.StopInterruptEventListenTask();
+    this.isStart = false;
+    if (this.ipU == null) {
+      this.ipU = new AudioRecordVoIPInterruptListener.StopInterruptEventListenTask();
     }
-    AppBrandMainProcessService.b(this.gOj);
+    AppBrandMainProcessService.b(this.ipU);
+    AppMethodBeat.o(132189);
   }
   
-  private static class StartInterruptEventListenTask
+  static class StartInterruptEventListenTask
     extends MainProcessTask
   {
-    public static final Parcelable.Creator<StartInterruptEventListenTask> CREATOR = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.1();
-    private e gNW;
-    private int gOm = -1;
-    private final c gOn = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.2(this);
-    private final c gOo = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.3(this);
+    public static final Parcelable.Creator<StartInterruptEventListenTask> CREATOR;
+    private e ipH;
+    private int ipX;
+    private final c ipY;
+    private final c ipZ;
+    
+    static
+    {
+      AppMethodBeat.i(132182);
+      CREATOR = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.1();
+      AppMethodBeat.o(132182);
+    }
     
     public StartInterruptEventListenTask(Parcel paramParcel)
     {
-      e(paramParcel);
+      AppMethodBeat.i(132174);
+      this.ipX = -1;
+      this.ipY = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.2(this);
+      this.ipZ = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.3(this);
+      f(paramParcel);
+      AppMethodBeat.o(132174);
     }
     
     public StartInterruptEventListenTask(e parame)
     {
-      this.gNW = parame;
+      AppMethodBeat.i(132173);
+      this.ipX = -1;
+      this.ipY = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.2(this);
+      this.ipZ = new AudioRecordVoIPInterruptListener.StartInterruptEventListenTask.3(this);
+      this.ipH = parame;
+      AppMethodBeat.o(132173);
     }
     
-    public final void Zu()
+    public final void ata()
     {
-      y.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "addListener");
-      if (!a.udP.e(this.gOn))
+      AppMethodBeat.i(132175);
+      ab.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "addListener");
+      if (!a.ymk.e(this.ipY))
       {
-        a.udP.c(this.gOn);
-        AudioRecordVoIPInterruptListener.a.amu();
-        AudioRecordVoIPInterruptListener.a.a(this.gOn);
+        a.ymk.c(this.ipY);
+        AudioRecordVoIPInterruptListener.a.aHZ();
+        AudioRecordVoIPInterruptListener.a.a(this.ipY);
       }
-      if (!a.udP.e(this.gOo))
+      if (!a.ymk.e(this.ipZ))
       {
-        a.udP.c(this.gOo);
-        AudioRecordVoIPInterruptListener.a.amu();
-        AudioRecordVoIPInterruptListener.a.a(this.gOo);
+        a.ymk.c(this.ipZ);
+        AudioRecordVoIPInterruptListener.a.aHZ();
+        AudioRecordVoIPInterruptListener.a.a(this.ipZ);
       }
+      AppMethodBeat.o(132175);
     }
     
-    public final void Zv()
+    public final void atb()
     {
-      if (this.gNW != null)
+      AppMethodBeat.i(132176);
+      if (this.ipH != null)
       {
-        if (this.gOm != 11) {
-          break label38;
+        if (this.ipX != 11) {
+          break label48;
         }
-        y.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "onInterruptEnd");
-        this.gNW.ami();
+        ab.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "onInterruptEnd");
+        this.ipH.aHP();
       }
       for (;;)
       {
-        this.gOm = -1;
+        this.ipX = -1;
+        AppMethodBeat.o(132176);
         return;
-        label38:
-        if (this.gOm == 3)
+        label48:
+        if (this.ipX == 3)
         {
-          y.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "onInterruptBegin");
-          this.gNW.amh();
+          ab.i("MicroMsg.Record.AudioRecordVoIPInterruptListener", "onInterruptBegin");
+          this.ipH.aHO();
         }
       }
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
-      this.gOm = paramParcel.readInt();
+      AppMethodBeat.i(132177);
+      this.ipX = paramParcel.readInt();
+      AppMethodBeat.o(132177);
     }
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      paramParcel.writeInt(this.gOm);
+      AppMethodBeat.i(132178);
+      paramParcel.writeInt(this.ipX);
+      AppMethodBeat.o(132178);
     }
   }
   
-  private static class a
+  static class a
   {
-    private static a gOk;
-    LinkedList<c<b>> gOl = new LinkedList();
+    private static a ipV;
+    LinkedList<c<b>> ipW;
+    
+    private a()
+    {
+      AppMethodBeat.i(132165);
+      this.ipW = new LinkedList();
+      AppMethodBeat.o(132165);
+    }
     
     public static void a(c<b> paramc)
     {
+      AppMethodBeat.i(132167);
       try
       {
-        amu().gOl.add(paramc);
+        aHZ().ipW.add(paramc);
         return;
       }
-      finally {}
+      finally
+      {
+        AppMethodBeat.o(132167);
+      }
     }
     
-    public static a amu()
+    public static a aHZ()
     {
-      if (gOk == null) {}
+      AppMethodBeat.i(132166);
+      if (ipV == null) {}
       try
       {
-        if (gOk == null) {
-          gOk = new a();
+        if (ipV == null) {
+          ipV = new a();
         }
-        return gOk;
+        a locala = ipV;
+        AppMethodBeat.o(132166);
+        return locala;
       }
-      finally {}
+      finally
+      {
+        AppMethodBeat.o(132166);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.AudioRecordVoIPInterruptListener
  * JD-Core Version:    0.7.0.1
  */

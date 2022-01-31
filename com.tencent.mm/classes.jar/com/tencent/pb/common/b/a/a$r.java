@@ -6,21 +6,21 @@ import com.google.a.a.e;
 public final class a$r
   extends e
 {
-  public a.am[] wGU = a.am.cOb();
+  public a.am[] Bev = a.am.dTN();
   
   public a$r()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    if ((this.wGU != null) && (this.wGU.length > 0))
+    if ((this.Bev != null) && (this.Bev.length > 0))
     {
       int i = 0;
-      while (i < this.wGU.length)
+      while (i < this.Bev.length)
       {
-        a.am localam = this.wGU[i];
+        a.am localam = this.Bev[i];
         if (localam != null) {
           paramb.a(1, localam);
         }
@@ -30,23 +30,23 @@ public final class a$r
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int i = super.oQ();
+    int i = super.sz();
     int k = i;
-    if (this.wGU != null)
+    if (this.Bev != null)
     {
       k = i;
-      if (this.wGU.length > 0)
+      if (this.Bev.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.wGU.length) {
+          if (j >= this.Bev.length) {
             break;
           }
-          a.am localam = this.wGU[j];
+          a.am localam = this.Bev[j];
           k = i;
           if (localam != null) {
             k = i + b.b(1, localam);

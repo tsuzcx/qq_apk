@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.base;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$8
   implements n.d
@@ -9,9 +10,11 @@ final class h$8
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    if (this.uUa != null) {
-      this.uUa.gl(paramMenuItem.getItemId());
+    AppMethodBeat.i(106410);
+    if (this.ziB != null) {
+      this.ziB.iA(paramMenuItem.getItemId());
     }
+    AppMethodBeat.o(106410);
   }
 }
 

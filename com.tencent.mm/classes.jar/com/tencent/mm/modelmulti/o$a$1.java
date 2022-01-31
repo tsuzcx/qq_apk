@@ -1,71 +1,74 @@
 package com.tencent.mm.modelmulti;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.f;
 import com.tencent.mm.plugin.zero.c;
-import com.tencent.mm.protocal.c.azg;
-import com.tencent.mm.protocal.c.qv;
-import com.tencent.mm.protocal.c.qw;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bgj;
+import com.tencent.mm.protocal.protobuf.ud;
+import com.tencent.mm.protocal.protobuf.ue;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.LinkedList;
 
 final class o$a$1
-  implements am.a
+  implements ap.a
 {
   o$a$1(o.a parama) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if ((g.DK()) && (!a.CW()))
+    AppMethodBeat.i(58399);
+    if ((g.RG()) && (!a.QP()))
     {
-      g.DQ();
-      if (g.DP() != null)
+      g.RM();
+      if (g.RL() != null)
       {
-        g.DQ();
-        if (g.DP().Dz() != null) {
-          break label108;
+        g.RM();
+        if (g.RL().Ru() != null) {
+          break label118;
         }
       }
     }
-    Object localObject = this.etV.etT;
-    boolean bool1 = g.DK();
-    boolean bool2 = a.CW();
-    g.DQ();
-    y.e("MicroMsg.SyncService", "processResp %s accready:%s hold:%s accstg:%s ", new Object[] { localObject, Boolean.valueOf(bool1), Boolean.valueOf(bool2), g.DP() });
-    this.etV.etS.iU(0);
+    Object localObject = this.fJI.fJG;
+    boolean bool1 = g.RG();
+    boolean bool2 = a.QP();
+    g.RM();
+    ab.e("MicroMsg.SyncService", "processResp %s accready:%s hold:%s accstg:%s ", new Object[] { localObject, Boolean.valueOf(bool1), Boolean.valueOf(bool2), g.RL() });
+    this.fJI.fJF.lM(0);
+    AppMethodBeat.o(58399);
     return false;
-    label108:
-    localObject = this.etV.etR.sIl.hPT;
+    label118:
+    localObject = this.fJI.fJE.wFU.jJv;
     c localc = new c();
-    localc.bp(this.etV.etT);
-    long l1 = bk.UY();
+    localc.bT(this.fJI.fJG);
+    long l1 = bo.aoy();
     long l2;
     do
     {
-      if (this.etV.esB >= ((LinkedList)localObject).size()) {
+      if (this.fJI.fIo >= ((LinkedList)localObject).size()) {
         break;
       }
       ((LinkedList)localObject).size();
-      if (!localc.a((qv)((LinkedList)localObject).get(this.etV.esB), false)) {
-        f.nEG.a(99L, 46L, 1L, false);
+      if (!localc.a((ud)((LinkedList)localObject).get(this.fJI.fIo), false)) {
+        com.tencent.mm.plugin.report.e.qrI.idkeyStat(99L, 46L, 1L, false);
       }
-      o.a locala = this.etV;
-      locala.esB += 1;
-      l2 = bk.co(l1);
-      y.i("MicroMsg.SyncService", "processResp %s time:%s size:%s index:%s", new Object[] { this.etV.etT, Long.valueOf(l2), Integer.valueOf(((LinkedList)localObject).size()), Integer.valueOf(this.etV.esB - 1) });
+      o.a locala = this.fJI;
+      locala.fIo += 1;
+      l2 = bo.hl(l1);
+      ab.i("MicroMsg.SyncService", "processResp %s time:%s size:%s index:%s", new Object[] { this.fJI.fJG, Long.valueOf(l2), Integer.valueOf(((LinkedList)localObject).size()), Integer.valueOf(this.fJI.fIo - 1) });
     } while (l2 < 500L);
-    localc.bq(this.etV.etT);
-    if (this.etV.esB < ((LinkedList)localObject).size())
+    localc.bU(this.fJI.fJG);
+    if (this.fJI.fIo < ((LinkedList)localObject).size())
     {
-      y.i("MicroMsg.SyncService", "processResp %s time:%s size:%s index:%s Shold Continue.", new Object[] { this.etV.etT, Long.valueOf(bk.co(l1)), Integer.valueOf(((LinkedList)localObject).size()), Integer.valueOf(this.etV.esB - 1) });
+      ab.i("MicroMsg.SyncService", "processResp %s time:%s size:%s index:%s Shold Continue.", new Object[] { this.fJI.fJG, Long.valueOf(bo.hl(l1)), Integer.valueOf(((LinkedList)localObject).size()), Integer.valueOf(this.fJI.fIo - 1) });
+      AppMethodBeat.o(58399);
       return true;
     }
-    o.a(this.etV.etQ, this.etV.etR, this.etV.etT);
-    this.etV.etS.iU(((LinkedList)localObject).size());
+    o.a(this.fJI.fJD, this.fJI.fJE, this.fJI.fJG);
+    this.fJI.fJF.lM(((LinkedList)localObject).size());
+    AppMethodBeat.o(58399);
     return false;
   }
 }

@@ -5,14 +5,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.protocal.c.bda;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.c.ab;
+import com.tencent.mm.protocal.protobuf.bkt;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.ae;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import java.util.List;
 
@@ -21,14 +18,20 @@ final class HoneyPayCardManagerUI$a
 {
   private HoneyPayCardManagerUI$a(HoneyPayCardManagerUI paramHoneyPayCardManagerUI) {}
   
-  private bda ss(int paramInt)
+  private bkt xs(int paramInt)
   {
-    return (bda)HoneyPayCardManagerUI.i(this.lla).get(paramInt);
+    AppMethodBeat.i(41807);
+    bkt localbkt = (bkt)HoneyPayCardManagerUI.j(this.nIw).get(paramInt);
+    AppMethodBeat.o(41807);
+    return localbkt;
   }
   
   public final int getCount()
   {
-    return HoneyPayCardManagerUI.i(this.lla).size();
+    AppMethodBeat.i(41806);
+    int i = HoneyPayCardManagerUI.j(this.nIw).size();
+    AppMethodBeat.o(41806);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -38,31 +41,40 @@ final class HoneyPayCardManagerUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(41809);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.lla.mController.uMN).inflate(a.g.honey_pay_card_setting_item_layout, paramViewGroup, false);
-      paramView = new HoneyPayCardManagerUI.b(this.lla, (byte)0);
-      paramView.iJR = ((TextView)localView.findViewById(a.f.hpci_date_tv));
-      paramView.llg = ((WalletTextView)localView.findViewById(a.f.hpci_amt_tv));
-      paramView.llg.setPrefix(ab.cML());
+      localView = LayoutInflater.from(this.nIw.getContext()).inflate(2130969867, paramViewGroup, false);
+      paramView = new HoneyPayCardManagerUI.b(this.nIw, (byte)0);
+      paramView.kGe = ((TextView)localView.findViewById(2131825026));
+      paramView.nIC = ((WalletTextView)localView.findViewById(2131825027));
+      paramView.nIC.setPrefix(ae.dSz());
       localView.setTag(paramView);
     }
-    paramView = ss(paramInt);
+    paramView = xs(paramInt);
     paramViewGroup = (HoneyPayCardManagerUI.b)localView.getTag();
-    paramViewGroup.iJR.setText(paramView.nRs);
-    paramViewGroup.llg.setText(c.eR(paramView.tyr));
+    paramViewGroup.kGe.setText(paramView.qFq);
+    paramViewGroup.nIC.setText(c.kn(paramView.xzu));
+    AppMethodBeat.o(41809);
     return localView;
   }
   
   public final boolean isEnabled(int paramInt)
   {
-    return !bk.bl(ss(paramInt).url);
+    AppMethodBeat.i(41808);
+    if (!bo.isNullOrNil(xs(paramInt).url))
+    {
+      AppMethodBeat.o(41808);
+      return true;
+    }
+    AppMethodBeat.o(41808);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayCardManagerUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.account.ui;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.s;
+import com.tencent.mm.modelsimple.u;
 import com.tencent.mm.ui.base.h;
 
 final class RegByQQAuthUI$1
@@ -15,18 +16,21 @@ final class RegByQQAuthUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    RegByQQAuthUI.a(this.frL, RegByQQAuthUI.a(this.frL).getText().toString().trim());
-    if (RegByQQAuthUI.b(this.frL).equals(""))
+    AppMethodBeat.i(125499);
+    RegByQQAuthUI.a(this.gJn, RegByQQAuthUI.a(this.gJn).getText().toString().trim());
+    if (RegByQQAuthUI.b(this.gJn).equals(""))
     {
-      h.h(this.frL, q.j.verify_account_null_tip, q.j.app_err_reg_title);
+      h.h(this.gJn, 2131304491, 2131296924);
+      AppMethodBeat.o(125499);
       return true;
     }
-    paramMenuItem = new s("", RegByQQAuthUI.c(this.frL), RegByQQAuthUI.b(this.frL), RegByQQAuthUI.d(this.frL), "", "", RegByQQAuthUI.e(this.frL), 2);
-    g.Dk().a(paramMenuItem, 0);
-    RegByQQAuthUI localRegByQQAuthUI1 = this.frL;
-    RegByQQAuthUI localRegByQQAuthUI2 = this.frL;
-    this.frL.getString(q.j.app_tip);
-    RegByQQAuthUI.a(localRegByQQAuthUI1, h.b(localRegByQQAuthUI2, this.frL.getString(q.j.regbyqq_reg_waiting), true, new RegByQQAuthUI.1.1(this, paramMenuItem)));
+    paramMenuItem = new u("", RegByQQAuthUI.c(this.gJn), RegByQQAuthUI.b(this.gJn), RegByQQAuthUI.d(this.gJn), "", "", RegByQQAuthUI.e(this.gJn), 2);
+    g.Rc().a(paramMenuItem, 0);
+    RegByQQAuthUI localRegByQQAuthUI1 = this.gJn;
+    RegByQQAuthUI localRegByQQAuthUI2 = this.gJn;
+    this.gJn.getString(2131297087);
+    RegByQQAuthUI.a(localRegByQQAuthUI1, h.b(localRegByQQAuthUI2, this.gJn.getString(2131302482), true, new RegByQQAuthUI.1.1(this, paramMenuItem)));
+    AppMethodBeat.o(125499);
     return true;
   }
 }

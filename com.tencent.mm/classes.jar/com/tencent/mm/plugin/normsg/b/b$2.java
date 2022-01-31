@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.normsg.b;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$2
   implements Runnable
@@ -9,11 +10,13 @@ final class b$2
   
   public final void run()
   {
-    this.mHB[0] = b.b(this.mHC, this.byD, this.mHy, this.mHz);
-    synchronized (this.mHB)
+    AppMethodBeat.i(10390);
+    this.phH[0] = b.b(this.phI, this.caF, this.phE, this.phF);
+    synchronized (this.phH)
     {
-      this.mHB[1] = true;
-      this.mHB.notifyAll();
+      this.phH[1] = true;
+      this.phH.notifyAll();
+      AppMethodBeat.o(10390);
       return;
     }
   }

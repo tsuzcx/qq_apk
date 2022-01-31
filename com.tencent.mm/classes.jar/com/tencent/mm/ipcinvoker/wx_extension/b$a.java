@@ -1,6 +1,6 @@
 package com.tencent.mm.ipcinvoker.wx_extension;
 
-import com.tencent.mm.ah.b;
+import com.tencent.mm.ai.b;
 
 public abstract interface b$a
 {

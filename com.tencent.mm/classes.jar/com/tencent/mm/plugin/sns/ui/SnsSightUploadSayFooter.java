@@ -6,14 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.chat.d;
 import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.protocal.c.aui;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.protocal.protobuf.bap;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.ui.BasePanelKeybordLayout;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -23,65 +22,79 @@ import java.util.List;
 public class SnsSightUploadSayFooter
   extends BasePanelKeybordLayout
 {
-  MMActivity bER;
-  ChatFooterPanel jpC;
-  private ImageButton kEW;
-  private boolean lXR = true;
-  private MMEditText pdp = null;
-  SightRangeWidget pdq;
-  SightLocationWidget pdr;
+  MMActivity cmc;
+  ChatFooterPanel eys;
+  private MMEditText kju;
+  private ImageButton kjv;
+  private boolean oxq;
+  SightRangeWidget rVY;
+  SightLocationWidget rVZ;
   
   public SnsSightUploadSayFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.bER = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)inflate(this.bER, i.g.sns_sight_upload_say_footer, this);
-    this.kEW = ((ImageButton)paramContext.findViewById(i.f.album_comment_mode_iv));
-    this.kEW.setOnClickListener(new SnsSightUploadSayFooter.4(this));
-    if (e.sgr == null) {
-      this.jpC = new d(this.bER);
+    AppMethodBeat.i(39291);
+    this.kju = null;
+    this.oxq = true;
+    this.cmc = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)inflate(this.cmc, 2130970863, this);
+    this.kjv = ((ImageButton)paramContext.findViewById(2131825850));
+    this.kjv.setOnClickListener(new SnsSightUploadSayFooter.4(this));
+    if (e.vYI == null) {
+      this.eys = new d(this.cmc);
     }
     for (;;)
     {
-      this.pdq = ((SightRangeWidget)paramContext.findViewById(i.f.range_widget));
-      this.pdq.oNv = null;
-      this.pdq.style = 1;
-      this.pdr = ((SightLocationWidget)paramContext.findViewById(i.f.location_widget));
+      this.rVY = ((SightRangeWidget)paramContext.findViewById(2131825851));
+      this.rVY.rFe = null;
+      this.rVY.style = 1;
+      this.rVZ = ((SightLocationWidget)paramContext.findViewById(2131828082));
+      AppMethodBeat.o(39291);
       return;
-      this.jpC = e.sgr.cX(getContext());
-      this.jpC.setEntranceScene(ChatFooterPanel.SCENE_SNS);
-      this.jpC.setVisibility(8);
-      ((LinearLayout)findViewById(i.f.root)).addView(this.jpC, -1, 0);
-      this.jpC.sk();
-      this.jpC.aN(false);
-      this.jpC.setOnTextOperationListener(new SnsSightUploadSayFooter.5(this));
+      this.eys = e.vYI.dK(getContext());
+      this.eys.setEntranceScene(ChatFooterPanel.vQn);
+      this.eys.setVisibility(8);
+      ((LinearLayout)findViewById(2131821003)).addView(this.eys, -1, 0);
+      this.eys.Az();
+      this.eys.bo(false);
+      this.eys.onResume();
+      this.eys.setOnTextOperationListener(new SnsSightUploadSayFooter.5(this));
     }
   }
   
-  private void hideSmileyPanel()
+  private void aRm()
   {
-    this.jpC.onPause();
-    this.jpC.setVisibility(8);
+    AppMethodBeat.i(39293);
+    this.eys.onPause();
+    this.eys.setVisibility(8);
+    AppMethodBeat.o(39293);
   }
   
-  public aui getLocation()
+  public bap getLocation()
   {
-    return this.pdr.getLocation();
+    AppMethodBeat.i(39295);
+    bap localbap = this.rVZ.getLocation();
+    AppMethodBeat.o(39295);
+    return localbap;
   }
   
-  protected List<View> getPanelView()
+  public List<View> getPanelView()
   {
+    AppMethodBeat.i(39294);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jpC);
+    localArrayList.add(this.eys);
+    AppMethodBeat.o(39294);
     return localArrayList;
   }
   
   public void setMMEditText(MMEditText paramMMEditText)
   {
-    this.pdp = paramMMEditText;
+    AppMethodBeat.i(39292);
+    this.kju = paramMMEditText;
     paramMMEditText.setOnClickListener(new SnsSightUploadSayFooter.1(this));
     paramMMEditText.setOnEditorActionListener(new SnsSightUploadSayFooter.2(this));
-    ai.l(new SnsSightUploadSayFooter.3(this), 200L);
+    al.p(new SnsSightUploadSayFooter.3(this), 200L);
+    AppMethodBeat.o(39292);
   }
 }
 

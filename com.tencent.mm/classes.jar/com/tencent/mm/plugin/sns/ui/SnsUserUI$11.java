@@ -1,11 +1,18 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.sdk.b.c;
+
 final class SnsUserUI$11
-  implements Runnable
+  extends c<ki>
 {
-  SnsUserUI$11(SnsUserUI paramSnsUserUI) {}
-  
-  public final void run() {}
+  SnsUserUI$11(SnsUserUI paramSnsUserUI)
+  {
+    AppMethodBeat.i(145673);
+    this.__eventId = ki.class.getName().hashCode();
+    AppMethodBeat.o(145673);
+  }
 }
 
 

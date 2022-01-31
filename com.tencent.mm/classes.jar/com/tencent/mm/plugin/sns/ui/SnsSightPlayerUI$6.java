@@ -2,23 +2,24 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Intent;
 import android.view.MenuItem;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.cj;
-import com.tencent.mm.h.a.qb;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.g.a.cm;
+import com.tencent.mm.g.a.rl;
 import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.plugin.sns.a.b.j;
-import com.tencent.mm.plugin.sns.a.b.j.c;
-import com.tencent.mm.plugin.sns.a.b.j.d;
-import com.tencent.mm.plugin.sns.a.b.j.e;
+import com.tencent.mm.plugin.sns.a.b.k;
+import com.tencent.mm.plugin.sns.a.b.k.c;
+import com.tencent.mm.plugin.sns.a.b.k.d;
+import com.tencent.mm.plugin.sns.a.b.k.e;
 import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.vi;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 import java.util.LinkedList;
 
@@ -29,79 +30,92 @@ final class SnsSightPlayerUI$6
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(39254);
     switch (paramMenuItem.getItemId())
     {
     }
-    label343:
-    do
+    for (;;)
     {
-      do
+      AppMethodBeat.o(39254);
+      return;
+      paramMenuItem = ag.cpf().abv(SnsSightPlayerUI.f(this.rVT));
+      if (paramMenuItem == null)
       {
-        do
-        {
-          return;
-          paramMenuItem = af.bDF().OB(SnsSightPlayerUI.f(this.pdk));
-        } while (paramMenuItem == null);
-        localObject = new cj();
-        com.tencent.mm.plugin.sns.i.a.a((cj)localObject, paramMenuItem);
-        ((cj)localObject).bIw.activity = this.pdk;
-        ((cj)localObject).bIw.bID = 17;
-        com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-        if (SnsSightPlayerUI.j(this.pdk))
-        {
-          i.a(new SnsAdClick(SnsSightPlayerUI.b(this.pdk), 5, paramMenuItem.field_snsId, 11, 0));
-          j.a(j.d.omj, j.c.ome, j.e.omq, 0, paramMenuItem, SnsSightPlayerUI.b(this.pdk));
-        }
-      } while (SnsSightPlayerUI.b(this.pdk) != 0);
-      localObject = new qb();
-      ((qb)localObject).bZz.bJQ = paramMenuItem.bGE();
-      ((qb)localObject).bZz.bRV = i.j(paramMenuItem);
-      com.tencent.mm.sdk.b.a.udP.m((b)localObject);
+        AppMethodBeat.o(39254);
+        return;
+      }
+      Object localObject = new cm();
+      com.tencent.mm.plugin.sns.j.a.a((cm)localObject, paramMenuItem);
+      ((cm)localObject).cpR.activity = this.rVT;
+      ((cm)localObject).cpR.cpY = 17;
+      com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+      if (SnsSightPlayerUI.j(this.rVT))
+      {
+        i.a(new SnsAdClick(SnsSightPlayerUI.b(this.rVT), 5, paramMenuItem.field_snsId, 11, 0));
+        k.a(k.d.rax, k.c.ras, k.e.raE, 0, paramMenuItem, SnsSightPlayerUI.b(this.rVT));
+      }
+      if (SnsSightPlayerUI.b(this.rVT) == 0)
+      {
+        localObject = new rl();
+        ((rl)localObject).cHR.crk = paramMenuItem.csH();
+        ((rl)localObject).cHR.czw = i.j(paramMenuItem);
+        com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
+      }
+      AppMethodBeat.o(39254);
       return;
       localObject = new Intent();
-      n localn = af.bDF().OB(SnsSightPlayerUI.f(this.pdk));
+      n localn = ag.cpf().abv(SnsSightPlayerUI.f(this.rVT));
       if (localn != null) {
-        y.i("MicroMsg.SnsSightPlayerUI", "expose id " + localn.bGk());
+        ab.i("MicroMsg.SnsSightPlayerUI", "expose id " + localn.getSnsId());
       }
       if (localn == null)
       {
         paramMenuItem = Integer.valueOf(0);
         ((Intent)localObject).putExtra("k_expose_msg_id", paramMenuItem);
         if (localn != null) {
-          break label343;
+          break label368;
         }
       }
+      label368:
       for (paramMenuItem = "";; paramMenuItem = localn.field_userName)
       {
         ((Intent)localObject).putExtra("k_username", paramMenuItem);
         ((Intent)localObject).putExtra("showShare", false);
         ((Intent)localObject).putExtra("rawUrl", String.format("https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d#wechat_redirect", new Object[] { Integer.valueOf(33) }));
-        d.b(this.pdk, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+        d.b(this.rVT, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+        AppMethodBeat.o(39254);
         return;
-        paramMenuItem = localn.bGk();
+        paramMenuItem = localn.getSnsId();
         break;
       }
-      SnsSightPlayerUI.v(this.pdk);
+      SnsSightPlayerUI.v(this.rVT);
       paramMenuItem = new Intent();
       paramMenuItem.putExtra("Select_Conv_Type", 3);
       paramMenuItem.putExtra("select_is_ret", true);
       paramMenuItem.putExtra("mutil_select_is_ret", true);
-      paramMenuItem.putExtra("image_path", SnsSightPlayerUI.e(this.pdk));
+      paramMenuItem.putExtra("image_path", SnsSightPlayerUI.e(this.rVT));
       paramMenuItem.putExtra("Retr_Msg_Type", 11);
-      d.c(this.pdk, ".ui.transmit.SelectConversationUI", paramMenuItem, 4097);
+      d.b(this.rVT, ".ui.transmit.SelectConversationUI", paramMenuItem, 4097);
+      AppMethodBeat.o(39254);
       return;
-      paramMenuItem = af.bDF().OB(SnsSightPlayerUI.f(this.pdk));
-    } while (paramMenuItem == null);
-    Object localObject = new Intent();
-    if ((paramMenuItem.bGe().tNr.sPI == 15) && ((awd)paramMenuItem.bGe().tNr.sPJ.get(0) == null))
-    {
-      y.w("MicroMsg.SnsSightPlayerUI", "send sight fail, mediaObj is null");
-      return;
+      paramMenuItem = ag.cpf().abv(SnsSightPlayerUI.f(this.rVT));
+      if (paramMenuItem == null)
+      {
+        AppMethodBeat.o(39254);
+        return;
+      }
+      localObject = new Intent();
+      if ((paramMenuItem.csh().xTS.wNZ == 15) && ((bcs)paramMenuItem.csh().xTS.wOa.get(0) == null))
+      {
+        ab.w("MicroMsg.SnsSightPlayerUI", "send sight fail, mediaObj is null");
+        AppMethodBeat.o(39254);
+        return;
+      }
+      ((Intent)localObject).putExtra("exdevice_open_scene_type", 2);
+      ((Intent)localObject).putExtra("sns_local_id", SnsSightPlayerUI.f(this.rVT));
+      ((Intent)localObject).putExtra("sns_send_data_ui_activity", true);
+      d.f(this.rVT, ".ui.chatting.ChattingSendDataToDeviceUI", (Intent)localObject);
     }
-    ((Intent)localObject).putExtra("exdevice_open_scene_type", 2);
-    ((Intent)localObject).putExtra("sns_local_id", SnsSightPlayerUI.f(this.pdk));
-    ((Intent)localObject).putExtra("sns_send_data_ui_activity", true);
-    d.e(this.pdk, ".ui.chatting.ChattingSendDataToDeviceUI", (Intent)localObject);
   }
 }
 

@@ -1,177 +1,109 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-class cn
+public final class cn
 {
-  protected HashMap<String, HashMap<String, byte[]>> a = new HashMap();
-  protected HashMap<String, Object> b = new HashMap();
-  protected String c = "GBK";
-  nk d = new nk();
-  private HashMap<String, Object> e = new HashMap();
+  public cz a;
+  public final float b;
+  public final float c;
+  public final float d;
   
-  private void a(ArrayList<String> paramArrayList, Object paramObject)
+  cn(int paramInt, cz paramcz, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    for (;;)
+    this.a = paramcz;
+    this.b = paramFloat1;
+    this.c = paramFloat2;
+    this.d = paramFloat3;
+  }
+  
+  public cn(cz paramcz, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    this(1, paramcz, paramFloat1, paramFloat2, paramFloat3);
+  }
+  
+  public static a a()
+  {
+    AppMethodBeat.i(149996);
+    a locala = new a();
+    AppMethodBeat.o(149996);
+    return locala;
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(149997);
+    if (this == paramObject)
     {
-      if (paramObject.getClass().isArray())
-      {
-        if (!paramObject.getClass().getComponentType().toString().equals("byte")) {
-          throw new IllegalArgumentException("only byte[] is supported");
-        }
-        if (Array.getLength(paramObject) > 0)
-        {
-          paramArrayList.add("java.util.List");
-          paramObject = Array.get(paramObject, 0);
-        }
-        else
-        {
-          paramArrayList.add("Array");
-          paramArrayList.add("?");
-        }
-      }
-      else
-      {
-        if ((paramObject instanceof Array)) {
-          throw new IllegalArgumentException("can not support Array, please use List");
-        }
-        if ((paramObject instanceof List))
-        {
-          paramArrayList.add("java.util.List");
-          paramObject = (List)paramObject;
-          if (paramObject.size() > 0) {
-            paramObject = paramObject.get(0);
-          } else {
-            paramArrayList.add("?");
-          }
-        }
-        else
-        {
-          if (!(paramObject instanceof Map)) {
-            break label223;
-          }
-          paramArrayList.add("java.util.Map");
-          paramObject = (Map)paramObject;
-          if (paramObject.size() <= 0) {
-            break;
-          }
-          Object localObject = paramObject.keySet().iterator().next();
-          paramObject = paramObject.get(localObject);
-          paramArrayList.add(localObject.getClass().getName());
-        }
-      }
+      AppMethodBeat.o(149997);
+      return true;
     }
-    paramArrayList.add("?");
-    paramArrayList.add("?");
-    return;
-    label223:
-    paramArrayList.add(paramObject.getClass().getName());
-  }
-  
-  private Object b(String paramString, boolean paramBoolean, ClassLoader paramClassLoader)
-  {
-    if (this.b.containsKey(paramString)) {
-      return this.b.get(paramString);
-    }
-    paramClassLoader = al.a(paramString, paramBoolean, paramClassLoader);
-    this.b.put(paramString, paramClassLoader);
-    return paramClassLoader;
-  }
-  
-  private void b(String paramString, Object paramObject)
-  {
-    this.e.put(paramString, paramObject);
-  }
-  
-  public <T> T a(String paramString, boolean paramBoolean, ClassLoader paramClassLoader)
-  {
-    String str = null;
-    if (!this.a.containsKey(paramString)) {
-      return null;
-    }
-    if (this.e.containsKey(paramString)) {
-      return this.e.get(paramString);
-    }
-    Object localObject = ((HashMap)this.a.get(paramString)).entrySet().iterator();
-    if (((Iterator)localObject).hasNext())
+    if (!(paramObject instanceof cn))
     {
-      localObject = (Map.Entry)((Iterator)localObject).next();
-      str = (String)((Map.Entry)localObject).getKey();
+      AppMethodBeat.o(149997);
+      return false;
     }
-    for (localObject = (byte[])((Map.Entry)localObject).getValue();; localObject = new byte[0]) {
-      try
-      {
-        paramClassLoader = b(str, paramBoolean, paramClassLoader);
-        this.d.a((byte[])localObject);
-        this.d.a(this.c);
-        paramClassLoader = this.d.a(paramClassLoader, 0, true);
-        b(paramString, paramClassLoader);
-        return paramClassLoader;
-      }
-      catch (Exception paramString)
-      {
-        throw new bm(paramString);
-      }
+    paramObject = (cn)paramObject;
+    if ((this.a.equals(paramObject.a)) && (Float.floatToIntBits(this.b) == Float.floatToIntBits(paramObject.b)) && (Float.floatToIntBits(this.c) == Float.floatToIntBits(paramObject.c)) && (Float.floatToIntBits(this.d) == Float.floatToIntBits(paramObject.d)))
+    {
+      AppMethodBeat.o(149997);
+      return true;
     }
+    AppMethodBeat.o(149997);
+    return false;
   }
   
-  public void a(String paramString)
+  public final String toString()
   {
-    this.c = paramString;
+    AppMethodBeat.i(149998);
+    String str = "latlng:" + this.a.a + "," + this.a.b + ",zoom:" + this.b + ",tilt=" + this.c + ",bearing:" + this.d;
+    AppMethodBeat.o(149998);
+    return str;
   }
   
-  public <T> void a(String paramString, T paramT)
+  public static final class a
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("put key can not is null");
+    private cz a;
+    private float b;
+    private float c = 1.4E-45F;
+    private float d = 1.4E-45F;
+    
+    public final a a(float paramFloat)
+    {
+      this.b = paramFloat;
+      return this;
     }
-    if (paramT == null) {
-      throw new IllegalArgumentException("put value can not is null");
+    
+    public final a a(cz paramcz)
+    {
+      this.a = paramcz;
+      return this;
     }
-    if ((paramT instanceof Set)) {
-      throw new IllegalArgumentException("can not support Set");
+    
+    public final cn a()
+    {
+      AppMethodBeat.i(149995);
+      cn localcn = new cn(this.a, this.b, this.c, this.d);
+      AppMethodBeat.o(149995);
+      return localcn;
     }
-    Object localObject = new nl();
-    ((nl)localObject).a(this.c);
-    ((nl)localObject).a(paramT, 0);
-    localObject = nn.a(((nl)localObject).a());
-    HashMap localHashMap = new HashMap(1);
-    ArrayList localArrayList = new ArrayList(1);
-    a(localArrayList, paramT);
-    localHashMap.put(al.a(localArrayList), localObject);
-    this.e.remove(paramString);
-    this.a.put(paramString, localHashMap);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    this.d.a(paramArrayOfByte);
-    this.d.a(this.c);
-    paramArrayOfByte = new HashMap(1);
-    HashMap localHashMap = new HashMap(1);
-    localHashMap.put("", new byte[0]);
-    paramArrayOfByte.put("", localHashMap);
-    this.a = this.d.a(paramArrayOfByte, 0, false);
-  }
-  
-  public byte[] a()
-  {
-    nl localnl = new nl(0);
-    localnl.a(this.c);
-    localnl.a(this.a, 0);
-    return nn.a(localnl.a());
+    
+    public final a b(float paramFloat)
+    {
+      this.c = paramFloat;
+      return this;
+    }
+    
+    public final a c(float paramFloat)
+    {
+      this.d = paramFloat;
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.cn
  * JD-Core Version:    0.7.0.1
  */

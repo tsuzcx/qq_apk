@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.webkit.ConsoleMessage;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.WebViewUI.g;
+import com.tencent.mm.plugin.wepkg.c;
 
 public final class GameWebViewUI$b
-  extends WebViewUI.h
+  extends WebViewUI.g
 {
   protected GameWebViewUI$b(GameWebViewUI paramGameWebViewUI)
   {
@@ -15,21 +15,18 @@ public final class GameWebViewUI$b
   
   public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    if (paramConsoleMessage != null) {}
-    for (String str = paramConsoleMessage.message(); (!bk.bl(str)) && (str.equalsIgnoreCase("weixin://whiteScreenEnd")); str = null)
-    {
-      y.d("MicroMsg.Wepkg.GameWebViewUI", "whiteScreenEnd");
-      if (GameWebViewUI.F(this.rwB) != null) {
-        GameWebViewUI.F(this.rwB).rNX = true;
-      }
-      return true;
+    AppMethodBeat.i(8733);
+    if (GameWebViewUI.j(this.vnt) != null) {
+      GameWebViewUI.j(this.vnt).a(paramConsoleMessage);
     }
-    return super.onConsoleMessage(paramConsoleMessage);
+    boolean bool = super.onConsoleMessage(paramConsoleMessage);
+    AppMethodBeat.o(8733);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.GameWebViewUI.b
  * JD-Core Version:    0.7.0.1
  */

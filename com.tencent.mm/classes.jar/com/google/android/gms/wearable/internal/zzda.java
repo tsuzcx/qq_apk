@@ -1,9 +1,9 @@
 package com.google.android.gms.wearable.internal;
 
-import com.google.android.gms.wearable.zzj;
+import android.os.Parcelable.Creator;
 
 public final class zzda
-  implements zzj
+  implements Parcelable.Creator<DataItemAssetParcelable>
 {}
 
 

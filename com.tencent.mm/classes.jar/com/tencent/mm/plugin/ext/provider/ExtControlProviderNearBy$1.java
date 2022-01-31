@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.ext.provider;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class ExtControlProviderNearBy$1
-  implements am.a
+  implements ap.a
 {
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    ExtControlProviderNearBy.BF();
+    AppMethodBeat.i(20362);
+    ExtControlProviderNearBy.Pt();
+    AppMethodBeat.o(20362);
     return false;
   }
 }

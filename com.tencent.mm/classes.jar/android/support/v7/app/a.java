@@ -1,72 +1,67 @@
 package android.support.v7.app;
 
 import android.support.v4.widget.DrawerLayout.c;
-import android.support.v7.d.a.b;
+import android.support.v7.d.a.d;
 
 public final class a
   implements DrawerLayout.c
 {
-  private final a Nd;
-  private b Ne;
-  private boolean Nf;
-  boolean Ng;
-  private final int Nh;
-  private final int Ni;
+  private final a MT;
+  private d MU;
+  private boolean MV;
+  boolean MW;
+  private final int MX;
+  private final int MY;
   
-  private void K(float paramFloat)
+  private void L(float paramFloat)
   {
     if (paramFloat == 1.0F) {
-      this.Ne.S(true);
+      this.MU.U(true);
     }
     for (;;)
     {
-      b localb = this.Ne;
-      if (localb.St != paramFloat)
-      {
-        localb.St = paramFloat;
-        localb.invalidateSelf();
-      }
+      this.MU.setProgress(paramFloat);
       return;
       if (paramFloat == 0.0F) {
-        this.Ne.S(false);
+        this.MU.U(false);
       }
     }
   }
   
-  private void aR(int paramInt)
+  private void aN(int paramInt)
   {
-    this.Nd.aR(paramInt);
+    this.MT.aN(paramInt);
   }
   
-  public final void C(float paramFloat)
+  public final void D(float paramFloat)
   {
-    if (this.Nf)
+    if (this.MV)
     {
-      K(Math.min(1.0F, Math.max(0.0F, paramFloat)));
+      L(Math.min(1.0F, Math.max(0.0F, paramFloat)));
       return;
     }
-    K(0.0F);
+    L(0.0F);
   }
   
-  public final void dH()
+  public final void dY()
   {
-    K(1.0F);
-    if (this.Ng) {
-      aR(this.Ni);
+    L(1.0F);
+    if (this.MW) {
+      aN(this.MY);
     }
   }
   
-  public final void dI()
+  public final void dZ()
   {
-    K(0.0F);
-    if (this.Ng) {
-      aR(this.Nh);
+    L(0.0F);
+    if (this.MW) {
+      aN(this.MX);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void aR(int paramInt);
+    public abstract void aN(int paramInt);
   }
 }
 

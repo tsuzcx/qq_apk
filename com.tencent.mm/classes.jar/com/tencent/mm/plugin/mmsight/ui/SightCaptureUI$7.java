@@ -1,29 +1,25 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
-import android.graphics.SurfaceTexture;
-import com.tencent.mm.plugin.video.b;
-import com.tencent.mm.sdk.platformtools.y;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SightCaptureUI$7
-  implements b
+  extends AnimatorListenerAdapter
 {
   SightCaptureUI$7(SightCaptureUI paramSightCaptureUI) {}
   
-  public final void e(SurfaceTexture paramSurfaceTexture)
+  public final void onAnimationEnd(Animator paramAnimator)
   {
-    y.i("MicroMsg.SightCaptureUI", "callback onSurfaceTextureAvailable set local surface: %s", new Object[] { paramSurfaceTexture });
-    SightCaptureUI.a(this.mqB, paramSurfaceTexture);
-    if (SightCaptureUI.I(this.mqB))
-    {
-      SightCaptureUI.g(this.mqB, 1);
-      return;
-    }
-    SightCaptureUI.g(this.mqB, 8);
+    AppMethodBeat.i(55191);
+    SightCaptureUI.I(this.oQf).setVisibility(8);
+    AppMethodBeat.o(55191);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.SightCaptureUI.7
  * JD-Core Version:    0.7.0.1
  */

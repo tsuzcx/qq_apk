@@ -5,30 +5,31 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.protocal.c.ra;
-import com.tencent.mm.protocal.c.tx;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.protocal.protobuf.yf;
 import java.util.LinkedList;
 
 final class l$1
   implements View.OnClickListener
 {
-  l$1(l paraml, tx paramtx, LinkedList paramLinkedList, LayoutInflater paramLayoutInflater) {}
+  l$1(l paraml, yf paramyf, LinkedList paramLinkedList, LayoutInflater paramLayoutInflater) {}
   
   public final void onClick(View paramView)
   {
-    this.iyi.iye = true;
-    this.iyi.iyc.findViewById(a.d.detail_table_expand_tv).setVisibility(8);
-    int i = this.iyf.sQK;
-    while (i < this.iyg.size())
+    AppMethodBeat.i(88754);
+    this.kBp.kBl = true;
+    this.kBp.kBj.findViewById(2131822069).setVisibility(8);
+    int i = this.kBm.wPm;
+    while (i < this.kBn.size())
     {
-      paramView = (TextView)this.iyh.inflate(a.e.card_table_row_item, null, false);
-      paramView.setText(((ra)this.iyg.get(i)).title);
-      this.iyi.iyd.addView(paramView);
+      paramView = (TextView)this.kBo.inflate(2130969006, null, false);
+      paramView.setText(((uo)this.kBn.get(i)).title);
+      this.kBp.kBk.addView(paramView);
       i += 1;
     }
-    this.iyi.iyd.invalidate();
+    this.kBp.kBk.invalidate();
+    AppMethodBeat.o(88754);
   }
 }
 

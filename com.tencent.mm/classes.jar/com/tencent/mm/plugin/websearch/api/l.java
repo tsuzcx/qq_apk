@@ -4,9 +4,9 @@ import android.content.Context;
 
 public abstract interface l
 {
-  public abstract void Rq(String paramString);
+  public abstract void agp(String paramString);
   
-  public abstract Object ew(Context paramContext);
+  public abstract Object ft(Context paramContext);
 }
 
 

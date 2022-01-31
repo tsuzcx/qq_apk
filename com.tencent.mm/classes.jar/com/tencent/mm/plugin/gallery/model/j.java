@@ -1,315 +1,373 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import android.annotation.TargetApi;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory.Options;
-import android.media.ThumbnailUtils;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.provider.MediaStore.Video.Thumbnails;
-import android.view.Display;
-import android.view.WindowManager;
+import android.database.Cursor;
+import android.provider.MediaStore.Images.Media;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory.DecodeResultLogger;
-import com.tencent.mm.sdk.platformtools.MMBitmapFactory.KVStatHelper;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.LinkedList;
 
 public final class j
+  extends b
 {
-  private static int dQQ;
-  private static final int kHf;
-  private static final int kHg;
+  protected ContentResolver aYt;
+  private volatile boolean eUJ;
   
-  static
+  public j()
   {
-    int j = 960;
-    dQQ = 0;
-    int[] arrayOfInt = new int[2];
-    Display localDisplay = ((WindowManager)ae.getContext().getSystemService("window")).getDefaultDisplay();
-    arrayOfInt[0] = localDisplay.getWidth();
-    arrayOfInt[1] = localDisplay.getHeight();
-    if (arrayOfInt[0] > 960) {}
-    for (int i = arrayOfInt[0];; i = 960)
+    AppMethodBeat.i(21303);
+    this.eUJ = false;
+    this.aYt = ah.getContext().getContentResolver();
+    AppMethodBeat.o(21303);
+  }
+  
+  private boolean a(i.d paramd, LinkedList paramLinkedList, long paramLong)
+  {
+    AppMethodBeat.i(21310);
+    if ((paramd != null) && (paramLinkedList.size() + 1 % this.ncv == 0)) {
+      paramd.c(paramLinkedList, paramLong);
+    }
+    boolean bool = this.eUJ;
+    AppMethodBeat.o(21310);
+    return bool;
+  }
+  
+  public final String a(String[] paramArrayOfString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(21305);
+    String str1;
+    int j;
+    int i;
+    String str2;
+    if (paramBoolean)
     {
-      kHf = i;
-      i = j;
-      if (arrayOfInt[1] > 960) {
-        i = arrayOfInt[1];
+      str1 = "(" + b.ncx + ">2147483647 OR " + b.ncx + "<=0 ) AND (_size>10240";
+      j = paramArrayOfString.length;
+      i = 0;
+      while (i < j)
+      {
+        str2 = paramArrayOfString[i];
+        str1 = str1 + " or lower(_data) like '%" + str2 + "%'";
+        i += 1;
       }
-      kHg = i;
-      return;
+    }
+    for (paramArrayOfString = str1 + ")";; paramArrayOfString = str1 + ")")
+    {
+      ab.d("MicroMsg.ImageMediaQuery", "where %s", new Object[] { paramArrayOfString });
+      AppMethodBeat.o(21305);
+      return paramArrayOfString;
+      str1 = b.ncx + "<=2147483647 AND " + b.ncx + ">0 AND (_size>10240";
+      j = paramArrayOfString.length;
+      i = 0;
+      while (i < j)
+      {
+        str2 = paramArrayOfString[i];
+        str1 = str1 + " or lower(_data) like '%" + str2 + "%'";
+        i += 1;
+      }
     }
   }
   
-  public static Bitmap Er(String paramString)
+  public final LinkedList<GalleryItem.MediaItem> a(String paramString, int paramInt, i.d paramd, long paramLong)
   {
-    int k = 1;
-    if (bk.bl(paramString))
+    AppMethodBeat.i(21309);
+    this.eUJ = false;
+    LinkedList localLinkedList = new LinkedList();
+    try
     {
-      y.e("MicroMsg.MediaManager", "filepath is null or nil");
-      return null;
+      if (bo.isNullOrNil(paramString))
+      {
+        localObject2 = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), a(this.ncw, false), null, hS(false));
+        localObject1 = localObject2;
+      }
     }
-    label399:
-    label408:
-    label410:
-    label415:
-    label418:
-    for (;;)
+    finally
     {
-      try
+      for (;;)
       {
-        if (!e.bK(paramString))
-        {
-          y.e("MicroMsg.MediaManager", "getSuitableBmp fail, file does not exist, filePath = " + paramString);
-          return null;
-        }
-        j = kHf;
-        m = kHg;
-        localObject = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-        localBitmap = MMBitmapFactory.decodeFile(paramString, (BitmapFactory.Options)localObject, null, 0, new int[0]);
-        if (localBitmap != null) {
-          localBitmap.recycle();
-        }
-        if ((((BitmapFactory.Options)localObject).outWidth <= 0) || (((BitmapFactory.Options)localObject).outHeight <= 0))
-        {
-          y.d("MicroMsg.MediaManager", "get bitmap fail, file is not a image file = " + paramString);
-          return null;
-        }
-        if ((!aa.bD(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight)) || (((BitmapFactory.Options)localObject).outWidth <= 480)) {
-          break label410;
-        }
-        i = 1;
-        if ((!aa.bC(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight)) || (((BitmapFactory.Options)localObject).outHeight <= 480)) {
-          break label415;
-        }
+        Object localObject2;
+        Object localObject5;
+        label190:
+        Object localObject3;
+        Object localObject6;
+        boolean bool;
+        label476:
+        label488:
+        localCursor = null;
+        localObject4 = null;
       }
-      catch (Exception paramString)
+    }
+    try
+    {
+      localCursor = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), a(this.ncw, true), null, hS(true));
+      localObject4 = localObject2;
+      for (;;)
       {
-        Object localObject;
-        Bitmap localBitmap;
-        label193:
-        label205:
-        label229:
-        y.e("MicroMsg.MediaManager", "decode bitmap err: " + paramString.getMessage());
-        return null;
-      }
-      int i = ((BitmapFactory.Options)localObject).outHeight;
-      int j = ((BitmapFactory.Options)localObject).outWidth;
-      int m = BackwardSupportUtil.ExifHelper.YS(paramString);
-      if (m != 90) {
-        if (m == 270)
+        if (localObject4 != null) {}
+        try
         {
-          break label399;
-          localObject = new MMBitmapFactory.DecodeResultLogger();
-          localBitmap = com.tencent.mm.sdk.platformtools.c.a(paramString, i, j, false, (MMBitmapFactory.DecodeResultLogger)localObject, 0);
-          if (localBitmap == null)
+          ab.i("MicroMsg.ImageMediaQuery", "cursorValid count:%s", new Object[] { Integer.valueOf(localObject4.getCount()) });
+          localObject4.moveToFirst();
+          if (localCursor != null)
           {
-            y.e("MicroMsg.MediaManager", "getSuitableBmp fail, temBmp is null, filePath = " + paramString);
-            if (((MMBitmapFactory.DecodeResultLogger)localObject).getDecodeResult() < 2000) {
-              break label408;
-            }
-            paramString = MMBitmapFactory.KVStatHelper.getKVStatString(paramString, 1, (MMBitmapFactory.DecodeResultLogger)localObject);
-            h.nFQ.aC(12712, paramString);
-            break label408;
+            ab.i("MicroMsg.ImageMediaQuery", "cursorInvalid count:%s", new Object[] { Integer.valueOf(localCursor.getCount()) });
+            localCursor.moveToFirst();
           }
-          paramString = com.tencent.mm.sdk.platformtools.c.b(localBitmap, m);
-          y.i("MicroMsg.MediaManager", "bmp height = " + paramString.getHeight() + ",bmp width = " + paramString.getWidth());
-          return paramString;
+          localObject1 = b(localObject4, 1);
+          localObject2 = b(localCursor, 1);
+          localObject5 = null;
+          localObject3 = localObject5;
+          localObject6 = localObject2;
+          if (localObject2 == null) {
+            break label508;
+          }
+          localObject3 = localObject5;
+          localObject6 = localObject2;
+          if (localObject1 == null) {
+            break label508;
+          }
+          if (((GalleryItem.MediaItem)localObject2).ndq > ((GalleryItem.MediaItem)localObject1).ndq)
+          {
+            localLinkedList.add(localObject2);
+            localCursor.moveToNext();
+            localObject3 = localObject1;
+          }
+          for (;;)
+          {
+            if (localObject3 == localObject2) {
+              localObject1 = b(localObject4, 1);
+            }
+            if (localObject3 == localObject1) {
+              localObject2 = b(localCursor, 1);
+            }
+            bool = a(paramd, localLinkedList, paramLong);
+            localObject5 = localObject3;
+            if (!bool) {
+              break label190;
+            }
+            if (localObject4 != null) {
+              localObject4.close();
+            }
+            if (localCursor != null) {
+              localCursor.close();
+            }
+            AppMethodBeat.o(21309);
+            return localLinkedList;
+            localObject2 = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), aV(paramString, false), null, hS(false));
+            localObject1 = localObject2;
+            localCursor = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, getProjection(), aV(paramString, true), null, hS(true));
+            localObject4 = localObject2;
+            break;
+            if (((GalleryItem.MediaItem)localObject2).ndq < ((GalleryItem.MediaItem)localObject1).ndq)
+            {
+              localLinkedList.add(localObject1);
+              localObject4.moveToNext();
+              localObject3 = localObject2;
+            }
+            else
+            {
+              localLinkedList.add(localObject1);
+              localLinkedList.add(localObject2);
+              localObject3 = null;
+              localCursor.moveToNext();
+              localObject4.moveToNext();
+            }
+          }
+          if (localObject4 == null) {
+            break label488;
+          }
         }
-        else
-        {
-          continue;
-        }
+        finally {}
+      }
+    }
+    finally
+    {
+      localCursor = null;
+      localObject4 = localObject1;
+      break label476;
+    }
+    localObject4.close();
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(21309);
+    throw paramString;
+    label508:
+    localObject2 = localObject3;
+    localObject5 = localObject1;
+    if (localObject6 != null)
+    {
+      if ((localObject3 != null) && (localObject3.ndq > ((GalleryItem.MediaItem)localObject6).ndq))
+      {
+        localLinkedList.add(localObject3);
+        localLinkedList.add(localObject6);
+        localObject3 = null;
       }
       for (;;)
       {
-        if (i != 0) {
-          break label418;
-        }
-        i = m;
-        if (k == 0) {
-          break label205;
-        }
-        break label193;
-        k = i;
-        i = j;
-        j = k;
-        break label229;
-        return null;
-        i = 0;
-        break;
-        k = 0;
-      }
-    }
-  }
-  
-  public static Bitmap a(long paramLong, int paramInt, String paramString1, String paramString2)
-  {
-    Object localObject = null;
-    if (c.aXb() == null) {}
-    Bitmap localBitmap;
-    do
-    {
-      MMBitmapFactory.DecodeResultLogger localDecodeResultLogger;
-      do
-      {
-        do
-        {
-          return localObject;
-          switch (paramInt)
-          {
-          default: 
-            return null;
-          case 1: 
-            localDecodeResultLogger = new MMBitmapFactory.DecodeResultLogger();
-            localBitmap = dm(paramString1, paramString2);
-            localObject = localBitmap;
-          }
-        } while (localBitmap != null);
-        y.e("MicroMsg.MediaManager", "get thumb from content resolver failed: [%s], [%s]", new Object[] { paramString1, paramString2 });
-        localObject = localBitmap;
-      } while (localDecodeResultLogger.getDecodeResult() < 2000);
-      paramString1 = MMBitmapFactory.KVStatHelper.getKVStatString(paramString2, 1, localDecodeResultLogger);
-      h.nFQ.aC(12712, paramString1);
-      return localBitmap;
-      localBitmap = n(paramLong, paramString2);
-      localObject = localBitmap;
-    } while (localBitmap != null);
-    return dm(paramString1, paramString2);
-  }
-  
-  private static int aXB()
-  {
-    if (dQQ > 0) {
-      return dQQ;
-    }
-    int i = BackwardSupportUtil.b.b(ae.getContext(), 150.0F);
-    dQQ = i;
-    return i;
-  }
-  
-  private static Bitmap dm(String paramString1, String paramString2)
-  {
-    y.d("MicroMsg.MediaManager", "current thread %s", new Object[] { Thread.currentThread().getName() });
-    if (bk.bl(paramString1))
-    {
-      y.e("MicroMsg.MediaManager", "filePath is null or nill");
-      paramString1 = null;
-      return paramString1;
-    }
-    long l = System.currentTimeMillis();
-    Bitmap localBitmap2 = com.tencent.mm.sdk.platformtools.c.a(paramString1, aXB(), aXB(), false, null, 0);
-    int i;
-    label65:
-    int j;
-    label72:
-    Bitmap localBitmap1;
-    if (localBitmap2 == null)
-    {
-      i = 0;
-      if (localBitmap2 != null) {
-        break label317;
-      }
-      j = 0;
-      y.v("MicroMsg.MediaManager", "getImageThumb[%s]FromThumbFilePath, bmp size[%d, %d]: total time:[%dms]", new Object[] { paramString1, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(System.currentTimeMillis() - l) });
-      localBitmap1 = localBitmap2;
-      if (localBitmap2 == null)
-      {
-        y.w("MicroMsg.MediaManager", "get bitmap from thumb failed, try to get thumb from orig image:[%s]", new Object[] { paramString2 });
-        if (bk.bl(paramString2)) {
-          break label344;
-        }
-        l = System.currentTimeMillis();
-        localBitmap1 = com.tencent.mm.sdk.platformtools.c.a(paramString2, aXB(), aXB(), false, null, 0);
-        if (localBitmap1 != null) {
-          break label326;
-        }
-        i = 0;
-        label171:
-        if (localBitmap1 != null) {
-          break label335;
-        }
-        j = 0;
-        label178:
-        y.v("MicroMsg.MediaManager", "getImageThumb[%s]FromOrigFilePath[%s], bmp size[%d, %d]:total time:[%dms]", new Object[] { paramString1, paramString2, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(System.currentTimeMillis() - l) });
-      }
-    }
-    for (;;)
-    {
-      if (localBitmap1 != null)
-      {
-        l = System.currentTimeMillis();
-        i = BackwardSupportUtil.ExifHelper.YS(paramString2);
-        paramString2 = com.tencent.mm.sdk.platformtools.c.b(localBitmap1, i);
-        y.d("MicroMsg.MediaManager", "do rotate finish, width[%d] height[%d] rotate[%d] use[%dms]", new Object[] { Integer.valueOf(localBitmap1.getWidth()), Integer.valueOf(localBitmap1.getHeight()), Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
-        paramString1 = paramString2;
-        if (paramString2 != null) {
+        localCursor.moveToNext();
+        localObject6 = b(localCursor, 1);
+        bool = a(paramd, localLinkedList, paramLong);
+        if (!bool) {
           break;
         }
+        if (localObject4 != null) {
+          localObject4.close();
+        }
+        if (localCursor != null) {
+          localCursor.close();
+        }
+        AppMethodBeat.o(21309);
+        return localLinkedList;
+        localLinkedList.add(localObject6);
       }
-      return null;
-      i = localBitmap2.getWidth();
-      break label65;
-      label317:
-      j = localBitmap2.getHeight();
-      break label72;
-      label326:
-      i = localBitmap1.getWidth();
-      break label171;
-      label335:
-      j = localBitmap1.getHeight();
-      break label178;
-      label344:
-      y.e("MicroMsg.MediaManager", "get bit from orig image faield:[%s]", new Object[] { paramString2 });
-      localBitmap1 = localBitmap2;
+    }
+    if (localObject5 != null)
+    {
+      if ((localObject2 != null) && (((GalleryItem.MediaItem)localObject2).ndq > ((GalleryItem.MediaItem)localObject5).ndq))
+      {
+        localLinkedList.add(localObject2);
+        localLinkedList.add(localObject5);
+        localObject2 = null;
+      }
+      for (;;)
+      {
+        localObject4.moveToNext();
+        localObject5 = b(localObject4, 1);
+        bool = a(paramd, localLinkedList, paramLong);
+        if (!bool) {
+          break;
+        }
+        if (localObject4 != null) {
+          localObject4.close();
+        }
+        if (localCursor != null) {
+          localCursor.close();
+        }
+        AppMethodBeat.o(21309);
+        return localLinkedList;
+        localLinkedList.add(localObject5);
+      }
+    }
+    if (localObject2 != null) {
+      localLinkedList.add(localObject2);
+    }
+    paramd.c(localLinkedList, paramLong);
+    ab.i("MicroMsg.ImageMediaQuery", "[queryMediaItemsInAlbum] albumName:%s type:%s result:%s ticket:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(localLinkedList.size()), Long.valueOf(paramLong) });
+    if (localObject4 != null) {
+      localObject4.close();
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(21309);
+    return localLinkedList;
+  }
+  
+  public final String aV(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(21304);
+    StringBuilder localStringBuilder = new StringBuilder("bucket_display_name=\"").append(paramString).append("\" AND ");
+    if (paramBoolean) {}
+    for (paramString = "(" + b.ncx + ">2147483647 OR " + b.ncx + "<=0 )";; paramString = b.ncx + "<=2147483647 AND " + b.ncx + ">0")
+    {
+      paramString = paramString;
+      AppMethodBeat.o(21304);
+      return paramString;
     }
   }
   
-  @TargetApi(8)
-  private static Bitmap n(long paramLong, String paramString)
+  public final LinkedList<GalleryItem.AlbumItem> bDJ()
   {
+    AppMethodBeat.i(21308);
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject1;
     try
     {
-      Bitmap localBitmap1 = MediaStore.Video.Thumbnails.getThumbnail(ae.getContext().getContentResolver(), paramLong, 1, null);
-      Bitmap localBitmap2 = localBitmap1;
-      if (localBitmap1 == null)
+      Cursor localCursor = this.aYt.query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, bDL(), "0==0) GROUP BY (bucket_display_name", null, "max_time desc, _id desc");
+      if (localCursor == null)
       {
-        y.e("MicroMsg.MediaManager", "get vedio thumb failed : [%d], call media scanner : [%s]", new Object[] { Long.valueOf(paramLong), paramString });
-        if (Build.VERSION.SDK_INT >= 8) {
-          localBitmap1 = ThumbnailUtils.createVideoThumbnail(paramString, 1);
-        }
-        localBitmap2 = localBitmap1;
-        if (localBitmap1 == null)
-        {
-          localBitmap2 = localBitmap1;
-          if (!bk.bl(paramString))
-          {
-            y.e("MicroMsg.MediaManager", "get vedio thumb failed : [%d], call media scanner : [%s]", new Object[] { Long.valueOf(paramLong), paramString });
-            ae.getContext().sendBroadcast(new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE", Uri.parse("file://" + paramString)));
-            localBitmap2 = localBitmap1;
-          }
-        }
+        ab.d("MicroMsg.ImageMediaQuery", "no media folder now");
+        AppMethodBeat.o(21308);
+        return localLinkedList;
       }
-      return localBitmap2;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.MediaManager", "exception: %s", new Object[] { bk.j(localException) });
-        Object localObject = null;
+        ab.e("MicroMsg.ImageMediaQuery", "query album list failed : [%s]", new Object[] { localException.getMessage() });
+        localObject1 = null;
       }
     }
+    if (localObject1.moveToFirst()) {}
+    for (;;)
+    {
+      long l = bo.apW(localObject1.getString(localObject1.getColumnIndexOrThrow("_id")));
+      Object localObject3 = localObject1.getString(localObject1.getColumnIndexOrThrow("_data"));
+      Object localObject2 = localObject1.getString(localObject1.getColumnIndexOrThrow("bucket_display_name"));
+      bo.isNullOrNil((String)localObject2);
+      int i;
+      if ((!bo.isNullOrNil((String)localObject3)) && (e.cN((String)localObject3)))
+      {
+        i = localObject1.getInt(3);
+        if (i != 0) {
+          break label243;
+        }
+        ab.e("MicroMsg.ImageMediaQuery", "query album failed, " + i + ", " + (String)localObject3);
+      }
+      while (!localObject1.moveToNext())
+      {
+        localObject1.close();
+        AppMethodBeat.o(21308);
+        return localLinkedList;
+        label243:
+        ab.i("MicroMsg.ImageMediaQuery", "%s(%s) path:%s", new Object[] { localObject2, Integer.valueOf(i), localObject3 });
+        String str = localObject1.getString(localObject1.getColumnIndexOrThrow("mime_type"));
+        localObject3 = GalleryItem.MediaItem.a(1, Long.valueOf(l).longValue(), (String)localObject3, null, str);
+        localObject2 = new GalleryItem.AlbumItem((String)localObject2, i);
+        ((GalleryItem.AlbumItem)localObject2).ndm = ((GalleryItem.MediaItem)localObject3);
+        localLinkedList.add(localObject2);
+      }
+    }
+  }
+  
+  public final void bDK()
+  {
+    this.eUJ = true;
+  }
+  
+  public final String[] bDL()
+  {
+    AppMethodBeat.i(21307);
+    String str1 = b.ncy;
+    String str2 = b.ncx;
+    String str3 = "max(" + b.ncx + ") as max_time";
+    AppMethodBeat.o(21307);
+    return new String[] { "_id", "_data", "bucket_display_name", "count(*)", str1, str2, "mime_type", str3 };
+  }
+  
+  public final String[] getProjection()
+  {
+    return new String[] { "_id", "_data", b.ncy, b.ncx, "mime_type", "latitude", "longitude" };
+  }
+  
+  public final String hS(boolean paramBoolean)
+  {
+    AppMethodBeat.i(21306);
+    if (paramBoolean)
+    {
+      str = b.ncy + " desc, bucket_display_name desc, _id desc";
+      AppMethodBeat.o(21306);
+      return str;
+    }
+    String str = b.ncx + " desc, bucket_display_name desc, _id desc";
+    AppMethodBeat.o(21306);
+    return str;
   }
 }
 

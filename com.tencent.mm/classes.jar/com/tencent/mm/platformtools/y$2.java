@@ -1,14 +1,17 @@
 package com.tencent.mm.platformtools;
 
-import com.tencent.mm.br.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class y$2
   implements b
 {
-  public final void d(Exception paramException)
+  public final void c(Exception paramException)
   {
-    y.e("MiroMsg.NotificationUtil", "Load plugin failed");
+    AppMethodBeat.i(16671);
+    ab.e("MiroMsg.NotificationUtil", "Load plugin failed");
+    AppMethodBeat.o(16671);
   }
 }
 

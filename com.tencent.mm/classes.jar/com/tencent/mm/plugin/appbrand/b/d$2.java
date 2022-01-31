@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class d$2
   
   public final void run()
   {
-    d.a(this.fGa);
+    AppMethodBeat.i(86838);
+    d.b(this.gYv);
+    AppMethodBeat.o(86838);
   }
 }
 

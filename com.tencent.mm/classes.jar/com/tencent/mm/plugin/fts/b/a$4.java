@@ -1,30 +1,35 @@
 package com.tencent.mm.plugin.fts.b;
 
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class a$4
-  implements j.a
+  implements k.a
 {
   a$4(a parama) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
+    AppMethodBeat.i(136653);
     paramString = paramString.split(" ");
-    if ((paramString == null) || (paramString.length == 0)) {}
-    while (!paramString[0].equals("update")) {
+    if ((paramString == null) || (paramString.length == 0))
+    {
+      AppMethodBeat.o(136653);
       return;
     }
-    int i = 1;
-    while (i < paramString.length)
+    if (paramString[0].equals("update"))
     {
-      long l = bk.getLong(paramString[i], 0L);
-      a.e(this.kyt).a(65554, new a.v(this.kyt, l));
-      i += 1;
+      int i = 1;
+      while (i < paramString.length)
+      {
+        long l = bo.getLong(paramString[i], 0L);
+        a.e(this.mUg).a(65554, new a.v(this.mUg, l));
+        i += 1;
+      }
+      a.e(this.mUg).a(65556, new a.u(this.mUg, (byte)0));
     }
-    a.e(this.kyt).a(65556, new a.u(this.kyt, (byte)0));
+    AppMethodBeat.o(136653);
   }
 }
 

@@ -6,8 +6,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FavPostVoiceUI$5
   implements View.OnTouchListener
@@ -16,53 +17,60 @@ final class FavPostVoiceUI$5
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramView != FavPostVoiceUI.g(this.kcp)) {}
-    do
+    AppMethodBeat.i(74045);
+    if (paramView != FavPostVoiceUI.g(this.mxa))
     {
-      do
+      AppMethodBeat.o(74045);
+      return false;
+    }
+    int i = (int)paramMotionEvent.getRawY();
+    paramView = new int[2];
+    FavPostVoiceUI.a(this.mxa, this.mxa.getResources().getDisplayMetrics().heightPixels);
+    FavPostVoiceUI.g(this.mxa).getLocationOnScreen(paramView);
+    int j = paramView[1];
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(74045);
+      return false;
+      if (!FavPostVoiceUI.h(this.mxa))
       {
-        int i;
-        int j;
-        do
+        FavPostVoiceUI.i(this.mxa);
+        FavPostVoiceUI.j(this.mxa);
+        continue;
+        int k = BackwardSupportUtil.b.b(this.mxa, 60.0F);
+        if ((i <= FavPostVoiceUI.k(this.mxa) - k) && (i < j))
         {
-          return false;
-          i = (int)paramMotionEvent.getRawY();
-          paramView = new int[2];
-          FavPostVoiceUI.a(this.kcp, this.kcp.getResources().getDisplayMetrics().heightPixels);
-          FavPostVoiceUI.g(this.kcp).getLocationOnScreen(paramView);
-          j = paramView[1];
-          switch (paramMotionEvent.getAction())
+          FavPostVoiceUI.l(this.mxa).setVisibility(8);
+          FavPostVoiceUI.m(this.mxa).setVisibility(0);
+        }
+        else
+        {
+          FavPostVoiceUI.l(this.mxa).setVisibility(0);
+          FavPostVoiceUI.m(this.mxa).setVisibility(8);
+          continue;
+          if (!FavPostVoiceUI.h(this.mxa))
           {
-          default: 
+            AppMethodBeat.o(74045);
             return false;
           }
-        } while (FavPostVoiceUI.h(this.kcp));
-        FavPostVoiceUI.i(this.kcp);
-        FavPostVoiceUI.j(this.kcp);
-        return false;
-        int k = BackwardSupportUtil.b.b(this.kcp, 60.0F);
-        if ((i <= FavPostVoiceUI.k(this.kcp) - k) && (i < j))
-        {
-          FavPostVoiceUI.l(this.kcp).setVisibility(8);
-          FavPostVoiceUI.m(this.kcp).setVisibility(0);
-          return false;
+          if (FavPostVoiceUI.m(this.mxa).getVisibility() == 0)
+          {
+            ab.w("MicroMsg.FavPostVoiceUI", "action up -> cancel");
+            FavPostVoiceUI.n(this.mxa);
+          }
+          else if (!FavPostVoiceUI.o(this.mxa))
+          {
+            FavPostVoiceUI.p(this.mxa);
+            continue;
+            ab.w("MicroMsg.FavPostVoiceUI", "action cancel");
+            FavPostVoiceUI.n(this.mxa);
+          }
         }
-        FavPostVoiceUI.l(this.kcp).setVisibility(0);
-        FavPostVoiceUI.m(this.kcp).setVisibility(8);
-        return false;
-      } while (!FavPostVoiceUI.h(this.kcp));
-      if (FavPostVoiceUI.m(this.kcp).getVisibility() == 0)
-      {
-        y.w("MicroMsg.FavPostVoiceUI", "action up -> cancel");
-        FavPostVoiceUI.n(this.kcp);
-        return false;
       }
-    } while (FavPostVoiceUI.o(this.kcp));
-    FavPostVoiceUI.p(this.kcp);
-    return false;
-    y.w("MicroMsg.FavPostVoiceUI", "action cancel");
-    FavPostVoiceUI.n(this.kcp);
-    return false;
+    }
   }
 }
 

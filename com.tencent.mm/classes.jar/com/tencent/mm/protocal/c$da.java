@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$da
+final class c$da
   extends c.g
 {
-  public c$da()
+  c$da()
   {
-    super("getWXDeviceTicket", "getWXDeviceTicket", 125, true);
+    super("getSystemInfo", "getSystemInfo", 311, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.da
  * JD-Core Version:    0.7.0.1
  */

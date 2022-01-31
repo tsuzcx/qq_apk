@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.record.ui;
 final class f
   extends a
 {
-  long bIt;
-  String bWL;
+  String cEB;
+  long cpO;
 }
 
 

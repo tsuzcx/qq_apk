@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.canvas;
 
 import android.graphics.Canvas;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.aa;
 import com.tencent.mm.plugin.appbrand.canvas.action.ab;
@@ -42,10 +43,12 @@ import org.json.JSONObject;
 
 public final class c
 {
-  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> fLo = new HashMap();
+  public Map<String, com.tencent.mm.plugin.appbrand.canvas.action.d> heA;
   
   public c()
   {
+    AppMethodBeat.i(103162);
+    this.heA = new HashMap();
     a(new ae());
     a(new q());
     a(new af());
@@ -82,22 +85,30 @@ public final class c
     a(new o());
     a(new m());
     a(new aj());
+    AppMethodBeat.o(103162);
   }
   
   private void a(com.tencent.mm.plugin.appbrand.canvas.action.d paramd)
   {
-    this.fLo.put(paramd.getMethod(), paramd);
+    AppMethodBeat.i(103164);
+    this.heA.put(paramd.getMethod(), paramd);
+    AppMethodBeat.o(103164);
   }
   
   public final boolean a(d paramd, Canvas paramCanvas, JSONObject paramJSONObject)
   {
+    AppMethodBeat.i(103163);
     Object localObject = paramJSONObject.optString("method");
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.fLo.get(localObject);
-    if (localObject == null) {
+    localObject = (com.tencent.mm.plugin.appbrand.canvas.action.d)this.heA.get(localObject);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(103163);
       return false;
     }
-    return ((com.tencent.mm.plugin.appbrand.canvas.action.d)localObject).a(paramd, paramCanvas, paramJSONObject);
+    boolean bool = ((com.tencent.mm.plugin.appbrand.canvas.action.d)localObject).a(paramd, paramCanvas, paramJSONObject);
+    AppMethodBeat.o(103163);
+    return bool;
   }
 }
 

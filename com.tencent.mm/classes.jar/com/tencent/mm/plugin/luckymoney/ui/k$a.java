@@ -1,7 +1,19 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
  enum k$a
 {
+  static
+  {
+    AppMethodBeat.i(43074);
+    oxx = new a("NOTSET", 0);
+    oxy = new a("ON", 1);
+    oxz = new a("OFF", 2);
+    oxA = new a[] { oxx, oxy, oxz };
+    AppMethodBeat.o(43074);
+  }
+  
   private k$a() {}
 }
 

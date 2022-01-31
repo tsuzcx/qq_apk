@@ -1,41 +1,33 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.view.MotionEvent;
-import com.tencent.mm.plugin.webview.ui.tools.bag.g.a;
-import me.imid.swipebacklayout.lib.SwipeBackLayout.a;
+import com.tencent.luggage.d.k;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class n$1
-  implements SwipeBackLayout.a
+  implements Runnable
 {
-  n$1(n paramn, g.a parama) {}
+  n$1(k paramk) {}
   
-  public final boolean aK(boolean paramBoolean)
+  public final void run()
   {
-    if (this.rcL != null) {
-      return this.rcL.aK(paramBoolean);
+    AppMethodBeat.i(6215);
+    try
+    {
+      this.njp.destroy();
+      AppMethodBeat.o(6215);
+      return;
     }
-    return false;
-  }
-  
-  public final void e(int paramInt, float paramFloat)
-  {
-    if (this.rcL != null) {
-      this.rcL.aI(paramFloat);
-    }
-  }
-  
-  public final void l(MotionEvent paramMotionEvent)
-  {
-    if (this.rcL != null) {
-      this.rcL.l(paramMotionEvent);
+    catch (Exception localException)
+    {
+      d.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
+      AppMethodBeat.o(6215);
     }
   }
-  
-  public final void qs() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.n.1
  * JD-Core Version:    0.7.0.1
  */

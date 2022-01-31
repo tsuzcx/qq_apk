@@ -1,135 +1,150 @@
 package com.tencent.mm.plugin.report.service;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.h.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.a.k;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.q;
 import com.tencent.mm.platformtools.t;
 import com.tencent.mm.platformtools.t.a;
 import com.tencent.mm.plugin.report.a.b;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 public class j
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> iiX;
-  private c ihk = new c() {};
-  private t.a iiZ;
-  public boolean nEB = false;
-  public HashMap<String, List<d>> nGi;
-  public HashMap<String, String> nGj;
+  private static HashMap<Integer, h.d> kjX;
+  private c jXg;
+  private t.a kjZ;
+  public boolean qrC;
+  public HashMap<String, List<d>> qtl;
+  public HashMap<String, String> qtm;
   
   static
   {
+    AppMethodBeat.i(72814);
     HashMap localHashMap = new HashMap();
-    iiX = localHashMap;
+    kjX = localHashMap;
     localHashMap.put(Integer.valueOf("DUPLICATEKVLOG_TABLE".hashCode()), new h.d()
     {
-      public final String[] rK()
+      public final String[] getSQLs()
       {
-        return b.dXp;
+        return b.SQL_CREATE;
       }
     });
+    AppMethodBeat.o(72814);
   }
   
-  public static j bxa()
+  public j()
   {
-    return (j)p.B(j.class);
+    AppMethodBeat.i(72808);
+    this.qrC = false;
+    this.jXg = new c() {};
+    AppMethodBeat.o(72808);
   }
   
-  public final void bh(boolean paramBoolean)
+  public static j chT()
   {
+    AppMethodBeat.i(72811);
+    j localj = (j)q.S(j.class);
+    AppMethodBeat.o(72811);
+    return localj;
+  }
+  
+  public final void ad(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(72813);
+    if ((this.qrC) && (this.qtm != null))
+    {
+      ab.v("MicroMsg.SubCoreReport", "put kv info [%s %s %s]", new Object[] { paramString1, paramString2, paramString3 });
+      this.qtm.put(ag.cE(paramString1), paramString2 + paramString3);
+    }
+    AppMethodBeat.o(72813);
+  }
+  
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
+  {
+    return null;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(72810);
     long l = System.currentTimeMillis();
-    String str = g.DP().cachePath + "CommonOneMicroMsg.db";
-    this.iiZ = t.a(hashCode(), str, iiX, false);
-    y.i("MicroMsg.SubCoreReport", "summeranrt onAccountPostReset tid[%d] [%d]ms, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l), bk.csb() });
-    a.udP.c(this.ihk);
-    this.nGi = new HashMap();
-    this.nGj = new HashMap();
-    g.DQ();
-    g.DS().O(new Runnable()
-    {
-      public final void run()
-      {
-        if (!g.DK()) {
-          return;
-        }
-        bk.h(g.DP().cachePath + "logcat/", "temp_", 10800000L);
-      }
-      
-      public final String toString()
-      {
-        return super.toString() + "|onAccountPostReset";
-      }
-    });
+    String str = g.RL().cachePath + "CommonOneMicroMsg.db";
+    this.kjZ = t.a(hashCode(), str, kjX, false);
+    ab.i("MicroMsg.SubCoreReport", "summeranrt onAccountPostReset tid[%d] [%d]ms, stack[%s]", new Object[] { Long.valueOf(Thread.currentThread().getId()), Long.valueOf(System.currentTimeMillis() - l), bo.dtY() });
+    a.ymk.c(this.jXg);
+    this.qtl = new HashMap();
+    this.qtm = new HashMap();
+    AppMethodBeat.o(72810);
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountRelease()
   {
-    if (bxa() != null)
+    AppMethodBeat.i(72809);
+    if (chT() != null)
     {
-      j localj = bxa();
-      if (localj.iiZ != null)
+      j localj = chT();
+      if (localj.kjZ != null)
       {
-        localj.iiZ.jK(localj.hashCode());
-        localj.iiZ = null;
+        localj.kjZ.mG(localj.hashCode());
+        localj.kjZ = null;
       }
     }
-    a.udP.d(this.ihk);
-    if (this.nGi != null) {
-      this.nGi.clear();
+    a.ymk.d(this.jXg);
+    if (this.qtl != null) {
+      this.qtl.clear();
     }
-    if (this.nGj != null) {
-      this.nGj.clear();
+    if (this.qtm != null) {
+      this.qtm.clear();
     }
+    AppMethodBeat.o(72809);
   }
   
-  public final void s(long paramLong, String paramString)
+  public void onSdcardMount(boolean paramBoolean) {}
+  
+  public final void t(long paramLong, String paramString)
   {
+    AppMethodBeat.i(72812);
     Object localObject;
-    if ((this.nEB) && (this.nGi != null))
+    if ((this.qrC) && (this.qtl != null))
     {
-      y.v("MicroMsg.SubCoreReport", "put kv info [%d %s]", new Object[] { Long.valueOf(paramLong), paramString });
-      localObject = (List)this.nGi.get(String.valueOf(paramLong));
+      ab.v("MicroMsg.SubCoreReport", "put kv info [%d %s]", new Object[] { Long.valueOf(paramLong), paramString });
+      localObject = (List)this.qtl.get(String.valueOf(paramLong));
       if (localObject == null)
       {
         localObject = new LinkedList();
         bool = false;
-        ((List)localObject).add(0, new d(paramLong, paramString, bk.UY(), bool));
-        this.nGi.put(String.valueOf(paramLong), localObject);
+        ((List)localObject).add(0, new d(paramLong, paramString, bo.aoy(), bool));
+        this.qtl.put(String.valueOf(paramLong), localObject);
       }
     }
     else
     {
+      AppMethodBeat.o(72812);
       return;
     }
     d locald = (d)((List)localObject).get(((List)localObject).size() - 1);
-    if (bk.co(locald.nFv) < 1000L) {}
+    if (bo.hl(locald.qsy) < 1000L) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool) {
-        locald.nFx = true;
+        locald.qsA = true;
       }
       break;
     }
-  }
-  
-  public final HashMap<Integer, h.d> xe()
-  {
-    return null;
   }
 }
 

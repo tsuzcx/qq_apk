@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ExdeviceConnectedRouterStateView$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class ExdeviceConnectedRouterStateView$1
   
   public final void run()
   {
-    this.jCX.invalidate();
+    AppMethodBeat.i(19929);
+    this.lMv.invalidate();
+    AppMethodBeat.o(19929);
   }
 }
 

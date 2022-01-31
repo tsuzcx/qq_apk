@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.perf;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class PerformanceTracer$BufferSizeCheck
 {
   private int lastSize = 0;
@@ -29,6 +31,7 @@ class PerformanceTracer$BufferSizeCheck
   
   void onEnd(int paramInt)
   {
+    AppMethodBeat.i(128438);
     if (paramInt != this.lastSize)
     {
       paramInt = this.lastSize - paramInt;
@@ -37,6 +40,7 @@ class PerformanceTracer$BufferSizeCheck
       }
       this.sizeMismatchCount += 1;
     }
+    AppMethodBeat.o(128438);
   }
   
   void onStart(int paramInt)

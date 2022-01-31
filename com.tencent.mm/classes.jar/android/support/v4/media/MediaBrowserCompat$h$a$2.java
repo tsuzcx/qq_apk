@@ -11,17 +11,17 @@ final class MediaBrowserCompat$h$a$2
   {
     if (MediaBrowserCompat.DEBUG)
     {
-      new StringBuilder("MediaServiceConnection.onServiceDisconnected name=").append(this.val$name).append(" this=").append(this).append(" mServiceConnection=").append(this.AX.AV.AT);
-      this.AX.AV.dump();
+      new StringBuilder("MediaServiceConnection.onServiceDisconnected name=").append(this.val$name).append(" this=").append(this).append(" mServiceConnection=").append(this.BJ.BH.BF);
+      this.BJ.BH.dump();
     }
-    if (!this.AX.L("onServiceDisconnected")) {
+    if (!this.BJ.M("onServiceDisconnected")) {
       return;
     }
-    this.AX.AV.AO = null;
-    this.AX.AV.AP = null;
-    this.AX.AV.AL.a(null);
-    this.AX.AV.mState = 4;
-    this.AX.AV.AS.onConnectionSuspended();
+    this.BJ.BH.BA = null;
+    this.BJ.BH.BB = null;
+    this.BJ.BH.Bx.a(null);
+    this.BJ.BH.mState = 4;
+    this.BJ.BH.BE.onConnectionSuspended();
   }
 }
 

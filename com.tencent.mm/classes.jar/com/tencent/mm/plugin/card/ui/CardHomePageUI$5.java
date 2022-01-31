@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class CardHomePageUI$5
@@ -12,10 +13,12 @@ final class CardHomePageUI$5
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.ivb, CardIndexUI.class);
+    AppMethodBeat.i(88487);
+    paramView = new Intent(this.kwf, CardIndexUI.class);
     paramView.putExtra("key_card_type", 1);
-    this.ivb.startActivity(paramView);
-    h.nFQ.f(11324, new Object[] { "GotoMemberCardUI", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
+    this.kwf.startActivity(paramView);
+    h.qsU.e(11324, new Object[] { "GotoMemberCardUI", Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
+    AppMethodBeat.o(88487);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.b.a.a;
 
 import android.os.IBinder;
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$a$a
   implements b
@@ -20,6 +21,7 @@ final class b$a$a
   
   public final void onActionResult(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(75593);
     Parcel localParcel = Parcel.obtain();
     try
     {
@@ -31,6 +33,7 @@ final class b$a$a
     finally
     {
       localParcel.recycle();
+      AppMethodBeat.o(75593);
     }
   }
 }

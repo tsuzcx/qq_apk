@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyMyRecordUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class LuckyMoneyMyRecordUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.lVW.finish();
+    AppMethodBeat.i(42755);
+    this.oua.finish();
+    AppMethodBeat.o(42755);
     return true;
   }
 }

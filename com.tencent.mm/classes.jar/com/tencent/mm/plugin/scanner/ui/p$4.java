@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class p$4
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   p$4(p paramp) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    this.nMw.im(true);
+    AppMethodBeat.i(151679);
+    p.a(this.qAf);
+    AppMethodBeat.o(151679);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.p.4
  * JD-Core Version:    0.7.0.1
  */

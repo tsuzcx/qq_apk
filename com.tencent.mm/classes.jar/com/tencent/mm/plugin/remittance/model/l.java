@@ -1,85 +1,97 @@
 package com.tencent.mm.plugin.remittance.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bya;
-import com.tencent.mm.protocal.c.co;
-import com.tencent.mm.protocal.c.kj;
-import com.tencent.mm.protocal.c.kk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.g;
+import com.tencent.mm.protocal.protobuf.ckm;
+import com.tencent.mm.protocal.protobuf.cz;
+import com.tencent.mm.protocal.protobuf.mv;
+import com.tencent.mm.protocal.protobuf.mw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.i;
 import com.tencent.mm.wallet_core.d.d;
 
 public final class l
   extends m
-  implements k, g, d
+  implements k, i, d
 {
-  private f dmL;
-  private b eWr;
-  public boolean jMV = false;
-  public kk nym;
-  public boolean nyn = false;
-  private kj nyo;
+  private f callback;
+  public String cnI;
+  private b goo;
+  public boolean hasRetried;
+  public boolean mhe;
+  public mw qjn;
+  private mv qjo;
   
-  public l(bya parambya, co paramco, String paramString1, int paramInt, String paramString2)
+  public l(ckm paramckm, cz paramcz, String paramString1, int paramInt, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(44747);
+    this.mhe = false;
+    this.hasRetried = false;
     b.a locala = new b.a();
-    locala.ecH = new kj();
-    locala.ecI = new kk();
-    locala.ecG = 2682;
+    locala.fsX = new mv();
+    locala.fsY = new mw();
+    locala.funcId = 2682;
     locala.uri = "/cgi-bin/mmpay-bin/busif2fzerocallback";
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.eWr = locala.Kt();
-    this.nyo = ((kj)this.eWr.ecE.ecN);
-    this.nyo.sEQ = paramco;
-    this.nyo.sFh = parambya;
-    this.nyo.sFi = paramString1;
-    this.nyo.sFu = paramInt;
-    this.nyo.token = paramString2;
-    y.i("MicroMsg.NetSceneBusiF2fZeroCallback", "NetSceneBusiF2fZeroCallback, token %s AfterPlaceOrderCommReq %s zero_pay_extend: %s", new Object[] { paramString2, a.a(paramco), paramString1 });
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.goo = locala.ado();
+    this.qjo = ((mv)this.goo.fsV.fta);
+    this.qjo.wAZ = paramcz;
+    this.qjo.wBt = paramckm;
+    this.qjo.wBu = paramString1;
+    this.qjo.wBO = paramInt;
+    this.qjo.token = paramString2;
+    this.cnI = paramString3;
+    ab.i("MicroMsg.NetSceneBusiF2fZeroCallback", "NetSceneBusiF2fZeroCallback, token %s AfterPlaceOrderCommReq %s zero_pay_extend: %s", new Object[] { paramString2, a.a(paramcz), paramString1 });
+    AppMethodBeat.o(44747);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.eWr, this);
+    AppMethodBeat.i(44748);
+    this.callback = paramf;
+    int i = dispatch(parame, this.goo, this);
+    AppMethodBeat.o(44748);
+    return i;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final boolean getHasRetried()
   {
-    y.i("MicroMsg.NetSceneBusiF2fZeroCallback", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.nym = ((kk)((b)paramq).ecF.ecN);
-    y.i("MicroMsg.NetSceneBusiF2fZeroCallback", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.nym.ino), this.nym.inp });
-    if (this.dmL != null) {
-      if (this.nym.sFv != 1) {
-        break label124;
-      }
-    }
-    label124:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jMV = bool;
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-  }
-  
-  public final boolean bwg()
-  {
-    return this.nyn;
+    return this.hasRetried;
   }
   
   public final int getType()
   {
     return 2682;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(44749);
+    ab.i("MicroMsg.NetSceneBusiF2fZeroCallback", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.qjn = ((mw)((b)paramq).fsW.fta);
+    ab.i("MicroMsg.NetSceneBusiF2fZeroCallback", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.qjn.koj), this.qjn.kok });
+    if (this.callback != null) {
+      if (this.qjn.wBP != 1) {
+        break label134;
+      }
+    }
+    label134:
+    for (boolean bool = true;; bool = false)
+    {
+      this.mhe = bool;
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(44749);
+      return;
+    }
   }
 }
 

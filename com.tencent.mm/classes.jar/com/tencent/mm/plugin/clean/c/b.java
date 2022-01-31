@@ -1,25 +1,33 @@
 package com.tencent.mm.plugin.clean.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class b
   implements Comparable<b>
 {
-  public long hFz;
-  public ArrayList<a> iBu;
+  public long jyU;
+  public ArrayList<a> kGB;
   public String username;
   
-  public final boolean aDG()
+  public final boolean bgG()
   {
-    this.hFz = 0L;
-    Iterator localIterator = this.iBu.iterator();
+    AppMethodBeat.i(18666);
+    this.jyU = 0L;
+    Iterator localIterator = this.kGB.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      this.hFz += locala.size;
+      this.jyU += locala.size;
     }
-    return this.iBu.size() != 0;
+    if (this.kGB.size() == 0)
+    {
+      AppMethodBeat.o(18666);
+      return false;
+    }
+    AppMethodBeat.o(18666);
+    return true;
   }
 }
 

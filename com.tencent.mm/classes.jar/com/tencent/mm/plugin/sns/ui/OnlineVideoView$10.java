@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.aq;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ar;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class OnlineVideoView$10
   implements Runnable
@@ -12,24 +13,27 @@ final class OnlineVideoView$10
   
   public final void run()
   {
-    if (OnlineVideoView.d(this.oRM) != null)
+    AppMethodBeat.i(38399);
+    if (this.rJD.kvG != null)
     {
-      if (!bk.bl(OnlineVideoView.d(this.oRM).getVideoPath())) {
-        break label87;
+      if (bo.isNullOrNil(this.rJD.kvG.getVideoPath()))
+      {
+        ab.i("MicroMsg.OnlineVideoView", "%d had not set video path to play", new Object[] { Integer.valueOf(this.rJD.hashCode()) });
+        String str = ar.a(OnlineVideoView.a(this.rJD), OnlineVideoView.c(this.rJD));
+        if (!bo.isNullOrNil(str)) {
+          this.rJD.bw(str, false);
+        }
+        AppMethodBeat.o(38399);
+        return;
       }
-      y.i("MicroMsg.OnlineVideoView", "%d had not set video path to play", new Object[] { Integer.valueOf(this.oRM.hashCode()) });
-      str = aq.a(OnlineVideoView.a(this.oRM), OnlineVideoView.e(this.oRM));
-      if (!bk.bl(str)) {
-        this.oRM.bg(str, false);
+      if (!this.rJD.kvG.isPlaying())
+      {
+        this.rJD.kvG.start();
+        AppMethodBeat.o(38399);
+        return;
       }
     }
-    label87:
-    while (OnlineVideoView.d(this.oRM).isPlaying())
-    {
-      String str;
-      return;
-    }
-    OnlineVideoView.d(this.oRM).start();
+    AppMethodBeat.o(38399);
   }
 }
 

@@ -1,13 +1,19 @@
 package com.tencent.mm.ap;
 
-public final class a$1
-  implements Runnable
+import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
+
+final class a$1
+  extends ak
 {
-  public a$1(a parama, String paramString) {}
+  a$1(a parama) {}
   
-  public final void run()
+  public final void handleMessage(Message paramMessage)
   {
-    a.lT(this.dol);
+    AppMethodBeat.i(16437);
+    this.fBe.onGYNetEnd(999, 0, 0, "", null, null);
+    AppMethodBeat.o(16437);
   }
 }
 

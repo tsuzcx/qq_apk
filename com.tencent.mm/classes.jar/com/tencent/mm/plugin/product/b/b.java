@@ -1,34 +1,52 @@
 package com.tencent.mm.plugin.product.b;
 
 import android.content.Context;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.wi;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.aan;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b
 {
-  public static String a(Context paramContext, wi paramwi)
+  public static String a(Context paramContext, aan paramaan)
   {
-    if (paramwi.sFS > 0) {
-      return paramwi.kRZ + " " + c(paramwi.sFS, paramwi.sSo);
+    AppMethodBeat.i(43950);
+    if (paramaan.wCm > 0)
+    {
+      paramContext = paramaan.Name + " " + d(paramaan.wCm, paramaan.PriceType);
+      AppMethodBeat.o(43950);
+      return paramContext;
     }
-    return paramContext.getString(a.i.mall_product_submit_price_express_free);
+    paramContext = paramContext.getString(2131301500);
+    AppMethodBeat.o(43950);
+    return paramContext;
   }
   
-  public static String c(double paramDouble, String paramString)
+  public static String d(double paramDouble, String paramString)
   {
-    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bk.bl(paramString))) {
-      return String.format("¥%.2f", new Object[] { Double.valueOf(paramDouble / 100.0D) });
+    AppMethodBeat.i(43949);
+    if (("CNY".equals(paramString)) || ("1".equals(paramString)) || (bo.isNullOrNil(paramString)))
+    {
+      paramString = String.format("¥%.2f", new Object[] { Double.valueOf(paramDouble / 100.0D) });
+      AppMethodBeat.o(43949);
+      return paramString;
     }
-    return String.format("%s%.2f", new Object[] { paramString, Double.valueOf(paramDouble / 100.0D) });
+    paramString = String.format("%s%.2f", new Object[] { paramString, Double.valueOf(paramDouble / 100.0D) });
+    AppMethodBeat.o(43949);
+    return paramString;
   }
   
-  public static String p(int paramInt1, int paramInt2, String paramString)
+  public static String v(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramInt1 == paramInt2) {
-      return c(paramInt1, paramString);
+    AppMethodBeat.i(43948);
+    if (paramInt1 == paramInt2)
+    {
+      paramString = d(paramInt1, paramString);
+      AppMethodBeat.o(43948);
+      return paramString;
     }
-    return String.format("%s~%s", new Object[] { c(paramInt2, paramString), c(paramInt1, paramString) });
+    paramString = String.format("%s~%s", new Object[] { d(paramInt2, paramString), d(paramInt1, paramString) });
+    AppMethodBeat.o(43948);
+    return paramString;
   }
 }
 

@@ -1,40 +1,57 @@
 package com.tencent.mm.plugin.webview.luggage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.c.d;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 public final class r
 {
-  public final HashMap<String, String> rcS = new HashMap();
-  public final HashMap<String, c.d> rcT = new HashMap();
-  public e rcp;
+  public final HashMap<String, String> uSQ;
+  public final HashMap<String, c.d> uSR;
+  public e uSb;
   
   public r(e parame)
   {
-    this.rcp = parame;
+    AppMethodBeat.i(6230);
+    this.uSQ = new HashMap();
+    this.uSR = new HashMap();
+    this.uSb = parame;
+    AppMethodBeat.o(6230);
   }
   
-  public static String RL(String paramString)
+  public static String agP(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    int i;
-    do
+    AppMethodBeat.i(6232);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(6232);
       return paramString;
-      i = paramString.indexOf("#");
-    } while (i < 0);
-    return paramString.substring(0, i);
+    }
+    int i = paramString.indexOf("#");
+    if (i < 0)
+    {
+      AppMethodBeat.o(6232);
+      return paramString;
+    }
+    paramString = paramString.substring(0, i);
+    AppMethodBeat.o(6232);
+    return paramString;
   }
   
   public final String getAppId()
   {
-    String str = this.rcp.getUrl();
-    if (bk.bl(str)) {
+    AppMethodBeat.i(6231);
+    String str = this.uSb.getUrl();
+    if (bo.isNullOrNil(str))
+    {
+      AppMethodBeat.o(6231);
       return null;
     }
-    str = RL(str);
-    return (String)this.rcS.get(str);
+    str = agP(str);
+    str = (String)this.uSQ.get(str);
+    AppMethodBeat.o(6231);
+    return str;
   }
 }
 

@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wallet.a.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
-import com.tencent.mm.plugin.wallet_core.model.ag;
+import com.tencent.mm.plugin.wallet_core.model.am;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.ad;
 
 final class WalletPayUI$2
   implements View.OnClickListener
@@ -17,75 +18,78 @@ final class WalletPayUI$2
   public final void onClick(View paramView)
   {
     int j = 0;
-    p.bTK();
+    AppMethodBeat.i(46035);
+    s.cRG();
     int i;
-    if (p.bTL().bVO())
+    if (s.cRH().cUm())
     {
-      if (this.qnV.nDu == null)
+      if (this.tXq.mPayInfo == null)
       {
         i = 0;
-        if (this.qnV.nDu != null) {
-          break label131;
+        if (this.tXq.mPayInfo != null) {
+          break label141;
         }
         paramView = "";
-        label40:
-        aa.d(i, paramView, 6, "");
+        label45:
+        ad.e(i, paramView, 6, "");
       }
     }
     else
     {
-      if (this.qnV.nEh.qwP != 1) {
-        break label173;
+      if (this.tXq.qrf.ujn != 1) {
+        break label183;
       }
-      p.bTK();
-      if (p.bTL().bVO())
+      s.cRG();
+      if (s.cRH().cUm())
       {
-        if (this.qnV.nDu != null) {
-          break label145;
+        if (this.tXq.mPayInfo != null) {
+          break label155;
         }
         i = j;
-        label88:
-        if (this.qnV.nDu != null) {
-          break label159;
+        label93:
+        if (this.tXq.mPayInfo != null) {
+          break label169;
         }
       }
     }
-    label131:
-    label145:
-    label159:
-    for (paramView = "";; paramView = this.qnV.nDu.bMX)
+    label141:
+    label155:
+    label169:
+    for (paramView = "";; paramView = this.tXq.mPayInfo.cnI)
     {
-      aa.d(i, paramView, 5, "");
-      WalletPayUI.f(this.qnV);
+      ad.e(i, paramView, 5, "");
+      WalletPayUI.f(this.tXq);
+      AppMethodBeat.o(46035);
       return;
-      i = this.qnV.nDu.bUV;
+      i = this.tXq.mPayInfo.cCD;
       break;
-      paramView = this.qnV.nDu.bMX;
-      break label40;
-      i = this.qnV.nDu.bUV;
-      break label88;
+      paramView = this.tXq.mPayInfo.cnI;
+      break label45;
+      i = this.tXq.mPayInfo.cCD;
+      break label93;
     }
-    label173:
-    y.i("MicroMsg.WalletPayUI", "SimpleReg , assigned userinfo pay! payWithNewBankcard");
-    p.bTK();
-    if (p.bTL().bVO())
+    label183:
+    ab.i(this.tXq.TAG, "SimpleReg , assigned userinfo pay! payWithNewBankcard");
+    s.cRG();
+    if (s.cRH().cUm())
     {
-      if (this.qnV.nDu != null) {
-        break label238;
+      if (this.tXq.mPayInfo != null) {
+        break label258;
       }
       i = 0;
-      if (this.qnV.nDu != null) {
-        break label252;
+      if (this.tXq.mPayInfo != null) {
+        break label272;
       }
     }
-    label238:
-    label252:
-    for (paramView = "";; paramView = this.qnV.nDu.bMX)
+    label258:
+    label272:
+    for (paramView = "";; paramView = this.tXq.mPayInfo.cnI)
     {
-      aa.d(i, paramView, 5, "");
-      this.qnV.b(false, 0, "");
+      ad.e(i, paramView, 5, "");
+      this.tXq.b(false, 0, "");
+      AppMethodBeat.o(46035);
       return;
-      i = this.qnV.nDu.bUV;
+      i = this.tXq.mPayInfo.cCD;
       break;
     }
   }

@@ -1,80 +1,93 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.agb;
-import com.tencent.mm.protocal.c.agc;
-import com.tencent.mm.protocal.c.azt;
-import com.tencent.mm.protocal.c.azu;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.aku;
+import com.tencent.mm.protocal.protobuf.akv;
+import com.tencent.mm.protocal.protobuf.bgw;
+import com.tencent.mm.protocal.protobuf.bgx;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
   extends m
   implements k
 {
-  public String bTX;
-  private b dmK;
-  private f dmL;
+  private f callback;
+  public String jsonString;
+  private b rr;
   
   public c(String paramString)
   {
+    AppMethodBeat.i(37662);
     b.a locala = new b.a();
-    locala.ecH = new azt();
-    locala.ecI = new azu();
+    locala.fsX = new bgw();
+    locala.fsY = new bgx();
     locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_officialsync";
-    locala.ecG = 2721;
-    this.dmK = locala.Kt();
-    ((azt)this.dmK.ecE.ecN).tvQ = paramString;
-    y.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: syncBuffer:" + paramString);
+    locala.funcId = 2721;
+    this.rr = locala.ado();
+    ((bgw)this.rr.fsV.fta).xwb = paramString;
+    ab.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: syncBuffer:".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(37662);
   }
   
   public c(String paramString1, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(37661);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new agb();
-    ((b.a)localObject).ecI = new agc();
+    ((b.a)localObject).fsX = new aku();
+    ((b.a)localObject).fsY = new akv();
     ((b.a)localObject).uri = "/cgi-bin/mmgame-bin/getgamecanvasinfo";
-    ((b.a)localObject).ecG = 1337;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (agb)this.dmK.ecE.ecN;
-    ((agb)localObject).euK = paramString1;
-    ((agb)localObject).tdS = paramString2;
-    ((agb)localObject).tdT = paramString3;
-    y.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: shareType:" + paramString2 + " sharedAppId :" + paramString1);
+    ((b.a)localObject).funcId = 1337;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (aku)this.rr.fsV.fta;
+    ((aku)localObject).fKw = paramString1;
+    ((aku)localObject).xbR = paramString2;
+    ((aku)localObject).xbS = paramString3;
+    ab.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "Req: shareType:" + paramString2 + " sharedAppId :" + paramString1);
+    AppMethodBeat.o(37661);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString + " sceneType: " + this.dmK.ecG);
-    if (this.dmK.ecG == 1337) {
-      this.bTX = ((agc)((b)paramq).ecF.ecN).tav;
-    }
-    for (;;)
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      if (this.dmK.ecG == 2721) {
-        this.bTX = ((azu)((b)paramq).ecF.ecN).tvR;
-      }
-    }
+    AppMethodBeat.i(37663);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(37663);
+    return i;
   }
   
   public final int getType()
   {
-    return this.dmK.ecG;
+    AppMethodBeat.i(145333);
+    int i = this.rr.getType();
+    AppMethodBeat.o(145333);
+    return i;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(37664);
+    ab.i("MicroMsg.NetSceneLandingPagesDynamicUpdate", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString + " sceneType: " + getType());
+    if (getType() == 1337) {
+      this.jsonString = ((akv)((b)paramq).fsW.fta).wYM;
+    }
+    for (;;)
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(37664);
+      return;
+      if (getType() == 2721) {
+        this.jsonString = ((bgx)((b)paramq).fsW.fta).xwc;
+      }
+    }
   }
 }
 

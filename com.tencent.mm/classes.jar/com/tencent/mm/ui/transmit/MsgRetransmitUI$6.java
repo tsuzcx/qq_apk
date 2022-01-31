@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.transmit;
 
 import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.model.j.a;
 
 final class MsgRetransmitUI$6
@@ -8,14 +9,16 @@ final class MsgRetransmitUI$6
 {
   MsgRetransmitUI$6(MsgRetransmitUI paramMsgRetransmitUI) {}
   
-  public final void ckA()
+  public final void dlh()
   {
-    if (MsgRetransmitUI.f(this.wgG) != null)
+    AppMethodBeat.i(35068);
+    if (MsgRetransmitUI.f(this.Azx) != null)
     {
-      MsgRetransmitUI.f(this.wgG).dismiss();
-      MsgRetransmitUI.g(this.wgG);
+      MsgRetransmitUI.f(this.Azx).dismiss();
+      MsgRetransmitUI.g(this.Azx);
     }
-    this.wgG.finish();
+    this.Azx.finish();
+    AppMethodBeat.o(35068);
   }
 }
 

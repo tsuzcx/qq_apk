@@ -3,6 +3,7 @@ package org.xwalk.core;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class NetworkUtil
 {
@@ -14,49 +15,71 @@ public class NetworkUtil
   
   public static int getCurrentNetWorkStatus(Context paramContext)
   {
-    if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0) {
+    AppMethodBeat.i(4191);
+    if (paramContext.checkCallingOrSelfPermission("android.permission.ACCESS_NETWORK_STATE") != 0)
+    {
+      AppMethodBeat.o(4191);
       return 0;
     }
     paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(4191);
       return 0;
     }
     paramContext = paramContext.getActiveNetworkInfo();
-    if (paramContext == null) {
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(4191);
       return 0;
     }
-    if (!paramContext.isConnected()) {
+    if (!paramContext.isConnected())
+    {
+      AppMethodBeat.o(4191);
       return 0;
     }
-    if (paramContext.getType() == 1) {
+    if (paramContext.getType() == 1)
+    {
+      AppMethodBeat.o(4191);
       return 1;
     }
-    if (paramContext.getSubtype() >= 13) {
+    if (paramContext.getSubtype() >= 13)
+    {
+      AppMethodBeat.o(4191);
       return 3;
     }
-    if ((paramContext.getSubtype() >= 5) && (paramContext.getSubtype() < 13)) {
+    if ((paramContext.getSubtype() >= 5) && (paramContext.getSubtype() < 13))
+    {
+      AppMethodBeat.o(4191);
       return 2;
     }
+    AppMethodBeat.o(4191);
     return 4;
   }
   
   public static boolean isNetworkAvailable()
   {
-    if (Integer.valueOf(getCurrentNetWorkStatus(XWalkEnvironment.getApplicationContext())).intValue() == 0)
+    AppMethodBeat.i(4192);
+    if (getCurrentNetWorkStatus(XWalkEnvironment.getApplicationContext()) == 0)
     {
-      XWalkInitializer.addXWalkInitializeLog("no network");
+      XWalkEnvironment.addXWalkInitializeLog("no network");
+      AppMethodBeat.o(4192);
       return false;
     }
+    AppMethodBeat.o(4192);
     return true;
   }
   
   public static boolean isWifiAvailable()
   {
-    switch (Integer.valueOf(getCurrentNetWorkStatus(XWalkEnvironment.getApplicationContext())).intValue())
+    AppMethodBeat.i(4193);
+    switch (getCurrentNetWorkStatus(XWalkEnvironment.getApplicationContext()))
     {
     default: 
+      AppMethodBeat.o(4193);
       return false;
     }
+    AppMethodBeat.o(4193);
     return true;
   }
 }

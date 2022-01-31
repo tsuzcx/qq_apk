@@ -3,24 +3,45 @@ package com.tencent.mm.modelsns;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SnsAdClick
   implements Parcelable
 {
-  public static final Parcelable.Creator<SnsAdClick> CREATOR = new SnsAdClick.1();
-  public long eAA;
-  public int eAB = 0;
-  public int eAC = 0;
-  public int eAD = 0;
-  public int eAE = 0;
-  public long eAF = 0L;
-  public long eAG = 0L;
-  public int eAH = 0;
-  public int eAz = 0;
-  public int source;
-  public long startTime = 0L;
+  public static final Parcelable.Creator<SnsAdClick> CREATOR;
+  public long cIo;
+  public int cpt;
+  public long fQA;
+  public int fQs;
+  public int fQt;
+  public int fQu;
+  public int fQv;
+  public int fQw;
+  public long fQx;
+  public long fQy;
+  public int fQz;
+  public long startTime;
   
-  public SnsAdClick() {}
+  static
+  {
+    AppMethodBeat.i(94456);
+    CREATOR = new SnsAdClick.1();
+    AppMethodBeat.o(94456);
+  }
+  
+  public SnsAdClick()
+  {
+    this.fQs = 0;
+    this.fQt = 0;
+    this.fQu = 0;
+    this.startTime = 0L;
+    this.fQv = 0;
+    this.fQw = 0;
+    this.fQx = 0L;
+    this.fQy = 0L;
+    this.fQz = 0;
+    this.fQA = 0L;
+  }
   
   public SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4)
   {
@@ -34,15 +55,32 @@ public class SnsAdClick
   
   private SnsAdClick(int paramInt1, int paramInt2, long paramLong, int paramInt3, int paramInt4, int paramInt5)
   {
-    this.source = paramInt1;
-    this.eAz = paramInt2;
-    this.eAA = paramLong;
-    this.eAB = paramInt3;
-    this.eAC = paramInt4;
-    this.eAD = 0;
-    this.eAE = 0;
-    this.eAH = paramInt5;
+    AppMethodBeat.i(94454);
+    this.fQs = 0;
+    this.fQt = 0;
+    this.fQu = 0;
+    this.startTime = 0L;
+    this.fQv = 0;
+    this.fQw = 0;
+    this.fQx = 0L;
+    this.fQy = 0L;
+    this.fQz = 0;
+    this.fQA = 0L;
+    this.cpt = paramInt1;
+    this.fQs = paramInt2;
+    this.cIo = paramLong;
+    this.fQt = paramInt3;
+    this.fQu = paramInt4;
+    this.fQv = 0;
+    this.fQw = 0;
+    this.fQz = paramInt5;
     this.startTime = System.currentTimeMillis();
+    AppMethodBeat.o(94454);
+  }
+  
+  public SnsAdClick(int paramInt, long paramLong)
+  {
+    this(paramInt, 7, paramLong, 0, 0, 0);
   }
   
   public int describeContents()
@@ -52,20 +90,23 @@ public class SnsAdClick
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.source);
-    paramParcel.writeInt(this.eAz);
-    paramParcel.writeLong(this.eAA);
-    paramParcel.writeInt(this.eAB);
-    paramParcel.writeInt(this.eAC);
-    paramParcel.writeInt(this.eAD);
-    paramParcel.writeInt(this.eAE);
+    AppMethodBeat.i(94455);
+    paramParcel.writeInt(this.cpt);
+    paramParcel.writeInt(this.fQs);
+    paramParcel.writeLong(this.cIo);
+    paramParcel.writeInt(this.fQt);
+    paramParcel.writeInt(this.fQu);
+    paramParcel.writeInt(this.fQv);
+    paramParcel.writeInt(this.fQw);
     paramParcel.writeLong(this.startTime);
-    paramParcel.writeLong(this.eAG);
+    paramParcel.writeLong(this.fQy);
+    paramParcel.writeLong(this.fQA);
+    AppMethodBeat.o(94455);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelsns.SnsAdClick
  * JD-Core Version:    0.7.0.1
  */

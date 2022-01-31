@@ -1,6 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.codec.mp3;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.codec.IAudioRecognition;
 
@@ -9,18 +10,30 @@ public class MP3Recognition
 {
   public AudioFormat.AudioType getAudioType(String paramString, byte[] paramArrayOfByte)
   {
-    if (MP3FileCheck.isMp3File(paramString)) {
-      return AudioFormat.AudioType.MP3;
+    AppMethodBeat.i(128576);
+    if (MP3FileCheck.isMp3File(paramString))
+    {
+      paramString = AudioFormat.AudioType.MP3;
+      AppMethodBeat.o(128576);
+      return paramString;
     }
-    return AudioFormat.AudioType.UNSUPPORT;
+    paramString = AudioFormat.AudioType.UNSUPPORT;
+    AppMethodBeat.o(128576);
+    return paramString;
   }
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && ((paramString.toLowerCase().endsWith(".mp3")) || (paramString.endsWith(".mp3.tmp")) || (paramString.endsWith(".mp3.mqcc")) || (paramString.endsWith(".ofl")) || (paramString.endsWith(".efe")))) {
-      return AudioFormat.AudioType.MP3;
+    AppMethodBeat.i(128577);
+    if ((!TextUtils.isEmpty(paramString)) && ((paramString.toLowerCase().endsWith(".mp3")) || (paramString.endsWith(".mp3.tmp")) || (paramString.endsWith(".mp3.mqcc")) || (paramString.endsWith(".ofl")) || (paramString.endsWith(".efe"))))
+    {
+      paramString = AudioFormat.AudioType.MP3;
+      AppMethodBeat.o(128577);
+      return paramString;
     }
-    return AudioFormat.AudioType.UNSUPPORT;
+    paramString = AudioFormat.AudioType.UNSUPPORT;
+    AppMethodBeat.o(128577);
+    return paramString;
   }
 }
 

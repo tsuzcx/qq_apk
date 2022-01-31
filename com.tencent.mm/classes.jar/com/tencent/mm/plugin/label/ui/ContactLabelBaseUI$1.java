@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.label.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 
 final class ContactLabelBaseUI$1
   implements DialogInterface.OnCancelListener
@@ -12,7 +13,9 @@ final class ContactLabelBaseUI$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().cancel(636);
+    AppMethodBeat.i(22536);
+    aw.Rc().cancel(636);
+    AppMethodBeat.o(22536);
   }
 }
 

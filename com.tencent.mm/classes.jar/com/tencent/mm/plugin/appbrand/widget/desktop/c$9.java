@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.support.v7.widget.RecyclerView.v;
-import android.support.v7.widget.ar;
+import android.support.v7.widget.as;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView;
 import java.util.ArrayList;
 
@@ -16,28 +17,33 @@ final class c$9
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
+    AppMethodBeat.i(133787);
     paramAnimator = this.val$view;
-    if (this.hpW.hpU.nj(this.ffJ)) {}
+    if (this.jed.jeb.qQ(this.gxr)) {}
     for (float f = 0.3F;; f = 1.0F)
     {
       paramAnimator.setAlpha(f);
       this.val$view.setScaleX(1.0F);
       this.val$view.setScaleY(1.0F);
-      if (this.hpZ) {
+      if (this.jeg) {
         break;
       }
       this.val$view.setVisibility(4);
+      AppMethodBeat.o(133787);
       return;
     }
     this.val$view.setVisibility(0);
+    AppMethodBeat.o(133787);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.abL.setListener(null);
-    this.hpW.l(this.abK);
-    this.hpW.abC.remove(this.abK);
-    this.hpW.gB();
+    AppMethodBeat.i(133788);
+    this.acw.setListener(null);
+    this.jed.m(this.acv);
+    this.jed.acn.remove(this.acv);
+    this.jed.hB();
+    AppMethodBeat.o(133788);
   }
   
   public final void onAnimationStart(Animator paramAnimator) {}

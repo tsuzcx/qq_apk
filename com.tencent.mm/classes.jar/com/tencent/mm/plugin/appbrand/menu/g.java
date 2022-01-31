@@ -1,39 +1,57 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import android.content.Context;
-import android.content.res.Resources;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.report.c;
-import com.tencent.mm.plugin.appbrand.y.d;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bl;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.performance.AppBrandPerformanceManager;
 import com.tencent.mm.ui.base.l;
-import java.util.Map;
 
 public final class g
   extends a
 {
-  g()
+  public g()
   {
-    super(o.gPq.ordinal());
+    super(r.iqW.ordinal());
+    AppMethodBeat.i(132208);
+    AppMethodBeat.o(132208);
   }
   
-  public final void a(Context paramContext, q paramq, l paraml, String paramString)
+  public final void a(Context paramContext, v paramv, l paraml, String paramString)
   {
-    if (bl.csf()) {
-      paraml.a(this.gPE, paramContext.getResources().getColor(y.d.red_text_color), paramContext.getString(y.j.app_brand_back));
+    AppMethodBeat.i(132209);
+    paramv = (AppBrandSysConfigWC)paramv.U(AppBrandSysConfigWC.class);
+    if (paramv.hiX.gXe == 1) {
+      if (!paramv.bDk) {
+        break label58;
+      }
+    }
+    label58:
+    for (paramContext = paramContext.getString(2131296755);; paramContext = paramContext.getString(2131296762))
+    {
+      paraml.e(r.iqW.ordinal(), paramContext);
+      AppMethodBeat.o(132209);
+      return;
     }
   }
   
-  public final void a(Context paramContext, q paramq, String paramString, n paramn)
+  public final void a(Context paramContext, v paramv, String paramString, q paramq)
   {
-    paramq.Zy().aau().get("exitMiniProgram");
-    paramContext = paramq.Zy();
-    new com.tencent.mm.ab.i();
-    paramContext.getRuntime().finish();
-    c.a(paramString, paramq.getURL(), 10, "", bk.UX(), 1, 0);
+    AppMethodBeat.i(132210);
+    if (!((AppBrandSysConfigWC)paramv.U(AppBrandSysConfigWC.class)).bDk) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppBrandPerformanceManager.Ev(paramString);
+      Toast.makeText(paramContext, 2131296763, 0).show();
+      AppMethodBeat.o(132210);
+      return;
+    }
+    AppBrandPerformanceManager.Ew(paramString);
+    Toast.makeText(paramContext, 2131296756, 0).show();
+    AppMethodBeat.o(132210);
   }
 }
 

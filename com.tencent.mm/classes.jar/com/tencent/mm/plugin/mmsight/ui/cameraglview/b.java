@@ -4,9 +4,10 @@ import android.graphics.Point;
 import android.opengl.GLES20;
 import android.opengl.GLSurfaceView.Renderer;
 import android.opengl.Matrix;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -16,187 +17,210 @@ import javax.microedition.khronos.opengles.GL10;
 public final class b
   implements GLSurfaceView.Renderer
 {
-  static float[] fvS = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
-  static float[] fvT = { -1.0F, -0.5F, 1.0F, -0.5F, -1.0F, 0.5F, 1.0F, 0.5F };
-  private static final float[] fvU = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-  boolean brU = false;
-  private int fvV = 0;
-  private int fvW = 0;
-  private byte[] fvX = null;
-  private int fvY = 0;
-  private int fvZ = 0;
-  ByteBuffer fwa;
-  ByteBuffer fwb;
-  private int fwc;
-  private int fwd;
-  private int fwe;
-  private int fwf;
-  private int fwg;
-  private int fwh;
-  private int fwi;
-  private int fwj;
-  private FloatBuffer fwk;
-  private FloatBuffer fwl;
-  private float[] fwm = new float[16];
-  boolean fwn = false;
-  private float[] fwo = fvS;
-  private boolean fwq = false;
-  private int rotate = 0;
+  static float[] eZq = { -1.0F, -1.0F, 1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F };
+  private static final float[] eZr = { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+  static float[] gNy = { -1.0F, -0.5F, 1.0F, -0.5F, -1.0F, 0.5F, 1.0F, 0.5F };
+  private int eYZ;
+  private FloatBuffer eYu;
+  private FloatBuffer eYv;
+  private int eZa;
+  private int eZb;
+  private int eZe;
+  private int eZf;
+  private int eZj;
+  private int eZk;
+  ByteBuffer eZm;
+  ByteBuffer eZn;
+  private int fbH;
+  private int fbI;
+  private boolean fcx;
+  private byte[] frameData;
+  private int gNA;
+  private int gNB;
+  private int gNC;
+  private float[] gND;
+  boolean gNE;
+  private float[] gNF;
+  boolean gNz;
+  private int rotate;
   
   public b()
   {
-    Point localPoint = d.biC();
+    AppMethodBeat.i(55314);
+    this.fbH = 0;
+    this.fbI = 0;
+    this.gNz = false;
+    this.frameData = null;
+    this.gNA = 0;
+    this.gNB = 0;
+    this.rotate = 0;
+    this.gND = new float[16];
+    this.gNE = false;
+    this.gNF = eZq;
+    this.fcx = false;
+    Point localPoint = d.bQE();
     float f = localPoint.x / localPoint.y / 2.0F;
-    fvT = new float[] { -1.0F, -f, 1.0F, -f, -1.0F, f, 1.0F, f };
+    gNy = new float[] { -1.0F, -f, 1.0F, -f, -1.0F, f, 1.0F, f };
+    AppMethodBeat.o(55314);
   }
   
   public final void b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
+    AppMethodBeat.i(55315);
     for (;;)
     {
       try
       {
-        if ((this.fvZ != paramInt2) || (this.fvY != paramInt1) || (this.rotate != paramInt3)) {
-          break label315;
+        if ((this.gNB != paramInt2) || (this.gNA != paramInt1) || (this.rotate != paramInt3)) {
+          break label329;
         }
-        if (this.fwq == paramBoolean) {
-          break label309;
+        if (this.fcx == paramBoolean) {
+          break label323;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        y.e("MicroMsg.MMSightCameraGLRenderer", "setDrawFrame error: %s", new Object[] { paramArrayOfByte.getMessage() });
+        ab.e("MicroMsg.MMSightCameraGLRenderer", "setDrawFrame error: %s", new Object[] { paramArrayOfByte.getMessage() });
+        AppMethodBeat.o(55315);
         return;
       }
       if (i != 0) {
-        y.d("MicroMsg.MMSightCameraGLRenderer", "setDrawFrame, frameData: %s, frameWidth: %s, frameHeight: %s, rotate: %s, isLandScape, frameSizeChange: %s, this %s", new Object[] { paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean), Boolean.valueOf(true), this });
+        ab.d("MicroMsg.MMSightCameraGLRenderer", "setDrawFrame, frameData: %s, frameWidth: %s, frameHeight: %s, rotate: %s, isLandScape, frameSizeChange: %s, this %s", new Object[] { paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean), Boolean.TRUE, this });
       }
-      this.fvX = paramArrayOfByte;
-      this.fvY = paramInt1;
-      this.fvZ = paramInt2;
+      this.frameData = paramArrayOfByte;
+      this.gNA = paramInt1;
+      this.gNB = paramInt2;
       this.rotate = paramInt3;
-      this.fwq = paramBoolean;
+      this.fcx = paramBoolean;
       if (i != 0)
       {
-        this.fwa = ByteBuffer.allocateDirect(paramInt2 * paramInt1);
-        this.fwb = ByteBuffer.allocateDirect(paramInt1 * paramInt2 / 2);
-        this.fwa.order(ByteOrder.nativeOrder());
-        this.fwb.order(ByteOrder.nativeOrder());
+        this.eZm = ByteBuffer.allocateDirect(paramInt2 * paramInt1);
+        this.eZn = ByteBuffer.allocateDirect(paramInt1 * paramInt2 / 2);
+        this.eZm.order(ByteOrder.nativeOrder());
+        this.eZn.order(ByteOrder.nativeOrder());
         if (paramBoolean) {
           continue;
         }
-        this.fwo = fvS;
-        if (this.fwo != null)
+        this.gNF = eZq;
+        if (this.gNF != null)
         {
-          this.fwk.put(this.fwo);
-          this.fwk.position(0);
+          this.eYv.put(this.gNF);
+          this.eYv.position(0);
         }
       }
-      if ((this.fwa == null) || (this.fwb == null)) {
-        break;
+      if ((this.eZm != null) && (this.eZn != null))
+      {
+        this.eZm.put(paramArrayOfByte, 0, paramInt1 * paramInt2);
+        this.eZm.position(0);
+        this.eZn.put(paramArrayOfByte, paramInt1 * paramInt2, paramInt1 * paramInt2 / 2);
+        this.eZn.position(0);
       }
-      this.fwa.put(paramArrayOfByte, 0, paramInt1 * paramInt2);
-      this.fwa.position(0);
-      this.fwb.put(paramArrayOfByte, paramInt1 * paramInt2, paramInt1 * paramInt2 / 2);
-      this.fwb.position(0);
+      AppMethodBeat.o(55315);
       return;
-      this.fwo = fvT;
+      this.gNF = gNy;
       continue;
-      label309:
+      label323:
       int i = 0;
       continue;
-      label315:
+      label329:
       i = 1;
     }
   }
   
   public final void onDrawFrame(GL10 paramGL10)
   {
-    bk.UZ();
-    this.brU = true;
+    AppMethodBeat.i(55318);
+    bo.yB();
+    this.gNz = true;
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
     GLES20.glClear(16640);
-    if (this.fwn)
+    if (this.gNE)
     {
-      y.i("MicroMsg.MMSightCameraGLRenderer", "clearFrameRequest");
-      this.fwn = false;
-      this.brU = false;
-      this.fvX = null;
-      this.fvY = -1;
-      this.fvZ = -1;
+      ab.i("MicroMsg.MMSightCameraGLRenderer", "clearFrameRequest");
+      this.gNE = false;
+      this.gNz = false;
+      this.frameData = null;
+      this.gNA = -1;
+      this.gNB = -1;
+      AppMethodBeat.o(55318);
       return;
     }
-    if ((this.fwe != 0) && (this.fwc != -1) && (this.fwd != -1) && (this.fvY > 0) && (this.fvZ > 0) && (this.fvX != null))
+    if ((this.eYZ != 0) && (this.eZe != -1) && (this.eZf != -1) && (this.gNA > 0) && (this.gNB > 0) && (this.frameData != null))
     {
-      GLES20.glUseProgram(this.fwe);
+      GLES20.glUseProgram(this.eYZ);
       GLES20.glActiveTexture(33984);
-      GLES20.glBindTexture(3553, this.fwc);
-      GLES20.glTexImage2D(3553, 0, 6409, this.fvY, this.fvZ, 0, 6409, 5121, this.fwa);
+      GLES20.glBindTexture(3553, this.eZe);
+      GLES20.glTexImage2D(3553, 0, 6409, this.gNA, this.gNB, 0, 6409, 5121, this.eZm);
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.fwh, 0);
+      GLES20.glUniform1i(this.eZj, 0);
       GLES20.glActiveTexture(33985);
-      GLES20.glBindTexture(3553, this.fwd);
-      GLES20.glTexImage2D(3553, 0, 6410, this.fvY / 2, this.fvZ / 2, 0, 6410, 5121, this.fwb);
+      GLES20.glBindTexture(3553, this.eZf);
+      GLES20.glTexImage2D(3553, 0, 6410, this.gNA / 2, this.gNB / 2, 0, 6410, 5121, this.eZn);
       GLES20.glTexParameterf(3553, 10241, 9729.0F);
       GLES20.glTexParameterf(3553, 10240, 9729.0F);
       GLES20.glTexParameterf(3553, 10242, 33071.0F);
       GLES20.glTexParameterf(3553, 10243, 33071.0F);
-      GLES20.glUniform1i(this.fwi, 1);
-      Matrix.setIdentityM(this.fwm, 0);
-      Matrix.setRotateM(this.fwm, 0, this.rotate, 0.0F, 0.0F, -1.0F);
-      GLES20.glUniformMatrix4fv(this.fwj, 1, false, this.fwm, 0);
-      this.fwk.position(0);
-      GLES20.glVertexAttribPointer(this.fwg, 2, 5126, false, 0, this.fwk);
-      GLES20.glEnableVertexAttribArray(this.fwg);
-      this.fwl.position(0);
-      GLES20.glVertexAttribPointer(this.fwf, 2, 5126, false, 0, this.fwl);
-      GLES20.glEnableVertexAttribArray(this.fwf);
+      GLES20.glUniform1i(this.eZk, 1);
+      Matrix.setIdentityM(this.gND, 0);
+      Matrix.setRotateM(this.gND, 0, this.rotate, 0.0F, 0.0F, -1.0F);
+      GLES20.glUniformMatrix4fv(this.gNC, 1, false, this.gND, 0);
+      this.eYv.position(0);
+      GLES20.glVertexAttribPointer(this.eZa, 2, 5126, false, 0, this.eYv);
+      GLES20.glEnableVertexAttribArray(this.eZa);
+      this.eYu.position(0);
+      GLES20.glVertexAttribPointer(this.eZb, 2, 5126, false, 0, this.eYu);
+      GLES20.glEnableVertexAttribArray(this.eZb);
       GLES20.glDrawArrays(5, 0, 4);
-      GLES20.glDisableVertexAttribArray(this.fwg);
-      GLES20.glDisableVertexAttribArray(this.fwf);
+      GLES20.glDisableVertexAttribArray(this.eZa);
+      GLES20.glDisableVertexAttribArray(this.eZb);
       GLES20.glBindTexture(3553, 0);
     }
-    this.brU = false;
+    this.gNz = false;
+    AppMethodBeat.o(55318);
   }
   
   public final void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged, surfaceWidth: %s, height: %s this %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this });
-    if ((paramInt1 != this.fvV) || (paramInt2 != this.fvW))
+    AppMethodBeat.i(55317);
+    ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged, surfaceWidth: %s, height: %s this %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this });
+    if ((paramInt1 != this.fbH) || (paramInt2 != this.fbI))
     {
-      y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged change viewpoint");
+      ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceChanged change viewpoint");
       GLES20.glViewport(0, 0, paramInt1, paramInt2);
-      this.fvV = paramInt1;
-      this.fvW = paramInt2;
+      this.fbH = paramInt1;
+      this.fbI = paramInt2;
     }
+    AppMethodBeat.o(55317);
   }
   
   public final void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated this %s", new Object[] { this });
+    AppMethodBeat.i(55316);
+    ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated this %s", new Object[] { this });
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
     GLES20.glDisable(2929);
-    this.fwe = com.tencent.mm.plugin.api.recordView.b.aW("attribute vec4 a_position;                         \nattribute vec2 a_texCoord;                         \nvarying vec2 v_texCoord;                           \nuniform mat4 uMatrix;                              \nvoid main() {                                      \n   gl_Position = uMatrix * a_position;             \n   v_texCoord = a_texCoord;                        \n}                                                  \n", "#ifdef GL_ES                                       \nprecision highp float;                             \n#endif                                             \nvarying vec2 v_texCoord;                           \nuniform sampler2D y_texture;                       \nuniform sampler2D uv_texture;                      \nvoid main (void) {                                 \n   float r, g, b, y, u, v;                         \n   y = texture2D(y_texture, v_texCoord).r;         \n   u = texture2D(uv_texture, v_texCoord).a;        \n   v = texture2D(uv_texture, v_texCoord).r;        \n   u = u - 0.5;                                    \n   v = v - 0.5;                                    \n   r = y + 1.370705 * v;                           \n   g = y - 0.337633 * u - 0.698001 * v;            \n   b = y + 1.732446 * u;                           \n   gl_FragColor = vec4(r, g, b, 1.0);              \n}                                                  \n");
-    if (this.fwe == 0) {
-      y.e("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, load program failed!");
+    this.eYZ = com.tencent.mm.plugin.api.recordView.b.Z("attribute vec4 a_position;                         \nattribute vec2 a_texCoord;                         \nvarying vec2 v_texCoord;                           \nuniform mat4 uMatrix;                              \nvoid main() {                                      \n   gl_Position = uMatrix * a_position;             \n   v_texCoord = a_texCoord;                        \n}                                                  \n", "#ifdef GL_ES                                       \nprecision highp float;                             \n#endif                                             \nvarying vec2 v_texCoord;                           \nuniform sampler2D y_texture;                       \nuniform sampler2D uv_texture;                      \nvoid main (void) {                                 \n   float r, g, b, y, u, v;                         \n   y = texture2D(y_texture, v_texCoord).r;         \n   u = texture2D(uv_texture, v_texCoord).a;        \n   v = texture2D(uv_texture, v_texCoord).r;        \n   u = u - 0.5;                                    \n   v = v - 0.5;                                    \n   r = y + 1.370705 * v;                           \n   g = y - 0.337633 * u - 0.698001 * v;            \n   b = y + 1.732446 * u;                           \n   gl_FragColor = vec4(r, g, b, 1.0);              \n}                                                  \n");
+    if (this.eYZ == 0) {
+      ab.e("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, load program failed!");
     }
-    this.fwg = GLES20.glGetAttribLocation(this.fwe, "a_position");
-    this.fwf = GLES20.glGetAttribLocation(this.fwe, "a_texCoord");
-    this.fwh = GLES20.glGetUniformLocation(this.fwe, "y_texture");
-    this.fwi = GLES20.glGetUniformLocation(this.fwe, "uv_texture");
-    this.fwj = GLES20.glGetUniformLocation(this.fwe, "uMatrix");
-    this.fwc = com.tencent.mm.plugin.api.recordView.b.YW();
-    this.fwd = com.tencent.mm.plugin.api.recordView.b.YW();
-    this.fwk = ByteBuffer.allocateDirect(this.fwo.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.fwk.put(this.fwo);
-    this.fwk.position(0);
-    this.fwl = ByteBuffer.allocateDirect(fvU.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-    this.fwl.put(fvU);
-    this.fwl.position(0);
-    y.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, yTextureId: %s, uvTextureId: %s this %s", new Object[] { Integer.valueOf(this.fwc), Integer.valueOf(this.fwd), this });
+    this.eZa = GLES20.glGetAttribLocation(this.eYZ, "a_position");
+    this.eZb = GLES20.glGetAttribLocation(this.eYZ, "a_texCoord");
+    this.eZj = GLES20.glGetUniformLocation(this.eYZ, "y_texture");
+    this.eZk = GLES20.glGetUniformLocation(this.eYZ, "uv_texture");
+    this.gNC = GLES20.glGetUniformLocation(this.eYZ, "uMatrix");
+    this.eZe = com.tencent.mm.plugin.api.recordView.b.Vm();
+    this.eZf = com.tencent.mm.plugin.api.recordView.b.Vm();
+    this.eYv = ByteBuffer.allocateDirect(this.gNF.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.eYv.put(this.gNF);
+    this.eYv.position(0);
+    this.eYu = ByteBuffer.allocateDirect(eZr.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.eYu.put(eZr);
+    this.eYu.position(0);
+    ab.i("MicroMsg.MMSightCameraGLRenderer", "onSurfaceCreated, yTextureId: %s, uvTextureId: %s this %s", new Object[] { Integer.valueOf(this.eZe), Integer.valueOf(this.eZf), this });
+    AppMethodBeat.o(55316);
   }
 }
 

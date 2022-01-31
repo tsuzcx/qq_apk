@@ -1,8 +1,8 @@
 package com.tencent.mars.mm;
 
 import com.tencent.mm.network.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MMLogic$2
   implements Runnable
@@ -13,12 +13,12 @@ final class MMLogic$2
   {
     try
     {
-      this.val$monitor.m(this.val$wr, this.val$ws, this.val$mr, this.val$ms);
+      this.val$monitor.u(this.val$wr, this.val$ws, this.val$mr, this.val$ms);
       return;
     }
     catch (Throwable localThrowable)
     {
-      y.e("C2Java", "reportFlowData :%s", new Object[] { bk.j(localThrowable) });
+      ab.e("C2Java", "reportFlowData :%s", new Object[] { bo.l(localThrowable) });
     }
   }
 }

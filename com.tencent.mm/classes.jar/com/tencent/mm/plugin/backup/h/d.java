@@ -1,84 +1,69 @@
 package com.tencent.mm.plugin.backup.h;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.at;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   extends com.tencent.mm.plugin.backup.b.a
 {
   private static String TAG = "MicroMsg.BackupStorageModel";
-  private static d hMX;
-  private b hMY;
-  private a hMZ;
+  private static d jGz;
+  private b jGA;
+  private a jGB;
   
-  public static d avi()
+  public static d aUK()
   {
-    if (hMX == null)
+    AppMethodBeat.i(17706);
+    if (jGz == null)
     {
-      d locald = new d();
-      hMX = locald;
+      locald = new d();
+      jGz = locald;
       a(locald);
     }
-    return hMX;
+    d locald = jGz;
+    AppMethodBeat.o(17706);
+    return locald;
   }
   
-  public final void ati()
+  public final void aSG()
   {
-    hMX = null;
+    jGz = null;
   }
   
-  public final b avj()
+  public final b aUL()
   {
-    if (this.hMY == null) {
-      this.hMY = new b();
+    AppMethodBeat.i(17707);
+    if (this.jGA == null) {
+      this.jGA = new b();
     }
-    return this.hMY;
+    b localb = this.jGA;
+    AppMethodBeat.o(17707);
+    return localb;
   }
   
-  public final a avk()
+  public final a aUM()
   {
-    if (this.hMZ == null) {
-      this.hMZ = new a();
+    AppMethodBeat.i(17708);
+    if (this.jGB == null) {
+      this.jGB = new a();
     }
-    return this.hMZ;
+    a locala = this.jGB;
+    AppMethodBeat.o(17708);
+    return locala;
   }
   
-  public final void avl()
+  public final void aUN()
   {
-    y.i(TAG, "backupInitStorage");
-    b localb = avj();
-    au.Hx();
-    String str = com.tencent.mm.model.c.FU();
-    au.Hx();
-    int i = com.tencent.mm.model.c.CK();
-    y.i("MicroMsg.BackupStorage", "setBackupStorage, accPath:%s, accUin:%d, caller:%s", new Object[] { str, Integer.valueOf(i), bk.csb() });
-    localb.uin = i;
-    localb.dKt = str;
-    au.Hx();
-    localb.dKu = com.tencent.mm.model.c.Dv();
-    au.Hx();
-    localb.hMK = com.tencent.mm.model.c.Dz();
-    au.Hx();
-    localb.hML = com.tencent.mm.model.c.Fw();
-    au.Hx();
-    localb.hMN = com.tencent.mm.model.c.FB();
-    au.Hx();
-    localb.hMM = com.tencent.mm.model.c.Fy();
-    au.Hx();
-    localb.hMQ = com.tencent.mm.model.c.FE();
-    localb.hMO = com.tencent.mm.as.o.OJ();
-    localb.hMP = i.getEmojiStorageMgr().uBb;
-    localb.hMS = ((com.tencent.mm.plugin.chatroom.a.c)g.r(com.tencent.mm.plugin.chatroom.a.c.class)).FF();
-    localb.hMR = com.tencent.mm.modelvideo.o.Sr();
-    localb.hMT = com.tencent.mm.plugin.z.a.bro();
-    localb.hMU = com.tencent.mm.plugin.z.a.brn();
-    localb.hMV = com.tencent.mm.plugin.z.a.avh();
-    au.Hx();
-    localb.hMW = com.tencent.mm.model.c.Gb();
+    AppMethodBeat.i(17709);
+    ab.i(TAG, "backupInitStorage");
+    b localb = aUL();
+    aw.aaz();
+    String str = c.getAccPath();
+    aw.aaz();
+    localb.bH(str, c.getUin());
+    AppMethodBeat.o(17709);
   }
 }
 

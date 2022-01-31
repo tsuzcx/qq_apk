@@ -1,44 +1,33 @@
 package com.tencent.mm.aq;
 
-public final class a
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public class a
 {
-  int bcw = -1;
-  int dXk = 0;
-  String dXm = "";
-  String dXn = "";
-  long eml = 0L;
-  int emm = 0;
-  int emn = 0;
-  int type = 0;
-  String username = "";
+  private static a fCv;
   
-  public final String Oj()
+  public static a agW()
   {
-    if (this.dXm == null) {
-      return "";
+    AppMethodBeat.i(16442);
+    if (fCv == null) {}
+    try
+    {
+      if (fCv == null) {
+        fCv = new a();
+      }
+      a locala = fCv;
+      AppMethodBeat.o(16442);
+      return locala;
     }
-    return this.dXm;
-  }
-  
-  public final String Ok()
-  {
-    if (this.dXn == null) {
-      return "";
+    finally
+    {
+      AppMethodBeat.o(16442);
     }
-    return this.dXn;
-  }
-  
-  public final String getUsername()
-  {
-    if (this.username == null) {
-      return "";
-    }
-    return this.username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.aq.a
  * JD-Core Version:    0.7.0.1
  */

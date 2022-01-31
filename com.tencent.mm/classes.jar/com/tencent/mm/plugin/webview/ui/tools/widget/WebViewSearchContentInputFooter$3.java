@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewSearchContentInputFooter$3
   implements View.OnClickListener
@@ -10,9 +11,11 @@ final class WebViewSearchContentInputFooter$3
   
   public final void onClick(View paramView)
   {
-    if (WebViewSearchContentInputFooter.c(this.rDc) != null) {
-      WebViewSearchContentInputFooter.c(this.rDc).cbi();
+    AppMethodBeat.i(10060);
+    if (WebViewSearchContentInputFooter.c(this.vto) != null) {
+      WebViewSearchContentInputFooter.c(this.vto).dbl();
     }
+    AppMethodBeat.o(10060);
   }
 }
 

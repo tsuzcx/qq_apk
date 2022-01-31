@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/l1" android:id="@id/cyy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
-    <com.tencent.mm.plugin.mmsight.api.MMSightRecordView android:id="@id/cyz" android:layout_width="300.0dip" android:layout_height="450.0dip" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/acc" android:layout_width="125.0dip" android:layout_height="78.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <Button android:id="@id/cz0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="take picture" android:layout_below="@id/cyz" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/cz1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="start record" android:layout_below="@id/cz0" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/cz2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="switch camera" android:layout_below="@id/cz1" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <TextView android:id="@id/dax" style="@style/zz" />
+    <LinearLayout android:orientation="vertical" android:id="@id/day" android:background="@drawable/js" android:paddingLeft="@dimen/dp" android:paddingTop="@dimen/dp" android:paddingRight="@dimen/dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
+        <TextView android:id="@id/daz" style="@style/zx" />
+        <TextView android:id="@id/db0" android:layout_marginTop="@dimen/dl" android:layout_marginBottom="@dimen/n_" style="@style/zx" />
+        <View style="@style/zy" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:layout_marginBottom="@dimen/dp">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/db1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/a6q" android:gravity="bottom|center|right" android:id="@id/db4" android:background="@drawable/adu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/db5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/avn" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <View style="@style/zy" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/db2" style="@style/zw" />
+    </LinearLayout>
+</LinearLayout>

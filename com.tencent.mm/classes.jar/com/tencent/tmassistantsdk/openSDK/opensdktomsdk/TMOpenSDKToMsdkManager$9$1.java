@@ -2,8 +2,9 @@ package com.tencent.tmassistantsdk.openSDK.opensdktomsdk;
 
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
 
@@ -14,6 +15,7 @@ class TMOpenSDKToMsdkManager$9$1
   
   public void run()
   {
+    AppMethodBeat.i(75928);
     try
     {
       String str = this.val$client.getDownloadTaskState(this.val$url).mSavePath;
@@ -24,11 +26,13 @@ class TMOpenSDKToMsdkManager$9$1
         localMessage.obj = str;
         this.this$1.this$0.mMainMessageHandler.sendMessage(localMessage);
       }
+      AppMethodBeat.o(75928);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+      ab.printErrStackTrace("OpensdkToMsdkManager", localException, "", new Object[0]);
+      AppMethodBeat.o(75928);
     }
   }
 }

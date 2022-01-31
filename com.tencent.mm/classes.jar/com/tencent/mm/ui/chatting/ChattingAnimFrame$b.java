@@ -5,154 +5,193 @@ import android.view.View.OnLayoutChangeListener;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.c.a.a;
 import com.tencent.mm.ui.c.a.b;
 
 final class ChattingAnimFrame$b
   extends Animation
 {
-  private float hYB;
-  private float hYC;
-  private float hYD;
-  private float hYE;
-  private float hYF;
-  private float hYG;
-  private int mSize = 0;
-  private View.OnLayoutChangeListener uKj = new ChattingAnimFrame.b.1(this);
-  private float viL;
-  private float viM;
-  private float viN;
-  private float viO;
-  private int viP = 0;
-  private boolean viQ = false;
+  private int mSize;
+  private View.OnLayoutChangeListener yYb;
+  private float zxF;
+  private float zxG;
+  private float zxH;
+  private float zxI;
+  private float zxJ;
+  private float zxK;
+  private float zxL;
+  private float zxM;
+  private float zxN;
+  private float zxO;
+  private int zxP;
+  private boolean zxQ;
   
   public ChattingAnimFrame$b(ChattingAnimFrame paramChattingAnimFrame, int paramInt1, int paramInt2)
   {
-    this.viP = paramInt1;
+    AppMethodBeat.i(30507);
+    this.zxP = 0;
+    this.mSize = 0;
+    this.zxQ = false;
+    this.yYb = new ChattingAnimFrame.b.1(this);
+    this.zxP = paramInt1;
     this.mSize = paramInt2;
-    this.viQ = false;
+    this.zxQ = false;
+    AppMethodBeat.o(30507);
   }
   
   public ChattingAnimFrame$b(ChattingAnimFrame paramChattingAnimFrame, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.viP = paramInt1;
+    AppMethodBeat.i(30508);
+    this.zxP = 0;
+    this.mSize = 0;
+    this.zxQ = false;
+    this.yYb = new ChattingAnimFrame.b.1(this);
+    this.zxP = paramInt1;
     this.mSize = paramInt2;
-    this.viQ = paramBoolean;
+    this.zxQ = paramBoolean;
+    AppMethodBeat.o(30508);
   }
   
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    float f2 = this.hYD;
-    float f1 = this.hYF;
-    if (this.hYD != this.hYE) {
-      f2 = this.hYD + (this.hYE - this.hYD) * paramFloat;
+    AppMethodBeat.i(30510);
+    float f2 = this.zxJ;
+    float f1 = this.zxL;
+    if (this.zxJ != this.zxK) {
+      f2 = this.zxJ + (this.zxK - this.zxJ) * paramFloat;
     }
-    if (this.hYF != this.hYG)
+    if (this.zxL != this.zxM)
     {
-      float f3 = this.hYF + (this.hYG - this.hYF) * paramFloat;
+      float f3 = this.zxL + (this.zxM - this.zxL) * paramFloat;
       f1 = f3;
-      if (this.viP == 2) {
+      if (this.zxP == 2) {
         f1 = f3 - this.mSize;
       }
     }
     paramTransformation.getMatrix().setTranslate(f2, f1);
-    if ((this.hYB != this.hYC) && (3 == this.viP))
+    if ((this.zxN != this.zxO) && (3 == this.zxP))
     {
-      paramFloat = this.hYB + (this.hYC - this.hYB) * paramFloat;
+      paramFloat = this.zxN + (this.zxO - this.zxN) * paramFloat;
       paramTransformation.getMatrix().postScale(paramFloat, paramFloat);
     }
-  }
-  
-  public final void awP()
-  {
-    this.hYD = (this.viL * ChattingAnimFrame.a(this.viK));
-    this.hYE = (this.viM * ChattingAnimFrame.a(this.viK));
-    if (this.viP == 2)
-    {
-      this.hYF = (this.viN * ChattingAnimFrame.b(this.viK));
-      this.hYG = (this.viO * ChattingAnimFrame.b(this.viK));
-    }
-    do
-    {
-      return;
-      if (this.viP != 3) {
-        break;
-      }
-      this.hYF = (this.viN * ChattingAnimFrame.c(this.viK));
-      this.hYG = (this.viO * ChattingAnimFrame.c(this.viK));
-      if (ChattingAnimFrame.d(this.viK))
-      {
-        this.hYF = (this.viN * ChattingAnimFrame.c(this.viK) - ChattingAnimFrame.e(this.viK));
-        this.hYG = (this.viO * ChattingAnimFrame.c(this.viK) - ChattingAnimFrame.e(this.viK));
-      }
-    } while (this.hYG >= 0.0F);
-    this.hYG = 0.0F;
-    return;
-    this.hYF = (this.viN * ChattingAnimFrame.c(this.viK));
-    this.hYG = (this.viO * ChattingAnimFrame.c(this.viK));
+    AppMethodBeat.o(30510);
   }
   
   protected final void finalize()
   {
+    AppMethodBeat.i(30511);
     super.finalize();
-    y.i("MicroMsg.ChattingAnimFrame", "finalize!");
-    this.viK.removeOnLayoutChangeListener(this.uKj);
+    ab.i("MicroMsg.ChattingAnimFrame", "finalize!");
+    this.zxE.removeOnLayoutChangeListener(this.yYb);
+    AppMethodBeat.o(30511);
   }
   
   public final void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(30509);
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    switch (this.viP)
+    switch (this.zxP)
     {
     default: 
-      this.viL = ChattingAnimFrame.L(0.1F, 0.9F);
-      this.viM = ChattingAnimFrame.L(this.viL - 0.5F, this.viL + 0.5F);
-      this.viN = -0.2F;
-      this.viO = 1.2F;
+      this.zxF = ChattingAnimFrame.ab(0.1F, 0.9F);
+      this.zxG = ChattingAnimFrame.ab(this.zxF - 0.5F, this.zxF + 0.5F);
+      this.zxH = -0.2F;
+      this.zxI = 1.2F;
       setInterpolator(new LinearInterpolator());
     }
     for (;;)
     {
-      if ((this.viP != 0) && (this.viP != 1)) {
-        this.viK.addOnLayoutChangeListener(this.uKj);
+      if ((this.zxP != 0) && (this.zxP != 1)) {
+        this.zxE.addOnLayoutChangeListener(this.yYb);
       }
-      awP();
+      resolve();
+      AppMethodBeat.o(30509);
       return;
-      this.viL = ChattingAnimFrame.L(0.1F, 0.9F);
-      this.viM = ChattingAnimFrame.L(this.viL - 0.25F, this.viL + 0.25F);
-      this.viN = 1.5F;
-      this.viO = -0.2F;
+      this.zxF = ChattingAnimFrame.ab(0.1F, 0.9F);
+      this.zxG = ChattingAnimFrame.ab(this.zxF - 0.25F, this.zxF + 0.25F);
+      this.zxH = 1.5F;
+      this.zxI = -0.2F;
       setInterpolator(new LinearInterpolator());
       continue;
-      this.viL = 0.0F;
-      this.viM = 0.0F;
-      this.viN = 1.5F;
-      if (this.viQ) {}
-      for (this.viO = ChattingAnimFrame.L(0.4F, 0.55F);; this.viO = ChattingAnimFrame.L(0.55F, 0.85F))
+      this.zxF = 0.0F;
+      this.zxG = 0.0F;
+      this.zxH = 1.5F;
+      if (this.zxQ) {}
+      for (this.zxI = ChattingAnimFrame.ab(0.4F, 0.55F);; this.zxI = ChattingAnimFrame.ab(0.55F, 0.85F))
       {
         setInterpolator(new b());
         break;
       }
-      this.viL = 0.0F;
-      this.viM = 0.0F;
-      this.viN = 0.0F;
-      this.viO = 1.0F;
+      this.zxF = 0.0F;
+      this.zxG = 0.0F;
+      this.zxH = 0.0F;
+      this.zxI = 1.0F;
       setInterpolator(new a());
       continue;
-      this.viL = ChattingAnimFrame.L(0.1F, 0.9F);
-      this.viM = ChattingAnimFrame.L(this.viL - 0.5F, this.viL + 0.5F);
-      this.viN = 0.0F;
-      this.viO = 0.0F;
-      this.hYB = 0.8F;
-      this.hYC = 1.1F;
+      this.zxF = ChattingAnimFrame.ab(0.1F, 0.9F);
+      this.zxG = ChattingAnimFrame.ab(this.zxF - 0.5F, this.zxF + 0.5F);
+      this.zxH = 0.0F;
+      this.zxI = 0.0F;
+      this.zxN = 0.8F;
+      this.zxO = 1.1F;
+      setInterpolator(new LinearInterpolator());
+      continue;
+      float f = ChattingAnimFrame.ab(0.0F, 1.0F - this.mSize * 1.0F / ChattingAnimFrame.a(this.zxE));
+      this.zxF = 1.0F;
+      this.zxG = (0.0F - this.mSize * 1.0F / ChattingAnimFrame.b(this.zxE));
+      this.zxH = f;
+      this.zxI = f;
       setInterpolator(new LinearInterpolator());
     }
+  }
+  
+  public final void resolve()
+  {
+    AppMethodBeat.i(30512);
+    this.zxJ = (this.zxF * ChattingAnimFrame.b(this.zxE));
+    this.zxK = (this.zxG * ChattingAnimFrame.b(this.zxE));
+    if (this.zxP == 2)
+    {
+      this.zxL = (this.zxH * ChattingAnimFrame.a(this.zxE));
+      this.zxM = (this.zxI * ChattingAnimFrame.a(this.zxE));
+      AppMethodBeat.o(30512);
+      return;
+    }
+    if (this.zxP == 3)
+    {
+      this.zxL = (this.zxH * ChattingAnimFrame.c(this.zxE));
+      this.zxM = (this.zxI * ChattingAnimFrame.c(this.zxE));
+      if (ChattingAnimFrame.d(this.zxE))
+      {
+        this.zxL = (this.zxH * ChattingAnimFrame.c(this.zxE) - ChattingAnimFrame.e(this.zxE));
+        this.zxM = (this.zxI * ChattingAnimFrame.c(this.zxE) - ChattingAnimFrame.e(this.zxE));
+      }
+      if (this.zxM < 0.0F)
+      {
+        this.zxM = 0.0F;
+        AppMethodBeat.o(30512);
+      }
+    }
+    else
+    {
+      if (this.zxP == 4)
+      {
+        this.zxL = (this.zxH * ChattingAnimFrame.a(this.zxE));
+        this.zxM = (this.zxI * ChattingAnimFrame.a(this.zxE));
+        AppMethodBeat.o(30512);
+        return;
+      }
+      this.zxL = (this.zxH * ChattingAnimFrame.c(this.zxE));
+      this.zxM = (this.zxI * ChattingAnimFrame.c(this.zxE));
+    }
+    AppMethodBeat.o(30512);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ChattingAnimFrame.b
  * JD-Core Version:    0.7.0.1
  */

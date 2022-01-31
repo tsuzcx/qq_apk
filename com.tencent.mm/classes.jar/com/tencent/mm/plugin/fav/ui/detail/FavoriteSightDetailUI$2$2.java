@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class FavoriteSightDetailUI$2$2
   implements Runnable
@@ -12,7 +10,9 @@ final class FavoriteSightDetailUI$2$2
   
   public final void run()
   {
-    h.h(this.kgh.kgg.mController.uMN, n.i.video_file_play_faile, n.i.video_play_err);
+    AppMethodBeat.i(74410);
+    h.h(this.mAT.mAS.getContext(), 2131304519, 2131304528);
+    AppMethodBeat.o(74410);
   }
 }
 

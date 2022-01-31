@@ -1,217 +1,193 @@
 package com.tencent.liteav;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
-import android.view.MotionEvent;
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.liteav.renderer.d;
-import com.tencent.liteav.renderer.i;
-import com.tencent.liteav.renderer.j;
-import com.tencent.rtmp.ui.TXCloudVideoView;
+import android.os.HandlerThread;
+import com.tencent.liteav.basic.d.l;
+import com.tencent.liteav.basic.d.m;
+import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.liteav.basic.module.TXCStatus;
+import com.tencent.liteav.renderer.TXCGLSurfaceView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
+import java.util.List;
 import javax.microedition.khronos.egl.EGLContext;
 
 public class b
-  implements View.OnTouchListener, com.tencent.liteav.basic.c.a, k, i, j
+  implements com.tencent.liteav.basic.c.a, m, com.tencent.liteav.capturer.b, j
 {
   WeakReference<com.tencent.liteav.basic.c.a> a;
   private Context b;
-  private TXCloudVideoView c;
-  private d d;
-  private com.tencent.liteav.capturer.a e = null;
-  private Handler f = null;
-  private l g;
+  private com.tencent.liteav.capturer.a c;
+  private k d;
+  private boolean e;
+  private f f;
+  private int g;
   private boolean h;
-  private f i;
-  private int j = 0;
-  private int k = 0;
-  private int l = 0;
-  private boolean m = false;
-  private boolean n = false;
-  private int o = -1;
-  private int p = -1;
-  private int q = 1;
-  private ScaleGestureDetector r = null;
-  private ScaleGestureDetector.OnScaleGestureListener s = new ScaleGestureDetector.OnScaleGestureListener()
-  {
-    public boolean onScale(ScaleGestureDetector paramAnonymousScaleGestureDetector)
-    {
-      float f1 = 1.1F;
-      int k = b.this.e();
-      float f2;
-      if (k > 0)
-      {
-        f2 = paramAnonymousScaleGestureDetector.getScaleFactor();
-        if (f2 <= 1.0F) {
-          break label181;
-        }
-        f2 = 0.2F / k * (k - b.f(b.this)) + 1.0F;
-        if (f2 > 1.1F) {
-          break label277;
-        }
-      }
-      for (;;)
-      {
-        int j = Math.round(b.f(b.this) * f1);
-        int i = j;
-        if (j == b.f(b.this))
-        {
-          if (f1 > 1.0F) {
-            i = j + 1;
-          }
-        }
-        else
-        {
-          label99:
-          j = i;
-          if (i >= k) {
-            j = k;
-          }
-          i = j;
-          if (j <= 1) {
-            i = 1;
-          }
-          if (f1 <= 1.0F) {
-            break label239;
-          }
-          if (i >= b.f(b.this)) {
-            break label269;
-          }
-          i = b.f(b.this);
-        }
-        label269:
-        for (;;)
-        {
-          b.d(b.this, i);
-          b.this.a(b.f(b.this));
-          return false;
-          label181:
-          if (f2 >= 1.0F) {
-            break label272;
-          }
-          f2 = 1.0F - 0.2F / k * b.f(b.this);
-          f1 = f2;
-          if (f2 < 0.9F) {
-            break;
-          }
-          f1 = 0.9F;
-          break;
-          i = j;
-          if (f1 >= 1.0F) {
-            break label99;
-          }
-          i = j - 1;
-          break label99;
-          label239:
-          if ((f1 < 1.0F) && (i > b.f(b.this))) {
-            i = b.f(b.this);
-          }
-        }
-        label272:
-        f1 = f2;
-        continue;
-        label277:
-        f1 = f2;
-      }
-    }
-    
-    public boolean onScaleBegin(ScaleGestureDetector paramAnonymousScaleGestureDetector)
-    {
-      return true;
-    }
-    
-    public void onScaleEnd(ScaleGestureDetector paramAnonymousScaleGestureDetector) {}
-  };
-  private b.a t = new b.a(this, null);
+  private int i;
+  private int j;
+  private l k;
+  private boolean l;
+  private long m;
+  private long n;
+  private long o;
+  private int p;
+  private Object q;
+  private HandlerThread r;
+  private Handler s;
+  private String t;
   
-  public b(Context paramContext, f paramf, TXCloudVideoView paramTXCloudVideoView)
+  public b(Context paramContext, f paramf, l paraml, boolean paramBoolean)
   {
+    AppMethodBeat.i(146409);
+    this.c = null;
+    this.g = 0;
+    this.h = false;
+    this.i = -1;
+    this.j = -1;
+    this.k = null;
+    this.l = false;
+    this.m = 0L;
+    this.o = 0L;
+    this.p = 0;
+    this.q = new Object();
+    this.r = null;
+    this.s = null;
+    this.t = "";
+    this.c = new com.tencent.liteav.capturer.a();
     try
     {
-      this.i = ((f)paramf.clone());
+      this.f = ((f)paramf.clone());
       this.b = paramContext;
-      this.f = new Handler(Looper.getMainLooper());
-      this.c = paramTXCloudVideoView;
-      this.d = this.c.getGLSurfaceView();
-      this.r = new ScaleGestureDetector(paramContext, this.s);
+      this.k = paraml;
+      this.k.setSurfaceTextureListener(this);
+      this.f.P = paramBoolean;
+      AppMethodBeat.o(146409);
       return;
     }
     catch (CloneNotSupportedException paramf)
     {
       for (;;)
       {
-        this.i = new f();
+        this.f = new f();
       }
     }
   }
   
   private void a(int paramInt, String paramString)
   {
-    if (this.f != null) {
-      this.f.post(new b.5(this, paramInt, paramString));
-    }
+    AppMethodBeat.i(67676);
+    com.tencent.liteav.basic.util.b.a(this.a, paramInt, paramString);
+    AppMethodBeat.o(67676);
   }
   
-  private void b(int paramInt1, int paramInt2)
+  private void a(int paramInt1, byte[] paramArrayOfByte, float[] paramArrayOfFloat, int paramInt2)
   {
-    this.f.post(new b.4(this, paramInt1, paramInt2));
+    boolean bool = true;
+    AppMethodBeat.i(146416);
+    if (!this.e)
+    {
+      AppMethodBeat.o(146416);
+      return;
+    }
+    if (!this.l)
+    {
+      com.tencent.liteav.basic.util.b.a(this.a, 1007, "首帧画面采集完成");
+      this.l = true;
+      TXCLog.d("CameraCapture", "trtc_render: render first frame");
+    }
+    com.tencent.liteav.basic.structs.b localb = new com.tencent.liteav.basic.structs.b();
+    localb.e = this.c.e();
+    localb.f = this.c.f();
+    localb.g = this.f.a;
+    localb.h = this.f.b;
+    localb.j = this.c.c();
+    localb.k = this.g;
+    if (this.c.d()) {
+      if (!this.f.M)
+      {
+        localb.i = bool;
+        localb.a = paramInt1;
+        localb.c = paramArrayOfFloat;
+        localb.d = this.f.P;
+        localb.m = paramArrayOfByte;
+        localb.b = paramInt2;
+        if ((localb.j != 0) && (localb.j != 180)) {
+          break label399;
+        }
+        localb.g = this.f.b;
+      }
+    }
+    for (localb.h = this.f.a;; localb.h = this.f.b)
+    {
+      localb.l = com.tencent.liteav.basic.util.b.a(localb.e, localb.f, this.f.b, this.f.a);
+      if (this.d != null) {
+        this.d.b(localb);
+      }
+      this.m += 1L;
+      long l1 = System.currentTimeMillis() - this.n;
+      if (l1 >= 1000L)
+      {
+        double d1 = (this.m - this.o) * 1000.0D / l1;
+        TXCStatus.a(this.t, 1001, this.p, Double.valueOf(d1));
+        this.o = this.m;
+        this.n = (l1 + this.n);
+      }
+      AppMethodBeat.o(146416);
+      return;
+      bool = false;
+      break;
+      bool = this.f.M;
+      break;
+      label399:
+      localb.g = this.f.a;
+    }
   }
   
   private void c(SurfaceTexture paramSurfaceTexture)
   {
-    if ((paramSurfaceTexture != null) && (!this.h) && (this.e != null))
+    AppMethodBeat.i(67675);
+    if ((paramSurfaceTexture != null) && (!this.e) && (this.c != null))
     {
-      this.e.a(paramSurfaceTexture);
-      this.e.b(this.i.h);
-      this.e.d(this.i.l);
-      this.e.b(this.i.D);
-      this.e.a(h());
-      if (this.e.c(this.i.m) != 0) {
-        break label199;
-      }
-      this.h = true;
-      a(1003, "打开摄像头成功");
-      if (this.d != null)
+      this.c.a(this);
+      this.c.a(paramSurfaceTexture);
+      this.c.b(this.f.h);
+      this.c.d(this.f.l);
+      this.c.b(this.f.E);
+      this.c.a(i());
+      this.c.a(this.f.P, this.f.a, this.f.b);
+      if (this.c.c(this.f.m) == 0)
       {
-        this.d.setFPS(this.i.h);
-        this.d.setTextureListener(this);
-        this.d.setNotifyListener(this);
-        this.d.b();
-        this.d.c(true);
-        g();
+        this.e = true;
+        this.n = System.currentTimeMillis();
+        a(1003, "打开摄像头成功");
+        this.l = false;
+        if ((this.h) && (!com.tencent.liteav.audio.b.a().c()))
+        {
+          if (com.tencent.liteav.audio.b.a().a(this.b) == 0) {
+            a(2027, "打开麦克风成功");
+          }
+          this.h = false;
+          AppMethodBeat.o(67675);
+        }
       }
-      if ((this.m) && (!com.tencent.liteav.audio.c.a().c()))
+      else
       {
-        com.tencent.liteav.audio.c.a().a(this.b);
-        this.m = false;
+        this.e = false;
+        a(-1301, "打开摄像头失败，请确认摄像头权限是否打开");
       }
     }
-    return;
-    label199:
-    this.h = false;
-    a(-1301, "打开摄像头失败，请确认摄像头权限是否打开");
+    AppMethodBeat.o(67675);
   }
   
-  private void g()
+  private int i()
   {
-    if ((this.d != null) && (this.n))
-    {
-      this.k = 720;
-      this.l = 1280;
-      b(this.k, this.l);
-    }
-  }
-  
-  private int h()
-  {
-    if (!this.i.M) {}
-    switch (this.i.k)
+    if (!this.f.N) {}
+    switch (this.f.k)
     {
     case 3: 
     case 4: 
@@ -228,271 +204,403 @@ public class b
     return 3;
   }
   
-  private void i()
+  private void j()
   {
-    if (this.d != null) {
-      this.d.a(new b.7(this));
+    AppMethodBeat.i(146417);
+    a(new b.2(this));
+    AppMethodBeat.o(146417);
+  }
+  
+  private boolean k()
+  {
+    AppMethodBeat.i(146419);
+    for (;;)
+    {
+      int i1;
+      try
+      {
+        if (this.b != null)
+        {
+          List localList = ((ActivityManager)this.b.getSystemService("activity")).getRunningAppProcesses();
+          if (localList == null)
+          {
+            TXCLog.w("CameraCapture", "List of RunningAppProcessInfo is null");
+            AppMethodBeat.o(146419);
+            return false;
+          }
+          i1 = 0;
+          if (i1 < localList.size())
+          {
+            ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localList.get(i1);
+            if (localRunningAppProcessInfo == null)
+            {
+              TXCLog.w("CameraCapture", "ActivityManager.RunningAppProcessInfo is null");
+              break label137;
+            }
+            if (!localRunningAppProcessInfo.processName.equals(this.b.getPackageName())) {
+              break label137;
+            }
+            int i2 = localRunningAppProcessInfo.importance;
+            if (i2 != 100) {
+              break label137;
+            }
+            AppMethodBeat.o(146419);
+            return true;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        AppMethodBeat.o(146419);
+        return false;
+      }
+      label137:
+      i1 += 1;
     }
   }
   
   public int a(int paramInt, float[] paramArrayOfFloat)
   {
-    com.tencent.liteav.basic.f.c localc;
-    boolean bool;
-    if (this.g != null)
-    {
-      localc = new com.tencent.liteav.basic.f.c();
-      localc.d = this.e.e();
-      localc.e = this.e.f();
-      localc.f = this.i.a;
-      localc.g = this.i.b;
-      localc.i = this.e.c();
-      if (!this.e.d()) {
-        break label215;
-      }
-      if (this.i.L) {
-        break label210;
-      }
-      bool = true;
-      localc.h = bool;
-      localc.a = paramInt;
-      localc.c = paramArrayOfFloat;
-      localc.b = 4;
-      if ((localc.i != 0) && (localc.i != 180)) {
-        break label226;
-      }
-      localc.f = this.i.b;
-    }
-    for (localc.g = this.i.a;; localc.g = this.i.b)
-    {
-      localc.j = com.tencent.liteav.basic.util.a.a(localc.d, localc.e, this.i.b, this.i.a);
-      this.g.b(localc);
-      return 0;
-      label210:
-      bool = false;
-      break;
-      label215:
-      bool = this.i.L;
-      break;
-      label226:
-      localc.f = this.i.a;
-    }
+    AppMethodBeat.i(67679);
+    a(paramInt, null, paramArrayOfFloat, 4);
+    AppMethodBeat.o(67679);
+    return 0;
   }
   
   public void a()
   {
-    if (this.f != null) {
-      this.f.post(new b.1(this));
-    }
-    this.d.setListener(this);
-    c(this.d.getSurfaceTexture());
-    if ((this.i.D) || (this.i.E)) {
-      this.c.setOnTouchListener(this);
+    AppMethodBeat.i(67656);
+    TXCLog.i("CameraCapture", "start->enter with getSurfaceTexture:" + this.k.getSurfaceTexture());
+    l locall = this.k;
+    int i1 = this.f.h;
+    if (!this.f.P) {}
+    for (boolean bool = true;; bool = false)
+    {
+      locall.a(i1, bool);
+      c(this.k.getSurfaceTexture());
+      AppMethodBeat.o(67656);
+      return;
     }
   }
   
   public void a(float paramFloat)
   {
-    this.e.a(paramFloat);
+    AppMethodBeat.i(67663);
+    this.c.a(paramFloat);
+    AppMethodBeat.o(67663);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    AppMethodBeat.i(67674);
+    if ((this.c != null) && (this.f.E)) {
+      this.c.a(paramFloat1, paramFloat2);
+    }
+    AppMethodBeat.o(67674);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.i.a = paramInt1;
-    this.i.b = paramInt2;
+    this.f.a = paramInt1;
+    this.f.b = paramInt2;
   }
   
   public void a(SurfaceTexture paramSurfaceTexture)
   {
-    new Handler(Looper.getMainLooper()).post(new b.6(this, paramSurfaceTexture));
-    if (this.g != null) {
-      this.g.a(paramSurfaceTexture);
+    AppMethodBeat.i(67677);
+    TXCLog.i("CameraCapture", "onSurfaceTextureAvailable->enter with mListener:" + this.d);
+    c(paramSurfaceTexture);
+    if (this.d != null) {
+      this.d.a(paramSurfaceTexture);
     }
+    AppMethodBeat.o(67677);
   }
   
   public void a(com.tencent.liteav.basic.c.a parama)
   {
+    AppMethodBeat.i(146411);
     this.a = new WeakReference(parama);
+    AppMethodBeat.o(146411);
   }
   
-  public void a(com.tencent.liteav.basic.f.c paramc)
+  public void a(com.tencent.liteav.basic.structs.b paramb)
   {
-    if (this.n)
-    {
-      this.d.a(paramc.a, this.k, this.l, paramc.h, this.j, paramc.d, paramc.e);
-      return;
+    AppMethodBeat.i(146410);
+    if (this.k != null) {
+      this.k.a(paramb.a, paramb.i, this.g, paramb.e, paramb.f, this.c.d());
     }
-    this.d.a(paramc.a, this.d.getWidth(), this.d.getHeight(), paramc.h, this.j, paramc.d, paramc.e);
+    AppMethodBeat.o(146410);
   }
   
-  public void a(l paraml)
+  public void a(k paramk)
   {
-    this.g = paraml;
+    this.d = paramk;
   }
   
   public void a(Runnable paramRunnable)
   {
-    this.d.a(paramRunnable);
+    AppMethodBeat.i(67668);
+    this.k.a(paramRunnable);
+    AppMethodBeat.o(67668);
+  }
+  
+  public void a(String paramString)
+  {
+    this.t = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
+    AppMethodBeat.i(67657);
     c();
-    if (((this.i.D) || (this.i.E)) && (this.c != null)) {
-      this.c.setOnTouchListener(null);
-    }
-    if (this.d != null)
+    this.k.a();
+    synchronized (this.q)
     {
-      this.d.c(false);
-      this.d.b(paramBoolean);
-      if ((paramBoolean) && (this.f != null)) {
-        this.f.post(new b.2(this));
+      if (this.s != null) {
+        this.s.removeCallbacksAndMessages(null);
       }
+      if (this.r != null)
+      {
+        TXCLog.w("CameraCapture", "stop camera monitor ");
+        this.r.quit();
+        this.r = null;
+        this.s = null;
+      }
+      AppMethodBeat.o(67657);
+      return;
     }
+  }
+  
+  public void a(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(146418);
+    if (this.k != null) {
+      this.k.a(paramArrayOfByte);
+    }
+    AppMethodBeat.o(146418);
+  }
+  
+  public void a(byte[] paramArrayOfByte, float[] paramArrayOfFloat)
+  {
+    AppMethodBeat.i(146415);
+    a(-1, paramArrayOfByte, paramArrayOfFloat, 3);
+    AppMethodBeat.o(146415);
   }
   
   public boolean a(int paramInt)
   {
-    return this.e.c(paramInt);
+    AppMethodBeat.i(67662);
+    boolean bool = this.c.c(paramInt);
+    AppMethodBeat.o(67662);
+    return bool;
   }
   
   public void b()
   {
-    c(this.d.getSurfaceTexture());
+    AppMethodBeat.i(67658);
+    TXCLog.i("CameraCapture", "startCapture->enter with getSurfaceTexture:" + this.k.getSurfaceTexture());
+    c(this.k.getSurfaceTexture());
+    AppMethodBeat.o(67658);
   }
   
   public void b(int paramInt)
   {
-    this.o = paramInt;
-    i();
+    AppMethodBeat.i(67664);
+    this.i = paramInt;
+    j();
+    AppMethodBeat.o(67664);
   }
   
   public void b(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.g != null) {
-      this.g.q();
+    AppMethodBeat.i(67678);
+    TXCLog.i("CameraCapture", "onSurfaceTextureDestroy->enter with mListener:" + this.d);
+    if (this.d != null) {
+      this.d.u();
     }
+    AppMethodBeat.o(67678);
   }
   
   public void b(boolean paramBoolean)
   {
-    if ((this.h) && (this.e != null) && (this.d != null))
+    AppMethodBeat.i(67660);
+    if ((this.e) && (this.c != null))
     {
-      f localf = this.i;
+      f localf = this.f;
       if (!paramBoolean) {
-        break label131;
+        break label188;
       }
-      if (this.i.m) {
-        break label126;
+      if (this.f.m) {
+        break label183;
       }
       paramBoolean = true;
       localf.m = paramBoolean;
-      this.e.b();
-      this.d.a(false);
-      this.e.a(h());
-      this.e.a(this.d.getSurfaceTexture());
-      if (this.e.c(this.i.m) != 0) {
-        break label142;
+      this.c.b();
+      this.k.a(false);
+      this.c.b(this.f.h);
+      this.c.a(i());
+      this.c.a(this.f.P, this.f.a, this.f.b);
+      this.c.a(this);
+      this.c.a(this.k.getSurfaceTexture());
+      if (this.c.c(this.f.m) != 0) {
+        break label199;
       }
-      this.h = true;
+      this.e = true;
       a(1003, "打开摄像头成功");
     }
     for (;;)
     {
-      this.d.b();
+      this.l = false;
+      AppMethodBeat.o(67660);
       return;
-      label126:
+      label183:
       paramBoolean = false;
       break;
-      label131:
-      paramBoolean = this.i.m;
+      label188:
+      paramBoolean = this.f.m;
       break;
-      label142:
-      this.h = false;
+      label199:
+      this.e = false;
       a(-1301, "打开摄像头失败，请确认摄像头权限是否打开");
     }
   }
   
   public void c()
   {
-    this.e.b();
-    this.h = false;
+    AppMethodBeat.i(67659);
+    TXCLog.i("CameraCapture", "stopCapture->enter with null");
+    this.c.a(null);
+    this.c.b();
+    this.e = false;
+    AppMethodBeat.o(67659);
   }
   
   public void c(int paramInt)
   {
-    this.p = paramInt;
-    i();
+    AppMethodBeat.i(67672);
+    if (this.k != null) {
+      this.k.setRendMode(paramInt);
+    }
+    AppMethodBeat.o(67672);
   }
   
   public void c(boolean paramBoolean)
   {
-    if (this.d != null) {
-      this.d.a(new b.3(this, paramBoolean));
-    }
+    AppMethodBeat.i(67665);
+    a(new b.1(this, paramBoolean));
+    AppMethodBeat.o(67665);
   }
   
   public void d(int paramInt)
   {
-    this.i.k = paramInt;
-    this.i.a();
+    AppMethodBeat.i(67673);
+    if (this.k != null) {
+      this.k.setRendMirror(paramInt);
+    }
+    AppMethodBeat.o(67673);
   }
   
   public boolean d()
   {
-    return this.h;
+    return this.e;
   }
   
   public boolean d(boolean paramBoolean)
   {
-    return this.e.a(paramBoolean);
+    AppMethodBeat.i(67666);
+    paramBoolean = this.c.a(paramBoolean);
+    AppMethodBeat.o(67666);
+    return paramBoolean;
   }
   
   public int e()
   {
-    return this.e.a();
+    AppMethodBeat.i(67661);
+    int i1 = this.c.a();
+    AppMethodBeat.o(67661);
+    return i1;
+  }
+  
+  public void e(int paramInt)
+  {
+    AppMethodBeat.i(146412);
+    this.j = paramInt;
+    j();
+    AppMethodBeat.o(146412);
   }
   
   public void e(boolean paramBoolean)
   {
-    this.m = paramBoolean;
+    this.h = paramBoolean;
   }
   
   public EGLContext f()
   {
-    return this.d.getGLContext();
+    AppMethodBeat.i(67669);
+    EGLContext localEGLContext = this.k.getGLContext();
+    AppMethodBeat.o(67669);
+    return localEGLContext;
+  }
+  
+  public void f(int paramInt)
+  {
+    AppMethodBeat.i(146413);
+    this.f.h = paramInt;
+    if (this.c != null) {
+      this.c.b(paramInt);
+    }
+    if ((this.k != null) && ((this.k instanceof TXCGLSurfaceView))) {
+      ((TXCGLSurfaceView)this.k).setFPS(paramInt);
+    }
+    AppMethodBeat.o(146413);
+  }
+  
+  public void g(int paramInt)
+  {
+    this.p = paramInt;
+  }
+  
+  public boolean g()
+  {
+    AppMethodBeat.i(146414);
+    if (this.c != null)
+    {
+      boolean bool = this.c.d();
+      AppMethodBeat.o(146414);
+      return bool;
+    }
+    AppMethodBeat.o(146414);
+    return false;
+  }
+  
+  public void h()
+  {
+    AppMethodBeat.i(67680);
+    if (this.c.g() != null) {
+      this.c.b();
+    }
+    synchronized (this.q)
+    {
+      if (this.r == null)
+      {
+        this.r = new HandlerThread("cameraMonitorThread");
+        this.r.start();
+        this.s = new Handler(this.r.getLooper());
+        TXCLog.w("CameraCapture", "start camera monitor ");
+      }
+      if (this.s != null) {
+        this.s.postDelayed(new b.3(this), 2000L);
+      }
+      AppMethodBeat.o(67680);
+      return;
+    }
   }
   
   public void onNotifyEvent(int paramInt, Bundle paramBundle)
   {
-    com.tencent.liteav.basic.util.a.a(this.a, paramInt, paramBundle);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((paramMotionEvent.getPointerCount() == 1) && (paramMotionEvent.getAction() == 0))
-    {
-      this.t.a(paramView);
-      this.t.a(paramMotionEvent);
-      this.f.postDelayed(this.t, 100L);
-    }
-    for (;;)
-    {
-      if ((this.i.E) && (paramMotionEvent.getAction() == 0) && (this.c != null)) {
-        this.c.performClick();
-      }
-      return this.i.E;
-      if ((paramMotionEvent.getPointerCount() > 1) && (paramMotionEvent.getAction() == 2))
-      {
-        this.f.removeCallbacks(this.t);
-        if (this.c != null) {
-          this.c.onTouchFocus(-1, -1);
-        }
-        if ((this.r != null) && (this.i.E)) {
-          this.r.onTouchEvent(paramMotionEvent);
-        }
-      }
-    }
+    AppMethodBeat.i(67670);
+    com.tencent.liteav.basic.util.b.a(this.a, paramInt, paramBundle);
+    AppMethodBeat.o(67670);
   }
 }
 

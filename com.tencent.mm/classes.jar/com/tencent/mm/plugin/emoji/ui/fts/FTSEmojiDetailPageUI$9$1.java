@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FTSEmojiDetailPageUI$9$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class FTSEmojiDetailPageUI$9$1
   
   public final void run()
   {
-    FTSEmojiDetailPageUI.d(this.jfP.jfO);
+    AppMethodBeat.i(53543);
+    FTSEmojiDetailPageUI.e(this.loI.loH);
+    AppMethodBeat.o(53543);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.fts.FTSEmojiDetailPageUI.9.1
  * JD-Core Version:    0.7.0.1
  */

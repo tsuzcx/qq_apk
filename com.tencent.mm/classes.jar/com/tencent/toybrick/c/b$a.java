@@ -2,17 +2,20 @@ package com.tencent.toybrick.c;
 
 import android.view.View;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.toybrick.f.a;
 
 public final class b$a
   extends a
 {
-  TextView xaF;
+  TextView Bxl;
   
   public b$a(b paramb, View paramView)
   {
     super(paramView);
-    this.xaF = ((TextView)paramView.findViewById(16908310));
+    AppMethodBeat.i(113199);
+    this.Bxl = ((TextView)paramView.findViewById(16908310));
+    AppMethodBeat.o(113199);
   }
 }
 

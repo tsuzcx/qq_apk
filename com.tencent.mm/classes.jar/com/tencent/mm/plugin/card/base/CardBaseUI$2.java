@@ -4,7 +4,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CardBaseUI$2
   implements AdapterView.OnItemClickListener
@@ -13,22 +14,25 @@ final class CardBaseUI$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(87618);
     if (paramInt == 0)
     {
-      y.i("MicroMsg.CardBaseUI", "onItemClick pos is 0, onListHeaderItemClick()");
-      this.ijO.ayU();
-    }
-    int i;
-    do
-    {
+      ab.i("MicroMsg.CardBaseUI", "onItemClick pos is 0, onListHeaderItemClick()");
+      AppMethodBeat.o(87618);
       return;
-      i = paramInt;
-      if (paramInt > 0) {
-        i = paramInt - 1;
-      }
-    } while (i >= this.ijO.ijG.getCount());
-    paramAdapterView = this.ijO.ijM.oK(i);
-    this.ijO.b(paramAdapterView, i);
+    }
+    int i = paramInt;
+    if (paramInt > 0) {
+      i = paramInt - 1;
+    }
+    if (i >= this.kkO.kkG.getCount())
+    {
+      AppMethodBeat.o(87618);
+      return;
+    }
+    paramAdapterView = this.kkO.kkM.sU(i);
+    this.kkO.b(paramAdapterView, i);
+    AppMethodBeat.o(87618);
   }
 }
 

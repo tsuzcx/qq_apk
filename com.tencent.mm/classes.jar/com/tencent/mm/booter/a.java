@@ -1,86 +1,103 @@
 package com.tencent.mm.booter;
 
-import com.tencent.mm.model.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ae;
+import com.tencent.mm.model.af;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.at.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ax;
+import com.tencent.mm.sdk.platformtools.ax.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class a
-  implements ad
+  implements ae
 {
-  private static volatile a dhl;
-  private at dhj = new at();
-  private at.a dhk = new a.1(this);
-  private List<com.tencent.mm.model.ae> dhm = new ArrayList();
-  private c dhn;
+  private static volatile a dYx;
+  private List<af> callbacks;
+  private ax dYv;
+  private ax.a dYw;
+  private c dYy;
   
   private a()
   {
-    this.dhj.a(this.dhk);
-    this.dhj.fN(com.tencent.mm.sdk.platformtools.ae.getContext());
-    if (this.dhn == null) {
-      this.dhn = new a.2(this);
+    AppMethodBeat.i(77621);
+    this.callbacks = new ArrayList();
+    this.dYv = new ax();
+    this.dYw = new a.1(this);
+    this.dYv.a(this.dYw);
+    this.dYv.hd(ah.getContext());
+    if (this.dYy == null) {
+      this.dYy = new a.2(this);
     }
-    com.tencent.mm.sdk.b.a.udP.c(this.dhn);
+    com.tencent.mm.sdk.b.a.ymk.c(this.dYy);
+    AppMethodBeat.o(77621);
   }
   
-  public static a vR()
+  public static a Ia()
   {
-    if (dhl == null) {}
+    AppMethodBeat.i(77622);
+    if (dYx == null) {}
     try
     {
-      if (dhl == null) {
-        dhl = new a();
+      if (dYx == null) {
+        dYx = new a();
       }
-      return dhl;
+      a locala = dYx;
+      AppMethodBeat.o(77622);
+      return locala;
     }
-    finally {}
-  }
-  
-  public final void a(com.tencent.mm.model.ae paramae)
-  {
-    if (paramae != null)
+    finally
     {
-      y.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramae.toString() });
-      this.dhm.add(paramae);
+      AppMethodBeat.o(77622);
     }
   }
   
-  public final void b(com.tencent.mm.model.ae paramae)
+  public final void Ib()
   {
-    if (paramae != null) {
-      this.dhm.remove(paramae);
-    }
-  }
-  
-  public final void vS()
-  {
-    if (this.dhm == null) {}
-    for (;;)
+    AppMethodBeat.i(77625);
+    if (this.callbacks == null)
     {
+      AppMethodBeat.o(77625);
       return;
-      Iterator localIterator = this.dhm.iterator();
-      while (localIterator.hasNext()) {
-        ((com.tencent.mm.model.ae)localIterator.next()).Hf();
-      }
     }
+    Iterator localIterator = this.callbacks.iterator();
+    while (localIterator.hasNext()) {
+      ((af)localIterator.next()).aah();
+    }
+    AppMethodBeat.o(77625);
   }
   
-  public final void vT()
+  public final void Ic()
   {
-    if (this.dhm == null) {}
-    for (;;)
+    AppMethodBeat.i(77626);
+    if (this.callbacks == null)
     {
+      AppMethodBeat.o(77626);
       return;
-      Iterator localIterator = this.dhm.iterator();
-      while (localIterator.hasNext()) {
-        ((com.tencent.mm.model.ae)localIterator.next()).Hg();
-      }
     }
+    Iterator localIterator = this.callbacks.iterator();
+    while (localIterator.hasNext()) {
+      ((af)localIterator.next()).aai();
+    }
+    AppMethodBeat.o(77626);
+  }
+  
+  public final void a(af paramaf)
+  {
+    AppMethodBeat.i(77623);
+    ab.d("MicroMsg.BackgroundPlayer", "add callback : %s", new Object[] { paramaf.toString() });
+    this.callbacks.add(paramaf);
+    AppMethodBeat.o(77623);
+  }
+  
+  public final void b(af paramaf)
+  {
+    AppMethodBeat.i(77624);
+    this.callbacks.remove(paramaf);
+    AppMethodBeat.o(77624);
   }
 }
 

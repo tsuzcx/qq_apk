@@ -1,15 +1,20 @@
 package com.google.android.exoplayer2.h;
 
-import java.io.IOException;
+import android.net.Uri;
 
-public final class g
-  extends IOException
+public abstract interface g
 {
-  public final int aQw = 0;
+  public abstract long a(j paramj);
+  
+  public abstract void close();
+  
+  public abstract Uri getUri();
+  
+  public abstract int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.h.g
  * JD-Core Version:    0.7.0.1
  */

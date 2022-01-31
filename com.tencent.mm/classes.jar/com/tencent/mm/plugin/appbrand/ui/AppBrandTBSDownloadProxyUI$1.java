@@ -1,34 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.util.b;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandTBSDownloadProxyUI$1
-  implements b
+  implements DialogInterface.OnCancelListener
 {
-  public final void d(String paramString1, String paramString2)
-  {
-    y.d(paramString1, paramString2);
-  }
+  AppBrandTBSDownloadProxyUI$1(AppBrandTBSDownloadProxyUI paramAppBrandTBSDownloadProxyUI) {}
   
-  public final void e(String paramString1, String paramString2)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.e(paramString1, paramString2);
-  }
-  
-  public final void i(String paramString1, String paramString2)
-  {
-    y.i(paramString1, paramString2);
-  }
-  
-  public final void v(String paramString1, String paramString2)
-  {
-    y.v(paramString1, paramString2);
-  }
-  
-  public final void w(String paramString1, String paramString2)
-  {
-    y.w(paramString1, paramString2);
+    AppMethodBeat.i(133098);
+    ab.i("MicroMsg.AppBrandTBSDownloadProxyUI", "cancle loading download background");
+    paramDialogInterface = new Intent();
+    this.iOQ.setResult(2, paramDialogInterface);
+    this.iOQ.finish();
+    AppMethodBeat.o(133098);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.model.app.g;
 
 final class s$2
@@ -11,7 +12,9 @@ final class s$2
   
   public final void run()
   {
-    g.a(this.fkT, this.val$intent, this.fEt);
+    AppMethodBeat.i(37236);
+    g.b(this.gCk, this.val$intent, this.gWJ);
+    AppMethodBeat.o(37236);
   }
 }
 

@@ -7,17 +7,17 @@ import java.util.UUID;
 
 public class WXUtil
 {
-  public static final String Ji(int paramInt)
+  public static final String Se(int paramInt)
   {
     return "KeyConfigHttpCode[" + paramInt + "]";
   }
   
-  public static final String Jj(int paramInt)
+  public static final String Sf(int paramInt)
   {
     return "KeyPatchHttpCode[" + paramInt + "]";
   }
   
-  public static final String afB(String paramString)
+  public static final String awx(String paramString)
   {
     if (paramString.contains("?")) {
       return paramString + "uuid=" + UUID.randomUUID().toString();
@@ -25,22 +25,22 @@ public class WXUtil
     return paramString + "?uuid=" + UUID.randomUUID().toString();
   }
   
-  public static String hw(Context paramContext)
+  public static String iY(Context paramContext)
   {
     return paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0).getString("last_login_uin", "0");
   }
   
-  public static String hx(Context paramContext)
+  public static String iZ(Context paramContext)
   {
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences(paramContext.getPackageName() + "_preferences", 0);
     Object localObject2 = localSharedPreferences.getString("login_weixin_username", "");
     Object localObject1 = localObject2;
-    if (Util.bl((String)localObject2)) {
+    if (Util.isNullOrNil((String)localObject2)) {
       localObject1 = localSharedPreferences.getString("login_user_name", "");
     }
     localObject2 = localObject1;
-    if (Util.bl((String)localObject1)) {
-      localObject2 = String.valueOf(Util.hs(paramContext));
+    if (Util.isNullOrNil((String)localObject1)) {
+      localObject2 = String.valueOf(Util.iT(paramContext));
     }
     return localObject2;
   }

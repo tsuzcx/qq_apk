@@ -1,15 +1,10 @@
 package com.tencent.mm.plugin.emoji.sync;
 
-public abstract class d<T>
-  implements Runnable
+public abstract interface d
 {
-  public abstract void a(e parame);
+  public abstract void KX(String paramString);
   
-  public abstract void cancel();
-  
-  public abstract boolean equals(Object paramObject);
-  
-  public abstract String getKey();
+  public abstract void m(String paramString, int paramInt, boolean paramBoolean);
 }
 
 

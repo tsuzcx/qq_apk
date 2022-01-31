@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -9,18 +9,17 @@ import java.util.Set;
 
 public abstract class n
 {
-  protected static String aRC;
-  protected static int dEk = 0;
+  protected static int eBM = 0;
   protected static String host = "";
-  protected static String ndJ;
+  protected static String pIZ;
+  protected static String userAgent = "weixin/android";
   
   static
   {
-    aRC = "weixin/android";
-    ndJ = "";
+    pIZ = "";
   }
   
-  protected static String H(Map<String, String> paramMap)
+  protected static String W(Map<String, String> paramMap)
   {
     if ((paramMap == null) || (paramMap.size() == 0)) {
       return "";
@@ -40,12 +39,12 @@ public abstract class n
     return localStringBuilder.toString();
   }
   
-  public static void Lg(String paramString)
+  public static void Xq(String paramString)
   {
-    ndJ = paramString;
+    pIZ = paramString;
   }
   
-  protected static Map<String, String> Lh(String paramString)
+  protected static Map<String, String> Xr(String paramString)
   {
     HashMap localHashMap = new HashMap();
     if ((paramString == null) || (paramString.length() == 0)) {}
@@ -66,7 +65,7 @@ public abstract class n
     }
   }
   
-  protected static String c(String paramString1, String paramString2, Map<String, String> paramMap)
+  protected static String f(String paramString1, String paramString2, Map<String, String> paramMap)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     if ((!paramString2.startsWith("http://")) && (!paramString2.startsWith("https://"))) {
@@ -86,7 +85,7 @@ public abstract class n
       if (i != 0) {}
       for (paramString1 = "";; paramString1 = "&")
       {
-        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(bk.pm(str2), "utf-8"));
+        localStringBuilder.append(paramString1).append(URLEncoder.encode(str1, "utf-8")).append('=').append(URLEncoder.encode(bo.nullAsNil(str2), "utf-8"));
         i = 0;
         break;
       }
@@ -101,51 +100,16 @@ public abstract class n
   
   public static void setUserAgent(String paramString)
   {
-    af.aRC = paramString;
+    af.userAgent = paramString;
   }
   
-  public abstract c a(String paramString1, String paramString2, n.b paramb, n.a parama);
+  public abstract n.c a(String paramString1, String paramString2, n.b paramb, n.a parama);
   
   public abstract void cancel();
-  
-  public static final class c
-  {
-    String content;
-    Map<String, String> ndM;
-    int status = 0;
-    
-    public c(int paramInt, Map<String, String> paramMap, String paramString)
-    {
-      this.status = paramInt;
-      this.ndM = paramMap;
-      this.content = paramString;
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder("Response status:").append(this.status).append(", cookie:");
-      Object localObject;
-      if (this.ndM != null)
-      {
-        localObject = this.ndM;
-        localObject = localStringBuilder.append(localObject).append(", content length :");
-        if (this.content == null) {
-          break label75;
-        }
-      }
-      label75:
-      for (int i = this.content.length();; i = 0)
-      {
-        return i;
-        localObject = "";
-        break;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.n
  * JD-Core Version:    0.7.0.1
  */

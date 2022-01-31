@@ -1,62 +1,24 @@
 package com.tencent.smtt.utils;
 
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import java.io.FileFilter;
 
-public class u
+final class u
+  implements FileFilter
 {
-  private u.b a = null;
-  private u.b b = null;
-  
-  private boolean a(u.b paramb1, u.b paramb2)
+  public final boolean accept(File paramFile)
   {
-    if ((paramb1 != null) && (paramb1.a() != null) && (paramb2 != null) && (paramb2.a() != null))
+    AppMethodBeat.i(65300);
+    paramFile = paramFile.getName();
+    if ((!TextUtils.isEmpty(paramFile)) && (paramFile.endsWith(".dex")))
     {
-      Object localObject1 = paramb1.a();
-      paramb1 = paramb2.a();
-      paramb2 = ((Map)localObject1).entrySet().iterator();
-      while (paramb2.hasNext())
-      {
-        Object localObject2 = (Map.Entry)paramb2.next();
-        localObject1 = (String)((Map.Entry)localObject2).getKey();
-        localObject2 = (u.a)((Map.Entry)localObject2).getValue();
-        if (paramb1.containsKey(localObject1))
-        {
-          localObject1 = (u.a)paramb1.get(localObject1);
-          if ((((u.a)localObject2).a() != ((u.a)localObject1).a()) || (((u.a)localObject2).b() != ((u.a)localObject1).b())) {
-            return false;
-          }
-        }
-        else
-        {
-          return false;
-        }
-      }
+      AppMethodBeat.o(65300);
       return true;
     }
+    AppMethodBeat.o(65300);
     return false;
-  }
-  
-  public void a(File paramFile)
-  {
-    this.a = new u.b(this, paramFile);
-  }
-  
-  public boolean a()
-  {
-    if ((this.b == null) || (this.a == null)) {}
-    while ((this.b.a().size() != this.a.a().size()) || (!a(this.a, this.b))) {
-      return false;
-    }
-    return true;
-  }
-  
-  public void b(File paramFile)
-  {
-    this.b = new u.b(this, paramFile);
   }
 }
 

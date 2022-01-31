@@ -7,121 +7,139 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class VoiceHeaderPreference
   extends Preference
 {
-  private MMActivity bER;
-  private TextView eXr;
-  private TextView fug;
-  private ImageView heN;
-  private int jRP = 255;
-  private Button jRQ;
-  private View jRR;
-  private View.OnClickListener jRS = null;
-  private String jRT = "";
-  private String jRU = "";
-  private String mTitle = "";
+  private MMActivity cmc;
+  private TextView gLI;
+  private ImageView iQd;
+  private String mTitle;
+  private int mml;
+  private Button mmm;
+  private View mmn;
+  private View.OnClickListener mmo;
+  private String mmp;
+  private String mmq;
+  private TextView titleTv;
   
   public VoiceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(26185);
+    this.cmc = ((MMActivity)paramContext);
+    AppMethodBeat.o(26185);
   }
   
   public VoiceHeaderPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.bER = ((MMActivity)paramContext);
-    setLayoutResource(R.i.voice_print_pref_header);
+    AppMethodBeat.i(26186);
+    this.mTitle = "";
+    this.mml = 255;
+    this.mmo = null;
+    this.mmp = "";
+    this.mmq = "";
+    this.cmc = ((MMActivity)paramContext);
+    setLayoutResource(2130971095);
+    AppMethodBeat.o(26186);
   }
   
-  public final void c(View.OnClickListener paramOnClickListener)
+  public final void a(View.OnClickListener paramOnClickListener)
   {
-    this.jRS = paramOnClickListener;
-    if ((this.jRQ == null) || (this.jRR == null)) {
-      return;
-    }
-    if ((this.jRQ != null) && (this.jRS != null))
+    AppMethodBeat.i(26188);
+    this.mmo = paramOnClickListener;
+    if ((this.mmm == null) || (this.mmn == null))
     {
-      this.jRQ.setOnClickListener(paramOnClickListener);
-      this.jRQ.setVisibility(0);
-      this.jRR.setVisibility(0);
+      AppMethodBeat.o(26188);
       return;
     }
-    this.jRQ.setVisibility(8);
-    this.jRR.setVisibility(8);
+    if ((this.mmm != null) && (this.mmo != null))
+    {
+      this.mmm.setOnClickListener(paramOnClickListener);
+      this.mmm.setVisibility(0);
+      this.mmn.setVisibility(0);
+      AppMethodBeat.o(26188);
+      return;
+    }
+    this.mmm.setVisibility(8);
+    this.mmn.setVisibility(8);
+    AppMethodBeat.o(26188);
   }
   
-  public final void cY(String paramString1, String paramString2)
+  public final void en(String paramString1, String paramString2)
   {
-    this.jRT = paramString1;
-    this.jRU = paramString2;
-    if (this.eXr != null)
+    AppMethodBeat.i(26187);
+    this.mmp = paramString1;
+    this.mmq = paramString2;
+    if (this.titleTv != null)
     {
-      if (bk.bl(this.jRT)) {
-        break label83;
+      if (bo.isNullOrNil(this.mmp)) {
+        break label95;
       }
-      this.eXr.setText(this.jRT);
-      this.eXr.setVisibility(0);
+      this.titleTv.setText(this.mmp);
+      this.titleTv.setVisibility(0);
     }
-    for (;;)
-    {
-      if (this.fug != null)
+    while (this.gLI != null) {
+      if (!bo.isNullOrNil(this.mmq))
       {
-        if (bk.bl(this.jRU)) {
-          break;
-        }
-        this.fug.setText(this.jRU);
-        this.fug.setVisibility(0);
+        this.gLI.setText(this.mmq);
+        this.gLI.setVisibility(0);
+        AppMethodBeat.o(26187);
+        return;
+        label95:
+        this.titleTv.setVisibility(8);
       }
-      return;
-      label83:
-      this.eXr.setVisibility(8);
+      else
+      {
+        this.gLI.setVisibility(8);
+      }
     }
-    this.fug.setVisibility(8);
+    AppMethodBeat.o(26187);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(26189);
     super.onBindView(paramView);
-    this.heN = ((ImageView)paramView.findViewById(R.h.voice_print_sucesss_icon));
-    this.eXr = ((TextView)paramView.findViewById(R.h.voice_print_title));
-    this.fug = ((TextView)paramView.findViewById(R.h.voice_print_title_tip));
-    this.jRQ = ((Button)paramView.findViewById(R.h.right_btn));
-    this.jRR = paramView.findViewById(R.h.button_ll);
-    if (!bk.bl(this.jRT))
+    this.iQd = ((ImageView)paramView.findViewById(2131823888));
+    this.titleTv = ((TextView)paramView.findViewById(2131828763));
+    this.gLI = ((TextView)paramView.findViewById(2131823889));
+    this.mmm = ((Button)paramView.findViewById(2131823890));
+    this.mmn = paramView.findViewById(2131823908);
+    if (!bo.isNullOrNil(this.mmp))
     {
-      this.eXr.setText(this.jRT);
-      this.eXr.setVisibility(0);
-      if (bk.bl(this.jRU)) {
-        break label184;
+      this.titleTv.setText(this.mmp);
+      this.titleTv.setVisibility(0);
+      if (bo.isNullOrNil(this.mmq)) {
+        break label191;
       }
-      this.fug.setText(this.jRU);
-      this.fug.setVisibility(0);
+      this.gLI.setText(this.mmq);
+      this.gLI.setVisibility(0);
     }
     for (;;)
     {
-      if ((this.jRQ == null) || (this.jRS == null)) {
-        break label196;
+      if ((this.mmm == null) || (this.mmo == null)) {
+        break label203;
       }
-      this.jRQ.setOnClickListener(this.jRS);
-      this.jRQ.setVisibility(0);
-      this.jRR.setVisibility(0);
+      this.mmm.setOnClickListener(this.mmo);
+      this.mmm.setVisibility(0);
+      this.mmn.setVisibility(0);
+      AppMethodBeat.o(26189);
       return;
-      this.eXr.setVisibility(8);
+      this.titleTv.setVisibility(8);
       break;
-      label184:
-      this.fug.setVisibility(8);
+      label191:
+      this.gLI.setVisibility(8);
     }
-    label196:
-    this.jRQ.setVisibility(8);
-    this.jRR.setVisibility(8);
+    label203:
+    this.mmm.setVisibility(8);
+    this.mmn.setVisibility(8);
+    AppMethodBeat.o(26189);
   }
 }
 

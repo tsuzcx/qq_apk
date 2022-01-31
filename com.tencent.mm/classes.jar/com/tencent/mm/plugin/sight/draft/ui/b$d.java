@@ -1,7 +1,18 @@
 package com.tencent.mm.plugin.sight.draft.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum b$d
 {
+  static
+  {
+    AppMethodBeat.i(25003);
+    qVa = new d("NORMAL", 0);
+    qVb = new d("EDIT", 1);
+    qVc = new d[] { qVa, qVb };
+    AppMethodBeat.o(25003);
+  }
+  
   private b$d() {}
 }
 

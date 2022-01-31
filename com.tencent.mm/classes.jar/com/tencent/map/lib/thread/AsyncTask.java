@@ -77,7 +77,7 @@ public abstract class AsyncTask<Params, Progress, Result>
     return this.c.cancel(paramBoolean);
   }
   
-  public abstract Result doInBackground(Params... paramVarArgs);
+  protected abstract Result doInBackground(Params... paramVarArgs);
   
   public final AsyncTask<Params, Progress, Result> execute(boolean paramBoolean, Params... paramVarArgs)
   {
@@ -157,7 +157,7 @@ public abstract class AsyncTask<Params, Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.map.lib.thread.AsyncTask
  * JD-Core Version:    0.7.0.1
  */

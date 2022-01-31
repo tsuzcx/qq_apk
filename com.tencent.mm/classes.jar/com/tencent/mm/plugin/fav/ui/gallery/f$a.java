@@ -4,19 +4,21 @@ import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.plugin.fav.ui.n.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f$a
   extends RecyclerView.v
 {
-  TextView eXs;
-  ProgressBar frw;
+  TextView gpp;
+  ProgressBar progressBar;
   
   public f$a(f paramf, View paramView)
   {
     super(paramView);
-    this.eXs = ((TextView)paramView.findViewById(n.e.date_info));
-    this.frw = ((ProgressBar)paramView.findViewById(n.e.load_progress));
+    AppMethodBeat.i(74566);
+    this.gpp = ((TextView)paramView.findViewById(2131824015));
+    this.progressBar = ((ProgressBar)paramView.findViewById(2131824014));
+    AppMethodBeat.o(74566);
   }
 }
 

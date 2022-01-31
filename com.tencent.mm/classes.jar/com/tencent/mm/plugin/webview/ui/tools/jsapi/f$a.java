@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 public abstract interface f$a
 {
-  public abstract void ceI();
+  public abstract void aZa();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.f.a
  * JD-Core Version:    0.7.0.1
  */

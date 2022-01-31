@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.translate.a;
 
 import android.util.SparseArray;
-import com.tencent.mm.protocal.c.bza;
+import com.tencent.mm.protocal.protobuf.clt;
 import java.util.LinkedList;
 
 abstract interface a
 {
-  public abstract void a(int paramInt, SparseArray<c.c> paramSparseArray, LinkedList<bza> paramLinkedList);
+  public abstract void a(int paramInt, SparseArray<c.c> paramSparseArray, LinkedList<clt> paramLinkedList);
 }
 
 

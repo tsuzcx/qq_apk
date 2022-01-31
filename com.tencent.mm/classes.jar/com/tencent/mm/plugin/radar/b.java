@@ -1,28 +1,45 @@
 package com.tencent.mm.plugin.radar;
 
-import a.d.b.g;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
+import com.tencent.mm.pluginsdk.ui.i.a;
+import java.util.HashMap;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/SubCoreRadar;", "Lcom/tencent/mm/model/ISubCore;", "()V", "clearPluginData", "", "pluginFlag", "", "doRadar", "getBaseDBFactories", "Ljava/util/HashMap;", "Lcom/tencent/mm/storagebase/SqliteDB$IFactory;", "onAccountPostReset", "updated", "", "onAccountRelease", "onSdcardMount", "mounted", "Companion", "plugin-radar_release"})
 public final class b
-  implements n
+  implements at
 {
-  private static m eUR;
-  private static l eUS;
-  public static final b.a nkp = new b.a((byte)0);
+  private static final String TAG = "MicroMsg.SubCoreRadar";
+  public static final b.a pPF;
   
-  public final void a(l paraml)
+  static
   {
-    g.k(paraml, "callback");
-    eUS = paraml;
+    AppMethodBeat.i(102860);
+    pPF = new b.a((byte)0);
+    TAG = "MicroMsg.SubCoreRadar";
+    AppMethodBeat.o(102860);
   }
   
-  public final void a(m paramm)
+  public final void clearPluginData(int paramInt) {}
+  
+  public final HashMap<Integer, h.d> getBaseDBFactories()
   {
-    g.k(paramm, "callback");
-    eUR = paramm;
+    return null;
   }
+  
+  public final void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(102859);
+    com.tencent.mm.plugin.radar.ui.b.a locala = com.tencent.mm.plugin.radar.ui.b.a.pRb;
+    com.tencent.mm.plugin.radar.ui.b.a.a((i.a)new b.b());
+    AppMethodBeat.o(102859);
+  }
+  
+  public final void onAccountRelease() {}
+  
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 

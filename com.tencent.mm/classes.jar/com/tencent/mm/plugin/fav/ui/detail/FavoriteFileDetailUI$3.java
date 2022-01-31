@@ -1,15 +1,26 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import com.tencent.mm.plugin.fav.a.b;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.c.a;
 
 final class FavoriteFileDetailUI$3
-  implements Runnable
+  implements View.OnLongClickListener
 {
   FavoriteFileDetailUI$3(FavoriteFileDetailUI paramFavoriteFileDetailUI) {}
   
-  public final void run()
+  public final boolean onLongClick(View paramView)
   {
-    b.o(FavoriteFileDetailUI.b(this.kfu));
+    AppMethodBeat.i(74323);
+    ab.d("MicroMsg.FavoriteFileDetailUI", "onLongClick");
+    if (FavoriteFileDetailUI.l(this.mAf) == null) {
+      FavoriteFileDetailUI.a(this.mAf, new a(this.mAf.getContext()));
+    }
+    FavoriteFileDetailUI.l(this.mAf).a(paramView, this.mAf, FavoriteFileDetailUI.m(this.mAf), FavoriteFileDetailUI.n(this.mAf), FavoriteFileDetailUI.o(this.mAf));
+    AppMethodBeat.o(74323);
+    return true;
   }
 }
 

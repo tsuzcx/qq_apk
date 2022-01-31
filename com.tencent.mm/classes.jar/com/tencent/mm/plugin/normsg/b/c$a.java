@@ -2,67 +2,71 @@ package com.tencent.mm.plugin.normsg.b;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class c$a
   implements View.OnClickListener
 {
-  private final View.OnClickListener mHV;
+  private final View.OnClickListener pib;
   
   c$a(View.OnClickListener paramOnClickListener)
   {
-    this.mHV = paramOnClickListener;
+    this.pib = paramOnClickListener;
   }
   
   public final void onClick(View paramView)
   {
-    synchronized ()
+    AppMethodBeat.i(10432);
+    synchronized (c.access$000())
     {
-      if (!c.aiY().containsKey(paramView))
+      if (!c.access$000().containsKey(paramView))
       {
-        if (this.mHV != null) {
-          this.mHV.onClick(paramView);
+        if (this.pib != null) {
+          this.pib.onClick(paramView);
         }
+        AppMethodBeat.o(10432);
         return;
       }
     }
     for (;;)
     {
-      synchronized (c.Qq())
+      synchronized (c.ajx())
       {
         for (;;)
         {
-          if (!c.Qq().containsKey(paramView))
+          if (!c.ajx().containsKey(paramView))
           {
-            Class localClass = (Class)c.aiY().get(paramView);
+            Class localClass = (Class)c.access$000().get(paramView);
             if (localClass != null) {}
             try
             {
-              a.udP.m((b)localClass.newInstance());
+              a.ymk.l((b)localClass.newInstance());
               break;
               paramView = finally;
+              AppMethodBeat.o(10432);
               throw paramView;
             }
             catch (Throwable localThrowable)
             {
               for (;;)
               {
-                y.printErrStackTrace("MicroMsg.CBCH", localThrowable, "failure to instantiate event class: " + localClass.getName(), new Object[0]);
+                ab.printErrStackTrace("MicroMsg.CBCH", localThrowable, "failure to instantiate event class: " + localClass.getName(), new Object[0]);
               }
             }
           }
         }
       }
-      c.Qq().remove(paramView);
+      c.ajx().remove(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.b.c.a
  * JD-Core Version:    0.7.0.1
  */

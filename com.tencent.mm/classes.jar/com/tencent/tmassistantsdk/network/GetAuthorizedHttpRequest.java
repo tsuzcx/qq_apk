@@ -1,6 +1,7 @@
 package com.tencent.tmassistantsdk.network;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKAuthorizedInfo;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.ActionButton;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.AuthorizedResult;
@@ -20,6 +21,7 @@ public class GetAuthorizedHttpRequest
   
   private String authorizedInfoToString(TMOpenSDKAuthorizedInfo paramTMOpenSDKAuthorizedInfo)
   {
+    AppMethodBeat.i(75833);
     String str = "" + "?appId=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.appId);
     str = str + "&userId=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.userId);
     str = str + "&userIdType=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.userIdType);
@@ -31,11 +33,14 @@ public class GetAuthorizedHttpRequest
     str = str + "&actionFlag=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.actionFlag);
     str = str + "&verifyType=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.verifyType);
     str = str + "&via=" + URLEncoder.encode(paramTMOpenSDKAuthorizedInfo.via);
-    return str + "&actionType=" + paramTMOpenSDKAuthorizedInfo.actionType;
+    paramTMOpenSDKAuthorizedInfo = str + "&actionType=" + paramTMOpenSDKAuthorizedInfo.actionType;
+    AppMethodBeat.o(75833);
+    return paramTMOpenSDKAuthorizedInfo;
   }
   
   private AuthorizedResult jsonObjectToRespData(JSONObject paramJSONObject)
   {
+    AppMethodBeat.i(75834);
     AuthorizedResult localAuthorizedResult = new AuthorizedResult();
     localAuthorizedResult.hasAuthoried = paramJSONObject.getInt("hasAuthoried");
     localAuthorizedResult.errorCode = paramJSONObject.getInt("errorCode");
@@ -73,43 +78,51 @@ public class GetAuthorizedHttpRequest
     }
     localAuthorizedResult.tipsInfo = paramJSONObject;
     TMLog.i("GetAuthorizedHttpRequest", "dataInfo :" + localAuthorizedResult.toString());
+    AppMethodBeat.o(75834);
     return localAuthorizedResult;
   }
   
   protected void onFinished(JSONObject paramJSONObject, int paramInt)
   {
-    if (this.mGetAuthorizedListener == null) {
-      TMLog.i("GetAuthorizedHttpRequest", "mGetAuthorizedListener is null !");
-    }
-    for (;;)
+    AppMethodBeat.i(75832);
+    if (this.mGetAuthorizedListener == null)
     {
+      TMLog.i("GetAuthorizedHttpRequest", "mGetAuthorizedListener is null !");
+      AppMethodBeat.o(75832);
       return;
-      if ((paramInt == 0) && (paramJSONObject != null)) {
-        try
-        {
-          paramJSONObject = jsonObjectToRespData(paramJSONObject);
-          if (paramJSONObject != null)
-          {
-            this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(paramJSONObject, 0);
-            return;
-          }
-        }
-        catch (JSONException paramJSONObject)
-        {
-          this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, 704);
-          y.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
-          return;
-        }
-      }
     }
-    this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, paramInt);
+    if ((paramInt == 0) && (paramJSONObject != null)) {
+      try
+      {
+        paramJSONObject = jsonObjectToRespData(paramJSONObject);
+        if (paramJSONObject == null) {
+          break label103;
+        }
+        this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(paramJSONObject, 0);
+        AppMethodBeat.o(75832);
+        return;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, 704);
+        ab.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
+        AppMethodBeat.o(75832);
+        return;
+      }
+    } else {
+      this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, paramInt);
+    }
+    label103:
+    AppMethodBeat.o(75832);
   }
   
   public void sendRequest(TMOpenSDKAuthorizedInfo paramTMOpenSDKAuthorizedInfo)
   {
+    AppMethodBeat.i(75831);
     if (paramTMOpenSDKAuthorizedInfo != null) {
       super.sendData(authorizedInfoToString(paramTMOpenSDKAuthorizedInfo));
     }
+    AppMethodBeat.o(75831);
   }
   
   public void setListenner(IGetAuthorizedHttpRequestListenner paramIGetAuthorizedHttpRequestListenner)
@@ -119,7 +132,7 @@ public class GetAuthorizedHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.GetAuthorizedHttpRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.friend.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FindMContactInviteUI$4
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class FindMContactInviteUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FindMContactInviteUI.n(this.fhx);
-    this.fhx.finish();
+    AppMethodBeat.i(108539);
+    FindMContactInviteUI.n(this.gzf);
+    this.gzf.finish();
+    AppMethodBeat.o(108539);
   }
 }
 

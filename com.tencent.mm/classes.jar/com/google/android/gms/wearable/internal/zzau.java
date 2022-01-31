@@ -1,52 +1,23 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
-import java.util.ArrayList;
+import com.google.android.gms.common.api.internal.ListenerHolder.ListenerKey;
+import com.google.android.gms.common.api.internal.UnregisterListenerMethod;
+import com.google.android.gms.wearable.ChannelApi.ChannelListener;
+import com.google.android.gms.wearable.ChannelClient.ChannelCallback;
+import javax.annotation.Nullable;
 
-public class zzau
-  implements Parcelable.Creator<zzat>
+final class zzau
+  extends UnregisterListenerMethod<zzhg, ChannelClient.ChannelCallback>
 {
-  static void zza(zzat paramzzat, Parcel paramParcel, int paramInt)
-  {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 2, paramzzat.statusCode);
-    zzc.zzc(paramParcel, 3, paramzzat.zzbUx, false);
-    zzc.zzJ(paramParcel, paramInt);
-  }
+  @Nullable
+  private final String zzce;
+  private final ChannelApi.ChannelListener zzcf;
   
-  public zzat zzla(Parcel paramParcel)
+  zzau(ChannelApi.ChannelListener paramChannelListener, @Nullable String paramString, ListenerHolder.ListenerKey<ChannelClient.ChannelCallback> paramListenerKey)
   {
-    int j = zzb.zzaY(paramParcel);
-    int i = 0;
-    ArrayList localArrayList = null;
-    while (paramParcel.dataPosition() < j)
-    {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 2: 
-        i = zzb.zzg(paramParcel, k);
-        break;
-      case 3: 
-        localArrayList = zzb.zzc(paramParcel, k, zzo.CREATOR);
-      }
-    }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
-    }
-    return new zzat(i, localArrayList);
-  }
-  
-  public zzat[] zzpC(int paramInt)
-  {
-    return new zzat[paramInt];
+    super(paramListenerKey);
+    this.zzcf = paramChannelListener;
+    this.zzce = paramString;
   }
 }
 

@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseScanUI$14
-  implements MenuItem.OnMenuItemClickListener
+  implements DialogInterface.OnClickListener
 {
-  BaseScanUI$14(BaseScanUI paramBaseScanUI, View.OnClickListener paramOnClickListener) {}
+  BaseScanUI$14(BaseScanUI paramBaseScanUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramMenuItem = new d(this.nJg.mController.uMN, 1, false);
-    paramMenuItem.phH = new BaseScanUI.14.1(this);
-    paramMenuItem.phI = new BaseScanUI.14.2(this);
-    paramMenuItem.cfU();
-    return false;
+    AppMethodBeat.i(138470);
+    BaseScanUI.a(this.qwI, true);
+    BaseScanUI.E(this.qwI);
+    BaseScanUI.F(this.qwI);
+    this.qwI.overridePendingTransition(0, 0);
+    AppMethodBeat.o(138470);
   }
 }
 

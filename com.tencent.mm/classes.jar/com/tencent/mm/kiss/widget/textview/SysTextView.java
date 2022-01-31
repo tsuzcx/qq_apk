@@ -12,193 +12,270 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStructure;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.reflect.Field;
 
 public class SysTextView
   extends TextView
   implements a
 {
-  private static boolean dOy = false;
-  private static Field dOz = null;
-  private g dOk = new g(this, new com.tencent.mm.kiss.widget.textview.a.a());
+  private static boolean eMg = false;
+  private static Field eMh = null;
+  private g eLS;
   
   public SysTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(105777);
+    this.eLS = new g(this, new com.tencent.mm.kiss.widget.textview.a.a());
     init();
+    AppMethodBeat.o(105777);
   }
   
   public SysTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(105778);
+    this.eLS = new g(this, new com.tencent.mm.kiss.widget.textview.a.a());
     init();
+    AppMethodBeat.o(105778);
   }
   
-  private void init()
+  private void SO()
   {
-    super.setText(" ", TextView.BufferType.SPANNABLE);
-    this.dOk.dOm = new com.tencent.mm.kiss.widget.textview.a.a();
-    this.dOk.dOm.textColor = super.getTextColors().getDefaultColor();
-    this.dOk.dOm.dNY = super.getEllipsize();
-    this.dOk.dOm.gravity = super.getGravity();
-    this.dOk.dOm.dOB = super.getTextSize();
-    if (!dOy) {}
+    AppMethodBeat.i(105780);
+    if (eMg)
+    {
+      AppMethodBeat.o(105780);
+      return;
+    }
     try
     {
-      if (dOz == null)
+      if (eMh == null)
       {
         Field localField = TextView.class.getDeclaredField("mSingleLine");
-        dOz = localField;
+        eMh = localField;
         localField.setAccessible(true);
       }
-      if (dOz.getBoolean(this)) {
-        this.dOk.dOm.maxLines = 1;
+      if (eMh.getBoolean(this)) {
+        this.eLS.eLU.maxLines = 1;
       }
+      AppMethodBeat.o(105780);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.SysPLTextView", "initSingleLine error: %s", new Object[] { localException.getMessage() });
-      dOy = true;
+      ab.e("MicroMsg.SysPLTextView", "initSingleLine error: %s", new Object[] { localException.getMessage() });
+      eMg = true;
+      AppMethodBeat.o(105780);
     }
+  }
+  
+  private void init()
+  {
+    AppMethodBeat.i(105779);
+    super.setText(" ", TextView.BufferType.SPANNABLE);
+    this.eLS.eLU = new com.tencent.mm.kiss.widget.textview.a.a();
+    this.eLS.eLU.textColor = super.getTextColors().getDefaultColor();
+    this.eLS.eLU.eLG = super.getEllipsize();
+    this.eLS.eLU.gravity = super.getGravity();
+    this.eLS.eLU.textSize = super.getTextSize();
+    SO();
+    AppMethodBeat.o(105779);
   }
   
   public void dispatchProvideStructure(ViewStructure paramViewStructure) {}
   
   public int getBaseline()
   {
+    AppMethodBeat.i(105813);
     try
     {
       int i = super.getBaseline();
+      AppMethodBeat.o(105813);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      y.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
+      AppMethodBeat.o(105813);
     }
     return -1;
   }
   
   public com.tencent.mm.kiss.widget.textview.a.a getConfig()
   {
-    if (this.dOk == null) {
+    if (this.eLS == null) {
       return null;
     }
-    return this.dOk.dOm;
+    return this.eLS.eLU;
   }
   
   public int getHorizontalDrawOffset()
   {
-    if (this.dOk == null) {
+    if (this.eLS == null) {
       return 0;
     }
-    return this.dOk.dOp;
+    return this.eLS.eLX;
   }
   
   protected f getLayoutWrapper()
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105781);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105781);
       return null;
     }
-    return this.dOk.getLayoutWrapper();
+    f localf = this.eLS.getLayoutWrapper();
+    AppMethodBeat.o(105781);
+    return localf;
   }
   
   public int getLineCount()
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105799);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105799);
       return 0;
     }
-    return this.dOk.getLineCount();
+    int i = this.eLS.getLineCount();
+    AppMethodBeat.o(105799);
+    return i;
   }
   
   public int getLineHeight()
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105800);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105800);
       return 0;
     }
-    return this.dOk.getLineHeight();
+    int i = this.eLS.getLineHeight();
+    AppMethodBeat.o(105800);
+    return i;
   }
   
   public int getSelectionEnd()
   {
-    if (getText() == null) {
+    AppMethodBeat.i(105802);
+    if (getText() == null)
+    {
+      AppMethodBeat.o(105802);
       return -1;
     }
-    return Selection.getSelectionEnd(getText());
+    int i = Selection.getSelectionEnd(getText());
+    AppMethodBeat.o(105802);
+    return i;
   }
   
   public int getSelectionStart()
   {
-    if (getText() == null) {
+    AppMethodBeat.i(105801);
+    if (getText() == null)
+    {
+      AppMethodBeat.o(105801);
       return -1;
     }
-    return Selection.getSelectionStart(getText());
+    int i = Selection.getSelectionStart(getText());
+    AppMethodBeat.o(105801);
+    return i;
   }
   
   public CharSequence getText()
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105795);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105795);
       return null;
     }
-    return this.dOk.getText();
+    CharSequence localCharSequence = this.eLS.getText();
+    AppMethodBeat.o(105795);
+    return localCharSequence;
   }
   
   public int getTextColor()
   {
-    return this.dOk.getTextColor();
+    AppMethodBeat.i(105797);
+    int i = this.eLS.getTextColor();
+    AppMethodBeat.o(105797);
+    return i;
   }
   
   public float getTextSize()
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105796);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105796);
       return 0.0F;
     }
-    return this.dOk.getTextSize();
+    float f = this.eLS.getTextSize();
+    AppMethodBeat.o(105796);
+    return f;
   }
   
   public Layout getTvLayout()
   {
-    return this.dOk.getTvLayout();
+    AppMethodBeat.i(105798);
+    Layout localLayout = this.eLS.getTvLayout();
+    AppMethodBeat.o(105798);
+    return localLayout;
   }
   
   public int getVerticalDrawOffset()
   {
-    if (this.dOk == null) {
+    if (this.eLS == null) {
       return 0;
     }
-    return this.dOk.dOq;
+    return this.eLS.eLY;
   }
   
   protected void onAttachedToWindow()
   {
+    AppMethodBeat.i(105808);
     super.onAttachedToWindow();
+    AppMethodBeat.o(105808);
   }
   
   protected void onDetachedFromWindow()
   {
+    AppMethodBeat.i(105809);
     super.onDetachedFromWindow();
+    AppMethodBeat.o(105809);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(105806);
     try
     {
-      if (this.dOk == null) {
+      g localg = this.eLS;
+      if (localg == null)
+      {
+        AppMethodBeat.o(105806);
         return;
       }
-      this.dOk.onDraw(paramCanvas);
+      this.eLS.onDraw(paramCanvas);
+      AppMethodBeat.o(105806);
       return;
     }
     catch (Throwable paramCanvas)
     {
-      y.printErrStackTrace("MicroMsg.SysPLTextView", paramCanvas, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.SysPLTextView", paramCanvas, "", new Object[0]);
+      AppMethodBeat.o(105806);
     }
   }
   
   public void onFinishTemporaryDetach()
   {
+    AppMethodBeat.i(105811);
     super.onFinishTemporaryDetach();
+    AppMethodBeat.o(105811);
   }
   
   public void onHoverChanged(boolean paramBoolean) {}
@@ -210,29 +287,35 @@ public class SysTextView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(105807);
     try
     {
-      Point localPoint = this.dOk.bf(paramInt1, paramInt2);
+      Point localPoint = this.eLS.cj(paramInt1, paramInt2);
       if (localPoint != null)
       {
         setMeasuredDimension(localPoint.x, localPoint.y);
-        return;
-      }
-      try
-      {
-        super.onMeasure(paramInt1, paramInt2);
-        return;
-      }
-      catch (Exception localException)
-      {
-        y.printErrStackTrace("MicroMsg.SysPLTextView", localException, "onMeasure error: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(105807);
         return;
       }
       return;
     }
     catch (Throwable localThrowable)
     {
-      y.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
+      try
+      {
+        super.onMeasure(paramInt1, paramInt2);
+        AppMethodBeat.o(105807);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.SysPLTextView", localException, "onMeasure error: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(105807);
+      }
+      localThrowable = localThrowable;
+      ab.printErrStackTrace("MicroMsg.SysPLTextView", localThrowable, "", new Object[0]);
+      AppMethodBeat.o(105807);
+      return;
     }
   }
   
@@ -243,164 +326,228 @@ public class SysTextView
   
   public void onProvideStructure(ViewStructure paramViewStructure)
   {
+    AppMethodBeat.i(105812);
     try
     {
       super.onProvideStructure(paramViewStructure);
+      AppMethodBeat.o(105812);
       return;
     }
     catch (Exception paramViewStructure)
     {
-      y.printErrStackTrace("MicroMsg.SysPLTextView", paramViewStructure, "onProvideStructure error: %s", new Object[] { paramViewStructure.getMessage() });
+      ab.printErrStackTrace("MicroMsg.SysPLTextView", paramViewStructure, "onProvideStructure error: %s", new Object[] { paramViewStructure.getMessage() });
+      AppMethodBeat.o(105812);
     }
   }
   
   public void onStartTemporaryDetach()
   {
+    AppMethodBeat.i(105810);
     super.onStartTemporaryDetach();
+    AppMethodBeat.o(105810);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool1;
-    if (getTvLayout() == null) {
-      bool1 = false;
-    }
-    boolean bool2;
-    do
+    AppMethodBeat.i(105804);
+    if (getTvLayout() == null)
     {
-      return bool1;
-      bool2 = this.dOk.r(paramMotionEvent);
-      bool1 = super.onTouchEvent(paramMotionEvent);
-    } while (!bool2);
-    return true;
+      AppMethodBeat.o(105804);
+      return false;
+    }
+    boolean bool1 = this.eLS.t(paramMotionEvent);
+    boolean bool2 = super.onTouchEvent(paramMotionEvent);
+    if (bool1)
+    {
+      AppMethodBeat.o(105804);
+      return true;
+    }
+    AppMethodBeat.o(105804);
+    return bool2;
   }
   
   public boolean performClick()
   {
-    if (this.dOk == null) {}
-    while (!this.dOk.performClick()) {
+    AppMethodBeat.i(105805);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105805);
       return false;
     }
-    return super.performClick();
+    if (!this.eLS.performClick())
+    {
+      AppMethodBeat.o(105805);
+      return false;
+    }
+    boolean bool = super.performClick();
+    AppMethodBeat.o(105805);
+    return bool;
   }
   
   public void setClickable(boolean paramBoolean)
   {
+    AppMethodBeat.i(105803);
     super.setClickable(paramBoolean);
-    if (this.dOk == null) {
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105803);
       return;
     }
-    this.dOk.dOs = paramBoolean;
+    this.eLS.eMa = paramBoolean;
+    AppMethodBeat.o(105803);
   }
   
   public void setGravity(int paramInt)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105790);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105790);
       return;
     }
-    this.dOk.setGravity(paramInt);
+    this.eLS.setGravity(paramInt);
+    AppMethodBeat.o(105790);
   }
   
   public void setHandleClickableSpan(boolean paramBoolean)
   {
-    this.dOk.dOt = paramBoolean;
+    this.eLS.eMb = paramBoolean;
   }
   
   public void setLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
-    if (this.dOk != null) {
-      this.dOk.EI();
+    AppMethodBeat.i(105793);
+    if (this.eLS != null) {
+      this.eLS.SN();
     }
     super.setLayoutParams(paramLayoutParams);
+    AppMethodBeat.o(105793);
   }
   
   public void setLines(int paramInt)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105783);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105783);
       return;
     }
-    this.dOk.setLines(paramInt);
+    this.eLS.setLines(paramInt);
+    AppMethodBeat.o(105783);
   }
   
   public void setMaxLines(int paramInt)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105791);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105791);
       return;
     }
-    this.dOk.setMaxLines(paramInt);
+    this.eLS.setMaxLines(paramInt);
+    AppMethodBeat.o(105791);
   }
   
   public void setMinLines(int paramInt)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105792);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105792);
       return;
     }
-    this.dOk.setMinLines(paramInt);
+    this.eLS.setMinLines(paramInt);
+    AppMethodBeat.o(105792);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.dOk != null) {
-      this.dOk.EI();
+    AppMethodBeat.i(105794);
+    if (this.eLS != null) {
+      this.eLS.SN();
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(105794);
   }
   
   public void setSingleLine(boolean paramBoolean)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105782);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105782);
       return;
     }
-    this.dOk.setSingleLine(paramBoolean);
+    this.eLS.setSingleLine(paramBoolean);
+    AppMethodBeat.o(105782);
   }
   
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
+    AppMethodBeat.i(105784);
     setText$609c24db(paramCharSequence);
+    AppMethodBeat.o(105784);
   }
   
   public final void setText$609c24db(CharSequence paramCharSequence)
   {
-    if (this.dOk == null)
+    AppMethodBeat.i(105785);
+    if (this.eLS == null)
     {
       super.setText("");
+      AppMethodBeat.o(105785);
       return;
     }
-    this.dOk.setText(paramCharSequence, false);
+    this.eLS.setText(paramCharSequence, false);
+    AppMethodBeat.o(105785);
   }
   
   public void setTextColor(int paramInt)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105789);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105789);
       return;
     }
-    this.dOk.setTextColor(paramInt);
+    this.eLS.setTextColor(paramInt);
+    AppMethodBeat.o(105789);
   }
   
   public void setTextLayout(f paramf)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105788);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105788);
       return;
     }
-    this.dOk.setTextLayout(paramf);
+    this.eLS.setTextLayout(paramf);
+    AppMethodBeat.o(105788);
   }
   
   public void setTextSize(float paramFloat)
   {
+    AppMethodBeat.i(105786);
     setTextSize(0, paramFloat);
+    AppMethodBeat.o(105786);
   }
   
   public void setTextSize(int paramInt, float paramFloat)
   {
-    if (this.dOk == null) {
+    AppMethodBeat.i(105787);
+    if (this.eLS == null)
+    {
+      AppMethodBeat.o(105787);
       return;
     }
-    this.dOk.setTextSize(paramInt, paramFloat);
+    this.eLS.setTextSize(paramInt, paramFloat);
+    AppMethodBeat.o(105787);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.SysTextView
  * JD-Core Version:    0.7.0.1
  */

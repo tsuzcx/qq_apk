@@ -5,16 +5,16 @@ import java.util.List;
 
 public abstract class a<T>
 {
-  protected String bVk;
-  protected int qVZ;
+  protected String query;
+  protected int uLl;
   
   public a(String paramString)
   {
-    this.bVk = paramString;
-    this.qVZ = 2147483647;
+    this.query = paramString;
+    this.uLl = 2147483647;
   }
   
-  public abstract void da(List<l> paramList);
+  public abstract void ee(List<l> paramList);
   
   public boolean equals(Object paramObject)
   {
@@ -26,8 +26,8 @@ public abstract class a<T>
         break;
       }
       paramObject = (a)paramObject;
-      if ((this.bVk == paramObject.bVk) || ((this.bVk != null) && (this.bVk.equalsIgnoreCase(paramObject.bVk)))) {}
-      for (int i = 1; (paramObject.qVZ != this.qVZ) || (i == 0); i = 0) {
+      if ((this.query == paramObject.query) || ((this.query != null) && (this.query.equalsIgnoreCase(paramObject.query)))) {}
+      for (int i = 1; (paramObject.uLl != this.uLl) || (i == 0); i = 0) {
         return false;
       }
     }

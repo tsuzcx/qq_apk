@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 
 final class AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$2
@@ -8,15 +9,18 @@ final class AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$2
 {
   AppBrandServiceConversationUI$AppBrandServiceConversationFmUI$2(AppBrandServiceConversationUI.AppBrandServiceConversationFmUI paramAppBrandServiceConversationFmUI) {}
   
-  public final void bg(Object paramObject)
+  public final void bC(Object paramObject)
   {
+    AppMethodBeat.i(33986);
     if (paramObject == null)
     {
-      y.e("MicroMsg.AppBrandServiceConversationFmUI", "onItemDel object null");
+      ab.e("MicroMsg.AppBrandServiceConversationFmUI", "onItemDel object null");
+      AppMethodBeat.o(33986);
       return;
     }
     paramObject = paramObject.toString();
-    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$800(this.vOR, paramObject);
+    AppBrandServiceConversationUI.AppBrandServiceConversationFmUI.access$800(this.AgB, paramObject);
+    AppMethodBeat.o(33986);
   }
 }
 

@@ -8,84 +8,98 @@ import android.view.View.OnApplyWindowInsetsListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowInsets;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Set;
 import java.util.WeakHashMap;
 
 public class c
 {
-  private static final WeakHashMap<Activity, c> vXA;
-  public static final boolean vXv;
+  public static final boolean ApJ;
   @SuppressLint({"StaticFieldLeak"})
-  private static final c vXz;
+  private static final c ApN;
+  private static final WeakHashMap<Activity, c> zfM;
+  private final Set<WeakReference<a>> ApK;
+  private boolean ApL;
+  int ApM;
   private final WeakReference<Activity> mActivityRef;
-  private final Set<WeakReference<a>> vXw = new HashSet();
-  private boolean vXx = false;
-  int vXy = 0;
   
   static
   {
-    if ((Build.VERSION.SDK_INT >= 21) && (!com.tencent.mm.sdk.g.c.csB())) {}
+    AppMethodBeat.i(67849);
+    if ((Build.VERSION.SDK_INT >= 21) && (!com.tencent.mm.sdk.h.c.duQ())) {}
     for (boolean bool = true;; bool = false)
     {
-      vXv = bool;
-      vXz = new c()
+      ApJ = bool;
+      ApN = new c()
       {
         public final void a(c.a paramAnonymousa) {}
+        
+        public final void b(c.a paramAnonymousa) {}
       };
-      vXA = new WeakHashMap();
+      zfM = new WeakHashMap();
+      AppMethodBeat.o(67849);
       return;
     }
   }
   
   private c(Activity paramActivity)
   {
+    AppMethodBeat.i(67845);
+    this.ApK = new HashSet();
+    this.ApL = false;
+    this.ApM = 0;
     this.mActivityRef = new WeakReference(paramActivity);
+    AppMethodBeat.o(67845);
   }
   
-  public static c af(Activity paramActivity)
+  public static c aH(Activity paramActivity)
   {
-    if ((!vXv) || (paramActivity == null)) {
-      localObject = vXz;
-    }
-    c localc;
-    do
+    AppMethodBeat.i(67847);
+    if ((!ApJ) || (paramActivity == null))
     {
-      return localObject;
-      localc = (c)vXA.get(paramActivity);
-      localObject = localc;
-    } while (localc != null);
-    Object localObject = new c(paramActivity);
-    vXA.put(paramActivity, localObject);
-    return localObject;
+      paramActivity = ApN;
+      AppMethodBeat.o(67847);
+      return paramActivity;
+    }
+    c localc2 = (c)zfM.get(paramActivity);
+    c localc1 = localc2;
+    if (localc2 == null)
+    {
+      localc1 = new c(paramActivity);
+      zfM.put(paramActivity, localc1);
+    }
+    AppMethodBeat.o(67847);
+    return localc1;
   }
   
   public void a(a parama)
   {
+    AppMethodBeat.i(67846);
     Object localObject;
-    if (!this.vXx)
+    if (!this.ApL)
     {
-      this.vXx = true;
+      this.ApL = true;
       localObject = (Activity)this.mActivityRef.get();
       if ((localObject != null) && (((Activity)localObject).getWindow() != null)) {
-        break label74;
+        break label80;
       }
     }
     for (;;)
     {
-      if (parama != null)
-      {
-        this.vXw.add(new WeakReference(parama));
-        if (this.vXy > 0) {
-          parama.ml(this.vXy);
-        }
+      this.ApK.add(new WeakReference(parama));
+      if (this.ApM > 0) {
+        parama.pB(this.ApM);
       }
+      AppMethodBeat.o(67846);
       return;
       try
       {
-        label74:
+        label80:
         ViewGroup localViewGroup = (ViewGroup)((Activity)localObject).getWindow().getDecorView();
         localObject = localViewGroup;
         if (localViewGroup.getChildCount() == 1) {
@@ -95,22 +109,39 @@ public class c
         {
           public final WindowInsets onApplyWindowInsets(View paramAnonymousView, WindowInsets paramAnonymousWindowInsets)
           {
+            AppMethodBeat.i(67844);
             c.b(c.this, c.a(c.this, paramAnonymousWindowInsets.getSystemWindowInsetTop()));
-            return paramAnonymousWindowInsets.consumeSystemWindowInsets();
+            paramAnonymousView = paramAnonymousWindowInsets.consumeSystemWindowInsets();
+            AppMethodBeat.o(67844);
+            return paramAnonymousView;
           }
         });
         ((View)localObject).requestApplyInsets();
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.StatusBarHeightWatcher", "setOnApplyWindowInsetsListener e=%s", new Object[] { localException });
+        ab.e("MicroMsg.StatusBarHeightWatcher", "setOnApplyWindowInsetsListener e=%s", new Object[] { localException });
       }
     }
   }
   
+  public void b(a parama)
+  {
+    AppMethodBeat.i(141902);
+    Iterator localIterator = new LinkedList(this.ApK).iterator();
+    while (localIterator.hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if ((parama == localWeakReference.get()) || (localWeakReference.get() == null)) {
+        this.ApK.remove(localWeakReference);
+      }
+    }
+    AppMethodBeat.o(141902);
+  }
+  
   public static abstract interface a
   {
-    public abstract void ml(int paramInt);
+    public abstract void pB(int paramInt);
   }
 }
 

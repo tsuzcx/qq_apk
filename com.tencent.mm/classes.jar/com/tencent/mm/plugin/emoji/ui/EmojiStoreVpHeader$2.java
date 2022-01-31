@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class EmojiStoreVpHeader$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class EmojiStoreVpHeader$2
   
   public final void run()
   {
-    EmojiStoreVpHeader.c(this.jfc);
+    AppMethodBeat.i(53509);
+    EmojiStoreVpHeader.c(this.lnS);
+    AppMethodBeat.o(53509);
   }
 }
 

@@ -2,10 +2,8 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.qqmail.b.j;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class ComposeUI$10
   implements MenuItem.OnMenuItemClickListener
@@ -14,14 +12,16 @@ final class ComposeUI$10
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (((ComposeUI.a(this.ngJ, false)) && (ComposeUI.a(this.ngJ) == 5)) || (ComposeUI.a(this.ngJ) == 6)) {
-      h.a(this.ngJ.mController.uMN, this.ngJ.getString(b.j.plugin_qqmail_composeui_leave_alert), "", this.ngJ.getString(b.j.plugin_qqmail_composeui_quit_delete), this.ngJ.getString(b.j.app_cancel), new ComposeUI.10.1(this), null);
+    AppMethodBeat.i(68179);
+    if (((ComposeUI.a(this.pLX, false)) && (ComposeUI.a(this.pLX) == 5)) || (ComposeUI.a(this.pLX) == 6)) {
+      h.d(this.pLX.getContext(), this.pLX.getString(2131302130), "", this.pLX.getString(2131302132), this.pLX.getString(2131296888), new ComposeUI.10.1(this), null);
     }
     for (;;)
     {
+      AppMethodBeat.o(68179);
       return true;
-      this.ngJ.setResult(0);
-      this.ngJ.finish();
+      this.pLX.setResult(0);
+      this.pLX.finish();
     }
   }
 }

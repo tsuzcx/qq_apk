@@ -1,51 +1,29 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import android.content.IntentFilter;
+import com.google.android.gms.common.api.internal.ListenerHolder;
+import com.google.android.gms.common.api.internal.RegisterListenerMethod;
+import com.google.android.gms.wearable.CapabilityApi.CapabilityListener;
+import com.google.android.gms.wearable.CapabilityClient.OnCapabilityChangedListener;
 
-public class zzaf
-  implements Parcelable.Creator<zzae>
+final class zzaf
+  extends RegisterListenerMethod<zzhg, CapabilityClient.OnCapabilityChangedListener>
 {
-  static void zza(zzae paramzzae, Parcel paramParcel, int paramInt)
-  {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 2, paramzzae.statusCode);
-    zzc.zzJ(paramParcel, paramInt);
-  }
+  private final IntentFilter[] zzba;
+  private final CapabilityClient.OnCapabilityChangedListener zzby;
+  private final ListenerHolder<CapabilityApi.CapabilityListener> zzbz;
   
-  public zzae zzkW(Parcel paramParcel)
+  private zzaf(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, IntentFilter[] paramArrayOfIntentFilter, ListenerHolder<CapabilityClient.OnCapabilityChangedListener> paramListenerHolder)
   {
-    int j = zzb.zzaY(paramParcel);
-    int i = 0;
-    while (paramParcel.dataPosition() < j)
-    {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 2: 
-        i = zzb.zzg(paramParcel, k);
-      }
-    }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
-    }
-    return new zzae(i);
-  }
-  
-  public zzae[] zzpy(int paramInt)
-  {
-    return new zzae[paramInt];
+    super(paramListenerHolder);
+    this.zzby = paramOnCapabilityChangedListener;
+    this.zzba = paramArrayOfIntentFilter;
+    this.zzbz = paramListenerHolder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzaf
  * JD-Core Version:    0.7.0.1
  */

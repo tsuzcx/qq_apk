@@ -1,31 +1,29 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CreateAvatarUI$3
-  implements TextView.OnEditorActionListener
+  implements DialogInterface.OnCancelListener
 {
   CreateAvatarUI$3(CreateAvatarUI paramCreateAvatarUI) {}
   
-  public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    AppMethodBeat.i(7355);
+    try
     {
-      CreateAvatarUI.a(this.rkL, (InputMethodManager)this.rkL.getSystemService("input_method"));
-      if ((CreateAvatarUI.a(this.rkL) != null) && (CreateAvatarUI.a(this.rkL).isActive()))
-      {
-        CreateAvatarUI.a(this.rkL).hideSoftInputFromWindow(this.rkL.getCurrentFocus().getWindowToken(), 0);
-        CreateAvatarUI.b(this.rkL).setCursorVisible(false);
-        this.rkL.getWindow().getDecorView().requestFocus();
-      }
+      paramDialogInterface.dismiss();
+      AppMethodBeat.o(7355);
+      return;
     }
-    return false;
+    catch (Exception paramDialogInterface)
+    {
+      ab.e("MicroMsg.CreateAvatarUI", "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
+      AppMethodBeat.o(7355);
+    }
   }
 }
 

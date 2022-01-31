@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.protocol.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class UpdateInfoLog
   extends JceStruct
@@ -28,16 +29,19 @@ public final class UpdateInfoLog
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76159);
     this.updateType = paramJceInputStream.read(this.updateType, 0, true);
     this.packageName = paramJceInputStream.readString(1, true);
     this.appid = paramJceInputStream.read(this.appid, 2, false);
     this.actionCode = paramJceInputStream.read(this.actionCode, 3, true);
     this.yybExistFlag = paramJceInputStream.read(this.yybExistFlag, 4, false);
     this.extra = paramJceInputStream.readString(5, false);
+    AppMethodBeat.o(76159);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76158);
     paramJceOutputStream.write(this.updateType, 0);
     paramJceOutputStream.write(this.packageName, 1);
     paramJceOutputStream.write(this.appid, 2);
@@ -46,6 +50,7 @@ public final class UpdateInfoLog
     if (this.extra != null) {
       paramJceOutputStream.write(this.extra, 5);
     }
+    AppMethodBeat.o(76158);
   }
 }
 

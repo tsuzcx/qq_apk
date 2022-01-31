@@ -1,6 +1,7 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.h.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.k;
 import com.tencent.mm.sdk.b.c;
 
 final class NewBizConversationUI$10
@@ -8,7 +9,9 @@ final class NewBizConversationUI$10
 {
   NewBizConversationUI$10(NewBizConversationUI paramNewBizConversationUI)
   {
-    this.udX = k.class.getName().hashCode();
+    AppMethodBeat.i(34542);
+    this.__eventId = k.class.getName().hashCode();
+    AppMethodBeat.o(34542);
   }
 }
 

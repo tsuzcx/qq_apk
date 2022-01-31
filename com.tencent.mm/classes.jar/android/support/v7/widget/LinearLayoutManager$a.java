@@ -4,10 +4,10 @@ import android.view.View;
 
 final class LinearLayoutManager$a
 {
-  aj adZ;
-  int aem;
-  boolean aen;
-  boolean aeo;
+  boolean agA;
+  boolean agB;
+  aj agm;
+  int agz;
   int mPosition;
   
   LinearLayoutManager$a()
@@ -15,34 +15,11 @@ final class LinearLayoutManager$a
     reset();
   }
   
-  final void hc()
+  public final void A(View paramView, int paramInt)
   {
-    if (this.aen) {}
-    for (int i = this.adZ.hi();; i = this.adZ.hh())
-    {
-      this.aem = i;
-      return;
-    }
-  }
-  
-  final void reset()
-  {
-    this.mPosition = -1;
-    this.aem = -2147483648;
-    this.aen = false;
-    this.aeo = false;
-  }
-  
-  public final String toString()
-  {
-    return "AnchorInfo{mPosition=" + this.mPosition + ", mCoordinate=" + this.aem + ", mLayoutFromEnd=" + this.aen + ", mValid=" + this.aeo + '}';
-  }
-  
-  public final void v(View paramView, int paramInt)
-  {
-    int i = this.adZ.hg();
+    int i = this.agm.iH();
     if (i >= 0) {
-      w(paramView, paramInt);
+      B(paramView, paramInt);
     }
     do
     {
@@ -55,40 +32,63 @@ final class LinearLayoutManager$a
           {
             return;
             this.mPosition = paramInt;
-            if (!this.aen) {
+            if (!this.agA) {
               break;
             }
-            paramInt = this.adZ.hi() - i - this.adZ.aY(paramView);
-            this.aem = (this.adZ.hi() - paramInt);
+            paramInt = this.agm.iJ() - i - this.agm.bi(paramView);
+            this.agz = (this.agm.iJ() - paramInt);
           } while (paramInt <= 0);
-          i = this.adZ.bb(paramView);
-          j = this.aem;
-          k = this.adZ.hh();
-          i = j - i - (k + Math.min(this.adZ.aX(paramView) - k, 0));
+          i = this.agm.bl(paramView);
+          j = this.agz;
+          k = this.agm.iI();
+          i = j - i - (k + Math.min(this.agm.bh(paramView) - k, 0));
         } while (i >= 0);
-        j = this.aem;
-        this.aem = (Math.min(paramInt, -i) + j);
+        j = this.agz;
+        this.agz = (Math.min(paramInt, -i) + j);
         return;
-        j = this.adZ.aX(paramView);
-        paramInt = j - this.adZ.hh();
-        this.aem = j;
+        j = this.agm.bh(paramView);
+        paramInt = j - this.agm.iI();
+        this.agz = j;
       } while (paramInt <= 0);
-      int k = this.adZ.bb(paramView);
-      int m = this.adZ.hi();
-      int n = this.adZ.aY(paramView);
-      i = this.adZ.hi() - Math.min(0, m - i - n) - (j + k);
+      int k = this.agm.bl(paramView);
+      int m = this.agm.iJ();
+      int n = this.agm.bi(paramView);
+      i = this.agm.iJ() - Math.min(0, m - i - n) - (j + k);
     } while (i >= 0);
-    this.aem -= Math.min(paramInt, -i);
+    this.agz -= Math.min(paramInt, -i);
   }
   
-  public final void w(View paramView, int paramInt)
+  public final void B(View paramView, int paramInt)
   {
-    if (this.aen) {}
-    for (this.aem = (this.adZ.aY(paramView) + this.adZ.hg());; this.aem = this.adZ.aX(paramView))
+    if (this.agA) {}
+    for (this.agz = (this.agm.bi(paramView) + this.agm.iH());; this.agz = this.agm.bh(paramView))
     {
       this.mPosition = paramInt;
       return;
     }
+  }
+  
+  final void ix()
+  {
+    if (this.agA) {}
+    for (int i = this.agm.iJ();; i = this.agm.iI())
+    {
+      this.agz = i;
+      return;
+    }
+  }
+  
+  final void reset()
+  {
+    this.mPosition = -1;
+    this.agz = -2147483648;
+    this.agA = false;
+    this.agB = false;
+  }
+  
+  public final String toString()
+  {
+    return "AnchorInfo{mPosition=" + this.mPosition + ", mCoordinate=" + this.agz + ", mLayoutFromEnd=" + this.agA + ", mValid=" + this.agB + '}';
   }
 }
 

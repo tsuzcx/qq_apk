@@ -1,21 +1,21 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnInfoListener;
-import com.tencent.mm.sdk.platformtools.y;
+import android.media.MediaPlayer.OnBufferingUpdateListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoTextureView$6
-  implements MediaPlayer.OnInfoListener
+  implements MediaPlayer.OnBufferingUpdateListener
 {
   VideoTextureView$6(VideoTextureView paramVideoTextureView) {}
   
-  public final boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public final void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    y.d("MicroMsg.VideoTextureView", "onInfo [%d %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (VideoTextureView.l(this.snF) != null) {
-      VideoTextureView.l(this.snF).eX(paramInt1, paramInt2);
-    }
-    return false;
+    AppMethodBeat.i(118013);
+    ab.d("MicroMsg.VideoTextureView", "onBufferingUpdate percent[%d]", new Object[] { Integer.valueOf(paramInt) });
+    VideoTextureView.c(this.wga, paramInt);
+    AppMethodBeat.o(118013);
   }
 }
 

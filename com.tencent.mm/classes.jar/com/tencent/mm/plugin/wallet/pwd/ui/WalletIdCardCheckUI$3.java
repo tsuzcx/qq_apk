@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletIdCardCheckUI$3
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class WalletIdCardCheckUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.qpp.setResult(-1);
-    this.qpp.finish();
+    AppMethodBeat.i(46324);
+    this.tZC.setResult(-1);
+    this.tZC.finish();
+    AppMethodBeat.o(46324);
   }
 }
 

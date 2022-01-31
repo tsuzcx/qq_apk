@@ -1,6 +1,7 @@
 package com.tencent.mm.wallet_core.ui.formview;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class a$6
   extends a.b
@@ -12,7 +13,10 @@ final class a$6
   
   public final boolean a(WalletFormView paramWalletFormView)
   {
-    return bk.ZC(paramWalletFormView.getText());
+    AppMethodBeat.i(49361);
+    boolean bool = bo.apH(paramWalletFormView.getText());
+    AppMethodBeat.o(49361);
+    return bool;
   }
 }
 

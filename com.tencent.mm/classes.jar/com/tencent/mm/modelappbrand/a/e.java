@@ -4,20 +4,23 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class e
+public final class e
   extends BitmapDrawable
 {
-  e(Resources paramResources, Bitmap paramBitmap)
+  public e(Resources paramResources, Bitmap paramBitmap)
   {
     super(paramResources, paramBitmap);
   }
   
   public final void draw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(77382);
     if ((getBitmap() != null) && (!getBitmap().isRecycled())) {
       super.draw(paramCanvas);
     }
+    AppMethodBeat.o(77382);
   }
 }
 

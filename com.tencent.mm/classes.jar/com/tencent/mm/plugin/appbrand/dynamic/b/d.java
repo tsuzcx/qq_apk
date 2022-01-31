@@ -3,219 +3,248 @@ package com.tencent.mm.plugin.appbrand.dynamic.b;
 import android.database.Cursor;
 import android.os.SystemClock;
 import com.tencent.mars.smc.IDKey;
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.a.c;
 import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.ar;
-import com.tencent.mm.plugin.appbrand.appcache.au;
-import com.tencent.mm.plugin.appbrand.appcache.t.a;
-import com.tencent.mm.plugin.appbrand.appcache.t.b;
-import com.tencent.mm.plugin.report.f;
+import com.tencent.mm.plugin.appbrand.appcache.ay;
+import com.tencent.mm.plugin.appbrand.appcache.bc;
+import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.appcache.z.a;
+import com.tencent.mm.plugin.appbrand.appcache.z.b;
+import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.pluginsdk.g.a.c.m;
+import com.tencent.mm.sdk.e.f;
 import java.util.ArrayList;
 import java.util.Locale;
 
 public final class d
-  implements t.b
+  implements z.b
 {
-  public final t.a a(a parama)
+  public final z.a a(a parama)
   {
-    if (au.class == parama.getClass()) {
-      return new a((au)parama, (byte)0);
+    AppMethodBeat.i(10787);
+    if (bc.class == parama.getClass())
+    {
+      parama = new a((bc)parama, (byte)0);
+      AppMethodBeat.o(10787);
+      return parama;
     }
+    AppMethodBeat.o(10787);
     return null;
   }
   
-  private static final class a
-    implements t.a
+  static final class a
+    implements z.a
   {
-    private ArrayList<IDKey> fCs;
-    private long fCt = 0L;
-    private long fCu = 0L;
-    private final au fUM;
-    private d.a.a fUN;
+    private ArrayList<IDKey> gUI;
+    private long gUJ = 0L;
+    private long gUK = 0L;
+    private final bc hoo;
+    private d.a.a hop;
     
-    private a(au paramau)
+    private a(bc parambc)
     {
-      this.fUM = paramau;
+      this.hoo = parambc;
     }
     
-    private void abJ()
+    private void avA()
     {
+      AppMethodBeat.i(10780);
       try
       {
-        f.nEG.b(this.fCs, false);
-        this.fCs.clear();
+        e.qrI.b(this.gUI, false);
+        this.gUI.clear();
+        AppMethodBeat.o(10780);
         return;
       }
-      catch (Exception localException) {}
+      catch (Exception localException)
+      {
+        AppMethodBeat.o(10780);
+      }
     }
     
-    private void kH(int paramInt)
+    private void nF(int paramInt)
     {
-      if (this.fCs == null) {
-        this.fCs = new ArrayList();
+      AppMethodBeat.i(10779);
+      if (this.gUI == null) {
+        this.gUI = new ArrayList();
       }
-      this.fCs.add(new IDKey(640, paramInt, 1));
+      this.gUI.add(new IDKey(640, paramInt, 1));
+      AppMethodBeat.o(10779);
     }
     
     public final void a(m paramm)
     {
       int k = 1;
       int j = 2;
-      long l = SystemClock.elapsedRealtime() - this.fCt;
+      AppMethodBeat.i(10784);
+      long l = SystemClock.elapsedRealtime() - this.gUJ;
       if (l <= 1000L)
       {
         i = 0;
-        label26:
-        f.nEG.a(665L, i, 1L, false);
-        f.nEG.a(665L, 6L, 1L, false);
+        label32:
+        e.qrI.idkeyStat(665L, i, 1L, false);
+        e.qrI.idkeyStat(665L, 6L, 1L, false);
         if ((paramm == null) || (paramm.status != 2)) {
-          break label166;
+          break label180;
         }
       }
-      label166:
+      label180:
       for (int i = k;; i = 0) {
-        switch (d.1.fUL[this.fUN.ordinal()])
+        switch (d.1.hon[this.hop.ordinal()])
         {
         default: 
-          abJ();
+          avA();
+          AppMethodBeat.o(10784);
           return;
           if (l <= 2000L)
           {
             i = 1;
-            break label26;
+            break label32;
           }
           if (l <= 3000L)
           {
             i = 2;
-            break label26;
+            break label32;
           }
           if (l <= 4000L)
           {
             i = 3;
-            break label26;
+            break label32;
           }
           if (l <= 5000L)
           {
             i = 4;
-            break label26;
+            break label32;
           }
           i = 5;
-          break label26;
+          break label32;
         }
       }
       if (i != 0) {}
       for (i = j;; i = 3)
       {
-        kH(i);
+        nF(i);
         break;
       }
       if (i != 0) {}
       for (i = 11;; i = 12)
       {
-        kH(i);
+        nF(i);
         break;
       }
     }
     
-    public final void abq()
+    public final void avh()
     {
       int j = 0;
+      AppMethodBeat.i(10781);
       Object localObject;
-      if (com.tencent.mm.plugin.appbrand.appcache.d.a.kq(this.fUM.bOa))
+      if (j.a.nk(this.hoo.cvs))
       {
-        if (((c)g.r(c.class)).aaG() == null) {
+        if (((com.tencent.mm.plugin.appbrand.a.d)g.E(com.tencent.mm.plugin.appbrand.a.d.class)).we() == null) {
           i = 1;
         }
         while (i > 1)
         {
-          localObject = d.a.a.fUP;
-          label42:
-          this.fUN = ((d.a.a)localObject);
-          label47:
-          switch (d.1.fUL[this.fUN.ordinal()])
+          localObject = d.a.a.hor;
+          label48:
+          this.hop = ((d.a.a)localObject);
+          label53:
+          switch (d.1.hon[this.hop.ordinal()])
           {
           default: 
             i = j;
-            label82:
-            kH(i);
-            this.fCt = SystemClock.elapsedRealtime();
+            label90:
+            nF(i);
+            this.gUJ = SystemClock.elapsedRealtime();
+            AppMethodBeat.o(10781);
             return;
-            localObject = ((c)g.r(c.class)).aaG();
-            String str1 = this.fUM.appId;
-            i = this.fUM.bOa;
+            localObject = ((com.tencent.mm.plugin.appbrand.a.d)g.E(com.tencent.mm.plugin.appbrand.a.d.class)).we();
+            String str1 = this.hoo.appId;
+            i = this.hoo.cvs;
             String str2 = String.format(Locale.US, "select count(%s) from %s where %s=? and %s=?", new Object[] { "version", "AppBrandWxaPkgManifestRecord", "appId", "debugType" });
-            localObject = ((ar)localObject).fEC.a(str2, new String[] { str1, String.valueOf(i) }, 2);
+            localObject = ((ay)localObject).gWU.a(str2, new String[] { str1, String.valueOf(i) }, 2);
             if (localObject == null) {
               i = 0;
             } else {
               if (!((Cursor)localObject).moveToFirst()) {
-                break label250;
+                break label266;
               }
             }
             break;
           }
         }
       }
-      label250:
+      label266:
       for (int i = ((Cursor)localObject).getInt(0);; i = 0)
       {
         ((Cursor)localObject).close();
         break;
-        localObject = d.a.a.fUO;
-        break label42;
-        this.fUN = d.a.a.fUO;
-        break label47;
+        localObject = d.a.a.hoq;
+        break label48;
+        this.hop = d.a.a.hoq;
+        break label53;
         i = 1;
-        break label82;
+        break label90;
         i = 10;
-        break label82;
+        break label90;
       }
     }
     
-    public final void abr()
+    public final void avi()
     {
-      kH(32);
+      AppMethodBeat.i(10782);
+      nF(32);
+      AppMethodBeat.o(10782);
     }
     
-    public final void abs()
+    public final void avj()
     {
-      kH(31);
+      AppMethodBeat.i(10783);
+      nF(31);
+      AppMethodBeat.o(10783);
     }
     
-    public final void abt() {}
+    public final void avk() {}
     
-    public final void abu() {}
+    public final void avl() {}
     
-    public final void abv()
+    public final void avm()
     {
-      this.fCu = SystemClock.elapsedRealtime();
-      switch (d.1.fUL[this.fUN.ordinal()])
+      AppMethodBeat.i(10785);
+      this.gUK = SystemClock.elapsedRealtime();
+      switch (d.1.hon[this.hop.ordinal()])
       {
-      default: 
-        return;
-      case 1: 
-        kH(5);
-        return;
       }
-      kH(14);
+      for (;;)
+      {
+        AppMethodBeat.o(10785);
+        return;
+        nF(5);
+        AppMethodBeat.o(10785);
+        return;
+        nF(14);
+      }
     }
     
-    public final void cG(boolean paramBoolean)
+    public final void avn() {}
+    
+    public final void dG(boolean paramBoolean)
     {
+      AppMethodBeat.i(10786);
       SystemClock.elapsedRealtime();
       int i;
-      switch (d.1.fUL[this.fUN.ordinal()])
+      switch (d.1.hon[this.hop.ordinal()])
       {
       default: 
         i = 0;
       }
       for (;;)
       {
-        kH(i);
-        abJ();
+        nF(i);
+        avA();
+        AppMethodBeat.o(10786);
         return;
         if (paramBoolean)
         {
@@ -234,7 +263,9 @@ public final class d
       }
     }
     
-    public final void kr(int paramInt) {}
+    public final void dH(boolean paramBoolean) {}
+    
+    public final void nl(int paramInt) {}
   }
 }
 

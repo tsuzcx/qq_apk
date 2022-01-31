@@ -6,26 +6,30 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.a.o;
-import com.tencent.mm.ae.d;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.w;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.af.f;
+import com.tencent.mm.af.j.a;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.w;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.h.a.pe;
+import com.tencent.mm.g.a.qj;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
-import com.tencent.mm.model.s;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
+import com.tencent.mm.model.ag;
+import com.tencent.mm.model.t;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.clx;
-import com.tencent.mm.protocal.c.cly;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.protocal.protobuf.czo;
+import com.tencent.mm.protocal.protobuf.czp;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.sdk.platformtools.j;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
@@ -37,106 +41,142 @@ import java.util.List;
 public class SendAppMessageTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<SendAppMessageTask> CREATOR = new SendAppMessageTask.2();
+  public static final Parcelable.Creator<SendAppMessageTask> CREATOR;
   public String appId;
-  public String bFv;
-  public int bOa;
-  public String caG;
-  public String dRD;
-  public int dWx;
+  public int bDc;
+  public String cHH;
+  public String cJg;
+  public String cacheKey;
+  public String cmF;
+  public int cvs;
   public String description;
-  public String fRx;
-  public String fWw;
-  public String gBE;
-  public String gBF;
-  public String gBG;
-  public int gBH;
-  public String gBI;
-  public String gBJ;
-  public String gBK;
-  public boolean gBL;
-  public boolean gBM;
-  public String gBN;
-  public ArrayList<ShareInfo> gBO;
-  public Runnable gfD;
-  public boolean gpR;
+  public int dqS;
+  public String fhC;
+  public int fmF;
+  public boolean hKA;
+  public String hZN;
+  public String hZO;
+  public String hZP;
+  public String hZQ;
+  public int hZR;
+  public int hZS;
+  public int hZT;
+  public String hZU;
+  public String hZV;
+  public String hZW;
+  public boolean hZX;
+  public boolean hZY;
+  public boolean hZZ;
+  public String hko;
+  public Runnable hxp;
+  public String iaa;
+  public String iab;
+  public String iac;
+  public String iad;
+  public String iae;
+  public String iaf;
+  public String iag;
+  public ArrayList<ShareInfo> iah;
   public String iconUrl;
   public String nickname;
   public String path;
-  public int scene = 1000;
+  public int scene;
   public String title;
   public String toUser;
   public int type;
   public String url;
   public String userName;
   public int version;
+  public String videoPath;
   public boolean withShareTicket;
   
-  public SendAppMessageTask() {}
+  static
+  {
+    AppMethodBeat.i(131473);
+    CREATOR = new SendAppMessageTask.2();
+    AppMethodBeat.o(131473);
+  }
+  
+  public SendAppMessageTask()
+  {
+    AppMethodBeat.i(131462);
+    this.hZR = 1;
+    this.dqS = j.a.fgr.ordinal();
+    this.scene = 1000;
+    AppMethodBeat.o(131462);
+  }
   
   protected SendAppMessageTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(131470);
+    this.hZR = 1;
+    this.dqS = j.a.fgr.ordinal();
+    this.scene = 1000;
+    f(paramParcel);
+    AppMethodBeat.o(131470);
   }
   
-  private void a(g.a parama, byte[] paramArrayOfByte, String paramString, StringBuilder paramStringBuilder, int paramInt)
+  private void a(j.b paramb, byte[] paramArrayOfByte, String paramString, StringBuilder paramStringBuilder, int paramInt)
   {
-    ((com.tencent.mm.plugin.appbrand.compat.a.a)g.r(com.tencent.mm.plugin.appbrand.compat.a.a.class)).a(parama, this.appId, this.title, paramString, paramArrayOfByte);
-    if (!bk.bl(this.gBE))
+    AppMethodBeat.i(143434);
+    ((com.tencent.mm.plugin.appbrand.compat.a.a)g.E(com.tencent.mm.plugin.appbrand.compat.a.a.class)).a(paramb, this.appId, this.title, paramString, paramArrayOfByte);
+    if (!bo.isNullOrNil(this.hZN))
     {
-      parama = new pe();
-      parama.bYQ.bYR = paramString;
-      parama.bYQ.content = this.gBE;
-      parama.bYQ.type = s.hW(paramString);
-      parama.bYQ.flags = 0;
-      com.tencent.mm.sdk.b.a.udP.m(parama);
+      paramb = new qj();
+      paramb.cGX.cGY = paramString;
+      paramb.cGX.content = this.hZN;
+      paramb.cGX.type = t.oF(paramString);
+      paramb.cGX.flags = 0;
+      com.tencent.mm.sdk.b.a.ymk.l(paramb);
     }
     i = 1;
     if (paramString.toLowerCase().endsWith("@chatroom"))
     {
-      parama = ((com.tencent.mm.plugin.chatroom.a.c)g.r(com.tencent.mm.plugin.chatroom.a.c.class)).FF().ir(paramString);
-      if (parama == null) {
-        break label218;
+      paramb = ((c)g.E(c.class)).YJ().oY(paramString);
+      if (paramb == null) {
+        break label234;
       }
     }
-    label218:
-    for (i = parama.size();; i = 0)
+    label234:
+    for (i = paramb.size();; i = 0)
     {
       str4 = this.appId;
-      str5 = this.bFv;
-      str6 = this.gBI;
+      str5 = this.cmF;
+      str6 = this.hZU;
       localObject = this.title;
       str7 = this.path;
-      str8 = this.gBJ;
-      str9 = this.gBK;
+      str8 = this.hZV;
+      str9 = this.hZW;
       str10 = paramStringBuilder.toString();
-      str3 = this.gBN;
-      j = this.dWx;
-      str1 = this.gBF;
-      if (!bk.bl(str4)) {
+      str3 = this.iaa;
+      k = this.fmF;
+      str1 = this.hZO;
+      j = this.bDc;
+      if (!bo.isNullOrNil(str4)) {
         break;
       }
-      y.e("MicroMsg.SendAppMessageTask", "appId is Null!");
+      ab.e("MicroMsg.SendAppMessageTask", "appId is Null!");
+      AppMethodBeat.o(143434);
       return;
     }
-    parama = "";
+    paramb = "";
     try
     {
-      paramArrayOfByte = q.encode(bk.pm(str7), "UTF-8");
-      parama = paramArrayOfByte;
+      paramArrayOfByte = q.encode(bo.nullAsNil(str7), "UTF-8");
+      paramb = paramArrayOfByte;
     }
     catch (UnsupportedEncodingException paramStringBuilder)
     {
       try
       {
-        paramStringBuilder = q.encode(bk.pm(str8), "UTF-8");
+        paramStringBuilder = q.encode(bo.nullAsNil(str8), "UTF-8");
         paramArrayOfByte = paramStringBuilder;
       }
       catch (UnsupportedEncodingException paramStringBuilder)
       {
         try
         {
-          paramStringBuilder = q.encode(bk.pm(str3), "UTF-8");
+          paramStringBuilder = q.encode(bo.nullAsNil(str3), "UTF-8");
         }
         catch (UnsupportedEncodingException paramStringBuilder)
         {
@@ -144,10 +184,10 @@ public class SendAppMessageTask
           {
             for (;;)
             {
-              str1 = q.encode(bk.pm(str1), "UTF-8");
+              str1 = q.encode(bo.nullAsNil(str1), "UTF-8");
               try
               {
-                str3 = q.encode(bk.pm((String)localObject), "UTF-8");
+                str3 = q.encode(bo.nullAsNil((String)localObject), "UTF-8");
                 localObject = str3;
               }
               catch (UnsupportedEncodingException localUnsupportedEncodingException2)
@@ -155,21 +195,22 @@ public class SendAppMessageTask
                 for (;;)
                 {
                   String str2;
-                  y.e("MicroMsg.SendAppMessageTask", "encode shareTitle error!");
+                  ab.e("MicroMsg.SendAppMessageTask", "encode shareTitle error!");
                 }
               }
-              j += 1000;
-              y.d("MicroMsg.SendAppMessageTask", "stev report(%s), appId %s, scene %s, sceneNote %s, sessionId %s, currentPath %s, currentTitle %s,shareTitle %s, sharePath %s, shareActionId %s, destinationUserCount %s, destinationUserName %s, appServiceType %s, thumbIconUrl %s", new Object[] { Integer.valueOf(14077), str4, Integer.valueOf(paramInt), str5, str6, str8, str9, localObject, str7, str10, Integer.valueOf(i), paramString, Integer.valueOf(j), str1 });
-              h.nFQ.f(14077, new Object[] { str4, Integer.valueOf(paramInt), str5, str6, paramArrayOfByte, str9, localObject, parama, str10, "", Integer.valueOf(i), paramString, paramStringBuilder, Integer.valueOf(j), str1 });
+              k += 1000;
+              ab.d("MicroMsg.SendAppMessageTask", "stev report(%s), appId %s, scene %s, sceneNote %s, sessionId %s, currentPath %s, currentTitle %s,shareTitle %s, sharePath %s, shareActionId %s, destinationUserCount %s, destinationUserName %s, appServiceType %s, thumbIconUrl %s, appVersion %d", new Object[] { Integer.valueOf(14077), str4, Integer.valueOf(paramInt), str5, str6, str8, str9, localObject, str7, str10, Integer.valueOf(i), paramString, Integer.valueOf(k), str1, Integer.valueOf(j) });
+              h.qsU.e(14077, new Object[] { str4, Integer.valueOf(paramInt), str5, str6, paramArrayOfByte, str9, localObject, paramb, str10, "", Integer.valueOf(i), paramString, paramStringBuilder, Integer.valueOf(k), str1, Integer.valueOf(j) });
+              AppMethodBeat.o(143434);
               return;
               paramArrayOfByte = paramArrayOfByte;
-              y.e("MicroMsg.SendAppMessageTask", "encode share page path error!");
+              ab.e("MicroMsg.SendAppMessageTask", "encode share page path error!");
               continue;
               paramStringBuilder = paramStringBuilder;
-              y.e("MicroMsg.SendAppMessageTask", "encode current page path error!");
+              ab.e("MicroMsg.SendAppMessageTask", "encode current page path error!");
               continue;
               paramStringBuilder = paramStringBuilder;
-              y.e("MicroMsg.SendAppMessageTask", "encode current html url error!");
+              ab.e("MicroMsg.SendAppMessageTask", "encode current html url error!");
               paramStringBuilder = "";
             }
           }
@@ -177,7 +218,7 @@ public class SendAppMessageTask
           {
             for (;;)
             {
-              y.e("MicroMsg.SendAppMessageTask", "encode thumb Icon url error!");
+              ab.e("MicroMsg.SendAppMessageTask", "encode thumb Icon url error!");
               str2 = "";
             }
           }
@@ -187,36 +228,46 @@ public class SendAppMessageTask
     paramArrayOfByte = "";
   }
   
-  private void a(g.a parama, byte[] paramArrayOfByte, StringBuilder paramStringBuilder, int paramInt, boolean paramBoolean, String paramString)
+  private void a(j.b paramb, byte[] paramArrayOfByte, StringBuilder paramStringBuilder, int paramInt, boolean paramBoolean, String paramString)
   {
+    AppMethodBeat.i(131466);
     b.a locala = new b.a();
-    locala.ecG = 1118;
+    locala.funcId = 1118;
     locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/getshareinfo";
-    clx localclx = new clx();
-    localclx.bOL = this.appId;
-    LinkedList localLinkedList = new LinkedList(bk.G(this.toUser.split(",")));
-    localclx.tYR = localLinkedList;
-    localclx.tYT = paramString;
-    localclx.tYS = paramBoolean;
-    locala.ecH = localclx;
-    locala.ecI = new cly();
-    w.a(locala.Kt(), new SendAppMessageTask.1(this, localLinkedList, parama, paramInt, paramArrayOfByte, paramStringBuilder));
+    czo localczo = new czo();
+    localczo.cwc = this.appId;
+    LinkedList localLinkedList = new LinkedList(bo.P(this.toUser.split(",")));
+    localczo.ygn = localLinkedList;
+    localczo.ygp = paramString;
+    localczo.ygo = paramBoolean;
+    locala.fsX = localczo;
+    locala.fsY = new czp();
+    w.a(locala.ado(), new SendAppMessageTask.1(this, localLinkedList, paramb, paramInt, paramArrayOfByte, paramStringBuilder));
+    AppMethodBeat.o(131466);
   }
   
-  public final void Zu()
+  private void b(j.b paramb, byte[] paramArrayOfByte, String paramString, StringBuilder paramStringBuilder, int paramInt)
   {
-    y.i("MicroMsg.SendAppMessageTask", "username = %s, thumbIconUrl = %s", new Object[] { this.userName, this.gBF });
+    AppMethodBeat.i(131467);
+    a(paramb, paramArrayOfByte, paramString, paramStringBuilder, paramInt);
+    AppMethodBeat.o(131467);
+  }
+  
+  public final void ata()
+  {
+    AppMethodBeat.i(131463);
+    ab.i("MicroMsg.SendAppMessageTask", "username = %s, thumbIconUrl = %s", new Object[] { this.userName, this.hZO });
     Object localObject2 = new byte[0];
     Object localObject1;
-    if ((!bk.bl(this.gBF)) && ((this.gBF.startsWith("http://")) || (this.gBF.startsWith("https://")))) {
-      localObject1 = b.JD().a(this.gBF, null);
+    if ((!bo.isNullOrNil(this.hZO)) && ((this.hZO.startsWith("http://")) || (this.hZO.startsWith("https://")))) {
+      localObject1 = b.acD().a(this.hZO, null);
     }
     for (;;)
     {
       Object localObject3;
       if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
       {
-        y.i("MicroMsg.SendAppMessageTask", "thumb image is not null ");
+        ab.i("MicroMsg.SendAppMessageTask", "thumb image is not null ");
         localObject2 = Bitmap.createBitmap(((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), Bitmap.Config.ARGB_8888);
         localObject3 = new Canvas((Bitmap)localObject2);
         ((Canvas)localObject3).drawColor(-1);
@@ -224,89 +275,130 @@ public class SendAppMessageTask
         localObject1 = new ByteArrayOutputStream();
         ((Bitmap)localObject2).compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject1);
         localObject1 = ((ByteArrayOutputStream)localObject1).toByteArray();
+        ab.i("MicroMsg.SendAppMessageTask", "bitmap recycle %s", new Object[] { localObject2 });
         ((Bitmap)localObject2).recycle();
-        label165:
-        y.i("MicroMsg.SendAppMessageTask", "doSendMessage, appId : %s, title = %s, description = %s ,username = %s ,path = %s, thumbIconUrl = %s", new Object[] { this.appId, this.title, this.description, this.userName, this.path, this.gBF });
-        localObject2 = u.ij("wxapp_" + this.appId + this.path);
-        u.Hc().v((String)localObject2, true).h("prePublishId", "wxapp_" + this.appId + this.path);
-        localObject2 = new g.a();
-        ((g.a)localObject2).title = this.title;
-        ((g.a)localObject2).description = this.description;
-        ((g.a)localObject2).type = 33;
-        ((g.a)localObject2).dSY = this.userName;
-        ((g.a)localObject2).dSX = this.path;
-        ((g.a)localObject2).dSZ = this.appId;
-        ((g.a)localObject2).dTf = this.bOa;
-        ((g.a)localObject2).dTg = this.version;
-        ((g.a)localObject2).dTb = this.fRx;
-        ((g.a)localObject2).dTa = this.type;
-        ((g.a)localObject2).url = this.url;
-        ((g.a)localObject2).dTh = this.iconUrl;
-        ((g.a)localObject2).bYM = ("wxapp_" + this.appId + this.path);
-        ((g.a)localObject2).bYG = this.userName;
-        ((g.a)localObject2).bYH = this.nickname;
-        localObject3 = new com.tencent.mm.ae.a();
-        ((com.tencent.mm.ae.a)localObject3).dPD = this.gBL;
-        ((com.tencent.mm.ae.a)localObject3).dPE = this.fWw;
-        ((com.tencent.mm.ae.a)localObject3).dPF = this.dWx;
-        ((com.tencent.mm.ae.a)localObject3).dPG = this.gBM;
-        ((com.tencent.mm.ae.a)localObject3).dPP = this.caG;
-        ((g.a)localObject2).a((d)localObject3);
+        label187:
+        ab.i("MicroMsg.SendAppMessageTask", "doSendMessage, appId : %s, title = %s, description = %s ,username = %s ,path = %s, thumbIconUrl = %s", new Object[] { this.appId, this.title, this.description, this.userName, this.path, this.hZO });
+        localObject2 = v.oQ("wxapp_" + this.appId + this.path);
+        v.aae().z((String)localObject2, true).i("prePublishId", "wxapp_" + this.appId + this.path);
+        localObject2 = new j.b();
+        ((j.b)localObject2).title = this.title;
+        ((j.b)localObject2).description = this.description;
+        ((j.b)localObject2).fiX = this.userName;
+        ((j.b)localObject2).fiW = this.path;
+        ((j.b)localObject2).fiY = this.appId;
+        ((j.b)localObject2).fjh = this.cvs;
+        ((j.b)localObject2).fji = this.version;
+        ((j.b)localObject2).fja = this.hko;
+        ((j.b)localObject2).fiZ = this.type;
+        ((j.b)localObject2).fjg = this.hZS;
+        ((j.b)localObject2).url = this.url;
+        ((j.b)localObject2).fjj = this.iconUrl;
+        ((j.b)localObject2).cGT = ("wxapp_" + this.appId + this.path);
+        ((j.b)localObject2).cGN = this.userName;
+        ((j.b)localObject2).cGO = this.nickname;
+        localObject4 = new com.tencent.mm.af.a();
+        ((com.tencent.mm.af.a)localObject4).ffc = this.hZX;
+        ((com.tencent.mm.af.a)localObject4).ffd = this.cacheKey;
+        ((com.tencent.mm.af.a)localObject4).ffe = this.fmF;
+        ((com.tencent.mm.af.a)localObject4).fff = this.hZY;
+        ((com.tencent.mm.af.a)localObject4).ffo = this.cJg;
+        ((com.tencent.mm.af.a)localObject4).ffp = this.hZO;
+        ((com.tencent.mm.af.a)localObject4).ffq = bo.isNullOrNil(this.hZO);
+        ((j.b)localObject2).a((f)localObject4);
         localObject3 = new StringBuilder("1_");
         ((StringBuilder)localObject3).append(this.appId);
         ((StringBuilder)localObject3).append("_");
-        g.DN();
-        ((StringBuilder)localObject3).append(o.getString(com.tencent.mm.kernel.a.CK()));
+        g.RJ();
+        ((StringBuilder)localObject3).append(p.getString(com.tencent.mm.kernel.a.getUin()));
         ((StringBuilder)localObject3).append("_");
-        ((StringBuilder)localObject3).append(bk.UX());
+        ((StringBuilder)localObject3).append(bo.aox());
         ((StringBuilder)localObject3).append("_");
-        ((StringBuilder)localObject3).append(this.gBH);
-        ((g.a)localObject2).dTd = ((StringBuilder)localObject3).toString();
-        y.i("MicroMsg.SendAppMessageTask", "doSendMessage isUpdateMsg:%b, withShareTicket:%b", new Object[] { Boolean.valueOf(this.gBM), Boolean.valueOf(this.withShareTicket) });
-        if ((!this.gBM) || (!this.withShareTicket)) {
-          break label759;
+        ((StringBuilder)localObject3).append(this.hZT);
+        ((j.b)localObject2).fjc = ((StringBuilder)localObject3).toString();
+        if (1 != this.hZR) {
+          break label824;
         }
-        a((g.a)localObject2, (byte[])localObject1, (StringBuilder)localObject3, this.scene, this.gBM, this.dRD);
+        ((j.b)localObject2).type = 33;
       }
       for (;;)
       {
-        return;
-        if (bk.bl(this.gBG)) {
-          break label847;
+        ab.i("MicroMsg.SendAppMessageTask", "doSendMessage isUpdateMsg:%b, withShareTicket:%b", new Object[] { Boolean.valueOf(this.hZY), Boolean.valueOf(this.withShareTicket) });
+        if ((!this.hZY) || (!this.withShareTicket)) {
+          break label1030;
         }
-        localObject1 = com.tencent.mm.sdk.platformtools.c.YW(this.gBG);
-        if (this.gpR)
+        a((j.b)localObject2, (byte[])localObject1, (StringBuilder)localObject3, this.scene, this.hZY, this.fhC);
+        AppMethodBeat.o(131463);
+        return;
+        if (bo.isNullOrNil(this.hZP)) {
+          break label1131;
+        }
+        localObject1 = d.aoV(this.hZP);
+        if (this.hKA)
         {
-          boolean bool = e.deleteFile(this.gBG);
-          y.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s), and deleted(%s) file.", new Object[] { this.gBG, Boolean.valueOf(bool) });
+          boolean bool = com.tencent.mm.vfs.e.deleteFile(this.hZP);
+          ab.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s), and deleted(%s) file.", new Object[] { this.hZP, Boolean.valueOf(bool) });
           break;
         }
-        y.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s)", new Object[] { this.gBG });
+        ab.v("MicroMsg.SendAppMessageTask", "decode thumb icon bitmap by path(%s)", new Object[] { this.hZP });
         break;
-        y.e("MicroMsg.SendAppMessageTask", "thumb image is null");
+        ab.e("MicroMsg.SendAppMessageTask", "thumb image is null");
         localObject1 = localObject2;
-        break label165;
-        label759:
-        if (this.withShareTicket)
+        break label187;
+        label824:
+        if (2 == this.hZR)
         {
-          a((g.a)localObject2, (byte[])localObject1, (StringBuilder)localObject3, this.scene, this.gBM, this.dRD);
-          return;
+          ((j.b)localObject2).type = 44;
+          ((j.b)localObject2).fje = this.dqS;
+          ((j.b)localObject2).fjf = this.hZQ;
         }
-        Iterator localIterator = new LinkedList(bk.G(this.toUser.split(","))).iterator();
-        while (localIterator.hasNext()) {
-          a((g.a)localObject2, (byte[])localObject1, (String)localIterator.next(), (StringBuilder)localObject3, this.scene);
+        else if (this.hZR == 3)
+        {
+          ((j.b)localObject2).type = 46;
+          ((j.b)localObject2).appId = this.iab;
+          ((j.b)localObject2).appName = this.iac;
+          ((j.b)localObject2).cGN = this.iad;
+          ((j.b)localObject2).cGO = null;
+          ((com.tencent.mm.af.a)localObject4).appThumbUrl = this.iae;
+        }
+        else if (this.hZR == 4)
+        {
+          ((j.b)localObject2).type = 48;
+          j.akQ(com.tencent.mm.compatible.util.e.esT);
+          String str = com.tencent.mm.compatible.util.e.esT + this.cHH;
+          if (!str.equals(this.videoPath)) {
+            ab.i("MicroMsg.SendAppMessageTask", "hy: copy upload file to %s, len is %d", new Object[] { str, Long.valueOf(com.tencent.mm.a.e.C(this.videoPath, str)) });
+          }
+          ((com.tencent.mm.af.a)localObject4).ffu = str;
+          ((com.tencent.mm.af.a)localObject4).cHH = this.cHH;
+          ((com.tencent.mm.af.a)localObject4).ffw = this.iag;
         }
       }
-      label847:
+      label1030:
+      if (this.withShareTicket)
+      {
+        a((j.b)localObject2, (byte[])localObject1, (StringBuilder)localObject3, this.scene, this.hZY, this.fhC);
+        AppMethodBeat.o(131463);
+        return;
+      }
+      Object localObject4 = new LinkedList(bo.P(this.toUser.split(","))).iterator();
+      while (((Iterator)localObject4).hasNext()) {
+        b((j.b)localObject2, (byte[])localObject1, (String)((Iterator)localObject4).next(), (StringBuilder)localObject3, this.scene);
+      }
+      AppMethodBeat.o(131463);
+      return;
+      label1131:
       localObject1 = null;
     }
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.gfD != null) {
-      this.gfD.run();
+    AppMethodBeat.i(131464);
+    if (this.hxp != null) {
+      this.hxp.run();
     }
+    AppMethodBeat.o(131464);
   }
   
   public int describeContents()
@@ -314,138 +406,186 @@ public class SendAppMessageTask
     return 0;
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(131468);
     this.appId = paramParcel.readString();
     this.userName = paramParcel.readString();
     this.title = paramParcel.readString();
     this.description = paramParcel.readString();
-    this.gBE = paramParcel.readString();
+    this.hZN = paramParcel.readString();
     this.toUser = paramParcel.readString();
     this.url = paramParcel.readString();
     this.path = paramParcel.readString();
     this.type = paramParcel.readInt();
-    this.gBF = paramParcel.readString();
+    this.hZO = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
-    this.gBG = paramParcel.readString();
+    this.hZP = paramParcel.readString();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.gpR = bool1;
-      this.bOa = paramParcel.readInt();
-      this.fRx = paramParcel.readString();
+      this.hKA = bool1;
+      this.cvs = paramParcel.readInt();
+      this.hko = paramParcel.readString();
       this.version = paramParcel.readInt();
       this.nickname = paramParcel.readString();
-      this.gBH = paramParcel.readInt();
+      this.hZT = paramParcel.readInt();
       this.scene = paramParcel.readInt();
-      this.bFv = paramParcel.readString();
-      this.gBI = paramParcel.readString();
-      this.gBJ = paramParcel.readString();
-      this.gBK = paramParcel.readString();
+      this.cmF = paramParcel.readString();
+      this.hZU = paramParcel.readString();
+      this.hZV = paramParcel.readString();
+      this.hZW = paramParcel.readString();
       if (paramParcel.readByte() != 1) {
-        break label297;
+        break label428;
       }
       bool1 = true;
-      label203:
+      label209:
       this.withShareTicket = bool1;
       if (paramParcel.readInt() != 1) {
-        break label302;
+        break label433;
       }
       bool1 = true;
-      label218:
-      this.gBL = bool1;
+      label224:
+      this.hZX = bool1;
       if (paramParcel.readInt() != 1) {
-        break label307;
+        break label438;
+      }
+      bool1 = true;
+      label239:
+      this.hZY = bool1;
+      this.fhC = paramParcel.readString();
+      this.cacheKey = paramParcel.readString();
+      this.fmF = paramParcel.readInt();
+      this.iaa = paramParcel.readString();
+      this.iah = paramParcel.readArrayList(SendAppMessageTask.class.getClassLoader());
+      this.cJg = paramParcel.readString();
+      this.bDc = paramParcel.readInt();
+      this.dqS = paramParcel.readInt();
+      this.hZQ = paramParcel.readString();
+      this.hZS = paramParcel.readInt();
+      this.hZR = paramParcel.readInt();
+      this.iab = paramParcel.readString();
+      this.iac = paramParcel.readString();
+      this.iad = paramParcel.readString();
+      this.iae = paramParcel.readString();
+      if (paramParcel.readInt() != 1) {
+        break label443;
       }
     }
-    label297:
-    label302:
-    label307:
+    label428:
+    label433:
+    label438:
+    label443:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.gBM = bool1;
-      this.dRD = paramParcel.readString();
-      this.fWw = paramParcel.readString();
-      this.dWx = paramParcel.readInt();
-      this.gBN = paramParcel.readString();
-      this.gBO = paramParcel.readArrayList(SendAppMessageTask.class.getClassLoader());
-      this.caG = paramParcel.readString();
+      this.hZZ = bool1;
+      this.videoPath = paramParcel.readString();
+      this.cHH = paramParcel.readString();
+      this.iaf = paramParcel.readString();
+      this.iag = paramParcel.readString();
+      AppMethodBeat.o(131468);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label203;
+      break label209;
       bool1 = false;
-      break label218;
+      break label224;
+      bool1 = false;
+      break label239;
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
+    AppMethodBeat.i(131469);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.userName);
     paramParcel.writeString(this.title);
     paramParcel.writeString(this.description);
-    paramParcel.writeString(this.gBE);
+    paramParcel.writeString(this.hZN);
     paramParcel.writeString(this.toUser);
     paramParcel.writeString(this.url);
     paramParcel.writeString(this.path);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.gBF);
+    paramParcel.writeString(this.hZO);
     paramParcel.writeString(this.iconUrl);
-    paramParcel.writeString(this.gBG);
-    if (this.gpR)
+    paramParcel.writeString(this.hZP);
+    if (this.hKA)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.bOa);
-      paramParcel.writeString(this.fRx);
+      paramParcel.writeInt(this.cvs);
+      paramParcel.writeString(this.hko);
       paramParcel.writeInt(this.version);
       paramParcel.writeString(this.nickname);
-      paramParcel.writeInt(this.gBH);
+      paramParcel.writeInt(this.hZT);
       paramParcel.writeInt(this.scene);
-      paramParcel.writeString(this.bFv);
-      paramParcel.writeString(this.gBI);
-      paramParcel.writeString(this.gBJ);
-      paramParcel.writeString(this.gBK);
+      paramParcel.writeString(this.cmF);
+      paramParcel.writeString(this.hZU);
+      paramParcel.writeString(this.hZV);
+      paramParcel.writeString(this.hZW);
       if (!this.withShareTicket) {
-        break label295;
+        break label425;
       }
       paramInt = 1;
-      label207:
+      label213:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.gBL) {
-        break label300;
+      if (!this.hZX) {
+        break label430;
       }
       paramInt = 1;
-      label222:
+      label228:
       paramParcel.writeInt(paramInt);
-      if (!this.gBM) {
-        break label305;
+      if (!this.hZY) {
+        break label435;
+      }
+      paramInt = 1;
+      label242:
+      paramParcel.writeInt(paramInt);
+      paramParcel.writeString(this.fhC);
+      paramParcel.writeString(this.cacheKey);
+      paramParcel.writeInt(this.fmF);
+      paramParcel.writeString(this.iaa);
+      paramParcel.writeList(this.iah);
+      paramParcel.writeString(this.cJg);
+      paramParcel.writeInt(this.bDc);
+      paramParcel.writeInt(this.dqS);
+      paramParcel.writeString(this.hZQ);
+      paramParcel.writeInt(this.hZS);
+      paramParcel.writeInt(this.hZR);
+      paramParcel.writeString(this.iab);
+      paramParcel.writeString(this.iac);
+      paramParcel.writeString(this.iad);
+      paramParcel.writeString(this.iae);
+      if (!this.hZZ) {
+        break label440;
       }
     }
-    label295:
-    label300:
-    label305:
+    label425:
+    label430:
+    label435:
+    label440:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.dRD);
-      paramParcel.writeString(this.fWw);
-      paramParcel.writeInt(this.dWx);
-      paramParcel.writeString(this.gBN);
-      paramParcel.writeList(this.gBO);
-      paramParcel.writeString(this.caG);
+      paramParcel.writeString(this.videoPath);
+      paramParcel.writeString(this.cHH);
+      paramParcel.writeString(this.iaf);
+      paramParcel.writeString(this.iag);
+      AppMethodBeat.o(131469);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label207;
+      break label213;
       paramInt = 0;
-      break label222;
+      break label228;
+      paramInt = 0;
+      break label242;
     }
   }
 }

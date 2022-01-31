@@ -1,120 +1,124 @@
 package android.support.v4.e;
 
-import android.os.Build.VERSION;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Locale;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public final class a
+public class a<K, V>
+  extends m<K, V>
+  implements Map<K, V>
 {
-  private static Method DA;
-  private static Method DC;
+  h<K, V> EF;
   
-  static
+  public a() {}
+  
+  public a(int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 21) {}
-    for (;;)
-    {
-      try
+    super(paramInt);
+  }
+  
+  public a(m paramm)
+  {
+    super(paramm);
+  }
+  
+  private h<K, V> dv()
+  {
+    if (this.EF == null) {
+      this.EF = new h()
       {
-        DC = Class.forName("libcore.icu.ICU").getMethod("addLikelySubtags", new Class[] { Locale.class });
-        return;
-      }
-      catch (Exception localException1)
-      {
-        throw new IllegalStateException(localException1);
-      }
-      try
-      {
-        Class localClass = Class.forName("libcore.icu.ICU");
-        if (localClass != null)
+        protected final int C(Object paramAnonymousObject)
         {
-          DA = localClass.getMethod("getScript", new Class[] { String.class });
-          DC = localClass.getMethod("addLikelySubtags", new Class[] { String.class });
-          return;
+          return a.this.indexOfKey(paramAnonymousObject);
         }
-      }
-      catch (Exception localException2)
-      {
-        DA = null;
-        DC = null;
-      }
+        
+        protected final int D(Object paramAnonymousObject)
+        {
+          return a.this.indexOfValue(paramAnonymousObject);
+        }
+        
+        protected final void ao(int paramAnonymousInt)
+        {
+          a.this.removeAt(paramAnonymousInt);
+        }
+        
+        protected final V b(int paramAnonymousInt, V paramAnonymousV)
+        {
+          a locala = a.this;
+          paramAnonymousInt = (paramAnonymousInt << 1) + 1;
+          Object localObject = locala.EO[paramAnonymousInt];
+          locala.EO[paramAnonymousInt] = paramAnonymousV;
+          return localObject;
+        }
+        
+        protected final void c(K paramAnonymousK, V paramAnonymousV)
+        {
+          a.this.put(paramAnonymousK, paramAnonymousV);
+        }
+        
+        protected final int dw()
+        {
+          return a.this.mSize;
+        }
+        
+        protected final Map<K, V> dx()
+        {
+          return a.this;
+        }
+        
+        protected final void dy()
+        {
+          a.this.clear();
+        }
+        
+        protected final Object q(int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          return a.this.EO[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
+        }
+      };
+    }
+    return this.EF;
+  }
+  
+  public Set<Map.Entry<K, V>> entrySet()
+  {
+    h localh = dv();
+    if (localh.EY == null) {
+      localh.EY = new h.b(localh);
+    }
+    return localh.EY;
+  }
+  
+  public Set<K> keySet()
+  {
+    return dv().getKeySet();
+  }
+  
+  public void putAll(Map<? extends K, ? extends V> paramMap)
+  {
+    ensureCapacity(this.mSize + paramMap.size());
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      put(localEntry.getKey(), localEntry.getValue());
     }
   }
   
-  public static String a(Locale paramLocale)
+  public Collection<V> values()
   {
-    String str1 = null;
-    if (Build.VERSION.SDK_INT >= 21) {}
-    try
-    {
-      str1 = ((Locale)DC.invoke(null, new Object[] { paramLocale })).getScript();
-      paramLocale = str1;
+    h localh = dv();
+    if (localh.Fa == null) {
+      localh.Fa = new h.e(localh);
     }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      String str2;
-      do
-      {
-        return paramLocale.getScript();
-        str2 = b(paramLocale);
-        paramLocale = localIllegalAccessException;
-      } while (str2 == null);
-      return getScript(str2);
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      break label37;
-    }
-    return paramLocale;
-  }
-  
-  private static String b(Locale paramLocale)
-  {
-    paramLocale = paramLocale.toString();
-    try
-    {
-      if (DC != null)
-      {
-        String str = (String)DC.invoke(null, new Object[] { paramLocale });
-        return str;
-      }
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      return paramLocale;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      label33:
-      break label33;
-    }
-  }
-  
-  private static String getScript(String paramString)
-  {
-    try
-    {
-      if (DA != null)
-      {
-        paramString = (String)DA.invoke(null, new Object[] { paramString });
-        return paramString;
-      }
-    }
-    catch (InvocationTargetException paramString)
-    {
-      return null;
-    }
-    catch (IllegalAccessException paramString)
-    {
-      label28:
-      break label28;
-    }
+    return localh.Fa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.e.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,52 +7,54 @@ import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
-import com.tencent.mm.plugin.fav.ui.n.i;
 
 public class FavCapacityPanel
   extends LinearLayout
 {
-  private View.OnClickListener kdc = new FavCapacityPanel.1(this);
-  private LinearLayout kjd = this;
-  public long kje;
-  public TextView kjf;
-  public int kjg = 0;
-  public long kjh;
+  private View.OnClickListener bTw;
+  private LinearLayout mDJ;
+  public long mDK;
+  public TextView mDL;
+  public int mDM;
+  public long mDN;
   
   public FavCapacityPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = View.inflate(getContext(), n.f.fav_tag_panel_footview, null);
+    AppMethodBeat.i(74664);
+    this.mDM = 0;
+    this.bTw = new FavCapacityPanel.1(this);
+    this.mDJ = this;
+    paramContext = View.inflate(getContext(), 2130969561, null);
     paramContext.measure(-2, -2);
-    paramAttributeSet = paramContext.findViewById(n.e.fav_capacity_foot_line);
-    View localView = paramContext.findViewById(n.e.fav_capacity_foot_linear);
-    this.kjf = ((TextView)paramContext.findViewById(n.e.fav_capacity_foot_desc));
+    paramAttributeSet = paramContext.findViewById(2131824090);
+    View localView = paramContext.findViewById(2131824091);
+    this.mDL = ((TextView)paramContext.findViewById(2131824092));
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramAttributeSet.getLayoutParams();
     localLayoutParams.width = paramContext.getMeasuredWidth();
     paramAttributeSet.setLayoutParams(localLayoutParams);
-    localView.setOnClickListener(this.kdc);
+    localView.setOnClickListener(this.bTw);
     paramAttributeSet = new LinearLayout.LayoutParams(0, -2);
     paramAttributeSet.weight = 1.0F;
-    this.kjd.addView(paramContext, paramAttributeSet);
-    this.kje = (b.aPL() / 1048576L);
-    this.kjh = (b.aPM() / 1048576L);
-    paramContext = this.kjf;
-    paramAttributeSet = this.kjf.getContext();
-    int i = n.i.fav_capacity_info;
-    if (this.kjh - this.kje > 0L) {}
-    for (long l = this.kjh - this.kje;; l = 0L)
+    this.mDJ.addView(paramContext, paramAttributeSet);
+    this.mDK = (b.bvZ() / 1048576L);
+    this.mDN = (b.bwa() / 1048576L);
+    paramContext = this.mDL;
+    paramAttributeSet = this.mDL.getContext();
+    if (this.mDN - this.mDK > 0L) {}
+    for (long l = this.mDN - this.mDK;; l = 0L)
     {
-      paramContext.setText(paramAttributeSet.getString(i, new Object[] { Long.valueOf(l), Long.valueOf(this.kje) }));
+      paramContext.setText(paramAttributeSet.getString(2131299661, new Object[] { Long.valueOf(l), Long.valueOf(this.mDK) }));
+      AppMethodBeat.o(74664);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavCapacityPanel
  * JD-Core Version:    0.7.0.1
  */

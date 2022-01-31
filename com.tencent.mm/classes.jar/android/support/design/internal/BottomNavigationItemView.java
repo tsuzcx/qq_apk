@@ -5,17 +5,13 @@ import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
-import android.support.design.a.d;
-import android.support.design.a.e;
-import android.support.design.a.f;
-import android.support.design.a.h;
-import android.support.v4.a.a.a;
 import android.support.v4.content.b;
-import android.support.v4.view.o;
-import android.support.v4.view.q;
+import android.support.v4.graphics.drawable.a;
+import android.support.v4.view.r;
+import android.support.v4.view.t;
 import android.support.v7.view.menu.j;
 import android.support.v7.view.menu.p.a;
-import android.support.v7.widget.az;
+import android.support.v7.widget.bb;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
@@ -27,18 +23,18 @@ public class BottomNavigationItemView
   extends FrameLayout
   implements p.a
 {
-  private static final int[] cL = { 16842912 };
-  private final int cM;
-  private final int cN;
-  private final float cO;
-  private final float cP;
-  private boolean cQ;
-  private ImageView cR;
-  private final TextView cS;
-  private final TextView cT;
-  private int cU = -1;
-  private j cV;
-  private ColorStateList cW;
+  private static final int[] dP = { 16842912 };
+  private final int dQ;
+  private final int dR;
+  private final float dS;
+  private final float dT;
+  private boolean dU;
+  private ImageView dV;
+  private final TextView dW;
+  private final TextView dX;
+  private int dY = -1;
+  private j dZ;
+  private ColorStateList ea;
   
   public BottomNavigationItemView(Context paramContext)
   {
@@ -54,27 +50,22 @@ public class BottomNavigationItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = getResources();
-    paramInt = paramAttributeSet.getDimensionPixelSize(a.d.design_bottom_navigation_text_size);
-    int i = paramAttributeSet.getDimensionPixelSize(a.d.design_bottom_navigation_active_text_size);
-    this.cM = paramAttributeSet.getDimensionPixelSize(a.d.design_bottom_navigation_margin);
-    this.cN = (paramInt - i);
-    this.cO = (i * 1.0F / paramInt);
-    this.cP = (paramInt * 1.0F / i);
-    LayoutInflater.from(paramContext).inflate(a.h.design_bottom_navigation_item, this, true);
-    setBackgroundResource(a.e.design_bottom_navigation_item_background);
-    this.cR = ((ImageView)findViewById(a.f.icon));
-    this.cS = ((TextView)findViewById(a.f.smallLabel));
-    this.cT = ((TextView)findViewById(a.f.largeLabel));
-  }
-  
-  public final boolean T()
-  {
-    return false;
+    paramInt = paramAttributeSet.getDimensionPixelSize(2131428286);
+    int i = paramAttributeSet.getDimensionPixelSize(2131428279);
+    this.dQ = paramAttributeSet.getDimensionPixelSize(2131428284);
+    this.dR = (paramInt - i);
+    this.dS = (i * 1.0F / paramInt);
+    this.dT = (paramInt * 1.0F / i);
+    LayoutInflater.from(paramContext).inflate(2130969304, this, true);
+    setBackgroundResource(2130838505);
+    this.dV = ((ImageView)findViewById(2131820929));
+    this.dW = ((TextView)findViewById(2131823371));
+    this.dX = ((TextView)findViewById(2131823372));
   }
   
   public final void a(j paramj)
   {
-    this.cV = paramj;
+    this.dZ = paramj;
     setCheckable(paramj.isCheckable());
     setChecked(paramj.isChecked());
     setEnabled(paramj.isEnabled());
@@ -82,24 +73,29 @@ public class BottomNavigationItemView
     setTitle(paramj.getTitle());
     setId(paramj.getItemId());
     setContentDescription(paramj.getContentDescription());
-    az.a(this, paramj.getTooltipText());
+    bb.a(this, paramj.getTooltipText());
+  }
+  
+  public final boolean aE()
+  {
+    return false;
   }
   
   public j getItemData()
   {
-    return this.cV;
+    return this.dZ;
   }
   
   public int getItemPosition()
   {
-    return this.cU;
+    return this.dY;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
     int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-    if ((this.cV != null) && (this.cV.isCheckable()) && (this.cV.isChecked())) {
-      mergeDrawableStates(arrayOfInt, cL);
+    if ((this.dZ != null) && (this.dZ.isCheckable()) && (this.dZ.isChecked())) {
+      mergeDrawableStates(arrayOfInt, dP);
     }
     return arrayOfInt;
   }
@@ -111,61 +107,61 @@ public class BottomNavigationItemView
   
   public void setChecked(boolean paramBoolean)
   {
-    this.cT.setPivotX(this.cT.getWidth() / 2);
-    this.cT.setPivotY(this.cT.getBaseline());
-    this.cS.setPivotX(this.cS.getWidth() / 2);
-    this.cS.setPivotY(this.cS.getBaseline());
+    this.dX.setPivotX(this.dX.getWidth() / 2);
+    this.dX.setPivotY(this.dX.getBaseline());
+    this.dW.setPivotX(this.dW.getWidth() / 2);
+    this.dW.setPivotY(this.dW.getBaseline());
     FrameLayout.LayoutParams localLayoutParams;
-    if (this.cQ) {
+    if (this.dU) {
       if (paramBoolean)
       {
-        localLayoutParams = (FrameLayout.LayoutParams)this.cR.getLayoutParams();
+        localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
         localLayoutParams.gravity = 49;
-        localLayoutParams.topMargin = this.cM;
-        this.cR.setLayoutParams(localLayoutParams);
-        this.cT.setVisibility(0);
-        this.cT.setScaleX(1.0F);
-        this.cT.setScaleY(1.0F);
-        this.cS.setVisibility(4);
+        localLayoutParams.topMargin = this.dQ;
+        this.dV.setLayoutParams(localLayoutParams);
+        this.dX.setVisibility(0);
+        this.dX.setScaleX(1.0F);
+        this.dX.setScaleY(1.0F);
+        this.dW.setVisibility(4);
       }
     }
     for (;;)
     {
       refreshDrawableState();
       return;
-      localLayoutParams = (FrameLayout.LayoutParams)this.cR.getLayoutParams();
+      localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
       localLayoutParams.gravity = 17;
-      localLayoutParams.topMargin = this.cM;
-      this.cR.setLayoutParams(localLayoutParams);
-      this.cT.setVisibility(4);
-      this.cT.setScaleX(0.5F);
-      this.cT.setScaleY(0.5F);
+      localLayoutParams.topMargin = this.dQ;
+      this.dV.setLayoutParams(localLayoutParams);
+      this.dX.setVisibility(4);
+      this.dX.setScaleX(0.5F);
+      this.dX.setScaleY(0.5F);
       break;
       if (paramBoolean)
       {
-        localLayoutParams = (FrameLayout.LayoutParams)this.cR.getLayoutParams();
+        localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
         localLayoutParams.gravity = 49;
-        localLayoutParams.topMargin = (this.cM + this.cN);
-        this.cR.setLayoutParams(localLayoutParams);
-        this.cT.setVisibility(0);
-        this.cS.setVisibility(4);
-        this.cT.setScaleX(1.0F);
-        this.cT.setScaleY(1.0F);
-        this.cS.setScaleX(this.cO);
-        this.cS.setScaleY(this.cO);
+        localLayoutParams.topMargin = (this.dQ + this.dR);
+        this.dV.setLayoutParams(localLayoutParams);
+        this.dX.setVisibility(0);
+        this.dW.setVisibility(4);
+        this.dX.setScaleX(1.0F);
+        this.dX.setScaleY(1.0F);
+        this.dW.setScaleX(this.dS);
+        this.dW.setScaleY(this.dS);
       }
       else
       {
-        localLayoutParams = (FrameLayout.LayoutParams)this.cR.getLayoutParams();
+        localLayoutParams = (FrameLayout.LayoutParams)this.dV.getLayoutParams();
         localLayoutParams.gravity = 49;
-        localLayoutParams.topMargin = this.cM;
-        this.cR.setLayoutParams(localLayoutParams);
-        this.cT.setVisibility(4);
-        this.cS.setVisibility(0);
-        this.cT.setScaleX(this.cP);
-        this.cT.setScaleY(this.cP);
-        this.cS.setScaleX(1.0F);
-        this.cS.setScaleY(1.0F);
+        localLayoutParams.topMargin = this.dQ;
+        this.dV.setLayoutParams(localLayoutParams);
+        this.dX.setVisibility(4);
+        this.dW.setVisibility(0);
+        this.dX.setScaleX(this.dT);
+        this.dX.setScaleY(this.dT);
+        this.dW.setScaleX(1.0F);
+        this.dW.setScaleY(1.0F);
       }
     }
   }
@@ -173,15 +169,15 @@ public class BottomNavigationItemView
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    this.cS.setEnabled(paramBoolean);
-    this.cT.setEnabled(paramBoolean);
-    this.cR.setEnabled(paramBoolean);
+    this.dW.setEnabled(paramBoolean);
+    this.dX.setEnabled(paramBoolean);
+    this.dV.setEnabled(paramBoolean);
     if (paramBoolean)
     {
-      q.a(this, o.S(getContext()));
+      t.a(this, r.T(getContext()));
       return;
     }
-    q.a(this, null);
+    t.a(this, null);
   }
   
   public void setIcon(Drawable paramDrawable)
@@ -196,9 +192,9 @@ public class BottomNavigationItemView
     }
     for (;;)
     {
-      localObject = a.f(paramDrawable).mutate();
-      a.a((Drawable)localObject, this.cW);
-      this.cR.setImageDrawable((Drawable)localObject);
+      localObject = a.e(paramDrawable).mutate();
+      a.a((Drawable)localObject, this.ea);
+      this.dV.setImageDrawable((Drawable)localObject);
       return;
       label40:
       paramDrawable = ((Drawable.ConstantState)localObject).newDrawable();
@@ -207,42 +203,42 @@ public class BottomNavigationItemView
   
   public void setIconTintList(ColorStateList paramColorStateList)
   {
-    this.cW = paramColorStateList;
-    if (this.cV != null) {
-      setIcon(this.cV.getIcon());
+    this.ea = paramColorStateList;
+    if (this.dZ != null) {
+      setIcon(this.dZ.getIcon());
     }
   }
   
   public void setItemBackground(int paramInt)
   {
     if (paramInt == 0) {}
-    for (Drawable localDrawable = null;; localDrawable = b.g(getContext(), paramInt))
+    for (Drawable localDrawable = null;; localDrawable = b.k(getContext(), paramInt))
     {
-      q.a(this, localDrawable);
+      t.a(this, localDrawable);
       return;
     }
   }
   
   public void setItemPosition(int paramInt)
   {
-    this.cU = paramInt;
+    this.dY = paramInt;
   }
   
   public void setShiftingMode(boolean paramBoolean)
   {
-    this.cQ = paramBoolean;
+    this.dU = paramBoolean;
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    this.cS.setTextColor(paramColorStateList);
-    this.cT.setTextColor(paramColorStateList);
+    this.dW.setTextColor(paramColorStateList);
+    this.dX.setTextColor(paramColorStateList);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.cS.setText(paramCharSequence);
-    this.cT.setText(paramCharSequence);
+    this.dW.setText(paramCharSequence);
+    this.dX.setText(paramCharSequence);
   }
 }
 

@@ -1,7 +1,19 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
  enum ExdeviceAddDataSourceUI$c
 {
+  static
+  {
+    AppMethodBeat.i(19797);
+    lKk = new c("NORMAL", 0);
+    lKl = new c("ADDING", 1);
+    lKm = new c("ADDED", 2);
+    lKn = new c[] { lKk, lKl, lKm };
+    AppMethodBeat.o(19797);
+  }
+  
   private ExdeviceAddDataSourceUI$c() {}
 }
 

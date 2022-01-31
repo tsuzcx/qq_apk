@@ -4,23 +4,32 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.google.android.exoplayer2.i.a;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.UUID;
 
 public final class DrmInitData$SchemeData
   implements Parcelable
 {
-  public static final Parcelable.Creator<SchemeData> CREATOR = new DrmInitData.SchemeData.1();
-  private int auK;
-  public final boolean ayS;
+  public static final Parcelable.Creator<SchemeData> CREATOR;
+  public final boolean aBh;
+  private int axc;
   public final byte[] data;
   public final String mimeType;
   public final String type;
   final UUID uuid;
   
+  static
+  {
+    AppMethodBeat.i(94761);
+    CREATOR = new DrmInitData.SchemeData.1();
+    AppMethodBeat.o(94761);
+  }
+  
   DrmInitData$SchemeData(Parcel paramParcel)
   {
+    AppMethodBeat.i(94757);
     this.uuid = new UUID(paramParcel.readLong(), paramParcel.readLong());
     this.type = paramParcel.readString();
     this.mimeType = paramParcel.readString();
@@ -28,18 +37,21 @@ public final class DrmInitData$SchemeData
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ayS = bool;
+      this.aBh = bool;
+      AppMethodBeat.o(94757);
       return;
     }
   }
   
   public DrmInitData$SchemeData(UUID paramUUID, String paramString1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    this.uuid = ((UUID)a.E(paramUUID));
+    AppMethodBeat.i(94756);
+    this.uuid = ((UUID)a.checkNotNull(paramUUID));
     this.type = paramString1;
-    this.mimeType = ((String)a.E(paramString2));
-    this.data = ((byte[])a.E(paramArrayOfByte));
-    this.ayS = paramBoolean;
+    this.mimeType = ((String)a.checkNotNull(paramString2));
+    this.data = ((byte[])a.checkNotNull(paramArrayOfByte));
+    this.aBh = paramBoolean;
+    AppMethodBeat.o(94756);
   }
   
   public DrmInitData$SchemeData(UUID paramUUID, String paramString, byte[] paramArrayOfByte)
@@ -54,47 +66,61 @@ public final class DrmInitData$SchemeData
   
   public final boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof SchemeData)) {}
-    do
+    AppMethodBeat.i(94758);
+    if (!(paramObject instanceof SchemeData))
     {
+      AppMethodBeat.o(94758);
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-      paramObject = (SchemeData)paramObject;
-    } while ((!this.mimeType.equals(paramObject.mimeType)) || (!t.e(this.uuid, paramObject.uuid)) || (!t.e(this.type, paramObject.type)) || (!Arrays.equals(this.data, paramObject.data)));
-    return true;
+    }
+    if (paramObject == this)
+    {
+      AppMethodBeat.o(94758);
+      return true;
+    }
+    paramObject = (SchemeData)paramObject;
+    if ((this.mimeType.equals(paramObject.mimeType)) && (x.e(this.uuid, paramObject.uuid)) && (x.e(this.type, paramObject.type)) && (Arrays.equals(this.data, paramObject.data)))
+    {
+      AppMethodBeat.o(94758);
+      return true;
+    }
+    AppMethodBeat.o(94758);
+    return false;
   }
   
   public final int hashCode()
   {
+    AppMethodBeat.i(94759);
     int j;
-    if (this.auK == 0)
+    if (this.axc == 0)
     {
       j = this.uuid.hashCode();
       if (this.type != null) {
-        break label61;
+        break label73;
       }
     }
-    label61:
+    label73:
     for (int i = 0;; i = this.type.hashCode())
     {
-      this.auK = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
-      return this.auK;
+      this.axc = (((i + j * 31) * 31 + this.mimeType.hashCode()) * 31 + Arrays.hashCode(this.data));
+      i = this.axc;
+      AppMethodBeat.o(94759);
+      return i;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(94760);
     paramParcel.writeLong(this.uuid.getMostSignificantBits());
     paramParcel.writeLong(this.uuid.getLeastSignificantBits());
     paramParcel.writeString(this.type);
     paramParcel.writeString(this.mimeType);
     paramParcel.writeByteArray(this.data);
-    if (this.ayS) {}
+    if (this.aBh) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      AppMethodBeat.o(94760);
       return;
     }
   }

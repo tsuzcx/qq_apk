@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.downloader_app.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.b.a.b;
 
 final class d$1
   implements a.b
 {
-  public final void X(int paramInt, String paramString)
+  public final void H(int paramInt, long paramLong)
   {
-    d.Y(paramInt, paramString);
+    AppMethodBeat.i(136109);
+    d.I(paramInt, paramLong);
+    AppMethodBeat.o(136109);
   }
 }
 

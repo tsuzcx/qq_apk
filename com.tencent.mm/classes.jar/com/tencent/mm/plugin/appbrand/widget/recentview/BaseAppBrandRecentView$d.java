@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.widget.recentview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,53 +11,63 @@ import java.util.List;
 final class BaseAppBrandRecentView$d
   implements Runnable
 {
-  List<a> hCW = new ArrayList();
-  boolean hCX = true;
-  List<a> hfb = new ArrayList();
+  List<a> iQp;
+  List<a> jvx;
+  boolean jvy;
   
-  public BaseAppBrandRecentView$d(BaseAppBrandRecentView paramBaseAppBrandRecentView) {}
+  public BaseAppBrandRecentView$d(BaseAppBrandRecentView paramBaseAppBrandRecentView)
+  {
+    AppMethodBeat.i(134354);
+    this.jvy = true;
+    this.jvy = true;
+    this.iQp = new ArrayList();
+    this.jvx = new ArrayList();
+    AppMethodBeat.o(134354);
+  }
   
   public final void run()
   {
+    AppMethodBeat.i(134355);
     for (;;)
     {
-      synchronized (BaseAppBrandRecentView.f(this.hCR))
+      synchronized (BaseAppBrandRecentView.f(this.jvt))
       {
-        BaseAppBrandRecentView.a(this.hCR, true);
+        BaseAppBrandRecentView.a(this.jvt, true);
         ??? = null;
-        if (BaseAppBrandRecentView.g(this.hCR) != null) {
-          ??? = BaseAppBrandRecentView.g(this.hCR).mG(this.hCR.getLoadCount());
+        if (BaseAppBrandRecentView.g(this.jvt) != null) {
+          ??? = BaseAppBrandRecentView.g(this.jvt).qi(this.jvt.getLoadCount());
         }
-        this.hfb.clear();
-        this.hCW.clear();
+        this.iQp.clear();
+        this.jvx.clear();
         if (??? == null) {
           break;
         }
-        if (this.hCR.getSceneFactory() != null)
+        if (this.jvt.getSceneFactory() != null)
         {
-          LocalUsageInfo localLocalUsageInfo1 = this.hCR.getSceneFactory().anx();
+          LocalUsageInfo localLocalUsageInfo1 = this.jvt.getSceneFactory().aJB();
           ??? = ((List)???).iterator();
           if (!((Iterator)???).hasNext()) {
             break;
           }
           LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)((Iterator)???).next();
-          if ((localLocalUsageInfo1 != null) && (localLocalUsageInfo2.username.equals(localLocalUsageInfo1.username)) && (localLocalUsageInfo2.fJy == localLocalUsageInfo1.fJy)) {
+          if ((localLocalUsageInfo1 != null) && (localLocalUsageInfo2.username.equals(localLocalUsageInfo1.username)) && (localLocalUsageInfo2.hcr == localLocalUsageInfo1.hcr)) {
             continue;
           }
-          if (this.hfb.size() < this.hCR.getShowCount()) {
-            this.hfb.add(new a(localLocalUsageInfo2));
+          if (this.iQp.size() < this.jvt.getShowCount()) {
+            this.iQp.add(new a(localLocalUsageInfo2));
           }
-          if (BaseAppBrandRecentView.h(this.hCR)) {
-            this.hCW.add(new a(localLocalUsageInfo2));
+          if (BaseAppBrandRecentView.h(this.jvt)) {
+            this.jvx.add(new a(localLocalUsageInfo2));
           }
-          y.d("MicroMsg.BaseAppBrandRecentView", "alvinluo info %s, %s, %s, %s, %s, %d, mType: %s", new Object[] { localLocalUsageInfo2.username, localLocalUsageInfo2.nickname, localLocalUsageInfo2.fJX, localLocalUsageInfo2.fJY, localLocalUsageInfo2.appId, Integer.valueOf(localLocalUsageInfo2.fJy), this.hCR.hrp });
+          ab.d("MicroMsg.BaseAppBrandRecentView", "alvinluo info %s, %s, %s, %s, %s, %d, mType: %s", new Object[] { localLocalUsageInfo2.username, localLocalUsageInfo2.nickname, localLocalUsageInfo2.bDi, localLocalUsageInfo2.hcN, localLocalUsageInfo2.appId, Integer.valueOf(localLocalUsageInfo2.hcr), this.jvt.jhO });
         }
       }
       Object localObject3 = null;
     }
-    this.hCR.aE(this.hfb);
-    y.i("MicroMsg.BaseAppBrandRecentView", "[UpdateAppBrandRecentDataTask] type:%s preview size:%s, data size: %d, mType: %s", new Object[] { this.hCR.getType(), Integer.valueOf(BaseAppBrandRecentView.b(this.hCR).size()), Integer.valueOf(BaseAppBrandRecentView.i(this.hCR).size()), this.hCR.hrp });
-    ai.d(new BaseAppBrandRecentView.d.1(this));
+    this.jvt.aO(this.iQp);
+    ab.i("MicroMsg.BaseAppBrandRecentView", "[UpdateAppBrandRecentDataTask] type:%s preview size:%s, data size: %d, mType: %s", new Object[] { this.jvt.getType(), Integer.valueOf(BaseAppBrandRecentView.b(this.jvt).size()), Integer.valueOf(BaseAppBrandRecentView.i(this.jvt).size()), this.jvt.jhO });
+    al.d(new BaseAppBrandRecentView.d.1(this));
+    AppMethodBeat.o(134355);
   }
 }
 

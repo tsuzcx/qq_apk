@@ -2,6 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 import android.os.Parcelable;
 import android.os.RemoteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$1
   implements Runnable
@@ -10,35 +11,47 @@ final class f$1
   
   public final void run()
   {
-    if (e.fE(this.dGw))
+    AppMethodBeat.i(114025);
+    if (e.lZ(this.eDZ))
     {
-      localObject = (a)k.a(this.dGI, a.class);
+      localObject = (a)k.b(this.eEk, a.class);
       if (localObject == null)
       {
-        com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeAsync failed, newInstance(%s) return null.", new Object[] { this.dGI });
+        com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeAsync failed, newInstance(%s) return null.", new Object[] { this.eEk });
+        AppMethodBeat.o(114025);
         return;
       }
-      ((a)localObject).a(this.dGJ, this.dGE);
+      ((a)localObject).a(this.eEl, this.eEg);
+      AppMethodBeat.o(114025);
       return;
     }
-    com.tencent.mm.ipcinvoker.b.a locala = b.BT().fB(this.dGw);
+    com.tencent.mm.ipcinvoker.b.a locala = b.PK().lW(this.eDZ);
     if (locala == null)
     {
-      com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeAsync failed, get bridge is null by process(%s).", new Object[] { this.dGw });
+      com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeAsync failed, get bridge is null by process(%s).", new Object[] { this.eDZ });
+      AppMethodBeat.o(114025);
       return;
     }
     Object localObject = null;
     try
     {
-      if (this.dGE != null) {
-        localObject = new f.a(this.dGw, this.dGE);
+      if (this.eEg != null) {
+        localObject = new f.a(this.eDZ, this.eEg);
       }
-      locala.a(f.b(this.dGJ), this.dGI.getName(), (com.tencent.mm.ipcinvoker.b.b)localObject);
+      locala.a(f.d(this.eEl), this.eEk.getName(), (com.tencent.mm.ipcinvoker.b.b)localObject);
+      AppMethodBeat.o(114025);
       return;
     }
     catch (RemoteException localRemoteException)
     {
       com.tencent.mm.ipcinvoker.h.b.d("IPC.IPCInvoker", "invokeAsync failed, ipc invoke error : %s", new Object[] { localRemoteException });
+      AppMethodBeat.o(114025);
+      return;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      com.tencent.mm.ipcinvoker.h.b.d("IPC.IPCInvoker", "invokeAsync failed, ipc invoke error : %s", new Object[] { localIllegalArgumentException });
+      AppMethodBeat.o(114025);
     }
   }
 }

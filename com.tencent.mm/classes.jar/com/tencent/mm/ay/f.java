@@ -1,20 +1,19 @@
 package com.tencent.mm.ay;
 
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.protocal.c.zr;
-
-@Deprecated
 public final class f
-  extends i.b
+  extends a
 {
-  private zr ewa = new zr();
+  public String fLB;
+  public long fLC;
   
-  public f(int paramInt1, int paramInt2)
+  public f()
   {
-    super(23);
-    this.ewa.sYS = paramInt1;
-    this.ewa.nfn = paramInt2;
-    this.mdD = this.ewa;
+    super(null, null);
+  }
+  
+  protected final boolean Zh()
+  {
+    return false;
   }
 }
 

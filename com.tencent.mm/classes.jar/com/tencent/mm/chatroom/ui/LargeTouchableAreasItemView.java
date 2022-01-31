@@ -14,37 +14,52 @@ import android.view.TouchDelegate;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class LargeTouchableAreasItemView
   extends LinearLayout
 {
-  private static final int doX = Color.argb(0, 0, 0, 0);
-  private final ArrayList<LargeTouchableAreasItemView.b> doY = new ArrayList();
-  private d doZ;
-  private LargeTouchableAreasItemView.a dpa;
-  private int dpb;
-  private boolean dpc;
-  private int dpd = -1;
-  private int dpe = -1;
-  private ImageButton dpf;
-  private final Paint mPaint = new Paint();
+  private static final int egt;
+  private int egA;
+  private ImageButton egB;
+  private final ArrayList<LargeTouchableAreasItemView.b> egu;
+  private d egv;
+  private LargeTouchableAreasItemView.a egw;
+  private int egx;
+  private boolean egy;
+  private int egz;
+  private final Paint mPaint;
+  
+  static
+  {
+    AppMethodBeat.i(104110);
+    egt = Color.argb(0, 0, 0, 0);
+    AppMethodBeat.o(104110);
+  }
   
   public LargeTouchableAreasItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(104105);
+    this.egu = new ArrayList();
+    this.mPaint = new Paint();
+    this.egz = -1;
+    this.egA = -1;
     setOrientation(0);
     setDescendantFocusability(393216);
-    this.doZ = new d(this);
+    this.egv = new d(this);
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.dpb = ((int)(paramContext.getResources().getDisplayMetrics().density * 66.0F + 0.5F));
-    LayoutInflater.from(paramContext).inflate(a.f.checkbox_large_touch_view, this);
+    this.egx = ((int)(paramContext.getResources().getDisplayMetrics().density * 66.0F + 0.5F));
+    LayoutInflater.from(paramContext).inflate(2130969147, this);
+    AppMethodBeat.o(104105);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    Iterator localIterator = this.doY.iterator();
+    AppMethodBeat.i(104108);
+    Iterator localIterator = this.egu.iterator();
     while (localIterator.hasNext())
     {
       LargeTouchableAreasItemView.b localb = (LargeTouchableAreasItemView.b)localIterator.next();
@@ -52,70 +67,77 @@ public class LargeTouchableAreasItemView
       paramCanvas.drawRect(localb.rect, this.mPaint);
     }
     super.dispatchDraw(paramCanvas);
+    AppMethodBeat.o(104108);
   }
   
   public boolean getSelected()
   {
-    return this.dpc;
+    return this.egy;
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(104106);
     super.onFinishInflate();
-    this.dpf = ((ImageButton)findViewById(a.e.btn_select));
-    this.dpf.setOnClickListener(new LargeTouchableAreasItemView.1(this));
+    this.egB = ((ImageButton)findViewById(2131822803));
+    this.egB.setOnClickListener(new LargeTouchableAreasItemView.1(this));
+    AppMethodBeat.o(104106);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(104107);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = paramInt3 - paramInt1;
     paramInt2 = paramInt4 - paramInt2;
-    if ((paramInt1 != this.dpd) || (paramInt2 != this.dpe))
+    if ((paramInt1 != this.egz) || (paramInt2 != this.egA))
     {
-      this.dpd = paramInt1;
-      this.dpe = paramInt2;
-      Object localObject1 = this.doZ;
-      if (((d)localObject1).dty != null) {
-        ((d)localObject1).dty.clear();
+      this.egz = paramInt1;
+      this.egA = paramInt2;
+      Object localObject1 = this.egv;
+      if (((d)localObject1).elc != null) {
+        ((d)localObject1).elc.clear();
       }
-      ((d)localObject1).dtz = null;
-      localObject1 = new Rect(paramInt1 - this.dpf.getWidth() - this.dpb, 0, paramInt1, paramInt2);
-      paramInt1 = doX;
-      Object localObject2 = this.dpf;
-      d locald = this.doZ;
+      ((d)localObject1).eld = null;
+      localObject1 = new Rect(paramInt1 - this.egB.getWidth() - this.egx, 0, paramInt1, paramInt2);
+      paramInt1 = egt;
+      Object localObject2 = this.egB;
+      d locald = this.egv;
       localObject2 = new TouchDelegate((Rect)localObject1, (View)localObject2);
-      if (locald.dty == null) {
-        locald.dty = new ArrayList();
+      if (locald.elc == null) {
+        locald.elc = new ArrayList();
       }
-      locald.dty.add(localObject2);
-      this.doY.add(new LargeTouchableAreasItemView.b((Rect)localObject1, paramInt1));
-      setTouchDelegate(this.doZ);
+      locald.elc.add(localObject2);
+      this.egu.add(new LargeTouchableAreasItemView.b((Rect)localObject1, paramInt1));
+      setTouchDelegate(this.egv);
     }
+    AppMethodBeat.o(104107);
   }
   
   public void setItemViewSelected(boolean paramBoolean)
   {
+    AppMethodBeat.i(104109);
     ImageButton localImageButton;
-    if (this.dpc != paramBoolean)
+    if (this.egy != paramBoolean)
     {
-      this.dpc = paramBoolean;
-      localImageButton = this.dpf;
-      if (!this.dpc) {
-        break label35;
+      this.egy = paramBoolean;
+      localImageButton = this.egB;
+      if (!this.egy) {
+        break label44;
       }
     }
-    label35:
-    for (int i = a.h.checkbox_selected;; i = a.h.checkbox_unselected)
+    label44:
+    for (int i = 2131231137;; i = 2131231142)
     {
       localImageButton.setImageResource(i);
+      AppMethodBeat.o(104109);
       return;
     }
   }
   
   public void setOnLargeTouchableAreasListener(LargeTouchableAreasItemView.a parama)
   {
-    this.dpa = parama;
+    this.egw = parama;
   }
 }
 

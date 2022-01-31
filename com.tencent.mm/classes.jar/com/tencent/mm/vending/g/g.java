@@ -1,15 +1,31 @@
 package com.tencent.mm.vending.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Stack;
 
 final class g
 {
-  private static g wtX = new g();
-  ThreadLocal<Stack<c>> b = new ThreadLocal();
+  private static g AOV;
+  ThreadLocal<Stack<c>> b;
   
-  public static g cLd()
+  static
   {
-    return wtX;
+    AppMethodBeat.i(126070);
+    AOV = null;
+    AOV = new g();
+    AppMethodBeat.o(126070);
+  }
+  
+  private g()
+  {
+    AppMethodBeat.i(126069);
+    this.b = new ThreadLocal();
+    AppMethodBeat.o(126069);
+  }
+  
+  public static g dQt()
+  {
+    return AOV;
   }
 }
 

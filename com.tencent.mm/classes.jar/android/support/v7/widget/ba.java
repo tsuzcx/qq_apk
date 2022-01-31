@@ -1,296 +1,566 @@
 package android.support.v7.widget;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v4.view.q;
-import android.support.v7.a.a.d;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.support.v4.view.t;
+import android.support.v4.view.x;
+import android.support.v4.view.z;
+import android.support.v7.a.a.a;
+import android.support.v7.view.menu.h;
+import android.support.v7.view.menu.h.a;
+import android.support.v7.view.menu.o.a;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
+import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.View.OnHoverListener;
-import android.view.View.OnLongClickListener;
-import android.view.ViewConfiguration;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import android.view.accessibility.AccessibilityManager;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window.Callback;
 import android.widget.TextView;
 
-final class ba
-  implements View.OnAttachStateChangeListener, View.OnHoverListener, View.OnLongClickListener
+public final class ba
+  implements u
 {
-  private static ba ane;
-  private static ba anf;
-  private final CharSequence Ue;
-  private final Runnable acP = new Runnable()
-  {
-    public final void run()
-    {
-      ba.c(ba.this);
-    }
-  };
-  private final View amX;
-  private final Runnable amY = new Runnable()
-  {
-    public final void run()
-    {
-      ba.b(ba.this);
-    }
-  };
-  private int amZ;
-  private int ana;
-  private bb anb;
-  private boolean anc;
+  CharSequence Cv;
+  private CharSequence Cw;
+  Window.Callback Qa;
+  private ActionMenuPresenter Xq;
+  private int aoZ;
+  private View apa;
+  private Drawable apb;
+  private Drawable apc;
+  private boolean apd;
+  private CharSequence ape;
+  boolean apf;
+  private int apg = 0;
+  private int aph = 0;
+  private Drawable api;
+  Toolbar hO;
+  private View lX;
+  private Drawable la;
   
-  private ba(View paramView, CharSequence paramCharSequence)
+  public ba(Toolbar paramToolbar, boolean paramBoolean)
   {
-    this.amX = paramView;
-    this.Ue = paramCharSequence;
-    this.amX.setOnLongClickListener(this);
-    this.amX.setOnHoverListener(this);
+    this(paramToolbar, paramBoolean, (byte)0);
   }
   
-  private static void a(ba paramba)
+  private ba(Toolbar paramToolbar, boolean paramBoolean, byte paramByte)
   {
-    if (ane != null)
+    this.hO = paramToolbar;
+    this.Cv = paramToolbar.getTitle();
+    this.Cw = paramToolbar.getSubtitle();
+    boolean bool;
+    if (this.Cv != null)
     {
-      ba localba = ane;
-      localba.amX.removeCallbacks(localba.amY);
-    }
-    ane = paramba;
-    if (paramba != null)
-    {
-      paramba = ane;
-      paramba.amX.postDelayed(paramba.amY, ViewConfiguration.getLongPressTimeout());
-    }
-  }
-  
-  public static void a(View paramView, CharSequence paramCharSequence)
-  {
-    if ((ane != null) && (ane.amX == paramView)) {
-      a(null);
-    }
-    if (TextUtils.isEmpty(paramCharSequence))
-    {
-      if ((anf != null) && (anf.amX == paramView)) {
-        anf.hide();
+      bool = true;
+      this.apd = bool;
+      this.apc = paramToolbar.getNavigationIcon();
+      paramToolbar = az.a(paramToolbar.getContext(), null, a.a.ActionBar, 2130772139, 0);
+      this.api = paramToolbar.getDrawable(28);
+      if (!paramBoolean) {
+        break label570;
       }
-      paramView.setOnLongClickListener(null);
-      paramView.setLongClickable(false);
-      paramView.setOnHoverListener(null);
-      return;
-    }
-    new ba(paramView, paramCharSequence);
-  }
-  
-  private void an(boolean paramBoolean)
-  {
-    if (!q.ao(this.amX)) {
-      return;
-    }
-    a(null);
-    if (anf != null) {
-      anf.hide();
-    }
-    anf = this;
-    this.anc = paramBoolean;
-    this.anb = new bb(this.amX.getContext());
-    bb localbb = this.anb;
-    View localView2 = this.amX;
-    int i = this.amZ;
-    int j = this.ana;
-    paramBoolean = this.anc;
-    Object localObject1 = this.Ue;
-    if (localbb.isShowing()) {
-      localbb.hide();
-    }
-    localbb.ee.setText((CharSequence)localObject1);
-    WindowManager.LayoutParams localLayoutParams = localbb.anh;
-    localLayoutParams.token = localView2.getApplicationWindowToken();
-    int k = localbb.mContext.getResources().getDimensionPixelOffset(a.d.tooltip_precise_anchor_threshold);
-    if (localView2.getWidth() < k) {
-      i = localView2.getWidth() / 2;
+      Object localObject = paramToolbar.getText(1);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        this.apd = true;
+        o((CharSequence)localObject);
+      }
+      localObject = paramToolbar.getText(4);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        this.Cw = ((CharSequence)localObject);
+        if ((this.aoZ & 0x8) != 0) {
+          this.hO.setSubtitle((CharSequence)localObject);
+        }
+      }
+      localObject = paramToolbar.getDrawable(8);
+      if (localObject != null) {
+        setLogo((Drawable)localObject);
+      }
+      localObject = paramToolbar.getDrawable(7);
+      if (localObject != null) {
+        setIcon((Drawable)localObject);
+      }
+      if ((this.apc == null) && (this.api != null))
+      {
+        this.apc = this.api;
+        kU();
+      }
+      setDisplayOptions(paramToolbar.getInt(3, 0));
+      paramByte = paramToolbar.getResourceId(13, 0);
+      if (paramByte != 0)
+      {
+        setCustomView(LayoutInflater.from(this.hO.getContext()).inflate(paramByte, this.hO, false));
+        setDisplayOptions(this.aoZ | 0x10);
+      }
+      paramByte = paramToolbar.getLayoutDimension(0, 0);
+      if (paramByte > 0)
+      {
+        localObject = this.hO.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).height = paramByte;
+        this.hO.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      int i = paramToolbar.getDimensionPixelOffset(20, -1);
+      paramByte = paramToolbar.getDimensionPixelOffset(21, -1);
+      if ((i >= 0) || (paramByte >= 0))
+      {
+        localObject = this.hO;
+        i = Math.max(i, 0);
+        paramByte = Math.max(paramByte, 0);
+        ((Toolbar)localObject).kS();
+        ((Toolbar)localObject).aoF.aE(i, paramByte);
+      }
+      paramByte = paramToolbar.getResourceId(5, 0);
+      Context localContext;
+      if (paramByte != 0)
+      {
+        localObject = this.hO;
+        localContext = this.hO.getContext();
+        ((Toolbar)localObject).aox = paramByte;
+        if (((Toolbar)localObject).aop != null) {
+          ((Toolbar)localObject).aop.setTextAppearance(localContext, paramByte);
+        }
+      }
+      paramByte = paramToolbar.getResourceId(6, 0);
+      if (paramByte != 0)
+      {
+        localObject = this.hO;
+        localContext = this.hO.getContext();
+        ((Toolbar)localObject).aoy = paramByte;
+        if (((Toolbar)localObject).aoq != null) {
+          ((Toolbar)localObject).aoq.setTextAppearance(localContext, paramByte);
+        }
+      }
+      paramByte = paramToolbar.getResourceId(27, 0);
+      if (paramByte != 0) {
+        this.hO.setPopupTheme(paramByte);
+      }
     }
     for (;;)
     {
-      int m;
-      label224:
-      Object localObject2;
-      label278:
-      label571:
-      long l;
-      if (localView2.getHeight() >= k)
+      paramToolbar.aoo.recycle();
+      if (2131296257 != this.aph)
       {
-        m = localbb.mContext.getResources().getDimensionPixelOffset(a.d.tooltip_precise_anchor_extra_offset);
-        k = j - m;
-        j += m;
-        localLayoutParams.gravity = 49;
-        localObject1 = localbb.mContext.getResources();
-        if (!paramBoolean) {
-          break label659;
+        this.aph = 2131296257;
+        if (TextUtils.isEmpty(this.hO.getNavigationContentDescription())) {
+          setNavigationContentDescription(this.aph);
         }
-        m = a.d.tooltip_y_offset_touch;
-        int n = ((Resources)localObject1).getDimensionPixelOffset(m);
-        View localView1 = localView2.getRootView();
-        localObject2 = localView1.getLayoutParams();
-        if ((localObject2 instanceof WindowManager.LayoutParams))
-        {
-          localObject1 = localView1;
-          if (((WindowManager.LayoutParams)localObject2).type == 2) {}
-        }
-        else
-        {
-          localObject2 = localView2.getContext();
-          localObject1 = localView1;
-          if ((localObject2 instanceof ContextWrapper))
-          {
-            if (!(localObject2 instanceof Activity)) {
-              break label667;
-            }
-            localObject1 = ((Activity)localObject2).getWindow().getDecorView();
-          }
-        }
-        if (localObject1 != null)
-        {
-          ((View)localObject1).getWindowVisibleDisplayFrame(localbb.ani);
-          if ((localbb.ani.left < 0) && (localbb.ani.top < 0))
-          {
-            localObject2 = localbb.mContext.getResources();
-            m = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
-            if (m == 0) {
-              break label680;
-            }
-            m = ((Resources)localObject2).getDimensionPixelSize(m);
-            label385:
-            localObject2 = ((Resources)localObject2).getDisplayMetrics();
-            localbb.ani.set(0, m, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
-          }
-          ((View)localObject1).getLocationOnScreen(localbb.ank);
-          localView2.getLocationOnScreen(localbb.anj);
-          localObject2 = localbb.anj;
-          localObject2[0] -= localbb.ank[0];
-          localObject2 = localbb.anj;
-          localObject2[1] -= localbb.ank[1];
-          localLayoutParams.x = (localbb.anj[0] + i - ((View)localObject1).getWidth() / 2);
-          i = View.MeasureSpec.makeMeasureSpec(0, 0);
-          localbb.QR.measure(i, i);
-          i = localbb.QR.getMeasuredHeight();
-          k = localbb.anj[1] + k - n - i;
-          j = j + localbb.anj[1] + n;
-          if (!paramBoolean) {
-            break label686;
-          }
-          if (k >= 0) {
-            break label709;
-          }
-          localLayoutParams.y = j;
-        }
-        ((WindowManager)localbb.mContext.getSystemService("window")).addView(localbb.QR, localbb.anh);
-        this.amX.addOnAttachStateChangeListener(this);
-        if (!this.anc) {
-          break label719;
-        }
-        l = 2500L;
       }
-      for (;;)
+      this.ape = this.hO.getNavigationContentDescription();
+      this.hO.setNavigationOnClickListener(new View.OnClickListener()
       {
-        this.amX.removeCallbacks(this.acP);
-        this.amX.postDelayed(this.acP, l);
+        final android.support.v7.view.menu.a apj = new android.support.v7.view.menu.a(ba.this.hO.getContext(), ba.this.Cv);
+        
+        public final void onClick(View paramAnonymousView)
+        {
+          if ((ba.this.Qa != null) && (ba.this.apf)) {
+            ba.this.Qa.onMenuItemSelected(0, this.apj);
+          }
+        }
+      });
+      return;
+      bool = false;
+      break;
+      label570:
+      paramByte = 11;
+      if (this.hO.getNavigationIcon() != null)
+      {
+        paramByte = 15;
+        this.api = this.hO.getNavigationIcon();
+      }
+      this.aoZ = paramByte;
+    }
+  }
+  
+  private void kT()
+  {
+    Drawable localDrawable = null;
+    if ((this.aoZ & 0x2) != 0)
+    {
+      if ((this.aoZ & 0x1) == 0) {
+        break label49;
+      }
+      if (this.apb == null) {
+        break label41;
+      }
+      localDrawable = this.apb;
+    }
+    for (;;)
+    {
+      this.hO.setLogo(localDrawable);
+      return;
+      label41:
+      localDrawable = this.la;
+      continue;
+      label49:
+      localDrawable = this.la;
+    }
+  }
+  
+  private void kU()
+  {
+    if ((this.aoZ & 0x4) != 0)
+    {
+      Toolbar localToolbar = this.hO;
+      if (this.apc != null) {}
+      for (Drawable localDrawable = this.apc;; localDrawable = this.api)
+      {
+        localToolbar.setNavigationIcon(localDrawable);
         return;
-        j = localView2.getHeight();
-        k = 0;
-        break;
-        label659:
-        m = a.d.tooltip_y_offset_non_touch;
-        break label224;
-        label667:
-        localObject2 = ((ContextWrapper)localObject2).getBaseContext();
-        break label278;
-        label680:
-        m = 0;
-        break label385;
-        label686:
-        if (i + j <= localbb.ani.height())
+      }
+    }
+    this.hO.setNavigationIcon(null);
+  }
+  
+  private void kV()
+  {
+    if ((this.aoZ & 0x4) != 0)
+    {
+      if (TextUtils.isEmpty(this.ape)) {
+        this.hO.setNavigationContentDescription(this.aph);
+      }
+    }
+    else {
+      return;
+    }
+    this.hO.setNavigationContentDescription(this.ape);
+  }
+  
+  private void o(CharSequence paramCharSequence)
+  {
+    this.Cv = paramCharSequence;
+    if ((this.aoZ & 0x8) != 0) {
+      this.hO.setTitle(paramCharSequence);
+    }
+  }
+  
+  private void setNavigationContentDescription(CharSequence paramCharSequence)
+  {
+    this.ape = paramCharSequence;
+    kV();
+  }
+  
+  public final void a(o.a parama, h.a parama1)
+  {
+    Toolbar localToolbar = this.hO;
+    localToolbar.YQ = parama;
+    localToolbar.YR = parama1;
+    if (localToolbar.Xp != null) {
+      localToolbar.Xp.a(parama, parama1);
+    }
+  }
+  
+  public final void a(ar paramar)
+  {
+    if ((this.apa != null) && (this.apa.getParent() == this.hO)) {
+      this.hO.removeView(this.apa);
+    }
+    this.apa = paramar;
+    if ((paramar != null) && (this.apg == 2))
+    {
+      this.hO.addView(this.apa, 0);
+      Toolbar.LayoutParams localLayoutParams = (Toolbar.LayoutParams)this.apa.getLayoutParams();
+      localLayoutParams.width = -2;
+      localLayoutParams.height = -2;
+      localLayoutParams.gravity = 8388691;
+      paramar.setAllowCollapse(true);
+    }
+  }
+  
+  public final void a(Menu paramMenu, o.a parama)
+  {
+    if (this.Xq == null)
+    {
+      this.Xq = new ActionMenuPresenter(this.hO.getContext());
+      this.Xq.mId = 2131820547;
+    }
+    this.Xq.eN = parama;
+    this.hO.a((h)paramMenu, this.Xq);
+  }
+  
+  public final x c(final int paramInt, long paramLong)
+  {
+    x localx = t.ab(this.hO);
+    if (paramInt == 0) {}
+    for (float f = 1.0F;; f = 0.0F) {
+      localx.s(f).h(paramLong).a(new z()
+      {
+        private boolean qM = false;
+        
+        public final void aB(View paramAnonymousView)
         {
-          localLayoutParams.y = j;
-          break label571;
+          ba.this.hO.setVisibility(0);
         }
-        label709:
-        localLayoutParams.y = k;
-        break label571;
-        label719:
-        if ((q.ac(this.amX) & 0x1) == 1) {
-          l = 3000L - ViewConfiguration.getLongPressTimeout();
-        } else {
-          l = 15000L - ViewConfiguration.getLongPressTimeout();
+        
+        public final void aC(View paramAnonymousView)
+        {
+          if (!this.qM) {
+            ba.this.hO.setVisibility(paramInt);
+          }
+        }
+        
+        public final void aD(View paramAnonymousView)
+        {
+          this.qM = true;
+        }
+      });
+    }
+  }
+  
+  public final void collapseActionView()
+  {
+    this.hO.collapseActionView();
+  }
+  
+  public final void dismissPopupMenus()
+  {
+    Toolbar localToolbar = this.hO;
+    if (localToolbar.Xp != null) {
+      localToolbar.Xp.dismissPopupMenus();
+    }
+  }
+  
+  public final Context getContext()
+  {
+    return this.hO.getContext();
+  }
+  
+  public final View getCustomView()
+  {
+    return this.lX;
+  }
+  
+  public final int getDisplayOptions()
+  {
+    return this.aoZ;
+  }
+  
+  public final int getHeight()
+  {
+    return this.hO.getHeight();
+  }
+  
+  public final Menu getMenu()
+  {
+    return this.hO.getMenu();
+  }
+  
+  public final int getNavigationMode()
+  {
+    return this.apg;
+  }
+  
+  public final CharSequence getTitle()
+  {
+    return this.hO.getTitle();
+  }
+  
+  public final int getVisibility()
+  {
+    return this.hO.getVisibility();
+  }
+  
+  public final boolean gx()
+  {
+    Toolbar localToolbar = this.hO;
+    return (localToolbar.getVisibility() == 0) && (localToolbar.Xp != null) && (localToolbar.Xp.Yq);
+  }
+  
+  public final boolean gy()
+  {
+    Object localObject = this.hO;
+    if (((Toolbar)localObject).Xp != null)
+    {
+      localObject = ((Toolbar)localObject).Xp;
+      if (((ActionMenuView)localObject).YP != null)
+      {
+        localObject = ((ActionMenuView)localObject).YP;
+        if ((((ActionMenuPresenter)localObject).YE != null) || (((ActionMenuPresenter)localObject).isOverflowMenuShowing()))
+        {
+          i = 1;
+          if (i == 0) {
+            break label62;
+          }
         }
       }
-    }
-  }
-  
-  private void hide()
-  {
-    if (anf == this)
-    {
-      anf = null;
-      if (this.anb != null)
+      label62:
+      for (int i = 1;; i = 0)
       {
-        this.anb.hide();
-        this.anb = null;
-        this.amX.removeOnAttachStateChangeListener(this);
+        if (i == 0) {
+          break label67;
+        }
+        return true;
+        i = 0;
+        break;
       }
     }
-    if (ane == this) {
-      a(null);
-    }
-    this.amX.removeCallbacks(this.acP);
-  }
-  
-  public final boolean onHover(View paramView, MotionEvent paramMotionEvent)
-  {
-    if ((this.anb != null) && (this.anc)) {}
-    do
-    {
-      do
-      {
-        return false;
-        paramView = (AccessibilityManager)this.amX.getContext().getSystemService("accessibility");
-      } while ((paramView.isEnabled()) && (paramView.isTouchExplorationEnabled()));
-      switch (paramMotionEvent.getAction())
-      {
-      case 8: 
-      case 9: 
-      default: 
-        return false;
-      }
-    } while ((!this.amX.isEnabled()) || (this.anb != null));
-    this.amZ = ((int)paramMotionEvent.getX());
-    this.ana = ((int)paramMotionEvent.getY());
-    a(this);
-    return false;
-    hide();
+    label67:
     return false;
   }
   
-  public final boolean onLongClick(View paramView)
+  public final void gz()
   {
-    this.amZ = (paramView.getWidth() / 2);
-    this.ana = (paramView.getHeight() / 2);
-    an(true);
-    return true;
+    this.apf = true;
   }
   
-  public final void onViewAttachedToWindow(View paramView) {}
-  
-  public final void onViewDetachedFromWindow(View paramView)
+  public final boolean hasExpandedActionView()
   {
-    hide();
+    Toolbar localToolbar = this.hO;
+    return (localToolbar.aoS != null) && (localToolbar.aoS.aoV != null);
+  }
+  
+  public final boolean hideOverflowMenu()
+  {
+    Object localObject = this.hO;
+    if (((Toolbar)localObject).Xp != null)
+    {
+      localObject = ((Toolbar)localObject).Xp;
+      if ((((ActionMenuView)localObject).YP != null) && (((ActionMenuView)localObject).YP.hideOverflowMenu())) {}
+      for (int i = 1; i != 0; i = 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public final ViewGroup hz()
+  {
+    return this.hO;
+  }
+  
+  public final boolean isOverflowMenuShowing()
+  {
+    return this.hO.isOverflowMenuShowing();
+  }
+  
+  public final void setBackgroundDrawable(Drawable paramDrawable)
+  {
+    t.a(this.hO, paramDrawable);
+  }
+  
+  public final void setCollapsible(boolean paramBoolean)
+  {
+    this.hO.setCollapsible(paramBoolean);
+  }
+  
+  public final void setCustomView(View paramView)
+  {
+    if ((this.lX != null) && ((this.aoZ & 0x10) != 0)) {
+      this.hO.removeView(this.lX);
+    }
+    this.lX = paramView;
+    if ((paramView != null) && ((this.aoZ & 0x10) != 0)) {
+      this.hO.addView(this.lX);
+    }
+  }
+  
+  public final void setDisplayOptions(int paramInt)
+  {
+    int i = this.aoZ ^ paramInt;
+    this.aoZ = paramInt;
+    if (i != 0)
+    {
+      if ((i & 0x4) != 0)
+      {
+        if ((paramInt & 0x4) != 0) {
+          kV();
+        }
+        kU();
+      }
+      if ((i & 0x3) != 0) {
+        kT();
+      }
+      if ((i & 0x8) != 0)
+      {
+        if ((paramInt & 0x8) == 0) {
+          break label115;
+        }
+        this.hO.setTitle(this.Cv);
+        this.hO.setSubtitle(this.Cw);
+      }
+    }
+    for (;;)
+    {
+      if (((i & 0x10) != 0) && (this.lX != null))
+      {
+        if ((paramInt & 0x10) == 0) {
+          break;
+        }
+        this.hO.addView(this.lX);
+      }
+      return;
+      label115:
+      this.hO.setTitle(null);
+      this.hO.setSubtitle(null);
+    }
+    this.hO.removeView(this.lX);
+  }
+  
+  public final void setIcon(int paramInt)
+  {
+    if (paramInt != 0) {}
+    for (Drawable localDrawable = android.support.v7.c.a.a.k(this.hO.getContext(), paramInt);; localDrawable = null)
+    {
+      setIcon(localDrawable);
+      return;
+    }
+  }
+  
+  public final void setIcon(Drawable paramDrawable)
+  {
+    this.la = paramDrawable;
+    kT();
+  }
+  
+  public final void setLogo(int paramInt)
+  {
+    if (paramInt != 0) {}
+    for (Drawable localDrawable = android.support.v7.c.a.a.k(this.hO.getContext(), paramInt);; localDrawable = null)
+    {
+      setLogo(localDrawable);
+      return;
+    }
+  }
+  
+  public final void setLogo(Drawable paramDrawable)
+  {
+    this.apb = paramDrawable;
+    kT();
+  }
+  
+  public final void setNavigationContentDescription(int paramInt)
+  {
+    if (paramInt == 0) {}
+    for (Object localObject = null;; localObject = this.hO.getContext().getString(paramInt))
+    {
+      setNavigationContentDescription((CharSequence)localObject);
+      return;
+    }
+  }
+  
+  public final void setVisibility(int paramInt)
+  {
+    this.hO.setVisibility(paramInt);
+  }
+  
+  public final void setWindowCallback(Window.Callback paramCallback)
+  {
+    this.Qa = paramCallback;
+  }
+  
+  public final void setWindowTitle(CharSequence paramCharSequence)
+  {
+    if (!this.apd) {
+      o(paramCharSequence);
+    }
+  }
+  
+  public final boolean showOverflowMenu()
+  {
+    return this.hO.showOverflowMenu();
   }
 }
 

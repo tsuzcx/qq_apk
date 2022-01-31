@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.clean.ui.newui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CleanMsgUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -10,13 +11,15 @@ final class CleanMsgUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    CleanMsgUI.a(this.iEh);
+    AppMethodBeat.i(18891);
+    CleanMsgUI.a(this.kJo);
+    AppMethodBeat.o(18891);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.newui.CleanMsgUI.4
  * JD-Core Version:    0.7.0.1
  */

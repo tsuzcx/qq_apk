@@ -1,35 +1,78 @@
 package com.tencent.magicbrush.handler.image;
 
-import com.github.henryye.nativeiv.bitmap.IBitmap;
-import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
-import com.tencent.magicbrush.engine.d;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 
 final class a$b
-  implements Runnable
+  extends a.d
 {
-  private String bmf;
-  private IBitmap<NativeBitmapStruct> bmg;
-  volatile boolean bmh = false;
-  
-  private a$b(String paramString, IBitmap<NativeBitmapStruct> paramIBitmap)
+  public a$b(IMBImageHandler paramIMBImageHandler)
   {
-    this.bmf = paramString;
-    this.bmg = paramIBitmap;
+    super(paramIMBImageHandler);
   }
   
-  public final void run()
+  private static int cu(String paramString)
   {
-    if (this.bmh)
+    int j = 14;
+    AppMethodBeat.i(115963);
+    if (paramString == null)
     {
-      this.bmg.recycle();
-      return;
+      AppMethodBeat.o(115963);
+      return 0;
     }
-    d.a(this.bmf, this.bmg);
+    if (!paramString.startsWith("data:image/"))
+    {
+      AppMethodBeat.o(115963);
+      return 0;
+    }
+    int i;
+    if (paramString.startsWith("jpeg", 11)) {
+      i = 15;
+    }
+    while (!paramString.startsWith(";base64,", i))
+    {
+      AppMethodBeat.o(115963);
+      return 0;
+      i = j;
+      if (!paramString.startsWith("png", 11))
+      {
+        i = j;
+        if (!paramString.startsWith("gif", 11))
+        {
+          AppMethodBeat.o(115963);
+          return 0;
+        }
+      }
+    }
+    AppMethodBeat.o(115963);
+    return i + 8;
+  }
+  
+  public final boolean bL(String paramString)
+  {
+    AppMethodBeat.i(115964);
+    if (cu(paramString) > 0)
+    {
+      AppMethodBeat.o(115964);
+      return true;
+    }
+    AppMethodBeat.o(115964);
+    return false;
+  }
+  
+  public final InputStream bM(String paramString)
+  {
+    AppMethodBeat.i(115965);
+    paramString = new ByteArrayInputStream(Base64.decode(paramString.substring(cu(paramString)), 2));
+    AppMethodBeat.o(115965);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.handler.image.a.b
  * JD-Core Version:    0.7.0.1
  */

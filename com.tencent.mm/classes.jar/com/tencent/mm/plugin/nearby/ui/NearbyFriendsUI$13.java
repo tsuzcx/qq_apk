@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
 
 final class NearbyFriendsUI$13
@@ -11,7 +12,9 @@ final class NearbyFriendsUI$13
   
   public final void onClick(View paramView)
   {
-    BackwardSupportUtil.c.a(NearbyFriendsUI.k(this.mDs));
+    AppMethodBeat.i(55454);
+    BackwardSupportUtil.c.a(NearbyFriendsUI.j(this.pdm));
+    AppMethodBeat.o(55454);
   }
 }
 

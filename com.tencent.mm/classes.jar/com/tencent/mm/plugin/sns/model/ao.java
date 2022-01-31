@@ -1,45 +1,75 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.mm.h.a.qn;
-import com.tencent.mm.m.e;
-import com.tencent.mm.m.g;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.g;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class ao
 {
-  boolean eGA = false;
-  boolean eGB = false;
-  c otA = new ao.3(this);
-  long otu = 0L;
-  private boolean otv = false;
-  int otw = 0;
-  int otx = 1440;
-  c<qn> oty = new ao.1(this);
-  c otz = new ao.2(this);
+  private static final Map<String, String> ril;
   
-  final boolean bEg()
+  static
   {
-    Object localObject = g.AA().getValue("SnsImgPreLoadingTimeLimit");
-    y.i("MicroMsg.SnsPreTimelineService", "preloadLimit:%s", new Object[] { localObject });
-    if (bk.bl((String)localObject)) {
-      return false;
+    AppMethodBeat.i(36599);
+    ril = new HashMap();
+    AppMethodBeat.o(36599);
+  }
+  
+  public static String gl(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(36597);
+    if (paramString2 == null)
+    {
+      AppMethodBeat.o(36597);
+      return "";
     }
+    boolean bool = Looper.getMainLooper().equals(Looper.myLooper());
+    if ((bool) && (ril.containsKey(paramString1 + paramString2)))
+    {
+      str = (String)ril.get(paramString1 + paramString2);
+      if (!bo.isNullOrNil(str))
+      {
+        AppMethodBeat.o(36597);
+        return str;
+      }
+    }
+    String str = g.w(paramString2.getBytes());
+    StringBuffer localStringBuffer = new StringBuffer(paramString1);
+    if (str.length() > 0)
+    {
+      localStringBuffer.append(str.charAt(0));
+      localStringBuffer.append("/");
+    }
+    if (str.length() >= 2)
+    {
+      localStringBuffer.append(str.charAt(1));
+      localStringBuffer.append("/");
+    }
+    if (bool) {
+      ril.put(paramString1 + paramString2, localStringBuffer.toString());
+    }
+    paramString1 = localStringBuffer.toString();
+    AppMethodBeat.o(36597);
+    return paramString1;
+  }
+  
+  public static void release()
+  {
     try
     {
-      localObject = ((String)localObject).split("-");
-      String[] arrayOfString = localObject[0].split(":");
-      int i = bk.ZR(arrayOfString[0]);
-      this.otw = (bk.ZR(arrayOfString[1]) + i * 60);
-      localObject = localObject[1].split(":");
-      i = bk.ZR(localObject[0]);
-      this.otx = (bk.ZR(localObject[1]) + i * 60);
-      y.d("MicroMsg.SnsPreTimelineService", "preloadLimit:%d-%d", new Object[] { Integer.valueOf(this.otw), Integer.valueOf(this.otx) });
-      return true;
+      AppMethodBeat.i(36598);
+      ril.clear();
+      AppMethodBeat.o(36598);
+      return;
     }
-    catch (Exception localException) {}
-    return false;
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.stub;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.ResultReceiver;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewStubTempUI$3
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class WebViewStubTempUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.rkr.send(1, null);
-    this.rks.finish();
+    AppMethodBeat.i(7220);
+    this.uZL.send(1, null);
+    this.uZM.finish();
+    AppMethodBeat.o(7220);
   }
 }
 

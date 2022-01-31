@@ -1,29 +1,39 @@
 package com.tencent.tencentmap.mapsdk.a;
 
 import android.graphics.Point;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ag
 {
-  private pj a;
+  private cc a;
   
-  ag(pj parampj)
+  ag(cc paramcc)
   {
-    this.a = parampj;
+    this.a = paramcc;
   }
   
   public final double a(double paramDouble)
   {
-    return this.a.a(paramDouble);
+    AppMethodBeat.i(147100);
+    paramDouble = this.a.a(paramDouble);
+    AppMethodBeat.o(147100);
+    return paramDouble;
   }
   
-  public final Point a(qc paramqc)
+  public final Point a(cz paramcz)
   {
-    return this.a.a(paramqc);
+    AppMethodBeat.i(147099);
+    paramcz = this.a.a(paramcz);
+    AppMethodBeat.o(147099);
+    return paramcz;
   }
   
-  public final qc a(Point paramPoint)
+  public final cz a(Point paramPoint)
   {
-    return this.a.a(paramPoint);
+    AppMethodBeat.i(147098);
+    paramPoint = this.a.a(paramPoint);
+    AppMethodBeat.o(147098);
+    return paramPoint;
   }
   
   final void a()
@@ -33,14 +43,17 @@ public final class ag
     }
   }
   
-  public final qo b()
+  public final dm b()
   {
-    return this.a.e();
+    AppMethodBeat.i(147101);
+    dm localdm = this.a.d();
+    AppMethodBeat.o(147101);
+    return localdm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.ag
  * JD-Core Version:    0.7.0.1
  */

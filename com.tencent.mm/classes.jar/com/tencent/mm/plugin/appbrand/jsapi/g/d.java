@@ -1,203 +1,117 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
 import android.graphics.Color;
-import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.base.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.p;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.p.a;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.p.b;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.f;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.j;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.s.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
-  extends c
+  extends a
 {
-  public static final int CTRL_INDEX = 133;
-  public static final String NAME = "addMapMarkers";
+  public static final int CTRL_INDEX = 134;
+  public static final String NAME = "addMapLines";
   
-  protected final boolean c(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
+    AppMethodBeat.i(93841);
+    super.a(paramc, paramJSONObject, paramInt);
     if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiAddMapMarkers", "data is null");
-      return false;
+      ab.e("MicroMsg.JsApiAddMapLines", "data is null");
+      paramc.h(paramInt, j("fail:invalid data", null));
+      AppMethodBeat.o(93841);
+      return;
     }
-    y.i("MicroMsg.JsApiAddMapMarkers", "onUpdateView, data:%s", new Object[] { paramJSONObject.toString() });
-    com.tencent.mm.plugin.appbrand.jsapi.g.a.b localb = f.o(parame.getAppId(), parame.ahJ(), p(paramJSONObject));
+    ab.i("MicroMsg.JsApiAddMapLines", "data:%s", new Object[] { paramJSONObject });
+    com.tencent.mm.plugin.appbrand.jsapi.g.a.b localb = f(paramc, paramJSONObject);
     if (localb == null)
     {
-      y.e("MicroMsg.JsApiAddMapMarkers", "mapView is null, return");
-      return false;
+      ab.e("MicroMsg.JsApiAddMapLines", "mapView is null, return");
+      paramc.h(paramInt, j("fail:mapview is null", null));
+      AppMethodBeat.o(93841);
+      return;
     }
-    boolean bool = paramJSONObject.optBoolean("clear", true);
-    y.i("MicroMsg.JsApiAddMapMarkers", "clear:%b", new Object[] { Boolean.valueOf(bool) });
-    if (bool) {
-      localb.ajo();
-    }
-    if (paramJSONObject.has("markers"))
-    {
-      try
-      {
-        paramView = new JSONArray(paramJSONObject.optString("markers"));
-        if (paramView == null)
-        {
-          y.e("MicroMsg.JsApiAddMapMarkers", "markersArray is null, return");
-          return false;
-        }
-      }
-      catch (JSONException paramView)
-      {
-        for (;;)
-        {
-          paramView = null;
-        }
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        if (paramInt < paramView.length()) {
-          try
-          {
-            paramJSONObject = (JSONObject)paramView.get(paramInt);
-            if (paramJSONObject != null)
-            {
-              localp = new b.p();
-              str1 = paramJSONObject.optString("id");
-              float f1 = bk.getFloat(paramJSONObject.optString("latitude"), 0.0F);
-              float f2 = bk.getFloat(paramJSONObject.optString("longitude"), 0.0F);
-              double d1 = f1;
-              double d2 = f2;
-              localp.latitude = d1;
-              localp.longitude = d2;
-              localObject1 = paramJSONObject.optString("iconPath");
-              f1 = h.a(paramJSONObject, "width", 0.0F);
-              f2 = h.a(paramJSONObject, "height", 0.0F);
-              if (!bk.bl((String)localObject1))
-              {
-                localp.gum = ((com.tencent.mm.plugin.appbrand.d.b)parame.i(com.tencent.mm.plugin.appbrand.d.b.class)).b(parame, (String)localObject1);
-                localp.guy = f1;
-                localp.guz = f2;
-              }
-              localp.rotate = ((float)paramJSONObject.optDouble("rotate", 0.0D));
-              localp.alpha = ((float)paramJSONObject.optDouble("alpha", 1.0D));
-              localp.data = paramJSONObject.optString("data");
-              if (!paramJSONObject.has("anchor")) {}
-            }
-          }
-          catch (JSONException localJSONException2)
-          {
-            try
-            {
-              localObject1 = new JSONObject(paramJSONObject.optString("anchor"));
-              if (localObject1 != null)
-              {
-                localp.H((float)((JSONObject)localObject1).optDouble("x", 0.5D), (float)((JSONObject)localObject1).optDouble("y", 1.0D));
-                localp.zIndex = paramJSONObject.optInt("zIndex", 0);
-                localObject1 = paramJSONObject.optString("label");
-                if (bk.bl((String)localObject1)) {}
-              }
-            }
-            catch (JSONException localJSONException2)
-            {
-              try
-              {
-                localObject1 = new JSONObject((String)localObject1);
-                if (localObject1 != null)
-                {
-                  String str2 = ((JSONObject)localObject1).optString("content");
-                  i = h.bd(((JSONObject)localObject1).optString("color", "#000000"), Color.parseColor("#000000"));
-                  j = ((JSONObject)localObject1).optInt("fontSize", 12);
-                  k = h.a((JSONObject)localObject1, "anchorX", h.a((JSONObject)localObject1, "x", 0));
-                  m = h.a((JSONObject)localObject1, "anchorY", h.a((JSONObject)localObject1, "y", 0));
-                  n = ((JSONObject)localObject1).optInt("borderRadius", 0);
-                  int i1 = h.h((JSONObject)localObject1, "borderWidth");
-                  int i2 = h.wE(((JSONObject)localObject1).optString("borderColor"));
-                  int i3 = h.bd(((JSONObject)localObject1).optString("bgColor", ""), Color.parseColor("#000000"));
-                  int i4 = h.a((JSONObject)localObject1, "padding", 0);
-                  localp.guB = new b.p.b(str2, i, j, k, m, i3, n, i1, i2, ((JSONObject)localObject1).optString("textAlign", ""), i4);
-                }
-                paramJSONObject = paramJSONObject.optString("callout");
-                if (bk.bl(paramJSONObject)) {}
-              }
-              catch (JSONException localJSONException2)
-              {
-                try
-                {
-                  for (;;)
-                  {
-                    b.p localp;
-                    String str1;
-                    Object localObject1;
-                    int i;
-                    int j;
-                    int k;
-                    int m;
-                    int n;
-                    paramJSONObject = new JSONObject(paramJSONObject);
-                    if (paramJSONObject != null)
-                    {
-                      localObject1 = paramJSONObject.optString("content");
-                      i = h.bd(paramJSONObject.optString("color", "#000000"), Color.parseColor("#000000"));
-                      j = paramJSONObject.optInt("fontSize", 12);
-                      k = paramJSONObject.optInt("borderRadius", 0);
-                      m = h.h(paramJSONObject, "borderWidth");
-                      n = h.wE(paramJSONObject.optString("borderColor"));
-                      localp.guA = new b.p.a((String)localObject1, i, j, k, h.bd(paramJSONObject.optString("bgColor", "#000000"), Color.parseColor("#000000")), m, n, h.a(paramJSONObject, "padding", 0), h.bd(paramJSONObject.optString("shadowColor", "#000000"), Color.parseColor("#000000")), paramJSONObject.optInt("shadowOpacity"), paramJSONObject.optInt("shadowOffsetX"), paramJSONObject.optInt("shadowOffsetY"), paramJSONObject.optInt("display", 0), paramJSONObject.optString("textAlign", ""));
-                    }
-                    localb.a(str1, localp);
-                    paramInt += 1;
-                    break;
-                    paramJSONObject = paramJSONObject;
-                    y.printErrStackTrace("MicroMsg.JsApiAddMapMarkers", paramJSONObject, "", new Object[0]);
-                    paramJSONObject = null;
-                    continue;
-                    localJSONException1 = localJSONException1;
-                    Object localObject2 = null;
-                    continue;
-                    localp.H(0.5F, 1.0F);
-                  }
-                  localJSONException2 = localJSONException2;
-                  Object localObject3 = null;
-                }
-                catch (JSONException paramJSONObject)
-                {
-                  for (;;)
-                  {
-                    paramJSONObject = null;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    return true;
-  }
-  
-  protected final int p(JSONObject paramJSONObject)
-  {
     try
     {
-      int i = paramJSONObject.optInt("mapId");
-      return i;
+      if (paramJSONObject.has("lines"))
+      {
+        if (paramJSONObject.optBoolean("clear", true)) {
+          localb.aDB();
+        }
+        paramJSONObject = new JSONArray(paramJSONObject.optString("lines"));
+        int i = 0;
+        while (i < paramJSONObject.length())
+        {
+          Object localObject1 = (JSONObject)paramJSONObject.get(i);
+          Object localObject2 = new ArrayList();
+          Object localObject3 = new JSONArray(((JSONObject)localObject1).optString("points"));
+          int j = 0;
+          while (j < ((JSONArray)localObject3).length())
+          {
+            localObject4 = ((JSONArray)localObject3).getJSONObject(j);
+            float f1 = bo.getFloat(((JSONObject)localObject4).optString("latitude"), 0.0F);
+            float f2 = bo.getFloat(((JSONObject)localObject4).optString("longitude"), 0.0F);
+            ((List)localObject2).add(new d.1(this, f1, f2));
+            j += 1;
+          }
+          Object localObject4 = ((JSONObject)localObject1).optString("id");
+          j = g.bA(((JSONObject)localObject1).optString("color", ""), Color.parseColor("#000000"));
+          int k = ((JSONObject)localObject1).optInt("style", -1);
+          int m = g.a((JSONObject)localObject1, "width", 0);
+          boolean bool1 = ((JSONObject)localObject1).optBoolean("dottedLine", false);
+          int n = g.bA(((JSONObject)localObject1).optString("borderColor", ""), Color.parseColor("#000000"));
+          int i1 = g.a((JSONObject)localObject1, "borderWidth", 0);
+          boolean bool2 = ((JSONObject)localObject1).optBoolean("arrowLine", false);
+          String str = ((JSONObject)localObject1).optString("arrowIconPath", "");
+          int i2 = g.a((JSONObject)localObject1, "arrowGap", 0);
+          localObject3 = new b.j();
+          ((b.j)localObject3).id = ((String)localObject4);
+          ((b.j)localObject3).style = k;
+          ((b.j)localObject3).hPm = new ArrayList();
+          ((b.j)localObject3).hPm.addAll((Collection)localObject2);
+          ((b.j)localObject3).color = j;
+          ((b.j)localObject3).width = m;
+          ((b.j)localObject3).hPn = bool1;
+          ((b.j)localObject3).borderColor = n;
+          ((b.j)localObject3).borderWidth = i1;
+          ((b.j)localObject3).hPo = bool2;
+          ((b.j)localObject3).hPq = i2;
+          if (bool2) {
+            ((b.j)localObject3).hPp = ((com.tencent.mm.plugin.appbrand.e.b)paramc.q(com.tencent.mm.plugin.appbrand.e.b.class)).b(paramc, str);
+          }
+          localObject2 = ((JSONObject)localObject1).optString("buildingId");
+          localObject1 = ((JSONObject)localObject1).optString("floorName");
+          ((b.j)localObject3).buildingId = ((String)localObject2);
+          ((b.j)localObject3).floorName = ((String)localObject1);
+          localb.a((b.j)localObject3, (com.tencent.mm.plugin.appbrand.e.a)paramc.q(com.tencent.mm.plugin.appbrand.e.a.class));
+          i += 1;
+        }
+      }
+      ab.e("MicroMsg.JsApiAddMapLines", "data has not lines info");
+      a(paramc, paramInt, j("ok", null), true, localb.aDx());
+      AppMethodBeat.o(93841);
+      return;
     }
     catch (Exception paramJSONObject)
     {
-      y.e("MicroMsg.JsApiAddMapMarkers", "get mapId error, exception : %s", new Object[] { paramJSONObject });
+      ab.e("MicroMsg.JsApiAddMapLines", "parse lines error, exception : %s", new Object[] { paramJSONObject });
+      a(paramc, paramInt, j("fail:internal error", null), false, localb.aDx());
+      AppMethodBeat.o(93841);
     }
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.d
  * JD-Core Version:    0.7.0.1
  */

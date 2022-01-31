@@ -1,19 +1,21 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class d$3
-  implements am.a
+  implements ap.a
 {
   d$3(d paramd) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (this.eFS.a(this.eFS.edc, this.eFS.dmL) == -1) {
-      this.eFS.dmL.onSceneEnd(3, -1, "doScene failed", this.eFS);
+    AppMethodBeat.i(50667);
+    if (this.fVJ.doScene(this.fVJ.dispatcher(), this.fVJ.callback) == -1) {
+      this.fVJ.callback.onSceneEnd(3, -1, "doScene failed", this.fVJ);
     }
+    AppMethodBeat.o(50667);
     return false;
   }
 }

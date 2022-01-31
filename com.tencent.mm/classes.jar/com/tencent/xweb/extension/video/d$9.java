@@ -1,6 +1,7 @@
 package com.tencent.xweb.extension.video;
 
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$9
   implements Runnable
@@ -9,10 +10,12 @@ final class d$9
   
   public final void run()
   {
-    if (this.xiL) {
-      d.q(this.xiF).setVisibility(0);
+    AppMethodBeat.i(84583);
+    if (this.BFX) {
+      d.q(this.BFR).setVisibility(0);
     }
-    this.xiF.gq((int)this.xiM, (int)this.xiN);
+    this.BFR.iA((int)this.BFY, (int)this.BFZ);
+    AppMethodBeat.o(84583);
   }
 }
 

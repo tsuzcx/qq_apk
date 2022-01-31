@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 public abstract interface c$a
 {
+  public abstract void BI(String paramString);
+  
   public abstract void proceed();
 }
 

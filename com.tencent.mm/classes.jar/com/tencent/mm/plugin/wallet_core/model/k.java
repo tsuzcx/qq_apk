@@ -1,57 +1,76 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import com.tencent.mm.h.c.cr;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.c.c;
 
 public final class k
-  extends cr
 {
-  public static c.a buS;
+  public String crt_token;
+  public String crt_wording;
+  public int is_gen_cert;
+  public int is_hint_cert;
+  public int is_ignore_cert;
+  public c uhb;
   
-  static
+  public k()
   {
-    c.a locala = new c.a();
-    locala.ujL = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "title";
-    locala.ujN.put("title", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" title TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.ujM = "title";
-    locala.columns[1] = "loan_jump_url";
-    locala.ujN.put("loan_jump_url", "TEXT");
-    localStringBuilder.append(" loan_jump_url TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "red_dot_index";
-    locala.ujN.put("red_dot_index", "INTEGER");
-    localStringBuilder.append(" red_dot_index INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "is_show_entry";
-    locala.ujN.put("is_show_entry", "INTEGER");
-    localStringBuilder.append(" is_show_entry INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "tips";
-    locala.ujN.put("tips", "TEXT");
-    localStringBuilder.append(" tips TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "is_overdue";
-    locala.ujN.put("is_overdue", "INTEGER");
-    localStringBuilder.append(" is_overdue INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "available_otb";
-    locala.ujN.put("available_otb", "TEXT");
-    localStringBuilder.append(" available_otb TEXT");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    buS = locala;
+    AppMethodBeat.i(46739);
+    this.is_gen_cert = 0;
+    this.crt_token = "";
+    this.is_hint_cert = 0;
+    this.crt_wording = "";
+    this.is_ignore_cert = 0;
+    this.uhb = new c();
+    AppMethodBeat.o(46739);
   }
   
-  protected final c.a rM()
+  public k(Bundle paramBundle)
   {
-    return buS;
+    AppMethodBeat.i(46740);
+    this.is_gen_cert = 0;
+    this.crt_token = "";
+    this.is_hint_cert = 0;
+    this.crt_wording = "";
+    this.is_ignore_cert = 0;
+    this.uhb = new c();
+    this.is_gen_cert = paramBundle.getInt("key_is_gen_cert", 0);
+    this.is_hint_cert = paramBundle.getInt("key_is_hint_crt", 0);
+    this.is_ignore_cert = paramBundle.getInt("key_is_ignore_cert", 0);
+    this.crt_token = paramBundle.getString("key_crt_token", "");
+    this.crt_wording = paramBundle.getString("key_crt_wording", "");
+    this.uhb = new c(this.crt_wording);
+    AppMethodBeat.o(46740);
+  }
+  
+  public final boolean cTq()
+  {
+    AppMethodBeat.i(46741);
+    if ((this.is_hint_cert != 0) && (!bo.isNullOrNil(this.crt_wording)))
+    {
+      AppMethodBeat.o(46741);
+      return true;
+    }
+    AppMethodBeat.o(46741);
+    return false;
+  }
+  
+  public final boolean cTr()
+  {
+    return this.is_gen_cert == 1;
+  }
+  
+  public final boolean cTs()
+  {
+    AppMethodBeat.i(46742);
+    if ((cTr()) && (this.is_ignore_cert == 0))
+    {
+      AppMethodBeat.o(46742);
+      return true;
+    }
+    AppMethodBeat.o(46742);
+    return false;
   }
 }
 

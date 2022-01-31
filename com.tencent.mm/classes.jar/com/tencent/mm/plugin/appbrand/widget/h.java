@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import android.graphics.drawable.Drawable;
+import com.tencent.luggage.a.b;
 
-public final class h
-  extends i<g>
+public abstract interface h
+  extends b
 {
-  public static final String[] dUb = { i.a(g.dUa, "DynamicMsgCacheData") };
-  public static final String[] dUc = new String[0];
-  
-  public h(e parame)
+  public static final h jaB = new h()
   {
-    super(parame, g.dUa, "DynamicMsgCacheData", dUc);
-  }
+    public final Drawable aOD()
+    {
+      return null;
+    }
+  };
+  
+  public abstract Drawable aOD();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.h
  * JD-Core Version:    0.7.0.1
  */

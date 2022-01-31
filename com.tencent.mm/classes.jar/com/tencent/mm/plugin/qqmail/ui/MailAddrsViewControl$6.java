@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MailAddrsViewControl$6
   implements TextWatcher
@@ -14,16 +15,18 @@ final class MailAddrsViewControl$6
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(68343);
     paramCharSequence = paramCharSequence.toString();
     if ((paramCharSequence.endsWith("\n")) || (paramCharSequence.endsWith(" "))) {
-      MailAddrsViewControl.a(this.nir, paramCharSequence, true);
+      MailAddrsViewControl.a(this.pNE, paramCharSequence, true);
     }
-    this.nir.buk();
+    this.pNE.cew();
+    AppMethodBeat.o(68343);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl.6
  * JD-Core Version:    0.7.0.1
  */

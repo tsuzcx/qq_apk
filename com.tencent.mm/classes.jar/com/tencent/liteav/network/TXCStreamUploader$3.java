@@ -1,5 +1,7 @@
 package com.tencent.liteav.network;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class TXCStreamUploader$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ class TXCStreamUploader$3
   
   public void run()
   {
+    AppMethodBeat.i(67534);
     TXCStreamUploader.access$3000(this.b, this.a);
+    AppMethodBeat.o(67534);
   }
 }
 

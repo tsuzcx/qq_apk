@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.mall.ui;
 
-import com.tencent.mm.h.a.uk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.we;
 import com.tencent.mm.sdk.b.c;
 
 final class MallIndexOSUI$2
-  extends c<uk>
+  extends c<we>
 {
   MallIndexOSUI$2(MallIndexOSUI paramMallIndexOSUI)
   {
-    this.udX = uk.class.getName().hashCode();
+    AppMethodBeat.i(43180);
+    this.__eventId = we.class.getName().hashCode();
+    AppMethodBeat.o(43180);
   }
 }
 

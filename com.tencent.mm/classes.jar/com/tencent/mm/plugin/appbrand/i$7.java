@@ -1,16 +1,27 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 final class i$7
-  extends i.b
+  implements i.b
 {
-  i$7(i parami) {}
+  i$7(i parami, ConcurrentLinkedQueue paramConcurrentLinkedQueue, i.c paramc, i.b paramb) {}
   
-  public final void prepare()
+  public final void done()
   {
-    AppBrandMainProcessService.a(new AppBrandMainProcessPrepareTask());
-    pP();
+    AppMethodBeat.i(86659);
+    if (!this.gQf.remove(this.gQg))
+    {
+      d.e("MicroMsg.AppBrandRuntime", "[%s]prepare duplicate ready() called", new Object[] { this.gPY.mAppId });
+      AppMethodBeat.o(86659);
+      return;
+    }
+    if (this.gQf.isEmpty()) {
+      this.gQh.done();
+    }
+    AppMethodBeat.o(86659);
   }
 }
 

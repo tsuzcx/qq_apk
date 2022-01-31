@@ -1,5 +1,6 @@
 package com.tencent.map.lib.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +18,7 @@ public class ZipUtil
 {
   public static byte[] deflate(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(98234);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     DeflaterOutputStream localDeflaterOutputStream = new DeflaterOutputStream(localByteArrayOutputStream);
     try
@@ -25,90 +27,104 @@ public class ZipUtil
       localDeflaterOutputStream.finish();
       localDeflaterOutputStream.flush();
       localDeflaterOutputStream.close();
-      return localByteArrayOutputStream.toByteArray();
+      paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+      AppMethodBeat.o(98234);
+      return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      AppMethodBeat.o(98234);
+    }
     return null;
   }
   
   public static byte[] inflate(byte[] paramArrayOfByte)
   {
-    return inflate(paramArrayOfByte, 0, paramArrayOfByte.length);
+    AppMethodBeat.i(98235);
+    paramArrayOfByte = inflate(paramArrayOfByte, 0, paramArrayOfByte.length);
+    AppMethodBeat.o(98235);
+    return paramArrayOfByte;
   }
   
   /* Error */
   public static byte[] inflate(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: new 46	java/util/zip/InflaterInputStream
-    //   3: dup
-    //   4: new 48	java/io/ByteArrayInputStream
-    //   7: dup
-    //   8: aload_0
-    //   9: iload_1
-    //   10: iload_2
-    //   11: invokespecial 50	java/io/ByteArrayInputStream:<init>	([BII)V
-    //   14: invokespecial 53	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;)V
-    //   17: astore_3
-    //   18: new 15	java/io/ByteArrayOutputStream
-    //   21: dup
-    //   22: invokespecial 16	java/io/ByteArrayOutputStream:<init>	()V
-    //   25: astore_0
-    //   26: sipush 1024
-    //   29: newarray byte
-    //   31: astore 4
-    //   33: aload_3
-    //   34: aload 4
-    //   36: invokevirtual 57	java/util/zip/InflaterInputStream:read	([B)I
-    //   39: istore_1
-    //   40: iload_1
-    //   41: ifle +11 -> 52
-    //   44: aload_0
-    //   45: aload 4
-    //   47: iconst_0
-    //   48: iload_1
-    //   49: invokevirtual 58	java/io/ByteArrayOutputStream:write	([BII)V
-    //   52: iload_1
-    //   53: ifgt -20 -> 33
-    //   56: aload_3
-    //   57: invokevirtual 59	java/util/zip/InflaterInputStream:close	()V
-    //   60: aload_0
-    //   61: invokevirtual 38	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   64: astore_3
+    //   0: ldc 56
+    //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 58	java/util/zip/InflaterInputStream
+    //   8: dup
+    //   9: new 60	java/io/ByteArrayInputStream
+    //   12: dup
+    //   13: aload_0
+    //   14: iload_1
+    //   15: iload_2
+    //   16: invokespecial 62	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   19: invokespecial 65	java/util/zip/InflaterInputStream:<init>	(Ljava/io/InputStream;)V
+    //   22: astore_3
+    //   23: new 22	java/io/ByteArrayOutputStream
+    //   26: dup
+    //   27: invokespecial 23	java/io/ByteArrayOutputStream:<init>	()V
+    //   30: astore_0
+    //   31: sipush 1024
+    //   34: newarray byte
+    //   36: astore 4
+    //   38: aload_3
+    //   39: aload 4
+    //   41: invokevirtual 69	java/util/zip/InflaterInputStream:read	([B)I
+    //   44: istore_1
+    //   45: iload_1
+    //   46: ifle +11 -> 57
+    //   49: aload_0
+    //   50: aload 4
+    //   52: iconst_0
+    //   53: iload_1
+    //   54: invokevirtual 70	java/io/ByteArrayOutputStream:write	([BII)V
+    //   57: iload_1
+    //   58: ifgt -20 -> 38
+    //   61: aload_3
+    //   62: invokevirtual 71	java/util/zip/InflaterInputStream:close	()V
     //   65: aload_0
-    //   66: invokevirtual 60	java/io/ByteArrayOutputStream:close	()V
-    //   69: aload_3
-    //   70: areturn
-    //   71: astore_0
-    //   72: aload_3
-    //   73: invokevirtual 59	java/util/zip/InflaterInputStream:close	()V
-    //   76: aconst_null
-    //   77: areturn
-    //   78: astore_0
-    //   79: goto -3 -> 76
-    //   82: astore_3
-    //   83: goto -23 -> 60
-    //   86: astore_0
-    //   87: aload_3
-    //   88: areturn
+    //   66: invokevirtual 45	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   69: astore_3
+    //   70: aload_0
+    //   71: invokevirtual 72	java/io/ByteArrayOutputStream:close	()V
+    //   74: ldc 56
+    //   76: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   79: aload_3
+    //   80: areturn
+    //   81: astore_0
+    //   82: aload_3
+    //   83: invokevirtual 71	java/util/zip/InflaterInputStream:close	()V
+    //   86: ldc 56
+    //   88: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: aconst_null
+    //   92: areturn
+    //   93: astore_0
+    //   94: goto -8 -> 86
+    //   97: astore_3
+    //   98: goto -33 -> 65
+    //   101: astore_0
+    //   102: goto -28 -> 74
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	89	0	paramArrayOfByte	byte[]
-    //   0	89	1	paramInt1	int
-    //   0	89	2	paramInt2	int
-    //   17	56	3	localObject	Object
-    //   82	6	3	localIOException	java.io.IOException
-    //   31	15	4	arrayOfByte	byte[]
+    //   0	105	0	paramArrayOfByte	byte[]
+    //   0	105	1	paramInt1	int
+    //   0	105	2	paramInt2	int
+    //   22	61	3	localObject	Object
+    //   97	1	3	localIOException	java.io.IOException
+    //   36	15	4	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   33	40	71	java/io/IOException
-    //   72	76	78	java/io/IOException
-    //   56	60	82	java/io/IOException
-    //   65	69	86	java/io/IOException
+    //   38	45	81	java/io/IOException
+    //   82	86	93	java/io/IOException
+    //   61	65	97	java/io/IOException
+    //   70	74	101	java/io/IOException
   }
   
   public static void upZipFile(File paramFile, String paramString)
   {
+    AppMethodBeat.i(98233);
     Object localObject1 = new File(paramString);
     if (!((File)localObject1).exists()) {
       ((File)localObject1).mkdirs();
@@ -153,10 +169,12 @@ public class ZipUtil
       }
     }
     paramFile.close();
+    AppMethodBeat.o(98233);
   }
   
   public static void upZipFileFromInputStream(InputStream paramInputStream, File paramFile)
   {
+    AppMethodBeat.i(98238);
     if (!paramFile.exists()) {
       paramFile.mkdirs();
     }
@@ -199,21 +217,30 @@ public class ZipUtil
     }
     paramInputStream.close();
     localZipInputStream.close();
+    AppMethodBeat.o(98238);
   }
   
   public static void upZipFiles(File paramFile, String paramString)
   {
+    AppMethodBeat.i(98237);
     try
     {
       upZipFileFromInputStream(new FileInputStream(paramFile), new File(paramString));
+      AppMethodBeat.o(98237);
       return;
     }
-    catch (Exception paramFile) {}
+    catch (Exception paramFile)
+    {
+      AppMethodBeat.o(98237);
+    }
   }
   
   public static void zipFile(File paramFile, String paramString)
   {
-    if ((paramFile == null) || (!paramFile.exists())) {
+    AppMethodBeat.i(98232);
+    if ((paramFile == null) || (!paramFile.exists()))
+    {
+      AppMethodBeat.o(98232);
       return;
     }
     Object localObject = new File(paramString);
@@ -237,6 +264,7 @@ public class ZipUtil
     paramString.finish();
     paramString.close();
     localFileInputStream.close();
+    AppMethodBeat.o(98232);
   }
 }
 

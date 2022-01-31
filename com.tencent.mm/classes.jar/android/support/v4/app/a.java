@@ -11,7 +11,9 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -28,7 +30,7 @@ import java.util.Map;
 public final class a
   extends b
 {
-  private static b ub;
+  private static b vc;
   
   public static void a(Activity paramActivity, Intent paramIntent, int paramInt, Bundle paramBundle)
   {
@@ -50,30 +52,24 @@ public final class a
     paramActivity.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4);
   }
   
-  public static void a(Activity paramActivity, ad paramad)
+  public static void a(Activity paramActivity, z paramz)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      if (paramad != null) {
-        localObject1 = new e(paramad);
+    if (Build.VERSION.SDK_INT >= 21) {
+      if (paramz == null) {
+        break label27;
       }
-      paramActivity.setEnterSharedElementCallback((SharedElementCallback)localObject1);
     }
-    while (Build.VERSION.SDK_INT < 21) {
+    label27:
+    for (paramz = new d(paramz);; paramz = null)
+    {
+      paramActivity.setEnterSharedElementCallback(paramz);
       return;
     }
-    localObject1 = localObject2;
-    if (paramad != null) {
-      localObject1 = new d(paramad);
-    }
-    paramActivity.setEnterSharedElementCallback((SharedElementCallback)localObject1);
   }
   
   public static void a(final Activity paramActivity, String[] paramArrayOfString, final int paramInt)
   {
-    if ((ub != null) && (ub.bG())) {}
+    if ((vc != null) && (vc.cu())) {}
     do
     {
       return;
@@ -90,17 +86,17 @@ public final class a
     {
       public final void run()
       {
-        int[] arrayOfInt = new int[this.uc.length];
+        int[] arrayOfInt = new int[this.vd.length];
         PackageManager localPackageManager = paramActivity.getPackageManager();
         String str = paramActivity.getPackageName();
-        int j = this.uc.length;
+        int j = this.vd.length;
         int i = 0;
         while (i < j)
         {
-          arrayOfInt[i] = localPackageManager.checkPermission(this.uc[i], str);
+          arrayOfInt[i] = localPackageManager.checkPermission(this.vd[i], str);
           i += 1;
         }
-        ((a.a)paramActivity).onRequestPermissionsResult(paramInt, this.uc, arrayOfInt);
+        ((a.a)paramActivity).onRequestPermissionsResult(paramInt, this.vd, arrayOfInt);
       }
     });
   }
@@ -113,7 +109,27 @@ public final class a
     return false;
   }
   
-  public static void b(Activity paramActivity)
+  public static void b(Activity paramActivity, z paramz)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      if (paramz == null) {
+        break label27;
+      }
+    }
+    label27:
+    for (paramz = new d(paramz);; paramz = null)
+    {
+      paramActivity.setExitSharedElementCallback(paramz);
+      return;
+    }
+  }
+  
+  public static b ct()
+  {
+    return vc;
+  }
+  
+  public static void d(Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 16)
     {
@@ -123,33 +139,7 @@ public final class a
     paramActivity.finish();
   }
   
-  public static void b(Activity paramActivity, ad paramad)
-  {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    if (Build.VERSION.SDK_INT >= 23)
-    {
-      if (paramad != null) {
-        localObject1 = new e(paramad);
-      }
-      paramActivity.setExitSharedElementCallback((SharedElementCallback)localObject1);
-    }
-    while (Build.VERSION.SDK_INT < 21) {
-      return;
-    }
-    localObject1 = localObject2;
-    if (paramad != null) {
-      localObject1 = new d(paramad);
-    }
-    paramActivity.setExitSharedElementCallback((SharedElementCallback)localObject1);
-  }
-  
-  public static b bF()
-  {
-    return ub;
-  }
-  
-  public static void c(Activity paramActivity)
+  public static void e(Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
@@ -159,14 +149,14 @@ public final class a
     paramActivity.finish();
   }
   
-  public static void d(Activity paramActivity)
+  public static void f(Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 21) {
       paramActivity.postponeEnterTransition();
     }
   }
   
-  public static void e(Activity paramActivity)
+  public static void g(Activity paramActivity)
   {
     if (Build.VERSION.SDK_INT >= 21) {
       paramActivity.startPostponedEnterTransition();
@@ -180,9 +170,9 @@ public final class a
   
   public static abstract interface b
   {
-    public abstract boolean bG();
+    public abstract boolean cu();
     
-    public abstract boolean bH();
+    public abstract boolean cv();
   }
   
   public static abstract interface c
@@ -190,103 +180,152 @@ public final class a
     public abstract void validateRequestPermissionsRequestCode(int paramInt);
   }
   
-  private static class d
+  static final class d
     extends SharedElementCallback
   {
-    protected ad ud;
+    private final z ve;
     
-    d(ad paramad)
+    d(z paramz)
     {
-      this.ud = paramad;
+      this.ve = paramz;
     }
     
-    public Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
+    public final Parcelable onCaptureSharedElementSnapshot(View paramView, Matrix paramMatrix, RectF paramRectF)
     {
-      ad localad = this.ud;
+      z localz = this.ve;
       ImageView localImageView;
-      Object localObject1;
+      Drawable localDrawable;
+      Object localObject;
       if ((paramView instanceof ImageView))
       {
         localImageView = (ImageView)paramView;
-        localObject1 = localImageView.getDrawable();
-        Object localObject2 = localImageView.getBackground();
-        if ((localObject1 != null) && (localObject2 == null))
+        localDrawable = localImageView.getDrawable();
+        localObject = localImageView.getBackground();
+        if ((localDrawable != null) && (localObject == null))
         {
-          localObject2 = ad.a((Drawable)localObject1);
-          if (localObject2 != null)
+          i = localDrawable.getIntrinsicWidth();
+          j = localDrawable.getIntrinsicHeight();
+          if ((i <= 0) || (j <= 0))
           {
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putParcelable("sharedElement:snapshot:bitmap", (Parcelable)localObject2);
-            ((Bundle)localObject1).putString("sharedElement:snapshot:imageScaleType", localImageView.getScaleType().toString());
+            localObject = null;
+            if (localObject == null) {
+              break label298;
+            }
+            paramView = new Bundle();
+            paramView.putParcelable("sharedElement:snapshot:bitmap", (Parcelable)localObject);
+            paramView.putString("sharedElement:snapshot:imageScaleType", localImageView.getScaleType().toString());
             if (localImageView.getScaleType() == ImageView.ScaleType.MATRIX)
             {
-              paramView = localImageView.getImageMatrix();
-              paramMatrix = new float[9];
-              paramView.getValues(paramMatrix);
-              ((Bundle)localObject1).putFloatArray("sharedElement:snapshot:imageMatrix", paramMatrix);
+              paramMatrix = localImageView.getImageMatrix();
+              paramRectF = new float[9];
+              paramMatrix.getValues(paramRectF);
+              paramView.putFloatArray("sharedElement:snapshot:imageMatrix", paramRectF);
             }
+            localObject = paramView;
           }
         }
       }
+      label298:
       do
       {
         do
         {
-          return localObject1;
+          return localObject;
+          f = Math.min(1.0F, 1048576.0F / (i * j));
+          if (((localDrawable instanceof BitmapDrawable)) && (f == 1.0F))
+          {
+            localObject = ((BitmapDrawable)localDrawable).getBitmap();
+            break;
+          }
+          i = (int)(i * f);
+          j = (int)(j * f);
+          localObject = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          Canvas localCanvas = new Canvas((Bitmap)localObject);
+          Rect localRect = localDrawable.getBounds();
+          int k = localRect.left;
+          int m = localRect.top;
+          int n = localRect.right;
+          int i1 = localRect.bottom;
+          localDrawable.setBounds(0, 0, i, j);
+          localDrawable.draw(localCanvas);
+          localDrawable.setBounds(k, m, n, i1);
+          break;
           j = Math.round(paramRectF.width());
           i = Math.round(paramRectF.height());
           localImageView = null;
-          localObject1 = localImageView;
+          localObject = localImageView;
         } while (j <= 0);
-        localObject1 = localImageView;
+        localObject = localImageView;
       } while (i <= 0);
-      float f = Math.min(1.0F, ad.yQ / (j * i));
+      float f = Math.min(1.0F, 1048576.0F / (j * i));
       int j = (int)(j * f);
       int i = (int)(i * f);
-      if (localad.qh == null) {
-        localad.qh = new Matrix();
+      if (localz.re == null) {
+        localz.re = new Matrix();
       }
-      localad.qh.set(paramMatrix);
-      localad.qh.postTranslate(-paramRectF.left, -paramRectF.top);
-      localad.qh.postScale(f, f);
+      localz.re.set(paramMatrix);
+      localz.re.postTranslate(-paramRectF.left, -paramRectF.top);
+      localz.re.postScale(f, f);
       paramMatrix = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
       paramRectF = new Canvas(paramMatrix);
-      paramRectF.concat(localad.qh);
+      paramRectF.concat(localz.re);
       paramView.draw(paramRectF);
       return paramMatrix;
     }
     
-    public View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
+    public final View onCreateSnapshotView(Context paramContext, Parcelable paramParcelable)
     {
-      return ad.onCreateSnapshotView(paramContext, paramParcelable);
+      if ((paramParcelable instanceof Bundle))
+      {
+        paramParcelable = (Bundle)paramParcelable;
+        Object localObject = (Bitmap)paramParcelable.getParcelable("sharedElement:snapshot:bitmap");
+        if (localObject == null) {
+          return null;
+        }
+        paramContext = new ImageView(paramContext);
+        paramContext.setImageBitmap((Bitmap)localObject);
+        paramContext.setScaleType(ImageView.ScaleType.valueOf(paramParcelable.getString("sharedElement:snapshot:imageScaleType")));
+        if (paramContext.getScaleType() == ImageView.ScaleType.MATRIX)
+        {
+          paramParcelable = paramParcelable.getFloatArray("sharedElement:snapshot:imageMatrix");
+          localObject = new Matrix();
+          ((Matrix)localObject).setValues(paramParcelable);
+          paramContext.setImageMatrix((Matrix)localObject);
+        }
+      }
+      for (;;)
+      {
+        return paramContext;
+        if ((paramParcelable instanceof Bitmap))
+        {
+          paramParcelable = (Bitmap)paramParcelable;
+          paramContext = new ImageView(paramContext);
+          paramContext.setImageBitmap(paramParcelable);
+        }
+        else
+        {
+          paramContext = null;
+        }
+      }
     }
     
-    public void onMapSharedElements(List<String> paramList, Map<String, View> paramMap) {}
+    public final void onMapSharedElements(List<String> paramList, Map<String, View> paramMap) {}
     
-    public void onRejectSharedElements(List<View> paramList) {}
+    public final void onRejectSharedElements(List<View> paramList) {}
     
-    public void onSharedElementEnd(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
+    public final void onSharedElementEnd(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
     
-    public void onSharedElementStart(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
-  }
-  
-  private static final class e
-    extends a.d
-  {
-    e(ad paramad)
-    {
-      super();
-    }
+    public final void onSharedElementStart(List<String> paramList, List<View> paramList1, List<View> paramList2) {}
     
     public final void onSharedElementsArrived(List<String> paramList, List<View> paramList1, final SharedElementCallback.OnSharedElementsReadyListener paramOnSharedElementsReadyListener)
     {
-      ad.a(new ad.a()
+      new z.a()
       {
         public final void onSharedElementsReady()
         {
           paramOnSharedElementsReadyListener.onSharedElementsReady();
         }
-      });
+      }.onSharedElementsReady();
     }
   }
 }

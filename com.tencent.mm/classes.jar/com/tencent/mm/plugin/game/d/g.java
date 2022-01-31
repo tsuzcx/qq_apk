@@ -1,59 +1,73 @@
 package com.tencent.mm.plugin.game.d;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 
 public final class g
   extends com.tencent.mm.bv.a
 {
-  public String kSq;
+  public String nqr;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(116992);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kSq == null) {
-        throw new b("Not all required fields were included: AppStoreUrl");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.nqr == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AppStoreUrl");
+        AppMethodBeat.o(116992);
+        throw paramVarArgs;
       }
-      if (this.kSq != null) {
-        paramVarArgs.d(1, this.kSq);
+      if (this.nqr != null) {
+        paramVarArgs.e(1, this.nqr);
       }
+      AppMethodBeat.o(116992);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kSq == null) {
-        break label210;
+      if (this.nqr == null) {
+        break label261;
       }
     }
-    label210:
-    for (paramInt = d.a.a.b.b.a.e(1, this.kSq) + 0;; paramInt = 0)
+    label261:
+    for (paramInt = e.a.a.b.b.a.f(1, this.nqr) + 0;; paramInt = 0)
     {
+      AppMethodBeat.o(116992);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.kSq != null) {
-          break;
+        if (this.nqr == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppStoreUrl");
+          AppMethodBeat.o(116992);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: AppStoreUrl");
+        AppMethodBeat.o(116992);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         g localg = (g)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(116992);
           return -1;
         }
-        localg.kSq = locala.xpH.readString();
+        localg.nqr = locala.CLY.readString();
+        AppMethodBeat.o(116992);
         return 0;
       }
+      AppMethodBeat.o(116992);
       return -1;
     }
   }

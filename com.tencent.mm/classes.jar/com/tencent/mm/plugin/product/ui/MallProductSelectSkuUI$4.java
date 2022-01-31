@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.product.b.j;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.t;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -23,42 +23,47 @@ final class MallProductSelectSkuUI$4
   
   public final void onClick(View paramView)
   {
-    f localf = MallProductSelectSkuUI.d(this.mUv);
-    if (localf.mTJ) {
-      s.makeText(localf.fyk, a.i.mall_product_data_loading, 1).show();
-    }
-    for (;;)
+    AppMethodBeat.i(44109);
+    f localf = MallProductSelectSkuUI.d(this.pwB);
+    if (localf.pvP)
     {
+      t.makeText(localf.gQx, 2131301472, 1).show();
+      AppMethodBeat.o(44109);
       return;
-      if (localf.mTL.bsb())
+    }
+    if (localf.pvR.cbh())
+    {
+      if (localf.pvR.puc != null)
       {
-        if (localf.mTL.mRV != null)
-        {
-          g.DQ();
-          g.DO().dJT.a(new j(localf.mTL.bsd(), f.fzn), 0);
-          return;
+        g.RM();
+        g.RK().eHt.a(new j(localf.pvR.cbj(), f.mScene), 0);
+        AppMethodBeat.o(44109);
+        return;
+      }
+      d.c(localf.gQx, "address", ".ui.WalletAddAddressUI", 2);
+      AppMethodBeat.o(44109);
+      return;
+    }
+    paramView = localf.pvR;
+    com.tencent.mm.plugin.product.c.m localm;
+    if ((paramView.pui != null) && (paramView.pui.size() < paramView.pug) && (paramView.pug > 0))
+    {
+      Iterator localIterator = paramView.ptU.puA.puU.iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
         }
-        d.c(localf.fyk, "address", ".ui.WalletAddAddressUI", 2);
-        return;
+        localm = (com.tencent.mm.plugin.product.c.m)localIterator.next();
+      } while (paramView.pui.containsKey(localm.pvf));
+    }
+    for (paramView = localm.pvg;; paramView = null)
+    {
+      if (!bo.isNullOrNil(paramView)) {
+        t.makeText(localf.gQx, localf.gQx.getString(2131301481, new Object[] { paramView }), 0).show();
       }
-      paramView = localf.mTL;
-      com.tencent.mm.plugin.product.c.m localm;
-      if ((paramView.mSb != null) && (paramView.mSb.size() < paramView.mRZ) && (paramView.mRZ > 0))
-      {
-        Iterator localIterator = paramView.mRP.mSu.mSO.iterator();
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localm = (com.tencent.mm.plugin.product.c.m)localIterator.next();
-        } while (paramView.mSb.containsKey(localm.mSZ));
-      }
-      for (paramView = localm.mTa; !bk.bl(paramView); paramView = null)
-      {
-        s.makeText(localf.fyk, localf.fyk.getString(a.i.mall_product_select_sku_err, new Object[] { paramView }), 0).show();
-        return;
-      }
+      AppMethodBeat.o(44109);
+      return;
     }
   }
 }

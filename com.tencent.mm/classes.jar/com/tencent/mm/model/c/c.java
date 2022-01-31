@@ -1,42 +1,81 @@
 package com.tencent.mm.model.c;
 
 import android.annotation.SuppressLint;
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.bx;
-import com.tencent.mm.model.bx.a;
-import com.tencent.mm.sdk.e.j.a;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.bz;
+import com.tencent.mm.model.bz.a;
+import com.tencent.mm.model.q;
+import com.tencent.mm.platformtools.aa;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.d;
 import java.util.HashMap;
 
 public class c
-  implements ar
+  implements at
 {
   @SuppressLint({"UseSparseArrays"})
-  private static HashMap<Integer, h.d> dgp;
-  private d dYO;
-  private com.tencent.mm.storage.b dYP;
-  private bx.a dYQ = new c.1(this);
-  private com.tencent.mm.sdk.b.c dYR = new c.2(this);
-  private j.a dYS = new c.3(this);
-  private com.tencent.mm.vending.b.b dYT = null;
-  private final com.tencent.mm.plugin.auth.a.a dYU = new c.4(this);
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private d foR;
+  private com.tencent.mm.storage.b foS;
+  private bz.a foT;
+  private com.tencent.mm.sdk.b.c foU;
+  private k.a foV;
+  private com.tencent.mm.vending.b.b foW;
+  private final com.tencent.mm.plugin.auth.a.a foX;
   
   static
   {
+    AppMethodBeat.i(118187);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
+    baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("NEW_ABTEST_TABLE".hashCode()), new c.5());
-    dgp.put(Integer.valueOf("NEW_ABTEST_INFO_TABLE".hashCode()), new c.6());
+    baseDBFactories.put(Integer.valueOf("NEW_ABTEST_INFO_TABLE".hashCode()), new c.6());
+    AppMethodBeat.o(118187);
   }
   
-  private static c IW()
+  public c()
+  {
+    AppMethodBeat.i(118180);
+    this.foT = new bz.a()
+    {
+      public final void a(e.a paramAnonymousa)
+      {
+        AppMethodBeat.i(118175);
+        paramAnonymousa = aa.a(paramAnonymousa.eyJ.woR);
+        ab.d("MicroMsg.SubCoreNewABTest", "Message content(abtest): %s".concat(String.valueOf(paramAnonymousa)));
+        paramAnonymousa = a.pX(paramAnonymousa);
+        if (paramAnonymousa == null)
+        {
+          AppMethodBeat.o(118175);
+          return;
+        }
+        c.abU().r(paramAnonymousa.items, 1);
+        c.abV().r(paramAnonymousa.foQ, 2);
+        AppMethodBeat.o(118175);
+      }
+    };
+    this.foU = new c.2(this);
+    this.foV = new c.3(this);
+    this.foW = null;
+    this.foX = new c.4(this);
+    AppMethodBeat.o(118180);
+  }
+  
+  private static c abT()
   {
     try
     {
-      c localc = (c)com.tencent.mm.model.p.B(c.class);
+      AppMethodBeat.i(118181);
+      c localc = (c)q.S(c.class);
+      AppMethodBeat.o(118181);
       return localc;
     }
     finally
@@ -46,58 +85,68 @@ public class c
     }
   }
   
-  public static d IX()
+  public static d abU()
   {
-    g.DN().CX();
-    if (IW().dYO == null) {
-      IW().dYO = new d(g.DP().dKu);
+    AppMethodBeat.i(118182);
+    g.RJ().QQ();
+    if (abT().foR == null) {
+      abT().foR = new d(g.RL().eHS);
     }
-    return IW().dYO;
+    d locald = abT().foR;
+    AppMethodBeat.o(118182);
+    return locald;
   }
   
-  public static com.tencent.mm.storage.b IY()
+  public static com.tencent.mm.storage.b abV()
   {
-    g.DN().CX();
-    if (IW().dYP == null) {
-      IW().dYP = new com.tencent.mm.storage.b(g.DP().dKu);
+    AppMethodBeat.i(118183);
+    g.RJ().QQ();
+    if (abT().foS == null) {
+      abT().foS = new com.tencent.mm.storage.b(g.RL().eHS);
     }
-    return IW().dYP;
+    com.tencent.mm.storage.b localb = abT().foS;
+    AppMethodBeat.o(118183);
+    return localb;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("newabtest", this.dYQ, true);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().a("newabtestinfo", this.dYQ, true);
-    com.tencent.mm.sdk.b.a.udP.c(this.dYR);
-    IX().c(this.dYS);
-    this.dYT = ((com.tencent.mm.plugin.auth.a.b)g.t(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(this.dYU);
+    return baseDBFactories;
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("newabtest", this.dYQ, true);
-    ((com.tencent.mm.plugin.messenger.foundation.a.p)g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class)).getSysCmdMsgExtension().b("newabtestinfo", this.dYQ, true);
-    com.tencent.mm.sdk.b.a.udP.d(this.dYR);
-    IX().d(this.dYS);
-    if (this.dYT != null)
+    AppMethodBeat.i(118184);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().a("newabtest", this.foT, true);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().a("newabtestinfo", this.foT, true);
+    com.tencent.mm.sdk.b.a.ymk.c(this.foU);
+    abU().add(this.foV);
+    this.foW = ((com.tencent.mm.plugin.auth.a.b)g.G(com.tencent.mm.plugin.auth.a.b.class)).addHandleAuthResponse(this.foX);
+    AppMethodBeat.o(118184);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(118185);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().b("newabtest", this.foT, true);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().b("newabtestinfo", this.foT, true);
+    com.tencent.mm.sdk.b.a.ymk.d(this.foU);
+    abU().remove(this.foV);
+    if (this.foW != null)
     {
-      this.dYT.dead();
-      this.dYT = null;
+      this.foW.dead();
+      this.foW = null;
     }
+    AppMethodBeat.o(118185);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return dgp;
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.c.c
  * JD-Core Version:    0.7.0.1
  */

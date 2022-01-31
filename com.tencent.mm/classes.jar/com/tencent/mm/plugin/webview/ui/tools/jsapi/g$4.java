@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.os.Bundle;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.cg.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
 
 final class g$4
-  implements w.a
+  implements g.a
 {
-  g$4(g paramg, i parami, String paramString1, Bundle paramBundle, String paramString2, String paramString3, String paramString4) {}
-  
-  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
+  public final void aBV()
   {
-    a.post(new g.4.1(this, paramInt1, paramInt2, paramString, paramb));
-    return 0;
+    AppMethodBeat.i(154924);
+    d.ysm.b(new g.4.1(this), "MicroMsg.MsgHandler.THREAD_TAG_AUTH_JSAPI");
+    AppMethodBeat.o(154924);
   }
 }
 

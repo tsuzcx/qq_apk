@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.f;
 
 final class TVThumbPreference$3
@@ -11,15 +12,17 @@ final class TVThumbPreference$3
   
   public final void run()
   {
-    TVThumbPreference.d(this.odO).setImageBitmap(this.ara);
-    if (TVThumbPreference.b(this.odO) != null) {
-      TVThumbPreference.b(this.odO).notifyDataSetChanged();
+    AppMethodBeat.i(24938);
+    TVThumbPreference.d(this.qRV).setImageBitmap(this.val$bitmap);
+    if (TVThumbPreference.b(this.qRV) != null) {
+      TVThumbPreference.b(this.qRV).notifyDataSetChanged();
     }
+    AppMethodBeat.o(24938);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.TVThumbPreference.3
  * JD-Core Version:    0.7.0.1
  */

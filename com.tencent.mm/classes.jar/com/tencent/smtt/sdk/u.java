@@ -1,41 +1,18 @@
 package com.tencent.smtt.sdk;
 
-import android.content.Intent;
-import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.FileChooserParams;
+import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class u
-  extends WebChromeClient.FileChooserParams
+  implements ValueCallback<Uri[]>
 {
-  u(q paramq, IX5WebChromeClient.FileChooserParams paramFileChooserParams) {}
+  u(r paramr, android.webkit.ValueCallback paramValueCallback) {}
   
-  public Intent createIntent()
+  public void a(Uri[] paramArrayOfUri)
   {
-    return this.a.createIntent();
-  }
-  
-  public String[] getAcceptTypes()
-  {
-    return this.a.getAcceptTypes();
-  }
-  
-  public String getFilenameHint()
-  {
-    return this.a.getFilenameHint();
-  }
-  
-  public int getMode()
-  {
-    return this.a.getMode();
-  }
-  
-  public CharSequence getTitle()
-  {
-    return this.a.getTitle();
-  }
-  
-  public boolean isCaptureEnabled()
-  {
-    return this.a.isCaptureEnabled();
+    AppMethodBeat.i(139060);
+    this.a.onReceiveValue(paramArrayOfUri);
+    AppMethodBeat.o(139060);
   }
 }
 

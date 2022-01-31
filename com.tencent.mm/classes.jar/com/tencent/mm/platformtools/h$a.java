@@ -4,71 +4,81 @@ import android.content.ContentProviderOperation;
 import android.content.ContentResolver;
 import android.content.OperationApplicationException;
 import android.os.RemoteException;
-import com.tencent.mm.pluginsdk.permission.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 public final class h$a
 {
-  private final String TAG = "MicroMsg.BatchOperation";
-  private final ContentResolver eRr;
-  ArrayList<ContentProviderOperation> eRs;
+  private final String TAG;
+  private final ContentResolver gjm;
+  ArrayList<ContentProviderOperation> gjn;
   
   public h$a(h paramh, ContentResolver paramContentResolver)
   {
-    this.eRr = paramContentResolver;
-    this.eRs = new ArrayList();
+    AppMethodBeat.i(124518);
+    this.TAG = "MicroMsg.BatchOperation";
+    this.gjm = paramContentResolver;
+    this.gjn = new ArrayList();
+    AppMethodBeat.o(124518);
   }
   
   public final void a(ContentProviderOperation paramContentProviderOperation)
   {
-    this.eRs.add(paramContentProviderOperation);
+    AppMethodBeat.i(124519);
+    this.gjn.add(paramContentProviderOperation);
+    AppMethodBeat.o(124519);
   }
   
   public final void execute()
   {
-    if (this.eRs.size() == 0)
+    AppMethodBeat.i(124520);
+    if (this.gjn.size() == 0)
     {
-      y.d("MicroMsg.BatchOperation", "no batch operation");
+      ab.d("MicroMsg.BatchOperation", "no batch operation");
+      AppMethodBeat.o(124520);
       return;
     }
-    if (!a.j(h.a(this.eRt), "android.permission.READ_CONTACTS"))
+    if (!b.o(h.a(this.gjo), "android.permission.READ_CONTACTS"))
     {
-      y.e("MicroMsg.BatchOperation", "no contact permission");
+      ab.e("MicroMsg.BatchOperation", "no contact permission");
+      AppMethodBeat.o(124520);
       return;
     }
     try
     {
-      this.eRr.applyBatch("com.android.contacts", this.eRs);
-      this.eRs.clear();
+      this.gjm.applyBatch("com.android.contacts", this.gjn);
+      this.gjn.clear();
+      AppMethodBeat.o(124520);
       return;
     }
     catch (OperationApplicationException localOperationApplicationException)
     {
       for (;;)
       {
-        y.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localOperationApplicationException.toString() });
+        ab.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localOperationApplicationException.toString() });
       }
     }
     catch (RemoteException localRemoteException)
     {
       for (;;)
       {
-        y.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localRemoteException.toString() });
+        ab.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localRemoteException.toString() });
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localException.toString() });
+        ab.e("MicroMsg.BatchOperation", "apply batch operation failed", new Object[] { localException.toString() });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.platformtools.h.a
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,13 @@ public abstract interface a
   
   public abstract void a(PlaybackStateCompat paramPlaybackStateCompat);
   
-  public abstract void ak(int paramInt);
+  public abstract void ai(int paramInt);
   
-  public abstract void al(int paramInt);
+  public abstract void aj(int paramInt);
   
-  public abstract void b(String paramString, Bundle paramBundle);
+  public abstract void d(String paramString, Bundle paramBundle);
   
-  public abstract void cE();
+  public abstract void dh();
   
   public abstract void onExtrasChanged(Bundle paramBundle);
   

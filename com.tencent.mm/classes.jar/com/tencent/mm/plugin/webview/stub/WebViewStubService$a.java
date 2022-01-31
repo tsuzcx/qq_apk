@@ -3,19 +3,19 @@ package com.tencent.mm.plugin.webview.stub;
 final class WebViewStubService$a
   extends b.a
 {
-  public boolean bFQ;
-  public boolean rbu;
+  public boolean cmX;
   public int ret;
   public int type;
+  public boolean uRc;
   
-  public final boolean ccY()
+  public final boolean dcU()
   {
-    return this.rbu;
+    return this.uRc;
   }
   
   public final boolean getResult()
   {
-    return this.bFQ;
+    return this.cmX;
   }
   
   public final int getRet()

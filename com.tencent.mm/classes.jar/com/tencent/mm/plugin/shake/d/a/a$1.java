@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.shake.d.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.f.b.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.qafpapi.QAFPNative;
 
 final class a$1
@@ -11,39 +12,40 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void aU(int paramInt1, int paramInt2) {}
+  public final void bS(int paramInt1, int paramInt2) {}
   
-  public final void r(byte[] arg1, int paramInt)
+  public final void s(byte[] arg1, int paramInt)
   {
+    AppMethodBeat.i(24589);
     g.a locala = new g.a();
-    label396:
+    long l;
     for (;;)
     {
-      long l;
-      synchronized (this.oaF.ikx)
+      synchronized (this.qOO.clk)
       {
         int i;
-        if (this.oaF.oat == 408)
+        if (this.qOO.qOC == 408)
         {
-          y.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPProcessTV");
+          ab.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPProcessTV");
           i = QAFPNative.QAFPProcessTV(???, paramInt);
-          l = bk.UY() - this.oaF.oaC;
-          y.d("MicroMsg.MusicFingerPrintRecorder", "QAFPProcess clientid:%d pcm:%d ret:%d dur:%d usetime:%d", new Object[] { Integer.valueOf(this.oaF.oaz), Integer.valueOf(paramInt), Integer.valueOf(i), Long.valueOf(l), Long.valueOf(locala.zJ()) });
-          if (l <= this.oaF.oaD * 3000 + 4000) {
-            break label396;
+          l = bo.aoy() - this.qOO.qOL;
+          ab.d("MicroMsg.MusicFingerPrintRecorder", "QAFPProcess clientid:%d pcm:%d ret:%d dur:%d usetime:%d", new Object[] { Integer.valueOf(this.qOO.qOI), Integer.valueOf(paramInt), Integer.valueOf(i), Long.valueOf(l), Long.valueOf(locala.Mm()) });
+          if (l <= this.qOO.qOM * 3000 + 4000) {
+            break label414;
           }
           ??? = new byte[10240];
           ??? = new g.a();
-          if (this.oaF.oat == 408)
+          if (this.qOO.qOC == 408)
           {
-            y.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPGetAudioFingerPrintTV");
+            ab.v("MicroMsg.MusicFingerPrintRecorder", "shake tv branch, QAFPGetAudioFingerPrintTV");
             paramInt = QAFPNative.QAFPGetAudioFingerPrintTV((byte[])???);
-            y.d("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d outLen:%d time:%d", new Object[] { Integer.valueOf(this.oaF.oaz), Integer.valueOf(paramInt), Long.valueOf(???.zJ()) });
+            ab.d("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d outLen:%d time:%d", new Object[] { Integer.valueOf(this.qOO.qOI), Integer.valueOf(paramInt), Long.valueOf(???.Mm()) });
             if ((paramInt < 10240) && (paramInt > 0)) {
-              break label298;
+              break;
             }
-            y.e("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d  out ret:%d  !stop record now", new Object[] { Integer.valueOf(this.oaF.oaz), Integer.valueOf(paramInt) });
-            this.oaF.reset();
+            ab.e("MicroMsg.MusicFingerPrintRecorder", "QAFPGetAudioFingerPrint clientid:%d  out ret:%d  !stop record now", new Object[] { Integer.valueOf(this.qOO.qOI), Integer.valueOf(paramInt) });
+            this.qOO.reset();
+            AppMethodBeat.o(24589);
           }
         }
         else
@@ -52,30 +54,30 @@ final class a$1
         }
       }
       paramInt = QAFPNative.QAFPGetAudioFingerPrint((byte[])???);
-      continue;
-      label298:
-      synchronized (this.oaF.oap)
+    }
+    synchronized (this.qOO.qOy)
+    {
+      System.arraycopy(???, 0, this.qOO.qOy, 0, paramInt);
+      this.qOO.qOz = paramInt;
+      ??? = this.qOO;
+      if (this.qOO.qOM >= 3)
       {
-        System.arraycopy(???, 0, this.oaF.oap, 0, paramInt);
-        this.oaF.oaq = paramInt;
-        ??? = this.oaF;
-        if (this.oaF.oaD >= 3)
+        bool = true;
+        ((a)???).qOH = bool;
+        this.qOO.qOA = ((int)(l / 1000L));
+        this.qOO.ahb();
+        ??? = this.qOO;
+        ???.qOM += 1;
+        label414:
+        if (this.qOO.qOH)
         {
-          bool = true;
-          ((a)???).oay = bool;
-          this.oaF.oar = ((int)(l / 1000L));
-          this.oaF.Om();
-          ??? = this.oaF;
-          ???.oaD += 1;
-          if (!this.oaF.oay) {
-            continue;
-          }
-          y.w("MicroMsg.MusicFingerPrintRecorder", "client:%d stop now! duration:%d  ", new Object[] { Integer.valueOf(this.oaF.oaz), Long.valueOf(l) });
-          this.oaF.reset();
-          return;
+          ab.w("MicroMsg.MusicFingerPrintRecorder", "client:%d stop now! duration:%d  ", new Object[] { Integer.valueOf(this.qOO.qOI), Long.valueOf(l) });
+          this.qOO.reset();
         }
-        boolean bool = false;
+        AppMethodBeat.o(24589);
+        return;
       }
+      boolean bool = false;
     }
   }
 }

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.address.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class QrcodeInvoiceUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -11,10 +12,12 @@ final class QrcodeInvoiceUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(16913);
     paramMenuItem = new Intent();
-    paramMenuItem.setClass(this.fvl, AddInvoiceUI.class);
-    paramMenuItem.putExtra("invoice_id", QrcodeInvoiceUI.a(this.fvl));
-    this.fvl.startActivity(paramMenuItem);
+    paramMenuItem.setClass(this.gMQ, AddInvoiceUI.class);
+    paramMenuItem.putExtra("invoice_id", QrcodeInvoiceUI.a(this.gMQ));
+    this.gMQ.startActivity(paramMenuItem);
+    AppMethodBeat.o(16913);
     return true;
   }
 }

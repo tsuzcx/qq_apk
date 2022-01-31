@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import com.tencent.mm.h.a.tp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vk;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
 
 final class c$1
-  extends com.tencent.mm.sdk.b.c<tp>
+  extends com.tencent.mm.sdk.b.c<vk>
 {
   c$1(c paramc, PayInfo paramPayInfo)
   {
-    this.udX = tp.class.getName().hashCode();
+    AppMethodBeat.i(43472);
+    this.__eventId = vk.class.getName().hashCode();
+    AppMethodBeat.o(43472);
   }
 }
 

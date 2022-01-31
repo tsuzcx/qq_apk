@@ -1,40 +1,91 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import java.util.Locale;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.g;
+import com.tencent.mm.plugin.appbrand.r.c;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
-final class af
-  extends a
+public class af
+  extends c<ae>
 {
-  final int fDk;
-  final int fDl;
-  final at.a fDm;
+  public static final String[] fkl;
+  private final e gVl;
   
-  af(String paramString1, int paramInt1, int paramInt2, String paramString2, at.a parama)
+  static
   {
-    super(r(paramString1, paramInt1, paramInt2), aj.abZ() + String.format(Locale.US, "_%s_%d_%d.wxapkg.diff", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), paramString2, paramString1, 0, paramInt2);
-    this.fDk = paramInt1;
-    this.fDl = paramInt2;
-    this.fDm = parama;
-    if (!"@LibraryAppId".equals(paramString1)) {
-      bool = true;
+    AppMethodBeat.i(59450);
+    fkl = new String[] { j.getCreateSQLs(ae.fkk, "PredownloadEncryptPkgInfo") };
+    AppMethodBeat.o(59450);
+  }
+  
+  public af(e parame)
+  {
+    super(parame, ae.fkk, "PredownloadEncryptPkgInfo", ae.INDEX_CREATE);
+    this.gVl = parame;
+  }
+  
+  static boolean a(ae paramae)
+  {
+    AppMethodBeat.i(59449);
+    if (bo.isNullOrNil(paramae.field_pkgPath))
+    {
+      ab.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s path nil", new Object[] { paramae.toShortString() });
+      AppMethodBeat.o(59449);
+      return false;
     }
-    this.fES = bool;
+    if (bo.isNullOrNil(paramae.field_pkgMd5))
+    {
+      ab.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity, with %s record md5 nil", new Object[] { paramae.toShortString() });
+      AppMethodBeat.o(59449);
+      return false;
+    }
+    String str = g.getMD5(paramae.field_pkgPath);
+    ab.i("MicroMsg.AppBrand.PredownloadEncryptPkgStorage", "checkPkgIntegrity with %s, file_md5(%s), record_md5(%s)", new Object[] { paramae.toShortString(), str, paramae.field_pkgMd5 });
+    boolean bool = paramae.field_pkgMd5.equals(str);
+    AppMethodBeat.o(59449);
+    return bool;
   }
   
-  static String r(String paramString, int paramInt1, int paramInt2)
+  public final ae B(String paramString, int paramInt1, int paramInt2)
   {
-    return String.format(Locale.US, "WxaPkgDiff_%s_%d_%d", new Object[] { Integer.valueOf(paramString.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(59447);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(59447);
+      return null;
+    }
+    ae localae = new ae();
+    localae.field_appId = paramString;
+    localae.field_type = paramInt1;
+    localae.field_version = paramInt2;
+    if (get(localae, ae.gUa))
+    {
+      AppMethodBeat.o(59447);
+      return localae;
+    }
+    AppMethodBeat.o(59447);
+    return null;
   }
   
-  public final String abS()
+  public final ae C(String paramString, int paramInt1, int paramInt2)
   {
-    return ak.ah(this.appId, this.fDl);
+    AppMethodBeat.i(59448);
+    paramString = B(paramString, paramInt1, paramInt2);
+    if ((paramString != null) && (a(paramString)))
+    {
+      AppMethodBeat.o(59448);
+      return paramString;
+    }
+    AppMethodBeat.o(59448);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.af
  * JD-Core Version:    0.7.0.1
  */

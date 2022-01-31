@@ -17,7 +17,7 @@ public final class al
   private final int height = 96;
   private final int width = 79;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class al
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.f(paramVarArgs);
-      Object localObject2 = c.e(paramVarArgs);
-      Object localObject3 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject2 = c.g(paramVarArgs);
+      Object localObject3 = c.k(paramVarArgs);
       ((Paint)localObject3).setFlags(385);
       ((Paint)localObject3).setStyle(Paint.Style.FILL);
-      Object localObject4 = c.i(paramVarArgs);
+      Object localObject4 = c.k(paramVarArgs);
       ((Paint)localObject4).setFlags(385);
       ((Paint)localObject4).setStyle(Paint.Style.STROKE);
       ((Paint)localObject3).setColor(-16777216);
@@ -57,7 +57,7 @@ public final class al
       ((Matrix)localObject1).reset();
       ((Matrix)localObject1).setValues((float[])localObject3);
       localCanvas.concat((Matrix)localObject1);
-      localObject1 = c.j(paramVarArgs);
+      localObject1 = c.l(paramVarArgs);
       ((Path)localObject1).moveTo(43.16711F, 52.7369F);
       ((Path)localObject1).cubicTo(54.452175F, 51.26688F, 63.16711F, 41.61657F, 63.16711F, 29.93078F);
       ((Path)localObject1).cubicTo(63.16711F, 17.228231F, 52.869659F, 6.93078F, 40.16711F, 6.93078F);
@@ -82,13 +82,13 @@ public final class al
       localCanvas.drawPath((Path)localObject1, (Paint)localObject2);
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.al
  * JD-Core Version:    0.7.0.1
  */

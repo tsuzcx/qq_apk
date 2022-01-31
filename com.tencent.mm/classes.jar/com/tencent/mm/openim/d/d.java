@@ -1,45 +1,22 @@
 package com.tencent.mm.openim.d;
 
-import android.database.Cursor;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bii;
 
 public final class d
-  extends i<c>
+  extends i
 {
-  public static final String[] dXp = { i.a(c.buS, "OpenIMAppIdInfo") };
-  public h dXo;
+  bii ggm;
   
-  public d(h paramh)
+  public d(String paramString1, String paramString2)
   {
-    super(paramh, c.buS, "OpenIMAppIdInfo", null);
-    this.dXo = paramh;
-  }
-  
-  public final boolean a(c paramc)
-  {
-    paramc.field_updateTime = bk.UX();
-    return super.a(paramc);
-  }
-  
-  public final List<String> oW(String paramString)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    paramString = this.dXo.a("select distinct appid from OpenIMAppIdInfo where appid=? ", new String[] { paramString }, 2);
-    if (paramString.moveToFirst()) {
-      do
-      {
-        String str = paramString.getString(0);
-        if (!bk.bl(str)) {
-          localLinkedList.add(str);
-        }
-      } while (paramString.moveToNext());
-    }
-    paramString.close();
-    return localLinkedList;
+    super(10);
+    AppMethodBeat.i(78924);
+    this.ggm = new bii();
+    this.ggm.gfM = paramString1;
+    this.ggm.elx = paramString2;
+    this.oDZ = this.ggm;
+    AppMethodBeat.o(78924);
   }
 }
 

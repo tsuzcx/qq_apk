@@ -1,136 +1,145 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.h.a.id;
-import com.tencent.mm.h.a.id.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.network.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.g.a.ih;
+import com.tencent.mm.g.a.ih.a;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.plugin.websearch.api.s;
-import com.tencent.mm.protocal.c.atp;
-import com.tencent.mm.protocal.c.cil;
-import com.tencent.mm.protocal.c.cim;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.azu;
+import com.tencent.mm.protocal.protobuf.cvx;
+import com.tencent.mm.protocal.protobuf.cvy;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 
 public final class q
   extends com.tencent.mm.plugin.websearch.api.a
   implements k
 {
-  private f dIJ;
-  private final com.tencent.mm.ah.b dZP;
-  private cim dZQ;
-  private s dZR;
+  private f eGj;
+  private final com.tencent.mm.ai.b fpW;
+  private cvy fpX;
+  private s fpY;
   
   public q(s params)
   {
-    this.dZR = params;
-    this.qTt = params.bVm;
-    this.qTu = params.bGm;
-    this.El = params.offset;
-    this.fzn = params.scene;
-    this.qTv = params.qTN;
+    AppMethodBeat.i(93736);
+    this.fpY = params;
+    this.uIB = params.cCT;
+    this.uIC = params.cnv;
+    this.Fb = params.offset;
+    this.mScene = params.scene;
+    this.uID = params.uIV;
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cil();
-    ((b.a)localObject).ecI = new cim();
+    ((b.a)localObject).fsX = new cvx();
+    ((b.a)localObject).fsY = new cvy();
     ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/weappsearch";
-    ((b.a)localObject).ecG = 1162;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dZP = ((b.a)localObject).Kt();
-    localObject = (cil)this.dZP.ecE.ecN;
-    atp localatp = Jx();
-    ((cil)localObject).hQR = params.businessType;
-    ((cil)localObject).tcJ = params.bGm;
-    ((cil)localObject).sDT = params.offset;
-    ((cil)localObject).sFF = params.jfE;
-    ((cil)localObject).tpJ = params.qTC;
-    id localid = new id();
-    com.tencent.mm.sdk.b.a.udP.m(localid);
-    ((cil)localObject).tpI = localid.bQn.bQo;
-    if (localatp != null)
+    ((b.a)localObject).funcId = getType();
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.fpW = ((b.a)localObject).ado();
+    localObject = (cvx)this.fpW.fsV.fta;
+    azu localazu = acv();
+    ((cvx)localObject).jKs = params.businessType;
+    ((cvx)localObject).xba = params.cnv;
+    ((cvx)localObject).wzS = params.offset;
+    ((cvx)localObject).wBZ = params.low;
+    ((cvx)localObject).xpG = params.uIK;
+    ih localih = new ih();
+    com.tencent.mm.sdk.b.a.ymk.l(localih);
+    ((cvx)localObject).xpF = localih.cxG.cxH;
+    if (localazu != null)
     {
-      ((cil)localObject).tpK = localatp.sGJ;
-      ((cil)localObject).tpL = localatp.sGK;
+      ((cvx)localObject).xpH = localazu.wDh;
+      ((cvx)localObject).xpI = localazu.wDi;
     }
-    ((cil)localObject).tpM = b.dZL;
-    ((cil)localObject).tWU = params.qTy;
-    ((cil)localObject).tWV = params.qTD;
-    ((cil)localObject).tWW = params.qTE;
-    ((cil)localObject).tWS = b.dZM;
-    ((cil)localObject).tAu = params.kwf;
-    y.i("MicroMsg.NetSceneWeAppSearch", "NetSceneWeAppSearch oreh SessionID : %s, KeywordID : %s, LocationX : %s, LocationY : %s", new Object[] { ((cil)localObject).tpM, ((cil)localObject).tWS, Double.valueOf(((cil)localObject).tpK), Double.valueOf(((cil)localObject).tpL) });
+    ((cvx)localObject).xpJ = b.fpQ;
+    ((cvx)localObject).yeo = params.uIG;
+    ((cvx)localObject).yep = params.uIL;
+    ((cvx)localObject).yeq = params.uIM;
+    ((cvx)localObject).yem = b.fpR;
+    ((cvx)localObject).xCa = params.mRU;
+    ab.i("MicroMsg.NetSceneWeAppSearch", "NetSceneWeAppSearch oreh SessionID : %s, KeywordID : %s, LocationX : %s, LocationY : %s", new Object[] { ((cvx)localObject).xpJ, ((cvx)localObject).yem, Double.valueOf(((cvx)localObject).xpH), Double.valueOf(((cvx)localObject).xpI) });
+    AppMethodBeat.o(93736);
   }
   
-  private static atp Jx()
+  private static azu acv()
   {
+    AppMethodBeat.i(93739);
     try
     {
-      au.Hx();
-      Object localObject = (String)c.Dz().get(67591, null);
+      Object localObject = (String)g.RL().Ru().get(67591, null);
       if (localObject != null)
       {
-        atp localatp = new atp();
+        azu localazu = new azu();
         localObject = ((String)localObject).split(",");
-        localatp.sUn = Integer.valueOf(localObject[0]).intValue();
-        localatp.sUq = Integer.valueOf(localObject[1]).intValue();
-        localatp.sGK = (Integer.valueOf(localObject[2]).intValue() / 1000000.0F);
-        localatp.sGJ = (Integer.valueOf(localObject[3]).intValue() / 1000000.0F);
-        y.i("MicroMsg.NetSceneWeAppSearch", "lbs location is not null, %f, %f", new Object[] { Float.valueOf(localatp.sGK), Float.valueOf(localatp.sGJ) });
-        return localatp;
+        localazu.wSk = Integer.valueOf(localObject[0]).intValue();
+        localazu.wSn = Integer.valueOf(localObject[1]).intValue();
+        localazu.wDi = (Integer.valueOf(localObject[2]).intValue() / 1000000.0F);
+        localazu.wDh = (Integer.valueOf(localObject[3]).intValue() / 1000000.0F);
+        ab.i("MicroMsg.NetSceneWeAppSearch", "lbs location is not null, %f, %f", new Object[] { Float.valueOf(localazu.wDi), Float.valueOf(localazu.wDh) });
+        AppMethodBeat.o(93739);
+        return localazu;
       }
-      y.i("MicroMsg.NetSceneWeAppSearch", "lbs location is null, lbsContent is null!");
+      ab.i("MicroMsg.NetSceneWeAppSearch", "lbs location is null, lbsContent is null!");
+      AppMethodBeat.o(93739);
       return null;
     }
     catch (Exception localException)
     {
-      y.i("MicroMsg.NetSceneWeAppSearch", "lbs location is null, reason %s", new Object[] { localException.getMessage() });
+      ab.i("MicroMsg.NetSceneWeAppSearch", "lbs location is null, reason %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(93739);
     }
     return null;
   }
   
-  public final String Jv()
+  public final String act()
   {
-    if (this.dZQ != null) {
-      return this.dZQ.sEb;
+    if (this.fpX != null) {
+      return this.fpX.wAa;
     }
     return "";
   }
   
-  public final int Jw()
+  public final int acu()
   {
-    if (this.dZQ != null) {
-      return this.dZQ.tpP;
+    if (this.fpX != null) {
+      return this.fpX.xpM;
     }
     return 0;
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    y.i("MicroMsg.NetSceneWeAppSearch", "doScene");
-    this.dIJ = paramf;
-    return a(parame, this.dZP, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneWeAppSearch", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.dZQ = ((cim)this.dZP.ecF.ecN);
-    if (this.dZQ != null) {
-      y.v("MicroMsg.NetSceneWeAppSearch", "return data\n%s", new Object[] { this.dZQ.sEb });
-    }
-    if (this.dIJ != null) {
-      this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(93738);
+    ab.i("MicroMsg.NetSceneWeAppSearch", "doScene");
+    this.eGj = paramf;
+    int i = dispatch(parame, this.fpW, this);
+    AppMethodBeat.o(93738);
+    return i;
   }
   
   public final int getType()
   {
     return 1162;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(93737);
+    ab.i("MicroMsg.NetSceneWeAppSearch", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.fpX = ((cvy)this.fpW.fsW.fta);
+    if (this.fpX != null) {
+      ab.v("MicroMsg.NetSceneWeAppSearch", "return data\n%s", new Object[] { this.fpX.wAa });
+    }
+    if (this.eGj != null) {
+      this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(93737);
   }
 }
 

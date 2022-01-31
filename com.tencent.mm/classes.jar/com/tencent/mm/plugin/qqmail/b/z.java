@@ -1,97 +1,85 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.Map;
 
 public final class z
 {
-  ArrayList<aa> neH = new ArrayList();
-  ab neI = ac.btG();
-  y neJ = null;
-  boolean neK = false;
-  ab.f neL = new z.1(this);
-  ab.e neM = new z.2(this);
+  ArrayList<aa> pJW;
+  ab pJX;
+  y pJY;
+  boolean pJZ;
+  ab.f pKa;
+  ab.e pKb;
+  
+  public z()
+  {
+    AppMethodBeat.i(68033);
+    this.pJW = new ArrayList();
+    this.pJX = ac.cdR();
+    this.pJY = null;
+    this.pJZ = false;
+    this.pKa = new z.1(this);
+    this.pKb = new z.2(this);
+    AppMethodBeat.o(68033);
+  }
   
   public final void a(aa paramaa)
   {
-    if (!g.DN().Dc()) {
+    AppMethodBeat.i(68034);
+    if (!g.RJ().QU())
+    {
+      AppMethodBeat.o(68034);
       return;
     }
-    if (this.neJ == null) {
-      this.neJ = new y();
+    if (this.pJY == null) {
+      this.pJY = new y();
     }
-    y localy = this.neJ;
-    String str = paramaa.ndx;
-    if (bk.bl(str)) {
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.ShareMailInfoMgr", "add info fail, info is null");
+    y localy = this.pJY;
+    String str = paramaa.pIO;
+    if (bo.isNullOrNil(str)) {
+      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.ShareMailInfoMgr", "add info fail, info is null");
     }
     for (;;)
     {
-      this.neH.add(paramaa);
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ShareMailQueue", "add a new job, queue.size: %d", new Object[] { Integer.valueOf(this.neH.size()) });
-      if (this.neK) {
-        break;
+      this.pJW.add(paramaa);
+      com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.ShareMailQueue", "add a new job, queue.size: %d", new Object[] { Integer.valueOf(this.pJW.size()) });
+      if (!this.pJZ)
+      {
+        com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.ShareMailQueue", "start execute");
+        if (this.pJW.size() > 0)
+        {
+          this.pJZ = true;
+          b((aa)this.pJW.remove(0));
+          this.pJX.a(this.pKa, this.pKb);
+        }
       }
-      com.tencent.mm.sdk.platformtools.y.d("MicroMsg.ShareMailQueue", "start execute");
-      if (this.neH.size() <= 0) {
-        break;
-      }
-      this.neK = true;
-      b((aa)this.neH.remove(0));
-      this.neI.a(this.neL, this.neM);
+      AppMethodBeat.o(68034);
       return;
       w localw = new w();
-      localw.ndx = str;
-      localy.neG.maL.add(localw);
+      localw.pIO = str;
+      localy.pJV.oBk.add(localw);
       localy.save();
     }
   }
   
   final void b(aa paramaa)
   {
-    ab localab = this.neI;
-    localab.neX.clear();
-    localab.nec = null;
-    localab.neZ = 0;
-    localab.nfb = null;
-    localab.nfc = null;
-    localab.nfd.clear();
-    localab.nfa.clear();
-    localab.bRO = null;
-    localab.neW.clear();
-    localab.neP.clear();
-    localab.neO = null;
-    localab.ndx = null;
-    localab.nfg = 0;
-    localab.nea = null;
-    localab.neQ.clear();
-    localab.neU.clear();
-    localab.neY.clear();
-    localab.neV = null;
-    localab.neM = null;
-    this.neI.bRO = paramaa.bRO;
-    this.neI.ndx = paramaa.ndx;
-    this.neI.nea = paramaa.nea;
-    this.neI.neb = paramaa.neb;
-    this.neI.neO = paramaa.neO;
-    localab = this.neI;
-    Map localMap = paramaa.neP;
-    localab.neP = new HashMap();
-    localab.neP.putAll(localMap);
-    localab = this.neI;
-    localMap = paramaa.neQ;
-    localab.neQ = new LinkedHashMap();
-    localab.neQ.putAll(localMap);
-    localab = this.neI;
-    paramaa = paramaa.neR;
-    localab.neR = new LinkedHashMap();
-    localab.neR.putAll(paramaa);
+    AppMethodBeat.i(68035);
+    this.pJX.clearData();
+    this.pJX.czp = paramaa.czp;
+    this.pJX.pIO = paramaa.pIO;
+    this.pJX.pJq = paramaa.pJq;
+    this.pJX.pJr = paramaa.pJr;
+    this.pJX.pKd = paramaa.pKd;
+    this.pJX.X(paramaa.pKe);
+    this.pJX.Y(paramaa.pKf);
+    this.pJX.Z(paramaa.pKg);
+    AppMethodBeat.o(68035);
   }
 }
 

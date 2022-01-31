@@ -2,76 +2,74 @@ package com.tencent.mm.plugin.fts.a.d.a;
 
 import android.content.Context;
 import com.tencent.mm.plugin.fts.a.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class a
 {
+  public int ibk;
   public String info;
-  public final int ivk;
-  public g kwi;
-  public int kxJ;
-  public boolean kxS;
-  public boolean kxT = true;
-  public int kxU;
-  public int kxV;
-  public int kxW;
-  public String kxX;
-  public long kxY;
-  public boolean kxZ;
-  public int kya;
-  public int kyb;
-  public boolean kyc;
+  public final int kwo;
+  public int lox;
+  public g mRX;
+  public boolean mTG;
+  public boolean mTH = true;
+  public int mTI;
+  public int mTJ;
+  public String mTK;
+  public long mTL;
+  public boolean mTM;
+  public int mTN;
+  public int mTO;
+  public boolean mTP;
   public int pageType;
   public final int position;
   
   public a(int paramInt1, int paramInt2)
   {
-    this.ivk = paramInt1;
+    this.kwo = paramInt1;
     this.position = paramInt2;
-    y.v("MicroMsg.FTS.FTSDataItem", "create data item | viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ab.v("MicroMsg.FTS.FTSDataItem", "create data item | viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
-  public abstract a.b BD();
+  public abstract a.b Pr();
   
-  public abstract void a(Context paramContext, a.a parama, Object... paramVarArgs);
+  public void a(Context paramContext, a.a parama, Object... paramVarArgs) {}
   
-  public int aVF()
-  {
-    return 0;
-  }
-  
-  public boolean aVG()
-  {
-    return false;
-  }
-  
-  public int aVH()
-  {
-    return 0;
-  }
-  
-  public abstract a.a afK();
-  
-  public String afL()
+  public String aAo()
   {
     return "";
   }
   
-  public int afM()
+  public int aAp()
   {
     return 0;
   }
   
-  public final void cU(int paramInt1, int paramInt2)
+  public int bCh()
   {
-    this.kya = paramInt1;
-    this.kyb = paramInt2;
-    this.kyc = true;
+    return 0;
+  }
+  
+  public boolean bCi()
+  {
+    return false;
+  }
+  
+  public int bCj()
+  {
+    return 0;
+  }
+  
+  public final void es(int paramInt1, int paramInt2)
+  {
+    this.mTN = paramInt1;
+    this.mTO = paramInt2;
+    this.mTP = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.a.a
  * JD-Core Version:    0.7.0.1
  */

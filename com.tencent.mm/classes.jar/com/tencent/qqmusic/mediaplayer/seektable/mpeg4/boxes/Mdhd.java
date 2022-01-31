@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.seektable.Parsable;
 
 public class Mdhd
@@ -33,6 +34,7 @@ public class Mdhd
   
   public void parse(Parsable paramParsable, Box paramBox)
   {
+    AppMethodBeat.i(128487);
     super.parse(paramParsable, paramBox);
     if (this.version == 1)
     {
@@ -44,6 +46,7 @@ public class Mdhd
     {
       this.remaining = new byte[4];
       paramParsable.readBytes(this.remaining, 0, this.remaining.length);
+      AppMethodBeat.o(128487);
       return;
       this.creationTime = paramParsable.readInt();
       this.modificationTime = paramParsable.readInt();
@@ -53,7 +56,7 @@ public class Mdhd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mpeg4.boxes.Mdhd
  * JD-Core Version:    0.7.0.1
  */

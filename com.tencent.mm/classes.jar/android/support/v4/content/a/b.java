@@ -1,109 +1,175 @@
 package android.support.v4.content.a;
 
-import android.content.Context;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.Resources.NotFoundException;
 import android.content.res.Resources.Theme;
-import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v4.a.d;
-import android.util.TypedValue;
-import java.io.IOException;
+import android.content.res.TypedArray;
+import android.content.res.XmlResourceParser;
+import android.graphics.LinearGradient;
+import android.graphics.RadialGradient;
+import android.graphics.Shader;
+import android.graphics.SweepGradient;
+import android.support.a.a.a;
+import android.util.AttributeSet;
+import android.util.Xml;
+import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 public final class b
 {
-  public static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama)
+  public final Shader Af;
+  private final ColorStateList Ag;
+  public int mColor;
+  
+  private b(Shader paramShader, ColorStateList paramColorStateList, int paramInt)
   {
-    if (paramTypedValue.string == null) {
-      throw new Resources.NotFoundException("Resource \"" + paramResources.getResourceName(paramInt1) + "\" (" + Integer.toHexString(paramInt1) + ") is not a Font: " + paramTypedValue);
-    }
-    paramTypedValue = paramTypedValue.string.toString();
-    if (!paramTypedValue.startsWith("res/"))
-    {
-      parama.a(-3, null);
-      return null;
-    }
-    Typeface localTypeface = d.a(paramResources, paramInt1, paramInt2);
-    if (localTypeface != null)
-    {
-      parama.a(localTypeface, null);
-      return localTypeface;
-    }
+    this.Af = paramShader;
+    this.Ag = paramColorStateList;
+    this.mColor = paramInt;
+  }
+  
+  static b ab(int paramInt)
+  {
+    return new b(null, null, paramInt);
+  }
+  
+  public static b b(Resources paramResources, int paramInt, Resources.Theme paramTheme)
+  {
     try
     {
-      if (paramTypedValue.toLowerCase().endsWith(".xml"))
+      localXmlResourceParser = paramResources.getXml(paramInt);
+      localAttributeSet = Xml.asAttributeSet(localXmlResourceParser);
+      do
       {
-        paramTypedValue = a.a(paramResources.getXml(paramInt1), paramResources);
-        if (paramTypedValue == null)
-        {
-          parama.a(-3, null);
-          return null;
-        }
-        return d.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama);
+        paramInt = localXmlResourceParser.next();
+      } while ((paramInt != 2) && (paramInt != 1));
+      if (paramInt != 2) {
+        throw new XmlPullParserException("No start tag found");
       }
-      paramContext = d.a(paramContext, paramResources, paramInt1, paramTypedValue, paramInt2);
-      if (paramContext != null)
+      localObject = localXmlResourceParser.getName();
+      paramInt = -1;
+      switch (((String)localObject).hashCode())
       {
-        parama.a(paramContext, null);
-        return paramContext;
+      case 1191572447: 
+        throw new XmlPullParserException(localXmlResourceParser.getPositionDescription() + ": unsupported complex color tag " + (String)localObject);
       }
     }
-    catch (XmlPullParserException paramContext)
+    catch (Exception paramResources)
     {
-      parama.a(-3, null);
+      XmlResourceParser localXmlResourceParser;
+      AttributeSet localAttributeSet;
+      Object localObject;
+      float f1;
+      float f2;
+      float f3;
+      float f4;
+      float f5;
+      float f6;
+      int i;
+      boolean bool;
+      int j;
+      int k;
+      int m;
+      float f7;
       return null;
-      parama.a(-3, null);
-      return paramContext;
     }
-    catch (IOException paramContext)
+    if (((String)localObject).equals("selector"))
     {
-      label182:
-      break label182;
-    }
-  }
-  
-  public static Drawable b(Resources paramResources, int paramInt, Resources.Theme paramTheme)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return paramResources.getDrawable(paramInt, paramTheme);
-    }
-    return paramResources.getDrawable(paramInt);
-  }
-  
-  public static abstract class a
-  {
-    public final void a(final int paramInt, Handler paramHandler)
-    {
-      Handler localHandler = paramHandler;
-      if (paramHandler == null) {
-        localHandler = new Handler(Looper.getMainLooper());
-      }
-      localHandler.post(new Runnable()
+      paramInt = 0;
+      break label586;
+      if (((String)localObject).equals("gradient"))
       {
-        public final void run() {}
-      });
-    }
-    
-    public final void a(final Typeface paramTypeface, Handler paramHandler)
-    {
-      Handler localHandler = paramHandler;
-      if (paramHandler == null) {
-        localHandler = new Handler(Looper.getMainLooper());
-      }
-      localHandler.post(new Runnable()
-      {
-        public final void run()
-        {
-          b.a.this.b(paramTypeface);
+        paramInt = 1;
+        break label586;
+        paramResources = a.c(paramResources, localXmlResourceParser, localAttributeSet, paramTheme);
+        return new b(null, paramResources, paramResources.getDefaultColor());
+        localObject = localXmlResourceParser.getName();
+        if (!((String)localObject).equals("gradient")) {
+          throw new XmlPullParserException(localXmlResourceParser.getPositionDescription() + ": invalid gradient color tag " + (String)localObject);
         }
-      });
+        localObject = g.a(paramResources, paramTheme, localAttributeSet, a.a.GradientColor);
+        f1 = g.a((TypedArray)localObject, localXmlResourceParser, "startX", 8, 0.0F);
+        f2 = g.a((TypedArray)localObject, localXmlResourceParser, "startY", 9, 0.0F);
+        f3 = g.a((TypedArray)localObject, localXmlResourceParser, "endX", 10, 0.0F);
+        f4 = g.a((TypedArray)localObject, localXmlResourceParser, "endY", 11, 0.0F);
+        f5 = g.a((TypedArray)localObject, localXmlResourceParser, "centerX", 3, 0.0F);
+        f6 = g.a((TypedArray)localObject, localXmlResourceParser, "centerY", 4, 0.0F);
+        paramInt = g.a((TypedArray)localObject, localXmlResourceParser, "type", 2, 0);
+        i = g.a((TypedArray)localObject, localXmlResourceParser, "startColor", 0);
+        bool = g.a(localXmlResourceParser, "centerColor");
+        j = g.a((TypedArray)localObject, localXmlResourceParser, "centerColor", 7);
+        k = g.a((TypedArray)localObject, localXmlResourceParser, "endColor", 1);
+        m = g.a((TypedArray)localObject, localXmlResourceParser, "tileMode", 6, 0);
+        f7 = g.a((TypedArray)localObject, localXmlResourceParser, "gradientRadius", 5, 0.0F);
+        ((TypedArray)localObject).recycle();
+        paramResources = d.e(paramResources, localXmlResourceParser, localAttributeSet, paramTheme);
+        if (paramResources != null) {
+          break label611;
+        }
+      }
     }
-    
-    public abstract void b(Typeface paramTypeface);
+    for (;;)
+    {
+      paramResources = new LinearGradient(f1, f2, f3, f4, paramResources.Aq, paramResources.Ar, d.ac(m));
+      for (;;)
+      {
+        return new b(paramResources, null, 0);
+        if (bool)
+        {
+          paramResources = new d.a(i, j, k);
+          break;
+        }
+        paramResources = new d.a(i, k);
+        break;
+        if (f7 <= 0.0F) {
+          throw new XmlPullParserException("<gradient> tag requires 'gradientRadius' attribute with radial type");
+        }
+        paramResources = new RadialGradient(f5, f6, f7, paramResources.Aq, paramResources.Ar, d.ac(m));
+        continue;
+        paramResources = new SweepGradient(f5, f6, paramResources.Aq, paramResources.Ar);
+      }
+      label586:
+      switch (paramInt)
+      {
+      }
+      break;
+      label611:
+      switch (paramInt)
+      {
+      }
+    }
+  }
+  
+  public final boolean cM()
+  {
+    return this.Af != null;
+  }
+  
+  public final boolean cN()
+  {
+    return (cM()) || (this.mColor != 0);
+  }
+  
+  public final boolean e(int[] paramArrayOfInt)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (isStateful())
+    {
+      int i = this.Ag.getColorForState(paramArrayOfInt, this.Ag.getDefaultColor());
+      bool1 = bool2;
+      if (i != this.mColor)
+      {
+        bool1 = true;
+        this.mColor = i;
+      }
+    }
+    return bool1;
+  }
+  
+  public final boolean isStateful()
+  {
+    return (this.Af == null) && (this.Ag != null) && (this.Ag.isStateful());
   }
 }
 

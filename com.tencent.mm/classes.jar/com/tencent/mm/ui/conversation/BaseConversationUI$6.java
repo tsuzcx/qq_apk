@@ -2,7 +2,8 @@ package com.tencent.mm.ui.conversation;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMFragmentActivity.a;
 import com.tencent.mm.ui.base.OnLayoutChangedLinearLayout.a;
 import com.tencent.mm.ui.tools.TestTimeForChatting;
@@ -14,25 +15,27 @@ final class BaseConversationUI$6
   
   BaseConversationUI$6(BaseConversationUI paramBaseConversationUI) {}
   
-  public final void cAa()
+  public final void dDb()
   {
-    if (BaseConversationUI.access$700(this.vPi) == null)
+    AppMethodBeat.i(34054);
+    if (BaseConversationUI.access$700(this.AgT) == null)
     {
-      BaseConversationUI.access$702(this.vPi, AnimationUtils.loadAnimation(this.vPi, MMFragmentActivity.a.uOe));
-      BaseConversationUI.access$700(this.vPi).setAnimationListener(new BaseConversationUI.6.1(this));
+      BaseConversationUI.access$702(this.AgT, AnimationUtils.loadAnimation(this.AgT, MMFragmentActivity.a.zbX));
+      BaseConversationUI.access$700(this.AgT).setAnimationListener(new BaseConversationUI.6.1(this));
     }
-    if (BaseConversationUI.access$1100(this.vPi))
+    if (BaseConversationUI.access$1100(this.AgT))
     {
-      BaseConversationUI.access$200(this.vPi).setOndispatchDraw(new BaseConversationUI.6.2(this));
-      BaseConversationUI.access$1102(this.vPi, false);
+      BaseConversationUI.access$200(this.AgT).setOndispatchDraw(new BaseConversationUI.6.2(this));
+      BaseConversationUI.access$1102(this.AgT, false);
     }
     for (;;)
     {
-      BaseConversationUI.access$1200(this.vPi).vbj = null;
-      y.i("MicroMsg.BaseConversationUI", "klem CHATTING ONLAYOUT ");
+      BaseConversationUI.access$1200(this.AgT).zpz = null;
+      ab.i("MicroMsg.BaseConversationUI", "klem CHATTING ONLAYOUT ");
+      AppMethodBeat.o(34054);
       return;
-      BaseConversationUI.access$900(this.vPi);
-      BaseConversationUI.access$1000(this.vPi);
+      BaseConversationUI.access$900(this.AgT);
+      BaseConversationUI.access$1000(this.AgT);
     }
   }
 }

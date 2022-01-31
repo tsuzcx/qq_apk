@@ -2,6 +2,7 @@ package com.tencent.mm.ui.contact;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ModRemarkNameUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,17 +11,19 @@ final class ModRemarkNameUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    switch (ModRemarkNameUI.b(this.vML))
+    AppMethodBeat.i(33745);
+    switch (ModRemarkNameUI.b(this.Aeo))
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(33745);
       return true;
-      ModRemarkNameUI.c(this.vML);
+      ModRemarkNameUI.c(this.Aeo);
       continue;
-      ModRemarkNameUI.d(this.vML);
+      ModRemarkNameUI.d(this.Aeo);
       continue;
-      ModRemarkNameUI.e(this.vML);
+      ModRemarkNameUI.e(this.Aeo);
     }
   }
 }

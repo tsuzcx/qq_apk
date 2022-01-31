@@ -1,69 +1,79 @@
 package com.tencent.mm.plugin.ext.c.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.on;
-import com.tencent.mm.protocal.c.oo;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.rp;
+import com.tencent.mm.protocal.protobuf.rq;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
   extends m
   implements k
 {
-  private b dmK;
-  public f dmL;
-  public int jLn = -1;
-  public String mUrl = null;
+  public f callback;
+  public String mUrl;
+  public int mfr;
+  private b rr;
   
   public a(String paramString, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(20431);
+    this.mfr = -1;
+    this.mUrl = null;
     this.mUrl = paramString;
     b.a locala = new b.a();
-    locala.ecH = new on();
-    locala.ecI = new oo();
+    locala.fsX = new rp();
+    locala.fsY = new rq();
     locala.uri = "/cgi-bin/micromsg-bin/checkcamerascan";
-    locala.ecG = 782;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    y.i("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: checking url: %s", new Object[] { paramString });
-    paramString = (on)this.dmK.ecE.ecN;
+    locala.funcId = 782;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ab.i("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: checking url: %s", new Object[] { paramString });
+    paramString = (rp)this.rr.fsV.fta;
     paramString.URL = this.mUrl;
-    paramString.sLZ = paramInt1;
-    paramString.sMa = paramInt2;
+    paramString.wJM = paramInt1;
+    paramString.wJN = paramInt2;
+    AppMethodBeat.o(20431);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: on get camera url end. errType; %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (oo)((b)paramq).ecF.ecN;
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.jLn = paramq.hQR;
-    }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(20432);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(20432);
+    return i;
   }
   
   public final int getType()
   {
     return 782;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(20433);
+    ab.d("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: on get camera url end. errType; %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramq = (rq)((b)paramq).fsW.fta;
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.mfr = paramq.jKs;
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(20433);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.c.a.a
  * JD-Core Version:    0.7.0.1
  */

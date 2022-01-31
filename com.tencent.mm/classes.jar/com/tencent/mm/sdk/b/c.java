@@ -1,15 +1,15 @@
 package com.tencent.mm.sdk.b;
 
 import com.tencent.mm.sdk.platformtools.ListenerInstanceMonitor;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 public abstract class c<T extends b>
 {
-  final int priority;
-  public int udX = 0;
-  private com.tencent.mm.vending.b.b<c> udY;
+  protected int __eventId = 0;
+  private com.tencent.mm.vending.b.b<c> mCallbackProperty;
+  private final int priority;
   
   public c()
   {
@@ -21,11 +21,9 @@ public abstract class c<T extends b>
     this.priority = paramInt;
   }
   
-  public abstract boolean a(T paramT);
-  
-  final int cqn()
+  int __getEventID()
   {
-    if (this.udX == 0)
+    if (this.__eventId == 0)
     {
       long l = System.currentTimeMillis();
       Type localType2 = getClass().getGenericSuperclass();
@@ -34,36 +32,38 @@ public abstract class c<T extends b>
         localType1 = getClass().getSuperclass().getGenericSuperclass();
       }
       localType1 = ((ParameterizedType)localType1).getActualTypeArguments()[0];
-      this.udX = ((Class)localType1).getName().hashCode();
-      y.v("IListener", "genEventID, %s<%s>, useTime:%d", new Object[] { getClass().getName(), localType1, Long.valueOf(System.currentTimeMillis() - l) });
+      this.__eventId = ((Class)localType1).getName().hashCode();
+      ab.v("IListener", "genEventID, %s<%s>, useTime:%d", new Object[] { getClass().getName(), localType1, Long.valueOf(System.currentTimeMillis() - l) });
     }
-    return this.udX;
+    return this.__eventId;
   }
   
-  public final com.tencent.mm.vending.b.b<c> cqo()
+  public com.tencent.mm.vending.b.b<c> alive()
   {
     try
     {
-      if (this.udY == null)
+      if (this.mCallbackProperty == null)
       {
-        ListenerInstanceMonitor.bP(this);
-        this.udY = a.udP.b(this);
+        ListenerInstanceMonitor.ct(this);
+        this.mCallbackProperty = a.ymk.b(this);
       }
-      com.tencent.mm.vending.b.b localb = this.udY;
+      com.tencent.mm.vending.b.b localb = this.mCallbackProperty;
       return localb;
     }
     finally {}
   }
   
-  public final void dead()
+  public abstract boolean callback(T paramT);
+  
+  public void dead()
   {
     try
     {
-      if (this.udY != null)
+      if (this.mCallbackProperty != null)
       {
-        ListenerInstanceMonitor.bQ((c)this.udY.d);
-        this.udY.dead();
-        this.udY = null;
+        ListenerInstanceMonitor.cu((c)this.mCallbackProperty.d);
+        this.mCallbackProperty.dead();
+        this.mCallbackProperty = null;
       }
       return;
     }
@@ -72,6 +72,11 @@ public abstract class c<T extends b>
       localObject = finally;
       throw localObject;
     }
+  }
+  
+  int getPriority()
+  {
+    return this.priority;
   }
 }
 

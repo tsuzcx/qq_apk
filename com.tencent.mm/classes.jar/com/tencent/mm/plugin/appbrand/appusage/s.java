@@ -1,315 +1,378 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.a.e;
 import android.database.Cursor;
 import android.os.HandlerThread;
-import com.tencent.mm.cf.h;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
+import com.tencent.mm.plugin.appbrand.config.q;
 import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.protocal.c.bvi;
-import com.tencent.mm.protocal.c.cmc;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.t.e;
+import com.tencent.mm.protocal.protobuf.cgb;
+import com.tencent.mm.protocal.protobuf.czt;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 public final class s
-  extends j
+  extends k
 {
-  public static final String[] dUb = { i.a(s.a.dUa, "AppBrandStarApp") };
-  private static final s.b<cmc> fJn = new s.1();
-  private static final s.b<LocalUsageInfo> fJo = new s.2();
-  final h fEC;
-  private final s.c fJm;
+  public static final String[] fkl;
+  private static final s.b<czt> hcg;
+  private static final s.b<LocalUsageInfo> hch;
+  final h hce;
+  private final s.c hcf;
+  
+  static
+  {
+    AppMethodBeat.i(129656);
+    fkl = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(s.a.fkk, "AppBrandStarApp") };
+    hcg = new s.1();
+    hch = new s.2();
+    AppMethodBeat.o(129656);
+  }
   
   public s(h paramh)
   {
-    this.fEC = paramh;
-    this.fJm = new s.c(paramh);
+    AppMethodBeat.i(129645);
+    this.hce = paramh;
+    this.hcf = new s.c(paramh);
+    AppMethodBeat.o(129645);
+  }
+  
+  private ArrayList<AppBrandRecentTaskInfo> nv(int paramInt)
+  {
+    AppMethodBeat.i(129650);
+    Object localObject1 = "select AppBrandStarApp.username, AppBrandStarApp.versionType, AppBrandLocalUsageRecord.updateTime from AppBrandStarApp left outer join AppBrandLocalUsageRecord on AppBrandStarApp.username = AppBrandLocalUsageRecord.username and AppBrandStarApp.versionType = AppBrandLocalUsageRecord.versionType order by AppBrandLocalUsageRecord.updateTime desc limit " + Math.max(paramInt, 1) + " offset 0";
+    Object localObject2 = this.hce.a((String)localObject1, null, 0);
+    if (localObject2 == null)
+    {
+      AppMethodBeat.o(129650);
+      return null;
+    }
+    if (!((Cursor)localObject2).moveToFirst())
+    {
+      ((Cursor)localObject2).close();
+      AppMethodBeat.o(129650);
+      return null;
+    }
+    localObject1 = new LinkedList();
+    do
+    {
+      String str = ((Cursor)localObject2).getString(0);
+      if (!bo.isNullOrNil(str))
+      {
+        paramInt = ((Cursor)localObject2).getInt(1);
+        long l = ((Cursor)localObject2).getLong(2);
+        ((LinkedList)localObject1).add(q.a(String.format(Locale.US, "$%s$%d@starapp", new Object[] { str, Integer.valueOf(paramInt) }), str, paramInt, l));
+      }
+    } while (((Cursor)localObject2).moveToNext());
+    ((Cursor)localObject2).close();
+    localObject2 = new ArrayList(((LinkedList)localObject1).size());
+    ((ArrayList)localObject2).addAll((Collection)localObject1);
+    AppMethodBeat.o(129650);
+    return localObject2;
   }
   
   public final ArrayList<AppBrandRecentTaskInfo> a(af.a parama)
   {
-    return b(-1, parama);
+    AppMethodBeat.i(129648);
+    parama = b(-1, parama);
+    AppMethodBeat.o(129648);
+    return parama;
   }
   
   final <T> void a(Class<T> paramClass, List<T> paramList, Long paramLong)
   {
-    s.b localb;
+    AppMethodBeat.i(129652);
     long l;
-    if (paramClass == cmc.class)
+    if (paramClass == czt.class)
     {
-      localb = fJn;
-      l = this.fEC.eV(Thread.currentThread().getId());
-      this.fEC.delete("AppBrandStarApp", "", null);
-      if (bk.dk(paramList)) {
-        break label250;
+      paramClass = hcg;
+      l = this.hce.kr(Thread.currentThread().getId());
+      this.hce.delete("AppBrandStarApp", "", null);
+      if (bo.es(paramList)) {
+        break label216;
       }
       if (paramList == null) {
-        break label245;
+        break label211;
       }
-      paramClass = (Iterable)paramList;
-      a.d.b.g.k(paramClass, "$receiver");
-      if ((!(paramClass instanceof Collection)) || (((Collection)paramClass).size() > 1)) {
-        break label227;
-      }
-      paramClass = e.c(paramClass);
     }
-    for (;;)
+    label211:
+    for (paramList = a.a.j.l((Iterable)paramList);; paramList = null)
     {
-      paramList = new s.a();
-      paramClass = paramClass.iterator();
+      s.a locala = new s.a();
+      paramList = paramList.iterator();
       int i = 0;
-      while (paramClass.hasNext())
+      while (paramList.hasNext())
       {
-        Object localObject = paramClass.next();
-        if (!bk.bl(localb.aL(localObject)))
+        Object localObject = paramList.next();
+        if (!bo.isNullOrNil(paramClass.bf(localObject)))
         {
-          paramList.field_username = localb.aL(localObject);
-          paramList.field_versionType = localb.aK(localObject);
-          paramList.field_updateTime = localb.aJ(localObject);
+          locala.field_username = paramClass.bf(localObject);
+          locala.field_versionType = paramClass.be(localObject);
+          locala.field_updateTime = paramClass.bd(localObject);
           i += 1;
-          paramList.field_orderSequence = (i * (t.ads() * 2));
-          this.fEC.insert("AppBrandStarApp", null, paramList.vf());
+          locala.field_orderSequence = (i * (t.axA() * 2));
+          this.hce.a("AppBrandStarApp", null, locala.convertTo());
         }
       }
-      if (paramClass != LocalUsageInfo.class) {
-        return;
+      if (paramClass == LocalUsageInfo.class)
+      {
+        paramClass = hch;
+        break;
       }
-      localb = fJo;
-      break;
-      label227:
-      paramClass = e.d(paramClass);
-      a.d.b.g.k(paramClass, "$receiver");
-      Collections.reverse(paramClass);
-      continue;
-      label245:
-      paramClass = null;
+      AppMethodBeat.o(129652);
+      return;
     }
-    label250:
-    this.fEC.hI(l);
-    b("batch", 3, paramLong);
+    label216:
+    this.hce.nY(l);
+    doNotify("batch", 3, paramLong);
+    AppMethodBeat.o(129652);
   }
   
-  public final int adp()
+  public final boolean aG(String paramString, int paramInt)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(129651);
+    if (bo.isNullOrNil(paramString)) {}
+    for (paramString = localObject; paramString == null; paramString = this.hce.query("AppBrandStarApp", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "username", "versionType" }), new String[] { paramString, String.valueOf(paramInt) }, null, null, null))
+    {
+      AppMethodBeat.o(129651);
+      return false;
+    }
+    boolean bool = paramString.moveToFirst();
+    paramString.close();
+    AppMethodBeat.o(129651);
+    return bool;
+  }
+  
+  public final int aH(String paramString, int paramInt)
+  {
+    int j = 1;
+    AppMethodBeat.i(129653);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(129653);
+      return -1;
+    }
+    long l1;
+    if (j.a.nk(paramInt))
+    {
+      localObject = com.tencent.mm.plugin.appbrand.app.g.auF().d(paramString, new String[] { "appInfo" });
+      if ((localObject == null) || (TextUtils.isEmpty(((WxaAttributes)localObject).field_appInfo))) {
+        i = 0;
+      }
+      while (i != 0)
+      {
+        AppMethodBeat.o(129653);
+        return -3;
+        l1 = ((WxaAttributes)localObject).ayC().hcP;
+        l2 = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+        ab.i("MicroMsg.AppBrandStarAppStorage", "checkIsAddStarBlocked username[%s] until[%d] now[%d]", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l2) });
+        if (l2 < l1) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+      }
+    }
+    long l2 = bo.aox();
+    Object localObject = String.format(Locale.US, "select %s from %s order by %s desc limit 1 offset 0", new Object[] { "orderSequence", "AppBrandStarApp", "orderSequence" });
+    localObject = this.hce.a((String)localObject, null, 2);
+    long l3;
+    if ((localObject == null) || (((Cursor)localObject).isClosed()))
+    {
+      l1 = 0L;
+      l3 = t.axA() * 2;
+      i = j;
+      if (aG(paramString, paramInt)) {
+        break label366;
+      }
+      if (axx() >= t.axA())
+      {
+        AppMethodBeat.o(129653);
+        return -2;
+      }
+    }
+    else
+    {
+      if (!((Cursor)localObject).moveToFirst()) {}
+      for (l1 = 0L;; l1 = ((Cursor)localObject).getLong(0))
+      {
+        ((Cursor)localObject).close();
+        break;
+      }
+    }
+    localObject = new s.a();
+    ((s.a)localObject).field_username = paramString;
+    ((s.a)localObject).field_versionType = paramInt;
+    ((s.a)localObject).field_updateTime = l2;
+    ((s.a)localObject).field_orderSequence = (l1 + l3);
+    this.hcf.insertNotify((com.tencent.mm.sdk.e.c)localObject, false);
+    if (aG(paramString, paramInt)) {
+      doNotify("single", 2, localObject);
+    }
+    for (int i = 1;; i = 0)
+    {
+      label366:
+      if (i != 0)
+      {
+        localObject = new cgb();
+        ((cgb)localObject).username = paramString;
+        ((cgb)localObject).wAx = paramInt;
+        ((c)com.tencent.mm.kernel.g.E(c.class)).a(z.a((cgb)localObject), z.b.hcC);
+      }
+      if (i != 0)
+      {
+        AppMethodBeat.o(129653);
+        return 0;
+      }
+      AppMethodBeat.o(129653);
+      return -1;
+    }
+  }
+  
+  public final boolean aI(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(129654);
+    boolean bool = j(paramString, paramInt, true);
+    AppMethodBeat.o(129654);
+    return bool;
+  }
+  
+  public final void add(k.a parama)
+  {
+    AppMethodBeat.i(129646);
+    add(parama, e.aNS().oNc.getLooper());
+    AppMethodBeat.o(129646);
+  }
+  
+  public final int axx()
   {
     int i = 0;
-    Cursor localCursor = this.fEC.a("select count(*) from AppBrandStarApp", null, 0);
-    if ((localCursor == null) || (localCursor.isClosed())) {
+    AppMethodBeat.i(129647);
+    Cursor localCursor = this.hce.a("select count(*) from AppBrandStarApp", null, 0);
+    if ((localCursor == null) || (localCursor.isClosed()))
+    {
+      AppMethodBeat.o(129647);
       return 0;
     }
     if (localCursor.moveToFirst()) {
       i = localCursor.getInt(0);
     }
     localCursor.close();
+    AppMethodBeat.o(129647);
     return i;
-  }
-  
-  public final boolean at(String paramString, int paramInt)
-  {
-    Object localObject = null;
-    if (bk.bl(paramString)) {}
-    for (paramString = localObject; paramString == null; paramString = this.fEC.query("AppBrandStarApp", null, String.format(Locale.US, "%s=? and %s=?", new Object[] { "username", "versionType" }), new String[] { paramString, String.valueOf(paramInt) }, null, null, null)) {
-      return false;
-    }
-    boolean bool = paramString.moveToFirst();
-    paramString.close();
-    return bool;
-  }
-  
-  public final int au(String paramString, int paramInt)
-  {
-    long l2 = 0L;
-    int i = 1;
-    int j = 0;
-    if (bk.bl(paramString))
-    {
-      paramInt = -1;
-      return paramInt;
-    }
-    long l3 = bk.UX();
-    Object localObject = String.format(Locale.US, "select %s from %s order by %s desc limit 1 offset 0", new Object[] { "orderSequence", "AppBrandStarApp", "orderSequence" });
-    localObject = this.fEC.a((String)localObject, null, 2);
-    long l1 = l2;
-    if (localObject != null)
-    {
-      if (((Cursor)localObject).isClosed()) {
-        l1 = l2;
-      }
-    }
-    else
-    {
-      l2 = t.ads() * 2;
-      if (at(paramString, paramInt)) {
-        break label229;
-      }
-      if (adp() < t.ads()) {
-        break label159;
-      }
-      return -2;
-    }
-    if (!((Cursor)localObject).moveToFirst()) {}
-    for (l1 = l2;; l1 = ((Cursor)localObject).getLong(0))
-    {
-      ((Cursor)localObject).close();
-      break;
-    }
-    label159:
-    localObject = new s.a();
-    ((s.a)localObject).field_username = paramString;
-    ((s.a)localObject).field_versionType = paramInt;
-    ((s.a)localObject).field_updateTime = l3;
-    ((s.a)localObject).field_orderSequence = (l1 + l2);
-    this.fJm.a((com.tencent.mm.sdk.e.c)localObject, false);
-    if (at(paramString, paramInt)) {
-      b("single", 2, localObject);
-    }
-    for (i = 1;; i = 0)
-    {
-      label229:
-      if (i != 0)
-      {
-        localObject = new bvi();
-        ((bvi)localObject).username = paramString;
-        ((bvi)localObject).sEr = paramInt;
-        ((c)com.tencent.mm.kernel.g.r(c.class)).a(z.a((bvi)localObject), z.b.fJJ);
-      }
-      paramInt = j;
-      if (i != 0) {
-        break;
-      }
-      return -1;
-    }
-  }
-  
-  public final boolean av(String paramString, int paramInt)
-  {
-    return j(paramString, paramInt, true);
   }
   
   public final ArrayList<AppBrandRecentTaskInfo> b(int paramInt, af.a parama)
   {
-    Object localObject2 = null;
-    Object localObject1 = parama;
+    LinkedList localLinkedList = null;
+    AppMethodBeat.i(129649);
+    af.a locala = parama;
     if (parama == null) {
-      localObject1 = af.a.fJT;
+      locala = af.a.hcJ;
     }
-    if (localObject1 == af.a.fJV)
+    if (locala == af.a.hcL)
     {
-      parama = "select AppBrandStarApp.username, AppBrandStarApp.versionType, AppBrandLocalUsageRecord.updateTime from AppBrandStarApp left outer join AppBrandLocalUsageRecord on AppBrandStarApp.username = AppBrandLocalUsageRecord.username and AppBrandStarApp.versionType = AppBrandLocalUsageRecord.versionType order by AppBrandLocalUsageRecord.updateTime desc limit " + Math.max(paramInt, 1) + " offset 0";
-      localObject1 = this.fEC.a(parama, null, 0);
-      if (localObject1 != null) {}
+      parama = nv(paramInt);
+      AppMethodBeat.o(129649);
+      return parama;
     }
-    Object localObject3;
-    do
+    if (paramInt <= 0) {}
+    Object localObject;
+    for (paramInt = t.axA();; paramInt = Math.min(t.axA(), paramInt))
     {
-      return null;
-      if (!((Cursor)localObject1).moveToFirst())
-      {
-        ((Cursor)localObject1).close();
-        return null;
-      }
-      parama = new LinkedList();
-      do
-      {
-        localObject2 = ((Cursor)localObject1).getString(0);
-        if (!bk.bl((String)localObject2))
-        {
-          paramInt = ((Cursor)localObject1).getInt(1);
-          long l = ((Cursor)localObject1).getLong(2);
-          parama.add(r.a(String.format(Locale.US, "$%s$%d@starapp", new Object[] { localObject2, Integer.valueOf(paramInt) }), (String)localObject2, paramInt, l));
-        }
-      } while (((Cursor)localObject1).moveToNext());
-      ((Cursor)localObject1).close();
-      localObject1 = new ArrayList(parama.size());
-      ((ArrayList)localObject1).addAll(parama);
-      return localObject1;
-      if (paramInt > 0) {
+      parama = this.hce;
+      localObject = String.format(Locale.US, "%s desc limit %d offset 0", new Object[] { "orderSequence", Integer.valueOf(paramInt) });
+      localObject = parama.query("AppBrandStarApp", new String[] { "username", "versionType" }, null, null, null, null, (String)localObject);
+      if (localObject != null) {
         break;
       }
-      paramInt = t.ads();
-      parama = this.fEC;
-      localObject3 = String.format(Locale.US, "%s desc limit %d offset 0", new Object[] { "orderSequence", Integer.valueOf(paramInt) });
-      localObject3 = parama.query("AppBrandStarApp", new String[] { "username", "versionType" }, null, null, null, null, (String)localObject3);
-    } while (localObject3 == null);
-    if (af.a.fJU == localObject1)
+      AppMethodBeat.o(129649);
+      return null;
+    }
+    if (af.a.hcK == locala)
     {
-      parama = (af.a)localObject2;
-      if (((Cursor)localObject3).moveToLast())
+      parama = localLinkedList;
+      if (((Cursor)localObject).moveToLast())
       {
-        label305:
-        localObject2 = new LinkedList();
+        localLinkedList = new LinkedList();
         parama = new s.a();
-        label322:
+        label172:
         do
         {
-          parama.d((Cursor)localObject3);
-          ((List)localObject2).add(r.a(String.format(Locale.US, "$%s$%d@starapp", new Object[] { parama.field_username, Integer.valueOf(parama.field_versionType) }), parama.field_username, parama.field_versionType, -1L));
-          if (af.a.fJU != localObject1) {
+          parama.convertFrom((Cursor)localObject);
+          localLinkedList.add(q.a(String.format(Locale.US, "$%s$%d@starapp", new Object[] { parama.field_username, Integer.valueOf(parama.field_versionType) }), parama.field_username, parama.field_versionType, -1L));
+          if (af.a.hcK != locala) {
             break;
           }
-        } while (((Cursor)localObject3).moveToPrevious());
+        } while (((Cursor)localObject).moveToPrevious());
       }
     }
     for (;;)
     {
-      parama = new ArrayList(((List)localObject2).size());
-      parama.addAll((Collection)localObject2);
+      parama = new ArrayList(localLinkedList.size());
+      parama.addAll(localLinkedList);
       do
       {
-        ((Cursor)localObject3).close();
+        ((Cursor)localObject).close();
+        AppMethodBeat.o(129649);
         return parama;
-        paramInt = Math.min(t.ads(), paramInt);
-        break;
-        parama = (af.a)localObject2;
-      } while (!((Cursor)localObject3).moveToFirst());
-      break label305;
-      if (((Cursor)localObject3).moveToNext()) {
-        break label322;
+        parama = localLinkedList;
+      } while (!((Cursor)localObject).moveToFirst());
+      break;
+      if (((Cursor)localObject).moveToNext()) {
+        break label172;
       }
     }
-  }
-  
-  public final void c(j.a parama)
-  {
-    a(parama, com.tencent.mm.plugin.appbrand.v.c.DS().mnU.getLooper());
   }
   
   public final boolean j(String paramString, int paramInt, boolean paramBoolean)
   {
     boolean bool2 = true;
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(129655);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(129655);
       return false;
     }
     Object localObject = new s.a();
     ((s.a)localObject).field_username = paramString;
     ((s.a)localObject).field_versionType = paramInt;
     boolean bool1 = bool2;
-    if (this.fJm.b((com.tencent.mm.sdk.e.c)localObject, new String[] { "versionType", "username" }))
+    if (this.hcf.get((com.tencent.mm.sdk.e.c)localObject, new String[] { "versionType", "username" }))
     {
-      this.fJm.a((com.tencent.mm.sdk.e.c)localObject, false, s.a.fCT);
-      if (at(paramString, paramInt)) {
-        break label153;
+      this.hcf.delete((com.tencent.mm.sdk.e.c)localObject, false, s.a.gUa);
+      if (aG(paramString, paramInt)) {
+        break label173;
       }
-      b("single", 5, localObject);
+      doNotify("single", 5, localObject);
     }
-    label153:
+    label173:
     for (bool1 = bool2;; bool1 = false)
     {
       if ((bool1) && (paramBoolean))
       {
-        localObject = new bvi();
-        ((bvi)localObject).username = paramString;
-        ((bvi)localObject).sEr = paramInt;
-        ((c)com.tencent.mm.kernel.g.r(c.class)).a(z.b((bvi)localObject), z.b.fJJ);
+        localObject = new cgb();
+        ((cgb)localObject).username = paramString;
+        ((cgb)localObject).wAx = paramInt;
+        ((c)com.tencent.mm.kernel.g.E(c.class)).a(z.b((cgb)localObject), z.b.hcC);
       }
+      AppMethodBeat.o(129655);
       return bool1;
     }
   }

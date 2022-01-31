@@ -2,14 +2,13 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import android.app.Activity;
 import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mm.plugin.appbrand.appstorage.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
+import org.apache.commons.a.b;
 import org.json.JSONObject;
 
 public final class JsApiOpenDocument
@@ -17,43 +16,49 @@ public final class JsApiOpenDocument
 {
   private static final int CTRL_INDEX = 99;
   private static final String NAME = "openDocument";
-  private static long gqO = -1L;
+  private static long hMa = -1L;
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    long l = bk.UY();
-    if (l - gqO < 1000L)
+    AppMethodBeat.i(131076);
+    long l = bo.aoy();
+    if (l - hMa < 1000L)
     {
-      paramc.C(paramInt, h("fail:document viewer already starting", null));
+      paramc.h(paramInt, j("fail:document viewer already starting", null));
+      AppMethodBeat.o(131076);
       return;
     }
-    gqO = l;
+    hMa = l;
     Context localContext = paramc.getContext();
     if ((localContext == null) || (!(localContext instanceof Activity)))
     {
-      paramc.C(paramInt, h("fail", null));
+      paramc.h(paramInt, j("fail", null));
+      AppMethodBeat.o(131076);
       return;
     }
     String str = paramJSONObject.optString("filePath");
-    if (bk.bl(str))
+    if (bo.isNullOrNil(str))
     {
-      paramc.C(paramInt, h("fail:invalid data", null));
+      paramc.h(paramInt, j("fail:invalid data", null));
+      AppMethodBeat.o(131076);
       return;
     }
-    File localFile = paramc.Zl().rx(str);
+    File localFile = paramc.wX().zg(str);
     if (localFile == null)
     {
-      paramc.C(paramInt, h("fail:file doesn't exist", null));
+      paramc.h(paramInt, j("fail:file doesn't exist", null));
+      AppMethodBeat.o(131076);
       return;
     }
     JsApiOpenDocument.OpenRequest localOpenRequest = new JsApiOpenDocument.OpenRequest();
     localOpenRequest.filePath = localFile.getAbsolutePath();
-    localOpenRequest.fGv = org.a.a.a.a.aho(str);
+    localOpenRequest.elt = b.azG(str);
     paramJSONObject = paramJSONObject.optString("fileType");
-    if (!bk.bl(paramJSONObject)) {
-      localOpenRequest.fGv = paramJSONObject;
+    if (!bo.isNullOrNil(paramJSONObject)) {
+      localOpenRequest.elt = paramJSONObject;
     }
     com.tencent.mm.plugin.appbrand.ipc.a.b(localContext, localOpenRequest, new JsApiOpenDocument.1(this, paramc, paramInt));
+    AppMethodBeat.o(131076);
   }
 }
 

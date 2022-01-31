@@ -1,37 +1,28 @@
 package com.tencent.mm.plugin.gallery;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
-import java.util.HashMap;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new Plugin.1(this);
+    AppMethodBeat.i(21216);
+    Plugin.1 local1 = new Plugin.1(this);
+    AppMethodBeat.o(21216);
+    return local1;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
-    new ar()
-    {
-      public final void bh(boolean paramAnonymousBoolean) {}
-      
-      public final void bi(boolean paramAnonymousBoolean) {}
-      
-      public final void gf(int paramAnonymousInt) {}
-      
-      public final void onAccountRelease() {}
-      
-      public final HashMap<Integer, h.d> xe()
-      {
-        return null;
-      }
-    };
+    AppMethodBeat.i(21217);
+    Plugin.2 local2 = new Plugin.2(this);
+    AppMethodBeat.o(21217);
+    return local2;
   }
   
   public b getContactWidgetFactory()
@@ -41,7 +32,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.Plugin
  * JD-Core Version:    0.7.0.1
  */

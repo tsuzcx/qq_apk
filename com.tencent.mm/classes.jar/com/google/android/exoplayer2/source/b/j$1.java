@@ -1,5 +1,7 @@
 package com.google.android.exoplayer2.source.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class j$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class j$1
   
   public final void run()
   {
-    this.aKM.ne();
+    AppMethodBeat.i(125941);
+    this.aSg.pC();
+    AppMethodBeat.o(125941);
   }
 }
 

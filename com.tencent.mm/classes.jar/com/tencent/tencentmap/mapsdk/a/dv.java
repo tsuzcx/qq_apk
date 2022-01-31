@@ -1,25 +1,33 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.content.Context;
+import android.os.Environment;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.File;
 
-public abstract class dv
+public class dv
 {
-  private static dv a = null;
+  public static boolean a;
+  public static final String b;
   
-  public static dv a(Context paramContext)
+  static
   {
-    try
-    {
-      if ((a == null) && (paramContext != null)) {
-        a = new dv.a(paramContext);
-      }
-      paramContext = a;
-      return paramContext;
-    }
-    finally {}
+    AppMethodBeat.i(101127);
+    a = false;
+    b = a() + "/js/nicolas/xkun/dynamic_map";
+    AppMethodBeat.o(101127);
   }
   
-  public abstract byte[] a(String paramString, byte[] paramArrayOfByte, ds paramds);
+  public static String a()
+  {
+    AppMethodBeat.i(150157);
+    File localFile = Environment.getExternalStorageDirectory();
+    String str = "/sdcard";
+    if (localFile != null) {
+      str = localFile.getPath();
+    }
+    AppMethodBeat.o(150157);
+    return str;
+  }
 }
 
 

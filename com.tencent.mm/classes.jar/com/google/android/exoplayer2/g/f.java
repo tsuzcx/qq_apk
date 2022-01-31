@@ -1,47 +1,37 @@
 package com.google.android.exoplayer2.g;
 
-import java.util.Arrays;
+import com.google.android.exoplayer2.Format;
+import com.google.android.exoplayer2.source.o;
 
-public final class f
+public abstract interface f
 {
-  public final e[] aQG;
-  private int auK;
-  public final int length;
+  public abstract void Y(long paramLong);
   
-  public f(e... paramVarArgs)
-  {
-    this.aQG = paramVarArgs;
-    this.length = paramVarArgs.length;
-  }
+  public abstract Format eg(int paramInt);
   
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {
-      return true;
-    }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
-    }
-    paramObject = (f)paramObject;
-    return Arrays.equals(this.aQG, paramObject.aQG);
-  }
+  public abstract int eh(int paramInt);
   
-  public final int hashCode()
-  {
-    if (this.auK == 0) {
-      this.auK = (Arrays.hashCode(this.aQG) + 527);
-    }
-    return this.auK;
-  }
+  public abstract boolean ei(int paramInt);
   
-  public final e[] nL()
-  {
-    return (e[])this.aQG.clone();
-  }
+  public abstract int indexOf(int paramInt);
+  
+  public abstract int length();
+  
+  public abstract int pv();
+  
+  public abstract int pw();
+  
+  public abstract Object px();
+  
+  public abstract o qg();
+  
+  public abstract Format qh();
+  
+  public abstract int qi();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.g.f
  * JD-Core Version:    0.7.0.1
  */

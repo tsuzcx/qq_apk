@@ -1,73 +1,75 @@
 package com.tencent.mm.storage.emotion;
 
 import android.database.Cursor;
-import com.tencent.mm.cf.g;
-import com.tencent.mm.cf.g.a;
-import com.tencent.mm.protocal.c.afk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.g;
+import com.tencent.mm.cg.g.a;
+import com.tencent.mm.protocal.protobuf.GetEmotionRewardResponse;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.IOException;
 
 public final class l
-  extends i<k>
+  extends j<k>
   implements g.a
 {
-  public static final String[] dXp = { i.a(k.buS, "EmotionRewardInfo") };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(62861);
+    SQL_CREATE = new String[] { j.getCreateSQLs(k.info, "EmotionRewardInfo") };
+    AppMethodBeat.o(62861);
+  }
   
   public l(e parame)
   {
-    super(parame, k.buS, "EmotionRewardInfo", null);
-    this.dXw = parame;
+    super(parame, k.info, "EmotionRewardInfo", null);
+    this.db = parame;
   }
   
   public final int a(g paramg)
   {
-    if (paramg != null) {
-      this.dXw = paramg;
-    }
+    this.db = paramg;
     return 0;
   }
   
-  public final afk acJ(String paramString)
+  public final GetEmotionRewardResponse asX(String paramString)
   {
     Object localObject = null;
-    Cursor localCursor = null;
-    if (bk.bl(paramString))
+    AppMethodBeat.i(62860);
+    if (bo.isNullOrNil(paramString))
     {
-      y.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
-      localObject = localCursor;
+      ab.w("MicroMsg.emoji.EmotionRewardInfoStorage", "getEmotionRewardResponseByPID failed. productID is null.");
+      AppMethodBeat.o(62860);
+      return null;
     }
-    for (;;)
+    Cursor localCursor = this.db.a("EmotionRewardInfo", new String[] { "content" }, "productID=?", new String[] { paramString }, null, null, null, 2);
+    paramString = localObject;
+    if (localCursor != null)
     {
-      return localObject;
-      localCursor = this.dXw.a("EmotionRewardInfo", new String[] { "content" }, "productID=?", new String[] { paramString }, null, null, null, 2);
-      paramString = (String)localObject;
-      if (localCursor != null)
-      {
-        paramString = (String)localObject;
-        if (!localCursor.moveToFirst()) {}
-      }
-      try
-      {
-        paramString = new afk();
-        paramString.aH(localCursor.getBlob(0));
-        localObject = paramString;
-        if (localCursor == null) {
-          continue;
-        }
+      paramString = localObject;
+      if (!localCursor.moveToFirst()) {}
+    }
+    try
+    {
+      paramString = new GetEmotionRewardResponse();
+      paramString.parseFrom(localCursor.getBlob(0));
+      if (localCursor != null) {
         localCursor.close();
-        return paramString;
       }
-      catch (IOException paramString)
+      AppMethodBeat.o(62860);
+      return paramString;
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          y.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { bk.j(paramString) });
-          paramString = (String)localObject;
-        }
+        ab.e("MicroMsg.emoji.EmotionRewardInfoStorage", "exception:%s", new Object[] { bo.l(paramString) });
+        paramString = localObject;
       }
     }
   }

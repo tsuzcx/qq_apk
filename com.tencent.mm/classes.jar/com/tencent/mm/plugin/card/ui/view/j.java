@@ -1,53 +1,70 @@
 package com.tencent.mm.plugin.card.ui.view;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
-import com.tencent.mm.protocal.c.lv;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class j
   extends g
 {
-  public final ab aCZ()
+  public final ab bfw()
   {
-    return new v(this, this.hxN);
+    AppMethodBeat.i(88749);
+    v localv = new v(this, this.jpX);
+    AppMethodBeat.o(88749);
+    return localv;
   }
   
-  public final ab aDa()
+  public final ab bfx()
   {
-    return new f(this, this.hxN);
+    AppMethodBeat.i(88750);
+    f localf = new f(this, this.jpX);
+    AppMethodBeat.o(88750);
+    return localf;
   }
   
-  public final ab aDb()
+  public final ab bfy()
   {
-    return new t(this, this.hxN);
+    AppMethodBeat.i(88751);
+    t localt = new t(this, this.jpX);
+    AppMethodBeat.o(88751);
+    return localt;
   }
   
   public final String e(c paramc)
   {
-    return this.ikk.azy().code;
+    AppMethodBeat.i(88748);
+    paramc = this.klk.bbe().code;
+    AppMethodBeat.o(88748);
+    return paramc;
   }
   
   public final boolean f(b paramb)
   {
-    if (this.ikk == null)
+    AppMethodBeat.i(88747);
+    if (this.klk == null)
     {
-      y.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
+      AppMethodBeat.o(88747);
       return true;
     }
     if (paramb == null)
     {
-      y.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
+      AppMethodBeat.o(88747);
       return false;
     }
-    String str = this.ikk.azy().code;
-    paramb = paramb.azy().code;
-    if ((!bk.bl(str)) && (!bk.bl(paramb)) && (!str.equals(paramb)))
+    String str = this.klk.bbe().code;
+    paramb = paramb.bbe().code;
+    if ((!bo.isNullOrNil(str)) && (!bo.isNullOrNil(paramb)) && (!str.equals(paramb)))
     {
-      y.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
+      AppMethodBeat.o(88747);
       return true;
     }
+    AppMethodBeat.o(88747);
     return false;
   }
 }

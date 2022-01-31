@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class e$1
   implements Runnable
 {
@@ -7,10 +9,10 @@ public final class e$1
   
   public final void run()
   {
-    e locale = this.qYA;
-    long l = System.currentTimeMillis() / 1000L;
-    locale.gk("WebViewHistory", "delete from WebViewHistory where  timeStamp < " + (l - 604800L));
-    e.a(this.qYA);
+    AppMethodBeat.i(5646);
+    this.uOg.execSQL("WebViewHistory", "delete from WebViewHistory where  timeStamp < ".concat(String.valueOf(System.currentTimeMillis() / 1000L - 604800L)));
+    e.a(this.uOg);
+    AppMethodBeat.o(5646);
   }
 }
 

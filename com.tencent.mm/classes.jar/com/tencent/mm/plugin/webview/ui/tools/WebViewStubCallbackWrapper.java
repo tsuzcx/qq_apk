@@ -4,24 +4,34 @@ import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.stub.e.a;
 
 public class WebViewStubCallbackWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<WebViewStubCallbackWrapper> CREATOR = new WebViewStubCallbackWrapper.1();
+  public static final Parcelable.Creator<WebViewStubCallbackWrapper> CREATOR;
   public int id;
-  public e rno;
+  public e vdZ;
+  
+  static
+  {
+    AppMethodBeat.i(7803);
+    CREATOR = new WebViewStubCallbackWrapper.1();
+    AppMethodBeat.o(7803);
+  }
   
   private WebViewStubCallbackWrapper(IBinder paramIBinder)
   {
-    this.rno = e.a.I(paramIBinder);
+    AppMethodBeat.i(7802);
+    this.vdZ = e.a.G(paramIBinder);
+    AppMethodBeat.o(7802);
   }
   
   public WebViewStubCallbackWrapper(e parame, int paramInt)
   {
-    this.rno = parame;
+    this.vdZ = parame;
     this.id = paramInt;
   }
   
@@ -41,7 +51,9 @@ public class WebViewStubCallbackWrapper
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeStrongBinder(this.rno.asBinder());
+    AppMethodBeat.i(7801);
+    paramParcel.writeStrongBinder(this.vdZ.asBinder());
+    AppMethodBeat.o(7801);
   }
 }
 

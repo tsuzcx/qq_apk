@@ -8,11 +8,13 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 import com.tencent.toybrick.c.f;
 import com.tencent.toybrick.c.g;
 import com.tencent.toybrick.d.a.a;
 import com.tencent.toybrick.e.b.1;
+import com.tencent.toybrick.e.c.b;
 import com.tencent.toybrick.f.a;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,86 +25,102 @@ public final class b
   extends RecyclerView.a<a>
   implements View.OnClickListener
 {
+  public ArrayList<g> BwS;
+  public LinkedList<g> BwT;
+  public HashMap<g, Integer> BwU;
+  private SparseArray<g> BwV;
+  private com.tencent.toybrick.e.b BwW;
+  public a.a BwX;
   private Context mContext;
-  public ArrayList<g> xam;
-  public LinkedList<g> xan;
-  public HashMap<g, Integer> xao;
-  private SparseArray<g> xap;
-  private com.tencent.toybrick.e.b xaq;
-  public a.a xar;
   
   public b(Context paramContext, a.a parama)
   {
+    AppMethodBeat.i(113182);
     a(new b.a(this, (byte)0));
     this.mContext = paramContext;
-    this.xar = parama;
-    paramContext = parama.xbo;
+    this.BwX = parama;
+    paramContext = parama.BxU;
     parama = paramContext.iterator();
     int i = 0;
     while (parama.hasNext())
     {
-      ((g)parama.next()).vdE = i;
+      ((g)parama.next()).bdv = i;
       i += 1;
     }
-    this.xan = paramContext;
-    this.xap = new SparseArray();
-    this.xao = new HashMap();
-    this.xam = new ArrayList();
-    this.xaq = new com.tencent.toybrick.e.b(this);
-    paramContext = this.xaq;
-    paramContext.mMainHandler.removeCallbacks(paramContext.xbw);
+    this.BwT = paramContext;
+    this.BwV = new SparseArray();
+    this.BwU = new HashMap();
+    this.BwS = new ArrayList();
+    this.BwW = new com.tencent.toybrick.e.b(this);
+    paramContext = this.BwW;
+    paramContext.mMainHandler.removeCallbacks(paramContext.Byc);
     parama = paramContext.mMainHandler;
     b.1 local1 = new b.1(paramContext);
-    paramContext.xbw = local1;
+    paramContext.Byc = local1;
     parama.post(local1);
+    AppMethodBeat.o(113182);
   }
   
-  private a Kp(int paramInt)
+  private a Tj(int paramInt)
   {
+    AppMethodBeat.i(113184);
     long l = System.currentTimeMillis();
     try
     {
       Object localObject1 = LayoutInflater.from(this.mContext).inflate(paramInt, null);
       ((View)localObject1).setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
       ((View)localObject1).setOnClickListener(this);
-      localObject1 = ((g)this.xap.get(paramInt)).er((View)localObject1);
+      localObject1 = ((g)this.BwV.get(paramInt)).fF((View)localObject1);
       return localObject1;
     }
     finally
     {
-      ao.s("[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.xap.get(paramInt)).xba });
+      ak.d("VerticalToyAdapter", "[onCreateViewHolder] cost:%sms toyBrick:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), ((g)this.BwV.get(paramInt)).BxG });
+      AppMethodBeat.o(113184);
     }
   }
   
-  public final g Kq(int paramInt)
+  public final g Tk(int paramInt)
   {
-    if (this.xam.size() > paramInt) {
-      return (g)this.xam.get(paramInt);
+    AppMethodBeat.i(113187);
+    if (this.BwS.size() > paramInt)
+    {
+      g localg = (g)this.BwS.get(paramInt);
+      AppMethodBeat.o(113187);
+      return localg;
     }
+    AppMethodBeat.o(113187);
     return null;
   }
   
   public final int getItemCount()
   {
-    return this.xam.size();
+    AppMethodBeat.i(113185);
+    int i = this.BwS.size();
+    AppMethodBeat.o(113185);
+    return i;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    g localg = Kq(paramInt);
+    AppMethodBeat.i(113183);
+    g localg = Tk(paramInt);
     paramInt = localg.getLayoutResource();
-    this.xap.put(paramInt, localg);
+    this.BwV.put(paramInt, localg);
+    AppMethodBeat.o(113183);
     return paramInt;
   }
   
   public final void onClick(View paramView)
   {
-    Kq(((a)paramView.getTag()).id());
+    AppMethodBeat.i(113186);
+    Tk(((a)paramView.getTag()).jN());
+    AppMethodBeat.o(113186);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.toybrick.b.b
  * JD-Core Version:    0.7.0.1
  */

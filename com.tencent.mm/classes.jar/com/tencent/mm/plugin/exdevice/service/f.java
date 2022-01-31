@@ -1,38 +1,50 @@
 package com.tencent.mm.plugin.exdevice.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.h.b;
 import com.tencent.mm.plugin.exdevice.h.c;
 import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 public final class f
 {
-  public HashMap<Long, f.a> jzb = new HashMap();
+  public HashMap<Long, a> lIA;
   
-  private void dY(long paramLong)
+  public f()
   {
-    b localb = ad.aLL().BF(String.valueOf(paramLong));
+    AppMethodBeat.i(19581);
+    this.lIA = new HashMap();
+    AppMethodBeat.o(19581);
+  }
+  
+  private void jq(long paramLong)
+  {
+    AppMethodBeat.i(19589);
+    b localb = ad.bpY().LH(String.valueOf(paramLong));
     if (localb == null)
     {
-      y.e("MicroMsg.exdevice.ExdeviceInfoManager", "get harddevice info from db failed : %d", new Object[] { Long.valueOf(paramLong) });
+      ab.e("MicroMsg.exdevice.ExdeviceInfoManager", "get harddevice info from db failed : %d", new Object[] { Long.valueOf(paramLong) });
+      AppMethodBeat.o(19589);
       return;
     }
-    f.a locala = new f.a();
-    locala.jzc = paramLong;
-    locala.jze = localb.field_authBuf;
-    locala.aYR = localb.field_sessionKey;
-    locala.jzd = localb.field_sessionBuf;
-    locala.bJw = localb.field_brandName;
+    a locala = new a();
+    locala.lIB = paramLong;
+    locala.lID = localb.field_authBuf;
+    locala.sessionKey = localb.field_sessionKey;
+    locala.lIC = localb.field_sessionBuf;
+    locala.cqQ = localb.field_brandName;
     locala.mURL = localb.field_url;
-    locala.bKp = 0;
-    locala.jzf = false;
-    this.jzb.put(Long.valueOf(paramLong), locala);
-    y.i("MicroMsg.exdevice.ExdeviceInfoManager", "not contains the device info, device id = %d, load from db", new Object[] { Long.valueOf(paramLong) });
+    locala.crJ = 0;
+    locala.lIE = false;
+    this.lIA.put(Long.valueOf(paramLong), locala);
+    ab.i("MicroMsg.exdevice.ExdeviceInfoManager", "not contains the device info, device id = %d, load from db", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(19589);
   }
   
   public final void b(long paramLong, byte[] paramArrayOfByte, int paramInt)
   {
+    AppMethodBeat.i(19591);
     if ((paramLong < 0L) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       boolean bool;
@@ -40,137 +52,173 @@ public final class f
       {
         bool = true;
         if (paramArrayOfByte != null) {
-          break label70;
+          break label82;
         }
       }
-      label70:
+      label82:
       for (paramInt = -1;; paramInt = paramArrayOfByte.length)
       {
-        y.e("MicroMsg.exdevice.ExdeviceInfoManager", "device id low than 0 or authbuf is null, deviceid = %d, buffer == null : %b, buffer length = %d", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+        ab.e("MicroMsg.exdevice.ExdeviceInfoManager", "device id low than 0 or authbuf is null, deviceid = %d, buffer == null : %b, buffer length = %d", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+        AppMethodBeat.o(19591);
         return;
         bool = false;
         break;
       }
     }
-    f.a locala2 = (f.a)this.jzb.get(Long.valueOf(paramLong));
-    f.a locala1 = locala2;
+    a locala2 = (a)this.lIA.get(Long.valueOf(paramLong));
+    a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = new f.a();
-      locala1.jzc = paramLong;
+      locala1 = new a();
+      locala1.lIB = paramLong;
     }
     switch (paramInt)
     {
     default: 
-      y.e("MicroMsg.exdevice.ExdeviceInfoManager", "unkown buffer type : %d", new Object[] { Integer.valueOf(paramInt) });
+      ab.e("MicroMsg.exdevice.ExdeviceInfoManager", "unkown buffer type : %d", new Object[] { Integer.valueOf(paramInt) });
     }
     for (;;)
     {
-      this.jzb.put(Long.valueOf(paramLong), locala1);
+      this.lIA.put(Long.valueOf(paramLong), locala1);
+      AppMethodBeat.o(19591);
       return;
-      locala1.jze = paramArrayOfByte;
+      locala1.lID = paramArrayOfByte;
       continue;
-      locala1.aYR = paramArrayOfByte;
+      locala1.sessionKey = paramArrayOfByte;
       continue;
-      locala1.jzd = paramArrayOfByte;
+      locala1.lIC = paramArrayOfByte;
     }
   }
   
-  public final boolean dR(long paramLong)
+  public final boolean jj(long paramLong)
   {
-    return dS(paramLong) == 2;
+    AppMethodBeat.i(19582);
+    if (jk(paramLong) == 2)
+    {
+      AppMethodBeat.o(19582);
+      return true;
+    }
+    AppMethodBeat.o(19582);
+    return false;
   }
   
-  public final int dS(long paramLong)
+  public final int jk(long paramLong)
   {
-    if (this.jzb.containsKey(Long.valueOf(paramLong))) {
-      return ((f.a)this.jzb.get(Long.valueOf(paramLong))).bKp;
+    AppMethodBeat.i(19583);
+    if (this.lIA.containsKey(Long.valueOf(paramLong)))
+    {
+      int i = ((a)this.lIA.get(Long.valueOf(paramLong))).crJ;
+      AppMethodBeat.o(19583);
+      return i;
     }
+    AppMethodBeat.o(19583);
     return 0;
   }
   
-  public final f.a dT(long paramLong)
+  public final a jl(long paramLong)
   {
-    if (!this.jzb.containsKey(Long.valueOf(paramLong))) {
-      dY(paramLong);
+    AppMethodBeat.i(19584);
+    if (!this.lIA.containsKey(Long.valueOf(paramLong))) {
+      jq(paramLong);
     }
-    return (f.a)this.jzb.get(Long.valueOf(paramLong));
-  }
-  
-  public final f.a dU(long paramLong)
-  {
-    if (this.jzb.containsKey(Long.valueOf(paramLong))) {
-      return (f.a)this.jzb.get(Long.valueOf(paramLong));
-    }
-    f.a locala = new f.a();
-    locala.jzc = paramLong;
-    locala.jze = null;
-    locala.aYR = null;
-    locala.jzd = null;
-    locala.bJw = null;
-    locala.mURL = null;
-    locala.bKp = 0;
-    locala.jzf = false;
-    locala.hUQ = 0L;
-    this.jzb.put(Long.valueOf(paramLong), locala);
+    a locala = (a)this.lIA.get(Long.valueOf(paramLong));
+    AppMethodBeat.o(19584);
     return locala;
   }
   
-  public final boolean dV(long paramLong)
+  public final a jm(long paramLong)
   {
-    y.i("MicroMsg.exdevice.ExdeviceInfoManager", "setDeviceAuthFlag, device id = %d", new Object[] { Long.valueOf(paramLong) });
-    f.a locala = dT(paramLong);
+    AppMethodBeat.i(19585);
+    if (this.lIA.containsKey(Long.valueOf(paramLong)))
+    {
+      locala = (a)this.lIA.get(Long.valueOf(paramLong));
+      AppMethodBeat.o(19585);
+      return locala;
+    }
+    a locala = new a();
+    locala.lIB = paramLong;
+    locala.lID = null;
+    locala.sessionKey = null;
+    locala.lIC = null;
+    locala.cqQ = null;
+    locala.mURL = null;
+    locala.crJ = 0;
+    locala.lIE = false;
+    locala.jOK = 0L;
+    this.lIA.put(Long.valueOf(paramLong), locala);
+    AppMethodBeat.o(19585);
+    return locala;
+  }
+  
+  public final boolean jn(long paramLong)
+  {
+    AppMethodBeat.i(19586);
+    ab.i("MicroMsg.exdevice.ExdeviceInfoManager", "setDeviceAuthFlag, device id = %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = jl(paramLong);
     if (locala == null)
     {
-      y.e("MicroMsg.exdevice.ExdeviceInfoManager", "getExDeviceInfo failed!!!");
+      ab.e("MicroMsg.exdevice.ExdeviceInfoManager", "getExDeviceInfo failed!!!");
+      AppMethodBeat.o(19586);
       return false;
     }
-    locala.jzf = true;
+    locala.lIE = true;
+    AppMethodBeat.o(19586);
     return true;
   }
   
-  public final boolean dW(long paramLong)
+  public final boolean jo(long paramLong)
   {
-    y.i("MicroMsg.exdevice.ExdeviceInfoManager", "delDeviceAuthFlag, device id = %d", new Object[] { Long.valueOf(paramLong) });
-    f.a locala = dT(paramLong);
+    AppMethodBeat.i(19587);
+    ab.i("MicroMsg.exdevice.ExdeviceInfoManager", "delDeviceAuthFlag, device id = %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = jl(paramLong);
     if (locala == null)
     {
-      y.e("MicroMsg.exdevice.ExdeviceInfoManager", "getExDeviceInfo failed!!!");
+      ab.e("MicroMsg.exdevice.ExdeviceInfoManager", "getExDeviceInfo failed!!!");
+      AppMethodBeat.o(19587);
       return false;
     }
-    locala.jzf = false;
+    locala.lIE = false;
+    AppMethodBeat.o(19587);
     return true;
   }
   
-  public final boolean dX(long paramLong)
+  public final boolean jp(long paramLong)
   {
-    y.i("MicroMsg.exdevice.ExdeviceInfoManager", "isDeviceAuthed, device id = %d", new Object[] { Long.valueOf(paramLong) });
-    f.a locala = dT(paramLong);
+    AppMethodBeat.i(19588);
+    ab.i("MicroMsg.exdevice.ExdeviceInfoManager", "isDeviceAuthed, device id = %d", new Object[] { Long.valueOf(paramLong) });
+    a locala = jl(paramLong);
     if (locala == null)
     {
-      y.e("MicroMsg.exdevice.ExdeviceInfoManager", "getExDeviceInfo failed!!!");
+      ab.e("MicroMsg.exdevice.ExdeviceInfoManager", "getExDeviceInfo failed!!!");
+      AppMethodBeat.o(19588);
       return false;
     }
-    return locala.jzf;
+    boolean bool = locala.lIE;
+    AppMethodBeat.o(19588);
+    return bool;
   }
   
-  public final byte[] l(long paramLong, int paramInt)
+  public final byte[] q(long paramLong, int paramInt)
   {
-    if (paramLong < 0L) {
-      y.e("MicroMsg.exdevice.ExdeviceInfoManager", "device is lower than 0");
-    }
-    Object localObject;
-    do
+    AppMethodBeat.i(19590);
+    if (paramLong < 0L)
     {
+      ab.e("MicroMsg.exdevice.ExdeviceInfoManager", "device is lower than 0");
+      AppMethodBeat.o(19590);
       return null;
-      f.a locala = (f.a)this.jzb.get(Long.valueOf(paramLong));
-      localObject = locala;
-      if (locala == null)
-      {
-        dY(paramLong);
-        localObject = (f.a)this.jzb.get(Long.valueOf(paramLong));
-      }
-    } while (localObject == null);
+    }
+    a locala = (a)this.lIA.get(Long.valueOf(paramLong));
+    Object localObject = locala;
+    if (locala == null)
+    {
+      jq(paramLong);
+      localObject = (a)this.lIA.get(Long.valueOf(paramLong));
+    }
+    if (localObject == null)
+    {
+      AppMethodBeat.o(19590);
+      return null;
+    }
     switch (paramInt)
     {
     default: 
@@ -178,13 +226,27 @@ public final class f
     }
     for (;;)
     {
+      AppMethodBeat.o(19590);
       return localObject;
-      localObject = ((f.a)localObject).jze;
+      localObject = ((a)localObject).lID;
       continue;
-      localObject = ((f.a)localObject).aYR;
+      localObject = ((a)localObject).sessionKey;
       continue;
-      localObject = ((f.a)localObject).jzd;
+      localObject = ((a)localObject).lIC;
     }
+  }
+  
+  public static final class a
+  {
+    public String cqQ;
+    public int crJ;
+    public long jOK;
+    public long lIB;
+    public byte[] lIC;
+    public byte[] lID;
+    public boolean lIE;
+    public String mURL;
+    public byte[] sessionKey;
   }
 }
 

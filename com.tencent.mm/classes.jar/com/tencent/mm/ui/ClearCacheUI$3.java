@@ -1,10 +1,12 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.h.a.bp;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.g.b;
+import com.tencent.mm.g.a.br;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class ClearCacheUI$3
   implements Runnable
@@ -13,43 +15,45 @@ final class ClearCacheUI$3
   
   public final void run()
   {
-    y.w("MicroMsg.ClearCacheUI", "doClearCache flag %d", new Object[] { Long.valueOf(this.uHL) });
-    if ((this.uHL & 1L) != 0L) {
-      com.tencent.mm.vfs.e.K(com.tencent.mm.plugin.n.c.bbu(), true);
+    AppMethodBeat.i(29168);
+    ab.w("MicroMsg.ClearCacheUI", "doClearCache flag %d", new Object[] { Long.valueOf(this.yUW) });
+    if ((this.yUW & 1L) != 0L) {
+      com.tencent.mm.vfs.e.O(com.tencent.mm.plugin.i.c.bIC(), true);
     }
-    if ((this.uHL & 0x2) != 0L) {
-      com.tencent.mm.vfs.e.K(com.tencent.mm.as.a.g.b.erZ, true);
+    if ((this.yUW & 0x2) != 0L) {
+      com.tencent.mm.vfs.e.O(b.eQS, true);
     }
-    if ((this.uHL & 0x4) != 0L) {
-      com.tencent.mm.vfs.e.K(com.tencent.mm.compatible.util.e.dzJ, true);
+    if ((this.yUW & 0x4) != 0L) {
+      com.tencent.mm.vfs.e.O(com.tencent.mm.compatible.util.e.esx, true);
     }
-    if ((this.uHL & 0x8) != 0L)
+    if ((this.yUW & 0x8) != 0L)
     {
-      au.Hx();
-      com.tencent.mm.vfs.e.K(com.tencent.mm.model.c.FP(), true);
+      aw.aaz();
+      com.tencent.mm.vfs.e.O(com.tencent.mm.model.c.YT(), true);
     }
-    if ((this.uHL & 0x10) != 0L) {
-      com.tencent.mm.vfs.e.K(com.tencent.mm.plugin.avatar.b.atg(), true);
+    if ((this.yUW & 0x10) != 0L) {
+      com.tencent.mm.vfs.e.O(com.tencent.mm.plugin.avatar.c.aSE(), true);
     }
-    if ((this.uHL & 0x20) != 0L)
+    if ((this.yUW & 0x20) != 0L)
     {
-      au.Hx();
-      com.tencent.mm.vfs.e.K(com.tencent.mm.model.c.FK(), true);
+      aw.aaz();
+      com.tencent.mm.vfs.e.O(com.tencent.mm.model.c.YO(), true);
     }
-    if ((this.uHL & 0x40) != 0L)
+    if ((this.yUW & 0x40) != 0L)
     {
-      au.Hx();
-      com.tencent.mm.vfs.e.K(com.tencent.mm.model.c.getAccSnsPath(), true);
+      aw.aaz();
+      com.tencent.mm.vfs.e.O(com.tencent.mm.model.c.getAccSnsPath(), true);
     }
-    bp localbp = new bp();
-    localbp.bHM.bHN = this.uHL;
-    a.udP.m(localbp);
-    ai.d(new ClearCacheUI.3.1(this));
+    br localbr = new br();
+    localbr.cpb.cpc = this.yUW;
+    a.ymk.l(localbr);
+    al.d(new ClearCacheUI.3.1(this));
+    AppMethodBeat.o(29168);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.ClearCacheUI.3
  * JD-Core Version:    0.7.0.1
  */

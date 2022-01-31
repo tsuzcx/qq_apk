@@ -3,26 +3,29 @@ package com.tencent.mm.plugin.appbrand.widget.b;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.protocal.c.bna;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$b$1
   implements View.OnClickListener
 {
-  c$b$1(c.b paramb, bna parambna, ImageView paramImageView) {}
+  c$b$1(c.b paramb, c.c paramc, ImageView paramImageView) {}
   
   public final void onClick(View paramView)
   {
-    if (this.fYb.tGf == 2)
+    AppMethodBeat.i(102352);
+    if (this.jjf.state == 2)
     {
-      this.fYc.setImageResource(y.i.login_auth_state_not_selected);
-      this.fYb.tGf = 1;
-    }
-    while (this.fYb.tGf != 1) {
+      this.jjg.setImageResource(2130839323);
+      this.jjf.state = 1;
+      AppMethodBeat.o(102352);
       return;
     }
-    this.fYc.setImageResource(y.i.login_auth_state_default_select);
-    this.fYb.tGf = 2;
+    if (this.jjf.state == 1)
+    {
+      this.jjg.setImageResource(2130839321);
+      this.jjf.state = 2;
+    }
+    AppMethodBeat.o(102352);
   }
 }
 

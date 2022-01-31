@@ -10,12 +10,12 @@ final class a$1
   
   public final void writeByte(int paramInt)
   {
-    this.wTC.write(paramInt);
+    this.Bqh.write(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tinker.a.a.a.a.1
  * JD-Core Version:    0.7.0.1
  */

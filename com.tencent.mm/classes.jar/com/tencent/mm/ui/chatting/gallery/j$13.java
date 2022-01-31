@@ -1,57 +1,57 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.content.Intent;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.e;
-import java.util.HashMap;
+import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class j$13
-  implements Runnable
+  implements ap.a
 {
-  j$13(j paramj, String paramString) {}
+  j$13(j paramj) {}
   
-  public final void run()
+  public final boolean onTimerExpired()
   {
-    if ((this.vwT.vtH == null) || (this.vwT.vtH.cFV() == null) || (j.l(this.vwT) == null)) {
-      y.w("MicroMsg.Imagegallery.handler.video", "show error alert but adapter is null.");
-    }
-    for (;;)
+    AppMethodBeat.i(32328);
+    if (!j.f(this.zNd).isStreaming())
     {
-      return;
-      this.vwT.vtH.cFV().a(false, 0.0F);
-      if (!bk.bl(this.kjY)) {
-        y.e("MicroMsg.Imagegallery.handler.video", "mediaplay play video error, use third player.[%s]", new Object[] { this.kjY });
-      }
-      try
-      {
-        Object localObject = new Intent();
-        ((Intent)localObject).setAction("android.intent.action.VIEW");
-        ((Intent)localObject).setDataAndType(e.aeP(this.kjY), "video/*");
-        this.vwT.vtH.vtJ.startActivity((Intent)localObject);
-        localObject = (j.a)j.l(this.vwT).get(j.a(this.vwT));
-        if ((localObject == null) || (((j.a)localObject).bFH == null)) {
-          continue;
-        }
-        this.vwT.HE(((j.a)localObject).pos);
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          y.e("MicroMsg.Imagegallery.handler.video", "startActivity fail, activity not found");
-          h.h(this.vwT.vtH.vtJ, R.l.favorite_no_match_msg, R.l.favorite_no_match_title);
-        }
-      }
+      AppMethodBeat.o(32328);
+      return false;
     }
+    k localk = this.zNd.zJI.dJY();
+    if (localk == null)
+    {
+      AppMethodBeat.o(32328);
+      return false;
+    }
+    if (localk.zNq == null)
+    {
+      AppMethodBeat.o(32328);
+      return false;
+    }
+    if (localk.dKP().zNq.getVisibility() != 0)
+    {
+      AppMethodBeat.o(32328);
+      return false;
+    }
+    boolean bool = true;
+    if (localk.dKP().zNt.isPlaying()) {
+      bool = j.b(this.zNd, localk);
+    }
+    if (bool)
+    {
+      int i = localk.dKP().zNt.getCurrentPosition() / 1000;
+      bool = j.f(this.zNd).mj(i);
+      AppMethodBeat.o(32328);
+      return bool;
+    }
+    AppMethodBeat.o(32328);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.j.13
  * JD-Core Version:    0.7.0.1
  */

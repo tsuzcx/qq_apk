@@ -8,7 +8,7 @@ final class n$b
     super(paraml);
   }
   
-  public final String acb()
+  public final String avS()
   {
     return "ResDownload";
   }

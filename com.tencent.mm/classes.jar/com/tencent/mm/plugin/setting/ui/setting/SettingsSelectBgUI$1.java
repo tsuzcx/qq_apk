@@ -1,26 +1,30 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.View;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class SettingsSelectBgUI$1
-  implements am.a
+  implements ap.a
 {
   SettingsSelectBgUI$1(SettingsSelectBgUI paramSettingsSelectBgUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (this.nVW.findViewById(a.f.settings_select_bg_gv).getWidth() <= 0) {
+    AppMethodBeat.i(127470);
+    if (this.qKf.findViewById(2131827641).getWidth() <= 0)
+    {
+      AppMethodBeat.o(127470);
       return true;
     }
-    SettingsSelectBgUI.a(this.nVW);
+    SettingsSelectBgUI.a(this.qKf);
+    AppMethodBeat.o(127470);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsSelectBgUI.1
  * JD-Core Version:    0.7.0.1
  */

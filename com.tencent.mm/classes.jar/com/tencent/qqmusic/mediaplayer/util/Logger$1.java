@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.ILog;
 
 final class Logger$1
@@ -13,7 +14,9 @@ final class Logger$1
   
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
+    AppMethodBeat.i(105542);
     String.format(paramString2, paramVarArgs);
+    AppMethodBeat.o(105542);
   }
   
   public final void e(String paramString, Throwable paramThrowable) {}

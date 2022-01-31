@@ -1,53 +1,71 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.spans;
 
 import android.text.Spannable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.e;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class p
 {
-  final ArrayList<a> rKE = new ArrayList();
+  final ArrayList<a> vBi;
   
-  public final void a(Object paramObject, n paramn)
+  public p()
   {
-    this.rKE.add(new a(paramObject, paramn, false));
+    AppMethodBeat.i(26961);
+    this.vBi = new ArrayList();
+    AppMethodBeat.o(26961);
+  }
+  
+  private void a(Object paramObject, n paramn)
+  {
+    AppMethodBeat.i(26963);
+    if ((paramObject instanceof f)) {
+      this.vBi.add(new a(paramObject, paramn, true));
+    }
+    AppMethodBeat.o(26963);
   }
   
   public final void a(ArrayList<Object> paramArrayList, n paramn)
   {
+    AppMethodBeat.i(26962);
     paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
-    {
-      Object localObject = paramArrayList.next();
-      if ((localObject instanceof f)) {
-        this.rKE.add(new a(localObject, paramn, true));
-      }
+    while (paramArrayList.hasNext()) {
+      a(paramArrayList.next(), paramn);
     }
+    AppMethodBeat.o(26962);
+  }
+  
+  public final void b(Object paramObject, n paramn)
+  {
+    AppMethodBeat.i(26964);
+    this.vBi.add(new a(paramObject, paramn, false));
+    AppMethodBeat.o(26964);
   }
   
   public final void c(Spannable paramSpannable)
   {
-    Iterator localIterator = this.rKE.iterator();
+    AppMethodBeat.i(26965);
+    Iterator localIterator = this.vBi.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      f localf = locala.rKF;
-      int m = locala.rKG.aiH;
+      f localf = locala.vBj;
+      int m = locala.vBk.akX;
       int i;
-      if (locala.rKH)
+      if (locala.vBl)
       {
         i = paramSpannable.getSpanStart(localf);
         if ((i >= 0) && (i < m)) {
-          paramSpannable.setSpan(localf.cjc(), i, m, 34);
+          paramSpannable.setSpan(localf.djD(), i, m, 34);
         }
         paramSpannable.removeSpan(localf);
       }
       else
       {
-        n localn = locala.rKG;
-        int k = locala.rKG.Eo;
-        if ((localn.rKy) && (localn.isEmpty())) {
+        n localn = locala.vBk;
+        int k = locala.vBk.Fe;
+        if ((localn.vBc) && (localn.isEmpty())) {
           i = 34;
         }
         for (;;)
@@ -58,9 +76,9 @@ public final class p
           }
           paramSpannable.setSpan(localf, m, j, i);
           break;
-          if ((localn.rKy) && (localn.rKx)) {
+          if ((localn.vBc) && (localn.vBb)) {
             i = 18;
-          } else if (localn.rKy) {
+          } else if (localn.vBc) {
             i = 34;
           } else {
             i = 33;
@@ -68,19 +86,22 @@ public final class p
         }
       }
     }
+    AppMethodBeat.o(26965);
   }
   
-  private static final class a
+  static final class a
   {
-    final f rKF;
-    final n rKG;
-    final boolean rKH;
+    final f vBj;
+    final n vBk;
+    final boolean vBl;
     
     a(Object paramObject, n paramn, boolean paramBoolean)
     {
-      this.rKF = ((f)paramObject);
-      this.rKG = paramn;
-      this.rKH = paramBoolean;
+      AppMethodBeat.i(26960);
+      this.vBj = ((f)paramObject);
+      this.vBk = paramn;
+      this.vBl = paramBoolean;
+      AppMethodBeat.o(26960);
     }
   }
 }

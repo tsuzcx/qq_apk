@@ -1,73 +1,87 @@
 package com.tencent.mm.chatroom.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 
 public class TransferRoomOwnerUI
   extends SelectMemberUI
   implements f
 {
-  private com.tencent.mm.ui.base.p dpF;
-  private boolean dtA;
+  private com.tencent.mm.ui.base.p ehb;
+  private boolean ele;
+  
+  protected final void Kj()
+  {
+    AppMethodBeat.i(104464);
+    super.Kj();
+    this.ele = getIntent().getBooleanExtra("quit_room", false);
+    AppMethodBeat.o(104464);
+  }
   
   protected final void a(View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(104467);
     super.a(paramView, paramInt, paramLong);
-    paramView = this.drW.go(paramInt);
-    if ((paramView == null) || (paramView.dnp == null))
+    paramView = this.ejE.iD(paramInt);
+    if ((paramView == null) || (paramView.contact == null))
     {
-      y.e("MicroMsg.TransferRoomOwnerUI", "null == item || null == item.contact");
+      ab.e("MicroMsg.TransferRoomOwnerUI", "null == item || null == item.contact");
+      AppMethodBeat.o(104467);
       return;
     }
-    Object localObject2 = paramView.dnp;
-    String str = ((ao)localObject2).field_username;
-    if (!bk.bl(((ao)localObject2).field_conRemark))
+    Object localObject2 = paramView.contact;
+    String str = ((aq)localObject2).field_username;
+    if (!bo.isNullOrNil(((aq)localObject2).field_conRemark))
     {
-      paramView = ((ao)localObject2).field_conRemark;
-      if (!bk.bl(paramView)) {
-        break label233;
+      paramView = ((aq)localObject2).field_conRemark;
+      if (!bo.isNullOrNil(paramView)) {
+        break label285;
       }
-      paramView = ((ad)localObject2).Bp();
     }
-    label233:
-    for (;;)
+    label285:
+    for (Object localObject1 = ((ad)localObject2).Oe();; localObject1 = paramView)
     {
-      Object localObject1 = paramView;
-      if (!a.gR(((ao)localObject2).field_type))
+      paramView = (View)localObject1;
+      if (!com.tencent.mm.n.a.je(((aq)localObject2).field_type))
       {
-        localObject2 = ((j)g.r(j.class)).Fx().Id(((ao)localObject2).field_username);
-        localObject1 = paramView;
-        if (localObject2 != null)
+        bv localbv = ((j)g.E(j.class)).YB().TM(((aq)localObject2).field_username);
+        paramView = (View)localObject1;
+        if (localbv != null)
         {
-          localObject1 = paramView;
-          if (!bk.bl(((bv)localObject2).field_conRemark)) {
-            localObject1 = ((bv)localObject2).field_conRemark;
+          paramView = (View)localObject1;
+          if (!bo.isNullOrNil(localbv.field_conRemark)) {
+            paramView = localbv.field_conRemark;
           }
         }
       }
-      if (!this.dtA) {}
-      for (paramView = getString(a.i.room_transfer_sure_room_ower, new Object[] { localObject1 });; paramView = getString(a.i.room_quit_and_select_new_owner_confirm, new Object[] { localObject1 }))
+      localObject2 = com.tencent.mm.openim.room.a.a.A((ad)localObject2);
+      localObject1 = paramView;
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = paramView + localObject2;
+      }
+      if (!this.ele) {}
+      for (paramView = getString(2131302799, new Object[] { localObject1 });; paramView = getString(2131302764, new Object[] { localObject1 }))
       {
         h.a(this, paramView, "", new TransferRoomOwnerUI.1(this, str), new TransferRoomOwnerUI.2(this));
+        AppMethodBeat.o(104467);
         return;
-        paramView = a(this.dnL, ((ao)localObject2).field_username);
+        paramView = a(this.efi, ((aq)localObject2).field_username);
         break;
       }
     }
@@ -75,50 +89,73 @@ public class TransferRoomOwnerUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(104463);
     super.onCreate(paramBundle);
-    g.DO().dJT.a(990, this);
+    if (com.tencent.mm.model.t.nK(this.egF))
+    {
+      g.RK().eHt.a(811, this);
+      AppMethodBeat.o(104463);
+      return;
+    }
+    g.RK().eHt.a(990, this);
+    AppMethodBeat.o(104463);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(104465);
     super.onDestroy();
-    if ((this.dpF != null) && (this.dpF.isShowing())) {
-      this.dpF.dismiss();
+    if ((this.ehb != null) && (this.ehb.isShowing())) {
+      this.ehb.dismiss();
     }
-    g.DO().dJT.b(990, this);
+    if (com.tencent.mm.model.t.nK(this.egF))
+    {
+      g.RK().eHt.b(811, this);
+      AppMethodBeat.o(104465);
+      return;
+    }
+    g.RK().eHt.b(990, this);
+    AppMethodBeat.o(104465);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    if ((this.dpF != null) && (this.dpF.isShowing())) {
-      this.dpF.dismiss();
+    AppMethodBeat.i(104466);
+    if ((this.ehb != null) && (this.ehb.isShowing())) {
+      this.ehb.dismiss();
     }
-    if (paramm.getType() == 990)
+    if ((paramm.getType() == 990) || (paramm.getType() == 811))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        y.i("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer successfully],owner_username:%s", new Object[] { ((com.tencent.mm.chatroom.c.p)paramm).username });
-        com.tencent.mm.ui.base.s.makeText(this, a.i.room_transfer_owner_successfully, 1).show();
-        paramString = new Intent(this.mController.uMN, ChatroomInfoUI.class);
-        paramString.putExtra("RoomInfo_Id", this.dpj);
-        paramString.putExtra("Chat_User", this.dpj);
-        paramString.putExtra("Is_Chatroom", true);
-        paramString.setFlags(67108864);
-        this.mController.uMN.startActivity(paramString);
-        finish();
+        if (com.tencent.mm.model.t.nK(this.egF)) {
+          ab.i("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer successfully],owner_username:%s", new Object[] { ((com.tencent.mm.openim.b.p)paramm).username });
+        }
+        for (;;)
+        {
+          com.tencent.mm.ui.base.t.makeText(this, 2131302797, 1).show();
+          paramString = new Intent(getContext(), ChatroomInfoUI.class);
+          paramString.putExtra("RoomInfo_Id", this.egF);
+          paramString.putExtra("Chat_User", this.egF);
+          paramString.putExtra("Is_Chatroom", true);
+          paramString.setFlags(67108864);
+          getContext().startActivity(paramString);
+          finish();
+          AppMethodBeat.o(104466);
+          return;
+          ab.i("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer successfully],owner_username:%s", new Object[] { ((com.tencent.mm.chatroom.c.p)paramm).username });
+        }
       }
+      com.tencent.mm.ui.base.t.makeText(this, 2131302796, 1).show();
+      ab.w("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer failed: %d %d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     }
-    else {
-      return;
-    }
-    com.tencent.mm.ui.base.s.makeText(this, a.i.room_transfer_owner_failed, 1).show();
-    y.w("MicroMsg.TransferRoomOwnerUI", "dz[onSceneEnd transfer failed: %d %d %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.o(104466);
   }
   
-  protected final void xR()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    super.xR();
-    this.dtA = getIntent().getBooleanExtra("quit_room", false);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

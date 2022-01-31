@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.subapp.ui.pluginapp;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,504 +11,578 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.R.o;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.m.e;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
-import com.tencent.mm.modelmulti.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.i.a.a;
-import com.tencent.mm.ui.i.a.b;
-import com.tencent.mm.ui.i.a.c;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.j.a.a;
+import com.tencent.mm.ui.j.a.b;
+import com.tencent.mm.ui.j.a.c;
 
 public class InviteFriendsBy3rdUI
   extends MMPreference
-  implements com.tencent.mm.ah.f, a.a, a.b
+  implements com.tencent.mm.ai.f, a.a, a.b
 {
-  private static int pxP = 1;
-  private static int pxQ = 2;
-  private static int pxR = 3;
-  private static int pxS = 4;
-  private static int pxT = 5;
-  private static int pxU = 0;
-  private static int pxV = 1;
-  private ProgressDialog dnm = null;
+  private static int sZD = 1;
+  private static int sZE = 2;
+  private static int sZF = 3;
+  private static int sZG = 4;
+  private static int sZH = 5;
+  private static int sZI = 0;
+  private static int sZJ = 1;
+  private ProgressDialog eeN;
   private int fromScene;
-  private ProgressBar kjT = null;
-  private ProgressDialog lxZ = null;
-  private com.tencent.mm.ui.i.a piY = new com.tencent.mm.ui.i.a();
-  private int pxW = 0;
-  private Bitmap pxX = null;
-  private View pxY;
-  private ImageView pxZ = null;
-  private EditText pya = null;
-  private boolean pyb = false;
-  private boolean pyc = false;
+  private ProgressBar mEy;
+  private ProgressDialog nVm;
+  private int sZK;
+  private Bitmap sZL;
+  private View sZM;
+  private ImageView sZN;
+  private EditText sZO;
+  private boolean sZP;
+  private boolean sZQ;
+  private com.tencent.mm.ui.j.a sbA;
   
-  /* Error */
-  private static byte[] FR(String paramString)
+  public InviteFriendsBy3rdUI()
   {
-    // Byte code:
-    //   0: invokestatic 95	com/tencent/mm/model/au:Hx	()Lcom/tencent/mm/model/c;
-    //   3: pop
-    //   4: invokestatic 101	com/tencent/mm/model/c:FG	()Ljava/lang/String;
-    //   7: astore_1
-    //   8: invokestatic 95	com/tencent/mm/model/au:Hx	()Lcom/tencent/mm/model/c;
-    //   11: pop
-    //   12: aload_1
-    //   13: invokestatic 104	com/tencent/mm/model/c:FH	()Ljava/lang/String;
-    //   16: ldc 106
-    //   18: aload_0
-    //   19: invokevirtual 112	java/lang/String:getBytes	()[B
-    //   22: invokestatic 118	com/tencent/mm/a/g:o	([B)Ljava/lang/String;
-    //   25: ldc 120
-    //   27: invokestatic 126	com/tencent/mm/sdk/platformtools/h:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   30: astore_0
-    //   31: new 128	java/io/RandomAccessFile
-    //   34: dup
-    //   35: aload_0
-    //   36: ldc 130
-    //   38: invokespecial 133	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   41: astore_1
-    //   42: aload_1
-    //   43: astore_0
-    //   44: aload_1
-    //   45: invokevirtual 137	java/io/RandomAccessFile:length	()J
-    //   48: l2i
-    //   49: newarray byte
-    //   51: astore_2
-    //   52: aload_1
-    //   53: astore_0
-    //   54: aload_1
-    //   55: aload_2
-    //   56: invokevirtual 141	java/io/RandomAccessFile:read	([B)I
-    //   59: pop
-    //   60: aload_1
-    //   61: invokevirtual 144	java/io/RandomAccessFile:close	()V
-    //   64: aload_2
-    //   65: areturn
-    //   66: astore_2
-    //   67: aconst_null
-    //   68: astore_1
-    //   69: aload_1
-    //   70: astore_0
-    //   71: ldc 146
-    //   73: aload_2
-    //   74: ldc 148
-    //   76: iconst_0
-    //   77: anewarray 150	java/lang/Object
-    //   80: invokestatic 156	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   83: aload_1
-    //   84: ifnull +7 -> 91
-    //   87: aload_1
-    //   88: invokevirtual 144	java/io/RandomAccessFile:close	()V
-    //   91: aconst_null
-    //   92: areturn
-    //   93: astore_1
-    //   94: aconst_null
-    //   95: astore_0
-    //   96: aload_0
-    //   97: ifnull +7 -> 104
-    //   100: aload_0
-    //   101: invokevirtual 144	java/io/RandomAccessFile:close	()V
-    //   104: aload_1
-    //   105: athrow
-    //   106: astore_0
-    //   107: aload_2
-    //   108: areturn
-    //   109: astore_0
-    //   110: goto -19 -> 91
-    //   113: astore_0
-    //   114: goto -10 -> 104
-    //   117: astore_1
-    //   118: goto -22 -> 96
-    //   121: astore_2
-    //   122: goto -53 -> 69
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	125	0	paramString	String
-    //   7	81	1	localObject1	Object
-    //   93	12	1	localObject2	Object
-    //   117	1	1	localObject3	Object
-    //   51	14	2	arrayOfByte	byte[]
-    //   66	42	2	localException1	java.lang.Exception
-    //   121	1	2	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   31	42	66	java/lang/Exception
-    //   31	42	93	finally
-    //   60	64	106	java/lang/Exception
-    //   87	91	109	java/lang/Exception
-    //   100	104	113	java/lang/Exception
-    //   44	52	117	finally
-    //   54	60	117	finally
-    //   71	83	117	finally
-    //   44	52	121	java/lang/Exception
-    //   54	60	121	java/lang/Exception
+    AppMethodBeat.i(25545);
+    this.sZK = 0;
+    this.eeN = null;
+    this.nVm = null;
+    this.sZL = null;
+    this.sZN = null;
+    this.mEy = null;
+    this.sZO = null;
+    this.sbA = new com.tencent.mm.ui.j.a();
+    this.sZP = false;
+    this.sZQ = false;
+    AppMethodBeat.o(25545);
   }
   
-  private static boolean au(Context paramContext, String paramString)
+  private void Go(int paramInt)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(25550);
+    com.tencent.mm.modelmulti.d locald = new com.tencent.mm.modelmulti.d(paramInt);
+    getString(2131297087);
+    this.eeN = com.tencent.mm.ui.base.h.b(this, getString(2131301086), true, new InviteFriendsBy3rdUI.8(this, locald));
+    aw.Rc().a(locald, 0);
+    AppMethodBeat.o(25550);
+  }
+  
+  /* Error */
+  private static byte[] Rt(String paramString)
+  {
+    // Byte code:
+    //   0: sipush 25556
+    //   3: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: invokestatic 134	com/tencent/mm/model/aw:aaz	()Lcom/tencent/mm/model/c;
+    //   9: pop
+    //   10: invokestatic 140	com/tencent/mm/model/c:YK	()Ljava/lang/String;
+    //   13: astore_1
+    //   14: invokestatic 134	com/tencent/mm/model/aw:aaz	()Lcom/tencent/mm/model/c;
+    //   17: pop
+    //   18: aload_1
+    //   19: invokestatic 143	com/tencent/mm/model/c:YL	()Ljava/lang/String;
+    //   22: ldc 145
+    //   24: aload_0
+    //   25: invokevirtual 151	java/lang/String:getBytes	()[B
+    //   28: invokestatic 157	com/tencent/mm/a/g:w	([B)Ljava/lang/String;
+    //   31: ldc 159
+    //   33: invokestatic 165	com/tencent/mm/sdk/platformtools/j:h	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   36: astore_0
+    //   37: new 167	java/io/RandomAccessFile
+    //   40: dup
+    //   41: aload_0
+    //   42: ldc 169
+    //   44: invokespecial 172	java/io/RandomAccessFile:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   47: astore_1
+    //   48: aload_1
+    //   49: astore_0
+    //   50: aload_1
+    //   51: invokevirtual 176	java/io/RandomAccessFile:length	()J
+    //   54: l2i
+    //   55: newarray byte
+    //   57: astore_2
+    //   58: aload_1
+    //   59: astore_0
+    //   60: aload_1
+    //   61: aload_2
+    //   62: invokevirtual 180	java/io/RandomAccessFile:read	([B)I
+    //   65: pop
+    //   66: aload_1
+    //   67: invokevirtual 183	java/io/RandomAccessFile:close	()V
+    //   70: sipush 25556
+    //   73: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   76: aload_2
+    //   77: areturn
+    //   78: astore_2
+    //   79: aconst_null
+    //   80: astore_1
+    //   81: aload_1
+    //   82: astore_0
+    //   83: ldc 185
+    //   85: aload_2
+    //   86: ldc 187
+    //   88: iconst_0
+    //   89: anewarray 189	java/lang/Object
+    //   92: invokestatic 195	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   95: aload_1
+    //   96: ifnull +7 -> 103
+    //   99: aload_1
+    //   100: invokevirtual 183	java/io/RandomAccessFile:close	()V
+    //   103: sipush 25556
+    //   106: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: aconst_null
+    //   110: areturn
+    //   111: astore_1
+    //   112: aconst_null
+    //   113: astore_0
+    //   114: aload_0
+    //   115: ifnull +7 -> 122
+    //   118: aload_0
+    //   119: invokevirtual 183	java/io/RandomAccessFile:close	()V
+    //   122: sipush 25556
+    //   125: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   128: aload_1
+    //   129: athrow
+    //   130: astore_0
+    //   131: goto -61 -> 70
+    //   134: astore_0
+    //   135: goto -32 -> 103
+    //   138: astore_0
+    //   139: goto -17 -> 122
+    //   142: astore_1
+    //   143: goto -29 -> 114
+    //   146: astore_2
+    //   147: goto -66 -> 81
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	150	0	paramString	String
+    //   13	87	1	localObject1	Object
+    //   111	18	1	localObject2	Object
+    //   142	1	1	localObject3	Object
+    //   57	20	2	arrayOfByte	byte[]
+    //   78	8	2	localException1	java.lang.Exception
+    //   146	1	2	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   37	48	78	java/lang/Exception
+    //   37	48	111	finally
+    //   66	70	130	java/lang/Exception
+    //   99	103	134	java/lang/Exception
+    //   118	122	138	java/lang/Exception
+    //   50	58	142	finally
+    //   60	66	142	finally
+    //   83	95	142	finally
+    //   50	58	146	java/lang/Exception
+    //   60	66	146	java/lang/Exception
+  }
+  
+  private static boolean aD(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(25551);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(25551);
       return false;
     }
     try
     {
       paramContext.getPackageManager().getApplicationInfo(paramString, 8192);
+      AppMethodBeat.o(25551);
       return true;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      AppMethodBeat.o(25551);
+    }
     return false;
   }
   
-  private static Bitmap bdf()
+  private static void adX(String paramString)
   {
-    byte[] arrayOfByte = FR(q.Gj());
-    if (arrayOfByte == null) {
-      return null;
-    }
-    return com.tencent.mm.sdk.platformtools.c.bu(arrayOfByte);
+    AppMethodBeat.i(25557);
+    aw.aaz();
+    paramString = new com.tencent.mm.bb.a(paramString, bo.g((Integer)c.Ru().get(66561, null)));
+    aw.Rc().a(paramString, 0);
+    AppMethodBeat.o(25557);
   }
   
-  private void m(int paramInt, String paramString1, String paramString2)
+  private static Bitmap bKp()
   {
-    this.pxY = View.inflate(this.mController.uMN, R.i.confirm_dialog_item, null);
-    this.pya = ((EditText)this.pxY.findViewById(R.h.confirm_dialog_text_et));
-    this.pxZ = ((ImageView)this.pxY.findViewById(R.h.confirm_dialog_imageview));
-    this.kjT = ((ProgressBar)this.pxY.findViewById(R.h.loading_pb));
-    ((View)this.pxZ.getParent()).setVisibility(8);
-    this.pya.setText(paramString1);
-    this.pxX = bdf();
-    if (this.pxX == null)
+    AppMethodBeat.i(25555);
+    Object localObject = Rt(r.Zn());
+    if (localObject == null)
     {
-      Object localObject = q.Gj();
-      au.Hx();
-      localObject = new com.tencent.mm.ba.a((String)localObject, bk.g((Integer)com.tencent.mm.model.c.Dz().get(66561, null)));
-      au.Dk().a((m)localObject, 0);
-      ((ProgressBar)this.pxY.findViewById(R.h.loading_pb)).setVisibility(0);
+      AppMethodBeat.o(25555);
+      return null;
+    }
+    localObject = com.tencent.mm.sdk.platformtools.d.bT((byte[])localObject);
+    AppMethodBeat.o(25555);
+    return localObject;
+  }
+  
+  private void w(int paramInt, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(25554);
+    this.sZM = View.inflate(getContext(), 2130969201, null);
+    this.sZO = ((EditText)this.sZM.findViewById(2131822990));
+    this.sZN = ((ImageView)this.sZM.findViewById(2131822989));
+    this.mEy = ((ProgressBar)this.sZM.findViewById(2131821643));
+    ((View)this.sZN.getParent()).setVisibility(8);
+    this.sZO.setText(paramString1);
+    this.sZL = bKp();
+    if (this.sZL == null)
+    {
+      adX(r.Zn());
+      ((ProgressBar)this.sZM.findViewById(2131821643)).setVisibility(0);
     }
     for (;;)
     {
-      com.tencent.mm.pluginsdk.ui.applet.g.a(this.mController, paramString2, this.pxY, getResources().getString(R.l.app_send), new InviteFriendsBy3rdUI.2(this, paramString1, paramInt));
+      com.tencent.mm.pluginsdk.ui.applet.g.a(this.mController, paramString2, this.sZM, getResources().getString(2131297067), new InviteFriendsBy3rdUI.2(this, paramString1, paramInt));
+      AppMethodBeat.o(25554);
       return;
-      if (this.pxZ != null) {
-        this.pxZ.setImageBitmap(this.pxX);
+      if (this.sZN != null) {
+        this.sZN.setImageBitmap(this.sZL);
       }
     }
   }
   
-  private void sS(int paramInt)
+  private void xU(int paramInt)
   {
-    com.tencent.mm.ui.base.h.a(this.mController.uMN, paramInt, R.l.app_tip, new DialogInterface.OnClickListener()new InviteFriendsBy3rdUI.11
+    AppMethodBeat.i(25552);
+    com.tencent.mm.ui.base.h.a(getContext(), paramInt, 2131297087, new DialogInterface.OnClickListener()new InviteFriendsBy3rdUI.11
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     }, new InviteFriendsBy3rdUI.11(this));
-  }
-  
-  private void zo(int paramInt)
-  {
-    d locald = new d(paramInt);
-    getString(R.l.app_tip);
-    this.dnm = com.tencent.mm.ui.base.h.b(this, getString(R.l.loading_tips), true, new InviteFriendsBy3rdUI.8(this, locald));
-    au.Dk().a(locald, 0);
+    AppMethodBeat.o(25552);
   }
   
   public final void a(a.c paramc)
   {
-    if (this.lxZ != null) {
-      this.lxZ.cancel();
+    AppMethodBeat.i(25553);
+    if (this.nVm != null) {
+      this.nVm.cancel();
     }
-    switch (InviteFriendsBy3rdUI.3.lyx[paramc.ordinal()])
+    switch (InviteFriendsBy3rdUI.3.nVJ[paramc.ordinal()])
     {
-    case 2: 
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(25553);
       return;
-    case 1: 
-      sS(R.l.twitterlogin_success);
+      xU(2131304399);
+      AppMethodBeat.o(25553);
       return;
+      AppMethodBeat.o(25553);
+      return;
+      xU(2131304398);
     }
-    sS(R.l.twitterlogin_failed);
-  }
-  
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
-  {
-    if ("invite_friends_by_message".equals(paramPreference.mKey))
-    {
-      this.pxW = pxQ;
-      zo(2);
-      return true;
-    }
-    if ("invite_friends_by_mail".equals(paramPreference.mKey))
-    {
-      this.pxW = pxP;
-      zo(1);
-      return true;
-    }
-    if ("invite_friends_by_whatsapp".equals(paramPreference.mKey))
-    {
-      this.pxW = pxR;
-      zo(4);
-      return true;
-    }
-    if ("invite_friends_by_facebook".equals(paramPreference.mKey))
-    {
-      this.pxW = pxS;
-      if (q.GL())
-      {
-        this.pyc = true;
-        zo(8);
-        return true;
-      }
-      com.tencent.mm.ui.base.h.a(this.mController.uMN, R.l.settings_facebook_notice, R.l.app_tip, new InviteFriendsBy3rdUI.4(this), new InviteFriendsBy3rdUI.5(this));
-      return true;
-    }
-    if ("invite_friends_by_twitter".equals(paramPreference.mKey))
-    {
-      this.pxW = pxT;
-      if (this.piY.cJJ())
-      {
-        this.pyb = true;
-        zo(16);
-        return true;
-      }
-      com.tencent.mm.ui.base.h.a(this.mController.uMN, R.l.settings_twitter_notice, R.l.app_tip, new InviteFriendsBy3rdUI.6(this), new InviteFriendsBy3rdUI.7(this));
-      return true;
-    }
-    return false;
   }
   
   public final void b(a.c paramc) {}
   
-  public void onCreate(Bundle paramBundle)
+  public int getResourceId()
   {
-    super.onCreate(paramBundle);
-    setMMTitle(R.l.find_friends_by_invite_friend);
-    this.fromScene = getIntent().getIntExtra("Invite_friends", 4);
-    int i = bk.getInt(com.tencent.mm.m.g.AA().getValue("InviteFriendsInviteFlags"), 0);
-    paramBundle = this.vdd;
-    if ((i & 0x2) <= 0) {
-      paramBundle.ade("invite_friends_by_message");
-    }
-    if ((i & 0x1) <= 0) {
-      paramBundle.ade("invite_friends_by_mail");
-    }
-    if (((i & 0x4) <= 0) || (!au(this.mController.uMN, "com.whatsapp"))) {
-      paramBundle.ade("invite_friends_by_whatsapp");
-    }
-    if (((i & 0x8) <= 0) || (!q.GI())) {
-      paramBundle.ade("invite_friends_by_facebook");
-    }
-    if ((i & 0x10) <= 0) {
-      paramBundle.ade("invite_friends_by_twitter");
-    }
-    paramBundle.notifyDataSetChanged();
-    au.Dk().a(1803, this);
-    au.Dk().a(1804, this);
-    au.Dk().a(168, this);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        InviteFriendsBy3rdUI.this.finish();
-        return true;
-      }
-    });
+    return 2131165244;
   }
   
-  protected void onDestroy()
+  public void onCreate(Bundle paramBundle)
   {
-    au.Dk().b(1803, this);
-    au.Dk().b(1804, this);
-    au.Dk().b(168, this);
-    if (this.pxW == 0) {
-      com.tencent.mm.plugin.report.service.h.nFQ.f(14035, new Object[] { Integer.valueOf(this.pxW), Integer.valueOf(pxU), Integer.valueOf(this.fromScene) });
+    AppMethodBeat.i(25546);
+    super.onCreate(paramBundle);
+    setMMTitle(2131299900);
+    this.fromScene = getIntent().getIntExtra("Invite_friends", 4);
+    int i = bo.getInt(com.tencent.mm.m.g.Nq().getValue("InviteFriendsInviteFlags"), 0);
+    paramBundle = getPreferenceScreen();
+    if ((i & 0x2) <= 0) {
+      paramBundle.aty("invite_friends_by_message");
+    }
+    if ((i & 0x1) <= 0) {
+      paramBundle.aty("invite_friends_by_mail");
+    }
+    if (((i & 0x4) <= 0) || (!aD(getContext(), "com.whatsapp"))) {
+      paramBundle.aty("invite_friends_by_whatsapp");
+    }
+    if (((i & 0x8) <= 0) || (!r.ZM())) {
+      paramBundle.aty("invite_friends_by_facebook");
+    }
+    if ((i & 0x10) <= 0) {
+      paramBundle.aty("invite_friends_by_twitter");
+    }
+    paramBundle.notifyDataSetChanged();
+    aw.Rc().a(1803, this);
+    aw.Rc().a(1804, this);
+    aw.Rc().a(168, this);
+    setBackBtn(new InviteFriendsBy3rdUI.1(this));
+    AppMethodBeat.o(25546);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(25547);
+    aw.Rc().b(1803, this);
+    aw.Rc().b(1804, this);
+    aw.Rc().b(168, this);
+    if (this.sZK == 0) {
+      com.tencent.mm.plugin.report.service.h.qsU.e(14035, new Object[] { Integer.valueOf(this.sZK), Integer.valueOf(sZI), Integer.valueOf(this.fromScene) });
     }
     super.onDestroy();
+    AppMethodBeat.o(25547);
+  }
+  
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  {
+    AppMethodBeat.i(25548);
+    if ("invite_friends_by_message".equals(paramPreference.mKey))
+    {
+      this.sZK = sZE;
+      Go(2);
+      AppMethodBeat.o(25548);
+      return true;
+    }
+    if ("invite_friends_by_mail".equals(paramPreference.mKey))
+    {
+      this.sZK = sZD;
+      Go(1);
+      AppMethodBeat.o(25548);
+      return true;
+    }
+    if ("invite_friends_by_whatsapp".equals(paramPreference.mKey))
+    {
+      this.sZK = sZF;
+      Go(4);
+      AppMethodBeat.o(25548);
+      return true;
+    }
+    if ("invite_friends_by_facebook".equals(paramPreference.mKey))
+    {
+      this.sZK = sZG;
+      if (r.ZP())
+      {
+        this.sZQ = true;
+        Go(8);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(25548);
+        return true;
+        com.tencent.mm.ui.base.h.a(getContext(), 2131303251, 2131297087, new InviteFriendsBy3rdUI.4(this), new InviteFriendsBy3rdUI.5(this));
+      }
+    }
+    if ("invite_friends_by_twitter".equals(paramPreference.mKey))
+    {
+      this.sZK = sZH;
+      if (this.sbA.dOy())
+      {
+        this.sZP = true;
+        Go(16);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(25548);
+        return true;
+        com.tencent.mm.ui.base.h.a(getContext(), 2131303493, 2131297087, new InviteFriendsBy3rdUI.6(this), new InviteFriendsBy3rdUI.7(this));
+      }
+    }
+    AppMethodBeat.o(25548);
+    return false;
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.InviteFriendsBy3rdUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.dnm != null)
+    AppMethodBeat.i(25549);
+    ab.i("MicroMsg.InviteFriendsBy3rdUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.eeN != null)
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      com.tencent.mm.plugin.report.service.h.nFQ.f(14035, new Object[] { Integer.valueOf(this.pxW), Integer.valueOf(pxU), Integer.valueOf(this.fromScene) });
+      com.tencent.mm.plugin.report.service.h.qsU.e(14035, new Object[] { Integer.valueOf(this.sZK), Integer.valueOf(sZI), Integer.valueOf(this.fromScene) });
     }
-    if (paramm.getType() == 1803) {
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        com.tencent.mm.ui.base.h.h(this.mController.uMN, R.l.loading_failed, R.l.app_tip);
-      }
-    }
-    label185:
-    label496:
-    label888:
-    do
+    Object localObject1;
+    label193:
+    int i;
+    if (paramm.getType() == 1803)
     {
-      return;
-      paramString = (d)paramm;
-      Object localObject1;
-      int i;
-      if (bk.bl(paramString.title))
+      if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        localObject1 = null;
-        paramString = (d)paramm;
-        if (!bk.bl(paramString.content)) {
-          break label866;
-        }
-        paramString = null;
-        Object localObject2 = q.Gk();
-        au.Hx();
-        String str = (String)com.tencent.mm.model.c.Dz().get(6, null);
-        Object localObject3 = localObject2;
-        if (bk.bl((String)localObject2)) {
-          localObject3 = str;
-        }
-        i = ((d)paramm).esw;
-        localObject2 = paramString;
-        if ((i & 0x1) > 0)
-        {
-          localObject2 = localObject1;
-          if (bk.bl((String)localObject1)) {
-            localObject2 = String.format(getString(R.l.invite_friends_mail_title), new Object[] { q.Gl() });
-          }
-          localObject1 = paramString;
-          if (bk.bl(paramString)) {
-            localObject1 = String.format(getString(R.l.invite_friends_mail_content), new Object[] { localObject3 });
-          }
-          paramString = new Intent("android.intent.action.SEND");
-          paramString.putExtra("android.intent.extra.SUBJECT", (String)localObject2);
-          paramString.putExtra("android.intent.extra.TEXT", (String)localObject1);
-          paramString.setType("plain/text");
-          startActivity(Intent.createChooser(paramString, getString(R.l.invite_friends_by_mail_select)));
-          com.tencent.mm.plugin.report.service.h.nFQ.f(14035, new Object[] { Integer.valueOf(this.pxW), Integer.valueOf(pxV), Integer.valueOf(this.fromScene) });
-          localObject2 = localObject1;
-        }
-        paramString = (String)localObject2;
-        if ((i & 0x2) > 0)
-        {
-          paramString = (String)localObject2;
-          if (bk.bl((String)localObject2)) {
-            paramString = String.format(getString(R.l.invite_friends_message_content), new Object[] { localObject3 });
-          }
-          localObject1 = new Intent("android.intent.action.VIEW");
-          ((Intent)localObject1).putExtra("sms_body", paramString);
-          ((Intent)localObject1).setType("vnd.android-dir/mms-sms");
-          if (!bk.i(this, (Intent)localObject1)) {
-            break label874;
-          }
-          startActivity((Intent)localObject1);
-          com.tencent.mm.plugin.report.service.h.nFQ.f(14035, new Object[] { Integer.valueOf(this.pxW), Integer.valueOf(pxV), Integer.valueOf(this.fromScene) });
+        com.tencent.mm.ui.base.h.h(getContext(), 2131301084, 2131297087);
+        AppMethodBeat.o(25549);
+        return;
+      }
+      paramString = (com.tencent.mm.modelmulti.d)paramm;
+      if (!bo.isNullOrNil(paramString.title)) {
+        break label867;
+      }
+      localObject1 = null;
+      paramString = (com.tencent.mm.modelmulti.d)paramm;
+      if (!bo.isNullOrNil(paramString.content)) {
+        break label876;
+      }
+      paramString = null;
+      Object localObject2 = r.Zo();
+      aw.aaz();
+      String str = (String)c.Ru().get(6, null);
+      Object localObject3 = localObject2;
+      if (bo.isNullOrNil((String)localObject2)) {
+        localObject3 = str;
+      }
+      i = ((com.tencent.mm.modelmulti.d)paramm).fIi;
+      localObject2 = paramString;
+      if ((i & 0x1) > 0)
+      {
+        localObject2 = localObject1;
+        if (bo.isNullOrNil((String)localObject1)) {
+          localObject2 = String.format(getString(2131300767), new Object[] { r.Zp() });
         }
         localObject1 = paramString;
-        if ((i & 0x4) > 0)
-        {
-          localObject1 = paramString;
-          if (bk.bl(paramString)) {
-            localObject1 = String.format(getString(R.l.invite_friends_message_content), new Object[] { localObject3 });
-          }
-          paramString = new Intent();
-          paramString.setAction("android.intent.action.SEND");
-          paramString.putExtra("android.intent.extra.TEXT", (String)localObject1);
-          paramString.setType("text/plain");
-          paramString.setPackage("com.whatsapp");
-          startActivity(paramString);
-          com.tencent.mm.plugin.report.service.h.nFQ.f(14035, new Object[] { Integer.valueOf(this.pxW), Integer.valueOf(pxV), Integer.valueOf(this.fromScene) });
+        if (bo.isNullOrNil(paramString)) {
+          localObject1 = String.format(getString(2131300766), new Object[] { localObject3 });
         }
+        paramString = new Intent("android.intent.action.SEND");
+        paramString.putExtra("android.intent.extra.SUBJECT", (String)localObject2);
+        paramString.putExtra("android.intent.extra.TEXT", (String)localObject1);
+        paramString.setType("plain/text");
+        startActivity(Intent.createChooser(paramString, getString(2131300760)));
+        com.tencent.mm.plugin.report.service.h.qsU.e(14035, new Object[] { Integer.valueOf(this.sZK), Integer.valueOf(sZJ), Integer.valueOf(this.fromScene) });
         localObject2 = localObject1;
-        if ((i & 0x8) > 0)
-        {
-          paramString = (String)localObject1;
-          if (bk.bl((String)localObject1))
-          {
-            if (!bk.bl(q.Gk())) {
-              break label888;
-            }
-            paramString = getString(R.l.invite_friends_facebook_twitter_no_wechatid_content);
-          }
-          localObject1 = getString(R.l.invite_friends_by_facebook);
-          localObject2 = paramString;
-          if (this.pyc == true)
-          {
-            m(i, paramString, (String)localObject1);
-            this.pyc = false;
-            localObject2 = paramString;
-          }
-        }
-        if ((i & 0x10) > 0)
-        {
-          this.piY.a(this);
-          paramString = (String)localObject2;
-          if (bk.bl((String)localObject2)) {
-            if (!bk.bl(q.Gk())) {
-              break label912;
-            }
-          }
-        }
       }
-      for (paramString = getString(R.l.invite_friends_facebook_twitter_no_wechatid_content);; paramString = String.format(getString(R.l.invite_friends_facebook_twitter_content), new Object[] { q.Gk() }))
+      paramString = (String)localObject2;
+      if ((i & 0x2) > 0)
       {
-        localObject1 = getString(R.l.invite_friends_by_twitter);
-        if (this.pyb == true)
-        {
-          m(i, paramString, (String)localObject1);
-          this.pyb = false;
+        paramString = (String)localObject2;
+        if (bo.isNullOrNil((String)localObject2)) {
+          paramString = String.format(getString(2131300768), new Object[] { localObject3 });
         }
-        if (paramm.getType() != 1804) {
-          break label993;
+        localObject1 = new Intent("android.intent.action.VIEW");
+        ((Intent)localObject1).putExtra("sms_body", paramString);
+        ((Intent)localObject1).setType("vnd.android-dir/mms-sms");
+        if (!bo.k(this, (Intent)localObject1)) {
+          break label884;
         }
-        if ((paramInt1 == 0) && (paramInt2 == 0)) {
-          break label936;
-        }
-        com.tencent.mm.ui.base.h.h(this.mController.uMN, R.l.sendrequest_send_fail, R.l.app_tip);
-        return;
-        localObject1 = paramString.title;
-        break;
-        paramString = paramString.content;
-        break label185;
-        Toast.makeText(this, R.l.selectsmsapp_none, 1).show();
-        break label496;
-        paramString = String.format(getString(R.l.invite_friends_facebook_twitter_content), new Object[] { q.Gk() });
-        break label708;
+        startActivity((Intent)localObject1);
+        label504:
+        com.tencent.mm.plugin.report.service.h.qsU.e(14035, new Object[] { Integer.valueOf(this.sZK), Integer.valueOf(sZJ), Integer.valueOf(this.fromScene) });
       }
-      com.tencent.mm.ui.base.h.bC(this, getResources().getString(R.l.confirm_dialog_sent));
-      com.tencent.mm.plugin.report.service.h.nFQ.f(14035, new Object[] { Integer.valueOf(this.pxW), Integer.valueOf(pxV), Integer.valueOf(this.fromScene) });
-    } while ((paramm.getType() != 168) || (paramInt1 != 0) || (paramInt2 != 0) || (this.pxZ == null));
-    label708:
-    label866:
-    label874:
-    if (this.kjT != null) {
-      this.kjT.setVisibility(8);
+      localObject1 = paramString;
+      if ((i & 0x4) > 0)
+      {
+        localObject1 = paramString;
+        if (bo.isNullOrNil(paramString)) {
+          localObject1 = String.format(getString(2131300768), new Object[] { localObject3 });
+        }
+        paramString = new Intent();
+        paramString.setAction("android.intent.action.SEND");
+        paramString.putExtra("android.intent.extra.TEXT", (String)localObject1);
+        paramString.setType("text/plain");
+        paramString.setPackage("com.whatsapp");
+        startActivity(paramString);
+        com.tencent.mm.plugin.report.service.h.qsU.e(14035, new Object[] { Integer.valueOf(this.sZK), Integer.valueOf(sZJ), Integer.valueOf(this.fromScene) });
+      }
+      localObject2 = localObject1;
+      if ((i & 0x8) > 0)
+      {
+        paramString = (String)localObject1;
+        if (bo.isNullOrNil((String)localObject1))
+        {
+          if (!bo.isNullOrNil(r.Zo())) {
+            break label898;
+          }
+          paramString = getString(2131300765);
+        }
+        label716:
+        localObject1 = getString(2131300757);
+        localObject2 = paramString;
+        if (this.sZQ == true)
+        {
+          w(i, paramString, (String)localObject1);
+          this.sZQ = false;
+          localObject2 = paramString;
+        }
+      }
+      if ((i & 0x10) > 0)
+      {
+        this.sbA.a(this);
+        paramString = (String)localObject2;
+        if (bo.isNullOrNil((String)localObject2)) {
+          if (!bo.isNullOrNil(r.Zo())) {
+            break label922;
+          }
+        }
+      }
     }
-    label912:
-    label936:
-    label993:
-    this.pxZ.setImageBitmap(bdf());
+    label898:
+    label922:
+    for (paramString = getString(2131300765);; paramString = String.format(getString(2131300764), new Object[] { r.Zo() }))
+    {
+      localObject1 = getString(2131300762);
+      if (this.sZP == true)
+      {
+        w(i, paramString, (String)localObject1);
+        this.sZP = false;
+      }
+      if (paramm.getType() != 1804) {
+        break label1003;
+      }
+      if ((paramInt1 == 0) && (paramInt2 == 0)) {
+        break label946;
+      }
+      com.tencent.mm.ui.base.h.h(getContext(), 2131303126, 2131297087);
+      AppMethodBeat.o(25549);
+      return;
+      label867:
+      localObject1 = paramString.title;
+      break;
+      label876:
+      paramString = paramString.content;
+      break label193;
+      label884:
+      Toast.makeText(this, 2131303076, 1).show();
+      break label504;
+      paramString = String.format(getString(2131300764), new Object[] { r.Zo() });
+      break label716;
+    }
+    label946:
+    com.tencent.mm.ui.base.h.bO(this, getResources().getString(2131298502));
+    com.tencent.mm.plugin.report.service.h.qsU.e(14035, new Object[] { Integer.valueOf(this.sZK), Integer.valueOf(sZJ), Integer.valueOf(this.fromScene) });
+    label1003:
+    if (paramm.getType() == 168)
+    {
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        AppMethodBeat.o(25549);
+        return;
+      }
+      if (this.sZN != null)
+      {
+        if (this.mEy != null) {
+          this.mEy.setVisibility(8);
+        }
+        this.sZN.setImageBitmap(bKp());
+      }
+    }
+    AppMethodBeat.o(25549);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return R.o.invate_friends_by_3rd;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

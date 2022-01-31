@@ -5,7 +5,7 @@ public final class c$bc
 {
   public c$bc()
   {
-    super("enableFullScreen", "enableFullScreen", 196, false);
+    super("downloadVoice", "downloadVoice", 103, true);
   }
 }
 

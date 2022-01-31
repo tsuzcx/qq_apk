@@ -1,25 +1,41 @@
 package com.tencent.mm.plugin.backup.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.a;
+import com.tencent.mm.plugin.backup.i.m;
 import com.tencent.mm.plugin.backup.i.n;
 import com.tencent.mm.plugin.backup.i.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class k
   extends b
 {
-  public n hMD = new n();
-  public o hME = new o();
+  private n jGf;
+  public o jGg;
   
   public k(String paramString)
   {
-    y.i("MicroMsg.BackupStartScene", "BackupStartScene, id[%s]", new Object[] { paramString });
-    this.hMD.ID = paramString;
+    AppMethodBeat.i(17679);
+    this.jGf = new n();
+    this.jGg = new o();
+    ab.i("MicroMsg.BackupStartScene", "BackupStartScene, id[%s]", new Object[] { paramString });
+    this.jGf.ID = paramString;
+    AppMethodBeat.o(17679);
   }
   
-  public final a auK()
+  public final void a(long paramLong, m paramm, int paramInt)
   {
-    return this.hMD;
+    this.jGf.jJK = 0L;
+    this.jGf.jJL = paramLong;
+    this.jGf.jJM = 0L;
+    this.jGf.jJN = paramm;
+    this.jGf.jJO = 0L;
+    this.jGf.jJP = paramInt;
+  }
+  
+  public final a aUm()
+  {
+    return this.jGf;
   }
   
   public final int getType()
@@ -27,15 +43,18 @@ public final class k
     return 3;
   }
   
-  public final void nF(int paramInt)
+  public final void rt(int paramInt)
   {
-    y.i("MicroMsg.BackupStartScene", "onSceneEnd.");
-    if (this.hME.hQq != 0)
+    AppMethodBeat.i(17680);
+    ab.i("MicroMsg.BackupStartScene", "onSceneEnd.");
+    if (this.jGg.jJS != 0)
     {
-      j(4, this.hME.hQq, "BackupStartScene onSceneEnd failed");
+      n(4, this.jGg.jJS, "BackupStartScene onSceneEnd failed");
+      AppMethodBeat.o(17680);
       return;
     }
-    j(0, this.hME.hQq, "BackupStartScene onSceneEnd success");
+    n(0, this.jGg.jJS, "BackupStartScene onSceneEnd success");
+    AppMethodBeat.o(17680);
   }
 }
 

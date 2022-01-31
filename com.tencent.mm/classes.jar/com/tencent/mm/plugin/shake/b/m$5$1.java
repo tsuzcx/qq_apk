@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.ah.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
 import com.tencent.mm.plugin.shake.c.a.f;
-import com.tencent.mm.protocal.c.cd;
+import com.tencent.mm.protocal.protobuf.cm;
 
 final class m$5$1
   implements Runnable
@@ -11,7 +12,9 @@ final class m$5$1
   
   public final void run()
   {
-    m.bzZ().h(this.fEp, this.dUx.dBs.ndp, 1);
+    AppMethodBeat.i(24481);
+    m.cls().j(this.gWF, this.fkG.eyJ.pIG, 1);
+    AppMethodBeat.o(24481);
   }
 }
 

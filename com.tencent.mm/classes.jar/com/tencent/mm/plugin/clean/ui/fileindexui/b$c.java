@@ -8,18 +8,18 @@ import com.tencent.mm.ui.MMImageView;
 
 final class b$c
 {
-  CheckBox eXQ;
-  TextView fhD;
-  MMImageView iCJ;
-  ImageView iCK;
-  View iCL;
-  View iCM;
+  CheckBox gpN;
+  TextView gzk;
+  MMImageView kHQ;
+  ImageView kHR;
+  View kHS;
+  View kHT;
   
   b$c(b paramb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.b.c
  * JD-Core Version:    0.7.0.1
  */

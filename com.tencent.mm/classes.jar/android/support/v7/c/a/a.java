@@ -1,121 +1,118 @@
 package android.support.v7.c.a;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.support.v4.a.b;
-import android.support.v7.a.a.a;
-import android.support.v7.a.a.j;
-import android.util.AttributeSet;
-import android.util.StateSet;
-import android.util.Xml;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.support.v4.content.b;
+import android.support.v7.widget.g;
+import android.util.SparseArray;
+import android.util.TypedValue;
+import java.util.WeakHashMap;
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
-final class a
+public final class a
 {
-  private static ColorStateList c(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
+  private static final ThreadLocal<TypedValue> QX = new ThreadLocal();
+  private static final WeakHashMap<Context, SparseArray<a>> QY = new WeakHashMap(0);
+  private static final Object QZ = new Object();
+  
+  public static Drawable k(Context paramContext, int paramInt)
   {
-    int n = paramXmlPullParser.getDepth() + 1;
-    Object localObject1 = new int[20][];
-    int[] arrayOfInt = new int[20];
-    int j = 0;
-    int i;
-    int k;
+    return g.hg().k(paramContext, paramInt);
+  }
+  
+  public static ColorStateList l(Context paramContext, int paramInt)
+  {
+    Object localObject1;
+    if (Build.VERSION.SDK_INT >= 23) {
+      localObject1 = paramContext.getColorStateList(paramInt);
+    }
+    Object localObject2;
     do
     {
-      i = paramXmlPullParser.next();
-      if (i == 1) {
-        break;
+      return localObject1;
+      localObject2 = p(paramContext, paramInt);
+      localObject1 = localObject2;
+    } while (localObject2 != null);
+    ColorStateList localColorStateList = o(paramContext, paramInt);
+    if (localColorStateList != null) {
+      synchronized (QZ)
+      {
+        localObject2 = (SparseArray)QY.get(paramContext);
+        localObject1 = localObject2;
+        if (localObject2 == null)
+        {
+          localObject1 = new SparseArray();
+          QY.put(paramContext, localObject1);
+        }
+        ((SparseArray)localObject1).append(paramInt, new a(localColorStateList, paramContext.getResources().getConfiguration()));
+        return localColorStateList;
       }
-      k = paramXmlPullParser.getDepth();
-      if ((k < n) && (i == 3)) {
-        break;
-      }
-    } while ((i != 2) || (k > n) || (!paramXmlPullParser.getName().equals("item")));
-    Object localObject2 = a.j.ColorStateListItem;
-    label106:
-    int i1;
-    float f;
-    label143:
-    label168:
-    int m;
-    if (paramTheme == null)
-    {
-      localObject2 = paramResources.obtainAttributes(paramAttributeSet, (int[])localObject2);
-      i1 = ((TypedArray)localObject2).getColor(a.j.ColorStateListItem_android_color, -65281);
-      f = 1.0F;
-      if (!((TypedArray)localObject2).hasValue(a.j.ColorStateListItem_android_alpha)) {
-        break label255;
-      }
-      f = ((TypedArray)localObject2).getFloat(a.j.ColorStateListItem_android_alpha, 1.0F);
-      ((TypedArray)localObject2).recycle();
-      i = 0;
-      int i2 = paramAttributeSet.getAttributeCount();
-      localObject2 = new int[i2];
-      k = 0;
-      if (k >= i2) {
-        break label288;
-      }
-      m = paramAttributeSet.getAttributeNameResource(k);
-      if ((m == 16843173) || (m == 16843551) || (m == a.a.alpha)) {
-        break label387;
-      }
-      if (!paramAttributeSet.getAttributeBooleanValue(k, false)) {
-        break label280;
-      }
-      label219:
-      localObject2[i] = m;
-      i += 1;
     }
-    label387:
-    for (;;)
+    return b.l(paramContext, paramInt);
+  }
+  
+  private static ColorStateList o(Context paramContext, int paramInt)
+  {
+    Resources localResources = paramContext.getResources();
+    Object localObject2 = (TypedValue)QX.get();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      k += 1;
-      break label168;
-      localObject2 = paramTheme.obtainStyledAttributes(paramAttributeSet, (int[])localObject2, 0, 0);
-      break label106;
-      label255:
-      if (!((TypedArray)localObject2).hasValue(a.j.ColorStateListItem_alpha)) {
-        break label143;
+      localObject1 = new TypedValue();
+      QX.set(localObject1);
+    }
+    localResources.getValue(paramInt, (TypedValue)localObject1, true);
+    if ((((TypedValue)localObject1).type >= 28) && (((TypedValue)localObject1).type <= 31)) {}
+    for (int i = 1; i != 0; i = 0) {
+      return null;
+    }
+    localObject1 = paramContext.getResources();
+    localObject2 = ((Resources)localObject1).getXml(paramInt);
+    try
+    {
+      paramContext = android.support.v4.content.a.a.createFromXml((Resources)localObject1, (XmlPullParser)localObject2, paramContext.getTheme());
+      return paramContext;
+    }
+    catch (Exception paramContext) {}
+    return null;
+  }
+  
+  private static ColorStateList p(Context paramContext, int paramInt)
+  {
+    synchronized (QZ)
+    {
+      SparseArray localSparseArray = (SparseArray)QY.get(paramContext);
+      if ((localSparseArray != null) && (localSparseArray.size() > 0))
+      {
+        a locala = (a)localSparseArray.get(paramInt);
+        if (locala != null)
+        {
+          if (locala.Rb.equals(paramContext.getResources().getConfiguration()))
+          {
+            paramContext = locala.Ra;
+            return paramContext;
+          }
+          localSparseArray.remove(paramInt);
+        }
       }
-      f = ((TypedArray)localObject2).getFloat(a.j.ColorStateListItem_alpha, 1.0F);
-      break label143;
-      label280:
-      m = -m;
-      break label219;
-      label288:
-      localObject2 = StateSet.trimStateSet((int[])localObject2, i);
-      arrayOfInt = c.c(arrayOfInt, j, b.p(i1, Math.round(f * Color.alpha(i1))));
-      localObject1 = (int[][])c.a((Object[])localObject1, j, localObject2);
-      j += 1;
-      break;
-      paramResources = new int[j];
-      paramXmlPullParser = new int[j][];
-      System.arraycopy(arrayOfInt, 0, paramResources, 0, j);
-      System.arraycopy(localObject1, 0, paramXmlPullParser, 0, j);
-      return new ColorStateList(paramXmlPullParser, paramResources);
+      return null;
     }
   }
   
-  public static ColorStateList createFromXml(Resources paramResources, XmlPullParser paramXmlPullParser, Resources.Theme paramTheme)
+  static final class a
   {
-    AttributeSet localAttributeSet = Xml.asAttributeSet(paramXmlPullParser);
-    int i;
-    do
+    final ColorStateList Ra;
+    final Configuration Rb;
+    
+    a(ColorStateList paramColorStateList, Configuration paramConfiguration)
     {
-      i = paramXmlPullParser.next();
-    } while ((i != 2) && (i != 1));
-    if (i != 2) {
-      throw new XmlPullParserException("No start tag found");
+      this.Ra = paramColorStateList;
+      this.Rb = paramConfiguration;
     }
-    String str = paramXmlPullParser.getName();
-    if (!str.equals("selector")) {
-      throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": invalid color state list tag " + str);
-    }
-    return c(paramResources, paramXmlPullParser, localAttributeSet, paramTheme);
   }
 }
 

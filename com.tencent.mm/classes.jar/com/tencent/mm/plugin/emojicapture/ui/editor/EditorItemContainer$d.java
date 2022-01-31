@@ -1,23 +1,43 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
-import a.k;
+import a.f.b.j;
+import a.l;
+import a.v;
 import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class EditorItemContainer$d
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
+final class EditorItemContainer$d
   implements Runnable
 {
-  public EditorItemContainer$d(EditorItemContainer paramEditorItemContainer) {}
+  EditorItemContainer$d(EditorItemContainer paramEditorItemContainer) {}
   
   public final void run()
   {
-    EditorItemContainer localEditorItemContainer = this.jqa;
-    a locala = EditorItemContainer.a(this.jqa);
-    if (locala == null) {
-      throw new k("null cannot be cast to non-null type android.view.View");
+    AppMethodBeat.i(3074);
+    if (EditorItemContainer.a(this.lzL) != null)
+    {
+      Object localObject = EditorItemContainer.a(this.lzL);
+      if (localObject == null) {
+        j.ebi();
+      }
+      if (!((a)localObject).bpe())
+      {
+        localObject = EditorItemContainer.c(this.lzL);
+        a locala = EditorItemContainer.a(this.lzL);
+        if (locala == null)
+        {
+          localObject = new v("null cannot be cast to non-null type android.view.View");
+          AppMethodBeat.o(3074);
+          throw ((Throwable)localObject);
+        }
+        ((ViewGroup)localObject).removeView((View)locala);
+      }
     }
-    localEditorItemContainer.removeView((View)locala);
-    EditorItemContainer.b(this.jqa);
-    EditorItemContainer.d(this.jqa);
+    EditorItemContainer.b(this.lzL);
+    EditorItemContainer.e(this.lzL);
+    AppMethodBeat.o(3074);
   }
 }
 

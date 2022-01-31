@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.location.ui;
 
-import com.tencent.mm.modelgeo.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.d;
 
 final class NewMyLocationButton$1$1
   implements Runnable
@@ -9,7 +10,9 @@ final class NewMyLocationButton$1$1
   
   public final void run()
   {
-    c.Ob().c(NewMyLocationButton.e(this.lFs.lFr));
+    AppMethodBeat.i(113461);
+    d.agQ().c(NewMyLocationButton.e(this.ocF.ocE));
+    AppMethodBeat.o(113461);
   }
 }
 

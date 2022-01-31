@@ -1,7 +1,10 @@
 package com.tencent.matrix.a.b;
 
 import android.os.Environment;
-import com.tencent.matrix.c.c.a;
+import com.tencent.matrix.e.b;
+import com.tencent.matrix.e.c.a;
+import com.tencent.matrix.g.d;
+import com.tencent.mrs.b.a.a;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,41 +16,41 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class f
-  extends com.tencent.matrix.c.c
+  extends com.tencent.matrix.e.c
 {
-  private final int bmv;
-  private final int bmw;
-  final Map<String, d> bnB = new HashMap();
-  final Map<String, c> bnC = new HashMap();
-  final int bnD;
-  final a bnE;
-  final Runnable bnF;
-  final e bnG;
+  final Map<String, d> bMY = new HashMap();
+  final Map<String, c> bMZ = new HashMap();
+  final int bNa;
+  private final int bNb;
+  private final int bNc;
+  final a bNd;
+  final Runnable bNe;
+  final e bNf;
   
   public f(c.a parama, com.tencent.matrix.a.a.a parama1, a parama2)
   {
     super(parama);
-    this.bnD = parama1.bmu;
-    this.bmw = parama1.bmw;
-    this.bmv = parama1.bmv;
-    this.bnE = parama2;
-    this.bnF = new Runnable()
+    this.bNa = parama1.bMc.get(a.a.BaJ.name(), 120000);
+    this.bNb = parama1.bMc.get(a.a.BaL.name(), 600000);
+    this.bNc = parama1.bMc.get(a.a.BaK.name(), 20);
+    this.bNd = parama2;
+    this.bNe = new Runnable()
     {
       public final void run()
       {
-        Iterator localIterator = f.this.bnC.entrySet().iterator();
+        Iterator localIterator = f.this.bMZ.entrySet().iterator();
         while (localIterator.hasNext()) {
-          ((f.c)((Map.Entry)localIterator.next()).getValue()).qX();
+          ((f.c)((Map.Entry)localIterator.next()).getValue()).yQ();
         }
-        f.this.qV();
+        f.a(f.this);
       }
     };
-    if (parama1.ed(2))
+    if (parama1.yG())
     {
-      this.bnG = new e();
+      this.bNf = new e();
       return;
     }
-    this.bnG = null;
+    this.bNf = null;
   }
   
   private static JSONObject a(c paramc, long paramLong)
@@ -58,411 +61,414 @@ public final class f
       localJSONObject.put("wakeLockTag", paramc.tag);
       localJSONObject.put("subTag", "wakeLock");
       localJSONObject.put("timeFrame", paramLong);
-      localJSONObject.put("acquireCnt", paramc.bnM);
-      localJSONObject.put("acquireCntWhenScreenOff", paramc.bnN);
-      localJSONObject.put("statisticalHoldTime", paramc.bnK);
-      localJSONObject.put("stackHistory", paramc.bnO);
+      localJSONObject.put("acquireCnt", paramc.bNl);
+      localJSONObject.put("acquireCntWhenScreenOff", paramc.bNm);
+      localJSONObject.put("statisticalHoldTime", paramc.bNj);
+      localJSONObject.put("stackHistory", paramc.bNn);
       return localJSONObject;
     }
     catch (JSONException paramc)
     {
-      com.tencent.matrix.d.b.e("Matrix.WakeLockDetector", "json content error: %s", new Object[] { paramc });
+      com.tencent.matrix.g.c.e("Matrix.WakeLockDetector", "json content error: %s", new Object[] { paramc });
     }
     return localJSONObject;
   }
   
-  private void qW()
+  private void yO()
   {
-    Iterator localIterator = this.bnC.entrySet().iterator();
-    long l1 = System.currentTimeMillis();
-    while (localIterator.hasNext())
-    {
-      Object localObject1 = (Map.Entry)localIterator.next();
-      String str = (String)((Map.Entry)localObject1).getKey();
-      localObject1 = (c)((Map.Entry)localObject1).getValue();
-      long l2 = l1 - ((c)localObject1).bnJ;
-      int i = (int)(l2 / 3600000L) + 1;
-      int j = ((c)localObject1).bnN / i;
-      long l3 = ((c)localObject1).bnL / i;
-      if (j > this.bmv / 2)
-      {
-        localObject2 = String.format("%s:%d", new Object[] { str, Integer.valueOf(2) });
-        if (!by((String)localObject2)) {
-          break label223;
-        }
-        com.tencent.matrix.d.b.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { localObject2 });
-      }
-      for (;;)
-      {
-        if (l3 < this.bmw) {
-          break label265;
-        }
-        str = String.format("%s:%d", new Object[] { str, Integer.valueOf(3) });
-        if (!by(str)) {
-          break label267;
-        }
-        com.tencent.matrix.d.b.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { str });
-        break;
-        label223:
-        com.tencent.matrix.c.b localb = new com.tencent.matrix.c.b(2);
-        localb.key = ((String)localObject2);
-        localb.boK = a((c)localObject1, l2);
-        c(localb);
-        bx((String)localObject2);
-      }
-      label265:
-      continue;
-      label267:
-      Object localObject2 = new com.tencent.matrix.c.b(3);
-      ((com.tencent.matrix.c.b)localObject2).key = str;
-      ((com.tencent.matrix.c.b)localObject2).boK = a((c)localObject1, l2);
-      c((com.tencent.matrix.c.b)localObject2);
-      bx(str);
-    }
-  }
-  
-  final void qV()
-  {
-    Iterator localIterator = this.bnB.entrySet().iterator();
+    Iterator localIterator = this.bMY.entrySet().iterator();
     long l = System.currentTimeMillis();
     for (;;)
     {
       if (localIterator.hasNext())
       {
         d locald = (d)((Map.Entry)localIterator.next()).getValue();
-        if (l - locald.bnT < this.bnD) {
-          continue;
-        }
-        String str = String.format("%s:%d", new Object[] { locald.tag, Integer.valueOf(1) });
-        if (by(str))
+        if (l - locald.bNs >= this.bNa)
         {
-          com.tencent.matrix.d.b.v("Matrix.WakeLockDetector", "detectWakeLockOnceHoldTime issue already published: %s", new Object[] { str });
-          continue;
-        }
-        com.tencent.matrix.c.b localb = new com.tencent.matrix.c.b(1);
-        localb.key = str;
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("subTag", "wakeLock");
-          localJSONObject.put("wakeLockTag", locald.tag);
-          localJSONObject.put("flags", locald.flags);
-          localJSONObject.put("holdTime", l - locald.bnT);
-          localJSONObject.put("stackHistory", locald.bnO);
-          com.tencent.matrix.d.b.i("Matrix.WakeLockDetector", "detected lock once too long, token:%s, tag:%s", new Object[] { locald.bnS, locald.tag });
-          localb.boK = localJSONObject;
-          c(localb);
-          bx(str);
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
+          String str = String.format("%s:%d", new Object[] { locald.tag, Integer.valueOf(1) });
+          if (cA(str))
           {
-            com.tencent.matrix.d.b.e("Matrix.WakeLockDetector", "json content error: %s", new Object[] { localJSONException });
+            com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockOnceHoldTime issue already published: %s", new Object[] { str });
+          }
+          else
+          {
+            b localb = new b(1);
+            localb.key = str;
+            JSONObject localJSONObject = new JSONObject();
+            try
+            {
+              localJSONObject.put("subTag", "wakeLock");
+              localJSONObject.put("wakeLockTag", locald.tag);
+              localJSONObject.put("flags", locald.flags);
+              localJSONObject.put("holdTime", l - locald.bNs);
+              localJSONObject.put("stackHistory", locald.bNn);
+              com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "detected lock once too long, token:%s, tag:%s", new Object[] { locald.bNr, locald.tag });
+              localb.bOx = localJSONObject;
+              b(localb);
+              cz(str);
+            }
+            catch (JSONException localJSONException)
+            {
+              for (;;)
+              {
+                com.tencent.matrix.g.c.e("Matrix.WakeLockDetector", "json content error: %s", new Object[] { localJSONException });
+              }
+            }
           }
         }
       }
     }
-    qW();
+  }
+  
+  private void yP()
+  {
+    Iterator localIterator = this.bMZ.entrySet().iterator();
+    long l1 = System.currentTimeMillis();
+    while (localIterator.hasNext())
+    {
+      Object localObject1 = (Map.Entry)localIterator.next();
+      String str = (String)((Map.Entry)localObject1).getKey();
+      localObject1 = (c)((Map.Entry)localObject1).getValue();
+      long l2 = l1 - ((c)localObject1).bNi;
+      int i = (int)(l2 / 3600000L) + 1;
+      int j = ((c)localObject1).bNm / i;
+      long l3 = ((c)localObject1).bNk / i;
+      if (j > this.bNc / 2)
+      {
+        localObject2 = String.format("%s:%d", new Object[] { str, Integer.valueOf(2) });
+        if (!cA((String)localObject2)) {
+          break label225;
+        }
+        com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { localObject2 });
+      }
+      for (;;)
+      {
+        if (l3 < this.bNb) {
+          break label267;
+        }
+        str = String.format("%s:%d", new Object[] { str, Integer.valueOf(3) });
+        if (!cA(str)) {
+          break label269;
+        }
+        com.tencent.matrix.g.c.v("Matrix.WakeLockDetector", "detectWakeLockAggregation issue already published: %s", new Object[] { str });
+        break;
+        label225:
+        b localb = new b(2);
+        localb.key = ((String)localObject2);
+        localb.bOx = a((c)localObject1, l2);
+        b(localb);
+        cz((String)localObject2);
+      }
+      label267:
+      continue;
+      label269:
+      Object localObject2 = new b(3);
+      ((b)localObject2).key = str;
+      ((b)localObject2).bOx = a((c)localObject1, l2);
+      b((b)localObject2);
+      cz(str);
+    }
+  }
+  
+  final void yN()
+  {
+    yO();
+    yP();
   }
   
   public static abstract interface a
   {
-    public abstract void d(Runnable paramRunnable, long paramLong);
+    public abstract void e(Runnable paramRunnable, long paramLong);
     
     public abstract boolean isScreenOn();
   }
   
-  private static final class b
+  static final class b
   {
-    final Vector<String> bnI = new Vector();
+    final Vector<String> bNh = new Vector();
     
-    final void bv(String paramString)
+    final void cy(String paramString)
     {
-      this.bnI.add(paramString);
+      this.bNh.add(paramString);
     }
     
     public final String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
-      while (i < this.bnI.size())
+      while (i < this.bNh.size())
       {
-        localStringBuilder.append((String)this.bnI.get(i)).append("\t\t");
+        localStringBuilder.append((String)this.bNh.get(i)).append("\t\t");
         i += 1;
       }
       return localStringBuilder.toString();
     }
   }
   
-  private static final class c
+  static final class c
   {
-    final long bnJ;
-    long bnK;
-    long bnL;
-    int bnM;
-    int bnN;
-    f.b bnO;
-    final Map<String, Boolean> bnP;
-    long bnQ;
-    boolean bnR;
+    final long bNi;
+    long bNj;
+    long bNk;
+    int bNl;
+    int bNm;
+    f.b bNn;
+    final Map<String, Boolean> bNo;
+    long bNp;
+    boolean bNq;
     final String tag;
     
     c(String paramString)
     {
       this.tag = paramString;
-      this.bnK = 0L;
-      this.bnL = 0L;
-      this.bnM = 0;
-      this.bnN = 0;
-      this.bnQ = -1L;
-      this.bnO = new f.b();
-      this.bnJ = System.currentTimeMillis();
-      this.bnP = new HashMap();
+      this.bNj = 0L;
+      this.bNk = 0L;
+      this.bNl = 0;
+      this.bNm = 0;
+      this.bNp = -1L;
+      this.bNn = new f.b();
+      this.bNi = System.currentTimeMillis();
+      this.bNo = new HashMap();
     }
     
-    final void qX()
+    final void yQ()
     {
-      if (this.bnQ < 0L) {
+      if (this.bNp < 0L) {
         return;
       }
       long l = System.currentTimeMillis();
-      this.bnK += l - this.bnQ;
-      if (!this.bnR) {
-        this.bnL += l - this.bnQ;
+      this.bNj += l - this.bNp;
+      if (!this.bNq) {
+        this.bNk += l - this.bNp;
       }
-      this.bnQ = l;
+      this.bNp = l;
     }
   }
   
-  private static final class d
+  static final class d
   {
-    f.b bnO;
-    final String bnS;
-    final long bnT;
+    f.b bNn;
+    final String bNr;
+    final long bNs;
     final int flags;
     final String tag;
     
     d(String paramString1, String paramString2, int paramInt, long paramLong)
     {
-      this.bnS = paramString1;
+      this.bNr = paramString1;
       this.tag = paramString2;
       this.flags = paramInt;
-      this.bnT = paramLong;
-      this.bnO = new f.b();
+      this.bNs = paramLong;
+      this.bNn = new f.b();
     }
   }
   
-  private static final class e
+  static final class e
   {
-    private final String bmO;
-    int bnU;
-    final StringBuilder bnV;
+    private final String bMo;
+    int bNt;
+    final StringBuilder bNu;
     
     e()
     {
-      String str = com.tencent.matrix.d.c.g("yyyy-MM-dd", System.currentTimeMillis());
-      this.bmO = String.format("%s/com.tencent.matrix/wakelock-detector-record/%s/wakelocks-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.c.a.getPackageName(), str });
-      this.bnV = new StringBuilder();
-      com.tencent.matrix.d.b.i("Matrix.WakeLockDetector", "WakeLockInfoRecorder path:%s", new Object[] { this.bmO });
+      String str = d.formatTime("yyyy-MM-dd", System.currentTimeMillis());
+      this.bMo = String.format("%s/com.tencent.matrix/wakelock-detector-record/%s/wakelocks-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.c.a.getPackageName(), str });
+      this.bNu = new StringBuilder();
+      com.tencent.matrix.g.c.i("Matrix.WakeLockDetector", "WakeLockInfoRecorder path:%s", new Object[] { this.bMo });
     }
     
     /* Error */
-    final void qY()
+    private void yS()
     {
       // Byte code:
-      //   0: aload_0
-      //   1: getfield 81	com/tencent/matrix/a/b/f$e:bnU	I
-      //   4: bipush 10
-      //   6: if_icmplt +85 -> 91
-      //   9: aconst_null
-      //   10: astore 4
-      //   12: aconst_null
-      //   13: astore_2
-      //   14: aconst_null
-      //   15: astore_3
-      //   16: aload_2
-      //   17: astore_1
-      //   18: new 41	java/io/File
-      //   21: dup
-      //   22: aload_0
-      //   23: getfield 58	com/tencent/matrix/a/b/f$e:bmO	Ljava/lang/String;
-      //   26: invokespecial 84	java/io/File:<init>	(Ljava/lang/String;)V
-      //   29: astore 5
-      //   31: aload_2
-      //   32: astore_1
-      //   33: aload 5
-      //   35: invokevirtual 87	java/io/File:getParentFile	()Ljava/io/File;
-      //   38: invokevirtual 91	java/io/File:mkdirs	()Z
-      //   41: ifne +51 -> 92
-      //   44: aload_2
-      //   45: astore_1
-      //   46: aload 5
-      //   48: invokevirtual 87	java/io/File:getParentFile	()Ljava/io/File;
-      //   51: invokevirtual 94	java/io/File:exists	()Z
-      //   54: ifne +38 -> 92
-      //   57: aload_2
-      //   58: astore_1
-      //   59: ldc 65
-      //   61: ldc 96
-      //   63: iconst_0
-      //   64: anewarray 4	java/lang/Object
-      //   67: invokestatic 98	com/tencent/matrix/d/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   70: aload_0
-      //   71: iconst_0
-      //   72: putfield 81	com/tencent/matrix/a/b/f$e:bnU	I
-      //   75: aload_0
-      //   76: getfield 63	com/tencent/matrix/a/b/f$e:bnV	Ljava/lang/StringBuilder;
-      //   79: iconst_0
-      //   80: aload_0
-      //   81: getfield 63	com/tencent/matrix/a/b/f$e:bnV	Ljava/lang/StringBuilder;
-      //   84: invokevirtual 102	java/lang/StringBuilder:length	()I
-      //   87: invokevirtual 106	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-      //   90: pop
-      //   91: return
-      //   92: aload_2
-      //   93: astore_1
-      //   94: new 108	java/io/BufferedWriter
-      //   97: dup
-      //   98: new 110	java/io/OutputStreamWriter
-      //   101: dup
-      //   102: new 112	java/io/FileOutputStream
-      //   105: dup
-      //   106: aload 5
-      //   108: iconst_1
-      //   109: invokespecial 115	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-      //   112: invokespecial 118	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-      //   115: invokespecial 121	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-      //   118: astore_2
-      //   119: aload_0
-      //   120: getfield 63	com/tencent/matrix/a/b/f$e:bnV	Ljava/lang/StringBuilder;
-      //   123: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   126: astore_1
-      //   127: aload_2
-      //   128: aload_1
-      //   129: iconst_0
-      //   130: aload_1
-      //   131: invokevirtual 125	java/lang/String:length	()I
-      //   134: invokevirtual 129	java/io/BufferedWriter:write	(Ljava/lang/String;II)V
-      //   137: aload_2
-      //   138: invokevirtual 132	java/io/BufferedWriter:flush	()V
-      //   141: aload_2
-      //   142: invokevirtual 135	java/io/BufferedWriter:close	()V
-      //   145: goto -75 -> 70
-      //   148: astore_1
-      //   149: goto -79 -> 70
+      //   0: aconst_null
+      //   1: astore 4
+      //   3: aconst_null
+      //   4: astore_2
+      //   5: aconst_null
+      //   6: astore_3
+      //   7: aload_2
+      //   8: astore_1
+      //   9: new 41	java/io/File
+      //   12: dup
+      //   13: aload_0
+      //   14: getfield 58	com/tencent/matrix/a/b/f$e:bMo	Ljava/lang/String;
+      //   17: invokespecial 82	java/io/File:<init>	(Ljava/lang/String;)V
+      //   20: astore 5
+      //   22: aload_2
+      //   23: astore_1
+      //   24: aload 5
+      //   26: invokevirtual 85	java/io/File:getParentFile	()Ljava/io/File;
+      //   29: invokevirtual 89	java/io/File:mkdirs	()Z
+      //   32: ifne +30 -> 62
+      //   35: aload_2
+      //   36: astore_1
+      //   37: aload 5
+      //   39: invokevirtual 85	java/io/File:getParentFile	()Ljava/io/File;
+      //   42: invokevirtual 92	java/io/File:exists	()Z
+      //   45: ifne +17 -> 62
+      //   48: aload_2
+      //   49: astore_1
+      //   50: ldc 65
+      //   52: ldc 94
+      //   54: iconst_0
+      //   55: anewarray 4	java/lang/Object
+      //   58: invokestatic 96	com/tencent/matrix/g/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   61: return
+      //   62: aload_2
+      //   63: astore_1
+      //   64: new 98	java/io/BufferedWriter
+      //   67: dup
+      //   68: new 100	java/io/OutputStreamWriter
+      //   71: dup
+      //   72: new 102	java/io/FileOutputStream
+      //   75: dup
+      //   76: aload 5
+      //   78: iconst_1
+      //   79: invokespecial 105	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+      //   82: invokespecial 108	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+      //   85: invokespecial 111	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+      //   88: astore_2
+      //   89: aload_0
+      //   90: getfield 63	com/tencent/matrix/a/b/f$e:bNu	Ljava/lang/StringBuilder;
+      //   93: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   96: astore_1
+      //   97: aload_2
+      //   98: aload_1
+      //   99: iconst_0
+      //   100: aload_1
+      //   101: invokevirtual 118	java/lang/String:length	()I
+      //   104: invokevirtual 122	java/io/BufferedWriter:write	(Ljava/lang/String;II)V
+      //   107: aload_2
+      //   108: invokevirtual 125	java/io/BufferedWriter:flush	()V
+      //   111: aload_2
+      //   112: invokevirtual 128	java/io/BufferedWriter:close	()V
+      //   115: return
+      //   116: astore_1
+      //   117: return
+      //   118: astore_1
+      //   119: aload_3
+      //   120: astore_2
+      //   121: aload_1
+      //   122: astore_3
+      //   123: aload_2
+      //   124: astore_1
+      //   125: ldc 65
+      //   127: ldc 130
+      //   129: iconst_1
+      //   130: anewarray 4	java/lang/Object
+      //   133: dup
+      //   134: iconst_0
+      //   135: aload_3
+      //   136: invokevirtual 133	java/io/FileNotFoundException:getLocalizedMessage	()Ljava/lang/String;
+      //   139: aastore
+      //   140: invokestatic 136	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   143: aload_2
+      //   144: ifnull +76 -> 220
+      //   147: aload_2
+      //   148: invokevirtual 128	java/io/BufferedWriter:close	()V
+      //   151: return
       //   152: astore_1
-      //   153: aload_3
-      //   154: astore_2
-      //   155: aload_1
-      //   156: astore_3
-      //   157: aload_2
-      //   158: astore_1
-      //   159: ldc 65
-      //   161: ldc 137
-      //   163: iconst_1
-      //   164: anewarray 4	java/lang/Object
-      //   167: dup
-      //   168: iconst_0
-      //   169: aload_3
-      //   170: invokevirtual 140	java/io/FileNotFoundException:getLocalizedMessage	()Ljava/lang/String;
-      //   173: aastore
-      //   174: invokestatic 143	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   177: aload_2
-      //   178: ifnull -108 -> 70
-      //   181: aload_2
-      //   182: invokevirtual 135	java/io/BufferedWriter:close	()V
-      //   185: goto -115 -> 70
-      //   188: astore_1
-      //   189: goto -119 -> 70
-      //   192: astore_3
-      //   193: aload 4
-      //   195: astore_2
-      //   196: aload_2
-      //   197: astore_1
-      //   198: ldc 65
-      //   200: ldc 137
-      //   202: iconst_1
-      //   203: anewarray 4	java/lang/Object
-      //   206: dup
-      //   207: iconst_0
-      //   208: aload_3
-      //   209: invokevirtual 144	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
-      //   212: aastore
-      //   213: invokestatic 143	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   216: aload_2
-      //   217: ifnull -147 -> 70
-      //   220: aload_2
-      //   221: invokevirtual 135	java/io/BufferedWriter:close	()V
-      //   224: goto -154 -> 70
-      //   227: astore_1
-      //   228: goto -158 -> 70
-      //   231: astore_3
-      //   232: aload_1
-      //   233: astore_2
-      //   234: aload_3
-      //   235: astore_1
-      //   236: aload_2
-      //   237: ifnull +7 -> 244
-      //   240: aload_2
-      //   241: invokevirtual 135	java/io/BufferedWriter:close	()V
-      //   244: aload_1
-      //   245: athrow
-      //   246: astore_2
-      //   247: goto -3 -> 244
-      //   250: astore_1
-      //   251: goto -15 -> 236
-      //   254: astore_3
-      //   255: goto -59 -> 196
-      //   258: astore_3
-      //   259: goto -102 -> 157
+      //   153: return
+      //   154: astore_3
+      //   155: aload 4
+      //   157: astore_2
+      //   158: aload_2
+      //   159: astore_1
+      //   160: ldc 65
+      //   162: ldc 130
+      //   164: iconst_1
+      //   165: anewarray 4	java/lang/Object
+      //   168: dup
+      //   169: iconst_0
+      //   170: aload_3
+      //   171: invokevirtual 137	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
+      //   174: aastore
+      //   175: invokestatic 136	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   178: aload_2
+      //   179: ifnull +41 -> 220
+      //   182: aload_2
+      //   183: invokevirtual 128	java/io/BufferedWriter:close	()V
+      //   186: return
+      //   187: astore_1
+      //   188: return
+      //   189: astore_3
+      //   190: aload_1
+      //   191: astore_2
+      //   192: aload_3
+      //   193: astore_1
+      //   194: aload_2
+      //   195: ifnull +7 -> 202
+      //   198: aload_2
+      //   199: invokevirtual 128	java/io/BufferedWriter:close	()V
+      //   202: aload_1
+      //   203: athrow
+      //   204: astore_2
+      //   205: goto -3 -> 202
+      //   208: astore_1
+      //   209: goto -15 -> 194
+      //   212: astore_3
+      //   213: goto -55 -> 158
+      //   216: astore_3
+      //   217: goto -94 -> 123
+      //   220: return
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	262	0	this	e
-      //   17	114	1	localObject1	Object
-      //   148	1	1	localIOException1	java.io.IOException
-      //   152	4	1	localFileNotFoundException1	java.io.FileNotFoundException
-      //   158	1	1	localObject2	Object
-      //   188	1	1	localIOException2	java.io.IOException
-      //   197	1	1	localObject3	Object
-      //   227	6	1	localIOException3	java.io.IOException
-      //   235	10	1	localObject4	Object
-      //   250	1	1	localObject5	Object
-      //   13	228	2	localObject6	Object
-      //   246	1	2	localIOException4	java.io.IOException
-      //   15	155	3	localObject7	Object
-      //   192	17	3	localIOException5	java.io.IOException
-      //   231	4	3	localObject8	Object
-      //   254	1	3	localIOException6	java.io.IOException
-      //   258	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-      //   10	184	4	localObject9	Object
-      //   29	78	5	localFile	File
+      //   0	221	0	this	e
+      //   8	93	1	localObject1	Object
+      //   116	1	1	localIOException1	java.io.IOException
+      //   118	4	1	localFileNotFoundException1	java.io.FileNotFoundException
+      //   124	1	1	localObject2	Object
+      //   152	1	1	localIOException2	java.io.IOException
+      //   159	1	1	localObject3	Object
+      //   187	4	1	localIOException3	java.io.IOException
+      //   193	10	1	localObject4	Object
+      //   208	1	1	localObject5	Object
+      //   4	195	2	localObject6	Object
+      //   204	1	2	localIOException4	java.io.IOException
+      //   6	130	3	localObject7	Object
+      //   154	17	3	localIOException5	java.io.IOException
+      //   189	4	3	localObject8	Object
+      //   212	1	3	localIOException6	java.io.IOException
+      //   216	1	3	localFileNotFoundException2	java.io.FileNotFoundException
+      //   1	155	4	localObject9	Object
+      //   20	57	5	localFile	File
       // Exception table:
       //   from	to	target	type
-      //   141	145	148	java/io/IOException
-      //   18	31	152	java/io/FileNotFoundException
-      //   33	44	152	java/io/FileNotFoundException
-      //   46	57	152	java/io/FileNotFoundException
-      //   59	70	152	java/io/FileNotFoundException
-      //   94	119	152	java/io/FileNotFoundException
-      //   181	185	188	java/io/IOException
-      //   18	31	192	java/io/IOException
-      //   33	44	192	java/io/IOException
-      //   46	57	192	java/io/IOException
-      //   59	70	192	java/io/IOException
-      //   94	119	192	java/io/IOException
-      //   220	224	227	java/io/IOException
-      //   18	31	231	finally
-      //   33	44	231	finally
-      //   46	57	231	finally
-      //   59	70	231	finally
-      //   94	119	231	finally
-      //   159	177	231	finally
-      //   198	216	231	finally
-      //   240	244	246	java/io/IOException
-      //   119	141	250	finally
-      //   119	141	254	java/io/IOException
-      //   119	141	258	java/io/FileNotFoundException
+      //   111	115	116	java/io/IOException
+      //   9	22	118	java/io/FileNotFoundException
+      //   24	35	118	java/io/FileNotFoundException
+      //   37	48	118	java/io/FileNotFoundException
+      //   50	61	118	java/io/FileNotFoundException
+      //   64	89	118	java/io/FileNotFoundException
+      //   147	151	152	java/io/IOException
+      //   9	22	154	java/io/IOException
+      //   24	35	154	java/io/IOException
+      //   37	48	154	java/io/IOException
+      //   50	61	154	java/io/IOException
+      //   64	89	154	java/io/IOException
+      //   182	186	187	java/io/IOException
+      //   9	22	189	finally
+      //   24	35	189	finally
+      //   37	48	189	finally
+      //   50	61	189	finally
+      //   64	89	189	finally
+      //   125	143	189	finally
+      //   160	178	189	finally
+      //   198	202	204	java/io/IOException
+      //   89	111	208	finally
+      //   89	111	212	java/io/IOException
+      //   89	111	216	java/io/FileNotFoundException
+    }
+    
+    final void yR()
+    {
+      if (this.bNt >= 10)
+      {
+        yS();
+        this.bNt = 0;
+        this.bNu.delete(0, this.bNu.length());
+      }
     }
   }
 }

@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class s$10
   implements Runnable
 {
-  s$10(s params, View paramView, int paramInt1, int paramInt2) {}
+  s$10(s params, bf parambf) {}
   
   public final void run()
   {
-    this.val$view.scrollTo(this.gUz, this.gUA);
+    AppMethodBeat.i(155940);
+    s.a(this.iwT, this.iwr);
+    AppMethodBeat.o(155940);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.s.10
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Point;
 import android.os.Bundle;
-import com.tencent.mm.bi.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.base.h;
 
@@ -20,226 +17,186 @@ import com.tencent.mm.ui.base.h;
 public class VideoCompressUI
   extends MMBaseActivity
 {
-  private VideoTransPara eJA;
-  private d eMh = new d(this);
-  private ProgressDialog mne;
-  private VideoCompressUI.a mnf = new VideoCompressUI.a(this, (byte)0);
-  private boolean mng;
-  private Runnable mnh = new Runnable()
-  {
-    public final void run()
-    {
-      label469:
-      for (;;)
-      {
-        try
-        {
-          VideoCompressUI.a(VideoCompressUI.this, VideoCompressUI.c(VideoCompressUI.this));
-          localIntent = new Intent();
-          Point localPoint = VideoCompressUI.v(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight, VideoCompressUI.a(VideoCompressUI.this).width, VideoCompressUI.a(VideoCompressUI.this).height);
-          if ((!VideoCompressUI.b(VideoCompressUI.this, VideoCompressUI.a(VideoCompressUI.this))) && (localPoint == null)) {
-            continue;
-          }
-          if (localPoint != null) {
-            break label469;
-          }
-          localPoint = new Point(VideoCompressUI.d(VideoCompressUI.this).videoWidth, VideoCompressUI.d(VideoCompressUI.this).videoHeight);
-          str = VideoCompressUI.bjY();
-          y.i("VideoCompressUI", "need remux, inputVideoSize: [%s %s], out: %s, videoPath: %s, tmpPath: %s, ish265: %s", new Object[] { Integer.valueOf(VideoCompressUI.d(VideoCompressUI.this).videoWidth), Integer.valueOf(VideoCompressUI.d(VideoCompressUI.this).videoHeight), localPoint, VideoCompressUI.c(VideoCompressUI.this), str, Boolean.valueOf(VideoCompressUI.e(VideoCompressUI.this)) });
-          if (VideoCompressUI.e(VideoCompressUI.this)) {
-            continue;
-          }
-          SightVideoJNI.remuxing(VideoCompressUI.c(VideoCompressUI.this), str, localPoint.x, localPoint.y, VideoCompressUI.a(VideoCompressUI.this).videoBitrate, VideoCompressUI.a(VideoCompressUI.this).ejP, 8, VideoCompressUI.a(VideoCompressUI.this).ejO, 25.0F, VideoCompressUI.a(VideoCompressUI.this).fps, null, 0, false);
-          localIntent.putExtra("K_SEGMENTVIDEOPATH", str);
-          localIntent.putExtra("KSEGMENTVIDEOTHUMBPATH", VideoCompressUI.a(VideoCompressUI.this, str, null));
-        }
-        catch (Exception localException)
-        {
-          Intent localIntent;
-          String str;
-          y.printErrStackTrace("VideoCompressUI", localException, "video compress failed e [%s]", new Object[] { localException.getMessage() });
-          return;
-          y.i("VideoCompressUI", "no need remux, directly set result");
-          localIntent.putExtra("K_SEGMENTVIDEOPATH", VideoCompressUI.c(VideoCompressUI.this));
-          localIntent.putExtra("KSEGMENTVIDEOTHUMBPATH", VideoCompressUI.a(VideoCompressUI.this, VideoCompressUI.c(VideoCompressUI.this), VideoCompressUI.f(VideoCompressUI.this)));
-          continue;
-        }
-        finally
-        {
-          VideoCompressUI.this.finish();
-          ai.d(new Runnable()
-          {
-            public final void run()
-            {
-              if (VideoCompressUI.g(VideoCompressUI.this) != null) {
-                VideoCompressUI.g(VideoCompressUI.this).dismiss();
-              }
-            }
-          });
-        }
-        VideoCompressUI.this.setResult(-1, localIntent);
-        VideoCompressUI.this.finish();
-        ai.d(new Runnable()
-        {
-          public final void run()
-          {
-            if (VideoCompressUI.g(VideoCompressUI.this) != null) {
-              VideoCompressUI.g(VideoCompressUI.this).dismiss();
-            }
-          }
-        });
-        return;
-        y.i("VideoCompressUI", "ish265, transfer to h264");
-        e.a(VideoCompressUI.c(VideoCompressUI.this), str, VideoCompressUI.a(VideoCompressUI.this));
-      }
-    }
-  };
+  private static int eez;
+  private d evl;
+  private VideoTransPara fZe;
+  private ProgressDialog oMl;
+  private int[] oMm;
+  private VideoCompressUI.a oMn;
+  private boolean oMo;
+  private Runnable oMp;
   private String thumbPath;
   private String videoPath;
   
+  public VideoCompressUI()
+  {
+    AppMethodBeat.i(3699);
+    this.evl = new d(this);
+    this.oMm = new int[] { 0, 0, 0, 0, 0, 0 };
+    this.oMn = new VideoCompressUI.a(this, (byte)0);
+    this.oMp = new VideoCompressUI.2(this);
+    AppMethodBeat.o(3699);
+  }
+  
   /* Error */
-  private String dT(String paramString1, String paramString2)
+  private String fm(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aload_2
-    //   1: invokestatic 152	com/tencent/mm/sdk/platformtools/bk:bl	(Ljava/lang/String;)Z
-    //   4: ifne +5 -> 9
-    //   7: aload_2
-    //   8: areturn
-    //   9: new 275	android/content/Intent
-    //   12: dup
-    //   13: invokespecial 276	android/content/Intent:<init>	()V
-    //   16: astore_3
-    //   17: aload_3
-    //   18: new 221	java/lang/StringBuilder
-    //   21: dup
-    //   22: ldc_w 278
-    //   25: invokespecial 280	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   28: aload_1
-    //   29: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokestatic 286	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   38: invokevirtual 290	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
-    //   41: pop
-    //   42: aload_0
-    //   43: aload_3
-    //   44: invokestatic 296	com/tencent/mm/compatible/j/a:h	(Landroid/content/Context;Landroid/content/Intent;)Lcom/tencent/mm/compatible/j/a$a;
-    //   47: astore_3
+    //   0: sipush 3701
+    //   3: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_2
+    //   7: invokestatic 233	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
+    //   10: ifne +11 -> 21
+    //   13: sipush 3701
+    //   16: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: aload_2
+    //   20: areturn
+    //   21: new 354	android/content/Intent
+    //   24: dup
+    //   25: invokespecial 355	android/content/Intent:<init>	()V
+    //   28: astore_3
+    //   29: aload_3
+    //   30: ldc_w 357
+    //   33: aload_1
+    //   34: invokestatic 360	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   37: invokevirtual 363	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   40: invokestatic 369	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   43: invokevirtual 373	android/content/Intent:setData	(Landroid/net/Uri;)Landroid/content/Intent;
+    //   46: pop
+    //   47: aload_0
     //   48: aload_3
-    //   49: ifnull -42 -> 7
-    //   52: aload_3
-    //   53: getfield 302	com/tencent/mm/compatible/j/a$a:bitmap	Landroid/graphics/Bitmap;
-    //   56: ifnull -49 -> 7
-    //   59: new 221	java/lang/StringBuilder
-    //   62: dup
-    //   63: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   66: invokestatic 228	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getInstance	()Lcom/tencent/mm/plugin/mmsight/model/CaptureMMProxy;
-    //   69: invokevirtual 231	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getAccVideoPath	()Ljava/lang/String;
-    //   72: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: ldc_w 304
-    //   78: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   81: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   84: astore_1
-    //   85: aload_1
-    //   86: invokestatic 245	com/tencent/mm/vfs/e:bK	(Ljava/lang/String;)Z
-    //   89: ifeq +9 -> 98
-    //   92: aload_1
-    //   93: iconst_1
-    //   94: invokestatic 249	com/tencent/mm/vfs/e:K	(Ljava/lang/String;Z)Z
-    //   97: pop
-    //   98: aload_1
-    //   99: invokestatic 252	com/tencent/mm/vfs/e:nb	(Ljava/lang/String;)Z
-    //   102: pop
-    //   103: new 221	java/lang/StringBuilder
-    //   106: dup
-    //   107: invokespecial 222	java/lang/StringBuilder:<init>	()V
-    //   110: aload_1
-    //   111: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   114: ldc_w 306
-    //   117: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: invokestatic 260	java/lang/System:currentTimeMillis	()J
-    //   123: invokevirtual 263	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   126: ldc_w 308
-    //   129: invokevirtual 235	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: invokevirtual 240	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   135: astore_1
-    //   136: ldc 92
-    //   138: ldc_w 310
-    //   141: iconst_1
-    //   142: anewarray 96	java/lang/Object
-    //   145: dup
-    //   146: iconst_0
-    //   147: aload_1
-    //   148: aastore
-    //   149: invokestatic 102	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   152: aload_3
-    //   153: getfield 302	com/tencent/mm/compatible/j/a$a:bitmap	Landroid/graphics/Bitmap;
-    //   156: bipush 80
-    //   158: getstatic 316	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   161: aload_1
-    //   162: iconst_1
-    //   163: invokestatic 321	com/tencent/mm/sdk/platformtools/c:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)V
-    //   166: aload_1
-    //   167: areturn
-    //   168: astore_1
-    //   169: ldc 92
-    //   171: aload_1
-    //   172: ldc_w 323
-    //   175: iconst_1
-    //   176: anewarray 96	java/lang/Object
-    //   179: dup
-    //   180: iconst_0
+    //   49: invokestatic 379	com/tencent/mm/compatible/j/a:j	(Landroid/content/Context;Landroid/content/Intent;)Lcom/tencent/mm/compatible/j/a$a;
+    //   52: astore_3
+    //   53: aload_2
+    //   54: astore_1
+    //   55: aload_3
+    //   56: ifnull +119 -> 175
+    //   59: aload_2
+    //   60: astore_1
+    //   61: aload_3
+    //   62: getfield 385	com/tencent/mm/compatible/j/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   65: ifnull +110 -> 175
+    //   68: new 78	java/lang/StringBuilder
+    //   71: dup
+    //   72: invokespecial 305	java/lang/StringBuilder:<init>	()V
+    //   75: invokestatic 311	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getInstance	()Lcom/tencent/mm/plugin/mmsight/model/CaptureMMProxy;
+    //   78: invokevirtual 314	com/tencent/mm/plugin/mmsight/model/CaptureMMProxy:getAccVideoPath	()Ljava/lang/String;
+    //   81: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: ldc_w 387
+    //   87: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: astore_1
+    //   94: aload_1
+    //   95: invokestatic 321	com/tencent/mm/vfs/e:cN	(Ljava/lang/String;)Z
+    //   98: ifeq +9 -> 107
+    //   101: aload_1
+    //   102: iconst_1
+    //   103: invokestatic 325	com/tencent/mm/vfs/e:O	(Ljava/lang/String;Z)Z
+    //   106: pop
+    //   107: aload_1
+    //   108: invokestatic 328	com/tencent/mm/vfs/e:um	(Ljava/lang/String;)Z
+    //   111: pop
+    //   112: new 78	java/lang/StringBuilder
+    //   115: dup
+    //   116: invokespecial 305	java/lang/StringBuilder:<init>	()V
+    //   119: aload_1
+    //   120: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: ldc_w 389
+    //   126: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokestatic 336	java/lang/System:currentTimeMillis	()J
+    //   132: invokevirtual 339	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   135: ldc_w 391
+    //   138: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   141: invokevirtual 102	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   144: astore_1
+    //   145: ldc 76
+    //   147: ldc_w 393
+    //   150: iconst_1
+    //   151: anewarray 127	java/lang/Object
+    //   154: dup
+    //   155: iconst_0
+    //   156: aload_1
+    //   157: aastore
+    //   158: invokestatic 136	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   161: aload_3
+    //   162: getfield 385	com/tencent/mm/compatible/j/a$a:bitmap	Landroid/graphics/Bitmap;
+    //   165: bipush 80
+    //   167: getstatic 399	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   170: aload_1
+    //   171: iconst_1
+    //   172: invokestatic 404	com/tencent/mm/sdk/platformtools/d:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)V
+    //   175: sipush 3701
+    //   178: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   181: aload_1
-    //   182: invokevirtual 204	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   185: aastore
-    //   186: invokestatic 327	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   189: aload_2
-    //   190: areturn
-    //   191: astore_3
-    //   192: aload_1
-    //   193: astore_2
-    //   194: aload_3
-    //   195: astore_1
-    //   196: goto -27 -> 169
+    //   182: areturn
+    //   183: astore_3
+    //   184: aload_2
+    //   185: astore_1
+    //   186: ldc 76
+    //   188: aload_3
+    //   189: ldc_w 406
+    //   192: iconst_1
+    //   193: anewarray 127	java/lang/Object
+    //   196: dup
+    //   197: iconst_0
+    //   198: aload_3
+    //   199: invokevirtual 284	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   202: aastore
+    //   203: invokestatic 410	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   206: goto -31 -> 175
+    //   209: astore_3
+    //   210: goto -24 -> 186
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	199	0	this	VideoCompressUI
-    //   0	199	1	paramString1	String
-    //   0	199	2	paramString2	String
-    //   16	137	3	localObject	Object
-    //   191	4	3	localException	Exception
+    //   0	213	0	this	VideoCompressUI
+    //   0	213	1	paramString1	String
+    //   0	213	2	paramString2	String
+    //   28	134	3	localObject	java.lang.Object
+    //   183	16	3	localException1	java.lang.Exception
+    //   209	1	3	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   9	48	168	java/lang/Exception
-    //   52	98	168	java/lang/Exception
-    //   98	152	168	java/lang/Exception
-    //   152	166	191	java/lang/Exception
+    //   21	53	183	java/lang/Exception
+    //   61	107	183	java/lang/Exception
+    //   107	161	183	java/lang/Exception
+    //   161	175	209	java/lang/Exception
   }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(3700);
     super.onCreate(paramBundle);
-    setContentView(l.a.background_transparent);
+    setContentView(2130968799);
     paramBundle = getIntent();
-    if ((paramBundle == null) || (bk.bl(paramBundle.getStringExtra("K_SEGMENTVIDEOPATH"))))
+    if ((paramBundle == null) || (bo.isNullOrNil(paramBundle.getStringExtra("K_SEGMENTVIDEOPATH"))))
     {
       setResult(0);
       finish();
+      AppMethodBeat.o(3700);
       return;
     }
-    this.mne = h.b(this, getString(l.b.app_waiting), false, null);
+    this.oMl = h.b(this, getString(2131297112), false, null);
     this.videoPath = paramBundle.getStringExtra("K_SEGMENTVIDEOPATH");
     this.thumbPath = paramBundle.getStringExtra("KSEGMENTVIDEOTHUMBPATH");
-    CaptureMMProxy.createProxy(new CaptureMMProxy(this.eMh));
-    this.eMh.connect(new VideoCompressUI.1(this));
+    CaptureMMProxy.createProxy(new CaptureMMProxy(this.evl));
+    this.evl.connect(new VideoCompressUI.1(this));
+    AppMethodBeat.o(3700);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(3702);
     super.onDestroy();
-    if (this.eMh != null) {
-      this.eMh.release();
+    if (this.evl != null) {
+      this.evl.release();
     }
+    AppMethodBeat.o(3702);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

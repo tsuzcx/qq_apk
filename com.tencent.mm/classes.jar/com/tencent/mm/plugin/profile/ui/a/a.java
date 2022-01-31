@@ -3,67 +3,79 @@ package com.tencent.mm.plugin.profile.ui.a;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.plugin.profile.b.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
   implements f
 {
-  Activity bMV;
-  com.tencent.mm.ui.base.p ksE;
-  com.tencent.mm.plugin.profile.a.a mZt;
-  private am mZu = new am(new a.1(this), false);
+  Activity cup;
+  com.tencent.mm.ui.base.p mOt;
+  b pCZ;
+  private ap pDa;
   
   public a(Activity paramActivity)
   {
-    this.bMV = paramActivity;
+    AppMethodBeat.i(23797);
+    this.pDa = new ap(new a.1(this), false);
+    this.cup = paramActivity;
+    AppMethodBeat.o(23797);
   }
   
-  private void KX(String paramString)
+  private void Xi(String paramString)
   {
-    this.mZu.stopTimer();
-    if (this.ksE != null) {
-      this.ksE.dismiss();
+    AppMethodBeat.i(23800);
+    this.pDa.stopTimer();
+    if (this.mOt != null) {
+      this.mOt.dismiss();
     }
     paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-    paramString.putExtra("title", this.bMV.getString(R.l.contact_info_weibo));
+    paramString.putExtra("title", this.cup.getString(2131298834));
     paramString.putExtra("zoom", true);
     paramString.putExtra("vertical_scroll", false);
-    d.b(this.bMV, "webview", ".ui.tools.WebViewUI", paramString);
+    d.b(this.cup, "webview", ".ui.tools.WebViewUI", paramString);
+    AppMethodBeat.o(23800);
   }
   
-  public final void ep(String paramString1, String paramString2)
+  public final void fN(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(23798);
     if (paramString1 == null)
     {
-      y.e("MicroMsg.ViewTWeibo", "null weibo id");
+      ab.e("MicroMsg.ViewTWeibo", "null weibo id");
+      AppMethodBeat.o(23798);
       return;
     }
-    au.Dk().a(205, this);
-    this.mZt = new com.tencent.mm.plugin.profile.a.a(bk.pm(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
-    au.Dk().a(this.mZt, 0);
-    this.mZu.S(3000L, 3000L);
+    aw.Rc().a(205, this);
+    this.pCZ = new b(bo.nullAsNil(paramString1).replace("http://t.qq.com/", "").trim(), paramString2);
+    aw.Rc().a(this.pCZ, 0);
+    this.pDa.ag(3000L, 3000L);
+    AppMethodBeat.o(23798);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    au.Dk().b(205, this);
-    paramString = (com.tencent.mm.plugin.profile.a.a)paramm;
+    AppMethodBeat.i(23799);
+    aw.Rc().b(205, this);
+    paramString = (b)paramm;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      KX(paramString.getURL());
+      Xi(paramString.getURL());
+      AppMethodBeat.o(23799);
       return;
     }
     if (paramInt1 != 4) {
-      y.e("MicroMsg.ViewTWeibo", "view weibo failed: " + paramInt1 + ", " + paramInt2);
+      ab.e("MicroMsg.ViewTWeibo", "view weibo failed: " + paramInt1 + ", " + paramInt2);
     }
-    KX("http://t.qq.com/" + paramString.mVk);
+    Xi("http://t.qq.com/" + paramString.pxO);
+    AppMethodBeat.o(23799);
   }
 }
 

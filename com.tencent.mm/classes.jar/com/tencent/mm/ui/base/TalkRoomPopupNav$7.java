@@ -3,6 +3,7 @@ package com.tencent.mm.ui.base;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TalkRoomPopupNav$7
   implements Animation.AnimationListener
@@ -11,8 +12,10 @@ final class TalkRoomPopupNav$7
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    TalkRoomPopupNav.c(this.vbD).setVisibility(4);
-    TalkRoomPopupNav.e(this.vbD).setVisibility(4);
+    AppMethodBeat.i(30013);
+    TalkRoomPopupNav.c(this.zpT).setVisibility(4);
+    TalkRoomPopupNav.e(this.zpT).setVisibility(4);
+    AppMethodBeat.o(30013);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

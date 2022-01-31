@@ -1,37 +1,45 @@
 package com.tencent.mm.plugin.appbrand.g;
 
-import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.a;
-import com.tencent.mm.plugin.fts.a.a.h;
-import com.tencent.mm.plugin.fts.a.a.j;
+import com.tencent.mm.plugin.fts.a.m;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
   extends com.tencent.mm.plugin.fts.a.b
 {
-  com.tencent.mm.plugin.fts.a.m dBO;
-  c fYt;
-  private j.a fYu = new b.1(this);
+  m ezf;
+  c hrH;
+  private k.a hrI;
   
-  protected final boolean BB()
+  public b()
   {
+    AppMethodBeat.i(129964);
+    this.hrI = new b.1(this);
+    AppMethodBeat.o(129964);
+  }
+  
+  public final boolean Pp()
+  {
+    AppMethodBeat.i(129967);
     i.onDestroy();
-    i.f(this.fYu);
-    this.fYt = null;
-    this.dBO = null;
+    i.d(this.hrI);
+    this.hrH = null;
+    this.ezf = null;
+    AppMethodBeat.o(129967);
     return true;
   }
   
   public final a a(com.tencent.mm.plugin.fts.a.a.i parami)
   {
-    parami = new c(parami);
-    return this.dBO.a(-65536, parami);
+    AppMethodBeat.i(129965);
+    parami = new b.c(this, parami);
+    parami = this.ezf.a(-65536, parami);
+    AppMethodBeat.o(129965);
+    return parami;
   }
   
   public final String getName()
@@ -39,87 +47,28 @@ public final class b
     return "FTS5SearchWeAppLogic";
   }
   
-  protected final boolean onCreate()
+  public final boolean onCreate()
   {
-    if (!((n)com.tencent.mm.kernel.g.t(n.class)).isFTSContextReady())
+    AppMethodBeat.i(129966);
+    if (!((n)g.G(n.class)).isFTSContextReady())
     {
-      y.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "Create Fail!");
+      ab.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "Create Fail!");
+      AppMethodBeat.o(129966);
       return false;
     }
-    y.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "Create Success!");
-    this.fYt = ((c)((n)com.tencent.mm.kernel.g.t(n.class)).getFTSIndexStorage(512));
-    this.dBO = ((n)com.tencent.mm.kernel.g.t(n.class)).getFTSTaskDaemon();
-    this.dBO.a(65616, new b.d(this));
+    ab.i("MicroMsg.FTS.FTS5SearchWeAppLogic", "Create Success!");
+    this.hrH = ((c)((n)g.G(n.class)).getFTSIndexStorage(512));
+    this.ezf = ((n)g.G(n.class)).getFTSTaskDaemon();
+    this.ezf.a(65616, new b.d(this));
     i.onCreate();
-    i.e(this.fYu);
+    i.c(this.hrI);
+    AppMethodBeat.o(129966);
     return true;
-  }
-  
-  final class c
-    extends h
-  {
-    c(com.tencent.mm.plugin.fts.a.a.i parami)
-    {
-      super();
-    }
-    
-    protected final void a(j paramj)
-    {
-      paramj.kwi = com.tencent.mm.plugin.fts.a.a.g.aF(this.kwT.bVk, true);
-      paramj.kxh = new ArrayList();
-      HashSet localHashSet = new HashSet();
-      Cursor localCursor = b.this.fYt.a(paramj.kwi, com.tencent.mm.plugin.fts.a.c.kuR, this.kwT.kxb, true, true);
-      try
-      {
-        while (localCursor.moveToNext())
-        {
-          com.tencent.mm.plugin.fts.a.a.m localm = new com.tencent.mm.plugin.fts.a.a.m();
-          localm.j(localCursor);
-          if ((!localHashSet.contains(Long.valueOf(localm.kxk))) && (!this.kwT.kxd.contains(localm.kwg)))
-          {
-            localm.aVA();
-            paramj.kxh.add(localm);
-            localHashSet.add(Long.valueOf(localm.kxk));
-          }
-        }
-        if (localCursor == null) {
-          break label178;
-        }
-      }
-      catch (Throwable paramj)
-      {
-        throw paramj;
-      }
-      finally
-      {
-        if (localCursor != null) {
-          localCursor.close();
-        }
-      }
-      localCursor.close();
-      label178:
-      if (Thread.interrupted()) {
-        throw new InterruptedException();
-      }
-      if (this.kwT.kxe != null) {
-        Collections.sort(paramj.kxh, this.kwT.kxe);
-      }
-    }
-    
-    public final int getId()
-    {
-      return 21;
-    }
-    
-    public final String getName()
-    {
-      return "SearchWeAppTask";
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.b
  * JD-Core Version:    0.7.0.1
  */

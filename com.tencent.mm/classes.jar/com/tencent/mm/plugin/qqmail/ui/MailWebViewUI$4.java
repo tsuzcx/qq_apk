@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import android.webkit.ConsoleMessage;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.xweb.p;
 
 final class MailWebViewUI$4
-  extends j
+  extends p
 {
   MailWebViewUI$4(MailWebViewUI paramMailWebViewUI) {}
   
   public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
+    AppMethodBeat.i(68398);
     if (paramConsoleMessage != null) {}
     for (String str = paramConsoleMessage.message();; str = null)
     {
-      str = s.Xd(str);
+      str = u.amW(str);
       if (!str.startsWith("weixin://private/getcontentwidth/")) {
         break;
       }
-      y.d("MicroMsg.QQMail.WebViewUI", "onConsoleMessage, url is getContentWidth scheme, url = " + str);
-      MailWebViewUI.b(this.niS, str);
+      ab.d("MicroMsg.QQMail.WebViewUI", "onConsoleMessage, url is getContentWidth scheme, url = ".concat(String.valueOf(str)));
+      MailWebViewUI.b(this.pOf, str);
+      AppMethodBeat.o(68398);
       return true;
     }
-    return super.onConsoleMessage(paramConsoleMessage);
+    boolean bool = super.onConsoleMessage(paramConsoleMessage);
+    AppMethodBeat.o(68398);
+    return bool;
   }
 }
 

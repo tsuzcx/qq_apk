@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.mall.ui;
 
-import com.tencent.mm.h.a.uh;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.wb;
 import com.tencent.mm.sdk.b.c;
 
 final class MallIndexOSUI$1
-  extends c<uh>
+  extends c<wb>
 {
   MallIndexOSUI$1(MallIndexOSUI paramMallIndexOSUI)
   {
-    this.udX = uh.class.getName().hashCode();
+    AppMethodBeat.i(43177);
+    this.__eventId = wb.class.getName().hashCode();
+    AppMethodBeat.o(43177);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.ui.MallIndexOSUI.1
  * JD-Core Version:    0.7.0.1
  */

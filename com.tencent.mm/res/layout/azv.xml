@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:focusable="true" android:focusableInTouchMode="true" style="@style/v1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/eri" wallet:titleText="@string/fe2" style="@style/gd" />
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/erj" wallet:layoutRes="@layout/azu" style="@style/uz" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/exf" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/dm" />
+    <ImageView android:id="@id/exg" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/dl" android:layout_marginStart="8.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/exh" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/exi" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginStart="8.0dip" />
+        <TextView android:layout_gravity="center_vertical" android:id="@id/exj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ex9" android:layout_marginStart="4.0dip" />
+    </LinearLayout>
+</merge>

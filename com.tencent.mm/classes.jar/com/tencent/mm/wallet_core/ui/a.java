@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.ui;
 
 public abstract interface a
 {
-  public abstract void gK(boolean paramBoolean);
+  public abstract void onVisibleStateChange(boolean paramBoolean);
 }
 
 

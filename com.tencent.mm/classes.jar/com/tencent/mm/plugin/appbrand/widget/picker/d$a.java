@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 public abstract interface d$a<T>
 {
-  public abstract void d(boolean paramBoolean, T paramT);
+  public abstract void b(boolean paramBoolean, T paramT);
 }
 
 

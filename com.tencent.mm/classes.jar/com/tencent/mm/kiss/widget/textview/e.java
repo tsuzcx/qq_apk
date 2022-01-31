@@ -2,23 +2,32 @@ package com.tencent.mm.kiss.widget.textview;
 
 import android.text.Layout.Alignment;
 import android.text.TextPaint;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e
 {
-  private int Er;
-  private final d[] dOf = new d[3];
-  private final Object mLock = new Object();
+  private final d[] eLN;
+  private final Object mLock;
+  private int mPoolSize;
   
-  public final d EG()
+  public e()
+  {
+    AppMethodBeat.i(105714);
+    this.mLock = new Object();
+    this.eLN = new d[3];
+    AppMethodBeat.o(105714);
+  }
+  
+  public final d SL()
   {
     synchronized (this.mLock)
     {
-      if (this.Er > 0)
+      if (this.mPoolSize > 0)
       {
-        int i = this.Er - 1;
-        d locald = this.dOf[i];
-        this.dOf[i] = null;
-        this.Er -= 1;
+        int i = this.mPoolSize - 1;
+        d locald = this.eLN[i];
+        this.eLN[i] = null;
+        this.mPoolSize -= 1;
         return locald;
       }
       return null;
@@ -27,59 +36,67 @@ public final class e
   
   public final boolean a(d paramd)
   {
+    AppMethodBeat.i(105715);
     Object localObject = this.mLock;
     int i = 0;
     for (;;)
     {
       try
       {
-        if (i >= this.Er) {
-          break label55;
+        if (i >= this.mPoolSize) {
+          break label72;
         }
-        if (this.dOf[i] == paramd)
+        if (this.eLN[i] == paramd)
         {
           i = 1;
           if (i == 0) {
             break;
           }
-          throw new IllegalStateException("Already in the pool!");
+          paramd = new IllegalStateException("Already in the pool!");
+          AppMethodBeat.o(105715);
+          throw paramd;
         }
       }
-      finally {}
+      finally
+      {
+        AppMethodBeat.o(105715);
+      }
       i += 1;
       continue;
-      label55:
+      label72:
       i = 0;
     }
-    paramd.dNS = null;
-    paramd.dNT = null;
-    paramd.dNU = 0;
-    paramd.dNV = 0;
-    paramd.dNW = new TextPaint();
+    paramd.eLA = null;
+    paramd.eLB = null;
+    paramd.eLC = 0;
+    paramd.eLD = 0;
+    paramd.eLE = new TextPaint();
     paramd.width = 0;
-    paramd.dNX = Layout.Alignment.ALIGN_NORMAL;
+    paramd.eLF = Layout.Alignment.ALIGN_NORMAL;
     paramd.gravity = 51;
-    paramd.dNY = null;
-    paramd.dNZ = 0;
+    paramd.eLG = null;
+    paramd.eLH = 0;
     paramd.maxLines = 2147483647;
-    paramd.dOa = null;
-    paramd.dOb = 0.0F;
-    paramd.dOc = 1.0F;
-    paramd.dOd = false;
+    paramd.eLI = null;
+    paramd.eLJ = 0.0F;
+    paramd.eLK = 1.0F;
+    paramd.eLL = false;
     paramd.maxLength = 0;
-    paramd.dOe = null;
-    if (this.Er < this.dOf.length)
+    paramd.eLM = null;
+    if (this.mPoolSize < this.eLN.length)
     {
-      this.dOf[this.Er] = paramd;
-      this.Er += 1;
+      this.eLN[this.mPoolSize] = paramd;
+      this.mPoolSize += 1;
+      AppMethodBeat.o(105715);
       return true;
     }
+    AppMethodBeat.o(105715);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.voip;
 
-import com.tencent.mm.plugin.voip.ui.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.voip.ui.d;
 
 final class b$1
   implements Runnable
@@ -9,8 +10,10 @@ final class b$1
   
   public final void run()
   {
-    b.a(this.pNm).dismiss();
-    b.b(this.pNm);
+    AppMethodBeat.i(4307);
+    b.a(this.ttg).dismiss();
+    b.b(this.ttg);
+    AppMethodBeat.o(4307);
   }
 }
 

@@ -1,21 +1,32 @@
 package com.tencent.mm.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mm.sdk.platformtools.ag;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MMAppMgr$12
-  implements DialogInterface.OnDismissListener
+  extends ClickableSpan
 {
-  MMAppMgr$12(DialogInterface.OnClickListener paramOnClickListener) {}
+  MMAppMgr$12(Activity paramActivity) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    ag.Zn("show_wap_adviser");
-    if (this.rkq != null) {
-      this.rkq.onClick(paramDialogInterface, 0);
-    }
+    AppMethodBeat.i(153817);
+    bo.M(this.gjR, ah.getResources().getString(2131306182, new Object[] { aa.gP(this.gjR), aa.dsF(), "setting", Integer.valueOf(0), Integer.valueOf(0) }));
+    AppMethodBeat.o(153817);
+  }
+  
+  public final void updateDrawState(TextPaint paramTextPaint)
+  {
+    AppMethodBeat.i(153818);
+    paramTextPaint.setColor(this.gjR.getResources().getColor(2131690214));
+    AppMethodBeat.o(153818);
   }
 }
 

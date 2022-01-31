@@ -5,7 +5,7 @@ public final class c$jy
 {
   public c$jy()
   {
-    super("updateSearchWAWidgetView", "", 10000, false);
+    super("requireSoterBiometricAuthentication", "soter_biometric_authentication", 214, true);
   }
 }
 

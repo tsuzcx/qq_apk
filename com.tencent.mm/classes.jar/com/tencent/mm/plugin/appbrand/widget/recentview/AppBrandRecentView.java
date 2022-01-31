@@ -4,12 +4,13 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.util.AttributeSet;
+import java.util.List;
 
 public abstract class AppBrandRecentView
   extends RecyclerView
 {
-  d.a hBW;
-  private AppBrandRecentView.e hri;
+  private AppBrandRecentView.e jhH;
+  d.a jup;
   
   public AppBrandRecentView(Context paramContext)
   {
@@ -29,30 +30,40 @@ public abstract class AppBrandRecentView
   
   public AppBrandRecentView.e getRefreshListener()
   {
-    return this.hri;
+    return this.jhH;
   }
   
   public d.a getSceneFactory()
   {
-    return this.hBW;
+    return this.jup;
   }
   
   public abstract void refresh();
   
   public abstract void release();
   
-  public abstract void setDataQuery(AppBrandRecentView.c paramc);
+  public abstract void setDataQuery(c paramc);
   
   public abstract void setOnItemClickListener(AppBrandRecentView.b paramb);
   
   public void setRefreshListener(AppBrandRecentView.e parame)
   {
-    this.hri = parame;
+    this.jhH = parame;
   }
   
   public void setSceneFactory(d.a parama)
   {
-    this.hBW = parama;
+    this.jup = parama;
+  }
+  
+  public static abstract interface c<T>
+  {
+    public abstract List<T> qi(int paramInt);
+  }
+  
+  public static abstract interface d
+  {
+    public abstract void aQm();
   }
 }
 

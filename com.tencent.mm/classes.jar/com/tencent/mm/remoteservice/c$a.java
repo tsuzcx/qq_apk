@@ -16,7 +16,7 @@ public abstract class c$a
     attachInterface(this, "com.tencent.mm.remoteservice.ICommRemoteServer");
   }
   
-  public static c M(IBinder paramIBinder)
+  public static c K(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -25,7 +25,7 @@ public abstract class c$a
     if ((localIInterface != null) && ((localIInterface instanceof c))) {
       return (c)localIInterface;
     }
-    return new a(paramIBinder);
+    return new c.a.a(paramIBinder);
   }
   
   public IBinder asBinder()
@@ -67,67 +67,10 @@ public abstract class c$a
       paramParcel2.writeInt(0);
     }
   }
-  
-  private static final class a
-    implements c
-  {
-    private IBinder mRemote;
-    
-    a(IBinder paramIBinder)
-    {
-      this.mRemote = paramIBinder;
-    }
-    
-    public final void a(String paramString1, String paramString2, Bundle paramBundle, b paramb)
-    {
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      for (;;)
-      {
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.remoteservice.ICommRemoteServer");
-          localParcel1.writeString(paramString1);
-          localParcel1.writeString(paramString2);
-          if (paramBundle != null)
-          {
-            localParcel1.writeInt(1);
-            paramBundle.writeToParcel(localParcel1, 0);
-            if (paramb != null)
-            {
-              paramString1 = paramb.asBinder();
-              localParcel1.writeStrongBinder(paramString1);
-              this.mRemote.transact(1, localParcel1, localParcel2, 0);
-              localParcel2.readException();
-              if (localParcel2.readInt() != 0) {
-                paramBundle.readFromParcel(localParcel2);
-              }
-            }
-          }
-          else
-          {
-            localParcel1.writeInt(0);
-            continue;
-          }
-          paramString1 = null;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-        }
-      }
-    }
-    
-    public final IBinder asBinder()
-    {
-      return this.mRemote;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.remoteservice.c.a
  * JD-Core Version:    0.7.0.1
  */

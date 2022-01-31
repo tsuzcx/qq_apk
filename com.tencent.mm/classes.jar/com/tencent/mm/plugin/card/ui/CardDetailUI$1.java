@@ -1,46 +1,51 @@
 package com.tencent.mm.plugin.card.ui;
 
-import com.tencent.mm.modelgeo.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.card.b.i;
 import com.tencent.mm.plugin.card.b.l;
 import com.tencent.mm.plugin.card.model.am;
 
 final class CardDetailUI$1
-  implements a.a
+  implements b.a
 {
   CardDetailUI$1(CardDetailUI paramCardDetailUI) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (!paramBoolean) {
+    AppMethodBeat.i(88272);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(88272);
       return true;
     }
-    if ((CardDetailUI.a(this.isj) == -85.0F) && (CardDetailUI.b(this.isj) == -1000.0F))
+    if ((CardDetailUI.a(this.ktq) == -85.0F) && (CardDetailUI.b(this.ktq) == -1000.0F))
     {
-      CardDetailUI.a(this.isj, paramFloat2);
-      CardDetailUI.b(this.isj, paramFloat1);
-      am.aAy().N(CardDetailUI.a(this.isj), CardDetailUI.b(this.isj));
+      CardDetailUI.a(this.ktq, paramFloat2);
+      CardDetailUI.b(this.ktq, paramFloat1);
+      am.bcj().S(CardDetailUI.a(this.ktq), CardDetailUI.b(this.ktq));
     }
-    i locali = CardDetailUI.c(this.isj);
-    paramFloat1 = CardDetailUI.b(this.isj);
-    paramFloat2 = CardDetailUI.a(this.isj);
-    synchronized (locali.ikx)
+    i locali = CardDetailUI.c(this.ktq);
+    paramFloat1 = CardDetailUI.b(this.ktq);
+    paramFloat2 = CardDetailUI.a(this.ktq);
+    synchronized (locali.clk)
     {
-      locali.dia = paramFloat2;
-      locali.dib = paramFloat1;
-      if (CardDetailUI.d(this.isj))
+      locali.dZu = paramFloat2;
+      locali.dZv = paramFloat1;
+      if (CardDetailUI.d(this.ktq))
       {
-        CardDetailUI.e(this.isj);
-        CardDetailUI.f(this.isj);
+        CardDetailUI.e(this.ktq);
+        CardDetailUI.f(this.ktq);
       }
-      CardDetailUI.g(this.isj);
+      CardDetailUI.g(this.ktq);
+      AppMethodBeat.o(88272);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardDetailUI.1
  * JD-Core Version:    0.7.0.1
  */

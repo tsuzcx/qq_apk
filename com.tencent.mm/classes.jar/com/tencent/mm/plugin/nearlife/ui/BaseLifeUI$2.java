@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.nearlife.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.ato;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.azt;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BaseLifeUI$2
   implements View.OnClickListener
@@ -14,25 +15,28 @@ final class BaseLifeUI$2
   
   public final void onClick(View paramView)
   {
-    if (this.mEV.mEG == null)
+    AppMethodBeat.i(22937);
+    if (this.pfa.peJ == null)
     {
-      y.e("MicroMsg.BaseLifeUI", "Location is null");
+      ab.e("MicroMsg.BaseLifeUI", "Location is null");
+      AppMethodBeat.o(22937);
       return;
     }
-    h.nFQ.f(11138, new Object[] { "1", Integer.valueOf(BaseLifeUI.b(this.mEV).getCount() + 1), this.mEV.fTF });
+    h.qsU.e(11138, new Object[] { "1", Integer.valueOf(BaseLifeUI.b(this.pfa).getCount() + 1), this.pfa.hng });
     paramView = new Intent();
-    paramView.setClass(this.mEV, NearLifeCreatePoiUI.class);
-    paramView.putExtra("get_lat", this.mEV.mEG.sGK);
-    paramView.putExtra("get_lng", this.mEV.mEG.sGJ);
-    paramView.putExtra("get_preci", this.mEV.mEG.sUn);
-    paramView.putExtra("get_poi_name", BaseLifeUI.b(this.mEV).bok());
-    paramView.putExtra("get_cur_lat", this.mEV.mEH);
-    paramView.putExtra("get_cur_lng", this.mEV.mEI);
-    paramView.putExtra("get_accuracy", this.mEV.mEK);
-    paramView.putExtra("get_loctype", this.mEV.mEJ);
-    paramView.putExtra("search_id", this.mEV.fTF);
-    paramView.putExtra("get_is_mars", this.mEV.elu);
-    this.mEV.startActivityForResult(paramView, 1);
+    paramView.setClass(this.pfa, NearLifeCreatePoiUI.class);
+    paramView.putExtra("get_lat", this.pfa.peJ.wDi);
+    paramView.putExtra("get_lng", this.pfa.peJ.wDh);
+    paramView.putExtra("get_preci", this.pfa.peJ.wSk);
+    paramView.putExtra("get_poi_name", BaseLifeUI.b(this.pfa).bWJ());
+    paramView.putExtra("get_cur_lat", this.pfa.peK);
+    paramView.putExtra("get_cur_lng", this.pfa.peL);
+    paramView.putExtra("get_accuracy", this.pfa.peN);
+    paramView.putExtra("get_loctype", this.pfa.peM);
+    paramView.putExtra("search_id", this.pfa.hng);
+    paramView.putExtra("get_is_mars", this.pfa.fBM);
+    this.pfa.startActivityForResult(paramView, 1);
+    AppMethodBeat.o(22937);
   }
 }
 

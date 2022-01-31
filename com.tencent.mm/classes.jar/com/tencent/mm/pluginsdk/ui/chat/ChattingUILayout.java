@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.ui.chat;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.BasePanelKeybordLayout;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,42 +11,16 @@ import java.util.List;
 public class ChattingUILayout
   extends BasePanelKeybordLayout
 {
-  private ChatFooterBottom sgq;
-  
   public ChattingUILayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
   }
   
-  private ChatFooterBottom o(ViewGroup paramViewGroup)
+  public List<View> getPanelView()
   {
-    if (this.sgq != null) {
-      return this.sgq;
-    }
-    if ((paramViewGroup == null) || (paramViewGroup.getChildCount() <= 0)) {
-      return this.sgq;
-    }
-    int i = 0;
-    while (i < paramViewGroup.getChildCount())
-    {
-      View localView = paramViewGroup.getChildAt(i);
-      if ((localView instanceof ChatFooterBottom))
-      {
-        this.sgq = ((ChatFooterBottom)localView);
-        return this.sgq;
-      }
-      if (((localView instanceof ViewGroup)) && (o((ViewGroup)localView) != null)) {
-        return this.sgq;
-      }
-      i += 1;
-    }
-    return this.sgq;
-  }
-  
-  protected List<View> getPanelView()
-  {
+    AppMethodBeat.i(27947);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(o(this));
+    AppMethodBeat.o(27947);
     return localArrayList;
   }
 }

@@ -1,39 +1,39 @@
 package com.tencent.mm.wallet_core.d;
 
 import android.content.Intent;
-import com.tencent.mm.ah.m;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class g
 {
-  public MMActivity gfb;
-  public i wBd;
+  public i AXB;
+  public MMActivity hwZ;
   
   public g(MMActivity paramMMActivity, i parami)
   {
-    this.gfb = paramMMActivity;
-    this.wBd = parami;
+    this.hwZ = paramMMActivity;
+    this.AXB = parami;
   }
   
-  public abstract boolean c(int paramInt1, int paramInt2, String paramString, m paramm);
-  
-  public abstract boolean m(Object... paramVarArgs);
+  public CharSequence getTips(int paramInt)
+  {
+    return null;
+  }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public boolean s(Object... paramVarArgs)
+  public abstract boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm);
+  
+  public abstract boolean p(Object... paramVarArgs);
+  
+  public boolean x(Object... paramVarArgs)
   {
     return false;
   }
   
-  public boolean t(Object... paramVarArgs)
+  public boolean y(Object... paramVarArgs)
   {
     return false;
-  }
-  
-  public CharSequence vy(int paramInt)
-  {
-    return null;
   }
 }
 

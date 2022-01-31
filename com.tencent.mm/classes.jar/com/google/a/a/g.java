@@ -3,44 +3,44 @@ package com.google.a.a;
 public final class g
 {
   public static final String[] EMPTY_STRING_ARRAY = new String[0];
-  public static final int[] aUJ = new int[0];
-  public static final long[] aUK = new long[0];
-  public static final float[] aUL = new float[0];
-  public static final double[] aUM = new double[0];
-  public static final boolean[] aUN = new boolean[0];
-  public static final byte[][] aUO = new byte[0][];
-  public static final byte[] aUP = new byte[0];
+  public static final int[] bgZ = new int[0];
+  public static final long[] bha = new long[0];
+  public static final float[] bhb = new float[0];
+  public static final double[] bhc = new double[0];
+  public static final boolean[] bhd = new boolean[0];
+  public static final byte[][] bhe = new byte[0][];
+  public static final byte[] bhf = new byte[0];
   
   public static boolean a(a parama, int paramInt)
   {
-    return parama.dI(paramInt);
-  }
-  
-  static int aQ(int paramInt1, int paramInt2)
-  {
-    return paramInt1 << 3 | paramInt2;
+    return parama.eO(paramInt);
   }
   
   public static final int b(a parama, int paramInt)
   {
     int i = 1;
     int j = parama.getPosition();
-    parama.dI(paramInt);
-    while (parama.oC() == paramInt)
+    parama.eO(paramInt);
+    while (parama.sk() == paramInt)
     {
-      parama.dI(paramInt);
+      parama.eO(paramInt);
       i += 1;
     }
-    parama.dL(j);
+    parama.eR(j);
     return i;
   }
   
-  static int dT(int paramInt)
+  static int bo(int paramInt1, int paramInt2)
+  {
+    return paramInt1 << 3 | paramInt2;
+  }
+  
+  static int eZ(int paramInt)
   {
     return paramInt & 0x7;
   }
   
-  public static int dU(int paramInt)
+  public static int fa(int paramInt)
   {
     return paramInt >>> 3;
   }

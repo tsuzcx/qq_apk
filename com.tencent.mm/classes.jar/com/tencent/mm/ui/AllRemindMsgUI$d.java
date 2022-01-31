@@ -1,26 +1,30 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.protocal.c.bkj;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.btj;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class AllRemindMsgUI$d
 {
-  int bIl;
-  long bIt;
-  int brC;
+  int cpG;
+  long cpO;
   String nickname;
-  String sWz;
+  int subType;
   long timestamp;
   String title;
-  bkj uGI;
-  String uGJ;
   String username;
+  String wUy;
+  btj yTK;
+  String yTL;
   
   AllRemindMsgUI$d(AllRemindMsgUI paramAllRemindMsgUI) {}
   
   public final String toString()
   {
-    return "RemindItem{username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", title='" + bk.aac(this.title) + '\'' + ", timestamp=" + this.timestamp + ", subType=" + this.brC + ", msgId=" + this.bIt + ", sourceType=" + this.bIl + ", sourceId='" + this.sWz + '\'' + '}';
+    AppMethodBeat.i(29128);
+    String str = "RemindItem{username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", title='" + bo.aqg(this.title) + '\'' + ", timestamp=" + this.timestamp + ", subType=" + this.subType + ", msgId=" + this.cpO + ", sourceType=" + this.cpG + ", sourceId='" + this.wUy + '\'' + '}';
+    AppMethodBeat.o(29128);
+    return str;
   }
 }
 

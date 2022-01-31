@@ -5,7 +5,7 @@ public final class ap
 {
   public ap()
   {
-    this.xqq = 773;
+    this.CMD = 773;
   }
 }
 

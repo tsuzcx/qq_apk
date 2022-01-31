@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.websearch.b;
 
 import android.text.TextUtils;
-import com.tencent.mm.ck.f;
-import com.tencent.mm.plugin.websearch.api.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cm.f;
+import com.tencent.mm.plugin.websearch.api.an;
 import com.tencent.mm.plugin.websearch.api.d;
 import com.tencent.mm.plugin.websearch.api.e;
+import java.lang.ref.WeakReference;
 import org.xwalk.core.Log;
 
 public final class b
@@ -12,6 +14,7 @@ public final class b
 {
   public final void a(String paramString, d paramd, com.tencent.mm.vending.e.b paramb)
   {
+    AppMethodBeat.i(91365);
     if (TextUtils.isEmpty(paramString))
     {
       Log.w("RelevantSearchService", "empty query");
@@ -19,17 +22,23 @@ public final class b
         paramd.a(false, null, null, null);
       }
     }
-    new a(paramString).Km().b(paramb).b(new b.1(this, paramd, paramString));
+    paramd = new WeakReference(paramd);
+    new a(paramString).adl().b(paramb).b(new b.1(this, paramd, paramString));
+    AppMethodBeat.o(91365);
   }
   
-  public final void af(String paramString1, String paramString2, String paramString3)
+  public final void at(String paramString1, String paramString2, String paramString3)
   {
-    ao.a(paramString1, paramString2, System.currentTimeMillis(), paramString3);
+    AppMethodBeat.i(91366);
+    an.a(paramString1, paramString2, System.currentTimeMillis(), paramString3);
+    AppMethodBeat.o(91366);
   }
   
   public final void e(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    ao.f(paramString1, paramString2, paramInt, paramString3);
+    AppMethodBeat.i(91367);
+    an.f(paramString1, paramString2, paramInt, paramString3);
+    AppMethodBeat.o(91367);
   }
 }
 

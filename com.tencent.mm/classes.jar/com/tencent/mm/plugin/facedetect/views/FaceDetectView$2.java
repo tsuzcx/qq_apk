@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetect.views;
 
-import com.tencent.mm.plugin.facedetect.model.o;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetect.model.p;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class FaceDetectView$2
   implements Runnable
@@ -10,12 +11,14 @@ final class FaceDetectView$2
   
   public final void run()
   {
-    ai.d(new FaceDetectView.2.1(this, o.Co(this.egy)));
+    AppMethodBeat.i(621);
+    al.d(new FaceDetectView.2.1(this, p.Np(this.fwC)));
+    AppMethodBeat.o(621);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceDetectView.2
  * JD-Core Version:    0.7.0.1
  */

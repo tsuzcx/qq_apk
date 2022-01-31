@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,28 +12,36 @@ final class BizTimeLineHotView$1
   
   public final void run()
   {
-    if (BizTimeLineHotView.a(this.ihA) == null) {}
-    b localb;
-    do
+    AppMethodBeat.i(14305);
+    if (BizTimeLineHotView.a(this.jZn) == null)
     {
-      do
-      {
-        Iterator localIterator;
-        do
+      AppMethodBeat.o(14305);
+      return;
+    }
+    if ((this.euc == null) || (t.ot(this.euc)))
+    {
+      AppMethodBeat.o(14305);
+      return;
+    }
+    Iterator localIterator = BizTimeLineHotView.a(this.jZn).iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if (this.euc.equals(localb.wqR)) {
+        if (BizTimeLineHotView.a(localb))
         {
+          BizTimeLineHotView.a(this.jZn, localb);
+          AppMethodBeat.o(14305);
           return;
-          while ((this.dAA == null) || (s.hK(this.dAA))) {}
-          localIterator = BizTimeLineHotView.a(this.ihA).iterator();
-        } while (!localIterator.hasNext());
-        localb = (b)localIterator.next();
-      } while (!this.dAA.equals(localb.sxi));
-    } while (!BizTimeLineHotView.a(localb));
-    BizTimeLineHotView.a(this.ihA, localb);
+        }
+      }
+    }
+    AppMethodBeat.o(14305);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView.1
  * JD-Core Version:    0.7.0.1
  */

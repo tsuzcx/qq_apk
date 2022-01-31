@@ -1,24 +1,16 @@
 package com.tencent.mm.plugin.emojicapture.ui;
 
-import a.d.b.g;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import a.l;
+import com.tencent.mm.g.a.io;
+import com.tencent.mm.sdk.b.c;
 
-final class EmojiCaptureUI$d
-  implements DialogInterface.OnClickListener
-{
-  EmojiCaptureUI$d(EmojiCaptureUI paramEmojiCaptureUI) {}
-  
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    g.k(paramDialogInterface, "dialog");
-    paramDialogInterface.dismiss();
-    this.jos.finish();
-  }
-}
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/emojicapture/ui/EmojiCaptureUI$hardCoderSystemEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/HardCoderSystemEvent;", "callback", "", "event", "plugin-emojicapture_release"})
+public final class EmojiCaptureUI$d
+  extends c<io>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI.d
  * JD-Core Version:    0.7.0.1
  */

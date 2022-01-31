@@ -2,15 +2,16 @@ package com.google.android.exoplayer2.f.g;
 
 import android.text.Layout.Alignment;
 import android.text.SpannableStringBuilder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class e$a
 {
-  Layout.Alignment aMi;
-  float aMj;
-  int aMk;
-  float aMl;
-  int aMm;
-  SpannableStringBuilder aPQ;
+  Layout.Alignment aTC;
+  float aTD;
+  int aTE;
+  float aTF;
+  int aTG;
+  SpannableStringBuilder aXk;
   long endTime;
   int lineType;
   long startTime;
@@ -18,51 +19,61 @@ public final class e$a
   
   public e$a()
   {
+    AppMethodBeat.i(95726);
     reset();
+    AppMethodBeat.o(95726);
   }
   
-  public final e nF()
+  private a qe()
   {
-    if ((this.aMl != 1.4E-45F) && (this.aMm == -2147483648))
-    {
-      if (this.aMi != null) {
-        break label80;
-      }
-      this.aMm = -2147483648;
+    AppMethodBeat.i(95728);
+    if (this.aTC == null) {
+      this.aTG = -2147483648;
     }
     for (;;)
     {
-      return new e(this.startTime, this.endTime, this.aPQ, this.aMi, this.aMj, this.lineType, this.aMk, this.aMl, this.aMm, this.width);
-      label80:
-      switch (e.1.aPP[this.aMi.ordinal()])
+      AppMethodBeat.o(95728);
+      return this;
+      switch (e.1.aXj[this.aTC.ordinal()])
       {
       default: 
-        new StringBuilder("Unrecognized alignment: ").append(this.aMi);
-        this.aMm = 0;
+        new StringBuilder("Unrecognized alignment: ").append(this.aTC);
+        this.aTG = 0;
         break;
       case 1: 
-        this.aMm = 0;
+        this.aTG = 0;
         break;
       case 2: 
-        this.aMm = 1;
+        this.aTG = 1;
         break;
       case 3: 
-        this.aMm = 2;
+        this.aTG = 2;
       }
     }
+  }
+  
+  public final e qd()
+  {
+    AppMethodBeat.i(95727);
+    if ((this.aTF != 1.4E-45F) && (this.aTG == -2147483648)) {
+      qe();
+    }
+    e locale = new e(this.startTime, this.endTime, this.aXk, this.aTC, this.aTD, this.lineType, this.aTE, this.aTF, this.aTG, this.width);
+    AppMethodBeat.o(95727);
+    return locale;
   }
   
   public final void reset()
   {
     this.startTime = 0L;
     this.endTime = 0L;
-    this.aPQ = null;
-    this.aMi = null;
-    this.aMj = 1.4E-45F;
+    this.aXk = null;
+    this.aTC = null;
+    this.aTD = 1.4E-45F;
     this.lineType = -2147483648;
-    this.aMk = -2147483648;
-    this.aMl = 1.4E-45F;
-    this.aMm = -2147483648;
+    this.aTE = -2147483648;
+    this.aTF = 1.4E-45F;
+    this.aTG = -2147483648;
     this.width = 1.4E-45F;
   }
 }

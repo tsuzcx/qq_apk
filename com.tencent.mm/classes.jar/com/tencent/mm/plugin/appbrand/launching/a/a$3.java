@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.launching.a;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.protocal.c.ati;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.azn;
 import com.tencent.mm.vending.g.c.a;
 
 final class a$3
-  implements c.a<a.a<ati>>
+  implements c.a<a.a<azn>>
 {
   a$3(a parama) {}
 }

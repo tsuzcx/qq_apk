@@ -4,6 +4,7 @@ import com.eclipsesource.v8.Releasable;
 import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Object;
 import com.eclipsesource.v8.V8ResultUndefined;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ScriptBreakPoint
   implements Releasable
@@ -16,41 +17,57 @@ public class ScriptBreakPoint
   
   ScriptBreakPoint(V8Object paramV8Object)
   {
+    AppMethodBeat.i(74912);
     this.v8Object = paramV8Object.twin();
+    AppMethodBeat.o(74912);
   }
   
   public int getBreakPointNumber()
   {
-    return this.v8Object.executeIntegerFunction("number", null);
+    AppMethodBeat.i(74913);
+    int i = this.v8Object.executeIntegerFunction("number", null);
+    AppMethodBeat.o(74913);
+    return i;
   }
   
   public String getCondition()
   {
+    AppMethodBeat.i(74916);
     try
     {
       String str = this.v8Object.executeStringFunction("condition", null);
+      AppMethodBeat.o(74916);
       return str;
     }
-    catch (V8ResultUndefined localV8ResultUndefined) {}
+    catch (V8ResultUndefined localV8ResultUndefined)
+    {
+      AppMethodBeat.o(74916);
+    }
     return "undefined";
   }
   
   public int getLine()
   {
-    return this.v8Object.executeIntegerFunction("line", null);
+    AppMethodBeat.i(74914);
+    int i = this.v8Object.executeIntegerFunction("line", null);
+    AppMethodBeat.o(74914);
+    return i;
   }
   
   public void release()
   {
+    AppMethodBeat.i(74917);
     if ((this.v8Object != null) && (!this.v8Object.isReleased()))
     {
       this.v8Object.release();
       this.v8Object = null;
     }
+    AppMethodBeat.o(74917);
   }
   
   public void setCondition(String paramString)
   {
+    AppMethodBeat.i(74915);
     V8Array localV8Array = new V8Array(this.v8Object.getRuntime());
     localV8Array.push(paramString);
     try
@@ -61,12 +78,13 @@ public class ScriptBreakPoint
     finally
     {
       localV8Array.release();
+      AppMethodBeat.o(74915);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.v8.debug.ScriptBreakPoint
  * JD-Core Version:    0.7.0.1
  */

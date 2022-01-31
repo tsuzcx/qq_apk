@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.canvas.widget;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class DrawCanvasArg$1
   implements Runnable
@@ -9,18 +10,20 @@ public final class DrawCanvasArg$1
   
   public final void run()
   {
-    DrawCanvasArg.a(this.fMP, DrawCanvasArg.b(this.fMP));
-    DrawCanvasArg.c(this.fMP);
-    DrawCanvasArg.d(this.fMP);
-    if (DrawCanvasArg.e(this.fMP)) {
-      DrawCanvasArg.f(this.fMP);
+    AppMethodBeat.i(103700);
+    DrawCanvasArg.a(this.hfZ, DrawCanvasArg.b(this.hfZ));
+    DrawCanvasArg.c(this.hfZ);
+    DrawCanvasArg.d(this.hfZ);
+    if (DrawCanvasArg.e(this.hfZ)) {
+      DrawCanvasArg.f(this.hfZ);
     }
-    y.i("DrawCanvasArg", "async parse success");
+    ab.i("DrawCanvasArg", "async parse success");
+    AppMethodBeat.o(103700);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg.1
  * JD-Core Version:    0.7.0.1
  */

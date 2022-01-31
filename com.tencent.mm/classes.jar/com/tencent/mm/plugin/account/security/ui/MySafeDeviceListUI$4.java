@@ -1,39 +1,42 @@
 package com.tencent.mm.plugin.account.security.ui;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.c;
 import com.tencent.mm.plugin.account.security.a.d;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.b;
-import com.tencent.mm.ui.s;
 
 final class MySafeDeviceListUI$4
   implements h.b
 {
   MySafeDeviceListUI$4(MySafeDeviceListUI paramMySafeDeviceListUI, d paramd) {}
   
-  public final boolean m(CharSequence paramCharSequence)
+  public final boolean onFinish(CharSequence paramCharSequence)
   {
+    AppMethodBeat.i(69876);
     if (paramCharSequence == null) {}
-    for (paramCharSequence = ""; paramCharSequence.equals(this.fko.field_name); paramCharSequence = paramCharSequence.toString().trim()) {
+    for (paramCharSequence = ""; paramCharSequence.equals(this.gBF.field_name); paramCharSequence = paramCharSequence.toString().trim())
+    {
+      AppMethodBeat.o(69876);
       return true;
     }
     if (paramCharSequence.length() <= 0)
     {
-      h.bC(this.fkm.mController.uMN, this.fkm.getString(a.d.safe_device_edit_empty_tips));
+      h.bO(this.gBD.getContext(), this.gBD.getString(2131302846));
+      AppMethodBeat.o(69876);
       return false;
     }
-    paramCharSequence = new c(this.fko.field_uid, paramCharSequence, this.fko.field_devicetype);
-    g.Dk().a(paramCharSequence, 0);
-    if (MySafeDeviceListUI.c(this.fkm) != null) {
-      MySafeDeviceListUI.c(this.fkm).dismiss();
+    paramCharSequence = new c(this.gBF.field_uid, paramCharSequence, this.gBF.field_devicetype);
+    g.Rc().a(paramCharSequence, 0);
+    if (MySafeDeviceListUI.c(this.gBD) != null) {
+      MySafeDeviceListUI.c(this.gBD).dismiss();
     }
-    MySafeDeviceListUI.a(this.fkm, h.b(this.fkm, a.ac(this.fkm, a.d.app_waiting), true, new MySafeDeviceListUI.4.1(this, paramCharSequence)));
+    MySafeDeviceListUI.a(this.gBD, h.b(this.gBD, a.aq(this.gBD, 2131297112), true, new MySafeDeviceListUI.4.1(this, paramCharSequence)));
+    AppMethodBeat.o(69876);
     return true;
   }
 }

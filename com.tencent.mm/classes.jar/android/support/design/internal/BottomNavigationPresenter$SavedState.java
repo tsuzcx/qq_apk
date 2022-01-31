@@ -8,13 +8,13 @@ class BottomNavigationPresenter$SavedState
   implements Parcelable
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.Creator() {};
-  int dq;
+  int eu;
   
   BottomNavigationPresenter$SavedState() {}
   
   BottomNavigationPresenter$SavedState(Parcel paramParcel)
   {
-    this.dq = paramParcel.readInt();
+    this.eu = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -24,7 +24,7 @@ class BottomNavigationPresenter$SavedState
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.dq);
+    paramParcel.writeInt(this.eu);
   }
 }
 

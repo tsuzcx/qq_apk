@@ -14,105 +14,121 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ListView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class FileSelectorFolderView
   extends LinearLayout
   implements AdapterView.OnItemClickListener
 {
-  boolean Yq = false;
-  private FrameLayout kJj;
-  private View kJk;
-  private ListView kJl;
-  private boolean kJn = false;
-  private FileSelectorFolderView.a slT = null;
-  private FileSelectorFolderView.b slU;
+  boolean Zb;
+  private FrameLayout nfH;
+  private View nfI;
+  private ListView nfJ;
+  private boolean nfL;
+  private FileSelectorFolderView.a wev;
+  private FileSelectorFolderView.b wew;
   
   public FileSelectorFolderView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(28164);
+    this.wev = null;
+    this.Zb = false;
+    this.nfL = false;
     init();
+    AppMethodBeat.o(28164);
   }
   
   public FileSelectorFolderView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(28165);
+    this.wev = null;
+    this.Zb = false;
+    this.nfL = false;
     init();
+    AppMethodBeat.o(28165);
   }
   
   private void init()
   {
+    AppMethodBeat.i(28167);
     setOrientation(1);
-    this.kJj = new FrameLayout(getContext());
+    this.nfH = new FrameLayout(getContext());
     Object localObject = new LinearLayout.LayoutParams(-1, -1);
-    this.kJj.setVisibility(8);
-    addView(this.kJj, (ViewGroup.LayoutParams)localObject);
-    this.kJk = new View(getContext());
-    this.kJk.setBackgroundColor(-872415232);
-    this.kJk.setOnClickListener(new FileSelectorFolderView.3(this));
+    this.nfH.setVisibility(8);
+    addView(this.nfH, (ViewGroup.LayoutParams)localObject);
+    this.nfI = new View(getContext());
+    this.nfI.setBackgroundColor(-872415232);
+    this.nfI.setOnClickListener(new FileSelectorFolderView.3(this));
     localObject = new FrameLayout.LayoutParams(-1, -1);
-    this.kJj.addView(this.kJk, (ViewGroup.LayoutParams)localObject);
-    this.kJl = new ListView(getContext());
-    this.kJl.setCacheColorHint(0);
-    this.kJl.setBackgroundResource(R.e.navpage);
-    this.kJl.setSelector(R.g.mm_trans);
-    this.kJl.setOnItemClickListener(this);
-    int i = getResources().getDimensionPixelSize(R.f.NormalPadding);
-    this.kJl.setPadding(i, i / 3, i, 0);
+    this.nfH.addView(this.nfI, (ViewGroup.LayoutParams)localObject);
+    this.nfJ = new ListView(getContext());
+    this.nfJ.setCacheColorHint(0);
+    this.nfJ.setBackgroundResource(2131690310);
+    this.nfJ.setSelector(2130839676);
+    this.nfJ.setOnItemClickListener(this);
+    int i = getResources().getDimensionPixelSize(2131427808);
+    this.nfJ.setPadding(i, i / 3, i, 0);
     localObject = new FrameLayout.LayoutParams(-1, -2);
-    ((FrameLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(R.f.DefaultActionbarHeightPort);
+    ((FrameLayout.LayoutParams)localObject).topMargin = getResources().getDimensionPixelSize(2131427559);
     ((FrameLayout.LayoutParams)localObject).gravity = 80;
-    this.kJj.addView(this.kJl, (ViewGroup.LayoutParams)localObject);
-    this.slU = new FileSelectorFolderView.b(getContext());
-    this.kJl.setAdapter(this.slU);
+    this.nfH.addView(this.nfJ, (ViewGroup.LayoutParams)localObject);
+    this.wew = new FileSelectorFolderView.b(getContext());
+    this.nfJ.setAdapter(this.wew);
+    AppMethodBeat.o(28167);
   }
   
-  final void gq(boolean paramBoolean)
+  final void hV(boolean paramBoolean)
   {
-    if (this.Yq == paramBoolean)
+    AppMethodBeat.i(28166);
+    if (this.Zb == paramBoolean)
     {
-      y.d("MicroMsg.FileSelectorFolderView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.Yq) });
+      ab.d("MicroMsg.FileSelectorFolderView", "want to expand, but same status, expanded %B", new Object[] { Boolean.valueOf(this.Zb) });
+      AppMethodBeat.o(28166);
       return;
     }
-    if (this.kJn)
+    if (this.nfL)
     {
-      y.d("MicroMsg.FileSelectorFolderView", "want to expand[%B], but now in animation", new Object[] { Boolean.valueOf(paramBoolean) });
+      ab.d("MicroMsg.FileSelectorFolderView", "want to expand[%B], but now in animation", new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(28166);
       return;
     }
-    if (this.Yq)
+    if (this.Zb)
     {
-      this.kJn = true;
-      localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.push_down_out);
+      this.nfL = true;
+      localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034228);
       localAnimation.setAnimationListener(new FileSelectorFolderView.1(this));
-      this.kJl.startAnimation(localAnimation);
-      localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.fast_faded_out);
-      this.kJk.startAnimation(localAnimation);
+      this.nfJ.startAnimation(localAnimation);
+      localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034182);
+      this.nfI.startAnimation(localAnimation);
+      AppMethodBeat.o(28166);
       return;
     }
-    this.kJn = true;
-    this.kJj.setVisibility(0);
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.fast_faded_in);
-    this.kJk.startAnimation(localAnimation);
-    localAnimation = AnimationUtils.loadAnimation(getContext(), R.a.push_up_in);
+    this.nfL = true;
+    this.nfH.setVisibility(0);
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034181);
+    this.nfI.startAnimation(localAnimation);
+    localAnimation = AnimationUtils.loadAnimation(getContext(), 2131034230);
     localAnimation.setAnimationListener(new FileSelectorFolderView.2(this));
-    this.kJl.startAnimation(localAnimation);
+    this.nfJ.startAnimation(localAnimation);
+    AppMethodBeat.o(28166);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.slT != null) {
-      this.slT.Ey(paramInt);
+    AppMethodBeat.i(28168);
+    if (this.wev != null) {
+      this.wev.Mw(paramInt);
     }
-    this.kJk.performClick();
+    this.nfI.performClick();
+    AppMethodBeat.o(28168);
   }
   
   public void setListener(FileSelectorFolderView.a parama)
   {
-    this.slT = parama;
+    this.wev = parama;
   }
 }
 

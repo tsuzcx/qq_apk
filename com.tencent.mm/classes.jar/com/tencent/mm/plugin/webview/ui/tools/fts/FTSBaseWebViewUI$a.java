@@ -1,28 +1,34 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
-import com.tencent.mm.plugin.fts.ui.widget.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.ui.widget.a.c;
 
 public final class FTSBaseWebViewUI$a
-  implements a.b
+  implements a.c
 {
-  String rtH;
-  int rtI;
+  int aBY;
+  String smP;
   String userName;
   
   public FTSBaseWebViewUI$a(FTSBaseWebViewUI paramFTSBaseWebViewUI) {}
   
   public final int compareTo(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof a))) {
+    AppMethodBeat.i(8397);
+    if ((paramObject == null) || (!(paramObject instanceof a)))
+    {
+      AppMethodBeat.o(8397);
       return -1;
     }
     paramObject = (a)paramObject;
-    return this.rtH.compareTo(paramObject.rtH);
+    int i = this.smP.compareTo(paramObject.smP);
+    AppMethodBeat.o(8397);
+    return i;
   }
   
   public final String getTagName()
   {
-    return this.rtH;
+    return this.smP;
   }
 }
 

@@ -8,19 +8,19 @@ public class ParcelableVolumeInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ParcelableVolumeInfo> CREATOR = new ParcelableVolumeInfo.1();
-  public int CB;
-  public int CC;
-  public int CD;
-  public int CE;
-  public int CF;
+  public int Dk;
+  public int Dl;
+  public int Dm;
+  public int Dn;
+  public int Do;
   
   public ParcelableVolumeInfo(Parcel paramParcel)
   {
-    this.CB = paramParcel.readInt();
-    this.CD = paramParcel.readInt();
-    this.CE = paramParcel.readInt();
-    this.CF = paramParcel.readInt();
-    this.CC = paramParcel.readInt();
+    this.Dk = paramParcel.readInt();
+    this.Dm = paramParcel.readInt();
+    this.Dn = paramParcel.readInt();
+    this.Do = paramParcel.readInt();
+    this.Dl = paramParcel.readInt();
   }
   
   public int describeContents()
@@ -30,11 +30,11 @@ public class ParcelableVolumeInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.CB);
-    paramParcel.writeInt(this.CD);
-    paramParcel.writeInt(this.CE);
-    paramParcel.writeInt(this.CF);
-    paramParcel.writeInt(this.CC);
+    paramParcel.writeInt(this.Dk);
+    paramParcel.writeInt(this.Dm);
+    paramParcel.writeInt(this.Dn);
+    paramParcel.writeInt(this.Do);
+    paramParcel.writeInt(this.Dl);
   }
 }
 

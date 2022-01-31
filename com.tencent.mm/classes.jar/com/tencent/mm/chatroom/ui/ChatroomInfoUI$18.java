@@ -1,23 +1,29 @@
 package com.tencent.mm.chatroom.ui;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.model.bd.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bf.a;
 
 final class ChatroomInfoUI$18
-  implements bd.a
+  implements bf.a
 {
   ChatroomInfoUI$18(ChatroomInfoUI paramChatroomInfoUI) {}
   
-  public final void xA()
+  public final boolean JS()
   {
-    if (ChatroomInfoUI.x(this.dod) != null) {
-      ChatroomInfoUI.x(this.dod).dismiss();
-    }
+    AppMethodBeat.i(103981);
+    boolean bool = ChatroomInfoUI.w(this.efA);
+    AppMethodBeat.o(103981);
+    return bool;
   }
   
-  public final boolean xz()
+  public final void JT()
   {
-    return ChatroomInfoUI.w(this.dod);
+    AppMethodBeat.i(103982);
+    if (ChatroomInfoUI.x(this.efA) != null) {
+      ChatroomInfoUI.x(this.efA).dismiss();
+    }
+    AppMethodBeat.o(103982);
   }
 }
 

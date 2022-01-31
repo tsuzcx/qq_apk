@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.backupmoveui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -11,18 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.f.b;
 import com.tencent.mm.plugin.backup.c.b.b;
 import com.tencent.mm.plugin.backup.d.b;
 import com.tencent.mm.plugin.backup.d.d;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.s;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -32,114 +28,102 @@ import java.util.LinkedList;
 @com.tencent.mm.ui.base.a(3)
 public class BackupMoveChooseUI
   extends MMWizardActivity
-  implements b.b
 {
-  private static int avS = 0;
+  private static int ayi = 0;
   private static long endTime;
-  private static int hJk = 0;
+  private static int jCK = 0;
   private static long startTime;
-  private a hIV = new a(this);
-  private ListView hIW;
-  private TextView hIX;
-  private TextView hIY;
-  private TextView hIZ;
-  private ProgressBar hJa;
-  private View hJb;
-  private LinearLayout hJc;
-  private LinearLayout hJd;
-  private LinearLayout hJe;
-  private LinearLayout hJf;
-  private TextView hJg;
-  private TextView hJh;
-  private TextView hJi;
-  private Button hJj;
-  private SimpleDateFormat hJl = new SimpleDateFormat("yyyy.MM.dd");
+  private ProgressBar jCA;
+  private View jCB;
+  private LinearLayout jCC;
+  private LinearLayout jCD;
+  private LinearLayout jCE;
+  private LinearLayout jCF;
+  private TextView jCG;
+  private TextView jCH;
+  private TextView jCI;
+  private Button jCJ;
+  private SimpleDateFormat jCL;
+  private b.b jCM;
+  private a jCv;
+  private ListView jCw;
+  private TextView jCx;
+  private TextView jCy;
+  private TextView jCz;
   
-  private void aum()
+  public BackupMoveChooseUI()
   {
-    if ((this.hJd.getVisibility() == 8) && (this.hJe.getVisibility() == 8) && (this.hJf.getVisibility() == 8))
-    {
-      this.hJb.setVisibility(8);
-      this.hJc.setVisibility(8);
-      return;
-    }
-    this.hJb.setVisibility(0);
-    this.hJc.setVisibility(0);
+    AppMethodBeat.i(17329);
+    this.jCv = new a(this);
+    this.jCL = new SimpleDateFormat("yyyy.MM.dd");
+    this.jCM = new BackupMoveChooseUI.5(this);
+    AppMethodBeat.o(17329);
   }
   
-  private void ed(boolean paramBoolean)
+  private void aTM()
   {
+    AppMethodBeat.i(17336);
+    if ((this.jCD.getVisibility() == 8) && (this.jCE.getVisibility() == 8) && (this.jCF.getVisibility() == 8))
+    {
+      this.jCB.setVisibility(8);
+      this.jCC.setVisibility(8);
+      AppMethodBeat.o(17336);
+      return;
+    }
+    this.jCB.setVisibility(0);
+    this.jCC.setVisibility(0);
+    AppMethodBeat.o(17336);
+  }
+  
+  private void fA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(17334);
     if (paramBoolean)
     {
-      b.atS();
-      SharedPreferences localSharedPreferences = b.ats();
-      hJk = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0);
-      avS = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0);
+      b.aTr();
+      SharedPreferences localSharedPreferences = b.aSQ();
+      jCK = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0);
+      ayi = localSharedPreferences.getInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0);
       startTime = localSharedPreferences.getLong("BACKUP_MOVE_CHOOSE_SELECT_START_TIME", 0L);
       endTime = localSharedPreferences.getLong("BACKUP_MOVE_CHOOSE_SELECT_END_TIME", 0L);
     }
-    switch (hJk)
+    switch (jCK)
     {
     default: 
-      switch (avS)
+      switch (ayi)
       {
       }
       break;
     }
     for (;;)
     {
-      aum();
+      aTM();
+      AppMethodBeat.o(17334);
       return;
-      this.hJe.setVisibility(8);
+      this.jCE.setVisibility(8);
       break;
-      this.hJb.setVisibility(0);
-      this.hJc.setVisibility(0);
-      this.hJe.setVisibility(0);
-      this.hJh.setText(this.hJl.format(new Date(startTime)) + "~" + this.hJl.format(new Date(endTime - 86400000L)));
+      this.jCB.setVisibility(0);
+      this.jCC.setVisibility(0);
+      this.jCE.setVisibility(0);
+      this.jCH.setText(this.jCL.format(new Date(startTime)) + "~" + this.jCL.format(new Date(endTime - 86400000L)));
       break;
-      this.hJf.setVisibility(8);
+      this.jCF.setVisibility(8);
       continue;
-      this.hJb.setVisibility(0);
-      this.hJc.setVisibility(0);
-      this.hJf.setVisibility(0);
-      this.hJi.setText(this.mController.uMN.getResources().getString(R.l.backup_move_select_ext_content_text_only));
+      this.jCB.setVisibility(0);
+      this.jCC.setVisibility(0);
+      this.jCF.setVisibility(0);
+      this.jCI.setText(getContext().getResources().getString(2131297291));
     }
   }
-  
-  public final void A(LinkedList<f.b> paramLinkedList)
-  {
-    if (paramLinkedList == null) {
-      return;
-    }
-    if (paramLinkedList.size() == 0)
-    {
-      this.hJa.setVisibility(8);
-      this.hIY.setVisibility(0);
-      switch (hJk)
-      {
-      default: 
-        return;
-      case 0: 
-        this.hIY.setText(R.l.backup_move_choose_empty_records);
-        return;
-      }
-      this.hIY.setText(R.l.backup_select_empty_records_in_select_time);
-      return;
-    }
-    this.hIX.setClickable(true);
-    this.hIX.setTextColor(getResources().getColor(R.e.backup_green));
-    this.hJa.setVisibility(8);
-    this.hIV.notifyDataSetChanged();
-  }
-  
-  public final void B(LinkedList<f.b> paramLinkedList) {}
   
   public final void a(HashSet<Integer> paramHashSet)
   {
-    Object localObject = b.atS().atW().atP();
+    AppMethodBeat.i(17335);
+    Object localObject = b.aTr().aTv().aTn();
     if (localObject == null)
     {
-      y.e("MicroMsg.BackupMoveChooseUI", "onClickCheckBox convInfo is null.");
+      ab.e("MicroMsg.BackupMoveChooseUI", "onClickCheckBox convInfo is null.");
+      AppMethodBeat.o(17335);
       return;
     }
     HashSet localHashSet = new HashSet();
@@ -149,7 +133,7 @@ public class BackupMoveChooseUI
     {
       int i = ((Integer)localIterator.next()).intValue();
       if (i < ((LinkedList)localObject).size()) {
-        l = ((f.b)((LinkedList)localObject).get(i)).hFG + l;
+        l = ((f.b)((LinkedList)localObject).get(i)).jzd + l;
       } else {
         localHashSet.add(Integer.valueOf(i));
       }
@@ -160,157 +144,176 @@ public class BackupMoveChooseUI
     }
     if ((paramHashSet.size() != 0) || (l > 0L))
     {
-      this.hJj.setEnabled(true);
-      if (paramHashSet.size() == this.hIV.getCount())
+      this.jCJ.setEnabled(true);
+      if (paramHashSet.size() == this.jCv.getCount())
       {
-        this.hIX.setText(R.l.backup_choose_cancel_select_all);
-        this.hJb.setVisibility(0);
-        this.hJc.setVisibility(0);
-        this.hJd.setVisibility(0);
-        this.hJg.setText(getString(R.l.backup_choose_session_info, new Object[] { Integer.valueOf(paramHashSet.size()) }));
+        this.jCx.setText(2131297222);
+        this.jCB.setVisibility(0);
+        this.jCC.setVisibility(0);
+        this.jCD.setVisibility(0);
+        this.jCG.setText(getString(2131297224, new Object[] { Integer.valueOf(paramHashSet.size()) }));
       }
     }
     for (;;)
     {
-      aum();
+      aTM();
+      AppMethodBeat.o(17335);
       return;
-      this.hIX.setText(R.l.backup_choose_all);
+      this.jCx.setText(2131297221);
       break;
-      this.hJj.setEnabled(false);
-      this.hIX.setText(R.l.backup_choose_all);
-      this.hJd.setVisibility(8);
-      this.hJg.setText("");
+      this.jCJ.setEnabled(false);
+      this.jCx.setText(2131297221);
+      this.jCD.setVisibility(8);
+      this.jCG.setText("");
     }
   }
   
-  public final void a(LinkedList<f.b> paramLinkedList, f.b paramb, int paramInt) {}
-  
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.backup_choose;
+    return 2130968800;
   }
   
-  public final void initView()
+  public void initView()
   {
-    setMMTitle(R.l.backup_start_choose_move_records);
-    this.hIW = ((ListView)findViewById(R.h.backup_choose_conversation_lv));
-    this.hIW.setAdapter(this.hIV);
-    this.hIW.setEmptyView(findViewById(R.h.backup_choose_empty_view));
-    this.hIX = ((TextView)findViewById(R.h.backup_choose_select_all_tv));
-    this.hIY = ((TextView)findViewById(R.h.backup_choose_empty_tv));
-    this.hJa = ((ProgressBar)findViewById(R.h.backup_choose_loading_pb));
-    this.hIZ = ((TextView)findViewById(R.h.backup_choose_ext));
-    this.hJb = findViewById(R.h.backup_choose_line);
-    this.hJc = ((LinearLayout)findViewById(R.h.backup_choose_ext_info));
-    this.hJd = ((LinearLayout)findViewById(R.h.backup_choose_session_info));
-    this.hJe = ((LinearLayout)findViewById(R.h.backup_choose_time));
-    this.hJf = ((LinearLayout)findViewById(R.h.backup_choose_content));
-    this.hJg = ((TextView)findViewById(R.h.backup_choose_session_info_tv));
-    this.hJh = ((TextView)findViewById(R.h.backup_choose_time_tv));
-    this.hJi = ((TextView)findViewById(R.h.backup_choose_content_tv));
-    ((TextView)findViewById(R.h.backup_choose_session_info_title)).setText(R.l.backup_move_choose_number);
-    ((TextView)findViewById(R.h.backup_choose_time_title)).setText(R.l.backup_move_choose_time);
-    ((TextView)findViewById(R.h.backup_choose_content_title)).setText(R.l.backup_move_choose_content);
+    AppMethodBeat.i(17333);
+    setMMTitle(2131297390);
+    this.jCw = ((ListView)findViewById(2131821601));
+    this.jCw.setAdapter(this.jCv);
+    this.jCw.setEmptyView(findViewById(2131821602));
+    this.jCx = ((TextView)findViewById(2131821616));
+    this.jCy = ((TextView)findViewById(2131821604));
+    this.jCA = ((ProgressBar)findViewById(2131821603));
+    this.jCz = ((TextView)findViewById(2131821617));
+    this.jCB = findViewById(2131821605);
+    this.jCC = ((LinearLayout)findViewById(2131821606));
+    this.jCD = ((LinearLayout)findViewById(2131821607));
+    this.jCE = ((LinearLayout)findViewById(2131821610));
+    this.jCF = ((LinearLayout)findViewById(2131821613));
+    this.jCG = ((TextView)findViewById(2131821609));
+    this.jCH = ((TextView)findViewById(2131821612));
+    this.jCI = ((TextView)findViewById(2131821615));
+    ((TextView)findViewById(2131821608)).setText(2131297232);
+    ((TextView)findViewById(2131821611)).setText(2131297234);
+    ((TextView)findViewById(2131821614)).setText(2131297230);
     setBackBtn(new BackupMoveChooseUI.1(this));
-    this.hJj = ((Button)findViewById(R.h.backup_choose_finish));
-    this.hJj.setOnClickListener(new BackupMoveChooseUI.2(this));
-    this.hJj.setEnabled(false);
-    ed(true);
-    this.hIZ.setOnClickListener(new BackupMoveChooseUI.3(this));
-    this.hIX.setOnClickListener(new BackupMoveChooseUI.4(this));
-    if (b.atS().atW().hHx)
+    this.jCJ = ((Button)findViewById(2131821618));
+    this.jCJ.setOnClickListener(new BackupMoveChooseUI.2(this));
+    this.jCJ.setEnabled(false);
+    fA(true);
+    this.jCz.setOnClickListener(new BackupMoveChooseUI.3(this));
+    this.jCx.setOnClickListener(new BackupMoveChooseUI.4(this));
+    if (b.aTr().aTv().jAT)
     {
-      if ((b.atS().atW().atP() == null) || (b.atS().atW().atP().size() == 0)) {
-        switch (hJk)
+      if ((b.aTr().aTv().aTn() == null) || (b.aTr().aTv().aTn().size() == 0)) {
+        switch (jCK)
         {
         }
       }
       for (;;)
       {
-        this.hIY.setVisibility(0);
-        this.hJa.setVisibility(4);
+        this.jCy.setVisibility(0);
+        this.jCA.setVisibility(4);
+        AppMethodBeat.o(17333);
         return;
-        this.hIY.setText(R.l.backup_move_choose_empty_records);
+        this.jCy.setText(2131297231);
         continue;
-        this.hIY.setText(R.l.backup_select_empty_records_in_select_time);
+        this.jCy.setText(2131297379);
       }
     }
-    if (!b.atS().atW().hHx)
+    if (!b.aTr().aTv().jAT)
     {
-      this.hIX.setTextColor(getResources().getColor(R.e.backup_status_content));
-      this.hIX.setClickable(false);
-      this.hJa.setVisibility(0);
+      this.jCx.setTextColor(getResources().getColor(2131689741));
+      this.jCx.setClickable(false);
+      this.jCA.setVisibility(0);
+      AppMethodBeat.o(17333);
       return;
     }
-    this.hJa.setVisibility(4);
+    this.jCA.setVisibility(4);
+    AppMethodBeat.o(17333);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt2 != -1) {
-      y.e("MicroMsg.BackupMoveChooseUI", "onActivityResult result error! resultCode:%d", new Object[] { Integer.valueOf(paramInt2) });
-    }
-    long l1;
-    long l2;
-    do
+    AppMethodBeat.i(17337);
+    if (paramInt2 != -1)
     {
+      ab.e("MicroMsg.BackupMoveChooseUI", "onActivityResult result error! resultCode:%d", new Object[] { Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(17337);
       return;
-      paramInt1 = hJk;
-      l1 = startTime;
-      l2 = endTime;
-      hJk = paramIntent.getIntExtra("BACKUP_SELECT_TIME_MODE", hJk);
-      startTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_START_TIME", 0L);
-      endTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_END_TIME", 0L);
-      avS = paramIntent.getIntExtra("BACKUP_SELECT_CONTENT_TYPE", avS);
-      y.i("MicroMsg.BackupMoveChooseUI", "onActivityResult timeMode/preTimeMode[%d/%d], startTime/preStartTime[%d/%d], endTime/preEndTime[%d/%d], contentType[%d]", new Object[] { Integer.valueOf(hJk), Integer.valueOf(paramInt1), Long.valueOf(startTime), Long.valueOf(l1), Long.valueOf(endTime), Long.valueOf(l2), Integer.valueOf(avS) });
-      b.atS().atU();
-      d.d(hJk, startTime, endTime, avS);
-      ed(false);
-    } while ((paramInt1 == hJk) && ((hJk == 0) || ((hJk == 1) && (startTime == l1) && (endTime == l2))));
-    b.atS().atW().a(hJk, startTime, endTime, b.atS().atW().atO());
-    paramIntent = this.hIV;
-    paramIntent.hIR.clear();
-    paramIntent.hIQ.a(paramIntent.hIR);
-    if ((b.atS().atW().atP() == null) || (b.atS().atW().atP().size() == 0)) {
-      switch (hJk)
+    }
+    paramInt1 = jCK;
+    long l1 = startTime;
+    long l2 = endTime;
+    jCK = paramIntent.getIntExtra("BACKUP_SELECT_TIME_MODE", jCK);
+    startTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_START_TIME", 0L);
+    endTime = paramIntent.getLongExtra("BACKUP_SELECT_TIME_END_TIME", 0L);
+    ayi = paramIntent.getIntExtra("BACKUP_SELECT_CONTENT_TYPE", ayi);
+    ab.i("MicroMsg.BackupMoveChooseUI", "onActivityResult timeMode/preTimeMode[%d/%d], startTime/preStartTime[%d/%d], endTime/preEndTime[%d/%d], contentType[%d]", new Object[] { Integer.valueOf(jCK), Integer.valueOf(paramInt1), Long.valueOf(startTime), Long.valueOf(l1), Long.valueOf(endTime), Long.valueOf(l2), Integer.valueOf(ayi) });
+    b.aTr().aTt();
+    d.e(jCK, startTime, endTime, ayi);
+    fA(false);
+    if ((paramInt1 == jCK) && ((jCK == 0) || ((jCK == 1) && (startTime == l1) && (endTime == l2))))
+    {
+      AppMethodBeat.o(17337);
+      return;
+    }
+    b.aTr().aTv().a(jCK, startTime, endTime, b.aTr().aTv().aTm());
+    paramIntent = this.jCv;
+    paramIntent.jCr.clear();
+    paramIntent.jCq.a(paramIntent.jCr);
+    if ((b.aTr().aTv().aTn() == null) || (b.aTr().aTv().aTn().size() == 0)) {
+      switch (jCK)
       {
       default: 
-        this.hIY.setVisibility(0);
+        this.jCy.setVisibility(0);
       }
     }
     for (;;)
     {
-      this.hIV.notifyDataSetChanged();
+      this.jCv.notifyDataSetChanged();
+      AppMethodBeat.o(17337);
       return;
-      this.hIY.setText(R.l.backup_move_choose_empty_records);
+      this.jCy.setText(2131297231);
       break;
-      this.hIY.setText(R.l.backup_select_empty_records_in_select_time);
+      this.jCy.setText(2131297379);
       break;
-      this.hIY.setVisibility(4);
+      this.jCy.setVisibility(4);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(17330);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(17330);
   }
   
   public void onStart()
   {
+    AppMethodBeat.i(17331);
     super.onStart();
-    b.atS().atW().hHs = this;
+    b.aTr().aTv().jAO = this.jCM;
+    AppMethodBeat.o(17331);
   }
   
   public void onStop()
   {
+    AppMethodBeat.i(17332);
     super.onStop();
-    b.atS().atW().hHs = null;
+    b.aTr().aTv().jAO = null;
+    AppMethodBeat.o(17332);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.BackupMoveChooseUI
  * JD-Core Version:    0.7.0.1
  */

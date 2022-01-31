@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.sight.encode.ui;
 
 import android.graphics.SurfaceTexture;
 import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMTextureView;
 
 final class SightVideoTextureView$1
@@ -12,31 +13,37 @@ final class SightVideoTextureView$1
   
   public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureAvailable, [%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.oiV.oiD = SightCameraView.b.oiN;
-    SightVideoTextureView.a(this.oiV, paramSurfaceTexture);
-    ((MMTextureView)SightVideoTextureView.a(this.oiV)).cBe();
-    y.i("MicroMsg.SightVideoTextureView", "available texture %s, wantPlay %B", new Object[] { paramSurfaceTexture, Boolean.valueOf(SightVideoTextureView.b(this.oiV)) });
-    if (SightVideoTextureView.b(this.oiV)) {
-      this.oiV.aX(SightVideoTextureView.c(this.oiV), SightVideoTextureView.d(this.oiV));
+    AppMethodBeat.i(25115);
+    ab.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureAvailable, [%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.qXi.qWQ = SightCameraView.b.qXa;
+    SightVideoTextureView.a(this.qXi, paramSurfaceTexture);
+    ((MMTextureView)SightVideoTextureView.a(this.qXi)).dEs();
+    ab.i("MicroMsg.SightVideoTextureView", "available texture %s, wantPlay %B", new Object[] { paramSurfaceTexture, Boolean.valueOf(SightVideoTextureView.b(this.qXi)) });
+    if (SightVideoTextureView.b(this.qXi)) {
+      this.qXi.bm(SightVideoTextureView.c(this.qXi), SightVideoTextureView.d(this.qXi));
     }
+    AppMethodBeat.o(25115);
   }
   
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    y.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureDestroyed");
-    this.oiV.oiD = SightCameraView.b.oiP;
-    SightVideoTextureView.a(this.oiV, null);
-    this.oiV.oiF = false;
-    y.i("MicroMsg.SightVideoTextureView", "destroyed texture %s", new Object[] { paramSurfaceTexture });
+    AppMethodBeat.i(25117);
+    ab.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureDestroyed");
+    this.qXi.qWQ = SightCameraView.b.qXc;
+    SightVideoTextureView.a(this.qXi, null);
+    this.qXi.qWS = false;
+    ab.i("MicroMsg.SightVideoTextureView", "destroyed texture %s", new Object[] { paramSurfaceTexture });
+    AppMethodBeat.o(25117);
     return true;
   }
   
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureSizeChanged, [%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.oiV.oiD = SightCameraView.b.oiO;
-    y.i("MicroMsg.SightVideoTextureView", "changed texture %s", new Object[] { paramSurfaceTexture });
+    AppMethodBeat.i(25116);
+    ab.i("MicroMsg.SightVideoTextureView", "onSurfaceTextureSizeChanged, [%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.qXi.qWQ = SightCameraView.b.qXb;
+    ab.i("MicroMsg.SightVideoTextureView", "changed texture %s", new Object[] { paramSurfaceTexture });
+    AppMethodBeat.o(25116);
   }
   
   public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}

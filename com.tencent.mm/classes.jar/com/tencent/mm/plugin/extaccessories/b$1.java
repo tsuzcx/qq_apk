@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.extaccessories;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$1
   implements Runnable
@@ -11,13 +12,21 @@ final class b$1
   
   public final void run()
   {
-    if (!au.DK()) {}
-    while (bk.bl(this.jLN.dKt)) {
+    AppMethodBeat.i(20463);
+    if (!aw.RG())
+    {
+      AppMethodBeat.o(20463);
+      return;
+    }
+    if (bo.isNullOrNil(this.mfR.eHR))
+    {
+      AppMethodBeat.o(20463);
       return;
     }
     long l = System.currentTimeMillis();
-    bk.h(this.jLN.dKt + "image/spen/", "spen_", 259200000L);
-    y.d("MicroMsg.extaccessories.SubCoreExtAccessories", "deleteOutOfDateFile cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    bo.q(this.mfR.eHR + "image/spen/", "spen_", 259200000L);
+    ab.d("MicroMsg.extaccessories.SubCoreExtAccessories", "deleteOutOfDateFile cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(20463);
   }
 }
 

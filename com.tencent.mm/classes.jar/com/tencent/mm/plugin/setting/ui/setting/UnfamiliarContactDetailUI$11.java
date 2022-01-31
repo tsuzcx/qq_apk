@@ -4,72 +4,86 @@ import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.HashSet;
 
 final class UnfamiliarContactDetailUI$11
   implements UnfamiliarContactDetailUI.h
 {
-  long start = System.currentTimeMillis();
+  long start;
   
-  UnfamiliarContactDetailUI$11(UnfamiliarContactDetailUI paramUnfamiliarContactDetailUI) {}
+  UnfamiliarContactDetailUI$11(UnfamiliarContactDetailUI paramUnfamiliarContactDetailUI)
+  {
+    AppMethodBeat.i(127648);
+    this.start = System.currentTimeMillis();
+    AppMethodBeat.o(127648);
+  }
   
   public final void a(UnfamiliarContactDetailUI.e parame)
   {
-    y.i("MicroMsg.UnfamiliarContactUI", "[onLoading] type:%s", new Object[] { parame.name() });
-    this.nWX.findViewById(a.f.tip_layout).setVisibility(0);
-    this.nWX.findViewById(a.f.progress_bar).setVisibility(0);
-    if (parame == UnfamiliarContactDetailUI.e.nXt) {
-      UnfamiliarContactDetailUI.k(this.nWX).setText(this.nWX.getString(a.i.loading_tips));
-    }
-    while (parame != UnfamiliarContactDetailUI.e.nXs) {
+    AppMethodBeat.i(127651);
+    ab.i("MicroMsg.UnfamiliarContactUI", "[onLoading] type:%s", new Object[] { parame.name() });
+    this.qLi.findViewById(2131827679).setVisibility(0);
+    this.qLi.findViewById(2131821119).setVisibility(0);
+    if (parame == UnfamiliarContactDetailUI.e.qLD)
+    {
+      UnfamiliarContactDetailUI.k(this.qLi).setText(this.qLi.getString(2131301086));
+      AppMethodBeat.o(127651);
       return;
     }
-    UnfamiliarContactDetailUI.k(this.nWX).setText(this.nWX.getString(a.i.unfamiliar_loading_about_one_min));
+    if (parame == UnfamiliarContactDetailUI.e.qLC) {
+      UnfamiliarContactDetailUI.k(this.qLi).setText(this.qLi.getString(2131304420));
+    }
+    AppMethodBeat.o(127651);
   }
   
   public final void e(HashSet paramHashSet)
   {
+    AppMethodBeat.i(127652);
     if (paramHashSet == null) {}
     for (int i = 0;; i = paramHashSet.size())
     {
-      y.i("MicroMsg.UnfamiliarContactUI", "[onResult] size:%s", new Object[] { Integer.valueOf(i) });
+      ab.i("MicroMsg.UnfamiliarContactUI", "[onResult] size:%s", new Object[] { Integer.valueOf(i) });
       if (paramHashSet != null) {
-        UnfamiliarContactDetailUI.a(this.nWX, paramHashSet);
+        UnfamiliarContactDetailUI.a(this.qLi, paramHashSet);
       }
+      AppMethodBeat.o(127652);
       return;
     }
   }
   
   public final void onError()
   {
-    y.e("MicroMsg.UnfamiliarContactUI", "[onError]");
-    this.nWX.findViewById(a.f.tip_layout).setVisibility(0);
-    this.nWX.findViewById(a.f.progress_bar).setVisibility(8);
-    UnfamiliarContactDetailUI.k(this.nWX).setText(this.nWX.getString(a.i.unfamiliar_load_err));
+    AppMethodBeat.i(127650);
+    ab.e("MicroMsg.UnfamiliarContactUI", "[onError]");
+    this.qLi.findViewById(2131827679).setVisibility(0);
+    this.qLi.findViewById(2131821119).setVisibility(8);
+    UnfamiliarContactDetailUI.k(this.qLi).setText(this.qLi.getString(2131304419));
+    AppMethodBeat.o(127650);
   }
   
   public final void onSuccess()
   {
-    y.i("MicroMsg.UnfamiliarContactUI", "[onSuccess] size:%s cost:%sms", new Object[] { Integer.valueOf(UnfamiliarContactDetailUI.f(this.nWX).size()), Long.valueOf(System.currentTimeMillis() - this.start) });
-    UnfamiliarContactDetailUI.g(this.nWX).setText(this.nWX.getString(a.i.unfamiliar_contact_member_list) + "(" + UnfamiliarContactDetailUI.f(this.nWX).size() + ")");
-    if (UnfamiliarContactDetailUI.f(this.nWX).size() == 0)
+    AppMethodBeat.i(127649);
+    ab.i("MicroMsg.UnfamiliarContactUI", "[onSuccess] size:%s cost:%sms", new Object[] { Integer.valueOf(UnfamiliarContactDetailUI.f(this.qLi).size()), Long.valueOf(System.currentTimeMillis() - this.start) });
+    UnfamiliarContactDetailUI.g(this.qLi).setText(this.qLi.getString(2131304413) + "(" + UnfamiliarContactDetailUI.f(this.qLi).size() + ")");
+    if (UnfamiliarContactDetailUI.f(this.qLi).size() == 0)
     {
-      this.nWX.findViewById(a.f.tip_layout).setVisibility(0);
-      this.nWX.findViewById(a.f.progress_bar).setVisibility(8);
-      this.nWX.findViewById(a.f.list_layout).setVisibility(8);
-      UnfamiliarContactDetailUI.k(this.nWX).setText(this.nWX.getString(a.i.loaded_empty));
-    }
-    do
-    {
+      this.qLi.findViewById(2131827679).setVisibility(0);
+      this.qLi.findViewById(2131821119).setVisibility(8);
+      this.qLi.findViewById(2131821980).setVisibility(8);
+      UnfamiliarContactDetailUI.k(this.qLi).setText(this.qLi.getString(2131301082));
+      AppMethodBeat.o(127649);
       return;
-      this.nWX.findViewById(a.f.tip_layout).setVisibility(8);
-      this.nWX.findViewById(a.f.list_layout).setVisibility(0);
-    } while (UnfamiliarContactDetailUI.e(this.nWX) == null);
-    UnfamiliarContactDetailUI.e(this.nWX).agL.notifyChanged();
+    }
+    this.qLi.findViewById(2131827679).setVisibility(8);
+    this.qLi.findViewById(2131821980).setVisibility(0);
+    if (UnfamiliarContactDetailUI.e(this.qLi) != null) {
+      UnfamiliarContactDetailUI.e(this.qLi).ajb.notifyChanged();
+    }
+    AppMethodBeat.o(127649);
   }
 }
 

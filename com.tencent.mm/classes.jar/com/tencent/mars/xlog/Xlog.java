@@ -1,15 +1,14 @@
 package com.tencent.mars.xlog;
 
 import com.tencent.mm.a.e;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.bh;
-import com.tencent.mm.sdk.platformtools.y.a;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.ab.a;
+import com.tencent.mm.sdk.platformtools.ac;
+import com.tencent.mm.sdk.platformtools.bl;
 import java.io.File;
 import java.io.FileFilter;
 
 public class Xlog
-  implements y.a
+  implements ab.a
 {
   public static final int AppednerModeAsync = 0;
   public static final int AppednerModeSync = 1;
@@ -21,7 +20,7 @@ public class Xlog
   public static final int LEVEL_NONE = 6;
   public static final int LEVEL_VERBOSE = 0;
   public static final int LEVEL_WARNING = 3;
-  public static z logDecryptor;
+  public static ac logDecryptor;
   private static String mCacheDir = null;
   private static String mLogDir = null;
   
@@ -32,25 +31,14 @@ public class Xlog
     appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, "1dac3876bd566b60c7dcbffd219ca6af2d2c07f045711bf2a6d111a2b1fc27c4df31c1f568879708c5159e370ab141e6627ea028b47f8a5cf4d39ca30d501f81");
   }
   
-  private static String appendMemLog(String paramString)
-  {
-    if (!d.spd) {
-      return paramString;
-    }
-    long l1 = Runtime.getRuntime().totalMemory();
-    long l2 = Runtime.getRuntime().freeMemory();
-    long l3 = Runtime.getRuntime().maxMemory();
-    return String.format("[%s:%s:%s]", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) }) + paramString;
-  }
-  
   private static native void appenderOpen(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, String paramString4);
   
   private static String decryptTag(String paramString)
   {
-    z localz;
+    ac localac;
     if (logDecryptor != null)
     {
-      localz = logDecryptor;
+      localac = logDecryptor;
       if ((paramString != null) && (paramString.length() != 0)) {}
     }
     else
@@ -62,9 +50,9 @@ public class Xlog
     default: 
       return paramString;
     case '⍆': 
-      return localz.jdMethod_do(paramString, paramString.length());
+      return localac.et(paramString, paramString.length());
     }
-    return localz.ueZ.decryptTag(paramString);
+    return localac.ynA.decryptTag(paramString);
   }
   
   public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
@@ -83,6 +71,10 @@ public class Xlog
   
   public static native void setConsoleLogOpen(boolean paramBoolean);
   
+  public static native void setMaxAliveTime(long paramLong);
+  
+  public static native void setMaxFileSize(long paramLong);
+  
   public native void appenderClose();
   
   public native void appenderFlush(boolean paramBoolean);
@@ -91,12 +83,12 @@ public class Xlog
   
   public void logD(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    logWrite2(1, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, appendMemLog(paramString4));
+    logWrite2(1, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, LogLogic.appendMemLog(paramString4));
   }
   
   public void logE(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    logWrite2(4, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, appendMemLog(paramString4));
+    logWrite2(4, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, LogLogic.appendMemLog(paramString4));
   }
   
   public void logF(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
@@ -106,7 +98,7 @@ public class Xlog
   
   public void logI(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    logWrite2(2, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, appendMemLog(paramString4));
+    logWrite2(2, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, LogLogic.appendMemLog(paramString4));
   }
   
   public void logV(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
@@ -116,7 +108,7 @@ public class Xlog
   
   public void logW(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
   {
-    logWrite2(3, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, appendMemLog(paramString4));
+    logWrite2(3, decryptTag(paramString1), paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, LogLogic.appendMemLog(paramString4));
   }
   
   public void moveLogsFromCacheDirToLogDir()

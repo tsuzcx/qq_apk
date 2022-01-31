@@ -2,11 +2,10 @@ package com.tencent.mm.ui.contact;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewStub;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.MMSlideDelView.d;
-import com.tencent.mm.ui.base.MMSlideDelView.f;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.MMSlideDelView.c;
+import com.tencent.mm.ui.base.MMSlideDelView.g;
 
 final class a$1
   implements View.OnClickListener
@@ -15,11 +14,15 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    y.v("MicroMsg.AddressAdapter", "on delView clicked");
-    this.vIN.hZg.bdc();
-    if (this.vIN.mDS != null) {
-      this.vIN.mDS.bg(((ViewStub)a.a(this.vIN).get(paramView)).getTag());
+    AppMethodBeat.i(33456);
+    ab.d("MicroMsg.AddressAdapter", "click avatarIv");
+    if (paramView == null)
+    {
+      AppMethodBeat.o(33456);
+      return;
     }
+    this.Aaf.jSb.r(paramView, this.Aaf.jSc.dc(paramView), 2131821108);
+    AppMethodBeat.o(33456);
   }
 }
 

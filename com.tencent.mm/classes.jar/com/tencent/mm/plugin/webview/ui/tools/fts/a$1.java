@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Arrays;
 
 final class a$1
@@ -11,18 +12,20 @@ final class a$1
   
   public final void run()
   {
-    this.rvA.rvs[0][0] = this.rvz.getY();
-    this.rvA.rvs[0][1] = 0;
-    this.rvA.rvs[1][0] = this.rvz.getX();
-    this.rvA.rvs[1][1] = 0;
-    this.rvA.rvs[2][0] = this.rvz.getMeasuredWidth();
-    this.rvA.rvs[2][1] = (this.rvz.getMeasuredWidth() + this.rvA.rvg * 2);
-    y.i("MicroMsg.FTS.SosAnimatorBaseController", "searchBarData %s", new Object[] { Arrays.toString(this.rvA.rvs) });
+    AppMethodBeat.i(8561);
+    this.vlQ.vlI[0][0] = this.vlP.getY();
+    this.vlQ.vlI[0][1] = 0;
+    this.vlQ.vlI[1][0] = this.vlP.getX();
+    this.vlQ.vlI[1][1] = 0;
+    this.vlQ.vlI[2][0] = this.vlP.getMeasuredWidth();
+    this.vlQ.vlI[2][1] = (this.vlP.getMeasuredWidth() + this.vlQ.vlv * 2);
+    ab.i("MicroMsg.WebSearch.SosAnimatorBaseController", "searchBarData %s", new Object[] { Arrays.toString(this.vlQ.vlI) });
+    AppMethodBeat.o(8561);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.a.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.liteav.beauty;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
 public class NativeLoad
@@ -8,7 +9,9 @@ public class NativeLoad
   
   private NativeLoad()
   {
+    AppMethodBeat.i(66824);
     OnLoadBeauty();
+    AppMethodBeat.o(66824);
   }
   
   public static native void OnLoadBeauty();
@@ -36,7 +39,7 @@ public class NativeLoad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.liteav.beauty.NativeLoad
  * JD-Core Version:    0.7.0.1
  */

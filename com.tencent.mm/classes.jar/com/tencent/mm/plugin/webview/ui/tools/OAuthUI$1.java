@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class OAuthUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class OAuthUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.rlw.finish();
+    AppMethodBeat.i(7417);
+    this.vaY.finish();
+    AppMethodBeat.o(7417);
     return true;
   }
 }

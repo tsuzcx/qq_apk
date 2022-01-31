@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.c.e;
 
 final class NoteEditorUI$36$1
@@ -9,8 +10,10 @@ final class NoteEditorUI$36$1
   
   public final void run()
   {
-    e.ciJ().lI(true);
-    e.ciJ().lH(true);
+    AppMethodBeat.i(27046);
+    e.djc().oT(true);
+    e.djc().oS(true);
+    AppMethodBeat.o(27046);
   }
 }
 

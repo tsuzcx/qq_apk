@@ -61,10 +61,6 @@
         <item quantity="other">ניתן לבחור %s סרטוני וידאו לכל היותר</item>
         <item quantity="one">ניתן לבחור %s סרטוני וידאו לכל היותר</item>
     </plurals>
-    <plurals name="p">
-        <item quantity="other">%s הודעות חדשות</item>
-        <item quantity="one">%s הודעות חדשות</item>
-    </plurals>
     <plurals name="q">
         <item quantity="other">אתה מזמין %d חברים ל-WeChat</item>
         <item quantity="one">אתה מזמין %d חברים ל-WeChat</item>
@@ -121,10 +117,6 @@
         <item quantity="other">%d הודעות חדשות</item>
         <item quantity="one">%d הודעה חדשה</item>
     </plurals>
-    <plurals name="a4">
-        <item quantity="other">%d פרסומים</item>
-        <item quantity="one">%d פרסום</item>
-    </plurals>
     <plurals name="a5">
         <item quantity="other">%d הודעות לא נקראו</item>
         <item quantity="one">הודעה %d לא נקראה</item>
@@ -142,5 +134,13 @@
     <plurals name="a8">
         <item quantity="other">%s שניות נותרו</item>
         <item quantity="one">%s שניה נותרה</item>
+    </plurals>
+    <plurals name="p">
+        <item quantity="other">%s הודעות חדשות</item>
+        <item quantity="one">%s הודעות חדשות</item>
+    </plurals>
+    <plurals name="a4">
+        <item quantity="other">%d פרסומים</item>
+        <item quantity="one">%d פרסום</item>
     </plurals>
 </resources>

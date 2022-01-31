@@ -3,48 +3,58 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.e.a;
-import com.tencent.luggage.e.a.a;
-import com.tencent.luggage.e.n;
-import com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask;
-import com.tencent.mm.plugin.webview.luggage.ipc.LuggageMainProcessService;
-import com.tencent.mm.plugin.webview.luggage.ipc.MainProcessTask;
-import com.tencent.mm.plugin.webview.luggage.ipc.c;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.e;
+import com.tencent.mm.plugin.webview.luggage.l;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONObject;
 
-public abstract class aw<T extends n>
-  extends a<T>
+public class aw
+  extends bi<e>
 {
-  public abstract void a(Context paramContext, String paramString, aw.a parama);
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
-  public void a(a<T>.a parama)
+  public final void b(a<e>.a parama)
   {
-    Object localObject;
-    if (aGj() == 1)
+    AppMethodBeat.i(6372);
+    ab.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
+    boolean bool = parama.byF.bxK.optBoolean("switch");
+    String str1 = parama.byF.bxK.optString("title_cn");
+    String str2 = parama.byF.bxK.optString("title_eng");
+    String str3 = parama.byF.bxK.optString("ok_cn");
+    String str4 = parama.byF.bxK.optString("ok_eng");
+    String str5 = parama.byF.bxK.optString("cancel_cn");
+    String str6 = parama.byF.bxK.optString("cancel_eng");
+    l locall = ((e)parama.byE).daV();
+    if (locall == null)
     {
-      localObject = new JsApiMMTask();
-      ((JsApiMMTask)localObject).rdg = parama;
-      ((JsApiMMTask)localObject).rdh = getClass().getName();
-      ((JsApiMMTask)localObject).giZ = parama.bih.bhk.toString();
-      ((JsApiMMTask)localObject).ahC();
-      LuggageMainProcessService.a((MainProcessTask)localObject);
+      AppMethodBeat.o(6372);
       return;
     }
-    if (aGj() == 2)
-    {
-      localObject = new Bundle();
-      ((Bundle)localObject).putString("jsapi_name", getClass().getName());
-      ((Bundle)localObject).putString("data", parama.bih.bhk.toString());
-      c.a((MMActivity)((n)parama.big).mContext, (Bundle)localObject, com.tencent.mm.plugin.webview.luggage.ipc.e.class, new aw.1(this, parama));
-      return;
-    }
-    b(parama);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("close_window_confirm_dialog_switch", Boolean.valueOf(bool).booleanValue());
+    localBundle.putString("close_window_confirm_dialog_title_cn", str1);
+    localBundle.putString("close_window_confirm_dialog_title_eng", str2);
+    localBundle.putString("close_window_confirm_dialog_ok_cn", str3);
+    localBundle.putString("close_window_confirm_dialog_ok_eng", str4);
+    localBundle.putString("close_window_confirm_dialog_cancel_cn", str5);
+    localBundle.putString("close_window_confirm_dialog_cancel_eng", str6);
+    locall.setCloseWindowConfirmInfo(localBundle);
+    parama.a("", null);
+    AppMethodBeat.o(6372);
   }
   
-  public abstract int aGj();
+  public final int bjL()
+  {
+    return 0;
+  }
   
-  public abstract void b(a<T>.a parama);
+  public final String name()
+  {
+    return "setCloseWindowConfirmDialogInfo";
+  }
 }
 
 

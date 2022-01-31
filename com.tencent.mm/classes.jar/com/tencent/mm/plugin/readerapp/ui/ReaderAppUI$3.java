@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.readerapp.ui;
 
 import android.widget.ListView;
-import com.tencent.mm.pluginsdk.ui.tools.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.k;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.base.MMPullDownView.g;
 
@@ -11,26 +12,27 @@ final class ReaderAppUI$3
 {
   ReaderAppUI$3(ReaderAppUI paramReaderAppUI) {}
   
-  public final boolean aEX()
+  public final boolean bin()
   {
-    if (ReaderAppUI.b(this.noS).aCc()) {
-      ReaderAppUI.e(this.noS).setSelectionFromTop(0, ReaderAppUI.d(this.noS).getTopHeight());
-    }
-    int i;
-    int j;
-    int k;
-    do
+    AppMethodBeat.i(76815);
+    if (ReaderAppUI.b(this.pUg).bem())
     {
+      ReaderAppUI.e(this.pUg).setSelectionFromTop(0, ReaderAppUI.d(this.pUg).getTopHeight());
+      AppMethodBeat.o(76815);
       return true;
-      i = ReaderAppUI.b(this.noS).getCount();
-      j = ReaderAppUI.b(this.noS).aCd();
-      y.v("MicroMsg.ReaderAppUI", "onLoadData add count:" + j);
-      ReaderAppUI.b(this.noS).a(null, null);
-      k = ReaderAppUI.b(this.noS).getCount();
-      y.d("MicroMsg.ReaderAppUI", "onTopLoadData nowCount:%d, preCount:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-    } while (k <= i);
-    y.i("MicroMsg.ReaderAppUI", "pullDownView nowCount > preCount on set position %d, set pullDownView.getTopHeight() %d", new Object[] { Integer.valueOf(j + 1), Integer.valueOf(ReaderAppUI.d(this.noS).getTopHeight()) });
-    j.a(ReaderAppUI.e(this.noS), j + 1, ReaderAppUI.d(this.noS).getTopHeight(), false);
+    }
+    int i = ReaderAppUI.b(this.pUg).getCount();
+    int j = ReaderAppUI.b(this.pUg).ben();
+    ab.v("MicroMsg.ReaderAppUI", "onLoadData add count:".concat(String.valueOf(j)));
+    ReaderAppUI.b(this.pUg).a(null, null);
+    int k = ReaderAppUI.b(this.pUg).getCount();
+    ab.d("MicroMsg.ReaderAppUI", "onTopLoadData nowCount:%d, preCount:%d", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+    if (k > i)
+    {
+      ab.i("MicroMsg.ReaderAppUI", "pullDownView nowCount > preCount on set position %d, set pullDownView.getTopHeight() %d", new Object[] { Integer.valueOf(j + 1), Integer.valueOf(ReaderAppUI.d(this.pUg).getTopHeight()) });
+      k.a(ReaderAppUI.e(this.pUg), j + 1, ReaderAppUI.d(this.pUg).getTopHeight(), false);
+    }
+    AppMethodBeat.o(76815);
     return true;
   }
 }

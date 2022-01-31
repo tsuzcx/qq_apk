@@ -1,274 +1,300 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.order.c.a;
 import com.tencent.mm.plugin.remittance.ui.RemittanceDetailUI;
 import com.tencent.mm.plugin.wallet_payu.remittance.a.b;
 import com.tencent.mm.plugin.wallet_payu.remittance.a.c;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public class PayURemittanceDetailUI
   extends RemittanceDetailUI
 {
-  private int mPr;
-  private int mPs;
-  private int nDi;
-  private String nEi;
-  private String qOE;
-  private String qOF;
-  private int qOG;
-  private int qOH;
+  private String mReceiverName;
+  private int ppH;
+  private int ppI;
+  private int qpS;
+  private String uDL;
+  private String uDM;
+  private int uDN;
+  private int uDO;
   
-  protected final void T(Intent paramIntent)
+  public final void Cu(int paramInt)
   {
+    AppMethodBeat.i(48554);
+    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.e(this.qlT, this.qpO, this.qpL), true);
+    AppMethodBeat.o(48554);
+  }
+  
+  public final void Cv(int paramInt)
+  {
+    AppMethodBeat.i(48555);
+    doSceneProgress(new com.tencent.mm.plugin.wallet_payu.remittance.a.e(this.qlT, this.qpO, this.qpL, paramInt), true);
+    AppMethodBeat.o(48555);
+  }
+  
+  public final void am(Intent paramIntent)
+  {
+    AppMethodBeat.i(48556);
     d.b(this, "wallet_payu", ".remittance.ui.PayURemittanceResendMsgUI", paramIntent);
+    AppMethodBeat.o(48556);
   }
   
-  protected final void bwG()
+  public final void chx()
   {
-    a(new c(this.nAx, this.nDi, this.qOE, this.nDe), true, true);
+    AppMethodBeat.i(48557);
+    doSceneProgress(new c(this.qlT, this.qpS, this.uDL, this.qpO));
+    AppMethodBeat.o(48557);
   }
   
-  protected final void bwH()
+  public final void chy()
   {
-    a(new b(this.nAx, this.nDi, this.qOE, this.nDe), true, true);
+    AppMethodBeat.i(48558);
+    doSceneProgress(new b(this.qlT, this.qpS, this.uDL, this.qpO));
+    AppMethodBeat.o(48558);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(48553);
+    super.onCreate(paramBundle);
+    this.qpS = getIntent().getIntExtra("total_fee", 0);
+    this.uDL = getIntent().getStringExtra("fee_type");
+    if (getIntent().getBooleanExtra("is_sender", false))
+    {
+      this.uDM = r.Zn();
+      this.mReceiverName = this.qpO;
+      AppMethodBeat.o(48553);
+      return;
+    }
+    this.uDM = this.qpO;
+    this.mReceiverName = r.Zn();
+    AppMethodBeat.o(48553);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(48559);
     if ((paramm instanceof com.tencent.mm.plugin.wallet_payu.remittance.a.e))
     {
       paramString = (com.tencent.mm.plugin.wallet_payu.remittance.a.e)paramm;
       Object localObject1;
       Object localObject2;
       a locala;
-      boolean bool2;
-      if (paramString.bMC == 0) {
+      if (paramString.ctW == 0)
+      {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          if ((this.nDc == 1) && (!getIntent().getBooleanExtra("is_sender", false)))
+          if ((this.qpM == 1) && (!getIntent().getBooleanExtra("is_sender", false)))
           {
-            this.nCV.setImageResource(a.e.wallet_subject_receiving);
-            this.nCW.setText(a.i.remittance_detail_result_wait_receiver);
-            this.nCX.setText(com.tencent.mm.wallet_core.ui.e.d(paramString.iHP, paramString.mOZ));
-            this.nCY.setVisibility(0);
-            this.nCY.setOnClickListener(new PayURemittanceDetailUI.6(this));
-            paramm = getString(a.i.remittance_detail_reveiver_tips_payu, new Object[] { Integer.valueOf(this.nDg) });
-            localObject1 = getString(a.i.remittance_detail_refuse_action);
+            this.qpa.setImageResource(2130840886);
+            this.qpb.setText(2131302567);
+            this.qpc.setText(com.tencent.mm.wallet_core.ui.e.e(paramString.kNS, paramString.ppp));
+            this.qpf.setVisibility(0);
+            this.qpf.setOnClickListener(new PayURemittanceDetailUI.6(this));
+            paramm = getString(2131302571, new Object[] { Integer.valueOf(this.qpQ) });
+            localObject1 = getString(2131302559);
             localObject2 = new SpannableString(paramm + (String)localObject1);
             locala = new a(this);
-            locala.mRJ = new PayURemittanceDetailUI.7(this);
+            locala.prW = new PayURemittanceDetailUI.7(this);
             ((SpannableString)localObject2).setSpan(locala, paramm.length(), paramm.length() + ((String)localObject1).length(), 33);
-            this.lUL.setMovementMethod(LinkMovementMethod.getInstance());
-            this.lUL.setText((CharSequence)localObject2);
-            this.nCZ.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { com.tencent.mm.wallet_core.ui.e.hP(paramString.nzr) }));
-            this.nCZ.setVisibility(0);
-            this.nDa.setVisibility(8);
+            this.orU.setMovementMethod(LinkMovementMethod.getInstance());
+            this.orU.setText((CharSequence)localObject2);
+            this.qpd.setText(getString(2131302576, new Object[] { com.tencent.mm.wallet_core.ui.e.kB(paramString.qku) }));
+            this.qpd.setVisibility(0);
+            this.qpe.setVisibility(8);
           }
-          bool2 = true;
+          AppMethodBeat.o(48559);
+          return true;
+        }
+        Cv(0);
+        AppMethodBeat.o(48559);
+        return true;
+      }
+      boolean bool1 = bool2;
+      if (paramInt1 == 0)
+      {
+        bool1 = bool2;
+        if (paramInt2 == 0)
+        {
+          this.uDN = paramString.status;
+          this.uDO = paramString.qku;
+          this.ppI = paramString.uDH;
+          this.ppH = paramString.uDI;
+          this.qpS = ((int)(paramString.kNS * 100.0D));
+          this.uDL = paramString.ppp;
+          paramm = r.Zn();
+          bool1 = this.mReceiverName.equals(paramm);
+          this.qpf.setVisibility(8);
+          this.qpc.setText(com.tencent.mm.wallet_core.ui.e.e(this.qpS / 100.0D, this.uDL));
+          this.qpg.setVisibility(0);
+          this.qpB.setVisibility(8);
+          paramInt1 = this.uDN;
         }
       }
-      boolean bool1;
-      do
+      switch (paramInt1)
       {
-        return bool2;
-        wF(0);
-        return true;
-        bool2 = false;
-        bool1 = bool2;
-        if (paramInt1 == 0)
+      default: 
+        finish();
+        bool1 = true;
+        if (paramString.bsY == 1)
         {
-          bool1 = bool2;
-          if (paramInt2 == 0)
-          {
-            this.qOG = paramString.status;
-            this.qOH = paramString.nzr;
-            this.mPs = paramString.qOA;
-            this.mPr = paramString.qOB;
-            this.nDi = ((int)(paramString.iHP * 100.0D));
-            this.qOE = paramString.mOZ;
-            bool1 = true;
-            paramm = q.Gj();
-            bool2 = this.nEi.equals(paramm);
-            this.nCY.setVisibility(8);
-            this.nCX.setText(com.tencent.mm.wallet_core.ui.e.d(this.nDi / 100.0D, this.qOE));
-            paramInt1 = this.qOG;
+          g.RM();
+          if (!((String)g.RL().Ru().get(327729, "0")).equals("0")) {
+            break label1562;
           }
+          h.a(getContext(), 2131298203, 2131305584, new PayURemittanceDetailUI.8(this));
+          g.RM();
+          g.RL().Ru().set(327729, "1");
         }
-        switch (paramInt1)
-        {
-        default: 
-          finish();
-          bool2 = bool1;
-        }
-      } while (paramString.bcw != 1);
-      g.DQ();
-      if (((String)g.DP().Dz().get(327729, "0")).equals("0"))
+        break;
+      }
+      for (;;)
       {
-        h.a(this.mController.uMN, a.i.chatting_item_appmsg_remittance_collect_tips_payu, a.i.wallet_remittance_collect_tips, new PayURemittanceDetailUI.8(this));
-        g.DQ();
-        g.DP().Dz().o(327729, "1");
+        AppMethodBeat.o(48559);
         return bool1;
-        if (!bool2)
+        if (!bool1)
         {
-          paramm = getString(a.i.remittance_detail_result_wait_sender, new Object[] { aT(this.nEi, true) });
-          this.nCW.setText(j.a(this, paramm, this.nCW.getTextSize()));
-          paramm = getString(a.i.remittance_detail_sender_tips_payu, new Object[] { Integer.valueOf(this.nDg) });
-          localObject1 = getString(a.i.remittance_resend_transfer_msg);
+          paramm = getString(2131302568, new Object[] { bi(this.mReceiverName, true) });
+          this.qpb.setText(j.b(this, paramm, this.qpb.getTextSize()));
+          paramm = getString(2131302575, new Object[] { Integer.valueOf(this.qpQ) });
+          localObject1 = getString(2131302614);
           localObject2 = new SpannableString(paramm + (String)localObject1);
           locala = new a(this);
-          locala.mRJ = new PayURemittanceDetailUI.1(this);
+          locala.prW = new PayURemittanceDetailUI.1(this);
           ((SpannableString)localObject2).setSpan(locala, paramm.length(), paramm.length() + ((String)localObject1).length(), 33);
-          this.lUL.setMovementMethod(LinkMovementMethod.getInstance());
-          this.lUL.setText((CharSequence)localObject2);
+          this.orU.setMovementMethod(LinkMovementMethod.getInstance());
+          this.orU.setText((CharSequence)localObject2);
         }
         for (;;)
         {
-          this.nCV.setImageResource(a.e.wallet_subject_receiving);
-          this.nCZ.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { com.tencent.mm.wallet_core.ui.e.hP(this.mPs) }));
-          this.nCZ.setVisibility(0);
-          this.nDa.setVisibility(8);
+          this.qpa.setImageResource(2130840886);
+          this.qpd.setText(getString(2131302576, new Object[] { com.tencent.mm.wallet_core.ui.e.kB(this.ppI) }));
+          this.qpd.setVisibility(0);
+          this.qpe.setVisibility(8);
           bool1 = true;
           break;
-          this.nCV.setImageResource(a.e.wallet_subject_receiving);
-          this.nCY.setVisibility(0);
-          this.nCY.setOnClickListener(new PayURemittanceDetailUI.2(this));
-          paramm = getString(a.i.remittance_detail_reveiver_tips_payu, new Object[] { Integer.valueOf(this.nDg) });
-          localObject1 = getString(a.i.remittance_detail_refuse_action);
+          this.qpa.setImageResource(2130840886);
+          this.qpf.setVisibility(0);
+          this.qpf.setOnClickListener(new PayURemittanceDetailUI.2(this));
+          paramm = getString(2131302571, new Object[] { Integer.valueOf(this.qpQ) });
+          localObject1 = getString(2131302559);
           localObject2 = new SpannableString(paramm + (String)localObject1);
           locala = new a(this);
-          locala.mRJ = new PayURemittanceDetailUI.3(this);
+          locala.prW = new PayURemittanceDetailUI.3(this);
           ((SpannableString)localObject2).setSpan(locala, paramm.length(), paramm.length() + ((String)localObject1).length(), 33);
-          this.lUL.setMovementMethod(LinkMovementMethod.getInstance());
-          this.lUL.setText((CharSequence)localObject2);
+          this.orU.setMovementMethod(LinkMovementMethod.getInstance());
+          this.orU.setText((CharSequence)localObject2);
         }
-        this.nCV.setImageResource(a.h.remittance_received);
-        if (bool2)
+        this.qpa.setImageResource(2131231923);
+        if (bool1)
         {
-          this.nCW.setText(a.i.remittance_detail_result_collected);
-          paramm = getString(a.i.remittance_detail_check_ballance);
+          this.qpb.setText(2131302562);
+          paramm = getString(2131302543);
           localObject1 = new SpannableString(paramm);
           localObject2 = new a(this);
-          ((a)localObject2).mRJ = new PayURemittanceDetailUI.4(this);
+          ((a)localObject2).prW = new PayURemittanceDetailUI.4(this);
           ((SpannableString)localObject1).setSpan(localObject2, 0, paramm.length(), 33);
-          this.lUL.setMovementMethod(LinkMovementMethod.getInstance());
-          this.lUL.setText((CharSequence)localObject1);
-          this.lUL.setVisibility(0);
+          this.orU.setMovementMethod(LinkMovementMethod.getInstance());
+          this.orU.setText((CharSequence)localObject1);
+          this.orU.setVisibility(0);
         }
         for (;;)
         {
-          this.nCZ.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { com.tencent.mm.wallet_core.ui.e.hP(this.qOH) }));
-          this.nCZ.setVisibility(0);
-          this.nDa.setText(getString(a.i.remittance_detail_receive_time, new Object[] { com.tencent.mm.wallet_core.ui.e.hP(this.mPr) }));
-          this.nDa.setVisibility(0);
+          this.qpd.setText(getString(2131302576, new Object[] { com.tencent.mm.wallet_core.ui.e.kB(this.uDO) }));
+          this.qpd.setVisibility(0);
+          this.qpe.setText(getString(2131302551, new Object[] { com.tencent.mm.wallet_core.ui.e.kB(this.ppH) }));
+          this.qpe.setVisibility(0);
           bool1 = true;
           break;
-          paramm = aT(this.nEi, true) + " " + getString(a.i.remittance_detail_result_collected);
-          this.nCW.setText(j.a(this, paramm, this.nCW.getTextSize()));
-          this.lUL.setVisibility(8);
+          paramm = bi(this.mReceiverName, true) + " " + getString(2131302562);
+          this.qpb.setText(j.b(this, paramm, this.qpb.getTextSize()));
+          this.orU.setVisibility(8);
         }
-        if ((paramInt1 == 2003) && (!bool2))
+        if ((paramInt1 == 2003) && (!bool1))
         {
-          this.nCV.setImageResource(a.h.remittance_timed_out);
-          this.nCW.setText(a.i.remittance_detail_result_timeout_refunded);
-          label1243:
-          if (bool2) {
-            break label1532;
+          this.qpa.setImageResource(2131231925);
+          this.qpb.setText(2131302566);
+          label1260:
+          if (bool1) {
+            break label1549;
           }
-          paramm = getString(a.i.remittance_detail_refund_to_ballance);
-          localObject1 = getString(a.i.remittance_detail_check_ballance);
+          paramm = getString(2131302556);
+          localObject1 = getString(2131302543);
           localObject2 = new SpannableString(paramm + (String)localObject1);
           locala = new a(this);
-          locala.mRJ = new PayURemittanceDetailUI.5(this);
+          locala.prW = new PayURemittanceDetailUI.5(this);
           ((SpannableString)localObject2).setSpan(locala, paramm.length(), paramm.length() + ((String)localObject1).length(), 33);
-          this.lUL.setMovementMethod(LinkMovementMethod.getInstance());
-          this.lUL.setText((CharSequence)localObject2);
+          this.orU.setMovementMethod(LinkMovementMethod.getInstance());
+          this.orU.setText((CharSequence)localObject2);
         }
         for (;;)
         {
-          this.lUL.setVisibility(0);
-          this.nCZ.setText(getString(a.i.remittance_detail_transfer_time, new Object[] { com.tencent.mm.wallet_core.ui.e.hP(this.qOH) }));
-          this.nCZ.setVisibility(0);
-          this.nDa.setText(getString(a.i.remittance_detail_refund_time, new Object[] { com.tencent.mm.wallet_core.ui.e.hP(this.mPs) }));
-          this.nDa.setVisibility(0);
+          this.orU.setVisibility(0);
+          this.qpd.setText(getString(2131302576, new Object[] { com.tencent.mm.wallet_core.ui.e.kB(this.uDO) }));
+          this.qpd.setVisibility(0);
+          this.qpe.setText(getString(2131302554, new Object[] { com.tencent.mm.wallet_core.ui.e.kB(this.ppI) }));
+          this.qpe.setVisibility(0);
           bool1 = true;
           break;
-          this.nCV.setImageResource(a.h.remittance_refunded);
-          if (bool2)
+          this.qpa.setImageResource(2131231924);
+          if (bool1)
           {
-            this.nCW.setText(a.i.remittance_detail_result_refunded);
-            break label1243;
+            this.qpb.setText(2131302564);
+            break label1260;
           }
-          paramm = aT(this.nEi, true) + getString(a.i.remittance_detail_result_refunded);
-          this.nCW.setText(j.a(this, paramm, this.nCW.getTextSize()));
-          break label1243;
-          label1532:
-          this.lUL.setText("");
+          paramm = bi(this.mReceiverName, true) + getString(2131302564);
+          this.qpb.setText(j.b(this, paramm, this.qpb.getTextSize()));
+          break label1260;
+          label1549:
+          this.orU.setText("");
         }
+        label1562:
+        h.bO(getContext(), getString(2131302549));
       }
-      h.bC(this.mController.uMN, getString(a.i.remittance_detail_msg_collect_suc));
-      return bool1;
     }
     if (((paramm instanceof c)) || ((paramm instanceof b)))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
         if ((paramm instanceof c)) {
-          wF(1);
+          Cv(1);
         }
         for (;;)
         {
+          AppMethodBeat.o(48559);
           return true;
-          aB(0, getString(a.i.remittance_detail_msg_refuse_suc));
+          aZ(0, getString(2131302550));
         }
       }
-      aB(paramInt2, paramString);
+      aZ(paramInt2, paramString);
+      AppMethodBeat.o(48559);
       return true;
     }
+    AppMethodBeat.o(48559);
     return false;
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    super.onCreate(paramBundle);
-    this.nDi = getIntent().getIntExtra("total_fee", 0);
-    this.qOE = getIntent().getStringExtra("fee_type");
-    if (getIntent().getBooleanExtra("is_sender", false))
-    {
-      this.qOF = q.Gj();
-      this.nEi = this.nDe;
-      return;
-    }
-    this.qOF = this.nDe;
-    this.nEi = q.Gj();
-  }
-  
-  protected final void wE(int paramInt)
-  {
-    a(new com.tencent.mm.plugin.wallet_payu.remittance.a.e(this.nAx, this.nDe, this.nDb), true, false);
-  }
-  
-  protected final void wF(int paramInt)
-  {
-    a(new com.tencent.mm.plugin.wallet_payu.remittance.a.e(this.nAx, this.nDe, this.nDb, paramInt), true, false);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

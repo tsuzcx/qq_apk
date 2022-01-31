@@ -1,40 +1,48 @@
 package com.tencent.mm.plugin.wepkg.downloader;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class f
 {
-  String ghQ;
-  int iPx;
-  int jtk;
+  String hyD;
+  public int kYE;
+  int lCJ;
   String mFilePath;
+  public long mStartTime;
   public String mUrl;
-  String rOD;
-  public String rOE;
-  String rOF;
-  public String rOG;
-  long rOH;
-  boolean rOI;
-  int rOJ;
-  int rOK;
-  boolean rOL;
-  a rOM;
+  a vFA;
+  public String vFB;
+  String vFr;
+  public String vFs;
+  String vFt;
+  public String vFu;
+  public long vFv;
+  boolean vFw;
+  int vFx;
+  int vFy;
+  boolean vFz;
   
-  public f(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, String paramString7, boolean paramBoolean, a parama)
+  public f(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong, String paramString8, boolean paramBoolean, a parama)
   {
-    this.rOD = paramString1;
-    this.iPx = paramInt;
-    this.rOE = paramString2;
-    this.rOF = paramString3;
-    this.rOG = paramString4;
-    this.mUrl = paramString5;
-    this.mFilePath = paramString6;
-    this.rOH = paramLong;
-    this.ghQ = paramString7;
-    this.rOI = paramBoolean;
-    this.rOM = parama;
-    this.rOJ = 20000;
-    this.rOK = 20000;
-    this.jtk = 3;
-    this.rOL = true;
+    AppMethodBeat.i(63448);
+    this.vFr = paramString1;
+    this.kYE = paramInt;
+    this.vFs = paramString2;
+    this.vFt = paramString3;
+    this.vFu = paramString4;
+    this.mUrl = paramString6;
+    this.mFilePath = paramString7;
+    this.vFv = paramLong;
+    this.hyD = paramString8;
+    this.vFw = paramBoolean;
+    this.vFA = parama;
+    this.vFx = 20000;
+    this.vFy = 20000;
+    this.lCJ = 3;
+    this.vFz = true;
+    this.mStartTime = System.currentTimeMillis();
+    this.vFB = paramString5;
+    AppMethodBeat.o(63448);
   }
 }
 

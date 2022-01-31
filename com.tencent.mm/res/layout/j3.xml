@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="right" android:orientation="horizontal" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/lr" android:background="@drawable/fm" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/af6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:src="@drawable/f3" android:layout_alignParentRight="true" />
-        <com.tencent.mm.plugin.card.widget.CardTagTextView android:id="@id/af7" android:paddingLeft="10.0dip" android:paddingTop="2.0dip" android:paddingRight="10.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" />
-        <TextView android:textSize="19.0sp" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/cj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.699982dip" android:layout_marginTop="18.699982dip" android:layout_marginRight="80.0dip" android:layout_marginBottom="5.0dip" android:singleLine="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/af8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="10.0dip" android:singleLine="true" android:layout_below="@id/cj" android:layout_alignLeft="@id/cj" />
-        <View android:id="@id/aau" android:background="@drawable/j9" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginRight="40.0dip" android:layout_marginBottom="10.0dip" android:layout_below="@id/af8" android:layout_alignLeft="@id/cj" android:layerType="software" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/or" android:ellipsize="end" android:id="@id/af9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="5.299988dip" android:singleLine="true" android:layout_below="@id/aau" android:layout_alignLeft="@id/cj" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/or" android:ellipsize="end" android:id="@id/af_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="40.0dip" android:layout_marginBottom="13.0dip" android:singleLine="true" android:layout_below="@id/af9" android:layout_alignLeft="@id/cj" />
+    <ImageView android:id="@id/aez" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/af0" android:background="@color/a3x" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/af1" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/af2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a00" />
     </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>

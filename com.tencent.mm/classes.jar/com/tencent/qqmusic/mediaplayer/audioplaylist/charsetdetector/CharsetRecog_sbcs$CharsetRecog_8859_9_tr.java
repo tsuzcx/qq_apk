@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_sbcs$CharsetRecog_8859_9_tr
   extends CharsetRecog_sbcs.CharsetRecog_8859_9
 {
@@ -12,6 +14,7 @@ class CharsetRecog_sbcs$CharsetRecog_8859_9_tr
   
   public CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104745);
     if (paramCharsetDetector.fC1Bytes) {}
     int i;
     for (String str = "windows-1254";; str = "ISO-8859-9")
@@ -20,14 +23,17 @@ class CharsetRecog_sbcs$CharsetRecog_8859_9_tr
       if (i != 0) {
         break;
       }
+      AppMethodBeat.o(104745);
       return null;
     }
-    return new CharsetMatch(paramCharsetDetector, this, i, str, "tr");
+    paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i, str, "tr");
+    AppMethodBeat.o(104745);
+    return paramCharsetDetector;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_sbcs.CharsetRecog_8859_9_tr
  * JD-Core Version:    0.7.0.1
  */

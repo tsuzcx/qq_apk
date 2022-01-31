@@ -1,33 +1,44 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component;
 
-import com.tencent.mm.plugin.sight.decode.ui.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.OfflineVideoView;
-import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.ui.OfflineVideoView.a;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class x$6
-  implements b
+  implements Runnable
 {
   x$6(x paramx) {}
   
-  public final void akz()
+  public final void run()
   {
-    if (x.a(this.oHV) != null) {
-      x.a(this.oHV).bHK();
-    }
-  }
-  
-  public final void lE(int paramInt)
-  {
-    y.i("MicroMsg.Sns.AdLandingPageSightVideoComponent", "onSeek time " + paramInt);
-    if (this.oHV.oGZ) {
-      this.oHV.bER();
+    AppMethodBeat.i(37283);
+    OfflineVideoView localOfflineVideoView = x.a(this.rxG);
+    ab.i("MicroMsg.OfflineVideoView", "%d start hasResumed[%b], curPos [%d], duration [%d], shouldSeek [%d]", new Object[] { Integer.valueOf(localOfflineVideoView.hashCode()), Boolean.valueOf(localOfflineVideoView.rIW), Integer.valueOf(localOfflineVideoView.kvG.getCurrentPosition()), Integer.valueOf(localOfflineVideoView.kvG.getDuration()), Integer.valueOf(localOfflineVideoView.rIY) });
+    localOfflineVideoView.rIX = true;
+    if (localOfflineVideoView.rIW) {
+      if (!bo.isNullOrNil(localOfflineVideoView.kvG.getVideoPath())) {
+        if (localOfflineVideoView.kvG.getCurrentPosition() >= localOfflineVideoView.kvG.getDuration())
+        {
+          localOfflineVideoView.kvG.e(0.0D, true);
+          if (localOfflineVideoView.rIV != null) {
+            localOfflineVideoView.rIV.onStart(localOfflineVideoView.duration);
+          }
+        }
+      }
     }
     for (;;)
     {
-      x.a(this.oHV).Y(paramInt, this.oHV.oGR.bNU);
+      localOfflineVideoView.startTimer();
+      AppMethodBeat.o(37283);
       return;
-      this.oHV.bEV();
+      localOfflineVideoView.kvG.start();
+      continue;
+      localOfflineVideoView.onResume();
+      continue;
+      localOfflineVideoView.onResume();
     }
   }
 }

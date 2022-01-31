@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.collect.reward.a.a.a;
 import com.tencent.mm.plugin.collect.reward.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class QrRewardMainUI$14
   implements a.a
 {
   QrRewardMainUI$14(QrRewardMainUI paramQrRewardMainUI, b paramb) {}
   
-  public final void i(m paramm)
+  public final void h(m paramm)
   {
-    y.e("MicroMsg.QrRewardMainUI", "net error: %s", new Object[] { paramm });
-    if (!this.iJn.iIb) {
-      QrRewardMainUI.a(this.iJi, false);
+    AppMethodBeat.i(41097);
+    ab.e("MicroMsg.QrRewardMainUI", "net error: %s", new Object[] { paramm });
+    if (!this.kPS.kOG) {
+      QrRewardMainUI.b(this.kPN, false);
     }
+    AppMethodBeat.o(41097);
   }
 }
 

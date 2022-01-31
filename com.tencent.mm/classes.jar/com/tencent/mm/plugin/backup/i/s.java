@@ -1,53 +1,68 @@
 package com.tencent.mm.plugin.backup.i;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class s
   extends com.tencent.mm.bv.a
 {
-  public long hQJ;
-  public long hQK;
-  public long hQm;
+  public long jJO;
+  public long jKl;
+  public long jKm;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(18067);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.Y(1, this.hQm);
-      paramVarArgs.Y(2, this.hQJ);
-      paramVarArgs.Y(3, this.hQK);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.am(1, this.jJO);
+      paramVarArgs.am(2, this.jKl);
+      paramVarArgs.am(3, this.jKm);
+      AppMethodBeat.o(18067);
       return 0;
     }
-    if (paramInt == 1) {
-      return d.a.a.a.X(1, this.hQm) + 0 + d.a.a.a.X(2, this.hQJ) + d.a.a.a.X(3, this.hQK);
+    if (paramInt == 1)
+    {
+      paramInt = e.a.a.b.b.a.p(1, this.jJO);
+      int i = e.a.a.b.b.a.p(2, this.jKl);
+      int j = e.a.a.b.b.a.p(3, this.jKm);
+      AppMethodBeat.o(18067);
+      return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(18067);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       s locals = (s)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(18067);
         return -1;
       case 1: 
-        locals.hQm = locala.xpH.oE();
+        locals.jJO = locala.CLY.sm();
+        AppMethodBeat.o(18067);
         return 0;
       case 2: 
-        locals.hQJ = locala.xpH.oE();
+        locals.jKl = locala.CLY.sm();
+        AppMethodBeat.o(18067);
         return 0;
       }
-      locals.hQK = locala.xpH.oE();
+      locals.jKm = locala.CLY.sm();
+      AppMethodBeat.o(18067);
       return 0;
     }
+    AppMethodBeat.o(18067);
     return -1;
   }
 }

@@ -1,25 +1,32 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class SnsAdNativeLandingTestUI$a$1
   implements SnsAdNativeLandingTestUI.a.a
 {
-  SnsAdNativeLandingTestUI$a$1(SnsAdNativeLandingTestUI.a parama, ah paramah, SnsAdNativeLandingTestUI.a.a parama1) {}
+  SnsAdNativeLandingTestUI$a$1(SnsAdNativeLandingTestUI.a parama, ak paramak, SnsAdNativeLandingTestUI.a.a parama1) {}
   
-  public final void Oq(String paramString)
+  public final void CF(String paramString)
   {
-    this.hZR.post(new SnsAdNativeLandingTestUI.a.1.3(this, paramString));
+    AppMethodBeat.i(38722);
+    this.mFP.post(new SnsAdNativeLandingTestUI.a.1.2(this, paramString));
+    AppMethodBeat.o(38722);
   }
   
-  public final void cu(String paramString, int paramInt)
+  public final void dq(String paramString, int paramInt)
   {
-    this.hZR.post(new SnsAdNativeLandingTestUI.a.1.1(this, paramString, paramInt));
+    AppMethodBeat.i(38721);
+    this.mFP.post(new SnsAdNativeLandingTestUI.a.1.1(this, paramString, paramInt));
+    AppMethodBeat.o(38721);
   }
   
-  public final void uv(String paramString)
+  public final void mP(String paramString)
   {
-    this.hZR.post(new SnsAdNativeLandingTestUI.a.1.2(this, paramString));
+    AppMethodBeat.i(38723);
+    this.mFP.post(new SnsAdNativeLandingTestUI.a.1.3(this, paramString));
+    AppMethodBeat.o(38723);
   }
 }
 

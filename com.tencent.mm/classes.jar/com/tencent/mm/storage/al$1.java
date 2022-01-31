@@ -1,9 +1,9 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.l;
 
 final class al$1
-  extends k<be.a, ak>
+  extends l<be.a, ak>
 {
   al$1(al paramal) {}
 }

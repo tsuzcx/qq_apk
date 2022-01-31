@@ -1,6 +1,7 @@
 package org.xwalk.core.extension;
 
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import org.json.JSONArray;
@@ -10,7 +11,7 @@ import org.xwalk.core.Log;
 
 public class MessageInfo
 {
-  private String TAG = "MessageInfo";
+  private String TAG;
   private JSONArray mArgs;
   private ByteBuffer mBinaryArgs;
   private String mCallbackId;
@@ -22,6 +23,7 @@ public class MessageInfo
   
   public MessageInfo(MessageInfo paramMessageInfo)
   {
+    this.TAG = "MessageInfo";
     this.mExtension = paramMessageInfo.mExtension;
     this.mInstanceId = paramMessageInfo.mInstanceId;
     this.mJsName = paramMessageInfo.mJsName;
@@ -33,11 +35,11 @@ public class MessageInfo
   
   public MessageInfo(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, String paramString)
   {
+    AppMethodBeat.i(86132);
+    this.TAG = "MessageInfo";
     this.mExtension = paramXWalkExternalExtension;
     this.mInstanceId = paramInt;
-    if (paramString.trim().charAt(0) == '[') {}
-    for (;;)
-    {
+    if (paramString.trim().charAt(0) == '[') {
       try
       {
         this.mArgs = new JSONArray(paramString);
@@ -51,47 +53,56 @@ public class MessageInfo
           this.mArgs.remove(0);
           this.mArgs.remove(0);
         }
+        AppMethodBeat.o(86132);
         return;
       }
       catch (JSONException paramXWalkExternalExtension)
       {
         Log.e(this.TAG, paramXWalkExternalExtension.toString());
+        AppMethodBeat.o(86132);
         return;
       }
-      try
+    }
+    try
+    {
+      paramXWalkExternalExtension = new JSONObject(paramString);
+      paramString = paramXWalkExternalExtension.getString("cmd");
+      paramInt = paramXWalkExternalExtension.getInt("objectId");
+      this.mCmd = paramString;
+      this.mObjectId = Integer.toString(paramInt);
+      this.mCallbackId = Integer.toString(0);
+      paramString = paramXWalkExternalExtension.getString("type");
+      this.mArgs = new JSONArray();
+      if (paramString.equals("postMessageToExtension"))
       {
-        paramXWalkExternalExtension = new JSONObject(paramString);
-        paramString = paramXWalkExternalExtension.getString("cmd");
-        paramInt = paramXWalkExternalExtension.getInt("objectId");
-        this.mCmd = paramString;
-        this.mObjectId = Integer.toString(paramInt);
-        this.mCallbackId = Integer.toString(0);
-        paramString = paramXWalkExternalExtension.getString("type");
-        this.mArgs = new JSONArray();
-        if (paramString.equals("postMessageToExtension"))
-        {
-          this.mArgs = paramXWalkExternalExtension.getJSONArray("args");
-          this.mJsName = paramXWalkExternalExtension.getString("name");
-          if (!this.mCmd.equals("newInstance")) {
-            continue;
-          }
-          this.mObjectId = this.mArgs.getString(0);
-          this.mArgs = this.mArgs.getJSONArray(1);
+        this.mArgs = paramXWalkExternalExtension.getJSONArray("args");
+        this.mJsName = paramXWalkExternalExtension.getString("name");
+        if (!this.mCmd.equals("newInstance")) {
+          break label337;
         }
-      }
-      catch (JSONException paramXWalkExternalExtension)
-      {
-        Log.e(this.TAG, paramXWalkExternalExtension.toString());
+        this.mObjectId = this.mArgs.getString(0);
+        this.mArgs = this.mArgs.getJSONArray(1);
+        AppMethodBeat.o(86132);
         return;
       }
+    }
+    catch (JSONException paramXWalkExternalExtension)
+    {
+      Log.e(this.TAG, paramXWalkExternalExtension.toString());
+      AppMethodBeat.o(86132);
+      return;
     }
     this.mJsName = paramString;
     this.mArgs.put(0, paramXWalkExternalExtension.getString("name"));
     this.mArgs.put(1, paramXWalkExternalExtension.getJSONArray("args"));
+    label337:
+    AppMethodBeat.o(86132);
   }
   
   public MessageInfo(XWalkExternalExtension paramXWalkExternalExtension, int paramInt, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(86133);
+    this.TAG = "MessageInfo";
     this.mExtension = paramXWalkExternalExtension;
     this.mInstanceId = paramInt;
     this.mCmd = "invokeNative";
@@ -116,16 +127,19 @@ public class MessageInfo
       this.mObjectId = new String(paramArrayOfByte, j, paramInt);
       paramInt = j + i;
       this.mBinaryArgs = ByteBuffer.wrap(paramArrayOfByte, paramInt, paramArrayOfByte.length - paramInt);
+      AppMethodBeat.o(86133);
       return;
     }
     catch (IndexOutOfBoundsException paramXWalkExternalExtension)
     {
       Log.e(this.TAG, paramXWalkExternalExtension.toString());
+      AppMethodBeat.o(86133);
       return;
     }
     catch (NullPointerException paramXWalkExternalExtension)
     {
       Log.e(this.TAG, paramXWalkExternalExtension.toString());
+      AppMethodBeat.o(86133);
     }
   }
   
@@ -161,7 +175,10 @@ public class MessageInfo
   
   public ExtensionInstanceHelper getInstanceHelper()
   {
-    return this.mExtension.getInstanceHelper(this.mInstanceId);
+    AppMethodBeat.i(86135);
+    ExtensionInstanceHelper localExtensionInstanceHelper = this.mExtension.getInstanceHelper(this.mInstanceId);
+    AppMethodBeat.o(86135);
+    return localExtensionInstanceHelper;
   }
   
   public int getInstanceId()
@@ -182,6 +199,7 @@ public class MessageInfo
   public void postResult(JSONArray paramJSONArray)
   {
     int i = 0;
+    AppMethodBeat.i(86134);
     try
     {
       JSONArray localJSONArray = new JSONArray();
@@ -193,17 +211,21 @@ public class MessageInfo
       }
       Log.w(this.TAG, "postResult: " + localJSONArray.toString());
       this.mExtension.postMessage(this.mInstanceId, localJSONArray.toString());
+      AppMethodBeat.o(86134);
       return;
     }
     catch (JSONException paramJSONArray)
     {
       Log.e(this.TAG, paramJSONArray.toString());
+      AppMethodBeat.o(86134);
     }
   }
   
   public void postResult(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(86136);
     this.mExtension.postBinaryMessage(this.mInstanceId, paramArrayOfByte);
+    AppMethodBeat.o(86136);
   }
   
   public void setArgs(JSONArray paramJSONArray)

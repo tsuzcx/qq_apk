@@ -2,8 +2,7 @@ package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.c.a;
 
 final class WalletBindUI$4
@@ -11,9 +10,12 @@ final class WalletBindUI$4
 {
   WalletBindUI$4(WalletBindUI paramWalletBindUI) {}
   
-  public final Intent m(int paramInt, Bundle paramBundle)
+  public final Intent p(int paramInt, Bundle paramBundle)
   {
-    return new Intent(this.qkw.mController.uMN, WalletBankcardManageUI.class);
+    AppMethodBeat.i(45799);
+    paramBundle = new Intent(this.tTw.getContext(), WalletBankcardManageUI.class);
+    AppMethodBeat.o(45799);
+    return paramBundle;
   }
 }
 

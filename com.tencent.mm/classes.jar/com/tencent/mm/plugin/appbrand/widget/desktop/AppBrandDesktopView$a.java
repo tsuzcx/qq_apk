@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop;
 
-import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class AppBrandDesktopView$a
+final class AppBrandDesktopView$a
+  implements AppBrandDesktopDragView.a
 {
-  public LocalUsageInfo hqw;
-  public int position;
-  public int type;
+  private AppBrandDesktopView$a(AppBrandDesktopView paramAppBrandDesktopView) {}
   
-  public AppBrandDesktopView$a(int paramInt)
+  public final int aPq()
   {
-    this.type = paramInt;
+    AppMethodBeat.i(133839);
+    int i = AppBrandDesktopView.h(this.jfg);
+    AppMethodBeat.o(133839);
+    return i;
   }
 }
 

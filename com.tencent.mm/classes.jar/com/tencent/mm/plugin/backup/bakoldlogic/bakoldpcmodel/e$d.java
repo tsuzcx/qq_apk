@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 public abstract interface e$d
   extends e.b
 {
-  public abstract void atm();
+  public abstract void aSK();
   
-  public abstract void avF();
+  public abstract void aVi();
   
-  public abstract void avG();
+  public abstract void aVj();
   
-  public abstract void nS(int paramInt);
+  public abstract void rF(int paramInt);
   
-  public abstract void nT(int paramInt);
+  public abstract void rG(int paramInt);
 }
 
 

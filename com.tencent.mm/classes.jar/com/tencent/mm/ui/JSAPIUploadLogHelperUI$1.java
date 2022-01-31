@@ -1,24 +1,27 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JSAPIUploadLogHelperUI$1
-  implements bi.a
+  implements bk.a
 {
   JSAPIUploadLogHelperUI$1(JSAPIUploadLogHelperUI paramJSAPIUploadLogHelperUI, String paramString, int paramInt) {}
   
   public final void a(e arg1)
   {
-    synchronized ()
+    AppMethodBeat.i(29438);
+    synchronized (JSAPIUploadLogHelperUI.Qj())
     {
-      JSAPIUploadLogHelperUI.bp(true);
-      au.Dk().a(1, "", 0, false);
-      y.cqL();
-      au.Dk().a(2, this.egy, this.eNZ, au.DK());
+      JSAPIUploadLogHelperUI.qn(true);
+      aw.Rc().a(1, "", 0, false);
+      ab.dsI();
+      aw.Rc().a(2, this.fwC, this.gdN, aw.RG());
+      AppMethodBeat.o(29438);
       return;
     }
   }

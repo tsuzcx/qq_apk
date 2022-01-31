@@ -5,7 +5,7 @@ public final class c$hg
 {
   public c$hg()
   {
-    super("searchDataHasResult", "", 10000, false);
+    super("quicklyAddBrandContact", "quicklyAddBrandContact", 166, true);
   }
 }
 

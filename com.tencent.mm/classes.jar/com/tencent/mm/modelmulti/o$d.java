@@ -1,12 +1,14 @@
 package com.tencent.mm.modelmulti;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.s.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.t.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Queue;
+import java.util.Queue<Lcom.tencent.mm.modelmulti.o.c;>;
 
 final class o$d
   implements o.c
@@ -15,62 +17,86 @@ final class o$d
   
   public final boolean c(Queue<o.c> paramQueue)
   {
-    Object localObject = new PInt();
-    g.DQ();
-    g.DN();
-    paramQueue = com.tencent.mm.booter.f.a((PInt)localObject, a.CK());
-    int j = ((PInt)localObject).value;
-    if (paramQueue != null) {}
-    for (int i = paramQueue.length;; i = -1)
+    AppMethodBeat.i(58402);
+    paramQueue = new PInt();
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RJ();
+    Object localObject = com.tencent.mm.booter.g.a(paramQueue, a.getUin());
+    int j = paramQueue.value;
+    if (localObject != null) {}
+    for (final int i = localObject.length;; i = -1)
     {
-      y.i("MicroMsg.SyncService", "%s index:%d, buf.len:%d ", new Object[] { this, Integer.valueOf(j), Integer.valueOf(i) });
-      if ((((PInt)localObject).value != 0) && (!bk.bE(paramQueue))) {
+      ab.i("MicroMsg.SyncService", "%s index:%d, buf.len:%d ", new Object[] { this, Integer.valueOf(j), Integer.valueOf(i) });
+      if ((paramQueue.value != 0) && (!bo.ce((byte[])localObject))) {
         break;
       }
+      AppMethodBeat.o(58402);
       return false;
     }
-    i = ((PInt)localObject).value;
+    i = paramQueue.value;
+    paramQueue = null;
     try
     {
-      localObject = new s.b();
-      ((s.b)localObject).A(paramQueue);
-      paramQueue = ((s.b)localObject).sqj;
-      if (paramQueue == null) {
-        return false;
-      }
+      t.b localb = new t.b();
+      localb.fromProtoBuf((byte[])localObject);
+      localObject = localb.wiN;
+      paramQueue = (Queue<o.c>)localObject;
     }
-    catch (Exception paramQueue)
+    catch (Exception localException)
     {
       for (;;)
       {
-        com.tencent.mm.plugin.report.f.nEG.a(99L, 38L, 1L, false);
-        y.e("MicroMsg.SyncService", "%s index:%s Resp fromProtoBuf failed ", new Object[] { this, Integer.valueOf(i) });
-        g.DQ();
-        g.DN();
-        com.tencent.mm.booter.f.aV(i, a.CK());
-        paramQueue = null;
+        e.qrI.idkeyStat(99L, 38L, 1L, false);
+        ab.e("MicroMsg.SyncService", "%s index:%s Resp fromProtoBuf failed e[%s]", new Object[] { this, Integer.valueOf(i), localException.getMessage() });
+        com.tencent.mm.kernel.g.RM();
+        com.tencent.mm.kernel.g.RJ();
+        com.tencent.mm.booter.g.bT(i, a.getUin());
       }
     }
-    catch (Error paramQueue)
+    catch (Error localError)
     {
       for (;;)
       {
-        com.tencent.mm.plugin.report.f.nEG.a(99L, 39L, 1L, false);
+        e.qrI.idkeyStat(99L, 39L, 1L, false);
         long l1 = Runtime.getRuntime().freeMemory() / 1000L;
         long l2 = Runtime.getRuntime().totalMemory() / 1000L;
-        y.i("MicroMsg.SyncService", "%s index:%s memoryInfo avail/total, dalvik[%dk, %dk, user:%dk]", new Object[] { this, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1) });
-        o.G("LightPush memory error", false);
-        paramQueue = null;
+        ab.i("MicroMsg.SyncService", "%s index:%s memoryInfo avail/total, dalvik[%dk, %dk, user:%dk] Error[%s]", new Object[] { this, Integer.valueOf(i), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - l1), localError.getMessage() });
+        com.tencent.mm.kernel.g.RM();
+        com.tencent.mm.kernel.g.RJ();
+        com.tencent.mm.booter.g.bT(i, a.getUin());
       }
-      com.tencent.mm.plugin.report.f.nEG.a(99L, 20L, 1L, false);
-      new o.a(this.etN, this, true, paramQueue, new o.d.1(this, i), (byte)0);
+      e.qrI.idkeyStat(99L, 20L, 1L, false);
+      new o.a(this.fJA, this, true, paramQueue, new o.b()
+      {
+        public final boolean lM(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(58401);
+          ab.i("MicroMsg.SyncService", "%s onFinishCmd index:%s ", new Object[] { o.d.this, Integer.valueOf(i) });
+          paramAnonymousInt = i;
+          com.tencent.mm.kernel.g.RM();
+          com.tencent.mm.kernel.g.RJ();
+          com.tencent.mm.booter.g.bT(paramAnonymousInt, a.getUin());
+          o.a(o.d.this.fJA, o.d.this);
+          AppMethodBeat.o(58401);
+          return true;
+        }
+      }, (byte)0);
+      AppMethodBeat.o(58402);
+    }
+    if (paramQueue == null)
+    {
+      AppMethodBeat.o(58402);
+      return false;
     }
     return true;
   }
   
   public final String toString()
   {
-    return "LightPush[" + hashCode() + "]";
+    AppMethodBeat.i(58403);
+    String str = "LightPush[" + hashCode() + "]";
+    AppMethodBeat.o(58403);
+    return str;
   }
 }
 

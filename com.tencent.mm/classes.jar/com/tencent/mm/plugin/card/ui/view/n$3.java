@@ -5,6 +5,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
 
@@ -15,12 +16,14 @@ final class n$3
   
   public final void onClick(View paramView)
   {
-    this.iyn.setVisibility(8);
-    this.iyo.setVisibility(8);
-    this.iyp.setVisibility(0);
-    this.iyq.setVisibility(8);
-    this.iyk.ixX.d(c.iyT);
-    this.iyk.d(this.iyj, this.iym);
+    AppMethodBeat.i(88764);
+    this.kBu.setVisibility(8);
+    this.kBv.setVisibility(8);
+    this.kBw.setVisibility(0);
+    this.kBx.setVisibility(8);
+    this.kBr.kBe.d(c.kCa);
+    this.kBr.d(this.kBq, this.kBt);
+    AppMethodBeat.o(88764);
   }
 }
 

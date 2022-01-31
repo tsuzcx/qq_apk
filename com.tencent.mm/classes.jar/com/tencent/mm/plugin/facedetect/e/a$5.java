@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.facedetect.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.a.d;
 
 public final class a$5
@@ -9,9 +10,11 @@ public final class a$5
   
   public final void run()
   {
-    if (a.g(this.jTm) != null) {
-      a.g(this.jTm).av(this.jTv);
+    AppMethodBeat.i(549);
+    if (a.g(this.mnI) != null) {
+      a.g(this.mnI).ag(this.bTL);
     }
+    AppMethodBeat.o(549);
   }
 }
 

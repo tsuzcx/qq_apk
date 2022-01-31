@@ -6,16 +6,16 @@ import java.util.ArrayList;
 
 final class m
 {
-  final ArrayList<m.a> jK = new ArrayList();
-  m.a jL = null;
-  ValueAnimator jM = null;
-  private final Animator.AnimatorListener jN = new m.1(this);
+  final ArrayList<m.a> kI = new ArrayList();
+  m.a kJ = null;
+  ValueAnimator kK = null;
+  private final Animator.AnimatorListener kL = new m.1(this);
   
   public final void a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
   {
     paramArrayOfInt = new m.a(paramArrayOfInt, paramValueAnimator);
-    paramValueAnimator.addListener(this.jN);
-    this.jK.add(paramArrayOfInt);
+    paramValueAnimator.addListener(this.kL);
+    this.kI.add(paramArrayOfInt);
   }
 }
 

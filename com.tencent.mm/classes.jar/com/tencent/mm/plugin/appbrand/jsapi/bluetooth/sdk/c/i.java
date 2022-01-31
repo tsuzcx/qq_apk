@@ -6,7 +6,7 @@ public abstract interface i
 {
   public abstract void a(d paramd);
   
-  public abstract void ay(List<d> paramList);
+  public abstract void aI(List<d> paramList);
 }
 
 

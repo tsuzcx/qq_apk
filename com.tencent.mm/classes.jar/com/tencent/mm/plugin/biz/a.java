@@ -1,34 +1,50 @@
 package com.tencent.mm.plugin.biz;
 
-import com.tencent.mm.ae.i;
-import com.tencent.mm.ae.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.l;
+import com.tencent.mm.af.p;
 
 public final class a
   implements com.tencent.mm.plugin.biz.a.a
 {
-  public final String N(String paramString1, String paramString2)
+  public final String ac(String paramString1, String paramString2)
   {
-    return i.N(paramString1, paramString2);
+    AppMethodBeat.i(11645);
+    paramString1 = l.ac(paramString1, paramString2);
+    AppMethodBeat.o(11645);
+    return paramString1;
   }
   
-  public final l d(long paramLong, String paramString)
+  public final p b(long paramLong, String paramString)
   {
-    return i.d(paramLong, paramString);
+    AppMethodBeat.i(11649);
+    paramString = l.b(paramLong, paramString);
+    AppMethodBeat.o(11649);
+    return paramString;
   }
   
-  public final boolean gr(String paramString)
+  public final boolean na(String paramString)
   {
-    return i.gr(paramString);
+    AppMethodBeat.i(11646);
+    boolean bool = l.na(paramString);
+    AppMethodBeat.o(11646);
+    return bool;
   }
   
-  public final String gs(String paramString)
+  public final String nb(String paramString)
   {
-    return i.gs(paramString);
+    AppMethodBeat.i(11647);
+    paramString = l.nb(paramString);
+    AppMethodBeat.o(11647);
+    return paramString;
   }
   
-  public final String gt(String paramString)
+  public final String nc(String paramString)
   {
-    return i.gt(paramString);
+    AppMethodBeat.i(11648);
+    paramString = l.nc(paramString);
+    AppMethodBeat.o(11648);
+    return paramString;
   }
 }
 

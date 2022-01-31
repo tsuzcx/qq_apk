@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.luckymoney.sns;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -10,7 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -18,132 +22,153 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.luckymoney.b.ae;
-import com.tencent.mm.plugin.luckymoney.b.d;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.plugin.luckymoney.b.x;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.luckymoney.model.ag;
+import com.tencent.mm.plugin.luckymoney.model.ao;
+import com.tencent.mm.plugin.luckymoney.model.ar;
+import com.tencent.mm.plugin.luckymoney.model.i;
+import com.tencent.mm.plugin.luckymoney.model.p;
+import com.tencent.mm.plugin.luckymoney.model.x;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
+import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyCanShareListUI;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyMoneyInputView;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyMyRecordUI;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNumInputView;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyTextInputView;
-import com.tencent.mm.plugin.luckymoney.ui.f;
-import com.tencent.mm.plugin.luckymoney.ui.g.c;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.luckymoney.ui.b;
+import com.tencent.mm.plugin.luckymoney.ui.h.c;
+import com.tencent.mm.plugin.wallet_core.ui.j.a;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.storage.z;
+import com.tencent.mm.ui.base.t;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 import java.util.Map;
 
 @com.tencent.mm.ui.base.a(19)
 public class SnsLuckyMoneyPrepareUI
   extends LuckyMoneyBaseUI
-  implements f
+  implements com.tencent.mm.plugin.luckymoney.ui.g
 {
-  private am fqP = null;
-  protected Dialog ftk = null;
-  private ScrollView gqx;
-  protected TextView iKS = null;
-  private TextView iKV;
-  protected Button jhV = null;
-  private d lLB;
-  protected LuckyMoneyNumInputView lMm = null;
-  protected LuckyMoneyTextInputView lMo = null;
-  protected Button lMp = null;
-  protected View lMr;
-  private TextView lMu;
-  private com.tencent.mm.plugin.luckymoney.ui.a lMw = new com.tencent.mm.plugin.luckymoney.ui.a();
-  private ViewGroup lTA;
-  private int lTB;
-  private String lTC;
-  private int lTD;
-  private boolean lTE;
-  private String lTF;
-  private int lTG;
-  private com.tencent.mm.wallet_core.ui.a lTH;
-  protected LuckyMoneyMoneyInputView lTx = null;
-  private View lTy;
-  private View lTz;
+  private ap gIs;
+  protected Dialog gKM;
+  private ScrollView hLr;
+  private TextView kRB;
+  protected TextView kRx;
+  protected Button lqP;
+  private int mChannel;
+  protected View mKBLayout;
   protected MyKeyboardWindow mKeyboard;
+  private com.tencent.mm.wallet_core.ui.a mTenpayKBStateListener;
   private int mType;
+  private i oiV;
+  protected LuckyMoneyNumInputView ojG;
+  protected LuckyMoneyTextInputView ojI;
+  protected Button ojJ;
+  private TextView ojN;
+  private b ojP;
+  protected LuckyMoneyMoneyInputView oqE;
+  private View oqF;
+  private View oqG;
+  private ViewGroup oqH;
+  private int oqI;
+  private String oqJ;
+  private int oqK;
+  private boolean oqL;
+  private String oqM;
   
-  private int bfV()
+  public SnsLuckyMoneyPrepareUI()
   {
-    if (this.lTE)
+    AppMethodBeat.i(42532);
+    this.ojG = null;
+    this.oqE = null;
+    this.ojI = null;
+    this.kRx = null;
+    this.ojJ = null;
+    this.lqP = null;
+    this.gKM = null;
+    this.ojP = new b();
+    this.gIs = null;
+    AppMethodBeat.o(42532);
+  }
+  
+  private int bNH()
+  {
+    AppMethodBeat.i(42543);
+    if (this.oqL)
     {
-      if (getIntent().getIntExtra("key_chatroom_num", 0) > 0) {
+      if (getIntent().getIntExtra("key_chatroom_num", 0) > 0)
+      {
+        AppMethodBeat.o(42543);
         return 2;
       }
+      AppMethodBeat.o(42543);
       return 1;
     }
+    AppMethodBeat.o(42543);
     return 3;
   }
   
-  protected final void J(View paramView, int paramInt)
+  protected final void Z(View paramView, int paramInt)
   {
-    this.mKeyboard = ((MyKeyboardWindow)findViewById(a.f.tenpay_num_keyboard));
-    this.lMr = findViewById(a.f.tenpay_keyboard_layout);
-    View localView = findViewById(a.f.tenpay_push_down);
-    EditText localEditText = (EditText)paramView.findViewById(a.f.lucky_money_et);
-    if ((this.mKeyboard == null) || (localEditText == null) || (this.lMr == null)) {
+    AppMethodBeat.i(42539);
+    this.mKeyboard = ((MyKeyboardWindow)findViewById(2131822419));
+    this.mKBLayout = findViewById(2131822418);
+    View localView = findViewById(2131822420);
+    EditText localEditText = (EditText)paramView.findViewById(2131825700);
+    if ((this.mKeyboard == null) || (localEditText == null) || (this.mKBLayout == null))
+    {
+      AppMethodBeat.o(42539);
       return;
     }
     com.tencent.mm.wallet_core.ui.e.setNoSystemInputOnEditText(localEditText);
     localEditText.setOnFocusChangeListener(new SnsLuckyMoneyPrepareUI.10(this, paramInt, localEditText));
     localEditText.setOnClickListener(new SnsLuckyMoneyPrepareUI.12(this, paramInt, localEditText));
-    paramView = (TextView)paramView.findViewById(a.f.lucky_money_amount_unit_title);
+    paramView = (TextView)paramView.findViewById(2131825701);
     if (paramView != null) {
       paramView.setOnClickListener(new SnsLuckyMoneyPrepareUI.13(this, paramInt, localEditText));
     }
     localView.setOnClickListener(new SnsLuckyMoneyPrepareUI.14(this));
+    AppMethodBeat.o(42539);
   }
   
-  protected final void VH()
+  public final void bMQ()
   {
-    if ((this.lMr != null) && (this.lMr.isShown()))
-    {
-      this.lMr.setVisibility(8);
-      this.lTH.gK(false);
-    }
-  }
-  
-  public final void bfq()
-  {
-    com.tencent.mm.plugin.luckymoney.a.a.bfg();
-    this.lLB = com.tencent.mm.plugin.luckymoney.a.a.bfh().bfG();
+    AppMethodBeat.i(42542);
+    com.tencent.mm.plugin.luckymoney.b.a.bMG();
+    this.oiV = com.tencent.mm.plugin.luckymoney.b.a.bMH().bNk();
     int i;
     double d2;
     double d1;
-    if ((this.lTx.bfp() != 3) && (this.lMm.bfp() != 3))
+    if ((this.oqE.bMP() != 3) && (this.ojG.bMP() != 3))
     {
-      i = this.lMm.getInput();
-      d2 = this.lTx.getInput();
+      i = this.ojG.getInput();
+      d2 = this.oqE.getInput();
       if (this.mType == 0)
       {
         d2 *= i;
-        d1 = this.lTx.getInput();
+        d1 = this.oqE.getInput();
       }
     }
     for (;;)
     {
-      if (this.lMw.bgi())
+      if (this.ojP.bNY())
       {
-        this.lMp.setClickable(false);
-        this.lMp.setEnabled(false);
-        this.iKS.setText(com.tencent.mm.wallet_core.ui.e.B(d2));
+        this.ojJ.setClickable(false);
+        this.ojJ.setEnabled(false);
+        this.kRx.setText(com.tencent.mm.wallet_core.ui.e.F(d2));
+        AppMethodBeat.o(42542);
         return;
         if (i > 0) {
-          d1 = this.lTx.getInput() / i;
+          d1 = this.oqE.getInput() / i;
         }
       }
       else
@@ -153,27 +178,27 @@ public class SnsLuckyMoneyPrepareUI
         }
         for (;;)
         {
-          label147:
+          label157:
           if (i != 0)
           {
-            this.lMp.setClickable(false);
-            this.lMp.setEnabled(false);
+            this.ojJ.setClickable(false);
+            this.ojJ.setEnabled(false);
             break;
-            if ((d2 > this.lLB.lLa) && (this.lLB.lLa > 0.0D))
+            if ((d2 > this.oiV.oiu) && (this.oiV.oiu > 0.0D))
             {
-              this.lMw.tR(getString(a.i.lucky_money_total_amount_max_limit_tips, new Object[] { Math.round(this.lLB.lLa), bk.aM(this.lLB.lLd, "") }));
+              this.ojP.EC(getString(2131301332, new Object[] { Math.round(this.oiV.oiu), bo.bf(this.oiV.oix, "") }));
               i = 1;
               continue;
             }
             if (d1 <= 0.0D) {
-              break label638;
+              break label648;
             }
             if (this.mType == 0)
             {
-              if ((d1 <= this.lLB.lKY) || (this.lLB.lKY <= 0.0D)) {
-                break label632;
+              if ((d1 <= this.oiV.ois) || (this.oiV.ois <= 0.0D)) {
+                break label642;
               }
-              this.lMw.tR(getString(a.i.lucky_money_per_amount_max_limit_tips, new Object[] { Math.round(this.lLB.lKY), bk.aM(this.lLB.lLd, "") }));
+              this.ojP.EC(getString(2131301280, new Object[] { Math.round(this.oiV.ois), bo.bf(this.oiV.oix, "") }));
               i = 1;
             }
           }
@@ -183,39 +208,39 @@ public class SnsLuckyMoneyPrepareUI
             {
               if (this.mType == 0)
               {
-                if (d1 >= this.lLB.lKZ) {
-                  break label629;
+                if (d1 >= this.oiV.oit) {
+                  break label639;
                 }
-                this.lMw.tR(getString(a.i.lucky_money_per_amount_min_limit_tips, new Object[] { com.tencent.mm.wallet_core.ui.e.A(this.lLB.lKZ), bk.aM(this.lLB.lLd, "") }));
+                this.ojP.EC(getString(2131301282, new Object[] { com.tencent.mm.wallet_core.ui.e.E(this.oiV.oit), bo.bf(this.oiV.oix, "") }));
                 i = 1;
-                break label147;
-                if ((d1 <= this.lLB.lLb) || (this.lLB.lLb <= 0.0D)) {
-                  break label632;
+                break label157;
+                if ((d1 <= this.oiV.oiv) || (this.oiV.oiv <= 0.0D)) {
+                  break label642;
                 }
-                this.lMw.tR(getString(a.i.lucky_money_per_amount_max_limit_tips, new Object[] { Math.round(this.lLB.lLb), bk.aM(this.lLB.lLd, "") }));
-                this.lMm.onError();
-                this.lTx.onError();
+                this.ojP.EC(getString(2131301280, new Object[] { Math.round(this.oiV.oiv), bo.bf(this.oiV.oix, "") }));
+                this.ojG.onError();
+                this.oqE.onError();
                 i = 1;
                 continue;
               }
               if (d1 < 0.01D)
               {
-                this.lMw.tR(getString(a.i.lucky_money_per_amount_min_limit_tips, new Object[] { "0.01", bk.aM(this.lLB.lLd, "") }));
-                this.lMm.onError();
-                this.lTx.onError();
+                this.ojP.EC(getString(2131301282, new Object[] { "0.01", bo.bf(this.oiV.oix, "") }));
+                this.ojG.onError();
+                this.oqE.onError();
                 i = 1;
-                break label147;
-                this.lMp.setClickable(true);
-                this.lMp.setEnabled(true);
+                break label157;
+                this.ojJ.setClickable(true);
+                this.ojJ.setEnabled(true);
                 break;
               }
             }
-            label629:
-            break label147;
-            label632:
+            label639:
+            break label157;
+            label642:
             i = 0;
           }
-          label638:
+          label648:
           i = 0;
         }
       }
@@ -226,308 +251,342 @@ public class SnsLuckyMoneyPrepareUI
     }
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    if ((paramm instanceof ae))
-    {
-      if ((this.ftk != null) && (this.ftk.isShowing())) {
-        this.ftk.hide();
-      }
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        paramString = (ae)paramm;
-        this.lTD = paramString.iHi;
-        this.lTC = paramString.lMg;
-        this.lTF = paramString.lRB;
-        paramm = new PayInfo();
-        paramm.bMX = paramString.lRA;
-        paramm.bUV = 37;
-        paramm.bUR = this.lTG;
-        com.tencent.mm.pluginsdk.wallet.h.a(this, paramm, 1);
-        return true;
-      }
-      if (paramInt2 == 401)
-      {
-        this.lMp.setEnabled(false);
-        this.lMp.setClickable(false);
-        this.fqP.S(5000L, 5000L);
-        com.tencent.mm.ui.base.h.bC(this, paramString);
-        return true;
-      }
-      com.tencent.mm.ui.base.h.bC(this, paramString);
-      return true;
-    }
-    if ((paramm instanceof com.tencent.mm.plugin.luckymoney.b.ah))
-    {
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        if (this.lTE)
-        {
-          com.tencent.mm.ui.base.h.bC(this, getString(a.i.has_send));
-          finish();
-        }
-        for (;;)
-        {
-          return true;
-          bgd();
-          this.lTz.postDelayed(new SnsLuckyMoneyPrepareUI.2(this), 1000L);
-        }
-      }
-      if (paramInt2 == 402)
-      {
-        com.tencent.mm.ui.base.h.a(this.mController.uMN, paramString, "", getString(a.i.lucky_money_send_list_title), getString(a.i.app_cancel), new SnsLuckyMoneyPrepareUI.3(this), new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-        });
-        return true;
-      }
-    }
-    else if ((paramm instanceof x))
-    {
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        paramString = (x)paramm;
-        com.tencent.mm.plugin.luckymoney.a.a.bfg();
-        this.lLB = com.tencent.mm.plugin.luckymoney.a.a.bfh().bfG();
-        y.d("MicroMsg.LuckyMoneyPrepareUI", "update config:" + this.lLB);
-        if (this.mType != 1) {
-          break label617;
-        }
-        this.lTx.setMaxAmount(this.lLB.lLa);
-        this.lTx.setMinAmount(this.lLB.lKZ);
-        this.lMm.setMaxNum(this.lLB.lKX);
-        if ((paramString.lRn) && (this.lTE))
-        {
-          paramm = (TextView)findViewById(a.f.lucky_money_prepare_has_tips);
-          paramm.setOnClickListener(new SnsLuckyMoneyPrepareUI.5(this));
-          com.tencent.mm.plugin.report.service.h.nFQ.f(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bfV()), Integer.valueOf(8) });
-          paramm.setVisibility(0);
-        }
-        if (bk.bl(paramString.iHC)) {
-          break label634;
-        }
-        y.i("MicroMsg.LuckyMoneyPrepareUI", "Put notice :" + paramString.iHC);
-        this.lMu.setText(paramString.iHC);
-        if (!bk.bl(paramString.lRp)) {
-          this.lMu.setOnClickListener(new SnsLuckyMoneyPrepareUI.6(this, paramString));
-        }
-        this.lMu.setVisibility(0);
-      }
-      for (;;)
-      {
-        paramm = new g.c();
-        paramm.textColor = getResources().getColor(a.c.wallet_link_color);
-        com.tencent.mm.plugin.luckymoney.ui.g.a(this, this.lTA, paramString.lRr, paramm);
-        return true;
-        label617:
-        this.lTx.setMaxAmount(this.lLB.lKY);
-        break;
-        label634:
-        this.lMu.setVisibility(8);
-      }
-    }
-    return false;
-  }
-  
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((paramKeyEvent.getKeyCode() == 4) && (this.lTy.getVisibility() == 0))
+    AppMethodBeat.i(42536);
+    if ((paramKeyEvent.getKeyCode() == 4) && (this.oqF.getVisibility() == 0))
     {
-      this.lTy.setVisibility(8);
-      bgc();
+      this.oqF.setVisibility(8);
+      bNP();
+      AppMethodBeat.o(42536);
       return true;
     }
-    return super.dispatchKeyEvent(paramKeyEvent);
+    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.o(42536);
+    return bool;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.lucky_money_prepare_ui;
+    return 2130970042;
   }
   
-  protected final void initView()
+  protected final void hideTenpayKB()
   {
-    getResources().getDrawable(a.e.lucky_money_actionbar_bg);
+    AppMethodBeat.i(42541);
+    if ((this.mKBLayout != null) && (this.mKBLayout.isShown()))
+    {
+      this.mKBLayout.setVisibility(8);
+      this.mTenpayKBStateListener.onVisibleStateChange(false);
+    }
+    AppMethodBeat.o(42541);
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(42534);
+    getResources().getDrawable(2130839340);
     setBackBtn(new SnsLuckyMoneyPrepareUI.1(this));
-    this.lTy = findViewById(a.f.lucky_money_prepare_ready_ll);
-    this.lTz = findViewById(a.f.lucky_money_prepare_sent_area);
-    this.jhV = ((Button)findViewById(a.f.lucky_money_prepare_send_btn));
-    this.lMo = ((LuckyMoneyTextInputView)findViewById(a.f.lucky_money_wish_et));
-    this.lMo.setHintText(getString(a.i.lucky_money_default_wish));
-    this.lMp = ((Button)findViewById(a.f.lucky_money_prepare_btn));
-    this.mKeyboard = ((MyKeyboardWindow)findViewById(a.f.tenpay_num_keyboard));
-    this.lMr = findViewById(a.f.tenpay_keyboard_layout);
-    this.iKV = ((TextView)findViewById(a.f.lucky_money_prepare_amount_tips));
-    this.lMm = ((LuckyMoneyNumInputView)findViewById(a.f.lucky_money_num_et));
-    this.lTx = ((LuckyMoneyMoneyInputView)findViewById(a.f.lucky_money_amount_et));
-    this.iKS = ((TextView)findViewById(a.f.lucky_money_prepare_total_amount));
-    this.lTA = ((ViewGroup)findViewById(a.f.lucky_money_prepare_opertaion));
-    this.gqx = ((ScrollView)findViewById(a.f.lucky_money_sv));
-    this.lMu = ((TextView)findViewById(a.f.lucky_money_prepare_notice_tips));
+    this.oqF = findViewById(2131825801);
+    this.oqG = findViewById(2131825806);
+    this.lqP = ((Button)findViewById(2131825805));
+    this.ojI = ((LuckyMoneyTextInputView)findViewById(2131825789));
+    this.ojI.setHintText(getString(2131301208));
+    this.ojJ = ((Button)findViewById(2131825798));
+    this.mKeyboard = ((MyKeyboardWindow)findViewById(2131822419));
+    this.mKBLayout = findViewById(2131822418);
+    this.kRB = ((TextView)findViewById(2131825786));
+    this.ojG = ((LuckyMoneyNumInputView)findViewById(2131825787));
+    this.oqE = ((LuckyMoneyMoneyInputView)findViewById(2131825785));
+    this.kRx = ((TextView)findViewById(2131825797));
+    this.oqH = ((ViewGroup)findViewById(2131825800));
+    this.hLr = ((ScrollView)findViewById(2131825783));
+    this.ojN = ((TextView)findViewById(2131825784));
     Object localObject1;
     if (this.mType == 1)
     {
-      this.lTx.setTitle(getString(a.i.lucky_money_total_amount_title));
-      this.lTx.setShowGroupIcon(true);
-      this.lTx.setOnInputValidChangerListener(this);
-      this.lMm.setOnInputValidChangerListener(this);
-      this.lMo.setOnInputValidChangerListener(this);
-      localObject1 = (EditText)this.lTx.findViewById(a.f.lucky_money_et);
-      Object localObject2 = (EditText)this.lMm.findViewById(a.f.lucky_money_et);
+      this.oqE.setTitle(getString(2131301333));
+      this.oqE.setShowGroupIcon(true);
+      this.oqE.setOnInputValidChangerListener(this);
+      this.ojG.setOnInputValidChangerListener(this);
+      this.ojI.setOnInputValidChangerListener(this);
+      localObject1 = (EditText)this.oqE.findViewById(2131825700);
+      Object localObject2 = (EditText)this.ojG.findViewById(2131825700);
       com.tencent.mm.wallet_core.ui.e.setNoSystemInputOnEditText((EditText)localObject1);
-      ((InputMethodManager)this.mController.uMN.getSystemService("input_method")).showSoftInput((View)localObject1, 0);
+      ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput((View)localObject1, 0);
       ((EditText)localObject1).setOnClickListener(new SnsLuckyMoneyPrepareUI.19(this, (EditText)localObject1, (EditText)localObject2));
-      Object localObject3 = (TextView)this.lTx.findViewById(a.f.lucky_money_amount_unit_title);
+      Object localObject3 = (TextView)this.oqE.findViewById(2131825701);
       if (localObject3 != null) {
         ((TextView)localObject3).setOnClickListener(new SnsLuckyMoneyPrepareUI.20(this, (EditText)localObject1, (EditText)localObject2));
       }
       com.tencent.mm.wallet_core.ui.e.setNoSystemInputOnEditText((EditText)localObject2);
-      ((InputMethodManager)this.mController.uMN.getSystemService("input_method")).showSoftInput((View)localObject2, 0);
+      ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput((View)localObject2, 0);
       ((EditText)localObject2).setOnClickListener(new SnsLuckyMoneyPrepareUI.21(this, (EditText)localObject1, (EditText)localObject2));
-      if (this.lLB != null)
+      if (this.oiV != null)
       {
         if (this.mType != 1) {
-          break label1030;
+          break label1031;
         }
-        this.lTx.setMaxAmount(this.lLB.lLa);
-        label447:
-        this.lTx.setMinAmount(this.lLB.lKZ);
+        this.oqE.setMaxAmount(this.oiV.oiu);
+        label442:
+        this.oqE.setMinAmount(this.oiV.oit);
       }
-      if ((!this.lTE) || (getIntent().getIntExtra("key_chatroom_num", 0) > 1)) {
-        break label1047;
+      if ((!this.oqL) || (getIntent().getIntExtra("key_chatroom_num", 0) > 1)) {
+        break label1048;
       }
-      this.lMm.setNum("1");
-      label492:
-      this.lMm.setMaxNum(this.lLB.lKX);
-      this.lMm.setMinNum(1);
-      y.d("MicroMsg.LuckyMoneyPrepareUI", "init num=" + this.lMm.getInput());
-      this.lTx.setMaxLen(12);
-      if (!this.lTE) {
-        break label1072;
+      this.ojG.setNum("1");
+      label487:
+      this.ojG.setMaxNum(this.oiV.oir);
+      this.ojG.setMinNum(1);
+      ab.d("MicroMsg.LuckyMoneyPrepareUI", "init num=" + this.ojG.getInput());
+      this.oqE.setMaxLen(12);
+      if (!this.oqL) {
+        break label1073;
       }
       if (getIntent().getIntExtra("key_chatroom_num", 0) <= 0) {
-        break label1060;
+        break label1061;
       }
-      Object localObject4 = getString(a.i.lucky_money_group_tips_random_prefix);
-      Object localObject5 = getString(a.i.lucky_money_group_tips_change_to_fixed);
-      localObject1 = getString(a.i.lucky_money_group_tips_fixed_prefix);
-      localObject2 = getString(a.i.lucky_money_group_tips_change_to_random);
+      Object localObject4 = getString(2131301243);
+      Object localObject5 = getString(2131301240);
+      localObject1 = getString(2131301242);
+      localObject2 = getString(2131301241);
       localObject3 = new SpannableString((String)localObject4 + (String)localObject5);
-      com.tencent.mm.plugin.wallet_core.ui.h localh = new com.tencent.mm.plugin.wallet_core.ui.h(this);
-      ((SpannableString)localObject3).setSpan(localh, ((String)localObject4).length(), ((String)localObject4).length() + ((String)localObject5).length(), 33);
+      com.tencent.mm.plugin.wallet_core.ui.j localj = new com.tencent.mm.plugin.wallet_core.ui.j(this);
+      ((SpannableString)localObject3).setSpan(localj, ((String)localObject4).length(), ((String)localObject4).length() + ((String)localObject5).length(), 33);
       localObject4 = new SpannableString((String)localObject1 + (String)localObject2);
-      localObject5 = new com.tencent.mm.plugin.wallet_core.ui.h(this);
+      localObject5 = new com.tencent.mm.plugin.wallet_core.ui.j(this);
       ((SpannableString)localObject4).setSpan(localObject5, ((String)localObject1).length(), ((String)localObject1).length() + ((String)localObject2).length(), 33);
-      localh.qDo = new SnsLuckyMoneyPrepareUI.11(this, (SpannableString)localObject4);
-      ((com.tencent.mm.plugin.wallet_core.ui.h)localObject5).qDo = new SnsLuckyMoneyPrepareUI.15(this, (SpannableString)localObject3);
-      this.iKV.setMovementMethod(LinkMovementMethod.getInstance());
-      this.iKV.setText((CharSequence)localObject3);
-      this.iKV.setVisibility(0);
+      localj.uqj = new j.a()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(42520);
+          int i = SnsLuckyMoneyPrepareUI.this.ojG.getInput();
+          double d = SnsLuckyMoneyPrepareUI.this.oqE.getInput();
+          SnsLuckyMoneyPrepareUI.a(SnsLuckyMoneyPrepareUI.this, 0);
+          SnsLuckyMoneyPrepareUI.this.oqE.setType(SnsLuckyMoneyPrepareUI.a(SnsLuckyMoneyPrepareUI.this));
+          SnsLuckyMoneyPrepareUI.this.oqE.setShowGroupIcon(false);
+          SnsLuckyMoneyPrepareUI.this.oqE.setTitle(SnsLuckyMoneyPrepareUI.this.getString(2131301334));
+          if ((d > 0.0D) && (i > 0)) {
+            SnsLuckyMoneyPrepareUI.this.oqE.setAmount(com.tencent.mm.wallet_core.ui.e.E(d / i));
+          }
+          SnsLuckyMoneyPrepareUI.this.oqE.setMaxAmount(SnsLuckyMoneyPrepareUI.b(SnsLuckyMoneyPrepareUI.this).ois);
+          SnsLuckyMoneyPrepareUI.c(SnsLuckyMoneyPrepareUI.this).setText(this.ojV);
+          com.tencent.mm.plugin.report.service.h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(SnsLuckyMoneyPrepareUI.d(SnsLuckyMoneyPrepareUI.this)), Integer.valueOf(3) });
+          AppMethodBeat.o(42520);
+        }
+      };
+      ((com.tencent.mm.plugin.wallet_core.ui.j)localObject5).uqj = new SnsLuckyMoneyPrepareUI.15(this, (SpannableString)localObject3);
+      this.kRB.setMovementMethod(LinkMovementMethod.getInstance());
+      this.kRB.setText((CharSequence)localObject3);
+      this.kRB.setVisibility(0);
     }
     for (;;)
     {
-      this.lMp.setOnClickListener(new SnsLuckyMoneyPrepareUI.16(this));
-      this.iKS.setText(com.tencent.mm.wallet_core.ui.e.B(0.0D));
-      this.lMw.a(this.lMm);
-      this.lMw.a(this.lTx);
-      this.lMw.a(this.lMo);
-      localObject1 = (TextView)findViewById(a.f.lucky_money_prepare_error_tips);
-      this.lMw.g((TextView)localObject1);
-      if ((this.lTE) && (this.mType == 1))
+      this.ojJ.setOnClickListener(new View.OnClickListener()
       {
-        localObject1 = (TextView)findViewById(a.f.lucky_money_prepare_num_tips);
-        ((TextView)localObject1).setText(getString(a.i.lucky_money_num_group_tips, new Object[] { Integer.valueOf(getIntent().getIntExtra("key_chatroom_num", 8)) }));
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(42526);
+          com.tencent.mm.plugin.report.service.h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(SnsLuckyMoneyPrepareUI.d(SnsLuckyMoneyPrepareUI.this)), Integer.valueOf(4) });
+          if (SnsLuckyMoneyPrepareUI.this.oqE.bMP() != 0)
+          {
+            t.makeText(SnsLuckyMoneyPrepareUI.this.getContext(), 2131304847, 0).show();
+            AppMethodBeat.o(42526);
+            return;
+          }
+          int i = SnsLuckyMoneyPrepareUI.this.ojG.getInput();
+          double d = SnsLuckyMoneyPrepareUI.this.oqE.getInput();
+          long l2 = 0L;
+          long l1;
+          String str;
+          if (SnsLuckyMoneyPrepareUI.a(SnsLuckyMoneyPrepareUI.this) == 1)
+          {
+            l1 = com.tencent.mm.wallet_core.ui.e.G(d);
+            com.tencent.mm.kernel.g.RM();
+            com.tencent.mm.kernel.g.RL().Ru().set(356354, Integer.valueOf(i));
+            str = SnsLuckyMoneyPrepareUI.this.ojI.getInput();
+            paramAnonymousView = str;
+            if (bo.isNullOrNil(str)) {
+              paramAnonymousView = SnsLuckyMoneyPrepareUI.this.getString(2131301208);
+            }
+            str = SnsLuckyMoneyPrepareUI.this.getIntent().getStringExtra("key_username");
+            if ((!SnsLuckyMoneyPrepareUI.e(SnsLuckyMoneyPrepareUI.this)) || (bo.isNullOrNil(str))) {
+              break label343;
+            }
+          }
+          label343:
+          for (paramAnonymousView = new ao(i, l1, l2, SnsLuckyMoneyPrepareUI.a(SnsLuckyMoneyPrepareUI.this), paramAnonymousView, x.bNq(), str, x.nD(str), r.Zn(), r.Zp(), SnsLuckyMoneyPrepareUI.f(SnsLuckyMoneyPrepareUI.this), "");; paramAnonymousView = new ao(i, l1, l2, SnsLuckyMoneyPrepareUI.a(SnsLuckyMoneyPrepareUI.this), paramAnonymousView, x.bNq(), null, null, r.Zn(), r.Zp(), SnsLuckyMoneyPrepareUI.f(SnsLuckyMoneyPrepareUI.this), ""))
+          {
+            SnsLuckyMoneyPrepareUI.this.doSceneProgress(paramAnonymousView, false);
+            if (SnsLuckyMoneyPrepareUI.this.gKM == null) {
+              break label388;
+            }
+            SnsLuckyMoneyPrepareUI.this.gKM.show();
+            AppMethodBeat.o(42526);
+            return;
+            l1 = com.tencent.mm.wallet_core.ui.e.G(i * d);
+            l2 = com.tencent.mm.wallet_core.ui.e.G(d);
+            com.tencent.mm.kernel.g.RM();
+            com.tencent.mm.kernel.g.RL().Ru().set(356353, Integer.valueOf(i));
+            break;
+          }
+          label388:
+          SnsLuckyMoneyPrepareUI.this.gKM = com.tencent.mm.wallet_core.ui.g.a(SnsLuckyMoneyPrepareUI.this.getContext(), true, new SnsLuckyMoneyPrepareUI.16.1(this));
+          AppMethodBeat.o(42526);
+        }
+      });
+      this.kRx.setText(com.tencent.mm.wallet_core.ui.e.F(0.0D));
+      this.ojP.a(this.ojG);
+      this.ojP.a(this.oqE);
+      this.ojP.a(this.ojI);
+      localObject1 = (TextView)findViewById(2131825807);
+      this.ojP.i((TextView)localObject1);
+      if ((this.oqL) && (this.mType == 1))
+      {
+        localObject1 = (TextView)findViewById(2131825788);
+        ((TextView)localObject1).setText(getString(2131301268, new Object[] { Integer.valueOf(getIntent().getIntExtra("key_chatroom_num", 8)) }));
         ((TextView)localObject1).setVisibility(0);
       }
-      this.fqP = new am(new SnsLuckyMoneyPrepareUI.17(this), false);
-      if (this.gqx != null) {
-        this.gqx.setOnTouchListener(new SnsLuckyMoneyPrepareUI.18(this));
+      this.gIs = new ap(new ap.a()
+      {
+        public final boolean onTimerExpired()
+        {
+          AppMethodBeat.i(42527);
+          int i;
+          double d2;
+          if ((SnsLuckyMoneyPrepareUI.this.oqE.bMP() != 3) && (SnsLuckyMoneyPrepareUI.this.ojG.bMP() != 3))
+          {
+            i = SnsLuckyMoneyPrepareUI.this.ojG.getInput();
+            d2 = SnsLuckyMoneyPrepareUI.this.oqE.getInput();
+            d1 = d2;
+            if (SnsLuckyMoneyPrepareUI.a(SnsLuckyMoneyPrepareUI.this) != 0) {}
+          }
+          for (double d1 = d2 * i;; d1 = 0.0D)
+          {
+            if ((d1 == 0.0D) || (d1 > SnsLuckyMoneyPrepareUI.b(SnsLuckyMoneyPrepareUI.this).oiu) || (SnsLuckyMoneyPrepareUI.i(SnsLuckyMoneyPrepareUI.this).bNZ()))
+            {
+              SnsLuckyMoneyPrepareUI.this.ojJ.setClickable(false);
+              SnsLuckyMoneyPrepareUI.this.ojJ.setEnabled(false);
+            }
+            for (;;)
+            {
+              ab.i("MicroMsg.LuckyMoneyPrepareUI", "onTimeExpired & check: amount=" + d1 + ", hasErr=" + SnsLuckyMoneyPrepareUI.i(SnsLuckyMoneyPrepareUI.this).bNZ());
+              SnsLuckyMoneyPrepareUI.j(SnsLuckyMoneyPrepareUI.this).dtj();
+              AppMethodBeat.o(42527);
+              return false;
+              SnsLuckyMoneyPrepareUI.this.ojJ.setClickable(true);
+              SnsLuckyMoneyPrepareUI.this.ojJ.setEnabled(true);
+            }
+          }
+        }
+      }, false);
+      if (this.hLr != null) {
+        this.hLr.setOnTouchListener(new View.OnTouchListener()
+        {
+          public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+          {
+            AppMethodBeat.i(42528);
+            if (paramAnonymousMotionEvent.getAction() == 0)
+            {
+              SnsLuckyMoneyPrepareUI.this.hideTenpayKB();
+              SnsLuckyMoneyPrepareUI.this.hideVKB();
+            }
+            AppMethodBeat.o(42528);
+            return false;
+          }
+        });
       }
-      this.lTx.setType(this.mType);
-      if ((!this.lTE) || (getIntent().getIntExtra("key_chatroom_num", 0) != 0)) {
-        break label1137;
+      this.oqE.setType(this.mType);
+      if ((!this.oqL) || (getIntent().getIntExtra("key_chatroom_num", 0) != 0)) {
+        break label1138;
       }
-      this.lTx.requestFocus();
+      this.oqE.requestFocus();
+      AppMethodBeat.o(42534);
       return;
-      this.lTx.setTitle(getString(a.i.lucky_money_unit_amount_title));
-      this.lTx.setShowGroupIcon(false);
+      this.oqE.setTitle(getString(2131301334));
+      this.oqE.setShowGroupIcon(false);
       break;
-      label1030:
-      this.lTx.setMaxAmount(this.lLB.lKY);
-      break label447;
-      label1047:
-      this.lMm.setNum("");
-      break label492;
-      label1060:
-      this.lMm.setVisibility(8);
+      label1031:
+      this.oqE.setMaxAmount(this.oiV.ois);
+      break label442;
+      label1048:
+      this.ojG.setNum("");
+      break label487;
+      label1061:
+      this.ojG.setVisibility(8);
       continue;
-      label1072:
+      label1073:
       if (this.mType == 1)
       {
-        this.iKV.setText(this.lLB.lPM);
-        this.iKV.setVisibility(0);
+        this.kRB.setText(this.oiV.onj);
+        this.kRB.setVisibility(0);
       }
       else if (this.mType == 0)
       {
-        this.iKV.setText(this.lLB.lPN);
-        this.iKV.setVisibility(0);
+        this.kRB.setText(this.oiV.onk);
+        this.kRB.setVisibility(0);
       }
     }
-    label1137:
-    this.lMm.requestFocus();
+    label1138:
+    this.ojG.requestFocus();
+    AppMethodBeat.o(42534);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(42538);
     switch (paramInt1)
     {
     }
     for (;;)
     {
       super.onActivityResult(paramInt1, paramInt2, paramIntent);
+      AppMethodBeat.o(42538);
       return;
       if (paramInt2 == -1)
       {
-        com.tencent.mm.plugin.report.service.h.nFQ.f(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bfV()), Integer.valueOf(5) });
+        com.tencent.mm.plugin.report.service.h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bNH()), Integer.valueOf(5) });
         Object localObject1 = getIntent().getStringExtra("key_username");
-        if ((this.lTE) && (!bk.bl((String)localObject1)))
+        if ((this.oqL) && (!bo.isNullOrNil((String)localObject1)))
         {
-          com.tencent.mm.ui.base.h.bC(this, getString(a.i.has_send));
-          Object localObject2 = bn.s(this.lTF, "msg");
+          com.tencent.mm.ui.base.h.bO(this, getString(2131300637));
+          Object localObject2 = br.F(this.oqM, "msg");
           if (localObject2 == null)
           {
-            y.e("MicroMsg.LuckyMoneyPrepareUI", "luckymoneyPrepareUI onActivityResult values is null");
+            ab.e("MicroMsg.LuckyMoneyPrepareUI", "luckymoneyPrepareUI onActivityResult values is null");
             finish();
+            AppMethodBeat.o(42538);
             return;
           }
           localObject2 = (String)((Map)localObject2).get(".msg.appmsg.wcpayinfo.paymsgid");
-          if (com.tencent.mm.plugin.luckymoney.a.a.bfg().bfj().GL((String)localObject2))
+          if (com.tencent.mm.plugin.luckymoney.b.a.bMG().bMJ().Sr((String)localObject2))
           {
-            y.i("MicroMsg.LuckyMoneyPrepareUI", "insert a local msg for luckymoney");
-            if (!o.C(this.lTF, (String)localObject1, 1))
+            ab.i("MicroMsg.LuckyMoneyPrepareUI", "insert a local msg for luckymoney");
+            if (!x.J(this.oqM, (String)localObject1, 1))
             {
-              y.e("MicroMsg.LuckyMoneyPrepareUI", "LuckyMoneyUtil.sendLocalMsg fail!");
-              com.tencent.mm.plugin.luckymoney.a.a.bfg().bfj().GM((String)localObject2);
+              ab.e("MicroMsg.LuckyMoneyPrepareUI", "LuckyMoneyUtil.sendLocalMsg fail!");
+              com.tencent.mm.plugin.luckymoney.b.a.bMG().bMJ().Ss((String)localObject2);
             }
           }
           for (;;)
           {
             finish();
             break;
-            y.e("MicroMsg.LuckyMoneyPrepareUI", "it is a duplicate msg");
+            ab.e("MicroMsg.LuckyMoneyPrepareUI", "it is a duplicate msg");
           }
         }
-        bgd();
-        new com.tencent.mm.sdk.platformtools.ah().postDelayed(new SnsLuckyMoneyPrepareUI.7(this), 200L);
-        this.jhV.setOnClickListener(new SnsLuckyMoneyPrepareUI.8(this));
-        ((ImageView)findViewById(a.f.lucky_money_prepare_close_btn)).setOnClickListener(new SnsLuckyMoneyPrepareUI.9(this));
+        bNQ();
+        new ak().postDelayed(new SnsLuckyMoneyPrepareUI.7(this), 200L);
+        this.lqP.setOnClickListener(new SnsLuckyMoneyPrepareUI.8(this));
+        ((ImageView)findViewById(2131825804)).setOnClickListener(new SnsLuckyMoneyPrepareUI.9(this));
         continue;
         if ((paramInt2 == -1) && (paramIntent != null))
         {
           localObject1 = paramIntent.getStringExtra("Select_Conv_User");
-          com.tencent.mm.plugin.report.service.h.nFQ.f(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bfV()), Integer.valueOf(7), localObject1 });
-          if (!bk.bl((String)localObject1)) {
-            l(new com.tencent.mm.plugin.luckymoney.b.ah(((String)localObject1).replaceAll(",", "|"), this.lTC, "v1.0"));
+          com.tencent.mm.plugin.report.service.h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bNH()), Integer.valueOf(7), localObject1 });
+          if (!bo.isNullOrNil((String)localObject1)) {
+            doSceneProgress(new ar(((String)localObject1).replaceAll(",", "|"), this.oqJ, "v1.0"));
           } else {
             finish();
           }
@@ -535,7 +594,7 @@ public class SnsLuckyMoneyPrepareUI
         else if (paramInt2 == 0)
         {
           localObject1 = new Intent();
-          ((Intent)localObject1).setClass(this.mController.uMN, LuckyMoneyMyRecordUI.class);
+          ((Intent)localObject1).setClass(getContext(), LuckyMoneyMyRecordUI.class);
           ((Intent)localObject1).putExtra("key_type", 1);
           startActivity((Intent)localObject1);
         }
@@ -545,42 +604,178 @@ public class SnsLuckyMoneyPrepareUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(42533);
     super.onCreate(paramBundle);
     this.mType = getIntent().getIntExtra("key_type", 1);
-    this.lTB = getIntent().getIntExtra("key_way", 3);
+    this.oqI = getIntent().getIntExtra("key_way", 3);
     if (getIntent().getIntExtra("key_from", 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.lTE = bool;
-      this.lTG = getIntent().getIntExtra("pay_channel", -1);
-      b(new x("v1.0", (byte)0), false);
-      com.tencent.mm.plugin.luckymoney.a.a.bfg();
-      this.lLB = com.tencent.mm.plugin.luckymoney.a.a.bfh().bfG();
-      y.d("MicroMsg.LuckyMoneyPrepareUI", "type=" + this.mType + ", fromAppPanel=" + this.lTE + ", config " + this.lLB);
+      this.oqL = bool;
+      this.mChannel = getIntent().getIntExtra("pay_channel", -1);
+      doSceneProgress(new ag("v1.0", 0, (byte)0), false);
+      com.tencent.mm.plugin.luckymoney.b.a.bMG();
+      this.oiV = com.tencent.mm.plugin.luckymoney.b.a.bMH().bNk();
+      ab.d("MicroMsg.LuckyMoneyPrepareUI", "type=" + this.mType + ", fromAppPanel=" + this.oqL + ", config " + this.oiV);
       initView();
-      com.tencent.mm.plugin.report.service.h.nFQ.f(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bfV()), Integer.valueOf(1) });
+      com.tencent.mm.plugin.report.service.h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bNH()), Integer.valueOf(1) });
+      AppMethodBeat.o(42533);
       return;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(42535);
     super.onDestroy();
-    this.lMw.clear();
-    this.fqP.crl();
-    if ((this.ftk != null) && (this.ftk.isShowing())) {
-      this.ftk.dismiss();
+    this.ojP.clear();
+    this.gIs.dtj();
+    if ((this.gKM != null) && (this.gKM.isShowing())) {
+      this.gKM.dismiss();
     }
+    AppMethodBeat.o(42535);
   }
   
   public boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (this.lMr != null) && (this.lMr.isShown()))
+    AppMethodBeat.i(42540);
+    if ((paramInt == 4) && (this.mKBLayout != null) && (this.mKBLayout.isShown()))
     {
-      VH();
+      hideTenpayKB();
+      AppMethodBeat.o(42540);
       return true;
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(42540);
+    return bool;
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(42537);
+    if ((paramm instanceof ao))
+    {
+      if ((this.gKM != null) && (this.gKM.isShowing())) {
+        this.gKM.hide();
+      }
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramString = (ao)paramm;
+        this.oqK = paramString.kNn;
+        this.oqJ = paramString.ojA;
+        this.oqM = paramString.opz;
+        paramm = new PayInfo();
+        paramm.cnI = paramString.opy;
+        paramm.cCD = 37;
+        paramm.cCy = this.mChannel;
+        com.tencent.mm.pluginsdk.wallet.h.a(this, paramm, 1);
+        AppMethodBeat.o(42537);
+        return true;
+      }
+      if (paramInt2 == 401)
+      {
+        this.ojJ.setEnabled(false);
+        this.ojJ.setClickable(false);
+        this.gIs.ag(5000L, 5000L);
+        com.tencent.mm.ui.base.h.bO(this, paramString);
+        AppMethodBeat.o(42537);
+        return true;
+      }
+      com.tencent.mm.ui.base.h.bO(this, paramString);
+      AppMethodBeat.o(42537);
+      return true;
+    }
+    if ((paramm instanceof ar))
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        if (this.oqL)
+        {
+          com.tencent.mm.ui.base.h.bO(this, getString(2131300637));
+          finish();
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(42537);
+          return true;
+          bNQ();
+          this.oqG.postDelayed(new SnsLuckyMoneyPrepareUI.2(this), 1000L);
+        }
+      }
+      if (paramInt2 == 402)
+      {
+        com.tencent.mm.ui.base.h.d(getContext(), paramString, "", getString(2131301313), getString(2131296888), new SnsLuckyMoneyPrepareUI.3(this), new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+        });
+        AppMethodBeat.o(42537);
+        return true;
+      }
+    }
+    else if ((paramm instanceof ag))
+    {
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        paramString = (ag)paramm;
+        com.tencent.mm.plugin.luckymoney.b.a.bMG();
+        this.oiV = com.tencent.mm.plugin.luckymoney.b.a.bMH().bNk();
+        ab.d("MicroMsg.LuckyMoneyPrepareUI", "update config:" + this.oiV);
+        if (this.mType != 1) {
+          break label656;
+        }
+        this.oqE.setMaxAmount(this.oiV.oiu);
+        this.oqE.setMinAmount(this.oiV.oit);
+        this.ojG.setMaxNum(this.oiV.oir);
+        if ((paramString.opf) && (this.oqL))
+        {
+          paramm = (TextView)findViewById(2131825799);
+          paramm.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(42511);
+              com.tencent.mm.plugin.report.service.h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(SnsLuckyMoneyPrepareUI.d(SnsLuckyMoneyPrepareUI.this)), Integer.valueOf(9) });
+              paramAnonymousView = new Intent();
+              paramAnonymousView.setClass(SnsLuckyMoneyPrepareUI.this.getContext(), LuckyMoneyCanShareListUI.class);
+              SnsLuckyMoneyPrepareUI.this.startActivity(paramAnonymousView);
+              AppMethodBeat.o(42511);
+            }
+          });
+          com.tencent.mm.plugin.report.service.h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(bNH()), Integer.valueOf(8) });
+          paramm.setVisibility(0);
+        }
+        if (bo.isNullOrNil(paramString.kNG)) {
+          break label673;
+        }
+        ab.i("MicroMsg.LuckyMoneyPrepareUI", "Put notice :" + paramString.kNG);
+        this.ojN.setText(paramString.kNG);
+        if (!bo.isNullOrNil(paramString.oph)) {
+          this.ojN.setOnClickListener(new SnsLuckyMoneyPrepareUI.6(this, paramString));
+        }
+        this.ojN.setVisibility(0);
+      }
+      for (;;)
+      {
+        paramm = new h.c();
+        paramm.textColor = getResources().getColor(2131690648);
+        com.tencent.mm.plugin.luckymoney.ui.h.a(this, this.oqH, paramString.opj, paramm);
+        AppMethodBeat.o(42537);
+        return true;
+        label656:
+        this.oqE.setMaxAmount(this.oiV.ois);
+        break;
+        label673:
+        this.ojN.setVisibility(8);
+      }
+    }
+    AppMethodBeat.o(42537);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

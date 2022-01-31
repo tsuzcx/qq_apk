@@ -7,25 +7,25 @@ import android.view.ViewGroup;
 
 final class k
 {
-  private static final j.a rb = new h.a();
+  private static final j.a rY = new h.a();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      rb = new i.a();
+      rY = new i.a();
       return;
     }
   }
   
-  static j a(View paramView, ViewGroup paramViewGroup, Matrix paramMatrix)
+  static void A(View paramView)
   {
-    return rb.a(paramView, paramViewGroup, paramMatrix);
+    rY.A(paramView);
   }
   
-  static void x(View paramView)
+  static j a(View paramView, ViewGroup paramViewGroup, Matrix paramMatrix)
   {
-    rb.x(paramView);
+    return rY.a(paramView, paramViewGroup, paramMatrix);
   }
 }
 

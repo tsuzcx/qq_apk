@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class m$6
   implements Runnable
@@ -9,18 +10,21 @@ public final class m$6
   
   public final void run()
   {
-    if (this.sgS.cd(this.ezi))
+    AppMethodBeat.i(62459);
+    if (this.vZl.jdMethod_do(this.fOX))
     {
-      this.sgS.mHandler.sendEmptyMessage(20003);
+      this.vZl.mHandler.sendEmptyMessage(20003);
+      AppMethodBeat.o(62459);
       return;
     }
-    this.sgS.mHandler.removeMessages(20003);
-    this.sgS.mHandler.sendEmptyMessage(20001);
+    this.vZl.mHandler.removeMessages(20003);
+    this.vZl.mHandler.sendEmptyMessage(20001);
+    AppMethodBeat.o(62459);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.m.6
  * JD-Core Version:    0.7.0.1
  */

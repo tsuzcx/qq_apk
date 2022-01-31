@@ -1,24 +1,39 @@
 package com.tencent.mm.plugin.gallery.ui;
 
 import android.content.Intent;
-import com.tencent.mm.plugin.gallery.model.a;
-import com.tencent.mm.plugin.gallery.model.b;
-import com.tencent.mm.plugin.gallery.model.b.b;
-import com.tencent.mm.plugin.gallery.model.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import java.util.Vector;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.gallery.stub.a;
 
 final class ImagePreviewUI$11
-  implements b.b
+  implements Runnable
 {
-  ImagePreviewUI$11(ImagePreviewUI paramImagePreviewUI, Intent paramIntent) {}
+  ImagePreviewUI$11(ImagePreviewUI paramImagePreviewUI, String paramString) {}
   
-  public final void Eo(String paramString)
+  public final void run()
   {
-    new ah(this.kKb.getMainLooper()).post(new ImagePreviewUI.11.1(this, paramString));
-    paramString = c.aXa().kGi;
-    if ((paramString.ebv != null) && (paramString.ebv.contains(this))) {
-      paramString.ebv.remove(this);
+    boolean bool1 = true;
+    AppMethodBeat.i(150886);
+    try
+    {
+      a locala = ImagePreviewUI.t(this.ngC);
+      String str1 = this.val$path;
+      String str2 = this.ngC.getIntent().getStringExtra("GalleryUI_ToUser");
+      if (ImagePreviewUI.m(this.ngC)) {}
+      for (;;)
+      {
+        locala.a(str1, str2, bool1, 0, true);
+        AppMethodBeat.o(150886);
+        return;
+        boolean bool2 = ImagePreviewUI.b(this.ngC);
+        if (bool2) {
+          bool1 = false;
+        }
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(150886);
     }
   }
 }

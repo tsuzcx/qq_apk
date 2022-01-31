@@ -1,90 +1,121 @@
 package com.tencent.mm.plugin.appbrand.jsapi.s;
 
+import android.graphics.Matrix;
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.u.h;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.base.e;
+import com.tencent.mm.plugin.appbrand.s.l;
+import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
 {
-  public static void a(View paramView, JSONObject paramJSONObject)
+  public static void a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent)
   {
-    int k = 1;
-    if ((paramView == null) || (paramJSONObject == null)) {
-      return;
-    }
-    int i = h.wE(paramJSONObject.optString("bgColor"));
-    int j = h.wE(paramJSONObject.optString("borderColor"));
-    float f1 = h.a(paramJSONObject, "borderRadius", 0.0F);
-    float f2 = h.a(paramJSONObject, "borderWidth", 0.0F);
-    Object localObject;
-    if ((paramView instanceof e))
+    AppMethodBeat.i(91079);
+    int j = paramViewGroup.getChildCount();
+    int i = paramMotionEvent.getActionIndex();
+    if (paramViewGroup.isMotionEventSplittingEnabled())
     {
-      localObject = (e)paramView;
-      ((e)localObject).setBgColor(i);
-      ((e)localObject).setBorderColor(j);
-      ((e)localObject).setBorderRadius(f1);
-      ((e)localObject).setBorderWidth(f2);
+      i = 1 << paramMotionEvent.getPointerId(i);
+      j -= 1;
     }
-    for (j = 1;; j = 0)
+    for (;;)
     {
-      try
+      if (j < 0) {
+        break label142;
+      }
+      View localView = paramViewGroup.getChildAt(j);
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      if ((AppBrandViewMotionCompat.cG(localView)) && (AppBrandViewMotionCompat.a(paramViewGroup, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
       {
-        f1 = (float)paramJSONObject.getDouble("opacity");
-        i = j;
-        if (f1 >= 0.0F)
+        a(paramViewGroup, paramMotionEvent, localView, i);
+        if (((localView instanceof e)) && (((e)localView).aCe()))
         {
-          i = j;
-          if (f1 <= 1.0F)
-          {
-            paramView.setAlpha(f1);
-            i = 1;
-          }
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          int m;
-          int n;
-          float f3;
-          i = j;
-        }
-      }
-      localObject = paramJSONObject.optJSONArray("padding");
-      if ((localObject != null) && (((JSONArray)localObject).length() == 4))
-      {
-        j = h.a((JSONArray)localObject, 0);
-        m = h.a((JSONArray)localObject, 1);
-        n = h.a((JSONArray)localObject, 2);
-        paramView.setPadding(h.a((JSONArray)localObject, 3), j, m, n);
-      }
-      f1 = (float)paramJSONObject.optDouble("rotate", 0.0D);
-      f2 = (float)paramJSONObject.optDouble("scaleX", 1.0D);
-      f3 = (float)paramJSONObject.optDouble("scaleY", 1.0D);
-      if (paramJSONObject.has("rotate"))
-      {
-        paramView.setRotation(f1);
-        i = 1;
-      }
-      if (paramJSONObject.has("scaleX"))
-      {
-        paramView.setScaleX(f2);
-        i = 1;
-      }
-      if (paramJSONObject.has("scaleY"))
-      {
-        paramView.setScaleY(f3);
-        i = k;
-        if (i == 0) {
+          AppMethodBeat.o(91079);
+          return;
+          i = -1;
           break;
         }
-        paramView.invalidate();
-        return;
+      }
+      j -= 1;
+    }
+    label142:
+    AppMethodBeat.o(91079);
+  }
+  
+  public static boolean a(ViewGroup paramViewGroup, MotionEvent paramMotionEvent, View paramView, int paramInt)
+  {
+    AppMethodBeat.i(91080);
+    if (paramView == null)
+    {
+      ab.v("MicroMsg.ViewMotionHelper", "child is null.");
+      AppMethodBeat.o(91080);
+      return false;
+    }
+    int i = paramMotionEvent.getAction();
+    if (i == 3)
+    {
+      paramMotionEvent.setAction(3);
+      bool = paramView.dispatchTouchEvent(paramMotionEvent);
+      paramMotionEvent.setAction(i);
+      AppMethodBeat.o(91080);
+      return bool;
+    }
+    i = ((Integer)l.a(MotionEvent.class, "getPointerIdBits", paramMotionEvent, new Class[0], new Object[0], Integer.valueOf(0))).intValue();
+    paramInt = i & paramInt;
+    if (paramInt == 0)
+    {
+      ab.v("MicroMsg.ViewMotionHelper", "newPointerIdBits is 0.");
+      AppMethodBeat.o(91080);
+      return false;
+    }
+    Object localObject = Boolean.FALSE;
+    boolean bool = ((Boolean)l.a(View.class, "hasIdentityMatrix", paramView, new Class[0], new Object[0], localObject)).booleanValue();
+    if (paramInt == i)
+    {
+      if (bool)
+      {
+        float f1 = paramViewGroup.getScrollX() - paramView.getLeft();
+        float f2 = paramViewGroup.getScrollY() - paramView.getTop();
+        paramMotionEvent.offsetLocation(f1, f2);
+        bool = paramView.dispatchTouchEvent(paramMotionEvent);
+        paramMotionEvent.offsetLocation(-f1, -f2);
+        AppMethodBeat.o(91080);
+        return bool;
+      }
+      paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    }
+    for (;;)
+    {
+      paramMotionEvent.offsetLocation(paramViewGroup.getScrollX() - paramView.getLeft(), paramViewGroup.getScrollY() - paramView.getTop());
+      if (!bool) {
+        paramMotionEvent.transform((Matrix)l.a(View.class, "getInverseMatrix", paramView, new Class[0], new Object[0], null));
+      }
+      bool = paramView.dispatchTouchEvent(paramMotionEvent);
+      paramMotionEvent.recycle();
+      AppMethodBeat.o(91080);
+      return bool;
+      localObject = (MotionEvent)l.a("split", paramMotionEvent, new Class[] { Integer.class }, new Object[] { Integer.valueOf(paramInt) });
+      if (localObject == null) {
+        paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      } else {
+        paramMotionEvent = (MotionEvent)localObject;
       }
     }
+  }
+  
+  public static d.f cr(View paramView)
+  {
+    AppMethodBeat.i(91078);
+    int[] arrayOfInt = new int[2];
+    paramView.getLocationOnScreen(arrayOfInt);
+    paramView = new d.f(0, arrayOfInt[0], arrayOfInt[1]);
+    AppMethodBeat.o(91078);
+    return paramView;
   }
 }
 

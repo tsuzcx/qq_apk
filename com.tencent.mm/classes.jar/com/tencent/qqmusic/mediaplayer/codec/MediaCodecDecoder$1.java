@@ -1,6 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.codec;
 
 import android.media.MediaDataSource;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 
 class MediaCodecDecoder$1
@@ -10,17 +11,25 @@ class MediaCodecDecoder$1
   
   public void close()
   {
+    AppMethodBeat.i(128551);
     this.val$dataSource.close();
+    AppMethodBeat.o(128551);
   }
   
   public long getSize()
   {
-    return this.val$dataSource.getSize();
+    AppMethodBeat.i(128550);
+    long l = this.val$dataSource.getSize();
+    AppMethodBeat.o(128550);
+    return l;
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return this.val$dataSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.i(128549);
+    paramInt1 = this.val$dataSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(128549);
+    return paramInt1;
   }
 }
 

@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.music.f.a;
 
 public final class g
 {
-  public int mAW = 4;
+  public int pbb = 4;
   
   /* Error */
-  public final boolean bnM()
+  public final boolean bWj()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:mAW	I
+    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:pbb	I
     //   6: istore_1
     //   7: iload_1
     //   8: iconst_2
@@ -48,7 +48,7 @@ public final class g
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:mAW	I
+    //   3: getfield 12	com/tencent/mm/plugin/music/f/a/g:pbb	I
     //   6: istore_1
     //   7: iload_1
     //   8: iconst_3

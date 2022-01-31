@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class j$11
@@ -10,45 +11,47 @@ final class j$11
 {
   j$11(j paramj) {}
   
-  public final void hb(boolean paramBoolean)
+  public final void iL(boolean paramBoolean)
   {
+    AppMethodBeat.i(22409);
     if (paramBoolean)
     {
-      localj = this.lAg;
-      if (localj.lzA == null) {
-        localj.dpY.setVisibility(8);
+      localj = this.nXs;
+      if (localj.nWM == null) {
+        localj.ehv.setVisibility(8);
       }
       for (;;)
       {
-        localj.dpY.setVisibility(8);
-        localj.lzL.setVisibility(8);
-        localj.lzJ.setText("");
-        localj.lzK.setText("");
-        localj.ltd.setVisibility(0);
-        h.nFQ.f(12057, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+        localj.ehv.setVisibility(8);
+        localj.nWX.setVisibility(8);
+        localj.nWV.setText("");
+        localj.nWW.setText("");
+        localj.nQw.setVisibility(0);
+        h.qsU.e(12057, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0) });
+        AppMethodBeat.o(22409);
         return;
-        localj.dpY.setVisibility(4);
+        localj.ehv.setVisibility(4);
       }
     }
-    j localj = this.lAg;
-    if (localj.lzA != null)
+    j localj = this.nXs;
+    if (localj.nWM != null)
     {
-      localj.dpY.setVisibility(0);
-      localj.lzL.setVisibility(8);
+      localj.ehv.setVisibility(0);
+      localj.nWX.setVisibility(8);
     }
     for (;;)
     {
-      localj.FU(localj.lzU);
-      localj.ltd.setVisibility(4);
+      localj.Rw(localj.nXg);
+      localj.nQw.setVisibility(4);
       break;
-      localj.lzL.setVisibility(0);
-      localj.dpY.setVisibility(8);
+      localj.nWX.setVisibility(0);
+      localj.ehv.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.j.11
  * JD-Core Version:    0.7.0.1
  */

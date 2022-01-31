@@ -7,12 +7,12 @@ import java.util.List;
 
 public final class b$a
 {
-  public final List<b.c> RK;
-  public final List<c> RL = new ArrayList();
-  public int RQ = 16;
-  public int RR = 12544;
-  public int RS = -1;
-  public Rect RT;
+  public Rect RA;
+  public final List<b.c> Rr;
+  public final List<c> Rs = new ArrayList();
+  public int Rx = 16;
+  public int Ry = 12544;
+  public int Rz = -1;
   public final Bitmap mBitmap;
   public final List<b.b> mFilters = new ArrayList();
   
@@ -21,33 +21,33 @@ public final class b$a
     if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
       throw new IllegalArgumentException("Bitmap is not valid");
     }
-    this.mFilters.add(b.RP);
+    this.mFilters.add(b.Rw);
     this.mBitmap = paramBitmap;
-    this.RK = null;
-    this.RL.add(c.Sc);
-    this.RL.add(c.Sd);
-    this.RL.add(c.Se);
-    this.RL.add(c.Sf);
-    this.RL.add(c.Sg);
-    this.RL.add(c.Sh);
+    this.Rr = null;
+    this.Rs.add(c.RJ);
+    this.Rs.add(c.RK);
+    this.Rs.add(c.RL);
+    this.Rs.add(c.RM);
+    this.Rs.add(c.RN);
+    this.Rs.add(c.RO);
   }
   
-  public final int[] e(Bitmap paramBitmap)
+  public final int[] f(Bitmap paramBitmap)
   {
     int i = 0;
     int j = paramBitmap.getWidth();
     int k = paramBitmap.getHeight();
     int[] arrayOfInt = new int[j * k];
     paramBitmap.getPixels(arrayOfInt, 0, j, 0, 0, j, k);
-    if (this.RT == null) {
+    if (this.RA == null) {
       return arrayOfInt;
     }
-    k = this.RT.width();
-    int m = this.RT.height();
+    k = this.RA.width();
+    int m = this.RA.height();
     paramBitmap = new int[k * m];
     while (i < m)
     {
-      System.arraycopy(arrayOfInt, (this.RT.top + i) * j + this.RT.left, paramBitmap, i * k, k);
+      System.arraycopy(arrayOfInt, (this.RA.top + i) * j + this.RA.left, paramBitmap, i * k, k);
       i += 1;
     }
     return paramBitmap;
@@ -55,7 +55,7 @@ public final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.d.b.a
  * JD-Core Version:    0.7.0.1
  */

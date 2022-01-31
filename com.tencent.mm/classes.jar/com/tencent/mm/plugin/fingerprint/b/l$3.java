@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
-import com.tencent.mm.pluginsdk.wallet.c;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.wallet.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.soter.a.a.a;
 
 final class l$3
-  implements am.a
+  implements ap.a
 {
-  l$3(l paraml, c paramc) {}
+  l$3(l paraml, d paramd) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.i("MicroMsg.SoterAuthMgrImp", "timeout: %s", new Object[] { Integer.valueOf(this.gQW) });
-    l.b(this.klA).oj(true);
+    AppMethodBeat.i(41511);
+    ab.i("MicroMsg.SoterAuthMgrImp", "timeout: %s", new Object[] { Integer.valueOf(this.isL) });
+    l.b(this.mGo).rV(true);
+    AppMethodBeat.o(41511);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.l.3
  * JD-Core Version:    0.7.0.1
  */

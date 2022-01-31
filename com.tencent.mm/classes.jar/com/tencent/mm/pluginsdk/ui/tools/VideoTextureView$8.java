@@ -1,26 +1,30 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mm.sdk.platformtools.y;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class VideoTextureView$8
-  implements MediaPlayer.OnErrorListener
+  implements MediaPlayer.OnCompletionListener
 {
   VideoTextureView$8(VideoTextureView paramVideoTextureView) {}
   
-  public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    y.w("MicroMsg.VideoTextureView", "Error: " + paramInt1 + "," + paramInt2);
-    if (VideoTextureView.d(this.snF) != null) {
-      VideoTextureView.d(this.snF).onError(paramInt1, paramInt2);
+    AppMethodBeat.i(118015);
+    ab.i("MicroMsg.VideoTextureView", "video on completion");
+    VideoTextureView.b(this.wga, bo.aox());
+    if (VideoTextureView.d(this.wga) != null) {
+      VideoTextureView.d(this.wga).Es();
     }
-    return true;
+    AppMethodBeat.o(118015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoTextureView.8
  * JD-Core Version:    0.7.0.1
  */

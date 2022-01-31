@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="33.0dip" android:textColor="@color/a23" android:gravity="left" android:id="@id/cz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" wallet:walletTypeFace="d2" />
-        <TextView android:id="@id/cx" style="@style/uf" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="33.0dip" android:textColor="@color/a23" android:id="@id/cs" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:minWidth="2.0dip" android:text="" android:layout_weight="1.0" android:textCursorDrawable="@drawable/o_" />
-    </LinearLayout>
-</merge>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.game.ui.GameFeedVideoView android:orientation="vertical" android:padding="@dimen/jr" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/c8q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jw" />
+        <FrameLayout android:id="@id/c8t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jw">
+            <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/c9e" android:layout_width="fill_parent" android:layout_height="@dimen/jl" />
+            <ImageView android:layout_gravity="center" android:id="@id/c8u" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/aih" />
+            <LinearLayout android:layout_gravity="bottom|center|right" android:orientation="horizontal" android:id="@id/c9f" android:background="@drawable/qa" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jw" android:layout_marginBottom="@dimen/jw">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/c9g" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/q6" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/a6q" android:layout_gravity="center_vertical" android:id="@id/c9h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:singleLine="true" />
+            </LinearLayout>
+        </FrameLayout>
+        <com.tencent.mm.plugin.game.ui.GameFeedSubscriptView android:id="@id/c8v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jw" />
+    </com.tencent.mm.plugin.game.ui.GameFeedVideoView>
+</FrameLayout>

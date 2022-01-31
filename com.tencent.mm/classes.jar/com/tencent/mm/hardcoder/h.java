@@ -1,133 +1,196 @@
 package com.tencent.mm.hardcoder;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.os.Build;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public final class h
+  implements g.a
 {
-  private static i dFh = null;
+  public static int eCR = -1;
+  public static int eCS = -1;
+  public static Context eCT;
+  protected final Map<Integer, a> eCP;
+  protected int eCQ;
   
-  public static void a(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4)
+  public h(Context paramContext)
   {
-    if (dFh != null) {
-      dFh.a(paramInt1, paramLong, paramInt2, paramInt3, paramInt4);
-    }
+    AppMethodBeat.i(93965);
+    this.eCP = new TreeMap();
+    this.eCQ = 0;
+    eCT = paramContext;
+    AppMethodBeat.o(93965);
   }
   
-  public static void a(a.b paramb)
+  private void update()
   {
-    int n = (int)(paramb.dEF - paramb.dEp);
-    int j;
-    int i1;
-    int k;
-    label37:
-    int i2;
-    long l1;
-    int i3;
-    int i4;
-    int[] arrayOfInt1;
-    int i5;
-    int i6;
-    int i;
-    if (HardCoderJNI.hcEnable)
-    {
-      j = 1;
-      i1 = HardCoderJNI.isRunning();
-      if (n - paramb.delay > 0) {
-        break label223;
-      }
-      k = 1;
-      i2 = paramb.scene;
-      l1 = paramb.dEo;
-      i3 = paramb.dEl;
-      i4 = paramb.dEm;
-      arrayOfInt1 = paramb.dEw;
-      i5 = (int)(paramb.dEq - paramb.startTime);
-      i6 = paramb.dEA;
-      i = 0;
-      if (paramb.dEC != null) {
-        i = (int)(0L + paramb.dEC.dFo);
-      }
-      if (paramb.dED == null) {
-        break label625;
-      }
-      i = (int)(i + paramb.dED.dFo);
-    }
-    label223:
-    label625:
+    AppMethodBeat.i(93968);
+    this.eCQ = this.eCP.size();
+    c.d("HardCoder.PowerConsumption", "update existCpuSize:" + this.eCQ);
+    AppMethodBeat.o(93968);
+  }
+  
+  public final void PF()
+  {
+    AppMethodBeat.i(93966);
+    this.eCP.clear();
     for (;;)
     {
-      int i7 = HardCoderJNI.TICK_RATE;
-      long l2 = paramb.dEB;
-      int[] arrayOfInt2 = paramb.dEu;
-      int[] arrayOfInt3 = paramb.dEv;
-      StringBuilder localStringBuilder1 = new StringBuilder();
-      int i8;
-      int m;
-      int i9;
-      if (arrayOfInt1 != null)
+      Object localObject2;
+      Object localObject3;
+      try
       {
-        i8 = arrayOfInt1.length;
-        m = 0;
+        Object localObject1 = Build.MODEL;
+        if (localObject1 == null)
+        {
+          AppMethodBeat.o(93966);
+          return;
+        }
+        c.i("HardCoder.PowerConsumption", String.format("[oneliang] device model:%s", new Object[] { localObject1 }));
+        localObject1 = ((String)localObject1).toUpperCase();
+        localObject2 = eCT.getAssets().open("hardcoder/power.json");
+        localObject3 = new StringBuilder();
+        g.a((InputStream)localObject2, new g.a()
+        {
+          public final boolean lS(String paramAnonymousString)
+          {
+            AppMethodBeat.i(93963);
+            this.eCU.append(paramAnonymousString);
+            AppMethodBeat.o(93963);
+            return true;
+          }
+        });
+        localObject2 = new JSONObject(((StringBuilder)localObject3).toString());
+        if (!((JSONObject)localObject2).has((String)localObject1)) {
+          break label313;
+        }
+        localObject1 = ((JSONObject)localObject2).getJSONObject((String)localObject1);
+        localObject2 = ((JSONObject)localObject1).keys();
+        int i = 0;
+        if (!((Iterator)localObject2).hasNext()) {
+          break label506;
+        }
+        ((Iterator)localObject2).next();
+        i += 1;
+        continue;
+        if ((j >= i) || (!((JSONObject)localObject1).has("cluster".concat(String.valueOf(j))))) {
+          break label313;
+        }
+        localObject2 = ((JSONObject)localObject1).getJSONArray("cluster".concat(String.valueOf(j)));
+        int k = 0;
+        if (k < ((JSONArray)localObject2).length())
+        {
+          lS(((JSONArray)localObject2).getString(k));
+          k += 1;
+          continue;
+        }
+        update();
+        switch (j)
+        {
+        case 0: 
+          eCR = this.eCQ - 1;
+        }
+      }
+      catch (Exception localException)
+      {
+        c.e("HardCoder.PowerConsumption", "initialize exception:" + localException.getMessage());
+        AppMethodBeat.o(93966);
+        return;
+      }
+      eCS = this.eCQ - 1;
+      break label511;
+      label313:
+      c.i("HardCoder.PowerConsumption", String.format("[oneliang] cluster0:%d,cluster1:%d", new Object[] { Integer.valueOf(eCR), Integer.valueOf(eCS) }));
+      Iterator localIterator = this.eCP.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject2 = (Map.Entry)localIterator.next();
+        c.i("HardCoder.PowerConsumption", "config cpu:" + ((Map.Entry)localObject2).getKey());
+        localObject2 = ((a)((Map.Entry)localObject2).getValue()).eCW.entrySet().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          localObject3 = (Map.Entry)((Iterator)localObject2).next();
+          c.i("HardCoder.PowerConsumption", ((Map.Entry)localObject3).getKey() + "," + ((Map.Entry)localObject3).getValue());
+        }
+      }
+      AppMethodBeat.o(93966);
+      return;
+      label506:
+      int j = 0;
+      continue;
+      label511:
+      j += 1;
+    }
+  }
+  
+  public final void PG()
+  {
+    AppMethodBeat.i(93967);
+    this.eCP.clear();
+    g.a("/sdcard/power.csv", this);
+    update();
+    g.a("/sdcard/power1.csv", this);
+    Iterator localIterator = this.eCP.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      c.i("HardCoder.PowerConsumption", "cpu:" + ((Map.Entry)localObject).getKey());
+      localObject = ((a)((Map.Entry)localObject).getValue()).eCW.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        c.i("HardCoder.PowerConsumption", localEntry.getKey() + "," + localEntry.getValue());
+      }
+    }
+    AppMethodBeat.o(93967);
+  }
+  
+  public final boolean lS(String paramString)
+  {
+    AppMethodBeat.i(93969);
+    String[] arrayOfString = paramString.trim().split(",");
+    if (arrayOfString.length > 0)
+    {
+      long l = Long.parseLong(arrayOfString[0]);
+      int i = 1;
+      if (i < arrayOfString.length)
+      {
+        Integer localInteger = Integer.valueOf(this.eCQ + i - 1);
+        if (this.eCP.containsKey(localInteger)) {
+          paramString = (a)this.eCP.get(localInteger);
+        }
         for (;;)
         {
-          if (m < i8)
-          {
-            i9 = arrayOfInt1[m];
-            localStringBuilder1.append(i9 + "#");
-            m += 1;
-            continue;
-            j = 0;
-            break;
-            k = 0;
-            break label37;
-          }
+          paramString.eCW.put(Long.valueOf(l), Integer.valueOf(Integer.parseInt(arrayOfString[i], 0)));
+          i += 1;
+          break;
+          paramString = new a();
+          this.eCP.put(localInteger, paramString);
         }
       }
-      StringBuilder localStringBuilder2 = new StringBuilder();
-      if (arrayOfInt2 != null)
-      {
-        i8 = arrayOfInt2.length;
-        m = 0;
-        while (m < i8)
-        {
-          i9 = arrayOfInt2[m];
-          localStringBuilder2.append(i9 + "#");
-          m += 1;
-        }
-      }
-      StringBuilder localStringBuilder3 = new StringBuilder();
-      if (arrayOfInt3 != null)
-      {
-        i8 = arrayOfInt3.length;
-        m = 0;
-        while (m < i8)
-        {
-          i9 = arrayOfInt3[m];
-          localStringBuilder3.append(i9 + "#");
-          m += 1;
-        }
-      }
-      if ((paramb.dEn != 0) && (HardCoderJNI.hcDebug)) {
-        c.i("HardCoder.HardCoderReporter", String.format("[oneliang]performance report,hash:%s,threadId:%s,enable:%s, engineStatus:%s,cancelInDelay:%s,scene:%s,action:%s,lastCpuLevel:%s,cpuLevel:%s,lastIoLevel:%s,ioLevel:%s,bindCoreIds:%s,executeTime:%s,runtime:%s,threadJiffies:%s, phonePower:%s, phoneHZ:%s, processJiffies:%s,cpuLevelTimeArray:%s, ioLevelTimeArray:%s", new Object[] { Integer.valueOf(paramb.hashCode()), Integer.valueOf(paramb.dEn), Integer.valueOf(j), Integer.valueOf(i1), Integer.valueOf(k), Integer.valueOf(i2), Long.valueOf(l1), Integer.valueOf(paramb.dEs), Integer.valueOf(i3), Integer.valueOf(paramb.dEt), Integer.valueOf(i4), localStringBuilder1.toString(), Integer.valueOf(i5), Integer.valueOf(n), Integer.valueOf(i6), Integer.valueOf(i), Integer.valueOf(i7), Long.valueOf(l2), localStringBuilder2.toString(), localStringBuilder3.toString() }));
-      }
-      if (dFh != null) {
-        dFh.a(paramb.dEn, j, i1, k, i2, l1, i3, i4, arrayOfInt1, i5, n, i6, i, i7, l2, arrayOfInt2, arrayOfInt3);
-      }
-      return;
     }
+    AppMethodBeat.o(93969);
+    return true;
   }
   
-  public static void a(i parami)
+  public static final class a
   {
-    if (dFh == null)
+    public final Map<Long, Integer> eCW;
+    
+    public a()
     {
-      c.i("HardCoder.HardCoderReporter", String.format("hardcoder setReporter[%s]", new Object[] { parami }));
-      dFh = parami;
-    }
-  }
-  
-  public static void reportInfo(e parame)
-  {
-    if (dFh != null) {
-      dFh.reportInfo(parame);
+      AppMethodBeat.i(93964);
+      this.eCW = new TreeMap();
+      AppMethodBeat.o(93964);
     }
   }
 }

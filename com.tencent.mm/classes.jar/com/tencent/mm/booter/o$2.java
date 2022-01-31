@@ -1,12 +1,16 @@
 package com.tencent.mm.booter;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class o$2
   implements Runnable
 {
   public final void run()
   {
-    o.er("mm_proc_startup");
-    o.er("push_proc_startup");
+    AppMethodBeat.i(15864);
+    o.ky("mm_proc_startup");
+    o.ky("push_proc_startup");
+    AppMethodBeat.o(15864);
   }
 }
 

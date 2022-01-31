@@ -1,54 +1,62 @@
 package com.tencent.mm.plugin.order.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.protocal.c.vw;
-import com.tencent.mm.protocal.c.vx;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.s;
+import com.tencent.mm.plugin.wallet_core.model.m;
+import com.tencent.mm.protocal.protobuf.aab;
+import com.tencent.mm.protocal.protobuf.aac;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.u;
 
 public final class f
-  extends s
+  extends u
 {
-  private b dmK;
-  private com.tencent.mm.ah.f dmL;
+  private com.tencent.mm.ai.f callback;
+  private b rr;
   
   public f(String paramString1, String paramString2, int paramInt)
   {
+    AppMethodBeat.i(43775);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new vw();
-    ((b.a)localObject).ecI = new vx();
+    ((b.a)localObject).fsX = new aab();
+    ((b.a)localObject).fsY = new aac();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/evaluateorder";
-    ((b.a)localObject).ecG = 583;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (vw)this.dmK.ecE.ecN;
-    ((vw)localObject).sSZ = paramString1;
-    ((vw)localObject).euK = paramString2;
-    ((vw)localObject).nFj = paramInt;
-    ((vw)localObject).sHl = i.bVj();
+    ((b.a)localObject).funcId = 583;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (aab)this.rr.fsV.fta;
+    ((aab)localObject).wQV = paramString1;
+    ((aab)localObject).fKw = paramString2;
+    ((aab)localObject).qsl = paramInt;
+    ((aab)localObject).wDH = m.cTC();
+    AppMethodBeat.o(43775);
   }
   
-  public final int a(e parame, com.tencent.mm.ah.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void e(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    y.d("MicroMsg.NetSceneEvaluateOrder", "errType:" + paramInt1 + ",errCode:" + paramInt2 + ",errMsg" + paramString);
-    this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(43777);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(43777);
+    return i;
   }
   
   public final int getType()
   {
     return 583;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(142118);
+    ab.d("MicroMsg.NetSceneEvaluateOrder", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(142118);
   }
 }
 

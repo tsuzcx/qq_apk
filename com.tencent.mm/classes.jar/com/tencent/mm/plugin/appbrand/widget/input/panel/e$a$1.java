@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.input.panel;
 import android.content.Context;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$a$1
   extends View
@@ -14,17 +15,21 @@ final class e$a$1
   
   protected final void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.hyc.mInLayout = true;
+    AppMethodBeat.i(123947);
+    this.jqm.mInLayout = true;
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.hyc.mInLayout = false;
+    this.jqm.mInLayout = false;
+    AppMethodBeat.o(123947);
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.hyc.htS > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.hyc.htS, 1073741824);
+    AppMethodBeat.i(123948);
+    if (this.jqm.jlY > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.jqm.jlY, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(123948);
   }
 }
 

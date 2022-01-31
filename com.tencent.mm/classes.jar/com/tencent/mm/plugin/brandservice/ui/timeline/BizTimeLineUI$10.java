@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.app.ProgressDialog;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.bizui.widget.StoryListView;
+import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView;
 
 final class BizTimeLineUI$10
   implements Runnable
 {
-  BizTimeLineUI$10(BizTimeLineUI paramBizTimeLineUI, ProgressDialog paramProgressDialog) {}
+  BizTimeLineUI$10(BizTimeLineUI paramBizTimeLineUI) {}
   
   public final void run()
   {
-    if ((this.doh != null) && (this.doh.isShowing())) {
-      this.doh.dismiss();
-    }
-    if (this.ihl.isFinishing())
+    AppMethodBeat.i(14193);
+    if ((this.jXh.isFinishing()) || (BizTimeLineUI.b(this.jXh) == null) || (BizTimeLineUI.b(this.jXh).getFirstVisiblePosition() != 0) || (BizTimeLineUI.r(this.jXh) == null))
     {
-      y.w("MicroMsg.BizTimeLineUI", "checkInitListView isFinishing, just return");
+      AppMethodBeat.o(14193);
       return;
     }
-    BizTimeLineUI.a(this.ihl);
+    BizTimeLineUI.r(this.jXh).aWZ();
+    AppMethodBeat.o(14193);
   }
 }
 

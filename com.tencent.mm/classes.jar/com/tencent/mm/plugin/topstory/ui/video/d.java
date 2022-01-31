@@ -4,52 +4,58 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.aj;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
 {
   public static final h c(b paramb)
   {
+    AppMethodBeat.i(1709);
     int n = paramb.getLayoutManager().getChildCount();
     int j;
-    label61:
+    label73:
     int k;
     Object localObject;
     if (n == 0)
     {
       paramb = null;
-      if (!(paramb instanceof h)) {
+      if (!(paramb instanceof h))
+      {
+        AppMethodBeat.o(1709);
         return null;
       }
     }
     else if (paramb.getLayoutManager().getClipToPadding())
     {
-      j = paramb.bNA().hh() + paramb.bNA().hj() / 2;
+      j = paramb.cJj().iI() + paramb.cJj().iK() / 2;
       int i = 2147483647;
       k = 0;
       localObject = null;
-      label69:
+      label81:
       if (k >= n) {
-        break label154;
+        break label166;
       }
       View localView = paramb.getLayoutManager().getChildAt(k);
-      int m = Math.abs(paramb.bNA().aX(localView) + paramb.bNA().bb(localView) / 2 - j);
+      int m = Math.abs(paramb.cJj().bh(localView) + paramb.cJj().bl(localView) / 2 - j);
       if (m >= i) {
-        break label174;
+        break label194;
       }
       localObject = localView;
       i = m;
     }
-    label154:
-    label174:
+    label166:
+    label194:
     for (;;)
     {
       k += 1;
-      break label69;
-      j = paramb.bNA().getEnd() / 2;
-      break label61;
-      paramb = paramb.getRecyclerView().aT(localObject);
+      break label81;
+      j = paramb.cJj().getEnd() / 2;
+      break label73;
+      paramb = paramb.getRecyclerView().bb(localObject);
       break;
-      return (h)paramb;
+      paramb = (h)paramb;
+      AppMethodBeat.o(1709);
+      return paramb;
     }
   }
   

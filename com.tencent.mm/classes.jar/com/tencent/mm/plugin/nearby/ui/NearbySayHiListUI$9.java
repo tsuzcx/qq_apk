@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.nearby.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.f;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMSlideDelView.f;
 
 final class NearbySayHiListUI$9
@@ -12,16 +13,19 @@ final class NearbySayHiListUI$9
 {
   NearbySayHiListUI$9(NearbySayHiListUI paramNearbySayHiListUI) {}
   
-  public final void bg(Object paramObject)
+  public final void bC(Object paramObject)
   {
+    AppMethodBeat.i(55503);
     if (paramObject == null)
     {
-      y.e("MicroMsg.SayHiListUI", "onItemDel object null");
+      ab.e("MicroMsg.SayHiListUI", "onItemDel object null");
+      AppMethodBeat.o(55503);
       return;
     }
-    g.DN().CX();
-    ((j)g.r(j.class)).bhL().Hs(paramObject.toString());
-    NearbySayHiListUI.b(this.mDP).a(null, null);
+    g.RJ().QQ();
+    ((j)g.E(j.class)).bPN().Te(paramObject.toString());
+    NearbySayHiListUI.b(this.pdR).a(null, null);
+    AppMethodBeat.o(55503);
   }
 }
 

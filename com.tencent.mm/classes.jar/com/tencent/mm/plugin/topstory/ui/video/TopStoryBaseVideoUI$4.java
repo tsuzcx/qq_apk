@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class TopStoryBaseVideoUI$4
   implements i.a
 {
   TopStoryBaseVideoUI$4(TopStoryBaseVideoUI paramTopStoryBaseVideoUI) {}
   
-  public final void tX(int paramInt)
+  public final void zr(int paramInt)
   {
-    this.pFv.zD(paramInt);
+    AppMethodBeat.i(1721);
+    this.tiT.GG(paramInt);
+    AppMethodBeat.o(1721);
   }
 }
 

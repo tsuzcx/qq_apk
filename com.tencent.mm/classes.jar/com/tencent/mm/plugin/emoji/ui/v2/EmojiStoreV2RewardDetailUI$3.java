@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiStoreV2RewardDetailUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class EmojiStoreV2RewardDetailUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jhl.finish();
+    AppMethodBeat.i(53671);
+    this.lqe.finish();
+    AppMethodBeat.o(53671);
     return false;
   }
 }

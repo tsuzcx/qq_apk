@@ -1,5 +1,6 @@
 package com.tencent.ttpic.util.youtu;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.util.BenchUtil;
 
 class VideoPreviewFaceOutlineDetector$2
@@ -9,11 +10,22 @@ class VideoPreviewFaceOutlineDetector$2
   
   public void run()
   {
-    BenchUtil.benchStart("FaceDetect");
+    AppMethodBeat.i(84381);
+    BenchUtil.benchStart("only faceDetect");
+    long l1 = 0L;
+    if (BenchUtil.ENABLE_PERFORMANCE_RECORD) {
+      l1 = System.currentTimeMillis();
+    }
     this.this$0.doFaceDetect(this.val$rgba, this.val$w, this.val$h);
-    BenchUtil.benchEnd("FaceDetect");
+    if (BenchUtil.ENABLE_PERFORMANCE_RECORD)
+    {
+      long l2 = System.currentTimeMillis();
+      new StringBuilder("人脸追踪耗时： ").append(l2 - l1).append(" ms.");
+    }
+    BenchUtil.benchEnd("only faceDetect");
     VideoPreviewFaceOutlineDetector.access$002(this.this$0, false);
     VideoPreviewFaceOutlineDetector.access$102(this.this$0, 0);
+    AppMethodBeat.o(84381);
   }
 }
 

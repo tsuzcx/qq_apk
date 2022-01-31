@@ -1,44 +1,36 @@
 package com.tencent.mm.d.a;
 
-import android.text.TextUtils;
-import com.eclipsesource.v8.V8Context;
-import com.eclipsesource.v8.V8Object;
+import com.tencent.mm.plugin.appbrand.i.h;
 
-public abstract class c
+public abstract interface c
 {
-  private final String mKey;
+  public abstract boolean Cl();
   
-  c()
-  {
-    this("");
-  }
+  public abstract void a(int paramInt, h paramh);
   
-  c(String paramString)
-  {
-    this.mKey = paramString;
-  }
+  public abstract void f(Runnable paramRunnable, long paramLong);
   
-  final c a(b paramb)
-  {
-    if (TextUtils.isEmpty(this.mKey))
-    {
-      a(paramb, paramb.byX.getGlobalObject());
-      return this;
-    }
-    V8Object localV8Object = paramb.byX.newV8Object();
-    paramb.byX.add(this.mKey, localV8Object);
-    a(paramb, localV8Object);
-    localV8Object.release();
-    return this;
-  }
+  public abstract long getIsolatePtr();
   
-  protected abstract void a(b paramb, V8Object paramV8Object);
+  public abstract l gg(int paramInt);
   
-  abstract void cleanup();
+  public abstract void k(Runnable paramRunnable);
+  
+  public abstract void l(Runnable paramRunnable);
+  
+  public abstract void pause();
+  
+  public abstract void quit();
+  
+  public abstract void resume();
+  
+  public abstract void setThreadPriority(int paramInt);
+  
+  public abstract void waitForDebugger(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.d.a.c
  * JD-Core Version:    0.7.0.1
  */

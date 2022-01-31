@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.qqmail.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.widget.AutoCompleteTextView;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class ComposeUI$19$1
   implements DialogInterface.OnClickListener
@@ -12,8 +13,10 @@ final class ComposeUI$19$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.ngR.nik.setText("");
-    ComposeUI.i(this.ngS.ngJ).postDelayed(new ComposeUI.19.1.1(this), 150L);
+    AppMethodBeat.i(68198);
+    this.pMf.pNx.setText("");
+    ComposeUI.i(this.pMg.pLX).postDelayed(new ComposeUI.19.1.1(this), 150L);
+    AppMethodBeat.o(68198);
   }
 }
 

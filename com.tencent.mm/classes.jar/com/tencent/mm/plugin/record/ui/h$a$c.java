@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.protocal.c.xv;
+import com.tencent.mm.protocal.protobuf.aca;
 
 public final class h$a$c
 {
-  public xv bNt;
-  public long ntR;
+  public aca cuL;
+  public long pZy;
 }
 
 

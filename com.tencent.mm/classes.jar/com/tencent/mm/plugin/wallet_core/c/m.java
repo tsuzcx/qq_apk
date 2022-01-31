@@ -1,59 +1,77 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
-import com.tencent.mm.plugin.wallet_core.model.BindCardOrder;
-import com.tencent.mm.wallet_core.tenpay.model.j;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.aak;
+import com.tencent.mm.protocal.protobuf.aal;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class m
-  extends j
+  extends com.tencent.mm.ai.m
+  implements k
 {
-  public String dmU;
-  public String qqN;
-  public String qqO;
-  public BindCardOrder qqP;
+  private f callback;
+  private b goo;
+  private aak ubF;
+  public aal ubG;
+  private boolean ubz;
   
-  public m(BindCardOrder paramBindCardOrder, String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
+  public m(String paramString, boolean paramBoolean)
   {
-    this.qqP = paramBindCardOrder;
-    paramBindCardOrder = new HashMap();
-    paramBindCardOrder.put("activity_id", paramString1);
-    paramBindCardOrder.put("award_id", paramString2);
-    paramBindCardOrder.put("send_record_id", paramString3);
-    paramBindCardOrder.put("user_record_id", paramString4);
-    paramBindCardOrder.put("activity_mch_id", String.valueOf(paramLong1));
-    paramBindCardOrder.put("activity_type", String.valueOf(paramLong2));
-    paramBindCardOrder.put("bank_type", paramString5);
-    paramBindCardOrder.put("bank_serial", paramString6);
-    paramBindCardOrder.put("bindbankscene", String.valueOf(paramInt1));
-    paramBindCardOrder.put("realname_scene", String.valueOf(paramInt2));
-    D(paramBindCardOrder);
-  }
-  
-  public final int HH()
-  {
-    return 1786;
-  }
-  
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    if ((paramJSONObject != null) && (paramInt == 0))
+    AppMethodBeat.i(46515);
+    this.ubz = paramBoolean;
+    b.a locala = new b.a();
+    locala.fsX = new aak();
+    locala.fsY = new aal();
+    if (paramBoolean) {
+      locala.funcId = 2529;
+    }
+    for (locala.uri = "/cgi-bin/mmpay-bin/mktf2fmodifyexposure";; locala.uri = "/cgi-bin/mmpay-bin/mktmodifyexposure")
     {
-      this.qqN = paramJSONObject.optString("result_code");
-      this.dmU = paramJSONObject.optString("result_msg");
-      this.qqO = paramJSONObject.optString("alert_wording");
+      locala.reqCmdId = 0;
+      locala.respCmdId = 0;
+      this.goo = locala.ado();
+      this.ubF = ((aak)this.goo.fsV.fta);
+      this.ubF.wQY = paramString;
+      AppMethodBeat.o(46515);
+      return;
+      locala.funcId = 2888;
     }
   }
   
-  public final int aEC()
+  public final int doScene(e parame, f paramf)
   {
-    return 1786;
+    AppMethodBeat.i(46516);
+    this.callback = paramf;
+    int i = dispatch(parame, this.goo, this);
+    AppMethodBeat.o(46516);
+    return i;
   }
   
-  public final String getUri()
+  public final int getType()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sendbindcardaward";
+    if (this.ubz) {
+      return 2529;
+    }
+    return 2888;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(46517);
+    ab.i("MicroMsg.NetSceneMktModifyExposure", "onGYNetEnd, netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.ubG = ((aal)((b)paramq).fsW.fta);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(46517);
   }
 }
 

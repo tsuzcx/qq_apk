@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.security.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.bind.ui.BindMContactUI;
 import com.tencent.mm.ui.MMWizardActivity;
 
@@ -13,10 +14,12 @@ final class BindSafeDeviceUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(69859);
     paramView = new Intent();
-    paramView.putExtra("is_bind_for_safe_device", true);
-    paramView.setClass(this.fjZ, BindMContactUI.class);
-    MMWizardActivity.C(this.fjZ, paramView);
+    paramView.putExtra("bind_scene", 1);
+    paramView.setClass(this.gBq, BindMContactUI.class);
+    MMWizardActivity.J(this.gBq, paramView);
+    AppMethodBeat.o(69859);
   }
 }
 

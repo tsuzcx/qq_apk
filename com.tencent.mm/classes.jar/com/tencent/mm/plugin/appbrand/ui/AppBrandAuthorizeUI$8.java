@@ -1,38 +1,20 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import com.tencent.mm.protocal.c.ep;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.preference.CheckBoxPreference;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.fs;
+import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import java.util.Iterator;
-import java.util.List;
 
 final class AppBrandAuthorizeUI$8
-  implements Runnable
+  implements AppBrandAuthorizeUI.a
 {
-  AppBrandAuthorizeUI$8(AppBrandAuthorizeUI paramAppBrandAuthorizeUI, List paramList) {}
+  AppBrandAuthorizeUI$8(AppBrandAuthorizeUI paramAppBrandAuthorizeUI, Preference paramPreference, f paramf, fs paramfs) {}
   
-  public final void run()
+  public final void cd(boolean paramBoolean)
   {
-    y.d("MicroMsg.AppBrandAuthorizeUI", "initAuthItem authItems.size = %d", new Object[] { Integer.valueOf(this.hcz.size()) });
-    Iterator localIterator = this.hcz.iterator();
-    if (localIterator.hasNext())
-    {
-      ep localep = (ep)localIterator.next();
-      CheckBoxPreference localCheckBoxPreference = new CheckBoxPreference(this.hcu);
-      localCheckBoxPreference.vdK = false;
-      localCheckBoxPreference.setKey(localep.scope);
-      localCheckBoxPreference.setTitle(localep.syf);
-      if (localep.state == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localCheckBoxPreference.rHo = bool;
-        this.hcu.hcp.a(localCheckBoxPreference);
-        break;
-      }
-    }
-    this.hcu.hcp.notifyDataSetChanged();
-    y.d("MicroMsg.AppBrandAuthorizeUI", "initAuthItem finish");
+    AppMethodBeat.i(132899);
+    AppBrandAuthorizeUI.a(this.iLF, paramBoolean, true, this.iLK, this.iLO, this.iLP);
+    AppMethodBeat.o(132899);
   }
 }
 

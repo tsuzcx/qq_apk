@@ -1,25 +1,40 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.y.a;
-import com.tencent.mm.y.c;
-import java.util.Set;
+import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.u;
+import com.tencent.mm.plugin.scanner.util.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class BaseScanUI$19
-  implements SelectScanModePanel.a
+  extends ak
 {
   BaseScanUI$19(BaseScanUI paramBaseScanUI) {}
   
-  public final void wQ(int paramInt)
+  public final void handleMessage(Message paramMessage)
   {
-    BaseScanUI.n(this.nJg).remove(Integer.valueOf(paramInt));
-    if (paramInt == 3)
+    AppMethodBeat.i(138475);
+    if ((BaseScanUI.a(this.qwI) != null) && (BaseScanUI.t(this.qwI)) && (!BaseScanUI.Q(this.qwI)) && (paramMessage.what == 0))
     {
-      c.BS().c(ac.a.uzK, ac.a.uzL);
-      c.BS().b(ac.a.uzK, false);
+      BaseScanUI.a(this.qwI, System.currentTimeMillis());
+      paramMessage = BaseScanUI.a(this.qwI);
+      BaseScanUI localBaseScanUI = this.qwI;
+      if ((paramMessage.eoH != null) && (paramMessage.miS)) {
+        try
+        {
+          paramMessage.cjB();
+          paramMessage.eoH.autoFocus(localBaseScanUI);
+          AppMethodBeat.o(138475);
+          return;
+        }
+        catch (RuntimeException paramMessage)
+        {
+          ab.w("MicroMsg.scanner.ScanCamera", "autoFocus() " + paramMessage.getMessage());
+        }
+      }
     }
-    BaseScanUI.m(this.nJg).setShowRedDotModes(BaseScanUI.n(this.nJg));
-    this.nJg.L(paramInt, 50L);
+    AppMethodBeat.o(138475);
   }
 }
 

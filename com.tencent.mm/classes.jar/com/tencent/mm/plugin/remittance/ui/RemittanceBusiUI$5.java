@@ -1,27 +1,21 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.widget.Toast;
-import com.tencent.mm.plugin.remittance.model.d;
-import com.tencent.mm.plugin.remittance.model.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.ka;
-import com.tencent.mm.ui.MMActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 
 final class RemittanceBusiUI$5
-  implements d
+  implements View.OnClickListener
 {
   RemittanceBusiUI$5(RemittanceBusiUI paramRemittanceBusiUI) {}
   
-  public final void a(int paramInt1, int paramInt2, g paramg)
+  public final void onClick(View paramView)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      if (paramg.nxZ.ino != 0) {
-        com.tencent.mm.ui.base.s.makeText(this.nCA.mController.uMN, paramg.nxZ.inp, 0).show();
-      }
-      return;
-    }
-    com.tencent.mm.ui.base.s.makeText(this.nCA.mController.uMN, this.nCA.getString(a.i.wallet_data_err), 0).show();
+    AppMethodBeat.i(142178);
+    h.qsU.e(15235, new Object[] { Integer.valueOf(3) });
+    RemittanceBusiUI.G(this.qoF);
+    AppMethodBeat.o(142178);
   }
 }
 

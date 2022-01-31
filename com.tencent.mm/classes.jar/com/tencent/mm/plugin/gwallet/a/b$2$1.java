@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.gwallet.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class b$2$1
   
   public final void run()
   {
-    this.ljj.ljh.b(this.lji, null);
+    AppMethodBeat.i(41693);
+    this.nGy.nGw.b(this.nGx, null);
+    AppMethodBeat.o(41693);
   }
 }
 

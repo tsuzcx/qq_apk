@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class RemoteDebugMoveView$1
   implements Runnable
@@ -10,14 +11,16 @@ final class RemoteDebugMoveView$1
   
   public final void run()
   {
-    this.fSC.setX(RemoteDebugMoveView.a(this.fSC) - RemoteDebugMoveView.b(this.fSC));
-    int i = (int)(a.getDensity(ae.getContext()) * 120.0F);
-    this.fSC.setY(i);
+    AppMethodBeat.i(101851);
+    this.hmb.setX(RemoteDebugMoveView.a(this.hmb) - RemoteDebugMoveView.b(this.hmb));
+    int i = (int)(a.getDensity(ah.getContext()) * 120.0F);
+    this.hmb.setY(i);
+    AppMethodBeat.o(101851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.RemoteDebugMoveView.1
  * JD-Core Version:    0.7.0.1
  */

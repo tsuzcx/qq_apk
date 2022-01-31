@@ -1,30 +1,35 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
-import com.tencent.mm.protocal.c.blp;
-import com.tencent.mm.protocal.c.blq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bvb;
+import com.tencent.mm.protocal.protobuf.bvc;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class e
-  extends a<blp, blq>
+  extends a<bvb, bvc>
 {
-  public e(blp paramblp)
+  public e(bvb parambvb)
   {
-    this.lKT = paramblp;
+    this.oin = parambvb;
   }
   
-  public final int HH()
+  protected final void bML()
+  {
+    AppMethodBeat.i(41991);
+    ab.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiStart ");
+    AppMethodBeat.o(41991);
+  }
+  
+  protected final void bMM()
+  {
+    AppMethodBeat.i(41992);
+    ab.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiEnd ");
+    AppMethodBeat.o(41992);
+  }
+  
+  public final int getFuncId()
   {
     return 2857;
-  }
-  
-  protected final void bfl()
-  {
-    y.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiStart ");
-  }
-  
-  protected final void bfm()
-  {
-    y.i("MicroMsg.CgiRequestWxaHB", "CgiRequestWxaHB.onCgiEnd ");
   }
   
   public final String getUri()

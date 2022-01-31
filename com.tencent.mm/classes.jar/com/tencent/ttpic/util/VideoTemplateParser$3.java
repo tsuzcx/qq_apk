@@ -1,14 +1,18 @@
 package com.tencent.ttpic.util;
 
 import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Comparator;
 
 final class VideoTemplateParser$3
-  implements Comparator<Pair<Float, ? extends Object>>
+  implements Comparator<Pair<Float, Integer>>
 {
-  public final int compare(Pair<Float, ? extends Object> paramPair1, Pair<Float, ? extends Object> paramPair2)
+  public final int compare(Pair<Float, Integer> paramPair1, Pair<Float, Integer> paramPair2)
   {
-    return ((Float)paramPair1.first).compareTo((Float)paramPair2.first);
+    AppMethodBeat.i(84231);
+    int i = ((Float)paramPair1.first).compareTo((Float)paramPair2.first);
+    AppMethodBeat.o(84231);
+    return i;
   }
 }
 

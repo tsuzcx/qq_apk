@@ -1,69 +1,78 @@
 package com.tencent.mm.plugin.mmsight.model.b;
 
 import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.MP4MuxerJNI;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class g$a
   implements Runnable
 {
-  volatile int eJK;
-  int eJL;
-  boolean eJM;
-  final Object eJN = new Object();
+  volatile int eUK;
+  boolean fZn;
+  int fdk;
+  final Object fdy;
   
-  private g$a(g paramg) {}
+  private g$a(g paramg)
+  {
+    AppMethodBeat.i(76724);
+    this.fdy = new Object();
+    AppMethodBeat.o(76724);
+  }
   
   public final void run()
   {
-    if (this.eJL == -1)
+    AppMethodBeat.i(76725);
+    if (this.fdk == -1)
     {
-      this.eJL = Process.myTid();
+      this.fdk = Process.myTid();
       Process.setThreadPriority(Process.myTid(), -2);
-      y.i("MicroMsg.MMSightRemuxX264Encoder", "encodeTid: %s", new Object[] { Integer.valueOf(this.eJL) });
+      ab.i("MicroMsg.MMSightRemuxX264Encoder", "encodeTid: %s", new Object[] { Integer.valueOf(this.fdk) });
     }
-    this.eJK = 0;
+    this.eUK = 0;
     for (;;)
     {
       int i;
-      synchronized (this.eJN)
+      synchronized (this.fdy)
       {
-        if (this.eJM) {
-          break label183;
+        if (this.fZn) {
+          break label193;
         }
-        l = bk.UZ();
-        y.i("MicroMsg.MMSightRemuxX264Encoder", "try trigger encode");
-        i = MP4MuxerJNI.triggerEncodeForSegment(Math.max(0, this.eJK), false);
-        y.i("MicroMsg.MMSightRemuxX264Encoder", "ing: trigger encode use %dms, Encode index[%d, %d), threadId: %s", new Object[] { Long.valueOf(bk.cp(l)), Integer.valueOf(this.eJK), Integer.valueOf(i), Long.valueOf(Thread.currentThread().getId()) });
-        int j = this.eJK;
+        l = bo.yB();
+        ab.i("MicroMsg.MMSightRemuxX264Encoder", "try trigger encode");
+        i = MP4MuxerJNI.triggerEncodeForSegmentLock(Math.max(0, this.eUK), false);
+        ab.i("MicroMsg.MMSightRemuxX264Encoder", "ing: trigger encode use %dms, Encode index[%d, %d), threadId: %s", new Object[] { Long.valueOf(bo.av(l)), Integer.valueOf(this.eUK), Integer.valueOf(i), Long.valueOf(Thread.currentThread().getId()) });
+        int j = this.eUK;
         if (i != j) {}
       }
       try
       {
         Thread.sleep(10L);
-        this.eJK = i;
+        this.eUK = i;
         continue;
         localObject2 = finally;
+        AppMethodBeat.o(76725);
         throw localObject2;
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          y.e("MicroMsg.MMSightRemuxX264Encoder", "thread sleep error");
+          ab.e("MicroMsg.MMSightRemuxX264Encoder", "thread sleep error");
         }
       }
     }
-    label183:
-    long l = bk.UZ();
-    this.eJK = MP4MuxerJNI.triggerEncodeForSegment(this.eJK, true);
-    y.i("MicroMsg.MMSightRemuxX264Encoder", "end: trigger encode use %dms, curEncode index %d, threadId: %s", new Object[] { Long.valueOf(bk.cp(l)), Integer.valueOf(this.eJK), Long.valueOf(Thread.currentThread().getId()) });
+    label193:
+    long l = bo.yB();
+    this.eUK = MP4MuxerJNI.triggerEncodeForSegmentLock(this.eUK, true);
+    ab.i("MicroMsg.MMSightRemuxX264Encoder", "end: trigger encode use %dms, curEncode index %d, threadId: %s", new Object[] { Long.valueOf(bo.av(l)), Integer.valueOf(this.eUK), Long.valueOf(Thread.currentThread().getId()) });
+    AppMethodBeat.o(76725);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.b.g.a
  * JD-Core Version:    0.7.0.1
  */

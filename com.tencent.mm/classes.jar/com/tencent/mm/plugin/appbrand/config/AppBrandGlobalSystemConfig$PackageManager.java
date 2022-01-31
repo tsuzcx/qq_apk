@@ -3,24 +3,44 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AppBrandGlobalSystemConfig$PackageManager
   implements Parcelable
 {
-  public static final Parcelable.Creator<PackageManager> CREATOR = new AppBrandGlobalSystemConfig.PackageManager.1();
-  public long fPi = 86400L;
-  public long fPj = 864000L;
-  public long fPk = 256L;
-  public int fPl = 5;
+  public static final Parcelable.Creator<PackageManager> CREATOR;
+  public long hin;
+  public long hio;
+  public long hip;
+  public int hiq;
   
-  public AppBrandGlobalSystemConfig$PackageManager() {}
+  static
+  {
+    AppMethodBeat.i(101800);
+    CREATOR = new AppBrandGlobalSystemConfig.PackageManager.1();
+    AppMethodBeat.o(101800);
+  }
+  
+  public AppBrandGlobalSystemConfig$PackageManager()
+  {
+    this.hin = 86400L;
+    this.hio = 864000L;
+    this.hip = 256L;
+    this.hiq = 5;
+  }
   
   protected AppBrandGlobalSystemConfig$PackageManager(Parcel paramParcel)
   {
-    this.fPi = paramParcel.readLong();
-    this.fPj = paramParcel.readLong();
-    this.fPk = paramParcel.readLong();
-    this.fPl = paramParcel.readInt();
+    AppMethodBeat.i(101799);
+    this.hin = 86400L;
+    this.hio = 864000L;
+    this.hip = 256L;
+    this.hiq = 5;
+    this.hin = paramParcel.readLong();
+    this.hio = paramParcel.readLong();
+    this.hip = paramParcel.readLong();
+    this.hiq = paramParcel.readInt();
+    AppMethodBeat.o(101799);
   }
   
   public final int describeContents()
@@ -30,10 +50,12 @@ public final class AppBrandGlobalSystemConfig$PackageManager
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.fPi);
-    paramParcel.writeLong(this.fPj);
-    paramParcel.writeLong(this.fPk);
-    paramParcel.writeInt(this.fPl);
+    AppMethodBeat.i(101798);
+    paramParcel.writeLong(this.hin);
+    paramParcel.writeLong(this.hio);
+    paramParcel.writeLong(this.hip);
+    paramParcel.writeInt(this.hiq);
+    AppMethodBeat.o(101798);
   }
 }
 

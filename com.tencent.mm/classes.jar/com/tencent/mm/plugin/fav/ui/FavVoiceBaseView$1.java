@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.fav.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FavVoiceBaseView$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class FavVoiceBaseView$1
   
   public final void run()
   {
-    FavVoiceBaseView.f(this.kdF).aRr();
+    AppMethodBeat.i(74168);
+    FavVoiceBaseView.f(this.myp).Vf();
+    AppMethodBeat.o(74168);
   }
 }
 

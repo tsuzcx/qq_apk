@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsSightPlayerUI$1
   implements View.OnTouchListener
@@ -11,7 +12,9 @@ final class SnsSightPlayerUI$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.pdk.aBR();
+    AppMethodBeat.i(39247);
+    this.rVT.bdV();
+    AppMethodBeat.o(39247);
     return true;
   }
 }

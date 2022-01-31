@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.support.v7.widget.LinearLayoutManager;
-import com.tencent.mm.protocal.c.byg;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.ckx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class n$1$1$1
@@ -13,66 +14,62 @@ final class n$1$1$1
   
   public final void run()
   {
+    AppMethodBeat.i(1755);
     for (;;)
     {
-      byg localbyg;
-      int i;
-      int j;
-      int m;
-      int k;
-      int n;
-      synchronized (this.pGh.pGf.pGd)
+      synchronized (this.tjE.tjC.tjA)
       {
-        List localList = this.pGh.pGf.pGd.cnS();
-        if ((bk.dk(this.pGg)) || (bk.dk(localList)) || (!(this.pGh.pGf.pGd.pEp.getLayoutManager() instanceof LinearLayoutManager))) {
-          break label389;
-        }
-        localbyg = (byg)this.pGg.get(0);
-        i = 0;
-        if (i < localList.size())
+        List localList = this.tjE.tjC.tjA.cKb();
+        if ((!bo.es(this.tjD)) && (!bo.es(localList)) && ((this.tjE.tjC.tjA.thM.getLayoutManager() instanceof LinearLayoutManager)))
         {
-          if (!((byg)localList.get(i)).tOx.equals(localbyg.tOx)) {
-            break label402;
+          ckx localckx = (ckx)this.tjD.get(0);
+          int i = 0;
+          if (i < localList.size())
+          {
+            if (((ckx)localList.get(i)).xVa.equals(localckx.xVa))
+            {
+              ab.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "Fail insert. code=item exist");
+              AppMethodBeat.o(1755);
+              return;
+            }
+            i += 1;
           }
-          y.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "Fail insert. code=item exist");
-          return;
+          else
+          {
+            int j = ((ckx)this.tjD.get(0)).vYf;
+            int m = this.tjE.tjC.tjA.thM.cJk();
+            int k = this.tjE.tjC.tjA.thM.cJm().getHeadersCount();
+            i = ((LinearLayoutManager)this.tjE.tjC.tjA.thM.getLayoutManager()).iv();
+            int n = localList.size() - 1;
+            if (m == n)
+            {
+              ab.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "Fail insert. code=last pos");
+              AppMethodBeat.o(1755);
+              return;
+            }
+            if ((j <= m) || (j > n + 1))
+            {
+              j = i - k + 1;
+              i = j;
+              if (j <= 0) {
+                i = m + 1;
+              }
+              j = i;
+              if (i > localList.size()) {
+                j = localList.size();
+              }
+              localList.add(j, localckx);
+              ab.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "insert success pos:%s, vid[%s], title:%s", new Object[] { Integer.valueOf(j), localckx.xVa, localckx.title });
+              this.tjE.tjC.tjA.thM.cJm().bS(j + k);
+              AppMethodBeat.o(1755);
+            }
+          }
         }
-        j = ((byg)this.pGg.get(0)).sgk;
-        m = this.pGh.pGf.pGd.pEp.bNB();
-        k = this.pGh.pGf.pGd.pEp.bND().pEn.size();
-        i = ((LinearLayoutManager)this.pGh.pGf.pGd.pEp.getLayoutManager()).ha() - k;
-        n = localList.size() - 1;
-        if (m == n)
+        else
         {
-          y.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "Fail insert. code=last pos");
-          return;
+          ab.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "Fail insert. code=result list or curlist is null");
         }
       }
-      if ((j <= m) || (j <= i) || (j > n + 1)) {
-        j = i + 1;
-      }
-      for (;;)
-      {
-        i = j;
-        if (j <= 0) {
-          i = m + 1;
-        }
-        j = i;
-        if (i > localObject.size()) {
-          j = localObject.size();
-        }
-        localObject.add(j, localbyg);
-        y.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "insert success pos:%s, vid[%s], title:%s", new Object[] { Integer.valueOf(j), localbyg.tOx, localbyg.title });
-        this.pGh.pGf.pGd.pEp.bND().bM(j + k);
-        for (;;)
-        {
-          return;
-          label389:
-          y.i("MicroMsg.TopStory.TopStoryVideoDataMgr", "Fail insert. code=result list or curlist is null");
-        }
-      }
-      label402:
-      i += 1;
     }
   }
 }

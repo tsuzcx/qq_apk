@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class u$2
   implements Runnable
@@ -10,12 +11,15 @@ final class u$2
   
   public final void run()
   {
-    int i = this.oHE.bNu.getMeasuredWidth();
-    if (i > this.oHE.gHR)
+    AppMethodBeat.i(37247);
+    int i = this.rxu.cuM.getMeasuredWidth();
+    if (i > this.rxu.iiW)
     {
-      this.oHE.oHw = ((i - this.oHE.gHR) / 2);
-      this.oHE.oHz.scrollBy(this.oHE.oHw, 0);
+      u localu = this.rxu;
+      localu.rxm = ((i - localu.iiW) / 2);
+      this.rxu.rxp.scrollBy(this.rxu.rxm, 0);
     }
+    AppMethodBeat.o(37247);
   }
 }
 

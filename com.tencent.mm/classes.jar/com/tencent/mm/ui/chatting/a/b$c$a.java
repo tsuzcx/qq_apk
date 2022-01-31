@@ -1,11 +1,11 @@
 package com.tencent.mm.ui.chatting.a;
 
-import com.tencent.mm.ae.g.a;
+import com.tencent.mm.af.j.b;
 
 final class b$c$a
 {
-  public g.a bWy;
-  public String khO;
+  public j.b cEn;
+  public String mCw;
   
   b$c$a(b.c paramc) {}
 }

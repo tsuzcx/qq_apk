@@ -4,8 +4,10 @@ import android.app.AlarmManager.OnAlarmListener;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Environment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
 import android.os.SystemClock;
-import com.tencent.matrix.d.b;
+import com.tencent.matrix.g.d;
 import java.io.File;
 import java.io.Serializable;
 import java.lang.reflect.Method;
@@ -13,291 +15,359 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class a
-  extends com.tencent.matrix.c.c
+  extends com.tencent.matrix.e.c
 {
-  private final f bmF;
-  final b bmG;
-  List<a> bmH;
-  private long bmI;
-  private final int bmx;
-  private final int bmy;
+  private final int bMd;
+  private final int bMe;
+  private final f bMf;
+  final b bMg;
+  List<a> bMh;
+  private long bMi;
   
   /* Error */
-  public a(com.tencent.matrix.c.c.a parama, com.tencent.matrix.a.a.a parama1)
+  public a(com.tencent.matrix.e.c.a parama, com.tencent.matrix.a.a.a parama1)
   {
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokespecial 43	com/tencent/matrix/c/c:<init>	(Lcom/tencent/matrix/c/c$a;)V
+    //   2: invokespecial 45	com/tencent/matrix/e/c:<init>	(Lcom/tencent/matrix/e/c$a;)V
     //   5: aload_0
     //   6: aload_2
-    //   7: getfield 47	com/tencent/matrix/a/a/a:bmx	I
-    //   10: putfield 48	com/tencent/matrix/a/b/a:bmx	I
-    //   13: aload_0
-    //   14: aload_2
-    //   15: getfield 50	com/tencent/matrix/a/a/a:bmy	I
-    //   18: putfield 51	com/tencent/matrix/a/b/a:bmy	I
-    //   21: aload_0
-    //   22: new 21	com/tencent/matrix/a/b/a$f
-    //   25: dup
+    //   7: getfield 51	com/tencent/matrix/a/a/a:bMc	Lcom/tencent/mrs/b/a;
+    //   10: getstatic 57	com/tencent/mrs/b/a$a:BaO	Lcom/tencent/mrs/b/a$a;
+    //   13: invokevirtual 61	com/tencent/mrs/b/a$a:name	()Ljava/lang/String;
+    //   16: bipush 20
+    //   18: invokeinterface 67 3 0
+    //   23: putfield 69	com/tencent/matrix/a/b/a:bMd	I
     //   26: aload_0
-    //   27: invokespecial 54	com/tencent/matrix/a/b/a$f:<init>	(Lcom/tencent/matrix/a/b/a;)V
-    //   30: putfield 56	com/tencent/matrix/a/b/a:bmF	Lcom/tencent/matrix/a/b/a$f;
-    //   33: aload_0
-    //   34: getfield 56	com/tencent/matrix/a/b/a:bmF	Lcom/tencent/matrix/a/b/a$f;
-    //   37: astore 5
-    //   39: new 58	java/io/File
-    //   42: dup
-    //   43: aload 5
-    //   45: getfield 62	com/tencent/matrix/a/b/a$f:bmW	Ljava/lang/String;
-    //   48: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
-    //   51: astore_1
-    //   52: aload_1
-    //   53: invokevirtual 69	java/io/File:exists	()Z
-    //   56: ifne +50 -> 106
-    //   59: aload 5
-    //   61: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   64: new 75	java/util/ArrayList
-    //   67: dup
-    //   68: invokespecial 78	java/util/ArrayList:<init>	()V
-    //   71: putfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   74: aload 5
-    //   76: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   79: ldc2_w 81
-    //   82: putfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   85: aload_2
-    //   86: bipush 8
-    //   88: invokevirtual 88	com/tencent/matrix/a/a/a:ed	(I)Z
-    //   91: ifeq +327 -> 418
-    //   94: aload_0
-    //   95: new 9	com/tencent/matrix/a/b/a$b
-    //   98: dup
-    //   99: invokespecial 89	com/tencent/matrix/a/b/a$b:<init>	()V
-    //   102: putfield 91	com/tencent/matrix/a/b/a:bmG	Lcom/tencent/matrix/a/b/a$b;
-    //   105: return
-    //   106: new 93	java/io/ObjectInputStream
-    //   109: dup
-    //   110: new 95	java/io/BufferedInputStream
-    //   113: dup
-    //   114: new 97	java/io/FileInputStream
-    //   117: dup
-    //   118: aload_1
-    //   119: invokespecial 100	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   122: invokespecial 103	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   125: invokespecial 104	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   128: astore_3
-    //   129: aload_3
-    //   130: astore_1
-    //   131: aload_3
-    //   132: invokevirtual 108	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   135: checkcast 15	com/tencent/matrix/a/b/a$d
-    //   138: astore 4
-    //   140: aload 4
-    //   142: ifnull +33 -> 175
-    //   145: aload_3
-    //   146: astore_1
-    //   147: aload 5
-    //   149: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   152: aload 4
-    //   154: invokevirtual 112	com/tencent/matrix/a/b/a$d:qS	()Ljava/util/List;
-    //   157: putfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   160: aload_3
-    //   161: astore_1
-    //   162: aload 5
-    //   164: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   167: aload 4
-    //   169: invokestatic 115	com/tencent/matrix/a/b/a$d:a	(Lcom/tencent/matrix/a/b/a$d;)J
-    //   172: putfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   175: aload_3
-    //   176: invokevirtual 118	java/io/ObjectInputStream:close	()V
-    //   179: aload 5
-    //   181: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   184: getfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   187: ifnonnull +29 -> 216
-    //   190: aload 5
-    //   192: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   195: new 75	java/util/ArrayList
-    //   198: dup
-    //   199: invokespecial 78	java/util/ArrayList:<init>	()V
-    //   202: putfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   205: aload 5
-    //   207: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   210: ldc2_w 81
-    //   213: putfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   216: ldc 120
-    //   218: ldc 122
-    //   220: iconst_2
-    //   221: anewarray 124	java/lang/Object
-    //   224: dup
-    //   225: iconst_0
-    //   226: aload 5
-    //   228: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   231: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   234: invokestatic 130	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   237: aastore
-    //   238: dup
-    //   239: iconst_1
-    //   240: aload 5
-    //   242: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   245: getfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   248: invokeinterface 136 1 0
-    //   253: invokestatic 141	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   256: aastore
-    //   257: invokestatic 147	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   260: goto -175 -> 85
-    //   263: astore_1
-    //   264: ldc 120
-    //   266: ldc 149
-    //   268: iconst_1
-    //   269: anewarray 124	java/lang/Object
-    //   272: dup
-    //   273: iconst_0
-    //   274: aload_1
-    //   275: aastore
-    //   276: invokestatic 152	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   279: goto -100 -> 179
-    //   282: astore 4
-    //   284: aconst_null
-    //   285: astore_3
-    //   286: aload_3
+    //   27: aload_2
+    //   28: getfield 51	com/tencent/matrix/a/a/a:bMc	Lcom/tencent/mrs/b/a;
+    //   31: getstatic 72	com/tencent/mrs/b/a$a:BaP	Lcom/tencent/mrs/b/a$a;
+    //   34: invokevirtual 61	com/tencent/mrs/b/a$a:name	()Ljava/lang/String;
+    //   37: bipush 12
+    //   39: invokeinterface 67 3 0
+    //   44: putfield 74	com/tencent/matrix/a/b/a:bMe	I
+    //   47: aload_0
+    //   48: new 21	com/tencent/matrix/a/b/a$f
+    //   51: dup
+    //   52: aload_0
+    //   53: invokespecial 77	com/tencent/matrix/a/b/a$f:<init>	(Lcom/tencent/matrix/a/b/a;)V
+    //   56: putfield 79	com/tencent/matrix/a/b/a:bMf	Lcom/tencent/matrix/a/b/a$f;
+    //   59: aload_0
+    //   60: getfield 79	com/tencent/matrix/a/b/a:bMf	Lcom/tencent/matrix/a/b/a$f;
+    //   63: astore 5
+    //   65: new 81	java/io/File
+    //   68: dup
+    //   69: aload 5
+    //   71: getfield 85	com/tencent/matrix/a/b/a$f:bMw	Ljava/lang/String;
+    //   74: invokespecial 88	java/io/File:<init>	(Ljava/lang/String;)V
+    //   77: astore_1
+    //   78: aload_1
+    //   79: invokevirtual 92	java/io/File:exists	()Z
+    //   82: ifne +48 -> 130
+    //   85: aload 5
+    //   87: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   90: new 98	java/util/ArrayList
+    //   93: dup
+    //   94: invokespecial 101	java/util/ArrayList:<init>	()V
+    //   97: putfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   100: aload 5
+    //   102: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   105: ldc2_w 104
+    //   108: putfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   111: aload_2
+    //   112: invokevirtual 110	com/tencent/matrix/a/a/a:yH	()Z
+    //   115: ifeq +379 -> 494
+    //   118: aload_0
+    //   119: new 9	com/tencent/matrix/a/b/a$b
+    //   122: dup
+    //   123: invokespecial 111	com/tencent/matrix/a/b/a$b:<init>	()V
+    //   126: putfield 113	com/tencent/matrix/a/b/a:bMg	Lcom/tencent/matrix/a/b/a$b;
+    //   129: return
+    //   130: new 115	java/io/ObjectInputStream
+    //   133: dup
+    //   134: new 117	java/io/BufferedInputStream
+    //   137: dup
+    //   138: new 119	java/io/FileInputStream
+    //   141: dup
+    //   142: aload_1
+    //   143: invokespecial 122	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   146: invokespecial 125	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   149: invokespecial 126	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   152: astore_3
+    //   153: aload_3
+    //   154: astore_1
+    //   155: aload_3
+    //   156: invokevirtual 130	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   159: checkcast 15	com/tencent/matrix/a/b/a$d
+    //   162: astore 4
+    //   164: aload 4
+    //   166: ifnull +33 -> 199
+    //   169: aload_3
+    //   170: astore_1
+    //   171: aload 5
+    //   173: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   176: aload 4
+    //   178: invokevirtual 134	com/tencent/matrix/a/b/a$d:yK	()Ljava/util/List;
+    //   181: putfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   184: aload_3
+    //   185: astore_1
+    //   186: aload 5
+    //   188: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   191: aload 4
+    //   193: invokestatic 137	com/tencent/matrix/a/b/a$d:a	(Lcom/tencent/matrix/a/b/a$d;)J
+    //   196: putfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   199: aload_3
+    //   200: invokevirtual 140	java/io/ObjectInputStream:close	()V
+    //   203: aload 5
+    //   205: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   208: getfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   211: ifnonnull +29 -> 240
+    //   214: aload 5
+    //   216: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   219: new 98	java/util/ArrayList
+    //   222: dup
+    //   223: invokespecial 101	java/util/ArrayList:<init>	()V
+    //   226: putfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   229: aload 5
+    //   231: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   234: ldc2_w 104
+    //   237: putfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   240: ldc 142
+    //   242: ldc 144
+    //   244: iconst_2
+    //   245: anewarray 146	java/lang/Object
+    //   248: dup
+    //   249: iconst_0
+    //   250: aload 5
+    //   252: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   255: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   258: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   261: aastore
+    //   262: dup
+    //   263: iconst_1
+    //   264: aload 5
+    //   266: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   269: getfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   272: invokeinterface 158 1 0
+    //   277: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   280: aastore
+    //   281: invokestatic 169	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   284: goto -173 -> 111
     //   287: astore_1
-    //   288: ldc 120
-    //   290: ldc 154
+    //   288: ldc 142
+    //   290: ldc 171
     //   292: iconst_1
-    //   293: anewarray 124	java/lang/Object
+    //   293: anewarray 146	java/lang/Object
     //   296: dup
     //   297: iconst_0
-    //   298: aload 4
-    //   300: aastore
-    //   301: invokestatic 152	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   304: aload_3
-    //   305: ifnull -126 -> 179
-    //   308: aload_3
-    //   309: invokevirtual 118	java/io/ObjectInputStream:close	()V
-    //   312: goto -133 -> 179
-    //   315: astore_1
-    //   316: ldc 120
-    //   318: ldc 149
-    //   320: iconst_1
-    //   321: anewarray 124	java/lang/Object
-    //   324: dup
-    //   325: iconst_0
-    //   326: aload_1
-    //   327: aastore
-    //   328: invokestatic 152	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   331: goto -152 -> 179
-    //   334: astore 4
-    //   336: aconst_null
-    //   337: astore_3
-    //   338: aload_3
+    //   298: aload_1
+    //   299: aastore
+    //   300: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   303: goto -100 -> 203
+    //   306: astore 4
+    //   308: aconst_null
+    //   309: astore_3
+    //   310: aload_3
+    //   311: astore_1
+    //   312: ldc 142
+    //   314: ldc 176
+    //   316: iconst_1
+    //   317: anewarray 146	java/lang/Object
+    //   320: dup
+    //   321: iconst_0
+    //   322: aload 4
+    //   324: aastore
+    //   325: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   328: aload_3
+    //   329: ifnull -126 -> 203
+    //   332: aload_3
+    //   333: invokevirtual 140	java/io/ObjectInputStream:close	()V
+    //   336: goto -133 -> 203
     //   339: astore_1
-    //   340: ldc 120
-    //   342: ldc 154
+    //   340: ldc 142
+    //   342: ldc 171
     //   344: iconst_1
-    //   345: anewarray 124	java/lang/Object
+    //   345: anewarray 146	java/lang/Object
     //   348: dup
     //   349: iconst_0
-    //   350: aload 4
-    //   352: aastore
-    //   353: invokestatic 152	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   356: aload_3
-    //   357: ifnull -178 -> 179
-    //   360: aload_3
-    //   361: invokevirtual 118	java/io/ObjectInputStream:close	()V
-    //   364: goto -185 -> 179
-    //   367: astore_1
-    //   368: ldc 120
-    //   370: ldc 149
-    //   372: iconst_1
-    //   373: anewarray 124	java/lang/Object
-    //   376: dup
-    //   377: iconst_0
-    //   378: aload_1
-    //   379: aastore
-    //   380: invokestatic 152	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   383: goto -204 -> 179
-    //   386: astore_2
-    //   387: aconst_null
-    //   388: astore_1
-    //   389: aload_1
-    //   390: ifnull +7 -> 397
-    //   393: aload_1
-    //   394: invokevirtual 118	java/io/ObjectInputStream:close	()V
-    //   397: aload_2
-    //   398: athrow
-    //   399: astore_1
-    //   400: ldc 120
-    //   402: ldc 149
-    //   404: iconst_1
-    //   405: anewarray 124	java/lang/Object
-    //   408: dup
-    //   409: iconst_0
-    //   410: aload_1
-    //   411: aastore
-    //   412: invokestatic 152	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   415: goto -18 -> 397
-    //   418: aload_0
-    //   419: aconst_null
-    //   420: putfield 91	com/tencent/matrix/a/b/a:bmG	Lcom/tencent/matrix/a/b/a$b;
-    //   423: return
-    //   424: astore_2
-    //   425: goto -36 -> 389
-    //   428: astore 4
-    //   430: goto -92 -> 338
-    //   433: astore 4
-    //   435: goto -149 -> 286
+    //   350: aload_1
+    //   351: aastore
+    //   352: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   355: goto -152 -> 203
+    //   358: astore 4
+    //   360: aconst_null
+    //   361: astore_3
+    //   362: aload_3
+    //   363: astore_1
+    //   364: ldc 142
+    //   366: ldc 176
+    //   368: iconst_1
+    //   369: anewarray 146	java/lang/Object
+    //   372: dup
+    //   373: iconst_0
+    //   374: aload 4
+    //   376: aastore
+    //   377: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   380: aload_3
+    //   381: ifnull -178 -> 203
+    //   384: aload_3
+    //   385: invokevirtual 140	java/io/ObjectInputStream:close	()V
+    //   388: goto -185 -> 203
+    //   391: astore_1
+    //   392: ldc 142
+    //   394: ldc 171
+    //   396: iconst_1
+    //   397: anewarray 146	java/lang/Object
+    //   400: dup
+    //   401: iconst_0
+    //   402: aload_1
+    //   403: aastore
+    //   404: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   407: goto -204 -> 203
+    //   410: astore 4
+    //   412: aconst_null
+    //   413: astore_3
+    //   414: aload_3
+    //   415: astore_1
+    //   416: ldc 142
+    //   418: ldc 178
+    //   420: iconst_1
+    //   421: anewarray 146	java/lang/Object
+    //   424: dup
+    //   425: iconst_0
+    //   426: aload 4
+    //   428: aastore
+    //   429: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   432: aload_3
+    //   433: ifnull -230 -> 203
+    //   436: aload_3
+    //   437: invokevirtual 140	java/io/ObjectInputStream:close	()V
+    //   440: goto -237 -> 203
+    //   443: astore_1
+    //   444: ldc 142
+    //   446: ldc 171
+    //   448: iconst_1
+    //   449: anewarray 146	java/lang/Object
+    //   452: dup
+    //   453: iconst_0
+    //   454: aload_1
+    //   455: aastore
+    //   456: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   459: goto -256 -> 203
+    //   462: astore_2
+    //   463: aconst_null
+    //   464: astore_1
+    //   465: aload_1
+    //   466: ifnull +7 -> 473
+    //   469: aload_1
+    //   470: invokevirtual 140	java/io/ObjectInputStream:close	()V
+    //   473: aload_2
+    //   474: athrow
+    //   475: astore_1
+    //   476: ldc 142
+    //   478: ldc 171
+    //   480: iconst_1
+    //   481: anewarray 146	java/lang/Object
+    //   484: dup
+    //   485: iconst_0
+    //   486: aload_1
+    //   487: aastore
+    //   488: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   491: goto -18 -> 473
+    //   494: aload_0
+    //   495: aconst_null
+    //   496: putfield 113	com/tencent/matrix/a/b/a:bMg	Lcom/tencent/matrix/a/b/a$b;
+    //   499: return
+    //   500: astore_2
+    //   501: goto -36 -> 465
+    //   504: astore 4
+    //   506: goto -92 -> 414
+    //   509: astore 4
+    //   511: goto -149 -> 362
+    //   514: astore 4
+    //   516: goto -206 -> 310
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	438	0	this	a
-    //   0	438	1	parama	com.tencent.matrix.c.c.a
-    //   0	438	2	parama1	com.tencent.matrix.a.a.a
-    //   128	233	3	localObjectInputStream	java.io.ObjectInputStream
-    //   138	30	4	locald	d
-    //   282	17	4	localIOException1	java.io.IOException
-    //   334	17	4	localClassNotFoundException1	java.lang.ClassNotFoundException
-    //   428	1	4	localClassNotFoundException2	java.lang.ClassNotFoundException
-    //   433	1	4	localIOException2	java.io.IOException
-    //   37	204	5	localf	f
+    //   0	519	0	this	a
+    //   0	519	1	parama	com.tencent.matrix.e.c.a
+    //   0	519	2	parama1	com.tencent.matrix.a.a.a
+    //   152	285	3	localObjectInputStream	java.io.ObjectInputStream
+    //   162	30	4	locald	d
+    //   306	17	4	localIOException1	java.io.IOException
+    //   358	17	4	localClassNotFoundException1	java.lang.ClassNotFoundException
+    //   410	17	4	localException1	java.lang.Exception
+    //   504	1	4	localException2	java.lang.Exception
+    //   509	1	4	localClassNotFoundException2	java.lang.ClassNotFoundException
+    //   514	1	4	localIOException2	java.io.IOException
+    //   63	202	5	localf	f
     // Exception table:
     //   from	to	target	type
-    //   175	179	263	java/io/IOException
-    //   106	129	282	java/io/IOException
-    //   308	312	315	java/io/IOException
-    //   106	129	334	java/lang/ClassNotFoundException
-    //   360	364	367	java/io/IOException
-    //   106	129	386	finally
-    //   393	397	399	java/io/IOException
-    //   131	140	424	finally
-    //   147	160	424	finally
-    //   162	175	424	finally
-    //   288	304	424	finally
-    //   340	356	424	finally
-    //   131	140	428	java/lang/ClassNotFoundException
-    //   147	160	428	java/lang/ClassNotFoundException
-    //   162	175	428	java/lang/ClassNotFoundException
-    //   131	140	433	java/io/IOException
-    //   147	160	433	java/io/IOException
-    //   162	175	433	java/io/IOException
+    //   199	203	287	java/io/IOException
+    //   130	153	306	java/io/IOException
+    //   332	336	339	java/io/IOException
+    //   130	153	358	java/lang/ClassNotFoundException
+    //   384	388	391	java/io/IOException
+    //   130	153	410	java/lang/Exception
+    //   436	440	443	java/io/IOException
+    //   130	153	462	finally
+    //   469	473	475	java/io/IOException
+    //   155	164	500	finally
+    //   171	184	500	finally
+    //   186	199	500	finally
+    //   312	328	500	finally
+    //   364	380	500	finally
+    //   416	432	500	finally
+    //   155	164	504	java/lang/Exception
+    //   171	184	504	java/lang/Exception
+    //   186	199	504	java/lang/Exception
+    //   155	164	509	java/lang/ClassNotFoundException
+    //   171	184	509	java/lang/ClassNotFoundException
+    //   186	199	509	java/lang/ClassNotFoundException
+    //   155	164	514	java/io/IOException
+    //   171	184	514	java/io/IOException
+    //   186	199	514	java/io/IOException
+  }
+  
+  private static Intent t(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    try
+    {
+      Parcel localParcel = Parcel.obtain();
+      localParcel.unmarshall(paramArrayOfByte, 0, paramArrayOfByte.length);
+      localParcel.setDataPosition(0);
+      paramArrayOfByte = (Intent)Intent.CREATOR.createFromParcel(localParcel);
+      localParcel.recycle();
+      return paramArrayOfByte;
+    }
+    catch (IllegalStateException paramArrayOfByte)
+    {
+      com.tencent.matrix.g.c.e("MicroMsg.AlarmDetector", "[bytesToIntent] %s", new Object[] { paramArrayOfByte });
+    }
+    return null;
   }
   
   final void a(AlarmManager.OnAlarmListener paramOnAlarmListener, e parame)
   {
     int j = 0;
-    if (j < this.bmH.size())
+    if (j < this.bMh.size())
     {
-      a locala = (a)this.bmH.get(j);
-      if ((locala.bmM != null) && (locala.bmM.equals(paramOnAlarmListener))) {
-        locala.qR();
+      a locala = (a)this.bMh.get(j);
+      if ((locala.bMm != null) && (locala.bMm.equals(paramOnAlarmListener))) {
+        locala.yJ();
       }
       for (;;)
       {
         j += 1;
         break;
-        if (locala.bmL != null)
+        if (locala.bMl != null)
         {
-          e locale = locala.bmL;
+          e locale = locala.bMl;
           int i;
-          if ((locale.bmU != null) && (locale.bmU.equals(parame.bmU))) {
+          if ((locale.bMu != null) && (locale.bMu.equals(parame.bMu))) {
             i = 1;
           }
           for (;;)
@@ -305,13 +375,13 @@ public class a
             if (i == 0) {
               break label197;
             }
-            locala.qR();
+            locala.yJ();
             break;
-            if (locale.bmP == parame.bmP) {
+            if (locale.bMp == parame.bMp) {
               i = 1;
-            } else if ((locale.bmV != null) && (locale.bmV.filterEquals(parame.bmV))) {
+            } else if ((locale.bMv != null) && (locale.bMv.filterEquals(parame.bMv))) {
               i = 1;
-            } else if ((locale.bmR != null) && (locale.bmR.equals(parame.bmR))) {
+            } else if ((locale.bMr != null) && (locale.bMr.equals(parame.bMr))) {
               i = 1;
             } else {
               i = 0;
@@ -319,563 +389,563 @@ public class a
           }
         }
         label197:
-        if ((locala.bmL == null) && (locala.bmM == null)) {
-          locala.qR();
+        if ((locala.bMl == null) && (locala.bMm == null)) {
+          locala.yJ();
         }
       }
     }
   }
   
   /* Error */
-  final void qQ()
+  final void yI()
   {
     // Byte code:
-    //   0: invokestatic 248	java/lang/System:currentTimeMillis	()J
+    //   0: invokestatic 281	java/lang/System:currentTimeMillis	()J
     //   3: lstore 11
-    //   5: ldc 120
-    //   7: ldc 250
-    //   9: iconst_2
-    //   10: anewarray 124	java/lang/Object
-    //   13: dup
-    //   14: iconst_0
-    //   15: lload 11
-    //   17: invokestatic 130	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   20: aastore
-    //   21: dup
-    //   22: iconst_1
-    //   23: aload_0
-    //   24: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   27: invokestatic 130	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   30: aastore
-    //   31: invokestatic 147	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   34: aload_0
-    //   35: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   38: lconst_0
-    //   39: lcmp
-    //   40: ifgt +9 -> 49
-    //   43: aload_0
-    //   44: lload 11
-    //   46: putfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   49: lload 11
-    //   51: aload_0
-    //   52: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   55: lsub
-    //   56: ldc2_w 251
-    //   59: lcmp
-    //   60: iflt +73 -> 133
-    //   63: aload_0
-    //   64: lload 11
-    //   66: ldc2_w 253
-    //   69: lsub
-    //   70: putfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   73: aload_0
-    //   74: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   77: ldc2_w 255
-    //   80: ladd
-    //   81: lload 11
-    //   83: lcmp
-    //   84: ifgt +649 -> 733
-    //   87: aload_0
-    //   88: getfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   91: ifnull +15 -> 106
-    //   94: aload_0
-    //   95: getfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   98: invokeinterface 259 1 0
-    //   103: ifeq +59 -> 162
-    //   106: ldc 120
-    //   108: ldc_w 261
-    //   111: iconst_0
-    //   112: anewarray 124	java/lang/Object
-    //   115: invokestatic 147	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   118: aload_0
+    //   5: ldc 142
+    //   7: ldc_w 283
+    //   10: iconst_2
+    //   11: anewarray 146	java/lang/Object
+    //   14: dup
+    //   15: iconst_0
+    //   16: lload 11
+    //   18: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   21: aastore
+    //   22: dup
+    //   23: iconst_1
+    //   24: aload_0
+    //   25: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   28: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   31: aastore
+    //   32: invokestatic 169	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   35: aload_0
+    //   36: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   39: lconst_0
+    //   40: lcmp
+    //   41: ifgt +9 -> 50
+    //   44: aload_0
+    //   45: lload 11
+    //   47: putfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   50: lload 11
+    //   52: aload_0
+    //   53: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   56: lsub
+    //   57: ldc2_w 284
+    //   60: lcmp
+    //   61: iflt +73 -> 134
+    //   64: aload_0
+    //   65: lload 11
+    //   67: ldc2_w 286
+    //   70: lsub
+    //   71: putfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   74: aload_0
+    //   75: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   78: ldc2_w 288
+    //   81: ladd
+    //   82: lload 11
+    //   84: lcmp
+    //   85: ifgt +649 -> 734
+    //   88: aload_0
+    //   89: getfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   92: ifnull +15 -> 107
+    //   95: aload_0
+    //   96: getfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   99: invokeinterface 292 1 0
+    //   104: ifeq +59 -> 163
+    //   107: ldc 142
+    //   109: ldc_w 294
+    //   112: iconst_0
+    //   113: anewarray 146	java/lang/Object
+    //   116: invokestatic 169	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   119: aload_0
-    //   120: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   123: ldc2_w 255
-    //   126: ladd
-    //   127: putfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   130: goto -57 -> 73
-    //   133: lload 11
-    //   135: aload_0
-    //   136: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   139: lsub
-    //   140: ldc2_w 253
-    //   143: lcmp
-    //   144: iflt -71 -> 73
-    //   147: aload_0
+    //   120: aload_0
+    //   121: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   124: ldc2_w 288
+    //   127: ladd
+    //   128: putfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   131: goto -57 -> 74
+    //   134: lload 11
+    //   136: aload_0
+    //   137: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   140: lsub
+    //   141: ldc2_w 286
+    //   144: lcmp
+    //   145: iflt -71 -> 74
     //   148: aload_0
-    //   149: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   152: ldc2_w 253
-    //   155: ladd
-    //   156: putfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   159: goto -86 -> 73
-    //   162: new 263	java/lang/StringBuilder
-    //   165: dup
-    //   166: invokespecial 264	java/lang/StringBuilder:<init>	()V
-    //   169: astore 14
-    //   171: new 263	java/lang/StringBuilder
-    //   174: dup
-    //   175: invokespecial 264	java/lang/StringBuilder:<init>	()V
-    //   178: astore 15
-    //   180: iconst_0
-    //   181: istore_2
-    //   182: aload_0
-    //   183: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   186: ldc2_w 255
-    //   189: ladd
-    //   190: lstore 9
-    //   192: aload_0
-    //   193: getfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   196: invokeinterface 268 1 0
-    //   201: astore 13
-    //   203: iconst_0
-    //   204: istore_1
-    //   205: aload 13
-    //   207: invokeinterface 273 1 0
-    //   212: ifeq +317 -> 529
-    //   215: aload 13
-    //   217: invokeinterface 276 1 0
-    //   222: checkcast 6	com/tencent/matrix/a/b/a$a
-    //   225: astore 16
-    //   227: aload 16
-    //   229: getfield 279	com/tencent/matrix/a/b/a$a:type	I
-    //   232: iconst_1
-    //   233: if_icmpeq +11 -> 244
-    //   236: aload 16
-    //   238: getfield 279	com/tencent/matrix/a/b/a$a:type	I
-    //   241: ifne +40 -> 281
-    //   244: aload 16
-    //   246: getfield 282	com/tencent/matrix/a/b/a$a:bmJ	J
-    //   249: lstore 5
-    //   251: lload 5
-    //   253: aload_0
-    //   254: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   257: lcmp
-    //   258: ifge +41 -> 299
-    //   261: aload 16
-    //   263: getfield 285	com/tencent/matrix/a/b/a$a:bmK	J
-    //   266: lconst_0
-    //   267: lcmp
-    //   268: ifgt +31 -> 299
-    //   271: aload 13
-    //   273: invokeinterface 288 1 0
-    //   278: goto -73 -> 205
-    //   281: aload 16
-    //   283: getfield 282	com/tencent/matrix/a/b/a$a:bmJ	J
-    //   286: invokestatic 248	java/lang/System:currentTimeMillis	()J
-    //   289: ladd
-    //   290: invokestatic 293	android/os/SystemClock:elapsedRealtime	()J
-    //   293: lsub
-    //   294: lstore 5
-    //   296: goto -45 -> 251
-    //   299: aload 16
-    //   301: getfield 296	com/tencent/matrix/a/b/a$a:bmN	J
-    //   304: aload_0
-    //   305: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   308: lcmp
-    //   309: iflt +14 -> 323
-    //   312: aload 16
-    //   314: getfield 296	com/tencent/matrix/a/b/a$a:bmN	J
-    //   317: lload 5
-    //   319: lcmp
-    //   320: ifgt +13 -> 333
-    //   323: aload 13
-    //   325: invokeinterface 288 1 0
-    //   330: goto -125 -> 205
-    //   333: lload 5
-    //   335: lload 9
-    //   337: lcmp
-    //   338: ifge -133 -> 205
-    //   341: aload 16
-    //   343: getfield 285	com/tencent/matrix/a/b/a$a:bmK	J
-    //   346: lconst_0
-    //   347: lcmp
-    //   348: ifle +170 -> 518
-    //   351: aload 16
-    //   353: getfield 296	com/tencent/matrix/a/b/a$a:bmN	J
-    //   356: lload 9
-    //   358: lcmp
-    //   359: ifge +118 -> 477
-    //   362: aload 16
-    //   364: getfield 296	com/tencent/matrix/a/b/a$a:bmN	J
-    //   367: lstore 7
-    //   369: aload_0
-    //   370: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   373: lload 5
-    //   375: lcmp
-    //   376: ifgt +108 -> 484
-    //   379: lload 7
-    //   381: lload 5
-    //   383: lsub
-    //   384: lconst_1
-    //   385: lsub
-    //   386: aload 16
-    //   388: getfield 285	com/tencent/matrix/a/b/a$a:bmK	J
-    //   391: ldiv
-    //   392: lconst_1
-    //   393: ladd
-    //   394: lstore 5
-    //   396: iload_2
-    //   397: i2l
-    //   398: lload 5
-    //   400: ladd
-    //   401: l2i
-    //   402: istore 4
-    //   404: aload 14
-    //   406: aload 16
-    //   408: getfield 299	com/tencent/matrix/a/b/a$a:stackTrace	Ljava/lang/String;
-    //   411: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   414: ldc_w 305
-    //   417: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   420: pop
-    //   421: aload 16
-    //   423: getfield 279	com/tencent/matrix/a/b/a$a:type	I
-    //   426: ifeq +12 -> 438
-    //   429: aload 16
-    //   431: getfield 279	com/tencent/matrix/a/b/a$a:type	I
-    //   434: iconst_2
-    //   435: if_icmpne +89 -> 524
-    //   438: iconst_1
-    //   439: istore_3
-    //   440: iload 4
-    //   442: istore_2
-    //   443: iload_3
-    //   444: ifeq -239 -> 205
-    //   447: lload 5
-    //   449: iload_1
-    //   450: i2l
-    //   451: ladd
-    //   452: l2i
-    //   453: istore_1
-    //   454: aload 15
-    //   456: aload 16
-    //   458: getfield 299	com/tencent/matrix/a/b/a$a:stackTrace	Ljava/lang/String;
-    //   461: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   464: ldc_w 305
-    //   467: invokevirtual 303	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   470: pop
-    //   471: iload 4
-    //   473: istore_2
-    //   474: goto -269 -> 205
-    //   477: lload 9
-    //   479: lstore 7
-    //   481: goto -112 -> 369
-    //   484: lload 7
-    //   486: aload_0
-    //   487: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   490: aload_0
-    //   491: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   494: lload 5
-    //   496: lsub
-    //   497: aload 16
-    //   499: getfield 285	com/tencent/matrix/a/b/a$a:bmK	J
-    //   502: lrem
-    //   503: lsub
+    //   149: aload_0
+    //   150: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   153: ldc2_w 286
+    //   156: ladd
+    //   157: putfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   160: goto -86 -> 74
+    //   163: new 296	java/lang/StringBuilder
+    //   166: dup
+    //   167: invokespecial 297	java/lang/StringBuilder:<init>	()V
+    //   170: astore 14
+    //   172: new 296	java/lang/StringBuilder
+    //   175: dup
+    //   176: invokespecial 297	java/lang/StringBuilder:<init>	()V
+    //   179: astore 15
+    //   181: iconst_0
+    //   182: istore_2
+    //   183: aload_0
+    //   184: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   187: ldc2_w 288
+    //   190: ladd
+    //   191: lstore 9
+    //   193: aload_0
+    //   194: getfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   197: invokeinterface 301 1 0
+    //   202: astore 13
+    //   204: iconst_0
+    //   205: istore_1
+    //   206: aload 13
+    //   208: invokeinterface 306 1 0
+    //   213: ifeq +317 -> 530
+    //   216: aload 13
+    //   218: invokeinterface 309 1 0
+    //   223: checkcast 6	com/tencent/matrix/a/b/a$a
+    //   226: astore 16
+    //   228: aload 16
+    //   230: getfield 312	com/tencent/matrix/a/b/a$a:type	I
+    //   233: iconst_1
+    //   234: if_icmpeq +11 -> 245
+    //   237: aload 16
+    //   239: getfield 312	com/tencent/matrix/a/b/a$a:type	I
+    //   242: ifne +40 -> 282
+    //   245: aload 16
+    //   247: getfield 315	com/tencent/matrix/a/b/a$a:bMj	J
+    //   250: lstore 5
+    //   252: lload 5
+    //   254: aload_0
+    //   255: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   258: lcmp
+    //   259: ifge +41 -> 300
+    //   262: aload 16
+    //   264: getfield 318	com/tencent/matrix/a/b/a$a:bMk	J
+    //   267: lconst_0
+    //   268: lcmp
+    //   269: ifgt +31 -> 300
+    //   272: aload 13
+    //   274: invokeinterface 321 1 0
+    //   279: goto -73 -> 206
+    //   282: aload 16
+    //   284: getfield 315	com/tencent/matrix/a/b/a$a:bMj	J
+    //   287: invokestatic 281	java/lang/System:currentTimeMillis	()J
+    //   290: ladd
+    //   291: invokestatic 326	android/os/SystemClock:elapsedRealtime	()J
+    //   294: lsub
+    //   295: lstore 5
+    //   297: goto -45 -> 252
+    //   300: aload 16
+    //   302: getfield 329	com/tencent/matrix/a/b/a$a:bMn	J
+    //   305: aload_0
+    //   306: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   309: lcmp
+    //   310: iflt +14 -> 324
+    //   313: aload 16
+    //   315: getfield 329	com/tencent/matrix/a/b/a$a:bMn	J
+    //   318: lload 5
+    //   320: lcmp
+    //   321: ifgt +13 -> 334
+    //   324: aload 13
+    //   326: invokeinterface 321 1 0
+    //   331: goto -125 -> 206
+    //   334: lload 5
+    //   336: lload 9
+    //   338: lcmp
+    //   339: ifge -133 -> 206
+    //   342: aload 16
+    //   344: getfield 318	com/tencent/matrix/a/b/a$a:bMk	J
+    //   347: lconst_0
+    //   348: lcmp
+    //   349: ifle +170 -> 519
+    //   352: aload 16
+    //   354: getfield 329	com/tencent/matrix/a/b/a$a:bMn	J
+    //   357: lload 9
+    //   359: lcmp
+    //   360: ifge +118 -> 478
+    //   363: aload 16
+    //   365: getfield 329	com/tencent/matrix/a/b/a$a:bMn	J
+    //   368: lstore 7
+    //   370: aload_0
+    //   371: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   374: lload 5
+    //   376: lcmp
+    //   377: ifgt +108 -> 485
+    //   380: lload 7
+    //   382: lload 5
+    //   384: lsub
+    //   385: lconst_1
+    //   386: lsub
+    //   387: aload 16
+    //   389: getfield 318	com/tencent/matrix/a/b/a$a:bMk	J
+    //   392: ldiv
+    //   393: lconst_1
+    //   394: ladd
+    //   395: lstore 5
+    //   397: iload_2
+    //   398: i2l
+    //   399: lload 5
+    //   401: ladd
+    //   402: l2i
+    //   403: istore 4
+    //   405: aload 14
+    //   407: aload 16
+    //   409: getfield 332	com/tencent/matrix/a/b/a$a:stackTrace	Ljava/lang/String;
+    //   412: invokevirtual 336	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   415: ldc_w 338
+    //   418: invokevirtual 336	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   421: pop
+    //   422: aload 16
+    //   424: getfield 312	com/tencent/matrix/a/b/a$a:type	I
+    //   427: ifeq +12 -> 439
+    //   430: aload 16
+    //   432: getfield 312	com/tencent/matrix/a/b/a$a:type	I
+    //   435: iconst_2
+    //   436: if_icmpne +89 -> 525
+    //   439: iconst_1
+    //   440: istore_3
+    //   441: iload 4
+    //   443: istore_2
+    //   444: iload_3
+    //   445: ifeq -239 -> 206
+    //   448: lload 5
+    //   450: iload_1
+    //   451: i2l
+    //   452: ladd
+    //   453: l2i
+    //   454: istore_1
+    //   455: aload 15
+    //   457: aload 16
+    //   459: getfield 332	com/tencent/matrix/a/b/a$a:stackTrace	Ljava/lang/String;
+    //   462: invokevirtual 336	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   465: ldc_w 338
+    //   468: invokevirtual 336	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   471: pop
+    //   472: iload 4
+    //   474: istore_2
+    //   475: goto -269 -> 206
+    //   478: lload 9
+    //   480: lstore 7
+    //   482: goto -112 -> 370
+    //   485: lload 7
+    //   487: aload_0
+    //   488: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   491: aload_0
+    //   492: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   495: lload 5
+    //   497: lsub
+    //   498: aload 16
+    //   500: getfield 318	com/tencent/matrix/a/b/a$a:bMk	J
+    //   503: lrem
     //   504: lsub
-    //   505: lconst_1
-    //   506: lsub
-    //   507: aload 16
-    //   509: getfield 285	com/tencent/matrix/a/b/a$a:bmK	J
-    //   512: ldiv
-    //   513: lstore 5
-    //   515: goto -119 -> 396
-    //   518: lconst_1
-    //   519: lstore 5
-    //   521: goto -125 -> 396
-    //   524: iconst_0
-    //   525: istore_3
-    //   526: goto -86 -> 440
-    //   529: iconst_m1
-    //   530: istore_3
-    //   531: aconst_null
-    //   532: astore 13
-    //   534: iload_2
-    //   535: aload_0
-    //   536: getfield 48	com/tencent/matrix/a/b/a:bmx	I
-    //   539: if_icmplt +67 -> 606
-    //   542: aload 14
-    //   544: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   547: astore 13
-    //   549: iconst_4
-    //   550: istore_1
-    //   551: iload_1
-    //   552: ifle -434 -> 118
-    //   555: ldc_w 311
-    //   558: iconst_2
-    //   559: anewarray 124	java/lang/Object
-    //   562: dup
-    //   563: iconst_0
-    //   564: iload_1
-    //   565: invokestatic 141	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   568: aastore
-    //   569: dup
-    //   570: iconst_1
-    //   571: aload 13
-    //   573: aastore
-    //   574: invokestatic 315	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   577: invokestatic 321	com/tencent/matrix/d/c:bB	(Ljava/lang/String;)Ljava/lang/String;
-    //   580: astore 14
-    //   582: aload_0
-    //   583: aload 14
-    //   585: invokevirtual 325	com/tencent/matrix/a/b/a:by	(Ljava/lang/String;)Z
-    //   588: ifeq +42 -> 630
-    //   591: ldc 120
-    //   593: ldc_w 327
-    //   596: iconst_0
-    //   597: anewarray 124	java/lang/Object
-    //   600: invokestatic 330	com/tencent/matrix/d/b:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   603: goto -485 -> 118
-    //   606: iload_1
-    //   607: aload_0
-    //   608: getfield 51	com/tencent/matrix/a/b/a:bmy	I
-    //   611: if_icmplt +409 -> 1020
-    //   614: iconst_5
-    //   615: istore_3
-    //   616: aload 15
-    //   618: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   621: astore 13
-    //   623: iload_1
-    //   624: istore_2
-    //   625: iload_3
-    //   626: istore_1
-    //   627: goto -76 -> 551
-    //   630: new 332	org/json/JSONObject
-    //   633: dup
-    //   634: invokespecial 333	org/json/JSONObject:<init>	()V
-    //   637: astore 15
-    //   639: aload 15
-    //   641: ldc_w 335
-    //   644: aload 13
-    //   646: invokevirtual 339	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   649: pop
-    //   650: aload 15
-    //   652: ldc_w 341
-    //   655: iload_2
-    //   656: invokevirtual 344	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
-    //   659: pop
-    //   660: aload 15
-    //   662: ldc_w 346
-    //   665: ldc_w 348
-    //   668: invokevirtual 339	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   671: pop
-    //   672: new 350	com/tencent/matrix/c/b
-    //   675: dup
-    //   676: iload_1
-    //   677: invokespecial 352	com/tencent/matrix/c/b:<init>	(I)V
-    //   680: astore 13
-    //   682: aload 13
-    //   684: aload 14
-    //   686: putfield 355	com/tencent/matrix/c/b:key	Ljava/lang/String;
-    //   689: aload 13
-    //   691: aload 15
-    //   693: putfield 359	com/tencent/matrix/c/b:boK	Lorg/json/JSONObject;
-    //   696: aload_0
-    //   697: aload 13
-    //   699: invokevirtual 362	com/tencent/matrix/a/b/a:c	(Lcom/tencent/matrix/c/b;)V
-    //   702: aload_0
-    //   703: aload 14
-    //   705: invokevirtual 365	com/tencent/matrix/a/b/a:bx	(Ljava/lang/String;)V
-    //   708: goto -590 -> 118
-    //   711: astore 13
-    //   713: ldc 120
-    //   715: ldc_w 367
-    //   718: iconst_1
-    //   719: anewarray 124	java/lang/Object
-    //   722: dup
-    //   723: iconst_0
-    //   724: aload 13
-    //   726: aastore
-    //   727: invokestatic 369	com/tencent/matrix/d/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   730: goto -58 -> 672
-    //   733: aload_0
-    //   734: getfield 56	com/tencent/matrix/a/b/a:bmF	Lcom/tencent/matrix/a/b/a$f;
-    //   737: astore 15
-    //   739: new 58	java/io/File
-    //   742: dup
-    //   743: aload 15
-    //   745: getfield 62	com/tencent/matrix/a/b/a$f:bmW	Ljava/lang/String;
-    //   748: invokespecial 65	java/io/File:<init>	(Ljava/lang/String;)V
-    //   751: astore 13
-    //   753: aload 13
-    //   755: invokevirtual 373	java/io/File:getParentFile	()Ljava/io/File;
-    //   758: invokevirtual 69	java/io/File:exists	()Z
-    //   761: ifne +12 -> 773
-    //   764: aload 13
-    //   766: invokevirtual 373	java/io/File:getParentFile	()Ljava/io/File;
-    //   769: invokevirtual 376	java/io/File:mkdirs	()Z
-    //   772: pop
-    //   773: new 378	java/io/ObjectOutputStream
-    //   776: dup
-    //   777: new 380	java/io/BufferedOutputStream
-    //   780: dup
-    //   781: new 382	java/io/FileOutputStream
-    //   784: dup
-    //   785: aload 13
-    //   787: invokespecial 383	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   790: invokespecial 386	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   793: invokespecial 387	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   796: astore 14
-    //   798: aload 14
-    //   800: astore 13
-    //   802: aload 14
-    //   804: new 15	com/tencent/matrix/a/b/a$d
-    //   807: dup
-    //   808: aload 15
-    //   810: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   813: getfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   816: aload 15
-    //   818: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   821: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   824: invokespecial 390	com/tencent/matrix/a/b/a$d:<init>	(Ljava/util/List;J)V
-    //   827: invokevirtual 394	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   830: aload 14
-    //   832: astore 13
-    //   834: aload 14
-    //   836: invokevirtual 397	java/io/ObjectOutputStream:flush	()V
-    //   839: aload 14
-    //   841: astore 13
-    //   843: ldc 120
-    //   845: ldc_w 399
-    //   848: iconst_2
-    //   849: anewarray 124	java/lang/Object
-    //   852: dup
-    //   853: iconst_0
-    //   854: aload 15
-    //   856: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   859: getfield 84	com/tencent/matrix/a/b/a:bmI	J
-    //   862: invokestatic 130	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   865: aastore
-    //   866: dup
-    //   867: iconst_1
-    //   868: aload 15
-    //   870: getfield 73	com/tencent/matrix/a/b/a$f:bmX	Lcom/tencent/matrix/a/b/a;
-    //   873: getfield 80	com/tencent/matrix/a/b/a:bmH	Ljava/util/List;
-    //   876: invokeinterface 136 1 0
-    //   881: invokestatic 141	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   884: aastore
-    //   885: invokestatic 147	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   888: aload 14
-    //   890: invokevirtual 400	java/io/ObjectOutputStream:close	()V
-    //   893: return
-    //   894: astore 13
-    //   896: ldc 120
-    //   898: ldc_w 402
-    //   901: iconst_1
-    //   902: anewarray 124	java/lang/Object
-    //   905: dup
-    //   906: iconst_0
-    //   907: aload 13
-    //   909: aastore
-    //   910: invokestatic 147	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   913: return
-    //   914: astore 15
-    //   916: aconst_null
-    //   917: astore 14
-    //   919: aload 14
-    //   921: astore 13
-    //   923: ldc 120
-    //   925: ldc 149
-    //   927: iconst_1
-    //   928: anewarray 124	java/lang/Object
-    //   931: dup
-    //   932: iconst_0
-    //   933: aload 15
-    //   935: aastore
-    //   936: invokestatic 152	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   939: aload 14
-    //   941: ifnull -48 -> 893
-    //   944: aload 14
-    //   946: invokevirtual 400	java/io/ObjectOutputStream:close	()V
-    //   949: return
-    //   950: astore 13
-    //   952: ldc 120
-    //   954: ldc_w 402
-    //   957: iconst_1
-    //   958: anewarray 124	java/lang/Object
-    //   961: dup
-    //   962: iconst_0
-    //   963: aload 13
-    //   965: aastore
-    //   966: invokestatic 147	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   969: return
-    //   970: astore 14
-    //   972: aconst_null
-    //   973: astore 13
-    //   975: aload 13
-    //   977: ifnull +8 -> 985
-    //   980: aload 13
-    //   982: invokevirtual 400	java/io/ObjectOutputStream:close	()V
-    //   985: aload 14
-    //   987: athrow
-    //   988: astore 13
-    //   990: ldc 120
-    //   992: ldc_w 402
-    //   995: iconst_1
-    //   996: anewarray 124	java/lang/Object
-    //   999: dup
-    //   1000: iconst_0
-    //   1001: aload 13
-    //   1003: aastore
-    //   1004: invokestatic 147	com/tencent/matrix/d/b:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1007: goto -22 -> 985
-    //   1010: astore 14
-    //   1012: goto -37 -> 975
-    //   1015: astore 15
-    //   1017: goto -98 -> 919
-    //   1020: iconst_0
-    //   1021: istore_2
-    //   1022: iload_3
-    //   1023: istore_1
-    //   1024: goto -473 -> 551
+    //   505: lsub
+    //   506: lconst_1
+    //   507: lsub
+    //   508: aload 16
+    //   510: getfield 318	com/tencent/matrix/a/b/a$a:bMk	J
+    //   513: ldiv
+    //   514: lstore 5
+    //   516: goto -119 -> 397
+    //   519: lconst_1
+    //   520: lstore 5
+    //   522: goto -125 -> 397
+    //   525: iconst_0
+    //   526: istore_3
+    //   527: goto -86 -> 441
+    //   530: iconst_m1
+    //   531: istore_3
+    //   532: aconst_null
+    //   533: astore 13
+    //   535: iload_2
+    //   536: aload_0
+    //   537: getfield 69	com/tencent/matrix/a/b/a:bMd	I
+    //   540: if_icmplt +67 -> 607
+    //   543: aload 14
+    //   545: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   548: astore 13
+    //   550: iconst_4
+    //   551: istore_1
+    //   552: iload_1
+    //   553: ifle -434 -> 119
+    //   556: ldc_w 343
+    //   559: iconst_2
+    //   560: anewarray 146	java/lang/Object
+    //   563: dup
+    //   564: iconst_0
+    //   565: iload_1
+    //   566: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   569: aastore
+    //   570: dup
+    //   571: iconst_1
+    //   572: aload 13
+    //   574: aastore
+    //   575: invokestatic 347	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   578: invokestatic 353	com/tencent/matrix/g/d:cE	(Ljava/lang/String;)Ljava/lang/String;
+    //   581: astore 14
+    //   583: aload_0
+    //   584: aload 14
+    //   586: invokevirtual 357	com/tencent/matrix/a/b/a:cA	(Ljava/lang/String;)Z
+    //   589: ifeq +42 -> 631
+    //   592: ldc 142
+    //   594: ldc_w 359
+    //   597: iconst_0
+    //   598: anewarray 146	java/lang/Object
+    //   601: invokestatic 362	com/tencent/matrix/g/c:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   604: goto -485 -> 119
+    //   607: iload_1
+    //   608: aload_0
+    //   609: getfield 74	com/tencent/matrix/a/b/a:bMe	I
+    //   612: if_icmplt +409 -> 1021
+    //   615: iconst_5
+    //   616: istore_3
+    //   617: aload 15
+    //   619: invokevirtual 341	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   622: astore 13
+    //   624: iload_1
+    //   625: istore_2
+    //   626: iload_3
+    //   627: istore_1
+    //   628: goto -76 -> 552
+    //   631: new 364	org/json/JSONObject
+    //   634: dup
+    //   635: invokespecial 365	org/json/JSONObject:<init>	()V
+    //   638: astore 15
+    //   640: aload 15
+    //   642: ldc_w 367
+    //   645: aload 13
+    //   647: invokevirtual 371	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   650: pop
+    //   651: aload 15
+    //   653: ldc_w 373
+    //   656: iload_2
+    //   657: invokevirtual 376	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   660: pop
+    //   661: aload 15
+    //   663: ldc_w 378
+    //   666: ldc_w 380
+    //   669: invokevirtual 371	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   672: pop
+    //   673: new 382	com/tencent/matrix/e/b
+    //   676: dup
+    //   677: iload_1
+    //   678: invokespecial 384	com/tencent/matrix/e/b:<init>	(I)V
+    //   681: astore 13
+    //   683: aload 13
+    //   685: aload 14
+    //   687: putfield 387	com/tencent/matrix/e/b:key	Ljava/lang/String;
+    //   690: aload 13
+    //   692: aload 15
+    //   694: putfield 391	com/tencent/matrix/e/b:bOx	Lorg/json/JSONObject;
+    //   697: aload_0
+    //   698: aload 13
+    //   700: invokevirtual 394	com/tencent/matrix/a/b/a:b	(Lcom/tencent/matrix/e/b;)V
+    //   703: aload_0
+    //   704: aload 14
+    //   706: invokevirtual 397	com/tencent/matrix/a/b/a:cz	(Ljava/lang/String;)V
+    //   709: goto -590 -> 119
+    //   712: astore 13
+    //   714: ldc 142
+    //   716: ldc_w 399
+    //   719: iconst_1
+    //   720: anewarray 146	java/lang/Object
+    //   723: dup
+    //   724: iconst_0
+    //   725: aload 13
+    //   727: aastore
+    //   728: invokestatic 226	com/tencent/matrix/g/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   731: goto -58 -> 673
+    //   734: aload_0
+    //   735: getfield 79	com/tencent/matrix/a/b/a:bMf	Lcom/tencent/matrix/a/b/a$f;
+    //   738: astore 15
+    //   740: new 81	java/io/File
+    //   743: dup
+    //   744: aload 15
+    //   746: getfield 85	com/tencent/matrix/a/b/a$f:bMw	Ljava/lang/String;
+    //   749: invokespecial 88	java/io/File:<init>	(Ljava/lang/String;)V
+    //   752: astore 13
+    //   754: aload 13
+    //   756: invokevirtual 403	java/io/File:getParentFile	()Ljava/io/File;
+    //   759: invokevirtual 92	java/io/File:exists	()Z
+    //   762: ifne +12 -> 774
+    //   765: aload 13
+    //   767: invokevirtual 403	java/io/File:getParentFile	()Ljava/io/File;
+    //   770: invokevirtual 406	java/io/File:mkdirs	()Z
+    //   773: pop
+    //   774: new 408	java/io/ObjectOutputStream
+    //   777: dup
+    //   778: new 410	java/io/BufferedOutputStream
+    //   781: dup
+    //   782: new 412	java/io/FileOutputStream
+    //   785: dup
+    //   786: aload 13
+    //   788: invokespecial 413	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   791: invokespecial 416	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   794: invokespecial 417	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   797: astore 14
+    //   799: aload 14
+    //   801: astore 13
+    //   803: aload 14
+    //   805: new 15	com/tencent/matrix/a/b/a$d
+    //   808: dup
+    //   809: aload 15
+    //   811: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   814: getfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   817: aload 15
+    //   819: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   822: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   825: invokespecial 420	com/tencent/matrix/a/b/a$d:<init>	(Ljava/util/List;J)V
+    //   828: invokevirtual 424	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   831: aload 14
+    //   833: astore 13
+    //   835: aload 14
+    //   837: invokevirtual 427	java/io/ObjectOutputStream:flush	()V
+    //   840: aload 14
+    //   842: astore 13
+    //   844: ldc 142
+    //   846: ldc_w 429
+    //   849: iconst_2
+    //   850: anewarray 146	java/lang/Object
+    //   853: dup
+    //   854: iconst_0
+    //   855: aload 15
+    //   857: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   860: getfield 107	com/tencent/matrix/a/b/a:bMi	J
+    //   863: invokestatic 152	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   866: aastore
+    //   867: dup
+    //   868: iconst_1
+    //   869: aload 15
+    //   871: getfield 96	com/tencent/matrix/a/b/a$f:bMx	Lcom/tencent/matrix/a/b/a;
+    //   874: getfield 103	com/tencent/matrix/a/b/a:bMh	Ljava/util/List;
+    //   877: invokeinterface 158 1 0
+    //   882: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   885: aastore
+    //   886: invokestatic 169	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   889: aload 14
+    //   891: invokevirtual 430	java/io/ObjectOutputStream:close	()V
+    //   894: return
+    //   895: astore 13
+    //   897: ldc 142
+    //   899: ldc_w 432
+    //   902: iconst_1
+    //   903: anewarray 146	java/lang/Object
+    //   906: dup
+    //   907: iconst_0
+    //   908: aload 13
+    //   910: aastore
+    //   911: invokestatic 169	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   914: return
+    //   915: astore 15
+    //   917: aconst_null
+    //   918: astore 14
+    //   920: aload 14
+    //   922: astore 13
+    //   924: ldc 142
+    //   926: ldc 171
+    //   928: iconst_1
+    //   929: anewarray 146	java/lang/Object
+    //   932: dup
+    //   933: iconst_0
+    //   934: aload 15
+    //   936: aastore
+    //   937: invokestatic 174	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   940: aload 14
+    //   942: ifnull -48 -> 894
+    //   945: aload 14
+    //   947: invokevirtual 430	java/io/ObjectOutputStream:close	()V
+    //   950: return
+    //   951: astore 13
+    //   953: ldc 142
+    //   955: ldc_w 432
+    //   958: iconst_1
+    //   959: anewarray 146	java/lang/Object
+    //   962: dup
+    //   963: iconst_0
+    //   964: aload 13
+    //   966: aastore
+    //   967: invokestatic 169	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   970: return
+    //   971: astore 14
+    //   973: aconst_null
+    //   974: astore 13
+    //   976: aload 13
+    //   978: ifnull +8 -> 986
+    //   981: aload 13
+    //   983: invokevirtual 430	java/io/ObjectOutputStream:close	()V
+    //   986: aload 14
+    //   988: athrow
+    //   989: astore 13
+    //   991: ldc 142
+    //   993: ldc_w 432
+    //   996: iconst_1
+    //   997: anewarray 146	java/lang/Object
+    //   1000: dup
+    //   1001: iconst_0
+    //   1002: aload 13
+    //   1004: aastore
+    //   1005: invokestatic 169	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1008: goto -22 -> 986
+    //   1011: astore 14
+    //   1013: goto -37 -> 976
+    //   1016: astore 15
+    //   1018: goto -98 -> 920
+    //   1021: iconst_0
+    //   1022: istore_2
+    //   1023: iload_3
+    //   1024: istore_1
+    //   1025: goto -473 -> 552
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1027	0	this	a
-    //   204	820	1	i	int
-    //   181	841	2	j	int
-    //   439	584	3	k	int
-    //   402	70	4	m	int
-    //   249	271	5	l1	long
-    //   367	118	7	l2	long
-    //   190	288	9	l3	long
-    //   3	131	11	l4	long
-    //   201	497	13	localObject1	Object
-    //   711	14	13	localJSONException	org.json.JSONException
-    //   751	91	13	localObject2	Object
-    //   894	14	13	localIOException1	java.io.IOException
-    //   921	1	13	localObject3	Object
-    //   950	14	13	localIOException2	java.io.IOException
-    //   973	8	13	localObject4	Object
-    //   988	14	13	localIOException3	java.io.IOException
-    //   169	776	14	localObject5	Object
-    //   970	16	14	localObject6	Object
-    //   1010	1	14	localObject7	Object
-    //   178	691	15	localObject8	Object
-    //   914	20	15	localIOException4	java.io.IOException
-    //   1015	1	15	localIOException5	java.io.IOException
-    //   225	283	16	locala	a
+    //   0	1028	0	this	a
+    //   205	820	1	i	int
+    //   182	841	2	j	int
+    //   440	584	3	k	int
+    //   403	70	4	m	int
+    //   250	271	5	l1	long
+    //   368	118	7	l2	long
+    //   191	288	9	l3	long
+    //   3	132	11	l4	long
+    //   202	497	13	localObject1	Object
+    //   712	14	13	localJSONException	org.json.JSONException
+    //   752	91	13	localObject2	Object
+    //   895	14	13	localIOException1	java.io.IOException
+    //   922	1	13	localObject3	Object
+    //   951	14	13	localIOException2	java.io.IOException
+    //   974	8	13	localObject4	Object
+    //   989	14	13	localIOException3	java.io.IOException
+    //   170	776	14	localObject5	Object
+    //   971	16	14	localObject6	Object
+    //   1011	1	14	localObject7	Object
+    //   179	691	15	localObject8	Object
+    //   915	20	15	localIOException4	java.io.IOException
+    //   1016	1	15	localIOException5	java.io.IOException
+    //   226	283	16	locala	a
     // Exception table:
     //   from	to	target	type
-    //   639	672	711	org/json/JSONException
-    //   888	893	894	java/io/IOException
-    //   773	798	914	java/io/IOException
-    //   944	949	950	java/io/IOException
-    //   773	798	970	finally
-    //   980	985	988	java/io/IOException
-    //   802	830	1010	finally
-    //   834	839	1010	finally
-    //   843	888	1010	finally
-    //   923	939	1010	finally
-    //   802	830	1015	java/io/IOException
-    //   834	839	1015	java/io/IOException
-    //   843	888	1015	java/io/IOException
+    //   640	673	712	org/json/JSONException
+    //   889	894	895	java/io/IOException
+    //   774	799	915	java/io/IOException
+    //   945	950	951	java/io/IOException
+    //   774	799	971	finally
+    //   981	986	989	java/io/IOException
+    //   803	831	1011	finally
+    //   835	840	1011	finally
+    //   844	889	1011	finally
+    //   924	940	1011	finally
+    //   803	831	1016	java/io/IOException
+    //   835	840	1016	java/io/IOException
+    //   844	889	1016	java/io/IOException
   }
   
-  private static final class a
+  static final class a
   {
-    final long bmJ;
-    final long bmK;
-    final a.e bmL;
-    final AlarmManager.OnAlarmListener bmM;
-    long bmN;
+    final long bMj;
+    final long bMk;
+    final a.e bMl;
+    final AlarmManager.OnAlarmListener bMm;
+    long bMn;
     final String stackTrace;
     final int type;
     
@@ -890,7 +960,7 @@ public class a
         if (paramLong1 < l2) {
           l1 = l2;
         }
-        this.bmJ = l1;
+        this.bMj = l1;
         paramLong1 = paramLong2;
         if (paramLong2 > 0L)
         {
@@ -899,11 +969,11 @@ public class a
             paramLong1 = 60000L;
           }
         }
-        this.bmK = paramLong1;
-        this.bmL = new a.e(paramPendingIntent);
-        this.bmM = paramOnAlarmListener;
+        this.bMk = paramLong1;
+        this.bMl = new a.e(paramPendingIntent);
+        this.bMm = paramOnAlarmListener;
         this.stackTrace = paramString;
-        this.bmN = 9223372036854775807L;
+        this.bMn = 9223372036854775807L;
         return;
       }
     }
@@ -911,36 +981,36 @@ public class a
     a(int paramInt, long paramLong1, long paramLong2, a.e parame, String paramString, long paramLong3)
     {
       this.type = paramInt;
-      this.bmJ = paramLong1;
-      this.bmK = paramLong2;
-      this.bmL = parame;
-      this.bmM = null;
+      this.bMj = paramLong1;
+      this.bMk = paramLong2;
+      this.bMl = parame;
+      this.bMm = null;
       this.stackTrace = paramString;
-      this.bmN = paramLong3;
+      this.bMn = paramLong3;
     }
     
-    public final void qR()
+    public final void yJ()
     {
-      if (this.bmN != 9223372036854775807L) {
+      if (this.bMn != 9223372036854775807L) {
         return;
       }
-      this.bmN = System.currentTimeMillis();
+      this.bMn = System.currentTimeMillis();
     }
   }
   
-  private static final class b
+  static final class b
   {
-    private final String bmO;
+    private final String bMo;
     
     b()
     {
-      String str = com.tencent.matrix.d.c.g("yyyy-MM-dd", System.currentTimeMillis());
-      this.bmO = String.format("%s/com.tencent.matrix/alarm-detector-record/%s/alarm-info-record-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.c.a.getPackageName(), str });
-      b.i("MicroMsg.AlarmDetector", "AlarmInfoRecorder path:%s", new Object[] { this.bmO });
+      String str = d.formatTime("yyyy-MM-dd", System.currentTimeMillis());
+      this.bMo = String.format("%s/com.tencent.matrix/alarm-detector-record/%s/alarm-info-record-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.c.a.getPackageName(), str });
+      com.tencent.matrix.g.c.i("MicroMsg.AlarmDetector", "AlarmInfoRecorder path:%s", new Object[] { this.bMo });
     }
     
     /* Error */
-    final void bu(String paramString)
+    final void cx(String paramString)
     {
       // Byte code:
       //   0: aconst_null
@@ -954,7 +1024,7 @@ public class a
       //   10: new 37	java/io/File
       //   13: dup
       //   14: aload_0
-      //   15: getfield 54	com/tencent/matrix/a/b/a$b:bmO	Ljava/lang/String;
+      //   15: getfield 54	com/tencent/matrix/a/b/a$b:bMo	Ljava/lang/String;
       //   18: invokespecial 73	java/io/File:<init>	(Ljava/lang/String;)V
       //   21: astore 6
       //   23: aload_3
@@ -975,7 +1045,7 @@ public class a
       //   53: ldc 85
       //   55: iconst_0
       //   56: anewarray 4	java/lang/Object
-      //   59: invokestatic 88	com/tencent/matrix/d/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   59: invokestatic 88	com/tencent/matrix/g/c:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   62: return
       //   63: aload_3
       //   64: astore_2
@@ -1018,7 +1088,7 @@ public class a
       //   127: aload_3
       //   128: invokevirtual 122	java/io/FileNotFoundException:getLocalizedMessage	()Ljava/lang/String;
       //   131: aastore
-      //   132: invokestatic 125	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   132: invokestatic 125	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   135: aload_1
       //   136: ifnull +82 -> 218
       //   139: aload_1
@@ -1040,7 +1110,7 @@ public class a
       //   162: aload_3
       //   163: invokevirtual 126	java/io/IOException:getLocalizedMessage	()Ljava/lang/String;
       //   166: aastore
-      //   167: invokestatic 125	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   167: invokestatic 125	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   170: aload_1
       //   171: ifnull +47 -> 218
       //   174: aload_1
@@ -1119,15 +1189,15 @@ public class a
     }
   }
   
-  private static final class c
+  static final class c
     implements Serializable
   {
-    final long bmJ;
-    final long bmK;
-    long bmN;
-    final int bmP;
-    final byte[] bmQ;
-    final String bmR;
+    final long bMj;
+    final long bMk;
+    long bMn;
+    final int bMp;
+    final byte[] bMq;
+    final String bMr;
     final String stackTrace;
     final int type;
     
@@ -1145,21 +1215,21 @@ public class a
     {
       assert (parama != null);
       this.type = parama.type;
-      this.bmJ = parama.bmJ;
-      this.bmK = parama.bmK;
-      this.bmP = parama.bmL.bmP;
-      this.bmQ = a.c(parama.bmL.bmV);
-      this.bmR = parama.bmL.bmR;
+      this.bMj = parama.bMj;
+      this.bMk = parama.bMk;
+      this.bMp = parama.bMl.bMp;
+      this.bMq = a.k(parama.bMl.bMv);
+      this.bMr = parama.bMl.bMr;
       this.stackTrace = parama.stackTrace;
-      this.bmN = parama.bmN;
+      this.bMn = parama.bMn;
     }
   }
   
-  private static final class d
+  static final class d
     implements Serializable
   {
-    private final List<a.c> bmH = new ArrayList();
-    private final long bmI;
+    private final List<a.c> bMh = new ArrayList();
+    private final long bMi;
     
     d(List<a.a> paramList, long paramLong)
     {
@@ -1168,69 +1238,77 @@ public class a
         int i = 0;
         while (i < paramList.size())
         {
-          this.bmH.add(new a.c((a.a)paramList.get(i)));
+          this.bMh.add(new a.c((a.a)paramList.get(i)));
           i += 1;
         }
       }
-      this.bmI = paramLong;
+      this.bMi = paramLong;
     }
     
-    public final List<a.a> qS()
+    public final List<a.a> yK()
     {
       ArrayList localArrayList = new ArrayList();
       int i = 0;
-      while (i < this.bmH.size())
+      if (i < this.bMh.size())
       {
-        a.c localc = (a.c)this.bmH.get(i);
-        a.e locale = new a.e(localc.bmP, a.m(localc.bmQ), localc.bmR);
-        localArrayList.add(new a.a(localc.type, localc.bmJ, localc.bmK, locale, localc.stackTrace, localc.bmN));
-        i += 1;
+        a.c localc = (a.c)this.bMh.get(i);
+        Object localObject = a.u(localc.bMq);
+        if (localObject == null) {
+          com.tencent.matrix.g.c.e("MicroMsg.AlarmDetector", "bytesToIntent is null,  alarmInfoSet maybe invalid object", new Object[0]);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          localObject = new a.e(localc.bMp, (Intent)localObject, localc.bMr);
+          localArrayList.add(new a.a(localc.type, localc.bMj, localc.bMk, (a.e)localObject, localc.stackTrace, localc.bMn));
+        }
       }
       return localArrayList;
     }
   }
   
-  private static final class e
+  static final class e
   {
-    private static Method bmS;
-    private static Method bmT;
-    final int bmP;
-    final String bmR;
-    final PendingIntent bmU;
-    final Intent bmV;
+    private static Method bMs;
+    private static Method bMt;
+    final int bMp;
+    final String bMr;
+    final PendingIntent bMu;
+    final Intent bMv;
     
     e(int paramInt, Intent paramIntent, String paramString)
     {
-      this.bmU = null;
-      this.bmP = paramInt;
-      this.bmV = paramIntent;
-      this.bmR = paramString;
+      this.bMu = null;
+      this.bMp = paramInt;
+      this.bMv = paramIntent;
+      this.bMr = paramString;
     }
     
     e(PendingIntent paramPendingIntent)
     {
-      this.bmU = paramPendingIntent;
-      if (this.bmU != null)
+      this.bMu = paramPendingIntent;
+      if (this.bMu != null)
       {
-        this.bmP = paramPendingIntent.hashCode();
-        this.bmV = a(paramPendingIntent);
-        this.bmR = b(paramPendingIntent);
+        this.bMp = paramPendingIntent.hashCode();
+        this.bMv = c(paramPendingIntent);
+        this.bMr = d(paramPendingIntent);
         return;
       }
-      this.bmP = -1;
-      this.bmV = null;
-      this.bmR = null;
+      this.bMp = -1;
+      this.bMv = null;
+      this.bMr = null;
     }
     
     /* Error */
-    private static Intent a(PendingIntent paramPendingIntent)
+    private static Intent c(PendingIntent paramPendingIntent)
     {
       // Byte code:
       //   0: aload_0
       //   1: ifnonnull +5 -> 6
       //   4: aconst_null
       //   5: areturn
-      //   6: getstatic 57	com/tencent/matrix/a/b/a$e:bmS	Ljava/lang/reflect/Method;
+      //   6: getstatic 57	com/tencent/matrix/a/b/a$e:bMs	Ljava/lang/reflect/Method;
       //   9: ifnonnull +24 -> 33
       //   12: ldc 35
       //   14: ldc 59
@@ -1239,11 +1317,11 @@ public class a
       //   20: invokevirtual 65	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
       //   23: astore_2
       //   24: aload_2
-      //   25: putstatic 57	com/tencent/matrix/a/b/a$e:bmS	Ljava/lang/reflect/Method;
+      //   25: putstatic 57	com/tencent/matrix/a/b/a$e:bMs	Ljava/lang/reflect/Method;
       //   28: aload_2
       //   29: iconst_1
       //   30: invokevirtual 71	java/lang/reflect/Method:setAccessible	(Z)V
-      //   33: getstatic 57	com/tencent/matrix/a/b/a$e:bmS	Ljava/lang/reflect/Method;
+      //   33: getstatic 57	com/tencent/matrix/a/b/a$e:bMs	Ljava/lang/reflect/Method;
       //   36: aload_0
       //   37: iconst_0
       //   38: anewarray 4	java/lang/Object
@@ -1265,7 +1343,7 @@ public class a
       //   66: iconst_0
       //   67: aload_0
       //   68: aastore
-      //   69: invokestatic 87	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   69: invokestatic 87	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   72: aconst_null
       //   73: areturn
       //   74: aload_0
@@ -1282,39 +1360,25 @@ public class a
       //   91: iconst_0
       //   92: aload_0
       //   93: aastore
-      //   94: invokestatic 87	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   94: invokestatic 87	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   97: aconst_null
       //   98: areturn
       //   99: astore_0
       //   100: ldc 79
-      //   102: ldc 89
-      //   104: iconst_2
+      //   102: ldc 81
+      //   104: iconst_1
       //   105: anewarray 4	java/lang/Object
       //   108: dup
       //   109: iconst_0
       //   110: aload_0
       //   111: aastore
-      //   112: dup
-      //   113: iconst_1
-      //   114: aload_0
-      //   115: invokevirtual 93	java/lang/reflect/InvocationTargetException:getCause	()Ljava/lang/Throwable;
-      //   118: aastore
-      //   119: invokestatic 87	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   122: goto -25 -> 97
-      //   125: astore_0
-      //   126: ldc 79
-      //   128: ldc 81
-      //   130: iconst_1
-      //   131: anewarray 4	java/lang/Object
-      //   134: dup
-      //   135: iconst_0
-      //   136: aload_0
-      //   137: aastore
-      //   138: invokestatic 87	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   141: goto -44 -> 97
+      //   112: invokestatic 87	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   115: goto -18 -> 97
+      //   118: astore_0
+      //   119: goto -22 -> 97
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	144	0	paramPendingIntent	PendingIntent
+      //   0	122	0	paramPendingIntent	PendingIntent
       //   49	2	1	bool	boolean
       //   23	6	2	localMethod	Method
       // Exception table:
@@ -1322,49 +1386,49 @@ public class a
       //   12	33	56	java/lang/NoSuchMethodException
       //   33	50	81	java/lang/IllegalAccessException
       //   74	79	81	java/lang/IllegalAccessException
-      //   33	50	99	java/lang/reflect/InvocationTargetException
-      //   74	79	99	java/lang/reflect/InvocationTargetException
-      //   33	50	125	java/lang/SecurityException
-      //   74	79	125	java/lang/SecurityException
+      //   33	50	99	java/lang/SecurityException
+      //   74	79	99	java/lang/SecurityException
+      //   33	50	118	java/lang/reflect/InvocationTargetException
+      //   74	79	118	java/lang/reflect/InvocationTargetException
     }
     
     /* Error */
-    private static String b(PendingIntent paramPendingIntent)
+    private static String d(PendingIntent paramPendingIntent)
     {
       // Byte code:
       //   0: aload_0
       //   1: ifnonnull +5 -> 6
       //   4: aconst_null
       //   5: areturn
-      //   6: getstatic 95	com/tencent/matrix/a/b/a$e:bmT	Ljava/lang/reflect/Method;
+      //   6: getstatic 89	com/tencent/matrix/a/b/a$e:bMt	Ljava/lang/reflect/Method;
       //   9: ifnonnull +29 -> 38
       //   12: ldc 35
-      //   14: ldc 97
+      //   14: ldc 91
       //   16: iconst_1
       //   17: anewarray 61	java/lang/Class
       //   20: dup
       //   21: iconst_0
-      //   22: ldc 99
+      //   22: ldc 93
       //   24: aastore
       //   25: invokevirtual 65	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
       //   28: astore_2
       //   29: aload_2
-      //   30: putstatic 95	com/tencent/matrix/a/b/a$e:bmT	Ljava/lang/reflect/Method;
+      //   30: putstatic 89	com/tencent/matrix/a/b/a$e:bMt	Ljava/lang/reflect/Method;
       //   33: aload_2
       //   34: iconst_1
       //   35: invokevirtual 71	java/lang/reflect/Method:setAccessible	(Z)V
-      //   38: getstatic 95	com/tencent/matrix/a/b/a$e:bmT	Ljava/lang/reflect/Method;
+      //   38: getstatic 89	com/tencent/matrix/a/b/a$e:bMt	Ljava/lang/reflect/Method;
       //   41: aload_0
       //   42: iconst_1
       //   43: anewarray 4	java/lang/Object
       //   46: dup
       //   47: iconst_0
-      //   48: ldc 101
+      //   48: ldc 95
       //   50: aastore
       //   51: invokevirtual 75	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
       //   54: astore_0
       //   55: aload_0
-      //   56: instanceof 99
+      //   56: instanceof 93
       //   59: istore_1
       //   60: iload_1
       //   61: ifne +23 -> 84
@@ -1372,43 +1436,43 @@ public class a
       //   65: areturn
       //   66: astore_0
       //   67: ldc 79
-      //   69: ldc 103
+      //   69: ldc 97
       //   71: iconst_1
       //   72: anewarray 4	java/lang/Object
       //   75: dup
       //   76: iconst_0
       //   77: aload_0
       //   78: aastore
-      //   79: invokestatic 87	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   79: invokestatic 87	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   82: aconst_null
       //   83: areturn
       //   84: aload_0
-      //   85: checkcast 99	java/lang/String
+      //   85: checkcast 93	java/lang/String
       //   88: astore_0
       //   89: aload_0
       //   90: areturn
       //   91: astore_0
       //   92: ldc 79
-      //   94: ldc 103
+      //   94: ldc 97
       //   96: iconst_1
       //   97: anewarray 4	java/lang/Object
       //   100: dup
       //   101: iconst_0
       //   102: aload_0
       //   103: aastore
-      //   104: invokestatic 87	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   104: invokestatic 87	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   107: aconst_null
       //   108: areturn
       //   109: astore_0
       //   110: ldc 79
-      //   112: ldc 103
+      //   112: ldc 97
       //   114: iconst_1
       //   115: anewarray 4	java/lang/Object
       //   118: dup
       //   119: iconst_0
       //   120: aload_0
       //   121: aastore
-      //   122: invokestatic 87	com/tencent/matrix/d/b:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   122: invokestatic 87	com/tencent/matrix/g/c:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   125: goto -18 -> 107
       // Local variable table:
       //   start	length	slot	name	signature
@@ -1425,13 +1489,13 @@ public class a
     }
   }
   
-  private final class f
+  final class f
   {
-    final String bmW = String.format("%s/com.tencent.matrix/alarm-detector-record/%s/current-alarm-info-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.c.a.getPackageName(), com.tencent.matrix.a.c.a.getProcessName() });
+    final String bMw = String.format("%s/com.tencent.matrix/alarm-detector-record/%s/current-alarm-info-%s", new Object[] { Environment.getExternalStorageDirectory().getAbsolutePath(), com.tencent.matrix.a.c.a.getPackageName(), com.tencent.matrix.a.c.a.getProcessName() });
     
     f()
     {
-      b.i("MicroMsg.AlarmDetector", "PersistenceHelper mSaveFileName :%s", new Object[] { this.bmW });
+      com.tencent.matrix.g.c.i("MicroMsg.AlarmDetector", "PersistenceHelper mSaveFileName :%s", new Object[] { this.bMw });
     }
   }
 }

@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ai.y;
-import com.tencent.mm.ai.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.y;
+import com.tencent.mm.aj.z;
 
 final class c$16
   implements DialogInterface.OnCancelListener
@@ -12,8 +13,10 @@ final class c$16
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    z.MH();
-    com.tencent.mm.ai.c.a(this.mXc);
+    AppMethodBeat.i(23471);
+    z.afr();
+    com.tencent.mm.aj.c.a(this.pzX);
+    AppMethodBeat.o(23471);
   }
 }
 

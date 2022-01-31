@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.game.ui;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.f.c;
 
 final class GameCenterUI5$3$1
@@ -10,11 +11,15 @@ final class GameCenterUI5$3$1
   
   public final void run()
   {
-    if (this.kYG.kYC.isFinishing()) {
+    AppMethodBeat.i(111790);
+    if (this.nwD.nwz.isFinishing())
+    {
+      AppMethodBeat.o(111790);
       return;
     }
-    GameCenterUI5.a(this.kYG.kYC, c.dA(this.kYG.kYC));
-    GameCenterUI5.a(this.kYG.kYC).show();
+    GameCenterUI5.a(this.nwD.nwz, c.en(this.nwD.nwz));
+    GameCenterUI5.a(this.nwD.nwz).show();
+    AppMethodBeat.o(111790);
   }
 }
 

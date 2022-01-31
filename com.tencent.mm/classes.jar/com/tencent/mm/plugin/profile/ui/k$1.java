@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.h;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.n.a;
 import com.tencent.mm.plugin.profile.b;
+import com.tencent.mm.plugin.profile.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.MMActivity;
 
 final class k$1
   implements View.OnClickListener
@@ -19,33 +21,38 @@ final class k$1
   
   public final void onClick(View paramView)
   {
-    k localk = this.mXC;
-    if (paramView.getId() == R.h.set_desc_and_label_tv) {
-      h.nFQ.f(16055, new Object[] { Integer.valueOf(2), Integer.valueOf(b.S(localk.bMV.getIntent())) });
+    AppMethodBeat.i(23566);
+    k localk = this.pAx;
+    if (paramView.getId() == 2131823128) {
+      h.qsU.e(16055, new Object[] { Integer.valueOf(c.al(localk.cmc.getIntent())), Integer.valueOf(2), Integer.valueOf(1), localk.contact.field_username });
     }
-    if (localk.dnp == null)
+    if (localk.contact == null)
     {
-      y.e("MicroMsg.ContactWidgetNormal", "contact is null");
+      ab.e("MicroMsg.ContactWidgetNormal", "contact is null");
+      AppMethodBeat.o(23566);
       return;
     }
-    if (!com.tencent.mm.n.a.gR(localk.dnp.field_type))
+    if (!a.je(localk.contact.field_type))
     {
-      if (!bk.bl(localk.dnp.field_encryptUsername))
+      if (!bo.isNullOrNil(localk.contact.field_encryptUsername))
       {
-        localk.KV(localk.dnp.field_encryptUsername);
+        localk.Xf(localk.contact.field_encryptUsername);
+        AppMethodBeat.o(23566);
         return;
       }
-      localk.KV(localk.dnp.field_username);
+      localk.Xf(localk.contact.field_username);
+      AppMethodBeat.o(23566);
       return;
     }
     paramView = new Intent();
-    paramView.putExtra("Contact_Scene", localk.fhj);
-    paramView.putExtra("Contact_User", localk.dnp.field_username);
-    paramView.putExtra("Contact_RoomNickname", localk.bMV.getIntent().getStringExtra("Contact_RoomNickname"));
+    paramView.putExtra("Contact_Scene", localk.gyR);
+    paramView.putExtra("Contact_User", localk.contact.field_username);
+    paramView.putExtra("Contact_RoomNickname", localk.cmc.getIntent().getStringExtra("Contact_RoomNickname"));
     paramView.putExtra("view_mode", true);
-    paramView.putExtra("contact_phone_number_by_md5", localk.mXA);
-    paramView.putExtra("contact_phone_number_list", localk.dnp.cCP);
-    com.tencent.mm.plugin.profile.a.eUR.n(paramView, localk.bMV);
+    paramView.putExtra("contact_phone_number_by_md5", localk.pAv);
+    paramView.putExtra("contact_phone_number_list", localk.contact.dqZ);
+    b.gmO.m(paramView, localk.cmc);
+    AppMethodBeat.o(23566);
   }
 }
 

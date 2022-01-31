@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FingerprintWalletLockUI$3
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   FingerprintWalletLockUI$3(FingerprintWalletLockUI paramFingerprintWalletLockUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    this.qPy.finish();
+    AppMethodBeat.i(51500);
+    this.uEG.finish();
+    AppMethodBeat.o(51500);
   }
 }
 

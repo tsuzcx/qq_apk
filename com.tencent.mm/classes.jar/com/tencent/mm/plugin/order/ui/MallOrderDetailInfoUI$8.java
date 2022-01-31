@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.order.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallOrderDetailInfoUI$8
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class MallOrderDetailInfoUI$8
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.mQG.finish();
+    AppMethodBeat.i(43803);
+    this.pqU.finish();
+    AppMethodBeat.o(43803);
   }
 }
 

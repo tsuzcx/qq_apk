@@ -1,34 +1,14 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 final class ContactRemarkInfoModUI$7
-  implements h.c
+  implements DialogInterface.OnCancelListener
 {
   ContactRemarkInfoModUI$7(ContactRemarkInfoModUI paramContactRemarkInfoModUI) {}
   
-  public final void gl(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      y.d("MiroMsg.ContactRemarkInfoModUI", "pick up an image");
-      Intent localIntent = new Intent();
-      localIntent.putExtra("max_select_count", 1);
-      localIntent.putExtra("query_source_type", 0);
-      localIntent.putExtra("send_btn_string", " ");
-      localIntent.addFlags(67108864);
-      d.b(this.vKT, "gallery", ".ui.GalleryEntryUI", localIntent, 200);
-      return;
-    }
-    y.d("MiroMsg.ContactRemarkInfoModUI", "delete the remark image when download failed.");
-    ContactRemarkInfoModUI.w(this.vKT);
-  }
+  public final void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

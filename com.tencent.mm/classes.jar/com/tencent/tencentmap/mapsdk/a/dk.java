@@ -1,348 +1,397 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.ka;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
+import java.util.List;
 
-public final class dk
+public class dk
 {
-  private int a = 12;
-  private int b = 60;
-  private int c = 12;
-  private int d = 60;
-  private int e = 20;
-  private boolean f = false;
-  private boolean g = true;
-  private Set<String> h = null;
-  private Map<String, Float> i = null;
-  private boolean j = false;
-  private boolean k = false;
-  private boolean l = false;
+  private static String A = "color_texture_flat_style.png";
+  private boolean B;
+  private a C;
+  private cv D;
+  private int E;
+  private int F;
+  private final List<cz> a;
+  private float b;
+  private float c;
+  private int d;
+  private int e;
+  private boolean f;
+  private boolean g;
+  private boolean h;
+  private boolean i;
+  private float j;
+  private boolean k;
+  private ci l;
+  private List<Integer> m;
+  private int[] n;
+  private int[] o;
+  private int[] p;
+  private int q;
+  private int r;
+  @Deprecated
+  private String s;
+  private ck t;
+  private boolean u;
+  private int v;
+  private boolean w;
+  private List<cz> x;
+  private boolean y;
+  private ck z;
   
-  public final int a()
+  public dk()
   {
-    try
-    {
-      int m = this.a;
-      return m;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.i(101056);
+    this.i = false;
+    this.n = null;
+    this.o = new int[] { -16711936 };
+    this.p = null;
+    this.q = -7829368;
+    this.r = 0;
+    this.s = A;
+    this.t = cl.a(A);
+    this.u = false;
+    this.v = 0;
+    this.w = true;
+    this.y = false;
+    this.z = null;
+    this.C = a.a;
+    this.E = dg.a;
+    this.F = 100;
+    this.b = -1.0F;
+    this.d = ka.l;
+    this.f = true;
+    this.g = false;
+    this.a = new ArrayList();
+    this.j = 1.0F;
+    this.k = false;
+    this.v = 0;
+    this.e = 0;
+    this.x = new ArrayList();
+    AppMethodBeat.o(101056);
   }
   
-  public final void a(Map<String, String> paramMap)
+  public int a()
   {
-    if (paramMap != null) {}
-    for (;;)
+    return this.v;
+  }
+  
+  public dk a(float paramFloat)
+  {
+    if (paramFloat < 0.0F)
     {
-      String str;
-      try
-      {
-        str = (String)paramMap.get("realNumUp");
-        int m;
-        if (str != null)
-        {
-          m = Integer.valueOf(str).intValue();
-          if ((m > 0) && (m <= 50)) {
-            this.a = m;
-          }
-        }
-        str = (String)paramMap.get("realDelayUp");
-        if (str != null)
-        {
-          m = Integer.valueOf(str).intValue();
-          if ((m >= 10) && (m <= 600)) {
-            this.b = m;
-          }
-        }
-        str = (String)paramMap.get("comNumDB");
-        if (str != null)
-        {
-          m = Integer.valueOf(str).intValue();
-          if ((m > 0) && (m <= 50)) {
-            this.c = m;
-          }
-        }
-        str = (String)paramMap.get("comDelayDB");
-        if (str != null)
-        {
-          m = Integer.valueOf(str).intValue();
-          if ((m >= 30) && (m <= 600)) {
-            this.d = m;
-          }
-        }
-        str = (String)paramMap.get("comNumUp");
-        if (str != null)
-        {
-          m = Integer.valueOf(str).intValue();
-          if ((m > 0) && (m <= 100)) {
-            this.e = m;
-          }
-        }
-        str = (String)paramMap.get("heartOnOff");
-        if (str != null)
-        {
-          if (!str.toLowerCase().equals("y")) {
-            continue;
-          }
-          this.g = true;
-        }
-        str = (String)paramMap.get("tidyEF");
-        if (str != null)
-        {
-          if (!str.toLowerCase().equals("y")) {
-            break label449;
-          }
-          this.k = true;
-        }
-        str = (String)paramMap.get("lauEveSim");
-        if (str != null)
-        {
-          if (!str.toLowerCase().equals("y")) {
-            break label469;
-          }
-          this.l = true;
-        }
-        str = (String)paramMap.get("comPollUp");
-        if (str != null)
-        {
-          if (!str.toLowerCase().equals("y")) {
-            break label489;
-          }
-          this.f = true;
-        }
-        str = (String)paramMap.get("accessTestOnOff");
-        if (str != null)
-        {
-          if (!str.toLowerCase().equals("y")) {
-            break label509;
-          }
-          cy.b = true;
-        }
-        str = (String)paramMap.get("upAc");
-        if (str != null)
-        {
-          if (!str.toLowerCase().equals("y")) {
-            break label528;
-          }
-          this.j = true;
-        }
-        paramMap.get("appendXMeths");
-      }
-      catch (Exception paramMap)
-      {
-        cy.a(paramMap);
-        continue;
-      }
-      finally {}
-      return;
-      label528:
-      if (str.toLowerCase().equals("n"))
-      {
-        this.g = false;
-        continue;
-        label449:
-        if (str.toLowerCase().equals("n"))
-        {
-          this.k = false;
-          continue;
-          label469:
-          if (str.toLowerCase().equals("n"))
-          {
-            this.l = false;
-            continue;
-            label489:
-            if (str.toLowerCase().equals("n"))
-            {
-              this.f = false;
-              continue;
-              label509:
-              if (str.toLowerCase().equals("n"))
-              {
-                cy.b = false;
-                continue;
-                if (str.toLowerCase().equals("n")) {
-                  this.j = false;
-                }
-              }
-            }
-          }
-        }
+      this.b = 9.0F;
+      return this;
+    }
+    this.b = paramFloat;
+    return this;
+  }
+  
+  public dk a(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
+  }
+  
+  public dk a(ck paramck)
+  {
+    this.t = paramck;
+    this.C = a.b;
+    return this;
+  }
+  
+  public dk a(cv paramcv)
+  {
+    if (paramcv != null)
+    {
+      this.D = paramcv;
+      this.i = true;
+    }
+    return this;
+  }
+  
+  public dk a(cz paramcz, cz... paramVarArgs)
+  {
+    AppMethodBeat.i(150116);
+    this.a.add(paramcz);
+    if (paramVarArgs != null) {
+      a(paramVarArgs);
+    }
+    AppMethodBeat.o(150116);
+    return this;
+  }
+  
+  public dk a(Iterable<cz> paramIterable)
+  {
+    AppMethodBeat.i(150118);
+    if (paramIterable != null)
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext()) {
+        a((cz)paramIterable.next(), new cz[0]);
       }
     }
+    AppMethodBeat.o(150118);
+    return this;
   }
   
-  public final void a(Set<String> paramSet)
+  public dk a(boolean paramBoolean)
   {
-    try
-    {
-      this.h = paramSet;
-      return;
-    }
-    finally
-    {
-      paramSet = finally;
-      throw paramSet;
-    }
+    this.f = paramBoolean;
+    return this;
   }
   
-  public final boolean a(String paramString)
+  public dk a(cz[] paramArrayOfcz)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    try
-    {
-      if (this.h != null)
-      {
-        bool1 = bool2;
-        if (this.h.size() > 0) {
-          bool1 = this.h.contains(paramString);
-        }
-      }
-      return bool1;
+    AppMethodBeat.i(150117);
+    if (paramArrayOfcz != null) {
+      this.a.addAll(Arrays.asList(paramArrayOfcz));
     }
-    finally {}
+    AppMethodBeat.o(150117);
+    return this;
   }
   
-  public final int b()
+  @Deprecated
+  public void a(List<cz> paramList)
   {
-    try
-    {
-      int m = this.b;
-      return m;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.i(150114);
+    b(paramList);
+    AppMethodBeat.o(150114);
   }
   
-  public final void b(Set<String> paramSet)
+  public dk b(float paramFloat)
   {
-    try
+    if (paramFloat < 0.0F)
     {
-      if (this.i == null) {
-        this.i = new HashMap();
-      }
-      paramSet = paramSet.iterator();
-      while (paramSet.hasNext())
-      {
-        String[] arrayOfString = ((String)paramSet.next()).split(",");
-        int m = arrayOfString.length;
-        if (m == 3) {
-          try
-          {
-            float f1 = Float.valueOf(arrayOfString[1]).floatValue() / Float.valueOf(arrayOfString[2]).floatValue();
-            this.i.put(arrayOfString[0].toLowerCase(), Float.valueOf(f1));
-          }
-          catch (Exception localException) {}
-        }
-      }
-      return;
+      this.c = 1.0F;
+      return this;
     }
-    finally {}
+    this.c = paramFloat;
+    return this;
   }
   
-  public final boolean b(String paramString)
+  public dk b(int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        boolean bool;
-        if (this.i != null)
-        {
-          Object localObject = this.i.get(paramString);
-          if (localObject != null) {}
-        }
-        else
-        {
-          bool = true;
-          return bool;
-        }
-        int m = (int)(((Float)this.i.get(paramString.toLowerCase())).floatValue() * 1000.0F);
-        int n = new Random().nextInt(1000);
-        if (n + 1 > m) {
-          bool = false;
-        } else {
-          bool = true;
-        }
-      }
-      finally {}
-    }
+    this.o = new int[] { paramInt };
+    return this;
   }
   
-  public final int c()
+  public dk b(ck paramck)
   {
-    try
-    {
-      int m = this.c;
-      return m;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.z = paramck;
+    return this;
   }
   
-  public final int d()
+  public dk b(List<cz> paramList)
   {
-    try
+    AppMethodBeat.i(150115);
+    if (paramList != null)
     {
-      int m = this.d;
-      return m;
+      this.a.clear();
+      this.a.addAll(paramList);
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    AppMethodBeat.o(150115);
+    return this;
   }
   
-  public final int e()
+  public dk b(boolean paramBoolean)
   {
-    try
-    {
-      int m = this.e;
-      return m;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.h = paramBoolean;
+    return this;
   }
   
-  public final boolean f()
+  public List<cz> b()
   {
-    return this.g;
+    return this.x;
   }
   
-  public final boolean g()
+  public a c()
+  {
+    return this.C;
+  }
+  
+  public dk c(int paramInt)
+  {
+    this.q = paramInt;
+    return this;
+  }
+  
+  public dk c(List<Integer> paramList)
+  {
+    this.m = paramList;
+    return this;
+  }
+  
+  public int d()
+  {
+    return this.q;
+  }
+  
+  public dk d(int paramInt)
+  {
+    AppMethodBeat.i(150119);
+    this.e = Math.max(0, paramInt);
+    AppMethodBeat.o(150119);
+    return this;
+  }
+  
+  public dk e(int paramInt)
+  {
+    this.r = paramInt;
+    return this;
+  }
+  
+  public List<cz> e()
+  {
+    return this.a;
+  }
+  
+  public float f()
+  {
+    return this.b;
+  }
+  
+  public dk f(int paramInt)
+  {
+    if ((paramInt < dg.a) || (paramInt > dg.c)) {
+      return this;
+    }
+    this.E = paramInt;
+    return this;
+  }
+  
+  public int g()
+  {
+    return this.d;
+  }
+  
+  public dk g(int paramInt)
+  {
+    this.F = paramInt;
+    return this;
+  }
+  
+  public int[][] h()
+  {
+    if ((this.n == null) || (this.p == null)) {}
+    while (this.n.length != this.p.length) {
+      return null;
+    }
+    int i1 = this.n.length;
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { 2, i1 });
+    arrayOfInt[0] = this.n;
+    arrayOfInt[1] = this.p;
+    return arrayOfInt;
+  }
+  
+  public int i()
+  {
+    return this.e;
+  }
+  
+  public cv j()
+  {
+    return this.D;
+  }
+  
+  public boolean k()
   {
     return this.f;
   }
   
-  public final boolean h()
+  public boolean l()
+  {
+    return this.h;
+  }
+  
+  public boolean m()
+  {
+    return this.i;
+  }
+  
+  public float n()
+  {
+    return this.j;
+  }
+  
+  public boolean o()
   {
     return this.k;
   }
   
-  public final boolean i()
+  public ci p()
   {
     return this.l;
   }
   
-  public final boolean j()
+  public int q()
   {
-    return this.j;
+    return this.r;
+  }
+  
+  public ck r()
+  {
+    return this.t;
+  }
+  
+  public boolean s()
+  {
+    return this.w;
+  }
+  
+  public int t()
+  {
+    return this.E;
+  }
+  
+  public ck u()
+  {
+    return this.z;
+  }
+  
+  public int v()
+  {
+    return this.F;
+  }
+  
+  public boolean w()
+  {
+    return this.B;
+  }
+  
+  public List<Integer> x()
+  {
+    return this.m;
+  }
+  
+  public float y()
+  {
+    return this.c;
+  }
+  
+  public int[] z()
+  {
+    return this.o;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(150113);
+      a = new a("LINE_COLOR_NONE", 0);
+      b = new a("LINE_COLOR_TEXTURE", 1);
+      c = new a("LINE_COLOR_ARGB", 2);
+      d = new a[] { a, b, c };
+      AppMethodBeat.o(150113);
+    }
+    
+    private a() {}
   }
 }
 

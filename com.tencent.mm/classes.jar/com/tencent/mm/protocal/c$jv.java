@@ -5,12 +5,12 @@ final class c$jv
 {
   c$jv()
   {
-    super("updatePageAuth", "updatePageAuth", -2, false);
+    super("showSearchOfBizHistory", "showSearchOfBizHistory", 266, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.c.jv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import com.tencent.mm.cl.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cn.d;
 
 final class SettingsUI$29
   implements Runnable
@@ -9,7 +10,9 @@ final class SettingsUI$29
   
   public final void run()
   {
-    b.afs("com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS");
+    AppMethodBeat.i(127591);
+    d.aNX();
+    AppMethodBeat.o(127591);
   }
 }
 

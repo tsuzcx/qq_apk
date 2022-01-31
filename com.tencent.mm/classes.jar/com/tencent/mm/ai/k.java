@@ -1,147 +1,130 @@
 package com.tencent.mm.ai;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.modelgeo.c;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.qj;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.bd;
-import com.tencent.mm.storage.bi;
-import java.util.LinkedList;
-import org.json.JSONObject;
+import com.tencent.mm.m.e;
+import com.tencent.mm.plugin.zero.b.a;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.f;
+import com.tencent.mm.protocal.j.e;
+import com.tencent.mm.protocal.j.e.a;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
-public final class k
+public abstract class k
+  implements com.tencent.mm.network.q
 {
-  private a.a dig = new k.2(this);
-  int egr = 0;
-  private c egs;
-  private int egt = 2;
-  int egu = 10;
-  boolean egv = false;
-  m.b egw = new k.1(this);
-  String userName = null;
+  private static final String TAG = "MicroMsg.MMReqRespBase";
+  private boolean isSingleSession = true;
+  private boolean isUserCmd = false;
+  private l.d req;
   
-  protected k()
+  public static void fillBaseReq(l.d paramd, k paramk)
   {
-    if (this.egu < this.egt) {
-      this.egu = this.egt;
-    }
-    y.i("MicroMsg.ReportLocation", "reportLocation interval %d", new Object[] { Integer.valueOf(this.egu) });
-  }
-  
-  static void a(String paramString, int paramInt1, float paramFloat1, float paramFloat2, int paramInt2)
-  {
-    a(paramString, 11, paramInt1, paramFloat1, paramFloat2, paramInt2, null, 0);
-  }
-  
-  private static void a(String paramString, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, int paramInt3, LinkedList<qj> paramLinkedList, int paramInt4)
-  {
-    if (paramInt2 == 3) {}
-    for (String str = "<event></event>";; str = String.format("<event><location><errcode>%d</errcode><data><latitude>%f</latitude><longitude>%f</longitude><precision>%d</precision></data></location></event>", new Object[] { Integer.valueOf(paramInt2), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Integer.valueOf(paramInt3) }))
+    paramd.setDeviceID(com.tencent.mm.compatible.e.q.LK());
+    paramd.setDeviceType(d.eQs);
+    paramd.setClientVersion(d.whH);
+    paramd.setUin(j.e.a.wim.aaE());
+    if ((f.whQ) && (g.RG()))
     {
-      y.i("MicroMsg.ReportLocation", "doScene, info: %s", new Object[] { str });
-      g.DO().dJT.a(new q(paramString, paramInt1, str, paramLinkedList, paramInt4), 0);
-      return;
-    }
-  }
-  
-  public static void li(String paramString)
-  {
-    a(paramString, 12, 0, 0.0F, 0.0F, 0, null, 0);
-  }
-  
-  public final void Mr()
-  {
-    y.i("MicroMsg.ReportLocation", "Stop report");
-    this.egr = 0;
-    if (this.egs != null) {
-      this.egs.c(this.dig);
-    }
-    if (g.DN().Dc()) {
-      ((j)g.r(j.class)).Fw().b(this.egw);
-    }
-  }
-  
-  public final void a(String paramString, bi parambi, int paramInt)
-  {
-    if ((parambi == null) || (!parambi.ctz()))
-    {
-      a(paramString, 10, 0, 0.0F, 0.0F, 0, null, paramInt);
-      return;
-    }
-    g.DS().O(new k.3(this, parambi, paramString, paramInt));
-  }
-  
-  public final void lj(String paramString)
-  {
-    y.i("MicroMsg.ReportLocation", "Start report");
-    this.userName = paramString;
-    Object localObject = f.kX(paramString);
-    if (localObject == null) {}
-    d.b localb;
-    label190:
-    label195:
-    do
-    {
-      do
+      int j = paramk.getType();
+      boolean bool;
+      int k;
+      int i;
+      if (((a)g.E(a.class)).Nq().getInt("UseAesGcmSessionKeySwitch", 1) == 0)
       {
-        return;
-        if (this.egr != 0) {
-          Mr();
-        }
-        this.egr = 0;
-        if (((d)localObject).Ls())
+        bool = true;
+        ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] accHasReady openSwitch[%s] ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool) });
+        if (bool)
         {
-          y.i("MicroMsg.ReportLocation", "need update contact %s", new Object[] { paramString });
-          com.tencent.mm.ag.b.ka(paramString);
-        }
-        localb = ((d)localObject).bS(false);
-      } while (localb == null);
-      if ((localb.Lu()) && (((d)localObject).Lr()))
-      {
-        this.egs = c.Ob();
-        localObject = ((d)localObject).bS(false);
-        boolean bool;
-        if (((d.b)localObject).efa != null)
-        {
-          if (bk.getInt(((d.b)localObject).efa.optString("ReportLocationType"), 0) == 2)
+          paramd = ((a)g.E(a.class)).Nq().getValue("UseAesGcmSessionKeyCgiList");
+          if (!bo.isNullOrNil(paramd))
           {
-            bool = true;
-            ((d.b)localObject).efn = bool;
+            ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi list[%s]", new Object[] { paramd });
+            paramd = paramd.trim().split(",");
+            if (paramd.length > 0)
+            {
+              k = paramd.length;
+              i = 0;
+            }
           }
         }
-        else {
-          if (!((d.b)localObject).efn) {
-            break label190;
-          }
-        }
-        for (int i = 3;; i = 2)
+      }
+      for (;;)
+      {
+        if (i < k)
         {
-          this.egr = i;
-          if ((!c.Oc()) && (!c.Od())) {
-            break label195;
+          String str = paramd[i];
+          if (j == bo.getInt(str, 0))
+          {
+            paramk.setSingleSession(false);
+            ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi list found cgi[%s] singleSession[%s]", new Object[] { str, Boolean.valueOf(paramk.isSingleSession()) });
           }
-          this.egs.a(this.dig, true);
+        }
+        else
+        {
           return;
           bool = false;
           break;
         }
-        a(paramString, 2, 0.0F, 0.0F, 0);
-        return;
+        i += 1;
       }
-    } while ((!localb.Lu()) || (((d)localObject).Lr()));
-    a(paramString, 1, 0.0F, 0.0F, 0);
+    }
+    ab.i("MicroMsg.MMReqRespBase", "summerauths check cgi[%s] USE_ECDH[%s] accHasReady[%s] ", new Object[] { Integer.valueOf(paramd.getCmdId()), Boolean.valueOf(f.whQ), Boolean.valueOf(g.RG()) });
+  }
+  
+  public boolean getIsUserCmd()
+  {
+    return this.isUserCmd;
+  }
+  
+  public int getOptions()
+  {
+    return 0;
+  }
+  
+  public boolean getPush()
+  {
+    return false;
+  }
+  
+  public final l.d getReqObj()
+  {
+    if (this.req == null)
+    {
+      this.req = getReqObjImp();
+      fillBaseReq(this.req, this);
+    }
+    return this.req;
+  }
+  
+  protected abstract l.d getReqObjImp();
+  
+  public int getTimeOut()
+  {
+    return 0;
+  }
+  
+  public boolean isSingleSession()
+  {
+    return this.isSingleSession;
+  }
+  
+  public void setConnectionInfo(String paramString) {}
+  
+  public void setIsUserCmd(boolean paramBoolean)
+  {
+    this.isUserCmd = paramBoolean;
+  }
+  
+  void setSingleSession(boolean paramBoolean)
+  {
+    this.isSingleSession = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ai.k
  * JD-Core Version:    0.7.0.1
  */

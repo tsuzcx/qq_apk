@@ -4,9 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class AddMoreFriendsUI$4
   implements View.OnClickListener
@@ -15,10 +14,12 @@ final class AddMoreFriendsUI$4
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11264, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.i(25507);
+    h.qsU.e(11264, new Object[] { Integer.valueOf(1) });
     paramView = new Intent();
-    paramView.setClassName(this.pxG, "com.tencent.mm.plugin.setting.ui.setting.SelfQRCodeUI");
-    this.pxG.mController.uMN.startActivity(paramView);
+    paramView.setClassName(this.sZu, "com.tencent.mm.plugin.setting.ui.setting.SelfQRCodeUI");
+    this.sZu.getContext().startActivity(paramView);
+    AppMethodBeat.o(25507);
   }
 }
 

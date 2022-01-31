@@ -1,72 +1,73 @@
 package com.tencent.mm.ui.tools;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.Window;
-import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMBaseActivity;
+import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.transmit.ShareImageSelectorUI;
 import java.util.ArrayList;
 
-@com.tencent.mm.ui.base.a(7)
+@a(7)
 public class ShareImageRedirectUI
   extends MMBaseActivity
 {
   private String imagePath;
   
-  private void awX()
+  private void bEq()
   {
-    l.c(this, e.dzD, "microMsg." + System.currentTimeMillis() + ".jpg", 0);
-    getWindow().getDecorView().setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        Toast.makeText(ShareImageRedirectUI.this, R.l.shareimg_open_camera_failed, 1).show();
-        ShareImageRedirectUI.this.finish();
-        return false;
-      }
-    });
+    AppMethodBeat.i(34932);
+    n.c(this, e.esr, "microMsg." + System.currentTimeMillis() + ".jpg", 0);
+    getWindow().getDecorView().setOnTouchListener(new ShareImageRedirectUI.1(this));
+    AppMethodBeat.o(34932);
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     Object localObject = null;
+    AppMethodBeat.i(34934);
     getWindow().getDecorView().setOnTouchListener(null);
-    if (paramInt2 != -1) {
-      finish();
-    }
-    do
+    if (paramInt2 != -1)
     {
+      finish();
+      AppMethodBeat.o(34934);
       return;
-      switch (paramInt1)
+    }
+    switch (paramInt1)
+    {
+    case 1: 
+    default: 
+      AppMethodBeat.o(34934);
+      return;
+    case 0: 
+      localObject = getApplicationContext();
+      aw.aaz();
+      this.imagePath = n.h((Context)localObject, paramIntent, c.YK());
+      if (this.imagePath == null)
       {
-      case 1: 
-      default: 
+        AppMethodBeat.o(34934);
         return;
-      case 0: 
-        localObject = getApplicationContext();
-        au.Hx();
-        this.imagePath = l.f((Context)localObject, paramIntent, c.FG());
       }
-    } while (this.imagePath == null);
-    paramIntent = new Intent(this, ShareImageSelectorUI.class);
-    paramIntent.putExtra("intent_extra_image_path", this.imagePath);
-    startActivityForResult(paramIntent, 2);
-    return;
+      paramIntent = new Intent(this, ShareImageSelectorUI.class);
+      paramIntent.putExtra("intent_extra_image_path", this.imagePath);
+      startActivityForResult(paramIntent, 2);
+      AppMethodBeat.o(34934);
+      return;
+    }
     if (paramIntent != null) {
       localObject = paramIntent.getStringArrayListExtra("Select_Contact");
     }
@@ -76,11 +77,13 @@ public class ShareImageRedirectUI
       paramIntent.putExtra("Chat_User", (String)((ArrayList)localObject).get(0));
       startActivity(paramIntent);
       finish();
+      AppMethodBeat.o(34934);
       return;
     }
     if ((localObject != null) && (((ArrayList)localObject).size() > 1))
     {
       finish();
+      AppMethodBeat.o(34934);
       return;
     }
     paramIntent = new Intent();
@@ -88,33 +91,55 @@ public class ShareImageRedirectUI
     paramIntent.putExtra("sns_kemdia_path", this.imagePath);
     d.b(this, "sns", ".ui.SnsUploadUI", paramIntent);
     finish();
+    AppMethodBeat.o(34934);
   }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(34931);
     super.onCreate(paramBundle);
-    boolean bool = com.tencent.mm.pluginsdk.permission.a.a(this, "android.permission.CAMERA", 16, "", "");
-    y.i("MicroMsg.ShareImageRedirectUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this });
-    if (!bool) {
+    boolean bool = b.a(this, "android.permission.CAMERA", 16, "", "");
+    ab.i("MicroMsg.ShareImageRedirectUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this });
+    if (!bool)
+    {
+      AppMethodBeat.o(34931);
       return;
     }
-    awX();
+    bEq();
+    AppMethodBeat.o(34931);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    y.i("MicroMsg.ShareImageRedirectUI", "summerper onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    AppMethodBeat.i(34933);
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
+    {
+      ab.i("MicroMsg.ShareImageRedirectUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      AppMethodBeat.o(34933);
+      return;
+    }
+    ab.i("MicroMsg.ShareImageRedirectUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    if (paramArrayOfInt[0] == 0)
+    for (;;)
     {
-      awX();
+      AppMethodBeat.o(34933);
       return;
+      if (paramArrayOfInt[0] == 0)
+      {
+        bEq();
+        AppMethodBeat.o(34933);
+        return;
+      }
+      h.a(this, getString(2131302067), getString(2131302083), getString(2131300996), getString(2131297837), false, new ShareImageRedirectUI.2(this), new ShareImageRedirectUI.3(this));
     }
-    h.a(this, getString(R.l.permission_camera_request_again_msg), getString(R.l.permission_tips_title), getString(R.l.jump_to_settings), getString(R.l.cancel), false, new ShareImageRedirectUI.2(this), new ShareImageRedirectUI.3(this));
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

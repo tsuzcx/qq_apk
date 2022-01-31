@@ -1,15 +1,21 @@
 package com.tencent.mm.ui.transmit;
 
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.vending.c.a;
-import java.util.LinkedList;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.applet.q.a;
 
 final class SendAppMessageWrapperUI$6
-  implements a<Void, WxaAttributes>
+  implements q.a
 {
-  SendAppMessageWrapperUI$6(SendAppMessageWrapperUI paramSendAppMessageWrapperUI, WXMediaMessage paramWXMediaMessage, WXMiniProgramObject paramWXMiniProgramObject, LinkedList paramLinkedList) {}
+  SendAppMessageWrapperUI$6(SendAppMessageWrapperUI paramSendAppMessageWrapperUI) {}
+  
+  public final void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(35217);
+    this.AAH.setResult(-1, new Intent().putExtra("Select_stay_in_wx", true));
+    this.AAH.finish();
+    AppMethodBeat.o(35217);
+  }
 }
 
 

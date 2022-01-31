@@ -2,13 +2,11 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.app.ProgressDialog;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.c;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.d.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.b;
 import com.tencent.mm.vfs.e;
 
@@ -19,35 +17,39 @@ final class NoteEditorUI$14
   
   public final void a(String paramString, com.tencent.mm.plugin.wenote.model.a.k paramk)
   {
-    y.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onImportFinish");
-    if ((!bk.bl(paramString)) && (e.bK(paramString)) && (paramk != null)) {
+    AppMethodBeat.i(27009);
+    ab.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onImportFinish");
+    if ((!bo.isNullOrNil(paramString)) && (e.cN(paramString)) && (paramk != null)) {
       paramk.thumbPath = paramString;
     }
+    AppMethodBeat.o(27009);
   }
   
   public final void b(String paramString, com.tencent.mm.plugin.wenote.model.a.k paramk)
   {
-    y.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onExportFinish");
-    if (NoteEditorUI.ac(this.rLT) != null)
+    AppMethodBeat.i(27010);
+    ab.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onExportFinish");
+    if (NoteEditorUI.ac(this.vCx) != null)
     {
-      NoteEditorUI.ac(this.rLT).dismiss();
-      NoteEditorUI.ad(this.rLT);
+      NoteEditorUI.ac(this.vCx).dismiss();
+      NoteEditorUI.ad(this.vCx);
     }
-    if ((!bk.bl(paramString)) && (e.bK(paramString)) && (paramk != null) && (!paramk.rGA)) {
-      if (new b(paramString).length() < NoteEditorUI.cjq())
+    if ((!bo.isNullOrNil(paramString)) && (e.cN(paramString)) && (paramk != null) && (!paramk.vxj)) {
+      if (new b(paramString).length() < NoteEditorUI.djS())
       {
-        paramk.bTY = paramString;
-        c.chX().a(paramk, NoteEditorUI.j(this.rLT).ciG(), false, true, false);
+        paramk.cBD = paramString;
+        c.din().a(paramk, NoteEditorUI.j(this.vCx).diX(), false, true, false);
       }
     }
     for (;;)
     {
-      this.rLT.f(true, 100L);
-      this.rLT.U(1, 0L);
+      this.vCx.h(true, 100L);
+      this.vCx.aj(1, 0L);
+      AppMethodBeat.o(27010);
       return;
-      Toast.makeText(this.rLT.mController.uMN, this.rLT.getString(R.l.favorite_too_large), 1).show();
+      Toast.makeText(this.vCx.getContext(), this.vCx.getString(2131299848), 1).show();
       continue;
-      y.i("MicroMsg.Note.NoteEditorUI", "file not exist or user canceled");
+      ab.i("MicroMsg.Note.NoteEditorUI", "file not exist or user canceled");
     }
   }
 }

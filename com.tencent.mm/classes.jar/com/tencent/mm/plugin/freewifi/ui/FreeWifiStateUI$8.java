@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FreeWifiStateUI$8
   implements Runnable
@@ -9,8 +10,10 @@ final class FreeWifiStateUI$8
   
   public final void run()
   {
-    y.i("MicroMsg.FreeWifi.FreeWifiStateUI", "now network ssid is not wechat freewifi :%s", new Object[] { this.ksM.ssid });
-    this.ksM.aUN();
+    AppMethodBeat.i(21078);
+    ab.i("MicroMsg.FreeWifi.FreeWifiStateUI", "now network ssid is not wechat freewifi :%s", new Object[] { this.mOB.ssid });
+    this.mOB.bBl();
+    AppMethodBeat.o(21078);
   }
 }
 

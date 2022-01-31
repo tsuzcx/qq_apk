@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.mmsight.model.a;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class n$2
-  extends ah
+  extends ak
 {
   n$2(n paramn, Looper paramLooper)
   {
@@ -15,14 +16,16 @@ final class n$2
   
   public final void handleMessage(Message paramMessage)
   {
-    y.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "carson：writeYuvData ");
+    AppMethodBeat.i(76630);
+    ab.i("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "carson：writeYuvData ");
     if (paramMessage.what == 1)
     {
       paramMessage = (byte[])paramMessage.obj;
-      if ((paramMessage != null) && (this.mkk.mkb != null)) {
-        n.a(this.mkk, paramMessage);
+      if ((paramMessage != null) && (this.oJA.oJw != null)) {
+        n.a(this.oJA, paramMessage);
       }
     }
+    AppMethodBeat.o(76630);
   }
 }
 

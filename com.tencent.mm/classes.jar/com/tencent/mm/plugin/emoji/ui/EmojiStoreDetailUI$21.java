@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import com.tencent.mm.as.a.c.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.c.j;
 import com.tencent.mm.plugin.report.service.h;
 
 final class EmojiStoreDetailUI$21
@@ -8,9 +9,11 @@ final class EmojiStoreDetailUI$21
 {
   EmojiStoreDetailUI$21(EmojiStoreDetailUI paramEmojiStoreDetailUI) {}
   
-  public final void cc(long paramLong)
+  public final void gX(long paramLong)
   {
-    h.nFQ.aC(10930, EmojiStoreDetailUI.a(this.jeK) + "," + paramLong);
+    AppMethodBeat.i(53438);
+    h.qsU.kvStat(10930, EmojiStoreDetailUI.a(this.lnA) + "," + paramLong);
+    AppMethodBeat.o(53438);
   }
 }
 

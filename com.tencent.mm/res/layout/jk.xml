@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/k9" android:textColor="@color/ho" android:ellipsize="end" android:gravity="left" android:id="@id/ag3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/l3" android:singleLine="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<ScrollView android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/aho" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="13.299988dip" />
+        <ViewStub android:id="@id/ahp" android:layout="@layout/k1" android:inflatedId="@id/ahp" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ahq" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="bottom" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ahr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.699982dip" android:layout_marginBottom="@dimen/dl">
+                <ImageView android:layout_gravity="center" android:id="@id/agm" android:layout_width="22.0dip" android:layout_height="16.299988dip" android:layout_marginLeft="16.699982dip" android:src="@raw/card_home_member_card_icon" android:scaleType="fitXY" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/iu" android:ellipsize="end" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ll" android:layout_marginRight="@dimen/ll" android:text="@string/ah_" android:singleLine="true" android:layout_weight="1.0" />
+                <TextView android:textSize="@dimen/nf" android:textColor="@color/a83" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ahs" android:paddingLeft="@dimen/ll" android:paddingRight="@dimen/ll" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aj5" android:singleLine="true" />
+            </LinearLayout>
+            <com.tencent.mm.ui.base.MaxListView android:id="@android:id/list" android:background="@null" android:focusable="true" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginRight="17.0dip" android:transcriptMode="disabled" style="@style/fr" />
+            <include android:id="@id/aht" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/vy" android:layout_marginTop="@dimen/lb" android:layout_marginRight="@dimen/vy" layout="@layout/j8" />
+        </LinearLayout>
+        <include android:id="@id/ahu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ll" layout="@layout/j8" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ahv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</ScrollView>

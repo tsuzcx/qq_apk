@@ -1,19 +1,28 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
-import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout;
+import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.b;
 
 final class e$2
-  implements WebViewInputFooter.c
+  implements WebViewInputFooter.b
 {
   e$2(e parame) {}
   
-  public final void RJ(String paramString)
+  public final void dbh()
   {
-    
-    if (e.b(this.rca) != null) {
-      e.b(this.rca).hide();
+    AppMethodBeat.i(153079);
+    this.uRQ.JQ(0);
+    AppMethodBeat.o(153079);
+  }
+  
+  public final void dbi()
+  {
+    AppMethodBeat.i(153080);
+    if ((e.c(this.uRQ) != null) && (e.c(this.uRQ).getKeyBoardHeight() > 0)) {
+      this.uRQ.JQ(e.c(this.uRQ).getKeyBoardHeight());
     }
+    AppMethodBeat.o(153080);
   }
 }
 

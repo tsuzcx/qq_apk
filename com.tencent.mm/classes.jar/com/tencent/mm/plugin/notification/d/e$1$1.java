@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.notification.d;
 
-import com.tencent.mm.h.a.qq;
-import com.tencent.mm.h.a.qq.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.sb;
+import com.tencent.mm.g.a.sb.a;
 
 final class e$1$1
   implements Runnable
 {
-  e$1$1(e.1 param1, qq paramqq) {}
+  e$1$1(e.1 param1, sb paramsb) {}
   
   public final void run()
   {
-    qq localqq = this.mIW;
+    AppMethodBeat.i(23151);
+    sb localsb = this.pjl;
     c localc = new c();
-    localc.id = localqq.bZU.bZT;
-    this.mIX.mIV.bw(localc);
+    localc.id = localsb.cIr.cIm;
+    this.pjm.pjk.ca(localc);
+    AppMethodBeat.o(23151);
   }
 }
 

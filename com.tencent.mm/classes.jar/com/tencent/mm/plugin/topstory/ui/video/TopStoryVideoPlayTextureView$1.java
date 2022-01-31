@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class TopStoryVideoPlayTextureView$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class TopStoryVideoPlayTextureView$1
   
   public final void run()
   {
-    synchronized (TopStoryVideoPlayTextureView.a(this.pGn))
+    AppMethodBeat.i(1778);
+    synchronized (TopStoryVideoPlayTextureView.a(this.tjI))
     {
-      TopStoryVideoPlayTextureView.b(this.pGn);
+      TopStoryVideoPlayTextureView.b(this.tjI);
+      AppMethodBeat.o(1778);
       return;
     }
   }

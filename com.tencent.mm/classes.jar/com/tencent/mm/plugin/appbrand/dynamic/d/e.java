@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
-import com.tencent.mm.aa.c.a;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.plugin.appbrand.dynamic.d.a.b;
-import com.tencent.mm.plugin.appbrand.u.h;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.z.c.a;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -22,23 +22,26 @@ public final class e
     super("getSystemInfoSync", paramInt);
   }
   
-  protected final JSONObject a(a parama)
+  public final JSONObject a(a parama)
   {
+    AppMethodBeat.i(10831);
     Context localContext = parama.getContext();
-    parama = parama.CD();
+    parama = parama.Qx();
     DisplayMetrics localDisplayMetrics = localContext.getResources().getDisplayMetrics();
     float f = localDisplayMetrics.density;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("model", q.zl());
+    localHashMap.put("model", Build.MODEL);
     localHashMap.put("pixelRatio", Float.valueOf(f));
-    localHashMap.put("windowWidth", Integer.valueOf(h.mx(parama.getInt("__page_view_width", 0))));
-    localHashMap.put("windowHeight", Integer.valueOf(h.mx(parama.getInt("__page_view_height", 0))));
-    localHashMap.put("screenWidth", Integer.valueOf(h.mx(localDisplayMetrics.widthPixels)));
-    localHashMap.put("screenHeight", Integer.valueOf(h.mx(localDisplayMetrics.heightPixels)));
-    localHashMap.put("language", x.fB(localContext));
-    localHashMap.put("version", com.tencent.mm.sdk.platformtools.e.ag(null, d.spa));
+    localHashMap.put("windowWidth", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pN(parama.getInt("__page_view_width", 0))));
+    localHashMap.put("windowHeight", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pN(parama.getInt("__page_view_height", 0))));
+    localHashMap.put("screenWidth", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pN(localDisplayMetrics.widthPixels)));
+    localHashMap.put("screenHeight", Integer.valueOf(com.tencent.mm.plugin.appbrand.s.g.pN(localDisplayMetrics.heightPixels)));
+    localHashMap.put("language", aa.gP(localContext));
+    localHashMap.put("version", com.tencent.mm.sdk.platformtools.g.au(null, d.whH));
     localHashMap.put("system", "Android " + Build.VERSION.RELEASE);
-    return new JSONObject(localHashMap);
+    parama = new JSONObject(localHashMap);
+    AppMethodBeat.o(10831);
+    return parama;
   }
 }
 

@@ -1,11 +1,14 @@
 package com.tencent.mm.plugin.boots.a;
 
-import com.tencent.mm.kernel.b.d;
+import java.util.List;
 
 public abstract interface e
-  extends d
 {
-  public abstract f getTinkerLogic();
+  public abstract List<a> aWg();
+  
+  public abstract void dH(int paramInt1, int paramInt2);
+  
+  public abstract void rQ(int paramInt);
 }
 
 

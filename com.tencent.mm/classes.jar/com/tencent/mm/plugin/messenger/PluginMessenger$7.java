@@ -1,21 +1,11 @@
 package com.tencent.mm.plugin.messenger;
 
-import com.tencent.mm.plugin.messenger.a.e.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.Map;
+import com.tencent.mm.plugin.messenger.a.e.b;
 
 final class PluginMessenger$7
-  implements e.a
+  implements e.b
 {
   PluginMessenger$7(PluginMessenger paramPluginMessenger) {}
-  
-  public final String g(Map<String, String> paramMap, String paramString)
-  {
-    if (paramMap == null) {
-      return null;
-    }
-    return bk.pm((String)paramMap.get(paramString + ".plain"));
-  }
 }
 
 

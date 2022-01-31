@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.label.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 
 final class ContactLabelEditUI$3
   implements DialogInterface.OnCancelListener
@@ -12,13 +13,15 @@ final class ContactLabelEditUI$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().cancel(635);
-    au.Dk().cancel(637);
+    AppMethodBeat.i(22541);
+    aw.Rc().cancel(635);
+    aw.Rc().cancel(637);
+    AppMethodBeat.o(22541);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelEditUI.3
  * JD-Core Version:    0.7.0.1
  */

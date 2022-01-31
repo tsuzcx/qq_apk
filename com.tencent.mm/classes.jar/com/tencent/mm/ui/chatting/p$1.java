@@ -1,54 +1,35 @@
 package com.tencent.mm.ui.chatting;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.chatting.b.b.g;
-import com.tencent.mm.ui.chatting.c.a;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.j;
+import com.tencent.mm.ai.j.a;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.chatting.d.a;
 
 final class p$1
-  implements MenuItem.OnMenuItemClickListener
+  implements j.a
 {
   p$1(p paramp) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onError()
   {
-    paramMenuItem = new Intent();
-    Object localObject2 = ((g)this.vjG.byx.ac(g.class)).cDl();
-    if (localObject2 != null)
-    {
-      Object localObject1 = new ArrayList();
-      localObject2 = ((Set)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Long localLong = (Long)((Iterator)localObject2).next();
-        if (localLong != null) {
-          ((List)localObject1).add(localLong);
-        }
-      }
-      localObject2 = new long[((List)localObject1).size()];
-      localObject1 = ((List)localObject1).iterator();
-      int i = 0;
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2[i] = ((Long)((Iterator)localObject1).next()).longValue();
-        i += 1;
-      }
-      paramMenuItem.putExtra("k_outside_expose_proof_item_list", (long[])localObject2);
-      this.vjG.byx.vtz.getContext().setResult(-1, paramMenuItem);
-    }
-    for (;;)
-    {
-      paramMenuItem.putExtra("k_is_group_chat", this.vjG.byx.cFE());
-      this.vjG.byx.vtz.cCo();
-      return false;
-      this.vjG.byx.vtz.getContext().setResult(0, paramMenuItem);
-    }
+    AppMethodBeat.i(30623);
+    p.a(this.zyT).reset();
+    p.b(this.zyT).stopTimer();
+    p.c(this.zyT).stopTimer();
+    com.tencent.mm.sdk.platformtools.aj.apl("keep_app_silent");
+    p.d(this.zyT).bxy();
+    ((com.tencent.mm.ui.chatting.c.b.aj)p.e(this.zyT).ay(com.tencent.mm.ui.chatting.c.b.aj.class)).dJv().dFJ();
+    ab.v("MicroMsg.ChattingFooterEventImpl", "record stop on error");
+    p.e(this.zyT).zJz.enableOptionMenu(true);
+    p.e(this.zyT).zJz.enableBackMenu(true);
+    Toast.makeText(p.e(this.zyT).zJz.getContext(), p.e(this.zyT).zJz.getContext().getString(2131298285), 0).show();
+    AppMethodBeat.o(30623);
   }
 }
 

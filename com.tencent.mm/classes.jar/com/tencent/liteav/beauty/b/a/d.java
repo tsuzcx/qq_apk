@@ -1,11 +1,13 @@
 package com.tencent.liteav.beauty.b.a;
 
 import android.opengl.GLES20;
+import com.tencent.liteav.basic.d.g;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.NativeLoad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
-  extends com.tencent.liteav.basic.d.d
+  extends g
 {
   private int r = -1;
   private int s = -1;
@@ -19,6 +21,7 @@ public class d
   
   public void a(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(66954);
     super.a(paramInt1, paramInt2);
     if (paramInt1 > paramInt2) {
       if (paramInt2 < 540) {
@@ -30,6 +33,7 @@ public class d
       TXCLog.i(this.u, "m_textureRation " + this.t);
       a(this.r, this.t / paramInt1);
       a(this.s, this.t / paramInt2);
+      AppMethodBeat.o(66954);
       return;
       this.t = 4.0F;
       continue;
@@ -43,27 +47,34 @@ public class d
   
   public boolean a()
   {
+    AppMethodBeat.i(66951);
     NativeLoad.getInstance();
     this.a = NativeLoad.nativeLoadGLProgram(13);
     if ((this.a != 0) && (b())) {}
     for (this.g = true;; this.g = false)
     {
       c();
-      return this.g;
+      boolean bool = this.g;
+      AppMethodBeat.o(66951);
+      return bool;
     }
   }
   
   public boolean b()
   {
+    AppMethodBeat.i(66952);
     super.b();
     q();
+    AppMethodBeat.o(66952);
     return true;
   }
   
   public void q()
   {
+    AppMethodBeat.i(66953);
     this.r = GLES20.glGetUniformLocation(p(), "texelWidthOffset");
     this.s = GLES20.glGetUniformLocation(p(), "texelHeightOffset");
+    AppMethodBeat.o(66953);
   }
 }
 

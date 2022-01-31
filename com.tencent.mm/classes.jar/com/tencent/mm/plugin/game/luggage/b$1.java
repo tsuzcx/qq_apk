@@ -1,28 +1,48 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import android.os.Bundle;
-import com.tencent.luggage.e.n;
-import com.tencent.mm.plugin.game.luggage.c.a.c;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.luggage.d.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import org.json.JSONObject;
 
-final class b$1
-  implements Runnable
+public final class b$1
+  extends c
 {
-  b$1(b paramb) {}
-  
-  public final void run()
+  public final String name()
   {
-    if (bk.bl(b.a(this.kMp).biV.getString("game_hv_menu_appid")))
+    return "onGetA8KeyUrl";
+  }
+  
+  public final JSONObject tY()
+  {
+    AppMethodBeat.i(135807);
+    JSONObject localJSONObject = new JSONObject();
+    for (;;)
     {
-      b.a(this.kMp, new com.tencent.mm.plugin.game.luggage.c.b(b.a(this.kMp), this.kMp.getMenuHelp()));
-      return;
+      try
+      {
+        localJSONObject.put("url", b.nji);
+        if (!b.njj) {
+          continue;
+        }
+        i = 1;
+        localJSONObject.put("set_cookie", i);
+      }
+      catch (Exception localException)
+      {
+        int i;
+        ab.e("MicroMsg.LuggageGameUinKeyHolder", "onGetA8Key, e:" + localException.getMessage());
+        continue;
+      }
+      AppMethodBeat.o(135807);
+      return localJSONObject;
+      i = 0;
     }
-    b.a(this.kMp, new c(b.a(this.kMp), b.b(this.kMp)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.1
  * JD-Core Version:    0.7.0.1
  */

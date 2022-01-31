@@ -1,80 +1,48 @@
 package com.google.android.gms.auth.api.signin.internal;
 
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.t;
+import android.support.v4.app.p;
 import android.view.accessibility.AccessibilityEvent;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.SignInAccount;
 import com.google.android.gms.common.annotation.KeepName;
 import com.google.android.gms.common.api.Status;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @KeepName
 public class SignInHubActivity
   extends FragmentActivity
 {
-  private zzn zzakI;
-  private SignInConfiguration zzakJ;
-  private boolean zzakK;
-  private int zzakL;
-  private Intent zzakM;
+  private static boolean zzfg = false;
+  private boolean zzfh = false;
+  private SignInConfiguration zzfi;
+  private boolean zzfj;
+  private int zzfk;
+  private Intent zzfl;
   
-  private void zza(int paramInt, Intent paramIntent)
+  private final void zzd(int paramInt)
   {
-    if (paramIntent != null)
-    {
-      Object localObject = (SignInAccount)paramIntent.getParcelableExtra("signInAccount");
-      if ((localObject != null) && (((SignInAccount)localObject).zzro() != null))
-      {
-        localObject = ((SignInAccount)localObject).zzro();
-        this.zzakI.zzb((GoogleSignInAccount)localObject, this.zzakJ.zzrz());
-        paramIntent.removeExtra("signInAccount");
-        paramIntent.putExtra("googleSignInAccount", (Parcelable)localObject);
-        this.zzakK = true;
-        this.zzakL = paramInt;
-        this.zzakM = paramIntent;
-        zzrA();
-        return;
-      }
-      if (paramIntent.hasExtra("errorCode"))
-      {
-        zzbq(paramIntent.getIntExtra("errorCode", 8));
-        return;
-      }
-    }
-    zzbq(8);
-  }
-  
-  private void zzbq(int paramInt)
-  {
+    AppMethodBeat.i(50413);
     Status localStatus = new Status(paramInt);
     Intent localIntent = new Intent();
     localIntent.putExtra("googleSignInStatus", localStatus);
     setResult(0, localIntent);
     finish();
+    zzfg = false;
+    AppMethodBeat.o(50413);
   }
   
-  private void zzj(Intent paramIntent)
+  private final void zzu()
   {
-    paramIntent.setPackage("com.google.android.gms");
-    paramIntent.putExtra("config", this.zzakJ);
-    try
-    {
-      startActivityForResult(paramIntent, 40962);
-      return;
-    }
-    catch (ActivityNotFoundException paramIntent)
-    {
-      zzbq(8);
-    }
-  }
-  
-  private void zzrA()
-  {
-    getSupportLoaderManager().a(new SignInHubActivity.zza(this, null));
+    AppMethodBeat.i(50412);
+    getSupportLoaderManager().a(new SignInHubActivity.zzd(this, null));
+    zzfg = false;
+    AppMethodBeat.o(50412);
   }
   
   public boolean dispatchPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
@@ -82,67 +50,150 @@ public class SignInHubActivity
     return true;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(50411);
+    if (this.zzfh)
+    {
+      AppMethodBeat.o(50411);
+      return;
+    }
     setResult(0);
     switch (paramInt1)
     {
-    default: 
-      return;
     }
-    zza(paramInt2, paramIntent);
+    for (;;)
+    {
+      AppMethodBeat.o(50411);
+      return;
+      if (paramIntent != null)
+      {
+        Object localObject = (SignInAccount)paramIntent.getParcelableExtra("signInAccount");
+        if ((localObject != null) && (((SignInAccount)localObject).getGoogleSignInAccount() != null))
+        {
+          localObject = ((SignInAccount)localObject).getGoogleSignInAccount();
+          zzq.zze(this).zzd(this.zzfi.zzt(), (GoogleSignInAccount)localObject);
+          paramIntent.removeExtra("signInAccount");
+          paramIntent.putExtra("googleSignInAccount", (Parcelable)localObject);
+          this.zzfj = true;
+          this.zzfk = paramInt2;
+          this.zzfl = paramIntent;
+          zzu();
+          AppMethodBeat.o(50411);
+          return;
+        }
+        if (paramIntent.hasExtra("errorCode"))
+        {
+          zzd(paramIntent.getIntExtra("errorCode", 8));
+          AppMethodBeat.o(50411);
+          return;
+        }
+      }
+      zzd(8);
+    }
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(50409);
     super.onCreate(paramBundle);
-    this.zzakI = zzn.zzas(this);
     Intent localIntent = getIntent();
-    if (!"com.google.android.gms.auth.GOOGLE_SIGN_IN".equals(localIntent.getAction()))
+    String str = localIntent.getAction();
+    if ("com.google.android.gms.auth.NO_IMPL".equals(str))
     {
-      String str = String.valueOf(localIntent.getAction());
-      if (str.length() != 0)
+      zzd(12500);
+      AppMethodBeat.o(50409);
+      return;
+    }
+    if ((!str.equals("com.google.android.gms.auth.GOOGLE_SIGN_IN")) && (!str.equals("com.google.android.gms.auth.APPAUTH_SIGN_IN")))
+    {
+      paramBundle = String.valueOf(localIntent.getAction());
+      if (paramBundle.length() != 0) {
+        "Unknown action: ".concat(paramBundle);
+      }
+      for (;;)
       {
-        "Unknown action: ".concat(str);
         finish();
+        AppMethodBeat.o(50409);
+        return;
+        new String("Unknown action: ");
       }
     }
-    else
+    this.zzfi = ((SignInConfiguration)localIntent.getBundleExtra("config").getParcelable("config"));
+    if (this.zzfi == null)
     {
-      this.zzakJ = ((SignInConfiguration)localIntent.getParcelableExtra("config"));
-      if (this.zzakJ != null) {
-        break label99;
-      }
       setResult(0);
       finish();
-    }
-    label99:
-    do
-    {
+      AppMethodBeat.o(50409);
       return;
-      new String("Unknown action: ");
-      break;
-      if (paramBundle == null)
+    }
+    int i;
+    if (paramBundle == null) {
+      i = 1;
+    }
+    while (i != 0) {
+      if (zzfg)
       {
-        zzj(new Intent("com.google.android.gms.auth.GOOGLE_SIGN_IN"));
+        setResult(0);
+        zzd(12502);
+        AppMethodBeat.o(50409);
         return;
+        i = 0;
       }
-      this.zzakK = paramBundle.getBoolean("signingInGoogleApiClients");
-    } while (!this.zzakK);
-    this.zzakL = paramBundle.getInt("signInResultCode");
-    this.zzakM = ((Intent)paramBundle.getParcelable("signInResultData"));
-    zzrA();
+      else
+      {
+        zzfg = true;
+        paramBundle = new Intent(str);
+        if (str.equals("com.google.android.gms.auth.GOOGLE_SIGN_IN")) {
+          paramBundle.setPackage("com.google.android.gms");
+        }
+        for (;;)
+        {
+          paramBundle.putExtra("config", this.zzfi);
+          try
+          {
+            startActivityForResult(paramBundle, 40962);
+            AppMethodBeat.o(50409);
+            return;
+          }
+          catch (ActivityNotFoundException paramBundle)
+          {
+            this.zzfh = true;
+            zzd(17);
+            AppMethodBeat.o(50409);
+            return;
+          }
+          paramBundle.setPackage(getPackageName());
+        }
+      }
+    }
+    this.zzfj = paramBundle.getBoolean("signingInGoogleApiClients");
+    if (this.zzfj)
+    {
+      this.zzfk = paramBundle.getInt("signInResultCode");
+      this.zzfl = ((Intent)paramBundle.getParcelable("signInResultData"));
+      zzu();
+    }
+    AppMethodBeat.o(50409);
   }
   
-  protected void onSaveInstanceState(Bundle paramBundle)
+  public void onSaveInstanceState(Bundle paramBundle)
   {
+    AppMethodBeat.i(50410);
     super.onSaveInstanceState(paramBundle);
-    paramBundle.putBoolean("signingInGoogleApiClients", this.zzakK);
-    if (this.zzakK)
+    paramBundle.putBoolean("signingInGoogleApiClients", this.zzfj);
+    if (this.zzfj)
     {
-      paramBundle.putInt("signInResultCode", this.zzakL);
-      paramBundle.putParcelable("signInResultData", this.zzakM);
+      paramBundle.putInt("signInResultCode", this.zzfk);
+      paramBundle.putParcelable("signInResultData", this.zzfl);
     }
+    AppMethodBeat.o(50410);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

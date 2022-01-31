@@ -1,20 +1,24 @@
 package com.tencent.xweb.x5;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$d<T>
   implements com.tencent.smtt.sdk.ValueCallback<T>
 {
-  android.webkit.ValueCallback<T> xkl;
+  android.webkit.ValueCallback<T> BHQ;
   
   public a$d(android.webkit.ValueCallback<T> paramValueCallback)
   {
-    this.xkl = paramValueCallback;
+    this.BHQ = paramValueCallback;
   }
   
   public final void onReceiveValue(T paramT)
   {
-    if (this.xkl != null) {
-      this.xkl.onReceiveValue(paramT);
+    AppMethodBeat.i(84781);
+    if (this.BHQ != null) {
+      this.BHQ.onReceiveValue(paramT);
     }
+    AppMethodBeat.o(84781);
   }
 }
 

@@ -4,55 +4,58 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.plugin.scanner.a.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.scanner.model.a.a;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.List;
-import java.util.Map;
 
 public final class h
   extends Preference
 {
-  private Context mContext = null;
-  List<a.a> mTm = null;
-  private View mView = null;
+  private Context mContext;
+  private View mView;
+  List<a.a> pvs;
   
   public h(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(81069);
+    this.mView = null;
+    this.mContext = null;
+    this.pvs = null;
     this.mContext = paramContext;
-    setLayoutResource(R.i.product_grid_preference);
+    setLayoutResource(2130970443);
+    AppMethodBeat.o(81069);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(81070);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(81070);
+    return paramView;
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(81071);
     super.onBindView(paramView);
-    Object localObject = (GridView)this.mView.findViewById(R.h.main_grid);
-    paramView = new h.b(this);
-    ((GridView)localObject).setAdapter(paramView);
-    if (this.mTm != null)
-    {
-      localObject = this.mTm;
-      paramView.nJT.clear();
-      paramView.nJX.clear();
-      paramView.nJX = ((List)localObject);
-      paramView.notifyDataSetChanged();
+    paramView = (GridView)this.mView.findViewById(2131826775);
+    h.b localb = new h.b(this);
+    paramView.setAdapter(localb);
+    if (this.pvs != null) {
+      localb.setItemList(this.pvs);
     }
+    AppMethodBeat.o(81071);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.h
  * JD-Core Version:    0.7.0.1
  */

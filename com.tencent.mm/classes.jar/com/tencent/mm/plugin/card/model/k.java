@@ -1,44 +1,47 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.h.c.ak;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.al;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class k
-  extends ak
+  extends al
 {
-  public static c.a buS;
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(87842);
     c.a locala = new c.a();
-    locala.ujL = new Field[4];
+    locala.yrK = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "code_id";
-    locala.ujN.put("code_id", "TEXT");
+    locala.yrM.put("code_id", "TEXT");
     localStringBuilder.append(" code_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "card_id";
-    locala.ujN.put("card_id", "TEXT");
+    locala.yrM.put("card_id", "TEXT");
     localStringBuilder.append(" card_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "code";
-    locala.ujN.put("code", "TEXT");
+    locala.yrM.put("code", "TEXT");
     localStringBuilder.append(" code TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.ujN.put("status", "INTEGER");
+    locala.yrM.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(87842);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

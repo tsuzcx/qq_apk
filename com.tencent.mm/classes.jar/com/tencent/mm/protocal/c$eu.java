@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$eu
+public final class c$eu
   extends c.g
 {
-  c$eu()
+  public c$eu()
   {
-    super("openECard", "openECard", 268, true);
+    super("nfcConnect", "nfcConnect", 140, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.eu
  * JD-Core Version:    0.7.0.1
  */

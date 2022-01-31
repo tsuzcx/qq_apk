@@ -1,30 +1,34 @@
 package com.google.android.exoplayer2.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 final class j
   implements d
 {
-  private int auC = -1;
-  private int axB = -1;
-  private boolean axF;
-  private ByteBuffer axd = avY;
-  private ByteBuffer buffer = avY;
+  private int awU = -1;
+  private int azR = -1;
+  private boolean azU;
+  private ByteBuffer azt = ayo;
+  private ByteBuffer buffer = ayo;
   private int encoding = 0;
   
   public final void c(ByteBuffer paramByteBuffer)
   {
+    AppMethodBeat.i(94720);
     int i = paramByteBuffer.position();
     int m = paramByteBuffer.limit();
     int j = m - i;
     switch (this.encoding)
     {
     default: 
-      throw new IllegalStateException();
+      paramByteBuffer = new IllegalStateException();
+      AppMethodBeat.o(94720);
+      throw paramByteBuffer;
     case 3: 
       j *= 2;
-      label68:
+      label79:
       if (this.buffer.capacity() < j) {
         this.buffer = ByteBuffer.allocateDirect(j).order(ByteOrder.nativeOrder());
       }
@@ -38,11 +42,13 @@ final class j
       switch (this.encoding)
       {
       default: 
-        throw new IllegalStateException();
+        paramByteBuffer = new IllegalStateException();
+        AppMethodBeat.o(94720);
+        throw paramByteBuffer;
         j = j / 3 * 2;
-        break label68;
+        break label79;
         j /= 2;
-        break label68;
+        break label79;
         this.buffer.clear();
       }
     }
@@ -71,7 +77,8 @@ final class j
       {
         paramByteBuffer.position(paramByteBuffer.limit());
         this.buffer.flip();
-        this.axd = this.buffer;
+        this.azt = this.buffer;
+        AppMethodBeat.o(94720);
         return;
       }
     }
@@ -79,8 +86,8 @@ final class j
   
   public final void flush()
   {
-    this.axd = avY;
-    this.axF = false;
+    this.azt = ayo;
+    this.azU = false;
   }
   
   public final boolean isActive()
@@ -88,62 +95,66 @@ final class j
     return (this.encoding != 0) && (this.encoding != 2);
   }
   
-  public final boolean kU()
+  public final boolean nd()
   {
-    return (this.axF) && (this.axd == avY);
+    return (this.azU) && (this.azt == ayo);
   }
   
-  public final int kZ()
+  public final int ni()
   {
-    return this.auC;
+    return this.awU;
   }
   
-  public final int la()
+  public final void nj()
   {
-    return 2;
+    this.azU = true;
   }
   
-  public final void lb()
+  public final ByteBuffer nk()
   {
-    this.axF = true;
-  }
-  
-  public final ByteBuffer lc()
-  {
-    ByteBuffer localByteBuffer = this.axd;
-    this.axd = avY;
+    ByteBuffer localByteBuffer = this.azt;
+    this.azt = ayo;
     return localByteBuffer;
   }
   
   public final boolean q(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt3 != 3) && (paramInt3 != 2) && (paramInt3 != -2147483648) && (paramInt3 != 1073741824)) {
-      throw new d.a(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(94719);
+    if ((paramInt3 != 3) && (paramInt3 != 2) && (paramInt3 != -2147483648) && (paramInt3 != 1073741824))
+    {
+      d.a locala = new d.a(paramInt1, paramInt2, paramInt3);
+      AppMethodBeat.o(94719);
+      throw locala;
     }
-    if ((this.axB == paramInt1) && (this.auC == paramInt2) && (this.encoding == paramInt3)) {
+    if ((this.azR == paramInt1) && (this.awU == paramInt2) && (this.encoding == paramInt3))
+    {
+      AppMethodBeat.o(94719);
       return false;
     }
-    this.axB = paramInt1;
-    this.auC = paramInt2;
+    this.azR = paramInt1;
+    this.awU = paramInt2;
     this.encoding = paramInt3;
     if (paramInt3 == 2) {
-      this.buffer = avY;
+      this.buffer = ayo;
     }
+    AppMethodBeat.o(94719);
     return true;
   }
   
   public final void reset()
   {
+    AppMethodBeat.i(94721);
     flush();
-    this.buffer = avY;
-    this.axB = -1;
-    this.auC = -1;
+    this.buffer = ayo;
+    this.azR = -1;
+    this.awU = -1;
     this.encoding = 0;
+    AppMethodBeat.o(94721);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.a.j
  * JD-Core Version:    0.7.0.1
  */

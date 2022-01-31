@@ -1,28 +1,31 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import android.app.ProgressDialog;
-import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.a.c.f;
+import com.tencent.mm.plugin.topstory.ui.video.r;
+import com.tencent.mm.plugin.topstory.ui.widget.TopStoryCommentFloatDialog;
+import com.tencent.mm.plugin.topstory.ui.widget.c.a;
+import com.tencent.mm.protocal.protobuf.ckw;
+import com.tencent.mm.protocal.protobuf.ckx;
 
 final class TopStoryFSVideoUI$7
-  implements Runnable
+  implements c.a
 {
-  TopStoryFSVideoUI$7(TopStoryFSVideoUI paramTopStoryFSVideoUI, String paramString) {}
+  TopStoryFSVideoUI$7(TopStoryFSVideoUI paramTopStoryFSVideoUI, ckx paramckx) {}
   
-  public final void run()
+  public final void a(f paramf)
   {
-    TopStoryFSVideoUI.b(this.pHz).setVisibility(4);
-    TopStoryFSVideoUI.c(this.pHz).setVisibility(4);
-    if (TopStoryFSVideoUI.d(this.pHz) != null)
-    {
-      TopStoryFSVideoUI.d(this.pHz).dismiss();
-      TopStoryFSVideoUI.e(this.pHz);
+    AppMethodBeat.i(1961);
+    this.tkZ.tkW.a(paramf, new TopStoryFSVideoUI.7.1(this), (int)this.tkZ.tfp.xUO, this.tiU.xVe);
+    if (this.tkZ.tiL.cKj()) {
+      this.tkZ.tiL.crn();
     }
-    TopStoryFSVideoUI.a(this.pHz, this.bhH);
+    AppMethodBeat.o(1961);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.TopStoryFSVideoUI.7
  * JD-Core Version:    0.7.0.1
  */

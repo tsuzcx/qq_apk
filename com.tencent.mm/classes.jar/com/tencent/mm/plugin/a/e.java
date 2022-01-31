@@ -1,18 +1,28 @@
 package com.tencent.mm.plugin.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.RandomAccessFile;
 
 public final class e
   extends a
 {
-  public static final int eUs = c.aG("vide");
-  public static final int eUt = c.aG("soun");
-  public static final int eUu = c.aG("hint");
+  public static final int gmq;
+  public static final int gmr;
+  public static final int gms;
   long duration = 0L;
-  long eUv = 0L;
-  long eUw = 0L;
-  long eUx = 0L;
+  long gmt = 0L;
+  long gmu = 0L;
+  long gmv = 0L;
+  
+  static
+  {
+    AppMethodBeat.i(117846);
+    gmq = c.aS("vide");
+    gmr = c.aS("soun");
+    gms = c.aS("hint");
+    AppMethodBeat.o(117846);
+  }
   
   public e(int paramInt1, long paramLong, int paramInt2)
   {
@@ -21,6 +31,7 @@ public final class e
   
   public final boolean a(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(117845);
     int m = 0;
     int k = 0;
     int j = 0;
@@ -30,7 +41,7 @@ public final class e
       i1 = c.readInt(paramArrayOfByte, 0);
       int i = c.readInt(paramArrayOfByte, 4);
       long l;
-      if (i == a.aAB)
+      if (i == a.aFg)
       {
         byte[] arrayOfByte = new byte[4];
         i = paramRandomAccessFile.read(arrayOfByte);
@@ -39,7 +50,8 @@ public final class e
         }
         while (i <= 0)
         {
-          y.w("MicroMsg.MdiaAtom", "handle mdhd atom error.");
+          ab.w("MicroMsg.MdiaAtom", "handle mdhd atom error.");
+          AppMethodBeat.o(117845);
           return false;
           i += 0;
           if (arrayOfByte[0] == 0)
@@ -58,8 +70,8 @@ public final class e
               else
               {
                 i = i + 8 + m;
-                this.eUv = c.z(paramArrayOfByte, 0);
-                this.duration = c.z(paramArrayOfByte, 4);
+                this.gmt = c.A(paramArrayOfByte, 0);
+                this.duration = c.A(paramArrayOfByte, 4);
               }
             }
           }
@@ -76,7 +88,7 @@ public final class e
             }
             else
             {
-              this.eUv = c.z(arrayOfByte, 0);
+              this.gmt = c.A(arrayOfByte, 0);
               int i2 = paramRandomAccessFile.read(paramArrayOfByte);
               if (i2 < 8)
               {
@@ -85,7 +97,7 @@ public final class e
               else
               {
                 i = i2 + (i + 16 + m);
-                this.duration = c.K(paramArrayOfByte);
+                this.duration = c.ae(paramArrayOfByte);
               }
             }
           }
@@ -102,21 +114,23 @@ public final class e
           n = k;
           j = m;
           if (i != 0) {
-            break label444;
+            break label464;
           }
         }
         if (c.a(paramRandomAccessFile, l)) {
           break;
         }
+        AppMethodBeat.o(117845);
         return false;
-        if (i == a.aAC)
+        if (i == a.aFh)
         {
           if (!c.a(paramRandomAccessFile, 8L)) {
             i = -1;
           }
           while (i <= 0)
           {
-            y.w("MicroMsg.MdiaAtom", "handle hdlr atom error.");
+            ab.w("MicroMsg.MdiaAtom", "handle hdlr atom error.");
+            AppMethodBeat.o(117845);
             return false;
             i = paramRandomAccessFile.read(paramArrayOfByte, 0, 4);
             if (i < 4)
@@ -125,7 +139,7 @@ public final class e
             }
             else
             {
-              this.eUw = c.readInt(paramArrayOfByte, 0);
+              this.gmu = c.readInt(paramArrayOfByte, 0);
               i += 8;
             }
           }
@@ -133,9 +147,9 @@ public final class e
           l = i1 - n - i;
           i = j;
         }
-        else if (i == a.aAp)
+        else if (i == a.aEU)
         {
-          this.eUx = (paramRandomAccessFile.getFilePointer() - n);
+          this.gmv = (paramRandomAccessFile.getFilePointer() - n);
           l = i1 - n;
           i = 1;
         }
@@ -151,13 +165,19 @@ public final class e
     int i1 = j;
     j = m;
     n = k;
-    label444:
-    return (j != 0) && (n != 0) && (i1 != 0);
+    label464:
+    if ((j != 0) && (n != 0) && (i1 != 0))
+    {
+      AppMethodBeat.o(117845);
+      return true;
+    }
+    AppMethodBeat.o(117845);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.a.e
  * JD-Core Version:    0.7.0.1
  */

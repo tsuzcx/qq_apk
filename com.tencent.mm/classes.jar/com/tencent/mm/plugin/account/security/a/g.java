@@ -1,32 +1,46 @@
 package com.tencent.mm.plugin.account.security.a;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.q;
 import com.tencent.mm.sdk.b.c;
 import java.util.HashMap;
 
 public class g
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> fjU;
-  private e fjT;
-  private c fjV = new g.2(this);
-  private c fjW = new g.3(this);
-  private c fjX = new g.4(this);
+  private static HashMap<Integer, h.d> gBl;
+  private e gBk;
+  private c gBm;
+  private c gBn;
+  private c gBo;
   
   static
   {
+    AppMethodBeat.i(69857);
     HashMap localHashMap = new HashMap();
-    fjU = localHashMap;
+    gBl = localHashMap;
     localHashMap.put(Integer.valueOf("SAFE_DEVICE_INFO_TABLE".hashCode()), new g.1());
+    AppMethodBeat.o(69857);
   }
   
-  private static g XA()
+  public g()
+  {
+    AppMethodBeat.i(69852);
+    this.gBm = new g.2(this);
+    this.gBn = new g.3(this);
+    this.gBo = new g.4(this);
+    AppMethodBeat.o(69852);
+  }
+  
+  private static g arc()
   {
     try
     {
-      g localg = (g)p.B(g.class);
+      AppMethodBeat.i(69853);
+      g localg = (g)q.S(g.class);
+      AppMethodBeat.o(69853);
       return localg;
     }
     finally
@@ -36,41 +50,48 @@ public class g
     }
   }
   
-  public static e XB()
+  public static e ard()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    if (XA().fjT == null) {
-      XA().fjT = new e(com.tencent.mm.kernel.g.DP().dKu);
+    AppMethodBeat.i(69854);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    if (arc().gBk == null) {
+      arc().gBk = new e(com.tencent.mm.kernel.g.RL().eHS);
     }
-    return XA().fjT;
+    e locale = arc().gBk;
+    AppMethodBeat.o(69854);
+    return locale;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    com.tencent.mm.sdk.b.a.udP.c(this.fjV);
-    com.tencent.mm.sdk.b.a.udP.c(this.fjW);
-    com.tencent.mm.sdk.b.a.udP.c(this.fjX);
+    return gBl;
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    com.tencent.mm.sdk.b.a.udP.d(this.fjV);
-    com.tencent.mm.sdk.b.a.udP.d(this.fjW);
-    com.tencent.mm.sdk.b.a.udP.d(this.fjX);
+    AppMethodBeat.i(69855);
+    com.tencent.mm.sdk.b.a.ymk.c(this.gBm);
+    com.tencent.mm.sdk.b.a.ymk.c(this.gBn);
+    com.tencent.mm.sdk.b.a.ymk.c(this.gBo);
+    AppMethodBeat.o(69855);
   }
   
-  public final HashMap<Integer, h.d> xe()
+  public void onAccountRelease()
   {
-    return fjU;
+    AppMethodBeat.i(69856);
+    com.tencent.mm.sdk.b.a.ymk.d(this.gBm);
+    com.tencent.mm.sdk.b.a.ymk.d(this.gBn);
+    com.tencent.mm.sdk.b.a.ymk.d(this.gBo);
+    AppMethodBeat.o(69856);
   }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.g
  * JD-Core Version:    0.7.0.1
  */

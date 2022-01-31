@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BakOperatingUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -10,13 +11,16 @@ final class BakOperatingUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (BakOperatingUI.a(this.hPc))
+    AppMethodBeat.i(17937);
+    if (BakOperatingUI.a(this.jIE))
     {
-      BakOperatingUI.e(this.hPc);
+      BakOperatingUI.e(this.jIE);
+      AppMethodBeat.o(17937);
       return false;
     }
-    BakOperatingUI.b(this.hPc);
-    BakOperatingUI.f(this.hPc);
+    BakOperatingUI.b(this.jIE);
+    BakOperatingUI.f(this.jIE);
+    AppMethodBeat.o(17937);
     return true;
   }
 }

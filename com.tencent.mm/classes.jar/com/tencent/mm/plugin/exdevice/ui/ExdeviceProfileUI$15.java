@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.a.b;
 import com.tencent.mm.plugin.exdevice.f.a.g;
+import com.tencent.mm.ui.base.p;
 
 final class ExdeviceProfileUI$15
   implements b<g>

@@ -1,5 +1,6 @@
 package com.tencent.wcdb.repair;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteException;
 import com.tencent.wcdb.support.CancellationSignal;
@@ -20,12 +21,17 @@ public class RecoverKit
   
   public RecoverKit(SQLiteDatabase paramSQLiteDatabase, String paramString, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(12654);
     this.mDB = paramSQLiteDatabase;
     this.mLastError = null;
     this.mNativePtr = nativeInit(paramString, paramArrayOfByte);
-    if (this.mNativePtr == 0L) {
-      throw new SQLiteException("Failed initialize recover context.");
+    if (this.mNativePtr == 0L)
+    {
+      paramSQLiteDatabase = new SQLiteException("Failed initialize recover context.");
+      AppMethodBeat.o(12654);
+      throw paramSQLiteDatabase;
     }
+    AppMethodBeat.o(12654);
   }
   
   private static native void nativeCancel(long paramLong);
@@ -49,8 +55,10 @@ public class RecoverKit
   
   protected void finalize()
   {
+    AppMethodBeat.i(12659);
     release();
     super.finalize();
+    AppMethodBeat.o(12659);
   }
   
   public String lastError()
@@ -60,24 +68,32 @@ public class RecoverKit
   
   public void onCancel()
   {
+    AppMethodBeat.i(12657);
     if (this.mNativePtr != 0L) {
       nativeCancel(this.mNativePtr);
     }
+    AppMethodBeat.o(12657);
   }
   
   public void release()
   {
+    AppMethodBeat.i(12658);
     if (this.mNativePtr != 0L)
     {
       nativeFinish(this.mNativePtr);
       this.mNativePtr = 0L;
     }
+    AppMethodBeat.o(12658);
   }
   
   public int run(boolean paramBoolean)
   {
-    if (this.mNativePtr == 0L) {
-      throw new IllegalStateException("RecoverKit not initialized.");
+    AppMethodBeat.i(12655);
+    if (this.mNativePtr == 0L)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("RecoverKit not initialized.");
+      AppMethodBeat.o(12655);
+      throw localIllegalStateException;
     }
     long l = this.mDB.acquireNativeConnectionHandle("recover", false, false);
     int i = nativeRun(this.mNativePtr, l, paramBoolean);
@@ -87,17 +103,22 @@ public class RecoverKit
     this.mLastError = nativeLastError(this.mNativePtr);
     nativeFinish(this.mNativePtr);
     this.mNativePtr = 0L;
+    AppMethodBeat.o(12655);
     return i;
   }
   
   public int run(boolean paramBoolean, CancellationSignal paramCancellationSignal)
   {
-    if (paramCancellationSignal.isCanceled()) {
+    AppMethodBeat.i(12656);
+    if (paramCancellationSignal.isCanceled())
+    {
+      AppMethodBeat.o(12656);
       return 1;
     }
     paramCancellationSignal.setOnCancelListener(this);
     int i = run(paramBoolean);
     paramCancellationSignal.setOnCancelListener(null);
+    AppMethodBeat.o(12656);
     return i;
   }
   

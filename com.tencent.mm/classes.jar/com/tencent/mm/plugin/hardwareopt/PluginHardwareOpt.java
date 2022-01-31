@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.hardwareopt;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.hardwareopt.a.b;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class PluginHardwareOpt
   extends f
@@ -13,39 +14,53 @@ public class PluginHardwareOpt
 {
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    if (!paramg.Ex()) {
+    AppMethodBeat.i(59266);
+    if (!paramg.SD())
+    {
+      AppMethodBeat.o(59266);
       return;
     }
-    y.v("MicroMsg.PluginHardwareOpt", "hy: on config");
-    com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.hardwareopt.a.a.a.class, new com.tencent.mm.plugin.hardwareopt.a.a());
+    ab.v("MicroMsg.PluginHardwareOpt", "hy: on config");
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.hardwareopt.a.a.a.class, new com.tencent.mm.plugin.hardwareopt.a.a());
+    AppMethodBeat.o(59266);
   }
   
   public void dependency()
   {
+    AppMethodBeat.i(59265);
     dependsOn(p.class);
+    AppMethodBeat.o(59265);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    if (paramg.Ex()) {
-      y.i("MicroMsg.PluginHardwareOpt", "hy: on execute. ");
+    AppMethodBeat.i(59267);
+    if (paramg.SD()) {
+      ab.i("MicroMsg.PluginHardwareOpt", "hy: on execute. ");
     }
+    AppMethodBeat.o(59267);
   }
   
   public void installed()
   {
+    AppMethodBeat.i(59264);
     alias(b.class);
+    AppMethodBeat.o(59264);
   }
   
   public void onAccountInitialized(e.c paramc)
   {
-    y.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountInitialized");
-    ((com.tencent.mm.plugin.hardwareopt.a.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).gF(false);
+    AppMethodBeat.i(59268);
+    ab.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountInitialized");
+    ((com.tencent.mm.plugin.hardwareopt.a.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.hardwareopt.a.a.a.class)).ip(false);
+    AppMethodBeat.o(59268);
   }
   
   public void onAccountRelease()
   {
-    y.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountRelease");
+    AppMethodBeat.i(59269);
+    ab.v("MicroMsg.PluginHardwareOpt", "hy: on onAccountRelease");
+    AppMethodBeat.o(59269);
   }
 }
 

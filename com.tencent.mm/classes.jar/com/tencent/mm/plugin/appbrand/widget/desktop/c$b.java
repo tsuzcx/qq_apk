@@ -4,19 +4,19 @@ import android.support.v7.widget.RecyclerView.v;
 
 final class c$b
 {
-  public int abU;
-  public int abV;
-  public int abW;
-  public int abX;
-  public RecyclerView.v abY;
+  public int acF;
+  public int acG;
+  public int acH;
+  public int acI;
+  public RecyclerView.v acJ;
   
   c$b(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.abY = paramv;
-    this.abU = paramInt1;
-    this.abV = paramInt2;
-    this.abW = paramInt3;
-    this.abX = paramInt4;
+    this.acJ = paramv;
+    this.acF = paramInt1;
+    this.acG = paramInt2;
+    this.acH = paramInt3;
+    this.acI = paramInt4;
   }
 }
 

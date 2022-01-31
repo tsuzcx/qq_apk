@@ -1,37 +1,40 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class MMProgressBar$1
-  implements am.a
+  implements ap.a
 {
   MMProgressBar$1(MMProgressBar paramMMProgressBar) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    int j = MMProgressBar.a(this.uWP) - MMProgressBar.b(this.uWP);
+    AppMethodBeat.i(106704);
+    int j = MMProgressBar.a(this.zli) - MMProgressBar.b(this.zli);
     int i;
     Object localObject;
     int k;
     if (j > 0)
     {
       i = (int)(j * 0.6D);
-      localObject = this.uWP;
-      k = MMProgressBar.b(this.uWP);
+      localObject = this.zli;
+      k = MMProgressBar.b(this.zli);
       if (i <= 0) {
-        break label112;
+        break label122;
       }
     }
     for (;;)
     {
       MMProgressBar.a((MMProgressBar)localObject, i + k);
-      MMProgressBar.b(this.uWP, MMProgressBar.b(this.uWP));
-      localObject = MMProgressBar.d(this.uWP);
-      long l = (MMProgressBar.c(this.uWP) - j) * 40 / MMProgressBar.c(this.uWP);
-      ((am)localObject).S(l, l);
+      MMProgressBar.b(this.zli, MMProgressBar.b(this.zli));
+      localObject = MMProgressBar.d(this.zli);
+      long l = (MMProgressBar.c(this.zli) - j) * 40 / MMProgressBar.c(this.zli);
+      ((ap)localObject).ag(l, l);
+      AppMethodBeat.o(106704);
       return false;
-      label112:
+      label122:
       i = 1;
     }
   }

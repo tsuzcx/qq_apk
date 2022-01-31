@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 
 final class UnfamiliarContactDetailUI$c$1
@@ -12,34 +13,37 @@ final class UnfamiliarContactDetailUI$c$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(127658);
     int i = ((Integer)paramView.getTag()).intValue();
-    paramView = this.nXl.khV;
+    paramView = this.qLv.mCC;
     boolean bool;
-    if (!this.nXl.khV.isChecked())
+    if (!this.qLv.mCC.isChecked())
     {
       bool = true;
       paramView.setChecked(bool);
-      if (!this.nXl.khV.isChecked()) {
-        break label120;
+      if (!this.qLv.mCC.isChecked()) {
+        break label130;
       }
-      UnfamiliarContactDetailUI.b(this.nXl.nWX).add(Integer.valueOf(i));
+      UnfamiliarContactDetailUI.b(this.qLv.qLi).add(Integer.valueOf(i));
     }
     for (;;)
     {
-      if (UnfamiliarContactDetailUI.b(this.nXl.nWX).size() != 0) {
-        break label141;
+      if (UnfamiliarContactDetailUI.b(this.qLv.qLi).size() != 0) {
+        break label151;
       }
-      UnfamiliarContactDetailUI.d(this.nXl.nWX).setEnabled(false);
-      UnfamiliarContactDetailUI.c(this.nXl.nWX).setEnabled(false);
+      UnfamiliarContactDetailUI.d(this.qLv.qLi).setEnabled(false);
+      UnfamiliarContactDetailUI.c(this.qLv.qLi).setEnabled(false);
+      AppMethodBeat.o(127658);
       return;
       bool = false;
       break;
-      label120:
-      UnfamiliarContactDetailUI.b(this.nXl.nWX).remove(Integer.valueOf(i));
+      label130:
+      UnfamiliarContactDetailUI.b(this.qLv.qLi).remove(Integer.valueOf(i));
     }
-    label141:
-    UnfamiliarContactDetailUI.d(this.nXl.nWX).setEnabled(true);
-    UnfamiliarContactDetailUI.c(this.nXl.nWX).setEnabled(true);
+    label151:
+    UnfamiliarContactDetailUI.d(this.qLv.qLi).setEnabled(true);
+    UnfamiliarContactDetailUI.c(this.qLv.qLi).setEnabled(true);
+    AppMethodBeat.o(127658);
   }
 }
 

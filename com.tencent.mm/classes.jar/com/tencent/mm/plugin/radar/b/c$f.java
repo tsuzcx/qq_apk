@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.radar.b;
 
-import a.d.b.p;
-import a.k;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import a.f.b.z;
+import a.l;
+import a.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/radar/model/RadarAddContact$addContact$add$1", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$IOnAddContactHelper;", "canAddContact", "", "ok", "", "hasSentVerify", "respUsername", "", "errMsg", "plugin-radar_release"})
 public final class c$f
   implements c.d
 {
@@ -19,92 +20,53 @@ public final class c$f
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
-    Object localObject;
+    AppMethodBeat.i(102876);
     if (paramBoolean1)
     {
-      localObject = com.tencent.mm.kernel.g.r(j.class);
-      a.d.b.g.j(localObject, "service(IMessengerStorage::class.java)");
-      localObject = ((j)localObject).Fw().abl(paramString1);
-      a.d.b.g.j(localObject, "contact");
-      if (((ad)localObject).Bo() > 0) {
-        s.q((ad)localObject);
+      Object localObject = g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class);
+      a.f.b.j.p(localObject, "service(IMessengerStorage::class.java)");
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)localObject).YA().arw(paramString1);
+      a.f.b.j.p(localObject, "contact");
+      if (((ad)localObject).Od() > 0) {
+        t.q((ad)localObject);
       }
-      c.cj(paramString1, 1);
-      localObject = (Iterable)c.a(this.nkD);
-      a.d.b.g.k(localObject, "$receiver");
-      boolean bool;
-      if ((localObject instanceof Collection)) {
-        bool = ((Collection)localObject).contains(paramString1);
-      }
-      while (bool)
+      c.dc(paramString1, 1);
+      if (a.a.j.a((Iterable)c.a(this.pPT), paramString1))
       {
-        localObject = (Collection)c.a(this.nkD);
+        localObject = (Collection)c.a(this.pPT);
         if (localObject == null)
         {
-          throw new k("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
-          a.d.b.g.k(localObject, "$receiver");
-          int i;
-          if ((localObject instanceof List)) {
-            i = ((List)localObject).indexOf(paramString1);
-          }
-          for (;;)
-          {
-            if (i < 0) {
-              break label227;
-            }
-            bool = true;
-            break;
-            localObject = ((Iterable)localObject).iterator();
-            int j = 0;
-            for (;;)
-            {
-              if (!((Iterator)localObject).hasNext()) {
-                break label221;
-              }
-              i = j;
-              if (a.d.b.g.e(paramString1, ((Iterator)localObject).next())) {
-                break;
-              }
-              j += 1;
-            }
-            label221:
-            i = -1;
-          }
-          label227:
-          bool = false;
+          paramString1 = new v("null cannot be cast to non-null type kotlin.collections.MutableCollection<T>");
+          AppMethodBeat.o(102876);
+          throw paramString1;
         }
-        else
-        {
-          p.cx(localObject).remove(paramString1);
-        }
+        z.dk(localObject).remove(paramString1);
       }
-      localObject = c.nkz;
-      y.d(c.access$getTAG$cp(), "addContact %s return ok", new Object[] { this.ghe });
+      ab.d(c.access$getTAG$cp(), "addContact %s return ok", new Object[] { this.hDt });
     }
     for (;;)
     {
-      c.a(this.nkD, paramBoolean1, paramBoolean2, paramString2, paramString1, this.nkJ);
+      c.a(this.pPT, paramBoolean1, paramBoolean2, paramString2, paramString1, this.pPZ);
+      AppMethodBeat.o(102876);
       return;
       if (paramBoolean2)
       {
-        if ((paramString1 != null) && (!c.a(this.nkD).contains(paramString1))) {
-          c.a(this.nkD).add(paramString1);
+        if ((paramString1 != null) && (!c.a(this.pPT).contains(paramString1))) {
+          c.a(this.pPT).add(paramString1);
         }
-        c.cj(paramString1, 2);
-        localObject = c.nkz;
-        y.d(c.access$getTAG$cp(), "addContact has sent verify to %s", new Object[] { this.ghe });
+        c.dc(paramString1, 2);
+        ab.d(c.access$getTAG$cp(), "addContact has sent verify to %s", new Object[] { this.hDt });
       }
       else
       {
-        localObject = c.nkz;
-        y.d(c.access$getTAG$cp(), "addContact return not ok, user canceled or error");
+        ab.d(c.access$getTAG$cp(), "addContact return not ok, user canceled or error");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.b.c.f
  * JD-Core Version:    0.7.0.1
  */

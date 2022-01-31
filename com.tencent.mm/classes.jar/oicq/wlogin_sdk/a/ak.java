@@ -5,7 +5,7 @@ public final class ak
 {
   public ak()
   {
-    this.xqq = 356;
+    this.CMD = 356;
   }
 }
 

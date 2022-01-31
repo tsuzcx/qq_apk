@@ -1,40 +1,32 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.s;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class LuckyMoneyPrepareUI$4
-  implements TextWatcher
+  implements DialogInterface.OnCancelListener
 {
-  LuckyMoneyPrepareUI$4(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, EditText paramEditText) {}
+  LuckyMoneyPrepareUI$4(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramEditable.toString().startsWith(".")) {
-      paramEditable.insert(0, "0");
+    AppMethodBeat.i(142058);
+    if ((LuckyMoneyPrepareUI.r(this.owL) != null) && (LuckyMoneyPrepareUI.r(this.owL).isShowing())) {
+      LuckyMoneyPrepareUI.r(this.owL).dismiss();
     }
-    String str = paramEditable.toString();
-    int i = str.indexOf(".");
-    int j = str.length();
-    if ((i >= 0) && (j - i > 3)) {
-      paramEditable.delete(i + 3, j);
-    }
-    for (;;)
+    if ((LuckyMoneyPrepareUI.s(this.owL).getVisibility() == 8) || (LuckyMoneyPrepareUI.t(this.owL).getVisibility() == 4))
     {
-      this.eYi.setContentDescription(paramEditable.toString());
-      return;
-      if (i > 6) {
-        paramEditable.delete(6, i);
-      } else if ((i == -1) && (j > 6)) {
-        paramEditable.delete(6, j);
-      }
+      ab.i("MicroMsg.LuckyMoneyPrepareUI", "usr cancel, & visibility not visiable, so finish");
+      this.owL.finish();
     }
+    this.owL.orz.forceCancel();
+    AppMethodBeat.o(142058);
   }
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

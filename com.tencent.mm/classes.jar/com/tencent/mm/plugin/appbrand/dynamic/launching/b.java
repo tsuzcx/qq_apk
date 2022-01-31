@@ -5,47 +5,44 @@ import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Pair;
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.ah.x;
-import com.tencent.mm.h.b.a.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.ai.x;
+import com.tencent.mm.g.b.a.af;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.modelappbrand.v;
-import com.tencent.mm.plugin.appbrand.a.c;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.am;
-import com.tencent.mm.plugin.appbrand.appcache.am.a;
-import com.tencent.mm.plugin.appbrand.appcache.an;
-import com.tencent.mm.plugin.appbrand.appcache.ar;
-import com.tencent.mm.plugin.appbrand.appcache.at;
-import com.tencent.mm.plugin.appbrand.appcache.at.a;
+import com.tencent.mm.plugin.appbrand.appcache.as;
+import com.tencent.mm.plugin.appbrand.appcache.as.a;
+import com.tencent.mm.plugin.appbrand.appcache.ay;
+import com.tencent.mm.plugin.appbrand.appcache.ba;
+import com.tencent.mm.plugin.appbrand.appcache.ba.a;
+import com.tencent.mm.plugin.appbrand.appcache.be;
 import com.tencent.mm.plugin.appbrand.dynamic.f.a;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
-import com.tencent.mm.plugin.appbrand.dynamic.j;
-import com.tencent.mm.plugin.appbrand.u.k;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.ane;
-import com.tencent.mm.protocal.c.cmh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ast;
+import com.tencent.mm.protocal.protobuf.czy;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 
 public final class b
   implements Callable<WxaPkgWrappingInfo>
 {
-  public static int fWB = 0;
-  public static int fWC = 1;
+  public static int hqb = 0;
+  public static int hqc = 1;
   final String appId;
-  final int bOa;
-  volatile int fEN;
-  String fTF;
-  volatile String fWD;
-  String fWE;
-  int fWz;
+  final int cvs;
+  volatile int gXf;
+  String hng;
+  int hpZ;
+  volatile String hqd;
+  String hqe;
   final String id;
   
   public b(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4)
@@ -57,239 +54,260 @@ public final class b
   {
     this.id = paramString1;
     this.appId = paramString2;
-    this.bOa = paramInt1;
-    this.fEN = paramInt2;
-    this.fWD = paramString4;
-    this.fWz = paramInt3;
-    this.fTF = paramString3;
-    this.fWE = paramString5;
+    this.cvs = paramInt1;
+    this.gXf = paramInt2;
+    this.hqd = paramString4;
+    this.hpZ = paramInt3;
+    this.hng = paramString3;
+    this.hqe = paramString5;
   }
   
-  private static void a(am.a parama)
+  private WxaPkgWrappingInfo Bm(String paramString)
   {
-    u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "pkgRecordError %s", new Object[] { parama.toString() });
-    if (am.a.fEd.equals(parama)) {}
-    while ((am.a.fEf.equals(parama)) || (!am.a.fEe.equals(parama))) {
-      return;
-    }
-  }
-  
-  private WxaPkgWrappingInfo afu()
-  {
+    AppMethodBeat.i(10921);
     final CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    Object localObject = new k();
-    at.a local1 = new at.a() {};
-    v.jdMethod_if(7);
-    if ((this.bOa == 10002) || (this.bOa == 10102))
+    final com.tencent.mm.plugin.appbrand.s.j localj = new com.tencent.mm.plugin.appbrand.s.j();
+    ba.a local1 = new ba.a() {};
+    v.kS(7);
+    boolean bool;
+    if ((this.cvs == 10002) || (this.cvs == 10102))
     {
-      u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "triggerDownloading, debug type is release, start download appId(%s), pkgVersion(%d)", new Object[] { this.appId, Integer.valueOf(this.fEN) });
-      if (!at.b(this.appId, this.bOa, this.fEN, this.fWD, local1))
-      {
-        v.jdMethod_if(9);
-        localObject = new r();
-        ((r)localObject).cjv = u.jy(this.id);
-        ((r)localObject).cjw = u.jx(this.id);
-        ((r)localObject).cjs = 4L;
-        ((r)localObject).cjr = this.id;
-        ((r)localObject).cjt = System.currentTimeMillis();
-        ((r)localObject).cju = 2L;
-        ((r)localObject).cjy = aq.fH(ae.getContext());
-        ((r)localObject).QX();
-        a(am.a.fEh);
-        return null;
+      u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "triggerDownloading, debug type is release, start download appId(%s), pkgVersion(%d)", new Object[] { this.appId, Integer.valueOf(this.gXf) });
+      if (!bo.isNullOrNil(paramString)) {
+        bool = be.a(paramString, this.appId, this.gXf, this.cvs, local1);
       }
     }
-    else
+    while (!bool)
     {
-      u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "triggerDownloading, appId = %s, debug type is %d", new Object[] { this.appId, Integer.valueOf(this.bOa) });
-      if (((c)g.r(c.class)).aaG() == null)
+      v.kS(9);
+      paramString = new af().fB(u.qn(this.id));
+      paramString.cUl = u.qm(this.id);
+      paramString.cUh = 4L;
+      paramString = paramString.fA(this.id);
+      paramString.cUi = System.currentTimeMillis();
+      paramString.cUj = 2L;
+      paramString.fC(com.tencent.mm.sdk.platformtools.at.gU(ah.getContext())).ake();
+      a(as.a.gWx);
+      AppMethodBeat.o(10921);
+      return null;
+      bool = ba.b(this.appId, this.cvs, this.gXf, this.hqd, local1);
+      continue;
+      u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "triggerDownloading, appId = %s, debug type is %d", new Object[] { this.appId, Integer.valueOf(this.cvs) });
+      if (((com.tencent.mm.plugin.appbrand.a.d)g.E(com.tencent.mm.plugin.appbrand.a.d.class)).we() == null)
       {
-        y.e("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "triggerDownloading, null storage");
-        a(am.a.fEh);
+        ab.e("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "triggerDownloading, null storage");
+        a(as.a.gWx);
+        AppMethodBeat.o(10921);
         return null;
       }
-      String str = ((c)g.r(c.class)).aaG().aj(this.appId, this.bOa);
-      if (bk.bl(str))
+      paramString = ((com.tencent.mm.plugin.appbrand.a.d)g.E(com.tencent.mm.plugin.appbrand.a.d.class)).we().au(this.appId, this.cvs);
+      if (bo.isNullOrNil(paramString))
       {
         u.e("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "triggerDownloading, url is null or nil", new Object[0]);
-        a(am.a.fEd);
+        a(as.a.gWt);
+        AppMethodBeat.o(10921);
         return null;
       }
-      at.a(this.appId, this.bOa, str, local1);
+      ba.a(this.appId, this.cvs, paramString, local1);
     }
     try
     {
       localCountDownLatch.await();
-      return (WxaPkgWrappingInfo)((k)localObject).value;
+      paramString = (WxaPkgWrappingInfo)localj.value;
+      AppMethodBeat.o(10921);
+      return paramString;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", localException, "tryDownload semaphore exp ", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", paramString, "tryDownload semaphore exp ", new Object[0]);
       }
     }
   }
   
-  public final WxaPkgWrappingInfo aft()
+  private static void a(as.a parama)
+  {
+    AppMethodBeat.i(10922);
+    u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "pkgRecordError %s", new Object[] { parama.toString() });
+    if (as.a.gWt.equals(parama))
+    {
+      AppMethodBeat.o(10922);
+      return;
+    }
+    if ((as.a.gWv.equals(parama)) || (as.a.gWu.equals(parama)))
+    {
+      AppMethodBeat.o(10922);
+      return;
+    }
+    AppMethodBeat.o(10922);
+  }
+  
+  public final WxaPkgWrappingInfo azY()
   {
     int j = 1;
-    Pair localPair = am.t(this.appId, this.bOa, this.fEN);
-    Object localObject1;
+    AppMethodBeat.i(10920);
+    Pair localPair = as.F(this.appId, this.cvs, this.gXf);
     if (localPair.second != null)
     {
-      j.aeZ().aI(this.appId, 29);
+      com.tencent.mm.plugin.appbrand.dynamic.j.azD().ba(this.appId, 29);
       localObject1 = (WxaPkgWrappingInfo)localPair.second;
+      AppMethodBeat.o(10920);
       return localObject1;
     }
-    j.aeZ().aI(this.appId, 3);
-    Object localObject2;
+    com.tencent.mm.plugin.appbrand.dynamic.j.azD().ba(this.appId, 3);
     int i;
-    if (am.a.fEg.equals(localPair.first))
+    label613:
+    label638:
+    Object localObject2;
+    if (as.a.gWw.equals(localPair.first))
     {
-      u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "pkg broken appid %s, pkgType %d, pkgVersion %d", new Object[] { this.appId, Integer.valueOf(this.bOa), Integer.valueOf(this.fEN) });
-      if ((this.bOa == 10002) || (this.bOa == 10102))
-      {
-        localObject2 = ((c)g.r(c.class)).aaG().a(this.appId, this.bOa, new String[] { "version", "versionMd5", "versionState" });
-        if (localObject2 == null)
-        {
-          u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "pkgRecord is null", new Object[0]);
-          a((am.a)localPair.first);
-          return null;
-        }
-        if (this.bOa == 10102)
-        {
-          i = 2;
-          label226:
-          v.jdMethod_if(4);
-          localObject1 = new r();
-          ((r)localObject1).cjv = this.appId;
-          ((r)localObject1).cjw = u.jx(this.id);
-          ((r)localObject1).cjs = 13L;
-          ((r)localObject1).cjr = this.id;
-          ((r)localObject1).cjt = System.currentTimeMillis();
-          ((r)localObject1).cju = 2L;
-          ((r)localObject1).cjy = aq.fH(ae.getContext());
-          ((r)localObject1).QX();
-          if (TextUtils.isEmpty(this.fWE)) {
-            break label1218;
-          }
-          localObject1 = new ane();
-          ((ane)localObject1).aH(Base64.decode(this.fWE, 0));
-          if (!TextUtils.isEmpty(((ane)localObject1).url)) {
-            break label593;
-          }
-          localObject1 = null;
-        }
+      u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "pkg broken appid %s, pkgType %d, pkgVersion %d", new Object[] { this.appId, Integer.valueOf(this.cvs), Integer.valueOf(this.gXf) });
+      if ((this.cvs != 10002) && (this.cvs != 10102)) {
+        break label1285;
       }
-    }
-    for (;;)
-    {
-      if (localObject1 == null)
+      com.tencent.mm.plugin.appbrand.appcache.at localat = ((com.tencent.mm.plugin.appbrand.a.d)g.E(com.tencent.mm.plugin.appbrand.a.d.class)).we().a(this.appId, this.cvs, new String[] { "version", "versionMd5", "versionState" });
+      if (localat == null)
       {
-        localObject1 = x.a(new com.tencent.mm.plugin.appbrand.appcache.b(this.appId, ((an)localObject2).field_version, ((an)localObject2).field_versionMd5, i));
-        if ((localObject1 == null) || (((a.a)localObject1).errType != 0) || (((a.a)localObject1).errCode != 0))
-        {
-          v.jdMethod_if(6);
-          localObject1 = new r();
-          ((r)localObject1).cjv = this.appId;
-          ((r)localObject1).cjw = u.jx(this.id);
-          ((r)localObject1).cjs = 3L;
-          ((r)localObject1).cjr = this.id;
-          ((r)localObject1).cjt = System.currentTimeMillis();
-          ((r)localObject1).cju = 2L;
-          ((r)localObject1).cjy = aq.fH(ae.getContext());
-          ((r)localObject1).QX();
-          if ((this.fWz == 1) && (this.id != null) && (this.id.length() > 0))
-          {
-            localObject1 = new Bundle();
-            ((Bundle)localObject1).putString("id", this.id);
-            ((Bundle)localObject1).putInt("widgetState", 2105);
-            f.a(i.aeX().sX(this.id), (Parcelable)localObject1, f.a.class, null);
-          }
-          u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "get widget download url fail", new Object[0]);
-          return null;
-          i = 1;
-          break label226;
-          label593:
-          u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "use preload download data", new Object[0]);
-          continue;
+        u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "pkgRecord is null", new Object[0]);
+        a((as.a)localPair.first);
+        AppMethodBeat.o(10920);
+        return null;
+      }
+      if (this.cvs == 10102)
+      {
+        i = 2;
+        v.kS(4);
+        localObject1 = new af().fB(this.appId);
+        ((af)localObject1).cUl = u.qm(this.id);
+        ((af)localObject1).cUh = 13L;
+        localObject1 = ((af)localObject1).fA(this.id);
+        ((af)localObject1).cUi = System.currentTimeMillis();
+        ((af)localObject1).cUj = 2L;
+        ((af)localObject1).fC(com.tencent.mm.sdk.platformtools.at.gU(ah.getContext())).ake();
+        if (TextUtils.isEmpty(this.hqe)) {
+          break label1279;
         }
-        localObject1 = (ane)((a.a)localObject1).ecw;
+        localObject1 = new ast();
+        ((ast)localObject1).parseFrom(Base64.decode(this.hqe, 0));
+        if (!TextUtils.isEmpty(((ast)localObject1).url)) {
+          break label613;
+        }
+        localObject1 = null;
       }
       for (;;)
       {
-        if (localObject1 == null) {
-          return null;
-        }
-        Object localObject3 = new r();
-        ((r)localObject3).cjv = u.jy(this.id);
-        ((r)localObject3).cjw = u.jx(this.id);
-        ((r)localObject3).cjs = 3L;
-        ((r)localObject3).cjr = this.id;
-        ((r)localObject3).cjt = System.currentTimeMillis();
-        ((r)localObject3).cju = 1L;
-        ((r)localObject3).cjy = aq.fH(ae.getContext());
-        ((r)localObject3).QX();
-        v.jdMethod_if(5);
-        u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "get widget downlonad info succ", new Object[0]);
-        if (bk.bl(((ane)localObject1).url))
+        if (localObject1 == null)
         {
-          u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "get widget download url fail, reason url empty", new Object[0]);
-          return null;
-        }
-        localObject3 = new cmh();
-        localObject1 = ((ane)localObject1).url;
-        this.fWD = ((String)localObject1);
-        ((cmh)localObject3).tZl = ((String)localObject1);
-        i = ((an)localObject2).field_version;
-        this.fEN = i;
-        ((cmh)localObject3).sCy = i;
-        ((cmh)localObject3).tZj = ((an)localObject2).field_versionState;
-        ((cmh)localObject3).tZk = ((an)localObject2).field_versionMd5;
-        ((c)g.r(c.class)).aaG().a(this.appId, (cmh)localObject3, this.bOa);
-        localObject2 = afu();
-        if (localObject2 != null)
-        {
-          localObject1 = localObject2;
-          if (this.fWz != 1) {
-            break;
-          }
-          h.nFQ.f(14452, new Object[] { this.fTF + "-" + this.appId, Integer.valueOf(7), Long.valueOf(System.currentTimeMillis()) });
-          return localObject2;
-        }
-        if (this.fWz == 1) {
-          h.nFQ.f(14452, new Object[] { this.fTF + "-" + this.appId, Integer.valueOf(8), Long.valueOf(System.currentTimeMillis()) });
-        }
-        if ((this.bOa == 10002) || (this.bOa == 10102))
-        {
-          localObject1 = ((c)g.r(c.class)).aaG().ri(this.appId);
-          if ((localObject1 == null) || (localObject1.length <= 1)) {}
-        }
-        for (i = j;; i = j)
-        {
-          localObject2 = this.appId;
-          int k = this.bOa;
-          j = i + 1;
-          localObject2 = am.t((String)localObject2, k, localObject1[i]);
-          if ((localObject2 != null) && (((Pair)localObject2).first == am.a.fEc) && (((Pair)localObject2).second != null))
+          localObject1 = x.a(new com.tencent.mm.plugin.appbrand.appcache.d(this.appId, localat.field_version, localat.field_versionMd5, i));
+          if ((localObject1 == null) || (((a.a)localObject1).errType != 0) || (((a.a)localObject1).errCode != 0))
           {
-            return (WxaPkgWrappingInfo)((Pair)localObject2).second;
-            if (am.a.fEc.equals(localPair.first)) {
-              break;
+            v.kS(6);
+            localObject1 = new af().fB(this.appId);
+            ((af)localObject1).cUl = u.qm(this.id);
+            ((af)localObject1).cUh = 3L;
+            localObject1 = ((af)localObject1).fA(this.id);
+            ((af)localObject1).cUi = System.currentTimeMillis();
+            ((af)localObject1).cUj = 2L;
+            ((af)localObject1).fC(com.tencent.mm.sdk.platformtools.at.gU(ah.getContext())).ake();
+            if ((this.hpZ == 1) && (this.id != null) && (this.id.length() > 0))
+            {
+              localObject1 = new Bundle();
+              ((Bundle)localObject1).putString("id", this.id);
+              ((Bundle)localObject1).putInt("widgetState", 2105);
+              f.a(i.azB().AY(this.id), (Parcelable)localObject1, f.a.class, null);
             }
-            y.e("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "WxaPkgIntegrityChecker.checkPkg  appid %s, pkgType %d,pkgVersion %d return %d", new Object[] { this.appId, Integer.valueOf(this.bOa), Integer.valueOf(this.fEN), Integer.valueOf(((am.a)localPair.first).ack()) });
+            u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "get widget download url fail", new Object[0]);
+            AppMethodBeat.o(10920);
+            return null;
+            i = 1;
             break;
+            u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "use preload download data", new Object[0]);
+            continue;
           }
-          if (j >= localObject1.length)
+          localObject1 = (ast)((a.a)localObject1).fsN;
+          if (localObject1 == null)
           {
-            a((am.a)localPair.first);
+            AppMethodBeat.o(10920);
             return null;
           }
+          localObject2 = new af().fB(u.qn(this.id));
+          ((af)localObject2).cUl = u.qm(this.id);
+          ((af)localObject2).cUh = 3L;
+          localObject2 = ((af)localObject2).fA(this.id);
+          ((af)localObject2).cUi = System.currentTimeMillis();
+          ((af)localObject2).cUj = 1L;
+          ((af)localObject2).fC(com.tencent.mm.sdk.platformtools.at.gU(ah.getContext())).ake();
+          localObject2 = ((ast)localObject1).xhL;
+          v.kS(5);
+          u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "get widget downlonad info succ", new Object[0]);
+          if (bo.isNullOrNil(((ast)localObject1).url))
+          {
+            u.i("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "get widget download url fail, reason url empty", new Object[0]);
+            AppMethodBeat.o(10920);
+            return null;
+          }
+          czy localczy = new czy();
+          localObject1 = ((ast)localObject1).url;
+          this.hqd = ((String)localObject1);
+          localczy.ygH = ((String)localObject1);
+          i = localat.field_version;
+          this.gXf = i;
+          localczy.wwX = i;
+          localczy.ygF = localat.field_versionState;
+          localczy.ygG = localat.field_versionMd5;
+          ((com.tencent.mm.plugin.appbrand.a.d)g.E(com.tencent.mm.plugin.appbrand.a.d.class)).we().a(this.appId, localczy, this.cvs);
         }
       }
-      label1218:
+    }
+    label1285:
+    for (Object localObject1 = localObject2;; localObject1 = null)
+    {
+      localObject1 = Bm((String)localObject1);
+      if (localObject1 != null)
+      {
+        if (this.hpZ == 1) {
+          h.qsU.e(14452, new Object[] { this.hng + "-" + this.appId, Integer.valueOf(7), Long.valueOf(System.currentTimeMillis()) });
+        }
+        AppMethodBeat.o(10920);
+        return localObject1;
+      }
+      if (this.hpZ == 1) {
+        h.qsU.e(14452, new Object[] { this.hng + "-" + this.appId, Integer.valueOf(8), Long.valueOf(System.currentTimeMillis()) });
+      }
+      if ((this.cvs == 10002) || (this.cvs == 10102))
+      {
+        localObject1 = ((com.tencent.mm.plugin.appbrand.a.d)g.E(com.tencent.mm.plugin.appbrand.a.d.class)).we().yE(this.appId);
+        if ((localObject1 == null) || (localObject1.length <= 1)) {}
+      }
+      for (i = j;; i = j)
+      {
+        localObject2 = this.appId;
+        int k = this.cvs;
+        j = i + 1;
+        localObject2 = as.F((String)localObject2, k, localObject1[i]);
+        if ((localObject2 != null) && (((Pair)localObject2).first == as.a.gWs) && (((Pair)localObject2).second != null))
+        {
+          localObject1 = (WxaPkgWrappingInfo)((Pair)localObject2).second;
+          AppMethodBeat.o(10920);
+          return localObject1;
+          if (as.a.gWs.equals(localPair.first)) {
+            break;
+          }
+          ab.e("MicroMsg.AppBrand.PrepareStepCheckWidgetPkg", "WxaPkgIntegrityChecker.checkPkg  appid %s, pkgType %d,pkgVersion %d return %d", new Object[] { this.appId, Integer.valueOf(this.cvs), Integer.valueOf(this.gXf), Integer.valueOf(((as.a)localPair.first).awa()) });
+          break;
+        }
+        if (j >= localObject1.length)
+        {
+          a((as.a)localPair.first);
+          AppMethodBeat.o(10920);
+          return null;
+        }
+      }
+      break label638;
+      label1279:
       localObject1 = null;
+      break;
     }
   }
 }

@@ -4,6 +4,11 @@ public class TXSVideoEncoderParam
 {
   public boolean annexb = false;
   public boolean appendSpsPps = true;
+  public boolean bLimitFps = false;
+  public boolean bMultiRef = false;
+  public long baseFrameIndex = 0L;
+  public long baseGopIndex = 0L;
+  public int bitrate = 0;
   public boolean enableBFrame = false;
   public boolean enableBlackList = true;
   public boolean enableEGL14 = false;
@@ -16,6 +21,7 @@ public class TXSVideoEncoderParam
   public int height = 640;
   public boolean realTime = false;
   public boolean record = false;
+  public int streamType = 0;
   public boolean syncOutput = false;
   public int width = 360;
 }

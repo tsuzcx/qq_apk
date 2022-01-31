@@ -1,54 +1,69 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.protocal.c.azp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.protocal.protobuf.bgs;
 import java.util.LinkedList;
 
 final class SDKOAuthUI$b
   extends BaseAdapter
 {
-  private LayoutInflater Lu;
-  LinkedList<azp> rmp;
-  private c.a rmq;
-  private Context rmr;
-  private int rms;
+  private LayoutInflater mInflater;
+  LinkedList<bgs> vbW;
+  private c.a vbX;
+  private Context vbY;
+  private int vbZ;
   
-  public SDKOAuthUI$b(Context paramContext, LinkedList<azp> paramLinkedList, int paramInt)
+  public SDKOAuthUI$b(Context paramContext, LinkedList<bgs> paramLinkedList, int paramInt)
   {
-    this.Lu = LayoutInflater.from(paramContext);
-    this.rmp = paramLinkedList;
-    this.rmq = new c.a();
-    this.rmq.eru = R.k.native_oauth_default_head_img;
-    this.rmr = paramContext;
-    this.rms = paramInt;
+    AppMethodBeat.i(7546);
+    this.vbY = paramContext;
+    this.mInflater = LayoutInflater.from(paramContext);
+    this.vbW = paramLinkedList;
+    this.vbX = new c.a();
+    this.vbX.eNY = 2131231748;
+    paramContext = this.vbX;
+    paramContext.eOk = true;
+    paramContext.eOl = this.vbY.getResources().getDimension(2131428649);
+    this.vbZ = paramInt;
+    AppMethodBeat.o(7546);
   }
   
-  public final azp CA(int paramInt)
+  public final bgs Kt(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.rmp.size())) {
-      return (azp)this.rmp.get(paramInt);
+    AppMethodBeat.i(7548);
+    if ((paramInt >= 0) && (paramInt < this.vbW.size()))
+    {
+      bgs localbgs = (bgs)this.vbW.get(paramInt);
+      AppMethodBeat.o(7548);
+      return localbgs;
     }
+    AppMethodBeat.o(7548);
     return null;
   }
   
   public final int getCount()
   {
-    if (this.rmp == null) {
+    AppMethodBeat.i(7547);
+    if (this.vbW == null)
+    {
+      AppMethodBeat.o(7547);
       return 0;
     }
-    return this.rmp.size();
+    int i = this.vbW.size();
+    AppMethodBeat.o(7547);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -58,45 +73,50 @@ final class SDKOAuthUI$b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    azp localazp = CA(paramInt);
-    if (localazp == null) {
+    AppMethodBeat.i(7549);
+    bgs localbgs = Kt(paramInt);
+    if (localbgs == null)
+    {
+      AppMethodBeat.o(7549);
       return paramView;
     }
     View localView;
     if (paramView == null)
     {
       paramView = new SDKOAuthUI.b.a((byte)0);
-      localView = this.Lu.inflate(R.i.avatar_item, null, false);
-      paramView.rmt = ((ImageView)localView.findViewById(R.h.avatar_icon));
-      paramView.rmu = ((TextView)localView.findViewById(R.h.avatar_name));
-      paramView.rmv = ((TextView)localView.findViewById(R.h.avatar_comment));
-      paramView.rmw = ((ImageView)localView.findViewById(R.h.avatar_state));
+      localView = this.mInflater.inflate(2130968797, null, false);
+      paramView.vca = ((ImageView)localView.findViewById(2131821596));
+      paramView.vcb = ((TextView)localView.findViewById(2131821597));
+      paramView.vcc = ((TextView)localView.findViewById(2131821598));
+      paramView.vcd = ((ImageView)localView.findViewById(2131821599));
       localView.setTag(paramView);
       paramViewGroup = paramView;
-      paramViewGroup.rmu.setText(localazp.nickname);
-      o.ON().a(localazp.tgf, paramViewGroup.rmt, this.rmq.OV());
-      if (localazp.desc == null) {
-        break label208;
+      paramViewGroup.vcb.setText(j.b(this.vbY, localbgs.nickname, paramViewGroup.vcb.getTextSize()));
+      o.ahG().a(localbgs.xeE, paramViewGroup.vca, this.vbX.ahY());
+      if (localbgs.desc == null) {
+        break label235;
       }
-      paramViewGroup.rmv.setText(localazp.desc);
-      paramViewGroup.rmv.setVisibility(0);
+      paramViewGroup.vcc.setText(localbgs.desc);
+      paramViewGroup.vcc.setVisibility(0);
+      label192:
+      if (localbgs.id != this.vbZ) {
+        break label247;
+      }
+      paramViewGroup.vcd.setVisibility(0);
     }
     for (;;)
     {
-      if (localazp.id != this.rms) {
-        break label220;
-      }
-      paramViewGroup.rmw.setVisibility(0);
+      AppMethodBeat.o(7549);
       return localView;
       paramViewGroup = (SDKOAuthUI.b.a)paramView.getTag();
       localView = paramView;
       break;
-      label208:
-      paramViewGroup.rmv.setVisibility(8);
+      label235:
+      paramViewGroup.vcc.setVisibility(8);
+      break label192;
+      label247:
+      paramViewGroup.vcd.setVisibility(4);
     }
-    label220:
-    paramViewGroup.rmw.setVisibility(4);
-    return localView;
   }
 }
 

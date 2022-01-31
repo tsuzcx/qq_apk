@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.g;
+import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSMainUI$7
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  FTSMainUI$7(FTSMainUI paramFTSMainUI, com.tencent.mm.plugin.messenger.a.f paramf, com.tencent.mm.ah.f paramf1) {}
+  FTSMainUI$7(FTSMainUI paramFTSMainUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void run()
   {
-    g.Dk().c(this.hZc);
-    g.Dk().b(106, this.kAJ);
-    FTSMainUI.q(this.kCm);
+    AppMethodBeat.i(61872);
+    if (FTSMainUI.q(this.mYi) != null)
+    {
+      FTSMainUI.q(this.mYi).dismiss();
+      FTSMainUI.p(this.mYi);
+    }
+    AppMethodBeat.o(61872);
   }
 }
 

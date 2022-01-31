@@ -1,8 +1,9 @@
 package com.tinkerboots.sdk.tinker.b;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
-import com.tinkerboots.sdk.b.c;
+import com.tinkerboots.sdk.b.d;
 import java.io.File;
 
 public final class b
@@ -13,19 +14,20 @@ public final class b
     super(paramContext);
   }
   
-  public final int dz(String paramString1, String paramString2)
+  public final int eQ(String paramString1, String paramString2)
   {
     int i = 0;
-    com.tencent.tinker.lib.f.a.i("Tinker.TinkerServerPatchListener", "receive a patch file: %s, file size:%d", new Object[] { paramString1, Long.valueOf(SharePatchFileUtil.ag(new File(paramString1))) });
-    int j = super.dz(paramString1, paramString2);
-    if (j == 0)
+    AppMethodBeat.i(65540);
+    com.tencent.tinker.lib.f.a.i("Tinker.TinkerServerPatchListener", "receive a patch file: %s, file size:%d", new Object[] { paramString1, Long.valueOf(SharePatchFileUtil.ap(new File(paramString1))) });
+    int j = super.eQ(paramString1, paramString2);
+    if (j == 0) {
+      if (!d.eaN()) {}
+    }
+    for (i = -20;; i = j)
     {
-      if (c.cUb()) {
-        i = -20;
-      }
+      AppMethodBeat.o(65540);
       return i;
     }
-    return j;
   }
 }
 

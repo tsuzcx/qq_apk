@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public final class RecoveryContext
 {
-  public ArrayList<RecoveryStatusItem> wKG = new ArrayList();
+  public ArrayList<RecoveryStatusItem> Bih = new ArrayList();
   
   public final String toString()
   {
-    return this.wKG.toString();
+    return this.Bih.toString();
   }
 }
 

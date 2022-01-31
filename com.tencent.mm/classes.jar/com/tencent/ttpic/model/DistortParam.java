@@ -1,5 +1,6 @@
 package com.tencent.ttpic.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +11,10 @@ public class DistortParam
   
   public DistortParam()
   {
+    AppMethodBeat.i(83478);
     this.level = 0;
     this.items = new ArrayList();
+    AppMethodBeat.o(83478);
   }
   
   public DistortParam(int paramInt, List<DistortionItem> paramList)
@@ -42,7 +45,7 @@ public class DistortParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.ttpic.model.DistortParam
  * JD-Core Version:    0.7.0.1
  */

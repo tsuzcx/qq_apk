@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 final class ab$4
@@ -10,9 +10,11 @@ final class ab$4
   
   public final void e(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    y.d("MicroMsg.ShareModeMailAppService", "finishedSendOneFile, currentFileCount: %d, totalFileNum: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.nfi.neU.put(paramString1, paramString2);
-    this.nfi.wm((int)(10.0F + 80.0F * (paramInt1 / paramInt2)));
+    AppMethodBeat.i(68040);
+    com.tencent.mm.sdk.platformtools.ab.d("MicroMsg.ShareModeMailAppService", "finishedSendOneFile, currentFileCount: %d, totalFileNum: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.pKx.pKj.put(paramString1, paramString2);
+    this.pKx.BX((int)(10.0F + 80.0F * (paramInt1 / paramInt2)));
+    AppMethodBeat.o(68040);
   }
 }
 

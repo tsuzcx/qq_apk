@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.clean.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$2
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class c$2
   
   public final void run()
   {
-    c.f(this.iBI).cz(c.g(this.iBI), c.h(this.iBI));
+    AppMethodBeat.i(18668);
+    c.f(this.kGP).dX(c.g(this.kGP), c.h(this.kGP));
+    AppMethodBeat.o(18668);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.c.2
  * JD-Core Version:    0.7.0.1
  */

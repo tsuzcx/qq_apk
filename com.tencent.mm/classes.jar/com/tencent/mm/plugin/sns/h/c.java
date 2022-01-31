@@ -1,109 +1,64 @@
 package com.tencent.mm.plugin.sns.h;
 
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class c
+  extends com.tencent.mm.bv.a
 {
-  private static Map<String, c.a> ozB = new ConcurrentHashMap();
-  private static volatile long ozC = 0L;
+  public LinkedList<Long> rlL;
   
-  private static String Ol(String paramString)
+  public c()
   {
-    int i = paramString.indexOf('?');
-    String str = paramString;
-    if (i >= 0) {
-      str = paramString.substring(0, i);
-    }
-    i = str.indexOf("://");
-    paramString = str;
-    if (i >= 0) {
-      paramString = str.substring(i + 3);
-    }
-    i = paramString.indexOf('/');
-    str = paramString;
-    if (i >= 0) {
-      str = paramString.substring(i + 1);
-    }
-    return str;
+    AppMethodBeat.i(36824);
+    this.rlL = new LinkedList();
+    AppMethodBeat.o(36824);
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    try
+    AppMethodBeat.i(36825);
+    if (paramInt == 0)
     {
-      c.b localb = new c.b((byte)0);
-      localb.ozD = Ol(paramString1);
-      localb.mMimeType = paramString2;
-      localb.mWidth = paramInt1;
-      localb.mHeight = paramInt2;
-      localb.ozF = paramInt3;
-      localb.ozG = paramLong;
-      paramString1 = new StringBuilder(1024);
-      paramString1.append(localb.ozD).append(',').append(localb.mMimeType).append(',').append(localb.mWidth).append(',').append(localb.mHeight).append(',').append(localb.ozF).append(',').append(localb.ozG);
-      paramString1 = paramString1.toString();
-      y.i("MicroMsg.SnsImgStats", "report up: " + paramString1);
-      h.nFQ.aC(13512, paramString1);
-      return;
+      ((e.a.a.c.a)paramVarArgs[0]).e(1, 3, this.rlL);
+      AppMethodBeat.o(36825);
+      return 0;
     }
-    catch (Exception paramString1) {}
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2)
-  {
-    try
+    if (paramInt == 1)
     {
-      c.a locala = new c.a((byte)0);
-      locala.ozD = Ol(paramString2);
-      locala.ozE = paramInt1;
-      locala.mMimeType = paramString3;
-      locala.mWidth = paramInt2;
-      locala.mHeight = paramInt3;
-      locala.ozF = paramInt4;
-      locala.ozG = paramLong1;
-      locala.ozH = paramLong2;
-      ozB.put(paramString1, locala);
-      return;
+      paramInt = e.a.a.a.c(1, 3, this.rlL);
+      AppMethodBeat.o(36825);
+      return paramInt + 0;
     }
-    catch (Exception paramString1) {}
-  }
-  
-  public static void aj(String paramString, long paramLong)
-  {
-    try
+    if (paramInt == 2)
     {
-      paramString = (c.a)ozB.remove(paramString);
-      if (paramString == null) {
-        return;
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.rlL.clear();
+      paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
+        }
       }
-      paramString.ozI = paramLong;
-      StringBuilder localStringBuilder = new StringBuilder(1024);
-      localStringBuilder.append(paramString.ozD).append(',').append(paramString.ozE).append(',').append(paramString.mMimeType).append(',').append(paramString.mWidth).append(',').append(paramString.mHeight).append(',').append(paramString.ozF).append(',').append(paramString.ozG).append(',').append(paramString.ozH).append(',').append(paramString.ozI);
-      paramString = localStringBuilder.toString();
-      y.i("MicroMsg.SnsImgStats", "report dl: " + paramString);
-      h.nFQ.aC(13513, paramString);
-      return;
+      AppMethodBeat.o(36825);
+      return 0;
     }
-    catch (Exception paramString) {}finally
+    if (paramInt == 3)
     {
-      bEB();
-    }
-  }
-  
-  private static void bEB()
-  {
-    synchronized (ozB)
-    {
-      if (bk.cp(ozC) <= 120000L) {
-        return;
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+      c localc = (c)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(36825);
+        return -1;
       }
-      ozC = bk.UZ();
-      ozB.clear();
-      return;
+      localc.rlL.add(Long.valueOf(locala.CLY.sm()));
+      AppMethodBeat.o(36825);
+      return 0;
     }
+    AppMethodBeat.o(36825);
+    return -1;
   }
 }
 

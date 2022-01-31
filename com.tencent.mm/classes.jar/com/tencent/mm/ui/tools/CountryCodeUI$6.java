@@ -3,6 +3,7 @@ package com.tencent.mm.ui.tools;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CountryCodeUI$6
   implements MenuItem.OnMenuItemClickListener
@@ -11,13 +12,15 @@ final class CountryCodeUI$6
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.vYt.XM();
+    AppMethodBeat.i(34805);
+    this.AqG.hideVKB();
     paramMenuItem = new Intent();
-    paramMenuItem.putExtra("country_name", CountryCodeUI.d(this.vYt));
-    paramMenuItem.putExtra("couttry_code", CountryCodeUI.e(this.vYt));
-    paramMenuItem.putExtra("iso_code", CountryCodeUI.f(this.vYt));
-    this.vYt.setResult(100, paramMenuItem);
-    this.vYt.finish();
+    paramMenuItem.putExtra("country_name", CountryCodeUI.d(this.AqG));
+    paramMenuItem.putExtra("couttry_code", CountryCodeUI.e(this.AqG));
+    paramMenuItem.putExtra("iso_code", CountryCodeUI.f(this.AqG));
+    this.AqG.setResult(100, paramMenuItem);
+    this.AqG.finish();
+    AppMethodBeat.o(34805);
     return true;
   }
 }

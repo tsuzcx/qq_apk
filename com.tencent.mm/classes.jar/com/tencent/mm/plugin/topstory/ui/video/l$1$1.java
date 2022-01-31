@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.a.c;
 
 final class l$1$1
@@ -9,9 +10,11 @@ final class l$1$1
   
   public final void run()
   {
-    if (this.pFQ.pFO.pFM != null) {
-      this.pFQ.pFO.pFM.ei(this.pFP, this.pFQ.pFO.pFN);
+    AppMethodBeat.i(1741);
+    if (this.tjo.tjm.tjl != null) {
+      this.tjo.tjm.tjl.ge(this.tjn, this.tjo.tjm.qCf);
     }
+    AppMethodBeat.o(1741);
   }
 }
 

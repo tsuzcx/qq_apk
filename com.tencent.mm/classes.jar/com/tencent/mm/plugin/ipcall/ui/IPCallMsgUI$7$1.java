@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class IPCallMsgUI$7$1
   implements Runnable
@@ -9,10 +10,12 @@ final class IPCallMsgUI$7$1
   
   public final void run()
   {
-    synchronized (IPCallMsgUI.b(this.lwJ.lwI))
+    AppMethodBeat.i(22192);
+    synchronized (IPCallMsgUI.b(this.nTW.nTV))
     {
-      y.v("MicroMsg.IPCallMsgUI", "comment notify");
-      IPCallMsgUI.b(this.lwJ.lwI).a(null, null);
+      ab.v("MicroMsg.IPCallMsgUI", "comment notify");
+      IPCallMsgUI.b(this.nTW.nTV).a(null, null);
+      AppMethodBeat.o(22192);
       return;
     }
   }

@@ -2,9 +2,10 @@ package com.tencent.mm.ui.conversation;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class BaseConversationUI$9
   implements Animation.AnimationListener
@@ -13,25 +14,29 @@ final class BaseConversationUI$9
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    au.DS().cre();
-    ai.Fd(0);
-    BaseConversationUI.access$600(this.vPi);
-    y.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationEnd");
+    AppMethodBeat.i(34061);
+    aw.RO().dtd();
+    al.Nf(0);
+    BaseConversationUI.access$600(this.AgT);
+    ab.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationEnd");
+    AppMethodBeat.o(34061);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    au.DS().crc();
-    ai.Fd(-8);
-    y.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationStart");
-    this.vPi.onSettle(true, 0);
+    AppMethodBeat.i(34060);
+    aw.RO().dtb();
+    al.Nf(-8);
+    ab.i("MicroMsg.BaseConversationUI", "klem pop out onAnimationStart");
+    this.AgT.onSettle(true, 0);
+    AppMethodBeat.o(34060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.BaseConversationUI.9
  * JD-Core Version:    0.7.0.1
  */

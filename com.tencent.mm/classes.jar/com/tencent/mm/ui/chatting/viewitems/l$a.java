@@ -4,32 +4,34 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class l$a
   extends c.a
 {
-  protected ImageView kHQ;
-  protected ImageView kHU;
-  protected View kfh;
-  protected TextView kiv;
-  protected TextView vBz;
-  protected TextView vCW;
-  protected ImageView vCX;
+  protected TextView mCZ;
+  protected ImageView mZY;
+  protected View mzQ;
+  protected ImageView nef;
+  protected TextView zRY;
+  protected TextView zTZ;
+  protected ImageView zUa;
   
-  public final a dS(View paramView)
+  public final a fc(View paramView)
   {
-    super.dN(paramView);
-    this.kHQ = ((ImageView)paramView.findViewById(R.h.chatting_appmsg_thumb_iv));
-    this.kiv = ((TextView)paramView.findViewById(R.h.chatting_appmsg_source_tv));
-    this.vCW = ((TextView)paramView.findViewById(R.h.chatting_appmsg_progress));
-    this.kfh = paramView.findViewById(R.h.chatting_appmsg_progress_area);
-    this.vBz = ((TextView)paramView.findViewById(R.h.chatting_appmsg_comment_tv));
-    this.nSa = ((TextView)paramView.findViewById(R.h.chatting_user_tv));
-    this.vCX = ((ImageView)paramView.findViewById(R.h.chatting_appmsg_refuse_iv));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.chatting_checkbox));
-    this.hoY = paramView.findViewById(R.h.chatting_maskview);
-    this.kHU = ((ImageView)paramView.findViewById(R.h.chatting_content_mask_iv));
+    AppMethodBeat.i(32951);
+    super.eV(paramView);
+    this.mZY = ((ImageView)paramView.findViewById(2131822600));
+    this.mCZ = ((TextView)paramView.findViewById(2131822607));
+    this.zTZ = ((TextView)paramView.findViewById(2131822731));
+    this.mzQ = paramView.findViewById(2131822730);
+    this.zRY = ((TextView)paramView.findViewById(2131822518));
+    this.qFY = ((TextView)paramView.findViewById(2131821122));
+    this.zUa = ((ImageView)paramView.findViewById(2131822622));
+    this.mCC = ((CheckBox)paramView.findViewById(2131820579));
+    this.jbK = paramView.findViewById(2131820586);
+    this.nef = ((ImageView)paramView.findViewById(2131822646));
+    AppMethodBeat.o(32951);
     return this;
   }
 }

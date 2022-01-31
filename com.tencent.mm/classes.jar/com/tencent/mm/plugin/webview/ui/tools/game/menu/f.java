@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.loader.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.m;
 import java.util.List;
@@ -23,21 +23,41 @@ import java.util.List;
 public final class f
   extends BaseAdapter
 {
-  private static final String kOy = b.bkH + "Game/HvMenu/";
+  private static final String nmv;
   private Context mContext;
-  l phJ;
+  l saq;
+  
+  static
+  {
+    AppMethodBeat.i(8849);
+    nmv = b.eQz + "Game/HvMenu/";
+    AppMethodBeat.o(8849);
+  }
   
   public f(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
+  public final void a(l paraml)
+  {
+    AppMethodBeat.i(8845);
+    this.saq = paraml;
+    notifyDataSetChanged();
+    AppMethodBeat.o(8845);
+  }
+  
   public final int getCount()
   {
-    if (this.phJ == null) {
+    AppMethodBeat.i(8846);
+    if (this.saq == null)
+    {
+      AppMethodBeat.o(8846);
       return 0;
     }
-    return this.phJ.size();
+    int i = this.saq.size();
+    AppMethodBeat.o(8846);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -47,42 +67,44 @@ public final class f
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = LayoutInflater.from(this.mContext).inflate(R.i.game_menu_item_view, paramViewGroup, false);
+    AppMethodBeat.i(8847);
+    paramView = LayoutInflater.from(this.mContext).inflate(2130969786, paramViewGroup, false);
     paramViewGroup = new f.a(this, paramView);
-    m localm = (m)this.phJ.uWD.get(paramInt);
+    m localm = (m)this.saq.zkW.get(paramInt);
+    Object localObject1;
     if ((localm != null) && (localm.getItemId() != -1))
     {
-      Object localObject1 = localm.getTitle().toString();
-      if (!bk.bl((String)localObject1))
+      localObject1 = localm.getTitle().toString();
+      if (!bo.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).split("__", 2);
-        if (localObject1.length == 1) {
-          paramViewGroup.fcy.setText(localObject1[0]);
-        }
-        for (;;)
+        if (localObject1.length == 1)
         {
+          paramViewGroup.gui.setText(localObject1[0]);
           paramView.setTag(localm);
-          return paramView;
-          paramViewGroup.fcy.setText(localObject1[0]);
-          localObject1 = localObject1[1];
-          if (((String)localObject1).startsWith("http"))
-          {
-            Object localObject2 = kOy + g.o(((String)localObject1).getBytes());
-            c.a locala = new c.a();
-            locala.erf = true;
-            locala.erh = ((String)localObject2);
-            localObject2 = locala.OV();
-            a.OT().a((String)localObject1, paramViewGroup.hic, (c)localObject2);
-          }
-          else
-          {
-            paramViewGroup.hic.setImageResource(ae.getResources().getIdentifier((String)localObject1, "drawable", ae.getPackageName()));
-          }
         }
       }
     }
-    paramView.setTag(null);
-    return paramView;
+    for (;;)
+    {
+      AppMethodBeat.o(8847);
+      return paramView;
+      paramViewGroup.gui.setText(localObject1[0]);
+      localObject1 = localObject1[1];
+      if (((String)localObject1).startsWith("http"))
+      {
+        Object localObject2 = nmv + g.w(((String)localObject1).getBytes());
+        c.a locala = new c.a();
+        locala.eNM = true;
+        locala.eNO = ((String)localObject2);
+        localObject2 = locala.ahY();
+        a.ahM().a((String)localObject1, paramViewGroup.iTH, (c)localObject2);
+        break;
+      }
+      paramViewGroup.iTH.setImageResource(ah.getResources().getIdentifier((String)localObject1, "drawable", ah.getPackageName()));
+      break;
+      paramView.setTag(null);
+    }
   }
 }
 

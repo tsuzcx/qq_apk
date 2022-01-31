@@ -1,14 +1,15 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class m
 {
   public int backgroundColor;
   public Object data;
   public int end;
-  public String fKV;
   public int linkColor;
+  public String mSessionId;
   public int start;
   public int type;
   public String url;
@@ -31,27 +32,43 @@ public final class m
     this.type = paramInt;
   }
   
-  public final <T> T S(Class<T> paramClass)
+  public final <T> T ap(Class<T> paramClass)
   {
-    if (paramClass.isInstance(this.data)) {
-      return paramClass.cast(this.data);
+    AppMethodBeat.i(79785);
+    if (paramClass.isInstance(this.data))
+    {
+      paramClass = paramClass.cast(this.data);
+      AppMethodBeat.o(79785);
+      return paramClass;
     }
+    AppMethodBeat.o(79785);
     return null;
   }
   
   public final boolean equals(Object paramObject)
   {
-    if ((paramObject instanceof m)) {
-      return hashCode() == ((m)paramObject).hashCode();
+    AppMethodBeat.i(79787);
+    if ((paramObject instanceof m))
+    {
+      if (hashCode() == ((m)paramObject).hashCode())
+      {
+        AppMethodBeat.o(79787);
+        return true;
+      }
+      AppMethodBeat.o(79787);
+      return false;
     }
-    return super.equals(paramObject);
+    boolean bool = super.equals(paramObject);
+    AppMethodBeat.o(79787);
+    return bool;
   }
   
   public final int hashCode()
   {
+    AppMethodBeat.i(79786);
     int j = super.hashCode();
     int i = j;
-    if (!bk.bl(this.url)) {
+    if (!bo.isNullOrNil(this.url)) {
       i = j + this.url.hashCode();
     }
     j = i + this.type + this.end + this.start;
@@ -59,12 +76,13 @@ public final class m
     if (this.data != null) {
       i = j + this.data.hashCode();
     }
+    AppMethodBeat.o(79786);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.m
  * JD-Core Version:    0.7.0.1
  */

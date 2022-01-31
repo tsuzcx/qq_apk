@@ -4,16 +4,19 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.h.a.rc;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.so;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.plugin.shake.d.a.i;
 import com.tencent.mm.plugin.shake.d.a.k;
+import com.tencent.mm.pluginsdk.n;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 
@@ -24,106 +27,115 @@ final class ShakeItemListUI$3
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (com.tencent.mm.plugin.shake.b.d)ShakeItemListUI.b(this.obE).getItem(paramInt);
-    if (paramAdapterView == null) {}
+    AppMethodBeat.i(24722);
+    paramAdapterView = (com.tencent.mm.plugin.shake.b.d)ShakeItemListUI.b(this.qPL).getItem(paramInt);
+    if (paramAdapterView == null)
+    {
+      AppMethodBeat.o(24722);
+      return;
+    }
+    paramView = m.cln();
     int i;
+    if (paramAdapterView == null)
+    {
+      ab.w("MicroMsg.NewShakeItemStorage", "setRead, but item is null");
+      i = paramAdapterView.field_type;
+      if (i != 4) {
+        break label213;
+      }
+      paramView = new Intent();
+      if (!com.tencent.mm.aw.d.aiG()) {
+        break label180;
+      }
+      com.tencent.mm.aw.a.b(i.d(paramAdapterView.field_lvbuffer, 0L));
+    }
     for (;;)
     {
+      paramView.putExtra("key_scene", 3);
+      com.tencent.mm.bq.d.b(this.qPL, "music", ".ui.MusicMainUI", paramView);
+      AppMethodBeat.o(24722);
       return;
-      paramView = com.tencent.mm.plugin.shake.b.m.bzU();
-      if (paramAdapterView == null)
+      paramAdapterView.field_insertBatch = 1;
+      paramAdapterView.bsY = 1024;
+      if (-1 == paramView.db.update("shakeitem1", paramAdapterView.convertTo(), "shakeItemID=? and insertBatch=?", new String[] { paramAdapterView.field_shakeItemID, "2" })) {
+        break;
+      }
+      paramView.doNotify();
+      break;
+      label180:
+      com.tencent.mm.aw.a.aiu();
+      paramView.putExtra("key_mode", 1);
+      paramView.putExtra("KGlobalShakeMusic", true);
+      com.tencent.mm.aw.a.c(i.d(paramAdapterView.field_lvbuffer, 0L));
+    }
+    label213:
+    if (i == 11)
+    {
+      if (System.currentTimeMillis() - this.qPL.qPI > 2000L)
       {
-        y.w("MicroMsg.NewShakeItemStorage", "setRead, but item is null");
-        i = paramAdapterView.field_type;
-        if (i != 4) {
-          break label195;
+        this.qPL.qPI = System.currentTimeMillis();
+        if ((paramAdapterView.field_reserved3 == null) || (paramAdapterView.field_reserved3.split(",").length != 3) || (paramAdapterView.field_reserved3.split(",")[0] == null) || (paramAdapterView.field_reserved3.split(",")[0].equals(""))) {
+          break label407;
         }
-        paramView = new Intent();
-        if (!com.tencent.mm.av.d.PD()) {
-          break label162;
-        }
-        com.tencent.mm.av.a.b(i.d(paramAdapterView.field_lvbuffer, 0L));
+        paramView = paramAdapterView.field_reserved3.split(",");
+        localObject = new so();
+        ((so)localObject).cIQ.userName = paramView[0];
+        ((so)localObject).cIQ.cIS = bo.bf(paramView[1], "");
+        ((so)localObject).cIQ.cIT = Integer.parseInt(paramView[2]);
+        ((so)localObject).cIQ.scene = 1077;
+        com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
       }
       for (;;)
       {
-        paramView.putExtra("key_scene", 3);
-        com.tencent.mm.br.d.b(this.obE, "music", ".ui.MusicMainUI", paramView);
-        return;
-        paramAdapterView.field_insertBatch = 1;
-        paramAdapterView.bcw = 1024;
-        if (-1 == paramView.dXw.update("shakeitem1", paramAdapterView.vf(), "shakeItemID=? and insertBatch=?", new String[] { paramAdapterView.field_shakeItemID, "2" })) {
-          break;
-        }
-        paramView.doNotify();
-        break;
-        label162:
-        com.tencent.mm.av.a.Ps();
-        paramView.putExtra("key_mode", 1);
-        paramView.putExtra("KGlobalShakeMusic", true);
-        com.tencent.mm.av.a.c(i.d(paramAdapterView.field_lvbuffer, 0L));
-      }
-      label195:
-      if (i != 11) {
-        break;
-      }
-      if (System.currentTimeMillis() - this.obE.obB > 2000L)
-      {
-        this.obE.obB = System.currentTimeMillis();
-        if ((paramAdapterView.field_reserved3 != null) && (paramAdapterView.field_reserved3.split(",").length == 3) && (paramAdapterView.field_reserved3.split(",")[0] != null) && (!paramAdapterView.field_reserved3.split(",")[0].equals("")))
-        {
-          paramView = paramAdapterView.field_reserved3.split(",");
-          localObject = new rc();
-          ((rc)localObject).caq.userName = paramView[0];
-          ((rc)localObject).caq.cas = bk.aM(paramView[1], "");
-          ((rc)localObject).caq.cat = Integer.parseInt(paramView[2]);
-          ((rc)localObject).caq.scene = 1077;
-          com.tencent.mm.sdk.b.a.udP.m((b)localObject);
-        }
-        while (ShakeItemListUI.d(this.obE))
+        if (ShakeItemListUI.d(this.qPL))
         {
           com.tencent.mm.plugin.shake.d.a.h.a(paramAdapterView);
           com.tencent.mm.plugin.shake.d.a.h.b(paramAdapterView);
-          return;
-          paramView = new Intent();
-          paramView.putExtra("rawUrl", paramAdapterView.getCity());
-          paramView.putExtra("scene", 27);
-          paramView.putExtra("stastic_scene", 5);
-          com.tencent.mm.br.d.b(ae.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
         }
+        AppMethodBeat.o(24722);
+        return;
+        paramView = new Intent();
+        paramView.putExtra("rawUrl", paramAdapterView.getCity());
+        paramView.putExtra("scene", 27);
+        paramView.putExtra("stastic_scene", 5);
+        com.tencent.mm.bq.d.b(ah.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
       }
     }
-    if (k.xo(i))
+    label407:
+    if (k.Do(i))
     {
-      k.a(paramAdapterView, this.obE, true);
+      k.a(paramAdapterView, this.qPL, true);
+      AppMethodBeat.o(24722);
       return;
     }
     paramView = paramAdapterView.field_username;
-    au.Hx();
-    Object localObject = c.Fw().abl(paramView);
-    y.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramView + " display:" + paramAdapterView.field_nickname + " position:" + paramInt + " contactName" + ((ao)localObject).field_username);
-    y.d("MicroMsg.ShakeItemListUI", "isContact:" + com.tencent.mm.n.a.gR(((ao)localObject).field_type) + "  contact:" + localObject);
-    if (com.tencent.mm.n.a.gR(((ao)localObject).field_type))
+    aw.aaz();
+    Object localObject = c.YA().arw(paramView);
+    ab.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramView + " display:" + paramAdapterView.field_nickname + " position:" + paramInt + " contactName" + ((aq)localObject).field_username);
+    ab.d("MicroMsg.ShakeItemListUI", "isContact:" + com.tencent.mm.n.a.je(((aq)localObject).field_type) + "  contact:" + localObject);
+    if (com.tencent.mm.n.a.je(((aq)localObject).field_type))
     {
       Intent localIntent = new Intent();
       localIntent.putExtra("Contact_User", paramView);
-      if (this.obG == paramAdapterView.field_sex) {}
+      if (this.qPN == paramAdapterView.field_sex) {}
       for (paramInt = 23;; paramInt = 24)
       {
         localIntent.putExtra("Contact_Scene", paramInt);
         localIntent.putExtra("Sns_from_Scene", 22);
-        if ((paramView == null) || (paramView.length() <= 0)) {
-          break;
-        }
-        if (((ad)localObject).cua())
+        if ((paramView != null) && (paramView.length() > 0))
         {
-          com.tencent.mm.plugin.report.service.h.nFQ.aC(10298, paramAdapterView.field_username + "," + localIntent.getIntExtra("Contact_Scene", 23));
-          localIntent.putExtra("Contact_Scene", 23);
+          if (((ad)localObject).dwz())
+          {
+            com.tencent.mm.plugin.report.service.h.qsU.kvStat(10298, paramAdapterView.field_username + "," + localIntent.getIntExtra("Contact_Scene", 23));
+            localIntent.putExtra("Contact_Scene", 23);
+          }
+          com.tencent.mm.plugin.shake.a.gmO.c(localIntent, this.qPL);
         }
-        com.tencent.mm.plugin.shake.a.eUR.d(localIntent, this.obE);
+        AppMethodBeat.o(24722);
         return;
       }
     }
-    y.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramView + " display:" + paramAdapterView.field_nickname + " position:" + paramInt + " contactName" + ((ao)localObject).field_username);
+    ab.d("MicroMsg.ShakeItemListUI", "listView onTtemClick username:" + paramView + " display:" + paramAdapterView.field_nickname + " position:" + paramInt + " contactName" + ((aq)localObject).field_username);
     paramView = new Intent();
     paramView.putExtra("Contact_User", paramAdapterView.field_username);
     paramView.putExtra("Contact_Nick", paramAdapterView.field_nickname);
@@ -135,7 +147,7 @@ final class ShakeItemListUI$3
     paramView.putExtra("Contact_IsLBSFriend", true);
     paramView.putExtra("Contact_VUser_Info", paramAdapterView.field_reserved3);
     paramView.putExtra("Contact_VUser_Info_Flag", paramAdapterView.field_reserved1);
-    if (this.obG == paramAdapterView.field_sex) {}
+    if (this.qPN == paramAdapterView.field_sex) {}
     for (paramInt = 23;; paramInt = 24)
     {
       paramView.putExtra("Contact_Scene", paramInt);
@@ -143,9 +155,10 @@ final class ShakeItemListUI$3
       paramView.putExtra("Contact_KSnsIFlag", paramAdapterView.field_snsFlag);
       paramView.putExtra("Contact_KSnsBgUrl", paramAdapterView.field_sns_bgurl);
       if ((paramAdapterView.field_reserved1 & 0x8) > 0) {
-        com.tencent.mm.plugin.report.service.h.nFQ.aC(10298, paramAdapterView.field_username + "," + paramView.getIntExtra("Contact_Scene", 23));
+        com.tencent.mm.plugin.report.service.h.qsU.kvStat(10298, paramAdapterView.field_username + "," + paramView.getIntExtra("Contact_Scene", 23));
       }
-      com.tencent.mm.plugin.shake.a.eUR.d(paramView, this.obE);
+      com.tencent.mm.plugin.shake.a.gmO.c(paramView, this.qPL);
+      AppMethodBeat.o(24722);
       return;
     }
   }

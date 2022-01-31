@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class ShakeItemListUI$1
@@ -12,7 +12,9 @@ final class ShakeItemListUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    h.a(this.obE, true, this.obE.getString(R.l.say_hi_clean_all_title), "", this.obE.getString(R.l.app_clear), this.obE.getString(R.l.app_cancel), new ShakeItemListUI.1.1(this), null);
+    AppMethodBeat.i(24720);
+    h.a(this.qPL, true, this.qPL.getString(2131302875), "", this.qPL.getString(2131296891), this.qPL.getString(2131296888), new ShakeItemListUI.1.1(this), null);
+    AppMethodBeat.o(24720);
     return true;
   }
 }

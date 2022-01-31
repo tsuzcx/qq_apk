@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MMGestureGallery$l$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class MMGestureGallery$l$1
   
   public final void run()
   {
-    MMGestureGallery.h(this.wdo).aBS();
+    AppMethodBeat.i(107677);
+    MMGestureGallery.h(this.AvV).bdW();
+    AppMethodBeat.o(107677);
   }
 }
 

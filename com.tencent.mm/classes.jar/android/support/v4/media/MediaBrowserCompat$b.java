@@ -4,17 +4,17 @@ import android.os.Build.VERSION;
 
 public class MediaBrowserCompat$b
 {
-  final Object AF;
-  a AG;
+  final Object Br;
+  MediaBrowserCompat.b.a Bs;
   
   public MediaBrowserCompat$b()
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.AF = new a.b(new MediaBrowserCompat.b.b(this));
+      this.Br = new a.b(new MediaBrowserCompat.b.b(this));
       return;
     }
-    this.AF = null;
+    this.Br = null;
   }
   
   public void onConnected() {}
@@ -22,13 +22,6 @@ public class MediaBrowserCompat$b
   public void onConnectionFailed() {}
   
   public void onConnectionSuspended() {}
-  
-  static abstract interface a
-  {
-    public abstract void onConnected();
-    
-    public abstract void onConnectionSuspended();
-  }
 }
 
 

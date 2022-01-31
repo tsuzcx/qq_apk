@@ -4,8 +4,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.i;
 import java.util.List;
 import java.util.Map;
 
@@ -16,19 +16,21 @@ final class LuckyMoneyMyRecordUI$8
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.lVW.dismissDialog(1);
-    paramAdapterView = this.lWa.ke(paramInt);
-    this.lWa.aJH = paramInt;
-    if (!paramAdapterView.equals(LuckyMoneyMyRecordUI.j(this.lVW)))
+    AppMethodBeat.i(42765);
+    this.oua.dismissDialog(1);
+    paramAdapterView = this.oue.getItem(paramInt);
+    this.oue.aRn = paramInt;
+    if (!paramAdapterView.equals(LuckyMoneyMyRecordUI.j(this.oua)))
     {
-      LuckyMoneyMyRecordUI.a(this.lVW, paramAdapterView);
-      LuckyMoneyMyRecordUI.k(this.lVW).setText(this.lVW.getString(a.i.lucky_money_record_year_title, new Object[] { LuckyMoneyMyRecordUI.j(this.lVW) }));
-      LuckyMoneyMyRecordUI.l(this.lVW);
-      LuckyMoneyMyRecordUI.m(this.lVW).clear();
-      LuckyMoneyMyRecordUI.n(this.lVW).clear();
-      LuckyMoneyMyRecordUI.d(this.lVW);
+      LuckyMoneyMyRecordUI.a(this.oua, paramAdapterView);
+      LuckyMoneyMyRecordUI.k(this.oua).setText(this.oua.getString(2131301298, new Object[] { LuckyMoneyMyRecordUI.j(this.oua) }));
+      LuckyMoneyMyRecordUI.l(this.oua);
+      LuckyMoneyMyRecordUI.m(this.oua).clear();
+      LuckyMoneyMyRecordUI.n(this.oua).clear();
+      LuckyMoneyMyRecordUI.d(this.oua);
     }
-    h.nFQ.f(11701, new Object[] { Integer.valueOf(LuckyMoneyMyRecordUI.e(this.lVW)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3), paramAdapterView });
+    h.qsU.e(11701, new Object[] { Integer.valueOf(LuckyMoneyMyRecordUI.e(this.oua)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(3), paramAdapterView });
+    AppMethodBeat.o(42765);
   }
 }
 

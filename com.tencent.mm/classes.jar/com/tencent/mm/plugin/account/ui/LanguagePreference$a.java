@@ -2,17 +2,17 @@ package com.tencent.mm.plugin.account.ui;
 
 public final class LanguagePreference$a
 {
-  String fmj;
-  private String fmk;
-  public String fml;
-  public boolean fmm;
+  String gDD;
+  private String gDE;
+  public String gDF;
+  public boolean gDG;
   
   public LanguagePreference$a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
-    this.fmj = paramString1;
-    this.fmk = paramString2;
-    this.fml = paramString3;
-    this.fmm = paramBoolean;
+    this.gDD = paramString1;
+    this.gDE = paramString2;
+    this.gDF = paramString3;
+    this.gDG = paramBoolean;
   }
 }
 

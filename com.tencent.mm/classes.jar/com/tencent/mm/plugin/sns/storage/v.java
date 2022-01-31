@@ -4,73 +4,140 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class v
 {
-  public static boolean MJ(String paramString)
+  public static boolean Zq(String paramString)
   {
-    return (paramString != null) && (paramString.startsWith("sns_table_"));
-  }
-  
-  public static boolean OT(String paramString)
-  {
-    return (paramString != null) && (paramString.startsWith("ad_table_"));
-  }
-  
-  public static long OU(String paramString)
-  {
-    if (bk.bl(paramString)) {
-      return 0L;
-    }
-    if (paramString.startsWith("ad_table_")) {
-      return bk.ZS(paramString.substring(9));
-    }
-    if (paramString.startsWith("sns_table_")) {
-      return bk.ZS(paramString.substring(10));
-    }
-    return bk.ZS(paramString);
-  }
-  
-  public static int OV(String paramString)
-  {
-    if (bk.bl(paramString)) {
-      return 0;
-    }
-    if (paramString.startsWith("ad_table_")) {
-      return bk.ZR(paramString.substring(9));
-    }
-    return bk.ZR(paramString.substring(10));
-  }
-  
-  public static boolean OW(String paramString)
-  {
-    if (paramString.startsWith("ad_table_")) {
-      if (bk.ZS(paramString.substring(9)) == 0L) {}
-    }
-    while (bk.ZS(paramString.substring(10)) != 0L)
+    AppMethodBeat.i(38020);
+    if ((paramString != null) && (paramString.startsWith("sns_table_")))
     {
+      AppMethodBeat.o(38020);
       return true;
-      return false;
     }
+    AppMethodBeat.o(38020);
     return false;
   }
   
-  public static boolean OX(String paramString)
+  public static String aE(String paramString, long paramLong)
   {
-    return !OW(paramString);
+    AppMethodBeat.i(38017);
+    paramString = paramString + paramLong;
+    AppMethodBeat.o(38017);
+    return paramString;
   }
   
-  public static int ac(String paramString1, String paramString2, String paramString3)
+  public static String aF(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(38018);
+    paramString = paramString + paramLong;
+    AppMethodBeat.o(38018);
+    return paramString;
+  }
+  
+  public static boolean abN(String paramString)
+  {
+    AppMethodBeat.i(38019);
+    if ((paramString != null) && (paramString.startsWith("ad_table_")))
+    {
+      AppMethodBeat.o(38019);
+      return true;
+    }
+    AppMethodBeat.o(38019);
+    return false;
+  }
+  
+  public static long abO(String paramString)
+  {
+    AppMethodBeat.i(38021);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(38021);
+      return 0L;
+    }
+    if (paramString.startsWith("ad_table_"))
+    {
+      l = bo.apW(paramString.substring(9));
+      AppMethodBeat.o(38021);
+      return l;
+    }
+    if (paramString.startsWith("sns_table_"))
+    {
+      l = bo.apW(paramString.substring(10));
+      AppMethodBeat.o(38021);
+      return l;
+    }
+    long l = bo.apW(paramString);
+    AppMethodBeat.o(38021);
+    return l;
+  }
+  
+  public static int abP(String paramString)
+  {
+    AppMethodBeat.i(38022);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(38022);
+      return 0;
+    }
+    if (paramString.startsWith("ad_table_"))
+    {
+      i = bo.apV(paramString.substring(9));
+      AppMethodBeat.o(38022);
+      return i;
+    }
+    int i = bo.apV(paramString.substring(10));
+    AppMethodBeat.o(38022);
+    return i;
+  }
+  
+  public static boolean abQ(String paramString)
+  {
+    AppMethodBeat.i(38023);
+    if (paramString.startsWith("ad_table_"))
+    {
+      if (bo.apW(paramString.substring(9)) != 0L)
+      {
+        AppMethodBeat.o(38023);
+        return true;
+      }
+      AppMethodBeat.o(38023);
+      return false;
+    }
+    if (bo.apW(paramString.substring(10)) != 0L)
+    {
+      AppMethodBeat.o(38023);
+      return true;
+    }
+    AppMethodBeat.o(38023);
+    return false;
+  }
+  
+  public static boolean abR(String paramString)
+  {
+    AppMethodBeat.i(38024);
+    if (!abQ(paramString))
+    {
+      AppMethodBeat.o(38024);
+      return true;
+    }
+    AppMethodBeat.o(38024);
+    return false;
+  }
+  
+  public static int ao(String paramString1, String paramString2, String paramString3)
   {
     int k = 0;
-    paramString1 = ad(paramString1, paramString2, paramString3);
+    AppMethodBeat.i(38026);
+    paramString1 = ap(paramString1, paramString2, paramString3);
     int j = k;
     int i;
-    if (!bk.bl(paramString1))
+    if (!bo.isNullOrNil(paramString1))
     {
       paramString1 = paramString1.split("&");
       i = 0;
@@ -84,100 +151,104 @@ public final class v
           j = Integer.valueOf(paramString1[i].substring(16)).intValue();
         }
       }
-      else {
+      else
+      {
+        AppMethodBeat.o(38026);
         return j;
       }
       i += 1;
     }
   }
   
-  public static String ad(String paramString1, String paramString2, String paramString3)
+  public static String ap(String paramString1, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(38027);
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramString1 != null)
     {
       localStringBuilder.append(paramString1);
       if (paramString2 == null) {
-        break label72;
+        break label84;
       }
-      label22:
+      label27:
       localStringBuilder.append(paramString2);
       if (paramString3 == null) {
-        break label78;
+        break label90;
       }
     }
     for (;;)
     {
       localStringBuilder.append(paramString3);
       if (localStringBuilder.length() <= 0) {
-        break label84;
+        break label96;
       }
-      return ae.getContext().getSharedPreferences("SnsAdVote", 0).getString(localStringBuilder.toString(), "");
+      paramString1 = ah.getContext().getSharedPreferences("SnsAdVote", 0).getString(localStringBuilder.toString(), "");
+      AppMethodBeat.o(38027);
+      return paramString1;
       paramString1 = "";
       break;
-      label72:
+      label84:
       paramString2 = "";
-      break label22;
-      label78:
+      break label27;
+      label90:
       paramString3 = "";
     }
-    label84:
+    label96:
+    AppMethodBeat.o(38027);
     return "";
   }
   
-  public static String ak(String paramString, long paramLong)
+  public static int gG(String paramString1, String paramString2)
   {
-    return paramString + paramLong;
+    AppMethodBeat.i(38025);
+    g.RJ();
+    int i = ao(paramString1, paramString2, a.QC());
+    AppMethodBeat.o(38025);
+    return i;
   }
   
-  public static String al(String paramString, long paramLong)
+  public static void h(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
-    return paramString + paramLong;
-  }
-  
-  public static int eY(String paramString1, String paramString2)
-  {
-    g.DN();
-    return ac(paramString1, paramString2, a.CL());
-  }
-  
-  public static void g(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
-  {
-    if (TextUtils.isEmpty(paramString1)) {
+    AppMethodBeat.i(38028);
+    if (TextUtils.isEmpty(paramString1))
+    {
+      AppMethodBeat.o(38028);
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramString1 != null)
     {
-      label21:
       localStringBuilder.append(paramString1);
       if (paramString2 == null) {
-        break label125;
+        break label80;
       }
-      label32:
+      label42:
       localStringBuilder.append(paramString2);
       if (paramString3 == null) {
-        break label131;
+        break label86;
       }
     }
     for (;;)
     {
       localStringBuilder.append(paramString3);
-      if (localStringBuilder.length() <= 0) {
-        break;
+      if (localStringBuilder.length() > 0) {
+        break label92;
       }
-      paramString1 = ae.getContext().getSharedPreferences("SnsAdVote", 0).edit();
-      paramString1.putString(localStringBuilder.toString(), "voteResultIndex=" + paramInt1 + "&isUpdate=" + paramInt2);
-      paramString1.commit();
+      AppMethodBeat.o(38028);
       return;
       paramString1 = "";
-      break label21;
-      label125:
+      break;
+      label80:
       paramString2 = "";
-      break label32;
-      label131:
+      break label42;
+      label86:
       paramString3 = "";
     }
+    label92:
+    paramString1 = ah.getContext().getSharedPreferences("SnsAdVote", 0).edit();
+    paramString1.putString(localStringBuilder.toString(), "voteResultIndex=" + paramInt1 + "&isUpdate=" + paramInt2);
+    paramString1.commit();
+    AppMethodBeat.o(38028);
   }
 }
 

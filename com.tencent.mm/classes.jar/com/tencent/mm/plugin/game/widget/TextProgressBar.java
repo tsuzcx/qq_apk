@@ -9,16 +9,17 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 
 public class TextProgressBar
   extends ProgressBar
 {
-  private int gFm;
-  private String hnV;
+  private int ieq;
   private Context mContext;
   private Paint mPaint;
-  private int xL;
+  private String mText;
+  private int ym;
   
   public TextProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,8 +29,10 @@ public class TextProgressBar
   
   private void setText(int paramInt)
   {
-    this.xL = paramInt;
-    this.hnV = (String.valueOf(paramInt) + "%");
+    AppMethodBeat.i(112416);
+    this.ym = paramInt;
+    this.mText = (String.valueOf(paramInt) + "%");
+    AppMethodBeat.o(112416);
   }
   
   @SuppressLint({"DrawAllocation"})
@@ -37,29 +40,31 @@ public class TextProgressBar
   {
     try
     {
+      AppMethodBeat.i(112414);
       super.onDraw(paramCanvas);
       this.mPaint = new Paint();
       this.mPaint.setAntiAlias(true);
       this.mPaint.setColor(Color.rgb(69, 192, 26));
-      this.mPaint.setTextSize(this.gFm);
+      this.mPaint.setTextSize(this.ieq);
       Object localObject = new Rect();
-      this.mPaint.getTextBounds(this.hnV, 0, this.hnV.length(), (Rect)localObject);
+      this.mPaint.getTextBounds(this.mText, 0, this.mText.length(), (Rect)localObject);
       float f1 = getWidth() / 2 - ((Rect)localObject).centerX();
       float f2 = getHeight() / 2 - ((Rect)localObject).centerY();
-      paramCanvas.drawText(this.hnV, f1, f2, this.mPaint);
-      float f3 = this.xL / 100.0F * getWidth();
+      paramCanvas.drawText(this.mText, f1, f2, this.mPaint);
+      float f3 = this.ym / 100.0F * getWidth();
       if (f3 > f1)
       {
         localObject = new Paint();
         ((Paint)localObject).setColor(-1);
         ((Paint)localObject).setAntiAlias(true);
-        ((Paint)localObject).setTextSize(this.gFm);
+        ((Paint)localObject).setTextSize(this.ieq);
         RectF localRectF = new RectF(0.0F, 0.0F, f3, getHeight());
         paramCanvas.save();
         paramCanvas.clipRect(localRectF);
-        paramCanvas.drawText(this.hnV, f1, f2, (Paint)localObject);
+        paramCanvas.drawText(this.mText, f1, f2, (Paint)localObject);
         paramCanvas.restore();
       }
+      AppMethodBeat.o(112414);
       return;
     }
     finally {}
@@ -67,13 +72,17 @@ public class TextProgressBar
   
   public void setProgress(int paramInt)
   {
+    AppMethodBeat.i(112413);
     setText(paramInt);
     super.setProgress(paramInt);
+    AppMethodBeat.o(112413);
   }
   
   public void setTextSize(int paramInt)
   {
-    this.gFm = a.fromDPToPix(this.mContext, paramInt);
+    AppMethodBeat.i(112415);
+    this.ieq = a.fromDPToPix(this.mContext, paramInt);
+    AppMethodBeat.o(112415);
   }
 }
 

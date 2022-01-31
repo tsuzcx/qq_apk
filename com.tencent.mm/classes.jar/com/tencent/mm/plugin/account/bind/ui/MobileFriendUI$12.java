@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import com.tencent.mm.ui.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.p.a;
 
 final class MobileFriendUI$12
-  implements r.a
+  implements p.a
 {
   MobileFriendUI$12(MobileFriendUI paramMobileFriendUI) {}
   
-  public final void Wp()
+  public final void apT()
   {
-    MobileFriendUI localMobileFriendUI = this.fes;
-    MobileFriendUI.d(this.fes).getCount();
+    AppMethodBeat.i(13730);
+    MobileFriendUI localMobileFriendUI = this.gwb;
+    MobileFriendUI.d(this.gwb).getCount();
     MobileFriendUI.e(localMobileFriendUI);
+    AppMethodBeat.o(13730);
   }
 }
 

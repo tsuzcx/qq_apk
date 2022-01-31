@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.fts.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.ui.WebSearchWebVideoViewControlBar.a;
 
 final class FtsWebVideoView$6
@@ -7,19 +8,28 @@ final class FtsWebVideoView$6
 {
   FtsWebVideoView$6(FtsWebVideoView paramFtsWebVideoView) {}
   
-  public final int akj()
+  public final int aEV()
   {
-    return FtsWebVideoView.d(this.raW).getCacheTimeSec();
+    AppMethodBeat.i(5829);
+    int i = FtsWebVideoView.d(this.uQE).getCacheTimeSec();
+    AppMethodBeat.o(5829);
+    return i;
   }
   
-  public final int akk()
+  public final int aEW()
   {
-    return FtsWebVideoView.d(this.raW).getVideoDurationSec();
+    AppMethodBeat.i(5830);
+    int i = FtsWebVideoView.d(this.uQE).getVideoDurationSec();
+    AppMethodBeat.o(5830);
+    return i;
   }
   
-  public final int cad()
+  public final int cZZ()
   {
-    return FtsWebVideoView.d(this.raW).getCurrPosMs();
+    AppMethodBeat.i(5831);
+    int i = FtsWebVideoView.d(this.uQE).getCurrPosMs();
+    AppMethodBeat.o(5831);
+    return i;
   }
 }
 

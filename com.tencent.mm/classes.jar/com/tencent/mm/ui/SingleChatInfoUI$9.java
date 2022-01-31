@@ -1,16 +1,29 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.modelmulti.n;
-import com.tencent.mm.modelmulti.o;
+import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bf.a;
 
 final class SingleChatInfoUI$9
-  implements Runnable
+  implements bf.a
 {
-  SingleChatInfoUI$9(SingleChatInfoUI paramSingleChatInfoUI) {}
+  SingleChatInfoUI$9(SingleChatInfoUI paramSingleChatInfoUI, ProgressDialog paramProgressDialog) {}
   
-  public final void run()
+  public final boolean JS()
   {
-    n.Pm().iT(7);
+    AppMethodBeat.i(29876);
+    boolean bool = SingleChatInfoUI.access$400();
+    AppMethodBeat.o(29876);
+    return bool;
+  }
+  
+  public final void JT()
+  {
+    AppMethodBeat.i(29877);
+    if (this.efE != null) {
+      this.efE.dismiss();
+    }
+    AppMethodBeat.o(29877);
   }
 }
 

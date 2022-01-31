@@ -1,67 +1,109 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.support.v4.f.a;
+import android.util.SparseIntArray;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.page.af;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.ap;
 
 public final class h
 {
-  private static final h htq = new h();
-  private final a<af, Integer> htp = new a();
+  private static final h jkZ;
+  private final h.a jkY;
   
-  public static h arM()
+  static
   {
-    return htq;
+    AppMethodBeat.i(123626);
+    jkZ = new h();
+    AppMethodBeat.o(123626);
   }
   
-  final void e(af paramaf)
+  public h()
   {
-    if (paramaf == null) {
-      return;
-    }
-    this.htp.remove(paramaf);
-    paramaf.getContentView().setFocusable(true);
-    paramaf.getContentView().setFocusableInTouchMode(true);
+    AppMethodBeat.i(123622);
+    this.jkY = new h.a((byte)0);
+    AppMethodBeat.o(123622);
   }
   
-  public final void f(af paramaf)
+  public static h aQF()
   {
-    if (paramaf == null) {
-      return;
-    }
-    Integer localInteger2 = (Integer)this.htp.get(paramaf);
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null) {
-      localInteger1 = Integer.valueOf(0);
-    }
-    int i = localInteger1.intValue();
-    this.htp.put(paramaf, Integer.valueOf(i + 1));
-    paramaf.getContentView().setFocusable(false);
-    paramaf.getContentView().setFocusableInTouchMode(false);
+    return jkZ;
   }
   
-  public final void g(af paramaf)
+  final void b(ap paramap)
   {
-    if (paramaf == null) {
-      return;
-    }
-    Integer localInteger = (Integer)this.htp.get(paramaf);
-    if (localInteger != null)
+    AppMethodBeat.i(123623);
+    if (paramap == null)
     {
-      localInteger = Integer.valueOf(localInteger.intValue() - 1);
-      if (localInteger.intValue() > 0) {}
-    }
-    else
-    {
-      e(paramaf);
+      AppMethodBeat.o(123623);
       return;
     }
-    this.htp.put(paramaf, localInteger);
+    this.jkY.jla.delete(paramap.hashCode());
+    try
+    {
+      paramap.getWrapperView().setFocusable(true);
+      paramap.getWrapperView().setFocusableInTouchMode(true);
+      paramap.getContentView().setFocusable(true);
+      paramap.getContentView().setFocusableInTouchMode(true);
+      AppMethodBeat.o(123623);
+      return;
+    }
+    catch (NullPointerException paramap)
+    {
+      AppMethodBeat.o(123623);
+    }
+  }
+  
+  public final void c(ap paramap)
+  {
+    AppMethodBeat.i(123624);
+    if (paramap == null)
+    {
+      AppMethodBeat.o(123624);
+      return;
+    }
+    int i = this.jkY.e(paramap);
+    this.jkY.a(paramap, i + 1);
+    try
+    {
+      paramap.getWrapperView().setFocusable(false);
+      paramap.getWrapperView().setFocusableInTouchMode(false);
+      paramap.getContentView().setFocusable(false);
+      paramap.getContentView().setFocusableInTouchMode(false);
+      if ((paramap.getWrapperView() instanceof ViewGroup)) {
+        ((ViewGroup)paramap.getWrapperView()).setDescendantFocusability(393216);
+      }
+      AppMethodBeat.o(123624);
+      return;
+    }
+    catch (NullPointerException paramap)
+    {
+      AppMethodBeat.o(123624);
+    }
+  }
+  
+  public final void d(ap paramap)
+  {
+    AppMethodBeat.i(123625);
+    if (paramap == null)
+    {
+      AppMethodBeat.o(123625);
+      return;
+    }
+    int i = this.jkY.e(paramap) - 1;
+    if (i <= 0)
+    {
+      b(paramap);
+      AppMethodBeat.o(123625);
+      return;
+    }
+    this.jkY.a(paramap, i);
+    AppMethodBeat.o(123625);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,25 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletBalanceFetchUI$14
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  WalletBalanceFetchUI$14(WalletBalanceFetchUI paramWalletBalanceFetchUI) {}
+  WalletBalanceFetchUI$14(WalletBalanceFetchUI paramWalletBalanceFetchUI, Dialog paramDialog) {}
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final void onClick(View paramView)
   {
-    if (paramEditable.toString().startsWith(".")) {
-      paramEditable.insert(0, "0");
+    AppMethodBeat.i(142276);
+    ab.i("MicroMsg.WalletBalanceFetchUI", "showIdentifyInfoCompleteDialog closeIcon click");
+    if ((this.tOr != null) && (this.tOr.isShowing())) {
+      this.tOr.dismiss();
     }
-    String str = paramEditable.toString();
-    int i = str.indexOf(".");
-    str.length();
-    int j = str.lastIndexOf(".");
-    int k = str.length();
-    if ((i >= 0) && (k - i > 3)) {
-      paramEditable.delete(i + 3, k);
-    }
-    for (;;)
-    {
-      WalletBalanceFetchUI.f(this.qgO);
-      return;
-      if (j != i) {
-        paramEditable.delete(j, k);
-      }
-    }
+    AppMethodBeat.o(142276);
   }
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

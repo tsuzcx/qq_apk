@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.storage.z;
@@ -15,16 +16,18 @@ final class AppChooserUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((AppChooserUI.c(this.slj) != null) && (AppChooserUI.c(this.slj).sln != null))
+    AppMethodBeat.i(125855);
+    if ((AppChooserUI.c(this.wdL) != null) && (AppChooserUI.c(this.wdL).wdP != null))
     {
-      g.DP().Dz().o(AppChooserUI.a(this.slj, 274528), AppChooserUI.c(this.slj).sln.activityInfo.packageName);
-      AppChooserUI.a(this.slj, AppChooserUI.c(this.slj).sln.activityInfo.packageName, true);
+      g.RL().Ru().set(AppChooserUI.a(this.wdL, 274528), AppChooserUI.c(this.wdL).wdP.activityInfo.packageName);
+      AppChooserUI.a(this.wdL, AppChooserUI.c(this.wdL).wdP.activityInfo.packageName, true);
     }
+    AppMethodBeat.o(125855);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.AppChooserUI.2
  * JD-Core Version:    0.7.0.1
  */

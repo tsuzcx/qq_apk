@@ -1,5 +1,7 @@
 package com.tencent.mm.protocal;
 
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -8,358 +10,404 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<String, c.g> soP = null;
+  private static Map<String, c.g> whv;
+  public static final String[] whw;
   
-  public static c.g Xq(String paramString)
+  static
   {
-    if ((soP == null) || (soP.size() <= 0))
+    AppMethodBeat.i(151635);
+    whv = null;
+    whw = (String[])new c.1().toArray(new String[0]);
+    AppMethodBeat.o(151635);
+  }
+  
+  public static Bundle anl(String paramString)
+  {
+    AppMethodBeat.i(79962);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("handle", true);
+    localBundle.putString("handle_result", paramString);
+    AppMethodBeat.o(79962);
+    return localBundle;
+  }
+  
+  public static c.g anm(String paramString)
+  {
+    AppMethodBeat.i(79963);
+    if ((whv == null) || (whv.size() <= 0))
     {
       Object localObject = new HashMap(128);
-      soP = (Map)localObject;
-      ((Map)localObject).put("log", new dx());
-      soP.put("imagePreview", new c.dh());
-      soP.put("profile", new c.gj());
-      soP.put("shareWeibo", new c.ks());
-      soP.put("shareTimeline", new js());
-      soP.put("adDataReport", new m());
-      soP.put("streamingVideoPlay", new c.jp());
-      soP.put("addContact", new c.h());
-      soP.put("sendAppMessage", new c.hn());
-      soP.put("scanQRCode", new c.hf());
-      soP.put("hideOptionMenu", new df());
-      soP.put("showOptionMenu", new c.ix());
-      soP.put("getNetworkType", new c.cd());
-      soP.put("closeWindow", new c.ai());
-      soP.put("getInstallState", new by());
-      soP.put("setFontSizeCallback", new c.ib());
-      soP.put("jumpToInstallUrl", new c.dn());
-      soP.put("launchApp", new c.dt());
-      soP.put("getBrandWCPayRequest", new bo());
-      soP.put("secureTunnel", new c.hh());
-      soP.put("editAddress", new c.ba());
-      soP.put("getHeadingAndPitch", new c.bv());
-      soP.put("sendEmail", new c.hs());
-      soP.put("addDownloadTask", new c.j());
-      soP.put("cancelDownloadTask", new c.r());
-      soP.put("pauseDownloadTask", new c.gc());
-      soP.put("resumeDownloadTask", new c.hd());
-      soP.put("queryDownloadTask", new c.gk());
-      soP.put("installDownloadTask", new c.dk());
-      soP.put("getLatestAddress", new c.cg());
-      soP.put("openSpecificView", new c.fp());
-      soP.put("jumpWCMall", new c.dp());
-      soP.put("launch3rdApp", new c.ds());
-      soP.put("writeCommData", new c.kz());
-      soP.put("openUrlByExtBrowser", new c.fq());
-      soP.put("geoLocation", new c.bl());
-      soP.put("getBrandWCPayBindCardRequest", new c.bn());
-      soP.put("openProductView", new c.fj());
-      soP.put("openProductViewWithPid", new c.fk());
-      soP.put("jumpToBizProfile", new c.do());
-      soP.put("openTimelineCheckInList", new c.ed());
-      soP.put("openLocation", new c.ec());
-      soP.put("timelineCheckIn", new c.eb());
-      soP.put("getBrandWCPayCreateCreditCardRequest", new fv());
-      soP.put("chooseCard", new c.w());
-      soP.put("chooseInvoice", new c.z());
-      soP.put("sendServiceAppMessage", new c.ht());
-      soP.put("musicPlay", new c.ea());
-      soP.put("mmsf0001", new br());
-      soP.put("connectToWiFi", new c.an());
-      soP.put("getTransferMoneyRequest", new c.cv());
-      soP.put("openWCPaySpecificView", new c.fs());
-      soP.put("setCloseWindowConfirmDialogInfo", new c.hz());
-      soP.put("batchAddCard", new c.o());
-      soP.put("preVerifyJSAPI", new gi());
-      soP.put("startRecord", new c.jf());
-      soP.put("stopRecord", new c.jm());
-      soP.put("playVoice", new c.ge());
-      soP.put("pauseVoice", new c.gd());
-      soP.put("stopVoice", new c.jo());
-      soP.put("uploadVoice", new kf());
-      soP.put("downloadVoice", new c.ax());
-      soP.put("chooseImage", new y());
-      soP.put("uploadImage", new c.kc());
-      soP.put("downloadImage", new c.aw());
-      soP.put("uploadMediaFile", new kd());
-      soP.put("hideMenuItems", new c.dd());
-      soP.put("showMenuItems", new c.iv());
-      soP.put("hideAllNonBaseMenuItem", new c.dc());
-      soP.put("showAllNonBaseMenuItem", new c.is());
-      soP.put("checkJsApi", new c.v());
-      soP.put("translateVoice", new c.jt());
-      soP.put("shareQQ", new c.ip());
-      soP.put("shareWeiboApp", new c.ir());
-      soP.put("shareQZone", new c.iq());
-      soP.put("connectToFreeWifi", new c.am());
-      soP.put("getSendC2CMessageRequest", new cs());
-      soP.put("batchViewCard", new p());
-      soP.put("configWXDeviceWiFi", new al());
-      soP.put("getCurrentSSID", new c.bp());
-      soP.put("setPageOwner", new c.ih());
-      soP.put("getWechatVerifyTicket", new c.cx());
-      soP.put("openWXDeviceLib", new c.fw());
-      soP.put("startScanWXDevice", new c.jg());
-      soP.put("stopScanWXDevice", new c.jn());
-      soP.put("connectWXDevice", new ao());
-      soP.put("disconnectWXDevice", new c.av());
-      soP.put("getWXDeviceTicket", new c.da());
-      soP.put("getWXDeviceInfos", new c.cz());
-      soP.put("sendDataToWXDevice", new c.hp());
-      soP.put("closeWXDeviceLib", new c.ak());
-      soP.put("setSendDataDirection", new c.il());
-      soP.put("verifyWCPayPassword", new c.kh());
-      soP.put("getPaymentOrderRequest", new c.cf());
-      soP.put("openGameDetail", new c.ez());
-      soP.put("openGameCenter", new c.ey());
-      soP.put("setGameDebugConfig", new c.id());
-      soP.put("startTempSession", new c.ji());
-      soP.put("getH5PrepayRequest", new c.bw());
-      soP.put("getH5TransactionRequest", new c.bx());
-      soP.put("menu:share:timeline", new c.lk());
-      soP.put("menu:share:appmessage", new c.lh());
-      soP.put("menu:share:qq", new li());
-      soP.put("menu:share:weiboApp", new c.ll());
-      soP.put("menu:setfont", new c.lg());
-      soP.put("menu:share:weibo", new c.ll());
-      soP.put("menu:share:QZone", new c.lj());
-      soP.put("getRecevieBizHongBaoRequest", new c.e());
-      soP.put("insertVideoPlayer", new c.dj());
-      soP.put("updateVideoPlayer", new c.ka());
-      soP.put("removeVideoPlayer", new c.gq());
-      soP.put("operateVideoPlayer", new c.ga());
-      soP.put("deleteSearchHistory", new c.as());
-      soP.put("getSearchHistory", new c.co());
-      soP.put("getSearchData", new c.ck());
-      soP.put("getPoiInfo", new c.bu());
-      soP.put("updateReddotTimeStamps", new c.jw());
-      soP.put("getTeachSearchData", new c.cu());
-      soP.put("getSearchGuideData", new c.cn());
-      soP.put("getSearchAvatarList", new cj());
-      soP.put("getSearchSnsImageList", new c.cq());
-      soP.put("getSearchImageList", new c.cp());
-      soP.put("getSearchDisplayNameList", new cl());
-      soP.put("startSearchItemDetailPage", new c.jh());
-      soP.put("reportSearchStatistics", new c.gx());
-      soP.put("reportSearchRealTimeStatistics", new c.gw());
-      soP.put("searchDataHasResult", new c.hg());
-      soP.put("openEmotionPage", new c.bj());
-      soP.put("getSearchSuggestionData", new c.cr());
-      soP.put("setSearchInputWord", new c.ik());
-      soP.put("setSnsObjectXmlDescList", new c.im());
-      soP.put("clickSnsMusicPlayButton", new c.ah());
-      soP.put("openWeAppPage", new c.fu());
-      soP.put("reportWeAppSearchRealtime", new c.kt());
-      soP.put("doSearchOperation", new c.az());
-      soP.put("insertSearchWAWidgetView", new c.di());
-      soP.put("removeSearchWAWidgetView", new c.gp());
-      soP.put("updateSearchWAWidgetView", new c.jy());
-      soP.put("showSearchActionSheet", new c.iy());
-      soP.put("cancelSearchActionSheet", new c.s());
-      soP.put("uxSearchOpLog", new c.kg());
-      soP.put("jumpToWXWallet", new c.dq());
-      soP.put("scanCover", new f());
-      soP.put("reportActionInfo", new c.gr());
-      soP.put("openMyDeviceProfile", new c.fg());
-      soP.put("selectPedometerSource", new c.hk());
-      soP.put("nfcIsConnect", new c.ej());
-      soP.put("nfcConnect", new c.eg());
-      soP.put("nfcTransceive", new c.ek());
-      soP.put("nfcBatchTransceive", new c.ee());
-      soP.put("nfcGetId", new c.eh());
-      soP.put("nfcGetInfo", new ei());
-      soP.put("startMonitoringBeacons", new c.jd());
-      soP.put("stopMonitoringBeacons", new c.jk());
-      soP.put("nfcCheckState", new c.ef());
-      soP.put("videoProxyInit", new c.kl());
-      soP.put("videoProxyStartPlay", new c.ko());
-      soP.put("videoProxyStopPlay", new c.kp());
-      soP.put("videoProxySetPlayerState", new c.km());
-      soP.put("videoProxySetRemainTime", new c.kn());
-      soP.put("videoProxyPreload", new c.kr());
-      soP.put("getWebPayCheckoutCounterRequst", new c.dw());
-      soP.put("addCustomMenuItems", new c.i());
-      soP.put("operateGameCenterMsg", new c.fz());
-      soP.put("openEnterpriseChat", new c.ew());
-      soP.put("enterEnterpriseChat", new c.be());
-      soP.put("openEnterpriseContact", new c.ex());
-      soP.put("selectEnterpriseContact", new hj());
-      soP.put("getEnterpriseChat", new c.bs());
-      soP.put("reportIDKey", new c.gu());
-      soP.put("quicklyAddBrandContact", new c.gl());
-      soP.put("consumedShareCard", new c.ap());
-      soP.put("cache", new c.kk());
-      soP.put("publicCache", new c.kq());
-      soP.put("kvReport", new c.dr());
-      soP.put("realtimeReport", new c.gm());
-      soP.put("openUrlWithExtraWebview", new c.fr());
-      soP.put("setFreeWifiOwner", new c.ic());
-      soP.put("selectSingleContact", new hl());
-      soP.put("sendAppMessageToSpecifiedContact", new c.hm());
-      soP.put("setLocalData", new c.ie());
-      soP.put("getLocalData", new c.bz());
-      soP.put("clearLocalData", new af());
-      soP.put("showKeyboard", new c.iu());
-      soP.put("showSmileyPanel", new ja());
-      soP.put("disableBounceScroll", new c.at());
-      soP.put("clearBounceBackground", new c.ad());
-      soP.put("setNavigationBarButtons", new if());
-      soP.put("enableFullScreen", new c.bc());
-      soP.put("showNavigationBarLoading", new c.iw());
-      soP.put("hideNavigationBarLoading", new c.de());
-      soP.put("enablePullDownRefresh", new c.bd());
-      soP.put("startPullDownRefresh", new c.je());
-      soP.put("stopPullDownRefresh", new jl());
-      soP.put("disablePullDownRefresh", new c.au());
-      soP.put("setPageTitle", new ii());
-      soP.put("setStatusBarStyle", new c.in());
-      soP.put("deleteAccountSuccess", new c.ar());
-      soP.put("chooseVideo", new c.ac());
-      soP.put("uploadVideo", new c.ke());
-      soP.put("openMapNavigateMenu", new c.ff());
-      soP.put("setNavigationBarColor", new c.ig());
-      soP.put("getWCPayRealnameVerify", new c.cw());
-      soP.put("openDesignerEmojiView", new c.eq());
-      soP.put("openDesignerProfile", new c.es());
-      soP.put("openEmoticonTopicList", new c.ev());
-      soP.put("openDesignerEmojiViewLocal", new c.er());
-      soP.put("openDesignerProfileLocal", new c.et());
-      soP.put("openEmotionDetailViewLocal", new d());
-      soP.put("openNewPage", new c.fh());
-      soP.put("getSearchEmotionData", new c.cm());
-      soP.put("openEmotionUrl", new c.bb());
-      soP.put("WNNativeCallbackOnClick", new kx());
-      soP.put("WNNativeCallbackOnLongClick", new c.ky());
-      soP.put("WNNativeCallbackOnCaretChange", new c.kw());
-      soP.put("WNNativeCallbackInitData", new kv());
-      soP.put("WNNativeAsyncCallback", new c.ku());
-      soP.put("WNNativeCallbackOnBecomeEditing", new c.ld());
-      soP.put("WNNativeCallbackOnBecomeEdited", new c.le());
-      soP.put("changePayActivityView", new c.t());
-      soP.put("selectWalletCurrency", new c.jq());
-      soP.put("scanLicence", new c.he());
-      soP.put("operateMusicPlayer", new c.b());
-      soP.put("getMusicPlayerState", new c.a());
-      soP.put("clearWebviewCache", new c.ag());
-      soP.put("requireSoterBiometricAuthentication", new c.jb());
-      soP.put("getSupportSoter", new c.jc());
-      soP.put("unbindBankCard", new ju());
-      soP.put("setBounceBackground", new c.hy());
-      soP.put("sendEnterpriseChat", new c.hq());
-      soP.put("doExposePreparation", new c.ay());
-      soP.put("getMsgProofItems", new c.cc());
-      soP.put("openSecurityView", new fo());
-      soP.put("startVoipCall", new c.jj());
-      soP.put("chooseInvoiceTitle", new c.aa());
-      soP.put("getOpenDeviceId", new c.ce());
-      soP.put("getRouteUrl", new c.ci());
-      soP.put("idCardRealnameVerify", new c.dg());
-      soP.put("uploadIdCardSuccess", new c.ln());
-      soP.put("showDatePickerView", new c.it());
-      soP.put("openLuckyMoneyDetailView", new fd());
-      soP.put("resendRemittanceMsg", new hc());
-      soP.put("getGameCommInfo", new c.bt());
-      soP.put("openGameRegion", new c.fa());
-      soP.put("chooseIdCard", new c.x());
-      soP.put("getLocalImgData", new c.c());
-      soP.put("openWeApp", new c.ft());
-      soP.put("recordVideo", new c.gn());
-      soP.put("previewVideo", new c.gh());
-      soP.put("uploadEncryptMediaFile", new c.kb());
-      soP.put("chooseMedia", new c.ab());
-      soP.put("requestWxFacePictureVerify", new c.bf());
-      soP.put("openCustomWebview", new c.ep());
-      soP.put("forceUpdateWxaAttr", new c.bi());
-      soP.put("openLuckyMoneyHistory", new c.fe());
-      soP.put("menuitem:gameSendDesktop", new c.hr());
-      soP.put("getWePkgAuthResult", new c.cy());
-      soP.put("getLocalWePkgInfo", new c.ca());
-      soP.put("openGameWebView", new c.fc());
-      soP.put("reportGameWeb", new c.gt());
-      soP.put("launchApplication", new c.du());
-      soP.put("showSearchOfBizHistory", new c.iz());
-      soP.put("login", new c.dy());
-      soP.put("authorize", new c.n());
-      soP.put("requestWxFacePictureVerifyUnionVideo", new bg());
-      soP.put("checkIsSupportFaceDetect", new c.u());
-      soP.put("operateBackgroundAudio", new c.fy());
-      soP.put("setBackgroundAudioState", new c.hx());
-      soP.put("getBackgroundAudioState", new c.bm());
-      soP.put("addDownloadTaskStraight", new c.k());
-      soP.put("setScreenOrientation", new c.ij());
-      soP.put("addToEmoticon", new c.l());
-      soP.put("shareEmoticon", new c.io());
-      soP.put("makePhoneCall", new c.dz());
-      soP.put("openADCanvas", new c.eo());
-      soP.put("openSearchCanvas", new fl());
-      soP.put("opVoteAdData", new c.gb());
-      soP.put("requestWxFaceRegisterInternal", new c.gz());
-      soP.put("requestWxFaceVerifyInternal", new c.ha());
-      soP.put("launchMiniProgram", new dv());
-      soP.put("reportMiniProgramPageData", new c.gv());
-      soP.put("selectContact", new c.hi());
-      soP.put("openSearchWAWidgetLogView", new c.fm());
-      soP.put("reloadSearchWAWidgetData", new c.go());
-      soP.put("closeWindowAndGoNext", new c.aj());
-      soP.put("requestWxVoicePrintVerifyInternal", new c.hb());
-      soP.put("openBizChat", new c.en());
-      soP.put("handleWCPayWalletBuffer", new c.db());
-      soP.put("tapSearchWAWidgetView", new c.jr());
-      soP.put("getMatchContactList", new c.cb());
-      soP.put("openSearchWebView", new c.fn());
-      soP.put("openWXSearchPage", new c.fx());
-      soP.put("viewTypeChange", new c.ki());
-      soP.put("invokeMiniProgramAPI", new c.dl());
-      soP.put("openGameUrlWithExtraWebView", new c.fb());
-      soP.put("setGameData", new c.ia());
-      soP.put("getGameData", new c.bq());
-      soP.put("clearGameData", new c.ae());
-      soP.put("openECard", new c.eu());
-      soP.put("reportGamePageTime", new c.gs());
-      soP.put("setWCPayPassword", new c.hw());
-      soP.put("openWCPayCardList", new c.em());
-      soP.put("bindEmail", new c.q());
-      soP.put("openOfflinePayView", new c.fi());
-      soP.put("bindEmail", new c.q());
-      soP.put("doGoToRecVideoList", new c.ch());
-      soP.put("jumpWSRecVideoList", new c.lf());
-      soP.put("openWebSearchOutLinkItem", new c.lm());
-      soP.put("recordHistory", new c.bk());
+      whv = (Map)localObject;
+      ((Map)localObject).put("log", new el());
+      whv.put("imagePreview", new c.dt());
+      whv.put("profile", new c.hb());
+      whv.put("shareWeibo", new c.lq());
+      whv.put("shareTimeline", new c.kp());
+      whv.put("adDataReport", new c.n());
+      whv.put("streamingVideoPlay", new c.km());
+      whv.put("addContact", new c.h());
+      whv.put("getWidgetCaptureImgUrl", new c.dg());
+      whv.put("sendAppMessage", new ii());
+      whv.put("scanQRCode", new c.ia());
+      whv.put("hideOptionMenu", new c.dq());
+      whv.put("showOptionMenu", new js());
+      whv.put("getNetworkType", new c.ck());
+      whv.put("closeWindow", new c.am());
+      whv.put("getInstallState", new c.cf());
+      whv.put("setFontSizeCallback", new c.iw());
+      whv.put("jumpToInstallUrl", new c.ea());
+      whv.put("launchApp", new c.eg());
+      whv.put("getBrandWCPayRequest", new c.bu());
+      whv.put("secureTunnel", new c.ic());
+      whv.put("editAddress", new bf());
+      whv.put("getHeadingAndPitch", new c.cc());
+      whv.put("sendEmail", new c.in());
+      whv.put("addDownloadTask", new c.j());
+      whv.put("cancelDownloadTask", new c.t());
+      whv.put("pauseDownloadTask", new c.gr());
+      whv.put("resumeDownloadTask", new c.hy());
+      whv.put("queryDownloadTask", new c.hd());
+      whv.put("installDownloadTask", new c.dw());
+      whv.put("getLatestAddress", new c.cn());
+      whv.put("openSpecificView", new c.gd());
+      whv.put("jumpWCMall", new ec());
+      whv.put("launch3rdApp", new c.ef());
+      whv.put("writeCommData", new c.lx());
+      whv.put("openUrlByExtBrowser", new c.ge());
+      whv.put("geoLocation", new c.br());
+      whv.put("getBrandWCPayBindCardRequest", new c.bt());
+      whv.put("openProductView", new c.fx());
+      whv.put("openProductViewWithPid", new c.fy());
+      whv.put("jumpToBizProfile", new c.eb());
+      whv.put("openTimelineCheckInList", new c.er());
+      whv.put("openLocation", new c.eq());
+      whv.put("timelineCheckIn", new c.ep());
+      whv.put("getBrandWCPayCreateCreditCardRequest", new c.gk());
+      whv.put("chooseCard", new c.z());
+      whv.put("chooseInvoice", new c.ad());
+      whv.put("sendServiceAppMessage", new c.io());
+      whv.put("musicPlay", new c.eo());
+      whv.put("mmsf0001", new c.bx());
+      whv.put("connectToWiFi", new c.as());
+      whv.put("getTransferMoneyRequest", new c.dc());
+      whv.put("openWCPaySpecificView", new gg());
+      whv.put("setCloseWindowConfirmDialogInfo", new c.iu());
+      whv.put("batchAddCard", new p());
+      whv.put("preVerifyJSAPI", new c.gy());
+      whv.put("startRecord", new c.kc());
+      whv.put("stopRecord", new c.kj());
+      whv.put("playVoice", new c.gt());
+      whv.put("pauseVoice", new c.gs());
+      whv.put("stopVoice", new kl());
+      whv.put("uploadVoice", new c.ld());
+      whv.put("downloadVoice", new c.bc());
+      whv.put("chooseImage", new c.ac());
+      whv.put("uploadImage", new c.la());
+      whv.put("downloadImage", new c.bb());
+      whv.put("uploadMediaFile", new c.lb());
+      whv.put("hideMenuItems", new c.do());
+      whv.put("showMenuItems", new c.jq());
+      whv.put("hideAllNonBaseMenuItem", new c.dn());
+      whv.put("showAllNonBaseMenuItem", new c.jn());
+      whv.put("checkJsApi", new y());
+      whv.put("translateVoice", new c.kq());
+      whv.put("shareQQ", new c.jk());
+      whv.put("shareWeiboApp", new c.jm());
+      whv.put("shareQZone", new c.jl());
+      whv.put("connectToFreeWifi", new c.ar());
+      whv.put("getSendC2CMessageRequest", new c.cz());
+      whv.put("batchViewCard", new c.r());
+      whv.put("configWXDeviceWiFi", new c.ap());
+      whv.put("getCurrentSSID", new c.bv());
+      whv.put("setPageOwner", new c.jc());
+      whv.put("getWechatVerifyTicket", new c.de());
+      whv.put("openWXDeviceLib", new c.gl());
+      whv.put("startScanWXDevice", new kd());
+      whv.put("stopScanWXDevice", new c.kk());
+      whv.put("connectWXDevice", new c.at());
+      whv.put("disconnectWXDevice", new c.ba());
+      whv.put("getWXDeviceTicket", new c.di());
+      whv.put("getWXDeviceInfos", new c.dh());
+      whv.put("sendDataToWXDevice", new c.ik());
+      whv.put("closeWXDeviceLib", new ao());
+      whv.put("setSendDataDirection", new c.jg());
+      whv.put("verifyWCPayPassword", new c.lf());
+      whv.put("getPaymentOrderRequest", new c.cm());
+      whv.put("openGameDetail", new c.fn());
+      whv.put("openGameCenter", new fm());
+      whv.put("setGameDebugConfig", new c.iy());
+      whv.put("startTempSession", new kf());
+      whv.put("getH5PrepayRequest", new c.cd());
+      whv.put("getH5TransactionRequest", new c.ce());
+      whv.put("menu:share:timeline", new c.mi());
+      whv.put("menu:share:appmessage", new mf());
+      whv.put("menu:share:qq", new c.mg());
+      whv.put("menu:share:weiboApp", new c.mj());
+      whv.put("menu:setfont", new c.me());
+      whv.put("menu:share:weibo", new c.mj());
+      whv.put("menu:share:QZone", new c.mh());
+      whv.put("getRecevieBizHongBaoRequest", new c.e());
+      whv.put("insertVideoPlayer", new dv());
+      whv.put("updateVideoPlayer", new kx());
+      whv.put("removeVideoPlayer", new c.hl());
+      whv.put("operateVideoPlayer", new c.gp());
+      whv.put("deleteSearchHistory", new c.ax());
+      whv.put("getSearchHistory", new c.cv());
+      whv.put("getSearchData", new c.cr());
+      whv.put("getPoiInfo", new c.cb());
+      whv.put("updateReddotTimeStamps", new c.kt());
+      whv.put("getTeachSearchData", new c.db());
+      whv.put("getSearchGuideData", new c.cu());
+      whv.put("getSearchAvatarList", new c.cq());
+      whv.put("getSearchSnsImageList", new c.cx());
+      whv.put("getSearchImageList", new c.cw());
+      whv.put("getSearchDisplayNameList", new c.cs());
+      whv.put("startSearchItemDetailPage", new c.ke());
+      whv.put("reportSearchStatistics", new c.hs());
+      whv.put("reportSearchRealTimeStatistics", new c.hr());
+      whv.put("searchDataHasResult", new c.ib());
+      whv.put("openEmotionPage", new bo());
+      whv.put("getSearchSuggestionData", new c.cy());
+      whv.put("setSearchInputWord", new c.jf());
+      whv.put("setSnsObjectXmlDescList", new c.jh());
+      whv.put("clickSnsMusicPlayButton", new al());
+      whv.put("openWeAppPage", new c.gj());
+      whv.put("reportWeAppSearchRealtime", new c.lr());
+      whv.put("doSearchOperation", new c.be());
+      whv.put("insertSearchWAWidgetView", new c.du());
+      whv.put("removeSearchWAWidgetView", new c.hk());
+      whv.put("updateSearchWAWidgetView", new c.kv());
+      whv.put("showSearchActionSheet", new c.jt());
+      whv.put("cancelSearchActionSheet", new c.v());
+      whv.put("showSearchToast", new c.jw());
+      whv.put("showSearchLoading", new c.ju());
+      whv.put("hideSearchLoading", new c.dr());
+      whv.put("updateWASearchTemplate", new c.ky());
+      whv.put("preloadSearchWeapp", new c.gw());
+      whv.put("uxSearchOpLog", new c.le());
+      whv.put("jumpToWXWallet", new c.ed());
+      whv.put("scanCover", new f());
+      whv.put("reportActionInfo", new c.hm());
+      whv.put("openMyDeviceProfile", new c.fu());
+      whv.put("selectPedometerSource", new c.if());
+      whv.put("nfcIsConnect", new c.ex());
+      whv.put("nfcConnect", new c.eu());
+      whv.put("nfcTransceive", new c.ey());
+      whv.put("nfcBatchTransceive", new c.es());
+      whv.put("nfcGetId", new c.ev());
+      whv.put("nfcGetInfo", new c.ew());
+      whv.put("startMonitoringBeacons", new c.ka());
+      whv.put("stopMonitoringBeacons", new c.kh());
+      whv.put("nfcCheckState", new c.et());
+      whv.put("videoProxyInit", new c.lj());
+      whv.put("videoProxyStartPlay", new c.lm());
+      whv.put("videoProxyStopPlay", new c.ln());
+      whv.put("videoProxySetPlayerState", new c.lk());
+      whv.put("videoProxySetRemainTime", new c.ll());
+      whv.put("videoProxyPreload", new c.lp());
+      whv.put("getWebPayCheckoutCounterRequst", new c.ek());
+      whv.put("addCustomMenuItems", new c.i());
+      whv.put("operateGameCenterMsg", new go());
+      whv.put("openEnterpriseChat", new c.fk());
+      whv.put("enterEnterpriseChat", new c.bj());
+      whv.put("openEnterpriseContact", new fl());
+      whv.put("selectEnterpriseContact", new c.ie());
+      whv.put("getEnterpriseChat", new c.bz());
+      whv.put("reportIDKey", new c.hp());
+      whv.put("quicklyAddBrandContact", new c.hg());
+      whv.put("consumedShareCard", new c.au());
+      whv.put("cache", new c.li());
+      whv.put("publicCache", new c.lo());
+      whv.put("kvReport", new c.ee());
+      whv.put("realtimeReport", new c.hh());
+      whv.put("openUrlWithExtraWebview", new c.gf());
+      whv.put("setFreeWifiOwner", new c.ix());
+      whv.put("selectSingleContact", new c.ig());
+      whv.put("sendAppMessageToSpecifiedContact", new c.ih());
+      whv.put("setLocalData", new c.iz());
+      whv.put("getLocalData", new c.cg());
+      whv.put("clearLocalData", new c.aj());
+      whv.put("showKeyboard", new c.jp());
+      whv.put("showSmileyPanel", new c.jx());
+      whv.put("disableBounceScroll", new c.ay());
+      whv.put("clearBounceBackground", new c.ah());
+      whv.put("setNavigationBarButtons", new ja());
+      whv.put("enableFullScreen", new bh());
+      whv.put("showNavigationBarLoading", new c.jr());
+      whv.put("hideNavigationBarLoading", new c.dp());
+      whv.put("enablePullDownRefresh", new c.bi());
+      whv.put("startPullDownRefresh", new c.kb());
+      whv.put("stopPullDownRefresh", new c.ki());
+      whv.put("disablePullDownRefresh", new c.az());
+      whv.put("setPageTitle", new c.jd());
+      whv.put("setStatusBarStyle", new ji());
+      whv.put("deleteAccountSuccess", new c.aw());
+      whv.put("chooseVideo", new c.ag());
+      whv.put("uploadVideo", new c.lc());
+      whv.put("openMapNavigateMenu", new c.ft());
+      whv.put("setNavigationBarColor", new jb());
+      whv.put("getWCPayRealnameVerify", new c.dd());
+      whv.put("openDesignerEmojiView", new fe());
+      whv.put("openDesignerProfile", new c.fg());
+      whv.put("openEmoticonTopicList", new c.fj());
+      whv.put("openDesignerEmojiViewLocal", new c.ff());
+      whv.put("openDesignerProfileLocal", new c.fh());
+      whv.put("openEmotionDetailViewLocal", new c.d());
+      whv.put("openNewPage", new fv());
+      whv.put("getSearchEmotionData", new c.ct());
+      whv.put("openEmotionUrl", new bg());
+      whv.put("WNNativeCallbackOnClick", new c.lv());
+      whv.put("WNNativeCallbackOnLongClick", new c.lw());
+      whv.put("WNNativeCallbackOnCaretChange", new c.lu());
+      whv.put("WNNativeCallbackInitData", new c.lt());
+      whv.put("WNNativeAsyncCallback", new ls());
+      whv.put("WNNativeCallbackOnBecomeEditing", new c.mb());
+      whv.put("WNNativeCallbackOnBecomeEdited", new mc());
+      whv.put("changePayActivityView", new w());
+      whv.put("selectWalletCurrency", new c.kn());
+      whv.put("scanLicence", new c.hz());
+      whv.put("operateMusicPlayer", new c.b());
+      whv.put("getMusicPlayerState", new c.a());
+      whv.put("clearWebviewCache", new c.ak());
+      whv.put("requireSoterBiometricAuthentication", new c.jy());
+      whv.put("getSupportSoter", new c.jz());
+      whv.put("unbindBankCard", new c.kr());
+      whv.put("setBounceBackground", new c.it());
+      whv.put("sendEnterpriseChat", new c.il());
+      whv.put("doExposePreparation", new c.bd());
+      whv.put("getMsgProofItems", new cj());
+      whv.put("openSecurityView", new c.gc());
+      whv.put("startVoipCall", new c.kg());
+      whv.put("chooseInvoiceTitle", new c.ae());
+      whv.put("getOpenDeviceId", new cl());
+      whv.put("getRouteUrl", new c.cp());
+      whv.put("idCardRealnameVerify", new c.ds());
+      whv.put("uploadIdCardSuccess", new c.ml());
+      whv.put("showDatePickerView", new c.jo());
+      whv.put("openLuckyMoneyDetailView", new c.fr());
+      whv.put("resendRemittanceMsg", new c.hx());
+      whv.put("getGameCommInfo", new c.ca());
+      whv.put("openGameRegion", new c.fo());
+      whv.put("chooseIdCard", new c.ab());
+      whv.put("getLocalImgData", new c.c());
+      whv.put("openWeApp", new gi());
+      whv.put("recordVideo", new c.hi());
+      whv.put("previewVideo", new c.gx());
+      whv.put("uploadEncryptMediaFile", new c.kz());
+      whv.put("chooseMedia", new af());
+      whv.put("requestWxFacePictureVerify", new c.bk());
+      whv.put("openCustomWebview", new fd());
+      whv.put("forceUpdateWxaAttr", new c.bn());
+      whv.put("openLuckyMoneyHistory", new c.fs());
+      whv.put("menuitem:gameSendDesktop", new c.im());
+      whv.put("getWePkgAuthResult", new c.df());
+      whv.put("getLocalWePkgInfo", new c.ch());
+      whv.put("openGameWebView", new c.fq());
+      whv.put("reportGameWeb", new c.ho());
+      whv.put("launchApplication", new c.eh());
+      whv.put("showSearchOfBizHistory", new c.jv());
+      whv.put("login", new c.em());
+      whv.put("authorize", new o());
+      whv.put("requestWxFacePictureVerifyUnionVideo", new c.bl());
+      whv.put("checkIsSupportFaceDetect", new x());
+      whv.put("operateBackgroundAudio", new c.gn());
+      whv.put("setBackgroundAudioState", new c.is());
+      whv.put("getBackgroundAudioState", new c.bs());
+      whv.put("addDownloadTaskStraight", new c.k());
+      whv.put("setScreenOrientation", new c.je());
+      whv.put("addToEmoticon", new c.m());
+      whv.put("shareEmoticon", new jj());
+      whv.put("makePhoneCall", new c.en());
+      whv.put("openADCanvas", new fc());
+      whv.put("openSearchCanvas", new c.fz());
+      whv.put("opVoteAdData", new c.gq());
+      whv.put("requestWxFaceRegisterInternal", new hu());
+      whv.put("requestWxFaceVerifyInternal", new hv());
+      whv.put("launchMiniProgram", new c.ej());
+      whv.put("reportMiniProgramPageData", new c.hq());
+      whv.put("selectContact", new c.id());
+      whv.put("openSearchWAWidgetLogView", new c.ga());
+      whv.put("reloadSearchWAWidgetData", new c.hj());
+      whv.put("gotoEmoticonPad", new c.dj());
+      whv.put("querySimilarEmotion", new c.hf());
+      whv.put("closeWindowAndGoNext", new c.an());
+      whv.put("requestWxVoicePrintVerifyInternal", new c.hw());
+      whv.put("openBizChat", new c.fb());
+      whv.put("handleWCPayWalletBuffer", new c.dm());
+      whv.put("tapSearchWAWidgetView", new c.ko());
+      whv.put("getMatchContactList", new c.ci());
+      whv.put("openSearchWebView", new c.gb());
+      whv.put("openWXSearchPage", new c.gm());
+      whv.put("viewTypeChange", new c.lg());
+      whv.put("invokeMiniProgramAPI", new dy());
+      whv.put("openGameUrlWithExtraWebView", new c.fp());
+      whv.put("setGameData", new c.iv());
+      whv.put("getGameData", new c.bw());
+      whv.put("clearGameData", new c.ai());
+      whv.put("openECard", new c.fi());
+      whv.put("reportGamePageTime", new c.hn());
+      whv.put("setWCPayPassword", new c.ir());
+      whv.put("openWCPayCardList", new c.fa());
+      whv.put("bindEmail", new c.s());
+      whv.put("openOfflinePayView", new c.fw());
+      whv.put("bindEmail", new c.s());
+      whv.put("doGoToRecVideoList", new c.co());
+      whv.put("jumpWSRecVideoList", new c.md());
+      whv.put("openWebSearchOutLinkItem", new c.mk());
+      whv.put("recordHistory", new c.bq());
       localObject = new LinkedList();
-      ((List)localObject).add(new gg());
-      ((List)localObject).add(new c.gf());
-      ((List)localObject).add(new c.ho());
+      ((List)localObject).add(new c.gv());
+      ((List)localObject).add(new c.gu());
+      ((List)localObject).add(new c.ij());
+      ((List)localObject).add(new c.dk());
+      ((List)localObject).add(new c.dl());
+      ((List)localObject).add(new c.ha());
+      ((List)localObject).add(new c.gz());
+      ((List)localObject).add(new bp());
+      ((List)localObject).add(new c.gh());
+      ((List)localObject).add(new c.aq());
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         c.g localg = (c.g)((Iterator)localObject).next();
-        soP.put(localg.getName(), localg);
+        whv.put(localg.getName(), localg);
       }
-      soP.put("getSystemInfo", new c.ct());
-      soP.put("serviceClick", new c.hv());
-      soP.put("openRealnameAuth", new c.lc());
-      soP.put("sendSingleAppMessage", new hu());
-      soP.put("wcPrivacyPolicyResult", new c.kj());
-      soP.put("currentMpInfo", new c.aq());
-      soP.put("updateAppMessageShareData", new c.jx());
-      soP.put("updateTimelineShareData", new c.jz());
-      soP.put("getCCData", new c.lb());
-      soP.put("calRqt", new c.la());
-      soP.put("faceVerifyForPay", new c.bh());
-      soP.put("request", new gy());
-      soP.put("notifyPageInfo", new el());
-      soP.put("updatePageAuth", new c.jv());
-      soP.put("jumpDownloaderApp", new dm());
+      whv.put("getSystemInfo", new c.da());
+      whv.put("serviceClick", new c.iq());
+      whv.put("openRealnameAuth", new c.ma());
+      whv.put("sendSingleAppMessage", new c.ip());
+      whv.put("wcPrivacyPolicyResult", new c.lh());
+      whv.put("currentMpInfo", new c.av());
+      whv.put("updateAppMessageShareData", new c.ku());
+      whv.put("updateTimelineShareData", new c.kw());
+      whv.put("getCCData", new lz());
+      whv.put("calRqt", new c.ly());
+      whv.put("faceVerifyForPay", new c.bm());
+      whv.put("request", new c.ht());
+      whv.put("notifyPageInfo", new c.ez());
+      whv.put("updatePageAuth", new c.ks());
+      whv.put("jumpDownloaderWidget", new c.dz());
+      whv.put("batchUpdateWepkg", new c.q());
+      whv.put("addGameDownloadTask", new c.l());
+      whv.put("internelWxFaceVerify", new dx());
+      whv.put("getDownloadWidgetTaskInfos", new by());
+      whv.put("chooseHaowanMedia", new c.aa());
+      whv.put("queryHaowanPublish", new c.he());
+      whv.put("publishHaowanEdition", new c.hc());
+      whv.put("cancelHaowanPublish", new c.u());
+      whv.put("launchGameVideoEditor", new ei());
     }
-    return (c.g)soP.get(paramString);
+    paramString = (c.g)whv.get(paramString);
+    AppMethodBeat.o(79963);
+    return paramString;
   }
   
-  public static final class af
+  static final class af
     extends c.g
   {
-    public af()
+    af()
     {
-      super("clearLocalData", 181, false);
+      super("chooseMedia", 254, true);
     }
   }
   
@@ -368,7 +416,7 @@ public final class c
   {
     public al()
     {
-      super("configWXDeviceWiFi", 126, true);
+      super("", 10000, false);
     }
   }
   
@@ -377,16 +425,34 @@ public final class c
   {
     public ao()
     {
-      super("connectWXDevice", 123, true);
+      super("closeWXDeviceLib", 118, false);
     }
   }
   
-  private static final class bg
+  public static final class bf
     extends c.g
   {
-    bg()
+    public bf()
     {
-      super("requestWxFacePictureVerifyUnionVideo", 264, true);
+      super("edit_address", 29, true);
+    }
+  }
+  
+  public static final class bg
+    extends c.g
+  {
+    public bg()
+    {
+      super("openEmotionUrl", 20000, false);
+    }
+  }
+  
+  public static final class bh
+    extends c.g
+  {
+    public bh()
+    {
+      super("enableFullScreen", 196, false);
     }
   }
   
@@ -395,25 +461,25 @@ public final class c
   {
     public bo()
     {
-      super("get_brand_wcpay_request", 28, true);
+      super("", 10000, false);
     }
   }
   
-  public static final class br
+  static final class bp
     extends c.g
   {
-    public br()
+    bp()
     {
-      super("mmsf0001", -2, false);
+      super("openBusinessView", 338, true);
     }
   }
   
-  public static final class by
+  static final class by
     extends c.g
   {
-    public by()
+    by()
     {
-      super("get_install_state", 25, false);
+      super("getDownloadWidgetTaskInfos", 340, false);
     }
   }
   
@@ -422,7 +488,7 @@ public final class c
   {
     public cj()
     {
-      super("", 10000, false);
+      super("getMsgProofItems", 226, true);
     }
   }
   
@@ -431,79 +497,61 @@ public final class c
   {
     public cl()
     {
-      super("getSearchDisplayNameList", 10000, false);
+      super("getOpenDeviceId", 227, false);
     }
   }
   
-  public static final class cs
+  public static final class dv
     extends c.g
   {
-    public cs()
+    public dv()
     {
-      super("get_send_c2c_message_request", 83, true);
-    }
-  }
-  
-  public static final class d
-    extends c.g
-  {
-    public d()
-    {
-      super("openEmotionDetailViewLocal", 20000, false);
-    }
-  }
-  
-  public static final class df
-    extends c.g
-  {
-    public df()
-    {
-      super("", 14, false);
-    }
-  }
-  
-  private static final class dm
-    extends c.g
-  {
-    dm()
-    {
-      super("jumpDownloaderApp", -2, true);
-    }
-  }
-  
-  private static final class dv
-    extends c.g
-  {
-    dv()
-    {
-      super("launchMiniProgram", 277, true);
+      super("", 10000, false);
     }
   }
   
   public static final class dx
     extends c.g
   {
-    public dx()
+    dx()
+    {
+      super("internelWxFaceVerify", 325, true);
+    }
+  }
+  
+  static final class dy
+    extends c.g
+  {
+    dy()
+    {
+      super("invokeMiniProgramAPI", 295, false);
+    }
+  }
+  
+  public static final class ec
+    extends c.g
+  {
+    public ec()
+    {
+      super("jump_wcmall", 51, true);
+    }
+  }
+  
+  static final class ei
+    extends c.g
+  {
+    ei()
+    {
+      super("launchGameVideoEditor", 350, true);
+    }
+  }
+  
+  public static final class el
+    extends c.g
+  {
+    public el()
     {
       super("", 0, false);
-    }
-  }
-  
-  public static final class ei
-    extends c.g
-  {
-    public ei()
-    {
-      super("nfcGetInfo", 148, false);
-    }
-  }
-  
-  private static final class el
-    extends c.g
-  {
-    el()
-    {
-      super("notifyPageInfo", -2, false);
     }
   }
   
@@ -516,30 +564,48 @@ public final class c
     }
   }
   
-  public static final class fd
+  static final class fc
     extends c.g
   {
-    public fd()
+    fc()
     {
-      super("openLuckyMoneyDetailView", 245, false);
+      super("openADCanvas", 283, true);
     }
   }
   
-  private static final class fl
+  static final class fd
     extends c.g
   {
-    fl()
+    fd()
     {
-      super("openSearchCanvas", 283, true);
+      super("openCustomWebview", 256, false);
     }
   }
   
-  public static final class fo
+  public static final class fe
     extends c.g
   {
-    public fo()
+    public fe()
     {
-      super("openSecurityView", 229, false);
+      super("openDesignerEmojiView", 185, true);
+    }
+  }
+  
+  public static final class fl
+    extends c.g
+  {
+    public fl()
+    {
+      super("openEnterpriseContact", 183, true);
+    }
+  }
+  
+  public static final class fm
+    extends c.g
+  {
+    public fm()
+    {
+      super("openGameCenter", 175, true);
     }
   }
   
@@ -548,79 +614,52 @@ public final class c
   {
     public fv()
     {
-      super("get_wcpay_create_credit_card_request", 65, true);
+      super("openNewPage", 20000, false);
     }
   }
   
-  private static final class gg
+  public static final class gg
     extends c.g
   {
-    gg()
+    public gg()
     {
-      super("preloadMiniProgramEnv", 302, false);
+      super("open_wcpay_specific_view", 76, true);
     }
   }
   
-  public static final class gi
+  static final class gi
     extends c.g
   {
-    public gi()
+    gi()
     {
-      super("pre_verify_jsapi", -3, false);
+      super("openWeApp", 250, false);
     }
   }
   
-  private static final class gy
+  public static final class go
     extends c.g
   {
-    gy()
+    public go()
     {
-      super("request", 331, false);
+      super("operateGameCenterMsg", 174, false);
     }
   }
   
-  public static final class hc
-    extends c.g
-  {
-    public hc()
-    {
-      super("resendRemittanceMsg", 246, true);
-    }
-  }
-  
-  public static final class hj
-    extends c.g
-  {
-    public hj()
-    {
-      super("selectEnterpriseContact", 286, true);
-    }
-  }
-  
-  public static final class hl
-    extends c.g
-  {
-    public hl()
-    {
-      super("selectSingleContact", 167, true);
-    }
-  }
-  
-  private static final class hu
+  static final class hu
     extends c.g
   {
     hu()
     {
-      super("sendSingleAppMessage", 316, true);
+      super("requestWxFaceRegisterInternal", 272, true);
     }
   }
   
-  public static final class if
+  static final class hv
     extends c.g
   {
-    public if()
+    hv()
     {
-      super("setNavigationBarButtons", 195, false);
+      super("requestWxFaceVerifyInternal", 273, true);
     }
   }
   
@@ -629,7 +668,7 @@ public final class c
   {
     public ii()
     {
-      super("setPageTitle", 113, false);
+      super("send_app_msg", 6, true);
     }
   }
   
@@ -638,16 +677,34 @@ public final class c
   {
     public ja()
     {
-      super("showSmileyPanel", 238, false);
+      super("setNavigationBarButtons", 195, false);
     }
   }
   
-  public static final class jl
+  public static final class jb
     extends c.g
   {
-    public jl()
+    public jb()
     {
-      super("stopPullDownRefresh", 200, false);
+      super("setNavigationBarColor", 182, false);
+    }
+  }
+  
+  public static final class ji
+    extends c.g
+  {
+    public ji()
+    {
+      super("setStatusBarStyle", 206, false);
+    }
+  }
+  
+  static final class jj
+    extends c.g
+  {
+    jj()
+    {
+      super("shareEmoticon", 275, true);
     }
   }
   
@@ -656,16 +713,7 @@ public final class c
   {
     public js()
     {
-      super("share_timeline", 4, true);
-    }
-  }
-  
-  public static final class ju
-    extends c.g
-  {
-    public ju()
-    {
-      super("unbindBankCard", 216, true);
+      super("", 14, false);
     }
   }
   
@@ -674,7 +722,7 @@ public final class c
   {
     public kd()
     {
-      super("uploadMediaFile", 237, true);
+      super("startScanWXDevice", 121, true);
     }
   }
   
@@ -683,16 +731,16 @@ public final class c
   {
     public kf()
     {
-      super("uploadVoice", 102, true);
+      super("startTempSession", 128, true);
     }
   }
   
-  public static final class kv
+  public static final class kl
     extends c.g
   {
-    public kv()
+    public kl()
     {
-      super("WNNativeCallbackInitData", 10006, false);
+      super("stopVoice", 101, false);
     }
   }
   
@@ -701,25 +749,52 @@ public final class c
   {
     public kx()
     {
-      super("WNNativeCallbackOnClick", 10006, false);
+      super("", 10000, false);
     }
   }
   
-  public static final class li
+  public static final class ls
     extends c.g
   {
-    public li()
+    public ls()
     {
-      super("", 94, false);
+      super("WNNativeAsyncCallback", 10006, false);
     }
   }
   
-  public static final class m
+  static final class lz
     extends c.g
   {
-    public m()
+    lz()
     {
-      super("ad_data_report", 221, false);
+      super("getCCData", 312, false);
+    }
+  }
+  
+  public static final class mc
+    extends c.g
+  {
+    public mc()
+    {
+      super("WNNativeCallbackOnBecomeEdited", 10006, false);
+    }
+  }
+  
+  public static final class mf
+    extends c.g
+  {
+    public mf()
+    {
+      super("", 89, false);
+    }
+  }
+  
+  static final class o
+    extends c.g
+  {
+    o()
+    {
+      super("authorize", 232, true);
     }
   }
   
@@ -728,7 +803,25 @@ public final class c
   {
     public p()
     {
-      super("batchViewCard", 111, true);
+      super("batch_add_card", 82, true);
+    }
+  }
+  
+  public static final class w
+    extends c.g
+  {
+    public w()
+    {
+      super("change_pay_activity_view", 207, true);
+    }
+  }
+  
+  static final class x
+    extends c.g
+  {
+    x()
+    {
+      super("checkIsSupportFaceDetect", 265, false);
     }
   }
   
@@ -737,13 +830,13 @@ public final class c
   {
     public y()
     {
-      super("chooseImage", 104, true);
+      super("checkJsApi", 84, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.c
  * JD-Core Version:    0.7.0.1
  */

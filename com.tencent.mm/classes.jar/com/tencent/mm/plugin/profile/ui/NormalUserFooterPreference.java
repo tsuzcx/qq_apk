@@ -4,353 +4,708 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.util.AttributeSet;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.h.a.ru;
-import com.tencent.mm.h.a.ru.b;
-import com.tencent.mm.h.a.tc;
-import com.tencent.mm.h.a.tc.a;
-import com.tencent.mm.h.a.td;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.tl;
+import com.tencent.mm.g.a.tl.b;
+import com.tencent.mm.g.a.uw;
+import com.tencent.mm.g.a.uw.a;
+import com.tencent.mm.g.a.ux;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
+import com.tencent.mm.network.ac;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
+import com.tencent.mm.ui.e.b;
+import com.tencent.mm.ui.widget.b.d;
+import java.util.Iterator;
+import java.util.List;
 import junit.framework.Assert;
 
 public class NormalUserFooterPreference
   extends Preference
-  implements j.a
+  implements k.a
 {
-  private MMActivity bER;
-  public ProgressDialog dnm = null;
-  private ad dnp;
-  protected k<NormalUserFooterPreference.e, String> ebu = new NormalUserFooterPreference.1(this);
-  private int fhj;
-  private String hST = null;
-  private boolean jAt;
-  private String kzG = "";
-  private Button lXO;
-  private boolean mVI;
-  private int mWR = 0;
-  private long mXV = 0L;
-  private int mXi;
-  private String mXq = "";
-  private boolean mXw = false;
-  private boolean mYA = false;
-  public boolean mYB = false;
-  private boolean mYf = false;
-  private boolean mYg;
-  private boolean mYh;
-  private boolean mYi = false;
-  private boolean mYj = false;
-  private NormalUserFooterPreference.a mYk;
-  private View mYl;
-  private Button mYm;
-  private Button mYn;
-  private Button mYo;
-  private View mYp;
-  private Button mYq;
-  private TextView mYr;
-  private View mYs;
-  private Button mYt;
-  private Button mYu;
-  private Button mYv;
-  private Button mYw;
-  private Button mYx;
-  private Button mYy;
-  private TextView mYz;
+  private MMActivity cmc;
+  private ad contact;
+  public ProgressDialog eeN;
+  protected l<NormalUserFooterPreference.e, String> frK;
+  private int gyR;
+  private String jMG;
+  private boolean lJS;
+  private String mVw;
+  private Button oxn;
+  private long pAI;
+  private int pAe;
+  private String pAm;
+  private boolean pAr;
+  private boolean pBI;
+  private boolean pBJ;
+  private boolean pBK;
+  private boolean pBL;
+  private NormalUserFooterPreference.a pBM;
+  private View pBN;
+  private Button pBO;
+  private Button pBP;
+  private Button pBQ;
+  private View pBR;
+  private Button pBS;
+  private TextView pBT;
+  private View pBU;
+  private Button pBV;
+  private Button pBW;
+  private Button pBX;
+  private Button pBY;
+  private Button pBZ;
+  private Button pCa;
+  private TextView pCb;
+  private boolean pCc;
+  public boolean pCd;
+  private boolean pxJ;
+  private boolean pyp;
+  private int pzM;
   
   public NormalUserFooterPreference(Context paramContext)
   {
     super(paramContext);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(23733);
+    this.pxJ = false;
+    this.pAI = 0L;
+    this.pAm = "";
+    this.mVw = "";
+    this.pAr = false;
+    this.pBK = false;
+    this.pBL = false;
+    this.pCc = false;
+    this.pzM = 0;
+    this.eeN = null;
+    this.pCd = false;
+    this.jMG = null;
+    this.frK = new NormalUserFooterPreference.1(this);
+    this.cmc = ((MMActivity)paramContext);
     init();
+    AppMethodBeat.o(23733);
   }
   
   public NormalUserFooterPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(23734);
+    this.pxJ = false;
+    this.pAI = 0L;
+    this.pAm = "";
+    this.mVw = "";
+    this.pAr = false;
+    this.pBK = false;
+    this.pBL = false;
+    this.pCc = false;
+    this.pzM = 0;
+    this.eeN = null;
+    this.pCd = false;
+    this.jMG = null;
+    this.frK = new NormalUserFooterPreference.1(this);
+    this.cmc = ((MMActivity)paramContext);
     init();
+    AppMethodBeat.o(23734);
   }
   
   public NormalUserFooterPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(23735);
+    this.pxJ = false;
+    this.pAI = 0L;
+    this.pAm = "";
+    this.mVw = "";
+    this.pAr = false;
+    this.pBK = false;
+    this.pBL = false;
+    this.pCc = false;
+    this.pzM = 0;
+    this.eeN = null;
+    this.pCd = false;
+    this.jMG = null;
+    this.frK = new NormalUserFooterPreference.1(this);
+    this.cmc = ((MMActivity)paramContext);
     init();
+    AppMethodBeat.o(23735);
   }
   
   private void init()
   {
-    this.jAt = false;
-    this.mYk = null;
+    this.lJS = false;
+    this.pBM = null;
   }
   
   private void initView()
   {
-    if ((!this.jAt) || (this.dnp == null))
+    AppMethodBeat.i(23736);
+    if ((!this.lJS) || (this.contact == null))
     {
-      y.w("MicroMsg.NormalUserFooterPreference", "iniView : bindView = " + this.jAt + " contact = " + this.dnp);
-      if (this.mYk == null) {}
-    }
-    try
-    {
-      this.mYk.bsK();
+      ab.w("MicroMsg.NormalUserFooterPreference", "iniView : bindView = " + this.lJS + " contact = " + this.contact);
+      if (this.pBM != null) {
+        try
+        {
+          this.pBM.ccz();
+          AppMethodBeat.o(23736);
+          return;
+        }
+        catch (Throwable localThrowable) {}
+      }
+      AppMethodBeat.o(23736);
       return;
     }
-    catch (Throwable localThrowable) {}
-    if (this.mYk != null) {
-      this.mYk.Fj();
+    if (this.pBM != null) {
+      this.pBM.Yj();
     }
-    bsF();
-    return;
+    ccu();
+    AppMethodBeat.o(23736);
   }
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
-    if (bk.pm(paramString).length() <= 0) {}
-    while ((this.dnp == null) || ((!paramString.equals(this.dnp.field_username)) && (!paramString.equals(this.dnp.field_encryptUsername)))) {
+    AppMethodBeat.i(23741);
+    if (bo.nullAsNil(paramString).length() <= 0)
+    {
+      AppMethodBeat.o(23741);
       return;
     }
-    au.Hx();
-    this.dnp = c.Fw().abl(this.dnp.field_username);
-    ai.d(new Runnable()
+    if ((this.contact != null) && ((paramString.equals(this.contact.field_username)) || (paramString.equals(this.contact.field_encryptUsername))))
     {
-      public final void run()
+      aw.aaz();
+      this.contact = com.tencent.mm.model.c.YA().arw(this.contact.field_username);
+      al.d(new Runnable()
       {
-        NormalUserFooterPreference.this.bsF();
-      }
-    });
+        public final void run()
+        {
+          AppMethodBeat.i(23671);
+          NormalUserFooterPreference.this.ccu();
+          AppMethodBeat.o(23671);
+        }
+      });
+    }
+    AppMethodBeat.o(23741);
   }
   
   public final boolean a(ad paramad, String paramString1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt1, int paramInt2, boolean paramBoolean4, boolean paramBoolean5, long paramLong, String paramString2)
   {
-    awZ();
+    AppMethodBeat.i(23738);
+    bkb();
     if (paramad != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (bk.pm(paramad.field_username).length() <= 0) {
-        break label62;
+      if (bo.nullAsNil(paramad.field_username).length() <= 0) {
+        break label74;
       }
     }
-    label62:
+    label74:
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!ad.aaZ(q.Gj()).equals(paramad.field_username)) {
-        break label68;
+      if (!ad.ark(r.Zn()).equals(paramad.field_username)) {
+        break label80;
       }
+      AppMethodBeat.o(23738);
       return false;
       bool = false;
       break;
     }
-    label68:
-    this.dnp = paramad;
-    this.kzG = paramString1;
-    this.mVI = paramBoolean1;
-    this.fhj = paramInt1;
-    this.mXi = paramInt2;
-    this.mYh = bk.a(Boolean.valueOf(com.tencent.mm.model.s.hi(paramad.field_username)), false);
-    this.mYf = paramBoolean4;
-    this.mYg = paramBoolean5;
-    this.mXV = paramLong;
-    this.mXq = paramString2;
-    this.mYB = false;
+    label80:
+    this.contact = paramad;
+    this.mVw = paramString1;
+    this.pyp = paramBoolean1;
+    this.gyR = paramInt1;
+    this.pAe = paramInt2;
+    this.pBJ = bo.a(Boolean.valueOf(t.nR(paramad.field_username)), false);
+    this.pxJ = paramBoolean4;
+    this.pBI = paramBoolean5;
+    this.pAI = paramLong;
+    this.pAm = paramString2;
+    this.pCd = false;
     if (paramad.field_deleteFlag == 1)
     {
       paramBoolean1 = true;
-      this.mXw = paramBoolean1;
-      this.mYA = this.bER.getIntent().getBooleanExtra("Contact_AlwaysShowSnsPreBtn", false);
-      this.mWR = this.bER.getIntent().getIntExtra("add_more_friend_search_scene", 0);
-      this.mYi = this.bER.getIntent().getBooleanExtra("Contact_IsLbsChattingProfile", false);
-      this.mYj = this.bER.getIntent().getBooleanExtra("Contact_IsLbsGotoChatting", false);
-      this.hST = this.bER.getIntent().getStringExtra("lbs_ticket");
-      if (!q.gS(paramad.field_username))
+      this.pAr = paramBoolean1;
+      this.pCc = this.cmc.getIntent().getBooleanExtra("Contact_AlwaysShowSnsPreBtn", false);
+      this.pzM = this.cmc.getIntent().getIntExtra("add_more_friend_search_scene", 0);
+      this.pBK = this.cmc.getIntent().getBooleanExtra("Contact_IsLbsChattingProfile", false);
+      this.pBL = this.cmc.getIntent().getBooleanExtra("Contact_IsLbsGotoChatting", false);
+      this.jMG = this.cmc.getIntent().getStringExtra("lbs_ticket");
+      if (!r.nB(paramad.field_username))
       {
-        au.Hx();
-        if (!c.FE().has(paramad.field_username)) {
-          break label303;
+        aw.aaz();
+        if (!com.tencent.mm.model.c.YI().has(paramad.field_username)) {
+          break label321;
         }
       }
-      this.mYk = new NormalUserFooterPreference.c(this);
-      this.mYB = true;
+      this.pBM = new NormalUserFooterPreference.c(this);
+      this.pCd = true;
     }
     for (;;)
     {
       initView();
+      AppMethodBeat.o(23738);
       return true;
       paramBoolean1 = false;
       break;
-      label303:
-      if (ad.aaR(paramad.field_username))
+      label321:
+      if (ad.arc(paramad.field_username))
       {
-        this.mYk = new NormalUserFooterPreference.h(this);
+        this.pBM = new h();
       }
-      else if (com.tencent.mm.model.s.hx(paramad.field_username))
+      else if (t.og(paramad.field_username))
       {
-        this.mYk = new d();
+        this.pBM = new NormalUserFooterPreference.d(this);
       }
-      else if (com.tencent.mm.model.s.hi(paramad.field_username))
+      else if (t.nR(paramad.field_username))
       {
-        this.mYk = new NormalUserFooterPreference.g(this);
+        this.pBM = new NormalUserFooterPreference.g(this);
       }
-      else if (ad.aaS(paramad.field_username))
+      else if (ad.ard(paramad.field_username))
       {
-        this.mYk = new NormalUserFooterPreference.f(this);
+        this.pBM = new NormalUserFooterPreference.f(this);
       }
-      else if ((com.tencent.mm.n.a.gR(paramad.field_type)) && (!ad.hd(paramad.field_username)))
+      else if ((com.tencent.mm.n.a.je(paramad.field_type)) && (!ad.nM(paramad.field_username)))
       {
-        this.mYk = new NormalUserFooterPreference.c(this);
-        this.mYB = true;
+        this.pBM = new NormalUserFooterPreference.c(this);
+        this.pCd = true;
       }
       else if (paramBoolean2)
       {
-        this.mYk = new j();
-        this.mYB = true;
+        this.pBM = new j();
+        this.pCd = true;
       }
-      else if ((paramBoolean3) || (ad.hd(paramad.field_username)))
+      else if ((paramBoolean3) || (ad.nM(paramad.field_username)))
       {
-        this.mYk = new NormalUserFooterPreference.b(this);
+        this.pBM = new NormalUserFooterPreference.b(this);
       }
       else
       {
-        this.mYk = new NormalUserFooterPreference.c(this);
-        this.mYB = true;
+        this.pBM = new NormalUserFooterPreference.c(this);
+        this.pCd = true;
       }
     }
   }
   
-  public final boolean awZ()
+  public final boolean bkb()
   {
-    if (this.mYk != null) {
-      this.mYk.onDetach();
+    AppMethodBeat.i(23740);
+    if (this.pBM != null) {
+      this.pBM.onDetach();
     }
-    this.ebu.removeAll();
-    if (this.dnm != null)
+    this.frK.removeAll();
+    if (this.eeN != null)
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
+    AppMethodBeat.o(23740);
     return true;
   }
   
-  public final boolean bsF()
+  public final boolean ccu()
   {
-    if ((this.mYA) && (com.tencent.mm.n.a.gR(this.dnp.field_type)))
+    AppMethodBeat.i(23739);
+    if ((this.pCc) && (com.tencent.mm.n.a.je(this.contact.field_type)))
     {
-      this.mYy.setVisibility(0);
+      this.pCa.setVisibility(0);
+      AppMethodBeat.o(23739);
       return true;
     }
-    this.mYy.setVisibility(8);
+    this.pCa.setVisibility(8);
+    AppMethodBeat.o(23739);
     return false;
   }
   
-  public final void bsG()
+  public final void ccv()
   {
-    boolean bool = com.tencent.mm.pluginsdk.permission.a.a(this.bER, "android.permission.RECORD_AUDIO", 82, "", "");
-    y.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this.bER });
-    if (!bool) {
+    AppMethodBeat.i(23742);
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this.cmc, "android.permission.RECORD_AUDIO", 82, "", "");
+    ab.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this.cmc });
+    if (!bool)
+    {
+      AppMethodBeat.o(23742);
       return;
     }
-    td localtd = new td();
-    localtd.ccJ.bNb = 5;
-    localtd.ccJ.talker = this.dnp.field_username;
-    localtd.ccJ.context = this.bER;
-    localtd.ccJ.ccE = 4;
-    com.tencent.mm.sdk.b.a.udP.m(localtd);
+    ux localux = new ux();
+    localux.cLs.cut = 5;
+    localux.cLs.talker = this.contact.field_username;
+    localux.cLs.context = this.cmc;
+    localux.cLs.cLm = 4;
+    com.tencent.mm.sdk.b.a.ymk.l(localux);
+    AppMethodBeat.o(23742);
   }
   
-  public final void bsH()
+  public final void ccw()
   {
-    boolean bool = com.tencent.mm.pluginsdk.permission.a.a(this.bER, "android.permission.CAMERA", 19, "", "");
-    y.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this.bER });
-    if (!bool) {}
-    do
+    AppMethodBeat.i(23743);
+    boolean bool = com.tencent.mm.pluginsdk.permission.b.a(this.cmc, "android.permission.CAMERA", 19, "", "");
+    ab.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this.cmc });
+    if (!bool)
     {
+      AppMethodBeat.o(23743);
       return;
-      bool = com.tencent.mm.pluginsdk.permission.a.a(this.bER, "android.permission.RECORD_AUDIO", 19, "", "");
-      y.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this.bER });
-    } while (!bool);
-    td localtd = new td();
-    localtd.ccJ.bNb = 5;
-    localtd.ccJ.talker = this.dnp.field_username;
-    localtd.ccJ.context = this.bER;
-    localtd.ccJ.ccE = 2;
-    com.tencent.mm.sdk.b.a.udP.m(localtd);
+    }
+    bool = com.tencent.mm.pluginsdk.permission.b.a(this.cmc, "android.permission.RECORD_AUDIO", 19, "", "");
+    ab.i("MicroMsg.NormalUserFooterPreference", "summerper checkPermission checkmicrophone[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this.cmc });
+    if (!bool)
+    {
+      AppMethodBeat.o(23743);
+      return;
+    }
+    ux localux = new ux();
+    localux.cLs.cut = 5;
+    localux.cLs.talker = this.contact.field_username;
+    localux.cLs.context = this.cmc;
+    localux.cLs.cLm = 2;
+    com.tencent.mm.sdk.b.a.ymk.l(localux);
+    AppMethodBeat.o(23743);
   }
   
   public final void onBindView(View paramView)
   {
-    y.d("MicroMsg.NormalUserFooterPreference", "on bindView " + paramView.toString());
-    this.mYl = paramView.findViewById(R.h.contact_info_passive_verify);
-    this.mYm = ((Button)paramView.findViewById(R.h.contact_info_verify_accept));
-    this.mYn = ((Button)paramView.findViewById(R.h.contact_info_delete_contact));
-    this.mYq = ((Button)paramView.findViewById(R.h.contact_info_verify_expose_btn));
-    this.mYr = ((TextView)paramView.findViewById(R.h.contact_info_ww_tv));
-    this.mYp = paramView.findViewById(R.h.contact_info_verify_mid);
-    this.mYo = ((Button)paramView.findViewById(R.h.contact_info_verify_add_black));
-    this.mYv = ((Button)paramView.findViewById(R.h.contact_info_add_contact_btn));
-    this.mYs = paramView.findViewById(R.h.contact_info_sayhi_item);
-    this.mYt = ((Button)paramView.findViewById(R.h.contact_info_sayhi_expose_btn));
-    this.mYu = ((Button)paramView.findViewById(R.h.contact_info_sayhi_request_btn));
-    this.lXO = ((Button)paramView.findViewById(R.h.contact_info_send_btn));
-    this.mYy = ((Button)paramView.findViewById(R.h.contact_info_mod_snspermission_btn));
-    this.mYw = ((Button)paramView.findViewById(R.h.contact_info_voip_btn));
-    this.mYx = ((Button)paramView.findViewById(R.h.contact_info_black_list_expose_btn));
-    this.mYz = ((TextView)paramView.findViewById(R.h.contact_info_movein_blacklist_tip_tv));
-    this.jAt = true;
+    AppMethodBeat.i(23737);
+    ab.d("MicroMsg.NormalUserFooterPreference", "on bindView " + paramView.toString());
+    this.pBN = paramView.findViewById(2131823083);
+    this.pBO = ((Button)paramView.findViewById(2131823084));
+    this.pBP = ((Button)paramView.findViewById(2131823091));
+    this.pBS = ((Button)paramView.findViewById(2131823087));
+    this.pBT = ((TextView)paramView.findViewById(2131823098));
+    this.pBR = paramView.findViewById(2131823086);
+    this.pBQ = ((Button)paramView.findViewById(2131823085));
+    this.pBX = ((Button)paramView.findViewById(2131823092));
+    this.pBU = paramView.findViewById(2131823088);
+    this.pBV = ((Button)paramView.findViewById(2131823090));
+    this.pBW = ((Button)paramView.findViewById(2131823089));
+    this.oxn = ((Button)paramView.findViewById(2131823093));
+    this.pCa = ((Button)paramView.findViewById(2131823096));
+    this.pBY = ((Button)paramView.findViewById(2131823094));
+    this.pBZ = ((Button)paramView.findViewById(2131823095));
+    this.pCb = ((TextView)paramView.findViewById(2131823097));
+    this.lJS = true;
     initView();
     super.onBindView(paramView);
-    if ((this.bER.getIntent().getBooleanExtra("Accept_NewFriend_FromOutside", false) == true) && (this.mYm != null)) {
-      this.mYm.performClick();
+    if ((this.cmc.getIntent().getBooleanExtra("Accept_NewFriend_FromOutside", false) == true) && (this.pBO != null)) {
+      this.pBO.performClick();
     }
+    AppMethodBeat.o(23737);
   }
   
-  final class d
+  final class h
     extends NormalUserFooterPreference.a
   {
-    public d()
+    public h()
     {
       super();
     }
     
-    protected final void bsI()
+    protected final void ccx()
     {
-      Assert.assertTrue(com.tencent.mm.model.s.hx(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username));
+      AppMethodBeat.i(23715);
       NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
-      NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(8);
-      NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(0);
-      NormalUserFooterPreference.g(NormalUserFooterPreference.this).setVisibility(8);
-      NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(8);
-      NormalUserFooterPreference.k(NormalUserFooterPreference.this).setVisibility(8);
-      NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(8);
+      if ((!NormalUserFooterPreference.this.ccu()) && (!NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username.equals(r.Zn())) && (!t.oD(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)) && (!t.ow(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))) {
+        NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(0);
+      }
+      for (;;)
+      {
+        NormalUserFooterPreference.f(NormalUserFooterPreference.this).setText(2131298746);
+        NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
+        NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(8);
+        NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(8);
+        AppMethodBeat.o(23715);
+        return;
+        NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(8);
+      }
     }
     
-    protected final void bsK() {}
+    protected final void ccz() {}
+  }
+  
+  class i
+    extends NormalUserFooterPreference.c
+    implements f
+  {
+    private ProgressDialog eeN;
+    
+    public i()
+    {
+      super();
+    }
+    
+    private void Nx()
+    {
+      AppMethodBeat.i(23722);
+      NormalUserFooterPreference localNormalUserFooterPreference = NormalUserFooterPreference.this;
+      aw.aaz();
+      ad localad2 = com.tencent.mm.model.c.YA().arw(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
+      if (localad2 != null)
+      {
+        localad1 = localad2;
+        if ((int)localad2.euF != 0) {}
+      }
+      else
+      {
+        localad1 = NormalUserFooterPreference.a(NormalUserFooterPreference.this);
+        aw.aaz();
+        if (com.tencent.mm.model.c.YA().X(localad1)) {
+          break label131;
+        }
+        ab.e("MicroMsg.NormalUserFooterPreference", "insert contact failed, username = " + localad1.field_username);
+      }
+      for (ad localad1 = null;; localad1 = com.tencent.mm.model.c.YA().arw(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username))
+      {
+        NormalUserFooterPreference.a(localNormalUserFooterPreference, localad1);
+        if (NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) {
+          t.q(NormalUserFooterPreference.a(NormalUserFooterPreference.this));
+        }
+        AppMethodBeat.o(23722);
+        return;
+        label131:
+        aw.aaz();
+      }
+    }
+    
+    protected void ccE()
+    {
+      AppMethodBeat.i(23723);
+      if (NormalUserFooterPreference.u(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.u(NormalUserFooterPreference.this).onDetach();
+      }
+      NormalUserFooterPreference.a(NormalUserFooterPreference.this, new NormalUserFooterPreference.c(NormalUserFooterPreference.this));
+      NormalUserFooterPreference.u(NormalUserFooterPreference.this).Yj();
+      AppMethodBeat.o(23723);
+    }
+    
+    protected void ccx()
+    {
+      AppMethodBeat.i(23719);
+      onDetach();
+      onStop();
+      aw.Rc().a(30, this);
+      aw.Rc().a(667, this);
+      aw.Rc().a(853, this);
+      super.ccx();
+      AppMethodBeat.o(23719);
+    }
+    
+    protected void onDetach()
+    {
+      AppMethodBeat.i(23721);
+      if (this.eeN != null)
+      {
+        this.eeN.dismiss();
+        this.eeN = null;
+      }
+      if (NormalUserFooterPreference.r(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(8);
+      }
+      if (NormalUserFooterPreference.s(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(0);
+      }
+      if (NormalUserFooterPreference.f(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(8);
+      }
+      if (NormalUserFooterPreference.g(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.g(NormalUserFooterPreference.this).setVisibility(8);
+      }
+      if (NormalUserFooterPreference.h(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.h(NormalUserFooterPreference.this).setVisibility(8);
+      }
+      if (NormalUserFooterPreference.t(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
+      }
+      if (NormalUserFooterPreference.q(NormalUserFooterPreference.this) != null) {
+        NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(8);
+      }
+      onStop();
+      AppMethodBeat.o(23721);
+    }
+    
+    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+    {
+      int j = 0;
+      AppMethodBeat.i(23724);
+      ab.d("MicroMsg.NormalUserFooterPreference", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+      if ((paramm.getType() != 30) && (paramm.getType() != 667) && (paramm.getType() != 853))
+      {
+        AppMethodBeat.o(23724);
+        return;
+      }
+      onStop();
+      if (this.eeN != null)
+      {
+        this.eeN.dismiss();
+        this.eeN = null;
+      }
+      if (!bo.cB(NormalUserFooterPreference.this.mContext))
+      {
+        AppMethodBeat.o(23724);
+        return;
+      }
+      if ((paramInt1 == 0) && (paramInt2 == 0))
+      {
+        if (paramm.getType() == 30)
+        {
+          paramInt1 = ((com.tencent.mm.pluginsdk.model.m)paramm).cut;
+          ab.d("MicroMsg.NormalUserFooterPreference", "VerifyBaseHandler onSceneEnd, opCode = ".concat(String.valueOf(paramInt1)));
+          if ((paramInt1 == 1) || (paramInt1 == 3))
+          {
+            paramString = ((com.tencent.mm.pluginsdk.model.m)paramm).vKs;
+            if ((paramString != null) && (paramString.contains(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username)))
+            {
+              NormalUserFooterPreference.v(NormalUserFooterPreference.this);
+              Nx();
+              ccE();
+              paramString = paramString.iterator();
+              while (paramString.hasNext()) {
+                com.tencent.mm.pluginsdk.ui.preference.b.bI((String)paramString.next(), NormalUserFooterPreference.l(NormalUserFooterPreference.this));
+              }
+              aw.getNotification().IG();
+            }
+          }
+          AppMethodBeat.o(23724);
+          return;
+        }
+        if ((paramm.getType() == 667) || (paramm.getType() == 853))
+        {
+          NormalUserFooterPreference.v(NormalUserFooterPreference.this);
+          Nx();
+          ccE();
+          com.tencent.mm.pluginsdk.ui.preference.b.bI(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username, NormalUserFooterPreference.l(NormalUserFooterPreference.this));
+          aw.getNotification().IG();
+          AppMethodBeat.o(23724);
+          return;
+        }
+      }
+      if ((paramInt1 == 4) && (paramInt2 == -302)) {
+        if (paramm.getType() != 30) {
+          break label878;
+        }
+      }
+      label878:
+      for (paramInt1 = ((com.tencent.mm.pluginsdk.model.m)paramm).cut;; paramInt1 = 0)
+      {
+        ab.w("MicroMsg.NormalUserFooterPreference", "VerifyBaseHandler onSceneEnd, verify relation out of date, opCode = %d", new Object[] { Integer.valueOf(paramInt1) });
+        if ((paramInt1 == 3) || (paramm.getType() == 853)) {
+          com.tencent.mm.ui.base.h.d(NormalUserFooterPreference.b(NormalUserFooterPreference.this), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131298826), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131297087), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131296537), NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131296888), new NormalUserFooterPreference.i.3(this), null);
+        }
+        AppMethodBeat.o(23724);
+        return;
+        if ((paramInt1 == 4) && (paramInt2 == -24) && (!bo.isNullOrNil(paramString)))
+        {
+          Toast.makeText(NormalUserFooterPreference.b(NormalUserFooterPreference.this), paramString, 1).show();
+          AppMethodBeat.o(23724);
+          return;
+        }
+        int i = j;
+        switch (paramInt1)
+        {
+        default: 
+          i = j;
+        }
+        while (i != 0)
+        {
+          AppMethodBeat.o(23724);
+          return;
+          if (aw.Rc().adu())
+          {
+            aw.Rc().getNetworkServerIp();
+            new StringBuilder().append(paramInt2);
+            i = 1;
+          }
+          else
+          {
+            i = j;
+            if (ac.cm(NormalUserFooterPreference.this.mContext))
+            {
+              com.tencent.mm.pluginsdk.ui.tools.h.fY(NormalUserFooterPreference.this.mContext);
+              i = 1;
+              continue;
+              Toast.makeText(NormalUserFooterPreference.this.mContext, NormalUserFooterPreference.this.mContext.getString(2131300044, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt2) }), 3000).show();
+              i = 1;
+              continue;
+              if (paramInt2 == -100)
+              {
+                com.tencent.mm.ui.base.h.a(NormalUserFooterPreference.this.mContext, aw.QD(), com.tencent.mm.cb.a.aq(NormalUserFooterPreference.this.mContext, 2131297087), new DialogInterface.OnClickListener()new NormalUserFooterPreference.i.2
+                {
+                  public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+                  {
+                    AppMethodBeat.i(23716);
+                    NormalUserFooterPreference.i.this.onStop();
+                    paramAnonymousDialogInterface = new Intent();
+                    paramAnonymousDialogInterface.putExtra("Intro_Switch", true).addFlags(67108864);
+                    com.tencent.mm.plugin.profile.b.gmO.p(paramAnonymousDialogInterface, NormalUserFooterPreference.this.mContext);
+                    AppMethodBeat.o(23716);
+                  }
+                }, new NormalUserFooterPreference.i.2(this));
+                i = 1;
+              }
+              else
+              {
+                if ((paramInt1 == 4) && (paramInt2 == -34)) {
+                  paramm = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131300013);
+                }
+                for (;;)
+                {
+                  Toast.makeText(NormalUserFooterPreference.b(NormalUserFooterPreference.this), paramm, 1).show();
+                  i = j;
+                  break;
+                  if ((paramInt1 == 4) && (paramInt2 == -94))
+                  {
+                    paramm = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131300016);
+                  }
+                  else if (paramInt1 == 4)
+                  {
+                    paramm = paramString;
+                    if (!bo.isNullOrNil(paramString)) {}
+                  }
+                  else
+                  {
+                    paramm = NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131303126);
+                  }
+                }
+              }
+            }
+          }
+        }
+        AppMethodBeat.o(23724);
+        return;
+      }
+    }
+    
+    final void onStop()
+    {
+      AppMethodBeat.i(23720);
+      aw.Rc().b(30, this);
+      aw.Rc().b(667, this);
+      aw.Rc().b(853, this);
+      AppMethodBeat.o(23720);
+    }
   }
   
   final class j
@@ -362,9 +717,17 @@ public class NormalUserFooterPreference
       super();
     }
     
-    protected final void bsI()
+    protected final void ccE()
     {
-      super.bsI();
+      AppMethodBeat.i(23731);
+      super.ccE();
+      AppMethodBeat.o(23731);
+    }
+    
+    protected final void ccx()
+    {
+      AppMethodBeat.i(23729);
+      super.ccx();
       NormalUserFooterPreference.r(NormalUserFooterPreference.this).setVisibility(0);
       NormalUserFooterPreference.t(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.f(NormalUserFooterPreference.this).setVisibility(8);
@@ -373,72 +736,48 @@ public class NormalUserFooterPreference
       NormalUserFooterPreference.k(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.s(NormalUserFooterPreference.this).setVisibility(8);
       NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(8);
-      switch (NormalUserFooterPreference.l(NormalUserFooterPreference.this))
+      NormalUserFooterPreference.i(NormalUserFooterPreference.this).setVisibility(0);
+      NormalUserFooterPreference.w(NormalUserFooterPreference.this).setVisibility(0);
+      if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).NW())
       {
-      default: 
-        NormalUserFooterPreference.i(NormalUserFooterPreference.this).setVisibility(8);
-        NormalUserFooterPreference.w(NormalUserFooterPreference.this).setVisibility(8);
-        if (NormalUserFooterPreference.a(NormalUserFooterPreference.this).Bg())
-        {
-          NormalUserFooterPreference.x(NormalUserFooterPreference.this).setText(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.contact_info_moveout_blacklist));
-          NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(0);
-        }
-        break;
+        NormalUserFooterPreference.x(NormalUserFooterPreference.this).setText(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131298680));
+        NormalUserFooterPreference.q(NormalUserFooterPreference.this).setVisibility(0);
       }
       for (;;)
       {
-        NormalUserFooterPreference.z(NormalUserFooterPreference.this).setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().removeExtra("Accept_NewFriend_FromOutside");
-            paramAnonymousView = new Intent(NormalUserFooterPreference.b(NormalUserFooterPreference.this), SayHiWithSnsPermissionUI.class);
-            paramAnonymousView.putExtra("Contact_User", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_username);
-            paramAnonymousView.putExtra("Contact_Nick", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_nickname);
-            paramAnonymousView.putExtra("Contact_RemarkName", NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_conRemark);
-            if ((NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 14) || (NormalUserFooterPreference.l(NormalUserFooterPreference.this) == 8)) {
-              paramAnonymousView.putExtra("Contact_RoomNickname", NormalUserFooterPreference.b(NormalUserFooterPreference.this).getIntent().getStringExtra("Contact_RoomNickname"));
-            }
-            paramAnonymousView.putExtra("Contact_Scene", NormalUserFooterPreference.l(NormalUserFooterPreference.this));
-            paramAnonymousView.putExtra("Verify_ticket", NormalUserFooterPreference.y(NormalUserFooterPreference.this));
-            paramAnonymousView.putExtra("sayhi_with_sns_perm_send_verify", false);
-            paramAnonymousView.putExtra("sayhi_with_sns_perm_add_remark", true);
-            paramAnonymousView.putExtra("sayhi_with_sns_perm_set_label", true);
-            NormalUserFooterPreference.b(NormalUserFooterPreference.this).startActivityForResult(paramAnonymousView, 0);
-          }
-        });
+        NormalUserFooterPreference.z(NormalUserFooterPreference.this).setOnClickListener(new NormalUserFooterPreference.j.1(this));
         NormalUserFooterPreference.x(NormalUserFooterPreference.this).setOnClickListener(new NormalUserFooterPreference.j.2(this));
+        AppMethodBeat.o(23729);
         return;
-        NormalUserFooterPreference.i(NormalUserFooterPreference.this).setVisibility(0);
-        NormalUserFooterPreference.w(NormalUserFooterPreference.this).setVisibility(0);
-        break;
-        NormalUserFooterPreference.x(NormalUserFooterPreference.this).setText(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(R.l.contact_info_movein_blacklist));
+        NormalUserFooterPreference.x(NormalUserFooterPreference.this).setText(NormalUserFooterPreference.b(NormalUserFooterPreference.this).getString(2131298675));
       }
     }
     
-    protected final void bsK()
+    protected final void ccz()
     {
-      if ((NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) && (com.tencent.mm.n.a.gR(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)))
+      AppMethodBeat.i(23728);
+      if ((NormalUserFooterPreference.a(NormalUserFooterPreference.this) != null) && (com.tencent.mm.n.a.je(NormalUserFooterPreference.a(NormalUserFooterPreference.this).field_type)))
       {
-        bsJ();
+        ccy();
+        AppMethodBeat.o(23728);
         return;
       }
-      B(false, true);
-    }
-    
-    protected final void bsO()
-    {
-      super.bsO();
+      F(false, true);
+      AppMethodBeat.o(23728);
     }
     
     protected final void onDetach()
     {
+      AppMethodBeat.i(23730);
       super.onDetach();
+      AppMethodBeat.o(23730);
     }
     
-    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+    public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
     {
+      AppMethodBeat.i(23732);
       super.onSceneEnd(paramInt1, paramInt2, paramString, paramm);
+      AppMethodBeat.o(23732);
     }
   }
 }

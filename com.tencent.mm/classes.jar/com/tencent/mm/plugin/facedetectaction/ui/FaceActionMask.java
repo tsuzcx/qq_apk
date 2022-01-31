@@ -9,28 +9,35 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FaceActionMask
   extends RelativeLayout
 {
-  private Paint jWA;
-  private PorterDuffXfermode jWB;
-  private boolean jWC = false;
-  private Paint jWz = new Paint(1);
-  private Rect rect = new Rect();
+  private Paint mqQ;
+  private Paint mqR;
+  private PorterDuffXfermode mqS;
+  private boolean mqT;
+  private Rect rect;
   
   public FaceActionMask(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jWz.setStyle(Paint.Style.FILL);
-    this.jWA = new Paint(1);
+    AppMethodBeat.i(707);
+    this.rect = new Rect();
+    this.mqT = false;
+    this.mqQ = new Paint(1);
+    this.mqQ.setStyle(Paint.Style.FILL);
+    this.mqR = new Paint(1);
     setWillNotDraw(false);
-    this.jWB = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.mqS = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     setLayerType(1, null);
+    AppMethodBeat.o(707);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(708);
     paramCanvas.save();
     float f1 = (float)(getWidth() * 0.35D);
     float f2 = (float)(getWidth() * 0.5D);
@@ -39,16 +46,17 @@ public class FaceActionMask
     this.rect.right = getWidth();
     this.rect.top = 0;
     this.rect.bottom = getHeight();
-    this.jWz.setColor(-1);
+    this.mqQ.setColor(-1);
     paramCanvas.drawARGB(255, 0, 0, 0);
-    paramCanvas.drawRect(this.rect, this.jWz);
-    if (!this.jWC)
+    paramCanvas.drawRect(this.rect, this.mqQ);
+    if (!this.mqT)
     {
-      this.jWA.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jWA.setXfermode(this.jWB);
-      paramCanvas.drawCircle(f2, f3, f1, this.jWA);
+      this.mqR.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.mqR.setXfermode(this.mqS);
+      paramCanvas.drawCircle(f2, f3, f1, this.mqR);
     }
     paramCanvas.restore();
+    AppMethodBeat.o(708);
   }
 }
 

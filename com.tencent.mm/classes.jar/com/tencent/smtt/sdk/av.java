@@ -1,16 +1,24 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileFilter;
 
 class av
   implements FileFilter
 {
-  av(an paraman) {}
+  av(ao paramao) {}
   
   public boolean accept(File paramFile)
   {
-    return paramFile.getName().endsWith(".jar");
+    AppMethodBeat.i(64403);
+    if ((!paramFile.getName().endsWith(".dex")) && (!paramFile.getName().endsWith(".jar_is_first_load_dex_flag_file")))
+    {
+      AppMethodBeat.o(64403);
+      return true;
+    }
+    AppMethodBeat.o(64403);
+    return false;
   }
 }
 

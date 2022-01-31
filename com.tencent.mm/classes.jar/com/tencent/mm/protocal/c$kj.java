@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$kj
+public final class c$kj
   extends c.g
 {
-  c$kj()
+  public c$kj()
   {
-    super("wcPrivacyPolicyResult", "wcPrivacyPolicyResult", 315, false);
+    super("stopRecord", "stopRecord", 98, false);
   }
 }
 

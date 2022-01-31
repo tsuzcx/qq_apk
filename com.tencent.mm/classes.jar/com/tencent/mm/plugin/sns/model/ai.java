@@ -1,72 +1,85 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.os.SystemClock;
-import com.tencent.mm.memory.a.a;
-import com.tencent.mm.memory.n;
-import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.g;
+import com.tencent.mm.plugin.sns.storage.l;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
-import java.util.Map;
 
 public final class ai
-  extends a
+  implements g
 {
-  int alpha = 255;
-  long kKK;
-  boolean kKL = false;
-  private Map<String, Boolean> otd = new HashMap();
+  HashMap<String, l> cache;
   
-  public ai(String paramString, n paramn, long paramLong)
+  public ai()
   {
-    super(paramString, paramn);
-    if (paramLong != 0L)
-    {
-      this.kKK = paramLong;
-      this.otd.put(paramString, Boolean.valueOf(true));
-      this.kKL = true;
-    }
-    while (this.otd.containsKey(paramString)) {
-      return;
-    }
-    this.kKK = SystemClock.uptimeMillis();
-    this.otd.put(paramString, Boolean.valueOf(true));
-    this.kKL = true;
+    AppMethodBeat.i(36529);
+    this.cache = new HashMap();
+    AppMethodBeat.o(36529);
   }
   
-  public final void draw(Canvas paramCanvas)
+  public final boolean a(final l paraml)
   {
-    Rect localRect = getBounds();
-    Bitmap localBitmap = this.dPv.Fe();
-    if (!i.s(localBitmap))
+    AppMethodBeat.i(36533);
+    if ((paraml == null) || (bo.isNullOrNil(paraml.field_userName)))
     {
-      paramCanvas.drawColor(-1118482);
-      this.kKK = 0L;
-      return;
+      AppMethodBeat.o(36533);
+      return false;
     }
-    float f;
-    if (this.kKL)
+    ag.coO().post(new Runnable()
     {
-      f = (float)(SystemClock.uptimeMillis() - this.kKK) / 150.0F;
-      if (this.kKK == 0L) {
-        f = 0.0F;
+      public final void run()
+      {
+        AppMethodBeat.i(36528);
+        ai.this.cache.put(paraml.field_userName, paraml);
+        AppMethodBeat.o(36528);
       }
-      if (f >= 1.0F) {
-        this.kKL = false;
-      }
-    }
-    else
+    });
+    AppMethodBeat.o(36533);
+    return true;
+  }
+  
+  public final l aaw(String paramString)
+  {
+    AppMethodBeat.i(36530);
+    paramString = (l)this.cache.get(paramString);
+    AppMethodBeat.o(36530);
+    return paramString;
+  }
+  
+  public final boolean cpu()
+  {
+    AppMethodBeat.i(36531);
+    ag.coO().post(new Runnable()
     {
-      dPt.setAlpha(this.alpha);
-      paramCanvas.drawBitmap(localBitmap, null, localRect, dPt);
-      return;
-    }
-    int i = (int)(f * this.alpha);
-    dPt.setAlpha(i);
-    paramCanvas.drawBitmap(localBitmap, null, localRect, dPt);
-    invalidateSelf();
+      public final void run()
+      {
+        AppMethodBeat.i(36526);
+        if (ai.this.cache.size() > 50) {
+          ai.a(ai.this, 10);
+        }
+        AppMethodBeat.o(36526);
+      }
+    });
+    AppMethodBeat.o(36531);
+    return true;
+  }
+  
+  public final boolean cpv()
+  {
+    AppMethodBeat.i(36532);
+    ag.coO().post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(36527);
+        ai.a(ai.this, ai.this.cache.size());
+        AppMethodBeat.o(36527);
+      }
+    });
+    AppMethodBeat.o(36532);
+    return true;
   }
 }
 

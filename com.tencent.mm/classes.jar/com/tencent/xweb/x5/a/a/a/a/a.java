@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
-import com.tencent.xweb.f;
-import com.tencent.xweb.l;
-import com.tencent.xweb.m;
+import com.tencent.xweb.j;
+import com.tencent.xweb.r;
+import com.tencent.xweb.s;
 
 public abstract interface a
 {
@@ -24,7 +24,7 @@ public abstract interface a
   
   public abstract void super_hideAddressBar();
   
-  public abstract boolean super_notifyAutoAudioPlay(String paramString, f paramf);
+  public abstract boolean super_notifyAutoAudioPlay(String paramString, j paramj);
   
   public abstract boolean super_notifyJavaScriptOpenWindowsBlocked(String paramString, String[] paramArrayOfString, ValueCallback<Boolean> paramValueCallback, boolean paramBoolean);
   
@@ -68,7 +68,7 @@ public abstract interface a
   
   public abstract void super_onReportHtmlInfo(int paramInt, String paramString);
   
-  public abstract void super_onResponseReceived(l paraml, m paramm, int paramInt);
+  public abstract void super_onResponseReceived(r paramr, s params, int paramInt);
   
   public abstract void super_onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -104,7 +104,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.x5.a.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

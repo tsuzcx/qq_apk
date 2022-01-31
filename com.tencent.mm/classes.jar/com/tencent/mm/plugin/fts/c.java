@@ -4,12 +4,11 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Looper;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -24,476 +23,529 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class c
   implements com.tencent.mm.plugin.fts.a.d.c
 {
-  private static int kty = 32;
-  private ah dPi = new ah(Looper.getMainLooper());
-  private Vector<String> ktA;
-  private boolean ktB = true;
-  private int ktC = 0;
-  private ah[] ktD = new ah[2];
-  private ConcurrentHashMap<Long, ByteArrayOutputStream> ktE = null;
-  private ConcurrentHashMap<Long, byte[]> ktF = null;
-  private ah ktG = null;
-  private Set<String> ktH;
-  private ConcurrentHashMap<String, c.a> ktz;
+  private static int MAX_CACHE_SIZE = 32;
+  private ak faV;
+  private ConcurrentHashMap<String, c.a> mPm;
+  private Vector<String> mPn;
+  private boolean mPo;
+  private int mPp;
+  private ak[] mPq;
+  private ConcurrentHashMap<Long, ByteArrayOutputStream> mPr;
+  private ConcurrentHashMap<Long, byte[]> mPs;
+  private ak mPt;
+  private Set<String> mPu;
   
   public c()
   {
-    y.i("MicroMsg.FTS.FTSImageLoader", "create SearchImageLoader");
-    if (d.gF(19)) {}
-    for (kty = 64;; kty = 32)
+    AppMethodBeat.i(136527);
+    this.mPo = true;
+    this.mPp = 0;
+    this.faV = new ak(Looper.getMainLooper());
+    this.mPq = new ak[2];
+    this.mPr = null;
+    this.mPs = null;
+    this.mPt = null;
+    ab.i("MicroMsg.FTS.FTSImageLoader", "create SearchImageLoader");
+    if (com.tencent.mm.compatible.util.d.fv(19)) {}
+    for (MAX_CACHE_SIZE = 64;; MAX_CACHE_SIZE = 32)
     {
-      this.ktz = new ConcurrentHashMap();
-      this.ktA = new Vector();
-      this.ktE = new ConcurrentHashMap();
-      this.ktF = new ConcurrentHashMap();
-      this.ktH = Collections.synchronizedSet(new HashSet());
+      this.mPm = new ConcurrentHashMap();
+      this.mPn = new Vector();
+      this.mPr = new ConcurrentHashMap();
+      this.mPs = new ConcurrentHashMap();
+      this.mPu = Collections.synchronizedSet(new HashSet());
       while (i < 2)
       {
-        if (this.ktD[i] == null) {
-          e.c(new c.1(this, i), "SearchImageLoader_loadImage_handler", 1).start();
+        if (this.mPq[i] == null) {
+          com.tencent.mm.sdk.g.d.a(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(136521);
+              Looper.prepare();
+              c.a(c.this)[i] = new ak();
+              Looper.loop();
+              AppMethodBeat.o(136521);
+            }
+          }, "SearchImageLoader_loadImage_handler", 1).start();
         }
         i += 1;
       }
     }
-    e.c(new c.2(this), "SearchImageLoader_saveImage_handler", 1).start();
+    com.tencent.mm.sdk.g.d.a(new c.2(this), "SearchImageLoader_saveImage_handler", 1).start();
+    AppMethodBeat.o(136527);
   }
   
-  private void DG(String paramString)
+  private void OP(String paramString)
   {
-    c.a locala = (c.a)this.ktz.get(paramString);
-    this.ktA.remove(paramString);
-    this.ktz.remove(paramString);
+    AppMethodBeat.i(136540);
+    c.a locala = (c.a)this.mPm.get(paramString);
+    this.mPn.remove(paramString);
+    this.mPm.remove(paramString);
     if ((locala != null) && (locala.bitmap != null))
     {
       if (!locala.bitmap.isRecycled())
       {
-        y.i("MicroMsg.FTS.FTSImageLoader", "bitmap recycle %s", new Object[] { locala.bitmap });
+        ab.i("MicroMsg.FTS.FTSImageLoader", "bitmap recycle %s", new Object[] { locala.bitmap });
         locala.bitmap.recycle();
       }
       locala.bitmap = null;
     }
+    AppMethodBeat.o(136540);
   }
   
   /* Error */
   private Bitmap b(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 188	com/tencent/mm/sdk/platformtools/bk:bl	(Ljava/lang/String;)Z
-    //   4: ifeq +7 -> 11
-    //   7: aconst_null
-    //   8: astore_1
-    //   9: aload_1
-    //   10: areturn
-    //   11: aload_0
-    //   12: getfield 67	com/tencent/mm/plugin/fts/c:ktE	Ljava/util/concurrent/ConcurrentHashMap;
-    //   15: invokestatic 251	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   18: invokevirtual 255	java/lang/Thread:getId	()J
-    //   21: invokestatic 261	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   24: invokevirtual 138	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   27: checkcast 263	java/io/ByteArrayOutputStream
-    //   30: astore 7
-    //   32: aload 7
-    //   34: astore 9
-    //   36: aload 7
-    //   38: ifnonnull +34 -> 72
-    //   41: new 263	java/io/ByteArrayOutputStream
-    //   44: dup
-    //   45: ldc_w 264
-    //   48: invokespecial 267	java/io/ByteArrayOutputStream:<init>	(I)V
-    //   51: astore 9
-    //   53: aload_0
-    //   54: getfield 67	com/tencent/mm/plugin/fts/c:ktE	Ljava/util/concurrent/ConcurrentHashMap;
-    //   57: invokestatic 251	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   60: invokevirtual 255	java/lang/Thread:getId	()J
-    //   63: invokestatic 261	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   66: aload 9
-    //   68: invokevirtual 233	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   71: pop
-    //   72: aload 9
-    //   74: invokevirtual 270	java/io/ByteArrayOutputStream:reset	()V
-    //   77: aload_0
-    //   78: invokespecial 274	com/tencent/mm/plugin/fts/c:getBuffer	()[B
-    //   81: astore 10
-    //   83: aload_1
-    //   84: sipush 10000
-    //   87: sipush 20000
-    //   90: invokestatic 280	com/tencent/mm/network/b:n	(Ljava/lang/String;II)Ljava/io/InputStream;
-    //   93: astore 7
-    //   95: aload 7
-    //   97: ifnonnull +401 -> 498
-    //   100: aload 7
-    //   102: astore 8
-    //   104: ldc 73
-    //   106: ldc_w 282
-    //   109: iconst_1
-    //   110: anewarray 4	java/lang/Object
-    //   113: dup
-    //   114: iconst_0
-    //   115: aload_1
-    //   116: aastore
-    //   117: invokestatic 285	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   120: aload 7
-    //   122: ifnull +8 -> 130
-    //   125: aload 7
-    //   127: invokevirtual 290	java/io/InputStream:close	()V
-    //   130: aconst_null
-    //   131: areturn
-    //   132: astore_1
-    //   133: ldc 73
-    //   135: aload_1
-    //   136: ldc_w 292
-    //   139: iconst_0
-    //   140: anewarray 4	java/lang/Object
-    //   143: invokestatic 296	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   146: goto -16 -> 130
-    //   149: aload 7
-    //   151: astore 8
-    //   153: aload 7
-    //   155: aload 10
-    //   157: invokevirtual 300	java/io/InputStream:read	([B)I
-    //   160: istore 6
-    //   162: iload 6
-    //   164: iconst_m1
-    //   165: if_icmpeq +79 -> 244
-    //   168: iload 5
-    //   170: iload 6
-    //   172: iadd
-    //   173: istore 5
-    //   175: aload 7
-    //   177: astore 8
-    //   179: aload 9
-    //   181: aload 10
-    //   183: iconst_0
-    //   184: iload 6
-    //   186: invokevirtual 304	java/io/ByteArrayOutputStream:write	([BII)V
-    //   189: goto -40 -> 149
-    //   192: astore 9
-    //   194: aload 7
-    //   196: astore 8
-    //   198: ldc 73
-    //   200: aload 9
-    //   202: ldc_w 292
-    //   205: iconst_0
-    //   206: anewarray 4	java/lang/Object
-    //   209: invokestatic 296	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   212: aload 7
-    //   214: astore 8
-    //   216: ldc 73
-    //   218: ldc_w 306
-    //   221: iconst_1
+    //   0: ldc_w 263
+    //   3: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_1
+    //   7: invokestatic 250	com/tencent/mm/sdk/platformtools/bo:isNullOrNil	(Ljava/lang/String;)Z
+    //   10: ifeq +11 -> 21
+    //   13: ldc_w 263
+    //   16: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: aconst_null
+    //   20: areturn
+    //   21: aload_0
+    //   22: getfield 77	com/tencent/mm/plugin/fts/c:mPr	Ljava/util/concurrent/ConcurrentHashMap;
+    //   25: invokestatic 267	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   28: invokevirtual 271	java/lang/Thread:getId	()J
+    //   31: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   34: invokevirtual 150	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   37: checkcast 279	java/io/ByteArrayOutputStream
+    //   40: astore 7
+    //   42: aload 7
+    //   44: astore 9
+    //   46: aload 7
+    //   48: ifnonnull +34 -> 82
+    //   51: new 279	java/io/ByteArrayOutputStream
+    //   54: dup
+    //   55: ldc_w 280
+    //   58: invokespecial 282	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   61: astore 9
+    //   63: aload_0
+    //   64: getfield 77	com/tencent/mm/plugin/fts/c:mPr	Ljava/util/concurrent/ConcurrentHashMap;
+    //   67: invokestatic 267	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   70: invokevirtual 271	java/lang/Thread:getId	()J
+    //   73: invokestatic 277	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   76: aload 9
+    //   78: invokevirtual 228	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   81: pop
+    //   82: aload 9
+    //   84: invokevirtual 285	java/io/ByteArrayOutputStream:reset	()V
+    //   87: aload_0
+    //   88: invokespecial 289	com/tencent/mm/plugin/fts/c:getBuffer	()[B
+    //   91: astore 10
+    //   93: aload_1
+    //   94: sipush 10000
+    //   97: sipush 20000
+    //   100: invokestatic 295	com/tencent/mm/network/b:x	(Ljava/lang/String;II)Ljava/io/InputStream;
+    //   103: astore 8
+    //   105: aload 8
+    //   107: ifnonnull +421 -> 528
+    //   110: aload 8
+    //   112: astore 7
+    //   114: ldc 83
+    //   116: ldc_w 297
+    //   119: iconst_1
+    //   120: anewarray 4	java/lang/Object
+    //   123: dup
+    //   124: iconst_0
+    //   125: aload_1
+    //   126: aastore
+    //   127: invokestatic 300	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   130: aload 8
+    //   132: ifnull +8 -> 140
+    //   135: aload 8
+    //   137: invokevirtual 305	java/io/InputStream:close	()V
+    //   140: ldc_w 263
+    //   143: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   146: aconst_null
+    //   147: areturn
+    //   148: astore_1
+    //   149: ldc 83
+    //   151: aload_1
+    //   152: ldc_w 307
+    //   155: iconst_0
+    //   156: anewarray 4	java/lang/Object
+    //   159: invokestatic 311	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   162: goto -22 -> 140
+    //   165: aload 8
+    //   167: astore 7
+    //   169: aload 8
+    //   171: aload 10
+    //   173: invokevirtual 315	java/io/InputStream:read	([B)I
+    //   176: istore 6
+    //   178: iload 6
+    //   180: iconst_m1
+    //   181: if_icmpeq +85 -> 266
+    //   184: iload 5
+    //   186: iload 6
+    //   188: iadd
+    //   189: istore 5
+    //   191: aload 8
+    //   193: astore 7
+    //   195: aload 9
+    //   197: aload 10
+    //   199: iconst_0
+    //   200: iload 6
+    //   202: invokevirtual 319	java/io/ByteArrayOutputStream:write	([BII)V
+    //   205: goto -40 -> 165
+    //   208: astore 9
+    //   210: aload 8
+    //   212: astore 7
+    //   214: ldc 83
+    //   216: aload 9
+    //   218: ldc_w 307
+    //   221: iconst_0
     //   222: anewarray 4	java/lang/Object
-    //   225: dup
-    //   226: iconst_0
-    //   227: aload_1
-    //   228: aastore
-    //   229: invokestatic 285	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   232: aload 7
-    //   234: ifnull +8 -> 242
-    //   237: aload 7
-    //   239: invokevirtual 290	java/io/InputStream:close	()V
-    //   242: aconst_null
-    //   243: areturn
-    //   244: aload 7
-    //   246: astore 8
-    //   248: aload 9
-    //   250: invokevirtual 309	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   253: astore 9
-    //   255: iload_3
-    //   256: ifle +131 -> 387
-    //   259: iload 4
-    //   261: ifle +126 -> 387
-    //   264: aload 7
-    //   266: astore 8
-    //   268: aload 9
-    //   270: iload_3
-    //   271: iload 4
-    //   273: invokestatic 315	com/tencent/mm/sdk/platformtools/c:decodeByteArray	([BII)Landroid/graphics/Bitmap;
-    //   276: astore 9
-    //   278: aload 7
-    //   280: astore 8
-    //   282: ldc 73
-    //   284: ldc_w 317
-    //   287: iconst_4
-    //   288: anewarray 4	java/lang/Object
-    //   291: dup
-    //   292: iconst_0
-    //   293: aload_1
-    //   294: aastore
-    //   295: dup
-    //   296: iconst_1
-    //   297: iload 5
-    //   299: invokestatic 322	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   302: aastore
-    //   303: dup
-    //   304: iconst_2
-    //   305: aload 9
-    //   307: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   310: invokestatic 322	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   313: aastore
-    //   314: dup
-    //   315: iconst_3
-    //   316: aload 9
-    //   318: invokevirtual 328	android/graphics/Bitmap:getHeight	()I
-    //   321: invokestatic 322	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   225: invokestatic 311	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   228: aload 8
+    //   230: astore 7
+    //   232: ldc 83
+    //   234: ldc_w 321
+    //   237: iconst_1
+    //   238: anewarray 4	java/lang/Object
+    //   241: dup
+    //   242: iconst_0
+    //   243: aload_1
+    //   244: aastore
+    //   245: invokestatic 300	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   248: aload 8
+    //   250: ifnull +8 -> 258
+    //   253: aload 8
+    //   255: invokevirtual 305	java/io/InputStream:close	()V
+    //   258: ldc_w 263
+    //   261: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   264: aconst_null
+    //   265: areturn
+    //   266: aload 8
+    //   268: astore 7
+    //   270: aload 9
+    //   272: invokevirtual 324	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   275: astore 9
+    //   277: iload_3
+    //   278: ifle +113 -> 391
+    //   281: iload 4
+    //   283: ifle +108 -> 391
+    //   286: aload 8
+    //   288: astore 7
+    //   290: aload 9
+    //   292: iload_3
+    //   293: iload 4
+    //   295: invokestatic 330	com/tencent/mm/sdk/platformtools/d:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   298: astore 9
+    //   300: aload 8
+    //   302: astore 7
+    //   304: ldc 83
+    //   306: ldc_w 332
+    //   309: iconst_4
+    //   310: anewarray 4	java/lang/Object
+    //   313: dup
+    //   314: iconst_0
+    //   315: aload_1
+    //   316: aastore
+    //   317: dup
+    //   318: iconst_1
+    //   319: iload 5
+    //   321: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   324: aastore
-    //   325: invokestatic 331	com/tencent/mm/sdk/platformtools/y:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   328: iload_2
-    //   329: ifeq +72 -> 401
-    //   332: aload 7
-    //   334: astore 8
-    //   336: aload 9
-    //   338: iconst_1
-    //   339: aload 9
-    //   341: invokevirtual 325	android/graphics/Bitmap:getWidth	()I
-    //   344: i2f
-    //   345: invokestatic 334	com/tencent/mm/sdk/platformtools/c:a	(Landroid/graphics/Bitmap;ZF)Landroid/graphics/Bitmap;
-    //   348: astore 9
-    //   350: aload 9
-    //   352: astore 8
+    //   325: dup
+    //   326: iconst_2
+    //   327: aload 9
+    //   329: invokevirtual 340	android/graphics/Bitmap:getWidth	()I
+    //   332: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   335: aastore
+    //   336: dup
+    //   337: iconst_3
+    //   338: aload 9
+    //   340: invokevirtual 343	android/graphics/Bitmap:getHeight	()I
+    //   343: invokestatic 337	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   346: aastore
+    //   347: invokestatic 346	com/tencent/mm/sdk/platformtools/ab:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   350: iload_2
+    //   351: ifeq +71 -> 422
     //   354: aload 8
-    //   356: astore_1
-    //   357: aload 7
-    //   359: ifnull -350 -> 9
-    //   362: aload 7
-    //   364: invokevirtual 290	java/io/InputStream:close	()V
-    //   367: aload 8
-    //   369: areturn
-    //   370: astore_1
-    //   371: ldc 73
-    //   373: aload_1
-    //   374: ldc_w 292
-    //   377: iconst_0
-    //   378: anewarray 4	java/lang/Object
-    //   381: invokestatic 296	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   384: aload 8
-    //   386: areturn
-    //   387: aload 7
-    //   389: astore 8
-    //   391: aload 9
-    //   393: invokestatic 338	com/tencent/mm/sdk/platformtools/c:bu	([B)Landroid/graphics/Bitmap;
-    //   396: astore 9
-    //   398: goto -120 -> 278
-    //   401: aload 9
-    //   403: astore_1
-    //   404: aload 7
-    //   406: ifnull -397 -> 9
-    //   409: aload 7
-    //   411: invokevirtual 290	java/io/InputStream:close	()V
-    //   414: aload 9
-    //   416: areturn
-    //   417: astore_1
-    //   418: ldc 73
-    //   420: aload_1
-    //   421: ldc_w 292
-    //   424: iconst_0
-    //   425: anewarray 4	java/lang/Object
-    //   428: invokestatic 296	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   431: aload 9
-    //   433: areturn
-    //   434: astore_1
-    //   435: ldc 73
-    //   437: aload_1
-    //   438: ldc_w 292
-    //   441: iconst_0
-    //   442: anewarray 4	java/lang/Object
-    //   445: invokestatic 296	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   448: goto -206 -> 242
-    //   451: astore_1
-    //   452: aconst_null
-    //   453: astore 8
-    //   455: aload 8
-    //   457: ifnull +8 -> 465
-    //   460: aload 8
-    //   462: invokevirtual 290	java/io/InputStream:close	()V
-    //   465: aload_1
-    //   466: athrow
-    //   467: astore 7
-    //   469: ldc 73
-    //   471: aload 7
-    //   473: ldc_w 292
-    //   476: iconst_0
-    //   477: anewarray 4	java/lang/Object
-    //   480: invokestatic 296	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   483: goto -18 -> 465
-    //   486: astore_1
-    //   487: goto -32 -> 455
-    //   490: astore 9
-    //   492: aconst_null
-    //   493: astore 7
-    //   495: goto -301 -> 194
-    //   498: iconst_0
-    //   499: istore 5
-    //   501: goto -352 -> 149
+    //   356: astore 7
+    //   358: aload 9
+    //   360: iconst_1
+    //   361: aload 9
+    //   363: invokevirtual 340	android/graphics/Bitmap:getWidth	()I
+    //   366: i2f
+    //   367: invokestatic 349	com/tencent/mm/sdk/platformtools/d:a	(Landroid/graphics/Bitmap;ZF)Landroid/graphics/Bitmap;
+    //   370: astore 9
+    //   372: aload 8
+    //   374: ifnull +8 -> 382
+    //   377: aload 8
+    //   379: invokevirtual 305	java/io/InputStream:close	()V
+    //   382: ldc_w 263
+    //   385: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   388: aload 9
+    //   390: areturn
+    //   391: aload 8
+    //   393: astore 7
+    //   395: aload 9
+    //   397: invokestatic 353	com/tencent/mm/sdk/platformtools/d:bT	([B)Landroid/graphics/Bitmap;
+    //   400: astore 9
+    //   402: goto -102 -> 300
+    //   405: astore_1
+    //   406: ldc 83
+    //   408: aload_1
+    //   409: ldc_w 307
+    //   412: iconst_0
+    //   413: anewarray 4	java/lang/Object
+    //   416: invokestatic 311	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   419: goto -37 -> 382
+    //   422: aload 8
+    //   424: ifnull +8 -> 432
+    //   427: aload 8
+    //   429: invokevirtual 305	java/io/InputStream:close	()V
+    //   432: ldc_w 263
+    //   435: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   438: aload 9
+    //   440: areturn
+    //   441: astore_1
+    //   442: ldc 83
+    //   444: aload_1
+    //   445: ldc_w 307
+    //   448: iconst_0
+    //   449: anewarray 4	java/lang/Object
+    //   452: invokestatic 311	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   455: goto -23 -> 432
+    //   458: astore_1
+    //   459: ldc 83
+    //   461: aload_1
+    //   462: ldc_w 307
+    //   465: iconst_0
+    //   466: anewarray 4	java/lang/Object
+    //   469: invokestatic 311	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   472: goto -214 -> 258
+    //   475: astore_1
+    //   476: aconst_null
+    //   477: astore 7
+    //   479: aload 7
+    //   481: ifnull +8 -> 489
+    //   484: aload 7
+    //   486: invokevirtual 305	java/io/InputStream:close	()V
+    //   489: ldc_w 263
+    //   492: invokestatic 143	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   495: aload_1
+    //   496: athrow
+    //   497: astore 7
+    //   499: ldc 83
+    //   501: aload 7
+    //   503: ldc_w 307
+    //   506: iconst_0
+    //   507: anewarray 4	java/lang/Object
+    //   510: invokestatic 311	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   513: goto -24 -> 489
+    //   516: astore_1
+    //   517: goto -38 -> 479
+    //   520: astore 9
+    //   522: aconst_null
+    //   523: astore 8
+    //   525: goto -315 -> 210
+    //   528: iconst_0
+    //   529: istore 5
+    //   531: goto -366 -> 165
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	504	0	this	c
-    //   0	504	1	paramString	String
-    //   0	504	2	paramBoolean	boolean
-    //   0	504	3	paramInt1	int
-    //   0	504	4	paramInt2	int
-    //   168	332	5	i	int
-    //   160	25	6	j	int
-    //   30	380	7	localObject1	Object
-    //   467	5	7	localIOException	IOException
-    //   493	1	7	localObject2	Object
-    //   102	359	8	localObject3	Object
-    //   34	146	9	localObject4	Object
-    //   192	57	9	localException1	java.lang.Exception
-    //   253	179	9	localObject5	Object
-    //   490	1	9	localException2	java.lang.Exception
-    //   81	101	10	arrayOfByte	byte[]
+    //   0	534	0	this	c
+    //   0	534	1	paramString	String
+    //   0	534	2	paramBoolean	boolean
+    //   0	534	3	paramInt1	int
+    //   0	534	4	paramInt2	int
+    //   184	346	5	i	int
+    //   176	25	6	j	int
+    //   40	445	7	localObject1	Object
+    //   497	5	7	localIOException	IOException
+    //   103	421	8	localInputStream	java.io.InputStream
+    //   44	152	9	localObject2	Object
+    //   208	63	9	localException1	java.lang.Exception
+    //   275	164	9	localObject3	Object
+    //   520	1	9	localException2	java.lang.Exception
+    //   91	107	10	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   125	130	132	java/io/IOException
-    //   104	120	192	java/lang/Exception
-    //   153	162	192	java/lang/Exception
-    //   179	189	192	java/lang/Exception
-    //   248	255	192	java/lang/Exception
-    //   268	278	192	java/lang/Exception
-    //   282	328	192	java/lang/Exception
-    //   336	350	192	java/lang/Exception
-    //   391	398	192	java/lang/Exception
-    //   362	367	370	java/io/IOException
-    //   409	414	417	java/io/IOException
-    //   237	242	434	java/io/IOException
-    //   83	95	451	finally
-    //   460	465	467	java/io/IOException
-    //   104	120	486	finally
-    //   153	162	486	finally
-    //   179	189	486	finally
-    //   198	212	486	finally
-    //   216	232	486	finally
-    //   248	255	486	finally
-    //   268	278	486	finally
-    //   282	328	486	finally
-    //   336	350	486	finally
-    //   391	398	486	finally
-    //   83	95	490	java/lang/Exception
+    //   135	140	148	java/io/IOException
+    //   114	130	208	java/lang/Exception
+    //   169	178	208	java/lang/Exception
+    //   195	205	208	java/lang/Exception
+    //   270	277	208	java/lang/Exception
+    //   290	300	208	java/lang/Exception
+    //   304	350	208	java/lang/Exception
+    //   358	372	208	java/lang/Exception
+    //   395	402	208	java/lang/Exception
+    //   377	382	405	java/io/IOException
+    //   427	432	441	java/io/IOException
+    //   253	258	458	java/io/IOException
+    //   93	105	475	finally
+    //   484	489	497	java/io/IOException
+    //   114	130	516	finally
+    //   169	178	516	finally
+    //   195	205	516	finally
+    //   214	228	516	finally
+    //   232	248	516	finally
+    //   270	277	516	finally
+    //   290	300	516	finally
+    //   304	350	516	finally
+    //   358	372	516	finally
+    //   395	402	516	finally
+    //   93	105	520	java/lang/Exception
   }
   
   private static String b(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    paramString1 = bk.aM(paramString1, "null") + bk.aM(paramString2, "null") + paramBoolean + paramInt1 + "_" + paramInt2;
-    return "fts_search_" + g.o(paramString1.getBytes());
+    AppMethodBeat.i(136538);
+    paramString1 = bo.bf(paramString1, "null") + bo.bf(paramString2, "null") + paramBoolean + paramInt1 + "_" + paramInt2;
+    paramString1 = "fts_search_" + g.w(paramString1.getBytes());
+    AppMethodBeat.o(136538);
+    return paramString1;
   }
   
   private byte[] getBuffer()
   {
     try
     {
-      byte[] arrayOfByte2 = (byte[])this.ktF.get(Long.valueOf(Thread.currentThread().getId()));
+      AppMethodBeat.i(136537);
+      byte[] arrayOfByte2 = (byte[])this.mPs.get(Long.valueOf(Thread.currentThread().getId()));
       byte[] arrayOfByte1 = arrayOfByte2;
       if (arrayOfByte2 == null)
       {
         arrayOfByte1 = new byte[1024];
-        this.ktF.put(Long.valueOf(Thread.currentThread().getId()), arrayOfByte1);
+        this.mPs.put(Long.valueOf(Thread.currentThread().getId()), arrayOfByte1);
       }
+      AppMethodBeat.o(136537);
       return arrayOfByte1;
     }
     finally {}
   }
   
-  private Bitmap mr(String paramString)
+  private Bitmap tx(String paramString)
   {
-    c.a locala = (c.a)this.ktz.get(paramString);
+    AppMethodBeat.i(136536);
+    c.a locala = (c.a)this.mPm.get(paramString);
     if ((locala != null) && (locala.bitmap != null) && (!locala.bitmap.isRecycled()))
     {
-      this.ktA.remove(paramString);
-      this.ktA.add(0, paramString);
+      this.mPn.remove(paramString);
+      this.mPn.add(0, paramString);
     }
-    if (locala == null) {
+    if (locala == null)
+    {
+      AppMethodBeat.o(136536);
       return null;
     }
-    return locala.bitmap;
+    paramString = locala.bitmap;
+    AppMethodBeat.o(136536);
+    return paramString;
   }
   
   public final Bitmap a(String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    return mr(b(paramString1, paramString2, paramBoolean, paramInt1, paramInt2));
+    AppMethodBeat.i(136535);
+    paramString1 = tx(b(paramString1, paramString2, paramBoolean, paramInt1, paramInt2));
+    AppMethodBeat.o(136535);
+    return paramString1;
   }
   
   public final String a(ImageView paramImageView, String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(136529);
     paramString1 = b(paramString1, paramString2, paramBoolean, paramInt1, paramInt2);
     paramImageView.setTag(paramString1);
-    y.d("MicroMsg.FTS.FTSImageLoader", "update image view cache key: hashcode=%d | cacheKey=%s", new Object[] { Integer.valueOf(paramImageView.hashCode()), paramString1 });
+    ab.d("MicroMsg.FTS.FTSImageLoader", "update image view cache key: hashcode=%d | cacheKey=%s", new Object[] { Integer.valueOf(paramImageView.hashCode()), paramString1 });
+    AppMethodBeat.o(136529);
     return paramString1;
   }
   
   public final void a(Context paramContext, ImageView paramImageView, String paramString1, String paramString2, boolean paramBoolean, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(136528);
     String str = a(paramImageView, paramString1, paramString2, paramBoolean, paramInt1, paramInt2);
-    if (!this.ktB) {
-      return;
-    }
-    paramContext = new c.b(this, str, paramString1, paramString2, paramBoolean, paramInt1, paramInt2, new c.3(this, paramImageView, paramContext));
-    if (this.ktH.add(str))
+    if (!this.mPo)
     {
-      this.ktC += 1;
-      this.ktC %= 2;
-      this.ktD[this.ktC].post(paramContext);
+      AppMethodBeat.o(136528);
       return;
     }
-    y.v("MicroMsg.FTS.FTSImageLoader", "cacheKey: %s | runningJobTask: %s", new Object[] { str, this.ktH.toString() });
+    paramContext = new b(str, paramString1, paramString2, paramBoolean, paramInt1, paramInt2, new c.3(this, paramImageView, paramContext));
+    if (this.mPu.add(str))
+    {
+      this.mPp += 1;
+      this.mPp %= 2;
+      this.mPq[this.mPp].post(paramContext);
+      AppMethodBeat.o(136528);
+      return;
+    }
+    ab.v("MicroMsg.FTS.FTSImageLoader", "cacheKey: %s | runningJobTask: %s", new Object[] { str, this.mPu.toString() });
+    AppMethodBeat.o(136528);
   }
   
-  public final void aVj()
+  public final void bBI()
   {
-    y.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImageTask");
+    AppMethodBeat.i(136530);
+    ab.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImageTask");
     int i = 0;
     while (i < 2)
     {
-      if (this.ktD[i] != null) {
-        this.ktD[i].removeCallbacksAndMessages(null);
+      if (this.mPq[i] != null) {
+        this.mPq[i].removeCallbacksAndMessages(null);
       }
       i += 1;
     }
+    AppMethodBeat.o(136530);
   }
   
-  public final void aVk()
+  public final void bBJ()
   {
-    y.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImage");
-    this.ktB = false;
-    aVj();
+    AppMethodBeat.i(136531);
+    ab.d("MicroMsg.FTS.FTSImageLoader", "stopLoadImage");
+    this.mPo = false;
+    bBI();
+    AppMethodBeat.o(136531);
   }
   
-  public final boolean aVl()
+  public final boolean bBK()
   {
-    return this.ktB;
+    return this.mPo;
   }
   
-  public final void aVm()
+  public final void bBL()
   {
-    y.d("MicroMsg.FTS.FTSImageLoader", "startLoadImage");
-    this.ktB = true;
+    AppMethodBeat.i(136532);
+    ab.d("MicroMsg.FTS.FTSImageLoader", "startLoadImage");
+    this.mPo = true;
+    AppMethodBeat.o(136532);
   }
   
-  public final void aVn()
+  public final void bBM()
   {
-    y.d("MicroMsg.FTS.FTSImageLoader", "clearCacheAndTask %s", new Object[] { Integer.valueOf(this.ktz.size()) });
-    aVj();
-    Iterator localIterator = this.ktz.entrySet().iterator();
+    AppMethodBeat.i(136533);
+    ab.d("MicroMsg.FTS.FTSImageLoader", "clearCacheAndTask %s", new Object[] { Integer.valueOf(this.mPm.size()) });
+    bBI();
+    Iterator localIterator = this.mPm.entrySet().iterator();
     while (localIterator.hasNext()) {
-      DG((String)((Map.Entry)localIterator.next()).getKey());
+      OP((String)((Map.Entry)localIterator.next()).getKey());
     }
-    this.ktA.clear();
-    this.ktH.clear();
+    this.mPn.clear();
+    this.mPu.clear();
+    AppMethodBeat.o(136533);
   }
   
-  public final void aVo()
+  public final void bBN()
   {
-    aVn();
-    y.d("MicroMsg.FTS.FTSImageLoader", "destoryLoader");
+    AppMethodBeat.i(136534);
+    bBM();
+    ab.d("MicroMsg.FTS.FTSImageLoader", "destoryLoader");
     int i = 0;
     while (i < 2)
     {
-      if (this.ktD[i] != null) {
-        this.ktD[i].getLooper().quit();
+      if (this.mPq[i] != null) {
+        this.mPq[i].getLooper().quit();
       }
       i += 1;
     }
-    Iterator localIterator = this.ktE.values().iterator();
+    Iterator localIterator = this.mPr.values().iterator();
     while (localIterator.hasNext())
     {
       ByteArrayOutputStream localByteArrayOutputStream = (ByteArrayOutputStream)localIterator.next();
@@ -503,19 +555,75 @@ public final class c
       }
       catch (IOException localIOException) {}
     }
-    this.ktE.clear();
-    this.ktF.clear();
-    this.ktG.getLooper().quit();
+    this.mPr.clear();
+    this.mPs.clear();
+    this.mPt.getLooper().quit();
+    AppMethodBeat.o(136534);
+  }
+  
+  final class b
+    implements Runnable
+  {
+    private String cBD;
+    private String cacheKey;
+    private int height;
+    private boolean mPy;
+    private c.c mPz;
+    private String url;
+    private int width;
+    
+    public b(String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt1, int paramInt2, c.c paramc)
+    {
+      this.cacheKey = paramString1;
+      this.url = paramString2;
+      this.cBD = paramString3;
+      this.mPz = paramc;
+      this.mPy = paramBoolean;
+      this.width = paramInt1;
+      this.height = paramInt2;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(136525);
+      ab.d("MicroMsg.FTS.FTSImageLoader", "Start to run load bitmap job %s", new Object[] { this.cacheKey });
+      if (bo.isNullOrNil(this.cBD)) {
+        this.cBD = c.OQ(this.cacheKey);
+      }
+      long l2 = System.currentTimeMillis();
+      Bitmap localBitmap = c.ae(this.cBD, this.width, this.height);
+      long l1 = System.currentTimeMillis();
+      if (localBitmap != null)
+      {
+        ab.d("MicroMsg.FTS.FTSImageLoader", "Found image in local %s | localPath %s | use time %d", new Object[] { this.url, this.cBD, Long.valueOf(l1 - l2) });
+        c.a(c.this, this.cacheKey, this.cBD, localBitmap);
+        this.mPz.aQ(this.cacheKey, true);
+        AppMethodBeat.o(136525);
+        return;
+      }
+      localBitmap = c.a(c.this, this.url, this.mPy, this.width, this.height);
+      l2 = System.currentTimeMillis();
+      ab.d("MicroMsg.FTS.FTSImageLoader", "Get image from net %s | localPath %s | use time %d", new Object[] { this.url, this.cBD, Long.valueOf(l2 - l1) });
+      if (localBitmap != null)
+      {
+        c.a(c.this, this.cacheKey, this.cBD, localBitmap);
+        this.mPz.aQ(this.cacheKey, true);
+        AppMethodBeat.o(136525);
+        return;
+      }
+      this.mPz.aQ(this.cacheKey, false);
+      AppMethodBeat.o(136525);
+    }
   }
   
   static abstract interface c
   {
-    public abstract void aC(String paramString, boolean paramBoolean);
+    public abstract void aQ(String paramString, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.c
  * JD-Core Version:    0.7.0.1
  */

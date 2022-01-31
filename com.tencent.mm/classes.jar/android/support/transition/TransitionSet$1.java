@@ -1,13 +1,13 @@
 package android.support.transition;
 
 final class TransitionSet$1
-  extends ae
+  extends ad
 {
   TransitionSet$1(TransitionSet paramTransitionSet, Transition paramTransition) {}
   
   public final void a(Transition paramTransition)
   {
-    this.sH.bz();
+    this.tJ.cn();
     paramTransition.b(this);
   }
 }

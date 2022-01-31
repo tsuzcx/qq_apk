@@ -1,17 +1,13 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.view.MenuItem;
-import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.widget.b.d.a;
 
 final class LoginHistoryUI$20
-  implements n.d
+  implements d.a
 {
   LoginHistoryUI$20(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
-  {
-    LoginHistoryUI.a(this.fnc, paramMenuItem.getItemId());
-  }
+  public final void onDismiss() {}
 }
 
 

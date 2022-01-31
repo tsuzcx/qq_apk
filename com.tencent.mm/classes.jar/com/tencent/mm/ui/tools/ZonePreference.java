@@ -6,19 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZonePreference
   extends Preference
 {
-  private TextView wfA;
-  RegionCodeDecoder.Region wfy;
-  private CharSequence wfz;
+  RegionCodeDecoder.Region Ayo;
+  private CharSequence Ayp;
+  private TextView Ayq;
   
   public ZonePreference(Context paramContext)
   {
@@ -33,61 +32,78 @@ public class ZonePreference
   public ZonePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(35008);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(35008);
   }
   
-  private void cJn()
+  private void dOd()
   {
-    if (this.wfA == null) {
+    AppMethodBeat.i(35011);
+    if (this.Ayq == null)
+    {
+      AppMethodBeat.o(35011);
       return;
     }
-    if ((this.wfz != null) && (!ah.bl(this.wfz.toString()))) {
-      this.wfA.setVisibility(0);
+    if ((this.Ayp != null) && (!ah.isNullOrNil(this.Ayp.toString()))) {
+      this.Ayq.setVisibility(0);
     }
     for (;;)
     {
-      this.wfA.setText(this.wfz);
+      this.Ayq.setText(this.Ayp);
+      AppMethodBeat.o(35011);
       return;
-      this.wfA.setVisibility(8);
+      this.Ayq.setVisibility(8);
     }
   }
   
   public final void a(RegionCodeDecoder.Region paramRegion)
   {
-    if ((paramRegion == null) || (ah.bl(paramRegion.getName())) || (ah.bl(paramRegion.getCode())))
+    AppMethodBeat.i(35009);
+    if ((paramRegion == null) || (ah.isNullOrNil(paramRegion.getName())) || (ah.isNullOrNil(paramRegion.getCode())))
     {
-      y.e("MicroMsg.ZonePreference", "setZoneItem item = null");
+      ab.e("MicroMsg.ZonePreference", "setZoneItem item = null");
+      AppMethodBeat.o(35009);
       return;
     }
     setKey(paramRegion.getCode() + paramRegion.isCity());
-    this.wfy = paramRegion;
+    this.Ayo = paramRegion;
+    AppMethodBeat.o(35009);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(35013);
     super.onBindView(paramView);
-    if (this.wfy == null) {
+    if (this.Ayo == null)
+    {
+      AppMethodBeat.o(35013);
       return;
     }
-    ((TextView)paramView.findViewById(R.h.zonename)).setText(this.wfy.getName());
-    this.wfA = ((TextView)paramView.findViewById(R.h.summery));
-    cJn();
+    ((TextView)paramView.findViewById(2131826226)).setText(this.Ayo.getName());
+    this.Ayq = ((TextView)paramView.findViewById(2131826229));
+    dOd();
+    AppMethodBeat.o(35013);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(35012);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_zone, localViewGroup);
+    localLayoutInflater.inflate(2130970222, localViewGroup);
+    AppMethodBeat.o(35012);
     return paramViewGroup;
   }
   
   public final void setSummary(CharSequence paramCharSequence)
   {
-    this.wfz = paramCharSequence;
-    cJn();
+    AppMethodBeat.i(35010);
+    this.Ayp = paramCharSequence;
+    dOd();
+    AppMethodBeat.o(35010);
   }
 }
 

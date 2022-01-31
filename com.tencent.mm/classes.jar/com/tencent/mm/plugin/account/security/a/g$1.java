@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.account.security.a;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 
 final class g$1
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return e.dXp;
+    return e.SQL_CREATE;
   }
 }
 

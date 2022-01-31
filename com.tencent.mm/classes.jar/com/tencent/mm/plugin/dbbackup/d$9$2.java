@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.dbbackup;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class d$9$2
   implements Runnable
@@ -13,25 +14,29 @@ final class d$9$2
   
   public final void run()
   {
-    d.a(this.iNz.iNn, null);
-    au.Hx();
-    long l1 = new com.tencent.mm.vfs.b(c.Dx()).length();
-    long l2 = bk.crY();
-    if (l1 == 0L) {
-      y.i("MicroMsg.SubCoreDBBackup", "Invalid database size, backup canceled.");
-    }
-    do
+    AppMethodBeat.i(18980);
+    d.a(this.kUz.kUn, null);
+    aw.aaz();
+    long l1 = new com.tencent.mm.vfs.b(c.Rs()).length();
+    long l2 = bo.dtV();
+    if (l1 == 0L)
     {
+      ab.i("MicroMsg.SubCoreDBBackup", "Invalid database size, backup canceled.");
+      AppMethodBeat.o(18980);
       return;
-      if ((l1 > d.f(this.iNz.iNn)) || (l1 > l2))
-      {
-        y.i("MicroMsg.SubCoreDBBackup", "Not enough disk space, backup canceled.");
-        h.nFQ.f(11098, new Object[] { Integer.valueOf(10008), String.format("%d|%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) }) });
-        return;
-      }
-      d.d(this.iNz.iNn, this.iNz.iNn.a(this.iMt, this.iNb));
-    } while (!d.o(this.iNz.iNn));
-    y.i("MicroMsg.SubCoreDBBackup", "Auto database backup started.");
+    }
+    if ((l1 > d.f(this.kUz.kUn)) || (l1 > l2))
+    {
+      ab.i("MicroMsg.SubCoreDBBackup", "Not enough disk space, backup canceled.");
+      h.qsU.e(11098, new Object[] { Integer.valueOf(10008), String.format("%d|%d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) }) });
+      AppMethodBeat.o(18980);
+      return;
+    }
+    d.d(this.kUz.kUn, this.kUz.kUn.a(this.kTr, this.kUb));
+    if (d.o(this.kUz.kUn)) {
+      ab.i("MicroMsg.SubCoreDBBackup", "Auto database backup started.");
+    }
+    AppMethodBeat.o(18980);
   }
 }
 

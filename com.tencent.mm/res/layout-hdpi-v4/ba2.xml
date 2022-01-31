@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/f_3" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/q1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/f_4" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/b4f" />
+        <com.tencent.mm.plugin.voiceprint.ui.VoiceTipInfoView android:id="@id/f_6" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <Button android:id="@id/f__" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="server_test" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/cd7" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.voiceprint.ui.VoicePrintVolumeMeter android:id="@id/cd8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f_7" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <Button android:layout_gravity="center" android:id="@id/f_8" android:background="@drawable/a6h" android:visibility="visible" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_marginBottom="58.0dip" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <RelativeLayout android:id="@id/f_9" android:background="@drawable/aui" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_above="@id/f_8" android:layout_centerHorizontal="true">
+            <TextView android:textSize="20.0dip" android:textColor="@color/rb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/f8o" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <Button android:layout_gravity="center" android:id="@id/bpb" android:layout_marginBottom="150.0dip" android:text="@string/so" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" style="@style/pc" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.voiceprint.ui.NoiseDetectMaskView android:id="@id/ecp" android:background="@color/zc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

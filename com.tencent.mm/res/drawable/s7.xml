@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle" android:useLevel="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/multitalk_hangup_press" />
-    <item android:state_pressed="false" android:drawable="@raw/multitalk_hangup" />
-</selector>
+    <solid android:color="#ffffffff" />
+    <corners android:radius="6.0dip" />
+</shape>

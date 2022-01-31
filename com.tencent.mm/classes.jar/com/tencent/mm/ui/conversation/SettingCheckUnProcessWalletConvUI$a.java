@@ -11,213 +11,71 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.h.c.as;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.r;
 import com.tencent.mm.model.s;
-import com.tencent.mm.modelvoice.n;
+import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bq;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.base.NoMeasuredTextView;
-import com.tencent.mm.ui.tools.q;
 import java.util.HashMap;
 import java.util.List;
 
 final class SettingCheckUnProcessWalletConvUI$a
   extends BaseAdapter
 {
-  private final int vQb;
-  private final int vQc;
-  private float veB = -1.0F;
-  protected float veC = -1.0F;
-  private float veD = -1.0F;
-  private ColorStateList[] veE = new ColorStateList[5];
-  private HashMap<String, SettingCheckUnProcessWalletConvUI.a.a> veF;
+  private final int AhL;
+  private final int AhM;
+  private float zta;
+  protected float ztb;
+  private float ztc;
+  private ColorStateList[] ztd;
+  private HashMap<String, SettingCheckUnProcessWalletConvUI.a.a> zte;
   
   public SettingCheckUnProcessWalletConvUI$a(SettingCheckUnProcessWalletConvUI paramSettingCheckUnProcessWalletConvUI)
   {
-    this.veE[0] = a.h(paramSettingCheckUnProcessWalletConvUI, R.e.hint_text_color);
-    this.veE[1] = a.h(paramSettingCheckUnProcessWalletConvUI, R.e.mm_list_textcolor_unread);
-    this.veE[3] = a.h(paramSettingCheckUnProcessWalletConvUI, R.e.normal_text_color);
-    this.veE[2] = a.h(paramSettingCheckUnProcessWalletConvUI, R.e.mm_list_textcolor_three);
-    this.veE[2] = a.h(paramSettingCheckUnProcessWalletConvUI, R.e.mm_list_textcolor_three);
-    this.veE[4] = a.h(paramSettingCheckUnProcessWalletConvUI, R.e.light_text_color);
-    if (a.fh(paramSettingCheckUnProcessWalletConvUI)) {
-      this.vQc = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(R.f.ConversationTimeBiggerWidth);
+    AppMethodBeat.i(34617);
+    this.ztd = new ColorStateList[5];
+    this.zta = -1.0F;
+    this.ztb = -1.0F;
+    this.ztc = -1.0F;
+    this.ztd[0] = a.l(paramSettingCheckUnProcessWalletConvUI, 2131690168);
+    this.ztd[1] = a.l(paramSettingCheckUnProcessWalletConvUI, 2131690773);
+    this.ztd[3] = a.l(paramSettingCheckUnProcessWalletConvUI, 2131690322);
+    this.ztd[2] = a.l(paramSettingCheckUnProcessWalletConvUI, 2131690770);
+    this.ztd[2] = a.l(paramSettingCheckUnProcessWalletConvUI, 2131690770);
+    this.ztd[4] = a.l(paramSettingCheckUnProcessWalletConvUI, 2131690210);
+    if (a.gt(paramSettingCheckUnProcessWalletConvUI)) {
+      this.AhM = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(2131427552);
     }
-    for (this.vQb = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(R.f.ConversationTimeSmallWidth);; this.vQb = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(R.f.ConversationTimeSmallerWidth))
+    for (this.AhL = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(2131427554);; this.AhL = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(2131427555))
     {
-      this.veB = a.aa(paramSettingCheckUnProcessWalletConvUI, R.f.NormalTextSize);
-      this.veC = a.aa(paramSettingCheckUnProcessWalletConvUI, R.f.HintTextSize);
-      this.veD = a.aa(paramSettingCheckUnProcessWalletConvUI, R.f.SmallestTextSize);
-      this.veF = new HashMap();
+      this.zta = a.ao(paramSettingCheckUnProcessWalletConvUI, 2131427809);
+      this.ztb = a.ao(paramSettingCheckUnProcessWalletConvUI, 2131427758);
+      this.ztc = a.ao(paramSettingCheckUnProcessWalletConvUI, 2131427862);
+      this.zte = new HashMap();
+      AppMethodBeat.o(34617);
       return;
-      this.vQc = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(R.f.ConversationTimeBigWidth);
+      this.AhM = paramSettingCheckUnProcessWalletConvUI.getResources().getDimensionPixelSize(2131427551);
     }
   }
   
-  private static String adj(String paramString)
-  {
-    if ((paramString != null) && (paramString.length() == 32)) {
-      return ((com.tencent.mm.plugin.emoji.b.d)g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Aw(paramString);
-    }
-    return null;
-  }
-  
-  private CharSequence c(ak paramak, int paramInt, boolean paramBoolean)
-  {
-    if ((!ah.bl(paramak.field_editingMsg)) && ((paramak.field_atCount <= 0) || (paramak.field_unReadCount <= 0)))
-    {
-      localObject1 = new SpannableStringBuilder(this.vUd.getString(R.l.main_conversation_last_editing_msg_prefix));
-      ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(-5569532), 0, ((SpannableStringBuilder)localObject1).length(), 33);
-      ((SpannableStringBuilder)localObject1).append(" ").append(com.tencent.mm.pluginsdk.ui.d.j.b(this.vUd, paramak.field_editingMsg, paramInt));
-      return localObject1;
-    }
-    Object localObject1 = paramak.field_digest;
-    if ((localObject1 != null) && (((String)localObject1).startsWith("<img src=\"original_label.png\"/>  "))) {
-      return new SpannableString(com.tencent.mm.pluginsdk.ui.d.j.c(this.vUd, (CharSequence)localObject1, paramInt));
-    }
-    localObject1 = paramak.field_username;
-    int i;
-    if (((String)localObject1).equals("qqmail"))
-    {
-      au.Hx();
-      if (ah.g((Integer)c.Dz().get(17, null)) == 1) {}
-      for (i = 1; i == 0; i = 0) {
-        return this.vUd.getString(R.l.settings_plugins_disable);
-      }
-    }
-    if (((String)localObject1).equals("tmessage"))
-    {
-      au.Hx();
-      localObject1 = c.FE().Ic("@t.qq.com");
-      if ((localObject1 != null) && (((bq)localObject1).isEnable())) {}
-      for (i = 1; i == 0; i = 0) {
-        return this.vUd.getString(R.l.settings_plugins_disable);
-      }
-    }
-    String str1;
-    if ((paramak.field_msgType != null) && ((paramak.field_msgType.equals("47")) || (paramak.field_msgType.equals("1048625"))))
-    {
-      localObject1 = adj(paramak.field_digest);
-      str1 = "";
-      if (localObject1 != null) {
-        return "[" + (String)localObject1 + "]";
-      }
-      localObject1 = str1;
-      if (paramak.field_digest != null)
-      {
-        localObject1 = str1;
-        if (paramak.field_digest.contains(":"))
-        {
-          str1 = paramak.field_digest.substring(0, paramak.field_digest.indexOf(":"));
-          String str2 = adj(paramak.field_digest.substring(paramak.field_digest.indexOf(":") + 1).replace(" ", ""));
-          localObject1 = str1;
-          if (str2 != null)
-          {
-            paramak = "[" + str2 + "]";
-            if (ah.bl(str1)) {
-              return paramak;
-            }
-            return str1 + ": " + paramak;
-          }
-        }
-      }
-      str1 = this.vUd.getString(R.l.app_emoji);
-      if (ah.bl((String)localObject1))
-      {
-        localObject1 = str1;
-        paramak.dQ((String)localObject1);
-      }
-    }
-    else
-    {
-      if (ah.bl(paramak.field_digest)) {
-        break label724;
-      }
-      if (ah.bl(paramak.field_digestUser)) {
-        break label713;
-      }
-      if ((paramak.field_isSend != 0) || (!s.fn(paramak.field_username))) {
-        break label701;
-      }
-      localObject1 = r.getDisplayName(paramak.field_digestUser, paramak.field_username);
-    }
-    label701:
-    label713:
-    label724:
-    Object localObject2;
-    for (;;)
-    {
-      try
-      {
-        localObject1 = String.format(paramak.field_digest, new Object[] { localObject1 });
-        str1 = ((String)localObject1).replace('\n', ' ');
-        if ((paramak.field_atCount <= 0) || (paramak.field_unReadCount <= 0)) {
-          break label755;
-        }
-        paramak = new SpannableStringBuilder(this.vUd.getString(R.l.main_conversation_chatroom_at_hint));
-        paramak.setSpan(new ForegroundColorSpan(-5569532), 0, paramak.length(), 33);
-        paramak.append(" ").append(com.tencent.mm.pluginsdk.ui.d.j.b(this.vUd, str1, paramInt));
-        return paramak;
-      }
-      catch (Exception localException) {}
-      localObject1 = (String)localObject1 + ": " + str1;
-      break;
-      localObject1 = r.gV(paramak.field_digestUser);
-      continue;
-      localObject1 = paramak.field_digest;
-      continue;
-      localObject2 = com.tencent.mm.booter.notification.a.h.a(paramak.field_isSend, paramak.field_username, paramak.field_content, xP(paramak.field_msgType), this.vUd);
-    }
-    label755:
-    if ((paramBoolean) && (paramak.field_unReadCount > 1)) {
-      localObject2 = this.vUd.getString(R.l.main_conversation_chatroom_unread_digest, new Object[] { Integer.valueOf(paramak.field_unReadCount), str1 });
-    }
-    for (;;)
-    {
-      return com.tencent.mm.pluginsdk.ui.d.j.b(this.vUd, (CharSequence)localObject2, paramInt);
-      localObject2 = str1;
-      if (paramak.field_unReadCount > 1)
-      {
-        localObject2 = str1;
-        if (s.hK(paramak.field_parentRef)) {
-          localObject2 = this.vUd.getString(R.l.main_conversation_chatroom_unread_digest, new Object[] { Integer.valueOf(paramak.field_unReadCount), str1 });
-        }
-      }
-    }
-  }
-  
-  private CharSequence h(ak paramak)
-  {
-    if (paramak.field_status == 1) {
-      return this.vUd.getString(R.l.main_sending);
-    }
-    if (paramak.field_conversationTime == 9223372036854775807L) {
-      return "";
-    }
-    return com.tencent.mm.pluginsdk.f.h.c(this.vUd, paramak.field_conversationTime, true);
-  }
-  
-  private static int xP(String paramString)
+  private static int GH(String paramString)
   {
     int j = 1;
+    AppMethodBeat.i(34621);
     int i = j;
     if (paramString != null)
     {
@@ -227,22 +85,211 @@ final class SettingCheckUnProcessWalletConvUI$a
     try
     {
       i = Integer.valueOf(paramString).intValue();
+      AppMethodBeat.o(34621);
       return i;
     }
-    catch (NumberFormatException paramString) {}
-    return 1;
+    catch (NumberFormatException paramString)
+    {
+      for (;;)
+      {
+        i = j;
+      }
+    }
   }
   
-  public final ak HS(int paramInt)
+  private static String atE(String paramString)
   {
-    String str = (String)SettingCheckUnProcessWalletConvUI.d(this.vUd).get(paramInt);
-    au.Hx();
-    return c.FB().abv(str);
+    AppMethodBeat.i(34624);
+    if ((paramString != null) && (paramString.length() == 32))
+    {
+      paramString = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kx(paramString);
+      AppMethodBeat.o(34624);
+      return paramString;
+    }
+    AppMethodBeat.o(34624);
+    return null;
+  }
+  
+  private CharSequence c(ak paramak, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(34623);
+    if ((!ah.isNullOrNil(paramak.field_editingMsg)) && ((paramak.field_atCount <= 0) || (paramak.field_unReadCount <= 0)))
+    {
+      localObject1 = new SpannableStringBuilder(this.AlZ.getString(2131301401));
+      ((SpannableStringBuilder)localObject1).setSpan(new ForegroundColorSpan(-5569532), 0, ((SpannableStringBuilder)localObject1).length(), 33);
+      ((SpannableStringBuilder)localObject1).append(" ").append(j.b(this.AlZ, paramak.field_editingMsg, paramInt));
+      AppMethodBeat.o(34623);
+      return localObject1;
+    }
+    Object localObject1 = paramak.field_digest;
+    if ((localObject1 != null) && (((String)localObject1).startsWith("<img src=\"original_label.png\"/>  ")))
+    {
+      paramak = new SpannableString(j.e(this.AlZ, (CharSequence)localObject1, paramInt));
+      AppMethodBeat.o(34623);
+      return paramak;
+    }
+    localObject1 = paramak.field_username;
+    int i;
+    if (((String)localObject1).equals("qqmail"))
+    {
+      aw.aaz();
+      if (ah.g((Integer)c.Ru().get(17, null)) == 1) {}
+      for (i = 1; i == 0; i = 0)
+      {
+        paramak = this.AlZ.getString(2131303374);
+        AppMethodBeat.o(34623);
+        return paramak;
+      }
+    }
+    if (((String)localObject1).equals("tmessage"))
+    {
+      aw.aaz();
+      localObject1 = c.YI().TL("@t.qq.com");
+      if ((localObject1 != null) && (((bq)localObject1).isEnable())) {}
+      for (i = 1; i == 0; i = 0)
+      {
+        paramak = this.AlZ.getString(2131303374);
+        AppMethodBeat.o(34623);
+        return paramak;
+      }
+    }
+    String str1;
+    if ((paramak.field_msgType != null) && ((paramak.field_msgType.equals("47")) || (paramak.field_msgType.equals("1048625"))))
+    {
+      localObject1 = atE(paramak.field_digest);
+      str1 = "";
+      if (localObject1 != null)
+      {
+        paramak = "[" + (String)localObject1 + "]";
+        AppMethodBeat.o(34623);
+        return paramak;
+      }
+      localObject1 = str1;
+      if (paramak.field_digest != null)
+      {
+        localObject1 = str1;
+        if (paramak.field_digest.contains(":"))
+        {
+          str1 = paramak.field_digest.substring(0, paramak.field_digest.indexOf(":"));
+          String str2 = atE(paramak.field_digest.substring(paramak.field_digest.indexOf(":") + 1).replace(" ", ""));
+          localObject1 = str1;
+          if (str2 != null)
+          {
+            paramak = "[" + str2 + "]";
+            if (ah.isNullOrNil(str1))
+            {
+              AppMethodBeat.o(34623);
+              return paramak;
+            }
+            paramak = str1 + ": " + paramak;
+            AppMethodBeat.o(34623);
+            return paramak;
+          }
+        }
+      }
+      str1 = this.AlZ.getString(2131296915);
+      if (ah.isNullOrNil((String)localObject1))
+      {
+        localObject1 = str1;
+        paramak.jW((String)localObject1);
+      }
+    }
+    else
+    {
+      if (ah.isNullOrNil(paramak.field_digest)) {
+        break label775;
+      }
+      if (ah.isNullOrNil(paramak.field_digestUser)) {
+        break label764;
+      }
+      if ((paramak.field_isSend != 0) || (!com.tencent.mm.model.t.lA(paramak.field_username))) {
+        break label752;
+      }
+      localObject1 = s.getDisplayName(paramak.field_digestUser, paramak.field_username);
+    }
+    label752:
+    label764:
+    Object localObject2;
+    for (;;)
+    {
+      try
+      {
+        localObject1 = String.format(paramak.field_digest, new Object[] { localObject1 });
+        str1 = ((String)localObject1).replace('\n', ' ');
+        if ((paramak.field_atCount <= 0) || (paramak.field_unReadCount <= 0)) {
+          break label806;
+        }
+        paramak = new SpannableStringBuilder(this.AlZ.getString(2131301397));
+        paramak.setSpan(new ForegroundColorSpan(-5569532), 0, paramak.length(), 33);
+        paramak.append(" ").append(j.b(this.AlZ, str1, paramInt));
+        AppMethodBeat.o(34623);
+        return paramak;
+      }
+      catch (Exception localException) {}
+      localObject1 = (String)localObject1 + ": " + str1;
+      break;
+      localObject1 = s.nE(paramak.field_digestUser);
+      continue;
+      localObject1 = paramak.field_digest;
+      continue;
+      label775:
+      localObject2 = com.tencent.mm.booter.notification.a.h.a(paramak.field_isSend, paramak.field_username, paramak.field_content, GH(paramak.field_msgType), this.AlZ);
+    }
+    label806:
+    if ((paramBoolean) && (paramak.field_unReadCount > 1)) {
+      localObject2 = this.AlZ.getString(2131301400, new Object[] { Integer.valueOf(paramak.field_unReadCount), str1 });
+    }
+    for (;;)
+    {
+      paramak = j.b(this.AlZ, (CharSequence)localObject2, paramInt);
+      AppMethodBeat.o(34623);
+      return paramak;
+      localObject2 = str1;
+      if (paramak.field_unReadCount > 1)
+      {
+        localObject2 = str1;
+        if (com.tencent.mm.model.t.ot(paramak.field_parentRef)) {
+          localObject2 = this.AlZ.getString(2131301400, new Object[] { Integer.valueOf(paramak.field_unReadCount), str1 });
+        }
+      }
+    }
+  }
+  
+  private CharSequence h(ak paramak)
+  {
+    AppMethodBeat.i(34622);
+    if (paramak.field_status == 1)
+    {
+      paramak = this.AlZ.getString(2131301428);
+      AppMethodBeat.o(34622);
+      return paramak;
+    }
+    if (paramak.field_conversationTime == 9223372036854775807L)
+    {
+      AppMethodBeat.o(34622);
+      return "";
+    }
+    paramak = com.tencent.mm.pluginsdk.f.h.c(this.AlZ, paramak.field_conversationTime, true);
+    AppMethodBeat.o(34622);
+    return paramak;
+  }
+  
+  public final ak QE(int paramInt)
+  {
+    AppMethodBeat.i(34619);
+    Object localObject = (String)SettingCheckUnProcessWalletConvUI.d(this.AlZ).get(paramInt);
+    aw.aaz();
+    localObject = c.YF().arH((String)localObject);
+    AppMethodBeat.o(34619);
+    return localObject;
   }
   
   public final int getCount()
   {
-    return SettingCheckUnProcessWalletConvUI.d(this.vUd).size();
+    AppMethodBeat.i(34618);
+    int i = SettingCheckUnProcessWalletConvUI.d(this.AlZ).size();
+    AppMethodBeat.o(34618);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -252,73 +299,75 @@ final class SettingCheckUnProcessWalletConvUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(34620);
     if (paramView == null)
     {
       paramViewGroup = new SettingCheckUnProcessWalletConvUI.a.b(this, (byte)0);
-      if (a.fh(this.vUd))
+      if (a.gt(this.AlZ))
       {
-        paramView = View.inflate(this.vUd, R.i.conversation_item_large, null);
-        paramViewGroup.doU = ((ImageView)paramView.findViewById(R.h.avatar_iv));
-        paramViewGroup.veJ = ((NoMeasuredTextView)paramView.findViewById(R.h.nickname_tv));
-        paramViewGroup.vQy = ((NoMeasuredTextView)paramView.findViewById(R.h.source_tv));
-        paramViewGroup.veK = ((NoMeasuredTextView)paramView.findViewById(R.h.update_time_tv));
-        paramViewGroup.veL = ((NoMeasuredTextView)paramView.findViewById(R.h.last_msg_tv));
-        paramViewGroup.hZk = ((TextView)paramView.findViewById(R.h.tipcnt_tv));
-        paramViewGroup.hZk.setBackgroundResource(q.hh(this.vUd));
-        paramViewGroup.veM = ((ImageView)paramView.findViewById(R.h.image_mute));
-        paramViewGroup.veO = paramView.findViewById(R.h.avatar_prospect_iv);
-        paramViewGroup.veN = ((ImageView)paramView.findViewById(R.h.talkroom_iv));
-        paramViewGroup.vQz = ((ImageView)paramView.findViewById(R.h.location_share_iv));
+        paramView = View.inflate(this.AlZ, 2130969275, null);
+        paramViewGroup.egq = ((ImageView)paramView.findViewById(2131821210));
+        paramViewGroup.zti = ((NoMeasuredTextView)paramView.findViewById(2131823254));
+        paramViewGroup.Aii = ((NoMeasuredTextView)paramView.findViewById(2131821550));
+        paramViewGroup.ztj = ((NoMeasuredTextView)paramView.findViewById(2131823255));
+        paramViewGroup.ztk = ((NoMeasuredTextView)paramView.findViewById(2131823256));
+        paramViewGroup.jSi = ((TextView)paramView.findViewById(2131821087));
+        paramViewGroup.jSi.setBackgroundResource(com.tencent.mm.ui.tools.t.iF(this.AlZ));
+        paramViewGroup.ztl = ((ImageView)paramView.findViewById(2131823258));
+        paramViewGroup.ztn = paramView.findViewById(2131823253);
+        paramViewGroup.ztm = ((ImageView)paramView.findViewById(2131823259));
+        paramViewGroup.Aij = ((ImageView)paramView.findViewById(2131823260));
         paramView.setTag(paramViewGroup);
-        paramViewGroup.veL.setTextSize(0, this.veC);
-        paramViewGroup.veK.setTextSize(0, this.veD);
-        paramViewGroup.veJ.setTextSize(0, this.veB);
-        paramViewGroup.vQy.setTextSize(0, this.veC);
-        paramViewGroup.veL.setTextColor(this.veE[0]);
-        paramViewGroup.veK.setTextColor(this.veE[4]);
-        paramViewGroup.veJ.setTextColor(this.veE[3]);
-        paramViewGroup.vQy.setTextColor(this.veE[0]);
-        paramViewGroup.veL.setShouldEllipsize(true);
-        paramViewGroup.veK.setShouldEllipsize(false);
-        paramViewGroup.veJ.setShouldEllipsize(true);
-        paramViewGroup.vQy.setShouldEllipsize(true);
-        paramViewGroup.veK.setGravity(5);
+        paramViewGroup.ztk.setTextSize(0, this.ztb);
+        paramViewGroup.ztj.setTextSize(0, this.ztc);
+        paramViewGroup.zti.setTextSize(0, this.zta);
+        paramViewGroup.Aii.setTextSize(0, this.ztb);
+        paramViewGroup.ztk.setTextColor(this.ztd[0]);
+        paramViewGroup.ztj.setTextColor(this.ztd[4]);
+        paramViewGroup.zti.setTextColor(this.ztd[3]);
+        paramViewGroup.Aii.setTextColor(this.ztd[0]);
+        paramViewGroup.ztk.setShouldEllipsize(true);
+        paramViewGroup.ztj.setShouldEllipsize(false);
+        paramViewGroup.zti.setShouldEllipsize(true);
+        paramViewGroup.Aii.setShouldEllipsize(true);
+        paramViewGroup.ztj.setGravity(5);
       }
     }
     ak localak;
     for (;;)
     {
-      localak = HS(paramInt);
+      localak = QE(paramInt);
       if (localak != null) {
-        break label372;
+        break label384;
       }
+      AppMethodBeat.o(34620);
       return paramView;
-      paramView = View.inflate(this.vUd, R.i.conversation_item, null);
+      paramView = View.inflate(this.AlZ, 2130969274, null);
       break;
       paramViewGroup = (SettingCheckUnProcessWalletConvUI.a.b)paramView.getTag();
     }
-    label372:
-    a.b.a(paramViewGroup.doU, localak.field_username);
-    paramViewGroup.doU.getDrawable();
+    label384:
+    a.b.c(paramViewGroup.egq, localak.field_username);
+    paramViewGroup.egq.getDrawable();
     String str2 = localak.field_username;
-    Object localObject2 = (SettingCheckUnProcessWalletConvUI.a.a)this.veF.get(str2);
+    Object localObject2 = (SettingCheckUnProcessWalletConvUI.a.a)this.zte.get(str2);
     Object localObject1 = localObject2;
     boolean bool;
     if (localObject2 == null)
     {
       localObject2 = new SettingCheckUnProcessWalletConvUI.a.a(this, (byte)0);
-      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQo = -1;
-      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQn = -1;
-      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQt = false;
-      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQv = false;
-      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQu = false;
-      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).kay = s.fn(localak.field_username);
-      if ((((SettingCheckUnProcessWalletConvUI.a.a)localObject2).kay) && (((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQu) && (localak.field_unReadCount > 0))
+      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).AhY = -1;
+      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).AhX = -1;
+      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aid = false;
+      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aif = false;
+      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aie = false;
+      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).muU = com.tencent.mm.model.t.lA(localak.field_username);
+      if ((((SettingCheckUnProcessWalletConvUI.a.a)localObject2).muU) && (((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aie) && (localak.field_unReadCount > 0))
       {
         bool = true;
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQs = bool;
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).ivk = 0;
-        if ((xP(localak.field_msgType) == 34) && (localak.field_isSend == 0) && (!ah.bl(localak.field_content)))
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aic = bool;
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).kwo = 0;
+        if ((GH(localak.field_msgType) == 34) && (localak.field_isSend == 0) && (!ah.isNullOrNil(localak.field_content)))
         {
           String str1 = localak.field_content;
           if (!str2.equals("qmessage"))
@@ -338,19 +387,19 @@ final class SettingCheckUnProcessWalletConvUI$a
               }
             }
           }
-          if (!new n((String)localObject1).eHB) {
-            ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).ivk = 1;
+          if (!new p((String)localObject1).fXr) {
+            ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).kwo = 1;
           }
         }
-        localObject1 = r.gV(str2);
-        if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject2).kay) || (localObject1 != null)) {
-          break label1220;
+        localObject1 = s.nE(str2);
+        if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject2).muU) || (localObject1 != null)) {
+          break label1237;
         }
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).nickName = this.vUd.getString(R.l.chatting_roominfo_noname);
-        label712:
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQk = h(localak);
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQl = c(localak, (int)paramViewGroup.veL.getTextSize(), ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQs);
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQw = localak.field_attrflag;
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).nickName = this.AlZ.getString(2131298302);
+        label724:
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).AhU = h(localak);
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).AhV = c(localak, (int)paramViewGroup.ztk.getTextSize(), ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aic);
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aig = localak.field_attrflag;
       }
     }
     else
@@ -361,117 +410,118 @@ final class SettingCheckUnProcessWalletConvUI$a
       case 4: 
       default: 
         paramInt = -1;
-        label802:
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQm = paramInt;
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQp = s.a(localak);
-        au.Hx();
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).veG = c.FB().g(localak);
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQq = false;
-        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).vQr = x.cqF();
-        this.veF.put(str2, localObject2);
+        label814:
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).AhW = paramInt;
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).AhZ = com.tencent.mm.model.t.a(localak);
+        aw.aaz();
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).ztf = c.YF().g(localak);
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aia = false;
+        ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).Aib = aa.dsC();
+        this.zte.put(str2, localObject2);
         localObject1 = localObject2;
-        if (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQk == null) {
-          ((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQk = h(localak);
+        if (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).AhU == null) {
+          ((SettingCheckUnProcessWalletConvUI.a.a)localObject1).AhU = h(localak);
         }
-        if ((((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQs) || (s.hK(localak.field_parentRef)))
+        if ((((SettingCheckUnProcessWalletConvUI.a.a)localObject1).Aic) || (com.tencent.mm.model.t.ot(localak.field_parentRef)))
         {
-          paramViewGroup.veL.setTextColor(this.veE[0]);
-          label918:
+          paramViewGroup.ztk.setTextColor(this.ztd[0]);
+          label930:
           if (!str2.toLowerCase().endsWith("@t.qq.com")) {
-            break label1291;
+            break label1308;
           }
-          paramViewGroup.veJ.setCompoundRightDrawablesWithIntrinsicBounds(R.g.icon_tencent_weibo);
-          paramViewGroup.veJ.setDrawRightDrawable(true);
-          label950:
-          paramInt = ((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQm;
+          paramViewGroup.zti.setCompoundRightDrawablesWithIntrinsicBounds(2130839141);
+          paramViewGroup.zti.setDrawRightDrawable(true);
+          label961:
+          paramInt = ((SettingCheckUnProcessWalletConvUI.a.a)localObject1).AhW;
           if (paramInt == -1) {
-            break label1302;
+            break label1319;
           }
-          paramViewGroup.veL.setCompoundLeftDrawablesWithIntrinsicBounds(paramInt);
-          paramViewGroup.veL.setDrawLeftDrawable(true);
-          label977:
-          paramViewGroup.veJ.setText(((SettingCheckUnProcessWalletConvUI.a.a)localObject1).nickName);
-          paramViewGroup.vQy.setVisibility(8);
-          localObject2 = paramViewGroup.veK.getLayoutParams();
-          if (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQk.length() <= 9) {
-            break label1313;
+          paramViewGroup.ztk.setCompoundLeftDrawablesWithIntrinsicBounds(paramInt);
+          paramViewGroup.ztk.setDrawLeftDrawable(true);
+          label988:
+          paramViewGroup.zti.setText(((SettingCheckUnProcessWalletConvUI.a.a)localObject1).nickName);
+          paramViewGroup.Aii.setVisibility(8);
+          localObject2 = paramViewGroup.ztj.getLayoutParams();
+          if (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).AhU.length() <= 9) {
+            break label1330;
           }
-          if (((ViewGroup.LayoutParams)localObject2).width != this.vQc)
+          if (((ViewGroup.LayoutParams)localObject2).width != this.AhM)
           {
-            ((ViewGroup.LayoutParams)localObject2).width = this.vQc;
-            paramViewGroup.veK.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+            ((ViewGroup.LayoutParams)localObject2).width = this.AhM;
+            paramViewGroup.ztj.setLayoutParams((ViewGroup.LayoutParams)localObject2);
           }
-          label1052:
-          y.v("MicroMsg.SettingCheckUnProcessWalletConvUI", "layout update time width %d", new Object[] { Integer.valueOf(((ViewGroup.LayoutParams)localObject2).width) });
-          paramViewGroup.veK.setText(((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQk);
-          paramViewGroup.veL.setText(((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQl);
-          if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).kay) || (!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQu)) {
-            break label1346;
+          label1063:
+          ab.v("MicroMsg.SettingCheckUnProcessWalletConvUI", "layout update time width %d", new Object[] { Integer.valueOf(((ViewGroup.LayoutParams)localObject2).width) });
+          paramViewGroup.ztj.setText(((SettingCheckUnProcessWalletConvUI.a.a)localObject1).AhU);
+          paramViewGroup.ztk.setText(((SettingCheckUnProcessWalletConvUI.a.a)localObject1).AhV);
+          if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).muU) || (!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).Aie)) {
+            break label1363;
           }
-          paramViewGroup.veM.setVisibility(0);
-          label1124:
-          a.b.a(paramViewGroup.doU, str2);
-          if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQp) && (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).veG) && (au.DK()))
+          paramViewGroup.ztl.setVisibility(0);
+          label1135:
+          a.b.c(paramViewGroup.egq, str2);
+          if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).AhZ) && (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).ztf) && (aw.RG()))
           {
-            au.Hx();
-            c.FB().f(localak);
+            aw.aaz();
+            c.YF().f(localak);
           }
-          if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).veG) || (localak.field_conversationTime == -1L)) {
-            break label1377;
+          if ((!((SettingCheckUnProcessWalletConvUI.a.a)localObject1).ztf) || (localak.field_conversationTime == -1L)) {
+            break label1394;
           }
-          paramView.findViewById(R.h.conversation_item_ll).setBackgroundResource(R.g.comm_item_highlight_selector);
+          paramView.findViewById(2131823252).setBackgroundResource(2130838444);
         }
         break;
       }
     }
     for (;;)
     {
-      paramViewGroup.veN.setVisibility(8);
+      paramViewGroup.ztm.setVisibility(8);
+      AppMethodBeat.o(34620);
       return paramView;
       bool = false;
       break;
-      label1220:
-      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).nickName = com.tencent.mm.pluginsdk.ui.d.j.a(this.vUd, r.gV(str2), paramViewGroup.veJ.getTextSize());
-      break label712;
+      label1237:
+      ((SettingCheckUnProcessWalletConvUI.a.a)localObject2).nickName = j.b(this.AlZ, s.nE(str2), paramViewGroup.zti.getTextSize());
+      break label724;
       paramInt = -1;
-      break label802;
-      paramInt = R.k.msg_state_sending;
-      break label802;
+      break label814;
+      paramInt = 2131231716;
+      break label814;
       paramInt = -1;
-      break label802;
-      paramInt = R.k.msg_state_failed;
-      break label802;
-      paramViewGroup.veL.setTextColor(this.veE[localObject1.ivk]);
-      break label918;
-      label1291:
-      paramViewGroup.veJ.setDrawRightDrawable(false);
-      break label950;
-      label1302:
-      paramViewGroup.veL.setDrawLeftDrawable(false);
-      break label977;
-      label1313:
-      if (((ViewGroup.LayoutParams)localObject2).width == this.vQb) {
-        break label1052;
+      break label814;
+      paramInt = 2131231715;
+      break label814;
+      paramViewGroup.ztk.setTextColor(this.ztd[localObject1.kwo]);
+      break label930;
+      label1308:
+      paramViewGroup.zti.setDrawRightDrawable(false);
+      break label961;
+      label1319:
+      paramViewGroup.ztk.setDrawLeftDrawable(false);
+      break label988;
+      label1330:
+      if (((ViewGroup.LayoutParams)localObject2).width == this.AhL) {
+        break label1063;
       }
-      ((ViewGroup.LayoutParams)localObject2).width = this.vQb;
-      paramViewGroup.veK.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      break label1052;
-      label1346:
-      if (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).vQq)
+      ((ViewGroup.LayoutParams)localObject2).width = this.AhL;
+      paramViewGroup.ztj.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      break label1063;
+      label1363:
+      if (((SettingCheckUnProcessWalletConvUI.a.a)localObject1).Aia)
       {
-        paramViewGroup.veM.setVisibility(0);
-        break label1124;
+        paramViewGroup.ztl.setVisibility(0);
+        break label1135;
       }
-      paramViewGroup.veM.setVisibility(8);
-      break label1124;
-      label1377:
-      paramView.findViewById(R.h.conversation_item_ll).setBackgroundResource(R.g.comm_list_item_selector);
+      paramViewGroup.ztl.setVisibility(8);
+      break label1135;
+      label1394:
+      paramView.findViewById(2131823252).setBackgroundResource(2130838445);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.SettingCheckUnProcessWalletConvUI.a
  * JD-Core Version:    0.7.0.1
  */

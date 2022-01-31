@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.backup.f;
 
-import com.tencent.mm.ae.l;
-import com.tencent.mm.ae.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.p;
+import com.tencent.mm.af.q;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.biz.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,26 +13,28 @@ import java.util.Map;
 
 final class a$a
 {
-  public static String hFI = "<msg>";
-  public static String hFJ = "</msg>";
-  public static String hJN = "]]>";
+  public static String jDr = "]]>";
+  public static String jzf = "<msg>";
+  public static String jzg = "</msg>";
   
-  public static String xv(String paramString)
+  public static String Go(String paramString)
   {
-    l locall = ((a)g.r(a.class)).d(0L, paramString);
+    AppMethodBeat.i(17445);
+    p localp = ((a)g.E(a.class)).b(0L, paramString);
     a.a.a locala = new a.a.a(paramString);
-    if (!locala.hJP)
+    if (!locala.bRg)
     {
-      y.e("MicroMsg.AppmsgConvert", "buffer error");
+      ab.e("MicroMsg.AppmsgConvert", "buffer error");
+      AppMethodBeat.o(17445);
       return "";
     }
     a.a.b localb = new a.a.b();
-    Object localObject1 = locall.dTx;
+    Object localObject1 = localp.fjy;
     Object localObject3 = new HashMap();
-    localb.xw("msg");
-    ((Map)localObject3).put("appid", (String)locala.hJO.get(".msg.appmsg.$appid"));
-    ((Map)localObject3).put("sdkver", (String)locala.hJO.get(".msg.appmsg.$sdkver"));
-    localb.k("appmsg", (Map)localObject3);
+    localb.Gp("msg");
+    ((Map)localObject3).put("appid", (String)locala.jDs.get(".msg.appmsg.$appid"));
+    ((Map)localObject3).put("sdkver", (String)locala.jDs.get(".msg.appmsg.$sdkver"));
+    localb.n("appmsg", (Map)localObject3);
     paramString = (String)localObject1;
     if (localObject1 == null) {
       paramString = new LinkedList();
@@ -44,102 +47,104 @@ final class a$a
       str1 = "";
       localObject2 = "";
       localObject1 = "";
-      localb.cj("title", str1);
-      localb.cj("des", (String)locala.hJO.get(".msg.appmsg.des"));
-      localb.cj("action", (String)locala.hJO.get(".msg.appmsg.action"));
-      localb.bg("type", locala.getInt(".msg.appmsg.type"));
-      localb.bg("showtype", locala.getInt(".msg.appmsg.showtype"));
-      localb.cj("content", (String)locala.hJO.get(".msg.appmsg.content"));
-      localb.cj("url", (String)localObject2);
-      localb.cj("lowurl", (String)locala.hJO.get(".msg.appmsg.lowurl"));
-      localb.xw("appattach");
-      localb.bg("totallen", locala.getInt(".msg.appmsg.appattach.totallen"));
-      localb.cj("attachid", (String)locala.hJO.get(".msg.appmsg.appattach.attachid"));
-      localb.cj("fileext", (String)locala.hJO.get(".msg.appmsg.appattach.fileext"));
-      localb.xx("appattach");
-      localb.xw("mmreader");
-      ((Map)localObject3).put("type", locall.type);
+      localb.da("title", str1);
+      localb.da("des", (String)locala.jDs.get(".msg.appmsg.des"));
+      localb.da("action", (String)locala.jDs.get(".msg.appmsg.action"));
+      localb.bG("type", locala.getInt(".msg.appmsg.type"));
+      localb.bG("showtype", locala.getInt(".msg.appmsg.showtype"));
+      localb.da("content", (String)locala.jDs.get(".msg.appmsg.content"));
+      localb.da("url", (String)localObject2);
+      localb.da("lowurl", (String)locala.jDs.get(".msg.appmsg.lowurl"));
+      localb.Gp("appattach");
+      localb.bG("totallen", locala.getInt(".msg.appmsg.appattach.totallen"));
+      localb.da("attachid", (String)locala.jDs.get(".msg.appmsg.appattach.attachid"));
+      localb.da("fileext", (String)locala.jDs.get(".msg.appmsg.appattach.fileext"));
+      localb.Gq("appattach");
+      localb.Gp("mmreader");
+      ((Map)localObject3).put("type", localp.type);
       ((Map)localObject3).put("convMsgCount", paramString.size());
-      localb.k("category", (Map)localObject3);
-      localb.cj("name", locall.bYH);
-      localb.xw("topnew");
-      localb.cj("cover", (String)locala.hJO.get(".msg.appmsg.mmreader.category.topnew.cover"));
-      localb.cj("width", (String)locala.hJO.get(".msg.appmsg.mmreader.category.topnew.width"));
-      localb.cj("height", (String)locala.hJO.get(".msg.appmsg.mmreader.category.topnew.height"));
-      localb.cj("digest", (String)localObject1);
-      localb.xx("topnew");
+      localb.n("category", (Map)localObject3);
+      localb.da("name", localp.cGO);
+      localb.Gp("topnew");
+      localb.da("cover", (String)locala.jDs.get(".msg.appmsg.mmreader.category.topnew.cover"));
+      localb.da("width", (String)locala.jDs.get(".msg.appmsg.mmreader.category.topnew.width"));
+      localb.da("height", (String)locala.jDs.get(".msg.appmsg.mmreader.category.topnew.height"));
+      localb.da("digest", (String)localObject1);
+      localb.Gq("topnew");
       i = 0;
-      label548:
+      label560:
       if (i >= paramString.size()) {
-        break label971;
+        break label980;
       }
-      localb.xw("item");
+      localb.Gp("item");
       if (paramString.get(i) != null)
       {
-        localObject1 = ((m)paramString.get(i)).title;
-        localObject2 = ((m)paramString.get(i)).url;
-        str1 = ((m)paramString.get(i)).dTB;
-        localObject3 = ((m)paramString.get(i)).dTC;
-        String str2 = ((m)paramString.get(i)).time;
-        String str3 = ((m)paramString.get(i)).dTD;
-        String str4 = ((m)paramString.get(i)).dTE;
-        String str5 = ((m)paramString.get(i)).dTF;
-        localb.cj("title", (String)localObject1);
-        localb.cj("url", (String)localObject2);
-        localb.cj("shorturl", str1);
-        localb.cj("longurl", (String)localObject3);
-        localb.cj("pub_time", str2);
-        localb.cj("cover", str3);
-        localb.cj("tweetid", str4);
-        localb.cj("digest", str5);
+        localObject1 = ((q)paramString.get(i)).title;
+        localObject2 = ((q)paramString.get(i)).url;
+        str1 = ((q)paramString.get(i)).fjH;
+        localObject3 = ((q)paramString.get(i)).fjI;
+        String str2 = ((q)paramString.get(i)).time;
+        String str3 = ((q)paramString.get(i)).fjJ;
+        String str4 = ((q)paramString.get(i)).fjK;
+        String str5 = ((q)paramString.get(i)).fjL;
+        localb.da("title", (String)localObject1);
+        localb.da("url", (String)localObject2);
+        localb.da("shorturl", str1);
+        localb.da("longurl", (String)localObject3);
+        localb.da("pub_time", str2);
+        localb.da("cover", str3);
+        localb.da("tweetid", str4);
+        localb.da("digest", str5);
         localObject2 = new StringBuilder(".msg.appmsg.mmreader.category.item");
         if (i != 0) {
-          break label963;
+          break label972;
         }
       }
     }
-    label963:
+    label972:
     for (localObject1 = "";; localObject1 = String.valueOf(i))
     {
       localObject1 = (String)localObject1;
-      localb.cj("fileid", (String)locala.hJO.get((String)localObject1 + ".fileid"));
-      localb.xw("source");
-      localb.xw("source");
-      localb.cj("name", locall.bYH);
-      localb.xx("source");
-      localb.xx("source");
-      localb.xx("item");
+      localb.da("fileid", (String)locala.jDs.get((String)localObject1 + ".fileid"));
+      localb.Gp("source");
+      localb.Gp("source");
+      localb.da("name", localp.cGO);
+      localb.Gq("source");
+      localb.Gq("source");
+      localb.Gq("item");
       i += 1;
-      break label548;
-      str1 = ((m)paramString.get(0)).title;
-      localObject2 = ((m)paramString.get(0)).url;
-      localObject1 = ((m)paramString.get(0)).dTD;
-      localObject1 = ((m)paramString.get(0)).dTF;
+      break label560;
+      str1 = ((q)paramString.get(0)).title;
+      localObject2 = ((q)paramString.get(0)).url;
+      paramString.get(0);
+      localObject1 = ((q)paramString.get(0)).fjL;
       break;
     }
-    label971:
-    localb.xx("category");
-    localb.xw("publisher");
-    localb.cj("convName", locall.bYG);
-    localb.cj("nickname", locall.bYH);
-    localb.xx("publisher");
-    localb.xx("mmreader");
-    localb.xx("appmsg");
-    localb.cj("fromusername", locall.bYG);
-    localb.bg("scene", locala.getInt(".msg.scene"));
-    localb.xw("appinfo");
-    localb.cj("version", (String)locala.hJO.get(".msg.appinfo.appname"));
-    localb.cj("appname", (String)locala.hJO.get(".msg.appinfo.version"));
-    localb.xx("appinfo");
-    localb.cj("commenturl", locall.cQF);
-    localb.xx("msg");
-    y.d("MicroMsg.AppmsgConvert", "xml " + localb.hJQ.toString());
-    return localb.hJQ.toString();
+    label980:
+    localb.Gq("category");
+    localb.Gp("publisher");
+    localb.da("convName", localp.cGN);
+    localb.da("nickname", localp.cGO);
+    localb.Gq("publisher");
+    localb.Gq("mmreader");
+    localb.Gq("appmsg");
+    localb.da("fromusername", localp.cGN);
+    localb.bG("scene", locala.getInt(".msg.scene"));
+    localb.Gp("appinfo");
+    localb.da("version", (String)locala.jDs.get(".msg.appinfo.appname"));
+    localb.da("appname", (String)locala.jDs.get(".msg.appinfo.version"));
+    localb.Gq("appinfo");
+    localb.da("commenturl", localp.dGR);
+    localb.Gq("msg");
+    ab.d("MicroMsg.AppmsgConvert", "xml " + localb.jDt.toString());
+    paramString = localb.jDt.toString();
+    AppMethodBeat.o(17445);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.a.a
  * JD-Core Version:    0.7.0.1
  */

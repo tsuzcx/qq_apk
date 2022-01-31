@@ -4,9 +4,9 @@ import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 
 public final class a
 {
-  public boolean gPg = false;
-  public LocalUsageInfo hqw;
-  int position;
+  public boolean iqO = false;
+  public LocalUsageInfo jfk;
+  public int position;
   public int type = 1;
   
   public a(int paramInt)
@@ -16,7 +16,7 @@ public final class a
   
   public a(LocalUsageInfo paramLocalUsageInfo)
   {
-    this.hqw = paramLocalUsageInfo;
+    this.jfk = paramLocalUsageInfo;
     this.type = 1;
   }
 }

@@ -1,22 +1,32 @@
 package com.tencent.ttpic.util;
 
 import com.tencent.filter.BaseFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class VideoLibUtil
 {
   public static float[] estimateRigidTransform(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
   {
-    return nativeRigidTransform(paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat3);
+    AppMethodBeat.i(84042);
+    paramArrayOfFloat1 = nativeRigidTransform(paramArrayOfFloat1, paramArrayOfFloat2, paramArrayOfFloat3);
+    AppMethodBeat.o(84042);
+    return paramArrayOfFloat1;
   }
   
   public static int getFaceDetectLibVersion()
   {
-    return nativeGetFaceDetectLibVersion();
+    AppMethodBeat.i(84040);
+    int i = nativeGetFaceDetectLibVersion();
+    AppMethodBeat.o(84040);
+    return i;
   }
   
   public static int getFilterLibVersion()
   {
-    return BaseFilter.getVersionCode();
+    AppMethodBeat.i(84041);
+    int i = BaseFilter.getVersionCode();
+    AppMethodBeat.o(84041);
+    return i;
   }
   
   private static native int nativeGetFaceDetectLibVersion();

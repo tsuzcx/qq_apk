@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceManageDeviceUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class ExdeviceManageDeviceUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jDB.finish();
+    AppMethodBeat.i(19982);
+    this.lNa.finish();
+    AppMethodBeat.o(19982);
     return true;
   }
 }

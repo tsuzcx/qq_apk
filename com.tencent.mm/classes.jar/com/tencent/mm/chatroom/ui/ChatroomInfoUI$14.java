@@ -2,10 +2,11 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.a.ru;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.tl;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bd;
 
 final class ChatroomInfoUI$14
@@ -15,24 +16,28 @@ final class ChatroomInfoUI$14
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ChatroomInfoUI.b(this.dod) == null) || (ChatroomInfoUI.b(this.dod).length() <= 0))
+    AppMethodBeat.i(103977);
+    if ((ChatroomInfoUI.b(this.efA) == null) || (ChatroomInfoUI.b(this.efA).length() <= 0))
     {
-      y.e("MicroMsg.ChatroomInfoUI", "quitChatRoom : invalid args");
+      ab.e("MicroMsg.ChatroomInfoUI", "quitChatRoom : invalid args");
+      AppMethodBeat.o(103977);
       return;
     }
-    if (this.doi)
+    if (this.efF)
     {
-      paramDialogInterface = new ru();
-      paramDialogInterface.cbq.cbt = true;
-      com.tencent.mm.sdk.b.a.udP.m(paramDialogInterface);
+      paramDialogInterface = new tl();
+      paramDialogInterface.cJT.cJW = true;
+      com.tencent.mm.sdk.b.a.ymk.l(paramDialogInterface);
     }
-    if (!((j)g.r(j.class)).Fw().abn(ChatroomInfoUI.b(this.dod)))
+    if (!((j)g.E(j.class)).YA().ary(ChatroomInfoUI.b(this.efA)))
     {
-      y.e("MicroMsg.ChatroomInfoUI", "quitChatRoom : room[" + ChatroomInfoUI.b(this.dod) + "] is not exist");
+      ab.e("MicroMsg.ChatroomInfoUI", "quitChatRoom : room[" + ChatroomInfoUI.b(this.efA) + "] is not exist");
+      AppMethodBeat.o(103977);
       return;
     }
-    ChatroomInfoUI.v(this.dod);
-    ((com.tencent.mm.plugin.multitalk.a.a)g.r(com.tencent.mm.plugin.multitalk.a.a.class)).Is(ChatroomInfoUI.b(this.dod));
+    ChatroomInfoUI.v(this.efA);
+    ((com.tencent.mm.plugin.multitalk.model.a)g.E(com.tencent.mm.plugin.multitalk.model.a.class)).Uh(ChatroomInfoUI.b(this.efA));
+    AppMethodBeat.o(103977);
   }
 }
 

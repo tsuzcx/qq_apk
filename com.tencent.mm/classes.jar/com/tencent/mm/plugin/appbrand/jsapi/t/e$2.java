@@ -1,34 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.t;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.webview.modeltools.h;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$2
-  implements DialogInterface.OnCancelListener
+  extends c.a
 {
-  e$2(e parame) {}
+  e$2(e parame, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt, c paramc1) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void Es()
   {
-    if ((this.gGA.gGt != null) && (e.h(this.gGA) != null)) {}
-    try
-    {
-      e.h(this.gGA).SU(this.gGA.gGt.riI);
-      this.gGA.gGt.ccQ();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      y.e("MicroMsg.AppBrand.HTMLWebViewLogicDelegate", "cancel capture failed");
-    }
+    AppMethodBeat.i(145920);
+    ab.i("MicroMsg.JsApiStartPlayVoice", "onCompletion");
+    this.hKB.h(this.bAX, this.ifn.j("ok", null));
+    this.ifm.b(this);
+    AppMethodBeat.o(145920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.t.e.2
  * JD-Core Version:    0.7.0.1
  */

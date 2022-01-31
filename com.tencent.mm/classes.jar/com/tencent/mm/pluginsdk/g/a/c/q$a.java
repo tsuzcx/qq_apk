@@ -1,8 +1,17 @@
 package com.tencent.mm.pluginsdk.g.a.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class q$a
 {
-  private static final q rXQ = new q((byte)0);
+  private static final q vOH;
+  
+  static
+  {
+    AppMethodBeat.i(79613);
+    vOH = new q((byte)0);
+    AppMethodBeat.o(79613);
+  }
 }
 
 

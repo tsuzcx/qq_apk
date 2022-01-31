@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 public abstract interface b$a
 {
-  public abstract void FI(String paramString);
+  public abstract void Rk(String paramString);
   
-  public abstract void FJ(String paramString);
+  public abstract void Rl(String paramString);
   
-  public abstract void n(String paramString1, String paramString2, String paramString3, String paramString4);
+  public abstract void p(String paramString1, String paramString2, String paramString3, String paramString4);
 }
 
 

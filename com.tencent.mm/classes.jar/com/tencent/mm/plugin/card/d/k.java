@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.card.d;
 
 import android.text.TextUtils;
-import com.tencent.mm.protocal.c.mh;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.ph;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,46 +11,51 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public static LinkedList<mh> bp(String paramString, int paramInt)
+  public static LinkedList<ph> r(String paramString1, int paramInt, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString))
+    AppMethodBeat.i(152201);
+    if (TextUtils.isEmpty(paramString1))
     {
-      y.e("MicroMsg.CardListItemParser", "parseCardTpInfoItemArray jsonContent is null");
+      ab.e("MicroMsg.CardListItemParser", "parseCardTpInfoItemArray jsonContent is null");
+      AppMethodBeat.o(152201);
       return null;
     }
-    JSONArray localJSONArray;
     try
     {
-      localJSONArray = new JSONArray(paramString);
+      JSONArray localJSONArray = new JSONArray(paramString1);
       if (localJSONArray.length() == 0)
       {
-        y.e("MicroMsg.CardListItemParser", "parseCardTpInfoItemArray cardItemListJson is null");
+        ab.e("MicroMsg.CardListItemParser", "parseCardTpInfoItemArray cardItemListJson is null");
+        AppMethodBeat.o(152201);
         return null;
       }
-    }
-    catch (JSONException paramString)
-    {
-      y.printErrStackTrace("MicroMsg.CardListItemParser", paramString, "", new Object[0]);
-      return null;
-    }
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    if (i < localJSONArray.length())
-    {
-      JSONObject localJSONObject = localJSONArray.optJSONObject(i);
-      mh localmh = new mh();
-      if (paramInt == 26) {}
-      for (paramString = "cardId";; paramString = "card_id")
+      LinkedList localLinkedList = new LinkedList();
+      int i = 0;
+      if (i < localJSONArray.length())
       {
-        localmh.iln = localJSONObject.optString(paramString);
-        localmh.code = localJSONObject.optString("code");
-        localmh.sJd = localJSONObject.optString("openCardParams");
-        localLinkedList.add(localmh);
-        i += 1;
-        break;
+        JSONObject localJSONObject = localJSONArray.optJSONObject(i);
+        ph localph = new ph();
+        if (paramInt == 26) {}
+        for (paramString1 = "cardId";; paramString1 = "card_id")
+        {
+          localph.kml = localJSONObject.optString(paramString1);
+          localph.code = localJSONObject.optString("code");
+          localph.wGM = localJSONObject.optString("openCardParams");
+          localph.cwc = paramString2;
+          localLinkedList.add(localph);
+          i += 1;
+          break;
+        }
       }
+      AppMethodBeat.o(152201);
+      return localLinkedList;
     }
-    return localLinkedList;
+    catch (JSONException paramString1)
+    {
+      ab.printErrStackTrace("MicroMsg.CardListItemParser", paramString1, "", new Object[0]);
+      AppMethodBeat.o(152201);
+    }
+    return null;
   }
 }
 

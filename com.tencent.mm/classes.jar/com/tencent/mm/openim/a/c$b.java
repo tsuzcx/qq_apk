@@ -1,21 +1,28 @@
 package com.tencent.mm.openim.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 
 public final class c$b
 {
   public int action;
-  public String bVO;
+  public String cDz;
   String desc;
-  public int ePN;
-  public String ePO;
+  public int gfI;
+  public String gfJ;
   
-  public final String oU(String paramString)
+  public final String wm(String paramString)
   {
-    if (this.ePN == 1) {
-      return ((b)g.r(b.class)).aK(paramString, this.desc);
+    AppMethodBeat.i(128607);
+    if (this.gfI == 1)
+    {
+      paramString = ((b)g.E(b.class)).bd(paramString, this.desc);
+      AppMethodBeat.o(128607);
+      return paramString;
     }
-    return this.desc;
+    paramString = this.desc;
+    AppMethodBeat.o(128607);
+    return paramString;
   }
 }
 

@@ -1,20 +1,24 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBalanceResultUI$3
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   WalletBalanceResultUI$3(WalletBalanceResultUI paramWalletBalanceResultUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.WalletBalanceResultUI", "update user info succ, end process");
+    AppMethodBeat.i(45459);
+    WalletBalanceResultUI.b(this.tOR);
+    AppMethodBeat.o(45459);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.WalletBalanceResultUI.3
  * JD-Core Version:    0.7.0.1
  */

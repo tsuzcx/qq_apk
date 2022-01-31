@@ -5,7 +5,7 @@ public final class c$cw
 {
   public c$cw()
   {
-    super("getWCPayRealnameVerify", "getWCPayRealnameVerify", 194, true);
+    super("getSearchImageList", "", 10000, false);
   }
 }
 

@@ -10,97 +10,108 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.as.o;
-import com.tencent.mm.plugin.emoji.e.e;
-import com.tencent.mm.plugin.emoji.f.c;
-import com.tencent.mm.plugin.emoji.f.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.o;
+import com.tencent.mm.plugin.emoji.e.g;
 import com.tencent.mm.plugin.emoji.ui.SquareImageView;
-import com.tencent.mm.protocal.c.vk;
+import com.tencent.mm.protocal.protobuf.EmotionDonor;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.IOException;
 import java.util.LinkedList;
 
 final class EmojiStoreV2RewardDetailUI$a
   extends BaseAdapter
 {
-  private Bitmap bwa = null;
-  private LinkedList<vk> hkd;
-  int hrb;
-  private int iVq;
-  int jfV;
-  boolean jhm = false;
+  private Bitmap bXF;
+  int jdO;
+  private int lev;
+  int loO;
+  private LinkedList<EmotionDonor> lqf;
+  boolean lqg;
   private Context mContext;
-  private int mNumColumns = 1;
+  private int mNumColumns;
   
   public EmojiStoreV2RewardDetailUI$a(EmojiStoreV2RewardDetailUI paramEmojiStoreV2RewardDetailUI, Context paramContext)
   {
+    AppMethodBeat.i(53672);
+    this.lqg = false;
+    this.mNumColumns = 1;
+    this.bXF = null;
     this.mContext = paramContext;
-    this.jfV = com.tencent.mm.cb.a.aa(paramEmojiStoreV2RewardDetailUI.mController.uMN, f.c.emoji_donors_avatar_size);
-    int k = com.tencent.mm.cb.a.fj(paramEmojiStoreV2RewardDetailUI.mController.uMN) - com.tencent.mm.cb.a.aa(paramEmojiStoreV2RewardDetailUI.mController.uMN, f.c.LargePadding) * 2;
-    int m = this.jfV;
-    int n = com.tencent.mm.cb.a.aa(paramEmojiStoreV2RewardDetailUI.mController.uMN, f.c.LittlePadding);
+    this.loO = com.tencent.mm.cb.a.ao(paramEmojiStoreV2RewardDetailUI.getContext(), 2131428356);
+    int k = com.tencent.mm.cb.a.gw(paramEmojiStoreV2RewardDetailUI.getContext()) - com.tencent.mm.cb.a.ao(paramEmojiStoreV2RewardDetailUI.getContext(), 2131427772) * 2;
+    int m = this.loO;
+    int n = com.tencent.mm.cb.a.ao(paramEmojiStoreV2RewardDetailUI.getContext(), 2131427782);
     int j = k / (m + n);
     int i = j;
     if (k - j * m - n * (j - 1) > m) {
       i = j + 1;
     }
     this.mNumColumns = i;
-    this.iVq = com.tencent.mm.cb.a.fj(this.mContext);
-    this.hrb = ((int)((this.iVq - this.mNumColumns * this.jfV) / (this.mNumColumns + 1.0F)));
+    this.lev = com.tencent.mm.cb.a.gw(this.mContext);
+    this.jdO = ((int)((this.lev - this.mNumColumns * this.loO) / (this.mNumColumns + 1.0F)));
     try
     {
-      this.bwa = BackwardSupportUtil.b.a(this.mContext.getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
+      this.bXF = BackwardSupportUtil.b.b(this.mContext.getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
+      AppMethodBeat.o(53672);
       return;
     }
     catch (IOException paramEmojiStoreV2RewardDetailUI)
     {
-      y.i("MicroMsg.emoji.EmojiStoreV2RewardDetailUI", "decode stream default avatar failed. %s", new Object[] { bk.csb() });
+      ab.i("MicroMsg.emoji.EmojiStoreV2RewardDetailUI", "decode stream default avatar failed. %s", new Object[] { bo.dtY() });
+      AppMethodBeat.o(53672);
     }
   }
   
-  private vk pZ(int paramInt)
+  private EmotionDonor uv(int paramInt)
   {
-    if (this.hkd != null) {
-      if (this.hkd != null) {
-        break label23;
+    AppMethodBeat.i(53675);
+    if (this.lqf != null) {
+      if (this.lqf != null) {
+        break label33;
       }
     }
-    label23:
-    for (int i = 0; paramInt >= i; i = this.hkd.size()) {
+    label33:
+    for (int i = 0; paramInt >= i; i = this.lqf.size())
+    {
+      AppMethodBeat.o(53675);
       return null;
     }
-    return (vk)this.hkd.get(paramInt);
+    EmotionDonor localEmotionDonor = (EmotionDonor)this.lqf.get(paramInt);
+    AppMethodBeat.o(53675);
+    return localEmotionDonor;
   }
   
-  public final void Q(LinkedList<vk> paramLinkedList)
+  public final void Q(LinkedList<EmotionDonor> paramLinkedList)
   {
-    if (this.hkd == null) {
-      this.hkd = new LinkedList();
+    AppMethodBeat.i(53673);
+    if (this.lqf == null) {
+      this.lqf = new LinkedList();
     }
-    if (this.jhm)
+    if (this.lqg)
     {
-      this.hkd.clear();
-      this.jhm = false;
+      this.lqf.clear();
+      this.lqg = false;
     }
-    this.hkd.addAll(paramLinkedList);
+    this.lqf.addAll(paramLinkedList);
     notifyDataSetChanged();
+    AppMethodBeat.o(53673);
   }
   
   public final int getCount()
   {
-    if (this.hkd == null) {}
-    for (int i = 0;; i = this.hkd.size())
+    AppMethodBeat.i(53674);
+    if (this.lqf == null) {}
+    for (int i = 0; i > 0; i = this.lqf.size())
     {
-      int j = i;
-      if (i > 0) {
-        j = (int)Math.ceil(i / this.mNumColumns);
-      }
-      return j;
+      i = (int)Math.ceil(i / this.mNumColumns);
+      AppMethodBeat.o(53674);
+      return i;
     }
+    AppMethodBeat.o(53674);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -110,18 +121,19 @@ final class EmojiStoreV2RewardDetailUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(53676);
     Object localObject1;
     Object localObject2;
     if ((paramView == null) || (paramView.getTag() == null))
     {
       localObject1 = new LinearLayout(this.mContext);
       paramView = new AbsListView.LayoutParams(-1, -2);
-      ((LinearLayout)localObject1).setBackgroundResource(f.d.transparent_background);
+      ((LinearLayout)localObject1).setBackgroundResource(2130840999);
       ((LinearLayout)localObject1).setOrientation(0);
       ((LinearLayout)localObject1).setLayoutParams(paramView);
-      ((LinearLayout)localObject1).setPadding(0, 0, 0, this.hrb);
-      localObject2 = new EmojiStoreV2RewardDetailUI.b(this.jhl);
-      ((EmojiStoreV2RewardDetailUI.b)localObject2).iVw = ((LinearLayout)localObject1);
+      ((LinearLayout)localObject1).setPadding(0, 0, 0, this.jdO);
+      localObject2 = new EmojiStoreV2RewardDetailUI.b(this.lqe);
+      ((EmojiStoreV2RewardDetailUI.b)localObject2).leB = ((LinearLayout)localObject1);
       ((View)localObject1).setTag(localObject2);
       i = 0;
       for (;;)
@@ -131,10 +143,10 @@ final class EmojiStoreV2RewardDetailUI$a
         if (i >= this.mNumColumns) {
           break;
         }
-        paramView = new LinearLayout.LayoutParams(this.jfV, this.jfV);
-        paramView.leftMargin = this.hrb;
+        paramView = new LinearLayout.LayoutParams(this.loO, this.loO);
+        paramView.leftMargin = this.jdO;
         paramViewGroup = new SquareImageView(this.mContext);
-        ((EmojiStoreV2RewardDetailUI.b)localObject2).iVw.addView(paramViewGroup, i, paramView);
+        ((EmojiStoreV2RewardDetailUI.b)localObject2).leB.addView(paramViewGroup, i, paramView);
         i += 1;
       }
     }
@@ -143,30 +155,31 @@ final class EmojiStoreV2RewardDetailUI$a
     if (i < this.mNumColumns)
     {
       int j = this.mNumColumns;
-      localObject1 = (SquareImageView)paramViewGroup.iVw.getChildAt(i);
-      localObject2 = pZ(j * paramInt + i);
+      localObject1 = (SquareImageView)paramViewGroup.leB.getChildAt(i);
+      localObject2 = uv(j * paramInt + i);
       if (localObject2 != null)
       {
         ((SquareImageView)localObject1).setVisibility(0);
-        if (!bk.bl(((vk)localObject2).sSy)) {
-          o.ON().a(((vk)localObject2).sSy, (ImageView)localObject1, e.s(EmojiStoreV2RewardDetailUI.c(this.jhl), ((vk)localObject2).sSy, this.jfV));
+        if (!bo.isNullOrNil(((EmotionDonor)localObject2).HeadUrl)) {
+          o.ahG().a(((EmotionDonor)localObject2).HeadUrl, (ImageView)localObject1, g.z(EmojiStoreV2RewardDetailUI.c(this.lqe), ((EmotionDonor)localObject2).HeadUrl, this.loO));
         }
       }
       for (;;)
       {
         i += 1;
         break;
-        ((SquareImageView)localObject1).setImageBitmap(this.bwa);
+        ((SquareImageView)localObject1).setImageBitmap(this.bXF);
         continue;
         ((SquareImageView)localObject1).setVisibility(8);
       }
     }
+    AppMethodBeat.o(53676);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardDetailUI.a
  * JD-Core Version:    0.7.0.1
  */

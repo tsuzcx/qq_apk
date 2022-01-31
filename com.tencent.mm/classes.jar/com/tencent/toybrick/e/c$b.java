@@ -2,7 +2,7 @@ package com.tencent.toybrick.e;
 
 public abstract interface c$b<T>
 {
-  public abstract void e(T paramT, boolean paramBoolean);
+  public abstract void d(T paramT, boolean paramBoolean);
 }
 
 

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.webview.fts.ui;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 public final class b$5
-  extends bf<Boolean>
+  extends bj<Boolean>
 {
   public b$5(b paramb, Boolean paramBoolean, int paramInt)
   {
@@ -12,7 +12,7 @@ public final class b$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.ui.b.5
  * JD-Core Version:    0.7.0.1
  */

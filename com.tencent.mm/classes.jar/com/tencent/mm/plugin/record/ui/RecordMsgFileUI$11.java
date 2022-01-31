@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class RecordMsgFileUI$11
   implements MenuItem.OnMenuItemClickListener
@@ -13,10 +12,12 @@ final class RecordMsgFileUI$11
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new d(this.nue.mController.uMN, 1, false);
-    paramMenuItem.phH = new RecordMsgFileUI.11.1(this);
-    paramMenuItem.phI = new RecordMsgFileUI.11.2(this);
-    paramMenuItem.cfU();
+    AppMethodBeat.i(24265);
+    paramMenuItem = new d(this.pZN.getContext(), 1, false);
+    paramMenuItem.sao = new RecordMsgFileUI.11.1(this);
+    paramMenuItem.sap = new RecordMsgFileUI.11.2(this);
+    paramMenuItem.crd();
+    AppMethodBeat.o(24265);
     return true;
   }
 }

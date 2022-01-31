@@ -4,6 +4,7 @@ import android.bluetooth.BluetoothAdapter.LeScanCallback;
 import android.bluetooth.BluetoothDevice;
 import android.os.ParcelUuid;
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
@@ -13,24 +14,30 @@ final class b$b
   implements BluetoothAdapter.LeScanCallback
 {
   private final List<ScanFilterCompat> filters;
-  private final WeakReference<e> gns;
+  private final WeakReference<e> hHq;
   
   b$b(List<ScanFilterCompat> paramList, e parame)
   {
+    AppMethodBeat.i(94295);
     this.filters = paramList;
-    this.gns = new WeakReference(parame);
+    this.hHq = new WeakReference(parame);
+    AppMethodBeat.o(94295);
   }
   
   public final void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
   {
-    e locale = (e)this.gns.get();
-    if (locale == null) {
+    AppMethodBeat.i(94296);
+    e locale = (e)this.hHq.get();
+    if (locale == null)
+    {
+      AppMethodBeat.o(94296);
       return;
     }
-    paramArrayOfByte = new ScanResultCompat(paramBluetoothDevice, f.O(paramArrayOfByte), paramInt, System.currentTimeMillis());
+    paramArrayOfByte = new ScanResultCompat(paramBluetoothDevice, f.ai(paramArrayOfByte), paramInt, System.currentTimeMillis());
     if (this.filters == null)
     {
       locale.a(1, paramArrayOfByte);
+      AppMethodBeat.o(94296);
       return;
     }
     Iterator localIterator1 = this.filters.iterator();
@@ -38,19 +45,20 @@ final class b$b
     {
       ScanFilterCompat localScanFilterCompat = (ScanFilterCompat)localIterator1.next();
       paramBluetoothDevice = paramArrayOfByte.getDevice();
-      if ((localScanFilterCompat.gnP != null) && ((paramBluetoothDevice == null) || (!localScanFilterCompat.gnP.equals(paramBluetoothDevice.getAddress())))) {
+      if ((localScanFilterCompat.hHM != null) && ((paramBluetoothDevice == null) || (!localScanFilterCompat.hHM.equals(paramBluetoothDevice.getAddress())))) {
         paramInt = 0;
       }
       while (paramInt != 0)
       {
         locale.a(1, paramArrayOfByte);
+        AppMethodBeat.o(94296);
         return;
-        f localf = paramArrayOfByte.gog;
-        if ((localf == null) && ((localScanFilterCompat.gnO != null) || (localScanFilterCompat.gnQ != null) || (localScanFilterCompat.gnW != null) || (localScanFilterCompat.gnT != null) || (localScanFilterCompat.gnS != null) || (localScanFilterCompat.gnV >= 0)))
+        f localf = paramArrayOfByte.hId;
+        if ((localf == null) && ((localScanFilterCompat.mDeviceName != null) || (localScanFilterCompat.hHN != null) || (localScanFilterCompat.hHT != null) || (localScanFilterCompat.hHQ != null) || (localScanFilterCompat.hHP != null) || (localScanFilterCompat.hHS >= 0)))
         {
           paramInt = 0;
         }
-        else if ((localScanFilterCompat.gnO != null) && (!localScanFilterCompat.gnO.equals(localf.gnO)))
+        else if ((localScanFilterCompat.mDeviceName != null) && (!localScanFilterCompat.mDeviceName.equals(localf.mDeviceName)))
         {
           paramInt = 0;
         }
@@ -58,69 +66,69 @@ final class b$b
         {
           Object localObject1;
           Object localObject2;
-          if (localScanFilterCompat.gnQ != null)
+          if (localScanFilterCompat.hHN != null)
           {
-            localObject1 = localScanFilterCompat.gnQ;
-            localObject2 = localScanFilterCompat.gnR;
-            paramBluetoothDevice = localf.gob;
+            localObject1 = localScanFilterCompat.hHN;
+            localObject2 = localScanFilterCompat.hHO;
+            paramBluetoothDevice = localf.hHY;
             if (localObject1 == null) {
               paramInt = 1;
             }
             for (;;)
             {
               if (paramInt != 0) {
-                break label343;
+                break label363;
               }
               paramInt = 0;
               break;
               if (paramBluetoothDevice != null)
               {
                 Iterator localIterator2 = paramBluetoothDevice.iterator();
-                label336:
+                label356:
                 for (;;)
                 {
                   if (!localIterator2.hasNext()) {
-                    break label338;
+                    break label358;
                   }
                   ParcelUuid localParcelUuid = (ParcelUuid)localIterator2.next();
                   if (localObject2 == null) {}
                   for (paramBluetoothDevice = null;; paramBluetoothDevice = ((ParcelUuid)localObject2).getUuid())
                   {
                     if (!ScanFilterCompat.a(((ParcelUuid)localObject1).getUuid(), paramBluetoothDevice, localParcelUuid.getUuid())) {
-                      break label336;
+                      break label356;
                     }
                     paramInt = 1;
                     break;
                   }
                 }
               }
-              label338:
+              label358:
               paramInt = 0;
             }
           }
-          label343:
-          if (localScanFilterCompat.gnS != null)
+          label363:
+          if (localScanFilterCompat.hHP != null)
           {
-            localObject1 = localScanFilterCompat.gnT;
-            localObject2 = localScanFilterCompat.gnU;
-            paramBluetoothDevice = localScanFilterCompat.gnS;
+            localObject1 = localScanFilterCompat.hHQ;
+            localObject2 = localScanFilterCompat.hHR;
+            paramBluetoothDevice = localScanFilterCompat.hHP;
             if (paramBluetoothDevice == null) {}
-            for (paramBluetoothDevice = null;; paramBluetoothDevice = (byte[])localf.god.get(paramBluetoothDevice))
+            for (paramBluetoothDevice = null;; paramBluetoothDevice = (byte[])localf.hIa.get(paramBluetoothDevice))
             {
               if (ScanFilterCompat.a((byte[])localObject1, (byte[])localObject2, paramBluetoothDevice)) {
-                break label411;
+                break label431;
               }
               paramInt = 0;
               break;
             }
           }
-          label411:
-          if ((localScanFilterCompat.gnV >= 0) && (localf != null))
+          label431:
+          if ((localScanFilterCompat.hHS >= 0) && (localf != null))
           {
-            paramBluetoothDevice = localScanFilterCompat.gnW;
-            localObject1 = localScanFilterCompat.gnX;
-            paramInt = localScanFilterCompat.gnV;
-            if (!ScanFilterCompat.a(paramBluetoothDevice, (byte[])localObject1, (byte[])localf.goc.get(paramInt)))
+            paramBluetoothDevice = localScanFilterCompat.hHT;
+            localObject1 = localScanFilterCompat.hHU;
+            paramInt = localScanFilterCompat.hHS;
+            if (!ScanFilterCompat.a(paramBluetoothDevice, (byte[])localObject1, (byte[])localf.hHZ.get(paramInt)))
             {
               paramInt = 0;
               continue;
@@ -130,6 +138,7 @@ final class b$b
         }
       }
     }
+    AppMethodBeat.o(94296);
   }
 }
 

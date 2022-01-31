@@ -1,29 +1,60 @@
 package com.tencent.mm.af;
 
-import com.tencent.mm.h.a.s;
-import com.tencent.mm.h.a.s.a;
-import com.tencent.mm.h.a.s.b;
-import com.tencent.mm.plugin.music.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Map;
 
-public final class c
+public class c
+  extends f
 {
-  public static boolean jP(String paramString)
+  public String ffV;
+  public String ffW;
+  public String ffX;
+  public String ffY;
+  public String ffZ;
+  public String fga;
+  public String fgb;
+  public String fgc;
+  public String fgd;
+  public String fge;
+  public String fgf;
+  public String fgg;
+  public int subType;
+  
+  public final f Yk()
   {
-    s locals = new s();
-    locals.bFK.action = 7;
-    locals.bFK.bFM = paramString;
-    a.a(locals);
-    return locals.bFL.bFQ;
+    AppMethodBeat.i(16187);
+    c localc = new c();
+    AppMethodBeat.o(16187);
+    return localc;
   }
   
-  public static b jQ(String paramString)
+  public final void a(Map<String, String> paramMap, j.b paramb)
   {
-    s locals = new s();
-    locals.bFK.action = 16;
-    locals.bFK.bFM = paramString;
-    a.a(locals);
-    return locals.bFK.bFO;
+    AppMethodBeat.i(16188);
+    if (paramb.type == 2001)
+    {
+      this.ffV = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.locallogoicon"));
+      this.ffW = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.localbubbleicon"));
+      this.ffX = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.effectresource"));
+      ab.i("MicroMsg.AppContentC2cMsgPiece", "locallogoicon: %s, localbubbleicon: %s, effectResource: %s", new Object[] { this.ffV, this.ffW, this.ffX });
+      this.ffY = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.corpname"));
+      this.ffZ = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.senderc2cshowsourceurl"));
+      this.fga = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.senderc2cshowsourcemd5"));
+      this.fgb = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.receiverc2cshowsourceurl"));
+      this.fgc = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.receiverc2cshowsourcemd5"));
+      this.fgd = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.recshowsourceurl"));
+      this.fge = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.recshowsourcemd5"));
+      this.fgf = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.detailshowsourceurl"));
+      this.fgg = bo.nullAsNil((String)paramMap.get(".msg.appmsg.wcpayinfo.detailshowsourcemd5"));
+      this.subType = bo.getInt((String)paramMap.get(".msg.appmsg.wcpayinfo.subtype"), 0);
+    }
+    AppMethodBeat.o(16188);
   }
+  
+  public final void b(StringBuilder paramStringBuilder, j.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.multi.talk;
 import com.tencent.pb.common.a.a;
 
@@ -8,14 +9,18 @@ final class f$5
 {
   f$5(f paramf) {}
   
-  public final void W(byte[] paramArrayOfByte, int paramInt)
+  public final void X(byte[] paramArrayOfByte, int paramInt)
   {
+    AppMethodBeat.i(127874);
     try
     {
-      if (!f.l(this.xeA)) {
+      boolean bool = f.l(this.BBh);
+      if (!bool)
+      {
+        AppMethodBeat.o(127874);
         return;
       }
-      if (f.m(this.xeA))
+      if (f.m(this.BBh))
       {
         int i = 0;
         while (i < paramArrayOfByte.length)
@@ -24,30 +29,40 @@ final class f$5
           i += 1;
         }
       }
-      if (f.l(this.xeA))
+      b localb;
+      short s;
+      if (f.l(this.BBh))
       {
-        b localb = f.c(this.xeA);
-        short s = (short)paramInt;
-        if (a.wFa) {
-          localb.xdr.SendAudio(paramArrayOfByte, s, 0);
-        }
-        if (this.xeA.xeo)
-        {
-          this.xeA.xeo = false;
-          com.tencent.pb.common.c.c.x("TalkRoomService", new Object[] { "onRecPcmDataCallBack len: ", Integer.valueOf(paramInt) });
-          return;
+        localb = f.c(this.BBh);
+        s = (short)paramInt;
+        if ((a.BcB) && (localb.BzZ != null)) {
+          break label140;
         }
       }
+      for (;;)
+      {
+        if (this.BBh.BAV)
+        {
+          this.BBh.BAV = false;
+          com.tencent.pb.common.c.c.w("TalkRoomService", new Object[] { "onRecPcmDataCallBack len: ", Integer.valueOf(paramInt) });
+        }
+        AppMethodBeat.o(127874);
+        return;
+        label140:
+        localb.BzZ.SendAudio(paramArrayOfByte, s, 0);
+      }
+      return;
     }
     catch (Exception paramArrayOfByte)
     {
-      com.tencent.pb.common.c.c.x("TalkRoomService", new Object[] { "initMediaComponent record", paramArrayOfByte });
+      com.tencent.pb.common.c.c.w("TalkRoomService", new Object[] { "initMediaComponent record", paramArrayOfByte });
+      AppMethodBeat.o(127874);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.f.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/a23" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/ddj" android:background="@drawable/a13" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/vy" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/login_auth_state_default_select" />
-    <TextView android:textSize="15.0sp" android:textColor="@color/e2" android:id="@id/vz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l3" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/fd">
+        <ImageView android:id="@id/jp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/gc" />
+        <TextView android:textSize="@dimen/dw" android:textColor="@color/h9" android:id="@id/cv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

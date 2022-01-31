@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.readerapp.ui;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.plugin.readerapp.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class ReaderAppSubscribeUI$1
@@ -14,13 +14,14 @@ final class ReaderAppSubscribeUI$1
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     int i = 1;
-    paramAdapterView = ReaderAppSubscribeUI.a(this.noI);
-    if ((paramAdapterView.noK & paramAdapterView.noJ[paramInt]) != 0)
+    AppMethodBeat.i(76802);
+    paramAdapterView = ReaderAppSubscribeUI.a(this.pTW);
+    if ((paramAdapterView.pTY & paramAdapterView.pTX[paramInt]) != 0)
     {
-      paramAdapterView.noK &= (paramAdapterView.noJ[paramInt] ^ 0xFFFFFFFF);
-      paramAdapterView.noM -= 1;
-      if (paramAdapterView.noM < 0) {
-        paramAdapterView.noM = 0;
+      paramAdapterView.pTY &= (paramAdapterView.pTX[paramInt] ^ 0xFFFFFFFF);
+      paramAdapterView.pUa -= 1;
+      if (paramAdapterView.pUa < 0) {
+        paramAdapterView.pUa = 0;
       }
       paramAdapterView.notifyDataSetChanged();
       paramInt = i;
@@ -28,15 +29,16 @@ final class ReaderAppSubscribeUI$1
     for (;;)
     {
       if (paramInt == 0) {
-        h.h(this.noI, a.g.contact_info_readerappnews_subscribe_limit, a.g.app_tip);
+        h.h(this.pTW, 2131298718, 2131297087);
       }
+      AppMethodBeat.o(76802);
       return;
-      if (paramAdapterView.noM < 3)
+      if (paramAdapterView.pUa < 3)
       {
-        paramAdapterView.noK |= paramAdapterView.noJ[paramInt];
-        paramAdapterView.noM += 1;
-        if (paramAdapterView.noM > paramAdapterView.noJ.length) {
-          paramAdapterView.noM = paramAdapterView.noJ.length;
+        paramAdapterView.pTY |= paramAdapterView.pTX[paramInt];
+        paramAdapterView.pUa += 1;
+        if (paramAdapterView.pUa > paramAdapterView.pTX.length) {
+          paramAdapterView.pUa = paramAdapterView.pTX.length;
         }
         paramAdapterView.notifyDataSetChanged();
         paramInt = i;

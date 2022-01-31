@@ -9,34 +9,34 @@ abstract class h$e
   extends AnimatorListenerAdapter
   implements ValueAnimator.AnimatorUpdateListener
 {
-  private boolean iT;
-  private float iU;
-  private float iV;
+  private boolean jM;
+  private float jN;
+  private float jO;
   
   private h$e(h paramh) {}
   
-  protected abstract float aR();
+  protected abstract float bA();
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    this.iS.iF.m(this.iV);
-    this.iT = false;
+    this.jL.jy.n(this.jO);
+    this.jM = false;
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!this.iT)
+    if (!this.jM)
     {
-      this.iU = this.iS.iF.jx;
-      this.iV = aR();
-      this.iT = true;
+      this.jN = this.jL.jy.kv;
+      this.jO = bA();
+      this.jM = true;
     }
-    this.iS.iF.m(this.iU + (this.iV - this.iU) * paramValueAnimator.getAnimatedFraction());
+    this.jL.jy.n(this.jN + (this.jO - this.jN) * paramValueAnimator.getAnimatedFraction());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.widget.h.e
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ public final class c$ix
 {
   public c$ix()
   {
-    super("showOptionMenu", "", 14, false);
+    super("setFreeWifiOwner", "setFreeWifiOwner", 169, false);
   }
 }
 

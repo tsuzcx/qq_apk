@@ -1,69 +1,75 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.plugin.voip.a.a;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.cfx;
-import com.tencent.mm.protocal.c.cfy;
-import com.tencent.mm.protocal.c.cfz;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.cti;
+import com.tencent.mm.protocal.protobuf.ctj;
+import com.tencent.mm.protocal.protobuf.ctk;
 import java.util.LinkedList;
 
 public final class l
-  extends n<cfy, cfz>
+  extends n<ctj, ctk>
 {
   public l(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String[] paramArrayOfString)
   {
+    AppMethodBeat.i(4733);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cfy();
-    ((b.a)localObject).ecI = new cfz();
+    ((b.a)localObject).fsX = new ctj();
+    ((b.a)localObject).fsY = new ctk();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipstatreport";
-    ((b.a)localObject).ecG = 320;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (cfy)this.dmK.ecE.ecN;
-    cfx localcfx = new cfx();
-    bml localbml = new bml();
-    localbml.YI(paramString1);
-    localcfx.tNi = localbml;
-    paramString1 = new cfx();
-    localbml = new bml();
-    localbml.YI(paramString2);
-    paramString1.tNi = localbml;
-    paramString2 = new cfx();
-    localbml = new bml();
-    localbml.YI(paramString3);
-    paramString2.tNi = localbml;
-    paramString3 = new cfx();
-    localbml = new bml();
-    localbml.YI(paramString4);
-    paramString3.tNi = localbml;
-    paramString4 = new cfx();
-    localbml = new bml();
-    localbml.YI(paramString5);
-    paramString4.tNi = localbml;
-    ((cfy)localObject).tTF = localcfx;
-    ((cfy)localObject).tVg = paramString1;
-    ((cfy)localObject).tVf = paramString2;
-    ((cfy)localObject).tVh = paramString3;
-    ((cfy)localObject).tVi = paramString4;
+    ((b.a)localObject).funcId = 320;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (ctj)this.rr.fsV.fta;
+    cti localcti = new cti();
+    bwc localbwc = new bwc();
+    localbwc.aoF(paramString1);
+    localcti.xTE = localbwc;
+    paramString1 = new cti();
+    localbwc = new bwc();
+    localbwc.aoF(paramString2);
+    paramString1.xTE = localbwc;
+    paramString2 = new cti();
+    localbwc = new bwc();
+    localbwc.aoF(paramString3);
+    paramString2.xTE = localbwc;
+    paramString3 = new cti();
+    localbwc = new bwc();
+    localbwc.aoF(paramString4);
+    paramString3.xTE = localbwc;
+    paramString4 = new cti();
+    localbwc = new bwc();
+    localbwc.aoF(paramString5);
+    paramString4.xTE = localbwc;
+    ((ctj)localObject).yaW = localcti;
+    ((ctj)localObject).ycx = paramString1;
+    ((ctj)localObject).ycw = paramString2;
+    ((ctj)localObject).ycy = paramString3;
+    ((ctj)localObject).ycz = paramString4;
     a.Logd("MicroMsg.NetSceneVoipStatReport", "natReportList length:" + paramArrayOfString.length);
     paramString1 = new LinkedList();
     while (i < paramArrayOfString.length)
     {
-      paramString1.add(new bml().YI(paramArrayOfString[i]));
+      paramString1.add(new bwc().aoF(paramArrayOfString[i]));
       i += 1;
     }
-    ((cfy)localObject).tVj = paramString1.size();
-    ((cfy)localObject).tVk = paramString1;
+    ((ctj)localObject).ycA = paramString1.size();
+    ((ctj)localObject).ycB = paramString1;
+    AppMethodBeat.o(4733);
   }
   
-  public final f bRy()
+  public final f cOp()
   {
-    return new l.1(this);
+    AppMethodBeat.i(4734);
+    l.1 local1 = new l.1(this);
+    AppMethodBeat.o(4734);
+    return local1;
   }
   
   public final int getType()

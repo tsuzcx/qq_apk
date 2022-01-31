@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.ext.provider;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.network.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bk;
 import com.tencent.mm.pluginsdk.d.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExtContentProviderBase$1
   implements Runnable
@@ -15,25 +14,24 @@ final class ExtContentProviderBase$1
   
   public final void run()
   {
+    AppMethodBeat.i(20325);
     try
     {
-      if (!au.DK()) {
+      boolean bool = aw.RG();
+      if (!bool)
+      {
+        AppMethodBeat.o(20325);
         return;
       }
-      au.Dk().a(new bi(new bi.a()
-      {
-        public final void a(e paramAnonymouse)
-        {
-          y.i("MicroMsg.ExtContentProviderBase", "checkIsLogin() onSceneEnd()");
-          ExtContentProviderBase.1.this.hSx.countDown();
-        }
-      }), 0);
+      aw.Rc().a(new bk(new ExtContentProviderBase.1.1(this)), 0);
+      AppMethodBeat.o(20325);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.ExtContentProviderBase", "exception in NetSceneLocalProxy");
-      this.hSx.countDown();
+      ab.e("MicroMsg.ExtContentProviderBase", "exception in NetSceneLocalProxy");
+      this.jMg.countDown();
+      AppMethodBeat.o(20325);
     }
   }
 }

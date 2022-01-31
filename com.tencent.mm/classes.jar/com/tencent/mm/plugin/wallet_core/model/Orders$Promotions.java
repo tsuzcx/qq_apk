@@ -3,56 +3,66 @@ package com.tencent.mm.plugin.wallet_core.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import b.a.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import d.a.a.c;
 
 public class Orders$Promotions
   implements Parcelable
 {
-  public static final Parcelable.Creator<Promotions> CREATOR = new Orders.Promotions.1();
-  public String mPa;
-  public String mTc;
+  public static final Parcelable.Creator<Promotions> CREATOR;
   public String name;
-  public long qqG;
-  public int qwm;
-  public int qwn;
-  public long qwo;
-  public String qwp;
-  public int qxA;
-  public int qxB;
-  public int qxC;
-  public String qxD;
-  public String qxE;
-  public String qxF;
-  public int qxG;
-  public String qxH;
-  public String qxI;
-  public c qxJ;
+  public String ppq;
+  public String pvi;
   public String title;
   public int type;
+  public String uWi;
+  public long ubC;
+  public int uiL;
+  public int uiM;
+  public long uiN;
+  public String uiO;
+  public int uki;
+  public int ukk;
+  public int ukl;
+  public String ukm;
+  public String ukn;
+  public String uko;
+  public int ukp;
+  public String ukq;
+  public c ukr;
   public String url;
+  
+  static
+  {
+    AppMethodBeat.i(46815);
+    CREATOR = new Orders.Promotions.1();
+    AppMethodBeat.o(46815);
+  }
   
   public Orders$Promotions() {}
   
   public Orders$Promotions(Parcel paramParcel)
   {
+    AppMethodBeat.i(46813);
     this.type = paramParcel.readInt();
-    this.mTc = paramParcel.readString();
+    this.pvi = paramParcel.readString();
     this.name = paramParcel.readString();
-    this.qwp = paramParcel.readString();
+    this.uiO = paramParcel.readString();
     this.url = paramParcel.readString();
-    this.mPa = paramParcel.readString();
+    this.ppq = paramParcel.readString();
     this.title = paramParcel.readString();
-    this.qxA = paramParcel.readInt();
-    this.qqG = paramParcel.readLong();
-    this.qxB = paramParcel.readInt();
-    this.qxC = paramParcel.readInt();
-    this.qwm = paramParcel.readInt();
-    this.qwn = paramParcel.readInt();
-    this.qxD = paramParcel.readString();
-    this.qxE = paramParcel.readString();
-    this.qxF = paramParcel.readString();
-    this.qwo = paramParcel.readLong();
-    this.qxG = paramParcel.readInt();
+    this.uki = paramParcel.readInt();
+    this.ubC = paramParcel.readLong();
+    this.ukk = paramParcel.readInt();
+    this.ukl = paramParcel.readInt();
+    this.uiL = paramParcel.readInt();
+    this.uiM = paramParcel.readInt();
+    this.ukm = paramParcel.readString();
+    this.ukn = paramParcel.readString();
+    this.uko = paramParcel.readString();
+    this.uiN = paramParcel.readLong();
+    this.ukp = paramParcel.readInt();
+    AppMethodBeat.o(46813);
   }
   
   public int describeContents()
@@ -62,24 +72,26 @@ public class Orders$Promotions
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(46814);
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.mTc);
+    paramParcel.writeString(this.pvi);
     paramParcel.writeString(this.name);
-    paramParcel.writeString(this.qwp);
+    paramParcel.writeString(this.uiO);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.mPa);
+    paramParcel.writeString(this.ppq);
     paramParcel.writeString(this.title);
-    paramParcel.writeInt(this.qxA);
-    paramParcel.writeLong(this.qqG);
-    paramParcel.writeInt(this.qxB);
-    paramParcel.writeInt(this.qxC);
-    paramParcel.writeInt(this.qwm);
-    paramParcel.writeInt(this.qwn);
-    paramParcel.writeString(this.qxD);
-    paramParcel.writeString(this.qxE);
-    paramParcel.writeString(this.qxF);
-    paramParcel.writeLong(this.qwo);
-    paramParcel.writeInt(this.qxG);
+    paramParcel.writeInt(this.uki);
+    paramParcel.writeLong(this.ubC);
+    paramParcel.writeInt(this.ukk);
+    paramParcel.writeInt(this.ukl);
+    paramParcel.writeInt(this.uiL);
+    paramParcel.writeInt(this.uiM);
+    paramParcel.writeString(this.ukm);
+    paramParcel.writeString(this.ukn);
+    paramParcel.writeString(this.uko);
+    paramParcel.writeLong(this.uiN);
+    paramParcel.writeInt(this.ukp);
+    AppMethodBeat.o(46814);
   }
 }
 

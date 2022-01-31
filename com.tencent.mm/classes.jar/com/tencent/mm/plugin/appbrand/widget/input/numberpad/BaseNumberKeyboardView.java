@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import com.tencent.luggage.l.a.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class BaseNumberKeyboardView
   extends LinearLayout
@@ -31,29 +31,39 @@ public class BaseNumberKeyboardView
   private Button mKey9;
   private ImageButton mKeyD;
   private Button mKeyX;
-  private int mXMode = 0;
+  private int mXMode;
   
   public BaseNumberKeyboardView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(123938);
+    this.mXMode = 0;
     init(paramContext);
+    AppMethodBeat.o(123938);
   }
   
   public BaseNumberKeyboardView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(123939);
+    this.mXMode = 0;
     init(paramContext);
+    AppMethodBeat.o(123939);
   }
   
   private int getDrawableId(String paramString)
   {
-    return this.mContext.getResources().getIdentifier(paramString, "drawable", this.mContext.getPackageName());
+    AppMethodBeat.i(123945);
+    int i = this.mContext.getResources().getIdentifier(paramString, "drawable", this.mContext.getPackageName());
+    AppMethodBeat.o(123945);
+    return i;
   }
   
   private void init(Context paramContext)
   {
+    AppMethodBeat.i(123940);
     this.mContext = paramContext.getApplicationContext();
-    paramContext = LayoutInflater.from(paramContext).inflate(a.e.appbrand_number_keyboard, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130968773, this, true);
     this.mKey1 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_1")));
     this.mKey2 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_2")));
     this.mKey3 = ((Button)paramContext.findViewById(getId("tenpay_keyboard_3")));
@@ -94,20 +104,27 @@ public class BaseNumberKeyboardView
     this.mKeyX.setOnClickListener(paramContext);
     this.mKey0.setOnClickListener(paramContext);
     this.mKeyD.setOnClickListener(paramContext);
+    AppMethodBeat.o(123940);
   }
   
   public final int getId(String paramString)
   {
-    return this.mContext.getResources().getIdentifier(paramString, "id", this.mContext.getPackageName());
+    AppMethodBeat.i(123944);
+    int i = this.mContext.getResources().getIdentifier(paramString, "id", this.mContext.getPackageName());
+    AppMethodBeat.o(123944);
+    return i;
   }
   
   public void onDetachedFromWindow()
   {
+    AppMethodBeat.i(123946);
     super.onDetachedFromWindow();
+    AppMethodBeat.o(123946);
   }
   
   public void setInputEditText(EditText paramEditText)
   {
+    AppMethodBeat.i(123942);
     if (paramEditText != null)
     {
       this.mInputEditText = paramEditText;
@@ -120,16 +137,20 @@ public class BaseNumberKeyboardView
       {
       }
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(123942);
       return;
       this.mXMode = 0;
-    } while (!TextUtils.isEmpty(paramEditText));
-    this.mKeyX.setText("");
+      if (TextUtils.isEmpty(paramEditText)) {
+        this.mKeyX.setText("");
+      }
+    }
   }
   
   public void setSecureAccessibility(View.AccessibilityDelegate paramAccessibilityDelegate)
   {
+    AppMethodBeat.i(123941);
     this.mKey0.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey1.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKey2.setAccessibilityDelegate(paramAccessibilityDelegate);
@@ -142,32 +163,38 @@ public class BaseNumberKeyboardView
     this.mKey9.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyX.setAccessibilityDelegate(paramAccessibilityDelegate);
     this.mKeyD.setAccessibilityDelegate(paramAccessibilityDelegate);
+    AppMethodBeat.o(123941);
   }
   
   public void setXMode(int paramInt)
   {
+    AppMethodBeat.i(123943);
     this.mXMode = paramInt;
     switch (paramInt)
     {
     default: 
       this.mXMode = 0;
+      AppMethodBeat.o(123943);
       return;
     case 0: 
       this.mKeyX.setText("");
       this.mKeyX.setBackgroundResource(getDrawableId("tenpay_keyitem_bottom"));
+      AppMethodBeat.o(123943);
       return;
     case 1: 
       this.mKeyX.setText("X");
       this.mKeyX.setBackgroundResource(getDrawableId("tenpay_keybtn_bottom"));
+      AppMethodBeat.o(123943);
       return;
     }
     this.mKeyX.setText(".");
     this.mKeyX.setBackgroundResource(getDrawableId("tenpay_keybtn_bottom"));
+    AppMethodBeat.o(123943);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.numberpad.BaseNumberKeyboardView
  * JD-Core Version:    0.7.0.1
  */

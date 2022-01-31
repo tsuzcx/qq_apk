@@ -1,212 +1,61 @@
 package android.support.v4.view;
 
-import android.content.res.ColorStateList;
-import android.graphics.PorterDuff.Mode;
 import android.os.Build.VERSION;
-import android.view.MenuItem;
-import android.view.MenuItem.OnActionExpandListener;
-import android.view.View;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import java.lang.reflect.Field;
 
 public final class f
 {
-  static final c Fl = new b();
+  private static Field FV;
+  private static boolean FW;
   
-  static
+  private static void a(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
   {
-    if (Build.VERSION.SDK_INT >= 26)
+    if (!FW) {}
+    try
     {
-      Fl = new a();
-      return;
+      Field localField = LayoutInflater.class.getDeclaredField("mFactory2");
+      FV = localField;
+      localField.setAccessible(true);
+      FW = true;
+      if (FV == null) {}
     }
-  }
-  
-  public static MenuItem a(MenuItem paramMenuItem, b paramb)
-  {
-    Object localObject = paramMenuItem;
-    if ((paramMenuItem instanceof android.support.v4.b.a.b)) {
-      localObject = ((android.support.v4.b.a.b)paramMenuItem).a(paramb);
-    }
-    return localObject;
-  }
-  
-  @Deprecated
-  public static MenuItem a(MenuItem paramMenuItem, d paramd)
-  {
-    paramMenuItem.setOnActionExpandListener(new MenuItem.OnActionExpandListener()
+    catch (NoSuchFieldException localNoSuchFieldException)
     {
-      public final boolean onMenuItemActionCollapse(MenuItem paramAnonymousMenuItem)
+      for (;;)
       {
-        return this.Fm.di();
+        try
+        {
+          FV.set(paramLayoutInflater, paramFactory2);
+          return;
+        }
+        catch (IllegalAccessException paramFactory2)
+        {
+          new StringBuilder("forceSetFactory2 could not set the Factory2 on LayoutInflater ").append(paramLayoutInflater).append("; inflation may have unexpected results.");
+        }
+        localNoSuchFieldException = localNoSuchFieldException;
+        new StringBuilder("forceSetFactory2 Could not find field 'mFactory2' on class ").append(LayoutInflater.class.getName()).append("; inflation may have unexpected results.");
       }
-      
-      public final boolean onMenuItemActionExpand(MenuItem paramAnonymousMenuItem)
-      {
-        return this.Fm.dh();
+    }
+  }
+  
+  public static void b(LayoutInflater paramLayoutInflater, LayoutInflater.Factory2 paramFactory2)
+  {
+    paramLayoutInflater.setFactory2(paramFactory2);
+    if (Build.VERSION.SDK_INT < 21)
+    {
+      LayoutInflater.Factory localFactory = paramLayoutInflater.getFactory();
+      if ((localFactory instanceof LayoutInflater.Factory2)) {
+        a(paramLayoutInflater, (LayoutInflater.Factory2)localFactory);
       }
-    });
-  }
-  
-  @Deprecated
-  public static MenuItem a(MenuItem paramMenuItem, View paramView)
-  {
-    return paramMenuItem.setActionView(paramView);
-  }
-  
-  @Deprecated
-  public static View a(MenuItem paramMenuItem)
-  {
-    return paramMenuItem.getActionView();
-  }
-  
-  public static void a(MenuItem paramMenuItem, char paramChar, int paramInt)
-  {
-    if ((paramMenuItem instanceof android.support.v4.b.a.b))
+    }
+    else
     {
-      ((android.support.v4.b.a.b)paramMenuItem).setNumericShortcut(paramChar, paramInt);
       return;
     }
-    Fl.a(paramMenuItem, paramChar, paramInt);
-  }
-  
-  @Deprecated
-  public static void a(MenuItem paramMenuItem, int paramInt)
-  {
-    paramMenuItem.setShowAsAction(paramInt);
-  }
-  
-  public static void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
-  {
-    if ((paramMenuItem instanceof android.support.v4.b.a.b))
-    {
-      ((android.support.v4.b.a.b)paramMenuItem).setIconTintList(paramColorStateList);
-      return;
-    }
-    Fl.a(paramMenuItem, paramColorStateList);
-  }
-  
-  public static void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
-  {
-    if ((paramMenuItem instanceof android.support.v4.b.a.b))
-    {
-      ((android.support.v4.b.a.b)paramMenuItem).setIconTintMode(paramMode);
-      return;
-    }
-    Fl.a(paramMenuItem, paramMode);
-  }
-  
-  public static void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
-  {
-    if ((paramMenuItem instanceof android.support.v4.b.a.b))
-    {
-      ((android.support.v4.b.a.b)paramMenuItem).g(paramCharSequence);
-      return;
-    }
-    Fl.a(paramMenuItem, paramCharSequence);
-  }
-  
-  public static void b(MenuItem paramMenuItem, char paramChar, int paramInt)
-  {
-    if ((paramMenuItem instanceof android.support.v4.b.a.b))
-    {
-      ((android.support.v4.b.a.b)paramMenuItem).setAlphabeticShortcut(paramChar, paramInt);
-      return;
-    }
-    Fl.b(paramMenuItem, paramChar, paramInt);
-  }
-  
-  public static void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
-  {
-    if ((paramMenuItem instanceof android.support.v4.b.a.b))
-    {
-      ((android.support.v4.b.a.b)paramMenuItem).h(paramCharSequence);
-      return;
-    }
-    Fl.b(paramMenuItem, paramCharSequence);
-  }
-  
-  @Deprecated
-  public static boolean b(MenuItem paramMenuItem)
-  {
-    return paramMenuItem.expandActionView();
-  }
-  
-  @Deprecated
-  public static boolean c(MenuItem paramMenuItem)
-  {
-    return paramMenuItem.collapseActionView();
-  }
-  
-  static final class a
-    extends f.b
-  {
-    public final void a(MenuItem paramMenuItem, char paramChar, int paramInt)
-    {
-      paramMenuItem.setNumericShortcut(paramChar, paramInt);
-    }
-    
-    public final void a(MenuItem paramMenuItem, ColorStateList paramColorStateList)
-    {
-      paramMenuItem.setIconTintList(paramColorStateList);
-    }
-    
-    public final void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode)
-    {
-      paramMenuItem.setIconTintMode(paramMode);
-    }
-    
-    public final void a(MenuItem paramMenuItem, CharSequence paramCharSequence)
-    {
-      paramMenuItem.setContentDescription(paramCharSequence);
-    }
-    
-    public final void b(MenuItem paramMenuItem, char paramChar, int paramInt)
-    {
-      paramMenuItem.setAlphabeticShortcut(paramChar, paramInt);
-    }
-    
-    public final void b(MenuItem paramMenuItem, CharSequence paramCharSequence)
-    {
-      paramMenuItem.setTooltipText(paramCharSequence);
-    }
-  }
-  
-  static class b
-    implements f.c
-  {
-    public void a(MenuItem paramMenuItem, char paramChar, int paramInt) {}
-    
-    public void a(MenuItem paramMenuItem, ColorStateList paramColorStateList) {}
-    
-    public void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode) {}
-    
-    public void a(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
-    
-    public void b(MenuItem paramMenuItem, char paramChar, int paramInt) {}
-    
-    public void b(MenuItem paramMenuItem, CharSequence paramCharSequence) {}
-  }
-  
-  static abstract interface c
-  {
-    public abstract void a(MenuItem paramMenuItem, char paramChar, int paramInt);
-    
-    public abstract void a(MenuItem paramMenuItem, ColorStateList paramColorStateList);
-    
-    public abstract void a(MenuItem paramMenuItem, PorterDuff.Mode paramMode);
-    
-    public abstract void a(MenuItem paramMenuItem, CharSequence paramCharSequence);
-    
-    public abstract void b(MenuItem paramMenuItem, char paramChar, int paramInt);
-    
-    public abstract void b(MenuItem paramMenuItem, CharSequence paramCharSequence);
-  }
-  
-  @Deprecated
-  public static abstract interface d
-  {
-    public abstract boolean dh();
-    
-    public abstract boolean di();
+    a(paramLayoutInflater, paramFactory2);
   }
 }
 

@@ -2,15 +2,19 @@ package com.tencent.mm.chatroom.ui;
 
 public final class SeeAccessVerifyInfoUI$a
 {
-  String drb;
+  String cwc;
+  String eiH;
+  String eiI;
   String nickname;
   String username;
   
-  SeeAccessVerifyInfoUI$a(SeeAccessVerifyInfoUI paramSeeAccessVerifyInfoUI, String paramString1, String paramString2, String paramString3)
+  SeeAccessVerifyInfoUI$a(SeeAccessVerifyInfoUI paramSeeAccessVerifyInfoUI, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this.username = paramString1;
     this.nickname = paramString2;
-    this.drb = paramString3;
+    this.cwc = paramString3;
+    this.eiH = paramString4;
+    this.eiI = paramString5;
   }
 }
 

@@ -1,20 +1,24 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.os.Message;
-import com.tencent.mm.compatible.a.a.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import android.view.View;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.o;
 
 final class ChatFooter$19
-  implements a.a
+  implements PopupWindow.OnDismissListener
 {
-  ChatFooter$19(ChatFooter paramChatFooter, boolean paramBoolean) {}
-  
-  public final void run()
+  ChatFooter$19(ChatFooter paramChatFooter)
   {
-    Message localMessage = new Message();
-    localMessage.what = 1002;
-    localMessage.obj = Boolean.valueOf(this.gUe);
-    ChatFooter.I(this.sgd).sendMessage(localMessage);
+    AppMethodBeat.i(153701);
+    AppMethodBeat.o(153701);
+  }
+  
+  public final void onDismiss()
+  {
+    AppMethodBeat.i(155430);
+    ChatFooter.s(this.vXU).getContentView().setAlpha(0.0F);
+    AppMethodBeat.o(155430);
   }
 }
 

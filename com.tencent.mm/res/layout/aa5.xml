@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cut" android:background="@color/t5" android:layout_width="fill_parent" android:layout_height="@dimen/f7"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cuu" android:background="@drawable/al" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/cuv" android:paddingLeft="@dimen/g1" android:paddingRight="@dimen/g1" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/f8" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/cs" android:ellipsize="end" android:gravity="center|left" android:id="@id/cuw" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cho" android:singleLine="true" />
-    <View android:id="@id/cux" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <ImageButton android:id="@id/cuy" android:background="@drawable/al" android:focusable="true" android:layout_width="@dimen/f7" android:layout_height="@dimen/f7" android:src="@raw/actionbar_icon_dark_search" />
-    <ImageButton android:id="@id/cuz" android:background="@drawable/al" android:focusable="true" android:visibility="gone" android:layout_width="@dimen/f7" android:layout_height="@dimen/f7" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cv0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <TextView android:textColor="@color/a39" android:gravity="center" android:id="@id/j0" android:background="@drawable/al" android:paddingLeft="@dimen/fs" android:paddingRight="@dimen/fs" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="send" />
-    </LinearLayout>
+    <TextView android:textSize="@dimen/m2" android:id="@id/ctj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/n_" android:text="@string/d8a" />
+    <CheckBox android:textSize="@dimen/ko" android:layout_gravity="left" android:id="@id/ctk" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ps" android:drawablePadding="4.0dip" style="@style/o1" />
 </LinearLayout>

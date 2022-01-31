@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -8,20 +9,15 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.CheckBox;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.g.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s.b;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.q.b;
+import com.tencent.mm.ui.widget.b.c;
+import com.tencent.mm.ui.widget.b.c.a.b;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,43 +26,55 @@ import java.util.Iterator;
 public class NewFileExplorerUI
   extends MMActivity
 {
-  private ListView fry;
-  private int mode = 0;
-  private TextView nhj;
-  private NewFileExplorerUI.a smN;
-  private TextView smO;
-  private FileSelectorFolderView smP;
-  private g.a smQ;
-  private FileSelectorFolderView.a smR = new NewFileExplorerUI.7(this);
+  private ListView gJa;
+  private int mode;
+  private TextView pMw;
   private String toUserName;
+  private NewFileExplorerUI.a wfi;
+  private TextView wfj;
+  private FileSelectorFolderView wfk;
+  private g.a wfl;
+  private FileSelectorFolderView.a wfm;
   
-  private void bwF()
+  public NewFileExplorerUI()
   {
-    int i = NewFileExplorerUI.a.a(this.smN).size();
+    AppMethodBeat.i(28209);
+    this.mode = 0;
+    this.wfm = new NewFileExplorerUI.7(this);
+    AppMethodBeat.o(28209);
+  }
+  
+  private void ccF()
+  {
+    AppMethodBeat.i(28215);
+    int i = NewFileExplorerUI.a.a(this.wfi).size();
     if (i > 0)
     {
       if (this.mode == 0)
       {
-        updateOptionMenuText(1, getString(R.l.app_send) + "(" + i + "/9)");
+        updateOptionMenuText(1, getString(2131297067) + "(" + i + "/9)");
         enableOptionMenu(1, true);
       }
-      this.nhj.setText(getString(R.l.file_explorer_selected_file_size, new Object[] { bk.cm(this.smN.bug()) }));
-      this.nhj.setVisibility(0);
+      this.pMw.setText(getString(2131299880, new Object[] { bo.hk(this.wfi.ces()) }));
+      this.pMw.setVisibility(0);
+      AppMethodBeat.o(28215);
       return;
     }
     if (this.mode == 0)
     {
-      updateOptionMenuText(1, getString(R.l.app_send));
+      updateOptionMenuText(1, getString(2131297067));
       enableOptionMenu(1, false);
     }
-    this.nhj.setVisibility(8);
+    this.pMw.setVisibility(8);
+    AppMethodBeat.o(28215);
   }
   
-  private void col()
+  private void dpA()
   {
-    if ((NewFileExplorerUI.a.b(this.smN) != null) && (NewFileExplorerUI.a.c(this.smN) != null))
+    AppMethodBeat.i(28216);
+    if ((NewFileExplorerUI.a.b(this.wfi) != null) && (NewFileExplorerUI.a.c(this.wfi) != null))
     {
-      Object localObject2 = NewFileExplorerUI.a.c(this.smN).getPath().replace(NewFileExplorerUI.a.b(this.smN).getPath(), "");
+      Object localObject2 = NewFileExplorerUI.a.c(this.wfi).getPath().replace(NewFileExplorerUI.a.b(this.wfi).getPath(), "");
       Object localObject1 = localObject2;
       if (((String)localObject2).startsWith("/")) {
         localObject1 = ((String)localObject2).substring(1);
@@ -77,168 +85,181 @@ public class NewFileExplorerUI
       }
       setMMSubTitle((String)localObject2);
     }
+    AppMethodBeat.o(28216);
   }
   
-  private void mh(boolean paramBoolean)
+  private void pw(boolean paramBoolean)
   {
+    AppMethodBeat.i(28214);
     if (this.mode == 0)
     {
-      if ((!paramBoolean) && (this.smN.cop() != null))
+      if ((!paramBoolean) && (this.wfi.dpE() != null))
       {
-        this.smN.a(this.smN.cop(), null);
-        this.smN.notifyDataSetChanged();
-        col();
+        this.wfi.a(this.wfi.dpE(), null);
+        this.wfi.notifyDataSetChanged();
+        dpA();
+        AppMethodBeat.o(28214);
         return;
       }
       setResult(0);
       finish();
+      AppMethodBeat.o(28214);
       return;
     }
     Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("selected_file_lst", this.smN.com());
-    localIntent.putStringArrayListExtra("key_select_video_list", this.smN.coo());
-    localIntent.putStringArrayListExtra("CropImage_OutputPath_List", this.smN.con());
+    localIntent.putStringArrayListExtra("selected_file_lst", this.wfi.dpB());
+    localIntent.putStringArrayListExtra("key_select_video_list", this.wfi.dpD());
+    localIntent.putStringArrayListExtra("CropImage_OutputPath_List", this.wfi.dpC());
     localIntent.putExtra("GalleryUI_ToUser", this.toUserName);
     setResult(-1, localIntent);
     finish();
+    AppMethodBeat.o(28214);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.new_file_explorer_ui;
+    return 2130970357;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(28213);
     if ((paramInt1 == 0) && (paramInt2 == -1))
     {
       paramIntent = paramIntent.getStringArrayListExtra("selected_file_lst");
-      if (NewFileExplorerUI.a.a(this.smN).size() != paramIntent.size())
+      if ((paramIntent != null) && (NewFileExplorerUI.a.a(this.wfi).size() != paramIntent.size()))
       {
-        this.smQ.few.dismiss();
-        NewFileExplorerUI.a.a(this.smN).clear();
+        this.wfl.gwf.dismiss();
+        NewFileExplorerUI.a.a(this.wfi).clear();
         paramIntent = paramIntent.iterator();
         while (paramIntent.hasNext())
         {
-          str = (String)paramIntent.next();
-          NewFileExplorerUI.a.a(this.smN).add(new File(str));
+          String str = (String)paramIntent.next();
+          NewFileExplorerUI.a.a(this.wfi).add(new File(str));
         }
-        this.smN.notifyDataSetChanged();
-        col();
-        bwF();
+        this.wfi.notifyDataSetChanged();
+        dpA();
+        ccF();
       }
-    }
-    while (paramInt1 != 2)
-    {
-      String str;
+      AppMethodBeat.o(28213);
       return;
     }
-    a.a(this, paramInt1, paramInt2, paramIntent, true, R.l.download_no_match_msg, R.l.download_no_match_title, 1);
+    if (paramInt1 == 2) {
+      a.a(this, paramInt1, paramInt2, paramIntent, true, 2131299009, 2131299010, 1);
+    }
+    AppMethodBeat.o(28213);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(28210);
     super.onCreate(paramBundle);
     this.toUserName = getIntent().getStringExtra("TO_USER");
-    this.fry = ((ListView)findViewById(R.h.file_explorer_lv));
-    this.smN = new NewFileExplorerUI.a(this);
-    this.nhj = ((TextView)findViewById(R.h.selected_file_size));
+    this.gJa = ((ListView)findViewById(2131826535));
+    this.wfi = new NewFileExplorerUI.a(this);
+    this.pMw = ((TextView)findViewById(2131826540));
     this.mode = getIntent().getIntExtra("explorer_mode", 0);
     if (this.mode == 1)
     {
-      setMMTitle(R.l.file_explorer_selected_mode_title);
+      setMMTitle(2131299881);
       setMMSubTitle(null);
-      this.smN.a(null, getIntent().getStringArrayListExtra("selected_file_lst"));
-      this.fry.setAdapter(this.smN);
-      this.fry.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.wfi.a(null, getIntent().getStringArrayListExtra("selected_file_lst"));
+      this.gJa.setAdapter(this.wfi);
+      this.gJa.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
-          paramAnonymousAdapterView = NewFileExplorerUI.b(NewFileExplorerUI.this).slP[paramAnonymousInt];
+          AppMethodBeat.i(28176);
+          paramAnonymousAdapterView = NewFileExplorerUI.b(NewFileExplorerUI.this).wer[paramAnonymousInt];
           if (paramAnonymousAdapterView.isDirectory())
           {
             NewFileExplorerUI.b(NewFileExplorerUI.this).a(paramAnonymousAdapterView, null);
             NewFileExplorerUI.b(NewFileExplorerUI.this).notifyDataSetChanged();
             NewFileExplorerUI.c(NewFileExplorerUI.this);
+            AppMethodBeat.o(28176);
             return;
           }
-          paramAnonymousView = com.tencent.mm.a.e.bM(paramAnonymousAdapterView.getPath());
-          a.b(NewFileExplorerUI.this, paramAnonymousAdapterView.getPath(), paramAnonymousView, 1);
+          paramAnonymousView = com.tencent.mm.a.e.cP(paramAnonymousAdapterView.getPath());
+          a.a(NewFileExplorerUI.this, paramAnonymousAdapterView.getPath(), paramAnonymousView, 1);
+          AppMethodBeat.o(28176);
         }
       });
-      this.fry.setEmptyView(findViewById(R.h.file_explorer_empty_view));
+      this.gJa.setEmptyView(findViewById(2131826536));
       paramBundle = new NewFileExplorerUI.3(this);
       if (this.mode != 0) {
-        break label405;
+        break label417;
       }
     }
-    label405:
-    for (int i = R.k.actionbar_quit_webview_icon;; i = 0)
+    label417:
+    for (int i = 2131230755;; i = 0)
     {
       setBackBtn(paramBundle, i);
       if (this.mode == 0) {
-        a(1, getString(R.l.app_send), new MenuItem.OnMenuItemClickListener()
+        addTextOptionMenu(1, getString(2131297067), new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
           {
+            AppMethodBeat.i(28178);
             NewFileExplorerUI.e(NewFileExplorerUI.this);
+            AppMethodBeat.o(28178);
             return true;
           }
-        }, s.b.uNx);
+        }, null, q.b.zby);
       }
-      bwF();
+      ccF();
+      AppMethodBeat.o(28210);
       return;
-      setMMTitle(R.l.file_explorer_mm_download_title);
+      setMMTitle(2131299878);
       setMMSubTitle(null);
-      this.smO = ((TextView)findViewById(R.h.file_explorer_folder_title_tv));
-      this.smO.setText(R.l.file_explorer_mm_download_title);
-      this.smN.c(new File(com.tencent.mm.compatible.util.e.dzB), true);
-      this.smN.a(new File(com.tencent.mm.compatible.util.e.dzB), null);
-      if (this.smN.getCount() == 0)
+      this.wfj = ((TextView)findViewById(2131826539));
+      this.wfj.setText(2131299878);
+      this.wfi.c(new File(com.tencent.mm.compatible.util.e.esq), true);
+      this.wfi.a(new File(com.tencent.mm.compatible.util.e.esq), null);
+      if (this.wfi.getCount() == 0)
       {
-        this.smN.c(new File(com.tencent.mm.compatible.util.e.bkF), false);
-        this.smN.a(new File(com.tencent.mm.compatible.util.e.bkF), null);
-        setMMTitle(R.l.file_explorer_mobile_dir_title);
-        this.smO.setText(R.l.file_explorer_mobile_dir_title);
+        this.wfi.c(new File(com.tencent.mm.compatible.util.e.eQx), false);
+        this.wfi.a(new File(com.tencent.mm.compatible.util.e.eQx), null);
+        setMMTitle(2131299879);
+        this.wfj.setText(2131299879);
       }
-      findViewById(R.h.file_explorer_folder).setVisibility(0);
-      findViewById(R.h.file_explorer_folder).setOnClickListener(new NewFileExplorerUI.1(this));
-      this.smP = ((FileSelectorFolderView)findViewById(R.h.file_explorer_folder_mgr_view));
-      this.smP.setListener(this.smR);
+      findViewById(2131826538).setVisibility(0);
+      findViewById(2131826538).setOnClickListener(new NewFileExplorerUI.1(this));
+      this.wfk = ((FileSelectorFolderView)findViewById(2131826541));
+      this.wfk.setListener(this.wfm);
       break;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(28211);
     super.onDestroy();
+    AppMethodBeat.o(28211);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(28212);
     if (paramInt == 4)
     {
-      mh(false);
+      pw(false);
+      AppMethodBeat.o(28212);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(28212);
+    return bool;
   }
   
-  private final class a$b
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    public TextView dsz;
-    public TextView eXO;
-    public ImageView gSx;
-    public TextView nhj;
-    public FrameLayout smY;
-    public CheckBox smZ;
-    
-    private a$b() {}
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.NewFileExplorerUI
  * JD-Core Version:    0.7.0.1
  */

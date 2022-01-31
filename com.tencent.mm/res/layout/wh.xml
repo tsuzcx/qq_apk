@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bhq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/ml" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/lk" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip">
-        <ImageView android:id="@id/b0" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" android:src="@raw/fav_list_error" />
-        <TextView android:textSize="@dimen/mw" android:textColor="@color/mh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bn2" android:layout_weight="1.0" />
-        <TextView android:textColor="@color/mh" android:id="@id/bhr" android:background="@null" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bn3" />
-    </LinearLayout>
+    <RelativeLayout android:orientation="vertical" android:id="@id/nw" android:background="@color/vy" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/bl6" android:background="@color/vy" android:layout_above="@id/bl8" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/mn" />
+        <TextView android:id="@id/a8b" android:layout_above="@id/bl8" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/lf" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/bl8" android:background="@drawable/b03" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="49.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
 </LinearLayout>

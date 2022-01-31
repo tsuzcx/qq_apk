@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sport.ui.SportChartView;
 import com.tencent.mm.plugin.sport.ui.SportChartView.a;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
@@ -9,21 +10,23 @@ final class ExdeviceProfileUI$22
 {
   ExdeviceProfileUI$22(ExdeviceProfileUI paramExdeviceProfileUI) {}
   
-  public final void cr(boolean paramBoolean)
+  public final void onStatusChange(boolean paramBoolean)
   {
-    if (ExdeviceProfileUI.F(this.jEM) != null)
+    AppMethodBeat.i(20047);
+    if (ExdeviceProfileUI.F(this.lOl) != null)
     {
       if (!paramBoolean) {
-        break label45;
+        break label57;
       }
-      ExdeviceProfileUI.G(this.jEM).a(SportChartView.a.puh);
+      ExdeviceProfileUI.G(this.lOl).a(SportChartView.a.sqx);
     }
     for (;;)
     {
-      ExdeviceProfileUI.G(this.jEM).cN(ExdeviceProfileUI.F(this.jEM));
+      ExdeviceProfileUI.G(this.lOl).dz(ExdeviceProfileUI.F(this.lOl));
+      AppMethodBeat.o(20047);
       return;
-      label45:
-      ExdeviceProfileUI.G(this.jEM).a(SportChartView.a.pug);
+      label57:
+      ExdeviceProfileUI.G(this.lOl).a(SportChartView.a.sqw);
     }
   }
 }

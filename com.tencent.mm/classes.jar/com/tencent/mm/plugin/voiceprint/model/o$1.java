@@ -1,39 +1,43 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
-import com.tencent.mm.h.a.sy;
-import com.tencent.mm.modelvoice.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ur;
+import com.tencent.mm.modelvoice.m;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class o$1
-  implements am.a
+  implements ap.a
 {
   o$1(o paramo) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.pLG.pLE += 100;
-    this.pLG.pLF += this.pLG.pLC.getMaxAmplitude() * 100 / 100;
-    if (this.pLG.pLE >= 3000)
+    AppMethodBeat.i(26117);
+    this.trC.trA += 100;
+    this.trC.trB += this.trC.jdField_try.getMaxAmplitude() * 100 / 100;
+    if (this.trC.trA >= 3000)
     {
-      Object localObject = this.pLG;
-      y.d("MicroMsg.VoicePrintNoiseDetector", "onDetectFinish");
-      ((o)localObject).pLC.uh();
-      ((o)localObject).pLD.stopTimer();
-      ((o)localObject).pLF /= 30;
-      if (((o)localObject).pLF >= 30) {}
+      Object localObject = this.trC;
+      ab.d("MicroMsg.VoicePrintNoiseDetector", "onDetectFinish");
+      ((o)localObject).jdField_try.Et();
+      ((o)localObject).trz.stopTimer();
+      ((o)localObject).trB /= 30;
+      if (((o)localObject).trB >= 30) {}
       for (boolean bool = true;; bool = false)
       {
-        y.d("MicroMsg.VoicePrintNoiseDetector", "average amplitude: %d, hasNoise:%b", new Object[] { Integer.valueOf(((o)localObject).pLF), Boolean.valueOf(bool) });
-        localObject = new sy();
-        ((sy)localObject).ccy.ccz = bool;
-        a.udP.m((b)localObject);
+        ab.d("MicroMsg.VoicePrintNoiseDetector", "average amplitude: %d, hasNoise:%b", new Object[] { Integer.valueOf(((o)localObject).trB), Boolean.valueOf(bool) });
+        localObject = new ur();
+        ((ur)localObject).cLg.cLh = bool;
+        a.ymk.l((b)localObject);
+        AppMethodBeat.o(26117);
         return false;
       }
     }
+    AppMethodBeat.o(26117);
     return true;
   }
 }

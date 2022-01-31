@@ -1,35 +1,28 @@
 package com.tencent.mm.pluginsdk.model.app;
 
+import android.net.Uri;
+
 public final class an
-  implements am
 {
-  public volatile boolean bRf;
-  public volatile boolean edU;
-  public volatile boolean ggq;
-  public volatile boolean ggr;
-  an.a rVd;
+  public static an vMo = null;
+  public static long vMp = -1L;
+  public int code = -1;
+  public String[] projection = null;
+  public String selection = "";
+  public String[] selectionArgs = null;
+  public Uri uri = null;
+  public String vMm = "";
+  public String[] vMn = null;
   
-  public an(an.a parama)
+  public an(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2, int paramInt, String[] paramArrayOfString3)
   {
-    this.rVd = parama;
-  }
-  
-  public final void cW(boolean paramBoolean)
-  {
-    this.edU = true;
-    this.ggq = paramBoolean;
-    if ((this.ggr) && (this.rVd != null)) {
-      this.rVd.q(this.bRf, paramBoolean);
-    }
-  }
-  
-  public final void cX(boolean paramBoolean)
-  {
-    this.bRf = paramBoolean;
-    this.ggr = true;
-    if ((this.edU) && (this.rVd != null)) {
-      this.rVd.q(paramBoolean, this.ggq);
-    }
+    this.uri = paramUri;
+    this.projection = paramArrayOfString1;
+    this.selection = paramString1;
+    this.selectionArgs = paramArrayOfString2;
+    this.vMm = paramString2;
+    this.code = paramInt;
+    this.vMn = paramArrayOfString3;
   }
 }
 

@@ -1,54 +1,17 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.websearch.api.m;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.wa;
+import com.tencent.mm.sdk.b.c;
 
 final class FTSMainUI$14
-  implements View.OnClickListener
+  extends c<wa>
 {
-  FTSMainUI$14(FTSMainUI paramFTSMainUI) {}
-  
-  public final void onClick(View paramView)
+  FTSMainUI$14(FTSMainUI paramFTSMainUI)
   {
-    try
-    {
-      if (paramView.getTag() != null)
-      {
-        i = ((JSONObject)paramView.getTag()).optInt("businessType");
-        if (i != 0) {
-          break label140;
-        }
-        paramView = ((TextView)paramView).getText().toString();
-        if (!paramView.equals(this.kCm.getString(n.g.search_education_article))) {
-          break label95;
-        }
-        i = 2;
-        if (i != 0)
-        {
-          paramView = this.kCm;
-          ((m)g.r(m.class)).a(paramView, new FTSMainUI.13(paramView, i));
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      label140:
-      for (;;)
-      {
-        int i = 0;
-        continue;
-        label95:
-        if (paramView.equals(this.kCm.getString(n.g.search_education_timeline))) {
-          i = 8;
-        } else if (paramView.equals(this.kCm.getString(n.g.search_education_biz_contact))) {
-          i = 1;
-        }
-      }
-    }
+    AppMethodBeat.i(61883);
+    this.__eventId = wa.class.getName().hashCode();
+    AppMethodBeat.o(61883);
   }
 }
 

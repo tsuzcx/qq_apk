@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.websearch.c.a;
 
 public abstract interface c
 {
-  public abstract a RA(String paramString);
-  
   public abstract void a(a parama, c.a parama1);
+  
+  public abstract a agB(String paramString);
 }
 
 

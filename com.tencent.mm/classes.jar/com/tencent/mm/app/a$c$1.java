@@ -2,9 +2,9 @@ package com.tencent.mm.app;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class a$c$1
   implements Runnable
@@ -13,36 +13,40 @@ final class a$c$1
   
   public final void run()
   {
-    this.bvX.bvV = ((this.bvX.bvV + 1) % 2147483647);
-    if (this.bvX.bvV % a.access$200() == 0)
+    AppMethodBeat.i(15356);
+    this.bXi.bXg = ((this.bXi.bXg + 1) % 2147483647);
+    if (this.bXi.bXg % a.access$200() == 0)
     {
-      SharedPreferences localSharedPreferences = ae.getContext().getSharedPreferences("system_config_prefs", 4);
+      SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.h.Mp());
       int i = localSharedPreferences.getInt("main_thread_watch_enable", 65535);
       int j = localSharedPreferences.getInt("main_thread_watch_timeout", 0);
       int k = localSharedPreferences.getInt("main_thread_watch_log_loop", 0);
       int m = localSharedPreferences.getInt("main_thread_watch_report", 0);
-      y.i("MicroMsg.ANRWatchDog.summeranr", "summeranr ticker tname[%s], tick[%d] enable[%d], timeout[%d], loop[%d], report[%d]", new Object[] { Thread.currentThread().getName(), Integer.valueOf(this.bvX.bvV), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
-      if (!a.o(a.access$300(), i)) {
-        break label250;
-      }
-      if ((j > 0) && (j != a.su()))
+      ab.i("MicroMsg.ANRWatchDog.summeranr", "summeranr ticker tname[%s], tick[%d] enable[%d], timeout[%d], loop[%d], report[%d]", new Object[] { Thread.currentThread().getName(), Integer.valueOf(this.bXi.bXg), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+      if (a.r(a.access$300(), i))
       {
-        y.i("MicroMsg.ANRWatchDog.summeranr", "summeranr reset timeout[%d, %d] by new setting", new Object[] { Integer.valueOf(a.su()), Integer.valueOf(j) });
-        a.en(j);
+        if ((j > 0) && (j != a.AL()))
+        {
+          ab.i("MicroMsg.ANRWatchDog.summeranr", "summeranr reset timeout[%d, %d] by new setting", new Object[] { Integer.valueOf(a.AL()), Integer.valueOf(j) });
+          a.ga(j);
+        }
+        if ((k > 0) && (k != a.access$200()))
+        {
+          ab.i("MicroMsg.ANRWatchDog.summeranr", "summeranr reset loop[%d, %d] by new setting", new Object[] { Integer.valueOf(a.access$200()), Integer.valueOf(k) });
+          a.gb(k);
+          AppMethodBeat.o(15356);
+        }
       }
-      if ((k > 0) && (k != a.access$200()))
+      else
       {
-        y.i("MicroMsg.ANRWatchDog.summeranr", "summeranr reset loop[%d, %d] by new setting", new Object[] { Integer.valueOf(a.access$200()), Integer.valueOf(k) });
-        a.eo(k);
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(510L, 12L, 1L, true);
+        if (a.AM() != null) {
+          a.AM().interrupt();
+        }
+        ab.i("MicroMsg.ANRWatchDog.summeranr", "summeranr disable by new setting and interrupt watch");
       }
     }
-    return;
-    label250:
-    h.nFQ.a(510L, 12L, 1L, true);
-    if (a.sv() != null) {
-      a.sv().interrupt();
-    }
-    y.i("MicroMsg.ANRWatchDog.summeranr", "summeranr disable by new setting and interrupt watch");
+    AppMethodBeat.o(15356);
   }
 }
 

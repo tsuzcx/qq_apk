@@ -1,20 +1,25 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.modelgeo.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
 
 final class h$1
-  implements a.a
+  implements b.a
 {
   h$1(h paramh) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (!paramBoolean) {
+    AppMethodBeat.i(24619);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(24619);
       return true;
     }
-    h.a(this.oaS, paramFloat2);
-    h.b(this.oaS, paramFloat1);
-    h.a(this.oaS, (int)paramDouble2);
+    h.a(this.qPb, paramFloat2);
+    h.b(this.qPb, paramFloat1);
+    h.a(this.qPb, (int)paramDouble2);
+    AppMethodBeat.o(24619);
     return false;
   }
 }

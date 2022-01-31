@@ -1,69 +1,61 @@
 package com.tencent.mm.ui.chatting.f;
 
-import android.content.Context;
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import com.tencent.mm.br.d.a;
-import com.tencent.mm.br.d.b;
-import com.tencent.mm.ui.chatting.c.a;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
-import java.util.WeakHashMap;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.bi;
+import com.tencent.mm.ui.base.MMPullDownView;
+import com.tencent.mm.ui.chatting.c.b.o;
+import com.tencent.mm.ui.chatting.c.b.q;
+import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.view.MMChattingListView;
 
 public final class b
-  implements d.b
+  implements f<bi>
 {
-  private static WeakHashMap<Fragment, HashMap<Integer, d.a>> vyu = new WeakHashMap();
-  private WeakReference<a> vyv;
+  private a caz;
+  private MMChattingListView zOu;
+  public b.a zOv;
   
-  public b(a parama)
+  public b(a parama, MMChattingListView paramMMChattingListView)
   {
-    this.vyv = new WeakReference(parama);
+    this.zOu = paramMMChattingListView;
+    this.caz = parama;
   }
   
-  public static d.a b(Fragment paramFragment, int paramInt)
+  public final void a(d.d paramd)
   {
-    paramFragment = (HashMap)vyu.get(paramFragment);
-    if (paramFragment != null) {
-      return (d.a)paramFragment.remove(Integer.valueOf(paramInt));
-    }
-    return null;
-  }
-  
-  public final void a(Intent paramIntent, int paramInt, d.a parama)
-  {
-    Fragment localFragment = cGN();
-    if (localFragment == null) {
+    AppMethodBeat.i(32479);
+    if (!this.caz.bSe)
+    {
+      ab.e("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] this ChattingUI has been in background!");
+      AppMethodBeat.o(32479);
       return;
     }
-    HashMap localHashMap2 = (HashMap)vyu.get(localFragment);
-    HashMap localHashMap1 = localHashMap2;
-    if (localHashMap2 == null)
+    ab.i("MicroMsg.ChattingLoader.ChattingViewCallback", "[onViewUpdate] result:%s", new Object[] { paramd.toString() });
+    Object localObject = (o)this.caz.ay(o.class);
+    if ((localObject != null) && (((o)localObject).dIg() != null) && (((o)localObject).dIg().vWC))
     {
-      localHashMap1 = new HashMap();
-      vyu.put(localFragment, localHashMap1);
+      ab.i("MicroMsg.ChattingLoader.ChattingViewCallback", "keyboard is shown! scroll to last");
+      this.caz.qT(true);
     }
-    localHashMap1.put(Integer.valueOf(paramInt), parama);
-    localFragment.startActivityForResult(paramIntent, paramInt);
-  }
-  
-  public final Fragment cGN()
-  {
-    a locala = (a)this.vyv.get();
-    if (locala != null) {
-      return locala.vtz;
+    if (paramd.zOE != d.a.zOy)
+    {
+      localObject = this.zOu;
+      MMPullDownView.d((ViewGroup)((MMPullDownView)localObject).zlw, 4);
+      MMPullDownView.d((ViewGroup)((MMPullDownView)localObject).yWv, 4);
     }
-    return null;
-  }
-  
-  public final Context getContext()
-  {
-    return cGN().getActivity();
+    ((q)this.caz.ay(q.class)).startTimer();
+    if (this.zOv != null) {
+      this.zOv.a(this.zOu, paramd);
+    }
+    AppMethodBeat.o(32479);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ public final class c$kn
 {
   public c$kn()
   {
-    super("videoProxySetPlayerState", "videoProxySetPlayerState", 160, false);
+    super("selectWalletCurrency", "selectWalletCurrency", 201, true);
   }
 }
 

@@ -1,54 +1,62 @@
 package com.tencent.mm.plugin.shake.d.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bam;
-import com.tencent.mm.protocal.c.ban;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bhp;
+import com.tencent.mm.protocal.protobuf.bhq;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
+  private f callback;
+  private b rr;
   
   public c(int paramInt, String paramString)
   {
+    AppMethodBeat.i(24607);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bam();
-    ((b.a)localObject).ecI = new ban();
+    ((b.a)localObject).fsX = new bhp();
+    ((b.a)localObject).fsY = new bhq();
     ((b.a)localObject).uri = "/cgi-bin/mmoctv/optvhist";
-    ((b.a)localObject).ecG = 1740;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bam)this.dmK.ecE.ecN;
-    ((bam)localObject).kTS = paramInt;
-    ((bam)localObject).twu = paramString;
+    ((b.a)localObject).funcId = 1740;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bhp)this.rr.fsV.fta;
+    ((bhp)localObject).nrS = paramInt;
+    ((bhp)localObject).xwI = paramString;
+    AppMethodBeat.o(24607);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneOpTvHist", "onGYNetEnd [%d,%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(24609);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(24609);
+    return i;
   }
   
   public final int getType()
   {
     return 1740;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(24608);
+    ab.i("MicroMsg.NetSceneOpTvHist", "onGYNetEnd [%d,%d]", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(24608);
   }
 }
 

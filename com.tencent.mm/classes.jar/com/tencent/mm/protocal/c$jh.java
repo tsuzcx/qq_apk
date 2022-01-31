@@ -5,12 +5,12 @@ public final class c$jh
 {
   public c$jh()
   {
-    super("startSearchItemDetailPage", "", 10000, false);
+    super("setSnsObjectXmlDescList", "", 10000, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.c.jh
  * JD-Core Version:    0.7.0.1
  */

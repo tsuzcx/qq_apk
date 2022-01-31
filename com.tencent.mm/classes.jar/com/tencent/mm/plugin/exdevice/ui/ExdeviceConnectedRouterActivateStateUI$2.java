@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceConnectedRouterActivateStateUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class ExdeviceConnectedRouterActivateStateUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    ExdeviceConnectedRouterActivateStateUI.a(this.jCT);
+    AppMethodBeat.i(19919);
+    ExdeviceConnectedRouterActivateStateUI.a(this.lMq);
+    AppMethodBeat.o(19919);
     return true;
   }
 }

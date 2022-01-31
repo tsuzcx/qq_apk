@@ -7,64 +7,70 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class v
-  extends i
+  extends h
 {
-  TextView flb;
-  private RelativeLayout oHF;
-  ImageView oHG;
+  TextView euY;
+  private RelativeLayout rxv;
+  ImageView rxw;
   
-  public v(Context paramContext, t paramt, ViewGroup paramViewGroup)
+  public v(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v paramv, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramt, paramViewGroup);
-    this.oFE = paramt;
+    super(paramContext, paramv, paramViewGroup);
+    this.rve = paramv;
   }
   
-  public final void bES()
+  public final void cqA()
   {
-    super.bES();
+    AppMethodBeat.i(37261);
+    super.cqA();
+    AppMethodBeat.o(37261);
   }
   
-  public final void bET()
+  public final void cqB()
   {
-    super.bET();
+    AppMethodBeat.i(37262);
+    super.cqB();
+    AppMethodBeat.o(37262);
   }
   
-  public final void bEU()
+  public final void cqK()
   {
-    super.bEU();
-  }
-  
-  public final View bFf()
-  {
+    AppMethodBeat.i(37260);
     View localView = this.contentView;
     localView.setBackgroundColor(this.backgroundColor);
-    this.flb = ((TextView)localView.findViewById(i.f.sns_ad_landingpage_processbar_label));
-    this.oHF = ((RelativeLayout)localView.findViewById(i.f.sns_ad_landingpage_processbar_bg));
-    this.oHG = ((ImageView)localView.findViewById(i.f.sns_ad_landingpage_processbar_front));
-    return localView;
+    this.euY = ((TextView)localView.findViewById(2131827861));
+    this.rxv = ((RelativeLayout)localView.findViewById(2131827862));
+    this.rxw = ((ImageView)localView.findViewById(2131827863));
+    AppMethodBeat.o(37260);
   }
   
-  protected final void bFj()
+  protected final void cqP()
   {
-    this.flb.setText(((t)this.oFE).label);
-    this.flb.setTextSize(0, ((t)this.oFE).fontSize);
-    if ((((t)this.oFE).fNR != null) && (((t)this.oFE).fNR.length() > 0))
+    AppMethodBeat.i(37259);
+    this.euY.setText(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).label);
+    this.euY.setTextSize(0, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).fontSize);
+    if ((((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).hhh != null) && (((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).hhh.length() > 0))
     {
-      int i = Color.parseColor(((t)this.oFE).fNR);
-      this.oHF.setBackgroundColor(i);
+      int i = Color.parseColor(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).hhh);
+      this.rxv.setBackgroundColor(i);
     }
-    h.a(((t)this.oFE).oDx, ((t)this.oFE).oDh, new v.1(this));
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.h.a(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).rsU, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.v)this.rve).rsJ, new v.1(this));
+    AppMethodBeat.o(37259);
+  }
+  
+  public final void cqz()
+  {
+    AppMethodBeat.i(37258);
+    super.cqz();
+    AppMethodBeat.o(37258);
   }
   
   protected final int getLayout()
   {
-    return i.g.sns_ad_native_landing_pages_item_process_bar;
+    return 2130970786;
   }
 }
 

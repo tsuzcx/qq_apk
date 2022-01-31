@@ -2,6 +2,7 @@ package com.tencent.mm.vfs;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,13 +14,22 @@ import java.util.Map;
 public class RawFileSystem
   extends FileBasedFileSystem
 {
-  public static final Parcelable.Creator<RawFileSystem> CREATOR = new Parcelable.Creator() {};
-  private volatile boolean wvs;
+  public static final Parcelable.Creator<RawFileSystem> CREATOR;
+  private volatile boolean AQs;
+  
+  static
+  {
+    AppMethodBeat.i(54589);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(54589);
+  }
   
   private RawFileSystem(Parcel paramParcel)
   {
     super(paramParcel);
+    AppMethodBeat.i(54582);
     j.a(paramParcel, getClass());
+    AppMethodBeat.o(54582);
   }
   
   public RawFileSystem(String paramString)
@@ -32,69 +42,93 @@ public class RawFileSystem
     super(paramString);
   }
   
-  public final OutputStream I(String paramString, boolean paramBoolean)
+  public final OutputStream M(String paramString, boolean paramBoolean)
   {
-    if (this.mReadOnly) {
-      throw new IOException("Cannot open files for writing on read-only file systems");
+    AppMethodBeat.i(54585);
+    if (this.mReadOnly)
+    {
+      paramString = new IOException("Cannot open files for writing on read-only file systems");
+      AppMethodBeat.o(54585);
+      throw paramString;
     }
-    String str = L(paramString, true);
-    if (str == null) {
-      throw new IOException("Invalid path: " + paramString);
+    String str = P(paramString, true);
+    if (str == null)
+    {
+      paramString = new IOException("Invalid path: ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(54585);
+      throw paramString;
     }
-    return new FileOutputStream(str, paramBoolean);
+    paramString = new FileOutputStream(str, paramBoolean);
+    AppMethodBeat.o(54585);
+    return paramString;
   }
   
-  public final int Qd()
+  public final int ajj()
   {
-    int j = super.Qd() | 0x2;
+    AppMethodBeat.i(54583);
+    int j = super.ajj() | 0x2;
     int i = j;
-    if (this.wvs) {
+    if (this.AQs) {
       i = j | 0x4;
     }
+    AppMethodBeat.o(54583);
     return i;
-  }
-  
-  public final void m(Map<String, String> paramMap)
-  {
-    super.m(paramMap);
-    String str = cLh();
-    paramMap = (String)paramMap.get("data");
-    if ((str == null) || (paramMap == null) || (!str.startsWith(paramMap))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.wvs = bool;
-      return;
-    }
   }
   
   public final InputStream openRead(String paramString)
   {
-    String str = L(paramString, false);
-    if (str == null) {
-      throw new IOException("Invalid path: " + paramString);
+    AppMethodBeat.i(54584);
+    String str = P(paramString, false);
+    if (str == null)
+    {
+      paramString = new IOException("Invalid path: ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(54584);
+      throw paramString;
     }
-    return new a(str);
+    paramString = new a(str);
+    AppMethodBeat.o(54584);
+    return paramString;
+  }
+  
+  public final void q(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(54586);
+    super.q(paramMap);
+    String str = dQz();
+    paramMap = (String)paramMap.get("data");
+    if ((str == null) || (paramMap == null) || (!str.startsWith(paramMap))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.AQs = bool;
+      AppMethodBeat.o(54586);
+      return;
+    }
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder("RawFS [").append(cLh());
+    AppMethodBeat.i(54587);
+    Object localObject = new StringBuilder("RawFS [").append(dQz());
     if (this.mReadOnly) {
-      localStringBuilder.append(", read-only");
+      ((StringBuilder)localObject).append(", read-only");
     }
-    return ']';
+    localObject = ']';
+    AppMethodBeat.o(54587);
+    return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(54588);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeInt(1);
+    AppMethodBeat.o(54588);
   }
   
-  private static final class a
+  static final class a
     extends FileInputStream
   {
-    private long asE = 0L;
+    private long auV = 0L;
     
     a(String paramString)
     {
@@ -103,14 +137,18 @@ public class RawFileSystem
     
     public final void mark(int paramInt)
     {
+      AppMethodBeat.i(54580);
       try
       {
-        this.asE = getChannel().position();
+        this.auV = getChannel().position();
+        AppMethodBeat.o(54580);
         return;
       }
       catch (IOException localIOException)
       {
-        throw new RuntimeException(localIOException);
+        RuntimeException localRuntimeException = new RuntimeException(localIOException);
+        AppMethodBeat.o(54580);
+        throw localRuntimeException;
       }
     }
     
@@ -121,7 +159,9 @@ public class RawFileSystem
     
     public final void reset()
     {
-      getChannel().position(this.asE);
+      AppMethodBeat.i(54581);
+      getChannel().position(this.auV);
+      AppMethodBeat.o(54581);
     }
   }
 }

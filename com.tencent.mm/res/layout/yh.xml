@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="0.0dip" android:layout_marginBottom="0.0dip" style="@style/k5">
-        <ImageView android:id="@id/bn5" android:background="@drawable/mf" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginTop="60.0dip" android:src="@drawable/aae" style="@style/il" />
-        <TextView android:textSize="22.0sp" android:ellipsize="end" android:id="@id/bn6" android:layout_marginTop="20.0dip" android:text="@string/bvd" android:singleLine="true" style="@style/j8" />
-        <TextView android:id="@id/bn7" android:layout_marginTop="10.0dip" android:text="@string/bvd" style="@style/it" />
-        <LinearLayout android:gravity="center" android:layout_marginTop="60.0dip" style="@style/lo">
-            <TextView android:id="@id/bn8" android:visibility="invisible" android:text="@string/bua" style="@style/if" />
-            <TextView android:id="@id/bn9" android:visibility="invisible" android:text="@string/bu9" style="@style/if" />
-            <TextView android:autoLink="email|phone|web" android:id="@id/bn_" android:visibility="invisible" android:layout_marginLeft="8.0dip" android:text="@string/bv9" style="@style/j3" />
-        </LinearLayout>
-        <Button android:textSize="15.0sp" android:id="@id/bna" android:layout_width="220.0dip" android:layout_marginTop="20.0dip" android:minHeight="34.0dip" android:text="@string/aqb" style="@style/j7" />
-        <LinearLayout android:gravity="center" android:layout_marginTop="20.0dip" style="@style/lo">
-            <TextView android:text="@string/bve" style="@style/j4" />
-            <Button android:id="@id/bnb" android:layout_height="20.0dip" android:text="@string/bvh" style="@style/j3" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:id="@id/bnc" android:visibility="gone" android:layout_marginTop="2.0dip" style="@style/lo">
-            <TextView android:textSize="10.0dip" android:text="@string/bvg" style="@style/j4" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_marginBottom="15.0dip" style="@style/lo">
-        <ImageView android:layout_width="114.0dip" android:layout_height="18.0dip" android:src="@drawable/aak" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/bqg" android:background="@drawable/b5z" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/bqh" android:background="@drawable/nq" android:layout_width="62.0dip" android:layout_height="fill_parent" android:alpha="0.75" />
+        <RelativeLayout android:background="@drawable/b5t" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/bqi" android:layout_marginLeft="@dimen/a2e" style="@style/if" />
+            <ImageView android:id="@id/bqj" android:layout_marginRight="@dimen/a2e" android:layout_alignParentRight="true" style="@style/if" />
+            <ImageView android:id="@id/bqk" android:layout_marginLeft="@dimen/a2e" android:layout_alignParentBottom="true" style="@style/if" />
+            <ImageView android:id="@id/bql" android:layout_marginRight="@dimen/a2e" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/if" />
+            <ImageView android:id="@id/bqm" android:layout_marginTop="@dimen/a2e" style="@style/ig" />
+            <ImageView android:id="@id/bqn" android:layout_marginBottom="@dimen/a2e" android:layout_alignParentBottom="true" style="@style/ig" />
+            <ImageView android:id="@id/bqo" android:layout_marginTop="@dimen/a2e" android:layout_alignParentRight="true" style="@style/ig" />
+            <ImageView android:id="@id/bqp" android:layout_marginBottom="@dimen/a2e" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/ig" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/bqq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</merge>

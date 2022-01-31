@@ -1,40 +1,47 @@
 package com.tencent.mm.plugin.walletlock;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.messenger.foundation.a.u;
+import com.tencent.mm.plugin.messenger.foundation.a.v;
 import com.tencent.mm.plugin.walletlock.a.b;
 import com.tencent.mm.plugin.walletlock.c.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 
 public class PluginWalletLock
   extends com.tencent.mm.kernel.b.f
   implements c, com.tencent.mm.plugin.walletlock.a.a
 {
-  private com.tencent.mm.plugin.walletlock.c.f qPb = null;
+  private com.tencent.mm.plugin.walletlock.c.f uEi = null;
   
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
-    if (paramg.Ex())
+    AppMethodBeat.i(51442);
+    if (paramg.SD())
     {
-      y.i("MicroMsg.PluginWalletLock", "alvinluo registerService IWalletLock and add listeners");
+      ab.i("MicroMsg.PluginWalletLock", "alvinluo registerService IWalletLock and add listeners");
       com.tencent.mm.kernel.g.a(b.class, new com.tencent.mm.kernel.c.e(new com.tencent.mm.plugin.walletlock.c.e()));
-      u.a(1, new PluginWalletLock.a(this, (byte)0));
+      v.a(1, new PluginWalletLock.a(this, (byte)0));
     }
+    AppMethodBeat.o(51442);
   }
   
   public void dependency()
   {
+    AppMethodBeat.i(51441);
     dependsOn(com.tencent.mm.plugin.soter.a.a.class);
+    AppMethodBeat.o(51441);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg) {}
   
   public void installed()
   {
+    AppMethodBeat.i(51440);
     alias(com.tencent.mm.plugin.walletlock.a.a.class);
+    AppMethodBeat.o(51440);
   }
   
   public String name()
@@ -44,29 +51,31 @@ public class PluginWalletLock
   
   public void onAccountInitialized(e.c paramc)
   {
-    y.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountInitialized");
-    this.qPb = new com.tencent.mm.plugin.walletlock.c.f();
-    paramc = this.qPb;
-    if (!com.tencent.mm.sdk.b.a.udP.e(paramc.qQU)) {
-      com.tencent.mm.sdk.b.a.udP.c(paramc.qQU);
+    AppMethodBeat.i(51443);
+    ab.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountInitialized");
+    this.uEi = new com.tencent.mm.plugin.walletlock.c.f();
+    paramc = this.uEi;
+    if (!com.tencent.mm.sdk.b.a.ymk.e(paramc.uGc)) {
+      com.tencent.mm.sdk.b.a.ymk.c(paramc.uGc);
     }
-    if (!com.tencent.mm.sdk.b.a.udP.e(paramc.qQV)) {
-      com.tencent.mm.sdk.b.a.udP.c(paramc.qQV);
+    if (!com.tencent.mm.sdk.b.a.ymk.e(paramc.uGd)) {
+      com.tencent.mm.sdk.b.a.ymk.c(paramc.uGd);
     }
-    if (!com.tencent.mm.sdk.b.a.udP.e(paramc.qQX)) {
-      com.tencent.mm.sdk.b.a.udP.c(paramc.qQX);
+    if (!com.tencent.mm.sdk.b.a.ymk.e(paramc.uGf)) {
+      com.tencent.mm.sdk.b.a.ymk.c(paramc.uGf);
     }
     try
     {
-      paramc = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.zero.b.a.class)).AA().getValue("PatternLockTimeInterval");
-      if (!bk.bl(paramc))
+      paramc = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.zero.b.a.class)).Nq().getValue("PatternLockTimeInterval");
+      if (!bo.isNullOrNil(paramc))
       {
-        int i = bk.getInt(paramc, 0);
+        int i = bo.getInt(paramc, 0);
         if (i >= 0)
         {
-          y.d("MicroMsg.WalletLockInitTask", String.format("Dynamic config for PatternLockInterval override default config, newval=%d", new Object[] { Integer.valueOf(i) }));
-          com.tencent.mm.plugin.walletlock.gesture.a.a.qPz = i;
-          ((b)com.tencent.mm.kernel.g.r(b.class)).init();
+          ab.d("MicroMsg.WalletLockInitTask", String.format("Dynamic config for PatternLockInterval override default config, newval=%d", new Object[] { Integer.valueOf(i) }));
+          com.tencent.mm.plugin.walletlock.gesture.a.a.uEH = i;
+          ((b)com.tencent.mm.kernel.g.E(b.class)).init();
+          AppMethodBeat.o(51443);
           return;
         }
       }
@@ -75,38 +84,40 @@ public class PluginWalletLock
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.WalletLockInitTask", paramc, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.WalletLockInitTask", paramc, "", new Object[0]);
         paramc = null;
         continue;
-        y.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
-        com.tencent.mm.plugin.walletlock.gesture.a.a.qPz = 300;
+        ab.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
+        com.tencent.mm.plugin.walletlock.gesture.a.a.uEH = 300;
         continue;
-        y.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
-        com.tencent.mm.plugin.walletlock.gesture.a.a.qPz = 300;
+        ab.d("MicroMsg.WalletLockInitTask", "PatternLockInterval keeps default value.");
+        com.tencent.mm.plugin.walletlock.gesture.a.a.uEH = 300;
       }
     }
   }
   
   public void onAccountRelease()
   {
-    y.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountRelease");
-    if (this.qPb != null)
+    AppMethodBeat.i(51444);
+    ab.i("MicroMsg.PluginWalletLock", "alvinluo PluginWalletLock onAccountRelease");
+    if (this.uEi != null)
     {
-      Object localObject = this.qPb;
-      if (com.tencent.mm.sdk.b.a.udP.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).qQU)) {
-        com.tencent.mm.sdk.b.a.udP.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).qQU);
+      Object localObject = this.uEi;
+      if (com.tencent.mm.sdk.b.a.ymk.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).uGc)) {
+        com.tencent.mm.sdk.b.a.ymk.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).uGc);
       }
-      if (com.tencent.mm.sdk.b.a.udP.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).qQV)) {
-        com.tencent.mm.sdk.b.a.udP.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).qQV);
+      if (com.tencent.mm.sdk.b.a.ymk.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).uGd)) {
+        com.tencent.mm.sdk.b.a.ymk.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).uGd);
       }
-      if (com.tencent.mm.sdk.b.a.udP.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).qQX)) {
-        com.tencent.mm.sdk.b.a.udP.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).qQX);
+      if (com.tencent.mm.sdk.b.a.ymk.e(((com.tencent.mm.plugin.walletlock.c.f)localObject).uGf)) {
+        com.tencent.mm.sdk.b.a.ymk.d(((com.tencent.mm.plugin.walletlock.c.f)localObject).uGf);
       }
-      localObject = i.qRd;
-      if (((i)localObject).qRh != null) {
-        ((i)localObject).qRh.clear();
+      localObject = i.uGl;
+      if (((i)localObject).uGp != null) {
+        ((i)localObject).uGp.clear();
       }
     }
+    AppMethodBeat.o(51444);
   }
 }
 

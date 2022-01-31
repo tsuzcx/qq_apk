@@ -2,45 +2,44 @@ package com.google.android.gms.wearable.internal;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzf
-  implements Parcelable.Creator<zze>
+@SafeParcelable.Class(creator="AddLocalCapabilityResponseCreator")
+@SafeParcelable.Reserved({1})
+public final class zzf
+  extends AbstractSafeParcelable
 {
-  static void zza(zze paramzze, Parcel paramParcel, int paramInt)
+  public static final Parcelable.Creator<zzf> CREATOR;
+  @SafeParcelable.Field(id=2)
+  public final int statusCode;
+  
+  static
   {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 2, paramzze.statusCode);
-    zzc.zzJ(paramParcel, paramInt);
+    AppMethodBeat.i(71305);
+    CREATOR = new zzg();
+    AppMethodBeat.o(71305);
   }
   
-  public zze zzkO(Parcel paramParcel)
+  @SafeParcelable.Constructor
+  public zzf(@SafeParcelable.Param(id=2) int paramInt)
   {
-    int j = zzb.zzaY(paramParcel);
-    int i = 0;
-    while (paramParcel.dataPosition() < j)
-    {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 2: 
-        i = zzb.zzg(paramParcel, k);
-      }
-    }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
-    }
-    return new zze(i);
+    this.statusCode = paramInt;
   }
   
-  public zze[] zzpn(int paramInt)
+  public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    return new zze[paramInt];
+    AppMethodBeat.i(71304);
+    paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
+    SafeParcelWriter.writeInt(paramParcel, 2, this.statusCode);
+    SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
+    AppMethodBeat.o(71304);
   }
 }
 

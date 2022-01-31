@@ -1,23 +1,21 @@
 package android.support.transition;
 
-import android.animation.TypeEvaluator;
-import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
 
-final class aa
-  implements TypeEvaluator<Rect>
+public final class aa
 {
-  private Rect mRect;
+  ViewGroup sq;
+  Runnable sr;
   
-  aa() {}
-  
-  aa(Rect paramRect)
+  static aa B(View paramView)
   {
-    this.mRect = paramRect;
+    return (aa)paramView.getTag(2131820682);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.transition.aa
  * JD-Core Version:    0.7.0.1
  */

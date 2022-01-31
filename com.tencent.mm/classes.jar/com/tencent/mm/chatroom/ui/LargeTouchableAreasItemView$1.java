@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LargeTouchableAreasItemView$1
   implements View.OnClickListener
@@ -10,23 +11,25 @@ final class LargeTouchableAreasItemView$1
   
   public final void onClick(View paramView)
   {
-    paramView = this.dpg;
-    if (!LargeTouchableAreasItemView.a(this.dpg)) {}
+    AppMethodBeat.i(104104);
+    paramView = this.egC;
+    if (!LargeTouchableAreasItemView.a(this.egC)) {}
     for (boolean bool = true;; bool = false)
     {
       paramView.setItemViewSelected(bool);
-      if (LargeTouchableAreasItemView.b(this.dpg) != null)
+      if (LargeTouchableAreasItemView.b(this.egC) != null)
       {
-        LargeTouchableAreasItemView.b(this.dpg);
-        LargeTouchableAreasItemView.a(this.dpg);
+        LargeTouchableAreasItemView.b(this.egC);
+        LargeTouchableAreasItemView.a(this.egC);
       }
+      AppMethodBeat.o(104104);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.LargeTouchableAreasItemView.1
  * JD-Core Version:    0.7.0.1
  */

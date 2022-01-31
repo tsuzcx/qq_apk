@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.mm.plugin.appbrand.appcache.x;
+import com.tencent.mm.plugin.appbrand.backgroundfetch.g;
 
 final class a$6
-  implements a.a<x>
+  implements a.a<g>
 {}
 
 

@@ -6,11 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mm.plugin.collect.b.e;
-import com.tencent.mm.plugin.collect.b.h;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.collect.model.e;
+import com.tencent.mm.plugin.collect.model.h;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.wallet_core.ui.WalletTextView;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,23 +17,31 @@ import java.util.List;
 public final class b
   extends BaseAdapter
 {
-  List<h> iJQ = new ArrayList();
+  List<h> kQw;
   private Context mContext;
   
   public b(Context paramContext)
   {
+    AppMethodBeat.i(41179);
+    this.kQw = new ArrayList();
     this.mContext = paramContext;
+    AppMethodBeat.o(41179);
   }
   
-  public final void aX(List<h> paramList)
+  public final void bm(List<h> paramList)
   {
-    this.iJQ.addAll(paramList);
+    AppMethodBeat.i(41184);
+    this.kQw.addAll(paramList);
     notifyDataSetChanged();
+    AppMethodBeat.o(41184);
   }
   
   public final int getCount()
   {
-    return this.iJQ.size();
+    AppMethodBeat.i(41180);
+    int i = this.kQw.size();
+    AppMethodBeat.o(41180);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -44,30 +51,37 @@ public final class b
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(41182);
     View localView = paramView;
     if (paramView == null)
     {
-      localView = y.gt(this.mContext).inflate(a.g.collect_bill_list_item, paramViewGroup, false);
+      localView = w.hM(this.mContext).inflate(2130969173, paramViewGroup, false);
       localView.setTag(new b.a(localView));
     }
     paramView = (b.a)localView.getTag();
-    paramViewGroup = pz(paramInt);
-    paramView.iJR.setText(e.a(this.mContext, paramViewGroup.iHh, paramViewGroup.type));
-    paramView.iJS.setText(e.pw(paramViewGroup.iHj));
-    paramView.iIV.setText(this.mContext.getString(a.i.collect_bill_total_num_text, new Object[] { Integer.valueOf(paramViewGroup.iHi) }));
+    paramViewGroup = tP(paramInt);
+    paramView.kGe.setText(e.a(this.mContext, paramViewGroup.kNm, paramViewGroup.type));
+    paramView.kQx.setText(e.tN(paramViewGroup.kNo));
+    paramView.kPB.setText(this.mContext.getString(2131298436, new Object[] { Integer.valueOf(paramViewGroup.kNn) }));
+    AppMethodBeat.o(41182);
     return localView;
-  }
-  
-  public final h pz(int paramInt)
-  {
-    return (h)this.iJQ.get(paramInt);
   }
   
   public final void setData(List<h> paramList)
   {
-    this.iJQ.clear();
-    this.iJQ.addAll(paramList);
+    AppMethodBeat.i(41183);
+    this.kQw.clear();
+    this.kQw.addAll(paramList);
     notifyDataSetChanged();
+    AppMethodBeat.o(41183);
+  }
+  
+  public final h tP(int paramInt)
+  {
+    AppMethodBeat.i(41181);
+    h localh = (h)this.kQw.get(paramInt);
+    AppMethodBeat.o(41181);
+    return localh;
   }
 }
 

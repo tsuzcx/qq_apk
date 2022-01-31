@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
-import android.content.Intent;
 import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.subapp.ui.pluginapp.AddMoreFriendsUI;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.c;
+import com.tencent.mm.ui.base.n.d;
 
 final class FMessageConversationUI$7
-  implements MenuItem.OnMenuItemClickListener
+  implements n.d
 {
   FMessageConversationUI$7(FMessageConversationUI paramFMessageConversationUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    paramMenuItem = new Intent(this.pwx, AddMoreFriendsUI.class);
-    paramMenuItem.putExtra("invite_friend_scene", 3);
-    this.pwx.startActivity(paramMenuItem);
-    return true;
+    AppMethodBeat.i(25364);
+    c.e(FMessageConversationUI.d(this.sYg), FMessageConversationUI.e(this.sYg));
+    AppMethodBeat.o(25364);
   }
 }
 

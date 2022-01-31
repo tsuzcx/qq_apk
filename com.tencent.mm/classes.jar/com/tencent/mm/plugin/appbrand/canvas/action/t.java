@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
-import com.tencent.luggage.j.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
@@ -14,72 +14,89 @@ public final class t
 {
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
+    AppMethodBeat.i(103244);
     int i = -1;
     switch (paramString.hashCode())
     {
+    default: 
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        return true;
-        if (paramString.equals("oblique"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("italic"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("normal")) {
-              i = 2;
-            }
-          }
-        }
+      AppMethodBeat.o(103244);
+      return true;
+      if (!paramString.equals("oblique")) {
         break;
       }
+      i = 0;
+      break;
+      if (!paramString.equals("italic")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramString.equals("normal")) {
+        break;
+      }
+      i = 2;
+      break;
+      paramd.heB.ny(2);
+      paramd.heC.ny(2);
+      continue;
+      paramd.heB.ny(2);
+      paramd.heC.ny(2);
+      continue;
+      paramd.heB.ny(0);
+      paramd.heC.ny(0);
     }
-    paramd.fLp.kC(2);
-    paramd.fLq.kC(2);
-    return true;
-    paramd.fLp.kC(2);
-    paramd.fLq.kC(2);
-    return true;
-    paramd.fLp.kC(0);
-    paramd.fLq.kC(0);
-    return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
+    AppMethodBeat.i(103245);
     paramCanvas = (SetFontStyleActionArg)paramDrawActionArg;
-    if (paramCanvas == null) {
+    if (paramCanvas == null)
+    {
+      AppMethodBeat.o(103245);
       return false;
     }
-    return b(paramd, paramCanvas.fLS);
+    boolean bool = b(paramd, paramCanvas.hfc);
+    AppMethodBeat.o(103245);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() == 0) {
+    AppMethodBeat.i(103243);
+    if (paramJSONArray.length() == 0)
+    {
+      AppMethodBeat.o(103243);
       return false;
     }
     try
     {
       paramCanvas = paramJSONArray.getString(0);
-      return b(paramd, paramCanvas);
+      boolean bool = b(paramd, paramCanvas);
+      AppMethodBeat.o(103243);
+      return bool;
     }
     catch (JSONException paramd)
     {
-      c.i("MicroMsg.SetFontStyle", "get 'fontStyle' error.");
+      com.tencent.luggage.g.d.i("MicroMsg.SetFontStyle", "get 'fontStyle' error.");
+      AppMethodBeat.o(103243);
     }
     return false;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new SetFontStyleActionArg();
+    AppMethodBeat.i(103242);
+    SetFontStyleActionArg localSetFontStyleActionArg = new SetFontStyleActionArg();
+    AppMethodBeat.o(103242);
+    return localSetFontStyleActionArg;
   }
   
   public final String getMethod()

@@ -1,51 +1,73 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import com.google.android.gms.wearable.Channel;
+import com.google.android.gms.wearable.ChannelApi.ChannelListener;
+import com.google.android.gms.wearable.ChannelClient.ChannelCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzas
-  implements Parcelable.Creator<zzar>
+public final class zzas
+  implements ChannelApi.ChannelListener
 {
-  static void zza(zzar paramzzar, Parcel paramParcel, int paramInt)
+  private final ChannelClient.ChannelCallback zzch;
+  
+  public zzas(ChannelClient.ChannelCallback paramChannelCallback)
   {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 2, paramzzar.statusCode);
-    zzc.zzc(paramParcel, 3, paramzzar.zzbUw);
-    zzc.zzJ(paramParcel, paramInt);
+    this.zzch = paramChannelCallback;
   }
   
-  public zzar zzkZ(Parcel paramParcel)
+  public final boolean equals(Object paramObject)
   {
-    int k = zzb.zzaY(paramParcel);
-    int j = 0;
-    int i = 0;
-    while (paramParcel.dataPosition() < k)
+    AppMethodBeat.i(71034);
+    if (this == paramObject)
     {
-      int m = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(m))
-      {
-      default: 
-        zzb.zzb(paramParcel, m);
-        break;
-      case 2: 
-        i = zzb.zzg(paramParcel, m);
-        break;
-      case 3: 
-        j = zzb.zzg(paramParcel, m);
-      }
+      AppMethodBeat.o(71034);
+      return true;
     }
-    if (paramParcel.dataPosition() != k) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + k, paramParcel);
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(71034);
+      return false;
     }
-    return new zzar(i, j);
+    paramObject = (zzas)paramObject;
+    boolean bool = this.zzch.equals(paramObject.zzch);
+    AppMethodBeat.o(71034);
+    return bool;
   }
   
-  public zzar[] zzpB(int paramInt)
+  public final int hashCode()
   {
-    return new zzar[paramInt];
+    AppMethodBeat.i(71035);
+    int i = this.zzch.hashCode();
+    AppMethodBeat.o(71035);
+    return i;
+  }
+  
+  public final void onChannelClosed(Channel paramChannel, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(71031);
+    this.zzch.onChannelClosed(zzao.zzb(paramChannel), paramInt1, paramInt2);
+    AppMethodBeat.o(71031);
+  }
+  
+  public final void onChannelOpened(Channel paramChannel)
+  {
+    AppMethodBeat.i(71030);
+    this.zzch.onChannelOpened(zzao.zzb(paramChannel));
+    AppMethodBeat.o(71030);
+  }
+  
+  public final void onInputClosed(Channel paramChannel, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(71032);
+    this.zzch.onInputClosed(zzao.zzb(paramChannel), paramInt1, paramInt2);
+    AppMethodBeat.o(71032);
+  }
+  
+  public final void onOutputClosed(Channel paramChannel, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(71033);
+    this.zzch.onOutputClosed(zzao.zzb(paramChannel), paramInt1, paramInt2);
+    AppMethodBeat.o(71033);
   }
 }
 

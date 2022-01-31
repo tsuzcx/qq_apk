@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.g.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$8
   implements b.c
 {
   c$8(c paramc) {}
   
-  public final void auf()
+  public final void aTE()
   {
-    y.i("MicroMsg.BackupPcProcessMgr", "engineStopCallback ");
-    com.tencent.mm.plugin.backup.g.b.auM();
-    b.auw().atp();
+    AppMethodBeat.i(17509);
+    ab.i("MicroMsg.BackupPcProcessMgr", "engineStopCallback ");
+    com.tencent.mm.plugin.backup.g.b.aUo();
+    b.aTX().aSN();
+    AppMethodBeat.o(17509);
   }
 }
 

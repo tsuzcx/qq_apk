@@ -1,16 +1,12 @@
 package com.google.android.exoplayer2.h;
 
-import android.net.Uri;
-
 public abstract interface f
 {
-  public abstract long a(i parami);
+  public abstract void b(j paramj);
   
   public abstract void close();
   
-  public abstract Uri getUri();
-  
-  public abstract int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  public abstract void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
 }
 
 

@@ -2,59 +2,37 @@ package com.tencent.filter.a;
 
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
-import com.tencent.filter.l;
-import com.tencent.filter.m.f;
+import com.tencent.filter.m.g;
+import com.tencent.filter.m.i;
+import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
   extends BaseFilter
 {
-  float aVe = 1.0F;
+  private BaseFilter bxk = null;
+  private int bxx = 0;
   
   public p()
   {
-    super(GLSLRender.bcE);
+    super(GLSLRender.btg);
   }
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    if (paramBoolean)
-    {
-      super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
-      return;
-    }
-    Object localObject2 = new BaseFilter(GLSLRender.bcE);
-    float f = Math.min(paramFloat2, paramFloat1);
-    ((BaseFilter)localObject2).scaleFact = Math.min(200.0F / f, 1.0F);
-    setNextFilter((BaseFilter)localObject2, null);
-    int i = getTheFilterIndex((BaseFilter)localObject2);
-    Object localObject1 = new l();
-    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, new int[] { i - 1 + (this.srcTextureIndex + 1) });
-    localObject2 = new BaseFilter(GLSLRender.bcR);
-    ((BaseFilter)localObject2).addParam(new m.f("contrast", 0.96F));
-    ((BaseFilter)localObject2).addParam(new m.f("saturation", 0.766F));
-    ((BaseFilter)localObject2).addParam(new m.f("brightness", 1.0F));
-    ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, null);
-    localObject1 = new BaseFilter(GLSLRender.bdg);
-    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
-    localObject2 = new BaseFilter(GLSLRender.bfq, GLSLRender.bdl);
-    ((BaseFilter)localObject2).addParam(new m.f("sharpness", 0.377F));
-    ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, null);
-    localObject1 = new BaseFilter(GLSLRender.bcE);
-    ((BaseFilter)localObject1).scaleFact = Math.min(400.0F / f, 1.0F);
-    ((BaseFilter)localObject2).setNextFilter((BaseFilter)localObject1, null);
-    i = getTheFilterIndex((BaseFilter)localObject1);
-    localObject2 = new k(((BaseFilter)localObject1).scaleFact);
-    ((BaseFilter)localObject2).addParam(new m.f("strength", 50.0F));
-    ((BaseFilter)localObject2).addParam(new m.f("highlight", 24.4F));
-    ((BaseFilter)localObject2).addParam(new m.f("shadow", 26.700001F));
-    ((BaseFilter)localObject1).setNextFilter((BaseFilter)localObject2, new int[] { i - 1 + (this.srcTextureIndex + 1) });
-    ((BaseFilter)localObject2).setNextFilter(new BaseFilter(GLSLRender.bdh), null);
+    AppMethodBeat.i(86456);
+    this.bxk = new BaseFilter(GLSLRender.bvm);
+    this.bxk.addParam(new m.o("inputImageTexture2", "sh/darkcornermask_s.png", 33986));
+    this.bxk.addParam(new m.o("inputImageTexture3", "sh/darkcornermask_l.png", 33987));
+    this.bxk.addParam(new m.g("levelMinimum", new float[] { 0.0F, 0.0F, 0.0F }));
+    this.bxk.addParam(new m.g("levelMiddle", new float[] { 0.3F, 0.3F, 0.3F }));
+    this.bxk.addParam(new m.g("levelMaximum", new float[] { 1.0F, 1.0F, 1.0F }));
+    this.bxk.addParam(new m.g("minOutput", new float[] { 0.0F, 0.0F, 0.0F }));
+    this.bxk.addParam(new m.g("maxOutput", new float[] { 1.0F, 1.0F, 1.0F }));
+    this.bxk.addParam(new m.i("maskType", this.bxx));
+    setNextFilter(this.bxk, null);
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
-  }
-  
-  public final void setAdjustParam(float paramFloat)
-  {
-    this.aVe = paramFloat;
+    AppMethodBeat.o(86456);
   }
 }
 

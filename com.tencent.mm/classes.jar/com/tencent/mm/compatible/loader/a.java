@@ -1,32 +1,13 @@
 package com.tencent.mm.compatible.loader;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
 {
-  private static Object[] dyV = new Object[0];
-  private static Object[] dyW = new Object[73];
+  private static Object[] erL = new Object[0];
+  private static Object[] erM = new Object[73];
   
-  public static <T> boolean a(T[] paramArrayOfT, T paramT)
-  {
-    int j = paramArrayOfT.length;
-    int i = 0;
-    while (i < j)
-    {
-      T ? = paramArrayOfT[i];
-      if (? == null)
-      {
-        if (paramT != null) {}
-      }
-      else {
-        while ((paramT != null) && (?.equals(paramT))) {
-          return true;
-        }
-      }
-      i += 1;
-    }
-    return false;
-  }
-  
-  public static boolean d(int[] paramArrayOfInt, int paramInt)
+  public static boolean contains(int[] paramArrayOfInt, int paramInt)
   {
     boolean bool2 = false;
     int j = paramArrayOfInt.length;
@@ -45,6 +26,33 @@ public final class a
       }
       i += 1;
     }
+  }
+  
+  public static <T> boolean contains(T[] paramArrayOfT, T paramT)
+  {
+    AppMethodBeat.i(51923);
+    int j = paramArrayOfT.length;
+    int i = 0;
+    while (i < j)
+    {
+      T ? = paramArrayOfT[i];
+      if (? == null)
+      {
+        if (paramT == null)
+        {
+          AppMethodBeat.o(51923);
+          return true;
+        }
+      }
+      else if ((paramT != null) && (?.equals(paramT)))
+      {
+        AppMethodBeat.o(51923);
+        return true;
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(51923);
+    return false;
   }
   
   public static int idealIntArraySize(int paramInt)

@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.freewifi.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.c;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.protocal.c.zk;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.protocal.protobuf.aeb;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -13,47 +14,63 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  private static volatile boolean kqu = true;
-  static Pattern kqv = Pattern.compile("\"result\":(-?[0-9]+)");
-  static Pattern kqw = Pattern.compile("\"stageName\":\"(.+?)\"");
+  private static volatile boolean mMg;
+  static Pattern mMh;
+  static Pattern mMi;
   
-  static String S(LinkedList<zk> paramLinkedList)
+  static
   {
-    if ((paramLinkedList == null) || (paramLinkedList.size() == 0)) {
+    AppMethodBeat.i(20872);
+    mMg = true;
+    mMh = Pattern.compile("\"result\":(-?[0-9]+)");
+    mMi = Pattern.compile("\"stageName\":\"(.+?)\"");
+    AppMethodBeat.o(20872);
+  }
+  
+  static String U(LinkedList<aeb> paramLinkedList)
+  {
+    AppMethodBeat.i(20871);
+    if (paramLinkedList.size() == 0)
+    {
+      AppMethodBeat.o(20871);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = paramLinkedList.iterator();
     while (localIterator.hasNext())
     {
-      paramLinkedList = (zk)localIterator.next();
-      localStringBuilder.append("|id=").append(m.Dn(paramLinkedList.id)).append("|");
-      String[] arrayOfString = m.Dn(paramLinkedList.sYJ).split("\\},");
+      paramLinkedList = (aeb)localIterator.next();
+      localStringBuilder.append("|id=").append(m.Ov(paramLinkedList.id)).append("|");
+      String[] arrayOfString = m.Ov(paramLinkedList.wWY).split("\\},");
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
       {
         String str = arrayOfString[i];
-        Matcher localMatcher = kqw.matcher(str);
+        Matcher localMatcher = mMi.matcher(str);
         paramLinkedList = "";
         if (localMatcher.find()) {
           paramLinkedList = localMatcher.group(1);
         }
-        localMatcher = kqv.matcher(str);
+        localMatcher = mMh.matcher(str);
         str = "0";
         if (localMatcher.find()) {
           str = localMatcher.group(1);
         }
-        localStringBuilder.append(k.Dl(paramLinkedList) + "=" + str).append("|");
+        localStringBuilder.append(k.Ot(paramLinkedList) + "=" + str).append("|");
         i += 1;
       }
     }
-    return localStringBuilder.toString();
+    paramLinkedList = localStringBuilder.toString();
+    AppMethodBeat.o(20871);
+    return paramLinkedList;
   }
   
-  public static void jdMethod_if(int paramInt)
+  public static void kS(int paramInt)
   {
-    j.aUm().aTT().post(new b.1(paramInt));
+    AppMethodBeat.i(20870);
+    j.bAO().bAw().post(new b.1(paramInt));
+    AppMethodBeat.o(20870);
   }
 }
 

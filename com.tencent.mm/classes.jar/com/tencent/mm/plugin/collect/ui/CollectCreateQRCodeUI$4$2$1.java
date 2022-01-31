@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.collect.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class CollectCreateQRCodeUI$4$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class CollectCreateQRCodeUI$4$2$1
   
   public final void run()
   {
-    this.iKK.iKJ.iKI.XM();
+    AppMethodBeat.i(41234);
+    this.kRp.kRo.kRn.hideVKB();
+    AppMethodBeat.o(41234);
   }
 }
 

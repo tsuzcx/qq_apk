@@ -2,103 +2,48 @@ package com.tencent.mm.plugin.facedetect.model;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
   extends a<byte[]>
 {
-  private static int eIy = 0;
-  public static final c jNB = new c();
+  private static int fYn;
+  public static final c mhN;
   
-  public static void cM(int paramInt1, int paramInt2)
+  static
   {
-    y.i("MicroMsg.FaceByteArrayPool", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(5) });
-    long l = bk.UZ();
+    AppMethodBeat.i(171);
+    mhN = new c();
+    fYn = 0;
+    AppMethodBeat.o(171);
+  }
+  
+  public static void ek(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(161);
+    ab.i("MicroMsg.FaceByteArrayPool", "preloadCameraData, width: %s, height: %s, count: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(5) });
+    long l = bo.yB();
     int i = 0;
     while (i < 5)
     {
-      jNB.z(new byte[paramInt1 * paramInt2 * 3 / 2]);
+      mhN.O(new byte[paramInt1 * paramInt2 * 3 / 2]);
       i += 1;
     }
-    y.i("MicroMsg.FaceByteArrayPool", "preloadCameraData used %sms", new Object[] { Long.valueOf(bk.cp(l)) });
+    ab.i("MicroMsg.FaceByteArrayPool", "preloadCameraData used %sms", new Object[] { Long.valueOf(bo.av(l)) });
+    AppMethodBeat.o(161);
   }
   
-  protected final long ER()
-  {
-    if (eIy <= 0) {
-      eIy = ((ActivityManager)ae.getContext().getSystemService("activity")).getLargeMemoryClass();
-    }
-    if (eIy >= 512) {
-      return 20971520L;
-    }
-    return 10485760L;
-  }
-  
-  protected final long ES()
-  {
-    return 20971520L;
-  }
-  
-  public final void ET()
-  {
-    super.ET();
-  }
-  
-  /* Error */
-  public final byte[] f(Integer paramInteger)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: aload_1
-    //   4: invokespecial 119	com/tencent/mm/memory/a:c	(Ljava/lang/Integer;)Ljava/lang/Object;
-    //   7: checkcast 94	[B
-    //   10: astore_2
-    //   11: aload_2
-    //   12: ifnonnull +21 -> 33
-    //   15: ldc 24
-    //   17: ldc 121
-    //   19: invokestatic 125	com/tencent/mm/sdk/platformtools/y:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: aload_1
-    //   23: invokevirtual 107	java/lang/Integer:intValue	()I
-    //   26: newarray byte
-    //   28: astore_1
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: aload_1
-    //   32: areturn
-    //   33: ldc 24
-    //   35: ldc 127
-    //   37: invokestatic 125	com/tencent/mm/sdk/platformtools/y:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   40: aload_2
-    //   41: astore_1
-    //   42: goto -13 -> 29
-    //   45: astore_1
-    //   46: aload_0
-    //   47: monitorexit
-    //   48: aload_1
-    //   49: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	50	0	this	c
-    //   0	50	1	paramInteger	Integer
-    //   10	31	2	arrayOfByte	byte[]
-    // Exception table:
-    //   from	to	target	type
-    //   2	11	45	finally
-    //   15	29	45	finally
-    //   33	40	45	finally
-  }
-  
-  public final void z(byte[] paramArrayOfByte)
+  public final void O(byte[] paramArrayOfByte)
   {
     try
     {
-      super.ar(paramArrayOfByte);
+      AppMethodBeat.i(162);
+      super.aG(paramArrayOfByte);
+      AppMethodBeat.o(162);
       return;
     }
     finally
@@ -107,10 +52,89 @@ public final class c
       throw paramArrayOfByte;
     }
   }
+  
+  public final long XH()
+  {
+    AppMethodBeat.i(164);
+    if (fYn <= 0) {
+      fYn = ((ActivityManager)ah.getContext().getSystemService("activity")).getLargeMemoryClass();
+    }
+    if (fYn >= 512)
+    {
+      AppMethodBeat.o(164);
+      return 20971520L;
+    }
+    AppMethodBeat.o(164);
+    return 10485760L;
+  }
+  
+  public final long XI()
+  {
+    return 20971520L;
+  }
+  
+  public final void XJ()
+  {
+    AppMethodBeat.i(165);
+    super.XJ();
+    AppMethodBeat.o(165);
+  }
+  
+  /* Error */
+  public final byte[] f(Integer paramInteger)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: sipush 163
+    //   5: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: aload_1
+    //   10: invokespecial 126	com/tencent/mm/memory/a:c	(Ljava/lang/Integer;)Ljava/lang/Object;
+    //   13: checkcast 104	[B
+    //   16: astore_2
+    //   17: aload_2
+    //   18: ifnonnull +27 -> 45
+    //   21: ldc 33
+    //   23: ldc 128
+    //   25: invokestatic 132	com/tencent/mm/sdk/platformtools/ab:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   28: aload_1
+    //   29: invokevirtual 122	java/lang/Integer:intValue	()I
+    //   32: newarray byte
+    //   34: astore_1
+    //   35: sipush 163
+    //   38: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   41: aload_0
+    //   42: monitorexit
+    //   43: aload_1
+    //   44: areturn
+    //   45: ldc 33
+    //   47: ldc 134
+    //   49: invokestatic 132	com/tencent/mm/sdk/platformtools/ab:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   52: aload_2
+    //   53: astore_1
+    //   54: goto -19 -> 35
+    //   57: astore_1
+    //   58: aload_0
+    //   59: monitorexit
+    //   60: aload_1
+    //   61: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	62	0	this	c
+    //   0	62	1	paramInteger	Integer
+    //   16	37	2	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   2	17	57	finally
+    //   21	35	57	finally
+    //   35	41	57	finally
+    //   45	52	57	finally
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.c
  * JD-Core Version:    0.7.0.1
  */

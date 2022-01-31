@@ -1,26 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.model.AdReportCgiHelper;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import org.json.JSONObject;
-
 public final class v
-  extends a
 {
-  public static final int CTRL_INDEX = 435;
-  public static final String NAME = "adDataReport";
+  public String cnC;
+  public String data;
+  public int src;
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public v(String paramString1, String paramString2, int paramInt)
   {
-    AppBrandStatObject localAppBrandStatObject = com.tencent.mm.plugin.appbrand.a.qp(paramc.getAppId());
-    if (localAppBrandStatObject != null) {}
-    for (paramJSONObject = localAppBrandStatObject.scene + "," + localAppBrandStatObject.bFv + "," + localAppBrandStatObject.caB + "," + localAppBrandStatObject.caC + "," + paramJSONObject.optString("adInfo");; paramJSONObject = paramJSONObject.optString("adInfo"))
-    {
-      AdReportCgiHelper.a(15175, paramJSONObject + "," + bk.fP(ae.getContext()), new v.1(this, paramc, paramInt));
-      return;
-    }
+    this.cnC = paramString1;
+    this.data = paramString2;
+    this.src = paramInt;
   }
 }
 

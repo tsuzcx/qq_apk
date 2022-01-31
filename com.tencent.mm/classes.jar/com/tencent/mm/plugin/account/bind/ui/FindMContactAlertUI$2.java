@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FindMContactAlertUI$2
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class FindMContactAlertUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(13564);
     paramDialogInterface.dismiss();
-    this.fdg.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    this.guR.startActivity(new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS"));
+    AppMethodBeat.o(13564);
   }
 }
 

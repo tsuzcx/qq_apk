@@ -5,7 +5,7 @@ public final class c$ih
 {
   public c$ih()
   {
-    super("setPageOwner", "setPageOwner", 114, false);
+    super("sendAppMessageToSpecifiedContact", "sendAppMessageToSpecifiedContact", 168, true);
   }
 }
 

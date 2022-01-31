@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.emojicapture.ui.editor;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.emojicapture.c.b.a;
-import com.tencent.mm.plugin.emojicapture.f.a;
-import com.tencent.mm.plugin.emojicapture.f.a.a;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
 final class CaptureEditorContainer$b
-  implements View.OnClickListener
+  implements Runnable
 {
   CaptureEditorContainer$b(CaptureEditorContainer paramCaptureEditorContainer) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    paramView = a.jnW;
-    a.a.a(11, 0L, 0L, 0L);
-    CaptureEditorContainer.b(this.jpF).setActivated(this.jpF.getPresenter().aJR());
+    AppMethodBeat.i(3036);
+    CaptureEditorContainer.b(this.lzm).setVisibility(8);
+    AppMethodBeat.o(3036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.CaptureEditorContainer.b
  * JD-Core Version:    0.7.0.1
  */

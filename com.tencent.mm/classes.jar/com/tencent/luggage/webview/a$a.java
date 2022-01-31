@@ -1,22 +1,28 @@
 package com.tencent.luggage.webview;
 
+import android.os.Bundle;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 
 public abstract interface a$a
 {
-  public abstract void bc(String paramString);
+  public abstract WebResourceResponse a(WebResourceRequest paramWebResourceRequest, Bundle paramBundle);
   
-  public abstract void bd(String paramString);
+  public abstract boolean bD(String paramString);
   
-  public abstract boolean be(String paramString);
+  public abstract void bE(String paramString);
   
-  public abstract WebResourceResponse bf(String paramString);
+  public abstract void bF(String paramString);
   
-  public abstract String bg(String paramString);
+  public abstract WebResourceResponse bG(String paramString);
+  
+  public abstract String bH(String paramString);
+  
+  public abstract void bI(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.luggage.webview.a.a
  * JD-Core Version:    0.7.0.1
  */

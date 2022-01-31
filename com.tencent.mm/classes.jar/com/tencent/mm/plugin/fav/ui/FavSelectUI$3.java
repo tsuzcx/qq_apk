@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavSelectUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class FavSelectUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.kdd.finish();
+    AppMethodBeat.i(74103);
+    this.mxN.finish();
+    AppMethodBeat.o(74103);
     return true;
   }
 }

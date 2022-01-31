@@ -1,23 +1,26 @@
 package com.tencent.mm.ui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class LauncherUIBottomTabView$2
-  extends ah
+  extends ak
 {
   LauncherUIBottomTabView$2(LauncherUIBottomTabView paramLauncherUIBottomTabView) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    y.v("MicroMsg.LauncherUITabView", "onMainTabClick");
-    LauncherUIBottomTabView.d(this.uLD).qc(0);
+    AppMethodBeat.i(29487);
+    ab.v("MicroMsg.LauncherUITabView", "onMainTabClick");
+    LauncherUIBottomTabView.d(this.yZI).onTabClick(0);
+    AppMethodBeat.o(29487);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.LauncherUIBottomTabView.2
  * JD-Core Version:    0.7.0.1
  */

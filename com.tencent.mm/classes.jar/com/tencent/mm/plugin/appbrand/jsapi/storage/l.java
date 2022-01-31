@@ -1,29 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import com.tencent.mm.sdk.platformtools.bk;
-import org.json.JSONObject;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.customize.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
 
 public final class l
-  extends s
+  extends u<h>
 {
   public static final int CTRL_INDEX = 98;
   public static final String NAME = "removeStorageSync";
   
-  public final String a(c paramc, JSONObject paramJSONObject)
+  private static void b(h paramh, String paramString, int paramInt)
   {
-    paramJSONObject = paramJSONObject.optString("key");
-    if (bk.bl(paramJSONObject)) {
-      return h("fail", null);
-    }
-    JsApiRemoveStorageTask localJsApiRemoveStorageTask = new JsApiRemoveStorageTask();
-    localJsApiRemoveStorageTask.appId = paramc.getAppId();
-    localJsApiRemoveStorageTask.key = paramJSONObject;
-    AppBrandMainProcessService.b(localJsApiRemoveStorageTask);
-    return h("ok", null);
+    AppMethodBeat.i(102065);
+    ((b)e.q(b.class)).cc(paramh.getAppId()).l(paramInt, paramh.getAppId(), paramString);
+    AppMethodBeat.o(102065);
   }
 }
 

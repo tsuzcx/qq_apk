@@ -2,15 +2,26 @@ package com.tencent.mm.modelvideo;
 
 public abstract interface b
 {
-  public abstract void a(b.a parama);
+  public abstract void a(a parama);
+  
+  public abstract void er(String paramString);
   
   public abstract boolean isVideoDataAvailable(String paramString, int paramInt1, int paramInt2);
   
-  public abstract void j(String paramString, int paramInt1, int paramInt2);
+  public abstract void r(String paramString1, String paramString2, String paramString3);
   
-  public abstract void nF(String paramString);
+  public abstract void requestVideoData(String paramString, int paramInt1, int paramInt2);
   
-  public abstract void p(String paramString1, String paramString2, String paramString3);
+  public static abstract interface a
+  {
+    public abstract void ad(String paramString, int paramInt);
+    
+    public abstract void m(String paramString, int paramInt1, int paramInt2);
+    
+    public abstract void mi(int paramInt);
+    
+    public abstract void n(String paramString, int paramInt1, int paramInt2);
+  }
 }
 
 

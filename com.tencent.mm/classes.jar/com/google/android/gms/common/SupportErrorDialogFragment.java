@@ -4,57 +4,70 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.os.Bundle;
-import android.support.v4.app.f;
-import android.support.v4.app.j;
-import com.google.android.gms.common.internal.zzac;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.g;
+import com.google.android.gms.common.internal.Preconditions;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SupportErrorDialogFragment
-  extends f
+  extends DialogFragment
 {
   private Dialog mDialog = null;
-  private DialogInterface.OnCancelListener zzayl = null;
+  private DialogInterface.OnCancelListener zzap = null;
   
   public static SupportErrorDialogFragment newInstance(Dialog paramDialog)
   {
-    return newInstance(paramDialog, null);
+    AppMethodBeat.i(60474);
+    paramDialog = newInstance(paramDialog, null);
+    AppMethodBeat.o(60474);
+    return paramDialog;
   }
   
   public static SupportErrorDialogFragment newInstance(Dialog paramDialog, DialogInterface.OnCancelListener paramOnCancelListener)
   {
+    AppMethodBeat.i(60475);
     SupportErrorDialogFragment localSupportErrorDialogFragment = new SupportErrorDialogFragment();
-    paramDialog = (Dialog)zzac.zzb(paramDialog, "Cannot display null dialog");
+    paramDialog = (Dialog)Preconditions.checkNotNull(paramDialog, "Cannot display null dialog");
     paramDialog.setOnCancelListener(null);
     paramDialog.setOnDismissListener(null);
     localSupportErrorDialogFragment.mDialog = paramDialog;
     if (paramOnCancelListener != null) {
-      localSupportErrorDialogFragment.zzayl = paramOnCancelListener;
+      localSupportErrorDialogFragment.zzap = paramOnCancelListener;
     }
+    AppMethodBeat.o(60475);
     return localSupportErrorDialogFragment;
   }
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.zzayl != null) {
-      this.zzayl.onCancel(paramDialogInterface);
+    AppMethodBeat.i(60473);
+    if (this.zzap != null) {
+      this.zzap.onCancel(paramDialogInterface);
     }
+    AppMethodBeat.o(60473);
   }
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
+    AppMethodBeat.i(60472);
     if (this.mDialog == null) {
       setShowsDialog(false);
     }
-    return this.mDialog;
+    paramBundle = this.mDialog;
+    AppMethodBeat.o(60472);
+    return paramBundle;
   }
   
-  public void show(j paramj, String paramString)
+  public void show(g paramg, String paramString)
   {
-    super.show(paramj, paramString);
+    AppMethodBeat.i(60476);
+    super.show(paramg, paramString);
+    AppMethodBeat.o(60476);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.SupportErrorDialogFragment
  * JD-Core Version:    0.7.0.1
  */

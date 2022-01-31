@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$2$1
   implements Runnable
@@ -9,9 +10,11 @@ final class i$2$1
   
   public final void run()
   {
-    if (this.rrP.rrO.getParent() != null) {
-      ((ViewGroup)this.rrP.rrO.getParent()).removeView(this.rrP.rrO);
+    AppMethodBeat.i(8175);
+    if (this.vhU.vhT.getParent() != null) {
+      ((ViewGroup)this.vhU.vhT.getParent()).removeView(this.vhU.vhT);
     }
+    AppMethodBeat.o(8175);
   }
 }
 

@@ -5,55 +5,76 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.pluginsdk.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.f;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class LuckyMoneyF2FQRCodeUI$7
   implements SensorEventListener
 {
-  float hZz;
-  final int lOI = 3;
-  float lOJ = a.aa(ae.getContext(), a.d.MiddlePadding);
-  int lOK;
-  ValueAnimator lOL;
+  float nvm;
+  final int omc;
+  float omd;
+  int ome;
+  ValueAnimator omf;
   
-  LuckyMoneyF2FQRCodeUI$7(LuckyMoneyF2FQRCodeUI paramLuckyMoneyF2FQRCodeUI) {}
+  LuckyMoneyF2FQRCodeUI$7(LuckyMoneyF2FQRCodeUI paramLuckyMoneyF2FQRCodeUI)
+  {
+    AppMethodBeat.i(42179);
+    this.omc = 3;
+    this.omd = a.ao(ah.getContext(), 2131427792);
+    AppMethodBeat.o(42179);
+  }
   
   public final void onAccuracyChanged(Sensor paramSensor, int paramInt)
   {
-    y.i("LuckyMoneyF2FQRCodeUI", "onAccuracyChanged");
+    AppMethodBeat.i(42181);
+    ab.i("LuckyMoneyF2FQRCodeUI", "onAccuracyChanged");
+    AppMethodBeat.o(42181);
   }
   
   public final void onSensorChanged(SensorEvent paramSensorEvent)
   {
     float f1 = -3.0F;
-    if ((paramSensorEvent.sensor.getType() != 1) || (LuckyMoneyF2FQRCodeUI.g(this.lOE) <= 0)) {}
+    AppMethodBeat.i(42180);
     float f2;
-    do
+    if (paramSensorEvent.sensor.getType() == 1)
     {
-      return;
-      if (this.lOK == 0) {
-        this.lOK = (e.cD(this.lOE) + (int)this.lOJ);
+      if (LuckyMoneyF2FQRCodeUI.g(this.olY) <= 0)
+      {
+        AppMethodBeat.o(42180);
+        return;
+      }
+      if (this.ome == 0) {
+        this.ome = (f.di(this.olY) + (int)this.omd);
       }
       f2 = paramSensorEvent.values[1];
-    } while (Math.abs(f2 - this.hZz) < 0.05D);
-    this.hZz = f2;
-    y.d("LuckyMoneyF2FQRCodeUI", "[onSensorChanged] y:%s ", new Object[] { Float.valueOf(f2) });
-    if (f2 < -3.0F) {}
+      if (Math.abs(f2 - this.nvm) < 0.05D)
+      {
+        AppMethodBeat.o(42180);
+        return;
+      }
+      this.nvm = f2;
+      ab.d("LuckyMoneyF2FQRCodeUI", "[onSensorChanged] y:%s ", new Object[] { Float.valueOf(f2) });
+      if (f2 >= -3.0F) {
+        break label246;
+      }
+    }
     for (;;)
     {
-      f1 = f1 / 3.0F * this.lOK + this.lOK;
-      y.d("LuckyMoneyF2FQRCodeUI", "paddingTop:%s nowPaddingTop:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(LuckyMoneyF2FQRCodeUI.N(this.lOE).getPaddingTop()) });
-      if (this.lOL != null) {
-        this.lOL.cancel();
+      f1 = f1 / 3.0F * this.ome + this.ome;
+      ab.d("LuckyMoneyF2FQRCodeUI", "paddingTop:%s nowPaddingTop:%s", new Object[] { Float.valueOf(f1), Integer.valueOf(LuckyMoneyF2FQRCodeUI.N(this.olY).getPaddingTop()) });
+      if (this.omf != null) {
+        this.omf.cancel();
       }
-      this.lOL = ValueAnimator.ofFloat(new float[] { LuckyMoneyF2FQRCodeUI.N(this.lOE).getPaddingTop(), f1 }).setDuration(200L);
-      this.lOL.addUpdateListener(new LuckyMoneyF2FQRCodeUI.7.1(this));
-      this.lOL.start();
+      this.omf = ValueAnimator.ofFloat(new float[] { LuckyMoneyF2FQRCodeUI.N(this.olY).getPaddingTop(), f1 }).setDuration(200L);
+      this.omf.addUpdateListener(new LuckyMoneyF2FQRCodeUI.7.1(this));
+      this.omf.start();
+      AppMethodBeat.o(42180);
       return;
+      label246:
       if (f2 > 0.0F) {
         f1 = 0.0F;
       } else {
@@ -64,7 +85,7 @@ final class LuckyMoneyF2FQRCodeUI$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.f2f.ui.LuckyMoneyF2FQRCodeUI.7
  * JD-Core Version:    0.7.0.1
  */

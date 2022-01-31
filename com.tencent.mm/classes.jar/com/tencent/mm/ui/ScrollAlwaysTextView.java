@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ScrollAlwaysTextView
   extends TextView
@@ -21,12 +22,17 @@ public class ScrollAlwaysTextView
   
   public int getBaseline()
   {
+    AppMethodBeat.i(106129);
     try
     {
       int i = super.getBaseline();
+      AppMethodBeat.o(106129);
       return i;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(106129);
+    }
     return -1;
   }
   
@@ -37,47 +43,66 @@ public class ScrollAlwaysTextView
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(106128);
     try
     {
       super.onDraw(paramCanvas);
+      AppMethodBeat.o(106128);
       return;
     }
-    catch (Throwable paramCanvas) {}
+    catch (Throwable paramCanvas)
+    {
+      AppMethodBeat.o(106128);
+    }
   }
   
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
+    AppMethodBeat.i(106125);
     if (paramBoolean) {
       super.onFocusChanged(paramBoolean, paramInt, paramRect);
     }
+    AppMethodBeat.o(106125);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(106127);
     try
     {
       super.onMeasure(paramInt1, paramInt2);
+      AppMethodBeat.o(106127);
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(106127);
+    }
   }
   
   public boolean onPreDraw()
   {
+    AppMethodBeat.i(106130);
     try
     {
       boolean bool = super.onPreDraw();
+      AppMethodBeat.o(106130);
       return bool;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(106130);
+    }
     return true;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
+    AppMethodBeat.i(106126);
     if (paramBoolean) {
       super.onWindowFocusChanged(paramBoolean);
     }
+    AppMethodBeat.o(106126);
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.card.ui.a;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.pg;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 
@@ -14,73 +15,110 @@ public final class h
     super(paramMMActivity);
   }
   
-  public final boolean aCC()
+  protected final void beC()
   {
-    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.yr(this.ikk.azC());
-    if (((!this.isN.ily) || (this.isN.drX == 4)) && (!TextUtils.isEmpty(this.ikk.azD()))) {}
-    while (((this.isN.ily) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.ikk.azD())) && (aCD()))) {
+    AppMethodBeat.i(88723);
+    super.beC();
+    AppMethodBeat.o(88723);
+  }
+  
+  public final boolean beM()
+  {
+    AppMethodBeat.i(88724);
+    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.HS(this.klk.bbi());
+    if (((!this.ktU.kmw) || (this.ktU.ejF == 4)) && (!TextUtils.isEmpty(this.klk.bbj())))
+    {
+      AppMethodBeat.o(88724);
       return true;
     }
-    return false;
-  }
-  
-  public final boolean aCD()
-  {
-    return this.isN.drX == 3;
-  }
-  
-  public final boolean aCE()
-  {
-    return false;
-  }
-  
-  public final boolean aCG()
-  {
-    return this.ixx;
-  }
-  
-  public final boolean aCH()
-  {
-    return false;
-  }
-  
-  public final boolean aCJ()
-  {
-    return false;
-  }
-  
-  public final boolean aCK()
-  {
-    return (this.ixx) && (super.aCK());
-  }
-  
-  public final boolean aCO()
-  {
-    return false;
-  }
-  
-  public final boolean aCP()
-  {
-    return false;
-  }
-  
-  public final boolean aCQ()
-  {
-    if (super.aCQ()) {}
-    while ((aCR()) || ((this.ikk.aze()) && (this.ixx))) {
+    if (((this.ktU.kmw) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.klk.bbj())) && (beN())))
+    {
+      AppMethodBeat.o(88724);
       return true;
     }
+    AppMethodBeat.o(88724);
     return false;
   }
   
-  public final boolean aCR()
+  public final boolean beN()
   {
-    return (!this.ixx) && (this.ikk.azx().sIN == 1);
+    return this.ktU.ejF == 3;
   }
   
-  protected final void aCs()
+  public final boolean beO()
   {
-    super.aCs();
+    return false;
+  }
+  
+  public final boolean beQ()
+  {
+    return this.kyA;
+  }
+  
+  public final boolean beR()
+  {
+    return false;
+  }
+  
+  public final boolean beT()
+  {
+    return false;
+  }
+  
+  public final boolean beU()
+  {
+    AppMethodBeat.i(88725);
+    if ((this.kyA) && (super.beU()))
+    {
+      AppMethodBeat.o(88725);
+      return true;
+    }
+    AppMethodBeat.o(88725);
+    return false;
+  }
+  
+  public final boolean beY()
+  {
+    return false;
+  }
+  
+  public final boolean beZ()
+  {
+    return false;
+  }
+  
+  public final boolean bfa()
+  {
+    AppMethodBeat.i(88726);
+    if (super.bfa())
+    {
+      AppMethodBeat.o(88726);
+      return true;
+    }
+    if (bfb())
+    {
+      AppMethodBeat.o(88726);
+      return true;
+    }
+    if ((this.klk.baK()) && (this.kyA))
+    {
+      AppMethodBeat.o(88726);
+      return true;
+    }
+    AppMethodBeat.o(88726);
+    return false;
+  }
+  
+  public final boolean bfb()
+  {
+    AppMethodBeat.i(88727);
+    if ((!this.kyA) && (this.klk.bbd().wGw == 1))
+    {
+      AppMethodBeat.o(88727);
+      return true;
+    }
+    AppMethodBeat.o(88727);
+    return false;
   }
 }
 

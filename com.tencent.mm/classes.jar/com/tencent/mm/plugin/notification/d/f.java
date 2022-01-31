@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.notification.d;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bu;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bw;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bi;
 import java.util.ArrayList;
@@ -17,165 +21,208 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public final class f
-  implements ar
+  implements at
 {
-  private static f mJa = null;
-  com.tencent.mm.plugin.notification.c.c mJb = null;
-  com.tencent.mm.plugin.notification.c.c mJc = null;
-  private com.tencent.mm.plugin.notification.a.a mJd = null;
-  private boolean mJe = false;
-  private com.tencent.mm.sdk.b.c mJf = new f.1(this);
-  private com.tencent.mm.sdk.b.c mJg = new f.2(this);
-  private com.tencent.mm.sdk.b.c mJh = new f.3(this);
-  private com.tencent.mm.sdk.b.c mJi = new f.4(this);
-  private com.tencent.mm.sdk.b.c mJj = new f.5(this);
-  private com.tencent.mm.sdk.b.c mJk = new f.6(this);
+  private static j.a appForegroundListener;
+  private static f pjp;
+  com.tencent.mm.plugin.notification.c.c pjq;
+  com.tencent.mm.plugin.notification.c.c pjr;
+  private com.tencent.mm.plugin.notification.a.a pjs;
+  private boolean pjt;
+  private com.tencent.mm.sdk.b.c pju;
+  private com.tencent.mm.sdk.b.c pjv;
+  private com.tencent.mm.sdk.b.c pjw;
+  private com.tencent.mm.sdk.b.c pjx;
+  private com.tencent.mm.sdk.b.c pjy;
+  private com.tencent.mm.sdk.b.c pjz;
+  
+  static
+  {
+    AppMethodBeat.i(153554);
+    pjp = null;
+    appForegroundListener = new f.7();
+    AppMethodBeat.o(153554);
+  }
   
   private f()
   {
+    AppMethodBeat.i(23185);
+    this.pjq = null;
+    this.pjr = null;
+    this.pjs = null;
+    this.pjt = false;
+    this.pju = new f.1(this);
+    this.pjv = new f.2(this);
+    this.pjw = new f.3(this);
+    this.pjx = new f.4(this);
+    this.pjy = new f.5(this);
+    this.pjz = new f.6(this);
     b.init();
-    if (this.mJc == null) {
-      this.mJc = new e();
+    if (this.pjr == null) {
+      this.pjr = new e();
     }
-    if (this.mJb == null) {
-      this.mJb = new d();
+    if (this.pjq == null) {
+      this.pjq = new d();
     }
+    AppMethodBeat.o(23185);
   }
   
-  public static ArrayList<Long> X(bi parambi)
+  public static FailSendMsgNotification AV(int paramInt)
   {
-    if (parambi == null) {
+    AppMethodBeat.i(23186);
+    FailSendMsgNotification localFailSendMsgNotification;
+    if ((paramInt == 2) && (bYn().pjr != null))
+    {
+      ab.d("MicroMsg.SubCoreNotification", "get sns notificaiton");
+      localFailSendMsgNotification = bYn().pjr.bXZ();
+      AppMethodBeat.o(23186);
+      return localFailSendMsgNotification;
+    }
+    if ((paramInt == 1) && (bYn().pjq != null))
+    {
+      ab.d("MicroMsg.SubCoreNotification", "get msg notificaiton");
+      localFailSendMsgNotification = bYn().pjq.bXZ();
+      AppMethodBeat.o(23186);
+      return localFailSendMsgNotification;
+    }
+    AppMethodBeat.o(23186);
+    return null;
+  }
+  
+  public static boolean aJh()
+  {
+    AppMethodBeat.i(23190);
+    boolean bool = bYn().pjt;
+    AppMethodBeat.o(23190);
+    return bool;
+  }
+  
+  public static ArrayList<Long> ae(bi parambi)
+  {
+    AppMethodBeat.i(23191);
+    if (parambi == null)
+    {
+      AppMethodBeat.o(23191);
       return null;
     }
-    au.Hx();
-    com.tencent.mm.model.c.Fy().a(parambi.field_msgId, parambi);
-    Object localObject = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().bhZ();
+    aw.aaz();
+    com.tencent.mm.model.c.YC().a(parambi.field_msgId, parambi);
+    Object localObject = ((j)g.E(j.class)).bPQ().bQb();
     parambi = new ArrayList();
     localObject = ((ArrayList)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       parambi.add(Long.valueOf(((bi)((Iterator)localObject).next()).field_msgId));
     }
+    AppMethodBeat.o(23191);
     return parambi;
   }
   
-  public static f bpH()
+  public static f bYn()
   {
-    if (mJa == null)
+    AppMethodBeat.i(23187);
+    if (pjp == null)
     {
-      mJa = new f();
-      au.Hq().a("plugin.notification", mJa);
+      pjp = new f();
+      aw.aat().a("plugin.notification", pjp);
     }
-    return mJa;
+    f localf = pjp;
+    AppMethodBeat.o(23187);
+    return localf;
   }
   
-  public static boolean bpI()
-  {
-    return bpH().mJe;
-  }
+  public final void clearPluginData(int paramInt) {}
   
-  public static FailSendMsgNotification vx(int paramInt)
+  public final HashMap<Integer, h.d> getBaseDBFactories()
   {
-    if ((paramInt == 2) && (bpH().mJc != null))
-    {
-      y.d("MicroMsg.SubCoreNotification", "get sns notificaiton");
-      return bpH().mJc.bpt();
-    }
-    if ((paramInt == 1) && (bpH().mJb != null))
-    {
-      y.d("MicroMsg.SubCoreNotification", "get msg notificaiton");
-      return bpH().mJb.bpt();
-    }
     return null;
   }
   
-  public final void bh(boolean paramBoolean)
+  public final void onAccountPostReset(boolean paramBoolean)
   {
-    this.mJb.bpC();
-    this.mJb.bpD();
-    this.mJc.bpC();
-    this.mJc.bpD();
-    if (this.mJd == null) {
-      this.mJd = new com.tencent.mm.plugin.notification.a.a();
+    AppMethodBeat.i(23188);
+    this.pjq.bYi();
+    this.pjq.bYj();
+    this.pjr.bYi();
+    this.pjr.bYj();
+    if (this.pjs == null) {
+      this.pjs = new com.tencent.mm.plugin.notification.a.a();
     }
-    com.tencent.mm.plugin.notification.a.a locala = this.mJd;
-    if (!au.DK()) {
-      y.e("MicroMsg.NotificationObserver", "account not ready!");
+    com.tencent.mm.plugin.notification.a.a locala = this.pjs;
+    if (!aw.RG()) {
+      ab.e("MicroMsg.NotificationObserver", "account not ready!");
     }
     for (;;)
     {
-      com.tencent.mm.sdk.b.a.udP.c(this.mJf);
-      com.tencent.mm.sdk.b.a.udP.c(this.mJg);
-      com.tencent.mm.sdk.b.a.udP.c(this.mJh);
-      com.tencent.mm.sdk.b.a.udP.c(this.mJi);
-      com.tencent.mm.sdk.b.a.udP.c(this.mJj);
-      com.tencent.mm.sdk.b.a.udP.c(this.mJk);
-      com.tencent.mm.m.f.Au();
-      au.getNotification().fT(com.tencent.mm.m.f.Ax());
-      au.getNotification().bd(false);
-      y.d("MicroMsg.SubCoreNotification", "onAccountPostReset");
+      com.tencent.mm.sdk.b.a.ymk.c(this.pju);
+      com.tencent.mm.sdk.b.a.ymk.c(this.pjv);
+      com.tencent.mm.sdk.b.a.ymk.c(this.pjw);
+      com.tencent.mm.sdk.b.a.ymk.c(this.pjx);
+      com.tencent.mm.sdk.b.a.ymk.c(this.pjy);
+      com.tencent.mm.sdk.b.a.ymk.c(this.pjz);
+      aw.getNotification().ih(com.tencent.mm.m.f.Nm());
+      aw.getNotification().bF(false);
+      ab.d("MicroMsg.SubCoreNotification", "onAccountPostReset");
+      AppMethodBeat.o(23188);
       return;
-      y.d("MicroMsg.NotificationObserver", "added");
+      ab.d("MicroMsg.NotificationObserver", "added");
       try
       {
-        au.Hx();
-        com.tencent.mm.model.c.FB().a(locala);
-        locala.mIk = true;
+        aw.aaz();
+        com.tencent.mm.model.c.YF().b(locala);
+        aw.aaz();
+        com.tencent.mm.model.c.YF().a(locala);
+        locala.pir = true;
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.NotificationObserver", "exception:%s", new Object[] { bk.j(localException) });
+        ab.e("MicroMsg.NotificationObserver", "exception:%s", new Object[] { bo.l(localException) });
       }
     }
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
   public final void onAccountRelease()
   {
-    this.mJb.bpE();
-    this.mJb.bpF();
-    this.mJc.bpE();
-    this.mJc.bpF();
+    AppMethodBeat.i(23189);
+    this.pjq.bYk();
+    this.pjq.bYl();
+    this.pjr.bYk();
+    this.pjr.bYl();
     com.tencent.mm.plugin.notification.a.a locala;
-    if (this.mJd != null)
+    if (this.pjs != null)
     {
-      locala = this.mJd;
-      if (!au.DK()) {}
+      locala = this.pjs;
+      if (!aw.RG()) {}
     }
     try
     {
-      au.Hx();
-      com.tencent.mm.model.c.FB().b(locala);
-      com.tencent.mm.sdk.b.a.udP.d(this.mJf);
-      com.tencent.mm.sdk.b.a.udP.d(this.mJg);
-      com.tencent.mm.sdk.b.a.udP.d(this.mJh);
-      com.tencent.mm.sdk.b.a.udP.d(this.mJi);
-      com.tencent.mm.sdk.b.a.udP.d(this.mJj);
-      com.tencent.mm.sdk.b.a.udP.d(this.mJk);
-      au.getNotification().fT(0);
-      au.getNotification().bd(true);
-      y.d("MicroMsg.SubCoreNotification", "onAccountRelease");
+      aw.aaz();
+      com.tencent.mm.model.c.YF().b(locala);
+      com.tencent.mm.sdk.b.a.ymk.d(this.pju);
+      com.tencent.mm.sdk.b.a.ymk.d(this.pjv);
+      com.tencent.mm.sdk.b.a.ymk.d(this.pjw);
+      com.tencent.mm.sdk.b.a.ymk.d(this.pjx);
+      com.tencent.mm.sdk.b.a.ymk.d(this.pjy);
+      com.tencent.mm.sdk.b.a.ymk.d(this.pjz);
+      aw.getNotification().ih(0);
+      aw.getNotification().bF(true);
+      ab.d("MicroMsg.SubCoreNotification", "onAccountRelease");
+      AppMethodBeat.o(23189);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("MicroMsg.NotificationObserver", "exception:%s", new Object[] { bk.j(localException) });
+        ab.e("MicroMsg.NotificationObserver", "exception:%s", new Object[] { bo.l(localException) });
       }
     }
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return null;
-  }
+  public final void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.d.f
  * JD-Core Version:    0.7.0.1
  */

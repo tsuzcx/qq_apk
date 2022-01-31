@@ -1,453 +1,456 @@
 package com.tencent.mm.app;
 
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.blink.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.booter.c;
+import com.tencent.mm.kernel.b.h;
+import com.tencent.mm.kernel.d;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 public final class e
   implements ServiceConnection
 {
-  private static boolean bwd = false;
-  private static Object lock = new Object();
-  private ReentrantLock bwe = new ReentrantLock();
-  private boolean bwf = false;
-  private IBinder bwg = null;
-  private Runnable bwh = new e.5(this);
+  private static boolean bXI;
+  private static Object lock;
+  private ReentrantLock bXJ;
+  private boolean bXK;
+  private IBinder bXL;
+  private Runnable bXM;
   
-  /* Error */
-  private static int cj(java.lang.String paramString)
+  static
   {
-    // Byte code:
-    //   0: new 504	java/io/File
-    //   3: dup
-    //   4: ldc_w 506
-    //   7: invokespecial 507	java/io/File:<init>	(Ljava/lang/String;)V
-    //   10: invokevirtual 511	java/io/File:listFiles	()[Ljava/io/File;
-    //   13: astore 9
-    //   15: aload 9
-    //   17: arraylength
-    //   18: istore_2
-    //   19: iconst_0
-    //   20: istore_1
-    //   21: aconst_null
-    //   22: astore 7
-    //   24: iload_1
-    //   25: iload_2
-    //   26: if_icmpge +351 -> 377
-    //   29: aload 9
-    //   31: iload_1
-    //   32: aaload
-    //   33: astore 8
-    //   35: aload 8
-    //   37: invokevirtual 514	java/io/File:getName	()Ljava/lang/String;
-    //   40: iconst_m1
-    //   41: invokestatic 518	com/tencent/mm/sdk/platformtools/bk:getInt	(Ljava/lang/String;I)I
-    //   44: istore_3
-    //   45: aload 7
-    //   47: astore 6
-    //   49: new 504	java/io/File
-    //   52: dup
-    //   53: aload 8
-    //   55: ldc_w 520
-    //   58: invokespecial 523	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   61: astore 8
-    //   63: aload 7
-    //   65: astore 6
-    //   67: aload 8
-    //   69: invokevirtual 526	java/io/File:canRead	()Z
-    //   72: istore 5
-    //   74: iload 5
-    //   76: ifne +31 -> 107
-    //   79: aload 7
-    //   81: astore 6
-    //   83: aload 7
-    //   85: ifnull +11 -> 96
-    //   88: aload 7
-    //   90: invokevirtual 531	java/io/BufferedReader:close	()V
-    //   93: aconst_null
-    //   94: astore 6
-    //   96: iload_1
-    //   97: iconst_1
-    //   98: iadd
-    //   99: istore_1
-    //   100: aload 6
-    //   102: astore 7
-    //   104: goto -80 -> 24
-    //   107: aload 7
-    //   109: astore 6
-    //   111: new 528	java/io/BufferedReader
-    //   114: dup
-    //   115: new 533	java/io/FileReader
-    //   118: dup
-    //   119: aload 8
-    //   121: invokespecial 536	java/io/FileReader:<init>	(Ljava/io/File;)V
-    //   124: invokespecial 539	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   127: astore 8
-    //   129: aload 8
-    //   131: invokevirtual 542	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   134: astore 6
-    //   136: aload 6
-    //   138: ifnull +117 -> 255
-    //   141: aload 6
-    //   143: aload_0
-    //   144: invokevirtual 546	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   147: ifeq +108 -> 255
-    //   150: aload 6
-    //   152: invokevirtual 549	java/lang/String:length	()I
-    //   155: aload_0
-    //   156: invokevirtual 549	java/lang/String:length	()I
-    //   159: if_icmpne +37 -> 196
-    //   162: ldc_w 551
-    //   165: ldc_w 553
-    //   168: iconst_2
-    //   169: anewarray 4	java/lang/Object
-    //   172: dup
-    //   173: iconst_0
-    //   174: aload_0
-    //   175: aastore
-    //   176: dup
-    //   177: iconst_1
-    //   178: iconst_m1
-    //   179: invokestatic 331	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   182: aastore
-    //   183: invokestatic 413	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   186: aload 8
-    //   188: invokevirtual 531	java/io/BufferedReader:close	()V
-    //   191: iload_3
-    //   192: ireturn
-    //   193: astore_0
-    //   194: iload_3
-    //   195: ireturn
-    //   196: aload 6
-    //   198: aload_0
-    //   199: invokevirtual 549	java/lang/String:length	()I
-    //   202: invokevirtual 557	java/lang/String:charAt	(I)C
-    //   205: istore 4
-    //   207: iload 4
-    //   209: bipush 32
-    //   211: if_icmple +10 -> 221
-    //   214: iload 4
-    //   216: bipush 127
-    //   218: if_icmplt +37 -> 255
-    //   221: ldc_w 551
-    //   224: ldc_w 553
-    //   227: iconst_2
-    //   228: anewarray 4	java/lang/Object
-    //   231: dup
-    //   232: iconst_0
-    //   233: aload_0
-    //   234: aastore
-    //   235: dup
-    //   236: iconst_1
-    //   237: iconst_m1
-    //   238: invokestatic 331	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   241: aastore
-    //   242: invokestatic 413	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   245: aload 8
-    //   247: invokevirtual 531	java/io/BufferedReader:close	()V
-    //   250: iload_3
-    //   251: ireturn
-    //   252: astore_0
-    //   253: iload_3
-    //   254: ireturn
-    //   255: aload 8
-    //   257: invokevirtual 531	java/io/BufferedReader:close	()V
-    //   260: aconst_null
-    //   261: astore 6
-    //   263: goto -167 -> 96
-    //   266: astore 6
-    //   268: aload 8
-    //   270: astore 7
-    //   272: aload 6
-    //   274: astore 8
-    //   276: aload 7
-    //   278: astore 6
-    //   280: ldc_w 551
-    //   283: aload 8
-    //   285: ldc_w 559
-    //   288: iconst_0
-    //   289: anewarray 4	java/lang/Object
-    //   292: invokestatic 563	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   295: aload 7
-    //   297: astore 6
-    //   299: invokestatic 566	com/tencent/mm/sdk/platformtools/y:cqL	()V
-    //   302: aload 7
-    //   304: astore 6
-    //   306: aload 7
-    //   308: ifnull -212 -> 96
-    //   311: aload 7
-    //   313: invokevirtual 531	java/io/BufferedReader:close	()V
-    //   316: aconst_null
-    //   317: astore 6
-    //   319: goto -223 -> 96
-    //   322: astore_0
-    //   323: aload 8
-    //   325: ifnull +8 -> 333
-    //   328: aload 8
-    //   330: invokevirtual 531	java/io/BufferedReader:close	()V
-    //   333: aload_0
-    //   334: athrow
-    //   335: astore 6
-    //   337: goto -244 -> 93
-    //   340: astore 6
-    //   342: goto -82 -> 260
-    //   345: astore 6
-    //   347: goto -31 -> 316
-    //   350: astore 6
-    //   352: goto -19 -> 333
-    //   355: astore_0
-    //   356: aload 6
-    //   358: astore 8
-    //   360: goto -37 -> 323
-    //   363: astore 8
-    //   365: goto -89 -> 276
-    //   368: astore 6
-    //   370: aload 7
-    //   372: astore 6
-    //   374: goto -278 -> 96
-    //   377: iconst_m1
-    //   378: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	379	0	paramString	java.lang.String
-    //   20	80	1	i	int
-    //   18	9	2	j	int
-    //   44	210	3	k	int
-    //   205	14	4	m	int
-    //   72	3	5	bool	boolean
-    //   47	215	6	localObject1	Object
-    //   266	7	6	localThrowable1	java.lang.Throwable
-    //   278	40	6	localObject2	Object
-    //   335	1	6	localThrowable2	java.lang.Throwable
-    //   340	1	6	localThrowable3	java.lang.Throwable
-    //   345	1	6	localThrowable4	java.lang.Throwable
-    //   350	7	6	localThrowable5	java.lang.Throwable
-    //   368	1	6	localThrowable6	java.lang.Throwable
-    //   372	1	6	localObject3	Object
-    //   22	349	7	localObject4	Object
-    //   33	326	8	localObject5	Object
-    //   363	1	8	localThrowable7	java.lang.Throwable
-    //   13	17	9	arrayOfFile	java.io.File[]
-    // Exception table:
-    //   from	to	target	type
-    //   186	191	193	java/lang/Throwable
-    //   245	250	252	java/lang/Throwable
-    //   129	136	266	java/lang/Throwable
-    //   141	186	266	java/lang/Throwable
-    //   196	207	266	java/lang/Throwable
-    //   221	245	266	java/lang/Throwable
-    //   129	136	322	finally
-    //   141	186	322	finally
-    //   196	207	322	finally
-    //   221	245	322	finally
-    //   88	93	335	java/lang/Throwable
-    //   255	260	340	java/lang/Throwable
-    //   311	316	345	java/lang/Throwable
-    //   328	333	350	java/lang/Throwable
-    //   49	63	355	finally
-    //   67	74	355	finally
-    //   111	129	355	finally
-    //   280	295	355	finally
-    //   299	302	355	finally
-    //   49	63	363	java/lang/Throwable
-    //   67	74	363	java/lang/Throwable
-    //   111	129	363	java/lang/Throwable
-    //   35	45	368	java/lang/Throwable
+    AppMethodBeat.i(57676);
+    bXI = false;
+    lock = new Object();
+    AppMethodBeat.o(57676);
+  }
+  
+  public e()
+  {
+    AppMethodBeat.i(57667);
+    this.bXJ = new ReentrantLock();
+    this.bXK = false;
+    this.bXL = null;
+    this.bXM = new e.6(this);
+    AppMethodBeat.o(57667);
+  }
+  
+  public static void Bb()
+  {
+    AppMethodBeat.i(57672);
+    ab.e("MicroMsg.CoreServiceConnection", "killPushProcess() pid = %s, stack[%s]", new Object[] { Integer.valueOf(dv("com.tencent.mm:push")), bo.dtY() });
+    Process.killProcess(dv("com.tencent.mm:push"));
+    AppMethodBeat.o(57672);
+  }
+  
+  public static int dv(String paramString)
+  {
+    AppMethodBeat.i(57671);
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.i("MicroMsg.CoreServiceConnection", "getPicByProcessName() processName == null");
+      AppMethodBeat.o(57671);
+      return -1;
+    }
+    for (;;)
+    {
+      try
+      {
+        Object localObject = ((ActivityManager)ah.getContext().getSystemService("activity")).getRunningAppProcesses();
+        if (localObject == null)
+        {
+          ab.i("MicroMsg.CoreServiceConnection", "getPicByProcessName() processes == null");
+          AppMethodBeat.o(57671);
+          return -1;
+        }
+        localObject = ((List)localObject).iterator();
+        if (!((Iterator)localObject).hasNext()) {
+          continue;
+        }
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+        if (!localRunningAppProcessInfo.processName.equals(paramString)) {
+          continue;
+        }
+        i = localRunningAppProcessInfo.pid;
+      }
+      catch (Exception localException)
+      {
+        ab.e("MicroMsg.CoreServiceConnection", "getPidByProcessName() %s %s %s", new Object[] { paramString, localException.getClass().getSimpleName(), localException.getMessage() });
+        int i = -1;
+        continue;
+      }
+      AppMethodBeat.o(57671);
+      return i;
+      i = -1;
+    }
   }
   
   /* Error */
-  public final void aB(android.content.Context paramContext)
+  public final void aZ(Context paramContext)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: ldc_w 571
-    //   5: invokestatic 109	com/tencent/mm/blink/a:el	(Ljava/lang/String;)V
-    //   8: aload_0
-    //   9: getfield 32	com/tencent/mm/app/e:bwe	Ljava/util/concurrent/locks/ReentrantLock;
-    //   12: invokevirtual 573	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   15: iload_3
-    //   16: istore_2
-    //   17: aload_0
-    //   18: getfield 36	com/tencent/mm/app/e:bwg	Landroid/os/IBinder;
-    //   21: ifnull +19 -> 40
-    //   24: iload_3
-    //   25: istore_2
+    //   0: ldc_w 616
+    //   3: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc_w 618
+    //   9: invokestatic 157	com/tencent/mm/blink/a:ks	(Ljava/lang/String;)V
+    //   12: aload_0
+    //   13: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   16: invokevirtual 620	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   19: aload_0
+    //   20: getfield 47	com/tencent/mm/app/e:bXL	Landroid/os/IBinder;
+    //   23: ifnull +100 -> 123
     //   26: aload_0
-    //   27: getfield 36	com/tencent/mm/app/e:bwg	Landroid/os/IBinder;
-    //   30: invokeinterface 578 1 0
-    //   35: ifeq +5 -> 40
+    //   27: getfield 47	com/tencent/mm/app/e:bXL	Landroid/os/IBinder;
+    //   30: invokeinterface 625 1 0
+    //   35: ifeq +88 -> 123
     //   38: iconst_1
     //   39: istore_2
-    //   40: ldc_w 551
-    //   43: ldc_w 580
-    //   46: iconst_2
-    //   47: anewarray 4	java/lang/Object
-    //   50: dup
-    //   51: iconst_0
-    //   52: aload_0
-    //   53: getfield 34	com/tencent/mm/app/e:bwf	Z
-    //   56: invokestatic 370	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   59: aastore
-    //   60: dup
-    //   61: iconst_1
-    //   62: iload_2
-    //   63: invokestatic 370	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   66: aastore
-    //   67: invokestatic 413	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   70: aload_0
-    //   71: getfield 34	com/tencent/mm/app/e:bwf	Z
-    //   74: ifne +7 -> 81
-    //   77: iload_2
-    //   78: ifeq +41 -> 119
-    //   81: ldc_w 551
-    //   84: ldc_w 582
-    //   87: iconst_2
-    //   88: anewarray 4	java/lang/Object
-    //   91: dup
-    //   92: iconst_0
-    //   93: aload_0
-    //   94: getfield 34	com/tencent/mm/app/e:bwf	Z
-    //   97: invokestatic 370	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   100: aastore
-    //   101: dup
-    //   102: iconst_1
-    //   103: iload_2
-    //   104: invokestatic 370	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   107: aastore
-    //   108: invokestatic 372	com/tencent/mm/sdk/platformtools/y:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   111: aload_0
-    //   112: getfield 32	com/tencent/mm/app/e:bwe	Ljava/util/concurrent/locks/ReentrantLock;
-    //   115: invokevirtual 585	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   118: return
-    //   119: aload_0
-    //   120: getfield 32	com/tencent/mm/app/e:bwe	Ljava/util/concurrent/locks/ReentrantLock;
-    //   123: invokevirtual 585	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   126: aload_1
-    //   127: ldc_w 587
-    //   130: invokestatic 593	com/tencent/mm/booter/b:s	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   133: ifne +23 -> 156
-    //   136: ldc_w 551
-    //   139: ldc_w 595
-    //   142: invokestatic 597	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   145: return
-    //   146: astore_1
-    //   147: aload_0
-    //   148: getfield 32	com/tencent/mm/app/e:bwe	Ljava/util/concurrent/locks/ReentrantLock;
-    //   151: invokevirtual 585	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   154: aload_1
-    //   155: athrow
-    //   156: aload_0
-    //   157: getfield 32	com/tencent/mm/app/e:bwe	Ljava/util/concurrent/locks/ReentrantLock;
-    //   160: invokevirtual 573	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   40: ldc 58
+    //   42: ldc_w 627
+    //   45: iconst_2
+    //   46: anewarray 4	java/lang/Object
+    //   49: dup
+    //   50: iconst_0
+    //   51: aload_0
+    //   52: getfield 45	com/tencent/mm/app/e:bXK	Z
+    //   55: invokestatic 420	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   58: aastore
+    //   59: dup
+    //   60: iconst_1
+    //   61: iload_2
+    //   62: invokestatic 420	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   65: aastore
+    //   66: invokestatic 461	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   69: aload_0
+    //   70: getfield 45	com/tencent/mm/app/e:bXK	Z
+    //   73: ifne +7 -> 80
+    //   76: iload_2
+    //   77: ifeq +51 -> 128
+    //   80: ldc 58
+    //   82: ldc_w 629
+    //   85: iconst_2
+    //   86: anewarray 4	java/lang/Object
+    //   89: dup
+    //   90: iconst_0
+    //   91: aload_0
+    //   92: getfield 45	com/tencent/mm/app/e:bXK	Z
+    //   95: invokestatic 420	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   98: aastore
+    //   99: dup
+    //   100: iconst_1
+    //   101: iload_2
+    //   102: invokestatic 420	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   105: aastore
+    //   106: invokestatic 422	com/tencent/mm/sdk/platformtools/ab:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   109: aload_0
+    //   110: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   113: invokevirtual 632	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   116: ldc_w 616
+    //   119: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   122: return
+    //   123: iconst_0
+    //   124: istore_2
+    //   125: goto -85 -> 40
+    //   128: aload_0
+    //   129: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   132: invokevirtual 632	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   135: invokestatic 637	com/tencent/mm/booter/c:Ii	()Z
+    //   138: ifeq +180 -> 318
+    //   141: new 639	android/content/Intent
+    //   144: dup
+    //   145: aload_1
+    //   146: ldc_w 641
+    //   149: invokespecial 644	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   152: astore_3
+    //   153: ldc 58
+    //   155: ldc_w 646
+    //   158: invokestatic 557	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   161: aload_1
+    //   162: aload_3
     //   163: aload_0
     //   164: iconst_1
-    //   165: putfield 34	com/tencent/mm/app/e:bwf	Z
-    //   168: aload_0
-    //   169: getfield 32	com/tencent/mm/app/e:bwe	Ljava/util/concurrent/locks/ReentrantLock;
-    //   172: invokevirtual 585	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   175: getstatic 26	com/tencent/mm/app/e:lock	Ljava/lang/Object;
-    //   178: astore 4
-    //   180: aload 4
-    //   182: monitorenter
-    //   183: getstatic 21	com/tencent/mm/app/e:bwd	Z
-    //   186: ifne +26 -> 212
-    //   189: iconst_1
-    //   190: putstatic 21	com/tencent/mm/app/e:bwd	Z
-    //   193: ldc_w 551
-    //   196: ldc_w 599
-    //   199: invokestatic 597	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   202: aload_0
-    //   203: getfield 43	com/tencent/mm/app/e:bwh	Ljava/lang/Runnable;
-    //   206: ldc2_w 600
-    //   209: invokestatic 606	com/tencent/mm/sdk/platformtools/ai:l	(Ljava/lang/Runnable;J)V
-    //   212: aload 4
-    //   214: monitorexit
-    //   215: new 608	android/content/Intent
-    //   218: dup
-    //   219: aload_1
-    //   220: ldc_w 610
-    //   223: invokespecial 613	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   226: astore 4
-    //   228: ldc_w 551
-    //   231: ldc_w 615
-    //   234: invokestatic 597	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   237: aload_1
-    //   238: aload 4
-    //   240: aload_0
-    //   241: iconst_1
-    //   242: invokevirtual 621	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
-    //   245: ifne -127 -> 118
-    //   248: ldc_w 551
-    //   251: ldc_w 623
-    //   254: invokestatic 250	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   257: return
-    //   258: astore_1
-    //   259: aload_0
-    //   260: getfield 32	com/tencent/mm/app/e:bwe	Ljava/util/concurrent/locks/ReentrantLock;
-    //   263: invokevirtual 585	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   266: aload_1
-    //   267: athrow
-    //   268: astore_1
-    //   269: aload 4
-    //   271: monitorexit
-    //   272: aload_1
-    //   273: athrow
+    //   165: invokevirtual 650	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   168: ifne +61 -> 229
+    //   171: ldc 58
+    //   173: ldc_w 652
+    //   176: invokestatic 290	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   179: ldc_w 616
+    //   182: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: return
+    //   186: astore_1
+    //   187: aload_0
+    //   188: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   191: invokevirtual 632	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   194: ldc_w 616
+    //   197: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   200: aload_1
+    //   201: athrow
+    //   202: astore_1
+    //   203: ldc 58
+    //   205: ldc_w 654
+    //   208: iconst_1
+    //   209: anewarray 4	java/lang/Object
+    //   212: dup
+    //   213: iconst_0
+    //   214: aload_1
+    //   215: invokevirtual 615	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   218: aastore
+    //   219: invokestatic 84	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   222: ldc_w 616
+    //   225: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   228: return
+    //   229: aload_0
+    //   230: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   233: invokevirtual 620	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   236: aload_0
+    //   237: iconst_1
+    //   238: putfield 45	com/tencent/mm/app/e:bXK	Z
+    //   241: aload_0
+    //   242: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   245: invokevirtual 632	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   248: getstatic 33	com/tencent/mm/app/e:lock	Ljava/lang/Object;
+    //   251: astore_1
+    //   252: aload_1
+    //   253: monitorenter
+    //   254: getstatic 28	com/tencent/mm/app/e:bXI	Z
+    //   257: ifne +25 -> 282
+    //   260: iconst_1
+    //   261: putstatic 28	com/tencent/mm/app/e:bXI	Z
+    //   264: ldc 58
+    //   266: ldc_w 656
+    //   269: invokestatic 557	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   272: aload_0
+    //   273: getfield 54	com/tencent/mm/app/e:bXM	Ljava/lang/Runnable;
+    //   276: ldc2_w 657
+    //   279: invokestatic 664	com/tencent/mm/sdk/platformtools/al:p	(Ljava/lang/Runnable;J)V
+    //   282: aload_1
+    //   283: monitorexit
+    //   284: ldc_w 616
+    //   287: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   290: return
+    //   291: astore_1
+    //   292: aload_0
+    //   293: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   296: invokevirtual 632	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   299: ldc_w 616
+    //   302: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   305: aload_1
+    //   306: athrow
+    //   307: astore_3
+    //   308: aload_1
+    //   309: monitorexit
+    //   310: ldc_w 616
+    //   313: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   316: aload_3
+    //   317: athrow
+    //   318: aload_1
+    //   319: ldc_w 666
+    //   322: iconst_0
+    //   323: invokestatic 671	com/tencent/mm/booter/b:c	(Landroid/content/Context;Ljava/lang/String;Z)Z
+    //   326: ifne +18 -> 344
+    //   329: ldc 58
+    //   331: ldc_w 673
+    //   334: invokestatic 557	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   337: ldc_w 616
+    //   340: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   343: return
+    //   344: aload_0
+    //   345: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   348: invokevirtual 620	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   351: aload_0
+    //   352: iconst_1
+    //   353: putfield 45	com/tencent/mm/app/e:bXK	Z
+    //   356: aload_0
+    //   357: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   360: invokevirtual 632	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   363: getstatic 33	com/tencent/mm/app/e:lock	Ljava/lang/Object;
+    //   366: astore_3
+    //   367: aload_3
+    //   368: monitorenter
+    //   369: getstatic 28	com/tencent/mm/app/e:bXI	Z
+    //   372: ifne +25 -> 397
+    //   375: iconst_1
+    //   376: putstatic 28	com/tencent/mm/app/e:bXI	Z
+    //   379: ldc 58
+    //   381: ldc_w 656
+    //   384: invokestatic 557	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   387: aload_0
+    //   388: getfield 54	com/tencent/mm/app/e:bXM	Ljava/lang/Runnable;
+    //   391: ldc2_w 674
+    //   394: invokestatic 664	com/tencent/mm/sdk/platformtools/al:p	(Ljava/lang/Runnable;J)V
+    //   397: aload_3
+    //   398: monitorexit
+    //   399: new 639	android/content/Intent
+    //   402: dup
+    //   403: aload_1
+    //   404: ldc_w 641
+    //   407: invokespecial 644	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   410: astore_3
+    //   411: ldc 58
+    //   413: ldc_w 646
+    //   416: invokestatic 557	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   419: aload_1
+    //   420: aload_3
+    //   421: aload_0
+    //   422: iconst_1
+    //   423: invokevirtual 650	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   426: ifne +45 -> 471
+    //   429: ldc 58
+    //   431: ldc_w 652
+    //   434: invokestatic 290	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   437: ldc_w 616
+    //   440: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   443: return
+    //   444: astore_1
+    //   445: aload_0
+    //   446: getfield 43	com/tencent/mm/app/e:bXJ	Ljava/util/concurrent/locks/ReentrantLock;
+    //   449: invokevirtual 632	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   452: ldc_w 616
+    //   455: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   458: aload_1
+    //   459: athrow
+    //   460: astore_1
+    //   461: aload_3
+    //   462: monitorexit
+    //   463: ldc_w 616
+    //   466: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   469: aload_1
+    //   470: athrow
+    //   471: ldc_w 616
+    //   474: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   477: return
+    //   478: astore_1
+    //   479: ldc 58
+    //   481: ldc_w 677
+    //   484: iconst_1
+    //   485: anewarray 4	java/lang/Object
+    //   488: dup
+    //   489: iconst_0
+    //   490: aload_1
+    //   491: invokevirtual 615	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   494: aastore
+    //   495: invokestatic 84	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   498: ldc_w 616
+    //   501: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   504: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	274	0	this	e
-    //   0	274	1	paramContext	android.content.Context
-    //   16	88	2	bool1	boolean
-    //   1	24	3	bool2	boolean
+    //   0	505	0	this	e
+    //   0	505	1	paramContext	Context
+    //   39	86	2	bool	boolean
+    //   152	11	3	localIntent	android.content.Intent
+    //   307	10	3	localObject1	Object
     // Exception table:
     //   from	to	target	type
-    //   8	15	146	finally
-    //   17	24	146	finally
-    //   26	38	146	finally
-    //   40	77	146	finally
-    //   81	111	146	finally
-    //   156	168	258	finally
-    //   183	212	268	finally
-    //   212	215	268	finally
-    //   269	272	268	finally
+    //   12	38	186	finally
+    //   40	76	186	finally
+    //   80	109	186	finally
+    //   161	179	202	java/lang/Exception
+    //   229	241	291	finally
+    //   254	282	307	finally
+    //   282	284	307	finally
+    //   308	310	307	finally
+    //   344	356	444	finally
+    //   369	397	460	finally
+    //   397	399	460	finally
+    //   461	463	460	finally
+    //   419	437	478	java/lang/Exception
   }
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    y.w("MicroMsg.CoreServiceConnection", "onServiceConnected ");
+    AppMethodBeat.i(57668);
+    ab.w("MicroMsg.CoreServiceConnection", "onServiceConnected ");
+    dv("com.tencent.mm:push");
+    if (c.Ii())
+    {
+      if (paramIBinder == null)
+      {
+        ab.w("MicroMsg.CoreServiceConnection", "onServiceConnected binder == null");
+        AppMethodBeat.o(57668);
+        return;
+      }
+      if (!((h)g.RI().Rj()).SD()) {
+        break label274;
+      }
+      synchronized (lock)
+      {
+        ab.i("MicroMsg.CoreServiceConnection", "remove zombie killer.");
+        al.ae(this.bXM);
+        bXI = false;
+      }
+      try
+      {
+        this.bXJ.lock();
+        this.bXK = false;
+        if ((this.bXL != null) && (bo.hl(this.bXL.hashCode(), paramIBinder.hashCode())))
+        {
+          ab.w("MicroMsg.CoreServiceConnection", "onServiceConnected binder == serviceBinder");
+          return;
+          paramComponentName = finally;
+          AppMethodBeat.o(57668);
+          throw paramComponentName;
+        }
+        this.bXL = paramIBinder;
+        this.bXJ.unlock();
+        b.HP().o(new e.1(this, paramComponentName, paramIBinder));
+        AppMethodBeat.o(57668);
+        return;
+      }
+      finally
+      {
+        this.bXJ.unlock();
+        AppMethodBeat.o(57668);
+      }
+    }
+    label274:
     synchronized (lock)
     {
-      y.i("MicroMsg.CoreServiceConnection", "remove zombie killer.");
-      ai.S(this.bwh);
-      bwd = false;
+      ab.i("MicroMsg.CoreServiceConnection", "remove zombie killer.");
+      al.ae(this.bXM);
+      bXI = false;
     }
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    y.w("MicroMsg.CoreServiceConnection", "onServiceDisconnected ");
+    AppMethodBeat.i(57669);
+    ab.w("MicroMsg.CoreServiceConnection", "onServiceDisconnected ");
+    if (((h)g.RI().Rj()).SD()) {}
     try
     {
-      this.bwe.lock();
-      this.bwf = false;
-      this.bwg = null;
-      this.bwe.unlock();
-      b.vG().k(new e.4(this, paramComponentName));
+      this.bXJ.lock();
+      this.bXK = false;
+      this.bXL = null;
+      this.bXJ.unlock();
+      b.HP().o(new e.5(this, paramComponentName));
+      AppMethodBeat.o(57669);
       return;
     }
     finally
     {
-      this.bwe.unlock();
+      this.bXJ.unlock();
+      AppMethodBeat.o(57669);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.e
  * JD-Core Version:    0.7.0.1
  */

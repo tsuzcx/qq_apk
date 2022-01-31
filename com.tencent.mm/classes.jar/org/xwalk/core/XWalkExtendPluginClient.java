@@ -1,6 +1,8 @@
 package org.xwalk.core;
 
 import android.graphics.SurfaceTexture;
+import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public class XWalkExtendPluginClient
@@ -8,61 +10,33 @@ public class XWalkExtendPluginClient
   private static final String TAG = "XWalkExtendPluginClient";
   private Object bridge;
   private ArrayList<Object> constructorParams;
-  private ArrayList<Object> constructorTypes = new ArrayList();
+  private ArrayList<Object> constructorTypes;
   private XWalkCoreWrapper coreWrapper;
   private ReflectMethod postWrapperMethod;
-  private ReflectMethod setPluginTextureScaleStringintfloatfloatMethod = new ReflectMethod(null, "setPluginTextureScale", new Class[0]);
+  private ReflectMethod setPluginTextureScaleStringintfloatfloatMethod;
   
   static
   {
+    AppMethodBeat.i(85633);
     if (!XWalkExtendPluginClient.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
+      AppMethodBeat.o(85633);
       return;
     }
   }
   
   public XWalkExtendPluginClient(XWalkView paramXWalkView)
   {
+    AppMethodBeat.i(85630);
+    this.setPluginTextureScaleStringintfloatfloatMethod = new ReflectMethod(null, "setPluginTextureScale", new Class[0]);
+    this.constructorTypes = new ArrayList();
     this.constructorTypes.add("XWalkViewBridge");
     this.constructorParams = new ArrayList();
     this.constructorParams.add(paramXWalkView);
     reflectionInit();
-  }
-  
-  private float[] calScale(int paramInt1, int paramInt2, int paramInt3, int paramInt4, XWalkExtendPluginClient.ObjectFit paramObjectFit)
-  {
-    float[] arrayOfFloat = new float[2];
-    float[] tmp7_5 = arrayOfFloat;
-    tmp7_5[0] = 1.0F;
-    float[] tmp11_7 = tmp7_5;
-    tmp11_7[1] = 1.0F;
-    tmp11_7;
-    try
-    {
-      Log.i("XWalkExtendPluginClient", "calScale htmlWidth:" + paramInt1 + ",htmlHeight:" + paramInt2 + ",videoWidth:" + paramInt3 + ",videoHeight:" + paramInt4 + ",objectFit:" + paramObjectFit);
-      switch (1.$SwitchMap$org$xwalk$core$XWalkExtendPluginClient$ObjectFit[paramObjectFit.ordinal()])
-      {
-      case 2: 
-        arrayOfFloat[0] = 1.0F;
-        arrayOfFloat[1] = (paramInt4 * 1.0F / paramInt3);
-        return arrayOfFloat;
-      }
-    }
-    catch (Exception paramObjectFit)
-    {
-      Log.e("XWalkExtendPluginClient", "calScale error:");
-      return arrayOfFloat;
-    }
-    float f = paramInt3 * 1.0F / paramInt4;
-    arrayOfFloat[0] = f;
-    arrayOfFloat[1] = 1.0F;
-    return arrayOfFloat;
-    arrayOfFloat[0] = (paramInt3 * 1.0F / paramInt1);
-    arrayOfFloat[1] = (paramInt4 * 1.0F / paramInt2);
-    return arrayOfFloat;
-    return arrayOfFloat;
+    AppMethodBeat.o(85630);
   }
   
   protected Object getBridge()
@@ -74,13 +48,19 @@ public class XWalkExtendPluginClient
   
   public void onPluginReady(String paramString, int paramInt, SurfaceTexture paramSurfaceTexture) {}
   
+  public void onPluginTouch(String paramString, int paramInt, MotionEvent paramMotionEvent) {}
+  
+  public void onPluginTouch(String paramString1, int paramInt, String paramString2) {}
+  
   void reflectionInit()
   {
+    AppMethodBeat.i(85632);
     XWalkCoreWrapper.initEmbeddedMode();
     this.coreWrapper = XWalkCoreWrapper.getInstance();
     if (this.coreWrapper == null)
     {
       XWalkCoreWrapper.reserveReflectObject(this);
+      AppMethodBeat.o(85632);
       return;
     }
     int j = this.constructorTypes.size();
@@ -94,7 +74,7 @@ public class XWalkExtendPluginClient
         localObject1[i] = this.coreWrapper.getBridgeClass((String)localObject2);
         this.constructorParams.set(i, this.coreWrapper.getBridgeObject(this.constructorParams.get(i)));
       }
-      label127:
+      label137:
       do
       {
         for (;;)
@@ -102,12 +82,14 @@ public class XWalkExtendPluginClient
           i += 1;
           break;
           if (!(localObject2 instanceof Class)) {
-            break label127;
+            break label137;
           }
           localObject1[i] = ((Class)localObject2);
         }
       } while ($assertionsDisabled);
-      throw new AssertionError();
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(85632);
+      throw ((Throwable)localObject1);
     }
     localObject1[j] = Object.class;
     this.constructorParams.add(this);
@@ -119,37 +101,41 @@ public class XWalkExtendPluginClient
         this.postWrapperMethod.invoke(new Object[0]);
       }
       this.setPluginTextureScaleStringintfloatfloatMethod.init(this.bridge, null, "setPluginTextureScale", new Class[] { String.class, Integer.TYPE, Float.TYPE, Float.TYPE });
+      AppMethodBeat.o(85632);
       return;
     }
-    catch (UnsupportedOperationException localUnsupportedOperationException) {}
+    catch (UnsupportedOperationException localUnsupportedOperationException)
+    {
+      AppMethodBeat.o(85632);
+    }
   }
   
   public void setPluginTextureScale(String paramString, int paramInt, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(85631);
     try
     {
       Log.i("XWalkExtendPluginClient", "setPluginTextureScale embed_type:" + paramString + ",embed_id:" + paramInt + ",xScale:" + paramFloat1 + ",yScale:" + paramFloat2);
       this.setPluginTextureScaleStringintfloatfloatMethod.invoke(new Object[] { paramString, Integer.valueOf(paramInt), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
+      AppMethodBeat.o(85631);
       return;
     }
     catch (UnsupportedOperationException paramString)
     {
-      if (this.coreWrapper == null) {
-        throw new RuntimeException("Crosswalk's APIs are not ready yet");
+      if (this.coreWrapper == null)
+      {
+        paramString = new RuntimeException("Crosswalk's APIs are not ready yet");
+        AppMethodBeat.o(85631);
+        throw paramString;
       }
       XWalkCoreWrapper.handleRuntimeError(paramString);
+      AppMethodBeat.o(85631);
     }
-  }
-  
-  public void setPluginTextureScale(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, XWalkExtendPluginClient.ObjectFit paramObjectFit)
-  {
-    paramObjectFit = calScale(paramInt2, paramInt3, paramInt4, paramInt5, paramObjectFit);
-    setPluginTextureScale(paramString, paramInt1, paramObjectFit[0], paramObjectFit[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.xwalk.core.XWalkExtendPluginClient
  * JD-Core Version:    0.7.0.1
  */

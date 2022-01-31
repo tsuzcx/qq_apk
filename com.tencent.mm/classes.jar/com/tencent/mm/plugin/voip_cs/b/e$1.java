@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.voip_cs.b;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class e$1
-  implements am.a
+  implements ap.a
 {
   e$1(e parame) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.v("MicroMsg.voipcs.VoipCSService", "voipcs repeat sync");
-    this.qeh.bSU();
+    AppMethodBeat.i(135304);
+    ab.v("MicroMsg.voipcs.VoipCSService", "voipcs repeat sync");
+    this.tKU.cQt();
+    AppMethodBeat.o(135304);
     return true;
   }
 }

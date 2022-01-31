@@ -1,33 +1,22 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyPrepareUI$23
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
-  LuckyMoneyPrepareUI$23(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, int paramInt, EditText paramEditText) {}
+  LuckyMoneyPrepareUI$23(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public final void run()
   {
-    if ((paramView.isFocused()) && (!this.eYg))
-    {
-      ((InputMethodManager)this.lXg.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      new ah().postDelayed(new LuckyMoneyPrepareUI.23.1(this, paramView), 300L);
-      return;
-    }
-    new ah().postDelayed(new LuckyMoneyPrepareUI.23.2(this), 200L);
+    AppMethodBeat.i(42967);
+    this.owL.finish();
+    AppMethodBeat.o(42967);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.23
  * JD-Core Version:    0.7.0.1
  */

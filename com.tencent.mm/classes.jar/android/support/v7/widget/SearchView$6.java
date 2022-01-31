@@ -20,37 +20,37 @@ final class SearchView$6
   {
     Object localObject3 = null;
     Object localObject1 = null;
-    if (paramView == this.ajT.ajb) {
-      this.ajT.iA();
+    if (paramView == this.amj.alr) {
+      this.amj.km();
     }
     for (;;)
     {
       return;
-      if (paramView == this.ajT.ajd)
+      if (paramView == this.amj.alt)
       {
-        this.ajT.iz();
+        this.amj.kl();
         return;
       }
-      if (paramView == this.ajT.ajc)
+      if (paramView == this.amj.als)
       {
-        this.ajT.iy();
+        this.amj.kk();
         return;
       }
       SearchView localSearchView;
       SearchableInfo localSearchableInfo;
-      if (paramView == this.ajT.aje)
+      if (paramView == this.amj.alu)
       {
-        localSearchView = this.ajT;
-        if (localSearchView.ajJ == null) {
+        localSearchView = this.amj;
+        if (localSearchView.alZ == null) {
           continue;
         }
-        localSearchableInfo = localSearchView.ajJ;
+        localSearchableInfo = localSearchView.alZ;
       }
       try
       {
         if (localSearchableInfo.getVoiceSearchLaunchWebSearch())
         {
-          localObject2 = new Intent(localSearchView.ajp);
+          localObject2 = new Intent(localSearchView.alF);
           paramView = localSearchableInfo.getSearchActivity();
           if (paramView == null) {}
           for (paramView = (View)localObject1;; paramView = paramView.flattenToShortString())
@@ -63,14 +63,14 @@ final class SearchView$6
         if (!localSearchableInfo.getVoiceSearchLaunchRecognizer()) {
           continue;
         }
-        paramView = localSearchView.ajq;
+        paramView = localSearchView.alG;
         ComponentName localComponentName = localSearchableInfo.getSearchActivity();
         localObject1 = new Intent("android.intent.action.SEARCH");
         ((Intent)localObject1).setComponent(localComponentName);
         PendingIntent localPendingIntent = PendingIntent.getActivity(localSearchView.getContext(), 0, (Intent)localObject1, 1073741824);
         Bundle localBundle = new Bundle();
-        if (localSearchView.ajK != null) {
-          localBundle.putParcelable("app_data", localSearchView.ajK);
+        if (localSearchView.ama != null) {
+          localBundle.putParcelable("app_data", localSearchView.ama);
         }
         Intent localIntent = new Intent(paramView);
         int i = 1;
@@ -100,10 +100,10 @@ final class SearchView$6
                 localSearchView.getContext().startActivity(localIntent);
                 return;
               }
-              if (paramView != this.ajT.aiX) {
+              if (paramView != this.amj.aln) {
                 break;
               }
-              this.ajT.iC();
+              this.amj.ko();
               return;
             }
           }
@@ -116,7 +116,7 @@ final class SearchView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v7.widget.SearchView.6
  * JD-Core Version:    0.7.0.1
  */

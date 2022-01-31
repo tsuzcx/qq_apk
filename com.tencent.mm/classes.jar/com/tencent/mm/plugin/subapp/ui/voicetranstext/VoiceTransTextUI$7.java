@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoiceTransTextUI$7
   implements Runnable
@@ -11,24 +12,29 @@ final class VoiceTransTextUI$7
   
   public final void run()
   {
-    if (VoiceTransTextUI.r(this.pyO).getMeasuredHeight() >= VoiceTransTextUI.s(this.pyO).getMeasuredHeight())
+    AppMethodBeat.i(25600);
+    if (VoiceTransTextUI.r(this.taB).getMeasuredHeight() >= VoiceTransTextUI.s(this.taB).getMeasuredHeight())
     {
-      VoiceTransTextUI.r(this.pyO).fullScroll(130);
-      int i = VoiceTransTextUI.r(this.pyO).getScrollY();
-      VoiceTransTextUI.c(this.pyO, VoiceTransTextUI.r(this.pyO).getPaddingTop());
-      VoiceTransTextUI.c(this.pyO, VoiceTransTextUI.t(this.pyO) - i);
-      if (this.pyR) {
-        break label121;
+      VoiceTransTextUI.r(this.taB).fullScroll(130);
+      int i = VoiceTransTextUI.r(this.taB).getScrollY();
+      VoiceTransTextUI.c(this.taB, VoiceTransTextUI.r(this.taB).getPaddingTop());
+      VoiceTransTextUI.c(this.taB, VoiceTransTextUI.t(this.taB) - i);
+      if (!this.taE)
+      {
+        if (VoiceTransTextUI.t(this.taB) > 0)
+        {
+          VoiceTransTextUI.r(this.taB).setPadding(0, VoiceTransTextUI.t(this.taB), 0, 0);
+          AppMethodBeat.o(25600);
+        }
       }
-      if (VoiceTransTextUI.t(this.pyO) > 0) {
-        VoiceTransTextUI.r(this.pyO).setPadding(0, VoiceTransTextUI.t(this.pyO), 0, 0);
+      else
+      {
+        VoiceTransTextUI.r(this.taB).setPadding(0, 0, 0, 0);
+        VoiceTransTextUI.u(this.taB).setVisibility(8);
+        VoiceTransTextUI.u(this.taB).setHeight(0);
       }
     }
-    return;
-    label121:
-    VoiceTransTextUI.r(this.pyO).setPadding(0, 0, 0, 0);
-    VoiceTransTextUI.u(this.pyO).setVisibility(8);
-    VoiceTransTextUI.u(this.pyO).setHeight(0);
+    AppMethodBeat.o(25600);
   }
 }
 

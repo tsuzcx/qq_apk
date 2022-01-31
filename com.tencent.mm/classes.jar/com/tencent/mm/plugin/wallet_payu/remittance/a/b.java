@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,23 +12,31 @@ public final class b
 {
   public b(String paramString1, int paramInt, String paramString2, String paramString3)
   {
+    AppMethodBeat.i(48527);
     HashMap localHashMap = new HashMap();
     localHashMap.put("req_key", paramString1);
     localHashMap.put("total_fee", String.valueOf(paramInt));
     localHashMap.put("fee_type", paramString2);
     localHashMap.put("to_customer_name", paramString3);
-    D(localHashMap);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(48527);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    y.d("MicroMsg", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0) {}
-  }
-  
-  public final int bUM()
+  public final int cTa()
   {
     return 16;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48528);
+    ab.d("MicroMsg", "errCode " + paramInt + " errMsg: " + paramString);
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(48528);
+      return;
+    }
+    AppMethodBeat.o(48528);
   }
 }
 

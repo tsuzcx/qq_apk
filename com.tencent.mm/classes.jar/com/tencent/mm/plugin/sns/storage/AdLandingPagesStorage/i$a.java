@@ -1,10 +1,12 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class i$a
 {
-  int oKD;
-  int oKE;
-  int oKF;
+  int rCm;
+  int rCn;
+  int rCo;
   
   public final boolean equals(Object paramObject)
   {
@@ -14,13 +16,13 @@ final class i$a
     {
       paramObject = (a)paramObject;
       bool1 = bool2;
-      if (paramObject.oKD == this.oKD)
+      if (paramObject.rCm == this.rCm)
       {
         bool1 = bool2;
-        if (paramObject.oKE == this.oKE)
+        if (paramObject.rCn == this.rCn)
         {
           bool1 = bool2;
-          if (paramObject.oKF == this.oKF) {
+          if (paramObject.rCo == this.rCo) {
             bool1 = true;
           }
         }
@@ -31,17 +33,20 @@ final class i$a
   
   public final int hashCode()
   {
-    return this.oKD + this.oKE + this.oKF;
+    return this.rCm + this.rCn + this.rCo;
   }
   
   public final String toString()
   {
-    return "[nodeType=" + this.oKD + ",compType=" + this.oKE + ",subCompType=" + this.oKF + "]";
+    AppMethodBeat.i(37732);
+    String str = "[nodeType=" + this.rCm + ",compType=" + this.rCn + ",subCompType=" + this.rCo + "]";
+    AppMethodBeat.o(37732);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.i.a
  * JD-Core Version:    0.7.0.1
  */

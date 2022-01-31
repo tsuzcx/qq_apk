@@ -1,33 +1,47 @@
 package com.tencent.mm.pluginsdk.model.app;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class r
 {
   public String appId;
-  public int ezA;
+  public int fPp;
   
   public r(String paramString, int paramInt)
   {
     this.appId = paramString;
-    this.ezA = paramInt;
+    this.fPp = paramInt;
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    AppMethodBeat.i(79360);
+    if (paramObject == null)
     {
-      do
-      {
-        return false;
-      } while (!(paramObject instanceof r));
-      paramObject = (r)paramObject;
-    } while ((!paramObject.appId.equals(this.appId)) || (paramObject.ezA != this.ezA));
-    return true;
+      AppMethodBeat.o(79360);
+      return false;
+    }
+    if (!(paramObject instanceof r))
+    {
+      AppMethodBeat.o(79360);
+      return false;
+    }
+    paramObject = (r)paramObject;
+    if ((paramObject.appId.equals(this.appId)) && (paramObject.fPp == this.fPp))
+    {
+      AppMethodBeat.o(79360);
+      return true;
+    }
+    AppMethodBeat.o(79360);
+    return false;
   }
   
   public final String toString()
   {
-    return this.appId + this.ezA;
+    AppMethodBeat.i(79361);
+    String str = this.appId + this.fPp;
+    AppMethodBeat.o(79361);
+    return str;
   }
 }
 

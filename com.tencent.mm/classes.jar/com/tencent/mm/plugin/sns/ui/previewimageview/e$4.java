@@ -2,26 +2,30 @@ package com.tencent.mm.plugin.sns.ui.previewimageview;
 
 import android.os.Build.VERSION;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$4
   implements DynamicGridView.f
 {
   e$4(e parame, DynamicGridView paramDynamicGridView, View paramView) {}
   
-  public final void bKq()
+  public final void cxd()
   {
-    DynamicGridView localDynamicGridView = this.ppU;
-    localDynamicGridView.jDC = false;
+    AppMethodBeat.i(40324);
+    DynamicGridView localDynamicGridView = this.skM;
+    localDynamicGridView.lNb = false;
     localDynamicGridView.requestDisallowInterceptTouchEvent(false);
-    if ((DynamicGridView.bKv()) && (localDynamicGridView.pqr)) {
-      localDynamicGridView.jB(true);
+    if ((DynamicGridView.cxj()) && (localDynamicGridView.slj)) {
+      localDynamicGridView.lH(true);
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.ppU.setElevation(this.ppV.ppN);
+      this.skM.setElevation(this.skN.skF);
+      AppMethodBeat.o(40324);
       return;
     }
-    this.ppW.bringToFront();
+    this.skO.bringToFront();
+    AppMethodBeat.o(40324);
   }
 }
 

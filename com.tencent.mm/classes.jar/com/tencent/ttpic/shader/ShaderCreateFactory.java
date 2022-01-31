@@ -1,42 +1,62 @@
 package com.tencent.ttpic.shader;
 
-import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.VideoModule;
-import com.tencent.ttpic.util.VideoFileUtil;
+import com.tencent.ttpic.baseutils.FileUtils;
 import com.tencent.ttpic.util.VideoGlobalContext;
 
 public class ShaderCreateFactory
 {
+  private static final String FRAGMENT_SHADER_ETC_FILE;
   private static final String FRAGMENT_SHADER_IMAGE_FILE;
-  private static final String FRAGMENT_SHADER_VIDEO_FILE = "MCCommonFragmentShaderVideo.dat";
+  private static final String FRAGMENT_SHADER_VIDEO_FILE;
   private static final String SHADER_DIR = "camera/camera_video/shader/";
   
   static
   {
-    if (VideoModule.es_GL_EXT_shader_framebuffer_fetch) {}
-    for (String str = "MCCommonFragmentShaderImageExt.dat";; str = "MCCommonFragmentShaderImage.dat")
+    if (VideoModule.es_GL_EXT_shader_framebuffer_fetch)
     {
+      str = "MCCommonFragmentShaderImageExt.dat";
       FRAGMENT_SHADER_IMAGE_FILE = str;
+      if (!VideoModule.es_GL_EXT_shader_framebuffer_fetch) {
+        break label46;
+      }
+      str = "MCCommonFragmentShaderVideoExt.dat";
+      label22:
+      FRAGMENT_SHADER_VIDEO_FILE = str;
+      if (!VideoModule.es_GL_EXT_shader_framebuffer_fetch) {
+        break label52;
+      }
+    }
+    label46:
+    label52:
+    for (String str = "MCCommonFragmentShaderETCExt.dat";; str = "MCCommonFragmentShaderETC.dat")
+    {
+      FRAGMENT_SHADER_ETC_FILE = str;
       return;
+      str = "MCCommonFragmentShaderImage.dat";
+      break;
+      str = "MCCommonFragmentShaderVideo.dat";
+      break label22;
     }
   }
   
   public static Shader createShader(ShaderCreateFactory.PROGRAM_TYPE paramPROGRAM_TYPE)
   {
-    if (paramPROGRAM_TYPE == null) {
+    AppMethodBeat.i(83732);
+    if (paramPROGRAM_TYPE == null)
+    {
+      AppMethodBeat.o(83732);
       return null;
     }
-    String str1 = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/" + paramPROGRAM_TYPE.vertexShaderFile);
-    String str2 = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/" + paramPROGRAM_TYPE.fragmentShaderFile);
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-      new StringBuilder("can't find shader file: ").append(paramPROGRAM_TYPE.vertexShaderFile).append(" or ").append(paramPROGRAM_TYPE.fragmentShaderFile);
-    }
-    return new Shader(str1, str2);
+    paramPROGRAM_TYPE = new Shader(FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/" + paramPROGRAM_TYPE.vertexShaderFile), FileUtils.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/" + paramPROGRAM_TYPE.fragmentShaderFile));
+    AppMethodBeat.o(83732);
+    return paramPROGRAM_TYPE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.ttpic.shader.ShaderCreateFactory
  * JD-Core Version:    0.7.0.1
  */

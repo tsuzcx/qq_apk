@@ -6,44 +6,46 @@ import android.content.DialogInterface.OnDismissListener;
 import android.view.View;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import com.tencent.mm.plugin.d.a.d;
-import com.tencent.mm.plugin.d.a.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.ListViewInScrollView;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.widget.b.c;
 
 final class AppChooserUI$e
 {
-  DialogInterface.OnDismissListener Oj;
-  public c fvH;
-  BaseAdapter iqN;
+  DialogInterface.OnDismissListener NX;
+  public c gNn;
+  BaseAdapter krV;
   Context mContext;
   String mTitle;
-  DialogInterface.OnClickListener slg;
-  ListViewInScrollView sls;
-  AdapterView.OnItemClickListener slt;
-  DialogInterface.OnClickListener slu;
+  DialogInterface.OnClickListener wdI;
+  ListViewInScrollView wdU;
+  AdapterView.OnItemClickListener wdV;
+  DialogInterface.OnClickListener wdW;
   
   public AppChooserUI$e(AppChooserUI paramAppChooserUI, Context paramContext)
   {
+    AppMethodBeat.i(125874);
     this.mContext = paramContext;
-    this.sls = ((ListViewInScrollView)View.inflate(this.mContext, a.d.app_choose_layout, null));
+    this.wdU = ((ListViewInScrollView)View.inflate(this.mContext, 2130968753, null));
+    AppMethodBeat.o(125874);
   }
   
-  public final void mg(boolean paramBoolean)
+  public final void pv(boolean paramBoolean)
   {
-    if (this.fvH != null)
+    AppMethodBeat.i(125875);
+    if (this.gNn != null)
     {
       if (!paramBoolean)
       {
-        this.fvH.a(a.f.app_use_once, null);
-        this.fvH.b(a.f.app_use_always, null);
+        this.gNn.a(2131297099, null);
+        this.gNn.b(2131297098, null);
+        AppMethodBeat.o(125875);
+        return;
       }
+      this.gNn.a(2131297099, this.wdI);
+      this.gNn.b(2131297098, this.wdW);
     }
-    else {
-      return;
-    }
-    this.fvH.a(a.f.app_use_once, this.slg);
-    this.fvH.b(a.f.app_use_always, this.slu);
+    AppMethodBeat.o(125875);
   }
 }
 

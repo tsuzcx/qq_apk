@@ -1,28 +1,35 @@
 package com.tencent.mm.plugin.appbrand.launching.b;
 
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.AppBrand404PageUI;
-import com.tencent.mm.plugin.appbrand.y.j;
 
 final class d
   extends a
 {
   final void a(String paramString, Uri paramUri, a.a parama)
   {
-    switch (d.1.gMe[parama.ordinal()])
+    AppMethodBeat.i(132038);
+    switch (d.1.inv[parama.ordinal()])
     {
     default: 
-      AppBrand404PageUI.show(y.j.app_brand_error);
-    case 4: 
+      AppBrand404PageUI.show(2131296631);
+      AppMethodBeat.o(132038);
       return;
     case 1: 
-      AppBrand404PageUI.show(y.j.app_brand_barcode_parameter_error);
+      AppBrand404PageUI.show(2131296588);
+      AppMethodBeat.o(132038);
       return;
     case 2: 
-      AppBrand404PageUI.show(y.j.app_brand_barcode_result_dev_code_exipred);
+      AppBrand404PageUI.show(2131296589);
+      AppMethodBeat.o(132038);
+      return;
+    case 3: 
+      AppBrand404PageUI.show(2131296813);
+      AppMethodBeat.o(132038);
       return;
     }
-    AppBrand404PageUI.show(y.j.app_brand_qrcode_result_uin_invalid);
+    AppMethodBeat.o(132038);
   }
 }
 

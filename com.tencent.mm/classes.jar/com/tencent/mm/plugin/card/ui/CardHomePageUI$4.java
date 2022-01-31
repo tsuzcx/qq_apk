@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.card.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CardHomePageUI$4
   implements Runnable
@@ -9,15 +10,17 @@ final class CardHomePageUI$4
   
   public final void run()
   {
-    CardHomePageUI.c(this.ivb);
-    CardHomePageUI.d(this.ivb);
-    this.ivb.iqG = true;
-    y.d("MicroMsg.CardHomePageUI", "initLocation end");
+    AppMethodBeat.i(88486);
+    CardHomePageUI.c(this.kwf);
+    CardHomePageUI.d(this.kwf);
+    this.kwf.krO = true;
+    ab.d("MicroMsg.CardHomePageUI", "initLocation end");
+    AppMethodBeat.o(88486);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardHomePageUI.4
  * JD-Core Version:    0.7.0.1
  */

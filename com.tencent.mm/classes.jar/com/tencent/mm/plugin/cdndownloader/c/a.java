@@ -2,16 +2,19 @@ package com.tencent.mm.plugin.cdndownloader.c;
 
 import android.content.Context;
 import com.tencent.mars.cdn.CdnLogic;
-import com.tencent.mm.j.b.a;
-import com.tencent.mm.j.c;
-import com.tencent.mm.j.d;
-import com.tencent.mm.j.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.f;
+import com.tencent.mm.i.b.a;
+import com.tencent.mm.i.c;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.g;
+import com.tencent.mm.i.g.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -22,213 +25,276 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
   implements b.a
 {
-  private static a iAr = null;
-  private ai dKQ = new ai();
-  Queue<String> eiG = new LinkedList();
-  public Map<String, com.tencent.mm.j.f> eiH = new ConcurrentHashMap();
-  public Map<String, com.tencent.mm.j.f> eiI = new ConcurrentHashMap();
-  public Map<String, Integer> eiJ = new ConcurrentHashMap();
-  private String eiK = "";
-  private long eiL = 0L;
-  public HashSet<String> eiM = new HashSet();
-  private com.tencent.mm.ak.a iAs = null;
+  private static a kDx = null;
+  private al eIo;
+  Queue<String> fyK;
+  public Map<String, g> fyL;
+  public Map<String, g> fyM;
+  public Map<String, Integer> fyN;
+  private String fyO;
+  private long fyP;
+  public HashSet<String> fyQ;
+  private com.tencent.mm.al.a kDy;
   
-  public static a aDv()
+  public a()
+  {
+    AppMethodBeat.i(879);
+    this.fyK = new LinkedList();
+    this.fyL = new ConcurrentHashMap();
+    this.fyM = new ConcurrentHashMap();
+    this.fyN = new ConcurrentHashMap();
+    this.eIo = new al();
+    this.kDy = null;
+    this.fyO = "";
+    this.fyP = 0L;
+    this.fyQ = new HashSet();
+    AppMethodBeat.o(879);
+  }
+  
+  public static boolean IR(String paramString)
+  {
+    AppMethodBeat.i(883);
+    int i = CdnLogic.pauseHttpMultiSocketDownloadTask(paramString);
+    ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn cdntra pauseRecvTask mediaid:%s, ret:%d", new Object[] { paramString, Integer.valueOf(i) });
+    if (i == 0)
+    {
+      AppMethodBeat.o(883);
+      return true;
+    }
+    AppMethodBeat.o(883);
+    return false;
+  }
+  
+  public static a bfS()
   {
     try
     {
-      if (iAr == null) {
-        iAr = new a();
+      AppMethodBeat.i(880);
+      if (kDx == null) {
+        kDx = new a();
       }
-      a locala = iAr;
+      a locala = kDx;
+      AppMethodBeat.o(880);
       return locala;
     }
     finally {}
   }
   
-  public static boolean zi(String paramString)
-  {
-    int i = CdnLogic.pauseHttpMultiSocketDownloadTask(paramString);
-    y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn cdntra pauseRecvTask mediaid:%s, ret:%d", new Object[] { paramString, Integer.valueOf(i) });
-    return i == 0;
-  }
-  
-  public final com.tencent.mm.ak.a Ne()
-  {
-    if (this.iAs == null)
-    {
-      if (!ae.cqV()) {
-        break label32;
-      }
-      y.i("MicroMsg.CdnDownloadNativeService", "use mm process cdn engine.");
-    }
-    for (this.iAs = com.tencent.mm.ak.f.Ne();; this.iAs = new com.tencent.mm.ak.a(ae.getContext().getFilesDir() + "/NativeCDNInfo", this))
-    {
-      return this.iAs;
-      label32:
-      y.i("MicroMsg.CdnDownloadNativeService", "use new cdn engine.");
-    }
-  }
-  
   public final int a(final String paramString, final c paramc, final d paramd)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(884);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "cdn callback mediaid is null");
+      ab.e("MicroMsg.CdnDownloadNativeService", "cdn callback mediaid is null");
+      AppMethodBeat.o(884);
       return -1;
     }
     if ((paramc == null) && (paramd == null))
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "cdn callback info all null");
+      ab.e("MicroMsg.CdnDownloadNativeService", "cdn callback info all null");
+      AppMethodBeat.o(884);
       return -2;
     }
     if (paramc != null) {
-      y.d("MicroMsg.CdnDownloadNativeService", "CDN progress. total:%d, cur:%d, canshow:%b, isUploadTask:%b", new Object[] { Integer.valueOf(paramc.field_toltalLength), Integer.valueOf(paramc.field_finishedLength), Boolean.valueOf(paramc.field_mtlnotify), Boolean.valueOf(paramc.field_isUploadTask) });
+      ab.d("MicroMsg.CdnDownloadNativeService", "CDN progress. total:%d, cur:%d, canshow:%b, isUploadTask:%b", new Object[] { Integer.valueOf(paramc.field_toltalLength), Integer.valueOf(paramc.field_finishedLength), Boolean.valueOf(paramc.field_mtlnotify), Boolean.valueOf(paramc.field_isUploadTask) });
     }
     if (paramc != null) {}
     for (final boolean bool = paramc.field_isUploadTask;; bool = false)
     {
-      this.eiL = bk.UY();
-      this.eiK = paramString;
-      this.dKQ.O(new Runnable()
+      this.fyP = bo.aoy();
+      this.fyO = paramString;
+      this.eIo.ac(new Runnable()
       {
         public final void run()
         {
-          com.tencent.mm.j.f localf = (com.tencent.mm.j.f)a.d(a.this).get(paramString);
-          if (localf == null) {
-            y.e("MicroMsg.CdnDownloadNativeService", " task in jni get info failed mediaid:%s", new Object[] { paramString });
-          }
-          do
+          AppMethodBeat.i(876);
+          g localg = (g)a.d(a.this).get(paramString);
+          if (localg == null)
           {
-            do
+            ab.e("MicroMsg.CdnDownloadNativeService", " task in jni get info failed mediaid:%s", new Object[] { paramString });
+            AppMethodBeat.o(876);
+            return;
+          }
+          if (paramc != null)
+          {
+            paramc.cBO = paramString;
+            ab.i("MicroMsg.CdnDownloadNativeService", "MTL: total:%d, cur:%d, mtl:%b, isSend:%b, isUploadTask:%b(%b)", new Object[] { Integer.valueOf(paramc.field_toltalLength), Integer.valueOf(paramc.field_finishedLength), Boolean.valueOf(paramc.field_mtlnotify), Boolean.valueOf(localg.cMU), Boolean.valueOf(paramc.field_isUploadTask), Boolean.valueOf(bool) });
+            if (bool != localg.cMU)
             {
-              long l;
-              do
-              {
-                do
-                {
-                  return;
-                  if (paramc == null) {
-                    break;
-                  }
-                  paramc.bUi = paramString;
-                  y.i("MicroMsg.CdnDownloadNativeService", "MTL: total:%d, cur:%d, mtl:%b, isSend:%b, isUploadTask:%b(%b)", new Object[] { Integer.valueOf(paramc.field_toltalLength), Integer.valueOf(paramc.field_finishedLength), Boolean.valueOf(paramc.field_mtlnotify), Boolean.valueOf(localf.ceg), Boolean.valueOf(paramc.field_isUploadTask), Boolean.valueOf(bool) });
-                } while (bool != localf.ceg);
-                if (paramd != null) {
-                  paramd.bUi = paramString;
-                }
-                if (localf.dlP == null) {
-                  break;
-                }
-                l = bk.UY();
-              } while ((paramd == null) && (paramc != null) && (!paramc.field_mtlnotify) && (aq.getNetWorkType(ae.getContext()) == -1));
-              localf.field_lastProgressCallbackTime = l;
-              localf.dlP.a(paramString, 0, paramc, paramd, localf.field_onlycheckexist);
-              if (a.a(paramc)) {
-                a.a(a.this).remove(paramString);
-              }
-            } while (paramd == null);
+              AppMethodBeat.o(876);
+              return;
+            }
+          }
+          if (paramd != null) {
+            paramd.cBO = paramString;
+          }
+          if (localg.edp != null)
+          {
+            long l = bo.aoy();
+            if ((paramd == null) && (paramc != null) && (!paramc.field_mtlnotify) && (at.getNetWorkType(ah.getContext()) == -1))
+            {
+              AppMethodBeat.o(876);
+              return;
+            }
+            localg.field_lastProgressCallbackTime = l;
+            localg.edp.a(paramString, 0, paramc, paramd, localg.field_onlycheckexist);
+          }
+          if (a.a(paramc)) {
+            a.a(a.this).remove(paramString);
+          }
+          if (paramd != null)
+          {
             a.d(a.this).remove(paramString);
-          } while (paramd.field_retCode != -5103011);
-          y.i("MicroMsg.CdnDownloadNativeService", "summersafecdn ERR_VALIDATE_AUTHKEY");
-          h.nFQ.a(546L, 4L, 1L, true);
-          a.e(a.this).keep_OnRequestDoGetCdnDnsInfo(999);
+            if (paramd.field_retCode == -5103011)
+            {
+              ab.i("MicroMsg.CdnDownloadNativeService", "summersafecdn ERR_VALIDATE_AUTHKEY");
+              h.qsU.idkeyStat(546L, 4L, 1L, true);
+              a.e(a.this).keep_OnRequestDoGetCdnDnsInfo(999);
+            }
+          }
+          AppMethodBeat.o(876);
         }
         
         public final String toString()
         {
-          return super.toString() + "|callback";
+          AppMethodBeat.i(877);
+          String str = super.toString() + "|callback";
+          AppMethodBeat.o(877);
+          return str;
         }
       });
+      AppMethodBeat.o(884);
       return 0;
     }
   }
   
   public final void a(String paramString, d paramd)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(887);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(887);
       return;
     }
-    this.dKQ.O(new a.3(this, paramString, paramd));
+    this.eIo.ac(new a.3(this, paramString, paramd));
+    AppMethodBeat.o(887);
   }
   
   public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(885);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "cdn callback getauthbuf mediaid is null");
+      ab.e("MicroMsg.CdnDownloadNativeService", "cdn callback getauthbuf mediaid is null");
+      AppMethodBeat.o(885);
       return;
     }
-    com.tencent.mm.j.f localf = (com.tencent.mm.j.f)this.eiI.get(paramString);
-    if (localf == null)
+    g localg = (g)this.fyM.get(paramString);
+    if (localg == null)
     {
-      y.e("MicroMsg.CdnDownloadNativeService", " getauthbuf task in jni get info failed mediaid:%s", new Object[] { paramString });
+      ab.e("MicroMsg.CdnDownloadNativeService", " getauthbuf task in jni get info failed mediaid:%s", new Object[] { paramString });
+      AppMethodBeat.o(885);
       return;
     }
-    if (localf.dlP != null)
+    if (localg.edp != null)
     {
-      localf.dlP.a(paramString, paramByteArrayOutputStream);
+      localg.edp.a(paramString, paramByteArrayOutputStream);
+      AppMethodBeat.o(885);
       return;
     }
-    y.e("MicroMsg.CdnDownloadNativeService", "getCdnAuthInfo fail, null taskcallback.");
+    ab.e("MicroMsg.CdnDownloadNativeService", "getCdnAuthInfo fail, null taskcallback.");
+    AppMethodBeat.o(885);
   }
   
-  public final int d(com.tencent.mm.j.f paramf)
+  public final com.tencent.mm.al.a afP()
   {
-    if (bk.bl(paramf.field_mediaId))
+    AppMethodBeat.i(881);
+    if (this.kDy == null)
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId is null");
+      if (!ah.brt()) {
+        break label46;
+      }
+      ab.i("MicroMsg.CdnDownloadNativeService", "use mm process cdn engine.");
+    }
+    for (this.kDy = f.afP();; this.kDy = new com.tencent.mm.al.a(ah.getContext().getFilesDir() + "/NativeCDNInfo", this))
+    {
+      com.tencent.mm.al.a locala = this.kDy;
+      AppMethodBeat.o(881);
+      return locala;
+      label46:
+      ab.i("MicroMsg.CdnDownloadNativeService", "use new cdn engine.");
+    }
+  }
+  
+  public final int f(g paramg)
+  {
+    AppMethodBeat.i(882);
+    if (bo.isNullOrNil(paramg.field_mediaId))
+    {
+      ab.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId is null");
+      AppMethodBeat.o(882);
       return -1;
     }
-    if (paramf.field_fileId == null) {
-      paramf.field_fileId = "";
+    if (paramg.field_fileId == null) {
+      paramg.field_fileId = "";
     }
-    if (paramf.field_aesKey == null) {
-      paramf.field_aesKey = "";
+    if (paramg.field_aesKey == null) {
+      paramg.field_aesKey = "";
     }
-    if (this.eiG.contains(paramf.field_fileId))
+    if (this.fyK.contains(paramg.field_fileId))
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in queueTask");
+      ab.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in queueTask");
+      AppMethodBeat.o(882);
       return -2;
     }
-    if (this.eiH.containsKey(paramf.field_fileId))
+    if (this.fyL.containsKey(paramg.field_fileId))
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in mapWaitTask");
+      ab.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in mapWaitTask");
+      AppMethodBeat.o(882);
       return -2;
     }
-    if (this.eiI.containsKey(paramf.field_fileId))
+    if (this.fyM.containsKey(paramg.field_fileId))
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in mapTaskInJni");
+      ab.e("MicroMsg.CdnDownloadNativeService", "addRecvTask mediaId  exists in mapTaskInJni");
+      AppMethodBeat.o(882);
       return -2;
     }
-    paramf.ceg = false;
-    this.dKQ.O(new a.1(this, paramf));
+    paramg.cMU = false;
+    this.eIo.ac(new a.1(this, paramg));
+    AppMethodBeat.o(882);
     return 0;
   }
   
-  public final byte[] f(String paramString, byte[] paramArrayOfByte)
+  public final byte[] l(String paramString, byte[] paramArrayOfByte)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(886);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.CdnDownloadNativeService", "cdn callback decodePrepareResponse mediaid is null");
+      ab.e("MicroMsg.CdnDownloadNativeService", "cdn callback decodePrepareResponse mediaid is null");
+      AppMethodBeat.o(886);
       return null;
     }
-    com.tencent.mm.j.f localf = (com.tencent.mm.j.f)this.eiI.get(paramString);
-    if (localf == null)
+    g localg = (g)this.fyM.get(paramString);
+    if (localg == null)
     {
-      y.e("MicroMsg.CdnDownloadNativeService", " decodePrepareResponse task in jni get info failed mediaid:%s", new Object[] { paramString });
+      ab.e("MicroMsg.CdnDownloadNativeService", " decodePrepareResponse task in jni get info failed mediaid:%s", new Object[] { paramString });
+      AppMethodBeat.o(886);
       return null;
     }
-    if (localf.dlP != null) {
-      return localf.dlP.f(paramString, paramArrayOfByte);
+    if (localg.edp != null)
+    {
+      paramString = localg.edp.l(paramString, paramArrayOfByte);
+      AppMethodBeat.o(886);
+      return paramString;
     }
-    y.e("MicroMsg.CdnDownloadNativeService", "decodePrepareResponse fail, null taskcallback.");
+    ab.e("MicroMsg.CdnDownloadNativeService", "decodePrepareResponse fail, null taskcallback.");
+    AppMethodBeat.o(886);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.c.a
  * JD-Core Version:    0.7.0.1
  */

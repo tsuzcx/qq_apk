@@ -1,60 +1,68 @@
 package com.tencent.mm.plugin.hp.b;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.model.bx.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class h
-  implements bx.a
+  implements bz.a
 {
   public final void a(e.a parama)
   {
-    parama = parama.dBs;
-    if (parama.kSW == 10002)
+    AppMethodBeat.i(90613);
+    parama = parama.eyJ;
+    Object localObject;
+    if (parama.nqW == 10002)
     {
-      parama = aa.a(parama.svH);
-      if (!bk.bl(parama)) {
-        break label38;
-      }
-      y.w("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "msg content is null");
-    }
-    label38:
-    do
-    {
-      do
+      parama = aa.a(parama.woR);
+      if (bo.isNullOrNil(parama))
       {
+        ab.w("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "msg content is null");
+        AppMethodBeat.o(90613);
         return;
-        parama = bn.s(parama, "sysmsg");
-      } while ((parama == null) || (parama.size() <= 0));
-      localObject = (String)parama.get(".sysmsg.$type");
-    } while ((bk.bl((String)localObject)) || (!((String)localObject).equalsIgnoreCase("checktinkerupdate")));
-    int i = bk.ZR((String)parama.get(".sysmsg.tinkerboots.ignorenetwork"));
-    parama = bk.aM((String)parama.get(".sysmsg.tinkerboots.xmlkey"), "");
-    y.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "ignore:%s md5 %s start checkout tinker update. try to do update.", new Object[] { Integer.valueOf(i), parama });
-    long l = com.tencent.mm.kernel.a.De();
-    Object localObject = com.tinkerboots.sdk.a.cTY().gV("uin", String.valueOf(l & 0xFFFFFFFF));
-    if ((aq.isWifi(ae.getContext())) || (i == 1)) {}
-    for (i = 3;; i = 2)
-    {
-      ((com.tinkerboots.sdk.a)localObject).gV("network", String.valueOf(i));
-      if (!bk.bl(parama)) {
-        com.tinkerboots.sdk.a.cTY().gV("xmlkey", parama);
       }
-      com.tinkerboots.sdk.a.cTY().oy(true);
+      ab.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "onReciveMsg :%s", new Object[] { parama });
+      parama = br.F(parama, "sysmsg");
+      if ((parama != null) && (parama.size() > 0))
+      {
+        localObject = (String)parama.get(".sysmsg.$type");
+        if ((!bo.isNullOrNil((String)localObject)) && (((String)localObject).equalsIgnoreCase("prconfignotify")))
+        {
+          i = bo.apV((String)parama.get(".sysmsg.boots.ignorenetwork"));
+          parama = bo.bf((String)parama.get(".sysmsg.boots.xmlkey"), "");
+          ab.i("MicroMsg.Tinker.TinkerBootsSysCmdMsgListener", "ignore:%s md5 %s start checkout tinker update. try to do update.", new Object[] { Integer.valueOf(i), parama });
+          long l = com.tencent.mm.kernel.a.QW();
+          localObject = com.tinkerboots.sdk.a.eaJ().ji("uin", String.valueOf(l & 0xFFFFFFFF));
+          if ((!at.isWifi(ah.getContext())) && (i != 1)) {
+            break label250;
+          }
+        }
+      }
+    }
+    label250:
+    for (int i = 3;; i = 2)
+    {
+      ((com.tinkerboots.sdk.a)localObject).ji("network", String.valueOf(i));
+      if (!bo.isNullOrNil(parama)) {
+        com.tinkerboots.sdk.a.eaJ().ji("xmlkey", parama);
+      }
+      com.tinkerboots.sdk.a.eaJ().sm(true);
+      AppMethodBeat.o(90613);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.h
  * JD-Core Version:    0.7.0.1
  */

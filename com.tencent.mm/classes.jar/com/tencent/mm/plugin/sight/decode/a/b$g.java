@@ -4,11 +4,11 @@ import android.view.View;
 
 public abstract interface b$g
 {
-  public abstract int bBh();
+  public abstract int cmH();
   
-  public abstract View bBi();
+  public abstract View cmI();
   
-  public abstract int bBj();
+  public abstract int cmJ();
 }
 
 

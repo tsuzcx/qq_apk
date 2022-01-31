@@ -11,21 +11,21 @@ public abstract interface g
   
   public abstract void d(b paramb);
   
-  public abstract void eD(boolean paramBoolean);
+  public abstract void gc(boolean paramBoolean);
   
-  public abstract void eE(boolean paramBoolean);
+  public abstract void gd(boolean paramBoolean);
   
-  public abstract View gv();
+  public abstract View hv();
   
   public abstract void i(b paramb);
-  
-  public abstract void ph(int paramInt);
   
   public abstract void release();
   
   public abstract void setOnClickListener(View.OnClickListener paramOnClickListener);
   
-  public abstract void w(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void tw(int paramInt);
+  
+  public abstract void x(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

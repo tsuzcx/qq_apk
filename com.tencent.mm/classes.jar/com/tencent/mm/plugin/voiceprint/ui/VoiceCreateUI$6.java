@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class VoiceCreateUI$6
   implements a.a
 {
   VoiceCreateUI$6(VoiceCreateUI paramVoiceCreateUI) {}
   
-  public final void bPi() {}
+  public final void cLo() {}
   
-  public final void bPj()
+  public final void cLp()
   {
-    VoiceCreateUI.g(this.pMr).setVisibility(8);
-    VoiceCreateUI.h(this.pMr);
+    AppMethodBeat.i(26166);
+    VoiceCreateUI.g(this.tsm).setVisibility(8);
+    VoiceCreateUI.h(this.tsm);
+    AppMethodBeat.o(26166);
   }
 }
 

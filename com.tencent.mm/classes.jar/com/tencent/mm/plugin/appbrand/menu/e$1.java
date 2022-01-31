@@ -1,17 +1,21 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import android.content.Context;
-import com.tencent.mm.plugin.appbrand.performance.a;
-import com.tencent.mm.plugin.appbrand.v.c;
+import com.tencent.luggage.sdk.b.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.performance.AppBrandPerformanceManager;
+import com.tencent.mm.plugin.appbrand.s.m;
 
 final class e$1
   implements Runnable
 {
-  e$1(e parame, String paramString, Context paramContext) {}
+  e$1(e parame, c paramc, Context paramContext) {}
   
   public final void run()
   {
-    c.runOnUiThread(new e.1.1(this, a.vV(this.val$appId)));
+    AppMethodBeat.i(102126);
+    m.runOnUiThread(new e.1.1(this, AppBrandPerformanceManager.g(this.iam.wj())));
+    AppMethodBeat.o(102126);
   }
 }
 

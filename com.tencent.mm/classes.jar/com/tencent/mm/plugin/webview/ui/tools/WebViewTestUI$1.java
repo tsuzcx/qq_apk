@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.p;
+import com.tencent.xweb.w;
 
 final class WebViewTestUI$1
-  extends p
+  extends w
 {
   WebViewTestUI$1(WebViewTestUI paramWebViewTestUI) {}
   
-  public final void a(WebView paramWebView, String paramString)
+  public final void b(WebView paramWebView, String paramString)
   {
-    super.a(paramWebView, paramString);
+    AppMethodBeat.i(7804);
+    super.b(paramWebView, paramString);
+    AppMethodBeat.o(7804);
   }
 }
 

@@ -1,13 +1,24 @@
 package com.tencent.mm.svg;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Queue;
 
 final class a<T>
 {
-  private HashMap<Looper, LinkedList<T>> uEW = new HashMap();
-  private LinkedList<T> uEX = new LinkedList();
+  private HashMap<Looper, LinkedList<T>> yRE;
+  private Queue<T> yRF;
+  
+  a()
+  {
+    AppMethodBeat.i(70053);
+    this.yRE = new HashMap();
+    this.yRF = new ArrayDeque();
+    AppMethodBeat.o(70053);
+  }
   
   /* Error */
   protected final void a(Looper paramLooper, T paramT)
@@ -15,88 +26,95 @@ final class a<T>
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 20	com/tencent/mm/svg/a:uEW	Ljava/util/HashMap;
-    //   6: aload_1
-    //   7: invokevirtual 32	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   10: ifne +32 -> 42
-    //   13: new 22	java/util/LinkedList
-    //   16: dup
-    //   17: invokespecial 23	java/util/LinkedList:<init>	()V
-    //   20: astore_3
-    //   21: aload_0
-    //   22: getfield 20	com/tencent/mm/svg/a:uEW	Ljava/util/HashMap;
-    //   25: aload_1
-    //   26: aload_3
-    //   27: invokevirtual 36	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: pop
+    //   2: ldc 39
+    //   4: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 27	com/tencent/mm/svg/a:yRE	Ljava/util/HashMap;
+    //   11: aload_1
+    //   12: invokevirtual 43	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   15: ifne +46 -> 61
+    //   18: new 45	java/util/LinkedList
+    //   21: dup
+    //   22: invokespecial 46	java/util/LinkedList:<init>	()V
+    //   25: astore_3
+    //   26: aload_0
+    //   27: getfield 27	com/tencent/mm/svg/a:yRE	Ljava/util/HashMap;
+    //   30: aload_1
     //   31: aload_3
-    //   32: astore_1
-    //   33: aload_1
-    //   34: aload_2
-    //   35: invokevirtual 39	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   38: pop
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: return
-    //   42: aload_0
-    //   43: getfield 20	com/tencent/mm/svg/a:uEW	Ljava/util/HashMap;
-    //   46: aload_1
-    //   47: invokevirtual 43	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   50: checkcast 22	java/util/LinkedList
-    //   53: astore_1
-    //   54: goto -21 -> 33
-    //   57: astore_1
+    //   32: invokevirtual 50	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   35: pop
+    //   36: aload_3
+    //   37: astore_1
+    //   38: aload_1
+    //   39: invokevirtual 54	java/util/LinkedList:size	()I
+    //   42: bipush 20
+    //   44: if_icmpge +9 -> 53
+    //   47: aload_1
+    //   48: aload_2
+    //   49: invokevirtual 57	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   52: pop
+    //   53: ldc 39
+    //   55: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   58: aload_0
     //   59: monitorexit
-    //   60: aload_1
-    //   61: athrow
+    //   60: return
+    //   61: aload_0
+    //   62: getfield 27	com/tencent/mm/svg/a:yRE	Ljava/util/HashMap;
+    //   65: aload_1
+    //   66: invokevirtual 61	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   69: checkcast 45	java/util/LinkedList
+    //   72: astore_1
+    //   73: goto -35 -> 38
+    //   76: astore_1
+    //   77: aload_0
+    //   78: monitorexit
+    //   79: aload_1
+    //   80: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	62	0	this	a
-    //   0	62	1	paramLooper	Looper
-    //   0	62	2	paramT	T
-    //   20	12	3	localLinkedList	LinkedList
+    //   0	81	0	this	a
+    //   0	81	1	paramLooper	Looper
+    //   0	81	2	paramT	T
+    //   25	12	3	localLinkedList	LinkedList
     // Exception table:
     //   from	to	target	type
-    //   2	31	57	finally
-    //   33	39	57	finally
-    //   42	54	57	finally
+    //   2	36	76	finally
+    //   38	53	76	finally
+    //   53	58	76	finally
+    //   61	73	76	finally
   }
   
-  protected final void c(Looper paramLooper)
+  protected final T dAa()
   {
     try
     {
-      if (this.uEW.containsKey(paramLooper))
-      {
-        paramLooper = (LinkedList)this.uEW.remove(paramLooper);
-        this.uEX.addAll(paramLooper);
+      AppMethodBeat.i(70054);
+      Object localObject1 = null;
+      if (this.yRF.size() != 0) {
+        localObject1 = this.yRF.poll();
       }
-      return;
-    }
-    finally
-    {
-      paramLooper = finally;
-      throw paramLooper;
-    }
-  }
-  
-  protected final T cxl()
-  {
-    Object localObject1 = null;
-    try
-    {
-      if (this.uEX.size() != 0) {
-        localObject1 = this.uEX.poll();
-      }
+      AppMethodBeat.o(70054);
       return localObject1;
     }
-    finally
+    finally {}
+  }
+  
+  protected final void e(Looper paramLooper)
+  {
+    try
     {
-      localObject2 = finally;
-      throw localObject2;
+      AppMethodBeat.i(70056);
+      if (this.yRE.containsKey(paramLooper))
+      {
+        paramLooper = (LinkedList)this.yRE.remove(paramLooper);
+        if (this.yRF.size() < 40) {
+          this.yRF.addAll(paramLooper);
+        }
+      }
+      AppMethodBeat.o(70056);
+      return;
     }
+    finally {}
   }
 }
 

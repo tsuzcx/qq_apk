@@ -1,36 +1,94 @@
 package com.tencent.mm.wallet_core.c;
 
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.os.Bundle;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 
-public final class u
+public abstract class u
+  extends m
+  implements k
 {
-  private static long ioY = 0L;
-  private static String quW = "";
-  private static String wAJ = "";
+  private Bundle mBundle;
+  private int mCmdId = 0;
+  private String mProcessName = "";
+  private long mRequestTime;
+  private int mScene = 0;
+  public long sessionId = 0L;
   
-  public static boolean cMy()
+  private long reportCostTime(int paramInt1, int paramInt2)
   {
-    long l = bk.cn(ioY);
-    y.d("MicroMsg.TimeStampHelper", "pass time " + l);
-    return l > 300L;
-  }
-  
-  public static String cMz()
-  {
-    if ((bk.bl(quW)) || (b.cqk())) {
-      y.i("MicroMsg.TimeStampHelper", "getTimeStamp is null from %s isOverdue %s update_time: %s", new Object[] { wAJ, Boolean.valueOf(cMy()), Long.valueOf(ioY) });
+    long l1 = System.currentTimeMillis() - this.mRequestTime;
+    Object localObject2 = "";
+    Object localObject1 = "";
+    this.mCmdId = getCgicmdForKV();
+    long l2 = System.currentTimeMillis();
+    if (this.mBundle != null)
+    {
+      String str1 = this.mBundle.getString("key_TransId");
+      String str2 = this.mBundle.getString("key_reqKey");
+      if (this.sessionId == 0L) {
+        this.sessionId = this.mBundle.getLong("key_SessionId", 0L);
+      }
+      localObject1 = str2;
+      localObject2 = str1;
+      if (this.mScene == 0)
+      {
+        this.mScene = this.mBundle.getInt("key_scene");
+        localObject2 = str1;
+        localObject1 = str2;
+      }
     }
-    return quW;
+    h.qsU.e(11170, new Object[] { Integer.valueOf(getType()), Integer.valueOf(this.mCmdId), Long.valueOf(l1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(at.getNetType(ah.getContext())), this.mProcessName, localObject2, localObject1, Long.valueOf(this.sessionId), Long.valueOf(l2) });
+    z.a(getType(), getCgicmdForKV(), paramInt1, paramInt2, l1, this.mScene, this.mProcessName);
+    return l1;
   }
   
-  public static void setTimeStamp(String paramString)
+  public int dispatch(e parame, q paramq, k paramk)
   {
-    quW = paramString;
-    ioY = System.currentTimeMillis() / 1000L;
-    wAJ = bk.csb().toString();
+    this.mRequestTime = System.currentTimeMillis();
+    return super.dispatch(parame, paramq, paramk);
+  }
+  
+  public int getCgicmdForKV()
+  {
+    return -1;
+  }
+  
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte, reportCostTime(paramInt2, paramInt3));
+  }
+  
+  public abstract void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong);
+  
+  public void setCmdId(int paramInt)
+  {
+    this.mCmdId = paramInt;
+  }
+  
+  public void setProcessBundle(Bundle paramBundle)
+  {
+    this.mBundle = paramBundle;
+  }
+  
+  public void setProcessName(String paramString)
+  {
+    this.mProcessName = paramString;
+  }
+  
+  public void setProcessSessionId(long paramLong)
+  {
+    this.sessionId = paramLong;
+  }
+  
+  public void setScene(int paramInt)
+  {
+    this.mScene = paramInt;
   }
 }
 

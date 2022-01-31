@@ -5,7 +5,7 @@ public final class d
 {
   public d()
   {
-    this.xqq = 258;
+    this.CMD = 258;
   }
 }
 

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/c3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/r2" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:orientation="vertical" android:id="@id/cf0" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/nw" android:layout_marginRight="@dimen/nw" android:overScrollMode="never" />
-    <RelativeLayout android:id="@id/cf1" android:background="#fff7f7fa" android:paddingLeft="@dimen/ku" android:paddingRight="@dimen/ku" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
-        <TextView android:textSize="@dimen/nl" android:textColor="@color/c6" android:id="@id/cf2" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cg1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="@dimen/nl" android:textColor="@color/fc" android:id="@id/cf3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cg2" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/cf4" android:background="#ffe64340" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:text="" android:layout_alignParentTop="true" />
-    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/au7" />
-</RelativeLayout>
+    <ListView android:id="@id/ccq" android:background="@color/a6q" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a3x" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/a6l" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ca8" />
+</FrameLayout>

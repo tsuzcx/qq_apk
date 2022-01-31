@@ -1,15 +1,10 @@
 package com.tencent.mm.plugin.wepkg.event;
 
-import java.util.Set;
+import android.os.Parcelable.Creator;
 
 final class ReloadNotify$1
-  implements b.a
-{
-  public final void bAj()
-  {
-    ReloadNotify.bxc().clear();
-  }
-}
+  implements Parcelable.Creator<ReloadNotify>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar

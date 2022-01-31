@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WXLocationObject
   implements WXMediaMessage.IMediaObject
@@ -27,8 +28,10 @@ public class WXLocationObject
   
   public void serialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128338);
     paramBundle.putDouble("_wxlocationobject_lat", this.lat);
     paramBundle.putDouble("_wxlocationobject_lng", this.lng);
+    AppMethodBeat.o(128338);
   }
   
   public int type()
@@ -38,13 +41,15 @@ public class WXLocationObject
   
   public void unserialize(Bundle paramBundle)
   {
+    AppMethodBeat.i(128339);
     this.lat = paramBundle.getDouble("_wxlocationobject_lat");
     this.lng = paramBundle.getDouble("_wxlocationobject_lng");
+    AppMethodBeat.o(128339);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXLocationObject
  * JD-Core Version:    0.7.0.1
  */

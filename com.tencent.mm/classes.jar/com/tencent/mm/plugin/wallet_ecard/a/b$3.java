@@ -3,41 +3,44 @@ package com.tencent.mm.plugin.wallet_ecard.a;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
-import com.tencent.mm.protocal.c.bez;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bmu;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class b$3
   implements DialogInterface.OnClickListener
 {
-  b$3(bez parambez, WalletBaseUI paramWalletBaseUI) {}
+  b$3(bmu parambmu, WalletBaseUI paramWalletBaseUI) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(48050);
     c localc;
-    if (this.qKo.tjw == a.qJN)
+    if (this.uzh.xij == a.uyF)
     {
-      y.i("MicroMsg.ECardUtil", "do end process");
-      localc = this.qKp.cNj();
+      ab.i("MicroMsg.ECardUtil", "do end process");
+      localc = this.uzi.getProcess();
       if (localc != null) {
-        localc.b(this.qKp, new Bundle());
+        localc.b(this.uzi, new Bundle());
       }
     }
     for (;;)
     {
       paramDialogInterface.dismiss();
+      AppMethodBeat.o(48050);
       return;
-      this.qKp.finish();
+      this.uzi.finish();
       continue;
-      if (this.qKo.tjw == a.qJQ)
+      if (this.uzh.xij == a.uyI)
       {
-        y.i("MicroMsg.ECardUtil", "back bank list");
-        localc = this.qKp.cNj();
+        ab.i("MicroMsg.ECardUtil", "back bank list");
+        localc = this.uzi.getProcess();
         if (localc != null) {
-          localc.b(this.qKp, 100);
+          localc.e(this.uzi, 100);
         } else {
-          this.qKp.finish();
+          this.uzi.finish();
         }
       }
     }
@@ -45,7 +48,7 @@ final class b$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.a.b.3
  * JD-Core Version:    0.7.0.1
  */

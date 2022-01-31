@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class MMTagPanel$b$3
@@ -9,8 +10,10 @@ final class MMTagPanel$b$3
   
   public final void run()
   {
-    MMTagPanel.a(this.uYs.uYn).setText("");
-    MMTagPanel.a(this.uYs.uYn).append(this.uYt);
+    AppMethodBeat.i(106823);
+    MMTagPanel.a(this.zmI.zmE).setText("");
+    MMTagPanel.a(this.zmI.zmE).append(this.zmJ);
+    AppMethodBeat.o(106823);
   }
 }
 

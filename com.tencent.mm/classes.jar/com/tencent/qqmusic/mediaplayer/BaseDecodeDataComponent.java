@@ -32,7 +32,7 @@ abstract class BaseDecodeDataComponent
   protected final BufferInfo mDecodeBufferInfo = new BufferInfo();
   protected Handler mEventHandler;
   protected final FloatBufferInfo mFloatBufferInfo = new FloatBufferInfo();
-  protected BaseDecodeDataComponent.HandleDecodeDataCallback mHandleDecodeDataCallback;
+  protected final BaseDecodeDataComponent.HandleDecodeDataCallback mHandleDecodeDataCallback;
   protected boolean mHasDecode = false;
   protected boolean mHasDecodeSuccess = false;
   protected boolean mHasInit = false;
@@ -44,7 +44,7 @@ abstract class BaseDecodeDataComponent
   private int mPlayerID;
   protected final BufferInfo mReSampleBufferInfo = new BufferInfo();
   protected final WaitNotify mSignalControl = new WaitNotify();
-  protected StateRunner<Integer> mStateRunner;
+  protected PlayerStateRunner mStateRunner;
   protected final List<IAudioListener> mTerminalAudioEffectList = new ArrayList();
   protected ReferenceTimer mTimer = new ReferenceTimer();
   protected PerformanceTracer performanceTracer = null;
@@ -70,10 +70,10 @@ abstract class BaseDecodeDataComponent
     }
   }
   
-  BaseDecodeDataComponent(CorePlayer paramCorePlayer, StateRunner<Integer> paramStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, BaseDecodeDataComponent.HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
+  BaseDecodeDataComponent(CorePlayer paramCorePlayer, PlayerStateRunner paramPlayerStateRunner, AudioInformation paramAudioInformation, PlayerCallback paramPlayerCallback, BaseDecodeDataComponent.HandleDecodeDataCallback paramHandleDecodeDataCallback, Handler paramHandler, int paramInt)
   {
     this.mCorePlayer = paramCorePlayer;
-    this.mStateRunner = paramStateRunner;
+    this.mStateRunner = paramPlayerStateRunner;
     this.mInformation = paramAudioInformation;
     this.mCallback = paramPlayerCallback;
     this.mHandleDecodeDataCallback = paramHandleDecodeDataCallback;
@@ -111,7 +111,7 @@ abstract class BaseDecodeDataComponent
     }
     catch (Throwable paramBufferInfo1)
     {
-      Logger.e("BaseDecodeDataComponent", "[processAudioListener] failed. audio: " + paramIAudioListener, paramBufferInfo1);
+      Logger.e("BaseDecodeDataComponent", "[processAudioListener] failed. audio: ".concat(String.valueOf(paramIAudioListener)), paramBufferInfo1);
     }
     return false;
   }
@@ -126,7 +126,7 @@ abstract class BaseDecodeDataComponent
     }
     catch (Throwable paramFloatBufferInfo1)
     {
-      Logger.e("BaseDecodeDataComponent", "[processAudioListener] failed. audio: " + paramIAudioListener, paramFloatBufferInfo1);
+      Logger.e("BaseDecodeDataComponent", "[processAudioListener] failed. audio: ".concat(String.valueOf(paramIAudioListener)), paramFloatBufferInfo1);
     }
     return false;
   }
@@ -139,10 +139,10 @@ abstract class BaseDecodeDataComponent
         if (!this.mTerminalAudioEffectList.contains(paramIAudioListener))
         {
           this.mTerminalAudioEffectList.add(paramIAudioListener);
-          Logger.i("BaseDecodeDataComponent", "[addAudioListener] terminal audio added: " + paramIAudioListener);
+          Logger.i("BaseDecodeDataComponent", "[addAudioListener] terminal audio added: ".concat(String.valueOf(paramIAudioListener)));
         }
         if ((this.mInformation == null) || (this.mInformation.getPlaySample() <= 0L) || (this.mInformation.getChannels() <= 0)) {
-          break label254;
+          break label232;
         }
       }
     }
@@ -162,7 +162,7 @@ abstract class BaseDecodeDataComponent
           if (!this.audioEffects.contains(paramIAudioListener))
           {
             this.audioEffects.add(paramIAudioListener);
-            Logger.i("BaseDecodeDataComponent", "[addAudioListener] audio added: " + paramIAudioListener);
+            Logger.i("BaseDecodeDataComponent", "[addAudioListener] audio added: ".concat(String.valueOf(paramIAudioListener)));
           }
         }
       }
@@ -171,11 +171,11 @@ abstract class BaseDecodeDataComponent
     {
       for (;;)
       {
-        Logger.e("BaseDecodeDataComponent", "[addAudioListener] failed to init audio: " + paramIAudioListener, localThrowable);
+        Logger.e("BaseDecodeDataComponent", "[addAudioListener] failed to init audio: ".concat(String.valueOf(paramIAudioListener)), localThrowable);
         long l = 0L;
       }
     }
-    label254:
+    label232:
     Logger.i("BaseDecodeDataComponent", "[addAudioListener] audio information not ready. init will be delayed.");
   }
   
@@ -231,6 +231,11 @@ abstract class BaseDecodeDataComponent
     }
   }
   
+  protected void doWaitForPaused()
+  {
+    this.mSignalControl.doWait(2000L, 5, new BaseDecodeDataComponent.1(this));
+  }
+  
   void flush() {}
   
   abstract int getAudioStreamType();
@@ -252,7 +257,7 @@ abstract class BaseDecodeDataComponent
   
   int getPlayerState()
   {
-    return ((Integer)this.mStateRunner.get()).intValue();
+    return this.mStateRunner.get().intValue();
   }
   
   int getSessionId()
@@ -642,13 +647,13 @@ abstract class BaseDecodeDataComponent
     synchronized (this.audioEffects)
     {
       if (this.audioEffects.remove(paramIAudioListener)) {
-        Logger.i("BaseDecodeDataComponent", "[removeAudioListener] audio removed: " + paramIAudioListener);
+        Logger.i("BaseDecodeDataComponent", "[removeAudioListener] audio removed: ".concat(String.valueOf(paramIAudioListener)));
       }
     }
     synchronized (this.mTerminalAudioEffectList)
     {
       if (this.mTerminalAudioEffectList.remove(paramIAudioListener)) {
-        Logger.i("BaseDecodeDataComponent", "[removeAudioListener] terminal audio removed: " + paramIAudioListener);
+        Logger.i("BaseDecodeDataComponent", "[removeAudioListener] terminal audio removed: ".concat(String.valueOf(paramIAudioListener)));
       }
       return;
       paramIAudioListener = finally;

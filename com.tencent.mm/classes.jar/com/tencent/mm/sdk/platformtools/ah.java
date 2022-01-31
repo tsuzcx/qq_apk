@@ -1,427 +1,325 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Looper;
-import android.os.Message;
-import android.util.Printer;
-import java.lang.ref.WeakReference;
-import java.util.Collection;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.b;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
-public class ah
-  implements aj.a
+public final class ah
 {
-  private static final String TAG = "MicroMsg.MMHandler";
-  private static b sLogCallback;
-  private aj handler;
-  private int latestSize;
-  private LinkedList<WeakReference<ao>> latestTasks = new LinkedList();
-  private ConcurrentHashMap<Runnable, WeakReference<ao>> map = new ConcurrentHashMap();
-  private String toStringResult = null;
+  private static String bYA;
+  private static Context context = null;
+  private static volatile Resources mResources = null;
+  private static String processName;
+  private static String ynH = "com.tencent.mm";
+  private static String ynI;
+  private static boolean ynJ;
+  public static boolean ynK;
+  private static ActivityManager ynL = null;
   
-  public ah()
+  static
   {
-    this.handler = new aj(this);
-    if (getLooper().getThread().getName().equals("initThread")) {
-      y.e("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { bk.csb() });
-    }
+    bYA = "com.tencent.mm";
+    ynI = "com.tencent.mm.ui.LauncherUI";
+    processName = bYA;
+    ynJ = false;
+    ynK = false;
   }
   
-  public ah(Looper paramLooper)
+  public static boolean apj(String paramString)
   {
-    this.handler = new aj(paramLooper, this);
-    if (paramLooper.getThread().getName().equals("initThread")) {
-      y.e("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { bk.csb() });
-    }
-  }
-  
-  public ah(Looper paramLooper, a parama)
-  {
-    this.handler = new aj(paramLooper, parama, this);
-    if (paramLooper.getThread().getName().equals("initThread")) {
-      y.e("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { bk.csb() });
-    }
-  }
-  
-  public ah(a parama)
-  {
-    this.handler = new aj(parama, this);
-    if (getLooper().getThread().getName().equals("initThread")) {
-      y.e("MicroMsg.MMHandler", "MMHandler can not init handler with initThread looper, stack %s", new Object[] { bk.csb() });
-    }
-  }
-  
-  public static String dump(Runnable paramRunnable, boolean paramBoolean)
-  {
-    if (paramRunnable == null) {
-      return "";
-    }
-    if ((paramRunnable instanceof ao)) {
-      return ((ao)paramRunnable).dump(paramBoolean);
-    }
-    return paramRunnable.toString();
-  }
-  
-  public static Handler fetchFreeHandler()
-  {
-    return new Handler();
-  }
-  
-  public static Handler fetchFreeHandler(Looper paramLooper)
-  {
-    return new Handler(paramLooper);
-  }
-  
-  public static Handler fetchFreeHandler(Looper paramLooper, a parama)
-  {
-    return new Handler(paramLooper, parama);
-  }
-  
-  public static Handler fetchFreeHandler(a parama)
-  {
-    return new Handler(parama);
-  }
-  
-  public static void setLogCallback(b paramb)
-  {
-    sLogCallback = paramb;
-  }
-  
-  public String dump(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap(this.map);
-    localStringBuilder.append("tasks info size = " + localConcurrentHashMap.size() + '\n');
-    Iterator localIterator = localConcurrentHashMap.values().iterator();
-    if (localIterator != null)
+    AppMethodBeat.i(115248);
+    if ((context == null) || (bYA == null))
     {
-      int i = 0;
-      while (localIterator.hasNext())
-      {
-        Object localObject = (WeakReference)localIterator.next();
-        if ((localObject != null) && (((WeakReference)localObject).get() != null))
-        {
-          localObject = (ao)((WeakReference)localObject).get();
-          localStringBuilder.append("[index = " + i + " | taskinfo:" + ((ao)localObject).dump(paramBoolean) + "]\n");
-        }
-        i += 1;
-      }
+      AppMethodBeat.o(115248);
+      return false;
     }
-    localConcurrentHashMap.clear();
-    return localStringBuilder.toString();
-  }
-  
-  public final void dump(Printer paramPrinter, String paramString)
-  {
-    this.handler.dump(paramPrinter, paramString);
-  }
-  
-  public String dumpLatestTasks(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    LinkedList localLinkedList = new LinkedList(this.latestTasks);
-    localStringBuilder.append("|MMHandler latest(" + localLinkedList.size() + ") tasks done info");
-    Iterator localIterator = localLinkedList.iterator();
-    if (localIterator != null)
+    if (ynL == null) {
+      ynL = (ActivityManager)context.getSystemService("activity");
+    }
+    try
     {
-      int i = 0;
+      Iterator localIterator = ynL.getRunningAppProcesses().iterator();
       while (localIterator.hasNext())
       {
-        Object localObject = (WeakReference)localIterator.next();
-        if ((localObject != null) && (((WeakReference)localObject).get() != null))
+        boolean bool = ((ActivityManager.RunningAppProcessInfo)localIterator.next()).processName.equals(paramString);
+        if (bool)
         {
-          localObject = (ao)((WeakReference)localObject).get();
-          localStringBuilder.append("[index = " + i + "|task=" + ((ao)localObject).dump(paramBoolean) + "]");
+          AppMethodBeat.o(115248);
+          return true;
         }
-        i += 1;
       }
     }
-    localLinkedList.clear();
-    return localStringBuilder.toString();
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.MMApplicationContext", "isMMProcessExist Exception: " + paramString.toString());
+      AppMethodBeat.o(115248);
+      return false;
+    }
+    catch (Error paramString)
+    {
+      ab.e("MicroMsg.MMApplicationContext", "isMMProcessExist Error: " + paramString.toString());
+      AppMethodBeat.o(115248);
+      return false;
+    }
+    AppMethodBeat.o(115248);
+    return false;
   }
   
-  public Runnable findTaskByName(String paramString)
+  @Deprecated
+  public static boolean brt()
   {
-    if (bk.bl(paramString)) {
-      return null;
+    AppMethodBeat.i(115241);
+    boolean bool = dsT();
+    AppMethodBeat.o(115241);
+    return bool;
+  }
+  
+  public static boolean dsM()
+  {
+    return ynJ;
+  }
+  
+  public static String dsN()
+  {
+    return ynI;
+  }
+  
+  public static String dsO()
+  {
+    return ynH;
+  }
+  
+  public static String dsP()
+  {
+    AppMethodBeat.i(115237);
+    String str = bYA + "_preferences";
+    AppMethodBeat.o(115237);
+    return str;
+  }
+  
+  public static SharedPreferences dsQ()
+  {
+    AppMethodBeat.i(115238);
+    if (context != null)
+    {
+      SharedPreferences localSharedPreferences = context.getSharedPreferences(dsP(), 0);
+      AppMethodBeat.o(115238);
+      return localSharedPreferences;
     }
-    Iterator localIterator = new ConcurrentHashMap(this.map).values().iterator();
-    if (localIterator != null) {
-      while (localIterator.hasNext())
-      {
-        Object localObject = (WeakReference)localIterator.next();
-        if ((localObject != null) && (((WeakReference)localObject).get() != null))
-        {
-          localObject = (ao)((WeakReference)localObject).get();
-          if (((ao)localObject).ugn.equals(paramString))
-          {
-            y.i("MicroMsg.MMHandler", "findTaskByName: %s, found task info: %s", new Object[] { paramString, ((ao)localObject).dump(true) });
-            return localObject;
-          }
-        }
-      }
-    }
-    y.i("MicroMsg.MMHandler", "findTaskByName: %s, not found!", new Object[] { paramString });
+    AppMethodBeat.o(115238);
     return null;
   }
   
-  public Runnable findTaskByRunTime(long paramLong)
+  public static SharedPreferences dsR()
   {
-    Iterator localIterator = new ConcurrentHashMap(this.map).values().iterator();
-    long l = System.currentTimeMillis();
-    while ((localIterator != null) && (localIterator.hasNext()))
+    AppMethodBeat.i(115239);
+    if (context != null)
     {
-      Object localObject = (WeakReference)localIterator.next();
-      if ((localObject != null) && (((WeakReference)localObject).get() != null))
-      {
-        localObject = (ao)((WeakReference)localObject).get();
-        if ((((ao)localObject).started) && (((ao)localObject).dZr >= ((ao)localObject).ugr) && (l - ((ao)localObject).dZr > paramLong))
-        {
-          y.i("MicroMsg.MMHandler", "findTaskByRunTime limit: %d, found task info: %s", new Object[] { Long.valueOf(paramLong), ((ao)localObject).dump(true) });
-          return localObject;
-        }
-      }
+      SharedPreferences localSharedPreferences = context.getSharedPreferences(bYA + "_preferences_tools", 0);
+      AppMethodBeat.o(115239);
+      return localSharedPreferences;
     }
-    y.i("MicroMsg.MMHandler", "findTaskByRunTime limit: %d, not found!", new Object[] { Long.valueOf(paramLong) });
+    AppMethodBeat.o(115239);
     return null;
   }
   
-  public final Looper getLooper()
+  public static String dsS()
   {
-    return this.handler.getLooper();
+    AppMethodBeat.i(115240);
+    String str = bYA + "_tmp_preferences";
+    AppMethodBeat.o(115240);
+    return str;
   }
   
-  @TargetApi(14)
-  public String getMessageName(Message paramMessage)
+  public static boolean dsT()
   {
-    if (Build.VERSION.SDK_INT < 14)
+    AppMethodBeat.i(141781);
+    String str2 = processName;
+    String str1;
+    if (str2 != null)
     {
-      if (paramMessage.getCallback() != null) {
-        return paramMessage.getCallback().getClass().getName();
-      }
-      return "0x" + Integer.toHexString(paramMessage.what);
+      str1 = str2;
+      if (str2.length() != 0) {}
     }
-    return this.handler.getMessageName(paramMessage);
-  }
-  
-  public void handleMessage(Message paramMessage) {}
-  
-  public final boolean hasMessages(int paramInt)
-  {
-    return this.handler.hasMessages(paramInt);
-  }
-  
-  public final boolean hasMessages(int paramInt, Object paramObject)
-  {
-    return this.handler.hasMessages(paramInt, paramObject);
-  }
-  
-  public final Message obtainMessage()
-  {
-    return this.handler.obtainMessage();
-  }
-  
-  public final Message obtainMessage(int paramInt)
-  {
-    return this.handler.obtainMessage(paramInt);
-  }
-  
-  public final Message obtainMessage(int paramInt1, int paramInt2, int paramInt3)
-  {
-    return this.handler.obtainMessage(paramInt1, paramInt2, paramInt3);
-  }
-  
-  public final Message obtainMessage(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
-  {
-    return this.handler.obtainMessage(paramInt1, paramInt2, paramInt3, paramObject);
-  }
-  
-  public final Message obtainMessage(int paramInt, Object paramObject)
-  {
-    return this.handler.obtainMessage(paramInt, paramObject);
-  }
-  
-  public void onLog(Message paramMessage, Runnable paramRunnable, Thread paramThread, long paramLong1, long paramLong2, float paramFloat)
-  {
-    if (sLogCallback != null) {
-      sLogCallback.onLog(paramMessage, paramRunnable, paramThread, paramLong1, paramLong2, paramFloat);
-    }
-  }
-  
-  public final void onTaskAdded(Runnable paramRunnable, ao paramao)
-  {
-    this.map.put(paramRunnable, new WeakReference(paramao));
-  }
-  
-  public final void onTaskRunEnd(Runnable paramRunnable, ao paramao)
-  {
-    WeakReference localWeakReference = (WeakReference)this.map.get(paramRunnable);
-    if ((localWeakReference != null) && (localWeakReference.get() != null) && (localWeakReference.get() == paramao))
+    else
     {
-      this.map.remove(paramRunnable);
-      if (this.latestSize > 0)
-      {
-        if (this.latestTasks.size() == this.latestSize) {
-          this.latestTasks.pop();
-        }
-        this.latestTasks.add(localWeakReference);
-      }
+      str1 = bYA;
     }
+    boolean bool = bYA.equals(str1);
+    AppMethodBeat.o(141781);
+    return bool;
   }
   
-  public final boolean post(Runnable paramRunnable)
+  public static boolean dsU()
   {
-    return this.handler.post(paramRunnable);
-  }
-  
-  public final boolean postAtFrontOfQueue(Runnable paramRunnable)
-  {
-    return this.handler.postAtFrontOfQueue(paramRunnable);
-  }
-  
-  public final boolean postAtFrontOfQueueV2(Runnable paramRunnable)
-  {
-    paramRunnable = Message.obtain(this.handler, paramRunnable);
-    return this.handler.sendMessageAtTime(paramRunnable, 0L);
-  }
-  
-  public final boolean postAtTime(Runnable paramRunnable, long paramLong)
-  {
-    return this.handler.postAtTime(paramRunnable, paramLong);
-  }
-  
-  public final boolean postAtTime(Runnable paramRunnable, Object paramObject, long paramLong)
-  {
-    return this.handler.postAtTime(paramRunnable, paramObject, paramLong);
-  }
-  
-  public final boolean postDelayed(Runnable paramRunnable, long paramLong)
-  {
-    return this.handler.postDelayed(paramRunnable, paramLong);
-  }
-  
-  public final void removeCallbacks(Runnable paramRunnable)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    WeakReference localWeakReference = (WeakReference)this.map.get(paramRunnable);
-    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-      this.handler.removeCallbacks((Runnable)localWeakReference.get());
-    }
-    this.map.remove(paramRunnable);
-  }
-  
-  public final void removeCallbacks(Runnable paramRunnable, Object paramObject)
-  {
-    if (paramRunnable == null) {
-      return;
-    }
-    WeakReference localWeakReference = (WeakReference)this.map.get(paramRunnable);
-    if ((localWeakReference != null) && (localWeakReference.get() != null) && ((paramObject == null) || (((ao)localWeakReference.get()).ugo == paramObject))) {
-      this.handler.removeCallbacks((Runnable)localWeakReference.get(), paramObject);
-    }
-    this.map.remove(paramRunnable);
-  }
-  
-  public final void removeCallbacksAndMessages(Object paramObject)
-  {
-    this.handler.removeCallbacksAndMessages(paramObject);
-    if (paramObject == null) {
-      this.map.clear();
-    }
-    for (;;)
+    AppMethodBeat.i(115243);
+    String str2 = processName;
+    String str1;
+    if (str2 != null)
     {
-      return;
-      Iterator localIterator = this.map.entrySet().iterator();
-      if (localIterator != null) {
-        while (localIterator.hasNext())
-        {
-          Object localObject = (Map.Entry)localIterator.next();
-          if (localObject != null)
-          {
-            localObject = (WeakReference)((Map.Entry)localObject).getValue();
-            if ((localObject != null) && (((WeakReference)localObject).get() != null) && (((ao)((WeakReference)localObject).get()).ugo == paramObject)) {
-              localIterator.remove();
-            }
-          }
-        }
-      }
+      str1 = str2;
+      if (str2.length() != 0) {}
     }
-  }
-  
-  public final void removeMessages(int paramInt)
-  {
-    this.handler.removeMessages(paramInt);
-  }
-  
-  public final void removeMessages(int paramInt, Object paramObject)
-  {
-    this.handler.removeMessages(paramInt, paramObject);
-  }
-  
-  public final boolean sendEmptyMessage(int paramInt)
-  {
-    return this.handler.sendEmptyMessage(paramInt);
-  }
-  
-  public final boolean sendEmptyMessageAtTime(int paramInt, long paramLong)
-  {
-    return this.handler.sendEmptyMessageAtTime(paramInt, paramLong);
-  }
-  
-  public final boolean sendEmptyMessageDelayed(int paramInt, long paramLong)
-  {
-    return this.handler.sendEmptyMessageDelayed(paramInt, paramLong);
-  }
-  
-  public final boolean sendMessage(Message paramMessage)
-  {
-    return this.handler.sendMessage(paramMessage);
-  }
-  
-  public final boolean sendMessageAtFrontOfQueue(Message paramMessage)
-  {
-    return this.handler.sendMessageAtFrontOfQueue(paramMessage);
-  }
-  
-  public boolean sendMessageAtTime(Message paramMessage, long paramLong)
-  {
-    return this.handler.sendMessageAtTime(paramMessage, paramLong);
-  }
-  
-  public final boolean sendMessageDelayed(Message paramMessage, long paramLong)
-  {
-    return this.handler.sendMessageDelayed(paramMessage, paramLong);
-  }
-  
-  public void setLatestSize(int paramInt)
-  {
-    this.latestSize = paramInt;
-  }
-  
-  public String toString()
-  {
-    if (this.toStringResult == null) {
-      this.toStringResult = ("MMHandler(" + getClass().getName() + ")");
+    else
+    {
+      str1 = bYA;
     }
-    return this.toStringResult;
+    boolean bool = "com.tencent.mm:push".equalsIgnoreCase(str1);
+    AppMethodBeat.o(115243);
+    return bool;
   }
   
-  public static abstract interface a
-    extends Handler.Callback
-  {}
-  
-  public static abstract interface b
+  public static boolean dsV()
   {
-    public abstract void onLog(Message paramMessage, Runnable paramRunnable, Thread paramThread, long paramLong1, long paramLong2, float paramFloat);
+    AppMethodBeat.i(141782);
+    String str2 = b.bNv;
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() != 0) {}
+    }
+    else
+    {
+      str1 = bYA;
+    }
+    boolean bool = "com.tencent.mm:isolated_process0".equalsIgnoreCase(str1);
+    AppMethodBeat.o(141782);
+    return bool;
+  }
+  
+  public static boolean dsW()
+  {
+    AppMethodBeat.i(115244);
+    String str2 = processName;
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() != 0) {}
+    }
+    else
+    {
+      str1 = bYA;
+    }
+    boolean bool = "com.tencent.mm:tools".equalsIgnoreCase(str1);
+    AppMethodBeat.o(115244);
+    return bool;
+  }
+  
+  public static boolean dsX()
+  {
+    AppMethodBeat.i(115245);
+    String str2 = processName;
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() != 0) {}
+    }
+    else
+    {
+      str1 = bYA;
+    }
+    boolean bool = "com.tencent.mm:toolsmp".equalsIgnoreCase(str1);
+    AppMethodBeat.o(115245);
+    return bool;
+  }
+  
+  public static boolean dsY()
+  {
+    AppMethodBeat.i(115246);
+    String str2 = processName;
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() != 0) {}
+    }
+    else
+    {
+      str1 = bYA;
+    }
+    boolean bool = "com.tencent.mm:exdevice".equalsIgnoreCase(str1);
+    AppMethodBeat.o(115246);
+    return bool;
+  }
+  
+  public static boolean dsZ()
+  {
+    AppMethodBeat.i(115247);
+    boolean bool = apj(bYA);
+    AppMethodBeat.o(115247);
+    return bool;
+  }
+  
+  public static Context getContext()
+  {
+    return context;
+  }
+  
+  public static String getPackageName()
+  {
+    return bYA;
+  }
+  
+  public static String getProcessName()
+  {
+    return processName;
+  }
+  
+  public static Resources getResources()
+  {
+    return mResources;
+  }
+  
+  public static void h(Resources paramResources)
+  {
+    mResources = paramResources;
+  }
+  
+  public static boolean isAppBrandProcess()
+  {
+    AppMethodBeat.i(115242);
+    String str2 = processName;
+    String str1;
+    if (str2 != null)
+    {
+      str1 = str2;
+      if (str2.length() != 0) {}
+    }
+    else
+    {
+      str1 = bYA;
+    }
+    boolean bool = str1.startsWith(bYA + ":appbrand");
+    AppMethodBeat.o(115242);
+    return bool;
+  }
+  
+  public static void pI(boolean paramBoolean)
+  {
+    ynJ = paramBoolean;
+  }
+  
+  public static void setContext(Context paramContext)
+  {
+    AppMethodBeat.i(115236);
+    context = paramContext;
+    bYA = paramContext.getPackageName();
+    ab.d("MicroMsg.MMApplicationContext", "setup application context for package: " + bYA);
+    AppMethodBeat.o(115236);
+  }
+  
+  public static void setProcessName(String paramString)
+  {
+    processName = paramString;
   }
 }
 

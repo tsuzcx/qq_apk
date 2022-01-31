@@ -9,29 +9,30 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class LoadingMoreView
   extends LinearLayout
 {
-  private ImageView bQf;
   private Context context;
-  protected LinearLayout iqi;
+  private ImageView cxy;
+  protected LinearLayout krq;
   
   public LoadingMoreView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(22967);
     this.context = paramContext;
-    paramContext = LayoutInflater.from(this.context).inflate(R.i.life_loading_more, this, true);
-    this.bQf = ((ImageView)findViewById(R.h.life_next_progress));
-    this.iqi = ((LinearLayout)paramContext.findViewById(R.h.loading_more_state));
-    this.iqi.setVisibility(0);
+    paramContext = LayoutInflater.from(this.context).inflate(2130969981, this, true);
+    this.cxy = ((ImageView)findViewById(2131825416));
+    this.krq = ((LinearLayout)paramContext.findViewById(2131822311));
+    this.krq.setVisibility(0);
     paramContext = new RotateAnimation(0.0F, 359.0F, 1, 0.5F, 1, 0.5F);
     paramContext.setDuration(1000L);
     paramContext.setRepeatCount(-1);
     paramContext.setInterpolator(new LinearInterpolator());
-    this.bQf.startAnimation(paramContext);
+    this.cxy.startAnimation(paramContext);
+    AppMethodBeat.o(22967);
   }
 }
 

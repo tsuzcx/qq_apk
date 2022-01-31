@@ -3,12 +3,11 @@ package com.tencent.mm.plugin.sysvideo.ui.video;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 
 final class VideoRecorderUI$7
   implements View.OnClickListener
@@ -17,29 +16,34 @@ final class VideoRecorderUI$7
   
   public final void onClick(View paramView)
   {
-    au.Hx();
+    AppMethodBeat.i(25652);
+    aw.aaz();
     if (!c.isSDCardAvailable())
     {
-      s.gM(this.pzG);
+      t.ii(this.tbs);
+      AppMethodBeat.o(25652);
       return;
     }
-    if (VideoRecorderUI.k(this.pzG))
+    if (VideoRecorderUI.k(this.tbs))
     {
-      VideoRecorderUI.d(this.pzG);
+      VideoRecorderUI.d(this.tbs);
+      AppMethodBeat.o(25652);
       return;
     }
-    if (VideoRecorderUI.l(this.pzG))
+    if (VideoRecorderUI.l(this.tbs))
     {
-      h.a(this.pzG, this.pzG.getString(R.l.video_recorder_restart), this.pzG.getString(R.l.app_tip), new VideoRecorderUI.7.1(this), new VideoRecorderUI.7.2(this));
+      h.a(this.tbs, this.tbs.getString(2131304533), this.tbs.getString(2131297087), new VideoRecorderUI.7.1(this), new VideoRecorderUI.7.2(this));
+      AppMethodBeat.o(25652);
       return;
     }
-    VideoRecorderUI.m(this.pzG).setImageResource(R.g.video_recorder_stop_btn);
-    VideoRecorderUI.n(this.pzG);
+    VideoRecorderUI.m(this.tbs).setImageResource(2130840667);
+    VideoRecorderUI.n(this.tbs);
+    AppMethodBeat.o(25652);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sysvideo.ui.video.VideoRecorderUI.7
  * JD-Core Version:    0.7.0.1
  */

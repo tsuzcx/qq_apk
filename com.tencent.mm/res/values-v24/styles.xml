@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="ci" parent="@style/ch" />
-    <style name="cj" parent="@style/cg" />
     <style name="cl" parent="@style/ck" />
-    <style name="cn" parent="@style/cm" />
-    <style name="cy" parent="@android:style/TextAppearance.Material.Widget.Button.Borderless.Colored" />
-    <style name="cz" parent="@android:style/TextAppearance.Material.Widget.Button.Colored" />
+    <style name="d1" parent="@android:style/TextAppearance.Material.Widget.Button.Borderless.Colored" />
+    <style name="d2" parent="@android:style/TextAppearance.Material.Widget.Button.Colored" />
+    <style name="cm" parent="@style/cj" />
+    <style name="co" parent="@style/cn" />
+    <style name="cq" parent="@style/cp" />
 </resources>

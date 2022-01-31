@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.CustomerScrollView android:id="@id/eoj" android:background="@color/a0q" android:fitsSystemWindows="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/my" android:textColor="@color/a23" android:ellipsize="end" android:gravity="left" android:id="@id/ya" android:background="#1a000000" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/li" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/li" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
-        <include android:id="@id/eok" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/az7" />
-    </LinearLayout>
-</com.tencent.mm.wallet_core.ui.CustomerScrollView>
+    <TextView android:id="@id/ev8" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="result" style="@style/o2" />
+    <Button android:id="@id/ev9" android:text="@string/geu" style="@style/mi" />
+    <Button android:id="@id/ev_" android:text="@string/gep" style="@style/mi" />
+    <Button android:id="@id/eva" android:text="@string/get" style="@style/mi" />
+    <Button android:id="@id/evb" android:text="@string/ger" style="@style/mi" />
+    <Button android:id="@id/evc" android:text="@string/geo" style="@style/mi" />
+    <Button android:id="@id/evd" android:text="@string/ges" style="@style/mi" />
+    <Button android:id="@id/eve" android:text="@string/geq" style="@style/mi" />
+    <Button android:id="@id/evf" android:text="@string/gen" style="@style/mi" />
+    <Button android:id="@id/evg" android:text="@string/gem" style="@style/mi" />
+</LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:width="0.5dip" android:color="@color/ds" />
-    <solid android:color="@color/dq" />
-    <corners android:radius="@dimen/q6" />
-</shape>
+    <item android:id="@android:id/background" android:drawable="@drawable/aaz" />
+    <item android:id="@android:id/secondaryProgress" android:drawable="@drawable/aaz" />
+    <item android:id="@android:id/progress" android:drawable="@drawable/ab0" />
+</layer-list>

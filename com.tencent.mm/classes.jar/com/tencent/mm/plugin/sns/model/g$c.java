@@ -1,23 +1,32 @@
 package com.tencent.mm.plugin.sns.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class g$c
 {
   public int code;
   public String id;
-  public int opC;
-  public boolean opD;
+  public int reg;
+  public boolean reh;
   
   public g$c(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     this.id = paramString;
     this.code = paramInt1;
-    this.opC = paramInt2;
-    this.opD = paramBoolean;
+    this.reg = paramInt2;
+    this.reh = paramBoolean;
   }
   
   public final boolean equals(Object paramObject)
   {
-    return (paramObject != null) && (paramObject.hashCode() == this.code);
+    AppMethodBeat.i(36156);
+    if ((paramObject != null) && (paramObject.hashCode() == this.code))
+    {
+      AppMethodBeat.o(36156);
+      return true;
+    }
+    AppMethodBeat.o(36156);
+    return false;
   }
   
   public final int hashCode()
@@ -27,7 +36,7 @@ final class g$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.g.c
  * JD-Core Version:    0.7.0.1
  */

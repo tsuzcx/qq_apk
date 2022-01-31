@@ -4,10 +4,8 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mm.R.c;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class InvoiceListUI$3
   implements AdapterView.OnItemLongClickListener
@@ -16,8 +14,10 @@ final class InvoiceListUI$3
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.fuL.getResources().getStringArray(R.c.invoice_opt_list);
-    h.a(this.fuL.mController.uMN, null, paramAdapterView, null, new InvoiceListUI.3.1(this, paramInt));
+    AppMethodBeat.i(16860);
+    paramAdapterView = this.gMn.getResources().getStringArray(2131755021);
+    h.a(this.gMn.getContext(), null, paramAdapterView, null, new InvoiceListUI.3.1(this, paramInt));
+    AppMethodBeat.o(16860);
     return true;
   }
 }

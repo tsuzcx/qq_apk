@@ -1,5 +1,7 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class VoiceInputLayoutImpl$6
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class VoiceInputLayoutImpl$6
   
   public final void run()
   {
-    VoiceInputLayoutImpl.a(this.sbt).aWU();
+    AppMethodBeat.i(27591);
+    VoiceInputLayoutImpl.a(this.vSA).bDo();
+    AppMethodBeat.o(27591);
   }
 }
 

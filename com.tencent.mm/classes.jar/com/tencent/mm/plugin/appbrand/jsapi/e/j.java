@@ -2,10 +2,13 @@ package com.tencent.mm.plugin.appbrand.jsapi.e;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.t.e;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONObject;
 
 public final class j
@@ -14,15 +17,16 @@ public final class j
   public static final int CTRL_INDEX = 38;
   public static final String NAME = "openLocation";
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
     int i = 0;
+    AppMethodBeat.i(131112);
     try
     {
-      f1 = bk.getFloat(paramJSONObject.optString("latitude"), 0.0F);
-      f2 = bk.getFloat(paramJSONObject.optString("longitude"), 0.0F);
-      localObject = com.tencent.mm.plugin.appbrand.v.c.wG(paramJSONObject.optString("name"));
-      str = com.tencent.mm.plugin.appbrand.v.c.wG(paramJSONObject.optString("address"));
+      f1 = bo.getFloat(paramJSONObject.optString("latitude"), 0.0F);
+      f2 = bo.getFloat(paramJSONObject.optString("longitude"), 0.0F);
+      localObject = e.Fp(paramJSONObject.optString("name"));
+      str = e.Fp(paramJSONObject.optString("address"));
     }
     catch (Exception paramJSONObject)
     {
@@ -31,21 +35,22 @@ public final class j
       Object localObject;
       String str;
       int j;
-      label65:
-      paramc.C(paramInt, h("invalid_coordinate", null));
+      label70:
+      paramc.h(paramInt, j("invalid_coordinate", null));
+      AppMethodBeat.o(131112);
       return;
     }
     try
     {
-      j = bk.getInt(paramJSONObject.optString("scale"), 0);
+      j = bo.getInt(paramJSONObject.optString("scale"), 0);
       i = j;
     }
     catch (Exception paramJSONObject)
     {
-      break label65;
+      break label70;
     }
     paramJSONObject = new Intent();
-    paramJSONObject.putExtra("map_view_type", 7);
+    paramJSONObject.putExtra("map_view_type", 10);
     paramJSONObject.putExtra("kwebmap_slat", f1);
     paramJSONObject.putExtra("kwebmap_lng", f2);
     if (i > 0) {
@@ -56,11 +61,13 @@ public final class j
     localObject = paramc.getContext();
     if (localObject == null)
     {
-      paramc.C(paramInt, h("fail", null));
+      paramc.h(paramInt, j("fail", null));
+      AppMethodBeat.o(131112);
       return;
     }
     d.b((Context)localObject, "location", ".ui.RedirectUI", paramJSONObject);
-    paramc.C(paramInt, h("ok", null));
+    paramc.h(paramInt, j("ok", null));
+    AppMethodBeat.o(131112);
   }
 }
 

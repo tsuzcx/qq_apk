@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r$1
   implements ViewTreeObserver.OnGlobalLayoutListener
@@ -10,13 +11,16 @@ final class r$1
   
   public final void onGlobalLayout()
   {
-    if (this.leP.getLineCount() > 1)
+    AppMethodBeat.i(112171);
+    if (this.nCK.getLineCount() > 1)
     {
-      this.leP.setMaxLines(2);
-      this.leQ.setMaxLines(1);
+      this.nCK.setMaxLines(2);
+      this.nCL.setMaxLines(1);
+      AppMethodBeat.o(112171);
       return;
     }
-    this.leQ.setMaxLines(2);
+    this.nCL.setMaxLines(2);
+    AppMethodBeat.o(112171);
   }
 }
 

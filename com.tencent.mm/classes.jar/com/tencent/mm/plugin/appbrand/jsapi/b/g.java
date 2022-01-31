@@ -1,143 +1,59 @@
 package com.tencent.mm.plugin.appbrand.jsapi.b;
 
-import android.graphics.Paint.FontMetrics;
-import android.text.TextUtils;
-import com.tencent.mm.plugin.appbrand.canvas.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.sdk.platformtools.y;
+import a.f.b.j;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.base.a;
+import com.tencent.mm.plugin.appbrand.page.z;
 import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONException;
 import org.json.JSONObject;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiInsertHTMLCanvasElement;", "Lcom/tencent/mm/plugin/appbrand/jsapi/base/BaseInsertViewJsApi;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "()V", "requestMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/canvas/JsApiInsertHTMLCanvasElement$Request;", "Lkotlin/collections/HashMap;", "scrollSupportedTouchEvent", "", "enableGesture", "enableLongClick", "getViewId", "data", "Lorg/json/JSONObject;", "inflateView", "Landroid/view/View;", "component", "viewId", "isAsyncCallback", "onInsertViewWithAsyncCallback", "", "view", "callback", "Lcom/tencent/mm/plugin/appbrand/jsapi/base/JsApiCallback;", "Companion", "Request", "SurfaceAvailableListener", "plugin-appbrand-integration_release"})
 public final class g
-  extends s
+  extends a<z>
 {
-  public static final int CTRL_INDEX = 436;
-  public static final String NAME = "measureText";
+  public static final int CTRL_INDEX = 594;
+  public static final String NAME = "insertWebGLCanvas";
+  public static final g.a hJI;
+  private final HashMap<Integer, g.b> hJG;
+  private boolean hJH;
   
-  public final String a(c paramc, JSONObject paramJSONObject)
+  static
   {
-    j = -1;
-    if (paramJSONObject == null)
-    {
-      y.e("MicroMsg.JsApiMeasureText", "measureText, data is null");
-      return h("fail:data is null", null);
-    }
-    paramc = paramJSONObject.optString("text");
-    float f1 = (float)paramJSONObject.optDouble("fontSize", 16.0D);
-    y.i("MicroMsg.JsApiMeasureText", "measureText data:%s", new Object[] { paramJSONObject.toString() });
-    if ((TextUtils.isEmpty(paramc)) || (f1 <= 0.0F))
-    {
-      y.e("MicroMsg.JsApiMeasureText", "measureText, param is illegal");
-      return h("fail:param is illegal", null);
-    }
-    locala = new a();
-    locala.setTextSize(h.am(f1));
-    try
-    {
-      locala.rN(paramJSONObject.getString("fontFamily"));
-      try
-      {
-        String str = paramJSONObject.getString("fontStyle");
-        i = str.hashCode();
-        switch (i)
-        {
-        default: 
-          i = -1;
-          switch (i)
-          {
-          }
-          break;
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        for (;;)
-        {
-          label268:
-          float f2;
-          y.i("MicroMsg.JsApiMeasureText", "get 'fontStyle' error.");
-          continue;
-          locala.kC(2);
-          continue;
-          locala.kC(0);
-          continue;
-          int i = j;
-          if (paramJSONObject.equals("bold"))
-          {
-            i = 0;
-            continue;
-            i = j;
-            if (paramJSONObject.equals("normal"))
-            {
-              i = 1;
-              continue;
-              locala.setFakeBoldText(true);
-            }
-          }
-        }
-      }
-      try
-      {
-        paramJSONObject = paramJSONObject.getString("fontWeight");
-        i = paramJSONObject.hashCode();
-        switch (i)
-        {
-        default: 
-          i = j;
-          switch (i)
-          {
-          }
-          break;
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        y.i("MicroMsg.JsApiMeasureText", "get 'fontWeight' error.");
-        break label268;
-        locala.setFakeBoldText(false);
-        break label268;
-      }
-      f2 = locala.measureText(paramc);
-      paramc = locala.getFontMetrics();
-      f1 = Math.abs(paramc.bottom - paramc.top);
-      y.i("MicroMsg.JsApiMeasureText", "fontMetrics.bottom : %f, fontMetrics.top : %f, width : %f, height : %f", new Object[] { Float.valueOf(paramc.bottom), Float.valueOf(paramc.top), Float.valueOf(f2), Float.valueOf(f1) });
-      f2 = h.al(f2);
-      f1 = h.al(f1);
-      paramc = new HashMap();
-      paramc.put("width", Float.valueOf(f2));
-      paramc.put("height", Float.valueOf(f1));
-      y.i("MicroMsg.JsApiMeasureText", "map:%s", new Object[] { paramc.toString() });
-      return h("ok", paramc);
-    }
-    catch (JSONException localJSONException1)
-    {
-      for (;;)
-      {
-        y.i("MicroMsg.JsApiMeasureText", "get 'fontFamily' error");
-        continue;
-        if (localJSONException1.equals("oblique"))
-        {
-          i = 0;
-          continue;
-          if (localJSONException1.equals("italic"))
-          {
-            i = 1;
-            continue;
-            if (localJSONException1.equals("normal"))
-            {
-              i = 2;
-              continue;
-              locala.kC(2);
-            }
-          }
-        }
-      }
-    }
+    AppMethodBeat.i(134675);
+    hJI = new g.a((byte)0);
+    AppMethodBeat.o(134675);
+  }
+  
+  public g()
+  {
+    AppMethodBeat.i(134674);
+    this.hJG = new HashMap();
+    AppMethodBeat.o(134674);
+  }
+  
+  public final boolean aCb()
+  {
+    return true;
+  }
+  
+  public final boolean aCc()
+  {
+    return this.hJH;
+  }
+  
+  public final boolean aCd()
+  {
+    return this.hJH;
+  }
+  
+  public final int w(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(134672);
+    j.q(paramJSONObject, "data");
+    int i = paramJSONObject.getInt("canvasId");
+    AppMethodBeat.o(134672);
+    return i;
   }
 }
 

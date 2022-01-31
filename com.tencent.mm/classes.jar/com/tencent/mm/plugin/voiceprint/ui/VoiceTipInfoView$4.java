@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoiceTipInfoView$4
   implements a.a
 {
   VoiceTipInfoView$4(VoiceTipInfoView paramVoiceTipInfoView) {}
   
-  public final void bPi() {}
+  public final void cLo() {}
   
-  public final void bPj()
+  public final void cLp()
   {
-    VoiceTipInfoView.c(this.pMZ).setVisibility(0);
-    VoiceTipInfoView.d(this.pMZ);
+    AppMethodBeat.i(26225);
+    VoiceTipInfoView.c(this.tsT).setVisibility(0);
+    VoiceTipInfoView.d(this.tsT);
+    AppMethodBeat.o(26225);
   }
 }
 

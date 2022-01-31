@@ -1,41 +1,42 @@
 package com.tencent.magicbrush.engine;
 
 import android.support.annotation.Keep;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class JsInspector
 {
-  private static JsInspector.a bkw;
+  private static JsInspector.a bJv;
   
   static native int JniNotify(long paramLong1, long paramLong2, String paramString);
   
   static native void JniReceiveData(long paramLong, String paramString);
   
-  public static void a(JsInspector.a parama)
-  {
-    bkw = parama;
-  }
-  
-  public static void b(long paramLong, String paramString)
-  {
-    JniReceiveData(paramLong, paramString);
-  }
-  
   @Keep
   public static int jniCallbackNotify(long paramLong1, long paramLong2, String paramString)
   {
-    if (bkw == null) {
+    AppMethodBeat.i(115883);
+    if (bJv == null)
+    {
+      AppMethodBeat.o(115883);
       return -1;
     }
-    return 0;
+    int i = bJv.yr();
+    AppMethodBeat.o(115883);
+    return i;
   }
   
   @Keep
   public static int jniCallbackSendData(long paramLong, String paramString)
   {
-    if (bkw == null) {
+    AppMethodBeat.i(115882);
+    if (bJv == null)
+    {
+      AppMethodBeat.o(115882);
       return -1;
     }
-    return bkw.c(paramLong, paramString);
+    int i = bJv.yq();
+    AppMethodBeat.o(115882);
+    return i;
   }
 }
 

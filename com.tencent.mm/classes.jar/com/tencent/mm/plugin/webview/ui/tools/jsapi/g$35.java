@@ -1,28 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.model.gdpr.b;
-import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class g$35
-  implements b
+  implements Runnable
 {
-  g$35(g paramg, i parami, JsapiPermissionWrapper paramJsapiPermissionWrapper) {}
+  g$35(g paramg, Intent paramIntent) {}
   
-  public final void hX(int paramInt)
+  public final void run()
   {
-    if (paramInt == 0)
-    {
-      g.ea(this.rzi, this.rzk);
-      return;
-    }
-    y.i("MicroMsg.MsgHandler", "EU user failed");
-    g.a(this.rzi, this.rzk, "add_contact:fail  EU user failed", null);
+    AppMethodBeat.i(9086);
+    d.b(g.j(this.vqm), "webview", ".ui.tools.game.GameWebViewUI", this.val$intent);
+    AppMethodBeat.o(9086);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.35
  * JD-Core Version:    0.7.0.1
  */

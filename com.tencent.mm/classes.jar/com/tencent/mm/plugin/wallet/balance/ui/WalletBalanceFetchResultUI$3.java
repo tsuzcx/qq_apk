@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.wallet.balance.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.c;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class WalletBalanceFetchResultUI$3
   implements DialogInterface.OnClickListener
@@ -12,7 +12,9 @@ final class WalletBalanceFetchResultUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.qgq.cNj().a(this.qgq, 0, this.qgq.BX);
+    AppMethodBeat.i(45349);
+    this.tNF.getProcess().a(this.tNF, 0, this.tNF.getInput());
+    AppMethodBeat.o(45349);
   }
 }
 

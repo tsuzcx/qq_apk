@@ -1,14 +1,24 @@
 package com.tencent.mm.ui.conversation;
 
-import com.tencent.mm.h.a.z;
-import com.tencent.mm.sdk.b.c;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$2
-  extends c<z>
+  implements View.OnTouchListener
 {
-  h$2(h paramh)
+  h$2(h paramh) {}
+  
+  @TargetApi(21)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.udX = z.class.getName().hashCode();
+    AppMethodBeat.i(153998);
+    paramView.findViewById(2131823252).getBackground().setHotspot(paramMotionEvent.getX(), paramMotionEvent.getY());
+    AppMethodBeat.o(153998);
+    return false;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.nearby.ui;
 
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMSlideDelView.c;
 
 final class NearbySayHiListUI$7
@@ -9,9 +10,12 @@ final class NearbySayHiListUI$7
 {
   NearbySayHiListUI$7(NearbySayHiListUI paramNearbySayHiListUI) {}
   
-  public final int cA(View paramView)
+  public final int dc(View paramView)
   {
-    return NearbySayHiListUI.d(this.mDP).getPositionForView(paramView);
+    AppMethodBeat.i(55501);
+    int i = NearbySayHiListUI.d(this.pdR).getPositionForView(paramView);
+    AppMethodBeat.o(55501);
+    return i;
   }
 }
 

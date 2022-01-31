@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.emoji.model.i;
-import com.tencent.mm.plugin.emoji.sync.BKGLoaderManager;
-import com.tencent.mm.plugin.emoji.sync.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.sync.EmojiSyncManager;
 
 final class EmojiCustomUI$1
   implements View.OnClickListener
@@ -13,15 +12,19 @@ final class EmojiCustomUI$1
   
   public final void onClick(View paramView)
   {
-    switch (EmojiCustomUI.11.jcV[EmojiCustomUI.a(this.jcS).ordinal()])
+    AppMethodBeat.i(53299);
+    switch (EmojiCustomUI.11.llI[EmojiCustomUI.a(this.llF).ordinal()])
     {
-    default: 
-      return;
-    case 2: 
-      EmojiCustomUI.b(this.jcS);
-      return;
     }
-    i.aHQ().jan.aIo();
+    for (;;)
+    {
+      AppMethodBeat.o(53299);
+      return;
+      EmojiCustomUI.b(this.llF);
+      AppMethodBeat.o(53299);
+      return;
+      EmojiCustomUI.c(this.llF).stop();
+    }
   }
 }
 

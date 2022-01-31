@@ -4,13 +4,6 @@ final class e$1
   implements c.a
 {
   e$1(e parame, int paramInt) {}
-  
-  public final void bOS()
-  {
-    if (this.pKr.pKq != null) {
-      e.a locala = this.pKr.pKq;
-    }
-  }
 }
 
 

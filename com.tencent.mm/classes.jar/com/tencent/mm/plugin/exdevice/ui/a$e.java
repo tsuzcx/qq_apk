@@ -7,16 +7,16 @@ import com.tencent.mm.ui.base.NoMeasuredTextView;
 
 final class a$e
 {
-  ImageView iIS;
-  View jDU;
-  NoMeasuredTextView jDY;
-  TextView jDZ;
+  ImageView kPy;
+  View lNs;
+  NoMeasuredTextView lNw;
+  TextView lNx;
   
   a$e(a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.a.e
  * JD-Core Version:    0.7.0.1
  */

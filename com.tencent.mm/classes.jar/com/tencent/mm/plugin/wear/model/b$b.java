@@ -1,26 +1,29 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.wear.model.d.a;
 import com.tencent.mm.plugin.wear.model.f.d;
-import com.tencent.mm.protocal.c.cjl;
+import com.tencent.mm.protocal.protobuf.cwy;
 
 final class b$b
   extends d
 {
-  private cjl qRI;
+  private cwy uGQ;
   
-  public b$b(b paramb, cjl paramcjl)
+  public b$b(b paramb, cwy paramcwy)
   {
-    this.qRI = paramcjl;
+    this.uGQ = paramcwy;
   }
   
   public final void execute()
   {
-    au.Dk().a(1091, this.qRH);
-    a locala = new a(this.qRI.tXi, "gh_43f2581f6fd6");
-    au.Dk().a(locala, 0);
+    AppMethodBeat.i(26279);
+    aw.Rc().a(1091, this.uGP);
+    a locala = new a(this.uGQ.yeC, "gh_43f2581f6fd6");
+    aw.Rc().a(locala, 0);
+    AppMethodBeat.o(26279);
   }
   
   public final String getName()

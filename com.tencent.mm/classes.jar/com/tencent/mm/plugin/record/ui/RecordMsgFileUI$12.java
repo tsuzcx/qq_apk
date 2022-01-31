@@ -2,77 +2,85 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.util.Base64;
 import android.widget.ImageView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.plugin.record.b.l;
 import com.tencent.mm.plugin.sight.base.d;
-import com.tencent.mm.pluginsdk.ui.tools.f.a;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.pluginsdk.ui.tools.e.a;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.k;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import java.io.File;
 
 final class RecordMsgFileUI$12
-  implements f.a
+  implements e.a
 {
   RecordMsgFileUI$12(RecordMsgFileUI paramRecordMsgFileUI) {}
   
-  public final int cv(int paramInt1, int paramInt2)
+  public final void Es() {}
+  
+  public final int dP(int paramInt1, int paramInt2)
   {
     return 0;
   }
   
-  public final void cw(int paramInt1, int paramInt2) {}
+  public final void dQ(int paramInt1, int paramInt2) {}
   
-  public final void kA()
+  public final void mG()
   {
-    y.d("MicroMsg.RecordMsgFileUI", g.zH() + " onPrepared");
-    RecordMsgFileUI.i(this.nue).setLoop(true);
-    RecordMsgFileUI.i(this.nue).start();
+    AppMethodBeat.i(24267);
+    ab.d("MicroMsg.RecordMsgFileUI", g.Mk() + " onPrepared");
+    RecordMsgFileUI.i(this.pZN).setLoop(true);
+    RecordMsgFileUI.i(this.pZN).start();
+    AppMethodBeat.o(24267);
   }
   
   public final void onError(int paramInt1, int paramInt2)
   {
-    RecordMsgFileUI.i(this.nue).stop();
-    if (RecordMsgFileUI.j(this.nue)) {
+    AppMethodBeat.i(24268);
+    RecordMsgFileUI.i(this.pZN).stop();
+    if (RecordMsgFileUI.j(this.pZN))
+    {
+      AppMethodBeat.o(24268);
       return;
     }
-    RecordMsgFileUI.k(this.nue);
-    final Bitmap localBitmap = RecordMsgFileUI.l(this.nue).b(RecordMsgFileUI.a(this.nue), RecordMsgFileUI.b(this.nue));
-    final String str = RecordMsgFileUI.i(this.nue).getVideoPath();
-    b.t(Base64.encodeToString((d.bAW() + "[RecordMsgFileUI] on play sight error, what=" + paramInt1 + ", extra=" + paramInt2 + ", path=" + bk.aM(str, "")).getBytes(), 2), "FullScreenPlaySight");
-    ai.d(new Runnable()
+    RecordMsgFileUI.k(this.pZN);
+    final Bitmap localBitmap = RecordMsgFileUI.l(this.pZN).b(RecordMsgFileUI.a(this.pZN), RecordMsgFileUI.b(this.pZN));
+    final String str = RecordMsgFileUI.i(this.pZN).getVideoPath();
+    b.G(Base64.encodeToString((d.cmw() + "[RecordMsgFileUI] on play sight error, what=" + paramInt1 + ", extra=" + paramInt2 + ", path=" + bo.bf(str, "")).getBytes(), 2), "FullScreenPlaySight");
+    al.d(new Runnable()
     {
       public final void run()
       {
-        Object localObject = (ImageView)RecordMsgFileUI.12.this.nue.findViewById(R.h.videoplayer_maskview);
+        AppMethodBeat.i(24266);
+        Object localObject = (ImageView)RecordMsgFileUI.12.this.pZN.findViewById(2131824109);
         ((ImageView)localObject).setImageBitmap(localBitmap);
         ((ImageView)localObject).setVisibility(0);
         localObject = new Intent();
         ((Intent)localObject).setAction("android.intent.action.VIEW");
-        ((Intent)localObject).setDataAndType(Uri.fromFile(new File(str)), "video/*");
+        k.a(RecordMsgFileUI.12.this.pZN.getContext(), (Intent)localObject, new File(str), "video/*");
         try
         {
-          RecordMsgFileUI.12.this.nue.startActivity(Intent.createChooser((Intent)localObject, RecordMsgFileUI.12.this.nue.getString(R.l.favorite_video)));
+          RecordMsgFileUI.12.this.pZN.startActivity(Intent.createChooser((Intent)localObject, RecordMsgFileUI.12.this.pZN.getString(2131299853)));
+          AppMethodBeat.o(24266);
           return;
         }
         catch (Exception localException)
         {
-          y.e("MicroMsg.RecordMsgFileUI", "startActivity fail, activity not found");
-          h.h(RecordMsgFileUI.12.this.nue.mController.uMN, R.l.favorite_no_match_msg, R.l.favorite_no_match_title);
+          ab.e("MicroMsg.RecordMsgFileUI", "startActivity fail, activity not found");
+          h.h(RecordMsgFileUI.12.this.pZN.getContext(), 2131299759, 2131299760);
+          AppMethodBeat.o(24266);
         }
       }
     });
+    AppMethodBeat.o(24268);
   }
-  
-  public final void ug() {}
 }
 
 

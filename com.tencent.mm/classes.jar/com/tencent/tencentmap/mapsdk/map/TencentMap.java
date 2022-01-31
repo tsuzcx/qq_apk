@@ -19,7 +19,7 @@ public abstract interface TencentMap
   @Deprecated
   public static final int MAP_STYLE_ID_NIGHT = 8;
   public static final int MAP_STYLE_ID_NORMAL = 0;
-  public static final String VERSION = "1.0.6";
+  public static final String VERSION = "1.1.3";
   
   public abstract Circle addCircle(CircleOptions paramCircleOptions);
   
@@ -42,6 +42,10 @@ public abstract interface TencentMap
   public abstract String getActivedIndoorBuilding(LatLng paramLatLng);
   
   public abstract String[] getActivedIndoorFloorNames();
+  
+  public abstract CameraPosition getCameraPosition();
+  
+  public abstract String getDebugError();
   
   public abstract int getIndoorFloorId();
   
@@ -109,7 +113,7 @@ public abstract interface TencentMap
   
   public abstract void setOnMapPoiClickListener(TencentMap.OnMapPoiClickListener paramOnMapPoiClickListener);
   
-  public abstract void setOnMarkerClickListener(TencentMap.OnMarkerClickListener paramOnMarkerClickListener);
+  public abstract void setOnMarkerClickListener(OnMarkerClickListener paramOnMarkerClickListener);
   
   public abstract void setOnMarkerDraggedListener(TencentMap.OnMarkerDraggedListener paramOnMarkerDraggedListener);
   
@@ -144,10 +148,15 @@ public abstract interface TencentMap
   {
     public abstract void onMapLongClick(LatLng paramLatLng);
   }
+  
+  public static abstract interface OnMarkerClickListener
+  {
+    public abstract boolean onMarkerClick(Marker paramMarker);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.map.TencentMap
  * JD-Core Version:    0.7.0.1
  */

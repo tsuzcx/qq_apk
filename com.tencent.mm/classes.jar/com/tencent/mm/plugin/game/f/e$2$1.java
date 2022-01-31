@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.f;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$2$1
   implements Runnable
@@ -10,9 +11,11 @@ final class e$2$1
   
   public final void run()
   {
-    if (this.lgt.bid != null) {
-      this.lgt.bid.setImageBitmap(this.lgs);
+    AppMethodBeat.i(112327);
+    if (this.nEo.mPw != null) {
+      this.nEo.mPw.setImageBitmap(this.nEn);
     }
+    AppMethodBeat.o(112327);
   }
 }
 

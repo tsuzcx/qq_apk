@@ -9,13 +9,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.contact.a.a.a;
 
 public final class c$b
@@ -26,92 +22,96 @@ public final class c$b
     super(paramc);
   }
   
-  public final boolean VB()
-  {
-    return false;
-  }
-  
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    if (com.tencent.mm.cb.a.fh(paramContext)) {}
-    for (paramViewGroup = LayoutInflater.from(paramContext).inflate(a.g.select_ui_listcontactitem_large, paramViewGroup, false);; paramViewGroup = LayoutInflater.from(paramContext).inflate(a.g.select_ui_listcontactitem, paramViewGroup, false))
+    AppMethodBeat.i(40743);
+    if (com.tencent.mm.cb.a.gt(paramContext)) {}
+    for (paramViewGroup = LayoutInflater.from(paramContext).inflate(2130970665, paramViewGroup, false);; paramViewGroup = LayoutInflater.from(paramContext).inflate(2130970664, paramViewGroup, false))
     {
-      c.a locala = (c.a)this.eXR.eXN;
-      locala.doU = ((ImageView)paramViewGroup.findViewById(a.f.avatar_iv));
-      locala.eXO = ((TextView)paramViewGroup.findViewById(a.f.title_tv));
-      locala.eXP = ((TextView)paramViewGroup.findViewById(a.f.desc_tv));
-      locala.contentView = paramViewGroup.findViewById(a.f.select_item_content_layout);
-      locala.eXQ = ((CheckBox)paramViewGroup.findViewById(a.f.select_cb));
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)locala.eXQ.getLayoutParams();
-      localLayoutParams.leftMargin = paramContext.getResources().getDimensionPixelSize(a.d.aa_select_contact_cb_left_margin);
-      localLayoutParams.rightMargin = paramContext.getResources().getDimensionPixelSize(a.d.aa_select_contact_cb_right_margin);
-      locala.eXQ.setLayoutParams(localLayoutParams);
+      c.a locala = (c.a)this.gpO.gpK;
+      locala.egq = ((ImageView)paramViewGroup.findViewById(2131821210));
+      locala.gpL = ((TextView)paramViewGroup.findViewById(2131821212));
+      locala.gpM = ((TextView)paramViewGroup.findViewById(2131821007));
+      locala.contentView = paramViewGroup.findViewById(2131826406);
+      locala.gpN = ((CheckBox)paramViewGroup.findViewById(2131821631));
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)locala.gpN.getLayoutParams();
+      localLayoutParams.leftMargin = paramContext.getResources().getDimensionPixelSize(2131427914);
+      localLayoutParams.rightMargin = paramContext.getResources().getDimensionPixelSize(2131427915);
+      locala.gpN.setLayoutParams(localLayoutParams);
       paramViewGroup.setTag(locala);
+      AppMethodBeat.o(40743);
       return paramViewGroup;
     }
   }
   
   public final void a(Context paramContext, a.a parama, com.tencent.mm.ui.contact.a.a parama1, boolean paramBoolean1, boolean paramBoolean2)
   {
+    AppMethodBeat.i(40744);
     parama = (c.a)parama;
     parama1 = (c)parama1;
     if ((parama1.username != null) && (parama1.username.length() > 0))
     {
-      com.tencent.mm.pluginsdk.ui.a.b.a(parama.doU, parama1.username);
-      if (bk.L(parama1.eXK)) {
-        break label202;
+      com.tencent.mm.pluginsdk.ui.a.b.a(parama.egq, parama1.username, 0.1F, false);
+      if (bo.aa(parama1.gpH)) {
+        break label212;
       }
-      parama.eXO.setText(parama1.eXK);
-      parama.eXO.setVisibility(0);
-      label67:
-      if (bk.L(parama1.eXL)) {
-        break label214;
+      parama.gpL.setText(parama1.gpH);
+      parama.gpL.setVisibility(0);
+      label75:
+      if (bo.aa(parama1.gpI)) {
+        break label224;
       }
-      parama.eXP.setText(parama1.eXL);
-      parama.eXP.setVisibility(0);
-      label96:
-      if (!this.eXR.vLJ) {
-        break label246;
+      parama.gpM.setText(parama1.gpI);
+      parama.gpM.setVisibility(0);
+      label104:
+      if (!this.gpO.Adl) {
+        break label256;
       }
       if (!paramBoolean1) {
-        break label226;
+        break label236;
       }
-      parama.eXQ.setChecked(true);
-      parama.eXQ.setEnabled(false);
-      label127:
-      parama.eXQ.setVisibility(0);
+      parama.gpN.setChecked(true);
+      parama.gpN.setEnabled(false);
       label135:
-      if (!this.eXR.icY) {
-        break label258;
+      parama.gpN.setVisibility(0);
+      label143:
+      if (!this.gpO.jTN) {
+        break label268;
       }
-      parama.contentView.setBackgroundResource(a.e.comm_list_item_selector_no_divider);
+      parama.contentView.setBackgroundResource(2130838447);
     }
     for (;;)
     {
-      if (parama1.dnp.field_deleteFlag == 1)
+      if (parama1.contact.field_deleteFlag == 1)
       {
-        parama.eXP.setVisibility(0);
-        parama.eXP.setText(paramContext.getString(a.i.aa_address_account_deleted));
+        parama.gpM.setVisibility(0);
+        parama.gpM.setText(paramContext.getString(2131296340));
       }
+      AppMethodBeat.o(40744);
       return;
-      parama.doU.setImageResource(a.e.default_avatar);
+      parama.egq.setImageResource(2130838493);
       break;
-      label202:
-      parama.eXO.setVisibility(8);
-      break label67;
-      label214:
-      parama.eXP.setVisibility(8);
-      break label96;
-      label226:
-      parama.eXQ.setChecked(paramBoolean2);
-      parama.eXQ.setEnabled(true);
-      break label127;
-      label246:
-      parama.eXQ.setVisibility(8);
+      label212:
+      parama.gpL.setVisibility(8);
+      break label75;
+      label224:
+      parama.gpM.setVisibility(8);
+      break label104;
+      label236:
+      parama.gpN.setChecked(paramBoolean2);
+      parama.gpN.setEnabled(true);
       break label135;
-      label258:
-      parama.contentView.setBackgroundResource(a.e.comm_list_item_selector);
+      label256:
+      parama.gpN.setVisibility(8);
+      break label143;
+      label268:
+      parama.contentView.setBackgroundResource(2130838445);
     }
+  }
+  
+  public final boolean aoZ()
+  {
+    return false;
   }
 }
 

@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.product.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.p;
+import com.tencent.xweb.w;
 
 final class HtmlTextView2$2
-  extends p
+  extends w
 {
   HtmlTextView2$2(HtmlTextView2 paramHtmlTextView2) {}
   
-  public final boolean b(WebView paramWebView, String paramString)
+  public final boolean a(WebView paramWebView, String paramString)
   {
-    y.d("test", paramString);
+    AppMethodBeat.i(44021);
+    ab.d("test", paramString);
+    AppMethodBeat.o(44021);
     return true;
   }
 }

@@ -5,12 +5,12 @@ public final class c$ln
 {
   public c$ln()
   {
-    super("uploadIdCardSuccess", "uploadIdCardSuccess", 233, false);
+    super("videoProxyStopPlay", "videoProxyStopPlay", 158, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ln
  * JD-Core Version:    0.7.0.1
  */

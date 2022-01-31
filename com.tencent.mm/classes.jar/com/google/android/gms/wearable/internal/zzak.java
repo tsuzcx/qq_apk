@@ -1,62 +1,19 @@
 package com.google.android.gms.wearable.internal;
 
-import com.google.android.gms.wearable.DataItemAsset;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.wearable.ChannelApi.OpenChannelResult;
 
-public class zzak
-  implements DataItemAsset
+final class zzak
+  extends zzn<ChannelApi.OpenChannelResult>
 {
-  private final String zzAX;
-  private final String zzGV;
-  
-  public zzak(DataItemAsset paramDataItemAsset)
+  zzak(zzaj paramzzaj, GoogleApiClient paramGoogleApiClient, String paramString1, String paramString2)
   {
-    this.zzGV = paramDataItemAsset.getId();
-    this.zzAX = paramDataItemAsset.getDataItemKey();
-  }
-  
-  public String getDataItemKey()
-  {
-    return this.zzAX;
-  }
-  
-  public String getId()
-  {
-    return this.zzGV;
-  }
-  
-  public boolean isDataValid()
-  {
-    return true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("DataItemAssetEntity[");
-    localStringBuilder.append("@");
-    localStringBuilder.append(Integer.toHexString(hashCode()));
-    if (this.zzGV == null) {
-      localStringBuilder.append(",noid");
-    }
-    for (;;)
-    {
-      localStringBuilder.append(", key=");
-      localStringBuilder.append(this.zzAX);
-      localStringBuilder.append("]");
-      return localStringBuilder.toString();
-      localStringBuilder.append(",");
-      localStringBuilder.append(this.zzGV);
-    }
-  }
-  
-  public DataItemAsset zzUv()
-  {
-    return this;
+    super(paramGoogleApiClient);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzak
  * JD-Core Version:    0.7.0.1
  */

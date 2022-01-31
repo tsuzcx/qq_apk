@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsUploadConfigView$10
   implements View.OnClickListener
@@ -10,15 +11,17 @@ final class SnsUploadConfigView$10
   
   public final void onClick(View paramView)
   {
-    paramView = this.piZ;
-    if (SnsUploadConfigView.i(this.piZ)) {}
+    AppMethodBeat.i(39697);
+    paramView = this.sbB;
+    if (SnsUploadConfigView.i(this.sbB)) {}
     for (boolean bool = false;; bool = true)
     {
       SnsUploadConfigView.d(paramView, bool);
-      if (SnsUploadConfigView.i(this.piZ)) {
-        SnsUploadConfigView.g(this.piZ);
+      if (SnsUploadConfigView.i(this.sbB)) {
+        SnsUploadConfigView.g(this.sbB);
       }
-      SnsUploadConfigView.j(this.piZ);
+      SnsUploadConfigView.j(this.sbB);
+      AppMethodBeat.o(39697);
       return;
     }
   }

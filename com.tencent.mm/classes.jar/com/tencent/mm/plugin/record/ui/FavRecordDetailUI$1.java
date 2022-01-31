@@ -1,36 +1,47 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class FavRecordDetailUI$1
-  implements j.a
+  implements k.a
 {
   FavRecordDetailUI$1(FavRecordDetailUI paramFavRecordDetailUI) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    if (paraml == null) {}
-    do
+    AppMethodBeat.i(24202);
+    if (paramm == null)
     {
-      long l;
-      do
+      AppMethodBeat.o(24202);
+      return;
+    }
+    if (paramm.obj == null)
+    {
+      AppMethodBeat.o(24202);
+      return;
+    }
+    long l = ((Long)paramm.obj).longValue();
+    if (l < 0L)
+    {
+      AppMethodBeat.o(24202);
+      return;
+    }
+    if (FavRecordDetailUI.a(this.pZl) == l)
+    {
+      paramString = com.tencent.mm.plugin.record.b.g.kY(FavRecordDetailUI.a(this.pZl));
+      paramm = new b();
+      paramm.mCk = paramString;
+      if ((paramString != null) && (paramString.field_favProto != null))
       {
-        do
-        {
-          return;
-        } while (paraml.obj == null);
-        l = ((Long)paraml.obj).longValue();
-      } while ((l < 0L) || (FavRecordDetailUI.a(this.ntD) != l));
-      paramString = com.tencent.mm.plugin.record.b.b.fu(FavRecordDetailUI.a(this.ntD));
-      paraml = new b();
-      paraml.khA = paramString;
-    } while ((paramString == null) || (paramString.field_favProto == null));
-    paraml.ntu = paramString.field_favProto.sXc;
-    ai.d(new FavRecordDetailUI.1.1(this, paraml));
+        paramm.pZa = paramString.field_favProto.wVc;
+        al.d(new FavRecordDetailUI.1.1(this, paramm));
+      }
+    }
+    AppMethodBeat.o(24202);
   }
 }
 

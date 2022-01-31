@@ -1,154 +1,112 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.content.Context;
-import com.tencent.map.lib.f;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.map.lib.util.StringUtil;
 
-public class q
+public abstract class q
 {
-  public static int a = 1000;
-  private volatile List<p> b;
-  private s c;
-  private int d = -1;
+  protected SharedPreferences a = null;
   
-  public q(Context paramContext, String paramString)
+  public String a(String paramString)
   {
-    if (paramString == null) {}
-    for (this.c = w.a(paramContext);; this.c = u.a(paramContext, paramString))
-    {
-      b();
-      return;
-    }
-  }
-  
-  private List<p> b(JSONArray paramJSONArray)
-  {
-    if (paramJSONArray == null) {
+    if (this.a == null) {
       return null;
     }
-    int j = paramJSONArray.length();
-    ArrayList localArrayList = new ArrayList(j);
+    return this.a.getString(paramString, null);
+  }
+  
+  public boolean a()
+  {
+    return a(new String[] { "mapConfigVersion", "poiIconVersion", "mapIconVersion", "rttConfigVersion", "mapConfigIndoorVersion", "mapPoiIconIndoorVersion", "closeRoadSytleNomalModeVersion", "closeRoadStyleTrafficModeVersion", "offlineCityListVersion", "mapConfigZipMd5", "mapPoiIconZipMd5", "mapIconZipMd5", "rttConfigMd5", "mapConfigIndoorMd5", "poiIconIndoorMd5", "closeRoadSytleNomalModeMd5", "closeRoadStyleTrafficModeMd5", "offlineCityListMd5" });
+  }
+  
+  public boolean a(String paramString, int paramInt)
+  {
+    if (this.a == null) {
+      return false;
+    }
+    return this.a.edit().putInt(paramString, paramInt).commit();
+  }
+  
+  public boolean a(String paramString, long paramLong)
+  {
+    if (this.a == null) {
+      return false;
+    }
+    return this.a.edit().putLong(paramString, paramLong).commit();
+  }
+  
+  public boolean a(String paramString1, String paramString2)
+  {
+    if (this.a == null) {
+      return false;
+    }
+    return this.a.edit().putString(paramString1, paramString2).commit();
+  }
+  
+  public boolean a(String paramString, boolean paramBoolean)
+  {
+    if (this.a == null) {
+      return false;
+    }
+    return this.a.edit().putBoolean(paramString, paramBoolean).commit();
+  }
+  
+  public boolean a(String[] paramArrayOfString)
+  {
     int i = 0;
-    for (;;)
-    {
-      if (i < j) {}
-      try
-      {
-        JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-        localArrayList.add(new p(localJSONObject.getInt("index"), localJSONObject.getInt("id"), localJSONObject.getInt("order")));
-        i += 1;
-      }
-      catch (Exception paramJSONArray) {}
+    if (this.a == null) {
+      return false;
     }
-    Collections.sort(localArrayList);
-    return localArrayList;
-    return null;
+    SharedPreferences.Editor localEditor = this.a.edit();
+    int j = paramArrayOfString.length;
+    while (i < j)
+    {
+      localEditor.remove(paramArrayOfString[i]);
+      i += 1;
+    }
+    return localEditor.commit();
   }
   
-  private void b()
+  public int b(String paramString)
   {
-    this.b = new CopyOnWriteArrayList();
-    String str = this.c.a("mapStyleList");
-    Object localObject = str;
-    if (str == null) {
-      localObject = "[{\"id\":0,\"index\":0,\"order\":1},{\"id\":-1,\"index\":1,\"order\":-1},{\"id\":-1,\"index\":2,\"order\":-1},{\"id\":-1,\"index\":3,\"order\":-1},{\"id\":-1,\"index\":4,\"order\":-1},{\"id\":-1,\"index\":5,\"order\":-1},{\"id\":-1,\"index\":6,\"order\":-1},{\"id\":-1,\"index\":7,\"order\":-1},{\"id\":-1,\"index\":8,\"order\":-1},{\"id\":9,\"index\":9,\"order\":-1},{\"id\":10,\"index\":10,\"order\":-1},{\"id\":5,\"index\":11,\"order\":-1},{\"id\":4,\"index\":12,\"order\":-1},{\"id\":6,\"index\":13,\"order\":-1},{\"id\":7,\"index\":14,\"order\":-1},{\"id\":8,\"index\":15,\"order\":-1}]";
+    if (this.a == null) {
+      return -1;
     }
-    try
-    {
-      localObject = new JSONArray((String)localObject);
-      this.b.addAll(b((JSONArray)localObject));
-      return;
-    }
-    catch (Exception localException) {}
+    return this.a.getInt(paramString, -1);
   }
   
-  public int a(int paramInt)
+  public String b()
   {
-    if ((this.b == null) || (this.b.size() == 0) || (paramInt < 0)) {}
-    p localp;
-    do
+    int i = b("mapConfigVersion");
+    String str3 = a("mapConfigZipMd5");
+    String str1 = String.valueOf(b("mapConfigIndoorPremiumVersion"));
+    Object localObject2 = a("mapConfigIndoorPremiumMd5");
+    int j = b("mapConfigIndoorVersion");
+    Object localObject1 = a("mapConfigIndoorMd5");
+    if (!StringUtil.isEmpty((String)localObject2)) {}
+    String str2;
+    for (localObject1 = "indoormap_config_premium";; localObject1 = str2)
     {
-      Iterator localIterator;
-      while (!localIterator.hasNext())
-      {
-        return paramInt;
-        this.d = paramInt;
-        if (paramInt >= a) {
-          return paramInt - a;
-        }
-        localIterator = this.b.iterator();
-      }
-      localp = (p)localIterator.next();
-    } while (localp.c != paramInt);
-    return localp.a;
-  }
-  
-  public String a()
-  {
-    if (this.b == null) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      p localp = (p)localIterator.next();
-      if (localp.b != -1)
-      {
-        if (localStringBuilder.length() == 0)
-        {
-          localStringBuilder.append(localp.b);
-        }
-        else
-        {
-          localStringBuilder.append(",");
-          localStringBuilder.append(localp.b);
-        }
-      }
-      else if (localStringBuilder.length() == 0) {
-        localStringBuilder.append(0);
-      } else {
-        localStringBuilder.append(",");
-      }
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public void a(f paramf)
-  {
-    if (paramf != null) {
-      paramf.a(a(this.d));
+      return String.format("mapconfig-%s-%s,%s-%s-%s", new Object[] { String.valueOf(i), str3, localObject1, str1, localObject2 });
+      str2 = "indoormap_config";
+      localObject2 = localObject1;
+      str1 = String.valueOf(j);
     }
   }
   
-  public void a(JSONArray paramJSONArray)
+  public boolean c(String paramString)
   {
-    String str = this.c.a("mapStyleList");
-    if (paramJSONArray != null)
-    {
-      List localList = b(paramJSONArray);
-      if (localList != null)
-      {
-        this.b.clear();
-        this.b.addAll(localList);
-        if (!paramJSONArray.toString().equals(str))
-        {
-          this.c.a();
-          this.c.a("mapStyleList", paramJSONArray.toString());
-        }
-      }
+    if (this.a == null) {
+      return false;
     }
+    return this.a.getBoolean(paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.q
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ public abstract class b
 {
   private final String name;
   
-  public b(String paramString)
+  protected b(String paramString)
   {
     super(new h[2], new i[2]);
     this.name = paramString;
-    if (this.ayL == this.ayJ.length) {}
+    if (this.aBa == this.aAY.length) {}
     for (boolean bool = true;; bool = false)
     {
-      com.google.android.exoplayer2.i.a.aC(bool);
-      paramString = this.ayJ;
+      com.google.android.exoplayer2.i.a.checkState(bool);
+      paramString = this.aAY;
       int j = paramString.length;
       while (i < j)
       {
-        paramString[i].cI(1024);
+        paramString[i].dd(1024);
         i += 1;
       }
     }
@@ -31,9 +31,9 @@ public abstract class b
   {
     try
     {
-      Object localObject = paramh.ayD;
-      localObject = b(((ByteBuffer)localObject).array(), ((ByteBuffer)localObject).limit(), paramBoolean);
-      parami.a(paramh.ayE, (d)localObject, paramh.auG);
+      Object localObject = paramh.aAS;
+      localObject = c(((ByteBuffer)localObject).array(), ((ByteBuffer)localObject).limit(), paramBoolean);
+      parami.a(paramh.aAT, (d)localObject, paramh.awY);
       parami.flags &= 0x7FFFFFFF;
       return null;
     }
@@ -41,18 +41,18 @@ public abstract class b
     return paramh;
   }
   
-  public final void R(long paramLong) {}
-  
   protected final void a(i parami)
   {
     super.a(parami);
   }
   
-  public abstract d b(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
+  public final void aa(long paramLong) {}
+  
+  protected abstract d c(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b
  * JD-Core Version:    0.7.0.1
  */

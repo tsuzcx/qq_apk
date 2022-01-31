@@ -1,73 +1,96 @@
 package com.tencent.mm.plugin.wallet.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class e
   extends com.tencent.mm.bv.a
 {
-  public String qkQ;
-  public String qkR;
-  public String qkS;
+  public String fjP;
+  public String name;
+  public String tTY;
+  public String url;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(56646);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.qkQ != null) {
-        paramVarArgs.d(1, this.qkQ);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.url != null) {
+        paramVarArgs.e(1, this.url);
       }
-      if (this.qkR != null) {
-        paramVarArgs.d(2, this.qkR);
+      if (this.name != null) {
+        paramVarArgs.e(2, this.name);
       }
-      if (this.qkS != null) {
-        paramVarArgs.d(3, this.qkS);
+      if (this.tTY != null) {
+        paramVarArgs.e(3, this.tTY);
       }
+      if (this.fjP != null) {
+        paramVarArgs.e(4, this.fjP);
+      }
+      AppMethodBeat.o(56646);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qkQ == null) {
-        break label289;
+      if (this.url == null) {
+        break label394;
       }
     }
-    label289:
-    for (int i = d.a.a.b.b.a.e(1, this.qkQ) + 0;; i = 0)
+    label394:
+    for (int i = e.a.a.b.b.a.f(1, this.url) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.qkR != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.qkR);
+      if (this.name != null) {
+        paramInt = i + e.a.a.b.b.a.f(2, this.name);
       }
       i = paramInt;
-      if (this.qkS != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.qkS);
+      if (this.tTY != null) {
+        i = paramInt + e.a.a.b.b.a.f(3, this.tTY);
       }
-      return i;
+      paramInt = i;
+      if (this.fjP != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.fjP);
+      }
+      AppMethodBeat.o(56646);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(56646);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         e locale = (e)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(56646);
           return -1;
         case 1: 
-          locale.qkQ = locala.xpH.readString();
+          locale.url = locala.CLY.readString();
+          AppMethodBeat.o(56646);
           return 0;
         case 2: 
-          locale.qkR = locala.xpH.readString();
+          locale.name = locala.CLY.readString();
+          AppMethodBeat.o(56646);
+          return 0;
+        case 3: 
+          locale.tTY = locala.CLY.readString();
+          AppMethodBeat.o(56646);
           return 0;
         }
-        locale.qkS = locala.xpH.readString();
+        locale.fjP = locala.CLY.readString();
+        AppMethodBeat.o(56646);
         return 0;
       }
+      AppMethodBeat.o(56646);
       return -1;
     }
   }

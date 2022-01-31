@@ -2,18 +2,17 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.plugin.game.d.ac;
-import com.tencent.mm.plugin.game.d.ar;
-import com.tencent.mm.plugin.game.d.bb;
-import com.tencent.mm.plugin.game.d.x;
-import com.tencent.mm.plugin.game.model.ae;
-import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.plugin.game.d.as;
+import com.tencent.mm.plugin.game.d.bc;
+import com.tencent.mm.plugin.game.d.y;
+import com.tencent.mm.plugin.game.model.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -24,79 +23,81 @@ final class GameIndexListView$2
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    y.i("MicroMsg.GameIndexListView", "doCgi, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    AppMethodBeat.i(111970);
+    ab.i("MicroMsg.GameIndexListView", "doCgi, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     boolean bool;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      GameIndexListView.a(this.lbU, (bb)paramb.ecF.ecN);
-      paramb = GameIndexListView.b(this.lbU);
-      bool = GameIndexListView.c(this.lbU);
-      if ((paramb != null) && (!bk.dk(paramb.kUA))) {
-        break label167;
+      GameIndexListView.a(this.nzP, (bc)paramb.fsW.fta);
+      paramb = GameIndexListView.b(this.nzP);
+      bool = GameIndexListView.c(this.nzP);
+      if ((paramb != null) && (!bo.es(paramb.nsC))) {
+        break label177;
       }
       paramString = null;
     }
     for (;;)
     {
-      GameIndexListView.d(this.lbU);
-      ae.a(GameIndexListView.b(this.lbU));
-      if (!GameIndexListView.b(this.lbU).kUC) {
-        this.lbU.dZ(false);
+      GameIndexListView.d(this.nzP);
+      com.tencent.mm.plugin.game.model.ad.a(GameIndexListView.b(this.nzP));
+      if (!GameIndexListView.b(this.nzP).nsE) {
+        this.nzP.fv(false);
       }
-      if (!bk.dk(paramString))
+      if (!bo.es(paramString))
       {
-        paramb = GameIndexListView.e(this.lbU);
-        paramb.lbV.addAll(paramString);
-        paramb.agL.notifyChanged();
+        paramb = GameIndexListView.e(this.nzP);
+        paramb.nzQ.addAll(paramString);
+        paramb.ajb.notifyChanged();
       }
+      AppMethodBeat.o(111970);
       return 0;
-      label167:
+      label177:
       paramString = new LinkedList();
-      if ((bool) && (!bk.bl(paramb.kSt)))
+      if ((bool) && (!bo.isNullOrNil(paramb.nqu)))
       {
-        paramm = new e();
+        paramm = new d();
         paramm.type = 2000;
-        paramm.kOt = paramb.kSt;
+        paramm.nmq = paramb.nqu;
         paramString.add(paramm);
       }
-      paramb = paramb.kUA.iterator();
+      paramb = paramb.nsC.iterator();
       while (paramb.hasNext())
       {
-        paramm = (ac)paramb.next();
+        paramm = (com.tencent.mm.plugin.game.d.ad)paramb.next();
         Object localObject;
-        if (paramm.kSx == 7)
+        if (paramm.nqy == 7)
         {
-          if ((paramm.kTo != null) && (!bk.dk(paramm.kTo.kSr)))
+          if ((paramm.nro != null) && (!bo.es(paramm.nro.nqs)))
           {
-            if (!bk.bl(paramm.kTo.bGw))
+            if (!bo.isNullOrNil(paramm.nro.Title))
             {
-              localObject = new e();
-              ((e)localObject).kOu = paramm;
-              ((e)localObject).type = 1000;
+              localObject = new d();
+              ((d)localObject).nmr = paramm;
+              ((d)localObject).type = 1000;
               paramString.add(localObject);
             }
-            localObject = paramm.kTo.kSr.iterator();
+            localObject = paramm.nro.nqs.iterator();
             while (((Iterator)localObject).hasNext())
             {
-              x localx = (x)((Iterator)localObject).next();
-              e locale = new e();
-              locale.kOu = paramm;
-              locale.type = 1001;
-              locale.kOv = paramm.kTo.kSr.indexOf(localx);
-              paramString.add(locale);
+              y localy = (y)((Iterator)localObject).next();
+              d locald = new d();
+              locald.nmr = paramm;
+              locald.type = 1001;
+              locald.nms = paramm.nro.nqs.indexOf(localy);
+              paramString.add(locald);
             }
-            localObject = new e();
-            ((e)localObject).kOu = paramm;
-            ((e)localObject).type = 1002;
+            localObject = new d();
+            ((d)localObject).nmr = paramm;
+            ((d)localObject).type = 1002;
             paramString.add(localObject);
           }
         }
         else
         {
-          localObject = new e();
-          ((e)localObject).type = paramm.kSx;
-          ((e)localObject).position = paramm.kSu;
-          ((e)localObject).kOu = paramm;
+          localObject = new d();
+          ((d)localObject).type = paramm.nqy;
+          ((d)localObject).position = paramm.nqv;
+          ((d)localObject).nmr = paramm;
           paramString.add(localObject);
         }
       }

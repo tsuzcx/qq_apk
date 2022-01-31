@@ -5,30 +5,29 @@ import android.graphics.Rect;
 import android.hardware.Camera;
 import android.widget.TextView;
 import com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI;
-import com.tencent.mm.sdk.platformtools.y;
 import com.tencent.youtu.ytfacetrace.YTFaceTraceInterface.FaceDetectResult;
 import com.tencent.youtu.ytfacetrace.YTFaceTraceInterface.FaceTraceingNotice;
 
 public final class a
 {
-  public int gov;
-  public int jVL;
-  public String jVM;
-  public FaceActionUI jVN;
-  public TextView jVO;
-  public a.a jVP;
-  public Rect jVQ;
-  public Rect jVR;
-  int jVS;
-  int jVT;
-  float jVU;
-  float jVV;
-  public YTFaceTraceInterface.FaceTraceingNotice jVW;
-  public YTFaceTraceInterface.FaceDetectResult jVX;
+  public int hIs;
   public Camera mCamera;
   public Context mContext;
   public int mDesiredPreviewHeight;
   public int mDesiredPreviewWidth;
+  public int mqd;
+  public String mqe;
+  public FaceActionUI mqf;
+  public TextView mqg;
+  public a.a mqh;
+  public Rect mqi;
+  public Rect mqj;
+  int mqk;
+  int mql;
+  float mqm;
+  float mqn;
+  public YTFaceTraceInterface.FaceTraceingNotice mqo;
+  public YTFaceTraceInterface.FaceDetectResult mqp;
 }
 
 

@@ -2,13 +2,16 @@ package com.tencent.mm.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SingleChatInfoUI$a
   implements DialogInterface.OnCancelListener
 {
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    SingleChatInfoUI.mX(true);
+    AppMethodBeat.i(29879);
+    SingleChatInfoUI.qA(true);
+    AppMethodBeat.o(29879);
   }
 }
 

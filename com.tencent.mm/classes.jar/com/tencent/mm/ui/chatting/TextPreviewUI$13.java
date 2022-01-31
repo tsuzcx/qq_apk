@@ -3,7 +3,8 @@ package com.tencent.mm.ui.chatting;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.model.bf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
 
 final class TextPreviewUI$13
@@ -13,17 +14,19 @@ final class TextPreviewUI$13
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.vnn, WebViewUI.class);
-    paramView.putExtra("rawUrl", bf.n(TextPreviewUI.d(this.vnn)));
+    AppMethodBeat.i(31057);
+    paramView = new Intent(this.zCJ, WebViewUI.class);
+    paramView.putExtra("rawUrl", bh.r(TextPreviewUI.b(this.zCJ)));
     paramView.putExtra("showShare", false);
     paramView.putExtra("show_bottom", false);
     paramView.putExtra("needRedirect", false);
-    this.vnn.startActivity(paramView);
+    this.zCJ.startActivity(paramView);
+    AppMethodBeat.o(31057);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.TextPreviewUI.13
  * JD-Core Version:    0.7.0.1
  */

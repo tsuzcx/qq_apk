@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.h.a.kd;
-import com.tencent.mm.model.am.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kq;
+import com.tencent.mm.model.ao.b.a;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.storage.u;
 
 final class l$1
-  implements am.b.a
+  implements ao.b.a
 {
   l$1(l paraml, u paramu, String paramString) {}
   
-  public final void m(String paramString, boolean paramBoolean)
+  public final void p(String paramString, boolean paramBoolean)
   {
-    if ((this.dAz != null) && (this.dAz.ctO()))
+    AppMethodBeat.i(18266);
+    if ((this.eub != null) && (this.eub.dwp()))
     {
-      paramString = new kd();
-      paramString.bSY.chatroomName = this.dUz;
-      paramString.bSY.bSZ = this.dAz.ctN();
-      a.udP.m(paramString);
+      paramString = new kq();
+      paramString.cAD.chatroomName = this.fkI;
+      paramString.cAD.cAE = this.eub.dwo();
+      a.ymk.l(paramString);
     }
+    AppMethodBeat.o(18266);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.share.a;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 final class a$1
@@ -8,9 +9,11 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void y(Bundle paramBundle)
+  public final void F(Bundle paramBundle)
   {
-    a.a(this.haS).remove(Integer.valueOf(2));
+    AppMethodBeat.i(132739);
+    a.a(this.iJC).remove(Integer.valueOf(2));
+    AppMethodBeat.o(132739);
   }
 }
 

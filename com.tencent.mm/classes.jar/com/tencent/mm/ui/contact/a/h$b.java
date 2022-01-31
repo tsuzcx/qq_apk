@@ -5,9 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.plugin.selectcontact.a.e;
-import com.tencent.mm.plugin.selectcontact.a.f;
 
 public final class h$b
   extends a.b
@@ -17,24 +16,28 @@ public final class h$b
     super(paramh);
   }
   
-  public final boolean VB()
-  {
-    return false;
-  }
-  
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(a.f.select_ui_listinfoitem, paramViewGroup, false);
-    paramViewGroup = (h.a)this.vOL.vOK;
-    paramViewGroup.kDb = ((TextView)paramContext.findViewById(a.e.info_tv));
+    AppMethodBeat.i(105293);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970667, paramViewGroup, false);
+    paramViewGroup = (h.a)this.Ags.Agr;
+    paramViewGroup.kHN = ((TextView)paramContext.findViewById(2131822836));
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(105293);
     return paramContext;
   }
   
   public final void a(Context paramContext, a.a parama, a parama1, boolean paramBoolean1, boolean paramBoolean2)
   {
+    AppMethodBeat.i(105294);
     paramContext = (h.a)parama;
-    m.a(h.a(this.vOL), paramContext.kDb);
+    m.a(((h)parama1).mZq, paramContext.kHN);
+    AppMethodBeat.o(105294);
+  }
+  
+  public final boolean aoZ()
+  {
+    return false;
   }
 }
 

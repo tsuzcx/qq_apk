@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.label;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 final class b$1
@@ -14,41 +15,45 @@ final class b$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.e("MicroMsg.Label.ContactLabelManagerImpl", "onSceneEnd");
+    AppMethodBeat.i(22488);
+    ab.e("MicroMsg.Label.ContactLabelManagerImpl", "onSceneEnd");
     switch (paramm.getType())
     {
     case 636: 
     case 637: 
     default: 
+      AppMethodBeat.o(22488);
       return;
     case 635: 
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        b.g(this.lAI.username, this.lAI.lAF);
+        b.i(this.nXT.username, this.nXT.nXQ);
+        AppMethodBeat.o(22488);
         return;
       }
-      this.lAI.bdw();
-      y.e("MicroMsg.Label.ContactLabelManagerImpl", "add contact lable faild");
+      this.nXT.bKR();
+      ab.e("MicroMsg.Label.ContactLabelManagerImpl", "add contact lable faild");
+      AppMethodBeat.o(22488);
       return;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if ((this.lAI.lAG == null) || (this.lAI.lAG.isEmpty())) {
-        break label257;
+      if ((this.nXT.nXR == null) || (this.nXT.nXR.isEmpty())) {
+        break label281;
       }
     }
-    label257:
-    for (paramInt1 = this.lAI.lAG.size();; paramInt1 = 0)
+    label281:
+    for (paramInt1 = this.nXT.nXR.size();; paramInt1 = 0)
     {
-      if ((this.lAI.lAF != null) && (!this.lAI.lAF.isEmpty())) {}
-      for (paramInt2 = this.lAI.lAF.size() - paramInt1;; paramInt2 = 0)
+      if ((this.nXT.nXQ != null) && (!this.nXT.nXQ.isEmpty())) {}
+      for (paramInt2 = this.nXT.nXQ.size() - paramInt1;; paramInt2 = 0)
       {
         if ((paramInt1 > 0) || (paramInt2 > 0))
         {
-          y.d("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveContact]addLabelNum:%d,updateLabelNum:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-          h.nFQ.f(11220, new Object[] { q.Gj(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(0) });
+          ab.d("MicroMsg.Label.ContactLabelManagerImpl", "cpan[saveContact]addLabelNum:%d,updateLabelNum:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+          h.qsU.e(11220, new Object[] { r.Zn(), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(0) });
         }
-        this.lAI.bdw();
-        return;
+        this.nXT.bKR();
+        break;
       }
     }
   }

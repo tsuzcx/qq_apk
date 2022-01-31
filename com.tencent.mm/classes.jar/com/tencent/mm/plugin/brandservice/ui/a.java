@@ -4,30 +4,30 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.mm.ai.d;
-import com.tencent.mm.ai.d.b;
-import com.tencent.mm.ai.d.b.d;
-import com.tencent.mm.plugin.brandservice.b.h;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.bof;
-import com.tencent.mm.protocal.c.kp;
-import com.tencent.mm.protocal.c.kr;
-import com.tencent.mm.protocal.c.kw;
-import com.tencent.mm.protocal.c.sh;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.aj.d.b;
+import com.tencent.mm.aj.d.b.d;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.bya;
+import com.tencent.mm.protocal.protobuf.nb;
+import com.tencent.mm.protocal.protobuf.nd;
+import com.tencent.mm.protocal.protobuf.ni;
+import com.tencent.mm.protocal.protobuf.wd;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 public final class a
   extends com.tencent.mm.plugin.brandservice.ui.base.a
 {
-  private static a.b icf;
-  protected CharSequence icg;
-  protected CharSequence ich;
-  protected CharSequence ici;
-  protected boolean icj;
-  protected boolean ick;
+  private static a.b jSV;
   protected String iconUrl;
+  protected CharSequence jSW;
+  protected CharSequence jSX;
+  protected CharSequence jSY;
+  protected boolean jSZ;
+  protected boolean jTa;
   protected CharSequence nickName;
   protected String username;
   
@@ -39,85 +39,92 @@ public final class a
   public final void a(Context paramContext, com.tencent.mm.ui.base.sortview.a.a parama, Object... paramVarArgs)
   {
     Object localObject = null;
-    if (this.vdV) {
+    AppMethodBeat.i(13867);
+    if (this.zsv)
+    {
+      AppMethodBeat.o(13867);
       return;
     }
     if ((paramContext == null) || (parama == null) || (this.data == null))
     {
-      y.e("MicroMsg.BizContactDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+      ab.e("MicroMsg.BizContactDataItem", "Context or ViewHolder or DataItem or DataItem.data is null.");
+      AppMethodBeat.o(13867);
       return;
     }
     if (!(parama instanceof a.a))
     {
-      y.e("MicroMsg.BizContactDataItem", "The DataItem is not a instance of BizContactViewHolder.");
+      ab.e("MicroMsg.BizContactDataItem", "The DataItem is not a instance of BizContactViewHolder.");
+      AppMethodBeat.o(13867);
       return;
     }
-    if (!(this.data instanceof kw))
+    if (!(this.data instanceof ni))
     {
-      y.e("MicroMsg.BizContactDataItem", "The ViewHolder is not a instance of BusinessResultItem.");
+      ab.e("MicroMsg.BizContactDataItem", "The ViewHolder is not a instance of BusinessResultItem.");
+      AppMethodBeat.o(13867);
       return;
     }
     a.a locala = (a.a)parama;
-    parama = (kw)this.data;
-    if ((parama.sFU == null) || (parama.sFU.sFA == null))
+    parama = (ni)this.data;
+    if ((parama.wCo == null) || (parama.wCo.wBU == null))
     {
-      y.e("MicroMsg.BizContactDataItem", "The brItem.ContactItem or brItem.ContactItem.ContactItem is null.");
+      ab.e("MicroMsg.BizContactDataItem", "The brItem.ContactItem or brItem.ContactItem.ContactItem is null.");
+      AppMethodBeat.o(13867);
       return;
     }
-    bof localbof = parama.sFU.sFA;
-    parama = parama.sFU.sFx;
+    bya localbya = parama.wCo.wBU;
+    parama = parama.wCo.wBR;
     if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[1] instanceof List))) {
-      this.iek = ((List)paramVarArgs[1]);
+      this.jUY = ((List)paramVarArgs[1]);
     }
-    this.username = localbof.sQs.tFO;
-    this.iconUrl = localbof.sLE;
+    this.username = localbya.wOT.xJE;
+    this.iconUrl = localbya.wJr;
     if (parama == null) {
       parama = "";
     }
     for (;;)
     {
-      this.ich = parama;
-      if (localbof.tmw == null) {
+      this.jSX = parama;
+      if (localbya.xmi == null) {
         parama = null;
       }
       try
       {
-        paramVarArgs = this.iek;
-        locala.drB.getTextSize();
+        paramVarArgs = this.jUY;
+        locala.ejj.getTextSize();
         this.nickName = com.tencent.mm.plugin.brandservice.b.a.b(paramContext, parama, paramVarArgs);
-        paramVarArgs = localbof.sQs.tFO;
-        sh localsh = localbof.tGL;
-        if (localsh != null)
+        paramVarArgs = localbya.wOT.xJE;
+        wd localwd = localbya.xKz;
+        if (localwd != null)
         {
           parama = new d();
           parama.field_username = paramVarArgs;
-          com.tencent.mm.plugin.brandservice.b.a.a(parama, localsh);
+          com.tencent.mm.plugin.brandservice.b.a.a(parama, localwd);
           paramVarArgs = localObject;
           if (parama != null)
           {
             paramVarArgs = localObject;
-            if (parama.bS(false) != null) {
-              paramVarArgs = parama.bS(false).LT();
+            if (parama.cU(false) != null) {
+              paramVarArgs = parama.cU(false).aeB();
             }
           }
           if (paramVarArgs != null)
           {
-            if ((parama.bS(false).LV()) && (!bk.bl(paramVarArgs.efQ)))
+            if ((parama.cU(false).aeD()) && (!bo.isNullOrNil(paramVarArgs.fvS)))
             {
               bool = true;
-              this.ick = bool;
-              if (localbof.tpg == 0) {
-                break label598;
+              this.jTa = bool;
+              if (localbya.xpe == 0) {
+                break label639;
               }
               bool = true;
-              this.icj = bool;
+              this.jSZ = bool;
             }
           }
           else
           {
-            y.v("MicroMsg.BizContactDataItem", "verifyFlag : %d", new Object[] { Integer.valueOf(localbof.tpg) });
-            parama = localbof.ffm;
-            if ((this.iek.size() <= 0) || (parama == null) || (!parama.toLowerCase().equals(((String)this.iek.get(0)).toLowerCase()))) {}
+            ab.v("MicroMsg.BizContactDataItem", "verifyFlag : %d", new Object[] { Integer.valueOf(localbya.xpe) });
+            parama = localbya.gwU;
+            if ((this.jUY.size() <= 0) || (parama == null) || (!parama.toLowerCase().equals(((String)this.jUY.get(0)).toLowerCase()))) {}
           }
         }
       }
@@ -127,12 +134,12 @@ public final class a
         {
           try
           {
-            paramVarArgs = this.iek;
-            locala.icp.getTextSize();
-            this.ici = com.tencent.mm.plugin.brandservice.b.a.b(paramContext, parama, paramVarArgs);
-            this.ici = TextUtils.concat(new CharSequence[] { paramContext.getResources().getString(b.h.search_contact_tag_wxid), this.ici });
-            if ((this.ici != null) && (this.ici.length() != 0) && (this.ich != null)) {
-              if (this.ich.length() != 0) {
+            paramVarArgs = this.jUY;
+            locala.jTf.getTextSize();
+            this.jSY = com.tencent.mm.plugin.brandservice.b.a.b(paramContext, parama, paramVarArgs);
+            this.jSY = TextUtils.concat(new CharSequence[] { paramContext.getResources().getString(2131302996), this.jSY });
+            if ((this.jSY != null) && (this.jSY.length() != 0) && (this.jSX != null)) {
+              if (this.jSX.length() != 0) {
                 continue;
               }
             }
@@ -141,31 +148,32 @@ public final class a
           {
             try
             {
-              parama = localbof.ffk;
-              paramVarArgs = this.iek;
-              locala.icn.getTextSize();
-              this.icg = com.tencent.mm.plugin.brandservice.b.a.b(paramContext, parama, paramVarArgs);
-              y.d("MicroMsg.BizContactDataItem", "nickName : %s, followFriends : %s.", new Object[] { this.nickName, this.ich });
-              this.vdV = true;
+              parama = localbya.gwS;
+              paramVarArgs = this.jUY;
+              locala.jTd.getTextSize();
+              this.jSW = com.tencent.mm.plugin.brandservice.b.a.b(paramContext, parama, paramVarArgs);
+              ab.d("MicroMsg.BizContactDataItem", "nickName : %s, followFriends : %s.", new Object[] { this.nickName, this.jSX });
+              this.zsv = true;
+              AppMethodBeat.o(13867);
               return;
-              parama = parama.sFG;
+              parama = parama.wCa;
               break;
-              parama = localbof.tmw.tFO;
+              parama = localbya.xmi.xJE;
               continue;
               parama = parama;
               this.nickName = "";
               continue;
               boolean bool = false;
               continue;
-              label598:
+              label639:
               bool = false;
               continue;
               parama = parama;
-              this.ici = "";
+              this.jSY = "";
             }
             catch (Exception paramContext)
             {
-              this.icg = "";
+              this.jSW = "";
               continue;
             }
           }
@@ -175,22 +183,28 @@ public final class a
     }
   }
   
-  public final com.tencent.mm.ui.base.sortview.a.b axw()
+  public final com.tencent.mm.ui.base.sortview.a.b aWu()
   {
-    if (icf == null) {
-      icf = new a.b();
+    AppMethodBeat.i(13865);
+    if (jSV == null) {
+      jSV = new a.b();
     }
-    return icf;
+    a.b localb = jSV;
+    AppMethodBeat.o(13865);
+    return localb;
   }
   
-  public final com.tencent.mm.ui.base.sortview.a.a axx()
+  public final com.tencent.mm.ui.base.sortview.a.a aWv()
   {
-    return new a.a();
+    AppMethodBeat.i(13866);
+    a.a locala = new a.a();
+    AppMethodBeat.o(13866);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.a
  * JD-Core Version:    0.7.0.1
  */

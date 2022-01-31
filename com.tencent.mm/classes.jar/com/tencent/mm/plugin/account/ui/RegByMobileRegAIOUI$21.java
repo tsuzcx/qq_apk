@@ -1,28 +1,27 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegByMobileRegAIOUI$21
-  extends ClickableSpan
+  implements TextWatcher
 {
   RegByMobileRegAIOUI$21(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
-  public final void onClick(View paramView)
+  public final void afterTextChanged(Editable paramEditable)
   {
-    bk.I(this.fqF.mController.uMN, this.fqF.getString(q.j.license_read_url, new Object[] { x.cqJ(), x.cqI(), "reg", Integer.valueOf(1), Integer.valueOf(0) }));
+    AppMethodBeat.i(125369);
+    RegByMobileRegAIOUI.b(this.gIh);
+    AppMethodBeat.o(125369);
   }
   
-  public final void updateDrawState(TextPaint paramTextPaint)
+  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramTextPaint.setColor(this.fqF.getResources().getColor(q.c.link_color));
-    paramTextPaint.setUnderlineText(true);
+    AppMethodBeat.i(125370);
+    AppMethodBeat.o(125370);
   }
 }
 

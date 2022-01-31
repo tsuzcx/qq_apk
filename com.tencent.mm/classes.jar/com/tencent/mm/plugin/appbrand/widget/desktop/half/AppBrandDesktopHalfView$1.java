@@ -1,40 +1,43 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.half;
 
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView.e;
 import com.tencent.mm.plugin.appbrand.widget.recentview.ConversationAppBrandRecentView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandDesktopHalfView$1
   implements AppBrandRecentView.e
 {
   AppBrandDesktopHalfView$1(AppBrandDesktopHalfView paramAppBrandDesktopHalfView) {}
   
-  public final void mH(int paramInt)
+  public final void qj(int paramInt)
   {
     int i = 0;
-    y.i("MicroMsg.AppBrandDesktopHalfView", "alvinluo refresh RecentData onDone size: %d", new Object[] { Integer.valueOf(paramInt) });
-    AppBrandDesktopHalfView.a(this.hrR);
-    AppBrandDesktopHalfView.b(this.hrR);
-    if (paramInt <= AppBrandDesktopHalfView.c(this.hrR).getRecentView().getCustomItemCount()) {
-      AppBrandDesktopHalfView.d(this.hrR).setVisibility(8);
+    AppMethodBeat.i(134160);
+    ab.i("MicroMsg.AppBrandDesktopHalfView", "alvinluo refresh RecentData onDone size: %d", new Object[] { Integer.valueOf(paramInt) });
+    AppBrandDesktopHalfView.a(this.jin);
+    AppBrandDesktopHalfView.b(this.jin);
+    if (paramInt <= AppBrandDesktopHalfView.c(this.jin).getRecentView().getCustomItemCount()) {
+      AppBrandDesktopHalfView.d(this.jin).setVisibility(8);
     }
     for (;;)
     {
-      if (AppBrandDesktopHalfView.f(this.hrR) != null)
+      if (AppBrandDesktopHalfView.f(this.jin) != null)
       {
-        AppBrandRecentView.e locale = AppBrandDesktopHalfView.f(this.hrR);
-        if (paramInt - AppBrandDesktopHalfView.d(this.hrR).getRecentView().getCustomItemCount() > 0) {
-          i = paramInt - AppBrandDesktopHalfView.d(this.hrR).getRecentView().getCustomItemCount();
+        AppBrandRecentView.e locale = AppBrandDesktopHalfView.f(this.jin);
+        if (paramInt - AppBrandDesktopHalfView.d(this.jin).getRecentView().getCustomItemCount() > 0) {
+          i = paramInt - AppBrandDesktopHalfView.d(this.jin).getRecentView().getCustomItemCount();
         }
-        locale.mH(i);
+        locale.qj(i);
       }
+      AppMethodBeat.o(134160);
       return;
-      if (AppBrandDesktopHalfView.e(this.hrR).getVisibility() != 0) {
-        AppBrandDesktopHalfView.e(this.hrR).setVisibility(0);
+      if (AppBrandDesktopHalfView.e(this.jin).getVisibility() != 0) {
+        AppBrandDesktopHalfView.e(this.jin).setVisibility(0);
       }
-      if (AppBrandDesktopHalfView.d(this.hrR).getVisibility() != 0) {
-        AppBrandDesktopHalfView.d(this.hrR).setVisibility(0);
+      if (AppBrandDesktopHalfView.d(this.jin).getVisibility() != 0) {
+        AppBrandDesktopHalfView.d(this.jin).setVisibility(0);
       }
     }
   }

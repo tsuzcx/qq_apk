@@ -141,48 +141,45 @@ public abstract class TMAssistantDownloadSDKClientBase
     //   159: invokevirtual 130	android/content/Context:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   162: istore_1
     //   163: ldc 19
-    //   165: new 95	java/lang/StringBuilder
-    //   168: dup
-    //   169: ldc 132
-    //   171: invokespecial 98	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   174: iload_1
-    //   175: invokevirtual 135	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   178: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   181: invokestatic 112	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   184: goto -139 -> 45
+    //   165: ldc 132
+    //   167: iload_1
+    //   168: invokestatic 138	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   171: invokevirtual 142	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   174: invokestatic 112	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   177: goto -132 -> 45
+    //   180: astore 4
+    //   182: aload_0
+    //   183: monitorexit
+    //   184: aload 4
+    //   186: athrow
     //   187: astore 4
-    //   189: aload_0
-    //   190: monitorexit
+    //   189: ldc 19
     //   191: aload 4
-    //   193: athrow
-    //   194: astore 4
-    //   196: ldc 19
-    //   198: aload 4
-    //   200: ldc 137
-    //   202: iconst_0
-    //   203: anewarray 4	java/lang/Object
-    //   206: invokestatic 143	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   209: iload_2
-    //   210: istore_1
-    //   211: goto -48 -> 163
+    //   193: ldc 144
+    //   195: iconst_0
+    //   196: anewarray 4	java/lang/Object
+    //   199: invokestatic 150	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   202: iload_2
+    //   203: istore_1
+    //   204: goto -41 -> 163
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	214	0	this	TMAssistantDownloadSDKClientBase
-    //   44	167	1	bool1	boolean
-    //   1	209	2	bool2	boolean
+    //   0	207	0	this	TMAssistantDownloadSDKClientBase
+    //   44	160	1	bool1	boolean
+    //   1	202	2	bool2	boolean
     //   3	136	3	bool3	boolean
     //   34	122	4	localObject1	Object
-    //   187	5	4	localObject2	Object
-    //   194	5	4	localException	Exception
+    //   180	5	4	localObject2	Object
+    //   187	5	4	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   6	36	187	finally
-    //   49	118	187	finally
-    //   125	138	187	finally
-    //   145	163	187	finally
-    //   163	184	187	finally
-    //   196	209	187	finally
-    //   145	163	194	java/lang/Exception
+    //   6	36	180	finally
+    //   49	118	180	finally
+    //   125	138	180	finally
+    //   145	163	180	finally
+    //   163	177	180	finally
+    //   189	202	180	finally
+    //   145	163	187	java/lang/Exception
   }
   
   protected abstract void onDownloadSDKServiceInvalid();
@@ -205,7 +202,7 @@ public abstract class TMAssistantDownloadSDKClientBase
     //   0: ldc 19
     //   2: new 95	java/lang/StringBuilder
     //   5: dup
-    //   6: ldc 173
+    //   6: ldc 180
     //   8: invokespecial 98	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   11: aload_0
     //   12: getfield 48	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mClientKey	Ljava/lang/String;
@@ -227,11 +224,11 @@ public abstract class TMAssistantDownloadSDKClientBase
     //   43: monitorenter
     //   44: aload_0
     //   45: getfield 44	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mThreadlock	Ljava/lang/Object;
-    //   48: invokevirtual 155	java/lang/Object:notifyAll	()V
+    //   48: invokevirtual 162	java/lang/Object:notifyAll	()V
     //   51: aload_1
     //   52: monitorexit
     //   53: aload_0
-    //   54: invokevirtual 169	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:onDownloadSDKServiceInvalid	()V
+    //   54: invokevirtual 176	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:onDownloadSDKServiceInvalid	()V
     //   57: aload_0
     //   58: monitorexit
     //   59: return
@@ -272,7 +269,7 @@ public abstract class TMAssistantDownloadSDKClientBase
     //   2: ldc 19
     //   4: new 95	java/lang/StringBuilder
     //   7: dup
-    //   8: ldc 176
+    //   8: ldc 183
     //   10: invokespecial 98	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   13: aload_0
     //   14: getfield 48	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mClientKey	Ljava/lang/String;
@@ -298,52 +295,49 @@ public abstract class TMAssistantDownloadSDKClientBase
     //   64: aload_1
     //   65: ifnull +7 -> 72
     //   68: aload_0
-    //   69: invokevirtual 179	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:unRegisterServiceCallback	()V
+    //   69: invokevirtual 186	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:unRegisterServiceCallback	()V
     //   72: aload_0
     //   73: getfield 46	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mContext	Landroid/content/Context;
-    //   76: ifnull +22 -> 98
+    //   76: ifnull +18 -> 94
     //   79: aload_0
-    //   80: ifnull +18 -> 98
-    //   83: aload_0
-    //   84: getfield 40	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mServiceInterface	Landroid/os/IInterface;
-    //   87: ifnull +11 -> 98
+    //   80: getfield 40	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mServiceInterface	Landroid/os/IInterface;
+    //   83: ifnull +11 -> 94
+    //   86: aload_0
+    //   87: getfield 46	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mContext	Landroid/content/Context;
     //   90: aload_0
-    //   91: getfield 46	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mContext	Landroid/content/Context;
+    //   91: invokevirtual 190	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
     //   94: aload_0
-    //   95: invokevirtual 183	android/content/Context:unbindService	(Landroid/content/ServiceConnection;)V
-    //   98: aload_0
-    //   99: aconst_null
-    //   100: putfield 40	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mServiceInterface	Landroid/os/IInterface;
-    //   103: aload_0
-    //   104: aconst_null
-    //   105: putfield 42	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mServiceCallback	Landroid/os/IInterface;
-    //   108: aload_0
-    //   109: ldc 16
-    //   111: putfield 38	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:connectState	Ljava/lang/String;
-    //   114: aload_0
-    //   115: monitorexit
-    //   116: return
+    //   95: aconst_null
+    //   96: putfield 40	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mServiceInterface	Landroid/os/IInterface;
+    //   99: aload_0
+    //   100: aconst_null
+    //   101: putfield 42	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:mServiceCallback	Landroid/os/IInterface;
+    //   104: aload_0
+    //   105: ldc 16
+    //   107: putfield 38	com/tencent/tmassistantsdk/downloadclient/TMAssistantDownloadSDKClientBase:connectState	Ljava/lang/String;
+    //   110: aload_0
+    //   111: monitorexit
+    //   112: return
+    //   113: astore_1
+    //   114: goto -42 -> 72
     //   117: astore_1
-    //   118: goto -46 -> 72
-    //   121: astore_1
-    //   122: aload_0
-    //   123: monitorexit
-    //   124: aload_1
-    //   125: athrow
+    //   118: aload_0
+    //   119: monitorexit
+    //   120: aload_1
+    //   121: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	126	0	this	TMAssistantDownloadSDKClientBase
+    //   0	122	0	this	TMAssistantDownloadSDKClientBase
     //   63	2	1	localIInterface	IInterface
-    //   117	1	1	localRemoteException	RemoteException
-    //   121	4	1	localObject	Object
+    //   113	1	1	localRemoteException	RemoteException
+    //   117	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
-    //   68	72	117	android/os/RemoteException
-    //   2	64	121	finally
-    //   68	72	121	finally
-    //   72	79	121	finally
-    //   83	98	121	finally
-    //   98	114	121	finally
+    //   68	72	113	android/os/RemoteException
+    //   2	64	117	finally
+    //   68	72	117	finally
+    //   72	94	117	finally
+    //   94	110	117	finally
   }
   
   protected abstract void unRegisterServiceCallback();

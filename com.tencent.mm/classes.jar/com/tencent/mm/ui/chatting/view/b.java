@@ -10,128 +10,143 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.f.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.picker.OptionPicker;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public final class b
 {
-  private BottomSheetBehavior fK;
-  private Button fbO;
-  private Button hPe;
-  private View jdj;
+  private BottomSheetBehavior gE;
+  private Button gtF;
+  private View iDS;
+  private Button jIG;
   Context mContext;
-  OptionPicker vAA;
-  c vAB;
-  private int vAC;
-  public b.a vAD;
-  ArrayList<Long> vAE = new ArrayList(42);
-  OptionPicker vAz;
+  OptionPicker zQY;
+  OptionPicker zQZ;
+  c zRa;
+  private int zRb;
+  public a zRc;
+  ArrayList<Long> zRd;
   
   public b(Context paramContext)
   {
+    AppMethodBeat.i(32780);
+    this.zRd = new ArrayList(42);
     this.mContext = paramContext;
-    this.jdj = View.inflate(this.mContext, R.i.remind_date_picker_panel, null);
-    this.vAB = new c(this.mContext);
-    this.vAB.setContentView(this.jdj);
-    this.vAB.setOnDismissListener(new DialogInterface.OnDismissListener()
+    this.iDS = View.inflate(this.mContext, 2130970564, null);
+    this.zRa = new c(this.mContext);
+    this.zRa.setContentView(this.iDS);
+    this.zRa.setOnDismissListener(new DialogInterface.OnDismissListener()
     {
       public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
       {
-        b.this.vAB = null;
+        b.this.zRa = null;
       }
     });
-    this.vAz = ((OptionPicker)this.jdj.findViewById(R.h.option_first_picker));
-    this.vAA = ((OptionPicker)this.jdj.findViewById(R.h.option_second_picker));
-    this.vAz.setValue(0);
-    this.vAz.setMinWidth(a.fromDPToPix(this.mContext, 60));
-    this.vAA.setMinWidth(a.fromDPToPix(this.mContext, 60));
-    this.vAz.setOptionsArray(cHa());
-    this.vAA.setOptionsArray(HI(0));
-    this.vAz.setOnValueChangedListener(new b.2(this));
-    paramContext = (FrameLayout.LayoutParams)this.jdj.getLayoutParams();
+    this.zQY = ((OptionPicker)this.iDS.findViewById(2131827178));
+    this.zQZ = ((OptionPicker)this.iDS.findViewById(2131826644));
+    this.zQY.setValue(0);
+    this.zQY.setMinWidth(a.fromDPToPix(this.mContext, 60));
+    this.zQZ.setMinWidth(a.fromDPToPix(this.mContext, 60));
+    this.zQY.setOptionsArray(dLn());
+    this.zQZ.setOptionsArray(Qq(0));
+    this.zQY.setOnValueChangedListener(new b.2(this));
+    paramContext = (FrameLayout.LayoutParams)this.iDS.getLayoutParams();
     paramContext.height = a.fromDPToPix(this.mContext, 288);
-    this.jdj.setLayoutParams(paramContext);
-    this.vAC = a.fromDPToPix(this.mContext, 350);
-    this.fK = BottomSheetBehavior.i((View)this.jdj.getParent());
-    if (this.fK != null)
+    this.iDS.setLayoutParams(paramContext);
+    this.zRb = a.fromDPToPix(this.mContext, 350);
+    this.gE = BottomSheetBehavior.i((View)this.iDS.getParent());
+    if (this.gE != null)
     {
-      this.fK.u(this.vAC);
-      this.fK.fq = false;
+      this.gE.t(this.zRb);
+      this.gE.go = false;
     }
-    this.fbO = ((Button)this.jdj.findViewById(R.h.ok_btn));
-    this.fbO.setOnClickListener(new View.OnClickListener()
+    this.gtF = ((Button)this.iDS.findViewById(2131823301));
+    this.gtF.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
+        AppMethodBeat.i(32778);
         b localb;
         long l;
         int i;
         int j;
-        if (b.this.vAD != null)
+        if (b.this.zRc != null)
         {
-          paramAnonymousView = b.this.vAD;
+          paramAnonymousView = b.this.zRc;
           localb = b.this;
           l = System.currentTimeMillis();
-          i = localb.vAz.getValue();
-          j = localb.vAA.getValue();
+          i = localb.zQY.getValue();
+          j = localb.zQZ.getValue();
           if (i != 0) {
-            break label142;
+            break label151;
           }
-          if (!com.tencent.mm.sdk.a.b.cqk()) {
-            break label126;
+          if (!com.tencent.mm.sdk.a.b.dsf()) {
+            break label135;
           }
           l += 360000L;
         }
         for (;;)
         {
-          y.i("MicroMsg.MMRemindDatePicker", "[getTimestamp] date:%s", new Object[] { h.g(localb.mContext.getString(R.l.fmt_longdate_with_full) + "HH:mm", l / 1000L) });
-          paramAnonymousView.hP(l);
+          ab.i("MicroMsg.MMRemindDatePicker", "[getTimestamp] date:%s", new Object[] { h.formatTime(localb.mContext.getString(2131300051) + "HH:mm", l / 1000L) });
+          paramAnonymousView.oB(l);
+          AppMethodBeat.o(32778);
           return;
-          label126:
+          label135:
           l += (j + 1) * 3600000L;
           continue;
-          label142:
-          l = ((Long)localb.vAE.get(i)).longValue() + (j + 1) * 3600000L;
+          label151:
+          l = ((Long)localb.zRd.get(i)).longValue() + (j + 1) * 3600000L;
         }
       }
     });
-    this.hPe = ((Button)this.jdj.findViewById(R.h.cancel_btn));
-    this.hPe.setOnClickListener(new b.4(this));
+    this.jIG = ((Button)this.iDS.findViewById(2131822887));
+    this.jIG.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(32779);
+        if (b.this.zRc != null) {
+          b.this.zRc.onCancel();
+        }
+        AppMethodBeat.o(32779);
+      }
+    });
+    AppMethodBeat.o(32780);
   }
   
-  private String[] cHa()
+  private String[] dLn()
   {
     int j = 0;
-    this.vAE.clear();
-    ArrayList localArrayList = new ArrayList();
+    AppMethodBeat.i(32784);
+    this.zRd.clear();
+    Object localObject = new ArrayList();
     Calendar localCalendar = Calendar.getInstance();
     int i = 0;
     if (i < localCalendar.getActualMaximum(5))
     {
-      if ((com.tencent.mm.sdk.a.b.cqk()) && (i == 0))
+      if ((com.tencent.mm.sdk.a.b.dsf()) && (i == 0))
       {
-        localArrayList.add("test");
-        this.vAE.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        ((ArrayList)localObject).add("test");
+        this.zRd.add(Long.valueOf(localCalendar.getTimeInMillis()));
       }
-      label104:
+      label109:
       String str;
       if (i == 0)
       {
         localCalendar.setTimeInMillis(System.currentTimeMillis() + 86400000L * i);
-        this.vAE.add(Long.valueOf(localCalendar.getTimeInMillis()));
-        str = h.g(this.mContext.getString(R.l.fmt_date), localCalendar.getTimeInMillis() / 1000L);
+        this.zRd.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        str = h.formatTime(this.mContext.getString(2131300031), localCalendar.getTimeInMillis() / 1000L);
         if (i != 0) {
-          break label224;
+          break label227;
         }
-        localArrayList.add(this.mContext.getResources().getString(R.l.fmt_pre_nowday));
+        ((ArrayList)localObject).add(this.mContext.getResources().getString(2131300075));
       }
       for (;;)
       {
@@ -142,15 +157,15 @@ public final class b
         localCalendar.set(12, 0);
         localCalendar.set(13, 0);
         localCalendar.set(14, 0);
-        this.vAE.add(Long.valueOf(localCalendar.getTimeInMillis()));
-        break label104;
-        label224:
+        this.zRd.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        break label109;
+        label227:
         if (i == 1) {
-          localArrayList.add(str + " " + this.mContext.getResources().getString(R.l.fmt_pre_tomorrow));
+          ((ArrayList)localObject).add(str + " " + this.mContext.getResources().getString(2131300076));
         } else if (i == 2) {
-          localArrayList.add(str + " " + this.mContext.getResources().getString(R.l.fmt_pre_dayaftertomorrow));
+          ((ArrayList)localObject).add(str + " " + this.mContext.getResources().getString(2131300066));
         } else {
-          localArrayList.add(str + " " + h.U(this.mContext, localCalendar.get(7)));
+          ((ArrayList)localObject).add(str + " " + h.ai(this.mContext, localCalendar.get(7)));
         }
       }
     }
@@ -167,23 +182,26 @@ public final class b
       for (;;)
       {
         localCalendar.set(5, 1);
-        this.vAE.add(Long.valueOf(localCalendar.getTimeInMillis()));
-        localArrayList.add(String.valueOf(h.g(this.mContext.getString(R.l.fmt_longdate_with_full), localCalendar.getTimeInMillis() / 1000L)));
+        this.zRd.add(Long.valueOf(localCalendar.getTimeInMillis()));
+        ((ArrayList)localObject).add(String.valueOf(h.formatTime(this.mContext.getString(2131300051), localCalendar.getTimeInMillis() / 1000L)));
         i += 1;
         break;
         localCalendar.set(2, m + i);
       }
     }
-    return bk.dj(localArrayList);
+    localObject = bo.er((List)localObject);
+    AppMethodBeat.o(32784);
+    return localObject;
   }
   
-  final String[] HI(int paramInt)
+  final String[] Qq(int paramInt)
   {
+    AppMethodBeat.i(32783);
     ArrayList localArrayList = new ArrayList();
     int i;
-    label46:
+    label50:
     StringBuilder localStringBuilder;
-    if (com.tencent.mm.sdk.a.b.cqk())
+    if (com.tencent.mm.sdk.a.b.dsf())
     {
       i = 1;
       switch (paramInt - i)
@@ -194,29 +212,31 @@ public final class b
         {
           localStringBuilder = new StringBuilder();
           if (paramInt >= 10) {
-            break label189;
+            break label194;
           }
         }
         break;
       }
     }
-    label189:
-    for (Object localObject = "0" + paramInt;; localObject = Integer.valueOf(paramInt))
+    label194:
+    for (Object localObject = "0".concat(String.valueOf(paramInt));; localObject = Integer.valueOf(paramInt))
     {
       localArrayList.add(localObject + ":00");
       paramInt += 1;
-      break label46;
+      break label50;
       i = 0;
       break;
       localArrayList.add("after 6 min");
       for (;;)
       {
-        return bk.dj(localArrayList);
+        localObject = bo.er(localArrayList);
+        AppMethodBeat.o(32783);
+        return localObject;
         i = Calendar.getInstance().get(11);
         paramInt = 1;
         while (paramInt <= 24 - i)
         {
-          localArrayList.add(this.mContext.getResources().getString(R.l.after_time_remind, new Object[] { Integer.valueOf(paramInt) }));
+          localArrayList.add(this.mContext.getResources().getString(2131296513, new Object[] { Integer.valueOf(paramInt) }));
           paramInt += 1;
         }
       }
@@ -225,16 +245,27 @@ public final class b
   
   public final void hide()
   {
-    if (this.vAB != null) {
-      this.vAB.dismiss();
+    AppMethodBeat.i(32782);
+    if (this.zRa != null) {
+      this.zRa.dismiss();
     }
+    AppMethodBeat.o(32782);
   }
   
   public final void show()
   {
-    if (this.vAB != null) {
-      this.vAB.show();
+    AppMethodBeat.i(32781);
+    if (this.zRa != null) {
+      this.zRa.show();
     }
+    AppMethodBeat.o(32781);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void oB(long paramLong);
+    
+    public abstract void onCancel();
   }
 }
 

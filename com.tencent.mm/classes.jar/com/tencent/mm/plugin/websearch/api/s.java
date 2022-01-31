@@ -1,54 +1,66 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import android.os.Bundle;
-import com.tencent.mm.protocal.c.azi;
-import com.tencent.mm.protocal.c.bww;
-import com.tencent.mm.protocal.c.ccd;
-import com.tencent.mm.protocal.c.ckt;
-import com.tencent.mm.protocal.c.cmx;
-import com.tencent.mm.protocal.c.rb;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bgl;
+import com.tencent.mm.protocal.protobuf.cjh;
+import com.tencent.mm.protocal.protobuf.cpj;
+import com.tencent.mm.protocal.protobuf.cyi;
+import com.tencent.mm.protocal.protobuf.dbf;
+import com.tencent.mm.protocal.protobuf.up;
 import java.util.LinkedList;
 
 public final class s
 {
-  public String auI;
-  public String bGm;
-  public String bIB;
-  public int bVm;
-  public String bVp;
-  public int bVt;
+  public String axa;
+  public int bWu;
   public int businessType;
-  public int bvj;
-  public String jfE;
-  public int kwf;
-  public String lJQ;
+  public int cCT;
+  public String cCW;
+  public int cDa;
+  public String cnv;
+  public String cpW;
+  public String low;
+  public int mRU;
   public int offset;
-  public int qTA;
-  public LinkedList<String> qTB = new LinkedList();
-  public int qTC;
-  public int qTD;
-  public String qTE;
-  public bww qTF;
-  public LinkedList<rb> qTG = new LinkedList();
-  public LinkedList<azi> qTH = new LinkedList();
-  public int qTI;
-  public cmx qTJ;
-  public ckt qTK;
-  public String qTL;
-  public String qTM;
-  public Bundle qTN;
-  public boolean qTO;
-  public String qTP;
-  public boolean qTQ = true;
-  public int qTw;
-  public LinkedList<ccd> qTx = new LinkedList();
-  public String qTy;
-  public String qTz;
+  public String ohe;
   public int scene;
+  public int uIE;
+  public LinkedList<cpj> uIF;
+  public String uIG;
+  public String uIH;
+  public int uII;
+  public LinkedList<String> uIJ;
+  public int uIK;
+  public int uIL;
+  public String uIM;
+  public cjh uIN;
+  public LinkedList<up> uIO;
+  public LinkedList<bgl> uIP;
+  public int uIQ;
+  public dbf uIR;
+  public cyi uIS;
+  public String uIT;
+  public String uIU;
+  public Bundle uIV;
+  public boolean uIW;
+  public String uIX;
+  public boolean uIY;
+  
+  public s()
+  {
+    AppMethodBeat.i(124060);
+    this.uIF = new LinkedList();
+    this.uIJ = new LinkedList();
+    this.uIO = new LinkedList();
+    this.uIP = new LinkedList();
+    this.uIY = true;
+    AppMethodBeat.o(124060);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.s
  * JD-Core Version:    0.7.0.1
  */

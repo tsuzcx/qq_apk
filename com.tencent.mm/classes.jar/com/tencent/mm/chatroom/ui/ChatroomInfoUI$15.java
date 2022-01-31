@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatroomInfoUI$15
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class ChatroomInfoUI$15
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    ChatroomInfoUI.a(this.dod, true);
+    AppMethodBeat.i(103978);
+    ChatroomInfoUI.a(this.efA, true);
+    AppMethodBeat.o(103978);
   }
 }
 

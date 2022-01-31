@@ -4,58 +4,68 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class MMProgressWheel$WheelSavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator<WheelSavedState> CREATOR = new MMProgressWheel.WheelSavedState.1();
-  float St;
-  boolean wpA;
-  float wpB;
-  boolean wpC;
-  int wpk;
-  int wpl;
-  int wpm;
-  boolean wpn;
-  int wpt;
-  int wpu;
-  float wpy;
+  public static final Parcelable.Creator<WheelSavedState> CREATOR;
+  int AJL;
+  int AJM;
+  boolean AJN;
+  int AJT;
+  int AJU;
+  float AJY;
+  boolean AKa;
+  float AKb;
+  boolean AKc;
+  float Tb;
+  int circleRadius;
+  
+  static
+  {
+    AppMethodBeat.i(112939);
+    CREATOR = new MMProgressWheel.WheelSavedState.1();
+    AppMethodBeat.o(112939);
+  }
   
   private MMProgressWheel$WheelSavedState(Parcel paramParcel)
   {
     super(paramParcel);
-    this.St = paramParcel.readFloat();
-    this.wpB = paramParcel.readFloat();
+    AppMethodBeat.i(112937);
+    this.Tb = paramParcel.readFloat();
+    this.AKb = paramParcel.readFloat();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.wpC = bool1;
-      this.wpy = paramParcel.readFloat();
-      this.wpl = paramParcel.readInt();
-      this.wpt = paramParcel.readInt();
-      this.wpm = paramParcel.readInt();
-      this.wpu = paramParcel.readInt();
-      this.wpk = paramParcel.readInt();
+      this.AKc = bool1;
+      this.AJY = paramParcel.readFloat();
+      this.AJL = paramParcel.readInt();
+      this.AJT = paramParcel.readInt();
+      this.AJM = paramParcel.readInt();
+      this.AJU = paramParcel.readInt();
+      this.circleRadius = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
-        break label119;
+        break label129;
       }
       bool1 = true;
-      label94:
-      this.wpA = bool1;
+      label99:
+      this.AKa = bool1;
       if (paramParcel.readByte() == 0) {
-        break label124;
+        break label134;
       }
     }
-    label119:
-    label124:
+    label129:
+    label134:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.wpn = bool1;
+      this.AJN = bool1;
+      AppMethodBeat.o(112937);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label94;
+      break label99;
     }
   }
   
@@ -67,39 +77,41 @@ class MMProgressWheel$WheelSavedState
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
+    AppMethodBeat.i(112938);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.St);
-    paramParcel.writeFloat(this.wpB);
-    if (this.wpC)
+    paramParcel.writeFloat(this.Tb);
+    paramParcel.writeFloat(this.AKb);
+    if (this.AKc)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeFloat(this.wpy);
-      paramParcel.writeInt(this.wpl);
-      paramParcel.writeInt(this.wpt);
-      paramParcel.writeInt(this.wpm);
-      paramParcel.writeInt(this.wpu);
-      paramParcel.writeInt(this.wpk);
-      if (!this.wpA) {
-        break label123;
+      paramParcel.writeFloat(this.AJY);
+      paramParcel.writeInt(this.AJL);
+      paramParcel.writeInt(this.AJT);
+      paramParcel.writeInt(this.AJM);
+      paramParcel.writeInt(this.AJU);
+      paramParcel.writeInt(this.circleRadius);
+      if (!this.AKa) {
+        break label133;
       }
       paramInt = 1;
-      label96:
+      label101:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.wpn) {
-        break label128;
+      if (!this.AJN) {
+        break label138;
       }
     }
-    label128:
+    label133:
+    label138:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
+      AppMethodBeat.o(112938);
       return;
       paramInt = 0;
       break;
-      label123:
       paramInt = 0;
-      break label96;
+      break label101;
     }
   }
 }

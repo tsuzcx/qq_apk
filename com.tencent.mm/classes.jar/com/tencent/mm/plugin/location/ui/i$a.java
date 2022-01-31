@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.location.ui;
 
 public abstract interface i$a
 {
-  public abstract void GE(String paramString);
+  public abstract void Sh(String paramString);
 }
 
 

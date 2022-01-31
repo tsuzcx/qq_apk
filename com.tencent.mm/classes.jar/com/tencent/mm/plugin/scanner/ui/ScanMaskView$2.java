@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ScanMaskView$2
   extends AnimatorListenerAdapter
@@ -10,10 +11,12 @@ final class ScanMaskView$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
+    AppMethodBeat.i(81148);
     super.onAnimationEnd(paramAnimator);
-    if (ScanMaskView.g(this.nLs) != null) {
-      ScanMaskView.g(this.nLs).onAnimationEnd();
+    if (ScanMaskView.g(this.qyX) != null) {
+      ScanMaskView.g(this.qyX).onAnimationEnd();
     }
+    AppMethodBeat.o(81148);
   }
 }
 

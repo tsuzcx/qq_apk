@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewDownloadUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class WebViewDownloadUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.rmD.finish();
+    AppMethodBeat.i(7592);
+    this.vcl.finish();
+    AppMethodBeat.o(7592);
     return true;
   }
 }

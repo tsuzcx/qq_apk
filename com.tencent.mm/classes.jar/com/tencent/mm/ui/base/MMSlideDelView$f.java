@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base;
 
 public abstract interface MMSlideDelView$f
 {
-  public abstract void bg(Object paramObject);
+  public abstract void bC(Object paramObject);
 }
 
 

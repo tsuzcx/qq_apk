@@ -1,74 +1,41 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.os.HandlerThread;
-import com.tencent.mm.plugin.appbrand.config.r;
-import com.tencent.mm.plugin.appbrand.config.s;
-import com.tencent.mm.plugin.appbrand.config.u;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.d;
-import com.tencent.mm.ui.MMActivity;
-import java.util.Map;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.plugin.appbrand.config.WxaExposedParams;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.net.URISyntaxException;
 
 final class AppBrandProfileUI$6
-  implements Runnable
+  implements View.OnClickListener
 {
-  AppBrandProfileUI$6(AppBrandProfileUI paramAppBrandProfileUI, boolean paramBoolean) {}
+  AppBrandProfileUI$6(AppBrandProfileUI paramAppBrandProfileUI, com.tencent.mm.plugin.appbrand.config.v paramv) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    Object localObject = r.sq(AppBrandProfileUI.b(this.hdE));
-    ai.d(new Runnable()
+    AppMethodBeat.i(133031);
+    try
     {
-      public final void run()
-      {
-        AppBrandProfileUI.a(AppBrandProfileUI.6.this.hdE, this.hdF, this.hdI);
-        if ((AppBrandProfileUI.6.this.hdH) && (!AppBrandProfileUI.6.this.hdE.isFinishing()) && (!AppBrandProfileUI.6.this.hdE.uMr)) {
-          r.aem().a(AppBrandProfileUI.6.this.hdE, com.tencent.mm.plugin.appbrand.v.c.DS().mnU.getLooper());
-        }
-      }
-    });
-    String str;
-    label85:
-    AppBrandProfileUI localAppBrandProfileUI;
-    if (this.hdH)
-    {
-      s.sE(AppBrandProfileUI.b(this.hdE));
-      AppBrandProfileUI.a(this.hdE, 1, 1);
-      if (localObject != null)
-      {
-        if (((u)localObject).bFB != 4) {
-          break label136;
-        }
-        str = "openWAGameContactDev";
-        if (((u)localObject).bFB != 4) {
-          break label142;
-        }
-        localObject = "100409";
-        localObject = com.tencent.mm.model.c.c.IX().fJ((String)localObject);
-        localAppBrandProfileUI = this.hdE;
-        if ((!((com.tencent.mm.storage.c)localObject).isValid()) || (bk.getInt((String)((com.tencent.mm.storage.c)localObject).ctr().get(str), 0) <= 0)) {
-          break label148;
-        }
-      }
-    }
-    label136:
-    label142:
-    label148:
-    for (boolean bool = true;; bool = false)
-    {
-      AppBrandProfileUI.a(localAppBrandProfileUI, bool);
+      paramView = com.tencent.mm.plugin.appbrand.v.bs(this.iOl.hiy, "appid=" + AppBrandProfileUI.c(this.iOj).appId);
+      paramView = new Intent().putExtra("rawUrl", paramView).putExtra("forceHideShare", true);
+      d.b(this.iOj, "webview", ".ui.tools.WebViewUI", paramView);
+      AppBrandProfileUI.a(this.iOj, 21, 1);
+      AppMethodBeat.o(133031);
       return;
-      str = "openContactDev";
-      break;
-      localObject = "100401";
-      break label85;
+    }
+    catch (URISyntaxException paramView)
+    {
+      ab.printErrStackTrace("MicroMsg.AppBrand.Profile.AppBrandProfileUI", paramView, "URISyntaxException with originalRedirectUrl %s", new Object[] { this.iOl.hiy });
+      AppMethodBeat.o(133031);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI.6
  * JD-Core Version:    0.7.0.1
  */

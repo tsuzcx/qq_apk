@@ -1,5 +1,7 @@
 package com.tencent.mm.memory;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class n$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class n$1
   
   public final void run()
   {
-    n.a(this.dPq);
+    AppMethodBeat.i(115391);
+    n.a(this.fdW);
+    AppMethodBeat.o(115391);
   }
 }
 

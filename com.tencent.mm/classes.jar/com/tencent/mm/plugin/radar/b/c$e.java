@@ -1,18 +1,24 @@
 package com.tencent.mm.plugin.radar.b;
 
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "", "(Ljava/lang/String;I)V", "Stranger", "Verifying", "Added", "NeedVerify", "plugin-radar_release"})
 public enum c$e
 {
   static
   {
+    AppMethodBeat.i(102873);
     e locale1 = new e("Stranger", 0);
-    nkE = locale1;
+    pPU = locale1;
     e locale2 = new e("Verifying", 1);
-    nkF = locale2;
+    pPV = locale2;
     e locale3 = new e("Added", 2);
-    nkG = locale3;
+    pPW = locale3;
     e locale4 = new e("NeedVerify", 3);
-    nkH = locale4;
-    nkI = new e[] { locale1, locale2, locale3, locale4 };
+    pPX = locale4;
+    pPY = new e[] { locale1, locale2, locale3, locale4 };
+    AppMethodBeat.o(102873);
   }
   
   private c$e() {}

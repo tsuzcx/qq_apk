@@ -1,16 +1,24 @@
 package com.tencent.mm.wallet_core.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.WeakHashMap;
 
 public final class a
 {
-  public WeakHashMap<Object, Boolean> wBj = new WeakHashMap();
+  public WeakHashMap<Object, Boolean> AXH;
   
-  public static a cMS()
+  public a()
+  {
+    AppMethodBeat.i(49163);
+    this.AXH = new WeakHashMap();
+    AppMethodBeat.o(49163);
+  }
+  
+  public static a dSG()
   {
     try
     {
-      a locala = a.a.wBk;
+      a locala = a.a.AXI;
       return locala;
     }
     finally

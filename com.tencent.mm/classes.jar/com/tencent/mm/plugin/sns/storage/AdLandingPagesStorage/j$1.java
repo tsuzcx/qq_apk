@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.o;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class j$1
   implements f.a
 {
-  j$1(j paramj, p paramp) {}
+  j$1(j paramj, o paramo) {}
   
-  public final void Op(String paramString)
+  public final void abi(String paramString)
   {
-    j.a(this.oKJ, this.oKI.oCV);
+    AppMethodBeat.i(37760);
+    j.a(this.rCs, this.rCr.rsw);
+    AppMethodBeat.o(37760);
   }
   
-  public final void bCF()
+  public final void coe()
   {
-    y.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.oKI.oCV + "is error");
-    j.a(this.oKJ, this.oKI.oCV);
+    AppMethodBeat.i(37759);
+    ab.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.rCr.rsw + "is error");
+    j.a(this.rCs, this.rCr.rsw);
+    AppMethodBeat.o(37759);
   }
   
-  public final void bFl() {}
+  public final void cqU() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.j.1
  * JD-Core Version:    0.7.0.1
  */

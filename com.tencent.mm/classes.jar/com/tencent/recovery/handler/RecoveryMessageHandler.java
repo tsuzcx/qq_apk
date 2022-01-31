@@ -20,13 +20,13 @@ public class RecoveryMessageHandler
     default: 
       return;
     case 1: 
-      Recovery.cOs();
+      Recovery.dUh();
       return;
     case 2: 
-      Recovery.Jh(1);
+      Recovery.Sd(1);
       return;
     }
-    Recovery.Jh(1);
+    Recovery.Sd(1);
   }
 }
 

@@ -1,24 +1,29 @@
 package com.tencent.xweb.x5;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.xweb.c.b.b;
 
 public final class e
   implements b.b
 {
-  CookieSyncManager xkp;
+  CookieSyncManager BHU;
   
   public final void init(Context paramContext)
   {
-    this.xkp = CookieSyncManager.createInstance(paramContext);
+    AppMethodBeat.i(84806);
+    this.BHU = CookieSyncManager.createInstance(paramContext);
+    AppMethodBeat.o(84806);
   }
   
   public final void sync()
   {
-    if (this.xkp != null) {
-      this.xkp.sync();
+    AppMethodBeat.i(84807);
+    if (this.BHU != null) {
+      this.BHU.sync();
     }
+    AppMethodBeat.o(84807);
   }
 }
 

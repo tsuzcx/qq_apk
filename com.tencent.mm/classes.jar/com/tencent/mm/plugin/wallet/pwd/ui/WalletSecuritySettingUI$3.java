@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletSecuritySettingUI$3
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class WalletSecuritySettingUI$3
   
   public final void onClick(View paramView)
   {
-    y.v("MicroMsg.WalletSecuritySettingUI", "alvinluo click close");
-    this.qqb.finish();
+    AppMethodBeat.i(46395);
+    ab.v("MicroMsg.WalletSecuritySettingUI", "alvinluo click close");
+    this.uaz.finish();
+    AppMethodBeat.o(46395);
   }
 }
 

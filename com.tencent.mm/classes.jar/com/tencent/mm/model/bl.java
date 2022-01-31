@@ -1,94 +1,184 @@
 package com.tencent.mm.model;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import org.json.JSONObject;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import junit.framework.Assert;
 
 public final class bl
 {
-  public static bl dXq = new bl();
-  private SharedPreferences dXr = ae.getContext().getSharedPreferences(ae.cqR() + "_register_history", 0);
+  public int bsY;
+  public String fjJ;
+  public String fjL;
+  public String fnl;
+  public String fnm;
+  public String fnn;
+  public long fno;
+  public String fnp;
+  public String fnq;
+  public int fnr;
+  public int fns;
+  public long fnt;
+  public String fnu;
+  public String fnv;
+  public String name;
+  public long time;
+  public String title;
+  public int type;
+  public String url;
   
-  public final void f(String paramString, Map<String, String> paramMap)
+  public bl()
   {
-    Object localObject;
-    for (;;)
-    {
-      try
-      {
-        if (paramMap.isEmpty())
-        {
-          y.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
-          return;
-        }
-        if (!this.dXr.contains(paramString)) {
-          break label158;
-        }
-        localObject = this.dXr.getString(paramString, "");
-        if (!bk.bl((String)localObject))
-        {
-          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
-          Iterator localIterator = paramMap.keySet().iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          String str = (String)localIterator.next();
-          ((JSONObject)localObject).put(str, paramMap.get(str));
-          continue;
-        }
-        localObject = new JSONObject();
-      }
-      catch (Exception paramMap)
-      {
-        y.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
-        return;
-      }
-      continue;
-      label158:
-      localObject = new JSONObject();
-    }
-    y.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
-    this.dXr.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.i(108667);
+    this.bsY = -1;
+    this.fnl = "";
+    this.time = 0L;
+    this.type = 0;
+    this.name = "";
+    this.title = "";
+    this.url = "";
+    this.fnm = "";
+    this.fnn = "";
+    this.fno = 0L;
+    this.fnp = "";
+    this.fnq = "";
+    this.fnr = 0;
+    this.fjJ = "";
+    this.fjL = "";
+    this.fns = 0;
+    this.fnt = 0L;
+    this.fnu = "";
+    this.fnv = "";
+    AppMethodBeat.o(108667);
   }
   
-  public final String getString(String paramString1, String paramString2)
+  public static String kF(int paramInt)
   {
-    try
+    AppMethodBeat.i(108669);
+    if (paramInt == 20)
     {
-      y.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
-      if (this.dXr.contains(paramString1))
-      {
-        Object localObject = new String(Base64.decode(this.dXr.getString(paramString1, ""), 0));
-        if (!bk.bl((String)localObject))
-        {
-          y.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
-          localObject = new JSONObject((String)localObject);
-          if (((JSONObject)localObject).has(paramString2)) {
-            return ((JSONObject)localObject).getString(paramString2);
-          }
-        }
-      }
-      else
-      {
-        y.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
-      }
+      AppMethodBeat.o(108669);
+      return "newsapp";
     }
-    catch (Exception localException)
+    if (paramInt == 11)
     {
-      for (;;)
-      {
-        y.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
-      }
+      AppMethodBeat.o(108669);
+      return "blogapp";
     }
+    Assert.assertTrue("INFO TYPE NEITHER NEWS NOR WEIBO", false);
+    AppMethodBeat.o(108669);
+    return null;
+  }
+  
+  public final boolean aaU()
+  {
+    return this.fns == 1;
+  }
+  
+  public final String aaV()
+  {
+    if (this.fnl == null) {
+      return "";
+    }
+    return this.fnl;
+  }
+  
+  public final String aaW()
+  {
+    if (this.fnm == null) {
+      return "";
+    }
+    return this.fnm;
+  }
+  
+  public final String aaX()
+  {
+    if (this.fnp == null) {
+      return "";
+    }
+    return this.fnp;
+  }
+  
+  public final String aaY()
+  {
+    if (this.fnq == null) {
+      return "";
+    }
+    return this.fnq;
+  }
+  
+  public final String aaZ()
+  {
+    AppMethodBeat.i(108670);
+    if (this.fjJ != null)
+    {
+      Object localObject = this.fjJ.split("\\|");
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        localObject = localObject[0];
+        AppMethodBeat.o(108670);
+        return localObject;
+      }
+      AppMethodBeat.o(108670);
+      return "";
+    }
+    AppMethodBeat.o(108670);
     return "";
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(108668);
+    this.fnl = paramCursor.getString(0);
+    this.time = paramCursor.getLong(1);
+    this.type = paramCursor.getInt(2);
+    this.name = paramCursor.getString(3);
+    this.title = paramCursor.getString(4);
+    this.url = paramCursor.getString(5);
+    this.fnm = paramCursor.getString(6);
+    this.fnn = paramCursor.getString(7);
+    this.fno = paramCursor.getLong(8);
+    this.fnp = paramCursor.getString(9);
+    this.fnq = paramCursor.getString(10);
+    this.fnr = paramCursor.getInt(11);
+    this.fjJ = paramCursor.getString(12);
+    this.fjL = paramCursor.getString(13);
+    this.fns = paramCursor.getInt(14);
+    this.fnt = paramCursor.getLong(15);
+    this.fnu = paramCursor.getString(16);
+    this.fnv = paramCursor.getString(17);
+    AppMethodBeat.o(108668);
+  }
+  
+  public final String getDigest()
+  {
+    if (this.fjL == null) {
+      return "";
+    }
+    return this.fjL;
+  }
+  
+  public final String getName()
+  {
+    if (this.name == null) {
+      return "";
+    }
+    return this.name;
+  }
+  
+  public final String getTitle()
+  {
+    if (this.title == null) {
+      return "";
+    }
+    return this.title;
+  }
+  
+  public final String getUrl()
+  {
+    if (this.url == null) {
+      return "";
+    }
+    return this.url;
   }
 }
 

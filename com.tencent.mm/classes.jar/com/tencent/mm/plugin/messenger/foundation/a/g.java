@@ -4,7 +4,7 @@ import com.tencent.mm.storage.bi;
 
 public abstract interface g
 {
-  public abstract String v(bi parambi);
+  public abstract String B(bi parambi);
 }
 
 

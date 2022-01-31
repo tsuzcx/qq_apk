@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMSlideDelView;
 import com.tencent.mm.ui.base.MMSlideDelView.d;
 import java.util.Iterator;
@@ -12,48 +13,62 @@ final class SnsMsgUI$a$1
   
   public final void a(MMSlideDelView paramMMSlideDelView, boolean paramBoolean)
   {
+    AppMethodBeat.i(39084);
     if (paramBoolean)
     {
-      lwK.add(paramMMSlideDelView);
+      nTX.add(paramMMSlideDelView);
+      AppMethodBeat.o(39084);
       return;
     }
-    lwK.remove(paramMMSlideDelView);
+    nTX.remove(paramMMSlideDelView);
+    AppMethodBeat.o(39084);
   }
   
-  public final boolean bda()
+  public final boolean bKj()
   {
-    return lwK.size() > 0;
+    AppMethodBeat.i(39085);
+    if (nTX.size() > 0)
+    {
+      AppMethodBeat.o(39085);
+      return true;
+    }
+    AppMethodBeat.o(39085);
+    return false;
   }
   
-  public final void bdb()
+  public final void bKk()
   {
-    Iterator localIterator = lwK.iterator();
+    AppMethodBeat.i(39086);
+    Iterator localIterator = nTX.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.cAY();
+        localMMSlideDelView.dEk();
       }
     }
-    lwK.clear();
+    nTX.clear();
+    AppMethodBeat.o(39086);
   }
   
-  public final void bdc()
+  public final void bKl()
   {
-    Iterator localIterator = lwK.iterator();
+    AppMethodBeat.i(39087);
+    Iterator localIterator = nTX.iterator();
     while (localIterator.hasNext())
     {
       MMSlideDelView localMMSlideDelView = (MMSlideDelView)localIterator.next();
       if (localMMSlideDelView != null) {
-        localMMSlideDelView.cAX();
+        localMMSlideDelView.dEj();
       }
     }
-    lwK.clear();
+    nTX.clear();
+    AppMethodBeat.o(39087);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.a.1
  * JD-Core Version:    0.7.0.1
  */

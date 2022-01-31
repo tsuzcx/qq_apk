@@ -11,7 +11,7 @@ final class k$1
   
   public final byte readByte()
   {
-    byte[] arrayOfByte = this.wSM.data;
+    byte[] arrayOfByte = this.Bpt.data;
     int i = this.position;
     this.position = (i + 1);
     return arrayOfByte[i];

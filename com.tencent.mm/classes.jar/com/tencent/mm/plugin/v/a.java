@@ -1,36 +1,43 @@
 package com.tencent.mm.plugin.v;
 
-import android.content.Context;
-import android.graphics.Typeface;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.api.bucket.b;
+import com.tencent.mm.kernel.b.c;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.pluginsdk.wallet.b.a;
-import com.tencent.mm.protocal.c.bdd;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.m;
-import com.tencent.mm.wallet_core.ui.e;
-import java.util.Map;
+import java.util.List;
 
 public final class a
-  implements com.tencent.mm.pluginsdk.wallet.b
+  implements b, c
 {
-  public final void a(Map<String, Object> paramMap, String paramString1, String paramString2, int paramInt, b.a parama)
+  private static a qfB;
+  
+  public static a cgF()
   {
-    y.i("MicroMsg.WxPaySevice", "start jsapi securetunnel");
-    paramMap = new m(paramMap, paramString1, paramString2, paramInt, parama);
-    g.DQ();
-    g.DO().dJT.a(paramMap, 0);
+    try
+    {
+      AppMethodBeat.i(136942);
+      if (qfB == null) {
+        qfB = new a();
+      }
+      a locala = qfB;
+      AppMethodBeat.o(136942);
+      return locala;
+    }
+    finally {}
   }
   
-  public final bdd bkn()
+  public static String cgG()
   {
-    return i.bkn();
+    AppMethodBeat.i(136943);
+    String str = g.RL().eHR + "remark/";
+    AppMethodBeat.o(136943);
+    return str;
   }
   
-  public final Typeface dO(Context paramContext)
+  public final List<String> RR()
   {
-    return e.dO(paramContext);
+    return null;
   }
 }
 

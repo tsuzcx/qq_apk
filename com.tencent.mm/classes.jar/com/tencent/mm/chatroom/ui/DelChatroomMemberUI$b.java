@@ -5,9 +5,9 @@ import android.widget.TextView;
 
 final class DelChatroomMemberUI$b
 {
-  public ImageView doU;
-  public TextView doV;
-  public TextView doW;
+  public ImageView egq;
+  public TextView egr;
+  public TextView egs;
   
   DelChatroomMemberUI$b(DelChatroomMemberUI paramDelChatroomMemberUI) {}
 }

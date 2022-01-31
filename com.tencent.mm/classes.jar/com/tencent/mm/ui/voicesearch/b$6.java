@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.voicesearch;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$6
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class b$6
   
   public final void run()
   {
-    b.a(this.wiQ, this.gUe);
+    AppMethodBeat.i(35332);
+    b.a(this.ABH, this.iLL);
+    AppMethodBeat.o(35332);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.voicesearch.b.6
  * JD-Core Version:    0.7.0.1
  */

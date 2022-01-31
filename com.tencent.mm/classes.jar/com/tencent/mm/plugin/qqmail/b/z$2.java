@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 
 final class z$2
@@ -8,35 +9,38 @@ final class z$2
 {
   z$2(z paramz) {}
   
-  public final void Ln(String paramString)
+  public final void Xx(String paramString)
   {
+    AppMethodBeat.i(68032);
     y localy;
-    if (this.neN.neJ != null)
+    if (this.pKc.pJY != null)
     {
-      localy = this.neN.neJ;
-      if (!bk.bl(paramString)) {
-        break label94;
+      localy = this.pKc.pJY;
+      if (!bo.isNullOrNil(paramString)) {
+        break label104;
       }
-      com.tencent.mm.sdk.platformtools.y.w("MicroMsg.ShareMailInfoMgr", "notify fail error, subject is null");
+      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.ShareMailInfoMgr", "notify fail error, subject is null");
     }
-    while (this.neN.neH.size() > 0)
+    while (this.pKc.pJW.size() > 0)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.ShareMailQueue", "continue to send next mail");
-      paramString = (aa)this.neN.neH.remove(0);
-      this.neN.b(paramString);
-      this.neN.neI.a(this.neN.neL, this);
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareMailQueue", "continue to send next mail");
+      paramString = (aa)this.pKc.pJW.remove(0);
+      this.pKc.b(paramString);
+      this.pKc.pJX.a(this.pKc.pKa, this);
+      AppMethodBeat.o(68032);
       return;
-      label94:
-      y.Lm(paramString);
-      localy.Ll(paramString);
+      label104:
+      y.Xw(paramString);
+      localy.Xv(paramString);
     }
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.ShareMailQueue", "final job fail");
-    this.neN.neK = false;
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.ShareMailQueue", "final job fail");
+    this.pKc.pJZ = false;
+    AppMethodBeat.o(68032);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.z.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,42 +2,48 @@ package com.tencent.mm.plugin.wallet_ecard;
 
 import android.app.Activity;
 import android.content.Context;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.a.cp;
-import com.tencent.mm.h.a.cp.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet_core.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.a.cs;
+import com.tencent.mm.g.a.cs.a;
+import com.tencent.mm.plugin.wallet_core.c.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.ref.WeakReference;
 
 final class a$1$1
-  implements com.tencent.mm.ah.f
+  implements f
 {
-  a$1$1(a.1 param1, cp.a parama, cp paramcp, String paramString) {}
+  a$1$1(a.1 param1, cs.a parama, cs paramcs, String paramString) {}
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    g.DQ();
-    g.DO().dJT.b(580, this);
+    AppMethodBeat.i(48038);
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RK().eHt.b(580, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      y.i("MicroMsg.SubCoreECard", "jsapi check success");
-      com.tencent.mm.pluginsdk.wallet.f.Xf(((a)paramm).bUH());
-      paramString = (Context)this.qJI.aoB.get();
+      ab.i("MicroMsg.SubCoreECard", "jsapi check success");
+      com.tencent.mm.pluginsdk.wallet.g.ana(((d)paramm).cSW());
+      paramString = (Context)this.uyA.aqU.get();
       if ((paramString != null) && ((paramString instanceof Activity)))
       {
-        com.tencent.mm.plugin.wallet_ecard.a.b.a(bk.getInt(this.qJJ.bII.bIN, 0), this.qJJ.bII.token, this.qJJ.bII.bIM, this.qJK, paramString, new a.1.1.1(this));
+        a.a(this.uyD.uyz, new a.a(this.uyD.uyz, this.uyB));
+        com.tencent.mm.plugin.wallet_ecard.a.b.a(bo.getInt(this.uyB.cqd.cqi, 0), this.uyB.cqd.token, this.uyB.cqd.cqh, this.uyC, paramString, a.a(this.uyD.uyz));
+        AppMethodBeat.o(48038);
         return;
       }
-      this.qJJ.bIJ.retCode = -1;
-      this.qJJ.bII.bFJ.run();
+      this.uyB.cqe.retCode = -1;
+      this.uyB.cqd.callback.run();
+      AppMethodBeat.o(48038);
       return;
     }
-    y.e("MicroMsg.SubCoreECard", "jsapi check fail");
-    this.qJJ.bIJ.retCode = -1;
-    this.qJJ.bII.bFJ.run();
+    ab.e("MicroMsg.SubCoreECard", "jsapi check fail");
+    this.uyB.cqe.retCode = -1;
+    this.uyB.cqd.callback.run();
+    AppMethodBeat.o(48038);
   }
 }
 

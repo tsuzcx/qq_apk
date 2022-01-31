@@ -4,8 +4,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import com.tencent.mm.h.c.as;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.au;
+import com.tencent.mm.ui.widget.c.a;
 
 final class SettingCheckUnProcessWalletConvUI$4
   implements AdapterView.OnItemLongClickListener
@@ -14,20 +15,24 @@ final class SettingCheckUnProcessWalletConvUI$4
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = SettingCheckUnProcessWalletConvUI.b(this.vUd).HS(paramInt - SettingCheckUnProcessWalletConvUI.c(this.vUd).getHeaderViewsCount());
-    if (paramAdapterView == null) {
+    AppMethodBeat.i(34616);
+    paramAdapterView = SettingCheckUnProcessWalletConvUI.b(this.AlZ).QE(paramInt - SettingCheckUnProcessWalletConvUI.c(this.AlZ).getHeaderViewsCount());
+    if (paramAdapterView == null)
+    {
+      AppMethodBeat.o(34616);
       return true;
     }
     String str = paramAdapterView.field_username;
-    a locala = new a(this.vUd);
-    locala.wog = new SettingCheckUnProcessWalletConvUI.4.1(this);
-    locala.a(paramView, paramInt, paramLong, this.vUd, new SettingCheckUnProcessWalletConvUI.4.2(this, str, paramAdapterView), SettingCheckUnProcessWalletConvUI.a(this.vUd)[0], SettingCheckUnProcessWalletConvUI.a(this.vUd)[1]);
+    a locala = new a(this.AlZ);
+    locala.AIG = new SettingCheckUnProcessWalletConvUI.4.1(this);
+    locala.a(paramView, paramInt, paramLong, this.AlZ, new SettingCheckUnProcessWalletConvUI.4.2(this, str, paramAdapterView), SettingCheckUnProcessWalletConvUI.a(this.AlZ)[0], SettingCheckUnProcessWalletConvUI.a(this.AlZ)[1]);
+    AppMethodBeat.o(34616);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.SettingCheckUnProcessWalletConvUI.4
  * JD-Core Version:    0.7.0.1
  */

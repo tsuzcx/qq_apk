@@ -5,7 +5,7 @@ public final class c$de
 {
   public c$de()
   {
-    super("hideNavigationBarLoading", "hideNavigationBarLoading", 198, false);
+    super("getWechatVerifyTicket", "getWechatVerifyTicket", 112, false);
   }
 }
 

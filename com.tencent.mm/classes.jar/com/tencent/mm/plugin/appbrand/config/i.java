@@ -1,24 +1,61 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.jsapi.g;
+import android.content.SharedPreferences.Editor;
+import com.tencent.luggage.sdk.d.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.performance.a;
+import com.tencent.mmkv.MMKV;
 
-public class i
-  implements g
+public final class i
 {
-  public String appId = "appId";
-  public String bJw = "appName";
-  public String fPM = "";
-  public boolean fPN = false;
-  public int fPO = 5;
-  public boolean fPP;
-  public int fPQ = 5;
-  public int fPR = 60;
-  public WxaPkgWrappingInfo fPS = null;
+  private static final MMKV hjd;
   
-  public int aej()
+  static
   {
-    return this.fPS.fEM;
+    AppMethodBeat.i(140819);
+    hjd = MMKV.mmkvWithID("com.tencent.mm.plugin.appbrand.config.AppDebugInfoHelper", 2);
+    AppMethodBeat.o(140819);
+  }
+  
+  public static boolean Ab(String paramString)
+  {
+    AppMethodBeat.i(140816);
+    boolean bool = hjd.getBoolean(paramString + "_AppDebugEnabled", false);
+    AppMethodBeat.o(140816);
+    return bool;
+  }
+  
+  public static boolean a(b paramb)
+  {
+    AppMethodBeat.i(140818);
+    a locala = (a)paramb.d(a.class, false);
+    if (locala == null)
+    {
+      AppMethodBeat.o(140818);
+      return false;
+    }
+    if (paramb.wV())
+    {
+      AppMethodBeat.o(140818);
+      return false;
+    }
+    boolean bool = locala.iAF;
+    AppMethodBeat.o(140818);
+    return bool;
+  }
+  
+  public static void ab(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(140815);
+    hjd.putBoolean(paramString + "_AppDebugEnabled", paramBoolean).commit();
+    AppMethodBeat.o(140815);
+  }
+  
+  public static void zY(String paramString)
+  {
+    AppMethodBeat.i(140817);
+    hjd.remove(paramString + "_AppDebugEnabled").commit();
+    AppMethodBeat.o(140817);
   }
 }
 

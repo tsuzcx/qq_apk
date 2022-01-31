@@ -11,7 +11,7 @@ public abstract class AbstractResultService
 {
   public AbstractResultService()
   {
-    super(AbstractResultService.class.getSimpleName());
+    super("TinkerResultService");
   }
   
   public static void a(Context paramContext, a parama, String paramString)
@@ -29,7 +29,7 @@ public abstract class AbstractResultService
     }
     catch (Throwable paramContext)
     {
-      com.tencent.tinker.lib.f.a.e("Tinker.AbstractResultService", "run result service fail, exception:" + paramContext, new Object[0]);
+      com.tencent.tinker.lib.f.a.e("Tinker.AbstractResultService", "run result service fail, exception:".concat(String.valueOf(paramContext)), new Object[0]);
     }
   }
   
@@ -42,12 +42,12 @@ public abstract class AbstractResultService
       com.tencent.tinker.lib.f.a.e("Tinker.AbstractResultService", "AbstractResultService received a null intent, ignoring.", new Object[0]);
       return;
     }
-    a((a)ShareIntentUtil.p(paramIntent, "result_extra"));
+    a((a)ShareIntentUtil.u(paramIntent, "result_extra"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tinker.lib.service.AbstractResultService
  * JD-Core Version:    0.7.0.1
  */

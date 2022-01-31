@@ -5,9 +5,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tenpay.android.wechat.MyKeyboardWindow;
 
 final class WxaLuckyMoneyPrepareUI$8
@@ -17,23 +16,31 @@ final class WxaLuckyMoneyPrepareUI$8
   
   public final void onClick(View paramView)
   {
-    if ((this.lMx.lMr.isShown()) && (!this.eYg)) {
-      if (this.lMx.mKeyboard != null) {
-        this.lMx.mKeyboard.setInputEditText(this.eYi);
+    AppMethodBeat.i(42063);
+    if ((this.ojQ.mKBLayout.isShown()) && (!this.val$isShowSysKB))
+    {
+      if (this.ojQ.mKeyboard != null)
+      {
+        this.ojQ.mKeyboard.setInputEditText(this.val$hintTv);
+        AppMethodBeat.o(42063);
       }
     }
-    do
+    else
     {
-      return;
-      if ((!this.lMx.lMr.isShown()) && (!this.eYg))
+      if ((!this.ojQ.mKBLayout.isShown()) && (!this.val$isShowSysKB))
       {
-        ((InputMethodManager)this.lMx.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-        new ah().postDelayed(new WxaLuckyMoneyPrepareUI.8.1(this), 200L);
+        ((InputMethodManager)this.ojQ.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+        new ak().postDelayed(new WxaLuckyMoneyPrepareUI.8.1(this), 200L);
+        AppMethodBeat.o(42063);
         return;
       }
-    } while (!this.eYg);
-    this.lMx.lMr.setVisibility(8);
-    ((InputMethodManager)this.lMx.mController.uMN.getSystemService("input_method")).showSoftInput(this.eYi, 0);
+      if (this.val$isShowSysKB)
+      {
+        this.ojQ.mKBLayout.setVisibility(8);
+        ((InputMethodManager)this.ojQ.getContext().getSystemService("input_method")).showSoftInput(this.val$hintTv, 0);
+      }
+    }
+    AppMethodBeat.o(42063);
   }
 }
 

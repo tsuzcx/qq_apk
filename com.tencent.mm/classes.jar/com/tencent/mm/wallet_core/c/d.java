@@ -1,12 +1,38 @@
 package com.tencent.mm.wallet_core.c;
 
-public abstract interface d
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class d
 {
-  public abstract void bTn();
+  public int AWM;
+  public int errCode;
+  public String errMsg;
+  public int errType;
   
-  public abstract void bTo();
+  public d()
+  {
+    this.AWM = 0;
+    this.errType = 0;
+    this.errCode = 0;
+    this.errMsg = "";
+    this.AWM = 0;
+  }
   
-  public abstract void onCancel();
+  public d(int paramInt1, int paramInt2, String paramString)
+  {
+    AppMethodBeat.i(49037);
+    this.AWM = 0;
+    e(paramInt1, paramInt2, paramString, 0);
+    AppMethodBeat.o(49037);
+  }
+  
+  public final void e(int paramInt1, int paramInt2, String paramString, int paramInt3)
+  {
+    this.errType = paramInt1;
+    this.errCode = paramInt2;
+    this.errMsg = paramString;
+    this.AWM = paramInt3;
+  }
 }
 
 

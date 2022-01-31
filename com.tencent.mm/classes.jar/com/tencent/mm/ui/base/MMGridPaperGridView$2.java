@@ -3,7 +3,8 @@ package com.tencent.mm.ui.base;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class MMGridPaperGridView$2
   implements AdapterView.OnItemLongClickListener
@@ -12,9 +13,16 @@ final class MMGridPaperGridView$2
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (MMGridPaperGridView.a(this.uVU) == null) {
-      y.w("MicroMsg.MMGridPaperGridView", "on item long click, but main adapter is null");
+    AppMethodBeat.i(106640);
+    if (MMGridPaperGridView.a(this.zkn) == null)
+    {
+      ab.w("MicroMsg.MMGridPaperGridView", "on item long click, but main adapter is null");
+      AppMethodBeat.o(106640);
+      return false;
     }
+    MMGridPaperGridView.a(this.zkn);
+    MMGridPaperGridView.b(this.zkn);
+    AppMethodBeat.o(106640);
     return false;
   }
 }

@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$bs
+final class c$bs
   extends c.g
 {
-  public c$bs()
+  c$bs()
   {
-    super("getEnterpriseChat", "getEnterpriseChat", 244, false);
+    super("getBackgroundAudioState", "getBackgroundAudioState", 263, false);
   }
 }
 

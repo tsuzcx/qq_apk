@@ -1,60 +1,53 @@
 package android.support.v4.app;
 
-import android.view.View;
-import android.view.View.OnAttachStateChangeListener;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager.NameNotFoundException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-final class ab
-  implements View.OnAttachStateChangeListener, ViewTreeObserver.OnPreDrawListener
+public final class ab
+  implements Iterable<Intent>
 {
-  private final Runnable mRunnable;
-  private final View mView;
-  private ViewTreeObserver yK;
+  public final ArrayList<Intent> zx = new ArrayList();
+  public final Context zy;
   
-  private ab(View paramView, Runnable paramRunnable)
+  private ab(Context paramContext)
   {
-    this.mView = paramView;
-    this.yK = paramView.getViewTreeObserver();
-    this.mRunnable = paramRunnable;
+    this.zy = paramContext;
   }
   
-  public static ab a(View paramView, Runnable paramRunnable)
+  public static ab M(Context paramContext)
   {
-    paramRunnable = new ab(paramView, paramRunnable);
-    paramView.getViewTreeObserver().addOnPreDrawListener(paramRunnable);
-    paramView.addOnAttachStateChangeListener(paramRunnable);
-    return paramRunnable;
+    return new ab(paramContext);
   }
   
-  private void ch()
+  public final ab a(ComponentName paramComponentName)
   {
-    if (this.yK.isAlive()) {
-      this.yK.removeOnPreDrawListener(this);
-    }
-    for (;;)
+    int i = this.zx.size();
+    try
     {
-      this.mView.removeOnAttachStateChangeListener(this);
-      return;
-      this.mView.getViewTreeObserver().removeOnPreDrawListener(this);
+      for (paramComponentName = q.a(this.zy, paramComponentName); paramComponentName != null; paramComponentName = q.a(this.zy, paramComponentName.getComponent())) {
+        this.zx.add(i, paramComponentName);
+      }
+      return this;
+    }
+    catch (PackageManager.NameNotFoundException paramComponentName)
+    {
+      throw new IllegalArgumentException(paramComponentName);
     }
   }
   
-  public final boolean onPreDraw()
+  @Deprecated
+  public final Iterator<Intent> iterator()
   {
-    ch();
-    this.mRunnable.run();
-    return true;
+    return this.zx.iterator();
   }
   
-  public final void onViewAttachedToWindow(View paramView)
+  public static abstract interface a
   {
-    this.yK = paramView.getViewTreeObserver();
-  }
-  
-  public final void onViewDetachedFromWindow(View paramView)
-  {
-    ch();
+    public abstract Intent getSupportParentActivityIntent();
   }
 }
 

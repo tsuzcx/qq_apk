@@ -4,7 +4,8 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.ui.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.al;
 
 final class WalletForgotPwdVerifyIdUI$3
   implements Runnable
@@ -13,14 +14,16 @@ final class WalletForgotPwdVerifyIdUI$3
   
   public final void run()
   {
-    WalletForgotPwdVerifyIdUI.b(this.qpj).setVisibility(8);
-    WalletForgotPwdVerifyIdUI.c(this.qpj).setVisibility(8);
-    this.qpj.qpc = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.d(this.qpj).getLayoutParams());
-    this.qpj.qpc.topMargin = ap.fromDPToPix(this.qpj, 47);
-    WalletForgotPwdVerifyIdUI.d(this.qpj).setLayoutParams(this.qpj.qpc);
-    this.qpj.qpd = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.e(this.qpj).getLayoutParams());
-    this.qpj.qpd.topMargin = ap.fromDPToPix(this.qpj, 48);
-    WalletForgotPwdVerifyIdUI.e(this.qpj).setLayoutParams(this.qpj.qpd);
+    AppMethodBeat.i(46308);
+    WalletForgotPwdVerifyIdUI.c(this.tZw).setVisibility(8);
+    WalletForgotPwdVerifyIdUI.d(this.tZw).setVisibility(8);
+    this.tZw.tZp = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.e(this.tZw).getLayoutParams());
+    this.tZw.tZp.topMargin = al.fromDPToPix(this.tZw, 47);
+    WalletForgotPwdVerifyIdUI.e(this.tZw).setLayoutParams(this.tZw.tZp);
+    this.tZw.tZq = ((ViewGroup.MarginLayoutParams)WalletForgotPwdVerifyIdUI.f(this.tZw).getLayoutParams());
+    this.tZw.tZq.topMargin = al.fromDPToPix(this.tZw, 48);
+    WalletForgotPwdVerifyIdUI.f(this.tZw).setLayoutParams(this.tZw.tZq);
+    AppMethodBeat.o(46308);
   }
 }
 

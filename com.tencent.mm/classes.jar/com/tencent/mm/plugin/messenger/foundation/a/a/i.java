@@ -1,68 +1,18 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
-import com.tencent.mm.bv.a;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.IOException;
-
 public abstract interface i
 {
-  public static final class a
-    extends i.b
-  {
-    private int cmdId;
-    
-    public a(int paramInt, a parama)
-    {
-      super();
-      this.cmdId = paramInt;
-      this.mdD = parama;
-    }
-    
-    public final int getCmdId()
-    {
-      return this.cmdId;
-    }
-  }
+  public abstract void a(int paramInt, a parama);
   
-  public static class b
+  public abstract void b(int paramInt, a parama);
+  
+  public abstract void c(j.b paramb);
+  
+  public abstract void d(j.b paramb);
+  
+  public static abstract interface a
   {
-    public int bcw = -1;
-    public byte[] buffer;
-    public int cmdId;
-    public long eml;
-    public int id;
-    public long mdA;
-    public String mdB;
-    public String mdC;
-    public a mdD;
-    public int mdz;
-    
-    public b(int paramInt)
-    {
-      this.cmdId = paramInt;
-    }
-    
-    public final byte[] getBuffer()
-    {
-      if ((this.buffer == null) && (this.mdD != null)) {}
-      try
-      {
-        this.buffer = this.mdD.toByteArray();
-        return this.buffer;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          y.e("MicroMsg.OpLog.Operation", "summeroplog Operation toByteArray err: " + localIOException.getMessage());
-        }
-      }
-    }
-    
-    public int getCmdId()
-    {
-      return this.cmdId;
-    }
+    public abstract void x(int paramInt, String paramString1, String paramString2);
   }
 }
 

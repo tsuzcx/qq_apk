@@ -5,7 +5,7 @@ public final class c$iu
 {
   public c$iu()
   {
-    super("showKeyboard", "showKeyboard", 187, false);
+    super("setCloseWindowConfirmDialogInfo", "setCloseWindowConfirmDialogInfo", 77, false);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.tmassistantsdk.downloadclient;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tmassistantsdk.network.GetAppSimpleDetailEngine;
 import com.tencent.tmassistantsdk.protocol.jce.AppDetailParam;
 import com.tencent.tmassistantsdk.protocol.jce.AppSimpleDetail;
@@ -12,28 +13,35 @@ public class TMAssistantDownloadSDKURLTool
 {
   protected static final String TAG = "TMAssistantDownloadSDKExchangeURL";
   protected static TMAssistantDownloadSDKURLTool mInstance = null;
-  protected GetAppSimpleDetailEngine engine = null;
-  protected ITMAssistantExchangeURLListenner mListener = null;
+  protected GetAppSimpleDetailEngine engine;
+  protected ITMAssistantExchangeURLListenner mListener;
   
   private TMAssistantDownloadSDKURLTool(ITMAssistantExchangeURLListenner paramITMAssistantExchangeURLListenner)
   {
+    AppMethodBeat.i(75671);
+    this.mListener = null;
+    this.engine = null;
     if (paramITMAssistantExchangeURLListenner != null)
     {
       this.mListener = paramITMAssistantExchangeURLListenner;
       this.engine = new GetAppSimpleDetailEngine(this.mListener);
+      AppMethodBeat.o(75671);
       return;
     }
     TMLog.e("TMAssistantDownloadSDKExchangeURL", "ITMAssistantExchangeURLListenner listener shouldn't be null!");
+    AppMethodBeat.o(75671);
   }
   
   public static TMAssistantDownloadSDKURLTool getInstance(ITMAssistantExchangeURLListenner paramITMAssistantExchangeURLListenner)
   {
     try
     {
+      AppMethodBeat.i(75672);
       if (mInstance == null) {
         mInstance = new TMAssistantDownloadSDKURLTool(paramITMAssistantExchangeURLListenner);
       }
       paramITMAssistantExchangeURLListenner = mInstance;
+      AppMethodBeat.o(75672);
       return paramITMAssistantExchangeURLListenner;
     }
     finally {}
@@ -41,6 +49,7 @@ public class TMAssistantDownloadSDKURLTool
   
   public void exchangeUrlsFromPackageNames(ArrayList<String> paramArrayList)
   {
+    AppMethodBeat.i(75673);
     if (paramArrayList != null)
     {
       ArrayList localArrayList = new ArrayList();
@@ -61,16 +70,20 @@ public class TMAssistantDownloadSDKURLTool
       if ((localArrayList.size() > 0) && (this.engine != null)) {
         this.engine.sendReuqest(localArrayList);
       }
+      AppMethodBeat.o(75673);
       return;
     }
     TMLog.w("TMAssistantDownloadSDKExchangeURL", "packageNames is null!");
+    AppMethodBeat.o(75673);
   }
   
   public void onExchangedURLSucceed(ArrayList<AppSimpleDetail> paramArrayList, boolean paramBoolean)
   {
+    AppMethodBeat.i(75674);
     if (this.mListener != null) {
       this.mListener.onExchangedURLSucceed(paramArrayList, paramBoolean);
     }
+    AppMethodBeat.o(75674);
   }
 }
 

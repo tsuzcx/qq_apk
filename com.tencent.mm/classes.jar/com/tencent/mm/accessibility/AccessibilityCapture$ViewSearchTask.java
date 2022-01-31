@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityRecord;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Field;
 import java.util.List;
 
@@ -22,44 +23,55 @@ public class AccessibilityCapture$ViewSearchTask
   
   private int findAccessibilityId()
   {
+    AppMethodBeat.i(118627);
     try
     {
-      localField1 = AccessibilityRecord.class.getDeclaredField("mSourceNodeId");
+      Field localField1 = AccessibilityRecord.class.getDeclaredField("mSourceNodeId");
+      try
+      {
+        localField1.setAccessible(true);
+        l = ((Long)localField1.get(this.mEvent)).longValue();
+        i = (int)l;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException2)
+      {
+        for (;;)
+        {
+          Object localObject2;
+          AccessibilityIdNotFoundException localAccessibilityIdNotFoundException;
+          try
+          {
+            Field localField2;
+            Object localObject1 = AccessibilityNodeInfo.class.getDeclaredField("mSourceNodeId");
+            localObject2 = AccessibilityRecord.class.getDeclaredField("mSealed");
+            ((Field)localObject2).setAccessible(true);
+            ((Field)localObject2).set(this.mEvent, Boolean.TRUE);
+            localObject2 = this.mEvent.getSource();
+            if (localObject2 == null)
+            {
+              localObject1 = new AccessibilityIdNotFoundException();
+              AppMethodBeat.o(118627);
+              throw ((Throwable)localObject1);
+            }
+          }
+          catch (NoSuchFieldException localNoSuchFieldException3)
+          {
+            localAccessibilityIdNotFoundException = new AccessibilityIdNotFoundException(localNoSuchFieldException3);
+            AppMethodBeat.o(118627);
+            throw localAccessibilityIdNotFoundException;
+          }
+          localAccessibilityIdNotFoundException.setAccessible(true);
+          long l = ((Long)localAccessibilityIdNotFoundException.get(localObject2)).longValue();
+          int i = (int)l;
+        }
+      }
+      AppMethodBeat.o(118627);
+      return i;
     }
     catch (NoSuchFieldException localNoSuchFieldException1)
     {
       for (;;)
       {
-        try
-        {
-          Field localField1;
-          localField1.setAccessible(true);
-          return (int)((Long)localField1.get(this.mEvent)).longValue();
-        }
-        catch (NoSuchFieldException localNoSuchFieldException2)
-        {
-          Object localObject;
-          try
-          {
-            Field localField2;
-            Field localField3 = AccessibilityNodeInfo.class.getDeclaredField("mSourceNodeId");
-            localObject = AccessibilityRecord.class.getDeclaredField("mSealed");
-            ((Field)localObject).setAccessible(true);
-            ((Field)localObject).set(this.mEvent, Boolean.valueOf(true));
-            localObject = this.mEvent.getSource();
-            if (localObject == null) {
-              throw new AccessibilityIdNotFoundException();
-            }
-          }
-          catch (NoSuchFieldException localNoSuchFieldException3)
-          {
-            throw new AccessibilityIdNotFoundException(localNoSuchFieldException3);
-          }
-          localNoSuchFieldException3.setAccessible(true);
-          long l = ((Long)localNoSuchFieldException3.get(localObject)).longValue();
-          return (int)l;
-        }
-        localNoSuchFieldException1 = localNoSuchFieldException1;
         localField2 = AccessibilityRecord.class.getDeclaredField("mSourceViewId");
       }
     }
@@ -67,30 +79,36 @@ public class AccessibilityCapture$ViewSearchTask
   
   private View searchViewByAccessibilityId(int paramInt)
   {
+    AppMethodBeat.i(118629);
     try
     {
       Object localObject = new ViewSearchTool().findView(new AccessibilityCapture.ViewSearchTask.1(this, paramInt));
       if ((localObject != null) && (((List)localObject).size() == 1))
       {
         localObject = (View)((List)localObject).get(0);
+        AppMethodBeat.o(118629);
         return localObject;
       }
     }
     catch (Exception localException)
     {
       AccessibilityCapture.access$600().e("MicroMsg.AccessibilityCapture", "exception when find root", new Object[] { localException });
+      AppMethodBeat.o(118629);
       return null;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      label68:
-      break label68;
+      label78:
+      break label78;
     }
   }
   
   public void run()
   {
-    if (this.mEvent == null) {
+    AppMethodBeat.i(118628);
+    if (this.mEvent == null)
+    {
+      AppMethodBeat.o(118628);
       return;
     }
     try
@@ -103,16 +121,19 @@ public class AccessibilityCapture$ViewSearchTask
       try
       {
         this.mEvent.recycle();
+        AppMethodBeat.o(118628);
         return;
       }
       catch (Throwable localThrowable1)
       {
         AccessibilityCapture.access$600().e("MicroMsg.AccessibilityCapture", "Throw something when recycle event which shouldn't occurs.", new Object[] { localThrowable1 });
+        AppMethodBeat.o(118628);
         return;
       }
       try
       {
         this.mEvent.recycle();
+        AppMethodBeat.o(118628);
         throw localObject;
       }
       catch (Throwable localThrowable4)
@@ -130,11 +151,13 @@ public class AccessibilityCapture$ViewSearchTask
       try
       {
         this.mEvent.recycle();
+        AppMethodBeat.o(118628);
         return;
       }
       catch (Throwable localThrowable3)
       {
         AccessibilityCapture.access$600().e("MicroMsg.AccessibilityCapture", "Throw something when recycle event which shouldn't occurs.", new Object[] { localThrowable3 });
+        AppMethodBeat.o(118628);
         return;
       }
     }

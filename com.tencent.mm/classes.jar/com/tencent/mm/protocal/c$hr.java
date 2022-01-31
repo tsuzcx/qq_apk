@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$hr
+public final class c$hr
   extends c.g
 {
-  c$hr()
+  public c$hr()
   {
-    super("menuitem:gameSendDesktop", "menuitem:gameSendDesktop", 255, false);
+    super("reportSearchRealTimeStatistics", "", 10000, false);
   }
 }
 

@@ -1,79 +1,45 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.av.g;
-import com.tencent.mm.modelsns.b;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.dk;
-import com.tencent.mm.protocal.c.rp;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
+import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class bf$2
-  implements View.OnClickListener
+  implements Runnable
 {
+  int offset = 0;
+  
   bf$2(bf parambf) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    boolean bool = paramView.getTag() instanceof q;
-    y.d("MicroMsg.TimeLineClickEvent", "musicRedirectListener click " + bool);
-    if (!bool) {}
-    label176:
-    label305:
-    for (;;)
+    AppMethodBeat.i(39887);
+    if ((this.scY.list != null) && (this.scY.list.getCount() > this.scY.position))
     {
-      return;
-      q localq = (q)paramView.getTag();
-      bxk localbxk = localq.oOz;
-      String str;
-      if (!bf.Ma(localbxk.lsK)) {
-        if ((!com.tencent.mm.r.a.bk(this.pkg.context)) && (!com.tencent.mm.r.a.bi(this.pkg.context)))
-        {
-          h.nFQ.aC(10090, "1,0");
-          if (localbxk.tNr.sPJ.size() > 0)
-          {
-            awd localawd = (awd)localbxk.tNr.sPJ.get(0);
-            if (this.pkg.source != 0) {
-              break label253;
-            }
-            paramView = b.jd(738);
-            b localb = paramView.ni(localbxk.lsK).ni(localbxk.hPY);
-            if (localbxk.tNq != null) {
-              break label263;
-            }
-            str = "";
-            localb.ni(str).ni(localawd.bGw).ni(localawd.kRN).ni("");
-            paramView.QX();
-          }
-          if (!localq.oOA) {
-            break label275;
-          }
-          com.tencent.mm.av.a.a(g.a(af.FU(), localbxk, 9));
-        }
-      }
-      for (;;)
+      this.scY.rPV = this.scY.rFo.getTop();
+      int i = this.scY.rPV - this.scY.scS - this.scY.scQ;
+      ab.d("MicroMsg.TimeLineScrollAnimation", "itemH:" + this.scY.scQ + " footerTop" + this.scY.rPV + " list.bottom:" + this.scY.list.getBottom() + " position: " + this.scY.position + " topselection: " + i);
+      ab.d("MicroMsg.TimeLineScrollAnimation", "list.getTop(): " + this.scY.list.getTop() + " marginTop: " + this.scY.scS + " footerTop " + this.scY.rPV);
+      if (i == this.offset)
       {
-        if (this.pkg.pjR == null) {
-          break label305;
-        }
-        this.pkg.pjR.bIF();
+        this.scY.list.setSelectionFromTop(this.scY.position + this.scY.list.getHeaderViewsCount(), i);
+        this.offset = 0;
+        this.scY.bQA = 0;
+        AppMethodBeat.o(39887);
         return;
-        label253:
-        paramView = b.je(738);
-        break;
-        str = localbxk.tNq.lsK;
-        break label176;
-        com.tencent.mm.av.a.b(g.a(af.FU(), localbxk, 1));
-        continue;
-        h.nFQ.aC(10231, "1");
-        com.tencent.mm.av.a.Ps();
       }
+      if (bf.a(this.scY) > 0)
+      {
+        new ak().postDelayed(this, 100L);
+        this.offset = i;
+        AppMethodBeat.o(39887);
+        return;
+      }
+      this.offset = 0;
+      this.scY.bQA = 0;
     }
+    AppMethodBeat.o(39887);
   }
 }
 

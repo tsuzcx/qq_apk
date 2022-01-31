@@ -5,7 +5,7 @@ public final class e$a
 {
   public e$a(e parame) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
   }

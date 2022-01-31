@@ -1,104 +1,116 @@
 package com.tencent.mm.app;
 
-import android.os.Build;
-import com.tencent.tinker.lib.f.a;
-import com.tencent.tinker.loader.app.ApplicationLike;
-import com.tencent.tinker.loader.shareutil.ShareTinkerInternals;
-import org.xmlpull.v1.XmlPullParserException;
+import android.app.Application;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kiss.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.svg.a.e;
+import com.tencent.mm.svg.b.c.a;
 
 public final class s
 {
-  public static boolean a(StackTraceElement[] paramArrayOfStackTraceElement)
+  private static Class<?> bYU = null;
+  private static Application bYV;
+  private static String mPackageName = null;
+  private static Resources sResources;
+  
+  public static void A(Class<?> paramClass)
   {
-    boolean bool2 = false;
-    int j = paramArrayOfStackTraceElement.length;
-    int i = 0;
+    bYU = paramClass;
+  }
+  
+  public static void By()
+  {
+    boolean bool = true;
+    AppMethodBeat.i(15396);
+    ab.i("MicroMsg.SVGInit", "SVG initSVGPreload");
+    e.a(new c.a()
+    {
+      public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(15394);
+        ab.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(15394);
+      }
+      
+      public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(15393);
+        ab.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(15393);
+      }
+      
+      public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(15392);
+        ab.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(15392);
+      }
+      
+      public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(15395);
+        ab.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(15395);
+      }
+      
+      public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      {
+        AppMethodBeat.i(156056);
+        ab.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        AppMethodBeat.o(156056);
+      }
+    });
+    e.A(bYU);
+    e.a(bYV, sResources, mPackageName);
+    Object localObject1 = bYV;
     for (;;)
     {
-      boolean bool1 = bool2;
-      if (i < j)
+      try
       {
-        String str = paramArrayOfStackTraceElement[i].getClassName();
-        if ((str != null) && ((str.contains("de.robv.android.xposed.XposedBridge")) || (str.contains("com.zte.heartyservice.SCC.FrameworkBridge")))) {
-          bool1 = true;
+        localObject1 = ((Application)localObject1).getBaseContext().getResources().getDrawable(2131230734);
+        if (localObject1 != null)
+        {
+          i = 1;
+          localObject1 = b.SH();
+          if (i == 0)
+          {
+            ((b)localObject1).eKV = bool;
+            AppMethodBeat.o(15396);
+            return;
+          }
+          bool = false;
+          continue;
         }
+        int i = 0;
       }
-      else
+      catch (Throwable localThrowable)
       {
-        return bool1;
+        ab.printErrStackTrace("MicroMsg.SVGInit", localThrowable, "not support get svg from application context", new Object[0]);
+        return;
       }
-      i += 1;
+      finally
+      {
+        b.SH().eKV = true;
+        AppMethodBeat.o(15396);
+      }
     }
   }
   
-  public static void b(Throwable paramThrowable)
+  public static void a(Application paramApplication, Resources paramResources)
   {
-    ApplicationLike localApplicationLike = b.applicationLike;
-    if ((localApplicationLike == null) || (localApplicationLike.getApplication() == null))
-    {
-      a.w("TinkerCrashProtect", "applicationlike is null", new Object[0]);
-      return;
-    }
-    if (!com.tencent.tinker.lib.e.b.d(localApplicationLike))
-    {
-      a.w("TinkerCrashProtect", "tinker is not loaded", new Object[0]);
-      return;
-    }
-    int i;
-    label74:
-    boolean bool;
-    if ((Build.MODEL.contains("ZUK")) || (Build.MODEL.contains("zuk")))
-    {
-      i = 1;
-      bool = false;
-      label76:
-      if (paramThrowable == null) {
-        break label249;
-      }
-      if (bool) {
-        break label256;
-      }
-      bool = a(paramThrowable.getStackTrace());
-    }
-    label256:
-    for (;;)
-    {
-      if (bool) {
-        if ((!(paramThrowable instanceof IllegalAccessError)) || (!paramThrowable.getMessage().contains("Class ref in pre-verified class resolved to unexpected implementation"))) {
-          break label251;
-        }
-      }
-      label249:
-      label251:
-      for (int j = 1;; j = 0)
-      {
-        if (j != 0)
-        {
-          a.e("TinkerCrashProtect", "have xposed: just clean tinker", new Object[0]);
-          ShareTinkerInternals.ig(localApplicationLike.getApplication());
-          com.tencent.tinker.lib.e.b.f(localApplicationLike);
-          ShareTinkerInternals.ic(localApplicationLike.getApplication());
-          return;
-          i = 0;
-          break label74;
-        }
-        if (i != 0)
-        {
-          a.w("TinkerCrashProtect", "it is zuk model here, crash:" + paramThrowable.getMessage(), new Object[0]);
-          if (((paramThrowable instanceof XmlPullParserException)) && (paramThrowable.getMessage().contains("tag requires a 'drawable' attribute or child tag defining a drawable")))
-          {
-            a.e("TinkerCrashProtect", "have zuk parse error: just clean tinker", new Object[0]);
-            ShareTinkerInternals.ig(localApplicationLike.getApplication());
-            com.tencent.tinker.lib.e.b.f(localApplicationLike);
-            ShareTinkerInternals.ic(localApplicationLike.getApplication());
-            return;
-          }
-        }
-        paramThrowable = paramThrowable.getCause();
-        break label76;
-        break;
-      }
-    }
+    AppMethodBeat.i(15397);
+    e.d(paramApplication, mPackageName);
+    bYV = paramApplication;
+    sResources = paramResources;
+    AppMethodBeat.o(15397);
+  }
+  
+  public static void dC(String paramString)
+  {
+    mPackageName = paramString;
   }
 }
 

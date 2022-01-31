@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.messenger.foundation.a;
 
-import com.tencent.mm.ah.e.a;
+import com.tencent.mm.ai.e.a;
 import java.util.Map;
 
 public abstract interface o

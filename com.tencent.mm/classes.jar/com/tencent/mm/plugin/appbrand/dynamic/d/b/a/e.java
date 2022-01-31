@@ -5,21 +5,21 @@ import org.json.JSONObject;
 
 public abstract interface e<T>
 {
+  public abstract boolean Bl(String paramString);
+  
+  public abstract void E(Runnable paramRunnable);
+  
   public abstract void a(b paramb);
   
-  public abstract void aN(T paramT);
+  public abstract void azT();
   
-  public abstract void afo();
+  public abstract int azU();
   
-  public abstract int afp();
+  public abstract void bh(T paramT);
   
-  public abstract T f(JSONObject paramJSONObject, String paramString);
+  public abstract T d(JSONObject paramJSONObject, String paramString);
   
   public abstract void reset();
-  
-  public abstract boolean ti(String paramString);
-  
-  public abstract void w(Runnable paramRunnable);
 }
 
 

@@ -1,41 +1,45 @@
 package com.tencent.mm.plugin.fav.b.a;
 
 import android.database.Cursor;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yw;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.add;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$c
 {
-  String bRO;
-  yj bWM;
-  long enp;
-  yw kav;
+  acq cEC;
+  String czp;
+  long fDL;
+  add muR;
   int type;
   long updateTime;
   
   private b$c(b paramb) {}
   
-  public final void d(Cursor paramCursor)
+  public final void convertFrom(Cursor paramCursor)
   {
-    this.enp = paramCursor.getLong(0);
+    AppMethodBeat.i(5306);
+    this.fDL = paramCursor.getLong(0);
     this.type = paramCursor.getInt(1);
     this.updateTime = paramCursor.getLong(2);
-    this.bRO = paramCursor.getString(3);
+    this.czp = paramCursor.getString(3);
     byte[] arrayOfByte = paramCursor.getBlob(4);
     if ((arrayOfByte == null) || (arrayOfByte.length == 0)) {
-      y.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "FavIndexItem protoData is null or data length is 0");
+      ab.d("MicroMsg.FTS.FTS5SearchFavoriteLogic", "FavIndexItem protoData is null or data length is 0");
     }
-    for (this.bWM = new yj();; this.bWM = ((yj)new yj().aH(arrayOfByte)))
+    for (this.cEC = new acq();; this.cEC = ((acq)new acq().parseFrom(arrayOfByte)))
     {
       paramCursor = paramCursor.getBlob(5);
       if ((paramCursor != null) && (paramCursor.length != 0)) {
         break;
       }
-      this.kav = null;
+      this.muR = null;
+      AppMethodBeat.o(5306);
       return;
     }
-    this.kav = ((yw)new yw().aH(paramCursor));
+    this.muR = ((add)new add().parseFrom(paramCursor));
+    AppMethodBeat.o(5306);
   }
 }
 

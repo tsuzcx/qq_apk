@@ -3,130 +3,182 @@ package com.tencent.mm.ui.conversation;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.h.a.mr;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bd.a;
-import com.tencent.mm.model.s;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.d;
+import com.tencent.mm.g.a.nn;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bf.a;
+import com.tencent.mm.model.t;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.pluginsdk.wallet.e;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pointers.PBool;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.ui.base.p;
 
 public final class c
 {
-  public static void a(String paramString, Context paramContext, ak paramak, Runnable paramRunnable, boolean paramBoolean1, boolean paramBoolean2)
+  public static void a(final String paramString, final Context paramContext, final ak paramak, final Runnable paramRunnable, final boolean paramBoolean1, final boolean paramBoolean2)
   {
-    PBool localPBool = new PBool();
+    AppMethodBeat.i(34169);
+    final PBool localPBool = new PBool();
     Object localObject;
-    if (s.fn(paramString))
+    if (t.lA(paramString))
     {
       paramak = null;
-      au.Hx();
-      localObject = com.tencent.mm.model.c.Fy().Hz(paramString);
-      au.Hx();
-      com.tencent.mm.model.c.Fv().b(new com.tencent.mm.ay.c(paramString, ((cs)localObject).field_msgSvrId));
+      aw.aaz();
+      localObject = com.tencent.mm.model.c.YC().Tl(paramString);
+      aw.aaz();
+      com.tencent.mm.model.c.Yz().c(new d(paramString, ((dd)localObject).field_msgSvrId));
       localPBool.value = false;
-      paramContext.getString(R.l.app_tip);
-      localObject = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(R.l.app_waiting), true, new c.1(localPBool));
+      paramContext.getString(2131297087);
+      localObject = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131297112), true, new c.1(localPBool));
       if (!localPBool.value) {
-        paramak = e.Xe(paramString);
+        paramak = com.tencent.mm.pluginsdk.wallet.f.amZ(paramString);
       }
-      if (!ah.bl(paramak))
+      if (!ah.isNullOrNil(paramak))
       {
         ((ProgressDialog)localObject).dismiss();
-        com.tencent.mm.ui.base.h.a(paramContext, false, paramContext.getString(R.l.wallet_chatting_del_conversation_note, new Object[] { paramak }), null, paramContext.getString(R.l.goto_conversation), paramContext.getString(R.l.del_conversation), new c.7(localPBool, paramContext, paramBoolean2, paramString, paramBoolean1), new c.8((ProgressDialog)localObject, localPBool, paramString, paramBoolean1, paramRunnable), -1, R.e.alert_btn_color_warn);
-        if (!s.hs(paramString)) {
-          break label731;
-        }
-        y.i("MicroMsg.ConvDelLogic", "del all qmessage");
-        com.tencent.mm.model.bd.HO();
-        au.Hx();
-        com.tencent.mm.model.c.FB().HH("@qqim");
+        com.tencent.mm.ui.base.h.a(paramContext, false, paramContext.getString(2131304997, new Object[] { paramak }), null, paramContext.getString(2131300537), paramContext.getString(2131298936), new DialogInterface.OnClickListener()new c.8
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(34161);
+            this.Ahi.value = true;
+            c.c(paramContext, paramBoolean2, paramString);
+            if (paramBoolean1) {
+              com.tencent.mm.plugin.report.service.h.qsU.e(14553, new Object[] { Integer.valueOf(1), Integer.valueOf(4), paramString });
+            }
+            AppMethodBeat.o(34161);
+          }
+        }, new c.8((ProgressDialog)localObject, localPBool, paramString, paramBoolean1, paramRunnable), -1, 2131689667);
       }
     }
-    label731:
-    while (!s.hq(paramString))
+    while (t.ob(paramString))
     {
+      ab.i("MicroMsg.ConvDelLogic", "del all qmessage");
+      bf.aaN();
+      aw.aaz();
+      com.tencent.mm.model.c.YF().arG("@qqim");
+      AppMethodBeat.o(34169);
       return;
       ((ProgressDialog)localObject).dismiss();
-      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(R.l.fmt_delconvmsg_confirm_group), "", paramContext.getString(R.l.app_delete), paramContext.getString(R.l.app_cancel), new c.9(paramString, localPBool, (ProgressDialog)localObject, paramRunnable), null, R.e.alert_btn_color_warn);
-      break;
-      if (s.hB(paramString))
+      com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131300040), "", paramContext.getString(2131296901), paramContext.getString(2131296888), new DialogInterface.OnClickListener()
       {
-        au.Hx();
-        com.tencent.mm.model.c.FB().HH(paramString);
-        paramContext = new mr();
-        paramContext.bWk.opType = 4;
-        paramContext.bWk.bWp = 20;
-        com.tencent.mm.sdk.b.a.udP.m(paramContext);
-        break;
-      }
-      if (s.hr(paramString))
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(34163);
+          c.a(this.euc, localPBool, this.efE);
+          if (paramRunnable != null) {
+            paramRunnable.run();
+          }
+          AppMethodBeat.o(34163);
+        }
+      }, null, 2131689667);
+      continue;
+      if (t.ok(paramString))
       {
-        au.Hx();
-        com.tencent.mm.model.c.FB().HH(paramString);
-        break;
+        aw.aaz();
+        com.tencent.mm.model.c.YF().arG(paramString);
+        paramContext = new nn();
+        paramContext.cDX.opType = 4;
+        paramContext.cDX.cEc = 20;
+        a.ymk.l(paramContext);
       }
-      if (s.hu(paramString))
+      else if (t.oa(paramString))
       {
-        au.Hx();
-        com.tencent.mm.model.c.FB().abu(paramString);
-        break;
+        aw.aaz();
+        com.tencent.mm.model.c.YF().arG(paramString);
       }
-      if (f.eW(paramString))
+      else if (t.od(paramString))
+      {
+        aw.aaz();
+        com.tencent.mm.model.c.YF().arF(paramString);
+      }
+      else if (com.tencent.mm.aj.f.lg(paramString))
       {
         localPBool.value = false;
-        paramContext.getString(R.l.app_tip);
-        paramak = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(R.l.app_waiting), true, new c.10(localPBool));
+        paramContext.getString(2131297087);
+        paramak = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131297112), true, new c.10(localPBool));
         paramak.dismiss();
-        com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(R.l.fmt_delconvmsg_confirm), "", paramContext.getString(R.l.app_delete), paramContext.getString(R.l.app_cancel), new c.11(paramString, localPBool, paramak, paramString), null, R.e.alert_btn_color_warn);
-        break;
+        com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131300038), "", paramContext.getString(2131296901), paramContext.getString(2131296888), new c.11(paramString, localPBool, paramak, paramString), null, 2131689667);
       }
-      au.Hx();
-      localObject = com.tencent.mm.model.c.Fy().Hz(paramString);
-      au.Hx();
-      com.tencent.mm.model.c.Fv().b(new com.tencent.mm.ay.c(paramString, ((cs)localObject).field_msgSvrId));
-      localPBool.value = false;
-      paramContext.getString(R.l.app_tip);
-      p localp = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(R.l.app_waiting), true, new c.12(localPBool));
-      localObject = null;
-      if (!localPBool.value) {
-        localObject = e.Xe(paramString);
-      }
-      if (!ah.bl((String)localObject))
+      else
       {
-        localp.dismiss();
-        com.tencent.mm.ui.base.h.a(paramContext, false, paramContext.getString(R.l.wallet_chatting_del_conversation_note, new Object[] { localObject }), null, paramContext.getString(R.l.goto_conversation), paramContext.getString(R.l.del_conversation), new c.13(localPBool, paramContext, paramBoolean2, paramString, paramBoolean1), new c.14(localp, localPBool, paramContext, paramString, paramak, paramRunnable, paramBoolean1), -1, R.e.alert_btn_color_warn);
-        break;
-      }
-      localp.dismiss();
-      if (s.hK(paramString)) {}
-      for (int i = R.l.fmt_delconvmsg_confirm_biz;; i = R.l.fmt_delconvmsg_confirm)
-      {
-        com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(i), "", paramContext.getString(R.l.app_delete), paramContext.getString(R.l.app_cancel), new c.2(paramContext, paramString, paramak, localPBool, localp, paramRunnable), null, R.e.alert_btn_color_warn);
-        break;
+        aw.aaz();
+        localObject = com.tencent.mm.model.c.YC().Tl(paramString);
+        aw.aaz();
+        com.tencent.mm.model.c.Yz().c(new d(paramString, ((dd)localObject).field_msgSvrId));
+        localPBool.value = false;
+        paramContext.getString(2131297087);
+        p localp = com.tencent.mm.ui.base.h.b(paramContext, paramContext.getString(2131297112), true, new c.12(localPBool));
+        localObject = null;
+        if (!localPBool.value) {
+          localObject = com.tencent.mm.pluginsdk.wallet.f.amZ(paramString);
+        }
+        if (!ah.isNullOrNil((String)localObject))
+        {
+          localp.dismiss();
+          com.tencent.mm.ui.base.h.a(paramContext, false, paramContext.getString(2131304997, new Object[] { localObject }), null, paramContext.getString(2131300537), paramContext.getString(2131298936), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(34167);
+              this.Ahi.value = true;
+              c.c(paramContext, paramBoolean2, paramString);
+              if (paramBoolean1) {
+                com.tencent.mm.plugin.report.service.h.qsU.e(14553, new Object[] { Integer.valueOf(0), Integer.valueOf(4), paramString });
+              }
+              AppMethodBeat.o(34167);
+            }
+          }, new DialogInterface.OnClickListener()
+          {
+            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+            {
+              AppMethodBeat.i(34168);
+              this.Ahj.show();
+              localPBool.value = false;
+              c.a(paramString, paramak, localPBool, this.Ahj);
+              if (paramRunnable != null) {
+                paramRunnable.run();
+              }
+              if (paramBoolean1) {
+                com.tencent.mm.plugin.report.service.h.qsU.e(14553, new Object[] { Integer.valueOf(0), Integer.valueOf(3), paramString });
+              }
+              AppMethodBeat.o(34168);
+            }
+          }, -1, 2131689667);
+        }
+        else
+        {
+          localp.dismiss();
+          if (t.ot(paramString)) {}
+          for (int i = 2131300039;; i = 2131300038)
+          {
+            com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(i), "", paramContext.getString(2131296901), paramContext.getString(2131296888), new c.2(paramContext, paramString, paramak, localPBool, localp, paramRunnable), null, 2131689667);
+            break;
+          }
+        }
       }
     }
-    y.i("MicroMsg.ConvDelLogic", "del all tmessage");
-    com.tencent.mm.model.bd.HP();
-    au.Hx();
-    com.tencent.mm.model.c.FB().HH("@t.qq.com");
+    if (t.nZ(paramString))
+    {
+      ab.i("MicroMsg.ConvDelLogic", "del all tmessage");
+      bf.aaO();
+      aw.aaz();
+      com.tencent.mm.model.c.YF().arG("@t.qq.com");
+    }
+    AppMethodBeat.o(34169);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.c
  * JD-Core Version:    0.7.0.1
  */

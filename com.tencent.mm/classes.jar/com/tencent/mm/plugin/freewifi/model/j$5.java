@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.freewifi.model;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.freewifi.g.b;
 
 final class j$5
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return b.dXp;
+    return b.SQL_CREATE;
   }
 }
 

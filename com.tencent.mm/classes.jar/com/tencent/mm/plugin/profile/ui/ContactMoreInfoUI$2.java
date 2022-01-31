@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.profile.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.r;
 
 final class ContactMoreInfoUI$2
   implements View.OnClickListener
@@ -13,10 +14,12 @@ final class ContactMoreInfoUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(23407);
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.mWt.mWs);
-    paramView.putExtra("geta8key_username", q.Gj());
-    d.b(this.mWt, "webview", ".ui.tools.WebViewUI", paramView);
+    paramView.putExtra("rawUrl", this.pzo.pzn);
+    paramView.putExtra("geta8key_username", r.Zn());
+    d.b(this.pzo, "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(23407);
   }
 }
 

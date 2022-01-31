@@ -1,11 +1,19 @@
 package com.tencent.mm.kiss.widget.textview;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class b
 {
-  public ConcurrentHashMap<String, LinkedList<f>> dND = new ConcurrentHashMap();
+  public ConcurrentHashMap<String, LinkedList<f>> eLl;
+  
+  public b()
+  {
+    AppMethodBeat.i(105691);
+    this.eLl = new ConcurrentHashMap();
+    AppMethodBeat.o(105691);
+  }
   
   /* Error */
   public final void a(f paramf)
@@ -13,115 +21,125 @@ public final class b
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_1
-    //   3: ifnull +12 -> 15
-    //   6: aload_1
-    //   7: getfield 25	com/tencent/mm/kiss/widget/textview/f:dOh	Ljava/lang/CharSequence;
-    //   10: astore_2
-    //   11: aload_2
-    //   12: ifnonnull +6 -> 18
-    //   15: aload_0
-    //   16: monitorexit
-    //   17: return
-    //   18: aload_0
-    //   19: getfield 16	com/tencent/mm/kiss/widget/textview/b:dND	Ljava/util/concurrent/ConcurrentHashMap;
-    //   22: aload_1
-    //   23: getfield 25	com/tencent/mm/kiss/widget/textview/f:dOh	Ljava/lang/CharSequence;
-    //   26: invokeinterface 31 1 0
-    //   31: invokevirtual 35	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   34: checkcast 37	java/util/LinkedList
-    //   37: astore_3
-    //   38: aload_3
-    //   39: astore_2
-    //   40: aload_3
-    //   41: ifnonnull +11 -> 52
-    //   44: new 37	java/util/LinkedList
-    //   47: dup
-    //   48: invokespecial 38	java/util/LinkedList:<init>	()V
-    //   51: astore_2
-    //   52: aload_2
-    //   53: aload_1
-    //   54: invokevirtual 42	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   57: pop
-    //   58: aload_0
-    //   59: getfield 16	com/tencent/mm/kiss/widget/textview/b:dND	Ljava/util/concurrent/ConcurrentHashMap;
-    //   62: aload_1
-    //   63: getfield 25	com/tencent/mm/kiss/widget/textview/f:dOh	Ljava/lang/CharSequence;
-    //   66: invokeinterface 31 1 0
-    //   71: aload_2
-    //   72: invokevirtual 46	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   75: pop
-    //   76: goto -61 -> 15
-    //   79: astore_1
-    //   80: aload_0
-    //   81: monitorexit
-    //   82: aload_1
-    //   83: athrow
+    //   2: ldc 30
+    //   4: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_1
+    //   8: ifnull +10 -> 18
+    //   11: aload_1
+    //   12: getfield 36	com/tencent/mm/kiss/widget/textview/f:eLP	Ljava/lang/CharSequence;
+    //   15: ifnonnull +11 -> 26
+    //   18: ldc 30
+    //   20: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   23: aload_0
+    //   24: monitorexit
+    //   25: return
+    //   26: aload_0
+    //   27: getfield 23	com/tencent/mm/kiss/widget/textview/b:eLl	Ljava/util/concurrent/ConcurrentHashMap;
+    //   30: aload_1
+    //   31: getfield 36	com/tencent/mm/kiss/widget/textview/f:eLP	Ljava/lang/CharSequence;
+    //   34: invokeinterface 42 1 0
+    //   39: invokevirtual 46	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   42: checkcast 48	java/util/LinkedList
+    //   45: astore_3
+    //   46: aload_3
+    //   47: astore_2
+    //   48: aload_3
+    //   49: ifnonnull +11 -> 60
+    //   52: new 48	java/util/LinkedList
+    //   55: dup
+    //   56: invokespecial 49	java/util/LinkedList:<init>	()V
+    //   59: astore_2
+    //   60: aload_2
+    //   61: aload_1
+    //   62: invokevirtual 53	java/util/LinkedList:add	(Ljava/lang/Object;)Z
+    //   65: pop
+    //   66: aload_0
+    //   67: getfield 23	com/tencent/mm/kiss/widget/textview/b:eLl	Ljava/util/concurrent/ConcurrentHashMap;
+    //   70: aload_1
+    //   71: getfield 36	com/tencent/mm/kiss/widget/textview/f:eLP	Ljava/lang/CharSequence;
+    //   74: invokeinterface 42 1 0
+    //   79: aload_2
+    //   80: invokevirtual 57	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   83: pop
+    //   84: ldc 30
+    //   86: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   89: goto -66 -> 23
+    //   92: astore_1
+    //   93: aload_0
+    //   94: monitorexit
+    //   95: aload_1
+    //   96: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	84	0	this	b
-    //   0	84	1	paramf	f
-    //   10	62	2	localObject	Object
-    //   37	4	3	localLinkedList	LinkedList
+    //   0	97	0	this	b
+    //   0	97	1	paramf	f
+    //   47	33	2	localLinkedList1	LinkedList
+    //   45	4	3	localLinkedList2	LinkedList
     // Exception table:
     //   from	to	target	type
-    //   6	11	79	finally
-    //   18	38	79	finally
-    //   44	52	79	finally
-    //   52	76	79	finally
+    //   2	7	92	finally
+    //   11	18	92	finally
+    //   18	23	92	finally
+    //   26	46	92	finally
+    //   52	60	92	finally
+    //   60	89	92	finally
   }
   
   /* Error */
-  public final f n(java.lang.CharSequence paramCharSequence)
+  public final f s(java.lang.CharSequence paramCharSequence)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 16	com/tencent/mm/kiss/widget/textview/b:dND	Ljava/util/concurrent/ConcurrentHashMap;
-    //   6: aload_1
-    //   7: invokeinterface 31 1 0
-    //   12: invokevirtual 35	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   15: checkcast 37	java/util/LinkedList
-    //   18: astore_1
-    //   19: aload_1
-    //   20: ifnull +12 -> 32
-    //   23: aload_1
-    //   24: invokevirtual 52	java/util/LinkedList:size	()I
-    //   27: istore_2
-    //   28: iload_2
-    //   29: ifne +9 -> 38
-    //   32: aconst_null
-    //   33: astore_1
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: aload_1
-    //   37: areturn
-    //   38: aload_1
-    //   39: invokevirtual 56	java/util/LinkedList:removeFirst	()Ljava/lang/Object;
-    //   42: checkcast 21	com/tencent/mm/kiss/widget/textview/f
-    //   45: astore_1
-    //   46: goto -12 -> 34
-    //   49: astore_1
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: aload_1
-    //   53: athrow
+    //   2: ldc 60
+    //   4: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 23	com/tencent/mm/kiss/widget/textview/b:eLl	Ljava/util/concurrent/ConcurrentHashMap;
+    //   11: aload_1
+    //   12: invokeinterface 42 1 0
+    //   17: invokevirtual 46	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   20: checkcast 48	java/util/LinkedList
+    //   23: astore_1
+    //   24: aload_1
+    //   25: ifnull +10 -> 35
+    //   28: aload_1
+    //   29: invokevirtual 64	java/util/LinkedList:size	()I
+    //   32: ifne +14 -> 46
+    //   35: aconst_null
+    //   36: astore_1
+    //   37: ldc 60
+    //   39: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   42: aload_0
+    //   43: monitorexit
+    //   44: aload_1
+    //   45: areturn
+    //   46: aload_1
+    //   47: invokevirtual 68	java/util/LinkedList:removeFirst	()Ljava/lang/Object;
+    //   50: checkcast 32	com/tencent/mm/kiss/widget/textview/f
+    //   53: astore_1
+    //   54: ldc 60
+    //   56: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: goto -17 -> 42
+    //   62: astore_1
+    //   63: aload_0
+    //   64: monitorexit
+    //   65: aload_1
+    //   66: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	54	0	this	b
-    //   0	54	1	paramCharSequence	java.lang.CharSequence
-    //   27	2	2	i	int
+    //   0	67	0	this	b
+    //   0	67	1	paramCharSequence	java.lang.CharSequence
     // Exception table:
     //   from	to	target	type
-    //   2	19	49	finally
-    //   23	28	49	finally
-    //   38	46	49	finally
+    //   2	24	62	finally
+    //   28	35	62	finally
+    //   37	42	62	finally
+    //   46	59	62	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.b
  * JD-Core Version:    0.7.0.1
  */

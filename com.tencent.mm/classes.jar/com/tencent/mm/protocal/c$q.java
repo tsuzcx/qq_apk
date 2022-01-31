@@ -5,7 +5,7 @@ final class c$q
 {
   c$q()
   {
-    super("bindEmail", "bindEmail", 306, true);
+    super("batchUpdateWepkg", "batchUpdateWepkg", 334, false);
   }
 }
 

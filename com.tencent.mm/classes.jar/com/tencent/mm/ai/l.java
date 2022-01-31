@@ -1,64 +1,53 @@
 package com.tencent.mm.ai;
 
-import com.tencent.mm.kernel.a.b.a;
-import com.tencent.mm.kernel.a.b.a.a;
-import com.tencent.mm.kernel.api.c;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.r.a;
+import com.tencent.mm.protocal.r.b;
 
 public final class l
-  implements o, com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.b, c
+  extends k
 {
-  private com.tencent.mm.storage.o egA;
-  private com.tencent.mm.storage.p egB;
+  private final r.a ftk;
+  private final r.b ftl;
   
-  public final com.tencent.mm.storage.p FA()
+  public l()
   {
-    return this.egB;
+    AppMethodBeat.i(58161);
+    this.ftk = new r.a();
+    this.ftl = new r.b();
+    AppMethodBeat.o(58161);
   }
   
-  public final String FP()
+  public final int getOptions()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    com.tencent.mm.kernel.g.DQ();
-    return com.tencent.mm.kernel.g.DP().dKt + "brandicon/";
+    return 1;
   }
   
-  public final com.tencent.mm.storage.o Fz()
+  protected final l.d getReqObjImp()
   {
-    return this.egA;
+    return this.ftk;
   }
   
-  public final List<String> collectStoragePaths()
+  public final l.e getRespObj()
   {
-    LinkedList localLinkedList = new LinkedList();
-    Collections.addAll(localLinkedList, new String[] { "brandicon/" });
-    return localLinkedList;
+    return this.ftl;
   }
   
-  public final void onAccountInitialized(e.c paramc)
+  public final int getType()
   {
-    paramc = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO();
-    com.tencent.mm.storage.o localo = new com.tencent.mm.storage.o(paramc);
-    this.egA = localo;
-    paramc.a(localo);
-    this.egB = new com.tencent.mm.storage.p(((j)com.tencent.mm.kernel.g.r(j.class)).FB());
+    return 381;
   }
   
-  public final void onAccountRelease() {}
-  
-  public final void parallelsDependency()
+  public final String getUri()
   {
-    a.a(this, c.class).ao(com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.messenger.foundation.a.p.class));
+    return "/cgi-bin/micromsg-bin/getcert";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ai.l
  * JD-Core Version:    0.7.0.1
  */

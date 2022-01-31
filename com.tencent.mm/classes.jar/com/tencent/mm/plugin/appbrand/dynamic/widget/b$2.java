@@ -1,35 +1,54 @@
 package com.tencent.mm.plugin.appbrand.dynamic.widget;
 
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.protocal.c.bna;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.i;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.u;
+import com.tencent.mm.plugin.appbrand.canvas.widget.MTextureView;
 
 final class b$2
-  implements View.OnClickListener
+  implements com.tencent.mm.plugin.appbrand.canvas.c.a
 {
-  b$2(b paramb, LinkedList paramLinkedList, b.a parama, i parami) {}
+  b$2(MTextureView paramMTextureView) {}
   
-  public final void onClick(View paramView)
+  public final void ap(float paramFloat)
   {
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.fXW.size())
-    {
-      if ((((bna)this.fXW.get(i)).tGf == 2) || (((bna)this.fXW.get(i)).tGf == 3)) {
-        paramView.add(((bna)this.fXW.get(i)).sEi);
-      }
-      i += 1;
-    }
-    y.d("MicroMsg.AppBrandAuthorizeDialog", "stev rejectButton click!");
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("key_scope", paramView);
-    this.fXX.e(2, localBundle);
-    this.fXY.dismiss();
+    AppMethodBeat.i(11092);
+    b.b(paramFloat, 2, this.hrt.getTraceId());
+    AppMethodBeat.o(11092);
+  }
+  
+  public final void aq(float paramFloat)
+  {
+    AppMethodBeat.i(11093);
+    b.b(paramFloat, 3, this.hrt.getTraceId());
+    AppMethodBeat.o(11093);
+  }
+  
+  public final void ayj()
+  {
+    AppMethodBeat.i(11094);
+    u.ql(this.hrt.getTraceId());
+    AppMethodBeat.o(11094);
+  }
+  
+  public final void b(long paramLong1, long paramLong2, int paramInt)
+  {
+    AppMethodBeat.i(11091);
+    com.tencent.mm.plugin.appbrand.widget.g.a.d(1, paramLong1, paramLong2, paramInt);
+    AppMethodBeat.o(11091);
+  }
+  
+  public final void hu(long paramLong)
+  {
+    AppMethodBeat.i(11089);
+    com.tencent.mm.plugin.appbrand.widget.g.a.D(682, paramLong);
+    AppMethodBeat.o(11089);
+  }
+  
+  public final void hv(long paramLong)
+  {
+    AppMethodBeat.i(11090);
+    com.tencent.mm.plugin.appbrand.widget.g.a.E(683, paramLong);
+    AppMethodBeat.o(11090);
   }
 }
 

@@ -1,124 +1,136 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import android.os.DeadObjectException;
 import android.os.Looper;
 import android.os.Parcel;
+import android.util.Log;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.e.b;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public final class o
-  extends j
+  extends k
   implements ag
 {
-  private final Set<j.a> fIF = new HashSet();
+  private final Set<k.a> hbx;
   
-  public final void a(j.a parama, Looper arg2)
+  public o()
   {
-    int i = 1;
-    if ((parama == null) || (??? == null)) {}
-    for (;;)
-    {
-      return;
-      super.a(parama, ???);
-      synchronized (this.fIF)
-      {
-        this.fIF.add(parama);
-        if (this.fIF.size() == 1)
-        {
-          if (i == 0) {
-            continue;
-          }
-          XIPCInvoker.a("com.tencent.mm", IPCVoid.dHo, o.b.class, new o.1(this));
-          return;
-        }
-        i = 0;
-      }
-    }
+    AppMethodBeat.i(129592);
+    this.hbx = new HashSet();
+    AppMethodBeat.o(129592);
   }
   
-  public final boolean as(String paramString, int paramInt)
+  public final boolean aF(String paramString, int paramInt)
   {
+    AppMethodBeat.i(129593);
     paramString = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new AppIdentity(paramString, paramInt), c.class);
-    if (paramString == null) {
+    if (paramString == null)
+    {
+      AppMethodBeat.o(129593);
       return false;
     }
-    return paramString.value;
+    boolean bool = paramString.value;
+    AppMethodBeat.o(129593);
+    return bool;
   }
   
-  public final void c(j.a parama)
+  public final void add(k.a parama)
   {
-    a(parama, Looper.getMainLooper());
+    AppMethodBeat.i(129595);
+    add(parama, Looper.getMainLooper());
+    AppMethodBeat.o(129595);
   }
   
-  public final void d(j.a parama)
+  public final void add(k.a parama, Looper arg2)
   {
-    if (parama == null) {
-      return;
-    }
-    super.d(parama);
-    synchronized (this.fIF)
+    int i = 1;
+    AppMethodBeat.i(129596);
+    if ((parama == null) || (??? == null))
     {
-      this.fIF.remove(parama);
+      AppMethodBeat.o(129596);
       return;
+    }
+    super.add(parama, ???);
+    synchronized (this.hbx)
+    {
+      this.hbx.add(parama);
+      if (this.hbx.size() == 1)
+      {
+        if (i != 0) {
+          XIPCInvoker.a("com.tencent.mm", IPCVoid.eER, o.b.class, new o.1(this));
+        }
+        AppMethodBeat.o(129596);
+        return;
+      }
+      i = 0;
     }
   }
   
-  public final List<LocalUsageInfo> kz(int paramInt)
+  public final List<LocalUsageInfo> nu(int paramInt)
   {
-    Parcel localParcel = (Parcel)XIPCInvoker.a("com.tencent.mm", new IPCInteger(paramInt), a.class);
-    if (localParcel == null) {
+    AppMethodBeat.i(129594);
+    Parcel localParcel = (Parcel)XIPCInvoker.a("com.tencent.mm", new IPCInteger(paramInt), o.a.class);
+    if (localParcel == null)
+    {
+      AppMethodBeat.o(129594);
       return null;
     }
     ArrayList localArrayList = new ArrayList(paramInt);
     localParcel.readTypedList(localArrayList, LocalUsageInfo.CREATOR);
+    AppMethodBeat.o(129594);
     return localArrayList;
   }
   
-  private static final class a
-    implements i<IPCInteger, Parcel>
+  public final void remove(k.a parama)
   {
-    private static Parcel a(IPCInteger paramIPCInteger)
+    AppMethodBeat.i(129597);
+    if (parama == null)
     {
-      Parcel localParcel = Parcel.obtain();
-      try
-      {
-        localParcel.writeTypedList(((ag)g.r(ag.class)).kz(paramIPCInteger.value));
-        return localParcel;
-      }
-      catch (Exception paramIPCInteger)
-      {
-        localParcel.setDataPosition(0);
-        localParcel.writeTypedList(null);
-      }
-      return localParcel;
+      AppMethodBeat.o(129597);
+      return;
+    }
+    super.remove(parama);
+    synchronized (this.hbx)
+    {
+      this.hbx.remove(parama);
+      AppMethodBeat.o(129597);
+      return;
     }
   }
   
-  private static final class c
+  static final class c
     implements i<AppIdentity, IPCBoolean>
   {
     private static IPCBoolean c(AppIdentity paramAppIdentity)
     {
+      AppMethodBeat.i(129590);
       try
       {
-        paramAppIdentity = new IPCBoolean(((ag)g.r(ag.class)).as(paramAppIdentity.username, paramAppIdentity.fJy));
+        paramAppIdentity = new IPCBoolean(((ag)g.E(ag.class)).aF(paramAppIdentity.username, paramAppIdentity.hcr));
+        AppMethodBeat.o(129590);
         return paramAppIdentity;
       }
       catch (Exception paramAppIdentity)
       {
-        y.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.AppBrandLocalUsageStorageIPCImpl", paramAppIdentity, "ipc removeUsage", new Object[0]);
+        paramAppIdentity = new IPCBoolean(false);
+        AppMethodBeat.o(129590);
       }
-      return new IPCBoolean(false);
+      return paramAppIdentity;
     }
   }
 }

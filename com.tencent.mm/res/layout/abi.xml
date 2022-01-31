@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="?android:listPreferredItemHeight"
+<RelativeLayout android:gravity="center_vertical" android:background="@color/ua" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0sp" android:layout_weight="1.0">
-        <TextView android:textAppearance="@style/mc" android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <TextView android:textAppearance="@style/md" android:id="@android:id/summary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_below="@android:id/title" android:layout_alignLeft="@android:id/title" />
-    </RelativeLayout>
-    <LinearLayout android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</LinearLayout>
+    <ImageView android:id="@id/d11" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="43.0dip" android:src="@drawable/bb8" android:scaleType="fitCenter" android:layout_alignParentTop="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/d12" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <Button android:textSize="@dimen/a5b" android:textColor="#ff3b3b3b" android:id="@id/d13" android:background="@drawable/ub" android:layout_width="@dimen/a5c" android:layout_height="@dimen/a5a" android:text="@string/ctx" />
+        <Button android:textSize="@dimen/a5b" android:textColor="#ff3b3b3b" android:id="@id/d14" android:background="@drawable/uc" android:layout_width="@dimen/a5c" android:layout_height="@dimen/a5a" android:layout_marginTop="30.0dip" android:text="@string/cuq" />
+    </LinearLayout>
+    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:src="@drawable/bb5" android:scaleType="fitCenter" android:layout_below="@id/d12" />
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/d15" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="39.0dip" android:layout_above="@id/d12" />
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/d16" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:id="@id/d17" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="90.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

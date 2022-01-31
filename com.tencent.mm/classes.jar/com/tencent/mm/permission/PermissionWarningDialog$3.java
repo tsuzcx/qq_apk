@@ -1,24 +1,19 @@
 package com.tencent.mm.permission;
 
-import android.content.Context;
-import android.media.AudioManager;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.a.e.d;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class PermissionWarningDialog$3
-  implements e.d
+  implements DialogInterface.OnClickListener
 {
   PermissionWarningDialog$3(PermissionWarningDialog paramPermissionWarningDialog) {}
   
-  public final void b(boolean paramBoolean, String paramString)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      y.i("MicroMsg.PermissionWarningDialog", "set MicroPhone unmute.");
-      ((AudioManager)ae.getContext().getSystemService("audio")).setMicrophoneMute(false);
-    }
-    this.eQW.finish();
+    AppMethodBeat.i(16648);
+    this.giR.finish();
+    AppMethodBeat.o(16648);
   }
 }
 

@@ -1,43 +1,49 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 import org.json.JSONArray;
 
 public final class c
 {
-  public List<b> gHb = null;
-  public String gio = "ok";
+  public String hBF = "ok";
+  public List<b> ihJ = null;
   
-  public final JSONArray aln()
+  public final JSONArray aGq()
   {
+    AppMethodBeat.i(94382);
     JSONArray localJSONArray = new JSONArray();
-    Iterator localIterator = this.gHb.iterator();
+    Iterator localIterator = this.ihJ.iterator();
     while (localIterator.hasNext()) {
-      localJSONArray.put(((b)localIterator.next()).rB());
+      localJSONArray.put(((b)localIterator.next()).toJSONObject());
     }
+    AppMethodBeat.o(94382);
     return localJSONArray;
   }
   
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("mErrorMsg:");
-    localStringBuilder.append(this.gio);
-    localStringBuilder.append(" mWifiList:");
+    AppMethodBeat.i(94381);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mErrorMsg:");
+    ((StringBuilder)localObject).append(this.hBF);
+    ((StringBuilder)localObject).append(" mWifiList:");
     Iterator localIterator;
-    if ((this.gHb != null) && (this.gHb.size() > 0)) {
-      localIterator = this.gHb.iterator();
+    if ((this.ihJ != null) && (this.ihJ.size() > 0)) {
+      localIterator = this.ihJ.iterator();
     }
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      localStringBuilder.append(" WiFiItem:");
-      localStringBuilder.append(localb);
+      ((StringBuilder)localObject).append(" WiFiItem:");
+      ((StringBuilder)localObject).append(localb);
       continue;
-      localStringBuilder.append("null:");
+      ((StringBuilder)localObject).append("null:");
     }
-    return localStringBuilder.toString();
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(94381);
+    return localObject;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandVideoView$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class AppBrandVideoView$1
   
   public final void onClick(View paramView)
   {
-    this.gDS.start();
+    AppMethodBeat.i(126441);
+    this.icX.start();
+    AppMethodBeat.o(126441);
   }
 }
 

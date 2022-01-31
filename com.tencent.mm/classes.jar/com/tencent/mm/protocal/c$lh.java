@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$lh
+final class c$lh
   extends c.g
 {
-  public c$lh()
+  c$lh()
   {
-    super("menu:share:appmessage", "", 89, false);
+    super("wcPrivacyPolicyResult", "wcPrivacyPolicyResult", 315, false);
   }
 }
 

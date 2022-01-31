@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.mmsight.ui.cameraglview;
 
 import android.opengl.GLSurfaceView.EGLConfigChooser;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLDisplay;
@@ -9,59 +10,53 @@ import javax.microedition.khronos.egl.EGLDisplay;
 final class MMSightCameraGLSurfaceView$a
   implements GLSurfaceView.EGLConfigChooser
 {
-  private int EGL_OPENGL_ES2_BIT = 4;
-  protected int fwA = 0;
-  protected int fwB = 0;
-  private int[] fwC = new int[1];
-  private int[] fwv = { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
-  protected int fww = 5;
-  protected int fwx = 6;
-  protected int fwy = 5;
-  protected int fwz = 0;
+  private int EGL_OPENGL_ES2_BIT;
+  private int[] eYs;
+  protected int mAlphaSize;
+  protected int mBlueSize;
+  protected int mDepthSize;
+  protected int mGreenSize;
+  protected int mRedSize;
+  protected int mStencilSize;
+  private int[] mValue;
   
-  public MMSightCameraGLSurfaceView$a(MMSightCameraGLSurfaceView paramMMSightCameraGLSurfaceView) {}
+  public MMSightCameraGLSurfaceView$a(MMSightCameraGLSurfaceView paramMMSightCameraGLSurfaceView)
+  {
+    AppMethodBeat.i(55319);
+    this.EGL_OPENGL_ES2_BIT = 4;
+    this.eYs = new int[] { 12324, 4, 12323, 4, 12322, 4, 12352, this.EGL_OPENGL_ES2_BIT, 12344 };
+    this.mValue = new int[1];
+    this.mRedSize = 5;
+    this.mGreenSize = 6;
+    this.mBlueSize = 5;
+    this.mAlphaSize = 0;
+    this.mDepthSize = 0;
+    this.mStencilSize = 0;
+    AppMethodBeat.o(55319);
+  }
   
   private int a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt)
   {
-    int i = 0;
-    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.fwC)) {
-      i = this.fwC[0];
-    }
-    return i;
-  }
-  
-  private EGLConfig b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
-  {
-    int j = paramArrayOfEGLConfig.length;
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(55322);
+    if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt, this.mValue))
     {
-      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
-      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
-      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
-      if ((k >= this.fwA) && (m >= this.fwB))
-      {
-        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
-        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
-        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
-        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
-        if ((k == this.fww) && (m == this.fwx) && (n == this.fwy) && (i1 == this.fwz)) {
-          return localEGLConfig;
-        }
-      }
-      i += 1;
+      paramInt = this.mValue[0];
+      AppMethodBeat.o(55322);
+      return paramInt;
     }
-    return null;
+    AppMethodBeat.o(55322);
+    return 0;
   }
   
-  private static void c(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
+  private static void b(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
   {
+    AppMethodBeat.i(55323);
     int k = paramArrayOfEGLConfig.length;
-    y.i("GLConfigChooser", String.format("%d configurations", new Object[] { Integer.valueOf(k) }));
+    ab.i("GLConfigChooser", String.format("%d configurations", new Object[] { Integer.valueOf(k) }));
     int i = 0;
     while (i < k)
     {
-      y.i("GLConfigChooser", String.format("Configuration %d:\n", new Object[] { Integer.valueOf(i) }));
+      ab.i("GLConfigChooser", String.format("Configuration %d:\n", new Object[] { Integer.valueOf(i) }));
       EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
       int[] arrayOfInt = new int[1];
       int j = 0;
@@ -72,20 +67,55 @@ final class MMSightCameraGLSurfaceView$a
       }
       i += 1;
     }
+    AppMethodBeat.o(55323);
+  }
+  
+  private EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig[] paramArrayOfEGLConfig)
+  {
+    AppMethodBeat.i(55321);
+    int j = paramArrayOfEGLConfig.length;
+    int i = 0;
+    while (i < j)
+    {
+      EGLConfig localEGLConfig = paramArrayOfEGLConfig[i];
+      int k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12325);
+      int m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12326);
+      if ((k >= this.mDepthSize) && (m >= this.mStencilSize))
+      {
+        k = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12324);
+        m = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12323);
+        int n = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12322);
+        int i1 = a(paramEGL10, paramEGLDisplay, localEGLConfig, 12321);
+        if ((k == this.mRedSize) && (m == this.mGreenSize) && (n == this.mBlueSize) && (i1 == this.mAlphaSize))
+        {
+          AppMethodBeat.o(55321);
+          return localEGLConfig;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(55321);
+    return null;
   }
   
   public final EGLConfig chooseConfig(EGL10 paramEGL10, EGLDisplay paramEGLDisplay)
   {
+    AppMethodBeat.i(55320);
     int[] arrayOfInt = new int[1];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, this.fwv, null, 0, arrayOfInt);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, this.eYs, null, 0, arrayOfInt);
     int i = arrayOfInt[0];
-    if (i <= 0) {
-      throw new IllegalArgumentException("No configs match configSpec");
+    if (i <= 0)
+    {
+      paramEGL10 = new IllegalArgumentException("No configs match configSpec");
+      AppMethodBeat.o(55320);
+      throw paramEGL10;
     }
     EGLConfig[] arrayOfEGLConfig = new EGLConfig[i];
-    paramEGL10.eglChooseConfig(paramEGLDisplay, this.fwv, arrayOfEGLConfig, i, arrayOfInt);
-    c(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
-    return b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    paramEGL10.eglChooseConfig(paramEGLDisplay, this.eYs, arrayOfEGLConfig, i, arrayOfInt);
+    b(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    paramEGL10 = chooseConfig(paramEGL10, paramEGLDisplay, arrayOfEGLConfig);
+    AppMethodBeat.o(55320);
+    return paramEGL10;
   }
 }
 

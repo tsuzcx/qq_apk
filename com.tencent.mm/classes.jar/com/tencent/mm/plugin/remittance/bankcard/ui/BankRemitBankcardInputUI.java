@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -9,7 +11,8 @@ import android.widget.Button;
 import android.widget.Filter.FilterListener;
 import android.widget.PopupWindow;
 import android.widget.Toast;
-import com.tencent.mm.h.a.ti;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vd;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.remittance.bankcard.a.k;
 import com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel;
@@ -17,25 +20,16 @@ import com.tencent.mm.plugin.remittance.bankcard.model.EnterTimeParcel;
 import com.tencent.mm.plugin.remittance.bankcard.model.TransferRecordParcel;
 import com.tencent.mm.plugin.remittance.bankcard.model.c;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView;
-import com.tencent.mm.protocal.c.bia;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bqk;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.c.n;
-import com.tencent.mm.wallet_core.c.n.a;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.wallet_core.c.p;
+import com.tencent.mm.wallet_core.c.p.a;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -44,293 +38,292 @@ import java.util.List;
 public class BankRemitBankcardInputUI
   extends BankRemitBaseUI
 {
-  private Button frP;
-  private WalletFormView nvC;
-  private WalletFormView nvD;
-  private WalletFormView nvE;
-  private WalletFormView nvF;
-  private com.tencent.mm.ui.widget.a.d nvG;
-  private ListPopupWindow nvH;
-  private c nvI;
-  private Filter.FilterListener nvJ;
-  private ArrayList<TransferRecordParcel> nvK;
-  private ArrayList<TransferRecordParcel> nvL;
-  private String nvM;
-  private String nvN;
-  private String nvO;
-  private String nvP;
-  private String nvQ;
-  private String nvR;
-  private EnterTimeParcel nvS;
-  private BankcardElemParcel nvT;
-  private TransferRecordParcel nvU;
-  private boolean nvV = true;
-  private boolean nvW = false;
-  private boolean nvX = false;
-  private boolean nvY = false;
-  private com.tencent.mm.plugin.remittance.bankcard.a.g nvZ = null;
-  private CdnImageView nvv;
-  private boolean nwa = false;
-  private boolean nwb = false;
-  private boolean nwc = true;
-  
-  private void S(String paramString1, String paramString2, String paramString3)
-  {
-    y.i("MicroMsg.BankRemitBankcardInputUI", "do query bankinfo by seq: %s", new Object[] { paramString1 });
-    a(new com.tencent.mm.plugin.remittance.bankcard.a.a(paramString1, paramString2, paramString3), false, false);
-  }
+  private String feA = "";
+  private Button gJr;
+  private com.tencent.mm.ui.widget.b.d mAF;
+  private Dialog own = null;
+  private WalletFormView qgA;
+  private WalletFormView qgB;
+  private ListPopupWindow qgC;
+  private c qgD;
+  private Filter.FilterListener qgE;
+  private ArrayList<TransferRecordParcel> qgF;
+  private ArrayList<TransferRecordParcel> qgG;
+  private int qgH;
+  private String qgI;
+  private String qgJ;
+  private String qgK;
+  private String qgL;
+  private String qgM;
+  private String qgN;
+  private EnterTimeParcel qgO;
+  private BankcardElemParcel qgP;
+  private TransferRecordParcel qgQ;
+  private boolean qgR = true;
+  private boolean qgS = false;
+  private boolean qgT = false;
+  private boolean qgU = false;
+  private com.tencent.mm.plugin.remittance.bankcard.a.g qgV = null;
+  private boolean qgW = false;
+  private boolean qgX = false;
+  private boolean qgY = true;
+  private boolean qgZ = false;
+  private CdnImageView qgr;
+  private WalletFormView qgy;
+  private WalletFormView qgz;
+  private boolean qha = false;
+  private boolean qhb = false;
+  private String qhc;
+  private String qhd;
   
   private static void a(TransferRecordParcel paramTransferRecordParcel, List<TransferRecordParcel> paramList)
   {
-    int i;
-    if (paramList != null) {
-      i = paramList.size() - 1;
-    }
-    for (;;)
+    AppMethodBeat.i(44551);
+    if (paramList != null)
     {
-      if (i >= 0)
+      int i = paramList.size() - 1;
+      while (i >= 0)
       {
         TransferRecordParcel localTransferRecordParcel = (TransferRecordParcel)paramList.get(i);
-        if (localTransferRecordParcel.nvy.equals(paramTransferRecordParcel.nvy)) {
-          localTransferRecordParcel.nvB = paramTransferRecordParcel.nvB;
+        if (localTransferRecordParcel.qgu.equals(paramTransferRecordParcel.qgu))
+        {
+          localTransferRecordParcel.qgx = paramTransferRecordParcel.qgx;
+          AppMethodBeat.o(44551);
+          return;
+        }
+        i -= 1;
+      }
+    }
+    AppMethodBeat.o(44551);
+  }
+  
+  private void ab(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(44553);
+    ab.i("MicroMsg.BankRemitBankcardInputUI", "do query bankinfo by seq: %s", new Object[] { paramString1 });
+    doSceneProgress(new com.tencent.mm.plugin.remittance.bankcard.a.a(paramString1, paramString2, paramString3), false);
+    AppMethodBeat.o(44553);
+  }
+  
+  private void cgL()
+  {
+    AppMethodBeat.i(44556);
+    ab.i("MicroMsg.BankRemitBankcardInputUI", "do operation");
+    this.qha = true;
+    doSceneProgress(new k(), false);
+    AppMethodBeat.o(44556);
+  }
+  
+  private void cgM()
+  {
+    AppMethodBeat.i(44558);
+    this.qgz.cfJ();
+    this.qgz.setContentEnabled(false);
+    this.qgT = true;
+    AppMethodBeat.o(44558);
+  }
+  
+  private void cgN()
+  {
+    AppMethodBeat.i(44559);
+    this.qgA.setClickable(false);
+    this.qgU = true;
+    AppMethodBeat.o(44559);
+  }
+  
+  private void cgO()
+  {
+    AppMethodBeat.i(44560);
+    if (this.qgQ != null)
+    {
+      this.qgy.setText(this.qgQ.qgw);
+      this.qgS = true;
+      this.qgz.setText(getString(2131297472, new Object[] { this.qgQ.qgv }));
+      this.qgA.setText(this.qgQ.nLq);
+      this.qgr.setUrl(this.qgQ.qfY);
+      cgM();
+      cgN();
+    }
+    AppMethodBeat.o(44560);
+  }
+  
+  private void cgP()
+  {
+    AppMethodBeat.i(44561);
+    if (this.qgP != null)
+    {
+      this.qgA.setText(this.qgP.nLq);
+      this.qgr.setUrl(this.qgP.qfY);
+    }
+    AppMethodBeat.o(44561);
+  }
+  
+  private void cgQ()
+  {
+    AppMethodBeat.i(44562);
+    if (this.qgO != null)
+    {
+      if (!bo.isNullOrNil(this.qgO.color)) {
+        this.qgB.setContentTextColor(Color.parseColor(this.qgO.color));
+      }
+      for (;;)
+      {
+        this.qgB.setText(this.qgO.qgi);
+        this.qgB.setVisibility(0);
+        AppMethodBeat.o(44562);
+        return;
+        this.qgB.setContentTextColorRes(2131689763);
+      }
+    }
+    if ((this.qgP != null) && (!bo.isNullOrNil(this.qgP.qgb)))
+    {
+      this.qgB.setText(this.qgP.qgb);
+      if (!bo.isNullOrNil(this.qgP.qgc)) {
+        this.qgB.setContentTextColor(Color.parseColor(this.qgP.qgc));
+      }
+      for (;;)
+      {
+        this.qgB.setVisibility(0);
+        AppMethodBeat.o(44562);
+        return;
+        this.qgB.setContentTextColorRes(2131689763);
+      }
+    }
+    this.qgB.setVisibility(8);
+    AppMethodBeat.o(44562);
+  }
+  
+  private void cgR()
+  {
+    AppMethodBeat.i(44563);
+    if (this.qgB.getVisibility() == 0)
+    {
+      this.qgA.setBackground(getResources().getDrawable(2130840829));
+      AppMethodBeat.o(44563);
+      return;
+    }
+    this.qgA.setBackground(getResources().getDrawable(2130837852));
+    AppMethodBeat.o(44563);
+  }
+  
+  private void cgS()
+  {
+    AppMethodBeat.i(44564);
+    if ((!bo.isNullOrNil(this.qgy.getText())) && (!this.qgy.getText().trim().isEmpty()) && (!bo.isNullOrNil(this.qgz.getText())) && (this.qgy.asv()) && (!this.qgz.getText().trim().isEmpty()) && (this.qgz.asv()) && (!bo.isNullOrNil(this.qgA.getText())) && (this.qgB.getVisibility() == 0) && (!bo.isNullOrNil(this.qgB.getText())) && (this.qgP != null) && (bo.isNullOrNil(this.qgP.qgd)))
+    {
+      this.gJr.setEnabled(true);
+      AppMethodBeat.o(44564);
+      return;
+    }
+    this.gJr.setEnabled(false);
+    AppMethodBeat.o(44564);
+  }
+  
+  private void cgT()
+  {
+    AppMethodBeat.i(44565);
+    if ((this.qgP != null) && (!bo.isNullOrNil(this.qgP.qgb)))
+    {
+      this.qgO = null;
+      AppMethodBeat.o(44565);
+      return;
+    }
+    if ((this.qgP != null) && (this.qgP.qge != null))
+    {
+      Iterator localIterator = this.qgP.qge.iterator();
+      while (localIterator.hasNext())
+      {
+        EnterTimeParcel localEnterTimeParcel = (EnterTimeParcel)localIterator.next();
+        if (localEnterTimeParcel.qgk > 0)
+        {
+          this.qgO = localEnterTimeParcel;
+          AppMethodBeat.o(44565);
+          return;
         }
       }
-      else
-      {
-        return;
-      }
-      i -= 1;
     }
+    AppMethodBeat.o(44565);
   }
   
-  private void bvW()
+  private void kv(boolean paramBoolean)
   {
-    if (this.nvU != null)
-    {
-      this.nvC.setText(this.nvU.nvA);
-      this.nvW = true;
-      this.nvD.setText(getString(a.i.bank_remit_bank_card_mask_text, new Object[] { this.nvU.nvz }));
-      this.nvE.setText(this.nvU.lnT);
-      this.nvv.setUrl(this.nvU.nve);
-      this.nvD.bvq();
-      this.nvD.setContentEnabled(false);
-      this.nvX = true;
-      this.nvE.setClickable(false);
-      this.nvY = true;
-    }
-  }
-  
-  private void bvX()
-  {
-    if (this.nvT != null)
-    {
-      this.nvE.setText(this.nvT.lnT);
-      this.nvv.setUrl(this.nvT.nve);
-    }
-  }
-  
-  private void bvY()
-  {
-    if (this.nvS != null)
-    {
-      if (!bk.bl(this.nvS.color)) {
-        this.nvF.setContentTextColor(Color.parseColor(this.nvS.color));
-      }
-      for (;;)
-      {
-        this.nvF.setText(this.nvS.nvm);
-        this.nvF.setVisibility(0);
-        return;
-        this.nvF.setContentTextColorRes(a.c.black);
-      }
-    }
-    if (!bk.bl(this.nvT.nvh))
-    {
-      this.nvF.setText(this.nvT.nvh);
-      if (!bk.bl(this.nvT.nvi)) {
-        this.nvF.setContentTextColor(Color.parseColor(this.nvT.nvi));
-      }
-      for (;;)
-      {
-        this.nvF.setVisibility(0);
-        return;
-        this.nvF.setContentTextColorRes(a.c.black);
-      }
-    }
-    this.nvF.setVisibility(8);
-  }
-  
-  private void bvZ()
-  {
-    if (this.nvF.getVisibility() == 0)
-    {
-      this.nvE.setBackground(getResources().getDrawable(a.e.wallet_clickable_bg));
-      return;
-    }
-    this.nvE.setBackground(getResources().getDrawable(a.e.bank_remit_form_item_corner_bg));
-  }
-  
-  private void bwa()
-  {
-    if ((!bk.bl(this.nvC.getText())) && (!this.nvC.getText().trim().isEmpty()) && (!bk.bl(this.nvD.getText())) && (!this.nvD.getText().trim().isEmpty()) && (this.nvD.YL()) && (!bk.bl(this.nvE.getText())) && (this.nvF.getVisibility() == 0) && (!bk.bl(this.nvF.getText())) && (this.nvT != null) && (bk.bl(this.nvT.nvj)))
-    {
-      this.frP.setEnabled(true);
-      return;
-    }
-    this.frP.setEnabled(false);
-  }
-  
-  private void bwb()
-  {
-    if ((this.nvT != null) && (!bk.bl(this.nvT.nvh))) {
-      this.nvS = null;
-    }
-    EnterTimeParcel localEnterTimeParcel;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while ((this.nvT == null) || (this.nvT.nvk == null)) {}
-        localIterator = this.nvT.nvk.iterator();
-      } while (!localIterator.hasNext());
-      localEnterTimeParcel = (EnterTimeParcel)localIterator.next();
-    } while (localEnterTimeParcel.nvo <= 0);
-    this.nvS = localEnterTimeParcel;
-  }
-  
-  private void ir(boolean paramBoolean)
-  {
-    y.i("MicroMsg.BankRemitBankcardInputUI", "do fetch transfer record: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(44554);
+    ab.i("MicroMsg.BankRemitBankcardInputUI", "do fetch transfer record: %s", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      a(new com.tencent.mm.plugin.remittance.bankcard.a.m(), true, false);
+      doSceneProgress(new com.tencent.mm.plugin.remittance.bankcard.a.m(), true);
+      AppMethodBeat.o(44554);
       return;
     }
-    a(new com.tencent.mm.plugin.remittance.bankcard.a.m(), false, false);
+    doSceneProgress(new com.tencent.mm.plugin.remittance.bankcard.a.m(), false);
+    AppMethodBeat.o(44554);
   }
   
-  private static void p(String paramString, List<TransferRecordParcel> paramList)
+  private static void q(String paramString, List<TransferRecordParcel> paramList)
   {
-    int i;
-    if (paramList != null) {
-      i = paramList.size() - 1;
-    }
-    for (;;)
+    AppMethodBeat.i(44552);
+    if (paramList != null)
     {
-      if (i >= 0)
+      int i = paramList.size() - 1;
+      while (i >= 0)
       {
         TransferRecordParcel localTransferRecordParcel = (TransferRecordParcel)paramList.get(i);
-        if (localTransferRecordParcel.nvy.equals(paramString)) {
+        if (localTransferRecordParcel.qgu.equals(paramString))
+        {
           paramList.remove(localTransferRecordParcel);
+          AppMethodBeat.o(44552);
+          return;
         }
-      }
-      else
-      {
-        return;
-      }
-      i -= 1;
-    }
-  }
-  
-  public final boolean c(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ah.m paramm)
-  {
-    if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.a))
-    {
-      paramString = (com.tencent.mm.plugin.remittance.bankcard.a.a)paramm;
-      if (!paramString.nuR.equals(this.nvU.nvy))
-      {
-        y.i("MicroMsg.BankRemitBankcardInputUI", "outdated request: %s, %s", new Object[] { paramString.nuR, this.nvO });
-        return true;
-      }
-      paramString.a(new BankRemitBankcardInputUI.3(this, paramString)).b(new BankRemitBankcardInputUI.2(this, paramString)).c(new BankRemitBankcardInputUI.28(this));
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.g))
-      {
-        paramString = (com.tencent.mm.plugin.remittance.bankcard.a.g)paramm;
-        if (paramString == this.nvZ)
-        {
-          y.i("MicroMsg.BankRemitBankcardInputUI", "reset pending scene");
-          this.nvZ = null;
-        }
-        if (!paramString.bIW.equals(this.nvD.getMD5Value()))
-        {
-          y.i("MicroMsg.BankRemitBankcardInputUI", "outdated card request: %s, %s", new Object[] { paramString.bIW, this.nvD.getMD5Value() });
-          return true;
-        }
-        paramString.a(new BankRemitBankcardInputUI.6(this, paramString)).b(new BankRemitBankcardInputUI.5(this, paramString)).c(new BankRemitBankcardInputUI.4(this));
-      }
-      else if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.m))
-      {
-        paramString = (com.tencent.mm.plugin.remittance.bankcard.a.m)paramm;
-        this.nwb = true;
-        paramString.a(new BankRemitBankcardInputUI.9(this, paramString)).b(new n.a()
-        {
-          public final void f(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ah.m paramAnonymousm)
-          {
-            y.e("MicroMsg.BankRemitBankcardInputUI", "records response error: %s, %s", new Object[] { Integer.valueOf(paramString.nvc.iHq), paramString.nvc.iHr });
-            if (!bk.bl(paramString.nvc.iHr)) {
-              Toast.makeText(BankRemitBankcardInputUI.this, paramString.nvc.iHr, 1).show();
-            }
-            BankRemitBankcardInputUI.b(BankRemitBankcardInputUI.this, true);
-          }
-        }).c(new BankRemitBankcardInputUI.7(this));
-      }
-      else if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.d))
-      {
-        paramString = (com.tencent.mm.plugin.remittance.bankcard.a.d)paramm;
-        paramString.a(new BankRemitBankcardInputUI.13(this, paramString)).b(new BankRemitBankcardInputUI.11(this, paramString)).c(new n.a()
-        {
-          public final void f(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ah.m paramAnonymousm)
-          {
-            y.e("MicroMsg.BankRemitBankcardInputUI", "net error: %s", new Object[] { paramAnonymousm });
-          }
-        });
-      }
-      else if ((paramm instanceof k))
-      {
-        paramString = (k)paramm;
-        paramString.a(new BankRemitBankcardInputUI.16(this, paramString)).b(new BankRemitBankcardInputUI.15(this, paramString)).c(new BankRemitBankcardInputUI.14(this));
+        i -= 1;
       }
     }
+    AppMethodBeat.o(44552);
   }
   
-  protected final int getLayoutId()
+  private void s(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    return a.g.bank_remit_bankcard_input_ui;
+    AppMethodBeat.i(44555);
+    ab.i("MicroMsg.BankRemitBankcardInputUI", "do check bank bind: %s %s", new Object[] { paramString3, paramString4 });
+    ab.d("MicroMsg.BankRemitBankcardInputUI", "payeeName: %s, bankCardNo: %s", new Object[] { paramString1, paramString2 });
+    doSceneProgress(new com.tencent.mm.plugin.remittance.bankcard.a.d(paramString1, paramString2, paramString3, paramString4));
+    AppMethodBeat.o(44555);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    this.nvC = ((WalletFormView)findViewById(a.f.brbi_name_et));
-    this.nvD = ((WalletFormView)findViewById(a.f.brbi_card_et));
-    this.nvE = ((WalletFormView)findViewById(a.f.brbi_bank_name_et));
-    this.nvv = ((CdnImageView)this.nvE.findViewById(a.f.wallet_left_icon));
-    this.nvF = ((WalletFormView)findViewById(a.f.brbi_arrive_time_et));
-    this.frP = ((Button)findViewById(a.f.brbi_next_btn));
-    this.nvC.setFilterChar("\\x20\\t\\r\\n".toCharArray());
-    this.nvC.a(new BankRemitBankcardInputUI.22(this));
-    this.nvC.setOnEditorActionListener(new BankRemitBankcardInputUI.23(this));
-    this.nvC.cNx();
-    com.tencent.mm.wallet_core.ui.formview.a.b(this.nvD);
-    a(this.nvD, 2, false, true);
-    this.nvD.a(new BankRemitBankcardInputUI.24(this));
-    this.nvE.setOnClickListener(new BankRemitBankcardInputUI.25(this));
-    this.nvF.setOnClickListener(new BankRemitBankcardInputUI.26(this));
-    this.frP.setOnClickListener(new BankRemitBankcardInputUI.27(this));
-    this.nvC.getInfoIv().setVisibility(0);
-    this.nvC.getInfoIv().setClickable(true);
-    this.nvC.getInfoIv().setEnabled(true);
-    this.nvC.getInfoIv().setOnClickListener(new BankRemitBankcardInputUI.20(this));
-    bwa();
+    return 2130968818;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void initView()
   {
+    AppMethodBeat.i(44557);
+    this.qgy = ((WalletFormView)findViewById(2131821673));
+    this.qgz = ((WalletFormView)findViewById(2131821674));
+    this.qgA = ((WalletFormView)findViewById(2131821675));
+    this.qgr = ((CdnImageView)this.qgA.findViewById(2131821671));
+    this.qgB = ((WalletFormView)findViewById(2131821676));
+    this.gJr = ((Button)findViewById(2131821677));
+    this.qgy.setFilterChar("\\x20\\t\\r\\n".toCharArray());
+    this.qgy.a(new BankRemitBankcardInputUI.22(this));
+    this.qgy.setOnEditorActionListener(new BankRemitBankcardInputUI.23(this));
+    this.qgy.dTc();
+    com.tencent.mm.wallet_core.ui.formview.a.b(this.qgz);
+    setEditFocusListener(this.qgz, 2, false, true);
+    this.qgz.a(new BankRemitBankcardInputUI.24(this));
+    this.qgA.setOnClickListener(new BankRemitBankcardInputUI.25(this));
+    this.qgB.setOnClickListener(new BankRemitBankcardInputUI.26(this));
+    this.gJr.setOnClickListener(new BankRemitBankcardInputUI.27(this));
+    this.qgy.getInfoIv().setVisibility(0);
+    this.qgy.getInfoIv().setClickable(true);
+    this.qgy.getInfoIv().setEnabled(true);
+    this.qgy.getInfoIv().setOnClickListener(new BankRemitBankcardInputUI.20(this));
+    cgS();
+    AppMethodBeat.o(44557);
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(44550);
     Object localObject;
     if (paramInt1 == 1)
     {
@@ -338,33 +331,33 @@ public class BankRemitBankcardInputUI
       Iterator localIterator;
       if (paramInt2 == -1)
       {
-        this.nvV = false;
-        this.nvO = paramIntent.getStringExtra("key_bank_card_seqno");
-        str = this.nvO;
-        if (this.nvK == null) {
-          break label235;
+        this.qgR = false;
+        this.qgK = paramIntent.getStringExtra("key_bank_card_seqno");
+        str = this.qgK;
+        if (this.qgF == null) {
+          break label240;
         }
-        localIterator = this.nvK.iterator();
+        localIterator = this.qgF.iterator();
         do
         {
           if (!localIterator.hasNext()) {
             break;
           }
           localObject = (TransferRecordParcel)localIterator.next();
-        } while (!((TransferRecordParcel)localObject).nvy.equals(str));
+        } while (!((TransferRecordParcel)localObject).qgu.equals(str));
       }
       for (;;)
       {
-        this.nvU = ((TransferRecordParcel)localObject);
-        bvW();
-        bwa();
-        if (this.nvU != null) {
-          S(this.nvU.nvy, this.nvN, this.nvU.mOb);
+        this.qgQ = ((TransferRecordParcel)localObject);
+        cgO();
+        cgS();
+        if (this.qgQ != null) {
+          ab(this.qgQ.qgu, this.qgJ, this.qgQ.poq);
         }
-        ai.l(new BankRemitBankcardInputUI.17(this), 50L);
-        y.i("MicroMsg.BankRemitBankcardInputUI", "resultCode: %s", new Object[] { Integer.valueOf(paramInt2) });
+        al.p(new BankRemitBankcardInputUI.17(this), 50L);
+        ab.i("MicroMsg.BankRemitBankcardInputUI", "resultCode: %s", new Object[] { Integer.valueOf(paramInt2) });
         if (paramIntent == null) {
-          break label435;
+          break label532;
         }
         localObject = paramIntent.getStringArrayListExtra("key_delete_seq_no_list");
         paramIntent = paramIntent.getParcelableArrayListExtra("key_modified_record_list");
@@ -375,19 +368,19 @@ public class BankRemitBankcardInputUI
         while (((Iterator)localObject).hasNext())
         {
           str = (String)((Iterator)localObject).next();
-          p(str, this.nvK);
-          p(str, this.nvL);
+          q(str, this.qgF);
+          q(str, this.qgG);
         }
-        label235:
-        if (this.nvL != null)
+        label240:
+        if (this.qgG != null)
         {
-          localIterator = this.nvL.iterator();
+          localIterator = this.qgG.iterator();
           for (;;)
           {
             if (localIterator.hasNext())
             {
               localObject = (TransferRecordParcel)localIterator.next();
-              if (((TransferRecordParcel)localObject).nvy.equals(str)) {
+              if (((TransferRecordParcel)localObject).qgu.equals(str)) {
                 break;
               }
             }
@@ -401,89 +394,173 @@ public class BankRemitBankcardInputUI
         while (paramIntent.hasNext())
         {
           localObject = (TransferRecordParcel)paramIntent.next();
-          a((TransferRecordParcel)localObject, this.nvK);
-          a((TransferRecordParcel)localObject, this.nvL);
+          a((TransferRecordParcel)localObject, this.qgF);
+          a((TransferRecordParcel)localObject, this.qgG);
         }
       }
+      AppMethodBeat.o(44550);
+      return;
     }
-    else
+    if (paramInt1 == 3)
     {
-      if (paramInt1 != 3) {
-        break label458;
-      }
       if (paramInt2 == -1)
       {
         paramInt1 = paramIntent.getIntExtra("key_enter_time_scene", -1);
-        if ((this.nvT == null) || (this.nvT.nvk == null)) {
-          break label436;
-        }
-        paramIntent = this.nvT.nvk.iterator();
-        while (paramIntent.hasNext())
+        if ((this.qgP != null) && (this.qgP.qge != null))
         {
-          localObject = (EnterTimeParcel)paramIntent.next();
-          if (((EnterTimeParcel)localObject).nvl == paramInt1)
+          paramIntent = this.qgP.qge.iterator();
+          while (paramIntent.hasNext())
           {
-            this.nvS = ((EnterTimeParcel)localObject);
-            bvY();
-            bwa();
+            localObject = (EnterTimeParcel)paramIntent.next();
+            if (((EnterTimeParcel)localObject).qgh == paramInt1) {
+              this.qgO = ((EnterTimeParcel)localObject);
+            }
           }
+        }
+        for (;;)
+        {
+          cgQ();
+          cgS();
+          AppMethodBeat.o(44550);
+          return;
+          ab.w("MicroMsg.BankRemitBankcardInputUI", "can't find the right enter scene: %d", new Object[] { Integer.valueOf(paramInt1) });
         }
       }
     }
-    label435:
-    label436:
-    label458:
-    do
+    else if (paramInt1 == 2)
     {
-      return;
-      y.w("MicroMsg.BankRemitBankcardInputUI", "can't find the right enter scene: %d", new Object[] { Integer.valueOf(paramInt1) });
-      break;
-      if (paramInt1 != 2) {
-        break label503;
+      if (paramInt2 == -1)
+      {
+        this.qgP = ((BankcardElemParcel)paramIntent.getParcelableExtra("key_bank_card_elem_parcel"));
+        cgP();
+        cgT();
+        cgQ();
+        cgR();
+        cgS();
+        AppMethodBeat.o(44550);
       }
-    } while (paramInt2 != -1);
-    this.nvT = ((BankcardElemParcel)paramIntent.getParcelableExtra("key_bank_card_elem_parcel"));
-    bvX();
-    bwb();
-    bvY();
-    bvZ();
-    bwa();
-    return;
-    label503:
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+    else {
+      super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    }
+    label532:
+    AppMethodBeat.o(44550);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(44546);
     super.onCreate(paramBundle);
-    czo();
+    hideActionbarLine();
     initView();
-    paramBundle = new ti();
-    paramBundle.ccU.bso = "12";
-    paramBundle.bFJ = new BankRemitBankcardInputUI.1(this, paramBundle);
-    com.tencent.mm.sdk.b.a.udP.m(paramBundle);
-    kh(1348);
-    kh(1542);
-    kh(1378);
-    kh(1349);
-    kh(1280);
-    this.nvR = ((String)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uyy, ""));
-    ir(false);
-    y.i("MicroMsg.BankRemitBankcardInputUI", "do operation");
-    a(new k(), false, false);
-    setMMTitle(a.i.bank_remit_title);
-    addIconOptionMenu(0, a.h.actionbar_icon_dark_more, new BankRemitBankcardInputUI.12(this));
-    h.nFQ.f(14673, new Object[] { Integer.valueOf(1) });
+    paramBundle = new vd();
+    paramBundle.cLE.bSd = "12";
+    paramBundle.callback = new BankRemitBankcardInputUI.1(this, paramBundle);
+    com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
+    addSceneEndListener(1348);
+    addSceneEndListener(1542);
+    addSceneEndListener(1378);
+    addSceneEndListener(1349);
+    addSceneEndListener(1280);
+    this.qgN = ((String)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yII, ""));
+    kv(false);
+    cgL();
+    setMMTitle(2131297521);
+    addIconOptionMenu(0, 2131230740, new BankRemitBankcardInputUI.12(this));
+    h.qsU.e(14673, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.o(44546);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(44549);
     super.onDestroy();
-    ki(1348);
-    ki(1542);
-    ki(1378);
-    ki(1349);
-    ki(1280);
+    removeSceneEndListener(1348);
+    removeSceneEndListener(1542);
+    removeSceneEndListener(1378);
+    removeSceneEndListener(1349);
+    removeSceneEndListener(1280);
+    AppMethodBeat.o(44549);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ai.m paramm)
+  {
+    AppMethodBeat.i(44548);
+    ab.i("MicroMsg.BankRemitBankcardInputUI", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramm.getType());
+    if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.a))
+    {
+      paramString = (com.tencent.mm.plugin.remittance.bankcard.a.a)paramm;
+      if (!paramString.qfK.equals(this.qgQ.qgu))
+      {
+        ab.i("MicroMsg.BankRemitBankcardInputUI", "outdated request: %s, %s", new Object[] { paramString.qfK, this.qgK });
+        AppMethodBeat.o(44548);
+        return true;
+      }
+      paramString.a(new BankRemitBankcardInputUI.3(this, paramString)).b(new BankRemitBankcardInputUI.2(this, paramString)).c(new BankRemitBankcardInputUI.28(this));
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(44548);
+      return false;
+      if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.g))
+      {
+        paramString = (com.tencent.mm.plugin.remittance.bankcard.a.g)paramm;
+        if (paramString == this.qgV)
+        {
+          ab.i("MicroMsg.BankRemitBankcardInputUI", "reset pending scene");
+          this.qgV = null;
+        }
+        if (!paramString.cqq.equals(this.qgz.getMD5Value()))
+        {
+          ab.i("MicroMsg.BankRemitBankcardInputUI", "outdated card request: %s, %s", new Object[] { paramString.cqq, this.qgz.getMD5Value() });
+          AppMethodBeat.o(44548);
+          return true;
+        }
+        paramString.a(new BankRemitBankcardInputUI.6(this, paramString)).b(new BankRemitBankcardInputUI.5(this, paramString)).c(new BankRemitBankcardInputUI.4(this));
+      }
+      else if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.m))
+      {
+        paramString = (com.tencent.mm.plugin.remittance.bankcard.a.m)paramm;
+        this.qgX = true;
+        paramString.a(new BankRemitBankcardInputUI.9(this, paramString)).b(new p.a()
+        {
+          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ai.m paramAnonymousm)
+          {
+            AppMethodBeat.i(44520);
+            ab.e("MicroMsg.BankRemitBankcardInputUI", "records response error: %s, %s", new Object[] { Integer.valueOf(paramString.qfV.cnK), paramString.qfV.kNv });
+            if (!bo.isNullOrNil(paramString.qfV.kNv)) {
+              Toast.makeText(BankRemitBankcardInputUI.this, paramString.qfV.kNv, 1).show();
+            }
+            BankRemitBankcardInputUI.c(BankRemitBankcardInputUI.this, true);
+            AppMethodBeat.o(44520);
+          }
+        }).c(new BankRemitBankcardInputUI.7(this));
+      }
+      else if ((paramm instanceof com.tencent.mm.plugin.remittance.bankcard.a.d))
+      {
+        paramString = (com.tencent.mm.plugin.remittance.bankcard.a.d)paramm;
+        paramString.a(new BankRemitBankcardInputUI.13(this, paramString)).b(new BankRemitBankcardInputUI.11(this, paramString)).c(new p.a()
+        {
+          public final void d(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ai.m paramAnonymousm)
+          {
+            AppMethodBeat.i(44522);
+            ab.e("MicroMsg.BankRemitBankcardInputUI", "net error: %s", new Object[] { paramAnonymousm });
+            AppMethodBeat.o(44522);
+          }
+        });
+      }
+      else if ((paramm instanceof k))
+      {
+        paramString = (k)paramm;
+        paramString.a(new BankRemitBankcardInputUI.16(this, paramString)).b(new BankRemitBankcardInputUI.15(this, paramString)).c(new BankRemitBankcardInputUI.14(this));
+      }
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LogoWebViewWrapper$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class LogoWebViewWrapper$1
   
   public final void run()
   {
-    LogoWebViewWrapper.a(this.rlb);
+    AppMethodBeat.i(7391);
+    LogoWebViewWrapper.a(this.vaE);
+    AppMethodBeat.o(7391);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper.1
  * JD-Core Version:    0.7.0.1
  */

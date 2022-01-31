@@ -2,18 +2,21 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class IpcProxyUI$1
-  implements b
+  implements a
 {
   IpcProxyUI$1(IpcProxyUI paramIpcProxyUI) {}
   
-  public final void g(Bundle paramBundle)
+  public final void o(Bundle paramBundle)
   {
+    AppMethodBeat.i(6249);
     Intent localIntent = new Intent();
     localIntent.putExtra("input_data", paramBundle);
-    this.rde.setResult(-1, localIntent);
-    this.rde.finish();
+    this.uTc.setResult(-1, localIntent);
+    this.uTc.finish();
+    AppMethodBeat.o(6249);
   }
 }
 

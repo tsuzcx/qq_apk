@@ -1,22 +1,20 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.MenuItem;
-import android.widget.TextView;
-import com.tencent.mm.ui.base.n.d;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomCardUI$7
-  implements n.d
+  implements View.OnLongClickListener
 {
-  RoomCardUI$7(RoomCardUI paramRoomCardUI, TextView paramTextView) {}
+  RoomCardUI$7(RoomCardUI paramRoomCardUI) {}
   
-  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
+  public final boolean onLongClick(View paramView)
   {
-    if (paramInt == 0) {
-      ((ClipboardManager)this.dpT.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, this.dpT.getText().toString()));
-    }
+    AppMethodBeat.i(155172);
+    RoomCardUI.a(this.ehp, RoomCardUI.b(this.ehp));
+    AppMethodBeat.o(155172);
+    return true;
   }
 }
 

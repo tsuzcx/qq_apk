@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.freewifi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class i$a
 {
-  private static i kmM = new i((byte)0);
+  private static i mIy;
+  
+  static
+  {
+    AppMethodBeat.i(20599);
+    mIy = new i((byte)0);
+    AppMethodBeat.o(20599);
+  }
 }
 
 

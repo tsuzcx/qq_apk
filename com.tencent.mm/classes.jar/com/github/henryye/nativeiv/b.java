@@ -2,34 +2,49 @@ package com.github.henryye.nativeiv;
 
 import com.github.henryye.nativeiv.bitmap.BitmapType;
 import com.github.henryye.nativeiv.bitmap.IBitmap;
-import com.github.henryye.nativeiv.bitmap.NativeBitmapStruct;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private final Object ask = new Object();
-  public BitmapType asl = null;
-  public IBitmap asm = new b.a();
-  public com.github.henryye.nativeiv.a.a asn;
+  private static final Object aux;
+  public com.github.henryye.nativeiv.a.b auA;
+  public a auB;
+  public BitmapType auy;
+  public IBitmap auz;
   
-  public static void a(com.github.henryye.nativeiv.bitmap.a<NativeBitmapStruct> parama)
+  static
   {
-    a locala = a.asf;
-    BitmapType localBitmapType = BitmapType.Native;
-    locala.asg.put(localBitmapType, parama);
+    AppMethodBeat.i(115749);
+    aux = new Object();
+    AppMethodBeat.o(115749);
   }
   
-  final BitmapType kn()
+  public b(a parama)
   {
-    if (this.asm != null) {
-      return this.asm.getType();
+    AppMethodBeat.i(115747);
+    this.auy = null;
+    this.auz = new b.a();
+    this.auB = parama;
+    AppMethodBeat.o(115747);
+  }
+  
+  final BitmapType mu()
+  {
+    AppMethodBeat.i(115748);
+    if (this.auz != null)
+    {
+      localBitmapType = this.auz.getType();
+      AppMethodBeat.o(115748);
+      return localBitmapType;
     }
-    return BitmapType.Undefined;
+    BitmapType localBitmapType = BitmapType.Undefined;
+    AppMethodBeat.o(115748);
+    return localBitmapType;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.github.henryye.nativeiv.b
  * JD-Core Version:    0.7.0.1
  */

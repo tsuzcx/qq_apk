@@ -1,16 +1,31 @@
 package com.tencent.mm.chatroom.ui;
 
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.MMEditText;
 
 final class RoomCardUI$6
-  implements n.c
+  implements MenuItem.OnMenuItemClickListener
 {
   RoomCardUI$6(RoomCardUI paramRoomCardUI) {}
   
-  public final void a(l paraml)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paraml.add(a.i.app_copy);
+    AppMethodBeat.i(155171);
+    if (paramMenuItem.getTitle().equals(this.ehp.getString(2131296964))) {
+      RoomCardUI.a(this.ehp);
+    }
+    RoomCardUI.b(this.ehp).setEnabled(true);
+    RoomCardUI.b(this.ehp).setFocusableInTouchMode(true);
+    RoomCardUI.b(this.ehp).setFocusable(true);
+    RoomCardUI.b(this.ehp).setCursorVisible(true);
+    this.ehp.updateOptionMenuText(0, this.ehp.getString(2131296964));
+    this.ehp.enableOptionMenu(false);
+    this.ehp.showVKB();
+    RoomCardUI.b(this.ehp).setSelection(RoomCardUI.b(this.ehp).getText().toString().length());
+    AppMethodBeat.o(155171);
+    return true;
   }
 }
 

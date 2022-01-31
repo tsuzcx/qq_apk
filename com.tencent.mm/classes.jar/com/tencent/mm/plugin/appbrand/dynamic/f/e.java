@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
-import com.tencent.mm.aa.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.z.b.c;
 import org.json.JSONObject;
 
 public final class e
@@ -16,9 +17,12 @@ public final class e
     super("onTap", 325);
   }
   
-  public final JSONObject rB()
+  public final JSONObject toJSONObject()
   {
-    throw new UnsupportedOperationException("todo implementation");
+    AppMethodBeat.i(10914);
+    UnsupportedOperationException localUnsupportedOperationException = new UnsupportedOperationException("todo implementation");
+    AppMethodBeat.o(10914);
+    throw localUnsupportedOperationException;
   }
 }
 

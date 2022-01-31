@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.offline.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletOfflineCoinPurseUI$21
   implements DialogInterface.OnClickListener
@@ -12,10 +13,12 @@ final class WalletOfflineCoinPurseUI$21
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(43527);
     paramDialogInterface.dismiss();
-    a.a(this.mNj, 0, WalletOfflineCoinPurseUI.b(this.mNj));
-    WalletOfflineCoinPurseUI.I(this.mNj);
-    y.v("MicroMsg.WalletOfflineCoinPurseUI", "WalletOfflineEntranceUI startBindProcess()");
+    a.a(this.pny, 0, WalletOfflineCoinPurseUI.b(this.pny));
+    WalletOfflineCoinPurseUI.H(this.pny);
+    ab.v("MicroMsg.WalletOfflineCoinPurseUI", "WalletOfflineEntranceUI startBindProcess()");
+    AppMethodBeat.o(43527);
   }
 }
 

@@ -1,13 +1,14 @@
 package com.tencent.mm.ui.conversation.a;
 
 import android.content.Context;
-import com.tencent.mm.ay.k;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.l;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.pluginsdk.p;
-import com.tencent.mm.pluginsdk.p.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.pluginsdk.r;
+import com.tencent.mm.pluginsdk.r.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 final class a$3
@@ -15,20 +16,24 @@ final class a$3
 {
   a$3(a parama) {}
   
-  public final void SF(String paramString)
+  public final void ahA(String paramString)
   {
-    com.tencent.mm.pluginsdk.h.a.a.clQ();
-    au.Hx();
-    c.Fv().b(new k(3, paramString));
+    AppMethodBeat.i(34631);
+    com.tencent.mm.pluginsdk.h.a.a.dmE();
+    aw.aaz();
+    c.Yz().c(new l(3, paramString));
+    AppMethodBeat.o(34631);
   }
   
-  public final void gx(String paramString1, String paramString2)
+  public final void iA(String paramString1, String paramString2)
   {
-    com.tencent.mm.pluginsdk.h.a.a.clQ();
-    au.Hx();
-    c.Fv().b(new k(2, paramString1));
-    y.d("MicroMsg.ADBanner", "jump to " + paramString2);
-    p.a.rSH.a((Context)this.vUk.sdy.get(), paramString2, true);
+    AppMethodBeat.i(34630);
+    com.tencent.mm.pluginsdk.h.a.a.dmE();
+    aw.aaz();
+    c.Yz().c(new l(2, paramString1));
+    ab.d("MicroMsg.ADBanner", "jump to ".concat(String.valueOf(paramString2)));
+    r.a.vJD.a((Context)this.Amg.vUD.get(), paramString2, true);
+    AppMethodBeat.o(34630);
   }
 }
 

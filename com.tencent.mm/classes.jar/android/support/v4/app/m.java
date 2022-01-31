@@ -1,111 +1,300 @@
 package android.support.v4.app;
 
-import android.os.Parcelable;
-import android.support.v4.view.n;
+import android.graphics.Rect;
+import android.transition.Transition;
+import android.transition.Transition.EpicenterCallback;
+import android.transition.Transition.TransitionListener;
+import android.transition.TransitionManager;
+import android.transition.TransitionSet;
 import android.view.View;
 import android.view.ViewGroup;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class m
+final class m
   extends n
 {
-  private final j wr;
-  private o ws = null;
-  private Fragment wt = null;
-  
-  public m(j paramj)
+  private static boolean a(Transition paramTransition)
   {
-    this.wr = paramj;
+    return (!h(paramTransition.getTargetIds())) || (!h(paramTransition.getTargetNames())) || (!h(paramTransition.getTargetTypes()));
   }
   
-  private static String b(int paramInt, long paramLong)
+  public final Object a(Object paramObject1, Object paramObject2, Object paramObject3)
   {
-    return "android:switcher:" + paramInt + ":" + paramLong;
-  }
-  
-  public final void a(Parcelable paramParcelable, ClassLoader paramClassLoader) {}
-  
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (this.ws == null) {
-      this.ws = this.wr.bP();
+    TransitionSet localTransitionSet = new TransitionSet();
+    if (paramObject1 != null) {
+      localTransitionSet.addTransition((Transition)paramObject1);
     }
-    this.ws.c((Fragment)paramObject);
+    if (paramObject2 != null) {
+      localTransitionSet.addTransition((Transition)paramObject2);
+    }
+    if (paramObject3 != null) {
+      localTransitionSet.addTransition((Transition)paramObject3);
+    }
+    return localTransitionSet;
   }
   
-  public final boolean a(View paramView, Object paramObject)
+  public final void a(ViewGroup paramViewGroup, Object paramObject)
   {
-    return ((Fragment)paramObject).getView() == paramView;
+    TransitionManager.beginDelayedTransition(paramViewGroup, (Transition)paramObject);
   }
   
-  public abstract Fragment ae(int paramInt);
-  
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
+  public final void a(Object paramObject, final Rect paramRect)
   {
-    if (this.ws == null) {
-      this.ws = this.wr.bP();
-    }
-    long l = paramInt;
-    Object localObject = b(paramViewGroup.getId(), l);
-    localObject = this.wr.G((String)localObject);
-    if (localObject != null) {
-      this.ws.d((Fragment)localObject);
-    }
-    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (ViewGroup)localObject)
-    {
-      if (paramViewGroup != this.wt)
+    if (paramObject != null) {
+      ((Transition)paramObject).setEpicenterCallback(new Transition.EpicenterCallback()
       {
-        paramViewGroup.setMenuVisibility(false);
-        paramViewGroup.setUserVisibleHint(false);
-      }
-      return paramViewGroup;
-      localObject = ae(paramInt);
-      this.ws.a(paramViewGroup.getId(), (Fragment)localObject, b(paramViewGroup.getId(), l));
+        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
+        {
+          if ((paramRect == null) || (paramRect.isEmpty())) {
+            return null;
+          }
+          return paramRect;
+        }
+      });
     }
   }
   
-  public final void cc()
+  public final void a(Object paramObject, View paramView)
   {
-    if (this.ws != null)
+    if (paramView != null)
     {
-      this.ws.commitNowAllowingStateLoss();
-      this.ws = null;
+      paramObject = (Transition)paramObject;
+      final Rect localRect = new Rect();
+      b(paramView, localRect);
+      paramObject.setEpicenterCallback(new Transition.EpicenterCallback()
+      {
+        public final Rect onGetEpicenter(Transition paramAnonymousTransition)
+        {
+          return localRect;
+        }
+      });
     }
   }
   
-  public final Parcelable cd()
+  public final void a(Object paramObject, View paramView, ArrayList<View> paramArrayList)
   {
-    return null;
-  }
-  
-  public final void e(ViewGroup paramViewGroup)
-  {
-    if (paramViewGroup.getId() == -1) {
-      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
-    }
-  }
-  
-  public final void j(Object paramObject)
-  {
-    paramObject = (Fragment)paramObject;
-    if (paramObject != this.wt)
+    paramObject = (TransitionSet)paramObject;
+    List localList = paramObject.getTargets();
+    localList.clear();
+    int j = paramArrayList.size();
+    int i = 0;
+    while (i < j)
     {
-      if (this.wt != null)
-      {
-        this.wt.setMenuVisibility(false);
-        this.wt.setUserVisibleHint(false);
-      }
-      if (paramObject != null)
-      {
-        paramObject.setMenuVisibility(true);
-        paramObject.setUserVisibleHint(true);
-      }
-      this.wt = paramObject;
+      a(localList, (View)paramArrayList.get(i));
+      i += 1;
     }
+    localList.add(paramView);
+    paramArrayList.add(paramView);
+    a(paramObject, paramArrayList);
+  }
+  
+  public final void a(Object paramObject1, final Object paramObject2, final ArrayList<View> paramArrayList1, final Object paramObject3, final ArrayList<View> paramArrayList2, final Object paramObject4, final ArrayList<View> paramArrayList3)
+  {
+    ((Transition)paramObject1).addListener(new Transition.TransitionListener()
+    {
+      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionEnd(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionPause(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionResume(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionStart(Transition paramAnonymousTransition)
+      {
+        if (paramObject2 != null) {
+          m.this.b(paramObject2, paramArrayList1, null);
+        }
+        if (paramObject3 != null) {
+          m.this.b(paramObject3, paramArrayList2, null);
+        }
+        if (paramObject4 != null) {
+          m.this.b(paramObject4, paramArrayList3, null);
+        }
+      }
+    });
+  }
+  
+  public final void a(Object paramObject, ArrayList<View> paramArrayList)
+  {
+    int i = 0;
+    paramObject = (Transition)paramObject;
+    if (paramObject == null) {}
+    for (;;)
+    {
+      return;
+      int j;
+      if ((paramObject instanceof TransitionSet))
+      {
+        paramObject = (TransitionSet)paramObject;
+        j = paramObject.getTransitionCount();
+        while (i < j)
+        {
+          a(paramObject.getTransitionAt(i), paramArrayList);
+          i += 1;
+        }
+      }
+      else if ((!a(paramObject)) && (h(paramObject.getTargets())))
+      {
+        j = paramArrayList.size();
+        i = 0;
+        while (i < j)
+        {
+          paramObject.addTarget((View)paramArrayList.get(i));
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  public final void a(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
+  {
+    paramObject = (TransitionSet)paramObject;
+    if (paramObject != null)
+    {
+      paramObject.getTargets().clear();
+      paramObject.getTargets().addAll(paramArrayList2);
+      b(paramObject, paramArrayList1, paramArrayList2);
+    }
+  }
+  
+  public final Object b(Object paramObject1, Object paramObject2, Object paramObject3)
+  {
+    Object localObject = null;
+    paramObject1 = (Transition)paramObject1;
+    paramObject2 = (Transition)paramObject2;
+    paramObject3 = (Transition)paramObject3;
+    if ((paramObject1 != null) && (paramObject2 != null)) {
+      paramObject1 = new TransitionSet().addTransition(paramObject1).addTransition(paramObject2).setOrdering(1);
+    }
+    while (paramObject3 != null)
+    {
+      paramObject2 = new TransitionSet();
+      if (paramObject1 != null) {
+        paramObject2.addTransition(paramObject1);
+      }
+      paramObject2.addTransition(paramObject3);
+      return paramObject2;
+      if (paramObject1 == null)
+      {
+        paramObject1 = localObject;
+        if (paramObject2 != null) {
+          paramObject1 = paramObject2;
+        }
+      }
+    }
+    return paramObject1;
+  }
+  
+  public final void b(Object paramObject, View paramView)
+  {
+    if (paramObject != null) {
+      ((Transition)paramObject).addTarget(paramView);
+    }
+  }
+  
+  public final void b(Object paramObject, final View paramView, final ArrayList<View> paramArrayList)
+  {
+    ((Transition)paramObject).addListener(new Transition.TransitionListener()
+    {
+      public final void onTransitionCancel(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionEnd(Transition paramAnonymousTransition)
+      {
+        paramAnonymousTransition.removeListener(this);
+        paramView.setVisibility(8);
+        int j = paramArrayList.size();
+        int i = 0;
+        while (i < j)
+        {
+          ((View)paramArrayList.get(i)).setVisibility(0);
+          i += 1;
+        }
+      }
+      
+      public final void onTransitionPause(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionResume(Transition paramAnonymousTransition) {}
+      
+      public final void onTransitionStart(Transition paramAnonymousTransition) {}
+    });
+  }
+  
+  public final void b(Object paramObject, ArrayList<View> paramArrayList1, ArrayList<View> paramArrayList2)
+  {
+    int i = 0;
+    paramObject = (Transition)paramObject;
+    int j;
+    if ((paramObject instanceof TransitionSet))
+    {
+      paramObject = (TransitionSet)paramObject;
+      j = paramObject.getTransitionCount();
+      while (i < j)
+      {
+        b(paramObject.getTransitionAt(i), paramArrayList1, paramArrayList2);
+        i += 1;
+      }
+    }
+    if (!a(paramObject))
+    {
+      List localList = paramObject.getTargets();
+      if ((localList != null) && (localList.size() == paramArrayList1.size()) && (localList.containsAll(paramArrayList1)))
+      {
+        if (paramArrayList2 == null) {}
+        for (i = 0;; i = paramArrayList2.size())
+        {
+          j = 0;
+          while (j < i)
+          {
+            paramObject.addTarget((View)paramArrayList2.get(j));
+            j += 1;
+          }
+        }
+        i = paramArrayList1.size() - 1;
+        while (i >= 0)
+        {
+          paramObject.removeTarget((View)paramArrayList1.get(i));
+          i -= 1;
+        }
+      }
+    }
+  }
+  
+  public final void c(Object paramObject, View paramView)
+  {
+    if (paramObject != null) {
+      ((Transition)paramObject).removeTarget(paramView);
+    }
+  }
+  
+  public final boolean g(Object paramObject)
+  {
+    return paramObject instanceof Transition;
+  }
+  
+  public final Object h(Object paramObject)
+  {
+    Transition localTransition = null;
+    if (paramObject != null) {
+      localTransition = ((Transition)paramObject).clone();
+    }
+    return localTransition;
+  }
+  
+  public final Object i(Object paramObject)
+  {
+    if (paramObject == null) {
+      return null;
+    }
+    TransitionSet localTransitionSet = new TransitionSet();
+    localTransitionSet.addTransition((Transition)paramObject);
+    return localTransitionSet;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.app.m
  * JD-Core Version:    0.7.0.1
  */

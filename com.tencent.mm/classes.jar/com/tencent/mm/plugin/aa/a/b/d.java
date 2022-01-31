@@ -1,80 +1,111 @@
 package com.tencent.mm.plugin.aa.a.b;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class d
-  extends i<c>
+  extends j<c>
 {
-  public static final String[] dXp = { i.a(c.buS, "AARecord") };
-  private static final String[] eWE = { "*", "rowid" };
-  public static Map<String, c> eWF = new HashMap();
-  private e dXw;
+  public static final String[] SQL_CREATE;
+  private static final String[] goC;
+  public static Map<String, c> goD;
+  private e db;
+  
+  static
+  {
+    AppMethodBeat.i(40674);
+    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "AARecord") };
+    goC = new String[] { "*", "rowid" };
+    goD = new HashMap();
+    AppMethodBeat.o(40674);
+  }
   
   public d(e parame)
   {
-    super(parame, c.buS, "AARecord", null);
-    this.dXw = parame;
+    super(parame, c.info, "AARecord", null);
+    this.db = parame;
   }
   
   public final boolean a(c paramc)
   {
-    if ((paramc != null) && (eWF.containsKey(paramc.field_billNo))) {
-      eWF.put(paramc.field_billNo, paramc);
+    AppMethodBeat.i(40668);
+    if ((paramc != null) && (goD.containsKey(paramc.field_billNo))) {
+      goD.put(paramc.field_billNo, paramc);
     }
-    return super.b(paramc);
+    boolean bool = super.insert(paramc);
+    AppMethodBeat.o(40668);
+    return bool;
   }
   
   public final boolean a(c paramc, String... paramVarArgs)
   {
-    if ((paramc != null) && (eWF.containsKey(paramc.field_billNo))) {
-      eWF.remove(paramc.field_billNo);
+    AppMethodBeat.i(40669);
+    if ((paramc != null) && (goD.containsKey(paramc.field_billNo))) {
+      goD.remove(paramc.field_billNo);
     }
-    return super.a(paramc, paramVarArgs);
+    boolean bool = super.delete(paramc, paramVarArgs);
+    AppMethodBeat.o(40669);
+    return bool;
   }
   
   public final boolean b(c paramc)
   {
-    if ((paramc != null) && (eWF.containsKey(paramc.field_billNo))) {
-      eWF.put(paramc.field_billNo, paramc);
+    AppMethodBeat.i(40670);
+    if ((paramc != null) && (goD.containsKey(paramc.field_billNo))) {
+      goD.put(paramc.field_billNo, paramc);
     }
-    return super.a(paramc);
+    boolean bool = super.replace(paramc);
+    AppMethodBeat.o(40670);
+    return bool;
   }
   
-  public final c pv(String paramString)
+  public final c wJ(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    for (;;)
+    AppMethodBeat.i(40667);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(40667);
       return null;
-      paramString = this.dXw.a("AARecord", eWE, "billNo=?", new String[] { paramString }, null, null, null, 2);
-      try
+    }
+    paramString = this.db.a("AARecord", goC, "billNo=?", new String[] { paramString }, null, null, null, 2);
+    try
+    {
+      if (paramString.moveToFirst())
       {
-        if (paramString.moveToFirst())
-        {
-          c localc = new c();
-          localc.d(paramString);
-          return localc;
-        }
-        return null;
+        c localc = new c();
+        localc.convertFrom(paramString);
+        return localc;
       }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.AARecordStorage", "getRecordByBillno error: %s", new Object[] { localException.getMessage() });
-        return null;
+      if (paramString != null) {
+        paramString.close();
       }
-      finally
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
+        ab.e("MicroMsg.AARecordStorage", "getRecordByBillno error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }
       }
     }
+    finally
+    {
+      if (paramString == null) {
+        break label147;
+      }
+      paramString.close();
+      AppMethodBeat.o(40667);
+    }
+    AppMethodBeat.o(40667);
+    return null;
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.data.i;
 import com.tencent.mm.vfs.e;
 
@@ -11,19 +12,21 @@ public final class g
     super(parama, parama1);
   }
   
-  public final String Oc(String paramString)
+  public final String aaW(String paramString)
   {
     return paramString;
   }
   
-  public final boolean bEs()
+  public final boolean cpR()
   {
-    String str = i.j(this.bZK);
-    e.f(this.ouO.getPath(), this.ouO.bEq(), str);
+    AppMethodBeat.i(36751);
+    String str = i.j(this.cIc);
+    e.h(this.rjH.getPath(), this.rjH.cpP(), str);
+    AppMethodBeat.o(36751);
     return true;
   }
   
-  protected final int bEt()
+  protected final int cpS()
   {
     return 2;
   }

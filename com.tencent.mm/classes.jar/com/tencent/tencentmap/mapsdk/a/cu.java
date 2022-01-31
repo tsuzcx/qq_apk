@@ -1,48 +1,74 @@
 package com.tencent.tencentmap.mapsdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.List;
+
 public final class cu
-  extends dc
   implements Cloneable
 {
-  public String a = "";
-  public String b = "";
-  public String c = "";
-  public boolean d = true;
-  public long e = 0L;
-  public long f = 0L;
-  public String g = "";
-  public long h = 0L;
-  private int i = 0;
+  private String a;
+  private String b;
+  private int c;
+  private List<cw> d;
   
-  public final void a(da paramda)
+  public cu(String paramString1, String paramString2, List<cw> paramList, int paramInt)
   {
-    this.a = paramda.a(0, true);
-    this.b = paramda.a(1, true);
-    this.c = paramda.a(2, true);
-    if (paramda.a((byte)0, 3, true) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.d = bool;
-      this.e = paramda.a(this.e, 4, true);
-      this.f = paramda.a(this.f, 5, true);
-      this.g = paramda.a(6, true);
-      this.h = paramda.a(this.h, 7, true);
-      this.i = paramda.a(this.i, 8, false);
-      return;
-    }
+    this.a = paramString1;
+    this.b = paramString2;
+    this.d = paramList;
+    this.c = paramInt;
   }
   
-  public final void a(db paramdb)
+  public final String a()
   {
-    paramdb.a(this.a, 0);
-    paramdb.a(this.b, 1);
-    paramdb.a(this.c, 2);
-    paramdb.a(this.d);
-    paramdb.a(this.e, 4);
-    paramdb.a(this.f, 5);
-    paramdb.a(this.g, 6);
-    paramdb.a(this.h, 7);
-    paramdb.a(this.i, 8);
+    return this.a;
+  }
+  
+  public final String b()
+  {
+    return this.b;
+  }
+  
+  public final List<cw> c()
+  {
+    return this.d;
+  }
+  
+  protected final Object clone()
+  {
+    AppMethodBeat.i(150021);
+    cu localcu = (cu)super.clone();
+    if (this.d != null)
+    {
+      localcu.d = new ArrayList(this.d.size());
+      int i = 0;
+      while (i < this.d.size())
+      {
+        localcu.d.add(new cw(((cw)this.d.get(i)).a()));
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(150021);
+    return localcu;
+  }
+  
+  public final int d()
+  {
+    return this.c;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(150020);
+    if ((this.a == null) || (this.d == null) || (this.d.size() <= this.c))
+    {
+      AppMethodBeat.o(150020);
+      return "";
+    }
+    String str = this.a + "_" + ((cw)this.d.get(this.c)).a();
+    AppMethodBeat.o(150020);
+    return str;
   }
 }
 

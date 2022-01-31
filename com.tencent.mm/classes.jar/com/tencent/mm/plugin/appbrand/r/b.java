@@ -1,13 +1,8 @@
 package com.tencent.mm.plugin.appbrand.r;
 
-import com.tencent.mm.kernel.b.e;
-import com.tencent.mm.kernel.c.a;
-
-@e(com.tencent.mm.plugin.appbrand.a.b.class)
 public abstract interface b
-  extends a
 {
-  public abstract boolean isSupportVulkan();
+  public abstract String[] getKeys();
 }
 
 

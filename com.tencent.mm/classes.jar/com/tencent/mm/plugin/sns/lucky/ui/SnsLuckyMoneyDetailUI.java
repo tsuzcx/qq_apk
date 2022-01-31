@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.lucky.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -8,71 +9,76 @@ import android.view.KeyEvent;
 import android.view.Window;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.l.a;
 import com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI;
-import com.tencent.mm.plugin.q.a;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.e;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SnsLuckyMoneyDetailUI
   extends LuckyMoneyBaseUI
 {
-  private ListView lLU;
-  AbsListView.OnScrollListener lMb = new SnsLuckyMoneyDetailUI.1(this);
-  private final int lVx = 750;
-  private final int lVy = 240;
-  private b ooh;
+  private ListView ojo;
+  AbsListView.OnScrollListener ojv;
+  private final int otx;
+  private final int oty;
+  private b rcy;
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public SnsLuckyMoneyDetailUI()
   {
-    return false;
+    AppMethodBeat.i(45185);
+    this.ojv = new SnsLuckyMoneyDetailUI.1(this);
+    this.otx = 750;
+    this.oty = 240;
+    AppMethodBeat.o(45185);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    return super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.i(45188);
+    boolean bool = super.dispatchKeyEvent(paramKeyEvent);
+    AppMethodBeat.o(45188);
+    return bool;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.snslucky_money_detail_ui;
+    return 2130970898;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    getResources().getDrawable(a.e.lucky_money_actionbar_bg);
-    setMMTitle(a.i.sns_lucky_detail_ui_title);
+    AppMethodBeat.i(45187);
+    getResources().getDrawable(2130839340);
+    setMMTitle(2131303881);
     setBackBtn(new SnsLuckyMoneyDetailUI.2(this));
-    this.lLU = ((ListView)findViewById(a.f.lucky_money_detail_record_list));
-    this.ooh = new b(this.mController.uMN);
-    this.lLU.setAdapter(this.ooh);
-    this.lLU.setOnScrollListener(this.lMb);
-    this.lLU.setOnItemClickListener(new SnsLuckyMoneyDetailUI.3(this));
+    this.ojo = ((ListView)findViewById(2131825658));
+    this.rcy = new b(getContext());
+    this.ojo.setAdapter(this.rcy);
+    this.ojo.setOnScrollListener(this.ojv);
+    this.ojo.setOnItemClickListener(new SnsLuckyMoneyDetailUI.3(this));
+    AppMethodBeat.o(45187);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(45186);
     super.onCreate(paramBundle);
     initView();
-    paramBundle = a.GK(getIntent().getStringExtra("key_feedid"));
+    paramBundle = a.So(getIntent().getStringExtra("key_feedid"));
     if ((paramBundle == null) || (paramBundle.size() == 0))
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
-        int i = getResources().getColor(a.c.sns_lucky_detail_ui_status_bar_color);
+        int i = getResources().getColor(2131690496);
         getWindow().setStatusBarColor(i);
       }
       setMMSubTitle(null);
+      AppMethodBeat.o(45186);
       return;
     }
-    b localb = this.ooh;
+    b localb = this.rcy;
     if (paramBundle == null) {
       new LinkedList();
     }
@@ -80,18 +86,31 @@ public class SnsLuckyMoneyDetailUI
     {
       localb.notifyDataSetChanged();
       break;
-      localb.lLG = paramBundle;
+      localb.oja = paramBundle;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(45189);
     super.onDestroy();
+    AppMethodBeat.o(45189);
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.ui.SnsLuckyMoneyDetailUI
  * JD-Core Version:    0.7.0.1
  */

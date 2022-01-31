@@ -1,16 +1,27 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class WalletLqtArriveTimeLayout$b
 {
-  public RadioButton Vd;
-  public TextView haW;
-  public TextView iIV;
+  public RadioButton VQ;
+  public View iCk;
+  public TextView iJG;
   public int index;
-  public View ipf;
+  public TextView kPB;
+  
+  public final void cRl()
+  {
+    AppMethodBeat.i(45504);
+    this.iJG.setTextColor(ah.getContext().getResources().getColorStateList(2131690797));
+    AppMethodBeat.o(45504);
+  }
 }
 
 

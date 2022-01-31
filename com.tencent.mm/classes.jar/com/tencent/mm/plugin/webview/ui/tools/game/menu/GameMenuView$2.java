@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.m;
 
 final class GameMenuView$2
@@ -11,14 +12,16 @@ final class GameMenuView$2
   
   public final void onClick(View paramView)
   {
-    if (GameMenuView.b(this.rxk) != null)
+    AppMethodBeat.i(8829);
+    if (GameMenuView.b(this.vod) != null)
     {
       paramView = (m)paramView.getTag();
-      GameMenuView.b(this.rxk).f(paramView);
+      GameMenuView.b(this.vod).c(paramView);
     }
-    if (GameMenuView.c(this.rxk) != null) {
-      GameMenuView.c(this.rxk).onDismiss();
+    if (GameMenuView.c(this.vod) != null) {
+      GameMenuView.c(this.vod).onDismiss();
     }
+    AppMethodBeat.o(8829);
   }
 }
 

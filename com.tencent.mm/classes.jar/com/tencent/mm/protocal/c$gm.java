@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$gm
+final class c$gm
   extends c.g
 {
-  public c$gm()
+  c$gm()
   {
-    super("realtimeReport", "realtimeReport", 171, false);
+    super("openWXSearchPage", "openWXSearchPage", 309, true);
   }
 }
 

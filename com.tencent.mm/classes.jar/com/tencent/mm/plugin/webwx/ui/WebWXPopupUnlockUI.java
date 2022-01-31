@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.webwx.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.crashfix.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMBaseActivity;
 
 public class WebWXPopupUnlockUI
@@ -15,28 +16,34 @@ public class WebWXPopupUnlockUI
 {
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(26570);
     super.onCreate(paramBundle);
     if (getIntent() != null)
     {
       paramBundle = getIntent().getStringExtra("deviceName");
       if (paramBundle != null)
       {
-        Dialog localDialog = new Dialog(this);
-        localDialog.requestWindowFeature(1);
-        View localView = View.inflate(this, R.i.extdevice_unlock, null);
-        TextView localTextView = (TextView)localView.findViewById(R.h.device_name);
-        ((TextView)localView.findViewById(R.h.unlock_bt)).setOnClickListener(new WebWXPopupUnlockUI.1(this, localDialog));
-        localDialog.setOnDismissListener(new WebWXPopupUnlockUI.2(this));
+        a locala = new a(this);
+        locala.requestWindowFeature(1);
+        View localView = View.inflate(this, 2130969485, null);
+        TextView localTextView = (TextView)localView.findViewById(2131823852);
+        ((TextView)localView.findViewById(2131823853)).setOnClickListener(new WebWXPopupUnlockUI.1(this, locala));
+        locala.setOnDismissListener(new WebWXPopupUnlockUI.2(this));
         localTextView.setText(paramBundle);
-        localDialog.setContentView(localView);
-        localDialog.show();
+        locala.setContentView(localView);
+        locala.show();
+        AppMethodBeat.o(26570);
+        return;
       }
+      ab.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
     }
-    else
-    {
-      return;
-    }
-    y.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
+    AppMethodBeat.o(26570);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

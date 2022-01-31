@@ -8,26 +8,26 @@ import com.tencent.mm.ui.base.MaxListView;
 
 final class WalletOrderInfoOldUI$a$a
 {
-  TextView eXP;
-  CdnImageView qAV;
-  TextView qAW;
-  TextView qAX;
-  TextView qEQ;
-  TextView qER;
-  TextView qES;
-  TextView qET;
-  TextView qEU;
-  TextView qEV;
-  TextView qEW;
-  View qEX;
-  MaxListView qEY;
-  View qEZ;
-  TextView qFa;
-  TextView qFb;
-  TextView qFc;
-  TextView qFd;
-  View qFe;
-  ViewGroup qFf;
+  TextView gpM;
+  CdnImageView unG;
+  TextView unH;
+  TextView unI;
+  TextView urY;
+  TextView urZ;
+  TextView usa;
+  TextView usb;
+  TextView usc;
+  TextView usd;
+  TextView use;
+  View usf;
+  MaxListView usg;
+  View ush;
+  TextView usi;
+  TextView usj;
+  TextView usk;
+  TextView usl;
+  View usm;
+  ViewGroup usn;
   
   WalletOrderInfoOldUI$a$a(WalletOrderInfoOldUI.a parama) {}
 }

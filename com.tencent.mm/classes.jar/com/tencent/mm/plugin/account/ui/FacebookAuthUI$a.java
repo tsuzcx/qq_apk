@@ -1,17 +1,13 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.friend.a.v;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.f.a.b;
-import com.tencent.mm.ui.f.a.c;
-import com.tencent.mm.ui.f.a.c.a;
-import com.tencent.mm.ui.f.a.d;
+import com.tencent.mm.ui.g.a.b;
+import com.tencent.mm.ui.g.a.c;
+import com.tencent.mm.ui.g.a.c.a;
 
 final class FacebookAuthUI$a
   implements c.a
@@ -20,47 +16,48 @@ final class FacebookAuthUI$a
   
   public final void a(b paramb)
   {
-    y.d("MicroMsg.FacebookAuthUI", "onError:" + paramb.getMessage());
-    com.tencent.mm.ui.base.h.b(this.flI, paramb.getMessage(), this.flI.getString(q.j.contact_info_facebookapp_bind_fail), true);
-    FacebookAuthUI.cy(false);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(582L, 3L, 1L, false);
+    AppMethodBeat.i(124785);
+    ab.d("MicroMsg.FacebookAuthUI", "onError:" + paramb.getMessage());
+    com.tencent.mm.ui.base.h.b(this.gDa, paramb.getMessage(), this.gDa.getString(2131298597), true);
+    FacebookAuthUI.ark();
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(582L, 3L, 1L, false);
+    AppMethodBeat.o(124785);
   }
   
-  public final void a(d paramd)
+  public final void a(com.tencent.mm.ui.g.a.e parame)
   {
-    y.d("MicroMsg.FacebookAuthUI", "onFacebookError:" + paramd.vVV);
-    com.tencent.mm.ui.base.h.b(this.flI, paramd.getMessage(), this.flI.getString(q.j.contact_info_facebookapp_bind_fail), true);
-    FacebookAuthUI.cy(false);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(582L, 2L, 1L, false);
-  }
-  
-  public final void l(Bundle paramBundle)
-  {
-    y.d("MicroMsg.FacebookAuthUI", "token:" + FacebookAuthUI.e(this.flI).faP);
-    g.DP().Dz().o(65830, FacebookAuthUI.e(this.flI).faP);
-    if (FacebookAuthUI.e(this.flI).vVO != 0L) {
-      g.DP().Dz().o(65832, Long.valueOf(FacebookAuthUI.e(this.flI).vVO));
-    }
-    paramBundle = this.flI.getString(q.j.app_tip);
-    String str = this.flI.getString(q.j.facebook_auth_binding);
-    FacebookAuthUI.a(this.flI, ProgressDialog.show(this.flI, paramBundle, str, true));
-    FacebookAuthUI.d(this.flI).setOnCancelListener(FacebookAuthUI.c(this.flI));
-    FacebookAuthUI.a(this.flI, new v(1, FacebookAuthUI.e(this.flI).faP));
-    g.Dk().a(FacebookAuthUI.a(this.flI), 0);
-    FacebookAuthUI.cy(true);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(582L, 1L, 1L, false);
+    AppMethodBeat.i(124784);
+    ab.d("MicroMsg.FacebookAuthUI", "onFacebookError:" + parame.Aoe);
+    com.tencent.mm.ui.base.h.b(this.gDa, parame.getMessage(), this.gDa.getString(2131298597), true);
+    FacebookAuthUI.ark();
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(582L, 2L, 1L, false);
+    AppMethodBeat.o(124784);
   }
   
   public final void onCancel()
   {
-    y.d("MicroMsg.FacebookAuthUI", "onCancel");
-    FacebookAuthUI.cy(false);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(582L, 4L, 1L, false);
+    AppMethodBeat.i(124786);
+    ab.d("MicroMsg.FacebookAuthUI", "onCancel");
+    FacebookAuthUI.ark();
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(582L, 4L, 1L, false);
+    AppMethodBeat.o(124786);
+  }
+  
+  public final void u(Bundle paramBundle)
+  {
+    AppMethodBeat.i(124783);
+    FacebookAuthUI.a(this.gDa, FacebookAuthUI.g(this.gDa).gsH);
+    g.RL().Ru().set(65830, FacebookAuthUI.h(this.gDa));
+    if (FacebookAuthUI.g(this.gDa).AnR != 0L) {
+      g.RL().Ru().set(65832, Long.valueOf(FacebookAuthUI.g(this.gDa).AnR));
+    }
+    FacebookAuthUI.d(this.gDa);
+    AppMethodBeat.o(124783);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.FacebookAuthUI.a
  * JD-Core Version:    0.7.0.1
  */

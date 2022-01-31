@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.webview.stub;
 
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.modelgeo.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.d;
 
 final class WebViewStubService$1$6
-  implements a.a
+  implements Runnable
 {
   WebViewStubService$1$6(WebViewStubService.1 param1) {}
   
-  public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
+  public final void run()
   {
-    y.i("MicroMsg.WebViewStubService", "onGetLocation %b %f|%f", new Object[] { Boolean.valueOf(paramBoolean), Float.valueOf(paramFloat1), Float.valueOf(paramFloat2) });
-    c.Ob().c(this);
-    return false;
+    AppMethodBeat.i(7111);
+    d.agQ().a(new WebViewStubService.1.6.1(this), true);
+    AppMethodBeat.o(7111);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.WebViewStubService.1.6
  * JD-Core Version:    0.7.0.1
  */

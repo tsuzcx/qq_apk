@@ -1,57 +1,60 @@
 package com.google.android.exoplayer2.c.c;
 
-import com.google.android.exoplayer2.c.d;
-import com.google.android.exoplayer2.c.e;
-import com.google.android.exoplayer2.c.f;
-import com.google.android.exoplayer2.c.g;
-import com.google.android.exoplayer2.c.j.a;
-import com.google.android.exoplayer2.i.j;
-import com.google.android.exoplayer2.i.t;
+import com.google.android.exoplayer2.i.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class a
-  implements d
+final class a
+  implements b.a
 {
-  private static final int aDc = t.aG("ID3");
-  public static final g azq = new a.1();
-  private final long aDd;
-  private final b aDe;
-  private final j aDf;
-  private boolean aDg;
+  private final long axh;
+  private final int bitrate;
+  private final long firstFramePosition;
   
-  public a()
+  public a(long paramLong1, int paramInt, long paramLong2)
   {
-    this(0L);
-  }
-  
-  public a(long paramLong)
-  {
-    this.aDd = paramLong;
-    this.aDe = new b();
-    this.aDf = new j(2786);
-  }
-  
-  public final int a(e parame)
-  {
-    int i = parame.read(this.aDf.data, 0, 2786);
-    if (i == -1) {
-      return -1;
-    }
-    this.aDf.setPosition(0);
-    this.aDf.dA(i);
-    if (!this.aDg)
+    AppMethodBeat.i(94919);
+    this.firstFramePosition = paramLong1;
+    this.bitrate = paramInt;
+    if (paramLong2 == -1L) {}
+    for (paramLong1 = -9223372036854775807L;; paramLong1 = G(paramLong2))
     {
-      this.aDe.ayE = this.aDd;
-      this.aDg = true;
+      this.axh = paramLong1;
+      AppMethodBeat.o(94919);
+      return;
     }
-    this.aDe.b(this.aDf);
-    return 0;
   }
   
-  public final void a(f paramf)
+  public final long E(long paramLong)
   {
-    this.aDe.a(paramf, new u.d());
-    paramf.lV();
-    new j.a(-9223372036854775807L);
+    AppMethodBeat.i(94920);
+    if (this.axh == -9223372036854775807L)
+    {
+      AppMethodBeat.o(94920);
+      return 0L;
+    }
+    long l = x.n(paramLong, this.axh);
+    paramLong = this.firstFramePosition;
+    l = l * this.bitrate / 8000000L;
+    AppMethodBeat.o(94920);
+    return l + paramLong;
+  }
+  
+  public final long G(long paramLong)
+  {
+    AppMethodBeat.i(94921);
+    paramLong = Math.max(0L, paramLong - this.firstFramePosition) * 1000000L * 8L / this.bitrate;
+    AppMethodBeat.o(94921);
+    return paramLong;
+  }
+  
+  public final long getDurationUs()
+  {
+    return this.axh;
+  }
+  
+  public final boolean nV()
+  {
+    return this.axh != -9223372036854775807L;
   }
 }
 

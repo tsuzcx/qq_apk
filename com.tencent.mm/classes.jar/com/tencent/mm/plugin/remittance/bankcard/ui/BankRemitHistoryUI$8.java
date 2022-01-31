@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.bankcard.a.e;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class BankRemitHistoryUI$8
-  implements n.a
+  implements p.a
 {
   BankRemitHistoryUI$8(BankRemitHistoryUI paramBankRemitHistoryUI, e parame) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    BankRemitHistoryUI.a(this.nwG, this.nwI.iGJ);
+    AppMethodBeat.i(44613);
+    BankRemitHistoryUI.a(this.qhI, this.qhK.kMM);
+    AppMethodBeat.o(44613);
   }
 }
 

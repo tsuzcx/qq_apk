@@ -1,39 +1,43 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.util.Base64;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public final class e
   implements b
 {
-  private MMWebView dYF;
-  private d rvZ;
+  private MMWebView foJ;
+  private d vmp;
   
   public e(MMWebView paramMMWebView, d paramd)
   {
-    this.dYF = paramMMWebView;
-    this.rvZ = paramd;
+    this.foJ = paramMMWebView;
+    this.vmp = paramd;
   }
   
-  public final boolean Tq(String paramString)
+  public final boolean ait(String paramString)
   {
     Object localObject = null;
-    if (this.dYF != null) {
-      this.dYF.evaluateJavascript("javascript:WeixinJSBridge._continueSetResult()", null);
+    AppMethodBeat.i(9019);
+    if (this.foJ != null) {
+      this.foJ.evaluateJavascript("javascript:WeixinJSBridge._continueSetResult()", null);
     }
     paramString = paramString.substring(27);
-    if (bk.bl(paramString))
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.JsApiResultHandler", "SetResultHandler handleUrl fail, value is null");
+      ab.e("MicroMsg.JsApiResultHandler", "SetResultHandler handleUrl fail, value is null");
+      AppMethodBeat.o(9019);
       return false;
     }
     int i = paramString.indexOf("&");
     if (i <= 0)
     {
-      y.e("MicroMsg.JsApiResultHandler", "SetResultHandler, handleUrl fail, invalid splitorIdx = %d", new Object[] { Integer.valueOf(i) });
+      ab.e("MicroMsg.JsApiResultHandler", "SetResultHandler, handleUrl fail, invalid splitorIdx = %d", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(9019);
       return false;
     }
     String str = paramString.substring(0, i);
@@ -43,8 +47,9 @@ public final class e
       if (paramString == null)
       {
         paramString = localObject;
-        y.i("MicroMsg.JsApiResultHandler", "SetResultHandler, scene = %s, result = %s", new Object[] { str, paramString });
-        this.rvZ.keep_setReturnValue(str, paramString);
+        ab.i("MicroMsg.JsApiResultHandler", "SetResultHandler, scene = %s, result = %s", new Object[] { str, paramString });
+        this.vmp.keep_setReturnValue(str, paramString);
+        AppMethodBeat.o(9019);
         return true;
       }
     }
@@ -52,7 +57,7 @@ public final class e
     {
       for (;;)
       {
-        y.e("MicroMsg.JsApiResultHandler", "SetResultHandler decodeBase64 failed");
+        ab.e("MicroMsg.JsApiResultHandler", "SetResultHandler decodeBase64 failed");
         paramString = null;
         continue;
         paramString = new String(paramString);
@@ -60,17 +65,22 @@ public final class e
     }
   }
   
-  public final boolean Ty(String paramString)
+  public final boolean aiz(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(9018);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(9018);
       return false;
     }
-    return s.n(paramString, "weixin://private/setresult/");
+    boolean bool = u.x(paramString, "weixin://private/setresult/");
+    AppMethodBeat.o(9018);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.e
  * JD-Core Version:    0.7.0.1
  */

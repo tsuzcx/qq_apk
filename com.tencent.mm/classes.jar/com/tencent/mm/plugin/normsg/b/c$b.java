@@ -3,40 +3,46 @@ package com.tencent.mm.plugin.normsg.b;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 final class c$b
   implements View.OnTouchListener
 {
-  private final View.OnTouchListener mHW;
+  private final View.OnTouchListener pic;
   
   c$b(View.OnTouchListener paramOnTouchListener)
   {
-    this.mHW = paramOnTouchListener;
+    this.pic = paramOnTouchListener;
   }
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(10433);
     for (;;)
     {
-      synchronized ()
+      synchronized (c.access$000())
       {
-        if (!c.aiY().containsKey(paramView))
+        if (!c.access$000().containsKey(paramView))
         {
-          if (this.mHW == null) {
+          if (this.pic == null) {
             break;
           }
-          return this.mHW.onTouch(paramView, paramMotionEvent);
+          boolean bool = this.pic.onTouch(paramView, paramMotionEvent);
+          AppMethodBeat.o(10433);
+          return bool;
         }
       }
-      synchronized (c.Qq())
+      synchronized (c.ajx())
       {
-        c.Qq().put(paramView, Boolean.valueOf(true));
+        c.ajx().put(paramView, Boolean.TRUE);
         continue;
         paramView = finally;
+        AppMethodBeat.o(10433);
         throw paramView;
       }
     }
+    AppMethodBeat.o(10433);
     return false;
   }
 }

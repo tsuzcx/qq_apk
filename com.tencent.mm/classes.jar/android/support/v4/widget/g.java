@@ -7,21 +7,21 @@ import android.widget.Filter.FilterResults;
 final class g
   extends Filter
 {
-  g.a JT;
+  g.a Jz;
   
   g(g.a parama)
   {
-    this.JT = parama;
+    this.Jz = parama;
   }
   
   public final CharSequence convertResultToString(Object paramObject)
   {
-    return this.JT.convertToString((Cursor)paramObject);
+    return this.Jz.convertToString((Cursor)paramObject);
   }
   
   protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence)
   {
-    paramCharSequence = this.JT.runQueryOnBackgroundThread(paramCharSequence);
+    paramCharSequence = this.Jz.runQueryOnBackgroundThread(paramCharSequence);
     Filter.FilterResults localFilterResults = new Filter.FilterResults();
     if (paramCharSequence != null)
     {
@@ -36,9 +36,9 @@ final class g
   
   protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    paramCharSequence = this.JT.getCursor();
+    paramCharSequence = this.Jz.getCursor();
     if ((paramFilterResults.values != null) && (paramFilterResults.values != paramCharSequence)) {
-      this.JT.changeCursor((Cursor)paramFilterResults.values);
+      this.Jz.changeCursor((Cursor)paramFilterResults.values);
     }
   }
 }

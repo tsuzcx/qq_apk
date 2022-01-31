@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$gt
+public final class c$gt
   extends c.g
 {
-  c$gt()
+  public c$gt()
   {
-    super("reportGameWeb", "reportGameWeb", -3, false);
+    super("playVoice", "playVoice", 99, false);
   }
 }
 

@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.backup.d;
 
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class c$4
-  implements am.a
+  implements ap.a
 {
   c$4(c paramc) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
+    AppMethodBeat.i(17249);
     if (!c.access$200())
     {
-      y.e("MicroMsg.BackupMoveRecoverServer", "try connect overtime failed.");
-      if (c.c(this.hIn) != null) {
-        c.c(this.hIn).stopTimer();
+      ab.e("MicroMsg.BackupMoveRecoverServer", "try connect overtime failed.");
+      if (c.c(this.jBL) != null) {
+        c.c(this.jBL).stopTimer();
       }
-      c.d(this.hIn);
+      c.d(this.jBL);
     }
+    AppMethodBeat.o(17249);
     return true;
   }
 }

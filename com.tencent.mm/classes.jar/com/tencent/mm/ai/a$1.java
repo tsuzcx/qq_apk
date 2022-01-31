@@ -1,11 +1,11 @@
 package com.tencent.mm.ai;
 
-import java.lang.ref.WeakReference;
+import com.tencent.mm.vending.g.c.a;
 
 final class a$1
-  implements p.a<p>
+  implements c.a<a.a<_Resp>>
 {
-  a$1(a parama, String paramString, WeakReference paramWeakReference) {}
+  a$1(a parama) {}
 }
 
 

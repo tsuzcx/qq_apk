@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.ui.m.a;
-import com.tencent.mm.protocal.c.bem;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vd;
+import com.tencent.mm.g.a.vd.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class HoneyPayMainUI$5
-  implements m.a
+  implements Runnable
 {
-  HoneyPayMainUI$5(HoneyPayMainUI paramHoneyPayMainUI, bem parambem) {}
+  HoneyPayMainUI$5(HoneyPayMainUI paramHoneyPayMainUI, vd paramvd) {}
   
-  public final void aEP()
+  public final void run()
   {
-    if (!bk.bl(this.llL.tzx)) {
-      e.l(this.llJ.mController.uMN, this.llL.tzx, true);
+    AppMethodBeat.i(41885);
+    if (!bo.isNullOrNil(this.kSA.cLF.cLG))
+    {
+      ab.i(this.nJe.TAG, "show notice banner");
+      e.a((TextView)this.nJe.findViewById(2131821672), this.kSA.cLF.cLG, this.kSA.cLF.content, this.kSA.cLF.url);
     }
-    h.nFQ.f(15191, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+    AppMethodBeat.o(41885);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.ui.HoneyPayMainUI.5
  * JD-Core Version:    0.7.0.1
  */

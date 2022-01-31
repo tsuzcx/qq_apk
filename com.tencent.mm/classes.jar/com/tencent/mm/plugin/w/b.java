@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.w;
 
-import com.tencent.mm.protocal.c.all;
+import android.content.Context;
+import android.content.Intent;
 
 public abstract interface b
 {
-  public abstract int bko();
+  public abstract int getType();
   
-  public abstract String[] bkp();
-  
-  public abstract all bkq();
+  public abstract void l(Context paramContext, Intent paramIntent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.w.b
  * JD-Core Version:    0.7.0.1
  */

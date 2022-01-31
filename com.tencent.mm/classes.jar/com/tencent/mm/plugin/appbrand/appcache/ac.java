@@ -1,40 +1,69 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ds;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
+
 public final class ac
+  extends ds
 {
-  private static int fCW;
+  static final String[] gUa;
+  static final c.a gUb;
   
-  public static int abM()
+  static
   {
-    try
+    int i = 0;
+    AppMethodBeat.i(129409);
+    gUa = new String[] { "appId", "type" };
+    Object localObject1 = new c.a();
+    ((c.a)localObject1).yrK = new Field[4];
+    ((c.a)localObject1).columns = new String[5];
+    Object localObject2 = new StringBuilder();
+    ((c.a)localObject1).columns[0] = "appId";
+    ((c.a)localObject1).yrM.put("appId", "TEXT");
+    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[1] = "type";
+    ((c.a)localObject1).yrM.put("type", "INTEGER");
+    ((StringBuilder)localObject2).append(" type INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[2] = "hit";
+    ((c.a)localObject1).yrM.put("hit", "INTEGER");
+    ((StringBuilder)localObject2).append(" hit INTEGER");
+    ((StringBuilder)localObject2).append(", ");
+    ((c.a)localObject1).columns[3] = "hitTimeMS";
+    ((c.a)localObject1).yrM.put("hitTimeMS", "LONG");
+    ((StringBuilder)localObject2).append(" hitTimeMS LONG");
+    ((c.a)localObject1).columns[4] = "rowid";
+    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
+    gUb = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY (";
+    localObject2 = gUa;
+    int j = localObject2.length;
+    while (i < j)
     {
-      int i = fCW;
-      return i;
+      localObject3 = localObject2[i];
+      localObject1 = (String)localObject1 + ", " + (String)localObject3;
+      i += 1;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    localObject1 = ((String)localObject1).replaceFirst(",", "");
+    localObject1 = (String)localObject1 + " )";
+    localObject2 = new StringBuilder();
+    Object localObject3 = gUb;
+    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(129409);
   }
   
-  static void kt(int paramInt)
+  public final c.a getDBInfo()
   {
-    try
-    {
-      fCW = paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return gUb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ac
  * JD-Core Version:    0.7.0.1
  */

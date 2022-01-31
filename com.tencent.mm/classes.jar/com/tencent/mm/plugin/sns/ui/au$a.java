@@ -1,8 +1,34 @@
 package com.tencent.mm.plugin.sns.ui;
 
-public abstract interface au$a
+final class au$a
 {
-  public abstract boolean bJw();
+  public String rVA = "";
+  public int rVB = -1;
+  int rVC = 0;
+  public boolean rVD = false;
+  public int rVE = -1;
+  public boolean rVF = false;
+  public int rVG = -1;
+  int rVH = 0;
+  public int rVt = -1;
+  public int rVu = -1;
+  public boolean rVv = false;
+  public int rVw = -1;
+  int rVx = 0;
+  public String rVy = "";
+  public String rVz = "";
+  
+  au$a(au paramau) {}
+  
+  public static boolean EV(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
 }
 
 

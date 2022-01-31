@@ -1,44 +1,11 @@
 package com.google.android.exoplayer2.g;
 
-import android.text.TextUtils;
+import com.google.android.exoplayer2.Format;
+import java.util.Comparator;
 
 final class b$a
-{
-  public final int auC;
-  public final String mimeType;
-  public final int sampleRate;
-  
-  public b$a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.auC = paramInt1;
-    this.sampleRate = paramInt2;
-    this.mimeType = paramString;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (a)paramObject;
-    } while ((this.auC == paramObject.auC) && (this.sampleRate == paramObject.sampleRate) && (TextUtils.equals(this.mimeType, paramObject.mimeType)));
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    int j = this.auC;
-    int k = this.sampleRate;
-    if (this.mimeType != null) {}
-    for (int i = this.mimeType.hashCode();; i = 0) {
-      return i + (j * 31 + k) * 31;
-    }
-  }
-}
+  implements Comparator<Format>
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

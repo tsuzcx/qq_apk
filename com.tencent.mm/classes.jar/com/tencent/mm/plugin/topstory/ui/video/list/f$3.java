@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.topstory.ui.video.list;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.ui.video.l;
 import com.tencent.mm.plugin.topstory.ui.video.o;
@@ -13,20 +14,23 @@ final class f$3
   
   public final void onClick(View paramView)
   {
-    this.pHJ.getListVideoUIComponent().bNt().pGp = 2;
-    if ((this.pHJ.getListItemUIComponent() != null) && (this.pHJ.getListItemUIComponent().bNr() == this.pHJ.getListVideoUIComponent().bNB()))
+    AppMethodBeat.i(2037);
+    this.tlr.getListVideoUIComponent().cJd().tjK = 2;
+    if ((this.tlr.getListItemUIComponent() != null) && (this.tlr.getListItemUIComponent().cJb() == this.tlr.getListVideoUIComponent().cJk()))
     {
-      paramView = this.pHJ;
-      if (!this.pHJ.getListVideoUIComponent().bNs().pFL) {}
+      paramView = this.tlr;
+      if (!this.tlr.getListVideoUIComponent().cJc().tjk) {}
       for (boolean bool = true;; bool = false)
       {
-        paramView.jI(bool);
+        paramView.Q(bool, false);
+        AppMethodBeat.o(2037);
         return;
       }
     }
-    this.pHJ.getListVideoUIComponent().zw(f.b(this.pHJ).bNr());
-    this.pHJ.getListVideoUIComponent().bNt().c(f.c(this.pHJ));
-    ((com.tencent.mm.plugin.topstory.a.b)g.t(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.pHJ.getListVideoUIComponent().bNv(), f.d(this.pHJ), f.e(this.pHJ).bNr(), 2, "");
+    this.tlr.getListVideoUIComponent().Gz(f.c(this.tlr).cJb());
+    this.tlr.getListVideoUIComponent().cJd().g(f.d(this.tlr));
+    ((com.tencent.mm.plugin.topstory.a.b)g.G(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.tlr.getListVideoUIComponent().cJf(), f.e(this.tlr), f.f(this.tlr).cJb(), 2, "");
+    AppMethodBeat.o(2037);
   }
 }
 

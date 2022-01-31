@@ -1,118 +1,139 @@
 package com.tencent.mm.plugin.remittance.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.h.a.fu;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.model.p;
 import com.tencent.mm.plugin.remittance.model.q;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.ui.base.t;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 public class RemittanceHKUI
   extends RemittanceBaseUI
 {
-  private int nDS;
-  private String nDT;
-  private String nDU;
-  private String nDV;
+  private int qqL;
+  private String qqM;
+  private String qqN;
+  private String qqO;
   
-  public final void a(String paramString1, String paramString2, String paramString3, fu paramfu)
+  public final void Yl(String paramString)
   {
-    y.d("MicroMsg.RemittanceHKUI", "do scene gen pay");
+    AppMethodBeat.i(142225);
+    ab.d("MicroMsg.RemittanceHKUI", "do scene gen pay");
     int i = 0;
-    if (this.nzY == 33) {
+    if (this.mPayScene == 33) {
       i = 1;
     }
-    a(new q(Math.round(this.nzU * 100.0D), this.djD, this.nzW, this.nAl, this.dkv, this.nzZ, this.nDS, i), true, false);
+    doSceneProgress(new q(Math.round(this.qlk * 100.0D), this.eaX, this.kEW, this.qlH, this.mDesc, this.qlp, this.qqL, i), true);
+    AppMethodBeat.o(142225);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
+  public final void chf()
   {
+    AppMethodBeat.i(45079);
+    ab.d("MicroMsg.RemittanceHKUI", "do scene cancel");
+    if (this.mPayScene == 33) {}
+    for (int i = 1;; i = 0)
+    {
+      doSceneProgress(new p(this.eaX, this.qlp, this.qqL, this.qlk * 100L, i), false);
+      AppMethodBeat.o(45079);
+      return;
+    }
+  }
+  
+  public final void chh()
+  {
+    AppMethodBeat.i(45077);
+    t.makeText(getContext(), getString(2131302600, new Object[] { this.qqM }), 0).show();
+    AppMethodBeat.o(45077);
+  }
+  
+  public final void chk()
+  {
+    AppMethodBeat.i(45078);
+    if (!bo.isNullOrNil(this.qqN))
+    {
+      TextView localTextView = (TextView)findViewById(2131821672);
+      localTextView.setText(this.qqN);
+      localTextView.setOnClickListener(new RemittanceHKUI.1(this));
+    }
+    AppMethodBeat.o(45078);
+  }
+  
+  protected final void chp() {}
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(45081);
+    if ((paramInt1 == 4) && (paramInt2 == -1)) {
+      finish();
+    }
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(45081);
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(45074);
+    super.onCreate(paramBundle);
+    addSceneEndListener(1529);
+    addSceneEndListener(1257);
+    this.qqL = getIntent().getIntExtra("hk_currency", 0);
+    this.qqM = getIntent().getStringExtra("hk_currencyuint");
+    this.qqN = getIntent().getStringExtra("hk_notice");
+    this.qqO = getIntent().getStringExtra("hk_notice_url");
+    this.kRl.setTitleText(this.qqM);
+    this.qly.setText(this.qqM);
+    AppMethodBeat.o(45074);
+  }
+  
+  public void onDestroy()
+  {
+    AppMethodBeat.i(45075);
+    super.onDestroy();
+    removeSceneEndListener(1529);
+    removeSceneEndListener(1257);
+    AppMethodBeat.o(45075);
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
+  {
+    AppMethodBeat.i(45080);
     if ((paramm instanceof q))
     {
       paramm = (q)paramm;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (!bk.bl(paramm.nyt))
+        if (!bo.isNullOrNil(paramm.qjt))
         {
-          e.q(this.mController.uMN, paramm.nyt, 4);
+          e.a(getContext(), paramm.qjt, false, 4);
+          AppMethodBeat.o(45080);
           return;
         }
-        y.e("MicroMsg.RemittanceHKUI", "empty payurl");
+        ab.e("MicroMsg.RemittanceHKUI", "empty payurl");
+        AppMethodBeat.o(45080);
         return;
       }
-      h.b(this.mController.uMN, paramString, "", false);
+      h.b(getContext(), paramString, "", false);
+      AppMethodBeat.o(45080);
       return;
     }
-    super.b(paramInt1, paramInt2, paramString, paramm, paramBoolean);
+    super.onSceneEnd(paramInt1, paramInt2, paramString, paramm, paramBoolean);
+    AppMethodBeat.o(45080);
   }
   
-  public final void bwo() {}
-  
-  public final void bwp()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    y.d("MicroMsg.RemittanceHKUI", "do scene cancel");
-    if (this.nzY == 33) {}
-    for (int i = 1;; i = 0)
-    {
-      a(new p(this.djD, this.nzZ, this.nDS, this.nzU * 100L, i), false, false);
-      return;
-    }
-  }
-  
-  public final void bwr()
-  {
-    com.tencent.mm.ui.base.s.makeText(this.mController.uMN, getString(a.i.remittance_os_amount_lowest_limit, new Object[] { this.nDT }), 0).show();
-  }
-  
-  public final void bwu()
-  {
-    if (!bk.bl(this.nDU))
-    {
-      TextView localTextView = (TextView)findViewById(a.f.banner_tips);
-      localTextView.setText(this.nDU);
-      localTextView.setOnClickListener(new RemittanceHKUI.1(this));
-    }
-  }
-  
-  protected final void bwz() {}
-  
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    if ((paramInt1 == 4) && (paramInt2 == -1)) {
-      finish();
-    }
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
-  }
-  
-  public void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    kh(1529);
-    kh(1257);
-    this.nDS = getIntent().getIntExtra("hk_currency", 0);
-    this.nDT = getIntent().getStringExtra("hk_currencyuint");
-    this.nDU = getIntent().getStringExtra("hk_notice");
-    this.nDV = getIntent().getStringExtra("hk_notice_url");
-    this.iKG.setTitleText(this.nDT);
-    this.nAi.setText(this.nDT);
-  }
-  
-  public void onDestroy()
-  {
-    super.onDestroy();
-    ki(1529);
-    ki(1257);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mm.ui.contact;
 
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.applet.b.b;
 
@@ -10,23 +11,32 @@ final class d$2
 {
   d$2(d paramd) {}
   
-  public final int WL()
+  public final int aqn()
   {
-    return this.vKc.getCount();
+    AppMethodBeat.i(33562);
+    int i = this.AbC.getCount();
+    AppMethodBeat.o(33562);
+    return i;
   }
   
-  public final String jX(int paramInt)
+  public final String mS(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.vKc.getCount()))
+    AppMethodBeat.i(33561);
+    if ((paramInt < 0) || (paramInt >= this.AbC.getCount()))
     {
-      y.e("MicroMsg.ChatroomContactAdapter", "pos is invalid");
+      ab.e("MicroMsg.ChatroomContactAdapter", "pos is invalid");
+      AppMethodBeat.o(33561);
       return null;
     }
-    ad localad = (ad)this.vKc.getItem(paramInt);
-    if (localad == null) {
+    Object localObject = (ad)this.AbC.getItem(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(33561);
       return null;
     }
-    return localad.field_username;
+    localObject = ((aq)localObject).field_username;
+    AppMethodBeat.o(33561);
+    return localObject;
   }
 }
 

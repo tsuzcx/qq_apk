@@ -5,39 +5,63 @@ import com.tencent.mm.kernel.a.a;
 
 public abstract class g
 {
-  public Application bT;
-  public String dIA;
-  public a dKl;
-  private Boolean dMT;
+  public Application bX;
+  public a eHJ;
+  private Boolean eKv;
+  public a eKw = new a();
+  public String mProcessName;
   
   public g(String paramString, Application paramApplication)
   {
-    this.dIA = paramString;
-    this.dKl = new a();
-    this.bT = paramApplication;
+    this.mProcessName = paramString;
+    this.eHJ = new a();
+    this.bX = paramApplication;
   }
   
-  public final boolean Ex()
+  public final a SC()
   {
-    if (this.dMT == null) {
-      this.dMT = Boolean.valueOf(gn(""));
+    return this.eKw;
+  }
+  
+  public final boolean SD()
+  {
+    if (this.eKv == null) {
+      this.eKv = Boolean.valueOf(mI(""));
     }
-    return this.dMT.booleanValue();
+    return this.eKv.booleanValue();
   }
   
   public abstract String getPackageName();
   
-  public final boolean gn(String paramString)
+  public final String getProcessName()
   {
-    return (this.dIA != null) && (this.dIA.equals(getPackageName() + paramString));
+    return this.mProcessName;
+  }
+  
+  public final boolean mI(String paramString)
+  {
+    return (this.mProcessName != null) && (this.mProcessName.equals(getPackageName() + paramString));
   }
   
   public String toString()
   {
-    if (this.dIA != null) {
-      return this.dIA;
+    if (this.mProcessName != null) {
+      return this.mProcessName;
     }
     return super.toString();
+  }
+  
+  public static final class a
+  {
+    public long eKA;
+    public long eKB;
+    public long eKC;
+    public long eKD;
+    public long eKE;
+    public long eKF;
+    public long eKx;
+    public long eKy;
+    public long eKz;
   }
 }
 

@@ -1,49 +1,66 @@
 package com.tencent.mm.ui.gridviewheaders;
 
 import android.content.Context;
-import com.tencent.mm.ac.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Calendar;
 import java.util.Date;
 
 public class a
 {
-  private static a vWs;
-  private long vWp;
-  private long vWq;
-  private long vWr;
+  private static a AoA;
+  private long Aox;
+  private long Aoy;
+  private long Aoz;
   
   private a()
   {
+    AppMethodBeat.i(107324);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(7, 1);
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.vWq = localCalendar.getTimeInMillis();
+    this.Aoy = localCalendar.getTimeInMillis();
     localCalendar = Calendar.getInstance();
     localCalendar.set(5, 1);
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    this.vWr = localCalendar.getTimeInMillis();
-    this.vWp = Calendar.getInstance().getTimeInMillis();
+    this.Aoz = localCalendar.getTimeInMillis();
+    this.Aox = Calendar.getInstance().getTimeInMillis();
+    AppMethodBeat.o(107324);
   }
   
-  public static a cIz()
+  private static long c(Date paramDate)
   {
-    if (vWs == null) {}
+    AppMethodBeat.i(107327);
+    long l = paramDate.getYear() * 100 + paramDate.getMonth();
+    AppMethodBeat.o(107327);
+    return l;
+  }
+  
+  public static a dNj()
+  {
+    AppMethodBeat.i(107323);
+    if (AoA == null) {}
     try
     {
-      vWs = new a();
-      return vWs;
+      AoA = new a();
+      a locala = AoA;
+      AppMethodBeat.o(107323);
+      return locala;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(107323);
+    }
   }
   
-  public static long ig(long paramLong)
+  public static long oS(long paramLong)
   {
+    AppMethodBeat.i(107326);
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTimeInMillis(paramLong);
     localCalendar.set(5, 1);
@@ -51,29 +68,47 @@ public class a
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    return localCalendar.getTimeInMillis();
+    paramLong = localCalendar.getTimeInMillis();
+    AppMethodBeat.o(107326);
+    return paramLong;
   }
   
   public final String a(Date paramDate, Context paramContext)
   {
-    if (paramDate.getTime() >= this.vWq) {
-      return paramContext.getString(a.k.this_week);
+    AppMethodBeat.i(107328);
+    if (paramDate.getTime() >= this.Aoy)
+    {
+      paramDate = paramContext.getString(2131304286);
+      AppMethodBeat.o(107328);
+      return paramDate;
     }
-    if (paramDate.getTime() >= this.vWr) {
-      return paramContext.getString(a.k.this_month);
+    if (paramDate.getTime() >= this.Aoz)
+    {
+      paramDate = paramContext.getString(2131304285);
+      AppMethodBeat.o(107328);
+      return paramDate;
     }
-    return String.format("%d/%d", new Object[] { Integer.valueOf(paramDate.getYear() + 1900), Integer.valueOf(paramDate.getMonth() + 1) });
+    paramDate = String.format("%d/%d", new Object[] { Integer.valueOf(paramDate.getYear() + 1900), Integer.valueOf(paramDate.getMonth() + 1) });
+    AppMethodBeat.o(107328);
+    return paramDate;
   }
   
   public final long b(Date paramDate)
   {
-    if (paramDate.getTime() >= this.vWq) {
+    AppMethodBeat.i(107325);
+    if (paramDate.getTime() >= this.Aoy)
+    {
+      AppMethodBeat.o(107325);
       return 9223372036854775807L;
     }
-    if (paramDate.getTime() >= this.vWr) {
+    if (paramDate.getTime() >= this.Aoz)
+    {
+      AppMethodBeat.o(107325);
       return 9223372036854775806L;
     }
-    return paramDate.getYear() * 100 + paramDate.getMonth();
+    long l = c(paramDate);
+    AppMethodBeat.o(107325);
+    return l;
   }
 }
 

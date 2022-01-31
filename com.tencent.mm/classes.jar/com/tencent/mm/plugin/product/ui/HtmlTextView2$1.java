@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.product.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HtmlTextView2$1
   implements View.OnTouchListener
@@ -11,7 +12,14 @@ final class HtmlTextView2$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return paramMotionEvent.getAction() == 2;
+    AppMethodBeat.i(44020);
+    if (paramMotionEvent.getAction() == 2)
+    {
+      AppMethodBeat.o(44020);
+      return true;
+    }
+    AppMethodBeat.o(44020);
+    return false;
   }
 }
 

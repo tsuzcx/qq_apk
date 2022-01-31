@@ -7,18 +7,18 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mm.ac.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class InputPreference
   extends Preference
 {
-  private View.OnClickListener pxB = new InputPreference.1(this);
-  private String pxw;
-  private InputPreference.a pxz;
-  private String vcM;
-  private EditText vcN;
-  private Button vcO;
-  private TextView.OnEditorActionListener vcP = new InputPreference.2(this);
+  private String sZk;
+  private InputPreference.a sZn;
+  private View.OnClickListener sZp;
+  private String zrm;
+  private EditText zrn;
+  private Button zro;
+  private TextView.OnEditorActionListener zrp;
   
   public InputPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,17 +28,23 @@ public class InputPreference
   public InputPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107197);
+    this.sZp = new InputPreference.1(this);
+    this.zrp = new InputPreference.2(this);
+    AppMethodBeat.o(107197);
   }
   
   protected final void onBindView(View paramView)
   {
+    AppMethodBeat.i(107198);
     super.onBindView(paramView);
-    this.vcN = ((EditText)paramView.findViewById(a.g.edittext));
-    this.vcN.setHint(this.pxw);
-    this.vcN.setOnEditorActionListener(this.vcP);
-    this.vcO = ((Button)paramView.findViewById(a.g.button));
-    this.vcO.setText(this.vcM);
-    this.vcO.setOnClickListener(this.pxB);
+    this.zrn = ((EditText)paramView.findViewById(2131820995));
+    this.zrn.setHint(this.sZk);
+    this.zrn.setOnEditorActionListener(this.zrp);
+    this.zro = ((Button)paramView.findViewById(2131820875));
+    this.zro.setText(this.zrm);
+    this.zro.setOnClickListener(this.sZp);
+    AppMethodBeat.o(107198);
   }
 }
 

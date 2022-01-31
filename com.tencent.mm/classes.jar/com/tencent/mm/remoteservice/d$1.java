@@ -3,6 +3,7 @@ package com.tencent.mm.remoteservice;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class d$1
@@ -12,21 +13,26 @@ final class d$1
   
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.uaG.uaF = c.a.M(paramIBinder);
-    paramComponentName = (Runnable[])this.uaG.uaE.toArray(new Runnable[this.uaG.uaE.size()]);
+    AppMethodBeat.i(80230);
+    this.yiw.yiv = c.a.K(paramIBinder);
+    paramComponentName = (Runnable[])this.yiw.yiu.toArray(new Runnable[this.yiw.yiu.size()]);
     int j = paramComponentName.length;
     int i = 0;
     while (i < j)
     {
-      paramComponentName[i].run();
+      paramIBinder = paramComponentName[i];
+      if (paramIBinder != null) {
+        paramIBinder.run();
+      }
       i += 1;
     }
-    this.uaG.uaE.clear();
+    this.yiw.yiu.clear();
+    AppMethodBeat.o(80230);
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    this.uaG.uaF = null;
+    this.yiw.yiv = null;
   }
 }
 

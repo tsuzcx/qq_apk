@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class ExdeviceDeviceProfileUI$8
@@ -12,12 +12,14 @@ final class ExdeviceDeviceProfileUI$8
   
   public final void onClick(View paramView)
   {
-    h.a(this.jDf, this.jDf.getString(R.l.exdevice_edit_remark_name_title), "", "", 50, ExdeviceDeviceProfileUI.e(this.jDf));
+    AppMethodBeat.i(19945);
+    h.a(this.lMD, this.lMD.getString(2131299410), "", "", 50, ExdeviceDeviceProfileUI.e(this.lMD));
+    AppMethodBeat.o(19945);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceDeviceProfileUI.8
  * JD-Core Version:    0.7.0.1
  */

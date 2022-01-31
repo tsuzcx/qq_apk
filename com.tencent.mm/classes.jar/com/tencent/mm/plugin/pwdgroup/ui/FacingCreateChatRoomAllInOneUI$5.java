@@ -2,13 +2,19 @@ package com.tencent.mm.plugin.pwdgroup.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FacingCreateChatRoomAllInOneUI$5
   implements DialogInterface.OnCancelListener
 {
   FacingCreateChatRoomAllInOneUI$5(FacingCreateChatRoomAllInOneUI paramFacingCreateChatRoomAllInOneUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface) {}
+  public final void onCancel(DialogInterface paramDialogInterface)
+  {
+    AppMethodBeat.i(23988);
+    FacingCreateChatRoomAllInOneUI.cdn();
+    AppMethodBeat.o(23988);
+  }
 }
 
 

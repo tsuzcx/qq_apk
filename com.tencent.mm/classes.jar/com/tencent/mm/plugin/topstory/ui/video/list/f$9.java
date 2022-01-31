@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.topstory.ui.video.list;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.o;
 import com.tencent.mm.plugin.topstory.ui.video.r;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$9
   implements View.OnClickListener
@@ -13,33 +14,37 @@ final class f$9
   
   public final void onClick(View paramView)
   {
-    if (this.pHJ.getListVideoUIComponent().bNx().pGx)
+    AppMethodBeat.i(2052);
+    if (this.tlr.getListVideoUIComponent().cJh().tjS)
     {
-      if (f.f(this.pHJ).getVideoTotalTime() - f.f(this.pHJ).getmPosition() < 2)
+      if (f.g(this.tlr).getVideoTotalTime() - f.g(this.tlr).getmPosition() < 2)
       {
-        y.i("MicroMsg.TopStory.TopStoryListVideoContainer", "cannot change play status in last 2 seconds");
+        ab.i("MicroMsg.TopStory.TopStoryListVideoContainer", "cannot change play status in last 2 seconds");
+        AppMethodBeat.o(2052);
         return;
       }
-      this.pHJ.getListVideoUIComponent().bNt().c(f.G(this.pHJ));
-      if (this.pHJ.getListVideoUIComponent().bNx().bOu())
+      this.tlr.getListVideoUIComponent().cJd().g(f.P(this.tlr));
+      if (this.tlr.getListVideoUIComponent().cJh().cKj())
       {
-        this.pHJ.getListVideoUIComponent().bNx().bFy();
-        f.f(this.pHJ).bOy();
+        this.tlr.getListVideoUIComponent().cJh().crn();
+        f.g(this.tlr).baj();
       }
       for (;;)
       {
-        this.pHJ.bNN();
+        this.tlr.cJB();
+        AppMethodBeat.o(2052);
         return;
-        this.pHJ.getListVideoUIComponent().bNx().bMs();
-        f.f(this.pHJ).akG();
+        this.tlr.getListVideoUIComponent().cJh().ctY();
+        f.g(this.tlr).aFn();
       }
     }
-    y.i("MicroMsg.TopStory.TopStoryListVideoContainer", "no video play now");
+    ab.i("MicroMsg.TopStory.TopStoryListVideoContainer", "no video play now");
+    AppMethodBeat.o(2052);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.f.9
  * JD-Core Version:    0.7.0.1
  */

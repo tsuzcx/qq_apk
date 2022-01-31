@@ -1,35 +1,14 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.os.Message;
-import android.widget.ProgressBar;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.widget.a.c;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 final class RegByMobileRegAIOUI$15
-  extends ah
+  implements DialogInterface.OnCancelListener
 {
   RegByMobileRegAIOUI$15(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
-  public final void handleMessage(Message paramMessage)
-  {
-    if (((RegByMobileRegAIOUI.r(this.fqF) != null) && (!RegByMobileRegAIOUI.r(this.fqF).isShowing())) || (RegByMobileRegAIOUI.s(this.fqF))) {}
-    do
-    {
-      return;
-      RegByMobileRegAIOUI.a(this.fqF, RegByMobileRegAIOUI.t(this.fqF) + 2);
-      RegByMobileRegAIOUI.u(this.fqF).setProgress(RegByMobileRegAIOUI.t(this.fqF));
-      if (RegByMobileRegAIOUI.t(this.fqF) < RegByMobileRegAIOUI.u(this.fqF).getMax())
-      {
-        sendEmptyMessageDelayed(0, 10L);
-        return;
-      }
-      RegByMobileRegAIOUI.u(this.fqF).setIndeterminate(true);
-    } while (RegByMobileRegAIOUI.s(this.fqF));
-    if (RegByMobileRegAIOUI.r(this.fqF) != null) {
-      RegByMobileRegAIOUI.r(this.fqF).dismiss();
-    }
-    RegByMobileRegAIOUI.v(this.fqF);
-  }
+  public final void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

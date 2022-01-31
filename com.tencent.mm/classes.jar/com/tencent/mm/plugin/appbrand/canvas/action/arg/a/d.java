@@ -1,18 +1,33 @@
 package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionWrapper;
 import com.tencent.mm.plugin.appbrand.canvas.widget.DrawCanvasArg;
-import com.tencent.mm.sdk.b;
 
 public final class d
 {
-  private static d fMm = new d();
-  public b<DrawCanvasArg> fMk = new b(5);
-  public b<DrawActionWrapper> fMl = new b(500);
+  private static d hfw;
+  public com.tencent.mm.sdk.d<DrawCanvasArg> hfu;
+  public com.tencent.mm.sdk.d<DrawActionWrapper> hfv;
   
-  public static d adJ()
+  static
   {
-    return fMm;
+    AppMethodBeat.i(103637);
+    hfw = new d();
+    AppMethodBeat.o(103637);
+  }
+  
+  private d()
+  {
+    AppMethodBeat.i(103636);
+    this.hfu = new com.tencent.mm.sdk.d(5);
+    this.hfv = new com.tencent.mm.sdk.d(500);
+    AppMethodBeat.o(103636);
+  }
+  
+  public static d ayb()
+  {
+    return hfw;
   }
 }
 

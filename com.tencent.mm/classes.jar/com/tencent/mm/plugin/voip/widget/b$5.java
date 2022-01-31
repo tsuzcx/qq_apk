@@ -1,30 +1,20 @@
 package com.tencent.mm.plugin.voip.widget;
 
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.plugin.voip.a.e;
-import com.tencent.mm.plugin.voip.ui.a;
-import com.tencent.mm.plugin.voip.ui.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.voip.video.a.e;
 
 final class b$5
-  implements a
+  implements e
 {
   b$5(b paramb) {}
   
-  public final void a(Intent paramIntent, h paramh)
+  public final void bx(byte[] paramArrayOfByte)
   {
-    if (paramIntent.getBooleanExtra("Voip_Is_Talking", false))
-    {
-      paramh.Qb(this.qcP.bSI());
-      return;
+    AppMethodBeat.i(140268);
+    if (paramArrayOfByte != null) {
+      b.a(this.tJE, paramArrayOfByte);
     }
-    paramh.Qb(ae.getContext().getString(a.e.voip_multitalk_waiting_wording));
-  }
-  
-  public final boolean bbL()
-  {
-    return (com.tencent.mm.plugin.voip.a.b.Ay(b.d(this.qcP))) || (com.tencent.mm.plugin.voip.a.b.Aw(b.d(this.qcP)));
+    AppMethodBeat.o(140268);
   }
 }
 

@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.translate;
 
-import com.tencent.mm.h.a.sd;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.tv;
 import com.tencent.mm.sdk.b.c;
 
 final class a$3
-  extends c<sd>
+  extends c<tv>
 {
   a$3(a parama)
   {
-    this.udX = sd.class.getName().hashCode();
+    AppMethodBeat.i(26053);
+    this.__eventId = tv.class.getName().hashCode();
+    AppMethodBeat.o(26053);
   }
 }
 

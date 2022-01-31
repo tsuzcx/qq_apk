@@ -4,9 +4,9 @@ import android.content.Context;
 
 public abstract class a
 {
-  public Object data;
+  protected Object data;
   public int type;
-  public boolean vdV;
+  protected boolean zsv;
   
   public a(int paramInt, Object paramObject)
   {
@@ -16,9 +16,19 @@ public abstract class a
   
   public abstract void a(Context paramContext, a.a parama, Object... paramVarArgs);
   
-  public abstract a.b axw();
+  public abstract a.b aWu();
   
-  public abstract a.a axx();
+  public abstract a.a aWv();
+  
+  public final boolean dER()
+  {
+    return this.zsv;
+  }
+  
+  public final Object getData()
+  {
+    return this.data;
+  }
 }
 
 

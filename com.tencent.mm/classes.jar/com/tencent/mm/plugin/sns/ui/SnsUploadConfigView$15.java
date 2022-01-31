@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.i.a;
+import com.tencent.mm.ui.j.a;
 
 final class SnsUploadConfigView$15
   implements DialogInterface.OnClickListener
@@ -14,16 +14,18 @@ final class SnsUploadConfigView$15
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.piZ;
-    Context localContext = this.piZ.getContext();
-    this.piZ.getContext().getString(i.j.app_tip);
-    SnsUploadConfigView.a(paramDialogInterface, h.b(localContext, this.piZ.getContext().getString(i.j.twitter_loading), true, new SnsUploadConfigView.15.1(this)));
-    SnsUploadConfigView.l(this.piZ).a(this.piZ, this.piZ.getContext());
+    AppMethodBeat.i(39700);
+    paramDialogInterface = this.sbB;
+    Context localContext = this.sbB.getContext();
+    this.sbB.getContext().getString(2131297087);
+    SnsUploadConfigView.a(paramDialogInterface, h.b(localContext, this.sbB.getContext().getString(2131304397), true, new SnsUploadConfigView.15.1(this)));
+    SnsUploadConfigView.l(this.sbB).a(this.sbB, this.sbB.getContext());
+    AppMethodBeat.o(39700);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadConfigView.15
  * JD-Core Version:    0.7.0.1
  */

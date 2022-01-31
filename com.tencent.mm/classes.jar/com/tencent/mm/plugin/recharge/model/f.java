@@ -1,49 +1,47 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import android.content.Context;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.network.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet.a.d;
-import com.tencent.mm.plugin.wallet.a.n;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.bcy;
-import com.tencent.mm.protocal.c.bcz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet.a.p;
+import com.tencent.mm.protocal.protobuf.bkr;
+import com.tencent.mm.protocal.protobuf.bks;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class f
-  extends com.tencent.mm.ah.m
+  extends m
   implements k
 {
-  public String aox = "";
-  public String appId = "";
+  public String appId;
+  private com.tencent.mm.ai.f callback;
   public int cmdId;
-  public String desc = "";
-  private b dmK;
-  private com.tencent.mm.ah.f dmL;
-  public int errCode = 0;
-  public String foD = "";
-  public boolean npP = false;
-  public ArrayList<n> npQ;
-  public ArrayList<n> npR;
-  public d npS;
-  public d npT;
-  public d npU;
-  public d npV;
-  public d npW;
-  public com.tencent.mm.plugin.wallet.a.m npX;
-  public List<a> npY;
-  public boolean npZ = false;
+  public String desc;
+  public int errCode;
+  public String errMsg;
+  public String gFX;
+  public boolean pVd;
+  public ArrayList<com.tencent.mm.plugin.wallet.a.q> pVe;
+  public ArrayList<com.tencent.mm.plugin.wallet.a.q> pVf;
+  public com.tencent.mm.plugin.wallet.a.e pVg;
+  public com.tencent.mm.plugin.wallet.a.e pVh;
+  public com.tencent.mm.plugin.wallet.a.e pVi;
+  public com.tencent.mm.plugin.wallet.a.e pVj;
+  public com.tencent.mm.plugin.wallet.a.e pVk;
+  public p pVl;
+  public List<a> pVm;
+  public boolean pVn;
+  private b rr;
   
   public f(String paramString)
   {
@@ -52,101 +50,120 @@ public final class f
   
   public f(String paramString, int paramInt)
   {
-    this.foD = paramString;
+    AppMethodBeat.i(44202);
+    this.gFX = "";
+    this.appId = "";
+    this.pVd = false;
+    this.desc = "";
+    this.errCode = 0;
+    this.errMsg = "";
+    this.pVn = false;
+    this.gFX = paramString;
     paramString = new b.a();
-    paramString.ecH = new bcy();
-    paramString.ecI = new bcz();
+    paramString.fsX = new bkr();
+    paramString.fsY = new bks();
     paramString.uri = "/cgi-bin/mmpay-bin/paychargeproxy";
-    paramString.ecG = 1571;
-    paramString.ecJ = 0;
-    paramString.ecK = 0;
-    this.dmK = paramString.Kt();
-    paramString = (bcy)this.dmK.ecE.ecN;
-    paramString.sOA = paramInt;
+    paramString.funcId = 1571;
+    paramString.reqCmdId = 0;
+    paramString.respCmdId = 0;
+    this.rr = paramString.ado();
+    paramString = (bkr)this.rr.fsV.fta;
+    paramString.wMC = paramInt;
     this.cmdId = paramInt;
-    y.i("MicroMsg.NetScenePayChargeProxy", "cmdId: %d", new Object[] { Integer.valueOf(paramInt) });
-    if (!bk.bl(this.foD))
+    ab.i("MicroMsg.NetScenePayChargeProxy", "cmdId: %d", new Object[] { Integer.valueOf(paramInt) });
+    if (!bo.isNullOrNil(this.gFX))
     {
-      y.i("MicroMsg.NetScenePayChargeProxy", "hy: requesting phone num: %s", new Object[] { this.foD });
-      paramString.typ = String.format("phone=%s", new Object[] { this.foD });
+      ab.i("MicroMsg.NetScenePayChargeProxy", "hy: requesting phone num: %s", new Object[] { this.gFX });
+      paramString.xzs = String.format("phone=%s", new Object[] { this.gFX });
     }
+    AppMethodBeat.o(44202);
   }
   
-  public final int a(e parame, com.tencent.mm.ah.f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ai.f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    AppMethodBeat.i(44203);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(44203);
+    return i;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int getType()
   {
-    y.i("MicroMsg.NetScenePayChargeProxy", "hy: NetScenePayChargeProxy end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    return 1571;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(44204);
+    ab.i("MicroMsg.NetScenePayChargeProxy", "hy: NetScenePayChargeProxy end: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.errCode = paramInt3;
     Object localObject1;
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bcz)((b)paramq).ecF.ecN;
+      paramq = (bks)((b)paramq).fsW.fta;
       Object localObject2;
       try
       {
-        paramq = new JSONObject(paramq.tyq);
-        y.d("MicroMsg.NetScenePayChargeProxy", "tofutest: json: %s", new Object[] { paramq.toString() });
+        paramq = new JSONObject(paramq.xzt);
+        ab.d("MicroMsg.NetScenePayChargeProxy", "tofutest: json: %s", new Object[] { paramq.toString() });
         this.appId = paramq.optString("appId");
         this.errCode = paramq.optInt("errCode", -1);
-        this.aox = paramq.optString("errMsg", ae.getContext().getString(a.i.wallet_json_err));
+        this.errMsg = paramq.optString("errMsg", ah.getContext().getString(2131305145));
         if (this.errCode < 0) {}
-        for (this.npP = true;; this.npP = false)
+        for (this.pVd = true;; this.pVd = false)
         {
           this.desc = paramq.optString("desc");
           paramArrayOfByte = paramq.optJSONArray("productList");
           if (paramArrayOfByte == null) {
-            break label530;
+            break label541;
           }
-          this.npQ = new ArrayList();
-          this.npR = new ArrayList();
+          this.pVe = new ArrayList();
+          this.pVf = new ArrayList();
           paramInt1 = 0;
           if (paramInt1 >= paramArrayOfByte.length()) {
-            break label540;
+            break label551;
           }
           localObject1 = paramArrayOfByte.getJSONObject(paramInt1);
-          localObject2 = new n();
-          ((n)localObject2).desc = ((JSONObject)localObject1).optString("desc", "");
-          ((n)localObject2).id = ((JSONObject)localObject1).optString("id", "");
-          ((n)localObject2).name = ((JSONObject)localObject1).optString("name", "");
-          ((n)localObject2).status = ((JSONObject)localObject1).optInt("status", 0);
-          ((n)localObject2).url = ((JSONObject)localObject1).optString("url", "");
-          ((n)localObject2).type = ((JSONObject)localObject1).optInt("type");
-          ((n)localObject2).qls = ((JSONObject)localObject1).optString("typeName");
-          ((n)localObject2).qlu = ((JSONObject)localObject1).optString("isColor", "0");
-          ((n)localObject2).qlv = ((JSONObject)localObject1).optString("colorCode", "0");
-          ((n)localObject2).qlw = ((JSONObject)localObject1).optInt("isReConfirm", 0);
-          ((n)localObject2).qkP = ((JSONObject)localObject1).optString("weappID");
-          ((n)localObject2).dTJ = ((JSONObject)localObject1).optString("weappPath");
-          ((n)localObject2).qlx = ((JSONObject)localObject1).optInt("isRecommend", 0);
-          ((n)localObject2).qly = ((JSONObject)localObject1).optString("recommendId", "");
-          if (((n)localObject2).type != 1) {
+          localObject2 = new com.tencent.mm.plugin.wallet.a.q();
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).desc = ((JSONObject)localObject1).optString("desc", "");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).id = ((JSONObject)localObject1).optString("id", "");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).name = ((JSONObject)localObject1).optString("name", "");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).status = ((JSONObject)localObject1).optInt("status", 0);
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).url = ((JSONObject)localObject1).optString("url", "");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).type = ((JSONObject)localObject1).optInt("type");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).tUE = ((JSONObject)localObject1).optString("typeName");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).tUG = ((JSONObject)localObject1).optString("isColor", "0");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).tUH = ((JSONObject)localObject1).optString("colorCode", "0");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).tUI = ((JSONObject)localObject1).optInt("isReConfirm", 0);
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).tTY = ((JSONObject)localObject1).optString("weappID");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).fjP = ((JSONObject)localObject1).optString("weappPath");
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).tUJ = ((JSONObject)localObject1).optInt("isRecommend", 0);
+          ((com.tencent.mm.plugin.wallet.a.q)localObject2).tUK = ((JSONObject)localObject1).optString("recommendId", "");
+          if (((com.tencent.mm.plugin.wallet.a.q)localObject2).type != 1) {
             break;
           }
-          this.npQ.add(localObject2);
-          break label1521;
+          this.pVe.add(localObject2);
+          break label1539;
         }
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
       catch (Exception paramq)
       {
-        y.e("MicroMsg.NetScenePayChargeProxy", "hy: exception occurred when parsing json: %s", new Object[] { paramq.toString() });
-        this.npP = true;
-        this.aox = ae.getContext().getString(a.i.wallet_json_err);
+        ab.e("MicroMsg.NetScenePayChargeProxy", "hy: exception occurred when parsing json: %s", new Object[] { paramq.toString() });
+        this.pVd = true;
+        this.errMsg = ah.getContext().getString(2131305145);
       }
-      label489:
+      label495:
+      AppMethodBeat.o(44204);
       return;
-      ((n)localObject2).qlt = ((JSONObject)localObject1).optString("productAttr");
-      this.npR.add(localObject2);
-      break label1521;
-      label530:
-      this.npQ = null;
-      this.npR = null;
-      label540:
+      ((com.tencent.mm.plugin.wallet.a.q)localObject2).tUF = ((JSONObject)localObject1).optString("productAttr");
+      this.pVf.add(localObject2);
+      break label1539;
+      label541:
+      this.pVe = null;
+      this.pVf = null;
+      label551:
       Object localObject3 = paramq.optJSONObject("weSim");
       if (localObject3 != null)
       {
@@ -154,15 +171,15 @@ public final class f
         localObject1 = ((JSONObject)localObject3).optString("name");
         localObject2 = ((JSONObject)localObject3).optString("weappID");
         localObject3 = ((JSONObject)localObject3).optString("weappPath");
-        if (bk.bl((String)localObject1))
+        if (bo.isNullOrNil((String)localObject1))
         {
-          y.w("MicroMsg.NetScenePayChargeProxy", "tf: weSim is missing");
-          this.npV = null;
+          ab.w("MicroMsg.NetScenePayChargeProxy", "tf: weSim is missing");
+          this.pVj = null;
         }
       }
       else
       {
-        label615:
+        label627:
         localObject3 = paramq.optJSONObject("wxRemind");
         if (localObject3 != null)
         {
@@ -170,13 +187,13 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("name");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bk.bl((String)localObject1)) {
-            break label1133;
+          if (!bo.isNullOrNil((String)localObject1)) {
+            break label1151;
           }
-          y.w("MicroMsg.NetScenePayChargeProxy", "hy: remind unicom unnecessary element missing");
+          ab.w("MicroMsg.NetScenePayChargeProxy", "hy: remind unicom unnecessary element missing");
         }
-        this.npS = null;
-        label690:
+        this.pVg = null;
+        label703:
         localObject3 = paramq.optJSONObject("wxCard");
         if (localObject3 != null)
         {
@@ -184,13 +201,13 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("name");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bk.bl((String)localObject1)) {
-            break label1183;
+          if (!bo.isNullOrNil((String)localObject1)) {
+            break label1201;
           }
-          y.w("MicroMsg.NetScenePayChargeProxy", "hy: phone card necessary element missing");
+          ab.w("MicroMsg.NetScenePayChargeProxy", "hy: phone card necessary element missing");
         }
-        this.npT = null;
-        label765:
+        this.pVh = null;
+        label779:
         localObject3 = paramq.optJSONObject("wxWt");
         if (localObject3 != null)
         {
@@ -198,24 +215,24 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("name");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bk.bl((String)localObject1)) {
-            break label1233;
+          if (!bo.isNullOrNil((String)localObject1)) {
+            break label1251;
           }
-          y.w("MicroMsg.NetScenePayChargeProxy", "hy: phone hall necessary element missing");
+          ab.w("MicroMsg.NetScenePayChargeProxy", "hy: phone hall necessary element missing");
         }
-        this.npU = null;
-        label840:
+        this.pVi = null;
+        label855:
         paramArrayOfByte = paramq.optJSONObject("banner");
         if (paramArrayOfByte == null) {
-          break label1283;
+          break label1301;
         }
-        this.npX = new com.tencent.mm.plugin.wallet.a.m();
-        this.npX.id = paramArrayOfByte.getInt("id");
-        this.npX.name = paramArrayOfByte.optString("name");
-        this.npX.url = paramArrayOfByte.optString("url");
-        this.npX.qkP = paramArrayOfByte.optString("weappID");
-        this.npX.dTJ = paramArrayOfByte.optString("weappPath");
-        label939:
+        this.pVl = new p();
+        this.pVl.id = paramArrayOfByte.getInt("id");
+        this.pVl.name = paramArrayOfByte.optString("name");
+        this.pVl.url = paramArrayOfByte.optString("url");
+        this.pVl.tTY = paramArrayOfByte.optString("weappID");
+        this.pVl.fjP = paramArrayOfByte.optString("weappPath");
+        label956:
         localObject3 = paramq.optJSONObject("headEnter");
         if (localObject3 != null)
         {
@@ -223,67 +240,67 @@ public final class f
           localObject1 = ((JSONObject)localObject3).optString("url");
           localObject2 = ((JSONObject)localObject3).optString("weappID");
           localObject3 = ((JSONObject)localObject3).optString("weappPath");
-          if (!bk.bl(paramArrayOfByte)) {
-            break label1291;
+          if (!bo.isNullOrNil(paramArrayOfByte)) {
+            break label1309;
           }
-          y.w("MicroMsg.NetScenePayChargeProxy", "tf: headEnter is missing");
+          ab.w("MicroMsg.NetScenePayChargeProxy", "tf: headEnter is missing");
         }
-        this.npW = null;
+        this.pVk = null;
       }
       for (;;)
       {
         paramq = paramq.optJSONArray("numberList");
         if (paramq == null) {
-          break label1464;
+          break label1482;
         }
-        if (bk.bl(this.foD)) {
-          this.npZ = true;
+        if (bo.isNullOrNil(this.gFX)) {
+          this.pVn = true;
         }
         if (paramq.length() > 0) {
-          break label1341;
+          break label1359;
         }
-        y.w("MicroMsg.NetScenePayChargeProxy", "number length is short! %s", new Object[] { Integer.valueOf(paramq.length()) });
-        this.npY = null;
+        ab.w("MicroMsg.NetScenePayChargeProxy", "number length is short! %s", new Object[] { Integer.valueOf(paramq.length()) });
+        this.pVm = null;
         break;
-        this.npV = new d();
-        this.npV.url = paramArrayOfByte;
-        this.npV.name = ((String)localObject1);
-        this.npV.qkP = ((String)localObject2);
-        this.npV.dTJ = ((String)localObject3);
-        break label615;
-        label1133:
-        this.npS = new d();
-        this.npS.url = paramArrayOfByte;
-        this.npS.name = ((String)localObject1);
-        this.npS.qkP = ((String)localObject2);
-        this.npS.dTJ = ((String)localObject3);
-        break label690;
-        label1183:
-        this.npT = new d();
-        this.npT.url = paramArrayOfByte;
-        this.npT.name = ((String)localObject1);
-        this.npT.qkP = ((String)localObject2);
-        this.npT.dTJ = ((String)localObject3);
-        break label765;
-        label1233:
-        this.npU = new d();
-        this.npU.url = paramArrayOfByte;
-        this.npU.name = ((String)localObject1);
-        this.npU.qkP = ((String)localObject2);
-        this.npU.dTJ = ((String)localObject3);
-        break label840;
-        label1283:
-        this.npX = null;
-        break label939;
-        label1291:
-        this.npW = new d();
-        this.npW.name = paramArrayOfByte;
-        this.npW.url = ((String)localObject1);
-        this.npW.qkP = ((String)localObject2);
-        this.npW.dTJ = ((String)localObject3);
+        this.pVj = new com.tencent.mm.plugin.wallet.a.e();
+        this.pVj.url = paramArrayOfByte;
+        this.pVj.name = ((String)localObject1);
+        this.pVj.tTY = ((String)localObject2);
+        this.pVj.fjP = ((String)localObject3);
+        break label627;
+        label1151:
+        this.pVg = new com.tencent.mm.plugin.wallet.a.e();
+        this.pVg.url = paramArrayOfByte;
+        this.pVg.name = ((String)localObject1);
+        this.pVg.tTY = ((String)localObject2);
+        this.pVg.fjP = ((String)localObject3);
+        break label703;
+        label1201:
+        this.pVh = new com.tencent.mm.plugin.wallet.a.e();
+        this.pVh.url = paramArrayOfByte;
+        this.pVh.name = ((String)localObject1);
+        this.pVh.tTY = ((String)localObject2);
+        this.pVh.fjP = ((String)localObject3);
+        break label779;
+        label1251:
+        this.pVi = new com.tencent.mm.plugin.wallet.a.e();
+        this.pVi.url = paramArrayOfByte;
+        this.pVi.name = ((String)localObject1);
+        this.pVi.tTY = ((String)localObject2);
+        this.pVi.fjP = ((String)localObject3);
+        break label855;
+        label1301:
+        this.pVl = null;
+        break label956;
+        label1309:
+        this.pVk = new com.tencent.mm.plugin.wallet.a.e();
+        this.pVk.name = paramArrayOfByte;
+        this.pVk.url = ((String)localObject1);
+        this.pVk.tTY = ((String)localObject2);
+        this.pVk.fjP = ((String)localObject3);
       }
-      label1341:
-      this.npY = new ArrayList();
+      label1359:
+      this.pVm = new ArrayList();
       paramInt1 = 0;
     }
     for (;;)
@@ -295,45 +312,40 @@ public final class f
         {
           paramArrayOfByte = ((JSONObject)localObject1).optString("number");
           localObject1 = ((JSONObject)localObject1).optString("desc");
-          if (!bk.bl(paramArrayOfByte))
+          if (!bo.isNullOrNil(paramArrayOfByte))
           {
             paramArrayOfByte = new a(paramArrayOfByte, "", (String)localObject1, 2);
-            this.npY.add(paramArrayOfByte);
+            this.pVm.add(paramArrayOfByte);
           }
         }
       }
       else
       {
-        y.i("MicroMsg.NetScenePayChargeProxy", "number list: %s", new Object[] { Integer.valueOf(this.npY.size()) });
-        break label489;
-        label1464:
-        this.npY = null;
-        y.w("MicroMsg.NetScenePayChargeProxy", "empty numberList");
-        break label489;
-        this.npP = true;
+        ab.i("MicroMsg.NetScenePayChargeProxy", "number list: %s", new Object[] { Integer.valueOf(this.pVm.size()) });
+        break label495;
+        label1482:
+        this.pVm = null;
+        ab.w("MicroMsg.NetScenePayChargeProxy", "empty numberList");
+        break label495;
+        this.pVd = true;
         paramq = paramString;
-        if (bk.bl(paramString)) {
-          paramq = ae.getContext().getString(a.i.wallet_data_err);
+        if (bo.isNullOrNil(paramString)) {
+          paramq = ah.getContext().getString(2131305032);
         }
-        this.aox = paramq;
+        this.errMsg = paramq;
         paramString = paramq;
-        break label489;
-        label1521:
+        break label495;
+        label1539:
         paramInt1 += 1;
         break;
       }
       paramInt1 += 1;
     }
   }
-  
-  public final int getType()
-  {
-    return 1571;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.f
  * JD-Core Version:    0.7.0.1
  */

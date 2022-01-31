@@ -1,41 +1,53 @@
 package com.tencent.mm.ipcinvoker.wx_extension;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class PluginIPC$a
   implements a
 {
-  static final a dHn = new a();
+  static final a eEQ;
+  
+  static
+  {
+    AppMethodBeat.i(126207);
+    eEQ = new a();
+    AppMethodBeat.o(126207);
+  }
   
   public final void a(int paramInt, String paramString1, String paramString2, Object... paramVarArgs)
   {
+    AppMethodBeat.i(126206);
     switch (paramInt)
     {
-    default: 
-      return;
-    case 2: 
-      y.v(paramString1, paramString2, paramVarArgs);
-      return;
-    case 3: 
-      y.d(paramString1, paramString2, paramVarArgs);
-      return;
-    case 4: 
-      y.i(paramString1, paramString2, paramVarArgs);
-      return;
-    case 5: 
-      y.w(paramString1, paramString2, paramVarArgs);
-      return;
-    case 6: 
-      y.e(paramString1, paramString2, paramVarArgs);
-      return;
     }
-    y.e(paramString1, paramString2, paramVarArgs);
+    for (;;)
+    {
+      AppMethodBeat.o(126206);
+      return;
+      ab.v(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(126206);
+      return;
+      ab.d(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(126206);
+      return;
+      ab.i(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(126206);
+      return;
+      ab.w(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(126206);
+      return;
+      ab.e(paramString1, paramString2, paramVarArgs);
+      AppMethodBeat.o(126206);
+      return;
+      ab.e(paramString1, paramString2, paramVarArgs);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.PluginIPC.a
  * JD-Core Version:    0.7.0.1
  */

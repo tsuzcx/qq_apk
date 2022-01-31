@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fts.a.a;
 
 public abstract interface g$a
 {
-  public abstract String[] DX(String paramString);
+  public abstract String[] Ph(String paramString);
   
   public abstract String[] split(String paramString);
 }

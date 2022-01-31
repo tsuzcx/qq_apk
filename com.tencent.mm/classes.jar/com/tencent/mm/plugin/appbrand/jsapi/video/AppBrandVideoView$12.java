@@ -1,13 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.video.danmu.c;
+
 final class AppBrandVideoView$12
-  implements com.tencent.mm.plugin.appbrand.jsapi.video.danmu.c
+  implements c
 {
   AppBrandVideoView$12(AppBrandVideoView paramAppBrandVideoView) {}
   
-  public final int Ng()
+  public final int afR()
   {
-    return AppBrandVideoView.b(this.gDS).getCurrPosSec();
+    AppMethodBeat.i(126473);
+    int i = AppBrandVideoView.b(this.icX).getCurrPosSec();
+    AppMethodBeat.o(126473);
+    return i;
   }
 }
 

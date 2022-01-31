@@ -5,69 +5,72 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.j;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.n.c;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
-import com.tencent.mm.plugin.fav.ui.n.h;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.protocal.c.yl;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acs;
 import java.util.LinkedList;
 
 public final class p
   extends a
 {
-  final int kiw;
+  final int mDa;
   
   public p(l paraml)
   {
     super(paraml);
-    this.kiw = com.tencent.mm.cb.a.aa(paraml.context, n.c.FavImageSize);
+    AppMethodBeat.i(74658);
+    this.mDa = com.tencent.mm.cb.a.ao(paraml.context, 2131427653);
+    AppMethodBeat.o(74658);
   }
   
   public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
   {
+    AppMethodBeat.i(74659);
     Object localObject = paramViewGroup.getContext();
     if (paramView == null)
     {
       paramViewGroup = new p.a();
-      paramView = a(View.inflate((Context)localObject, n.f.fav_listitem_shortview, null), paramViewGroup, paramg);
-      paramViewGroup.kix = ((ImageView)paramView.findViewById(n.e.fav_image));
-      paramViewGroup.kjc = ((TextView)paramView.findViewById(n.e.fav_video_duration));
-      paramViewGroup.kjc.setVisibility(0);
-      LinkedList localLinkedList = paramg.field_favProto.sXc;
-      if ((localLinkedList.size() <= 0) || (((xv)localLinkedList.getFirst()).duration <= 0)) {
-        break label174;
+      paramView = a(View.inflate((Context)localObject, 2130969546, null), paramViewGroup, paramg);
+      paramViewGroup.mDc = ((ImageView)paramView.findViewById(2131824033));
+      paramViewGroup.mDI = ((TextView)paramView.findViewById(2131824041));
+      paramViewGroup.mDI.setVisibility(0);
+      LinkedList localLinkedList = paramg.field_favProto.wVc;
+      if ((localLinkedList.size() <= 0) || (((aca)localLinkedList.getFirst()).duration <= 0)) {
+        break label180;
       }
-      paramViewGroup.kjc.setText(j.x((Context)localObject, ((xv)localLinkedList.getFirst()).duration));
+      paramViewGroup.mDI.setText(j.C((Context)localObject, ((aca)localLinkedList.getFirst()).duration));
     }
     for (;;)
     {
       a(paramViewGroup, paramg);
       localObject = b.c(paramg);
-      this.kbg.a(paramViewGroup.kix, (xv)localObject, paramg, n.h.app_attach_file_icon_video, this.kiw, this.kiw);
+      this.mvC.a(paramViewGroup.mDc, (aca)localObject, paramg, 2131230826, this.mDa, this.mDa);
+      AppMethodBeat.o(74659);
       return paramView;
       paramViewGroup = (p.a)paramView.getTag();
       break;
-      label174:
-      paramViewGroup.kjc.setText("");
+      label180:
+      paramViewGroup.mDI.setText("");
     }
   }
   
-  public final void a(View paramView, yl paramyl)
+  public final void a(View paramView, acs paramacs)
   {
+    AppMethodBeat.i(74660);
     p.a locala = (p.a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.r(y.class)).a(paramView, locala.jZN, paramyl);
+    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
+    AppMethodBeat.o(74660);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.d.p
  * JD-Core Version:    0.7.0.1
  */

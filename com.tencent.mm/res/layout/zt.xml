@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:id="@id/br3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true">
-            <ImageButton android:layout_gravity="center" android:id="@id/br4" android:background="@null" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="44.0dip" android:src="@drawable/a04" android:layout_centerVertical="true" />
-            <View android:id="@id/br5" android:background="@null" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_centerInParent="true" />
-        </RelativeLayout>
-        <TextView android:textSize="13.0sp" android:textColor="@color/t7" android:id="@id/br6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bwy" android:layout_above="@id/br3" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/pa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.MMTagPanelScrollView android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fadeScrollbars="false">
+        <com.tencent.mm.plugin.fav.ui.widget.FavTagPanel android:id="@id/bui" android:paddingLeft="@dimen/i1" android:paddingTop="@dimen/n_" android:paddingRight="@dimen/i1" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/n_" flowlayout:verticalSpacing="@dimen/n_" />
+    </com.tencent.mm.ui.base.MMTagPanelScrollView>
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/y5" android:gravity="center" android:id="@id/buo" android:padding="@dimen/dl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ListView android:id="@id/buk" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
+    <ListView android:id="@id/bup" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/mn" />
 </LinearLayout>

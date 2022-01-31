@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MaskImageButton$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class MaskImageButton$1
   
   public final void run()
   {
-    this.wdG.setPressed(false);
-    this.wdG.invalidate();
+    AppMethodBeat.i(107741);
+    this.Awq.setPressed(false);
+    this.Awq.invalidate();
+    AppMethodBeat.o(107741);
   }
 }
 

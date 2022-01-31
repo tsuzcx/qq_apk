@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.talkroom.ui;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class TalkRoomAvatarsFrame$2
-  implements am.a
+  implements ap.a
 {
   TalkRoomAvatarsFrame$2(TalkRoomAvatarsFrame paramTalkRoomAvatarsFrame) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    TalkRoomAvatarsFrame.d(this.pBR);
+    AppMethodBeat.i(25894);
+    TalkRoomAvatarsFrame.d(this.tdA);
+    AppMethodBeat.o(25894);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.TalkRoomAvatarsFrame.2
  * JD-Core Version:    0.7.0.1
  */

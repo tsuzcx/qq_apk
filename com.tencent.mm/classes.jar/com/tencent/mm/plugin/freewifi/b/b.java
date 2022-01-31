@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.freewifi.b;
 
-import com.tencent.mm.h.a.fc;
-import com.tencent.mm.h.a.fc.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ff;
+import com.tencent.mm.g.a.ff.a;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class b
 {
-  private static void a(fc paramfc, int paramInt, String paramString)
+  private static void a(ff paramff, int paramInt, String paramString)
   {
-    paramfc.bLy.bLB = paramInt;
-    paramfc.bLy.bLC = paramString;
-    paramfc.bLy.bLA = 1;
-    y.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "FreeWifiManufacturerConnectWifiHelper setResult. errorcode=%d, errmsg=%s", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (paramfc.bFJ != null) {
-      paramfc.bFJ.run();
+    AppMethodBeat.i(20672);
+    paramff.csS.csV = paramInt;
+    paramff.csS.csW = paramString;
+    paramff.csS.csU = 1;
+    ab.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "FreeWifiManufacturerConnectWifiHelper setResult. errorcode=%d, errmsg=%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    if (paramff.callback != null) {
+      paramff.callback.run();
     }
+    AppMethodBeat.o(20672);
   }
   
-  public final void a(fc paramfc)
+  public final void a(ff paramff)
   {
     for (;;)
     {
@@ -27,52 +30,63 @@ public final class b
       String str2;
       try
       {
-        y.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Method connectWifi gets called");
-        str1 = m.Dm(paramfc.bLx.ssid);
-        str2 = paramfc.bLx.bssid;
+        AppMethodBeat.i(20671);
+        ab.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Method connectWifi gets called");
+        str1 = m.Ou(paramff.csR.ssid);
+        str2 = paramff.csR.bssid;
         if (m.isEmpty(str1))
         {
-          a(paramfc, 1141, "Ssid is empty.");
+          a(paramff, 1141, "Ssid is empty.");
+          AppMethodBeat.o(20671);
           return;
         }
         if (m.isEmpty(str2))
         {
-          a(paramfc, 1142, "Bssid is empty.");
+          a(paramff, 1142, "Bssid is empty.");
+          AppMethodBeat.o(20671);
           continue;
         }
-        y.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "args: ssid=" + paramfc.bLx.ssid + "; bssid=" + paramfc.bLx.bssid + "; version=" + paramfc.bLx.version);
+        ab.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "args: ssid=" + paramff.csR.ssid + "; bssid=" + paramff.csR.bssid + "; version=" + paramff.csR.version);
       }
       finally {}
-      y.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Try to get connect info from cache");
-      a.b localb = a.a.aTI().dg(str1, str2);
-      y.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "read cache done.");
+      ab.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Try to get connect info from cache");
+      a.b localb = a.a.bAm().eu(str1, str2);
+      ab.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "read cache done.");
       if (localb == null)
       {
-        if (a.a.aTI().size() == 0) {
-          a(paramfc, 1145, "Ap connect info cache in wechat is empty. It may be wechat got killed before.");
-        } else {
-          a(paramfc, 1144, "Ap connect info cache in wechat is not empty but the ap tried to connect to is not contained in the cache.");
+        if (a.a.bAm().size() == 0)
+        {
+          a(paramff, 1145, "Ap connect info cache in wechat is empty. It may be wechat got killed before.");
+          AppMethodBeat.o(20671);
+        }
+        else
+        {
+          a(paramff, 1144, "Ap connect info cache in wechat is not empty but the ap tried to connect to is not contained in the cache.");
+          AppMethodBeat.o(20671);
         }
       }
       else
       {
-        String str3 = localb.bHI;
-        int i = localb.kmR;
+        String str3 = localb.coX;
+        int i = localb.mIE;
         if (i == 4)
         {
-          y.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Ready to start up password ap connect page.");
-          ai.d(new b.1(this, str3));
-          a(paramfc, 1, null);
+          ab.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Ready to start up password ap connect page.");
+          al.d(new b.1(this, str3));
+          a(paramff, 1, null);
+          AppMethodBeat.o(20671);
         }
         else if (i == 31)
         {
-          y.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Ready to connect 31 page.");
-          ai.d(new b.2(this, str1, str2));
-          a(paramfc, 1, null);
+          ab.i("MicroMsg.FreeWifi.FreeWifiManufacturerConnectWifiHelper", "Ready to connect 31 page.");
+          al.d(new b.2(this, str1, str2));
+          a(paramff, 1, null);
+          AppMethodBeat.o(20671);
         }
         else
         {
-          a(paramfc, 1143, "Wechant installed Currently doesn't support connect protocol " + i);
+          a(paramff, 1143, "Wechant installed Currently doesn't support connect protocol ".concat(String.valueOf(i)));
+          AppMethodBeat.o(20671);
         }
       }
     }
@@ -80,7 +94,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.b.b
  * JD-Core Version:    0.7.0.1
  */

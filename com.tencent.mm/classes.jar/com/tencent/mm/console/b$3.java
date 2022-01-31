@@ -3,7 +3,8 @@ package com.tencent.mm.console;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
 import java.util.ArrayList;
 
 final class b$3
@@ -13,7 +14,9 @@ final class b$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.post(new b.3.1(this), "copypackage");
+    AppMethodBeat.i(16077);
+    d.post(new b.3.1(this), "copypackage");
+    AppMethodBeat.o(16077);
   }
 }
 

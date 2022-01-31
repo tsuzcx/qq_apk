@@ -5,26 +5,26 @@ import java.lang.ref.WeakReference;
 public final class i
   implements c
 {
-  private WeakReference<c> Ck;
+  private WeakReference<c> CT;
   
   public i(c paramc)
   {
-    this.Ck = new WeakReference(paramc);
+    this.CT = new WeakReference(paramc);
   }
   
-  public final void r(int paramInt, byte[] paramArrayOfByte)
+  public final void onResp(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((this.Ck != null) && (this.Ck.get() != null))
+    if ((this.CT != null) && (this.CT.get() != null))
     {
-      ((c)this.Ck.get()).r(paramInt, paramArrayOfByte);
+      ((c)this.CT.get()).onResp(paramInt, paramArrayOfByte);
       return;
     }
-    com.tencent.pb.common.c.c.x("OnRespForLongAIDLImpl fail", new Object[] { "callback is null, errCode=" + paramInt });
+    com.tencent.pb.common.c.c.w("OnRespForLongAIDLImpl fail", new Object[] { "callback is null, errCode=".concat(String.valueOf(paramInt)) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.b.i
  * JD-Core Version:    0.7.0.1
  */

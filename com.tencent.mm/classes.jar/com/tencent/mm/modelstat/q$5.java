@@ -1,18 +1,21 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.model.am.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class q$5
-  implements am.e
+  implements ao.e
 {
   q$5(q paramq) {}
   
-  public final void bg(int paramInt1, int paramInt2)
+  public final void cq(int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), bk.csb() });
-    n.bg(paramInt1, paramInt2);
+    AppMethodBeat.i(78792);
+    ab.d("MicroMsg.SubCoreStat", "ReportDataFlow [%d][%d][%d] : %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(0), bo.dtY() });
+    n.cq(paramInt1, paramInt2);
+    AppMethodBeat.o(78792);
   }
 }
 

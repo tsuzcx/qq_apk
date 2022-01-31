@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -11,15 +11,17 @@ final class FavRecordDetailUI$2$1
 {
   FavRecordDetailUI$2$1(FavRecordDetailUI.2 param2) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    y.i("MicroMsg.FavRecordDetailUI", "favItemInfo: id %d, status %d", new Object[] { Integer.valueOf(FavRecordDetailUI.b(this.ntG.ntD).field_id), Integer.valueOf(FavRecordDetailUI.b(this.ntG.ntD).field_itemStatus) });
-    if ((FavRecordDetailUI.b(this.ntG.ntD).field_id > 0) && (!FavRecordDetailUI.b(this.ntG.ntD).aPZ()) && (!FavRecordDetailUI.b(this.ntG.ntD).aQa()) && (FavRecordDetailUI.c(this.ntG.ntD))) {
-      paraml.e(0, this.ntG.ntD.getString(R.l.favorite_share_with_friend));
+    AppMethodBeat.i(24203);
+    ab.i("MicroMsg.FavRecordDetailUI", "favItemInfo: id %d, status %d", new Object[] { Integer.valueOf(FavRecordDetailUI.b(this.pZo.pZl).field_id), Integer.valueOf(FavRecordDetailUI.b(this.pZo.pZl).field_itemStatus) });
+    if ((FavRecordDetailUI.b(this.pZo.pZl).field_id > 0) && (!FavRecordDetailUI.b(this.pZo.pZl).bwo()) && (!FavRecordDetailUI.b(this.pZo.pZl).bwp()) && (FavRecordDetailUI.c(this.pZo.pZl))) {
+      paraml.e(0, this.pZo.pZl.getString(2131299826));
     }
-    paraml.e(5, this.ntG.ntD.getString(R.l.favorite_save_as_note));
-    paraml.e(3, this.ntG.ntD.getString(R.l.favorite_edit_tag_tips));
-    paraml.e(2, this.ntG.ntD.getString(R.l.app_delete));
+    paraml.e(5, this.pZo.pZl.getString(2131299814));
+    paraml.e(3, this.pZo.pZl.getString(2131299703));
+    paraml.e(2, this.pZo.pZl.getString(2131296901));
+    AppMethodBeat.o(24203);
   }
 }
 

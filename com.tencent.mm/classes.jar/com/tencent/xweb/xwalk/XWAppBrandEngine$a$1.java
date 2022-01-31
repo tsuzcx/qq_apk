@@ -1,5 +1,7 @@
 package com.tencent.xweb.xwalk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class XWAppBrandEngine$a$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class XWAppBrandEngine$a$1
   
   public final void run()
   {
-    XWAppBrandEngine.a(this.xlF.xlE, XWAppBrandEngine.b(this.xlF.xlE), this.xlF.bks);
+    AppMethodBeat.i(4165);
+    XWAppBrandEngine.a(this.BJv.BJu, XWAppBrandEngine.b(this.BJv.BJu), this.BJv.BJs);
+    AppMethodBeat.o(4165);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.xweb.xwalk.XWAppBrandEngine.a.1
  * JD-Core Version:    0.7.0.1
  */

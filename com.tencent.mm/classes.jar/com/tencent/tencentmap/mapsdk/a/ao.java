@@ -1,66 +1,39 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class ao
 {
-  public static final List<Integer> a;
-  private ConcurrentHashMap<lu, as> b = new ConcurrentHashMap();
+  private ao.a<String, Bitmap> a;
   
-  static
+  public ao(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    a = localArrayList;
-    localArrayList.add(Integer.valueOf(5));
-    a.add(Integer.valueOf(10));
-    a.add(Integer.valueOf(50));
-    a.add(Integer.valueOf(100));
-    a.add(Integer.valueOf(200));
-    a.add(Integer.valueOf(500));
-    a.add(Integer.valueOf(1000));
-    a.add(Integer.valueOf(2000));
-    a.add(Integer.valueOf(3000));
+    AppMethodBeat.i(149632);
+    this.a = new ao.a(paramInt);
+    AppMethodBeat.o(149632);
   }
   
-  public as a(lu paramlu)
+  public Bitmap a(String paramString)
   {
-    as localas2 = (as)this.b.get(paramlu);
-    as localas1 = localas2;
-    if (localas2 == null)
-    {
-      localas1 = new as(a);
-      this.b.putIfAbsent(paramlu, localas1);
-    }
-    return localas1;
+    AppMethodBeat.i(149635);
+    paramString = (Bitmap)this.a.a(paramString);
+    AppMethodBeat.o(149635);
+    return paramString;
   }
   
-  public ConcurrentHashMap<lu, as> a()
+  public void a()
   {
-    return this.b;
+    AppMethodBeat.i(149633);
+    this.a.a();
+    AppMethodBeat.o(149633);
   }
   
-  public void a(lu paramlu, int paramInt)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    a(paramlu).a(paramInt, 2);
-  }
-  
-  public void a(lu paramlu, long paramLong, int paramInt)
-  {
-    if (paramInt == 0) {
-      a(paramlu).a(paramLong, 0);
-    }
-    do
-    {
-      return;
-      if (paramInt == 1)
-      {
-        a(paramlu).a(paramLong, 1);
-        return;
-      }
-    } while (paramInt != 2);
-    a(paramlu).a(paramLong, 2);
+    AppMethodBeat.i(149634);
+    this.a.a(paramString, paramBitmap);
+    AppMethodBeat.o(149634);
   }
 }
 

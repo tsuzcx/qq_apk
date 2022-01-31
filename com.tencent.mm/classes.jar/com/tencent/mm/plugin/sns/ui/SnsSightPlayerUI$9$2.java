@@ -2,9 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsSightPlayerUI$9$2
   implements Runnable
@@ -13,16 +11,18 @@ final class SnsSightPlayerUI$9$2
   
   public final void run()
   {
-    if (SnsSightPlayerUI.k(this.pdo.pdk).getVisibility() != 0)
+    AppMethodBeat.i(39259);
+    if (SnsSightPlayerUI.k(this.rVX.rVT).getVisibility() != 0)
     {
-      SnsSightPlayerUI.k(this.pdo.pdk).setVisibility(0);
-      SnsSightPlayerUI.k(this.pdo.pdk).startAnimation(AnimationUtils.loadAnimation(this.pdo.pdk.mController.uMN, i.a.fast_faded_in));
+      SnsSightPlayerUI.k(this.rVX.rVT).setVisibility(0);
+      SnsSightPlayerUI.k(this.rVX.rVT).startAnimation(AnimationUtils.loadAnimation(this.rVX.rVT.getContext(), 2131034181));
     }
+    AppMethodBeat.o(39259);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsSightPlayerUI.9.2
  * JD-Core Version:    0.7.0.1
  */

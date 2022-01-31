@@ -1,15 +1,10 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
-public final class i$a
-  extends Error
+import com.tencent.mm.plugin.appbrand.jsapi.version.a;
+
+public abstract interface i$a
 {
-  final String gKq;
-  
-  i$a(String paramString1, String paramString2)
-  {
-    super(paramString1);
-    this.gKq = paramString2;
-  }
+  public abstract void b(a parama);
 }
 
 

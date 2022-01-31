@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.backup.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.g.l.a;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.mm.sdk.g.d;
 import java.util.LinkedList;
 
 final class c$b$3$1
@@ -9,9 +10,11 @@ final class c$b$3$1
 {
   c$b$3$1(c.b.3 param3) {}
   
-  public final void C(LinkedList<Long> paramLinkedList)
+  public final void D(LinkedList<Long> paramLinkedList)
   {
-    e.b(new c.b.3.1.1(this, paramLinkedList), "AddBigFileToQueue").start();
+    AppMethodBeat.i(17181);
+    d.h(new c.b.3.1.1(this, paramLinkedList), "AddBigFileToQueue").start();
+    AppMethodBeat.o(17181);
   }
 }
 

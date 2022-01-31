@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.product.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -7,26 +8,30 @@ import org.json.JSONObject;
 
 public final class n
 {
-  public List<n.a> mSB = new ArrayList();
   public String name;
+  public List<n.a> puH;
+  
+  public n()
+  {
+    AppMethodBeat.i(44007);
+    this.puH = new ArrayList();
+    AppMethodBeat.o(44007);
+  }
   
   public static List<n> parse(String paramString)
   {
+    AppMethodBeat.i(44008);
     ArrayList localArrayList = new ArrayList();
     try
     {
-      JSONArray localJSONArray = new JSONObject(paramString).getJSONArray("group_list");
-      int k = localJSONArray.length();
+      paramString = new JSONObject(paramString).getJSONArray("group_list");
+      int k = paramString.length();
       int i = 0;
-      for (;;)
+      while (i < k)
       {
-        paramString = localArrayList;
-        if (i >= k) {
-          break;
-        }
-        Object localObject = localJSONArray.getJSONObject(i);
-        paramString = new n();
-        paramString.name = ((JSONObject)localObject).getString("name");
+        Object localObject = paramString.getJSONObject(i);
+        n localn = new n();
+        localn.name = ((JSONObject)localObject).getString("name");
         localObject = ((JSONObject)localObject).getJSONArray("item_list");
         int m = ((JSONArray)localObject).length();
         int j = 0;
@@ -39,23 +44,25 @@ public final class n
           locala.data = localJSONObject.getString("native_url_args");
           locala.iconUrl = localJSONObject.getString("icon_url");
           locala.url = localJSONObject.getString("h5_url");
-          paramString.mSB.add(locala);
+          localn.puH.add(locala);
           j += 1;
         }
-        localArrayList.add(paramString);
+        localArrayList.add(localn);
         i += 1;
       }
-      return paramString;
+      AppMethodBeat.o(44008);
     }
     catch (Exception paramString)
     {
-      paramString = null;
+      AppMethodBeat.o(44008);
+      return null;
     }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.product.b.n
  * JD-Core Version:    0.7.0.1
  */

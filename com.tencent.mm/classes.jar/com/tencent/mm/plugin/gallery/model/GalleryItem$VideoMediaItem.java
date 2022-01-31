@@ -2,20 +2,29 @@ package com.tencent.mm.plugin.gallery.model;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class GalleryItem$VideoMediaItem
   extends GalleryItem.MediaItem
 {
-  public static final Parcelable.Creator<GalleryItem.MediaItem> CREATOR = new Parcelable.Creator() {};
-  public String eAv;
-  public String eAw;
-  public int eAx = -1;
-  public int eAy = -1;
+  public static final Parcelable.Creator<GalleryItem.MediaItem> CREATOR;
+  public int eWL = -1;
+  public String fQo;
+  public String fQp;
+  public int fQq = -1;
+  public int fQr = -1;
   public int videoBitRate = -1;
   public int videoFrameRate = -1;
   public int videoHeight = -1;
   public int videoWidth = -1;
+  
+  static
+  {
+    AppMethodBeat.i(21296);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(21296);
+  }
   
   public GalleryItem$VideoMediaItem() {}
   
@@ -29,12 +38,18 @@ public class GalleryItem$VideoMediaItem
     super(paramLong, paramString1, paramString2, paramString3);
   }
   
-  public final String aXs()
+  public final String Xi()
   {
-    if (!bk.bl(this.jSX)) {
-      return this.jSX;
+    AppMethodBeat.i(21293);
+    if (!bo.isNullOrNil(this.mnt))
+    {
+      str = this.mnt;
+      AppMethodBeat.o(21293);
+      return str;
     }
-    return this.eAu;
+    String str = this.fQn;
+    AppMethodBeat.o(21293);
+    return str;
   }
   
   public int describeContents()
@@ -49,23 +64,29 @@ public class GalleryItem$VideoMediaItem
   
   public String toString()
   {
-    return "VideoMediaItem{base=" + super.toString() + ", videoTrackMime='" + this.eAv + '\'' + ", audioTrackMime='" + this.eAw + '\'' + ", durationMs=" + this.eAx + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.eAy + ", videoFrameRate=" + this.videoFrameRate + '}';
+    AppMethodBeat.i(21295);
+    String str = "VideoMediaItem{base=" + super.toString() + ", videoTrackMime='" + this.fQo + '\'' + ", audioTrackMime='" + this.fQp + '\'' + ", durationMs=" + this.fQq + ", videoHeight=" + this.videoHeight + ", videoWidth=" + this.videoWidth + ", videoBitRate=" + this.videoBitRate + ", videoIFrameInterval=" + this.fQr + ", videoFrameRate=" + this.videoFrameRate + '}';
+    AppMethodBeat.o(21295);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.eAu);
-    paramParcel.writeString(this.jSX);
-    paramParcel.writeLong(this.kGX);
+    AppMethodBeat.i(21294);
+    paramParcel.writeString(this.fQn);
+    paramParcel.writeString(this.mnt);
+    paramParcel.writeLong(this.ndp);
     paramParcel.writeString(this.mMimeType);
     paramParcel.writeInt(this.videoWidth);
     paramParcel.writeInt(this.videoHeight);
-    paramParcel.writeInt(this.eAx);
-    paramParcel.writeString(this.eAv);
-    paramParcel.writeString(this.eAw);
-    paramParcel.writeInt(this.eAy);
+    paramParcel.writeInt(this.fQq);
+    paramParcel.writeString(this.fQo);
+    paramParcel.writeString(this.fQp);
+    paramParcel.writeInt(this.fQr);
     paramParcel.writeInt(this.videoFrameRate);
     paramParcel.writeInt(this.videoBitRate);
+    paramParcel.writeInt(this.eWL);
+    AppMethodBeat.o(21294);
   }
 }
 

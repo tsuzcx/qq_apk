@@ -1,91 +1,97 @@
 package com.tencent.mm.plugin.wallet.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.plugin.wallet_core.model.ae;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.d;
-import java.util.Map;
+import com.tencent.mm.plugin.wallet.a.s;
+import com.tencent.mm.plugin.wallet_core.model.ak;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 
 public final class a
 {
-  public static boolean bUE()
+  public static boolean Iv(int paramInt)
   {
-    k localk = (k)g.r(k.class);
+    AppMethodBeat.i(46462);
+    g.RM();
+    if ((((Integer)g.RL().Ru().get(ac.a.yAU, Integer.valueOf(-1))).intValue() < paramInt) && (paramInt > 0))
+    {
+      AppMethodBeat.o(46462);
+      return true;
+    }
+    AppMethodBeat.o(46462);
+    return false;
+  }
+  
+  public static boolean cST()
+  {
+    AppMethodBeat.i(46463);
+    l locall = (l)g.E(l.class);
     Object localObject = new StringBuilder("mgr==null?");
-    ae localae;
+    ak localak;
     StringBuilder localStringBuilder;
-    if (localk == null)
+    if (locall == null)
     {
       bool = true;
-      y.i("MicroMsg.WalletUtil", bool);
-      if (localk != null) {
-        y.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + localk.aSK());
+      ab.i("MicroMsg.WalletUtil", bool);
+      if (locall != null) {
+        ab.i("MicroMsg.WalletUtil", " mgr.isSupportAndLoadSuccess()=" + locall.bzf());
       }
-      p.bTK();
-      localObject = p.bTL();
-      localae = ((ag)localObject).bVR();
+      s.cRG();
+      localObject = s.cRH();
+      localak = ((am)localObject).cUt();
       localStringBuilder = new StringBuilder("config==null?");
-      if (localae != null) {
-        break label202;
+      if (localak != null) {
+        break label212;
       }
     }
-    label202:
+    label212:
     for (boolean bool = true;; bool = false)
     {
-      y.i("MicroMsg.WalletUtil", bool);
-      if (localae != null) {
-        y.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localae.bVH());
+      ab.i("MicroMsg.WalletUtil", bool);
+      if (localak != null) {
+        ab.i("MicroMsg.WalletUtil", "config.isSupportTouchPay()=" + localak.cUd());
       }
-      y.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((ag)localObject).bVN());
-      if ((localk == null) || (!localk.aSK()) || (localae == null) || (!localae.bVH()) || (!((ag)localObject).bVN())) {
-        break label207;
+      ab.i("MicroMsg.WalletUtil", "userInfoManger.isReg()=" + ((am)localObject).cUl());
+      if ((locall == null) || (!locall.bzf()) || (localak == null) || (!localak.cUd()) || (!((am)localObject).cUl())) {
+        break label217;
       }
+      AppMethodBeat.o(46463);
       return true;
       bool = false;
       break;
     }
-    label207:
+    label217:
+    AppMethodBeat.o(46463);
     return false;
   }
   
-  public static boolean bUF()
+  public static boolean cSU()
   {
-    k localk = (k)g.r(k.class);
-    if (localk == null)
+    AppMethodBeat.i(46464);
+    l locall = (l)g.E(l.class);
+    if (locall == null)
     {
-      y.w("MicroMsg.WalletUtil", "no finger mgr!");
+      ab.w("MicroMsg.WalletUtil", "no finger mgr!");
+      AppMethodBeat.o(46464);
       return false;
     }
-    p.bTK();
-    ag localag = p.bTL();
-    ae localae = localag.bVR();
-    h.nFQ.h(916L, 0L, 1L);
-    y.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(localk.aSS()), Boolean.valueOf(localae.bVH()), Boolean.valueOf(localag.bVN()) });
-    return (localk.aSS()) && (localae.bVH()) && (localag.bVN());
-  }
-  
-  public static boolean bUG()
-  {
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.c.IX().fJ("100338");
-    boolean bool;
-    if (localc.isValid()) {
-      if (bk.getInt((String)localc.ctr().get("enabled"), 0) == 1) {
-        bool = true;
-      }
-    }
-    for (;;)
+    s.cRG();
+    am localam = s.cRH();
+    ak localak = localam.cUt();
+    h.qsU.cT(916, 0);
+    ab.i("MicroMsg.WalletUtil", "support faceid: %s, %s, %s", new Object[] { Boolean.valueOf(locall.bzn()), Boolean.valueOf(localak.cUd()), Boolean.valueOf(localam.cUl()) });
+    if ((locall.bzn()) && (localak.cUd()) && (localam.cUl()))
     {
-      y.i("MicroMsg.WalletUtil", "isEnableSaveAndFetchBindQuery enabled: %b", new Object[] { Boolean.valueOf(bool) });
-      return bool;
-      bool = false;
-      continue;
-      bool = false;
+      AppMethodBeat.o(46464);
+      return true;
     }
+    AppMethodBeat.o(46464);
+    return false;
   }
 }
 

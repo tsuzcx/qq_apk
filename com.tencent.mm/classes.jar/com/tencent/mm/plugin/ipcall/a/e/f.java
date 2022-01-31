@@ -1,39 +1,44 @@
 package com.tencent.mm.plugin.ipcall.a.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 public final class f
   extends a
 {
-  public int lsa = 0;
-  public int lsb = 0;
-  public int lsc = 0;
-  public int lsd = 0;
-  public int lse = -9999;
-  public String lsg = "";
-  public int lsh = 0;
-  public int lsi = 0;
+  public int nPA = -9999;
+  public String nPB = "";
+  public int nPC = 0;
+  public int nPD = 0;
+  public int nPw = 0;
+  public int nPx = 0;
+  public int nPy = 0;
+  public int nPz = 0;
   
-  protected final void bcI()
+  protected final void bJP()
   {
-    h.nFQ.f(14182, new Object[] { Integer.valueOf(this.lsa), Integer.valueOf(this.lsb), Integer.valueOf(this.lsc), Integer.valueOf(this.lsd), Integer.valueOf(this.lse), this.lsg, Integer.valueOf(this.lsh), Integer.valueOf(this.lsi) });
+    AppMethodBeat.i(21889);
+    h.qsU.e(14182, new Object[] { Integer.valueOf(this.nPw), Integer.valueOf(this.nPx), Integer.valueOf(this.nPy), Integer.valueOf(this.nPz), Integer.valueOf(this.nPA), this.nPB, Integer.valueOf(this.nPC), Integer.valueOf(this.nPD) });
+    AppMethodBeat.o(21889);
   }
   
   public final void reset()
   {
-    this.lsa = 0;
-    this.lsb = 0;
-    this.lsc = 0;
-    this.lsd = 0;
-    this.lse = -9999;
-    this.lsg = "";
-    this.lsh = 0;
-    this.lsi = 0;
+    this.nPw = 0;
+    this.nPx = 0;
+    this.nPy = 0;
+    this.nPz = 0;
+    this.nPA = -9999;
+    this.nPB = "";
+    this.nPC = 0;
+    this.nPD = 0;
   }
   
   public final void start()
   {
+    AppMethodBeat.i(21888);
     super.start();
+    AppMethodBeat.o(21888);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.clean.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class e$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class e$2
   
   public final void run()
   {
-    e.c(this.iBR).cZ(e.d(this.iBR));
+    AppMethodBeat.i(18701);
+    e.c(this.kGY).iv(e.d(this.kGY));
+    AppMethodBeat.o(18701);
   }
 }
 

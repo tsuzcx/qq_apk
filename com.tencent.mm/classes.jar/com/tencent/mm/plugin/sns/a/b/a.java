@@ -1,302 +1,351 @@
 package com.tencent.mm.plugin.sns.a.b;
 
 import android.view.View;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
 import com.tencent.mm.plugin.sns.storage.b;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.c.bi;
-import com.tencent.mm.protocal.c.bto;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public final class a
 {
-  public String bMB = "";
-  private String fVM = "";
-  boolean inQ = false;
-  public int jsr = 0;
-  long okA = 0L;
-  private int okB = -10086;
-  private int okC = -10086;
-  long okD = 0L;
-  private int okE = -10086;
-  private int okF = -10086;
-  long okG = 0L;
-  int okH = 0;
-  int okI = -1;
-  int okJ = -1;
-  int okK = 0;
-  int okL = 0;
-  int okM = 0;
-  private boolean okN = false;
-  private int okO = 0;
-  boolean okc = false;
-  public bto okd;
-  public View oke;
-  public View okf;
-  public int okg = 0;
-  public int okh = 0;
-  public int oki;
-  private View okj;
-  private int okk = 0;
-  public String okl = "";
-  long okm = 0L;
-  private com.tencent.mm.plugin.sns.storage.a okn = null;
-  b oko;
-  int okp = -10086;
-  private int okq = -10086;
-  int okr = -10086;
-  private int oks = -10086;
-  long okt = 0L;
-  long oku = 0L;
-  private int okv = -10086;
-  private int okw = -10086;
-  long okx = 0L;
-  private int oky = -10086;
-  private int okz = -10086;
-  int position = 0;
-  public int sceneType = 1;
+  public String ctV;
+  boolean eRq;
+  private String hpq;
+  public int jgE;
+  int position;
+  int qYA;
+  private int qYB;
+  int qYC;
+  private int qYD;
+  long qYE;
+  long qYF;
+  private int qYG;
+  private int qYH;
+  long qYI;
+  private int qYJ;
+  private int qYK;
+  long qYL;
+  private int qYM;
+  private int qYN;
+  long qYO;
+  private int qYP;
+  private int qYQ;
+  long qYR;
+  int qYS;
+  int qYT;
+  int qYU;
+  int qYV;
+  int qYW;
+  int qYX;
+  boolean qYn;
+  public View qYo;
+  public View qYp;
+  public int qYq;
+  public int qYr;
+  public int qYs;
+  private View qYt;
+  private int qYu;
+  private int qYv;
+  public String qYw;
+  long qYx;
+  private com.tencent.mm.plugin.sns.storage.a qYy;
+  b qYz;
+  public int sceneType;
+  public SnsObject snsobj;
   
-  public a(com.tencent.mm.plugin.sns.storage.a parama, String paramString, long paramLong, View paramView1, int paramInt1, View paramView2, int paramInt2, int paramInt3, bto parambto, int paramInt4, b paramb)
+  public a(com.tencent.mm.plugin.sns.storage.a parama, String paramString, long paramLong, View paramView1, int paramInt1, View paramView2, int paramInt2, int paramInt3, SnsObject paramSnsObject, int paramInt4, b paramb)
   {
+    AppMethodBeat.i(35701);
+    this.qYn = false;
+    this.sceneType = 1;
+    this.position = 0;
+    this.qYq = 0;
+    this.jgE = 0;
+    this.qYr = 0;
+    this.qYu = 0;
+    this.qYw = "";
+    this.qYx = 0L;
+    this.qYy = null;
+    this.hpq = "";
+    this.qYA = -10086;
+    this.qYB = -10086;
+    this.qYC = -10086;
+    this.qYD = -10086;
+    this.qYE = 0L;
+    this.qYF = 0L;
+    this.qYG = -10086;
+    this.qYH = -10086;
+    this.qYI = 0L;
+    this.qYJ = -10086;
+    this.qYK = -10086;
+    this.qYL = 0L;
+    this.qYM = -10086;
+    this.qYN = -10086;
+    this.qYO = 0L;
+    this.qYP = -10086;
+    this.qYQ = -10086;
+    this.qYR = 0L;
+    this.qYS = 0;
+    this.qYT = -1;
+    this.qYU = -1;
+    this.qYV = 0;
+    this.qYW = 0;
+    this.eRq = false;
+    this.qYX = 0;
+    this.ctV = "";
     this.position = paramInt4;
-    this.oke = paramView1;
-    this.okd = parambto;
-    this.oko = paramb;
-    this.okn = parama;
+    this.qYo = paramView1;
+    this.snsobj = paramSnsObject;
+    this.qYz = paramb;
+    this.qYy = parama;
     this.sceneType = paramInt3;
     if (parama == null)
     {
       paramView1 = "";
-      this.fVM = paramView1;
+      this.hpq = paramView1;
       if (parama != null) {
-        break label355;
+        break label354;
       }
     }
-    label355:
-    for (parama = "";; parama = bk.aM(parama.ovV, ""))
+    label354:
+    for (parama = "";; parama = com.tencent.mm.sdk.platformtools.bo.bf(parama.cFe, ""))
     {
-      this.okl = parama;
-      this.bMB = paramString;
-      this.okm = paramLong;
-      this.oki = paramInt1;
-      this.okj = paramView2;
-      this.okk = paramInt2;
-      if (this.oke != null) {
-        this.okf = this.oke.findViewById(i.f.album_list_fatherview);
+      this.qYw = parama;
+      this.ctV = paramString;
+      this.qYx = paramLong;
+      this.qYs = paramInt1;
+      this.qYt = paramView2;
+      this.qYu = paramInt2;
+      if (this.qYo != null) {
+        this.qYp = this.qYo.findViewById(2131828126);
       }
       initView();
+      AppMethodBeat.o(35701);
       return;
-      paramView1 = bk.aM(parama.fVM, "");
+      paramView1 = com.tencent.mm.sdk.platformtools.bo.bf(parama.hpq, "");
       break;
     }
   }
   
   private void initView()
   {
-    if ((this.jsr == 0) && (this.oke != null))
+    AppMethodBeat.i(35702);
+    if ((this.jgE == 0) && (this.qYo != null))
     {
-      BackwardSupportUtil.b.b(this.oke.getContext(), 50.0F);
-      this.jsr = this.oke.getHeight();
-      if (this.okf != null) {
-        this.okg = this.okf.getHeight();
+      this.jgE = this.qYo.getHeight();
+      if (this.qYp != null) {
+        this.qYq = this.qYp.getHeight();
       }
-      if (this.jsr != 0) {}
+      if (this.jgE == 0)
+      {
+        AppMethodBeat.o(35702);
+        return;
+      }
+      this.qYv = 0;
+      if (this.qYt != null) {
+        this.qYv = this.qYt.getBottom();
+      }
+      this.jgE -= this.qYq;
+      this.qYr = (this.jgE / 2);
+      this.qYs = (this.qYs - this.qYv - this.qYu);
+      ab.i("MicroMsg.AdViewStatic", "viewHeight " + this.jgE + " SCREEN_HEIGHT: " + this.qYs + " abottom: " + this.qYv + " stHeight: " + this.qYu + " commentViewHeight:" + this.qYq);
     }
-    else
-    {
-      return;
-    }
-    int i = 0;
-    if (this.okj != null) {
-      i = this.okj.getBottom();
-    }
-    this.jsr -= this.okg;
-    this.okh = (this.jsr / 2);
-    this.oki = (this.oki - i - this.okk);
-    y.i("MicroMsg.AdViewStatic", "viewHeight " + this.jsr + " SCREEN_HEIGHT: " + this.oki + " abottom: " + i + " stHeight: " + this.okk + " commentViewHeight:" + this.okg);
+    AppMethodBeat.o(35702);
   }
   
-  public final void bCc()
+  public final com.tencent.mm.protocal.protobuf.bo cnD()
   {
-    int j = 1;
-    if (this.oke != null)
-    {
-      initView();
-      if ((!this.inQ) && (this.jsr > 0)) {}
-    }
-    else
-    {
-      return;
-    }
-    this.okc = true;
-    int k = this.oke.getTop();
-    int m = this.oke.getBottom();
-    int n = this.okg;
-    int[] arrayOfInt;
-    if (!this.okN)
-    {
-      arrayOfInt = new int[2];
-      this.oke.getLocationOnScreen(arrayOfInt);
-      if (this.okj == null) {
-        break label917;
-      }
-    }
-    label896:
-    label904:
-    label912:
-    label917:
-    for (int i = this.okj.getBottom();; i = 0)
-    {
-      this.okO = (k - (arrayOfInt[1] - i - this.okk));
-      this.okN = true;
-      k -= this.okO;
-      m = m - n - this.okO;
-      label151:
-      int i1;
-      if ((k >= 0) && (m <= this.oki))
-      {
-        this.okM = 1;
-        if ((this.okp == -10086) && (this.okq == -10086))
-        {
-          this.okp = k;
-          this.okq = m;
-        }
-        this.okr = k;
-        this.oks = m;
-        if (k < 0)
-        {
-          n = k + this.jsr;
-          i1 = this.jsr - n;
-          if ((n < this.okh) || (this.okv != -10086)) {
-            break label912;
-          }
-          this.okv = k;
-          this.okw = m;
-          this.okx = System.currentTimeMillis();
-          y.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + k + " viewhieght " + this.jsr + " inscreenval: " + n + " outscreenval: " + i1);
-        }
-      }
-      for (i = 0;; i = 1)
-      {
-        if ((i1 >= this.okh) && (this.oky == -10086) && (i != 0) && (this.okx > 0L))
-        {
-          this.oky = k;
-          this.okz = m;
-          this.okA = System.currentTimeMillis();
-          y.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + m + " viewhieght " + this.jsr + " inscreenval: " + n + " outscreenval: " + i1);
-        }
-        if (m > this.oki)
-        {
-          n = m - this.oki;
-          i1 = this.jsr - n;
-          i = j;
-          if (i1 >= this.okh)
-          {
-            i = j;
-            if (this.okv == -10086)
-            {
-              this.okv = k;
-              this.okw = m;
-              this.okx = System.currentTimeMillis();
-              y.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + k + " viewhieght " + this.jsr + " inscreenval: " + i1 + " outscreenval: " + n);
-              i = 0;
-            }
-          }
-          if ((n >= this.okh) && (this.oky == -10086) && (i != 0) && (this.okx > 0L))
-          {
-            this.oky = k;
-            this.okz = m;
-            this.okA = System.currentTimeMillis();
-            y.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + m + " viewhieght " + this.jsr + " inscreenval: " + i1 + " outscreenval: " + n);
-          }
-        }
-        if ((k >= 0) && (m <= this.oki))
-        {
-          if (this.okD == 0L)
-          {
-            this.okB = k;
-            this.okC = m;
-            this.okD = System.currentTimeMillis();
-          }
-          label725:
-          if (k >= 0) {
-            break label896;
-          }
-          i = -k;
-          if ((this.okI == -1) || (this.okI > i)) {
-            this.okI = i;
-          }
-          label753:
-          if (m <= this.oki) {
-            break label904;
-          }
-          i = m - this.oki;
-          if ((this.okJ != -1) && (this.okJ <= i)) {}
-        }
-        for (this.okJ = i;; this.okJ = 0)
-        {
-          j = this.jsr;
-          i = j;
-          if (k < 0) {
-            i = j + k;
-          }
-          j = i;
-          if (m > this.oki) {
-            j = i - (m - this.oki);
-          }
-          if ((this.okH != -1) && (this.okH >= j)) {
-            break;
-          }
-          this.okH = j;
-          return;
-          this.okM = 0;
-          break label151;
-          if ((this.okG != 0L) || (this.okD == 0L)) {
-            break label725;
-          }
-          this.okE = k;
-          this.okF = m;
-          this.okG = System.currentTimeMillis();
-          break label725;
-          this.okI = 0;
-          break label753;
-        }
-      }
-    }
-  }
-  
-  public final bi bCd()
-  {
-    bi localbi = new bi();
-    Object localObject = af.bDF().gt(this.okm);
+    AppMethodBeat.i(35704);
+    com.tencent.mm.protocal.protobuf.bo localbo = new com.tencent.mm.protocal.protobuf.bo();
+    Object localObject = ag.cpf().lZ(this.qYx);
     if (localObject != null)
     {
-      localObject = aj.q((n)localObject);
+      localObject = ak.q((n)localObject);
       if (localObject != null)
       {
-        localbi.suZ = ((bto)localObject).tKb.size();
-        localbi.like_count = ((bto)localObject).tJY.size();
-        return localbi;
+        localbo.wof = ((SnsObject)localObject).CommentUserList.size();
+        localbo.woe = ((SnsObject)localObject).LikeUserList.size();
+        AppMethodBeat.o(35704);
+        return localbo;
       }
     }
-    if (this.okd != null)
+    if (this.snsobj != null)
     {
-      localbi.suZ = this.okd.tKa;
-      localbi.like_count = this.okd.tJX;
-      return localbi;
+      localbo.wof = this.snsobj.CommentUserListCount;
+      localbo.woe = this.snsobj.LikeUserListCount;
+      AppMethodBeat.o(35704);
+      return localbo;
     }
+    AppMethodBeat.o(35704);
     return null;
+  }
+  
+  public final boolean cnE()
+  {
+    return this.qYX == 1;
+  }
+  
+  public final void kY(boolean paramBoolean)
+  {
+    int j = 1;
+    AppMethodBeat.i(35703);
+    Object localObject;
+    int m;
+    int k;
+    int n;
+    int i1;
+    if (this.qYo != null)
+    {
+      initView();
+      if ((this.eRq) || (this.jgE <= 0))
+      {
+        AppMethodBeat.o(35703);
+        return;
+      }
+      this.qYn = true;
+      localObject = new int[2];
+      this.qYo.getLocationOnScreen((int[])localObject);
+      m = localObject[1] - this.qYv - this.qYu;
+      k = m + this.jgE;
+      if ((m < 0) || (k < 0) || (k > this.qYs)) {
+        break label1088;
+      }
+      this.qYX = 1;
+      if ((this.qYA == -10086) && (this.qYB == -10086))
+      {
+        this.qYA = m;
+        this.qYB = k;
+      }
+      this.qYC = m;
+      this.qYD = k;
+      ab.i("MicroMsg.AdViewStatic", "get top " + m + " bottom " + k + " body_half: " + this.qYr + "| " + (this.jgE + m) + "  firsttop " + this.qYA + " endtop " + this.qYC);
+      if (m < 0)
+      {
+        n = m + this.jgE;
+        i1 = this.jgE - n;
+        ab.i("MicroMsg.AdViewStatic", "top " + m + " screen in " + n + " out: " + i1);
+        if ((n < this.qYr) || (this.qYG != -10086)) {
+          break label1159;
+        }
+        this.qYG = m;
+        this.qYH = k;
+        this.qYI = System.currentTimeMillis();
+        ab.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + m + " viewhieght " + this.jgE + " inscreenval: " + n + " outscreenval: " + i1);
+      }
+    }
+    label1152:
+    label1159:
+    for (int i = 0;; i = 1)
+    {
+      if ((i1 >= this.qYr) && (this.qYJ == -10086) && (i != 0) && (this.qYI > 0L))
+      {
+        this.qYJ = m;
+        this.qYK = k;
+        this.qYL = System.currentTimeMillis();
+        ab.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + k + " viewhieght " + this.jgE + " inscreenval: " + n + " outscreenval: " + i1);
+      }
+      if (k > this.qYs)
+      {
+        n = k - this.qYs;
+        i1 = this.jgE - n;
+        ab.i("MicroMsg.AdViewStatic", "bottom " + k + " screen in " + i1 + " out: " + n);
+        i = j;
+        if (i1 >= this.qYr)
+        {
+          i = j;
+          if (this.qYG == -10086)
+          {
+            this.qYG = m;
+            this.qYH = k;
+            this.qYI = System.currentTimeMillis();
+            ab.i("MicroMsg.AdViewStatic", "up first touch half" + n + " top " + m + " viewhieght " + this.jgE + " inscreenval: " + i1 + " outscreenval: " + n);
+            i = 0;
+          }
+        }
+        if ((n >= this.qYr) && (this.qYJ == -10086) && (i != 0) && (this.qYI > 0L))
+        {
+          this.qYJ = m;
+          this.qYK = k;
+          this.qYL = System.currentTimeMillis();
+          ab.i("MicroMsg.AdViewStatic", "down first touch half" + n + " bottom " + k + " viewhieght " + this.jgE + " inscreenval: " + i1 + " outscreenval: " + n);
+        }
+      }
+      label885:
+      StringBuilder localStringBuilder;
+      if ((m >= 0) && (k <= this.qYs))
+      {
+        if (this.qYO == 0L)
+        {
+          this.qYM = m;
+          this.qYN = k;
+          this.qYO = System.currentTimeMillis();
+        }
+        if (m >= 0) {
+          break label1136;
+        }
+        i = -m;
+        if ((this.qYT == -1) || (this.qYT > i)) {
+          this.qYT = i;
+        }
+        label915:
+        if (k <= this.qYs) {
+          break label1144;
+        }
+        i = k - this.qYs;
+        if ((this.qYU == -1) || (this.qYU > i)) {
+          this.qYU = i;
+        }
+        label953:
+        j = this.jgE;
+        i = j;
+        if (m < 0) {
+          i = j + m;
+        }
+        j = i;
+        if (k > this.qYs) {
+          j = i - (k - this.qYs);
+        }
+        if ((this.qYS == -1) || (this.qYS < j)) {
+          this.qYS = j;
+        }
+        localStringBuilder = new StringBuilder("unreadtop: ").append(this.qYT).append(" unreadBottom:").append(this.qYU).append(" readHeight: ").append(this.qYS);
+        if (!paramBoolean) {
+          break label1152;
+        }
+      }
+      for (localObject = " isScrooIde";; localObject = "")
+      {
+        ab.i("MicroMsg.AdViewStatic", (String)localObject);
+        AppMethodBeat.o(35703);
+        return;
+        label1088:
+        this.qYX = 0;
+        break;
+        if ((this.qYR != 0L) || (this.qYO == 0L)) {
+          break label885;
+        }
+        this.qYP = m;
+        this.qYQ = k;
+        this.qYR = System.currentTimeMillis();
+        break label885;
+        label1136:
+        this.qYT = 0;
+        break label915;
+        label1144:
+        this.qYU = 0;
+        break label953;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.a
  * JD-Core Version:    0.7.0.1
  */

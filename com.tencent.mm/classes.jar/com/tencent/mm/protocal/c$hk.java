@@ -5,7 +5,7 @@ public final class c$hk
 {
   public c$hk()
   {
-    super("selectPedometerSource", "selectPedometerSource", 146, true);
+    super("removeSearchWAWidgetView", "", 10000, false);
   }
 }
 

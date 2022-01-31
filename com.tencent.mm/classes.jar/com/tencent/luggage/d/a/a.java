@@ -1,15 +1,30 @@
 package com.tencent.luggage.d.a;
 
-import android.content.Context;
-import com.tencent.luggage.b.b;
-import com.tencent.mm.plugin.appbrand.widget.b.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface a
-  extends b
 {
-  public abstract void a(h paramh);
+  public static final a bzy = new a()
+  {
+    public final void a(c paramAnonymousc)
+    {
+      AppMethodBeat.i(90857);
+      paramAnonymousc.a(b.bzB);
+      AppMethodBeat.o(90857);
+    }
+    
+    public final void a(String paramAnonymousString, c paramAnonymousc)
+    {
+      AppMethodBeat.i(90858);
+      paramAnonymousc.a(b.bzB);
+      AppMethodBeat.o(90858);
+    }
+  };
+  public static final a bzz = new a.2();
   
-  public abstract h ac(Context paramContext);
+  public abstract void a(c paramc);
+  
+  public abstract void a(String paramString, c paramc);
 }
 
 

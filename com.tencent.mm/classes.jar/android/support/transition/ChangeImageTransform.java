@@ -17,9 +17,9 @@ import java.util.Map;
 public class ChangeImageTransform
   extends Transition
 {
-  private static final TypeEvaluator<Matrix> pZ = new ChangeImageTransform.1();
-  private static final String[] ps = { "android:changeImageTransform:matrix", "android:changeImageTransform:bounds" };
-  private static final Property<ImageView, Matrix> qa = new ChangeImageTransform.2(Matrix.class, "animatedTransform");
+  private static final TypeEvaluator<Matrix> qW = new ChangeImageTransform.1();
+  private static final Property<ImageView, Matrix> qX = new ChangeImageTransform.2(Matrix.class, "animatedTransform");
+  private static final String[] qo = { "android:changeImageTransform:matrix", "android:changeImageTransform:bounds" };
   
   public ChangeImageTransform() {}
   
@@ -28,9 +28,9 @@ public class ChangeImageTransform
     super(paramContext, paramAttributeSet);
   }
   
-  private static void c(ai paramai)
+  private static void c(ah paramah)
   {
-    Object localObject = paramai.view;
+    Object localObject = paramah.view;
     if ((!(localObject instanceof ImageView)) || (((View)localObject).getVisibility() != 0)) {}
     ImageView localImageView;
     do
@@ -38,94 +38,94 @@ public class ChangeImageTransform
       return;
       localImageView = (ImageView)localObject;
     } while (localImageView.getDrawable() == null);
-    Map localMap = paramai.values;
+    Map localMap = paramah.values;
     localMap.put("android:changeImageTransform:bounds", new Rect(((View)localObject).getLeft(), ((View)localObject).getTop(), ((View)localObject).getRight(), ((View)localObject).getBottom()));
-    switch (ChangeImageTransform.3.qb[localImageView.getScaleType().ordinal()])
+    switch (ChangeImageTransform.3.qY[localImageView.getScaleType().ordinal()])
     {
     default: 
-      paramai = new Matrix(localImageView.getImageMatrix());
+      paramah = new Matrix(localImageView.getImageMatrix());
     }
     for (;;)
     {
-      localMap.put("android:changeImageTransform:matrix", paramai);
+      localMap.put("android:changeImageTransform:matrix", paramah);
       return;
       localObject = localImageView.getDrawable();
-      paramai = new Matrix();
-      paramai.postScale(localImageView.getWidth() / ((Drawable)localObject).getIntrinsicWidth(), localImageView.getHeight() / ((Drawable)localObject).getIntrinsicHeight());
+      paramah = new Matrix();
+      paramah.postScale(localImageView.getWidth() / ((Drawable)localObject).getIntrinsicWidth(), localImageView.getHeight() / ((Drawable)localObject).getIntrinsicHeight());
       continue;
-      paramai = localImageView.getDrawable();
-      int j = paramai.getIntrinsicWidth();
+      paramah = localImageView.getDrawable();
+      int j = paramah.getIntrinsicWidth();
       int k = localImageView.getWidth();
       float f1 = k / j;
-      int m = paramai.getIntrinsicHeight();
+      int m = paramah.getIntrinsicHeight();
       int i = localImageView.getHeight();
       f1 = Math.max(f1, i / m);
       float f2 = j;
       float f3 = m;
       j = Math.round((k - f2 * f1) / 2.0F);
       i = Math.round((i - f3 * f1) / 2.0F);
-      paramai = new Matrix();
-      paramai.postScale(f1, f1);
-      paramai.postTranslate(j, i);
+      paramah = new Matrix();
+      paramah.postScale(f1, f1);
+      paramah.postTranslate(j, i);
     }
   }
   
-  public final Animator a(ViewGroup paramViewGroup, ai paramai1, ai paramai2)
+  public final Animator a(ViewGroup paramViewGroup, ah paramah1, ah paramah2)
   {
-    if ((paramai1 == null) || (paramai2 == null)) {
+    if ((paramah1 == null) || (paramah2 == null)) {
       return null;
     }
-    paramViewGroup = (Rect)paramai1.values.get("android:changeImageTransform:bounds");
-    Rect localRect = (Rect)paramai2.values.get("android:changeImageTransform:bounds");
+    paramViewGroup = (Rect)paramah1.values.get("android:changeImageTransform:bounds");
+    Rect localRect = (Rect)paramah2.values.get("android:changeImageTransform:bounds");
     if ((paramViewGroup == null) || (localRect == null)) {
       return null;
     }
-    paramai1 = (Matrix)paramai1.values.get("android:changeImageTransform:matrix");
-    Matrix localMatrix = (Matrix)paramai2.values.get("android:changeImageTransform:matrix");
-    if (((paramai1 == null) && (localMatrix == null)) || ((paramai1 != null) && (paramai1.equals(localMatrix)))) {}
+    paramah1 = (Matrix)paramah1.values.get("android:changeImageTransform:matrix");
+    Matrix localMatrix = (Matrix)paramah2.values.get("android:changeImageTransform:matrix");
+    if (((paramah1 == null) && (localMatrix == null)) || ((paramah1 != null) && (paramah1.equals(localMatrix)))) {}
     for (int i = 1; (paramViewGroup.equals(localRect)) && (i != 0); i = 0) {
       return null;
     }
-    paramai2 = (ImageView)paramai2.view;
-    paramViewGroup = paramai2.getDrawable();
+    paramah2 = (ImageView)paramah2.view;
+    paramViewGroup = paramah2.getDrawable();
     i = paramViewGroup.getIntrinsicWidth();
     int j = paramViewGroup.getIntrinsicHeight();
-    l.a(paramai2);
+    l.a(paramah2);
     if ((i == 0) || (j == 0)) {}
-    for (paramViewGroup = ObjectAnimator.ofObject(paramai2, qa, pZ, new Matrix[] { null, null });; paramViewGroup = ObjectAnimator.ofObject(paramai2, qa, new ah.a(), new Matrix[] { paramViewGroup, paramai1 }))
+    for (paramViewGroup = ObjectAnimator.ofObject(paramah2, qX, qW, new Matrix[] { null, null });; paramViewGroup = ObjectAnimator.ofObject(paramah2, qX, new ag.a(), new Matrix[] { paramViewGroup, paramah1 }))
     {
-      l.a(paramai2, paramViewGroup);
+      l.a(paramah2, paramViewGroup);
       return paramViewGroup;
-      paramViewGroup = paramai1;
-      if (paramai1 == null) {
-        paramViewGroup = p.ny;
+      paramViewGroup = paramah1;
+      if (paramah1 == null) {
+        paramViewGroup = p.ow;
       }
-      paramai1 = localMatrix;
+      paramah1 = localMatrix;
       if (localMatrix == null) {
-        paramai1 = p.ny;
+        paramah1 = p.ow;
       }
-      qa.set(paramai2, paramViewGroup);
+      qX.set(paramah2, paramViewGroup);
     }
   }
   
-  public final void a(ai paramai)
+  public final void a(ah paramah)
   {
-    c(paramai);
+    c(paramah);
   }
   
-  public final void b(ai paramai)
+  public final void b(ah paramah)
   {
-    c(paramai);
+    c(paramah);
   }
   
   public final String[] getTransitionProperties()
   {
-    return ps;
+    return qo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.transition.ChangeImageTransform
  * JD-Core Version:    0.7.0.1
  */

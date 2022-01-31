@@ -1,100 +1,258 @@
 package com.tencent.mm.modelsimple;
 
 import android.content.Context;
-import android.os.Build.VERSION;
-import android.provider.Settings.System;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.h.a.sm;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.compatible.util.h;
+import com.tencent.mm.g.a.ak;
+import com.tencent.mm.g.a.ak.b;
+import com.tencent.mm.g.a.jn;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.c.aje;
-import com.tencent.mm.protocal.c.ajf;
-import com.tencent.mm.protocal.c.axx;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.ccb;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.ajs;
+import com.tencent.mm.protocal.protobuf.ajt;
+import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class m
-  extends com.tencent.mm.ah.m
+  extends com.tencent.mm.ai.m
   implements k
 {
-  private String account;
-  private b dmK;
-  private f dmL;
+  private static Map<String, Long> fOU;
+  private static Map<String, String> fOV;
+  private f callback;
+  private boolean cwH;
+  private c<com.tencent.mm.g.a.a> fOW;
+  private final com.tencent.mm.ai.b fnd;
   
-  public m(String paramString)
+  static
   {
-    this.account = paramString;
-    b.a locala = new b.a();
-    locala.ecH = new aje();
-    locala.ecI = new ajf();
-    locala.uri = "/cgi-bin/micromsg-bin/getprofile";
-    locala.ecG = 302;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((aje)this.dmK.ecE.ecN).hPY = paramString;
+    AppMethodBeat.i(16588);
+    fOU = new HashMap();
+    AppMethodBeat.o(16588);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public m(int paramInt, boolean paramBoolean)
   {
-    if (bk.bl(this.account))
+    AppMethodBeat.i(16582);
+    this.cwH = false;
+    b.a locala = new b.a();
+    locala.fsX = new ajs();
+    locala.fsY = new ajt();
+    locala.uri = "/cgi-bin/micromsg-bin/getdisasterinfo";
+    locala.funcId = 775;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.fnd = locala.ado();
+    this.fnd.option = 1;
+    ((ajs)this.fnd.fsV.fta).cwG = paramInt;
+    this.cwH = paramBoolean;
+    ajw();
+    ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz NetSceneGetDisasterInfo noticeid[%d], manualauthSucc[%b], stack[%s]", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(this.cwH), bo.dtY() });
+    AppMethodBeat.o(16582);
+  }
+  
+  private void Q(final String paramString, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(16584);
+    aw.RO().ac(new Runnable()
     {
-      y.e("MicroMsg.NetSceneGetProfile", "null or empty username");
+      public final void run()
+      {
+        AppMethodBeat.i(16581);
+        int i;
+        Object localObject1;
+        String str;
+        int j;
+        Object localObject2;
+        if (paramString == null)
+        {
+          i = -1;
+          ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz NetSceneGetDisasterInfo broadcastEvent content len[%d], cache[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean) });
+          localObject1 = new ak();
+          ((ak)localObject1).cnA.type = 5;
+          ((ak)localObject1).cnA.cnC = paramString;
+          com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject1);
+          str = ((ak)localObject1).cnB.cnG;
+          i = ((ak)localObject1).cnB.position;
+          j = ((ak)localObject1).cnB.cnE;
+          ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz NetSceneGetDisasterInfo onGYNetEnd event.result.Actionp[%d] noticeId[%s], position[%d], manualauthSucc[%b], noticeidTickMap[%s]", new Object[] { Integer.valueOf(j), str, Integer.valueOf(i), Boolean.valueOf(m.a(m.this)), m.ajx() });
+          if ((i != 1) || (j != 6)) {
+            break label364;
+          }
+          if (paramBoolean) {
+            m.aW(str, paramString);
+          }
+          if (!m.a(m.this)) {
+            break label311;
+          }
+          localObject2 = ((ak)localObject1).cnB.desc;
+          localObject1 = ((ak)localObject1).cnB.url;
+          ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdize NetSceneGetDisasterInfo onGYNetEnd manualauthSucc showtony after init[%b]", new Object[] { Boolean.valueOf(ah.dsM()) });
+          if (m.b(m.this) == null) {
+            m.a(m.this, new m.1.1(this, (String)localObject2, (String)localObject1));
+          }
+          com.tencent.mm.sdk.b.a.ymk.c(m.b(m.this));
+        }
+        for (;;)
+        {
+          m.ajx().put(str, Long.valueOf(bo.yB()));
+          AppMethodBeat.o(16581);
+          return;
+          i = paramString.length();
+          break;
+          label311:
+          localObject2 = new jn();
+          ((jn)localObject2).czd.content = ((ak)localObject1).cnB.desc;
+          ((jn)localObject2).czd.url = ((ak)localObject1).cnB.url;
+          com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2);
+        }
+        label364:
+        if (j == 2)
+        {
+          if (paramBoolean) {
+            m.aW(str, paramString);
+          }
+          m.ajx().put(str, Long.valueOf(bo.yB()));
+        }
+        AppMethodBeat.o(16581);
+      }
+    });
+    AppMethodBeat.o(16584);
+  }
+  
+  private void ajw()
+  {
+    for (;;)
+    {
+      int i;
+      Object localObject4;
+      try
+      {
+        AppMethodBeat.i(16585);
+        if (fOV != null) {
+          break label374;
+        }
+        ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz loadNoticeContentMap noticeContentMap");
+        fOV = new HashMap();
+        SharedPreferences localSharedPreferences = ah.getContext().getSharedPreferences("disaster_pref", h.Mp());
+        Object localObject1 = localSharedPreferences.getString("disaster_new_noticeid_list_key", "");
+        if (bo.isNullOrNil((String)localObject1)) {
+          break label356;
+        }
+        String[] arrayOfString1 = ((String)localObject1).split(";");
+        if ((arrayOfString1 == null) || (arrayOfString1.length <= 0)) {
+          break label356;
+        }
+        String str1 = "";
+        SharedPreferences.Editor localEditor = localSharedPreferences.edit();
+        int j = arrayOfString1.length;
+        i = 0;
+        if (i < j)
+        {
+          String[] arrayOfString2 = arrayOfString1[i].split(",");
+          localObject1 = str1;
+          localObject4 = str1;
+          try
+          {
+            if (bo.getLong(arrayOfString2[0], 0L) <= 0L) {
+              break label383;
+            }
+            localObject1 = str1;
+            if (bo.gz(bo.getLong(arrayOfString2[1], 0L)) < 86400L)
+            {
+              localObject1 = str1;
+              String str2 = localSharedPreferences.getString(arrayOfString2[0], "");
+              localObject1 = str1;
+              localObject4 = str1;
+              if (!bo.isNullOrNil(str2))
+              {
+                localObject1 = str1;
+                localObject4 = str1 + arrayOfString2[0] + "," + arrayOfString2[1] + ";";
+                localObject1 = localObject4;
+                fOV.put(arrayOfString2[0], str2);
+              }
+            }
+            else
+            {
+              localObject1 = str1;
+              localEditor.remove(arrayOfString2[0]).commit();
+              localObject4 = str1;
+            }
+          }
+          catch (Exception localException)
+          {
+            ab.e("MicroMsg.NetSceneGetDisasterInfo", "summerdiz loadNoticeContentMap noticeContentMap error:%s", new Object[] { localException.getMessage() });
+            localObject4 = localObject1;
+          }
+        }
+        localEditor.putString("disaster_new_noticeid_list_key", localException).commit();
+      }
+      finally {}
+      ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz loadNoticeContentMap noticeContentMap newNoticeIdList[%s], noticeidTickMap[%s]", new Object[] { localException, fOU });
+      label356:
+      ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz loadNoticeContentMap noticeContentMap done noticeContentMap[%s]", new Object[] { fOV });
+      label374:
+      AppMethodBeat.o(16585);
+      return;
+      label383:
+      i += 1;
+      Object localObject3 = localObject4;
+    }
+  }
+  
+  public final int doScene(e parame, f paramf)
+  {
+    AppMethodBeat.i(16583);
+    ajs localajs = (ajs)this.fnd.fsV.fta;
+    long l = bo.a((Long)fOU.get(localajs.cwG), 0L);
+    ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz NetSceneGetDisasterInfo doScene noticeid[%d], tick[%d], noticeidTickMap[%s]", new Object[] { Integer.valueOf(localajs.cwG), Long.valueOf(l), fOU });
+    if ((l != 0L) && (bo.av(l) < 1800000L))
+    {
+      ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz NetSceneGetDisasterInfo doScene disasterTick within half an hour, drop it [%s]", new Object[] { Integer.valueOf(localajs.cwG) });
+      AppMethodBeat.o(16583);
       return -1;
     }
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneGetProfile", "get profile ret: errType=" + paramInt2 + " errCode=" + paramInt3 + " errMsg=" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    String str = bo.bf((String)fOV.get(localajs.cwG), "");
+    if (!bo.isNullOrNil(str))
     {
-      paramq = (ajf)this.dmK.ecF.ecN;
-      paramArrayOfByte = new sm();
-      paramArrayOfByte.ccb.ccc = paramq.tfQ.tRt;
-      a.udP.m(paramArrayOfByte);
-      if ((com.tencent.mm.model.q.Gj().equals(paramq.tfP.sQs.toString())) && (!bk.bl(paramq.tfQ.sLE))) {
-        g.DP().Dz().c(ac.a.uoA, paramq.tfQ.sLE);
-      }
-      y.d("MicroMsg.NetSceneGetProfile", "summersafecdn resp.UserInfo.PluginSwitch[%d], GrayscaleFlag[%d]", new Object[] { Integer.valueOf(paramq.tfP.tul), Integer.valueOf(paramq.tfQ.tRn) });
-      g.DP().Dz().o(64, Integer.valueOf(paramq.tfQ.stS));
-      g.DP().Dz().o(144385, Integer.valueOf(paramq.tfQ.tRn));
-      g.DP().Dz().o(40, Integer.valueOf(paramq.tfP.tul));
-      g.DP().Dz().o(339975, Integer.valueOf(paramq.tfQ.tRv));
-      y.i("MicroMsg.NetSceneGetProfile", "hy: getprofile pay wallet type: %d", new Object[] { Integer.valueOf(paramq.tfQ.tRv) });
-      g.DP().Dz().c(ac.a.usE, Integer.valueOf(paramq.tfQ.sZT));
-      y.i("MicroMsg.NetSceneGetProfile", "hy: getprofile pay wallet type: %d %d", new Object[] { Integer.valueOf(paramq.tfQ.tRv), Integer.valueOf(paramq.tfQ.sZT) });
-      g.DP().Dz().o(208903, paramq.tfQ.sAZ);
-      g.DP().Dz().o(274433, paramq.tfQ.ttw);
-      g.DP().Dz().o(274434, paramq.tfQ.ttv);
-      g.DP().Dz().o(274436, paramq.tfQ.tRo);
-      g.DP().Dz().c(ac.a.uqI, bk.aM(paramq.tfQ.cCO, ""));
-      g.DP().Dz().c(ac.a.uuM, paramq.tfQ.tRx);
-      y.d("MicroMsg.NetSceneGetProfile", "weidianInfo:%s", new Object[] { paramq.tfQ.cCO });
-      at.dVC.Y("last_login_use_voice", paramq.tfP.tul);
-      if (Build.VERSION.SDK_INT < 23) {
-        Settings.System.putString(ae.getContext().getContentResolver(), "89884a87498ef44f", paramq.tfQ.tRu);
-      }
+      ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz NetSceneGetDisasterInfo doScene found cache[%d, %s]", new Object[] { Integer.valueOf(localajs.cwG), str });
+      Q(str, false);
+      AppMethodBeat.o(16583);
+      return -1;
     }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.callback = paramf;
+    int i = dispatch(parame, this.fnd, this);
+    AppMethodBeat.o(16583);
+    return i;
   }
   
   public final int getType()
   {
-    return 302;
+    return 775;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(16586);
+    ab.i("MicroMsg.NetSceneGetDisasterInfo", "summerdiz NetSceneGetDisasterInfo onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      Q(((ajt)this.fnd.fsW.fta).content, true);
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(16586);
   }
 }
 

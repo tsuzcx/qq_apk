@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wenote.model.nativenote.b.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.spans.t;
@@ -16,30 +17,32 @@ final class c$10
   public final void onClick(View paramView)
   {
     boolean bool2 = true;
-    h.nFQ.f(14547, new Object[] { Integer.valueOf(11) });
-    this.rMB.rMq.setPressed(false);
-    this.rMB.rMr.setPressed(false);
-    if ((this.rMB.rMy) || (this.rMB.rMx)) {
-      this.rMB.rMz = false;
+    AppMethodBeat.i(27124);
+    h.qsU.e(14547, new Object[] { Integer.valueOf(11) });
+    this.vDf.vCU.setPressed(false);
+    this.vDf.vCV.setPressed(false);
+    if ((this.vDf.vDc) || (this.vDf.vDb)) {
+      this.vDf.vDd = false;
     }
-    Object localObject = u.rKZ;
-    if (!this.rMB.rMz)
+    Object localObject = u.vBD;
+    if (!this.vDf.vDd)
     {
       bool1 = true;
       c.c((t)localObject, Boolean.valueOf(bool1));
-      localObject = this.rMB;
-      if (this.rMB.rMz) {
-        break label167;
+      localObject = this.vDf;
+      if (this.vDf.vDd) {
+        break label179;
       }
     }
-    label167:
+    label179:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      ((c)localObject).rMz = bool1;
-      c.a(this.rMB, paramView, this.rMB.rMz);
-      c.b(this.rMA);
-      this.rMB.rMy = false;
-      this.rMB.rMx = false;
+      ((c)localObject).vDd = bool1;
+      c.a(this.vDf, paramView, this.vDf.vDd);
+      c.b(this.vDe);
+      this.vDf.vDc = false;
+      this.vDf.vDb = false;
+      AppMethodBeat.o(27124);
       return;
       bool1 = false;
       break;
@@ -48,7 +51,7 @@ final class c$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.c.10
  * JD-Core Version:    0.7.0.1
  */

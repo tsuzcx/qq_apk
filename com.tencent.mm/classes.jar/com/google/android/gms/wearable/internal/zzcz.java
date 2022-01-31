@@ -1,132 +1,63 @@
 package com.google.android.gms.wearable.internal;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.common.zzg;
-import com.google.android.gms.internal.zzadf;
-import com.google.android.gms.internal.zzadg;
-import java.io.UnsupportedEncodingException;
-import java.util.Arrays;
+import com.google.android.gms.wearable.DataItemAsset;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzcz
+public final class zzcz
+  implements DataItemAsset
 {
-  private static zzcz zzbVt;
-  static final byte[] zzbVu = zzdc("");
-  static final byte[] zzbVv = zzdc("");
-  private final Context mContext;
+  private final String zzdm;
+  private final String zzdn;
   
-  zzcz(Context paramContext)
+  public zzcz(DataItemAsset paramDataItemAsset)
   {
-    this.mContext = paramContext.getApplicationContext();
+    AppMethodBeat.i(71181);
+    this.zzdm = paramDataItemAsset.getId();
+    this.zzdn = paramDataItemAsset.getDataItemKey();
+    AppMethodBeat.o(71181);
   }
   
-  private boolean zza(PackageInfo paramPackageInfo, byte[]... paramVarArgs)
+  public final String getDataItemKey()
   {
-    if (paramPackageInfo.signatures == null) {}
+    return this.zzdn;
+  }
+  
+  public final String getId()
+  {
+    return this.zzdm;
+  }
+  
+  public final boolean isDataValid()
+  {
+    return true;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(71182);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DataItemAssetEntity[");
+    ((StringBuilder)localObject).append("@");
+    ((StringBuilder)localObject).append(Integer.toHexString(hashCode()));
+    if (this.zzdm == null) {
+      ((StringBuilder)localObject).append(",noid");
+    }
     for (;;)
     {
-      return false;
-      if (paramPackageInfo.signatures.length == 1)
-      {
-        paramPackageInfo = paramPackageInfo.signatures[0].toByteArray();
-        int i = 0;
-        while (i < paramVarArgs.length)
-        {
-          if (Arrays.equals(paramVarArgs[i], paramPackageInfo)) {
-            return true;
-          }
-          i += 1;
-        }
-      }
+      ((StringBuilder)localObject).append(", key=");
+      ((StringBuilder)localObject).append(this.zzdn);
+      ((StringBuilder)localObject).append("]");
+      localObject = ((StringBuilder)localObject).toString();
+      AppMethodBeat.o(71182);
+      return localObject;
+      ((StringBuilder)localObject).append(",");
+      ((StringBuilder)localObject).append(this.zzdm);
     }
-  }
-  
-  public static zzcz zzck(Context paramContext)
-  {
-    zzac.zzw(paramContext);
-    try
-    {
-      if (zzbVt == null) {
-        zzbVt = new zzcz(paramContext);
-      }
-      return zzbVt;
-    }
-    finally {}
-  }
-  
-  private static byte[] zzdc(String paramString)
-  {
-    try
-    {
-      paramString = paramString.getBytes("ISO-8859-1");
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      throw new AssertionError(paramString);
-    }
-  }
-  
-  private PackageInfo zzir(String paramString)
-  {
-    try
-    {
-      PackageInfo localPackageInfo = zzadg.zzbi(this.mContext).getPackageInfo(paramString, 64);
-      return localPackageInfo;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      paramString = String.valueOf(paramString);
-      if (paramString.length() == 0) {
-        break label38;
-      }
-    }
-    "No package ".concat(paramString);
-    for (;;)
-    {
-      return null;
-      label38:
-      new String("No package ");
-    }
-  }
-  
-  boolean zzc(PackageInfo paramPackageInfo, boolean paramBoolean)
-  {
-    if (paramPackageInfo.signatures.length != 1) {
-      return false;
-    }
-    paramPackageInfo.signatures[0].toByteArray();
-    if (paramBoolean) {
-      return zza(paramPackageInfo, new byte[][] { zzbVu, zzbVv });
-    }
-    return zza(paramPackageInfo, new byte[][] { zzbVu });
-  }
-  
-  public boolean zziq(String paramString)
-  {
-    boolean bool1 = false;
-    paramString = zzir(paramString);
-    if (paramString == null) {}
-    boolean bool2;
-    do
-    {
-      return bool1;
-      if (zzg.zzaJ(this.mContext)) {
-        return zzc(paramString, true);
-      }
-      bool2 = zzc(paramString, false);
-      bool1 = bool2;
-    } while (bool2);
-    zzc(paramString, true);
-    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzcz
  * JD-Core Version:    0.7.0.1
  */

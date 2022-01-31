@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class EmojiBaseActivity$b
-  extends ah
+  extends ak
 {
   EmojiBaseActivity$b(EmojiBaseActivity paramEmojiBaseActivity, Looper paramLooper)
   {
@@ -14,8 +15,10 @@ final class EmojiBaseActivity$b
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(53298);
     super.handleMessage(paramMessage);
-    this.jcu.i(paramMessage);
+    this.llg.n(paramMessage);
+    AppMethodBeat.o(53298);
   }
 }
 

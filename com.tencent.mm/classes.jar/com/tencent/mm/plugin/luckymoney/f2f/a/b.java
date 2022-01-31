@@ -1,70 +1,76 @@
 package com.tencent.mm.plugin.luckymoney.f2f.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.protocal.c.aw;
-import com.tencent.mm.protocal.c.wz;
-import com.tencent.mm.protocal.c.xa;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.abe;
+import com.tencent.mm.protocal.protobuf.abf;
+import com.tencent.mm.protocal.protobuf.aw;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
-  extends m
+  extends com.tencent.mm.ai.m
   implements k
 {
-  private f dmL;
-  private com.tencent.mm.ah.b eWr;
-  public int iHq;
-  public String iHr;
-  private wz lNi;
-  private xa lNj;
+  private f callback;
+  public int cnK;
+  private com.tencent.mm.ai.b goo;
+  public String kNv;
+  private abe okB;
+  private abf okC;
   
   public b(String paramString)
   {
+    AppMethodBeat.i(42148);
     Object localObject = new b.a();
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    ((b.a)localObject).ecH = new wz();
-    ((b.a)localObject).ecI = new xa();
-    ((b.a)localObject).ecG = 1971;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    ((b.a)localObject).fsX = new abe();
+    ((b.a)localObject).fsY = new abf();
+    ((b.a)localObject).funcId = getType();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/ftfhb/ffwxhbinvalidateshareurl";
-    this.eWr = ((b.a)localObject).Kt();
-    this.lNi = ((wz)this.eWr.ecE.ecN);
-    localObject = i.bVj();
+    this.goo = ((b.a)localObject).ado();
+    this.okB = ((abe)this.goo.fsV.fta);
+    localObject = com.tencent.mm.plugin.wallet_core.model.m.cTC();
     if (localObject != null)
     {
-      this.lNi.latitude = ((aw)localObject).latitude;
-      this.lNi.longitude = ((aw)localObject).longitude;
+      this.okB.latitude = ((aw)localObject).latitude;
+      this.okB.longitude = ((aw)localObject).longitude;
     }
-    this.lNi.sTJ = paramString;
+    this.okB.wRG = paramString;
+    AppMethodBeat.o(42148);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.eWr, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i(" NetSceneF2FLuckyMoneyInvalid", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.lNj = ((xa)((com.tencent.mm.ah.b)paramq).ecF.ecN);
-    this.iHq = this.lNj.iHq;
-    this.iHr = this.lNj.iHr;
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, this.lNj.iHq, this.lNj.iHr, this);
-    }
+    AppMethodBeat.i(42149);
+    this.callback = paramf;
+    int i = dispatch(parame, this.goo, this);
+    AppMethodBeat.o(42149);
+    return i;
   }
   
   public final int getType()
   {
     return 1971;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(42150);
+    ab.i(" NetSceneF2FLuckyMoneyInvalid", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.okC = ((abf)((com.tencent.mm.ai.b)paramq).fsW.fta);
+    this.cnK = this.okC.cnK;
+    this.kNv = this.okC.kNv;
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, this.okC.cnK, this.okC.kNv, this);
+    }
+    AppMethodBeat.o(42150);
   }
 }
 

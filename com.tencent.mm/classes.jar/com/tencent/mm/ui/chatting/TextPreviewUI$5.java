@@ -2,8 +2,7 @@ package com.tencent.mm.ui.chatting;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TextPreviewUI$5
   implements View.OnClickListener
@@ -12,9 +11,11 @@ final class TextPreviewUI$5
   
   public final void onClick(View paramView)
   {
-    if (TextPreviewUI.d(this.vnn) != null) {
-      TextPreviewUI.c(this.vnn.mController.uMN, TextPreviewUI.k(this.vnn).toString());
+    AppMethodBeat.i(31048);
+    if (TextPreviewUI.b(this.zCJ) != null) {
+      TextPreviewUI.e(this.zCJ.getContext(), TextPreviewUI.k(this.zCJ).toString());
     }
+    AppMethodBeat.o(31048);
   }
 }
 

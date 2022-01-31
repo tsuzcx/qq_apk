@@ -1,36 +1,66 @@
 package com.tencent.mm.plugin.fts.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.b.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 public final class g
 {
-  public static HashMap<String, String> eSa = new HashMap();
-  public static final g.a kvD = new g.a(19968, 40869);
-  public static final g.a kvE = new g.a(40870, 40907);
-  public static final g.a kvF = new g.a(13312, 19893);
-  public static final g.a kvG = new g.a(131072, 173782);
-  public static final g.a kvH = new g.a(173824, 177972);
-  public static final g.a kvI = new g.a(177984, 178205);
-  public static final g.a kvJ = new g.a(12032, 12245);
-  public static final g.a kvK = new g.a(63744, 64217);
-  public static final g.a kvL = new g.a(194560, 195101);
-  public static final g.a kvM = new g.a(59413, 59503);
-  public static final g.a kvN = new g.a(58368, 58856);
-  public static final g.a kvO = new g.a(58880, 59087);
-  public static final g.a kvP = new g.a(12736, 12771);
-  public static final g.a kvQ = new g.a(12272, 12283);
-  public static final g.a kvR = new g.a(12549, 12576);
-  public static final g.a kvS = new g.a(12704, 12730);
-  public static final g.a kvT = new g.a(65, 90);
-  public static final g.a kvU = new g.a(97, 122);
-  public static final g.a kvV = new g.a(48, 57);
-  public static b kvW = new b();
-  public static HashMap<String, String[]> kvX = new HashMap();
+  public static HashMap<String, String> gjV;
+  public static final g.a mRA;
+  public static final g.a mRB;
+  public static final g.a mRC;
+  public static final g.a mRD;
+  public static final g.a mRE;
+  public static final g.a mRF;
+  public static final g.a mRG;
+  public static final g.a mRH;
+  public static final g.a mRI;
+  public static final g.a mRJ;
+  public static b mRK;
+  public static HashMap<String, String[]> mRL;
+  public static final g.a mRr;
+  public static final g.a mRs;
+  public static final g.a mRt;
+  public static final g.a mRu;
+  public static final g.a mRv;
+  public static final g.a mRw;
+  public static final g.a mRx;
+  public static final g.a mRy;
+  public static final g.a mRz;
   
-  public static final String DV(String paramString)
+  static
   {
+    AppMethodBeat.i(114234);
+    mRr = new g.a(19968, 40869);
+    mRs = new g.a(40870, 40907);
+    mRt = new g.a(13312, 19893);
+    mRu = new g.a(131072, 173782);
+    mRv = new g.a(173824, 177972);
+    mRw = new g.a(177984, 178205);
+    mRx = new g.a(12032, 12245);
+    mRy = new g.a(63744, 64217);
+    mRz = new g.a(194560, 195101);
+    mRA = new g.a(59413, 59503);
+    mRB = new g.a(58368, 58856);
+    mRC = new g.a(58880, 59087);
+    mRD = new g.a(12736, 12771);
+    mRE = new g.a(12272, 12283);
+    mRF = new g.a(12549, 12576);
+    mRG = new g.a(12704, 12730);
+    mRH = new g.a(65, 90);
+    mRI = new g.a(97, 122);
+    mRJ = new g.a(48, 57);
+    mRK = new b();
+    gjV = new HashMap();
+    mRL = new HashMap();
+    AppMethodBeat.o(114234);
+  }
+  
+  public static final String Pf(String paramString)
+  {
+    AppMethodBeat.i(114233);
     StringBuffer localStringBuffer = new StringBuffer();
     paramString = paramString.toCharArray();
     int j = paramString.length;
@@ -38,10 +68,10 @@ public final class g
     if (i < j)
     {
       char c = paramString[i];
-      if (g(c))
+      if (w(c))
       {
-        String str = (String)eSa.get(String.valueOf(c));
-        if (!bk.bl(str)) {
+        String str = (String)gjV.get(String.valueOf(c));
+        if (!bo.isNullOrNil(str)) {
           localStringBuffer.append(str);
         }
       }
@@ -52,22 +82,41 @@ public final class g
         localStringBuffer.append(c);
       }
     }
-    return localStringBuffer.toString();
+    paramString = localStringBuffer.toString();
+    AppMethodBeat.o(114233);
+    return paramString;
   }
   
-  public static boolean g(char paramChar)
+  public static boolean w(char paramChar)
   {
-    return (kvD.j(paramChar)) || (kvE.j(paramChar)) || (kvF.j(paramChar)) || (kvG.j(paramChar)) || (kvH.j(paramChar)) || (kvI.j(paramChar));
+    AppMethodBeat.i(114230);
+    if ((mRr.ws(paramChar)) || (mRs.ws(paramChar)) || (mRt.ws(paramChar)) || (mRu.ws(paramChar)) || (mRv.ws(paramChar)) || (mRw.ws(paramChar)))
+    {
+      AppMethodBeat.o(114230);
+      return true;
+    }
+    AppMethodBeat.o(114230);
+    return false;
   }
   
-  public static boolean h(char paramChar)
+  public static boolean x(char paramChar)
   {
-    return (kvT.j(paramChar)) || (kvU.j(paramChar));
+    AppMethodBeat.i(114231);
+    if ((mRH.ws(paramChar)) || (mRI.ws(paramChar)))
+    {
+      AppMethodBeat.o(114231);
+      return true;
+    }
+    AppMethodBeat.o(114231);
+    return false;
   }
   
-  public static boolean i(char paramChar)
+  public static boolean y(char paramChar)
   {
-    return kvV.j(paramChar);
+    AppMethodBeat.i(114232);
+    boolean bool = mRJ.ws(paramChar);
+    AppMethodBeat.o(114232);
+    return bool;
   }
 }
 

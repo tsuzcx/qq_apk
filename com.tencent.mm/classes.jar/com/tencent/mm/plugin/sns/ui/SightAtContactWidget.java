@@ -3,8 +3,6 @@ package com.tencent.mm.plugin.sns.ui;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
 
 public class SightAtContactWidget
   extends AtContactWidget
@@ -22,17 +20,17 @@ public class SightAtContactWidget
   
   protected int getLayoutResource()
   {
-    return i.g.sight_at_layout;
+    return 2130970740;
   }
   
   protected int getWithDrawableId()
   {
-    return i.i.sight_icon_mention;
+    return 2131231992;
   }
   
   protected int getWithEmptyDrawableId()
   {
-    return i.i.sight_icon_mention;
+    return 2131231992;
   }
 }
 

@@ -6,8 +6,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
 import com.tencent.mm.plugin.shake.e.b;
@@ -19,11 +18,11 @@ public class TVThumbPreference
   extends Preference
   implements x.a
 {
-  f hcp;
-  private ImageView odK;
-  private ImageView odL;
-  private ImageView odM;
-  List<String> odN = null;
+  f iLA;
+  private ImageView qRR;
+  private ImageView qRS;
+  private ImageView qRT;
+  List<String> qRU;
   
   public TVThumbPreference(Context paramContext)
   {
@@ -38,71 +37,95 @@ public class TVThumbPreference
   public TVThumbPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.tv_thumb_preference);
+    AppMethodBeat.i(24939);
+    this.qRU = null;
+    setLayoutResource(2130971047);
     setWidgetLayoutResource(0);
     x.a(this);
+    AppMethodBeat.o(24939);
   }
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
-    if ((paramString == null) || (paramBitmap == null) || (paramBitmap.isRecycled())) {}
-    do
+    AppMethodBeat.i(24942);
+    if ((paramString == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
     {
+      AppMethodBeat.o(24942);
       return;
-      if ((this.odK != null) && (this.odK.getTag() != null) && (paramString.equals((String)this.odK.getTag())))
-      {
-        this.odK.post(new TVThumbPreference.1(this, paramBitmap));
-        return;
-      }
-      if ((this.odL != null) && (this.odL.getTag() != null) && (paramString.equals((String)this.odL.getTag())))
-      {
-        this.odL.post(new TVThumbPreference.2(this, paramBitmap));
-        return;
-      }
-    } while ((this.odM == null) || (this.odM.getTag() == null) || (!paramString.equals((String)this.odM.getTag())));
-    this.odM.post(new TVThumbPreference.3(this, paramBitmap));
+    }
+    if ((this.qRR != null) && (this.qRR.getTag() != null) && (paramString.equals((String)this.qRR.getTag())))
+    {
+      this.qRR.post(new TVThumbPreference.1(this, paramBitmap));
+      AppMethodBeat.o(24942);
+      return;
+    }
+    if ((this.qRS != null) && (this.qRS.getTag() != null) && (paramString.equals((String)this.qRS.getTag())))
+    {
+      this.qRS.post(new TVThumbPreference.2(this, paramBitmap));
+      AppMethodBeat.o(24942);
+      return;
+    }
+    if ((this.qRT != null) && (this.qRT.getTag() != null) && (paramString.equals((String)this.qRT.getTag()))) {
+      this.qRT.post(new TVThumbPreference.3(this, paramBitmap));
+    }
+    AppMethodBeat.o(24942);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(24941);
     super.onBindView(paramView);
-    this.odK = ((ImageView)paramView.findViewById(R.h.thumb_1));
-    this.odL = ((ImageView)paramView.findViewById(R.h.thumb_2));
-    this.odM = ((ImageView)paramView.findViewById(R.h.thumb_3));
-    if ((this.odN == null) || (this.odN.size() <= 0)) {}
-    do
+    this.qRR = ((ImageView)paramView.findViewById(2131828652));
+    this.qRS = ((ImageView)paramView.findViewById(2131828653));
+    this.qRT = ((ImageView)paramView.findViewById(2131828654));
+    if (this.qRU != null)
     {
-      do
+      if (this.qRU.size() <= 0)
       {
+        AppMethodBeat.o(24941);
         return;
-        paramView = new b((String)this.odN.get(0));
-        this.odK.setTag(paramView.UQ());
-        paramView = x.a(paramView);
-        if ((paramView != null) && (!paramView.isRecycled())) {
-          this.odK.setImageBitmap(paramView);
-        }
-        this.odK.setVisibility(0);
-      } while (1 >= this.odN.size());
-      paramView = new b((String)this.odN.get(1));
-      this.odL.setTag(paramView.UQ());
+      }
+      paramView = new b((String)this.qRU.get(0));
+      this.qRR.setTag(paramView.aop());
       paramView = x.a(paramView);
       if ((paramView != null) && (!paramView.isRecycled())) {
-        this.odL.setImageBitmap(paramView);
+        this.qRR.setImageBitmap(paramView);
       }
-      this.odL.setVisibility(0);
-    } while (2 >= this.odN.size());
-    paramView = new b((String)this.odN.get(2));
-    this.odM.setTag(paramView.UQ());
-    paramView = x.a(paramView);
-    if ((paramView != null) && (!paramView.isRecycled())) {
-      this.odM.setImageBitmap(paramView);
+      this.qRR.setVisibility(0);
+      if (1 >= this.qRU.size())
+      {
+        AppMethodBeat.o(24941);
+        return;
+      }
+      paramView = new b((String)this.qRU.get(1));
+      this.qRS.setTag(paramView.aop());
+      paramView = x.a(paramView);
+      if ((paramView != null) && (!paramView.isRecycled())) {
+        this.qRS.setImageBitmap(paramView);
+      }
+      this.qRS.setVisibility(0);
+      if (2 >= this.qRU.size())
+      {
+        AppMethodBeat.o(24941);
+        return;
+      }
+      paramView = new b((String)this.qRU.get(2));
+      this.qRT.setTag(paramView.aop());
+      paramView = x.a(paramView);
+      if ((paramView != null) && (!paramView.isRecycled())) {
+        this.qRT.setImageBitmap(paramView);
+      }
+      this.qRT.setVisibility(0);
     }
-    this.odM.setVisibility(0);
+    AppMethodBeat.o(24941);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
-    return super.onCreateView(paramViewGroup);
+    AppMethodBeat.i(24940);
+    paramViewGroup = super.onCreateView(paramViewGroup);
+    AppMethodBeat.o(24940);
+    return paramViewGroup;
   }
 }
 

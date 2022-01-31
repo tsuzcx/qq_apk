@@ -7,16 +7,16 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.IBinder;
 import com.tencent.mm.plugin.notification.d.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public abstract class FailSendMsgNotification$FailSendMsgNotificationService
   extends Service
 {
-  protected com.tencent.mm.sdk.b.c mJB = new FailSendMsgNotification.FailSendMsgNotificationService.1(this);
-  protected FailSendMsgNotification mJC = null;
+  protected com.tencent.mm.sdk.b.c pjQ = new FailSendMsgNotification.FailSendMsgNotificationService.1(this);
+  protected FailSendMsgNotification pjR = null;
   
-  protected abstract int bpO();
+  protected abstract int bYu();
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -26,23 +26,23 @@ public abstract class FailSendMsgNotification$FailSendMsgNotificationService
   public void onCreate()
   {
     super.onCreate();
-    y.d("MicroMsg.FailSendMsgNotification", "onCreate FailSendMsgNotificationService");
-    com.tencent.mm.sdk.b.a.udP.c(this.mJB);
+    ab.d("MicroMsg.FailSendMsgNotification", "onCreate FailSendMsgNotificationService");
+    com.tencent.mm.sdk.b.a.ymk.c(this.pjQ);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    y.d("MicroMsg.FailSendMsgNotification", "onDestroy FailSendMsgNotificationService");
-    com.tencent.mm.sdk.b.a.udP.d(this.mJB);
+    ab.d("MicroMsg.FailSendMsgNotification", "onDestroy FailSendMsgNotificationService");
+    com.tencent.mm.sdk.b.a.ymk.d(this.pjQ);
   }
   
   @TargetApi(16)
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    y.d("MicroMsg.FailSendMsgNotification", "onStartCommand");
+    ab.d("MicroMsg.FailSendMsgNotification", "onStartCommand");
     if ((paramIntent == null) || (paramIntent.getExtras() == null)) {
-      y.d("MicroMsg.FailSendMsgNotification", "handle action button, intent is null");
+      ab.d("MicroMsg.FailSendMsgNotification", "handle action button, intent is null");
     }
     String str;
     label362:
@@ -56,54 +56,54 @@ public abstract class FailSendMsgNotification$FailSendMsgNotificationService
           {
             return 2;
             str = paramIntent.getAction();
-            if (bk.bl(str))
+            if (bo.isNullOrNil(str))
             {
-              y.d("MicroMsg.FailSendMsgNotification", "handle action button, action is null");
+              ab.d("MicroMsg.FailSendMsgNotification", "handle action button, action is null");
               return 2;
             }
             paramInt1 = paramIntent.getExtras().getInt("notification_type", -1);
-            y.d("MicroMsg.FailSendMsgNotification", "handle action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
-            if (f.vx(paramInt1) == null)
+            ab.d("MicroMsg.FailSendMsgNotification", "handle action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
+            if (f.AV(paramInt1) == null)
             {
-              y.d("MicroMsg.FailSendMsgNotification", "handle action button, notification not exist");
+              ab.d("MicroMsg.FailSendMsgNotification", "handle action button, notification not exist");
               return 2;
             }
-            y.d("MicroMsg.FailSendMsgNotification", "action:%s", new Object[] { str });
-            this.mJC = f.vx(paramInt1);
+            ab.d("MicroMsg.FailSendMsgNotification", "action:%s", new Object[] { str });
+            this.pjR = f.AV(paramInt1);
             if (!str.startsWith("com.tencent.failnotification.omit")) {
               break;
             }
-          } while (this.mJC.mJp == null);
-          y.d("MicroMsg.FailSendMsgNotification", "handle omit action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
-          this.mJC.mJp.bpz();
+          } while (this.pjR.pjE == null);
+          ab.d("MicroMsg.FailSendMsgNotification", "handle omit action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
+          this.pjR.pjE.bYf();
           return 2;
           if (!str.startsWith("com.tencent.failnotificaiton.resend")) {
             break;
           }
-        } while (this.mJC.mJp == null);
+        } while (this.pjR.pjE == null);
         boolean bool1;
-        if (this.mJC.yb == null)
+        if (this.pjR.yC == null)
         {
           bool1 = true;
-          if (this.mJC.mJm != null) {
+          if (this.pjR.pjB != null) {
             break label362;
           }
         }
         for (boolean bool2 = true;; bool2 = false)
         {
-          y.d("MicroMsg.FailSendMsgNotification", "handle resend action button, type:%d, notification==null:%b, notificationBuilder==null:%b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          if (this.mJC != null) {
-            this.mJC.bqV = true;
+          ab.d("MicroMsg.FailSendMsgNotification", "handle resend action button, type:%d, notification==null:%b, notificationBuilder==null:%b", new Object[] { Integer.valueOf(paramInt1), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          if (this.pjR != null) {
+            this.pjR.bNX = true;
           }
-          if ((this.mJC.yb != null) && (Build.VERSION.SDK_INT >= 16)) {
-            this.mJC.yb.priority = 0;
+          if ((this.pjR.yC != null) && (Build.VERSION.SDK_INT >= 16)) {
+            this.pjR.yC.priority = 0;
           }
-          if (this.mJC.yb == null) {
-            this.mJC.show();
+          if (this.pjR.yC == null) {
+            this.pjR.show();
           }
-          startForeground(paramInt1, this.mJC.yb);
-          this.mJC.mJp.bpy();
-          y.d("MicroMsg.FailSendMsgNotification", "finish handle resend action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
+          startForeground(paramInt1, this.pjR.yC);
+          this.pjR.pjE.bYe();
+          ab.d("MicroMsg.FailSendMsgNotification", "finish handle resend action button, type:%d", new Object[] { Integer.valueOf(paramInt1) });
           return 2;
           bool1 = false;
           break;
@@ -111,17 +111,17 @@ public abstract class FailSendMsgNotification$FailSendMsgNotificationService
         if (!str.startsWith("com.tencent.failnotification.click")) {
           break;
         }
-      } while (this.mJC.mJq == null);
-      y.d("MicroMsg.FailSendMsgNotification", "handle click notification, type:%d", new Object[] { Integer.valueOf(paramInt1) });
-      this.mJC.mJq.bpA();
+      } while (this.pjR.pjF == null);
+      ab.d("MicroMsg.FailSendMsgNotification", "handle click notification, type:%d", new Object[] { Integer.valueOf(paramInt1) });
+      this.pjR.pjF.bYg();
       return 2;
     } while (!str.startsWith("com.tencent.failnotification.dismiss"));
-    this.mJC.mJy = false;
-    this.mJC.bqV = false;
-    if (this.mJC.mJr != null)
+    this.pjR.pjN = false;
+    this.pjR.bNX = false;
+    if (this.pjR.pjG != null)
     {
-      y.d("MicroMsg.FailSendMsgNotification", "handle notification dismiss");
-      this.mJC.mJr.onDismiss();
+      ab.d("MicroMsg.FailSendMsgNotification", "handle notification dismiss");
+      this.pjR.pjG.onDismiss();
     }
     stopSelf();
     return 2;
@@ -129,7 +129,7 @@ public abstract class FailSendMsgNotification$FailSendMsgNotificationService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.ui.FailSendMsgNotification.FailSendMsgNotificationService
  * JD-Core Version:    0.7.0.1
  */

@@ -2,50 +2,61 @@ package com.tencent.mm.compatible.b;
 
 import android.annotation.TargetApi;
 import android.media.AudioRecord;
-import android.media.audiofx.NoiseSuppressor;
-import com.tencent.mm.sdk.platformtools.y;
+import android.media.audiofx.AutomaticGainControl;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class i
-  implements g.a
+  implements h.a
 {
-  private NoiseSuppressor duH = null;
+  private AutomaticGainControl emw;
   
   @TargetApi(16)
   public i(AudioRecord paramAudioRecord)
   {
-    boolean bool = NoiseSuppressor.isAvailable();
-    y.d("MicroMsg.MMNoiseSuppressor", "available  " + bool);
+    AppMethodBeat.i(92893);
+    this.emw = null;
+    boolean bool = AutomaticGainControl.isAvailable();
+    ab.d("MicroMsg.MMAutomaticGainControl", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.duH = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
+      this.emw = AutomaticGainControl.create(paramAudioRecord.getAudioSessionId());
     }
+    AppMethodBeat.o(92893);
   }
   
   @TargetApi(16)
-  public final boolean isAvailable()
+  public final boolean KB()
   {
-    return NoiseSuppressor.isAvailable();
-  }
-  
-  @TargetApi(16)
-  public final boolean yh()
-  {
-    if (this.duH != null) {}
+    AppMethodBeat.i(92895);
+    if (this.emw != null) {}
     try
     {
-      int i = this.duH.setEnabled(true);
-      if (i == 0) {
+      int i = this.emw.setEnabled(true);
+      if (i == 0)
+      {
+        AppMethodBeat.o(92895);
         return true;
       }
-      y.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed " + i);
+      ab.d("MicroMsg.MMAutomaticGainControl", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.MMAutomaticGainControl", localException, "", new Object[0]);
       }
     }
+    AppMethodBeat.o(92895);
     return false;
+  }
+  
+  @TargetApi(16)
+  public final boolean isAvailable()
+  {
+    AppMethodBeat.i(92894);
+    boolean bool = AutomaticGainControl.isAvailable();
+    AppMethodBeat.o(92894);
+    return bool;
   }
 }
 

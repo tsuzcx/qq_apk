@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.fts;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSSOSHomeWebViewUI$14
   implements ViewTreeObserver.OnPreDrawListener
@@ -11,8 +12,10 @@ final class FTSSOSHomeWebViewUI$14
   
   public final boolean onPreDraw()
   {
-    this.ruD.rts.getViewTreeObserver().removeOnPreDrawListener(this);
-    FTSSOSHomeWebViewUI.a(this.ruD, this.ruD.rts.getX());
+    AppMethodBeat.i(153298);
+    this.vkS.vjy.getViewTreeObserver().removeOnPreDrawListener(this);
+    FTSSOSHomeWebViewUI.a(this.vkS, this.vkS.vjy.getX());
+    AppMethodBeat.o(153298);
     return true;
   }
 }

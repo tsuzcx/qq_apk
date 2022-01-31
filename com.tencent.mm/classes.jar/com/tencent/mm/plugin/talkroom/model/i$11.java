@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,18 +11,20 @@ final class i$11
   
   public final void run()
   {
-    synchronized (this.pBA.dhm)
+    AppMethodBeat.i(25857);
+    synchronized (this.tdk.callbacks)
     {
-      Iterator localIterator = this.pBA.dhm.iterator();
+      Iterator localIterator = this.tdk.callbacks.iterator();
       if (localIterator.hasNext()) {
         localIterator.next();
       }
     }
+    AppMethodBeat.o(25857);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.i.11
  * JD-Core Version:    0.7.0.1
  */

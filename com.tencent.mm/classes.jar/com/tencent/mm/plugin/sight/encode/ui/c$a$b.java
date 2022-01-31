@@ -9,20 +9,14 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.contact.a.a.a;
-import com.tencent.mm.ui.contact.a.d.b;
+import com.tencent.mm.ui.contact.a.e.b;
 
 public final class c$a$b
-  extends d.b
+  extends e.b
 {
   public c$a$b(c.a parama)
   {
@@ -31,105 +25,108 @@ public final class c$a$b
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(R.i.sight_select_contact_item, paramViewGroup, false);
-    paramViewGroup = (c.a.a)this.ohY.VA();
-    paramViewGroup.doU = ((ImageView)paramContext.findViewById(R.h.avatar_iv));
-    paramViewGroup.eXO = ((TextView)paramContext.findViewById(R.h.title_tv));
-    paramViewGroup.eXP = ((TextView)paramContext.findViewById(R.h.desc_tv));
-    paramViewGroup.contentView = paramContext.findViewById(R.h.select_item_content_layout);
-    paramViewGroup.eXQ = ((CheckBox)paramContext.findViewById(R.h.select_cb));
-    paramViewGroup.ogQ = paramContext.findViewById(R.h.item_shadow);
-    paramViewGroup.ohX = paramContext.findViewById(R.h.search_view);
+    AppMethodBeat.i(25060);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130970754, paramViewGroup, false);
+    paramViewGroup = (c.a.a)this.qWl.cnj();
+    paramViewGroup.egq = ((ImageView)paramContext.findViewById(2131821210));
+    paramViewGroup.gpL = ((TextView)paramContext.findViewById(2131821212));
+    paramViewGroup.gpM = ((TextView)paramContext.findViewById(2131821007));
+    paramViewGroup.contentView = paramContext.findViewById(2131826406);
+    paramViewGroup.gpN = ((CheckBox)paramContext.findViewById(2131821631));
+    paramViewGroup.qVf = paramContext.findViewById(2131827798);
+    paramViewGroup.qWk = paramContext.findViewById(2131823242);
     paramContext.setTag(paramViewGroup);
-    paramViewGroup.eXO.setTextColor(-1);
+    paramViewGroup.gpL.setTextColor(-1);
     paramViewGroup = (AbsListView.LayoutParams)paramContext.getLayoutParams();
     paramViewGroup.width = -1;
     paramContext.setLayoutParams(paramViewGroup);
-    paramContext.setBackgroundResource(R.e.black);
+    paramContext.setBackgroundResource(2131689763);
+    AppMethodBeat.o(25060);
     return paramContext;
   }
   
   public final void a(Context paramContext, a.a parama, com.tencent.mm.ui.contact.a.a parama1, boolean paramBoolean1, boolean paramBoolean2)
   {
-    ad localad = parama1.dnp;
+    AppMethodBeat.i(25061);
+    ad localad = parama1.contact;
     c.a.a locala = (c.a.a)parama;
     locala.contentView.setVisibility(0);
-    locala.ohX.setVisibility(8);
-    locala.ogQ.setVisibility(8);
-    if (c.ML(localad.field_username))
+    locala.qWk.setVisibility(8);
+    locala.qVf.setVisibility(8);
+    if (c.Zs(localad.field_username))
     {
-      locala.doU.setImageResource(R.k.sight_icon_draft_item);
-      locala.eXO.setText(R.l.sight_draft_title);
-      locala.eXP.setText(R.l.sight_draft_subtitle);
-      locala.eXP.setVisibility(0);
-      locala.eXQ.setEnabled(false);
-      if (c.ohV)
+      locala.egq.setImageResource(2131231986);
+      locala.gpL.setText(2131303720);
+      locala.gpM.setText(2131303718);
+      locala.gpM.setVisibility(0);
+      locala.gpN.setEnabled(false);
+      if (c.qWi)
       {
-        locala.contentView.setBackgroundResource(R.g.sight_list_divider);
-        locala.eXQ.setVisibility(0);
-        locala.eXQ.setBackgroundResource(R.k.sight_list_checkbox_selected);
-        locala.ogQ.setVisibility(0);
+        locala.contentView.setBackgroundResource(2130840330);
+        locala.gpN.setVisibility(0);
+        locala.gpN.setBackgroundResource(2131231994);
+        locala.qVf.setVisibility(0);
       }
       for (;;)
       {
-        parama = this.ohY.ohW;
-        c.d(paramContext, locala.contentView);
-        parama = locala.doU.getLayoutParams();
-        parama.width = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_avatar_size);
-        parama.height = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_avatar_size);
-        locala.doU.setLayoutParams(parama);
-        parama = (LinearLayout.LayoutParams)locala.eXQ.getLayoutParams();
-        parama.height = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_checkbox_size);
-        parama.width = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_checkbox_size);
+        c.e(paramContext, locala.contentView);
+        parama = locala.egq.getLayoutParams();
+        parama.width = com.tencent.mm.cb.a.ao(paramContext, 2131428669);
+        parama.height = com.tencent.mm.cb.a.ao(paramContext, 2131428669);
+        locala.egq.setLayoutParams(parama);
+        parama = (LinearLayout.LayoutParams)locala.gpN.getLayoutParams();
+        parama.height = com.tencent.mm.cb.a.ao(paramContext, 2131428675);
+        parama.width = com.tencent.mm.cb.a.ao(paramContext, 2131428675);
         parama.setMargins(parama.leftMargin, parama.topMargin, 0, parama.bottomMargin);
-        locala.eXQ.setLayoutParams(parama);
+        locala.gpN.setLayoutParams(parama);
+        AppMethodBeat.o(25061);
         return;
-        locala.contentView.setBackgroundResource(R.g.sight_select_contact_item_bg);
-        locala.eXQ.setVisibility(8);
-        locala.eXQ.setBackgroundResource(R.k.sight_list_checkbox_unselected);
-        locala.ogQ.setVisibility(8);
+        locala.contentView.setBackgroundResource(2130840334);
+        locala.gpN.setVisibility(8);
+        locala.gpN.setBackgroundResource(2131231996);
+        locala.qVf.setVisibility(8);
       }
     }
-    if (c.MJ(localad.field_username))
+    if (c.Zq(localad.field_username))
     {
-      locala.doU.setImageResource(R.k.sight_item_sns_icon);
-      locala.eXQ.setVisibility(8);
-      locala.eXO.setText(paramContext.getString(R.l.sight_share_sns));
-      locala.eXP.setVisibility(8);
-      if (c.ohU)
+      locala.egq.setImageResource(2131231993);
+      locala.gpN.setVisibility(8);
+      locala.gpL.setText(paramContext.getString(2131303730));
+      locala.gpM.setVisibility(8);
+      if (c.qWh)
       {
-        locala.contentView.setBackgroundResource(R.g.sight_select_contact_item_bg);
-        locala.ogQ.setVisibility(8);
-        parama = this.ohY.ohW;
-        c.d(paramContext, locala.contentView);
+        locala.contentView.setBackgroundResource(2130840334);
+        locala.qVf.setVisibility(8);
+        c.e(paramContext, locala.contentView);
       }
     }
     for (;;)
     {
-      parama = locala.doU.getLayoutParams();
-      parama.width = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_avatar_size);
-      parama.height = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_avatar_size);
-      locala.doU.setLayoutParams(parama);
-      parama = (LinearLayout.LayoutParams)locala.eXQ.getLayoutParams();
-      parama.height = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_checkbox_size);
-      parama.width = com.tencent.mm.cb.a.aa(paramContext, R.f.sight_checkbox_size);
+      parama = locala.egq.getLayoutParams();
+      parama.width = com.tencent.mm.cb.a.ao(paramContext, 2131428669);
+      parama.height = com.tencent.mm.cb.a.ao(paramContext, 2131428669);
+      locala.egq.setLayoutParams(parama);
+      parama = (LinearLayout.LayoutParams)locala.gpN.getLayoutParams();
+      parama.height = com.tencent.mm.cb.a.ao(paramContext, 2131428675);
+      parama.width = com.tencent.mm.cb.a.ao(paramContext, 2131428675);
       parama.setMargins(parama.leftMargin, parama.topMargin, 0, parama.bottomMargin);
-      locala.eXQ.setLayoutParams(parama);
-      locala.eXQ.setBackgroundResource(R.g.sight_list_checkbox);
+      locala.gpN.setLayoutParams(parama);
+      locala.gpN.setBackgroundResource(2130840329);
+      AppMethodBeat.o(25061);
       return;
-      locala.contentView.setBackgroundResource(R.g.sight_list_divider);
-      locala.ogQ.setVisibility(0);
+      locala.contentView.setBackgroundResource(2130840330);
+      locala.qVf.setVisibility(0);
       break;
-      if (c.MK(localad.field_username))
+      if (c.Zr(localad.field_username))
       {
         locala.contentView.setVisibility(8);
-        locala.ohX.setVisibility(0);
+        locala.qWk.setVisibility(0);
+        AppMethodBeat.o(25061);
         return;
       }
       super.a(paramContext, parama, parama1, paramBoolean1, paramBoolean2);
-      locala.contentView.setBackgroundResource(R.g.sight_select_contact_item_bg);
-      parama = this.ohY.ohW;
-      c.d(paramContext, locala.contentView);
+      locala.contentView.setBackgroundResource(2130840334);
+      c.e(paramContext, locala.contentView);
     }
   }
 }

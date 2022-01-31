@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.recharge.ui.form;
 
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$b$1
   implements Runnable
@@ -9,7 +10,9 @@ final class d$b$1
   
   public final void run()
   {
-    d.a(this.nsG.nsF).dismissDropDown();
+    AppMethodBeat.i(44406);
+    d.a(this.pXU.pXT).dismissDropDown();
+    AppMethodBeat.o(44406);
   }
 }
 

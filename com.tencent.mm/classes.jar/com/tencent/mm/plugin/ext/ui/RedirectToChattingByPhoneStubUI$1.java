@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.ext.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class RedirectToChattingByPhoneStubUI$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class RedirectToChattingByPhoneStubUI$1
   
   public final void run()
   {
-    this.jLp.hideVKB();
+    AppMethodBeat.i(20434);
+    this.mft.hideVKB();
+    AppMethodBeat.o(20434);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.ui.RedirectToChattingByPhoneStubUI.1
  * JD-Core Version:    0.7.0.1
  */

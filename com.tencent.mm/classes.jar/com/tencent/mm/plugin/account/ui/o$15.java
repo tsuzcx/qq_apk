@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.b.a.bj;
 import com.tencent.mm.modelfriend.a;
 
 final class o$15
@@ -14,15 +15,15 @@ final class o$15
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mm.kernel.g.Dk().a(701, this.fpr);
-    this.fpr.foc = new g(new g.a()
-    {
-      public final void a(ProgressDialog paramAnonymousProgressDialog)
-      {
-        o.15.this.fpr.fpj.dnm = paramAnonymousProgressDialog;
-      }
-    }, ((a)this.bEe).getUsername(), ((a)this.bEe).NI(), this.fpr.fpj.bSe);
-    this.fpr.foc.a(this.fpr.fpj);
+    AppMethodBeat.i(125262);
+    com.tencent.mm.kernel.g.Rc().a(701, this.gGO);
+    com.tencent.mm.kernel.g.Rc().a(252, this.gGO);
+    this.gGO.gFw = new g(new o.15.1(this), ((a)this.ckS).getUsername(), ((a)this.ckS).agw(), this.gGO.gGG.czF);
+    this.gGO.gFw.a(this.gGO.gGG);
+    this.gGO.gDn.cXw = this.gGO.gGG.gGv;
+    this.gGO.gDn.cRH = 8L;
+    this.gGO.gDn.ake();
+    AppMethodBeat.o(125262);
   }
 }
 

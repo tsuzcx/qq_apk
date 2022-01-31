@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.ext;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.storage.bp;
 
 final class b$1
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return bp.dXp;
+    return bp.SQL_CREATE;
   }
 }
 

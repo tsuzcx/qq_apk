@@ -1,35 +1,37 @@
 package com.tencent.mm.plugin.offline.ui;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.f;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.a.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletOfflineCoinPurseUI$7$1
   implements a.a
 {
   WalletOfflineCoinPurseUI$7$1(WalletOfflineCoinPurseUI.7 param7) {}
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
+  public final boolean run(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    y.i("MicroMsg.WalletOfflineCoinPurseUI", "getDisclaimer   resultCode=" + paramInt1 + ";errCode=" + paramInt2 + ";errMsg=" + paramString + ";hadAgree = " + paramBoolean);
+    AppMethodBeat.i(43510);
+    ab.i("MicroMsg.WalletOfflineCoinPurseUI", "getDisclaimer   resultCode=" + paramInt1 + ";errCode=" + paramInt2 + ";errMsg=" + paramString + ";hadAgree = " + paramBoolean);
     if (paramInt1 == 2)
     {
       paramString = new f("collect");
-      this.mNs.mNj.a(paramString, false, false);
+      this.pnH.pny.doSceneProgress(paramString, false);
     }
     for (;;)
     {
+      AppMethodBeat.o(43510);
       return true;
       if ((paramInt1 == 0) && (paramBoolean))
       {
         paramString = new f("collect");
-        this.mNs.mNj.a(paramString, false, false);
+        this.pnH.pny.doSceneProgress(paramString, false);
       }
-      else if (WalletOfflineCoinPurseUI.o(this.mNs.mNj) != null)
+      else if (WalletOfflineCoinPurseUI.o(this.pnH.pny) != null)
       {
-        WalletOfflineCoinPurseUI.o(this.mNs.mNj).dismiss();
+        WalletOfflineCoinPurseUI.o(this.pnH.pny).dismiss();
       }
     }
   }

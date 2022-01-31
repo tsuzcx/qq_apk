@@ -5,6 +5,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$1
   implements Runnable
@@ -13,7 +14,8 @@ final class b$1
   
   public final void run()
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, b.a(this.jSg).getHeight());
+    AppMethodBeat.i(506);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, b.a(this.mmC).getHeight());
     localTranslateAnimation.setDuration(2000L);
     localTranslateAnimation.setRepeatMode(2);
     localTranslateAnimation.setRepeatCount(-1);
@@ -25,12 +27,13 @@ final class b$1
     localAnimationSet.addAnimation(localTranslateAnimation);
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setRepeatCount(-1);
-    b.b(this.jSg).startAnimation(localAnimationSet);
+    b.b(this.mmC).startAnimation(localAnimationSet);
+    AppMethodBeat.o(506);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.ui.b.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.wcdb;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class MatrixCursor$RowBuilder
 {
   private final int endIndex;
@@ -13,13 +15,18 @@ public class MatrixCursor$RowBuilder
   
   public RowBuilder add(Object paramObject)
   {
-    if (this.index == this.endIndex) {
-      throw new CursorIndexOutOfBoundsException("No more columns left.");
+    AppMethodBeat.i(12174);
+    if (this.index == this.endIndex)
+    {
+      paramObject = new CursorIndexOutOfBoundsException("No more columns left.");
+      AppMethodBeat.o(12174);
+      throw paramObject;
     }
     Object[] arrayOfObject = MatrixCursor.access$000(this.this$0);
     int i = this.index;
     this.index = (i + 1);
     arrayOfObject[i] = paramObject;
+    AppMethodBeat.o(12174);
     return this;
   }
 }

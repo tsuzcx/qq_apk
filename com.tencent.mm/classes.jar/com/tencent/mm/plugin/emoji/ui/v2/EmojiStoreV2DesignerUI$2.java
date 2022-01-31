@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class EmojiStoreV2DesignerUI$2
@@ -13,48 +13,50 @@ final class EmojiStoreV2DesignerUI$2
   public final void run()
   {
     int k = 8;
-    EmojiStoreV2DesignerUI localEmojiStoreV2DesignerUI = this.jgP;
+    AppMethodBeat.i(53581);
+    EmojiStoreV2DesignerUI localEmojiStoreV2DesignerUI = this.lpI;
     int i;
     View localView;
-    if (this.jgQ.size() > 3)
+    if (this.lpJ.size() > 3)
     {
       i = 1;
-      if (localEmojiStoreV2DesignerUI.jgz != null) {
-        localEmojiStoreV2DesignerUI.jgz.setVisibility(0);
+      if (localEmojiStoreV2DesignerUI.lps != null) {
+        localEmojiStoreV2DesignerUI.lps.setVisibility(0);
       }
-      if (localEmojiStoreV2DesignerUI.jgC != null) {
-        localEmojiStoreV2DesignerUI.jgC.setVisibility(0);
+      if (localEmojiStoreV2DesignerUI.lpv != null) {
+        localEmojiStoreV2DesignerUI.lpv.setVisibility(0);
       }
-      if (localEmojiStoreV2DesignerUI.jgB != null) {
-        localEmojiStoreV2DesignerUI.jgB.setVisibility(0);
+      if (localEmojiStoreV2DesignerUI.lpu != null) {
+        localEmojiStoreV2DesignerUI.lpu.setVisibility(0);
       }
-      if (localEmojiStoreV2DesignerUI.jgD != null)
+      if (localEmojiStoreV2DesignerUI.lpw != null)
       {
-        localView = localEmojiStoreV2DesignerUI.jgD;
+        localView = localEmojiStoreV2DesignerUI.lpw;
         if (i == 0) {
-          break label176;
+          break label185;
         }
       }
     }
-    label176:
+    label185:
     for (int j = 0;; j = 8)
     {
       localView.setVisibility(j);
-      if (localEmojiStoreV2DesignerUI.jgE != null) {
-        localEmojiStoreV2DesignerUI.jgE.setText(f.h.emoji_store_product_more_title);
+      if (localEmojiStoreV2DesignerUI.lpx != null) {
+        localEmojiStoreV2DesignerUI.lpx.setText(2131299221);
       }
-      if (localEmojiStoreV2DesignerUI.jgF != null)
+      if (localEmojiStoreV2DesignerUI.lpy != null)
       {
-        localView = localEmojiStoreV2DesignerUI.jgF;
+        localView = localEmojiStoreV2DesignerUI.lpy;
         j = k;
         if (i != 0) {
           j = 0;
         }
         localView.setVisibility(j);
       }
-      if (localEmojiStoreV2DesignerUI.jgw != null) {
-        localEmojiStoreV2DesignerUI.jgw.setPadding(0, 0, 0, 0);
+      if (localEmojiStoreV2DesignerUI.lpp != null) {
+        localEmojiStoreV2DesignerUI.lpp.setPadding(0, 0, 0, 0);
       }
+      AppMethodBeat.o(53581);
       return;
       i = 0;
       break;

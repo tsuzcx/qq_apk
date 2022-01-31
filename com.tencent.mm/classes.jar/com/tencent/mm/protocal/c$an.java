@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$an
+final class c$an
   extends c.g
 {
-  public c$an()
+  c$an()
   {
-    super("connectToWiFi", "connecttowifi", 71, false);
+    super("closeWindowAndGoNext", "closeWindowAndGoNext", 293, false);
   }
 }
 

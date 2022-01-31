@@ -2,8 +2,10 @@ package com.tencent.mm.plugin.downloader_app.search;
 
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.b.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.downloader.model.d;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -12,24 +14,31 @@ final class DownloadSearchListView$1
 {
   DownloadSearchListView$1(DownloadSearchListView paramDownloadSearchListView) {}
   
-  public final void X(int paramInt, String paramString)
+  public final void H(int paramInt, long paramLong)
   {
+    AppMethodBeat.i(136173);
     if (paramInt == 9)
     {
-      a locala = DownloadSearchListView.a(this.iSR);
-      if ((!bk.dk(locala.hka)) && (!bk.bl(paramString)))
+      Object localObject = d.iJ(paramLong);
+      if (localObject != null)
       {
-        Iterator localIterator = locala.hka.iterator();
-        while (localIterator.hasNext())
+        a locala = DownloadSearchListView.a(this.lbB);
+        localObject = ((com.tencent.mm.plugin.downloader.g.a)localObject).field_appId;
+        if ((!bo.es(locala.iVH)) && (!bo.isNullOrNil((String)localObject)))
         {
-          b localb = (b)localIterator.next();
-          if ((localb.appId != null) && (localb.appId.equals(paramString))) {
-            localb.state = 2;
+          Iterator localIterator = locala.iVH.iterator();
+          while (localIterator.hasNext())
+          {
+            b localb = (b)localIterator.next();
+            if ((localb.appId != null) && (localb.appId.equals(localObject))) {
+              localb.state = 2;
+            }
           }
+          locala.ajb.notifyChanged();
         }
-        locala.agL.notifyChanged();
       }
     }
+    AppMethodBeat.o(136173);
   }
 }
 

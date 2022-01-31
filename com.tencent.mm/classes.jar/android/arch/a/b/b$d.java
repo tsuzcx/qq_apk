@@ -6,34 +6,34 @@ import java.util.Map.Entry;
 public final class b$d
   implements b.f<K, V>, Iterator<Map.Entry<K, V>>
 {
-  private b.c<K, V> bP;
-  private boolean bQ = true;
+  private b.c<K, V> bT;
+  private boolean bU = true;
   
   private b$d(b paramb) {}
   
   public final void c(b.c<K, V> paramc)
   {
-    if (paramc == this.bP)
+    if (paramc == this.bT)
     {
-      this.bP = this.bP.bO;
-      if (this.bP != null) {
+      this.bT = this.bT.bS;
+      if (this.bT != null) {
         break label34;
       }
     }
     label34:
     for (boolean bool = true;; bool = false)
     {
-      this.bQ = bool;
+      this.bU = bool;
       return;
     }
   }
   
   public final boolean hasNext()
   {
-    if (this.bQ) {
-      if (b.a(this.bR) == null) {}
+    if (this.bU) {
+      if (b.a(this.bV) == null) {}
     }
-    while ((this.bP != null) && (this.bP.bN != null))
+    while ((this.bT != null) && (this.bT.bR != null))
     {
       return true;
       return false;
@@ -43,7 +43,7 @@ public final class b$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.arch.a.b.b.d
  * JD-Core Version:    0.7.0.1
  */

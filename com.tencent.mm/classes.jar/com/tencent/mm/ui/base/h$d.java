@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base;
 
 public abstract interface h$d
 {
-  public abstract void bF(int paramInt1, int paramInt2);
+  public abstract void ca(int paramInt1, int paramInt2);
 }
 
 

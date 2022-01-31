@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.plugin.appbrand.jsapi.l;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 
 final class JsApiOperateMusicPlayer$a
-  extends l
+  extends p
 {
   private static final int CTRL_INDEX = 82;
   private static final String NAME = "onMusicEnd";

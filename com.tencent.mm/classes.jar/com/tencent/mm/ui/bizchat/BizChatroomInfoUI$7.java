@@ -1,65 +1,73 @@
 package com.tencent.mm.ui.bizchat;
 
 import android.content.Intent;
-import com.tencent.mm.ai.a.h;
-import com.tencent.mm.ai.a.j;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.h;
+import com.tencent.mm.aj.a.j;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference;
 import com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class BizChatroomInfoUI$7
   implements ContactListExpandPreference.a
 {
   BizChatroomInfoUI$7(BizChatroomInfoUI paramBizChatroomInfoUI) {}
   
-  public final void gh(int paramInt)
+  public final void JR()
   {
-    BizChatroomInfoUI.a(this.vfX, paramInt);
+    AppMethodBeat.i(30205);
+    if (BizChatroomInfoUI.b(this.zuv) != null) {
+      BizChatroomInfoUI.b(this.zuv).dnF();
+    }
+    AppMethodBeat.o(30205);
   }
   
-  public final void gi(int paramInt)
+  public final void iw(int paramInt)
+  {
+    AppMethodBeat.i(30203);
+    BizChatroomInfoUI.a(this.zuv, paramInt);
+    AppMethodBeat.o(30203);
+  }
+  
+  public final void ix(int paramInt)
   {
     boolean bool = true;
-    j localj = this.vfX.GG(paramInt);
-    if ((localj == null) || (bk.bl(localj.field_profileUrl)))
+    AppMethodBeat.i(30204);
+    j localj = this.zuv.Pa(paramInt);
+    if ((localj == null) || (bo.isNullOrNil(localj.field_profileUrl)))
     {
       if (localj == null) {}
       for (;;)
       {
-        y.w("MicroMsg.BizChatroomInfoUI", "onItemNormalClick userInfo == null:%s", new Object[] { Boolean.valueOf(bool) });
+        ab.w("MicroMsg.BizChatroomInfoUI", "onItemNormalClick userInfo == null:%s", new Object[] { Boolean.valueOf(bool) });
+        AppMethodBeat.o(30204);
         return;
         bool = false;
       }
     }
-    y.i("MicroMsg.BizChatroomInfoUI", "onItemNormalClick Url:%s", new Object[] { localj.field_profileUrl });
-    z.MG();
-    h.a(localj.field_userId, localj.field_brandUserName, this.vfX);
+    ab.i("MicroMsg.BizChatroomInfoUI", "onItemNormalClick Url:%s", new Object[] { localj.field_profileUrl });
+    z.afq();
+    h.a(localj.field_userId, localj.field_brandUserName, this.zuv);
     Intent localIntent = new Intent();
     localIntent.putExtra("rawUrl", localj.field_profileUrl);
     localIntent.putExtra("useJs", true);
-    d.b(this.vfX.mController.uMN, "webview", ".ui.tools.WebViewUI", localIntent);
+    d.b(this.zuv.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+    AppMethodBeat.o(30204);
   }
   
-  public final void gj(int paramInt)
+  public final void iy(int paramInt)
   {
-    BizChatroomInfoUI.c(this.vfX);
-  }
-  
-  public final void xy()
-  {
-    if (BizChatroomInfoUI.b(this.vfX) != null) {
-      BizChatroomInfoUI.b(this.vfX).cmP();
-    }
+    AppMethodBeat.i(30206);
+    BizChatroomInfoUI.c(this.zuv);
+    AppMethodBeat.o(30206);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatroomInfoUI.7
  * JD-Core Version:    0.7.0.1
  */

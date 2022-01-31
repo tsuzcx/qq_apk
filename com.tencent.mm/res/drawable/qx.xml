@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:drawable="@drawable/b96" />
-    <item android:state_checked="true" android:drawable="@drawable/b98" />
-    <item android:drawable="@drawable/b97" />
-</selector>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@android:color/white" />
+            <stroke android:width="3.0dip" android:color="@color/r7" />
+            <size android:height="120.0dip" android:width="120.0dip" />
+        </shape>
+    </item>
+    <item android:left="43.0dip" android:top="43.0dip" android:right="43.0dip" android:bottom="43.0dip">
+        <shape android:shape="oval">
+            <solid android:color="@color/r4" />
+            <size android:height="34.0dip" android:width="34.0dip" />
+        </shape>
+    </item>
+</layer-list>

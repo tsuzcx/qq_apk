@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
-import com.tencent.mm.pluginsdk.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.soter.a.a;
 
 final class d$1
@@ -9,17 +9,20 @@ final class d$1
 {
   d$1(d paramd) {}
   
-  public final void ai(int paramInt, String paramString)
+  public final void aC(int paramInt, String paramString)
   {
-    if ((paramInt == 0) && (a.cPw()))
+    AppMethodBeat.i(41437);
+    if ((paramInt == 0) && (a.dVs()))
     {
-      y.i("MicroMsg.FingerPrintMgrImpl", "After recheck IFingerPrintMgr is now switched to SoterAuthMgrImp");
+      ab.i("MicroMsg.FingerPrintMgrImpl", "After recheck IFingerPrintMgr is now switched to SoterAuthMgrImp");
       paramString = new l();
-      paramString.aSH();
-      com.tencent.mm.kernel.g.a(k.class, paramString);
+      paramString.bzc();
+      com.tencent.mm.kernel.g.b(com.tencent.mm.pluginsdk.l.class, paramString);
+      AppMethodBeat.o(41437);
       return;
     }
-    y.i("MicroMsg.FingerPrintMgrImpl", "After recheck IFingerPrintMgr is still FingerPrintMgrImpl errCode[" + paramInt + "], errMsg[" + paramString + "]");
+    ab.i("MicroMsg.FingerPrintMgrImpl", "After recheck IFingerPrintMgr is still FingerPrintMgrImpl errCode[" + paramInt + "], errMsg[" + paramString + "]");
+    AppMethodBeat.o(41437);
   }
 }
 

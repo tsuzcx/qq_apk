@@ -5,7 +5,7 @@ public final class c$dg
 {
   public c$dg()
   {
-    super("idCardRealnameVerify", "idCardRealnameVerify", 235, true);
+    super("getWidgetCaptureImgUrl", "add_contact", 10000, false);
   }
 }
 

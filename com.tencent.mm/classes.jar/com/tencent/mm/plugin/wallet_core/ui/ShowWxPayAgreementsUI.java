@@ -1,98 +1,116 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.n;
+import com.tencent.xweb.t;
 
 @a(3)
 public class ShowWxPayAgreementsUI
   extends MMActivity
 {
   private String content;
-  private MMWebView qAh;
-  private TextView qAi;
-  private TextView qAj;
   private int type;
+  private MMWebView umS;
+  private TextView umT;
+  private TextView umU;
   
   public void finish()
   {
-    y.i("MicroMsg.ShowWxPayAgreementsUI", "onRefreshed");
+    AppMethodBeat.i(47136);
+    ab.i("MicroMsg.ShowWxPayAgreementsUI", "onRefreshed");
     super.finish();
-    overridePendingTransition(a.a.anim_not_change, a.a.push_down_out);
+    overridePendingTransition(2131034130, 2131034228);
+    AppMethodBeat.o(47136);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.show_wxpayagreements_ui;
+    return 2130970739;
   }
   
-  protected final void initView()
+  public void initView()
   {
     boolean bool = false;
-    h.nFQ.f(15236, new Object[] { Integer.valueOf(1) });
+    AppMethodBeat.i(47135);
+    h.qsU.e(15236, new Object[] { Integer.valueOf(1) });
     getSupportActionBar().hide();
-    overridePendingTransition(a.a.push_up_in, a.a.anim_not_change);
+    overridePendingTransition(2131034230, 2131034130);
     this.type = getIntent().getIntExtra("agreement_type", 0);
-    Object localObject = this.mController.contentView;
-    int i = a.f.agreement_webview;
-    MMWebView.hi(this);
-    localObject = (MMWebView)((View)localObject).findViewById(i);
-    ((MMWebView)localObject).dyX = true;
+    Object localObject = getContentView();
+    MMWebView.iG(this);
+    localObject = (MMWebView)((View)localObject).findViewById(2131827776);
+    ((MMWebView)localObject).inited = true;
     if (((MMWebView)localObject).getX5WebViewExtension() != null) {
       bool = true;
     }
     MMWebView.e((MMWebView)localObject, bool);
-    this.qAh = ((MMWebView)localObject);
-    this.qAh.getSettings().setJavaScriptEnabled(true);
-    this.qAi = ((TextView)findViewById(a.f.agreement_disagree_btn));
-    this.qAj = ((TextView)findViewById(a.f.agreement_agree_btn));
+    this.umS = ((MMWebView)localObject);
+    this.umS.getSettings().setJavaScriptEnabled(true);
+    this.umT = ((TextView)findViewById(2131827777));
+    this.umU = ((TextView)findViewById(2131827778));
     this.content = getIntent().getStringExtra("agreement_content");
-    this.qAj.setOnClickListener(new ShowWxPayAgreementsUI.1(this));
-    this.qAi.setOnClickListener(new ShowWxPayAgreementsUI.2(this));
-    this.qAh.setWebViewClient(new e(this));
-    this.qAh.loadData(this.content, "text/html; charset=UTF-8", null);
+    this.umU.setOnClickListener(new ShowWxPayAgreementsUI.1(this));
+    this.umT.setOnClickListener(new ShowWxPayAgreementsUI.2(this));
+    this.umS.setWebViewClient(new g(this));
+    this.umS.loadData(this.content, "text/html; charset=UTF-8", null);
+    AppMethodBeat.o(47135);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(47134);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(47134);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramInt == 4) {
+    AppMethodBeat.i(47139);
+    if (paramInt == 4)
+    {
+      AppMethodBeat.o(47139);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(47139);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(47138);
     super.onPause();
+    AppMethodBeat.o(47138);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(47137);
     super.onResume();
+    AppMethodBeat.o(47137);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.ShowWxPayAgreementsUI
  * JD-Core Version:    0.7.0.1
  */

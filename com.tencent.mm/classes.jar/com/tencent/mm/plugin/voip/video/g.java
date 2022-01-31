@@ -1,10 +1,31 @@
 package com.tencent.mm.plugin.voip.video;
 
-public abstract interface g
+import android.graphics.Point;
+
+public final class g
 {
-  public abstract void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  int enO = 1;
+  private String tGf = null;
+  int tGg = 30;
+  boolean tGh = false;
+  boolean tGi = true;
+  int tGj = 0;
+  int tGk;
+  Point tGl;
+  Point tGm;
   
-  public abstract void blN();
+  public g(String paramString)
+  {
+    this.tGf = paramString;
+    this.tGg = 15;
+    this.enO = 1;
+    this.tGh = false;
+    this.tGi = true;
+    this.tGj = 0;
+    this.tGk = 0;
+    this.tGl = null;
+    this.tGm = null;
+  }
 }
 
 

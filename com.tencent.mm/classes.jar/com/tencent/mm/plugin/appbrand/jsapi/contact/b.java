@@ -1,60 +1,127 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.provider.ContactsContract.Contacts;
+import android.content.ContentValues;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.permission.e;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.widget.b.d;
+import java.util.ArrayList;
 import org.json.JSONObject;
 
 public final class b
   extends com.tencent.mm.plugin.appbrand.jsapi.a
 {
-  public static final int CTRL_INDEX = 72;
-  public static final String NAME = "chooseContact";
+  public static final int CTRL_INDEX = 226;
+  public static final String NAME = "addPhoneContact";
+  private a hKh;
+  
+  private static void a(ArrayList<ContentValues> paramArrayList, a.a parama, int paramInt)
+  {
+    AppMethodBeat.i(126266);
+    if ((parama != null) && (parama.aCR().length() > 0))
+    {
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("mimetype", "vnd.android.cursor.item/postal-address_v2");
+      localContentValues.put("data1", parama.aCR());
+      localContentValues.put("data9", parama.hKg);
+      localContentValues.put("data2", Integer.valueOf(paramInt));
+      paramArrayList.add(localContentValues);
+    }
+    AppMethodBeat.o(126266);
+  }
+  
+  private static void a(ArrayList<ContentValues> paramArrayList, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(126267);
+    ContentValues localContentValues = new ContentValues();
+    localContentValues.put("mimetype", "vnd.android.cursor.item/phone_v2");
+    localContentValues.put("data1", paramString);
+    localContentValues.put("data2", Integer.valueOf(paramInt));
+    paramArrayList.add(localContentValues);
+    AppMethodBeat.o(126267);
+  }
+  
+  private static a.a e(JSONObject paramJSONObject, String paramString)
+  {
+    AppMethodBeat.i(126265);
+    paramJSONObject = new a.a(paramJSONObject.optString(paramString + "Country"), paramJSONObject.optString(paramString + "State"), paramJSONObject.optString(paramString + "City"), paramJSONObject.optString(paramString + "Street"), paramJSONObject.optString(paramString + "PostalCode"));
+    AppMethodBeat.o(126265);
+    return paramJSONObject;
+  }
   
   public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
   {
-    Context localContext = paramc.getContext();
-    if ((localContext == null) || (!(localContext instanceof MMActivity)))
+    AppMethodBeat.i(126264);
+    ab.d("MicroMsg.JsApiAddPhoneContact", "addPhoneContact!");
+    if (paramJSONObject == null)
     {
-      y.e("MicroMsg.JsApiChooseContact", "getPageContext failed, appid is %s", new Object[] { paramc.getAppId() });
-      paramc.C(paramInt, h("fail", null));
+      paramc.h(paramInt, j("fail:data is null", null));
+      ab.e("MicroMsg.JsApiAddPhoneContact", "data is null");
+      AppMethodBeat.o(126264);
       return;
     }
-    e.b(paramc.getAppId(), new b.2(this, paramc, paramJSONObject, paramInt));
-    paramJSONObject = paramc.getContext();
-    int i;
-    if ((paramJSONObject == null) || (!(paramJSONObject instanceof Activity)))
+    if (bo.isNullOrNil(paramJSONObject.optString("firstName")))
     {
-      paramc.C(paramInt, h("fail", null));
-      i = 0;
-    }
-    while (i == 0)
-    {
-      y.i("MicroMsg.JsApiChooseContact", "check permission");
+      paramc.h(paramInt, j("fail:firstName is null", null));
+      ab.e("MicroMsg.JsApiAddPhoneContact", "firstName is null");
+      AppMethodBeat.o(126264);
       return;
-      boolean bool = com.tencent.mm.pluginsdk.permission.a.a((Activity)paramJSONObject, "android.permission.READ_CONTACTS", 48, "", "");
-      i = bool;
-      if (bool)
+    }
+    Object localObject1 = paramc.getContext();
+    if ((localObject1 == null) || (!(localObject1 instanceof Activity)))
+    {
+      paramc.h(paramInt, j("fail", null));
+      ab.e("MicroMsg.JsApiAddPhoneContact", "activity is null, invoke fail!");
+      AppMethodBeat.o(126264);
+      return;
+    }
+    this.hKh = new a();
+    this.hKh.hJS = paramJSONObject.optString("photoFilePath");
+    this.hKh.blZ = paramJSONObject.optString("nickName");
+    Object localObject2 = new a.b(paramJSONObject.optString("firstName"), paramJSONObject.optString("middleName"), paramJSONObject.optString("lastName"));
+    this.hKh.hJR = ((a.b)localObject2);
+    this.hKh.hKa = paramJSONObject.optString("remark");
+    this.hKh.hJW = paramJSONObject.optString("mobilePhoneNumber");
+    this.hKh.hKe = paramJSONObject.optString("weChatNumber");
+    this.hKh.hJV = e(paramJSONObject, "address");
+    this.hKh.hKb = paramJSONObject.optString("organization");
+    this.hKh.title = paramJSONObject.optString("title");
+    this.hKh.hKc = paramJSONObject.optString("workFaxNumber");
+    this.hKh.hJZ = paramJSONObject.optString("workPhoneNumber");
+    this.hKh.hJY = paramJSONObject.optString("hostNumber");
+    this.hKh.dqF = paramJSONObject.optString("email");
+    this.hKh.url = paramJSONObject.optString("url");
+    this.hKh.hJU = e(paramJSONObject, "workAddress");
+    this.hKh.hKd = paramJSONObject.optString("homeFaxNumber");
+    this.hKh.hJX = paramJSONObject.optString("homePhoneNumber");
+    this.hKh.hJT = e(paramJSONObject, "homeAddress");
+    paramJSONObject = (Activity)localObject1;
+    localObject1 = paramJSONObject.getString(2131301374);
+    localObject2 = paramJSONObject.getString(2131301373);
+    d locald = new d(paramJSONObject, 1, false);
+    locald.sao = new n.c()
+    {
+      public final void onCreateMMMenu(l paramAnonymousl)
       {
-        e.vX(paramc.getAppId());
-        i = bool;
+        AppMethodBeat.i(126260);
+        paramAnonymousl.e(0, this.hKi[0]);
+        paramAnonymousl.e(1, this.hKi[1]);
+        AppMethodBeat.o(126260);
       }
-    }
-    paramc = new b.1(this, paramc, paramInt, localContext);
-    ((MMActivity)localContext).gJb = paramc;
-    paramc = new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI);
-    ((MMActivity)localContext).startActivityForResult(paramc, 100);
+    };
+    locald.sap = new b.2(this, paramJSONObject, paramc, paramc, paramInt);
+    locald.crd();
+    AppMethodBeat.o(126264);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.b
  * JD-Core Version:    0.7.0.1
  */

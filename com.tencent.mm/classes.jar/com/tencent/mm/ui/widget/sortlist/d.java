@@ -6,49 +6,58 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ListView;
-import com.tencent.mm.ui.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 
 public class d
   implements DragSortListView.i
 {
-  private ListView Nn;
-  private ImageView jjn;
-  private Bitmap wsh;
-  int wsi = -16777216;
+  private Bitmap AML;
+  int AMM = -16777216;
+  private ImageView ioq;
+  private ListView mListView;
   
   public d(ListView paramListView)
   {
-    this.Nn = paramListView;
+    this.mListView = paramListView;
   }
   
-  public final View II(int paramInt)
+  public final View RC(int paramInt)
   {
-    View localView = this.Nn.getChildAt(this.Nn.getHeaderViewsCount() + paramInt - this.Nn.getFirstVisiblePosition());
-    if (localView == null) {
+    AppMethodBeat.i(113109);
+    Object localObject = this.mListView;
+    localObject = ((ListView)localObject).getChildAt(((ListView)localObject).getHeaderViewsCount() + paramInt - this.mListView.getFirstVisiblePosition());
+    if (localObject == null)
+    {
+      AppMethodBeat.o(113109);
       return null;
     }
-    localView.setPressed(false);
-    localView.setDrawingCacheEnabled(true);
-    this.wsh = Bitmap.createBitmap(localView.getDrawingCache());
-    localView.setDrawingCacheEnabled(false);
-    if (this.jjn == null) {
-      this.jjn = new ImageView(this.Nn.getContext());
+    ((View)localObject).setPressed(false);
+    ((View)localObject).setDrawingCacheEnabled(true);
+    this.AML = Bitmap.createBitmap(((View)localObject).getDrawingCache());
+    ((View)localObject).setDrawingCacheEnabled(false);
+    if (this.ioq == null) {
+      this.ioq = new ImageView(this.mListView.getContext());
     }
-    this.jjn.setBackgroundColor(this.wsi);
-    this.jjn.setPadding(0, 0, 0, 0);
-    this.jjn.setImageBitmap(this.wsh);
-    this.jjn.setLayoutParams(new ViewGroup.LayoutParams(localView.getWidth(), localView.getHeight()));
-    return this.jjn;
+    this.ioq.setBackgroundColor(this.AMM);
+    this.ioq.setPadding(0, 0, 0, 0);
+    this.ioq.setImageBitmap(this.AML);
+    this.ioq.setLayoutParams(new ViewGroup.LayoutParams(((View)localObject).getWidth(), ((View)localObject).getHeight()));
+    localObject = this.ioq;
+    AppMethodBeat.o(113109);
+    return localObject;
   }
   
-  public final void en(View paramView)
+  public final void fy(View paramView)
   {
+    AppMethodBeat.i(113110);
     if ((paramView instanceof ImageView)) {
       ((ImageView)paramView).setImageDrawable(null);
     }
-    ao.t("bitmap recycle %s", new Object[] { this.wsh.toString() });
-    this.wsh.recycle();
-    this.wsh = null;
+    ak.i("MicroMsg.SimpleFloatViewManager", "bitmap recycle %s", new Object[] { this.AML.toString() });
+    this.AML.recycle();
+    this.AML = null;
+    AppMethodBeat.o(113110);
   }
   
   public void i(Point paramPoint) {}

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.collect.reward.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class QrRewardSetMoneyUI$6
   implements TextWatcher
@@ -11,6 +12,7 @@ final class QrRewardSetMoneyUI$6
   
   public final void afterTextChanged(Editable paramEditable)
   {
+    AppMethodBeat.i(41154);
     if (paramEditable.toString().startsWith(".")) {
       paramEditable.insert(0, "0");
     }
@@ -22,8 +24,9 @@ final class QrRewardSetMoneyUI$6
     }
     for (;;)
     {
-      ai.S(QrRewardSetMoneyUI.d(this.iJO));
-      ai.l(QrRewardSetMoneyUI.d(this.iJO), 50L);
+      al.ae(QrRewardSetMoneyUI.d(this.kQu));
+      al.p(QrRewardSetMoneyUI.d(this.kQu), 50L);
+      AppMethodBeat.o(41154);
       return;
       if (i > 6) {
         paramEditable.delete(6, i);

@@ -1,58 +1,54 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import com.qq.jutil.crypto.HexUtil;
-import java.nio.ByteBuffer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.jj;
+import java.util.Arrays;
 
 public class be
 {
-  int a = 0;
-  byte[] b;
-  int c;
-  at d;
-  ju e;
+  private int a;
+  private int b;
+  private int c;
+  private byte[] d;
   
-  private be(int paramInt, byte[] paramArrayOfByte)
+  public be()
   {
-    this.c = paramInt;
-    a(paramArrayOfByte);
+    AppMethodBeat.i(149820);
+    this.d = new byte[4];
+    AppMethodBeat.o(149820);
   }
   
-  public static be a(int paramInt1, int paramInt2)
+  public int a()
   {
-    be localbe = new be(paramInt2, new byte[0]);
-    ju localju = new ju();
-    localju.e = paramInt1;
-    localju.c = paramInt2;
-    localbe.e = localju;
-    return localbe;
-  }
-  
-  public static be a(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
-  {
-    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfByte.length + 4);
-    localByteBuffer.putInt(localByteBuffer.capacity()).put(paramArrayOfByte).flip();
-    return new be(paramInt, localByteBuffer.array());
-  }
-  
-  public void a(at paramat)
-  {
-    this.d = paramat;
+    return this.a;
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    this.b = paramArrayOfByte;
-    this.a = paramArrayOfByte.length;
+    AppMethodBeat.i(149821);
+    Arrays.fill(this.d, (byte)0);
+    System.arraycopy(paramArrayOfByte, 0, this.d, 0, 4);
+    this.a = jj.a(this.d);
+    System.arraycopy(paramArrayOfByte, 4, this.d, 0, 4);
+    this.b = jj.a(this.d);
+    System.arraycopy(paramArrayOfByte, 8, this.d, 0, 4);
+    this.c = jj.a(this.d);
+    AppMethodBeat.o(149821);
   }
   
-  public String toString()
+  public int b()
   {
-    return "seq:" + this.c + " " + HexUtil.bytes2HexStr(this.b);
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.be
  * JD-Core Version:    0.7.0.1
  */

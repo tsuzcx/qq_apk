@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.wear.ui;
 
-import com.tencent.mm.h.a.ud;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vz;
 import com.tencent.mm.sdk.b.c;
 
 final class WearYoUI$2
-  extends c<ud>
+  extends c<vz>
 {
   WearYoUI$2(WearYoUI paramWearYoUI)
   {
-    this.udX = ud.class.getName().hashCode();
+    AppMethodBeat.i(26463);
+    this.__eventId = vz.class.getName().hashCode();
+    AppMethodBeat.o(26463);
   }
 }
 

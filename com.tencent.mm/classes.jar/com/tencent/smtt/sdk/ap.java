@@ -1,20 +1,15 @@
 package com.tencent.smtt.sdk;
 
-import android.os.Build.VERSION;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ap
-  implements FileFilter
+  extends ThreadLocal<Integer>
 {
-  public final boolean accept(File paramFile)
+  public final Integer a()
   {
-    paramFile = paramFile.getName();
-    if (paramFile == null) {}
-    while ((paramFile.endsWith(".jar_is_first_load_dex_flag_file")) || ((Build.VERSION.SDK_INT >= 21) && (paramFile.endsWith(".dex"))) || ((Build.VERSION.SDK_INT >= 26) && (paramFile.endsWith(".prof"))) || ((Build.VERSION.SDK_INT >= 26) && (paramFile.equals("oat")))) {
-      return false;
-    }
-    return true;
+    AppMethodBeat.i(139269);
+    AppMethodBeat.o(139269);
+    return Integer.valueOf(0);
   }
 }
 

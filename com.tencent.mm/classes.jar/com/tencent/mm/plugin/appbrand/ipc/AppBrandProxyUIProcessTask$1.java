@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AppBrandProxyUIProcessTask$1
   implements Runnable
 {
@@ -7,10 +9,14 @@ final class AppBrandProxyUIProcessTask$1
   
   public final void run()
   {
-    if (this.ges.ger == null) {
+    AppMethodBeat.i(73151);
+    if (this.hws.hwr == null)
+    {
+      AppMethodBeat.o(73151);
       return;
     }
-    this.ges.ger.a(this.geh);
+    this.hws.hwr.a(this.hwh);
+    AppMethodBeat.o(73151);
   }
 }
 

@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bb2" android:background="@color/kw" android:layout_width="fill_parent" android:layout_height="@dimen/g2"
+<merge android:id="@id/bf6" android:background="@color/jv" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bb3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:baselineAligned="false" android:weightSum="1.0">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bb4" android:layout_marginLeft="@dimen/gr" style="@style/h0" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="wrap_content" android:layout_marginRight="@dimen/gp" style="@style/h9">
-            <RelativeLayout android:paddingLeft="@dimen/gr" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_toLeftOf="@id/bb5" android:layout_centerVertical="true">
-                <View android:id="@id/bb6" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
-                <TextView android:id="@id/bb7" android:layout_toLeftOf="@id/bb8" android:layout_alignLeft="@id/bb6" android:layout_centerInParent="true" style="@style/h_" />
-                <TextView android:id="@id/bb8" android:text="" android:layout_above="@id/bb6" android:layout_alignRight="@id/bb6" style="@style/hd" />
-            </RelativeLayout>
-            <ImageView android:id="@id/bb5" android:layout_marginLeft="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/h1" />
-        </RelativeLayout>
-    </LinearLayout>
-    <View android:id="@id/bb9" android:background="@color/kx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/dw" android:textColor="@color/a95" android:gravity="center" android:id="@id/bf8" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="48.0dip" android:text="@string/ak4" />
+    <TextView android:textSize="@dimen/dw" android:textColor="@color/a7z" android:gravity="center" android:id="@id/bf9" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="48.0dip" android:text="@string/ak5" android:layout_alignParentEnd="true" />
+    <EditText android:textSize="30.0dip" android:textColor="@color/a6q" android:gravity="center_horizontal" android:id="@id/bfd" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="248.0dip" android:minWidth="8.0dip" android:layout_below="@id/bf8" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/bfz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/delete_text_icon" android:layout_alignTop="@id/bfd" android:layout_alignBottom="@id/bfd" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" android:layout_toEndOf="@id/bfd" />
+    <com.tencent.mm.media.editor.view.TextColorSelector android:id="@id/bg0" android:paddingLeft="@dimen/a03" android:paddingRight="@dimen/a03" android:layout_width="fill_parent" android:layout_height="@dimen/a02" android:layout_marginBottom="@dimen/a01" android:layout_alignParentBottom="true" />
+</merge>

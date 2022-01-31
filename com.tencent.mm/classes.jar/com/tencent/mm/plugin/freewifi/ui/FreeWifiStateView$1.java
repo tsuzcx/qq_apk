@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FreeWifiStateView$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class FreeWifiStateView$1
   
   public final void run()
   {
-    this.ksO.invalidate();
+    AppMethodBeat.i(21080);
+    this.mOD.invalidate();
+    AppMethodBeat.o(21080);
   }
 }
 

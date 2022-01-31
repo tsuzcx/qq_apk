@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.subapp.ui.friend;
 
-import com.tencent.mm.bh.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bi.d;
 import com.tencent.mm.storage.aw;
 
 final class b$1
@@ -10,8 +11,10 @@ final class b$1
   
   public final void run()
   {
-    b.a(this.pwh, d.RY().aAn());
-    this.pwh.notifyDataSetChanged();
+    AppMethodBeat.i(25345);
+    b.a(this.sXN, d.ali().getAll());
+    this.sXN.notifyDataSetChanged();
+    AppMethodBeat.o(25345);
   }
 }
 

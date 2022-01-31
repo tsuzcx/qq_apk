@@ -1,38 +1,60 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.util.SparseArray;
+import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelvideo.s;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class j$14
-  implements Runnable
+  implements ap.a
 {
   j$14(j paramj) {}
   
-  public final void run()
+  public final boolean onTimerExpired()
   {
-    for (;;)
+    AppMethodBeat.i(32329);
+    if (this.zNd.zJI == null)
     {
-      try
-      {
-        if (!bk.bl(this.vwT.vtH.cFV().cGH().vxj.getVideoPath())) {
-          continue;
-        }
-        i = u.u(j.f(this.vwT).eFu, j.a(this.vwT));
-        j.f(this.vwT).jr(i);
-      }
-      catch (Exception localException)
-      {
-        int i;
-        y.printErrStackTrace("MicroMsg.Imagegallery.handler.video", localException, "start timer error[%s]", new Object[] { localException.toString() });
-        continue;
-      }
-      j.m(this.vwT).S(500L, 500L);
-      return;
-      i = this.vwT.vtH.cFV().cGH().vxj.getCurrentPosition() / 1000;
+      ab.w("MicroMsg.Imagegallery.handler.video", "[onTimerExpired] null == adapter");
+      AppMethodBeat.o(32329);
+      return false;
     }
+    k localk = this.zNd.zJI.dJY();
+    if (localk == null)
+    {
+      AppMethodBeat.o(32329);
+      return false;
+    }
+    if (localk.zNq == null)
+    {
+      AppMethodBeat.o(32329);
+      return false;
+    }
+    if (localk.dKP().zNq.getVisibility() != 0)
+    {
+      AppMethodBeat.o(32329);
+      return false;
+    }
+    int i = this.zNd.zJI.zJK.getCurrentItem();
+    if ((s)this.zNd.zMN.get(i) == null)
+    {
+      this.zNd.Ql(i);
+      AppMethodBeat.o(32329);
+      return false;
+    }
+    if (!localk.dKP().zNt.isPlaying())
+    {
+      ab.i("MicroMsg.Imagegallery.handler.video", "it is not playing, stop offline timer");
+      AppMethodBeat.o(32329);
+      return false;
+    }
+    j.a(this.zNd, localk.dKP().zNt.getCurrentPosition());
+    this.zNd.Qm(j.n(this.zNd) / 1000);
+    AppMethodBeat.o(32329);
+    return true;
   }
 }
 

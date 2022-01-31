@@ -6,11 +6,12 @@ import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.style.ImageSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
   extends ImageSpan
 {
-  public int wjc = 0;
+  public int ACa = 0;
   
   public a(Drawable paramDrawable)
   {
@@ -19,6 +20,7 @@ public class a
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
+    AppMethodBeat.i(107847);
     paramCharSequence = getDrawable();
     paramCanvas.save();
     paramPaint = paramPaint.getFontMetricsInt();
@@ -27,10 +29,12 @@ public class a
     paramCanvas.translate(paramFloat, paramPaint.descent + paramInt4 - (paramInt1 - paramInt2) / 2 - (paramCharSequence.getBounds().bottom - paramCharSequence.getBounds().top) / 2);
     paramCharSequence.draw(paramCanvas);
     paramCanvas.restore();
+    AppMethodBeat.o(107847);
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
+    AppMethodBeat.i(107846);
     paramCharSequence = getDrawable().getBounds();
     if (paramFontMetricsInt != null)
     {
@@ -44,7 +48,9 @@ public class a
       paramFontMetricsInt.bottom = (paramInt2 + paramInt1 / 2);
       paramFontMetricsInt.descent = paramFontMetricsInt.bottom;
     }
-    return paramCharSequence.right;
+    paramInt1 = paramCharSequence.right;
+    AppMethodBeat.o(107846);
+    return paramInt1;
   }
 }
 

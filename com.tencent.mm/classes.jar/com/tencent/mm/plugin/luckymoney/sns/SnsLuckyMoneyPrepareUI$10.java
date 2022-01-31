@@ -5,9 +5,8 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class SnsLuckyMoneyPrepareUI$10
   implements View.OnFocusChangeListener
@@ -16,13 +15,16 @@ final class SnsLuckyMoneyPrepareUI$10
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramView.isFocused()) && (!this.eYg))
+    AppMethodBeat.i(42519);
+    if ((paramView.isFocused()) && (!this.val$isShowSysKB))
     {
-      ((InputMethodManager)this.lTI.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      new ah().postDelayed(new SnsLuckyMoneyPrepareUI.10.1(this, paramView), 300L);
+      ((InputMethodManager)this.oqN.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+      new ak().postDelayed(new SnsLuckyMoneyPrepareUI.10.1(this, paramView), 300L);
+      AppMethodBeat.o(42519);
       return;
     }
-    new ah().postDelayed(new SnsLuckyMoneyPrepareUI.10.2(this), 200L);
+    new ak().postDelayed(new SnsLuckyMoneyPrepareUI.10.2(this), 200L);
+    AppMethodBeat.o(42519);
   }
 }
 

@@ -8,12 +8,13 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MMCheckBox
   extends CheckBox
 {
-  private Drawable pWr;
-  private int pWs;
+  private Drawable tBU;
+  private int tBV;
   
   public MMCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,29 +28,34 @@ public class MMCheckBox
   
   protected void drawableStateChanged()
   {
+    AppMethodBeat.i(4776);
     super.drawableStateChanged();
-    if (this.pWr != null)
+    if (this.tBU != null)
     {
       int[] arrayOfInt = getDrawableState();
-      this.pWr.setState(arrayOfInt);
+      this.tBU.setState(arrayOfInt);
       invalidate();
     }
+    AppMethodBeat.o(4776);
   }
   
   @TargetApi(11)
   public void jumpDrawablesToCurrentState()
   {
+    AppMethodBeat.i(4778);
     super.jumpDrawablesToCurrentState();
-    if ((Build.VERSION.SDK_INT >= 11) && (this.pWr != null)) {
-      this.pWr.jumpToCurrentState();
+    if ((Build.VERSION.SDK_INT >= 11) && (this.tBU != null)) {
+      this.tBU.jumpToCurrentState();
     }
+    AppMethodBeat.o(4778);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     int j = 0;
+    AppMethodBeat.i(4779);
     super.onDraw(paramCanvas);
-    Drawable localDrawable = this.pWr;
+    Drawable localDrawable = this.tBU;
     int i;
     int k;
     int m;
@@ -73,6 +79,7 @@ public class MMCheckBox
     {
       localDrawable.setBounds(j, i, j + m, k + i);
       localDrawable.draw(paramCanvas);
+      AppMethodBeat.o(4779);
       return;
       i = getHeight() - k;
       break;
@@ -86,30 +93,41 @@ public class MMCheckBox
   
   public void setButtonDrawable(int paramInt)
   {
-    if ((paramInt != 0) && (paramInt == this.pWs)) {
+    AppMethodBeat.i(4775);
+    if ((paramInt != 0) && (paramInt == this.tBV))
+    {
+      AppMethodBeat.o(4775);
       return;
     }
-    this.pWs = paramInt;
+    this.tBV = paramInt;
     Drawable localDrawable = null;
-    if (this.pWs != 0) {
-      localDrawable = getResources().getDrawable(this.pWs);
+    if (this.tBV != 0) {
+      localDrawable = getResources().getDrawable(this.tBV);
     }
     setButtonDrawable(localDrawable);
+    AppMethodBeat.o(4775);
   }
   
   public void setButtonDrawable(Drawable paramDrawable)
   {
-    this.pWr = paramDrawable;
+    this.tBU = paramDrawable;
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    return (super.verifyDrawable(paramDrawable)) || (paramDrawable == this.pWr);
+    AppMethodBeat.i(4777);
+    if ((super.verifyDrawable(paramDrawable)) || (paramDrawable == this.tBU))
+    {
+      AppMethodBeat.o(4777);
+      return true;
+    }
+    AppMethodBeat.o(4777);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.MMCheckBox
  * JD-Core Version:    0.7.0.1
  */

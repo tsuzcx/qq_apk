@@ -13,10 +13,10 @@ import com.tencent.mm.svg.c;
 public final class abq
   extends c
 {
-  private final int height = 56;
-  private final int width = 40;
+  private final int height = 72;
+  private final int width = 72;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -24,16 +24,16 @@ public final class abq
     for (;;)
     {
       return 0;
-      return 40;
-      return 56;
+      return 72;
+      return 72;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      c.f(paramVarArgs);
-      c.e(paramVarArgs);
-      Paint localPaint = c.i(paramVarArgs);
+      c.h(paramVarArgs);
+      c.g(paramVarArgs);
+      Paint localPaint = c.k(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.FILL);
-      Object localObject = c.i(paramVarArgs);
+      Object localObject = c.k(paramVarArgs);
       ((Paint)localObject).setFlags(385);
       ((Paint)localObject).setStyle(Paint.Style.STROKE);
       localPaint.setColor(-16777216);
@@ -44,25 +44,40 @@ public final class abq
       ((Paint)localObject).setPathEffect(null);
       c.a((Paint)localObject, paramVarArgs).setStrokeWidth(1.0F);
       localPaint = c.a(localPaint, paramVarArgs);
-      localPaint.setColor(-7105645);
+      localPaint.setColor(-16777216);
       localCanvas.save();
       localPaint = c.a(localPaint, paramVarArgs);
-      localObject = c.j(paramVarArgs);
-      ((Path)localObject).moveTo(0.0F, 0.0F);
-      ((Path)localObject).lineTo(1.0F, 0.0F);
-      ((Path)localObject).cubicTo(4.17F, 3.36F, 8.43F, 5.76F, 12.0F, 9.0F);
-      ((Path)localObject).cubicTo(21.51F, 15.04F, 30.719999F, 21.469999F, 40.0F, 28.0F);
-      ((Path)localObject).lineTo(40.0F, 27.0F);
-      ((Path)localObject).lineTo(40.0F, 28.0F);
-      ((Path)localObject).cubicTo(26.719999F, 37.369999F, 13.33F, 46.610001F, 0.0F, 56.0F);
-      ((Path)localObject).lineTo(0.0F, 56.0F);
-      ((Path)localObject).lineTo(0.0F, 0.0F);
-      ((Path)localObject).lineTo(0.0F, 0.0F);
+      localObject = c.l(paramVarArgs);
+      ((Path)localObject).moveTo(42.0F, 9.0F);
+      ((Path)localObject).lineTo(42.0F, 15.0F);
+      ((Path)localObject).lineTo(15.0F, 15.0F);
+      ((Path)localObject).lineTo(15.0F, 57.0F);
+      ((Path)localObject).lineTo(57.0F, 57.0F);
+      ((Path)localObject).lineTo(57.0F, 30.0F);
+      ((Path)localObject).lineTo(63.0F, 30.0F);
+      ((Path)localObject).lineTo(63.0F, 60.0F);
+      ((Path)localObject).cubicTo(63.0F, 61.656853F, 61.656853F, 63.0F, 60.0F, 63.0F);
+      ((Path)localObject).lineTo(12.0F, 63.0F);
+      ((Path)localObject).cubicTo(10.343145F, 63.0F, 9.0F, 61.656853F, 9.0F, 60.0F);
+      ((Path)localObject).lineTo(9.0F, 12.0F);
+      ((Path)localObject).cubicTo(9.0F, 10.343145F, 10.343145F, 9.0F, 12.0F, 9.0F);
+      ((Path)localObject).lineTo(42.0F, 9.0F);
       ((Path)localObject).close();
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 2);
+      ((Path)localObject).moveTo(59.821098F, 10.06066F);
+      ((Path)localObject).lineTo(61.942421F, 12.18198F);
+      ((Path)localObject).cubicTo(62.528206F, 12.767767F, 62.528206F, 13.717514F, 61.942421F, 14.303301F);
+      ((Path)localObject).lineTo(33.942829F, 42.302895F);
+      ((Path)localObject).lineTo(27.965082F, 45.242802F);
+      ((Path)localObject).cubicTo(27.519051F, 45.462166F, 26.979641F, 45.278412F, 26.760279F, 44.832382F);
+      ((Path)localObject).cubicTo(26.637094F, 44.581913F, 26.637094F, 44.288467F, 26.760279F, 44.037998F);
+      ((Path)localObject).lineTo(29.700188F, 38.060253F);
+      ((Path)localObject).lineTo(57.69978F, 10.06066F);
+      ((Path)localObject).cubicTo(58.285564F, 9.474874F, 59.235313F, 9.474874F, 59.821098F, 10.06066F);
+      ((Path)localObject).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
       localCanvas.drawPath((Path)localObject, localPaint);
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }

@@ -1,11 +1,11 @@
 package a.g;
 
-import java.util.Iterator;
+import a.l;
 
-public abstract interface a<T>
-{
-  public abstract Iterator<T> iterator();
-}
+@l(eaO={1, 1, 13}, eaP={"kotlin/math/MathKt__MathHKt", "kotlin/math/MathKt__MathJVMKt"}, eaR=1)
+public final class a
+  extends c
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar

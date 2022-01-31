@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.protocol.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class GetAppSimpleDetailRequest
@@ -20,6 +21,7 @@ public final class GetAppSimpleDetailRequest
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76043);
     if (cache_appReqList == null)
     {
       cache_appReqList = new ArrayList();
@@ -27,13 +29,16 @@ public final class GetAppSimpleDetailRequest
       cache_appReqList.add(localAppDetailParam);
     }
     this.appReqList = ((ArrayList)paramJceInputStream.read(cache_appReqList, 0, false));
+    AppMethodBeat.o(76043);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76042);
     if (this.appReqList != null) {
       paramJceOutputStream.write(this.appReqList, 0);
     }
+    AppMethodBeat.o(76042);
   }
 }
 

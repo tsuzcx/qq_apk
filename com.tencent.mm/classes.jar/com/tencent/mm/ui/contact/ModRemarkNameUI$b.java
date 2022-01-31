@@ -3,25 +3,28 @@ package com.tencent.mm.ui.contact;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.tools.f;
 
 final class ModRemarkNameUI$b
   implements TextWatcher
 {
-  private int nRO = 800;
+  private int qFM = 800;
   
   private ModRemarkNameUI$b(ModRemarkNameUI paramModRemarkNameUI) {}
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    this.nRO = f.bi(800, paramEditable.toString());
-    if (this.nRO < 0) {
-      this.nRO = 0;
+    AppMethodBeat.i(33749);
+    this.qFM = f.bO(800, paramEditable.toString());
+    if (this.qFM < 0) {
+      this.qFM = 0;
     }
-    if (ModRemarkNameUI.i(this.vML) != null) {
-      ModRemarkNameUI.i(this.vML).setText(this.nRO);
+    if (ModRemarkNameUI.i(this.Aeo) != null) {
+      ModRemarkNameUI.i(this.Aeo).setText(this.qFM);
     }
-    ModRemarkNameUI.j(this.vML);
+    ModRemarkNameUI.j(this.Aeo);
+    AppMethodBeat.o(33749);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

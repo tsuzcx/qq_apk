@@ -1,32 +1,29 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Looper;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.lr;
-import com.tencent.mm.h.a.rb;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mh;
+import com.tencent.mm.g.a.sn;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.r;
+import com.tencent.mm.model.s;
 import com.tencent.mm.plugin.exdevice.f.a.i;
 import com.tencent.mm.plugin.exdevice.f.a.k;
 import com.tencent.mm.plugin.exdevice.model.ac;
@@ -34,16 +31,16 @@ import com.tencent.mm.plugin.exdevice.model.ac.a;
 import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.plugin.sport.ui.SportChartView;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.cnt;
-import com.tencent.mm.protocal.c.kz;
-import com.tencent.mm.protocal.c.zh;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.adu;
+import com.tencent.mm.protocal.protobuf.dcb;
+import com.tencent.mm.protocal.protobuf.nl;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMPullDownView;
 import com.tencent.mm.ui.base.MMPullDownView.a;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,127 +53,107 @@ public class ExdeviceProfileUI
   extends MMActivity
   implements com.tencent.mm.plugin.exdevice.f.b.e, c
 {
-  private static int jEE = 0;
-  private boolean OV = false;
-  private int dOA = 0;
-  private String gDJ;
-  private TextPaint gI = new TextPaint(1);
-  private String hcm;
-  private com.tencent.mm.ui.base.p jCc = null;
-  private boolean jDM;
-  private boolean jDN;
-  private int jDO;
-  private List<kz> jDR;
-  private com.tencent.mm.plugin.exdevice.a.b<i> jEA = new com.tencent.mm.plugin.exdevice.a.b() {};
-  private n.d jEB = new ExdeviceProfileUI.29(this);
-  private com.tencent.mm.plugin.exdevice.a.b<com.tencent.mm.plugin.exdevice.f.a.h> jEC = new ExdeviceProfileUI.31(this);
-  private com.tencent.mm.plugin.exdevice.a.b<com.tencent.mm.plugin.exdevice.f.a.g> jED = new ExdeviceProfileUI.2(this);
-  private Runnable jEF = new ExdeviceProfileUI.14(this);
-  private com.tencent.mm.plugin.exdevice.a.b<com.tencent.mm.plugin.exdevice.f.a.g> jEG = new ExdeviceProfileUI.15(this);
-  private List<String> jEH;
-  private com.tencent.mm.plugin.exdevice.a.b<k> jEI = new ExdeviceProfileUI.17(this);
-  private com.tencent.mm.sdk.b.c<lr> jEJ = new ExdeviceProfileUI.21(this);
-  private GestureDetector jEK;
-  private MMPullDownView.a jEL = new ExdeviceProfileUI.25(this);
-  private String jEh;
-  private com.tencent.mm.plugin.exdevice.f.b.a.a jEi;
-  private ArrayList<String> jEj;
-  private cnt jEk;
-  private ExdeviceProfileAffectedUserView jEl;
-  private ImageView jEm;
-  private ListView jEn;
-  private ExdeviceProfileListHeader jEo;
-  private MMSwitchBtn jEp;
-  private SportChartView jEq;
-  private a jEr;
-  private View jEs;
-  private volatile boolean jEt;
-  private String jEu;
-  private String jEv;
-  private List<com.tencent.mm.plugin.sport.b.e> jEw;
-  private ArrayList<com.tencent.mm.plugin.exdevice.f.b.a.c> jEx;
-  private List<zh> jEy;
-  private int jEz;
-  private String jxO;
-  private boolean jyb;
-  private List<String> jyr;
-  private List<String> jys;
+  private static int lOc = 0;
+  private boolean OZ;
+  private int eMi;
+  private TextPaint hB;
+  private String icM;
+  private String ikj;
+  private boolean lHA;
+  private List<String> lHQ;
+  private List<String> lHR;
+  private String lHn;
+  private com.tencent.mm.ui.base.p lLB;
+  private String lNF;
+  private com.tencent.mm.plugin.exdevice.f.b.a.a lNG;
+  private ArrayList<String> lNH;
+  private dcb lNI;
+  private ExdeviceProfileAffectedUserView lNJ;
+  private ImageView lNK;
+  private ListView lNL;
+  private ExdeviceProfileListHeader lNM;
+  private MMSwitchBtn lNN;
+  private SportChartView lNO;
+  private a lNP;
+  private View lNQ;
+  private volatile boolean lNR;
+  private String lNS;
+  private String lNT;
+  private List<com.tencent.mm.plugin.sport.a.e> lNU;
+  private ArrayList<com.tencent.mm.plugin.exdevice.f.b.a.c> lNV;
+  private List<adu> lNW;
+  private int lNX;
+  private com.tencent.mm.plugin.exdevice.a.b<i> lNY;
+  private n.d lNZ;
+  private boolean lNk;
+  private boolean lNl;
+  private int lNm;
+  private List<nl> lNp;
+  private com.tencent.mm.plugin.exdevice.a.b<com.tencent.mm.plugin.exdevice.f.a.h> lOa;
+  private com.tencent.mm.plugin.exdevice.a.b<com.tencent.mm.plugin.exdevice.f.a.g> lOb;
+  private Runnable lOd;
+  private com.tencent.mm.plugin.exdevice.a.b<com.tencent.mm.plugin.exdevice.f.a.g> lOe;
+  private List<String> lOf;
+  private com.tencent.mm.plugin.exdevice.a.b<k> lOg;
+  private k lOh;
+  private com.tencent.mm.sdk.b.c<mh> lOi;
+  private GestureDetector lOj;
+  private MMPullDownView.a lOk;
   private String mAppName;
   private Context mContext;
   
-  private void aMB()
+  public ExdeviceProfileUI()
   {
-    this.jEx = ad.aLN().aLZ();
-    if (this.jEx != null) {
-      y.d("MicroMsg.Sport.ExdeviceProfileUI", "ap: follow size:%s, %s", new Object[] { Integer.valueOf(this.jEx.size()), this.jEx.toString() });
-    }
-    while (!bk.dk(this.jEx))
+    AppMethodBeat.i(20061);
+    this.OZ = false;
+    this.lLB = null;
+    this.lNY = new com.tencent.mm.plugin.exdevice.a.b() {};
+    this.hB = new TextPaint(1);
+    this.eMi = 0;
+    this.lNZ = new ExdeviceProfileUI.29(this);
+    this.lOa = new ExdeviceProfileUI.31(this);
+    this.lOb = new ExdeviceProfileUI.2(this);
+    this.lOd = new Runnable()
     {
-      this.jDO = this.jEx.size();
-      return;
-      y.d("MicroMsg.Sport.ExdeviceProfileUI", "ap: follow is null");
-    }
-    this.jDO = 0;
-  }
-  
-  private void aMC()
-  {
-    runOnUiThread(new ExdeviceProfileUI.27(this));
-  }
-  
-  private void aMD()
-  {
-    runOnUiThread(new ExdeviceProfileUI.3(this));
-  }
-  
-  private void aME()
-  {
-    String str = q.Gj();
-    if (this.jEs != null) {
-      this.jEs.setVisibility(8);
-    }
-    if ((!bk.bl(str)) && (str.equals(this.hcm)))
-    {
-      if ((this.jEi != null) && (bk.bl(this.jEi.field_championUrl)) && (this.jEs != null)) {
-        this.jEs.setVisibility(0);
-      }
-      if (this.jEo != null) {
-        this.jEo.setOnClickListener(new ExdeviceProfileUI.11(this));
-      }
-    }
-    while ((this.jEi == null) || (bk.bl(this.jEi.field_championUrl)) || (this.jEo == null)) {
-      return;
-    }
-    this.jEo.setOnClickListener(new ExdeviceProfileUI.13(this));
-  }
-  
-  private void aMF()
-  {
-    if (this.jEi != null)
-    {
-      if ((this.gDJ != this.jEi.field_championUrl) && ((this.gDJ == null) || (!this.gDJ.equals(this.jEi.field_championUrl))))
+      public final void run()
       {
-        com.tencent.mm.plugin.exdevice.f.a.e.a(this, this.jEm, this.jEi.field_championUrl, R.e.darkgrey);
-        this.gDJ = this.jEi.field_championUrl;
+        AppMethodBeat.i(20036);
+        BackwardSupportUtil.c.a(ExdeviceProfileUI.z(ExdeviceProfileUI.this));
+        if (ExdeviceProfileUI.z(ExdeviceProfileUI.this).getCount() > 0) {
+          BackwardSupportUtil.c.b(ExdeviceProfileUI.z(ExdeviceProfileUI.this), ExdeviceProfileUI.z(ExdeviceProfileUI.this).getCount() - 1);
+        }
+        AppMethodBeat.o(20036);
       }
-      return;
-    }
-    this.jEm.setImageResource(R.e.darkgrey);
-    this.gDJ = null;
+    };
+    this.lOe = new ExdeviceProfileUI.15(this);
+    this.lOg = new ExdeviceProfileUI.17(this);
+    this.lOi = new ExdeviceProfileUI.21(this);
+    this.lOk = new MMPullDownView.a()
+    {
+      public final boolean onInterceptTouchEvent(MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(20051);
+        boolean bool = ExdeviceProfileUI.H(ExdeviceProfileUI.this).onTouchEvent(paramAnonymousMotionEvent);
+        AppMethodBeat.o(20051);
+        return bool;
+      }
+    };
+    AppMethodBeat.o(20061);
   }
   
-  private void y(long paramLong1, long paramLong2)
+  private void K(long paramLong1, long paramLong2)
   {
-    Object localObject1 = ((com.tencent.mm.plugin.sport.b.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.sport.b.b.class)).I(paramLong1, paramLong2);
+    AppMethodBeat.i(20075);
+    Object localObject1 = ((com.tencent.mm.plugin.sport.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.sport.a.b.class)).X(paramLong1, paramLong2);
     HashSet localHashSet = new HashSet();
     ArrayList localArrayList = new ArrayList();
     Object localObject2;
-    if (this.jEw != null)
+    if (this.lNU != null)
     {
-      localObject2 = this.jEw.iterator();
+      localObject2 = this.lNU.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        com.tencent.mm.plugin.sport.b.e locale = (com.tencent.mm.plugin.sport.b.e)((Iterator)localObject2).next();
+        com.tencent.mm.plugin.sport.a.e locale = (com.tencent.mm.plugin.sport.a.e)((Iterator)localObject2).next();
         if (localHashSet.add(locale.field_date)) {
           localArrayList.add(locale);
         }
@@ -185,148 +162,250 @@ public class ExdeviceProfileUI
     localObject1 = ((List)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (com.tencent.mm.plugin.sport.b.e)((Iterator)localObject1).next();
-      if (localHashSet.add(((com.tencent.mm.plugin.sport.b.e)localObject2).field_date)) {
+      localObject2 = (com.tencent.mm.plugin.sport.a.e)((Iterator)localObject1).next();
+      if (localHashSet.add(((com.tencent.mm.plugin.sport.a.e)localObject2).field_date)) {
         localArrayList.add(localObject2);
       }
     }
     Collections.sort(localArrayList);
-    this.jEw = localArrayList;
-    this.jEq.cN(this.jEw);
+    this.lNU = localArrayList;
+    if (this.lNO != null) {
+      this.lNO.dz(this.lNU);
+    }
+    AppMethodBeat.o(20075);
   }
   
-  public final void aMG()
+  private void bqP()
   {
-    runOnUiThread(new ExdeviceProfileUI.18(this));
-    au.Dk().a(new k(this.jEI), 0);
+    AppMethodBeat.i(20063);
+    this.lNV = ad.bqa().bqm();
+    if (this.lNV != null) {
+      ab.d("MicroMsg.Sport.ExdeviceProfileUI", "ap: follow size:%s, %s", new Object[] { Integer.valueOf(this.lNV.size()), this.lNV.toString() });
+    }
+    while (!bo.es(this.lNV))
+    {
+      this.lNm = this.lNV.size();
+      AppMethodBeat.o(20063);
+      return;
+      ab.d("MicroMsg.Sport.ExdeviceProfileUI", "ap: follow is null");
+    }
+    this.lNm = 0;
+    AppMethodBeat.o(20063);
   }
   
-  public final void aMH()
+  private void bqQ()
   {
-    com.tencent.mm.plugin.sport.b.d.jdMethod_if(17);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.hcm);
-    au.Dk().a(new com.tencent.mm.plugin.exdevice.f.a.g(localArrayList, this.jED), 0);
+    AppMethodBeat.i(20064);
+    runOnUiThread(new ExdeviceProfileUI.27(this));
+    AppMethodBeat.o(20064);
+  }
+  
+  private void bqR()
+  {
+    AppMethodBeat.i(20067);
+    runOnUiThread(new ExdeviceProfileUI.3(this));
+    AppMethodBeat.o(20067);
+  }
+  
+  private void bqS()
+  {
+    AppMethodBeat.i(20069);
+    String str = r.Zn();
+    if (this.lNQ != null) {
+      this.lNQ.setVisibility(8);
+    }
+    if ((!bo.isNullOrNil(str)) && (str.equals(this.ikj)))
+    {
+      if ((this.lNG != null) && (bo.isNullOrNil(this.lNG.field_championUrl)) && (this.lNQ != null)) {
+        this.lNQ.setVisibility(0);
+      }
+      if (this.lNM != null)
+      {
+        this.lNM.setOnClickListener(new ExdeviceProfileUI.11(this));
+        AppMethodBeat.o(20069);
+      }
+    }
+    else if ((this.lNG != null) && (!bo.isNullOrNil(this.lNG.field_championUrl)) && (this.lNM != null))
+    {
+      this.lNM.setOnClickListener(new ExdeviceProfileUI.13(this));
+    }
+    AppMethodBeat.o(20069);
+  }
+  
+  private void bqT()
+  {
+    AppMethodBeat.i(20070);
+    if (this.lNG != null)
+    {
+      if ((this.icM != this.lNG.field_championUrl) && ((this.icM == null) || (!this.icM.equals(this.lNG.field_championUrl))))
+      {
+        com.tencent.mm.plugin.exdevice.f.a.e.a(this, this.lNK, this.lNG.field_championUrl);
+        this.icM = this.lNG.field_championUrl;
+        AppMethodBeat.o(20070);
+      }
+    }
+    else
+    {
+      this.lNK.setImageResource(2131689922);
+      this.icM = null;
+    }
+    AppMethodBeat.o(20070);
   }
   
   public final void b(String paramString, com.tencent.mm.plugin.exdevice.f.b.d paramd)
   {
-    if (("HardDeviceChampionInfo".equals(paramString)) && (this.hcm.equals(paramd.username)))
+    AppMethodBeat.i(20072);
+    if (("HardDeviceChampionInfo".equals(paramString)) && (this.ikj.equals(paramd.username)))
     {
-      y.d("MicroMsg.Sport.ExdeviceProfileUI", "hy: url may changed. maybe reload background");
-      this.jEi = ad.aLP().BC(this.hcm);
+      ab.d("MicroMsg.Sport.ExdeviceProfileUI", "hy: url may changed. maybe reload background");
+      this.lNG = ad.bqc().LE(this.ikj);
       runOnUiThread(new ExdeviceProfileUI.16(this));
     }
+    AppMethodBeat.o(20072);
   }
   
-  protected final int getLayoutId()
+  public final void bqU()
   {
-    return R.i.exdevice_profile_ui;
+    AppMethodBeat.i(20073);
+    runOnUiThread(new ExdeviceProfileUI.18(this));
+    if (this.lOh != null) {
+      aw.Rc().a(this.lOh);
+    }
+    this.lOh = new k(this.lOg);
+    aw.Rc().a(this.lOh, 0);
+    AppMethodBeat.o(20073);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public final void bqV()
   {
+    AppMethodBeat.i(20074);
+    com.tencent.mm.plugin.sport.a.d.kS(17);
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(this.ikj);
+    aw.Rc().a(new com.tencent.mm.plugin.exdevice.f.a.g(localArrayList, this.lOb), 0);
+    AppMethodBeat.o(20074);
+  }
+  
+  public int getLayoutId()
+  {
+    return 2130969466;
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(20071);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (com.tencent.mm.plugin.exdevice.f.a.e.a(this, paramInt1, paramInt2, paramIntent, this.mAppName)) {}
-    label119:
-    do
+    if (com.tencent.mm.plugin.exdevice.f.a.e.a(this, paramInt1, paramInt2, paramIntent, this.mAppName))
     {
-      do
+      AppMethodBeat.o(20071);
+      return;
+    }
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(20071);
+      return;
+      if (paramInt2 == -1)
       {
-        do
+        Toast.makeText(this, 2131303664, 1).show();
+        AppMethodBeat.o(20071);
+        return;
+        if (paramInt2 == -1)
         {
-          return;
-          switch (paramInt1)
+          if (paramIntent == null) {}
+          String str2;
+          for (String str1 = null;; str1 = paramIntent.getStringExtra("Select_Conv_User"))
           {
-          default: 
+            str2 = ac.dL(this);
+            if ((str1 != null) && (str1.length() != 0)) {
+              break;
+            }
+            ab.e("MicroMsg.Sport.ExdeviceProfileUI", "select conversation failed, toUser is null.");
+            AppMethodBeat.o(20071);
             return;
           }
-        } while (paramInt2 != -1);
-        if (paramIntent == null) {}
-        String str2;
-        for (String str1 = null;; str1 = paramIntent.getStringExtra("Select_Conv_User"))
-        {
-          str2 = ac.cZ(this);
-          if ((str1 != null) && (str1.length() != 0)) {
-            break label119;
-          }
-          y.e("MicroMsg.Sport.ExdeviceProfileUI", "select conversation failed, toUser is null.");
+          ac.a(this, str1, str2, paramIntent.getStringExtra("custom_send_text"), this.lNT);
+          com.tencent.mm.ui.base.h.bO(getContext(), getResources().getString(2131297076));
+          AppMethodBeat.o(20071);
           return;
-          if (paramInt2 != -1) {
-            break;
+          if (paramInt2 == -1)
+          {
+            paramIntent = bo.P(paramIntent.getStringExtra("Select_Contact").split(","));
+            if (paramIntent == null)
+            {
+              AppMethodBeat.o(20071);
+              return;
+            }
+            if (this.lLB != null) {
+              this.lLB.show();
+            }
+            aw.Rc().a(new com.tencent.mm.plugin.exdevice.f.a.g(paramIntent, this.lOe), 0);
           }
-          Toast.makeText(this, R.l.share_ok, 1).show();
-          return;
         }
-        ac.a(this, str1, str2, paramIntent.getStringExtra("custom_send_text"), this.jEv);
-        com.tencent.mm.ui.base.h.bC(this.mController.uMN, getResources().getString(R.l.app_shared));
-        return;
-      } while (paramInt2 != -1);
-      paramIntent = bk.G(paramIntent.getStringExtra("Select_Contact").split(","));
-    } while (paramIntent == null);
-    if (this.jCc != null) {
-      this.jCc.show();
+      }
     }
-    au.Dk().a(new com.tencent.mm.plugin.exdevice.f.a.g(paramIntent, this.jEG), 0);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(20062);
     super.onCreate(paramBundle);
-    this.mContext = this.mController.uMN;
+    this.mContext = getContext();
     paramBundle = getIntent();
-    aMB();
-    this.hcm = paramBundle.getStringExtra("username");
-    this.jEh = paramBundle.getStringExtra("usernickname");
-    paramBundle = q.Gj();
+    bqP();
+    this.ikj = paramBundle.getStringExtra("username");
+    this.lNF = paramBundle.getStringExtra("usernickname");
+    paramBundle = r.Zn();
     if (paramBundle != null) {
-      this.jDM = paramBundle.equals(this.hcm);
+      this.lNk = paramBundle.equals(this.ikj);
     }
     this.mAppName = getIntent().getStringExtra("app_username");
-    this.jDN = ad.aLN().BA(this.hcm);
-    y.d("MicroMsg.Sport.ExdeviceProfileUI", "is follow %s", new Object[] { Boolean.valueOf(this.jDN) });
+    this.lNl = ad.bqa().LC(this.ikj);
+    ab.d("MicroMsg.Sport.ExdeviceProfileUI", "is follow %s", new Object[] { Boolean.valueOf(this.lNl) });
     boolean bool;
     int m;
     Object localObject2;
-    if (!bk.bl(this.hcm))
+    if (!bo.isNullOrNil(this.ikj))
     {
       bool = true;
       Assert.assertTrue(bool);
-      this.jEi = ad.aLP().BC(this.hcm);
-      this.jEj = getIntent().getStringArrayListExtra("key_affected_semi");
-      getString(R.l.app_tip);
-      this.jCc = com.tencent.mm.ui.base.h.b(this, getString(R.l.loading_tips), new ExdeviceProfileUI.4(this));
-      this.jEl = ((ExdeviceProfileAffectedUserView)findViewById(R.h.exdevice_affected_view));
-      this.jEm = ((ImageView)findViewById(R.h.exdevice_bg_iv));
-      this.jEn = ((ListView)findViewById(R.h.exdevice_profile_lv));
-      paramBundle = (MMPullDownView)findViewById(R.h.pull_down_view);
-      this.jEl.setAffectedUserInfo(this.jEj);
-      aMF();
-      this.jEs = findViewById(R.h.setCoverV);
-      this.jEK = new GestureDetector(this.mController.uMN, new ExdeviceProfileUI.a(this, (byte)0));
+      this.lNG = ad.bqc().LE(this.ikj);
+      this.lNH = getIntent().getStringArrayListExtra("key_affected_semi");
+      getString(2131297087);
+      this.lLB = com.tencent.mm.ui.base.h.b(this, getString(2131301086), new ExdeviceProfileUI.4(this));
+      this.lNJ = ((ExdeviceProfileAffectedUserView)findViewById(2131823819));
+      this.lNK = ((ImageView)findViewById(2131823816));
+      this.lNL = ((ListView)findViewById(2131823818));
+      paramBundle = (MMPullDownView)findViewById(2131823243);
+      this.lNJ.setAffectedUserInfo(this.lNH);
+      bqT();
+      this.lNQ = findViewById(2131823817);
+      this.lOj = new GestureDetector(getContext(), new ExdeviceProfileUI.a(this, (byte)0));
       paramBundle.setIsBottomShowAll(false);
       paramBundle.setTopViewVisible(false);
       paramBundle.setBottomViewVisible(false);
       paramBundle.setIsBottomShowAll(false);
       paramBundle.setIsTopShowAll(false);
       paramBundle.setCanOverScrool(true);
-      paramBundle.setOnInterceptTouchEventListener(this.jEL);
+      paramBundle.setOnInterceptTouchEventListener(this.lOk);
       paramBundle.setAtBottomCallBack(new ExdeviceProfileUI.5(this));
       paramBundle.setAtTopCallBack(new ExdeviceProfileUI.6(this));
       paramBundle.setOnBottomLoadDataListener(new ExdeviceProfileUI.7(this));
       paramBundle.setOnScrollChangedListener(new ExdeviceProfileUI.8(this));
       localObject1 = new ExdeviceProfileListHeader(this);
-      m = com.tencent.mm.plugin.exdevice.j.b.A(this, getResources().getDimensionPixelSize(R.f.ExdeviceDefaultStatusBarHeight));
+      m = com.tencent.mm.plugin.exdevice.j.b.K(this, getResources().getDimensionPixelSize(2131427611));
       localObject2 = getResources().getDisplayMetrics();
       if (((DisplayMetrics)localObject2).widthPixels <= ((DisplayMetrics)localObject2).heightPixels) {
-        break label906;
+        break label914;
       }
     }
-    label906:
-    for (int i = getResources().getDimensionPixelSize(R.f.DefaultActionbarHeightLand);; i = getResources().getDimensionPixelSize(R.f.DefaultActionbarHeightPort))
+    label914:
+    for (int i = getResources().getDimensionPixelSize(2131427558);; i = getResources().getDimensionPixelSize(2131427559))
     {
-      j = getResources().getDimensionPixelSize(R.f.ExdeviceProfileAvatarSize);
-      int k = getResources().getDimensionPixelSize(R.f.ExdeviceProfileAvatarRoundStrokeWidth);
+      int j = getResources().getDimensionPixelSize(2131427621);
+      int k = getResources().getDimensionPixelSize(2131427620);
       localObject2 = getWindowManager().getDefaultDisplay();
       k = ((Display)localObject2).getHeight() / 2 - m - i - j / 2 - k;
       if (((Display)localObject2).getHeight() > 0)
@@ -336,109 +415,128 @@ public class ExdeviceProfileUI
       }
       else
       {
-        j = getResources().getDimensionPixelSize(R.f.ExdeviceChangeCoverClickAreaHeight);
+        j = getResources().getDimensionPixelSize(2131427605);
       }
       ((ExdeviceProfileListHeader)localObject1).setMinimumHeight(j);
       ((ExdeviceProfileListHeader)localObject1).setMinimumWidth(((Display)localObject2).getWidth());
       ((ExdeviceProfileListHeader)localObject1).setTag(Integer.valueOf(((Display)localObject2).getHeight() / 2 - m - i));
-      this.jEo = ((ExdeviceProfileListHeader)localObject1);
-      this.jEn.addHeaderView(this.jEo, null, false);
-      this.jEr = new a(this.mController.uMN, this.mAppName, this.jDM, this.hcm);
-      this.jEr.jDL = this;
-      this.jEn.setAdapter(this.jEr);
-      this.jEn.setOnScrollListener(new ExdeviceProfileUI.9(this));
-      this.jEl.setUsername(this.hcm);
-      this.jEs.setOnClickListener(new ExdeviceProfileUI.10(this));
+      this.lNM = ((ExdeviceProfileListHeader)localObject1);
+      this.lNL.addHeaderView(this.lNM, null, false);
+      this.lNP = new a(getContext(), this.mAppName, this.lNk, this.ikj);
+      this.lNP.lNj = this;
+      this.lNL.setAdapter(this.lNP);
+      this.lNL.setOnScrollListener(new ExdeviceProfileUI.9(this));
+      this.lNJ.setUsername(this.ikj);
+      this.lNQ.setOnClickListener(new ExdeviceProfileUI.10(this));
       paramBundle.setCanOverScrool(false);
-      paramBundle = new RelativeLayout.LayoutParams(com.tencent.mm.cb.a.fj(this), ((Integer)this.jEo.getTag()).intValue());
-      this.jEm.setLayoutParams(paramBundle);
-      aME();
-      ad.aLU().a(this);
-      au.Dk().a(new i(this.hcm, bk.pm(this.mAppName), this.jEA), 0);
+      paramBundle = new RelativeLayout.LayoutParams(com.tencent.mm.cb.a.gw(this), ((Integer)this.lNM.getTag()).intValue());
+      this.lNK.setLayoutParams(paramBundle);
+      bqS();
+      ad.bqh().a(this);
+      aw.Rc().a(new i(this.ikj, bo.nullAsNil(this.mAppName), this.lNY), 0);
       try
       {
-        this.dOA = getResources().getDimensionPixelSize(R.f.ExdeviceUserNameWidth);
+        this.eMi = getResources().getDimensionPixelSize(2131427630);
+        if (this.eMi <= 0) {
+          this.eMi = 60;
+        }
       }
       catch (Exception paramBundle)
       {
         for (;;)
         {
-          y.printErrStackTrace("MicroMsg.Sport.ExdeviceProfileUI", paramBundle, "", new Object[0]);
-          if (this.dOA <= 0) {
-            this.dOA = 60;
+          ab.printErrStackTrace("MicroMsg.Sport.ExdeviceProfileUI", paramBundle, "", new Object[0]);
+          if (this.eMi <= 0) {
+            this.eMi = 60;
           }
         }
       }
       finally
       {
-        if (this.dOA > 0) {
-          break label965;
+        if (this.eMi > 0) {
+          break label973;
         }
-        this.dOA = 60;
+        this.eMi = 60;
+        AppMethodBeat.o(20062);
       }
-      y.d("MicroMsg.Sport.ExdeviceProfileUI", "ap: ellipsizeWidth: %s", new Object[] { Integer.valueOf(this.dOA) });
-      if (!this.jDM) {
-        break label967;
+      ab.d("MicroMsg.Sport.ExdeviceProfileUI", "ap: ellipsizeWidth: %s", new Object[] { Integer.valueOf(this.eMi) });
+      if (!this.lNk) {
+        break label981;
       }
-      paramBundle = getString(R.l.exdevice_profile_my_title);
-      N(paramBundle);
+      paramBundle = getString(2131299450);
+      setMMTitle(paramBundle);
       setBackBtn(new ExdeviceProfileUI.28(this));
-      y.i("MicroMsg.Sport.ExdeviceProfileUI", "mUsername:" + this.hcm);
-      if (q.Gj().equals(this.hcm))
+      ab.i("MicroMsg.Sport.ExdeviceProfileUI", "mUsername:" + this.ikj);
+      if (r.Zn().equals(this.ikj))
       {
-        paramBundle = new rb();
-        paramBundle.cap.action = 3;
-        com.tencent.mm.sdk.b.a.udP.a(paramBundle, Looper.getMainLooper());
+        paramBundle = new sn();
+        paramBundle.cIP.action = 3;
+        com.tencent.mm.sdk.b.a.ymk.a(paramBundle, com.tencent.mm.sdk.g.d.ysm.cjN());
       }
+      AppMethodBeat.o(20062);
       return;
       bool = false;
       break;
     }
-    label965:
-    label967:
-    i = R.l.exdevice_profile_title;
-    paramBundle = this.hcm;
-    int j = this.dOA;
-    Object localObject1 = r.gV(paramBundle);
-    if ((paramBundle.equalsIgnoreCase((String)localObject1)) && (!bk.bl(this.jEh))) {}
-    for (paramBundle = j.b(this.mController.uMN, this.jEh);; paramBundle = j.b(this.mController.uMN, (CharSequence)localObject1))
+    label973:
+    label981:
+    paramBundle = this.ikj;
+    i = this.eMi;
+    Object localObject1 = s.nE(paramBundle);
+    if ((paramBundle.equalsIgnoreCase((String)localObject1)) && (!bo.isNullOrNil(this.lNF))) {}
+    for (paramBundle = j.b(getContext(), this.lNF);; paramBundle = j.b(getContext(), (CharSequence)localObject1))
     {
-      localObject1 = TextUtils.ellipsize(paramBundle, this.gI, j, TextUtils.TruncateAt.END);
-      y.d("MicroMsg.Sport.ExdeviceProfileUI", " width: %d, ap: username %s, ellipseize username %s", new Object[] { Integer.valueOf(j), paramBundle, localObject1 });
-      paramBundle = j.b(this, getString(i, new Object[] { localObject1 }));
+      localObject1 = TextUtils.ellipsize(paramBundle, this.hB, i, TextUtils.TruncateAt.END);
+      ab.d("MicroMsg.Sport.ExdeviceProfileUI", " width: %d, ap: username %s, ellipseize username %s", new Object[] { Integer.valueOf(i), paramBundle, localObject1 });
+      paramBundle = j.b(this, getString(2131299454, new Object[] { localObject1 }));
       break;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    this.jEJ.dead();
-    this.OV = true;
+    AppMethodBeat.i(20068);
+    if (this.lOh != null) {
+      aw.Rc().a(this.lOh);
+    }
+    this.lOi.dead();
+    this.OZ = true;
     super.onDestroy();
-    ad.aLU().b(this);
+    ad.bqh().b(this);
+    AppMethodBeat.o(20068);
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(20065);
     super.onPause();
+    AppMethodBeat.o(20065);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(20066);
     super.onResume();
-    y.v("MicroMsg.Sport.ExdeviceProfileUI", "ExdeviceProfileUI: onResume");
-    aMB();
-    aMC();
-    if (!this.jDM)
+    ab.v("MicroMsg.Sport.ExdeviceProfileUI", "ExdeviceProfileUI: onResume");
+    bqP();
+    bqQ();
+    if (!this.lNk)
     {
-      ad.aLN().BA(this.hcm);
-      aMD();
+      ad.bqa().LC(this.ikj);
+      bqR();
     }
+    AppMethodBeat.o(20066);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceProfileUI
  * JD-Core Version:    0.7.0.1
  */

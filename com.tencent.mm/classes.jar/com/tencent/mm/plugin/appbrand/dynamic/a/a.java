@@ -1,68 +1,67 @@
 package com.tencent.mm.plugin.appbrand.dynamic.a;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.c;
-import java.util.HashMap;
-import java.util.HashSet;
+import com.tencent.mm.plugin.appbrand.s.i;
 import java.util.Map;
 import java.util.Set;
 
 final class a
   implements c
 {
-  private Map<Object, Set<View>> fUt = new HashMap();
+  private final i<Object, View> hnV;
   
-  public final Map<Object, Set<View>> Jl()
+  a()
   {
-    return this.fUt;
+    AppMethodBeat.i(10726);
+    this.hnV = new i();
+    AppMethodBeat.o(10726);
   }
   
-  public final Set<View> ay(Object paramObject)
+  public final Set<View> aS(Object paramObject)
   {
-    if (paramObject == null) {
-      return null;
-    }
-    return (Set)this.fUt.get(paramObject);
+    AppMethodBeat.i(10729);
+    paramObject = this.hnV.br(paramObject);
+    AppMethodBeat.o(10729);
+    return paramObject;
   }
   
-  public final Set<View> az(Object paramObject)
+  public final Set<View> aT(Object paramObject)
   {
-    if (paramObject == null) {
-      return null;
-    }
-    return (Set)this.fUt.remove(paramObject);
+    AppMethodBeat.i(10730);
+    paramObject = this.hnV.bs(paramObject);
+    AppMethodBeat.o(10730);
+    return paramObject;
+  }
+  
+  public final Map<Object, Set<View>> acj()
+  {
+    AppMethodBeat.i(141924);
+    Map localMap = this.hnV.aNQ();
+    AppMethodBeat.o(141924);
+    return localMap;
   }
   
   public final boolean d(Object paramObject, View paramView)
   {
-    if ((paramObject == null) || (paramView == null)) {
-      return false;
-    }
-    Set localSet = (Set)this.fUt.get(paramObject);
-    Object localObject = localSet;
-    if (localSet == null)
-    {
-      localObject = new HashSet();
-      this.fUt.put(paramObject, localObject);
-    }
-    return ((Set)localObject).add(paramView);
+    AppMethodBeat.i(10727);
+    boolean bool = this.hnV.s(paramObject, paramView);
+    AppMethodBeat.o(10727);
+    return bool;
   }
   
   public final boolean e(Object paramObject, View paramView)
   {
-    if ((paramObject == null) || (paramView == null)) {
-      return false;
-    }
-    paramObject = (Set)this.fUt.get(paramObject);
-    if (paramObject != null) {
-      return paramObject.remove(paramView);
-    }
-    return false;
+    AppMethodBeat.i(10728);
+    boolean bool = this.hnV.t(paramObject, paramView);
+    AppMethodBeat.o(10728);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.a
  * JD-Core Version:    0.7.0.1
  */

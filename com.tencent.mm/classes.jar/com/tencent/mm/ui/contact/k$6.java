@@ -3,10 +3,11 @@ package com.tencent.mm.ui.contact;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 
 final class k$6
@@ -16,10 +17,12 @@ final class k$6
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.FMessageContactView", "initMultiNew, goto FMessageConversationUI");
-    au.Hx();
-    c.Dz().o(143618, Integer.valueOf(0));
-    d.b(k.d(this.vLo), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
+    AppMethodBeat.i(33717);
+    ab.d("MicroMsg.FMessageContactView", "initMultiNew, goto FMessageConversationUI");
+    aw.aaz();
+    c.Ru().set(143618, Integer.valueOf(0));
+    d.b(k.d(this.AcQ), "subapp", ".ui.friend.FMessageConversationUI", new Intent());
+    AppMethodBeat.o(33717);
   }
 }
 

@@ -5,7 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.text.ClipboardManager;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$9
   implements DialogInterface.OnClickListener
@@ -14,8 +14,10 @@ final class b$9
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ClipboardManager)this.dAE.getSystemService("clipboard")).setText(this.doz);
-    Toast.makeText(this.dAE, R.l.voip_get_key_copy_note, 0).show();
+    AppMethodBeat.i(16089);
+    ((ClipboardManager)this.eug.getSystemService("clipboard")).setText(this.val$key);
+    Toast.makeText(this.eug, 2131304688, 0).show();
+    AppMethodBeat.o(16089);
   }
 }
 

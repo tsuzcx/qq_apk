@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.location.model;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
 import com.tencent.mm.model.e;
 
 public final class b
@@ -9,10 +10,12 @@ public final class b
 {
   public final e.b b(e.a parama)
   {
+    AppMethodBeat.i(113303);
     parama = super.b(parama);
     if (parama != null) {
-      l.R(parama.bFH);
+      l.X(parama.cmQ);
     }
+    AppMethodBeat.o(113303);
     return parama;
   }
 }

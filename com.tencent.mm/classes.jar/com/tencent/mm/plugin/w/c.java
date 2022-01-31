@@ -1,36 +1,38 @@
 package com.tencent.mm.plugin.w;
 
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface c
+public enum c
 {
-  public abstract String Iq(String paramString);
+  public final SparseArray<b> qSc;
   
-  public abstract a a(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener);
+  static
+  {
+    AppMethodBeat.i(79173);
+    qSb = new c("INSTANCE");
+    qSd = new c[] { qSb };
+    AppMethodBeat.o(79173);
+  }
   
-  public abstract a b(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener);
+  private c()
+  {
+    AppMethodBeat.i(79171);
+    this.qSc = new SparseArray();
+    AppMethodBeat.o(79171);
+  }
   
-  public abstract void bkr();
-  
-  public abstract b bks();
-  
-  public abstract a dP(Context paramContext);
-  
-  public abstract void dQ(Context paramContext);
-  
-  public abstract void e(String paramString1, int paramInt, String paramString2, String paramString3);
-  
-  public abstract void hB(boolean paramBoolean);
-  
-  public abstract void s(Context paramContext, Intent paramIntent);
-  
-  public abstract void t(Context paramContext, Intent paramIntent);
+  public final boolean a(b paramb)
+  {
+    AppMethodBeat.i(79172);
+    this.qSc.put(paramb.getType(), paramb);
+    AppMethodBeat.o(79172);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.w.c
  * JD-Core Version:    0.7.0.1
  */

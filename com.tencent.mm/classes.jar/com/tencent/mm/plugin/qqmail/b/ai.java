@@ -1,103 +1,128 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 
 public final class ai
   extends com.tencent.mm.bv.a
 {
   public String name;
-  public long nfq;
-  public String nfr;
+  public long pKF;
+  public String pKG;
   public String path;
   public long size;
   public int state;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(68075);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.path == null) {
-        throw new b("Not all required fields were included: path");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.path == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: path");
+        AppMethodBeat.o(68075);
+        throw paramVarArgs;
       }
-      if (this.name == null) {
-        throw new b("Not all required fields were included: name");
+      if (this.name == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: name");
+        AppMethodBeat.o(68075);
+        throw paramVarArgs;
       }
       if (this.path != null) {
-        paramVarArgs.d(1, this.path);
+        paramVarArgs.e(1, this.path);
       }
       if (this.name != null) {
-        paramVarArgs.d(2, this.name);
+        paramVarArgs.e(2, this.name);
       }
-      paramVarArgs.Y(3, this.size);
-      paramVarArgs.gB(4, this.state);
-      paramVarArgs.Y(5, this.nfq);
-      if (this.nfr != null) {
-        paramVarArgs.d(6, this.nfr);
+      paramVarArgs.am(3, this.size);
+      paramVarArgs.aO(4, this.state);
+      paramVarArgs.am(5, this.pKF);
+      if (this.pKG != null) {
+        paramVarArgs.e(6, this.pKG);
       }
+      AppMethodBeat.o(68075);
       return 0;
     }
     if (paramInt == 1) {
       if (this.path == null) {
-        break label470;
+        break label562;
       }
     }
-    label470:
-    for (paramInt = d.a.a.b.b.a.e(1, this.path) + 0;; paramInt = 0)
+    label562:
+    for (paramInt = e.a.a.b.b.a.f(1, this.path) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.name != null) {
-        i = paramInt + d.a.a.b.b.a.e(2, this.name);
+        i = paramInt + e.a.a.b.b.a.f(2, this.name);
       }
-      i = i + d.a.a.a.X(3, this.size) + d.a.a.a.gy(4, this.state) + d.a.a.a.X(5, this.nfq);
+      i = i + e.a.a.b.b.a.p(3, this.size) + e.a.a.b.b.a.bl(4, this.state) + e.a.a.b.b.a.p(5, this.pKF);
       paramInt = i;
-      if (this.nfr != null) {
-        paramInt = i + d.a.a.b.b.a.e(6, this.nfr);
+      if (this.pKG != null) {
+        paramInt = i + e.a.a.b.b.a.f(6, this.pKG);
       }
+      AppMethodBeat.o(68075);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.path == null) {
-          throw new b("Not all required fields were included: path");
+        if (this.path == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: path");
+          AppMethodBeat.o(68075);
+          throw paramVarArgs;
         }
-        if (this.name != null) {
-          break;
+        if (this.name == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: name");
+          AppMethodBeat.o(68075);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: name");
+        AppMethodBeat.o(68075);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         ai localai = (ai)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(68075);
           return -1;
         case 1: 
-          localai.path = locala.xpH.readString();
+          localai.path = locala.CLY.readString();
+          AppMethodBeat.o(68075);
           return 0;
         case 2: 
-          localai.name = locala.xpH.readString();
+          localai.name = locala.CLY.readString();
+          AppMethodBeat.o(68075);
           return 0;
         case 3: 
-          localai.size = locala.xpH.oE();
+          localai.size = locala.CLY.sm();
+          AppMethodBeat.o(68075);
           return 0;
         case 4: 
-          localai.state = locala.xpH.oD();
+          localai.state = locala.CLY.sl();
+          AppMethodBeat.o(68075);
           return 0;
         case 5: 
-          localai.nfq = locala.xpH.oE();
+          localai.pKF = locala.CLY.sm();
+          AppMethodBeat.o(68075);
           return 0;
         }
-        localai.nfr = locala.xpH.readString();
+        localai.pKG = locala.CLY.readString();
+        AppMethodBeat.o(68075);
         return 0;
       }
+      AppMethodBeat.o(68075);
       return -1;
     }
   }

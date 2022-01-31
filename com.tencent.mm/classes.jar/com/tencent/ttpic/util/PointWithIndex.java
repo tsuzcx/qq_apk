@@ -1,6 +1,7 @@
 package com.tencent.ttpic.util;
 
 import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PointWithIndex
 {
@@ -9,8 +10,10 @@ public class PointWithIndex
   
   public PointWithIndex(float paramFloat1, float paramFloat2, int paramInt)
   {
+    AppMethodBeat.i(83941);
     this.point = new PointF(paramFloat1, paramFloat2);
     this.index = paramInt;
+    AppMethodBeat.o(83941);
   }
 }
 

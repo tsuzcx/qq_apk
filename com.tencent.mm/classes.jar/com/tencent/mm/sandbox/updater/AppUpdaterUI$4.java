@@ -2,6 +2,7 @@ package com.tencent.mm.sandbox.updater;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppUpdaterUI$4
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class AppUpdaterUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppUpdaterUI.i(this.ucg);
+    AppMethodBeat.i(28817);
+    AppUpdaterUI.i(this.ykv);
+    AppMethodBeat.o(28817);
   }
 }
 

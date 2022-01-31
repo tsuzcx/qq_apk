@@ -1,149 +1,88 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
-import junit.framework.Assert;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.sj;
+import com.tencent.mm.protocal.protobuf.sk;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class bj
+  extends m
+  implements k
 {
-  public int bcw = -1;
-  public String dTD = "";
-  public String dTF = "";
-  public String dXd = "";
-  public String dXe = "";
-  public String dXf = "";
-  public long dXg = 0L;
-  public String dXh = "";
-  public String dXi = "";
-  public int dXj = 0;
-  public int dXk = 0;
-  public long dXl = 0L;
-  public String dXm = "";
-  public String dXn = "";
-  public String name = "";
-  public long time = 0L;
-  public String title = "";
-  public int type = 0;
-  public String url = "";
+  private f callback;
+  private final b fnd;
+  public int fne;
+  public int fnf;
+  public int fng;
+  public int type;
   
-  public static String hS(int paramInt)
+  public bj(int paramInt, String paramString1, String paramString2, String paramString3)
   {
-    if (paramInt == 20) {
-      return "newsapp";
-    }
-    if (paramInt == 11) {
-      return "blogapp";
-    }
-    Assert.assertTrue("INFO TYPE NEITHER NEWS NOR WEIBO", false);
-    return null;
+    AppMethodBeat.i(50498);
+    this.fne = 0;
+    this.fnf = 0;
+    this.fng = 0;
+    this.type = 0;
+    sj localsj = new sj();
+    localsj.Scene = paramInt;
+    localsj.wKH = paramString1;
+    localsj.nGG = paramString2;
+    localsj.wKI = paramString3;
+    paramString1 = new b.a();
+    paramString1.fsX = localsj;
+    paramString1.fsY = new sk();
+    paramString1.uri = "/cgi-bin/micromsg-bin/checkmobilesimtype";
+    paramString1.funcId = 813;
+    paramString1.reqCmdId = 0;
+    paramString1.respCmdId = 0;
+    this.fnd = paramString1.ado();
+    this.fnd.option = 1;
+    ab.i("MicroMsg.NetSceneGetMobileSIMType", "Check scene[%d] IP[%s] IMEI[%s] IMSI[%s]", new Object[] { Integer.valueOf(paramInt), localsj.wKH, localsj.nGG, localsj.wKI });
+    AppMethodBeat.o(50498);
   }
   
-  public final boolean HV()
+  public final int doScene(e parame, f paramf)
   {
-    return this.dXk == 1;
+    AppMethodBeat.i(50499);
+    this.callback = paramf;
+    int i = dispatch(parame, this.fnd, this);
+    AppMethodBeat.o(50499);
+    return i;
   }
   
-  public final String HW()
+  public final int getType()
   {
-    if (this.dXd == null) {
-      return "";
-    }
-    return this.dXd;
+    return 813;
   }
   
-  public final String HX()
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
   {
-    if (this.dXe == null) {
-      return "";
-    }
-    return this.dXe;
-  }
-  
-  public final String HY()
-  {
-    if (this.dXh == null) {
-      return "";
-    }
-    return this.dXh;
-  }
-  
-  public final String HZ()
-  {
-    if (this.dXi == null) {
-      return "";
-    }
-    return this.dXi;
-  }
-  
-  public final String Ia()
-  {
-    if (this.dTD != null)
+    AppMethodBeat.i(50500);
+    ab.i("MicroMsg.NetSceneGetMobileSIMType", "summerdiz NetSceneGetMobileSIMType onGYNetEnd netId[%d], errType[%d], errCode[%d], errMsg[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      String[] arrayOfString = this.dTD.split("\\|");
-      if ((arrayOfString != null) && (arrayOfString.length > 0)) {
-        return arrayOfString[0];
-      }
-      return "";
+      paramq = (sk)this.fnd.fsW.fta;
+      this.fne = paramq.wKN;
+      this.fnf = paramq.wKM;
+      this.type = paramq.jKs;
+      this.fng = paramq.wKL;
+      ab.i("MicroMsg.NetSceneGetMobileSIMType", "CheckMobileSIMTypeResp ProductType[%d] expiredTime[%d] flag[%d]", new Object[] { Integer.valueOf(paramq.wKM), Integer.valueOf(paramq.wKL), Integer.valueOf(paramq.wKN) });
     }
-    return "";
-  }
-  
-  public final void d(Cursor paramCursor)
-  {
-    this.dXd = paramCursor.getString(0);
-    this.time = paramCursor.getLong(1);
-    this.type = paramCursor.getInt(2);
-    this.name = paramCursor.getString(3);
-    this.title = paramCursor.getString(4);
-    this.url = paramCursor.getString(5);
-    this.dXe = paramCursor.getString(6);
-    this.dXf = paramCursor.getString(7);
-    this.dXg = paramCursor.getLong(8);
-    this.dXh = paramCursor.getString(9);
-    this.dXi = paramCursor.getString(10);
-    this.dXj = paramCursor.getInt(11);
-    this.dTD = paramCursor.getString(12);
-    this.dTF = paramCursor.getString(13);
-    this.dXk = paramCursor.getInt(14);
-    this.dXl = paramCursor.getLong(15);
-    this.dXm = paramCursor.getString(16);
-    this.dXn = paramCursor.getString(17);
-  }
-  
-  public final String getDigest()
-  {
-    if (this.dTF == null) {
-      return "";
-    }
-    return this.dTF;
-  }
-  
-  public final String getName()
-  {
-    if (this.name == null) {
-      return "";
-    }
-    return this.name;
-  }
-  
-  public final String getTitle()
-  {
-    if (this.title == null) {
-      return "";
-    }
-    return this.title;
-  }
-  
-  public final String getUrl()
-  {
-    if (this.url == null) {
-      return "";
-    }
-    return this.url;
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(50500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.bj
  * JD-Core Version:    0.7.0.1
  */

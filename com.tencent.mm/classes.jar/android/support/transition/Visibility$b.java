@@ -4,12 +4,12 @@ import android.view.ViewGroup;
 
 final class Visibility$b
 {
-  ViewGroup qM;
-  boolean tT;
-  boolean tU;
-  int tV;
-  int tW;
-  ViewGroup tX;
+  ViewGroup rJ;
+  boolean uU;
+  boolean uV;
+  int uW;
+  int uX;
+  ViewGroup uY;
 }
 
 

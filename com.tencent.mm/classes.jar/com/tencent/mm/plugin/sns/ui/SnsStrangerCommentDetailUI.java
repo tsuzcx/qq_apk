@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -11,22 +12,18 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.b.b;
 import com.tencent.mm.plugin.sns.storage.k;
 import com.tencent.mm.plugin.sns.storage.o;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.c.awd;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
-import com.tencent.mm.sdk.e.j.a;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.bcs;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.sdk.e.k.a;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.bd;
@@ -40,212 +37,242 @@ public class SnsStrangerCommentDetailUI
   extends MMActivity
   implements b.b
 {
-  private static int pdI = 4;
-  private long eAA;
-  private ImageView ffK;
-  private TextView iuy;
-  private View lZC;
-  private an oNH;
-  private com.tencent.mm.plugin.sns.storage.n oUH;
-  private int oWf = -1;
-  private j.a pao = new SnsStrangerCommentDetailUI.7(this);
-  private ListView pdA;
-  private SnsCommentFooter pdB;
-  private LinearLayout pdC;
-  private List<View> pdD;
-  private SnsStrangerCommentDetailUI.a pdE;
-  private boolean pdF = false;
-  private boolean pdG = false;
-  private ad pdH;
-  private int source;
+  private static int rWv = 4;
+  private long cIo;
+  private int cpt;
+  private ImageView gxs;
+  private TextView khB;
+  private View ozz;
+  private an rFq;
+  private com.tencent.mm.plugin.sns.storage.n rMD;
+  private int rOD;
+  private k.a rSM;
+  private ListView rWn;
+  private SnsCommentFooter rWo;
+  private LinearLayout rWp;
+  private List<View> rWq;
+  private SnsStrangerCommentDetailUI.a rWr;
+  private boolean rWs;
+  private boolean rWt;
+  private ad rWu;
   private String talker;
   
-  private void bJn()
+  public SnsStrangerCommentDetailUI()
   {
-    this.pdC.removeAllViews();
-    int k = BackwardSupportUtil.b.b(this, pdI);
-    LinkedList localLinkedList = this.oUH.bGe().tNr.sPJ;
-    this.pdD = new ArrayList();
-    int j = 0;
-    if (j < localLinkedList.size())
+    AppMethodBeat.i(39329);
+    this.rWs = false;
+    this.rOD = -1;
+    this.rWt = false;
+    this.rSM = new SnsStrangerCommentDetailUI.7(this);
+    AppMethodBeat.o(39329);
+  }
+  
+  private static void a(int paramInt, MMImageView paramMMImageView)
+  {
+    int j = 2131230829;
+    AppMethodBeat.i(39340);
+    int i = j;
+    switch (paramInt)
+    {
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        paramMMImageView.setImageResource(i);
+      }
+      AppMethodBeat.o(39340);
+      return;
+      i = 2131230809;
+      continue;
+      i = 2131230826;
+      continue;
+      i = 2131230807;
+      continue;
+      i = 2130837708;
+      continue;
+      i = 2130837708;
+      continue;
+      paramMMImageView.setImageDrawable(null);
+      i = 0;
+      continue;
+      paramMMImageView.setImageDrawable(null);
+      i = 0;
+    }
+  }
+  
+  private void cvQ()
+  {
+    AppMethodBeat.i(39336);
+    this.rWp.removeAllViews();
+    int j = BackwardSupportUtil.b.b(this, rWv);
+    LinkedList localLinkedList = this.rMD.csh().xTS.wOa;
+    this.rWq = new ArrayList();
+    int i = 0;
+    if (i < localLinkedList.size())
     {
       MMImageView localMMImageView = new MMImageView(this);
-      localMMImageView.setPadding(k, k, k, k);
-      this.pdC.addView(localMMImageView, new ViewGroup.LayoutParams(-2, -2));
-      Bitmap localBitmap = af.bDC().a((awd)localLinkedList.get(j), localMMImageView, hashCode(), az.uBK).Fd();
-      int i;
+      localMMImageView.setPadding(j, j, j, j);
+      this.rWp.addView(localMMImageView, new ViewGroup.LayoutParams(-2, -2));
+      Bitmap localBitmap = ag.cpc().a((bcs)localLinkedList.get(i), localMMImageView, hashCode(), az.yNU).XS();
       if (localBitmap == null) {
-        switch (this.oUH.field_type)
-        {
-        default: 
-          i = i.i.app_attach_file_icon_webpage;
-          label188:
-          if (i != 0) {
-            localMMImageView.setImageResource(i);
-          }
-          break;
-        }
+        a(this.rMD.field_type, localMMImageView);
       }
       for (;;)
       {
-        this.pdD.add(localMMImageView);
-        j += 1;
+        this.rWq.add(localMMImageView);
+        i += 1;
         break;
-        i = i.i.app_attach_file_icon_music;
-        break label188;
-        i = i.i.app_attach_file_icon_video;
-        break label188;
-        i = i.i.app_attach_file_icon_webpage;
-        break label188;
-        i = i.i.app_attach_file_icon_location;
-        break label188;
-        i = i.e.app_attach_file_icon_pic;
-        break label188;
-        i = i.e.app_attach_file_icon_pic;
-        break label188;
-        localMMImageView.setImageDrawable(null);
-        i = 0;
-        break label188;
-        localMMImageView.setImageDrawable(null);
-        i = 0;
-        break label188;
         localMMImageView.setImageBitmap(localBitmap);
       }
     }
+    AppMethodBeat.o(39336);
   }
   
-  public final void Ni(String paramString)
+  public final void ZU(String paramString)
   {
-    bJn();
+    AppMethodBeat.i(39341);
+    cvQ();
+    AppMethodBeat.o(39341);
   }
   
-  public final void bCt() {}
+  public final void bp(String paramString, boolean paramBoolean) {}
   
-  public final void ba(String paramString, boolean paramBoolean) {}
+  public final void bq(String paramString, boolean paramBoolean) {}
   
-  public final void bb(String paramString, boolean paramBoolean) {}
+  public final void cnV() {}
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return i.g.sns_comment_detail;
+    return 2130970816;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.pdA = ((ListView)findViewById(i.f.album_comment_list));
-    this.pdB = ((SnsCommentFooter)findViewById(i.f.comment_footer));
-    this.lZC = View.inflate(this, i.g.sns_stranger_comment_detail_header, null);
-    this.pdC = ((LinearLayout)this.lZC.findViewById(i.f.album_list));
-    this.ffK = ((ImageView)this.lZC.findViewById(i.f.album_avatar_iv));
-    this.iuy = ((TextView)this.lZC.findViewById(i.f.album_nick_name));
-    a.b.p(this.ffK, this.oUH.field_userName);
-    Object localObject = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.a.b.class)).gV(this.oUH.field_userName);
-    this.iuy.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this, (CharSequence)localObject, this.iuy.getTextSize()));
-    bJn();
+    AppMethodBeat.i(39335);
+    this.rWn = ((ListView)findViewById(2131827935));
+    this.rWo = ((SnsCommentFooter)findViewById(2131822831));
+    this.ozz = View.inflate(this, 2130970868, null);
+    this.rWp = ((LinearLayout)this.ozz.findViewById(2131828094));
+    this.gxs = ((ImageView)this.ozz.findViewById(2131827936));
+    this.khB = ((TextView)this.ozz.findViewById(2131828093));
+    a.b.u(this.gxs, this.rMD.field_userName);
+    Object localObject = ((com.tencent.mm.plugin.messenger.a.b)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.a.b.class)).nE(this.rMD.field_userName);
+    this.khB.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this, (CharSequence)localObject, this.khB.getTextSize()));
+    cvQ();
     int i = 0;
-    while (i < this.pdD.size())
+    while (i < this.rWq.size())
     {
       localObject = new ao();
-      ((ao)localObject).bMB = this.oUH.bGE();
+      ((ao)localObject).ctV = this.rMD.csH();
       ((ao)localObject).index = i;
-      ((ao)localObject).oYz = this.pdD;
-      ((View)this.pdD.get(i)).setTag(localObject);
-      ((View)this.pdD.get(i)).setOnClickListener(new SnsStrangerCommentDetailUI.9(this));
+      ((ao)localObject).rQS = this.rWq;
+      ((View)this.rWq.get(i)).setTag(localObject);
+      ((View)this.rWq.get(i)).setOnClickListener(new SnsStrangerCommentDetailUI.9(this));
       i += 1;
     }
-    this.pdA.addHeaderView(this.lZC);
-    this.pdE = new SnsStrangerCommentDetailUI.a(this, this);
-    this.pdA.post(new SnsStrangerCommentDetailUI.10(this));
-    this.pdA.setAdapter(this.pdE);
-    this.pdA.setOnScrollListener(new SnsStrangerCommentDetailUI.11(this));
-    this.pdB.setAfterEditAction(new SnsStrangerCommentDetailUI.2(this));
-    this.pdB.bIK();
-    this.pdB.setHeartBtnVisibility(8);
-    this.pdB.setOnCommentSendImp(new SnsStrangerCommentDetailUI.3(this));
-    this.pdB.setCommentHint(getString(i.j.sns_reply) + this.talker + getString(i.j.sns_after_reply));
-    new SnsStrangerCommentDetailUI.1(this);
+    this.rWn.addHeaderView(this.ozz);
+    this.rWr = new SnsStrangerCommentDetailUI.a(this, this);
+    this.rWn.post(new SnsStrangerCommentDetailUI.10(this));
+    this.rWn.setAdapter(this.rWr);
+    this.rWn.setOnScrollListener(new SnsStrangerCommentDetailUI.11(this));
+    this.rWo.setAfterEditAction(new SnsStrangerCommentDetailUI.2(this));
+    this.rWo.cve();
+    this.rWo.setOnCommentSendImp(new SnsStrangerCommentDetailUI.3(this));
+    this.rWo.setCommentHint(getString(2131303938) + this.talker + getString(2131303772));
+    setToTop(new SnsStrangerCommentDetailUI.1(this));
     setBackBtn(new SnsStrangerCommentDetailUI.4(this));
-    addIconOptionMenu(0, i.e.mm_title_btn_menu, new SnsStrangerCommentDetailUI.5(this));
+    addIconOptionMenu(0, 2130839668, new SnsStrangerCommentDetailUI.5(this));
+    AppMethodBeat.o(39335);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    y.i("MicroMsg.SnsStrangerCommentDetailUI", "onAcvityResult requestCode:" + paramInt1);
-    if (paramInt2 != -1) {}
-    do
+    AppMethodBeat.i(39342);
+    ab.i("MicroMsg.SnsStrangerCommentDetailUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    if (paramInt2 != -1)
     {
-      do
+      AppMethodBeat.o(39342);
+      return;
+    }
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(39342);
+      return;
+      if (paramInt2 == -1)
       {
-        return;
-        switch (paramInt1)
-        {
-        default: 
-          return;
+        paramIntent = managedQuery(paramIntent.getData(), null, null, null, null);
+        if (paramIntent.moveToFirst()) {
+          startActivity(new Intent("android.intent.action.EDIT", Uri.parse("content://com.android.contacts/contacts/".concat(String.valueOf(paramIntent.getString(paramIntent.getColumnIndexOrThrow("_id")))))));
         }
-      } while (paramInt2 != -1);
-      paramIntent = managedQuery(paramIntent.getData(), null, null, null, null);
-    } while (!paramIntent.moveToFirst());
-    paramIntent = paramIntent.getString(paramIntent.getColumnIndexOrThrow("_id"));
-    startActivity(new Intent("android.intent.action.EDIT", Uri.parse("content://com.android.contacts/contacts/" + paramIntent)));
+      }
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(39330);
     super.onCreate(paramBundle);
-    setMMTitle(i.j.sns_comment_detial_ui_title);
-    this.eAA = getIntent().getLongExtra("INTENT_SNSID", 0L);
+    setMMTitle(2131303791);
+    this.cIo = getIntent().getLongExtra("INTENT_SNSID", 0L);
     this.talker = getIntent().getStringExtra("INTENT_TALKER");
-    this.oUH = af.bDF().gt(this.eAA);
-    this.source = getIntent().getIntExtra("INTENT_SOURCE", -1);
-    com.tencent.mm.kernel.g.DQ();
-    this.pdH = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(this.talker);
-    if ((this.oUH == null) || (this.talker == null))
+    this.rMD = ag.cpf().lZ(this.cIo);
+    this.cpt = getIntent().getIntExtra("INTENT_SOURCE", -1);
+    com.tencent.mm.kernel.g.RM();
+    this.rWu = ((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(this.talker);
+    if ((this.rMD == null) || (this.talker == null))
     {
       finish();
+      AppMethodBeat.o(39330);
       return;
     }
-    this.oNH = new an(this);
-    af.bDK().c(this.pao);
+    this.rFq = new an(this);
+    ag.cpk().add(this.rSM);
     initView();
+    AppMethodBeat.o(39330);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    af.bDK().d(this.pao);
-    af.bDC().M(this);
-    if (this.pdE != null) {
-      this.pdE.bcS();
+    AppMethodBeat.i(39333);
+    ag.cpk().remove(this.rSM);
+    ag.cpc().ah(this);
+    if (this.rWr != null) {
+      this.rWr.bKb();
     }
     super.onDestroy();
+    AppMethodBeat.o(39333);
   }
   
   public void onPause()
   {
-    af.bDA().b(this);
+    AppMethodBeat.i(39332);
+    ag.cpa().b(this);
     super.onPause();
+    AppMethodBeat.o(39332);
   }
   
   public void onResume()
   {
-    af.bDA().a(this);
+    AppMethodBeat.i(39331);
+    ag.cpa().a(this);
     super.onResume();
+    AppMethodBeat.o(39331);
   }
   
-  final class a$a
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    ImageView doU;
-    TextView fuN;
-    TextView igx;
-    TextView mYa;
-    TextView nMe;
-    ImageView pdM;
-    
-    a$a() {}
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsStrangerCommentDetailUI
  * JD-Core Version:    0.7.0.1
  */

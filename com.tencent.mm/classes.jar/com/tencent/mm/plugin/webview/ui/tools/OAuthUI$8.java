@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 
 final class OAuthUI$8
-  implements am.a
+  implements ap.a
 {
   OAuthUI$8(OAuthUI paramOAuthUI, String paramString, View paramView, ThreeDotsLoadingView paramThreeDotsLoadingView) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    OAuthUI.a(this.rlw, this.kMW);
-    this.rlx.setVisibility(8);
-    this.rly.cKc();
+    AppMethodBeat.i(7425);
+    OAuthUI.a(this.vaY, this.njr);
+    this.vaZ.setVisibility(8);
+    this.vba.dOW();
+    AppMethodBeat.o(7425);
     return false;
   }
 }

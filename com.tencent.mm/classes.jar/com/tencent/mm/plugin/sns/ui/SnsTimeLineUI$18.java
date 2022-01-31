@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.ListView;
-import com.tencent.mm.plugin.sns.i.j;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.g;
+import com.tencent.mm.plugin.sns.ui.a.c;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsTimeLineUI$18
   implements Runnable
@@ -12,15 +14,19 @@ final class SnsTimeLineUI$18
   
   public final void run()
   {
-    s locals = this.pfC.mController;
-    if (locals.mContext != null) {
-      locals.X(locals.uMN);
+    AppMethodBeat.i(39470);
+    if (SnsTimeLineUI.a(this.rYv) == null)
+    {
+      AppMethodBeat.o(39470);
+      return;
     }
-    SnsTimeLineUI.o(this.pfC);
-    SnsTimeLineUI.p(this.pfC);
-    this.pfC.setMMTitle(this.pfC.getString(i.j.sns_timeline_ui_title));
-    SnsTimeLineUI.q(this.pfC);
-    SnsTimeLineUI.b(this.pfC, SnsTimeLineUI.h(this.pfC).lwE.getFirstVisiblePosition());
+    if (!SnsTimeLineUI.u(this.rYv))
+    {
+      ab.v("MicroMsg.SnsTimeLineUI", "zeustest update onFling notify resume %s", new Object[] { Integer.valueOf(SnsTimeLineUI.l(this.rYv).list.getFirstVisiblePosition() - SnsTimeLineUI.l(this.rYv).list.getHeaderViewsCount()) });
+      ag.cpc().start();
+      SnsTimeLineUI.a(this.rYv).sdr.cvX();
+    }
+    AppMethodBeat.o(39470);
   }
 }
 

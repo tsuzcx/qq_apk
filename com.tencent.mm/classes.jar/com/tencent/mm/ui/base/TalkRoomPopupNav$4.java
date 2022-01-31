@@ -4,7 +4,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
-import com.tencent.mm.R.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class TalkRoomPopupNav$4
   implements Animation.AnimationListener
@@ -13,8 +13,10 @@ public final class TalkRoomPopupNav$4
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    TalkRoomPopupNav.c(this.vbD).startAnimation(AnimationUtils.loadAnimation(this.vbD.getContext(), R.a.fast_faded_in));
-    TalkRoomPopupNav.c(this.vbD).setVisibility(0);
+    AppMethodBeat.i(30009);
+    TalkRoomPopupNav.c(this.zpT).startAnimation(AnimationUtils.loadAnimation(this.zpT.getContext(), 2131034181));
+    TalkRoomPopupNav.c(this.zpT).setVisibility(0);
+    AppMethodBeat.o(30009);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

@@ -1,31 +1,36 @@
 package com.tencent.mm.plugin.shake.c.a;
 
-import com.tencent.mm.modelgeo.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$1
-  implements a.a
+  implements b.a
 {
   g$1(g paramg) {}
   
   public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (!paramBoolean) {
+    AppMethodBeat.i(24528);
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(24528);
       return true;
     }
-    if ((g.a(this.nZN) == -85.0F) && (g.b(this.nZN) == -1000.0F))
+    if ((g.a(this.qNX) == -85.0F) && (g.b(this.qNX) == -1000.0F))
     {
-      g.a(this.nZN, paramFloat2);
-      g.b(this.nZN, paramFloat1);
-      m.bAa().dia = g.a(this.nZN);
-      m.bAa().dib = g.b(this.nZN);
-      if (g.c(this.nZN))
+      g.a(this.qNX, paramFloat2);
+      g.b(this.qNX, paramFloat1);
+      m.clt().dZu = g.a(this.qNX);
+      m.clt().dZv = g.b(this.qNX);
+      if (g.c(this.qNX))
       {
-        y.i("MicroMsg.ShakeCardService", "ShakeCardService do netscen from onGetLocation()");
-        g.d(this.nZN);
+        ab.i("MicroMsg.ShakeCardService", "ShakeCardService do netscen from onGetLocation()");
+        g.d(this.qNX);
       }
     }
+    AppMethodBeat.o(24528);
     return false;
   }
 }

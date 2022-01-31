@@ -1,62 +1,66 @@
 package com.google.android.exoplayer2.metadata.scte35;
 
 import android.os.Parcel;
-import com.google.android.exoplayer2.i.j;
+import com.google.android.exoplayer2.i.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public final class SpliceScheduleCommand$b
 {
-  public final boolean aHA;
-  public final long aHB;
-  public final int aHC;
-  public final int aHD;
-  public final int aHE;
-  public final long aHJ;
-  public final long aHs;
-  public final boolean aHt;
-  public final boolean aHu;
-  public final boolean aHv;
-  public final List<SpliceScheduleCommand.a> aHz;
+  public final long aOD;
+  public final long aOm;
+  public final boolean aOn;
+  public final boolean aOo;
+  public final boolean aOp;
+  public final List<SpliceScheduleCommand.a> aOt;
+  public final boolean aOu;
+  public final long aOv;
+  public final int aOw;
+  public final int aOx;
+  public final int aOy;
   
   private SpliceScheduleCommand$b(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, List<SpliceScheduleCommand.a> paramList, long paramLong2, boolean paramBoolean4, long paramLong3, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.aHs = paramLong1;
-    this.aHt = paramBoolean1;
-    this.aHu = paramBoolean2;
-    this.aHv = paramBoolean3;
-    this.aHz = Collections.unmodifiableList(paramList);
-    this.aHJ = paramLong2;
-    this.aHA = paramBoolean4;
-    this.aHB = paramLong3;
-    this.aHC = paramInt1;
-    this.aHD = paramInt2;
-    this.aHE = paramInt3;
+    AppMethodBeat.i(95374);
+    this.aOm = paramLong1;
+    this.aOn = paramBoolean1;
+    this.aOo = paramBoolean2;
+    this.aOp = paramBoolean3;
+    this.aOt = Collections.unmodifiableList(paramList);
+    this.aOD = paramLong2;
+    this.aOu = paramBoolean4;
+    this.aOv = paramLong3;
+    this.aOw = paramInt1;
+    this.aOx = paramInt2;
+    this.aOy = paramInt3;
+    AppMethodBeat.o(95374);
   }
   
   SpliceScheduleCommand$b(Parcel paramParcel)
   {
-    this.aHs = paramParcel.readLong();
+    AppMethodBeat.i(95375);
+    this.aOm = paramParcel.readLong();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.aHt = bool1;
+      this.aOn = bool1;
       if (paramParcel.readByte() != 1) {
-        break label122;
+        break label127;
       }
       bool1 = true;
-      label43:
-      this.aHu = bool1;
+      label48:
+      this.aOo = bool1;
       if (paramParcel.readByte() != 1) {
-        break label128;
+        break label133;
       }
     }
     ArrayList localArrayList;
-    label128:
+    label133:
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.aHv = bool1;
+      this.aOp = bool1;
       int j = paramParcel.readInt();
       localArrayList = new ArrayList(j);
       int i = 0;
@@ -67,27 +71,29 @@ public final class SpliceScheduleCommand$b
       }
       bool1 = false;
       break;
-      label122:
+      label127:
       bool1 = false;
-      break label43;
+      break label48;
     }
-    this.aHz = Collections.unmodifiableList(localArrayList);
-    this.aHJ = paramParcel.readLong();
+    this.aOt = Collections.unmodifiableList(localArrayList);
+    this.aOD = paramParcel.readLong();
     if (paramParcel.readByte() == 1) {}
     for (bool1 = bool2;; bool1 = false)
     {
-      this.aHA = bool1;
-      this.aHB = paramParcel.readLong();
-      this.aHC = paramParcel.readInt();
-      this.aHD = paramParcel.readInt();
-      this.aHE = paramParcel.readInt();
+      this.aOu = bool1;
+      this.aOv = paramParcel.readLong();
+      this.aOw = paramParcel.readInt();
+      this.aOx = paramParcel.readInt();
+      this.aOy = paramParcel.readInt();
+      AppMethodBeat.o(95375);
       return;
     }
   }
   
-  static b d(j paramj)
+  static b z(m paramm)
   {
-    long l3 = paramj.bp();
+    AppMethodBeat.i(95376);
+    long l3 = paramm.cc();
     boolean bool4;
     boolean bool1;
     boolean bool2;
@@ -97,7 +103,7 @@ public final class SpliceScheduleCommand$b
     int k;
     boolean bool5;
     boolean bool3;
-    if ((paramj.readUnsignedByte() & 0x80) != 0)
+    if ((paramm.readUnsignedByte() & 0x80) != 0)
     {
       bool4 = true;
       bool1 = false;
@@ -110,35 +116,35 @@ public final class SpliceScheduleCommand$b
       bool5 = false;
       bool3 = false;
       if (bool4) {
-        break label281;
+        break label293;
       }
-      i = paramj.readUnsignedByte();
+      i = paramm.readUnsignedByte();
       if ((i & 0x80) == 0) {
-        break label169;
+        break label174;
       }
       bool1 = true;
-      label73:
+      label78:
       if ((i & 0x40) == 0) {
-        break label175;
+        break label180;
       }
       bool2 = true;
-      label83:
+      label88:
       if ((i & 0x20) == 0) {
-        break label181;
+        break label186;
       }
     }
-    label169:
-    label175:
-    label181:
+    label174:
+    label180:
+    label186:
     for (int i = 1;; i = 0)
     {
       if (bool2) {
-        l1 = paramj.bp();
+        l1 = paramm.cc();
       }
       if (bool2) {
-        break label186;
+        break label191;
       }
-      k = paramj.readUnsignedByte();
+      k = paramm.readUnsignedByte();
       ArrayList localArrayList = new ArrayList(k);
       j = 0;
       for (;;)
@@ -147,39 +153,41 @@ public final class SpliceScheduleCommand$b
         if (j >= k) {
           break;
         }
-        localArrayList.add(new SpliceScheduleCommand.a(paramj.readUnsignedByte(), paramj.bp(), (byte)0));
+        localArrayList.add(new SpliceScheduleCommand.a(paramm.readUnsignedByte(), paramm.cc(), (byte)0));
         j += 1;
       }
       bool4 = false;
       break;
       bool1 = false;
-      break label73;
+      break label78;
       bool2 = false;
-      break label83;
+      break label88;
     }
-    label186:
+    label191:
     long l2;
     if (i != 0)
     {
-      l2 = paramj.readUnsignedByte();
+      l2 = paramm.readUnsignedByte();
       if ((0x80 & l2) != 0L)
       {
         bool3 = true;
-        l2 = (l2 & 1L) << 32 | paramj.bp();
-        label225:
-        i = paramj.readUnsignedShort();
-        j = paramj.readUnsignedByte();
-        k = paramj.readUnsignedByte();
+        l2 = (l2 & 1L) << 32 | paramm.cc();
+        label230:
+        i = paramm.readUnsignedShort();
+        j = paramm.readUnsignedByte();
+        k = paramm.readUnsignedByte();
       }
     }
     for (;;)
     {
-      return new b(l3, bool4, bool1, bool2, (List)localObject, l1, bool3, l2, i, j, k);
+      paramm = new b(l3, bool4, bool1, bool2, (List)localObject, l1, bool3, l2, i, j, k);
+      AppMethodBeat.o(95376);
+      return paramm;
       bool3 = false;
       break;
       l2 = -9223372036854775807L;
-      break label225;
-      label281:
+      break label230;
+      label293:
       l2 = -9223372036854775807L;
       bool3 = bool5;
     }

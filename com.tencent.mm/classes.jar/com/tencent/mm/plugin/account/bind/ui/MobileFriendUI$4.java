@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
 
 final class MobileFriendUI$4
@@ -11,7 +12,9 @@ final class MobileFriendUI$4
   
   public final void onClick(View paramView)
   {
-    BackwardSupportUtil.c.a(MobileFriendUI.f(this.fes));
+    AppMethodBeat.i(13722);
+    BackwardSupportUtil.c.a(MobileFriendUI.f(this.gwb));
+    AppMethodBeat.o(13722);
   }
 }
 

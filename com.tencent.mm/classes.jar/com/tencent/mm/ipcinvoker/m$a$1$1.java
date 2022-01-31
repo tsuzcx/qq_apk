@@ -2,6 +2,7 @@ package com.tencent.mm.ipcinvoker;
 
 import android.os.HandlerThread;
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.g.a;
 import com.tencent.mm.ipcinvoker.h.b;
 
@@ -12,15 +13,17 @@ final class m$a$1$1
   
   public final void run()
   {
-    ThreadLocal localThreadLocal = (ThreadLocal)new a(Looper.class, "sThreadLocal").Cd();
+    AppMethodBeat.i(114057);
+    ThreadLocal localThreadLocal = (ThreadLocal)new a(Looper.class, "sThreadLocal").PV();
     if ((localThreadLocal != null) && (localThreadLocal.get() == null))
     {
       b.d("IPC.ExecutorServiceCreatorImpl", "create a new Looper ThreadLocal variable.", new Object[0]);
-      localThreadLocal.set(this.dGY.dGW.mHandlerThread.getLooper());
+      localThreadLocal.set(this.eEB.eEz.mHandlerThread.getLooper());
     }
     for (;;)
     {
-      this.dGX.run();
+      this.eEA.run();
+      AppMethodBeat.o(114057);
       return;
       b.d("IPC.ExecutorServiceCreatorImpl", "ThreadLocal Looper variable is null or has set.(%s)", new Object[] { localThreadLocal });
     }

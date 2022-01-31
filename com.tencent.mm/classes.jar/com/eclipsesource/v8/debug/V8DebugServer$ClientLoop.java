@@ -1,5 +1,6 @@
 package com.eclipsesource.v8.debug;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.ServerSocket;
@@ -36,14 +37,17 @@ class V8DebugServer$ClientLoop
   
   private byte[] join(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(74926);
     byte[] arrayOfByte = new byte[paramArrayOfByte1.length + paramInt2];
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 0, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte2, paramInt1, arrayOfByte, paramArrayOfByte1.length, paramInt2);
+    AppMethodBeat.o(74926);
     return arrayOfByte;
   }
   
   private void processClientRequests()
   {
+    AppMethodBeat.i(74923);
     byte[] arrayOfByte1 = new byte[0];
     byte[] arrayOfByte2 = new byte[4096];
     for (;;)
@@ -122,49 +126,65 @@ class V8DebugServer$ClientLoop
           bool1 = bool2;
           continue;
           localObject3 = finally;
+          AppMethodBeat.o(74923);
           throw localObject3;
         }
       }
       int i = 0;
       boolean bool1 = bool2;
     }
+    AppMethodBeat.o(74923);
   }
   
   private int readContentLength(byte[] paramArrayOfByte, int paramInt)
   {
+    AppMethodBeat.i(74924);
     int i = indexOf(V8DebugServer.access$1300(), paramArrayOfByte, this.from, paramInt);
-    if (i < 0) {}
-    do
+    if (i < 0)
     {
+      AppMethodBeat.o(74924);
       return -1;
-      i += V8DebugServer.access$1300().length;
-      paramInt = indexOf(V8DebugServer.access$1400(), paramArrayOfByte, i, paramInt);
-    } while (paramInt < 0);
+    }
+    i += V8DebugServer.access$1300().length;
+    paramInt = indexOf(V8DebugServer.access$1400(), paramArrayOfByte, i, paramInt);
+    if (paramInt < 0)
+    {
+      AppMethodBeat.o(74924);
+      return -1;
+    }
     String str = new String(paramArrayOfByte, i, paramInt - i, V8DebugServer.access$1100());
     try
     {
       i = Integer.parseInt(str.trim());
       this.from = (V8DebugServer.access$1400().length + paramInt);
+      AppMethodBeat.o(74924);
       return i;
     }
     catch (Exception localException)
     {
-      throw new IOException("Invalid content length header: '" + str + "' in message" + new String(paramArrayOfByte, V8DebugServer.access$1100()));
+      paramArrayOfByte = new IOException("Invalid content length header: '" + str + "' in message" + new String(paramArrayOfByte, V8DebugServer.access$1100()));
+      AppMethodBeat.o(74924);
+      throw paramArrayOfByte;
     }
   }
   
   private boolean skipToolInfo(byte[] paramArrayOfByte, int paramInt)
   {
+    AppMethodBeat.i(74925);
     paramInt = indexOf(V8DebugServer.access$1400(), paramArrayOfByte, this.from, paramInt);
-    if (paramInt < 0) {
+    if (paramInt < 0)
+    {
+      AppMethodBeat.o(74925);
       return false;
     }
     this.from = (paramInt + V8DebugServer.access$1400().length);
+    AppMethodBeat.o(74925);
     return true;
   }
   
   private void startHandshake()
   {
+    AppMethodBeat.i(74922);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("V8-Version: ");
     localStringBuilder.append("4.10.253");
@@ -180,10 +200,12 @@ class V8DebugServer$ClientLoop
     localStringBuilder.append("connect");
     localStringBuilder.append("\r\n");
     V8DebugServer.access$1000(this.this$0, localStringBuilder.toString(), "");
+    AppMethodBeat.o(74922);
   }
   
   public void run()
   {
+    AppMethodBeat.i(74921);
     for (;;)
     {
       try
@@ -213,25 +235,27 @@ class V8DebugServer$ClientLoop
       try
       {
         V8DebugServer.access$800(this.this$0).close();
-        label100:
+        label105:
         V8DebugServer.access$802(this.this$0, null);
         this.this$0.logError(localException);
         continue;
         localObject2 = finally;
+        AppMethodBeat.o(74921);
         throw localObject2;
         localObject3 = finally;
+        AppMethodBeat.o(74921);
         throw localObject3;
       }
       catch (IOException localIOException)
       {
-        break label100;
+        break label105;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.eclipsesource.v8.debug.V8DebugServer.ClientLoop
  * JD-Core Version:    0.7.0.1
  */

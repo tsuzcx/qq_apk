@@ -1,26 +1,39 @@
 package com.tencent.mm.plugin.appbrand.report.quality;
 
 import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.AppStartupPerformanceReportBundle;
-import com.tencent.mm.plugin.appbrand.n;
+import com.tencent.mm.plugin.appbrand.o;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class QualitySessionRuntime
   extends QualitySession
 {
-  public boolean gJp;
-  public n gaS;
-  public long hao;
-  public long hap;
-  public long haq;
-  public AppStartupPerformanceReportBundle har;
-  public int has;
-  public final a.a hat = new a.a();
-  public final c hau = new c();
-  public final a.b hav = new a.b();
+  public boolean bAa;
+  public o htX;
+  public long iIH;
+  public long iII;
+  public long iIJ;
+  public AppStartupPerformanceReportBundle iIK;
+  public int iIL;
+  public final a.a iIM;
+  public final e iIN;
+  public AtomicInteger iIO;
+  public final h iIP;
+  public boolean iIQ;
+  public long iIR;
   
   QualitySessionRuntime(Parcel paramParcel)
   {
     super(paramParcel);
+    AppMethodBeat.i(132708);
+    this.iIM = new a.a();
+    this.iIN = new e();
+    this.iIO = new AtomicInteger(0);
+    this.iIP = new h();
+    this.iIQ = false;
+    this.iIR = 0L;
+    AppMethodBeat.o(132708);
   }
 }
 

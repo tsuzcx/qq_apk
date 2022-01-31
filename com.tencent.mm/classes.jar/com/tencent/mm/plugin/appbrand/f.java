@@ -1,105 +1,93 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaCommLibRuntimeReader;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.i.d;
-import com.tencent.mm.plugin.appbrand.report.c;
-import com.tencent.mm.plugin.appbrand.v.k.a;
-import com.tencent.mm.plugin.appbrand.v.l.a;
-import com.tencent.mm.plugin.appbrand.v.p;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
+import a.f.b.j;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
+import com.tencent.mm.plugin.appbrand.weishi.AppBrandWeishiUI;
+import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.xweb.WebView;
+import org.xwalk.core.XWalkCoreWrapper;
 
+@a.l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/AppBrandPersistentRuntimeConfig;", "", "()V", "KEY_XWEB_INSTALLED", "", "PERSISTENT_UI_CLASS", "", "Ljava/lang/Class;", "Lcom/tencent/mm/plugin/appbrand/ui/AppBrandPluginUI;", "[Ljava/lang/Class;", "TAG", "canKeepPersistent", "", "container", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeContainerWC;", "isPersistentConfigOpen", "isPersistentXWebConfigOpen", "watchApp", "", "app", "Landroid/app/Application;", "plugin-appbrand-integration_release"})
 public final class f
-  extends e
 {
-  f(o paramo, com.tencent.mm.plugin.appbrand.i.l paraml)
+  private static final Class<? extends AppBrandPluginUI>[] gPo;
+  public static final f gPp;
+  
+  static
   {
-    super(paramo, paraml);
+    AppMethodBeat.i(143714);
+    gPp = new f();
+    gPo = new Class[] { AppBrandPluginUI.class, AppBrandWeishiUI.class };
+    AppMethodBeat.o(143714);
   }
   
-  protected final d Zo()
+  public static final boolean a(l paraml)
   {
-    d locald = super.Zo();
-    if (locald != null) {
-      locald.setJsExceptionHandler(new f.3(this, locald));
-    }
-    return locald;
-  }
-  
-  protected final String Zp()
-  {
-    return "WASubContext.js";
-  }
-  
-  protected final String Zq()
-  {
-    return WxaCommLibRuntimeReader.qX("WASubContext.js");
-  }
-  
-  protected final int Zr()
-  {
-    return WxaCommLibRuntimeReader.abQ().fEN;
-  }
-  
-  protected final void Zs()
-  {
-    h.nFQ.a(370L, 39L, 1L, false);
-    c.a(this.fxC.mAppId, this.fxC.getRuntime().ZB().fPS.fEN, this.fxC.getRuntime().ZB().fPS.fEM, 370, 39);
-  }
-  
-  protected final void Zt()
-  {
-    h.nFQ.a(370L, 48L, 1L, false);
-    c.a(this.fxC.mAppId, this.fxC.getRuntime().ZB().fPS.fEN, this.fxC.getRuntime().ZB().fPS.fEM, 370, 48);
-  }
-  
-  protected final void a(com.tencent.mm.plugin.appbrand.i.f paramf, String paramString1, String paramString2)
-  {
-    y.i("MicroMsg.AppBrandJSContextInterfaceWC", "hy: injectSdkScript %s", new Object[] { paramString1 });
-    long l = System.currentTimeMillis();
-    boolean bool = this.fxC.aan();
-    com.tencent.mm.plugin.appbrand.v.l.a(this.fxC, paramf, paramString1, paramString1, "v" + WxaCommLibRuntimeReader.abQ().fEN, paramString2, l.a.hlv, new f.2(this, bool, l, paramString1, paramString2));
-    p.a(this.fxC.getRuntime(), paramf);
-  }
-  
-  protected final void a(com.tencent.mm.plugin.appbrand.i.f paramf, String paramString1, String paramString2, k.a parama)
-  {
-    long l = System.currentTimeMillis();
-    com.tencent.mm.plugin.appbrand.v.l.a(this.fxC.getRuntime(), paramf, paramString1, paramString2, l.a.hlw, new f.1(this, paramString1, paramString2, l, parama));
-  }
-  
-  protected final void cC(boolean paramBoolean)
-  {
-    h.nFQ.a(370L, 40L, 1L, false);
-    if (paramBoolean) {
-      h.nFQ.a(370L, 41L, 1L, false);
-    }
-    do
+    AppMethodBeat.i(143710);
+    j.q(paraml, "container");
+    if (!atd())
     {
-      return;
-      h.nFQ.a(370L, 42L, 1L, false);
-    } while (this.fxC.getRuntime() == null);
-    c.a(this.fxC.mAppId, this.fxC.getRuntime().ZB().fPS.fEN, this.fxC.getRuntime().ZB().fPS.fEM, 370, 42);
-  }
-  
-  protected final void cD(boolean paramBoolean)
-  {
-    h.nFQ.a(370L, 44L, 1L, false);
-    if (paramBoolean)
-    {
-      h.nFQ.a(370L, 45L, 1L, false);
-      return;
+      ab.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, close by ExptService");
+      AppMethodBeat.o(143710);
+      return false;
     }
-    h.nFQ.a(370L, 46L, 1L, false);
-    c.a(this.fxC.mAppId, this.fxC.getRuntime().ZB().fPS.fEN, this.fxC.getRuntime().ZB().fPS.fEM, 370, 46);
+    Boolean[] arrayOfBoolean = new Boolean[2];
+    arrayOfBoolean[0] = Boolean.valueOf(WebView.isX5());
+    if ((WebView.isXWalk()) && (XWalkCoreWrapper.getInstance().hasFeature(2003))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      arrayOfBoolean[1] = Boolean.valueOf(bool);
+      ab.i("MicroMsg.AppBrandPersistentRuntimeConfig", "canKeepPersistent, containerUI[" + paraml.getContext().getClass().getSimpleName() + "], kernelConditions[" + org.apache.commons.b.a.toString(arrayOfBoolean) + ']');
+      if ((!org.apache.commons.b.a.contains(gPo, paraml.getContext().getClass())) || (!org.apache.commons.b.a.contains(arrayOfBoolean, Boolean.TRUE))) {
+        break;
+      }
+      AppMethodBeat.o(143710);
+      return true;
+    }
+    AppMethodBeat.o(143710);
+    return false;
   }
   
-  public final int create(String paramString)
+  public static final boolean atc()
   {
-    int i = super.create(paramString);
-    y.i("MicroMsg.AppBrandJSContextInterfaceWC", "hy: on create new context, id is %d", new Object[] { Integer.valueOf(i) });
-    return i;
+    AppMethodBeat.i(143712);
+    if (!atd())
+    {
+      ab.i("MicroMsg.AppBrandPersistentRuntimeConfig", "isPersistentXWebConfigOpen, close by ExptService");
+      AppMethodBeat.o(143712);
+      return false;
+    }
+    boolean bool = as.eu("MicroMsg.AppBrandPersistentRuntimeConfig", 2).getBoolean("KEY_XWEB_INSTALLED", false);
+    AppMethodBeat.o(143712);
+    return bool;
+  }
+  
+  private static boolean atd()
+  {
+    AppMethodBeat.i(143713);
+    if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVt, 1) > 0)
+    {
+      AppMethodBeat.o(143713);
+      return true;
+    }
+    AppMethodBeat.o(143713);
+    return false;
+  }
+  
+  public static final void e(Application paramApplication)
+  {
+    AppMethodBeat.i(143711);
+    j.q(paramApplication, "app");
+    f.a locala = f.a.gPq;
+    paramApplication.registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)new f.b());
+    new f.c().alive();
+    AppMethodBeat.o(143711);
   }
 }
 

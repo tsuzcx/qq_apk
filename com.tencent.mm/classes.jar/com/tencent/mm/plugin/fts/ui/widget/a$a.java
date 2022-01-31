@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface a$a
 {
-  public abstract void onClickBackBtn(View paramView);
+  public abstract void onClickSearchButton(View paramView);
 }
 
 

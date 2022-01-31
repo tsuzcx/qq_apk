@@ -2,7 +2,8 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnVideoSizeChangedListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoSurfaceView$1
   implements MediaPlayer.OnVideoSizeChangedListener
@@ -11,10 +12,12 @@ final class VideoSurfaceView$1
   
   public final void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    VideoSurfaceView.a(this.snx, paramMediaPlayer.getVideoWidth());
-    VideoSurfaceView.b(this.snx, paramMediaPlayer.getVideoHeight());
-    y.v("MicroMsg.VideoSurfaceView", "on size change size:( " + VideoSurfaceView.a(this.snx) + " , " + VideoSurfaceView.b(this.snx) + " )");
-    VideoSurfaceView.c(this.snx);
+    AppMethodBeat.i(70440);
+    VideoSurfaceView.a(this.wfS, paramMediaPlayer.getVideoWidth());
+    VideoSurfaceView.b(this.wfS, paramMediaPlayer.getVideoHeight());
+    ab.v("MicroMsg.VideoSurfaceView", "on size change size:( " + VideoSurfaceView.a(this.wfS) + " , " + VideoSurfaceView.b(this.wfS) + " )");
+    VideoSurfaceView.c(this.wfS);
+    AppMethodBeat.o(70440);
   }
 }
 

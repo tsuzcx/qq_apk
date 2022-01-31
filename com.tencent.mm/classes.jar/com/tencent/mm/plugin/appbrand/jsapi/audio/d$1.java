@@ -1,46 +1,55 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.g.b;
-import com.tencent.mm.plugin.appbrand.g.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e;
+import com.tencent.mm.plugin.appbrand.e.c;
+import com.tencent.mm.plugin.appbrand.e.d;
 import com.tencent.mm.plugin.appbrand.media.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Vector;
 
 final class d$1
-  extends g.b
+  extends e.c
 {
   d$1(d paramd, String paramString) {}
   
-  public final void a(g.c paramc)
+  public final void a(e.d paramd)
   {
-    y.i("MicroMsg.Audio.JsApiCreateAudioInstance", "onPause, appId:%s", new Object[] { this.val$appId });
-    a.aj(this.val$appId, false);
-    paramc = new d.a();
-    paramc.bcw = 1;
-    paramc.appId = this.val$appId;
-    paramc.ahU();
+    AppMethodBeat.i(137717);
+    ab.i("MicroMsg.Audio.JsApiCreateAudioInstance", "onPause, appId:%s", new Object[] { this.val$appId });
+    a.ap(this.val$appId, false);
+    paramd = new d.a();
+    paramd.bsY = 1;
+    paramd.appId = this.val$appId;
+    paramd.aBL();
+    AppMethodBeat.o(137717);
   }
   
   public final void onCreate()
   {
-    a.aj(this.val$appId, true);
+    AppMethodBeat.i(137715);
+    a.ap(this.val$appId, true);
+    AppMethodBeat.o(137715);
   }
   
   public final void onDestroy()
   {
-    y.i("MicroMsg.Audio.JsApiCreateAudioInstance", "onDestroy, appId:%s", new Object[] { this.val$appId });
+    AppMethodBeat.i(137718);
+    ab.i("MicroMsg.Audio.JsApiCreateAudioInstance", "onDestroy, appId:%s", new Object[] { this.val$appId });
     d.a locala = new d.a();
-    locala.bcw = 2;
+    locala.bsY = 2;
     locala.appId = this.val$appId;
-    locala.ahV();
-    g.b(this.val$appId, this);
-    d.ahY().remove(this.val$appId);
+    locala.aBM();
+    e.b(this.val$appId, this);
+    d.aBO().remove(this.val$appId);
+    AppMethodBeat.o(137718);
   }
   
   public final void onResume()
   {
-    a.aj(this.val$appId, true);
+    AppMethodBeat.i(137716);
+    a.ap(this.val$appId, true);
+    AppMethodBeat.o(137716);
   }
 }
 

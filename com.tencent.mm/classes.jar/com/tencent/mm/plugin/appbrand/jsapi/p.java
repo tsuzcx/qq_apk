@@ -1,94 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Context;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Map;
 
-public final class p
-  extends l
+public abstract class p
+  extends ai
 {
-  private static final int CTRL_INDEX = 153;
-  private static final String NAME = "onNetworkStatusChange";
-  private static p gfn;
-  private static HashSet<String> gfo = new HashSet();
-  
-  public static void f(c paramc)
+  public final p BM(String paramString)
   {
-    for (;;)
-    {
-      HashMap localHashMap;
-      Context localContext;
-      try
-      {
-        localHashMap = new HashMap();
-        localContext = ae.getContext();
-        boolean bool = aq.isConnected(localContext);
-        localHashMap.put("isConnected", Boolean.valueOf(bool));
-        if (!bool)
-        {
-          localHashMap.put("networkType", "none");
-          if (gfn == null) {
-            gfn = new p();
-          }
-          gfn.d(paramc).o(localHashMap).dispatch();
-          return;
-        }
-        if (aq.is2G(localContext))
-        {
-          localHashMap.put("networkType", "2g");
-          continue;
-        }
-        if (!aq.is3G(localContext)) {
-          break label122;
-        }
-      }
-      finally {}
-      localHashMap.put("networkType", "3g");
-      continue;
-      label122:
-      if (aq.is4G(localContext)) {
-        localHashMap.put("networkType", "4g");
-      } else if (aq.isWifi(localContext)) {
-        localHashMap.put("networkType", "wifi");
-      } else {
-        localHashMap.put("networkType", "unknown");
-      }
-    }
+    super.BN(paramString);
+    return this;
   }
   
-  public static void tN(String paramString)
+  public final p a(c paramc, int paramInt)
   {
-    try
-    {
-      gfo.add(paramString);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    super.b(paramc, paramInt);
+    return this;
   }
   
-  public static void tO(String paramString)
+  public final p i(c paramc)
   {
-    try
-    {
-      gfo.remove(paramString);
-      return;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    super.j(paramc);
+    return this;
+  }
+  
+  public p w(Map<String, Object> paramMap)
+  {
+    super.x(paramMap);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p
  * JD-Core Version:    0.7.0.1
  */

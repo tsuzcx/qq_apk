@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;
-import com.tencent.luggage.b.b;
+import com.tencent.luggage.a.b;
 
 public abstract interface e
   extends b
@@ -15,7 +15,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.e
  * JD-Core Version:    0.7.0.1
  */

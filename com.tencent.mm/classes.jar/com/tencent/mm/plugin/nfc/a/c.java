@@ -1,78 +1,130 @@
 package com.tencent.mm.plugin.nfc.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.nfc.c.a;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
 import java.util.Arrays;
 
 public final class c
   implements Serializable
 {
-  public byte[] mFX;
+  public byte[] pgd;
   
   public c(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
-      throw new IllegalArgumentException("apdu is null");
+    AppMethodBeat.i(23021);
+    if (paramArrayOfByte == null)
+    {
+      paramArrayOfByte = new IllegalArgumentException("apdu is null");
+      AppMethodBeat.o(23021);
+      throw paramArrayOfByte;
     }
     paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-    if (paramArrayOfByte.length < 2) {
-      throw new IllegalArgumentException("apdu must be at least 2 bytes long");
+    be(paramArrayOfByte);
+    this.pgd = paramArrayOfByte;
+    AppMethodBeat.o(23021);
+  }
+  
+  private static void be(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(23022);
+    if (paramArrayOfByte.length < 2)
+    {
+      paramArrayOfByte = new IllegalArgumentException("apdu must be at least 2 bytes long");
+      AppMethodBeat.o(23022);
+      throw paramArrayOfByte;
     }
-    this.mFX = paramArrayOfByte;
+    AppMethodBeat.o(23022);
+  }
+  
+  private void readObject(ObjectInputStream paramObjectInputStream)
+  {
+    AppMethodBeat.i(23028);
+    this.pgd = ((byte[])(byte[])paramObjectInputStream.readUnshared());
+    be(this.pgd);
+    AppMethodBeat.o(23028);
   }
   
   public final void a(c paramc)
   {
-    int j = this.mFX.length;
-    this.mFX = Arrays.copyOf(this.mFX, this.mFX.length + paramc.mFX.length - 2);
+    AppMethodBeat.i(23025);
+    int j = this.pgd.length;
+    this.pgd = Arrays.copyOf(this.pgd, this.pgd.length + paramc.pgd.length - 2);
     j -= 2;
-    paramc = (byte[])paramc.mFX.clone();
+    paramc = (byte[])paramc.pgd.clone();
     int m = paramc.length;
     int k = 0;
     while (k < m)
     {
       int i = paramc[k];
-      this.mFX[j] = i;
+      this.pgd[j] = i;
       k += 1;
       j += 1;
     }
+    AppMethodBeat.o(23025);
   }
   
-  public final short bow()
+  public final short bWV()
   {
-    return (short)(this.mFX[(this.mFX.length - 2)] & 0xFF);
+    return (short)(this.pgd[(this.pgd.length - 2)] & 0xFF);
   }
   
-  public final short box()
+  public final short bWW()
   {
-    return (short)(this.mFX[(this.mFX.length - 1)] & 0xFF);
+    return (short)(this.pgd[(this.pgd.length - 1)] & 0xFF);
+  }
+  
+  public final boolean bWX()
+  {
+    AppMethodBeat.i(23023);
+    if ((short)(bWV() << 8 | bWW()) == -28672)
+    {
+      AppMethodBeat.o(23023);
+      return true;
+    }
+    AppMethodBeat.o(23023);
+    return false;
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {
+    AppMethodBeat.i(23026);
+    if (this == paramObject)
+    {
+      AppMethodBeat.o(23026);
       return true;
     }
-    if (!(paramObject instanceof c)) {
+    if (!(paramObject instanceof c))
+    {
+      AppMethodBeat.o(23026);
       return false;
     }
     paramObject = (c)paramObject;
-    return Arrays.equals(this.mFX, paramObject.mFX);
+    boolean bool = Arrays.equals(this.pgd, paramObject.pgd);
+    AppMethodBeat.o(23026);
+    return bool;
   }
   
   public final int hashCode()
   {
-    return Arrays.hashCode(this.mFX);
+    AppMethodBeat.i(23027);
+    int i = Arrays.hashCode(this.pgd);
+    AppMethodBeat.o(23027);
+    return i;
   }
   
   public final String toString()
   {
-    return a.byteArrayToHexString(this.mFX);
+    AppMethodBeat.i(23024);
+    String str = a.byteArrayToHexString(this.pgd);
+    AppMethodBeat.o(23024);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc.a.c
  * JD-Core Version:    0.7.0.1
  */

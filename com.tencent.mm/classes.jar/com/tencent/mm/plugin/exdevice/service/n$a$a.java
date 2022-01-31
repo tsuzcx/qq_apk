@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class n$a$a
   implements n
@@ -20,8 +21,9 @@ final class n$a$a
     return this.mRemote;
   }
   
-  public final Bundle j(int paramInt, Bundle paramBundle)
+  public final Bundle m(int paramInt, Bundle paramBundle)
   {
+    AppMethodBeat.i(19615);
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     for (;;)
@@ -53,13 +55,14 @@ final class n$a$a
       {
         localParcel2.recycle();
         localParcel1.recycle();
+        AppMethodBeat.o(19615);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.n.a.a
  * JD-Core Version:    0.7.0.1
  */

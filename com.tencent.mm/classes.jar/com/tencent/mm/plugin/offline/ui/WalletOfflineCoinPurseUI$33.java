@@ -1,26 +1,29 @@
 package com.tencent.mm.plugin.offline.ui;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.offline.g;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class WalletOfflineCoinPurseUI$33
-  implements am.a
+  implements ap.a
 {
   WalletOfflineCoinPurseUI$33(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    WalletOfflineCoinPurseUI.a(this.mNj);
-    if ((WalletOfflineCoinPurseUI.o(this.mNj) != null) && (WalletOfflineCoinPurseUI.o(this.mNj).isShowing())) {
-      WalletOfflineCoinPurseUI.o(this.mNj).dismiss();
+    AppMethodBeat.i(43543);
+    WalletOfflineCoinPurseUI.a(this.pny);
+    if ((WalletOfflineCoinPurseUI.o(this.pny) != null) && (WalletOfflineCoinPurseUI.o(this.pny).isShowing())) {
+      WalletOfflineCoinPurseUI.o(this.pny).dismiss();
     }
-    g.bpT();
-    WalletOfflineCoinPurseUI.P(this.mNj);
-    if (a.bri()) {
-      this.mNj.bql();
+    g.bYA();
+    WalletOfflineCoinPurseUI.O(this.pny);
+    if (a.bZX()) {
+      this.pny.bYR();
     }
+    AppMethodBeat.o(43543);
     return false;
   }
 }

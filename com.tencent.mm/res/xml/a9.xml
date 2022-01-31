@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/ox" />
-    <Preference android:title="@string/auw" android:key="contact_info_qcontact_sex" android:layout="@layout/ab8" />
-    <Preference android:title="@string/auu" android:key="contact_info_qcontact_age" android:layout="@layout/ab8" />
-    <Preference android:title="@string/auv" android:key="contact_info_qcontact_birthday" android:layout="@layout/ab8" />
-    <Preference android:title="@string/aut" android:key="contact_info_qcontact_address" android:layout="@layout/ab8" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/am2" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/ayd" android:key="contact_info_go_to_sync" android:layout="@layout/afi" />
+    <CheckBoxPreference android:title="@string/b1_" android:key="contact_info_remind_me_syncing" android:layout="@layout/afi" />
+    <Preference android:title="@string/b1a" android:key="contact_info_remind_me_syncing_tip" android:layout="@layout/ah2" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/eda" android:key="contact_info_qqsync_install" android:layout="@layout/a95" />
+    <Preference android:title="@string/edg" android:key="contact_info_qqsync_uninstall" android:layout="@layout/aap" />
+    <PreferenceCategory />
 </PreferenceScreen>

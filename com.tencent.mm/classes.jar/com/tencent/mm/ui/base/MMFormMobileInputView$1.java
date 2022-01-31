@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMFormMobileInputView$1
   implements View.OnFocusChangeListener
@@ -10,9 +11,11 @@ final class MMFormMobileInputView$1
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((paramView == MMFormMobileInputView.a(this.uVa)) || (paramView == MMFormMobileInputView.b(this.uVa))) {
-      this.uVa.mZ(paramBoolean);
+    AppMethodBeat.i(106570);
+    if ((paramView == MMFormMobileInputView.a(this.zjv)) || (paramView == MMFormMobileInputView.b(this.zjv))) {
+      this.zjv.qC(paramBoolean);
     }
+    AppMethodBeat.o(106570);
   }
 }
 

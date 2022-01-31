@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class b
-  extends a<p>
+  extends a<c>
 {
   private static final int CTRL_INDEX = 423;
   private static final String NAME = "sendRedPacket";

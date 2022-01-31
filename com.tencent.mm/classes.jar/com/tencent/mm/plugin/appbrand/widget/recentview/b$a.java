@@ -1,29 +1,36 @@
 package com.tencent.mm.plugin.appbrand.widget.recentview;
 
-public final class b$a
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class b$a
 {
-  public StringBuilder hCA;
-  public StringBuilder hCB;
-  public String hCv;
-  public StringBuilder hCw;
-  public StringBuilder hCx;
-  public StringBuilder hCy;
-  public StringBuilder hCz;
+  String juX;
+  StringBuilder juY;
+  StringBuilder juZ;
+  StringBuilder jva;
+  StringBuilder jvb;
+  StringBuilder jvc;
+  StringBuilder jvd;
   
   public b$a(String paramString)
   {
-    this.hCv = paramString;
-    this.hCw = new StringBuilder();
-    this.hCx = new StringBuilder();
-    this.hCy = new StringBuilder();
-    this.hCz = new StringBuilder();
-    this.hCA = new StringBuilder();
-    this.hCB = new StringBuilder();
+    AppMethodBeat.i(114933);
+    this.juX = paramString;
+    this.juY = new StringBuilder();
+    this.juZ = new StringBuilder();
+    this.jva = new StringBuilder();
+    this.jvb = new StringBuilder();
+    this.jvc = new StringBuilder();
+    this.jvd = new StringBuilder();
+    AppMethodBeat.o(114933);
   }
   
   public final String toString()
   {
-    return String.format("DuplicateNameInfo: {duplicatedName: %s, appId: %s, \nnameType: %s, \nlistType: %s, \nposition: %s, \nversion: %s, \nversionType: %s", new Object[] { this.hCv, this.hCw.toString(), this.hCx.toString(), this.hCy.toString(), this.hCz.toString(), this.hCA.toString(), this.hCB.toString() });
+    AppMethodBeat.i(114934);
+    String str = String.format("DuplicateNameInfo: {duplicatedName: %s, appId: %s, \nnameType: %s, \nlistType: %s, \nposition: %s, \nversion: %s, \nversionType: %s", new Object[] { this.juX, this.juY.toString(), this.juZ.toString(), this.jva.toString(), this.jvb.toString(), this.jvc.toString(), this.jvd.toString() });
+    AppMethodBeat.o(114934);
+    return str;
   }
 }
 

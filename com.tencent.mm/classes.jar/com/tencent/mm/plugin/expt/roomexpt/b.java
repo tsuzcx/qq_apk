@@ -1,273 +1,308 @@
 package com.tencent.mm.plugin.expt.roomexpt;
 
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
-  extends i<e>
+  extends j<e>
 {
-  public static final String[] cqY = new String[0];
-  public static final String[] dXp = { i.a(e.buS, "RoomMuteExpt"), "CREATE UNIQUE INDEX IF NOT EXISTS namedayIndex ON RoomMuteExpt( chatroom,daySec )" };
-  com.tencent.mm.sdk.e.e dXw;
+  public static final String[] INDEX_CREATE;
+  public static final String[] SQL_CREATE;
+  com.tencent.mm.sdk.e.e db;
+  
+  static
+  {
+    AppMethodBeat.i(73587);
+    SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "RoomMuteExpt"), "CREATE UNIQUE INDEX IF NOT EXISTS namedayIndex ON RoomMuteExpt( chatroom,daySec )" };
+    INDEX_CREATE = new String[0];
+    AppMethodBeat.o(73587);
+  }
   
   public b(com.tencent.mm.sdk.e.e parame)
   {
-    super(parame, e.buS, "RoomMuteExpt", cqY);
-    this.dXw = parame;
-  }
-  
-  public final Cursor aNh()
-  {
-    try
-    {
-      Cursor localCursor = this.dXw.rawQuery("SELECT chatroom, nickname, isMute, count(daySec), sum(score) FROM RoomMuteExpt group by chatroom", null);
-      return localCursor;
-    }
-    catch (Exception localException)
-    {
-      y.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "get calc cursor", new Object[0]);
-    }
-    return null;
-  }
-  
-  /* Error */
-  public final java.util.List<e> aNi()
-  {
-    // Byte code:
-    //   0: new 68	java/util/ArrayList
-    //   3: dup
-    //   4: invokespecial 70	java/util/ArrayList:<init>	()V
-    //   7: astore 4
-    //   9: aload_0
-    //   10: getfield 40	com/tencent/mm/plugin/expt/roomexpt/b:dXw	Lcom/tencent/mm/sdk/e/e;
-    //   13: ldc 22
-    //   15: aconst_null
-    //   16: aconst_null
-    //   17: aconst_null
-    //   18: aconst_null
-    //   19: aconst_null
-    //   20: ldc 72
-    //   22: invokeinterface 76 8 0
-    //   27: astore_2
-    //   28: aload_2
-    //   29: ifnull +73 -> 102
-    //   32: aload_2
-    //   33: astore_1
-    //   34: aload_2
-    //   35: invokeinterface 82 1 0
-    //   40: ifeq +62 -> 102
-    //   43: aload_2
-    //   44: astore_1
-    //   45: new 16	com/tencent/mm/plugin/expt/roomexpt/e
-    //   48: dup
-    //   49: invokespecial 83	com/tencent/mm/plugin/expt/roomexpt/e:<init>	()V
-    //   52: astore_3
-    //   53: aload_2
-    //   54: astore_1
-    //   55: aload_3
-    //   56: aload_2
-    //   57: invokevirtual 87	com/tencent/mm/plugin/expt/roomexpt/e:d	(Landroid/database/Cursor;)V
-    //   60: aload_2
-    //   61: astore_1
-    //   62: aload 4
-    //   64: aload_3
-    //   65: invokeinterface 93 2 0
-    //   70: pop
-    //   71: goto -39 -> 32
-    //   74: astore_3
-    //   75: aload_2
-    //   76: astore_1
-    //   77: ldc 54
-    //   79: aload_3
-    //   80: ldc 95
-    //   82: iconst_0
-    //   83: anewarray 58	java/lang/Object
-    //   86: invokestatic 64	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   89: aload_2
-    //   90: ifnull +9 -> 99
-    //   93: aload_2
-    //   94: invokeinterface 98 1 0
-    //   99: aload 4
-    //   101: areturn
-    //   102: aload_2
-    //   103: ifnull -4 -> 99
-    //   106: aload_2
-    //   107: invokeinterface 98 1 0
-    //   112: aload 4
-    //   114: areturn
-    //   115: astore_2
-    //   116: aconst_null
-    //   117: astore_1
-    //   118: aload_1
-    //   119: ifnull +9 -> 128
-    //   122: aload_1
-    //   123: invokeinterface 98 1 0
-    //   128: aload_2
-    //   129: athrow
-    //   130: astore_2
-    //   131: goto -13 -> 118
-    //   134: astore_3
-    //   135: aconst_null
-    //   136: astore_2
-    //   137: goto -62 -> 75
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	140	0	this	b
-    //   33	90	1	localCursor1	Cursor
-    //   27	80	2	localCursor2	Cursor
-    //   115	14	2	localObject1	Object
-    //   130	1	2	localObject2	Object
-    //   136	1	2	localObject3	Object
-    //   52	13	3	locale	e
-    //   74	6	3	localException1	Exception
-    //   134	1	3	localException2	Exception
-    //   7	106	4	localArrayList	java.util.ArrayList
-    // Exception table:
-    //   from	to	target	type
-    //   34	43	74	java/lang/Exception
-    //   45	53	74	java/lang/Exception
-    //   55	60	74	java/lang/Exception
-    //   62	71	74	java/lang/Exception
-    //   9	28	115	finally
-    //   34	43	130	finally
-    //   45	53	130	finally
-    //   55	60	130	finally
-    //   62	71	130	finally
-    //   77	89	130	finally
-    //   9	28	134	java/lang/Exception
+    super(parame, e.info, "RoomMuteExpt", INDEX_CREATE);
+    this.db = parame;
   }
   
   public final boolean b(e parame)
   {
-    return super.a(parame, false);
+    AppMethodBeat.i(73583);
+    boolean bool = super.insertNotify(parame, false);
+    AppMethodBeat.o(73583);
+    return bool;
+  }
+  
+  public final Cursor bta()
+  {
+    Object localObject = null;
+    AppMethodBeat.i(73585);
+    try
+    {
+      Cursor localCursor = this.db.rawQuery("SELECT chatroom, nickname, isMute, count(daySec), sum(score) FROM RoomMuteExpt group by chatroom", null);
+      localObject = localCursor;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.ChatRoomExptStorage", localException, "get calc cursor", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(73585);
+    return localObject;
+  }
+  
+  /* Error */
+  public final java.util.List<e> btb()
+  {
+    // Byte code:
+    //   0: ldc 85
+    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 87	java/util/ArrayList
+    //   8: dup
+    //   9: invokespecial 89	java/util/ArrayList:<init>	()V
+    //   12: astore 4
+    //   14: aload_0
+    //   15: getfield 50	com/tencent/mm/plugin/expt/roomexpt/b:db	Lcom/tencent/mm/sdk/e/e;
+    //   18: ldc 29
+    //   20: aconst_null
+    //   21: aconst_null
+    //   22: aconst_null
+    //   23: aconst_null
+    //   24: aconst_null
+    //   25: ldc 91
+    //   27: invokeinterface 95 8 0
+    //   32: astore_2
+    //   33: aload_2
+    //   34: ifnull +78 -> 112
+    //   37: aload_2
+    //   38: astore_1
+    //   39: aload_2
+    //   40: invokeinterface 101 1 0
+    //   45: ifeq +67 -> 112
+    //   48: aload_2
+    //   49: astore_1
+    //   50: new 23	com/tencent/mm/plugin/expt/roomexpt/e
+    //   53: dup
+    //   54: invokespecial 102	com/tencent/mm/plugin/expt/roomexpt/e:<init>	()V
+    //   57: astore_3
+    //   58: aload_2
+    //   59: astore_1
+    //   60: aload_3
+    //   61: aload_2
+    //   62: invokevirtual 106	com/tencent/mm/plugin/expt/roomexpt/e:convertFrom	(Landroid/database/Cursor;)V
+    //   65: aload_2
+    //   66: astore_1
+    //   67: aload 4
+    //   69: aload_3
+    //   70: invokeinterface 112 2 0
+    //   75: pop
+    //   76: goto -39 -> 37
+    //   79: astore_3
+    //   80: aload_2
+    //   81: astore_1
+    //   82: ldc 72
+    //   84: aload_3
+    //   85: ldc 114
+    //   87: iconst_0
+    //   88: anewarray 76	java/lang/Object
+    //   91: invokestatic 82	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   94: aload_2
+    //   95: ifnull +9 -> 104
+    //   98: aload_2
+    //   99: invokeinterface 117 1 0
+    //   104: ldc 85
+    //   106: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: aload 4
+    //   111: areturn
+    //   112: aload_2
+    //   113: ifnull -9 -> 104
+    //   116: aload_2
+    //   117: invokeinterface 117 1 0
+    //   122: goto -18 -> 104
+    //   125: astore_2
+    //   126: aconst_null
+    //   127: astore_1
+    //   128: aload_1
+    //   129: ifnull +9 -> 138
+    //   132: aload_1
+    //   133: invokeinterface 117 1 0
+    //   138: ldc 85
+    //   140: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   143: aload_2
+    //   144: athrow
+    //   145: astore_2
+    //   146: goto -18 -> 128
+    //   149: astore_3
+    //   150: aconst_null
+    //   151: astore_2
+    //   152: goto -72 -> 80
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	155	0	this	b
+    //   38	95	1	localCursor1	Cursor
+    //   32	85	2	localCursor2	Cursor
+    //   125	19	2	localObject1	Object
+    //   145	1	2	localObject2	Object
+    //   151	1	2	localObject3	Object
+    //   57	13	3	locale	e
+    //   79	6	3	localException1	Exception
+    //   149	1	3	localException2	Exception
+    //   12	98	4	localArrayList	java.util.ArrayList
+    // Exception table:
+    //   from	to	target	type
+    //   39	48	79	java/lang/Exception
+    //   50	58	79	java/lang/Exception
+    //   60	65	79	java/lang/Exception
+    //   67	76	79	java/lang/Exception
+    //   14	33	125	finally
+    //   39	48	145	finally
+    //   50	58	145	finally
+    //   60	65	145	finally
+    //   67	76	145	finally
+    //   82	94	145	finally
+    //   14	33	149	java/lang/Exception
   }
   
   public final boolean c(e parame)
   {
-    if (parame == null) {
+    AppMethodBeat.i(73584);
+    if (parame == null)
+    {
+      AppMethodBeat.o(73584);
       return false;
     }
-    return super.b(parame, false, new String[] { "chatroom", "daySec" });
+    boolean bool = super.updateNotify(parame, false, new String[] { "chatroom", "daySec" });
+    AppMethodBeat.o(73584);
+    return bool;
   }
   
   /* Error */
-  public final e cX(String paramString1, String paramString2)
+  public final e el(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 40	com/tencent/mm/plugin/expt/roomexpt/b:dXw	Lcom/tencent/mm/sdk/e/e;
-    //   4: ldc 22
-    //   6: aconst_null
-    //   7: ldc 117
-    //   9: iconst_2
-    //   10: anewarray 14	java/lang/String
-    //   13: dup
-    //   14: iconst_0
-    //   15: aload_1
-    //   16: aastore
-    //   17: dup
-    //   18: iconst_1
-    //   19: aload_2
-    //   20: aastore
-    //   21: aconst_null
-    //   22: aconst_null
-    //   23: aconst_null
-    //   24: invokeinterface 76 8 0
-    //   29: astore_2
-    //   30: aload_2
-    //   31: ifnull +119 -> 150
-    //   34: aload_2
-    //   35: astore_3
-    //   36: aload_2
-    //   37: invokeinterface 120 1 0
-    //   42: ifeq +108 -> 150
-    //   45: aload_2
-    //   46: astore_3
-    //   47: new 16	com/tencent/mm/plugin/expt/roomexpt/e
-    //   50: dup
-    //   51: invokespecial 83	com/tencent/mm/plugin/expt/roomexpt/e:<init>	()V
-    //   54: astore_1
-    //   55: aload_2
-    //   56: astore_3
-    //   57: aload_1
-    //   58: aload_2
-    //   59: invokevirtual 87	com/tencent/mm/plugin/expt/roomexpt/e:d	(Landroid/database/Cursor;)V
+    //   0: ldc 132
+    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: getfield 50	com/tencent/mm/plugin/expt/roomexpt/b:db	Lcom/tencent/mm/sdk/e/e;
+    //   9: ldc 29
+    //   11: aconst_null
+    //   12: ldc 134
+    //   14: iconst_2
+    //   15: anewarray 21	java/lang/String
+    //   18: dup
+    //   19: iconst_0
+    //   20: aload_1
+    //   21: aastore
+    //   22: dup
+    //   23: iconst_1
+    //   24: aload_2
+    //   25: aastore
+    //   26: aconst_null
+    //   27: aconst_null
+    //   28: aconst_null
+    //   29: invokeinterface 95 8 0
+    //   34: astore_2
+    //   35: aload_2
+    //   36: ifnull +132 -> 168
+    //   39: aload_2
+    //   40: astore_3
+    //   41: aload_2
+    //   42: invokeinterface 137 1 0
+    //   47: ifeq +121 -> 168
+    //   50: aload_2
+    //   51: astore_3
+    //   52: new 23	com/tencent/mm/plugin/expt/roomexpt/e
+    //   55: dup
+    //   56: invokespecial 102	com/tencent/mm/plugin/expt/roomexpt/e:<init>	()V
+    //   59: astore_1
+    //   60: aload_2
+    //   61: astore_3
     //   62: aload_1
-    //   63: astore_3
-    //   64: aload_2
-    //   65: ifnull +11 -> 76
-    //   68: aload_2
-    //   69: invokeinterface 98 1 0
-    //   74: aload_1
-    //   75: astore_3
-    //   76: aload_3
-    //   77: areturn
-    //   78: astore 4
-    //   80: aconst_null
-    //   81: astore_2
-    //   82: aconst_null
-    //   83: astore_1
-    //   84: aload_2
-    //   85: astore_3
-    //   86: ldc 54
-    //   88: ldc 122
-    //   90: iconst_1
-    //   91: anewarray 58	java/lang/Object
-    //   94: dup
-    //   95: iconst_0
-    //   96: aload 4
-    //   98: invokevirtual 126	java/lang/Exception:toString	()Ljava/lang/String;
-    //   101: aastore
-    //   102: invokestatic 130	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   105: aload_1
-    //   106: astore_3
-    //   107: aload_2
-    //   108: ifnull -32 -> 76
-    //   111: aload_2
-    //   112: invokeinterface 98 1 0
-    //   117: aload_1
-    //   118: areturn
-    //   119: astore_1
-    //   120: aconst_null
-    //   121: astore_3
-    //   122: aload_3
-    //   123: ifnull +9 -> 132
-    //   126: aload_3
-    //   127: invokeinterface 98 1 0
-    //   132: aload_1
-    //   133: athrow
-    //   134: astore_1
-    //   135: goto -13 -> 122
-    //   138: astore 4
-    //   140: aconst_null
-    //   141: astore_1
-    //   142: goto -58 -> 84
-    //   145: astore 4
-    //   147: goto -63 -> 84
-    //   150: aconst_null
-    //   151: astore_1
-    //   152: goto -90 -> 62
+    //   63: aload_2
+    //   64: invokevirtual 106	com/tencent/mm/plugin/expt/roomexpt/e:convertFrom	(Landroid/database/Cursor;)V
+    //   67: aload_1
+    //   68: astore_3
+    //   69: aload_2
+    //   70: ifnull +11 -> 81
+    //   73: aload_2
+    //   74: invokeinterface 117 1 0
+    //   79: aload_1
+    //   80: astore_3
+    //   81: ldc 132
+    //   83: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: aload_3
+    //   87: areturn
+    //   88: astore 4
+    //   90: aconst_null
+    //   91: astore_2
+    //   92: aconst_null
+    //   93: astore_1
+    //   94: aload_2
+    //   95: astore_3
+    //   96: ldc 72
+    //   98: ldc 139
+    //   100: iconst_1
+    //   101: anewarray 76	java/lang/Object
+    //   104: dup
+    //   105: iconst_0
+    //   106: aload 4
+    //   108: invokevirtual 143	java/lang/Exception:toString	()Ljava/lang/String;
+    //   111: aastore
+    //   112: invokestatic 147	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   115: aload_1
+    //   116: astore_3
+    //   117: aload_2
+    //   118: ifnull -37 -> 81
+    //   121: aload_2
+    //   122: invokeinterface 117 1 0
+    //   127: aload_1
+    //   128: astore_3
+    //   129: goto -48 -> 81
+    //   132: astore_1
+    //   133: aconst_null
+    //   134: astore_3
+    //   135: aload_3
+    //   136: ifnull +9 -> 145
+    //   139: aload_3
+    //   140: invokeinterface 117 1 0
+    //   145: ldc 132
+    //   147: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   150: aload_1
+    //   151: athrow
+    //   152: astore_1
+    //   153: goto -18 -> 135
+    //   156: astore 4
+    //   158: aconst_null
+    //   159: astore_1
+    //   160: goto -66 -> 94
+    //   163: astore 4
+    //   165: goto -71 -> 94
+    //   168: aconst_null
+    //   169: astore_1
+    //   170: goto -103 -> 67
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	155	0	this	b
-    //   0	155	1	paramString1	String
-    //   0	155	2	paramString2	String
-    //   35	92	3	str	String
-    //   78	19	4	localException1	Exception
-    //   138	1	4	localException2	Exception
-    //   145	1	4	localException3	Exception
+    //   0	173	0	this	b
+    //   0	173	1	paramString1	String
+    //   0	173	2	paramString2	String
+    //   40	100	3	str	String
+    //   88	19	4	localException1	Exception
+    //   156	1	4	localException2	Exception
+    //   163	1	4	localException3	Exception
     // Exception table:
     //   from	to	target	type
-    //   0	30	78	java/lang/Exception
-    //   0	30	119	finally
-    //   36	45	134	finally
-    //   47	55	134	finally
-    //   57	62	134	finally
-    //   86	105	134	finally
-    //   36	45	138	java/lang/Exception
-    //   47	55	138	java/lang/Exception
-    //   57	62	145	java/lang/Exception
+    //   5	35	88	java/lang/Exception
+    //   5	35	132	finally
+    //   41	50	152	finally
+    //   52	60	152	finally
+    //   62	67	152	finally
+    //   96	115	152	finally
+    //   41	50	156	java/lang/Exception
+    //   52	60	156	java/lang/Exception
+    //   62	67	163	java/lang/Exception
   }
 }
 

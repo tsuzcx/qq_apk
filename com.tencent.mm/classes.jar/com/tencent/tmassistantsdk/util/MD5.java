@@ -1,6 +1,8 @@
 package com.tencent.tmassistantsdk.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 public class MD5
@@ -22,18 +24,25 @@ public class MD5
   static final int S42 = 10;
   static final int S43 = 15;
   static final int S44 = 21;
-  protected final byte[] buffer = new byte[64];
-  protected final long[] count = new long[2];
-  protected final byte[] digest = new byte[16];
-  protected final long[] state = new long[4];
+  protected final byte[] buffer;
+  protected final long[] count;
+  protected final byte[] digest;
+  protected final long[] state;
   
   public MD5()
   {
+    AppMethodBeat.i(76258);
+    this.state = new long[4];
+    this.count = new long[2];
+    this.buffer = new byte[64];
+    this.digest = new byte[16];
     md5Init();
+    AppMethodBeat.o(76258);
   }
   
   private void Decode(long[] paramArrayOfLong, byte[] paramArrayOfByte, int paramInt)
   {
+    AppMethodBeat.i(76267);
     int j = 0;
     int i = 0;
     while (j < paramInt)
@@ -42,6 +51,7 @@ public class MD5
       j += 4;
       i += 1;
     }
+    AppMethodBeat.o(76267);
   }
   
   private void Encode(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
@@ -66,10 +76,13 @@ public class MD5
   
   private long FF(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
+    AppMethodBeat.i(76259);
     paramLong1 = F(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
     int i = (int)paramLong1;
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    paramLong1 = (int)paramLong1 >>> (int)(32L - paramLong6) | i << j;
+    AppMethodBeat.o(76259);
+    return paramLong1 + paramLong2;
   }
   
   private long G(long paramLong1, long paramLong2, long paramLong3)
@@ -79,10 +92,13 @@ public class MD5
   
   private long GG(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
+    AppMethodBeat.i(76260);
     paramLong1 = G(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
     int i = (int)paramLong1;
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    paramLong1 = (int)paramLong1 >>> (int)(32L - paramLong6) | i << j;
+    AppMethodBeat.o(76260);
+    return paramLong1 + paramLong2;
   }
   
   private long H(long paramLong1, long paramLong2, long paramLong3)
@@ -92,10 +108,13 @@ public class MD5
   
   private long HH(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
+    AppMethodBeat.i(76261);
     paramLong1 = H(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
     int i = (int)paramLong1;
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    paramLong1 = (int)paramLong1 >>> (int)(32L - paramLong6) | i << j;
+    AppMethodBeat.o(76261);
+    return paramLong1 + paramLong2;
   }
   
   private long I(long paramLong1, long paramLong2, long paramLong3)
@@ -105,10 +124,13 @@ public class MD5
   
   private long II(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7)
   {
+    AppMethodBeat.i(76262);
     paramLong1 = I(paramLong2, paramLong3, paramLong4) + paramLong5 + paramLong7 + paramLong1;
     int i = (int)paramLong1;
     int j = (int)paramLong6;
-    return ((int)paramLong1 >>> (int)(32L - paramLong6) | i << j) + paramLong2;
+    paramLong1 = (int)paramLong1 >>> (int)(32L - paramLong6) | i << j;
+    AppMethodBeat.o(76262);
+    return paramLong1 + paramLong2;
   }
   
   public static long b2iu(byte paramByte)
@@ -121,46 +143,52 @@ public class MD5
   
   public static String byteHEX(byte paramByte)
   {
-    char[] arrayOfChar = new char[16];
-    char[] tmp6_5 = arrayOfChar;
-    tmp6_5[0] = 48;
-    char[] tmp11_6 = tmp6_5;
-    tmp11_6[1] = 49;
-    char[] tmp16_11 = tmp11_6;
-    tmp16_11[2] = 50;
-    char[] tmp21_16 = tmp16_11;
-    tmp21_16[3] = 51;
-    char[] tmp26_21 = tmp21_16;
-    tmp26_21[4] = 52;
-    char[] tmp31_26 = tmp26_21;
-    tmp31_26[5] = 53;
-    char[] tmp36_31 = tmp31_26;
-    tmp36_31[6] = 54;
-    char[] tmp42_36 = tmp36_31;
-    tmp42_36[7] = 55;
-    char[] tmp48_42 = tmp42_36;
-    tmp48_42[8] = 56;
-    char[] tmp54_48 = tmp48_42;
-    tmp54_48[9] = 57;
-    char[] tmp60_54 = tmp54_48;
-    tmp60_54[10] = 65;
-    char[] tmp66_60 = tmp60_54;
-    tmp66_60[11] = 66;
-    char[] tmp72_66 = tmp66_60;
-    tmp72_66[12] = 67;
-    char[] tmp78_72 = tmp72_66;
-    tmp78_72[13] = 68;
-    char[] tmp84_78 = tmp78_72;
-    tmp84_78[14] = 69;
-    char[] tmp90_84 = tmp84_78;
-    tmp90_84[15] = 70;
-    tmp90_84;
-    return new String(new char[] { arrayOfChar[(paramByte >>> 4 & 0xF)], arrayOfChar[(paramByte & 0xF)] });
+    AppMethodBeat.i(76268);
+    Object localObject = new char[16];
+    Object tmp11_10 = localObject;
+    tmp11_10[0] = 48;
+    Object tmp16_11 = tmp11_10;
+    tmp16_11[1] = 49;
+    Object tmp21_16 = tmp16_11;
+    tmp21_16[2] = 50;
+    Object tmp26_21 = tmp21_16;
+    tmp26_21[3] = 51;
+    Object tmp31_26 = tmp26_21;
+    tmp31_26[4] = 52;
+    Object tmp36_31 = tmp31_26;
+    tmp36_31[5] = 53;
+    Object tmp41_36 = tmp36_31;
+    tmp41_36[6] = 54;
+    Object tmp47_41 = tmp41_36;
+    tmp47_41[7] = 55;
+    Object tmp53_47 = tmp47_41;
+    tmp53_47[8] = 56;
+    Object tmp59_53 = tmp53_47;
+    tmp59_53[9] = 57;
+    Object tmp65_59 = tmp59_53;
+    tmp65_59[10] = 65;
+    Object tmp71_65 = tmp65_59;
+    tmp71_65[11] = 66;
+    Object tmp77_71 = tmp71_65;
+    tmp77_71[12] = 67;
+    Object tmp83_77 = tmp77_71;
+    tmp83_77[13] = 68;
+    Object tmp89_83 = tmp83_77;
+    tmp89_83[14] = 69;
+    Object tmp95_89 = tmp89_83;
+    tmp95_89[15] = 70;
+    tmp95_89;
+    localObject = new String(new char[] { localObject[(paramByte >>> 4 & 0xF)], localObject[(paramByte & 0xF)] });
+    AppMethodBeat.o(76268);
+    return localObject;
   }
   
   public static String convertHashToString(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
+    AppMethodBeat.i(76271);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(76271);
       return "";
     }
     String str = "";
@@ -170,7 +198,9 @@ public class MD5
       str = str + Integer.toString((paramArrayOfByte[i] & 0xFF) + 256, 16).substring(1);
       i += 1;
     }
-    return str.toUpperCase();
+    paramArrayOfByte = str.toUpperCase();
+    AppMethodBeat.o(76271);
+    return paramArrayOfByte;
   }
   
   /* Error */
@@ -179,111 +209,118 @@ public class MD5
     // Byte code:
     //   0: iconst_0
     //   1: istore_1
-    //   2: new 152	java/io/FileInputStream
-    //   5: dup
-    //   6: aload_0
-    //   7: invokespecial 155	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   10: astore_0
-    //   11: sipush 1024
-    //   14: newarray byte
-    //   16: astore_3
-    //   17: ldc 157
-    //   19: invokestatic 163	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   22: astore 4
-    //   24: iload_1
-    //   25: iconst_m1
-    //   26: if_icmpeq +39 -> 65
-    //   29: aload_0
-    //   30: aload_3
-    //   31: invokevirtual 169	java/io/InputStream:read	([B)I
-    //   34: istore_2
-    //   35: iload_2
-    //   36: istore_1
-    //   37: iload_2
-    //   38: ifle -14 -> 24
-    //   41: aload 4
-    //   43: aload_3
-    //   44: iconst_0
-    //   45: iload_2
-    //   46: invokevirtual 173	java/security/MessageDigest:update	([BII)V
-    //   49: iload_2
-    //   50: istore_1
-    //   51: goto -27 -> 24
-    //   54: astore_3
-    //   55: aload_0
-    //   56: ifnull +7 -> 63
-    //   59: aload_0
-    //   60: invokevirtual 176	java/io/InputStream:close	()V
-    //   63: aconst_null
-    //   64: areturn
-    //   65: aload 4
-    //   67: invokevirtual 179	java/security/MessageDigest:digest	()[B
-    //   70: invokestatic 181	com/tencent/tmassistantsdk/util/MD5:convertHashToString	([B)Ljava/lang/String;
-    //   73: astore_3
-    //   74: aload_0
-    //   75: invokevirtual 176	java/io/InputStream:close	()V
-    //   78: aload_3
-    //   79: areturn
-    //   80: astore_0
-    //   81: aload_3
-    //   82: areturn
-    //   83: astore_0
-    //   84: aconst_null
-    //   85: astore_3
-    //   86: aload_3
-    //   87: ifnull +7 -> 94
-    //   90: aload_3
-    //   91: invokevirtual 176	java/io/InputStream:close	()V
-    //   94: aload_0
-    //   95: athrow
-    //   96: astore_0
-    //   97: aconst_null
-    //   98: areturn
-    //   99: astore_3
-    //   100: goto -6 -> 94
-    //   103: astore_3
-    //   104: aload_0
-    //   105: astore 4
-    //   107: aload_3
-    //   108: astore_0
-    //   109: aload 4
-    //   111: astore_3
-    //   112: goto -26 -> 86
-    //   115: astore_0
-    //   116: aconst_null
+    //   2: ldc 168
+    //   4: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: new 170	java/io/FileInputStream
+    //   10: dup
+    //   11: aload_0
+    //   12: invokespecial 173	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   15: astore_0
+    //   16: sipush 1024
+    //   19: newarray byte
+    //   21: astore_3
+    //   22: ldc 175
+    //   24: invokestatic 181	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   27: astore 4
+    //   29: iload_1
+    //   30: iconst_m1
+    //   31: if_icmpeq +44 -> 75
+    //   34: aload_0
+    //   35: aload_3
+    //   36: invokevirtual 187	java/io/InputStream:read	([B)I
+    //   39: istore_2
+    //   40: iload_2
+    //   41: istore_1
+    //   42: iload_2
+    //   43: ifle -14 -> 29
+    //   46: aload 4
+    //   48: aload_3
+    //   49: iconst_0
+    //   50: iload_2
+    //   51: invokevirtual 191	java/security/MessageDigest:update	([BII)V
+    //   54: iload_2
+    //   55: istore_1
+    //   56: goto -27 -> 29
+    //   59: astore_3
+    //   60: aload_0
+    //   61: ifnull +7 -> 68
+    //   64: aload_0
+    //   65: invokevirtual 194	java/io/InputStream:close	()V
+    //   68: ldc 168
+    //   70: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: aconst_null
+    //   74: areturn
+    //   75: aload 4
+    //   77: invokevirtual 197	java/security/MessageDigest:digest	()[B
+    //   80: invokestatic 199	com/tencent/tmassistantsdk/util/MD5:convertHashToString	([B)Ljava/lang/String;
+    //   83: astore_3
+    //   84: aload_0
+    //   85: invokevirtual 194	java/io/InputStream:close	()V
+    //   88: ldc 168
+    //   90: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   93: aload_3
+    //   94: areturn
+    //   95: astore_0
+    //   96: aconst_null
+    //   97: astore_3
+    //   98: aload_3
+    //   99: ifnull +7 -> 106
+    //   102: aload_3
+    //   103: invokevirtual 194	java/io/InputStream:close	()V
+    //   106: ldc 168
+    //   108: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   111: aload_0
+    //   112: athrow
+    //   113: astore_0
+    //   114: goto -26 -> 88
     //   117: astore_0
-    //   118: goto -63 -> 55
+    //   118: goto -50 -> 68
+    //   121: astore_3
+    //   122: goto -16 -> 106
+    //   125: astore_3
+    //   126: aload_0
+    //   127: astore 4
+    //   129: aload_3
+    //   130: astore_0
+    //   131: aload 4
+    //   133: astore_3
+    //   134: goto -36 -> 98
+    //   137: astore_0
+    //   138: aconst_null
+    //   139: astore_0
+    //   140: goto -80 -> 60
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	121	0	paramString	String
-    //   1	50	1	i	int
-    //   34	16	2	j	int
-    //   16	28	3	arrayOfByte	byte[]
-    //   54	1	3	localException1	java.lang.Exception
-    //   73	18	3	str	String
-    //   99	1	3	localException2	java.lang.Exception
-    //   103	5	3	localObject1	Object
-    //   111	1	3	localObject2	Object
-    //   22	88	4	localObject3	Object
+    //   0	143	0	paramString	String
+    //   1	55	1	i	int
+    //   39	16	2	j	int
+    //   21	28	3	arrayOfByte	byte[]
+    //   59	1	3	localException1	Exception
+    //   83	20	3	str	String
+    //   121	1	3	localException2	Exception
+    //   125	5	3	localObject1	Object
+    //   133	1	3	localObject2	Object
+    //   27	105	4	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   11	24	54	java/lang/Exception
-    //   29	35	54	java/lang/Exception
-    //   41	49	54	java/lang/Exception
-    //   65	74	54	java/lang/Exception
-    //   74	78	80	java/lang/Exception
-    //   2	11	83	finally
-    //   59	63	96	java/lang/Exception
-    //   90	94	99	java/lang/Exception
-    //   11	24	103	finally
-    //   29	35	103	finally
-    //   41	49	103	finally
-    //   65	74	103	finally
-    //   2	11	115	java/lang/Exception
+    //   16	29	59	java/lang/Exception
+    //   34	40	59	java/lang/Exception
+    //   46	54	59	java/lang/Exception
+    //   75	84	59	java/lang/Exception
+    //   7	16	95	finally
+    //   84	88	113	java/lang/Exception
+    //   64	68	117	java/lang/Exception
+    //   102	106	121	java/lang/Exception
+    //   16	29	125	finally
+    //   34	40	125	finally
+    //   46	54	125	finally
+    //   75	84	125	finally
+    //   7	16	137	java/lang/Exception
   }
   
   private void md5Final()
   {
+    AppMethodBeat.i(76265);
     byte[] arrayOfByte = new byte[8];
     Encode(arrayOfByte, this.count, 8);
     int i = (int)(this.count[0] >>> 3) & 0x3F;
@@ -293,6 +330,7 @@ public class MD5
       md5Update(PADDING, i);
       md5Update(arrayOfByte, 8);
       Encode(this.digest, this.state, 16);
+      AppMethodBeat.o(76265);
       return;
     }
   }
@@ -319,6 +357,7 @@ public class MD5
   
   private void md5Transform(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(76266);
     long l2 = this.state[0];
     long l1 = this.state[1];
     long l4 = this.state[2];
@@ -397,10 +436,12 @@ public class MD5
     paramArrayOfByte[2] += l4;
     paramArrayOfByte = this.state;
     paramArrayOfByte[3] += l3;
+    AppMethodBeat.o(76266);
   }
   
   private void md5Update(byte[] paramArrayOfByte, int paramInt)
   {
+    AppMethodBeat.i(76264);
     byte[] arrayOfByte = new byte[64];
     int i = (int)(this.count[0] >>> 3) & 0x3F;
     long[] arrayOfLong = this.count;
@@ -432,177 +473,79 @@ public class MD5
     for (;;)
     {
       md5Memcpy(this.buffer, paramArrayOfByte, i, j, paramInt - j);
+      AppMethodBeat.o(76264);
       return;
       j = 0;
     }
   }
   
-  /* Error */
-  private boolean md5Update(java.io.InputStream paramInputStream, long paramLong)
+  private boolean md5Update(InputStream paramInputStream, long paramLong)
   {
-    // Byte code:
-    //   0: bipush 64
-    //   2: newarray byte
-    //   4: astore 8
-    //   6: aload_0
-    //   7: getfield 58	com/tencent/tmassistantsdk/util/MD5:count	[J
-    //   10: iconst_0
-    //   11: laload
-    //   12: iconst_3
-    //   13: lushr
-    //   14: l2i
-    //   15: bipush 63
-    //   17: iand
-    //   18: istore 5
-    //   20: aload_0
-    //   21: getfield 58	com/tencent/tmassistantsdk/util/MD5:count	[J
-    //   24: astore 9
-    //   26: aload 9
-    //   28: iconst_0
-    //   29: laload
-    //   30: lload_2
-    //   31: iconst_3
-    //   32: lshl
-    //   33: ladd
-    //   34: lstore 6
-    //   36: aload 9
-    //   38: iconst_0
-    //   39: lload 6
-    //   41: lastore
-    //   42: lload 6
-    //   44: lload_2
-    //   45: iconst_3
-    //   46: lshl
-    //   47: lcmp
-    //   48: ifge +19 -> 67
-    //   51: aload_0
-    //   52: getfield 58	com/tencent/tmassistantsdk/util/MD5:count	[J
-    //   55: astore 9
-    //   57: aload 9
-    //   59: iconst_1
-    //   60: aload 9
-    //   62: iconst_1
-    //   63: laload
-    //   64: lconst_1
-    //   65: ladd
-    //   66: lastore
-    //   67: aload_0
-    //   68: getfield 58	com/tencent/tmassistantsdk/util/MD5:count	[J
-    //   71: astore 9
-    //   73: aload 9
-    //   75: iconst_1
-    //   76: aload 9
-    //   78: iconst_1
-    //   79: laload
-    //   80: lload_2
-    //   81: bipush 29
-    //   83: lushr
-    //   84: ladd
-    //   85: lastore
-    //   86: bipush 64
-    //   88: iload 5
-    //   90: isub
-    //   91: istore 4
-    //   93: lload_2
-    //   94: iload 4
-    //   96: i2l
-    //   97: lcmp
-    //   98: iflt +114 -> 212
-    //   101: iload 4
-    //   103: newarray byte
-    //   105: astore 9
-    //   107: aload_1
-    //   108: aload 9
-    //   110: iconst_0
-    //   111: iload 4
-    //   113: invokevirtual 378	java/io/InputStream:read	([BII)I
-    //   116: pop
-    //   117: aload_0
-    //   118: aload_0
-    //   119: getfield 60	com/tencent/tmassistantsdk/util/MD5:buffer	[B
-    //   122: aload 9
-    //   124: iload 5
-    //   126: iconst_0
-    //   127: iload 4
-    //   129: invokespecial 372	com/tencent/tmassistantsdk/util/MD5:md5Memcpy	([B[BIII)V
-    //   132: aload_0
-    //   133: aload_0
-    //   134: getfield 60	com/tencent/tmassistantsdk/util/MD5:buffer	[B
-    //   137: invokespecial 374	com/tencent/tmassistantsdk/util/MD5:md5Transform	([B)V
-    //   140: iload 4
-    //   142: bipush 63
-    //   144: iadd
-    //   145: i2l
-    //   146: lload_2
-    //   147: lcmp
-    //   148: ifge +26 -> 174
-    //   151: aload_1
-    //   152: aload 8
-    //   154: invokevirtual 169	java/io/InputStream:read	([B)I
-    //   157: pop
-    //   158: aload_0
-    //   159: aload 8
-    //   161: invokespecial 374	com/tencent/tmassistantsdk/util/MD5:md5Transform	([B)V
-    //   164: iload 4
-    //   166: bipush 64
-    //   168: iadd
-    //   169: istore 4
-    //   171: goto -31 -> 140
-    //   174: iconst_0
-    //   175: istore 5
-    //   177: lload_2
-    //   178: iload 4
-    //   180: i2l
-    //   181: lsub
-    //   182: l2i
-    //   183: newarray byte
-    //   185: astore 8
-    //   187: aload_1
-    //   188: aload 8
-    //   190: invokevirtual 169	java/io/InputStream:read	([B)I
-    //   193: pop
-    //   194: aload_0
-    //   195: aload_0
-    //   196: getfield 60	com/tencent/tmassistantsdk/util/MD5:buffer	[B
-    //   199: aload 8
-    //   201: iload 5
-    //   203: iconst_0
-    //   204: aload 8
-    //   206: arraylength
-    //   207: invokespecial 372	com/tencent/tmassistantsdk/util/MD5:md5Memcpy	([B[BIII)V
-    //   210: iconst_1
-    //   211: ireturn
-    //   212: iconst_0
-    //   213: istore 4
-    //   215: goto -38 -> 177
-    //   218: astore_1
-    //   219: iconst_0
-    //   220: ireturn
-    //   221: astore_1
-    //   222: iconst_0
-    //   223: ireturn
-    //   224: astore_1
-    //   225: iconst_0
-    //   226: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	227	0	this	MD5
-    //   0	227	1	paramInputStream	java.io.InputStream
-    //   0	227	2	paramLong	long
-    //   91	123	4	i	int
-    //   18	184	5	j	int
-    //   34	9	6	l	long
-    //   4	201	8	arrayOfByte	byte[]
-    //   24	99	9	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   107	117	218	java/lang/Exception
-    //   151	158	221	java/lang/Exception
-    //   187	194	224	java/lang/Exception
+    AppMethodBeat.i(76263);
+    byte[] arrayOfByte = new byte[64];
+    int j = (int)(this.count[0] >>> 3) & 0x3F;
+    Object localObject = this.count;
+    long l = localObject[0] + (paramLong << 3);
+    localObject[0] = l;
+    if (l < paramLong << 3)
+    {
+      localObject = this.count;
+      localObject[1] += 1L;
+    }
+    localObject = this.count;
+    localObject[1] += (paramLong >>> 29);
+    int i = 64 - j;
+    if (paramLong >= i)
+    {
+      localObject = new byte[i];
+      try
+      {
+        paramInputStream.read((byte[])localObject, 0, i);
+        md5Memcpy(this.buffer, (byte[])localObject, j, 0, i);
+        md5Transform(this.buffer);
+      }
+      catch (Exception paramInputStream)
+      {
+        try
+        {
+          paramInputStream.read(arrayOfByte);
+          md5Transform(arrayOfByte);
+          i += 64;
+        }
+        catch (Exception paramInputStream)
+        {
+          AppMethodBeat.o(76263);
+          return false;
+        }
+        paramInputStream = paramInputStream;
+        AppMethodBeat.o(76263);
+        return false;
+      }
+      if (i + 63 < paramLong) {}
+      j = 0;
+    }
+    for (;;)
+    {
+      arrayOfByte = new byte[(int)(paramLong - i)];
+      try
+      {
+        paramInputStream.read(arrayOfByte);
+        md5Memcpy(this.buffer, arrayOfByte, j, 0, arrayOfByte.length);
+        AppMethodBeat.o(76263);
+        return true;
+      }
+      catch (Exception paramInputStream)
+      {
+        AppMethodBeat.o(76263);
+      }
+      i = 0;
+    }
+    return false;
   }
   
   public static String toMD5(String paramString)
   {
+    AppMethodBeat.i(76269);
     try
     {
       arrayOfByte = paramString.getBytes("ISO8859_1");
@@ -616,6 +559,7 @@ public class MD5
         int i;
         paramString = paramString.getBytes();
       }
+      AppMethodBeat.o(76269);
     }
     arrayOfByte = new MD5().getMD5(paramString);
     paramString = "";
@@ -630,10 +574,13 @@ public class MD5
   
   public byte[] getMD5(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(76257);
     md5Init();
     md5Update(new ByteArrayInputStream(paramArrayOfByte), paramArrayOfByte.length);
     md5Final();
-    return this.digest;
+    paramArrayOfByte = this.digest;
+    AppMethodBeat.o(76257);
+    return paramArrayOfByte;
   }
 }
 

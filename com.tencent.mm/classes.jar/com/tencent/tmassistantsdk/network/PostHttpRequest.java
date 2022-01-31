@@ -48,7 +48,7 @@ public abstract class PostHttpRequest
     //   64: ldc 60
     //   66: iconst_0
     //   67: anewarray 4	java/lang/Object
-    //   70: invokestatic 66	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: invokestatic 66	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   73: aload_0
     //   74: aconst_null
     //   75: putfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
@@ -81,9 +81,9 @@ public abstract class PostHttpRequest
     //   61	73	86	finally
   }
   
-  public abstract void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt);
+  protected abstract void onFinished(JceStruct paramJceStruct1, JceStruct paramJceStruct2, int paramInt);
   
-  public boolean sendRequest(JceStruct paramJceStruct)
+  protected boolean sendRequest(JceStruct paramJceStruct)
   {
     if (paramJceStruct == null) {}
     for (;;)

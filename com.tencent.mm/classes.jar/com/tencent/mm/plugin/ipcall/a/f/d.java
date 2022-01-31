@@ -1,41 +1,44 @@
 package com.tencent.mm.plugin.ipcall.a.f;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.ipcall.a.a.a;
 import com.tencent.mm.plugin.ipcall.a.a.c;
 import com.tencent.mm.plugin.ipcall.a.d.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   extends a
 {
-  public final int LW()
-  {
-    return 1;
-  }
-  
   public final void b(c paramc)
   {
+    AppMethodBeat.i(21904);
     if (paramc != null)
     {
-      if (paramc.lpG == 0) {
-        paramc.lpG = ((int)System.currentTimeMillis());
+      if (paramc.nNc == 0) {
+        paramc.nNc = ((int)System.currentTimeMillis());
       }
-      i locali = new i(paramc.bYR, paramc.lqf, paramc.lpG, paramc.lpH, paramc.lpI);
-      au.Dk().a(locali, 0);
-      y.d("MicroMsg.IPCallInviteService", "start invite, toUsername: %s, toPhoneNumber: %s, inviteid: %d", new Object[] { paramc.bYR, paramc.lqf, Integer.valueOf(paramc.lpG) });
+      i locali = new i(paramc.cGY, paramc.nNB, paramc.nNc, paramc.nNd, paramc.nNe);
+      aw.Rc().a(locali, 0);
+      ab.d("MicroMsg.IPCallInviteService", "start invite, toUsername: %s, toPhoneNumber: %s, inviteid: %d", new Object[] { paramc.cGY, paramc.nNB, Integer.valueOf(paramc.nNc) });
     }
+    AppMethodBeat.o(21904);
   }
   
-  public final int[] bcs()
+  public final int[] bJz()
   {
     return new int[] { 991 };
   }
   
+  public final int getServiceType()
+  {
+    return 1;
+  }
+  
   public final void onDestroy() {}
   
-  public final void pT() {}
+  public final void tW() {}
 }
 
 

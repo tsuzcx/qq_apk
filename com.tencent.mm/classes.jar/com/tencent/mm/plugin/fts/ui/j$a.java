@@ -1,39 +1,49 @@
 package com.tencent.mm.plugin.fts.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.e;
+import com.tencent.mm.plugin.fts.ui.d.n;
 import java.util.Iterator;
 import java.util.List;
 
 final class j$a
   implements Runnable
 {
-  private String bVk;
-  private e kBH;
+  private e mXC;
+  private String query;
   
   j$a(j paramj, e parame, String paramString)
   {
-    this.bVk = paramString;
-    this.kBH = parame;
+    this.query = paramString;
+    this.mXC = parame;
   }
   
   public final void run()
   {
-    if ((!j.a(this.kBG)) && (((e)j.b(this.kBG).get(j.b(this.kBG).size() - 1)).getType() == this.kBH.getType())) {
-      j.c(this.kBG);
+    AppMethodBeat.i(61851);
+    if ((!j.a(this.mXB)) && (((e)j.b(this.mXB).get(j.b(this.mXB).size() - 1)).getType() == this.mXC.getType())) {
+      j.c(this.mXB);
     }
-    Iterator localIterator = j.b(this.kBG).iterator();
-    for (int i = 0; localIterator.hasNext(); i = ((e)localIterator.next()).rx(i)) {}
-    this.kBG.setCount(i);
-    this.kBG.notifyDataSetChanged();
-    this.kBG.N(i, j.d(this.kBG));
-    if (j.d(this.kBG)) {
-      j.e(this.kBG).kDV = System.currentTimeMillis();
+    if ((!j.d(this.mXB)) && (this.mXC.getType() == 256)) {
+      j.e(this.mXB);
     }
+    j.f(this.mXB).nay = j.g(this.mXB);
+    Object localObject = j.b(this.mXB).iterator();
+    for (int i = 0; ((Iterator)localObject).hasNext(); i = ((e)((Iterator)localObject).next()).wt(i)) {}
+    i = j.h(this.mXB).wt(i);
+    this.mXB.setCount(i);
+    this.mXB.notifyDataSetChanged();
+    localObject = this.mXB;
+    ((j)localObject).V(i, j.g((j)localObject));
+    if (j.g(this.mXB)) {
+      j.f(this.mXB).nae = System.currentTimeMillis();
+    }
+    AppMethodBeat.o(61851);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.j.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.ui.tools.a.a;
 
 final class SettingSnsBackgroundUI$1
@@ -9,10 +10,13 @@ final class SettingSnsBackgroundUI$1
 {
   SettingSnsBackgroundUI$1(SettingSnsBackgroundUI paramSettingSnsBackgroundUI) {}
   
-  public final String Pj(String paramString)
+  public final String acd(String paramString)
   {
-    paramString = g.o((this.oTg.filePath + System.currentTimeMillis()).getBytes());
-    return af.getAccSnsTmpPath() + paramString;
+    AppMethodBeat.i(38553);
+    paramString = g.w((this.rLd.filePath + System.currentTimeMillis()).getBytes());
+    paramString = ag.getAccSnsTmpPath() + paramString;
+    AppMethodBeat.o(38553);
+    return paramString;
   }
 }
 

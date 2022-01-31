@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.FileSystem.a;
 import com.tencent.mm.vfs.e;
 import java.util.Iterator;
@@ -11,32 +12,13 @@ import java.util.List;
 
 public final class w
 {
-  public boolean oLX = false;
-  
-  public static void OY(String paramString)
-  {
-    Object localObject = e.aeT(paramString);
-    if (localObject == null) {}
-    for (;;)
-    {
-      return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        FileSystem.a locala = (FileSystem.a)((Iterator)localObject).next();
-        if (locala.name.startsWith("SnsMicroMsg.dberr"))
-        {
-          y.i("MicroMsg.TrimSnsDb", "find error %s", new Object[] { paramString + locala.name });
-          locala.delete();
-        }
-      }
-    }
-  }
+  public boolean rDI = false;
   
   public static int a(h paramh1, h paramh2, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = null;
+    AppMethodBeat.i(38030);
     paramString = paramh1.a(" select sql from sqlite_master where tbl_name=\"" + paramString + "\" and type = \"table\"", null, 0);
     paramh1 = localObject2;
     if (paramString != null)
@@ -51,35 +33,61 @@ public final class w
     }
     if (paramh1 == null)
     {
-      y.w("MicroMsg.TrimSnsDb", "diskDB has not this table !");
+      ab.w("MicroMsg.TrimSnsDb", "diskDB has not this table !");
+      AppMethodBeat.o(38030);
       return -1;
     }
-    y.i("MicroMsg.TrimSnsDb", "create sql %s", new Object[] { paramh1 });
-    boolean bool = paramh2.gk("", paramh1);
-    y.i("MicroMsg.TrimSnsDb", "create result " + bool);
+    ab.i("MicroMsg.TrimSnsDb", "create sql %s", new Object[] { paramh1 });
+    ab.i("MicroMsg.TrimSnsDb", "create result ".concat(String.valueOf(paramh2.execSQL("", paramh1))));
+    AppMethodBeat.o(38030);
     return 1;
   }
   
   public static boolean a(h paramh1, h paramh2)
   {
+    AppMethodBeat.i(38029);
     try
     {
-      if (bk.bl(paramh1.getKey())) {
-        paramh2.gk("", "ATTACH DATABASE '" + paramh1.getPath() + "' AS old ");
+      if (bo.isNullOrNil(paramh1.getKey())) {
+        paramh2.execSQL("", "ATTACH DATABASE '" + paramh1.getPath() + "' AS old ");
       }
       for (;;)
       {
-        y.i("MicroMsg.TrimSnsDb", "ATTACH DATABASE " + paramh1.getKey());
+        ab.i("MicroMsg.TrimSnsDb", "ATTACH DATABASE " + paramh1.getKey());
+        AppMethodBeat.o(38029);
         return true;
-        paramh2.gk("", "ATTACH DATABASE '" + paramh1.getPath() + "' AS old KEY '" + paramh1.getKey() + "'");
+        paramh2.execSQL("", "ATTACH DATABASE '" + paramh1.getPath() + "' AS old KEY '" + paramh1.getKey() + "'");
       }
       return false;
     }
     catch (Exception paramh1)
     {
-      y.e("MicroMsg.TrimSnsDb", "ERROR : attach disk db [%s] , will do again !", new Object[] { paramh1.getMessage() });
-      y.printErrStackTrace("MicroMsg.TrimSnsDb", paramh1, "", new Object[0]);
+      ab.e("MicroMsg.TrimSnsDb", "ERROR : attach disk db [%s] , will do again !", new Object[] { paramh1.getMessage() });
+      ab.printErrStackTrace("MicroMsg.TrimSnsDb", paramh1, "", new Object[0]);
+      AppMethodBeat.o(38029);
     }
+  }
+  
+  public static void abS(String paramString)
+  {
+    AppMethodBeat.i(38031);
+    Object localObject = e.cs(paramString, false);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(38031);
+      return;
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      FileSystem.a locala = (FileSystem.a)((Iterator)localObject).next();
+      if (locala.name.startsWith("SnsMicroMsg.dberr"))
+      {
+        ab.i("MicroMsg.TrimSnsDb", "find error %s", new Object[] { paramString + locala.name });
+        locala.delete();
+      }
+    }
+    AppMethodBeat.o(38031);
   }
 }
 

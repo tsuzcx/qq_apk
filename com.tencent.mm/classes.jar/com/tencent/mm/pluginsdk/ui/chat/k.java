@@ -1,36 +1,43 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import com.tencent.mm.api.r;
-import com.tencent.mm.api.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.t;
+import com.tencent.mm.api.t.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 
 public final class k
-  extends r
+  extends t
   implements j
 {
-  public final boolean bhC()
+  public final void B(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(62452);
+    this.bWo.a(paramEmojiInfo);
+    AppMethodBeat.o(62452);
+  }
+  
+  public final void C(EmojiInfo paramEmojiInfo)
+  {
+    AppMethodBeat.i(62453);
+    this.bWo.a(paramEmojiInfo);
+    AppMethodBeat.o(62453);
+  }
+  
+  public final boolean bPD()
   {
     return true;
   }
   
-  public final boolean bhD()
+  public final boolean bPE()
   {
     return true;
   }
   
-  public final void bhE()
+  public final void bPF()
   {
-    this.bvd.onHide();
-  }
-  
-  public final void m(EmojiInfo paramEmojiInfo)
-  {
-    this.bvd.a(paramEmojiInfo);
-  }
-  
-  public final void n(EmojiInfo paramEmojiInfo)
-  {
-    this.bvd.a(paramEmojiInfo);
+    AppMethodBeat.i(62454);
+    this.bWo.onHide();
+    AppMethodBeat.o(62454);
   }
 }
 

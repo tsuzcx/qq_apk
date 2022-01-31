@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.a.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class LoginIndepPass$6
   implements Runnable
@@ -12,11 +13,13 @@ final class LoginIndepPass$6
   
   public final void run()
   {
-    y.d("MicroMsg.LoginIndepPass", "onSceneEnd, in runnable");
-    Intent localIntent = a.eUR.aN(this.fnl);
+    AppMethodBeat.i(124974);
+    ab.d("MicroMsg.LoginIndepPass", "onSceneEnd, in runnable");
+    Intent localIntent = a.gmO.bm(this.gEE);
     localIntent.addFlags(67108864);
-    this.fnl.startActivity(localIntent);
-    this.fnl.finish();
+    this.gEE.startActivity(localIntent);
+    this.gEE.finish();
+    AppMethodBeat.o(124974);
   }
 }
 

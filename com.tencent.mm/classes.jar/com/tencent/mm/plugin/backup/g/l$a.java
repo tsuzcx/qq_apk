@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public abstract interface l$a
 {
-  public abstract void C(LinkedList<Long> paramLinkedList);
+  public abstract void D(LinkedList<Long> paramLinkedList);
 }
 
 

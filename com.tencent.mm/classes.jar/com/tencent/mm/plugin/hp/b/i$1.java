@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.hp.b;
 
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.a.ig;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ik;
 import com.tencent.mm.protocal.b.a.b;
 import java.util.LinkedList;
 
@@ -12,27 +13,29 @@ final class i$1
   
   public final void run()
   {
-    ig localig = new ig();
+    AppMethodBeat.i(90614);
+    ik localik = new ik();
     b localb = new b();
-    localb.title = this.dYK;
-    localb.bHk = this.lmY;
-    localb.srm = new LinkedList();
+    localb.title = this.cbK;
+    localb.bjm = this.nKq;
+    localb.wjT = new LinkedList();
     com.tencent.mm.protocal.b.a.a locala = new com.tencent.mm.protocal.b.a.a();
-    locala.srk = this.lmZ;
-    localb.srm.add(locala);
+    locala.wjR = this.nKr;
+    localb.wjT.add(locala);
     locala = new com.tencent.mm.protocal.b.a.a();
-    locala.srk = this.lna;
-    localb.srm.add(locala);
-    localig.bQt.type = 1;
-    localig.bQt.bQu = localb;
-    localig.bQt.bQv = this.lnb;
-    localig.bQt.bQw = this.lnc;
-    com.tencent.mm.sdk.b.a.udP.m(localig);
+    locala.wjR = this.nKs;
+    localb.wjT.add(locala);
+    localik.cxM.type = 1;
+    localik.cxM.cxN = localb;
+    localik.cxM.cxO = this.nKt;
+    localik.cxM.cxP = this.nKu;
+    com.tencent.mm.sdk.b.a.ymk.l(localik);
+    AppMethodBeat.o(90614);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.i.1
  * JD-Core Version:    0.7.0.1
  */

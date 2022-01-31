@@ -2,7 +2,8 @@ package com.tencent.mm.wallet_core.ui.formview;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.a.th;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vb;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.wallet_core.ui.e;
 
@@ -13,8 +14,10 @@ final class a$9$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    e.l(this.wCE.jxM, "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/payunregshow?operation=1", false);
-    a.udP.m(new th());
+    AppMethodBeat.i(49364);
+    e.m(this.AYQ.lHl, "https://wx.tenpay.com/cgi-bin/mmpayweb-bin/payunregshow?operation=1", false);
+    a.ymk.l(new vb());
+    AppMethodBeat.o(49364);
   }
 }
 

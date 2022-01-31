@@ -1,32 +1,26 @@
 package com.tencent.liteav;
 
-import com.tencent.liteav.videoencoder.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class c$1
   implements Runnable
 {
-  c$1(c paramc, int paramInt1, int paramInt2, int paramInt3) {}
+  c$1(c paramc, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    if ((this.a != 0) && (this.b != 0))
-    {
-      c.a(this.d).a = this.a;
-      c.a(this.d).b = this.b;
-      if (c.b(this.d) != null) {
-        c.b(this.d).a(this.a, this.b);
-      }
+    AppMethodBeat.i(66385);
+    c.a(this.c, this.a);
+    c.b(this.c, this.b);
+    if ((c.f(this.c) != null) && (c.g(this.c) != null)) {
+      c.a(this.c, c.f(this.c), true);
     }
-    if ((this.c != 0) && (c.c(this.d) != null))
-    {
-      c.a(this.d).c = this.c;
-      c.c(this.d).a(this.c);
-    }
+    AppMethodBeat.o(66385);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.liteav.c.1
  * JD-Core Version:    0.7.0.1
  */

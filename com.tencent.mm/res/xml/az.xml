@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:title="@string/amb" />
-    <NormalIconPreference android:title="@string/c9u" android:icon="@raw/invite_friends_by_message" android:key="invite_friends_by_message" />
-    <NormalIconPreference android:title="@string/c9s" android:icon="@raw/invite_friends_by_mail" android:key="invite_friends_by_mail" />
-    <NormalIconPreference android:title="@string/c9w" android:icon="@raw/invite_friends_by_whatsapp" android:key="invite_friends_by_whatsapp" />
-    <NormalIconPreference android:title="@string/c9q" android:icon="@raw/invite_friends_by_facebook" android:key="invite_friends_by_facebook" />
-    <NormalIconPreference android:title="@string/c9v" android:icon="@raw/invite_friends_by_twitter" android:key="invite_friends_by_twitter" />
-    <PreferenceCategory />
+    <PreferenceTitleCategory android:title="@string/dhx" />
+    <com.tencent.mm.plugin.label.ui.widget.InputClearablePreference android:key="contact_label_name" android:layout="@layout/ah9" />
+    <PreferenceTitleCategory android:title="@string/dhw" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="contact_label_contact_list" />
+    <PreferenceTitleCategory android:title=" " android:key="contact_label_empty_category" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/cnm" android:key="contact_label_delete" android:layout="@layout/aap" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

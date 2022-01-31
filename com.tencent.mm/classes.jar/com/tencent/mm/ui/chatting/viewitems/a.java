@@ -6,10 +6,10 @@ import android.widget.TextView;
 
 final class a
 {
-  TextView fce;
-  TextView fcy;
-  ImageView hic;
-  LinearLayout vAG;
+  TextView gtP;
+  TextView gui;
+  ImageView iTH;
+  LinearLayout zRf;
 }
 
 

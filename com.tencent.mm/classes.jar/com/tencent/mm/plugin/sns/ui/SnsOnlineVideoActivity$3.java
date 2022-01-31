@@ -2,6 +2,8 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.tools.e;
 
 final class SnsOnlineVideoActivity$3
@@ -11,8 +13,12 @@ final class SnsOnlineVideoActivity$3
   
   public final boolean onPreDraw()
   {
-    SnsOnlineVideoActivity.d(this.pbr).getViewTreeObserver().removeOnPreDrawListener(this);
-    SnsOnlineVideoActivity.p(this.pbr).a(SnsOnlineVideoActivity.d(this.pbr), SnsOnlineVideoActivity.j(this.pbr), new SnsOnlineVideoActivity.3.1(this));
+    AppMethodBeat.i(39145);
+    SnsOnlineVideoActivity.d(this.rUf).getViewTreeObserver().removeOnPreDrawListener(this);
+    if (SnsOnlineVideoActivity.p(this.rUf) != null) {
+      SnsOnlineVideoActivity.p(this.rUf).a(SnsOnlineVideoActivity.d(this.rUf), SnsOnlineVideoActivity.j(this.rUf), new SnsOnlineVideoActivity.3.1(this));
+    }
+    AppMethodBeat.o(39145);
     return true;
   }
 }

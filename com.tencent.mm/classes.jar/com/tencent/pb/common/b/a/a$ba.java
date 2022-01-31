@@ -6,42 +6,42 @@ import com.google.a.a.e;
 public final class a$ba
   extends e
 {
+  public a.al BgW = null;
   public int type = 0;
-  public a.al wJw = null;
   
   public a$ba()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     if (this.type != 0) {
-      paramb.aL(1, this.type);
+      paramb.bj(1, this.type);
     }
-    if (this.wJw != null) {
-      paramb.a(2, this.wJw);
+    if (this.BgW != null) {
+      paramb.a(2, this.BgW);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (this.type != 0) {
-      i = j + b.aN(1, this.type);
+      i = j + b.bl(1, this.type);
     }
     j = i;
-    if (this.wJw != null) {
-      j = i + b.b(2, this.wJw);
+    if (this.BgW != null) {
+      j = i + b.b(2, this.BgW);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.ba
  * JD-Core Version:    0.7.0.1
  */

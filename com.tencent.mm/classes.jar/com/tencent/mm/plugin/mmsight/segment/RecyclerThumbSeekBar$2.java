@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
 
 final class RecyclerThumbSeekBar$2
   implements Runnable
@@ -9,19 +10,22 @@ final class RecyclerThumbSeekBar$2
   
   public final void run()
   {
-    if ((this.mmi.getHeight() == 0) || (this.mmi.getWidth() == 0))
+    AppMethodBeat.i(54978);
+    if ((this.oLp.getHeight() == 0) || (this.oLp.getWidth() == 0))
     {
-      this.mmi.post(RecyclerThumbSeekBar.e(this.mmi));
+      this.oLp.post(RecyclerThumbSeekBar.e(this.oLp));
+      AppMethodBeat.o(54978);
       return;
     }
-    RecyclerThumbSeekBar.a(this.mmi, this.mmi.getHeight());
-    RecyclerThumbSeekBar.b(this.mmi, (this.mmi.getWidth() - RecyclerThumbSeekBar.f(this.mmi) * 2) / 12);
-    e.post(new RecyclerThumbSeekBar.2.1(this), "check duration of ");
+    RecyclerThumbSeekBar.a(this.oLp, this.oLp.getHeight());
+    RecyclerThumbSeekBar.b(this.oLp, (this.oLp.getWidth() - RecyclerThumbSeekBar.f(this.oLp) * 2) / 12);
+    d.post(new RecyclerThumbSeekBar.2.1(this), "check duration of ");
+    AppMethodBeat.o(54978);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar.2
  * JD-Core Version:    0.7.0.1
  */

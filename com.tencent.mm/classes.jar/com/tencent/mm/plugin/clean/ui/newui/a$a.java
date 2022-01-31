@@ -7,17 +7,17 @@ import android.widget.TextView;
 
 final class a$a
 {
-  ImageView doU;
-  TextView eXO;
-  TextView eXP;
-  CheckBox eXQ;
-  RelativeLayout hIU;
+  ImageView egq;
+  TextView gpL;
+  TextView gpM;
+  CheckBox gpN;
+  RelativeLayout jCu;
   
   a$a(a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.newui.a.a
  * JD-Core Version:    0.7.0.1
  */

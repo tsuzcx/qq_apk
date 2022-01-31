@@ -5,24 +5,25 @@ import android.os.IBinder.DeathRecipient;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.util.SparseArray;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.FileDescriptor;
 import java.lang.reflect.Method;
 
 final class b$i
   implements IBinder
 {
-  private final Class<?> mHP;
-  private b.i.a<String> mHQ = null;
-  private String mHR = null;
+  private final Class<?> phV;
+  private b.i.a<String> phW = null;
+  private String phX = null;
   
   b$i(Class<?> paramClass)
   {
     Object localObject;
-    this.mHP = localObject;
+    this.phV = localObject;
   }
   
-  public final SparseArray<String> bpi()
+  public final SparseArray<String> bXL()
   {
     Object[] arrayOfObject;
     int k;
@@ -34,36 +35,38 @@ final class b$i
       Class localClass;
       try
       {
+        AppMethodBeat.i(10415);
         Object localObject1;
-        if (this.mHQ != null)
+        if (this.phW != null)
         {
-          localObject1 = this.mHQ;
+          localObject1 = this.phW;
+          AppMethodBeat.o(10415);
           return localObject1;
         }
-        this.mHQ = new b.i.a(this, (byte)0);
+        this.phW = new b.i.a(this, (byte)0);
         try
         {
-          localObject1 = (IInterface)h.b(this.mHP, "asInterface", h.b(new Class[] { IBinder.class }), new Object[] { this });
-          Class[] arrayOfClass1 = this.mHP.getInterfaces();
+          localObject1 = (IInterface)h.b(this.phV, "asInterface", h.b(new Class[] { IBinder.class }), new Object[] { this });
+          Class[] arrayOfClass1 = this.phV.getInterfaces();
           int m = arrayOfClass1.length;
           i = 0;
           if (i < m)
           {
             Object localObject3 = arrayOfClass1[i];
             if (!IInterface.class.isAssignableFrom((Class)localObject3)) {
-              break label368;
+              break label384;
             }
             localObject3 = ((Class)localObject3).getDeclaredMethods();
             int n = localObject3.length;
             j = 0;
             if (j >= n) {
-              break label368;
+              break label384;
             }
             localObject4 = localObject3[j];
             if ("asBinder".equals(localObject4.getName())) {
-              break label361;
+              break label377;
             }
-            this.mHR = localObject4.getName();
+            this.phX = localObject4.getName();
             if (!localObject4.isAccessible()) {
               localObject4.setAccessible(true);
             }
@@ -72,14 +75,14 @@ final class b$i
             arrayOfObject = new Object[i1];
             k = 0;
             if (k >= i1) {
-              break label351;
+              break label367;
             }
             localClass = arrayOfClass2[k];
             if (!localClass.isPrimitive()) {
-              continue;
+              break label305;
             }
             if (Boolean.TYPE.isAssignableFrom(localClass)) {
-              arrayOfObject[k] = Boolean.valueOf(false);
+              arrayOfObject[k] = Boolean.FALSE;
             } else {
               arrayOfObject[k] = Integer.valueOf(0);
             }
@@ -87,40 +90,45 @@ final class b$i
         }
         catch (Throwable localThrowable)
         {
-          y.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
-          b.a(this.mHC, localThrowable);
-          this.mHQ.clear();
-          b.i.a locala = this.mHQ;
+          ab.printErrStackTrace("MicroMsg.AED", localThrowable, "unexpected exception.", new Object[0]);
+          b.a(this.phI, localThrowable);
+          this.phW.clear();
+          b.i.a locala = this.phW;
+          AppMethodBeat.o(10415);
         }
         continue;
-        if (Number.class.isAssignableFrom(localClass)) {
-          arrayOfObject[k] = Integer.valueOf(0);
+        if (!Number.class.isAssignableFrom(localClass)) {
+          break label326;
         }
       }
       finally {}
+      label305:
+      arrayOfObject[k] = Integer.valueOf(0);
+      break;
+      label326:
       if (Character.class.isAssignableFrom(localClass))
       {
         arrayOfObject[k] = Character.valueOf('\000');
         break;
       }
       if (!Boolean.class.isAssignableFrom(localClass)) {
-        break label382;
+        break label398;
       }
-      arrayOfObject[k] = Boolean.valueOf(false);
+      arrayOfObject[k] = Boolean.FALSE;
       break;
-      label351:
+      label367:
       localObject4.invoke(localObject2, arrayOfObject);
-      label361:
+      label377:
       j += 1;
       continue;
-      label368:
+      label384:
       i += 1;
     }
     for (;;)
     {
       k += 1;
       break;
-      label382:
+      label398:
       arrayOfObject[k] = null;
     }
   }
@@ -153,14 +161,18 @@ final class b$i
   
   public final boolean transact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
+    AppMethodBeat.i(10416);
     try
     {
-      if (this.mHQ != null) {
-        this.mHQ.put(paramInt1, this.mHR);
+      if (this.phW != null) {
+        this.phW.put(paramInt1, this.phX);
       }
       return false;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(10416);
+    }
   }
   
   public final boolean unlinkToDeath(IBinder.DeathRecipient paramDeathRecipient, int paramInt)
@@ -170,7 +182,7 @@ final class b$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.b.b.i
  * JD-Core Version:    0.7.0.1
  */

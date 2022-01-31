@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ArtistUI$1
   implements Runnable
@@ -11,11 +12,15 @@ final class ArtistUI$1
   
   public final void run()
   {
-    if (ArtistUI.a(this.oNf) == null) {
+    AppMethodBeat.i(38114);
+    if (ArtistUI.a(this.rEQ) == null)
+    {
+      AppMethodBeat.o(38114);
       return;
     }
-    y.d("MicroMsg.ArtistUI", "will pause ImageLoader");
-    af.bDC().pause();
+    ab.d("MicroMsg.ArtistUI", "will pause ImageLoader");
+    ag.cpc().pause();
+    AppMethodBeat.o(38114);
   }
 }
 

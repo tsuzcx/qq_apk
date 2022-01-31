@@ -20,15 +20,15 @@ public class DefaultOptionsCreator
   
   private String getClientVersion()
   {
-    if (Util.bl(this.clientVersion))
+    if (Util.isNullOrNil(this.clientVersion))
     {
-      File localFile = new File(WXConstantsRecovery.wLk, "version.info");
+      File localFile = new File(WXConstantsRecovery.BiJ, "version.info");
       if (localFile.exists()) {
-        this.clientVersion = FileUtil.T(localFile);
+        this.clientVersion = FileUtil.ac(localFile);
       }
     }
-    if (Util.bl(this.clientVersion)) {
-      this.clientVersion = "0x26070333";
+    if (Util.isNullOrNil(this.clientVersion)) {
+      this.clientVersion = "0x27000536";
     }
     return this.clientVersion;
   }
@@ -36,15 +36,15 @@ public class DefaultOptionsCreator
   public CommonOptions createCommonOptions(Context paramContext)
   {
     CommonOptions.Builder localBuilder = new CommonOptions.Builder();
-    localBuilder.wKY = WXRecoveryHandleService.class.getName();
-    localBuilder.wKZ = WXRecoveryUploadService.class.getName();
+    localBuilder.Bix = WXRecoveryHandleService.class.getName();
+    localBuilder.Biy = WXRecoveryUploadService.class.getName();
     localBuilder.clientVersion = getClientVersion();
-    localBuilder.wKU = String.format("http://dldir1.qq.com/weixin/android/recovery-%s.conf", new Object[] { getClientVersion() });
-    localBuilder.dCX = WXUtil.hw(paramContext);
-    localBuilder.wLa = true;
-    localBuilder.wLb = 600000L;
-    localBuilder.wLc = 600000L;
-    return localBuilder.cOD();
+    localBuilder.Biu = String.format("http://dldir1.qq.com/weixin/android/recovery-%s.conf", new Object[] { getClientVersion() });
+    localBuilder.eAx = WXUtil.iY(paramContext);
+    localBuilder.Biz = true;
+    localBuilder.BiA = 600000L;
+    localBuilder.BiB = 600000L;
+    return localBuilder.dUs();
   }
   
   public ProcessOptions createProcessOptions(String paramString, int paramInt)
@@ -54,7 +54,7 @@ public class DefaultOptionsCreator
   
   public String toString()
   {
-    return String.format("Creator: [ClientVersion=%s]", new Object[] { getClientVersion() });
+    return String.format("Creator: [ClientVersion=%s] ", new Object[] { getClientVersion() });
   }
 }
 

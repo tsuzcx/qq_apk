@@ -1,37 +1,43 @@
 package com.tencent.mm.plugin.ipcall.a.f;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.ipcall.a.d.g;
 
 public final class b
 {
-  private static b lsx;
-  private g lsy;
+  private static b nPS;
+  private g nPT;
   
-  public static b bcJ()
+  public static b bJQ()
   {
-    if (lsx == null) {
-      lsx = new b();
+    AppMethodBeat.i(21898);
+    if (nPS == null) {
+      nPS = new b();
     }
-    return lsx;
+    b localb = nPS;
+    AppMethodBeat.o(21898);
+    return localb;
   }
   
-  public final void gZ(boolean paramBoolean)
+  public final void iJ(boolean paramBoolean)
   {
-    au.Dk().c(this.lsy);
-    this.lsy = null;
+    AppMethodBeat.i(21899);
+    aw.Rc().a(this.nPT);
+    this.nPT = null;
     if (paramBoolean) {}
-    for (this.lsy = new g(1);; this.lsy = new g(0))
+    for (this.nPT = new g(1);; this.nPT = new g(0))
     {
-      au.Dk().a(this.lsy, 0);
+      aw.Rc().a(this.nPT, 0);
+      AppMethodBeat.o(21899);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.f.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
 package com.tencent.mm.api;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.plugin.n.c;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.i.c;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
 {
-  public static String bT(String paramString)
+  public static String cV(String paramString)
   {
+    AppMethodBeat.i(105476);
     String str = paramString;
-    if (bk.bl(paramString)) {
+    if (bo.isNullOrNil(paramString)) {
       str = "tempConv";
     }
-    paramString = new StringBuilder(c.FH());
-    paramString.append(g.o(str.getBytes())).append("/");
+    paramString = new StringBuilder(c.YL());
+    paramString.append(g.w(str.getBytes())).append("/");
     paramString.append("conv/");
-    return paramString.toString();
+    paramString = paramString.toString();
+    AppMethodBeat.o(105476);
+    return paramString;
   }
 }
 

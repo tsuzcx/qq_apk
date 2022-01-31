@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.gif;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class h$3
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class h$3
   
   public final void run()
   {
-    h.a(this.liD, -1);
-    MMWXGFJNI.nativeRewindBuffer(h.g(this.liD));
-    h.a(this.liD, h.e(this.liD), 0L);
+    AppMethodBeat.i(62427);
+    h.a(this.nFY, -1);
+    MMWXGFJNI.nativeRewindBuffer(h.g(this.nFY));
+    h.a(this.nFY, h.e(this.nFY), 0L);
+    AppMethodBeat.o(62427);
   }
 }
 

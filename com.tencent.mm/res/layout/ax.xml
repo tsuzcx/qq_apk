@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/wl" android:baselineAligned="false" style="@style/p1"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <ListView android:id="@id/li" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/ls" />
-        <TextView android:textColor="@color/ta" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@id/lj" android:paddingTop="0.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/kk" />
-        <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/lk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="MMFontPreferenceLarge" />
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/ll" android:layout_width="@dimen/dk" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <TextView android:id="@id/lm" android:background="@color/sz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d9" android:singleLine="false" style="@style/kk" />
-        <include layout="@layout/atz" />
-    </FrameLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ln" android:background="@drawable/at6" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/mp">
-        <HorizontalScrollView android:orientation="horizontal" android:scrollbars="none" android:layout_width="0.0dip" android:layout_height="@dimen/mp" android:fillViewport="true" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/lo" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:id="@id/lp" android:layout_width="@dimen/mi" android:layout_height="@dimen/mi" android:layout_marginRight="@dimen/dl" android:src="@drawable/asi" />
-            </LinearLayout>
-        </HorizontalScrollView>
-        <Button android:id="@id/lq" android:visibility="gone" android:layout_marginLeft="@dimen/mq" android:text="@string/qk" style="@style/mw" />
-    </LinearLayout>
+    <TextView android:textSize="@dimen/fm" android:textColor="@color/md" android:ellipsize="end" android:id="@id/nh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/dl" android:text="msg_title" />
+    <TextView android:textSize="@dimen/fm" android:textColor="@color/hd" android:ellipsize="end" android:id="@id/ni" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="@dimen/dl" android:text="detail" />
 </LinearLayout>

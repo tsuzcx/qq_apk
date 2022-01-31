@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.game.commlib;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.plugin.game.commlib.b.b;
 
 final class d$1
@@ -8,9 +8,9 @@ final class d$1
 {
   d$1(d paramd) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return b.dXp;
+    return b.SQL_CREATE;
   }
 }
 

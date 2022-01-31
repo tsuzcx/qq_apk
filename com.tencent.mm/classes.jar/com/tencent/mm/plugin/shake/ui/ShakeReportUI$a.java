@@ -3,96 +3,107 @@ package com.tencent.mm.plugin.shake.ui;
 import android.content.Context;
 import android.os.Vibrator;
 import android.view.View;
-import com.tencent.mm.R.l;
-import com.tencent.mm.pluginsdk.i.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.i.d.a;
 import com.tencent.mm.pluginsdk.ui.f;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.o;
 import java.lang.ref.WeakReference;
 
 final class ShakeReportUI$a
-  extends c.a
+  extends d.a
 {
-  private final long[] eTU = { 300L, 200L, 300L, 200L };
-  private long iam = bk.UZ();
-  private Vibrator ibr;
-  WeakReference<ShakeReportUI> ods;
+  private final long[] glS;
+  private Vibrator kqP;
+  private long lastShakeTime;
+  WeakReference<ShakeReportUI> qRz;
   
   public ShakeReportUI$a(ShakeReportUI paramShakeReportUI)
   {
-    this.ods = new WeakReference(paramShakeReportUI);
+    AppMethodBeat.i(24812);
+    this.lastShakeTime = bo.yB();
+    this.glS = new long[] { 300L, 200L, 300L, 200L };
+    this.qRz = new WeakReference(paramShakeReportUI);
+    AppMethodBeat.o(24812);
   }
   
-  public final void bnY()
+  public final void onRelease() {}
+  
+  public final void onShake(boolean paramBoolean)
   {
-    ShakeReportUI localShakeReportUI = (ShakeReportUI)this.ods.get();
-    if (localShakeReportUI == null) {
+    AppMethodBeat.i(153646);
+    ShakeReportUI localShakeReportUI = (ShakeReportUI)this.qRz.get();
+    if (localShakeReportUI == null)
+    {
+      AppMethodBeat.o(153646);
       return;
     }
     if (localShakeReportUI.isFinishing())
     {
-      y.e("MicroMsg.ShakeReportUI", "ui finished");
+      ab.e("MicroMsg.ShakeReportUI", "ui finished");
+      AppMethodBeat.o(153646);
       return;
     }
-    if (!ShakeReportUI.u(localShakeReportUI))
+    if (!ShakeReportUI.v(localShakeReportUI))
     {
-      y.i("MicroMsg.ShakeReportUI", "tryShake the status is can's shake");
+      ab.i("MicroMsg.ShakeReportUI", "tryShake the status is can's shake");
+      AppMethodBeat.o(153646);
       return;
     }
-    ShakeReportUI.v(localShakeReportUI);
-    long l = bk.cp(this.iam);
+    ShakeReportUI.w(localShakeReportUI);
+    long l = bo.av(this.lastShakeTime);
     if (l < 1200L)
     {
-      y.i("MicroMsg.ShakeReportUI", "tryStartShake delay too short:" + l);
+      ab.i("MicroMsg.ShakeReportUI", "tryStartShake delay too short:".concat(String.valueOf(l)));
+      AppMethodBeat.o(153646);
       return;
     }
-    y.w("MicroMsg.ShakeReportUI", "tryStartShake delaytoo enough:" + l);
-    this.iam = bk.UZ();
+    ab.w("MicroMsg.ShakeReportUI", "tryStartShake delaytoo enough:".concat(String.valueOf(l)));
+    this.lastShakeTime = bo.yB();
     Object localObject;
-    if (ShakeReportUI.w(localShakeReportUI) != null)
+    if (ShakeReportUI.x(localShakeReportUI) != null)
     {
-      localObject = ShakeReportUI.w(localShakeReportUI);
+      localObject = ShakeReportUI.x(localShakeReportUI);
       if (((c)localObject).view != null) {
         ((c)localObject).view.setKeepScreenOn(true);
       }
-      ((c)localObject).byQ.S(30000L, 30000L);
+      ((c)localObject).caS.ag(30000L, 30000L);
     }
-    if (ShakeReportUI.q(localShakeReportUI) != null)
+    if (ShakeReportUI.y(localShakeReportUI) != null)
     {
-      localObject = ShakeReportUI.q(localShakeReportUI);
-      if (((f)localObject).lXp != null) {
-        ((f)localObject).lXp.dismiss();
+      localObject = ShakeReportUI.y(localShakeReportUI);
+      if (((f)localObject).vQH != null) {
+        ((f)localObject).vQH.dismiss();
       }
     }
-    if (ShakeReportUI.x(localShakeReportUI))
+    if (ShakeReportUI.z(localShakeReportUI))
     {
-      localObject = (ShakeReportUI)this.ods.get();
+      localObject = (ShakeReportUI)this.qRz.get();
       if (localObject != null) {
-        au.G((Context)localObject, R.l.shake_sound_male);
+        ay.ax((Context)localObject, 2131303636);
       }
     }
     for (;;)
     {
       reset();
-      ShakeReportUI.y(localShakeReportUI);
+      ShakeReportUI.A(localShakeReportUI);
+      AppMethodBeat.o(153646);
       return;
-      localObject = (ShakeReportUI)this.ods.get();
+      localObject = (ShakeReportUI)this.qRz.get();
       if (localObject != null)
       {
-        if (this.ibr == null) {
-          this.ibr = ((Vibrator)((ShakeReportUI)localObject).getSystemService("vibrator"));
+        if (this.kqP == null) {
+          this.kqP = ((Vibrator)((ShakeReportUI)localObject).getSystemService("vibrator"));
         }
-        if (this.ibr != null) {
-          this.ibr.vibrate(this.eTU, -1);
+        if (this.kqP != null) {
+          this.kqP.vibrate(this.glS, -1);
         }
       }
     }
   }
-  
-  public final void onRelease() {}
 }
 
 

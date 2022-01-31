@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.plugin.appbrand.dynamic.WxaWidgetContext;
 import com.tencent.mm.plugin.appbrand.dynamic.k.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.z.b.b.a;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,46 +19,50 @@ public final class k
     super("reportKeyValue", paramInt);
   }
   
-  protected final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
+  public final void a(com.tencent.mm.z.c.a parama, JSONObject paramJSONObject, b.a<JSONObject> parama1)
   {
-    parama = com.tencent.mm.plugin.appbrand.dynamic.k.tb(parama.CD().getString("__page_view_id", null));
+    AppMethodBeat.i(10852);
+    parama = com.tencent.mm.plugin.appbrand.dynamic.k.Bd(parama.Qx().getString("__page_view_id", null));
     if (parama == null)
     {
-      parama1.ab(a(false, "JsApi Framework Context is null", null));
+      parama1.aj(a(false, "JsApi Framework Context is null", null));
+      AppMethodBeat.o(10852);
       return;
     }
     paramJSONObject = paramJSONObject.optJSONArray("dataArray");
     if (paramJSONObject == null)
     {
-      parama1.ab(a(false, "dataArray is null", null));
+      parama1.aj(a(false, "dataArray is null", null));
+      AppMethodBeat.o(10852);
       return;
     }
     int i = 0;
     for (;;)
     {
       if (i >= paramJSONObject.length()) {
-        break label197;
+        break label215;
       }
       try
       {
         Object localObject = paramJSONObject.getJSONObject(i);
         int j = ((JSONObject)localObject).optInt("key");
         localObject = ((JSONObject)localObject).optString("value");
-        if ((j > 0) && (!bk.bl((String)localObject))) {
-          h.nFQ.f(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.afc()), Integer.valueOf(b.kK(parama.abp()) + 1), localObject });
+        if ((j > 0) && (!bo.isNullOrNil((String)localObject))) {
+          h.qsU.e(j, new Object[] { parama.getAppId(), Integer.valueOf(parama.azG()), Integer.valueOf(b.nI(parama.avf()) + 1), localObject });
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          y.e("MicroMsg.JsApiFunc_ReportKeyValue", "parse report value failed : %s", new Object[] { localException });
+          ab.e("MicroMsg.JsApiFunc_ReportKeyValue", "parse report value failed : %s", new Object[] { localException });
         }
       }
       i += 1;
     }
-    label197:
-    parama1.ab(a(true, "", null));
+    label215:
+    parama1.aj(a(true, "", null));
+    AppMethodBeat.o(10852);
   }
 }
 

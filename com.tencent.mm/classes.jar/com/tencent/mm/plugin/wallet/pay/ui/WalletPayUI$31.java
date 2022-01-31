@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckedTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletPayUI$31
   implements View.OnClickListener
@@ -11,10 +12,12 @@ final class WalletPayUI$31
   
   public final void onClick(View paramView)
   {
-    this.qoc.setChecked(false);
-    this.qod.setChecked(true);
-    WalletPayUI.a(this.qnV, true);
-    WalletPayUI.e(this.qnV);
+    AppMethodBeat.i(46073);
+    this.tXx.setChecked(true);
+    this.tXy.setChecked(false);
+    WalletPayUI.a(this.tXq, false);
+    WalletPayUI.e(this.tXq);
+    AppMethodBeat.o(46073);
   }
 }
 

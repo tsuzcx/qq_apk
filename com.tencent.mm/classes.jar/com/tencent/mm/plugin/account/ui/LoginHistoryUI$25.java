@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginHistoryUI$25
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class LoginHistoryUI$25
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    LoginHistoryUI.b(this.fnc);
+    AppMethodBeat.i(124933);
+    LoginHistoryUI.b(this.gEw);
+    AppMethodBeat.o(124933);
     return true;
   }
 }

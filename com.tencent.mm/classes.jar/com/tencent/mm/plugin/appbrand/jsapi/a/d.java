@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.a;
 
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.v;
 
 public final class d
-  extends a<q>
+  extends a<v>
 {
   public static final int CTRL_INDEX = 204;
   public static final String NAME = "getUserAutoFillData";

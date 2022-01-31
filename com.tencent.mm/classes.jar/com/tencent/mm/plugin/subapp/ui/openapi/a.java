@@ -9,56 +9,65 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
   extends BaseAdapter
-  implements j.a
+  implements k.a
 {
   private Context context;
-  private List<f> nUB;
-  boolean pwV = false;
-  private int pwW = 0;
+  private List<f> qIG;
+  boolean sYK;
+  private int sYL;
   
   public a(Context paramContext, int paramInt)
   {
+    AppMethodBeat.i(25429);
+    this.sYK = false;
+    this.sYL = 0;
     this.context = paramContext;
-    this.pwW = paramInt;
+    this.sYL = paramInt;
     init();
+    AppMethodBeat.o(25429);
   }
   
-  private int bam()
+  private int bHs()
   {
-    return (4 - getRealCount() % 4) % 4;
+    AppMethodBeat.i(25437);
+    int i = getRealCount();
+    AppMethodBeat.o(25437);
+    return (4 - i % 4) % 4;
   }
   
   private int getRealCount()
   {
-    return this.nUB.size();
+    AppMethodBeat.i(25436);
+    int i = this.qIG.size();
+    AppMethodBeat.o(25436);
+    return i;
   }
   
   private void init()
   {
     int i = 0;
-    this.nUB = new ArrayList();
-    Object localObject1 = ap.brn();
-    int j = this.pwW;
+    AppMethodBeat.i(25430);
+    this.qIG = new ArrayList();
+    Object localObject1 = al.cac();
+    int j = this.sYL;
     Object localObject2 = ((i)localObject1).rawQuery("select * from AppInfo where status = " + j + " and (appType is null or appType not like ',1,')", new String[0]);
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      y.e("MicroMsg.AppInfoStorage", "getAppByStatusExcludeByType: curosr is null");
+      ab.e("MicroMsg.AppInfoStorage", "getAppByStatusExcludeByType: curosr is null");
       localObject1 = null;
     }
     if (localObject1 != null)
@@ -68,33 +77,45 @@ public final class a
       {
         ((Cursor)localObject1).moveToPosition(i);
         localObject2 = new f();
-        ((f)localObject2).d((Cursor)localObject1);
-        if (g.o(this.context, ((f)localObject2).field_appId)) {
-          this.nUB.add(localObject2);
+        ((f)localObject2).convertFrom((Cursor)localObject1);
+        if (g.u(this.context, ((f)localObject2).field_appId)) {
+          this.qIG.add(localObject2);
         }
         i += 1;
       }
       ((Cursor)localObject1).close();
     }
+    AppMethodBeat.o(25430);
   }
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
+    AppMethodBeat.i(25438);
     init();
     super.notifyDataSetChanged();
+    AppMethodBeat.o(25438);
   }
   
   public final int getCount()
   {
-    return getRealCount() + bam();
+    AppMethodBeat.i(25433);
+    int i = getRealCount();
+    int j = bHs();
+    AppMethodBeat.o(25433);
+    return i + j;
   }
   
   public final Object getItem(int paramInt)
   {
-    if (sk(paramInt)) {
+    AppMethodBeat.i(25435);
+    if (xj(paramInt))
+    {
+      AppMethodBeat.o(25435);
       return null;
     }
-    return this.nUB.get(paramInt);
+    Object localObject = this.qIG.get(paramInt);
+    AppMethodBeat.o(25435);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -104,64 +125,78 @@ public final class a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(25432);
     if (paramView == null)
     {
       paramViewGroup = new d();
-      paramView = View.inflate(this.context, R.i.app_item, null);
-      paramViewGroup.heN = ((ImageView)paramView.findViewById(R.h.appitem_icon_iv));
-      paramViewGroup.pxr = ((TextView)paramView.findViewById(R.h.appitem_del_tv));
-      paramViewGroup.fdt = ((TextView)paramView.findViewById(R.h.appitem_name_tv));
-      paramViewGroup.pxs = paramView.findViewById(R.h.appitem_new_icon);
+      paramView = View.inflate(this.context, 2130968758, null);
+      paramViewGroup.iQd = ((ImageView)paramView.findViewById(2131821482));
+      paramViewGroup.sZf = ((TextView)paramView.findViewById(2131821483));
+      paramViewGroup.gve = ((TextView)paramView.findViewById(2131821485));
+      paramViewGroup.sZg = paramView.findViewById(2131821484);
       paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      paramViewGroup.pxs.setVisibility(4);
-      if (!sk(paramInt)) {
+      paramViewGroup.sZg.setVisibility(4);
+      if (!xj(paramInt)) {
         break;
       }
-      paramViewGroup.heN.setVisibility(4);
-      paramViewGroup.pxr.setVisibility(4);
-      paramViewGroup.fdt.setVisibility(4);
+      paramViewGroup.iQd.setVisibility(4);
+      paramViewGroup.sZf.setVisibility(4);
+      paramViewGroup.gve.setVisibility(4);
+      AppMethodBeat.o(25432);
       return paramView;
       paramViewGroup = (d)paramView.getTag();
     }
     f localf = (f)getItem(paramInt);
-    paramViewGroup.heN.setVisibility(0);
+    paramViewGroup.iQd.setVisibility(0);
     Bitmap localBitmap = g.b(localf.field_appId, 1, com.tencent.mm.cb.a.getDensity(this.context));
-    if (localBitmap == null) {
-      paramViewGroup.heN.setBackgroundResource(R.g.app_panel_unknowed_icon);
+    if (localBitmap == null)
+    {
+      paramViewGroup.iQd.setBackgroundResource(2130837799);
+      paramViewGroup.gve.setVisibility(0);
+      paramViewGroup.gve.setText(g.b(this.context, localf, null));
+      if (!this.sYK) {
+        break label259;
+      }
+      paramViewGroup.sZf.setVisibility(0);
     }
     for (;;)
     {
-      paramViewGroup.fdt.setVisibility(0);
-      paramViewGroup.fdt.setText(g.b(this.context, localf, null));
-      if (!this.pwV) {
-        break;
-      }
-      paramViewGroup.pxr.setVisibility(0);
+      AppMethodBeat.o(25432);
       return paramView;
-      paramViewGroup.heN.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      paramViewGroup.iQd.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      break;
+      label259:
+      paramViewGroup.sZf.setVisibility(8);
     }
-    paramViewGroup.pxr.setVisibility(8);
-    return paramView;
   }
   
-  public final void jD(boolean paramBoolean)
+  public final void mv(boolean paramBoolean)
   {
-    this.pwV = paramBoolean;
+    AppMethodBeat.i(25431);
+    this.sYK = paramBoolean;
     notifyDataSetChanged();
+    AppMethodBeat.o(25431);
   }
   
-  public final boolean sk(int paramInt)
+  public final boolean xj(int paramInt)
   {
-    int i = this.nUB.size();
-    return (paramInt >= i) && (paramInt < i + bam());
+    AppMethodBeat.i(25434);
+    int i = this.qIG.size();
+    if ((paramInt >= i) && (paramInt < i + bHs()))
+    {
+      AppMethodBeat.o(25434);
+      return true;
+    }
+    AppMethodBeat.o(25434);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.a
  * JD-Core Version:    0.7.0.1
  */

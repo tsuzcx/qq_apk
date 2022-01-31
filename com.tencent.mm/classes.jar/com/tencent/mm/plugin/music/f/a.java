@@ -2,218 +2,230 @@ package com.tencent.mm.plugin.music.f;
 
 import android.os.Looper;
 import android.support.v4.content.b;
-import com.tencent.mm.h.a.jy;
-import com.tencent.mm.h.a.jy.a;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.g.a.ki.a;
 import com.tencent.mm.plugin.music.f.a.d.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ax;
 
 public abstract class a
   implements com.tencent.mm.plugin.music.f.a.d
 {
-  public boolean bSD;
-  public String mAt = "";
-  public com.tencent.mm.plugin.music.e.d mAu;
-  public com.tencent.mm.plugin.music.e.a mAv;
-  private at mxl;
-  protected boolean mxm;
-  protected d.a mxn;
+  public boolean cAf;
+  private ax oXi;
+  protected boolean oXj;
+  protected d.a oXk;
+  protected com.tencent.mm.plugin.music.e.d paA;
+  protected com.tencent.mm.plugin.music.e.a paB;
+  protected String paz = "";
   
-  public final void A(com.tencent.mm.av.e parame)
+  public final void A(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(Pu()) });
-    this.mAt = "play";
-    jy localjy = new jy();
-    localjy.bSA.action = 0;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "play";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
-    if (this.mAv != null) {
-      this.mAv.k(parame);
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onStartEvent %b", new Object[] { Boolean.valueOf(aiw()) });
+    this.paz = "play";
+    ki localki = new ki();
+    localki.cAc.action = 0;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "play";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    if (this.paB != null) {
+      this.paB.k(parame);
     }
   }
   
-  public final void B(com.tencent.mm.av.e parame)
+  public final void B(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onResumeEvent");
-    this.mAt = "play";
-    jy localjy = new jy();
-    localjy.bSA.action = 1;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "play";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
-    if (this.mAv != null) {
-      this.mAv.l(parame);
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onResumeEvent");
+    this.paz = "play";
+    ki localki = new ki();
+    localki.cAc.action = 1;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "play";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    if (this.paB != null) {
+      this.paB.l(parame);
     }
   }
   
-  public final void C(com.tencent.mm.av.e parame)
+  public final void C(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onPauseEvent");
-    this.mAt = "pause";
-    jy localjy = new jy();
-    localjy.bSA.action = 3;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "pause";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
-    if (this.mAv != null) {
-      this.mAv.m(parame);
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onPauseEvent");
+    this.paz = "pause";
+    ki localki = new ki();
+    localki.cAc.action = 3;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "pause";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    if (this.paB != null) {
+      this.paB.m(parame);
     }
   }
   
-  public final void D(com.tencent.mm.av.e parame)
+  public final void D(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
-    this.mAt = "stop";
-    jy localjy = new jy();
-    localjy.bSA.action = 2;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "stop";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    jy.a locala = localjy.bSA;
-    boolean bool = this.bSD;
-    this.bSD = false;
-    locala.bSD = bool;
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
-    if (this.mAv != null) {
-      this.mAv.n(parame);
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
+    this.paz = "stop";
+    ki localki = new ki();
+    localki.cAc.action = 2;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "stop";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    ki.a locala = localki.cAc;
+    boolean bool = this.cAf;
+    this.cAf = false;
+    locala.cAf = bool;
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    if (this.paB != null) {
+      this.paB.n(parame);
     }
   }
   
-  public final void E(com.tencent.mm.av.e parame)
+  public final void E(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onSeekToEvent");
-    this.mAt = "seeked";
-    jy localjy = new jy();
-    localjy.bSA.action = 8;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "seeked";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onSeekToEvent");
+    this.paz = "seeked";
+    ki localki = new ki();
+    localki.cAc.action = 8;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "seeked";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
   }
   
-  public final void F(com.tencent.mm.av.e parame)
+  public final void F(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onSeekingEvent");
-    this.mAt = "seeking";
-    jy localjy = new jy();
-    localjy.bSA.action = 12;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "seeking";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onSeekingEvent");
+    this.paz = "seeking";
+    ki localki = new ki();
+    localki.cAc.action = 12;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "seeking";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
   }
   
-  public final void G(com.tencent.mm.av.e parame)
+  public final void G(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
-    this.mAt = "ended";
-    jy localjy = new jy();
-    localjy.bSA.action = 7;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "ended";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
-    if (this.mAv != null) {
-      this.mAv.o(parame);
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onStopEvent");
+    this.paz = "ended";
+    ki localki = new ki();
+    localki.cAc.action = 7;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "ended";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    if (this.paB != null) {
+      this.paB.o(parame);
     }
   }
   
-  public final void H(com.tencent.mm.av.e parame)
+  public final void H(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent");
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent");
+    d(parame, -1);
+  }
+  
+  public void a(com.tencent.mm.aw.e parame, int paramInt1, int paramInt2)
+  {
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent");
     d(parame, -1);
   }
   
   public final void a(d.a parama)
   {
-    this.mxn = parama;
+    this.oXk = parama;
   }
   
-  public abstract void bmO();
-  
-  protected final void bnC()
+  protected final void bUl()
   {
-    if (this.mxl != null) {
+    if (this.oXi != null)
+    {
+      this.oXi.end();
+      this.oXi.dtv();
+      this.oXi = null;
+    }
+  }
+  
+  protected final void bVZ()
+  {
+    if (this.oXi != null) {
       return;
     }
-    if (b.checkSelfPermission(ae.getContext(), "android.permission.READ_PHONE_STATE") != 0)
+    if (b.checkSelfPermission(ah.getContext(), "android.permission.READ_PHONE_STATE") != 0)
     {
-      y.e("MicroMsg.Music.BaseMusicPlayer", "addPhoneStatusWatcher() not have read_phone_state perm");
+      ab.e("MicroMsg.Music.BaseMusicPlayer", "addPhoneStatusWatcher() not have read_phone_state perm");
       return;
     }
-    this.mxl = new at();
-    this.mxl.fN(ae.getContext());
-    this.mxl.a(new a.1(this));
+    this.oXi = new ax();
+    this.oXi.hd(ah.getContext());
+    this.oXi.a(new a.1(this));
   }
   
-  public final void bnD()
+  protected abstract void bVk();
+  
+  protected final String bWa()
   {
-    if (this.mxl != null)
-    {
-      this.mxl.end();
-      this.mxl.crw();
+    return this.paz;
+  }
+  
+  public final void d(com.tencent.mm.aw.e parame, int paramInt)
+  {
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    this.paz = "error";
+    ki localki = new ki();
+    localki.cAc.action = 4;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "error";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    localki.cAc.errCode = com.tencent.mm.plugin.music.f.a.e.Aw(paramInt);
+    localki.cAc.errMsg = com.tencent.mm.plugin.music.f.a.e.oP(paramInt);
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
+    if (this.paB != null) {
+      this.paB.a(parame, paramInt);
     }
   }
   
-  public final void d(com.tencent.mm.av.e parame, int paramInt)
+  public void f(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onErrorEvent with errCode:%d", new Object[] { Integer.valueOf(paramInt) });
-    this.mAt = "error";
-    jy localjy = new jy();
-    localjy.bSA.action = 4;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "error";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    localjy.bSA.errCode = com.tencent.mm.plugin.music.f.a.e.uV(paramInt);
-    localjy.bSA.aox = com.tencent.mm.plugin.music.f.a.e.uW(paramInt);
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
-    if (this.mAv != null) {
-      this.mAv.a(parame, paramInt);
-    }
+    bVk();
   }
   
-  public void f(com.tencent.mm.av.e parame)
+  public final void y(com.tencent.mm.aw.e parame)
   {
-    bmO();
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onPreparingEvent %b", new Object[] { Boolean.valueOf(aiw()) });
+    this.paz = "waiting";
+    ki localki = new ki();
+    localki.cAc.action = 11;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "waiting";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
   }
   
-  public final void y(com.tencent.mm.av.e parame)
+  public final void z(com.tencent.mm.aw.e parame)
   {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onPreparingEvent %b", new Object[] { Boolean.valueOf(Pu()) });
-    this.mAt = "waiting";
-    jy localjy = new jy();
-    localjy.bSA.action = 11;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "waiting";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
-  }
-  
-  public final void z(com.tencent.mm.av.e parame)
-  {
-    y.i("MicroMsg.Music.BaseMusicPlayer", "onPrepareEvent %b", new Object[] { Boolean.valueOf(Pu()) });
-    this.mAt = "canplay";
-    jy localjy = new jy();
-    localjy.bSA.action = 9;
-    localjy.bSA.bSu = parame;
-    localjy.bSA.state = "canplay";
-    localjy.bSA.duration = getDuration();
-    localjy.bSA.bSC = bmk();
-    com.tencent.mm.sdk.b.a.udP.a(localjy, Looper.getMainLooper());
+    ab.i("MicroMsg.Music.BaseMusicPlayer", "onPrepareEvent %b", new Object[] { Boolean.valueOf(aiw()) });
+    this.paz = "canplay";
+    ki localki = new ki();
+    localki.cAc.action = 9;
+    localki.cAc.czW = parame;
+    localki.cAc.state = "canplay";
+    localki.cAc.duration = getDuration();
+    localki.cAc.cAe = bUn();
+    com.tencent.mm.sdk.b.a.ymk.a(localki, Looper.getMainLooper());
   }
 }
 

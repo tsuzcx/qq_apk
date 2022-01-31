@@ -1,18 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandTBSDownloadProxyUI$4
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
   AppBrandTBSDownloadProxyUI$4(AppBrandTBSDownloadProxyUI paramAppBrandTBSDownloadProxyUI) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    AppBrandTBSDownloadProxyUI.ape();
-    Intent localIntent = new Intent();
-    this.hed.setResult(0, localIntent);
-    this.hed.finish();
+    AppMethodBeat.i(133102);
+    ab.i("MicroMsg.AppBrandTBSDownloadProxyUI", "cancle loading download background");
+    paramDialogInterface = new Intent();
+    this.iOQ.setResult(2, paramDialogInterface);
+    this.iOQ.finish();
+    AppMethodBeat.o(133102);
   }
 }
 

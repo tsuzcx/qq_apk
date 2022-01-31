@@ -1,55 +1,93 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.luggage.j.c;
-import com.tencent.mm.plugin.game.luggage.d;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.a.b;
+import com.tencent.mm.plugin.downloader_app.a.d;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class g
-  extends aw<d>
+  extends bh
 {
-  public final void a(Context paramContext, String paramString, aw.a parama)
+  public final void a(Context paramContext, String paramString, bh.a parama)
   {
-    try
+    AppMethodBeat.i(135870);
+    Object localObject = ((d)com.tencent.mm.kernel.g.E(d.class)).bjF();
+    if (bo.es((List)localObject))
     {
-      paramString = new JSONObject(paramString);
-      paramString = paramString.optString("appId");
-      if (bk.bl(paramString))
-      {
-        parama.e("invalid_params", null);
-        return;
-      }
-    }
-    catch (Exception paramContext)
-    {
-      c.printErrStackTrace("MicroMsg.JsApiJumpDownloaderApp", paramContext, "", new Object[0]);
-      parama.e("fail", null);
+      parama.c(null, null);
+      AppMethodBeat.o(135870);
       return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("appId", paramString);
-    ((com.tencent.mm.plugin.downloader_app.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.downloader_app.a.a.class)).a(paramContext, localIntent, new g.1(this, parama));
+    paramContext = new JSONObject();
+    paramString = new JSONArray();
+    localObject = ((LinkedList)localObject).iterator();
+    for (;;)
+    {
+      b localb;
+      JSONObject localJSONObject;
+      if (((Iterator)localObject).hasNext())
+      {
+        localb = (b)((Iterator)localObject).next();
+        localJSONObject = new JSONObject();
+      }
+      try
+      {
+        localJSONObject.put("appid", localb.appId);
+        localJSONObject.put("status", localb.lad);
+        localJSONObject.put("download_id", localb.cmm);
+        localJSONObject.put("progress", localb.progress);
+        localJSONObject.put("progress_float", localb.hAP);
+        if (localb.kZa) {
+          localJSONObject.put("reserve_for_wifi", 1);
+        }
+        label177:
+        paramString.put(localJSONObject);
+        continue;
+        try
+        {
+          paramContext.put("result", paramString.toString());
+          label198:
+          parama.c(null, paramContext);
+          AppMethodBeat.o(135870);
+          return;
+        }
+        catch (JSONException paramString)
+        {
+          break label198;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        break label177;
+      }
+    }
   }
   
-  public final int aGj()
+  public final void b(a.a parama) {}
+  
+  public final int bjL()
   {
-    return 2;
+    return 1;
   }
-  
-  public final void b(com.tencent.luggage.e.a<d>.a parama) {}
   
   public final String name()
   {
-    return "jumpDownloaderApp";
+    return "getDownloadWidgetTaskInfos";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,25 @@
 package com.tencent.mm.modelvoice;
 
-import com.tencent.mm.ah.j.a;
-import com.tencent.mm.f.b.b;
-import com.tencent.mm.f.b.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
 
 final class t$1
-  implements b.a
+  implements Runnable
 {
-  t$1(t paramt) {}
+  t$1(t paramt, c paramc, r paramr) {}
   
-  public final void onError()
+  public final void run()
   {
-    if (t.a(this.eLl) != null) {
-      t.a(this.eLl).onError();
-    }
-    try
-    {
-      t.b(this.eLl).release();
-      t.c(this.eLl);
-      return;
-    }
-    catch (Exception localException)
-    {
-      y.e("VoiceRecorder", "setErrorListener File[" + this.eLl.fileName + "] ErrMsg[" + localException.getStackTrace() + "]");
-    }
+    AppMethodBeat.i(116652);
+    this.fZw.J(((j)g.E(j.class)).bPQ().ag(this.gaM.cDt, this.gaM.cFn));
+    AppMethodBeat.o(116652);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelvoice.t.1
  * JD-Core Version:    0.7.0.1
  */

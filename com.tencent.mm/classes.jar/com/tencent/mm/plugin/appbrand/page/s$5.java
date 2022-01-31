@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d.a;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class s$5
-  implements d.a
+  implements Runnable
 {
-  s$5(s params) {}
+  s$5(s params, View paramView) {}
   
-  public final LocalUsageInfo anx()
+  public final void run()
   {
-    return new LocalUsageInfo(this.gUs.getRuntime().aaa().bFn, this.gUs.getRuntime().aaa().appId, this.gUs.getRuntime().aaa().fPS.fEM, this.gUs.getRuntime().aaa().fPS.fEN, this.gUs.getRuntime().aaa().bJw, this.gUs.getRuntime().aaa().fJX, this.gUs.getRuntime().aaa().fPM, false, this.gUs.getRuntime().aaa().aek());
+    AppMethodBeat.i(132348);
+    this.iwT.post(new s.5.1(this));
+    AppMethodBeat.o(132348);
   }
 }
 

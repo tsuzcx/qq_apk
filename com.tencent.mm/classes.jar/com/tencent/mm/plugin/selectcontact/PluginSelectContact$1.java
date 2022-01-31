@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.selectcontact;
 
-import com.tencent.mm.h.a.co;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cr;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginSelectContact$1
-  extends c<co>
+  extends c<cr>
 {
   PluginSelectContact$1(PluginSelectContact paramPluginSelectContact)
   {
-    this.udX = co.class.getName().hashCode();
+    AppMethodBeat.i(105150);
+    this.__eventId = cr.class.getName().hashCode();
+    AppMethodBeat.o(105150);
   }
 }
 

@@ -1,172 +1,196 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.plugin.facedetect.a.b;
-import com.tencent.mm.plugin.facedetect.a.e;
-import com.tencent.mm.plugin.facedetect.a.i;
-import com.tencent.mm.plugin.facedetect.a.j;
+import com.tencent.mm.model.av;
 import com.tencent.mm.plugin.facedetect.model.e;
-import com.tencent.mm.plugin.facedetect.model.o;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.facedetect.model.p;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.t;
 import java.io.File;
 
 public class FaceDebugUI
   extends MMPreference
 {
-  private f dnn;
-  private CheckBoxPreference jQb = null;
-  private CheckBoxPreference jQc = null;
-  private CheckBoxPreference jQd = null;
-  private CheckBoxPreference jQe = null;
-  private CheckBoxPreference jQf = null;
-  private CheckBoxPreference jQg = null;
-  private View jdj;
+  private View iDS;
+  private CheckBoxPreference mkr = null;
+  private CheckBoxPreference mks = null;
+  private CheckBoxPreference mkt = null;
+  private CheckBoxPreference mku = null;
+  private CheckBoxPreference mkv = null;
+  private CheckBoxPreference mkw = null;
+  private f screen;
   
-  private void aOT()
+  private void buX()
   {
-    this.dnn = this.vdd;
-    this.jQb = ((CheckBoxPreference)this.dnn.add("face_debug_switch"));
-    this.jQc = ((CheckBoxPreference)this.dnn.add("face_debug_save_pic_switch"));
-    this.jQd = ((CheckBoxPreference)this.dnn.add("face_debug_save_final_switch"));
-    this.jQe = ((CheckBoxPreference)this.dnn.add("face_debug_save_lipreading_switch"));
-    this.jQf = ((CheckBoxPreference)this.dnn.add("face_debug_save_voice_switch"));
-    this.jQg = ((CheckBoxPreference)this.dnn.add("face_debug_force_upload_video"));
-    this.dnn.notifyDataSetChanged();
+    AppMethodBeat.i(358);
+    this.screen = getPreferenceScreen();
+    this.mkr = ((CheckBoxPreference)this.screen.atx("face_debug_switch"));
+    this.mks = ((CheckBoxPreference)this.screen.atx("face_debug_save_pic_switch"));
+    this.mkt = ((CheckBoxPreference)this.screen.atx("face_debug_save_final_switch"));
+    this.mku = ((CheckBoxPreference)this.screen.atx("face_debug_save_lipreading_switch"));
+    this.mkv = ((CheckBoxPreference)this.screen.atx("face_debug_save_voice_switch"));
+    this.mkw = ((CheckBoxPreference)this.screen.atx("face_debug_force_upload_video"));
+    this.screen.notifyDataSetChanged();
+    AppMethodBeat.o(358);
   }
   
-  private void aOU()
+  private void buY()
   {
-    boolean bool1 = e.aOi();
-    boolean bool2 = e.aOk();
-    boolean bool3 = e.aOl();
-    boolean bool4 = e.aOm();
-    boolean bool5 = e.aOn();
-    boolean bool6 = e.aOj();
+    AppMethodBeat.i(361);
+    boolean bool1 = e.bul();
+    boolean bool2 = e.bun();
+    boolean bool3 = e.buo();
+    boolean bool4 = e.bup();
+    boolean bool5 = e.buq();
+    boolean bool6 = e.bum();
     if (!bool1)
     {
-      this.jQb.nd(false);
-      this.dnn.bJ("face_debug_save_pic_switch", true);
-      this.dnn.bJ("face_debug_save_final_switch", true);
-      this.dnn.bJ("face_debug_save_lipreading_switch", true);
-      this.dnn.bJ("face_debug_save_voice_switch", true);
-      this.dnn.bJ("face_debug_force_upload_video", true);
+      this.mkr.qH(false);
+      this.screen.cl("face_debug_save_pic_switch", true);
+      this.screen.cl("face_debug_save_final_switch", true);
+      this.screen.cl("face_debug_save_lipreading_switch", true);
+      this.screen.cl("face_debug_save_voice_switch", true);
+      this.screen.cl("face_debug_force_upload_video", true);
     }
     for (;;)
     {
-      this.dnn.notifyDataSetChanged();
+      this.screen.notifyDataSetChanged();
+      AppMethodBeat.o(361);
       return;
-      this.jQb.nd(true);
-      this.dnn.bJ("face_debug_save_pic_switch", false);
-      this.dnn.bJ("face_debug_save_final_switch", false);
-      this.dnn.bJ("face_debug_save_lipreading_switch", false);
-      this.dnn.bJ("face_debug_save_voice_switch", false);
-      this.dnn.bJ("face_debug_force_upload_video", false);
-      this.jQc.nd(bool2);
-      this.jQd.nd(bool3);
-      this.jQe.nd(bool4);
-      this.jQf.nd(bool5);
-      this.jQg.nd(bool6);
+      this.mkr.qH(true);
+      this.screen.cl("face_debug_save_pic_switch", false);
+      this.screen.cl("face_debug_save_final_switch", false);
+      this.screen.cl("face_debug_save_lipreading_switch", false);
+      this.screen.cl("face_debug_save_voice_switch", false);
+      this.screen.cl("face_debug_force_upload_video", false);
+      this.mks.qH(bool2);
+      this.mkt.qH(bool3);
+      this.mku.qH(bool4);
+      this.mkv.qH(bool5);
+      this.mkw.qH(bool6);
     }
   }
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    aOT();
-    if ("face_debug_switch".equals(paramPreference.mKey))
-    {
-      e.fI(this.jQb.isChecked());
-      aOU();
-      return true;
-    }
-    if ("face_debug_save_pic_switch".equals(paramPreference.mKey))
-    {
-      e.fJ(this.jQc.isChecked());
-      aOU();
-      return true;
-    }
-    if ("face_debug_save_final_switch".equals(paramPreference.mKey))
-    {
-      e.fK(this.jQd.isChecked());
-      aOU();
-      return true;
-    }
-    if ("face_debug_save_lipreading_switch".equals(paramPreference.mKey))
-    {
-      e.fL(this.jQe.isChecked());
-      aOU();
-      return true;
-    }
-    if ("face_debug_save_voice_switch".equals(paramPreference.mKey))
-    {
-      e.fM(this.jQf.isChecked());
-      aOU();
-      return true;
-    }
-    if ("face_debug_force_upload_video".equals(paramPreference.mKey))
-    {
-      e.fN(this.jQg.isChecked());
-      aOU();
-      return true;
-    }
-    if ("face_debug_clear_resource".equals(paramPreference.mKey))
-    {
-      paramf = new File(o.qO(0));
-      if (paramf.exists()) {
-        paramf.delete();
-      }
-      paramf = new File(o.qO(1));
-      if (paramf.exists()) {
-        paramf.delete();
-      }
-      at.dVC.Y("LAST_LOGIN_FACE_MODEL_DETECT_VERSION", "-1");
-      at.dVC.Y("LAST_LOGIN_FACE_MODEL_ALIGNMENT_VERSION", "-1");
-      return true;
-    }
-    if ("face_debug_check_resource".equals(paramPreference.mKey))
-    {
-      paramf = new File(o.qO(0));
-      paramPreference = new File(o.qO(1));
-      com.tencent.mm.ui.base.s.makeText(this.mController.uMN, String.format("is detect model exists: %b, is alignment model exists: %b", new Object[] { Boolean.valueOf(paramf.exists()), Boolean.valueOf(paramPreference.exists()) }), 0).show();
-      y.i("MicroMsg.FaceDebugUI", "hy: detect bin md5: %s", new Object[] { g.m(paramf) });
-      y.i("MicroMsg.FaceDebugUI", "hy: alignment bin md5: %s", new Object[] { g.m(paramPreference) });
-      return true;
-    }
-    return false;
+    return 2131165236;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(357);
     super.onCreate(paramBundle);
-    this.jdj = findViewById(a.e.mm_preference_list_content);
-    this.jdj.setBackgroundResource(a.b.white);
-    aOT();
-    setMMTitle(getString(a.i.face_debug_name));
+    this.iDS = findViewById(2131826247);
+    this.iDS.setBackgroundResource(2131690709);
+    buX();
+    setMMTitle(getString(2131299546));
     setBackBtn(new FaceDebugUI.1(this));
+    AppMethodBeat.o(357);
   }
   
-  protected void onResume()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
+    AppMethodBeat.i(362);
+    buX();
+    if ("face_debug_switch".equals(paramPreference.mKey))
+    {
+      e.hl(this.mkr.isChecked());
+      buY();
+      AppMethodBeat.o(362);
+      return true;
+    }
+    if ("face_debug_save_pic_switch".equals(paramPreference.mKey))
+    {
+      e.hm(this.mks.isChecked());
+      buY();
+      AppMethodBeat.o(362);
+      return true;
+    }
+    if ("face_debug_save_final_switch".equals(paramPreference.mKey))
+    {
+      e.hn(this.mkt.isChecked());
+      buY();
+      AppMethodBeat.o(362);
+      return true;
+    }
+    if ("face_debug_save_lipreading_switch".equals(paramPreference.mKey))
+    {
+      e.ho(this.mku.isChecked());
+      buY();
+      AppMethodBeat.o(362);
+      return true;
+    }
+    if ("face_debug_save_voice_switch".equals(paramPreference.mKey))
+    {
+      e.hp(this.mkv.isChecked());
+      buY();
+      AppMethodBeat.o(362);
+      return true;
+    }
+    if ("face_debug_force_upload_video".equals(paramPreference.mKey))
+    {
+      e.hq(this.mkw.isChecked());
+      buY();
+      AppMethodBeat.o(362);
+      return true;
+    }
+    if ("face_debug_clear_resource".equals(paramPreference.mKey))
+    {
+      paramf = new File(p.vJ(0));
+      if (paramf.exists()) {
+        paramf.delete();
+      }
+      paramf = new File(p.vJ(1));
+      if (paramf.exists()) {
+        paramf.delete();
+      }
+      av.flM.ao("LAST_LOGIN_FACE_MODEL_DETECT_VERSION", "-1");
+      av.flM.ao("LAST_LOGIN_FACE_MODEL_ALIGNMENT_VERSION", "-1");
+      AppMethodBeat.o(362);
+      return true;
+    }
+    if ("face_debug_check_resource".equals(paramPreference.mKey))
+    {
+      paramf = new File(p.vJ(0));
+      paramPreference = new File(p.vJ(1));
+      t.makeText(getContext(), String.format("is detect model exists: %b, is alignment model exists: %b", new Object[] { Boolean.valueOf(paramf.exists()), Boolean.valueOf(paramPreference.exists()) }), 0).show();
+      ab.i("MicroMsg.FaceDebugUI", "hy: detect bin md5: %s", new Object[] { g.r(paramf) });
+      ab.i("MicroMsg.FaceDebugUI", "hy: alignment bin md5: %s", new Object[] { g.r(paramPreference) });
+      AppMethodBeat.o(362);
+      return true;
+    }
+    AppMethodBeat.o(362);
+    return false;
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(359);
     super.onResume();
-    aOU();
+    buY();
+    AppMethodBeat.o(359);
   }
   
-  protected void onStop()
+  public void onStop()
   {
+    AppMethodBeat.i(360);
     super.onStop();
+    AppMethodBeat.o(360);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return a.j.face_debug_pref;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NormalUserFooterPreference$i$3
   implements DialogInterface.OnClickListener
@@ -10,12 +11,14 @@ final class NormalUserFooterPreference$i$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.mYV.bsN();
+    AppMethodBeat.i(23718);
+    this.pCp.ccC();
+    AppMethodBeat.o(23718);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference.i.3
  * JD-Core Version:    0.7.0.1
  */

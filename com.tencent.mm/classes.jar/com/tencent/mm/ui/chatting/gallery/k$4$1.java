@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.chatting.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class k$4$1
   implements Runnable
 {
@@ -7,12 +9,13 @@ final class k$4$1
   
   public final void run()
   {
-    this.vxC.vxz.vuf.vtJ.ns(true);
-    c localc = this.vxC.vxz.vuf;
-    int i = this.vxC.vxz.mPosition;
-    localc.vtP.HE(i);
-    ImageGalleryUI.cGq();
-    this.vxC.vxz.vuf.vtP.cGC();
+    AppMethodBeat.i(32385);
+    this.zNO.zNL.zKg.zJK.rb(true);
+    c localc = this.zNO.zNL.zKg;
+    int i = this.zNO.zNL.mPosition;
+    localc.zJQ.Ql(i);
+    this.zNO.zNL.zKg.zJQ.dKI();
+    AppMethodBeat.o(32385);
   }
 }
 

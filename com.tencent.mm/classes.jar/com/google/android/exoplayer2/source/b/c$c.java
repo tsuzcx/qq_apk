@@ -1,61 +1,59 @@
 package com.google.android.exoplayer2.source.b;
 
 import android.os.SystemClock;
-import com.google.android.exoplayer2.g.a;
-import com.google.android.exoplayer2.source.l;
+import com.google.android.exoplayer2.g.b;
+import com.google.android.exoplayer2.source.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$c
-  extends a
+  extends b
 {
-  private int aJH;
+  private int aRn;
   
-  public c$c(l paraml, int[] paramArrayOfInt)
+  public c$c(o paramo, int[] paramArrayOfInt)
   {
-    super(paraml, paramArrayOfInt);
-    paraml = paraml.aIs[0];
-    if (i < this.length) {
-      if (this.aIs[i] != paraml) {}
-    }
-    for (;;)
-    {
-      this.aJH = i;
-      return;
-      i += 1;
-      break;
-      i = -1;
-    }
+    super(paramo, paramArrayOfInt);
+    AppMethodBeat.i(125901);
+    this.aRn = j(paramo.aQc[0]);
+    AppMethodBeat.o(125901);
   }
   
-  public final void mV()
+  public final void Y(long paramLong)
   {
-    long l = SystemClock.elapsedRealtime();
-    if (!g(this.aJH, l)) {
+    AppMethodBeat.i(125902);
+    paramLong = SystemClock.elapsedRealtime();
+    if (!k(this.aRn, paramLong))
+    {
+      AppMethodBeat.o(125902);
       return;
     }
     int i = this.length - 1;
     while (i >= 0)
     {
-      if (!g(i, l))
+      if (!k(i, paramLong))
       {
-        this.aJH = i;
+        this.aRn = i;
+        AppMethodBeat.o(125902);
         return;
       }
       i -= 1;
     }
-    throw new IllegalStateException();
+    IllegalStateException localIllegalStateException = new IllegalStateException();
+    AppMethodBeat.o(125902);
+    throw localIllegalStateException;
   }
   
-  public final int mW()
+  public final int pv()
   {
-    return this.aJH;
+    return this.aRn;
   }
   
-  public final int mX()
+  public final int pw()
   {
     return 0;
   }
   
-  public final Object mY()
+  public final Object px()
   {
     return null;
   }

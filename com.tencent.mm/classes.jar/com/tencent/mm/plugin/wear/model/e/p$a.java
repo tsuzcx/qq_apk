@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import com.tencent.mm.plugin.wear.model.f.c;
-import com.tencent.mm.protocal.c.cko;
+import com.tencent.mm.protocal.protobuf.cyb;
 
 final class p$a
   extends c
 {
-  public int igH;
-  public int qRZ = 2;
-  public cko qSL;
-  public int qSa;
+  public int cnU;
+  public int fOC;
+  public cyb uHS;
+  public int uHh = 2;
   
-  public p$a(p paramp, int paramInt, cko paramcko)
+  public p$a(p paramp, int paramInt, cyb paramcyb)
   {
-    this.igH = paramInt;
-    this.qSa = 30001;
-    this.qSL = paramcko;
+    this.cnU = paramInt;
+    this.fOC = 30001;
+    this.uHS = paramcyb;
   }
   
   public final String getName()
@@ -24,131 +24,139 @@ final class p$a
   }
   
   /* Error */
-  protected final void send()
+  public final void send()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 30	com/tencent/mm/plugin/wear/model/e/p$a:qSL	Lcom/tencent/mm/protocal/c/cko;
-    //   4: invokevirtual 44	com/tencent/mm/protocal/c/cko:toByteArray	()[B
-    //   7: astore_1
-    //   8: invokestatic 50	com/tencent/mm/plugin/wear/model/a:bYL	()Lcom/tencent/mm/plugin/wear/model/a;
-    //   11: getfield 54	com/tencent/mm/plugin/wear/model/a:qRu	Lcom/tencent/mm/plugin/wear/model/d;
-    //   14: aload_1
-    //   15: invokevirtual 60	com/tencent/mm/plugin/wear/model/d:be	([B)[B
-    //   18: astore_2
-    //   19: new 62	java/io/ByteArrayOutputStream
-    //   22: dup
-    //   23: invokespecial 63	java/io/ByteArrayOutputStream:<init>	()V
-    //   26: astore_1
-    //   27: new 65	java/io/DataOutputStream
-    //   30: dup
-    //   31: aload_1
-    //   32: invokespecial 68	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   35: astore_3
-    //   36: aload_3
-    //   37: aload_0
-    //   38: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:qRZ	I
-    //   41: invokevirtual 72	java/io/DataOutputStream:writeInt	(I)V
-    //   44: aload_3
-    //   45: aload_0
-    //   46: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:igH	I
-    //   49: invokevirtual 72	java/io/DataOutputStream:writeInt	(I)V
-    //   52: aload_3
-    //   53: aload_0
-    //   54: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:qSa	I
-    //   57: invokevirtual 72	java/io/DataOutputStream:writeInt	(I)V
-    //   60: aload_2
-    //   61: ifnull +82 -> 143
-    //   64: aload_2
-    //   65: arraylength
-    //   66: ifle +77 -> 143
-    //   69: aload_3
+    //   0: sipush 26420
+    //   3: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 30	com/tencent/mm/plugin/wear/model/e/p$a:uHS	Lcom/tencent/mm/protocal/protobuf/cyb;
+    //   10: invokevirtual 50	com/tencent/mm/protocal/protobuf/cyb:toByteArray	()[B
+    //   13: astore_1
+    //   14: invokestatic 56	com/tencent/mm/plugin/wear/model/a:cYy	()Lcom/tencent/mm/plugin/wear/model/a;
+    //   17: getfield 60	com/tencent/mm/plugin/wear/model/a:uGC	Lcom/tencent/mm/plugin/wear/model/d;
+    //   20: aload_1
+    //   21: invokevirtual 66	com/tencent/mm/plugin/wear/model/d:bF	([B)[B
+    //   24: astore_2
+    //   25: new 68	java/io/ByteArrayOutputStream
+    //   28: dup
+    //   29: invokespecial 69	java/io/ByteArrayOutputStream:<init>	()V
+    //   32: astore_1
+    //   33: new 71	java/io/DataOutputStream
+    //   36: dup
+    //   37: aload_1
+    //   38: invokespecial 74	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   41: astore_3
+    //   42: aload_3
+    //   43: aload_0
+    //   44: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:uHh	I
+    //   47: invokevirtual 77	java/io/DataOutputStream:writeInt	(I)V
+    //   50: aload_3
+    //   51: aload_0
+    //   52: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:cnU	I
+    //   55: invokevirtual 77	java/io/DataOutputStream:writeInt	(I)V
+    //   58: aload_3
+    //   59: aload_0
+    //   60: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:fOC	I
+    //   63: invokevirtual 77	java/io/DataOutputStream:writeInt	(I)V
+    //   66: aload_2
+    //   67: ifnull +94 -> 161
     //   70: aload_2
     //   71: arraylength
-    //   72: invokevirtual 72	java/io/DataOutputStream:writeInt	(I)V
+    //   72: ifle +89 -> 161
     //   75: aload_3
     //   76: aload_2
-    //   77: invokevirtual 76	java/io/DataOutputStream:write	([B)V
-    //   80: aload_1
-    //   81: invokevirtual 77	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   84: astore_2
-    //   85: ldc 79
-    //   87: ldc 81
-    //   89: iconst_2
-    //   90: anewarray 83	java/lang/Object
-    //   93: dup
-    //   94: iconst_0
-    //   95: aload_0
-    //   96: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:qSa	I
-    //   99: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   102: aastore
-    //   103: dup
-    //   104: iconst_1
-    //   105: aload_2
-    //   106: arraylength
-    //   107: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   110: aastore
-    //   111: invokestatic 95	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   114: invokestatic 50	com/tencent/mm/plugin/wear/model/a:bYL	()Lcom/tencent/mm/plugin/wear/model/a;
-    //   117: getfield 54	com/tencent/mm/plugin/wear/model/a:qRu	Lcom/tencent/mm/plugin/wear/model/d;
-    //   120: aload_1
-    //   121: invokevirtual 77	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   124: invokevirtual 99	com/tencent/mm/plugin/wear/model/d:bc	([B)Z
-    //   127: pop
-    //   128: return
-    //   129: astore_1
-    //   130: ldc 79
-    //   132: aload_1
-    //   133: ldc 101
-    //   135: iconst_0
-    //   136: anewarray 83	java/lang/Object
-    //   139: invokestatic 105	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   142: return
-    //   143: aload_3
-    //   144: iconst_0
-    //   145: invokevirtual 72	java/io/DataOutputStream:writeInt	(I)V
-    //   148: goto -68 -> 80
-    //   151: astore_1
-    //   152: ldc 79
-    //   154: aload_1
-    //   155: ldc 107
-    //   157: iconst_3
-    //   158: anewarray 83	java/lang/Object
-    //   161: dup
+    //   77: arraylength
+    //   78: invokevirtual 77	java/io/DataOutputStream:writeInt	(I)V
+    //   81: aload_3
+    //   82: aload_2
+    //   83: invokevirtual 81	java/io/DataOutputStream:write	([B)V
+    //   86: aload_1
+    //   87: invokevirtual 82	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   90: astore_2
+    //   91: ldc 84
+    //   93: ldc 86
+    //   95: iconst_2
+    //   96: anewarray 88	java/lang/Object
+    //   99: dup
+    //   100: iconst_0
+    //   101: aload_0
+    //   102: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:fOC	I
+    //   105: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   108: aastore
+    //   109: dup
+    //   110: iconst_1
+    //   111: aload_2
+    //   112: arraylength
+    //   113: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   116: aastore
+    //   117: invokestatic 99	com/tencent/mm/sdk/platformtools/ab:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   120: invokestatic 56	com/tencent/mm/plugin/wear/model/a:cYy	()Lcom/tencent/mm/plugin/wear/model/a;
+    //   123: getfield 60	com/tencent/mm/plugin/wear/model/a:uGC	Lcom/tencent/mm/plugin/wear/model/d;
+    //   126: aload_1
+    //   127: invokevirtual 82	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   130: invokevirtual 103	com/tencent/mm/plugin/wear/model/d:bD	([B)Z
+    //   133: pop
+    //   134: sipush 26420
+    //   137: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   140: return
+    //   141: astore_1
+    //   142: ldc 84
+    //   144: aload_1
+    //   145: ldc 108
+    //   147: iconst_0
+    //   148: anewarray 88	java/lang/Object
+    //   151: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   154: sipush 26420
+    //   157: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   160: return
+    //   161: aload_3
     //   162: iconst_0
-    //   163: aload_0
-    //   164: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:qRZ	I
-    //   167: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   170: aastore
-    //   171: dup
-    //   172: iconst_1
-    //   173: aload_0
-    //   174: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:igH	I
-    //   177: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   180: aastore
-    //   181: dup
-    //   182: iconst_2
-    //   183: aload_0
-    //   184: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:qSa	I
-    //   187: invokestatic 89	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   190: aastore
-    //   191: invokestatic 105	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   194: return
+    //   163: invokevirtual 77	java/io/DataOutputStream:writeInt	(I)V
+    //   166: goto -80 -> 86
+    //   169: astore_1
+    //   170: ldc 84
+    //   172: aload_1
+    //   173: ldc 114
+    //   175: iconst_3
+    //   176: anewarray 88	java/lang/Object
+    //   179: dup
+    //   180: iconst_0
+    //   181: aload_0
+    //   182: getfield 24	com/tencent/mm/plugin/wear/model/e/p$a:uHh	I
+    //   185: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   188: aastore
+    //   189: dup
+    //   190: iconst_1
+    //   191: aload_0
+    //   192: getfield 26	com/tencent/mm/plugin/wear/model/e/p$a:cnU	I
+    //   195: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   198: aastore
+    //   199: dup
+    //   200: iconst_2
+    //   201: aload_0
+    //   202: getfield 28	com/tencent/mm/plugin/wear/model/e/p$a:fOC	I
+    //   205: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   208: aastore
+    //   209: invokestatic 112	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   212: sipush 26420
+    //   215: invokestatic 106	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   218: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	195	0	this	a
-    //   7	114	1	localObject	java.lang.Object
-    //   129	4	1	localIOException1	java.io.IOException
-    //   151	4	1	localIOException2	java.io.IOException
-    //   18	88	2	arrayOfByte	byte[]
-    //   35	109	3	localDataOutputStream	java.io.DataOutputStream
+    //   0	219	0	this	a
+    //   13	114	1	localObject	java.lang.Object
+    //   141	4	1	localIOException1	java.io.IOException
+    //   169	4	1	localIOException2	java.io.IOException
+    //   24	88	2	arrayOfByte	byte[]
+    //   41	121	3	localDataOutputStream	java.io.DataOutputStream
     // Exception table:
     //   from	to	target	type
-    //   0	19	129	java/io/IOException
-    //   36	60	151	java/io/IOException
-    //   64	80	151	java/io/IOException
-    //   80	128	151	java/io/IOException
-    //   143	148	151	java/io/IOException
+    //   6	25	141	java/io/IOException
+    //   42	66	169	java/io/IOException
+    //   70	86	169	java/io/IOException
+    //   86	134	169	java/io/IOException
+    //   161	166	169	java/io/IOException
   }
 }
 

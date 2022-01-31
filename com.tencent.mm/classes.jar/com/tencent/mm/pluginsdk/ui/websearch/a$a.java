@@ -2,11 +2,11 @@ package com.tencent.mm.pluginsdk.ui.websearch;
 
 public abstract interface a$a
 {
-  public abstract void TG(String paramString);
+  public abstract void amd(String paramString);
   
-  public abstract void cfM();
+  public abstract void dns();
   
-  public abstract void lr(boolean paramBoolean);
+  public abstract void pd(boolean paramBoolean);
 }
 
 

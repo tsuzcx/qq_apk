@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.gwallet;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gwallet.a.b.b;
 import com.tencent.mm.plugin.gwallet.a.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class GWalletUI$3$1
   implements b.b
@@ -12,14 +13,16 @@ final class GWalletUI$3$1
   
   public final void b(c paramc, Intent paramIntent)
   {
-    y.d("MicroMsg.GWalletUI", "Purchase finished: " + paramc + ", purchase: " + paramIntent);
+    AppMethodBeat.i(41676);
+    ab.d("MicroMsg.GWalletUI", "Purchase finished: " + paramc + ", purchase: " + paramIntent);
     paramc = new Intent("com.tencent.mm.gwallet.ACTION_CONSUME_RESPONSE");
-    if (this.liU) {
+    if (this.nGj) {
       paramc.putExtra("RESPONSE_CODE", 100000001);
     }
     for (;;)
     {
-      GWalletUI.a(this.liV.liT, -1, paramc);
+      GWalletUI.a(this.nGk.nGi, -1, paramc);
+      AppMethodBeat.o(41676);
       return;
       paramc.putExtra("RESPONSE_CODE", 0);
     }

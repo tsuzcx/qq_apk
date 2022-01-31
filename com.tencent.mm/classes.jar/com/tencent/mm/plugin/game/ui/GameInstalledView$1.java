@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mm.as.a.c.g;
-import com.tencent.mm.as.a.d.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.c.g;
+import com.tencent.mm.at.a.d.b;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class GameInstalledView$1
   implements g
@@ -18,12 +19,14 @@ final class GameInstalledView$1
   
   public final void b(String paramString, View paramView, b paramb)
   {
+    AppMethodBeat.i(111997);
     if (paramb.status == 0) {
-      ai.d(new GameInstalledView.1.1(this));
+      al.d(new GameInstalledView.1.1(this));
     }
+    AppMethodBeat.o(111997);
   }
   
-  public final void mv(String paramString) {}
+  public final void tF(String paramString) {}
 }
 
 

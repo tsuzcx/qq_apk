@@ -7,20 +7,20 @@ import com.tencent.mm.vending.i.b;
 
 public abstract class d
 {
-  public static final h wtY = new h(Looper.getMainLooper(), "Vending.UI");
-  public static final h wtZ = new h(b.cLg().a.getLooper(), "Vending.LOGIC");
-  public static final h wua = new h(a.cLf().a.getLooper(), "Vending.HEAVY_WORK");
+  public static final h AOW = new h(Looper.getMainLooper(), "Vending.UI");
+  public static final h AOX = new h(b.dQw().a.getLooper(), "Vending.LOGIC");
+  public static final h AOY = new h(a.dQv().a.getLooper(), "Vending.HEAVY_WORK");
   
   static
   {
     g.a();
   }
   
-  public static d cLe()
+  public static d dQu()
   {
     try
     {
-      d locald = g.cLe();
+      d locald = g.dQu();
       return locald;
     }
     finally
@@ -34,9 +34,9 @@ public abstract class d
   
   public abstract String getType();
   
-  public abstract void j(Runnable paramRunnable, long paramLong);
+  public abstract void n(Runnable paramRunnable, long paramLong);
   
-  public abstract void k(Runnable paramRunnable);
+  public abstract void o(Runnable paramRunnable);
 }
 
 

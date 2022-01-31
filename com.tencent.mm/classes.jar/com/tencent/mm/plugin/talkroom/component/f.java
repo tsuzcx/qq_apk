@@ -1,66 +1,76 @@
 package com.tencent.mm.plugin.talkroom.component;
 
-import com.tencent.mm.f.b.c;
-import com.tencent.mm.f.b.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c;
+import com.tencent.mm.audio.b.c.a;
 import com.tencent.mm.plugin.talkroom.model.a;
 
 public final class f
   extends d.a
 {
-  private c bCc;
-  private c.a bDg = new f.1(this);
-  private v2engine pzJ;
-  private short pzK;
-  private short pzL;
+  private c ciR;
+  private c.a cjU;
+  private v2engine tbv;
+  private short tbw;
+  private short tbx;
   
   public f(v2engine paramv2engine)
   {
-    this.pzJ = paramv2engine;
+    AppMethodBeat.i(25714);
+    this.cjU = new f.1(this);
+    this.tbv = paramv2engine;
+    AppMethodBeat.o(25714);
   }
   
-  public final void RG()
+  public final void akP()
   {
-    this.bCc = new c(a.pzY, 1, 2);
-    this.bCc.t(8, false);
-    this.bCc.bCP = this.bDg;
-    this.bCc.ey(20);
-    this.bCc.uq();
-    this.pzL = 0;
-    this.pzK = 0;
+    AppMethodBeat.i(25716);
+    this.ciR = new c(a.tbK, 1, 2);
+    this.ciR.t(8, false);
+    this.ciR.cjD = this.cjU;
+    this.ciR.gA(20);
+    this.ciR.EC();
+    this.tbx = 0;
+    this.tbw = 0;
+    AppMethodBeat.o(25716);
   }
   
-  public final void bMq()
+  public final void cHp()
   {
-    if (this.bCc != null)
+    AppMethodBeat.i(25715);
+    if (this.ciR != null)
     {
-      this.bCc.uh();
-      this.bCc = null;
+      this.ciR.Et();
+      this.ciR = null;
     }
+    AppMethodBeat.o(25715);
   }
   
-  public final int bMr()
+  public final int cHq()
   {
-    if (this.pzL < this.pzK) {
-      this.pzL = this.pzK;
+    if (this.tbx < this.tbw) {
+      this.tbx = this.tbw;
     }
-    if (this.pzL == 0) {
+    if (this.tbx == 0) {
       return 0;
     }
-    int i = (short)(this.pzK * 100 / this.pzL);
-    this.pzK = 0;
+    int i = (short)(this.tbw * 100 / this.tbx);
+    this.tbw = 0;
     return i;
   }
   
   public final void release()
   {
-    bMq();
+    AppMethodBeat.i(25717);
+    cHp();
+    AppMethodBeat.o(25717);
   }
   
   public final void start() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.f
  * JD-Core Version:    0.7.0.1
  */

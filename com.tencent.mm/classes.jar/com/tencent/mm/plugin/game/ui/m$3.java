@@ -1,61 +1,66 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.plugin.game.model.d;
-import com.tencent.mm.plugin.game.model.k.a;
-import com.tencent.mm.plugin.game.model.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.c;
+import com.tencent.mm.plugin.game.model.j.a;
+import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.concurrent.ConcurrentHashMap;
 
 final class m$3
-  implements k.a
+  implements j.a
 {
   m$3(m paramm) {}
   
   public final void f(int paramInt, String paramString, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (this.ldb.lcY == null) || (paramString == null)) {}
-    for (;;)
+    AppMethodBeat.i(112060);
+    if ((!paramBoolean) || (this.nAW.nAT == null) || (paramString == null))
     {
+      AppMethodBeat.o(112060);
       return;
-      Object localObject;
-      try
+    }
+    Object localObject;
+    try
+    {
+      localObject = this.nAW.nAT.values().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = this.ldb.lcY.values().iterator();
-        while (((Iterator)localObject).hasNext())
+        k localk = (k)((Iterator)localObject).next();
+        if ((localk != null) && (localk.nmJ != null) && ((localk.nmJ.field_appId.equals(paramString)) || (localk.nmJ.field_packageName.equals(paramString))))
         {
-          l locall = (l)((Iterator)localObject).next();
-          if ((locall != null) && (locall.kOM != null) && ((locall.kOM.field_appId.equals(paramString)) || (locall.kOM.field_packageName.equals(paramString))))
-          {
-            locall.dz(this.ldb.mContext);
-            locall.aGu();
-          }
+          localk.em(this.nAW.mContext);
+          localk.bjZ();
         }
-        paramInt = 0;
       }
-      catch (Exception paramString)
+      paramInt = 0;
+    }
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.GameListAdapter", paramString.getMessage());
+      AppMethodBeat.o(112060);
+      return;
+    }
+    while (paramInt < this.nAW.noR.size())
+    {
+      localObject = (c)this.nAW.noR.get(paramInt);
+      if ((((c)localObject).type == 0) && ((((c)localObject).field_appId.equals(paramString)) || (((c)localObject).field_packageName.equals(paramString))) && (m.a(this.nAW) != null))
       {
-        y.e("MicroMsg.GameListAdapter", paramString.getMessage());
+        m.a(this.nAW).xe(paramInt);
+        AppMethodBeat.o(112060);
         return;
       }
-      while (paramInt < this.ldb.kQN.size())
-      {
-        localObject = (d)this.ldb.kQN.get(paramInt);
-        if ((((d)localObject).type == 0) && ((((d)localObject).field_appId.equals(paramString)) || (((d)localObject).field_packageName.equals(paramString))) && (m.a(this.ldb) != null))
-        {
-          m.a(this.ldb).sf(paramInt);
-          return;
-        }
-        paramInt += 1;
-      }
+      paramInt += 1;
     }
+    AppMethodBeat.o(112060);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.m.3
  * JD-Core Version:    0.7.0.1
  */

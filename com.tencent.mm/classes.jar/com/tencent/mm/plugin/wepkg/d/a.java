@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wepkg.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.InputStream;
 
 public final class a
@@ -12,7 +13,7 @@ public final class a
     super(paramInputStream);
   }
   
-  public final int ckc()
+  public final int dkG()
   {
     try
     {
@@ -29,44 +30,52 @@ public final class a
   
   public final int read()
   {
+    AppMethodBeat.i(63612);
     int j = super.read();
     int k = this.count;
     if (j >= 0) {}
     for (int i = 1;; i = 0)
     {
       this.count = (i + k);
+      AppMethodBeat.o(63612);
       return j;
     }
   }
   
   public final int read(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(63610);
     int j = super.read(paramArrayOfByte);
     int k = this.count;
     if (j >= 0) {}
     for (int i = j;; i = 0)
     {
       this.count = (i + k);
+      AppMethodBeat.o(63610);
       return j;
     }
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(63611);
     paramInt2 = super.read(paramArrayOfByte, paramInt1, paramInt2);
     int i = this.count;
     if (paramInt2 >= 0) {}
     for (paramInt1 = paramInt2;; paramInt1 = 0)
     {
       this.count = (paramInt1 + i);
+      AppMethodBeat.o(63611);
       return paramInt2;
     }
   }
   
   public final long skip(long paramLong)
   {
+    AppMethodBeat.i(63613);
     paramLong = super.skip(paramLong);
     this.count = ((int)(this.count + paramLong));
+    AppMethodBeat.o(63613);
     return paramLong;
   }
 }

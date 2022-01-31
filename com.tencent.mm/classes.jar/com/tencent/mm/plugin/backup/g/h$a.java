@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.backup.g;
 
 public abstract interface h$a
 {
-  public abstract void auD();
+  public abstract void aUe();
   
-  public abstract void auE();
+  public abstract void aUf();
 }
 
 

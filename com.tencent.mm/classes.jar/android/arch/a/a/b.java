@@ -8,13 +8,13 @@ import java.util.concurrent.Executors;
 public final class b
   extends c
 {
-  private ExecutorService bH = Executors.newFixedThreadPool(2);
+  private ExecutorService bL = Executors.newFixedThreadPool(2);
   private final Object mLock = new Object();
   private volatile Handler mMainHandler;
   
   public final void c(Runnable paramRunnable)
   {
-    this.bH.execute(paramRunnable);
+    this.bL.execute(paramRunnable);
   }
   
   public final void d(Runnable paramRunnable)

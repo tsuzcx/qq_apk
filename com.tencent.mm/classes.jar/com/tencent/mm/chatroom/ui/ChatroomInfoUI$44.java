@@ -1,17 +1,20 @@
 package com.tencent.mm.chatroom.ui;
 
-import com.tencent.mm.ui.widget.a.e.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.e.c;
 
 final class ChatroomInfoUI$44
-  implements e.d
+  implements e.c
 {
   ChatroomInfoUI$44(ChatroomInfoUI paramChatroomInfoUI, String paramString) {}
   
-  public final void b(boolean paramBoolean, String paramString)
+  public final void d(boolean paramBoolean, String paramString)
   {
+    AppMethodBeat.i(104014);
     if (paramBoolean) {
-      ChatroomInfoUI.a(this.dod, this.doC, paramString, a.i.invitting_room_mem);
+      ChatroomInfoUI.a(this.efA, this.efY, paramString);
     }
+    AppMethodBeat.o(104014);
   }
 }
 

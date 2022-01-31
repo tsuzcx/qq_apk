@@ -7,20 +7,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.plugin.card.a.c;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.g;
 import com.tencent.mm.plugin.card.model.CardGiftInfo;
 import com.tencent.mm.plugin.card.model.CardGiftInfo.AccepterItem;
 import com.tencent.mm.plugin.card.model.m;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 import java.util.LinkedList;
 
 final class CardGiftReceiveUI$a
@@ -30,7 +25,10 @@ final class CardGiftReceiveUI$a
   
   public final int getCount()
   {
-    return CardGiftReceiveUI.b(this.iuv).imj.size();
+    AppMethodBeat.i(88423);
+    int i = CardGiftReceiveUI.b(this.kvA).knf.size();
+    AppMethodBeat.o(88423);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -40,66 +38,67 @@ final class CardGiftReceiveUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    CardGiftInfo.AccepterItem localAccepterItem = (CardGiftInfo.AccepterItem)CardGiftReceiveUI.b(this.iuv).imj.get(paramInt);
+    AppMethodBeat.i(88424);
+    CardGiftInfo.AccepterItem localAccepterItem = (CardGiftInfo.AccepterItem)CardGiftReceiveUI.b(this.kvA).knf.get(paramInt);
     ImageView localImageView;
     String str;
     if (paramView == null)
     {
-      paramView = View.inflate(this.iuv, a.e.card_gift_accepter_item, null);
-      paramViewGroup = new CardGiftReceiveUI.b(this.iuv);
-      paramViewGroup.iux = ((ImageView)paramView.findViewById(a.d.img_accepter_headimg));
-      paramViewGroup.iuy = ((TextView)paramView.findViewById(a.d.tv_accepter_nickName));
-      paramViewGroup.fcy = ((TextView)paramView.findViewById(a.d.tv_accepter_title));
-      paramViewGroup.iuz = ((TextView)paramView.findViewById(a.d.tv_accepter_price));
+      paramView = View.inflate(this.kvA, 2130968936, null);
+      paramViewGroup = new CardGiftReceiveUI.b(this.kvA);
+      paramViewGroup.kvC = ((ImageView)paramView.findViewById(2131822127));
+      paramViewGroup.khB = ((TextView)paramView.findViewById(2131822128));
+      paramViewGroup.gui = ((TextView)paramView.findViewById(2131822129));
+      paramViewGroup.kvD = ((TextView)paramView.findViewById(2131822130));
       paramView.setTag(paramViewGroup);
       if (localAccepterItem != null) {
-        if (localAccepterItem.imr != null)
+        if (localAccepterItem.knn != null)
         {
-          localImageView = paramViewGroup.iux;
-          str = localAccepterItem.imr;
-          paramInt = a.c.my_card_package_defaultlogo;
+          localImageView = paramViewGroup.kvC;
+          str = localAccepterItem.knn;
           if ((localImageView != null) && (!TextUtils.isEmpty(str))) {
-            break label232;
+            break label229;
           }
         }
       }
     }
     for (;;)
     {
-      paramViewGroup.iuy.setText(localAccepterItem.imq);
-      paramViewGroup.fcy.setText(localAccepterItem.imo);
-      paramViewGroup.iuz.setText(localAccepterItem.imp + this.iuv.mController.uMN.getString(a.g.card_gift_price_rmb_uint));
+      paramViewGroup.khB.setText(localAccepterItem.knm);
+      paramViewGroup.gui.setText(localAccepterItem.knk);
+      paramViewGroup.kvD.setText(localAccepterItem.knl + this.kvA.getContext().getString(2131297924));
+      AppMethodBeat.o(88424);
       return paramView;
       paramViewGroup = (CardGiftReceiveUI.b)paramView.getTag();
       break;
-      label232:
+      label229:
       if (!TextUtils.isEmpty(str))
       {
         Object localObject = new c.a();
-        ((c.a)localObject).eri = e.bkH;
-        o.OO();
-        ((c.a)localObject).erB = null;
-        ((c.a)localObject).erh = m.yn(str);
-        ((c.a)localObject).erf = true;
-        ((c.a)localObject).erD = true;
-        ((c.a)localObject).erE = 3.0F;
-        ((c.a)localObject).erd = true;
-        ((c.a)localObject).erm = 34;
-        ((c.a)localObject).erl = 34;
-        ((c.a)localObject).eru = paramInt;
-        localObject = ((c.a)localObject).OV();
-        o.ON().a(str, localImageView, (c)localObject);
+        ((c.a)localObject).eNP = e.eQz;
+        o.ahH();
+        ((c.a)localObject).eOd = null;
+        ((c.a)localObject).eNO = m.HO(str);
+        ((c.a)localObject).eNM = true;
+        ((c.a)localObject).eOk = true;
+        ((c.a)localObject).eOl = 3.0F;
+        ((c.a)localObject).eNK = true;
+        ((c.a)localObject).eNT = 34;
+        ((c.a)localObject).eNS = 34;
+        ((c.a)localObject).eNY = 2130839758;
+        localObject = ((c.a)localObject).ahY();
+        o.ahG().a(str, localImageView, (c)localObject);
       }
       else
       {
-        localImageView.setImageResource(paramInt);
+        localImageView.setImageResource(2130839758);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftReceiveUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,12 @@ package com.tencent.mm.plugin.topstory.ui.video.fs;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.topstory.a.f;
-import com.tencent.mm.plugin.topstory.ui.video.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.ui.video.b;
+import com.tencent.mm.plugin.topstory.ui.video.f.a;
+import com.tencent.mm.plugin.topstory.ui.video.l;
+import com.tencent.mm.plugin.topstory.ui.video.r;
+import com.tencent.mm.plugin.websearch.api.a.a;
 
 final class e$13
   implements View.OnClickListener
@@ -13,18 +16,33 @@ final class e$13
   
   public final void onClick(View paramView)
   {
-    if ((this.pGX.getFSItemUIComponent() != null) && (this.pGX.getFSItemUIComponent().bNr() != this.pGX.getFSVideoUIComponent().bNB()))
+    AppMethodBeat.i(1898);
+    if (e.h(this.tkq) == f.a.tij)
     {
-      this.pGX.getFSVideoUIComponent().bNt().pGp = 2;
-      this.pGX.getFSVideoUIComponent().zw(e.p(this.pGX).bNr());
-      this.pGX.getFSVideoUIComponent().bNt().c(e.q(this.pGX));
-      ((com.tencent.mm.plugin.topstory.a.b)g.t(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.pGX.getFSVideoUIComponent().bNv(), e.r(this.pGX), e.s(this.pGX).bNr(), 2, "");
+      this.tkq.getFSVideoUIComponent().cJc().tjk = true;
+      e.i(this.tkq).GB(2);
     }
+    if (this.tkq.getFSVideoUIComponent().cJc().isConnected())
+    {
+      e.a(this.tkq, f.a.tii);
+      if (this.tkq.getFSVideoUIComponent().cJh().tjS) {
+        this.tkq.getFSVideoUIComponent().cJh().ctY();
+      }
+      for (;;)
+      {
+        a.kS(19);
+        AppMethodBeat.o(1898);
+        return;
+        this.tkq.Q(true, false);
+      }
+    }
+    a.kS(20);
+    AppMethodBeat.o(1898);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.fs.e.13
  * JD-Core Version:    0.7.0.1
  */

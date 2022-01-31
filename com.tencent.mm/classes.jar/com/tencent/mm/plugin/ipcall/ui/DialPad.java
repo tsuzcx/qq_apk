@@ -10,16 +10,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.compatible.b.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.b.g;
 import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.plugin.voip.video.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,186 +25,196 @@ public class DialPad
   extends RelativeLayout
   implements View.OnClickListener, View.OnLongClickListener
 {
-  private static final String[] lsW = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#" };
-  private static final String[] lsX = { "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ", "", "+", "" };
-  private boolean lsV = false;
-  private Map<Integer, DialNumberButton> lsY = new HashMap();
-  private Map<String, DialNumberButton> lsZ = new HashMap();
-  private Map<Integer, View> lta = new HashMap();
-  private DialPad.a ltb;
+  private static final String[] nQp = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "*", "0", "#" };
+  private static final String[] nQq = { "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ", "", "+", "" };
+  private boolean nQo;
+  private Map<Integer, DialNumberButton> nQr;
+  private Map<String, DialNumberButton> nQs;
+  private Map<Integer, View> nQt;
+  private DialPad.a nQu;
   
   public DialPad(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(21959);
+    this.nQo = false;
+    this.nQr = new HashMap();
+    this.nQs = new HashMap();
+    this.nQt = new HashMap();
     init();
+    AppMethodBeat.o(21959);
   }
   
   private void a(int paramInt, String paramString1, String paramString2, float paramFloat)
   {
+    AppMethodBeat.i(21961);
     DialNumberButton localDialNumberButton = (DialNumberButton)findViewById(paramInt);
-    if ((!bk.bl(paramString1)) && (paramString1.length() == 1)) {
-      localDialNumberButton.lsT.setText(paramString1);
-    }
-    if ((bk.bl(paramString2)) && (!"1".equals(paramString1))) {
-      localDialNumberButton.lsU.setVisibility(8);
-    }
-    for (;;)
-    {
-      localDialNumberButton.lsT.setTextSize(0, paramFloat);
-      localDialNumberButton.setOnClickListener(this);
-      localDialNumberButton.setOnLongClickListener(this);
-      localDialNumberButton.setInTalkUIMode(this.lsV);
-      this.lsY.put(Integer.valueOf(paramInt), localDialNumberButton);
-      this.lsZ.put(paramString1, localDialNumberButton);
-      return;
-      localDialNumberButton.lsU.setText(paramString2);
-      localDialNumberButton.lsU.setVisibility(0);
-    }
+    localDialNumberButton.eS(paramString1, paramString2);
+    localDialNumberButton.setNumberTextSize$255e752(paramFloat);
+    localDialNumberButton.setOnClickListener(this);
+    localDialNumberButton.setOnLongClickListener(this);
+    localDialNumberButton.setInTalkUIMode(this.nQo);
+    this.nQr.put(Integer.valueOf(paramInt), localDialNumberButton);
+    this.nQs.put(paramString1, localDialNumberButton);
+    AppMethodBeat.o(21961);
   }
   
   private void init()
   {
-    LayoutInflater.from(getContext()).inflate(R.i.dial_pad, this);
-    float f1 = getContext().getResources().getDimensionPixelSize(R.f.ip_call_dial_button_number_textsize);
-    float f2 = getContext().getResources().getDimensionPixelSize(R.f.ip_call_dial_button_special_number_textsize2);
-    float f3 = getContext().getResources().getDimensionPixelSize(R.f.ip_call_dial_button_special_number_textsize);
-    a(R.h.dial_number_button_one, lsW[0], lsX[0], f1);
-    a(R.h.dial_number_button_two, lsW[1], lsX[1], f1);
-    a(R.h.dial_number_button_three, lsW[2], lsX[2], f1);
-    a(R.h.dial_number_button_four, lsW[3], lsX[3], f1);
-    a(R.h.dial_number_button_five, lsW[4], lsX[4], f1);
-    a(R.h.dial_number_button_six, lsW[5], lsX[5], f1);
-    a(R.h.dial_number_button_seven, lsW[6], lsX[6], f1);
-    a(R.h.dial_number_button_eight, lsW[7], lsX[7], f1);
-    a(R.h.dial_number_button_night, lsW[8], lsX[8], f1);
-    a(R.h.dial_number_button_star, lsW[9], lsX[9], f3);
-    a(R.h.dial_number_button_zero, lsW[10], lsX[10], f1);
-    a(R.h.dial_number_button_sharp, lsW[11], lsX[11], f2);
-    this.lta.put(Integer.valueOf(R.h.divider_one), findViewById(R.h.divider_one));
-    this.lta.put(Integer.valueOf(R.h.divider_two), findViewById(R.h.divider_two));
-    this.lta.put(Integer.valueOf(R.h.divider_three), findViewById(R.h.divider_three));
-    this.lta.put(Integer.valueOf(R.h.divider_four), findViewById(R.h.divider_four));
-    this.lta.put(Integer.valueOf(R.h.divider_five), findViewById(R.h.divider_five));
-    Iterator localIterator = this.lta.values().iterator();
+    AppMethodBeat.i(21960);
+    LayoutInflater.from(getContext()).inflate(2130969320, this);
+    float f1 = getContext().getResources().getDimensionPixelSize(2131427349);
+    float f2 = getContext().getResources().getDimensionPixelSize(2131427351);
+    float f3 = getContext().getResources().getDimensionPixelSize(2131427350);
+    a(2131823402, nQp[0], nQq[0], f1);
+    a(2131823403, nQp[1], nQq[1], f1);
+    a(2131823404, nQp[2], nQq[2], f1);
+    a(2131823406, nQp[3], nQq[3], f1);
+    a(2131823407, nQp[4], nQq[4], f1);
+    a(2131823408, nQp[5], nQq[5], f1);
+    a(2131823410, nQp[6], nQq[6], f1);
+    a(2131823411, nQp[7], nQq[7], f1);
+    a(2131823412, nQp[8], nQq[8], f1);
+    a(2131823414, nQp[9], nQq[9], f3);
+    a(2131823415, nQp[10], nQq[10], f1);
+    a(2131823416, nQp[11], nQq[11], f2);
+    this.nQt.put(Integer.valueOf(2131823396), findViewById(2131823396));
+    this.nQt.put(Integer.valueOf(2131823397), findViewById(2131823397));
+    this.nQt.put(Integer.valueOf(2131823398), findViewById(2131823398));
+    this.nQt.put(Integer.valueOf(2131823399), findViewById(2131823399));
+    this.nQt.put(Integer.valueOf(2131823400), findViewById(2131823400));
+    Iterator localIterator = this.nQt.values().iterator();
     while (localIterator.hasNext())
     {
       View localView = (View)localIterator.next();
-      if (this.lsV) {
-        localView.setBackgroundDrawable(getResources().getDrawable(R.e.talk_ui_divider_color));
+      if (this.nQo) {
+        localView.setBackgroundDrawable(getResources().getDrawable(2131690570));
       } else {
-        localView.setBackgroundDrawable(getResources().getDrawable(R.e.dial_ui_divider_color));
+        localView.setBackgroundDrawable(getResources().getDrawable(2131689949));
       }
     }
     setClipToPadding(false);
     setClipChildren(false);
+    AppMethodBeat.o(21960);
   }
   
   public void onClick(View arg1)
   {
+    AppMethodBeat.i(21963);
     String str1;
     String str2;
     d locald;
     int i;
     Object localObject2;
-    if (this.lsY.containsKey(Integer.valueOf(???.getId())))
+    if (this.nQr.containsKey(Integer.valueOf(???.getId())))
     {
-      ??? = (DialNumberButton)this.lsY.get(Integer.valueOf(???.getId()));
+      ??? = (DialNumberButton)this.nQr.get(Integer.valueOf(???.getId()));
       str1 = ???.getNumberText();
       str2 = ???.getOtherText();
-      locald = i.bcr();
-      i = d.Qd(str1);
-      if ((i != -1) && (d.bSx()))
+      locald = i.bJy();
+      i = d.aeK(str1);
+      if ((i != -1) && (d.cPE()))
       {
-        localObject2 = f.yi().dui;
+        localObject2 = g.KC().elW;
         ??? = (View)localObject2;
         if (localObject2 == null) {
           ??? = (AudioManager)d.mContext.getSystemService("audio");
         }
         int j = ???.getRingerMode();
         if ((j != 0) && (j != 1)) {
-          break label149;
+          break label161;
         }
       }
-      if (this.ltb != null)
+      if (this.nQu != null)
       {
-        localObject2 = this.ltb;
-        if (bk.bl(str1)) {
-          break label195;
+        localObject2 = this.nQu;
+        if (bo.isNullOrNil(str1)) {
+          break label213;
         }
       }
     }
-    label149:
-    label195:
+    label161:
+    label213:
     for (??? = str1;; ??? = str2)
     {
       for (;;)
       {
-        ((DialPad.a)localObject2).FF(???);
+        ((DialPad.a)localObject2).Rh(???);
+        AppMethodBeat.o(21963);
         return;
-        synchronized (locald.qaq)
+        synchronized (locald.tFT)
         {
-          if (locald.qar != null) {
+          if (locald.tFU != null) {
             break;
           }
         }
       }
-      locald.qar.startTone(i, 250);
+      locald.tFU.startTone(i, 250);
       break;
     }
   }
   
   public boolean onLongClick(View paramView)
   {
-    if (this.lsY.containsKey(Integer.valueOf(paramView.getId())))
+    AppMethodBeat.i(21964);
+    if (this.nQr.containsKey(Integer.valueOf(paramView.getId())))
     {
-      paramView = (DialNumberButton)this.lsY.get(Integer.valueOf(paramView.getId()));
+      paramView = (DialNumberButton)this.nQr.get(Integer.valueOf(paramView.getId()));
       String str = paramView.getNumberText();
       paramView = paramView.getOtherText();
-      if (this.ltb != null)
+      if (this.nQu != null)
       {
-        DialPad.a locala = this.ltb;
-        if (!bk.bl(str)) {
+        DialPad.a locala = this.nQu;
+        if (!bo.isNullOrNil(str)) {
           paramView = str;
         }
-        locala.FG(paramView);
+        locala.Ri(paramView);
       }
+      AppMethodBeat.o(21964);
       return true;
     }
+    AppMethodBeat.o(21964);
     return false;
   }
   
   public void onViewAdded(View paramView)
   {
-    y.i("MicroMsg.DialPad", "onViewAdded, class: %s", new Object[] { paramView.getClass().getSimpleName() });
+    AppMethodBeat.i(21965);
+    ab.i("MicroMsg.DialPad", "onViewAdded, class: %s", new Object[] { paramView.getClass().getSimpleName() });
+    AppMethodBeat.o(21965);
   }
   
   public void onViewRemoved(View paramView)
   {
-    y.i("MicroMsg.DialPad", "onViewRemoved, class: %s", new Object[] { paramView.getClass().getSimpleName() });
+    AppMethodBeat.i(21966);
+    ab.i("MicroMsg.DialPad", "onViewRemoved, class: %s", new Object[] { paramView.getClass().getSimpleName() });
+    AppMethodBeat.o(21966);
   }
   
   public void setDialButtonClickListener(DialPad.a parama)
   {
-    this.ltb = parama;
+    this.nQu = parama;
   }
   
   public void setTalkUIMode(boolean paramBoolean)
   {
-    this.lsV = paramBoolean;
-    Iterator localIterator = this.lsY.values().iterator();
+    AppMethodBeat.i(21962);
+    this.nQo = paramBoolean;
+    Iterator localIterator = this.nQr.values().iterator();
     while (localIterator.hasNext()) {
       ((DialNumberButton)localIterator.next()).setInTalkUIMode(paramBoolean);
     }
-    localIterator = this.lta.values().iterator();
+    localIterator = this.nQt.values().iterator();
     while (localIterator.hasNext())
     {
       View localView = (View)localIterator.next();
-      if (this.lsV) {
-        localView.setBackgroundDrawable(getResources().getDrawable(R.e.talk_ui_divider_color));
+      if (this.nQo) {
+        localView.setBackgroundDrawable(getResources().getDrawable(2131690570));
       } else {
-        localView.setBackgroundDrawable(getResources().getDrawable(R.e.dial_ui_divider_color));
+        localView.setBackgroundDrawable(getResources().getDrawable(2131689949));
       }
     }
+    AppMethodBeat.o(21962);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.eclipsesource.v8.utils;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 class V8ObjectUtils$ListWrapper
@@ -27,12 +28,15 @@ class V8ObjectUtils$ListWrapper
   
   public int hashCode()
   {
-    return System.identityHashCode(this.list);
+    AppMethodBeat.i(75105);
+    int i = System.identityHashCode(this.list);
+    AppMethodBeat.o(75105);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.eclipsesource.v8.utils.V8ObjectUtils.ListWrapper
  * JD-Core Version:    0.7.0.1
  */

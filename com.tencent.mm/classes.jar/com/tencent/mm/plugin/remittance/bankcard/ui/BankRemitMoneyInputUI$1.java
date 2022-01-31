@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.LinearLayout;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class BankRemitMoneyInputUI$1
   implements TextWatcher
@@ -12,6 +13,7 @@ final class BankRemitMoneyInputUI$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
+    AppMethodBeat.i(44630);
     if (paramEditable.toString().startsWith(".")) {
       paramEditable.insert(0, "0");
     }
@@ -22,15 +24,16 @@ final class BankRemitMoneyInputUI$1
       paramEditable.delete(i + 3, j);
     }
     paramEditable = paramEditable.toString();
-    if ((!bk.bl(paramEditable)) && (bk.getDouble(paramEditable, 0.0D) > 0.0D)) {
-      BankRemitMoneyInputUI.a(this.nxh).setVisibility(0);
+    if ((!bo.isNullOrNil(paramEditable)) && (bo.getDouble(paramEditable, 0.0D) > 0.0D)) {
+      BankRemitMoneyInputUI.a(this.qij).setVisibility(0);
     }
     for (;;)
     {
-      BankRemitMoneyInputUI.a(this.nxh, paramEditable);
-      BankRemitMoneyInputUI.b(this.nxh);
+      BankRemitMoneyInputUI.a(this.qij, paramEditable);
+      BankRemitMoneyInputUI.b(this.qij);
+      AppMethodBeat.o(44630);
       return;
-      BankRemitMoneyInputUI.a(this.nxh).setVisibility(8);
+      BankRemitMoneyInputUI.a(this.qij).setVisibility(8);
     }
   }
   

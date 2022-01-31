@@ -1,102 +1,147 @@
 package com.tencent.mm.plugin.game.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
+
 public final class am
   extends com.tencent.mm.bv.a
 {
-  public String bGw;
-  public String euK;
-  public String kRN;
-  public String kRP;
-  public String kTM;
+  public String Title;
+  public String nqt;
+  public String nrJ;
+  public LinkedList<ct> nrK;
+  public dr nrL;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public am()
   {
+    AppMethodBeat.i(111578);
+    this.nrK = new LinkedList();
+    AppMethodBeat.o(111578);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(111579);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kTM != null) {
-        paramVarArgs.d(1, this.kTM);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.nrJ != null) {
+        paramVarArgs.e(1, this.nrJ);
       }
-      if (this.bGw != null) {
-        paramVarArgs.d(2, this.bGw);
+      if (this.Title != null) {
+        paramVarArgs.e(2, this.Title);
       }
-      if (this.kRN != null) {
-        paramVarArgs.d(3, this.kRN);
+      paramVarArgs.e(3, 8, this.nrK);
+      if (this.nrL != null)
+      {
+        paramVarArgs.iQ(4, this.nrL.computeSize());
+        this.nrL.writeFields(paramVarArgs);
       }
-      if (this.kRP != null) {
-        paramVarArgs.d(4, this.kRP);
+      if (this.nqt != null) {
+        paramVarArgs.e(5, this.nqt);
       }
-      if (this.euK != null) {
-        paramVarArgs.d(5, this.euK);
-      }
+      AppMethodBeat.o(111579);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kTM == null) {
-        break label399;
+      if (this.nrJ == null) {
+        break label630;
       }
     }
-    label399:
-    for (int i = d.a.a.b.b.a.e(1, this.kTM) + 0;; i = 0)
+    label630:
+    for (paramInt = e.a.a.b.b.a.f(1, this.nrJ) + 0;; paramInt = 0)
     {
+      int i = paramInt;
+      if (this.Title != null) {
+        i = paramInt + e.a.a.b.b.a.f(2, this.Title);
+      }
+      i += e.a.a.a.c(3, 8, this.nrK);
       paramInt = i;
-      if (this.bGw != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.bGw);
+      if (this.nrL != null) {
+        paramInt = i + e.a.a.a.iP(4, this.nrL.computeSize());
       }
       i = paramInt;
-      if (this.kRN != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.kRN);
+      if (this.nqt != null) {
+        i = paramInt + e.a.a.b.b.a.f(5, this.nqt);
       }
-      paramInt = i;
-      if (this.kRP != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.kRP);
-      }
-      i = paramInt;
-      if (this.euK != null) {
-        i = paramInt + d.a.a.b.b.a.e(5, this.euK);
-      }
+      AppMethodBeat.o(111579);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.nrK.clear();
+        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(111579);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
         am localam = (am)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
         {
         default: 
+          AppMethodBeat.o(111579);
           return -1;
         case 1: 
-          localam.kTM = locala.xpH.readString();
+          localam.nrJ = ((e.a.a.a.a)localObject1).CLY.readString();
+          AppMethodBeat.o(111579);
           return 0;
         case 2: 
-          localam.bGw = locala.xpH.readString();
+          localam.Title = ((e.a.a.a.a)localObject1).CLY.readString();
+          AppMethodBeat.o(111579);
           return 0;
         case 3: 
-          localam.kRN = locala.xpH.readString();
+          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new ct();
+            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((ct)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
+            localam.nrK.add(localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(111579);
           return 0;
         case 4: 
-          localam.kRP = locala.xpH.readString();
+          paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new dr();
+            localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((dr)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
+            localam.nrL = ((dr)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(111579);
           return 0;
         }
-        localam.euK = locala.xpH.readString();
+        localam.nqt = ((e.a.a.a.a)localObject1).CLY.readString();
+        AppMethodBeat.o(111579);
         return 0;
       }
+      AppMethodBeat.o(111579);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.am
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.ttpic.gles;
 
 import android.opengl.GLES20;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.FloatBuffer;
 
 public class Texture2dProgram
@@ -13,7 +14,7 @@ public class Texture2dProgram
   private static final String TAG = GlUtil.TAG;
   private static final String VERTEX_SHADER = "uniform mat4 uMVPMatrix;\nuniform mat4 uTexMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTexMatrix * aTextureCoord).xy;\n}\n";
   private float mColorAdjust;
-  private float[] mKernel = new float[9];
+  private float[] mKernel;
   private int mProgramHandle;
   private Texture2dProgram.ProgramType mProgramType;
   private float[] mTexOffset;
@@ -28,18 +29,24 @@ public class Texture2dProgram
   
   public Texture2dProgram(Texture2dProgram.ProgramType paramProgramType)
   {
+    AppMethodBeat.i(50039);
+    this.mKernel = new float[9];
     this.mProgramType = paramProgramType;
     switch (Texture2dProgram.1.$SwitchMap$com$tencent$ttpic$gles$Texture2dProgram$ProgramType[paramProgramType.ordinal()])
     {
     default: 
-      throw new RuntimeException("Unhandled type " + paramProgramType);
+      paramProgramType = new RuntimeException("Unhandled type ".concat(String.valueOf(paramProgramType)));
+      AppMethodBeat.o(50039);
+      throw paramProgramType;
     case 1: 
       this.mTextureTarget = 3553;
       this.mProgramHandle = GlUtil.createProgram("uniform mat4 uMVPMatrix;\nuniform mat4 uTexMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTexMatrix * aTextureCoord).xy;\n}\n", "precision mediump float;\nvarying vec2 vTextureCoord;\nuniform sampler2D sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
     }
     while (this.mProgramHandle == 0)
     {
-      throw new RuntimeException("Unable to create program");
+      paramProgramType = new RuntimeException("Unable to create program");
+      AppMethodBeat.o(50039);
+      throw paramProgramType;
       this.mTextureTarget = 36197;
       this.mProgramHandle = GlUtil.createProgram("uniform mat4 uMVPMatrix;\nuniform mat4 uTexMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n    gl_Position = uMVPMatrix * aPosition;\n    vTextureCoord = (uTexMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n    gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n");
       continue;
@@ -64,6 +71,7 @@ public class Texture2dProgram
       this.muKernelLoc = -1;
       this.muTexOffsetLoc = -1;
       this.muColorAdjustLoc = -1;
+      AppMethodBeat.o(50039);
       return;
     }
     this.muTexOffsetLoc = GLES20.glGetUniformLocation(this.mProgramHandle, "uTexOffset");
@@ -72,26 +80,30 @@ public class Texture2dProgram
     GlUtil.checkLocation(this.muColorAdjustLoc, "uColorAdjust");
     setKernel(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F }, 0.0F);
     setTexSize(256, 256);
+    AppMethodBeat.o(50039);
   }
   
   public int createTextureObject()
   {
+    AppMethodBeat.i(50041);
     int[] arrayOfInt = new int[1];
     GLES20.glGenTextures(1, arrayOfInt, 0);
     GlUtil.checkGlError("glGenTextures");
     int i = arrayOfInt[0];
     GLES20.glBindTexture(this.mTextureTarget, i);
-    GlUtil.checkGlError("glBindTexture " + i);
+    GlUtil.checkGlError("glBindTexture ".concat(String.valueOf(i)));
     GLES20.glTexParameterf(36197, 10241, 9728.0F);
     GLES20.glTexParameterf(36197, 10240, 9729.0F);
     GLES20.glTexParameteri(36197, 10242, 33071);
     GLES20.glTexParameteri(36197, 10243, 33071);
     GlUtil.checkGlError("glTexParameter");
+    AppMethodBeat.o(50041);
     return i;
   }
   
   public void draw(float[] paramArrayOfFloat1, FloatBuffer paramFloatBuffer1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float[] paramArrayOfFloat2, FloatBuffer paramFloatBuffer2, int paramInt5, int paramInt6)
   {
+    AppMethodBeat.i(50043);
     GlUtil.checkGlError("draw start");
     GLES20.glUseProgram(this.mProgramHandle);
     GlUtil.checkGlError("glUseProgram");
@@ -121,6 +133,7 @@ public class Texture2dProgram
     GLES20.glDisableVertexAttribArray(this.maTextureCoordLoc);
     GLES20.glBindTexture(this.mTextureTarget, 0);
     GLES20.glUseProgram(0);
+    AppMethodBeat.o(50043);
   }
   
   public Texture2dProgram.ProgramType getProgramType()
@@ -130,18 +143,25 @@ public class Texture2dProgram
   
   public void release()
   {
+    AppMethodBeat.i(50040);
     new StringBuilder("deleting program ").append(this.mProgramHandle);
     GLES20.glDeleteProgram(this.mProgramHandle);
     this.mProgramHandle = -1;
+    AppMethodBeat.o(50040);
   }
   
   public void setKernel(float[] paramArrayOfFloat, float paramFloat)
   {
-    if (paramArrayOfFloat.length != 9) {
-      throw new IllegalArgumentException("Kernel size is " + paramArrayOfFloat.length + " vs. 9");
+    AppMethodBeat.i(50042);
+    if (paramArrayOfFloat.length != 9)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("Kernel size is " + paramArrayOfFloat.length + " vs. 9");
+      AppMethodBeat.o(50042);
+      throw paramArrayOfFloat;
     }
     System.arraycopy(paramArrayOfFloat, 0, this.mKernel, 0, 9);
     this.mColorAdjust = paramFloat;
+    AppMethodBeat.o(50042);
   }
   
   public void setTexSize(int paramInt1, int paramInt2)

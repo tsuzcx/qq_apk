@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.recharge.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recharge.model.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class RechargeUI$17
   implements View.OnClickListener
@@ -13,14 +14,16 @@ final class RechargeUI$17
   
   public final void onClick(View paramView)
   {
-    RechargeUI.e(this.nrE).getFocus();
-    if (RechargeUI.e(this.nrE).getInputRecord().bIl == 2) {
-      RechargeUI.e(this.nrE).setInput(null);
+    AppMethodBeat.i(44323);
+    RechargeUI.e(this.pWS).getFocus();
+    if (RechargeUI.e(this.pWS).getInputRecord().cpG == 2) {
+      RechargeUI.e(this.pWS).setInput(null);
     }
-    if (bk.bl(RechargeUI.e(this.nrE).getText().toString())) {
-      RechargeUI.e(this.nrE).nqc.showDropDown();
+    if (bo.isNullOrNil(RechargeUI.e(this.pWS).getText().toString())) {
+      RechargeUI.e(this.pWS).pVq.showDropDown();
     }
-    this.nrE.showVKB();
+    this.pWS.showVKB();
+    AppMethodBeat.o(44323);
   }
 }
 

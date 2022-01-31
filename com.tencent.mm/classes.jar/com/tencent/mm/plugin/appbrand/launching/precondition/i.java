@@ -1,59 +1,108 @@
 package com.tencent.mm.plugin.appbrand.launching.precondition;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.plugin.appbrand.report.quality.d;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
-final class i
-  extends a
+public final class i
 {
-  private static long gMG = 0L;
+  static int ioe = 112;
+  private static Object iof;
+  private static Handler iog;
   
-  protected final boolean b(Context paramContext, LaunchParcel paramLaunchParcel)
+  private static Handler bm(Object paramObject)
   {
-    Object localObject2 = paramLaunchParcel.appId;
-    int i = paramLaunchParcel.fJy;
-    Object localObject1 = localObject2;
-    if (bk.bl((String)localObject2)) {
-      localObject1 = com.tencent.mm.plugin.appbrand.config.g.aed().sj(paramLaunchParcel.username);
-    }
-    if ((!bk.bl((String)localObject1)) && (i == 0) && (com.tencent.mm.plugin.appbrand.task.g.ba((String)localObject1, i)))
+    AppMethodBeat.i(132079);
+    if (iog != null)
     {
-      localObject2 = com.tencent.mm.plugin.appbrand.config.g.aed().sl((String)localObject1);
-      if ((localObject2 != null) && (((AppBrandInitConfigWC)localObject2).fEL == i))
+      paramObject = iog;
+      AppMethodBeat.o(132079);
+      return paramObject;
+    }
+    Field localField = paramObject.getClass().getDeclaredField("mH");
+    localField.setAccessible(true);
+    paramObject = (Handler)localField.get(paramObject);
+    iog = paramObject;
+    AppMethodBeat.o(132079);
+    return paramObject;
+  }
+  
+  public static void cT(Context paramContext)
+  {
+    AppMethodBeat.i(132078);
+    try
+    {
+      paramContext = bm(cU(paramContext));
+      Field localField = paramContext.getClass().getDeclaredField("NEW_INTENT");
+      localField.setAccessible(true);
+      ioe = ((Integer)localField.get(paramContext)).intValue();
+      AppMethodBeat.o(132078);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      ab.printErrStackTrace("MicroMsg.AppBrand.PreconditionActivityThreadHack", paramContext, "hack constants in ActivityThread$H", new Object[0]);
+      AppMethodBeat.o(132078);
+    }
+  }
+  
+  private static Object cU(Context paramContext)
+  {
+    AppMethodBeat.i(132080);
+    if (iof != null)
+    {
+      paramContext = iof;
+      AppMethodBeat.o(132080);
+      return paramContext;
+    }
+    Object localObject = Class.forName("android.app.ActivityThread").getMethod("currentActivityThread", new Class[0]);
+    ((Method)localObject).setAccessible(true);
+    localObject = ((Method)localObject).invoke(null, new Object[0]);
+    if (localObject != null)
+    {
+      iof = localObject;
+      AppMethodBeat.o(132080);
+      return localObject;
+    }
+    localObject = paramContext.getClass().getField("mLoadedApk");
+    ((Field)localObject).setAccessible(true);
+    paramContext = ((Field)localObject).get(paramContext);
+    localObject = paramContext.getClass().getDeclaredField("mActivityThread");
+    ((Field)localObject).setAccessible(true);
+    paramContext = ((Field)localObject).get(paramContext);
+    iof = paramContext;
+    AppMethodBeat.o(132080);
+    return paramContext;
+  }
+  
+  static boolean oJ(int paramInt)
+  {
+    AppMethodBeat.i(132081);
+    try
+    {
+      Handler localHandler = bm(cU(ah.getContext()));
+      if (localHandler == null)
       {
-        paramLaunchParcel.a((AppBrandInitConfigWC)localObject2);
-        ((AppBrandInitConfigWC)localObject2).fPC = new QualitySession(d.aox(), (AppBrandInitConfigWC)localObject2, paramLaunchParcel.gMm);
-        ((AppBrandInitConfigWC)localObject2).fPD = false;
-        k.a(paramContext, (AppBrandInitConfigWC)localObject2, paramLaunchParcel.gMm);
-        return true;
+        AppMethodBeat.o(132081);
+        return false;
       }
     }
-    if (Math.abs(System.currentTimeMillis() - gMG) < 200L)
+    catch (Exception localException)
     {
-      y.w("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "start in 200 ms, just return");
-      return false;
+      Object localObject;
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.AppBrand.PreconditionActivityThreadHack", localException, "hasPendingMessageInQueue, hack mH", new Object[0]);
+        localObject = null;
+      }
+      boolean bool = localObject.hasMessages(paramInt);
+      AppMethodBeat.o(132081);
+      return bool;
     }
-    gMG = bk.UY();
-    y.v("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "[applaunch] start entered %s %d", new Object[] { localObject1, Integer.valueOf(i) });
-    localObject2 = "Token@" + i.class.hashCode() + "#" + System.nanoTime();
-    new e(paramContext, (String)localObject2).a(paramLaunchParcel);
-    y.v("MicroMsg.AppBrand.Precondition.MMLaunchEntry", "start we app with username(%s) and appId(%s) and statObj(%s)", new Object[] { paramLaunchParcel.username, localObject1, paramLaunchParcel.gMm });
-    paramLaunchParcel = new Intent(paramContext, AppBrandLaunchProxyUI.class);
-    if (!(paramContext instanceof Activity)) {
-      paramLaunchParcel.addFlags(268435456);
-    }
-    paramLaunchParcel.putExtra("extra_from_mm", true);
-    paramLaunchParcel.putExtra("extra_entry_token", (String)localObject2);
-    paramContext.startActivity(paramLaunchParcel);
-    return true;
   }
 }
 

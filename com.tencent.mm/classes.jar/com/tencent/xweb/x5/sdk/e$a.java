@@ -1,36 +1,43 @@
 package com.tencent.xweb.x5.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.sdk.TbsListener;
 
 final class e$a
   implements TbsListener
 {
-  h xkT;
+  h BIz;
   
   public e$a(h paramh)
   {
-    this.xkT = paramh;
+    this.BIz = paramh;
   }
   
   public final void onDownloadFinish(int paramInt)
   {
-    if (this.xkT != null) {
-      this.xkT.onDownloadFinish(paramInt);
+    AppMethodBeat.i(85091);
+    if (this.BIz != null) {
+      this.BIz.onDownloadFinish(paramInt);
     }
+    AppMethodBeat.o(85091);
   }
   
   public final void onDownloadProgress(int paramInt)
   {
-    if (this.xkT != null) {
-      this.xkT.onDownloadProgress(paramInt);
+    AppMethodBeat.i(85093);
+    if (this.BIz != null) {
+      this.BIz.onDownloadProgress(paramInt);
     }
+    AppMethodBeat.o(85093);
   }
   
   public final void onInstallFinish(int paramInt)
   {
-    if (this.xkT != null) {
-      this.xkT.onInstallFinish(paramInt);
+    AppMethodBeat.i(85092);
+    if (this.BIz != null) {
+      this.BIz.onInstallFinish(paramInt);
     }
+    AppMethodBeat.o(85092);
   }
 }
 

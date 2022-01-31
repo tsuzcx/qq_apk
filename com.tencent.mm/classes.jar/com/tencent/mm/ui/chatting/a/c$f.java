@@ -5,13 +5,13 @@ import android.view.ViewGroup;
 
 public abstract interface c$f
 {
-  public abstract c.b Ha(int paramInt);
+  public abstract c.b PD(int paramInt);
   
   public abstract void a(c.a parama, int paramInt);
   
   public abstract int getCount();
   
-  public abstract RecyclerView.v q(ViewGroup paramViewGroup);
+  public abstract RecyclerView.v v(ViewGroup paramViewGroup);
 }
 
 

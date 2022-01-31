@@ -1,52 +1,64 @@
 package com.tencent.mm.network.a;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.t;
 import java.net.InetAddress;
 
 public final class c
 {
-  private InetAddress ePB;
+  private InetAddress gfo;
   private int port;
   private int type;
   
   private c(InetAddress paramInetAddress, int paramInt1, int paramInt2)
   {
-    this.ePB = paramInetAddress;
+    this.gfo = paramInetAddress;
     this.port = paramInt1;
     this.type = paramInt2;
   }
   
-  public static c oN(String paramString)
+  public static c wf(String paramString)
   {
-    if (paramString == null) {}
-    do
+    AppMethodBeat.i(58716);
+    if (paramString == null)
     {
+      AppMethodBeat.o(58716);
       return null;
-      paramString = paramString.split(":");
-    } while ((paramString == null) || (paramString.length != 3));
+    }
+    paramString = paramString.split(":");
+    if ((paramString == null) || (paramString.length != 3))
+    {
+      AppMethodBeat.o(58716);
+      return null;
+    }
     try
     {
-      paramString = new c(q.Ze(paramString[0]), Integer.parseInt(paramString[1]), Integer.parseInt(paramString[2]));
+      paramString = new c(t.apc(paramString[0]), Integer.parseInt(paramString[1]), Integer.parseInt(paramString[2]));
+      AppMethodBeat.o(58716);
       return paramString;
     }
     catch (Exception paramString)
     {
-      y.e("MicroMsg.InAddress", "exception:%s", new Object[] { bk.j(paramString) });
+      ab.e("MicroMsg.InAddress", "exception:%s", new Object[] { bo.l(paramString) });
+      AppMethodBeat.o(58716);
     }
     return null;
   }
   
   public final String toString()
   {
+    AppMethodBeat.i(58715);
     String str = "hc";
     if (this.type == 2) {
       str = "dns";
     }
     for (;;)
     {
-      return this.ePB.getHostAddress() + ":" + this.port + "(" + str + ")";
+      str = this.gfo.getHostAddress() + ":" + this.port + "(" + str + ")";
+      AppMethodBeat.o(58715);
+      return str;
       if (this.type == 3) {
         str = "svrdns";
       } else if (this.type == 4) {

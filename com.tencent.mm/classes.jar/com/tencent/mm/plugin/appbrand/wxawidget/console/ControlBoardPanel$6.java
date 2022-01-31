@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.wxawidget.console;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ControlBoardPanel$6
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class ControlBoardPanel$6
   
   public final void run()
   {
-    this.hED.reset();
+    AppMethodBeat.i(11163);
+    this.jxQ.reset();
+    AppMethodBeat.o(11163);
   }
 }
 

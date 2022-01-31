@@ -9,118 +9,135 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.multitalk.a.d;
 import com.tencent.mm.pluginsdk.ui.a.b;
 
 public final class d
   implements View.OnClickListener
 {
   private Context context;
-  private View kCO;
-  private int mvB = b.mvB;
-  private LinearLayout mvN;
-  public LinearLayout mvO;
-  public LinearLayout mvP;
-  private int mvQ;
-  private int mvR;
-  private int mvS = b.mvv + b.mvu;
-  private int mvT = b.mvv * 2 + b.mvu;
-  private int mvU = b.mvv * 4;
-  public int mvV;
-  private int mvv = b.mvv;
-  public int size = 0;
+  private View mYK;
+  private LinearLayout oVF;
+  public LinearLayout oVG;
+  public LinearLayout oVH;
+  private int oVI;
+  private int oVJ;
+  private int oVK;
+  private int oVL;
+  private int oVM;
+  public int oVN;
+  private int oVn;
+  private int oVt;
+  public int size;
   
   public d(Activity paramActivity)
   {
+    AppMethodBeat.i(54192);
+    this.size = 0;
+    this.oVn = b.oVn;
+    this.oVK = (b.oVn + b.oVm);
+    this.oVL = (b.oVn * 2 + b.oVm);
+    this.oVM = (b.oVn * 4);
+    this.oVt = b.oVt;
     this.context = paramActivity.getBaseContext();
-    int i = a.fj(this.context) - this.mvU * 2;
-    this.mvQ = ((i - this.mvS * 10) / 5);
-    this.mvR = ((i - this.mvT * 10) / 5);
-    i = this.mvR;
-    int j = this.mvv;
-    this.kCO = paramActivity.findViewById(a.d.padding_view);
-    this.kCO.getLayoutParams().height = (i * 2 + j * 12);
-    this.mvN = ((LinearLayout)paramActivity.findViewById(a.d.avatar_container));
-    paramActivity = (RelativeLayout.LayoutParams)this.mvN.getLayoutParams();
-    paramActivity.topMargin = (this.mvv * 2);
-    paramActivity.bottomMargin = (this.mvv * 2);
-    paramActivity.leftMargin = this.mvU;
-    paramActivity.rightMargin = this.mvU;
-    this.mvN.setLayoutParams(paramActivity);
-    this.mvO = new LinearLayout(this.context);
-    this.mvP = new LinearLayout(this.context);
+    int i = a.gw(this.context) - this.oVM * 2;
+    this.oVI = ((i - this.oVK * 10) / 5);
+    this.oVJ = ((i - this.oVL * 10) / 5);
+    i = this.oVJ;
+    int j = this.oVn;
+    this.mYK = paramActivity.findViewById(2131820910);
+    this.mYK.getLayoutParams().height = (i * 2 + j * 12);
+    this.oVF = ((LinearLayout)paramActivity.findViewById(2131826440));
+    paramActivity = (RelativeLayout.LayoutParams)this.oVF.getLayoutParams();
+    paramActivity.topMargin = (this.oVn * 2);
+    paramActivity.bottomMargin = (this.oVn * 2);
+    paramActivity.leftMargin = this.oVM;
+    paramActivity.rightMargin = this.oVM;
+    this.oVF.setLayoutParams(paramActivity);
+    this.oVG = new LinearLayout(this.context);
+    this.oVH = new LinearLayout(this.context);
     paramActivity = new LinearLayout.LayoutParams(-2, -2);
-    this.mvO.setLayoutParams(paramActivity);
+    this.oVG.setLayoutParams(paramActivity);
     paramActivity = new RelativeLayout.LayoutParams(-2, -2);
     paramActivity.addRule(14);
-    this.mvP.setLayoutParams(paramActivity);
+    this.oVH.setLayoutParams(paramActivity);
     paramActivity = new LinearLayout.LayoutParams(-1, -2);
     RelativeLayout localRelativeLayout = new RelativeLayout(this.context);
-    localRelativeLayout.addView(this.mvP);
+    localRelativeLayout.addView(this.oVH);
     localRelativeLayout.setLayoutParams(paramActivity);
-    this.mvN.addView(this.mvO);
-    this.mvN.addView(localRelativeLayout);
+    this.oVF.addView(this.oVG);
+    this.oVF.addView(localRelativeLayout);
+    AppMethodBeat.o(54192);
   }
   
-  public final void IM(String paramString)
+  public final void UC(String paramString)
   {
+    AppMethodBeat.i(54194);
     this.size += 1;
     ImageView localImageView = new ImageView(this.context);
     localImageView.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
     localImageView.setTag(paramString);
     localImageView.setOnClickListener(this);
-    a.b.a(localImageView, paramString, 0.1F, false);
+    a.b.c(localImageView, paramString);
     if (this.size <= 5) {
-      this.mvO.addView(localImageView);
+      this.oVG.addView(localImageView);
     }
     for (;;)
     {
-      ut(this.size);
-      uu(this.size);
+      zJ(this.size);
+      zK(this.size);
+      AppMethodBeat.o(54194);
       return;
-      this.mvP.addView(localImageView);
+      this.oVH.addView(localImageView);
     }
   }
   
   public final void onClick(View paramView)
   {
-    this.mvV += 1;
+    this.oVN += 1;
   }
   
   public final void setVisible(boolean paramBoolean)
   {
+    AppMethodBeat.i(54193);
     if (paramBoolean)
     {
-      this.kCO.setVisibility(0);
+      this.mYK.setVisibility(0);
+      AppMethodBeat.o(54193);
       return;
     }
-    this.kCO.setVisibility(8);
+    this.mYK.setVisibility(8);
+    AppMethodBeat.o(54193);
   }
   
-  public final void ut(int paramInt)
+  public final void zJ(int paramInt)
   {
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.mvO.getLayoutParams();
-    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.mvP.getLayoutParams();
+    AppMethodBeat.i(54195);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.oVG.getLayoutParams();
+    RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)this.oVH.getLayoutParams();
     if (paramInt <= 5)
     {
-      localLayoutParams.height = this.mvQ;
-      this.mvP.setVisibility(8);
+      localLayoutParams.height = this.oVI;
+      this.oVH.setVisibility(8);
+      AppMethodBeat.o(54195);
       return;
     }
-    localLayoutParams.height = this.mvR;
-    localLayoutParams.topMargin = (this.mvv * 2);
-    localLayoutParams.bottomMargin = (this.mvv * 2);
-    this.mvP.setVisibility(0);
-    localLayoutParams1.height = this.mvR;
-    localLayoutParams1.topMargin = (this.mvv * 2);
-    localLayoutParams1.bottomMargin = (this.mvv * 2);
+    localLayoutParams.height = this.oVJ;
+    localLayoutParams.topMargin = (this.oVn * 2);
+    localLayoutParams.bottomMargin = (this.oVn * 2);
+    this.oVH.setVisibility(0);
+    localLayoutParams1.height = this.oVJ;
+    localLayoutParams1.topMargin = (this.oVn * 2);
+    localLayoutParams1.bottomMargin = (this.oVn * 2);
+    AppMethodBeat.o(54195);
   }
   
-  public final void uu(int paramInt)
+  public final void zK(int paramInt)
   {
     int k = 0;
     int j = 0;
+    AppMethodBeat.i(54196);
     int i;
     LinearLayout.LayoutParams localLayoutParams;
     if (paramInt <= 5)
@@ -129,49 +146,52 @@ public final class d
       for (;;)
       {
         i = j;
-        if (paramInt >= this.mvO.getChildCount()) {
+        if (paramInt >= this.oVG.getChildCount()) {
           break;
         }
-        localLayoutParams = (LinearLayout.LayoutParams)this.mvO.getChildAt(paramInt).getLayoutParams();
-        localLayoutParams.width = this.mvQ;
-        localLayoutParams.height = this.mvQ;
-        localLayoutParams.rightMargin = this.mvS;
-        localLayoutParams.leftMargin = this.mvS;
+        localLayoutParams = (LinearLayout.LayoutParams)this.oVG.getChildAt(paramInt).getLayoutParams();
+        localLayoutParams.width = this.oVI;
+        localLayoutParams.height = this.oVI;
+        localLayoutParams.rightMargin = this.oVK;
+        localLayoutParams.leftMargin = this.oVK;
         paramInt += 1;
       }
-      while (i < this.mvP.getChildCount())
+      while (i < this.oVH.getChildCount())
       {
-        localLayoutParams = (LinearLayout.LayoutParams)this.mvP.getChildAt(i).getLayoutParams();
-        localLayoutParams.width = this.mvR;
-        localLayoutParams.height = this.mvR;
-        localLayoutParams.rightMargin = this.mvS;
-        localLayoutParams.leftMargin = this.mvS;
+        localLayoutParams = (LinearLayout.LayoutParams)this.oVH.getChildAt(i).getLayoutParams();
+        localLayoutParams.width = this.oVJ;
+        localLayoutParams.height = this.oVJ;
+        localLayoutParams.rightMargin = this.oVK;
+        localLayoutParams.leftMargin = this.oVK;
         i += 1;
       }
+      AppMethodBeat.o(54196);
+      return;
     }
     paramInt = 0;
     for (;;)
     {
       i = k;
-      if (paramInt >= this.mvO.getChildCount()) {
+      if (paramInt >= this.oVG.getChildCount()) {
         break;
       }
-      localLayoutParams = (LinearLayout.LayoutParams)this.mvO.getChildAt(paramInt).getLayoutParams();
-      localLayoutParams.width = this.mvR;
-      localLayoutParams.height = this.mvR;
-      localLayoutParams.rightMargin = this.mvT;
-      localLayoutParams.leftMargin = this.mvT;
+      localLayoutParams = (LinearLayout.LayoutParams)this.oVG.getChildAt(paramInt).getLayoutParams();
+      localLayoutParams.width = this.oVJ;
+      localLayoutParams.height = this.oVJ;
+      localLayoutParams.rightMargin = this.oVL;
+      localLayoutParams.leftMargin = this.oVL;
       paramInt += 1;
     }
-    while (i < this.mvP.getChildCount())
+    while (i < this.oVH.getChildCount())
     {
-      localLayoutParams = (LinearLayout.LayoutParams)this.mvP.getChildAt(i).getLayoutParams();
-      localLayoutParams.width = this.mvR;
-      localLayoutParams.height = this.mvR;
-      localLayoutParams.rightMargin = this.mvT;
-      localLayoutParams.leftMargin = this.mvT;
+      localLayoutParams = (LinearLayout.LayoutParams)this.oVH.getChildAt(i).getLayoutParams();
+      localLayoutParams.width = this.oVJ;
+      localLayoutParams.height = this.oVJ;
+      localLayoutParams.rightMargin = this.oVL;
+      localLayoutParams.leftMargin = this.oVL;
       i += 1;
     }
+    AppMethodBeat.o(54196);
   }
 }
 

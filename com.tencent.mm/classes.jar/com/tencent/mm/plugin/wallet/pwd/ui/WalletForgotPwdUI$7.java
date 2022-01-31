@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
-import com.tencent.mm.h.a.ot;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pv;
 import com.tencent.mm.sdk.b.c;
 
 final class WalletForgotPwdUI$7
-  extends c<ot>
+  extends c<pv>
 {
   WalletForgotPwdUI$7(WalletForgotPwdUI paramWalletForgotPwdUI)
   {
-    this.udX = ot.class.getName().hashCode();
+    AppMethodBeat.i(46278);
+    this.__eventId = pv.class.getName().hashCode();
+    AppMethodBeat.o(46278);
   }
 }
 

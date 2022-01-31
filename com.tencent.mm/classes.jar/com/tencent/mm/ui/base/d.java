@@ -1,74 +1,74 @@
 package com.tencent.mm.ui.base;
 
 import android.content.Context;
-import android.support.v4.view.n;
+import android.support.v4.view.q;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public abstract class d
-  extends n
+  extends q
 {
   public Context context;
-  private Queue<View> uSK;
-  private int uSL = 0;
+  private int updateCount = 0;
+  private Queue<View> zhm;
   
   public d(Context paramContext)
   {
     this.context = paramContext;
-    this.uSK = new LinkedList();
+    this.zhm = new LinkedList();
   }
   
-  public final int F(Object paramObject)
-  {
-    if (this.uSL > 0)
-    {
-      this.uSL -= 1;
-      return -2;
-    }
-    return super.F(paramObject);
-  }
+  public abstract void Ay(int paramInt);
   
   public abstract View a(View paramView, ViewGroup paramViewGroup, int paramInt);
   
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public abstract int bWn();
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
     paramObject = (View)paramObject;
     paramViewGroup.removeView(paramObject);
-    this.uSK.add(paramObject);
-    uY(paramInt);
-    y.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.uSK.size()) });
+    this.zhm.add(paramObject);
+    Ay(paramInt);
+    ab.d("MicroMsg.CustomPagerAdapter", "recycle queue size %d", new Object[] { Integer.valueOf(this.zhm.size()) });
   }
   
-  public final boolean a(View paramView, Object paramObject)
+  public int getItemPosition(Object paramObject)
   {
-    return paramView.equals(paramObject);
+    if (this.updateCount > 0)
+    {
+      this.updateCount -= 1;
+      return -2;
+    }
+    return super.getItemPosition(paramObject);
   }
   
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
     long l = System.currentTimeMillis();
-    View localView = a((View)this.uSK.poll(), paramViewGroup, paramInt);
+    View localView = a((View)this.zhm.poll(), paramViewGroup, paramInt);
     if (localView.getLayoutParams() == null) {
       localView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     }
     paramViewGroup.addView(localView);
-    y.v("MicroMsg.CustomPagerAdapter", "instantiateItem usetime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.v("MicroMsg.CustomPagerAdapter", "instantiateItem usetime: %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     return localView;
   }
   
-  public abstract int bnQ();
-  
-  public final void notifyDataSetChanged()
+  public boolean isViewFromObject(View paramView, Object paramObject)
   {
-    this.uSL = bnQ();
-    super.notifyDataSetChanged();
+    return paramView.equals(paramObject);
   }
   
-  public abstract void uY(int paramInt);
+  public void notifyDataSetChanged()
+  {
+    this.updateCount = bWn();
+    super.notifyDataSetChanged();
+  }
 }
 
 

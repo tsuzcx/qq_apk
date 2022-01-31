@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class RegByMobileRegAIOUI$12
   implements ResizeLayout.a
 {
   RegByMobileRegAIOUI$12(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
   
-  public final void XO()
+  public final void aru()
   {
-    RegByMobileRegAIOUI.a(this.fqF);
+    AppMethodBeat.i(125354);
+    RegByMobileRegAIOUI.a(this.gIh);
+    AppMethodBeat.o(125354);
   }
 }
 

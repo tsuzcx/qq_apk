@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,13 +12,16 @@ public class CharsetMatch
 {
   private String fCharsetName;
   private int fConfidence;
-  private InputStream fInputStream = null;
+  private InputStream fInputStream;
   private String fLang;
-  private byte[] fRawInput = null;
+  private byte[] fRawInput;
   private int fRawLength;
   
   CharsetMatch(CharsetDetector paramCharsetDetector, CharsetRecognizer paramCharsetRecognizer, int paramInt)
   {
+    AppMethodBeat.i(104730);
+    this.fRawInput = null;
+    this.fInputStream = null;
     this.fConfidence = paramInt;
     if (paramCharsetDetector.fInputStream == null)
     {
@@ -27,10 +31,14 @@ public class CharsetMatch
     this.fInputStream = paramCharsetDetector.fInputStream;
     this.fCharsetName = paramCharsetRecognizer.getName();
     this.fLang = paramCharsetRecognizer.getLanguage();
+    AppMethodBeat.o(104730);
   }
   
   CharsetMatch(CharsetDetector paramCharsetDetector, CharsetRecognizer paramCharsetRecognizer, int paramInt, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(104731);
+    this.fRawInput = null;
+    this.fInputStream = null;
     this.fConfidence = paramInt;
     if (paramCharsetDetector.fInputStream == null)
     {
@@ -40,6 +48,7 @@ public class CharsetMatch
     this.fInputStream = paramCharsetDetector.fInputStream;
     this.fCharsetName = paramString1;
     this.fLang = paramString2;
+    AppMethodBeat.o(104731);
   }
   
   public int compareTo(CharsetMatch paramCharsetMatch)
@@ -71,6 +80,7 @@ public class CharsetMatch
   
   public Reader getReader()
   {
+    AppMethodBeat.i(104727);
     Object localObject = this.fInputStream;
     if (localObject == null) {
       localObject = new ByteArrayInputStream(this.fRawInput, 0, this.fRawLength);
@@ -81,10 +91,12 @@ public class CharsetMatch
       {
         ((InputStream)localObject).reset();
         localObject = new InputStreamReader((InputStream)localObject, getName());
+        AppMethodBeat.o(104727);
         return localObject;
       }
       catch (IOException localIOException)
       {
+        AppMethodBeat.o(104727);
         return null;
       }
     }
@@ -92,11 +104,15 @@ public class CharsetMatch
   
   public String getString()
   {
-    return getString(-1);
+    AppMethodBeat.i(104728);
+    String str = getString(-1);
+    AppMethodBeat.o(104728);
+    return str;
   }
   
   public String getString(int paramInt)
   {
+    AppMethodBeat.i(104729);
     Object localObject1;
     if (this.fInputStream != null)
     {
@@ -117,7 +133,9 @@ public class CharsetMatch
         i -= paramInt;
       }
       localReader.close();
-      return ((StringBuilder)localObject1).toString();
+      localObject1 = ((StringBuilder)localObject1).toString();
+      AppMethodBeat.o(104729);
+      return localObject1;
     }
     Object localObject2 = getName();
     if (((String)localObject2).indexOf("_rtl") < 0) {}
@@ -127,7 +145,9 @@ public class CharsetMatch
       if (paramInt > 0) {
         localObject1 = ((String)localObject2).substring(0, paramInt);
       }
-      return new String(this.fRawInput, (String)localObject1);
+      localObject1 = new String(this.fRawInput, (String)localObject1);
+      AppMethodBeat.o(104729);
+      return localObject1;
     }
   }
 }

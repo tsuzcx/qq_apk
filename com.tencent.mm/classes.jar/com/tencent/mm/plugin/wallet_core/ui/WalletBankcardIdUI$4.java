@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletBankcardIdUI$4
-  implements h.a
+  implements j.a
 {
   WalletBankcardIdUI$4(WalletBankcardIdUI paramWalletBankcardIdUI) {}
   
   public final void onClick(View paramView)
   {
-    y.i("Micromsg.WalletInputCardIDUI", "hy: clickable span on click");
-    WalletBankcardIdUI.a(this.qAC);
+    AppMethodBeat.i(47164);
+    ab.i("Micromsg.WalletInputCardIDUI", "hy: clickable span on click");
+    WalletBankcardIdUI.a(this.unn);
+    AppMethodBeat.o(47164);
   }
 }
 

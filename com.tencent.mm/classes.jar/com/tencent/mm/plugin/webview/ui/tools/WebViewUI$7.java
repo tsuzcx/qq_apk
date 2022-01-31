@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewUI$7
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WebViewUI$7
   
   public final void onClick(View paramView)
   {
-    this.rpH.cej();
+    AppMethodBeat.i(7815);
+    this.vgz.aYo();
+    AppMethodBeat.o(7815);
   }
 }
 

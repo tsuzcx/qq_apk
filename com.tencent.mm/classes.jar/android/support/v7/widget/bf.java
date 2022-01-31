@@ -1,60 +1,68 @@
 package android.support.v7.widget;
 
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.support.v4.view.q;
 import android.view.View;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
-public final class bf
+final class bf
 {
-  private static Method anB;
+  final bf.b apC;
+  bf.a apD;
   
-  static
+  bf(bf.b paramb)
   {
-    if (Build.VERSION.SDK_INT >= 18) {}
-    try
+    this.apC = paramb;
+    this.apD = new bf.a();
+  }
+  
+  final boolean bX(View paramView)
+  {
+    this.apD.setBounds(this.apC.jC(), this.apC.jD(), this.apC.bH(paramView), this.apC.bI(paramView));
+    this.apD.apE = 0;
+    this.apD.addFlags(24579);
+    return this.apD.la();
+  }
+  
+  final View k(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int j = this.apC.jC();
+    int k = this.apC.jD();
+    if (paramInt2 > paramInt1) {}
+    Object localObject;
+    View localView;
+    for (int i = 1;; i = -1)
     {
-      Method localMethod = View.class.getDeclaredMethod("computeFitSystemWindows", new Class[] { Rect.class, Rect.class });
-      anB = localMethod;
-      if (!localMethod.isAccessible()) {
-        anB.setAccessible(true);
+      localObject = null;
+      if (paramInt1 == paramInt2) {
+        break label174;
       }
-      return;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
-  }
-  
-  public static void a(View paramView, Rect paramRect1, Rect paramRect2)
-  {
-    if (anB != null) {}
-    try
-    {
-      anB.invoke(paramView, new Object[] { paramRect1, paramRect2 });
-      return;
-    }
-    catch (Exception paramView) {}
-  }
-  
-  public static boolean bF(View paramView)
-  {
-    return q.Q(paramView) == 1;
-  }
-  
-  public static void bG(View paramView)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    try
-    {
-      Method localMethod = paramView.getClass().getMethod("makeOptionalFitsSystemWindows", new Class[0]);
-      if (!localMethod.isAccessible()) {
-        localMethod.setAccessible(true);
+      localView = this.apC.getChildAt(paramInt1);
+      int m = this.apC.bH(localView);
+      int n = this.apC.bI(localView);
+      this.apD.setBounds(j, k, m, n);
+      if (paramInt3 == 0) {
+        break;
       }
-      localMethod.invoke(paramView, new Object[0]);
-      return;
+      this.apD.apE = 0;
+      this.apD.addFlags(paramInt3);
+      if (!this.apD.la()) {
+        break;
+      }
+      return localView;
     }
-    catch (IllegalAccessException paramView) {}catch (InvocationTargetException paramView) {}catch (NoSuchMethodException paramView) {}
+    if (paramInt4 != 0)
+    {
+      this.apD.apE = 0;
+      this.apD.addFlags(paramInt4);
+      if (this.apD.la()) {
+        localObject = localView;
+      }
+    }
+    for (;;)
+    {
+      paramInt1 += i;
+      break;
+      label174:
+      return localObject;
+    }
   }
 }
 

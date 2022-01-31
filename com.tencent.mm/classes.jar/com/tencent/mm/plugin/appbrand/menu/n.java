@@ -1,19 +1,18 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.menu.a.a;
+import com.tencent.mm.plugin.appbrand.page.z;
 
+@Deprecated
 public final class n
+  extends a<z>
 {
-  public final u.b fVQ = new u.b();
-  public boolean gPg;
-  public final a gPh;
-  public int id;
-  
-  public n(int paramInt, a parama)
+  n()
   {
-    this.id = paramInt;
-    this.gPh = parama;
+    super(r.iqT.ordinal());
+    AppMethodBeat.i(132246);
+    AppMethodBeat.o(132246);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.ui.contact;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 final class k$3
@@ -12,9 +13,11 @@ final class k$3
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((k.d(this.vLo) instanceof MMActivity)) {
-      ((MMActivity)k.d(this.vLo)).XM();
+    AppMethodBeat.i(33714);
+    if ((k.d(this.AcQ) instanceof MMActivity)) {
+      ((MMActivity)k.d(this.AcQ)).hideVKB();
     }
+    AppMethodBeat.o(33714);
     return false;
   }
 }

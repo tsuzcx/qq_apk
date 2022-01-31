@@ -1,28 +1,37 @@
 package com.tencent.mm.plugin.mall.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.protocal.protobuf.bkw;
+import com.tencent.mm.protocal.protobuf.ib;
+import com.tencent.mm.protocal.protobuf.ic;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.LinkedList;
+import java.util.List;
 
 public final class a
+  extends com.tencent.mm.ai.a<ic>
 {
-  public String lYe = "";
-  public int lYf = 0;
-  public String lYg = "";
+  public List<bkw> oxE;
   
-  public a(String paramString)
+  public a(LinkedList<bkw> paramLinkedList, int paramInt)
   {
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.lYe = paramString.optString("eu_protocol_url");
-      this.lYf = paramString.optInt("0");
-      this.lYg = paramString.optString("wxpay_protocol_url");
-      return;
-    }
-    catch (Exception paramString)
-    {
-      y.printErrStackTrace("MciroMsg.EUInfo", paramString, "", new Object[0]);
-    }
+    AppMethodBeat.i(43092);
+    ib localib = new ib();
+    localib.wuA = paramLinkedList;
+    localib.wuB = paramInt;
+    localib.wuC = 0;
+    b.a locala = new b.a();
+    locala.fsX = localib;
+    locala.fsY = new ic();
+    locala.funcId = 2938;
+    locala.uri = "/cgi-bin/micromsg-bin/batchfunctionoperate";
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    this.oxE = paramLinkedList;
+    ab.i("MicroMsg.CgiBatchFunctionOperate", "TpaCountry: %s", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(43092);
   }
 }
 

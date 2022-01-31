@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.subapp.c;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.compatible.util.g.a;
 import com.tencent.mm.modelvoice.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class j$1
@@ -13,60 +14,63 @@ final class j$1
   
   public final void run()
   {
-    j.uC();
+    AppMethodBeat.i(25307);
+    j.EU();
     String str;
     int i;
-    if (this.bEe.getType() == 128)
+    if (this.ckS.getType() == 128)
     {
-      j.a(this.pvX);
-      str = ((e)this.bEe).fileName;
-      i = ((e)this.bEe).retCode;
+      j.a(this.sXD);
+      str = ((e)this.ckS).fileName;
+      i = ((e)this.ckS).retCode;
       long l2 = 0L;
       long l1 = l2;
       if (str != null)
       {
         l1 = l2;
-        if (this.pvX.bDU.get(str) != null)
+        if (this.sXD.ckJ.get(str) != null)
         {
-          l1 = ((g.a)this.pvX.bDU.get(str)).zJ();
-          this.pvX.bDU.remove(str);
+          l1 = ((g.a)this.sXD.ckJ.get(str)).Mm();
+          this.sXD.ckJ.remove(str);
         }
       }
-      y.d("MicroMsg.VoiceRemindService", "onSceneEnd SceneType:" + this.bEe.getType() + " errtype:" + this.bEf + " errCode:" + this.bEg + " retCode:" + i + " file:" + str + " time:" + l1);
-      if ((this.bEf != 3) || (i == 0)) {
-        break label398;
+      ab.d("MicroMsg.VoiceRemindService", "onSceneEnd SceneType:" + this.ckS.getType() + " errtype:" + this.val$errType + " errCode:" + this.val$errCode + " retCode:" + i + " file:" + str + " time:" + l1);
+      if ((this.val$errType != 3) || (i == 0)) {
+        break label416;
       }
-      j.c(this.pvX);
-      label214:
-      y.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.access$000() + " stop:" + j.d(this.pvX) + " running:" + j.e(this.pvX) + " recving:" + j.f(this.pvX) + " sending:" + j.g(this.pvX));
-      if (j.d(this.pvX) <= 0) {
-        break label417;
+      j.c(this.sXD);
+      label220:
+      ab.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.access$000() + " stop:" + j.d(this.sXD) + " running:" + j.e(this.sXD) + " recving:" + j.f(this.sXD) + " sending:" + j.g(this.sXD));
+      if (j.d(this.sXD) <= 0) {
+        break label435;
       }
-      j.h(this.pvX);
+      j.h(this.sXD);
     }
     for (;;)
     {
-      j.uD();
+      j.EV();
+      AppMethodBeat.o(25307);
       return;
-      if (this.bEe.getType() == 329)
+      if (this.ckS.getType() == 329)
       {
-        j.b(this.pvX);
-        str = ((b)this.bEe).fileName;
-        i = ((b)this.bEe).retCode;
+        j.b(this.sXD);
+        str = ((b)this.ckS).fileName;
+        i = ((b)this.ckS).retCode;
         break;
       }
-      y.e("MicroMsg.VoiceRemindService", "onSceneEnd Error SceneType:" + this.bEe.getType());
-      j.uD();
+      ab.e("MicroMsg.VoiceRemindService", "onSceneEnd Error SceneType:" + this.ckS.getType());
+      j.EV();
+      AppMethodBeat.o(25307);
       return;
-      label398:
-      if (this.bEf == 0) {
-        break label214;
+      label416:
+      if (this.val$errType == 0) {
+        break label220;
       }
-      j.a(this.pvX, 0);
-      break label214;
-      label417:
-      if ((!j.g(this.pvX)) && (!j.f(this.pvX))) {
-        j.i(this.pvX);
+      j.a(this.sXD, 0);
+      break label220;
+      label435:
+      if ((!j.g(this.sXD)) && (!j.f(this.sXD))) {
+        j.i(this.sXD);
       }
     }
   }

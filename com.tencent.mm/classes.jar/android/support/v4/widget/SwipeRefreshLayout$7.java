@@ -10,7 +10,7 @@ final class SwipeRefreshLayout$7
   
   public final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    this.MA.J(paramFloat);
+    this.Mk.K(paramFloat);
   }
 }
 

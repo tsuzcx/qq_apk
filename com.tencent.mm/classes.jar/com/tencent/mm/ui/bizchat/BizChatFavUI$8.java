@@ -2,8 +2,9 @@ package com.tencent.mm.ui.bizchat;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.o;
 
 final class BizChatFavUI$8
   implements AbsListView.OnScrollListener
@@ -14,7 +15,9 @@ final class BizChatFavUI$8
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    o.ON().bR(paramInt);
+    AppMethodBeat.i(30114);
+    o.ahG().bX(paramInt);
+    AppMethodBeat.o(30114);
   }
 }
 

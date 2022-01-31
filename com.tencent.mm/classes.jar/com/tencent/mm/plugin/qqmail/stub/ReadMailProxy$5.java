@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.stub;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.ac;
 import com.tencent.mm.plugin.qqmail.b.v;
 
@@ -10,7 +11,9 @@ final class ReadMailProxy$5
   
   public final void run()
   {
-    ac.btF().cancel(this.nfA);
+    AppMethodBeat.i(68094);
+    ac.cdQ().cancel(this.pKP);
+    AppMethodBeat.o(68094);
   }
 }
 

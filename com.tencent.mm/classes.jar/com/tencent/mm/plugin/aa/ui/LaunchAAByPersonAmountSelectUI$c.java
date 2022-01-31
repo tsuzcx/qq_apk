@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 
 public final class LaunchAAByPersonAmountSelectUI$c
@@ -18,6 +19,7 @@ public final class LaunchAAByPersonAmountSelectUI$c
   
   public final void afterTextChanged(Editable paramEditable)
   {
+    AppMethodBeat.i(40804);
     try
     {
       if (paramEditable.toString().startsWith(".")) {
@@ -36,18 +38,19 @@ public final class LaunchAAByPersonAmountSelectUI$c
     }
     catch (Exception localException)
     {
-      label100:
-      break label100;
+      label105:
+      break label105;
     }
-    if ((!bk.L(paramEditable)) && (bk.getDouble(paramEditable.toString(), 0.0D) > 0.0D)) {
-      LaunchAAByPersonAmountSelectUI.c(this.eYG).put(this.username, paramEditable.toString());
+    if ((!bo.aa(paramEditable)) && (bo.getDouble(paramEditable.toString(), 0.0D) > 0.0D)) {
+      LaunchAAByPersonAmountSelectUI.c(this.gqx).put(this.username, paramEditable.toString());
     }
     for (;;)
     {
-      LaunchAAByPersonAmountSelectUI.j(this.eYG).removeCallbacks(LaunchAAByPersonAmountSelectUI.i(this.eYG));
-      LaunchAAByPersonAmountSelectUI.j(this.eYG).postDelayed(LaunchAAByPersonAmountSelectUI.i(this.eYG), 50L);
+      LaunchAAByPersonAmountSelectUI.j(this.gqx).removeCallbacks(LaunchAAByPersonAmountSelectUI.i(this.gqx));
+      LaunchAAByPersonAmountSelectUI.j(this.gqx).postDelayed(LaunchAAByPersonAmountSelectUI.i(this.gqx), 50L);
+      AppMethodBeat.o(40804);
       return;
-      LaunchAAByPersonAmountSelectUI.c(this.eYG).remove(this.username);
+      LaunchAAByPersonAmountSelectUI.c(this.gqx).remove(this.username);
     }
   }
   
@@ -57,7 +60,7 @@ public final class LaunchAAByPersonAmountSelectUI$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectUI.c
  * JD-Core Version:    0.7.0.1
  */

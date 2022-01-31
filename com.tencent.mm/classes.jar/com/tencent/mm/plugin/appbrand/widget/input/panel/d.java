@@ -4,8 +4,8 @@ import android.content.Context;
 
 public final class d
 {
-  c hxA;
-  a hxW;
+  c jpK;
+  a jqg;
   Context mContext;
   int mIndex;
 }

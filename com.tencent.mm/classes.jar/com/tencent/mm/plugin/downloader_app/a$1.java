@@ -1,31 +1,24 @@
 package com.tencent.mm.plugin.downloader_app;
 
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.downloader.f.b;
-import com.tencent.mm.plugin.downloader.model.c;
-import com.tencent.mm.plugin.downloader_app.b.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pointers.PBool;
 
 final class a$1
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  a$1(a parama, LinkedList paramLinkedList) {}
+  a$1(a parama, DialogInterface.OnClickListener paramOnClickListener, PBool paramPBool, String paramString) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.iRs;
-    b localb = c.FC();
-    if ((localb != null) && (!bk.dk((List)localObject)))
-    {
-      localObject = String.format("delete from %s where %s in %s", new Object[] { "FileDownloadInfo", "downloadId", b.P((LinkedList)localObject) });
-      y.i("MicroMsg.FileDownloadInfoStorage", "batchRemoveDownloadInfo: " + (String)localObject);
-      localb.gk("FileDownloadInfo", (String)localObject);
+    AppMethodBeat.i(136005);
+    if (this.kZQ != null) {
+      this.kZQ.onClick(paramDialogInterface, paramInt);
     }
-    k.close();
-    ((com.tencent.mm.plugin.game.commlib.a.a)g.r(com.tencent.mm.plugin.game.commlib.a.a.class)).Ez("pb_appinfo");
+    this.kZR.value = true;
+    com.tencent.mm.plugin.downloader_app.c.a.a(15, 1501, 1, 23, this.val$appId, "", "");
+    AppMethodBeat.o(136005);
   }
 }
 

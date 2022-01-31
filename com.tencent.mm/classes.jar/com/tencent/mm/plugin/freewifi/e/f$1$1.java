@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.freewifi.e;
 
 import android.content.Intent;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.c.a;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
@@ -11,9 +11,7 @@ import com.tencent.mm.plugin.freewifi.ui.FreeWifiCopyPwdUI;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.a;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.d;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$1$1
   implements c.a
@@ -22,62 +20,68 @@ final class f$1$1
   
   public final void onFail(int paramInt)
   {
-    y.i("MicroMsg.FreeWifi.ProtocolFour", "sessionKey=%s, step=%d, method=connect, desc=An attempt to connect to ssid failed. ssid=%s, errCode=%d", new Object[] { m.B(this.kpy.kpx.intent), Integer.valueOf(m.C(this.kpy.kpx.intent)), this.kpy.kpx.ssid, Integer.valueOf(paramInt) });
-    Object localObject = k.aTx();
-    ((k.a)localObject).ssid = this.kpy.kpx.ssid;
-    ((k.a)localObject).bssid = m.Dp("MicroMsg.FreeWifi.ProtocolFour");
-    ((k.a)localObject).bHJ = m.Dq("MicroMsg.FreeWifi.ProtocolFour");
-    ((k.a)localObject).bHI = this.kpy.kpx.bHI;
-    ((k.a)localObject).kmQ = this.kpy.kpx.appId;
-    ((k.a)localObject).iGw = m.B(this.kpy.kpx.intent);
-    ((k.a)localObject).kmR = m.D(this.kpy.kpx.intent);
-    ((k.a)localObject).kmS = k.b.knd.knD;
-    ((k.a)localObject).kmT = k.b.knd.name;
+    AppMethodBeat.i(20808);
+    ab.i("MicroMsg.FreeWifi.ProtocolFour", "sessionKey=%s, step=%d, method=connect, desc=An attempt to connect to ssid failed. ssid=%s, errCode=%d", new Object[] { m.U(this.mLk.mLj.intent), Integer.valueOf(m.V(this.mLk.mLj.intent)), this.mLk.mLj.ssid, Integer.valueOf(paramInt) });
+    Object localObject = k.bAc();
+    ((k.a)localObject).ssid = this.mLk.mLj.ssid;
+    ((k.a)localObject).bssid = m.Ox("MicroMsg.FreeWifi.ProtocolFour");
+    ((k.a)localObject).coY = m.Oy("MicroMsg.FreeWifi.ProtocolFour");
+    ((k.a)localObject).coX = this.mLk.mLj.coX;
+    ((k.a)localObject).mIC = this.mLk.mLj.appId;
+    ((k.a)localObject).kMp = m.U(this.mLk.mLj.intent);
+    ((k.a)localObject).mIE = m.W(this.mLk.mLj.intent);
+    ((k.a)localObject).mIF = k.b.mIQ.mJq;
+    ((k.a)localObject).mIG = k.b.mIQ.name;
     ((k.a)localObject).result = paramInt;
-    ((k.a)localObject).bUR = m.E(this.kpy.kpx.intent);
-    ((k.a)localObject).aTz().aTy();
+    ((k.a)localObject).cCy = m.X(this.mLk.mLj.intent);
+    ((k.a)localObject).bAe().bAd();
     if (paramInt == -16)
     {
-      this.kpy.kpx.intent.setClass(this.kpy.kpx.kps.mController.uMN, FreeWifiCopyPwdUI.class);
-      this.kpy.kpx.kps.finish();
-      this.kpy.kpx.kps.startActivity(this.kpy.kpx.intent);
+      this.mLk.mLj.intent.setClass(this.mLk.mLj.mLf.getContext(), FreeWifiCopyPwdUI.class);
+      this.mLk.mLj.mLf.finish();
+      this.mLk.mLj.mLf.startActivity(this.mLk.mLj.intent);
+      AppMethodBeat.o(20808);
       return;
     }
     if ((paramInt == -14) || (paramInt == -18))
     {
-      localObject = this.kpy.kpx.kps;
-      locald = FreeWifiFrontPageUI.d.krV;
+      localObject = this.mLk.mLj.mLf;
+      locald = FreeWifiFrontPageUI.d.mNJ;
       locala = new FreeWifiFrontPageUI.a();
-      locala.gRY = R.l.free_wifi_connect_fail_tips_wrong_password;
-      locala.kru = m.a(this.kpy.kpx.kpu, k.b.knd, paramInt);
+      locala.mNh = 2131300142;
+      locala.mNi = m.a(this.mLk.mLj.mLg, k.b.mIQ, paramInt);
       ((FreeWifiFrontPageUI)localObject).a(locald, locala);
+      AppMethodBeat.o(20808);
       return;
     }
-    localObject = this.kpy.kpx.kps;
-    FreeWifiFrontPageUI.d locald = FreeWifiFrontPageUI.d.krV;
+    localObject = this.mLk.mLj.mLf;
+    FreeWifiFrontPageUI.d locald = FreeWifiFrontPageUI.d.mNJ;
     FreeWifiFrontPageUI.a locala = new FreeWifiFrontPageUI.a();
-    locala.gRY = R.l.free_wifi_connect_fail_tips;
-    locala.kru = m.a(this.kpy.kpx.kpu, k.b.knd, paramInt);
+    locala.mNh = 2131300141;
+    locala.mNi = m.a(this.mLk.mLj.mLg, k.b.mIQ, paramInt);
     ((FreeWifiFrontPageUI)localObject).a(locald, locala);
+    AppMethodBeat.o(20808);
   }
   
   public final void onSuccess()
   {
-    y.i("MicroMsg.FreeWifi.ProtocolFour", "sessionKey=%s, step=%d, desc=connect ssid succeeded. ", new Object[] { m.B(this.kpy.kpx.intent), Integer.valueOf(m.C(this.kpy.kpx.intent)) });
-    k.a locala = k.aTx();
-    locala.ssid = this.kpy.kpx.ssid;
-    locala.bssid = m.Dp("MicroMsg.FreeWifi.ProtocolFour");
-    locala.bHJ = m.Dq("MicroMsg.FreeWifi.ProtocolFour");
-    locala.bHI = this.kpy.kpx.bHI;
-    locala.kmQ = this.kpy.kpx.appId;
-    locala.iGw = m.B(this.kpy.kpx.intent);
-    locala.kmR = m.D(this.kpy.kpx.intent);
-    locala.kmS = k.b.knd.knD;
-    locala.kmT = k.b.knd.name;
+    AppMethodBeat.i(20807);
+    ab.i("MicroMsg.FreeWifi.ProtocolFour", "sessionKey=%s, step=%d, desc=connect ssid succeeded. ", new Object[] { m.U(this.mLk.mLj.intent), Integer.valueOf(m.V(this.mLk.mLj.intent)) });
+    k.a locala = k.bAc();
+    locala.ssid = this.mLk.mLj.ssid;
+    locala.bssid = m.Ox("MicroMsg.FreeWifi.ProtocolFour");
+    locala.coY = m.Oy("MicroMsg.FreeWifi.ProtocolFour");
+    locala.coX = this.mLk.mLj.coX;
+    locala.mIC = this.mLk.mLj.appId;
+    locala.kMp = m.U(this.mLk.mLj.intent);
+    locala.mIE = m.W(this.mLk.mLj.intent);
+    locala.mIF = k.b.mIQ.mJq;
+    locala.mIG = k.b.mIQ.name;
     locala.result = 0;
-    locala.bUR = m.E(this.kpy.kpx.intent);
-    locala.aTz().aTy();
-    m.a(this.kpy.kpx.intent, this.kpy.kpx.bHI, this.kpy.kpx.kpu, this.kpy.kpx.bvj, this.kpy.kpx.kps, "MicroMsg.FreeWifi.ProtocolFour");
+    locala.cCy = m.X(this.mLk.mLj.intent);
+    locala.bAe().bAd();
+    m.a(this.mLk.mLj.intent, this.mLk.mLj.coX, this.mLk.mLj.mLg, this.mLk.mLj.bWu, this.mLk.mLj.mLf, "MicroMsg.FreeWifi.ProtocolFour");
+    AppMethodBeat.o(20807);
   }
 }
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class LoginHistoryUI$7
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class LoginHistoryUI$7
   
   public final void onClick(View paramView)
   {
-    d.x(this.fnc, "login_exdevice", ".ui.LoginAsExDeviceUI");
-    this.fnc.overridePendingTransition(q.a.push_down_in, q.a.anim_not_change);
+    AppMethodBeat.i(124919);
+    d.H(this.gEw, "login_exdevice", ".ui.LoginAsExDeviceUI");
+    this.gEw.overridePendingTransition(2131034227, 2131034130);
+    AppMethodBeat.o(124919);
   }
 }
 

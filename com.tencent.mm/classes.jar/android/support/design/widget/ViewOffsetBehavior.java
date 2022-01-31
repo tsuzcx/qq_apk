@@ -7,9 +7,9 @@ import android.view.View;
 class ViewOffsetBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
-  private p md;
-  private int me = 0;
-  private int mf = 0;
+  private o na;
+  private int nb = 0;
+  private int nc = 0;
   
   public ViewOffsetBehavior() {}
   
@@ -21,33 +21,33 @@ class ViewOffsetBehavior<V extends View>
   public boolean a(CoordinatorLayout paramCoordinatorLayout, V paramV, int paramInt)
   {
     d(paramCoordinatorLayout, paramV, paramInt);
-    if (this.md == null) {
-      this.md = new p(paramV);
+    if (this.na == null) {
+      this.na = new o(paramV);
     }
-    this.md.bh();
-    if (this.me != 0)
+    this.na.bS();
+    if (this.nb != 0)
     {
-      this.md.q(this.me);
-      this.me = 0;
+      this.na.p(this.nb);
+      this.nb = 0;
     }
-    if (this.mf != 0)
+    if (this.nc != 0)
     {
-      paramCoordinatorLayout = this.md;
-      paramInt = this.mf;
-      if (paramCoordinatorLayout.mj != paramInt)
+      paramCoordinatorLayout = this.na;
+      paramInt = this.nc;
+      if (paramCoordinatorLayout.ng != paramInt)
       {
-        paramCoordinatorLayout.mj = paramInt;
-        paramCoordinatorLayout.bi();
+        paramCoordinatorLayout.ng = paramInt;
+        paramCoordinatorLayout.bT();
       }
-      this.mf = 0;
+      this.nc = 0;
     }
     return true;
   }
   
-  public int ag()
+  public int aO()
   {
-    if (this.md != null) {
-      return this.md.mi;
+    if (this.na != null) {
+      return this.na.nf;
     }
     return 0;
   }
@@ -57,18 +57,18 @@ class ViewOffsetBehavior<V extends View>
     paramCoordinatorLayout.e(paramV, paramInt);
   }
   
-  public boolean q(int paramInt)
+  public boolean p(int paramInt)
   {
-    if (this.md != null) {
-      return this.md.q(paramInt);
+    if (this.na != null) {
+      return this.na.p(paramInt);
     }
-    this.me = paramInt;
+    this.nb = paramInt;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     android.support.design.widget.ViewOffsetBehavior
  * JD-Core Version:    0.7.0.1
  */

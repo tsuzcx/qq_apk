@@ -1,6 +1,7 @@
 package com.tencent.mm.pluginsdk.g.a.a;
 
-import com.tencent.mm.h.a.bg;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bi;
 import com.tencent.mm.sdk.b.a;
 
 final class b$2
@@ -10,17 +11,19 @@ final class b$2
   
   public final void run()
   {
-    bg localbg = new bg();
-    localbg.bHC.bHz = this.rWj;
-    localbg.bHC.bHv = this.lPI;
-    localbg.bHC.brC = this.lPJ;
-    localbg.bHC.bHB = this.rWk;
-    a.udP.m(localbg);
+    AppMethodBeat.i(79468);
+    bi localbi = new bi();
+    localbi.coR.coO = this.vNa;
+    localbi.coR.coJ = this.onf;
+    localbi.coR.subType = this.ong;
+    localbi.coR.coQ = this.vNb;
+    a.ymk.l(localbi);
+    AppMethodBeat.o(79468);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.a.a.b.2
  * JD-Core Version:    0.7.0.1
  */

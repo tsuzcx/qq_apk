@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.label;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 public final class c
 {
-  public static String bG(List<String> paramList)
+  public static String cd(List<String> paramList)
   {
+    AppMethodBeat.i(22508);
     StringBuilder localStringBuilder = new StringBuilder();
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -24,53 +25,74 @@ public final class c
       }
       localStringBuilder.append("");
     }
-    return localStringBuilder.toString();
+    paramList = localStringBuilder.toString();
+    AppMethodBeat.o(22508);
+    return paramList;
   }
   
-  public static String dH(String paramString1, String paramString2)
+  public static String eZ(String paramString1, String paramString2)
   {
-    y.d("MicroMsg.Label.LabelUtils", "original:%s,waitToAddLabel:%s", new Object[] { paramString1, paramString2 });
-    if (bk.bl(paramString2)) {
+    AppMethodBeat.i(22506);
+    ab.d("MicroMsg.Label.LabelUtils", "original:%s,waitToAddLabel:%s", new Object[] { paramString1, paramString2 });
+    if (bo.isNullOrNil(paramString2))
+    {
+      AppMethodBeat.o(22506);
       return paramString1;
     }
-    if (bk.bl(paramString1)) {
-      return paramString2 + "";
+    if (bo.isNullOrNil(paramString1))
+    {
+      paramString1 = paramString2 + "";
+      AppMethodBeat.o(22506);
+      return paramString1;
     }
     String str = paramString1;
     if (paramString1.endsWith("")) {
       str = paramString1.replace("", "");
     }
-    if (bk.G(str.split(",")).contains(paramString2)) {
-      return str + "";
+    if (bo.P(str.split(",")).contains(paramString2))
+    {
+      paramString1 = str + "";
+      AppMethodBeat.o(22506);
+      return paramString1;
     }
-    return str + "," + paramString2 + "";
+    paramString1 = str + "," + paramString2 + "";
+    AppMethodBeat.o(22506);
+    return paramString1;
   }
   
-  public static String dI(String paramString1, String paramString2)
+  public static String fa(String paramString1, String paramString2)
   {
-    y.d("MicroMsg.Label.LabelUtils", "original:%s,waitToDelLabel:%s", new Object[] { paramString1, paramString2 });
-    if (bk.bl(paramString2)) {}
-    ArrayList localArrayList;
-    do
+    AppMethodBeat.i(22507);
+    ab.d("MicroMsg.Label.LabelUtils", "original:%s,waitToDelLabel:%s", new Object[] { paramString1, paramString2 });
+    if (bo.isNullOrNil(paramString2))
     {
+      AppMethodBeat.o(22507);
       return paramString1;
-      if (bk.bl(paramString1)) {
-        return "";
-      }
-      String str = paramString1;
-      if (paramString1.endsWith("")) {
-        str = paramString1.replace("", "");
-      }
-      localArrayList = bk.G(str.split(","));
-      paramString1 = str;
-    } while (!localArrayList.contains(paramString2));
-    localArrayList.remove(paramString2);
-    return bG(localArrayList);
+    }
+    if (bo.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(22507);
+      return "";
+    }
+    String str = paramString1;
+    if (paramString1.endsWith("")) {
+      str = paramString1.replace("", "");
+    }
+    paramString1 = bo.P(str.split(","));
+    if (paramString1.contains(paramString2))
+    {
+      paramString1.remove(paramString2);
+      paramString1 = cd(paramString1);
+      AppMethodBeat.o(22507);
+      return paramString1;
+    }
+    AppMethodBeat.o(22507);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.c
  * JD-Core Version:    0.7.0.1
  */

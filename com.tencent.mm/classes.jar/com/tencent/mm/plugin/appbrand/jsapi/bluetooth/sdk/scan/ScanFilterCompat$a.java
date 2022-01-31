@@ -1,35 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan;
 
 import android.os.ParcelUuid;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class ScanFilterCompat$a
 {
-  String gnO;
-  String gnP;
-  ParcelUuid gnQ;
-  ParcelUuid gnS;
-  byte[] gnT;
-  byte[] gnU;
-  int gnV = -1;
-  byte[] gnW;
-  byte[] gnX;
-  ParcelUuid gnZ;
+  String hHM;
+  ParcelUuid hHN;
+  ParcelUuid hHP;
+  byte[] hHQ;
+  byte[] hHR;
+  int hHS = -1;
+  byte[] hHT;
+  byte[] hHU;
+  ParcelUuid hHW;
+  String mDeviceName;
   
   public final a a(ParcelUuid paramParcelUuid)
   {
-    this.gnQ = paramParcelUuid;
-    this.gnZ = null;
+    this.hHN = paramParcelUuid;
+    this.hHW = null;
     return this;
   }
   
-  public final ScanFilterCompat aix()
+  public final ScanFilterCompat aCs()
   {
-    return new ScanFilterCompat(this.gnO, this.gnP, this.gnQ, this.gnZ, this.gnS, this.gnT, this.gnU, this.gnV, this.gnW, this.gnX, (byte)0);
+    AppMethodBeat.i(94313);
+    ScanFilterCompat localScanFilterCompat = new ScanFilterCompat(this.mDeviceName, this.hHM, this.hHN, this.hHW, this.hHP, this.hHQ, this.hHR, this.hHS, this.hHT, this.hHU, (byte)0);
+    AppMethodBeat.o(94313);
+    return localScanFilterCompat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanFilterCompat.a
  * JD-Core Version:    0.7.0.1
  */

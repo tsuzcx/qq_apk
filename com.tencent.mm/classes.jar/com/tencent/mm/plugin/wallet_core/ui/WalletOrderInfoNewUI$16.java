@@ -8,10 +8,7 @@ final class WalletOrderInfoNewUI$16
 {
   WalletOrderInfoNewUI$16(WalletOrderInfoNewUI paramWalletOrderInfoNewUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.qEr.done();
-  }
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

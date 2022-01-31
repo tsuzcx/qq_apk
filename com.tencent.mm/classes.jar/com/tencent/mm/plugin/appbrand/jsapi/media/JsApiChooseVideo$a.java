@@ -1,52 +1,69 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaMetadataRetriever;
 import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObjectManager;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalVideoObject;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.plugin.sight.base.b;
-import com.tencent.mm.pluginsdk.model.j;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 import java.util.List;
 
 final class JsApiChooseVideo$a
   extends AppBrandProxyUIProcessTask
 {
-  private p dpF;
-  private JsApiChooseVideo.ChooseResult gvX = new JsApiChooseVideo.ChooseResult();
-  private JsApiChooseVideo.ChooseRequest gvY;
-  private DialogInterface.OnCancelListener gvu;
+  private p ehb;
+  private DialogInterface.OnCancelListener hQL;
+  private JsApiChooseVideo.ChooseResult hRI;
+  private JsApiChooseVideo.ChooseRequest hRJ;
   private String mVideoFilePath;
   
-  private AppBrandLocalVideoObject af(String paramString, boolean paramBoolean)
+  private JsApiChooseVideo$a()
   {
-    Object localObject = paramString;
+    AppMethodBeat.i(131285);
+    this.hRI = new JsApiChooseVideo.ChooseResult();
+    AppMethodBeat.o(131285);
+  }
+  
+  private void aDM()
+  {
+    AppMethodBeat.i(131288);
+    this.hQL = new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(131282);
+        JsApiChooseVideo.a.a(JsApiChooseVideo.a.this).bpE = 0;
+        JsApiChooseVideo.a.a(JsApiChooseVideo.a.this, JsApiChooseVideo.a.a(JsApiChooseVideo.a.this));
+        AppMethodBeat.o(131282);
+      }
+    };
+    MMActivity localMMActivity = aBf();
+    ah.getResources().getString(2131297087);
+    this.ehb = h.b(localMMActivity, ah.getResources().getString(2131296595), true, this.hQL);
+    AppMethodBeat.o(131288);
+  }
+  
+  private AppBrandLocalVideoObject ak(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(131290);
+    String str1 = paramString;
     if (paramBoolean) {}
     try
     {
-      paramBoolean = com.tencent.mm.plugin.a.c.pp(paramString);
-      y.i("MicroMsg.JsApiChooseVideo", "checkRemux, isMp4 = %b", new Object[] { Boolean.valueOf(paramBoolean) });
-      i = -10000;
-      if (!paramBoolean) {
-        break label462;
-      }
-      i = SightVideoJNI.shouldRemuxing(paramString, 660, 500, 26214400, 300000.0D, 1000000);
-      y.i("MicroMsg.JsApiChooseVideo", "checkRemux, ret = %d", new Object[] { Integer.valueOf(i) });
+      str1 = n.Cu(paramString);
     }
     catch (Exception localException)
     {
@@ -55,161 +72,130 @@ final class JsApiChooseVideo$a
         for (;;)
         {
           paramString = new MediaMetadataRetriever();
-          paramString.setDataSource((String)localObject);
+          paramString.setDataSource(str1);
           if (paramString != null) {
             break;
           }
-          y.e("MicroMsg.JsApiChooseVideo", "addVideoItem, null meta data");
+          ab.e("MicroMsg.JsApiChooseVideo", "addVideoItem, null meta data");
+          AppMethodBeat.o(131290);
           return null;
-          i = 1;
-          break label474;
-          i = 1;
-          continue;
-          i = -50006;
-          continue;
-          i = -50002;
-          continue;
-          localObject = new int[2];
-          j.c(paramString, (int[])localObject);
-          i = localObject[0];
-          j = localObject[1];
-          localObject = com.tencent.mm.compatible.util.e.dzD + "microMsg." + System.currentTimeMillis() + ".mp4";
-          y.i("MicroMsg.JsApiChooseVideo", "remuxIfNeed [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { paramString, localObject, Integer.valueOf(SightVideoJNI.remuxing(paramString, (String)localObject, i, j, b.oeb, b.oea, 8, 2, 25.0F, b.oec, null, 0, false)), Integer.valueOf(i), Integer.valueOf(j) });
-          continue;
           localException = localException;
-          y.e("MicroMsg.JsApiChooseVideo", "addVideoItem, remux failed, exp = %s", new Object[] { bk.j(localException) });
-          str = paramString;
+          ab.e("MicroMsg.JsApiChooseVideo", "addVideoItem, remux failed, exp = %s", new Object[] { bo.l(localException) });
+          str2 = paramString;
         }
       }
       catch (Exception paramString)
       {
+        String str2;
         for (;;)
         {
-          y.e("MicroMsg.JsApiChooseVideo", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { paramString });
+          ab.e("MicroMsg.JsApiChooseVideo", "addVideoItem, MetaDataRetriever setDataSource failed, e = %s", new Object[] { paramString });
           paramString = null;
         }
-        i = bk.getInt(paramString.extractMetadata(18), 0);
-        j = bk.getInt(paramString.extractMetadata(19), 0);
-        k = bk.getInt(paramString.extractMetadata(9), 0);
-        paramString.release();
-        paramString = AppBrandLocalMediaObjectManager.attachVideo(this.gvY.appId, str);
-        if (paramString != null) {
-          break label411;
+        int i = bo.getInt(paramString.extractMetadata(24), 0);
+        int j;
+        if ((i == 90) || (i == 270)) {
+          j = bo.getInt(paramString.extractMetadata(19), 0);
         }
-        return null;
+        int k;
+        for (i = bo.getInt(paramString.extractMetadata(18), 0);; i = bo.getInt(paramString.extractMetadata(19), 0))
+        {
+          k = bo.getInt(paramString.extractMetadata(9), 0);
+          paramString.release();
+          paramString = AppBrandLocalMediaObjectManager.bv(this.hRJ.appId, str2);
+          if (paramString != null) {
+            break;
+          }
+          AppMethodBeat.o(131290);
+          return null;
+          j = bo.getInt(paramString.extractMetadata(18), 0);
+        }
         paramString.duration = ((k + 500) / 1000);
-        paramString.width = i;
-        paramString.height = j;
-        paramString.size = com.tencent.mm.a.e.bJ(str);
-        y.i("MicroMsg.JsApiChooseVideo", "addVideoItem, return %s", new Object[] { paramString });
-        return paramString;
+        paramString.width = j;
+        paramString.height = i;
+        paramString.size = com.tencent.mm.a.e.cM(str2);
+        ab.i("MicroMsg.JsApiChooseVideo", "addVideoItem, return %s", new Object[] { paramString });
+        AppMethodBeat.o(131290);
       }
     }
-    int i = com.tencent.mm.a.e.bJ(paramString);
-    y.i("MicroMsg.JsApiChooseVideo", "fileLength = %d", new Object[] { Integer.valueOf(i) });
-    if (i > 26214400) {
-      i = -1;
-    }
-    for (;;)
-    {
-      y.e("MicroMsg.JsApiChooseVideo", "unknown check type");
-      i = -50001;
-      if (i != -50006) {
-        localObject = paramString;
-      }
-      int j;
-      String str;
-      int k;
-      label411:
-      label462:
-      if ((i == -1) || (!paramBoolean)) {
-        break;
-      }
-      label474:
-      switch (i)
-      {
-      }
-    }
+    return paramString;
   }
   
-  private void ajw()
+  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
   {
-    this.gvu = new JsApiChooseVideo.a.1(this);
-    MMActivity localMMActivity = ahy();
-    int i = y.j.app_tip;
-    ae.getResources().getString(i);
-    i = y.j.app_brand_choose_media_video_processing;
-    this.dpF = h.b(localMMActivity, ae.getResources().getString(i), true, this.gvu);
-  }
-  
-  protected final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
-  {
-    this.gvY = ((JsApiChooseVideo.ChooseRequest)paramProcessRequest);
-    this.gvY.maxDuration = Math.min(Math.max(this.gvY.maxDuration, 60), 0);
-    if (bk.fQ(ahy()) > 200L) {}
+    AppMethodBeat.i(131286);
+    this.hRJ = ((JsApiChooseVideo.ChooseRequest)paramProcessRequest);
+    this.hRJ.maxDuration = Math.min(Math.max(this.hRJ.maxDuration, 60), 0);
+    if (bo.hg(aBf()) > 200L) {}
     for (int i = 1;; i = 0)
     {
-      if (i == 0)
-      {
-        paramProcessRequest = ahy();
-        i = y.j.app_brand_choose_media_video_processing;
-        s.makeText(paramProcessRequest, ae.getResources().getString(i), 1).show();
+      if (i == 0) {
+        t.makeText(aBf(), ah.getResources().getString(2131296595), 1).show();
       }
-      ahy().gJb = this;
+      aBf().mmSetOnActivityResultCallback(this);
       paramProcessRequest = new Intent();
       paramProcessRequest.putExtra("key_send_raw_image", false);
       paramProcessRequest.putExtra("query_media_type", 2);
       paramProcessRequest.putExtra("GalleryUI_SkipVideoSizeLimit", true);
-      if ((!this.gvY.gvm) || (!this.gvY.gvn)) {
+      if ((!this.hRJ.hQD) || (!this.hRJ.hQE)) {
         break;
       }
-      this.mVideoFilePath = (com.tencent.mm.compatible.util.e.dzD + "microMsg." + System.currentTimeMillis() + ".mp4");
+      this.mVideoFilePath = (com.tencent.mm.compatible.util.e.esr + "microMsg." + System.currentTimeMillis() + ".mp4");
       paramProcessRequest.putExtra("record_video_force_sys_camera", true);
       paramProcessRequest.putExtra("record_video_quality", 1);
-      paramProcessRequest.putExtra("record_video_time_limit", this.gvY.maxDuration);
+      paramProcessRequest.putExtra("record_video_time_limit", this.hRJ.maxDuration);
       paramProcessRequest.putExtra("video_full_path", this.mVideoFilePath);
-      l.d(ahy(), 1, 7, paramProcessRequest);
+      com.tencent.mm.pluginsdk.ui.tools.n.e(aBf(), 1, 7, paramProcessRequest);
+      AppMethodBeat.o(131286);
       return;
     }
-    if (this.gvY.gvm)
+    if (this.hRJ.hQD)
     {
-      this.mVideoFilePath = (com.tencent.mm.compatible.util.e.dzD + "microMsg." + System.currentTimeMillis() + ".mp4");
-      i = this.gvY.maxDuration;
-      l.a(ahy(), this.mVideoFilePath, 5, i, 1, false);
+      this.mVideoFilePath = (com.tencent.mm.compatible.util.e.esr + "microMsg." + System.currentTimeMillis() + ".mp4");
+      i = this.hRJ.maxDuration;
+      com.tencent.mm.pluginsdk.ui.tools.n.a(aBf(), this.mVideoFilePath, 5, i, 1, false);
+      AppMethodBeat.o(131286);
       return;
     }
-    if (this.gvY.gvn)
+    if (this.hRJ.hQE)
     {
       paramProcessRequest.putExtra("show_header_view", false);
-      l.d(ahy(), 1, 7, paramProcessRequest);
+      com.tencent.mm.pluginsdk.ui.tools.n.e(aBf(), 1, 7, paramProcessRequest);
+      AppMethodBeat.o(131286);
       return;
     }
-    this.gvX.aYY = -2;
-    a(this.gvX);
+    this.hRI.bpE = -2;
+    a(this.hRI);
+    AppMethodBeat.o(131286);
   }
   
-  protected final void ahE()
+  public final void aBl()
   {
-    super.ahE();
-    if (this.dpF != null)
+    AppMethodBeat.i(131287);
+    super.aBl();
+    if (this.ehb != null)
     {
-      this.dpF.dismiss();
-      this.dpF = null;
+      this.ehb.dismiss();
+      this.ehb = null;
     }
+    AppMethodBeat.o(131287);
   }
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(131289);
     if (paramInt2 == 0)
     {
-      this.gvX.aYY = 0;
-      a(this.gvX);
+      this.hRI.bpE = 0;
+      a(this.hRI);
+      AppMethodBeat.o(131289);
       return;
     }
     if (-1 != paramInt2)
     {
-      this.gvX.aYY = -2;
-      a(this.gvX);
+      this.hRI.bpE = -2;
+      a(this.hRI);
+      AppMethodBeat.o(131289);
       return;
     }
     switch (paramInt1)
@@ -219,18 +205,21 @@ final class JsApiChooseVideo$a
     {
       do
       {
-        this.gvX.aYY = -2;
-        a(this.gvX);
+        this.hRI.bpE = -2;
+        a(this.hRI);
+        AppMethodBeat.o(131289);
         return;
-      } while (bk.bl(this.mVideoFilePath));
-      ajw();
-      com.tencent.mm.plugin.appbrand.v.c.DS().O(new JsApiChooseVideo.a.2(this));
+      } while (bo.isNullOrNil(this.mVideoFilePath));
+      aDM();
+      com.tencent.mm.plugin.appbrand.t.e.aNS().ac(new JsApiChooseVideo.a.2(this));
+      AppMethodBeat.o(131289);
       return;
       paramIntent = paramIntent.getStringArrayListExtra("key_select_video_list");
-    } while (bk.dk(paramIntent));
+    } while (bo.es(paramIntent));
     paramIntent = (String)paramIntent.get(0);
-    ajw();
-    com.tencent.mm.plugin.appbrand.v.c.DS().O(new JsApiChooseVideo.a.3(this, paramIntent));
+    aDM();
+    com.tencent.mm.plugin.appbrand.t.e.aNS().ac(new JsApiChooseVideo.a.3(this, paramIntent));
+    AppMethodBeat.o(131289);
   }
 }
 

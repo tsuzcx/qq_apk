@@ -1,11 +1,12 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.at;
 import com.tencent.mm.ui.base.p;
 import java.util.ArrayList;
 
@@ -16,19 +17,21 @@ final class SendImgProxyUI$1
   
   public final void run()
   {
-    y.i("MicroMsg.SendImgProxyUI", "test before sendMutiImage");
-    SendImgProxyUI.a(this.vmR, this.vmR.getIntent());
+    AppMethodBeat.i(31003);
+    ab.i("MicroMsg.SendImgProxyUI", "test before sendMutiImage");
+    SendImgProxyUI.a(this.zCn, this.zCn.getIntent());
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(-1));
-    au.DS().cre();
-    y.i("MicroMsg.SendImgProxyUI", "test before finish");
-    SendImgProxyUI.a(this.vmR).dismiss();
-    this.vmR.setResult(-1, this.vmR.getIntent().putIntegerArrayListExtra("GalleryUI_ImgIdList", localArrayList));
-    SendImgProxyUI.ape();
-    this.vmR.finish();
-    if (aq.isWifi(this.vmR) == this.vmQ) {
-      WXHardCoderJNI.stopPerformace(WXHardCoderJNI.hcSendPicMsgEnable, this.eub);
+    aw.RO().dtd();
+    ab.i("MicroMsg.SendImgProxyUI", "test before finish");
+    SendImgProxyUI.a(this.zCn).dismiss();
+    this.zCn.setResult(-1, this.zCn.getIntent().putIntegerArrayListExtra("GalleryUI_ImgIdList", localArrayList));
+    SendImgProxyUI.aMp();
+    this.zCn.finish();
+    if (at.isWifi(this.zCn) == this.zCm) {
+      WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcSendPicMsgEnable, this.fJO);
     }
+    AppMethodBeat.o(31003);
   }
 }
 

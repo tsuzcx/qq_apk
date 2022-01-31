@@ -1,40 +1,50 @@
 package com.tencent.mm.storage;
 
 import android.database.Cursor;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.h.c.ej;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.g.c.fa;
+import com.tencent.mm.sdk.e.j;
 import java.util.concurrent.ConcurrentHashMap;
 
 public final class by
-  extends i<ej>
+  extends j<fa>
 {
-  public static final String[] dXp = { i.a(bx.buS, "TablesVersion") };
-  public h dXo;
+  public static final String[] SQL_CREATE;
+  public h fnw;
+  
+  static
+  {
+    AppMethodBeat.i(59018);
+    SQL_CREATE = new String[] { j.getCreateSQLs(bx.info, "TablesVersion") };
+    AppMethodBeat.o(59018);
+  }
   
   public by(h paramh)
   {
-    super(paramh, bx.buS, "TablesVersion", ej.cqY);
-    this.dXo = paramh;
+    super(paramh, bx.info, "TablesVersion", fa.INDEX_CREATE);
+    this.fnw = paramh;
   }
   
-  public final ConcurrentHashMap<Integer, String> cwe()
+  public final ConcurrentHashMap<Integer, String> dyQ()
   {
-    Cursor localCursor = this.dXo.a("select * from TablesVersion", new String[0], 0);
+    AppMethodBeat.i(59017);
+    Cursor localCursor = this.fnw.a("select * from TablesVersion", new String[0], 0);
     ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap();
-    if (localCursor == null) {
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(59017);
       return localConcurrentHashMap;
     }
     try
     {
-      if (localCursor.moveToNext()) {
-        localConcurrentHashMap.putIfAbsent(Integer.valueOf(localCursor.getInt(0)), localCursor.getString(1));
-      }
+      if (localCursor.moveToNext()) {}
       return localConcurrentHashMap1;
     }
     finally
     {
       localCursor.close();
+      AppMethodBeat.o(59017);
     }
   }
 }

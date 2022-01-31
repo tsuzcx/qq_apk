@@ -1,25 +1,17 @@
 package com.tencent.mm.plugin.wallet_index.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.Intent;
-import com.tencent.mm.plugin.wallet_index.c.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.va;
+import com.tencent.mm.sdk.b.c;
 
 final class WalletIapUI$4
-  implements DialogInterface.OnCancelListener
+  extends c<va>
 {
-  WalletIapUI$4(WalletIapUI paramWalletIapUI) {}
-  
-  public final void onCancel(DialogInterface paramDialogInterface)
+  WalletIapUI$4(WalletIapUI paramWalletIapUI)
   {
-    y.i("MicroMsg.WalletIapUI", "showLoadingDialog onCancel");
-    paramDialogInterface = b.aP(1, "");
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_err_code", paramDialogInterface.ljp);
-    localIntent.putExtra("key_err_msg", paramDialogInterface.ljq);
-    this.qMn.setResult(-1, localIntent);
-    this.qMn.finish();
+    AppMethodBeat.i(48275);
+    this.__eventId = va.class.getName().hashCode();
+    AppMethodBeat.o(48275);
   }
 }
 

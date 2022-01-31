@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.recharge.ui;
 import android.widget.AutoCompleteTextView;
 import android.widget.Filter;
 import android.widget.Filter.FilterResults;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recharge.model.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,20 +16,24 @@ final class MallEditText$a$a
 {
   private MallEditText$a$a(MallEditText.a parama) {}
   
-  private static int[] et(String paramString1, String paramString2)
+  private static int[] fR(String paramString1, String paramString2)
   {
-    if (paramString1.equals(paramString2)) {
-      return com.tencent.mm.plugin.recharge.model.a.npt;
+    AppMethodBeat.i(44218);
+    if (paramString1.equals(paramString2))
+    {
+      paramString1 = com.tencent.mm.plugin.recharge.model.a.pUH;
+      AppMethodBeat.o(44218);
+      return paramString1;
     }
     if ((paramString2 != null) && (paramString1.length() == paramString2.length()))
     {
       int i = 0;
       int[] arrayOfInt = new int[2];
-      int[] tmp36_34 = arrayOfInt;
-      tmp36_34[0] = -1;
-      int[] tmp40_36 = tmp36_34;
-      tmp40_36[1] = -1;
-      tmp40_36;
+      int[] tmp48_46 = arrayOfInt;
+      tmp48_46[0] = -1;
+      int[] tmp52_48 = tmp48_46;
+      tmp52_48[1] = -1;
+      tmp52_48;
       int j = paramString1.length() - 1;
       int k;
       for (;;)
@@ -51,11 +56,15 @@ final class MallEditText$a$a
         j -= 1;
         i = k;
       }
-      if (k <= 2) {
+      if (k <= 2)
+      {
+        AppMethodBeat.o(44218);
         return arrayOfInt;
       }
     }
-    return com.tencent.mm.plugin.recharge.model.a.npu;
+    paramString1 = com.tencent.mm.plugin.recharge.model.a.pUI;
+    AppMethodBeat.o(44218);
+    return paramString1;
   }
   
   protected final Filter.FilterResults performFiltering(CharSequence paramCharSequence)
@@ -65,27 +74,29 @@ final class MallEditText$a$a
     Object localObject1;
     try
     {
+      AppMethodBeat.i(44217);
       localFilterResults = new Filter.FilterResults();
       localArrayList = new ArrayList();
       if (paramCharSequence != null) {}
-      for (localObject1 = b.qa(paramCharSequence.toString()); ((String)localObject1).equals(MallEditText.a.a(this.nqq)); localObject1 = "")
+      for (localObject1 = b.xw(paramCharSequence.toString()); ((String)localObject1).equals(MallEditText.a.a(this.pVE)); localObject1 = "")
       {
-        MallEditText.a(this.nqq.nqk).post(new MallEditText.a.a.1(this));
+        MallEditText.a(this.pVE.pVy).post(new MallEditText.a.a.1(this));
+        AppMethodBeat.o(44217);
         return localFilterResults;
       }
-      MallEditText.a.a(this.nqq, (String)localObject1);
-      if (this.nqq.nqk.YL()) {
-        break label354;
+      MallEditText.a.a(this.pVE, (String)localObject1);
+      if (this.pVE.pVy.asv()) {
+        break label362;
       }
-      if (bk.bl(MallEditText.a.a(this.nqq))) {
-        break label334;
+      if (bo.isNullOrNil(MallEditText.a.a(this.pVE))) {
+        break label342;
       }
-      y.d("MicroMsg.MallEditText", "performFiltering " + paramCharSequence);
-      paramCharSequence = MallEditText.a.b(this.nqq).iterator();
+      ab.d("MicroMsg.MallEditText", "performFiltering ".concat(String.valueOf(paramCharSequence)));
+      paramCharSequence = MallEditText.a.b(this.pVE).iterator();
       while (paramCharSequence.hasNext())
       {
         localObject1 = (com.tencent.mm.plugin.recharge.model.a)paramCharSequence.next();
-        if (((com.tencent.mm.plugin.recharge.model.a)localObject1).npv.startsWith(MallEditText.a.a(this.nqq))) {
+        if (((com.tencent.mm.plugin.recharge.model.a)localObject1).pUJ.startsWith(MallEditText.a.a(this.pVE))) {
           localArrayList.add(localObject1);
         }
       }
@@ -93,68 +104,69 @@ final class MallEditText$a$a
     }
     finally {}
     boolean bool;
-    label212:
+    label215:
     if (localArrayList.size() == 0)
     {
-      MallEditText.a(this.nqq.nqk).post(new MallEditText.a.a.2(this));
+      MallEditText.a(this.pVE.pVy).post(new MallEditText.a.a.2(this));
       bool = false;
     }
     for (;;)
     {
       for (;;)
       {
-        paramCharSequence = this.nqq.nql;
-        this.nqq.nql = localArrayList;
-        this.nqq.nqm = bool;
-        localFilterResults.count = this.nqq.nql.size();
-        localFilterResults.values = this.nqq.nql;
-        y.d("MicroMsg.MallEditText", "results.count " + localFilterResults.count);
+        paramCharSequence = this.pVE.pVz;
+        this.pVE.pVz = localArrayList;
+        this.pVE.pVA = bool;
+        localFilterResults.count = this.pVE.pVz.size();
+        localFilterResults.values = this.pVE.pVz;
+        ab.d("MicroMsg.MallEditText", "results.count " + localFilterResults.count);
         paramCharSequence.clear();
+        AppMethodBeat.o(44217);
         break;
-        label334:
-        localArrayList.addAll(MallEditText.a.b(this.nqq));
+        label342:
+        localArrayList.addAll(MallEditText.a.b(this.pVE));
         bool = false;
-        break label212;
-        label354:
+        break label215;
+        label362:
         long l = System.currentTimeMillis();
-        y.d("MicroMsg.MallEditText", "performFiltering " + paramCharSequence);
-        paramCharSequence = MallEditText.a.b(this.nqq).iterator();
+        ab.d("MicroMsg.MallEditText", "performFiltering ".concat(String.valueOf(paramCharSequence)));
+        paramCharSequence = MallEditText.a.b(this.pVE).iterator();
         while (paramCharSequence.hasNext())
         {
           localObject1 = (com.tencent.mm.plugin.recharge.model.a)paramCharSequence.next();
-          if (((com.tencent.mm.plugin.recharge.model.a)localObject1).npv.equals(MallEditText.a.a(this.nqq)))
+          if (((com.tencent.mm.plugin.recharge.model.a)localObject1).pUJ.equals(MallEditText.a.a(this.pVE)))
           {
-            ((com.tencent.mm.plugin.recharge.model.a)localObject1).npx = com.tencent.mm.plugin.recharge.model.a.npt;
+            ((com.tencent.mm.plugin.recharge.model.a)localObject1).pUL = com.tencent.mm.plugin.recharge.model.a.pUH;
             localArrayList.clear();
             localArrayList.add(localObject1);
           }
         }
         if (localArrayList.size() <= 0)
         {
-          paramCharSequence = MallEditText.f(this.nqq.nqk);
+          paramCharSequence = MallEditText.f(this.pVE.pVy);
           if (paramCharSequence != null) {}
         }
         try
         {
-          MallEditText.a(this.nqq.nqk, com.tencent.mm.pluginsdk.a.ck(this.nqq.nqk.getContext()));
-          if (MallEditText.f(this.nqq.nqk) != null)
+          MallEditText.a(this.pVE.pVy, com.tencent.mm.pluginsdk.a.cL(this.pVE.pVy.getContext()));
+          if (MallEditText.f(this.pVE.pVy) != null)
           {
-            paramCharSequence = MallEditText.f(this.nqq.nqk).iterator();
+            paramCharSequence = MallEditText.f(this.pVE.pVy).iterator();
             if (paramCharSequence.hasNext())
             {
               localObject2 = (String[])paramCharSequence.next();
-              str = b.qa(localObject2[2]);
-              localObject1 = et(MallEditText.a.a(this.nqq), str);
-              if (!com.tencent.mm.plugin.recharge.model.a.npt.equals(localObject1)) {
-                break label679;
+              str = b.xw(localObject2[2]);
+              localObject1 = fR(MallEditText.a.a(this.pVE), str);
+              if (!com.tencent.mm.plugin.recharge.model.a.pUH.equals(localObject1)) {
+                break label680;
               }
               paramCharSequence = new com.tencent.mm.plugin.recharge.model.a(str, localObject2[1], 1);
-              paramCharSequence.npx = com.tencent.mm.plugin.recharge.model.a.npt;
+              paramCharSequence.pUL = com.tencent.mm.plugin.recharge.model.a.pUH;
               localArrayList.clear();
               localArrayList.add(paramCharSequence);
             }
           }
-          y.d("MicroMsg.MallEditText", " search phone number cost " + (System.currentTimeMillis() - l) + " ms ");
+          ab.d("MicroMsg.MallEditText", " search phone number cost " + (System.currentTimeMillis() - l) + " ms ");
           bool = true;
         }
         catch (Exception paramCharSequence)
@@ -163,24 +175,24 @@ final class MallEditText$a$a
           {
             Object localObject2;
             String str;
-            y.printErrStackTrace("MicroMsg.MallEditText", paramCharSequence, "", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.MallEditText", paramCharSequence, "", new Object[0]);
             continue;
-            label679:
-            if ((!com.tencent.mm.plugin.recharge.model.a.npu.equals(localObject1)) && (localArrayList.size() < 5))
+            label680:
+            if ((!com.tencent.mm.plugin.recharge.model.a.pUI.equals(localObject1)) && (localArrayList.size() < 5))
             {
               localObject2 = new com.tencent.mm.plugin.recharge.model.a(str, localObject2[1], 1);
-              ((com.tencent.mm.plugin.recharge.model.a)localObject2).npx = ((int[])localObject1);
+              ((com.tencent.mm.plugin.recharge.model.a)localObject2).pUL = ((int[])localObject1);
               localArrayList.add(localObject2);
             }
           }
         }
       }
-      if ((localArrayList.size() == 1) && (this.nqq.nqk.YL()))
+      if ((localArrayList.size() == 1) && (this.pVE.pVy.asv()))
       {
         paramCharSequence = (com.tencent.mm.plugin.recharge.model.a)localArrayList.get(0);
-        if (com.tencent.mm.plugin.recharge.model.a.npt.equals(paramCharSequence.npx))
+        if (com.tencent.mm.plugin.recharge.model.a.pUH.equals(paramCharSequence.pUL))
         {
-          MallEditText.a(this.nqq.nqk).post(new MallEditText.a.a.3(this, paramCharSequence));
+          MallEditText.a(this.pVE.pVy).post(new MallEditText.a.a.3(this, paramCharSequence));
           bool = false;
         }
       }
@@ -191,7 +203,7 @@ final class MallEditText$a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.MallEditText.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.luckymoney.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import com.tencent.mm.plugin.luckymoney.b.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.ad;
 import com.tencent.mm.plugin.report.service.h;
 
 final class LuckyMoneyBusiReceiveUI$4
@@ -13,15 +14,17 @@ final class LuckyMoneyBusiReceiveUI$4
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11701, new Object[] { Integer.valueOf(10), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
-    if (LuckyMoneyBusiReceiveUI.f(this.lUZ).isChecked()) {
-      h.nFQ.f(13050, new Object[] { Integer.valueOf(LuckyMoneyBusiReceiveUI.g(this.lUZ)), Integer.valueOf(2), LuckyMoneyBusiReceiveUI.h(this.lUZ).lQX });
+    AppMethodBeat.i(42619);
+    h.qsU.e(11701, new Object[] { Integer.valueOf(10), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
+    if (LuckyMoneyBusiReceiveUI.f(this.osi).isChecked()) {
+      h.qsU.e(13050, new Object[] { Integer.valueOf(LuckyMoneyBusiReceiveUI.g(this.osi)), Integer.valueOf(2), LuckyMoneyBusiReceiveUI.h(this.osi).ooM });
     }
     for (;;)
     {
-      LuckyMoneyBusiReceiveUI.i(this.lUZ);
+      LuckyMoneyBusiReceiveUI.i(this.osi);
+      AppMethodBeat.o(42619);
       return;
-      h.nFQ.f(13050, new Object[] { Integer.valueOf(LuckyMoneyBusiReceiveUI.g(this.lUZ)), Integer.valueOf(2), "" });
+      h.qsU.e(13050, new Object[] { Integer.valueOf(LuckyMoneyBusiReceiveUI.g(this.osi)), Integer.valueOf(2), "" });
     }
   }
 }

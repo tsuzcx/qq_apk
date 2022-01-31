@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fts.ui.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements View.OnClickListener
@@ -10,14 +11,16 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    if (a.a(this.kFj) != null) {
-      a.a(this.kFj).onClickBackBtn(paramView);
+    AppMethodBeat.i(62157);
+    if (a.a(this.nbx) != null) {
+      a.a(this.nbx).onClickBackBtn(paramView);
     }
+    AppMethodBeat.o(62157);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.a.1
  * JD-Core Version:    0.7.0.1
  */

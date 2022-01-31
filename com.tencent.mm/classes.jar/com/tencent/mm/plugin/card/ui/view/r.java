@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.card.ui.view;
 
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.ui.MMActivity;
 
@@ -15,21 +14,21 @@ public final class r
   
   public final void a(ViewGroup paramViewGroup, b paramb) {}
   
-  public final boolean aCV()
+  public final void b(ViewGroup paramViewGroup, b paramb) {}
+  
+  public final boolean bfr()
   {
     return false;
   }
   
-  public final boolean aCW()
+  public final boolean bfs()
   {
     return true;
   }
   
-  public final void b(ViewGroup paramViewGroup, b paramb) {}
-  
   public final int getLayoutId()
   {
-    return a.e.card_code_member_text;
+    return 2130968919;
   }
 }
 

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.kernel.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.a.a;
-import com.tencent.mm.storage.z;
+import com.tencent.mm.plugin.account.friend.a.l;
 
 final class FindMContactLearmMoreUI$1
   implements View.OnClickListener
@@ -14,9 +14,11 @@ final class FindMContactLearmMoreUI$1
   
   public final void onClick(View paramView)
   {
-    g.DP().Dz().o(12322, Boolean.valueOf(true));
-    ((a)g.t(a.class)).syncUploadMContactStatus(true, false);
-    FindMContactLearmMoreUI.a(this.fdq);
+    AppMethodBeat.i(13622);
+    l.dx(true);
+    ((a)g.G(a.class)).syncUploadMContactStatus(true, false);
+    FindMContactLearmMoreUI.a(this.gvb);
+    AppMethodBeat.o(13622);
   }
 }
 

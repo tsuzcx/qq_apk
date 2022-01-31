@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class b$1
   implements Runnable
@@ -11,19 +12,21 @@ final class b$1
   
   public final void run()
   {
-    b localb = this.miy;
-    y.i("MicroMsg.FrameBufProcessor", "process srcWidth %d srcHeight %d targetWidth %d targetHeight %d bufIndex: %d", new Object[] { Integer.valueOf(localb.eJm), Integer.valueOf(localb.eJn), Integer.valueOf(localb.eIB), Integer.valueOf(localb.eIC), Integer.valueOf(localb.mis) });
-    if ((localb.eID == 21) || (localb.eID == 2130706688)) {
-      SightVideoJNI.NV21ToYUV420XXAndScaleRotate(localb.mip, localb.miq, localb.eJm, localb.eJn, localb.eIB, localb.eIC, 1, localb.rotate, localb.miu, localb.miw, localb.miv);
+    AppMethodBeat.i(76569);
+    b localb = this.oIE;
+    ab.i("MicroMsg.FrameBufProcessor", "process srcWidth %d srcHeight %d targetWidth %d targetHeight %d bufIndex: %d", new Object[] { Integer.valueOf(localb.fYR), Integer.valueOf(localb.fYS), Integer.valueOf(localb.eRu), Integer.valueOf(localb.eRv), Integer.valueOf(localb.oIz) });
+    if ((localb.eRx == 21) || (localb.eRx == 2130706688)) {
+      SightVideoJNI.NV21ToYUV420XXAndScaleRotate(localb.oIw, localb.oIx, localb.fYR, localb.fYS, localb.eRu, localb.eRv, 1, localb.rotate, localb.oIB, localb.oIC, localb.jdF);
     }
     for (;;)
     {
-      y.v("MicroMsg.FrameBufProcessor", "process used %sms %d %d bufIndex %d", new Object[] { Long.valueOf(bk.cp(localb.mit)), Integer.valueOf(localb.mip.length), Integer.valueOf(localb.miq.length), Integer.valueOf(localb.mis) });
-      this.mix.a(this.miy);
-      j.mji.z(this.miy.mip);
+      ab.v("MicroMsg.FrameBufProcessor", "process used %sms %d %d bufIndex %d", new Object[] { Long.valueOf(bo.av(localb.oIA)), Integer.valueOf(localb.oIw.length), Integer.valueOf(localb.oIx.length), Integer.valueOf(localb.oIz) });
+      this.oID.a(this.oIE);
+      j.oJp.O(this.oIE.oIw);
+      AppMethodBeat.o(76569);
       return;
-      if (localb.eID == 19) {
-        SightVideoJNI.NV21ToYUV420XXAndScaleRotate(localb.mip, localb.miq, localb.eJm, localb.eJn, localb.eIB, localb.eIC, 2, localb.rotate, localb.miu, localb.miw, localb.miv);
+      if (localb.eRx == 19) {
+        SightVideoJNI.NV21ToYUV420XXAndScaleRotate(localb.oIw, localb.oIx, localb.fYR, localb.fYS, localb.eRu, localb.eRv, 2, localb.rotate, localb.oIB, localb.oIC, localb.jdF);
       }
     }
   }

@@ -1,72 +1,106 @@
 package com.tencent.mm.cf;
 
-import android.database.Cursor;
-import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.PowerManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c
+  extends BroadcastReceiver
 {
-  private static int index = 0;
-  private static boolean on = false;
-  private static g.a uDH = null;
-  private static long uDI = 0L;
-  private static int uDJ = 0;
+  a<Boolean> yws;
+  a<Boolean> ywt;
   
-  static void a(String paramString, Cursor paramCursor, long paramLong)
+  c(Context paramContext)
   {
-    if (!on) {
-      return;
-    }
-    long l = uDH.zJ();
-    Object localObject1 = "Thread:[" + Thread.currentThread().getId() + "," + Thread.currentThread().getName() + "]";
-    Object localObject2 = (String)localObject1 + "[" + index + "][" + l + "]";
-    localObject1 = localObject2;
-    if (paramLong != 0L) {
-      localObject1 = (String)localObject2 + "[INTRANS]";
-    }
-    localObject2 = localObject1;
-    if (paramCursor != null)
+    AppMethodBeat.i(58950);
+    Object localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_ON");
+    ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
+    ((IntentFilter)localObject).addAction("android.intent.action.ACTION_POWER_CONNECTED");
+    ((IntentFilter)localObject).addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
+    paramContext.registerReceiver(this, (IntentFilter)localObject);
+    localObject = paramContext.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
-      p(paramCursor);
-      localObject2 = (String)localObject1 + "[cuCnt:" + uDJ + ",cuTime:" + uDI + "]";
+      int i = ((Intent)localObject).getIntExtra("status", -1);
+      if (i != 2)
+      {
+        bool1 = bool2;
+        if (i != 5) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
     }
-    paramString = (String)localObject2 + "[" + paramString + "]--";
-    y.v("MicroMsg.dbtest", paramString + bk.csb());
+    this.yws = new a("charging", Boolean.valueOf(bool1));
+    this.ywt = new a("interactive", Boolean.valueOf(((PowerManager)paramContext.getSystemService("power")).isScreenOn()));
+    AppMethodBeat.o(58950);
   }
   
-  static void begin()
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!on) {
-      return;
-    }
-    uDH = new g.a();
-    index += 1;
-  }
-  
-  public static void j(Exception paramException)
-  {
-    if (on) {
-      y.e("MicroMsg.DKTest", "exception:%s", new Object[] { bk.j(paramException) });
-    }
-  }
-  
-  private static void p(Cursor paramCursor)
-  {
-    if (!on) {}
-    while (paramCursor == null) {
-      return;
-    }
-    uDJ = paramCursor.getCount();
-    g.a locala = new g.a();
-    int i = 0;
-    while (i < uDJ)
+    AppMethodBeat.i(58951);
+    paramIntent = paramIntent.getAction();
+    if (paramIntent == null)
     {
-      paramCursor.moveToPosition(i);
-      i += 1;
+      AppMethodBeat.o(58951);
+      return;
     }
-    paramCursor.moveToPosition(-1);
-    uDI = locala.zJ();
+    paramContext = null;
+    int i = -1;
+    switch (paramIntent.hashCode())
+    {
+    default: 
+      switch (i)
+      {
+      }
+      break;
+    }
+    for (;;)
+    {
+      if (paramContext != null) {
+        ab.i("MicroMsg.SystemStatus", "System status changed: %s = %s", new Object[] { paramContext.name(), paramContext.get().toString() });
+      }
+      AppMethodBeat.o(58951);
+      return;
+      if (!paramIntent.equals("android.intent.action.SCREEN_ON")) {
+        break;
+      }
+      i = 0;
+      break;
+      if (!paramIntent.equals("android.intent.action.SCREEN_OFF")) {
+        break;
+      }
+      i = 1;
+      break;
+      if (!paramIntent.equals("android.intent.action.ACTION_POWER_CONNECTED")) {
+        break;
+      }
+      i = 2;
+      break;
+      if (!paramIntent.equals("android.intent.action.ACTION_POWER_DISCONNECTED")) {
+        break;
+      }
+      i = 3;
+      break;
+      this.ywt.set(Boolean.TRUE);
+      paramContext = this.ywt;
+      continue;
+      this.ywt.set(Boolean.FALSE);
+      paramContext = this.ywt;
+      continue;
+      this.yws.set(Boolean.TRUE);
+      paramContext = this.yws;
+      continue;
+      this.yws.set(Boolean.FALSE);
+      paramContext = this.yws;
+    }
   }
 }
 

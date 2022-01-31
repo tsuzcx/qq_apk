@@ -2,9 +2,9 @@ package com.tencent.mm.modelvideo;
 
 public final class t$b
 {
-  public int bDu = 0;
   public byte[] buf = null;
-  public int eIh = 0;
+  public int ckj = 0;
+  public int fXX = 0;
   public int ret = 0;
 }
 

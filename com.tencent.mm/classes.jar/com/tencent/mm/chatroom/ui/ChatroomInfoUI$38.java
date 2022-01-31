@@ -1,5 +1,7 @@
 package com.tencent.mm.chatroom.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class ChatroomInfoUI$38
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class ChatroomInfoUI$38
   
   public final void run()
   {
-    ChatroomInfoUI.c(this.dod, "room_notify_new_msg");
-    ChatroomInfoUI.B(this.dod);
+    AppMethodBeat.i(104007);
+    ChatroomInfoUI.c(this.efA, "room_notify_new_msg");
+    ChatroomInfoUI.B(this.efA);
+    AppMethodBeat.o(104007);
   }
 }
 

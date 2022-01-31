@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.topstory.ui.video.fs;
 
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class f$1
-  implements am.a
+  implements ap.a
 {
   f$1(f paramf) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.pHo.setVisibility(8);
-    f.a(this.pHo).stopTimer();
+    AppMethodBeat.i(1925);
+    this.tkJ.setVisibility(8);
+    f.a(this.tkJ).stopTimer();
+    AppMethodBeat.o(1925);
     return false;
   }
 }

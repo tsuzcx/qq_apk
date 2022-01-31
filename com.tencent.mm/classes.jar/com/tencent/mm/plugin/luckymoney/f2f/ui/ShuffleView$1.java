@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.luckymoney.f2f.ui;
 
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class ShuffleView$1
@@ -11,15 +12,17 @@ final class ShuffleView$1
   
   public final void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ShuffleView.a(this.lPv);
-    paramView = this.lPv;
+    AppMethodBeat.i(42224);
+    ShuffleView.a(this.omN);
+    paramView = this.omN;
     paramInt1 = 0;
-    while (paramInt1 < paramView.lPk)
+    while (paramInt1 < paramView.omE)
     {
-      paramView.K((View)paramView.lOX.get(paramInt1), paramInt1);
+      paramView.aa((View)paramView.omr.get(paramInt1), paramInt1);
       paramInt1 += 1;
     }
-    this.lPv.removeOnLayoutChangeListener(this);
+    this.omN.removeOnLayoutChangeListener(this);
+    AppMethodBeat.o(42224);
   }
 }
 

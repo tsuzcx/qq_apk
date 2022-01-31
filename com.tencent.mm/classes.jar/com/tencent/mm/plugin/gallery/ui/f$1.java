@@ -7,75 +7,71 @@ import android.support.v7.widget.a.a.a;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import com.tencent.mm.R.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$1
   extends a.a
 {
-  int cbV = -1;
+  int cKB = -1;
   
   f$1(f paramf) {}
   
   public final void a(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.v paramv, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
+    AppMethodBeat.i(21575);
     super.a(paramCanvas, paramRecyclerView, paramv, paramFloat1 / 1.3F, paramFloat2 / 1.3F, paramInt, paramBoolean);
+    AppMethodBeat.o(21575);
   }
   
   public final void a(RecyclerView paramRecyclerView, RecyclerView.v paramv)
   {
+    AppMethodBeat.i(21574);
     if (paramv != null)
     {
       super.a(paramRecyclerView, paramv);
-      paramRecyclerView = AnimationUtils.loadAnimation(f.b(this.kKu), R.a.move_scale_in);
+      paramRecyclerView = AnimationUtils.loadAnimation(f.b(this.ngU), 2131034203);
       paramRecyclerView.setAnimationListener(new f.1.2(this));
-      ((f.a)paramv).kKz.startAnimation(paramRecyclerView);
+      ((f.a)paramv).ngZ.startAnimation(paramRecyclerView);
     }
+    AppMethodBeat.o(21574);
   }
   
   public final boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2)
   {
-    int i = paramv1.id();
-    int j = paramv2.id();
-    this.kKu.ai(i, j);
-    if (f.a(this.kKu) != null) {
-      f.a(this.kKu).cW(i, j);
+    AppMethodBeat.i(21572);
+    int i = paramv1.jN();
+    int j = paramv2.jN();
+    this.ngU.ao(i, j);
+    if (f.a(this.ngU) != null) {
+      f.a(this.ngU).et(i, j);
     }
-    f.a(this.kKu, j);
+    f.a(this.ngU, j);
+    AppMethodBeat.o(21572);
     return false;
   }
   
   public final void f(RecyclerView.v paramv, int paramInt)
   {
+    AppMethodBeat.i(21573);
     super.f(paramv, paramInt);
     if (paramv != null)
     {
-      Animation localAnimation = AnimationUtils.loadAnimation(f.b(this.kKu), R.a.move_scale_out);
+      Animation localAnimation = AnimationUtils.loadAnimation(f.b(this.ngU), 2131034204);
       localAnimation.setAnimationListener(new f.1.1(this, paramInt, paramv));
-      ((f.a)paramv).kKz.startAnimation(localAnimation);
+      ((f.a)paramv).ngZ.startAnimation(localAnimation);
     }
+    AppMethodBeat.o(21573);
   }
   
-  public final int jj()
-  {
-    return 3342387;
-  }
-  
-  public final boolean jl()
-  {
-    return true;
-  }
-  
-  public final boolean jm()
+  public final boolean le()
   {
     return false;
   }
   
-  public final float jp()
+  public final float lf()
   {
     return 0.295858F;
   }
-  
-  public final void jq() {}
 }
 
 

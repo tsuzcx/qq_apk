@@ -1,32 +1,47 @@
 package com.tencent.mm.plugin.appbrand.c;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 public final class c
 {
-  public HashMap<String, a> fNk = new HashMap();
+  public HashMap<String, a> hgu;
+  
+  public c()
+  {
+    AppMethodBeat.i(129824);
+    this.hgu = new HashMap();
+    AppMethodBeat.o(129824);
+  }
   
   public final void a(a parama)
   {
-    if ((parama == null) || (bk.bl(parama.bMB)))
+    AppMethodBeat.i(129825);
+    if ((parama == null) || (bo.isNullOrNil(parama.ctV)))
     {
-      y.e("MicroMsg.AppbrandMediaCdnItemManager", "item is null or local id is null, ignore this add");
+      ab.e("MicroMsg.AppbrandMediaCdnItemManager", "item is null or local id is null, ignore this add");
+      AppMethodBeat.o(129825);
       return;
     }
-    y.i("MicroMsg.AppbrandMediaCdnItemManager", "add cdn item, local id : %s, file path : %s", new Object[] { parama.bMB, parama.fMZ });
-    this.fNk.put(parama.bMB, parama);
+    ab.i("MicroMsg.AppbrandMediaCdnItemManager", "add cdn item, local id : %s, file path : %s", new Object[] { parama.ctV, parama.hgj });
+    this.hgu.put(parama.ctV, parama);
+    AppMethodBeat.o(129825);
   }
   
-  public final a rQ(String paramString)
+  public final a zG(String paramString)
   {
-    if (bk.bl(paramString))
+    AppMethodBeat.i(129826);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.AppbrandMediaCdnItemManager", "get by local id error, local id is null or nil");
+      ab.e("MicroMsg.AppbrandMediaCdnItemManager", "get by local id error, local id is null or nil");
+      AppMethodBeat.o(129826);
       return null;
     }
-    return (a)this.fNk.get(paramString);
+    paramString = (a)this.hgu.get(paramString);
+    AppMethodBeat.o(129826);
+    return paramString;
   }
 }
 

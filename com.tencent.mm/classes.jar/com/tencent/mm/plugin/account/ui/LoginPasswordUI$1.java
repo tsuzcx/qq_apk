@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LoginPasswordUI$1
   implements TextView.OnEditorActionListener
@@ -11,11 +12,14 @@ final class LoginPasswordUI$1
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(124998);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      this.fnq.XJ();
+      this.gEJ.arq();
+      AppMethodBeat.o(124998);
       return true;
     }
+    AppMethodBeat.o(124998);
     return false;
   }
 }

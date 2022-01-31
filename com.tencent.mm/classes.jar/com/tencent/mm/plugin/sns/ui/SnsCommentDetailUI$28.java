@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.h;
 
 final class SnsCommentDetailUI$28
   implements View.OnClickListener
@@ -13,15 +12,9 @@ final class SnsCommentDetailUI$28
   
   public final void onClick(View paramView)
   {
-    try
-    {
-      int i = ((Integer)paramView.getTag()).intValue();
-      paramView = new Intent();
-      paramView.putExtra("sns_label_sns_info", i);
-      a.eUR.v(paramView, this.oWW);
-      return;
-    }
-    catch (Exception paramView) {}
+    AppMethodBeat.i(38811);
+    h.a(this.rPu, 2131304007, 2131297087, new SnsCommentDetailUI.28.1(this), null);
+    AppMethodBeat.o(38811);
   }
 }
 

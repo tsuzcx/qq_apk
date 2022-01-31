@@ -1,174 +1,103 @@
 package com.tencent.xweb;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Debug;
-import com.tencent.xweb.c.j;
-import com.tencent.xweb.c.j.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.xwalk.core.XWalkEnvironment;
 
 public final class k
 {
-  private static k xgJ = null;
-  public Context xgK;
-  WebView.d xgL = WebView.d.xhn;
-  public boolean xgM = false;
-  public boolean xgN = false;
-  public boolean xgO = false;
-  boolean xgP = false;
-  public boolean xgQ = false;
-  public boolean xgR = false;
-  public g.a xgS = g.a.xgw;
-  public boolean xgT = false;
-  String xgU = "";
+  public static a BDm;
+  private static String BDn = "";
   
-  public static k cSk()
+  public static a a(a parama, String paramString, Context paramContext)
   {
-    return xgJ;
-  }
-  
-  public static void im(Context paramContext)
-  {
-    if (xgJ != null) {
-      return;
-    }
-    Object localObject = new k();
-    xgJ = (k)localObject;
-    ((k)localObject).xgK = paramContext;
-    XWalkEnvironment.init(paramContext);
-    xgJ.xgN = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowVersion", false);
-    xgJ.xgO = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bShowSavePage", false);
-    localObject = paramContext.getSharedPreferences("wcwebview", 0).getString("V8type", "RT_TYPE_AUTO");
-    try
+    AppMethodBeat.i(3811);
+    q.jS(paramContext);
+    if (q.dYn().BDQ != a.BDo)
     {
-      xgJ.xgS = g.a.valueOf((String)localObject);
-      label97:
-      xgJ.xgM = XWalkEnvironment.getSharedPreferences().getBoolean("ENABLEREMOTEDEBUG", false);
-      localObject = XWalkEnvironment.getTestDownLoadUrl(paramContext);
-      k localk = xgJ;
-      if ((localObject != null) && (!((String)localObject).isEmpty())) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localk.xgT = bool;
-        xgJ.xgQ = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("bWaitforDebugger", false);
-        if (xgJ.xgQ) {
-          Debug.waitForDebugger();
-        }
-        xgJ.xgR = paramContext.getSharedPreferences("wcwebview", 0).getBoolean("ignore_crashwatch", false);
-        return;
+      parama = q.dYn().BDQ;
+      XWalkEnvironment.addXWalkInitializeLog("XWeb", "use hardcode jscore type = ".concat(String.valueOf(parama)));
+      if (WebView.getCurWebType() != WebView.d.BEr) {
+        break label130;
       }
-    }
-    catch (Exception localException)
-    {
-      break label97;
-    }
-  }
-  
-  public final void a(g.a parama)
-  {
-    if (this.xgS == parama) {
-      return;
-    }
-    this.xgS = parama;
-    this.xgK.getSharedPreferences("wcwebview", 0).edit().putString("V8type", parama.toString()).commit();
-  }
-  
-  public final void a(String paramString, WebView.d paramd)
-  {
-    if ((this.xgK == null) || (paramString == null) || (paramString.isEmpty())) {
-      return;
-    }
-    this.xgU = paramString;
-    this.xgL = paramd;
-    this.xgK.getSharedPreferences("wcwebview", 0).edit().putString("HardCodeWebView" + paramString, paramd.toString()).commit();
-  }
-  
-  public final WebView.d agU(String paramString)
-  {
-    if (this.xgU.equals(paramString)) {
-      return this.xgL;
-    }
-    if ((paramString == null) || (paramString.isEmpty()) || (this.xgK == null)) {
-      return WebView.d.xhn;
-    }
-    this.xgU = paramString;
-    SharedPreferences localSharedPreferences = this.xgK.getSharedPreferences("wcwebview", 0);
-    if (localSharedPreferences == null) {
-      return WebView.d.xhn;
-    }
-    String str2 = localSharedPreferences.getString("HardCodeWebView" + paramString, "");
-    String str1;
-    if ((str2 != null) && (!str2.isEmpty()))
-    {
-      str1 = str2;
-      if (!str2.equals(WebView.d.xhn.toString())) {}
-    }
-    else
-    {
-      str1 = localSharedPreferences.getString("ABTestWebView" + paramString, "");
-    }
-    if ((str1 == null) || (str1.isEmpty())) {
-      this.xgL = WebView.d.xhn;
+      paramString = parama;
+      if (a.BDp != parama)
+      {
+        paramString = parama;
+        if (a.BDt != parama) {
+          paramString = a.BDw;
+        }
+      }
     }
     for (;;)
     {
-      return this.xgL;
-      try
-      {
-        this.xgL = WebView.d.valueOf(str1);
+      AppMethodBeat.o(3811);
+      return paramString;
+      if (a.axI(paramString) == a.BDo) {
+        break;
       }
-      catch (Exception paramString)
+      parama = a.axI(paramString);
+      XWalkEnvironment.addXWalkInitializeLog("XWeb", "module " + paramString + "use cmd jscore type = " + parama);
+      break;
+      label130:
+      if (WebView.getCurWebType() == WebView.d.BEq)
       {
-        this.xgL = WebView.d.xhn;
+        paramString = parama;
+        if (a.BDv != parama)
+        {
+          paramString = parama;
+          if (a.BDu != parama)
+          {
+            paramString = parama;
+            if (a.BDp != parama) {
+              paramString = a.BDw;
+            }
+          }
+        }
+      }
+      else
+      {
+        paramString = parama;
+        if (WebView.getCurWebType() == WebView.d.BEs)
+        {
+          paramString = parama;
+          if (a.BDp != parama) {
+            paramString = a.BDw;
+          }
+        }
       }
     }
   }
   
-  public final void oq(boolean paramBoolean)
+  public static a dYj()
   {
-    if (paramBoolean == this.xgM) {
-      return;
-    }
-    this.xgM = paramBoolean;
-    XWalkEnvironment.getSharedPreferences().edit().putBoolean("ENABLEREMOTEDEBUG", paramBoolean).commit();
+    return BDm;
   }
   
-  public final void or(boolean paramBoolean)
+  public static String dYk()
   {
-    if (paramBoolean == this.xgO) {
-      return;
-    }
-    this.xgO = paramBoolean;
-    this.xgK.getSharedPreferences("wcwebview", 0).edit().putBoolean("bShowSavePage", this.xgO).commit();
+    return BDn;
   }
   
-  public final void os(boolean paramBoolean)
+  public static enum a
   {
-    if (paramBoolean == this.xgT) {
-      return;
-    }
-    this.xgT = paramBoolean;
-    if (this.xgT)
+    static
     {
-      if (XWalkEnvironment.isIaDevice()) {
-        XWalkEnvironment.setTestDownLoadUrl(this.xgK, "https://dldir1.qq.com/weixin/android/wxweb/updateConfig_x86_test.xml");
-      }
-      for (;;)
-      {
-        localEditor = XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit();
-        localEditor.putLong("nLastFetchConfigTime", 0L);
-        localEditor.commit();
-        j.c(WebView.d.xho).excute("STR_CMD_CLEAR_SCHEDULER", null);
-        return;
-        XWalkEnvironment.setTestDownLoadUrl(this.xgK, "https://dldir1.qq.com/weixin/android/wxweb/updateConfig_test.xml");
-      }
+      AppMethodBeat.i(3810);
+      BDo = new a("RT_TYPE_AUTO", 0);
+      BDp = new a("RT_TYPE_SYS", 1);
+      BDq = new a("RT_TYPE_XWALK", 2);
+      BDr = new a("RT_TYPE_WEB_X5", 3);
+      BDs = new a("RT_TYPE_DUMMY", 4);
+      BDt = new a("RT_TYPE_X5", 5);
+      BDu = new a("RT_TYPE_J2V8", 6);
+      BDv = new a("RT_TYPE_NATIVE_SCRIPT", 7);
+      BDw = new a("RT_TYPE_MMV8", 8);
+      BDx = new a[] { BDo, BDp, BDq, BDr, BDs, BDt, BDu, BDv, BDw };
+      AppMethodBeat.o(3810);
     }
-    XWalkEnvironment.setTestDownLoadUrl(this.xgK, "");
-    SharedPreferences.Editor localEditor = XWalkEnvironment.getSharedPreferencesForUpdateConfig().edit();
-    localEditor.putLong("nLastFetchConfigTime", 0L);
-    localEditor.commit();
-    j.c(WebView.d.xho).excute("STR_CMD_CLEAR_SCHEDULER", null);
+    
+    private a() {}
   }
 }
 

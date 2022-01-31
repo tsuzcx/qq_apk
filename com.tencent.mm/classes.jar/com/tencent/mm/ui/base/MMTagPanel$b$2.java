@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MMTagPanel$b$2
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class MMTagPanel$b$2
   
   public final void run()
   {
-    MMTagPanel.e(this.uYs.uYn).Bg(this.bnl.trim());
+    AppMethodBeat.i(106822);
+    MMTagPanel.e(this.zmI.zmE).Li(this.bMK.trim());
+    AppMethodBeat.o(106822);
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.recents.r;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,50 +12,73 @@ public final class ab
 {
   public ab(List<LocalUsageInfo> paramList1, List<LocalUsageInfo> paramList2)
   {
-    super(as(paramList1), as(paramList2));
+    super(aB(paramList1), aB(paramList2));
+    AppMethodBeat.i(129710);
+    AppMethodBeat.o(129710);
   }
   
-  private static <T> ArrayList<T> as(List<T> paramList)
+  private static <T> ArrayList<T> aB(List<T> paramList)
   {
-    if ((paramList instanceof ArrayList)) {
-      return (ArrayList)paramList;
+    AppMethodBeat.i(129711);
+    if ((paramList instanceof ArrayList))
+    {
+      paramList = (ArrayList)paramList;
+      AppMethodBeat.o(129711);
+      return paramList;
     }
-    if (bk.dk(paramList)) {
-      return new ArrayList(0);
+    if (bo.es(paramList))
+    {
+      paramList = new ArrayList(0);
+      AppMethodBeat.o(129711);
+      return paramList;
     }
     ArrayList localArrayList = new ArrayList(paramList.size());
     localArrayList.addAll(paramList);
+    AppMethodBeat.o(129711);
     return localArrayList;
   }
   
-  public final boolean C(int paramInt1, int paramInt2)
+  public final boolean F(int paramInt1, int paramInt2)
   {
-    LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.hjX.get(paramInt1);
-    LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.hjY.get(paramInt2);
-    return (bk.pm(localLocalUsageInfo1.username).equals(localLocalUsageInfo2.username)) && (localLocalUsageInfo1.fJy == localLocalUsageInfo2.fJy);
+    AppMethodBeat.i(129712);
+    LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.iVE.get(paramInt1);
+    LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.iVF.get(paramInt2);
+    if ((bo.nullAsNil(localLocalUsageInfo1.username).equals(localLocalUsageInfo2.username)) && (localLocalUsageInfo1.hcr == localLocalUsageInfo2.hcr))
+    {
+      AppMethodBeat.o(129712);
+      return true;
+    }
+    AppMethodBeat.o(129712);
+    return false;
   }
   
-  public final boolean D(int paramInt1, int paramInt2)
+  public final boolean G(int paramInt1, int paramInt2)
   {
-    LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.hjX.get(paramInt1);
-    LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.hjY.get(paramInt2);
-    return bk.pm(localLocalUsageInfo1.fJY).equals(localLocalUsageInfo2.fJY);
+    AppMethodBeat.i(129713);
+    LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.iVE.get(paramInt1);
+    LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.iVF.get(paramInt2);
+    boolean bool = bo.nullAsNil(localLocalUsageInfo1.hcN).equals(localLocalUsageInfo2.hcN);
+    AppMethodBeat.o(129713);
+    return bool;
   }
   
-  public final Object E(int paramInt1, int paramInt2)
+  public final Object H(int paramInt1, int paramInt2)
   {
-    if (paramInt1 >= this.hjX.size()) {
+    AppMethodBeat.i(129714);
+    if (paramInt1 >= this.iVE.size())
+    {
+      AppMethodBeat.o(129714);
       return null;
     }
     Bundle localBundle = new Bundle();
     try
     {
-      LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.hjX.get(paramInt1);
-      LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.hjY.get(paramInt2);
-      if (!bk.pm(localLocalUsageInfo1.fJY).equals(localLocalUsageInfo2.fJY)) {
-        localBundle.putString("icon", localLocalUsageInfo2.fJY);
+      LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.iVE.get(paramInt1);
+      LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.iVF.get(paramInt2);
+      if (!bo.nullAsNil(localLocalUsageInfo1.hcN).equals(localLocalUsageInfo2.hcN)) {
+        localBundle.putString("icon", localLocalUsageInfo2.hcN);
       }
-      if (!bk.pm(localLocalUsageInfo1.nickname).equals(localLocalUsageInfo2.nickname)) {
+      if (!bo.nullAsNil(localLocalUsageInfo1.nickname).equals(localLocalUsageInfo2.nickname)) {
         localBundle.putString("nick_name", localLocalUsageInfo2.nickname);
       }
     }
@@ -64,8 +88,11 @@ public final class ab
       {
         localBundle.clear();
       }
+      AppMethodBeat.o(129714);
     }
-    if (localBundle.size() <= 0) {
+    if (localBundle.size() <= 0)
+    {
+      AppMethodBeat.o(129714);
       return null;
     }
     return localBundle;

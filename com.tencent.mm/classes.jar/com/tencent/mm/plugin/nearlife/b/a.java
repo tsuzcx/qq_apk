@@ -1,44 +1,49 @@
 package com.tencent.mm.plugin.nearlife.b;
 
-import com.tencent.mm.protocal.c.atn;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.bml;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.azs;
+import com.tencent.mm.protocal.protobuf.bwc;
 import java.util.LinkedList;
 
 public final class a
 {
-  public String bGw;
-  public int cCu;
-  public int hQR;
-  public String lJP;
-  public String lJQ;
-  public String mDU;
-  public float mDV;
-  public int mDW;
-  public LinkedList<Integer> mDX = new LinkedList();
-  public int mDY;
-  public LinkedList<bml> mDZ = new LinkedList();
-  public float mEa;
-  public String mEb;
-  public bmk mEc;
-  public atn mEd;
+  public String Title;
+  public int dqG;
+  public int jKs;
+  public String ohd;
+  public String ohe;
+  public String pdW;
+  public float pdX;
+  public int pdY;
+  public LinkedList<Integer> pdZ;
+  public int pea;
+  public LinkedList<bwc> peb;
+  public float pec;
+  public String ped;
+  public SKBuiltinBuffer_t pee;
+  public azs pef;
   
-  public a(String paramString, atn paramatn)
+  public a(String paramString, azs paramazs)
   {
-    this.lJP = paramString;
-    this.mDU = paramatn.mDU;
-    this.bGw = paramatn.bGw;
-    this.mDV = paramatn.mDV;
-    this.mDW = paramatn.mDW;
-    this.mDX = paramatn.mDX;
-    this.mDY = paramatn.mDY;
-    this.mDZ = paramatn.mDZ;
-    this.mEa = paramatn.mEa;
-    this.mEb = paramatn.mEb;
-    this.hQR = paramatn.hQR;
-    this.mEc = paramatn.mEc;
-    this.cCu = paramatn.tpr;
-    this.mEd = paramatn;
+    AppMethodBeat.i(22923);
+    this.pdZ = new LinkedList();
+    this.peb = new LinkedList();
+    this.ohd = paramString;
+    this.pdW = paramazs.pdW;
+    this.Title = paramazs.Title;
+    this.pdX = paramazs.pdX;
+    this.pdY = paramazs.pdY;
+    this.pdZ = paramazs.pdZ;
+    this.pea = paramazs.pea;
+    this.peb = paramazs.peb;
+    this.pec = paramazs.pec;
+    this.ped = paramazs.ped;
+    this.jKs = paramazs.jKs;
+    this.pee = paramazs.pee;
+    this.dqG = paramazs.xpp;
+    this.pef = paramazs;
+    AppMethodBeat.o(22923);
   }
 }
 

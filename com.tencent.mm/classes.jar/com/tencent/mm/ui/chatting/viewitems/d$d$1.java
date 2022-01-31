@@ -8,30 +8,30 @@ import android.graphics.drawable.Drawable;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.widget.LinearLayout;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.ui.chatting.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 
 final class d$d$1
   implements ViewTreeObserver.OnPreDrawListener
 {
-  private boolean vCg = false;
+  private boolean zSU = false;
   
-  d$d$1(d.d paramd, d.c paramc, com.tencent.mm.ui.chatting.c.a parama, Bitmap paramBitmap) {}
+  d$d$1(d.d paramd, d.c paramc, com.tencent.mm.ui.chatting.d.a parama, Bitmap paramBitmap) {}
   
   public final boolean onPreDraw()
   {
-    if (this.vCg)
+    AppMethodBeat.i(32822);
+    if (this.zSU)
     {
-      this.vCh.vBI.getViewTreeObserver().removeOnPreDrawListener(this);
+      this.zSV.zSh.getViewTreeObserver().removeOnPreDrawListener(this);
+      AppMethodBeat.o(32822);
       return true;
     }
-    this.vCh.vBI.getViewTreeObserver().removeOnPreDrawListener(this);
-    this.vCg = true;
-    int i = com.tencent.mm.cb.a.fromDPToPix(this.vBl.vtz.getContext(), 24);
-    Bitmap localBitmap = this.ara;
+    this.zSV.zSh.getViewTreeObserver().removeOnPreDrawListener(this);
+    this.zSU = true;
+    int i = com.tencent.mm.cb.a.fromDPToPix(this.zRK.zJz.getContext(), 24);
+    Bitmap localBitmap = this.val$bitmap;
     Object localObject;
     if (localBitmap != null)
     {
@@ -40,7 +40,7 @@ final class d$d$1
     }
     else
     {
-      localObject = c.ah(this.vBl.vtz.getContext().getResources().getColor(R.e.chat_item_default_mucic_mask_color), i, i);
+      localObject = d.au(this.zRK.zJz.getContext().getResources().getColor(2131689870), i, i);
     }
     int j = ((Bitmap)localObject).getHeight();
     if (i > j) {
@@ -48,19 +48,20 @@ final class d$d$1
     }
     for (;;)
     {
-      localObject = c.f(c.W(Bitmap.createScaledBitmap((Bitmap)localObject, i, i, true)), 20);
-      j = this.vCh.vBI.getHeight();
-      int k = this.vCh.vBI.getWidth();
+      localObject = d.g(d.al(Bitmap.createScaledBitmap((Bitmap)localObject, i, i, true)), 20);
+      j = this.zSV.zSh.getHeight();
+      int k = this.zSV.zSh.getWidth();
       i = j;
       if (j == 0) {
-        i = com.tencent.mm.cb.a.aa(this.vBl.vtz.getContext(), R.f.chatting_music_item_height);
+        i = com.tencent.mm.cb.a.ao(this.zRK.zJz.getContext(), 2131428225);
       }
       j = k;
       if (k == 0) {
-        j = com.tencent.mm.cb.a.aa(this.vBl.vtz.getContext(), R.f.chatting_music_item_width);
+        j = com.tencent.mm.cb.a.ao(this.zRK.zJz.getContext(), 2131428226);
       }
-      localObject = new BitmapDrawable(c.a((Bitmap)localObject, R.g.chat_from_content_bg_mask, j, i));
-      this.vCh.vBI.setBackgroundDrawable((Drawable)localObject);
+      localObject = new BitmapDrawable(d.a((Bitmap)localObject, 2130838217, j, i));
+      this.zSV.zSh.setBackgroundDrawable((Drawable)localObject);
+      AppMethodBeat.o(32822);
       return true;
     }
   }

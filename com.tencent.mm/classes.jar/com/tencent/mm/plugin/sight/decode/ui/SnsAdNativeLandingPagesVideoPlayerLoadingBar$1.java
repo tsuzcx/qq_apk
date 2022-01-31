@@ -6,7 +6,8 @@ import android.view.View.OnTouchListener;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsAdNativeLandingPagesVideoPlayerLoadingBar$1
   implements View.OnTouchListener
@@ -15,51 +16,55 @@ final class SnsAdNativeLandingPagesVideoPlayerLoadingBar$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(70291);
     if (paramMotionEvent.getAction() == 0)
     {
-      y.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "ontouch down");
-      SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY, false);
-      SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY, paramMotionEvent.getX());
-      if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY) != null) {
-        SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY).akz();
+      ab.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "ontouch down");
+      SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn, false);
+      SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn, paramMotionEvent.getX());
+      if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn) != null) {
+        SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn).aFf();
       }
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(70291);
       return true;
+      int i;
       if (paramMotionEvent.getAction() == 2)
       {
         float f = paramMotionEvent.getX();
-        paramView = (FrameLayout.LayoutParams)SnsAdNativeLandingPagesVideoPlayerLoadingBar.b(this.ofY).getLayoutParams();
+        paramView = (FrameLayout.LayoutParams)SnsAdNativeLandingPagesVideoPlayerLoadingBar.b(this.qUn).getLayoutParams();
         i = paramView.leftMargin;
-        int j = (int)(f - SnsAdNativeLandingPagesVideoPlayerLoadingBar.c(this.ofY));
-        paramView.leftMargin = SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY, j + i);
-        SnsAdNativeLandingPagesVideoPlayerLoadingBar.b(this.ofY).setLayoutParams(paramView);
-        i = SnsAdNativeLandingPagesVideoPlayerLoadingBar.d(this.ofY);
-        if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.e(this.ofY) > 0)
+        int j = (int)(f - SnsAdNativeLandingPagesVideoPlayerLoadingBar.c(this.qUn));
+        paramView.leftMargin = SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn, j + i);
+        SnsAdNativeLandingPagesVideoPlayerLoadingBar.b(this.qUn).setLayoutParams(paramView);
+        i = SnsAdNativeLandingPagesVideoPlayerLoadingBar.d(this.qUn);
+        if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.e(this.qUn) > 0)
         {
-          paramView = (FrameLayout.LayoutParams)SnsAdNativeLandingPagesVideoPlayerLoadingBar.f(this.ofY).getLayoutParams();
-          paramView.width = ((int)(i * 1.0D / SnsAdNativeLandingPagesVideoPlayerLoadingBar.e(this.ofY) * SnsAdNativeLandingPagesVideoPlayerLoadingBar.g(this.ofY)));
-          SnsAdNativeLandingPagesVideoPlayerLoadingBar.f(this.ofY).setLayoutParams(paramView);
+          paramView = (FrameLayout.LayoutParams)SnsAdNativeLandingPagesVideoPlayerLoadingBar.f(this.qUn).getLayoutParams();
+          paramView.width = ((int)(i * 1.0D / SnsAdNativeLandingPagesVideoPlayerLoadingBar.e(this.qUn) * SnsAdNativeLandingPagesVideoPlayerLoadingBar.g(this.qUn)));
+          SnsAdNativeLandingPagesVideoPlayerLoadingBar.f(this.qUn).setLayoutParams(paramView);
         }
-        SnsAdNativeLandingPagesVideoPlayerLoadingBar.h(this.ofY).setText(SnsAdNativeLandingPagesVideoPlayerLoadingBar.lC(i / 60) + ":" + SnsAdNativeLandingPagesVideoPlayerLoadingBar.lC(i % 60));
-        SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY, true);
-        return true;
+        SnsAdNativeLandingPagesVideoPlayerLoadingBar.h(this.qUn).setText(SnsAdNativeLandingPagesVideoPlayerLoadingBar.ol(i / 60) + ":" + SnsAdNativeLandingPagesVideoPlayerLoadingBar.ol(i % 60));
+        SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn, true);
       }
-    } while (!SnsAdNativeLandingPagesVideoPlayerLoadingBar.i(this.ofY));
-    int i = SnsAdNativeLandingPagesVideoPlayerLoadingBar.d(this.ofY);
-    if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY) != null)
-    {
-      y.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "current time : " + i);
-      SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY).lE(i);
+      else if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.i(this.qUn))
+      {
+        i = SnsAdNativeLandingPagesVideoPlayerLoadingBar.d(this.qUn);
+        if (SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn) != null)
+        {
+          ab.i("MicroMsg.SnsAdNativeLandingPagesVideoPlayerLoadingBar", "current time : ".concat(String.valueOf(i)));
+          SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn).on(i);
+        }
+        SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.qUn, false);
+      }
     }
-    SnsAdNativeLandingPagesVideoPlayerLoadingBar.a(this.ofY, false);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.SnsAdNativeLandingPagesVideoPlayerLoadingBar.1
  * JD-Core Version:    0.7.0.1
  */

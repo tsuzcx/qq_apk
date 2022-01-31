@@ -4,20 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.view.View;
 import android.widget.Toast;
-import com.tencent.mm.a.e;
-import com.tencent.mm.h.c.r;
-import com.tencent.mm.plugin.downloader.f.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.t;
+import com.tencent.mm.plugin.downloader.f.b;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.game.d.bw;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.plugin.game.model.f;
-import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.game.d.bx;
+import com.tencent.mm.plugin.game.model.j;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 
 public final class h
@@ -28,144 +26,161 @@ public final class h
     super(paramContext);
   }
   
-  private void bae()
+  private void bHj()
   {
-    if (!aq.isNetworkConnected(this.mContext))
+    AppMethodBeat.i(111802);
+    if (!at.isNetworkConnected(this.mContext))
     {
-      Toast.makeText(this.mContext, this.mContext.getString(g.i.game_download_network_unavailable), 0).show();
+      Toast.makeText(this.mContext, this.mContext.getString(2131300360), 0).show();
+      AppMethodBeat.o(111802);
       return;
     }
-    if (aq.isWifi(this.mContext))
+    if (at.isWifi(this.mContext))
     {
-      baf();
+      bHk();
+      AppMethodBeat.o(111802);
       return;
     }
-    com.tencent.mm.ui.base.h.a(this.mContext, this.mContext.getString(g.i.webview_download_ui_download_not_in_wifi_tips), this.mContext.getString(g.i.webview_download_ui_download_not_in_wifi_title), this.mContext.getString(g.i.webview_download_ui_btn_state_to_download), this.mContext.getString(g.i.app_cancel), false, new h.1(this), new h.2(this), g.b.wechat_green);
+    com.tencent.mm.ui.base.h.a(this.mContext, this.mContext.getString(2131305852), this.mContext.getString(2131305853), this.mContext.getString(2131305847), this.mContext.getString(2131296888), false, new h.1(this), new h.2(this), 2131690701);
+    AppMethodBeat.o(111802);
   }
   
-  private void baf()
+  private void bHk()
   {
-    com.tencent.mm.game.report.api.b.dCw.a(this.kOM.field_appId, this.kOM.bXn, 10, this.kWM.field_downloadId, "", null);
+    AppMethodBeat.i(111803);
+    com.tencent.mm.plugin.downloader.f.a.a(10, new b(this.nmJ.field_appId, this.nmJ.cFj, this.nuO.field_downloadId, ""));
     com.tencent.mm.modelstat.d.b(10, "GameClickListener_resumeDownloadTask", hashCode());
-    if (com.tencent.mm.plugin.downloader.model.d.aFP().df(this.kWM.field_downloadId))
+    if (f.bjl().iC(this.nuO.field_downloadId))
     {
-      f.aj(this.mContext, this.kOM.field_appId);
-      com.tencent.mm.plugin.game.e.b.a(this.mContext, this.kOM.scene, this.kOM.bXn, this.kOM.position, 4, this.kOM.field_appId, this.kQh, this.kOM.bGy, this.kWO);
+      com.tencent.mm.plugin.game.model.e.ar(this.mContext, this.nmJ.field_appId);
+      com.tencent.mm.game.report.c.a(this.mContext, this.nmJ.scene, this.nmJ.cFj, this.nmJ.position, 4, this.nmJ.field_appId, this.nok, this.nmJ.cnG, this.nuQ);
+      AppMethodBeat.o(111803);
       return;
     }
-    y.e("MicroMsg.GameClickListener", "resumeDownloadTask false");
-    com.tencent.mm.plugin.downloader.model.d.aFP().dc(this.kWM.field_downloadId);
-    gy(false);
+    ab.e("MicroMsg.GameClickListener", "resumeDownloadTask false");
+    f.bjl().iz(this.nuO.field_downloadId);
+    ih(false);
+    AppMethodBeat.o(111803);
   }
   
-  private static boolean de(long paramLong)
+  private static boolean iB(long paramLong)
   {
-    a locala = com.tencent.mm.plugin.downloader.model.c.dk(paramLong);
+    AppMethodBeat.i(111804);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.iJ(paramLong);
     if ((locala != null) && (locala.field_downloadInWifi))
     {
       locala.field_downloadInWifi = false;
-      com.tencent.mm.plugin.downloader.model.c.d(locala);
+      com.tencent.mm.plugin.downloader.model.d.e(locala);
     }
-    return com.tencent.mm.plugin.downloader.model.d.aFP().de(paramLong);
+    boolean bool = f.bjl().iB(paramLong);
+    AppMethodBeat.o(111804);
+    return bool;
   }
   
-  public final void dr(String paramString1, String paramString2)
+  public final void eI(String paramString1, String paramString2)
   {
-    this.kWO = paramString1;
-    this.kWP = paramString2;
+    this.nuQ = paramString1;
+    this.nuR = paramString2;
   }
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(111801);
     int j;
     int i;
-    if ((paramView.getTag() instanceof com.tencent.mm.plugin.game.model.d))
+    if ((paramView.getTag() instanceof com.tencent.mm.plugin.game.model.c))
     {
-      this.kOM = ((com.tencent.mm.plugin.game.model.d)paramView.getTag());
-      y.i("MicroMsg.GameClickListener", "Clicked appid = " + this.kOM.field_appId);
-      aZV();
-      if (!g.o(this.mContext, this.kOM.field_appId)) {
-        break label476;
+      this.nmJ = ((com.tencent.mm.plugin.game.model.c)paramView.getTag());
+      ab.i("MicroMsg.GameClickListener", "Clicked appid = " + this.nmJ.field_appId);
+      bHd();
+      if (!g.u(this.mContext, this.nmJ.field_appId)) {
+        break label505;
       }
-      if (!(this.kOM instanceof com.tencent.mm.plugin.game.model.d)) {
-        break label810;
+      if (!(this.nmJ instanceof com.tencent.mm.plugin.game.model.c)) {
+        break label831;
       }
-      j = com.tencent.mm.plugin.game.f.c.Fe(this.kOM.field_packageName);
-      i = this.kOM.versionCode;
+      j = com.tencent.mm.plugin.game.f.c.Qy(this.nmJ.field_packageName);
+      i = this.nmJ.versionCode;
     }
     for (;;)
     {
-      boolean bool;
       if (i > j)
       {
-        y.i("MicroMsg.GameClickListener", "AppId: %s installed, local: %d, server: %d", new Object[] { this.kOM.field_appId, Integer.valueOf(j), Integer.valueOf(i) });
-        k.a(this.kOM.cvy, this.kOM.cvD, this.kOM.bXn, this.kOM.field_appId, this.kWN, "app_update");
-        if (this.kWL.status == 1)
+        ab.i("MicroMsg.GameClickListener", "AppId: %s installed, local: %d, server: %d", new Object[] { this.nmJ.field_appId, Integer.valueOf(j), Integer.valueOf(i) });
+        j.a(this.nmJ.djJ, this.nmJ.djO, this.nmJ.cFj, this.nmJ.field_appId, this.nuP, "app_update");
+        if (this.nuN.status == 1)
         {
-          bool = de(this.kWL.id);
-          y.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = " + bool);
+          ab.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = ".concat(String.valueOf(iB(this.nuN.id))));
+          AppMethodBeat.o(111801);
           return;
-          y.e("MicroMsg.GameClickListener", "No AppInfo");
-          return;
-        }
-        if (this.kWL.status == 2)
-        {
-          bae();
+          ab.e("MicroMsg.GameClickListener", "No AppInfo");
+          AppMethodBeat.o(111801);
           return;
         }
-        if (this.kWL.status == 3)
+        if (this.nuN.status == 2)
         {
-          if ((e.bK(this.kWL.path)) && (com.tencent.mm.plugin.game.f.c.Ff(this.kWL.path) > j))
+          bHj();
+          AppMethodBeat.o(111801);
+          return;
+        }
+        if (this.nuN.status == 3)
+        {
+          if ((com.tencent.mm.a.e.cN(this.nuN.path)) && (com.tencent.mm.plugin.game.f.c.Qz(this.nuN.path) > j))
           {
-            paramView = Uri.fromFile(new File(this.kWL.path));
-            q.g(this.mContext, paramView);
-            com.tencent.mm.plugin.game.e.b.a(this.mContext, this.kOM.scene, this.kOM.bXn, this.kOM.position, 8, this.kOM.field_appId, this.kQh, this.kOM.bGy, this.kWO);
+            paramView = Uri.fromFile(new File(this.nuN.path));
+            q.a(this.mContext, paramView, null);
+            com.tencent.mm.game.report.c.a(this.mContext, this.nmJ.scene, this.nmJ.cFj, this.nmJ.position, 8, this.nmJ.field_appId, this.nok, this.nmJ.cnG, this.nuQ);
+            AppMethodBeat.o(111801);
             return;
           }
-          gy(true);
+          ih(true);
+          AppMethodBeat.o(111801);
           return;
         }
-        gy(true);
+        ih(true);
+        AppMethodBeat.o(111801);
         return;
       }
-      y.i("MicroMsg.GameClickListener", "launchFromWX, appId = %s, pkg = %s, openId = %s", new Object[] { this.kOM.field_appId, this.kOM.field_packageName, this.kOM.field_openId });
-      com.tencent.mm.plugin.game.e.b.a(this.mContext, this.kOM.scene, this.kOM.bXn, this.kOM.position, 3, this.kOM.field_appId, this.kQh, this.kOM.bGy, this.kWO);
-      aZU();
+      ab.i("MicroMsg.GameClickListener", "launchFromWX, appId = %s, pkg = %s, openId = %s", new Object[] { this.nmJ.field_appId, this.nmJ.field_packageName, this.nmJ.field_openId });
+      com.tencent.mm.game.report.c.a(this.mContext, this.nmJ.scene, this.nmJ.cFj, this.nmJ.position, 3, this.nmJ.field_appId, this.nok, this.nmJ.cnG, this.nuQ);
+      bHc();
+      AppMethodBeat.o(111801);
       return;
-      label476:
-      if (this.kOM.aYR())
+      label505:
+      if (this.nmJ.bFQ())
       {
-        com.tencent.mm.plugin.game.f.c.o(this.mContext, this.kOM.kOs.kVm, "game_center_hv_game");
-        com.tencent.mm.plugin.game.e.b.a(this.mContext, this.kOM.scene, this.kOM.bXn, this.kOM.position, 29, this.kOM.field_appId, this.kQh, this.kOM.bGy, this.kWO);
+        com.tencent.mm.plugin.game.f.c.t(this.mContext, this.nmJ.nmp.nto, "game_center_hv_game");
+        com.tencent.mm.game.report.c.a(this.mContext, this.nmJ.scene, this.nmJ.cFj, this.nmJ.position, 29, this.nmJ.field_appId, this.nok, this.nmJ.cnG, this.nuQ);
+        AppMethodBeat.o(111801);
         return;
       }
-      k.a(this.kOM.cvy, this.kOM.cvD, this.kOM.bXn, this.kOM.field_appId, this.kWN, this.kWP);
+      j.a(this.nmJ.djJ, this.nmJ.djO, this.nmJ.cFj, this.nmJ.field_appId, this.nuP, this.nuR);
       switch (this.mStatus)
       {
       default: 
-        gy(false);
+        ih(false);
+        AppMethodBeat.o(111801);
         return;
       case 1: 
-        bool = de(this.kWL.id);
-        y.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = " + bool);
+        ab.i("MicroMsg.GameClickListener", "pauseDownloadTask ret = ".concat(String.valueOf(iB(this.nuN.id))));
+        AppMethodBeat.o(111801);
         return;
       case 2: 
-        bae();
+        bHj();
+        AppMethodBeat.o(111801);
         return;
       }
-      if ((!bk.bl(this.kWK)) && (e.bK(this.kWK)) && (com.tencent.mm.plugin.game.f.c.ds(this.kWK, this.kWM.field_md5)))
+      if ((!bo.isNullOrNil(this.nuM)) && (com.tencent.mm.a.e.cN(this.nuM)) && (com.tencent.mm.plugin.game.f.c.eJ(this.nuM, this.nuO.field_md5)))
       {
-        paramView = this.kOM.field_appId;
-        i = this.kOM.bXn;
-        long l = this.kWM.field_downloadId;
-        paramView = this.kWM.field_channelId;
-        com.tencent.mm.plugin.game.f.c.eQ(l);
-        com.tencent.mm.plugin.game.e.b.a(this.mContext, this.kOM.scene, this.kOM.bXn, this.kOM.position, 8, this.kOM.field_appId, this.kQh, this.kOM.bGy, this.kWO);
+        com.tencent.mm.plugin.game.f.c.km(this.nuO.field_downloadId);
+        com.tencent.mm.game.report.c.a(this.mContext, this.nmJ.scene, this.nmJ.cFj, this.nmJ.position, 8, this.nmJ.field_appId, this.nok, this.nmJ.cnG, this.nuQ);
+        AppMethodBeat.o(111801);
         return;
       }
-      gy(false);
+      ih(false);
+      AppMethodBeat.o(111801);
       return;
-      label810:
+      label831:
       i = 0;
       j = 0;
     }
@@ -173,7 +188,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.h
  * JD-Core Version:    0.7.0.1
  */

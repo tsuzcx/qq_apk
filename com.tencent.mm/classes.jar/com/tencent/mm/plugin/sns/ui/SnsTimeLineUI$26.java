@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ci.b;
 
 final class SnsTimeLineUI$26
   implements Runnable
@@ -9,17 +10,14 @@ final class SnsTimeLineUI$26
   
   public final void run()
   {
-    y.i("MicroMsg.SnsTimeLineUI", "onResume go to playAnim " + SnsTimeLineUI.C(this.pfC));
-    if (SnsTimeLineUI.C(this.pfC))
-    {
-      SnsTimeLineUI.D(this.pfC);
-      SnsTimeLineUI.E(this.pfC).bJL();
-    }
+    AppMethodBeat.i(145589);
+    b.dAs();
+    AppMethodBeat.o(145589);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsTimeLineUI.26
  * JD-Core Version:    0.7.0.1
  */

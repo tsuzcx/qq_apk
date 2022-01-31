@@ -1,95 +1,85 @@
 package com.tencent.mm.plugin.wallet_index.c;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.protocal.c.aai;
-import com.tencent.mm.protocal.c.aaj;
-import com.tencent.mm.protocal.c.cia;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.g;
-import com.tencent.mm.wallet_core.c.s;
+import com.tencent.mm.protocal.protobuf.aey;
+import com.tencent.mm.protocal.protobuf.aez;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.u;
 
-public class d
-  extends s
-  implements g
+public final class d
+  extends u
 {
-  private b dmK;
-  private f dmL;
-  public String qLh;
-  public String qLi;
-  public cia qLj;
+  private f callback;
+  private b rr;
+  public String uAd;
+  public String uAe;
   
-  public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt1, int paramInt2, int paramInt3, String paramString9)
+  public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt1, int paramInt2, String paramString9)
   {
-    Object localObject1 = new b.a();
-    ((b.a)localObject1).ecH = new aai();
-    ((b.a)localObject1).ecI = new aaj();
-    ((b.a)localObject1).uri = getUri();
-    ((b.a)localObject1).ecG = getType();
-    ((b.a)localObject1).ecJ = 189;
-    ((b.a)localObject1).ecK = 1000000189;
-    ((b.a)localObject1).ecM = com.tencent.mm.wallet_core.ui.e.afr(paramString4);
-    this.dmK = ((b.a)localObject1).Kt();
-    Object localObject2 = com.tencent.mm.plugin.soter.d.d.bKR();
-    localObject1 = ((com.tencent.mm.plugin.soter.d.e)localObject2).psl;
-    localObject2 = ((com.tencent.mm.plugin.soter.d.e)localObject2).psm;
-    aai localaai = (aai)this.dmK.ecE.ecN;
-    localaai.euK = paramString1;
-    localaai.sNg = paramString4;
-    localaai.sNf = paramString3;
-    localaai.sNh = paramString5;
-    localaai.sNi = paramString2;
-    localaai.sBi = paramString6;
-    localaai.sMg = paramString7;
-    localaai.sZw = paramString8;
-    localaai.sss = paramInt1;
-    localaai.sZA = ((String)localObject1);
-    localaai.sZz = ((String)localObject2);
-    localaai.sHl = i.bVj();
+    AppMethodBeat.i(48178);
+    Object localObject = new b.a();
+    ((b.a)localObject).fsX = new aey();
+    ((b.a)localObject).fsY = new aez();
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/genmallprepay";
+    ((b.a)localObject).funcId = 2755;
+    ((b.a)localObject).reqCmdId = 189;
+    ((b.a)localObject).respCmdId = 1000000189;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (aey)this.rr.fsV.fta;
+    ((aey)localObject).fKw = paramString1;
+    ((aey)localObject).wKW = paramString4;
+    ((aey)localObject).wKV = paramString3;
+    ((aey)localObject).wKX = paramString5;
+    ((aey)localObject).wKY = paramString2;
+    ((aey)localObject).wvC = paramString6;
+    ((aey)localObject).wJT = paramString7;
+    ((aey)localObject).wXP = paramString8;
+    ((aey)localObject).wkX = paramInt1;
+    ((aey)localObject).nuz = paramString9;
     if (paramInt2 > 0) {
-      localaai.pyo = paramInt2;
+      ((aey)localObject).Scene = paramInt2;
     }
-    localaai.sZB = paramInt3;
-    localaai.sZC = paramString9;
-    y.d("MicroMsg.NetSceneGenPrepay", "appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,channel:%s,scene:%s,WxAppScene:%s,cookie:%s", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString9 });
+    ab.d("MicroMsg.NetSceneGenMallPrepay", String.format("appid:%s,packageExt:%s,nonceStr:%s,paySignature:%s,signtype:%s,timeStamp:%s,url:%s,bizUsername:%s,channel:%s,scene:%s", new Object[] { paramString1, paramString4, paramString3, paramString5, paramString2, paramString6, paramString7, paramString8, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    AppMethodBeat.o(48178);
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    AppMethodBeat.i(48180);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(48180);
+    return i;
   }
   
-  public final void e(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final int getType()
   {
-    y.d("MicroMsg.NetSceneGenPrepay", "errType:" + paramInt1 + ",errCode:" + paramInt2 + ",errMsg" + paramString);
-    paramString = (aaj)((b)paramq).ecF.ecN;
-    y.i("MicroMsg.NetSceneGenPrepay", "hy: errCode and errMsg in proto: errCode: %d, errMsg:%s", new Object[] { Integer.valueOf(paramString.jxl), paramString.jxm });
-    if ((paramInt1 == 0) && (paramInt2 == 0))
+    return 2755;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(142578);
+    ab.d("MicroMsg.NetSceneGenMallPrepay", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    paramString = (aez)((b)paramq).fsW.fta;
+    ab.i("MicroMsg.NetSceneGenMallPrepay", "hy: errCode and errMsg in proto: errCode: %d, errMsg:%s", new Object[] { Integer.valueOf(paramString.lGK), paramString.lGL });
+    if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      y.d("MicroMsg.NetSceneGenPrepay", "rr " + paramString.sZx);
-      this.qLh = paramString.sZx;
-      this.qLi = paramString.sZy;
-      this.qLj = paramString.sZD;
+      ab.d("MicroMsg.NetSceneGenMallPrepay", "rr " + paramString.wXQ);
+      this.uAd = paramString.wXQ;
+      this.uAe = paramString.wXR;
     }
-    paramq = paramString.jxm;
-    paramInt2 = paramString.jxl;
-    this.dmL.onSceneEnd(paramInt1, paramInt2, paramq, this);
-  }
-  
-  public int getType()
-  {
-    return 398;
-  }
-  
-  public String getUri()
-  {
-    return "/cgi-bin/mmpay-bin/genprepay";
+    paramq = paramString.lGL;
+    paramInt1 = paramString.lGK;
+    this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
+    AppMethodBeat.o(142578);
   }
 }
 

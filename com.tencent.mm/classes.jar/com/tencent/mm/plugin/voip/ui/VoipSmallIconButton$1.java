@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoipSmallIconButton$1
   implements View.OnTouchListener
@@ -13,23 +14,25 @@ final class VoipSmallIconButton$1
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(4866);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(4866);
       return false;
-      VoipSmallIconButton.b(this.pXt).setImageDrawable(VoipSmallIconButton.a(this.pXt));
-      VoipSmallIconButton.c(this.pXt).setTextColor(-855638017);
+      VoipSmallIconButton.b(this.tCW).setImageDrawable(VoipSmallIconButton.a(this.tCW));
+      VoipSmallIconButton.c(this.tCW).setTextColor(-855638017);
       continue;
-      VoipSmallIconButton.b(this.pXt).setImageDrawable(VoipSmallIconButton.d(this.pXt));
-      VoipSmallIconButton.c(this.pXt).setTextColor(-1);
+      VoipSmallIconButton.b(this.tCW).setImageDrawable(VoipSmallIconButton.d(this.tCW));
+      VoipSmallIconButton.c(this.tCW).setTextColor(-1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.ui.VoipSmallIconButton.1
  * JD-Core Version:    0.7.0.1
  */

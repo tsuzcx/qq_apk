@@ -1,112 +1,151 @@
 package com.tencent.mm.plugin.backup.i;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 import java.util.LinkedList;
 
 public final class z
   extends com.tencent.mm.bv.a
 {
-  public String hPQ;
-  public LinkedList<String> hQI = new LinkedList();
-  public long hRc;
-  public long hRd;
-  public String hRe;
-  public String hRf;
+  public String jJs;
+  public long jKD;
+  public long jKE;
+  public String jKF;
+  public String jKG;
+  public LinkedList<String> jKk;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public z()
   {
+    AppMethodBeat.i(18074);
+    this.jKk = new LinkedList();
+    AppMethodBeat.o(18074);
+  }
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(18075);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.hPQ == null) {
-        throw new b("Not all required fields were included: BakChatName");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.jJs == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: BakChatName");
+        AppMethodBeat.o(18075);
+        throw paramVarArgs;
       }
-      if (this.hRe == null) {
-        throw new b("Not all required fields were included: MsgDataID");
+      if (this.jKF == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: MsgDataID");
+        AppMethodBeat.o(18075);
+        throw paramVarArgs;
       }
-      if (this.hRf == null) {
-        throw new b("Not all required fields were included: NickName");
+      if (this.jKG == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: NickName");
+        AppMethodBeat.o(18075);
+        throw paramVarArgs;
       }
-      if (this.hPQ != null) {
-        paramVarArgs.d(1, this.hPQ);
+      if (this.jJs != null) {
+        paramVarArgs.e(1, this.jJs);
       }
-      paramVarArgs.Y(2, this.hRc);
-      paramVarArgs.Y(3, this.hRd);
-      if (this.hRe != null) {
-        paramVarArgs.d(4, this.hRe);
+      paramVarArgs.am(2, this.jKD);
+      paramVarArgs.am(3, this.jKE);
+      if (this.jKF != null) {
+        paramVarArgs.e(4, this.jKF);
       }
-      if (this.hRf != null) {
-        paramVarArgs.d(5, this.hRf);
+      if (this.jKG != null) {
+        paramVarArgs.e(5, this.jKG);
       }
-      paramVarArgs.d(6, 1, this.hQI);
+      paramVarArgs.e(6, 1, this.jKk);
+      AppMethodBeat.o(18075);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hPQ == null) {
-        break label518;
+      if (this.jJs == null) {
+        break label642;
       }
     }
-    label518:
-    for (paramInt = d.a.a.b.b.a.e(1, this.hPQ) + 0;; paramInt = 0)
+    label642:
+    for (paramInt = e.a.a.b.b.a.f(1, this.jJs) + 0;; paramInt = 0)
     {
-      int i = paramInt + d.a.a.a.X(2, this.hRc) + d.a.a.a.X(3, this.hRd);
+      int i = paramInt + e.a.a.b.b.a.p(2, this.jKD) + e.a.a.b.b.a.p(3, this.jKE);
       paramInt = i;
-      if (this.hRe != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.hRe);
+      if (this.jKF != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.jKF);
       }
       i = paramInt;
-      if (this.hRf != null) {
-        i = paramInt + d.a.a.b.b.a.e(5, this.hRf);
+      if (this.jKG != null) {
+        i = paramInt + e.a.a.b.b.a.f(5, this.jKG);
       }
-      return i + d.a.a.a.c(6, 1, this.hQI);
+      paramInt = e.a.a.a.c(6, 1, this.jKk);
+      AppMethodBeat.o(18075);
+      return i + paramInt;
       if (paramInt == 2)
       {
         paramVarArgs = (byte[])paramVarArgs[0];
-        this.hQI.clear();
-        paramVarArgs = new d.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        this.jKk.clear();
+        paramVarArgs = new e.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.hPQ == null) {
-          throw new b("Not all required fields were included: BakChatName");
+        if (this.jJs == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BakChatName");
+          AppMethodBeat.o(18075);
+          throw paramVarArgs;
         }
-        if (this.hRe == null) {
-          throw new b("Not all required fields were included: MsgDataID");
+        if (this.jKF == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: MsgDataID");
+          AppMethodBeat.o(18075);
+          throw paramVarArgs;
         }
-        if (this.hRf != null) {
-          break;
+        if (this.jKG == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: NickName");
+          AppMethodBeat.o(18075);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: NickName");
+        AppMethodBeat.o(18075);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         z localz = (z)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(18075);
           return -1;
         case 1: 
-          localz.hPQ = locala.xpH.readString();
+          localz.jJs = locala.CLY.readString();
+          AppMethodBeat.o(18075);
           return 0;
         case 2: 
-          localz.hRc = locala.xpH.oE();
+          localz.jKD = locala.CLY.sm();
+          AppMethodBeat.o(18075);
           return 0;
         case 3: 
-          localz.hRd = locala.xpH.oE();
+          localz.jKE = locala.CLY.sm();
+          AppMethodBeat.o(18075);
           return 0;
         case 4: 
-          localz.hRe = locala.xpH.readString();
+          localz.jKF = locala.CLY.readString();
+          AppMethodBeat.o(18075);
           return 0;
         case 5: 
-          localz.hRf = locala.xpH.readString();
+          localz.jKG = locala.CLY.readString();
+          AppMethodBeat.o(18075);
           return 0;
         }
-        localz.hQI.add(locala.xpH.readString());
+        localz.jKk.add(locala.CLY.readString());
+        AppMethodBeat.o(18075);
         return 0;
       }
+      AppMethodBeat.o(18075);
       return -1;
     }
   }

@@ -1,16 +1,21 @@
 package com.tencent.mm.plugin.appbrand.media.a;
 
-import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public static com.tencent.mm.af.e bR(String paramString1, String paramString2)
+  public static com.tencent.mm.ag.e cG(String paramString1, String paramString2)
   {
-    if (Build.VERSION.SDK_INT <= 19) {}
-    for (int i = 1; i != 0; i = 0) {
-      return new e(paramString1, paramString2);
+    AppMethodBeat.i(137820);
+    if (g.aHJ())
+    {
+      paramString1 = new e(paramString1, paramString2);
+      AppMethodBeat.o(137820);
+      return paramString1;
     }
-    return new d(paramString1, paramString2);
+    paramString1 = new d(paramString1, paramString2);
+    AppMethodBeat.o(137820);
+    return paramString1;
   }
 }
 

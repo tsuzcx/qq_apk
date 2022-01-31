@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
 import java.util.HashMap;
@@ -12,19 +13,22 @@ final class n$1
   
   public final void a(j paramj)
   {
+    AppMethodBeat.i(94204);
     switch (paramj.errCode)
     {
     default: 
       HashMap localHashMap = new HashMap();
       localHashMap.put("errCode", Integer.valueOf(paramj.errCode));
-      this.ggH.C(this.dIS, this.glJ.h(paramj.aox, localHashMap));
-      c.jdMethod_if(43);
+      this.hxW.h(this.bAX, this.hFI.j(paramj.errMsg, localHashMap));
+      c.kS(43);
+      AppMethodBeat.o(94204);
       return;
     }
     paramj = new HashMap();
     paramj.put("errCode", Integer.valueOf(0));
-    this.ggH.C(this.dIS, this.glJ.h("ok", paramj));
-    c.jdMethod_if(42);
+    this.hxW.h(this.bAX, this.hFI.j("ok", paramj));
+    c.kS(42);
+    AppMethodBeat.o(94204);
   }
 }
 

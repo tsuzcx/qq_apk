@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 public abstract interface AppBrandVideoView$a
 {
-  public abstract void aiZ();
+  public abstract void aDh();
   
   public abstract boolean isFullScreen();
   
-  public abstract void lu(int paramInt);
+  public abstract void oc(int paramInt);
 }
 
 

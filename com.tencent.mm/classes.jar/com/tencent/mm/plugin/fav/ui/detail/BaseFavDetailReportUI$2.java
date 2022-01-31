@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView.a;
 
 final class BaseFavDetailReportUI$2
@@ -7,19 +8,23 @@ final class BaseFavDetailReportUI$2
 {
   BaseFavDetailReportUI$2(BaseFavDetailReportUI paramBaseFavDetailReportUI) {}
   
-  public final void aRF()
+  public final void bxV()
   {
-    this.kfb.czp();
+    AppMethodBeat.i(74317);
+    this.mzK.showActionbarLine();
+    AppMethodBeat.o(74317);
   }
   
-  public final void aRG()
+  public final void bxW()
   {
-    this.kfb.czo();
+    AppMethodBeat.i(74318);
+    this.mzK.hideActionbarLine();
+    AppMethodBeat.o(74318);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.BaseFavDetailReportUI.2
  * JD-Core Version:    0.7.0.1
  */

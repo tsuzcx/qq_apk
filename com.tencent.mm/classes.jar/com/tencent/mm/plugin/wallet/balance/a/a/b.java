@@ -1,26 +1,32 @@
 package com.tencent.mm.plugin.wallet.balance.a.a;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.bab;
-import com.tencent.mm.protocal.c.bac;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.protocal.protobuf.tx;
+import com.tencent.mm.protocal.protobuf.ty;
 
 public final class b
-  extends a<bac>
+  extends a<ty>
 {
-  public b(int paramInt)
+  public b(String paramString, int paramInt)
   {
+    AppMethodBeat.i(45228);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bab();
-    ((b.a)localObject).ecI = new bac();
-    ((b.a)localObject).ecG = 2585;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/onclickpurchase";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    localObject = ((b.a)localObject).Kt();
-    ((bab)((com.tencent.mm.ah.b)localObject).ecE.ecN).sOy = paramInt;
-    this.dmK = ((com.tencent.mm.ah.b)localObject);
+    ((b.a)localObject).fsX = new tx();
+    ((b.a)localObject).fsY = new ty();
+    ((b.a)localObject).funcId = 1386;
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/closefundaccount";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    localObject = ((b.a)localObject).ado();
+    tx localtx = (tx)((com.tencent.mm.ai.b)localObject).fsV.fta;
+    localtx.wMw = paramString;
+    localtx.wMx = paramInt;
+    localtx.tNy = ab.cQT();
+    this.rr = ((com.tencent.mm.ai.b)localObject);
+    AppMethodBeat.o(45228);
   }
 }
 

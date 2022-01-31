@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.cdndownloader.d;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cdndownloader.a.a.a;
 import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskInfo;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -16,37 +17,44 @@ final class a$2
   
   public final void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
   {
-    y.i("MicroMsg.CDNDownloadClient", "onServiceConnected");
-    a.a(this.iAG, a.a.r(paramIBinder));
-    a.f(this.iAG);
-    a.g(this.iAG);
+    AppMethodBeat.i(892);
+    ab.i("MicroMsg.CDNDownloadClient", "onServiceConnected");
+    a.a(this.kDM, a.a.r(paramIBinder));
+    a.f(this.kDM);
+    a.g(this.kDM);
     try
     {
-      synchronized (a.Tb())
+      synchronized (a.access$800())
       {
-        a.Tb().notifyAll();
+        a.access$800().notifyAll();
+        AppMethodBeat.o(892);
         return;
       }
       return;
     }
-    catch (Exception ???) {}
+    catch (Exception ???)
+    {
+      AppMethodBeat.o(892);
+    }
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
-    y.i("MicroMsg.CDNDownloadClient", "onServiceDisconnected");
-    if (a.c(this.iAG).size() != 0)
+    AppMethodBeat.i(893);
+    ab.i("MicroMsg.CDNDownloadClient", "onServiceDisconnected");
+    if (a.c(this.kDM).size() != 0)
     {
-      paramComponentName = a.c(this.iAG).iterator();
+      paramComponentName = a.c(this.kDM).iterator();
       while (paramComponentName.hasNext()) {
-        ((CDNTaskInfo)paramComponentName.next()).iAN = true;
+        ((CDNTaskInfo)paramComponentName.next()).kDT = true;
       }
     }
+    AppMethodBeat.o(893);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.d.a.2
  * JD-Core Version:    0.7.0.1
  */

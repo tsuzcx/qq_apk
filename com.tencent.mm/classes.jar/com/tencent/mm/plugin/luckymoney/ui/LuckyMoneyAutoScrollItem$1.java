@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class LuckyMoneyAutoScrollItem$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class LuckyMoneyAutoScrollItem$1
   
   public final void run()
   {
-    LuckyMoneyAutoScrollItem.a(this.lTX, new LuckyMoneyAutoScrollItem.1.1(this, this.lTW).start());
+    AppMethodBeat.i(42561);
+    LuckyMoneyAutoScrollItem.a(this.ore, new LuckyMoneyAutoScrollItem.1.1(this, this.ord).start());
+    AppMethodBeat.o(42561);
   }
 }
 

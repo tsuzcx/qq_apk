@@ -8,55 +8,67 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.w;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 public class LaunchAAByPersonAmountSelectRow
   extends LinearLayout
 {
-  private ImageView dpY;
-  private TextView eYn;
-  private WalletFormView eYo;
-  private View eYp;
-  private TextWatcher eYq = null;
+  private ImageView ehv;
+  private TextView gqe;
+  private WalletFormView gqf;
+  private View gqg;
+  private TextWatcher gqh;
   private String username;
   
   public LaunchAAByPersonAmountSelectRow(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(40780);
+    this.gqh = null;
     init(paramContext);
+    AppMethodBeat.o(40780);
   }
   
   public LaunchAAByPersonAmountSelectRow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(40781);
+    this.gqh = null;
     init(paramContext);
+    AppMethodBeat.o(40781);
   }
   
   private void init(Context paramContext)
   {
-    y.gt(paramContext).inflate(a.g.launch_aa_by_person_amount_select_row, this, true);
-    this.dpY = ((ImageView)findViewById(a.f.avatar));
-    this.eYn = ((TextView)findViewById(a.f.username));
-    this.eYo = ((WalletFormView)findViewById(a.f.money_edit));
-    this.eYp = findViewById(a.f.divider);
+    AppMethodBeat.i(40782);
+    w.hM(paramContext).inflate(2130969964, this, true);
+    this.ehv = ((ImageView)findViewById(2131823820));
+    this.gqe = ((TextView)findViewById(2131821594));
+    this.gqf = ((WalletFormView)findViewById(2131825366));
+    this.gqg = findViewById(2131821148);
+    AppMethodBeat.o(40782);
   }
   
   public double getAmount()
   {
-    String str = this.eYo.getText().toString();
-    if ((bk.bl(str)) || ("".equals(str))) {
+    AppMethodBeat.i(40784);
+    String str = this.gqf.getText().toString();
+    if ((bo.isNullOrNil(str)) || ("".equals(str)))
+    {
+      AppMethodBeat.o(40784);
       return 0.0D;
     }
-    return bk.getDouble(str, 0.0D);
+    double d = bo.getDouble(str, 0.0D);
+    AppMethodBeat.o(40784);
+    return d;
   }
   
   public WalletFormView getMoneyEdit()
   {
-    return this.eYo;
+    return this.gqf;
   }
   
   public String getUsername()
@@ -66,19 +78,23 @@ public class LaunchAAByPersonAmountSelectRow
   
   public void setDividerVisible(boolean paramBoolean)
   {
-    View localView = this.eYp;
+    AppMethodBeat.i(40785);
+    View localView = this.gqg;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
       localView.setVisibility(i);
+      AppMethodBeat.o(40785);
       return;
     }
   }
   
   public void setTextWatcher(TextWatcher paramTextWatcher)
   {
-    this.eYq = paramTextWatcher;
-    this.eYo.a(paramTextWatcher);
+    AppMethodBeat.i(40783);
+    this.gqh = paramTextWatcher;
+    this.gqf.a(paramTextWatcher);
+    AppMethodBeat.o(40783);
   }
 }
 

@@ -1,41 +1,36 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mm.plugin.luckymoney.b.o;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.p;
 
 final class LuckyMoneyNewYearReceiveUI$5
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
   LuckyMoneyNewYearReceiveUI$5(LuckyMoneyNewYearReceiveUI paramLuckyMoneyNewYearReceiveUI) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (!new File(LuckyMoneyNewYearReceiveUI.h(this.lWq)).exists())
-    {
-      y.e("MicroMsg.LuckyMoneyNewYearReceiveUI", "ljd:updateImageView() imagePath:" + LuckyMoneyNewYearReceiveUI.h(this.lWq) + " is not exist!");
-      return;
+    AppMethodBeat.i(42788);
+    if ((LuckyMoneyNewYearReceiveUI.f(this.ouD) != null) && (LuckyMoneyNewYearReceiveUI.f(this.ouD).isShowing())) {
+      LuckyMoneyNewYearReceiveUI.f(this.ouD).dismiss();
     }
-    ai.d(new Runnable()
+    this.ouD.orz.forceCancel();
+    if ((LuckyMoneyNewYearReceiveUI.g(this.ouD).getVisibility() == 8) || (LuckyMoneyNewYearReceiveUI.h(this.ouD).getVisibility() == 4))
     {
-      public final void run()
-      {
-        LuckyMoneyNewYearReceiveUI.i(LuckyMoneyNewYearReceiveUI.5.this.lWq).setImageBitmap(this.kfS);
-      }
-      
-      public final String toString()
-      {
-        return super.toString() + "|renderView";
-      }
-    });
+      ab.i("MicroMsg.LuckyMoneyNewYearReceiveUI", "usr cancel, & visibility not visiable, so finish");
+      this.ouD.finish();
+    }
+    AppMethodBeat.o(42788);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNewYearReceiveUI.5
  * JD-Core Version:    0.7.0.1
  */

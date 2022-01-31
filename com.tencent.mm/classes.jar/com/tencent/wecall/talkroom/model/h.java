@@ -3,273 +3,422 @@ package com.tencent.wecall.talkroom.model;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.c.d;
 import com.tencent.pb.common.c.f;
 import com.tencent.pb.common.c.g;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class h
 {
-  static final String TAG = h.class.getCanonicalName();
-  public static h xfn = new h();
-  String deviceModel;
-  public String groupId = "";
-  public int iEo = -1;
-  public int lpD = 0;
-  public long lpE = 0L;
-  long lqT = 0L;
-  int lqU = 0;
-  public int netType = -1;
-  public int pUM = 1;
-  public int pUP = 0;
-  public int pUQ = 0;
-  public int pUT = 0;
-  public int pVa = -1;
-  int qdB = 0;
-  long qdC = 0L;
-  int qdH = 0;
-  public int qdI = 0;
-  String qdN = "";
-  int qdu = 0;
-  int qdx = 0;
-  public String wGf = "";
-  StringBuffer xfA = new StringBuffer();
-  long xfB = 0L;
-  long xfC = 0L;
-  long xfD = 0L;
-  public int xfo = 0;
-  int xfp = 0;
-  long xfq = 0L;
-  long xfr = 0L;
-  int xfs = 0;
-  public int xft = 0;
-  int xfu = 0;
-  long xfv = 0L;
-  int xfw;
-  int xfx = -1;
-  String xfy;
-  int xfz;
+  public static h BBU;
+  static final String TAG;
+  public int BBV;
+  int BBW;
+  long BBX;
+  long BBY;
+  int BBZ;
+  public int BCa;
+  int BCb;
+  long BCc;
+  private int BCd;
+  private int BCe;
+  private String BCf;
+  private int BCg;
+  private StringBuffer BCh;
+  private long BCi;
+  long BCj;
+  long BCk;
+  public String BdG;
+  private String deviceModel;
+  public String groupId;
+  public int kJx;
+  public int nMZ;
+  public long nNa;
+  long nOp;
+  int nOq;
+  public int netType;
+  public int tAC;
+  public int tAo;
+  public int tAr;
+  public int tAs;
+  public int tAv;
+  private String tKA;
+  int tKh;
+  int tKk;
+  int tKo;
+  long tKp;
+  int tKu;
+  public int tKv;
   
-  public static void KA(int paramInt)
+  static
   {
+    AppMethodBeat.i(127999);
+    BBU = new h();
+    TAG = h.class.getCanonicalName();
+    AppMethodBeat.o(127999);
+  }
+  
+  public h()
+  {
+    AppMethodBeat.i(127978);
+    this.groupId = "";
+    this.BdG = "";
+    this.tAo = 1;
+    this.nMZ = 0;
+    this.nNa = 0L;
+    this.kJx = -1;
+    this.tKh = 0;
+    this.tKo = 0;
+    this.tKk = 0;
+    this.nOq = 0;
+    this.BBV = 0;
+    this.BBW = 0;
+    this.BBX = 0L;
+    this.BBY = 0L;
+    this.BBZ = 0;
+    this.BCa = 0;
+    this.BCb = 0;
+    this.BCc = 0L;
+    this.tKp = 0L;
+    this.nOp = 0L;
+    this.tKu = 0;
+    this.tKv = 0;
+    this.netType = -1;
+    this.BCe = -1;
+    this.tKA = "";
+    this.BCh = new StringBuffer();
+    this.tAC = -1;
+    this.tAv = 0;
+    this.tAr = 0;
+    this.tAs = 0;
+    this.BCi = 0L;
+    this.BCj = 0L;
+    this.BCk = 0L;
+    AppMethodBeat.o(127978);
+  }
+  
+  public static void Tt(int paramInt)
+  {
+    AppMethodBeat.i(127989);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendNetSceneStat", Integer.valueOf(paramInt) });
-    f.y(527, 3, String.valueOf(paramInt));
+    f.F(527, 3, String.valueOf(paramInt));
+    AppMethodBeat.o(127989);
   }
   
-  public static void KB(int paramInt)
+  public static void Tu(int paramInt)
   {
+    AppMethodBeat.i(127990);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendDeviceStat", Integer.valueOf(paramInt) });
-    f.y(528, 3, String.valueOf(paramInt));
+    f.F(528, 3, String.valueOf(paramInt));
+    AppMethodBeat.o(127990);
   }
   
-  public static void KC(int paramInt)
+  public static void Tv(int paramInt)
   {
+    AppMethodBeat.i(127991);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendtalkRoomDialStat", Integer.valueOf(paramInt) });
-    f.y(530, 3, String.valueOf(paramInt));
+    f.F(530, 3, String.valueOf(paramInt));
+    AppMethodBeat.o(127991);
   }
   
-  public static void KD(int paramInt)
+  public static void Tw(int paramInt)
   {
+    AppMethodBeat.i(127993);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendEngineStat", Integer.valueOf(paramInt) });
-    f.y(529, 3, String.valueOf(paramInt));
+    f.F(529, 3, String.valueOf(paramInt));
+    AppMethodBeat.o(127993);
   }
   
   public static void a(int paramInt, long paramLong, String... paramVarArgs)
   {
+    AppMethodBeat.i(127983);
     h localh = new h();
     localh.groupId = "";
-    localh.lpD = paramInt;
-    localh.lpE = paramLong;
-    localh.wGf = "";
-    localh.R(paramVarArgs);
-    agE(localh.cRU());
-    f.cOk();
+    localh.nMZ = paramInt;
+    localh.nNa = paramLong;
+    localh.BdG = "";
+    localh.aa(paramVarArgs);
+    axz(localh.dXP());
+    f.dTW();
+    AppMethodBeat.o(127983);
   }
   
   public static void a(String paramString, int paramInt, long paramLong, String... paramVarArgs)
   {
+    AppMethodBeat.i(127981);
     if (TextUtils.isEmpty(paramString))
     {
-      com.tencent.pb.common.c.c.x(TAG, new Object[] { "uploadTempReport groupId is null" });
+      com.tencent.pb.common.c.c.w(TAG, new Object[] { "uploadTempReport groupId is null" });
+      AppMethodBeat.o(127981);
       return;
     }
-    com.tencent.pb.common.c.c.x(TAG, new Object[] { "uploadTempReport: ", paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    com.tencent.pb.common.c.c.w(TAG, new Object[] { "uploadTempReport: ", paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     h localh = new h();
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     localh.groupId = str;
-    localh.lpD = paramInt;
-    localh.lpE = paramLong;
-    localh.R(paramVarArgs);
-    agE(localh.cRU());
+    localh.nMZ = paramInt;
+    localh.nNa = paramLong;
+    localh.aa(paramVarArgs);
+    axz(localh.dXP());
+    AppMethodBeat.o(127981);
   }
   
   public static void a(String paramString1, String paramString2, int paramInt, long paramLong, String... paramVarArgs)
   {
+    AppMethodBeat.i(127982);
     if ((TextUtils.isEmpty(paramString1)) && (TextUtils.isEmpty(paramString2)))
     {
-      com.tencent.pb.common.c.c.x(TAG, new Object[] { "uploadTempReport groupId and clientGroupId is null" });
+      com.tencent.pb.common.c.c.w(TAG, new Object[] { "uploadTempReport groupId and clientGroupId is null" });
+      AppMethodBeat.o(127982);
       return;
     }
-    com.tencent.pb.common.c.c.x(TAG, new Object[] { "uploadTempReport: ", paramString1, " clientGroupId: ", paramString2, " roomid: ", Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    com.tencent.pb.common.c.c.w(TAG, new Object[] { "uploadTempReport: ", paramString1, " clientGroupId: ", paramString2, " roomid: ", Integer.valueOf(paramInt), Long.valueOf(paramLong) });
     h localh = new h();
     String str = paramString1;
     if (paramString1 == null) {
       str = "";
     }
     localh.groupId = str;
-    localh.lpD = paramInt;
-    localh.lpE = paramLong;
+    localh.nMZ = paramInt;
+    localh.nNa = paramLong;
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    localh.wGf = paramString1;
-    localh.R(paramVarArgs);
-    agE(localh.cRU());
-    f.cOk();
+    localh.BdG = paramString1;
+    localh.aa(paramVarArgs);
+    axz(localh.dXP());
+    f.dTW();
+    AppMethodBeat.o(127982);
   }
   
-  public static void agE(String paramString)
+  public static void axA(String paramString)
   {
-    com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendSummaryNetScene", paramString });
-    f.y(532, 3, paramString);
-  }
-  
-  public static void agF(String paramString)
-  {
+    AppMethodBeat.i(127995);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendEngineRecv", paramString });
-    f.y(533, 3, paramString);
+    f.F(533, 3, paramString);
+    AppMethodBeat.o(127995);
   }
   
-  public static void agG(String paramString)
+  public static void axB(String paramString)
   {
+    AppMethodBeat.i(127996);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendEngineSend", paramString });
-    f.y(534, 3, paramString);
+    f.F(534, 3, paramString);
+    AppMethodBeat.o(127996);
   }
   
-  public static void agH(String paramString)
+  public static void axC(String paramString)
   {
+    AppMethodBeat.i(127997);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendChannelStat", paramString });
-    f.y(535, 3, paramString);
+    f.F(535, 3, paramString);
+    AppMethodBeat.o(127997);
   }
   
-  public static void cRX()
+  public static void axz(String paramString)
   {
+    AppMethodBeat.i(127994);
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendSummaryNetScene", paramString });
+    f.F(532, 3, paramString);
+    AppMethodBeat.o(127994);
+  }
+  
+  public static void dXU()
+  {
+    AppMethodBeat.i(127992);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "sendTalkRoomOnDialStat", Integer.valueOf(-5001) });
-    f.y(531, 3, "-5001");
+    f.F(531, 3, "-5001");
+    AppMethodBeat.o(127992);
   }
   
-  public final void KE(int paramInt)
+  public final void Tx(int paramInt)
   {
+    AppMethodBeat.i(127998);
     com.tencent.pb.common.c.c.d(TAG, new Object[] { "stopStatus", Integer.valueOf(paramInt) });
-    this.qdu = paramInt;
+    this.tKh = paramInt;
+    AppMethodBeat.o(127998);
   }
   
-  public final void R(String... paramVarArgs)
+  public final void aa(String... paramVarArgs)
   {
     int i = 0;
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {}
-    for (;;)
+    AppMethodBeat.i(127984);
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
+      AppMethodBeat.o(127984);
       return;
-      if (this.xfA.length() > 900)
-      {
-        this.xfA.setLength(0);
-        this.xfA.append("overmaxsize");
-      }
-      if (this.xfA.length() != 0) {
-        this.xfA.append("-");
-      }
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        String str = paramVarArgs[i];
-        this.xfA.append(str);
-        this.xfA.append("|");
-        i += 1;
-      }
     }
-  }
-  
-  public final String cRU()
-  {
-    com.tencent.pb.common.c.c.d(TAG, new Object[] { "collectInfo" });
-    this.xfy = Build.MANUFACTURER;
-    this.deviceModel = Build.MODEL;
-    this.xfz = Build.VERSION.SDK_INT;
-    this.qdN = Build.VERSION.RELEASE;
-    this.netType = k.ij(d.pZI);
-    this.xfw = -1;
-    this.xfx = -1;
-    Object localObject1 = new ArrayList();
-    ((List)localObject1).add(this.groupId);
-    ((List)localObject1).add(this.wGf);
-    ((List)localObject1).add(Integer.valueOf(this.pUM));
-    ((List)localObject1).add(Integer.valueOf(this.lpD));
-    ((List)localObject1).add(Long.valueOf(this.lpE));
-    ((List)localObject1).add(Integer.valueOf(this.iEo));
-    ((List)localObject1).add(Integer.valueOf(this.qdu));
-    ((List)localObject1).add(Integer.valueOf(this.qdB));
-    ((List)localObject1).add(Integer.valueOf(this.qdx));
-    ((List)localObject1).add(Integer.valueOf(this.lqU));
-    ((List)localObject1).add(Integer.valueOf(this.xfo));
-    ((List)localObject1).add(Integer.valueOf(this.xfp));
-    ((List)localObject1).add(Long.valueOf(this.xfq));
-    ((List)localObject1).add(Long.valueOf(this.xfr));
-    ((List)localObject1).add(Integer.valueOf(this.xfs));
-    ((List)localObject1).add(Integer.valueOf(this.xft));
-    ((List)localObject1).add(Integer.valueOf(this.xfu));
-    ((List)localObject1).add(Long.valueOf(this.xfv));
-    ((List)localObject1).add(Long.valueOf(this.qdC));
-    ((List)localObject1).add(Long.valueOf(this.lqT));
-    ((List)localObject1).add(Integer.valueOf(this.qdH));
-    ((List)localObject1).add(Integer.valueOf(this.qdI));
-    ((List)localObject1).add(Integer.valueOf(this.netType));
-    ((List)localObject1).add(Integer.valueOf(this.xfw));
-    ((List)localObject1).add(Integer.valueOf(this.xfx));
-    ((List)localObject1).add(this.xfy);
-    ((List)localObject1).add(this.deviceModel);
-    ((List)localObject1).add(Integer.valueOf(this.xfz));
-    ((List)localObject1).add(this.qdN);
-    Object localObject2 = c.cRC();
-    String str = this.groupId;
-    localObject2 = ((c)localObject2).agw(str);
-    int i;
-    if (localObject2 == null) {
-      i = 0;
-    }
-    for (;;)
+    if (this.BCh.length() > 900)
     {
-      ((List)localObject1).add(Integer.valueOf(i));
-      ((List)localObject1).add(this.xfA.toString());
-      ((List)localObject1).add(Integer.valueOf(this.pVa));
-      ((List)localObject1).add(Integer.valueOf(this.pUT));
-      ((List)localObject1).add(Integer.valueOf(this.pUP));
-      ((List)localObject1).add(Integer.valueOf(this.pUQ));
-      localObject1 = g.a((Iterable)localObject1, ",", "_");
-      com.tencent.pb.common.c.c.d(TAG, new Object[] { "logBuf: ", this.xfA.toString() });
-      com.tencent.pb.common.c.c.d(TAG, new Object[] { "statresult", localObject1 });
-      return localObject1;
-      i = ((TalkRoom)localObject2).xdq.size();
-      com.tencent.pb.common.c.c.d("TalkRoomManager", new Object[] { "getGroupMemberSize groupid: ", str, " size: ", Integer.valueOf(i) });
+      this.BCh.setLength(0);
+      this.BCh.append("overmaxsize");
     }
+    if (this.BCh.length() != 0) {
+      this.BCh.append("-");
+    }
+    int j = paramVarArgs.length;
+    while (i < j)
+    {
+      String str = paramVarArgs[i];
+      this.BCh.append(str);
+      this.BCh.append("|");
+      i += 1;
+    }
+    AppMethodBeat.o(127984);
   }
   
-  public final void cRV()
+  public final String dXP()
   {
-    this.xfB = System.currentTimeMillis();
-    com.tencent.pb.common.c.c.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.xfB) });
+    AppMethodBeat.i(127980);
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "collectInfo" });
+    this.BCf = Build.MANUFACTURER;
+    this.deviceModel = Build.MODEL;
+    this.BCg = Build.VERSION.SDK_INT;
+    this.tKA = Build.VERSION.RELEASE;
+    this.netType = k.jN(d.tFk);
+    this.BCd = -1;
+    this.BCe = -1;
+    Object localObject = new ArrayList();
+    ((List)localObject).add(this.groupId);
+    ((List)localObject).add(this.BdG);
+    ((List)localObject).add(Integer.valueOf(this.tAo));
+    ((List)localObject).add(Integer.valueOf(this.nMZ));
+    ((List)localObject).add(Long.valueOf(this.nNa));
+    ((List)localObject).add(Integer.valueOf(this.kJx));
+    ((List)localObject).add(Integer.valueOf(this.tKh));
+    ((List)localObject).add(Integer.valueOf(this.tKo));
+    ((List)localObject).add(Integer.valueOf(this.tKk));
+    ((List)localObject).add(Integer.valueOf(this.nOq));
+    ((List)localObject).add(Integer.valueOf(this.BBV));
+    ((List)localObject).add(Integer.valueOf(this.BBW));
+    ((List)localObject).add(Long.valueOf(this.BBX));
+    ((List)localObject).add(Long.valueOf(this.BBY));
+    ((List)localObject).add(Integer.valueOf(this.BBZ));
+    ((List)localObject).add(Integer.valueOf(this.BCa));
+    ((List)localObject).add(Integer.valueOf(this.BCb));
+    ((List)localObject).add(Long.valueOf(this.BCc));
+    ((List)localObject).add(Long.valueOf(this.tKp));
+    ((List)localObject).add(Long.valueOf(this.nOp));
+    ((List)localObject).add(Integer.valueOf(this.tKu));
+    ((List)localObject).add(Integer.valueOf(this.tKv));
+    ((List)localObject).add(Integer.valueOf(this.netType));
+    ((List)localObject).add(Integer.valueOf(this.BCd));
+    ((List)localObject).add(Integer.valueOf(this.BCe));
+    ((List)localObject).add(this.BCf);
+    ((List)localObject).add(this.deviceModel);
+    ((List)localObject).add(Integer.valueOf(this.BCg));
+    ((List)localObject).add(this.tKA);
+    ((List)localObject).add(Integer.valueOf(c.dXv().axt(this.groupId)));
+    ((List)localObject).add(this.BCh.toString());
+    ((List)localObject).add(Integer.valueOf(this.tAC));
+    ((List)localObject).add(Integer.valueOf(this.tAv));
+    ((List)localObject).add(Integer.valueOf(this.tAr));
+    ((List)localObject).add(Integer.valueOf(this.tAs));
+    localObject = g.a((Iterable)localObject, ",", "_");
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "logBuf: ", this.BCh.toString() });
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "statresult", localObject });
+    AppMethodBeat.o(127980);
+    return localObject;
   }
   
-  public final void cRW()
+  public final void dXQ()
   {
-    com.tencent.pb.common.c.c.x(TAG, new Object[] { "beginCreateOrNotify" });
-    this.xfC = System.currentTimeMillis();
+    AppMethodBeat.i(127985);
+    this.BCi = System.currentTimeMillis();
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.BCi) });
+    AppMethodBeat.o(127985);
+  }
+  
+  public final void dXR()
+  {
+    AppMethodBeat.i(127986);
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "endCancelCreate", Long.valueOf(System.currentTimeMillis() - this.BCi), Long.valueOf(this.BBX) });
+    if (this.BBX > 0L)
+    {
+      AppMethodBeat.o(127986);
+      return;
+    }
+    this.tKo = 1;
+    if (this.BCi == 0L)
+    {
+      this.tKp = 0L;
+      AppMethodBeat.o(127986);
+      return;
+    }
+    this.tKp = (System.currentTimeMillis() - this.BCi);
+    AppMethodBeat.o(127986);
+  }
+  
+  public final void dXS()
+  {
+    AppMethodBeat.i(127987);
+    com.tencent.pb.common.c.c.w(TAG, new Object[] { "beginCreateOrNotify" });
+    this.BCj = System.currentTimeMillis();
+    AppMethodBeat.o(127987);
+  }
+  
+  public final void dXT()
+  {
+    AppMethodBeat.i(127988);
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "endAnswerTime", Long.valueOf(this.BCk) });
+    if (this.BCk == 0L)
+    {
+      this.nOp = 0L;
+      AppMethodBeat.o(127988);
+      return;
+    }
+    this.nOp = (System.currentTimeMillis() - this.BCk);
+    AppMethodBeat.o(127988);
+  }
+  
+  public final void reset()
+  {
+    AppMethodBeat.i(127979);
+    com.tencent.pb.common.c.c.d(TAG, new Object[] { "reset" });
+    this.BCk = 0L;
+    this.BCj = 0L;
+    this.BCi = 0L;
+    this.groupId = "";
+    this.BdG = "";
+    this.tAo = 1;
+    this.nMZ = 0;
+    this.nNa = 0L;
+    this.kJx = -1;
+    this.tKh = 0;
+    this.tKo = 0;
+    this.tKk = 0;
+    this.nOq = 0;
+    this.BBV = 0;
+    this.BBW = 0;
+    this.BBX = 0L;
+    this.BBY = 0L;
+    this.BBZ = 0;
+    this.BCa = 0;
+    this.BCb = 0;
+    this.BCc = 0L;
+    this.tKp = 0L;
+    this.nOp = 0L;
+    this.tKu = 0;
+    this.tKv = 0;
+    this.netType = -1;
+    this.BCd = 0;
+    this.BCe = 0;
+    this.BCf = "";
+    this.deviceModel = "";
+    this.BCg = -1;
+    this.tKA = "";
+    this.BCh.setLength(0);
+    this.tAC = -1;
+    this.tAv = 0;
+    this.tAr = 0;
+    this.tAs = 0;
+    AppMethodBeat.o(127979);
   }
 }
 

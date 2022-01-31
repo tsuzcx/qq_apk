@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -11,21 +12,16 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.honey_pay.model.c;
-import com.tencent.mm.plugin.wxpay.a.a;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wallet_core.ui.o;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMEditText;
-import com.tencent.mm.wallet_core.c.ab;
+import com.tencent.mm.wallet_core.c.ae;
 import com.tencent.mm.wallet_core.ui.a;
 import com.tencent.mm.wallet_core.ui.e;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
@@ -35,196 +31,227 @@ import java.math.RoundingMode;
 public class HoneyPayGiveCardUI
   extends HoneyPayBaseUI
 {
-  private String hcm;
-  private ImageView iIS;
-  private String iLj;
-  private String iZG;
-  private long lkW = 100000L;
-  private long lkX = 0L;
-  private MMEditText llA;
-  private String llj;
-  private int lll;
-  private ScrollView lls;
-  private WalletFormView llt;
-  private TextView llu;
-  private TextView llv;
-  private TextView llw;
-  private TextView llx;
-  private TextView lly;
-  private CdnImageView llz;
+  private String ikj;
+  private ImageView kPy;
+  private String lix;
+  private String mTrueName;
+  private String nIF;
+  private int nIH;
+  private ScrollView nIO;
+  private WalletFormView nIP;
+  private TextView nIQ;
+  private TextView nIR;
+  private TextView nIS;
+  private TextView nIT;
+  private TextView nIU;
+  private CdnImageView nIV;
+  private MMEditText nIW;
+  private long nIs = 100000L;
+  private long nIt = 0L;
   
-  private void baZ()
+  private void bIa()
   {
-    this.lly.setVisibility(0);
-    this.llA.setVisibility(8);
-    this.llA.setText(this.llj);
-    this.llA.setSelection(this.llj.length());
+    AppMethodBeat.i(41870);
+    this.nIU.setVisibility(0);
+    this.nIW.setVisibility(8);
+    this.nIW.setText(this.nIF);
+    this.nIW.setSelection(this.nIF.length());
     SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    String str = getString(a.i.honey_pay_modify_word_text);
-    SpannableString localSpannableString = j.a(this.mController.uMN, this.llj, this.lly.getTextSize());
+    String str = getString(2131300692);
+    SpannableString localSpannableString = j.b(getContext(), this.nIF, this.nIU.getTextSize());
     localSpannableStringBuilder.append(localSpannableString);
     localSpannableStringBuilder.append(" ");
     localSpannableStringBuilder.append(str);
-    localSpannableStringBuilder.setSpan(new com.tencent.mm.plugin.wallet_core.ui.m(new HoneyPayGiveCardUI.9(this)), localSpannableString.length() + 1, localSpannableStringBuilder.length(), 34);
-    this.lly.setText(localSpannableStringBuilder);
+    localSpannableStringBuilder.setSpan(new o(new HoneyPayGiveCardUI.9(this)), localSpannableString.length() + 1, localSpannableStringBuilder.length(), 34);
+    this.nIU.setText(localSpannableStringBuilder);
+    AppMethodBeat.o(41870);
   }
   
-  private void gH(boolean paramBoolean)
+  private void iq(boolean paramBoolean)
   {
-    if ((paramBoolean) && (!this.llv.isShown()))
+    AppMethodBeat.i(41873);
+    if ((paramBoolean) && (!this.nIR.isShown()))
     {
-      str = ab.cML() + e.a(new StringBuilder().append(this.lkX).toString(), "100", RoundingMode.HALF_UP);
-      this.llv.setText(getString(a.i.honey_pay_min_quota_alert_text, new Object[] { str }));
-      this.llv.startAnimation(AnimationUtils.loadAnimation(this, a.a.in_from_up));
-      this.llv.setVisibility(0);
-    }
-    while ((paramBoolean) || (!this.llv.isShown()))
-    {
-      String str;
+      String str = ae.dSz() + e.b(new StringBuilder().append(this.nIt).toString(), "100", RoundingMode.HALF_UP);
+      this.nIR.setText(getString(2131300689, new Object[] { str }));
+      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034194));
+      this.nIR.setVisibility(0);
+      AppMethodBeat.o(41873);
       return;
     }
-    this.llv.startAnimation(AnimationUtils.loadAnimation(this, a.a.out_to_up));
-    this.llv.setVisibility(8);
+    if ((!paramBoolean) && (this.nIR.isShown()))
+    {
+      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034214));
+      this.nIR.setVisibility(8);
+    }
+    AppMethodBeat.o(41873);
   }
   
-  private void gI(boolean paramBoolean)
+  private void ir(boolean paramBoolean)
   {
-    if ((paramBoolean) && (!this.llv.isShown()))
+    AppMethodBeat.i(41874);
+    if ((paramBoolean) && (!this.nIR.isShown()))
     {
-      str = ab.cML() + e.b(new StringBuilder().append(this.lkW).toString(), "100", RoundingMode.HALF_UP).toString();
-      this.llv.setText(getString(a.i.honey_pay_max_quota_alert_text, new Object[] { str }));
-      this.llv.startAnimation(AnimationUtils.loadAnimation(this, a.a.in_from_up));
-      this.llv.setVisibility(0);
-    }
-    while ((paramBoolean) || (!this.llv.isShown()))
-    {
-      String str;
+      String str = ae.dSz() + e.a(new StringBuilder().append(this.nIs).toString(), "100", 2, RoundingMode.HALF_UP).toString();
+      this.nIR.setText(getString(2131300685, new Object[] { str }));
+      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034194));
+      this.nIR.setVisibility(0);
+      AppMethodBeat.o(41874);
       return;
     }
-    this.llv.startAnimation(AnimationUtils.loadAnimation(this, a.a.out_to_up));
-    this.llv.setVisibility(8);
+    if ((!paramBoolean) && (this.nIR.isShown()))
+    {
+      this.nIR.startAnimation(AnimationUtils.loadAnimation(this, 2131034214));
+      this.nIR.setVisibility(8);
+    }
+    AppMethodBeat.o(41874);
   }
   
-  private void gJ(boolean paramBoolean)
+  private void is(boolean paramBoolean)
   {
-    this.llw.setEnabled(paramBoolean);
+    AppMethodBeat.i(41875);
+    this.nIS.setEnabled(paramBoolean);
+    AppMethodBeat.o(41875);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ah.m paramm)
+  public int getLayoutId()
   {
-    return false;
+    return 2130969870;
   }
   
-  protected final int getLayoutId()
+  public void initView()
   {
-    return a.g.honey_pay_give_card_ui;
-  }
-  
-  protected final void initView()
-  {
-    this.lls = ((ScrollView)findViewById(a.f.hpgc_scroll_view));
-    this.llt = ((WalletFormView)findViewById(a.f.hpgc_max_limit_et));
-    this.llu = ((TextView)findViewById(a.f.hpgc_display_name_tv));
-    this.llv = ((TextView)findViewById(a.f.hpgc_top_alert_tv));
-    this.iIS = ((ImageView)findViewById(a.f.hpgc_avatar_iv));
-    this.llw = ((TextView)findViewById(a.f.hpgc_give_btn));
-    this.llx = ((TextView)findViewById(a.f.hpgc_limit_hint_tv));
-    this.lly = ((TextView)findViewById(a.f.hpgc_wishing_tv));
-    this.llA = ((MMEditText)findViewById(a.f.hpgc_wishing_et));
-    a.b.a(this.iIS, this.hcm, 0.06F, false);
-    String str2 = e.dQ(this.hcm, 10);
+    AppMethodBeat.i(41869);
+    this.nIO = ((ScrollView)findViewById(2131825035));
+    this.nIP = ((WalletFormView)findViewById(2131825043));
+    this.nIQ = ((TextView)findViewById(2131825038));
+    this.nIR = ((TextView)findViewById(2131825046));
+    this.kPy = ((ImageView)findViewById(2131825037));
+    this.nIS = ((TextView)findViewById(2131825045));
+    this.nIT = ((TextView)findViewById(2131825044));
+    this.nIU = ((TextView)findViewById(2131825039));
+    this.nIW = ((MMEditText)findViewById(2131825040));
+    a.b.a(this.kPy, this.ikj, 0.06F, false);
+    String str2 = e.fa(this.ikj, 10);
     String str1 = str2;
-    if (!bk.bl(this.iLj)) {
-      str1 = String.format("%s(%s)", new Object[] { str2, this.iLj });
+    if (!bo.isNullOrNil(this.mTrueName)) {
+      str1 = String.format("%s(%s)", new Object[] { str2, this.mTrueName });
     }
-    this.llu.setText(j.a(this.mController.uMN, str1, this.llu.getTextSize()));
-    this.llt.cNu();
-    this.llt.getTitleTv().setText(ab.cML());
-    this.llt.a(new HoneyPayGiveCardUI.1(this));
-    this.llt.setOnClickListener(new HoneyPayGiveCardUI.2(this));
-    this.llx.setOnClickListener(new HoneyPayGiveCardUI.3(this));
-    this.llw.setClickable(true);
-    this.llw.setOnClickListener(new HoneyPayGiveCardUI.4(this));
-    this.lly.setClickable(true);
-    this.lly.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.d.m(this));
-    this.llA.setOnEditorActionListener(new HoneyPayGiveCardUI.5(this));
-    this.llA.setOnFocusChangeListener(new View.OnFocusChangeListener()
+    this.nIQ.setText(j.b(getContext(), str1, this.nIQ.getTextSize()));
+    this.nIP.dSY();
+    this.nIP.getTitleTv().setText(ae.dSz());
+    this.nIP.a(new HoneyPayGiveCardUI.1(this));
+    this.nIP.setOnClickListener(new HoneyPayGiveCardUI.2(this));
+    this.nIT.setOnClickListener(new HoneyPayGiveCardUI.3(this));
+    this.nIS.setClickable(true);
+    this.nIS.setOnClickListener(new HoneyPayGiveCardUI.4(this));
+    this.nIU.setClickable(true);
+    this.nIU.setOnTouchListener(new com.tencent.mm.pluginsdk.ui.d.m(this));
+    this.nIW.setOnEditorActionListener(new HoneyPayGiveCardUI.5(this));
+    this.nIW.setOnFocusChangeListener(new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
+        AppMethodBeat.i(41864);
         if (!paramAnonymousBoolean)
         {
           HoneyPayGiveCardUI.a(HoneyPayGiveCardUI.this, HoneyPayGiveCardUI.e(HoneyPayGiveCardUI.this).getText().toString());
           HoneyPayGiveCardUI.f(HoneyPayGiveCardUI.this);
         }
+        AppMethodBeat.o(41864);
       }
     });
-    baZ();
-    this.lTH = new a()
+    bIa();
+    setTenpayKBStateListener(new a()
     {
-      public final void gK(boolean paramAnonymousBoolean)
+      public final void onVisibleStateChange(boolean paramAnonymousBoolean)
       {
-        if (paramAnonymousBoolean) {
-          HoneyPayGiveCardUI.a(HoneyPayGiveCardUI.this, HoneyPayGiveCardUI.g(HoneyPayGiveCardUI.this), HoneyPayGiveCardUI.h(HoneyPayGiveCardUI.this));
-        }
-        do
+        AppMethodBeat.i(41865);
+        if (paramAnonymousBoolean)
         {
+          HoneyPayGiveCardUI.a(HoneyPayGiveCardUI.this, HoneyPayGiveCardUI.g(HoneyPayGiveCardUI.this), HoneyPayGiveCardUI.h(HoneyPayGiveCardUI.this));
+          AppMethodBeat.o(41865);
           return;
-          HoneyPayGiveCardUI.g(HoneyPayGiveCardUI.this).scrollTo(0, 0);
-          HoneyPayGiveCardUI.b(HoneyPayGiveCardUI.this).bvq();
-        } while (!bk.bl(HoneyPayGiveCardUI.b(HoneyPayGiveCardUI.this).getText()));
-        HoneyPayGiveCardUI.b(HoneyPayGiveCardUI.this).setVisibility(8);
-        HoneyPayGiveCardUI.c(HoneyPayGiveCardUI.this).setVisibility(0);
-        HoneyPayGiveCardUI.i(HoneyPayGiveCardUI.this);
-        HoneyPayGiveCardUI.j(HoneyPayGiveCardUI.this);
+        }
+        HoneyPayGiveCardUI.g(HoneyPayGiveCardUI.this).scrollTo(0, 0);
+        HoneyPayGiveCardUI.b(HoneyPayGiveCardUI.this).cfJ();
+        if (bo.isNullOrNil(HoneyPayGiveCardUI.b(HoneyPayGiveCardUI.this).getText()))
+        {
+          HoneyPayGiveCardUI.b(HoneyPayGiveCardUI.this).setVisibility(8);
+          HoneyPayGiveCardUI.c(HoneyPayGiveCardUI.this).setVisibility(0);
+          HoneyPayGiveCardUI.i(HoneyPayGiveCardUI.this);
+          HoneyPayGiveCardUI.j(HoneyPayGiveCardUI.this);
+        }
+        AppMethodBeat.o(41865);
       }
-    };
-    e(this.llt, 2, false);
-    this.llt.postDelayed(new Runnable()
+    });
+    setEditFocusListener(this.nIP, 2, false);
+    this.nIP.postDelayed(new Runnable()
     {
       public final void run()
       {
+        AppMethodBeat.i(41866);
         HoneyPayGiveCardUI.b(HoneyPayGiveCardUI.this).d(HoneyPayGiveCardUI.this);
+        AppMethodBeat.o(41866);
       }
     }, 100L);
-    this.llz = ((CdnImageView)findViewById(a.f.hpgc_quota_logo_2_iv));
-    if (!bk.bl(this.iZG))
+    this.nIV = ((CdnImageView)findViewById(2131825041));
+    if (!bo.isNullOrNil(this.lix))
     {
-      this.llz.dl(this.iZG, c.baT());
+      this.nIV.eq(this.lix, c.bHU());
+      AppMethodBeat.o(41869);
       return;
     }
-    this.llz.setImageResource(c.baT());
+    this.nIV.setImageResource(c.bHU());
+    AppMethodBeat.o(41869);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(41872);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(41872);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.lkb = a.c.honey_pay_grey_bg_1;
+    AppMethodBeat.i(41868);
+    this.nHx = 2131690170;
     super.onCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(a.c.white);
-    this.lkW = getIntent().getLongExtra("key_max_credit_line", 0L);
-    this.lkX = getIntent().getLongExtra("key_min_credit_line", 0L);
-    this.iLj = getIntent().getStringExtra("key_true_name");
-    this.hcm = getIntent().getStringExtra("key_username");
-    this.llj = getIntent().getStringExtra("key_wishing");
-    this.iZG = getIntent().getStringExtra("key_icon_url");
-    this.lll = getIntent().getIntExtra("key_cardtype", 0);
-    if (this.lll == 0)
+    getWindow().setBackgroundDrawableResource(2131690709);
+    this.nIs = getIntent().getLongExtra("key_max_credit_line", 0L);
+    this.nIt = getIntent().getLongExtra("key_min_credit_line", 0L);
+    this.mTrueName = getIntent().getStringExtra("key_true_name");
+    this.ikj = getIntent().getStringExtra("key_username");
+    this.nIF = getIntent().getStringExtra("key_wishing");
+    this.lix = getIntent().getStringExtra("key_icon_url");
+    this.nIH = getIntent().getIntExtra("key_cardtype", 0);
+    if (this.nIH == 0)
     {
-      y.w(this.TAG, "error card type!!");
+      ab.w(this.TAG, "error card type!!");
       finish();
     }
     initView();
-    setMMTitle(a.i.honey_pay_give_card_title);
+    setMMTitle(2131300673);
+    AppMethodBeat.o(41868);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(41871);
     super.onDestroy();
+    AppMethodBeat.o(41871);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
+  {
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

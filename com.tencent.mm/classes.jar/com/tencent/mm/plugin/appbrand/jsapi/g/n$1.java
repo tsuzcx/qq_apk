@@ -1,26 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
-import com.tencent.mm.plugin.appbrand.jsapi.base.g;
-import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.m;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.widget.d.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.g.a.b.h;
 
 final class n$1
-  implements b.m
+  extends b.h
 {
-  n$1(n paramn, g paramg) {}
-  
-  public final void df(boolean paramBoolean)
+  n$1(n paramn, double paramDouble1, double paramDouble2)
   {
-    y.i("MicroMsg.JsApiTranslateMapMarker", "onMarkerTranslate result::%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
-    {
-      this.gkW.tT(this.gtv.h("ok", null));
-      n.a(this.gtv).asN();
-      return;
-    }
-    this.gkW.tT(this.gtv.h("fail", null));
+    super(paramDouble1, paramDouble2);
   }
 }
 

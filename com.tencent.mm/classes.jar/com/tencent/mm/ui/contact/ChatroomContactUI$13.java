@@ -3,6 +3,7 @@ package com.tencent.mm.ui.contact;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatroomContactUI$13
   implements View.OnTouchListener
@@ -11,29 +12,31 @@ final class ChatroomContactUI$13
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(33585);
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      if (ChatroomContactUI.f(this.vKh) != null)
+      if (ChatroomContactUI.f(this.AbH) != null)
       {
-        paramView = ChatroomContactUI.f(this.vKh);
-        if (paramView.ffG != null) {
-          paramView.ffG.onTouchEvent(paramMotionEvent);
+        paramView = ChatroomContactUI.f(this.AbH);
+        if (paramView.gxo != null) {
+          paramView.gxo.onTouchEvent(paramMotionEvent);
         }
       }
-      if (ChatroomContactUI.d(this.vKh) != null)
+      if (ChatroomContactUI.d(this.AbH) != null)
       {
-        paramView = ChatroomContactUI.d(this.vKh);
-        if (paramView.ffG != null) {
-          paramView.ffG.onTouchEvent(paramMotionEvent);
+        paramView = ChatroomContactUI.d(this.AbH);
+        if (paramView.gxo != null) {
+          paramView.gxo.onTouchEvent(paramMotionEvent);
         }
       }
+      AppMethodBeat.o(33585);
       return false;
-      this.vKh.XM();
-      ChatroomContactUI.a(this.vKh, (int)paramMotionEvent.getRawX());
-      ChatroomContactUI.b(this.vKh, (int)paramMotionEvent.getRawY());
+      this.AbH.hideVKB();
+      ChatroomContactUI.a(this.AbH, (int)paramMotionEvent.getRawX());
+      ChatroomContactUI.b(this.AbH, (int)paramMotionEvent.getRawY());
     }
   }
 }

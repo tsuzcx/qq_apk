@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.h.a.kj;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.kx;
 import com.tencent.mm.sdk.b.c;
 
 final class e$1
-  extends c<kj>
+  extends c<kx>
 {
   e$1(e parame)
   {
-    this.udX = kj.class.getName().hashCode();
+    AppMethodBeat.i(26295);
+    this.__eventId = kx.class.getName().hashCode();
+    AppMethodBeat.o(26295);
   }
 }
 

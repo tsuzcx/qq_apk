@@ -1,81 +1,91 @@
 package com.tencent.mm.plugin.facedetect.model;
 
 import android.content.Context;
-import com.tencent.mm.plugin.facedetect.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class h$a
 {
-  public String fuj;
-  public long jNU;
-  public long jNV;
-  public boolean jNW;
-  public long jNX;
-  public String jNY;
-  public boolean jNZ;
-  public boolean jOa;
+  public String gLL;
+  public long mig;
+  public long mih;
+  public boolean mii;
+  public long mij;
+  public String mik;
+  public boolean mil;
+  public boolean mim;
   public int type;
   
   public h$a(int paramInt, String paramString)
   {
+    AppMethodBeat.i(216);
     this.type = paramInt;
-    this.jNY = paramString;
+    this.mik = paramString;
     switch (this.type)
     {
     default: 
-      y.e("MicroMsg.FaceDetectProcessModel", "hy: unknown type");
+      ab.e("MicroMsg.FaceDetectProcessModel", "hy: unknown type");
       this.type = 100;
+      AppMethodBeat.o(216);
       return;
     case 0: 
-      this.jNU = 30L;
-      this.jNV = 7000L;
-      this.fuj = ae.getContext().getString(a.i.soter_face_err_msg_ok);
-      this.jNW = true;
-      this.jNX = 2500L;
-      this.jNZ = false;
-      this.jOa = false;
+      this.mig = 30L;
+      this.mih = 7000L;
+      this.gLL = ah.getContext().getString(2131304061);
+      this.mii = true;
+      this.mij = 2500L;
+      this.mil = false;
+      this.mim = false;
+      AppMethodBeat.o(216);
       return;
     case 1: 
-      this.jNU = 30L;
-      this.jNV = 7000L;
-      this.fuj = ae.getContext().getString(a.i.face_detect_hint_pose_left);
-      this.jNW = false;
-      this.jNX = -1L;
-      this.jNZ = true;
-      this.jOa = true;
+      this.mig = 30L;
+      this.mih = 7000L;
+      this.gLL = ah.getContext().getString(2131299563);
+      this.mii = false;
+      this.mij = -1L;
+      this.mil = true;
+      this.mim = true;
+      AppMethodBeat.o(216);
       return;
     case 2: 
-      this.jNU = 30L;
-      this.jNV = 7000L;
-      this.fuj = ae.getContext().getString(a.i.face_detect_hint_pose_right);
-      this.jNW = false;
-      this.jNX = -1L;
-      this.jNZ = true;
-      this.jOa = true;
+      this.mig = 30L;
+      this.mih = 7000L;
+      this.gLL = ah.getContext().getString(2131299564);
+      this.mii = false;
+      this.mij = -1L;
+      this.mil = true;
+      this.mim = true;
+      AppMethodBeat.o(216);
       return;
     case 3: 
-      this.jNU = 30L;
-      this.jNV = 7000L;
-      this.fuj = ae.getContext().getString(a.i.face_detect_hint_eye);
-      this.jNW = true;
-      this.jNX = -1L;
-      this.jNZ = true;
-      this.jOa = true;
+      this.mig = 30L;
+      this.mih = 7000L;
+      this.gLL = ah.getContext().getString(2131299562);
+      this.mii = true;
+      this.mij = -1L;
+      this.mil = true;
+      this.mim = true;
+      AppMethodBeat.o(216);
       return;
     }
-    this.jNU = 30L;
-    this.jNV = 7000L;
-    this.fuj = ae.getContext().getString(a.i.face_detect_hint_read_number);
-    this.jNW = true;
-    this.jNX = 1000L;
-    this.jNZ = true;
-    this.jOa = true;
+    this.mig = 30L;
+    this.mih = 7000L;
+    this.gLL = ah.getContext().getString(2131299565);
+    this.mii = true;
+    this.mij = 1000L;
+    this.mil = true;
+    this.mim = true;
+    AppMethodBeat.o(216);
   }
   
   public final String toString()
   {
-    return "FaceProcessItem{type=" + this.type + ", frameTween=" + this.jNU + ", hintTween=" + this.jNV + ", hintStr='" + this.fuj + '\'' + ", isCheckFace=" + this.jNW + ", minSuccTime=" + this.jNX + ", actionData='" + this.jNY + '\'' + '}';
+    AppMethodBeat.i(217);
+    String str = "FaceProcessItem{type=" + this.type + ", frameTween=" + this.mig + ", hintTween=" + this.mih + ", hintStr='" + this.gLL + '\'' + ", isCheckFace=" + this.mii + ", minSuccTime=" + this.mij + ", actionData='" + this.mik + '\'' + '}';
+    AppMethodBeat.o(217);
+    return str;
   }
 }
 

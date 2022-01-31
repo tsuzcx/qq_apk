@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.masssend.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MassSendMsgUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class MassSendMsgUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.mbI.finish();
+    AppMethodBeat.i(22824);
+    this.oCj.finish();
+    AppMethodBeat.o(22824);
     return true;
   }
 }

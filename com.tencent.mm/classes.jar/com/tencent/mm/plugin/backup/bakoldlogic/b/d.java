@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.a;
 import java.util.HashMap;
 
@@ -7,54 +8,60 @@ public final class d
   extends a
 {
   private static String TAG = "MicroMsg.BakOldItemFactory";
-  private static d hNr;
-  private HashMap<Integer, j> hJS;
+  private static d jGU;
+  private HashMap<Integer, j> jDv;
   
-  public static d avq()
+  public static d aUT()
   {
-    if (hNr == null)
+    AppMethodBeat.i(17786);
+    if (jGU == null)
     {
-      d locald = new d();
-      hNr = locald;
+      locald = new d();
+      jGU = locald;
       a(locald);
     }
-    return hNr;
+    d locald = jGU;
+    AppMethodBeat.o(17786);
+    return locald;
   }
   
-  public final void ati()
+  public final void aSG()
   {
-    hNr = null;
+    jGU = null;
   }
   
-  public final j nM(int paramInt)
+  public final j rA(int paramInt)
   {
-    if (this.hJS == null)
+    AppMethodBeat.i(17787);
+    if (this.jDv == null)
     {
-      this.hJS = new HashMap();
-      this.hJS.put(Integer.valueOf(3), new e());
-      this.hJS.put(Integer.valueOf(47), new c());
-      this.hJS.put(Integer.valueOf(49), new b());
-      this.hJS.put(Integer.valueOf(34), new h());
-      Object localObject = new g();
-      this.hJS.put(Integer.valueOf(43), localObject);
-      this.hJS.put(Integer.valueOf(44), localObject);
-      this.hJS.put(Integer.valueOf(62), localObject);
+      this.jDv = new HashMap();
+      this.jDv.put(Integer.valueOf(3), new e());
+      this.jDv.put(Integer.valueOf(47), new c());
+      this.jDv.put(Integer.valueOf(49), new b());
+      this.jDv.put(Integer.valueOf(34), new h());
+      localObject = new g();
+      this.jDv.put(Integer.valueOf(43), localObject);
+      this.jDv.put(Integer.valueOf(44), localObject);
+      this.jDv.put(Integer.valueOf(62), localObject);
       localObject = new f();
-      this.hJS.put(Integer.valueOf(48), localObject);
-      this.hJS.put(Integer.valueOf(42), localObject);
-      this.hJS.put(Integer.valueOf(66), localObject);
-      this.hJS.put(Integer.valueOf(10000), localObject);
-      this.hJS.put(Integer.valueOf(1), localObject);
-      this.hJS.put(Integer.valueOf(37), localObject);
-      this.hJS.put(Integer.valueOf(40), localObject);
-      this.hJS.put(Integer.valueOf(50), localObject);
+      this.jDv.put(Integer.valueOf(48), localObject);
+      this.jDv.put(Integer.valueOf(42), localObject);
+      this.jDv.put(Integer.valueOf(66), localObject);
+      this.jDv.put(Integer.valueOf(10000), localObject);
+      this.jDv.put(Integer.valueOf(1), localObject);
+      this.jDv.put(Integer.valueOf(37), localObject);
+      this.jDv.put(Integer.valueOf(40), localObject);
+      this.jDv.put(Integer.valueOf(50), localObject);
     }
-    return (j)this.hJS.get(Integer.valueOf(paramInt));
+    Object localObject = (j)this.jDv.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(17787);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.b.d
  * JD-Core Version:    0.7.0.1
  */

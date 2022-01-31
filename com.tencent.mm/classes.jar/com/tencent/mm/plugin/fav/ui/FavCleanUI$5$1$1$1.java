@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.fav.ui.a.b;
 import com.tencent.mm.plugin.fav.ui.widget.a;
@@ -15,17 +16,18 @@ final class FavCleanUI$5$1$1$1
   
   public final void run()
   {
-    b localb = FavCleanUI.e(this.kbJ.kbI.kbF.kbE);
-    List localList = this.kbJ.kbG;
+    AppMethodBeat.i(73953);
+    b localb = FavCleanUI.e(this.mwf.mwe.mwb.mwa);
+    List localList = this.mwf.mwc;
     ArrayList localArrayList;
     Iterator localIterator1;
-    if (localb.keC != null)
+    if (localb.mzl != null)
     {
       localArrayList = new ArrayList();
-      localIterator1 = localb.keC.iterator();
+      localIterator1 = localb.mzl.iterator();
     }
-    label323:
-    label328:
+    label333:
+    label338:
     for (;;)
     {
       Object localObject;
@@ -51,13 +53,13 @@ final class FavCleanUI$5$1$1$1
         for (int i = 1;; i = 0)
         {
           if (i != 0) {
-            break label328;
+            break label338;
           }
           localArrayList.add(localObject);
           break;
-          localb.keC = localArrayList;
+          localb.mzl = localArrayList;
           localArrayList = new ArrayList();
-          localIterator1 = localb.keF.iterator();
+          localIterator1 = localb.mzo.iterator();
           for (;;)
           {
             if (localIterator1.hasNext())
@@ -75,14 +77,15 @@ final class FavCleanUI$5$1$1$1
             for (i = 1;; i = 0)
             {
               if (i != 0) {
-                break label323;
+                break label333;
               }
               localArrayList.add(localObject);
               break;
-              localb.keF = localArrayList;
-              FavCleanUI.e(this.kbJ.kbI.kbF.kbE).notifyDataSetChanged();
-              FavCleanUI.f(this.kbJ.kbI.kbF.kbE).aRZ();
-              this.kbJ.kbH.dismiss();
+              localb.mzo = localArrayList;
+              FavCleanUI.e(this.mwf.mwe.mwb.mwa).notifyDataSetChanged();
+              FavCleanUI.f(this.mwf.mwe.mwb.mwa).byq();
+              this.mwf.mwd.dismiss();
+              AppMethodBeat.o(73953);
               return;
             }
           }
@@ -93,7 +96,10 @@ final class FavCleanUI$5$1$1$1
   
   public final String toString()
   {
-    return super.toString() + "|batchDelFavItems";
+    AppMethodBeat.i(73954);
+    String str = super.toString() + "|batchDelFavItems";
+    AppMethodBeat.o(73954);
+    return str;
   }
 }
 

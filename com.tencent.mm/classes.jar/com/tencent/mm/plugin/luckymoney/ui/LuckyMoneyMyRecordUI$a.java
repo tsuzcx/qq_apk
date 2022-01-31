@@ -5,22 +5,31 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class LuckyMoneyMyRecordUI$a
   extends BaseAdapter
 {
-  int aJH;
-  List<String> lVV;
+  int aRn;
+  List<String> otZ;
   
   LuckyMoneyMyRecordUI$a(LuckyMoneyMyRecordUI paramLuckyMoneyMyRecordUI) {}
   
   public final int getCount()
   {
-    return this.lVV.size();
+    AppMethodBeat.i(42766);
+    int i = this.otZ.size();
+    AppMethodBeat.o(42766);
+    return i;
+  }
+  
+  public final String getItem(int paramInt)
+  {
+    AppMethodBeat.i(42767);
+    String str = (String)this.otZ.get(paramInt);
+    AppMethodBeat.o(42767);
+    return str;
   }
   
   public final long getItemId(int paramInt)
@@ -30,20 +39,18 @@ final class LuckyMoneyMyRecordUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = (CheckedTextView)LayoutInflater.from(this.lVW.mController.uMN).inflate(a.g.wallet_list_dialog_item_singlechoice, paramViewGroup, false);
-    paramView.setText(ke(paramInt));
-    if (paramInt == this.aJH)
-    {
+    AppMethodBeat.i(42768);
+    paramView = (CheckedTextView)LayoutInflater.from(this.oua.getContext()).inflate(2130971195, paramViewGroup, false);
+    paramView.setText(getItem(paramInt));
+    if (paramInt == this.aRn) {
       paramView.setChecked(true);
-      return paramView;
     }
-    paramView.setChecked(false);
-    return paramView;
-  }
-  
-  public final String ke(int paramInt)
-  {
-    return (String)this.lVV.get(paramInt);
+    for (;;)
+    {
+      AppMethodBeat.o(42768);
+      return paramView;
+      paramView.setChecked(false);
+    }
   }
 }
 

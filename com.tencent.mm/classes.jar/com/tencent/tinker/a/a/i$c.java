@@ -11,12 +11,12 @@ final class i$c
   
   public final int size()
   {
-    return i.a(this.wSL).wTb.size;
+    return i.a(this.Bps).BpI.size;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.tinker.a.a.i.c
  * JD-Core Version:    0.7.0.1
  */

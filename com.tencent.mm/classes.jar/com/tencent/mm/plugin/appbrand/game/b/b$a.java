@@ -1,18 +1,54 @@
 package com.tencent.mm.plugin.appbrand.game.b;
 
-import com.tencent.magicbrush.a.e.b;
-import com.tencent.mm.plugin.report.service.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.a.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Iterator;
+import java.util.List;
 
-public final class b$a
-  implements e.b
+final class b$a
+  extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private int gaQ = -1;
+  private int hsC;
+  private List<String> idList;
   
-  public final void c(Object... paramVarArgs)
+  public b$a(b paramb, List paramList)
   {
-    if (this.gaQ != -1) {
-      h.nFQ.f(this.gaQ, paramVarArgs);
+    this.idList = paramList;
+  }
+  
+  public final String aAn()
+  {
+    AppMethodBeat.i(130067);
+    String str = String.format("{deleteSize: %d}", new Object[] { Integer.valueOf(this.hsC) });
+    AppMethodBeat.o(130067);
+    return str;
+  }
+  
+  public final boolean execute()
+  {
+    AppMethodBeat.i(130066);
+    if (bo.es(this.idList))
+    {
+      AppMethodBeat.o(130066);
+      return false;
     }
+    this.hsC = this.idList.size();
+    ab.v("MicroMsg.FTS.FTS5SearchMiniGameLogic", "delete MiniGame info id listSize:%d", new Object[] { Integer.valueOf(this.hsC) });
+    Iterator localIterator = this.idList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      this.hsB.hsz.b(c.mQF, str);
+    }
+    AppMethodBeat.o(130066);
+    return true;
+  }
+  
+  public final String getName()
+  {
+    return "DeleteMiniGameTask";
   }
 }
 

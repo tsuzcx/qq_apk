@@ -1,72 +1,57 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.GridView;
-import android.widget.TextView;
-import com.tencent.mm.R.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.map.geolocation.TencentLocationUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
+import com.tencent.mm.plugin.gallery.model.i.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 final class AlbumPreviewUI$4
-  implements AbsListView.OnScrollListener
+  implements i.b
 {
-  private Runnable khx = new AlbumPreviewUI.4.1(this);
+  AlbumPreviewUI$4(AlbumPreviewUI paramAlbumPreviewUI, double paramDouble) {}
   
-  AlbumPreviewUI$4(AlbumPreviewUI paramAlbumPreviewUI) {}
-  
-  private void gc(boolean paramBoolean)
+  public final void b(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong)
   {
-    if (paramBoolean)
+    AppMethodBeat.i(21391);
+    ab.d("MicroMsg.AlbumPreviewUI", "onQueryMediaBusinessDoing");
+    if (paramLong != AlbumPreviewUI.B(this.neV))
     {
-      AlbumPreviewUI.x(this.kIF).removeCallbacks(this.khx);
-      if (AlbumPreviewUI.x(this.kIF).getVisibility() != 0)
-      {
-        Object localObject = AlbumPreviewUI.a(this.kIF).rT(AlbumPreviewUI.y(this.kIF).getFirstVisiblePosition());
-        AlbumPreviewUI.x(this.kIF).setText((CharSequence)localObject);
-        AlbumPreviewUI.x(this.kIF).clearAnimation();
-        localObject = AnimationUtils.loadAnimation(this.kIF.mController.uMN, R.a.fast_faded_in);
-        AlbumPreviewUI.x(this.kIF).setVisibility(0);
-        AlbumPreviewUI.x(this.kIF).startAnimation((Animation)localObject);
-      }
+      ab.w("MicroMsg.AlbumPreviewUI", "%s %s, not my query, ignore.", new Object[] { Long.valueOf(paramLong), Long.valueOf(AlbumPreviewUI.B(this.neV)) });
+      ab.w("MicroMsg.AlbumPreviewUI", "If you saw too mush this log, maybe user had too many photos. This can be optimized.");
+      AppMethodBeat.o(21391);
       return;
     }
-    AlbumPreviewUI.x(this.kIF).removeCallbacks(this.khx);
-    AlbumPreviewUI.x(this.kIF).postDelayed(this.khx, 256L);
-  }
-  
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramAbsListView = AlbumPreviewUI.a(this.kIF).rT(paramInt1);
-    AlbumPreviewUI.x(this.kIF).setText(paramAbsListView);
-  }
-  
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    y.d("MicroMsg.AlbumPreviewUI", "scroll state[%d]", new Object[] { Integer.valueOf(paramInt) });
-    if (1 == paramInt) {
-      gc(true);
-    }
-    for (;;)
+    if ((paramLinkedList != null) && (paramLinkedList.isEmpty()))
     {
-      if (2 == paramInt) {}
-      try
+      ab.d("MicroMsg.AlbumPreviewUI", "mediaItems is empty.");
+      AppMethodBeat.o(21391);
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      GalleryItem.MediaItem localMediaItem = (GalleryItem.MediaItem)localIterator.next();
+      if (TencentLocationUtils.distanceBetween(AlbumPreviewUI.w(this.neV), AlbumPreviewUI.v(this.neV), localMediaItem.bnl, localMediaItem.bnm) <= this.neY)
       {
-        AlbumPreviewUI.b(this.kIF).rQ(AlbumPreviewUI.z(this.kIF));
-        AlbumPreviewUI.c(this.kIF, AlbumPreviewUI.b(this.kIF).aXI());
-        return;
-      }
-      catch (Exception paramAbsListView)
-      {
-        y.printErrStackTrace("MicroMsg.AlbumPreviewUI", paramAbsListView, "", new Object[0]);
-      }
-      if (paramInt == 0) {
-        gc(false);
+        localMediaItem.nds = "album_business_bubble_media_by_coordinate";
+        localArrayList.add(localMediaItem);
       }
     }
+    paramLinkedList.removeAll(localArrayList);
+    ab.d("MicroMsg.AlbumPreviewUI", "target media size=%d", new Object[] { Integer.valueOf(localArrayList.size()) });
+    localIterator = localArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ab.d("MicroMsg.AlbumPreviewUI", "target media item=%s", new Object[] { ((GalleryItem.MediaItem)localIterator.next()).toString() });
+    }
+    if ((!paramLinkedList.isEmpty()) && (!localArrayList.isEmpty())) {
+      paramLinkedList.addAll(0, localArrayList);
+    }
+    AppMethodBeat.o(21391);
   }
 }
 

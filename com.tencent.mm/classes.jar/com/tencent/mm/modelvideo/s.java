@@ -2,189 +2,364 @@ package com.tencent.mm.modelvideo;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.c.avn;
-import com.tencent.mm.protocal.c.bwa;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bby;
+import com.tencent.mm.protocal.protobuf.cii;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class s
 {
-  public int bRT = 0;
-  public String bVI = "";
-  public long bXr = 0L;
-  public String bYN = "";
-  public String bZs = "";
-  public int bcw = -1;
-  String clientId = "";
-  public long createTime = 0L;
-  public int dmi = 0;
-  public long eFV = 0L;
-  public String eFj = "";
-  public int eGk = 0;
-  public String eHA = "";
-  public int eHC = 0;
-  public int eHD = 0;
-  public int eHE = 0;
-  public long eHF = 0L;
-  public long eHG = 0L;
-  public int eHH = 0;
-  public int eHI = 0;
-  public int eHJ = 0;
-  public int eHK = 0;
-  public int eHL = 0;
-  public int eHM = 0;
-  public String eHN = "";
-  public int eHO = 0;
-  public String eHP = "";
-  public bwa eHQ = new bwa();
-  public avn eHR = new avn();
-  public int ebK = 0;
-  public String fileName = "";
-  public int status = 0;
-  public int videoFormat = 0;
+  public int bsY;
+  public String cDt;
+  public long cFn;
+  public String cGU;
+  public String cHH;
+  String clientId;
+  public long createTime;
+  public int czu;
+  public int edL;
+  public long fVM;
+  public String fVa;
+  public int fWa;
+  public int fXA;
+  public int fXB;
+  public int fXC;
+  public String fXD;
+  public int fXE;
+  public String fXF;
+  public cii fXG;
+  public bby fXH;
+  public String fXq;
+  public int fXs;
+  public int fXt;
+  public int fXu;
+  public long fXv;
+  public long fXw;
+  public int fXx;
+  public int fXy;
+  public int fXz;
+  public String fileName;
+  public int fsd;
+  public int status;
+  public int videoFormat;
   
-  private byte[] SH()
+  public s()
   {
-    try
-    {
-      byte[] arrayOfByte = this.eHR.toByteArray();
-      return arrayOfByte;
-    }
-    catch (Exception localException) {}
-    return new byte[0];
+    AppMethodBeat.i(50782);
+    this.bsY = -1;
+    this.fileName = "";
+    this.clientId = "";
+    this.cFn = 0L;
+    this.fWa = 0;
+    this.fXs = 0;
+    this.fsd = 0;
+    this.fXt = 0;
+    this.fXu = 0;
+    this.status = 0;
+    this.createTime = 0L;
+    this.fXv = 0L;
+    this.fXw = 0L;
+    this.fXx = 0;
+    this.fXy = 0;
+    this.fXz = 0;
+    this.fXA = 0;
+    this.cDt = "";
+    this.fXq = "";
+    this.fXB = 0;
+    this.fXC = 0;
+    this.fVa = "";
+    this.fXD = "";
+    this.fXE = 0;
+    this.fVM = 0L;
+    this.fXF = "";
+    this.cHH = "";
+    this.fXG = new cii();
+    this.cGU = "";
+    this.edL = 0;
+    this.fXH = new bby();
+    this.czu = 0;
+    this.videoFormat = 0;
+    AppMethodBeat.o(50782);
   }
   
-  private byte[] Sz()
+  private void W(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(50787);
+    this.fXG = new cii();
     try
     {
-      byte[] arrayOfByte = this.eHQ.toByteArray();
-      return arrayOfByte;
+      this.fXG.parseFrom(paramArrayOfByte);
+      AppMethodBeat.o(50787);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ab.printErrStackTrace("MicroMsg.VideoInfo", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(50787);
+    }
+  }
+  
+  private void X(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(50788);
+    this.fXH = new bby();
+    try
+    {
+      this.fXH.parseFrom(paramArrayOfByte);
+      AppMethodBeat.o(50788);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      AppMethodBeat.o(50788);
+    }
+  }
+  
+  private byte[] alN()
+  {
+    AppMethodBeat.i(50786);
+    Object localObject = new byte[0];
+    try
+    {
+      byte[] arrayOfByte = this.fXG.toByteArray();
+      localObject = arrayOfByte;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.VideoInfo", localException, "", new Object[0]);
+      }
     }
-    return new byte[0];
+    AppMethodBeat.o(50786);
+    return localObject;
   }
   
-  public static String nP(String paramString)
+  private byte[] alT()
   {
+    AppMethodBeat.i(50789);
+    Object localObject = new byte[0];
     try
     {
-      paramString = bn.s(paramString, "msg");
+      byte[] arrayOfByte = this.fXH.toByteArray();
+      localObject = arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      label19:
+      break label19;
+    }
+    AppMethodBeat.o(50789);
+    return localObject;
+  }
+  
+  public static String vc(String paramString)
+  {
+    AppMethodBeat.i(50783);
+    try
+    {
+      paramString = br.F(paramString, "msg");
       if (paramString != null)
       {
         paramString = (String)paramString.get(".msg.videomsg.$cdnvideourl");
+        AppMethodBeat.o(50783);
         return paramString;
       }
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(50783);
+    }
     return "";
   }
   
-  public final String SA()
+  public final String alM()
   {
-    if (this.bVI == null) {
+    if (this.fXq == null) {
       return "";
     }
-    return this.bVI;
+    return this.fXq;
   }
   
-  public final String SB()
+  public final String alO()
   {
-    if (this.eHA == null) {
+    if (this.fVa == null) {
       return "";
     }
-    return this.eHA;
+    return this.fVa;
   }
   
-  public final String SC()
+  public final String alP()
   {
-    if (this.eFj == null) {
+    if (this.fXD == null) {
       return "";
     }
-    return this.eFj;
+    return this.fXD;
   }
   
-  public final String SD()
-  {
-    if (this.eHN == null) {
-      return "";
-    }
-    return this.eHN;
-  }
-  
-  public final boolean SE()
+  public final boolean alQ()
   {
     return (this.status == 140) || (this.status == 141) || (this.status == 142);
   }
   
-  public final boolean SF()
+  public final boolean alR()
   {
     return (this.status == 121) || (this.status == 122) || (this.status == 120) || (this.status == 123);
   }
   
-  public final boolean SG()
+  public final boolean alS()
   {
     return (this.status == 199) || (this.status == 199);
   }
   
-  public final void d(Cursor paramCursor)
+  public final void convertFrom(Cursor paramCursor)
   {
+    AppMethodBeat.i(50784);
     this.fileName = paramCursor.getString(0);
     this.clientId = paramCursor.getString(1);
-    this.bXr = paramCursor.getLong(2);
-    this.eGk = paramCursor.getInt(3);
-    this.eHC = paramCursor.getInt(4);
-    this.ebK = paramCursor.getInt(5);
-    this.eHD = paramCursor.getInt(6);
-    this.eHE = paramCursor.getInt(7);
+    this.cFn = paramCursor.getLong(2);
+    this.fWa = paramCursor.getInt(3);
+    this.fXs = paramCursor.getInt(4);
+    this.fsd = paramCursor.getInt(5);
+    this.fXt = paramCursor.getInt(6);
+    this.fXu = paramCursor.getInt(7);
     this.status = paramCursor.getInt(8);
     this.createTime = paramCursor.getLong(9);
-    this.eHF = paramCursor.getLong(10);
-    this.eHG = paramCursor.getLong(11);
-    this.eHH = paramCursor.getInt(12);
-    this.eHI = paramCursor.getInt(13);
-    this.eHJ = paramCursor.getInt(14);
-    this.eHK = paramCursor.getInt(15);
-    this.bVI = paramCursor.getString(16);
-    this.eHA = paramCursor.getString(17);
-    this.eHL = paramCursor.getInt(18);
-    this.eHM = paramCursor.getInt(19);
-    this.eFj = paramCursor.getString(20);
-    this.eHN = paramCursor.getString(21);
-    this.eHO = paramCursor.getInt(22);
-    this.eFV = paramCursor.getLong(23);
-    this.eHP = paramCursor.getString(24);
-    this.bZs = paramCursor.getString(25);
-    byte[] arrayOfByte = paramCursor.getBlob(26);
-    this.eHQ = new bwa();
-    try
-    {
-      this.eHQ.aH(arrayOfByte);
-      this.bYN = paramCursor.getString(27);
-      this.dmi = paramCursor.getInt(28);
-      arrayOfByte = paramCursor.getBlob(29);
-      this.eHR = new avn();
+    this.fXv = paramCursor.getLong(10);
+    this.fXw = paramCursor.getLong(11);
+    this.fXx = paramCursor.getInt(12);
+    this.fXy = paramCursor.getInt(13);
+    this.fXz = paramCursor.getInt(14);
+    this.fXA = paramCursor.getInt(15);
+    this.cDt = paramCursor.getString(16);
+    this.fXq = paramCursor.getString(17);
+    this.fXB = paramCursor.getInt(18);
+    this.fXC = paramCursor.getInt(19);
+    this.fVa = paramCursor.getString(20);
+    this.fXD = paramCursor.getString(21);
+    this.fXE = paramCursor.getInt(22);
+    this.fVM = paramCursor.getLong(23);
+    this.fXF = paramCursor.getString(24);
+    this.cHH = paramCursor.getString(25);
+    W(paramCursor.getBlob(26));
+    this.cGU = paramCursor.getString(27);
+    this.edL = paramCursor.getInt(28);
+    X(paramCursor.getBlob(29));
+    this.czu = paramCursor.getInt(30);
+    this.videoFormat = paramCursor.getInt(31);
+    AppMethodBeat.o(50784);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(50785);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.bsY & 0x1) != 0) {
+      localContentValues.put("filename", getFileName());
     }
-    catch (Exception localException1)
+    if ((this.bsY & 0x2) != 0) {
+      if (this.clientId != null) {
+        break label775;
+      }
+    }
+    label775:
+    for (String str = "";; str = this.clientId)
     {
-      try
-      {
-        this.eHR.aH(arrayOfByte);
-        label388:
-        this.bRT = paramCursor.getInt(30);
-        this.videoFormat = paramCursor.getInt(31);
-        return;
-        localException1 = localException1;
-        y.printErrStackTrace("MicroMsg.VideoInfo", localException1, "", new Object[0]);
+      localContentValues.put("clientid", str);
+      if ((this.bsY & 0x4) != 0) {
+        localContentValues.put("msgsvrid", Long.valueOf(this.cFn));
       }
-      catch (Exception localException2)
-      {
-        break label388;
+      if ((this.bsY & 0x8) != 0) {
+        localContentValues.put("netoffset", Integer.valueOf(this.fWa));
       }
+      if ((this.bsY & 0x10) != 0) {
+        localContentValues.put("filenowsize", Integer.valueOf(this.fXs));
+      }
+      if ((this.bsY & 0x20) != 0) {
+        localContentValues.put("totallen", Integer.valueOf(this.fsd));
+      }
+      if ((this.bsY & 0x40) != 0) {
+        localContentValues.put("thumbnetoffset", Integer.valueOf(this.fXt));
+      }
+      if ((this.bsY & 0x80) != 0) {
+        localContentValues.put("thumblen", Integer.valueOf(this.fXu));
+      }
+      if ((this.bsY & 0x100) != 0) {
+        localContentValues.put("status", Integer.valueOf(this.status));
+      }
+      if ((this.bsY & 0x200) != 0) {
+        localContentValues.put("createtime", Long.valueOf(this.createTime));
+      }
+      if ((this.bsY & 0x400) != 0) {
+        localContentValues.put("lastmodifytime", Long.valueOf(this.fXv));
+      }
+      if ((this.bsY & 0x800) != 0) {
+        localContentValues.put("downloadtime", Long.valueOf(this.fXw));
+      }
+      if ((this.bsY & 0x1000) != 0) {
+        localContentValues.put("videolength", Integer.valueOf(this.fXx));
+      }
+      if ((this.bsY & 0x2000) != 0) {
+        localContentValues.put("msglocalid", Integer.valueOf(this.fXy));
+      }
+      if ((this.bsY & 0x4000) != 0) {
+        localContentValues.put("nettimes", Integer.valueOf(this.fXz));
+      }
+      if ((this.bsY & 0x8000) != 0) {
+        localContentValues.put("cameratype", Integer.valueOf(this.fXA));
+      }
+      if ((this.bsY & 0x10000) != 0) {
+        localContentValues.put("user", getUser());
+      }
+      if ((this.bsY & 0x20000) != 0) {
+        localContentValues.put("human", alM());
+      }
+      if ((this.bsY & 0x40000) != 0) {
+        localContentValues.put("reserved1", Integer.valueOf(this.fXB));
+      }
+      if ((this.bsY & 0x80000) != 0) {
+        localContentValues.put("reserved2", Integer.valueOf(this.fXC));
+      }
+      if ((this.bsY & 0x100000) != 0) {
+        localContentValues.put("reserved3", alO());
+      }
+      if ((this.bsY & 0x200000) != 0) {
+        localContentValues.put("reserved4", alP());
+      }
+      if ((this.bsY & 0x400000) != 0) {
+        localContentValues.put("videofuncflag", Integer.valueOf(this.fXE));
+      }
+      if ((this.bsY & 0x800000) != 0) {
+        localContentValues.put("masssendid", Long.valueOf(this.fVM));
+      }
+      if ((this.bsY & 0x1000000) != 0) {
+        localContentValues.put("masssendlist", this.fXF);
+      }
+      if ((this.bsY & 0x2000000) != 0) {
+        localContentValues.put("videomd5", this.cHH);
+      }
+      if ((this.bsY & 0x4000000) != 0) {
+        localContentValues.put("streamvideo", alN());
+      }
+      if ((this.bsY & 0x8000000) != 0) {
+        localContentValues.put("statextstr", this.cGU);
+      }
+      if ((this.bsY & 0x10000000) != 0) {
+        localContentValues.put("downloadscene", Integer.valueOf(this.edL));
+      }
+      if ((this.bsY & 0x20000000) != 0) {
+        localContentValues.put("mmsightextinfo", alT());
+      }
+      if ((this.bsY & 0x1) != 0) {
+        localContentValues.put("preloadsize", Integer.valueOf(this.czu));
+      }
+      if ((this.bsY & 0x2) != 0) {
+        localContentValues.put("videoformat", Integer.valueOf(this.videoFormat));
+      }
+      AppMethodBeat.o(50785);
+      return localContentValues;
     }
   }
   
@@ -196,118 +371,17 @@ public final class s
     return this.fileName;
   }
   
-  public final ContentValues vf()
+  public final String getUser()
   {
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bcw & 0x1) != 0) {
-      localContentValues.put("filename", getFileName());
+    if (this.cDt == null) {
+      return "";
     }
-    if ((this.bcw & 0x2) != 0) {
-      if (this.clientId != null) {
-        break label752;
-      }
-    }
-    label752:
-    for (String str = "";; str = this.clientId)
-    {
-      localContentValues.put("clientid", str);
-      if ((this.bcw & 0x4) != 0) {
-        localContentValues.put("msgsvrid", Long.valueOf(this.bXr));
-      }
-      if ((this.bcw & 0x8) != 0) {
-        localContentValues.put("netoffset", Integer.valueOf(this.eGk));
-      }
-      if ((this.bcw & 0x10) != 0) {
-        localContentValues.put("filenowsize", Integer.valueOf(this.eHC));
-      }
-      if ((this.bcw & 0x20) != 0) {
-        localContentValues.put("totallen", Integer.valueOf(this.ebK));
-      }
-      if ((this.bcw & 0x40) != 0) {
-        localContentValues.put("thumbnetoffset", Integer.valueOf(this.eHD));
-      }
-      if ((this.bcw & 0x80) != 0) {
-        localContentValues.put("thumblen", Integer.valueOf(this.eHE));
-      }
-      if ((this.bcw & 0x100) != 0) {
-        localContentValues.put("status", Integer.valueOf(this.status));
-      }
-      if ((this.bcw & 0x200) != 0) {
-        localContentValues.put("createtime", Long.valueOf(this.createTime));
-      }
-      if ((this.bcw & 0x400) != 0) {
-        localContentValues.put("lastmodifytime", Long.valueOf(this.eHF));
-      }
-      if ((this.bcw & 0x800) != 0) {
-        localContentValues.put("downloadtime", Long.valueOf(this.eHG));
-      }
-      if ((this.bcw & 0x1000) != 0) {
-        localContentValues.put("videolength", Integer.valueOf(this.eHH));
-      }
-      if ((this.bcw & 0x2000) != 0) {
-        localContentValues.put("msglocalid", Integer.valueOf(this.eHI));
-      }
-      if ((this.bcw & 0x4000) != 0) {
-        localContentValues.put("nettimes", Integer.valueOf(this.eHJ));
-      }
-      if ((this.bcw & 0x8000) != 0) {
-        localContentValues.put("cameratype", Integer.valueOf(this.eHK));
-      }
-      if ((this.bcw & 0x10000) != 0) {
-        localContentValues.put("user", SA());
-      }
-      if ((this.bcw & 0x20000) != 0) {
-        localContentValues.put("human", SB());
-      }
-      if ((this.bcw & 0x40000) != 0) {
-        localContentValues.put("reserved1", Integer.valueOf(this.eHL));
-      }
-      if ((this.bcw & 0x80000) != 0) {
-        localContentValues.put("reserved2", Integer.valueOf(this.eHM));
-      }
-      if ((this.bcw & 0x100000) != 0) {
-        localContentValues.put("reserved3", SC());
-      }
-      if ((this.bcw & 0x200000) != 0) {
-        localContentValues.put("reserved4", SD());
-      }
-      if ((this.bcw & 0x400000) != 0) {
-        localContentValues.put("videofuncflag", Integer.valueOf(this.eHO));
-      }
-      if ((this.bcw & 0x800000) != 0) {
-        localContentValues.put("masssendid", Long.valueOf(this.eFV));
-      }
-      if ((this.bcw & 0x1000000) != 0) {
-        localContentValues.put("masssendlist", this.eHP);
-      }
-      if ((this.bcw & 0x2000000) != 0) {
-        localContentValues.put("videomd5", this.bZs);
-      }
-      if ((this.bcw & 0x4000000) != 0) {
-        localContentValues.put("streamvideo", Sz());
-      }
-      if ((this.bcw & 0x8000000) != 0) {
-        localContentValues.put("statextstr", this.bYN);
-      }
-      if ((this.bcw & 0x10000000) != 0) {
-        localContentValues.put("downloadscene", Integer.valueOf(this.dmi));
-      }
-      if ((this.bcw & 0x20000000) != 0) {
-        localContentValues.put("mmsightextinfo", SH());
-      }
-      if ((this.bcw & 0x1) != 0) {
-        localContentValues.put("preloadsize", Integer.valueOf(this.bRT));
-      }
-      if ((this.bcw & 0x2) != 0) {
-        localContentValues.put("videoformat", Integer.valueOf(this.videoFormat));
-      }
-      return localContentValues;
-    }
+    return this.cDt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvideo.s
  * JD-Core Version:    0.7.0.1
  */

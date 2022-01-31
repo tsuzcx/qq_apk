@@ -1,71 +1,70 @@
 package com.tencent.tencentmap.mapsdk.a;
 
 import android.content.Context;
-import com.tencent.map.lib.util.StringUtil;
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.ka;
 
 public class u
-  extends s
+  extends q
 {
-  private static Map<String, s> b = new HashMap();
+  private static volatile u b;
   
-  private u(Context paramContext, String paramString)
+  private u(Context paramContext)
   {
-    this.a = paramContext.getSharedPreferences("Tencent_MapSDK_SUB_CONFIG_" + paramString, 0);
-  }
-  
-  public static s a(Context paramContext, String paramString)
-  {
-    if (StringUtil.isEmpty(paramString)) {
-      return w.a(paramContext);
-    }
-    if (b.get(paramString) == null) {
-      try
-      {
-        if (b.get(paramString) == null)
-        {
-          paramContext = new u(paramContext, paramString);
-          b.put(paramString, paramContext);
-          return paramContext;
-        }
-      }
-      finally {}
-    }
-    return (s)b.get(paramString);
-  }
-  
-  public static void a(Context paramContext)
-  {
-    try
+    AppMethodBeat.i(147082);
+    if (paramContext == null)
     {
-      paramContext = new File(paramContext.getFilesDir().getParent() + File.separator + "shared_prefs").listFiles();
-      int j = paramContext.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject = paramContext[i];
-        if (localObject.getName().startsWith("Tencent_MapSDK_SUB_CONFIG")) {
-          localObject.delete();
-        }
-        i += 1;
-      }
+      AppMethodBeat.o(147082);
       return;
     }
-    catch (Exception paramContext) {}
+    this.a = paramContext.getSharedPreferences("com.tencent.tencentmap.mapsdk.maps.offlinemap", 0);
+    c();
+    AppMethodBeat.o(147082);
   }
   
-  public static void b()
+  public static u a(Context paramContext)
   {
-    if (b != null) {
-      b.clear();
+    AppMethodBeat.i(147081);
+    if (b == null) {}
+    try
+    {
+      if (b == null) {
+        b = new u(paramContext);
+      }
+      paramContext = b;
+      AppMethodBeat.o(147081);
+      return paramContext;
     }
+    finally
+    {
+      AppMethodBeat.o(147081);
+    }
+  }
+  
+  private void c()
+  {
+    AppMethodBeat.i(98281);
+    if (b == null)
+    {
+      AppMethodBeat.o(98281);
+      return;
+    }
+    a(new String[] { "taiwanClearCacheVersion", "taiwanStyle", "taiwanVersion", "mapPoiIcon", "worldTileCount" });
+    String str = a("sdkVersion");
+    if (str == null)
+    {
+      AppMethodBeat.o(98281);
+      return;
+    }
+    if (ka.b("4.1.0", str) > 0) {
+      a();
+    }
+    AppMethodBeat.o(98281);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.u
  * JD-Core Version:    0.7.0.1
  */

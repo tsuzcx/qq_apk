@@ -3,24 +3,44 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class AppBrandGlobalSystemConfig$WeAppSyncVersionSetting
   implements Parcelable
 {
-  public static final Parcelable.Creator<WeAppSyncVersionSetting> CREATOR = new AppBrandGlobalSystemConfig.WeAppSyncVersionSetting.1();
-  public long fPm = 21600L;
-  public long fPn = 604800L;
-  public int fPo = 1000;
-  public int fPp = 100;
+  public static final Parcelable.Creator<WeAppSyncVersionSetting> CREATOR;
+  public long hir;
+  public long hit;
+  public int hiu;
+  public int hiv;
   
-  AppBrandGlobalSystemConfig$WeAppSyncVersionSetting() {}
+  static
+  {
+    AppMethodBeat.i(101804);
+    CREATOR = new AppBrandGlobalSystemConfig.WeAppSyncVersionSetting.1();
+    AppMethodBeat.o(101804);
+  }
+  
+  AppBrandGlobalSystemConfig$WeAppSyncVersionSetting()
+  {
+    this.hir = 21600L;
+    this.hit = 604800L;
+    this.hiu = 1000;
+    this.hiv = 100;
+  }
   
   AppBrandGlobalSystemConfig$WeAppSyncVersionSetting(Parcel paramParcel)
   {
-    this.fPm = paramParcel.readLong();
-    this.fPn = paramParcel.readLong();
-    this.fPo = paramParcel.readInt();
-    this.fPp = paramParcel.readInt();
+    AppMethodBeat.i(101803);
+    this.hir = 21600L;
+    this.hit = 604800L;
+    this.hiu = 1000;
+    this.hiv = 100;
+    this.hir = paramParcel.readLong();
+    this.hit = paramParcel.readLong();
+    this.hiu = paramParcel.readInt();
+    this.hiv = paramParcel.readInt();
+    AppMethodBeat.o(101803);
   }
   
   public final int describeContents()
@@ -30,10 +50,12 @@ public final class AppBrandGlobalSystemConfig$WeAppSyncVersionSetting
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.fPm);
-    paramParcel.writeLong(this.fPn);
-    paramParcel.writeInt(this.fPo);
-    paramParcel.writeInt(this.fPp);
+    AppMethodBeat.i(101802);
+    paramParcel.writeLong(this.hir);
+    paramParcel.writeLong(this.hit);
+    paramParcel.writeInt(this.hiu);
+    paramParcel.writeInt(this.hiv);
+    AppMethodBeat.o(101802);
   }
 }
 

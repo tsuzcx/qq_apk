@@ -2,6 +2,7 @@ package com.tencent.mm.performance.wxperformancetool;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MemoryLeakActivity$4
   implements DialogInterface.OnDismissListener
@@ -10,7 +11,9 @@ final class MemoryLeakActivity$4
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.eQI.finish();
+    AppMethodBeat.i(76885);
+    this.giD.finish();
+    AppMethodBeat.o(76885);
   }
 }
 

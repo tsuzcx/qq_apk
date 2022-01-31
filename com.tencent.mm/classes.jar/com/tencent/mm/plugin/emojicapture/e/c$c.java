@@ -1,17 +1,24 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.d.b.h;
-import a.n;
-import com.tencent.mm.ui.base.p;
-import java.util.ArrayList;
+import a.l;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI.b;
+import com.tencent.mm.ui.base.t;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
 final class c$c
-  extends h
-  implements a.d.a.a<n>
+  implements Runnable
 {
-  c$c(c paramc, com.tencent.mm.plugin.emojicapture.model.b.a parama, ArrayList paramArrayList, p paramp)
+  c$c(c paramc) {}
+  
+  public final void run()
   {
-    super(0);
+    AppMethodBeat.i(2767);
+    c.h(this.lww).boS();
+    t.makeText(c.f(this.lww), 2131299142, 0).show();
+    this.lww.resume();
+    AppMethodBeat.o(2767);
   }
 }
 

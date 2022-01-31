@@ -1,26 +1,25 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.g;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract interface aa
-  extends f
+  extends g
 {
-  public static final String[] dXp = { i.a(j.buS, "FavSearchInfo") };
+  public static final String[] SQL_CREATE = { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "FavSearchInfo") };
   
-  public abstract boolean CP(String paramString);
-  
-  public abstract ArrayList<Long> a(List<String> paramList1, List<String> paramList2, List<Integer> paramList);
+  public abstract boolean NR(String paramString);
   
   public abstract boolean a(j paramj);
   
   public abstract boolean a(j paramj, String... paramVarArgs);
   
-  public abstract void eG(long paramLong);
+  public abstract ArrayList<Long> b(List<String> paramList1, List<String> paramList2, List<Integer> paramList);
   
-  public abstract j eH(long paramLong);
+  public abstract void kd(long paramLong);
+  
+  public abstract j ke(long paramLong);
 }
 
 

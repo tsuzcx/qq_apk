@@ -4,16 +4,17 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Base64;
-import com.tencent.mm.at.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.au.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.s;
-import com.tencent.mm.protocal.c.ayk;
-import com.tencent.mm.protocal.c.ayl;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.r;
+import com.tencent.mm.model.t;
+import com.tencent.mm.protocal.protobuf.bfh;
+import com.tencent.mm.protocal.protobuf.bfi;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.io.IOException;
 import java.util.Collections;
@@ -22,112 +23,127 @@ import java.util.LinkedList;
 
 public final class ai
 {
-  public static ayl qUx;
+  public static bfi uJI;
   
-  public static void Rx(String paramString)
+  public static void agy(String paramString)
   {
-    if (b.mC((String)g.DP().Dz().get(274436, null))) {}
-    while (!s.hl(paramString)) {
+    AppMethodBeat.i(124176);
+    if (b.tM((String)g.RL().Ru().get(274436, null)))
+    {
+      AppMethodBeat.o(124176);
       return;
     }
-    if (qUx == null) {
-      bZE();
+    if (!t.nU(paramString))
+    {
+      AppMethodBeat.o(124176);
+      return;
+    }
+    if (uJI == null) {
+      cZA();
     }
     long l1 = System.currentTimeMillis();
     Object localObject1 = null;
     int i = 0;
     Object localObject2;
-    if (i < qUx.hPT.size())
+    if (i < uJI.jJv.size())
     {
-      localObject2 = (ayk)qUx.hPT.get(i);
-      long l2 = (l1 - ((ayk)localObject2).tuv) / 86400000L;
-      ((ayk)localObject2).tuu *= Math.pow(0.98D, l2);
-      ((ayk)localObject2).tuv = (l2 * 86400000L + ((ayk)localObject2).tuv);
-      y.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((ayk)localObject2).tuu), Long.valueOf(((ayk)localObject2).tuv), ((ayk)localObject2).sxM });
-      if (!((ayk)localObject2).sxM.equals(paramString)) {
-        break label453;
+      localObject2 = (bfh)uJI.jJv.get(i);
+      long l2 = (l1 - ((bfh)localObject2).xux) / 86400000L;
+      ((bfh)localObject2).xuw *= Math.pow(0.98D, l2);
+      ((bfh)localObject2).xux = (l2 * 86400000L + ((bfh)localObject2).xux);
+      ab.d("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "after update: %.2f %d %s", new Object[] { Double.valueOf(((bfh)localObject2).xuw), Long.valueOf(((bfh)localObject2).xux), ((bfh)localObject2).Username });
+      if (!((bfh)localObject2).Username.equals(paramString)) {
+        break label479;
       }
       localObject1 = localObject2;
     }
-    label453:
+    label479:
     for (;;)
     {
       i += 1;
       break;
       if (localObject1 == null)
       {
-        localObject1 = new ayk();
-        ((ayk)localObject1).tuu = 1.0D;
-        ((ayk)localObject1).tuv = l1;
-        ((ayk)localObject1).sxM = paramString;
-        qUx.hPT.add(localObject1);
-        y.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
+        localObject1 = new bfh();
+        ((bfh)localObject1).xuw = 1.0D;
+        ((bfh)localObject1).xux = l1;
+        ((bfh)localObject1).Username = paramString;
+        uJI.jJv.add(localObject1);
+        ab.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "add new use %s", new Object[] { paramString });
       }
       for (;;)
       {
-        Collections.sort(qUx.hPT, new Comparator() {});
-        i = qUx.hPT.size() - 1;
-        while ((i < qUx.hPT.size()) && (qUx.hPT.size() > 8))
+        Collections.sort(uJI.jJv, new Comparator() {});
+        i = uJI.jJv.size() - 1;
+        while ((i < uJI.jJv.size()) && (uJI.jJv.size() > 8))
         {
-          if (((ayk)qUx.hPT.get(i)).tuu < 0.5D) {
-            qUx.hPT.remove(i);
+          if (((bfh)uJI.jJv.get(i)).xuw < 0.5D) {
+            uJI.jJv.remove(i);
           }
           i += 1;
         }
-        ((ayk)localObject1).tuu += 1.0D;
-        y.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((ayk)localObject1).tuu) });
+        ((bfh)localObject1).xuw += 1.0D;
+        ab.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "update use %s %.2f", new Object[] { paramString, Double.valueOf(((bfh)localObject1).xuw) });
       }
-      paramString = ae.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
+      paramString = ah.getContext().getSharedPreferences("fts_recent_biz_sp", 0);
       try
       {
-        localObject1 = bZB();
-        localObject2 = Base64.encodeToString(qUx.toByteArray(), 0);
+        localObject1 = cZx();
+        localObject2 = Base64.encodeToString(uJI.toByteArray(), 0);
         paramString.edit().putString((String)localObject1, (String)localObject2).commit();
-        y.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
+        ab.i("MicroMsg.WebSearch.WebSearchMostSearchBizLogic", "useBiz pbListString %s", new Object[] { localObject2 });
+        AppMethodBeat.o(124176);
         return;
       }
       catch (IOException paramString)
       {
+        AppMethodBeat.o(124176);
         return;
       }
     }
   }
   
-  public static String bZB()
+  public static bfi cZA()
   {
-    return "key_pb_most_search_biz_list" + q.Gj();
-  }
-  
-  public static ayl bZE()
-  {
+    AppMethodBeat.i(124174);
     Object localObject;
-    if (qUx == null)
+    if (uJI == null)
     {
-      localObject = bZB();
-      qUx = new ayl();
-      localObject = ae.getContext().getSharedPreferences("fts_recent_biz_sp", 0).getString((String)localObject, "");
-      if (!bk.bl((String)localObject)) {
+      localObject = cZx();
+      uJI = new bfi();
+      localObject = ah.getContext().getSharedPreferences("fts_recent_biz_sp", 0).getString((String)localObject, "");
+      if (!bo.isNullOrNil((String)localObject)) {
         localObject = Base64.decode(((String)localObject).getBytes(), 0);
       }
     }
     try
     {
-      qUx.aH((byte[])localObject);
-      label62:
-      if (b.mC((String)g.DP().Dz().get(274436, null))) {
-        qUx.hPT.clear();
+      uJI.parseFrom((byte[])localObject);
+      label67:
+      if (b.tM((String)g.RL().Ru().get(274436, null))) {
+        uJI.jJv.clear();
       }
-      return qUx;
+      localObject = uJI;
+      AppMethodBeat.o(124174);
+      return localObject;
     }
     catch (IOException localIOException)
     {
-      break label62;
+      break label67;
     }
+  }
+  
+  public static String cZx()
+  {
+    AppMethodBeat.i(124175);
+    String str = "key_pb_most_search_biz_list" + r.Zn();
+    AppMethodBeat.o(124175);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ai
  * JD-Core Version:    0.7.0.1
  */

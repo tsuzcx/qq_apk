@@ -1,77 +1,93 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
 import android.os.Parcelable;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 
 public final class d
 {
-  private static final HashMap<String, MMToClientEvent> geB = new HashMap();
+  private static final HashMap<String, MMToClientEvent> hwA;
+  
+  static
+  {
+    AppMethodBeat.i(86953);
+    hwA = new HashMap();
+    AppMethodBeat.o(86953);
+  }
   
   public static <T extends Parcelable> void a(String paramString, T paramT)
   {
-    synchronized (geB)
+    AppMethodBeat.i(86952);
+    synchronized (hwA)
     {
-      paramString = (MMToClientEvent)geB.get(paramString);
+      paramString = (MMToClientEvent)hwA.get(paramString);
       if ((paramString == null) || (paramT == null) || (paramT == null)) {}
     }
-  }
-  
-  public static void aO(String paramString, int paramInt)
-  {
-    y.i("MicroMsg.MMToClientEventCenter", "notify unread:%d", new Object[] { Integer.valueOf(paramInt) });
-    synchronized (geB)
-    {
-      paramString = (MMToClientEvent)geB.get(paramString);
-      if (paramString == null) {}
-    }
-    y.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
+    AppMethodBeat.o(86952);
   }
   
   public static void b(MMToClientEvent paramMMToClientEvent)
   {
-    y.i("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId:%s, MMToClientEvent.hash:%d", new Object[] { paramMMToClientEvent.appId, Integer.valueOf(paramMMToClientEvent.hashCode()) });
+    AppMethodBeat.i(86948);
+    ab.i("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId:%s, MMToClientEvent.hash:%d", new Object[] { paramMMToClientEvent.appId, Integer.valueOf(paramMMToClientEvent.hashCode()) });
     if (paramMMToClientEvent.appId == null)
     {
-      y.e("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId is null!!!");
+      ab.e("MicroMsg.MMToClientEventCenter", "register MMToClientEvent.appId is null!!!");
+      AppMethodBeat.o(86948);
       return;
     }
-    for (;;)
+    synchronized (hwA)
     {
-      synchronized (geB)
+      if (hwA.get(paramMMToClientEvent.appId) == null)
       {
-        if (geB.get(paramMMToClientEvent.appId) == null)
-        {
-          geB.put(paramMMToClientEvent.appId, paramMMToClientEvent);
-          return;
-        }
+        hwA.put(paramMMToClientEvent.appId, paramMMToClientEvent);
+        AppMethodBeat.o(86948);
+        return;
       }
-      y.d("MicroMsg.MMToClientEventCenter", "The CommonConfig is already exist!~ so replace it");
-      geB.remove(paramMMToClientEvent.appId);
-      geB.put(paramMMToClientEvent.appId, paramMMToClientEvent);
+      ab.d("MicroMsg.MMToClientEventCenter", "The CommonConfig is already exist!~ so replace it");
+      hwA.remove(paramMMToClientEvent.appId);
+      hwA.put(paramMMToClientEvent.appId, paramMMToClientEvent);
     }
+  }
+  
+  public static void be(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(86951);
+    ab.i("MicroMsg.MMToClientEventCenter", "notify unread:%d", new Object[] { Integer.valueOf(paramInt) });
+    synchronized (hwA)
+    {
+      paramString = (MMToClientEvent)hwA.get(paramString);
+      if (paramString == null) {}
+    }
+    ab.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
+    AppMethodBeat.o(86951);
   }
   
   public static void c(MMToClientEvent paramMMToClientEvent)
   {
-    y.i("MicroMsg.MMToClientEventCenter", "unregister MMToClientEvent.appId:%s", new Object[] { paramMMToClientEvent.appId });
-    synchronized (geB)
+    AppMethodBeat.i(86949);
+    ab.i("MicroMsg.MMToClientEventCenter", "unregister MMToClientEvent.appId:%s", new Object[] { paramMMToClientEvent.appId });
+    synchronized (hwA)
     {
-      geB.remove(paramMMToClientEvent.appId);
+      hwA.remove(paramMMToClientEvent.appId);
+      AppMethodBeat.o(86949);
       return;
     }
   }
   
   public static void j(String paramString1, int paramInt, String paramString2)
   {
-    y.i("MicroMsg.MMToClientEventCenter", "notify appId:%s, type:%d, config:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    AppMethodBeat.i(86950);
+    ab.i("MicroMsg.MMToClientEventCenter", "notify appId:%s, type:%d, config:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     MMToClientEvent localMMToClientEvent;
-    synchronized (geB)
+    synchronized (hwA)
     {
-      localMMToClientEvent = (MMToClientEvent)geB.get(paramString1);
+      localMMToClientEvent = (MMToClientEvent)hwA.get(paramString1);
       if (localMMToClientEvent == null) {}
     }
-    y.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
+    ab.e("MicroMsg.MMToClientEventCenter", "notify fail!!! The MMToClientEvent isn't exist!!!");
+    AppMethodBeat.o(86950);
   }
 }
 

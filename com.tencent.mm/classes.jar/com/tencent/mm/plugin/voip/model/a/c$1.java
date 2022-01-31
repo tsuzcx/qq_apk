@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.voip.a.a;
 
 final class c$1
@@ -11,7 +12,9 @@ final class c$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(4701);
     a.Logd("MicroMsg.NetSceneVoipCancelInvite", "onSceneEnd type:" + paramm.getType() + " errType:" + paramInt1 + " errCode:" + paramInt2);
+    AppMethodBeat.o(4701);
   }
 }
 

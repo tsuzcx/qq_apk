@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sns.storage;
 
 public final class a$a
 {
-  public String bFw;
-  public String bNZ;
-  public String bth;
+  public String appVersion;
+  public String cmG;
+  public String cvr;
 }
 
 

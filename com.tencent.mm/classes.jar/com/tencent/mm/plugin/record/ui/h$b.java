@@ -6,9 +6,9 @@ import com.tencent.mm.plugin.record.ui.a.b;
 
 public abstract interface h$b
 {
-  public abstract void a(View paramView, int paramInt, b paramb);
+  public abstract void a(View paramView, int paramInt, b paramb, Object paramObject);
   
-  public abstract View dZ(Context paramContext);
+  public abstract View createView(Context paramContext);
   
   public abstract void destroy();
   

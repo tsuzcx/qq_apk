@@ -5,7 +5,7 @@ public final class c$ed
 {
   public c$ed()
   {
-    super("openTimelineCheckInList", "open_timeline_checkin_list", 62, false);
+    super("jumpToWXWallet", "jumpToWXWallet", 147, true);
   }
 }
 

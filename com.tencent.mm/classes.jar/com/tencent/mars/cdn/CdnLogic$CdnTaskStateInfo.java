@@ -7,8 +7,8 @@ public class CdnLogic$CdnTaskStateInfo
   public static final int kPausing = 102;
   public static final int kRunning = 100;
   public static final int kWaiting = 101;
-  public int completeSize = 0;
-  public int fileTotalSize = 0;
+  public long completeSize = 0L;
+  public long fileTotalSize = 0L;
   public int taskState = -100;
 }
 

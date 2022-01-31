@@ -1,56 +1,61 @@
 package com.tencent.mm.plugin.collect.reward.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bmw;
-import com.tencent.mm.protocal.c.bmx;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n;
+import com.tencent.mm.protocal.protobuf.bwp;
+import com.tencent.mm.protocal.protobuf.bwq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p;
 
 public final class c
-  extends n
+  extends p
 {
-  public bmx iIc;
+  public bwq kOH;
   
   public c(String paramString, int paramInt)
   {
+    AppMethodBeat.i(41037);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bmw();
-    ((b.a)localObject).ecI = new bmx();
-    ((b.a)localObject).ecG = 2811;
+    ((b.a)localObject).fsX = new bwp();
+    ((b.a)localObject).fsY = new bwq();
+    ((b.a)localObject).funcId = 2811;
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/scanrewardmaterialcode";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bmw)this.dmK.ecE.ecN;
-    ((bmw)localObject).tFZ = paramString;
-    ((bmw)localObject).scene = paramInt;
-    y.i("MicroMsg.NetSceneQrRewardMaterial", "req url: %s, %s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bwp)this.rr.fsV.fta;
+    ((bwp)localObject).xJR = paramString;
+    ((bwp)localObject).scene = paramInt;
+    ab.i("MicroMsg.NetSceneQrRewardMaterial", "req url: %s, %s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    AppMethodBeat.o(41037);
   }
   
-  public final boolean aEE()
+  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  {
+    AppMethodBeat.i(41038);
+    this.kOH = ((bwq)((b)paramq).fsW.fta);
+    ab.i("MicroMsg.NetSceneQrRewardMaterial", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.kOH.cnK), this.kOH.kNv });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    }
+    AppMethodBeat.o(41038);
+  }
+  
+  public final boolean bhS()
   {
     return true;
   }
   
-  protected final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void e(q paramq)
   {
-    this.iIc = ((bmx)((b)paramq).ecF.ecN);
-    y.i("MicroMsg.NetSceneQrRewardMaterial", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.iIc.iHq), this.iIc.iHr });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
-    }
-  }
-  
-  protected final void f(q paramq)
-  {
-    paramq = (bmx)((b)paramq).ecF.ecN;
-    this.wAx = paramq.iHq;
-    this.wAy = paramq.iHr;
+    paramq = (bwq)((b)paramq).fsW.fta;
+    this.AXb = paramq.cnK;
+    this.AXc = paramq.kNv;
   }
   
   public final int getType()
@@ -60,7 +65,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.reward.a.c
  * JD-Core Version:    0.7.0.1
  */

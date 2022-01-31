@@ -2,6 +2,7 @@ package com.tencent.mm.ui.contact;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMClearEditText;
 
 final class ContactRemarkInfoModUI$12
@@ -11,11 +12,13 @@ final class ContactRemarkInfoModUI$12
   
   public final void onClick(View paramView)
   {
-    ContactRemarkInfoModUI.f(this.vKT);
-    ContactRemarkInfoModUI.a(this.vKT, false, paramView.getId());
-    ContactRemarkInfoModUI.g(this.vKT).performClick();
-    ContactRemarkInfoModUI.g(this.vKT).requestFocus();
-    this.vKT.showVKB();
+    AppMethodBeat.i(33641);
+    ContactRemarkInfoModUI.f(this.Acv);
+    ContactRemarkInfoModUI.a(this.Acv, false, paramView.getId());
+    ContactRemarkInfoModUI.g(this.Acv).performClick();
+    ContactRemarkInfoModUI.g(this.Acv).requestFocus();
+    this.Acv.showVKB();
+    AppMethodBeat.o(33641);
   }
 }
 

@@ -2,6 +2,7 @@ package com.google.android.gms.wearable;
 
 import com.google.android.gms.common.api.Result;
 
+@Deprecated
 public abstract interface NodeApi$GetLocalNodeResult
   extends Result
 {
@@ -9,7 +10,7 @@ public abstract interface NodeApi$GetLocalNodeResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.wearable.NodeApi.GetLocalNodeResult
  * JD-Core Version:    0.7.0.1
  */

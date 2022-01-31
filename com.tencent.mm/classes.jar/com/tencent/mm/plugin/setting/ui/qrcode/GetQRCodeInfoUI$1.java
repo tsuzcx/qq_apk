@@ -1,32 +1,37 @@
 package com.tencent.mm.plugin.setting.ui.qrcode;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi.a;
+import com.tencent.mm.model.bk.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.plugin.setting.b;
-import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 final class GetQRCodeInfoUI$1
-  implements bi.a
+  implements bk.a
 {
   GetQRCodeInfoUI$1(GetQRCodeInfoUI paramGetQRCodeInfoUI) {}
   
   public final void a(e parame)
   {
+    AppMethodBeat.i(126902);
     if (parame == null)
     {
-      this.nRx.finish();
+      this.qFv.finish();
+      AppMethodBeat.o(126902);
       return;
     }
-    if ((g.DK()) && (!a.CW()))
+    if ((g.RG()) && (!a.QP()))
     {
-      GetQRCodeInfoUI.a(this.nRx, this.nRx.getIntent().getDataString());
+      GetQRCodeInfoUI.a(this.qFv, this.qFv.getIntent().getDataString());
+      AppMethodBeat.o(126902);
       return;
     }
-    b.eUR.q(new Intent(), this.nRx);
-    this.nRx.finish();
+    b.gmO.p(new Intent(), this.qFv);
+    this.qFv.finish();
+    AppMethodBeat.o(126902);
   }
 }
 

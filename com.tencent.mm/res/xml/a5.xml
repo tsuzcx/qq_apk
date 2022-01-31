@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_masssend_header_helper" android:layout="@layout/ah6" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/au3" android:key="contact_info_masssend_view" android:layout="@layout/ab8" />
-    <Preference android:title="@string/ars" android:key="contact_info_masssend_clear_data" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/e2p" android:key="contact_info_masssend_install" android:layout="@layout/a5v" />
-    <Preference android:title="@string/e2v" android:key="contact_info_masssend_uninstall" android:layout="@layout/a84" />
-    <PreferenceCategory />
+    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/ra" />
+    <Preference android:title="@string/b09" android:key="contact_info_qcontact_sex" android:layout="@layout/afi" />
+    <Preference android:title="@string/b07" android:key="contact_info_qcontact_age" android:layout="@layout/afi" />
+    <Preference android:title="@string/b08" android:key="contact_info_qcontact_birthday" android:layout="@layout/afi" />
+    <Preference android:title="@string/b06" android:key="contact_info_qcontact_address" android:layout="@layout/afi" />
 </PreferenceScreen>

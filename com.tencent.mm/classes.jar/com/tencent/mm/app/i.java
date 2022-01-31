@@ -1,56 +1,58 @@
 package com.tencent.mm.app;
 
-import android.os.HandlerThread;
-import android.os.Process;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vending.h.h;
+import com.tencent.f.a.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class i
+  implements b.a
 {
-  static i bwu;
-  HandlerThread bwv;
-  com.tencent.mm.vending.h.d bww;
-  ah handler;
-  
-  public i(String paramString)
+  public final boolean isLoggable(String paramString, int paramInt)
   {
-    this.bwv = e.ds(paramString, 10);
-    this.bwv.start();
-    this.handler = new ah(this.bwv.getLooper());
-    this.bww = new h(com.tencent.mm.ck.d.c(this.handler), paramString);
+    return true;
   }
   
-  public final void sQ()
+  public final void println(int paramInt, String paramString1, String paramString2)
   {
-    if ((this.bwv == null) || (!this.bwv.isAlive()))
+    AppMethodBeat.i(3231);
+    switch (paramInt)
     {
-      y.e("MicroMsg.InitThreadController", "setHighPriority failed thread is dead");
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(3231);
       return;
-    }
-    int i = this.bwv.getThreadId();
-    try
-    {
-      if (-8 == Process.getThreadPriority(i))
-      {
-        y.w("MicroMsg.InitThreadController", "setHighPriority No Need.");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      y.w("MicroMsg.InitThreadController", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
-      y.printErrStackTrace("MicroMsg.InitThreadController", localException, "", new Object[0]);
+      ab.v(paramString1, paramString2);
+      AppMethodBeat.o(3231);
       return;
+      ab.d(paramString1, paramString2);
+      AppMethodBeat.o(3231);
+      return;
+      ab.i(paramString1, paramString2);
+      AppMethodBeat.o(3231);
+      return;
+      ab.w(paramString1, paramString2);
+      AppMethodBeat.o(3231);
+      return;
+      ab.e(paramString1, paramString2);
     }
-    Process.setThreadPriority(i, -8);
-    y.i("MicroMsg.InitThreadController", "InitThreadController:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+  }
+  
+  static final class a
+  {
+    static final i bXZ;
+    
+    static
+    {
+      AppMethodBeat.i(3230);
+      bXZ = new i((byte)0);
+      AppMethodBeat.o(3230);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.i
  * JD-Core Version:    0.7.0.1
  */

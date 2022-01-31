@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import com.tencent.mm.plugin.fts.ui.widget.a.b;
+import com.tencent.mm.plugin.fts.ui.widget.a.c;
 
 final class FTSTalkerMessageUI$a
-  implements a.b
+  implements a.c
 {
-  private String dtK;
+  private String elx;
   
   private FTSTalkerMessageUI$a(FTSTalkerMessageUI paramFTSTalkerMessageUI) {}
   
@@ -16,7 +16,7 @@ final class FTSTalkerMessageUI$a
   
   public final String getTagName()
   {
-    return this.dtK;
+    return this.elx;
   }
 }
 

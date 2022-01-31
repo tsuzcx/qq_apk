@@ -1,65 +1,20 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
-import a.d.b.g;
-import android.support.v7.widget.RecyclerView.a;
-import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import a.l;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.desktop.DragRecyclerView;
 
-final class h
-  extends RecyclerView.a<j>
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionRecyclerView;", "Lcom/tencent/mm/plugin/appbrand/widget/desktop/DragRecyclerView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "plugin-appbrand-integration_release"})
+public final class h
+  extends DragRecyclerView
 {
-  final ArrayList<LocalUsageInfo> hgv;
-  
-  public h(ArrayList<LocalUsageInfo> paramArrayList)
+  public h(Context paramContext)
   {
-    this.hgv = paramArrayList;
-  }
-  
-  private void a(j paramj, int paramInt)
-  {
-    g.k(paramj, "holder");
-    Object localObject = this.hgv.get(paramInt);
-    g.j(localObject, "dataList[position]");
-    paramj.f((LocalUsageInfo)localObject);
-  }
-  
-  public final void aB(List<? extends LocalUsageInfo> paramList)
-  {
-    g.k(paramList, "list");
-    synchronized (this.hgv)
-    {
-      this.hgv.clear();
-      this.hgv.addAll((Collection)paramList);
-      return;
-    }
-  }
-  
-  public final ArrayList<LocalUsageInfo> apF()
-  {
-    synchronized (this.hgv)
-    {
-      ArrayList localArrayList2 = new ArrayList(this.hgv.size());
-      localArrayList2.addAll((Collection)this.hgv);
-      return localArrayList2;
-    }
-  }
-  
-  public final int getItemCount()
-  {
-    return this.hgv.size();
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    LocalUsageInfo localLocalUsageInfo = (LocalUsageInfo)this.hgv.get(paramInt);
-    return (localLocalUsageInfo.username + localLocalUsageInfo.fJy).hashCode();
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    return 1;
+    super(paramContext);
+    AppMethodBeat.i(135103);
+    setNestedScrollingEnabled(true);
+    AppMethodBeat.o(135103);
   }
 }
 

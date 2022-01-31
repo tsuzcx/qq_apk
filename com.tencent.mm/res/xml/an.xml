@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/awr" android:key="contact_info_social_mobile" android:layout="@layout/ab8" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/aws" android:key="contact_info_social_qq" android:layout="@layout/ab8" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/awq" android:key="contact_info_social_linkedin" android:layout="@layout/ab8" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/awn" android:key="contact_info_social_facebook" android:layout="@layout/ab8" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/awp" android:key="contact_info_social_googlecontacts" android:layout="@layout/ab8" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/awu" android:key="contact_info_social_weishop" android:layout="@layout/ab8" />
+    <com.tencent.mm.plugin.exdevice.ui.DeviceProfileHeaderPreference android:key="device_profile_header" android:layout="@layout/ww" />
+    <Preference android:title="@string/bka" android:key="sub_device_desc" android:layout="@layout/xr" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/bir" android:key="message_manage" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/bhp" android:key="connect_setting" android:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/bkf" android:key="user_list" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/aw7" android:key="contact_info_biz_go_chatting" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/bgn" android:key="bind_device" android:layout="@layout/a95" />
+    <Preference android:title="@string/biy" android:key="open_device_panel" android:layout="@layout/a95" />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/bkb" android:key="unbind_device" android:layout="@layout/b_b" />
+    <PreferenceCategory />
 </PreferenceScreen>

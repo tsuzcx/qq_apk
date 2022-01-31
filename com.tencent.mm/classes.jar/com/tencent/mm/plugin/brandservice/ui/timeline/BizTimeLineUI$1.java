@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.brandservice.ui.timeline;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BizTimeLineUI$1
   implements View.OnClickListener
@@ -13,9 +12,11 @@ final class BizTimeLineUI$1
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.ihl.mController.uMN, BizTimeLineNewMsgUI.class);
+    AppMethodBeat.i(14183);
+    paramView = new Intent(this.jXh.getContext(), BizTimeLineNewMsgUI.class);
     paramView.putExtra("biz_time_line_line_enter_scene", 1);
-    this.ihl.startActivity(paramView);
+    this.jXh.startActivity(paramView);
+    AppMethodBeat.o(14183);
   }
 }
 

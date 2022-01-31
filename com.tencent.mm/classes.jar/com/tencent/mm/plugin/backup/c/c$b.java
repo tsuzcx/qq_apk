@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.backup.c;
 
 import android.text.TextUtils;
-import com.tencent.mm.model.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.backup.b.d;
 import com.tencent.mm.plugin.backup.b.f.a;
 import com.tencent.mm.plugin.backup.f.h.a;
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.c.fo;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.gx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,122 +21,154 @@ import junit.framework.Assert;
 
 final class c$b
 {
-  String TAG = "";
-  String aVr;
-  boolean fSF = false;
-  int hFC;
-  long hFE = 0L;
-  long hFF = 0L;
-  LinkedBlockingQueue<Runnable> hGo = new LinkedBlockingQueue();
-  c.a hGp;
-  long hGq = 0L;
-  String hGr = "";
-  Vector<String> hGs = new Vector();
-  Vector<fo> hGt = new Vector();
-  HashMap<Long, h.a> hGu = new HashMap();
-  long hGv = 0L;
-  private final com.tencent.mm.plugin.backup.g.c.b hGw = new c.b.1(this);
-  private final Runnable hGx = new c.b.3(this);
-  final Runnable hGy = new c.b.4(this);
+  String TAG;
+  String blZ;
+  boolean hmf;
+  int jyZ;
+  LinkedBlockingQueue<Runnable> jzK;
+  c.a jzL;
+  private long jzM;
+  String jzN;
+  Vector<String> jzO;
+  private Vector<gx> jzP;
+  HashMap<Long, h.a> jzQ;
+  long jzR;
+  private final com.tencent.mm.plugin.backup.g.c.b jzS;
+  private final Runnable jzT;
+  final Runnable jzU;
+  long jzb;
+  long jzc;
   String talker;
   
   public c$b(c paramc, c.a parama, f.a parama1)
   {
-    this.hGp = parama;
-    this.talker = parama1.hFB;
-    this.hFC = parama1.hFC;
-    if (s.fn(this.talker))
+    AppMethodBeat.i(17187);
+    this.TAG = "";
+    this.jzK = new LinkedBlockingQueue();
+    this.jzb = 0L;
+    this.jzc = 0L;
+    this.jzM = 0L;
+    this.jzN = "";
+    this.jzO = new Vector();
+    this.jzP = new Vector();
+    this.jzQ = new HashMap();
+    this.jzR = 0L;
+    this.hmf = false;
+    this.jzS = new c.b.1(this);
+    this.jzT = new c.b.3(this);
+    this.jzU = new c.b.4(this);
+    this.jzR = bo.aoy();
+    this.jzL = parama;
+    this.talker = parama1.jyY;
+    this.jyZ = parama1.jyZ;
+    if (t.lA(this.talker))
     {
-      paramc = r.getDisplayName(this.talker, this.talker);
-      this.aVr = paramc;
+      paramc = s.getDisplayName(this.talker, this.talker);
+      this.blZ = paramc;
       parama = new StringBuilder("MicroMsg.BackupPackAndSend.tag.");
-      if (!this.fSF) {
-        break label287;
+      if (!this.hmf) {
+        break label299;
       }
     }
-    label287:
+    label299:
     for (paramc = "S.";; paramc = "W.")
     {
-      this.TAG = (paramc + this.hFC + "." + this.aVr);
-      y.i(this.TAG, "initTagNow [%d,%s,%s] [%s]", new Object[] { Integer.valueOf(this.hFC), this.aVr, this.talker, ak.cri() });
+      this.TAG = (paramc + this.jyZ + "." + this.blZ);
+      ab.i(this.TAG, "initTagNow [%d,%s,%s] [%s]", new Object[] { Integer.valueOf(this.jyZ), this.blZ, this.talker, an.dtg() });
+      AppMethodBeat.o(17187);
       return;
-      paramc = r.gV(this.talker);
+      paramc = s.nE(this.talker);
       break;
     }
   }
   
-  public final boolean a(fo paramfo, long paramLong1, long paramLong2, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap)
+  public final boolean a(gx paramgx, long paramLong1, long paramLong2, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap)
   {
-    this.hGt.add(paramfo);
-    long l2 = this.hGq;
+    AppMethodBeat.i(17188);
+    this.jzP.add(paramgx);
+    long l2 = this.jzM;
     if (paramLong1 > 0L) {}
     for (long l1 = paramLong1;; l1 = 0L)
     {
-      this.hGq = (l1 + l2);
-      if (this.hFE == 0L) {
-        this.hFE = paramLong2;
+      this.jzM = (l1 + l2);
+      if (this.jzb == 0L) {
+        this.jzb = paramLong2;
       }
-      this.hFF = paramLong2;
-      this.hGu.putAll(paramHashMap);
-      paramfo = paramLinkedList.iterator();
-      while (paramfo.hasNext())
+      this.jzc = paramLong2;
+      this.jzQ.putAll(paramHashMap);
+      paramgx = paramLinkedList.iterator();
+      while (paramgx.hasNext())
       {
-        paramHashMap = (u)paramfo.next();
-        k(paramHashMap.bUi, paramHashMap.path, false);
+        paramHashMap = (u)paramgx.next();
+        m(paramHashMap.cBO, paramHashMap.path, false);
       }
     }
-    y.i(this.TAG, "addToTag msgtime[%d,%d] size[%d,%d] baklist:%d media:%d timeDiff:%d", new Object[] { Long.valueOf(this.hFE), Long.valueOf(this.hFF), Long.valueOf(paramLong1), Long.valueOf(this.hGq), Integer.valueOf(this.hGt.size()), Integer.valueOf(paramLinkedList.size()), Long.valueOf(bk.co(this.hGv)) });
-    if ((this.hGq > 83886080L) || (this.hGt.size() > 80))
+    ab.i(this.TAG, "addToTag msgtime[%d,%d] size[%d,%d] baklist:%d media:%d timeDiff:%d", new Object[] { Long.valueOf(this.jzb), Long.valueOf(this.jzc), Long.valueOf(paramLong1), Long.valueOf(this.jzM), Integer.valueOf(this.jzP.size()), Integer.valueOf(paramLinkedList.size()), Long.valueOf(bo.hl(this.jzR)) });
+    if ((this.jzM > 83886080L) || (this.jzP.size() > 80))
     {
-      atD();
+      aTb();
+      AppMethodBeat.o(17188);
       return true;
     }
+    AppMethodBeat.o(17188);
     return false;
   }
   
-  public final void atD()
+  public final void aTb()
   {
-    this.hGr = ("MSG_" + this.hGt.size() + "_" + this.talker + "_" + bk.UY());
-    y.i(this.TAG, "setTagEnd msgtime[%d,%d], size:%d baklist:%d bigfile:%d id:%s timeDiff:%d", new Object[] { Long.valueOf(this.hFE), Long.valueOf(this.hFF), Long.valueOf(this.hGq), Integer.valueOf(this.hGt.size()), Integer.valueOf(this.hGu.size()), this.hGr, Long.valueOf(bk.co(this.hGv)) });
-    if (this.hGt.size() > 0)
+    AppMethodBeat.i(17189);
+    this.jzN = ("MSG_" + this.jzP.size() + "_" + this.talker + "_" + bo.aoy());
+    ab.i(this.TAG, "setTagEnd msgtime[%d,%d], size:%d baklist:%d bigfile:%d id:%s timeDiff:%d", new Object[] { Long.valueOf(this.jzb), Long.valueOf(this.jzc), Long.valueOf(this.jzM), Integer.valueOf(this.jzP.size()), Integer.valueOf(this.jzQ.size()), this.jzN, Long.valueOf(bo.hl(this.jzR)) });
+    if (this.jzP.size() > 0)
     {
-      k(this.hGr, null, false);
-      if (this.hGu.isEmpty())
+      m(this.jzN, null, false);
+      if (this.jzQ.isEmpty())
       {
-        this.hGo.offer(this.hGy);
+        this.jzK.offer(this.jzU);
+        AppMethodBeat.o(17189);
         return;
       }
-      this.hGo.offer(this.hGx);
+      this.jzK.offer(this.jzT);
+      AppMethodBeat.o(17189);
       return;
     }
-    y.w(this.TAG, "setTagEnd NoFileSend, Go Send Tag: Direct. baklist:%d media:%d bigFileMap:%d ", new Object[] { Integer.valueOf(this.hGt.size()), Integer.valueOf(this.hGs.size()), Integer.valueOf(this.hGu.size()) });
-    Assert.assertTrue("cursorEnd NOMsg, chatMsgList should empty", this.hGt.isEmpty());
-    Assert.assertTrue("cursorEnd NOMsg, MediaList should empty", this.hGs.isEmpty());
-    Assert.assertTrue("cursorEnd NOMsg, BigFileList should empty", this.hGu.isEmpty());
-    this.hGo.offer(this.hGy);
+    ab.w(this.TAG, "setTagEnd NoFileSend, Go Send Tag: Direct. baklist:%d media:%d bigFileMap:%d ", new Object[] { Integer.valueOf(this.jzP.size()), Integer.valueOf(this.jzO.size()), Integer.valueOf(this.jzQ.size()) });
+    Assert.assertTrue("cursorEnd NOMsg, chatMsgList should empty", this.jzP.isEmpty());
+    Assert.assertTrue("cursorEnd NOMsg, MediaList should empty", this.jzO.isEmpty());
+    Assert.assertTrue("cursorEnd NOMsg, BigFileList should empty", this.jzQ.isEmpty());
+    this.jzK.offer(this.jzU);
+    AppMethodBeat.o(17189);
   }
   
-  final void k(String paramString1, String paramString2, boolean paramBoolean)
+  final void m(String paramString1, String paramString2, boolean paramBoolean)
   {
     boolean bool = true;
+    AppMethodBeat.i(17190);
     c.b.2 local2 = new c.b.2(this);
-    y.i(this.TAG, "postSendFile isBigFile[%b], baklst:%d Id:%s path:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.hGt.size()), paramString1, paramString2 });
+    ab.i(this.TAG, "postSendFile isBigFile[%b], baklst:%d Id:%s path:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(this.jzP.size()), paramString1, paramString2 });
     if (!TextUtils.isEmpty(paramString2))
     {
-      this.hGs.add(paramString1);
-      if (paramString1 != null) {
-        com.tencent.mm.plugin.backup.g.c.a(this.hGw, local2, paramString1, paramString2, this.hGk.hGe.hFs);
+      this.jzO.add(paramString1);
+      if (paramString1 != null)
+      {
+        com.tencent.mm.plugin.backup.g.c.a(this.jzS, local2, paramString1, paramString2, this.jzG.jzA.jyL);
+        AppMethodBeat.o(17190);
       }
-      return;
     }
-    if (!this.hGt.isEmpty()) {}
+    else
+    {
+      if (this.jzP.isEmpty()) {
+        break label171;
+      }
+    }
+    label171:
     for (paramBoolean = bool;; paramBoolean = false)
     {
       Assert.assertTrue("chatMsgList should not empty", paramBoolean);
-      if (paramString1 == null) {
-        break;
+      if (paramString1 != null) {
+        com.tencent.mm.plugin.backup.g.c.a(this.jzS, local2, paramString1, new LinkedList(this.jzP), this.jzG.jzA.jyL);
       }
-      com.tencent.mm.plugin.backup.g.c.a(this.hGw, local2, paramString1, new LinkedList(this.hGt), this.hGk.hGe.hFs);
+      AppMethodBeat.o(17190);
       return;
     }
   }

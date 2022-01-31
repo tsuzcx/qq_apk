@@ -6,21 +6,22 @@ import android.graphics.Typeface;
 import android.os.Process;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.r;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.s;
+import com.tencent.mm.plugin.fts.PluginFTS;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.websearch.api.ai;
 import com.tencent.mm.pluginsdk.cmd.a;
-import com.tencent.mm.protocal.c.ayk;
-import com.tencent.mm.protocal.c.ayl;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bfh;
+import com.tencent.mm.protocal.protobuf.bfi;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.j;
+import com.tencent.wcdb.DatabaseErrorHandler;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -30,13 +31,14 @@ public final class b
 {
   static
   {
+    AppMethodBeat.i(16127);
     com.tencent.mm.pluginsdk.cmd.b.a(new b(), new String[] { "//fts" });
+    AppMethodBeat.o(16127);
   }
   
-  public static void init() {}
-  
-  private static void z(Context paramContext, String paramString)
+  private static void E(Context paramContext, String paramString)
   {
+    AppMethodBeat.i(16126);
     TextView localTextView = new TextView(paramContext);
     localTextView.setText(paramString);
     localTextView.setGravity(19);
@@ -44,22 +46,30 @@ public final class b
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     localTextView.setTextColor(-16711936);
     localTextView.setTypeface(Typeface.MONOSPACE);
-    int i = paramContext.getResources().getDimensionPixelSize(R.f.LargePadding);
+    int i = paramContext.getResources().getDimensionPixelSize(2131427772);
     localTextView.setPadding(i, i, i, i);
     com.tencent.mm.ui.base.h.a(paramContext, null, localTextView, null);
+    AppMethodBeat.o(16126);
   }
   
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public static void init() {}
+  
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    if (y.getLogLevel() > 1) {
+    AppMethodBeat.i(16125);
+    if (ab.getLogLevel() > 1)
+    {
+      AppMethodBeat.o(16125);
       return false;
     }
-    if (paramArrayOfString.length < 2) {
+    if (paramArrayOfString.length < 2)
+    {
+      AppMethodBeat.o(16125);
       return true;
     }
-    Object localObject1 = paramArrayOfString[1];
+    paramString = paramArrayOfString[1];
     int i = -1;
-    switch (((String)localObject1).hashCode())
+    switch (paramString.hashCode())
     {
     default: 
       switch (i)
@@ -69,148 +79,174 @@ public final class b
     }
     for (;;)
     {
+      AppMethodBeat.o(16125);
       return true;
-      if (!((String)localObject1).equals("msbiz")) {
+      if (!paramString.equals("msbiz")) {
         break;
       }
       i = 0;
       break;
-      if (!((String)localObject1).equals("deletedb")) {
+      if (!paramString.equals("deletedb")) {
         break;
       }
       i = 1;
       break;
-      if (!((String)localObject1).equals("copydb")) {
+      if (!paramString.equals("copydb")) {
         break;
       }
       i = 2;
       break;
-      if (!((String)localObject1).equals("corrupt")) {
+      if (!paramString.equals("corrupt")) {
         break;
       }
       i = 3;
       break;
-      if (!((String)localObject1).equals("addchatroomcontact")) {
+      if (!paramString.equals("setcorrupttime")) {
         break;
       }
       i = 4;
       break;
-      if (!((String)localObject1).equals("clearconfig")) {
+      if (!paramString.equals("addchatroomcontact")) {
         break;
       }
       i = 5;
       break;
-      if (!((String)localObject1).equals("info")) {
+      if (!paramString.equals("clearconfig")) {
         break;
       }
       i = 6;
       break;
-      if (!((String)localObject1).equals("insert")) {
+      if (!paramString.equals("info")) {
         break;
       }
       i = 7;
       break;
-      if (!((String)localObject1).equals("clearunread")) {
+      if (!paramString.equals("insert")) {
         break;
       }
       i = 8;
       break;
-      localObject1 = ai.bZE();
+      if (!paramString.equals("clearunread")) {
+        break;
+      }
+      i = 9;
+      break;
+      if (!paramString.equals("inserttest")) {
+        break;
+      }
+      i = 10;
+      break;
+      paramString = ai.cZA();
       paramArrayOfString = new StringBuilder();
-      localObject1 = ((ayl)localObject1).hPT.iterator();
-      while (((Iterator)localObject1).hasNext())
+      paramString = paramString.jJv.iterator();
+      while (paramString.hasNext())
       {
-        localObject2 = (ayk)((Iterator)localObject1).next();
-        paramArrayOfString.append(String.format("%s | %.2f | %s", new Object[] { r.gV(((ayk)localObject2).sxM), Double.valueOf(((ayk)localObject2).tuu), com.tencent.mm.pluginsdk.f.h.g("yyyy-MM-dd HH:mm", ((ayk)localObject2).tuv / 1000L) }));
+        localObject = (bfh)paramString.next();
+        paramArrayOfString.append(String.format("%s | %.2f | %s", new Object[] { s.nE(((bfh)localObject).Username), Double.valueOf(((bfh)localObject).xuw), com.tencent.mm.pluginsdk.f.h.formatTime("yyyy-MM-dd HH:mm", ((bfh)localObject).xux / 1000L) }));
         paramArrayOfString.append("\n");
       }
-      z(paramContext, paramArrayOfString.toString());
+      E(paramContext, paramArrayOfString.toString());
       continue;
-      au.Hx();
-      paramContext = new com.tencent.mm.vfs.b(com.tencent.mm.model.c.FT(), "FTS5IndexMicroMsg.db");
+      aw.aaz();
+      paramContext = new com.tencent.mm.vfs.b(com.tencent.mm.model.c.Rp(), "FTS5IndexMicroMsg_encrypt.db");
       if (paramContext.exists()) {
         paramContext.delete();
       }
       Process.killProcess(Process.myPid());
       continue;
-      au.Hx();
-      paramContext = new com.tencent.mm.vfs.b(com.tencent.mm.model.c.FT(), "FTS5IndexMicroMsg.db");
+      aw.aaz();
+      paramContext = new com.tencent.mm.vfs.b(com.tencent.mm.model.c.Rp(), "FTS5IndexMicroMsg_encrypt.db");
       paramArrayOfString = new com.tencent.mm.vfs.b("/sdcard/IndexMicroMsg.db");
       if (paramArrayOfString.exists()) {
         paramArrayOfString.delete();
       }
-      e.r(j.n(paramContext.cLr()), j.n(paramArrayOfString.cLr()));
+      com.tencent.mm.vfs.e.C(j.p(paramContext.dQJ()), j.p(paramArrayOfString.dQJ()));
+      continue;
+      try
+      {
+        ((PluginFTS)g.G(PluginFTS.class)).getDatabaseErrorHandler().onCorruption(null);
+      }
+      catch (Exception paramContext)
+      {
+        ab.printErrStackTrace("MicroMsg.CommandTestFTS", paramContext, "corrupt command", new Object[0]);
+      }
+      continue;
+      g.RM();
+      g.RL().Ru().set(ac.a.yHr, Integer.valueOf(3));
       continue;
       paramContext = new i();
-      paramContext.kwX = 65522;
-      ((n)g.t(n.class)).search(10000, paramContext);
+      paramContext.query = paramArrayOfString[2];
+      paramContext.hdl = 65523;
+      ((n)g.G(n.class)).search(10000, paramContext);
       continue;
-      paramContext = new i();
-      paramContext.bVk = paramArrayOfString[2];
-      paramContext.kwX = 65523;
-      ((n)g.t(n.class)).search(10000, paramContext);
-      continue;
-      paramContext = ac.a.uvF;
-      paramArrayOfString = ac.a.uvG;
-      localObject1 = ac.a.uvH;
-      Object localObject2 = ac.a.uvI;
-      ac.a locala1 = ac.a.uvJ;
-      ac.a locala2 = ac.a.uvK;
-      ac.a locala3 = ac.a.uvL;
-      ac.a locala4 = ac.a.uvM;
-      ac.a locala5 = ac.a.uvN;
-      ac.a locala6 = ac.a.uvO;
-      ac.a locala7 = ac.a.uvP;
-      ac.a locala8 = ac.a.uvQ;
-      ac.a locala9 = ac.a.uvR;
-      ac.a locala10 = ac.a.uvS;
-      ac.a locala11 = ac.a.uvT;
-      ac.a locala12 = ac.a.uvU;
-      ac.a locala13 = ac.a.uvV;
-      ac.a locala14 = ac.a.uvW;
-      ac.a locala15 = ac.a.uvX;
-      ac.a locala16 = ac.a.uvY;
-      ac.a locala17 = ac.a.uvZ;
-      ac.a locala18 = ac.a.uwa;
-      ac.a locala19 = ac.a.uwb;
-      ac.a locala20 = ac.a.uwc;
-      ac.a locala21 = ac.a.uwd;
-      ac.a locala22 = ac.a.uwe;
+      paramContext = ac.a.yFN;
+      paramArrayOfString = ac.a.yFO;
+      paramString = ac.a.yFP;
+      Object localObject = ac.a.yFQ;
+      ac.a locala1 = ac.a.yFR;
+      ac.a locala2 = ac.a.yFS;
+      ac.a locala3 = ac.a.yFT;
+      ac.a locala4 = ac.a.yFU;
+      ac.a locala5 = ac.a.yFV;
+      ac.a locala6 = ac.a.yFW;
+      ac.a locala7 = ac.a.yFX;
+      ac.a locala8 = ac.a.yFY;
+      ac.a locala9 = ac.a.yFZ;
+      ac.a locala10 = ac.a.yGa;
+      ac.a locala11 = ac.a.yGb;
+      ac.a locala12 = ac.a.yGc;
+      ac.a locala13 = ac.a.yGd;
+      ac.a locala14 = ac.a.yGe;
+      ac.a locala15 = ac.a.yGf;
+      ac.a locala16 = ac.a.yGg;
+      ac.a locala17 = ac.a.yGh;
+      ac.a locala18 = ac.a.yGi;
+      ac.a locala19 = ac.a.yGj;
+      ac.a locala20 = ac.a.yGk;
+      ac.a locala21 = ac.a.yGl;
+      ac.a locala22 = ac.a.yGm;
       i = 0;
       while (i < 26)
       {
-        ac.a locala23 = new ac.a[] { paramContext, paramArrayOfString, localObject1, localObject2, locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10, locala11, locala12, locala13, locala14, locala15, locala16, locala17, locala18, locala19, locala20, locala21, locala22 }[i];
-        au.Hx();
-        com.tencent.mm.model.c.Dz().c(locala23, "");
+        ac.a locala23 = new ac.a[] { paramContext, paramArrayOfString, paramString, localObject, locala1, locala2, locala3, locala4, locala5, locala6, locala7, locala8, locala9, locala10, locala11, locala12, locala13, locala14, locala15, locala16, locala17, locala18, locala19, locala20, locala21, locala22 }[i];
+        aw.aaz();
+        com.tencent.mm.model.c.Ru().set(locala23, "");
         i += 1;
       }
-      paramArrayOfString = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fts.a.c.kvi, "FTS5IndexMicroMsgInfo.txt");
+      paramArrayOfString = new com.tencent.mm.vfs.b(com.tencent.mm.plugin.fts.a.c.mQV, "FTS5IndexMicroMsgInfo.txt");
       if (!paramArrayOfString.exists()) {
         continue;
       }
       try
       {
-        z(paramContext, e.bP(j.n(paramArrayOfString.cLr())));
+        E(paramContext, com.tencent.mm.vfs.e.cS(j.p(paramArrayOfString.dQJ())));
       }
       catch (IOException paramContext) {}
       continue;
       paramContext = new i();
-      paramContext.kwX = 65521;
-      paramContext.kxc = 100;
+      paramContext.hdl = 65521;
+      paramContext.mSR = 100;
       if (paramArrayOfString.length > 2) {}
       try
       {
-        paramContext.kxc = Integer.valueOf(paramArrayOfString[2]).intValue();
-        label999:
-        ((n)g.t(n.class)).search(10000, paramContext);
+        paramContext.mSR = Integer.valueOf(paramArrayOfString[2]).intValue();
+        label1101:
+        if (paramArrayOfString.length > 3) {
+          paramContext.talker = paramArrayOfString[3];
+        }
+        ((n)g.G(n.class)).search(10000, paramContext);
         continue;
         paramContext = new i();
-        paramContext.kwX = 65524;
-        ((n)g.t(n.class)).search(10000, paramContext);
+        paramContext.hdl = 65524;
+        ((n)g.G(n.class)).search(10000, paramContext);
+        continue;
+        paramContext = new i();
+        paramContext.hdl = 65525;
+        ((n)g.G(n.class)).search(10000, paramContext);
       }
-      catch (Exception paramArrayOfString)
+      catch (Exception paramString)
       {
-        break label999;
+        break label1101;
       }
     }
   }

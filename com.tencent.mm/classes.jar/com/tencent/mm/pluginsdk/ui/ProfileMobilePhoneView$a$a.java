@@ -4,7 +4,7 @@ import android.widget.TextView;
 
 final class ProfileMobilePhoneView$a$a
 {
-  TextView fcy;
+  TextView gui;
   
   private ProfileMobilePhoneView$a$a(ProfileMobilePhoneView.a parama) {}
 }

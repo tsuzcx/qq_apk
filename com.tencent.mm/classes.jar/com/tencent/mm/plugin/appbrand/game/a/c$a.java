@@ -1,23 +1,27 @@
 package com.tencent.mm.plugin.appbrand.game.a;
 
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mm.plugin.fts.a.d.a.a.a;
+import a.f.a.a;
+import a.f.b.k;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class c$a
-  extends a.a
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
+final class c$a
+  extends k
+  implements a<Float>
 {
-  public View contentView;
-  public ImageView doU;
-  public TextView eXO;
-  public TextView fYB;
-  public TextView fYC;
-  public TextView gaI;
+  public static final a hsk;
   
-  public c$a(c paramc)
+  static
   {
-    super(paramc);
+    AppMethodBeat.i(134607);
+    hsk = new a();
+    AppMethodBeat.o(134607);
+  }
+  
+  c$a()
+  {
+    super(0);
   }
 }
 

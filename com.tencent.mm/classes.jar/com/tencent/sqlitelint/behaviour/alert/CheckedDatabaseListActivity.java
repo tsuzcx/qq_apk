@@ -1,5 +1,6 @@
 package com.tencent.sqlitelint.behaviour.alert;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +12,9 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.sqlitelint.behaviour.a.a;
-import com.tencent.sqlitelint.behaviour.a.c;
-import com.tencent.sqlitelint.d.b;
-import com.tencent.sqlitelint.d.c;
-import com.tencent.sqlitelint.d.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.sqlitelint.behaviour.persistence.IssueStorage;
+import com.tencent.sqlitelint.behaviour.persistence.SQLiteLintDbHelper;
 import com.tencent.sqlitelint.util.SLog;
 import com.tencent.sqlitelint.util.SQLiteLintUtil;
 import java.util.List;
@@ -23,99 +22,146 @@ import java.util.List;
 public class CheckedDatabaseListActivity
   extends SQLiteLintBaseActivity
 {
-  private ListView Nn;
-  private a wRq;
+  private static final String TAG = "SQLiteLint.CheckedDatabaseListActivity";
+  private CheckedDatabaseListAdapter mListAdapter;
+  private ListView mListView;
   
-  protected final int getLayoutId()
+  private void initView()
   {
-    return d.c.activity_checked_database_list;
-  }
-  
-  protected void onCreate(Bundle paramBundle)
-  {
-    super.onCreate(paramBundle);
-    c.wRD.initialize(this);
-    setTitle(getString(d.d.checked_database_list_title));
-    this.Nn = ((ListView)findViewById(d.b.list));
-    this.wRq = new a(this);
-    this.Nn.setAdapter(this.wRq);
-    this.Nn.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    AppMethodBeat.i(94055);
+    setTitle(getString(2131306137));
+    this.mListView = ((ListView)findViewById(2131821002));
+    this.mListAdapter = new CheckedDatabaseListAdapter(this);
+    this.mListView.setAdapter(this.mListAdapter);
+    this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
+      public void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
+        AppMethodBeat.i(94046);
         paramAnonymousAdapterView = (String)paramAnonymousAdapterView.getItemAtPosition(paramAnonymousInt);
-        if (SQLiteLintUtil.bl(paramAnonymousAdapterView)) {
+        if (SQLiteLintUtil.isNullOrNil(paramAnonymousAdapterView))
+        {
+          AppMethodBeat.o(94046);
           return;
         }
         paramAnonymousView = new Intent();
         paramAnonymousView.setClass(CheckedDatabaseListActivity.this, CheckResultActivity.class);
         paramAnonymousView.putExtra("db_label", paramAnonymousAdapterView);
         CheckedDatabaseListActivity.this.startActivity(paramAnonymousView);
+        AppMethodBeat.o(94046);
       }
     });
+    AppMethodBeat.o(94055);
+  }
+  
+  private void refreshView()
+  {
+    AppMethodBeat.i(94056);
+    List localList = IssueStorage.getDbPathList();
+    SLog.i("SQLiteLint.CheckedDatabaseListActivity", "refreshView defectiveDbList is %d", new Object[] { Integer.valueOf(localList.size()) });
+    this.mListAdapter.setData(localList);
+    AppMethodBeat.o(94056);
+  }
+  
+  protected int getLayoutId()
+  {
+    return 2130968623;
+  }
+  
+  protected void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(94053);
+    super.onCreate(paramBundle);
+    SQLiteLintDbHelper.INSTANCE.initialize(this);
+    initView();
+    AppMethodBeat.o(94053);
   }
   
   protected void onResume()
   {
+    AppMethodBeat.i(94054);
     super.onResume();
-    List localList = a.cPS();
-    SLog.i("SQLiteLint.CheckedDatabaseListActivity", "refreshView defectiveDbList is %d", new Object[] { Integer.valueOf(localList.size()) });
-    a locala = this.wRq;
-    locala.wRs = localList;
-    locala.notifyDataSetChanged();
+    refreshView();
+    AppMethodBeat.o(94054);
   }
   
-  private static final class a
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  static class CheckedDatabaseListAdapter
     extends BaseAdapter
   {
-    private final LayoutInflater Lu;
-    List<String> wRs;
+    private List<String> mDefectiveDbList;
+    private final LayoutInflater mInflater;
     
-    a(Context paramContext)
+    CheckedDatabaseListAdapter(Context paramContext)
     {
-      this.Lu = LayoutInflater.from(paramContext);
+      AppMethodBeat.i(94047);
+      this.mInflater = LayoutInflater.from(paramContext);
+      AppMethodBeat.o(94047);
     }
     
-    private String ke(int paramInt)
+    public int getCount()
     {
-      return (String)this.wRs.get(paramInt);
-    }
-    
-    public final int getCount()
-    {
-      if (this.wRs == null) {
+      AppMethodBeat.i(94049);
+      if (this.mDefectiveDbList == null)
+      {
+        AppMethodBeat.o(94049);
         return 0;
       }
-      return this.wRs.size();
+      int i = this.mDefectiveDbList.size();
+      AppMethodBeat.o(94049);
+      return i;
     }
     
-    public final long getItemId(int paramInt)
+    public String getItem(int paramInt)
+    {
+      AppMethodBeat.i(94050);
+      String str = (String)this.mDefectiveDbList.get(paramInt);
+      AppMethodBeat.o(94050);
+      return str;
+    }
+    
+    public long getItemId(int paramInt)
     {
       return 0L;
     }
     
-    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
+      AppMethodBeat.i(94051);
       if (paramView == null)
       {
-        paramView = this.Lu.inflate(d.c.view_checked_database_item, paramViewGroup, false);
-        paramViewGroup = new CheckedDatabaseListActivity.b();
-        paramViewGroup.wRt = ((TextView)paramView.findViewById(d.b.db_path));
+        paramView = this.mInflater.inflate(2130971078, paramViewGroup, false);
+        paramViewGroup = new CheckedDatabaseListActivity.ViewHolder();
+        paramViewGroup.dbPathTv = ((TextView)paramView.findViewById(2131828737));
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
-        String str = ke(paramInt);
-        paramViewGroup.wRt.setText(str);
+        String str = getItem(paramInt);
+        paramViewGroup.dbPathTv.setText(str);
+        AppMethodBeat.o(94051);
         return paramView;
-        paramViewGroup = (CheckedDatabaseListActivity.b)paramView.getTag();
+        paramViewGroup = (CheckedDatabaseListActivity.ViewHolder)paramView.getTag();
       }
+    }
+    
+    public void setData(List<String> paramList)
+    {
+      AppMethodBeat.i(94048);
+      this.mDefectiveDbList = paramList;
+      notifyDataSetChanged();
+      AppMethodBeat.o(94048);
     }
   }
   
-  static final class b
+  static class ViewHolder
   {
-    public TextView wRt;
+    public TextView dbPathTv;
   }
 }
 

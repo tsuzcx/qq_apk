@@ -1,14 +1,14 @@
 package com.tencent.mm.modelvoiceaddr;
 
-import java.util.Set;
+import java.util.List;
 
 public abstract interface g$b
 {
-  public abstract void TC();
+  public abstract void amK();
   
-  public abstract void Ty();
+  public abstract void amO();
   
-  public abstract void a(String[] paramArrayOfString, Set<String> paramSet);
+  public abstract void b(String[] paramArrayOfString, List<String> paramList);
   
   public abstract void c(int paramInt1, int paramInt2, int paramInt3, long paramLong);
 }

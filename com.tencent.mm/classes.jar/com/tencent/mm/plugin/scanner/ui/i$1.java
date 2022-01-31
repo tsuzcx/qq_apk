@@ -2,18 +2,21 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.os.Message;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class i$1
-  extends ah
+  extends ak
 {
   i$1(i parami) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if ((paramMessage != null) && (paramMessage.what == 1) && (this.nLF.gSy != null)) {
-      this.nLF.gSy.setVisibility(0);
+    AppMethodBeat.i(81154);
+    if ((paramMessage != null) && (paramMessage.what == 1) && (this.qzl.ivt != null)) {
+      this.qzl.ivt.setVisibility(0);
     }
+    AppMethodBeat.o(81154);
   }
 }
 

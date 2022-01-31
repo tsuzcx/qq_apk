@@ -4,9 +4,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxcredit.a.l;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 
 final class WalletWXCreditChangeAmountUI$2
   extends BaseAdapter
@@ -29,57 +28,59 @@ final class WalletWXCreditChangeAmountUI$2
     boolean bool3 = true;
     boolean bool4 = true;
     boolean bool1 = true;
-    paramView = (CheckedTextView)View.inflate(this.rRF, a.g.wallet_list_dialog_item_singlechoice, null);
+    AppMethodBeat.i(48689);
+    paramView = (CheckedTextView)View.inflate(this.vIv, 2130971195, null);
     if (paramInt == 0)
     {
-      paramView.setText(a.i.app_yes);
-      if (!WalletWXCreditChangeAmountUI.l(this.rRF)) {
-        break label129;
+      paramView.setText(2131297115);
+      if (!WalletWXCreditChangeAmountUI.l(this.vIv)) {
+        break label137;
       }
-      if ((WalletWXCreditChangeAmountUI.c(this.rRF).rRg == null) || (!"Y".equals(WalletWXCreditChangeAmountUI.c(this.rRF).lQN))) {
-        break label107;
+      if ((WalletWXCreditChangeAmountUI.c(this.vIv).vHW == null) || (!"Y".equals(WalletWXCreditChangeAmountUI.c(this.vIv).ooD))) {
+        break label114;
       }
       if (paramInt != 0) {
-        break label101;
+        break label108;
       }
     }
     for (;;)
     {
       paramView.setChecked(bool1);
+      AppMethodBeat.o(48689);
       return paramView;
-      paramView.setText(a.i.app_no);
+      paramView.setText(2131297014);
       break;
-      label101:
+      label108:
       bool1 = false;
     }
-    label107:
+    label114:
     if (paramInt != 0) {}
     for (bool1 = bool2;; bool1 = false)
     {
       paramView.setChecked(bool1);
-      return paramView;
+      break;
     }
-    label129:
-    if ((WalletWXCreditChangeAmountUI.f(this.rRF).rRg != null) && ("Y".equals(WalletWXCreditChangeAmountUI.f(this.rRF).lQN)))
+    label137:
+    if ((WalletWXCreditChangeAmountUI.f(this.vIv).vHW != null) && ("Y".equals(WalletWXCreditChangeAmountUI.f(this.vIv).ooD)))
     {
       if (paramInt == 0) {}
       for (bool1 = bool3;; bool1 = false)
       {
         paramView.setChecked(bool1);
-        return paramView;
+        break;
       }
     }
     if (paramInt != 0) {}
     for (bool1 = bool4;; bool1 = false)
     {
       paramView.setChecked(bool1);
-      return paramView;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditChangeAmountUI.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.app.Application;
 import android.os.Build.VERSION;
 import com.tencent.tinker.loader.shareutil.ShareConstants;
 import com.tencent.tinker.loader.shareutil.ShareReflectUtil;
-import dalvik.system.PathClassLoader;
+import dalvik.system.BaseDexClassLoader;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
@@ -22,41 +22,41 @@ import java.util.regex.Pattern;
 
 public class SystemClassLoaderAdder
 {
-  private static int wWW = 0;
+  private static int BtA = 0;
   
   @SuppressLint({"NewApi"})
-  public static void a(Application paramApplication, PathClassLoader paramPathClassLoader, File paramFile, List<File> paramList)
+  public static void a(Application paramApplication, BaseDexClassLoader paramBaseDexClassLoader, File paramFile, List<File> paramList, boolean paramBoolean)
   {
     new StringBuilder("installDexes dexOptDir: ").append(paramFile.getAbsolutePath()).append(", dex size:").append(paramList.size());
     if (!paramList.isEmpty())
     {
-      List localList = eB(paramList);
-      paramList = paramPathClassLoader;
+      List localList = fK(paramList);
+      paramList = paramBaseDexClassLoader;
       if (Build.VERSION.SDK_INT >= 24)
       {
-        paramList = paramPathClassLoader;
-        if (!eA(localList)) {
-          paramList = AndroidNClassLoader.a(paramPathClassLoader, paramApplication);
+        paramList = paramBaseDexClassLoader;
+        if (!paramBoolean) {
+          paramList = AndroidNClassLoader.a(paramBaseDexClassLoader, paramApplication);
         }
       }
       if (Build.VERSION.SDK_INT >= 23) {
-        V23.c(paramList, localList, paramFile);
+        V23.d(paramList, localList, paramFile);
       }
       for (;;)
       {
-        wWW = localList.size();
-        new StringBuilder("after loaded classloader: ").append(paramList).append(", dex size:").append(wWW);
-        if (((Boolean)ShareReflectUtil.d(Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramList), "isPatch").get(null)).booleanValue()) {
+        BtA = localList.size();
+        new StringBuilder("after loaded classloader: ").append(paramList).append(", dex size:").append(BtA);
+        if (((Boolean)ShareReflectUtil.g(Class.forName("com.tencent.tinker.loader.TinkerTestDexLoad", true, paramList), "isPatch").get(null)).booleanValue()) {
           break;
         }
         a(paramList);
         throw new TinkerRuntimeException("checkDexInstall failed");
         if (Build.VERSION.SDK_INT >= 19) {
-          V19.b(paramList, localList, paramFile);
+          V19.c(paramList, localList, paramFile);
         } else if (Build.VERSION.SDK_INT >= 14) {
-          V14.a(paramList, localList, paramFile);
+          V14.b(paramList, localList, paramFile);
         } else {
-          V4.d(paramList, localList, paramFile);
+          V4.e(paramList, localList, paramFile);
         }
       }
     }
@@ -64,42 +64,26 @@ public class SystemClassLoaderAdder
   
   public static void a(ClassLoader paramClassLoader)
   {
-    if (wWW <= 0) {
+    if (BtA <= 0) {
       return;
     }
     if (Build.VERSION.SDK_INT >= 14)
     {
-      ShareReflectUtil.a(ShareReflectUtil.b(paramClassLoader, "pathList").get(paramClassLoader), "dexElements", wWW);
+      ShareReflectUtil.a(ShareReflectUtil.b(paramClassLoader, "pathList").get(paramClassLoader), "dexElements", BtA);
       return;
     }
-    ShareReflectUtil.a(paramClassLoader, "mPaths", wWW);
-    ShareReflectUtil.a(paramClassLoader, "mFiles", wWW);
-    ShareReflectUtil.a(paramClassLoader, "mZips", wWW);
+    ShareReflectUtil.a(paramClassLoader, "mPaths", BtA);
+    ShareReflectUtil.a(paramClassLoader, "mFiles", BtA);
+    ShareReflectUtil.a(paramClassLoader, "mZips", BtA);
     try
     {
-      ShareReflectUtil.a(paramClassLoader, "mDexs", wWW);
+      ShareReflectUtil.a(paramClassLoader, "mDexs", BtA);
       return;
     }
     catch (Exception paramClassLoader) {}
   }
   
-  private static boolean eA(List<File> paramList)
-  {
-    if (!paramList.isEmpty())
-    {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        File localFile = (File)paramList.next();
-        if ((localFile != null) && (localFile.getName().startsWith("changed_classes.dex"))) {
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-  
-  private static List<File> eB(List<File> paramList)
+  private static List<File> fK(List<File> paramList)
   {
     paramList = new ArrayList(paramList);
     HashMap localHashMap = new HashMap();
@@ -107,15 +91,15 @@ public class SystemClassLoaderAdder
     while (localIterator.hasNext())
     {
       String str = ((File)localIterator.next()).getName();
-      localHashMap.put(str, Boolean.valueOf(ShareConstants.wYl.matcher(str).matches()));
+      localHashMap.put(str, Boolean.valueOf(ShareConstants.BuP.matcher(str).matches()));
     }
     Collections.sort(paramList, new Comparator() {});
     return paramList;
   }
   
-  private static final class V14 {}
+  static final class V14 {}
   
-  private static final class V19
+  static final class V19
   {
     private static Object[] a(Object paramObject, ArrayList<File> paramArrayList, File paramFile, ArrayList<IOException> paramArrayList1)
     {
@@ -138,7 +122,7 @@ public class SystemClassLoaderAdder
     }
   }
   
-  private static final class V23
+  static final class V23
   {
     private static Object[] c(Object paramObject, ArrayList<File> paramArrayList, File paramFile, ArrayList<IOException> paramArrayList1)
     {
@@ -169,7 +153,7 @@ public class SystemClassLoaderAdder
     }
   }
   
-  private static final class V4 {}
+  static final class V4 {}
 }
 
 

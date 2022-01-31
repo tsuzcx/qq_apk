@@ -10,28 +10,38 @@ import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
 
 public class FrameAnimatorImageView
   extends ImageView
 {
-  private Runnable kks = null;
-  private DrawFilter kkt = new PaintFlagsDrawFilter(0, 3);
+  private Runnable mFf;
+  private DrawFilter mFg;
   
   public FrameAnimatorImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(41355);
+    this.mFf = null;
+    this.mFg = new PaintFlagsDrawFilter(0, 3);
+    AppMethodBeat.o(41355);
   }
   
   public FrameAnimatorImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(41356);
+    this.mFf = null;
+    this.mFg = new PaintFlagsDrawFilter(0, 3);
+    AppMethodBeat.o(41356);
   }
   
   public final void a(int paramInt, FrameAnimatorImageView.a parama)
   {
-    Object localObject = ae.getContext().getResources().getDrawable(paramInt);
+    AppMethodBeat.i(41357);
+    Object localObject = ah.getContext().getResources().getDrawable(paramInt);
     setImageDrawable((Drawable)localObject);
     if ((localObject instanceof AnimationDrawable))
     {
@@ -48,35 +58,44 @@ public class FrameAnimatorImageView
         }
         if (parama != null)
         {
-          this.kks = new FrameAnimatorImageView.1(this, parama);
-          ai.l(this.kks, paramInt);
+          this.mFf = new FrameAnimatorImageView.1(this, parama);
+          al.p(this.mFf, paramInt);
         }
       }
     }
+    AppMethodBeat.o(41357);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    paramCanvas.setDrawFilter(this.kkt);
+    AppMethodBeat.i(41361);
+    paramCanvas.setDrawFilter(this.mFg);
     super.onDraw(paramCanvas);
+    AppMethodBeat.o(41361);
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    ai.S(this.kks);
+    AppMethodBeat.i(41360);
+    al.ae(this.mFf);
     super.setImageBitmap(paramBitmap);
+    AppMethodBeat.o(41360);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    ai.S(this.kks);
+    AppMethodBeat.i(41358);
+    al.ae(this.mFf);
     super.setImageDrawable(paramDrawable);
+    AppMethodBeat.o(41358);
   }
   
   public void setImageResource(int paramInt)
   {
-    ai.S(this.kks);
+    AppMethodBeat.i(41359);
+    al.ae(this.mFf);
     super.setImageResource(paramInt);
+    AppMethodBeat.o(41359);
   }
 }
 

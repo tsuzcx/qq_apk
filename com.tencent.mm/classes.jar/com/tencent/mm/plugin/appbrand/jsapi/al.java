@@ -1,49 +1,42 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.ui.MMActivity;
-import org.json.JSONObject;
+import a.f.b.j;
+import a.l;
+import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiGetMenuButtonBoundingClientRectWithReport;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiGetMenuButtonBoundingClientRect;", "()V", "invoke", "", "env", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "data", "Lorg/json/JSONObject;", "component1", "L", "R", "Landroid/util/Pair;", "(Landroid/util/Pair;)Ljava/lang/Object;", "component2", "plugin-appbrand-integration_release"})
 public final class al
-  extends a
+  extends ak
 {
-  public static final int CTRL_INDEX = 62;
-  public static final String NAME = "openAddress";
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final String h(r paramr)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("req_app_id", paramc.getAppId());
-    localIntent.putExtra("launch_from_appbrand", true);
-    if ((paramc instanceof o))
+    AppMethodBeat.i(134641);
+    long l1 = bo.yB();
+    Pair localPair = super.i(paramr);
+    j.q(localPair, "receiver$0");
+    String str = (String)localPair.first;
+    j.q(localPair, "receiver$0");
+    ak.a locala = (ak.a)localPair.second;
+    if (paramr != null)
     {
-      paramJSONObject = ((o)paramc).F(Activity.class);
-      if ((paramJSONObject != null) && ((paramJSONObject instanceof MMActivity))) {
-        break label91;
-      }
+      long l2 = bo.yB();
+      d.ysm.execute((Runnable)new al.a(l2 - l1, locala, str, this, paramr, l1));
     }
-    label91:
-    for (paramJSONObject = null;; paramJSONObject = (MMActivity)paramJSONObject)
-    {
-      if (paramJSONObject != null) {
-        break label99;
-      }
-      paramc.C(paramInt, h("fail", null));
-      return;
-      paramJSONObject = paramc.getContext();
-      break;
-    }
-    label99:
-    paramJSONObject.gJb = new al.1(this, paramc, paramInt);
-    d.a(paramJSONObject, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
+    paramr = localPair.first;
+    j.p(paramr, "super.invokeImpl(env, da…       }\n\n        }.first");
+    paramr = (String)paramr;
+    AppMethodBeat.o(134641);
+    return paramr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.al
  * JD-Core Version:    0.7.0.1
  */

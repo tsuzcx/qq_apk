@@ -5,9 +5,9 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import com.tencent.mm.R.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.n;
+import com.tencent.xweb.t;
 
 final class WebViewUI$18
   implements View.OnTouchListener
@@ -16,42 +16,46 @@ final class WebViewUI$18
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((WebViewUI.J(this.rpH) != null) && (WebViewUI.J(this.rpH).getVisibility() == 0))
+    AppMethodBeat.i(7839);
+    if ((this.vgz.vei != null) && (this.vgz.vei.getVisibility() == 0))
     {
-      Animation localAnimation = AnimationUtils.loadAnimation(this.rpH, R.a.font_fade_out);
+      Animation localAnimation = AnimationUtils.loadAnimation(this.vgz, 2131034186);
       localAnimation.setAnimationListener(new WebViewUI.18.1(this));
-      WebViewUI.J(this.rpH).startAnimation(localAnimation);
-      WebViewUI.J(this.rpH).setVisibility(8);
+      this.vgz.vei.startAnimation(localAnimation);
+      this.vgz.vei.setVisibility(8);
     }
     switch (paramMotionEvent.getAction())
     {
-    default: 
-      if (this.rpH.niQ != null) {
-        break;
-      }
     }
-    while ((paramMotionEvent.getAction() != 0) && (paramMotionEvent.getAction() != 5) && (paramMotionEvent.getAction() != 5) && (paramMotionEvent.getAction() != 261) && (paramMotionEvent.getAction() != 517))
+    while (this.vgz.pOd == null)
     {
+      AppMethodBeat.o(7839);
       return false;
       if (!paramView.hasFocus()) {
         paramView.requestFocus();
       }
-      if (paramMotionEvent.getAction() != 0) {
-        break;
+      if (paramMotionEvent.getAction() == 0)
+      {
+        this.vgz.jUm = ((int)paramMotionEvent.getRawX());
+        this.vgz.jUn = ((int)paramMotionEvent.getRawY());
       }
-      WebViewUI.d(this.rpH, (int)paramMotionEvent.getRawX());
-      WebViewUI.e(this.rpH, (int)paramMotionEvent.getRawY());
-      break;
     }
-    if (paramMotionEvent.getPointerCount() > 1)
+    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 5) || (paramMotionEvent.getAction() == 5) || (paramMotionEvent.getAction() == 261) || (paramMotionEvent.getAction() == 517))
     {
-      this.rpH.niQ.getSettings().setBuiltInZoomControls(true);
-      this.rpH.niQ.getSettings().setSupportZoom(true);
-      return false;
+      if (paramMotionEvent.getPointerCount() <= 1) {
+        break label251;
+      }
+      this.vgz.pOd.getSettings().setBuiltInZoomControls(true);
+      this.vgz.pOd.getSettings().setSupportZoom(true);
     }
-    this.rpH.niQ.getSettings().setBuiltInZoomControls(false);
-    this.rpH.niQ.getSettings().setSupportZoom(false);
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(7839);
+      return false;
+      label251:
+      this.vgz.pOd.getSettings().setBuiltInZoomControls(false);
+      this.vgz.pOd.getSettings().setSupportZoom(false);
+    }
   }
 }
 

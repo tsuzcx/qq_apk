@@ -5,35 +5,35 @@ import com.tencent.mm.storage.bi;
 
 public abstract class a
 {
-  protected c vtH;
+  protected c zJI;
   
   public a(c paramc)
   {
-    this.vtH = paramc;
+    this.zJI = paramc;
   }
   
-  public final k Hi(int paramInt)
+  public final k PP(int paramInt)
   {
-    if (this.vtH == null) {
+    if (this.zJI == null) {
       return null;
     }
-    View localView = this.vtH.Gs(paramInt);
+    View localView = this.zJI.Gm(paramInt);
     if (localView == null) {
       return null;
     }
     return (k)((View)localView).getTag();
   }
   
-  public final void Hj(int paramInt)
+  public final void PQ(int paramInt)
   {
-    if (this.vtH == null) {}
+    if (this.zJI == null) {}
     View localView;
     do
     {
       return;
-      localView = this.vtH.Gs(paramInt);
+      localView = this.zJI.Gm(paramInt);
     } while ((localView == null) || (localView.getTag() == null));
-    a((k)localView.getTag(), this.vtH.GW(paramInt), paramInt);
+    a((k)localView.getTag(), this.zJI.Pz(paramInt), paramInt);
   }
   
   public boolean a(k paramk, bi parambi, int paramInt)
@@ -43,12 +43,12 @@ public abstract class a
   
   public void detach()
   {
-    this.vtH = null;
+    this.zJI = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.a
  * JD-Core Version:    0.7.0.1
  */

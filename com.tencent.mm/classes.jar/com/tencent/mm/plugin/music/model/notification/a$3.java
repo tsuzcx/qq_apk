@@ -1,29 +1,34 @@
 package com.tencent.mm.plugin.music.model.notification;
 
-import com.tencent.mm.as.o;
-import com.tencent.mm.sdk.platformtools.y;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.c.c;
+import com.tencent.mm.at.o;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class a$3
-  implements com.tencent.mm.as.a.c.c
+  implements c
 {
   a$3(a parama, com.tencent.mm.plugin.music.model.e.a parama1, String paramString) {}
   
-  public final void a(boolean paramBoolean, Object... paramVarArgs)
+  public final void cZ(boolean paramVarArgs)
   {
-    y.i("MicroMsg.Music.MMMusicNotification", "music.field_songAlbumUrl:%s, success:%b", new Object[] { this.mzv.field_songAlbumUrl, Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
+    AppMethodBeat.i(151913);
+    ab.i("MicroMsg.Music.MMMusicNotification", "music.field_songAlbumUrl:%s, success:%b", new Object[] { this.oZB.field_songAlbumUrl, Boolean.valueOf(paramVarArgs) });
+    if (paramVarArgs)
     {
-      paramVarArgs = com.tencent.mm.sdk.platformtools.c.decodeFile(this.mzQ, null);
-      if (paramVarArgs == null) {
-        y.e("MicroMsg.Music.MMMusicNotification", "bitmap is null, return");
+      Bitmap localBitmap = d.decodeFile(this.oZW, null);
+      if (localBitmap == null)
+      {
+        ab.e("MicroMsg.Music.MMMusicNotification", "bitmap is null, return");
+        AppMethodBeat.o(151913);
+        return;
       }
+      o.ahG().j(this.oZB.field_songAlbumUrl, localBitmap);
+      this.oZV.oZR.refresh();
     }
-    else
-    {
-      return;
-    }
-    o.ON().i(this.mzv.field_songAlbumUrl, paramVarArgs);
-    this.mzP.mzL.refresh();
+    AppMethodBeat.o(151913);
   }
 }
 

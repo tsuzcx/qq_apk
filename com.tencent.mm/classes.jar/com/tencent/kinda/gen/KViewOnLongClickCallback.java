@@ -1,0 +1,12 @@
+package com.tencent.kinda.gen;
+
+public abstract class KViewOnLongClickCallback
+{
+  public abstract void onLongClick(KView paramKView);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.kinda.gen.KViewOnLongClickCallback
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,66 +1,34 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
+import a.l;
 import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.appusage.af;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h;
+import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class f
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionItemViewLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "onMeasure", "", "widthMeasureSpec", "", "heightMeasureSpec", "plugin-appbrand-integration_release"})
+final class f
+  extends FrameLayout
 {
-  public static boolean a(boolean paramBoolean, Context paramContext, String paramString, int paramInt)
+  public f(Context paramContext)
   {
-    if (paramBoolean) {}
-    try
-    {
-      if (((af)g.r(af.class)).ar(paramString, paramInt))
-      {
-        new com.tencent.mm.plugin.appbrand.widget.e.c(paramContext).u(paramContext.getResources().getString(y.j.app_brand_usage_modify_collection_removed)).show();
-        return true;
-      }
-      n(paramContext, paramBoolean);
-    }
-    catch (Exception localException)
-    {
-      int i;
-      com.tencent.mm.ui.widget.a.c localc;
-      y.e("MicroMsg.CollectionModifyInteractLogic", "performClick, (%s %d) added = %b, modify e = %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localException });
-      n(paramContext, paramBoolean);
-    }
-    i = ((af)g.r(af.class)).aq(paramString, paramInt);
-    if (i == 0)
-    {
-      new com.tencent.mm.plugin.appbrand.widget.e.c(paramContext).u(paramContext.getResources().getString(y.j.app_brand_usage_modify_collection_added)).show();
-      return true;
-    }
-    if (i == -2)
-    {
-      i = ((af)g.r(af.class)).acL();
-      localc = h.a(paramContext, paramContext.getResources().getString(y.j.app_brand_desktop_add_collection_over_limit, new Object[] { Integer.valueOf(i) }), "", paramContext.getResources().getString(y.j.app_ok), null);
-      if (localc != null)
-      {
-        localc.setCanceledOnTouchOutside(false);
-        localc.nT(true);
-      }
-    }
-    else
-    {
-      n(paramContext, paramBoolean);
-    }
-    return false;
+    super(paramContext);
+    AppMethodBeat.i(135102);
+    AppMethodBeat.o(135102);
   }
   
-  private static void n(Context paramContext, boolean paramBoolean)
+  protected final void onMeasure(int paramInt1, int paramInt2)
   {
-    ai.d(new f.1(paramContext, paramBoolean));
+    AppMethodBeat.i(135101);
+    super.onMeasure(paramInt1, paramInt2);
+    if (getMeasuredHeight() < getMeasuredWidth()) {
+      setMeasuredDimension(getMeasuredWidth(), getMeasuredWidth());
+    }
+    AppMethodBeat.o(135101);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.f
  * JD-Core Version:    0.7.0.1
  */

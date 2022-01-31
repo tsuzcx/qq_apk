@@ -9,16 +9,16 @@ import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.a;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.c.b;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -27,109 +27,150 @@ import java.util.List;
 public final class d
   implements TextWatcher, View.OnClickListener, View.OnFocusChangeListener, com.tencent.mm.plugin.fts.a.l
 {
-  private ah handler = new ah(Looper.getMainLooper());
-  public EditText ohZ;
-  public TextView oia;
-  public View oib;
-  private a oic;
-  InputMethodManager oid;
-  public b oie = b.oih;
-  public d.a oif;
+  private ak handler;
+  public EditText qWm;
+  public TextView qWn;
+  public View qWo;
+  private a qWp;
+  InputMethodManager qWq;
+  public d.b qWr;
+  public d.a qWs;
+  
+  public d()
+  {
+    AppMethodBeat.i(25075);
+    this.qWr = d.b.qWu;
+    this.handler = new ak(Looper.getMainLooper());
+    AppMethodBeat.o(25075);
+  }
+  
+  private void cnm()
+  {
+    AppMethodBeat.i(25079);
+    if (cnk())
+    {
+      AppMethodBeat.o(25079);
+      return;
+    }
+    this.qWr = d.b.qWt;
+    this.qWo.setVisibility(0);
+    if (this.qWs != null) {
+      this.qWs.cno();
+    }
+    this.qWm.requestFocus();
+    this.qWq.showSoftInput(this.qWm, 0);
+    AppMethodBeat.o(25079);
+  }
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    if (bk.bl(paramEditable.toString())) {
+    AppMethodBeat.i(25082);
+    if (bo.isNullOrNil(paramEditable.toString()))
+    {
+      AppMethodBeat.o(25082);
       return;
     }
     paramEditable = paramEditable.toString();
-    y.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
-    if (this.oic != null)
+    ab.i("MicroMsg.MainSightSelectContactSearchHelper", "doSearch: query=%s", new Object[] { paramEditable });
+    if (this.qWp != null)
     {
-      ((n)g.t(n.class)).cancelSearchTask(this.oic);
-      this.oic = null;
+      ((n)g.G(n.class)).cancelSearchTask(this.qWp);
+      this.qWp = null;
     }
     HashSet localHashSet = new HashSet();
-    b localb = b.kxE;
-    ah localah = this.handler;
-    paramEditable = i.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localah);
-    this.oic = ((n)g.t(n.class)).search(2, paramEditable);
+    b localb = b.mTt;
+    ak localak = this.handler;
+    paramEditable = i.a(paramEditable, new int[] { 131072, 131075 }, null, 3, localHashSet, localb, this, localak);
+    this.qWp = ((n)g.G(n.class)).search(2, paramEditable);
+    AppMethodBeat.o(25082);
   }
   
   public final void b(j paramj)
   {
-    if ((paramj.aYY != 0) || (paramj.kxh == null) || (this.oif == null)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramj = paramj.kxh.iterator();
-    while (paramj.hasNext()) {
-      localArrayList.add(((com.tencent.mm.plugin.fts.a.a.l)paramj.next()).kwg);
-    }
-    this.oif.ct(localArrayList);
-  }
-  
-  public final boolean bBK()
-  {
-    return this.oie == b.oig;
-  }
-  
-  public final void bBL()
-  {
-    if (bBK()) {
-      bBM();
-    }
-    while (bBK()) {
-      return;
-    }
-    this.oie = b.oig;
-    this.oib.setVisibility(0);
-    if (this.oif != null) {
-      this.oif.bBN();
-    }
-    this.ohZ.requestFocus();
-    this.oid.showSoftInput(this.ohZ, 0);
-  }
-  
-  public final void bBM()
-  {
-    if (!bBK()) {}
-    do
+    AppMethodBeat.i(25081);
+    if (paramj.bpE == 0)
     {
-      return;
-      this.ohZ.setText("");
-      this.ohZ.clearFocus();
-      bk.hideVKB(this.ohZ);
-      this.oie = b.oih;
-      this.oib.setVisibility(8);
-    } while (this.oif == null);
-    this.oif.bBO();
+      if ((paramj.mSW == null) || (this.qWs == null))
+      {
+        AppMethodBeat.o(25081);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      paramj = paramj.mSW.iterator();
+      while (paramj.hasNext()) {
+        localArrayList.add(((com.tencent.mm.plugin.fts.a.a.l)paramj.next()).mRV);
+      }
+      this.qWs.cX(localArrayList);
+    }
+    AppMethodBeat.o(25081);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public final void onClick(View paramView)
+  public final boolean cnk()
   {
-    if ((paramView.getId() != R.h.search_cancel_tv) || (!bBK())) {
+    return this.qWr == d.b.qWt;
+  }
+  
+  public final void cnl()
+  {
+    AppMethodBeat.i(25078);
+    if (cnk())
+    {
+      cnn();
+      AppMethodBeat.o(25078);
       return;
     }
-    bBL();
+    cnm();
+    AppMethodBeat.o(25078);
+  }
+  
+  public final void cnn()
+  {
+    AppMethodBeat.i(25080);
+    if (!cnk())
+    {
+      AppMethodBeat.o(25080);
+      return;
+    }
+    this.qWm.setText("");
+    this.qWm.clearFocus();
+    bo.hideVKB(this.qWm);
+    this.qWr = d.b.qWu;
+    this.qWo.setVisibility(8);
+    if (this.qWs != null) {
+      this.qWs.cnp();
+    }
+    AppMethodBeat.o(25080);
+  }
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(25077);
+    if (paramView.getId() == 2131825893)
+    {
+      if (!cnk())
+      {
+        AppMethodBeat.o(25077);
+        return;
+      }
+      cnl();
+    }
+    AppMethodBeat.o(25077);
   }
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
+    AppMethodBeat.i(25076);
     if (!paramBoolean)
     {
-      this.ohZ.clearFocus();
-      bk.hideVKB(this.ohZ);
+      this.qWm.clearFocus();
+      bo.hideVKB(this.qWm);
     }
+    AppMethodBeat.o(25076);
   }
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public static enum b
-  {
-    private b() {}
-  }
 }
 
 

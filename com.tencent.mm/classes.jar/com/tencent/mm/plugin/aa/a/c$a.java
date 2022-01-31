@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.aa.a;
 
-import com.tencent.mm.protocal.c.v;
+import com.tencent.mm.protocal.protobuf.v;
 import com.tencent.mm.vending.h.e;
 import com.tencent.mm.vending.j.f;
 
@@ -9,7 +9,7 @@ public final class c$a
 {
   public c$a(c paramc) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
   }

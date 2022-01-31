@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.exdevice.service;
 
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.concurrent.CountDownLatch;
 
 final class b$1
@@ -11,9 +12,11 @@ final class b$1
   
   public final void run()
   {
-    b.a(this.jyN, new com.tencent.mm.plugin.f.a.d.b(ae.getContext(), this.jyN, v.aMo().eAg));
-    y.i("MicroMsg.exdevice.BluetoothSDKAdapter", "now notify");
-    b.a(this.jyN).countDown();
+    AppMethodBeat.i(19539);
+    b.a(this.lIm, new com.tencent.mm.plugin.d.a.d.b(ah.getContext(), this.lIm, v.bqB().fPW));
+    ab.i("MicroMsg.exdevice.BluetoothSDKAdapter", "now notify");
+    b.a(this.lIm).countDown();
+    AppMethodBeat.o(19539);
   }
 }
 

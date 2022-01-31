@@ -4,11 +4,11 @@ import android.content.Context;
 
 public abstract interface b
 {
-  public abstract boolean aG(Context paramContext);
+  public abstract boolean be(Context paramContext);
   
-  public abstract boolean aH(Context paramContext);
+  public abstract boolean bf(Context paramContext);
   
-  public abstract void aI(Context paramContext);
+  public abstract void bg(Context paramContext);
 }
 
 

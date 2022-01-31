@@ -3,6 +3,7 @@ package com.tencent.mm.pluginsdk.ui.applet;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class s$1
   implements TextWatcher
@@ -11,14 +12,16 @@ final class s$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
+    AppMethodBeat.i(79788);
     int j = 50 - paramEditable.length();
     int i = j;
     if (j < 0) {
       i = 0;
     }
-    if (this.sds.nmd != null) {
-      this.sds.nmd.setText(String.valueOf(i));
+    if (this.vUx.pRs != null) {
+      this.vUx.pRs.setText(String.valueOf(i));
     }
+    AppMethodBeat.o(79788);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

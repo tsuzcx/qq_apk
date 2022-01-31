@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fav.ui.widget;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 
 final class FavCapacityPanel$1
@@ -12,13 +13,15 @@ final class FavCapacityPanel$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(74663);
     paramView = new Intent();
-    if (this.kji.kjg == 0) {
+    if (this.mDO.mDM == 0) {
       paramView.putExtra("key_enter_fav_cleanui_from", 1);
     }
     for (;;)
     {
-      b.a(this.kji.getContext(), ".ui.FavCleanUI", paramView);
+      b.b(this.mDO.getContext(), ".ui.FavCleanUI", paramView);
+      AppMethodBeat.o(74663);
       return;
       paramView.putExtra("key_enter_fav_cleanui_from", 2);
     }

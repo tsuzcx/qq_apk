@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="#cc000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/nc" android:background="@color/cn" android:layout_width="fill_parent" android:layout_height="@dimen/lm" android:layout_alignParentTop="true" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cyv" android:paddingLeft="14.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/nc">
-        <TextView android:textSize="@dimen/k9" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b3q" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="48.0dip" android:maxLines="2" android:layout_weight="1.0" />
-        <ImageButton android:gravity="center|right" android:id="@id/cyw" android:background="@color/zm" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/delete_white_icon" android:scaleType="center" />
+    <TextView android:id="@id/dax" style="@style/zz" />
+    <LinearLayout android:orientation="vertical" android:id="@id/day" android:background="@drawable/js" android:paddingLeft="@dimen/dp" android:paddingTop="@dimen/dp" android:paddingRight="@dimen/dp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
+        <TextView android:id="@id/daz" style="@style/zx" />
+        <TextView android:id="@id/db0" android:layout_marginTop="@dimen/dl" android:layout_marginBottom="@dimen/n_" style="@style/zx" />
+        <View style="@style/zy" />
+        <ImageView android:layout_gravity="center" android:id="@id/db1" android:layout_width="wrap_content" android:layout_height="160.0dip" android:layout_marginTop="@dimen/dp" android:layout_marginBottom="@dimen/dp" />
+        <View style="@style/zy" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/db2" style="@style/zw" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

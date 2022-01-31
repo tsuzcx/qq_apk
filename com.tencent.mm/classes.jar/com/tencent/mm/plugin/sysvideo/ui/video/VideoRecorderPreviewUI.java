@@ -3,106 +3,133 @@ package com.tencent.mm.plugin.sysvideo.ui.video;
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ak;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.video.VideoView;
 
 public class VideoRecorderPreviewUI
   extends MMActivity
 {
-  private long duration = -1L;
-  private VideoView pzd;
-  private String pze = null;
-  private final int pzf = 3000;
-  private ah pzg = new VideoRecorderPreviewUI.2(this);
+  private long duration;
+  private VideoView taQ;
+  private String taR;
+  private final int taS;
+  private ak taT;
   
-  protected final void dealContentView(View paramView)
+  public VideoRecorderPreviewUI()
   {
-    ak.g(ak.a(getWindow(), null), this.mController.uMz);
-    ((ViewGroup)this.mController.uMz.getParent()).removeView(this.mController.uMz);
-    ((ViewGroup)getWindow().getDecorView()).addView(this.mController.uMz, 0);
+    AppMethodBeat.i(25636);
+    this.taR = null;
+    this.duration = -1L;
+    this.taS = 3000;
+    this.taT = new VideoRecorderPreviewUI.2(this);
+    AppMethodBeat.o(25636);
   }
   
-  protected final int getLayoutId()
+  public void dealContentView(View paramView)
   {
-    return R.i.video_recorder_preview;
+    AppMethodBeat.i(25641);
+    af.h(af.a(getWindow(), null), getBodyView());
+    ((ViewGroup)getBodyView().getParent()).removeView(getBodyView());
+    ((ViewGroup)getWindow().getDecorView()).addView(getBodyView(), 0);
+    AppMethodBeat.o(25641);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    this.pzd = ((VideoView)findViewById(R.h.video_recorder_play_view));
-    this.pzd.setOnErrorListener(new VideoRecorderPreviewUI.3(this));
-    this.pzd.setOnPreparedListener(new VideoRecorderPreviewUI.4(this));
-    findViewById(R.h.video_recorder_play_area).setOnClickListener(new View.OnClickListener()
+    return 2130971073;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(138617);
+    this.taQ = ((VideoView)findViewById(2131828724));
+    this.taQ.setOnErrorListener(new VideoRecorderPreviewUI.3(this));
+    this.taQ.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
     {
-      public final void onClick(View paramAnonymousView)
+      public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
       {
-        VideoRecorderPreviewUI.b(VideoRecorderPreviewUI.this).removeMessages(0);
-        if (VideoRecorderPreviewUI.this.mController.isTitleShowing())
+        AppMethodBeat.i(25633);
+        ab.d("MicroMsg.VideoRecorderPreviewUI", g.Mk() + " onPrepared");
+        ab.d("MicroMsg.VideoRecorderPreviewUI", g.Mk() + " onPrepared");
+        paramAnonymousMediaPlayer = VideoRecorderPreviewUI.a(VideoRecorderPreviewUI.this);
+        if ((paramAnonymousMediaPlayer.bIo != null) && (paramAnonymousMediaPlayer.wfQ)) {
+          paramAnonymousMediaPlayer.bIo.start();
+        }
+        for (paramAnonymousMediaPlayer.bHF = false;; paramAnonymousMediaPlayer.bHF = true)
         {
-          VideoRecorderPreviewUI.this.getWindow().setFlags(1024, 1024);
-          VideoRecorderPreviewUI.this.mController.hideTitleView();
+          VideoRecorderPreviewUI.b(VideoRecorderPreviewUI.this).sendEmptyMessageDelayed(0, 3000L);
+          AppMethodBeat.o(25633);
           return;
         }
-        VideoRecorderPreviewUI.this.getWindow().clearFlags(1024);
-        VideoRecorderPreviewUI.this.mController.showTitleView();
-        VideoRecorderPreviewUI.b(VideoRecorderPreviewUI.this).removeMessages(0);
-        VideoRecorderPreviewUI.b(VideoRecorderPreviewUI.this).sendEmptyMessageDelayed(0, 3000L);
       }
     });
-    this.pzd.setOnCompletionListener(new VideoRecorderPreviewUI.6(this));
-    if (this.pze != null)
+    findViewById(2131828723).setOnClickListener(new VideoRecorderPreviewUI.5(this));
+    this.taQ.setOnCompletionListener(new VideoRecorderPreviewUI.6(this));
+    if (this.taR != null)
     {
-      this.pzd.stopPlayback();
-      this.pzd.setVideoURI(this.pze);
+      this.taQ.stopPlayback();
+      this.taQ.setVideoURI(this.taR);
     }
+    AppMethodBeat.o(138617);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(25637);
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
-    this.mController.hideTitleView();
-    this.pze = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
-    setMMTitle(R.l.video_preview_title);
+    hideTitleView();
+    this.taR = getIntent().getStringExtra("VideoRecorder_VideoFullPath");
+    setMMTitle(2131304531);
     setBackBtn(new VideoRecorderPreviewUI.1(this));
     initView();
+    AppMethodBeat.o(25637);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(25640);
     super.onPause();
-    if (this.pzd.isPlaying())
+    if (this.taQ.isPlaying())
     {
-      VideoView localVideoView = this.pzd;
-      if ((localVideoView.gHZ != null) && (localVideoView.snv) && (localVideoView.gHZ.isPlaying())) {
-        localVideoView.gHZ.pause();
+      VideoView localVideoView = this.taQ;
+      if ((localVideoView.bIo != null) && (localVideoView.wfQ) && (localVideoView.bIo.isPlaying())) {
+        localVideoView.bIo.pause();
       }
-      localVideoView.gHF = false;
+      localVideoView.bHF = false;
     }
     finish();
     overridePendingTransition(0, 0);
-    this.pzg.removeMessages(0);
+    this.taT.removeMessages(0);
+    AppMethodBeat.o(25640);
   }
   
   public void onStart()
   {
+    AppMethodBeat.i(25638);
     super.onStart();
+    AppMethodBeat.o(25638);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sysvideo.ui.video.VideoRecorderPreviewUI
  * JD-Core Version:    0.7.0.1
  */

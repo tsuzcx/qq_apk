@@ -5,54 +5,87 @@ import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class b
   extends a
 {
-  private static final int hxC = com.tencent.mm.cb.a.fromDPToPix(ae.getContext(), 48);
-  private static final int hxD = com.tencent.mm.cb.a.fromDPToPix(ae.getContext(), 43);
+  private static final int jpM;
+  private static final int jpN;
   
-  public final int asC()
+  static
   {
-    return e.csH().asw();
+    AppMethodBeat.i(10103);
+    jpM = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 48);
+    jpN = com.tencent.mm.cb.a.fromDPToPix(ah.getContext(), 43);
+    AppMethodBeat.o(10103);
   }
   
-  public final int asD()
+  private int aRI()
   {
-    return asE() * getRowCount();
+    AppMethodBeat.i(10097);
+    c localc = this.vtC;
+    if (localc.jqf <= 1)
+    {
+      Display localDisplay = ((WindowManager)ah.getContext().getSystemService("window")).getDefaultDisplay();
+      localc.jqf = new int[] { localDisplay.getWidth(), localDisplay.getHeight() }[0];
+    }
+    int i = localc.jqf;
+    AppMethodBeat.o(10097);
+    return i;
   }
   
-  public final int asE()
+  public final int aRF()
   {
-    if (this.rDq.hxQ) {
+    AppMethodBeat.i(10098);
+    int i = e.dve().aRA();
+    AppMethodBeat.o(10098);
+    return i;
+  }
+  
+  public final int aRG()
+  {
+    AppMethodBeat.i(10099);
+    int i = aRH();
+    int j = getRowCount();
+    AppMethodBeat.o(10099);
+    return i * j;
+  }
+  
+  public final int aRH()
+  {
+    AppMethodBeat.i(10101);
+    if (this.vtC.jqa)
+    {
+      AppMethodBeat.o(10101);
       return 7;
     }
-    c localc = this.rDq;
-    if (localc.hxV <= 1)
-    {
-      Display localDisplay = ((WindowManager)ae.getContext().getSystemService("window")).getDefaultDisplay();
-      localc.hxV = new int[] { localDisplay.getWidth(), localDisplay.getHeight() }[0];
-    }
-    return localc.hxV / hxD;
+    int i = aRI() / jpN;
+    AppMethodBeat.o(10101);
+    return i;
   }
   
   public final int getPageCount()
   {
-    if (asD() <= 0) {
+    AppMethodBeat.i(10100);
+    if (aRG() <= 0)
+    {
+      AppMethodBeat.o(10100);
       return 0;
     }
-    int i = e.csH().asw();
-    int j = asD();
-    return (int)Math.ceil(i / j);
+    int i = e.dve().aRA();
+    int j = aRG();
+    i = (int)Math.ceil(i / j);
+    AppMethodBeat.o(10100);
+    return i;
   }
   
   public final int getRowCount()
   {
     int i = 3;
-    int j = this.rDq.hxU / hxC;
+    int j = this.vtC.jqe / jpM;
     if (j > 3) {}
     for (;;)
     {
@@ -67,65 +100,63 @@ public final class b
   
   public final int getRowSpacing()
   {
-    return (this.rDq.hxU - hxC * getRowCount()) / (getRowCount() + 1);
+    AppMethodBeat.i(10102);
+    int i = (this.vtC.jqe - jpM * getRowCount()) / (getRowCount() + 1);
+    AppMethodBeat.o(10102);
+    return i;
   }
   
-  public final View na(int paramInt)
+  public final View qE(int paramInt)
   {
-    View localView = null;
-    Object localObject = this.hxz;
-    c localc = this.rDq;
+    AppMethodBeat.i(10096);
+    Object localObject1 = this.jpJ;
+    Object localObject2 = this.vtC;
     d locald = new d();
     locald.mIndex = paramInt;
-    locald.rDy = this;
-    locald.mContext = ((Context)localObject);
-    locald.rDq = localc;
-    localObject = localView;
-    if (locald.mContext != null)
+    locald.vtK = this;
+    locald.mContext = ((Context)localObject1);
+    locald.vtC = ((c)localObject2);
+    if ((locald.mContext == null) || (locald.vtK == null))
     {
-      if (locald.rDy != null) {
-        break label77;
+      AppMethodBeat.o(10096);
+      return null;
+    }
+    localObject1 = View.inflate(locald.mContext, 2130971309, null);
+    if ((localObject1 instanceof WebViewSmileyGrid))
+    {
+      ((WebViewSmileyGrid)localObject1).setPanelManager(locald.vtC);
+      localObject2 = (WebViewSmileyGrid)localObject1;
+      paramInt = locald.mIndex;
+      int i = locald.vtK.aRF();
+      int j = locald.vtK.aRG();
+      int k = locald.vtK.aRH();
+      int m = locald.vtK.getRowCount();
+      int n = locald.vtK.getRowSpacing();
+      ((WebViewSmileyGrid)localObject2).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      ((WebViewSmileyGrid)localObject2).setBackgroundResource(0);
+      ((WebViewSmileyGrid)localObject2).setStretchMode(2);
+      ((WebViewSmileyGrid)localObject2).setOnItemClickListener(((WebViewSmileyGrid)localObject2).amh);
+      ((WebViewSmileyGrid)localObject2).jpR = paramInt;
+      ((WebViewSmileyGrid)localObject2).jpP = i;
+      ((WebViewSmileyGrid)localObject2).jpQ = j;
+      ((WebViewSmileyGrid)localObject2).jpS = n;
+      ((WebViewSmileyGrid)localObject2).jpT = k;
+      ((WebViewSmileyGrid)localObject2).jpU = m;
+      ((WebViewSmileyGrid)localObject2).setNumColumns(k);
+      i = ((WebViewSmileyGrid)localObject2).getRowSpacing();
+      j = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
+      k = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
+      paramInt = i;
+      if (i == 0) {
+        paramInt = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject2).getContext(), 6);
       }
-      localObject = localView;
+      ((WebViewSmileyGrid)localObject2).setPadding(j, paramInt, k, 0);
+      ((WebViewSmileyGrid)localObject2).vtD = new WebViewSmileyGrid.a((WebViewSmileyGrid)localObject2, (byte)0);
+      ((WebViewSmileyGrid)localObject2).setAdapter(((WebViewSmileyGrid)localObject2).vtD);
+      ((WebViewSmileyGrid)localObject2).vtD.notifyDataSetChanged();
     }
-    label77:
-    do
-    {
-      return localObject;
-      localView = View.inflate(locald.mContext, R.i.webview_smiley_panel_page, null);
-      localObject = localView;
-    } while (!(localView instanceof WebViewSmileyGrid));
-    ((WebViewSmileyGrid)localView).setPanelManager(locald.rDq);
-    localObject = (WebViewSmileyGrid)localView;
-    paramInt = locald.mIndex;
-    int i = locald.rDy.asC();
-    int j = locald.rDy.asD();
-    int k = locald.rDy.asE();
-    int m = locald.rDy.getRowCount();
-    int n = locald.rDy.getRowSpacing();
-    ((WebViewSmileyGrid)localObject).setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    ((WebViewSmileyGrid)localObject).setBackgroundResource(0);
-    ((WebViewSmileyGrid)localObject).setStretchMode(2);
-    ((WebViewSmileyGrid)localObject).setOnItemClickListener(((WebViewSmileyGrid)localObject).ajR);
-    ((WebViewSmileyGrid)localObject).hxH = paramInt;
-    ((WebViewSmileyGrid)localObject).hxF = i;
-    ((WebViewSmileyGrid)localObject).hxG = j;
-    ((WebViewSmileyGrid)localObject).hxI = n;
-    ((WebViewSmileyGrid)localObject).hxJ = k;
-    ((WebViewSmileyGrid)localObject).hxK = m;
-    ((WebViewSmileyGrid)localObject).setNumColumns(k);
-    i = ((WebViewSmileyGrid)localObject).getRowSpacing();
-    j = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject).getContext(), 6);
-    k = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject).getContext(), 6);
-    paramInt = i;
-    if (i == 0) {
-      paramInt = com.tencent.mm.cb.a.fromDPToPix(((WebViewSmileyGrid)localObject).getContext(), 6);
-    }
-    ((WebViewSmileyGrid)localObject).setPadding(j, paramInt, k, 0);
-    ((WebViewSmileyGrid)localObject).rDr = new WebViewSmileyGrid.a((WebViewSmileyGrid)localObject, (byte)0);
-    ((WebViewSmileyGrid)localObject).setAdapter(((WebViewSmileyGrid)localObject).rDr);
-    ((WebViewSmileyGrid)localObject).rDr.notifyDataSetChanged();
-    return localView;
+    AppMethodBeat.o(10096);
+    return localObject1;
   }
 }
 

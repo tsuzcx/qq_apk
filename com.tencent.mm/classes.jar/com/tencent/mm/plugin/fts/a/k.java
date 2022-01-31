@@ -11,8 +11,6 @@ public abstract interface k
   
   public abstract void a(String paramString, l paraml, int paramInt, HashMap<String, String> paramHashMap);
   
-  public abstract boolean aVv();
-  
   public abstract void addSOSHistory(String paramString);
   
   public abstract void create();
@@ -24,6 +22,8 @@ public abstract interface k
   public abstract void destroy();
   
   public abstract String getName();
+  
+  public abstract boolean isCreated();
 }
 
 

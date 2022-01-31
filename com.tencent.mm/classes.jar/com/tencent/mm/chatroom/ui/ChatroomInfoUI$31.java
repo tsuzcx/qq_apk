@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ChatroomInfoUI$31
   implements DialogInterface.OnClickListener
@@ -10,12 +11,14 @@ final class ChatroomInfoUI$31
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ChatroomInfoUI.y(this.dod);
+    AppMethodBeat.i(103996);
+    ChatroomInfoUI.y(this.efA);
+    AppMethodBeat.o(103996);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatroomInfoUI.31
  * JD-Core Version:    0.7.0.1
  */

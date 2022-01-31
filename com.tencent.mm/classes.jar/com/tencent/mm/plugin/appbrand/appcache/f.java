@@ -1,27 +1,36 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.plugin.appbrand.appcache.a.a;
-import java.util.Locale;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
 public final class f
-  extends a
+  extends j<h>
 {
-  final int fBY;
+  public static final String[] fkl;
+  final e db;
   
-  public f(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  static
   {
-    this(str1, str2 + String.format(Locale.US, "%d_%d_%d.encwxapkg", new Object[] { Integer.valueOf(paramString1.hashCode()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), paramString2, paramString1, paramInt1, paramInt2);
+    AppMethodBeat.i(129326);
+    fkl = new String[] { j.getCreateSQLs(h.gUb, "CodeLibUsageLRURecord") };
+    AppMethodBeat.o(129326);
   }
   
-  private f(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2)
+  public f(e parame)
   {
-    super(paramString1, paramString2, paramString3, paramString4, paramInt2, 0);
-    this.fBY = paramInt1;
+    super(parame, h.gUb, "CodeLibUsageLRURecord", h.INDEX_CREATE);
+    this.db = parame;
   }
   
-  public final String toShortString()
+  public final void an(String paramString, int paramInt)
   {
-    return String.format(Locale.US, "EncryptPkgDownloadRequest[%s %d %d]", new Object[] { this.appId, Integer.valueOf(this.fBY), Integer.valueOf(this.version) });
+    AppMethodBeat.i(129325);
+    h localh = new h();
+    localh.field_appId = paramString;
+    localh.field_version = paramInt;
+    super.delete(localh, h.gUa);
+    AppMethodBeat.o(129325);
   }
 }
 

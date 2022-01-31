@@ -7,45 +7,56 @@ import com.tencent.filter.QImage;
 import com.tencent.filter.m.f;
 import com.tencent.filter.m.i;
 import com.tencent.filter.m.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.view.b;
-import com.tencent.view.f;
+import com.tencent.view.g;
 
 public final class BokehFilter$a
   extends BaseFilter
 {
-  int aVo = -2000;
-  int bgk = 1;
-  float bgm = (float)(1.0D / Math.exp(0.0D));
-  float bgn = 0.0F;
-  int bgo = 1;
-  int radius = 8;
+  int bwM;
+  float bwO;
+  float bwP;
+  int bwQ;
+  int paramTEXTRUEID;
+  int radius;
   
   public BokehFilter$a(int paramInt1, float paramFloat1, float paramFloat2, int paramInt2, int paramInt3)
   {
-    super(GLSLRender.bcE);
+    super(GLSLRender.btg);
+    AppMethodBeat.i(86284);
+    this.radius = 8;
+    this.bwO = ((float)(1.0D / Math.exp(0.0D)));
+    this.bwP = 0.0F;
+    this.paramTEXTRUEID = -2000;
+    this.bwM = 1;
+    this.bwQ = 1;
     this.radius = paramInt1;
-    this.bgm = paramFloat1;
-    this.bgn = paramFloat2;
-    this.bgk = paramInt2;
-    this.bgo = paramInt3;
-    if (this.bgo > 0)
+    this.bwO = paramFloat1;
+    this.bwP = paramFloat2;
+    this.bwM = paramInt2;
+    this.bwQ = paramInt3;
+    if (this.bwQ > 0)
     {
-      addParam(new m.o("inputImageTexture2", ea(this.bgk), 33986));
-      addParam(new m.f("lumi_threshold", this.bgn));
-      addParam(new m.f("lumi_weight", this.bgm));
-      if (this.bgo == 1)
+      addParam(new m.o("inputImageTexture2", fo(this.bwM), 33986));
+      addParam(new m.f("lumi_threshold", this.bwP));
+      addParam(new m.f("lumi_weight", this.bwO));
+      if (this.bwQ == 1)
       {
-        this.glsl_programID = GLSLRender.bdf;
+        this.glsl_programID = GLSLRender.btH;
         addParam(new m.i("r", this.radius));
+        AppMethodBeat.o(86284);
         return;
       }
-      this.glsl_programID = GLSLRender.bdr;
+      this.glsl_programID = GLSLRender.btT;
+      AppMethodBeat.o(86284);
       return;
     }
-    this.aVo = f.cRo();
+    this.paramTEXTRUEID = g.dXe();
+    AppMethodBeat.o(86284);
   }
   
-  private static String ea(int paramInt)
+  private static String fo(int paramInt)
   {
     switch (paramInt)
     {
@@ -61,40 +72,50 @@ public final class BokehFilter$a
   
   public final void ClearGLSL()
   {
-    if (this.aVo != -2000)
+    AppMethodBeat.i(86287);
+    if (this.paramTEXTRUEID != -2000)
     {
-      f.Ku(this.aVo);
-      this.aVo = -2000;
+      g.Tn(this.paramTEXTRUEID);
+      this.paramTEXTRUEID = -2000;
     }
     super.ClearGLSL();
+    AppMethodBeat.o(86287);
   }
   
   public final void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.bgo == 0)
+    AppMethodBeat.i(86285);
+    if (this.bwQ == 0)
     {
-      Bitmap localBitmap = b.pe(ea(this.bgk));
-      QImage localQImage1 = f.ay(paramInt1, paramInt2, paramInt3);
+      Bitmap localBitmap = b.wv(fo(this.bwM));
+      QImage localQImage1 = g.aK(paramInt1, paramInt2, paramInt3);
       QImage localQImage2 = QImage.BindBitmap(localBitmap);
-      BokehFilter.nativeBokehProcess(localQImage1, localQImage2, this.radius, this.bgm, this.bgn);
+      BokehFilter.nativeBokehProcess(localQImage1, localQImage2, this.radius, this.bwO, this.bwP);
       localQImage2.UnBindBitmap(localBitmap);
       localBitmap.recycle();
-      GLSLRender.nativeTextImage(localQImage1, this.aVo);
+      GLSLRender.nativeTextImage(localQImage1, this.paramTEXTRUEID);
       localQImage1.Dispose();
     }
+    AppMethodBeat.o(86285);
   }
   
   public final boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.aVo != -2000) {
-      return super.renderTexture(this.aVo, paramInt2, paramInt3);
+    AppMethodBeat.i(86286);
+    if (this.paramTEXTRUEID != -2000)
+    {
+      bool = super.renderTexture(this.paramTEXTRUEID, paramInt2, paramInt3);
+      AppMethodBeat.o(86286);
+      return bool;
     }
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+    boolean bool = super.renderTexture(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(86286);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.filter.art.BokehFilter.a
  * JD-Core Version:    0.7.0.1
  */

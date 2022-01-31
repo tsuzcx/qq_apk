@@ -3,6 +3,7 @@ package com.tencent.mm.chatroom.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelectMemberUI$b$3
   implements View.OnClickListener
@@ -11,7 +12,9 @@ final class SelectMemberUI$b$3
   
   public final void onClick(View paramView)
   {
-    this.dsi.dsn.performClick();
+    AppMethodBeat.i(104415);
+    this.ejQ.ejV.performClick();
+    AppMethodBeat.o(104415);
   }
 }
 

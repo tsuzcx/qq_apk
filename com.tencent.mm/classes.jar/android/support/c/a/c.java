@@ -20,6 +20,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.Callback;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.os.Build.VERSION;
+import android.support.v4.content.a.g;
 import android.util.AttributeSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,12 @@ public final class c
   extends h
   implements b
 {
-  private Animator.AnimatorListener mA = null;
-  private ArrayList<Object> mB = null;
-  final Drawable.Callback mC = new Drawable.Callback()
+  private Context mContext;
+  private a nv;
+  private ArgbEvaluator nw = null;
+  private Animator.AnimatorListener nx = null;
+  ArrayList<Object> ny = null;
+  final Drawable.Callback nz = new Drawable.Callback()
   {
     public final void invalidateDrawable(Drawable paramAnonymousDrawable)
     {
@@ -48,9 +52,6 @@ public final class c
       c.this.unscheduleSelf(paramAnonymousRunnable);
     }
   };
-  private Context mContext;
-  private a my;
-  private ArgbEvaluator mz = null;
   
   c()
   {
@@ -65,7 +66,7 @@ public final class c
   private c(Context paramContext, byte paramByte)
   {
     this.mContext = paramContext;
-    this.my = new a();
+    this.nv = new a();
   }
   
   public static c a(Context paramContext, Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
@@ -97,88 +98,88 @@ public final class c
       localObject = paramAnimator.getPropertyName();
       if (("fillColor".equals(localObject)) || ("strokeColor".equals(localObject)))
       {
-        if (this.mz == null) {
-          this.mz = new ArgbEvaluator();
+        if (this.nw == null) {
+          this.nw = new ArgbEvaluator();
         }
-        paramAnimator.setEvaluator(this.mz);
+        paramAnimator.setEvaluator(this.nw);
       }
     }
   }
   
   public final void applyTheme(Resources.Theme paramTheme)
   {
-    if (this.mN != null) {
-      android.support.v4.a.a.a.a(this.mN, paramTheme);
+    if (this.nK != null) {
+      android.support.v4.graphics.drawable.a.a(this.nK, paramTheme);
     }
   }
   
   public final boolean canApplyTheme()
   {
-    if (this.mN != null) {
-      return android.support.v4.a.a.a.d(this.mN);
+    if (this.nK != null) {
+      return android.support.v4.graphics.drawable.a.c(this.nK);
     }
     return false;
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (this.mN != null) {
-      this.mN.draw(paramCanvas);
+    if (this.nK != null) {
+      this.nK.draw(paramCanvas);
     }
     do
     {
       return;
-      this.my.mE.draw(paramCanvas);
-    } while (!this.my.mF.isStarted());
+      this.nv.nB.draw(paramCanvas);
+    } while (!this.nv.nC.isStarted());
     invalidateSelf();
   }
   
   public final int getAlpha()
   {
-    if (this.mN != null) {
-      return android.support.v4.a.a.a.c(this.mN);
+    if (this.nK != null) {
+      return android.support.v4.graphics.drawable.a.b(this.nK);
     }
-    return this.my.mE.getAlpha();
+    return this.nv.nB.getAlpha();
   }
   
   public final int getChangingConfigurations()
   {
-    if (this.mN != null) {
-      return this.mN.getChangingConfigurations();
+    if (this.nK != null) {
+      return this.nK.getChangingConfigurations();
     }
-    return super.getChangingConfigurations() | this.my.mChangingConfigurations;
+    return super.getChangingConfigurations() | this.nv.mChangingConfigurations;
   }
   
   public final Drawable.ConstantState getConstantState()
   {
-    if ((this.mN != null) && (Build.VERSION.SDK_INT >= 24)) {
-      return new b(this.mN.getConstantState());
+    if ((this.nK != null) && (Build.VERSION.SDK_INT >= 24)) {
+      return new b(this.nK.getConstantState());
     }
     return null;
   }
   
   public final int getIntrinsicHeight()
   {
-    if (this.mN != null) {
-      return this.mN.getIntrinsicHeight();
+    if (this.nK != null) {
+      return this.nK.getIntrinsicHeight();
     }
-    return this.my.mE.getIntrinsicHeight();
+    return this.nv.nB.getIntrinsicHeight();
   }
   
   public final int getIntrinsicWidth()
   {
-    if (this.mN != null) {
-      return this.mN.getIntrinsicWidth();
+    if (this.nK != null) {
+      return this.nK.getIntrinsicWidth();
     }
-    return this.my.mE.getIntrinsicWidth();
+    return this.nv.nB.getIntrinsicWidth();
   }
   
   public final int getOpacity()
   {
-    if (this.mN != null) {
-      return this.mN.getOpacity();
+    if (this.nK != null) {
+      return this.nK.getOpacity();
     }
-    return this.my.mE.getOpacity();
+    return this.nv.nB.getOpacity();
   }
   
   public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
@@ -188,9 +189,9 @@ public final class c
   
   public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      android.support.v4.a.a.a.a(this.mN, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+      android.support.v4.graphics.drawable.a.a(this.nK, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
       return;
     }
     int i = paramXmlPullParser.getEventType();
@@ -203,17 +204,17 @@ public final class c
         if (!"animated-vector".equals(localObject1)) {
           break label182;
         }
-        localObject1 = android.support.v4.content.a.c.a(paramResources, paramTheme, paramAttributeSet, a.mq);
+        localObject1 = g.a(paramResources, paramTheme, paramAttributeSet, a.nn);
         i = ((TypedArray)localObject1).getResourceId(0, 0);
         if (i != 0)
         {
           localObject2 = i.a(paramResources, i, paramTheme);
-          ((i)localObject2).mT = false;
-          ((i)localObject2).setCallback(this.mC);
-          if (this.my.mE != null) {
-            this.my.mE.setCallback(null);
+          ((i)localObject2).nQ = false;
+          ((i)localObject2).setCallback(this.nz);
+          if (this.nv.nB != null) {
+            this.nv.nB.setCallback(null);
           }
-          this.my.mE = ((i)localObject2);
+          this.nv.nB = ((i)localObject2);
         }
         ((TypedArray)localObject1).recycle();
       }
@@ -223,204 +224,204 @@ public final class c
         i = paramXmlPullParser.next();
         break;
       }
-      Object localObject2 = paramResources.obtainAttributes(paramAttributeSet, a.mr);
+      Object localObject2 = paramResources.obtainAttributes(paramAttributeSet, a.no);
       String str = ((TypedArray)localObject2).getString(0);
       i = ((TypedArray)localObject2).getResourceId(1, 0);
       if (i != 0)
       {
         if (this.mContext == null) {
-          break label392;
+          break label391;
         }
         localObject1 = this.mContext;
         if (Build.VERSION.SDK_INT < 24) {
-          break label370;
+          break label369;
         }
       }
-      label370:
+      label369:
       for (Object localObject1 = AnimatorInflater.loadAnimator((Context)localObject1, i);; localObject1 = e.a((Context)localObject1, ((Context)localObject1).getResources(), ((Context)localObject1).getTheme(), i))
       {
-        ((Animator)localObject1).setTarget(this.my.mE.mP.nL.nK.get(str));
+        ((Animator)localObject1).setTarget(this.nv.nB.nM.oK.oJ.get(str));
         if (Build.VERSION.SDK_INT < 21) {
           a((Animator)localObject1);
         }
-        if (a.a(this.my) == null)
+        if (this.nv.nD == null)
         {
-          a.a(this.my, new ArrayList());
-          this.my.mH = new android.support.v4.f.a();
+          this.nv.nD = new ArrayList();
+          this.nv.nE = new android.support.v4.e.a();
         }
-        a.a(this.my).add(localObject1);
-        this.my.mH.put(localObject1, str);
+        this.nv.nD.add(localObject1);
+        this.nv.nE.put(localObject1, str);
         ((TypedArray)localObject2).recycle();
         break;
       }
-      label392:
+      label391:
       ((TypedArray)localObject2).recycle();
       throw new IllegalStateException("Context can't be null when inflating animators");
     }
-    paramResources = this.my;
-    if (paramResources.mF == null) {
-      paramResources.mF = new AnimatorSet();
+    paramResources = this.nv;
+    if (paramResources.nC == null) {
+      paramResources.nC = new AnimatorSet();
     }
-    paramResources.mF.playTogether(paramResources.mG);
+    paramResources.nC.playTogether(paramResources.nD);
   }
   
   public final boolean isAutoMirrored()
   {
-    if (this.mN != null) {
-      return android.support.v4.a.a.a.b(this.mN);
+    if (this.nK != null) {
+      return android.support.v4.graphics.drawable.a.a(this.nK);
     }
-    return this.my.mE.isAutoMirrored();
+    return this.nv.nB.isAutoMirrored();
   }
   
   public final boolean isRunning()
   {
-    if (this.mN != null) {
-      return ((AnimatedVectorDrawable)this.mN).isRunning();
+    if (this.nK != null) {
+      return ((AnimatedVectorDrawable)this.nK).isRunning();
     }
-    return this.my.mF.isRunning();
+    return this.nv.nC.isRunning();
   }
   
   public final boolean isStateful()
   {
-    if (this.mN != null) {
-      return this.mN.isStateful();
+    if (this.nK != null) {
+      return this.nK.isStateful();
     }
-    return this.my.mE.isStateful();
+    return this.nv.nB.isStateful();
   }
   
   public final Drawable mutate()
   {
-    if (this.mN != null) {
-      this.mN.mutate();
+    if (this.nK != null) {
+      this.nK.mutate();
     }
     return this;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      this.mN.setBounds(paramRect);
+      this.nK.setBounds(paramRect);
       return;
     }
-    this.my.mE.setBounds(paramRect);
+    this.nv.nB.setBounds(paramRect);
   }
   
   protected final boolean onLevelChange(int paramInt)
   {
-    if (this.mN != null) {
-      return this.mN.setLevel(paramInt);
+    if (this.nK != null) {
+      return this.nK.setLevel(paramInt);
     }
-    return this.my.mE.setLevel(paramInt);
+    return this.nv.nB.setLevel(paramInt);
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    if (this.mN != null) {
-      return this.mN.setState(paramArrayOfInt);
+    if (this.nK != null) {
+      return this.nK.setState(paramArrayOfInt);
     }
-    return this.my.mE.setState(paramArrayOfInt);
+    return this.nv.nB.setState(paramArrayOfInt);
   }
   
   public final void setAlpha(int paramInt)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      this.mN.setAlpha(paramInt);
+      this.nK.setAlpha(paramInt);
       return;
     }
-    this.my.mE.setAlpha(paramInt);
+    this.nv.nB.setAlpha(paramInt);
   }
   
   public final void setAutoMirrored(boolean paramBoolean)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      android.support.v4.a.a.a.a(this.mN, paramBoolean);
+      android.support.v4.graphics.drawable.a.a(this.nK, paramBoolean);
       return;
     }
-    this.my.mE.setAutoMirrored(paramBoolean);
+    this.nv.nB.setAutoMirrored(paramBoolean);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      this.mN.setColorFilter(paramColorFilter);
+      this.nK.setColorFilter(paramColorFilter);
       return;
     }
-    this.my.mE.setColorFilter(paramColorFilter);
+    this.nv.nB.setColorFilter(paramColorFilter);
   }
   
   public final void setTint(int paramInt)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      android.support.v4.a.a.a.a(this.mN, paramInt);
+      android.support.v4.graphics.drawable.a.a(this.nK, paramInt);
       return;
     }
-    this.my.mE.setTint(paramInt);
+    this.nv.nB.setTint(paramInt);
   }
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      android.support.v4.a.a.a.a(this.mN, paramColorStateList);
+      android.support.v4.graphics.drawable.a.a(this.nK, paramColorStateList);
       return;
     }
-    this.my.mE.setTintList(paramColorStateList);
+    this.nv.nB.setTintList(paramColorStateList);
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      android.support.v4.a.a.a.a(this.mN, paramMode);
+      android.support.v4.graphics.drawable.a.a(this.nK, paramMode);
       return;
     }
-    this.my.mE.setTintMode(paramMode);
+    this.nv.nB.setTintMode(paramMode);
   }
   
   public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.mN != null) {
-      return this.mN.setVisible(paramBoolean1, paramBoolean2);
+    if (this.nK != null) {
+      return this.nK.setVisible(paramBoolean1, paramBoolean2);
     }
-    this.my.mE.setVisible(paramBoolean1, paramBoolean2);
+    this.nv.nB.setVisible(paramBoolean1, paramBoolean2);
     return super.setVisible(paramBoolean1, paramBoolean2);
   }
   
   public final void start()
   {
-    if (this.mN != null) {
-      ((AnimatedVectorDrawable)this.mN).start();
+    if (this.nK != null) {
+      ((AnimatedVectorDrawable)this.nK).start();
     }
-    while (this.my.mF.isStarted()) {
+    while (this.nv.nC.isStarted()) {
       return;
     }
-    this.my.mF.start();
+    this.nv.nC.start();
     invalidateSelf();
   }
   
   public final void stop()
   {
-    if (this.mN != null)
+    if (this.nK != null)
     {
-      ((AnimatedVectorDrawable)this.mN).stop();
+      ((AnimatedVectorDrawable)this.nK).stop();
       return;
     }
-    this.my.mF.end();
+    this.nv.nC.end();
   }
   
-  private static final class a
+  static final class a
     extends Drawable.ConstantState
   {
     int mChangingConfigurations;
-    i mE;
-    AnimatorSet mF;
-    ArrayList<Animator> mG;
-    android.support.v4.f.a<Animator, String> mH;
+    i nB;
+    AnimatorSet nC;
+    ArrayList<Animator> nD;
+    android.support.v4.e.a<Animator, String> nE;
     
     public final int getChangingConfigurations()
     {
@@ -438,47 +439,47 @@ public final class c
     }
   }
   
-  private static final class b
+  static final class b
     extends Drawable.ConstantState
   {
-    private final Drawable.ConstantState mI;
+    private final Drawable.ConstantState nF;
     
     public b(Drawable.ConstantState paramConstantState)
     {
-      this.mI = paramConstantState;
+      this.nF = paramConstantState;
     }
     
     public final boolean canApplyTheme()
     {
-      return this.mI.canApplyTheme();
+      return this.nF.canApplyTheme();
     }
     
     public final int getChangingConfigurations()
     {
-      return this.mI.getChangingConfigurations();
+      return this.nF.getChangingConfigurations();
     }
     
     public final Drawable newDrawable()
     {
       c localc = new c();
-      localc.mN = this.mI.newDrawable();
-      localc.mN.setCallback(localc.mC);
+      localc.nK = this.nF.newDrawable();
+      localc.nK.setCallback(localc.nz);
       return localc;
     }
     
     public final Drawable newDrawable(Resources paramResources)
     {
       c localc = new c();
-      localc.mN = this.mI.newDrawable(paramResources);
-      localc.mN.setCallback(localc.mC);
+      localc.nK = this.nF.newDrawable(paramResources);
+      localc.nK.setCallback(localc.nz);
       return localc;
     }
     
     public final Drawable newDrawable(Resources paramResources, Resources.Theme paramTheme)
     {
       c localc = new c();
-      localc.mN = this.mI.newDrawable(paramResources, paramTheme);
-      localc.mN.setCallback(localc.mC);
+      localc.nK = this.nF.newDrawable(paramResources, paramTheme);
+      localc.nK.setCallback(localc.nz);
       return localc;
     }
   }

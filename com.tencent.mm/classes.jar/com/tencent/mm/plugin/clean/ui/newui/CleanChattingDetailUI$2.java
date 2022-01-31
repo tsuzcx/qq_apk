@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.clean.ui.newui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -12,19 +13,21 @@ final class CleanChattingDetailUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = CleanChattingDetailUI.a(this.iEb);
-    if (paramView.hIR.size() == paramView.hgv.size()) {
-      paramView.hIR.clear();
+    AppMethodBeat.i(18864);
+    paramView = CleanChattingDetailUI.a(this.kJi);
+    if (paramView.jCr.size() == paramView.iRT.size()) {
+      paramView.jCr.clear();
     }
     for (;;)
     {
-      paramView.aEf();
-      CleanChattingDetailUI.a(this.iEb).notifyDataSetChanged();
+      paramView.bhg();
+      CleanChattingDetailUI.a(this.kJi).notifyDataSetChanged();
+      AppMethodBeat.o(18864);
       return;
       int i = 0;
-      while (i < paramView.hgv.size())
+      while (i < paramView.iRT.size())
       {
-        paramView.hIR.add(Integer.valueOf(i));
+        paramView.jCr.add(Integer.valueOf(i));
         i += 1;
       }
     }

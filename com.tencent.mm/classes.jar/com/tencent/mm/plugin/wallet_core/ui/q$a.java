@@ -2,11 +2,7 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 public abstract interface q$a
 {
-  public abstract void bgR();
-  
-  public abstract void bgS();
-  
-  public abstract void cancel();
+  public abstract void bYU();
 }
 
 

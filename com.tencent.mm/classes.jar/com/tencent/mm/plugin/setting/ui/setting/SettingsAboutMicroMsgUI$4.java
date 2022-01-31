@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.r;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.modelsimple.t;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class SettingsAboutMicroMsgUI$4
-  implements am.a
+  implements ap.a
 {
-  SettingsAboutMicroMsgUI$4(SettingsAboutMicroMsgUI paramSettingsAboutMicroMsgUI, r paramr) {}
+  SettingsAboutMicroMsgUI$4(SettingsAboutMicroMsgUI paramSettingsAboutMicroMsgUI, t paramt) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    g.Dk().c(this.nTk);
-    g.Dk().b(255, SettingsAboutMicroMsgUI.c(this.nTg));
-    SettingsAboutMicroMsgUI.d(this.nTg);
-    if (SettingsAboutMicroMsgUI.e(this.nTg) != null)
+    AppMethodBeat.i(127094);
+    g.Rc().a(this.qHk);
+    g.Rc().b(255, SettingsAboutMicroMsgUI.c(this.qHg));
+    SettingsAboutMicroMsgUI.d(this.qHg);
+    if (SettingsAboutMicroMsgUI.e(this.qHg) != null)
     {
-      SettingsAboutMicroMsgUI.e(this.nTg).stopTimer();
-      SettingsAboutMicroMsgUI.f(this.nTg);
+      SettingsAboutMicroMsgUI.e(this.qHg).stopTimer();
+      SettingsAboutMicroMsgUI.f(this.qHg);
     }
-    if (SettingsAboutMicroMsgUI.a(this.nTg) != null) {
-      SettingsAboutMicroMsgUI.a(this.nTg).cancel();
+    if (SettingsAboutMicroMsgUI.a(this.qHg) != null) {
+      SettingsAboutMicroMsgUI.a(this.qHg).cancel();
     }
-    SettingsAboutMicroMsgUI.g(this.nTg);
+    SettingsAboutMicroMsgUI.g(this.qHg);
+    AppMethodBeat.o(127094);
     return false;
   }
 }

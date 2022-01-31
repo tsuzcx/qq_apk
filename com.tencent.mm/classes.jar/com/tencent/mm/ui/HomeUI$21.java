@@ -1,16 +1,19 @@
 package com.tencent.mm.ui;
 
-import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class HomeUI$21
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   HomeUI$21(HomeUI paramHomeUI) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.LauncherUI.HomeUI", "contentView.post, padding: %s", new Object[] { Integer.valueOf(HomeUI.c(this.uKu).getPaddingTop()) });
+    AppMethodBeat.i(153780);
+    HomeUI.x(this.yYw);
+    AppMethodBeat.o(153780);
   }
 }
 

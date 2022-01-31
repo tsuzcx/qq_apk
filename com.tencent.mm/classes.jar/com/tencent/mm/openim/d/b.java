@@ -1,30 +1,27 @@
 package com.tencent.mm.openim.d;
 
-import com.tencent.mm.cf.h;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.big;
 
 public final class b
-  extends i<a>
+  extends i
 {
-  public static final String[] dXp = { i.a(a.buS, "OpenIMAccTypeInfo") };
-  public h dXo;
+  big ggk;
   
-  public b(h paramh)
+  public b(String paramString1, String paramString2)
   {
-    super(paramh, a.buS, "OpenIMAccTypeInfo", null);
-    this.dXo = paramh;
-  }
-  
-  public final boolean a(a parama)
-  {
-    parama.field_updateTime = bk.UX();
-    return super.a(parama);
+    super(9);
+    AppMethodBeat.i(78922);
+    this.ggk = new big();
+    this.ggk.gfM = paramString1;
+    this.ggk.kqd = paramString2;
+    this.oDZ = this.ggk;
+    AppMethodBeat.o(78922);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.openim.d.b
  * JD-Core Version:    0.7.0.1
  */

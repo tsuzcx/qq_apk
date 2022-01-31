@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface GridHeadersGridView$c
 {
-  public abstract void cE(View paramView);
+  public abstract void di(View paramView);
 }
 
 

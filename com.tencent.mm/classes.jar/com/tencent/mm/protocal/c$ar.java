@@ -5,12 +5,12 @@ public final class c$ar
 {
   public c$ar()
   {
-    super("deleteAccountSuccess", "deleteAccountSuccess", 144, false);
+    super("connectToFreeWifi", "connectToFreeWifi", 95, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,50 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.os.Message;
-import com.tencent.mm.ay.j;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.k;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.account.b;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.account.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 
 final class f$2
-  extends ah
+  extends ak
 {
   f$2(boolean paramBoolean) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    int i = q.Gu();
-    if (this.hZO) {
+    AppMethodBeat.i(23510);
+    int i = r.Zy();
+    if (this.ldm) {
       i &= 0xFFFFDFFF;
     }
     for (;;)
     {
-      au.Hx();
-      c.Dz().o(34, Integer.valueOf(i));
-      au.Hx();
-      c.Fv().b(new j("", "", "", "", "", "", "", "", i, "", ""));
-      if (!this.hZO)
+      aw.aaz();
+      c.Ru().set(34, Integer.valueOf(i));
+      aw.aaz();
+      c.Yz().c(new k("", "", "", "", "", "", "", "", i, "", ""));
+      if (!this.ldm)
       {
-        b.getFacebookFrdStg().WJ();
-        au.Hx();
-        c.Dz().o(65828, "");
-        au.Hx();
-        c.FB().abu("facebookapp");
-        au.Hx();
-        c.Fy().HG("facebookapp");
+        a.getFacebookFrdStg().aql();
+        aw.aaz();
+        c.Ru().set(65828, "");
+        aw.aaz();
+        c.YF().arF("facebookapp");
+        aw.aaz();
+        c.YC().Ts("facebookapp");
       }
-      if (this.hZP != null) {
-        this.hZP.a(null, null);
+      if (this.oBt != null) {
+        this.oBt.a(null, null);
       }
+      AppMethodBeat.o(23510);
       return;
       i |= 0x2000;
     }

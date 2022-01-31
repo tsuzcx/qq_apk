@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="#ff292c2d" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bd" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:id="@id/bc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <include layout="@layout/w3" />
-    </RelativeLayout>
-    <ImageView android:gravity="center" android:id="@id/v0" android:layout_width="150.0dip" android:layout_height="150.0dip" />
-    <ProgressBar android:id="@id/an6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="20.0dip" style="?android:attr/progressBarStyleHorizontal" />
-    <TextView android:textSize="@dimen/dq" android:textColor="@color/a23" android:gravity="center" android:id="@id/bhm" android:background="@color/fc" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.brandservice.ui.EnterpriseBizContactListView android:id="@id/bl5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

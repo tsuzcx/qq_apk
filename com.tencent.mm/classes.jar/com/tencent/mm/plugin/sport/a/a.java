@@ -1,21 +1,22 @@
 package com.tencent.mm.plugin.sport.a;
 
-import android.os.IInterface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.ac;
 
-public abstract interface a
-  extends IInterface
+public final class a
 {
-  public abstract void P(int paramInt, long paramLong);
+  public static final String spi;
+  public static final String spj;
+  public static final String spk;
   
-  public abstract void Pu(String paramString);
-  
-  public abstract long bLd();
-  
-  public abstract void bLe();
-  
-  public abstract void bLf();
-  
-  public abstract long getLong(int paramInt, long paramLong);
+  static
+  {
+    AppMethodBeat.i(55717);
+    spi = ac.eQv + "stepcounter.cfg";
+    spj = ac.eQv + "MM_stepcounter.cfg";
+    spk = ac.eQv + "PUSH_stepcounter.cfg";
+    AppMethodBeat.o(55717);
+  }
 }
 
 

@@ -15,26 +15,20 @@ import android.view.View.MeasureSpec;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.as.a.c.g;
-import com.tencent.mm.as.a.d.b;
-import com.tencent.mm.h.a.pb;
-import com.tencent.mm.h.a.pe;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.g.a.qg;
+import com.tencent.mm.g.a.qj;
 import com.tencent.mm.model.r;
 import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.d;
+import com.tencent.mm.ui.af;
 import com.tencent.mm.ui.base.h;
 import java.io.File;
 import java.io.IOException;
@@ -43,145 +37,80 @@ import java.util.List;
 public final class ac
 {
   private Context context;
-  boolean edT;
-  private View jwo;
-  private TextView jwp;
-  private TextView jwq;
-  private TextView jwr;
-  private TextView jws;
-  private View jwt;
-  boolean jwu;
-  Dialog jwv;
+  boolean eUJ;
+  private View lFN;
+  private TextView lFO;
+  private TextView lFP;
+  private TextView lFQ;
+  private TextView lFR;
+  private View lFS;
+  boolean lFT;
+  Dialog lFU;
   private int width;
   
   public static boolean a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    z.My();
-    Object localObject = e.Mg();
+    AppMethodBeat.i(19380);
+    z.afi();
+    Object localObject = e.aeN();
     String str;
     if (((List)localObject).size() > 0)
     {
       localObject = (String)((List)localObject).get(0);
       WXImageObject localWXImageObject = new WXImageObject();
       localWXImageObject.setImagePath(paramString2);
-      str = r.gV((String)localObject);
+      str = s.nE((String)localObject);
       WXMediaMessage localWXMediaMessage = new WXMediaMessage();
       localWXMediaMessage.mediaObject = localWXImageObject;
       localWXMediaMessage.title = str;
       localWXMediaMessage.description = paramString4;
-      localWXMediaMessage.setThumbImage(c.decodeFile(paramString2, null));
-      paramString2 = new pb();
-      paramString2.bYE.bRd = localWXMediaMessage;
-      paramString2.bYE.appId = "wx7fa037cc7dfabad5";
-      paramString2.bYE.appName = paramContext.getString(R.l.exdevice_wechat_sport);
-      paramString2.bYE.toUser = paramString1;
-      paramString2.bYE.bYF = 2;
-      if (!bk.bl((String)localObject)) {
-        break label242;
+      localWXMediaMessage.setThumbImage(d.decodeFile(paramString2, null));
+      paramString2 = new qg();
+      paramString2.cGL.cyF = localWXMediaMessage;
+      paramString2.cGL.appId = "wx7fa037cc7dfabad5";
+      paramString2.cGL.appName = paramContext.getString(2131299490);
+      paramString2.cGL.toUser = paramString1;
+      paramString2.cGL.cGM = 2;
+      if (!bo.isNullOrNil((String)localObject)) {
+        break label253;
       }
-      paramString2.bYE.bYI = null;
+      paramString2.cGL.cGP = null;
     }
     for (;;)
     {
-      boolean bool = com.tencent.mm.sdk.b.a.udP.m(paramString2);
-      if (!bk.bl(paramString3))
+      boolean bool = com.tencent.mm.sdk.b.a.ymk.l(paramString2);
+      if (!bo.isNullOrNil(paramString3))
       {
-        paramContext = new pe();
-        paramContext.bYQ.bYR = paramString1;
-        paramContext.bYQ.content = paramString3;
-        paramContext.bYQ.type = s.hW(paramString1);
-        paramContext.bYQ.flags = 0;
-        com.tencent.mm.sdk.b.a.udP.m(paramContext);
+        paramContext = new qj();
+        paramContext.cGX.cGY = paramString1;
+        paramContext.cGX.content = paramString3;
+        paramContext.cGX.type = t.oF(paramString1);
+        paramContext.cGX.flags = 0;
+        com.tencent.mm.sdk.b.a.ymk.l(paramContext);
       }
+      AppMethodBeat.o(19380);
       return bool;
       localObject = null;
       break;
-      label242:
-      paramString2.bYE.bYG = ((String)localObject);
-      paramString2.bYE.bYH = str;
+      label253:
+      paramString2.cGL.cGN = ((String)localObject);
+      paramString2.cGL.cGO = str;
     }
   }
   
-  public static final String cZ(Context paramContext)
+  public static final String dL(Context paramContext)
   {
-    return new File(paramContext.getCacheDir(), "sport_share_bitmap.jpg").getAbsolutePath();
+    AppMethodBeat.i(19377);
+    paramContext = new File(paramContext.getCacheDir(), "sport_share_bitmap.jpg").getAbsolutePath();
+    AppMethodBeat.o(19377);
+    return paramContext;
   }
   
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, final ac.a parama)
+  final String J(Bitmap paramBitmap)
   {
-    if (this.jwu) {
-      return;
-    }
-    this.jwu = true;
-    this.edT = false;
-    if ((this.jwv == null) && (!bk.bl(paramString3)))
-    {
-      paramContext.getString(R.l.app_tip);
-      this.jwv = h.b(paramContext, paramContext.getString(R.l.exdevice_sport_downloading_cover), true, new ac.1(this));
-      this.jwv.show();
-    }
-    this.context = paramContext;
-    this.width = 1280;
-    if (this.width > com.tencent.mm.cb.a.fj(paramContext)) {
-      this.width = com.tencent.mm.cb.a.fj(paramContext);
-    }
-    this.jwo = LayoutInflater.from(paramContext).inflate(R.i.exdevice_share_view, null);
-    this.jwp = ((TextView)this.jwo.findViewById(R.h.exdevice_rank_tv));
-    this.jwq = ((TextView)this.jwo.findViewById(R.h.exdevice_rank_info_tv));
-    this.jwr = ((TextView)this.jwo.findViewById(R.h.exdevice_user_score_tv));
-    this.jws = ((TextView)this.jwo.findViewById(R.h.exdevice_user_score_info_tv));
-    this.jwt = this.jwo.findViewById(R.h.bg_mask);
-    this.jwp.setText(paramString1);
-    this.jwr.setText(paramString2);
-    a.b.a((ImageView)this.jwo.findViewById(R.h.avatarIV), q.Gj(), 0.5F, false);
-    paramContext = (ImageView)this.jwo.findViewById(R.h.bgIV);
-    paramString1 = new RelativeLayout.LayoutParams(-1, -1);
-    this.jwo.setLayoutParams(paramString1);
-    this.jwo.measure(View.MeasureSpec.makeMeasureSpec(this.width, 1073741824), View.MeasureSpec.makeMeasureSpec(this.width, 1073741824));
-    this.jwo.layout(0, 0, this.width, this.width);
-    if (!bk.bl(paramString3))
-    {
-      ad.aLO().a(paramString3, paramContext, new g()
-      {
-        public final Bitmap a(String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
-        {
-          return null;
-        }
-        
-        public final void b(String paramAnonymousString, View paramAnonymousView, b paramAnonymousb)
-        {
-          if (ac.this.edT)
-          {
-            ac.this.jwu = false;
-            return;
-          }
-          ai.d(new Runnable()
-          {
-            public final void run()
-            {
-              if (ac.this.jwv.isShowing()) {
-                ac.this.jwv.dismiss();
-              }
-            }
-          });
-          paramAnonymousString = ac.this.y(paramAnonymousb.bitmap);
-          parama.Bu(paramAnonymousString);
-          ac.this.jwu = false;
-        }
-        
-        public final void mv(String paramAnonymousString) {}
-      });
-      return;
-    }
-    paramContext.setImageResource(R.e.darkgrey);
-    parama.Bu(y(null));
-    this.jwu = false;
-  }
-  
-  final String y(Bitmap paramBitmap)
-  {
+    AppMethodBeat.i(19379);
     if (paramBitmap != null) {
-      paramBitmap = ak.Y(paramBitmap);
+      paramBitmap = af.ao(paramBitmap);
     }
     for (;;)
     {
@@ -189,40 +118,89 @@ public final class ac
       PaintDrawable localPaintDrawable = new PaintDrawable();
       localPaintDrawable.setShape(new RectShape());
       localPaintDrawable.setShaderFactory((ShapeDrawable.ShaderFactory)localObject);
-      this.jwt.setBackgroundDrawable(localPaintDrawable);
-      this.jwp.setTextColor(paramBitmap[1]);
-      this.jwq.setTextColor(paramBitmap[1]);
-      this.jwr.setTextColor(paramBitmap[1]);
-      this.jws.setTextColor(paramBitmap[1]);
+      this.lFS.setBackgroundDrawable(localPaintDrawable);
+      this.lFO.setTextColor(paramBitmap[1]);
+      this.lFP.setTextColor(paramBitmap[1]);
+      this.lFQ.setTextColor(paramBitmap[1]);
+      this.lFR.setTextColor(paramBitmap[1]);
       paramBitmap = Bitmap.createBitmap(this.width, this.width, Bitmap.Config.ARGB_8888);
       localObject = new Canvas(paramBitmap);
-      this.jwo.draw((Canvas)localObject);
-      localObject = new File(cZ(this.context));
+      this.lFN.draw((Canvas)localObject);
+      localObject = new File(dL(this.context));
       if (((File)localObject).exists()) {
         ((File)localObject).delete();
       }
       try
       {
-        c.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, ((File)localObject).getAbsolutePath(), true);
-        label164:
-        return ((File)localObject).getAbsolutePath();
+        d.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, ((File)localObject).getAbsolutePath(), true);
+        label170:
+        paramBitmap = ((File)localObject).getAbsolutePath();
+        AppMethodBeat.o(19379);
+        return paramBitmap;
         paramBitmap = new int[2];
-        Bitmap tmp174_173 = paramBitmap;
-        tmp174_173[0] = -1;
-        Bitmap tmp178_174 = tmp174_173;
-        tmp178_174[1] = -16777216;
-        tmp178_174;
+        Bitmap tmp188_187 = paramBitmap;
+        tmp188_187[0] = -1;
+        Bitmap tmp192_188 = tmp188_187;
+        tmp192_188[1] = -16777216;
+        tmp192_188;
       }
       catch (IOException paramBitmap)
       {
-        break label164;
+        break label170;
       }
     }
+  }
+  
+  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, ac.a parama)
+  {
+    AppMethodBeat.i(19378);
+    if (this.lFT)
+    {
+      AppMethodBeat.o(19378);
+      return;
+    }
+    this.lFT = true;
+    this.eUJ = false;
+    if ((this.lFU == null) && (!bo.isNullOrNil(paramString3)))
+    {
+      paramContext.getString(2131297087);
+      this.lFU = h.b(paramContext, paramContext.getString(2131299475), true, new ac.1(this));
+      this.lFU.show();
+    }
+    this.context = paramContext;
+    this.width = 1280;
+    if (this.width > com.tencent.mm.cb.a.gw(paramContext)) {
+      this.width = com.tencent.mm.cb.a.gw(paramContext);
+    }
+    this.lFN = LayoutInflater.from(paramContext).inflate(2130969482, null);
+    this.lFO = ((TextView)this.lFN.findViewById(2131823835));
+    this.lFP = ((TextView)this.lFN.findViewById(2131823848));
+    this.lFQ = ((TextView)this.lFN.findViewById(2131823846));
+    this.lFR = ((TextView)this.lFN.findViewById(2131823849));
+    this.lFS = this.lFN.findViewById(2131823844);
+    this.lFO.setText(paramString1);
+    this.lFQ.setText(paramString2);
+    a.b.a((ImageView)this.lFN.findViewById(2131823768), r.Zn(), 0.5F, false);
+    paramContext = (ImageView)this.lFN.findViewById(2131823843);
+    paramString1 = new RelativeLayout.LayoutParams(-1, -1);
+    this.lFN.setLayoutParams(paramString1);
+    this.lFN.measure(View.MeasureSpec.makeMeasureSpec(this.width, 1073741824), View.MeasureSpec.makeMeasureSpec(this.width, 1073741824));
+    this.lFN.layout(0, 0, this.width, this.width);
+    if (!bo.isNullOrNil(paramString3))
+    {
+      ad.bqb().a(paramString3, paramContext, new ac.2(this, parama));
+      AppMethodBeat.o(19378);
+      return;
+    }
+    paramContext.setImageResource(2131689922);
+    parama.Lw(J(null));
+    this.lFT = false;
+    AppMethodBeat.o(19378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.ac
  * JD-Core Version:    0.7.0.1
  */

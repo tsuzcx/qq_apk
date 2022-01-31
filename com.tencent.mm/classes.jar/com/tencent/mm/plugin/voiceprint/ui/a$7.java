@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$7
   implements Animation.AnimationListener
@@ -10,23 +11,27 @@ final class a$7
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.pNb != null) {
-      this.pNb.bPj();
+    AppMethodBeat.i(26259);
+    if (this.tsV != null) {
+      this.tsV.cLp();
     }
+    AppMethodBeat.o(26259);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
   
   public final void onAnimationStart(Animation paramAnimation)
   {
-    if (this.pNb != null) {
-      this.pNb.bPi();
+    AppMethodBeat.i(26258);
+    if (this.tsV != null) {
+      this.tsV.cLo();
     }
+    AppMethodBeat.o(26258);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.ui.a.7
  * JD-Core Version:    0.7.0.1
  */

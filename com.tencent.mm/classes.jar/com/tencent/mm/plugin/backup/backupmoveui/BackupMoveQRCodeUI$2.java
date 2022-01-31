@@ -1,24 +1,20 @@
 package com.tencent.mm.plugin.backup.backupmoveui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.backup.c.a;
-import com.tencent.mm.plugin.backup.d.b;
-import com.tencent.mm.plugin.backup.d.d;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BackupMoveQRCodeUI$2
-  implements DialogInterface.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   BackupMoveQRCodeUI$2(BackupMoveQRCodeUI paramBackupMoveQRCodeUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.i("MicroMsg.BackupMoveQRCodeUI", "user click close. stop move.");
-    b.atS().atT().stop();
-    b.atS().atU().cancel(true);
-    b.atS().atn().hFu = -100;
-    BackupMoveQRCodeUI.b(this.hJr);
+    AppMethodBeat.i(17346);
+    BackupMoveQRCodeUI.f(this.jCS);
+    AppMethodBeat.o(17346);
+    return true;
   }
 }
 

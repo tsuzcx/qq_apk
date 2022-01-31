@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandDatePicker$1
   implements NumberPicker.OnValueChangeListener
@@ -10,7 +11,9 @@ final class AppBrandDatePicker$1
   
   public final void onValueChange(NumberPicker paramNumberPicker, int paramInt1, int paramInt2)
   {
-    AppBrandDatePicker.a(this.hzT);
+    AppMethodBeat.i(126689);
+    AppBrandDatePicker.a(this.jsj);
+    AppMethodBeat.o(126689);
   }
 }
 

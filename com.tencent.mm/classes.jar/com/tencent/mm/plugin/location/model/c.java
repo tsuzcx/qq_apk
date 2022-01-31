@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.location.model;
 
-import com.tencent.mm.protocal.c.bco;
+import com.tencent.mm.protocal.protobuf.bjs;
 
 public final class c
-  extends bco
+  extends bjs
 {}
 
 

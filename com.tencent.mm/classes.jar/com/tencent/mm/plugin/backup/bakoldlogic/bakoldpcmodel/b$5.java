@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 
 import android.os.Looper;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class b$5
   implements Runnable
@@ -10,9 +11,11 @@ final class b$5
   
   public final void run()
   {
+    AppMethodBeat.i(17811);
     Looper.prepare();
-    b.a(this.hNG, new ah());
+    b.a(this.jHi, new ak());
     Looper.loop();
+    AppMethodBeat.o(17811);
   }
 }
 

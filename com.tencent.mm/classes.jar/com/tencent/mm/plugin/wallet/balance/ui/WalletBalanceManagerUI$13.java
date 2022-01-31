@@ -1,34 +1,23 @@
 package com.tencent.mm.plugin.wallet.balance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wallet.a.p;
-import com.tencent.mm.plugin.wallet_core.model.af;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vd;
+import com.tencent.mm.g.a.vd.b;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletBalanceManagerUI$13
-  implements View.OnClickListener
+  implements Runnable
 {
-  WalletBalanceManagerUI$13(WalletBalanceManagerUI paramWalletBalanceManagerUI) {}
+  WalletBalanceManagerUI$13(WalletBalanceManagerUI paramWalletBalanceManagerUI, vd paramvd) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    g.DQ();
-    g.DP().Dz().c(ac.a.uxb, Integer.valueOf(-1));
-    p.bTK();
-    paramView = p.bTL();
-    if (paramView.qzd != null) {}
-    for (paramView = paramView.qzd.field_lqt_cell_lqt_open_url;; paramView = null)
-    {
-      if (!bk.bl(paramView)) {
-        com.tencent.mm.wallet_core.ui.e.l(this.qhk, paramView, true);
-      }
-      return;
+    AppMethodBeat.i(142287);
+    if (!bo.isNullOrNil(this.kSA.cLF.cLG)) {
+      e.a(this.tOJ.tNM, this.kSA.cLF.cLG, this.kSA.cLF.content, this.kSA.cLF.url);
     }
+    AppMethodBeat.o(142287);
   }
 }
 

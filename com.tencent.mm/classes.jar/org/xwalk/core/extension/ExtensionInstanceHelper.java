@@ -1,5 +1,7 @@
 package org.xwalk.core.extension;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class ExtensionInstanceHelper
 {
   XWalkExternalExtension mExtension;
@@ -9,6 +11,7 @@ public class ExtensionInstanceHelper
   
   public ExtensionInstanceHelper(XWalkExternalExtension paramXWalkExternalExtension, int paramInt)
   {
+    AppMethodBeat.i(86101);
     this.mId = paramInt;
     this.mExtension = paramXWalkExternalExtension;
     this.mHandler = new MessageHandler(this.mExtension.getMessageHandler());
@@ -16,16 +19,23 @@ public class ExtensionInstanceHelper
       ReflectionHelper.registerHandlers(this.mExtension.getReflection(), this.mHandler, this.mExtension);
     }
     this.mStore = new BindingObjectStore(this.mHandler, this);
+    AppMethodBeat.o(86101);
   }
   
   public boolean addBindingObject(String paramString, BindingObject paramBindingObject)
   {
-    return this.mStore.addBindingObject(paramString, paramBindingObject);
+    AppMethodBeat.i(86103);
+    boolean bool = this.mStore.addBindingObject(paramString, paramBindingObject);
+    AppMethodBeat.o(86103);
+    return bool;
   }
   
   public BindingObject getBindingObject(String paramString)
   {
-    return this.mStore.getBindingObject(paramString);
+    AppMethodBeat.i(86102);
+    paramString = this.mStore.getBindingObject(paramString);
+    AppMethodBeat.o(86102);
+    return paramString;
   }
   
   public XWalkExternalExtension getExtension()
@@ -40,19 +50,28 @@ public class ExtensionInstanceHelper
   
   public Object handleMessage(String paramString)
   {
+    AppMethodBeat.i(86105);
     paramString = new MessageInfo(this.mExtension, this.mId, paramString);
-    return this.mHandler.handleMessage(paramString);
+    paramString = this.mHandler.handleMessage(paramString);
+    AppMethodBeat.o(86105);
+    return paramString;
   }
   
   public Object handleMessage(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(86106);
     paramArrayOfByte = new MessageInfo(this.mExtension, this.mId, paramArrayOfByte);
-    return this.mHandler.handleMessage(paramArrayOfByte);
+    paramArrayOfByte = this.mHandler.handleMessage(paramArrayOfByte);
+    AppMethodBeat.o(86106);
+    return paramArrayOfByte;
   }
   
   public BindingObject removeBindingObject(String paramString)
   {
-    return this.mStore.removeBindingObject(paramString);
+    AppMethodBeat.i(86104);
+    paramString = this.mStore.removeBindingObject(paramString);
+    AppMethodBeat.o(86104);
+    return paramString;
   }
 }
 

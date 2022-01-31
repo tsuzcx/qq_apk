@@ -1,152 +1,245 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.webkit.JavascriptInterface;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.aq;
-import com.tencent.mm.plugin.appbrand.i.d;
-import com.tencent.mm.plugin.appbrand.i.f;
-import com.tencent.mm.plugin.appbrand.i.l;
-import com.tencent.mm.plugin.appbrand.v.k;
-import com.tencent.mm.plugin.appbrand.v.k.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Locale;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.i;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public abstract class e
+public final class e
 {
-  public final o fxC;
-  private final l fxD;
-  private final d fxE;
+  private static final Iterator<c> gOS;
+  private static final Map<String, e.b> gOT;
+  private static final Map<String, e.d> gOU;
+  private static final i<String, c> gOV;
+  private static final i<String, e.a> gOW;
   
-  public e(o paramo, l paraml)
+  static
   {
-    this.fxC = paramo;
-    this.fxD = paraml;
-    this.fxE = paraml.agp();
+    AppMethodBeat.i(90971);
+    gOS = new e.1();
+    gOT = new HashMap();
+    gOU = new HashMap();
+    gOV = new i();
+    gOW = new i();
+    AppMethodBeat.o(90971);
   }
   
-  public void Zn()
+  public static void a(String paramString, e.b paramb)
   {
-    this.fxD.ago().a(this.fxE, "WeixinJSContext");
-  }
-  
-  public d Zo()
-  {
-    return this.fxD.agp();
-  }
-  
-  public abstract String Zp();
-  
-  public abstract String Zq();
-  
-  public abstract int Zr();
-  
-  public void Zs() {}
-  
-  public void Zt() {}
-  
-  public void a(f paramf, String paramString1, String paramString2)
-  {
-    k.a(paramf, this.fxC.aay() + paramString1, paramString1, "v" + Zr(), paramString2, "", new e.2(this, paramString1));
-  }
-  
-  public void a(f paramf, String paramString1, String paramString2, k.a parama)
-  {
-    k.a(paramf, this.fxC.aaz() + paramString1, paramString1 + "_" + this.fxC.mAppId, this.fxC.getRuntime().ZB().fPS.bIW, paramString2, this.fxC.qK(paramString1), parama);
-  }
-  
-  @JavascriptInterface
-  public int alloc()
-  {
-    d locald = Zo();
-    if (locald == null)
+    AppMethodBeat.i(90969);
+    if (TextUtils.isEmpty(paramString))
     {
-      y.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "alloc with appID(%s), allocJsContext failed", new Object[] { this.fxC.mAppId });
-      return -2;
+      AppMethodBeat.o(90969);
+      return;
     }
-    y.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "hy: created context id is %d", new Object[] { Integer.valueOf(locald.agf()) });
-    this.fxE.a(locald, "WeixinJSContext");
-    if (this.fxC.getRuntime() == null) {}
-    String str;
-    for (Object localObject = this.fxC.aax();; localObject = this.fxC.aaw())
+    gOT.put(paramString, paramb);
+    AppMethodBeat.o(90969);
+  }
+  
+  public static void a(String paramString, c paramc)
+  {
+    AppMethodBeat.i(90956);
+    if ((TextUtils.isEmpty(paramString)) || (paramc == null))
     {
-      locald.evaluateJavascript(String.format(Locale.US, "var __wxConfig = %s;", new Object[] { ((JSONObject)localObject).toString() }), null);
-      localObject = Zp();
-      str = Zq();
-      if (!bk.bl(str)) {
-        break;
+      AppMethodBeat.o(90956);
+      return;
+    }
+    gOV.s(paramString, paramc);
+    AppMethodBeat.o(90956);
+  }
+  
+  public static void a(String paramString, e.d paramd)
+  {
+    AppMethodBeat.i(90968);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(90968);
+      return;
+    }
+    gOU.put(paramString, paramd);
+    AppMethodBeat.o(90968);
+  }
+  
+  public static void b(String paramString, c paramc)
+  {
+    AppMethodBeat.i(90963);
+    if ((paramc == null) || (TextUtils.isEmpty(paramString)))
+    {
+      AppMethodBeat.o(90963);
+      return;
+    }
+    gOV.t(paramString, paramc);
+    AppMethodBeat.o(90963);
+  }
+  
+  private static Iterator<c> xO(String paramString)
+  {
+    AppMethodBeat.i(90957);
+    paramString = gOV.br(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      AppMethodBeat.o(90957);
+      return paramString;
+    }
+    paramString = gOS;
+    AppMethodBeat.o(90957);
+    return paramString;
+  }
+  
+  public static void xP(String paramString)
+  {
+    AppMethodBeat.i(90958);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(90958);
+      return;
+    }
+    paramString = xO(paramString);
+    while (paramString.hasNext()) {
+      ((c)paramString.next()).onCreate();
+    }
+    AppMethodBeat.o(90958);
+  }
+  
+  public static void xQ(String paramString)
+  {
+    AppMethodBeat.i(90959);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(90959);
+      return;
+    }
+    paramString = xO(paramString);
+    while (paramString.hasNext()) {
+      ((c)paramString.next()).onDestroy();
+    }
+    AppMethodBeat.o(90959);
+  }
+  
+  public static void xR(String paramString)
+  {
+    AppMethodBeat.i(90960);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(90960);
+      return;
+    }
+    Iterator localIterator = xO(paramString);
+    while (localIterator.hasNext()) {
+      ((c)localIterator.next()).a(xX(paramString));
+    }
+    AppMethodBeat.o(90960);
+  }
+  
+  public static void xS(String paramString)
+  {
+    AppMethodBeat.i(90961);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(90961);
+      return;
+    }
+    paramString = xO(paramString);
+    while (paramString.hasNext()) {
+      ((c)paramString.next()).onResume();
+    }
+    AppMethodBeat.o(90961);
+  }
+  
+  public static void xT(String paramString)
+  {
+    AppMethodBeat.i(90962);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(90962);
+      return;
+    }
+    paramString = xO(paramString);
+    while (paramString.hasNext()) {
+      paramString.next();
+    }
+    AppMethodBeat.o(90962);
+  }
+  
+  public static boolean xU(String paramString)
+  {
+    AppMethodBeat.i(90964);
+    paramString = gOW.br(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.iterator();
+      while (paramString.hasNext()) {
+        if (((e.a)paramString.next()).asZ())
+        {
+          AppMethodBeat.o(90964);
+          return true;
+        }
       }
-      y.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "alloc with appID(%s), sdkScript 404", new Object[] { this.fxC.mAppId });
-      Zs();
-      return 0;
     }
-    a(locald, (String)localObject, str);
-    return locald.agf();
+    AppMethodBeat.o(90964);
+    return false;
   }
   
-  public void cC(boolean paramBoolean) {}
-  
-  public void cD(boolean paramBoolean) {}
-  
-  @JavascriptInterface
-  public int create(String paramString)
+  public static void xV(String paramString)
   {
-    y.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s) appScriptPath(%s)", new Object[] { this.fxC.mAppId, paramString });
-    if (bk.bl(paramString))
+    AppMethodBeat.i(90965);
+    if (TextUtils.isEmpty(paramString))
     {
-      y.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s), nil appScriptPath", new Object[] { this.fxC.mAppId });
-      return -1;
+      AppMethodBeat.o(90965);
+      return;
     }
-    int i = alloc();
-    if (i <= 0) {
-      return i;
-    }
-    d locald = this.fxD.kQ(i);
-    i = evaluateScriptFile(i, paramString);
-    if (i != 1)
-    {
-      y.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s), appScriptPath(%s), eval ret = %d", new Object[] { this.fxC.mAppId, paramString, Integer.valueOf(i) });
-      return -1;
-    }
-    y.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "create with appID(%s) appScriptPath(%s), success with contextId(%d)", new Object[] { this.fxC.mAppId, paramString, Integer.valueOf(locald.agf()) });
-    return locald.agf();
+    gOV.bs(paramString);
+    gOW.bs(paramString);
+    AppMethodBeat.o(90965);
   }
   
-  @JavascriptInterface
-  public final void destroy(int paramInt)
+  public static void xW(String paramString)
   {
-    this.fxD.kR(paramInt);
+    AppMethodBeat.i(90966);
+    a(paramString, e.d.gPg);
+    AppMethodBeat.o(90966);
   }
   
-  @JavascriptInterface
-  public int evaluateScriptFile(int paramInt, String paramString)
+  public static e.d xX(String paramString)
   {
-    y.i("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) contextId(%d) appScriptPath(%s)", new Object[] { this.fxC.mAppId, Integer.valueOf(paramInt), paramString });
-    d locald = this.fxD.kQ(paramInt);
-    if (locald == null)
+    AppMethodBeat.i(90967);
+    paramString = (e.d)gOU.get(paramString);
+    if (paramString == null)
     {
-      y.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) contextId(%d), appScriptPath(%s), get null context", new Object[] { this.fxC.mAppId, Integer.valueOf(paramInt), paramString });
-      return -1;
+      paramString = e.d.gPg;
+      AppMethodBeat.o(90967);
+      return paramString;
     }
-    if (locald.age())
-    {
-      y.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) scriptPath(%s), but want to inject main-context", new Object[] { this.fxC.mAppId, paramString });
-      return -1;
-    }
-    String str = aq.a(this.fxC.getRuntime(), paramString);
-    if (bk.bl(str))
-    {
-      y.e("MicroMsg.AppBrandJSContextInterface[multicontext]", "evaluateScriptFile with appID(%s) contextId(%d), appScriptPath(%s), script 404", new Object[] { this.fxC.mAppId, Integer.valueOf(paramInt), paramString });
-      Zt();
-      return 0;
-    }
-    qs(paramString);
-    a(locald, paramString, str, new e.1(this, locald, paramString));
-    return 1;
+    AppMethodBeat.o(90967);
+    return paramString;
   }
   
-  public void qs(String paramString) {}
+  public static e.b xY(String paramString)
+  {
+    AppMethodBeat.i(90970);
+    e.b localb = (e.b)gOT.get(paramString);
+    paramString = localb;
+    if (localb == null) {
+      paramString = e.b.gOX;
+    }
+    AppMethodBeat.o(90970);
+    return paramString;
+  }
+  
+  public static class c
+  {
+    public void a(e.d paramd) {}
+    
+    public void onCreate() {}
+    
+    public void onDestroy() {}
+    
+    public void onResume() {}
+  }
 }
 
 

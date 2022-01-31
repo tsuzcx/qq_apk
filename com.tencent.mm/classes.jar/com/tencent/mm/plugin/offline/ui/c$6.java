@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.offline.ui;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$6
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class c$6
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(43476);
     paramDialogInterface.dismiss();
-    this.mMg.mActivity.finish();
+    this.pmw.mActivity.finish();
+    AppMethodBeat.o(43476);
   }
 }
 

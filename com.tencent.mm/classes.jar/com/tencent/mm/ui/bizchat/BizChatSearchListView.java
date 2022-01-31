@@ -4,11 +4,12 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class BizChatSearchListView
   extends ListView
 {
-  private BizChatSearchListView.a vfc;
+  private BizChatSearchListView.a ztB;
   
   public BizChatSearchListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -22,20 +23,27 @@ public class BizChatSearchListView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.vfc != null) {
-      this.vfc.axC();
+    AppMethodBeat.i(30134);
+    if (this.ztB != null) {
+      this.ztB.aWA();
     }
-    return super.onInterceptTouchEvent(paramMotionEvent);
+    if (super.onInterceptTouchEvent(paramMotionEvent))
+    {
+      AppMethodBeat.o(30134);
+      return true;
+    }
+    AppMethodBeat.o(30134);
+    return false;
   }
   
   public void setOnTouchListener(BizChatSearchListView.a parama)
   {
-    this.vfc = parama;
+    this.ztB = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatSearchListView
  * JD-Core Version:    0.7.0.1
  */

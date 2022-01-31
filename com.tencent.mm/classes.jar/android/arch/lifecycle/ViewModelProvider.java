@@ -7,12 +7,12 @@ import java.util.HashMap;
 
 public class ViewModelProvider
 {
-  private final Factory cH;
+  private final Factory du;
   private final ViewModelStore mViewModelStore;
   
   public ViewModelProvider(ViewModelStore paramViewModelStore, Factory paramFactory)
   {
-    this.cH = paramFactory;
+    this.du = paramFactory;
     this.mViewModelStore = paramViewModelStore;
   }
   
@@ -27,42 +27,37 @@ public class ViewModelProvider
     if (str == null) {
       throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
     }
-    return get("android.arch.lifecycle.ViewModelProvider.DefaultKey:" + str, paramClass);
+    return get("android.arch.lifecycle.ViewModelProvider.DefaultKey:".concat(String.valueOf(str)), paramClass);
   }
   
   public <T extends ViewModel> T get(String paramString, Class<T> paramClass)
   {
-    Object localObject = (ViewModel)this.mViewModelStore.cJ.get(paramString);
-    if (paramClass.isInstance(localObject)) {
-      return localObject;
+    ViewModel localViewModel = (ViewModel)this.mViewModelStore.dw.get(paramString);
+    if (paramClass.isInstance(localViewModel)) {
+      return localViewModel;
     }
-    paramClass = this.cH.create(paramClass);
-    localObject = this.mViewModelStore;
-    ViewModel localViewModel = (ViewModel)((ViewModelStore)localObject).cJ.get(paramString);
-    if (localViewModel != null) {
-      localViewModel.onCleared();
-    }
-    ((ViewModelStore)localObject).cJ.put(paramString, paramClass);
+    paramClass = this.du.create(paramClass);
+    this.mViewModelStore.a(paramString, paramClass);
     return paramClass;
   }
   
   public static class AndroidViewModelFactory
     extends ViewModelProvider.NewInstanceFactory
   {
-    private static AndroidViewModelFactory cI;
-    private Application bT;
+    private static AndroidViewModelFactory dv;
+    private Application bX;
     
     public AndroidViewModelFactory(Application paramApplication)
     {
-      this.bT = paramApplication;
+      this.bX = paramApplication;
     }
     
     public static AndroidViewModelFactory getInstance(Application paramApplication)
     {
-      if (cI == null) {
-        cI = new AndroidViewModelFactory(paramApplication);
+      if (dv == null) {
+        dv = new AndroidViewModelFactory(paramApplication);
       }
-      return cI;
+      return dv;
     }
     
     public <T extends ViewModel> T create(Class<T> paramClass)
@@ -70,24 +65,24 @@ public class ViewModelProvider
       if (AndroidViewModel.class.isAssignableFrom(paramClass)) {
         try
         {
-          ViewModel localViewModel = (ViewModel)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.bT });
+          ViewModel localViewModel = (ViewModel)paramClass.getConstructor(new Class[] { Application.class }).newInstance(new Object[] { this.bX });
           return localViewModel;
         }
         catch (NoSuchMethodException localNoSuchMethodException)
         {
-          throw new RuntimeException("Cannot create an instance of " + paramClass, localNoSuchMethodException);
+          throw new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), localNoSuchMethodException);
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
-          throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+          throw new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), localIllegalAccessException);
         }
         catch (InstantiationException localInstantiationException)
         {
-          throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+          throw new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), localInstantiationException);
         }
         catch (InvocationTargetException localInvocationTargetException)
         {
-          throw new RuntimeException("Cannot create an instance of " + paramClass, localInvocationTargetException);
+          throw new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), localInvocationTargetException);
         }
       }
       return super.create(paramClass);
@@ -111,11 +106,11 @@ public class ViewModelProvider
       }
       catch (InstantiationException localInstantiationException)
       {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localInstantiationException);
+        throw new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), localInstantiationException);
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        throw new RuntimeException("Cannot create an instance of " + paramClass, localIllegalAccessException);
+        throw new RuntimeException("Cannot create an instance of ".concat(String.valueOf(paramClass)), localIllegalAccessException);
       }
     }
   }

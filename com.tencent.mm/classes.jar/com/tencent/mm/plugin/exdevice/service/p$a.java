@@ -44,7 +44,7 @@ public abstract class p$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTask_AIDL");
-      localo = aMj();
+      localo = bqw();
       paramParcel2.writeNoException();
       paramParcel1 = locall;
       if (localo != null) {
@@ -54,7 +54,7 @@ public abstract class p$a
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.exdevice.service.IExDeviceTask_AIDL");
-    locall = aMk();
+    locall = bqx();
     paramParcel2.writeNoException();
     paramParcel1 = localo;
     if (locall != null) {

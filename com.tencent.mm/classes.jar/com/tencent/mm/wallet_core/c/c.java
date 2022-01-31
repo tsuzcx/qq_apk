@@ -1,31 +1,55 @@
 package com.tencent.mm.wallet_core.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONObject;
+
 public final class c
 {
-  public String aox;
-  public int errCode;
-  public int errType;
-  public int wAk = 0;
+  public String AWJ;
+  public String AWK;
+  public String AWL;
+  public String cvV;
+  public String title;
   
   public c()
   {
-    this.errType = 0;
-    this.errCode = 0;
-    this.aox = "";
-    this.wAk = 0;
+    this.title = "";
+    this.AWJ = "";
+    this.AWK = "";
+    this.AWL = "";
+    this.cvV = "";
   }
   
-  public c(int paramInt1, int paramInt2, String paramString)
+  public c(String paramString)
   {
-    f(paramInt1, paramInt2, paramString, 0);
-  }
-  
-  public final void f(int paramInt1, int paramInt2, String paramString, int paramInt3)
-  {
-    this.errType = paramInt1;
-    this.errCode = paramInt2;
-    this.aox = paramString;
-    this.wAk = paramInt3;
+    AppMethodBeat.i(49036);
+    this.title = "";
+    this.AWJ = "";
+    this.AWK = "";
+    this.AWL = "";
+    this.cvV = "";
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(49036);
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.title = paramString.optString("title");
+      this.AWJ = paramString.optString("body1");
+      this.AWK = paramString.optString("body2");
+      this.AWL = paramString.optString("button");
+      AppMethodBeat.o(49036);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.CrtRtnWoding", "crtwoding error %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(49036);
+    }
   }
 }
 

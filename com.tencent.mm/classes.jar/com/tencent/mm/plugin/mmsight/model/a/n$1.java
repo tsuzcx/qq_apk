@@ -1,36 +1,40 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.b;
 import com.tencent.mm.plugin.mmsight.model.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class n$1
   implements f
 {
   n$1(n paramn) {}
   
-  public final boolean M(byte[] paramArrayOfByte)
+  public final boolean N(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(76629);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
     {
-      y.e("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "preview callback data is null");
+      ab.e("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "preview callback data is null");
+      AppMethodBeat.o(76629);
       return false;
     }
-    if ((this.mkk.mjn.mkz == d.c.miA) || (this.mkk.mjn.mkz == d.c.miB))
+    if ((this.oJA.fcm.oJP == d.c.oIG) || (this.oJA.fcm.oJP == d.c.oIH))
     {
-      if (this.mkk.mjn.mkz == d.c.miB)
+      if (this.oJA.fcm.oJP == d.c.oIH)
       {
-        this.mkk.mjn.mkz = d.c.miC;
-        y.v("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "forward one more frame");
+        this.oJA.fcm.oJP = d.c.oII;
+        ab.v("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "forward one more frame");
       }
-      this.mkk.mkh.fj(1L);
-      if (this.mkk.mka != null) {
-        this.mkk.mka.bjh();
+      this.oJA.fct.kH(1L);
+      if (this.oJA.fcf != null) {
+        this.oJA.fcf.bRk();
       }
-      this.mkk.aC(paramArrayOfByte);
+      this.oJA.ba(paramArrayOfByte);
+      AppMethodBeat.o(76629);
       return true;
     }
-    y.d("MicroMsg.MMSightMediaCodecMP4MuxRecorder", "onFrameData, mediaStatus error: %s", new Object[] { this.mkk.mjn.mkz });
+    AppMethodBeat.o(76629);
     return false;
   }
 }

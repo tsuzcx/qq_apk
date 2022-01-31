@@ -1,45 +1,55 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.foundation.a.a.g;
-import com.tencent.mm.pluginsdk.model.app.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.bi;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.a.b.i;
+import com.tencent.mm.plugin.appbrand.s.n;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class d$e$6
-  implements DialogInterface.OnClickListener
+  implements b.i
 {
-  d$e$6(d.e parame, bi parambi) {}
+  d$e$6(d.e parame, d.c paramc) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void acG()
   {
-    if (this.dUy.aVK())
+    AppMethodBeat.i(32844);
+    this.zSV.zSC.setVisibility(4);
+    AppMethodBeat.o(32844);
+  }
+  
+  public final void acH()
+  {
+    AppMethodBeat.i(153926);
+    ab.w("MicroMsg.ChattingItemAppMsgTo", "hy: decode recorder cover failed sender!");
+    h.qsU.cT(808, 3);
+    AppMethodBeat.o(153926);
+  }
+  
+  public final String tX()
+  {
+    AppMethodBeat.i(32846);
+    String str = "CHAT#" + n.bt(this);
+    AppMethodBeat.o(32846);
+    return str;
+  }
+  
+  public final void w(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(32845);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      String str = "";
-      g.a locala = g.a.gp(this.dUy.field_content);
-      paramDialogInterface = str;
-      if (locala != null)
-      {
-        paramDialogInterface = str;
-        if (!bk.bl(locala.title)) {
-          paramDialogInterface = locala.title;
-        }
-      }
-      l.z(this.dUy.field_msgId, paramDialogInterface);
-      this.dUy.setStatus(1);
-      au.Hx();
-      c.Fy().fd(this.dUy.field_msgId);
+      this.zSV.zSC.setImageBitmap(paramBitmap);
+      this.zSV.zSC.setVisibility(0);
     }
+    AppMethodBeat.o(32845);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.d.e.6
  * JD-Core Version:    0.7.0.1
  */

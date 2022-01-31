@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class SnsCommentDetailUI$b$1
@@ -10,7 +11,9 @@ final class SnsCommentDetailUI$b$1
   
   public final void run()
   {
-    SnsCommentDetailUI.c(this.oXu.oWW).setSelection(SnsCommentDetailUI.c(this.oXu.oWW).getHeaderViewsCount() + this.oXu.oXs.size() - 1);
+    AppMethodBeat.i(38829);
+    SnsCommentDetailUI.a(this.rPS.rPu).setSelection(SnsCommentDetailUI.a(this.rPS.rPu).getHeaderViewsCount() + this.rPS.rPQ.size() - 1);
+    AppMethodBeat.o(38829);
   }
 }
 

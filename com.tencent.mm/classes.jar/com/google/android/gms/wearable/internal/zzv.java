@@ -1,61 +1,64 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import com.google.android.gms.wearable.CapabilityApi.CapabilityListener;
+import com.google.android.gms.wearable.CapabilityInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzv
-  implements Parcelable.Creator<zzu>
+final class zzv
+  implements CapabilityApi.CapabilityListener
 {
-  static void zza(zzu paramzzu, Parcel paramParcel, int paramInt)
+  private final String zzbc;
+  private final CapabilityApi.CapabilityListener zzbs;
+  
+  zzv(CapabilityApi.CapabilityListener paramCapabilityListener, String paramString)
   {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zza(paramParcel, 2, paramzzu.getToken(), false);
-    zzc.zza(paramParcel, 3, paramzzu.getNodeId(), false);
-    zzc.zza(paramParcel, 4, paramzzu.getPath(), false);
-    zzc.zzJ(paramParcel, paramInt);
+    this.zzbs = paramCapabilityListener;
+    this.zzbc = paramString;
   }
   
-  public zzu zzkT(Parcel paramParcel)
+  public final boolean equals(Object paramObject)
   {
-    int i = zzb.zzaY(paramParcel);
-    String str3 = null;
-    String str2 = null;
-    String str1 = null;
-    while (paramParcel.dataPosition() < i)
+    AppMethodBeat.i(71474);
+    if (this == paramObject)
     {
-      int j = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(j))
-      {
-      default: 
-        zzb.zzb(paramParcel, j);
-        break;
-      case 2: 
-        str1 = zzb.zzq(paramParcel, j);
-        break;
-      case 3: 
-        str2 = zzb.zzq(paramParcel, j);
-        break;
-      case 4: 
-        str3 = zzb.zzq(paramParcel, j);
-      }
+      AppMethodBeat.o(71474);
+      return true;
     }
-    if (paramParcel.dataPosition() != i) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + i, paramParcel);
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(71474);
+      return false;
     }
-    return new zzu(str1, str2, str3);
+    paramObject = (zzv)paramObject;
+    if (!this.zzbs.equals(paramObject.zzbs))
+    {
+      AppMethodBeat.o(71474);
+      return false;
+    }
+    boolean bool = this.zzbc.equals(paramObject.zzbc);
+    AppMethodBeat.o(71474);
+    return bool;
   }
   
-  public zzu[] zzpu(int paramInt)
+  public final int hashCode()
   {
-    return new zzu[paramInt];
+    AppMethodBeat.i(71475);
+    int i = this.zzbs.hashCode();
+    int j = this.zzbc.hashCode();
+    AppMethodBeat.o(71475);
+    return i * 31 + j;
+  }
+  
+  public final void onCapabilityChanged(CapabilityInfo paramCapabilityInfo)
+  {
+    AppMethodBeat.i(71473);
+    this.zzbs.onCapabilityChanged(paramCapabilityInfo);
+    AppMethodBeat.o(71473);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzv
  * JD-Core Version:    0.7.0.1
  */

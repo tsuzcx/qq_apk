@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.compat.a;
 
-import com.tencent.mm.ah.h.a;
-import com.tencent.mm.ah.h.b;
+import com.tencent.mm.ai.h.a;
+import com.tencent.mm.ai.h.b;
 import com.tencent.mm.kernel.c.a;
 
 public abstract interface b
@@ -15,7 +15,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.compat.a.b
  * JD-Core Version:    0.7.0.1
  */

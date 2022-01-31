@@ -1,11 +1,10 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ay.m;
-import com.tencent.mm.kernel.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.az.n;
 import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.storage.aj;
 import com.tencent.mm.storage.al;
@@ -25,48 +24,64 @@ import java.util.HashMap;
 public final class d
   implements c, j
 {
-  aj mcD;
-  bw mcE;
-  bj mcF;
-  al mcG;
-  m mcH;
-  br mcI;
-  ao mcJ;
-  ay mcK;
-  aw mcL;
-  bg mcM;
-  bu mcN;
-  cb mcO;
-  x mcP;
-  bc mcQ;
+  aj oDf;
+  bw oDg;
+  bj oDh;
+  al oDi;
+  n oDj;
+  com.tencent.mm.az.a oDk;
+  br oDl;
+  ao oDm;
+  ay oDn;
+  aw oDo;
+  bg oDp;
+  bu oDq;
+  cb oDr;
+  x oDs;
+  bc oDt;
   
-  public final com.tencent.mm.plugin.messenger.foundation.a.a.b bhJ()
+  public final com.tencent.mm.plugin.messenger.foundation.a.a.g bPK()
   {
-    g.DQ();
-    g.DN().CX();
-    return this.mcP;
+    AppMethodBeat.i(1028);
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RJ().QQ();
+    com.tencent.mm.az.a locala = this.oDk;
+    AppMethodBeat.o(1028);
+    return locala;
+  }
+  
+  public final com.tencent.mm.plugin.messenger.foundation.a.a.b bPL()
+  {
+    AppMethodBeat.i(1029);
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RJ().QQ();
+    x localx = this.oDs;
+    AppMethodBeat.o(1029);
+    return localx;
   }
   
   public final void onAccountInitialized(e.c paramc) {}
   
   public final void onAccountRelease()
   {
+    AppMethodBeat.i(1030);
     Object localObject;
-    if (this.mcD != null)
+    if (this.oDf != null)
     {
-      localObject = this.mcD;
-      ((aj)localObject).uAc.clear();
-      ((aj)localObject).uAd.clear();
+      localObject = this.oDf;
+      ((aj)localObject).yMl.clear();
+      ((aj)localObject).yMm.clear();
     }
-    if (this.mcH != null)
+    if (this.oDj != null)
     {
-      localObject = this.mcH;
-      ((m)localObject).elp = new HashMap();
-      g.DQ();
-      g.DO().dJT.b(681, (com.tencent.mm.ah.f)localObject);
-      g.DQ();
-      g.DO().dJT.b(806, (com.tencent.mm.ah.f)localObject);
+      localObject = this.oDj;
+      ((n)localObject).bat = new HashMap();
+      com.tencent.mm.kernel.g.RM();
+      com.tencent.mm.kernel.g.RK().eHt.b(681, (com.tencent.mm.ai.f)localObject);
+      com.tencent.mm.kernel.g.RM();
+      com.tencent.mm.kernel.g.RK().eHt.b(806, (com.tencent.mm.ai.f)localObject);
     }
+    AppMethodBeat.o(1030);
   }
 }
 

@@ -1,16 +1,32 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.model.t;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 final class SelfQRCodeUI$10
-  implements DialogInterface.OnClickListener
+  implements n.c
 {
   SelfQRCodeUI$10(SelfQRCodeUI paramSelfQRCodeUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onCreateMMMenu(l paraml)
   {
-    SelfQRCodeUI.a(this.nSB, 2);
+    AppMethodBeat.i(154170);
+    boolean bool1 = t.nI(SelfQRCodeUI.d(this.qGz));
+    boolean bool2 = f.rX(SelfQRCodeUI.d(this.qGz));
+    if ((!bool2) && (!bool1)) {
+      paraml.hx(2, 2131303079);
+    }
+    paraml.hx(1, 2131303083);
+    if (!bool2) {
+      paraml.hx(3, 2131303099);
+    }
+    if (SelfQRCodeUI.e(this.qGz)) {
+      paraml.hx(4, 2131303098);
+    }
+    AppMethodBeat.o(154170);
   }
 }
 

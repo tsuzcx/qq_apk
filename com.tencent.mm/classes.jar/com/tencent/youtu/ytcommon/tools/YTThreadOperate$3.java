@@ -1,6 +1,7 @@
 package com.tencent.youtu.ytcommon.tools;
 
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.Callable;
 
 final class YTThreadOperate$3
@@ -10,6 +11,7 @@ final class YTThreadOperate$3
   
   public final void run()
   {
+    AppMethodBeat.i(118105);
     Object localObject1 = null;
     try
     {
@@ -18,10 +20,11 @@ final class YTThreadOperate$3
     }
     catch (Exception localException)
     {
-      label14:
-      break label14;
+      label19:
+      break label19;
     }
     YTThreadOperate.access$000().post(new YTThreadOperate.3.1(this, localObject1));
+    AppMethodBeat.o(118105);
   }
 }
 

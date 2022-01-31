@@ -6,10 +6,9 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.c;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class i$a$1$1
   implements ViewTreeObserver.OnPreDrawListener
@@ -18,29 +17,31 @@ final class i$a$1$1
   
   public final boolean onPreDraw()
   {
-    this.vCG.vCF.vCC.getViewTreeObserver().removeOnPreDrawListener(this);
-    int j = this.vCG.vCF.vCC.getHeight();
-    int k = this.vCG.vCF.vCC.getWidth();
+    AppMethodBeat.i(32913);
+    this.zTJ.zTI.iDQ.getViewTreeObserver().removeOnPreDrawListener(this);
+    int j = this.zTJ.zTI.iDQ.getHeight();
+    int k = this.zTJ.zTI.iDQ.getWidth();
     int i = j;
     if (j == 0) {
-      i = a.aa(this.vCG.val$context, R.f.chatting_music_item_height);
+      i = a.ao(this.zTJ.val$context, 2131428225);
     }
     j = k;
     if (k == 0) {
-      j = a.aa(this.vCG.val$context, R.f.chatting_music_item_width);
+      j = a.ao(this.zTJ.val$context, 2131428226);
     }
-    if (this.vCG.vCF.vCD) {}
-    for (Object localObject = c.a(this.izh, R.g.chat_from_content_bg_mask, j, i);; localObject = c.a(this.izh, R.g.chat_to_content_bg_mask, j, i))
+    if (this.zTJ.zTI.zTG) {}
+    for (Object localObject = d.a(this.kCo, 2130838217, j, i);; localObject = d.a(this.kCo, 2130838250, j, i))
     {
       localObject = new BitmapDrawable((Bitmap)localObject);
-      this.vCG.vCF.vCC.setBackgroundDrawable((Drawable)localObject);
+      this.zTJ.zTI.iDQ.setBackgroundDrawable((Drawable)localObject);
+      AppMethodBeat.o(32913);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.i.a.1.1
  * JD-Core Version:    0.7.0.1
  */

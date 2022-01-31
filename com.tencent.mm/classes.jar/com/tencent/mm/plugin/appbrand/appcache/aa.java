@@ -1,50 +1,46 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import com.tencent.mm.h.c.dn;
-import com.tencent.mm.plugin.appbrand.t.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dr;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class aa
-  extends dn
-  implements b
+  extends dr
 {
-  static final c.a dUa;
-  static final String[] fCT;
+  static final String[] gUa;
+  static final c.a gUb;
   
   static
   {
     int i = 0;
-    fCT = new String[] { "appId", "appVersion" };
+    AppMethodBeat.i(129406);
+    gUa = new String[] { "key", "version" };
     Object localObject1 = new c.a();
-    ((c.a)localObject1).ujL = new Field[5];
-    ((c.a)localObject1).columns = new String[6];
+    ((c.a)localObject1).yrK = new Field[4];
+    ((c.a)localObject1).columns = new String[5];
     Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "appId";
-    ((c.a)localObject1).ujN.put("appId", "TEXT");
-    ((StringBuilder)localObject2).append(" appId TEXT");
+    ((c.a)localObject1).columns[0] = "key";
+    ((c.a)localObject1).yrM.put("key", "TEXT");
+    ((StringBuilder)localObject2).append(" key TEXT");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "appVersion";
-    ((c.a)localObject1).ujN.put("appVersion", "INTEGER");
-    ((StringBuilder)localObject2).append(" appVersion INTEGER");
+    ((c.a)localObject1).columns[1] = "version";
+    ((c.a)localObject1).yrM.put("version", "INTEGER");
+    ((StringBuilder)localObject2).append(" version INTEGER");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "decryptKey";
-    ((c.a)localObject1).ujN.put("decryptKey", "TEXT");
-    ((StringBuilder)localObject2).append(" decryptKey TEXT");
+    ((c.a)localObject1).columns[2] = "scene";
+    ((c.a)localObject1).yrM.put("scene", "INTEGER");
+    ((StringBuilder)localObject2).append(" scene INTEGER");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "pkgMd5";
-    ((c.a)localObject1).ujN.put("pkgMd5", "TEXT");
-    ((StringBuilder)localObject2).append(" pkgMd5 TEXT");
-    ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[4] = "reportId";
-    ((c.a)localObject1).ujN.put("reportId", "INTEGER");
-    ((StringBuilder)localObject2).append(" reportId INTEGER");
-    ((c.a)localObject1).columns[5] = "rowid";
+    ((c.a)localObject1).columns[3] = "updateTime";
+    ((c.a)localObject1).yrM.put("updateTime", "LONG");
+    ((StringBuilder)localObject2).append(" updateTime LONG");
+    ((c.a)localObject1).columns[4] = "rowid";
     ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    dUa = (c.a)localObject1;
-    localObject1 = " PRIMARY KEY ( ";
-    localObject2 = fCT;
+    gUb = (c.a)localObject1;
+    localObject1 = " PRIMARY KEY (";
+    localObject2 = gUa;
     int j = localObject2.length;
     while (i < j)
     {
@@ -55,23 +51,19 @@ public final class aa
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = dUa;
+    Object localObject3 = gUb;
     ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    AppMethodBeat.o(129406);
   }
   
-  public final String[] getKeys()
+  public final c.a getDBInfo()
   {
-    return fCT;
-  }
-  
-  protected final c.a rM()
-  {
-    return dUa;
+    return gUb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.aa
  * JD-Core Version:    0.7.0.1
  */

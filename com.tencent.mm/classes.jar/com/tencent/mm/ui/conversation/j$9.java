@@ -1,36 +1,26 @@
 package com.tencent.mm.ui.conversation;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
-import com.tencent.mm.R.l;
-import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.dbbackup.DBRecoveryUI;
+import com.tencent.mm.ui.widget.b.c;
 
 final class j$9
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   j$9(j paramj) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = j.f(this.vTn).zJ();
-    if (j.g(this.vTn) == null) {}
-    for (int i = -2;; i = j.g(this.vTn).hashCode())
-    {
-      y.d("MicroMsg.InitHelper", "dkinit showProgressDlg t:%d initScene:%d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
-      if ((j.h(this.vTn) != null) && (j.h(this.vTn).isShowing())) {
-        j.h(this.vTn).dismiss();
-      }
-      j localj = this.vTn;
-      Activity localActivity = j.a(this.vTn);
-      j.a(this.vTn).getString(R.l.app_tip);
-      j.a(localj, h.b(localActivity, j.a(this.vTn).getString(R.l.app_loading_data), false, new j.9.1(this)));
-      au.DS().sQ();
-      return;
-    }
+    AppMethodBeat.i(34477);
+    j.e(this.Alf).dismiss();
+    paramDialogInterface = new Intent(j.a(this.Alf), DBRecoveryUI.class);
+    paramDialogInterface.putExtra("scene", 0);
+    j.a(this.Alf).startActivity(paramDialogInterface);
+    AppMethodBeat.o(34477);
   }
 }
 

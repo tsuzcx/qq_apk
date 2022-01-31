@@ -1,77 +1,86 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity.a;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.czl;
+import com.tencent.mm.protocal.protobuf.fs;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.vending.c.a;
+import java.util.Iterator;
+import java.util.LinkedList;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class aq$1
-  implements MMActivity.a
+  implements a<Object, czl>
 {
-  aq$1(aq paramaq, o paramo, int paramInt) {}
+  aq$1(aq paramaq, c paramc, int paramInt) {}
   
-  public final void c(int paramInt1, int paramInt2, Intent paramIntent)
+  private Object a(czl paramczl)
   {
-    aq.BF();
-    if (paramInt1 != (this.ggK.hashCode() & 0xFFFF)) {
-      return;
-    }
-    y.i("MicroMsg.JsApiOpenQRCode", "onActivityResult requestCode:%d  resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    switch (paramInt2)
+    AppMethodBeat.i(101944);
+    if (paramczl == null)
     {
-    default: 
-      this.gcp.C(this.dIS, this.ggK.h("fail", null));
-      return;
-    case -1: 
-      if (paramIntent == null)
+      ab.e("MicroMsg.JsApiGetSetting", "WxaAppGetAuthInfoReq cgi failed, null response");
+      this.hxW.h(this.bAX, this.hxX.j("fail:cgi fail", null));
+      AppMethodBeat.o(101944);
+      return null;
+    }
+    if (paramczl.BaseResponse.Ret != 0)
+    {
+      ab.e("MicroMsg.JsApiGetSetting", "WxaAppGetAuthInfoReq cgi failed, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramczl.BaseResponse.Ret), paramczl.BaseResponse.ErrMsg });
+      this.hxW.h(this.bAX, this.hxX.j("fail:cgi fail", null));
+      AppMethodBeat.o(101944);
+      return null;
+    }
+    Object localObject;
+    try
+    {
+      localObject = paramczl.ygk;
+      paramczl = new JSONArray();
+      localObject = ((LinkedList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        y.e("MicroMsg.JsApiOpenQRCode", "data is null, err");
-        this.gcp.C(this.dIS, this.ggK.h("fail:unknown err", null));
-        return;
-      }
-      HashMap localHashMap = new HashMap();
-      String str = paramIntent.getStringExtra("key_scan_result");
-      paramInt1 = paramIntent.getIntExtra("key_scan_result_type", 0);
-      y.d("MicroMsg.JsApiOpenQRCode", "result:%s, resultType:%d", new Object[] { str, Integer.valueOf(paramInt1) });
-      JSONObject localJSONObject = new JSONObject();
-      if (paramInt1 == 1) {
-        paramIntent = "qrcode";
-      }
-      try
-      {
-        localJSONObject.put("scan_type", paramIntent);
-        localJSONObject.put("scan_result", str);
-        paramIntent = new JSONObject();
-      }
-      catch (JSONException paramIntent)
-      {
+        fs localfs = (fs)((Iterator)localObject).next();
+        JSONObject localJSONObject = new JSONObject();
         try
         {
-          for (;;)
-          {
-            paramIntent.put("scan_code", localJSONObject);
-            localHashMap.put("resultStr", paramIntent.toString());
-            y.d("MicroMsg.JsApiOpenQRCode", "ret:%s", new Object[] { localHashMap });
-            this.gcp.C(this.dIS, this.ggK.h("ok", localHashMap));
-            return;
-            paramIntent = "barcode";
-          }
-          paramIntent = paramIntent;
-          y.printErrStackTrace("MicroMsg.JsApiOpenQRCode", paramIntent, "", new Object[0]);
+          localJSONObject.put("scope", localfs.scope);
+          localJSONObject.put("state", localfs.state);
+          localJSONObject.put("desc", localfs.wrI);
+          paramczl.put(localJSONObject);
         }
-        catch (JSONException localJSONException)
+        catch (Exception localException)
         {
-          for (;;)
-          {
-            y.printErrStackTrace("MicroMsg.JsApiOpenQRCode", localJSONException, "", new Object[0]);
-          }
+          ab.e("MicroMsg.JsApiGetSetting", "parse json failed : %s", new Object[] { localException.getMessage() });
         }
+        continue;
+        this.hxW.h(this.bAX, this.hxX.j("fail:resp invalid", null));
       }
     }
-    this.gcp.C(this.dIS, this.ggK.h("cancel", null));
+    catch (Exception paramczl) {}
+    for (;;)
+    {
+      AppMethodBeat.o(101944);
+      return null;
+      localObject = paramczl.toString();
+      ab.d("MicroMsg.JsApiGetSetting", "authInfo %s", new Object[] { paramczl });
+      paramczl = new JSONObject();
+      try
+      {
+        paramczl.put("errMsg", "getSetting:ok");
+        paramczl.put("authSetting", new JSONArray(bo.nullAsNil((String)localObject)));
+        this.hxW.h(this.bAX, paramczl.toString());
+        AppMethodBeat.o(101944);
+        return null;
+      }
+      catch (JSONException paramczl)
+      {
+        ab.printErrStackTrace("MicroMsg.JsApiGetSetting", paramczl, "set json error!", new Object[0]);
+      }
+    }
   }
 }
 

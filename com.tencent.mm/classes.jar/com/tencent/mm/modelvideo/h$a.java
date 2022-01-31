@@ -2,7 +2,7 @@ package com.tencent.mm.modelvideo;
 
 public abstract interface h$a
 {
-  public abstract void bw(int paramInt1, int paramInt2);
+  public abstract void cG(int paramInt1, int paramInt2);
 }
 
 

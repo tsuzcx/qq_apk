@@ -5,12 +5,12 @@ final class c$em
 {
   c$em()
   {
-    super("openWCPayCardList", "openWCPayCardList", 310, true);
+    super("login", "login", 231, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.c.em
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class UnfamiliarContactDetailUI$12
   implements Animation.AnimationListener
@@ -11,7 +12,9 @@ final class UnfamiliarContactDetailUI$12
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    UnfamiliarContactDetailUI.l(this.nWX).setVisibility(8);
+    AppMethodBeat.i(127653);
+    UnfamiliarContactDetailUI.l(this.qLi).setVisibility(8);
+    AppMethodBeat.o(127653);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

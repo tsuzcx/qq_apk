@@ -2,15 +2,15 @@ package com.tencent.mm.sdk.e;
 
 public abstract interface d<T extends c>
 {
-  public abstract boolean a(T paramT);
+  public abstract boolean delete(T paramT, boolean paramBoolean, String... paramVarArgs);
   
-  public abstract boolean a(T paramT, boolean paramBoolean, String... paramVarArgs);
+  public abstract boolean get(T paramT, String... paramVarArgs);
   
-  public abstract boolean b(T paramT);
+  public abstract boolean insert(T paramT);
   
-  public abstract boolean b(T paramT, String... paramVarArgs);
+  public abstract boolean replace(T paramT);
   
-  public abstract boolean c(T paramT, String... paramVarArgs);
+  public abstract boolean update(T paramT, String... paramVarArgs);
 }
 
 

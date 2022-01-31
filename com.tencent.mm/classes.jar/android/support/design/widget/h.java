@@ -5,16 +5,13 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
-import android.os.Build.VERSION;
-import android.support.design.a.c;
 import android.support.v4.content.b;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 import android.util.StateSet;
 import android.view.ViewTreeObserver.OnPreDrawListener;
 import android.view.animation.Interpolator;
@@ -25,51 +22,51 @@ class h
   static final int[] EMPTY_STATE_SET = new int[0];
   static final int[] ENABLED_STATE_SET;
   static final int[] PRESSED_ENABLED_STATE_SET;
-  static final Interpolator iC = a.em;
-  static final int[] iM;
-  float gb;
-  private final Rect hc = new Rect();
-  int iD = 0;
-  private final m iE;
-  j iF;
-  Drawable iG;
-  Drawable iH;
-  d iI;
-  Drawable iJ;
-  float iK;
-  float iL;
-  final VisibilityAwareImageButton iN;
-  final k iO;
-  ViewTreeObserver.OnPreDrawListener iP;
+  static final int[] jF;
+  static final Interpolator jv = a.fk;
+  float gV;
+  private final Rect hV = new Rect();
+  Drawable jA;
+  d jB;
+  Drawable jC;
+  float jD;
+  float jE;
+  final VisibilityAwareImageButton jG;
+  final k jH;
+  ViewTreeObserver.OnPreDrawListener jI;
+  int jw = 0;
+  private final m jx;
+  j jy;
+  Drawable jz;
   
   static
   {
     PRESSED_ENABLED_STATE_SET = new int[] { 16842919, 16842910 };
-    iM = new int[] { 16842908, 16842910 };
+    jF = new int[] { 16842908, 16842910 };
     ENABLED_STATE_SET = new int[] { 16842910 };
   }
   
   h(VisibilityAwareImageButton paramVisibilityAwareImageButton, k paramk)
   {
-    this.iN = paramVisibilityAwareImageButton;
-    this.iO = paramk;
-    this.iE = new m();
-    this.iE.a(PRESSED_ENABLED_STATE_SET, a(new h.b(this)));
-    this.iE.a(iM, a(new h.b(this)));
-    this.iE.a(ENABLED_STATE_SET, a(new h.d(this)));
-    this.iE.a(EMPTY_STATE_SET, a(new a()));
-    this.gb = this.iN.getRotation();
+    this.jG = paramVisibilityAwareImageButton;
+    this.jH = paramk;
+    this.jx = new m();
+    this.jx.a(PRESSED_ENABLED_STATE_SET, a(new h.b(this)));
+    this.jx.a(jF, a(new h.b(this)));
+    this.jx.a(ENABLED_STATE_SET, a(new h.d(this)));
+    this.jx.a(EMPTY_STATE_SET, a(new h.a(this)));
+    this.gV = this.jG.getRotation();
   }
   
-  private static ColorStateList J(int paramInt)
+  private static ColorStateList I(int paramInt)
   {
-    return new ColorStateList(new int[][] { iM, PRESSED_ENABLED_STATE_SET, new int[0] }, new int[] { paramInt, paramInt, 0 });
+    return new ColorStateList(new int[][] { jF, PRESSED_ENABLED_STATE_SET, new int[0] }, new int[] { paramInt, paramInt, 0 });
   }
   
   private static ValueAnimator a(h.e parame)
   {
     ValueAnimator localValueAnimator = new ValueAnimator();
-    localValueAnimator.setInterpolator(iC);
+    localValueAnimator.setInterpolator(jv);
     localValueAnimator.setDuration(100L);
     localValueAnimator.addListener(parame);
     localValueAnimator.addUpdateListener(parame);
@@ -79,134 +76,120 @@ class h
   
   final d a(int paramInt, ColorStateList paramColorStateList)
   {
-    Context localContext = this.iN.getContext();
-    d locald = aN();
-    int i = b.i(localContext, a.c.design_fab_stroke_top_outer_color);
-    int j = b.i(localContext, a.c.design_fab_stroke_top_inner_color);
-    int k = b.i(localContext, a.c.design_fab_stroke_end_inner_color);
-    int m = b.i(localContext, a.c.design_fab_stroke_end_outer_color);
-    locald.fU = i;
-    locald.fV = j;
-    locald.fW = k;
-    locald.fX = m;
-    float f = paramInt;
-    if (locald.fT != f)
-    {
-      locald.fT = f;
-      locald.mPaint.setStrokeWidth(f * 1.3333F);
-      locald.ga = true;
-      locald.invalidateSelf();
-    }
+    Context localContext = this.jG.getContext();
+    d locald = bw();
+    locald.b(b.m(localContext, 2131689937), b.m(localContext, 2131689936), b.m(localContext, 2131689934), b.m(localContext, 2131689935));
+    locald.setBorderWidth(paramInt);
     locald.a(paramColorStateList);
     return locald;
   }
   
   void a(ColorStateList paramColorStateList, PorterDuff.Mode paramMode, int paramInt1, int paramInt2)
   {
-    this.iG = android.support.v4.a.a.a.f(aO());
-    android.support.v4.a.a.a.a(this.iG, paramColorStateList);
+    this.jz = android.support.v4.graphics.drawable.a.e(bx());
+    android.support.v4.graphics.drawable.a.a(this.jz, paramColorStateList);
     if (paramMode != null) {
-      android.support.v4.a.a.a.a(this.iG, paramMode);
+      android.support.v4.graphics.drawable.a.a(this.jz, paramMode);
     }
-    this.iH = android.support.v4.a.a.a.f(aO());
-    android.support.v4.a.a.a.a(this.iH, J(paramInt1));
+    this.jA = android.support.v4.graphics.drawable.a.e(bx());
+    android.support.v4.graphics.drawable.a.a(this.jA, I(paramInt1));
     if (paramInt2 > 0)
     {
-      this.iI = a(paramInt2, paramColorStateList);
+      this.jB = a(paramInt2, paramColorStateList);
       paramColorStateList = new Drawable[3];
-      paramColorStateList[0] = this.iI;
-      paramColorStateList[1] = this.iG;
-      paramColorStateList[2] = this.iH;
+      paramColorStateList[0] = this.jB;
+      paramColorStateList[1] = this.jz;
+      paramColorStateList[2] = this.jA;
     }
     for (;;)
     {
-      this.iJ = new LayerDrawable(paramColorStateList);
-      this.iF = new j(this.iN.getContext(), this.iJ, this.iO.getRadius(), this.iK, this.iK + this.iL);
-      paramColorStateList = this.iF;
-      paramColorStateList.jC = false;
+      this.jC = new LayerDrawable(paramColorStateList);
+      this.jy = new j(this.jG.getContext(), this.jC, this.jH.getRadius(), this.jD, this.jD + this.jE);
+      paramColorStateList = this.jy;
+      paramColorStateList.kA = false;
       paramColorStateList.invalidateSelf();
-      this.iO.setBackgroundDrawable(this.iF);
+      this.jH.setBackgroundDrawable(this.jy);
       return;
-      this.iI = null;
+      this.jB = null;
       paramColorStateList = new Drawable[2];
-      paramColorStateList[0] = this.iG;
-      paramColorStateList[1] = this.iH;
+      paramColorStateList[0] = this.jz;
+      paramColorStateList[1] = this.jA;
     }
   }
   
-  void aJ()
+  void bs()
   {
-    m localm = this.iE;
-    if (localm.jM != null)
+    m localm = this.jx;
+    if (localm.kK != null)
     {
-      localm.jM.end();
-      localm.jM = null;
+      localm.kK.end();
+      localm.kK = null;
     }
   }
   
-  void aK() {}
+  void bt() {}
   
-  final void aL()
+  final void bu()
   {
-    Rect localRect = this.hc;
+    Rect localRect = this.hV;
     d(localRect);
     e(localRect);
-    this.iO.d(localRect.left, localRect.top, localRect.right, localRect.bottom);
+    this.jH.e(localRect.left, localRect.top, localRect.right, localRect.bottom);
   }
   
-  boolean aM()
+  boolean bv()
   {
     return true;
   }
   
-  d aN()
+  d bw()
   {
     return new d();
   }
   
-  final GradientDrawable aO()
+  final GradientDrawable bx()
   {
-    GradientDrawable localGradientDrawable = aP();
+    GradientDrawable localGradientDrawable = by();
     localGradientDrawable.setShape(1);
     localGradientDrawable.setColor(-1);
     return localGradientDrawable;
   }
   
-  GradientDrawable aP()
+  GradientDrawable by()
   {
     return new GradientDrawable();
   }
   
-  final boolean aQ()
+  final boolean bz()
   {
-    return (q.al(this.iN)) && (!this.iN.isInEditMode());
+    return (t.as(this.jG)) && (!this.jG.isInEditMode());
   }
   
   void c(int[] paramArrayOfInt)
   {
-    m localm = this.iE;
-    int j = localm.jK.size();
+    m localm = this.jx;
+    int j = localm.kI.size();
     int i = 0;
     m.a locala;
     if (i < j)
     {
-      locala = (m.a)localm.jK.get(i);
-      if (!StateSet.stateSetMatches(locala.jP, paramArrayOfInt)) {}
+      locala = (m.a)localm.kI.get(i);
+      if (!StateSet.stateSetMatches(locala.kN, paramArrayOfInt)) {}
     }
     for (paramArrayOfInt = locala;; paramArrayOfInt = null)
     {
-      if (paramArrayOfInt != localm.jL)
+      if (paramArrayOfInt != localm.kJ)
       {
-        if ((localm.jL != null) && (localm.jM != null))
+        if ((localm.kJ != null) && (localm.kK != null))
         {
-          localm.jM.cancel();
-          localm.jM = null;
+          localm.kK.cancel();
+          localm.kK = null;
         }
-        localm.jL = paramArrayOfInt;
+        localm.kJ = paramArrayOfInt;
         if (paramArrayOfInt != null)
         {
-          localm.jM = paramArrayOfInt.jQ;
-          localm.jM.start();
+          localm.kK = paramArrayOfInt.kO;
+          localm.kK.start();
         }
       }
       return;
@@ -217,52 +200,38 @@ class h
   
   void d(Rect paramRect)
   {
-    this.iF.getPadding(paramRect);
+    this.jy.getPadding(paramRect);
   }
   
   void e(Rect paramRect) {}
   
   float getElevation()
   {
-    return this.iK;
+    return this.jD;
   }
   
   void o(float paramFloat1, float paramFloat2)
   {
-    if (this.iF != null)
+    if (this.jy != null)
     {
-      this.iF.p(paramFloat1, this.iL + paramFloat1);
-      aL();
+      this.jy.p(paramFloat1, this.jE + paramFloat1);
+      bu();
     }
   }
   
   final void setElevation(float paramFloat)
   {
-    if (this.iK != paramFloat)
+    if (this.jD != paramFloat)
     {
-      this.iK = paramFloat;
-      o(paramFloat, this.iL);
+      this.jD = paramFloat;
+      o(paramFloat, this.jE);
     }
   }
   
   void setRippleColor(int paramInt)
   {
-    if (this.iH != null) {
-      android.support.v4.a.a.a.a(this.iH, J(paramInt));
-    }
-  }
-  
-  private final class a
-    extends h.e
-  {
-    a()
-    {
-      super((byte)0);
-    }
-    
-    protected final float aR()
-    {
-      return 0.0F;
+    if (this.jA != null) {
+      android.support.v4.graphics.drawable.a.a(this.jA, I(paramInt));
     }
   }
 }

@@ -6,12 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.plugin.fts.ui.n.c;
-import com.tencent.mm.plugin.fts.ui.n.d;
-import com.tencent.mm.plugin.fts.ui.n.e;
 
 public final class e$a
   extends com.tencent.mm.plugin.fts.a.d.a.a.b
@@ -23,28 +21,33 @@ public final class e$a
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.e.fts_conv_message_header_item, paramViewGroup, false);
-    paramViewGroup = (e.b)this.kCN.kCM;
-    paramViewGroup.iCG = ((TextView)paramContext.findViewById(n.d.header_tv));
-    paramViewGroup.contentView = paramContext.findViewById(n.d.search_item_content_layout);
-    paramViewGroup.kCO = paramContext.findViewById(n.d.padding_view);
-    paramViewGroup.doU = ((ImageView)paramContext.findViewById(n.d.avatar_iv));
+    AppMethodBeat.i(61978);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969651, paramViewGroup, false);
+    paramViewGroup = (e.b)this.mYJ.mYI;
+    paramViewGroup.kHN = ((TextView)paramContext.findViewById(2131822836));
+    paramViewGroup.contentView = paramContext.findViewById(2131821209);
+    paramViewGroup.mYK = paramContext.findViewById(2131820910);
+    paramViewGroup.egq = ((ImageView)paramContext.findViewById(2131821210));
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(61978);
     return paramContext;
   }
   
   public final void a(Context paramContext, a.a parama, a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(61979);
     paramContext = (e.b)parama;
-    m.a(this.kCN.kDu, paramContext.iCG);
-    paramContext.contentView.setBackgroundResource(n.c.list_thicklinecell_bg);
-    com.tencent.mm.pluginsdk.ui.a.b.a(paramContext.doU, this.kCN.talker);
-    if (this.kCN.position == 0)
+    m.a(this.mYJ.mZq, paramContext.kHN);
+    paramContext.contentView.setBackgroundResource(2130839285);
+    com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.egq, this.mYJ.talker);
+    if (this.mYJ.position == 0)
     {
-      paramContext.kCO.setVisibility(8);
+      paramContext.mYK.setVisibility(8);
+      AppMethodBeat.o(61979);
       return;
     }
-    paramContext.kCO.setVisibility(0);
+    paramContext.mYK.setVisibility(0);
+    AppMethodBeat.o(61979);
   }
   
   public final boolean a(Context paramContext, a paramVarArgs)
@@ -54,7 +57,7 @@ public final class e$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.e.a
  * JD-Core Version:    0.7.0.1
  */

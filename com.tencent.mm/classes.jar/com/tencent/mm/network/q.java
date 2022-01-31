@@ -1,23 +1,27 @@
 package com.tencent.mm.network;
 
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 
 public abstract interface q
 {
-  public abstract k.e HF();
+  public abstract boolean getIsUserCmd();
   
-  public abstract int Kp();
+  public abstract int getOptions();
   
-  public abstract int Kq();
+  public abstract l.d getReqObj();
   
-  public abstract k.d Kv();
+  public abstract l.e getRespObj();
   
-  public abstract boolean Kw();
+  public abstract int getTimeOut();
   
   public abstract int getType();
   
   public abstract String getUri();
+  
+  public abstract boolean isSingleSession();
+  
+  public abstract void setConnectionInfo(String paramString);
 }
 
 

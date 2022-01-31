@@ -1,18 +1,19 @@
 package com.tencent.mm.plugin.offline.a;
 
 import android.text.TextUtils;
-import com.tencent.mm.h.a.tm;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vh;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.offline.i;
 import com.tencent.mm.plugin.offline.k;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.lang.ref.WeakReference;
@@ -24,264 +25,337 @@ import java.util.Set;
 
 public final class s
 {
-  private List<WeakReference<s.a>> fKm = new ArrayList();
-  public ArrayList<Long> mIG = new ArrayList();
-  public s.b mLy = null;
-  private HashSet<String> mLz = new HashSet();
+  private List<WeakReference<s.a>> kkV;
+  public ArrayList<Long> piV;
+  public s.b plP;
+  private HashSet<String> plQ;
   
   public s()
   {
-    Object localObject = com.tencent.mm.plugin.offline.c.a.bqQ();
+    AppMethodBeat.i(43423);
+    this.kkV = new ArrayList();
+    this.plP = null;
+    this.piV = new ArrayList();
+    this.plQ = new HashSet();
+    Object localObject = com.tencent.mm.plugin.offline.c.a.bZG();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = bn.s((String)localObject, "sysmsg");
+      localObject = br.F((String)localObject, "sysmsg");
       if (localObject != null)
       {
-        int i = bk.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
+        int i = bo.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
         if ((i >= 0) && (i == 4))
         {
-          y.i("MicroMsg.WalletOfflineMsgManager", "msg type is 4 ");
-          b(E((Map)localObject));
+          ab.i("MicroMsg.WalletOfflineMsgManager", "msg type is 4 ");
+          b(O((Map)localObject));
         }
       }
     }
-    this.mIG.clear();
+    this.piV.clear();
+    AppMethodBeat.o(43423);
   }
   
-  private s.b E(Map<String, String> paramMap)
+  private s.d N(Map<String, String> paramMap)
   {
-    if (this.mLy == null) {
-      this.mLy = new s.b(this);
+    AppMethodBeat.i(43428);
+    s.d locald = new s.d(this);
+    locald.plW = bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locald.cwk = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    AppMethodBeat.o(43428);
+    return locald;
+  }
+  
+  private s.b O(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(43429);
+    if (this.plP == null) {
+      this.plP = new s.b(this);
     }
-    this.mLy.mLF = bk.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
-    this.mLy.mLC = ((String)paramMap.get(".sysmsg.paymsg.isfreeze"));
-    this.mLy.mLD = ((String)paramMap.get(".sysmsg.paymsg.freezetype"));
-    this.mLy.mLE = ((String)paramMap.get(".sysmsg.paymsg.freezemsg"));
-    return this.mLy;
+    this.plP.plW = bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    this.plP.plT = ((String)paramMap.get(".sysmsg.paymsg.isfreeze"));
+    this.plP.plU = ((String)paramMap.get(".sysmsg.paymsg.freezetype"));
+    this.plP.plV = ((String)paramMap.get(".sysmsg.paymsg.freezemsg"));
+    paramMap = this.plP;
+    AppMethodBeat.o(43429);
+    return paramMap;
+  }
+  
+  private s.e P(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(43430);
+    s.e locale = new s.e(this);
+    locale.plW = bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locale.plX = ((String)paramMap.get(".sysmsg.paymsg.cftretcode"));
+    locale.plY = ((String)paramMap.get(".sysmsg.paymsg.cftretmsg"));
+    locale.plZ = ((String)paramMap.get(".sysmsg.paymsg.wxretcode"));
+    locale.pma = ((String)paramMap.get(".sysmsg.paymsg.wxretmsg"));
+    locale.pmb = ((String)paramMap.get(".sysmsg.paymsg.error_detail_url"));
+    locale.pmc = true;
+    AppMethodBeat.o(43430);
+    return locale;
+  }
+  
+  private s.f Q(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(43431);
+    s.f localf = new s.f(this);
+    localf.plW = bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    localf.pmd = ((String)paramMap.get(".sysmsg.paymsg.transid"));
+    localf.pme = com.tencent.mm.plugin.offline.c.a.T(paramMap);
+    if (localf.pme.ujl.size() > 0) {
+      com.tencent.mm.plugin.offline.c.a.WB(((Orders.Commodity)localf.pme.ujl.get(0)).cnJ);
+    }
+    if (paramMap.containsKey(".sysmsg.paymsg.real_name_info")) {
+      localf.cMu = new h(paramMap);
+    }
+    AppMethodBeat.o(43431);
+    return localf;
+  }
+  
+  private s.d R(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(43432);
+    s.d locald = new s.d(this);
+    locald.plW = bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    locald.cwk = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    AppMethodBeat.o(43432);
+    return locald;
+  }
+  
+  private s.g S(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(43433);
+    s.g localg = new s.g(this);
+    localg.plW = bo.getInt((String)paramMap.get(".sysmsg.paymsg.PayMsgType"), -1);
+    localg.pmf = ((String)paramMap.get(".sysmsg.paymsg.good_name"));
+    localg.pmg = ((String)paramMap.get(".sysmsg.paymsg.total_fee"));
+    localg.cwk = ((String)paramMap.get(".sysmsg.paymsg.req_key"));
+    localg.id = ((String)paramMap.get(".sysmsg.paymsg.id"));
+    paramMap = (String)paramMap.get(".sysmsg.paymsg.confirm_type");
+    ab.i("MicroMsg.WalletOfflineMsgManager", "msg confirm_type is" + localg.kWb);
+    if ((!TextUtils.isEmpty(paramMap)) && (paramMap.equals("1"))) {}
+    for (localg.kWb = 1;; localg.kWb = 0)
+    {
+      AppMethodBeat.o(43433);
+      return localg;
+    }
   }
   
   private void b(s.c paramc)
   {
-    if (this.fKm == null) {}
-    label68:
-    for (;;)
+    AppMethodBeat.i(43424);
+    if (this.kkV == null)
     {
+      AppMethodBeat.o(43424);
       return;
-      int i = 0;
-      for (;;)
-      {
-        if (i >= this.fKm.size()) {
-          break label68;
-        }
-        Object localObject = (WeakReference)this.fKm.get(i);
-        if (localObject != null)
-        {
-          localObject = (s.a)((WeakReference)localObject).get();
-          if ((localObject != null) && (((s.a)localObject).a(paramc))) {
-            break;
-          }
-        }
-        i += 1;
-      }
     }
+    int i = 0;
+    while (i < this.kkV.size())
+    {
+      Object localObject = (WeakReference)this.kkV.get(i);
+      if (localObject != null)
+      {
+        localObject = (s.a)((WeakReference)localObject).get();
+        if ((localObject != null) && (((s.a)localObject).a(paramc))) {
+          break;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(43424);
   }
   
-  public final void Kk(String paramString)
+  public final void Wj(String arg1)
   {
-    com.tencent.mm.plugin.offline.c.a.Kx("");
-    com.tencent.mm.plugin.offline.c.a.Kz("");
-    com.tencent.mm.plugin.offline.c.a.Ky("");
-    ??? = bn.s(paramString, "sysmsg");
-    if (??? == null) {
+    AppMethodBeat.i(43427);
+    com.tencent.mm.plugin.offline.c.a.Wz("");
+    com.tencent.mm.plugin.offline.c.a.WB("");
+    com.tencent.mm.plugin.offline.c.a.WA("");
+    Object localObject = br.F(???, "sysmsg");
+    if (localObject == null)
+    {
+      AppMethodBeat.o(43427);
       return;
     }
-    int j = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.PayMsgType"), -1);
-    int i = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.pay_cmd"), -1);
-    String str = (String)((Map)???).get(".sysmsg.paymsg.req_key");
-    com.tencent.mm.plugin.offline.c.a.Kx((String)((Map)???).get(".sysmsg.paymsg.ack_key"));
-    com.tencent.mm.plugin.offline.c.a.vH(j);
-    com.tencent.mm.plugin.offline.c.a.Ky(str);
-    j = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.PayMsgType"), -1);
-    y.i("MicroMsg.WalletOfflineMsgManager", "msg type is " + j);
-    y.v("MicroMsg.WalletOfflineMsgManager", "msg type is type %d xml %s", new Object[] { Integer.valueOf(j), paramString });
+    int j = bo.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
+    int i = bo.getInt((String)((Map)localObject).get(".sysmsg.paymsg.pay_cmd"), -1);
+    String str = (String)((Map)localObject).get(".sysmsg.paymsg.req_key");
+    com.tencent.mm.plugin.offline.c.a.Wz((String)((Map)localObject).get(".sysmsg.paymsg.ack_key"));
+    com.tencent.mm.plugin.offline.c.a.Bf(j);
+    com.tencent.mm.plugin.offline.c.a.WA(str);
+    j = bo.getInt((String)((Map)localObject).get(".sysmsg.paymsg.PayMsgType"), -1);
+    ab.i("MicroMsg.WalletOfflineMsgManager", "msg type is ".concat(String.valueOf(j)));
+    ab.v("MicroMsg.WalletOfflineMsgManager", "msg type is type %d xml %s", new Object[] { Integer.valueOf(j), ??? });
     if ((j >= 0) && (j == 4))
     {
-      b(E((Map)???));
-      com.tencent.mm.plugin.offline.c.a.Ko(paramString);
+      b(O((Map)localObject));
+      com.tencent.mm.plugin.offline.c.a.Wq(???);
+      AppMethodBeat.o(43427);
       return;
     }
     if ((j >= 0) && (j == 5))
     {
       if (i != 1) {
-        break label1019;
+        break label639;
       }
-      y.i("MicroMsg.WalletOfflineMsgManager", "payCmd is PAY_CMD_OFFLINE_PAY_REFRESH_TOKEN (value is 1), refresh offline token");
-      k.bpX();
-      k.bqa().dx(4, 4);
+      ab.i("MicroMsg.WalletOfflineMsgManager", "payCmd is PAY_CMD_OFFLINE_PAY_REFRESH_TOKEN (value is 1), refresh offline token");
+      k.bYF();
+      k.bYI().eX(4, 4);
     }
-    label1019:
+    label639:
     for (boolean bool = false;; bool = true)
     {
-      paramString = new s.e(this);
-      paramString.mLF = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.PayMsgType"), -1);
-      paramString.mLG = ((String)((Map)???).get(".sysmsg.paymsg.cftretcode"));
-      paramString.mLH = ((String)((Map)???).get(".sysmsg.paymsg.cftretmsg"));
-      paramString.mLI = ((String)((Map)???).get(".sysmsg.paymsg.wxretcode"));
-      paramString.mLJ = ((String)((Map)???).get(".sysmsg.paymsg.wxretmsg"));
-      paramString.mLK = ((String)((Map)???).get(".sysmsg.paymsg.error_detail_url"));
-      paramString.mLL = true;
-      paramString.mLL = bool;
-      b(paramString);
+      ??? = P((Map)localObject);
+      ???.pmc = bool;
+      b(???);
+      AppMethodBeat.o(43427);
       return;
       if ((j >= 0) && (j == 6))
       {
-        str = (String)((Map)???).get(".sysmsg.paymsg.transid");
-        y.i("helios", "MSG_TYPE_ORDER trasid=" + str);
-        if (!bk.bl(str))
+        str = (String)((Map)localObject).get(".sysmsg.paymsg.transid");
+        ab.i("helios", "MSG_TYPE_ORDER trasid=".concat(String.valueOf(str)));
+        if (!bo.isNullOrNil(str))
         {
-          com.tencent.mm.kernel.g.DQ();
-          com.tencent.mm.kernel.g.DP().Dz().c(ac.a.utD, Boolean.valueOf(true));
+          com.tencent.mm.kernel.g.RM();
+          com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yDG, Boolean.TRUE);
         }
-        y.i("MicroMsg.WalletOfflineMsgManager", "orders xml: %s", new Object[] { paramString });
-        paramString = new s.f(this);
-        paramString.mLF = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.PayMsgType"), -1);
-        paramString.mLM = ((String)((Map)???).get(".sysmsg.paymsg.transid"));
-        paramString.mLN = com.tencent.mm.plugin.offline.c.a.F((Map)???);
-        if (paramString.mLN.qwN.size() > 0) {
-          com.tencent.mm.plugin.offline.c.a.Kz(((Orders.Commodity)paramString.mLN.qwN.get(0)).bMY);
-        }
-        if (((Map)???).containsKey(".sysmsg.paymsg.real_name_info")) {
-          paramString.cdK = new s.h(this, (Map)???);
-        }
-        b(paramString);
+        ab.i("MicroMsg.WalletOfflineMsgManager", "orders xml: %s", new Object[] { ??? });
+        b(Q((Map)localObject));
+        AppMethodBeat.o(43427);
         return;
       }
       if ((j >= 0) && (j == 7))
       {
-        o.bVs().xO();
+        t.cTN().Kg();
+        AppMethodBeat.o(43427);
         return;
       }
       if ((j >= 0) && (j == 8))
       {
-        paramString = new s.g(this);
-        paramString.mLF = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.PayMsgType"), -1);
-        paramString.mLO = ((String)((Map)???).get(".sysmsg.paymsg.good_name"));
-        paramString.mLP = ((String)((Map)???).get(".sysmsg.paymsg.total_fee"));
-        paramString.bOT = ((String)((Map)???).get(".sysmsg.paymsg.req_key"));
-        paramString.id = ((String)((Map)???).get(".sysmsg.paymsg.id"));
-        ??? = (String)((Map)???).get(".sysmsg.paymsg.confirm_type");
-        y.i("MicroMsg.WalletOfflineMsgManager", "msg confirm_type is" + paramString.mLQ);
-        if ((!TextUtils.isEmpty((CharSequence)???)) && (((String)???).equals("1"))) {}
-        for (paramString.mLQ = 1;; paramString.mLQ = 0)
-        {
-          b(paramString);
-          return;
-        }
+        b(S((Map)localObject));
+        AppMethodBeat.o(43427);
+        return;
       }
       if ((j >= 0) && (j == 10))
       {
-        k.bpX();
-        k.bqa().dx(4, 4);
+        k.bYF();
+        k.bYI().eX(4, 4);
+        AppMethodBeat.o(43427);
         return;
       }
       if ((j >= 0) && (j == 20))
       {
-        paramString = new tm();
-        paramString.cdJ.cdK = new s.h(this, (Map)???);
-        com.tencent.mm.sdk.b.a.udP.m(paramString);
+        ??? = new vh();
+        ???.cMt.cMu = new h((Map)localObject);
+        com.tencent.mm.sdk.b.a.ymk.l(???);
+        AppMethodBeat.o(43427);
         return;
       }
       if ((j >= 0) && (j == 23))
       {
-        paramString = new s.d(this);
-        paramString.mLF = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.PayMsgType"), -1);
-        paramString.bOT = ((String)((Map)???).get(".sysmsg.paymsg.req_key"));
-        synchronized (this.mLz)
+        localObject = R((Map)localObject);
+        synchronized (this.plQ)
         {
-          if (this.mLz.contains(paramString.bOT))
+          if (this.plQ.contains(((s.d)localObject).cwk))
           {
-            y.i("MicroMsg.WalletOfflineMsgManager", "pass this msg %s", new Object[] { paramString.bOT });
+            ab.i("MicroMsg.WalletOfflineMsgManager", "pass this msg %s", new Object[] { ((s.d)localObject).cwk });
+            AppMethodBeat.o(43427);
             return;
           }
+          this.plQ.add(((s.d)localObject).cwk);
+          b((s.c)localObject);
+          AppMethodBeat.o(43427);
+          return;
         }
-        this.mLz.add(paramString.bOT);
-        b(paramString);
+      }
+      if ((j >= 0) && (j == 24))
+      {
+        b(N(localMap));
+        AppMethodBeat.o(43427);
         return;
       }
-      if ((j < 0) || (j != 24)) {
-        break;
-      }
-      paramString = new s.d(this);
-      paramString.mLF = bk.getInt((String)((Map)???).get(".sysmsg.paymsg.PayMsgType"), -1);
-      paramString.bOT = ((String)((Map)???).get(".sysmsg.paymsg.req_key"));
-      b(paramString);
+      AppMethodBeat.o(43427);
       return;
     }
   }
   
-  public final void Kl(String paramString)
+  public final void Wk(String paramString)
   {
-    int i = bk.getInt((String)bn.s(paramString, "sysmsg").get(".sysmsg.paymsg.PayMsgType"), -1);
+    AppMethodBeat.i(43434);
+    int i = bo.getInt((String)br.F(paramString, "sysmsg").get(".sysmsg.paymsg.PayMsgType"), -1);
     paramString = new HashSet();
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.mJT));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.mJS));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.mJU));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.mJR));
-    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.mJO));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.pki));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.pkh));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.pkj));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.pkg));
+    paramString.add(Integer.valueOf(com.tencent.mm.plugin.offline.g.pkd));
     if (paramString.contains(Integer.valueOf(i))) {
-      com.tencent.mm.kernel.g.DS().O(new s.1(this));
+      com.tencent.mm.kernel.g.RO().ac(new s.1(this));
     }
+    AppMethodBeat.o(43434);
   }
   
   public final void a(s.a parama)
   {
-    if (this.fKm == null) {
-      this.fKm = new ArrayList();
+    AppMethodBeat.i(43425);
+    if (this.kkV == null) {
+      this.kkV = new ArrayList();
     }
-    if (parama != null) {
-      this.fKm.add(new WeakReference(parama));
-    }
+    this.kkV.add(new WeakReference(parama));
+    AppMethodBeat.o(43425);
   }
   
   public final void b(s.a parama)
   {
-    if ((this.fKm == null) || (parama == null)) {}
-    for (;;)
+    AppMethodBeat.i(43426);
+    if (this.kkV == null)
     {
+      AppMethodBeat.o(43426);
       return;
-      int i = 0;
-      while (i < this.fKm.size())
-      {
-        WeakReference localWeakReference = (WeakReference)this.fKm.get(i);
-        if (localWeakReference != null)
-        {
-          s.a locala = (s.a)localWeakReference.get();
-          if ((locala != null) && (locala.equals(parama)))
-          {
-            this.fKm.remove(localWeakReference);
-            return;
-          }
-        }
-        i += 1;
-      }
     }
+    int i = 0;
+    while (i < this.kkV.size())
+    {
+      WeakReference localWeakReference = (WeakReference)this.kkV.get(i);
+      if (localWeakReference != null)
+      {
+        s.a locala = (s.a)localWeakReference.get();
+        if ((locala != null) && (locala.equals(parama)))
+        {
+          this.kkV.remove(localWeakReference);
+          AppMethodBeat.o(43426);
+          return;
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(43426);
   }
   
-  public final boolean fr(long paramLong)
+  public final class h
   {
-    if ((this.mIG == null) || (this.mIG.size() == 0)) {
-      y.e("MicroMsg.WalletOfflineMsgManager", "mMsgIdList is null or size == 0");
-    }
-    for (;;)
+    public String cLV;
+    public String cLW;
+    public String cLX;
+    public String cLY;
+    public String cLZ;
+    public boolean pmh;
+    
+    public h()
     {
-      return false;
-      int i = 0;
-      while (i < this.mIG.size())
+      AppMethodBeat.i(43422);
+      Object localObject;
+      this.cLV = ((String)localObject.get(".sysmsg.paymsg.guide_flag"));
+      this.cLW = ((String)localObject.get(".sysmsg.paymsg.guide_wording"));
+      this.cLX = ((String)localObject.get(".sysmsg.paymsg.left_button_wording"));
+      this.cLY = ((String)localObject.get(".sysmsg.paymsg.right_button_wording"));
+      this.cLZ = ((String)localObject.get(".sysmsg.paymsg.upload_credit_url"));
+      if ("1".equals(localObject.get(".sysmsg.paymsg.guide_block"))) {}
+      for (boolean bool = true;; bool = false)
       {
-        if (((Long)this.mIG.get(i)).longValue() == paramLong) {
-          return true;
-        }
-        i += 1;
+        this.pmh = bool;
+        AppMethodBeat.o(43422);
+        return;
       }
     }
   }

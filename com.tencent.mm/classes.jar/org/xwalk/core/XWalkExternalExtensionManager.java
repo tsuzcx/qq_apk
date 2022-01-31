@@ -40,7 +40,7 @@ public abstract class XWalkExternalExtensionManager
     reflectionInit();
   }
   
-  public Object getBridge()
+  protected Object getBridge()
   {
     return this.bridge;
   }
@@ -255,7 +255,7 @@ public abstract class XWalkExternalExtensionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.XWalkExternalExtensionManager
  * JD-Core Version:    0.7.0.1
  */

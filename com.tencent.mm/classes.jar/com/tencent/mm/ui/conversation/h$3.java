@@ -1,27 +1,22 @@
 package com.tencent.mm.ui.conversation;
 
-import android.annotation.TargetApi;
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.z;
+import com.tencent.mm.sdk.b.c;
 
 final class h$3
-  implements View.OnTouchListener
+  extends c<z>
 {
-  h$3(h paramh) {}
-  
-  @TargetApi(21)
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  h$3(h paramh)
   {
-    paramView.findViewById(R.h.conversation_item_ll).getBackground().setHotspot(paramMotionEvent.getX(), paramMotionEvent.getY());
-    return false;
+    AppMethodBeat.i(34354);
+    this.__eventId = z.class.getName().hashCode();
+    AppMethodBeat.o(34354);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.h.3
  * JD-Core Version:    0.7.0.1
  */

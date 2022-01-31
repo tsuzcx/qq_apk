@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.base.stub;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class UIEntryStub$3$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class UIEntryStub$3$1
   
   public final void run()
   {
-    this.hSb.hRY.finish();
+    AppMethodBeat.i(18129);
+    this.jLG.jLD.finish();
+    AppMethodBeat.o(18129);
   }
 }
 

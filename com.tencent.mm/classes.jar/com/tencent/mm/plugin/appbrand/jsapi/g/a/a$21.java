@@ -1,56 +1,27 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
-import com.tencent.tencentmap.mapsdk.map.TencentMap.TencentMapGestureListener;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnScreenShotListener;
 
 final class a$21
-  implements TencentMap.TencentMapGestureListener
+  implements TencentMap.OnScreenShotListener
 {
   a$21(a parama) {}
   
-  public final boolean onDoubleTap(float paramFloat1, float paramFloat2)
+  public final void onMapScreenShot(Bitmap paramBitmap)
   {
-    return false;
-  }
-  
-  public final boolean onDown(float paramFloat1, float paramFloat2)
-  {
-    this.gtW.gtI = true;
-    return false;
-  }
-  
-  public final boolean onFling(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public final boolean onLongPress(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public final void onMapStable()
-  {
-    this.gtW.gtI = false;
-  }
-  
-  public final boolean onScroll(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public final boolean onSingleTap(float paramFloat1, float paramFloat2)
-  {
-    return false;
-  }
-  
-  public final boolean onUp(float paramFloat1, float paramFloat2)
-  {
-    return false;
+    AppMethodBeat.i(51172);
+    if (paramBitmap != null) {
+      a.j(this.hOM).setImageBitmap(paramBitmap);
+    }
+    AppMethodBeat.o(51172);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a.a.21
  * JD-Core Version:    0.7.0.1
  */

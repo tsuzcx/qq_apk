@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class a$1
   
   public final void onClick(View paramView)
   {
-    this.hzH.hide();
+    AppMethodBeat.i(126683);
+    this.jrX.hide();
+    AppMethodBeat.o(126683);
   }
 }
 

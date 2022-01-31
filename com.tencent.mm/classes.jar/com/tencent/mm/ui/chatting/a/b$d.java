@@ -5,41 +5,43 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b$d
   extends RecyclerView.v
 {
-  ImageView khQ;
-  View khR;
-  TextView khS;
-  ImageView khT;
-  View khU;
-  CheckBox khV;
-  View khW;
+  TextView kFj;
+  ImageView mCA;
+  View mCB;
+  CheckBox mCC;
+  View mCD;
+  ImageView mCy;
+  View mCz;
   
   public b$d(b paramb, View paramView)
   {
     super(paramView);
-    this.khQ = ((ImageView)paramView.findViewById(R.h.grid_header_item));
-    this.khR = paramView.findViewById(R.h.video_tips_root);
-    this.khU = paramView.findViewById(R.h.sight_tips_root);
-    this.khS = ((TextView)paramView.findViewById(R.h.video_time_tv));
-    this.khT = ((ImageView)paramView.findViewById(R.h.grid_selected_item_mask));
-    this.khV = ((CheckBox)paramView.findViewById(R.h.media_cbx));
-    this.khW = paramView.findViewById(R.h.media_cbx_clickarea);
-    this.khW.setVisibility(8);
-    this.khV.setVisibility(8);
-    this.khR.setVisibility(8);
-    this.khS.setVisibility(8);
-    this.khU.setVisibility(8);
-    this.khQ.setOnClickListener(new b.d.1(this, paramb));
-    this.khW.setOnClickListener(new b.d.2(this, paramb));
+    AppMethodBeat.i(31137);
+    this.mCy = ((ImageView)paramView.findViewById(2131824016));
+    this.mCz = paramView.findViewById(2131824020);
+    this.mCB = paramView.findViewById(2131824022);
+    this.kFj = ((TextView)paramView.findViewById(2131822813));
+    this.mCA = ((ImageView)paramView.findViewById(2131824024));
+    this.mCC = ((CheckBox)paramView.findViewById(2131824025));
+    this.mCD = paramView.findViewById(2131824026);
+    this.mCD.setVisibility(8);
+    this.mCC.setVisibility(8);
+    this.mCz.setVisibility(8);
+    this.kFj.setVisibility(8);
+    this.mCB.setVisibility(8);
+    this.mCy.setOnClickListener(new b.d.1(this, paramb));
+    this.mCD.setOnClickListener(new b.d.2(this, paramb));
+    AppMethodBeat.o(31137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.a.b.d
  * JD-Core Version:    0.7.0.1
  */

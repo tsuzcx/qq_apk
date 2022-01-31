@@ -8,7 +8,7 @@ public abstract interface e
 {
   public abstract void a(String paramString, d paramd, b paramb);
   
-  public abstract void af(String paramString1, String paramString2, String paramString3);
+  public abstract void at(String paramString1, String paramString2, String paramString3);
   
   public abstract void e(String paramString1, String paramString2, int paramInt, String paramString3);
 }

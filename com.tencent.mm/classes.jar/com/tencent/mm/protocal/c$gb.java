@@ -5,7 +5,7 @@ final class c$gb
 {
   c$gb()
   {
-    super("opVoteAdData", "", -2, false);
+    super("openSearchWebView", "openSearchWebView", 10000, true);
   }
 }
 

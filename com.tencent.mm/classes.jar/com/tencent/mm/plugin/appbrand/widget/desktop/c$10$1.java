@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.appbrand.widget.desktop;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.support.v7.widget.ar;
+import android.support.v7.widget.as;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recentview.BaseAppBrandRecentView.c;
 import java.util.ArrayList;
 
@@ -16,19 +17,23 @@ final class c$10$1
   
   public final void onAnimationCancel(Animator paramAnimator)
   {
-    this.hqb.val$view.setAlpha(1.0F);
-    this.hqb.val$view.setScaleX(1.0F);
-    this.hqb.val$view.setScaleY(1.0F);
-    this.hqb.val$view.setVisibility(0);
+    AppMethodBeat.i(133789);
+    this.jei.val$view.setAlpha(1.0F);
+    this.jei.val$view.setScaleX(1.0F);
+    this.jei.val$view.setScaleY(1.0F);
+    this.jei.val$view.setVisibility(0);
+    AppMethodBeat.o(133789);
   }
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.hqb.abL.setListener(null);
-    ((BaseAppBrandRecentView.c)this.hqb.abK).hCT.animate().setListener(null);
-    this.hqb.hpW.l(this.hqb.abK);
-    this.hqb.hpW.abC.remove(this.hqb.abK);
-    this.hqb.hpW.gB();
+    AppMethodBeat.i(133790);
+    this.jei.acw.setListener(null);
+    ((BaseAppBrandRecentView.c)this.jei.acv).jft.animate().setListener(null);
+    this.jei.jed.m(this.jei.acv);
+    this.jei.jed.acn.remove(this.jei.acv);
+    this.jei.jed.hB();
+    AppMethodBeat.o(133790);
   }
   
   public final void onAnimationStart(Animator paramAnimator) {}

@@ -1,18 +1,22 @@
 package com.tencent.mm.plugin.mmsight;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new b();
+    AppMethodBeat.i(76425);
+    b localb = new b();
+    AppMethodBeat.o(76425);
+    return localb;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
     return null;
   }

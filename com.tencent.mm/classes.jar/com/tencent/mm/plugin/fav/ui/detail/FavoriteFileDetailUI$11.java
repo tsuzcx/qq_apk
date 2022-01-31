@@ -1,48 +1,23 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.m;
+import com.tencent.mm.plugin.fav.a.m.a;
 
 final class FavoriteFileDetailUI$11
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   FavoriteFileDetailUI$11(FavoriteFileDetailUI paramFavoriteFileDetailUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.i("MicroMsg.FavoriteFileDetailUI", "click item favid %d, localid %d, itemstatus %d", new Object[] { Integer.valueOf(FavoriteFileDetailUI.b(this.kfu).field_id), Long.valueOf(FavoriteFileDetailUI.b(this.kfu).field_localId), Integer.valueOf(FavoriteFileDetailUI.b(this.kfu).field_itemStatus) });
-    if (!f.zF())
-    {
-      h.h(this.kfu.mController.uMN, n.i.favorite_no_sdcard, n.i.favorite);
-      return;
-    }
-    if ((FavoriteFileDetailUI.b(this.kfu).aQa()) || (bk.bl(FavoriteFileDetailUI.a(this.kfu).sUG))) {
-      b.l(FavoriteFileDetailUI.b(this.kfu));
-    }
-    for (;;)
-    {
-      FavoriteFileDetailUI.g(this.kfu);
-      return;
-      if (!FavoriteFileDetailUI.f(this.kfu))
-      {
-        b.a(FavoriteFileDetailUI.b(this.kfu), FavoriteFileDetailUI.a(this.kfu), true);
-      }
-      else
-      {
-        FavoriteFileDetailUI.b(this.kfu).field_itemStatus = 7;
-        b.b(FavoriteFileDetailUI.a(this.kfu), 18, -1L);
-      }
-    }
+    AppMethodBeat.i(74333);
+    m.a(m.a.mtC, FavoriteFileDetailUI.b(this.mAf));
+    this.mAf.finish();
+    AppMethodBeat.o(74333);
+    return true;
   }
 }
 

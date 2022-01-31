@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/acc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textColor="@color/a3r" android:ellipsize="none" android:gravity="center_vertical" android:id="@id/a3t" android:layout_marginLeft="3.0dip" android:singleLine="false" style="@style/ko" />
-</LinearLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/cch" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:adjustViewBounds="true" />
+    <ImageView android:layout_gravity="center" android:id="@id/cci" android:background="#ff333333" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:background="#59000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/uz" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.game.media.CycleProgressView android:layout_gravity="center_horizontal" android:id="@id/ccj" android:layout_width="36.0dip" android:layout_height="36.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/a6q" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/c_x" />
+    </LinearLayout>
+    <ImageView android:id="@id/cck" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_back" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
+</FrameLayout>

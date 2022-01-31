@@ -3,7 +3,8 @@ package com.tencent.mm.ui.base;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MMFormMobileInputView$3
   implements TextWatcher
@@ -12,28 +13,36 @@ final class MMFormMobileInputView$3
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    paramEditable = MMFormMobileInputView.a(this.uVa).getText().toString();
-    if (bk.bl(paramEditable))
+    AppMethodBeat.i(106573);
+    paramEditable = MMFormMobileInputView.a(this.zjv).getText().toString();
+    if (bo.isNullOrNil(paramEditable))
     {
-      MMFormMobileInputView.a(this.uVa).setText("+");
-      MMFormMobileInputView.a(this.uVa).setSelection(MMFormMobileInputView.a(this.uVa).getText().toString().length());
+      MMFormMobileInputView.a(this.zjv).setText("+");
+      MMFormMobileInputView.a(this.zjv).setSelection(MMFormMobileInputView.a(this.zjv).getText().toString().length());
     }
     do
     {
       do
       {
-        return;
-        if (!paramEditable.contains("+"))
+        for (;;)
         {
-          paramEditable = "+" + paramEditable;
-          MMFormMobileInputView.a(this.uVa).setText(paramEditable);
-          MMFormMobileInputView.a(this.uVa).setSelection(MMFormMobileInputView.a(this.uVa).getText().toString().length());
+          if (MMFormMobileInputView.e(this.zjv) != null) {
+            MMFormMobileInputView.e(this.zjv);
+          }
+          AppMethodBeat.o(106573);
           return;
+          if (paramEditable.contains("+")) {
+            break;
+          }
+          paramEditable = "+".concat(String.valueOf(paramEditable));
+          MMFormMobileInputView.a(this.zjv).setText(paramEditable);
+          MMFormMobileInputView.a(this.zjv).setSelection(MMFormMobileInputView.a(this.zjv).getText().toString().length());
         }
       } while (paramEditable.length() <= 1);
       paramEditable = paramEditable.substring(1);
     } while (paramEditable.length() <= 4);
-    MMFormMobileInputView.a(this.uVa).setText(paramEditable.substring(0, 4));
+    MMFormMobileInputView.a(this.zjv).setText(paramEditable.substring(0, 4));
+    AppMethodBeat.o(106573);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

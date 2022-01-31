@@ -1,71 +1,46 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.plugin.fts.ui.widget.FTSLocalPageRelevantView;
-import com.tencent.mm.plugin.websearch.api.d;
-import com.tencent.mm.protocal.c.bki;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.ui.c.b;
+import com.tencent.mm.plugin.websearch.api.g;
+import com.tencent.mm.sdk.platformtools.x;
 
 final class FTSMainUI$10
-  implements d
+  implements g
 {
   FTSMainUI$10(FTSMainUI paramFTSMainUI) {}
   
-  public final void a(boolean paramBoolean, bki parambki, String paramString1, String paramString2)
+  public final void bCU()
   {
-    if (!this.kCm.bVk.equals(paramString2)) {
-      y.i("MicroMsg.FTS.FTSMainUI", "IRelevantSearchCallback callback with query %s, current query is %s ", new Object[] { paramString2, this.kCm.bVk });
+    AppMethodBeat.i(61876);
+    FTSMainUI.d(this.mYi).mXp.nav = 1;
+    AppMethodBeat.o(61876);
+  }
+  
+  public final void onClick()
+  {
+    AppMethodBeat.i(61875);
+    b localb = FTSMainUI.k(this.mYi);
+    k.a(this.mYi.query, FTSMainUI.d(this.mYi).getCount(), FTSMainUI.n(this.mYi), localb, 24);
+    AppMethodBeat.o(61875);
+  }
+  
+  public final boolean w(int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(61877);
+    int k = FTSMainUI.s(this.mYi);
+    int j = FTSMainUI.t(this.mYi);
+    int i = j;
+    if (this.mYi.keyboardState() == -3) {
+      i = j - x.gI(this.mYi);
     }
-    for (;;)
+    if ((paramArrayOfInt[0] >= 0) && (paramArrayOfInt[0] < k) && (paramArrayOfInt[1] >= 0) && (paramArrayOfInt[1] < i))
     {
-      return;
-      if (!paramBoolean) {
-        break;
-      }
-      if (FTSMainUI.b(this.kCm).getVisibility() == 0)
-      {
-        FTSLocalPageRelevantView localFTSLocalPageRelevantView = FTSMainUI.g(this.kCm);
-        int i;
-        if ((parambki == null) || (parambki.sxL == null))
-        {
-          y.w("MicroMsg.FTS.FTSLocalPageRelevantView", "configRelevantDatas param nil!");
-          i = 0;
-        }
-        while (i != 0)
-        {
-          FTSMainUI.g(this.kCm).setVisibility(0);
-          return;
-          List localList = FTSLocalPageRelevantView.bC(parambki.sxL);
-          if (localList.size() <= 0)
-          {
-            y.w("MicroMsg.FTS.FTSLocalPageRelevantView", "configRelevantDatas size 0 items!");
-            i = 0;
-          }
-          else
-          {
-            localFTSLocalPageRelevantView.bVk = paramString2;
-            localFTSLocalPageRelevantView.fTF = paramString1;
-            localFTSLocalPageRelevantView.kEG = parambki.sxL;
-            if (localFTSLocalPageRelevantView.fXV == null)
-            {
-              localFTSLocalPageRelevantView.fXV = new LinearLayout(localFTSLocalPageRelevantView.getContext());
-              localFTSLocalPageRelevantView.fXV.setOrientation(1);
-              parambki = (LinearLayout.LayoutParams)localFTSLocalPageRelevantView.getLayoutParams();
-              parambki.width = -1;
-              parambki.height = -2;
-              localFTSLocalPageRelevantView.addView(localFTSLocalPageRelevantView.fXV, parambki);
-            }
-            localFTSLocalPageRelevantView.a(localList, localFTSLocalPageRelevantView.fXV);
-            localFTSLocalPageRelevantView.requestLayout();
-            i = 1;
-          }
-        }
-      }
+      AppMethodBeat.o(61877);
+      return true;
     }
-    FTSMainUI.g(this.kCm).setVisibility(8);
+    AppMethodBeat.o(61877);
+    return false;
   }
 }
 

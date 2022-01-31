@@ -1,35 +1,34 @@
 package com.tencent.mm.ui.conversation;
 
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.ch.d;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class l$1
-  implements AbsListView.OnScrollListener
+  implements DialogInterface.OnClickListener
 {
-  l$1(l paraml) {}
+  l$1(SharedPreferences paramSharedPreferences, Context paramContext) {}
   
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramInt == 2) {
-      d.cxA().dA(k.class.getName() + ".Listview", 4);
+    AppMethodBeat.i(34579);
+    this.AlL.edit().putInt("show_rating_flag", 1).commit();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    if (paramInt == 0)
-    {
-      if (this.vTN.vPc == null) {
-        return;
-      }
-      l.a(this.vTN, -1);
-      return;
-    }
-    this.vTN.cIs();
+    l.dNa();
+    l.it(this.val$context);
+    ab.d("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]show rating dialog from enjoy app dialog.");
+    AppMethodBeat.o(34579);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.l.1
  * JD-Core Version:    0.7.0.1
  */

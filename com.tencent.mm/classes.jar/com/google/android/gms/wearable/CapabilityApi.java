@@ -8,6 +8,7 @@ import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
+@Deprecated
 public abstract interface CapabilityApi
 {
   public static final String ACTION_CAPABILITY_CHANGED = "com.google.android.gms.wearable.CAPABILITY_CHANGED";
@@ -35,10 +36,14 @@ public abstract interface CapabilityApi
   @Retention(RetentionPolicy.SOURCE)
   public static @interface CapabilityFilterType {}
   
+  @Deprecated
   public static abstract interface CapabilityListener
   {
     public abstract void onCapabilityChanged(CapabilityInfo paramCapabilityInfo);
   }
+  
+  @Retention(RetentionPolicy.SOURCE)
+  public static @interface NodeFilterType {}
 }
 
 

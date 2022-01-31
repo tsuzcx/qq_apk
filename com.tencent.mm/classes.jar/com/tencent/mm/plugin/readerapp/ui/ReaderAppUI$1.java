@@ -4,9 +4,8 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.readerapp.a.d;
-import com.tencent.mm.plugin.readerapp.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class ReaderAppUI$1
   implements View.OnCreateContextMenuListener
@@ -15,26 +14,28 @@ final class ReaderAppUI$1
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
+    AppMethodBeat.i(76813);
     int i = ((Integer)paramView.getTag()).intValue();
     paramContextMenu.clear();
-    if (ReaderAppUI.a(this.noS) == 20) {
-      paramContextMenu.setHeaderTitle(a.g.hardcode_plugin_readerappnews_nick);
+    if (ReaderAppUI.a(this.pUg) == 20) {
+      paramContextMenu.setHeaderTitle(2131300614);
     }
     for (;;)
     {
-      if (20 == ReaderAppUI.a(this.noS))
+      if (20 == ReaderAppUI.a(this.pUg))
       {
-        if (this.noR) {
-          paramContextMenu.add(i, 0, 1, a.g.readerapp_menu_transmit);
+        if (this.pUf) {
+          paramContextMenu.add(i, 0, 1, 2131302296);
         }
-        if (d.SP("favorite")) {
-          paramContextMenu.add(i, 1, 2, a.g.plugin_favorite_opt);
+        if (d.ahR("favorite")) {
+          paramContextMenu.add(i, 1, 2, 2131302102);
         }
-        ReaderAppUI.a(this.noS, ((Integer)paramView.getTag(a.d.reader_msgindex)).intValue());
+        ReaderAppUI.a(this.pUg, ((Integer)paramView.getTag(2131820655)).intValue());
       }
-      paramContextMenu.add(i, 2, 3, a.g.readerapp_menu_delete);
+      paramContextMenu.add(i, 2, 3, 2131302295);
+      AppMethodBeat.o(76813);
       return;
-      paramContextMenu.setHeaderTitle(a.g.hardcode_plugin_readerappweibo_nick);
+      paramContextMenu.setHeaderTitle(2131300617);
     }
   }
 }

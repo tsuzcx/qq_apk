@@ -2,35 +2,44 @@ package com.tencent.mm.plugin.facedetect.ui;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 final class FaceDetectPrepareUI$a
   extends Handler
 {
-  private WeakReference<FaceDetectPrepareUI> jQC = null;
+  private WeakReference<FaceDetectPrepareUI> mkX;
   
   private FaceDetectPrepareUI$a(FaceDetectPrepareUI paramFaceDetectPrepareUI)
   {
-    this.jQC = new WeakReference(paramFaceDetectPrepareUI);
+    AppMethodBeat.i(424);
+    this.mkX = null;
+    this.mkX = new WeakReference(paramFaceDetectPrepareUI);
+    AppMethodBeat.o(424);
   }
   
   public final void handleMessage(Message paramMessage)
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo client msg.what: %d", new Object[] { Integer.valueOf(paramMessage.what) });
-    if ((this.jQC != null) && (this.jQC.get() != null)) {}
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      FaceDetectPrepareUI.a((FaceDetectPrepareUI)this.jQC.get(), paramMessage);
-      return;
-    case 1: 
-      FaceDetectPrepareUI.b((FaceDetectPrepareUI)this.jQC.get(), paramMessage);
-      return;
+    AppMethodBeat.i(425);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo client msg.what: %d", new Object[] { Integer.valueOf(paramMessage.what) });
+    if ((this.mkX != null) && (this.mkX.get() != null)) {
+      switch (paramMessage.what)
+      {
+      }
     }
-    FaceDetectPrepareUI.c((FaceDetectPrepareUI)this.jQC.get(), paramMessage);
+    for (;;)
+    {
+      AppMethodBeat.o(425);
+      return;
+      FaceDetectPrepareUI.a((FaceDetectPrepareUI)this.mkX.get(), paramMessage);
+      AppMethodBeat.o(425);
+      return;
+      FaceDetectPrepareUI.b((FaceDetectPrepareUI)this.mkX.get(), paramMessage);
+      AppMethodBeat.o(425);
+      return;
+      FaceDetectPrepareUI.c((FaceDetectPrepareUI)this.mkX.get(), paramMessage);
+    }
   }
 }
 

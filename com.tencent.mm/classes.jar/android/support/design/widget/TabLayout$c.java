@@ -9,12 +9,12 @@ final class TabLayout$c
   
   public final void onChanged()
   {
-    this.kI.aV();
+    this.lG.bF();
   }
   
   public final void onInvalidated()
   {
-    this.kI.aV();
+    this.lG.bF();
   }
 }
 

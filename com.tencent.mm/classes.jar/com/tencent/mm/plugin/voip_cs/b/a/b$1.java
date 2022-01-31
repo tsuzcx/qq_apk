@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.voip_cs.b.c;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class b$1
-  implements am.a
+  implements ap.a
 {
   b$1(b paramb) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    y.i("MicroMsg.voipcs.VoipCSViewManager", "voipcs invite time out!opposite not responese");
-    c.bSQ().aYU = 1;
-    this.qeI.AE(6);
+    AppMethodBeat.i(135318);
+    ab.i("MicroMsg.voipcs.VoipCSViewManager", "voipcs invite time out!opposite not responese");
+    c.cQo().dataType = 1;
+    this.tLv.If(6);
+    AppMethodBeat.o(135318);
     return true;
   }
 }

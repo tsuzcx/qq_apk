@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.appbrand.appcache.b.a;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.protocal.c.and;
-import com.tencent.mm.protocal.c.ane;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.ass;
+import com.tencent.mm.protocal.protobuf.ast;
 import com.tencent.mm.vending.g.b;
 import com.tencent.mm.vending.j.c;
 
 final class a$2
-  implements com.tencent.mm.vending.c.a<c<and, ane>, a.a<ane>>
+  implements com.tencent.mm.vending.c.a<c<ass, ast>, a.a<ast>>
 {
   a$2(a parama, b paramb, boolean paramBoolean, int paramInt) {}
 }

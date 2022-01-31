@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/a4c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/a4d" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:orientation="vertical" android:id="@id/a4e" android:layout_width="fill_parent" android:layout_height="@dimen/v3">
-            <ImageView android:id="@id/sh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-            <ImageView android:id="@id/a4b" android:background="@drawable/dn" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <LinearLayout android:paddingBottom="@dimen/l3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-            <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sr" android:layout_marginRight="@dimen/sr">
-                <include android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" layout="@layout/gg" />
-                <ImageView android:id="@id/a4f" android:background="@raw/chatting_item_biz_pic_icon" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            </RelativeLayout>
+    <ScrollView android:scrollbars="none" style="@style/ni">
+        <LinearLayout android:gravity="center_horizontal" style="@style/l0">
+            <ImageView android:id="@id/a6m" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aik" />
+            <TextView android:gravity="center" android:id="@id/a6n" android:background="@drawable/bgw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" style="@style/l1" />
+            <Button android:textSize="20.0dip" android:id="@id/a6o" android:visibility="gone" android:text="@string/a6n" style="@style/nq" />
+            <Button android:id="@id/a6p" android:visibility="gone" android:text="@string/f4u" style="@style/nw" />
         </LinearLayout>
-        <ImageView android:id="@id/a47" android:background="@drawable/dn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/a4e" android:layout_alignBottom="@id/a4e" />
-    </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

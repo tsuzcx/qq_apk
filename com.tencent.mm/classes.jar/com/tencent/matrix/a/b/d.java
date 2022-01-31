@@ -1,15 +1,35 @@
 package com.tencent.matrix.a.b;
 
 import android.os.Handler;
+import android.os.HandlerThread;
+import com.tencent.matrix.g.b;
 
 public final class d
 {
-  public Handler bny;
-  public boolean started = false;
+  Handler mDetectHandler;
+  private boolean started = false;
   
-  public final void h(Runnable paramRunnable)
+  public final void j(Runnable paramRunnable)
   {
-    this.bny.post(paramRunnable);
+    this.mDetectHandler.post(paramRunnable);
+  }
+  
+  public final void quit()
+  {
+    if (this.started)
+    {
+      this.mDetectHandler.removeCallbacksAndMessages(null);
+      this.started = false;
+    }
+  }
+  
+  public final void start()
+  {
+    if (this.started) {
+      return;
+    }
+    this.mDetectHandler = new Handler(b.zI().getLooper());
+    this.started = true;
   }
 }
 

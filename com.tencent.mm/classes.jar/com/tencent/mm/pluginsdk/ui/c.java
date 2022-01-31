@@ -1,14 +1,16 @@
 package com.tencent.mm.pluginsdk.ui;
 
 import android.graphics.Bitmap;
-import com.tencent.mm.ag.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.d.a;
+import com.tencent.mm.sdk.platformtools.d;
 
 public final class c
   extends i
   implements d.a
 {
-  a rZc = (a)this.nav;
-  int rZd;
+  private c.a vPT;
+  private int vPU;
   
   public c(String paramString)
   {
@@ -17,66 +19,35 @@ public final class c
   
   private c(String paramString, byte paramByte)
   {
-    super(new a(a.b.cmd()), paramString, (byte)0);
+    super(new c.a(a.b.dmT()), paramString, (byte)0);
+    AppMethodBeat.i(79674);
+    this.vPT = ((c.a)this.pFL);
+    AppMethodBeat.o(79674);
   }
   
-  private static final class a
-    implements i.a
+  private void af(Bitmap paramBitmap)
   {
-    Bitmap iez = null;
-    private i.a nav;
-    
-    public a(i.a parama)
-    {
-      this.nav = parama;
+    if (this.vPT != null) {
+      this.vPT.jVm = paramBitmap;
     }
-    
-    public final void a(i parami)
+  }
+  
+  public final void LR(int paramInt)
+  {
+    AppMethodBeat.i(79675);
+    if ((this.vPU == paramInt) && (this.vPT != null) && (this.vPT.jVm != null) && (!this.vPT.jVm.isRecycled()))
     {
-      if (this.nav != null) {
-        this.nav.a(parami);
-      }
+      AppMethodBeat.o(79675);
+      return;
     }
-    
-    public final Bitmap b(String paramString, int paramInt1, int paramInt2, int paramInt3)
-    {
-      if (this.nav != null) {
-        return this.nav.b(paramString, paramInt1, paramInt2, paramInt3);
-      }
-      return null;
-    }
-    
-    public final Bitmap ch(String paramString)
-    {
-      if (this.nav != null) {
-        return this.nav.ch(paramString);
-      }
-      return null;
-    }
-    
-    public final Bitmap ci(String paramString)
-    {
-      if (this.nav != null) {
-        return this.nav.ci(paramString);
-      }
-      return null;
-    }
-    
-    public final Bitmap sG()
-    {
-      if ((this.iez != null) && (!this.iez.isRecycled())) {
-        return this.iez;
-      }
-      if (this.nav != null) {
-        return this.nav.sG();
-      }
-      return null;
-    }
+    this.vPU = paramInt;
+    af(d.Na(paramInt));
+    AppMethodBeat.o(79675);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.c
  * JD-Core Version:    0.7.0.1
  */

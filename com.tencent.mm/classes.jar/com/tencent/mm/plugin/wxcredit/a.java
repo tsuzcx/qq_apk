@@ -1,30 +1,33 @@
 package com.tencent.mm.plugin.wxcredit;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
 import java.util.HashMap;
 
 public class a
-  implements ar
+  implements at
 {
   static
   {
-    com.tencent.mm.wallet_core.a.i("WXCreditOpenProcess", e.class);
-    com.tencent.mm.wallet_core.a.i("WXCreditManagerProcess", d.class);
+    AppMethodBeat.i(48599);
+    com.tencent.mm.wallet_core.a.h("WXCreditOpenProcess", e.class);
+    com.tencent.mm.wallet_core.a.h("WXCreditManagerProcess", d.class);
+    AppMethodBeat.o(48599);
   }
   
-  public final void bh(boolean paramBoolean) {}
+  public void clearPluginData(int paramInt) {}
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease() {}
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean) {}
+  
+  public void onAccountRelease() {}
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

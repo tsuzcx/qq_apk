@@ -1,112 +1,204 @@
 package com.tencent.mm.ui.widget.b;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.mm.ci.a.j;
-import com.tencent.mm.ui.ap;
+import android.content.res.Resources.Theme;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout.d;
+import android.support.v7.app.e;
+import android.util.TypedValue;
+import android.view.Display;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.am;
 
 public final class b
+  extends e
 {
-  private static DisplayMetrics viC = null;
+  private Context mContext;
   
-  public static b.a a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  public b(Context paramContext)
   {
-    b.a locala = new b.a();
-    if (viC == null) {
-      viC = paramContext.getResources().getDisplayMetrics();
-    }
-    DisplayMetrics localDisplayMetrics = viC;
-    int j = ap.fromDPToPix(paramContext, 95);
-    int i = paramInt1;
-    if (paramInt1 < j) {
-      i = j;
-    }
-    if (paramInt2 < 0)
+    this(paramContext, (byte)0);
+  }
+  
+  private b(Context paramContext, byte paramByte)
+  {
+    super(paramContext, 2131493185);
+    AppMethodBeat.i(112592);
+    this.mContext = paramContext;
+    eS();
+    AppMethodBeat.o(112592);
+  }
+  
+  private View b(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(112597);
+    Object localObject1 = getWindow();
+    Object localObject2;
+    label70:
+    ViewGroup localViewGroup;
+    View localView;
+    if (isLandscape())
     {
-      locala.hyd = 0;
-      locala.hye = (localDisplayMetrics.widthPixels - (paramInt5 * 2 + i));
-      paramInt1 = 0;
-      paramInt2 = 1;
-      if (paramInt3 >= 0)
-      {
-        i = paramInt3;
-        if (paramInt3 <= localDisplayMetrics.heightPixels) {}
-      }
-      else
-      {
-        i = (int)(localDisplayMetrics.heightPixels / 2.0F);
-      }
-      if (!paramBoolean) {
+      ((Window)localObject1).setGravity(5);
+      ((Window)localObject1).setWindowAnimations(2131493543);
+      ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
+      localObject2 = ((Window)localObject1).getAttributes();
+      if (!isLandscape()) {
         break label270;
       }
-      if (i < paramInt4 + paramInt5) {
-        break label309;
-      }
-      locala.pko = (i - paramInt5 - paramInt4);
-      paramInt3 = 0;
-      paramInt4 = 1;
-      label143:
-      if (paramInt4 == 0) {
-        break label327;
-      }
-      locala.pko -= paramInt5 * 2;
-    }
-    for (;;)
-    {
-      if ((paramInt2 == 0) || (paramInt3 == 0))
+      ((WindowManager.LayoutParams)localObject2).width = -2;
+      ((WindowManager.LayoutParams)localObject2).height = -1;
+      ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
+      localViewGroup = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2130970135, null);
+      localView = localViewGroup.findViewById(2131823374);
+      localObject1 = paramView;
+      if (paramInt != 0)
       {
-        if ((paramInt1 != 0) && (paramInt3 != 0))
-        {
-          locala.wok = a.j.PopRightTopAnimation;
-          return locala;
-          if (localDisplayMetrics.widthPixels - (paramInt2 + i + paramInt5 * 2) < 0)
-          {
-            locala.hyd = (paramInt2 - i - paramInt5);
-            locala.hye = (localDisplayMetrics.widthPixels - paramInt2 - paramInt5);
-            paramInt1 = 1;
-            paramInt2 = 0;
-            break;
-          }
-          locala.hyd = paramInt2;
-          locala.hye = (localDisplayMetrics.widthPixels - (paramInt2 + i));
-          paramInt1 = 0;
-          paramInt2 = 1;
-          break;
-          label270:
-          if (localDisplayMetrics.heightPixels - i < paramInt5 * 3 + paramInt4)
-          {
-            locala.pko = (i - paramInt5 - paramInt4);
-            paramInt3 = 0;
-            paramInt4 = 1;
-            break label143;
-          }
-          label309:
-          locala.pko = (i - paramInt5);
-          paramInt3 = 1;
-          paramInt4 = 0;
-          break label143;
-          label327:
-          if (paramInt3 == 0) {
-            continue;
-          }
-          locala.pko += paramInt5 * 2;
-          continue;
+        localObject1 = paramView;
+        if (paramView == null) {
+          localObject1 = getLayoutInflater().inflate(paramInt, localViewGroup, false);
         }
-        if ((paramInt2 != 0) && (paramInt4 != 0))
-        {
-          locala.wok = a.j.PopLeftBottomAnimation;
-          return locala;
-        }
-        if ((paramInt1 != 0) && (paramInt4 != 0))
-        {
-          locala.wok = a.j.PopRightBottomAnimation;
-          return locala;
+      }
+      if (!isLandscape()) {
+        break label305;
+      }
+      localObject2 = (FrameLayout)localViewGroup.findViewById(2131824697);
+      paramView = (View)localObject2;
+      if (localObject2 != null)
+      {
+        paramView = (CoordinatorLayout.d)((FrameLayout)localObject2).getLayoutParams();
+        if (!am.hO(this.mContext)) {
+          break label329;
         }
       }
     }
-    locala.wok = a.j.PopLeftTopAnimation;
-    return locala;
+    label270:
+    label305:
+    label319:
+    label329:
+    for (paramInt = am.fx(this.mContext);; paramInt = 0)
+    {
+      if (getRotation() == 1)
+      {
+        paramView.setMargins(0, 0, paramInt, 0);
+        label201:
+        ((FrameLayout)localObject2).setLayoutParams(paramView);
+        paramView = (View)localObject2;
+        label210:
+        paramView.setVisibility(0);
+        if (paramLayoutParams != null) {
+          break label319;
+        }
+        paramView.addView((View)localObject1);
+      }
+      for (;;)
+      {
+        if (dgg()) {
+          localView.setOnClickListener(new b.1(this));
+        }
+        AppMethodBeat.o(112597);
+        return localViewGroup;
+        ((Window)localObject1).setGravity(80);
+        ((Window)localObject1).setWindowAnimations(2131493119);
+        break;
+        ((WindowManager.LayoutParams)localObject2).width = -1;
+        ((WindowManager.LayoutParams)localObject2).height = -2;
+        break label70;
+        if (getRotation() != 3) {
+          break label201;
+        }
+        paramView.setMargins(paramInt, 0, 0, 0);
+        break label201;
+        paramView = (FrameLayout)localViewGroup.findViewById(2131824696);
+        break label210;
+        paramView.addView((View)localObject1, paramLayoutParams);
+      }
+    }
+  }
+  
+  private boolean dgg()
+  {
+    AppMethodBeat.i(112598);
+    if (Build.VERSION.SDK_INT < 11)
+    {
+      AppMethodBeat.o(112598);
+      return true;
+    }
+    TypedValue localTypedValue = new TypedValue();
+    if (getContext().getTheme().resolveAttribute(16843611, localTypedValue, true))
+    {
+      if (localTypedValue.data != 0)
+      {
+        AppMethodBeat.o(112598);
+        return true;
+      }
+      AppMethodBeat.o(112598);
+      return false;
+    }
+    AppMethodBeat.o(112598);
+    return false;
+  }
+  
+  @SuppressLint({"WrongConstant"})
+  private int getRotation()
+  {
+    AppMethodBeat.i(112600);
+    int i = getWindow().getWindowManager().getDefaultDisplay().getRotation();
+    AppMethodBeat.o(112600);
+    return i;
+  }
+  
+  private boolean isLandscape()
+  {
+    AppMethodBeat.i(112599);
+    if (this.mContext.getResources().getConfiguration().orientation == 2)
+    {
+      AppMethodBeat.o(112599);
+      return true;
+    }
+    AppMethodBeat.o(112599);
+    return false;
+  }
+  
+  public final void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(112596);
+    super.onCreate(paramBundle);
+    getWindow().setLayout(-1, -1);
+    AppMethodBeat.o(112596);
+  }
+  
+  public final void setContentView(int paramInt)
+  {
+    AppMethodBeat.i(112595);
+    super.setContentView(b(paramInt, null, null));
+    AppMethodBeat.o(112595);
+  }
+  
+  public final void setContentView(View paramView)
+  {
+    AppMethodBeat.i(112593);
+    super.setContentView(b(0, paramView, null));
+    AppMethodBeat.o(112593);
+  }
+  
+  public final void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
+  {
+    AppMethodBeat.i(112594);
+    super.setContentView(b(0, paramView, paramLayoutParams));
+    AppMethodBeat.o(112594);
   }
 }
 

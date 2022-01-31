@@ -1,22 +1,44 @@
 package com.tencent.mm.view.e;
 
-import android.text.TextUtils;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.emotion.EmojiInfo;
 
 final class a$7
-  implements j.a
+  implements k.a
 {
   a$7(a parama) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    if ((!TextUtils.isEmpty(paramString)) && ((paramString.equals("event_update_group")) || (paramString.equalsIgnoreCase("productID"))))
+    AppMethodBeat.i(63029);
+    ab.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "emoji storage notify %s", new Object[] { paramString });
+    if (paramString == null)
     {
-      y.d("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "modify emoji group .");
-      this.wzg.cLR();
+      AppMethodBeat.o(63029);
+      return;
     }
+    if (paramString.equalsIgnoreCase("delete_emoji_info_notify"))
+    {
+      this.AUz.dRo();
+      AppMethodBeat.o(63029);
+      return;
+    }
+    if (!g.RJ().QU())
+    {
+      AppMethodBeat.o(63029);
+      return;
+    }
+    paramm = ((com.tencent.mm.plugin.emoji.b.d)g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kt(paramString);
+    if (paramm != null)
+    {
+      ab.d("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "update emoji %s, group %x.", new Object[] { paramString, Integer.valueOf(paramm.field_catalog) });
+      this.AUz.dRo();
+    }
+    AppMethodBeat.o(63029);
   }
 }
 

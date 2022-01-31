@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.messenger.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.a.e.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashSet;
 import java.util.Map;
 
@@ -12,16 +13,18 @@ final class a$2
   
   public final void run()
   {
-    y.i("MicroMsg.SysMsgTemplateImp", "hy: adding Received listener: %s", new Object[] { this.mdL });
-    HashSet localHashSet2 = (HashSet)a.a(this.mdK).get(this.mdL);
+    AppMethodBeat.i(136920);
+    ab.i("MicroMsg.SysMsgTemplateImp", "hy: adding Received listener: %s", new Object[] { this.oEh });
+    HashSet localHashSet2 = (HashSet)a.a(this.oEg).get(this.oEh);
     HashSet localHashSet1 = localHashSet2;
     if (localHashSet2 == null) {
       localHashSet1 = new HashSet();
     }
-    if (!localHashSet1.contains(this.mdM)) {
-      localHashSet1.add(this.mdM);
+    if (!localHashSet1.contains(this.oEi)) {
+      localHashSet1.add(this.oEi);
     }
-    a.a(this.mdK).put(this.mdL, localHashSet1);
+    a.a(this.oEg).put(this.oEh, localHashSet1);
+    AppMethodBeat.o(136920);
   }
 }
 

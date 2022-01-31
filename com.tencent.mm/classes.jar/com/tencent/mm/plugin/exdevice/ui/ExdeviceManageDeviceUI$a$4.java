@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.exdevice.h.b;
 import com.tencent.mm.plugin.exdevice.model.x;
-import com.tencent.mm.protocal.c.aop;
+import com.tencent.mm.protocal.protobuf.auh;
 
 final class ExdeviceManageDeviceUI$a$4
   implements Runnable
@@ -14,11 +15,13 @@ final class ExdeviceManageDeviceUI$a$4
   
   public final void run()
   {
-    Object localObject = new aop();
-    ((aop)localObject).hQb = this.jDI.field_deviceID;
-    ((aop)localObject).syI = this.jDI.field_deviceType;
-    localObject = new x((aop)localObject, 2);
-    au.Dk().a((m)localObject, 0);
+    AppMethodBeat.i(19985);
+    Object localObject = new auh();
+    ((auh)localObject).jJD = this.lNg.field_deviceID;
+    ((auh)localObject).wsq = this.lNg.field_deviceType;
+    localObject = new x((auh)localObject, 2);
+    aw.Rc().a((m)localObject, 0);
+    AppMethodBeat.o(19985);
   }
 }
 

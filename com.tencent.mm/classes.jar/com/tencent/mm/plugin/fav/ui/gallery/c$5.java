@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.fav.ui.gallery;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$5
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class c$5
   
   public final void onClick(View paramView)
   {
-    this.khw.aRP();
+    AppMethodBeat.i(74548);
+    this.mCh.byi();
+    AppMethodBeat.o(74548);
   }
 }
 

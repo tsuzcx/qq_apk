@@ -1,19 +1,24 @@
 package com.davemorrissey.labs.subscaleview.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class c
 {
-  public String aox;
   public int errCode;
+  public String errMsg;
   
   public c(int paramInt, String paramString)
   {
     this.errCode = paramInt;
-    this.aox = paramString;
+    this.errMsg = paramString;
   }
   
   public final String toString()
   {
-    return String.format("ImageDecodeResult{errCode: %d, errMsg: %s}", new Object[] { Integer.valueOf(this.errCode), this.aox });
+    AppMethodBeat.i(115607);
+    String str = String.format("ImageDecodeResult{errCode: %d, errMsg: %s}", new Object[] { Integer.valueOf(this.errCode), this.errMsg });
+    AppMethodBeat.o(115607);
+    return str;
   }
 }
 

@@ -1,73 +1,82 @@
 package com.tencent.mm.plugin.exdevice.i;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.b.c;
 import com.tencent.mm.plugin.exdevice.b.e;
 import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.plugin.exdevice.model.ae;
 import com.tencent.mm.plugin.exdevice.service.m;
 import com.tencent.mm.plugin.exdevice.service.u;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class f
   extends ae
 {
-  private e jzS;
-  private a jzT;
+  private e lJr;
+  private a lJs;
   private int mErrorCode;
   
   public f(int paramInt1, long paramLong, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
-    this.jzS = new e(paramLong, paramInt2, paramInt3, paramArrayOfByte);
+    AppMethodBeat.i(19734);
+    this.lJr = new e(paramLong, paramInt2, paramInt3, paramArrayOfByte);
     this.mErrorCode = paramInt1;
+    AppMethodBeat.o(19734);
   }
   
   public final boolean a(m paramm, d paramd)
   {
+    AppMethodBeat.i(19735);
     boolean bool;
-    if (!u.aMm().dX(this.jzS.hXu))
+    if (!u.bqz().jp(this.lJr.jRn))
     {
-      y.e("MicroMsg.exdevice.MMInitTaskExcuter", "This device send other cmd before do auth, device id = %d", new Object[] { Long.valueOf(this.jzS.hXu) });
-      this.jzS.a(-2, "", new byte[0], new byte[0], 0, 0);
-      this.jzT = new a(this.jzS, paramd);
-      bool = this.jzT.b(paramm);
-      y.i("MicroMsg.exdevice.MMInitTaskExcuter", "init start task : %b", new Object[] { Boolean.valueOf(bool) });
+      ab.e("MicroMsg.exdevice.MMInitTaskExcuter", "This device send other cmd before do auth, device id = %d", new Object[] { Long.valueOf(this.lJr.jRn) });
+      this.lJr.a(-2, "", new byte[0], new byte[0], 0, 0);
+      this.lJs = new a(this.lJr, paramd);
+      bool = this.lJs.b(paramm);
+      ab.i("MicroMsg.exdevice.MMInitTaskExcuter", "init start task : %b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(19735);
       return bool;
     }
     if ((-5 == this.mErrorCode) || (-3 == this.mErrorCode) || (-4 == this.mErrorCode))
     {
-      y.e("MicroMsg.exdevice.MMInitTaskExcuter", "Error Code = %d, reply errorcode to device and close channel", new Object[] { Integer.valueOf(this.mErrorCode) });
-      this.jzS.a(-1, "", new byte[0], new byte[0], 0, 0);
-      this.jzT = new a(this.jzS, paramd);
-      bool = this.jzT.b(paramm);
-      y.i("MicroMsg.exdevice.MMInitTaskExcuter", "init start task : %b", new Object[] { Boolean.valueOf(bool) });
+      ab.e("MicroMsg.exdevice.MMInitTaskExcuter", "Error Code = %d, reply errorcode to device and close channel", new Object[] { Integer.valueOf(this.mErrorCode) });
+      this.lJr.a(-1, "", new byte[0], new byte[0], 0, 0);
+      this.lJs = new a(this.lJr, paramd);
+      bool = this.lJs.b(paramm);
+      ab.i("MicroMsg.exdevice.MMInitTaskExcuter", "init start task : %b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(19735);
       return bool;
     }
-    Object localObject = (com.tencent.mm.plugin.exdevice.e.f)this.jzS.aLk();
+    Object localObject = (com.tencent.mm.plugin.exdevice.e.f)this.lJr.bpx();
     if (localObject == null)
     {
-      y.e("MicroMsg.exdevice.MMInitTaskExcuter", "Init Request parse failed, Tell device before stop this task");
-      this.jzS.a(-4, "", new byte[0], new byte[0], 0, 0);
-      this.jzT = new a(this.jzS, paramd);
-      bool = this.jzT.b(paramm);
-      y.i("MicroMsg.exdevice.MMInitTaskExcuter", "init start task : %b", new Object[] { Boolean.valueOf(bool) });
+      ab.e("MicroMsg.exdevice.MMInitTaskExcuter", "Init Request parse failed, Tell device before stop this task");
+      this.lJr.a(-4, "", new byte[0], new byte[0], 0, 0);
+      this.lJs = new a(this.lJr, paramd);
+      bool = this.lJs.b(paramm);
+      ab.i("MicroMsg.exdevice.MMInitTaskExcuter", "init start task : %b", new Object[] { Boolean.valueOf(bool) });
+      AppMethodBeat.o(19735);
       return bool;
     }
-    if (((com.tencent.mm.plugin.exdevice.e.f)localObject).jxo != null) {}
-    for (byte[] arrayOfByte = ((com.tencent.mm.plugin.exdevice.e.f)localObject).jxo.toByteArray();; arrayOfByte = null)
+    if (((com.tencent.mm.plugin.exdevice.e.f)localObject).lGN != null) {}
+    for (byte[] arrayOfByte = ((com.tencent.mm.plugin.exdevice.e.f)localObject).lGN.toByteArray();; arrayOfByte = null)
     {
-      if (((com.tencent.mm.plugin.exdevice.e.f)localObject).jxn != null) {}
-      for (localObject = ((com.tencent.mm.plugin.exdevice.e.f)localObject).jxn.toByteArray();; localObject = null)
+      if (((com.tencent.mm.plugin.exdevice.e.f)localObject).lGM != null) {}
+      for (localObject = ((com.tencent.mm.plugin.exdevice.e.f)localObject).lGM.toByteArray();; localObject = null)
       {
-        ad.aLS();
-        int i = com.tencent.mm.plugin.exdevice.model.d.aLt();
+        ad.bqf();
+        int i = com.tencent.mm.plugin.exdevice.model.d.bpH();
         switch (i)
         {
         default: 
-          y.e("MicroMsg.exdevice.MMInitTaskExcuter", "initScene = %d, Cannot start init response", new Object[] { Integer.valueOf(i) });
+          ab.e("MicroMsg.exdevice.MMInitTaskExcuter", "initScene = %d, Cannot start init response", new Object[] { Integer.valueOf(i) });
         }
-        this.jzS.a(0, null, (byte[])localObject, arrayOfByte, i, (int)(com.tencent.mm.plugin.exdevice.j.b.aMX() / 1000L));
-        this.jzT = new a(this.jzS, paramd);
-        return this.jzT.b(paramm);
+        this.lJr.a(0, null, (byte[])localObject, arrayOfByte, i, (int)(com.tencent.mm.plugin.exdevice.j.b.brl() / 1000L));
+        this.lJs = new a(this.lJr, paramd);
+        bool = this.lJs.b(paramm);
+        AppMethodBeat.o(19735);
+        return bool;
       }
     }
   }

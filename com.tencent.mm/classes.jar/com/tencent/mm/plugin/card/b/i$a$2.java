@@ -4,8 +4,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.Map;
 
 final class i$a$2
@@ -15,29 +16,33 @@ final class i$a$2
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {
-      y.i("MicroMsg.CardLbsOrBluetooth", "Receive intent failed");
-    }
-    int i;
-    do
+    AppMethodBeat.i(87704);
+    if (paramIntent == null)
     {
-      do
-      {
-        return;
-        paramContext = BluetoothAdapter.getDefaultAdapter();
-      } while (paramContext == null);
-      i = paramContext.getState();
-      y.d("MicroMsg.CardLbsOrBluetooth", "state:%d", new Object[] { Integer.valueOf(i) });
+      ab.i("MicroMsg.CardLbsOrBluetooth", "Receive intent failed");
+      AppMethodBeat.o(87704);
+      return;
+    }
+    paramContext = BluetoothAdapter.getDefaultAdapter();
+    if (paramContext != null)
+    {
+      int i = paramContext.getState();
+      ab.d("MicroMsg.CardLbsOrBluetooth", "state:%d", new Object[] { Integer.valueOf(i) });
       if (i == 12)
       {
-        this.ikQ.ikL = true;
-        ai.l(this.ikQ.ikO, this.ikQ.ikN);
+        this.klO.klJ = true;
+        al.p(this.klO.klM, this.klO.klL);
+        AppMethodBeat.o(87704);
         return;
       }
-    } while (i != 10);
-    ai.S(this.ikQ.ikO);
-    this.ikQ.ikL = false;
-    this.ikQ.ikM.clear();
+      if (i == 10)
+      {
+        al.ae(this.klO.klM);
+        this.klO.klJ = false;
+        this.klO.klK.clear();
+      }
+    }
+    AppMethodBeat.o(87704);
   }
 }
 

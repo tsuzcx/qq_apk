@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MobileVerifyUI$11
   implements View.OnKeyListener
@@ -11,11 +12,14 @@ final class MobileVerifyUI$11
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(125278);
     if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
     {
-      MobileVerifyUI.e(this.fpS);
+      MobileVerifyUI.e(this.gHp);
+      AppMethodBeat.o(125278);
       return true;
     }
+    AppMethodBeat.o(125278);
     return false;
   }
 }

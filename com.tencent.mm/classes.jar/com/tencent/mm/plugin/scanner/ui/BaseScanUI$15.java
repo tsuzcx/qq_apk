@@ -1,13 +1,21 @@
 package com.tencent.mm.plugin.scanner.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mq;
+import com.tencent.mm.sdk.b.a;
+
 final class BaseScanUI$15
-  implements Runnable
+  implements ScanMaskView.a
 {
   BaseScanUI$15(BaseScanUI paramBaseScanUI) {}
   
-  public final void run()
+  public final void onAnimationEnd()
   {
-    this.nJg.bxB();
+    AppMethodBeat.i(138471);
+    mq localmq = new mq();
+    localmq.cCN.action = 2;
+    a.ymk.l(localmq);
+    AppMethodBeat.o(138471);
   }
 }
 

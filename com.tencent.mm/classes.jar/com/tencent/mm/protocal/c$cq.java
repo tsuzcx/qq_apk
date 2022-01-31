@@ -5,7 +5,7 @@ public final class c$cq
 {
   public c$cq()
   {
-    super("getSearchSnsImageList", "", 10000, false);
+    super("getSearchAvatarList", "", 10000, false);
   }
 }
 

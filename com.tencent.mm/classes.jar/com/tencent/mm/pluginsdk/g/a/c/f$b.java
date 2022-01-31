@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.g.a.c;
 
 public abstract interface f$b
 {
-  public abstract String cls();
+  public abstract String dlZ();
 }
 
 

@@ -2,11 +2,12 @@ package com.tencent.mm.plugin.remittance.bankcard.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.widget.b.d;
 
 final class BankRemitBankcardInputUI$12
   implements MenuItem.OnMenuItemClickListener
@@ -15,13 +16,24 @@ final class BankRemitBankcardInputUI$12
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.d("MicroMsg.BankRemitBankcardInputUI", "help click");
-    BankRemitBankcardInputUI.a(this.nwd, new d(this.nwd.mController.uMN, 1, false));
-    BankRemitBankcardInputUI.a(this.nwd).phH = new BankRemitBankcardInputUI.12.1(this);
-    BankRemitBankcardInputUI.a(this.nwd).phI = new BankRemitBankcardInputUI.12.2(this);
-    this.nwd.VH();
-    BankRemitBankcardInputUI.a(this.nwd).cfU();
-    h.nFQ.f(14673, new Object[] { Integer.valueOf(2) });
+    AppMethodBeat.i(44526);
+    ab.d("MicroMsg.BankRemitBankcardInputUI", "help click");
+    BankRemitBankcardInputUI.a(this.qhe, new d(this.qhe.getContext(), 1, false));
+    BankRemitBankcardInputUI.a(this.qhe).sao = new n.c()
+    {
+      public final void onCreateMMMenu(l paramAnonymousl)
+      {
+        AppMethodBeat.i(44524);
+        paramAnonymousl.add(0, 0, 0, BankRemitBankcardInputUI.12.this.qhe.getString(2131297495));
+        paramAnonymousl.add(0, 1, 0, BankRemitBankcardInputUI.12.this.qhe.getString(2131297493));
+        AppMethodBeat.o(44524);
+      }
+    };
+    BankRemitBankcardInputUI.a(this.qhe).sap = new BankRemitBankcardInputUI.12.2(this);
+    this.qhe.hideTenpayKB();
+    BankRemitBankcardInputUI.a(this.qhe).crd();
+    h.qsU.e(14673, new Object[] { Integer.valueOf(2) });
+    AppMethodBeat.o(44526);
     return false;
   }
 }

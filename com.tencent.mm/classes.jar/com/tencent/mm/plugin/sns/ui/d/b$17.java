@@ -2,12 +2,13 @@ package com.tencent.mm.plugin.sns.ui.d;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.plugin.sns.model.aj;
-import com.tencent.mm.plugin.sns.model.aw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.ak;
+import com.tencent.mm.plugin.sns.model.ax;
 import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.plugin.sns.ui.au.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.ui.av.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$17
   implements View.OnClickListener
@@ -16,18 +17,20 @@ final class b$17
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(40265);
     if ((paramView.getTag() instanceof String))
     {
       paramView = (String)paramView.getTag();
-      y.d("MicroMsg.TimelineClickListener", "localId " + paramView);
-      aj.xP(v.OV(paramView));
-      aj.xN(v.OV(paramView));
-      af.bDB().bCp();
-      this.ppl.bHo();
-      if (this.ppl.ppg != null) {
-        this.ppl.ppg.bJw();
+      ab.d("MicroMsg.TimelineClickListener", "localId ".concat(String.valueOf(paramView)));
+      ak.DP(v.abP(paramView));
+      ak.DN(v.abP(paramView));
+      ag.cpb().cnP();
+      this.skd.cts();
+      if (this.skd.sjY != null) {
+        this.skd.sjY.cvZ();
       }
     }
+    AppMethodBeat.o(40265);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.friend.a.a;
 import com.tencent.mm.ui.MMActivity.a;
 
@@ -11,9 +12,11 @@ final class c$1$3
   
   public final void c(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(13696);
     if ((paramInt1 == 1) && (paramInt2 == -1)) {
-      ((MobileFriendUI)c.d(this.fdV.fdU)).b(this.fdW);
+      ((MobileFriendUI)c.d(this.gvF.gvE)).b(this.gvG);
     }
+    AppMethodBeat.o(13696);
   }
 }
 

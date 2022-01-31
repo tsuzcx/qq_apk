@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.picker;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$2
   implements View.OnClickListener
@@ -10,15 +11,25 @@ final class b$2
   
   public final void onClick(View paramView)
   {
-    b localb = this.wow;
-    if (b.b(this.wow) == null) {}
-    for (paramView = null;; paramView = b.b(this.wow).asP())
+    Object localObject = null;
+    AppMethodBeat.i(112821);
+    b localb = this.AIX;
+    if (b.b(this.AIX) == null)
     {
-      if (b.a(this.wow) != null) {
-        b.a(this.wow).asP();
+      paramView = null;
+      if (b.a(this.AIX) != null) {
+        break label61;
       }
-      b.a(localb, true, paramView);
+    }
+    for (;;)
+    {
+      b.a(localb, true, paramView, localObject);
+      AppMethodBeat.o(112821);
       return;
+      paramView = b.b(this.AIX).aRR();
+      break;
+      label61:
+      localObject = b.a(this.AIX).aRR();
     }
   }
 }

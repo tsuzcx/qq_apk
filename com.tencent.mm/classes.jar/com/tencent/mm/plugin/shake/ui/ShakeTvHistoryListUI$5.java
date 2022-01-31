@@ -1,15 +1,16 @@
 package com.tencent.mm.plugin.shake.ui;
 
 import android.view.MenuItem;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.plugin.shake.d.a.c;
 import com.tencent.mm.plugin.shake.d.a.o;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.n.d;
 
 final class ShakeTvHistoryListUI$5
@@ -19,33 +20,36 @@ final class ShakeTvHistoryListUI$5
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(24897);
     switch (paramMenuItem.getItemId())
     {
     default: 
+      AppMethodBeat.o(24897);
       return;
     }
-    h.nFQ.f(12662, new Object[] { Integer.valueOf(1), bk.pm(ShakeTvHistoryListUI.d(this.odz)) });
-    paramMenuItem = m.bzW();
-    String str = ShakeTvHistoryListUI.d(this.odz);
-    if (bk.bl(str))
+    h.qsU.e(12662, new Object[] { Integer.valueOf(1), bo.nullAsNil(ShakeTvHistoryListUI.d(this.qRG)) });
+    paramMenuItem = m.clp();
+    String str = ShakeTvHistoryListUI.d(this.qRG);
+    if (bo.isNullOrNil(str))
     {
       paramInt = -1;
+      label93:
       if (paramInt >= 0) {
-        break label176;
+        break label185;
       }
-      y.i("MicroMsg.ShakeTvHistoryListUI", "delete tv history fail, ret[%d]", new Object[] { Integer.valueOf(paramInt) });
+      ab.i("MicroMsg.ShakeTvHistoryListUI", "delete tv history fail, ret[%d]", new Object[] { Integer.valueOf(paramInt) });
     }
     for (;;)
     {
-      ShakeTvHistoryListUI.a(this.odz).a(null, null);
-      return;
-      str = "username = '" + str + "'";
-      paramInt = paramMenuItem.dXw.delete(paramMenuItem.getTableName(), str, null);
-      y.d("MicroMsg.ShakeTvHistoryStorage", "delMsgByUserName = " + paramInt);
+      ShakeTvHistoryListUI.a(this.qRG).a(null, null);
       break;
-      label176:
-      paramMenuItem = new c(1, ShakeTvHistoryListUI.d(this.odz));
-      au.Dk().a(paramMenuItem, 0);
+      str = "username = '" + str + "'";
+      paramInt = paramMenuItem.db.delete(paramMenuItem.getTableName(), str, null);
+      ab.d("MicroMsg.ShakeTvHistoryStorage", "delMsgByUserName = ".concat(String.valueOf(paramInt)));
+      break label93;
+      label185:
+      paramMenuItem = new c(1, ShakeTvHistoryListUI.d(this.qRG));
+      aw.Rc().a(paramMenuItem, 0);
     }
   }
 }

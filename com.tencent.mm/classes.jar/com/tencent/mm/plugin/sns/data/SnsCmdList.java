@@ -3,17 +3,49 @@ package com.tencent.mm.plugin.sns.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 import java.util.List;
 
 public class SnsCmdList
   implements Parcelable
 {
-  public static final Parcelable.Creator<SnsCmdList> CREATOR = new SnsCmdList.1();
-  private int omP = 0;
-  private int omQ = 0;
-  public List<Integer> omR = new LinkedList();
-  public List<Integer> omS = new LinkedList();
+  public static final Parcelable.Creator<SnsCmdList> CREATOR;
+  private int rbe;
+  private int rbf;
+  public List<Integer> rbg;
+  public List<Integer> rbh;
+  
+  static
+  {
+    AppMethodBeat.i(35793);
+    CREATOR = new SnsCmdList.1();
+    AppMethodBeat.o(35793);
+  }
+  
+  public SnsCmdList()
+  {
+    AppMethodBeat.i(35789);
+    this.rbe = 0;
+    this.rbf = 0;
+    this.rbg = new LinkedList();
+    this.rbh = new LinkedList();
+    AppMethodBeat.o(35789);
+  }
+  
+  public final void DA(int paramInt)
+  {
+    AppMethodBeat.i(35791);
+    this.rbh.add(Integer.valueOf(paramInt));
+    AppMethodBeat.o(35791);
+  }
+  
+  public final void Dz(int paramInt)
+  {
+    AppMethodBeat.i(35790);
+    this.rbg.add(Integer.valueOf(paramInt));
+    AppMethodBeat.o(35790);
+  }
   
   public int describeContents()
   {
@@ -23,32 +55,24 @@ public class SnsCmdList
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 0;
-    this.omP = this.omR.size();
-    paramParcel.writeInt(this.omP);
+    AppMethodBeat.i(35792);
+    this.rbe = this.rbg.size();
+    paramParcel.writeInt(this.rbe);
     paramInt = 0;
-    while (paramInt < this.omP)
+    while (paramInt < this.rbe)
     {
-      paramParcel.writeInt(((Integer)this.omR.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.rbg.get(paramInt)).intValue());
       paramInt += 1;
     }
-    this.omQ = this.omS.size();
-    paramParcel.writeInt(this.omQ);
+    this.rbf = this.rbh.size();
+    paramParcel.writeInt(this.rbf);
     paramInt = i;
-    while (paramInt < this.omQ)
+    while (paramInt < this.rbf)
     {
-      paramParcel.writeInt(((Integer)this.omS.get(paramInt)).intValue());
+      paramParcel.writeInt(((Integer)this.rbh.get(paramInt)).intValue());
       paramInt += 1;
     }
-  }
-  
-  public final void xA(int paramInt)
-  {
-    this.omS.add(Integer.valueOf(paramInt));
-  }
-  
-  public final void xz(int paramInt)
-  {
-    this.omR.add(Integer.valueOf(paramInt));
+    AppMethodBeat.o(35792);
   }
 }
 

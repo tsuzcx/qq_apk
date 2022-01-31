@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiStoreV2HotBarView$1
   implements View.OnClickListener
@@ -12,9 +13,11 @@ final class EmojiStoreV2HotBarView$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(53627);
     paramView = new Intent();
-    paramView.setClass(this.jgW.getContext(), EmojiStoreV2RankUI.class);
-    this.jgW.getContext().startActivity(paramView);
+    paramView.setClass(this.lpP.getContext(), EmojiStoreV2RankUI.class);
+    this.lpP.getContext().startActivity(paramView);
+    AppMethodBeat.o(53627);
   }
 }
 

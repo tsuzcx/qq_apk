@@ -1,5 +1,7 @@
 package com.tencent.tmassistantsdk.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class Base64$Decoder
   extends Base64.Coder
 {
@@ -13,6 +15,7 @@ class Base64$Decoder
   
   public Base64$Decoder(int paramInt, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(76213);
     this.output = paramArrayOfByte;
     if ((paramInt & 0x8) == 0) {}
     for (paramArrayOfByte = DECODE;; paramArrayOfByte = DECODE_WEBSAFE)
@@ -20,6 +23,7 @@ class Base64$Decoder
       this.alphabet = paramArrayOfByte;
       this.state = 0;
       this.value = 0;
+      AppMethodBeat.o(76213);
       return;
     }
   }
@@ -206,7 +210,7 @@ class Base64$Decoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.Base64.Decoder
  * JD-Core Version:    0.7.0.1
  */

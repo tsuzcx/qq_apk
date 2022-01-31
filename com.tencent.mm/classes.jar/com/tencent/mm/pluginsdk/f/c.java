@@ -1,6 +1,19 @@
 package com.tencent.mm.pluginsdk.f;
 
-final class c {}
+import android.content.Context;
+import android.text.ClipboardManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
+
+final class c
+{
+  public static void L(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(79449);
+    ((ClipboardManager)ah.getContext().getSystemService("clipboard")).setText(paramCharSequence);
+    AppMethodBeat.o(79449);
+  }
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar

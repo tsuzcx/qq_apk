@@ -1,16 +1,22 @@
 package com.tencent.mm.plugin.video;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.math.BigInteger;
 
 public final class c
 {
-  public static String PU(String paramString)
+  public static String aeA(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(50970);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(50970);
       return "";
     }
-    return new BigInteger(Long.toBinaryString(bk.getLong(paramString, 0L)), 2).toString();
+    paramString = new BigInteger(Long.toBinaryString(bo.getLong(paramString, 0L)), 2).toString();
+    AppMethodBeat.o(50970);
+    return paramString;
   }
 }
 

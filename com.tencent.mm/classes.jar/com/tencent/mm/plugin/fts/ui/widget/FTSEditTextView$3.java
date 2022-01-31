@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fts.ui.widget;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSEditTextView$3
   implements TextView.OnEditorActionListener
@@ -11,9 +12,14 @@ final class FTSEditTextView$3
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((3 == paramInt) && (FTSEditTextView.h(this.kEA) != null)) {
-      return FTSEditTextView.h(this.kEA).apb();
+    AppMethodBeat.i(62107);
+    if ((3 == paramInt) && (FTSEditTextView.h(this.naY) != null))
+    {
+      boolean bool = FTSEditTextView.h(this.naY).aMm();
+      AppMethodBeat.o(62107);
+      return bool;
     }
+    AppMethodBeat.o(62107);
     return false;
   }
 }

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.exdevice.model;
 
-import com.tencent.mm.h.a.ds;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.dv;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -13,9 +14,11 @@ final class ExdeviceWCLanSDKUtil$3
   
   public final void g(int paramInt, Object... paramVarArgs)
   {
-    ds localds2 = null;
-    if ((paramInt != 13) || (paramVarArgs == null) || (paramVarArgs.length < 2) || (!(paramVarArgs[0] instanceof String)) || (!(paramVarArgs[1] instanceof Integer))) {
-      label37:
+    dv localdv2 = null;
+    AppMethodBeat.i(19286);
+    if ((paramInt != 13) || (paramVarArgs == null) || (paramVarArgs.length < 2) || (!(paramVarArgs[0] instanceof String)) || (!(paramVarArgs[1] instanceof Integer)))
+    {
+      AppMethodBeat.o(19286);
       return;
     }
     Object localObject = (String)paramVarArgs[0];
@@ -26,6 +29,7 @@ final class ExdeviceWCLanSDKUtil$3
       {
         localObject = new JSONObject(new String((String)localObject));
         paramVarArgs = ((JSONObject)localObject).getString("deviceId");
+        ab.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", localException1, "", new Object[0]);
       }
       catch (Exception localException1)
       {
@@ -35,39 +39,39 @@ final class ExdeviceWCLanSDKUtil$3
           switch (paramInt)
           {
           default: 
-            this.jvF.jvE = 0;
-            this.jvF.jvf.put(paramVarArgs, Boolean.valueOf(false));
-            y.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "device disconnect!");
-            if (!this.jvF.jvD) {
-              break label37;
+            this.lFe.lFd = 0;
+            this.lFe.lEE.put(paramVarArgs, Boolean.FALSE);
+            ab.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "device disconnect!");
+            if (this.lFe.lFc)
+            {
+              if (this.lFe.lFd == 2) {
+                this.lFe.n(true, paramVarArgs);
+              }
+              localdv2 = new dv();
+              localdv2.crI.bYu = paramVarArgs;
+              localdv2.crI.crJ = this.lFe.lFd;
+              localdv2.crI.cqQ = ((String)localObject);
+              a.ymk.l(localdv2);
             }
-            if (this.jvF.jvE == 2) {
-              this.jvF.i(true, paramVarArgs);
-            }
-            localds2 = new ds();
-            localds2.bKo.bwK = paramVarArgs;
-            localds2.bKo.bKp = this.jvF.jvE;
-            localds2.bKo.bJw = ((String)localObject);
-            a.udP.m(localds2);
+            AppMethodBeat.o(19286);
             return;
           }
         }
         catch (Exception localException2)
         {
-          ds localds1;
-          break label221;
+          dv localdv1;
+          break label238;
         }
         localException1 = localException1;
         paramVarArgs = null;
       }
-      label221:
-      y.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", localException1, "", new Object[0]);
-      y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON decode failed in device ConnState notify callback");
-      localds1 = localds2;
+      label238:
+      ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON decode failed in device ConnState notify callback");
+      localdv1 = localdv2;
       continue;
-      this.jvF.jvE = 2;
-      this.jvF.jvf.put(paramVarArgs, Boolean.valueOf(true));
-      y.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "device connect!");
+      this.lFe.lFd = 2;
+      this.lFe.lEE.put(paramVarArgs, Boolean.TRUE);
+      ab.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "device connect!");
     }
   }
 }

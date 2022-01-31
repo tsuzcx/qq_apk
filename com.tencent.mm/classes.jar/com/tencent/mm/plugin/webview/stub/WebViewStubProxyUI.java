@@ -1,7 +1,9 @@
 package com.tencent.mm.plugin.webview.stub;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnDismissListener;
@@ -10,28 +12,29 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.RemoteException;
 import android.view.Window;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.st;
-import com.tencent.mm.h.a.st.a;
-import com.tencent.mm.h.a.st.b;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
-import com.tencent.mm.modelsimple.w;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.g.a.c;
+import com.tencent.mm.g.a.rb;
+import com.tencent.mm.g.a.um;
+import com.tencent.mm.g.a.um.a;
+import com.tencent.mm.g.a.um.b;
+import com.tencent.mm.model.r;
+import com.tencent.mm.modelsimple.x;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.webview.model.av;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewStubCallbackWrapper;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.pluginsdk.f.e.a;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.o.a;
-import com.tencent.mm.pluginsdk.o.b;
-import com.tencent.mm.pluginsdk.ui.d.l;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.q;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bq;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMWizardActivity;
@@ -42,31 +45,50 @@ import com.tencent.mm.ui.d.b;
 public class WebViewStubProxyUI
   extends MMActivity
 {
-  private am byQ = new am(new WebViewStubProxyUI.7(this), true);
-  private int kkh = 0;
-  private e rgh = null;
-  public boolean rjL = false;
-  private boolean rjM = false;
-  private int rjN;
-  private final e rjO = new WebViewStubProxyUI.5(this);
-  private DialogInterface.OnDismissListener rjP = new WebViewStubProxyUI.6(this);
-  private am rjQ = new am(new am.a()
-  {
-    public final boolean tC()
-    {
-      if (!WebViewStubProxyUI.this.isFinishing()) {
-        WebViewStubProxyUI.this.finish();
-      }
-      return false;
-    }
-  }, true);
+  private DialogInterface.OnDismissListener cHC;
+  private ap caS;
+  private int mEM;
+  private e uWu;
+  public boolean uZe;
+  private boolean uZf;
+  private int uZg;
+  private final e uZh;
+  private ap uZi;
   
-  protected final int getForceOrientation()
+  public WebViewStubProxyUI()
   {
-    return getIntent().getIntExtra("screen_orientation", -1);
+    AppMethodBeat.i(7098);
+    this.uZe = false;
+    this.uWu = null;
+    this.uZf = false;
+    this.uZh = new WebViewStubProxyUI.5(this);
+    this.cHC = new WebViewStubProxyUI.6(this);
+    this.mEM = 0;
+    this.caS = new ap(new WebViewStubProxyUI.7(this), true);
+    this.uZi = new ap(new ap.a()
+    {
+      public final boolean onTimerExpired()
+      {
+        AppMethodBeat.i(7097);
+        if (!WebViewStubProxyUI.this.isFinishing()) {
+          WebViewStubProxyUI.this.finish();
+        }
+        AppMethodBeat.o(7097);
+        return false;
+      }
+    }, true);
+    AppMethodBeat.o(7098);
   }
   
-  protected final int getLayoutId()
+  public int getForceOrientation()
+  {
+    AppMethodBeat.i(7100);
+    int i = getIntent().getIntExtra("screen_orientation", -1);
+    AppMethodBeat.o(7100);
+    return i;
+  }
+  
+  public int getLayoutId()
   {
     return -1;
   }
@@ -74,186 +96,224 @@ public class WebViewStubProxyUI
   @TargetApi(21)
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(7099);
     super.onCreate(paramBundle);
-    if (com.tencent.mm.compatible.util.d.gF(21)) {
+    if (d.fv(21)) {
       getWindow().setStatusBarColor(0);
     }
     paramBundle = (WebViewStubCallbackWrapper)getIntent().getParcelableExtra("webview_stub_callbacker_key");
     if (paramBundle != null) {
-      this.rgh = paramBundle.rno;
+      this.uWu = paramBundle.vdZ;
     }
     paramBundle = getIntent();
     int i = paramBundle.getIntExtra("proxyui_action_code_key", 0);
-    this.rjN = paramBundle.getIntExtra("webview_binder_id", 0);
-    y.i("MicroMsg.WebViewStubProxyUI", "onCreate, actionCode = %d, binderID = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.rjN) });
+    this.uZg = paramBundle.getIntExtra("webview_binder_id", 0);
+    ab.i("MicroMsg.WebViewStubProxyUI", "onCreate, actionCode = %d, binderID = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.uZg) });
     if ("startMonitoringBeacons".equals(paramBundle.getStringExtra("proxyui_function_key"))) {
-      this.rjL = true;
+      this.uZe = true;
     }
     switch (i)
     {
     }
-    Object localObject;
-    do
+    for (;;)
     {
-      do
+      AppMethodBeat.o(7099);
+      return;
+      if (!this.uZf) {
+        this.caS.ag(100L, 100L);
+      }
+      if (this.uZe)
       {
-        do
-        {
-          return;
-          if (!this.rjM) {
-            this.byQ.S(100L, 100L);
-          }
-        } while (!this.rjL);
-        this.rjQ.S(5000L, 5000L);
+        this.uZi.ag(5000L, 5000L);
+        AppMethodBeat.o(7099);
         return;
-        localObject = new st();
-        ((st)localObject).bFJ = new Runnable()
+        Object localObject1 = new um();
+        ((um)localObject1).callback = new Runnable()
         {
           public final void run()
           {
-            if (!this.rjR.cco.ccp) {
-              WebViewStubProxyUI.this.finish();
-            }
-            for (;;)
+            AppMethodBeat.i(7068);
+            if (!this.uZj.cKY.cKZ)
             {
+              WebViewStubProxyUI.this.finish();
+              AppMethodBeat.o(7068);
               return;
-              if (WebViewStubProxyUI.a(WebViewStubProxyUI.this) != null) {}
-              try
-              {
-                WebViewStubProxyUI.a(WebViewStubProxyUI.this).b(1001, null);
-                WebViewStubProxyUI.this.finish();
-                e.a locala = com.tencent.mm.pluginsdk.f.e.rVK;
-                if (locala == null) {
-                  continue;
-                }
-                locala.aK(WebViewStubProxyUI.this);
-                return;
+            }
+            if (WebViewStubProxyUI.a(WebViewStubProxyUI.this) != null) {}
+            try
+            {
+              WebViewStubProxyUI.a(WebViewStubProxyUI.this).e(1001, null);
+              WebViewStubProxyUI.this.finish();
+              e.a locala = com.tencent.mm.pluginsdk.f.e.vMF;
+              if (locala != null) {
+                locala.bi(WebViewStubProxyUI.this);
               }
-              catch (RemoteException localRemoteException)
+              AppMethodBeat.o(7068);
+              return;
+            }
+            catch (RemoteException localRemoteException)
+            {
+              for (;;)
               {
-                for (;;)
-                {
-                  y.w("MicroMsg.WebViewStubProxyUI", "dealUpdate fail, ex = " + localRemoteException.getMessage());
-                }
+                ab.w("MicroMsg.WebViewStubProxyUI", "dealUpdate fail, ex = " + localRemoteException.getMessage());
               }
             }
           }
         };
-        ((st)localObject).ccn.context = this;
-        ((st)localObject).ccn.type = paramBundle.getIntExtra("update_type_key", 0);
-        if (((st)localObject).ccn.type <= 0)
+        ((um)localObject1).cKX.context = this;
+        ((um)localObject1).cKX.type = paramBundle.getIntExtra("update_type_key", 0);
+        if (((um)localObject1).cKX.type <= 0)
         {
-          y.e("MicroMsg.WebViewStubProxyUI", "doUpdate fail, invalid type = " + ((st)localObject).ccn.type);
+          ab.e("MicroMsg.WebViewStubProxyUI", "doUpdate fail, invalid type = " + ((um)localObject1).cKX.type);
           finish();
+          AppMethodBeat.o(7099);
           return;
         }
-        com.tencent.mm.sdk.b.a.udP.a((b)localObject, Looper.myLooper());
+        com.tencent.mm.sdk.b.a.ymk.a((b)localObject1, Looper.myLooper());
+        AppMethodBeat.o(7099);
         return;
-        au.Hx();
-        paramBundle = com.tencent.mm.model.c.FE().Ic("@t.qq.com");
-        if (!q.GR()) {
-          paramBundle = com.tencent.mm.ui.base.h.a(this, R.l.contact_info_medianote_sync_to_qqmail_alert_tip, R.l.app_tip, new DialogInterface.OnClickListener()
+        paramBundle = ((j)com.tencent.mm.kernel.g.E(j.class)).YI().TL("@t.qq.com");
+        if (!r.ZT()) {
+          paramBundle = com.tencent.mm.ui.base.h.a(this, 2131298664, 2131297087, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
             {
-              com.tencent.mm.plugin.webview.a.a.eUR.h(new Intent(), WebViewStubProxyUI.this);
+              AppMethodBeat.i(7069);
+              com.tencent.mm.plugin.webview.a.a.gmO.g(new Intent(), WebViewStubProxyUI.this);
+              AppMethodBeat.o(7069);
             }
           }, null);
         }
         while (paramBundle == null)
         {
           finish();
+          AppMethodBeat.o(7099);
           return;
-          if ((paramBundle == null) || (bk.bl(paramBundle.name)))
+          if ((paramBundle == null) || (bo.isNullOrNil(paramBundle.name)))
           {
-            paramBundle = com.tencent.mm.ui.base.h.h(this, R.l.settings_tweibo_notfind, R.l.app_tip);
+            paramBundle = com.tencent.mm.ui.base.h.h(this, 2131303490, 2131297087);
           }
           else
           {
-            paramBundle = bk.pm(getIntent().getStringExtra("shortUrl"));
-            paramBundle = new w(getIntent().getIntExtra("type", 0), paramBundle);
-            au.Dk().a(paramBundle, 0);
+            paramBundle = bo.nullAsNil(getIntent().getStringExtra("shortUrl"));
+            paramBundle = new x(getIntent().getIntExtra("type", 0), paramBundle);
+            com.tencent.mm.kernel.g.Rc().a(paramBundle, 0);
             try
             {
-              this.rgh.Cl(0);
+              this.uWu.Ke(0);
               paramBundle = null;
             }
             catch (Exception paramBundle)
             {
-              y.w("MicroMsg.WebViewStubProxyUI", "setTitlePbVisibility, ex = " + paramBundle.getMessage());
+              ab.w("MicroMsg.WebViewStubProxyUI", "setTitlePbVisibility, ex = " + paramBundle.getMessage());
               paramBundle = null;
             }
           }
         }
-        paramBundle.setOnDismissListener(this.rjP);
+        paramBundle.setOnDismissListener(this.cHC);
+        AppMethodBeat.o(7099);
         return;
-        this.byQ.S(100L, 100L);
+        this.caS.ag(100L, 100L);
+        AppMethodBeat.o(7099);
         return;
-      } while (o.a.rSF == null);
-      o.a.rSF.a(this, paramBundle.getStringExtra("proxyui_handle_event_url"), this.rjP);
-      return;
-      i = getIntent().getIntExtra("proxyui_expired_errtype", 0);
-      int j = getIntent().getIntExtra("proxyui_expired_errcode", 0);
-      if ((i == 0) && (j == 0))
-      {
-        y.e("MicroMsg.WebViewStubProxyUI", "PROXY_AC_VALUE_ACCOUNT_EXPIRED, errType & errCode should not both be 0");
+        ((q)com.tencent.mm.kernel.g.E(q.class)).a(this, paramBundle.getStringExtra("proxyui_handle_event_url"), this.cHC);
+        AppMethodBeat.o(7099);
         return;
-      }
-      paramBundle = new com.tencent.mm.h.a.c();
-      paramBundle.bEQ.bER = this;
-      paramBundle.bEQ.errType = i;
-      paramBundle.bEQ.errCode = j;
-      com.tencent.mm.sdk.b.a.udP.m(paramBundle);
-      return;
-      paramBundle = getIntent().getStringExtra("proxyui_phone");
-      if (bk.bl(paramBundle))
-      {
-        y.e("MicroMsg.WebViewStubProxyUI", "show phone span dialog, phone is empty");
+        i = getIntent().getIntExtra("proxyui_expired_errtype", 0);
+        int j = getIntent().getIntExtra("proxyui_expired_errcode", 0);
+        if ((i == 0) && (j == 0))
+        {
+          ab.e("MicroMsg.WebViewStubProxyUI", "PROXY_AC_VALUE_ACCOUNT_EXPIRED, errType & errCode should not both be 0");
+          AppMethodBeat.o(7099);
+          return;
+        }
+        paramBundle = new c();
+        paramBundle.cmb.cmc = this;
+        paramBundle.cmb.errType = i;
+        paramBundle.cmb.errCode = j;
+        com.tencent.mm.sdk.b.a.ymk.l(paramBundle);
+        AppMethodBeat.o(7099);
+        return;
+        paramBundle = getIntent().getStringExtra("proxyui_phone");
+        if (bo.isNullOrNil(paramBundle))
+        {
+          ab.e("MicroMsg.WebViewStubProxyUI", "show phone span dialog, phone is empty");
+          finish();
+          AppMethodBeat.o(7099);
+          return;
+        }
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putInt("fromScene", 3);
+        Object localObject2 = new rb();
+        ((rb)localObject2).cHA.context = this;
+        ((rb)localObject2).cHA.cHB = paramBundle;
+        ((rb)localObject2).cHA.cHC = this.cHC;
+        ((rb)localObject2).cHA.cHD = ((Bundle)localObject1);
+        com.tencent.mm.sdk.b.a.ymk.l((b)localObject2);
+        AppMethodBeat.o(7099);
+        return;
+        paramBundle = (Intent)getIntent().getExtras().getParcelable("proxyui_next_intent_key");
+        paramBundle.setFlags(603979776);
+        localObject1 = new Intent();
+        ((Intent)localObject1).setClass(this, SimpleLoginUI.class);
+        MMWizardActivity.b(this, (Intent)localObject1, paramBundle);
         finish();
+        AppMethodBeat.o(7099);
         return;
+        paramBundle = getIntent().getStringExtra("KAppId");
+        localObject1 = getIntent().getStringExtra("shortcut_user_name");
+        if ((!bo.isNullOrNil(paramBundle)) && (!bo.isNullOrNil((String)localObject1)))
+        {
+          getString(2131297087);
+          localObject2 = com.tencent.mm.ui.base.h.b(this, getString(2131297112), true, new WebViewStubProxyUI.3(this));
+          ((com.tencent.mm.ui.base.p)localObject2).show();
+          av.a(ah.getContext(), (String)localObject1, paramBundle, new WebViewStubProxyUI.4(this, (com.tencent.mm.ui.base.p)localObject2));
+        }
       }
-      localObject = new Bundle();
-      ((Bundle)localObject).putInt("fromScene", 3);
-      l.a(this, paramBundle, this.rjP, (Bundle)localObject);
-      return;
-      paramBundle = (Intent)getIntent().getExtras().getParcelable("proxyui_next_intent_key");
-      paramBundle.setFlags(603979776);
-      localObject = new Intent();
-      ((Intent)localObject).setClass(this, SimpleLoginUI.class);
-      MMWizardActivity.b(this, (Intent)localObject, paramBundle);
-      finish();
-      return;
-      paramBundle = getIntent().getStringExtra("KAppId");
-      localObject = getIntent().getStringExtra("shortcut_user_name");
-    } while ((bk.bl(paramBundle)) || (bk.bl((String)localObject)));
-    getString(R.l.app_tip);
-    com.tencent.mm.ui.base.p localp = com.tencent.mm.ui.base.h.b(this, getString(R.l.app_waiting), true, new WebViewStubProxyUI.3(this));
-    localp.show();
-    com.tencent.mm.plugin.base.model.d.a(ae.getContext(), (String)localObject, paramBundle, new WebViewStubProxyUI.4(this, localp));
+    }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(7101);
     super.onDestroy();
-    if (!this.rjL) {
-      this.rgh = null;
+    if (!this.uZe) {
+      this.uWu = null;
     }
-    y.i("MicroMsg.WebViewStubProxyUI", "onDestroy proxyui");
+    com.tencent.mm.plugin.webview.ui.tools.jsapi.g localg = com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(this.uZg);
+    if (localg.eeN != null)
+    {
+      localg.eeN.dismiss();
+      localg.eeN = null;
+    }
+    ab.i("MicroMsg.WebViewStubProxyUI", "onDestroy proxyui");
+    AppMethodBeat.o(7101);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
+    AppMethodBeat.i(7102);
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    if (paramArrayOfInt[0] == 0)
+    for (;;)
     {
-      com.tencent.mm.plugin.webview.ui.tools.jsapi.h.Db(this.rjN).c(paramInt, -1, null);
+      AppMethodBeat.o(7102);
       return;
+      if (paramArrayOfInt[0] == 0)
+      {
+        com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(this.uZg).c(paramInt, -1, null);
+        AppMethodBeat.o(7102);
+        return;
+      }
+      com.tencent.mm.plugin.webview.ui.tools.jsapi.h.KW(this.uZg).c(paramInt, 0, null);
     }
-    com.tencent.mm.plugin.webview.ui.tools.jsapi.h.Db(this.rjN).c(paramInt, 0, null);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

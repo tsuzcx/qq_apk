@@ -1,38 +1,47 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
-import com.tencent.mm.plugin.appbrand.g.b;
-import com.tencent.mm.plugin.appbrand.g.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e.c;
+import com.tencent.mm.plugin.appbrand.e.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class HCEEventLogic$1
-  extends g.b
+  extends e.c
 {
-  public final void a(g.c paramc)
+  public final void a(e.d paramd)
   {
-    y.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onPause");
-    super.a(paramc);
+    AppMethodBeat.i(137846);
+    ab.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onPause");
+    super.a(paramd);
     HCEEventLogic.a(HCEEventLogic.access$000(), 23, null);
+    AppMethodBeat.o(137846);
   }
   
   public final void onCreate()
   {
-    y.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onCreate");
+    AppMethodBeat.i(137844);
+    ab.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onCreate");
     super.onCreate();
     HCEEventLogic.a(HCEEventLogic.access$000(), 21, null);
+    AppMethodBeat.o(137844);
   }
   
   public final void onDestroy()
   {
-    y.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onDestroy");
+    AppMethodBeat.i(137847);
+    ab.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onDestroy");
     super.onDestroy();
     HCEEventLogic.a(HCEEventLogic.access$000(), 24, null);
+    AppMethodBeat.o(137847);
   }
   
   public final void onResume()
   {
-    y.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onResume");
+    AppMethodBeat.i(137845);
+    ab.i("MicroMsg.HCEEventLogic", "alvinluo AppBrandLifeCycle mHCELifeCycleListener onResume");
     super.onResume();
     HCEEventLogic.a(HCEEventLogic.access$000(), 22, null);
+    AppMethodBeat.o(137845);
   }
 }
 

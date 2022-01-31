@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.sharecard.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.e;
 import com.tencent.mm.plugin.card.model.am;
 import java.util.ArrayList;
@@ -13,13 +14,15 @@ final class b$1$1
   
   public final void run()
   {
-    Map localMap = (Map)am.aAx().getValue("key_share_user_info_map");
+    AppMethodBeat.i(87981);
+    Map localMap = (Map)am.bci().getValue("key_share_user_info_map");
     Object localObject = localMap;
     if (localMap == null) {
       localObject = new HashMap();
     }
-    ((Map)localObject).put(this.ioF.ioC, this.ioE);
-    am.aAx().putValue("key_share_user_info_map", localObject);
+    ((Map)localObject).put(this.kpM.kpJ, this.kpL);
+    am.bci().putValue("key_share_user_info_map", localObject);
+    AppMethodBeat.o(87981);
   }
 }
 

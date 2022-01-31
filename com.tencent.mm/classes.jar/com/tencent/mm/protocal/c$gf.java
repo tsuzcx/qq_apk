@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$gf
+public final class c$gf
   extends c.g
 {
   public c$gf()
   {
-    super("preloadMiniProgramContacts", "preloadMiniProgramContacts", 303, false);
+    super("openUrlWithExtraWebview", "openUrlWithExtraWebview", 173, false);
   }
 }
 

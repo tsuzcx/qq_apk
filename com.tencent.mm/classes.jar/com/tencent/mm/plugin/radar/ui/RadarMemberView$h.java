@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.radar.ui;
 
-import a.h.e;
+import a.l;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.bio;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.brg;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bv;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class RadarMemberView$h
   implements View.OnClickListener
 {
@@ -17,130 +18,132 @@ final class RadarMemberView$h
   public final void onClick(View paramView)
   {
     RadarMemberView localRadarMemberView = null;
+    AppMethodBeat.i(102954);
     String str = "";
     paramView = str;
-    if (RadarMemberView.c(this.nmh) != null)
+    if (RadarMemberView.c(this.pRw) != null)
     {
-      paramView = RadarMemberView.c(this.nmh);
-      if ((paramView == null) || (paramView.Bd() != true)) {
-        break label142;
+      paramView = RadarMemberView.c(this.pRw);
+      if ((paramView == null) || (paramView.NT() != true)) {
+        break label152;
       }
-      paramView = RadarMemberView.c(this.nmh);
+      paramView = RadarMemberView.c(this.pRw);
       if (paramView == null) {
-        break label137;
+        break label147;
       }
     }
     int i;
-    label137:
-    for (paramView = paramView.vl();; paramView = null)
+    label147:
+    for (paramView = paramView.Hr();; paramView = null)
     {
       localObject = (CharSequence)paramView;
-      if ((localObject != null) && (!e.X((CharSequence)localObject))) {
+      if ((localObject != null) && (!a.l.m.ap((CharSequence)localObject))) {
         break;
       }
       i = 1;
-      label75:
+      label80:
       localObject = paramView;
       if (i != 0)
       {
         localObject = paramView;
-        if (this.nmh.getMember() != null)
+        if (this.pRw.getMember() != null)
         {
-          localObject = this.nmh.getMember();
+          localObject = this.pRw.getMember();
           paramView = localRadarMemberView;
           if (localObject != null) {
-            paramView = ((bio)localObject).hRf;
+            paramView = ((brg)localObject).jKG;
           }
           localObject = paramView;
         }
       }
-      localRadarMemberView = this.nmh;
+      localRadarMemberView = this.pRw;
       paramView = (View)localObject;
       if (localObject == null) {
         paramView = "";
       }
       RadarMemberView.a(localRadarMemberView, paramView);
+      AppMethodBeat.o(102954);
       return;
     }
-    label142:
-    paramView = com.tencent.mm.kernel.g.r(j.class);
-    a.d.b.g.j(paramView, "service(IMessengerStorage::class.java)");
-    Object localObject = ((j)paramView).Fx();
-    paramView = RadarMemberView.c(this.nmh);
+    label152:
+    paramView = g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class);
+    a.f.b.j.p(paramView, "service(IMessengerStorage::class.java)");
+    Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)paramView).YB();
+    paramView = RadarMemberView.c(this.pRw);
     if (paramView != null)
     {
       paramView = paramView.getUsername();
-      label181:
-      localObject = ((l)localObject).Id(paramView);
+      label191:
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.m)localObject).TM(paramView);
       if (localObject != null)
       {
-        paramView = (CharSequence)((bv)localObject).vp();
-        if ((paramView != null) && (!e.X(paramView))) {
-          break label324;
+        paramView = (CharSequence)((bv)localObject).Hv();
+        if ((paramView != null) && (!a.l.m.ap(paramView))) {
+          break label334;
         }
         i = 1;
-        label214:
+        label224:
         if (i == 0) {
-          break label349;
+          break label359;
         }
       }
-      paramView = RadarMemberView.c(this.nmh);
-      if (paramView == null) {
-        break label329;
-      }
-      paramView = paramView.vp();
-      label235:
-      paramView = (CharSequence)paramView;
-      if ((paramView != null) && (!e.X(paramView))) {
-        break label334;
-      }
-      i = 1;
-      label253:
-      if (i != 0) {
-        break label349;
-      }
-      paramView = com.tencent.mm.kernel.g.r(j.class);
-      a.d.b.g.j(paramView, "service(IMessengerStorage::class.java)");
-      localObject = ((j)paramView).Fx();
-      paramView = RadarMemberView.c(this.nmh);
+      paramView = RadarMemberView.c(this.pRw);
       if (paramView == null) {
         break label339;
       }
-      paramView = paramView.vp();
-      label296:
-      localObject = ((l)localObject).Id(paramView);
+      paramView = paramView.Hv();
+      label245:
+      paramView = (CharSequence)paramView;
+      if ((paramView != null) && (!a.l.m.ap(paramView))) {
+        break label344;
+      }
+      i = 1;
+      label263:
+      if (i != 0) {
+        break label359;
+      }
+      paramView = g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class);
+      a.f.b.j.p(paramView, "service(IMessengerStorage::class.java)");
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)paramView).YB();
+      paramView = RadarMemberView.c(this.pRw);
+      if (paramView == null) {
+        break label349;
+      }
+      paramView = paramView.Hv();
+      label306:
+      localObject = ((com.tencent.mm.plugin.messenger.foundation.a.a.m)localObject).TM(paramView);
     }
-    label324:
-    label329:
     label334:
     label339:
+    label344:
     label349:
+    label359:
     for (;;)
     {
       paramView = str;
       if (localObject == null) {
         break;
       }
-      paramView = ((bv)localObject).vl();
+      paramView = ((bv)localObject).Hr();
       break;
       paramView = null;
-      break label181;
+      break label191;
       i = 0;
-      break label214;
+      break label224;
       paramView = null;
-      break label235;
+      break label245;
       i = 0;
-      break label253;
+      break label263;
       paramView = null;
-      break label296;
+      break label306;
       i = 0;
-      break label75;
+      break label80;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.ui.RadarMemberView.h
  * JD-Core Version:    0.7.0.1
  */

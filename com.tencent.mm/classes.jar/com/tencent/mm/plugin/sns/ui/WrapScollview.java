@@ -6,12 +6,13 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WrapScollview
   extends ScrollView
 {
   private View contentView;
-  private boolean pkZ = true;
+  private boolean sdo = true;
   
   public WrapScollview(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,15 +26,21 @@ public class WrapScollview
   
   protected int computeScrollDeltaToGetChildRectOnScreen(Rect paramRect)
   {
-    if (!this.pkZ) {
+    AppMethodBeat.i(39931);
+    if (!this.sdo)
+    {
+      AppMethodBeat.o(39931);
       return 0;
     }
-    return super.computeScrollDeltaToGetChildRectOnScreen(paramRect);
+    int i = super.computeScrollDeltaToGetChildRectOnScreen(paramRect);
+    AppMethodBeat.o(39931);
+    return i;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int i = 1;
+    AppMethodBeat.i(39930);
     if (this.contentView != null)
     {
       View localView = this.contentView;
@@ -48,11 +55,14 @@ public class WrapScollview
       if ((j < f1) && (f1 < k + j) && (m < f2) && (f2 < n + m)) {}
       while (i != 0)
       {
+        AppMethodBeat.o(39930);
         return false;
         i = 0;
       }
     }
-    return super.onInterceptTouchEvent(paramMotionEvent);
+    boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(39930);
+    return bool;
   }
   
   public void setContentView(View paramView)
@@ -62,7 +72,7 @@ public class WrapScollview
   
   public void setDoComputeScrollDeltaToGetChildRectOnScreen(boolean paramBoolean)
   {
-    this.pkZ = paramBoolean;
+    this.sdo = paramBoolean;
   }
 }
 

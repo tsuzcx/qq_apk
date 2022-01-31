@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   implements Runnable
@@ -11,7 +11,9 @@ final class a$1
   
   public final void run()
   {
-    Toast.makeText(this.val$context, this.val$context.getString(R.l.game_download_network_unavailable), 0).show();
+    AppMethodBeat.i(6264);
+    Toast.makeText(this.val$context, this.val$context.getString(2131300360), 0).show();
+    AppMethodBeat.o(6264);
   }
 }
 

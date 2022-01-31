@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.sight.decode.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.pluginsdk.ui.tools.f;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class VideoPlayView$6
   implements View.OnClickListener
@@ -12,27 +13,32 @@ public final class VideoPlayView$6
   
   public final void onClick(View paramView)
   {
-    VideoPlayView.l(this.ogv).removeCallbacks(VideoPlayView.n(this.ogv));
-    VideoPlayView.l(this.ogv).postDelayed(VideoPlayView.n(this.ogv), 3000L);
-    if (VideoPlayView.a(this.ogv).isPlaying())
+    AppMethodBeat.i(70321);
+    VideoPlayView.l(this.qUK).removeCallbacks(VideoPlayView.n(this.qUK));
+    VideoPlayView.l(this.qUK).postDelayed(VideoPlayView.n(this.qUK), 3000L);
+    if (VideoPlayView.a(this.qUK).isPlaying())
     {
-      VideoPlayView.o(this.ogv);
-      if (VideoPlayView.c(this.ogv) != null) {
-        VideoPlayView.c(this.ogv).setIsPlay(false);
+      VideoPlayView.o(this.qUK);
+      if (VideoPlayView.c(this.qUK) != null)
+      {
+        VideoPlayView.c(this.qUK).setIsPlay(false);
+        AppMethodBeat.o(70321);
       }
     }
-    do
+    else
     {
-      return;
-      VideoPlayView.a(this.ogv, false);
-      VideoPlayView.a(this.ogv).x(VideoPlayView.g(this.ogv));
-    } while (VideoPlayView.c(this.ogv) == null);
-    VideoPlayView.c(this.ogv).setIsPlay(true);
+      VideoPlayView.a(this.qUK, false);
+      VideoPlayView.a(this.qUK).A(VideoPlayView.g(this.qUK));
+      if (VideoPlayView.c(this.qUK) != null) {
+        VideoPlayView.c(this.qUK).setIsPlay(true);
+      }
+    }
+    AppMethodBeat.o(70321);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.VideoPlayView.6
  * JD-Core Version:    0.7.0.1
  */

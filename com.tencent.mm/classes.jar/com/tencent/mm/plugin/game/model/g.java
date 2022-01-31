@@ -1,205 +1,136 @@
 package com.tencent.mm.plugin.game.model;
 
-import android.content.Context;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.h.a.gr;
-import com.tencent.mm.h.a.gr.a;
-import com.tencent.mm.plugin.game.ui.GameRegionPreference.a;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.awk;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class g
+public abstract class g
 {
-  private static final String kOy = com.tencent.mm.loader.a.b.bkH + "Game/HvMenu/";
+  JSONObject nmB = new JSONObject();
   
-  public static void a(gr paramgr)
+  protected g(String paramString)
   {
-    int i = paramgr.bOv.uC;
-    y.i("MicroMsg.GameCommOpertionProcessor", "cmd:%d", new Object[] { Integer.valueOf(i) });
-    switch (i)
+    if (bo.isNullOrNil(paramString))
     {
-    }
-    for (;;)
-    {
+      ab.e("MicroMsg.GameServerData", "Null or nil json string");
       return;
-      Object localObject2 = paramgr.bOv.context;
-      if (localObject2 == null) {
-        continue;
-      }
-      Object localObject1 = new JSONObject();
-      localObject2 = f.jdMethod_do((Context)localObject2);
-      if (localObject2 != null) {}
-      try
-      {
-        ((JSONObject)localObject1).put("gameRegionName", f.a((GameRegionPreference.a)localObject2));
-        label125:
-        paramgr.bOw.result = ((JSONObject)localObject1).toString();
-        return;
-        paramgr = paramgr.bOv.bOx;
-        y.i("MicroMsg.GameCommOpertionProcessor", "update hv menu! appid:%s", new Object[] { paramgr });
-        if (bk.bl(paramgr)) {
-          continue;
-        }
-        com.tencent.mm.kernel.g.Dk().a(1369, new g.1(paramgr));
-        paramgr = new at(paramgr);
-        com.tencent.mm.kernel.g.Dk().a(paramgr, 0);
-        return;
-        localObject1 = paramgr.bOv.bOx;
-        y.i("MicroMsg.GameCommOpertionProcessor", "get hv menu! appid:%s", new Object[] { localObject1 });
-        if (bk.bl((String)localObject1)) {
-          continue;
-        }
-        localObject2 = ((com.tencent.mm.plugin.game.a.c)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.game.a.c.class)).aYg().Ey("pb_game_hv_menu_" + (String)localObject1);
-        if (bk.bE((byte[])localObject2)) {
-          continue;
-        }
-        try
-        {
-          localObject2 = new String((byte[])localObject2, "ISO-8859-1");
-          paramgr.bOw.result = ((String)localObject2);
-          y.i("MicroMsg.GameCommOpertionProcessor", "get hv menu success! appid:%s", new Object[] { localObject1 });
-          return;
-        }
-        catch (UnsupportedEncodingException paramgr)
-        {
-          return;
-        }
-        b(paramgr);
-        return;
-        localObject1 = paramgr.bOv.context;
-        if (localObject1 == null) {
-          continue;
-        }
-        JSONObject localJSONObject = new JSONObject();
-        localObject2 = f.dw((Context)localObject1);
-        localObject1 = localObject2;
-        if (bk.bl((String)localObject2)) {
-          localObject1 = f.aYU();
-        }
-        try
-        {
-          localJSONObject.put("regionCode", localObject1);
-          label363:
-          paramgr.bOw.result = localJSONObject.toString();
-          return;
-          com.tencent.mm.plugin.game.commlib.b.aYr().gu(true);
-          return;
-        }
-        catch (JSONException localJSONException1)
-        {
-          break label363;
-        }
-      }
-      catch (JSONException localJSONException2)
-      {
-        break label125;
-      }
+    }
+    try
+    {
+      this.nmB = new JSONObject(paramString);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      ab.e("MicroMsg.GameServerData", "Json parsing error");
     }
   }
   
-  private static void a(List<awk> paramList, g.a parama)
+  private static String j(JSONObject paramJSONObject, String paramString)
   {
-    if (bk.dk(paramList))
-    {
-      if (parama != null) {
-        parama.onComplete();
-      }
-      return;
+    if (paramJSONObject == null) {}
+    while (paramJSONObject.isNull(paramString)) {
+      return null;
     }
-    awk localawk = (awk)paramList.remove(0);
-    if ((localawk == null) || (bk.bl(localawk.mQp)))
-    {
-      y.e("MicroMsg.GameCommOpertionProcessor", "menu is null or thumburl is null");
-      return;
-    }
-    Object localObject = kOy + com.tencent.mm.a.g.o(localawk.mQp.getBytes());
-    c.a locala = new c.a();
-    locala.erf = true;
-    locala.erh = ((String)localObject);
-    localObject = locala.OV();
-    o.ON().a(localawk.mQp, (com.tencent.mm.as.a.a.c)localObject, new g.3(localawk, paramList, parama));
+    return paramJSONObject.optString(paramString);
   }
   
-  private static void b(gr paramgr)
+  protected static LinkedList<c> u(JSONArray paramJSONArray)
   {
-    paramgr = paramgr.bOv.bOx;
-    if (bk.bl(paramgr)) {}
-    Object localObject;
-    int j;
-    boolean bool;
-    do
+    LinkedList localLinkedList = new LinkedList();
+    if ((paramJSONArray == null) || (paramJSONArray.length() == 0))
     {
-      return;
-      try
-      {
-        localObject = new JSONObject(paramgr);
-        j = bk.getInt(((JSONObject)localObject).getString("game_page_report_id"), 0);
-        bool = ((JSONObject)localObject).getBoolean("game_page_report_instantly");
-        paramgr = ((JSONObject)localObject).optString("game_page_report_format_data");
-        localObject = ((JSONObject)localObject).optString("game_page_report_tabs_format_data");
-        y.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, reportId:%d, reportInstantly:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), paramgr, localObject });
-        if (j == 0)
-        {
-          y.i("MicroMsg.GameCommOpertionProcessor", "reportId format exception");
-          return;
-        }
-      }
-      catch (JSONException paramgr)
-      {
-        y.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, err1:%s", new Object[] { paramgr.getMessage() });
-        return;
-      }
-      if (!bk.bl(paramgr))
-      {
-        if (bool)
-        {
-          com.tencent.mm.plugin.game.e.a.ar(j, paramgr);
-          return;
-        }
-        h.nFQ.aC(j, paramgr);
-        return;
-      }
-    } while (bk.bl((String)localObject));
-    for (;;)
+      ab.i("MicroMsg.GameServerData", "Null or empty json array");
+      return localLinkedList;
+    }
+    ab.i("MicroMsg.GameServerData", "Parsing json AppInfo, size: %d", new Object[] { Integer.valueOf(paramJSONArray.length()) });
+    int i = 0;
+    if (i < paramJSONArray.length())
     {
-      int i;
-      try
+      Object localObject = paramJSONArray.optJSONObject(i);
+      if (localObject == null)
       {
-        paramgr = new JSONArray((String)localObject);
-        i = 0;
-        if (i >= paramgr.length()) {
-          break;
+        ab.e("MicroMsg.GameServerData", "Invalid json object");
+        localObject = null;
+      }
+      for (;;)
+      {
+        if (localObject != null) {
+          localLinkedList.add(localObject);
         }
-        localObject = paramgr.getString(i);
-        if (!bk.bl((String)localObject)) {
-          if (bool) {
-            com.tencent.mm.plugin.game.e.a.ar(j, (String)localObject);
-          } else {
-            h.nFQ.aC(j, (String)localObject);
+        i += 1;
+        break;
+        JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("YYB");
+        String str = j((JSONObject)localObject, "appID");
+        if (bo.isNullOrNil(str))
+        {
+          ab.e("MicroMsg.GameServerData", "No AppID field, abort");
+          localObject = null;
+        }
+        else
+        {
+          ab.i("MicroMsg.GameServerData", "Parsing AppID: %s", new Object[] { str });
+          c localc = new c();
+          localc.field_appId = str;
+          localc.field_appName = j((JSONObject)localObject, "name");
+          localc.field_appIconUrl = j((JSONObject)localObject, "iconURL");
+          localc.field_appType = ",1,";
+          localc.field_packageName = j((JSONObject)localObject, "AndroidPackageName");
+          localc.iV(j((JSONObject)localObject, "downloadURL"));
+          localc.iY(j((JSONObject)localObject, "AndroidApkMd5"));
+          str = j((JSONObject)localObject, "GooglePlayDownloadUrl");
+          int j = ((JSONObject)localObject).optInt("GooglePlayDownloadFlag");
+          localc.iZ(str);
+          if (!bo.isNullOrNil(str))
+          {
+            ab.i("MicroMsg.GameServerData", "GooglePlay URL: %s, Download Flag: %d", new Object[] { str, Integer.valueOf(j) });
+            localc.ho(j);
+          }
+          if (localJSONObject != null) {
+            localc.ho(localJSONObject.optInt("AndroidDownloadFlag"));
+          }
+          if (localJSONObject != null)
+          {
+            localc.je(j(localJSONObject, "DownloadUrl"));
+            localc.jf(j(localJSONObject, "ApkMd5"));
+            localc.jc(j(localJSONObject, "PreemptiveUrl"));
+            localc.jd(j(localJSONObject, "ExtInfo"));
+            localc.hp(localJSONObject.optInt("SupportedVersionCode"));
+          }
+          localc.nlU = j((JSONObject)localObject, "desc");
+          localc.nlT = j((JSONObject)localObject, "brief");
+          localc.type = ((JSONObject)localObject).optInt("type", 0);
+          localc.status = ((JSONObject)localObject).optInt("status");
+          localc.nlW = j((JSONObject)localObject, "webURL");
+          localc.nlX = j((JSONObject)localObject, "adUrl");
+          localc.cnG = j((JSONObject)localObject, "noticeid");
+          localc.nlY = ((JSONObject)localObject).optBoolean("isSubscribed");
+          localc.versionCode = ((JSONObject)localObject).optInt("versionCode");
+          localObject = localc;
+          if (localJSONObject != null)
+          {
+            localc.nlZ = j(localJSONObject, "DownloadTipsWording");
+            localc.nma = j(localJSONObject, "BackBtnWording");
+            localc.nmb = j(localJSONObject, "DownloadBtnWording");
+            localObject = localc;
           }
         }
       }
-      catch (JSONException paramgr)
-      {
-        y.i("MicroMsg.GameCommOpertionProcessor", "reportGamePageTime, err2:%s", new Object[] { paramgr.getMessage() });
-        return;
-      }
-      i += 1;
     }
+    return localLinkedList;
+  }
+  
+  protected final JSONArray optJSONArray(String paramString)
+  {
+    return this.nmB.optJSONArray(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.g
  * JD-Core Version:    0.7.0.1
  */

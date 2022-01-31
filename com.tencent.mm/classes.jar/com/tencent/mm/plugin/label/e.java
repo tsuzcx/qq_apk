@@ -1,86 +1,114 @@
 package com.tencent.mm.plugin.label;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bu;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bw;
 import com.tencent.mm.model.c;
+import com.tencent.mm.storage.ah;
 import com.tencent.mm.storage.ai;
 import java.util.HashMap;
 
 public class e
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> dgp;
-  private ai lAJ;
-  private d lAK = new d();
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private ai nXU;
+  private d nXV;
   
   static
   {
+    AppMethodBeat.i(22519);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
+    baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("CONTACT_LABEL_TABLE".hashCode()), new e.1());
-    dgp.put(Integer.valueOf("CONTACT_LABEL_CACHE_TABLE".hashCode()), new e.2());
+    baseDBFactories.put(Integer.valueOf("CONTACT_LABEL_CACHE_TABLE".hashCode()), new h.d()
+    {
+      public final String[] getSQLs()
+      {
+        return ah.SQL_CREATE;
+      }
+    });
+    AppMethodBeat.o(22519);
   }
   
-  private static e bdy()
+  public e()
   {
-    au.Hq();
-    e locale2 = (e)bu.iR("plugin.label");
+    AppMethodBeat.i(22514);
+    this.nXV = new d();
+    AppMethodBeat.o(22514);
+  }
+  
+  private static e bKT()
+  {
+    AppMethodBeat.i(22515);
+    aw.aat();
+    e locale2 = (e)bw.pF("plugin.label");
+    e locale1 = locale2;
     if (locale2 == null)
     {
-      e locale1 = locale2;
-      if (locale2 == null) {}
-      try
-      {
-        locale1 = new e();
-        au.Hq().a("plugin.label", locale1);
-        return locale1;
-      }
-      finally {}
+      locale1 = locale2;
+      if (locale2 != null) {}
     }
-    return locale2;
-  }
-  
-  public static ai bdz()
-  {
-    g.DN().CX();
-    if (bdy().lAJ == null)
+    try
     {
-      e locale = bdy();
-      au.Hx();
-      locale.lAJ = new ai(c.Dv());
+      locale1 = new e();
+      aw.aat().a("plugin.label", locale1);
+      return locale1;
     }
-    return bdy().lAJ;
+    finally
+    {
+      AppMethodBeat.o(22515);
+    }
   }
   
-  public final void bh(boolean paramBoolean)
+  public static ai bKU()
   {
+    AppMethodBeat.i(22518);
+    g.RJ().QQ();
+    if (bKT().nXU == null)
+    {
+      localObject = bKT();
+      aw.aaz();
+      ((e)localObject).nXU = new ai(c.Rq());
+    }
+    Object localObject = bKT().nXU;
+    AppMethodBeat.o(22518);
+    return localObject;
+  }
+  
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
+  {
+    return baseDBFactories;
+  }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(22516);
     b localb = new b();
-    com.tencent.mm.plugin.label.a.a.lAL = localb;
-    com.tencent.mm.au.b.esj = localb;
-    com.tencent.mm.sdk.b.a.udP.c(this.lAK);
+    com.tencent.mm.plugin.label.a.a.nXW = localb;
+    com.tencent.mm.av.b.fHW = localb;
+    com.tencent.mm.sdk.b.a.ymk.c(this.nXV);
+    AppMethodBeat.o(22516);
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountRelease()
   {
-    com.tencent.mm.plugin.label.a.a.lAL = null;
-    com.tencent.mm.sdk.b.a.udP.d(this.lAK);
+    AppMethodBeat.i(22517);
+    com.tencent.mm.plugin.label.a.a.nXW = null;
+    com.tencent.mm.sdk.b.a.ymk.d(this.nXV);
+    AppMethodBeat.o(22517);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return dgp;
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.label.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.Gallery;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.base.MMPageControlView;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 import com.tencent.mm.ui.tools.e.b;
@@ -13,34 +14,40 @@ final class SnsBrowseUI$4
   
   public final void onAnimationEnd()
   {
-    SnsBrowseUI.e(this.oVL).post(new SnsBrowseUI.4.2(this));
+    AppMethodBeat.i(38755);
+    SnsBrowseUI.e(this.rOg).post(new SnsBrowseUI.4.2(this));
+    AppMethodBeat.o(38755);
   }
   
   public final void onAnimationStart()
   {
-    SnsInfoFlip localSnsInfoFlip = this.oVL.oVy;
-    if (localSnsInfoFlip.oYO != null) {
-      localSnsInfoFlip.oYO.setVisibility(8);
+    AppMethodBeat.i(38754);
+    SnsInfoFlip localSnsInfoFlip = this.rOg.rNT;
+    if (localSnsInfoFlip.rRh != null) {
+      localSnsInfoFlip.rRh.setVisibility(8);
     }
-    SnsBrowseUI.e(this.oVL).postDelayed(new Runnable()
+    SnsBrowseUI.e(this.rOg).postDelayed(new Runnable()
     {
       public final void run()
       {
-        Object localObject = SnsBrowseUI.4.this.oVL.oVy;
-        if (((SnsInfoFlip)localObject).oYB != null)
+        AppMethodBeat.i(38752);
+        Object localObject = SnsBrowseUI.4.this.rOg.rNT;
+        if (((SnsInfoFlip)localObject).rQU != null)
         {
-          localObject = ((SnsInfoFlip)localObject).oYB.getSelectedView();
+          localObject = ((SnsInfoFlip)localObject).rQU.getSelectedView();
           if ((localObject instanceof MultiTouchImageView)) {
-            ((MultiTouchImageView)localObject).cAy();
+            ((MultiTouchImageView)localObject).dDJ();
           }
         }
+        AppMethodBeat.o(38752);
       }
     }, 20L);
+    AppMethodBeat.o(38754);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsBrowseUI.4
  * JD-Core Version:    0.7.0.1
  */

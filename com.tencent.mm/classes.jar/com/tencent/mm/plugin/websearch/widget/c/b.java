@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.websearch.widget.c;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class b
   extends a
 {
-  private String cbd;
+  private String cJG;
   private int x;
   private int y;
   
@@ -15,24 +16,27 @@ public final class b
   {
     this.x = paramInt1;
     this.y = paramInt2;
-    this.cbd = paramString;
+    this.cJG = paramString;
   }
   
-  public final String caj()
+  public final String dae()
   {
-    JSONObject localJSONObject = new JSONObject();
+    AppMethodBeat.i(91461);
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("x", this.x);
-      localJSONObject.put("y", this.y);
-      localJSONObject.put("eventId", this.cbd);
-      return localJSONObject.toString();
+      ((JSONObject)localObject).put("x", this.x);
+      ((JSONObject)localObject).put("y", this.y);
+      ((JSONObject)localObject).put("eventId", this.cJG);
+      localObject = ((JSONObject)localObject).toString();
+      AppMethodBeat.o(91461);
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
       for (;;)
       {
-        y.printErrStackTrace("onTap", localJSONException, "", new Object[0]);
+        ab.printErrStackTrace("onTap", localJSONException, "", new Object[0]);
       }
     }
   }
@@ -44,7 +48,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.c.b
  * JD-Core Version:    0.7.0.1
  */

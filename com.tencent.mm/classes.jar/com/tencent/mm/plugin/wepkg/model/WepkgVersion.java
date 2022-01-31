@@ -3,149 +3,129 @@ package com.tencent.mm.plugin.wepkg.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.wepkg.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wepkg.b.e;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class WepkgVersion
   implements Parcelable
 {
-  public static final Parcelable.Creator<WepkgVersion> CREATOR = new WepkgVersion.1();
+  public static final Parcelable.Creator<WepkgVersion> CREATOR;
   public String appId;
-  public String bIW;
-  public String ceG;
-  public int cfl;
+  public int cNS;
   public String charset;
+  public String cqq;
   public long createTime;
-  public String dCD;
   public String downloadUrl;
-  public String fCl;
-  public boolean rPS;
-  public long rPT;
-  public long rPU;
-  public int rPV;
-  public int rPW;
-  public long rPX;
-  public boolean rPY;
-  public boolean rPZ;
-  public int rPq;
-  public boolean rQa;
-  public int rQb;
+  public String ezY;
+  public String gUy;
+  public int vFT;
+  public boolean vGJ;
+  public long vGK;
+  public long vGL;
+  public int vGM;
+  public String vGN;
+  public int vGO;
+  public long vGP;
+  public boolean vGQ;
+  public boolean vGR;
+  public boolean vGS;
+  public int vGT;
   public String version;
+  
+  static
+  {
+    AppMethodBeat.i(63605);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(63605);
+  }
   
   public WepkgVersion() {}
   
   public WepkgVersion(Parcel paramParcel)
   {
-    this.dCD = paramParcel.readString();
+    AppMethodBeat.i(63602);
+    this.ezY = paramParcel.readString();
     this.appId = paramParcel.readString();
     this.version = paramParcel.readString();
-    this.fCl = paramParcel.readString();
+    this.gUy = paramParcel.readString();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.rPS = bool1;
-      this.rPT = paramParcel.readLong();
-      this.rPU = paramParcel.readLong();
-      this.rPV = paramParcel.readInt();
-      this.ceG = paramParcel.readString();
-      this.bIW = paramParcel.readString();
+      this.vGJ = bool1;
+      this.vGK = paramParcel.readLong();
+      this.vGL = paramParcel.readLong();
+      this.vGM = paramParcel.readInt();
+      this.vGN = paramParcel.readString();
+      this.cqq = paramParcel.readString();
       this.downloadUrl = paramParcel.readString();
-      this.rPW = paramParcel.readInt();
-      this.rPq = paramParcel.readInt();
-      this.rPX = paramParcel.readLong();
+      this.vGO = paramParcel.readInt();
+      this.vFT = paramParcel.readInt();
+      this.vGP = paramParcel.readLong();
       this.createTime = paramParcel.readLong();
       this.charset = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
-        break label204;
-      }
-      bool1 = true;
-      label149:
-      this.rPY = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label209;
-      }
-      bool1 = true;
-      label163:
-      this.rPZ = bool1;
-      if (paramParcel.readByte() == 0) {
         break label214;
       }
+      bool1 = true;
+      label154:
+      this.vGQ = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label219;
+      }
+      bool1 = true;
+      label168:
+      this.vGR = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label224;
+      }
     }
-    label204:
-    label209:
     label214:
+    label219:
+    label224:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.rQa = bool1;
-      this.rQb = paramParcel.readInt();
-      this.cfl = paramParcel.readInt();
+      this.vGS = bool1;
+      this.vGT = paramParcel.readInt();
+      this.cNS = paramParcel.readInt();
+      AppMethodBeat.o(63602);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label149;
+      break label154;
       bool1 = false;
-      break label163;
+      break label168;
     }
   }
   
-  public final void a(c paramc)
+  public final void a(e parame)
   {
-    if (paramc != null)
+    if (parame != null)
     {
-      this.dCD = paramc.field_pkgId;
-      this.appId = paramc.field_appId;
-      this.version = paramc.field_version;
-      this.fCl = paramc.field_pkgPath;
-      this.rPS = paramc.field_disableWvCache;
-      this.rPT = paramc.field_clearPkgTime;
-      this.rPU = paramc.field_checkIntervalTime;
-      this.rPV = paramc.field_packMethod;
-      this.ceG = paramc.field_domain;
-      this.bIW = paramc.field_md5;
-      this.downloadUrl = paramc.field_downloadUrl;
-      this.rPW = paramc.field_pkgSize;
-      this.rPq = paramc.field_downloadNetType;
-      this.rPX = paramc.field_nextCheckTime;
-      this.createTime = paramc.field_createTime;
-      this.charset = paramc.field_charset;
-      this.rPY = paramc.field_bigPackageReady;
-      this.rPZ = paramc.field_preloadFilesReady;
-      this.rQa = paramc.field_preloadFilesAtomic;
-      this.rQb = paramc.field_totalDownloadCount;
-      this.cfl = paramc.field_downloadTriggerType;
+      this.ezY = parame.field_pkgId;
+      this.appId = parame.field_appId;
+      this.version = parame.field_version;
+      this.gUy = parame.field_pkgPath;
+      this.vGJ = parame.field_disableWvCache;
+      this.vGK = parame.field_clearPkgTime;
+      this.vGL = parame.field_checkIntervalTime;
+      this.vGM = parame.field_packMethod;
+      this.vGN = parame.field_domain;
+      this.cqq = parame.field_md5;
+      this.downloadUrl = parame.field_downloadUrl;
+      this.vGO = parame.field_pkgSize;
+      this.vFT = parame.field_downloadNetType;
+      this.vGP = parame.field_nextCheckTime;
+      this.createTime = parame.field_createTime;
+      this.charset = parame.field_charset;
+      this.vGQ = parame.field_bigPackageReady;
+      this.vGR = parame.field_preloadFilesReady;
+      this.vGS = parame.field_preloadFilesAtomic;
+      this.vGT = parame.field_totalDownloadCount;
+      this.cNS = parame.field_downloadTriggerType;
     }
-  }
-  
-  public final JSONObject cjZ()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("appId", this.appId);
-      localJSONObject.put("version", this.version);
-      localJSONObject.put("pkgPath", this.fCl);
-      localJSONObject.put("disableWvCache", this.rPS);
-      localJSONObject.put("clearPkgTime", this.rPT);
-      localJSONObject.put("checkIntervalTime", this.rPU);
-      localJSONObject.put("packMethod", this.rPV);
-      localJSONObject.put("domain", this.ceG);
-      localJSONObject.put("md5", this.bIW);
-      localJSONObject.put("downloadUrl", this.downloadUrl);
-      localJSONObject.put("pkgSize", this.rPW);
-      localJSONObject.put("downloadNetType", this.rPq);
-      localJSONObject.put("nextCheckTime", this.rPX);
-      localJSONObject.put("charset", this.charset);
-      localJSONObject.put("bigPackageReady", this.rPY);
-      localJSONObject.put("preloadFilesReady", this.rPZ);
-      localJSONObject.put("preloadFilesAtomic", this.rQa);
-      localJSONObject.put("totalDownloadCount", this.rQb);
-      localJSONObject.put("downloadTriggerType", this.cfl);
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException) {}
-    return localJSONObject;
   }
   
   public int describeContents()
@@ -153,65 +133,102 @@ public class WepkgVersion
     return 0;
   }
   
+  public final JSONObject dkD()
+  {
+    AppMethodBeat.i(63603);
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("appId", this.appId);
+      localJSONObject.put("version", this.version);
+      localJSONObject.put("pkgPath", this.gUy);
+      localJSONObject.put("disableWvCache", this.vGJ);
+      localJSONObject.put("clearPkgTime", this.vGK);
+      localJSONObject.put("checkIntervalTime", this.vGL);
+      localJSONObject.put("packMethod", this.vGM);
+      localJSONObject.put("domain", this.vGN);
+      localJSONObject.put("md5", this.cqq);
+      localJSONObject.put("downloadUrl", this.downloadUrl);
+      localJSONObject.put("pkgSize", this.vGO);
+      localJSONObject.put("downloadNetType", this.vFT);
+      localJSONObject.put("nextCheckTime", this.vGP);
+      localJSONObject.put("charset", this.charset);
+      localJSONObject.put("bigPackageReady", this.vGQ);
+      localJSONObject.put("preloadFilesReady", this.vGR);
+      localJSONObject.put("preloadFilesAtomic", this.vGS);
+      localJSONObject.put("totalDownloadCount", this.vGT);
+      localJSONObject.put("downloadTriggerType", this.cNS);
+      label222:
+      AppMethodBeat.o(63603);
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      break label222;
+    }
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeString(this.dCD);
+    AppMethodBeat.i(63604);
+    paramParcel.writeString(this.ezY);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.version);
-    paramParcel.writeString(this.fCl);
-    if (this.rPS)
+    paramParcel.writeString(this.gUy);
+    if (this.vGJ)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.rPT);
-      paramParcel.writeLong(this.rPU);
-      paramParcel.writeInt(this.rPV);
-      paramParcel.writeString(this.ceG);
-      paramParcel.writeString(this.bIW);
+      paramParcel.writeLong(this.vGK);
+      paramParcel.writeLong(this.vGL);
+      paramParcel.writeInt(this.vGM);
+      paramParcel.writeString(this.vGN);
+      paramParcel.writeString(this.cqq);
       paramParcel.writeString(this.downloadUrl);
-      paramParcel.writeInt(this.rPW);
-      paramParcel.writeInt(this.rPq);
-      paramParcel.writeLong(this.rPX);
+      paramParcel.writeInt(this.vGO);
+      paramParcel.writeInt(this.vFT);
+      paramParcel.writeLong(this.vGP);
       paramParcel.writeLong(this.createTime);
       paramParcel.writeString(this.charset);
-      if (!this.rPY) {
-        break label204;
-      }
-      paramInt = 1;
-      label146:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.rPZ) {
-        break label209;
-      }
-      paramInt = 1;
-      label161:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.rQa) {
+      if (!this.vGQ) {
         break label214;
       }
+      paramInt = 1;
+      label151:
+      paramParcel.writeByte((byte)paramInt);
+      if (!this.vGR) {
+        break label219;
+      }
+      paramInt = 1;
+      label166:
+      paramParcel.writeByte((byte)paramInt);
+      if (!this.vGS) {
+        break label224;
+      }
     }
-    label204:
-    label209:
     label214:
+    label219:
+    label224:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.rQb);
-      paramParcel.writeInt(this.cfl);
+      paramParcel.writeInt(this.vGT);
+      paramParcel.writeInt(this.cNS);
+      AppMethodBeat.o(63604);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label146;
+      break label151;
       paramInt = 0;
-      break label161;
+      break label166;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.WepkgVersion
  * JD-Core Version:    0.7.0.1
  */

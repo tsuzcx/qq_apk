@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.address.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class QrcodeInvoiceUI$6
   implements View.OnClickListener
@@ -11,11 +11,13 @@ final class QrcodeInvoiceUI$6
   
   public final void onClick(View paramView)
   {
-    if ((paramView.getId() == R.h.invoice_qrcode_bar_area) && (QrcodeInvoiceUI.b(this.fvl) != null))
+    AppMethodBeat.i(16917);
+    if ((paramView.getId() == 2131826275) && (QrcodeInvoiceUI.b(this.gMQ) != null))
     {
-      this.fvl.showPopupWindow(paramView);
-      QrcodeInvoiceUI.d(this.fvl);
+      this.gMQ.showPopupWindow(paramView);
+      QrcodeInvoiceUI.d(this.gMQ);
     }
+    AppMethodBeat.o(16917);
   }
 }
 

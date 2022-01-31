@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.profile.ui;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.ay.j;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.bt;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.az.k;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.bv;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.z;
 
@@ -19,36 +20,38 @@ final class m$3
   
   public final void run()
   {
-    boolean bool = this.hZO;
+    AppMethodBeat.i(23594);
+    boolean bool = this.ldm;
     String str;
     int i;
     if (bool)
     {
       str = "3";
-      bt.o(6, str);
-      i = q.Gu();
+      bv.v(6, str);
+      i = r.Zy();
       if (!bool) {
-        break label133;
+        break label145;
       }
       i &= 0xFFFFFF7F;
     }
     for (;;)
     {
-      au.Hx();
-      c.Dz().o(34, Integer.valueOf(i));
-      au.Hx();
-      c.Fv().b(new j("", "", "", "", "", "", "", "", i, "", ""));
-      if (!this.hZO)
+      aw.aaz();
+      c.Ru().set(34, Integer.valueOf(i));
+      aw.aaz();
+      c.Yz().c(new k("", "", "", "", "", "", "", "", i, "", ""));
+      if (!this.ldm)
       {
-        bd.iL("qqsync");
-        au.Hx();
-        c.FB().abu("qqsync");
+        bf.pz("qqsync");
+        aw.aaz();
+        c.YF().arF("qqsync");
       }
-      ai.d(new m.3.1(this));
+      al.d(new m.3.1(this));
+      AppMethodBeat.o(23594);
       return;
       str = "4";
       break;
-      label133:
+      label145:
       i |= 0x80;
     }
   }

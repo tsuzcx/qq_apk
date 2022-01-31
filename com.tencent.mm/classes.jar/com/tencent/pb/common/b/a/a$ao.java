@@ -7,71 +7,71 @@ import com.google.a.a.e;
 public final class a$ao
   extends e
 {
-  private static volatile ao[] wIb;
+  private static volatile ao[] BfB;
+  public int BfC = 0;
+  public int Bfo = 0;
   public int fps = 0;
-  public int iEo = 0;
-  public int wHO = 0;
-  public int wIc = 0;
+  public int kJx = 0;
   
   public a$ao()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
-  public static ao[] cOc()
+  public static ao[] dTO()
   {
-    if (wIb == null) {}
-    synchronized (c.aUH)
+    if (BfB == null) {}
+    synchronized (c.bgX)
     {
-      if (wIb == null) {
-        wIb = new ao[0];
+      if (BfB == null) {
+        BfB = new ao[0];
       }
-      return wIb;
+      return BfB;
     }
   }
   
   public final void a(b paramb)
   {
-    if (this.iEo != 0) {
-      paramb.aL(1, this.iEo);
+    if (this.kJx != 0) {
+      paramb.bj(1, this.kJx);
     }
-    if (this.wIc != 0) {
-      paramb.aL(2, this.wIc);
+    if (this.BfC != 0) {
+      paramb.bj(2, this.BfC);
     }
     if (this.fps != 0) {
-      paramb.aL(3, this.fps);
+      paramb.bj(3, this.fps);
     }
-    if (this.wHO != 0) {
-      paramb.aL(4, this.wHO);
+    if (this.Bfo != 0) {
+      paramb.bj(4, this.Bfo);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
-    if (this.iEo != 0) {
-      i = j + b.aN(1, this.iEo);
+    if (this.kJx != 0) {
+      i = j + b.bl(1, this.kJx);
     }
     j = i;
-    if (this.wIc != 0) {
-      j = i + b.aN(2, this.wIc);
+    if (this.BfC != 0) {
+      j = i + b.bl(2, this.BfC);
     }
     i = j;
     if (this.fps != 0) {
-      i = j + b.aN(3, this.fps);
+      i = j + b.bl(3, this.fps);
     }
     j = i;
-    if (this.wHO != 0) {
-      j = i + b.aN(4, this.wHO);
+    if (this.Bfo != 0) {
+      j = i + b.bl(4, this.Bfo);
     }
     return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.ao
  * JD-Core Version:    0.7.0.1
  */

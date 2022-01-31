@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.brandservice;
 
-import com.tencent.mm.h.a.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.aj;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginBrandService$1
-  extends c<ai>
+  extends c<aj>
 {
   PluginBrandService$1(PluginBrandService paramPluginBrandService)
   {
-    this.udX = ai.class.getName().hashCode();
+    AppMethodBeat.i(13801);
+    this.__eventId = aj.class.getName().hashCode();
+    AppMethodBeat.o(13801);
   }
 }
 

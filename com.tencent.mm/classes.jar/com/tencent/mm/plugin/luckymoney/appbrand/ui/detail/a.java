@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.luckymoney.appbrand.ui.detail;
 public abstract interface a
   extends com.tencent.mm.plugin.luckymoney.appbrand.ui.a<b>
 {
-  public abstract void te(int paramInt);
+  public abstract void yg(int paramInt);
 }
 
 

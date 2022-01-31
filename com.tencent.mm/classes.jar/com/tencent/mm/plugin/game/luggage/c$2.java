@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.game.luggage;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.luggage.d.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$2
-  extends com.tencent.mm.plugin.wepkg.c
+  implements Runnable
 {
-  c$2(c paramc) {}
+  c$2(k paramk, String paramString) {}
   
-  public final void aYy()
+  public final void run()
   {
-    if (!bk.bl(c.a(this.kMw))) {
-      bu(c.a(this.kMw), true);
-    }
+    AppMethodBeat.i(135827);
+    this.njp.a(new c.2.1(this));
+    AppMethodBeat.o(135827);
   }
 }
 

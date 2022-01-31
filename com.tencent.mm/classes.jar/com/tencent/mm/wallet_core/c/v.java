@@ -1,48 +1,19 @@
 package com.tencent.mm.wallet_core.c;
 
-import java.util.UUID;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
 
 public final class v
 {
-  private static boolean wAK = false;
-  private static int wAL = -1;
-  private static String wAM = "";
-  
-  public static void IX(int paramInt)
-  {
-    if (!wAK)
-    {
-      wAK = true;
-      wAL = paramInt;
-      wAM = UUID.randomUUID().toString();
-    }
-  }
-  
-  public static boolean cMA()
-  {
-    return wAK;
-  }
-  
-  public static int cMB()
-  {
-    return wAL;
-  }
-  
-  public static String cMC()
-  {
-    return wAM;
-  }
-  
-  public static void cMD()
-  {
-    wAK = false;
-    wAL = -1;
-    wAM = "";
-  }
+  public int AXe;
+  public String lGL;
+  public SKBuiltinBuffer_t xkL;
+  public int xkM;
+  public String xkN;
+  public int xkO;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.v
  * JD-Core Version:    0.7.0.1
  */

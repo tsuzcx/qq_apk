@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.b;
 
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.c.fo;
+import com.tencent.mm.protocal.protobuf.gx;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.util.LinkedList;
 
 public final class i$a
 {
-  int bLN;
+  int cth;
+  EmojiInfo evH;
   String filePath;
-  u hJV;
-  fo hJY;
-  LinkedList<u> hJZ;
-  boolean hKa = true;
-  String hKb;
-  boolean hKc;
-  EmojiInfo hNs;
+  gx jDB;
+  LinkedList<u> jDC;
+  boolean jDD = true;
+  String jDE;
+  boolean jDF;
+  u jDy;
   
-  public i$a(String paramString1, fo paramfo, LinkedList<u> paramLinkedList, int paramInt, String paramString2)
+  public i$a(String paramString1, gx paramgx, LinkedList<u> paramLinkedList, int paramInt, String paramString2)
   {
     this.filePath = paramString1;
-    this.hJY = paramfo;
-    this.hJZ = paramLinkedList;
-    this.bLN = paramInt;
-    this.hKa = false;
-    this.hKb = paramString2;
-    this.hKc = false;
-    this.hJV = null;
+    this.jDB = paramgx;
+    this.jDC = paramLinkedList;
+    this.cth = paramInt;
+    this.jDD = false;
+    this.jDE = paramString2;
+    this.jDF = false;
+    this.jDy = null;
   }
   
-  public i$a(String paramString, fo paramfo, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean, u paramu)
+  public i$a(String paramString, gx paramgx, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean, u paramu)
   {
     this.filePath = paramString;
-    this.hJY = paramfo;
-    this.hJZ = paramLinkedList;
-    this.bLN = paramInt;
-    this.hKa = false;
-    this.hKc = paramBoolean;
-    this.hJV = paramu;
+    this.jDB = paramgx;
+    this.jDC = paramLinkedList;
+    this.cth = paramInt;
+    this.jDD = false;
+    this.jDF = paramBoolean;
+    this.jDy = paramu;
   }
   
-  public i$a(String paramString, fo paramfo, LinkedList<u> paramLinkedList, EmojiInfo paramEmojiInfo)
+  public i$a(String paramString, gx paramgx, LinkedList<u> paramLinkedList, EmojiInfo paramEmojiInfo)
   {
     this.filePath = paramString;
-    this.hJY = paramfo;
-    this.hJZ = paramLinkedList;
-    this.bLN = 5;
-    this.hKa = false;
-    this.hKc = false;
-    this.hJV = null;
-    this.hNs = paramEmojiInfo;
+    this.jDB = paramgx;
+    this.jDC = paramLinkedList;
+    this.cth = 5;
+    this.jDD = false;
+    this.jDF = false;
+    this.jDy = null;
+    this.evH = paramEmojiInfo;
   }
 }
 

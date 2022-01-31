@@ -1,10 +1,22 @@
 package com.tencent.ttpic.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum VideoMaterialUtil$FACE_CROP_ITEM_FRAME
 {
-  FACE_ANGLE("faceAngle"),  FACE_WIDTH("faceWidth"),  INDEX("index"),  NOSE_POINT("nosePoint"),  SIZE("size");
-  
   public String value;
+  
+  static
+  {
+    AppMethodBeat.i(84083);
+    FACE_ANGLE = new FACE_CROP_ITEM_FRAME("FACE_ANGLE", 0, "faceAngle");
+    FACE_WIDTH = new FACE_CROP_ITEM_FRAME("FACE_WIDTH", 1, "faceWidth");
+    INDEX = new FACE_CROP_ITEM_FRAME("INDEX", 2, "index");
+    NOSE_POINT = new FACE_CROP_ITEM_FRAME("NOSE_POINT", 3, "nosePoint");
+    SIZE = new FACE_CROP_ITEM_FRAME("SIZE", 4, "size");
+    $VALUES = new FACE_CROP_ITEM_FRAME[] { FACE_ANGLE, FACE_WIDTH, INDEX, NOSE_POINT, SIZE };
+    AppMethodBeat.o(84083);
+  }
   
   private VideoMaterialUtil$FACE_CROP_ITEM_FRAME(String paramString)
   {

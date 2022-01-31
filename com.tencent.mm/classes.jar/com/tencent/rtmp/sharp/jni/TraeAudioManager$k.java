@@ -1,6 +1,7 @@
 package com.tencent.rtmp.sharp.jni;
 
 import android.content.Intent;
+import com.tencent.d.a.a.a;
 import java.util.HashMap;
 
 abstract class TraeAudioManager$k
@@ -13,9 +14,8 @@ abstract class TraeAudioManager$k
   
   TraeAudioManager$k(TraeAudioManager paramTraeAudioManager)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, " ++switchThread:" + b());
-    }
+    a.dUd();
+    a.iP("TRAE", " ++switchThread:" + b());
   }
   
   public abstract void a();
@@ -24,25 +24,23 @@ abstract class TraeAudioManager$k
   {
     this.f.InternalNotifyDeviceChangableUpdate();
     AudioDeviceInterface.LogTraceEntry(b() + " err:" + paramInt);
-    if (this.d == null) {
-      this.f.InternalNotifyDeviceListUpdate();
-    }
-    do
+    if (this.d == null)
     {
-      return;
-      this.f.sessionConnectedDev = this.f._deviceConfigManager.h();
-      localObject = (Long)this.d.get("PARAM_SESSIONID");
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, " sessonID:" + localObject);
-      }
-      if ((localObject != null) && (((Long)localObject).longValue() != -9223372036854775808L)) {
-        break;
-      }
       this.f.InternalNotifyDeviceListUpdate();
-    } while (!QLog.isColorLevel());
-    QLog.w("TRAE", 2, "processDeviceConnectRes sid null,don't send res");
-    return;
-    Object localObject = new Intent();
+      return;
+    }
+    this.f.sessionConnectedDev = this.f._deviceConfigManager.h();
+    Object localObject = (Long)this.d.get("PARAM_SESSIONID");
+    a.dUd();
+    a.iP("TRAE", " sessonID:".concat(String.valueOf(localObject)));
+    if ((localObject == null) || (((Long)localObject).longValue() == -9223372036854775808L))
+    {
+      this.f.InternalNotifyDeviceListUpdate();
+      a.dUd();
+      a.iP("TRAE", "processDeviceConnectRes sid null,don't send res");
+      return;
+    }
+    localObject = new Intent();
     ((Intent)localObject).putExtra("CONNECTDEVICE_RESULT_DEVICENAME", (String)this.d.get("PARAM_DEVICE"));
     if (this.f.sendResBroadcast((Intent)localObject, this.d, paramInt) == 0) {
       this.f.InternalNotifyDeviceListUpdate();
@@ -59,19 +57,18 @@ abstract class TraeAudioManager$k
   
   public abstract void c();
   
-  void e()
+  void f()
   {
     this.f._deviceConfigManager.g(b());
     a(0);
   }
   
-  public void f()
+  public void g()
   {
     AudioDeviceInterface.LogTraceEntry(b());
     this.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.w("TRAE", 2, " quit:" + b() + " _running:" + this.b);
-    }
+    a.dUd();
+    a.iP("TRAE", " quit:" + b() + " _running:" + this.b);
     interrupt();
     c();
     synchronized (this.c)
@@ -81,7 +78,7 @@ abstract class TraeAudioManager$k
     }
     try
     {
-      this.c.wait();
+      this.c.wait(10000L);
       label88:
       AudioDeviceInterface.LogTraceExit();
       return;
@@ -103,7 +100,7 @@ abstract class TraeAudioManager$k
     synchronized (this.c)
     {
       this.c[0] = true;
-      this.c.notify();
+      this.c.notifyAll();
       AudioDeviceInterface.LogTraceExit();
       return;
     }
@@ -111,7 +108,7 @@ abstract class TraeAudioManager$k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager.k
  * JD-Core Version:    0.7.0.1
  */

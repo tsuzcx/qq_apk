@@ -1,37 +1,61 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.d.a.i;
-import com.tencent.mm.d.a.i.a;
-import com.tencent.mm.plugin.appbrand.appcache.aq;
-import com.tencent.mm.plugin.appbrand.v.p;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.g;
+import com.tencent.mm.modelappbrand.b.a;
+import com.tencent.mm.plugin.base.model.c;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class t
-  extends s
+  implements a
 {
-  public t(o paramo)
+  public static t auj()
   {
-    super(paramo);
+    return t.a.gRM;
   }
   
-  protected final i aaD()
+  public final Intent a(String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString, String paramString4, int paramInt2, int paramInt3)
   {
-    return new aa(this.bzH);
-  }
-  
-  protected final void b(ArrayList<i.a> paramArrayList, String paramString)
-  {
-    super.b(paramArrayList, paramString);
-    paramArrayList.add(new aa.a(this.fyo.aay() + "WAWorker.js", aq.a(this.fyo.getRuntime(), "WAWorker.js"), this.fyo.mAppId, this.fyo.aan()));
-    paramString = p.getSysInfo();
-    paramArrayList.add(new i.a(this.fyo.aay() + "sourcemapSysinfo", paramString));
-    paramString = aq.a(this.fyo.getRuntime(), "WASourceMap.js");
-    paramArrayList.add(new i.a(this.fyo.aay() + "WASourceMap.js", paramString));
-  }
-  
-  protected final i.a qO(String paramString)
-  {
-    return new aa.a(super.qO(paramString), p.a(this.fyo.getRuntime(), paramString, this.fyo.aaz()), this.fyo.mAppId, this.fyo.aan());
+    int i = 0;
+    AppMethodBeat.i(129116);
+    if (Build.VERSION.SDK_INT >= 26) {}
+    String str;
+    for (boolean bool = true;; bool = false)
+    {
+      str = c.av(paramString2, bool);
+      if (!bo.isNullOrNil(str)) {
+        break;
+      }
+      AppMethodBeat.o(129116);
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString3)) {}
+    for (;;)
+    {
+      paramString3 = new StringBuilder();
+      int j = paramArrayOfString.length;
+      while (i < j)
+      {
+        paramString3.append(paramArrayOfString[i]);
+        i += 1;
+      }
+      paramString2 = paramString3;
+    }
+    paramString2 = g.w((paramString2 + paramString3.toString()).getBytes());
+    paramString3 = new Intent("com.tencent.mm.action.WX_SHORTCUT");
+    paramString3.putExtra("type", paramInt3);
+    paramString3.putExtra("id", str);
+    paramString3.putExtra("ext_info", c.av(paramString4, bool));
+    paramString3.putExtra("token", c.de(paramString4, String.valueOf(paramInt2)));
+    paramString3.putExtra("digest", paramString2);
+    paramString3.putExtra("ext_info_1", paramInt1);
+    paramString3.setPackage(paramString1);
+    paramString3.addFlags(67108864);
+    AppMethodBeat.o(129116);
+    return paramString3;
   }
 }
 

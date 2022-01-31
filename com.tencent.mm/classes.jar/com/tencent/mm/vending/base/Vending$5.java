@@ -3,6 +3,7 @@ package com.tencent.mm.vending.base;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class Vending$5
   extends Handler
@@ -14,13 +15,17 @@ final class Vending$5
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(126166);
     switch (paramMessage.what)
     {
-    default: 
-      return;
     }
-    paramMessage = (Vending.i)paramMessage.obj;
-    Vending.a(this.wta, paramMessage.a, paramMessage.b);
+    for (;;)
+    {
+      AppMethodBeat.o(126166);
+      return;
+      paramMessage = (Vending.i)paramMessage.obj;
+      Vending.a(this.ANV, paramMessage.a, paramMessage.b);
+    }
   }
 }
 

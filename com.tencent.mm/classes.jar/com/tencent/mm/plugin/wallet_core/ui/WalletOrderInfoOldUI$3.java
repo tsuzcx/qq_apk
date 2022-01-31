@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
-import com.tencent.mm.h.a.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ar;
 import com.tencent.mm.sdk.b.c;
 
 final class WalletOrderInfoOldUI$3
-  extends c<ao>
+  extends c<ar>
 {
   WalletOrderInfoOldUI$3(WalletOrderInfoOldUI paramWalletOrderInfoOldUI)
   {
-    this.udX = ao.class.getName().hashCode();
+    AppMethodBeat.i(47474);
+    this.__eventId = ar.class.getName().hashCode();
+    AppMethodBeat.o(47474);
   }
 }
 

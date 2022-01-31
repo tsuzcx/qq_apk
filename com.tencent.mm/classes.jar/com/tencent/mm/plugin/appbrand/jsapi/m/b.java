@@ -1,22 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.m;
 
-import android.view.View;
-import com.tencent.mm.plugin.appbrand.widget.picker.d;
+import com.tencent.mm.kernel.c.a;
 
-public abstract interface b<T>
-{
-  public abstract void a(d paramd);
-  
-  public abstract T ajO();
-  
-  public abstract void ajP();
-  
-  public abstract void ajQ();
-  
-  public abstract void b(d paramd);
-  
-  public abstract View getView();
-}
+public abstract interface b
+  extends a
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar

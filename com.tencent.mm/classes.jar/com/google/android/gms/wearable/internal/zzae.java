@@ -1,28 +1,64 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
+import com.google.android.gms.wearable.CapabilityClient.OnCapabilityChangedListener;
+import com.google.android.gms.wearable.CapabilityInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzae
-  extends zza
+final class zzae
+  implements CapabilityClient.OnCapabilityChangedListener
 {
-  public static final Parcelable.Creator<zzae> CREATOR = new zzaf();
-  public final int statusCode;
+  private final String zzbc;
+  private final CapabilityClient.OnCapabilityChangedListener zzby;
   
-  public zzae(int paramInt)
+  zzae(CapabilityClient.OnCapabilityChangedListener paramOnCapabilityChangedListener, String paramString)
   {
-    this.statusCode = paramInt;
+    this.zzby = paramOnCapabilityChangedListener;
+    this.zzbc = paramString;
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  public final boolean equals(Object paramObject)
   {
-    zzaf.zza(this, paramParcel, paramInt);
+    AppMethodBeat.i(70985);
+    if (this == paramObject)
+    {
+      AppMethodBeat.o(70985);
+      return true;
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(70985);
+      return false;
+    }
+    paramObject = (zzae)paramObject;
+    if (!this.zzby.equals(paramObject.zzby))
+    {
+      AppMethodBeat.o(70985);
+      return false;
+    }
+    boolean bool = this.zzbc.equals(paramObject.zzbc);
+    AppMethodBeat.o(70985);
+    return bool;
+  }
+  
+  public final int hashCode()
+  {
+    AppMethodBeat.i(70986);
+    int i = this.zzby.hashCode();
+    int j = this.zzbc.hashCode();
+    AppMethodBeat.o(70986);
+    return i * 31 + j;
+  }
+  
+  public final void onCapabilityChanged(CapabilityInfo paramCapabilityInfo)
+  {
+    AppMethodBeat.i(70984);
+    this.zzby.onCapabilityChanged(paramCapabilityInfo);
+    AppMethodBeat.o(70984);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,16 @@
 package com.tencent.wcdb.database;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class SQLiteCipherSpec
 {
-  public static final String CIPHER_AES256CBC = "aes-256-cbc";
-  public static final String CIPHER_DEVLOCK = "devlock";
-  public static final String CIPHER_XXTEA = "xxtea";
-  public String cipher;
+  public static final int HMAC_DEFAULT = -1;
+  public static final int HMAC_SHA1 = 0;
+  public static final int HMAC_SHA256 = 1;
+  public static final int HMAC_SHA512 = 2;
+  public int hmacAlgorithm = -1;
   public boolean hmacEnabled = true;
+  public int kdfAlgorithm = -1;
   public int kdfIteration;
   public int pageSize = SQLiteGlobal.defaultPageSize;
   
@@ -14,21 +18,26 @@ public class SQLiteCipherSpec
   
   public SQLiteCipherSpec(SQLiteCipherSpec paramSQLiteCipherSpec)
   {
-    this.cipher = paramSQLiteCipherSpec.cipher;
     this.kdfIteration = paramSQLiteCipherSpec.kdfIteration;
     this.hmacEnabled = paramSQLiteCipherSpec.hmacEnabled;
     this.pageSize = paramSQLiteCipherSpec.pageSize;
   }
   
-  public SQLiteCipherSpec setCipher(String paramString)
+  public SQLiteCipherSpec setHmacAlgorithm(int paramInt)
   {
-    this.cipher = paramString;
+    this.hmacAlgorithm = paramInt;
     return this;
   }
   
   public SQLiteCipherSpec setKDFIteration(int paramInt)
   {
     this.kdfIteration = paramInt;
+    return this;
+  }
+  
+  public SQLiteCipherSpec setKdfAlgorithm(int paramInt)
+  {
+    this.kdfAlgorithm = paramInt;
     return this;
   }
   
@@ -40,22 +49,38 @@ public class SQLiteCipherSpec
   
   public SQLiteCipherSpec setSQLCipherVersion(int paramInt)
   {
+    AppMethodBeat.i(12270);
     switch (paramInt)
     {
     default: 
-      throw new IllegalArgumentException("Unsupported SQLCipher version: " + paramInt);
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Unsupported SQLCipher version: ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(12270);
+      throw localIllegalArgumentException;
     case 1: 
       this.hmacEnabled = false;
       this.kdfIteration = 4000;
+      this.hmacAlgorithm = 0;
+      this.kdfAlgorithm = 0;
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(12270);
       return this;
-    case 2: 
       this.hmacEnabled = true;
       this.kdfIteration = 4000;
-      return this;
+      this.hmacAlgorithm = 0;
+      this.kdfAlgorithm = 0;
+      continue;
+      this.hmacEnabled = true;
+      this.kdfIteration = 64000;
+      this.hmacAlgorithm = 0;
+      this.kdfAlgorithm = 0;
+      continue;
+      this.hmacEnabled = true;
+      this.kdfIteration = 256000;
+      this.hmacAlgorithm = 2;
+      this.kdfAlgorithm = 2;
     }
-    this.hmacEnabled = true;
-    this.kdfIteration = 64000;
-    return this;
   }
   
   public SQLiteCipherSpec withHMACEnabled(boolean paramBoolean)

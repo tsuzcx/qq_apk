@@ -1,23 +1,39 @@
 package com.tencent.mm.ui;
 
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.storage.z;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CheckBox;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMAppMgr$13
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  MMAppMgr$13(CheckBox paramCheckBox, SharedPreferences paramSharedPreferences, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    au.Hx();
-    c.Dz().o(61, Boolean.valueOf(paramBoolean));
+    AppMethodBeat.i(153819);
+    if (this.zbN.isChecked())
+    {
+      SharedPreferences.Editor localEditor = this.uEp.edit();
+      localEditor.putBoolean("gprs_alert", false);
+      localEditor.commit();
+    }
+    com.tencent.mm.sdk.platformtools.g.ymM = false;
+    paramDialogInterface.dismiss();
+    MMAppMgr.hK(this.gjR);
+    if (this.zbO != null) {
+      this.zbO.onClick(paramDialogInterface, paramInt);
+    }
+    AppMethodBeat.o(153819);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.MMAppMgr.13
  * JD-Core Version:    0.7.0.1
  */

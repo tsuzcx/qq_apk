@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.picker;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.m;
 import com.tencent.mm.ui.base.n.d;
@@ -14,21 +15,25 @@ final class d$a$1
   
   public final void onClick(View paramView)
   {
-    if (this.woK.woG.phI != null) {
-      this.woK.woG.phI.onMMMenuItemSelected(this.woK.woG.phJ.getItem(this.kX), this.kX);
+    AppMethodBeat.i(112842);
+    if (this.AJk.AJg.sap != null) {
+      this.AJk.AJg.sap.onMMMenuItemSelected(this.AJk.AJg.saq.getItem(this.lU), this.lU);
     }
-    if (this.woJ.tMS) {
+    if (this.AJj.xTc)
+    {
+      AppMethodBeat.o(112842);
       return;
     }
-    if (((Boolean)d.a.a(this.woK).get(Integer.valueOf(this.kX))).booleanValue()) {
-      d.a.a(this.woK).put(Integer.valueOf(this.kX), Boolean.valueOf(false));
+    if (((Boolean)d.a.a(this.AJk).get(Integer.valueOf(this.lU))).booleanValue()) {
+      d.a.a(this.AJk).put(Integer.valueOf(this.lU), Boolean.FALSE);
     }
     for (;;)
     {
-      this.woK.woH = d.a.a(this.woK);
-      this.woK.notifyDataSetChanged();
+      this.AJk.AJh = d.a.a(this.AJk);
+      this.AJk.notifyDataSetChanged();
+      AppMethodBeat.o(112842);
       return;
-      d.a.a(this.woK).put(Integer.valueOf(this.kX), Boolean.valueOf(true));
+      d.a.a(this.AJk).put(Integer.valueOf(this.lU), Boolean.TRUE);
     }
   }
 }

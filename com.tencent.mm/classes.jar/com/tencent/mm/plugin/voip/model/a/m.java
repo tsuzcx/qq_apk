@@ -1,48 +1,54 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.model.q;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.cey;
-import com.tencent.mm.protocal.c.cgb;
-import com.tencent.mm.protocal.c.cgc;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.model.r;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.csj;
+import com.tencent.mm.protocal.protobuf.ctm;
+import com.tencent.mm.protocal.protobuf.ctn;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class m
-  extends n<cgb, cgc>
+  extends n<ctm, ctn>
 {
-  public m(int paramInt1, cey paramcey, byte[] paramArrayOfByte, long paramLong, int paramInt2)
+  public m(int paramInt1, csj paramcsj, byte[] paramArrayOfByte, long paramLong, int paramInt2)
   {
+    AppMethodBeat.i(4736);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cgb();
-    ((b.a)localObject).ecI = new cgc();
+    ((b.a)localObject).fsX = new ctm();
+    ((b.a)localObject).fsY = new ctn();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipsync";
-    ((b.a)localObject).ecG = 174;
-    ((b.a)localObject).ecJ = 62;
-    ((b.a)localObject).ecK = 1000000062;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (cgb)this.dmK.ecE.ecN;
-    ((cgb)localObject).sST = paramInt1;
-    ((cgb)localObject).tVl = paramcey;
-    ((cgb)localObject).sSU = paramLong;
-    ((cgb)localObject).tAY = q.Gj();
-    ((cgb)localObject).sIh = paramInt2;
-    ((cgb)localObject).sIi = new bmk().bs(paramArrayOfByte);
-    ((cgb)localObject).tSJ = System.currentTimeMillis();
-    y.i("MicroMsg.NetSceneVoipSync", "sync timestamp: " + ((cgb)localObject).tSJ);
+    ((b.a)localObject).funcId = 174;
+    ((b.a)localObject).reqCmdId = 62;
+    ((b.a)localObject).respCmdId = 1000000062;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (ctm)this.rr.fsV.fta;
+    ((ctm)localObject).wQP = paramInt1;
+    ((ctm)localObject).ycC = paramcsj;
+    ((ctm)localObject).wQQ = paramLong;
+    ((ctm)localObject).xCG = r.Zn();
+    ((ctm)localObject).wFQ = paramInt2;
+    ((ctm)localObject).wFR = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    ((ctm)localObject).yab = System.currentTimeMillis();
+    ab.i("MicroMsg.NetSceneVoipSync", "sync timestamp: " + ((ctm)localObject).yab);
+    AppMethodBeat.o(4736);
   }
   
-  public final int bRA()
+  public final f cOp()
   {
-    return ((cgb)this.dmK.ecE.ecN).sIh;
+    AppMethodBeat.i(4737);
+    m.1 local1 = new m.1(this);
+    AppMethodBeat.o(4737);
+    return local1;
   }
   
-  public final f bRy()
+  public final int cOr()
   {
-    return new m.1(this);
+    return ((ctm)this.rr.fsV.fta).wFQ;
   }
   
   public final int getType()

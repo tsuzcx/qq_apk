@@ -1,51 +1,36 @@
 package com.tencent.mm.plugin.appbrand.b;
 
-import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class d$a
-  extends g
+public enum d$a
 {
-  d$a(d paramd, i parami, com.tencent.mm.plugin.appbrand.i parami1)
+  private final boolean gYH;
+  final int intValue;
+  
+  static
   {
-    super(parami, parami1);
+    AppMethodBeat.i(141648);
+    gYz = new a("NONE", 0, 0);
+    gYA = new a("TO_BACKGROUND", 1, 1);
+    gYB = new a("TO_FOREGROUND", 2, 3);
+    gYC = new a("TO_SUSPEND_FROM_BACKGROUND", 3, 4, true);
+    gYD = new a("ON_SYSTEM_SCREEN_OFF", 4, 10);
+    gYE = new a("ON_SUSPEND_TIMEOUT", 5, 11, true);
+    gYF = new a("ON_DETACH_FROM_STACK", 6, 12);
+    gYG = new a("AWAKE_MSG_QUEUE", 7, 1000);
+    gYI = new a[] { gYz, gYA, gYB, gYC, gYD, gYE, gYF, gYG };
+    AppMethodBeat.o(141648);
   }
   
-  final void acB()
+  private d$a(int paramInt)
   {
-    if (this.fGa.csl() == this)
-    {
-      d.a(this.fGa, this.fGa.fFT);
-      this.fGa.ku(1000);
-    }
+    this(paramInt, false);
   }
   
-  public final void enter()
+  private d$a(int paramInt, boolean paramBoolean)
   {
-    super.enter();
-  }
-  
-  public final void exit()
-  {
-    super.exit();
-  }
-  
-  public final boolean g(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return super.g(paramMessage);
-    case 3: 
-      d.a(this.fGa, this.fGa.fFQ);
-      return true;
-    }
-    super.kv(16);
-    return true;
-  }
-  
-  public final String getName()
-  {
-    return this.fGa.mName + "|Background";
+    this.intValue = paramInt;
+    this.gYH = paramBoolean;
   }
 }
 

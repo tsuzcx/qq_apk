@@ -2,7 +2,8 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MMPhoneNumberEditText$2
   implements TextWatcher
@@ -13,35 +14,41 @@ final class MMPhoneNumberEditText$2
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (bk.bl(paramCharSequence.toString()))
+    AppMethodBeat.i(27493);
+    if (bo.isNullOrNil(paramCharSequence.toString()))
     {
-      MMPhoneNumberEditText.a(this.saj, true);
+      MMPhoneNumberEditText.a(this.vQZ, true);
+      AppMethodBeat.o(27493);
       return;
     }
-    MMPhoneNumberEditText.a(this.saj, false);
+    MMPhoneNumberEditText.a(this.vQZ, false);
+    AppMethodBeat.o(27493);
   }
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    MMPhoneNumberEditText.c(this.saj);
-    if ((paramCharSequence.toString().equals("")) && (!MMPhoneNumberEditText.d(this.saj))) {
-      if ((MMPhoneNumberEditText.b(this.saj) != null) && (this.saj.isFocused())) {
-        MMPhoneNumberEditText.b(this.saj).g(this.saj);
+    AppMethodBeat.i(27492);
+    MMPhoneNumberEditText.c(this.vQZ);
+    if ((paramCharSequence.toString().equals("")) && (!MMPhoneNumberEditText.d(this.vQZ)))
+    {
+      if ((MMPhoneNumberEditText.b(this.vQZ) != null) && (this.vQZ.isFocused()))
+      {
+        MMPhoneNumberEditText.b(this.vQZ).g(this.vQZ);
+        AppMethodBeat.o(27492);
       }
     }
-    do
+    else if ((!paramCharSequence.toString().equals("")) && (MMPhoneNumberEditText.d(this.vQZ)))
     {
-      do
+      if ((MMPhoneNumberEditText.b(this.vQZ) != null) && (this.vQZ.isFocused()))
       {
-        return;
-        if ((paramCharSequence.toString().equals("")) || (!MMPhoneNumberEditText.d(this.saj))) {
-          break;
-        }
-      } while ((MMPhoneNumberEditText.b(this.saj) == null) || (!this.saj.isFocused()));
-      MMPhoneNumberEditText.b(this.saj).cmo();
-      return;
-    } while ((MMPhoneNumberEditText.b(this.saj) == null) || (!this.saj.isFocused()));
-    MMPhoneNumberEditText.b(this.saj).cmp();
+        MMPhoneNumberEditText.b(this.vQZ).dne();
+        AppMethodBeat.o(27492);
+      }
+    }
+    else if ((MMPhoneNumberEditText.b(this.vQZ) != null) && (this.vQZ.isFocused())) {
+      MMPhoneNumberEditText.b(this.vQZ).dnf();
+    }
+    AppMethodBeat.o(27492);
   }
 }
 

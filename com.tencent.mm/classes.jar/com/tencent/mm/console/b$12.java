@@ -4,14 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.WorkerProfile;
-import com.tencent.mm.cl.b;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.au;
+import com.tencent.mm.cn.d;
+import com.tencent.mm.kernel.l;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.pluginsdk.f.e;
 import com.tencent.mm.pluginsdk.f.e.a;
+import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.aj;
 import com.tencent.mm.storage.ac;
 
 final class b$12
@@ -21,21 +25,23 @@ final class b$12
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new com.tencent.mm.storage.y(ac.dOP + "SdcardInfo.cfg");
-    paramDialogInterface.set(1, this.dAH);
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.CommandProcessor", "switchsdcard reset to sdcard root: " + paramDialogInterface.get(1));
-    ag.Zn("welcome_page_show");
-    com.tencent.mm.kernel.l.k(this.dAE, true);
-    paramDialogInterface = new com.tencent.mm.h.a.y();
-    paramDialogInterface.bFX.bFY = false;
-    a.udP.m(paramDialogInterface);
-    WorkerProfile.ts().bxM.tn();
-    au.getNotification().wp();
-    b.afs("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
-    if (e.rVK != null) {
-      e.rVK.aK(this.val$activity);
+    AppMethodBeat.i(16093);
+    paramDialogInterface = new com.tencent.mm.storage.y(ac.eQv + "SdcardInfo.cfg");
+    paramDialogInterface.set(1, this.eui);
+    ab.i("MicroMsg.CommandProcessor", "switchsdcard reset to sdcard root: " + paramDialogInterface.get(1));
+    aj.apl("welcome_page_show");
+    l.n(this.eug, true);
+    paramDialogInterface = new com.tencent.mm.g.a.y();
+    paramDialogInterface.cne.cnf = false;
+    a.ymk.l(paramDialogInterface);
+    WorkerProfile.BW().bZN.BR();
+    aw.getNotification().IG();
+    d.awm("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+    if (e.vMF != null) {
+      e.vMF.bi(this.val$activity);
     }
     this.val$activity.finish();
+    AppMethodBeat.o(16093);
   }
 }
 

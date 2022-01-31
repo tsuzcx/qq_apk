@@ -3,10 +3,23 @@ package com.tencent.mm.plugin.sns.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.cb;
+import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.modelvideo.o;
+import com.tencent.mm.plugin.expt.a.a.a;
+import com.tencent.mm.plugin.mmsight.SightParams;
+import com.tencent.mm.plugin.mmsight.d;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager;
+import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
+import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
+import com.tencent.mm.plugin.recordvideo.jumper.VideoCaptureReportInfo;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
 import java.util.ArrayList;
@@ -18,53 +31,85 @@ final class ag$6
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(38482);
     switch (paramMenuItem.getItemId())
     {
     default: 
+      AppMethodBeat.o(38482);
       return;
     case 0: 
-      paramMenuItem = this.oSk;
-      paramInt = 9 - paramMenuItem.oSd.oSo.size();
+      paramMenuItem = this.rKd;
+      paramInt = 9 - paramMenuItem.rJW.rKh.size();
       if (paramInt <= 0)
       {
-        y.e("MicroMsg.PicWidget", "has select the max image count");
+        ab.e("MicroMsg.PicWidget", "has select the max image count");
+        AppMethodBeat.o(38482);
         return;
       }
-      Intent localIntent;
+      Object localObject1 = new SightParams(2, 0);
+      o.alD();
+      Object localObject2 = d.TU(o.getAccVideoPath());
+      localObject1 = RecordConfigProvider.a((String)localObject2, d.TW((String)localObject2), ((SightParams)localObject1).fcu, ((SightParams)localObject1).fcu.duration * 1000, 2);
+      if (((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVS, false)) {
+        ((RecordConfigProvider)localObject1).qbm = 2;
+      }
+      localObject2 = new VideoCaptureReportInfo();
+      ((VideoCaptureReportInfo)localObject2).mhr = 2;
+      ((RecordConfigProvider)localObject1).qbE = ((VideoCaptureReportInfo)localObject2);
+      localObject2 = new ag.8(paramMenuItem);
+      l = cb.abq();
       if (paramInt < 9)
       {
-        h.nFQ.f(13822, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
-        localIntent = new Intent();
-        l.a(paramMenuItem.bER, 11, localIntent, 2, 2);
+        h.qsU.e(13822, new Object[] { Integer.valueOf(1), Integer.valueOf(2), i.ls(l), Long.valueOf(l) });
+        ((RecordConfigProvider)localObject1).qbu = Boolean.FALSE;
+        CaptureDataManager.qbh.qbg = ((CaptureDataManager.b)localObject2);
+        if (!((com.tencent.mm.plugin.expt.a.a)g.E(com.tencent.mm.plugin.expt.a.a.class)).a(a.a.lVQ, true)) {
+          break label344;
+        }
+        localObject2 = com.tencent.mm.plugin.recordvideo.jumper.a.qbG;
+        com.tencent.mm.plugin.recordvideo.jumper.a.a(paramMenuItem.cmc, 11, (RecordConfigProvider)localObject1);
       }
       for (;;)
       {
-        paramMenuItem.yB(1);
+        paramMenuItem.EG(1);
+        AppMethodBeat.o(38482);
         return;
-        h.nFQ.f(13822, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
-        localIntent = new Intent();
-        l.a(paramMenuItem.bER, 11, localIntent, 2, 0);
+        h.qsU.e(13822, new Object[] { Integer.valueOf(1), Integer.valueOf(2), i.ls(l), Long.valueOf(l) });
+        break;
+        label344:
+        if (paramInt < 9)
+        {
+          localObject1 = new Intent();
+          n.a(paramMenuItem.cmc, 11, (Intent)localObject1, 2, 2);
+        }
+        else
+        {
+          localObject1 = new Intent();
+          n.a(paramMenuItem.cmc, 11, (Intent)localObject1, 2, 0);
+        }
       }
     }
-    paramInt = 9 - this.oSk.oSd.oSo.size();
+    paramInt = 9 - this.rKd.rJW.rKh.size();
     if (paramInt <= 0)
     {
-      y.e("MicroMsg.PicWidget", "has select the max image count");
+      ab.e("MicroMsg.PicWidget", "has select the max image count");
+      AppMethodBeat.o(38482);
       return;
     }
-    paramMenuItem = this.oSk.bER.getSharedPreferences(ae.cqR(), 0).getString("gallery", "1");
-    h.nFQ.f(13822, new Object[] { Integer.valueOf(2), Integer.valueOf(2) });
+    paramMenuItem = this.rKd.cmc.getSharedPreferences(ah.dsP(), 0).getString("gallery", "1");
+    long l = cb.abq();
+    h.qsU.e(13822, new Object[] { Integer.valueOf(2), Integer.valueOf(2), i.ls(l), Long.valueOf(l) });
     if (paramMenuItem.equalsIgnoreCase("0")) {
-      l.T(this.oSk.bER);
+      n.ar(this.rKd.cmc);
     }
     for (;;)
     {
-      this.oSk.yB(2);
-      return;
+      this.rKd.EG(2);
+      break;
       if (paramInt < 9) {
-        l.a(this.oSk.bER, 9, paramInt, 4, 1, false, null);
+        n.a(this.rKd.cmc, 9, paramInt, 4, 1, null);
       } else {
-        l.a(this.oSk.bER, 9, paramInt, 4, 3, false, null);
+        n.a(this.rKd.cmc, 9, paramInt, 4, 3, null);
       }
     }
   }

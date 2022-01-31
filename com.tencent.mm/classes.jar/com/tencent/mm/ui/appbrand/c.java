@@ -3,98 +3,133 @@ package com.tencent.mm.ui.appbrand;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.a.b.i;
+import com.tencent.mm.plugin.appbrand.s.n;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.base.o;
 
 public final class c
-  implements b.h
+  implements b.i
 {
-  private ImageView bQf = null;
-  private ProgressBar bQh = null;
-  private Bitmap bitmap = null;
-  private View contentView = null;
+  private Bitmap bitmap;
+  private View contentView;
   private Context context;
-  private View khn;
-  private View lHw;
-  private TextView pcv = null;
-  private TextView pcw = null;
-  com.tencent.mm.ui.base.o sgx;
-  public boolean sgy = true;
-  private long uRM = 10000L;
-  private ImageView uRN = null;
-  private String uRO = null;
-  private boolean uRP = false;
-  private boolean uRQ = false;
-  public c.a uRR;
-  ah uRS = null;
+  private ProgressBar cxA;
+  private ImageView cxy;
+  private View kgr;
+  private TextView rVf;
+  private TextView rVg;
+  o vYP;
+  public boolean vYQ;
+  private long zgn;
+  private ImageView zgo;
+  private String zgp;
+  private ChatFooter zgq;
+  private boolean zgr;
+  public c.a zgs;
+  ak zgt;
   
-  public c(Context paramContext, View paramView1, View paramView2, boolean paramBoolean)
+  public c(Context paramContext, View paramView, ChatFooter paramChatFooter)
   {
+    AppMethodBeat.i(153823);
+    this.zgn = 10000L;
+    this.contentView = null;
+    this.rVf = null;
+    this.rVg = null;
+    this.cxy = null;
+    this.zgo = null;
+    this.cxA = null;
+    this.zgp = null;
+    this.bitmap = null;
+    this.vYQ = true;
+    this.zgr = false;
+    this.zgt = null;
     this.context = paramContext;
-    this.khn = paramView1;
-    this.lHw = paramView2;
-    this.uRQ = paramBoolean;
-    this.contentView = View.inflate(this.context, R.i.chatting_footer_app_brand_image_bubble, null);
-    this.pcv = ((TextView)this.contentView.findViewById(R.h.image_tv_1));
-    this.pcw = ((TextView)this.contentView.findViewById(R.h.image_tv_2));
-    this.bQf = ((ImageView)this.contentView.findViewById(R.h.image_iv));
-    this.uRN = ((ImageView)this.contentView.findViewById(R.h.error_iv));
-    this.bQh = ((ProgressBar)this.contentView.findViewById(R.h.image_pb));
-    this.sgx = new com.tencent.mm.ui.base.o(this.contentView, -2, -2, true);
-    this.sgx.setBackgroundDrawable(new ColorDrawable(0));
-    this.sgx.setOutsideTouchable(true);
-    this.sgx.setFocusable(false);
+    this.kgr = paramView;
+    this.zgq = paramChatFooter;
+    this.contentView = View.inflate(this.context, 2130969037, null);
+    this.rVf = ((TextView)this.contentView.findViewById(2131822492));
+    this.rVg = ((TextView)this.contentView.findViewById(2131822493));
+    this.cxy = ((ImageView)this.contentView.findViewById(2131822243));
+    this.zgo = ((ImageView)this.contentView.findViewById(2131822491));
+    this.cxA = ((ProgressBar)this.contentView.findViewById(2131822490));
+    this.vYP = new o(this.contentView, -2, -2, true);
+    this.vYP.setBackgroundDrawable(new ColorDrawable(0));
+    this.vYP.setOutsideTouchable(true);
+    this.vYP.setFocusable(false);
     this.contentView.setOnClickListener(new c.1(this));
-    this.uRS = new c.2(this, this.context.getMainLooper());
+    this.zgt = new ak(this.context.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(29959);
+        c.a(c.this);
+        AppMethodBeat.o(29959);
+      }
+    };
+    AppMethodBeat.o(153823);
   }
   
-  public final void JG()
+  public final void acG()
   {
-    y.d("MicroMsg.AppBrandServiceImageBubble", "beforeLoadBitmap");
-    this.bQh.setVisibility(0);
-    this.bQf.setVisibility(8);
-    this.uRN.setVisibility(8);
+    AppMethodBeat.i(29963);
+    ab.d("MicroMsg.AppBrandServiceImageBubble", "beforeLoadBitmap");
+    this.cxA.setVisibility(0);
+    this.cxy.setVisibility(8);
+    this.zgo.setVisibility(8);
+    AppMethodBeat.o(29963);
   }
   
-  public final void JH()
+  public final void acH()
   {
-    y.i("MicroMsg.AppBrandServiceImageBubble", "onLoadFailed");
-    this.uRN.setVisibility(0);
-    this.bQh.setVisibility(8);
-    this.bQf.setVisibility(8);
+    AppMethodBeat.i(29965);
+    ab.i("MicroMsg.AppBrandServiceImageBubble", "onLoadFailed");
+    this.zgo.setVisibility(0);
+    this.cxA.setVisibility(8);
+    this.cxy.setVisibility(8);
+    AppMethodBeat.o(29965);
   }
   
-  public final void p(Bitmap paramBitmap)
+  public final String tX()
   {
-    y.d("MicroMsg.AppBrandServiceImageBubble", "onBitmapLoaded");
+    AppMethodBeat.i(29966);
+    String str = n.bt(this);
+    AppMethodBeat.o(29966);
+    return str;
+  }
+  
+  public final void w(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(29964);
+    ab.d("MicroMsg.AppBrandServiceImageBubble", "onBitmapLoaded");
     if (paramBitmap == null)
     {
-      y.w("MicroMsg.AppBrandServiceImageBubble", "bitmap is null");
+      ab.w("MicroMsg.AppBrandServiceImageBubble", "bitmap is null");
+      AppMethodBeat.o(29964);
       return;
     }
     this.bitmap = paramBitmap;
-    this.bQh.setVisibility(8);
+    this.cxA.setVisibility(8);
     if ((paramBitmap != null) && (!paramBitmap.isRecycled()))
     {
-      this.bQf.setVisibility(0);
-      this.bQf.setImageBitmap(paramBitmap);
-      this.uRN.setVisibility(8);
+      this.cxy.setVisibility(0);
+      this.cxy.setImageBitmap(paramBitmap);
+      this.zgo.setVisibility(8);
+      AppMethodBeat.o(29964);
       return;
     }
-    this.uRN.setVisibility(0);
-    this.bQf.setVisibility(8);
-  }
-  
-  public final String pU()
-  {
-    return com.tencent.mm.plugin.appbrand.u.o.aX(this);
+    this.zgo.setVisibility(0);
+    this.cxy.setVisibility(8);
+    AppMethodBeat.o(29964);
   }
 }
 

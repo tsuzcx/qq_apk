@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.card.d;
 
-import android.content.Context;
 import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  public static void P(Context paramContext, String paramString)
+  public static void xJ(String paramString)
   {
+    AppMethodBeat.i(88942);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new n();
-      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+      n.xJ(paramString);
+      AppMethodBeat.o(88942);
       return;
     }
     new o();
-    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
+    o.xJ(paramString);
+    AppMethodBeat.o(88942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.p
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public final class j$b
 {
   public j$b(j paramj) {}
   
-  public final String vP()
+  public final String HY()
   {
     return "Vending.LOGIC";
   }

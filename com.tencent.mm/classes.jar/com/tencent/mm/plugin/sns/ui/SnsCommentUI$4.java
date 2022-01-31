@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsCommentUI$4
   implements TextWatcher
@@ -14,12 +15,15 @@ final class SnsCommentUI$4
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (SnsCommentUI.b(this.oXZ).getText().toString().trim().length() > 0)
+    AppMethodBeat.i(38919);
+    if (SnsCommentUI.b(this.rQs).getText().toString().trim().length() > 0)
     {
-      this.oXZ.enableOptionMenu(true);
+      this.rQs.enableOptionMenu(true);
+      AppMethodBeat.o(38919);
       return;
     }
-    this.oXZ.enableOptionMenu(false);
+    this.rQs.enableOptionMenu(false);
+    AppMethodBeat.o(38919);
   }
 }
 

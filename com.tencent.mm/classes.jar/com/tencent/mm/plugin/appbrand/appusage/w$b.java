@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.j;
 
 final class w$b
-  extends i<w.a>
+  extends j<w.a>
 {
   w$b(e parame)
   {
-    super(parame, w.a.dUa, "AppBrandLauncherLayoutItem", w.a.cqY);
+    super(parame, w.a.fkk, "AppBrandLauncherLayoutItem", w.a.INDEX_CREATE);
   }
 }
 

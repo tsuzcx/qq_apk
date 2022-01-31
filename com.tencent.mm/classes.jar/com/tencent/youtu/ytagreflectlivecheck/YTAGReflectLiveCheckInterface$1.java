@@ -1,5 +1,6 @@
 package com.tencent.youtu.ytagreflectlivecheck;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytagreflectlivecheck.requester.LightDiffResponse;
 
 final class YTAGReflectLiveCheckInterface$1
@@ -9,8 +10,10 @@ final class YTAGReflectLiveCheckInterface$1
   
   public final void run()
   {
+    AppMethodBeat.i(123133);
     YTAGReflectLiveCheckInterface.access$000().onSuccess(this.val$isAlive, this.val$lightDiffResponse);
     YTAGReflectLiveCheckInterface.access$002(null);
+    AppMethodBeat.o(123133);
   }
 }
 

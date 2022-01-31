@@ -1,52 +1,24 @@
 package com.tencent.mm.plugin.downloader.d;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.nio.ByteBuffer;
 
 public final class a
 {
-  private static BroadcastReceiver iPV = null;
-  private static int iPW = -1;
+  public long kXs;
+  public Pair<ByteBuffer, Long> kXt;
+  public Pair<ByteBuffer, Long> kXu;
+  public Pair<ByteBuffer, Long> kXv;
+  public Pair<ByteBuffer, Long> kXw;
+  public boolean lowMemory = false;
   
-  public static void aFI()
+  public final String toString()
   {
-    if (iPV == null) {
-      iPV = new a.a((byte)0);
-    }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    localIntentFilter.addAction("android.net.wifi.WIFI_STATE_CHANGED");
-    localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-    try
-    {
-      ae.getContext().registerReceiver(iPV, localIntentFilter);
-      return;
-    }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
-    }
-  }
-  
-  public static void aFJ()
-  {
-    if (iPV != null) {}
-    try
-    {
-      ae.getContext().unregisterReceiver(iPV);
-      iPV = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        y.e("MicroMsg.Downloader.NetWorkManager", localException.getMessage());
-      }
-    }
+    AppMethodBeat.i(2301);
+    String str = "lowMemory : " + this.lowMemory + "\n apkSize : " + this.kXs + "\n contentEntry : " + this.kXt + "\n schemeV2Block : " + this.kXu + "\n centralDir : " + this.kXv + "\n eocd : " + this.kXw;
+    AppMethodBeat.o(2301);
+    return str;
   }
 }
 

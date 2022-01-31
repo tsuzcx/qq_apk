@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.topstory.ui.video.list;
 
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.topstory.ui.video.TopStoryBaseVideoUI;
+import com.tencent.mm.plugin.topstory.ui.video.o;
 
 final class TopStoryListVideoUI$6
-  implements View.OnTouchListener
+  implements Runnable
 {
   TopStoryListVideoUI$6(TopStoryListVideoUI paramTopStoryListVideoUI) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void run()
   {
-    return true;
+    AppMethodBeat.i(2106);
+    this.tlQ.tiJ.cKd();
+    AppMethodBeat.o(2106);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.list.TopStoryListVideoUI.6
  * JD-Core Version:    0.7.0.1
  */

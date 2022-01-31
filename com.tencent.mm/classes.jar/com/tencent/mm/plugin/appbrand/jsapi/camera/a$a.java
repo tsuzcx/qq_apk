@@ -1,8 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$a
 {
-  private static a gor = new a((byte)0);
+  private static a hIn;
+  
+  static
+  {
+    AppMethodBeat.i(126238);
+    hIn = new a((byte)0);
+    AppMethodBeat.o(126238);
+  }
 }
 
 

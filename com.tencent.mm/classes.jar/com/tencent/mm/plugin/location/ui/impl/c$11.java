@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.location.ui.impl;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import com.tencent.mm.plugin.map.a.d;
-import com.tencent.mm.plugin.p.b;
-import com.tencent.mm.plugin.p.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.k.b;
+import com.tencent.mm.plugin.k.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$11
   implements View.OnClickListener
@@ -15,21 +15,24 @@ final class c$11
   
   public final void onClick(View paramView)
   {
-    y.d("MicroMsg.MMPoiMapUI", "click lat: %s, lng: %s", new Object[] { Double.valueOf(c.g(this.lJp)), Double.valueOf(c.h(this.lJp)) });
-    if ((c.g(this.lJp) == -85.0D) || (c.h(this.lJp) == -1000.0D))
+    AppMethodBeat.i(113606);
+    ab.d("MicroMsg.MMPoiMapUI", "click lat: %s, lng: %s", new Object[] { Double.valueOf(c.g(this.ogD)), Double.valueOf(c.h(this.ogD)) });
+    if ((c.g(this.ogD) == -85.0D) || (c.h(this.ogD) == -1000.0D))
     {
-      y.i("MicroMsg.MMPoiMapUI", "invalid lat lng");
+      ab.i("MicroMsg.MMPoiMapUI", "invalid lat lng");
+      AppMethodBeat.o(113606);
       return;
     }
-    this.lJp.lFy.getIController().animateTo(c.g(this.lJp), c.h(this.lJp));
-    c.a(this.lJp, c.g(this.lJp));
-    c.b(this.lJp, c.h(this.lJp));
-    c.k(this.lJp).j(c.i(this.lJp), c.j(this.lJp));
-    c.l(this.lJp).setBackgroundResource(a.d.location_my_current);
-    c.l(this.lJp).setEnabled(true);
-    c.m(this.lJp);
-    c.n(this.lJp);
-    c.o(this.lJp).lJl = false;
+    this.ogD.ocL.getIController().animateTo(c.g(this.ogD), c.h(this.ogD));
+    c.a(this.ogD, c.g(this.ogD));
+    c.b(this.ogD, c.h(this.ogD));
+    c.k(this.ogD).l(c.i(this.ogD), c.j(this.ogD));
+    c.l(this.ogD).setBackgroundResource(2130839296);
+    c.l(this.ogD).setEnabled(true);
+    c.m(this.ogD);
+    c.n(this.ogD);
+    c.o(this.ogD).ogy = false;
+    AppMethodBeat.o(113606);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.walletlock.gesture.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView;
 
 final class GestureGuardLogicUI$2
@@ -9,8 +10,10 @@ final class GestureGuardLogicUI$2
   
   public final void onDone()
   {
-    this.qPY.bYt();
-    this.qPY.setEnableInput(true);
+    AppMethodBeat.i(51587);
+    this.uFg.cYe();
+    this.uFg.setEnableInput(true);
+    AppMethodBeat.o(51587);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.qq.taf.jce.dynamic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class DoubleField
   extends NumberField
 {
@@ -18,7 +20,10 @@ public class DoubleField
   
   public Number getNumber()
   {
-    return Double.valueOf(this.data);
+    AppMethodBeat.i(117016);
+    double d = this.data;
+    AppMethodBeat.o(117016);
+    return Double.valueOf(d);
   }
   
   public void set(double paramDouble)
@@ -28,7 +33,7 @@ public class DoubleField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.qq.taf.jce.dynamic.DoubleField
  * JD-Core Version:    0.7.0.1
  */

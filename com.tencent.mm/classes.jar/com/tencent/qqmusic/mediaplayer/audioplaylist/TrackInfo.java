@@ -3,16 +3,24 @@ package com.tencent.qqmusic.mediaplayer.audioplaylist;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TrackInfo
   extends AudioPlayListItemInfo
 {
-  public static final Parcelable.Creator<TrackInfo> CREATOR = new TrackInfo.1();
+  public static final Parcelable.Creator<TrackInfo> CREATOR;
   private String mAlbum = "";
   private long mEndPostion;
   private String mPerformer = "";
   private long mStartPosition;
   private String mTitle = "";
+  
+  static
+  {
+    AppMethodBeat.i(111095);
+    CREATOR = new TrackInfo.1();
+    AppMethodBeat.o(111095);
+  }
   
   public TrackInfo(int paramInt)
   {
@@ -36,7 +44,10 @@ public class TrackInfo
   
   public Pair<Long, Long> getRange()
   {
-    return new Pair(Long.valueOf(this.mStartPosition), Long.valueOf(this.mEndPostion));
+    AppMethodBeat.i(111093);
+    Pair localPair = new Pair(Long.valueOf(this.mStartPosition), Long.valueOf(this.mEndPostion));
+    AppMethodBeat.o(111093);
+    return localPair;
   }
   
   public String getTitle()
@@ -81,6 +92,7 @@ public class TrackInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(111094);
     paramParcel.writeInt(this.mType);
     paramParcel.writeString(this.mUri);
     paramParcel.writeString(this.mTitle);
@@ -88,6 +100,7 @@ public class TrackInfo
     paramParcel.writeLong(this.mEndPostion);
     paramParcel.writeString(this.mPerformer);
     paramParcel.writeString(this.mAlbum);
+    AppMethodBeat.o(111094);
   }
 }
 

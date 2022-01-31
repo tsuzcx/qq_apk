@@ -3,18 +3,16 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.compatible.e.n;
 import com.tencent.mm.compatible.e.q;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.setting.a.i;
 import com.tencent.mm.plugin.setting.model.j;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.at;
 import com.tencent.mm.storage.bs;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class SendFeedBackUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -23,26 +21,27 @@ final class SendFeedBackUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = SendFeedBackUI.a(this.nSI).getText().toString().trim();
+    AppMethodBeat.i(127046);
+    paramMenuItem = SendFeedBackUI.a(this.qGG).getText().toString().trim();
     if (paramMenuItem.length() > 0)
     {
       if (paramMenuItem.startsWith("//traceroute"))
       {
-        SendFeedBackUI.a(this.nSI).setText("");
-        d.x(this.nSI.mController.uMN, "traceroute", ".ui.NetworkDiagnoseIntroUI");
+        SendFeedBackUI.a(this.qGG).setText("");
+        d.H(this.qGG.getContext(), "traceroute", ".ui.NetworkDiagnoseIntroUI");
+        AppMethodBeat.o(127046);
+        return false;
       }
+      paramMenuItem = new j(q.LO(), paramMenuItem + " key " + bs.dyO() + " local key " + bs.dyN() + "NetType:" + at.getNetTypeString(this.qGG.getApplicationContext()) + " hasNeon: " + n.Lu() + " isArmv6: " + n.Lw() + " isArmv7: " + n.Lv());
+      g.Rc().a(153, this.qGG);
+      g.Rc().a(paramMenuItem, 0);
+      this.qGG.hideVKB();
+      SendFeedBackUI localSendFeedBackUI1 = this.qGG;
+      SendFeedBackUI localSendFeedBackUI2 = this.qGG;
+      this.qGG.getString(2131297087);
+      SendFeedBackUI.a(localSendFeedBackUI1, h.b(localSendFeedBackUI2, this.qGG.getString(2131297069), true, new SendFeedBackUI.3.1(this, paramMenuItem)));
     }
-    else {
-      return false;
-    }
-    paramMenuItem = new j(q.zv(), paramMenuItem + " key " + bs.cwc() + " local key " + bs.cwb() + "NetType:" + aq.getNetTypeString(this.nSI.getApplicationContext()) + " hasNeon: " + n.yX() + " isArmv6: " + n.yZ() + " isArmv7: " + n.yY());
-    g.Dk().a(153, this.nSI);
-    g.Dk().a(paramMenuItem, 0);
-    this.nSI.XM();
-    SendFeedBackUI localSendFeedBackUI1 = this.nSI;
-    SendFeedBackUI localSendFeedBackUI2 = this.nSI;
-    this.nSI.getString(a.i.app_tip);
-    SendFeedBackUI.a(localSendFeedBackUI1, h.b(localSendFeedBackUI2, this.nSI.getString(a.i.app_sending), true, new SendFeedBackUI.3.1(this, paramMenuItem)));
+    AppMethodBeat.o(127046);
     return false;
   }
 }

@@ -1,38 +1,42 @@
 package com.tencent.mm.plugin.wallet.balance.a.a;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.bjv;
-import com.tencent.mm.protocal.c.bjw;
-import com.tencent.mm.wallet_core.c.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.protocal.protobuf.bnc;
+import com.tencent.mm.protocal.protobuf.bnd;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class h
-  extends a<bjw>
-  implements g
+  extends a<bnd>
 {
-  public h(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  public int scene;
+  
+  public h(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(45234);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bjv();
-    ((b.a)localObject).ecI = new bjw();
-    ((b.a)localObject).ecG = 1338;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/redeemfund";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    localObject = ((b.a)localObject).Kt();
-    bjv localbjv = (bjv)((b)localObject).ecE.ecN;
-    localbjv.tzY = paramInt1;
-    localbjv.sOx = paramString1;
-    localbjv.tAc = paramString2;
-    localbjv.sOy = paramInt2;
-    this.dmK = ((b)localObject);
+    ((b.a)localObject).fsX = new bnc();
+    ((b.a)localObject).fsY = new bnd();
+    ((b.a)localObject).funcId = 1770;
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/preaddplan";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    localObject = ((b.a)localObject).ado();
+    bnc localbnc = (bnc)((b)localObject).fsV.fta;
+    localbnc.scene = paramInt1;
+    localbnc.wpg = paramInt2;
+    this.rr = ((b)localObject);
+    this.scene = paramInt1;
+    ab.i("MicroMsg.CgiLqtPreAddPlan", "scene: %s, planId: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(45234);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.a.a.h
  * JD-Core Version:    0.7.0.1
  */

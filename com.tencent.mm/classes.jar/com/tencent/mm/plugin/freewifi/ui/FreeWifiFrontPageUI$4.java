@@ -1,29 +1,25 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiFrontPageUI$4
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
   FreeWifiFrontPageUI$4(FreeWifiFrontPageUI paramFreeWifiFrontPageUI) {}
   
-  public final void onClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramView = new Intent();
-    paramView.putExtra("rawUrl", this.krP.krL);
-    paramView.putExtra("showShare", false);
-    paramView.putExtra("show_bottom", false);
-    d.b(this.krP.mController.uMN, "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.i(20962);
+    FreeWifiFrontPageUI.a(this.mND);
+    AppMethodBeat.o(20962);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,37 @@
 package com.tencent.mm.plugin.ext;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$10
-  implements m.b
+  implements n.b
 {
   b$10(b paramb) {}
   
-  public final void a(int paramInt, m paramm, Object paramObject)
+  public final void a(int paramInt, n paramn, Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof String))) {
-      y.d("MicroMsg.SubCoreExt", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramm, paramObject });
-    }
-    do
+    AppMethodBeat.i(20269);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
     {
+      ab.d("MicroMsg.SubCoreExt", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      AppMethodBeat.o(20269);
       return;
-      if (!au.DK())
-      {
-        y.i("MicroMsg.SubCoreExt", "onNotifyChange acc not ready");
-        return;
-      }
-      au.Hx();
-    } while (paramm != c.Fw());
-    b.d(this.jJF);
+    }
+    if (!aw.RG())
+    {
+      ab.i("MicroMsg.SubCoreExt", "onNotifyChange acc not ready");
+      AppMethodBeat.o(20269);
+      return;
+    }
+    aw.aaz();
+    if (paramn == c.YA()) {
+      b.d(this.mdJ);
+    }
+    AppMethodBeat.o(20269);
   }
 }
 

@@ -13,7 +13,7 @@ public abstract class TimerWorker
   private long mStopTimeInFuture;
   private Timer mTimer;
   
-  public TimerWorker(long paramLong1, long paramLong2)
+  protected TimerWorker(long paramLong1, long paramLong2)
   {
     YTLogger.i("CloudFaceCountDownTimer", "[TimerWorker.TimerWorker] mCountDownTimer");
     this.mMillisInFuture = paramLong1;
@@ -120,7 +120,7 @@ public abstract class TimerWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,8 @@ public abstract interface Polygon
   
   public abstract String getId();
   
+  public abstract int getLevel();
+  
   public abstract List<LatLng> getPoints();
   
   public abstract int getStrokeColor();
@@ -29,6 +31,8 @@ public abstract interface Polygon
   
   public abstract void setFillColor(int paramInt);
   
+  public abstract void setLevel(int paramInt);
+  
   public abstract void setPoints(List<LatLng> paramList);
   
   public abstract void setStrokeColor(int paramInt);
@@ -41,7 +45,7 @@ public abstract interface Polygon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.Polygon
  * JD-Core Version:    0.7.0.1
  */

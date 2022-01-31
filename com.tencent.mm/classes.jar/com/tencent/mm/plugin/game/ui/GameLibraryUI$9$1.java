@@ -2,27 +2,30 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.app.Dialog;
 import android.view.View;
-import com.tencent.mm.plugin.game.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.ae;
 
 final class GameLibraryUI$9$1
   implements Runnable
 {
-  GameLibraryUI$9$1(GameLibraryUI.9 param9, af paramaf) {}
+  GameLibraryUI$9$1(GameLibraryUI.9 param9, ae paramae) {}
   
   public final void run()
   {
-    GameLibraryUI localGameLibraryUI = this.lcS.lcP;
-    af localaf = this.lcQ;
-    if (GameLibraryUI.m(this.lcS.lcP) != 0) {}
+    AppMethodBeat.i(112039);
+    GameLibraryUI localGameLibraryUI = this.nAN.nAK;
+    ae localae = this.nAL;
+    if (GameLibraryUI.m(this.nAN.nAK) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      GameLibraryUI.a(localGameLibraryUI, localaf, bool);
-      GameLibraryUI.p(this.lcS.lcP);
-      GameLibraryUI.l(this.lcS.lcP).setVisibility(8);
-      GameLibraryUI.b(this.lcS.lcP, GameLibraryUI.m(this.lcS.lcP) + 15);
-      if (GameLibraryUI.q(this.lcS.lcP) != null) {
-        GameLibraryUI.q(this.lcS.lcP).dismiss();
+      GameLibraryUI.a(localGameLibraryUI, localae, bool);
+      GameLibraryUI.p(this.nAN.nAK);
+      GameLibraryUI.l(this.nAN.nAK).setVisibility(8);
+      GameLibraryUI.b(this.nAN.nAK, GameLibraryUI.m(this.nAN.nAK) + 15);
+      if (GameLibraryUI.q(this.nAN.nAK) != null) {
+        GameLibraryUI.q(this.nAN.nAK).dismiss();
       }
+      AppMethodBeat.o(112039);
       return;
     }
   }

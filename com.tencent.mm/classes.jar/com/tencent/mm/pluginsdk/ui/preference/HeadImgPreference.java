@@ -8,17 +8,16 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class HeadImgPreference
   extends Preference
 {
-  private int height = -1;
-  private ImageView hic;
-  public View.OnClickListener nXW;
-  private Bitmap sit;
+  private int height;
+  private ImageView iTH;
+  private View.OnClickListener qMg;
+  private Bitmap waS;
   
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,47 +27,43 @@ public final class HeadImgPreference
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(28066);
+    this.height = -1;
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(28066);
   }
   
-  public final void R(Bitmap paramBitmap)
+  public final void onBindView(View paramView)
   {
-    this.sit = null;
-    if (this.hic != null)
-    {
-      this.hic.setImageBitmap(paramBitmap);
-      return;
-    }
-    this.sit = paramBitmap;
-  }
-  
-  protected final void onBindView(View paramView)
-  {
+    AppMethodBeat.i(28068);
     super.onBindView(paramView);
-    if (this.hic == null) {
-      this.hic = ((ImageView)paramView.findViewById(R.h.image_headimg));
+    if (this.iTH == null) {
+      this.iTH = ((ImageView)paramView.findViewById(2131826214));
     }
-    if (this.nXW != null) {
-      this.hic.setOnClickListener(this.nXW);
+    if (this.qMg != null) {
+      this.iTH.setOnClickListener(this.qMg);
     }
-    if (this.sit != null)
+    if (this.waS != null)
     {
-      this.hic.setImageBitmap(this.sit);
-      this.sit = null;
+      this.iTH.setImageBitmap(this.waS);
+      this.waS = null;
     }
-    paramView = (LinearLayout)paramView.findViewById(R.h.mm_preference_ll_id);
+    paramView = (LinearLayout)paramView.findViewById(2131822408);
     if (this.height != -1) {
       paramView.setMinimumHeight(this.height);
     }
+    AppMethodBeat.o(28068);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(28067);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, R.i.mm_preference_content_headimg, localViewGroup);
-    this.hic = ((ImageView)paramViewGroup.findViewById(R.h.image_headimg));
+    View.inflate(this.mContext, 2130970201, localViewGroup);
+    this.iTH = ((ImageView)paramViewGroup.findViewById(2131826214));
+    AppMethodBeat.o(28067);
     return paramViewGroup;
   }
 }

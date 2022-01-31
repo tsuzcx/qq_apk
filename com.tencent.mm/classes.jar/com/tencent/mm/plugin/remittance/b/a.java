@@ -1,37 +1,40 @@
 package com.tencent.mm.plugin.remittance.b;
 
-import com.tencent.mm.h.c.at;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.av;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends at
+  extends av
 {
-  public static c.a buS;
+  public static c.a info;
   
   static
   {
+    AppMethodBeat.i(44703);
     c.a locala = new c.a();
-    locala.ujL = new Field[2];
+    locala.yrK = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "msgId";
-    locala.ujN.put("msgId", "LONG PRIMARY KEY ");
+    locala.yrM.put("msgId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" msgId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "msgId";
+    locala.yrL = "msgId";
     locala.columns[1] = "transferId";
-    locala.ujN.put("transferId", "TEXT");
+    locala.yrM.put("transferId", "TEXT");
     localStringBuilder.append(" transferId TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(44703);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

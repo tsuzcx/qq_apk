@@ -1,33 +1,34 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
-import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.56;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.d.60;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.i.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class WebViewUI$4
-  implements g.a
+  implements l.a
 {
   WebViewUI$4(WebViewUI paramWebViewUI) {}
   
-  public final void cdM()
+  public final void ded()
   {
-    y.d("MicroMsg.WebViewUI", "onPullDownRefresh, start");
-    d locald;
-    if (this.rpH.rbk != null)
+    AppMethodBeat.i(7812);
+    ab.d("MicroMsg.WebViewUI", "onPullDownRefresh, start");
+    if (this.vgz.uQS != null)
     {
-      locald = this.rpH.rbk;
-      if (!locald.ready) {
-        y.e("MicroMsg.JsApiHandler", "onPullDownRefresh fail, not ready");
+      d locald = this.vgz.uQS;
+      if (!locald.ready)
+      {
+        ab.e("MicroMsg.JsApiHandler", "onPullDownRefresh fail, not ready");
+        AppMethodBeat.o(7812);
+        return;
       }
+      ab.i("MicroMsg.JsApiHandler", "onPullDownRefresh success, ready");
+      al.d(new d.60(locald, d.aja(i.a.b("onPullDownRefresh", null, locald.voB, locald.voC))));
     }
-    else
-    {
-      return;
-    }
-    y.i("MicroMsg.JsApiHandler", "onPullDownRefresh success, ready");
-    ai.d(new d.56(locald, d.TQ(i.a.a("onPullDownRefresh", null, locald.rxI, locald.rxJ))));
+    AppMethodBeat.o(7812);
   }
 }
 

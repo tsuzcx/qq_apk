@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.g;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
 
@@ -8,9 +9,11 @@ final class m$3
 {
   m$3(m paramm, c paramc) {}
   
-  public final void g(String paramString1, String paramString2, String paramString3, String paramString4)
+  public final void f(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    m.a.a(this.ggH, paramString1, paramString2, paramString3, paramString4);
+    AppMethodBeat.i(94196);
+    m.a.a(this.hxW, paramString1, paramString2, paramString3, paramString4);
+    AppMethodBeat.o(94196);
   }
 }
 

@@ -9,25 +9,27 @@ import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.d.c;
 import com.tencent.mm.plugin.appbrand.widget.input.d.g;
 import com.tencent.mm.plugin.appbrand.widget.input.d.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.bo;
 
  enum b
 {
-  static <Input extends EditText,  extends aa> void a(Input paramInput, int paramInt1, int paramInt2)
+  static <Input extends EditText,  extends ab> void a(Input paramInput, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(123576);
     if ((paramInput == null) || (paramInput.getEditableText() == null))
     {
-      y.w("MicroMsg.AppBrandInputCommStyleHelper", "applySelection, invalid input %s", new Object[] { paramInput });
+      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.AppBrandInputCommStyleHelper", "applySelection, invalid input %s", new Object[] { paramInput });
+      AppMethodBeat.o(123576);
       return;
     }
     if (paramInt1 <= -2) {
       paramInt1 = paramInput.getSelectionStart();
     }
-    label137:
+    label152:
     for (;;)
     {
       if (paramInt2 <= -2) {
@@ -41,9 +43,10 @@ import com.tencent.mm.sdk.platformtools.y;
         }
         Selection.removeSelection(paramInput.getEditableText());
         paramInput.setSelection(i, paramInt2);
+        AppMethodBeat.o(123576);
         return;
         if ((paramInt1 != -1) && (paramInt1 <= paramInput.getText().length())) {
-          break label137;
+          break label152;
         }
         paramInt1 = paramInput.getText().length();
         break;
@@ -54,51 +57,54 @@ import com.tencent.mm.sdk.platformtools.y;
     }
   }
   
-  static <Input extends EditText,  extends aa> void a(Input paramInput, h paramh)
+  static <Input extends EditText,  extends ab> void a(Input paramInput, h paramh)
   {
-    if ((paramInput == null) || (paramh == null)) {
+    AppMethodBeat.i(123575);
+    if ((paramInput == null) || (paramh == null))
+    {
+      AppMethodBeat.o(123575);
       return;
     }
-    if ((paramh.hyG != null) && (paramh.hyG.floatValue() != paramInput.getTextSize())) {
-      paramInput.setTextSize(paramh.hyG.floatValue());
+    if ((paramh.jqQ != null) && (paramh.jqQ.floatValue() != paramInput.getTextSize())) {
+      paramInput.setTextSize(paramh.jqQ.floatValue());
     }
-    if (paramh.hyF != null) {
-      paramInput.setTextColor(paramh.hyF.intValue());
+    if (paramh.jqP != null) {
+      paramInput.setTextColor(paramh.jqP.intValue());
     }
-    aa localaa;
-    if (paramh.hyE != null)
+    ab localab;
+    if (paramh.jqO != null)
     {
-      if ((paramInput.getBackground() == null) || (!(paramInput.getBackground() instanceof ColorDrawable)) || (((ColorDrawable)paramInput.getBackground()).getColor() != paramh.hyE.intValue())) {
-        paramInput.setBackground(new ColorDrawable(paramh.hyE.intValue()));
+      if ((paramInput.getBackground() == null) || (!(paramInput.getBackground() instanceof ColorDrawable)) || (((ColorDrawable)paramInput.getBackground()).getColor() != paramh.jqO.intValue())) {
+        paramInput.setBackground(new ColorDrawable(paramh.jqO.intValue()));
       }
-      if (!bk.bl(paramh.hyI))
+      if (!bo.isNullOrNil(paramh.jqS))
       {
-        localObject = new SpannableStringBuilder(paramh.hyI);
-        i = paramh.hyI.length();
-        ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(c.xd(paramh.hyJ).style), 0, i, 18);
-        if (paramh.hyL != null) {
-          ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(paramh.hyL.intValue()), 0, i, 18);
+        localObject = new SpannableStringBuilder(paramh.jqS);
+        i = paramh.jqS.length();
+        ((SpannableStringBuilder)localObject).setSpan(new StyleSpan(c.FQ(paramh.jqT).style), 0, i, 18);
+        if (paramh.jqV != null) {
+          ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(paramh.jqV.intValue()), 0, i, 18);
         }
-        if (paramh.hyK != null) {
-          ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(paramh.hyK.intValue(), false), 0, i, 18);
+        if (paramh.jqU != null) {
+          ((SpannableStringBuilder)localObject).setSpan(new AbsoluteSizeSpan(paramh.jqU.intValue(), false), 0, i, 18);
         }
         paramInput.setHint((CharSequence)localObject);
       }
-      if (paramh.fLT != null)
+      if (paramh.hfd != null)
       {
-        localObject = Typeface.create("sans-serif", c.xd(paramh.fLT).style);
+        localObject = Typeface.create("sans-serif", c.FQ(paramh.hfd).style);
         if (localObject != null) {
           paramInput.setTypeface((Typeface)localObject);
         }
       }
-      Object localObject = g.xe(paramh.fMb);
-      localaa = (aa)paramInput;
-      if (localaa != null) {}
-      switch (com.tencent.mm.plugin.appbrand.widget.input.d.g.1.hzc[localObject.ordinal()])
+      Object localObject = g.FR(paramh.hfl);
+      localab = (ab)paramInput;
+      if (localab != null) {}
+      switch (com.tencent.mm.plugin.appbrand.widget.input.d.g.1.jrm[localObject.ordinal()])
       {
       default: 
-        label328:
-        if (!ai.f(paramh.hyN)) {
+        label336:
+        if (!aj.g(paramh.jqX)) {
           break;
         }
       }
@@ -106,22 +112,23 @@ import com.tencent.mm.sdk.platformtools.y;
     for (int i = 8;; i = 0)
     {
       paramInput.setVisibility(i);
-      ((aa)paramInput).setFixed(ai.f(paramh.hyR));
+      ((ab)paramInput).setFixed(aj.g(paramh.jrb));
+      AppMethodBeat.o(123575);
       return;
       paramInput.setBackground(null);
       break;
-      localaa.asl();
-      break label328;
-      localaa.asm();
-      break label328;
-      localaa.asn();
-      break label328;
+      localab.aRq();
+      break label336;
+      localab.aRr();
+      break label336;
+      localab.aRs();
+      break label336;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.b
  * JD-Core Version:    0.7.0.1
  */

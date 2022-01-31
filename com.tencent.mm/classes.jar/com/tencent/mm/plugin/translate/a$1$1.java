@@ -1,80 +1,96 @@
 package com.tencent.mm.plugin.translate;
 
-import com.tencent.mm.h.a.se;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.tw;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.plugin.translate.a.c.c;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 
 final class a$1$1
-  implements av.a
+  implements az.a
 {
   a$1$1(a.1 param1, int paramInt, c.c paramc) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
-    y.d("MicroMsg.SubCoreTranslate", "finish translated, id: %s", new Object[] { this.pKy.id });
-    if (this.bEg != 0) {
-      y.e("MicroMsg.SubCoreTranslate", "translate error");
-    }
-    do
+    AppMethodBeat.i(26048);
+    ab.d("MicroMsg.SubCoreTranslate", "finish translated, id: %s", new Object[] { this.toL.id });
+    if (this.val$errCode != 0)
     {
+      ab.e("MicroMsg.SubCoreTranslate", "translate error");
+      AppMethodBeat.o(26048);
       return true;
-      if (this.pKy.ret != 0)
-      {
-        y.e("MicroMsg.SubCoreTranslate", "translate ret not ok : %s", new Object[] { Integer.valueOf(this.pKy.ret) });
-        return true;
+    }
+    if (this.toL.ret != 0)
+    {
+      ab.e("MicroMsg.SubCoreTranslate", "translate ret not ok : %s", new Object[] { Integer.valueOf(this.toL.ret) });
+      AppMethodBeat.o(26048);
+      return true;
+    }
+    if (bo.isNullOrNil(this.toL.cKw))
+    {
+      ab.e("MicroMsg.SubCoreTranslate", "translate return null");
+      AppMethodBeat.o(26048);
+      return true;
+    }
+    bi localbi;
+    if ((this.toL.type == 0) || (this.toL.type == 1))
+    {
+      ab.d("MicroMsg.SubCoreTranslate", "we recieved one translated message");
+      c.c localc = this.toL;
+      aw.aaz();
+      localbi = c.YC().kB(bo.apW(localc.id));
+      localbi.km(bo.wC(localc.cKw));
+      localbi.field_transBrandWording = bo.wC(bo.nullAsNil(localc.cID));
+      localbi.dGI = true;
+      localbi.dHc = localc.dHc;
+      localbi.dmY = true;
+      if (localc.cKx != 1) {
+        break label273;
       }
-      if (bk.bl(this.pKy.cbR))
-      {
-        y.e("MicroMsg.SubCoreTranslate", "translate return null");
-        return true;
-      }
-    } while ((this.pKy.type != 0) && (this.pKy.type != 1));
-    y.d("MicroMsg.SubCoreTranslate", "we recieved one translated message");
-    c.c localc = this.pKy;
-    au.Hx();
-    bi localbi = c.Fy().fd(bk.ZS(localc.id));
-    localbi.ef(bk.pl(localc.cbR));
-    localbi.field_transBrandWording = bk.pl(bk.pm(localc.cad));
-    localbi.cQw = true;
-    localbi.cQQ = localc.cQQ;
-    localbi.cyX = true;
-    if (localc.pKH == 1) {
-      if (localbi.cvw()) {
-        localbi.ff(localbi.czq | 0x400);
+      if (localbi.dya()) {
+        localbi.hr(localbi.dnr | 0x400);
       }
     }
     for (;;)
     {
-      ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().a(localbi.field_msgId, localbi);
+      ((j)g.E(j.class)).bPQ().a(localbi.field_msgId, localbi);
+      AppMethodBeat.o(26048);
       return true;
-      if (localbi.cvw()) {
-        localbi.ff(localbi.czq & 0xFFFFFBFF);
+      label273:
+      if (localbi.dya()) {
+        localbi.hr(localbi.dnr & 0xFFFFFBFF);
       }
     }
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
-    if (this.bEg != 0) {}
-    for (int i = this.bEg;; i = this.pKy.ret)
+    AppMethodBeat.i(26047);
+    if (this.val$errCode != 0) {}
+    for (int i = this.val$errCode;; i = this.toL.ret)
     {
-      se localse = new se();
-      localse.cbQ.ret = i;
-      localse.cbQ.cbK = this.pKy.cbK;
-      localse.cbQ.id = this.pKy.id;
-      localse.cbQ.cbR = this.pKy.cbR;
-      localse.cbQ.type = this.pKy.type;
-      localse.cbQ.aWf = this.pKy.aWf;
-      localse.cbQ.cad = this.pKy.cad;
-      a.udP.m(localse);
+      tw localtw = new tw();
+      localtw.cKv.ret = i;
+      localtw.cKv.cKn = this.toL.cKn;
+      localtw.cKv.id = this.toL.id;
+      localtw.cKv.cKw = this.toL.cKw;
+      localtw.cKv.type = this.toL.type;
+      localtw.cKv.source = this.toL.source;
+      localtw.cKv.cID = this.toL.cID;
+      localtw.cKv.cKp = this.toL.dHc;
+      localtw.cKv.cKx = this.toL.cKx;
+      a.ymk.l(localtw);
+      AppMethodBeat.o(26047);
       return false;
     }
   }

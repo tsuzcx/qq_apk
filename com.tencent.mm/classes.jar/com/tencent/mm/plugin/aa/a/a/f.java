@@ -1,134 +1,142 @@
 package com.tencent.mm.plugin.aa.a.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.wallet_core.model.i;
-import com.tencent.mm.protocal.c.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.g;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.net.URLEncoder;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class f
-  extends m
+  extends com.tencent.mm.ai.m
   implements k
 {
+  private com.tencent.mm.ai.f callback;
   public String chatroomName;
-  private com.tencent.mm.ah.f dmL;
-  private b eWr;
-  private com.tencent.mm.protocal.c.f eWu;
-  public g eWv;
+  private b goo;
+  private com.tencent.mm.protocal.protobuf.f gos;
+  public g got;
   
   public f(long paramLong1, String paramString1, int paramInt1, int paramInt2, long paramLong2, String paramString2)
   {
+    AppMethodBeat.i(40648);
     b.a locala = new b.a();
-    locala.ecH = new com.tencent.mm.protocal.c.f();
-    locala.ecI = new g();
-    locala.ecG = 1624;
+    locala.fsX = new com.tencent.mm.protocal.protobuf.f();
+    locala.fsY = new g();
+    locala.funcId = 1624;
     locala.uri = "/cgi-bin/mmpay-bin/newaalaunchbymoney";
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.eWr = locala.Kt();
-    this.eWu = ((com.tencent.mm.protocal.c.f)this.eWr.ecE.ecN);
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.goo = locala.ado();
+    this.gos = ((com.tencent.mm.protocal.protobuf.f)this.goo.fsV.fta);
     this.chatroomName = paramString2;
     try
     {
-      this.eWu.srt = paramInt1;
-      this.eWu.sru = paramLong1;
-      this.eWu.title = URLEncoder.encode(paramString1, "UTF-8");
-      this.eWu.srv = new LinkedList();
-      this.eWu.scene = paramInt2;
-      this.eWu.srr = paramString2;
-      this.eWu.srw = i.bVj();
-      y.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.eWu.srw });
-      this.eWu.srx = paramLong2;
-      y.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp", new Object[] { Integer.valueOf(this.eWu.srt), Long.valueOf(this.eWu.sru), this.eWu.title, this.eWu.srv, Integer.valueOf(this.eWu.scene), this.eWu.srr, Long.valueOf(this.eWu.srx) });
+      this.gos.wjZ = paramInt1;
+      this.gos.wka = paramLong1;
+      this.gos.title = URLEncoder.encode(paramString1, "UTF-8");
+      this.gos.wkb = new LinkedList();
+      this.gos.scene = paramInt2;
+      this.gos.wjX = paramString2;
+      this.gos.wkc = com.tencent.mm.plugin.wallet_core.model.m.cTC();
+      ab.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.gos.wkc });
+      this.gos.wkd = paramLong2;
+      ab.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp", new Object[] { Integer.valueOf(this.gos.wjZ), Long.valueOf(this.gos.wka), this.gos.title, this.gos.wkb, Integer.valueOf(this.gos.scene), this.gos.wjX, Long.valueOf(this.gos.wkd) });
+      AppMethodBeat.o(40648);
       return;
     }
     catch (Exception paramString1)
     {
       for (;;)
       {
-        y.e("MicroMsg.NetSceneAALaunchByMoney", "build NetSceneAALaunchByMoney request error: %s", new Object[] { paramString1.getMessage() });
+        ab.e("MicroMsg.NetSceneAALaunchByMoney", "build NetSceneAALaunchByMoney request error: %s", new Object[] { paramString1.getMessage() });
       }
     }
   }
   
   public f(long paramLong1, String paramString1, List<String> paramList, int paramInt, long paramLong2, String paramString2)
   {
+    AppMethodBeat.i(40647);
     b.a locala = new b.a();
-    locala.ecH = new com.tencent.mm.protocal.c.f();
-    locala.ecI = new g();
-    locala.ecG = 1624;
+    locala.fsX = new com.tencent.mm.protocal.protobuf.f();
+    locala.fsY = new g();
+    locala.funcId = 1624;
     locala.uri = "/cgi-bin/mmpay-bin/newaalaunchbymoney";
-    locala.ecJ = 0;
-    locala.ecK = 0;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
     this.chatroomName = paramString2;
-    this.eWr = locala.Kt();
-    this.eWu = ((com.tencent.mm.protocal.c.f)this.eWr.ecE.ecN);
-    this.eWr.ecZ = true;
+    this.goo = locala.ado();
+    this.gos = ((com.tencent.mm.protocal.protobuf.f)this.goo.fsV.fta);
+    this.goo.setIsUserCmd(true);
     if (paramList != null) {}
     try
     {
       if (paramList.size() > 0)
       {
-        this.eWu.srt = paramList.size();
-        this.eWu.sru = paramLong1;
-        this.eWu.title = URLEncoder.encode(paramString1, "UTF-8");
-        this.eWu.srv = new LinkedList();
-        this.eWu.srv.addAll(paramList);
-        this.eWu.scene = paramInt;
-        this.eWu.srr = paramString2;
-        this.eWu.srw = i.bVj();
-        this.eWu.srx = paramLong2;
-        y.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.eWu.srw });
+        this.gos.wjZ = paramList.size();
+        this.gos.wka = paramLong1;
+        this.gos.title = URLEncoder.encode(paramString1, "UTF-8");
+        this.gos.wkb = new LinkedList();
+        this.gos.wkb.addAll(paramList);
+        this.gos.scene = paramInt;
+        this.gos.wjX = paramString2;
+        this.gos.wkc = com.tencent.mm.plugin.wallet_core.model.m.cTC();
+        this.gos.wkd = paramLong2;
+        ab.d("MicroMsg.NetSceneAALaunchByMoney", "location %s", new Object[] { this.gos.wkc });
       }
-      y.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp: %s", new Object[] { Integer.valueOf(this.eWu.srt), Long.valueOf(this.eWu.sru), this.eWu.title, this.eWu.srv, Integer.valueOf(this.eWu.scene), this.eWu.srr, Long.valueOf(this.eWu.srx) });
+      ab.i("MicroMsg.NetSceneAALaunchByMoney", "NetSceneAALaunchByMoney, total_num: %s, per_amount: %s, title: %s, payer_list: %s, scene: %s, groupid: %s, timestamp: %s", new Object[] { Integer.valueOf(this.gos.wjZ), Long.valueOf(this.gos.wka), this.gos.title, this.gos.wkb, Integer.valueOf(this.gos.scene), this.gos.wjX, Long.valueOf(this.gos.wkd) });
+      AppMethodBeat.o(40647);
       return;
     }
     catch (Exception paramString1)
     {
       for (;;)
       {
-        y.e("MicroMsg.NetSceneAALaunchByMoney", "build NetSceneAALaunchByMoney request error: %s", new Object[] { paramString1.getMessage() });
+        ab.e("MicroMsg.NetSceneAALaunchByMoney", "build NetSceneAALaunchByMoney request error: %s", new Object[] { paramString1.getMessage() });
       }
     }
   }
   
-  public final int a(e parame, com.tencent.mm.ah.f paramf)
+  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
   {
-    y.i("MicroMsg.NetSceneAALaunchByMoney", "doScene");
-    this.dmL = paramf;
-    return a(parame, this.eWr, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneAALaunchByMoney", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.eWv = ((g)((b)paramq).ecF.ecN);
-    paramInt1 = this.eWv.iHq;
-    paramq = this.eWv.iHr;
-    if (this.eWv.srs == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      y.i("MicroMsg.NetSceneAALaunchByMoney", "retcode: %s, retmsg: %s, msgxml==null: %s, billNo: %s", new Object[] { Integer.valueOf(paramInt1), paramq, Boolean.valueOf(bool), this.eWv.srq });
-      y.d("MicroMsg.NetSceneAALaunchByMoney", "msgxml: %s", new Object[] { this.eWv.srs });
-      if (this.dmL != null) {
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      }
-      return;
-    }
+    AppMethodBeat.i(40649);
+    ab.i("MicroMsg.NetSceneAALaunchByMoney", "doScene");
+    this.callback = paramf;
+    int i = dispatch(parame, this.goo, this);
+    AppMethodBeat.o(40649);
+    return i;
   }
   
   public final int getType()
   {
     return 1624;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(40650);
+    ab.i("MicroMsg.NetSceneAALaunchByMoney", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.got = ((g)((b)paramq).fsW.fta);
+    paramInt1 = this.got.cnK;
+    paramq = this.got.kNv;
+    if (this.got.wjY == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ab.i("MicroMsg.NetSceneAALaunchByMoney", "retcode: %s, retmsg: %s, msgxml==null: %s, billNo: %s", new Object[] { Integer.valueOf(paramInt1), paramq, Boolean.valueOf(bool), this.got.wjW });
+      ab.d("MicroMsg.NetSceneAALaunchByMoney", "msgxml: %s", new Object[] { this.got.wjY });
+      if (this.callback != null) {
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      }
+      AppMethodBeat.o(40650);
+      return;
+    }
   }
 }
 

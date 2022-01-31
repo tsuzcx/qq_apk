@@ -1,34 +1,55 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
+import android.os.Looper;
+import android.text.Editable;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.input.c.b;
+import com.tencent.mm.sdk.platformtools.ak;
 
-public abstract interface z<Input extends EditText,  extends aa>
+public final class z
+  implements View.OnFocusChangeListener
 {
-  public abstract boolean adjustPositionOnFocused();
+  final ak iMP;
+  boolean jnR;
+  public b jnS;
+  final Runnable jnT;
   
-  public abstract <P extends View,  extends ab> P getInputPanel();
+  public z(EditText paramEditText)
+  {
+    AppMethodBeat.i(123833);
+    this.jnR = false;
+    this.jnT = new z.1(this);
+    this.jnR = paramEditText.isFocused();
+    paramEditText.setOnFocusChangeListener(this);
+    this.iMP = new ak(Looper.getMainLooper());
+    AppMethodBeat.o(123833);
+  }
   
-  public abstract int getInputPanelMarginBottom();
+  public final Editable c(Editable paramEditable)
+  {
+    AppMethodBeat.i(123834);
+    paramEditable.setSpan(new z.2(this), 0, paramEditable.length(), 18);
+    paramEditable.setSpan(new z.3(this), 0, paramEditable.length(), 18);
+    AppMethodBeat.o(123834);
+    return paramEditable;
+  }
   
-  public abstract Input getWidget();
-  
-  public abstract boolean hideKeyboard();
-  
-  public abstract boolean isAttachedTo(q paramq);
-  
-  public abstract void lt(int paramInt);
-  
-  public abstract boolean removeSelf();
-  
-  public abstract boolean showKeyboard(int paramInt1, int paramInt2);
-  
-  public abstract void updateValue(String paramString, Integer paramInteger);
+  public final void onFocusChange(View paramView, boolean paramBoolean)
+  {
+    AppMethodBeat.i(141619);
+    this.jnR = paramBoolean;
+    if (!paramBoolean) {
+      this.iMP.removeCallbacks(this.jnT);
+    }
+    AppMethodBeat.o(141619);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.z
  * JD-Core Version:    0.7.0.1
  */

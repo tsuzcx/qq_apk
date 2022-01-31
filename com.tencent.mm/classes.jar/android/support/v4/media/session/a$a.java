@@ -18,7 +18,7 @@ public abstract class a$a
     attachInterface(this, "android.support.v4.media.session.IMediaControllerCallback");
   }
   
-  public static a b(IBinder paramIBinder)
+  public static a c(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -58,7 +58,7 @@ public abstract class a$a
       if (paramParcel1.readInt() != 0) {
         paramParcel2 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      b(str, paramParcel2);
+      d(str, paramParcel2);
       return true;
     case 2: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
@@ -110,7 +110,7 @@ public abstract class a$a
       return true;
     case 9: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-      ak(paramParcel1.readInt());
+      ai(paramParcel1.readInt());
       return true;
     case 10: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
@@ -129,17 +129,17 @@ public abstract class a$a
       return true;
     case 12: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-      al(paramParcel1.readInt());
+      aj(paramParcel1.readInt());
       return true;
     }
     paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-    cE();
+    dh();
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.media.session.a.a
  * JD-Core Version:    0.7.0.1
  */

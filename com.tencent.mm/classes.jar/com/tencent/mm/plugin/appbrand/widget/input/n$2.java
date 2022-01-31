@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.support.v4.f.a;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.Set;
 
 final class n$2
   implements Runnable
 {
-  n$2(q paramq, String paramString, Integer paramInteger) {}
+  n$2(n paramn) {}
   
   public final void run()
   {
-    Object localObject = (aa)n.arR().get(this.gkf);
-    if (localObject != null)
+    AppMethodBeat.i(126664);
+    ab.i("MicroMsg.AppBrandUIdRootFrameLayout", "callOnPanelChanged, size %d", new Object[] { Integer.valueOf(n.d(this.jmf).size()) });
+    if (n.d(this.jmf).size() <= 0)
     {
-      localObject = n.a(this.gkf, ((aa)localObject).getInputId());
-      if (localObject != null) {
-        ((z)localObject).updateValue(this.eOB, this.hug);
-      }
+      AppMethodBeat.o(126664);
+      return;
     }
+    n.a[] arrayOfa = new n.a[n.d(this.jmf).size()];
+    n.d(this.jmf).toArray(arrayOfa);
+    AppMethodBeat.o(126664);
   }
 }
 

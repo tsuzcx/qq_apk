@@ -1,62 +1,82 @@
 package com.tencent.mm.plugin.appbrand.dynamic.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class a
 {
-  private static volatile com.tencent.mm.aa.c.g fWt;
-  private static volatile com.tencent.mm.aa.c.g fWu;
+  private static volatile com.tencent.mm.z.c.g hpU;
+  private static volatile com.tencent.mm.z.c.g hpV;
   
-  private static com.tencent.mm.aa.c.g afq()
+  private static com.tencent.mm.z.c.g azV()
   {
-    if (fWt == null) {}
+    AppMethodBeat.i(10909);
+    if (hpU == null) {}
     try
     {
-      if (fWt == null)
+      if (hpU == null)
       {
-        com.tencent.mm.aa.c.g localg = new com.tencent.mm.aa.c.g();
+        localg = new com.tencent.mm.z.c.g();
         localg.a(new b(302));
         localg.a(new c(303));
         localg.a(new d(308));
         localg.a(new f());
         localg.a(new g());
-        fWt = localg;
+        hpU = localg;
       }
-      return fWt;
+      com.tencent.mm.z.c.g localg = hpU;
+      AppMethodBeat.o(10909);
+      return localg;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(10909);
+    }
   }
   
-  private static com.tencent.mm.aa.c.g afr()
+  private static com.tencent.mm.z.c.g azW()
   {
-    if (fWu == null) {}
+    AppMethodBeat.i(10910);
+    if (hpV == null) {}
     try
     {
-      if (fWu == null)
+      if (hpV == null)
       {
-        com.tencent.mm.aa.c.g localg = new com.tencent.mm.aa.c.g();
+        localg = new com.tencent.mm.z.c.g();
         localg.a(new b(262));
         localg.a(new c(263));
         localg.a(new d(268));
         localg.a(new f());
         localg.a(new g());
         localg.a(new e((byte)0));
-        fWu = localg;
+        hpV = localg;
       }
-      return fWu;
+      com.tencent.mm.z.c.g localg = hpV;
+      AppMethodBeat.o(10910);
+      return localg;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(10910);
+    }
   }
   
-  public static com.tencent.mm.aa.c.g kJ(int paramInt)
+  public static com.tencent.mm.z.c.g nH(int paramInt)
   {
-    if (paramInt == 1) {
-      return afr();
+    AppMethodBeat.i(10908);
+    if (paramInt == 1)
+    {
+      localg = azW();
+      AppMethodBeat.o(10908);
+      return localg;
     }
-    return afq();
+    com.tencent.mm.z.c.g localg = azV();
+    AppMethodBeat.o(10908);
+    return localg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.f.a
  * JD-Core Version:    0.7.0.1
  */

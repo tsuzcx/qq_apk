@@ -3,12 +3,13 @@ package com.tencent.mm.plugin.game.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.commlib.a;
-import com.tencent.mm.plugin.game.d.ak;
-import com.tencent.mm.plugin.game.d.dc;
+import com.tencent.mm.plugin.game.d.al;
+import com.tencent.mm.plugin.game.d.dd;
 import com.tencent.mm.plugin.game.f.c;
 import com.tencent.mm.plugin.game.ui.tab.GameTabHomeUI;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -19,56 +20,70 @@ import java.util.Set;
 public class GameTabData
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameTabData> CREATOR = new GameTabData.1();
-  public LinkedHashMap<String, GameTabData.TabItem> kQQ;
-  public GameTabData.StatusBar kQR;
+  public static final Parcelable.Creator<GameTabData> CREATOR;
+  public LinkedHashMap<String, GameTabData.TabItem> noU;
+  public GameTabData.StatusBar noV;
+  
+  static
+  {
+    AppMethodBeat.i(111405);
+    CREATOR = new GameTabData.1();
+    AppMethodBeat.o(111405);
+  }
   
   public GameTabData()
   {
-    this.kQQ = new LinkedHashMap();
-    this.kQR = new GameTabData.StatusBar();
+    AppMethodBeat.i(111400);
+    this.noU = new LinkedHashMap();
+    this.noV = new GameTabData.StatusBar();
+    AppMethodBeat.o(111400);
   }
   
   private GameTabData(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(111401);
+    f(paramParcel);
+    AppMethodBeat.o(111401);
   }
   
-  public static GameTabData bD(List<ak> paramList)
+  public static GameTabData ca(List<al> paramList)
   {
-    if (bk.dk(paramList)) {
+    AppMethodBeat.i(111404);
+    if (bo.es(paramList))
+    {
+      AppMethodBeat.o(111404);
       return null;
     }
     GameTabData localGameTabData = new GameTabData();
-    Object localObject = a.aYn();
+    Object localObject = a.bFc();
     if (localObject != null)
     {
-      localGameTabData.kQR.kQS = ((dc)localObject).kQS;
-      localGameTabData.kQR.color = c.parseColor(((dc)localObject).color);
+      localGameTabData.noV.noW = ((dd)localObject).noW;
+      localGameTabData.noV.color = c.parseColor(((dd)localObject).color);
     }
     localObject = paramList.iterator();
     int i = 0;
     while (((Iterator)localObject).hasNext())
     {
-      ak localak = (ak)((Iterator)localObject).next();
-      if ((localak != null) && (!bk.bl(localak.kTD)))
+      al localal = (al)((Iterator)localObject).next();
+      if ((localal != null) && (!bo.isNullOrNil(localal.nrD)))
       {
         GameTabData.TabItem localTabItem = new GameTabData.TabItem();
-        localTabItem.kQT = localak.kTD;
-        localTabItem.title = localak.bGw;
-        localTabItem.kQU = localak.kTE;
-        localTabItem.kQV = localak.kTF;
-        localTabItem.jumpUrl = localak.kRP;
-        localTabItem.kQY = localak.kTG;
-        localTabItem.kQZ = localak.kTH;
-        if (localTabItem.kQV)
+        localTabItem.noX = localal.nrD;
+        localTabItem.title = localal.Title;
+        localTabItem.noY = localal.nrE;
+        localTabItem.noZ = localal.nrF;
+        localTabItem.jumpUrl = localal.npR;
+        localTabItem.npc = localal.nrG;
+        localTabItem.npd = localal.nrH;
+        if (localTabItem.noZ)
         {
-          localTabItem.kRa = GameTabHomeUI.class.getName();
-          localTabItem.kRb = false;
-          localTabItem.bXn = localak.kTI;
-          localTabItem.kRc = localak.kSu;
-          localTabItem.kOo = localak.kSs;
-          localGameTabData.kQQ.put(localTabItem.kQT, localTabItem);
+          localTabItem.npe = GameTabHomeUI.class.getName();
+          localTabItem.npf = false;
+          localTabItem.cFj = localal.nrI;
+          localTabItem.npg = localal.nqv;
+          localTabItem.nml = localal.nqt;
+          localGameTabData.noU.put(localTabItem.noX, localTabItem);
         }
         else
         {
@@ -77,32 +92,35 @@ public class GameTabData
           if (j != 0) {}
           for (paramList = String.valueOf(j);; paramList = "")
           {
-            localTabItem.kRa = paramList;
+            localTabItem.npe = paramList;
             i += 1;
             break;
           }
         }
       }
     }
+    AppMethodBeat.o(111404);
     return localGameTabData;
   }
   
-  private void e(Parcel paramParcel)
+  private void f(Parcel paramParcel)
   {
+    AppMethodBeat.i(111402);
     int j = paramParcel.readInt();
-    if (this.kQQ == null) {
-      this.kQQ = new LinkedHashMap();
+    if (this.noU == null) {
+      this.noU = new LinkedHashMap();
     }
     int i = 0;
     while (i < j)
     {
       GameTabData.TabItem localTabItem = (GameTabData.TabItem)paramParcel.readParcelable(GameTabData.TabItem.class.getClassLoader());
       if (localTabItem != null) {
-        this.kQQ.put(localTabItem.kQT, localTabItem);
+        this.noU.put(localTabItem.noX, localTabItem);
       }
       i += 1;
     }
-    this.kQR = ((GameTabData.StatusBar)paramParcel.readParcelable(GameTabData.StatusBar.class.getClassLoader()));
+    this.noV = ((GameTabData.StatusBar)paramParcel.readParcelable(GameTabData.StatusBar.class.getClassLoader()));
+    AppMethodBeat.o(111402);
   }
   
   public int describeContents()
@@ -112,21 +130,25 @@ public class GameTabData
   
   public final List<GameTabData.TabItem> getItemList()
   {
+    AppMethodBeat.i(111399);
     ArrayList localArrayList = new ArrayList();
-    if (this.kQQ != null) {
-      localArrayList.addAll(this.kQQ.values());
+    if (this.noU != null) {
+      localArrayList.addAll(this.noU.values());
     }
+    AppMethodBeat.o(111399);
     return localArrayList;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.kQQ.size());
-    Iterator localIterator = this.kQQ.entrySet().iterator();
+    AppMethodBeat.i(111403);
+    paramParcel.writeInt(this.noU.size());
+    Iterator localIterator = this.noU.entrySet().iterator();
     while (localIterator.hasNext()) {
       paramParcel.writeParcelable((Parcelable)((Map.Entry)localIterator.next()).getValue(), paramInt);
     }
-    paramParcel.writeParcelable(this.kQR, paramInt);
+    paramParcel.writeParcelable(this.noV, paramInt);
+    AppMethodBeat.o(111403);
   }
 }
 

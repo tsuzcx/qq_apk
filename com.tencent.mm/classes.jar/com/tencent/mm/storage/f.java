@@ -1,15 +1,16 @@
 package com.tencent.mm.storage;
 
 import android.database.Cursor;
-import com.tencent.mm.a.o;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.sdk.platformtools.y;
 
 public final class f
-  implements com.tencent.mm.cf.a.a<String>
+  implements com.tencent.mm.cg.a.a<String>
 {
-  public long dBe;
+  public long euF;
   private String field_alias;
   public String field_conRemark;
   public int field_deleteFlag;
@@ -25,116 +26,132 @@ public final class f
   public String field_username;
   public int field_verifyFlag;
   public int field_weiboFlag;
-  public CharSequence umR;
+  public CharSequence ywx;
   
-  private void cts()
+  private void dvO()
   {
-    if (this.field_lvbuff == null) {}
-    for (;;)
+    AppMethodBeat.i(136950);
+    if (this.field_lvbuff == null)
     {
+      AppMethodBeat.o(136950);
       return;
-      try
-      {
-        if ((this.field_lvbuff != null) && (this.field_lvbuff.length != 0))
-        {
-          v localv = new v();
-          if (localv.bA(this.field_lvbuff) == 0)
-          {
-            localv.EZ(4);
-            localv.EZ(4);
-            localv.cqw();
-            localv.EZ(8);
-            localv.EZ(4);
-            localv.cqw();
-            localv.cqw();
-            localv.EZ(4);
-            localv.EZ(4);
-            localv.cqw();
-            localv.cqw();
-            localv.EZ(4);
-            localv.EZ(4);
-            this.field_signature = localv.getString();
-            localv.cqw();
-            localv.cqw();
-            localv.cqw();
-            localv.EZ(4);
-            localv.EZ(4);
-            localv.cqw();
-            localv.EZ(4);
-            localv.cqw();
-            localv.cqw();
-            localv.EZ(4);
-            localv.EZ(4);
-            if (!localv.cqx()) {
-              this.field_remarkDesc = localv.getString();
-            }
-            this.field_lvbuff = null;
-            return;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.AddressUIContact", "exception:%s", new Object[] { bk.j(localException) });
-      }
     }
-  }
-  
-  public final String Bq()
-  {
-    if ((this.field_conRemark != null) && (!this.field_conRemark.trim().equals(""))) {
-      localObject2 = this.field_conRemark;
-    }
-    Object localObject1;
-    do
+    try
     {
-      do
+      if (this.field_lvbuff != null)
       {
-        return localObject2;
-        localObject1 = com.tencent.mm.n.a.ft(this.field_username);
-        localObject2 = localObject1;
-      } while (localObject1 != null);
-      if ((this.field_nickname != null) && (this.field_nickname.length() > 0)) {
-        break;
-      }
-      localObject1 = this.field_alias;
-      localObject2 = localObject1;
-    } while (!bk.bl((String)localObject1));
-    Object localObject2 = this.field_username;
-    if (localObject2 == null) {
-      localObject1 = null;
-    }
-    for (;;)
-    {
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        if (((String)localObject1).length() != 0) {
-          break;
-        }
-      }
-      return this.field_username;
-      if (((String)localObject2).toLowerCase().endsWith("@t.qq.com"))
-      {
-        localObject1 = "@" + ((String)localObject2).replace("@t.qq.com", "");
+        i = this.field_lvbuff.length;
+        if (i != 0) {}
       }
       else
       {
-        localObject1 = localObject2;
-        if (((String)localObject2).toLowerCase().endsWith("@qqim"))
+        AppMethodBeat.o(136950);
+        return;
+      }
+      y localy = new y();
+      int i = localy.ca(this.field_lvbuff);
+      if (i != 0)
+      {
+        AppMethodBeat.o(136950);
+        return;
+      }
+      localy.Nb(4);
+      localy.Nb(4);
+      localy.dst();
+      localy.Nb(8);
+      localy.Nb(4);
+      localy.dst();
+      localy.dst();
+      localy.Nb(4);
+      localy.Nb(4);
+      localy.dst();
+      localy.dst();
+      localy.Nb(4);
+      localy.Nb(4);
+      this.field_signature = localy.getString();
+      localy.dst();
+      localy.dst();
+      localy.dst();
+      localy.Nb(4);
+      localy.Nb(4);
+      localy.dst();
+      localy.Nb(4);
+      localy.dst();
+      localy.dst();
+      localy.Nb(4);
+      localy.Nb(4);
+      if (!localy.dsu()) {
+        this.field_remarkDesc = localy.getString();
+      }
+      this.field_lvbuff = null;
+      AppMethodBeat.o(136950);
+      return;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.AddressUIContact", "exception:%s", new Object[] { bo.l(localException) });
+      AppMethodBeat.o(136950);
+    }
+  }
+  
+  public final String Of()
+  {
+    AppMethodBeat.i(136949);
+    if ((this.field_conRemark != null) && (!this.field_conRemark.trim().equals("")))
+    {
+      localObject = this.field_conRemark;
+      AppMethodBeat.o(136949);
+      return localObject;
+    }
+    Object localObject = com.tencent.mm.n.a.lG(this.field_username);
+    if (localObject != null)
+    {
+      AppMethodBeat.o(136949);
+      return localObject;
+    }
+    if ((this.field_nickname == null) || (this.field_nickname.length() <= 0))
+    {
+      localObject = this.field_alias;
+      if (!bo.isNullOrNil((String)localObject))
+      {
+        AppMethodBeat.o(136949);
+        return localObject;
+      }
+      String str = this.field_username;
+      if (str == null) {
+        localObject = null;
+      }
+      while ((localObject != null) && (((String)localObject).length() != 0))
+      {
+        AppMethodBeat.o(136949);
+        return localObject;
+        if (str.toLowerCase().endsWith("@t.qq.com"))
         {
-          localObject1 = ((String)localObject2).replace("@qqim", "");
-          long l = Long.valueOf((String)localObject1).longValue();
-          if (l < 0L) {
-            localObject1 = new o(l).toString();
+          localObject = "@" + str.replace("@t.qq.com", "");
+        }
+        else
+        {
+          localObject = str;
+          if (str.toLowerCase().endsWith("@qqim"))
+          {
+            localObject = str.replace("@qqim", "");
+            long l = Long.valueOf((String)localObject).longValue();
+            if (l < 0L) {
+              localObject = new p(l).toString();
+            }
           }
         }
       }
+      localObject = this.field_username;
+      AppMethodBeat.o(136949);
+      return localObject;
     }
-    return this.field_nickname;
+    localObject = this.field_nickname;
+    AppMethodBeat.o(136949);
+    return localObject;
   }
   
-  public final void V(int paramInt, long paramLong)
+  public final void ak(int paramInt, long paramLong)
   {
     switch (paramInt)
     {
@@ -150,13 +167,13 @@ public final class f
       this.field_weiboFlag = ((int)paramLong);
       return;
     case 7: 
-      this.dBe = paramLong;
+      this.euF = paramLong;
       return;
     }
     this.field_deleteFlag = ((int)paramLong);
   }
   
-  public final void bc(int paramInt, String paramString)
+  public final void bJ(int paramInt, String paramString)
   {
     switch (paramInt)
     {
@@ -193,13 +210,9 @@ public final class f
     this.field_descWordingQuanpin = paramString;
   }
   
-  public final void ctt()
+  public final void convertFrom(Cursor paramCursor)
   {
-    cts();
-  }
-  
-  public final void d(Cursor paramCursor)
-  {
+    AppMethodBeat.i(136948);
     this.field_username = paramCursor.getString(0);
     this.field_nickname = paramCursor.getString(1);
     this.field_alias = paramCursor.getString(2);
@@ -207,7 +220,7 @@ public final class f
     this.field_verifyFlag = paramCursor.getInt(4);
     this.field_showHead = paramCursor.getInt(5);
     this.field_weiboFlag = paramCursor.getInt(6);
-    this.dBe = paramCursor.getLong(7);
+    this.euF = paramCursor.getLong(7);
     this.field_deleteFlag = paramCursor.getInt(8);
     this.field_lvbuff = paramCursor.getBlob(9);
     this.field_descWordingId = paramCursor.getString(10);
@@ -217,10 +230,18 @@ public final class f
       this.field_descWording = paramCursor.getString(12);
       this.field_descWordingQuanpin = paramCursor.getString(13);
     }
-    cts();
+    dvO();
+    AppMethodBeat.o(136948);
   }
   
-  public final void q(int paramInt, byte[] paramArrayOfByte)
+  public final void dvP()
+  {
+    AppMethodBeat.i(136951);
+    dvO();
+    AppMethodBeat.o(136951);
+  }
+  
+  public final void r(int paramInt, byte[] paramArrayOfByte)
   {
     if (paramInt == 9) {
       this.field_lvbuff = paramArrayOfByte;

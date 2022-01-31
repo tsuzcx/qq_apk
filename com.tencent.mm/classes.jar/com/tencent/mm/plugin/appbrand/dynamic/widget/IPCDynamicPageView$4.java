@@ -1,19 +1,14 @@
 package com.tencent.mm.plugin.appbrand.dynamic.widget;
 
 import android.os.Bundle;
-import com.tencent.mm.ipcinvoker.f;
-import com.tencent.mm.model.u.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v.b;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import com.tencent.mm.plugin.appbrand.dynamic.a.a;
 import com.tencent.mm.plugin.appbrand.dynamic.e;
 import com.tencent.mm.plugin.appbrand.dynamic.i;
 import com.tencent.mm.plugin.appbrand.dynamic.j.b;
-import com.tencent.mm.plugin.appbrand.widget.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.lang.ref.WeakReference;
-import java.util.Map;
 
 final class IPCDynamicPageView$4
   implements Runnable
@@ -22,58 +17,40 @@ final class IPCDynamicPageView$4
   
   public final void run()
   {
-    String str = "";
-    if (this.fTr != null) {
-      str = this.fTr.getString("cache_key", "");
+    AppMethodBeat.i(11040);
+    String str1 = "";
+    if (this.hmS != null) {
+      str1 = this.hmS.getString("cache_key", "");
     }
-    u.i("MicroMsg.IPCDynamicPageView", "prepare(%s, %s)", new Object[] { this.BD, this.val$appId });
-    IPCDynamicPageView.a(this.fXO, b.tl(this.BD));
-    if (IPCDynamicPageView.g(this.fXO) == null) {
-      IPCDynamicPageView.a(this.fXO, new g());
+    u.i("MicroMsg.IPCDynamicPageView", "prepare(%s, %s)", new Object[] { this.val$id, this.val$appId });
+    IPCDynamicPageView.a(this.hro, b.Bp(this.val$id));
+    if (IPCDynamicPageView.g(this.hro) == null) {
+      IPCDynamicPageView.a(this.hro, new com.tencent.mm.plugin.appbrand.widget.f());
     }
-    IPCDynamicPageView.g(this.fXO).field_id = this.BD;
-    IPCDynamicPageView.g(this.fXO).field_cacheKey = str;
-    IPCDynamicPageView.g(this.fXO).field_appId = u.jy(IPCDynamicPageView.e(this.fXO));
-    this.fXO.getDrawContext().dIV.h("id", this.BD);
-    Object localObject1 = e.aeV();
-    str = this.BD;
-    Object localObject2 = this.fXO;
-    if (bk.bl(str)) {
-      y.w("MicroMsg.DynamicPageViewMgr", "add view into manager failed, key is null or nil.");
+    IPCDynamicPageView.g(this.hro).field_id = this.val$id;
+    IPCDynamicPageView.g(this.hro).field_cacheKey = str1;
+    IPCDynamicPageView.g(this.hro).field_appId = u.qn(IPCDynamicPageView.e(this.hro));
+    this.hro.getDrawContext().eGu.i("id", this.val$id);
+    e.azy().b(this.val$id, this.hro);
+    if (this.hmS != null) {
+      this.hmS.putBundle("__env_args", IPCDynamicPageView.b(this.hro, this.hmS));
     }
-    for (;;)
-    {
-      if (this.fTr != null) {
-        this.fTr.putBundle("__env_args", IPCDynamicPageView.b(this.fXO, this.fTr));
-      }
-      IPCDynamicPageView.f(this.fXO);
-      str = this.BD;
-      localObject1 = this.val$appId;
-      localObject2 = this.fTr;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("id", str);
-      localBundle.putString("appId", (String)localObject1);
-      localBundle.putBundle("extData", (Bundle)localObject2);
-      u.i("MicroMsg.DynamicIPCJsBridge", "before IPCInvoke_AttachTo invoke", new Object[0]);
-      f.a(i.aeX().sX(str), localBundle, a.a.class, null);
-      return;
-      if (localObject2 == null)
-      {
-        y.w("MicroMsg.DynamicPageViewMgr", "add view into manager failed, view is null.");
-      }
-      else
-      {
-        localObject1 = (WeakReference)((e)localObject1).fTR.put(str, new WeakReference(localObject2));
-        if ((localObject1 != null) && (((WeakReference)localObject1).get() != null)) {
-          y.i("MicroMsg.DynamicPageViewMgr", "add a new view and remove old one with key : %s.", new Object[] { str });
-        }
-      }
-    }
+    IPCDynamicPageView.f(this.hro);
+    str1 = this.val$id;
+    String str2 = this.val$appId;
+    Bundle localBundle1 = this.hmS;
+    Bundle localBundle2 = new Bundle();
+    localBundle2.putString("id", str1);
+    localBundle2.putString("appId", str2);
+    localBundle2.putBundle("extData", localBundle1);
+    u.i("MicroMsg.DynamicIPCJsBridge", "before IPCInvoke_AttachTo invoke", new Object[0]);
+    com.tencent.mm.ipcinvoker.f.a(i.azB().AY(str1), localBundle2, a.a.class, null);
+    AppMethodBeat.o(11040);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView.4
  * JD-Core Version:    0.7.0.1
  */

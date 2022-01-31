@@ -10,10 +10,10 @@ public abstract class AppBrandProxyUIProcessTask$ProcessResult
   
   public AppBrandProxyUIProcessTask$ProcessResult(Parcel paramParcel)
   {
-    h(paramParcel);
+    j(paramParcel);
   }
   
-  public abstract void h(Parcel paramParcel);
+  protected abstract void j(Parcel paramParcel);
 }
 
 

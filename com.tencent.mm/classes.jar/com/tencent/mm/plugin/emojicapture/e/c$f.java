@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.d.a.a;
-import a.d.b.h;
-import a.n;
+import a.f.a.b;
+import a.f.b.k;
+import a.l;
+import a.y;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "shouldBlock", "", "invoke"})
 final class c$f
-  extends h
-  implements a<n>
+  extends k
+  implements b<Boolean, y>
 {
-  c$f(c paramc)
+  c$f(c paramc, String paramString)
   {
-    super(0);
+    super(1);
   }
 }
 

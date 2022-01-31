@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.downloader_app.detail;
 
 import android.app.Activity;
-import com.tencent.luggage.e.f;
+import com.tencent.luggage.d.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   extends f
@@ -9,8 +10,10 @@ public final class a
   public a(Activity paramActivity)
   {
     super(paramActivity);
-    this.bip = b.class;
-    this.bis.x(com.tencent.mm.plugin.downloader_app.detail.a.d.aGk());
+    AppMethodBeat.i(136030);
+    this.byN = b.class;
+    this.byQ.z(com.tencent.mm.plugin.downloader_app.detail.a.d.bjM());
+    AppMethodBeat.o(136030);
   }
 }
 

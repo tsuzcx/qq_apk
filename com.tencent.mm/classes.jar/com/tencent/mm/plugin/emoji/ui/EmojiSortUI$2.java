@@ -2,14 +2,14 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.a.e;
-import com.tencent.mm.plugin.emoji.f.h;
-import com.tencent.mm.plugin.emoji.f.t;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.emoji.f.s;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
@@ -23,25 +23,28 @@ final class EmojiSortUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (!aq.isConnected(ae.getContext()))
+    AppMethodBeat.i(53409);
+    if (!at.isConnected(ah.getContext())) {
+      EmojiSortUI.a(this.lmp);
+    }
+    for (;;)
     {
-      EmojiSortUI.a(this.jdC);
+      AppMethodBeat.o(53409);
       return true;
-    }
-    paramMenuItem = this.jdC;
-    paramMenuItem.getString(f.h.app_tip);
-    paramMenuItem.faz = h.b(paramMenuItem, paramMenuItem.getString(f.h.app_waiting), true, new EmojiSortUI.3(paramMenuItem));
-    paramMenuItem = new ArrayList();
-    if ((EmojiSortUI.b(this.jdC) != null) && (EmojiSortUI.b(this.jdC).iVa != null))
-    {
-      Iterator localIterator = EmojiSortUI.b(this.jdC).iVa.iterator();
-      while (localIterator.hasNext()) {
-        paramMenuItem.add(((EmojiGroupInfo)localIterator.next()).field_productID);
+      paramMenuItem = this.lmp;
+      paramMenuItem.getString(2131297087);
+      paramMenuItem.gsr = h.b(paramMenuItem, paramMenuItem.getString(2131297112), true, new EmojiSortUI.3(paramMenuItem));
+      paramMenuItem = new ArrayList();
+      if ((EmojiSortUI.b(this.lmp) != null) && (EmojiSortUI.b(this.lmp).lee != null))
+      {
+        Iterator localIterator = EmojiSortUI.b(this.lmp).lee.iterator();
+        while (localIterator.hasNext()) {
+          paramMenuItem.add(((EmojiGroupInfo)localIterator.next()).field_productID);
+        }
       }
+      EmojiSortUI.a(this.lmp, new s(paramMenuItem, 2));
+      g.RK().eHt.a(EmojiSortUI.c(this.lmp), 0);
     }
-    EmojiSortUI.a(this.jdC, new t(paramMenuItem, 2));
-    g.DO().dJT.a(EmojiSortUI.c(this.jdC), 0);
-    return true;
   }
 }
 

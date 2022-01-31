@@ -1,24 +1,42 @@
 package com.tencent.mm.ui.transmit;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.i;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.applet.q.a;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.ui.base.h;
 
 final class SelectConversationUI$4
-  implements DialogInterface.OnDismissListener
+  implements q.a
 {
-  SelectConversationUI$4(SelectConversationUI paramSelectConversationUI, String paramString, View paramView) {}
+  SelectConversationUI$4(SelectConversationUI paramSelectConversationUI, e parame) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    ((i)g.r(i.class)).b(this.fVG, this.val$view);
+    AppMethodBeat.i(35127);
+    this.AAp.hideVKB();
+    e locale = this.AAq;
+    locale.iNk = true;
+    locale.iNm = paramBoolean;
+    locale.text = paramString;
+    locale.iNn = paramInt;
+    if (locale.lw())
+    {
+      locale.aMj();
+      AppMethodBeat.o(35127);
+      return;
+    }
+    if (paramBoolean)
+    {
+      locale.tipDialog = h.b(locale.context, locale.context.getString(2131303124), true, null);
+      al.p(locale.hGy, 5000L);
+    }
+    AppMethodBeat.o(35127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SelectConversationUI.4
  * JD-Core Version:    0.7.0.1
  */

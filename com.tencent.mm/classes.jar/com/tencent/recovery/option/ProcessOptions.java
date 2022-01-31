@@ -4,25 +4,25 @@ import com.tencent.recovery.config.Express;
 
 public class ProcessOptions
 {
-  public int dEk;
-  private Express wLe;
+  private Express BiD;
+  public int eBM;
   
   public static final class Builder
   {
-    private int dEk;
-    public Express wLe;
+    public Express BiD;
+    private int eBM;
     
-    public final Builder cOE()
+    public final Builder dUt()
     {
-      this.dEk = 10000;
+      this.eBM = 10000;
       return this;
     }
     
-    public final ProcessOptions cOF()
+    public final ProcessOptions dUu()
     {
       ProcessOptions localProcessOptions = new ProcessOptions();
-      ProcessOptions.a(localProcessOptions, this.dEk);
-      ProcessOptions.a(localProcessOptions, this.wLe);
+      ProcessOptions.a(localProcessOptions, this.eBM);
+      ProcessOptions.a(localProcessOptions, this.BiD);
       return localProcessOptions;
     }
   }

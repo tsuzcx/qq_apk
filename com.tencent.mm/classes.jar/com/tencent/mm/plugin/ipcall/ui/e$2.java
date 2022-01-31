@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$2
   implements View.OnClickListener
@@ -11,9 +12,11 @@ final class e$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(22034);
     paramView = new Intent();
-    paramView.setClass(this.lup.lui, IPCallContactUI.class);
-    this.lup.lui.startActivity(paramView);
+    paramView.setClass(this.nRH.nRA, IPCallContactUI.class);
+    this.nRH.nRA.startActivity(paramView);
+    AppMethodBeat.o(22034);
   }
 }
 

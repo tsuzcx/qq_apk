@@ -8,10 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.n;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.R.a;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.f;
 import com.tencent.mm.pluginsdk.model.app.i;
 import com.tencent.mm.ui.base.MMGridView;
@@ -22,14 +21,14 @@ public class ServicePreference
   extends Preference
 {
   private Context context;
-  List<f> nUB;
-  AdapterView.OnItemClickListener pwZ = null;
-  private AdapterView.OnItemClickListener pxa = null;
-  private View.OnClickListener pxb = null;
-  private int pxc;
-  private boolean pxd = false;
-  private int pxe = 0;
-  b pxt;
+  private boolean ovS;
+  List<f> qIG;
+  AdapterView.OnItemClickListener sYO;
+  private AdapterView.OnItemClickListener sYP;
+  private View.OnClickListener sYQ;
+  private int sYR;
+  private int sYS;
+  b sZh;
   
   public ServicePreference(Context paramContext)
   {
@@ -44,42 +43,66 @@ public class ServicePreference
   public ServicePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(25485);
+    this.sYO = null;
+    this.sYP = null;
+    this.sYQ = null;
+    this.ovS = false;
+    this.sYS = 0;
     this.context = paramContext;
-    setLayoutResource(R.i.app_preference);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.n.AppPreference);
-    this.pxc = paramContext.getInt(R.n.AppPreference_btn_visibility, 8);
-    this.pxd = paramContext.getBoolean(R.n.AppPreference_can_delete, false);
-    this.pxe = paramContext.getResourceId(R.n.AppPreference_empty_wording, 0);
+    setLayoutResource(2130968761);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.a.AppPreference);
+    this.sYR = paramContext.getInt(0, 8);
+    this.ovS = paramContext.getBoolean(1, false);
+    this.sYS = paramContext.getResourceId(2, 0);
     paramContext.recycle();
+    AppMethodBeat.o(25485);
   }
   
-  protected final void onBindView(View paramView)
+  public final f Gn(int paramInt)
   {
+    AppMethodBeat.i(25487);
+    if ((paramInt < 0) || (paramInt >= this.sZh.getCount()))
+    {
+      AppMethodBeat.o(25487);
+      return null;
+    }
+    f localf = (f)this.sZh.getItem(paramInt);
+    AppMethodBeat.o(25487);
+    return localf;
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(25486);
     super.onBindView(paramView);
-    MMGridView localMMGridView = (MMGridView)paramView.findViewById(R.h.gridview);
-    if (localMMGridView == null) {
+    MMGridView localMMGridView = (MMGridView)paramView.findViewById(2131821494);
+    if (localMMGridView == null)
+    {
+      AppMethodBeat.o(25486);
       return;
     }
-    this.pxt = new b(this.context, this.nUB);
-    ap.brn().d(this.pxt);
-    ap.brn().c(this.pxt);
-    localMMGridView.setAdapter(this.pxt);
+    this.sZh = new b(this.context, this.qIG);
+    al.cac().remove(this.sZh);
+    al.cac().add(this.sZh);
+    localMMGridView.setAdapter(this.sZh);
     localMMGridView.setOnItemClickListener(new ServicePreference.1(this));
-    if (this.pxd) {
+    if (this.ovS) {
       localMMGridView.setOnItemLongClickListener(new ServicePreference.2(this));
     }
-    TextView localTextView = (TextView)paramView.findViewById(R.h.empty_tv);
-    if (this.pxt.getCount() == 0)
+    TextView localTextView = (TextView)paramView.findViewById(2131821495);
+    if (this.sZh.getCount() == 0)
     {
       localTextView.setVisibility(0);
-      localTextView.setText(this.pxe);
+      localTextView.setText(this.sYS);
       localMMGridView.setVisibility(8);
     }
     for (;;)
     {
-      paramView = (Button)paramView.findViewById(R.h.btn);
-      paramView.setVisibility(this.pxc);
-      paramView.setOnClickListener(this.pxb);
+      paramView = (Button)paramView.findViewById(2131821496);
+      paramView.setVisibility(this.sYR);
+      paramView.setOnClickListener(this.sYQ);
+      AppMethodBeat.o(25486);
       return;
       localTextView.setVisibility(8);
       localMMGridView.setVisibility(0);
@@ -88,29 +111,25 @@ public class ServicePreference
   
   public final void onPause()
   {
-    if (this.pxt != null) {
-      ap.brn().d(this.pxt);
+    AppMethodBeat.i(25489);
+    if (this.sZh != null) {
+      al.cac().remove(this.sZh);
     }
+    AppMethodBeat.o(25489);
   }
   
   public final void onResume()
   {
-    if (this.pxt != null) {
-      ap.brn().c(this.pxt);
+    AppMethodBeat.i(25488);
+    if (this.sZh != null) {
+      al.cac().add(this.sZh);
     }
-  }
-  
-  public final f zn(int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt >= this.pxt.getCount())) {
-      return null;
-    }
-    return (f)this.pxt.getItem(paramInt);
+    AppMethodBeat.o(25488);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.ServicePreference
  * JD-Core Version:    0.7.0.1
  */

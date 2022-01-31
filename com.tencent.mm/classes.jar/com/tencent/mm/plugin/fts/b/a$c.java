@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fts.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.c;
 
 final class a$c
@@ -9,7 +10,9 @@ final class a$c
   
   public final boolean execute()
   {
-    a.a(this.kyt).k(c.kuT);
+    AppMethodBeat.i(136669);
+    a.a(this.mUg).u(c.mQG);
+    AppMethodBeat.o(136669);
     return true;
   }
   
@@ -20,7 +23,7 @@ final class a$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.a.c
  * JD-Core Version:    0.7.0.1
  */

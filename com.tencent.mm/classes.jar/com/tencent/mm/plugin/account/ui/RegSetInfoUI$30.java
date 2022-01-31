@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
 
 final class RegSetInfoUI$30
   implements View.OnFocusChangeListener
@@ -11,11 +12,13 @@ final class RegSetInfoUI$30
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
+    AppMethodBeat.i(125535);
     if (paramBoolean)
     {
-      RegSetInfoUI.q(this.fso);
-      RegSetInfoUI.m(this.fso).S(200L, 200L);
+      RegSetInfoUI.q(this.gJQ);
+      RegSetInfoUI.m(this.gJQ).ag(200L, 200L);
     }
+    AppMethodBeat.o(125535);
   }
 }
 

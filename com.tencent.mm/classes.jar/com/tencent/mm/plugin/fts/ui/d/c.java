@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.ui.d;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
@@ -10,7 +11,7 @@ import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.a.h;
 import com.tencent.mm.plugin.fts.ui.a.q;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashSet;
 import java.util.List;
 
@@ -22,90 +23,103 @@ public final class c
     super(paramContext, paramb, paramInt);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.a.a a(ah paramah, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ak paramak, HashSet<String> paramHashSet)
   {
+    AppMethodBeat.i(62059);
     i locali = new i();
-    locali.kwX = 96;
-    locali.kxc = 3;
-    locali.bVk = this.bVk;
-    locali.kxd = paramHashSet;
-    locali.kxe = com.tencent.mm.plugin.fts.a.c.a.kxD;
-    locali.kxf = this;
-    locali.handler = paramah;
-    return ((n)g.t(n.class)).search(2, locali);
+    locali.hdl = 96;
+    locali.mSR = 3;
+    locali.query = this.query;
+    locali.mSS = paramHashSet;
+    locali.mST = com.tencent.mm.plugin.fts.a.c.a.mTs;
+    locali.mSU = this;
+    locali.handler = paramak;
+    paramak = ((n)g.G(n.class)).search(2, locali);
+    AppMethodBeat.o(62059);
+    return paramak;
   }
   
   public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt1, int paramInt2, l paraml, e.a parama)
   {
+    AppMethodBeat.i(62062);
     q localq = new q(paramInt2);
-    localq.fYx = paraml;
-    localq.kwi = parama.kwi;
-    localq.cU(paraml.type, paraml.kwf);
+    localq.hrL = paraml;
+    localq.mRX = parama.mRX;
+    localq.es(paraml.type, paraml.mRU);
+    AppMethodBeat.o(62062);
     return localq;
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
+  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
-    int i = paramInt - parama.kxK - 1;
+    AppMethodBeat.i(62061);
+    int i = paramInt - parama.mTy - 1;
+    l locall;
     Object localObject;
-    if ((i < parama.kxO.size()) && (i >= 0))
+    if ((i < parama.mTC.size()) && (i >= 0))
     {
-      localObject = (l)parama.kxO.get(i);
-      if (((l)localObject).kwg.equals("create_chatroom​"))
+      locall = (l)parama.mTC.get(i);
+      if (locall.mRV.equals("create_chatroom​"))
       {
         localObject = new h(paramInt);
-        ((h)localObject).kwi = parama.kwi;
-        parama = (e.a)localObject;
+        ((h)localObject).mRX = parama.mRX;
       }
     }
     for (;;)
     {
-      if (parama != null) {
-        parama.kxW = (i + 1);
-      }
-      return parama;
-      if (((l)localObject).type == 131075)
+      if (localObject != null)
       {
-        parama = a(131075, paramInt, (l)localObject, parama);
-        parama.cU(((l)localObject).type, ((l)localObject).kwf);
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mTJ = (i + 1);
+        if (i == parama.mTC.size() - 1) {
+          ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mTH = false;
+        }
+      }
+      AppMethodBeat.o(62061);
+      return localObject;
+      if (locall.type == 131075)
+      {
+        localObject = a(131075, paramInt, locall, parama);
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).es(locall.type, locall.mRU);
       }
       else
       {
-        parama = null;
+        localObject = null;
       }
     }
   }
   
-  protected final void a(j paramj, HashSet<String> paramHashSet)
+  public final void a(j paramj, HashSet<String> paramHashSet)
   {
+    AppMethodBeat.i(62060);
     boolean bool;
-    if (bA(paramj.kxh))
+    if (bU(paramj.mSW))
     {
       paramHashSet = new e.a();
-      paramHashSet.kxO = paramj.kxh;
+      paramHashSet.mTC = paramj.mSW;
       paramHashSet.businessType = -3;
-      paramHashSet.kwi = paramj.kwi;
-      if (paramHashSet.kxO.size() > 3)
+      paramHashSet.mRX = paramj.mRX;
+      if (paramHashSet.mTC.size() > 3)
       {
-        if (!((l)paramHashSet.kxO.get(3)).kwg.equals("create_chatroom​")) {
-          break label129;
+        if (!((l)paramHashSet.mTC.get(3)).mRV.equals("create_chatroom​")) {
+          break label139;
         }
-        if (paramHashSet.kxO.size() <= 4) {
-          break label124;
+        if (paramHashSet.mTC.size() <= 4) {
+          break label134;
         }
         bool = true;
-        paramHashSet.kxN = bool;
+        paramHashSet.mTB = bool;
       }
     }
-    for (paramHashSet.kxO = paramHashSet.kxO.subList(0, 4);; paramHashSet.kxO = paramHashSet.kxO.subList(0, 3))
+    for (paramHashSet.mTC = paramHashSet.mTC.subList(0, 4);; paramHashSet.mTC = paramHashSet.mTC.subList(0, 3))
     {
-      this.kzW.add(paramHashSet);
+      this.mVO.add(paramHashSet);
+      AppMethodBeat.o(62060);
       return;
-      label124:
+      label134:
       bool = false;
       break;
-      label129:
-      paramHashSet.kxN = true;
+      label139:
+      paramHashSet.mTB = true;
     }
   }
   

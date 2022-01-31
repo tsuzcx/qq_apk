@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_2022$CharsetRecog_2022JP
   extends CharsetRecog_2022
 {
@@ -7,12 +9,16 @@ class CharsetRecog_2022$CharsetRecog_2022JP
   
   CharsetRecog_2022$CharsetRecog_2022JP()
   {
-    byte[] arrayOfByte1 = { 27, 36, 40, 68 };
-    byte[] arrayOfByte2 = { 27, 36, 66 };
+    AppMethodBeat.i(104739);
+    byte[] arrayOfByte1 = { 27, 36, 64 };
+    byte[] arrayOfByte2 = { 27, 36, 65 };
     byte[] arrayOfByte3 = { 27, 38, 64 };
     byte[] arrayOfByte4 = { 27, 40, 66 };
-    byte[] arrayOfByte5 = { 27, 46, 70 };
-    this.escapeSequences = new byte[][] { { 27, 36, 40, 67 }, arrayOfByte1, { 27, 36, 64 }, { 27, 36, 65 }, arrayOfByte2, arrayOfByte3, arrayOfByte4, { 27, 40, 72 }, { 27, 40, 73 }, { 27, 40, 74 }, { 27, 46, 65 }, arrayOfByte5 };
+    byte[] arrayOfByte5 = { 27, 40, 72 };
+    byte[] arrayOfByte6 = { 27, 40, 74 };
+    byte[] arrayOfByte7 = { 27, 46, 70 };
+    this.escapeSequences = new byte[][] { { 27, 36, 40, 67 }, { 27, 36, 40, 68 }, arrayOfByte1, arrayOfByte2, { 27, 36, 66 }, arrayOfByte3, arrayOfByte4, arrayOfByte5, { 27, 40, 73 }, arrayOfByte6, { 27, 46, 65 }, arrayOfByte7 };
+    AppMethodBeat.o(104739);
   }
   
   String getName()
@@ -22,11 +28,16 @@ class CharsetRecog_2022$CharsetRecog_2022JP
   
   CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104740);
     int i = match(paramCharsetDetector.fInputBytes, paramCharsetDetector.fInputLen, this.escapeSequences);
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(104740);
       return null;
     }
-    return new CharsetMatch(paramCharsetDetector, this, i);
+    paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+    AppMethodBeat.o(104740);
+    return paramCharsetDetector;
   }
 }
 

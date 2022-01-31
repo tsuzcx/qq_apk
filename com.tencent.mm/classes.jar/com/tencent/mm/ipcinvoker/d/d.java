@@ -1,20 +1,23 @@
 package com.tencent.mm.ipcinvoker.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import junit.framework.Assert;
 
 public class d
 {
-  public String bGt;
-  public com.tencent.mm.ipcinvoker.d dHc;
+  public String cnC;
+  public com.tencent.mm.ipcinvoker.d eEF;
   private String process;
   
   public <T extends b> d(String paramString, Class<T> paramClass)
   {
+    AppMethodBeat.i(114078);
     Assert.assertNotNull(paramString);
     Assert.assertNotNull(paramClass);
     this.process = paramString;
-    this.bGt = paramClass.getName();
-    this.dHc = new com.tencent.mm.ipcinvoker.d(paramString);
+    this.cnC = paramClass.getName();
+    this.eEF = new com.tencent.mm.ipcinvoker.d(paramString);
+    AppMethodBeat.o(114078);
   }
 }
 

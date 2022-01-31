@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a;
 
 public final class b$1
@@ -9,7 +10,9 @@ public final class b$1
   
   public final void run()
   {
-    this.gmi.aiv();
+    AppMethodBeat.i(94230);
+    this.hGg.aCp();
+    AppMethodBeat.o(94230);
   }
 }
 

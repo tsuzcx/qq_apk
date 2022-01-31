@@ -1,312 +1,280 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
-import android.net.Uri;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.h.a.jd;
-import com.tencent.mm.h.a.jd.b;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.m;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.s;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.pluginsdk.model.app.ap;
-import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ad;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.storage.bi.a;
-import com.tencent.mm.storage.z;
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
+import com.tencent.mm.ui.base.n.d;
+import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.tools.l;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public final class al
 {
-  private ad bSg = null;
-  private Context context;
-  private SimpleDateFormat hJl = new SimpleDateFormat("yyyy-MM-dd");
-  String kzt = null;
-  List<bi> vju;
-  private String vmD = null;
-  ArrayList<Uri> vmE = new ArrayList();
-  
-  public al(Context paramContext, List<bi> paramList, ad paramad)
+  public static void a(bi parambi, Context paramContext, String paramString, boolean paramBoolean)
   {
-    this.context = paramContext;
-    this.vju = paramList;
-    this.bSg = paramad;
+    AppMethodBeat.i(31023);
+    if (paramContext == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptImgConnector: context is null");
+      AppMethodBeat.o(31023);
+      return;
+    }
+    if (parambi == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptImgConnector: msg is null");
+      AppMethodBeat.o(31023);
+      return;
+    }
+    aw.aaz();
+    if (!c.isSDCardAvailable())
+    {
+      t.ii(paramContext);
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptImgConnector: sd card is not available");
+      AppMethodBeat.o(31023);
+      return;
+    }
+    a(fe(z.afi().la(4)), paramContext, new al.5(parambi, paramContext, paramBoolean, paramString));
+    AppMethodBeat.o(31023);
   }
   
-  private String aG(bi parambi)
+  public static void a(bi parambi, String paramString, Context paramContext)
   {
-    String str = null;
-    if (!s.fn(this.bSg.field_username)) {
-      str = r.gV(parambi.field_talker);
+    AppMethodBeat.i(31028);
+    a(parambi, paramString, paramContext, 512);
+    AppMethodBeat.o(31028);
+  }
+  
+  private static void a(bi parambi, String paramString, Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(31031);
+    if (paramContext == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptMusicConnector: context is null");
+      AppMethodBeat.o(31031);
+      return;
+    }
+    if (parambi == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptMusicConnector: msg is null");
+      AppMethodBeat.o(31031);
+      return;
+    }
+    List localList = null;
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      if (parambi.field_isSend == 1)
-      {
-        y.i("MicroMsg.OtherMailHistoryExporter", "isSend");
-        str = q.Gl();
-      }
-      long l = parambi.field_createTime;
-      parambi = new SimpleDateFormat("HH:mm").format(new Date(l));
-      Object localObject = new StringBuilder("");
-      ((StringBuilder)localObject).append(str);
-      ((StringBuilder)localObject).append("  ");
-      ((StringBuilder)localObject).append(parambi);
-      return ((StringBuilder)localObject).toString();
-      localObject = parambi.field_content;
-      int i = bd.iH((String)localObject);
-      if (i != -1) {
-        str = r.gV(((String)localObject).substring(0, i).trim());
-      }
+      a(localList, paramContext, new al.10(parambi, paramString, paramInt, paramContext));
+      AppMethodBeat.o(31031);
+      return;
+      localList = fe(f.aeV());
+      continue;
+      localList = fe(f.aeT());
+      continue;
+      localList = fe(f.aeX());
     }
   }
   
-  private String cDi()
+  private static void a(List<String> paramList, Context paramContext, n.d paramd)
   {
-    Object localObject;
-    if (!s.fn(this.bSg.field_username))
+    AppMethodBeat.i(31033);
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      str1 = this.context.getString(R.l.send_mail_content_start_msg);
-      localObject = this.bSg.Bp();
-      au.Hx();
-      return String.format(str1, new Object[] { localObject, com.tencent.mm.model.c.Dz().get(4, null) });
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "tryShowConnectorDialog: careList is null or empty");
+      AppMethodBeat.o(31033);
+      return;
     }
-    if (bk.bl(this.bSg.field_nickname))
-    {
-      localObject = m.gK(this.bSg.field_username).iterator();
-      String str2;
-      for (str1 = ""; ((Iterator)localObject).hasNext(); str1 = str1 + str2 + ", ") {
-        str2 = r.gV((String)((Iterator)localObject).next());
-      }
-    }
-    for (String str1 = str1.substring(0, str1.length() - 2);; str1 = this.bSg.Bp()) {
-      return String.format(this.context.getString(R.l.send_mail_content_room_start_msg), new Object[] { str1 });
-    }
+    l locall = new l(paramContext);
+    locall.AvY = new al.11();
+    locall.AvZ = new al.2(paramContext);
+    locall.sao = new al.3(paramList);
+    locall.sap = paramd;
+    locall.cwt();
+    AppMethodBeat.o(31033);
   }
   
-  private String hO(long paramLong)
+  public static void b(bi parambi, Context paramContext)
   {
-    return this.hJl.format(new Date(paramLong));
+    AppMethodBeat.i(31022);
+    if (paramContext == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVoiceConnector: context is null");
+      AppMethodBeat.o(31022);
+      return;
+    }
+    if (parambi == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVoiceConnector: msg is null");
+      AppMethodBeat.o(31022);
+      return;
+    }
+    aw.aaz();
+    if (!c.isSDCardAvailable())
+    {
+      t.ii(paramContext);
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVoiceConnector: sd card not available");
+      AppMethodBeat.o(31022);
+      return;
+    }
+    a(fe(z.afi().la(2)), paramContext, new al.4(parambi, paramContext));
+    AppMethodBeat.o(31022);
   }
   
-  public final String cDh()
+  public static void b(bi parambi, String paramString, Context paramContext)
   {
-    if (this.kzt == null) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(31029);
+    a(parambi, paramString, paramContext, 256);
+    AppMethodBeat.o(31029);
+  }
+  
+  public static void c(bi parambi, Context paramContext)
+  {
+    AppMethodBeat.i(31024);
+    if (paramContext == null)
     {
-      y.d("MicroMsg.OtherMailHistoryExporter", "export: history is null? %B, selectItems.size = %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(this.vju.size()) });
-      if (this.kzt == null) {
-        break;
-      }
-      return this.kzt;
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVideoConnector: context is null");
+      AppMethodBeat.o(31024);
+      return;
     }
-    this.vmE.clear();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(cDi());
-    localStringBuilder.append("\n\n");
-    Iterator localIterator = this.vju.iterator();
-    bi localbi;
-    label178:
-    Object localObject1;
-    if (localIterator.hasNext())
+    if (parambi == null)
     {
-      localbi = (bi)localIterator.next();
-      if (this.vmD == null)
-      {
-        this.vmD = hO(localbi.field_createTime);
-        localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.vmD }));
-        localStringBuilder.append("\n");
-        if (!localbi.isText()) {
-          break label413;
-        }
-        if (!localbi.isText()) {
-          break label407;
-        }
-        if (localbi.field_isSend != 1) {
-          break label307;
-        }
-        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aG(localbi), localbi.field_content });
-      }
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVideoConnector: msg is null");
+      AppMethodBeat.o(31024);
+      return;
     }
-    label407:
-    label413:
-    for (;;)
+    aw.aaz();
+    if (!c.isSDCardAvailable())
     {
-      localStringBuilder.append((String)localObject1);
-      break;
-      localObject1 = hO(localbi.field_createTime);
-      if (((String)localObject1).equals(this.vmD)) {
-        break label178;
-      }
-      this.vmD = ((String)localObject1);
-      localStringBuilder.append(String.format("—————  %s  —————\n\n", new Object[] { this.vmD }));
-      localStringBuilder.append("\n");
-      break label178;
-      label307:
-      if (!s.fn(this.bSg.field_username))
-      {
-        localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aG(localbi), localbi.field_content });
-      }
-      else
-      {
-        int i = bd.iH(localbi.field_content);
-        if (i != -1)
-        {
-          localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aG(localbi), localbi.field_content.substring(i + 1).trim() });
-          continue;
-          localObject1 = null;
-          continue;
-          Object localObject2;
-          if (localbi.ctB())
-          {
-            if (localbi.ctB())
-            {
-              long l1 = localbi.field_msgId;
-              long l2 = localbi.field_msgSvrId;
-              localObject2 = af.hM(l1);
-              localObject1 = localObject2;
-              if (bk.bl((String)localObject2)) {
-                localObject1 = af.hN(l2);
-              }
-              y.d("MicroMsg.OtherMailHistoryExporter", "hdPath[%s]", new Object[] { localObject1 });
-              if (!bk.bl((String)localObject1))
-              {
-                localObject2 = "file://" + (String)localObject1;
-                this.vmE.add(Uri.parse((String)localObject2));
-                localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(R.l.email_image_prompt), new File((String)localObject1).getName(), this.context.getString(R.l.email_attach_tips) });
-              }
-            }
-            for (localObject1 = String.format("%s\n\n%s\n\n", new Object[] { aG(localbi), localObject1 });; localObject1 = null)
-            {
-              localStringBuilder.append((String)localObject1);
-              break;
-            }
-          }
-          if (localbi.ctA()) {
-            localObject1 = String.format("[%s]", new Object[] { this.context.getString(R.l.email_voice_prompt) });
-          }
-          for (;;)
-          {
-            y.i("MicroMsg.OtherMailHistoryExporter", "formatOtherMsg, msgStr = %s", new Object[] { localObject1 });
-            localStringBuilder.append(String.format("%s\n\n%s\n\n", new Object[] { aG(localbi), localObject1 }));
-            break;
-            if (localbi.cvj())
-            {
-              if (localbi.field_isSend == 1) {
-                localObject1 = this.context.getString(R.l.email_send_voip_prompt);
-              } else {
-                localObject1 = this.context.getString(R.l.email_receive_voip_prompt);
-              }
-            }
-            else if (localbi.aVM())
-            {
-              localObject1 = new jd();
-              ((jd)localObject1).bRx.bRs = 1;
-              ((jd)localObject1).bRx.bFH = localbi;
-              a.udP.m((com.tencent.mm.sdk.b.b)localObject1);
-              localObject1 = String.format("[%s]", new Object[] { ((jd)localObject1).bRy.bOn });
-            }
-            else
-            {
-              if (localbi.aVK())
-              {
-                localObject1 = g.a.gp(bk.ZQ(localbi.field_content));
-                if (localObject1 != null)
-                {
-                  switch (((g.a)localObject1).type)
-                  {
-                  }
-                  for (;;)
-                  {
-                    localObject2 = com.tencent.mm.pluginsdk.model.app.g.by(((g.a)localObject1).appId, true);
-                    if (localObject2 != null) {
-                      break label959;
-                    }
-                    localObject1 = "";
-                    break;
-                    localObject2 = ap.avh().VQ(((g.a)localObject1).bFE);
-                    if (localObject2 != null)
-                    {
-                      localObject2 = new File(((com.tencent.mm.pluginsdk.model.app.b)localObject2).field_fileFullPath);
-                      if (((File)localObject2).exists()) {
-                        this.vmE.add(Uri.fromFile((File)localObject2));
-                      }
-                    }
-                  }
-                  label959:
-                  localObject2 = ((f)localObject2).field_appName;
-                  if (6 == ((g.a)localObject1).type)
-                  {
-                    localObject1 = String.format("[%s: %s(%s)]", new Object[] { this.context.getString(R.l.email_appmsg_prompt), localObject2, this.context.getString(R.l.email_attach_tips) });
-                    continue;
-                  }
-                  localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.email_appmsg_prompt), localObject2 });
-                }
-              }
-              else
-              {
-                if (localbi.cvn())
-                {
-                  au.Hx();
-                  localObject1 = com.tencent.mm.model.c.Fy().HN(localbi.field_content).nickname;
-                  localObject1 = String.format("[%s: %s]", new Object[] { this.context.getString(R.l.email_card_prompt), localObject1 });
-                  continue;
-                }
-                if (localbi.aRQ())
-                {
-                  localObject1 = this.context.getString(R.l.email_video_prompt);
-                  o.Sr();
-                  localObject2 = String.format("[%s: %s(%s)]", new Object[] { localObject1, new File(t.nS(localbi.field_imgPath)).getName(), this.context.getString(R.l.email_attach_tips) });
-                  o.Sr();
-                  File localFile = new File(t.nS(localbi.field_imgPath));
-                  localObject1 = localObject2;
-                  if (!localFile.exists()) {
-                    continue;
-                  }
-                  this.vmE.add(Uri.fromFile(localFile));
-                  localObject1 = localObject2;
-                  continue;
-                }
-                if ((localbi.cvo()) || (localbi.cvp()))
-                {
-                  localObject1 = String.format("[%s]", new Object[] { this.context.getString(R.l.email_emoji_prompt) });
-                  continue;
-                  localStringBuilder.append("\n\n");
-                  this.kzt = localStringBuilder.toString();
-                  return this.kzt;
-                }
-              }
-              localObject1 = null;
-            }
-          }
-        }
-        else
-        {
-          localObject1 = null;
-        }
+      t.ii(paramContext);
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptVideoConnector: sd card is not available");
+      AppMethodBeat.o(31024);
+      return;
+    }
+    a(fe(z.afi().la(8)), paramContext, new al.6(parambi, paramContext));
+    AppMethodBeat.o(31024);
+  }
+  
+  public static void c(bi parambi, String paramString, Context paramContext)
+  {
+    AppMethodBeat.i(31030);
+    a(parambi, paramString, paramContext, 128);
+    AppMethodBeat.o(31030);
+  }
+  
+  public static void d(bi parambi, Context paramContext)
+  {
+    AppMethodBeat.i(31027);
+    if (paramContext == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptEmojiConnector: context is null");
+      AppMethodBeat.o(31027);
+      return;
+    }
+    if (parambi == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptEmojiConnector: msg is null");
+      AppMethodBeat.o(31027);
+      return;
+    }
+    aw.aaz();
+    if (!c.isSDCardAvailable())
+    {
+      t.ii(paramContext);
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptEmojiConnector: sd card is not available");
+      AppMethodBeat.o(31027);
+      return;
+    }
+    a(fe(z.afi().la(64)), paramContext, new al.9(parambi, paramContext));
+    AppMethodBeat.o(31027);
+  }
+  
+  private static List<String> fe(List<String> paramList)
+  {
+    AppMethodBeat.i(31032);
+    LinkedList localLinkedList = new LinkedList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      String str = (String)paramList.next();
+      if (!f.rV(str)) {
+        localLinkedList.add(str);
       }
     }
+    ab.d("MicroMsg.LongClickBrandServiceHelper", "get selected accept list, size %d", new Object[] { Integer.valueOf(localLinkedList.size()) });
+    AppMethodBeat.o(31032);
+    return localLinkedList;
+  }
+  
+  public static void n(String paramString, Context paramContext)
+  {
+    AppMethodBeat.i(31021);
+    if (paramContext == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptTextConnector: context is null");
+      AppMethodBeat.o(31021);
+      return;
+    }
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptTextConnector: content is null");
+      AppMethodBeat.o(31021);
+      return;
+    }
+    a(fe(z.afi().la(1)), paramContext, new al.1(paramString, paramContext));
+    AppMethodBeat.o(31021);
+  }
+  
+  public static void o(String paramString, Context paramContext)
+  {
+    AppMethodBeat.i(31025);
+    if (paramContext == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptLocationConnector: context is null");
+      AppMethodBeat.o(31025);
+      return;
+    }
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptLocationConnector: locationXML is null");
+      AppMethodBeat.o(31025);
+      return;
+    }
+    a(fe(z.afi().la(16)), paramContext, new al.7(paramString, paramContext));
+    AppMethodBeat.o(31025);
+  }
+  
+  public static void p(String paramString, Context paramContext)
+  {
+    AppMethodBeat.i(31026);
+    if (paramContext == null)
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptPersonalCardConnector: context is null");
+      AppMethodBeat.o(31026);
+      return;
+    }
+    if (bo.isNullOrNil(paramString))
+    {
+      ab.w("MicroMsg.LongClickBrandServiceHelper", "showAcceptPersonalCardConnector: locationXML is null");
+      AppMethodBeat.o(31026);
+      return;
+    }
+    a(fe(z.afi().la(32)), paramContext, new al.8(paramString, paramContext));
+    AppMethodBeat.o(31026);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.al
  * JD-Core Version:    0.7.0.1
  */

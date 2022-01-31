@@ -4,13 +4,13 @@ import android.widget.TextView;
 
 final class h$a
 {
-  TextView mTE;
+  TextView pvK;
   
   h$a(h paramh) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.h.a
  * JD-Core Version:    0.7.0.1
  */

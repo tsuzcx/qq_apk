@@ -1,31 +1,30 @@
 package com.tencent.mm.plugin.voip;
 
 import android.content.Context;
-import com.tencent.mm.h.a.tc;
-import com.tencent.mm.h.a.tc.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.r.a;
 
 public final class e
 {
-  public static boolean bPA()
+  public static boolean bN(Context paramContext)
   {
-    tc localtc = new tc();
-    com.tencent.mm.sdk.b.a.udP.m(localtc);
-    return localtc.ccF.ccI;
+    AppMethodBeat.i(156866);
+    boolean bool = a.bN(paramContext);
+    AppMethodBeat.o(156866);
+    return bool;
   }
   
-  public static boolean bj(Context paramContext)
+  public static boolean bO(Context paramContext)
   {
-    return com.tencent.mm.r.a.bj(paramContext);
-  }
-  
-  public static boolean bk(Context paramContext)
-  {
-    return com.tencent.mm.r.a.bk(paramContext);
+    AppMethodBeat.i(156867);
+    boolean bool = a.bO(paramContext);
+    AppMethodBeat.o(156867);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.e
  * JD-Core Version:    0.7.0.1
  */

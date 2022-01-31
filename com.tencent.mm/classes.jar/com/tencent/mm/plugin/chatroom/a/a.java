@@ -1,40 +1,53 @@
 package com.tencent.mm.plugin.chatroom.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a
 {
-  public final int eKX;
-  public final String iBe;
-  public final int iBf;
-  public final int iBg;
-  public final int iBh;
+  public final int gaE;
+  public final String kEm;
+  public final int kEn;
+  public final int kEo;
+  public final int kEp;
   
   public a(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.iBe = paramString;
-    this.iBf = paramInt1;
-    this.eKX = paramInt2;
-    this.iBg = paramInt3;
-    this.iBh = paramInt4;
+    this.kEm = paramString;
+    this.kEn = paramInt1;
+    this.gaE = paramInt2;
+    this.kEo = paramInt3;
+    this.kEp = paramInt4;
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (hashCode() == paramObject.hashCode()) {}
-    do
+    AppMethodBeat.i(128346);
+    if (hashCode() == paramObject.hashCode())
     {
+      AppMethodBeat.o(128346);
       return true;
-      if (!(paramObject instanceof a)) {
-        break;
-      }
+    }
+    if ((paramObject instanceof a))
+    {
       paramObject = (a)paramObject;
-    } while ((this.iBf == paramObject.iBf) && (this.eKX == paramObject.eKX) && (this.iBg == paramObject.iBg) && (this.iBh == paramObject.iBh) && (this.iBe.equals(paramObject.iBe)));
-    return false;
+      if ((this.kEn == paramObject.kEn) && (this.gaE == paramObject.gaE) && (this.kEo == paramObject.kEo) && (this.kEp == paramObject.kEp) && (this.kEm.equals(paramObject.kEm)))
+      {
+        AppMethodBeat.o(128346);
+        return true;
+      }
+      AppMethodBeat.o(128346);
+      return false;
+    }
+    AppMethodBeat.o(128346);
     return false;
   }
   
   public final String toString()
   {
-    return "GetChatRoomMsgInfo chatroomId[" + this.iBe + "], filterSeq[" + this.iBf + "], msgSeq[" + this.eKX + "], needCount[" + this.iBg + "], upDownFlag[" + this.iBh + "], hash[" + hashCode() + "]";
+    AppMethodBeat.i(128347);
+    String str = "GetChatRoomMsgInfo chatroomId[" + this.kEm + "], filterSeq[" + this.kEn + "], msgSeq[" + this.gaE + "], needCount[" + this.kEo + "], upDownFlag[" + this.kEp + "], hash[" + hashCode() + "]";
+    AppMethodBeat.o(128347);
+    return str;
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.wallet.bind.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletBankcardDetailUI$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletBankcardDetailUI$2
   
   public final void onClick(View paramView)
   {
-    this.qjV.showDialog(0);
+    AppMethodBeat.i(45741);
+    this.tSV.showDialog(0);
+    AppMethodBeat.o(45741);
   }
 }
 

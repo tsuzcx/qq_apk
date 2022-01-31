@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.fav.ui.widget;
 
 public abstract interface b$a
 {
-  public abstract void aRe();
+  public abstract void bxJ();
   
-  public abstract void aRu();
+  public abstract void bxK();
   
-  public abstract void aRv();
+  public abstract void bxs();
 }
 
 

@@ -5,94 +5,105 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.az.a;
 import com.tencent.mm.ui.base.WxImageView;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 final class f$6
-  implements av.a
+  implements az.a
 {
-  private Bitmap kJz = null;
-  private boolean vvx = false;
+  private Bitmap nfX = null;
+  private boolean zLy = false;
   
   f$6(f paramf, String paramString, int paramInt) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
-    if ((f.b(this.vvu) == null) || (TextUtils.isEmpty(this.gAy))) {
+    AppMethodBeat.i(32142);
+    if ((f.b(this.zLv) == null) || (TextUtils.isEmpty(this.hXK)))
+    {
+      AppMethodBeat.o(32142);
       return false;
     }
     try
     {
-      if (f.e(this.vvu).containsKey(this.gAy))
+      if (f.e(this.zLv).containsKey(this.hXK))
       {
-        int i = ((Integer)f.e(this.vvu).get(this.gAy)).intValue();
-        Object localObject = (WeakReference)f.i(this.vvu).get(i);
+        int i = ((Integer)f.e(this.zLv).get(this.hXK)).intValue();
+        Object localObject = (WeakReference)f.i(this.zLv).get(i);
         if (localObject != null)
         {
           localObject = (View)((WeakReference)localObject).get();
           if ((localObject != null) && ((localObject instanceof WxImageView)))
           {
-            String str = (String)f.j(this.vvu).get(i);
-            this.vvx = true;
-            f.c(this.vvu).post(new f.6.1(this, (View)localObject, str));
+            String str = (String)f.j(this.zLv).get(i);
+            this.zLy = true;
+            f.c(this.zLv).post(new f.6.1(this, (View)localObject, str));
+            AppMethodBeat.o(32142);
             return true;
           }
         }
       }
-      this.kJz = f.b(this.vvu).loadImage(this.gAy);
+      this.nfX = f.b(this.zLv).loadImage(this.hXK);
+      AppMethodBeat.o(32142);
       return true;
     }
     catch (Exception localException)
     {
-      y.w("MicroMsg.ImageGalleryLazyLoader", "try to load Bmp fail: %s", new Object[] { localException.getMessage() });
-      this.kJz = null;
+      ab.w("MicroMsg.ImageGalleryLazyLoader", "try to load Bmp fail: %s", new Object[] { localException.getMessage() });
+      this.nfX = null;
+      AppMethodBeat.o(32142);
     }
     return false;
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
-    f.d(this.vvu);
-    if (!this.vvx) {
-      if (f.e(this.vvu).containsKey(this.gAy))
+    AppMethodBeat.i(32141);
+    f.d(this.zLv);
+    if (!this.zLy) {
+      if (f.e(this.zLv).containsKey(this.hXK))
       {
-        i = ((Integer)f.e(this.vvu).get(this.gAy)).intValue();
-        if (f.f(this.vvu)) {
-          break label158;
+        i = ((Integer)f.e(this.zLv).get(this.hXK)).intValue();
+        if (f.f(this.zLv)) {
+          break label170;
         }
-        f.g(this.vvu).put(i, this.kJz);
+        f.g(this.zLv).put(i, this.nfX);
       }
     }
-    Bitmap localBitmap;
+    Object localObject;
     int j;
     for (;;)
     {
-      this.vvu.s(this.gAy, this.kJz);
-      this.vvu.b(this.gHv, this.kJz);
-      localBitmap = this.kJz;
-      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      this.zLv.u(this.hXK, this.nfX);
+      this.zLv.c(this.zLz, this.nfX);
+      localObject = this.nfX;
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
         break;
       }
       j = 0;
-      y.i("MicroMsg.ImageGalleryLazyLoader", "bmp size : %s", new Object[] { Integer.valueOf(j) });
-      this.kJz = null;
-      f.h(this.vvu);
+      ab.i("MicroMsg.ImageGalleryLazyLoader", "bmp size : %s", new Object[] { Integer.valueOf(j) });
+      this.nfX = null;
+      f.h(this.zLv);
+      AppMethodBeat.o(32141);
       return false;
-      label158:
-      f.a(this.vvu, i, this.kJz);
+      label170:
+      f.a(this.zLv, i, this.nfX);
     }
     if (Build.VERSION.SDK_INT >= 12) {}
-    for (int i = localBitmap.getByteCount();; i = localBitmap.getRowBytes() * localBitmap.getHeight())
+    for (int i = ((Bitmap)localObject).getByteCount();; i = ((Bitmap)localObject).getRowBytes() * ((Bitmap)localObject).getHeight())
     {
       j = i;
       if (i >= 0) {
         break;
       }
-      throw new IllegalStateException("Negative size: " + localBitmap);
+      localObject = new IllegalStateException("Negative size: ".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(32141);
+      throw ((Throwable)localObject);
     }
   }
 }

@@ -1,12 +1,10 @@
 package com.tencent.mm.plugin.game.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.plugin.game.model.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.ui.base.h;
 
 final class GameRegionSelectUI$2
@@ -16,50 +14,32 @@ final class GameRegionSelectUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (f.dx(this.leE))
+    AppMethodBeat.i(112160);
+    if (e.ek(this.nCz))
     {
-      h.a(this.leE, true, this.leE.getString(g.i.game_region_dlg_info), "", this.leE.getString(g.i.game_region_dlg_switch), this.leE.getString(g.i.game_region_dlg_cancel), new DialogInterface.OnClickListener()new GameRegionSelectUI.2.2
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          f.dy(GameRegionSelectUI.2.this.leE);
-          GameRegionSelectUI.a(GameRegionSelectUI.2.this.leE);
-          paramAnonymousDialogInterface = new Intent();
-          GameRegionPreference.a locala = f.jdMethod_do(GameRegionSelectUI.2.this.leE);
-          if (locala != null)
-          {
-            paramAnonymousDialogInterface.putExtra("gameRegionName", f.a(locala));
-            GameRegionSelectUI.2.this.leE.setResult(-1, paramAnonymousDialogInterface);
-          }
-          for (;;)
-          {
-            GameRegionSelectUI.2.this.leE.finish();
-            return;
-            GameRegionSelectUI.2.this.leE.setResult(1);
-          }
-        }
-      }, new GameRegionSelectUI.2.2(this));
+      h.a(this.nCz, true, this.nCz.getString(2131300447), "", this.nCz.getString(2131300448), this.nCz.getString(2131300446), new GameRegionSelectUI.2.1(this), new GameRegionSelectUI.2.2(this));
+      AppMethodBeat.o(112160);
       return true;
     }
-    GameRegionSelectUI.a(this.leE);
+    GameRegionSelectUI.a(this.nCz);
     paramMenuItem = new Intent();
-    GameRegionPreference.a locala = f.jdMethod_do(this.leE);
+    GameRegionPreference.a locala = e.eb(this.nCz);
     if (locala != null)
     {
-      paramMenuItem.putExtra("gameRegionName", f.a(locala));
-      this.leE.setResult(-1, paramMenuItem);
+      paramMenuItem.putExtra("gameRegionName", e.a(locala));
+      this.nCz.setResult(-1, paramMenuItem);
     }
     for (;;)
     {
-      this.leE.finish();
-      return true;
-      this.leE.setResult(1);
+      this.nCz.finish();
+      break;
+      this.nCz.setResult(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRegionSelectUI.2
  * JD-Core Version:    0.7.0.1
  */

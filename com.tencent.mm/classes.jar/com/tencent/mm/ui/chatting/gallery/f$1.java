@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import com.tencent.mm.a.f.b;
 
 final class f$1
-  implements f.b<Integer, Bitmap>
+  implements f.b<String, Bitmap>
 {
   f$1(f paramf) {}
 }

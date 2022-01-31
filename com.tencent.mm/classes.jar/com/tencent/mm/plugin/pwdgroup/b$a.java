@@ -2,20 +2,23 @@ package com.tencent.mm.plugin.pwdgroup;
 
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.i.a;
 
 public final class b$a
 {
-  static i.a nav;
+  static i.a pFL;
   
-  public static void a(ImageView paramImageView, String paramString)
+  public static void c(ImageView paramImageView, String paramString)
   {
+    AppMethodBeat.i(23974);
     Object localObject = paramImageView.getDrawable();
     if ((localObject != null) && ((localObject instanceof b))) {}
     for (localObject = (b)localObject;; localObject = new b(paramString, (byte)0))
     {
-      ((b)localObject).Wt(paramString);
+      ((b)localObject).setTag(paramString);
       paramImageView.setImageDrawable((Drawable)localObject);
+      AppMethodBeat.o(23974);
       return;
     }
   }

@@ -2,119 +2,104 @@ package com.tencent.mm.view.a;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.e;
-import com.tencent.mm.ipcinvoker.h.b;
-import com.tencent.mm.plugin.l.a.e;
-import com.tencent.mm.plugin.l.a.f;
-import com.tencent.mm.plugin.l.a.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.emotion.u;
-import com.tencent.mm.ui.y;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.view.f.a;
 
 public final class f
-  extends a
+  extends d
 {
-  private List<u> wwV;
+  public int ASa = 1;
+  private ImageView ASb;
+  private ImageView ASc;
   
-  public f(Context paramContext, com.tencent.mm.view.f.a parama)
+  public f(Context paramContext, a parama)
   {
     super(paramContext, parama);
   }
   
-  private int IO(int paramInt)
+  public final boolean RJ(int paramInt)
   {
-    int i = paramInt;
-    if (this.wwV != null)
+    return (this.ASa == 0) && (paramInt == this.nAh * this.ARP - 5);
+  }
+  
+  public final void bD(float paramFloat)
+  {
+    AppMethodBeat.i(62989);
+    if ((paramFloat >= 0.0F) && (paramFloat <= 1.0F))
     {
-      i = paramInt;
-      if (paramInt >= 0)
+      if (this.ASb != null)
       {
-        i = paramInt;
-        if (paramInt < this.wwV.size()) {
-          i = ((u)this.wwV.get(paramInt)).position;
+        if (paramFloat > 0.01F) {
+          break label67;
+        }
+        this.ASb.setVisibility(4);
+      }
+      while (this.ASc != null) {
+        if (paramFloat >= 0.99F)
+        {
+          this.ASc.setVisibility(4);
+          AppMethodBeat.o(62989);
+          return;
+          label67:
+          this.ASb.setVisibility(0);
+          this.ASb.setImageAlpha((int)(255.0F * paramFloat));
+        }
+        else
+        {
+          this.ASc.setVisibility(0);
+          this.ASc.setImageAlpha((int)((1.0F - paramFloat) * 255.0F));
         }
       }
     }
-    return i;
-  }
-  
-  public final int getCount()
-  {
-    int i;
-    if (this.wwV == null) {
-      i = 0;
-    }
-    int j;
-    do
-    {
-      return i;
-      j = this.wwN * this.lcm;
-      i = j;
-    } while (j <= this.wwV.size());
-    return this.wwV.size();
-  }
-  
-  public final Object getItem(int paramInt)
-  {
-    com.tencent.mm.u.a.a locala = new com.tencent.mm.u.a.a();
-    locala.position = IO(paramInt);
-    return locala;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return paramInt;
+    AppMethodBeat.o(62989);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if ((paramView == null) || (paramView.getTag() == null))
+    AppMethodBeat.i(62988);
+    if (paramInt == this.nAh * this.ARP - 5)
     {
-      paramView = y.gt(this.mContext).inflate(a.f.smiley_grid_item_s, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      paramViewGroup = new a(paramView);
-      paramView.setTag(paramViewGroup);
+      paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970759, null);
+      paramViewGroup.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      this.ASb = ((ImageView)paramViewGroup.findViewById(2131827800));
+      this.ASc = ((ImageView)paramViewGroup.findViewById(2131827799));
+      paramInt = RI(paramInt);
+      paramView = e.dve().qA(paramInt);
+      this.ASb.setImageDrawable(paramView);
+      String str = e.dve().getText(paramInt);
+      paramView = str;
+      if (bo.isNullOrNil(str)) {
+        paramView = paramViewGroup.getResources().getString(2131299253);
+      }
+      this.ASb.setContentDescription(paramView);
+      this.ASc.setImageResource(2130838499);
+      this.ASc.setContentDescription(this.mContext.getString(2131298947));
+      bD(this.ASa);
     }
-    for (;;)
+    for (paramView = paramViewGroup;; paramView = super.getView(paramInt, paramView, paramViewGroup))
     {
-      paramInt = IO(paramInt);
-      Drawable localDrawable = e.csH().mW(paramInt);
-      paramViewGroup.gSx.setImageDrawable(localDrawable);
-      String str2 = e.csH().getText(paramInt);
-      String str1 = str2;
-      if (bk.bl(str2)) {
-        str1 = paramView.getResources().getString(a.h.emoji_store_title);
-      }
-      paramViewGroup.gSx.setContentDescription(str1);
-      if (localDrawable == null) {
-        b.i("RecentSmileyAdapter", "drawable is null. realPosition:%d description:%s", new Object[] { Integer.valueOf(paramInt), str1 });
-      }
+      AppMethodBeat.o(62988);
       return paramView;
-      paramViewGroup = (a)paramView.getTag();
     }
   }
   
-  public final void update()
+  public final boolean uu(int paramInt)
   {
-    this.wwV = this.wvS.wzT;
-    notifyDataSetChanged();
-  }
-  
-  final class a
-  {
-    ImageView gSx;
-    
-    public a(View paramView)
+    AppMethodBeat.i(62987);
+    if ((super.uu(paramInt)) && (!RJ(paramInt)))
     {
-      this.gSx = ((ImageView)paramView.findViewById(a.e.art_emoji_icon_iv));
+      AppMethodBeat.o(62987);
+      return true;
     }
+    AppMethodBeat.o(62987);
+    return false;
   }
 }
 

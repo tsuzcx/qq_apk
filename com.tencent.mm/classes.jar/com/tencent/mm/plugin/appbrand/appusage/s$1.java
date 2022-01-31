@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.protocal.c.cmc;
+import com.tencent.mm.protocal.protobuf.czt;
 
 final class s$1
-  implements s.b<cmc>
+  implements s.b<czt>
 {}
 
 

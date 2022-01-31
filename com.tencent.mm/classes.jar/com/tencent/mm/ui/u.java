@@ -1,30 +1,31 @@
 package com.tencent.mm.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class u
-  implements View.OnClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  private long oiC = -1L;
+  private long qWP = -1L;
   
-  public abstract void aEI();
+  public abstract void Ki();
   
-  public void onClick(View paramView)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.i("MicroMsg.MMCustomClickListener", "button onclick");
-    if (this.oiC != -1L)
+    ab.i("MicroMsg.MMCustomMenuItemClickListener", "button onclick");
+    if (this.qWP != -1L)
     {
-      long l = (System.nanoTime() - this.oiC) / 1000000L;
-      if (l < 3000L)
+      long l = (System.nanoTime() - this.qWP) / 1000000L;
+      if (l < 500L)
       {
-        y.i("MicroMsg.MMCustomClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(3000L) });
-        return;
+        ab.i("MicroMsg.MMCustomMenuItemClickListener", "click time limited limitetime:%d, delaytime:%d", new Object[] { Long.valueOf(l), Long.valueOf(500L) });
+        return false;
       }
     }
-    this.oiC = System.nanoTime();
-    aEI();
+    this.qWP = System.nanoTime();
+    Ki();
+    return false;
   }
 }
 

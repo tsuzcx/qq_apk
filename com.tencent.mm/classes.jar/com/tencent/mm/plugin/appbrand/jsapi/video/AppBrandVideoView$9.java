@@ -1,48 +1,51 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.danmu.DanmuView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class AppBrandVideoView$9
-  implements c.f
+  implements d.f
 {
   AppBrandVideoView$9(AppBrandVideoView paramAppBrandVideoView) {}
   
-  public final void du(boolean paramBoolean)
+  public final void ez(boolean paramBoolean)
   {
+    AppMethodBeat.i(126451);
     if (paramBoolean) {
-      if (AppBrandVideoView.b(this.gDS).isPlaying()) {
-        AppBrandVideoView.c(this.gDS).show();
+      if (AppBrandVideoView.b(this.icX).isPlaying()) {
+        AppBrandVideoView.c(this.icX).show();
       }
     }
     for (;;)
     {
-      j localj;
-      int i;
-      if (AppBrandVideoView.d(this.gDS) != null)
-      {
-        localj = AppBrandVideoView.d(this.gDS);
-        i = AppBrandVideoView.e(this.gDS);
+      if (AppBrandVideoView.d(this.icX) == null) {
+        break label164;
       }
+      k localk = AppBrandVideoView.d(this.icX);
+      int i = AppBrandVideoView.e(this.icX);
       try
       {
-        y.i("MicroMsg.JsApiVideoCallback", "onVideoClickDanmuBtn showDanmu=%b", new Object[] { Boolean.valueOf(paramBoolean) });
-        JSONObject localJSONObject = localj.akU();
+        ab.i("MicroMsg.JsApiVideoCallback", "onVideoClickDanmuBtn showDanmu=%b", new Object[] { Boolean.valueOf(paramBoolean) });
+        JSONObject localJSONObject = localk.aFD();
         localJSONObject.put("showDanmu", paramBoolean);
         localJSONObject.put("videoPlayerId", i);
-        localj.a(new j.b((byte)0), localJSONObject);
+        localk.a(new k.b((byte)0), localJSONObject);
+        AppMethodBeat.o(126451);
         return;
       }
       catch (JSONException localJSONException)
       {
-        y.e("MicroMsg.JsApiVideoCallback", "onVideoClickDanmuBtn e=%s", new Object[] { localJSONException });
+        ab.e("MicroMsg.JsApiVideoCallback", "onVideoClickDanmuBtn e=%s", new Object[] { localJSONException });
       }
-      AppBrandVideoView.c(this.gDS).pause();
+      AppBrandVideoView.c(this.icX).pause();
       continue;
-      AppBrandVideoView.c(this.gDS).hide();
+      AppBrandVideoView.c(this.icX).hide();
     }
+    label164:
+    AppMethodBeat.o(126451);
   }
 }
 

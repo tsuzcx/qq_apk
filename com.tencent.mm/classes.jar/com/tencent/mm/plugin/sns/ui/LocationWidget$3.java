@@ -1,31 +1,39 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelgeo.Addr;
-import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.modelgeo.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class LocationWidget$3
-  implements b.a
+  implements c.a
 {
   LocationWidget$3(LocationWidget paramLocationWidget) {}
   
   public final void b(Addr paramAddr)
   {
-    y.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAddr.toString() });
-    if (!LocationWidget.e(this.oQA)) {}
-    do
+    AppMethodBeat.i(38287);
+    ab.i("MicroMsg.LocationWidget", "get info %s", new Object[] { paramAddr.toString() });
+    if (!LocationWidget.e(this.rIm))
     {
+      AppMethodBeat.o(38287);
       return;
-      LocationWidget.f(this.oQA);
-    } while (!bk.bl(LocationWidget.g(this.oQA)));
-    LocationWidget.a(this.oQA, paramAddr.elb);
-    LocationWidget.f(this.oQA);
+    }
+    LocationWidget.f(this.rIm);
+    if (!bo.isNullOrNil(LocationWidget.g(this.rIm)))
+    {
+      AppMethodBeat.o(38287);
+      return;
+    }
+    LocationWidget.a(this.rIm, paramAddr.fBs);
+    LocationWidget.f(this.rIm);
+    AppMethodBeat.o(38287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.LocationWidget.3
  * JD-Core Version:    0.7.0.1
  */

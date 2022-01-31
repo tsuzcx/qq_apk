@@ -4,11 +4,11 @@ import android.app.Activity;
 
 final class ActivityStubs
 {
-  static final String wXF = ActivityStubs.class.getPackage().getName();
-  static final String wXG = wXF + "." + ActivityStubs.class.getSimpleName() + "$STDStub_%02X";
-  static final String wXH = wXF + "." + ActivityStubs.class.getSimpleName() + "$SGTStub_%02X";
-  static final String wXI = wXF + "." + ActivityStubs.class.getSimpleName() + "$SGTKStub_%02X";
-  static final String wXJ = wXF + "." + ActivityStubs.class.getSimpleName() + "$SIStub_%02X";
+  static final String Buj = ActivityStubs.class.getPackage().getName();
+  static final String Buk = Buj + "." + ActivityStubs.class.getSimpleName() + "$STDStub_%02X";
+  static final String Bul = Buj + "." + ActivityStubs.class.getSimpleName() + "$SGTStub_%02X";
+  static final String Bum = Buj + "." + ActivityStubs.class.getSimpleName() + "$SGTKStub_%02X";
+  static final String Bun = Buj + "." + ActivityStubs.class.getSimpleName() + "$SIStub_%02X";
   
   private ActivityStubs()
   {

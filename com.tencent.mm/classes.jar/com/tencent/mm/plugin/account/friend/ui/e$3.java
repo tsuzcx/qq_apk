@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class e$3
   implements c.a
 {
   e$3(e parame) {}
   
-  public final void cv(boolean paramBoolean)
+  public final void dy(boolean paramBoolean)
   {
+    AppMethodBeat.i(108592);
     if (paramBoolean) {
-      this.fie.notifyDataSetChanged();
+      this.gzL.notifyDataSetChanged();
     }
+    AppMethodBeat.o(108592);
   }
 }
 

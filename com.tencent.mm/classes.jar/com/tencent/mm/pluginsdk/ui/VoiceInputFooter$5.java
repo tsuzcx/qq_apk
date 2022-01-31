@@ -2,7 +2,8 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.view.KeyEvent;
 import android.view.inputmethod.InputConnection;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class VoiceInputFooter$5
@@ -10,28 +11,33 @@ final class VoiceInputFooter$5
 {
   VoiceInputFooter$5(VoiceInputFooter paramVoiceInputFooter) {}
   
+  public final void aRo()
+  {
+    AppMethodBeat.i(27557);
+    VoiceInputFooter.e(this.vSl).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
+    VoiceInputFooter.e(this.vSl).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
+    AppMethodBeat.o(27557);
+  }
+  
   public final void append(String paramString)
   {
+    AppMethodBeat.i(27558);
     try
     {
-      VoiceInputFooter.e(this.sbe).aex(paramString);
+      VoiceInputFooter.e(this.vSl).avk(paramString);
+      AppMethodBeat.o(27558);
       return;
     }
     catch (Exception paramString)
     {
-      y.printErrStackTrace("MicroMsg.VoiceInputFooter", paramString, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.VoiceInputFooter", paramString, "", new Object[0]);
+      AppMethodBeat.o(27558);
     }
   }
   
-  public final void asj()
-  {
-    VoiceInputFooter.e(this.sbe).getInputConnection().sendKeyEvent(new KeyEvent(0, 67));
-    VoiceInputFooter.e(this.sbe).getInputConnection().sendKeyEvent(new KeyEvent(1, 67));
-  }
+  public final void bag() {}
   
-  public final void bgv() {}
-  
-  public final void hp(boolean paramBoolean) {}
+  public final void fT(boolean paramBoolean) {}
 }
 
 

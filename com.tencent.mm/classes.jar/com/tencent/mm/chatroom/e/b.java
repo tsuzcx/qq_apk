@@ -1,27 +1,31 @@
 package com.tencent.mm.chatroom.e;
 
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.protocal.c.axb;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
+import com.tencent.mm.protocal.protobuf.bdr;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.sdk.platformtools.bo;
 
 @Deprecated
 public final class b
-  extends i.b
+  extends j.b
 {
-  private axb dnj = new axb();
+  private bdr eeK;
   
   public b(String paramString, int paramInt)
   {
     super(20);
-    this.dnj.svp = new bml().YI(bk.pm(paramString));
-    this.dnj.hQq = paramInt;
-    this.mdD = this.dnj;
+    AppMethodBeat.i(103958);
+    this.eeK = new bdr();
+    this.eeK.wow = new bwc().aoF(bo.nullAsNil(paramString));
+    this.eeK.jJS = paramInt;
+    this.oDZ = this.eeK;
+    AppMethodBeat.o(103958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.chatroom.e.b
  * JD-Core Version:    0.7.0.1
  */

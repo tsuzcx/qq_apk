@@ -1,172 +1,340 @@
 package com.tencent.mm.plugin.wepkg.model;
 
+import android.os.Bundle;
+import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.e;
+import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 public class b
 {
-  private static b rOX = null;
+  private static b vFM = null;
+  
+  private long U(File paramFile)
+  {
+    long l2 = 0L;
+    AppMethodBeat.i(63511);
+    if (paramFile == null)
+    {
+      AppMethodBeat.o(63511);
+      return 0L;
+    }
+    l3 = l2;
+    try
+    {
+      if (!paramFile.isDirectory()) {
+        break label109;
+      }
+      l3 = l2;
+      paramFile = paramFile.listFiles();
+      l3 = l2;
+      j = paramFile.length;
+      i = 0;
+    }
+    catch (Exception paramFile)
+    {
+      for (;;)
+      {
+        int j;
+        int i;
+        File localFile;
+        label109:
+        long l1 = l3;
+        continue;
+        i += 1;
+      }
+    }
+    l1 = l2;
+    if (i < j)
+    {
+      localFile = paramFile[i];
+      l3 = l2;
+      if (localFile.isFile())
+      {
+        l3 = l2;
+        l2 += localFile.length();
+        break label156;
+      }
+      l3 = l2;
+      l2 += U(localFile);
+      break label156;
+      l1 = l2;
+      l3 = l2;
+      if (paramFile.isFile())
+      {
+        l3 = l2;
+        l1 = paramFile.length();
+        l1 = 0L + l1;
+      }
+    }
+    AppMethodBeat.o(63511);
+    return l1;
+  }
+  
+  private static boolean aky(String paramString)
+  {
+    AppMethodBeat.i(63512);
+    try
+    {
+      ab.i("MicroMsg.Wepkg.CleanWepkgMgr", "Safe delete dir: %s", new Object[] { paramString });
+      paramString = new File(paramString);
+      Object localObject = paramString.getName() + "_temp";
+      localObject = new File(paramString.getParent(), (String)localObject);
+      if (paramString.renameTo((File)localObject))
+      {
+        e.o((File)localObject);
+        AppMethodBeat.o(63512);
+        return true;
+      }
+    }
+    catch (Exception paramString)
+    {
+      ab.i("MicroMsg.Wepkg.CleanWepkgMgr", "safeDeleteDir err:" + paramString.getMessage());
+      AppMethodBeat.o(63512);
+    }
+    return false;
+  }
   
   /* Error */
-  public static b cjX()
+  public static b dkA()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 12	com/tencent/mm/plugin/wepkg/model/b:rOX	Lcom/tencent/mm/plugin/wepkg/model/b;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 12	com/tencent/mm/plugin/wepkg/model/b:rOX	Lcom/tencent/mm/plugin/wepkg/model/b;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	com/tencent/mm/plugin/wepkg/model/b
-    //   21: dup
-    //   22: invokespecial 47	com/tencent/mm/plugin/wepkg/model/b:<init>	()V
-    //   25: putstatic 12	com/tencent/mm/plugin/wepkg/model/b:rOX	Lcom/tencent/mm/plugin/wepkg/model/b;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 12	com/tencent/mm/plugin/wepkg/model/b:rOX	Lcom/tencent/mm/plugin/wepkg/model/b;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
+    //   3: ldc 111
+    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: getstatic 15	com/tencent/mm/plugin/wepkg/model/b:vFM	Lcom/tencent/mm/plugin/wepkg/model/b;
+    //   11: ifnonnull +25 -> 36
+    //   14: ldc 2
+    //   16: monitorenter
+    //   17: getstatic 15	com/tencent/mm/plugin/wepkg/model/b:vFM	Lcom/tencent/mm/plugin/wepkg/model/b;
+    //   20: ifnonnull +13 -> 33
+    //   23: new 2	com/tencent/mm/plugin/wepkg/model/b
+    //   26: dup
+    //   27: invokespecial 112	com/tencent/mm/plugin/wepkg/model/b:<init>	()V
+    //   30: putstatic 15	com/tencent/mm/plugin/wepkg/model/b:vFM	Lcom/tencent/mm/plugin/wepkg/model/b;
+    //   33: ldc 2
+    //   35: monitorexit
+    //   36: getstatic 15	com/tencent/mm/plugin/wepkg/model/b:vFM	Lcom/tencent/mm/plugin/wepkg/model/b;
+    //   39: astore_0
+    //   40: ldc 111
+    //   42: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc 2
+    //   47: monitorexit
+    //   48: aload_0
+    //   49: areturn
+    //   50: astore_0
+    //   51: ldc 2
+    //   53: monitorexit
+    //   54: ldc 111
+    //   56: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   59: aload_0
+    //   60: athrow
+    //   61: astore_0
+    //   62: ldc 2
+    //   64: monitorexit
+    //   65: aload_0
+    //   66: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   34	5	0	localb	b
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
+    //   39	10	0	localb	b
+    //   50	10	0	localObject1	Object
+    //   61	5	0	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
+    //   17	33	50	finally
+    //   33	36	50	finally
+    //   51	54	50	finally
+    //   3	17	61	finally
+    //   36	45	61	finally
+    //   54	61	61	finally
   }
   
-  /* Error */
-  public final void cjY()
+  public static void ef(String paramString, int paramInt)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: invokestatic 54	com/tencent/mm/sdk/platformtools/ae:getContext	()Landroid/content/Context;
-    //   7: ldc 56
-    //   9: iconst_0
-    //   10: invokevirtual 62	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   13: astore 5
-    //   15: aload 5
-    //   17: ldc 64
-    //   19: lconst_0
-    //   20: invokeinterface 70 4 0
-    //   25: lstore_2
-    //   26: invokestatic 76	java/lang/System:currentTimeMillis	()J
-    //   29: lload_2
-    //   30: lsub
-    //   31: ldc2_w 77
-    //   34: lcmp
-    //   35: ifle +139 -> 174
-    //   38: iconst_1
-    //   39: istore 4
-    //   41: ldc 80
-    //   43: ldc 82
-    //   45: iconst_1
-    //   46: anewarray 4	java/lang/Object
-    //   49: dup
-    //   50: iconst_0
-    //   51: iload 4
-    //   53: invokestatic 88	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   56: aastore
-    //   57: invokestatic 94	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   60: iload 4
-    //   62: ifeq +39 -> 101
-    //   65: aload 5
-    //   67: invokeinterface 98 1 0
-    //   72: ldc 64
-    //   74: invokestatic 76	java/lang/System:currentTimeMillis	()J
-    //   77: invokeinterface 104 4 0
-    //   82: invokeinterface 108 1 0
-    //   87: pop
-    //   88: new 110	com/tencent/mm/plugin/wepkg/model/b$1
-    //   91: dup
-    //   92: aload_0
-    //   93: invokespecial 113	com/tencent/mm/plugin/wepkg/model/b$1:<init>	(Lcom/tencent/mm/plugin/wepkg/model/b;)V
-    //   96: ldc 115
-    //   98: invokestatic 121	com/tencent/mm/sdk/f/e:post	(Ljava/lang/Runnable;Ljava/lang/String;)V
-    //   101: aload 5
-    //   103: ldc 123
-    //   105: lconst_0
-    //   106: invokeinterface 70 4 0
-    //   111: lstore_2
-    //   112: invokestatic 76	java/lang/System:currentTimeMillis	()J
-    //   115: lload_2
-    //   116: lsub
-    //   117: ldc2_w 124
-    //   120: lcmp
-    //   121: ifle +59 -> 180
-    //   124: iload_1
-    //   125: ifeq +46 -> 171
-    //   128: ldc 80
-    //   130: ldc 127
-    //   132: invokestatic 129	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: aload 5
-    //   137: invokeinterface 98 1 0
-    //   142: ldc 123
-    //   144: invokestatic 76	java/lang/System:currentTimeMillis	()J
-    //   147: invokeinterface 104 4 0
-    //   152: invokeinterface 108 1 0
-    //   157: pop
-    //   158: new 131	com/tencent/mm/plugin/wepkg/model/b$2
-    //   161: dup
-    //   162: aload_0
-    //   163: invokespecial 132	com/tencent/mm/plugin/wepkg/model/b$2:<init>	(Lcom/tencent/mm/plugin/wepkg/model/b;)V
-    //   166: ldc 134
-    //   168: invokestatic 121	com/tencent/mm/sdk/f/e:post	(Ljava/lang/Runnable;Ljava/lang/String;)V
-    //   171: aload_0
-    //   172: monitorexit
-    //   173: return
-    //   174: iconst_0
-    //   175: istore 4
-    //   177: goto -136 -> 41
-    //   180: iconst_0
-    //   181: istore_1
-    //   182: goto -58 -> 124
-    //   185: astore 5
-    //   187: aload_0
-    //   188: monitorexit
-    //   189: aload 5
-    //   191: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	192	0	this	b
-    //   1	181	1	i	int
-    //   25	91	2	l	long
-    //   39	137	4	bool	boolean
-    //   13	123	5	localSharedPreferences	android.content.SharedPreferences
-    //   185	5	5	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	38	185	finally
-    //   41	60	185	finally
-    //   65	101	185	finally
-    //   101	124	185	finally
-    //   128	171	185	finally
+    AppMethodBeat.i(63509);
+    if (ah.brt())
+    {
+      eg(paramString, paramInt);
+      AppMethodBeat.o(63509);
+      return;
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ab.i("MicroMsg.Wepkg.CleanWepkgMgr", "removeWepkgSync fail. can not process on Main thread");
+      AppMethodBeat.o(63509);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ipc_param_pkgid", paramString);
+    localBundle.putInt("ipc_param_type", paramInt);
+    com.tencent.mm.ipcinvoker.f.a("com.tencent.mm", localBundle, b.class);
+    AppMethodBeat.o(63509);
   }
+  
+  private static void eg(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(63510);
+    if (!ah.brt())
+    {
+      ab.i("MicroMsg.Wepkg.CleanWepkgMgr", "removeWepkgInMMSync fail. only run on mm process");
+      AppMethodBeat.o(63510);
+      return;
+    }
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      ab.i("MicroMsg.Wepkg.CleanWepkgMgr", "removeWepkgInMMSync fail. can not process on Main thread");
+      AppMethodBeat.o(63510);
+      return;
+    }
+    ab.i("MicroMsg.Wepkg.CleanWepkgMgr", "removeWepkgInMMSync, pkgid:[%s], type:%d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(63510);
+      return;
+      com.tencent.mm.plugin.wepkg.b.f.dkq().dku();
+      aky(c.vFO);
+      AppMethodBeat.o(63510);
+      return;
+      if (bo.isNullOrNil(paramString))
+      {
+        AppMethodBeat.o(63510);
+        return;
+      }
+      aky(c.akz(paramString));
+      com.tencent.mm.plugin.wepkg.b.f.dkq().akn(paramString);
+      com.tencent.mm.plugin.wepkg.b.d.dkp().akn(paramString);
+      AppMethodBeat.o(63510);
+      return;
+      if (bo.isNullOrNil(paramString))
+      {
+        AppMethodBeat.o(63510);
+        return;
+      }
+      String str = c.akz(paramString);
+      Object localObject1 = (Bundle)com.tencent.mm.ipcinvoker.f.a("com.tencent.mm:tools", new IPCString(paramString), b.a.class);
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(63510);
+        return;
+      }
+      localObject1 = ((Bundle)localObject1).getString("used_wepkg_version");
+      Object localObject2 = new ArrayList();
+      if (!bo.isNullOrNil((String)localObject1)) {
+        ((List)localObject2).add(localObject1);
+      }
+      u(str, (List)localObject2);
+      com.tencent.mm.plugin.wepkg.b.f.dkq().akn(paramString);
+      com.tencent.mm.plugin.wepkg.b.d.dkp().akn(paramString);
+      AppMethodBeat.o(63510);
+      return;
+      if (bo.isNullOrNil(paramString))
+      {
+        AppMethodBeat.o(63510);
+        return;
+      }
+      str = c.akz(paramString);
+      localObject1 = (Bundle)com.tencent.mm.ipcinvoker.f.a("com.tencent.mm:tools", new IPCString(paramString), b.a.class);
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(63510);
+        return;
+      }
+      localObject2 = ((Bundle)localObject1).getString("used_wepkg_version");
+      localObject1 = new ArrayList();
+      if (!bo.isNullOrNil((String)localObject2)) {
+        ((List)localObject1).add(localObject2);
+      }
+      paramString = h.akF(paramString);
+      if (paramString != null) {
+        ((List)localObject1).add(paramString.version);
+      }
+      u(str, (List)localObject1);
+    }
+  }
+  
+  private static boolean u(String paramString, List paramList)
+  {
+    int i = 0;
+    AppMethodBeat.i(63513);
+    if (bo.es(paramList))
+    {
+      aky(paramString);
+      AppMethodBeat.o(63513);
+      return true;
+    }
+    paramString = new File(paramString);
+    if ((!paramString.exists()) || (!paramString.isDirectory()))
+    {
+      AppMethodBeat.o(63513);
+      return false;
+    }
+    paramString = paramString.listFiles();
+    if (paramString == null)
+    {
+      AppMethodBeat.o(63513);
+      return false;
+    }
+    int j = paramString.length;
+    while (i < j)
+    {
+      Object localObject = paramString[i];
+      if ((localObject != null) && (!paramList.contains(localObject.getName()))) {
+        aky(localObject.getAbsolutePath());
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(63513);
+    return true;
+  }
+  
+  public final void dkB()
+  {
+    try
+    {
+      AppMethodBeat.i(63507);
+      com.tencent.mm.plugin.wepkg.utils.d.aNS().ac(new b.1(this));
+      AppMethodBeat.o(63507);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void ee(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(63508);
+    if (Looper.getMainLooper() == Looper.myLooper())
+    {
+      com.tencent.mm.plugin.wepkg.utils.d.aNS().ac(new b.3(this, paramString, paramInt));
+      AppMethodBeat.o(63508);
+      return;
+    }
+    ef(paramString, paramInt);
+    AppMethodBeat.o(63508);
+  }
+  
+  static class b
+    implements i<Bundle, Bundle>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.b
  * JD-Core Version:    0.7.0.1
  */

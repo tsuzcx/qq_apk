@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/lk" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:id="@id/agl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <ImageView android:id="@id/acc" android:background="@null" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:layout_marginRight="@dimen/li" />
-        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/mq" android:singleLine="true" style="@style/kl" />
-            <TextView android:id="@id/agm" android:background="@null" android:visibility="gone" android:text="@string/qe" style="@style/u1" />
-            <ImageView android:id="@id/agn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/zp" />
-        </LinearLayout>
-        <RelativeLayout android:id="@id/agp" android:background="@null" android:layout_width="wrap_content" android:layout_height="@dimen/mi">
-            <TextView android:textStyle="normal" android:ellipsize="end" android:id="@id/cxr" android:paddingLeft="@dimen/kv" android:paddingRight="@dimen/kv" android:visibility="visible" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:text="" android:singleLine="true" android:layout_centerVertical="true" style="@style/u1" />
-        </RelativeLayout>
-        <TextView android:id="@android:id/summary" android:paddingTop="@dimen/mq" android:paddingRight="@dimen/mq" android:paddingBottom="@dimen/mq" android:singleLine="true" style="@style/ko" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkVideoView android:id="@id/d6n" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/d6o" android:background="#dd1f2127" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/d6p" android:background="@drawable/ww" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/ko" android:textColor="@color/a6q" android:gravity="center" android:id="@id/d6q" android:background="#dd1f2127" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/d6s" />
+    <ImageView android:id="@id/d6r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/ber" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/d6s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@raw/multitalk_network_mark" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

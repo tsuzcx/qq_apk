@@ -3,11 +3,11 @@ package oicq.wlogin_sdk.a;
 public final class am
   extends a
 {
-  int xrK = 0;
+  int CNX = 0;
   
   public am()
   {
-    this.xqq = 362;
+    this.CMD = 362;
   }
 }
 

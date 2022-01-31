@@ -2,39 +2,48 @@ package com.tencent.mm.vending.h;
 
 import android.os.Handler;
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
   extends d
 {
+  public a APc;
   Looper b;
   public String c;
-  public a wue;
   
   public h(Handler paramHandler, String paramString)
   {
     this(new b(paramHandler), paramString);
+    AppMethodBeat.i(126118);
+    AppMethodBeat.o(126118);
   }
   
   private h(Looper paramLooper, a parama, String paramString)
   {
     this.b = paramLooper;
-    this.wue = parama;
+    this.APc = parama;
     this.c = paramString;
   }
   
   public h(Looper paramLooper, String paramString)
   {
     this(new Handler(paramLooper), paramString);
+    AppMethodBeat.i(126120);
+    AppMethodBeat.o(126120);
   }
   
   public h(a parama, String paramString)
   {
     this(parama.getLooper(), parama, paramString);
+    AppMethodBeat.i(126119);
+    AppMethodBeat.o(126119);
   }
   
   public final void cancel()
   {
-    this.wue.dD();
+    AppMethodBeat.i(126121);
+    this.APc.dU();
+    AppMethodBeat.o(126121);
   }
   
   public final String getType()
@@ -42,19 +51,24 @@ public final class h
     return this.c;
   }
   
-  public final void j(Runnable paramRunnable, long paramLong)
+  public final void n(Runnable paramRunnable, long paramLong)
   {
+    AppMethodBeat.i(126123);
     if (paramLong >= 0L)
     {
-      this.wue.c(paramRunnable, paramLong);
+      this.APc.d(paramRunnable, paramLong);
+      AppMethodBeat.o(126123);
       return;
     }
-    this.wue.f(paramRunnable);
+    this.APc.post(paramRunnable);
+    AppMethodBeat.o(126123);
   }
   
-  public final void k(Runnable paramRunnable)
+  public final void o(Runnable paramRunnable)
   {
-    this.wue.f(paramRunnable);
+    AppMethodBeat.i(126122);
+    this.APc.post(paramRunnable);
+    AppMethodBeat.o(126122);
   }
 }
 

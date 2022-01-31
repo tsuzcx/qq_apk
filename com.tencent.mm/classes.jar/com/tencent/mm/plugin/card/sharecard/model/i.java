@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.sharecard.model;
 
 public final class i
 {
-  public String iln = "";
-  public int item_index = 0;
+  public String kml = "";
+  public int kpR = 0;
 }
 
 

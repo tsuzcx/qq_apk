@@ -1,32 +1,35 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.model.bf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.messenger.foundation.a.m;
-import com.tencent.mm.protocal.c.awn;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.bdc;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 
 public final class i
   implements m
 {
-  private String hST = null;
+  private String jMG = null;
   
   public i(String paramString)
   {
-    this.hST = paramString;
+    this.jMG = paramString;
   }
   
-  public final void a(awn paramawn, bi parambi)
+  public final void a(bdc parambdc, bi parambi)
   {
+    AppMethodBeat.i(18259);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("<msgsource>");
-    localStringBuilder.append("<strangerantispamticket ticket=\"" + this.hST + "\"></strangerantispamticket>");
-    localStringBuilder.append(bk.pm(bf.HQ()));
-    if ((bk.bl(paramawn.svK)) || (!paramawn.svK.startsWith("<msgsource>"))) {}
-    for (parambi = "<msgsource></msgsource>";; parambi = paramawn.svK)
+    localStringBuilder.append("<strangerantispamticket ticket=\"" + this.jMG + "\"></strangerantispamticket>");
+    localStringBuilder.append(bo.nullAsNil(bh.aaP()));
+    if ((bo.isNullOrNil(parambdc.woU)) || (!parambdc.woU.startsWith("<msgsource>"))) {}
+    for (parambi = "<msgsource></msgsource>";; parambi = parambdc.woU)
     {
-      paramawn.svK = parambi;
-      paramawn.svK = paramawn.svK.replace("<msgsource>", localStringBuilder.toString());
+      parambdc.woU = parambi;
+      parambdc.woU = parambdc.woU.replace("<msgsource>", localStringBuilder.toString());
+      AppMethodBeat.o(18259);
       return;
     }
   }

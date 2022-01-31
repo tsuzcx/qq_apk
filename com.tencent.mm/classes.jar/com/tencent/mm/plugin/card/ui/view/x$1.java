@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui.view;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.model.k;
 import com.tencent.mm.plugin.card.sharecard.model.r;
@@ -17,27 +18,40 @@ final class x$1
   
   public final void onClick(View paramView)
   {
-    if (!(paramView.getTag() instanceof r)) {}
-    do
+    AppMethodBeat.i(88784);
+    if (!(paramView.getTag() instanceof r))
     {
-      return;
-      localObject = this.iyI.iya.aBE();
-      this.iyI.iya.aBG();
-      paramView = (r)paramView.getTag();
-    } while ((paramView == null) || (paramView.ipc == null) || (paramView.ipc.isEmpty()));
-    if ((paramView.ipb != null) && (paramView.ipb.equals(((com.tencent.mm.plugin.card.base.b)localObject).azD())))
-    {
-      this.iyI.iyF.setVisibility(8);
-      this.iyI.iya.aAW();
+      AppMethodBeat.o(88784);
       return;
     }
-    if ((TextUtils.isEmpty(paramView.ipb)) && (TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject).azD())))
+    Object localObject = this.kBP.kBh.bdv();
+    this.kBP.kBh.bdx();
+    paramView = (r)paramView.getTag();
+    if (paramView == null)
     {
-      this.iyI.iyF.setVisibility(8);
-      this.iyI.iya.aAW();
+      AppMethodBeat.o(88784);
       return;
     }
-    Object localObject = com.tencent.mm.plugin.card.sharecard.a.b.yr(paramView.iln);
+    if ((paramView.kqk == null) || (paramView.kqk.isEmpty()))
+    {
+      AppMethodBeat.o(88784);
+      return;
+    }
+    if ((paramView.kqi != null) && (paramView.kqi.equals(((com.tencent.mm.plugin.card.base.b)localObject).bbj())))
+    {
+      this.kBP.kBM.setVisibility(8);
+      this.kBP.kBh.bcI();
+      AppMethodBeat.o(88784);
+      return;
+    }
+    if ((TextUtils.isEmpty(paramView.kqi)) && (TextUtils.isEmpty(((com.tencent.mm.plugin.card.base.b)localObject).bbj())))
+    {
+      this.kBP.kBM.setVisibility(8);
+      this.kBP.kBh.bcI();
+      AppMethodBeat.o(88784);
+      return;
+    }
+    localObject = com.tencent.mm.plugin.card.sharecard.a.b.HS(paramView.kml);
     int k;
     if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
@@ -47,12 +61,12 @@ final class x$1
       if (j < ((ArrayList)localObject).size())
       {
         r localr = (r)((ArrayList)localObject).get(j);
-        if (((localr.ipb != null) && (localr.ipb.equals(paramView.ipb))) || ((TextUtils.isEmpty(localr.ipb)) && (TextUtils.isEmpty(paramView.ipb))))
+        if (((localr.kqi != null) && (localr.kqi.equals(paramView.kqi))) || ((TextUtils.isEmpty(localr.kqi)) && (TextUtils.isEmpty(paramView.kqi))))
         {
-          localr.ipd = true;
-          if (!localr.ipe)
+          localr.kql = true;
+          if (!localr.kqm)
           {
-            localr.ipe = true;
+            localr.kqm = true;
             i = 1;
           }
           ((ArrayList)localObject).set(j, localr);
@@ -61,7 +75,7 @@ final class x$1
         {
           j += 1;
           break;
-          localr.ipd = false;
+          localr.kql = false;
           ((ArrayList)localObject).set(j, localr);
         }
       }
@@ -70,15 +84,16 @@ final class x$1
     {
       k = 0;
     }
-    paramView = (String)paramView.ipc.get(0);
-    paramView = am.aAA().yy(paramView);
+    paramView = (String)paramView.kqk.get(0);
+    paramView = am.bcl().HZ(paramView);
     if (paramView != null) {
-      this.iyI.iya.b(paramView);
+      this.kBP.kBh.b(paramView);
     }
-    if ((k != 0) && (this.iyI.iya.aBK() != null)) {
-      this.iyI.iya.aBK().aBx();
+    if ((k != 0) && (this.kBP.kBh.bdB() != null)) {
+      this.kBP.kBh.bdB().bdo();
     }
-    this.iyI.iyF.setVisibility(8);
+    this.kBP.kBM.setVisibility(8);
+    AppMethodBeat.o(88784);
   }
 }
 

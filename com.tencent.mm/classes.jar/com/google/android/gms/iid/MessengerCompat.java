@@ -1,54 +1,67 @@
 package com.google.android.gms.iid;
 
-import android.annotation.TargetApi;
 import android.os.Build.VERSION;
-import android.os.Handler;
 import android.os.IBinder;
+import android.os.IInterface;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.google.android.gms.common.internal.ReflectedParcelable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MessengerCompat
   implements ReflectedParcelable
 {
-  public static final Parcelable.Creator<MessengerCompat> CREATOR = new MessengerCompat.1();
-  Messenger zzbhU;
-  zzb zzbhV;
+  public static final Parcelable.Creator<MessengerCompat> CREATOR;
+  private Messenger zzab;
+  private zzl zzby;
   
-  public MessengerCompat(Handler paramHandler)
+  static
   {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      this.zzbhU = new Messenger(paramHandler);
-      return;
-    }
-    this.zzbhV = new MessengerCompat.zza(this, paramHandler);
+    AppMethodBeat.i(57527);
+    CREATOR = new zzq();
+    AppMethodBeat.o(57527);
   }
   
   public MessengerCompat(IBinder paramIBinder)
   {
+    AppMethodBeat.i(57521);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.zzbhU = new Messenger(paramIBinder);
+      this.zzab = new Messenger(paramIBinder);
+      AppMethodBeat.o(57521);
       return;
     }
-    this.zzbhV = zzb.zza.zzcZ(paramIBinder);
-  }
-  
-  public static int zzc(Message paramMessage)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return zzd(paramMessage);
+    if (paramIBinder == null) {
+      paramIBinder = null;
     }
-    return paramMessage.arg2;
+    for (;;)
+    {
+      this.zzby = paramIBinder;
+      AppMethodBeat.o(57521);
+      return;
+      IInterface localIInterface = paramIBinder.queryLocalInterface("com.google.android.gms.iid.IMessengerCompat");
+      if ((localIInterface instanceof zzl)) {
+        paramIBinder = (zzl)localIInterface;
+      } else {
+        paramIBinder = new zzm(paramIBinder);
+      }
+    }
   }
   
-  @TargetApi(21)
-  private static int zzd(Message paramMessage)
+  private final IBinder getBinder()
   {
-    return paramMessage.sendingUid;
+    AppMethodBeat.i(57523);
+    if (this.zzab != null)
+    {
+      localIBinder = this.zzab.getBinder();
+      AppMethodBeat.o(57523);
+      return localIBinder;
+    }
+    IBinder localIBinder = this.zzby.asBinder();
+    AppMethodBeat.o(57523);
+    return localIBinder;
   }
   
   public int describeContents()
@@ -58,49 +71,57 @@ public class MessengerCompat
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {
+    AppMethodBeat.i(57524);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(57524);
       return false;
     }
     try
     {
       boolean bool = getBinder().equals(((MessengerCompat)paramObject).getBinder());
+      AppMethodBeat.o(57524);
       return bool;
     }
-    catch (ClassCastException paramObject) {}
-    return false;
-  }
-  
-  public IBinder getBinder()
-  {
-    if (this.zzbhU != null) {
-      return this.zzbhU.getBinder();
+    catch (ClassCastException paramObject)
+    {
+      AppMethodBeat.o(57524);
     }
-    return this.zzbhV.asBinder();
+    return false;
   }
   
   public int hashCode()
   {
-    return getBinder().hashCode();
+    AppMethodBeat.i(57525);
+    int i = getBinder().hashCode();
+    AppMethodBeat.o(57525);
+    return i;
   }
   
-  public void send(Message paramMessage)
+  public final void send(Message paramMessage)
   {
-    if (this.zzbhU != null)
+    AppMethodBeat.i(57522);
+    if (this.zzab != null)
     {
-      this.zzbhU.send(paramMessage);
+      this.zzab.send(paramMessage);
+      AppMethodBeat.o(57522);
       return;
     }
-    this.zzbhV.send(paramMessage);
+    this.zzby.send(paramMessage);
+    AppMethodBeat.o(57522);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.zzbhU != null)
+    AppMethodBeat.i(57526);
+    if (this.zzab != null)
     {
-      paramParcel.writeStrongBinder(this.zzbhU.getBinder());
+      paramParcel.writeStrongBinder(this.zzab.getBinder());
+      AppMethodBeat.o(57526);
       return;
     }
-    paramParcel.writeStrongBinder(this.zzbhV.asBinder());
+    paramParcel.writeStrongBinder(this.zzby.asBinder());
+    AppMethodBeat.o(57526);
   }
 }
 

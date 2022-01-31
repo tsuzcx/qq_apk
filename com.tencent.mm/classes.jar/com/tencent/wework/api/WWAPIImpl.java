@@ -8,61 +8,81 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wework.api.model.BaseMessage;
-import com.tencent.wework.api.utils.Log;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public final class WWAPIImpl
   implements IWWAPI
 {
-  private static final String[] xfW = { "com.tencent.wework", "com.tencent.weworklocal" };
+  private static final ArrayList<String> BCE;
+  private String BCD;
+  private BroadcastReceiver BCF;
+  private Map<String, Object> callbacks;
   private Context context;
-  private Map<String, Object> ooo = new HashMap();
-  private String xfX;
-  private BroadcastReceiver xfY = new WWAPIImpl.1(this);
+  
+  static
+  {
+    AppMethodBeat.i(140110);
+    BCE = new WWAPIImpl.1();
+    AppMethodBeat.o(140110);
+  }
   
   public WWAPIImpl(Context paramContext)
   {
+    AppMethodBeat.i(80493);
+    this.callbacks = new HashMap();
+    this.BCF = new WWAPIImpl.2(this);
     this.context = paramContext;
+    AppMethodBeat.o(80493);
   }
   
-  private String agJ(String paramString)
+  private int axE(String paramString)
   {
+    AppMethodBeat.i(140107);
     try
     {
-      String str = bV(this.context.getPackageManager().getPackageInfo(paramString, 64).signatures[0].toByteArray());
-      return str;
-    }
-    catch (Throwable localThrowable)
-    {
-      Log.w("WWAPIImpl", "getSignature failed, pkg: " + paramString, localThrowable);
-    }
-    return "";
-  }
-  
-  private int agK(String paramString)
-  {
-    try
-    {
-      PackageInfo localPackageInfo = this.context.getPackageManager().getPackageInfo(paramString, 128);
-      if (localPackageInfo == null) {
+      paramString = this.context.getPackageManager().getPackageInfo(paramString, 128);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(140107);
         return 0;
       }
-      int i = localPackageInfo.versionCode;
+      int i = paramString.versionCode;
+      AppMethodBeat.o(140107);
       return i;
     }
-    catch (Throwable localThrowable)
+    catch (Throwable paramString)
     {
-      Log.w("WWAPIImpl", "getVersioncode failed, pkg: " + paramString, localThrowable);
+      AppMethodBeat.o(140107);
     }
     return 0;
   }
   
-  private static String bV(byte[] paramArrayOfByte)
+  private String axF(String paramString)
   {
+    AppMethodBeat.i(140108);
+    try
+    {
+      paramString = cx(this.context.getPackageManager().getPackageInfo(paramString, 64).signatures[0].toByteArray());
+      AppMethodBeat.o(140108);
+      return paramString;
+    }
+    catch (Throwable paramString)
+    {
+      AppMethodBeat.o(140108);
+    }
+    return "";
+  }
+  
+  private static String cx(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(140109);
     try
     {
       Object localObject = MessageDigest.getInstance("MD5");
@@ -80,33 +100,31 @@ public final class WWAPIImpl
         i += 1;
       }
       paramArrayOfByte = ((StringBuilder)localObject).toString().toUpperCase();
+      AppMethodBeat.o(140109);
       return paramArrayOfByte;
     }
-    catch (NoSuchAlgorithmException paramArrayOfByte) {}
+    catch (NoSuchAlgorithmException paramArrayOfByte)
+    {
+      AppMethodBeat.o(140109);
+    }
     return "";
   }
   
   public final boolean a(BaseMessage paramBaseMessage)
   {
-    boolean bool2 = false;
-    String[] arrayOfString = xfW;
-    int j = arrayOfString.length;
-    int i = 0;
+    AppMethodBeat.i(80496);
+    Iterator localIterator = BCE.iterator();
     for (;;)
     {
-      boolean bool1 = bool2;
-      String str;
-      Object localObject;
-      if (i < j)
+      Intent localIntent;
+      if (localIterator.hasNext())
       {
-        str = arrayOfString[i];
-        localObject = agJ(str);
-        Log.d("WWAPIImpl", "isValidSignature, pkg: " + str + ", signature: " + (String)localObject);
-        if ("011A40266C8C75D181DDD8E4DDC50075".equals(localObject))
+        String str = (String)localIterator.next();
+        if ("011A40266C8C75D181DDD8E4DDC50075".equals(axF(str)))
         {
-          localObject = new Intent("com.tencent.wework.apihost");
-          ((Intent)localObject).setClassName(str, "com.tencent.wework.apihost.WWAPIActivity");
-          ((Intent)localObject).addFlags(411041792);
+          localIntent = new Intent("com.tencent.wework.apihost");
+          localIntent.setClassName(str, "com.tencent.wework.apihost.WWAPIActivity");
+          localIntent.addFlags(411041792);
         }
       }
       else
@@ -114,72 +132,67 @@ public final class WWAPIImpl
         try
         {
           paramBaseMessage.setContext(this.context);
-          ((Intent)localObject).putExtras(BaseMessage.b(paramBaseMessage));
-          ((Intent)localObject).putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.xfY.getClass()), 134217728));
-          this.context.startActivity((Intent)localObject);
-          Log.i("WWAPIImpl", "sendMessage, start WWAPIActivity, pkg: " + str);
-          bool1 = true;
-          return bool1;
+          localIntent.putExtras(BaseMessage.b(paramBaseMessage));
+          localIntent.putExtra("PendingIntent", PendingIntent.getBroadcast(this.context, 0, new Intent(this.context, this.BCF.getClass()), 134217728));
+          this.context.startActivity(localIntent);
+          AppMethodBeat.o(80496);
+          return true;
         }
-        catch (Throwable localThrowable)
-        {
-          Log.w("WWAPIImpl", "sendMessage failed, pkg: " + str, localThrowable);
-        }
+        catch (Throwable localThrowable) {}
+        AppMethodBeat.o(80496);
+        return false;
       }
-      i += 1;
     }
   }
   
-  public final boolean cSb()
+  public final boolean dXY()
   {
-    boolean bool = false;
-    String[] arrayOfString = xfW;
-    int k = arrayOfString.length;
-    int i = 0;
-    int j;
-    if (i < k)
+    AppMethodBeat.i(80494);
+    Iterator localIterator = BCE.iterator();
+    int i;
+    do
     {
-      String str = arrayOfString[i];
-      j = agK(str);
-      if (j != 0) {
-        Log.i("WWAPIImpl", "getWWAppSupportAPI, pkg: " + str + ", versioncode: " + j);
+      if (!localIterator.hasNext()) {
+        break;
       }
-    }
-    for (i = j;; i = 0)
+      i = axE((String)localIterator.next());
+    } while (i == 0);
+    while (i >= 100)
     {
-      if (i >= 100) {
-        bool = true;
-      }
-      return bool;
-      i += 1;
-      break;
+      AppMethodBeat.o(80494);
+      return true;
+      i = 0;
     }
+    AppMethodBeat.o(80494);
+    return false;
   }
   
-  public final String cSc()
+  public final String dXZ()
   {
-    String[] arrayOfString = xfW;
-    int j = arrayOfString.length;
-    int i = 0;
-    while (i < j)
+    AppMethodBeat.i(140106);
+    Object localObject = BCE.iterator();
+    if (((Iterator)localObject).hasNext())
     {
-      Object localObject1 = arrayOfString[i];
+      localObject = (String)((Iterator)localObject).next();
       try
       {
-        Object localObject2 = this.context.getPackageManager();
-        localObject2 = ((PackageManager)localObject2).getApplicationLabel(((PackageManager)localObject2).getApplicationInfo((String)localObject1, 0)).toString();
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = "企业微信";
+        PackageManager localPackageManager = this.context.getPackageManager();
+        localObject = localPackageManager.getApplicationLabel(localPackageManager.getApplicationInfo((String)localObject, 0)).toString();
+        if (TextUtils.isEmpty((CharSequence)localObject))
+        {
+          AppMethodBeat.o(140106);
+          return "企业微信";
         }
-        return localObject1;
+        AppMethodBeat.o(140106);
+        return localObject;
       }
       catch (Throwable localThrowable)
       {
-        Log.w("WWAPIImpl", "getWWAppName failed", localThrowable);
-        i += 1;
+        AppMethodBeat.o(140106);
+        return "企业微信";
       }
     }
+    AppMethodBeat.o(140106);
     return "企业微信";
   }
 }

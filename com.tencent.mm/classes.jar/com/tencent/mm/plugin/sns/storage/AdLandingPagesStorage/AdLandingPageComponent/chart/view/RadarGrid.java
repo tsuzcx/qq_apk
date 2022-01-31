@@ -14,6 +14,7 @@ import android.text.Spannable;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.util.AttributeSet;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.baseview.ChartGridView;
 import java.util.ArrayList;
@@ -22,290 +23,347 @@ import java.util.List;
 public class RadarGrid
   extends ChartGridView
 {
-  public static final Point oEM = new Point(0, 0);
-  private Rect mRect = new Rect();
-  private Path nw = new Path();
-  private int oEH = 4;
-  private int oEI = 4;
-  private float oEK = 1.0F;
-  private c oEL;
-  private int oES = 80;
-  private Point oET = oEM;
-  private Spannable[] oEV;
-  private List<PointF> oEW;
+  public static final Point run;
+  private Rect mRect;
+  private Path ou;
+  private int rui;
+  private int ruj;
+  private float rul;
+  private c rum;
+  private int rut;
+  private Point ruu;
+  private Spannable[] ruw;
+  private List<PointF> rux;
+  
+  static
+  {
+    AppMethodBeat.i(37012);
+    run = new Point(0, 0);
+    AppMethodBeat.o(37012);
+  }
   
   public RadarGrid(Context paramContext, int paramInt1, int paramInt2, float paramFloat, Spannable[] paramArrayOfSpannable, c paramc)
   {
     super(paramContext);
-    this.oEK = paramFloat;
-    this.oEH = paramInt1;
-    this.oEI = paramInt2;
-    this.oEK = paramFloat;
-    this.oEV = paramArrayOfSpannable;
-    this.oEL = paramc;
+    AppMethodBeat.i(36982);
+    this.rui = 4;
+    this.ruj = 4;
+    this.rul = 1.0F;
+    this.rut = 80;
+    this.ruu = run;
+    this.ou = new Path();
+    this.mRect = new Rect();
+    this.rul = paramFloat;
+    this.rui = paramInt1;
+    this.ruj = paramInt2;
+    this.rul = paramFloat;
+    this.ruw = paramArrayOfSpannable;
+    this.rum = paramc;
+    AppMethodBeat.o(36982);
   }
   
   public RadarGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    bFc();
+    AppMethodBeat.i(36980);
+    this.rui = 4;
+    this.ruj = 4;
+    this.rul = 1.0F;
+    this.rut = 80;
+    this.ruu = run;
+    this.ou = new Path();
+    this.mRect = new Rect();
+    cqJ();
+    AppMethodBeat.o(36980);
   }
   
   public RadarGrid(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    bFc();
+    AppMethodBeat.i(36981);
+    this.rui = 4;
+    this.ruj = 4;
+    this.rul = 1.0F;
+    this.rut = 80;
+    this.ruu = run;
+    this.ou = new Path();
+    this.mRect = new Rect();
+    cqJ();
+    AppMethodBeat.o(36981);
   }
   
-  private List<PointF> aC(float paramFloat)
+  private List<PointF> ba(float paramFloat)
   {
+    AppMethodBeat.i(36984);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.oEH)
+    while (i < this.rui)
     {
       PointF localPointF = new PointF();
-      localPointF.set((float)(this.oET.x - this.oES * paramFloat * Math.sin(i * 2 * 3.141592653589793D / this.oEH)), (float)(this.oET.y - this.oES * paramFloat * Math.cos(i * 2 * 3.141592653589793D / this.oEH)));
+      localPointF.set((float)(this.ruu.x - this.rut * paramFloat * Math.sin(i * 2 * 3.141592653589793D / this.rui)), (float)(this.ruu.y - this.rut * paramFloat * Math.cos(i * 2 * 3.141592653589793D / this.rui)));
       localArrayList.add(localPointF);
       i += 1;
     }
+    AppMethodBeat.o(36984);
     return localArrayList;
   }
   
-  private void bFc()
+  private void cqJ()
   {
+    AppMethodBeat.i(36983);
     setMinimumHeight(160);
     setMinimumWidth(160);
+    AppMethodBeat.o(36983);
   }
   
   private int getGridDotRadius()
   {
-    return this.oEL.oEw;
+    return this.rum.rtX;
   }
   
   private Paint getPaintGLabelFont()
   {
+    AppMethodBeat.i(36991);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.oEL.oEn);
-    localPaint.setTextSize(this.oEL.oEo);
+    localPaint.setColor(this.rum.rtO);
+    localPaint.setTextSize(this.rum.rtP);
+    AppMethodBeat.o(36991);
     return localPaint;
   }
   
   private Paint getPaintGScaleFont()
   {
+    AppMethodBeat.i(36993);
     Paint localPaint = new Paint();
-    c localc = this.oEL;
-    if (localc.oEq == -1) {}
-    for (int i = localc.oEn;; i = localc.oEq)
+    c localc = this.rum;
+    if (localc.rtR == -1) {}
+    for (int i = localc.rtO;; i = localc.rtR)
     {
       localPaint.setColor(i);
-      localPaint.setTextSize(this.oEL.oEr);
+      localPaint.setTextSize(this.rum.rtS);
+      AppMethodBeat.o(36993);
       return localPaint;
     }
   }
   
   private Paint getPaintGridBorder()
   {
+    AppMethodBeat.i(36987);
     Paint localPaint = new Paint();
-    c localc = this.oEL;
+    c localc = this.rum;
     int i;
-    if (localc.oEi == -1)
+    if (localc.rtJ == -1)
     {
-      i = localc.oEj;
+      i = localc.rtK;
       localPaint.setColor(i);
       localPaint.setStyle(Paint.Style.STROKE);
-      localc = this.oEL;
-      if (localc.oEm != -1.0F) {
-        break label85;
+      localc = this.rum;
+      if (localc.rtN != -1.0F) {
+        break label95;
       }
     }
-    label85:
-    for (float f = localc.oEl;; f = localc.oEm)
+    label95:
+    for (float f = localc.rtM;; f = localc.rtN)
     {
       localPaint.setStrokeWidth(f);
       localPaint.setAntiAlias(true);
+      AppMethodBeat.o(36987);
       return localPaint;
-      i = localc.oEi;
+      i = localc.rtJ;
       break;
     }
   }
   
   private Paint getPaintGridDot()
   {
+    AppMethodBeat.i(36989);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.oEL.oEv);
+    localPaint.setColor(this.rum.rtW);
     localPaint.setStyle(Paint.Style.FILL);
     localPaint.setAntiAlias(true);
+    AppMethodBeat.o(36989);
     return localPaint;
   }
   
   private Paint getPaintGridFill()
   {
+    AppMethodBeat.i(36986);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.oEL.backgroundColor);
+    localPaint.setColor(this.rum.backgroundColor);
     localPaint.setAntiAlias(true);
+    AppMethodBeat.o(36986);
     return localPaint;
   }
   
   private Paint getPaintGridLatitude()
   {
+    AppMethodBeat.i(36988);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.oEL.oEj);
+    localPaint.setColor(this.rum.rtK);
     localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setStrokeWidth(this.oEL.oEl);
+    localPaint.setStrokeWidth(this.rum.rtM);
     localPaint.setAntiAlias(true);
+    AppMethodBeat.o(36988);
     return localPaint;
   }
   
   private Paint getPaintGridLongitude()
   {
+    AppMethodBeat.i(36990);
     Paint localPaint = new Paint();
-    localPaint.setColor(this.oEL.oEk);
-    localPaint.setStrokeWidth(this.oEL.oEl);
+    localPaint.setColor(this.rum.rtL);
+    localPaint.setStrokeWidth(this.rum.rtM);
+    AppMethodBeat.o(36990);
     return localPaint;
   }
   
   private TextPaint getTextPaintGLabelFont()
   {
+    AppMethodBeat.i(36992);
     TextPaint localTextPaint = new TextPaint();
-    localTextPaint.setColor(this.oEL.oEn);
-    localTextPaint.setTextSize(this.oEL.oEo);
+    localTextPaint.setColor(this.rum.rtO);
+    localTextPaint.setTextSize(this.rum.rtP);
+    AppMethodBeat.o(36992);
     return localTextPaint;
   }
   
-  protected final int bEZ()
+  public final int cqG()
   {
-    return this.oES * 2;
+    return this.rut * 2;
   }
   
-  protected final int bFa()
+  public final int cqH()
   {
-    return this.oES * 2;
+    return this.rut * 2;
   }
   
   public c getGridStyle()
   {
-    return this.oEL;
+    return this.rum;
   }
   
   public void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(36985);
     super.onDraw(paramCanvas);
     int j = getHeight();
     int i = getWidth();
-    this.oES = ((int)(Math.min(j, i) / 2.0F * 0.8D));
-    this.oET.set((int)(i / 2.0F), (int)(j / 2.0F));
-    if (this.oEL.oEx != null)
+    this.rut = ((int)(Math.min(j, i) / 2.0F * 0.8D));
+    this.ruu.set((int)(i / 2.0F), (int)(j / 2.0F));
+    if (this.rum.rtY != null)
     {
       i = (int)(i / 2.0F);
       j = (int)(j / 2.0F);
-      int k = (int)(this.oES * 2 + this.oEL.oEu * 2.0F);
-      int m = this.oEL.oEx.getWidth() * k / this.oEL.oEx.getHeight();
-      if (this.oEL.oEx != null) {
-        paramCanvas.drawBitmap(Bitmap.createScaledBitmap(this.oEL.oEx, m, k, false), i - (m >>> 1), j - (k >>> 1), null);
+      int k = (int)(this.rut * 2 + this.rum.rtV * 2.0F);
+      int m = this.rum.rtY.getWidth() * k / this.rum.rtY.getHeight();
+      if (this.rum.rtY != null) {
+        paramCanvas.drawBitmap(Bitmap.createScaledBitmap(this.rum.rtY, m, k, false), i - (m >>> 1), j - (k >>> 1), null);
       }
     }
-    if (this.oEL.oEe) {
-      switch (this.oEL.oEd)
+    if (this.rum.rtF) {
+      switch (this.rum.rtE)
       {
       }
     }
     Object localObject;
-    while (this.oEL.oEf)
+    while (this.rum.rtG)
     {
-      this.oEW = aC(1.0F);
+      this.rux = ba(1.0F);
       i = 0;
-      while (i < this.oEH)
+      while (i < this.rui)
       {
-        localObject = (PointF)this.oEW.get(i);
-        paramCanvas.drawLine(this.oET.x, this.oET.y, ((PointF)localObject).x, ((PointF)localObject).y, getPaintGridLongitude());
+        localObject = (PointF)this.rux.get(i);
+        paramCanvas.drawLine(this.ruu.x, this.ruu.y, ((PointF)localObject).x, ((PointF)localObject).y, getPaintGridLongitude());
         i += 1;
       }
-      paramCanvas.drawCircle(this.oET.x, this.oET.y, this.oES, getPaintGridFill());
+      paramCanvas.drawCircle(this.ruu.x, this.ruu.y, this.rut, getPaintGridFill());
       continue;
-      this.oEW = aC(1.0F);
+      this.rux = ba(1.0F);
       i = 0;
-      if (i < this.oEH)
+      if (i < this.rui)
       {
-        localObject = (PointF)this.oEW.get(i);
+        localObject = (PointF)this.rux.get(i);
         if (i == 0) {
-          this.nw.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
+          this.ou.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
         }
         for (;;)
         {
           i += 1;
           break;
-          this.nw.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
+          this.ou.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
         }
       }
-      this.nw.close();
-      if ((this.oEL.backgroundColor != 0) && (this.oEL.oEx == null)) {
-        paramCanvas.drawPath(this.nw, getPaintGridFill());
+      this.ou.close();
+      if ((this.rum.backgroundColor != 0) && (this.rum.rtY == null)) {
+        paramCanvas.drawPath(this.ou, getPaintGridFill());
       }
     }
-    if (this.oEL.oEe) {
-      switch (this.oEL.oEd)
+    if (this.rum.rtF) {
+      switch (this.rum.rtE)
       {
       }
     }
     float f1;
-    label872:
+    label887:
     float f2;
     for (;;)
     {
-      if ((this.oEV != null) && (this.oEL.oEh)) {
-        if (this.oEV.length != this.oEH)
+      if ((this.ruw != null) && (this.rum.rtI)) {
+        if (this.ruw.length != this.rui)
         {
-          throw new RuntimeException("Labels array length not matches longitude lines number.");
-          paramCanvas.drawCircle(this.oET.x, this.oET.y, this.oES, getPaintGridBorder());
+          paramCanvas = new RuntimeException("Labels array length not matches longitude lines number.");
+          AppMethodBeat.o(36985);
+          throw paramCanvas;
+          paramCanvas.drawCircle(this.ruu.x, this.ruu.y, this.rut, getPaintGridBorder());
           i = 1;
-          while (i < this.oEI)
+          while (i < this.ruj)
           {
-            paramCanvas.drawCircle(this.oET.x, this.oET.y, this.oES * (i * 1.0F / this.oEI), getPaintGridLatitude());
+            paramCanvas.drawCircle(this.ruu.x, this.ruu.y, this.rut * (i * 1.0F / this.ruj), getPaintGridLatitude());
             i += 1;
           }
-          paramCanvas.drawPath(this.nw, getPaintGridBorder());
-          this.nw.reset();
+          paramCanvas.drawPath(this.ou, getPaintGridBorder());
+          this.ou.reset();
           i = 1;
-          while (i < this.oEI)
+          while (i < this.ruj)
           {
-            this.oEW = aC(i * 1.0F / this.oEI);
+            this.rux = ba(i * 1.0F / this.ruj);
             j = 0;
-            if (j < this.oEH)
+            if (j < this.rui)
             {
-              localObject = (PointF)this.oEW.get(j);
+              localObject = (PointF)this.rux.get(j);
               if (j == 0) {
-                this.nw.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
+                this.ou.moveTo(((PointF)localObject).x, ((PointF)localObject).y);
               }
               for (;;)
               {
                 paramCanvas.drawCircle(((PointF)localObject).x, ((PointF)localObject).y, getGridDotRadius(), getPaintGridDot());
                 j += 1;
                 break;
-                this.nw.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
+                this.ou.lineTo(((PointF)localObject).x, ((PointF)localObject).y);
               }
             }
-            this.nw.close();
-            paramCanvas.drawPath(this.nw, getPaintGridLatitude());
-            this.nw.reset();
+            this.ou.close();
+            paramCanvas.drawPath(this.ou, getPaintGridLatitude());
+            this.ou.reset();
             i += 1;
           }
         }
         else
         {
           i = 0;
-          if (i < this.oEH)
+          if (i < this.rui)
           {
-            localObject = this.oEV[i];
+            localObject = this.ruw[i];
             if (!localObject.equals(null))
             {
-              if ((i != 0) && (i != this.oEH >>> 1)) {
-                break label1056;
+              if ((i != 0) && (i != this.rui >>> 1)) {
+                break label1071;
               }
               f1 = 0.5F;
               if (i != 0) {
-                break label1082;
+                break label1097;
               }
-              f2 = this.oEL.oEp;
+              f2 = this.rum.rtQ;
             }
           }
         }
@@ -314,26 +372,31 @@ public class RadarGrid
     for (;;)
     {
       localObject = new StaticLayout((CharSequence)localObject, getTextPaintGLabelFont(), 1000, Layout.Alignment.ALIGN_NORMAL, 0.0F, 0.0F, false);
-      f1 = (float)(this.oET.x - ((StaticLayout)localObject).getLineWidth(0) * f1 - (this.oES + this.oEL.oEp) * Math.sin(6.283185307179586D - i * 2 * 3.141592653589793D / this.oEH));
-      f2 = (float)(this.oET.y - ((StaticLayout)localObject).getHeight() / 2 - (this.oES + this.oEL.oEp) * Math.cos(6.283185307179586D - i * 2 * 3.141592653589793D / this.oEH) - f2);
+      f1 = (float)(this.ruu.x - ((StaticLayout)localObject).getLineWidth(0) * f1 - (this.rut + this.rum.rtQ) * Math.sin(6.283185307179586D - i * 2 * 3.141592653589793D / this.rui));
+      f2 = (float)(this.ruu.y - ((StaticLayout)localObject).getHeight() / 2 - (this.rut + this.rum.rtQ) * Math.cos(6.283185307179586D - i * 2 * 3.141592653589793D / this.rui) - f2);
       paramCanvas.save();
       paramCanvas.translate(f1, f2);
       ((StaticLayout)localObject).draw(paramCanvas);
       paramCanvas.restore();
       i += 1;
       break;
-      label1056:
-      if ((i > 0) && (i < this.oEH >>> 1))
+      label1071:
+      if ((i > 0) && (i < this.rui >>> 1))
       {
         f1 = 0.0F;
-        break label872;
+        break label887;
       }
       f1 = 1.0F;
-      break label872;
-      label1082:
-      if (i == this.oEH >>> 1) {
-        f2 = -this.oEL.oEp;
-      } else {
+      break label887;
+      label1097:
+      if (i == this.rui >>> 1)
+      {
+        f2 = -this.rum.rtQ;
+        continue;
+        AppMethodBeat.o(36985);
+      }
+      else
+      {
         f2 = 0.0F;
       }
     }
@@ -341,115 +404,151 @@ public class RadarGrid
   
   public void setBackgroundColor(int paramInt)
   {
-    this.oEL.backgroundColor = paramInt;
+    AppMethodBeat.i(37000);
+    this.rum.backgroundColor = paramInt;
     invalidate();
+    AppMethodBeat.o(37000);
   }
   
   public void setGridBorderColor(int paramInt)
   {
-    this.oEL.oEi = paramInt;
+    AppMethodBeat.i(37001);
+    this.rum.rtJ = paramInt;
     invalidate();
+    AppMethodBeat.o(37001);
   }
   
   public void setGridBorderStrokeWidth(float paramFloat)
   {
-    this.oEL.oEm = paramFloat;
+    AppMethodBeat.i(37005);
+    this.rum.rtN = paramFloat;
     invalidate();
+    AppMethodBeat.o(37005);
   }
   
   public void setGridChartType(int paramInt)
   {
-    this.oEL.oEd = paramInt;
+    AppMethodBeat.i(36994);
+    this.rum.rtE = paramInt;
     invalidate();
+    AppMethodBeat.o(36994);
   }
   
   public void setGridLabelColor(int paramInt)
   {
-    this.oEL.oEn = paramInt;
+    AppMethodBeat.i(37006);
+    this.rum.rtO = paramInt;
     invalidate();
+    AppMethodBeat.o(37006);
   }
   
   public void setGridLabelPadding(float paramFloat)
   {
-    this.oEL.oEp = paramFloat;
+    AppMethodBeat.i(37008);
+    this.rum.rtQ = paramFloat;
     invalidate();
+    AppMethodBeat.o(37008);
   }
   
   public void setGridLabelSize(float paramFloat)
   {
-    this.oEL.oEo = paramFloat;
+    AppMethodBeat.i(37007);
+    this.rum.rtP = paramFloat;
     invalidate();
+    AppMethodBeat.o(37007);
   }
   
   public void setGridLatitudeColor(int paramInt)
   {
-    this.oEL.oEj = paramInt;
+    AppMethodBeat.i(37002);
+    this.rum.rtK = paramInt;
     invalidate();
+    AppMethodBeat.o(37002);
   }
   
   public void setGridLongitudeColor(int paramInt)
   {
-    this.oEL.oEk = paramInt;
+    AppMethodBeat.i(37003);
+    this.rum.rtL = paramInt;
     invalidate();
+    AppMethodBeat.o(37003);
   }
   
   public void setGridScaleColor(int paramInt)
   {
-    this.oEL.oEq = paramInt;
+    AppMethodBeat.i(37009);
+    this.rum.rtR = paramInt;
     invalidate();
+    AppMethodBeat.o(37009);
   }
   
   public void setGridScaleLabelPadding(float paramFloat)
   {
-    this.oEL.oEs = paramFloat;
+    AppMethodBeat.i(37011);
+    this.rum.rtT = paramFloat;
     invalidate();
+    AppMethodBeat.o(37011);
   }
   
   public void setGridScaleSize(float paramFloat)
   {
-    this.oEL.oEr = paramFloat;
+    AppMethodBeat.i(37010);
+    this.rum.rtS = paramFloat;
     invalidate();
+    AppMethodBeat.o(37010);
   }
   
   public void setGridStrokeWidth(float paramFloat)
   {
-    this.oEL.oEl = paramFloat;
+    AppMethodBeat.i(37004);
+    this.rum.rtM = paramFloat;
     invalidate();
+    AppMethodBeat.o(37004);
   }
   
   public void setGridStyle(c paramc)
   {
-    this.oEL = paramc;
+    AppMethodBeat.i(36999);
+    this.rum = paramc;
     invalidate();
+    AppMethodBeat.o(36999);
   }
   
   public void setLabelsArray(Spannable[] paramArrayOfSpannable)
   {
-    this.oEV = paramArrayOfSpannable;
+    AppMethodBeat.i(36998);
+    this.ruw = paramArrayOfSpannable;
     invalidate();
+    AppMethodBeat.o(36998);
   }
   
   public void setLatNum(int paramInt)
   {
-    this.oEI = paramInt;
+    AppMethodBeat.i(36996);
+    this.ruj = paramInt;
     invalidate();
+    AppMethodBeat.o(36996);
   }
   
   public void setLonNum(int paramInt)
   {
-    this.oEH = paramInt;
+    AppMethodBeat.i(36995);
+    this.rui = paramInt;
     invalidate();
+    AppMethodBeat.o(36995);
   }
   
   public void setMaxValue(float paramFloat)
   {
-    this.oEK = paramFloat;
+    AppMethodBeat.i(36997);
+    this.rul = paramFloat;
     invalidate();
+    AppMethodBeat.o(36997);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarGrid
  * JD-Core Version:    0.7.0.1
  */

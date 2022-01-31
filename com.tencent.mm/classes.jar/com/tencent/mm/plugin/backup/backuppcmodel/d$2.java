@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.backup.backuppcmodel;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.b.b.c;
 import java.util.Iterator;
 import java.util.Set;
@@ -11,10 +12,12 @@ final class d$2
   
   public final void run()
   {
-    Iterator localIterator = this.hKQ.iterator();
+    AppMethodBeat.i(17522);
+    Iterator localIterator = this.jEt.iterator();
     while (localIterator.hasNext()) {
-      ((b.c)localIterator.next()).atl();
+      ((b.c)localIterator.next()).aSJ();
     }
+    AppMethodBeat.o(17522);
   }
 }
 

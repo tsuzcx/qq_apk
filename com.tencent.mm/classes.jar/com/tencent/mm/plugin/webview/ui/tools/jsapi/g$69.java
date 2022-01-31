@@ -1,16 +1,29 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelgeo.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$69
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  g$69(g paramg, i parami) {}
+  g$69(g paramg) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void run()
   {
-    g.a(this.rzi, this.rzk, "doChooseMedia:cancel", null);
+    AppMethodBeat.i(154990);
+    if (g.B(this.vqm) != null) {
+      g.B(this.vqm).c(g.C(this.vqm));
+    }
+    if (g.C(this.vqm) == null)
+    {
+      ab.w("MicroMsg.MsgHandler", "already callback");
+      AppMethodBeat.o(154990);
+      return;
+    }
+    g.D(this.vqm);
+    this.vqm.a(g.k(this.vqm), "geo_location:fail_timeout", null);
+    AppMethodBeat.o(154990);
   }
 }
 

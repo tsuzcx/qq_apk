@@ -1,239 +1,220 @@
 package com.tencent.mm.plugin.appbrand.game;
 
-import android.content.Context;
-import com.tencent.magicbrush.engine.MBRendererJNI;
-import com.tencent.mm.h.b.a.af;
-import com.tencent.mm.h.b.a.af.a;
-import com.tencent.mm.h.b.a.af.b;
-import com.tencent.mm.plugin.appbrand.game.c.f;
-import com.tencent.mm.plugin.appbrand.i.d;
-import com.tencent.mm.plugin.appbrand.n;
+import android.content.SharedPreferences;
+import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.debugger.t;
+import com.tencent.mm.plugin.appbrand.i.y;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.report.b.1;
+import com.tencent.mm.plugin.appbrand.report.b.2;
+import com.tencent.mm.plugin.appbrand.report.e;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
-import com.tencent.mm.plugin.appbrand.report.quality.c;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.TreeMap;
+import com.tencent.mm.plugin.appbrand.report.quality.h;
+import com.tencent.mm.plugin.appbrand.report.quality.h.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.f;
+import java.util.Map;
 
-public final class a
-  implements GameGLSurfaceView.n, b
+public class a
+  extends com.tencent.luggage.game.e.a.a.a<com.tencent.mm.plugin.appbrand.service.c>
 {
-  private long fZA;
-  private boolean fZB = false;
-  public f fZC = new f();
-  a.a fZD = a.a.fZG;
-  private j fZv;
-  boolean fZw = false;
-  private boolean fZx = false;
-  private com.tencent.magicbrush.engine.e fZy;
-  j.b fZz;
-  private n fzW;
-  private Context mContext;
+  private com.tencent.mm.plugin.appbrand.report.b hrV;
+  private long hrW;
   
-  public a(j paramj, com.tencent.magicbrush.engine.e parame)
+  public a(com.tencent.mm.plugin.appbrand.service.c paramc)
   {
-    y.i("MicroMsg.GameRenderer", "GameRenderer construct [%s]", new Object[] { parame });
-    this.fZA = System.currentTimeMillis();
-    this.fZv = paramj;
-    this.fZy = parame;
-    this.mContext = this.fZv.getContext();
-    this.fzW = this.fZv.getRuntime();
-    if (this.fzW != null)
-    {
-      paramj = com.tencent.mm.plugin.appbrand.report.quality.a.wg(this.fzW.mAppId);
-      if ((paramj != null) && (paramj.hau.aow())) {
-        this.fZC.gbS = true;
-      }
-    }
+    super(paramc);
+    AppMethodBeat.i(143092);
+    this.hrW = -1L;
+    this.hrV = new com.tencent.mm.plugin.appbrand.report.b();
+    AppMethodBeat.o(143092);
   }
   
-  public final void afZ()
+  public final void a(com.tencent.mm.plugin.appbrand.i parami)
   {
-    y.i("MicroMsg.GameRenderer", "onEGLCreate");
-    if (this.fZy != null) {
-      this.fZy.bkI.nativeOnEGLCreated();
-    }
-    if (this.fZz != null) {
-      this.fZz.agi();
-    }
-    if (this.fzW != null)
-    {
-      com.tencent.mm.plugin.appbrand.report.quality.a.aov();
-      Object localObject = this.fzW.mAppId;
-      long l = this.fZA;
-      af localaf = new af();
-      localObject = com.tencent.mm.plugin.appbrand.report.quality.a.wg((String)localObject);
-      if (localObject != null)
-      {
-        localaf.ckG = ((QualitySessionRuntime)localObject).appId;
-        localaf.ckF = ((QualitySessionRuntime)localObject).gKi;
-        localaf.clb = af.a.eC(((QualitySessionRuntime)localObject).ham);
-        localaf.clc = af.b.eD(((QualitySessionRuntime)localObject).apptype);
-        localaf.ckH = ((QualitySessionRuntime)localObject).han;
-        localaf.cic = ((QualitySessionRuntime)localObject).scene;
-        localaf.at(l);
-        localaf.uT();
-        localaf.as(localaf.ckM - l);
-        localaf.QX();
-      }
-    }
+    AppMethodBeat.i(143097);
+    super.a(parami);
+    ab.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: wc post runtime ready");
+    com.tencent.mm.plugin.appbrand.report.b localb = this.hrV;
+    a.1 local1 = new a.1(this, parami);
+    localb.iFh.post(new b.1(localb, parami, local1));
+    AppMethodBeat.o(143097);
   }
   
-  public final void aga()
+  public final void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    if (this.fZy != null) {
-      this.fZy.bkI.nativeOnEGLSurfaceChanged();
+    AppMethodBeat.i(143100);
+    if ((((com.tencent.mm.plugin.appbrand.service.c)this.bDN).aud()) || (((com.tencent.mm.plugin.appbrand.service.c)this.bDN).isRunning()))
+    {
+      com.tencent.mm.plugin.appbrand.report.quality.a.aLt();
+      com.tencent.mm.plugin.appbrand.report.quality.b.a(paramBoolean, ((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getAppId(), paramLong, "WAGame.js", paramInt);
     }
+    super.a(paramBoolean, paramLong, paramInt);
+    AppMethodBeat.o(143100);
   }
   
-  public final void bS(int paramInt1, int paramInt2)
+  public final String cf(String paramString)
   {
-    y.i("MicroMsg.GameRenderer", "[alex] WindowSize onSurfaceChanged width = [%d], height = [%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (this.fZy != null) {
-      this.fZy.bkI.nativeOnSurfaceSizeChanged(paramInt1, paramInt2);
-    }
-    l.gav.bT(paramInt1, paramInt2);
-    if (this.fzW != null)
+    AppMethodBeat.i(143103);
+    if ((((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getRuntime() != null) && (((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getRuntime().wV()))
     {
-      n localn = this.fzW;
-      com.tencent.mm.plugin.appbrand.page.j localj = localn.fyx;
-      y.i("MicroMsg.AppBrandOnWindowSizeChangedEvent", "hy: on resizeWindow");
-      localj.d(localn.Zy()).dispatch();
+      paramString = t.a(paramString, ((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getRuntime());
+      AppMethodBeat.o(143103);
+      return paramString;
     }
+    AppMethodBeat.o(143103);
+    return "";
   }
   
-  public final void cR(boolean paramBoolean)
+  public final void onMainCanvasTypeDefined(int paramInt)
   {
-    if (this.fZy == null) {}
-    f localf;
-    boolean bool;
-    do
+    AppMethodBeat.i(143102);
+    super.onMainCanvasTypeDefined(paramInt);
+    Object localObject = com.tencent.mm.plugin.appbrand.report.quality.a.EM(((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getRuntime().mAppId);
+    if (localObject == null)
     {
-      return;
-      localf = this.fZC;
-      if (!localf.gbR) {
-        localf.gbT = System.currentTimeMillis();
-      }
-      bool = this.fZy.bkI.nativeCheckTimer();
-    } while (paramBoolean);
-    long l;
-    if (bool)
-    {
-      if (!this.fZw)
-      {
-        y.w("MicroMsg.GameRenderer", "hy: onDrawFrame mFirstFrameRendered. using %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.fZA) });
-        this.fZw = true;
-        this.fZv.agq();
-      }
-      localf = this.fZC;
-      if (!localf.gbR)
-      {
-        l = System.currentTimeMillis();
-        if (localf.gbM > 0L) {
-          break label143;
-        }
-        localf.gbM = l;
-        localf.gbK = l;
-      }
-    }
-    for (;;)
-    {
-      this.fZv.setSwapNow(bool);
-      return;
-      label143:
-      localf.gbL += 1;
-      localf.gbU += l - localf.gbT;
-      if (localf.gbL % 20 <= 0)
-      {
-        localf.gbN = (20000.0D / (l - localf.gbK));
-        localf.gbV = (20000.0F / (float)localf.gbU);
-        localf.gbU = 0L;
-        if (localf.gbS) {
-          localf.gbP.add(Double.valueOf(localf.gbN));
-        }
-        if (localf.gbO <= 0.0D) {
-          localf.gbO = localf.gbN;
-        }
-        for (;;)
-        {
-          if (localf.gbQ.size() < 30) {
-            localf.gbQ.add(Double.valueOf(localf.gbN));
-          }
-          localf.gbK = l;
-          break;
-          if (localf.gbN < localf.gbO) {
-            localf.gbO = localf.gbN;
-          }
-        }
-        if (!this.fZx)
-        {
-          this.fZx = true;
-          if (this.fzW != null) {
-            this.fzW.fzG.n(9, System.currentTimeMillis() - this.fZA);
-          }
-        }
-      }
-    }
-  }
-  
-  public final void g(Runnable paramRunnable)
-  {
-    if (this.fZv != null) {
-      this.fZv.queueEvent(paramRunnable);
-    }
-  }
-  
-  public final void onDestroy()
-  {
-    y.i("MicroMsg.GameRenderer", "onDestroy ");
-    if (!this.fZB)
-    {
-      this.fZB = true;
-      i locali = i.gad;
-      y.i("MicroMsg.V8JsVmManager", "GameRenderer.disposeJsVm start");
-      Iterator localIterator = locali.gag.entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (Map.Entry)localIterator.next();
-        if (locali.gae != ((Map.Entry)localObject).getValue())
-        {
-          localObject = (d)((Map.Entry)localObject).getValue();
-          if (localObject != null) {
-            ((d)localObject).destroy();
-          }
-        }
-      }
-      locali.gag.clear();
-      if (locali.gae != null)
-      {
-        locali.gae.destroy();
-        locali.gae = null;
-      }
-      y.i("MicroMsg.V8JsVmManager", "GameRenderer.disposeJsVm finished");
-      if (this.fZy != null) {
-        this.fZy.bkI.nativeDestroy();
-      }
+      AppMethodBeat.o(143102);
       return;
     }
-    y.w("MicroMsg.GameRenderer", "hy: called onFinalize multiple times! ");
-  }
-  
-  public final void onPause()
-  {
-    y.i("MicroMsg.GameRenderer", "onPause ");
-    if (this.fZy != null) {
-      this.fZy.bkI.nativePause();
+    h localh = ((QualitySessionRuntime)localObject).iIP;
+    if (paramInt == 1) {}
+    for (localObject = h.a.iIU;; localObject = h.a.iIV)
+    {
+      localh.iIS = ((h.a)localObject);
+      AppMethodBeat.o(143102);
+      return;
     }
   }
   
-  public final void onResume()
+  public final void uP()
   {
-    y.i("MicroMsg.GameRenderer", "onResume ");
-    if (this.fZy != null) {
-      this.fZy.bkI.nativeResume();
+    AppMethodBeat.i(143105);
+    new com.tencent.mm.plugin.appbrand.game.c.c().uD();
+    AppMethodBeat.o(143105);
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.i.i uR()
+  {
+    AppMethodBeat.i(143093);
+    this.hrW = System.currentTimeMillis();
+    com.tencent.mm.plugin.appbrand.i.i locali = super.uR();
+    AppMethodBeat.o(143093);
+    return locali;
+  }
+  
+  public final void uS()
+  {
+    AppMethodBeat.i(143095);
+    super.uS();
+    com.tencent.mm.plugin.appbrand.report.quality.a.aLt();
+    if (((com.tencent.mm.plugin.appbrand.service.c)this.bDN).aud()) {}
+    for (com.tencent.mm.plugin.appbrand.task.g localg = com.tencent.mm.plugin.appbrand.task.g.iKT;; localg = null)
+    {
+      com.tencent.mm.plugin.appbrand.report.quality.b.a(localg, ((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getAppId(), this.hrW, com.tencent.mm.plugin.appbrand.report.c.iFz);
+      AppMethodBeat.o(143095);
+      return;
     }
+  }
+  
+  public final void uT()
+  {
+    AppMethodBeat.i(143104);
+    super.uT();
+    com.tencent.mm.plugin.appbrand.report.b localb = this.hrV;
+    localb.iFh.post(new b.2(localb));
+    AppMethodBeat.o(143104);
+  }
+  
+  public final String uV()
+  {
+    AppMethodBeat.i(143096);
+    if (((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(com.tencent.mm.plugin.expt.a.a.a.lUe, false))
+    {
+      String str = y.aAM();
+      AppMethodBeat.o(143096);
+      return str;
+    }
+    AppMethodBeat.o(143096);
+    return null;
+  }
+  
+  public final boolean uW()
+  {
+    AppMethodBeat.i(143098);
+    boolean bool = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(com.tencent.mm.plugin.expt.a.a.a.lUd, false);
+    AppMethodBeat.o(143098);
+    return bool;
+  }
+  
+  public final boolean uY()
+  {
+    AppMethodBeat.i(143099);
+    if (ah.dsR() != null)
+    {
+      int i = ah.dsR().getInt("appbrandgame_use_commandbuffer", -1);
+      if (i != -1)
+      {
+        if (i != 0)
+        {
+          AppMethodBeat.o(143099);
+          return true;
+        }
+        AppMethodBeat.o(143099);
+        return false;
+      }
+    }
+    if ((((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getRuntime() != null) && (((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getRuntime().getAppConfig().hgT))
+    {
+      bool = super.uY();
+      AppMethodBeat.o(143099);
+      return bool;
+    }
+    if ((f.IS_FLAVOR_RED) || (f.DEBUG))
+    {
+      AppMethodBeat.o(143099);
+      return true;
+    }
+    boolean bool = ((com.tencent.mm.plugin.expt.a.a)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.expt.a.a.class)).a(com.tencent.mm.plugin.expt.a.a.a.lWd, false);
+    AppMethodBeat.o(143099);
+    return bool;
+  }
+  
+  public final com.tencent.luggage.game.a.b uZ()
+  {
+    AppMethodBeat.i(143106);
+    a.a locala = new a.a(this, ((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getContext());
+    AppMethodBeat.o(143106);
+    return locala;
+  }
+  
+  public final void vf()
+  {
+    AppMethodBeat.i(143101);
+    super.vf();
+    e.bq(((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getAppId(), 24);
+    int j = 0;
+    int i = -1;
+    o localo = ((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getRuntime();
+    if (localo != null)
+    {
+      j = localo.wR().hiX.gXf;
+      i = localo.wR().hiX.gXe;
+    }
+    e.b(((com.tencent.mm.plugin.appbrand.service.c)this.bDN).getAppId(), j, i, 778, 14);
+    AppMethodBeat.o(143101);
+  }
+  
+  public final Map<String, m> wM()
+  {
+    AppMethodBeat.i(143094);
+    Map localMap = com.tencent.mm.plugin.appbrand.game.e.b.aAD();
+    AppMethodBeat.o(143094);
+    return localMap;
   }
 }
 

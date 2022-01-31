@@ -3,9 +3,9 @@ package com.tencent.mm.booter;
 public final class p
   extends q
 {
-  public p(c paramc)
+  public p(d paramd)
   {
-    super(paramc);
+    super(paramd);
   }
 }
 

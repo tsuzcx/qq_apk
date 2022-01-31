@@ -13,7 +13,7 @@ final class BottomNavigationMenuView$1
   public final void onClick(View paramView)
   {
     paramView = ((BottomNavigationItemView)paramView).getItemData();
-    if (!BottomNavigationMenuView.b(this.dn).a(paramView, BottomNavigationMenuView.a(this.dn), 0)) {
+    if (!BottomNavigationMenuView.b(this.er).a(paramView, BottomNavigationMenuView.a(this.er), 0)) {
       paramView.setChecked(true);
     }
   }

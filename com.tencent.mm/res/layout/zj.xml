@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/iu"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="center" android:id="@id/bq_" android:background="#ffdadada" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/k9" android:textColor="@color/op" android:gravity="center" android:layout_gravity="center" android:id="@id/bqd" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/dtj" android:lineSpacingExtra="@dimen/m6" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/hx" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/im">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:src="@raw/app_attach_file_icon_voice" style="@style/ik" />
+                <TextView android:layout_gravity="center_vertical" android:id="@id/bb" android:layout_marginLeft="@dimen/hs" android:text="{title}" style="@style/ir" />
+            </LinearLayout>
+            <include layout="@layout/zd" />
+            <include layout="@layout/zc" />
+        </LinearLayout>
+        <include layout="@layout/zb" />
+    </LinearLayout>
+</FrameLayout>

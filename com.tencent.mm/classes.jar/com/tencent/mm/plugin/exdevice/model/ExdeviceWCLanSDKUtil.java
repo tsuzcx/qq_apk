@@ -3,66 +3,86 @@ package com.tencent.mm.plugin.exdevice.model;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
-import com.tencent.mm.h.a.ds;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.dv;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.HashMap;
 import org.json.JSONObject;
 
 public final class ExdeviceWCLanSDKUtil
 {
-  BroadcastReceiver hWU;
-  HashMap<String, String> jvA = new HashMap();
-  boolean jvB = false;
-  boolean jvC = false;
-  boolean jvD = false;
-  int jvE;
-  HashMap<String, byte[]> jvd = new HashMap();
-  HashMap<String, Boolean> jvf = new HashMap();
-  j.a jvg;
-  j.a jvi;
-  private int jvw = 0;
-  private int jvx = 0;
-  j.a jvy;
-  j.a jvz;
-  Context mContext = null;
+  BroadcastReceiver jQN;
+  HashMap<String, byte[]> lEC;
+  HashMap<String, Boolean> lEE;
+  j.a lEF;
+  j.a lEH;
+  private int lEV;
+  private int lEW;
+  j.a lEX;
+  j.a lEY;
+  HashMap<String, String> lEZ;
+  boolean lFa;
+  boolean lFb;
+  boolean lFc;
+  int lFd;
+  Context mContext;
   
   public ExdeviceWCLanSDKUtil()
   {
-    this.jvd.clear();
-    this.jvf.clear();
-    this.jvA.clear();
-    this.mContext = ae.getContext();
+    AppMethodBeat.i(19290);
+    this.lEV = 0;
+    this.lEW = 0;
+    this.lEC = new HashMap();
+    this.lEE = new HashMap();
+    this.lEZ = new HashMap();
+    this.mContext = null;
+    this.lFa = false;
+    this.lFb = false;
+    this.lFc = false;
+    this.lFa = true;
+    this.lFb = true;
+    this.lEC.clear();
+    this.lEE.clear();
+    this.lEZ.clear();
+    this.mContext = ah.getContext();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
-    if (this.hWU == null) {
-      this.hWU = new ExdeviceWCLanSDKUtil.LanStateChangeReceiver(this);
+    if (this.jQN == null) {
+      this.jQN = new ExdeviceWCLanSDKUtil.LanStateChangeReceiver(this);
     }
-    this.mContext.registerReceiver(this.hWU, localIntentFilter);
-    this.jvy = new ExdeviceWCLanSDKUtil.1(this);
-    this.jvg = new ExdeviceWCLanSDKUtil.2(this);
-    this.jvi = new ExdeviceWCLanSDKUtil.3(this);
-    this.jvz = new ExdeviceWCLanSDKUtil.4(this);
+    this.mContext.registerReceiver(this.jQN, localIntentFilter);
+    this.lEX = new ExdeviceWCLanSDKUtil.1(this);
+    this.lEF = new ExdeviceWCLanSDKUtil.2(this);
+    this.lEH = new ExdeviceWCLanSDKUtil.3(this);
+    this.lEY = new ExdeviceWCLanSDKUtil.4(this);
+    AppMethodBeat.o(19290);
   }
   
-  public final boolean Bt(String paramString)
+  public final boolean Lv(String paramString)
   {
-    if ((paramString != null) && (this.jvf.containsKey(paramString))) {
-      return ((Boolean)this.jvf.get(paramString)).booleanValue();
+    AppMethodBeat.i(19294);
+    if ((paramString != null) && (this.lEE.containsKey(paramString)))
+    {
+      boolean bool = ((Boolean)this.lEE.get(paramString)).booleanValue();
+      AppMethodBeat.o(19294);
+      return bool;
     }
+    AppMethodBeat.o(19294);
     return false;
   }
   
-  public final boolean ar(String paramString, boolean paramBoolean)
+  public final boolean aC(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(19292);
     Object localObject;
-    if ((paramString != null) && (this.jvd.containsKey(paramString)))
+    if ((paramString != null) && (this.lEC.containsKey(paramString)))
     {
-      localObject = (byte[])this.jvd.get(paramString);
-      this.jvD = true;
+      localObject = (byte[])this.lEC.get(paramString);
+      this.lFc = true;
       if (!paramBoolean) {}
     }
     else
@@ -71,48 +91,54 @@ public final class ExdeviceWCLanSDKUtil
       try
       {
         str = new JSONObject(new String((byte[])localObject)).getString("deviceType");
-        y.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "connectWCLanDevice deviceId: " + paramString);
+        ab.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "connectWCLanDevice deviceId: ".concat(String.valueOf(paramString)));
         if (Java2CExDevice.connectWCLanDevice((byte[])localObject, false) == 0) {
-          break label129;
+          break label146;
         }
-        y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "connectWCLanDevice error!");
+        ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "connectWCLanDevice error!");
+        AppMethodBeat.o(19292);
         return false;
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", paramString, "", new Object[0]);
-        y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON decode failed in connectWCLanDevice!");
+        ab.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", paramString, "", new Object[0]);
+        ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON decode failed in connectWCLanDevice!");
+        AppMethodBeat.o(19292);
         return false;
       }
-      y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "mDevClassInfo is null in connectWCLanDevice");
+      ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "mDevClassInfo is null in connectWCLanDevice");
+      AppMethodBeat.o(19292);
       return false;
-      label129:
-      localObject = new ds();
-      ((ds)localObject).bKo.bwK = paramString;
-      ((ds)localObject).bKo.bKp = 1;
-      ((ds)localObject).bKo.bJw = str;
-      a.udP.m((b)localObject);
+      label146:
+      localObject = new dv();
+      ((dv)localObject).crI.bYu = paramString;
+      ((dv)localObject).crI.crJ = 1;
+      ((dv)localObject).crI.cqQ = str;
+      a.ymk.l((b)localObject);
     }
     for (;;)
     {
+      AppMethodBeat.o(19292);
       return true;
-      i(false, paramString);
-      y.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "disconnectWCLanDevice...");
+      n(false, paramString);
+      ab.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "disconnectWCLanDevice...");
       Java2CExDevice.disconnectWCLanDevice((byte[])localObject);
     }
   }
   
-  public final boolean cP(String paramString1, String paramString2)
+  public final boolean dT(String paramString1, String paramString2)
   {
-    if (!Bt(paramString1))
+    AppMethodBeat.i(19293);
+    if (!Lv(paramString1))
     {
-      y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "deviceId " + paramString1 + " not connected!");
+      ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "deviceId " + paramString1 + " not connected!");
+      AppMethodBeat.o(19293);
       return false;
     }
-    if ((paramString1 != null) && (this.jvd.containsKey(paramString1)))
+    if ((paramString1 != null) && (this.lEC.containsKey(paramString1)))
     {
-      paramString1 = (byte[])this.jvd.get(paramString1);
-      this.jvw = 0;
+      paramString1 = (byte[])this.lEC.get(paramString1);
+      this.lEV = 0;
     }
     for (;;)
     {
@@ -124,32 +150,36 @@ public final class ExdeviceWCLanSDKUtil
         paramString2.put("wxmsg_jsapi", localJSONObject);
         localJSONObject = new JSONObject();
         localJSONObject.put("services", paramString2);
-        this.jvw = Java2CExDevice.useWCLanDeviceService(paramString1, localJSONObject.toString().getBytes());
-        if (this.jvw == 0) {
-          break label205;
+        this.lEV = Java2CExDevice.useWCLanDeviceService(paramString1, localJSONObject.toString().getBytes());
+        if (this.lEV == 0) {
+          break label237;
         }
         bool = true;
-        y.d("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "get useWCLanDeviceService mCallBackCmdId =" + this.jvw);
+        ab.d("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "get useWCLanDeviceService mCallBackCmdId =" + this.lEV);
+        AppMethodBeat.o(19293);
         return bool;
       }
       catch (Exception paramString1)
       {
-        y.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", paramString1, "", new Object[0]);
-        y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON encode failed in useWCLanDeviceService");
+        ab.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", paramString1, "", new Object[0]);
+        ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON encode failed in useWCLanDeviceService");
+        AppMethodBeat.o(19293);
         return false;
       }
-      y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "mDevClassInfo is null in useWCLanDeviceService");
+      ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "mDevClassInfo is null in useWCLanDeviceService");
+      AppMethodBeat.o(19293);
       return false;
-      label205:
-      y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "useWCLanDeviceService error!");
+      label237:
+      ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "useWCLanDeviceService error!");
       boolean bool = false;
     }
   }
   
-  public final boolean i(boolean paramBoolean, String paramString)
+  public final boolean n(boolean paramBoolean, String paramString)
   {
-    if ((paramString != null) && (this.jvd.containsKey(paramString))) {
-      paramString = (byte[])this.jvd.get(paramString);
+    AppMethodBeat.i(19291);
+    if ((paramString != null) && (this.lEC.containsKey(paramString))) {
+      paramString = (byte[])this.lEC.get(paramString);
     }
     for (;;)
     {
@@ -158,33 +188,36 @@ public final class ExdeviceWCLanSDKUtil
         JSONObject localJSONObject2 = new JSONObject();
         if (paramBoolean)
         {
-          y.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "open device!");
+          ab.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "open device!");
           localJSONObject2.put("cmd", "open");
           JSONObject localJSONObject1 = new JSONObject();
           localJSONObject1.put("wxmsg_jsapi", localJSONObject2);
           localJSONObject2 = new JSONObject();
           localJSONObject2.put("services", localJSONObject1);
-          this.jvx = Java2CExDevice.useWCLanDeviceService(paramString, localJSONObject2.toString().getBytes());
-          if (this.jvx != 0)
+          this.lEW = Java2CExDevice.useWCLanDeviceService(paramString, localJSONObject2.toString().getBytes());
+          if (this.lEW != 0)
           {
-            y.d("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "get openOrCloseDevice mCallBackCmdId =" + this.jvx);
+            ab.d("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "get openOrCloseDevice mCallBackCmdId =" + this.lEW);
+            AppMethodBeat.o(19291);
             return true;
-            y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "mDevClassInfo is null in openOrCloseDevice");
+            ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "mDevClassInfo is null in openOrCloseDevice");
+            AppMethodBeat.o(19291);
             return false;
           }
         }
         else
         {
-          y.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "close device!");
+          ab.i("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "close device!");
           localJSONObject2.put("cmd", "close");
           continue;
         }
-        y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "openOrCloseDevice error!");
+        ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "openOrCloseDevice error!");
       }
       catch (Exception paramString)
       {
-        y.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", paramString, "", new Object[0]);
-        y.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON encode failed in openOrCloseDevice");
+        ab.printErrStackTrace("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", paramString, "", new Object[0]);
+        ab.e("MicroMsg.exdevice.ExdeviceWCLanSDKUtil", "JSON encode failed in openOrCloseDevice");
+        AppMethodBeat.o(19291);
         return false;
       }
     }

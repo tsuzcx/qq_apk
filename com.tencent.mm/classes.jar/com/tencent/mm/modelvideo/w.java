@@ -2,7 +2,7 @@ package com.tencent.mm.modelvideo;
 
 public abstract interface w
 {
-  public abstract void nK(String paramString);
+  public abstract void uX(String paramString);
 }
 
 

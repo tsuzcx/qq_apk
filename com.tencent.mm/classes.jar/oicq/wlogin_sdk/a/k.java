@@ -1,24 +1,29 @@
 package oicq.wlogin_sdk.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
   extends a
 {
-  int xrt = 0;
+  int CNG = 0;
   
   public k()
   {
-    this.xqq = 265;
+    this.CMD = 265;
   }
   
-  public final byte[] cb(byte[] paramArrayOfByte)
+  public final byte[] cM(byte[] paramArrayOfByte)
   {
-    this.xrt = paramArrayOfByte.length;
-    byte[] arrayOfByte = new byte[this.xrt];
+    AppMethodBeat.i(96502);
+    this.CNG = paramArrayOfByte.length;
+    byte[] arrayOfByte = new byte[this.CNG];
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, paramArrayOfByte.length);
-    super.KP(this.xqq);
-    super.aa(arrayOfByte, this.xrt);
-    super.cUF();
-    return super.cUB();
+    super.Wr(this.CMD);
+    super.ab(arrayOfByte, this.CNG);
+    super.ere();
+    paramArrayOfByte = super.era();
+    AppMethodBeat.o(96502);
+    return paramArrayOfByte;
   }
 }
 

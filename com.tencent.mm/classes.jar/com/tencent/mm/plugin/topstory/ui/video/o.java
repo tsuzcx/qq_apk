@@ -1,17 +1,14 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.PluginTopStory;
+import com.tencent.mm.plugin.topstory.a.b.a;
+import com.tencent.mm.plugin.topstory.a.f;
 import com.tencent.mm.plugin.topstory.c;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.w;
-import com.tencent.mm.protocal.c.blf;
-import com.tencent.mm.protocal.c.byf;
-import com.tencent.mm.protocal.c.byg;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ckw;
+import com.tencent.mm.protocal.protobuf.ckx;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -20,117 +17,118 @@ import java.util.Map;
 
 public final class o
 {
-  private byg pDy;
-  private b pEp;
-  private int pFU;
-  Map<String, com.tencent.mm.plugin.topstory.a.b.b> pGo = new HashMap();
-  public int pGp = 2;
-  public com.tencent.mm.plugin.topstory.a.b.a pGq;
+  private int smh;
+  private ckx tfm;
+  private b thM;
+  Map<String, com.tencent.mm.plugin.topstory.a.b.b> tjJ;
+  public int tjK;
+  public a tjL;
   
-  public final void a(byg parambyg, int paramInt, String paramString)
+  public o()
   {
-    this.pDy = parambyg;
-    this.pGq = new com.tencent.mm.plugin.topstory.a.b.a();
-    this.pGq.pDe = System.currentTimeMillis();
-    this.pGq.pDm = 2L;
-    this.pGq.pDl = this.pGp;
-    this.pGq.position = (paramInt + 1);
-    byf localbyf = this.pEp.bNv();
-    this.pGq.pDx = (localbyf.scene + "_" + localbyf.fTF + "_" + localbyf.tOo);
-    if (this.pEp.isFullscreenMode()) {
-      this.pGq.pDk = 1L;
-    }
-    this.pGp = 2;
-    y.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "startVideoPlay %s %s %s reportInfo: %d %d", new Object[] { paramString, parambyg.tOx, parambyg.title, Long.valueOf(this.pGq.pDl), Long.valueOf(this.pGq.pDm) });
+    AppMethodBeat.i(1792);
+    this.tjK = 2;
+    this.tjJ = new HashMap();
+    AppMethodBeat.o(1792);
   }
   
-  public final void akT()
+  public final void a(ckx paramckx, int paramInt, String paramString)
   {
-    this.pFU -= 1;
-    y.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.pFU) });
-    if (this.pFU <= 0)
+    AppMethodBeat.i(1797);
+    this.tfm = paramckx;
+    this.tjL = new a();
+    this.tjL.teT = System.currentTimeMillis();
+    this.tjL.tfb = 2L;
+    this.tjL.tfa = this.tjK;
+    this.tjL.position = (paramInt + 1);
+    ckw localckw = this.thM.cJf();
+    this.tjL.fjC = (localckw.scene + "_" + localckw.hng + "_" + localckw.xUO);
+    if (this.thM.isFullscreenMode()) {
+      this.tjL.teZ = 1L;
+    }
+    this.tjK = 2;
+    ab.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "startVideoPlay %s %s %s reportInfo: %d %d", new Object[] { paramString, paramckx.xVa, paramckx.title, Long.valueOf(this.tjL.tfa), Long.valueOf(this.tjL.tfb) });
+    AppMethodBeat.o(1797);
+  }
+  
+  public final void aEM()
+  {
+    AppMethodBeat.i(1794);
+    this.smh -= 1;
+    ab.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "onUIDestroy %d", new Object[] { Integer.valueOf(this.smh) });
+    if (this.smh <= 0)
     {
-      bOp();
-      this.pEp = null;
+      cKd();
+      this.thM = null;
     }
+    AppMethodBeat.o(1794);
   }
   
-  public final void b(byf parambyf)
+  public final void b(ckw paramckw)
   {
-    ((PluginTopStory)g.t(PluginTopStory.class)).getReporter();
-    byg localbyg = this.pDy;
-    com.tencent.mm.plugin.topstory.a.b.a locala = this.pGq;
-    y.i("MicroMsg.TopStory.TopStoryReporterImpl", "stopVideoPlay: %s %s", new Object[] { localbyg, locala });
-    if ((localbyg != null) && (locala != null))
-    {
-      locala.pDf = System.currentTimeMillis();
-      locala.pDg = (locala.pDf - locala.pDe);
-      Object localObject = c.a(parambyf, localbyg, locala);
-      if (!bk.bl((String)localObject))
-      {
-        blf localblf = new blf();
-        localblf.tEQ = ((String)localObject);
-        y.i("MicroMsg.TopStory.TopStoryReporterImpl", "build14436VideoPlayReportString %s", new Object[] { localblf.tEQ });
-        localObject = new w(localblf);
-        g.Dk().a((m)localObject, 0);
-      }
-      parambyf = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(parambyf.scene), localbyg.tOx, Long.valueOf(localbyg.tOF), "mp4", Integer.valueOf(localbyg.tOw), Integer.valueOf(0), Long.valueOf(locala.pDe), Long.valueOf(locala.pDf), Long.valueOf(locala.pDh), Long.valueOf(locala.pDg), Long.valueOf(locala.pDj), Long.valueOf(locala.pDk), Long.valueOf(locala.pDl), Long.valueOf(locala.pDm), Long.valueOf(locala.pDp), Long.valueOf(locala.pDq), Long.valueOf(locala.pDi), Long.valueOf(locala.pDr), Long.valueOf(locala.pDs), Long.valueOf(locala.pDu), Long.valueOf(locala.pDv), locala.pDx, Long.valueOf(locala.position), aa.boM(), Long.valueOf(locala.pDt), Long.valueOf(locala.pDw), Long.valueOf(locala.pDn), Long.valueOf(locala.pDo), parambyf.tNY });
-      y.i("MicroMsg.TopStory.TopStoryReporterImpl", "stopVideoPlay 15414 %s", new Object[] { parambyf });
-      com.tencent.mm.plugin.report.f.nEG.aC(15414, parambyf);
-      com.tencent.mm.plugin.topstory.a.a.a.a(locala);
-    }
-    this.pDy = null;
-    this.pGq = null;
+    AppMethodBeat.i(1798);
+    ((PluginTopStory)g.G(PluginTopStory.class)).getReporter();
+    c.a(paramckw, this.tfm, this.tjL);
+    this.tfm = null;
+    this.tjL = null;
+    AppMethodBeat.o(1798);
   }
   
-  public final void b(byg parambyg)
+  public final void cKd()
   {
-    if (parambyg == null) {
-      y.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "setVideoInfoExpose null");
-    }
-    com.tencent.mm.plugin.topstory.a.b.b localb = new com.tencent.mm.plugin.topstory.a.b.b(parambyg);
-    if (!this.pGo.containsKey(localb.pDy.tOx))
-    {
-      this.pGo.put(localb.pDy.tOx, localb);
-      y.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "setVideoInfoExpose %s", new Object[] { parambyg });
-      return;
-    }
-    ((com.tencent.mm.plugin.topstory.a.b.b)this.pGo.get(localb.pDy.tOx)).pDy = parambyg;
-  }
-  
-  public final void bOp()
-  {
+    AppMethodBeat.i(1796);
     HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.pGo.values().iterator();
+    Iterator localIterator = this.tjJ.values().iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.plugin.topstory.a.b.b localb = (com.tencent.mm.plugin.topstory.a.b.b)localIterator.next();
-      if (!localb.nHq)
+      if (!localb.quM)
       {
         localHashSet.add(localb);
-        localb.nHq = true;
+        localb.quM = true;
       }
     }
-    if (this.pEp != null) {
-      ((com.tencent.mm.plugin.topstory.a.b)g.t(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.pEp.bNv(), localHashSet);
+    if (this.thM != null) {
+      ((com.tencent.mm.plugin.topstory.a.b)g.G(com.tencent.mm.plugin.topstory.a.b.class)).getReporter().a(this.thM.cJf(), localHashSet);
     }
-  }
-  
-  public final void c(byg parambyg)
-  {
-    b(parambyg);
-    ((com.tencent.mm.plugin.topstory.a.b.b)this.pGo.get(parambyg.tOx)).pDz = true;
+    AppMethodBeat.o(1796);
   }
   
   public final void d(b paramb)
   {
-    this.pFU += 1;
-    this.pEp = paramb;
+    this.smh += 1;
+    this.thM = paramb;
+  }
+  
+  public final void f(ckx paramckx)
+  {
+    AppMethodBeat.i(1793);
+    if (paramckx == null) {
+      ab.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "setVideoInfoExpose null");
+    }
+    com.tencent.mm.plugin.topstory.a.b.b localb = new com.tencent.mm.plugin.topstory.a.b.b(paramckx);
+    if (!this.tjJ.containsKey(localb.tfm.xVa))
+    {
+      this.tjJ.put(localb.tfm.xVa, localb);
+      ab.i("MicroMSsg.TopStory.TopStoryVideoReportMgr", "setVideoInfoExpose %s", new Object[] { paramckx });
+      AppMethodBeat.o(1793);
+      return;
+    }
+    ((com.tencent.mm.plugin.topstory.a.b.b)this.tjJ.get(localb.tfm.xVa)).tfm = paramckx;
+    AppMethodBeat.o(1793);
+  }
+  
+  public final void g(ckx paramckx)
+  {
+    AppMethodBeat.i(1795);
+    f(paramckx);
+    ((com.tencent.mm.plugin.topstory.a.b.b)this.tjJ.get(paramckx.xVa)).tfn = true;
+    AppMethodBeat.o(1795);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.o
  * JD-Core Version:    0.7.0.1
  */

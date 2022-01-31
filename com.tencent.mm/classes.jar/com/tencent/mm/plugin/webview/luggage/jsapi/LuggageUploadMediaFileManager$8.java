@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.webview.model.ag;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.model.al;
 import com.tencent.mm.plugin.webview.model.d.b;
 import com.tencent.mm.plugin.webview.modeltools.g;
 
@@ -13,10 +14,12 @@ final class LuggageUploadMediaFileManager$8
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.ccK().a(this.ref);
-    g.ccK();
-    ag.rO(this.rec);
-    this.ree.c(false, "", "");
+    AppMethodBeat.i(6399);
+    g.dcD().a(this.uUh);
+    g.dcD();
+    al.zE(this.uUf);
+    this.uUg.d(false, "", "");
+    AppMethodBeat.o(6399);
   }
 }
 

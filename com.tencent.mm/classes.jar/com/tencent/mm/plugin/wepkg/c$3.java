@@ -1,24 +1,29 @@
 package com.tencent.mm.plugin.wepkg;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class c$3
-  implements am.a
+  implements ap.a
 {
   c$3(c paramc) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (!c.c(this.rNZ))
+    AppMethodBeat.i(63367);
+    if ((c.b(this.vEJ)) && (!c.c(this.vEJ)))
     {
-      y.i("MicroMsg.WePkgPlugin", "white screen");
-      ai.d(new c.3.1(this));
-      return false;
+      ab.i("MicroMsg.Wepkg.WePkgPlugin", "white screen");
+      al.d(new c.3.1(this));
     }
-    c.Dw(0);
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(63367);
+      return false;
+      c.Lo(0);
+    }
   }
 }
 

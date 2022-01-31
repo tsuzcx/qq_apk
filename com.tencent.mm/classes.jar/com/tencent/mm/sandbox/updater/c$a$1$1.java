@@ -1,5 +1,6 @@
 package com.tencent.mm.sandbox.updater;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sandbox.b.a;
 
 final class c$a$1$1
@@ -9,10 +10,12 @@ final class c$a$1$1
   
   public final void run()
   {
-    if (c.a.a(this.ucF.ucD) <= c.a.b(this.ucF.ucD)) {
-      c.a.c(this.ucF.ucD).cy(c.a.b(this.ucF.ucD), c.a.a(this.ucF.ucD));
+    AppMethodBeat.i(28862);
+    if (c.a.a(this.ykU.ykS) <= c.a.b(this.ykU.ykS)) {
+      c.a.c(this.ykU.ykS).dW(c.a.b(this.ykU.ykS), c.a.a(this.ykU.ykS));
     }
-    c.a.c(this.ucF.ucD).hn(this.ucE);
+    c.a.c(this.ykU.ykS).nK(this.ykT);
+    AppMethodBeat.o(28862);
   }
 }
 

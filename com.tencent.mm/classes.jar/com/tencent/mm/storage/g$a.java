@@ -1,14 +1,18 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.g;
 import com.tencent.mm.sdk.e.c.a;
 
 public final class g$a
   extends g
 {
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return g.vg();
+    AppMethodBeat.i(80274);
+    c.a locala = g.Hm();
+    AppMethodBeat.o(80274);
+    return locala;
   }
 }
 

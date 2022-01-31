@@ -4,9 +4,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CardNewMsgUI$2
   implements AdapterView.OnItemClickListener
@@ -15,35 +16,38 @@ final class CardNewMsgUI$2
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt == CardNewMsgUI.a(this.iwh).getCount())
+    AppMethodBeat.i(88593);
+    if (paramInt == CardNewMsgUI.a(this.kxl).getCount())
     {
       paramInt = 1;
-      if (am.aAu().aAo() > 0) {
-        am.aAu().aAp();
+      if (am.bcf().bbZ() > 0) {
+        am.bcf().bca();
       }
       for (;;)
       {
-        CardNewMsgUI.a(this.iwh).a(null, null);
-        if (!CardNewMsgUI.b(this.iwh))
+        CardNewMsgUI.a(this.kxl).a(null, null);
+        if (!CardNewMsgUI.b(this.kxl))
         {
-          if (CardNewMsgUI.c(this.iwh).getParent() != null)
+          if (CardNewMsgUI.c(this.kxl).getParent() != null)
           {
-            y.d("MicroMsg.CardNewMsgUI", "remove footer");
-            CardNewMsgUI.d(this.iwh).removeFooterView(CardNewMsgUI.c(this.iwh));
+            ab.d("MicroMsg.CardNewMsgUI", "remove footer");
+            CardNewMsgUI.d(this.kxl).removeFooterView(CardNewMsgUI.c(this.kxl));
           }
-          if ((!CardNewMsgUI.a(this.iwh).aCc()) && (CardNewMsgUI.e(this.iwh).getParent() == null) && (paramInt > 0))
+          if ((!CardNewMsgUI.a(this.kxl).bem()) && (CardNewMsgUI.e(this.kxl).getParent() == null) && (paramInt > 0))
           {
-            CardNewMsgUI.d(this.iwh).addFooterView(CardNewMsgUI.e(this.iwh));
-            y.i("MicroMsg.CardNewMsgUI", "add mLoadingFooterView");
+            CardNewMsgUI.d(this.kxl).addFooterView(CardNewMsgUI.e(this.kxl));
+            ab.i("MicroMsg.CardNewMsgUI", "add mLoadingFooterView");
           }
         }
-        CardNewMsgUI.f(this.iwh);
-        CardNewMsgUI.c(this.iwh).setVisibility(8);
+        CardNewMsgUI.f(this.kxl);
+        CardNewMsgUI.c(this.kxl).setVisibility(8);
+        AppMethodBeat.o(88593);
         return;
-        paramInt = CardNewMsgUI.a(this.iwh).aCd();
+        paramInt = CardNewMsgUI.a(this.kxl).ben();
       }
     }
-    CardNewMsgUI.a(this.iwh, paramInt);
+    CardNewMsgUI.a(this.kxl, paramInt);
+    AppMethodBeat.o(88593);
   }
 }
 

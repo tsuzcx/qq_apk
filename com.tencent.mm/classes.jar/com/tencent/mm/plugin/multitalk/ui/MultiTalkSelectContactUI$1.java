@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.multitalk.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.multitalk.a.g;
-import com.tencent.mm.plugin.multitalk.a.f;
-import com.tencent.mm.plugin.multitalk.a.j;
-import com.tencent.mm.plugin.multitalk.a.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.multitalk.model.f;
+import com.tencent.mm.plugin.multitalk.model.j;
+import com.tencent.mm.plugin.multitalk.model.p;
 import com.tencent.mm.plugin.multitalk.ui.widget.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,34 +23,36 @@ final class MultiTalkSelectContactUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (!aq.isNetworkConnected(ae.getContext())) {
-      com.tencent.mm.bf.e.a(this.mvr, a.g.voip_net_unavailable, null);
+    AppMethodBeat.i(54158);
+    if (!at.isNetworkConnected(ah.getContext())) {
+      com.tencent.mm.bg.e.a(this.oVj, 2131304713, null);
     }
     for (;;)
     {
-      this.mvr.XM();
+      this.oVj.hideVKB();
+      AppMethodBeat.o(54158);
       return true;
       paramMenuItem = new LinkedList();
-      paramMenuItem.addAll(MultiTalkSelectContactUI.a(this.mvr));
-      paramMenuItem.add(q.Gj());
-      paramMenuItem = bk.c(paramMenuItem, ",");
-      if (MultiTalkSelectContactUI.b(this.mvr))
+      paramMenuItem.addAll(MultiTalkSelectContactUI.a(this.oVj));
+      paramMenuItem.add(r.Zn());
+      paramMenuItem = bo.d(paramMenuItem, ",");
+      if (MultiTalkSelectContactUI.b(this.oVj))
       {
-        com.tencent.mm.plugin.multitalk.a.e.a(MultiTalkSelectContactUI.a(this.mvr).size(), MultiTalkSelectContactUI.c(this.mvr), 1, "", MultiTalkSelectContactUI.d(this.mvr).mvV);
-        p.blF().b(this.mvr, paramMenuItem, MultiTalkSelectContactUI.e(this.mvr));
+        com.tencent.mm.plugin.multitalk.model.e.a(MultiTalkSelectContactUI.a(this.oVj).size(), MultiTalkSelectContactUI.c(this.oVj), 1, "", MultiTalkSelectContactUI.d(this.oVj).oVN);
+        p.bTF().b(this.oVj, paramMenuItem, MultiTalkSelectContactUI.e(this.oVj));
       }
       else
       {
-        com.tencent.mm.plugin.multitalk.a.e.a(MultiTalkSelectContactUI.a(this.mvr).size(), MultiTalkSelectContactUI.c(this.mvr), 2, j.blu(), 0);
-        this.mvr.setResult(-1, this.mvr.getIntent().putExtra("Select_Contact", paramMenuItem));
-        this.mvr.finish();
+        com.tencent.mm.plugin.multitalk.model.e.a(MultiTalkSelectContactUI.a(this.oVj).size(), MultiTalkSelectContactUI.c(this.oVj), 2, j.bTu(), 0);
+        this.oVj.setResult(-1, this.oVj.getIntent().putExtra("Select_Contact", paramMenuItem));
+        this.oVj.finish();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.MultiTalkSelectContactUI.1
  * JD-Core Version:    0.7.0.1
  */

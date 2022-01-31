@@ -1,20 +1,31 @@
 package com.tencent.mm.wallet_core.ui;
 
-import android.view.View;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.wallet_core.d.g;
+import com.tencent.mm.wallet_core.d.i;
 
 final class WalletBaseUI$3
-  implements Runnable
+  extends g
 {
-  WalletBaseUI$3(WalletBaseUI paramWalletBaseUI, View paramView, int paramInt) {}
-  
-  public final void run()
+  WalletBaseUI$3(WalletBaseUI paramWalletBaseUI, MMActivity paramMMActivity, i parami)
   {
-    this.gOM.scrollBy(0, this.nxi);
+    super(paramMMActivity, parami);
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    return false;
+  }
+  
+  public final boolean p(Object... paramVarArgs)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.WalletBaseUI.3
  * JD-Core Version:    0.7.0.1
  */

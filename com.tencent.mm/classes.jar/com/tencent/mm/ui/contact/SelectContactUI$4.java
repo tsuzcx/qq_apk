@@ -3,7 +3,8 @@ package com.tencent.mm.ui.contact;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SelectContactUI$4
   implements DialogInterface.OnClickListener
@@ -12,18 +13,20 @@ final class SelectContactUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.SelectContactUI", "return the result");
+    AppMethodBeat.i(33853);
+    ab.i("MicroMsg.SelectContactUI", "return the result");
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("Select_Contact", this.vNE);
-    paramDialogInterface.putExtra("Select_Conv_User", this.vNE);
-    paramDialogInterface.putExtra("Select_Contact", this.vNE);
-    this.vNB.setResult(-1, paramDialogInterface);
-    this.vNB.finish();
+    paramDialogInterface.putExtra("Select_Contact", this.Afh);
+    paramDialogInterface.putExtra("Select_Conv_User", this.Afh);
+    paramDialogInterface.putExtra("Select_Contact", this.Afh);
+    this.Afg.setResult(-1, paramDialogInterface);
+    this.Afg.finish();
+    AppMethodBeat.o(33853);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.SelectContactUI.4
  * JD-Core Version:    0.7.0.1
  */

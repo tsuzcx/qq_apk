@@ -7,10 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ah;
 import com.tencent.mm.storage.RegionCodeDecoder.Region;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -18,13 +15,13 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ZoneRecommandPreference
   extends Preference
 {
-  private TextView eXu;
-  int status = 0;
-  RegionCodeDecoder.Region wfB;
-  RegionCodeDecoder.Region wfC;
-  RegionCodeDecoder.Region wfD;
-  private TextView wfE;
-  private ImageView wfF;
+  RegionCodeDecoder.Region Ayr;
+  RegionCodeDecoder.Region Ays;
+  RegionCodeDecoder.Region Ayt;
+  private TextView Ayu;
+  private ImageView Ayv;
+  private TextView gpr;
+  int status;
   
   public ZoneRecommandPreference(Context paramContext)
   {
@@ -39,90 +36,105 @@ public class ZoneRecommandPreference
   public ZoneRecommandPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(35014);
+    this.status = 0;
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(35014);
   }
   
-  final void cJo()
+  final void dOe()
   {
-    if ((this.wfE == null) || (this.eXu == null)) {
+    AppMethodBeat.i(35017);
+    if ((this.Ayu == null) || (this.gpr == null))
+    {
+      AppMethodBeat.o(35017);
       return;
     }
     switch (this.status)
     {
-    default: 
-      return;
-    case 0: 
-      this.wfE.setVisibility(8);
-      this.eXu.setVisibility(0);
-      this.eXu.setText(R.l.setting_zone_getting_location);
-      this.wfF.setImageResource(R.k.get_location_icon);
-      setEnabled(false);
-      setSelectable(false);
-      return;
-    case 2: 
-      this.wfE.setVisibility(8);
-      this.eXu.setVisibility(0);
-      this.eXu.setText(R.l.setting_zone_cannot_get_location);
-      this.wfF.setImageResource(R.k.get_location_failed_icon);
-      setEnabled(false);
-      setSelectable(false);
-      return;
     }
-    this.wfE.setVisibility(0);
-    this.eXu.setVisibility(8);
-    this.wfF.setImageResource(R.k.get_location_icon);
-    Object localObject2 = "";
-    Object localObject1 = localObject2;
-    if (this.wfB != null)
+    for (;;)
     {
-      localObject1 = localObject2;
-      if (!ah.bl(this.wfB.getName())) {
-        localObject1 = "" + this.wfB.getName();
+      AppMethodBeat.o(35017);
+      return;
+      this.Ayu.setVisibility(8);
+      this.gpr.setVisibility(0);
+      this.gpr.setText(2131303181);
+      this.Ayv.setImageResource(2131231403);
+      setEnabled(false);
+      setSelectable(false);
+      AppMethodBeat.o(35017);
+      return;
+      this.Ayu.setVisibility(8);
+      this.gpr.setVisibility(0);
+      this.gpr.setText(2131303178);
+      this.Ayv.setImageResource(2131231402);
+      setEnabled(false);
+      setSelectable(false);
+      AppMethodBeat.o(35017);
+      return;
+      this.Ayu.setVisibility(0);
+      this.gpr.setVisibility(8);
+      this.Ayv.setImageResource(2131231403);
+      Object localObject2 = "";
+      Object localObject1 = localObject2;
+      if (this.Ayr != null)
+      {
+        localObject1 = localObject2;
+        if (!ah.isNullOrNil(this.Ayr.getName())) {
+          localObject1 = "" + this.Ayr.getName();
+        }
       }
-    }
-    localObject2 = localObject1;
-    if (this.wfC != null)
-    {
       localObject2 = localObject1;
-      if (!ah.bl(this.wfC.getName())) {
-        localObject2 = (String)localObject1 + " " + this.wfC.getName();
+      if (this.Ays != null)
+      {
+        localObject2 = localObject1;
+        if (!ah.isNullOrNil(this.Ays.getName())) {
+          localObject2 = (String)localObject1 + " " + this.Ays.getName();
+        }
       }
-    }
-    localObject1 = localObject2;
-    if (this.wfD != null)
-    {
       localObject1 = localObject2;
-      if (!ah.bl(this.wfD.getName())) {
-        localObject1 = (String)localObject2 + " " + this.wfD.getName();
+      if (this.Ayt != null)
+      {
+        localObject1 = localObject2;
+        if (!ah.isNullOrNil(this.Ayt.getName())) {
+          localObject1 = (String)localObject2 + " " + this.Ayt.getName();
+        }
       }
+      this.Ayu.setText((CharSequence)localObject1);
+      setEnabled(true);
+      setSelectable(true);
     }
-    this.wfE.setText((CharSequence)localObject1);
-    setEnabled(true);
-    setSelectable(true);
   }
   
-  public final void cJp()
+  public final void dOf()
   {
+    AppMethodBeat.i(35018);
     this.status = 2;
-    cJo();
+    dOe();
+    AppMethodBeat.o(35018);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(35016);
     super.onBindView(paramView);
-    cJo();
+    dOe();
+    AppMethodBeat.o(35016);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(35015);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_zone_recommand, localViewGroup);
-    this.wfE = ((TextView)paramViewGroup.findViewById(R.h.zonename));
-    this.eXu = ((TextView)paramViewGroup.findViewById(R.h.status));
-    this.wfF = ((ImageView)paramViewGroup.findViewById(R.h.status_image));
+    localLayoutInflater.inflate(2130970223, localViewGroup);
+    this.Ayu = ((TextView)paramViewGroup.findViewById(2131826226));
+    this.gpr = ((TextView)paramViewGroup.findViewById(2131826231));
+    this.Ayv = ((ImageView)paramViewGroup.findViewById(2131826230));
+    AppMethodBeat.o(35015);
     return paramViewGroup;
   }
 }

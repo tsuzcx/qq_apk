@@ -1,29 +1,19 @@
 package android.support.v4.app;
 
-import android.content.Intent;
-import android.content.IntentSender;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
-abstract class d
-  extends c
+public abstract class d
 {
-  boolean mStartedActivityFromFragment;
-  
-  public void startActivityForResult(Intent paramIntent, int paramInt, Bundle paramBundle)
+  public Fragment instantiate(Context paramContext, String paramString, Bundle paramBundle)
   {
-    if ((!this.mStartedActivityFromFragment) && (paramInt != -1)) {
-      checkForValidRequestCode(paramInt);
-    }
-    super.startActivityForResult(paramIntent, paramInt, paramBundle);
+    return Fragment.instantiate(paramContext, paramString, paramBundle);
   }
   
-  public void startIntentSenderForResult(IntentSender paramIntentSender, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, Bundle paramBundle)
-  {
-    if ((!this.mStartedIntentSenderFromFragment) && (paramInt1 != -1)) {
-      checkForValidRequestCode(paramInt1);
-    }
-    super.startIntentSenderForResult(paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
-  }
+  public abstract View onFindViewById(int paramInt);
+  
+  public abstract boolean onHasView();
 }
 
 

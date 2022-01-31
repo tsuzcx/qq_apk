@@ -1,43 +1,24 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.widget.Button;
-import com.tencent.mm.plugin.luckymoney.b.d;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 
 final class LuckyMoneyPrepareUI$29
-  implements am.a
+  implements View.OnClickListener
 {
   LuckyMoneyPrepareUI$29(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final boolean tC()
+  public final void onClick(View paramView)
   {
-    int i;
-    double d2;
-    if ((LuckyMoneyPrepareUI.b(this.lXg).bfp() != 3) && (LuckyMoneyPrepareUI.a(this.lXg).bfp() != 3))
-    {
-      i = LuckyMoneyPrepareUI.a(this.lXg).getInput();
-      d2 = LuckyMoneyPrepareUI.b(this.lXg).getInput();
-      d1 = d2;
-      if (LuckyMoneyPrepareUI.c(this.lXg) != 0) {}
-    }
-    for (double d1 = d2 * i;; d1 = 0.0D)
-    {
-      if ((d1 == 0.0D) || (d1 > LuckyMoneyPrepareUI.d(this.lXg).lLa) || (LuckyMoneyPrepareUI.p(this.lXg).bgj()))
-      {
-        LuckyMoneyPrepareUI.q(this.lXg).setClickable(false);
-        LuckyMoneyPrepareUI.q(this.lXg).setEnabled(false);
-      }
-      for (;;)
-      {
-        y.i("MicroMsg.LuckyMoneyPrepareUI", "onTimeExpired & check: amount=" + d1 + ", hasErr=" + LuckyMoneyPrepareUI.p(this.lXg).bgj());
-        LuckyMoneyPrepareUI.r(this.lXg).crl();
-        return false;
-        LuckyMoneyPrepareUI.q(this.lXg).setClickable(true);
-        LuckyMoneyPrepareUI.q(this.lXg).setEnabled(true);
-      }
-    }
+    AppMethodBeat.i(42974);
+    h.qsU.e(11701, new Object[] { Integer.valueOf(4), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(LuckyMoneyPrepareUI.g(this.owL)), Integer.valueOf(9) });
+    paramView = new Intent();
+    paramView.setClass(this.owL.getContext(), LuckyMoneyCanShareListUI.class);
+    this.owL.startActivity(paramView);
+    AppMethodBeat.o(42974);
   }
 }
 

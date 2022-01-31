@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.shake.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.shake.e.c.a;
 
 final class TVInfoUI$5
@@ -9,8 +10,10 @@ final class TVInfoUI$5
   
   public final void run()
   {
-    TVInfoUI.a(this.odI, this.odH);
-    TVInfoUI.b(this.odI, this.odH);
+    AppMethodBeat.i(24914);
+    TVInfoUI.a(this.qRP, this.qRO);
+    TVInfoUI.b(this.qRP, this.qRO);
+    AppMethodBeat.o(24914);
   }
 }
 

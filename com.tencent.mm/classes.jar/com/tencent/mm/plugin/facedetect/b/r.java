@@ -1,60 +1,69 @@
 package com.tencent.mm.plugin.facedetect.b;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.xn;
-import com.tencent.mm.protocal.c.xo;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.abs;
+import com.tencent.mm.protocal.protobuf.abt;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class r
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
-  public String mFileName = "";
+  private f callback;
+  public String mFileName;
+  private b rr;
   
   public r(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
   {
+    AppMethodBeat.i(98);
+    this.mFileName = "";
     b.a locala = new b.a();
-    locala.ecH = new xn();
-    locala.ecI = new xo();
+    locala.fsX = new abs();
+    locala.fsY = new abt();
     locala.uri = "/cgi-bin/mmbiz-bin/usrmsg/facevideobindbioid";
-    locala.ecG = 1197;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
+    locala.funcId = getType();
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
     this.mFileName = paramString1;
-    paramString1 = (xn)this.dmK.ecE.ecN;
-    paramString1.bOL = paramString2;
-    paramString1.sUf = paramLong;
-    paramString1.sUg = paramString4;
-    paramString1.sUl = paramString3;
+    paramString1 = (abs)this.rr.fsV.fta;
+    paramString1.cwc = paramString2;
+    paramString1.wSa = paramLong;
+    paramString1.wSb = paramString4;
+    paramString1.wSi = paramString3;
+    AppMethodBeat.o(98);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(99);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(99);
+    return i;
   }
   
   public final int getType()
   {
     return 1197;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(100);
+    ab.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(100);
   }
 }
 

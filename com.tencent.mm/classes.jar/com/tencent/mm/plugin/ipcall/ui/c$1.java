@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$1
   implements View.OnClickListener
@@ -12,16 +13,18 @@ final class c$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(21995);
     if ((paramView.getTag() instanceof Integer))
     {
       int i = ((Integer)paramView.getTag()).intValue();
-      paramView = this.ltN.sK(i);
-      Intent localIntent = new Intent(c.a(this.ltN), IPCallUserProfileUI.class);
+      paramView = this.nRg.xM(i);
+      Intent localIntent = new Intent(c.a(this.nRg), IPCallUserProfileUI.class);
       localIntent.putExtra("IPCallProfileUI_contactid", paramView.field_contactId);
       localIntent.putExtra("IPCallProfileUI_systemUsername", paramView.field_systemAddressBookUsername);
       localIntent.putExtra("IPCallProfileUI_wechatUsername", paramView.field_wechatUsername);
-      c.b(this.ltN).startActivity(localIntent);
+      c.b(this.nRg).startActivity(localIntent);
     }
+    AppMethodBeat.o(21995);
   }
 }
 

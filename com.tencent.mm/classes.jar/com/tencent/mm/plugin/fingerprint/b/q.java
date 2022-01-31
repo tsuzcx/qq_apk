@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.fingerprint.b;
 
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
 
 public final class q
 {
-  q.a klH;
+  q.a mGv;
   
   public q(q.a parama)
   {
-    this.klH = parama;
+    this.mGv = parama;
   }
   
-  public final void aTf()
+  public final void aBi()
   {
-    e.post(new q.1(this), getClass().getName());
+    AppMethodBeat.i(41560);
+    d.post(new q.1(this), getClass().getName());
+    AppMethodBeat.o(41560);
   }
 }
 

@@ -1,13 +1,13 @@
 package com.tencent.map.lib;
 
-import com.tencent.tencentmap.mapsdk.a.jt;
-import com.tencent.tencentmap.mapsdk.a.kt;
+import com.tencent.tencentmap.mapsdk.maps.a.iv;
+import com.tencent.tencentmap.mapsdk.maps.a.jd;
 
 public abstract interface a
 {
-  public abstract jt a();
+  public abstract iv a();
   
-  public abstract kt b();
+  public abstract jd b();
   
   public abstract b c();
   

@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class GameDetailAutoScrollView$1
-  implements am.a
+  implements ap.a
 {
   GameDetailAutoScrollView$1(GameDetailAutoScrollView paramGameDetailAutoScrollView) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    GameDetailAutoScrollView.a(this.kYR);
+    AppMethodBeat.i(111806);
+    GameDetailAutoScrollView.a(this.nwO);
+    AppMethodBeat.o(111806);
     return true;
   }
 }

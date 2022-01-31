@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BindLinkedInUI$9
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class BindLinkedInUI$9
   
   public final void onClick(View paramView)
   {
-    BindLinkedInUI.a(this.fbn);
+    AppMethodBeat.i(13396);
+    BindLinkedInUI.a(this.gtf);
+    AppMethodBeat.o(13396);
   }
 }
 

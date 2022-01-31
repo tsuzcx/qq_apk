@@ -1,128 +1,141 @@
 package com.tencent.matrix;
 
-import android.app.Application;
-import com.tencent.matrix.b.c;
-import com.tencent.matrix.d.b.a;
+import android.app.Activity;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.ArrayMap;
+import com.tencent.matrix.g.c;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public class a
+public enum a
 {
-  private static volatile a bmn;
-  private final Application application;
-  public final HashSet<com.tencent.matrix.b.b> bmo;
-  private final c bmp;
+  private Set<com.tencent.matrix.b.a> bLQ = Collections.synchronizedSet(new HashSet());
+  public boolean bLR = false;
+  public String bLS = "default";
+  a bLT = new a((byte)0);
+  public String bLU;
+  boolean isInited = false;
   
-  private a(Application paramApplication, c paramc, HashSet<com.tencent.matrix.b.b> paramHashSet)
+  private a() {}
+  
+  public static String yC()
   {
-    this.application = paramApplication;
-    this.bmp = paramc;
-    this.bmo = paramHashSet;
-    paramApplication = paramHashSet.iterator();
-    while (paramApplication.hasNext())
+    l = System.currentTimeMillis();
+    try
     {
-      paramc = (com.tencent.matrix.b.b)paramApplication.next();
-      paramc.a(this.application, this.bmp);
-      this.bmp.b(paramc);
-    }
-  }
-  
-  /* Error */
-  public static a a(a parama)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 63	com/tencent/matrix/a:bmn	Lcom/tencent/matrix/a;
-    //   6: ifnonnull +14 -> 20
-    //   9: aload_0
-    //   10: putstatic 63	com/tencent/matrix/a:bmn	Lcom/tencent/matrix/a;
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: getstatic 63	com/tencent/matrix/a:bmn	Lcom/tencent/matrix/a;
-    //   19: areturn
-    //   20: ldc 65
-    //   22: ldc 67
-    //   24: iconst_0
-    //   25: anewarray 4	java/lang/Object
-    //   28: invokestatic 73	com/tencent/matrix/d/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   31: goto -18 -> 13
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	40	0	parama	a
-    // Exception table:
-    //   from	to	target	type
-    //   3	13	34	finally
-    //   13	16	34	finally
-    //   20	31	34	finally
-    //   35	38	34	finally
-  }
-  
-  public static void a(b.a parama)
-  {
-    com.tencent.matrix.d.b.b(parama);
-  }
-  
-  public static boolean isInstalled()
-  {
-    return bmn != null;
-  }
-  
-  public static a qO()
-  {
-    if (bmn == null) {
-      throw new RuntimeException("you must init Matrix sdk first");
-    }
-    return bmn;
-  }
-  
-  public final <T extends com.tencent.matrix.b.b> T l(Class<T> paramClass)
-  {
-    paramClass = paramClass.getName();
-    Iterator localIterator = this.bmo.iterator();
-    while (localIterator.hasNext())
-    {
-      com.tencent.matrix.b.b localb = (com.tencent.matrix.b.b)localIterator.next();
-      if (localb.getClass().getName().equals(paramClass)) {
-        return localb;
+      Object localObject3 = Class.forName("android.app.ActivityThread");
+      Object localObject1 = ((Class)localObject3).getMethod("currentActivityThread", new Class[0]).invoke(null, new Object[0]);
+      localObject3 = ((Class)localObject3).getDeclaredField("mActivities");
+      ((Field)localObject3).setAccessible(true);
+      if (Build.VERSION.SDK_INT < 19) {}
+      for (localObject1 = (HashMap)((Field)localObject3).get(localObject1);; localObject1 = (ArrayMap)((Field)localObject3).get(localObject1))
+      {
+        int i = ((Map)localObject1).size();
+        if (i > 0) {
+          break;
+        }
+        return null;
       }
+      localObject3 = ((Map)localObject1).values().iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject1 = ((Iterator)localObject3).next();
+        Class localClass = localObject1.getClass();
+        Field localField = localClass.getDeclaredField("paused");
+        localField.setAccessible(true);
+        if (!localField.getBoolean(localObject1))
+        {
+          localObject3 = localClass.getDeclaredField("activity");
+          ((Field)localObject3).setAccessible(true);
+          localObject1 = ((Activity)((Field)localObject3).get(localObject1)).getClass().getName();
+          return localObject1;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        c.d("Matrix.AppActiveMatrixDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      }
+    }
+    finally
+    {
+      c.d("Matrix.AppActiveMatrixDelegate", "[getTopActivityName] Cost:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
     }
     return null;
   }
   
-  public static final class a
+  public final void a(com.tencent.matrix.b.a parama)
   {
-    public final Application application;
-    public HashSet<com.tencent.matrix.b.b> bmo;
-    public c bmp;
+    this.bLQ.add(parama);
+  }
+  
+  public final void cw(String paramString)
+  {
+    c.i("Matrix.AppActiveMatrixDelegate", "[setCurrentFragmentName] fragmentName:%s", new Object[] { paramString });
+    this.bLU = paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = "?";
+    }
+    localStringBuilder.append(str);
+    this.bLS = localStringBuilder.toString();
+  }
+  
+  final class a
+    implements Application.ActivityLifecycleCallbacks, ComponentCallbacks2
+  {
+    private a() {}
     
-    public a(Application paramApplication)
+    public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
+    
+    public final void onActivityDestroyed(Activity paramActivity) {}
+    
+    public final void onActivityPaused(Activity paramActivity) {}
+    
+    public final void onActivityResumed(Activity paramActivity) {}
+    
+    public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
+    
+    public final void onActivityStarted(Activity paramActivity)
     {
-      if (paramApplication == null) {
-        throw new RuntimeException("matrix init, application is null");
+      a.a(a.this, paramActivity);
+      if (!a.a(a.this)) {
+        a.a(a.this, a.this.bLS);
       }
-      this.application = paramApplication;
     }
     
-    public final a a(com.tencent.matrix.b.b paramb)
+    public final void onActivityStopped(Activity paramActivity)
     {
-      if (this.bmo == null) {
-        this.bmo = new HashSet();
+      if (a.yC() == null) {
+        a.b(a.this, a.this.bLS);
       }
-      String str = paramb.getTag();
-      Iterator localIterator = this.bmo.iterator();
-      while (localIterator.hasNext()) {
-        if (str.equals(((com.tencent.matrix.b.b)localIterator.next()).getTag())) {
-          throw new RuntimeException(String.format("plugin with tag %s is already exist", new Object[] { str }));
-        }
+    }
+    
+    public final void onConfigurationChanged(Configuration paramConfiguration) {}
+    
+    public final void onLowMemory() {}
+    
+    public final void onTrimMemory(int paramInt)
+    {
+      c.i("Matrix.AppActiveMatrixDelegate", "[onTrimMemory] level:%s", new Object[] { Integer.valueOf(paramInt) });
+      if ((paramInt == 20) && (a.a(a.this))) {
+        a.b(a.this, a.b(a.this));
       }
-      this.bmo.add(paramb);
-      return this;
     }
   }
 }

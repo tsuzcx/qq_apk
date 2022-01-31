@@ -54,7 +54,7 @@ public abstract class V8Value
     switch (paramInt)
     {
     default: 
-      throw new IllegalArgumentException("Invalid V8 type: " + paramInt);
+      throw new IllegalArgumentException("Invalid V8 type: ".concat(String.valueOf(paramInt)));
     case 0: 
       return "Null";
     case 1: 

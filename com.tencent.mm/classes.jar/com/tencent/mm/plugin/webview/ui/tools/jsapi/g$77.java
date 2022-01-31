@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.base.h;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$77
-  implements DialogInterface.OnKeyListener
+  implements View.OnCreateContextMenuListener
 {
-  g$77(g paramg) {}
-  
-  public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  g$77(g paramg)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
-    {
-      h.a(g.i(this.rzi), true, g.i(this.rzi).getString(R.l.webview_jssdk_video_uploading_tips), "", g.i(this.rzi).getString(R.l.webview_jssdk_upload_video_cancel), g.i(this.rzi).getString(R.l.webview_jssdk_upload_video_continue), new g.77.1(this), new g.77.2(this));
-      return true;
-    }
-    return false;
+    AppMethodBeat.i(9140);
+    AppMethodBeat.o(9140);
+  }
+  
+  public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  {
+    AppMethodBeat.i(154998);
+    paramContextMenu.add(0, 1, 0, g.j(this.vqm).getString(2131296938));
+    paramContextMenu.add(0, 2, 1, g.j(this.vqm).getString(2131296945));
+    AppMethodBeat.o(154998);
   }
 }
 

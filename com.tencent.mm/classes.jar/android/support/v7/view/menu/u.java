@@ -10,63 +10,73 @@ public class u
   extends h
   implements SubMenu
 {
-  public h Wy;
-  private j Wz;
+  public h Xl;
+  private j Xm;
   
   public u(Context paramContext, h paramh, j paramj)
   {
     super(paramContext);
-    this.Wy = paramh;
-    this.Wz = paramj;
+    this.Xl = paramh;
+    this.Xm = paramj;
   }
   
   public final void a(h.a parama)
   {
-    this.Wy.a(parama);
+    this.Xl.a(parama);
   }
   
   final boolean d(h paramh, MenuItem paramMenuItem)
   {
-    return (super.d(paramh, paramMenuItem)) || (this.Wy.d(paramh, paramMenuItem));
+    return (super.d(paramh, paramMenuItem)) || (this.Xl.d(paramh, paramMenuItem));
   }
   
-  public final String fe()
+  public final String fT()
   {
-    if (this.Wz != null) {}
-    for (int i = this.Wz.getItemId(); i == 0; i = 0) {
+    if (this.Xm != null) {}
+    for (int i = this.Xm.getItemId(); i == 0; i = 0) {
       return null;
     }
-    return super.fe() + ":" + i;
+    return super.fT() + ":" + i;
   }
   
-  public final boolean ff()
+  public final boolean fU()
   {
-    return this.Wy.ff();
+    return this.Xl.fU();
   }
   
-  public final boolean fg()
+  public final boolean fV()
   {
-    return this.Wy.fg();
+    return this.Xl.fV();
   }
   
-  public final h fo()
+  public final boolean fW()
   {
-    return this.Wy.fo();
+    return this.Xl.fW();
   }
   
   public final boolean g(j paramj)
   {
-    return this.Wy.g(paramj);
+    return this.Xl.g(paramj);
   }
   
   public MenuItem getItem()
   {
-    return this.Wz;
+    return this.Xm;
+  }
+  
+  public final h gf()
+  {
+    return this.Xl.gf();
   }
   
   public final boolean h(j paramj)
   {
-    return this.Wy.h(paramj);
+    return this.Xl.h(paramj);
+  }
+  
+  public void setGroupDividerEnabled(boolean paramBoolean)
+  {
+    this.Xl.setGroupDividerEnabled(paramBoolean);
   }
   
   public SubMenu setHeaderIcon(int paramInt)
@@ -101,19 +111,19 @@ public class u
   
   public SubMenu setIcon(int paramInt)
   {
-    this.Wz.setIcon(paramInt);
+    this.Xm.setIcon(paramInt);
     return this;
   }
   
   public SubMenu setIcon(Drawable paramDrawable)
   {
-    this.Wz.setIcon(paramDrawable);
+    this.Xm.setIcon(paramDrawable);
     return this;
   }
   
   public void setQwertyMode(boolean paramBoolean)
   {
-    this.Wy.setQwertyMode(paramBoolean);
+    this.Xl.setQwertyMode(paramBoolean);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.subapp.ui.openapi;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ServicePreference$2
   implements AdapterView.OnItemLongClickListener
@@ -11,25 +12,27 @@ final class ServicePreference$2
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = this.pxu;
-    if (paramAdapterView.pxt != null)
+    AppMethodBeat.i(25484);
+    paramAdapterView = this.sZi;
+    if (paramAdapterView.sZh != null)
     {
-      paramView = paramAdapterView.pxt;
-      if (paramAdapterView.pxt.pwV) {
-        break label38;
+      paramView = paramAdapterView.sZh;
+      if (paramAdapterView.sZh.sYK) {
+        break label50;
       }
     }
-    label38:
+    label50:
     for (boolean bool = true;; bool = false)
     {
-      paramView.jD(bool);
+      paramView.mv(bool);
+      AppMethodBeat.o(25484);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.ServicePreference.2
  * JD-Core Version:    0.7.0.1
  */

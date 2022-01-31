@@ -1,90 +1,47 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.webkit.URLUtil;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class WebViewUI$m
 {
-  private static final Pattern fsW = Pattern.compile(".*#.*wechat_redirect");
-  public String rfY = null;
-  String[] rpq = null;
-  private LinkedList<String> rqO = new LinkedList();
+  private int vgU = 0;
   
-  public WebViewUI$m(String paramString)
+  protected WebViewUI$m(WebViewUI paramWebViewUI) {}
+  
+  public final void deQ()
   {
-    this.rfY = paramString;
+    AppMethodBeat.i(7955);
+    ab.d("MicroMsg.WebViewUI", "addGetA8KeySceneEndListener, before inc count=%d", new Object[] { Integer.valueOf(this.vgU) });
+    if (this.vgU == 0) {
+      WebViewUI.d(this.vgz, 233);
+    }
+    this.vgU += 1;
+    AppMethodBeat.o(7955);
   }
   
-  public final int TB(String paramString)
+  public final void deR()
   {
-    int k = 0;
-    if (bk.bl(paramString))
+    AppMethodBeat.i(7956);
+    ab.d("MicroMsg.WebViewUI", "removeGetA8KeySceneEndListener, before dec count=%d", new Object[] { Integer.valueOf(this.vgU) });
+    this.vgU -= 1;
+    if (this.vgU <= 0) {
+      WebViewUI.e(this.vgz, 233);
+    }
+    AppMethodBeat.o(7956);
+  }
+  
+  public final boolean deS()
+  {
+    AppMethodBeat.i(7957);
+    ab.d("MicroMsg.WebViewUI", "GetA8KeySceneEndController.hasAddListener count=%d", new Object[] { Integer.valueOf(this.vgU) });
+    if (this.vgU > 0)
     {
-      y.e("MicroMsg.WebViewUI", "getReason fail, url is null");
-      return 0;
+      AppMethodBeat.o(7957);
+      return true;
     }
-    if (paramString.equals(this.rfY)) {
-      return 0;
-    }
-    if (fsW.matcher(paramString).find()) {
-      return 2;
-    }
-    int i = k;
-    if (!bk.bl(paramString))
-    {
-      i = k;
-      if (this.rpq != null)
-      {
-        if (this.rpq.length != 0) {
-          break label85;
-        }
-        i = k;
-      }
-    }
-    while (i != 0)
-    {
-      return 8;
-      label85:
-      i = k;
-      if (!this.rqO.contains(paramString)) {
-        if (!URLUtil.isHttpUrl(paramString)) {
-          break label231;
-        }
-      }
-    }
-    label231:
-    for (Object localObject1 = paramString.substring(7);; localObject1 = paramString)
-    {
-      Object localObject2 = localObject1;
-      if (URLUtil.isHttpsUrl((String)localObject1)) {
-        localObject2 = paramString.substring(8);
-      }
-      y.i("MicroMsg.WebViewUI", "rawUrl = %s, subUrl = %s", new Object[] { paramString, localObject2 });
-      localObject1 = this.rpq;
-      int m = localObject1.length;
-      int j = 0;
-      for (;;)
-      {
-        i = k;
-        if (j >= m) {
-          break;
-        }
-        String str = localObject1[j];
-        y.i("MicroMsg.WebViewUI", "force geta8key path = %s", new Object[] { str });
-        if (((String)localObject2).startsWith(str))
-        {
-          this.rqO.add(paramString);
-          i = 1;
-          break;
-        }
-        j += 1;
-      }
-      return 1;
-    }
+    AppMethodBeat.o(7957);
+    return false;
   }
 }
 

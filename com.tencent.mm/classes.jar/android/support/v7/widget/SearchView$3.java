@@ -9,14 +9,14 @@ final class SearchView$3
   
   public final void run()
   {
-    if ((this.ajT.ajz != null) && ((this.ajT.ajz instanceof as))) {
-      this.ajT.ajz.changeCursor(null);
+    if ((this.amj.alP != null) && ((this.amj.alP instanceof au))) {
+      this.amj.alP.changeCursor(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v7.widget.SearchView.3
  * JD-Core Version:    0.7.0.1
  */

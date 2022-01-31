@@ -3,112 +3,132 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.support.v4.view.n;
+import android.support.v4.view.q;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mm.R.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.scanner.util.q;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.scanner.util.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 final class ProductFurtherInfoUI$a
-  extends n
+  extends q
   implements x.a
 {
   private Context mContext;
-  List<String> nJS = new ArrayList();
-  private Map<String, ImageView> nJT = new HashMap();
-  private int nJU;
+  List<String> qxu;
+  private Map<String, ImageView> qxv;
+  private int qxw;
   
   public ProductFurtherInfoUI$a(ProductFurtherInfoUI paramProductFurtherInfoUI, Context paramContext)
   {
+    AppMethodBeat.i(81049);
+    this.qxu = new ArrayList();
+    this.qxv = new HashMap();
     this.mContext = paramContext;
     x.a(this);
-    this.nJU = this.mContext.getResources().getColor(R.e.hint_text_color_dark_bg);
+    this.qxw = this.mContext.getResources().getColor(2131690169);
+    AppMethodBeat.o(81049);
   }
   
-  private ImageView LZ(String paramString)
+  private ImageView YB(String paramString)
   {
-    if (this.nJT.containsKey(paramString)) {
-      return (ImageView)this.nJT.get(paramString);
+    AppMethodBeat.i(81051);
+    if (this.qxv.containsKey(paramString))
+    {
+      paramString = (ImageView)this.qxv.get(paramString);
+      AppMethodBeat.o(81051);
+      return paramString;
     }
     ImageView localImageView = new ImageView(this.mContext);
     localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
     localImageView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-    this.nJT.put(paramString, localImageView);
+    this.qxv.put(paramString, localImageView);
+    AppMethodBeat.o(81051);
     return localImageView;
   }
   
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
+    AppMethodBeat.i(81053);
     paramViewGroup.removeView((ImageView)paramObject);
-    paramViewGroup = (String)this.nJS.get(paramInt);
-    if (this.nJT.containsKey(paramViewGroup)) {
-      this.nJT.remove(paramViewGroup);
+    paramViewGroup = (String)this.qxu.get(paramInt);
+    if (this.qxv.containsKey(paramViewGroup)) {
+      this.qxv.remove(paramViewGroup);
     }
+    AppMethodBeat.o(81053);
   }
   
-  public final boolean a(View paramView, Object paramObject)
+  public final int getCount()
   {
-    return paramView == paramObject;
+    AppMethodBeat.i(81054);
+    int i = this.qxu.size();
+    AppMethodBeat.o(81054);
+    return i;
   }
   
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
+  public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    Object localObject = (String)this.nJS.get(paramInt);
-    ImageView localImageView = LZ((String)localObject);
-    localObject = x.a(new q((String)localObject));
+    AppMethodBeat.i(81052);
+    Object localObject = (String)this.qxu.get(paramInt);
+    ImageView localImageView = YB((String)localObject);
+    localObject = x.a(new s((String)localObject));
     if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
       localImageView.setImageBitmap((Bitmap)localObject);
       localImageView.setBackgroundColor(0);
     }
-    for (;;)
+    try
     {
-      try
+      for (;;)
       {
         paramViewGroup.addView(localImageView);
+        AppMethodBeat.o(81052);
         return localImageView;
+        localImageView.setImageBitmap(null);
+        localImageView.setBackgroundColor(this.qxw);
       }
-      catch (Exception paramViewGroup)
-      {
-        y.e("MicroMsg.ProductFurtherInfoUI", "Add view failed: " + paramViewGroup.getMessage());
-      }
-      localImageView.setImageBitmap(null);
-      localImageView.setBackgroundColor(this.nJU);
     }
-    return localImageView;
-  }
-  
-  public final int getCount()
-  {
-    return this.nJS.size();
-  }
-  
-  public final void l(String paramString, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bk.bl(paramString)))
+    catch (Exception paramViewGroup)
     {
-      paramString = LZ(paramString);
-      if (paramString != null) {
-        ai.d(new ProductFurtherInfoUI.a.1(this, paramString, paramBitmap));
+      for (;;)
+      {
+        ab.e("MicroMsg.ProductFurtherInfoUI", "Add view failed: " + paramViewGroup.getMessage());
       }
     }
+  }
+  
+  public final boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
+  }
+  
+  public final void m(String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(81055);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled()) && (!bo.isNullOrNil(paramString)))
+    {
+      paramString = YB(paramString);
+      if (paramString != null) {
+        al.d(new ProductFurtherInfoUI.a.1(this, paramString, paramBitmap));
+      }
+    }
+    AppMethodBeat.o(81055);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ProductFurtherInfoUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
 package com.tencent.mm.console;
 
 import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mm.h.a.ij;
-import com.tencent.mm.h.a.ij.a;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class Shell$11
   implements Shell.a
 {
-  public final void g(Intent paramIntent)
+  public final void s(Intent paramIntent)
   {
-    ij localij = new ij();
-    localij.bQz.bQE = paramIntent.getExtras().getString("path", "/data/local/tmp/test.apk");
-    y.w("MicroMsg.Shell", "hotpatch test [%s]", new Object[] { localij.bQz.bQE });
-    a.udP.m(localij);
+    AppMethodBeat.i(16119);
+    ae.glq = paramIntent.getIntExtra("flag", 0);
+    ab.w("MicroMsg.Shell", "dkwt shell [%d]", new Object[] { Integer.valueOf(ae.glq) });
+    AppMethodBeat.o(16119);
   }
 }
 

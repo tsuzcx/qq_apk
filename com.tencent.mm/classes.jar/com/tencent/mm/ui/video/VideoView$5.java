@@ -2,6 +2,7 @@ package com.tencent.mm.ui.video;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnBufferingUpdateListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VideoView$5
   implements MediaPlayer.OnBufferingUpdateListener
@@ -10,7 +11,9 @@ final class VideoView$5
   
   public final void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
-    VideoView.c(this.wiD, paramInt);
+    AppMethodBeat.i(35287);
+    VideoView.c(this.ABv, paramInt);
+    AppMethodBeat.o(35287);
   }
 }
 

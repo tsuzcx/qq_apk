@@ -1,32 +1,35 @@
 package com.tencent.mm.ui.base;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import android.app.Activity;
+import android.content.Context;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class s$1
-  implements am.a
+  extends ak
 {
-  s$1(s params) {}
-  
-  public final boolean tC()
+  s$1(Looper paramLooper, Context paramContext, s params)
   {
-    if (s.a(this.uYG) == -1L)
+    super(paramLooper);
+  }
+  
+  public final void handleMessage(Message paramMessage)
+  {
+    AppMethodBeat.i(106865);
+    if (((this.val$context instanceof Activity)) && (((Activity)this.val$context).isFinishing()))
     {
-      this.uYG.show();
-      return true;
+      AppMethodBeat.o(106865);
+      return;
     }
-    s.b(this.uYG);
-    if (s.c(this.uYG) >= 0)
-    {
-      this.uYG.show();
-      return true;
-    }
-    this.uYG.cancel();
-    return false;
+    this.zmX.dismiss();
+    AppMethodBeat.o(106865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.s.1
  * JD-Core Version:    0.7.0.1
  */

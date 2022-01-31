@@ -1,18 +1,26 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.compatible.f.b;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mq;
+import com.tencent.mm.sdk.b.a;
 
 final class ScanTranslationCaptureUI$8
-  implements DialogInterface.OnClickListener
+  extends AnimatorListenerAdapter
 {
   ScanTranslationCaptureUI$8(ScanTranslationCaptureUI paramScanTranslationCaptureUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onAnimationEnd(Animator paramAnimator)
   {
-    b.bf(this.nNm);
-    this.nNm.finish();
+    AppMethodBeat.i(138493);
+    paramAnimator = new mq();
+    paramAnimator.cCN.action = 3;
+    a.ymk.l(paramAnimator);
+    ScanTranslationCaptureUI.a(this.qAW, false);
+    ScanTranslationCaptureUI.z(this.qAW);
+    this.qAW.finish();
+    AppMethodBeat.o(138493);
   }
 }
 

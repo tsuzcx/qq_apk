@@ -5,7 +5,7 @@ public final class c$hd
 {
   public c$hd()
   {
-    super("resumeDownloadTask", "resume_download_task", 240, true);
+    super("queryDownloadTask", "query_download_task", 40, false);
   }
 }
 

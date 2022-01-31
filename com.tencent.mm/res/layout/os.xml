@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="@dimen/fo" android:paddingRight="@dimen/fo" android:paddingBottom="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:orientation="horizontal" android:background="@color/lj" android:paddingTop="15.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/aw3" android:focusable="false" android:visibility="visible" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/aw4" android:layout_marginTop="@dimen/mq" android:text="@string/ay1" style="@style/mu" />
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/aw4">
-            <Button android:id="@id/aw5" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:focusable="true" android:clickable="true" android:text="@string/auf" android:layout_weight="1.0" style="@style/n0" />
-            <View android:id="@id/aw6" android:layout_width="@dimen/mq" android:layout_height="wrap_content" />
-            <Button android:id="@id/aw7" android:focusable="true" android:clickable="true" android:text="@string/as8" android:layout_weight="1.0" style="@style/n0" />
-        </LinearLayout>
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/aw8" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:id="@id/aw9" android:text="@string/aw8" android:layout_weight="1.0" style="@style/mu" />
-        <Button android:id="@id/aw_" android:layout_marginTop="@dimen/mq" android:text="@string/as8" android:layout_weight="1.0" style="@style/n0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ax5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/ou" />
+        <include layout="@layout/ot" />
+        <View android:background="#33b2b2b2" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" />
     </LinearLayout>
-    <Button android:id="@id/awa" android:visibility="gone" android:layout_marginTop="@dimen/mq" android:text="@string/a40" style="@style/mx" />
-    <Button android:id="@id/awb" android:text="@string/aqe" style="@style/mu" />
-    <Button android:id="@id/awc" android:text="@string/aw_" style="@style/mu" />
-    <Button android:id="@id/awd" android:layout_marginTop="@dimen/kl" android:text="@string/ox" style="@style/n0" />
-    <Button android:id="@id/awe" android:visibility="gone" android:layout_marginTop="@dimen/mq" android:text="@string/as8" style="@style/n0" />
-    <Button android:id="@id/awf" android:visibility="gone" android:layout_marginTop="@dimen/kl" android:text="@string/aud" style="@style/n0" />
-    <TextView android:gravity="center_horizontal" android:id="@id/awg" android:paddingTop="@dimen/kl" android:layout_width="fill_parent" android:text="@string/auj" android:singleLine="false" style="@style/kn" />
-    <TextView android:textColor="@color/qm" android:gravity="center_horizontal" android:id="@id/awh" android:paddingTop="@dimen/kl" android:visibility="gone" android:layout_width="fill_parent" android:text="@string/atc" android:singleLine="false" style="@style/kn" />
-</LinearLayout>
+</FrameLayout>

@@ -12,27 +12,27 @@ import junit.framework.Assert;
 public final class e
   implements b
 {
-  private static e wFE = null;
-  private Vector<d> edA = new Vector();
-  private Vector<d> edz = new Vector();
+  private static e Bde = null;
+  private final SparseArray<Set<b>> Bdf = new SparseArray();
+  private d Bdg = null;
+  private Vector<d> ftC = new Vector();
+  private Vector<d> ftD = new Vector();
   private final Handler handler = new e.1(this, Looper.getMainLooper());
-  private final SparseArray<Set<b>> wFF = new SparseArray();
-  private d wFG = null;
   
-  private void KK()
+  private void ady()
   {
-    if (this.edA.size() > 0)
+    if (this.ftD.size() > 0)
     {
-      d locald = (d)this.edA.get(0);
+      d locald = (d)this.ftD.get(0);
       int i = 1;
-      while (i < this.edA.size())
+      while (i < this.ftD.size())
       {
-        this.edA.get(i);
+        this.ftD.get(i);
         i += 1;
       }
-      if (cNT())
+      if (dTF())
       {
-        this.edA.remove(locald);
+        this.ftD.remove(locald);
         b(locald);
       }
     }
@@ -40,69 +40,56 @@ public final class e
   
   private void b(d paramd)
   {
-    int i;
-    if (cNT())
+    if (dTF())
     {
-      this.edz.add(paramd);
-      if (paramd.wFw == null)
+      this.ftC.add(paramd);
+      int i = paramd.a(this);
+      if (i < 0)
       {
-        c.x("MicroMsg.Voip", new Object[] { paramd.TAG2, "dosene reqData is null cmd=" + paramd.wFy });
-        i = -1;
-        if (i < 0)
-        {
-          c.x("MicroMsg.Voip", new Object[] { "doSceneImp do scene failed, ret %d,", Integer.valueOf(i) });
-          this.handler.post(new e.2(this, paramd));
-        }
+        c.w("MicroMsg.Voip", new Object[] { "doSceneImp do scene failed, ret %d,", Integer.valueOf(i) });
+        this.handler.post(new e.2(this, paramd));
       }
     }
     for (;;)
     {
-      KK();
+      ady();
       return;
-      paramd.wFv = this;
-      i locali = new i(paramd);
-      i = f.cNV().a(null, locali, paramd.wFy, paramd.cNR(), paramd.wFw, paramd.wFA);
-      if (i >= 0) {
-        paramd.mHandler.postDelayed(paramd.edV, 60000L);
-      }
-      c.d("MicroMsg.Voip", new Object[] { "NETTASK_SEND dosene:cmd ", paramd.cNR(), Integer.valueOf(i) });
-      break;
-      this.edA.add(paramd);
+      this.ftD.add(paramd);
     }
   }
   
-  public static e cNS()
+  public static e dTE()
   {
-    if (wFE == null) {}
+    if (Bde == null) {}
     try
     {
-      if (wFE == null) {
-        wFE = new e();
+      if (Bde == null) {
+        Bde = new e();
       }
-      return wFE;
+      return Bde;
     }
     finally {}
   }
   
-  private boolean cNT()
+  private boolean dTF()
   {
-    return this.edz.size() < 20;
+    return this.ftC.size() < 20;
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, d paramd)
   {
-    this.edz.remove(paramd);
-    KK();
+    this.ftC.remove(paramd);
+    ady();
     this.handler.post(new e.3(this, paramd, paramInt1, paramInt2, paramString));
   }
   
   public final void a(int paramInt, b paramb)
   {
-    if (this.wFF.get(paramInt) == null) {
-      this.wFF.put(paramInt, new HashSet());
+    if (this.Bdf.get(paramInt) == null) {
+      this.Bdf.put(paramInt, new HashSet());
     }
-    if (!((Set)this.wFF.get(paramInt)).contains(paramb)) {
-      ((Set)this.wFF.get(paramInt)).add(paramb);
+    if (!((Set)this.Bdf.get(paramInt)).contains(paramb)) {
+      ((Set)this.Bdf.get(paramInt)).add(paramb);
     }
   }
   
@@ -113,8 +100,8 @@ public final class e
       int i = paramd.getType();
       if ((i == 102) || (i == 104) || (i == 103))
       {
-        c.x("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
-        this.wFG = paramd;
+        c.w("MicroMsg.Voip", new Object[] { "doScene do retain mReissueNetScene" });
+        this.Bdg = paramd;
       }
     }
     Assert.assertTrue(true);
@@ -127,7 +114,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.b.e
  * JD-Core Version:    0.7.0.1
  */

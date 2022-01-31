@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/sz" android:padding="@dimen/kl" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@color/a3x" style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:background="@drawable/b25" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/l9" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.plugin.sns.ui.SnsEditText android:gravity="top" android:id="@id/kl" android:background="@null" android:paddingRight="@dimen/mq" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.0" android:textCursorDrawable="@drawable/da" style="@style/kg" />
-        </LinearLayout>
-    </ScrollView>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eb_" android:background="@color/vy" android:visibility="gone" style="@style/l0">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="2.0dip" android:layout_marginTop="40.0dip" android:src="@drawable/apf" />
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="center" android:layout_marginTop="15.0dip" android:text="@string/el_" style="@style/l1" />
+        <TextView android:gravity="center" android:id="@id/eba" android:layout_marginTop="15.0dip" android:text="@string/el9" style="@style/l1" />
+        <Button android:id="@id/ebb" android:layout_marginTop="35.0dip" style="@style/nq" />
+    </LinearLayout>
 </LinearLayout>

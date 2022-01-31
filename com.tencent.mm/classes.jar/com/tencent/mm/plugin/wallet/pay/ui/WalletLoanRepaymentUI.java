@@ -1,18 +1,22 @@
 package com.tencent.mm.plugin.wallet.pay.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.wallet.pay.a.b;
-import com.tencent.mm.plugin.wallet_core.c.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.pay.a.c;
+import com.tencent.mm.plugin.wallet_core.c.d;
+import com.tencent.mm.plugin.wallet_core.c.v;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wallet_core.model.ad;
-import com.tencent.mm.plugin.wallet_core.ui.l;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.aj;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.ui.n;
+import com.tencent.mm.plugin.wallet_core.ui.q;
+import com.tencent.mm.pluginsdk.wallet.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
@@ -21,123 +25,71 @@ public class WalletLoanRepaymentUI
   extends WalletBaseUI
 {
   private String desc;
-  private String foR;
-  private String mOZ = "CNY";
-  private double nyN;
-  protected com.tencent.mm.plugin.wallet_core.ui.o qgo;
-  private String qmH;
-  private String qmI;
-  private String qmJ;
-  private String qmK;
-  private String qmL;
-  private String qmM;
-  private String qmN;
-  private String qmO;
-  private int qmP;
+  private String gGl;
+  private String ppp = "CNY";
+  private double qjN;
+  protected q tVM;
+  private String tVY;
+  private String tVZ;
+  private String tWa;
+  private String tWb;
+  private String tWc;
+  private String tWd;
+  private String tWe;
+  private String tWf;
+  private int tWg;
   private String token;
-  
-  private void Qk(String paramString)
-  {
-    a(new b(paramString), true, false);
-  }
   
   private void a(Bankcard paramBankcard, double paramDouble, String paramString)
   {
+    AppMethodBeat.i(46001);
     WalletLoanRepaymentUI.1 local1 = new WalletLoanRepaymentUI.1(this);
     WalletLoanRepaymentUI.2 local2 = new WalletLoanRepaymentUI.2(this);
     WalletLoanRepaymentUI.3 local3 = new WalletLoanRepaymentUI.3(this);
-    this.qmO = paramBankcard.field_bindSerial;
-    this.qgo = com.tencent.mm.plugin.wallet_core.ui.o.a(this, this.desc, paramDouble, paramString, paramBankcard, local1, local2, local3);
+    this.tWf = paramBankcard.field_bindSerial;
+    this.tVM = q.a(this, this.desc, paramDouble, paramString, paramBankcard, local1, local2, local3);
+    AppMethodBeat.o(46001);
   }
   
-  private void bUa()
+  private void afc(String paramString)
   {
-    y.i("MicroMsg.WalletLoanRepaymentUI", "to change a bankcard");
+    AppMethodBeat.i(45999);
+    doSceneProgress(new c(paramString), true);
+    AppMethodBeat.o(45999);
+  }
+  
+  private void cRU()
+  {
+    AppMethodBeat.i(46002);
+    ab.i("MicroMsg.WalletLoanRepaymentUI", "to change a bankcard");
     startActivityForResult(new Intent(this, WalletChangeLoanRepayBankcardUI.class), 1);
+    AppMethodBeat.o(46002);
   }
   
-  protected final void bUb()
+  protected final void cRV()
   {
+    AppMethodBeat.i(46003);
     Bundle localBundle = new Bundle();
     localBundle.putInt("key_bind_scene", 8);
     localBundle.putBoolean("key_need_bind_response", true);
     localBundle.putString("kreq_token", this.token);
     com.tencent.mm.wallet_core.a.a(this, com.tencent.mm.plugin.wallet.loan.a.class, localBundle, new WalletLoanRepaymentUI.6(this));
+    AppMethodBeat.o(46003);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
-  {
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      if ((paramm instanceof com.tencent.mm.plugin.wallet_core.c.a))
-      {
-        f.Xf(((com.tencent.mm.plugin.wallet_core.c.a)paramm).bUH());
-        this.token = ((com.tencent.mm.plugin.wallet_core.c.a)paramm).getToken();
-        Qk(this.token);
-        return true;
-      }
-      if ((paramm instanceof b))
-      {
-        paramString = (b)paramm;
-        this.mOZ = paramString.mOZ;
-        this.nyN = paramString.nyN;
-        this.desc = paramString.desc;
-        paramString = com.tencent.mm.plugin.wallet_core.model.o.bVt();
-        if (paramString.bVD())
-        {
-          paramString = paramString.bVE();
-          if ((paramString != null) && (bk.bl(paramString.field_forbidWord))) {
-            a(paramString, this.nyN, this.mOZ);
-          }
-        }
-        for (;;)
-        {
-          return true;
-          bUa();
-          continue;
-          h.a(this, getResources().getString(a.i.wallet_loan_repayment_new_card_tip), "", getString(a.i.wallet_pay_bankcard_add), getString(a.i.app_cancel), new WalletLoanRepaymentUI.4(this), new WalletLoanRepaymentUI.5(this));
-        }
-      }
-      if ((paramm instanceof s))
-      {
-        paramString = (s)paramm;
-        if (paramString.bUI())
-        {
-          y.i("MicroMsg.WalletLoanRepaymentUI", "need free sms");
-          paramm = new Bundle();
-          paramm.putString("key_pwd1", this.foR);
-          paramm.putString("key_jsapi_token", this.token);
-          paramm.putString("key_relation_key", paramString.qqV);
-          paramm.putInt("key_verify_scene", 8);
-          paramm.putString("key_mobile", paramString.qqU);
-          com.tencent.mm.wallet_core.a.a(this, l.class, paramm);
-        }
-        for (;;)
-        {
-          return true;
-          paramm = new Intent();
-          paramm.putExtra("token", paramString.qqS);
-          paramm.putExtra("bind_serial", this.qmO);
-          setResult(-1, paramm);
-          finish();
-        }
-      }
-    }
-    return false;
-  }
-  
-  protected final int getForceOrientation()
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
     return -1;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(46005);
     if (paramInt1 == 1)
     {
       if (paramInt2 == -1)
@@ -145,92 +97,180 @@ public class WalletLoanRepaymentUI
         paramInt1 = paramIntent.getIntExtra("ret", -1000);
         if (paramInt1 == -1003)
         {
-          y.i("MicroMsg.WalletLoanRepaymentUI", "to bind a new card");
-          bUb();
+          ab.i("MicroMsg.WalletLoanRepaymentUI", "to bind a new card");
+          cRV();
+          AppMethodBeat.o(46005);
           return;
         }
         if (paramInt1 == 0)
         {
-          y.i("MicroMsg.WalletLoanRepaymentUI", "change card ok");
-          paramIntent = com.tencent.mm.plugin.wallet_core.model.o.bVt().Qs(paramIntent.getStringExtra("bindSerial"));
+          ab.i("MicroMsg.WalletLoanRepaymentUI", "change card ok");
+          paramIntent = t.cTO().afk(paramIntent.getStringExtra("bindSerial"));
           if (paramIntent == null)
           {
-            y.e("MicroMsg.WalletLoanRepaymentUI", "bankcard is null by getBankcardBySerialNo");
+            ab.e("MicroMsg.WalletLoanRepaymentUI", "bankcard is null by getBankcardBySerialNo");
             finish();
+            AppMethodBeat.o(46005);
             return;
           }
-          a(paramIntent, this.nyN, this.mOZ);
+          a(paramIntent, this.qjN, this.ppp);
+          AppMethodBeat.o(46005);
           return;
         }
-        y.e("MicroMsg.WalletLoanRepaymentUI", "activity return unknow error");
+        ab.e("MicroMsg.WalletLoanRepaymentUI", "activity return unknow error");
+        AppMethodBeat.o(46005);
         return;
       }
-      paramIntent = com.tencent.mm.plugin.wallet_core.model.o.bVt();
-      if (paramIntent.bVD())
+      paramIntent = t.cTO();
+      if (paramIntent.cTZ())
       {
-        paramIntent = paramIntent.bVE();
-        if ((paramIntent != null) && (bk.bl(paramIntent.field_forbidWord)))
+        paramIntent = paramIntent.cUa();
+        if ((paramIntent != null) && (bo.isNullOrNil(paramIntent.field_forbidWord)))
         {
-          a(paramIntent, this.nyN, this.mOZ);
+          a(paramIntent, this.qjN, this.ppp);
+          AppMethodBeat.o(46005);
           return;
         }
         finish();
+        AppMethodBeat.o(46005);
         return;
       }
-      y.e("MicroMsg.WalletLoanRepaymentUI", "onActivityResult hasRepaymentBankcard is false");
+      ab.e("MicroMsg.WalletLoanRepaymentUI", "onActivityResult hasRepaymentBankcard is false");
+      AppMethodBeat.o(46005);
       return;
     }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    AppMethodBeat.o(46005);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(45997);
     super.onCreate(paramBundle);
     paramBundle = getIntent();
-    this.qmM = paramBundle.getStringExtra("appId");
-    this.qmH = paramBundle.getStringExtra("timeStamp");
-    this.qmI = paramBundle.getStringExtra("nonceStr");
-    this.qmJ = paramBundle.getStringExtra("packageExt");
-    this.qmK = paramBundle.getStringExtra("signtype");
-    this.qmL = paramBundle.getStringExtra("paySignature");
-    this.qmN = paramBundle.getStringExtra("url");
-    this.qmP = paramBundle.getIntExtra("pay_channel", 0);
-    kh(580);
-    a(new com.tencent.mm.plugin.wallet_core.c.a(this.qmM, this.qmH, this.qmI, this.qmJ, this.qmK, this.qmL, this.qmN, 7, "getWebPayCheckoutCounterRequst", this.qmP), true, false);
+    this.tWd = paramBundle.getStringExtra("appId");
+    this.tVY = paramBundle.getStringExtra("timeStamp");
+    this.tVZ = paramBundle.getStringExtra("nonceStr");
+    this.tWa = paramBundle.getStringExtra("packageExt");
+    this.tWb = paramBundle.getStringExtra("signtype");
+    this.tWc = paramBundle.getStringExtra("paySignature");
+    this.tWe = paramBundle.getStringExtra("url");
+    this.tWg = paramBundle.getIntExtra("pay_channel", 0);
+    addSceneEndListener(580);
+    doSceneForceProgress(new d(this.tWd, this.tVY, this.tVZ, this.tWa, this.tWb, this.tWc, this.tWe, 7, "getWebPayCheckoutCounterRequst", this.tWg));
+    AppMethodBeat.o(45997);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
+    AppMethodBeat.i(46004);
     Object localObject = paramIntent.getExtras();
-    y.i("MicroMsg.WalletLoanRepaymentUI", "onNewIntent");
+    ab.i("MicroMsg.WalletLoanRepaymentUI", "onNewIntent");
     if (((Bundle)localObject).containsKey("intent_bind_end"))
     {
-      y.i("MicroMsg.WalletLoanRepaymentUI", "back from bind card");
-      Qk(this.token);
+      ab.i("MicroMsg.WalletLoanRepaymentUI", "back from bind card");
+      afc(this.token);
+      AppMethodBeat.o(46004);
       return;
     }
     if (((Bundle)localObject).containsKey("jsapi_verifycode_process_end"))
     {
-      y.i("MicroMsg.WalletLoanRepaymentUI", "back from verify code");
+      ab.i("MicroMsg.WalletLoanRepaymentUI", "back from verify code");
       localObject = new Intent();
       ((Intent)localObject).putExtra("token", paramIntent.getStringExtra("token"));
-      ((Intent)localObject).putExtra("bind_serial", this.qmO);
+      ((Intent)localObject).putExtra("bind_serial", this.tWf);
       setResult(-1, (Intent)localObject);
       finish();
+      AppMethodBeat.o(46004);
       return;
     }
-    y.i("MicroMsg.WalletLoanRepaymentUI", "need to deal with,finish");
+    ab.i("MicroMsg.WalletLoanRepaymentUI", "need to deal with,finish");
     finish();
+    AppMethodBeat.o(46004);
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(45998);
     super.onResume();
+    AppMethodBeat.o(45998);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(46000);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if ((paramm instanceof d))
+      {
+        g.ana(((d)paramm).cSW());
+        this.token = ((d)paramm).getToken();
+        afc(this.token);
+        AppMethodBeat.o(46000);
+        return true;
+      }
+      if ((paramm instanceof c))
+      {
+        paramString = (c)paramm;
+        this.ppp = paramString.ppp;
+        this.qjN = paramString.qjN;
+        this.desc = paramString.desc;
+        paramString = t.cTO();
+        if (paramString.cTZ())
+        {
+          paramString = paramString.cUa();
+          if ((paramString != null) && (bo.isNullOrNil(paramString.field_forbidWord))) {
+            a(paramString, this.qjN, this.ppp);
+          }
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(46000);
+          return true;
+          cRU();
+          continue;
+          h.d(this, getResources().getString(2131305147), "", getString(2131305446), getString(2131296888), new WalletLoanRepaymentUI.4(this), new WalletLoanRepaymentUI.5(this));
+        }
+      }
+      if ((paramm instanceof v))
+      {
+        paramString = (v)paramm;
+        if (paramString.cSX())
+        {
+          ab.i("MicroMsg.WalletLoanRepaymentUI", "need free sms");
+          paramm = new Bundle();
+          paramm.putString("key_pwd1", this.gGl);
+          paramm.putString("key_jsapi_token", this.token);
+          paramm.putString("key_relation_key", paramString.ubR);
+          paramm.putInt("key_verify_scene", 8);
+          paramm.putString("key_mobile", paramString.ubQ);
+          com.tencent.mm.wallet_core.a.a(this, n.class, paramm);
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(46000);
+          return true;
+          paramm = new Intent();
+          paramm.putExtra("token", paramString.ubO);
+          paramm.putExtra("bind_serial", this.tWf);
+          setResult(-1, paramm);
+          finish();
+        }
+      }
+    }
+    AppMethodBeat.o(46000);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletLoanRepaymentUI
  * JD-Core Version:    0.7.0.1
  */

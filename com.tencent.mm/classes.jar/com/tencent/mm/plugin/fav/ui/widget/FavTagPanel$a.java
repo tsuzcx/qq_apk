@@ -5,7 +5,7 @@ import com.tencent.mm.ui.base.MMTagPanel.a;
 public abstract interface FavTagPanel$a
   extends MMTagPanel.a
 {
-  public abstract void De(String paramString);
+  public abstract void Og(String paramString);
 }
 
 

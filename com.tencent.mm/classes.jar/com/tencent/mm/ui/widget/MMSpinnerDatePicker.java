@@ -12,34 +12,44 @@ import android.widget.DatePicker.OnDateChangedListener;
 import android.widget.EditText;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.NumberPicker;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.reflect.Field;
 
 public class MMSpinnerDatePicker
   extends DatePicker
   implements DatePicker.OnDateChangedListener
 {
-  private NumberPicker wjC;
-  private NumberPicker wjD;
-  private NumberPicker wjE;
-  private MMSpinnerDatePicker.a wjF;
-  private int wjG = 0;
+  private NumberPicker ADj;
+  private NumberPicker ADk;
+  private NumberPicker ADl;
+  private MMSpinnerDatePicker.a ADm;
+  private int ADn;
   
   public MMSpinnerDatePicker(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(107914);
+    this.ADn = 0;
     init();
+    AppMethodBeat.o(107914);
   }
   
   public MMSpinnerDatePicker(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(107915);
+    this.ADn = 0;
     init();
+    AppMethodBeat.o(107915);
   }
   
   private void a(NumberPicker paramNumberPicker, int paramInt)
   {
-    if (paramNumberPicker == null) {
+    AppMethodBeat.i(107920);
+    if (paramNumberPicker == null)
+    {
+      AppMethodBeat.o(107920);
       return;
     }
     Object localObject = (EditText)paramNumberPicker.findViewById(Resources.getSystem().getIdentifier("numberpicker_input", "id", "android"));
@@ -55,118 +65,132 @@ public class MMSpinnerDatePicker
       Paint localPaint = (Paint)((Field)localObject).get(paramNumberPicker);
       localPaint.setTextSize(paramInt);
       ((Field)localObject).set(paramNumberPicker, localPaint);
+      AppMethodBeat.o(107920);
       return;
     }
     catch (NoSuchFieldException paramNumberPicker)
     {
-      y.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", paramNumberPicker, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", paramNumberPicker, "", new Object[0]);
+      AppMethodBeat.o(107920);
       return;
     }
     catch (IllegalAccessException paramNumberPicker)
     {
-      y.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", paramNumberPicker, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", paramNumberPicker, "", new Object[0]);
+      AppMethodBeat.o(107920);
     }
   }
   
   private void init()
   {
+    AppMethodBeat.i(107916);
     setCalendarViewShown(false);
     Object localObject = Resources.getSystem();
     int i = ((Resources)localObject).getIdentifier("year", "id", "android");
     int j = ((Resources)localObject).getIdentifier("month", "id", "android");
     int k = ((Resources)localObject).getIdentifier("day", "id", "android");
-    this.wjC = ((NumberPicker)findViewById(i));
-    this.wjD = ((NumberPicker)findViewById(j));
-    this.wjE = ((NumberPicker)findViewById(k));
+    this.ADj = ((NumberPicker)findViewById(i));
+    this.ADk = ((NumberPicker)findViewById(j));
+    this.ADl = ((NumberPicker)findViewById(k));
     localObject = getChildAt(0);
     ViewGroup.LayoutParams localLayoutParams = ((View)localObject).getLayoutParams();
     localLayoutParams.width = -1;
     ((View)localObject).setLayoutParams(localLayoutParams);
-    localObject = (LinearLayout.LayoutParams)this.wjC.getLayoutParams();
+    localObject = (LinearLayout.LayoutParams)this.ADj.getLayoutParams();
     ((LinearLayout.LayoutParams)localObject).topMargin = 0;
     ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
     ((LinearLayout.LayoutParams)localObject).leftMargin = 0;
     ((LinearLayout.LayoutParams)localObject).rightMargin = 0;
     ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
-    this.wjC.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.wjD.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    this.wjE.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.ADj.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.ADk.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.ADl.setLayoutParams((ViewGroup.LayoutParams)localObject);
     setDescendantFocusability(393216);
     setPickerMode(2);
+    AppMethodBeat.o(107916);
   }
   
-  public final boolean Il(int paramInt)
+  public final boolean dOG()
   {
+    AppMethodBeat.i(107918);
     try
     {
       Field localField = NumberPicker.class.getDeclaredField("mSelectionDivider");
       localField.setAccessible(true);
       ColorDrawable localColorDrawable = new ColorDrawable();
-      localColorDrawable.setColor(getResources().getColor(paramInt));
-      localField.set(this.wjC, localColorDrawable);
-      localField.set(this.wjD, localColorDrawable);
-      localField.set(this.wjE, localColorDrawable);
+      localColorDrawable.setColor(getResources().getColor(2131690605));
+      localField.set(this.ADj, localColorDrawable);
+      localField.set(this.ADk, localColorDrawable);
+      localField.set(this.ADl, localColorDrawable);
       invalidate();
+      AppMethodBeat.o(107918);
       return true;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      y.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", localIllegalAccessException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", localIllegalAccessException, "", new Object[0]);
+      AppMethodBeat.o(107918);
       return false;
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", localNoSuchFieldException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.MMSpinnerDatePicker", localNoSuchFieldException, "", new Object[0]);
       }
     }
   }
   
   public int getPickerMode()
   {
-    return this.wjG;
+    return this.ADn;
   }
   
   public void onDateChanged(DatePicker paramDatePicker, int paramInt1, int paramInt2, int paramInt3) {}
   
   public void setOnDateChangeListener(MMSpinnerDatePicker.a parama)
   {
-    this.wjF = parama;
+    this.ADm = parama;
   }
   
   public void setPickerMode(int paramInt)
   {
-    this.wjG = paramInt;
-    if (this.wjG == 0)
+    AppMethodBeat.i(107917);
+    this.ADn = paramInt;
+    if (this.ADn == 0)
     {
-      this.wjC.setVisibility(0);
-      this.wjD.setVisibility(0);
-      this.wjE.setVisibility(0);
+      this.ADj.setVisibility(0);
+      this.ADk.setVisibility(0);
+      this.ADl.setVisibility(0);
+      AppMethodBeat.o(107917);
       return;
     }
-    if (this.wjG == 1)
+    if (this.ADn == 1)
     {
-      this.wjC.setVisibility(0);
-      this.wjD.setVisibility(0);
-      this.wjE.setVisibility(8);
+      this.ADj.setVisibility(0);
+      this.ADk.setVisibility(0);
+      this.ADl.setVisibility(8);
+      AppMethodBeat.o(107917);
       return;
     }
-    this.wjC.setVisibility(0);
-    this.wjD.setVisibility(8);
-    this.wjE.setVisibility(8);
+    this.ADj.setVisibility(0);
+    this.ADk.setVisibility(8);
+    this.ADl.setVisibility(8);
+    AppMethodBeat.o(107917);
   }
   
   public void setTextSize(int paramInt)
   {
-    a(this.wjC, paramInt);
-    a(this.wjD, paramInt);
-    a(this.wjE, paramInt);
+    AppMethodBeat.i(107919);
+    a(this.ADj, paramInt);
+    a(this.ADk, paramInt);
+    a(this.ADl, paramInt);
+    AppMethodBeat.o(107919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MMSpinnerDatePicker
  * JD-Core Version:    0.7.0.1
  */

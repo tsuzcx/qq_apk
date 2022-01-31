@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:paddingTop="@dimen/la" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:orientation="vertical" android:id="@id/bew" android:background="@color/lm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/bex" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <RelativeLayout android:id="@id/bd3" android:background="@color/lm" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bd4" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/ay5" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="21.0dip" android:textColor="@color/a23" android:id="@id/bd5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="328.0dip" android:text="@string/bh5" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/bd8" android:background="@color/lm" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bd9" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/ayx" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/bd_" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="237.0dip" android:layout_marginTop="253.0dip" android:src="@drawable/ayw" />
-            <TextView android:textSize="24.0dip" android:textColor="@color/a23" android:id="@id/bda" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="26.0dip" android:text="@string/bh6" android:layout_below="@id/bd9" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/bdb" android:background="@color/lm" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bdc" android:layout_width="100.0dip" android:layout_height="wrap_content" android:layout_marginTop="148.0dip" android:src="@drawable/ayu" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/bdd" android:layout_width="155.0dip" android:layout_height="155.0dip" android:layout_marginTop="148.0dip" android:src="@drawable/az1" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="21.0dip" android:textColor="@color/a23" android:id="@id/bde" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="323.0dip" android:text="@string/bh3" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <Button android:textSize="18.0dip" android:textColor="@color/a23" android:id="@id/bey" android:background="@drawable/kt" android:layout_width="200.0dip" android:layout_height="44.0dip" android:layout_marginBottom="150.0dip" android:text="@string/p8" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="@dimen/my" android:textColor="#ff6587cf" android:id="@id/bez" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/kl" android:text="@string/bfo" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <Button android:id="@id/bf0" android:visibility="visible" style="@style/hm" />
-    </RelativeLayout>
-</merge>
+    <TextView android:textSize="@dimen/ko" android:textColor="#ff6c6c6c" android:gravity="center_horizontal" android:id="@id/bjo" android:background="@drawable/a_a" android:paddingBottom="@dimen/dl" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <Button android:id="@id/bjp" android:layout_marginTop="@dimen/dp" android:layout_marginBottom="@dimen/dp" android:minWidth="@dimen/n6" android:text="@string/bdd" style="@style/nv" />
+    <TextView android:textSize="@dimen/ko" android:textColor="#ff6c6c6c" android:gravity="center_horizontal" android:id="@id/bjq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.emoji.ui.v2.DonorsAvatarView android:layout_gravity="center" android:id="@id/bjr" android:paddingTop="@dimen/dp" android:paddingBottom="@dimen/ku" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</LinearLayout>

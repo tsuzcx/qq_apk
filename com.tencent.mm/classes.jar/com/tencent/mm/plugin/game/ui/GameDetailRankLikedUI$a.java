@@ -8,10 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.dk;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
+import com.tencent.mm.plugin.game.d.dl;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
@@ -21,22 +20,31 @@ import java.util.List;
 final class GameDetailRankLikedUI$a
   extends BaseAdapter
 {
-  List<dk> kZk = new LinkedList();
   private Context mContext;
+  List<dl> nxh;
   
   public GameDetailRankLikedUI$a(Context paramContext)
   {
+    AppMethodBeat.i(111825);
+    this.nxh = new LinkedList();
     this.mContext = paramContext;
+    AppMethodBeat.o(111825);
   }
   
-  private dk sh(int paramInt)
+  private dl xg(int paramInt)
   {
-    return (dk)this.kZk.get(paramInt);
+    AppMethodBeat.i(111827);
+    dl localdl = (dl)this.nxh.get(paramInt);
+    AppMethodBeat.o(111827);
+    return localdl;
   }
   
   public final int getCount()
   {
-    return this.kZk.size();
+    AppMethodBeat.i(111826);
+    int i = this.nxh.size();
+    AppMethodBeat.o(111826);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -46,32 +54,34 @@ final class GameDetailRankLikedUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    dk localdk;
+    AppMethodBeat.i(111828);
+    dl localdl;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(g.f.game_detail2_rank_liked_item, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.mContext).inflate(2130969736, paramViewGroup, false);
       paramViewGroup = new GameDetailRankLikedUI.a.a((byte)0);
-      paramViewGroup.ffK = ((ImageView)paramView.findViewById(g.e.game_detail_rank_liked_item_avatar));
-      paramViewGroup.kYV = ((TextView)paramView.findViewById(g.e.game_detail_rank_liked_item_name));
-      paramViewGroup.kZl = ((TextView)paramView.findViewById(g.e.game_detail_rank_liked_item_time));
+      paramViewGroup.gxs = ((ImageView)paramView.findViewById(2131824590));
+      paramViewGroup.nwS = ((TextView)paramView.findViewById(2131824591));
+      paramViewGroup.nxi = ((TextView)paramView.findViewById(2131824592));
       paramView.setTag(paramViewGroup);
-      localdk = sh(paramInt);
-      a.b.a(paramViewGroup.ffK, localdk.kWn, 0.5F, false);
-      Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(localdk.kWn);
+      localdl = xg(paramInt);
+      a.b.a(paramViewGroup.gxs, localdl.num, 0.5F, false);
+      Object localObject = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(localdl.num);
       if (localObject == null) {
-        break label190;
+        break label196;
       }
-      localObject = new SpannableString(com.tencent.mm.pluginsdk.ui.d.j.a(this.mContext, ((ad)localObject).Bq(), paramViewGroup.kYV.getTextSize()));
-      paramViewGroup.kYV.setText((CharSequence)localObject);
+      localObject = new SpannableString(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, ((ad)localObject).Of(), paramViewGroup.nwS.getTextSize()));
+      paramViewGroup.nwS.setText((CharSequence)localObject);
     }
     for (;;)
     {
-      paramViewGroup.kZl.setText(localdk.kWo);
+      paramViewGroup.nxi.setText(localdl.nun);
+      AppMethodBeat.o(111828);
       return paramView;
       paramViewGroup = (GameDetailRankLikedUI.a.a)paramView.getTag();
       break;
-      label190:
-      paramViewGroup.kYV.setText("");
+      label196:
+      paramViewGroup.nwS.setText("");
     }
   }
 }

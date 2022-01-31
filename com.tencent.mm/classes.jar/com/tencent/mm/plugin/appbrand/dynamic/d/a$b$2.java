@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.appbrand.dynamic.d;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
 import com.tencent.mm.ipcinvoker.c;
 import com.tencent.mm.ipcinvoker.wx_extension.b.a;
-import com.tencent.mm.protocal.c.aqz;
-import com.tencent.mm.protocal.c.arm;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.axe;
+import com.tencent.mm.protocal.protobuf.axr;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$b$2
   implements b.a
@@ -15,28 +16,35 @@ final class a$b$2
   
   public final void a(int paramInt1, int paramInt2, String paramString, b paramb)
   {
-    y.d("MicroMsg.IPCInvoke_DoAuthorize", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      a.b.b(this.dGE, false, "cgi fail");
-    }
-    while (paramb.ecF.ecN == null) {
-      return;
-    }
-    if (this.fVh == 2)
+    AppMethodBeat.i(10818);
+    ab.d("MicroMsg.IPCInvoke_DoAuthorize", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      a.b.b(this.dGE, false, "cgi fail");
+      a.b.b(this.eEg, false, "cgi fail");
+      AppMethodBeat.o(10818);
       return;
     }
-    paramString = (arm)paramb.ecF.ecN;
-    paramInt1 = paramString.tnb.bLB;
-    y.i("MicroMsg.IPCInvoke_DoAuthorize", "NetSceneJSAuthorizeConfirm jsErrcode[%d], jsErrmsg[%s]", new Object[] { Integer.valueOf(paramInt1), paramString.tnb.bLC });
-    if (paramInt1 == 0)
+    if (paramb.fsW.fta != null)
     {
-      a.b.a(this.fVf, this.fVe);
-      a.b.b(this.dGE, true, "");
-      return;
+      if (this.hoJ == 2)
+      {
+        a.b.b(this.eEg, false, "cgi fail");
+        AppMethodBeat.o(10818);
+        return;
+      }
+      paramString = (axr)paramb.fsW.fta;
+      paramInt1 = paramString.xmS.csV;
+      ab.i("MicroMsg.IPCInvoke_DoAuthorize", "NetSceneJSAuthorizeConfirm jsErrcode[%d], jsErrmsg[%s]", new Object[] { Integer.valueOf(paramInt1), paramString.xmS.csW });
+      if (paramInt1 == 0)
+      {
+        a.b.a(this.hoH, this.hoG);
+        a.b.b(this.eEg, true, "");
+        AppMethodBeat.o(10818);
+        return;
+      }
+      a.b.b(this.eEg, false, "cgi fail");
     }
-    a.b.b(this.dGE, false, "cgi fail");
+    AppMethodBeat.o(10818);
   }
 }
 

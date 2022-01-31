@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout android:id="@id/a63" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.bottle.ui.BottleImageView android:id="@id/a64" android:background="@drawable/a7_" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a8c" android:layout_x="0.0dip" android:layout_y="0.0dip" />
-    <TextView android:id="@id/a65" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</AbsoluteLayout>
+    <TextView android:textSize="15.0dip" android:textColor="#ff969696" android:gravity="left" android:id="@id/uo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="@dimen/ll" android:text="@string/a9t" />
+</LinearLayout>

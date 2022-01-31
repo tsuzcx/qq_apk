@@ -8,116 +8,119 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.b;
+import com.tencent.mm.plugin.account.friend.a.h;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.r;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.p;
+import com.tencent.mm.ui.p.a;
 
 @Deprecated
 final class d
-  extends r<com.tencent.mm.plugin.account.friend.a.g>
+  extends p<com.tencent.mm.plugin.account.friend.a.g>
 {
-  private int[] fdQ;
-  private String fdR;
-  d.a flJ;
+  d.a gDb;
+  private int[] gvA;
+  private String gvB;
   
-  public d(Context paramContext, r.a parama)
+  public d(Context paramContext, p.a parama)
   {
     super(paramContext, new com.tencent.mm.plugin.account.friend.a.g());
-    this.uMi = parama;
+    AppMethodBeat.i(124801);
+    super.a(parama);
+    AppMethodBeat.o(124801);
+  }
+  
+  public final void Ku()
+  {
+    AppMethodBeat.i(124803);
+    setCursor(com.tencent.mm.plugin.account.a.getFacebookFrdStg().xe(this.gvB));
+    this.gvA = new int[getCount()];
+    if ((this.gDb != null) && (this.gvB != null)) {
+      this.gDb.mQ(getCursor().getCount());
+    }
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(124803);
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(124802);
+    Ku();
+    AppMethodBeat.o(124802);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(124805);
     Object localObject = (com.tencent.mm.plugin.account.friend.a.g)getItem(paramInt);
     if (paramView == null)
     {
       paramViewGroup = new d.b();
-      paramView = View.inflate(this.context, q.g.facebook_friend_item, null);
-      paramViewGroup.dpY = ((ImageView)paramView.findViewById(q.f.contactitem_avatar_iv));
-      paramViewGroup.fdY = ((TextView)paramView.findViewById(q.f.qq_friend_name));
-      paramViewGroup.ffL = ((TextView)paramView.findViewById(q.f.qq_friend_add_state));
-      paramViewGroup.flK = ((TextView)paramView.findViewById(q.f.qq_friend_add_tv));
-      paramViewGroup.flL = ((TextView)paramView.findViewById(q.f.qq_friend_invite_tv));
-      paramViewGroup.flM = ((ImageView)paramView.findViewById(q.f.qq_friend_submenu));
+      paramView = View.inflate(this.context, 2130969516, null);
+      paramViewGroup.ehv = ((ImageView)paramView.findViewById(2131823956));
+      paramViewGroup.gvI = ((TextView)paramView.findViewById(2131823957));
+      paramViewGroup.gxt = ((TextView)paramView.findViewById(2131823960));
+      paramViewGroup.gDc = ((TextView)paramView.findViewById(2131823958));
+      paramViewGroup.gDd = ((TextView)paramView.findViewById(2131823959));
+      paramViewGroup.gDe = ((ImageView)paramView.findViewById(2131823961));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.fdY.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, ((com.tencent.mm.plugin.account.friend.a.g)localObject).WI(), paramViewGroup.fdY.getTextSize()));
-      paramViewGroup.flL.setVisibility(8);
-      paramViewGroup.flM.setVisibility(0);
-      switch (this.fdQ[paramInt])
+      paramViewGroup.gvI.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, ((com.tencent.mm.plugin.account.friend.a.g)localObject).aqk(), paramViewGroup.gvI.getTextSize()));
+      paramViewGroup.gDd.setVisibility(8);
+      paramViewGroup.gDe.setVisibility(0);
+      switch (this.gvA[paramInt])
       {
+      case 1: 
+      default: 
+        label196:
+        localObject = b.qN(((com.tencent.mm.plugin.account.friend.a.g)localObject).dqE);
+        if (localObject == null) {
+          paramViewGroup.ehv.setImageDrawable(com.tencent.mm.cb.a.k(this.context, 2131231207));
+        }
+        break;
       }
     }
     for (;;)
     {
-      localObject = com.tencent.mm.ag.b.jU(((com.tencent.mm.plugin.account.friend.a.g)localObject).cCs);
-      if (localObject != null) {
-        break label454;
-      }
-      paramViewGroup.dpY.setImageDrawable(a.g(this.context, q.i.default_avatar));
+      AppMethodBeat.o(124805);
       return paramView;
       paramViewGroup = (d.b)paramView.getTag();
       break;
-      paramViewGroup.flK.setVisibility(8);
-      paramViewGroup.ffL.setVisibility(0);
-      paramViewGroup.ffL.setText(q.j.friend_waiting);
-      paramViewGroup.ffL.setTextColor(this.context.getResources().getColor(q.c.add_state_color_waiting));
-      continue;
-      if ((((com.tencent.mm.plugin.account.friend.a.g)localObject).status != 102) && (!((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abg(((com.tencent.mm.plugin.account.friend.a.g)localObject).getUsername())))
+      paramViewGroup.gDc.setVisibility(8);
+      paramViewGroup.gxt.setVisibility(0);
+      paramViewGroup.gxt.setText(2131300193);
+      paramViewGroup.gxt.setTextColor(this.context.getResources().getColor(2131689659));
+      break label196;
+      if ((((com.tencent.mm.plugin.account.friend.a.g)localObject).status != 102) && (!((com.tencent.mm.plugin.messenger.foundation.a.j)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arr(((com.tencent.mm.plugin.account.friend.a.g)localObject).getUsername())))
       {
-        paramViewGroup.ffL.setVisibility(8);
-        paramViewGroup.flK.setVisibility(0);
+        paramViewGroup.gxt.setVisibility(8);
+        paramViewGroup.gDc.setVisibility(0);
+        break label196;
       }
-      else if (((com.tencent.mm.plugin.account.friend.a.g)localObject).status == 102)
+      if (((com.tencent.mm.plugin.account.friend.a.g)localObject).status == 102)
       {
-        paramViewGroup.ffL.setVisibility(8);
-        paramViewGroup.flK.setVisibility(8);
-        paramViewGroup.flM.setVisibility(8);
+        paramViewGroup.gxt.setVisibility(8);
+        paramViewGroup.gDc.setVisibility(8);
+        paramViewGroup.gDe.setVisibility(8);
+        break label196;
       }
-      else
-      {
-        paramViewGroup.ffL.setVisibility(0);
-        paramViewGroup.ffL.setText(q.j.friend_added);
-        paramViewGroup.ffL.setTextColor(this.context.getResources().getColor(q.c.add_state_color_added));
-        paramViewGroup.flK.setVisibility(8);
-      }
+      paramViewGroup.gxt.setVisibility(0);
+      paramViewGroup.gxt.setText(2131300189);
+      paramViewGroup.gxt.setTextColor(this.context.getResources().getColor(2131689658));
+      paramViewGroup.gDc.setVisibility(8);
+      break label196;
+      paramViewGroup.ehv.setImageBitmap((Bitmap)localObject);
     }
-    label454:
-    paramViewGroup.dpY.setImageBitmap((Bitmap)localObject);
-    return paramView;
   }
   
-  public final void pA(String paramString)
+  public final void wQ(String paramString)
   {
-    this.fdR = bk.pl(paramString.trim());
-    bcS();
-    yc();
-  }
-  
-  public final void yc()
-  {
-    com.tencent.mm.plugin.account.friend.a.h localh = com.tencent.mm.plugin.account.b.getFacebookFrdStg();
-    String str = this.fdR;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if ((str != null) && (str.length() > 0))
-    {
-      localStringBuilder.append(" where ( ");
-      localStringBuilder.append("facebookfriend.fbname like '%" + str + "%' or ");
-      localStringBuilder.append("facebookfriend.nickname like '%" + str + "%' or ");
-      localStringBuilder.append("facebookfriend.username like '%" + str + "%' ) ");
-    }
-    setCursor(localh.dXo.a("select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend  " + localStringBuilder.toString() + " order by  case when status = 100 then 0  when status = 102 then 3  when status = 101 then 1 else 2 end  , nicknamepyinitial", null, 0));
-    this.fdQ = new int[getCount()];
-    if ((this.flJ != null) && (this.fdR != null)) {
-      this.flJ.jU(getCursor().getCount());
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  protected final void yd()
-  {
-    yc();
+    AppMethodBeat.i(124804);
+    this.gvB = bo.wC(paramString.trim());
+    bKb();
+    Ku();
+    AppMethodBeat.o(124804);
   }
 }
 

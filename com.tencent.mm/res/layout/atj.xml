@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/a6e" style="@style/l2"
+<LinearLayout style="@style/n6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/lr" android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="@dimen/a6e">
-        <ImageView android:id="@id/b_w" android:paddingRight="@dimen/li" android:layout_width="@dimen/a6e" android:layout_height="@dimen/a6e" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <ImageView android:id="@id/czx" android:paddingLeft="@dimen/li" android:layout_width="wrap_content" android:layout_height="@dimen/a6e" android:src="@raw/drag_sort_icon" android:maxHeight="@dimen/a6e" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/czy" android:layout_width="@dimen/n5" android:layout_height="wrap_content" android:layout_toLeftOf="@id/czx" />
-        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/b_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/czy" android:layout_toRightOf="@id/b_w" android:layout_centerVertical="true" style="@style/ks" />
-    </RelativeLayout>
+    <ListView android:id="@id/efm" android:background="@color/vy" android:choiceMode="singleChoice" style="@style/mn" />
 </LinearLayout>

@@ -2,9 +2,9 @@ package com.tencent.soter.a.a;
 
 public abstract interface b
 {
-  public abstract void aTd();
+  public abstract void bzy();
   
-  public abstract void aTe();
+  public abstract void bzz();
   
   public abstract void onAuthenticationCancelled();
   
@@ -16,7 +16,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.a.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.vfs;
 
 public abstract interface c
 {
-  public abstract boolean e(b paramb);
+  public abstract boolean g(b paramb);
 }
 
 

@@ -5,9 +5,10 @@ import android.graphics.RadialGradient;
 import android.graphics.Shader.TileMode;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
-import com.tencent.mm.plugin.appbrand.u.h;
+import com.tencent.mm.plugin.appbrand.s.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -16,12 +17,19 @@ import org.json.JSONObject;
 public class RealSetFillStyleActionRadialArg
   extends RealSetFillStyleActionArg
 {
-  public static final Parcelable.Creator<RealSetFillStyleActionRadialArg> CREATOR = new RealSetFillStyleActionRadialArg.1();
-  public float fLI;
-  public float fLJ;
-  public int[] fLM;
-  public float fLO;
+  public static final Parcelable.Creator<RealSetFillStyleActionRadialArg> CREATOR;
+  public float heS;
+  public float heT;
+  public int[] heW;
+  public float heY;
   public float[] positions;
+  
+  static
+  {
+    AppMethodBeat.i(103397);
+    CREATOR = new RealSetFillStyleActionRadialArg.1();
+    AppMethodBeat.o(103397);
+  }
   
   public RealSetFillStyleActionRadialArg() {}
   
@@ -32,10 +40,14 @@ public class RealSetFillStyleActionRadialArg
   
   public final boolean a(d paramd, Canvas paramCanvas)
   {
-    if ((this.fLM == null) || (this.positions == null)) {
+    AppMethodBeat.i(103390);
+    if ((this.heW == null) || (this.positions == null))
+    {
+      AppMethodBeat.o(103390);
       return false;
     }
-    paramd.fLq.setShader(new RadialGradient(this.fLI, this.fLJ, this.fLO, this.fLM, this.positions, Shader.TileMode.CLAMP));
+    paramd.heC.setShader(new RadialGradient(this.heS, this.heT, this.heY, this.heW, this.positions, Shader.TileMode.CLAMP));
+    AppMethodBeat.o(103390);
     return true;
   }
   
@@ -44,65 +56,81 @@ public class RealSetFillStyleActionRadialArg
     return 0;
   }
   
-  public final void e(JSONArray paramJSONArray)
-  {
-    super.e(paramJSONArray);
-    if (paramJSONArray.length() < 3) {}
-    for (;;)
-    {
-      return;
-      JSONArray localJSONArray = paramJSONArray.optJSONArray(1);
-      if ((localJSONArray != null) && (localJSONArray.length() >= 3))
-      {
-        this.fLI = h.d(localJSONArray, 1);
-        this.fLJ = h.d(localJSONArray, 2);
-        this.fLO = h.d(localJSONArray, 3);
-        paramJSONArray = paramJSONArray.optJSONArray(2);
-        this.fLM = new int[paramJSONArray.length()];
-        this.positions = new float[paramJSONArray.length()];
-        int i = 0;
-        while (i < paramJSONArray.length())
-        {
-          localJSONArray = paramJSONArray.optJSONArray(i);
-          if (localJSONArray.length() >= 2)
-          {
-            this.positions[i] = ((float)localJSONArray.optDouble(0));
-            this.fLM[i] = h.l(localJSONArray.optJSONArray(1));
-          }
-          i += 1;
-        }
-      }
-    }
-  }
-  
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(103391);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(103391);
       return true;
-      if (!(paramObject instanceof RealSetFillStyleActionRadialArg)) {
-        return false;
-      }
-      if (!super.equals(paramObject)) {
-        return false;
-      }
-      paramObject = (RealSetFillStyleActionRadialArg)paramObject;
-    } while ((Float.compare(paramObject.fLI, this.fLI) == 0) && (Float.compare(paramObject.fLJ, this.fLJ) == 0) && (Float.compare(paramObject.fLO, this.fLO) == 0) && (Arrays.equals(this.fLM, paramObject.fLM)) && (Arrays.equals(this.positions, paramObject.positions)));
+    }
+    if (!(paramObject instanceof RealSetFillStyleActionRadialArg))
+    {
+      AppMethodBeat.o(103391);
+      return false;
+    }
+    if (!super.equals(paramObject))
+    {
+      AppMethodBeat.o(103391);
+      return false;
+    }
+    paramObject = (RealSetFillStyleActionRadialArg)paramObject;
+    if ((Float.compare(paramObject.heS, this.heS) == 0) && (Float.compare(paramObject.heT, this.heT) == 0) && (Float.compare(paramObject.heY, this.heY) == 0) && (Arrays.equals(this.heW, paramObject.heW)) && (Arrays.equals(this.positions, paramObject.positions)))
+    {
+      AppMethodBeat.o(103391);
+      return true;
+    }
+    AppMethodBeat.o(103391);
     return false;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void f(JSONArray paramJSONArray)
   {
-    super.f(paramParcel);
-    this.fLI = paramParcel.readFloat();
-    this.fLJ = paramParcel.readFloat();
-    this.fLO = paramParcel.readFloat();
+    AppMethodBeat.i(103395);
+    super.f(paramJSONArray);
+    if (paramJSONArray.length() < 3)
+    {
+      AppMethodBeat.o(103395);
+      return;
+    }
+    JSONArray localJSONArray = paramJSONArray.optJSONArray(1);
+    if ((localJSONArray == null) || (localJSONArray.length() < 3))
+    {
+      AppMethodBeat.o(103395);
+      return;
+    }
+    this.heS = g.d(localJSONArray, 1);
+    this.heT = g.d(localJSONArray, 2);
+    this.heY = g.d(localJSONArray, 3);
+    paramJSONArray = paramJSONArray.optJSONArray(2);
+    this.heW = new int[paramJSONArray.length()];
+    this.positions = new float[paramJSONArray.length()];
+    int i = 0;
+    while (i < paramJSONArray.length())
+    {
+      localJSONArray = paramJSONArray.optJSONArray(i);
+      if (localJSONArray.length() >= 2)
+      {
+        this.positions[i] = ((float)localJSONArray.optDouble(0));
+        this.heW[i] = g.o(localJSONArray.optJSONArray(1));
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(103395);
+  }
+  
+  public final void h(Parcel paramParcel)
+  {
+    AppMethodBeat.i(103393);
+    super.h(paramParcel);
+    this.heS = paramParcel.readFloat();
+    this.heT = paramParcel.readFloat();
+    this.heY = paramParcel.readFloat();
     int i = paramParcel.readInt();
     if (i > 0)
     {
-      this.fLM = new int[i];
-      paramParcel.readIntArray(this.fLM);
+      this.heW = new int[i];
+      paramParcel.readIntArray(this.heW);
     }
     i = paramParcel.readInt();
     if (i > 0)
@@ -110,37 +138,48 @@ public class RealSetFillStyleActionRadialArg
       this.positions = new float[i];
       paramParcel.readFloatArray(this.positions);
     }
+    AppMethodBeat.o(103393);
   }
   
   public int hashCode()
   {
-    return (Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.fLI), Float.valueOf(this.fLJ), Float.valueOf(this.fLO) }) * 31 + Arrays.hashCode(this.fLM)) * 31 + Arrays.hashCode(this.positions);
+    AppMethodBeat.i(103392);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.heS), Float.valueOf(this.heT), Float.valueOf(this.heY) });
+    int j = Arrays.hashCode(this.heW);
+    int k = Arrays.hashCode(this.positions);
+    AppMethodBeat.o(103392);
+    return (i * 31 + j) * 31 + k;
   }
   
-  public final void j(JSONObject paramJSONObject)
+  public final void p(JSONObject paramJSONObject)
   {
-    super.j(paramJSONObject);
+    AppMethodBeat.i(103396);
+    super.p(paramJSONObject);
+    AppMethodBeat.o(103396);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(103394);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.fLI);
-    paramParcel.writeFloat(this.fLJ);
-    paramParcel.writeFloat(this.fLO);
-    if (this.fLM != null)
+    paramParcel.writeFloat(this.heS);
+    paramParcel.writeFloat(this.heT);
+    paramParcel.writeFloat(this.heY);
+    if (this.heW != null)
     {
-      paramParcel.writeInt(this.fLM.length);
-      paramParcel.writeIntArray(this.fLM);
+      paramParcel.writeInt(this.heW.length);
+      paramParcel.writeIntArray(this.heW);
     }
     while (this.positions != null)
     {
       paramParcel.writeInt(this.positions.length);
       paramParcel.writeFloatArray(this.positions);
+      AppMethodBeat.o(103394);
       return;
       paramParcel.writeInt(0);
     }
     paramParcel.writeInt(0);
+    AppMethodBeat.o(103394);
   }
 }
 

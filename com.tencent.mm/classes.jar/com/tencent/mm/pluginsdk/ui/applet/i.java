@@ -6,72 +6,229 @@ import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.plugin.comm.a.c;
-import com.tencent.mm.plugin.comm.a.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.u;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public final class i
 {
   private Context context;
-  f dnn;
-  private View fhl;
-  private View igy;
-  public View.OnClickListener nuB;
-  ContactListExpandPreference.a ptQ;
-  private k.a scA;
-  private j.a scB;
-  String scq;
-  private HashMap<String, Preference> scr = new HashMap();
-  boolean scs = false;
-  boolean sct;
-  public j scu;
-  k.b scv;
-  private View.OnClickListener scw;
-  private View.OnClickListener scx;
-  private View.OnClickListener scy;
-  private k.b scz;
+  private View gyT;
+  private View jWo;
+  public View.OnClickListener qaq;
+  f screen;
+  ContactListExpandPreference.a sqf;
   String username;
+  public j vTA;
+  k.b vTB;
+  private View.OnClickListener vTC;
+  private View.OnClickListener vTD;
+  private View.OnClickListener vTE;
+  private k.b vTF;
+  private k.a vTG;
+  private j.a vTH;
+  private String vTw;
+  private HashMap<String, Preference> vTx;
+  private boolean vTy;
+  private boolean vTz;
   
   public i(Context paramContext)
   {
-    if (this.scs) {
+    AppMethodBeat.i(79735);
+    this.vTx = new HashMap();
+    this.vTy = false;
+    if (this.vTy) {
       bool = true;
     }
-    this.sct = bool;
-    this.scv = null;
-    this.nuB = null;
-    this.ptQ = null;
-    this.scy = new i.1(this);
-    this.scz = new i.2(this);
-    this.scA = new i.3(this);
-    this.scB = new j.a()
+    this.vTz = bool;
+    this.vTB = null;
+    this.qaq = null;
+    this.sqf = null;
+    this.vTE = new i.1(this);
+    this.vTF = new i.2(this);
+    this.vTG = new i.3(this);
+    this.vTH = new j.a()
     {
-      public final void cjm()
+      public final void djN()
       {
-        if (i.this.dnn != null) {
-          i.this.dnn.notifyDataSetChanged();
+        AppMethodBeat.i(79734);
+        if (i.this.screen != null) {
+          i.this.screen.notifyDataSetChanged();
         }
+        AppMethodBeat.o(79734);
       }
     };
     this.context = paramContext;
-    this.scu = new j(this.context);
-    this.scu.scF = this.scB;
+    this.vTA = new j(this.context);
+    this.vTA.vTK = this.vTH;
+    AppMethodBeat.o(79735);
   }
   
-  private static String DZ(int paramInt)
+  private void LV(int paramInt)
   {
-    if (paramInt >= 0) {
-      return "pref_contact_list_row_" + paramInt;
+    AppMethodBeat.i(79740);
+    int k = 0;
+    if (this.gyT != null) {
+      k = 1;
+    }
+    Object localObject1;
+    if (this.jWo != null) {
+      if (this.vTy)
+      {
+        localObject1 = this.vTA;
+        if (((j)localObject1).vTP <= ((j)localObject1).vTX) {
+          break label450;
+        }
+        i = 1;
+        if (i == 0) {
+          break label759;
+        }
+      }
+    }
+    label162:
+    label175:
+    label201:
+    label465:
+    label474:
+    label485:
+    label756:
+    label759:
+    for (int i = 1;; i = 0)
+    {
+      int j = paramInt;
+      if (k != 0)
+      {
+        localObject1 = new ContactListCustomPreference(this.context);
+        ((ContactListCustomPreference)localObject1).setKey(LW(-1));
+        ((ContactListCustomPreference)localObject1).setCustomView(this.gyT);
+        ((ContactListCustomPreference)localObject1).background = 2130838445;
+        ((ContactListCustomPreference)localObject1).qaq = this.vTC;
+        this.screen.a((Preference)localObject1, paramInt);
+        this.vTx.put(((Preference)localObject1).mKey, localObject1);
+        j = paramInt + 1;
+      }
+      View.OnClickListener localOnClickListener;
+      boolean bool1;
+      boolean bool2;
+      if (this.vTB != null)
+      {
+        localObject1 = this.vTB;
+        if (this.qaq == null) {
+          break label465;
+        }
+        localOnClickListener = this.qaq;
+        if ((this.vTA.efi == null) || (!this.vTA.efi.JP())) {
+          break label474;
+        }
+        bool1 = true;
+        bool2 = this.vTA.dnD();
+        if (!this.vTA.muT) {
+          break label756;
+        }
+        bool1 = this.vTA.vTM;
+      }
+      for (;;)
+      {
+        int i1 = this.vTA.vTQ;
+        if ((!bool2) || (bool1)) {}
+        int m;
+        Object localObject2;
+        Object localObject3;
+        for (paramInt = 2;; paramInt = 1)
+        {
+          m = 0;
+          localObject2 = this.vTA;
+          localObject3 = this.context;
+          if (localObject3 != null) {
+            break label485;
+          }
+          k = 0;
+          n = 0;
+          while ((n < this.vTA.getCount()) && (n < i1 + paramInt))
+          {
+            localObject2 = new ContactListExpandPreference(this.context, 1);
+            ((ContactListExpandPreference)localObject2).setKey(LW(m));
+            localObject3 = ((ContactListExpandPreference)localObject2).vUl;
+            ((k)localObject3).vTA = this.vTA;
+            ((k)localObject3).row = m;
+            ((k)localObject3).index = n;
+            ((ContactListExpandPreference)localObject2).vUl.vUm = k;
+            ((ContactListExpandPreference)localObject2).vUl.efd = bool1;
+            ((ContactListExpandPreference)localObject2).vUl.qaq = localOnClickListener;
+            ((ContactListExpandPreference)localObject2).vUl.vTG = this.vTG;
+            ((ContactListExpandPreference)localObject2).vUl.vUn = ((k.b)localObject1);
+            this.screen.a((Preference)localObject2, j + m);
+            this.vTx.put(((Preference)localObject2).mKey, localObject2);
+            n += k;
+            m += 1;
+          }
+          i = 0;
+          break;
+          localObject1 = this.vTF;
+          break label162;
+          localOnClickListener = this.vTE;
+          break label175;
+          bool1 = false;
+          break label201;
+        }
+        Display localDisplay = ((WindowManager)((Context)localObject3).getSystemService("window")).getDefaultDisplay();
+        k = localDisplay.getWidth();
+        int n = localDisplay.getHeight();
+        float f2;
+        if ((k / (((Context)localObject3).getResources().getDimension(2131427802) + ((Context)localObject3).getResources().getDimension(2131427792) * 2.0F) >= 5.0F) && (n > k))
+        {
+          ((j)localObject2).vUd = true;
+          f2 = ((Context)localObject3).getResources().getDimension(2131427792);
+          if (!((j)localObject2).vUd) {
+            break label658;
+          }
+        }
+        for (float f1 = ((Context)localObject3).getResources().getDimension(2131427802);; f1 = ((Context)localObject3).getResources().getDimension(2131427800))
+        {
+          n = k / (int)(f1 + 2.0F * f2);
+          ab.i("MicroMsg.ContactsListArchAdapter", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(n) });
+          j.vTJ = n;
+          k = n;
+          if (n != 4) {
+            break;
+          }
+          j.MAX_COUNT = 43;
+          k = n;
+          break;
+          ((j)localObject2).vUd = false;
+          break label562;
+        }
+        if (i != 0)
+        {
+          localObject1 = new ContactListCustomPreference(this.context);
+          ((ContactListCustomPreference)localObject1).setKey(LW(-2));
+          ((ContactListCustomPreference)localObject1).setCustomView(this.jWo);
+          ((ContactListCustomPreference)localObject1).qaq = this.vTD;
+          this.screen.a((Preference)localObject1, j + m);
+          this.vTx.put(((Preference)localObject1).mKey, localObject1);
+        }
+        AppMethodBeat.o(79740);
+        return;
+      }
+    }
+  }
+  
+  private static String LW(int paramInt)
+  {
+    AppMethodBeat.i(79742);
+    if (paramInt >= 0)
+    {
+      str = "pref_contact_list_row_".concat(String.valueOf(paramInt));
+      AppMethodBeat.o(79742);
+      return str;
     }
     String str = "unkown";
     if (paramInt == -1) {
@@ -79,188 +236,98 @@ public final class i
     }
     for (;;)
     {
-      return "pref_contact_list_row_" + str;
+      str = "pref_contact_list_row_".concat(String.valueOf(str));
+      AppMethodBeat.o(79742);
+      return str;
       if (paramInt == -2) {
         str = "footer";
       }
     }
   }
   
-  final void GI(String paramString)
+  private void Sl(String paramString)
   {
-    j localj = this.scu;
-    localj.username = paramString;
-    localj.bRz = s.fn(paramString);
-    if ((!localj.bRz) && (p.a.sdn != null)) {
-      localj.kax = p.a.sdn.WC(paramString);
-    }
-    if (!localj.kax) {
-      localj.dnL = ((c)g.r(c.class)).FF().in(paramString);
-    }
-    if ((localj.kax) && (p.a.sdn != null)) {
-      localj.drd = p.a.sdn.WE(localj.username);
-    }
-    this.scu.scS = this.sct;
-    this.scu.notifyChanged();
-    buD();
+    AppMethodBeat.i(79738);
+    this.vTA.setUsername(paramString);
+    this.vTA.vTW = this.vTz;
+    this.vTA.Kc();
+    aPD();
+    AppMethodBeat.o(79738);
   }
   
-  public final void buD()
+  private void removeAll()
   {
-    if ((this.dnn == null) || (this.scq == null)) {
+    AppMethodBeat.i(79741);
+    Iterator localIterator = this.vTx.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      this.screen.aty(str);
+    }
+    this.vTx.clear();
+    AppMethodBeat.o(79741);
+  }
+  
+  public final void a(f paramf, String paramString)
+  {
+    AppMethodBeat.i(79739);
+    if ((paramf == null) || (paramString == null))
+    {
+      AppMethodBeat.o(79739);
       return;
     }
-    Object localObject1 = this.scr.keySet().iterator();
-    Object localObject2;
-    while (((Iterator)localObject1).hasNext())
+    this.screen = paramf;
+    this.vTw = paramString;
+    paramf.cl(paramString, true);
+    AppMethodBeat.o(79739);
+  }
+  
+  public final void aPD()
+  {
+    AppMethodBeat.i(79743);
+    if ((this.screen == null) || (this.vTw == null))
     {
-      localObject2 = (String)((Iterator)localObject1).next();
-      this.dnn.ade((String)localObject2);
+      AppMethodBeat.o(79743);
+      return;
     }
-    this.scr.clear();
-    int m = this.dnn.indexOf(this.scq);
-    int k = 0;
-    if (this.fhl != null) {
-      k = 1;
+    removeAll();
+    LV(this.screen.indexOf(this.vTw));
+    AppMethodBeat.o(79743);
+  }
+  
+  public final void ah(ArrayList<ad> paramArrayList)
+  {
+    AppMethodBeat.i(79737);
+    Object localObject = paramArrayList;
+    if (paramArrayList == null) {
+      localObject = new ArrayList(0);
     }
-    if (this.igy != null) {
-      if (this.scs)
-      {
-        localObject1 = this.scu;
-        if (((j)localObject1).scL <= ((j)localObject1).scT) {
-          break label536;
-        }
-        i = 1;
-        if (i == 0) {
-          break label847;
-        }
-      }
+    this.vTA.ai((ArrayList)localObject);
+    Sl(null);
+    AppMethodBeat.o(79737);
+  }
+  
+  public final void dnB()
+  {
+    boolean bool = false;
+    this.vTy = false;
+    if (this.vTy) {
+      bool = true;
     }
-    label259:
-    label285:
-    label550:
-    label559:
-    label571:
-    label844:
-    label847:
-    for (int i = 1;; i = 0)
-    {
-      int j = m;
-      if (k != 0)
-      {
-        localObject1 = new ContactListCustomPreference(this.context);
-        ((ContactListCustomPreference)localObject1).setKey(DZ(-1));
-        ((ContactListCustomPreference)localObject1).setCustomView(this.fhl);
-        ((ContactListCustomPreference)localObject1).background = a.d.comm_list_item_selector;
-        ((ContactListCustomPreference)localObject1).nuB = this.scw;
-        this.dnn.a((Preference)localObject1, m);
-        this.scr.put(((Preference)localObject1).mKey, localObject1);
-        j = m + 1;
-      }
-      label246:
-      boolean bool1;
-      boolean bool2;
-      if (this.scv != null)
-      {
-        localObject1 = this.scv;
-        if (this.nuB == null) {
-          break label550;
-        }
-        localObject2 = this.nuB;
-        if ((this.scu.dnL == null) || (!this.scu.dnL.xw())) {
-          break label559;
-        }
-        bool1 = true;
-        bool2 = this.scu.cmL();
-        if (!this.scu.kax) {
-          break label844;
-        }
-        bool1 = this.scu.scH;
-      }
-      for (;;)
-      {
-        int i2 = this.scu.scM;
-        if ((!bool2) || (bool1)) {}
-        int n;
-        Object localObject3;
-        Object localObject4;
-        for (k = 2;; k = 1)
-        {
-          n = 0;
-          localObject3 = this.scu;
-          localObject4 = this.context;
-          if (localObject4 != null) {
-            break label571;
-          }
-          m = 0;
-          i1 = 0;
-          while ((i1 < this.scu.getCount()) && (i1 < i2 + k))
-          {
-            localObject3 = new ContactListExpandPreference(this.context, 1);
-            ((ContactListExpandPreference)localObject3).setKey(DZ(n));
-            localObject4 = ((ContactListExpandPreference)localObject3).sdi;
-            ((k)localObject4).scu = this.scu;
-            ((k)localObject4).row = n;
-            ((k)localObject4).index = i1;
-            ((ContactListExpandPreference)localObject3).sdi.sdj = m;
-            ((ContactListExpandPreference)localObject3).sdi.dnG = bool1;
-            ((ContactListExpandPreference)localObject3).sdi.nuB = ((View.OnClickListener)localObject2);
-            ((ContactListExpandPreference)localObject3).sdi.scA = this.scA;
-            ((ContactListExpandPreference)localObject3).sdi.sdk = ((k.b)localObject1);
-            this.dnn.a((Preference)localObject3, j + n);
-            this.scr.put(((Preference)localObject3).mKey, localObject3);
-            i1 += m;
-            n += 1;
-          }
-          i = 0;
-          break;
-          localObject1 = this.scz;
-          break label246;
-          localObject2 = this.scy;
-          break label259;
-          bool1 = false;
-          break label285;
-        }
-        Display localDisplay = ((WindowManager)((Context)localObject4).getSystemService("window")).getDefaultDisplay();
-        m = localDisplay.getWidth();
-        int i1 = localDisplay.getHeight();
-        float f2;
-        if ((m / (((Context)localObject4).getResources().getDimension(a.c.NormalAvatarWrapSize) + ((Context)localObject4).getResources().getDimension(a.c.MiddlePadding) * 2.0F) >= 5.0F) && (i1 > m))
-        {
-          ((j)localObject3).scZ = true;
-          f2 = ((Context)localObject4).getResources().getDimension(a.c.MiddlePadding);
-          if (!((j)localObject3).scZ) {
-            break label752;
-          }
-        }
-        label752:
-        for (float f1 = ((Context)localObject4).getResources().getDimension(a.c.NormalAvatarWrapSize);; f1 = ((Context)localObject4).getResources().getDimension(a.c.NormalAvatarSize))
-        {
-          i1 = m / (int)(f1 + 2.0F * f2);
-          y.i("MicroMsg.ContactsListArchAdapter", "[getWrapColNum] :%s", new Object[] { Integer.valueOf(i1) });
-          j.scE = i1;
-          m = i1;
-          if (i1 != 4) {
-            break;
-          }
-          j.scD = 43;
-          m = i1;
-          break;
-          ((j)localObject3).scZ = false;
-          break label652;
-        }
-        if (i == 0) {
-          break;
-        }
-        localObject1 = new ContactListCustomPreference(this.context);
-        ((ContactListCustomPreference)localObject1).setKey(DZ(-2));
-        ((ContactListCustomPreference)localObject1).setCustomView(this.igy);
-        ((ContactListCustomPreference)localObject1).nuB = this.scx;
-        this.dnn.a((Preference)localObject1, j + n);
-        this.scr.put(((Preference)localObject1).mKey, localObject1);
-        return;
-      }
+    this.vTz = bool;
+  }
+  
+  public final void v(String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(79736);
+    this.username = paramString;
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList(0);
     }
+    this.vTA.dj((List)localObject);
+    Sl(paramString);
+    AppMethodBeat.o(79736);
   }
 }
 

@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.fav.a.m;
-import com.tencent.mm.plugin.fav.a.m.a;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavoriteFileDetailUI$8
-  implements MenuItem.OnMenuItemClickListener
+  implements Runnable
 {
-  FavoriteFileDetailUI$8(FavoriteFileDetailUI paramFavoriteFileDetailUI) {}
+  FavoriteFileDetailUI$8(FavoriteFileDetailUI paramFavoriteFileDetailUI, float paramFloat, String paramString) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void run()
   {
-    m.a(m.a.jZk, FavoriteFileDetailUI.b(this.kfu));
-    this.kfu.finish();
-    return true;
+    AppMethodBeat.i(74330);
+    FavoriteFileDetailUI.t(this.mAf).setProgress((int)this.mAi);
+    FavoriteFileDetailUI.u(this.mAf).setText(this.val$tips);
+    AppMethodBeat.o(74330);
   }
 }
 

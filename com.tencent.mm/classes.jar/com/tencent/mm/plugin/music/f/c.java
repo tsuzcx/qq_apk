@@ -4,115 +4,116 @@ import android.annotation.TargetApi;
 import android.media.AudioTrack;
 import android.media.MediaCodec;
 import android.media.MediaExtractor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.f.a.g;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 @TargetApi(16)
 public final class c
   extends com.tencent.mm.plugin.music.f.a.b
 {
-  MediaCodec aFW;
-  AudioTrack awx;
-  int channels = 0;
-  int dUg = 0;
-  long duration = 0L;
-  MediaExtractor eIP;
-  String jkV = null;
-  private Runnable mAA = new c.1(this);
-  String mAz;
-  long presentationTimeUs = 0L;
-  int sampleRate = 0;
-  private boolean stop = true;
+  MediaCodec aMR;
+  AudioTrack ayN;
+  int cfE;
+  String cfF;
+  MediaExtractor cfO;
+  String cfP;
+  int channels;
+  private Runnable cle;
+  long duration;
+  private boolean oIr;
+  long presentationTimeUs;
+  int sampleRate;
   
-  /* Error */
-  private void bnH()
+  public c()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 65
-    //   4: ldc 88
-    //   6: invokestatic 92	com/tencent/mm/sdk/platformtools/y:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: aload_0
-    //   10: invokevirtual 95	java/lang/Object:notify	()V
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: return
-    //   16: astore_1
-    //   17: ldc 65
-    //   19: aload_1
-    //   20: ldc 97
-    //   22: iconst_0
-    //   23: anewarray 69	java/lang/Object
-    //   26: invokestatic 75	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   29: goto -16 -> 13
-    //   32: astore_1
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_1
-    //   36: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	37	0	this	c
-    //   16	4	1	localException	Exception
-    //   32	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   9	13	16	java/lang/Exception
-    //   2	9	32	finally
-    //   9	13	32	finally
-    //   17	29	32	finally
+    AppMethodBeat.i(137563);
+    this.oIr = true;
+    this.cfP = null;
+    this.sampleRate = 0;
+    this.channels = 0;
+    this.presentationTimeUs = 0L;
+    this.duration = 0L;
+    this.cfE = 0;
+    this.cle = new c.1(this);
+    AppMethodBeat.o(137563);
   }
   
-  public final void JG(String paramString)
+  private void Ei()
   {
-    this.mAz = paramString;
+    try
+    {
+      AppMethodBeat.i(137566);
+      ab.i("MicroMsg.Music.MMPlayer", "sync notify");
+      try
+      {
+        notify();
+        AppMethodBeat.o(137566);
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          ab.printErrStackTrace("MicroMsg.Music.MMPlayer", localException, "syncNotify", new Object[0]);
+          AppMethodBeat.o(137566);
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
-  public final boolean bnE()
+  public final void VE(String paramString)
   {
-    return !this.stop;
+    this.cfF = paramString;
   }
   
-  public final int bnF()
+  public final boolean bWb()
+  {
+    return !this.oIr;
+  }
+  
+  public final int bWc()
   {
     return (int)(this.presentationTimeUs / 1000L);
   }
   
-  public final String bnG()
+  public final String bWd()
   {
-    return this.jkV;
+    return this.cfP;
   }
   
-  public final void bnI()
+  public final void bWe()
   {
     try
     {
-      while (bnE())
+      AppMethodBeat.i(137570);
+      while (bWb())
       {
-        boolean bool = this.mAS.bnM();
+        boolean bool = this.paX.bWj();
         if (!bool) {
           break;
         }
         try
         {
-          y.i("MicroMsg.Music.MMPlayer", "wait play");
+          ab.i("MicroMsg.Music.MMPlayer", "wait play");
           wait();
         }
         catch (InterruptedException localInterruptedException)
         {
-          y.printErrStackTrace("MicroMsg.Music.MMPlayer", localInterruptedException, "waitPlay", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.Music.MMPlayer", localInterruptedException, "waitPlay", new Object[0]);
         }
       }
+      AppMethodBeat.o(137570);
     }
     finally {}
   }
   
   final boolean createAudioTrack()
   {
-    boolean bool = true;
-    y.i("MicroMsg.Music.MMPlayer", "createAudioTrack");
+    AppMethodBeat.i(137564);
+    ab.i("MicroMsg.Music.MMPlayer", "createAudioTrack");
     int i;
     if (this.channels == 1) {
       i = 4;
@@ -120,30 +121,35 @@ public final class c
     for (;;)
     {
       int j = AudioTrack.getMinBufferSize(this.sampleRate, i, 2);
-      com.tencent.mm.plugin.music.e.b localb = (com.tencent.mm.plugin.music.e.b)com.tencent.mm.plugin.music.f.c.b.Q(com.tencent.mm.plugin.music.e.b.class);
+      com.tencent.mm.plugin.music.e.b localb = (com.tencent.mm.plugin.music.e.b)com.tencent.mm.plugin.music.f.c.b.am(com.tencent.mm.plugin.music.e.b.class);
       if (localb != null)
       {
-        this.awx = localb.Q(this.sampleRate, i, j);
-        if (this.awx == null)
+        this.ayN = localb.ab(this.sampleRate, i, j);
+        label61:
+        if (this.ayN == null)
         {
-          y.e("MicroMsg.Music.MMPlayer", "audioTrack is null, new AudioTrack");
-          this.awx = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
+          ab.e("MicroMsg.Music.MMPlayer", "audioTrack is null, new AudioTrack");
+          this.ayN = new AudioTrack(3, this.sampleRate, i, 2, j, 1);
         }
-        if ((this.awx == null) || (this.awx.getState() != 1))
-        {
-          y.e("MicroMsg.Music.MMPlayer", "audio track not initialized");
-          if (this.awx == null) {}
+        if ((this.ayN != null) && (this.ayN.getState() == 1)) {
+          break label157;
         }
+        ab.e("MicroMsg.Music.MMPlayer", "audio track not initialized");
+        if (this.ayN == null) {}
       }
       try
       {
-        this.awx.release();
+        this.ayN.release();
         label134:
-        bool = false;
-        return bool;
+        AppMethodBeat.o(137564);
+        return false;
         i = 12;
         continue;
-        y.e("MicroMsg.Music.MMPlayer", "mediaResService null");
+        ab.e("MicroMsg.Music.MMPlayer", "mediaResService null");
+        break label61;
+        label157:
+        AppMethodBeat.o(137564);
+        return true;
       }
       catch (Exception localException)
       {
@@ -157,61 +163,80 @@ public final class c
     return (int)(this.duration / 1000L);
   }
   
-  protected final void hS(boolean paramBoolean)
-  {
-    this.mAS.mAW = 4;
-    this.stop = true;
-    super.hS(paramBoolean);
-  }
-  
-  protected final void hT(boolean paramBoolean)
-  {
-    this.mAS.mAW = 4;
-    this.stop = true;
-    super.hT(paramBoolean);
-  }
-  
   public final boolean isPlaying()
   {
-    return this.mAS.isPlaying();
+    AppMethodBeat.i(137571);
+    boolean bool = this.paX.isPlaying();
+    AppMethodBeat.o(137571);
+    return bool;
+  }
+  
+  public final void jP(boolean paramBoolean)
+  {
+    AppMethodBeat.i(137572);
+    this.paX.pbb = 4;
+    this.oIr = true;
+    super.jP(paramBoolean);
+    AppMethodBeat.o(137572);
+  }
+  
+  public final void jQ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(137573);
+    this.paX.pbb = 4;
+    this.oIr = true;
+    super.jQ(paramBoolean);
+    AppMethodBeat.o(137573);
   }
   
   public final void pause()
   {
-    y.i("MicroMsg.Music.MMPlayer", "pause");
-    if (!bnE()) {
+    AppMethodBeat.i(137568);
+    ab.i("MicroMsg.Music.MMPlayer", "pause");
+    if (!bWb())
+    {
+      AppMethodBeat.o(137568);
       return;
     }
-    this.mAS.mAW = 2;
+    this.paX.pbb = 2;
+    AppMethodBeat.o(137568);
   }
   
   public final void play()
   {
-    y.i("MicroMsg.Music.MMPlayer", "play");
-    if (!bnE())
+    AppMethodBeat.i(137565);
+    ab.i("MicroMsg.Music.MMPlayer", "play");
+    if (!bWb())
     {
-      this.stop = false;
-      e.post(this.mAA, "music_player");
-    }
-    while ((!bnE()) || (!this.mAS.bnM())) {
+      this.oIr = false;
+      d.post(this.cle, "music_player");
+      AppMethodBeat.o(137565);
       return;
     }
-    this.mAS.mAW = 3;
-    bnH();
+    if ((bWb()) && (this.paX.bWj()))
+    {
+      this.paX.pbb = 3;
+      Ei();
+    }
+    AppMethodBeat.o(137565);
   }
   
   public final void seek(long paramLong)
   {
-    this.eIP.seekTo(1000L * paramLong, 2);
+    AppMethodBeat.i(137569);
+    this.cfO.seekTo(1000L * paramLong, 2);
+    AppMethodBeat.o(137569);
   }
   
   public final void stop()
   {
-    y.i("MicroMsg.Music.MMPlayer", "stop");
-    this.stop = true;
-    if (this.mAS.bnM()) {
-      bnH();
+    AppMethodBeat.i(137567);
+    ab.i("MicroMsg.Music.MMPlayer", "stop");
+    this.oIr = true;
+    if (this.paX.bWj()) {
+      Ei();
     }
+    AppMethodBeat.o(137567);
   }
 }
 

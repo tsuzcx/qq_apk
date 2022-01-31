@@ -3,7 +3,8 @@ package com.tencent.mm.ui.contact;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 
 final class GroupCardSelectUI$1
@@ -13,14 +14,17 @@ final class GroupCardSelectUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (ad)GroupCardSelectUI.a(this.vLx).getItem(paramInt);
+    AppMethodBeat.i(33728);
+    paramAdapterView = (ad)GroupCardSelectUI.a(this.AcZ).getItem(paramInt);
     if (paramAdapterView == null)
     {
-      y.v("MicroMsg.GroupCardSelectUI", "onItemClick contact null");
+      ab.v("MicroMsg.GroupCardSelectUI", "onItemClick contact null");
+      AppMethodBeat.o(33728);
       return;
     }
-    GroupCardSelectUI.a(this.vLx, paramAdapterView);
-    GroupCardSelectUI.b(this.vLx);
+    GroupCardSelectUI.a(this.AcZ, paramAdapterView);
+    GroupCardSelectUI.b(this.AcZ);
+    AppMethodBeat.o(33728);
   }
 }
 

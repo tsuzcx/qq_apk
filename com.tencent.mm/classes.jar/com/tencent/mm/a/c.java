@@ -32,7 +32,7 @@ public final class c
         j += 1;
       }
       paramPByteArray.value = new byte[paramArrayOfByte1.length + i + 32];
-      if (j.a(paramPByteArray.value, arrayOfByte, arrayOfByte.length, paramArrayOfByte2.length, paramArrayOfByte2, 0) == 0) {
+      if (k.a(paramPByteArray.value, arrayOfByte, arrayOfByte.length, paramArrayOfByte2.length, paramArrayOfByte2, 0) == 0) {
         return 11;
       }
       paramArrayOfByte1 = new byte[paramArrayOfByte1.length + i + 8];
@@ -57,7 +57,7 @@ public final class c
     }
     int i = paramArrayOfByte1.length;
     paramPByteArray.value = new byte[i];
-    if (j.a(paramPByteArray.value, paramArrayOfByte1, i, paramArrayOfByte2.length, paramArrayOfByte2, 1) == 0) {
+    if (k.a(paramPByteArray.value, paramArrayOfByte1, i, paramArrayOfByte2.length, paramArrayOfByte2, 1) == 0) {
       return 12;
     }
     int j = paramPByteArray.value[(i - 1 - 8)];

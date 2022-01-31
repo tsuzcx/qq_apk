@@ -1,12 +1,20 @@
 package com.tencent.mm.plugin.music.d;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$f
 {
-  int[] myQ = { 1, 1, 1, 1 };
+  int[] bIR;
   
-  static int t(boolean paramBoolean, int paramInt)
+  private a$f()
+  {
+    AppMethodBeat.i(137500);
+    this.bIR = new int[] { 1, 1, 1, 1 };
+    AppMethodBeat.o(137500);
+  }
+  
+  static int e(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean) {}
     for (int i = -268435456;; i = 0) {
@@ -21,14 +29,14 @@ final class a$f
     if (paramBoolean)
     {
       i = 268435455;
-      int k = this.myQ.length - paramArrayOfInt.length;
+      int k = this.bIR.length - paramArrayOfInt.length;
       j = k;
       paramBoolean = true;
       label23:
-      if (j >= this.myQ.length) {
+      if (j >= this.bIR.length) {
         return paramBoolean;
       }
-      if ((this.myQ[j] & i) != (paramArrayOfInt[(j - k)] & i)) {
+      if ((this.bIR[j] & i) != (paramArrayOfInt[(j - k)] & i)) {
         break label76;
       }
     }
@@ -44,18 +52,22 @@ final class a$f
     return paramBoolean;
   }
   
-  final void s(boolean paramBoolean, int paramInt)
+  final void d(boolean paramBoolean, int paramInt)
   {
-    int i = t(paramBoolean, paramInt);
-    y.i("MicroMsg.Music.ExoMusicPlayer", "request setMostRecentState [" + paramBoolean + "," + paramInt + "], lastState=" + this.myQ[3] + ",newState=" + i);
-    if (this.myQ[3] == i) {
+    AppMethodBeat.i(137501);
+    int i = e(paramBoolean, paramInt);
+    ab.i("MicroMsg.Music.ExoMusicPlayer", "request setMostRecentState [" + paramBoolean + "," + paramInt + "], lastState=" + this.bIR[3] + ",newState=" + i);
+    if (this.bIR[3] == i)
+    {
+      AppMethodBeat.o(137501);
       return;
     }
-    this.myQ[0] = this.myQ[1];
-    this.myQ[1] = this.myQ[2];
-    this.myQ[2] = this.myQ[3];
-    this.myQ[3] = i;
-    y.v("MicroMsg.Music.ExoMusicPlayer", "MostRecentState [" + this.myQ[0] + "," + this.myQ[1] + "," + this.myQ[2] + "," + this.myQ[3] + "]");
+    this.bIR[0] = this.bIR[1];
+    this.bIR[1] = this.bIR[2];
+    this.bIR[2] = this.bIR[3];
+    this.bIR[3] = i;
+    ab.v("MicroMsg.Music.ExoMusicPlayer", "MostRecentState [" + this.bIR[0] + "," + this.bIR[1] + "," + this.bIR[2] + "," + this.bIR[3] + "]");
+    AppMethodBeat.o(137501);
   }
 }
 

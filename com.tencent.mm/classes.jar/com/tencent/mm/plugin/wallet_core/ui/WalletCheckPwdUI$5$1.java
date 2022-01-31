@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletCheckPwdUI$5$1
   implements Runnable
@@ -9,12 +10,15 @@ final class WalletCheckPwdUI$5$1
   
   public final void run()
   {
-    if (this.qDl)
+    AppMethodBeat.i(47336);
+    if (this.uqh)
     {
-      WalletCheckPwdUI.h(this.qDm.qDk).fullScroll(130);
+      WalletCheckPwdUI.h(this.uqi.uqg).fullScroll(130);
+      AppMethodBeat.o(47336);
       return;
     }
-    WalletCheckPwdUI.h(this.qDm.qDk).fullScroll(33);
+    WalletCheckPwdUI.h(this.uqi.uqg).fullScroll(33);
+    AppMethodBeat.o(47336);
   }
 }
 

@@ -1,24 +1,25 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import android.text.TextUtils;
-import com.tencent.mm.ag.h;
-import com.tencent.mm.ag.i;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.h;
+import com.tencent.mm.ah.i;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.b;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.protocal.c.anv;
-import com.tencent.mm.protocal.c.anw;
-import com.tencent.mm.protocal.c.aua;
-import com.tencent.mm.protocal.c.aub;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.atl;
+import com.tencent.mm.protocal.protobuf.atm;
+import com.tencent.mm.protocal.protobuf.bag;
+import com.tencent.mm.protocal.protobuf.bah;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.g.a;
 import java.util.ArrayList;
@@ -30,35 +31,38 @@ public final class af
   extends m
   implements k
 {
-  private final com.tencent.mm.ah.b dmK;
-  private f dmL;
-  private String fdD;
-  private HashMap<String, n> fdG = new HashMap();
-  private ArrayList<n> fgC;
-  private int fgD;
-  private int fgE;
-  private int fgF;
-  private int fgG;
+  private f callback;
+  private HashMap<String, n> gvq;
+  private ArrayList<n> gyk;
+  private int gyl;
+  private int gym;
+  private int gyn;
+  private int gyo;
+  private String mToken;
+  private final com.tencent.mm.ai.b rr;
   
   public af(ArrayList<n> paramArrayList, int paramInt, HashMap<String, n> paramHashMap, String paramString)
   {
+    AppMethodBeat.i(108465);
+    this.gvq = new HashMap();
     b.a locala = new b.a();
-    locala.ecH = new aua();
-    locala.ecI = new aub();
+    locala.fsX = new bag();
+    locala.fsY = new bah();
     locala.uri = "/cgi-bin/micromsg-bin/listgooglecontact";
-    locala.ecG = 488;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    this.fgC = paramArrayList;
-    this.fgD = paramInt;
-    this.fgE = 0;
-    this.fgG = 1;
-    this.fdG = paramHashMap;
-    this.fdD = paramString;
+    locala.funcId = 488;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    this.gyk = paramArrayList;
+    this.gyl = paramInt;
+    this.gym = 0;
+    this.gyo = 1;
+    this.gvq = paramHashMap;
+    this.mToken = paramString;
+    AppMethodBeat.o(108465);
   }
   
-  private void a(aub paramaub)
+  private void a(bah parambah)
   {
     for (;;)
     {
@@ -69,55 +73,56 @@ public final class af
       String str2;
       try
       {
-        y.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "handleListGoogleContactCGIResponse Count:%d", new Object[] { Integer.valueOf(paramaub.hPS) });
-        if ((paramaub.hPT == null) || (paramaub.hPT.size() <= 0)) {
-          break label576;
+        AppMethodBeat.i(108468);
+        ab.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "handleListGoogleContactCGIResponse Count:%d", new Object[] { Integer.valueOf(parambah.jJu) });
+        if ((parambah.jJv == null) || (parambah.jJv.size() <= 0)) {
+          break label574;
         }
-        int k = paramaub.hPT.size();
+        int k = parambah.jJv.size();
         localArrayList = new ArrayList();
         localLinkedList = new LinkedList();
         j = 0;
         if (j >= k) {
-          break label542;
+          break label540;
         }
-        anv localanv = (anv)paramaub.hPT.get(j);
-        if (TextUtils.isEmpty(localanv.hPY)) {
-          break label591;
+        atl localatl = (atl)parambah.jJv.get(j);
+        if (TextUtils.isEmpty(localatl.jJA)) {
+          break label594;
         }
-        localObject1 = ((j)com.tencent.mm.kernel.g.r(j.class)).Fw().abl(localanv.hPY);
-        if ((localObject1 == null) || (!com.tencent.mm.n.a.gR(((ao)localObject1).field_type))) {
-          break label586;
+        localObject1 = ((j)com.tencent.mm.kernel.g.E(j.class)).YA().arw(localatl.jJA);
+        if ((localObject1 == null) || (!com.tencent.mm.n.a.je(((aq)localObject1).field_type))) {
+          break label589;
         }
         i = 2;
-        if ((this.fdG == null) || (!this.fdG.containsKey(localanv.sAZ))) {
-          break label579;
+        if ((this.gvq == null) || (!this.gvq.containsKey(localatl.wvt))) {
+          break label582;
         }
-        localObject2 = (n)this.fdG.get(localanv.sAZ);
-        ((n)localObject2).field_username = localanv.hPY;
-        ((n)localObject2).field_nickname = localanv.hRf;
-        ((n)localObject2).field_usernamepy = com.tencent.mm.platformtools.g.oZ(localanv.hRf);
-        ((n)localObject2).field_nicknameqp = com.tencent.mm.platformtools.g.oY(localanv.hRf);
-        ((n)localObject2).field_ret = localanv.sze;
-        ((n)localObject2).field_small_url = localanv.tjR;
-        ((n)localObject2).field_big_url = localanv.tjQ;
+        localObject2 = (n)this.gvq.get(localatl.wvt);
+        ((n)localObject2).field_username = localatl.jJA;
+        ((n)localObject2).field_nickname = localatl.jKG;
+        ((n)localObject2).field_usernamepy = com.tencent.mm.platformtools.g.wr(localatl.jKG);
+        ((n)localObject2).field_nicknameqp = com.tencent.mm.platformtools.g.wq(localatl.jKG);
+        ((n)localObject2).field_ret = localatl.Ret;
+        ((n)localObject2).field_small_url = localatl.xiI;
+        ((n)localObject2).field_big_url = localatl.xiH;
         ((n)localObject2).field_status = i;
         ((n)localObject2).field_googlecgistatus = 2;
         if ((i == 2) || (i == 0))
         {
-          ((n)localObject2).field_contecttype = ("weixin" + j);
-          ((n)localObject2).field_googlenamepy = com.tencent.mm.platformtools.g.oZ(((n)localObject2).field_googlename);
+          ((n)localObject2).field_contecttype = "weixin".concat(String.valueOf(j));
+          ((n)localObject2).field_googlenamepy = com.tencent.mm.platformtools.g.wr(((n)localObject2).field_googlename);
           localArrayList.add(localObject2);
           localObject1 = ((n)localObject2).field_googleid;
           str1 = ((n)localObject2).field_googlephotourl;
-          str2 = this.fdD;
+          str2 = this.mToken;
           if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
           {
             localObject1 = new g.a();
-            ((com.tencent.mm.h.c.g)localObject1).field_userName = localanv.hPY;
-            ((com.tencent.mm.h.c.g)localObject1).field_scene = 58;
-            ((com.tencent.mm.h.c.g)localObject1).field_ticket = localanv.tac;
+            ((com.tencent.mm.g.c.g)localObject1).field_userName = localatl.jJA;
+            ((com.tencent.mm.g.c.g)localObject1).field_scene = 58;
+            ((com.tencent.mm.g.c.g)localObject1).field_ticket = localatl.wYu;
             localLinkedList.add(localObject1);
-            break label579;
+            break label582;
           }
         }
         else
@@ -129,107 +134,115 @@ public final class af
       }
       finally {}
       String str3;
-      Object localObject2 = com.tencent.mm.ag.o.Kh().kp(str3);
+      Object localObject2 = com.tencent.mm.ah.o.adg().rj(str3);
       Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = new h();
       }
       ((h)localObject1).username = str3;
-      ((h)localObject1).cCq = 3;
-      ((h)localObject1).ebT = com.tencent.mm.ag.b.ah(str1, str2);
-      ((h)localObject1).ebS = com.tencent.mm.ag.b.ah(str1, str2);
-      ((h)localObject1).bK(true);
-      ((h)localObject1).bcw = 31;
-      com.tencent.mm.ag.o.Kh().a((h)localObject1);
+      ((h)localObject1).dqB = 3;
+      ((h)localObject1).fsl = com.tencent.mm.ah.b.ax(str1, str2);
+      ((h)localObject1).fsk = com.tencent.mm.ah.b.ax(str1, str2);
+      ((h)localObject1).cM(true);
+      ((h)localObject1).bsY = 31;
+      com.tencent.mm.ah.o.adg().b((h)localObject1);
       continue;
-      label542:
-      ((o)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).i(localArrayList);
-      com.tencent.mm.plugin.c.a.YT().Ga().dn(localLinkedList);
-      label576:
+      label540:
+      ((o)((com.tencent.mm.plugin.account.a.a.a)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).i(localArrayList);
+      com.tencent.mm.plugin.c.a.asD().Zb().ev(localLinkedList);
+      label574:
+      AppMethodBeat.o(108468);
       return;
-      label579:
+      label582:
       j += 1;
       continue;
-      label586:
+      label589:
       int i = 0;
       continue;
-      label591:
+      label594:
       i = 1;
     }
   }
   
-  protected final int Ka()
+  public final bah aqG()
   {
-    return 20;
+    return (bah)this.rr.fsW.fta;
   }
   
-  public final aub Xc()
+  public final int doScene(e parame, f paramf)
   {
-    return (aub)this.dmK.ecF.ecN;
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    y.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "doScene");
-    this.dmL = paramf;
-    paramf = (aua)this.dmK.ecE.ecN;
-    if (this.fgC != null)
+    AppMethodBeat.i(108466);
+    ab.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "doScene");
+    this.callback = paramf;
+    paramf = (bag)this.rr.fsV.fta;
+    int i;
+    if (this.gyk != null)
     {
       LinkedList localLinkedList = new LinkedList();
-      this.fgF = this.fgC.size();
-      int i = this.fgE;
-      while ((i < this.fgF) && (i < this.fgE + 500))
+      this.gyn = this.gyk.size();
+      i = this.gym;
+      while ((i < this.gyn) && (i < this.gym + 500))
       {
-        anw localanw = new anw();
-        localanw.sAZ = ((n)this.fgC.get(i)).field_googlegmail;
-        localLinkedList.add(localanw);
+        atm localatm = new atm();
+        localatm.wvt = ((n)this.gyk.get(i)).field_googlegmail;
+        localLinkedList.add(localatm);
         i += 1;
       }
-      paramf.hPT = localLinkedList;
-      paramf.hPS = localLinkedList.size();
-      if (this.fgE + 500 <= this.fgF) {
-        break label226;
+      paramf.jJv = localLinkedList;
+      paramf.jJu = localLinkedList.size();
+      if (this.gym + 500 <= this.gyn) {
+        break label240;
       }
     }
-    label226:
-    for (this.fgG = 0;; this.fgG = 1)
+    label240:
+    for (this.gyo = 0;; this.gyo = 1)
     {
-      paramf.sFD = this.fgG;
-      paramf.tpA = this.fgD;
-      y.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "doscene mTotalSize:%d, mStarIndex:%d, mContinueFlag:%d", new Object[] { Integer.valueOf(this.fgF), Integer.valueOf(this.fgE), Integer.valueOf(this.fgG) });
-      return a(parame, this.dmK, this);
+      paramf.wBX = this.gyo;
+      paramf.xpx = this.gyl;
+      ab.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "doscene mTotalSize:%d, mStarIndex:%d, mContinueFlag:%d", new Object[] { Integer.valueOf(this.gyn), Integer.valueOf(this.gym), Integer.valueOf(this.gyo) });
+      i = dispatch(parame, this.rr, this);
+      AppMethodBeat.o(108466);
+      return i;
     }
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "NetId:%d, ErrType:%d, ErrCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    a(Xc());
-    if (this.fgG == 1)
-    {
-      this.fgE += 500;
-      if (a(this.edc, this.dmL) < 0)
-      {
-        y.e("MicroMsg.GoogleContact.NetSceneListGoogleContact", "doScene again failed");
-        this.dmL.onSceneEnd(3, -1, "", this);
-      }
-    }
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-  }
-  
-  protected final m.b b(q paramq)
-  {
-    return m.b.edr;
   }
   
   public final int getType()
   {
     return 488;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108467);
+    ab.i("MicroMsg.GoogleContact.NetSceneListGoogleContact", "NetId:%d, ErrType:%d, ErrCode:%d, errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(108467);
+      return;
+    }
+    a(aqG());
+    if (this.gyo == 1)
+    {
+      this.gym += 500;
+      if (doScene(dispatcher(), this.callback) < 0)
+      {
+        ab.e("MicroMsg.GoogleContact.NetSceneListGoogleContact", "doScene again failed");
+        this.callback.onSceneEnd(3, -1, "", this);
+      }
+    }
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(108467);
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 20;
+  }
+  
+  public final m.b securityVerificationChecked(q paramq)
+  {
+    return m.b.ftu;
   }
 }
 

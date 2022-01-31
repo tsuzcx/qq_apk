@@ -2,6 +2,7 @@ package com.tencent.mm.ui.widget.sortlist;
 
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
   extends GestureDetector.SimpleOnGestureListener
@@ -10,24 +11,26 @@ final class a$1
   
   public final boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
+    AppMethodBeat.i(113009);
     int i;
-    if ((a.a(this.wqA)) && (a.b(this.wqA)))
+    if ((a.a(this.ALd)) && (a.b(this.ALd)))
     {
-      i = a.c(this.wqA).getWidth() / 5;
-      if (paramFloat1 <= a.d(this.wqA)) {
-        break label81;
+      i = a.c(this.ALd).getWidth() / 5;
+      if (paramFloat1 <= a.d(this.ALd)) {
+        break label91;
       }
-      if (a.e(this.wqA) > -i) {
-        a.c(this.wqA).aO(paramFloat1);
+      if (a.e(this.ALd) > -i) {
+        a.c(this.ALd).bz(paramFloat1);
       }
     }
     for (;;)
     {
-      a.f(this.wqA);
+      a.f(this.ALd);
+      AppMethodBeat.o(113009);
       return false;
-      label81:
-      if ((paramFloat1 < -a.d(this.wqA)) && (a.e(this.wqA) < i)) {
-        a.c(this.wqA).aO(paramFloat1);
+      label91:
+      if ((paramFloat1 < -a.d(this.ALd)) && (a.e(this.ALd) < i)) {
+        a.c(this.ALd).bz(paramFloat1);
       }
     }
   }

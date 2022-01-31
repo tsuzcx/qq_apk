@@ -19,7 +19,7 @@ import java.lang.reflect.Modifier;
 public class MHMessageHandler
   implements HandlerMessageInterceptor.MessageHandler
 {
-  private static final int umg;
+  private static final int yvM;
   private final Context mContext;
   
   static
@@ -29,8 +29,8 @@ public class MHMessageHandler
     if (Build.VERSION.SDK_INT < 27) {}
     try
     {
-      i = ShareReflectUtil.d(Class.forName("android.app.ActivityThread$H"), "LAUNCH_ACTIVITY").getInt(null);
-      umg = i;
+      i = ShareReflectUtil.g(Class.forName("android.app.ActivityThread$H"), "LAUNCH_ACTIVITY").getInt(null);
+      yvM = i;
       return;
     }
     catch (Throwable localThrowable)
@@ -55,7 +55,7 @@ public class MHMessageHandler
     this.mContext = paramContext;
   }
   
-  private static <T> void s(T paramT1, T paramT2)
+  private static <T> void D(T paramT1, T paramT2)
   {
     if ((paramT1 == null) || (paramT2 == null)) {
       return;
@@ -95,7 +95,7 @@ public class MHMessageHandler
   public final boolean handleMessage(Message paramMessage)
   {
     int i = 2;
-    if (paramMessage.what == umg) {}
+    if (paramMessage.what == yvM) {}
     try
     {
       Object localObject1 = paramMessage.obj;
@@ -117,7 +117,7 @@ public class MHMessageHandler
         ActivityInfo localActivityInfo1 = (ActivityInfo)ShareReflectUtil.b(localObject1, "activityInfo").get(localObject1);
         if (localActivityInfo1 != null)
         {
-          ActivityInfo localActivityInfo2 = IncrementComponentManager.agh(localComponentName.getClassName());
+          ActivityInfo localActivityInfo2 = IncrementComponentManager.awY(localComponentName.getClassName());
           if (localActivityInfo2 == null)
           {
             new StringBuilder("Failed to query target activity's info, perhaps the target is not hotpluged component. Target: ").append(localComponentName.getClassName());
@@ -130,9 +130,9 @@ public class MHMessageHandler
             try
             {
               localObject1 = ShareReflectUtil.b(localObject1, "token").get(localObject1);
-              Object localObject2 = ShareReflectUtil.c(Class.forName("android.app.ActivityManagerNative"), "getDefault", new Class[0]).invoke(null, new Object[0]);
+              Object localObject2 = ShareReflectUtil.d(Class.forName("android.app.ActivityManagerNative"), "getDefault", new Class[0]).invoke(null, new Object[0]);
               ShareReflectUtil.b(localObject2, "setRequestedOrientation", new Class[] { IBinder.class, Integer.TYPE }).invoke(localObject2, new Object[] { localObject1, Integer.valueOf(i) });
-              s(localActivityInfo2, localActivityInfo1);
+              D(localActivityInfo2, localActivityInfo1);
               paramMessage.setComponent(localComponentName);
               paramMessage.removeExtra("tinker_iek_old_component");
               return false;

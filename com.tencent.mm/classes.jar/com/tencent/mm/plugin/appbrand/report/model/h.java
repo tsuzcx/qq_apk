@@ -1,29 +1,33 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
-import com.tencent.mm.plugin.appbrand.page.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.page.z;
 
 public abstract interface h
   extends g
 {
-  public static final h gYz = new h.1();
+  public static final h iGQ = new h.1();
   
-  public abstract a aok();
+  public abstract boolean EH(String paramString);
   
-  public abstract a g(s params);
+  public abstract a aLj();
   
-  public abstract boolean wd(String paramString);
+  public abstract a h(z paramz);
   
   public static final class a
   {
-    int gYA;
-    public h.c gYB;
-    public h.b gYC;
+    int iGR;
+    public h.c iGS;
+    public h.b iGT;
     public String path;
     
-    a(s params)
+    a(z paramz)
     {
-      this.gYA = params.hashCode();
-      this.path = params.ahc();
+      AppMethodBeat.i(132614);
+      this.iGR = paramz.hashCode();
+      this.path = paramz.iuB;
+      AppMethodBeat.o(132614);
     }
   }
 }

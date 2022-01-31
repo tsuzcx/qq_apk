@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface s$a
 {
-  public abstract void awQ();
+  public abstract void ctA();
   
-  public abstract void bHv();
+  public abstract void ctB();
   
-  public abstract void cw(String paramString, int paramInt);
+  public abstract void ds(String paramString, int paramInt);
   
-  public abstract void cx(String paramString, int paramInt);
+  public abstract void dt(String paramString, int paramInt);
   
-  public abstract void fa(String paramString1, String paramString2);
+  public abstract void gI(String paramString1, String paramString2);
 }
 
 

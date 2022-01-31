@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.setting.ui.widget.HeadImgNewPreference mm:title="@string/dyg" mm:key="settings_change_avatar" mm:layout="@layout/ab8" />
-    <com.tencent.mm.chatroom.ui.preference.SignaturePreference mm:title="@string/e1m" mm:key="settings_name" mm:layout="@layout/ab8" />
-    <Preference mm:title="@string/e61" mm:key="settings_username" mm:layout="@layout/ab8" />
-    <Preference mm:title="@string/e35" mm:key="settings_qrcode" mm:widgetLayout="@layout/acm" mm:layout="@layout/ab8" />
-    <Preference mm:title="@string/q2" mm:key="settings_more_info" mm:layout="@layout/ab8" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
     <PreferenceSmallCategory />
-    <Preference mm:title="@string/dy8" mm:key="settings_address" mm:layout="@layout/ab8" />
-    <Preference mm:title="@string/e08" mm:key="settings_invoice" mm:layout="@layout/ab8" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:persistent="false" android:title="@string/ef8" android:key="settings_specail_scene_sound" android:dependency="settings_new_msg_notification" android:defaultValue="true" />
+    <CheckBoxPreference android:persistent="false" android:title="@string/eef" android:key="settings_specail_scene_shake" android:dependency="settings_new_msg_notification" android:defaultValue="true" android:layout="@layout/ahl" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:title="@string/ef9" android:key="room_openim_about" android:layout="@layout/ah2" />
 </PreferenceScreen>

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.h.a.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.k;
 import com.tencent.mm.sdk.b.c;
 
 final class e$4
@@ -8,7 +9,9 @@ final class e$4
 {
   e$4(e parame)
   {
-    this.udX = k.class.getName().hashCode();
+    AppMethodBeat.i(26301);
+    this.__eventId = k.class.getName().hashCode();
+    AppMethodBeat.o(26301);
   }
 }
 

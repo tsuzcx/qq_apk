@@ -1,145 +1,175 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import com.tencent.mm.h.c.ed;
-import com.tencent.mm.protocal.c.but;
-import com.tencent.mm.protocal.c.xs;
-import com.tencent.mm.protocal.c.zq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ep;
+import com.tencent.mm.protocal.protobuf.abx;
+import com.tencent.mm.protocal.protobuf.aei;
+import com.tencent.mm.protocal.protobuf.cfj;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class l
-  extends ed
+  extends ep
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(37858);
     c.a locala = new c.a();
-    locala.ujL = new Field[16];
+    locala.yrK = new Field[16];
     locala.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "userName";
-    locala.ujN.put("userName", "TEXT default ''  PRIMARY KEY ");
+    locala.yrM.put("userName", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" userName TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "userName";
+    locala.yrL = "userName";
     locala.columns[1] = "md5";
-    locala.ujN.put("md5", "TEXT");
+    locala.yrM.put("md5", "TEXT");
     localStringBuilder.append(" md5 TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "newerIds";
-    locala.ujN.put("newerIds", "TEXT");
+    locala.yrM.put("newerIds", "TEXT");
     localStringBuilder.append(" newerIds TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "bgId";
-    locala.ujN.put("bgId", "TEXT");
+    locala.yrM.put("bgId", "TEXT");
     localStringBuilder.append(" bgId TEXT");
     localStringBuilder.append(", ");
     locala.columns[4] = "bgUrl";
-    locala.ujN.put("bgUrl", "TEXT");
+    locala.yrM.put("bgUrl", "TEXT");
     localStringBuilder.append(" bgUrl TEXT");
     localStringBuilder.append(", ");
     locala.columns[5] = "older_bgId";
-    locala.ujN.put("older_bgId", "TEXT");
+    locala.yrM.put("older_bgId", "TEXT");
     localStringBuilder.append(" older_bgId TEXT");
     localStringBuilder.append(", ");
     locala.columns[6] = "local_flag";
-    locala.ujN.put("local_flag", "INTEGER");
+    locala.yrM.put("local_flag", "INTEGER");
     localStringBuilder.append(" local_flag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[7] = "istyle";
-    locala.ujN.put("istyle", "INTEGER");
+    locala.yrM.put("istyle", "INTEGER");
     localStringBuilder.append(" istyle INTEGER");
     localStringBuilder.append(", ");
     locala.columns[8] = "iFlag";
-    locala.ujN.put("iFlag", "INTEGER");
+    locala.yrM.put("iFlag", "INTEGER");
     localStringBuilder.append(" iFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[9] = "icount";
-    locala.ujN.put("icount", "INTEGER");
+    locala.yrM.put("icount", "INTEGER");
     localStringBuilder.append(" icount INTEGER");
     localStringBuilder.append(", ");
     locala.columns[10] = "faultS";
-    locala.ujN.put("faultS", "BLOB");
+    locala.yrM.put("faultS", "BLOB");
     localStringBuilder.append(" faultS BLOB");
     localStringBuilder.append(", ");
     locala.columns[11] = "snsBgId";
-    locala.ujN.put("snsBgId", "LONG");
+    locala.yrM.put("snsBgId", "LONG");
     localStringBuilder.append(" snsBgId LONG");
     localStringBuilder.append(", ");
     locala.columns[12] = "snsuser";
-    locala.ujN.put("snsuser", "BLOB");
+    locala.yrM.put("snsuser", "BLOB");
     localStringBuilder.append(" snsuser BLOB");
     localStringBuilder.append(", ");
     locala.columns[13] = "adsession";
-    locala.ujN.put("adsession", "BLOB");
+    locala.yrM.put("adsession", "BLOB");
     localStringBuilder.append(" adsession BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "lastFirstPageRequestErrCode";
-    locala.ujN.put("lastFirstPageRequestErrCode", "INTEGER");
+    locala.yrM.put("lastFirstPageRequestErrCode", "INTEGER");
     localStringBuilder.append(" lastFirstPageRequestErrCode INTEGER");
     localStringBuilder.append(", ");
     locala.columns[15] = "lastFirstPageRequestErrType";
-    locala.ujN.put("lastFirstPageRequestErrType", "INTEGER");
+    locala.yrM.put("lastFirstPageRequestErrType", "INTEGER");
     localStringBuilder.append(" lastFirstPageRequestErrType INTEGER");
     locala.columns[16] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(37858);
   }
   
-  public final void bGs()
+  public final void a(cfj paramcfj)
+  {
+    AppMethodBeat.i(37855);
+    if (paramcfj == null)
+    {
+      AppMethodBeat.o(37855);
+      return;
+    }
+    try
+    {
+      this.field_snsuser = paramcfj.toByteArray();
+      AppMethodBeat.o(37855);
+      return;
+    }
+    catch (Exception paramcfj)
+    {
+      AppMethodBeat.o(37855);
+    }
+  }
+  
+  public final void csv()
   {
     this.field_local_flag &= 0xFFFFFFFD;
   }
   
-  public final boolean bGt()
+  public final boolean csw()
   {
     return (this.field_local_flag & 0x2) > 0;
   }
   
-  public final but bGu()
+  public final cfj csx()
   {
+    AppMethodBeat.i(37856);
     try
     {
-      but localbut = (but)new but().aH(this.field_snsuser);
-      return localbut;
+      cfj localcfj = (cfj)new cfj().parseFrom(this.field_snsuser);
+      AppMethodBeat.o(37856);
+      return localcfj;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(37856);
+    }
     return null;
   }
   
-  public final xs bGv()
+  public final abx csy()
   {
-    new zq();
-    Object localObject1 = new xs();
+    AppMethodBeat.i(37857);
+    new aei();
+    localObject1 = new abx();
     Object localObject2 = localObject1;
-    if (!bk.bE(this.field_faultS)) {}
-    for (;;)
+    if (!bo.ce(this.field_faultS)) {}
+    try
     {
-      try
-      {
-        localObject2 = (zq)new zq().aH(this.field_faultS);
-        if (((zq)localObject2).sYR.size() > 0)
-        {
-          localObject2 = (xs)((zq)localObject2).sYR.getFirst();
-          localObject1 = localObject2;
-          localObject2 = localObject1;
-          return localObject2;
-        }
+      localObject2 = (aei)new aei().parseFrom(this.field_faultS);
+      if (((aei)localObject2).wXm.size() <= 0) {
+        break label89;
       }
-      catch (Exception localException)
+      localObject2 = (abx)((aei)localObject2).wXm.getFirst();
+      localObject1 = localObject2;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        return localObject1;
+        Object localObject3 = localObject1;
       }
     }
+    localObject2 = localObject1;
+    AppMethodBeat.o(37857);
+    return localObject2;
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

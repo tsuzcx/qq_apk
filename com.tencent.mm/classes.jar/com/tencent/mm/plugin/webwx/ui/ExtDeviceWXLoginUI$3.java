@@ -4,9 +4,9 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
-import com.tencent.mm.R.h;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
@@ -18,51 +18,54 @@ final class ExtDeviceWXLoginUI$3
   
   public final void onClick(View paramView)
   {
-    if (ExtDeviceWXLoginUI.b(this.rDV) == 0) {
-      if (ExtDeviceWXLoginUI.c(this.rDV))
+    AppMethodBeat.i(26523);
+    if (ExtDeviceWXLoginUI.b(this.vux) == 0)
+    {
+      if (ExtDeviceWXLoginUI.c(this.vux))
       {
-        bool = ((CheckBox)this.rDV.findViewById(R.h.status_content_checkbox)).isChecked();
-        ExtDeviceWXLoginUI.a(this.rDV, false);
+        boolean bool = ((CheckBox)this.vux.findViewById(2131823389)).isChecked();
+        ExtDeviceWXLoginUI.a(this.vux, false);
         if (bool)
         {
-          au.Hx();
-          c.Dz().c(ac.a.uuk, Boolean.valueOf(true));
-          paramView = this.rDV;
-          if ((!ExtDeviceWXLoginUI.c(this.rDV)) || (!bool)) {
-            break label150;
+          aw.aaz();
+          c.Ru().set(ac.a.yEn, Boolean.TRUE);
+          paramView = this.vux;
+          if ((!ExtDeviceWXLoginUI.c(this.vux)) || (!bool)) {
+            break label158;
           }
-          bool = true;
+        }
+        label158:
+        for (bool = true;; bool = false)
+        {
           ExtDeviceWXLoginUI.b(paramView, bool);
+          AppMethodBeat.o(26523);
+          return;
+          aw.aaz();
+          if (((Boolean)c.Ru().get(ac.a.yEn, Boolean.TRUE)).booleanValue()) {
+            ExtDeviceWXLoginUI.a(this.vux, true);
+          }
+          aw.aaz();
+          c.Ru().set(ac.a.yEn, Boolean.FALSE);
+          break;
         }
       }
-    }
-    label150:
-    while (ExtDeviceWXLoginUI.b(this.rDV) != -2)
-    {
-      for (;;)
-      {
-        return;
-        au.Hx();
-        if (((Boolean)c.Dz().get(ac.a.uuk, Boolean.valueOf(true))).booleanValue()) {
-          ExtDeviceWXLoginUI.a(this.rDV, true);
-        }
-        au.Hx();
-        c.Dz().c(ac.a.uuk, Boolean.valueOf(false));
-        continue;
-        boolean bool = false;
-      }
-      ExtDeviceWXLoginUI.b(this.rDV, false);
+      ExtDeviceWXLoginUI.b(this.vux, false);
+      AppMethodBeat.o(26523);
       return;
     }
-    paramView = new Intent();
-    paramView.putExtra("BaseScanUI_select_scan_mode", 1);
-    paramView.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
-    paramView.putExtra("GetFriendQRCodeUI.INTENT_FROM_ACTIVITY", 2);
-    paramView.putExtra("from_album", false);
-    paramView.putExtra("show_intro", false);
-    paramView.setFlags(65536);
-    d.b(this.rDV, "scanner", ".ui.BaseScanUI", paramView);
-    this.rDV.finish();
+    if (ExtDeviceWXLoginUI.b(this.vux) == -2)
+    {
+      paramView = new Intent();
+      paramView.putExtra("BaseScanUI_select_scan_mode", 1);
+      paramView.putExtra("BaseScanUI_only_scan_qrcode_with_zbar", true);
+      paramView.putExtra("GetFriendQRCodeUI.INTENT_FROM_ACTIVITY", 2);
+      paramView.putExtra("from_album", false);
+      paramView.putExtra("show_intro", false);
+      paramView.setFlags(65536);
+      d.b(this.vux, "scanner", ".ui.BaseScanUI", paramView);
+      this.vux.finish();
+    }
+    AppMethodBeat.o(26523);
   }
 }
 

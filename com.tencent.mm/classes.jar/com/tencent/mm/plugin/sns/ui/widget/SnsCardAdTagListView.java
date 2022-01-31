@@ -10,9 +10,8 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,68 +19,77 @@ public class SnsCardAdTagListView
   extends LinearLayout
 {
   private Activity activity;
-  private List<View> oYz = new ArrayList();
-  private int space;
+  private List<View> rQS;
+  private int smQ;
   
   public SnsCardAdTagListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(40465);
+    this.rQS = new ArrayList();
+    AppMethodBeat.o(40465);
   }
   
   public SnsCardAdTagListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(40466);
+    this.rQS = new ArrayList();
+    AppMethodBeat.o(40466);
   }
   
-  public final void cL(List<String> paramList)
+  public final void dx(List<String> paramList)
   {
+    AppMethodBeat.i(40467);
     int i;
     if (paramList != null)
     {
       i = 0;
       if (i < paramList.size()) {
         if (i != 0) {
-          break label132;
+          break label140;
         }
       }
     }
-    label132:
+    label140:
     for (int j = 0;; j = 1)
     {
       String str = (String)paramList.get(i);
-      if (!bk.bl(str))
+      if (!bo.isNullOrNil(str))
       {
-        View localView = this.activity.getLayoutInflater().inflate(i.g.ad_card_tag_item, null);
-        TextView localTextView = (TextView)localView.findViewById(i.f.card_ad_tag_text);
+        View localView = this.activity.getLayoutInflater().inflate(2130968629, null);
+        TextView localTextView = (TextView)localView.findViewById(2131821035);
         LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
         if (j != 0) {
-          localLayoutParams.leftMargin = this.space;
+          localLayoutParams.leftMargin = this.smQ;
         }
         localTextView.setText(str);
         addView(localView, localLayoutParams);
-        this.oYz.add(localView);
+        this.rQS.add(localView);
       }
       i += 1;
       break;
+      AppMethodBeat.o(40467);
       return;
     }
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(40469);
     super.onMeasure(paramInt1, paramInt2);
     paramInt2 = 0;
     paramInt1 = 0;
     int i = paramInt1;
-    if (paramInt1 < this.oYz.size())
+    if (paramInt1 < this.rQS.size())
     {
       if (paramInt1 <= 0) {
-        break label209;
+        break label218;
       }
-      paramInt2 += this.space;
+      paramInt2 += this.smQ;
     }
-    label48:
-    label209:
+    label53:
+    label218:
     for (;;)
     {
       if (paramInt2 >= getMeasuredWidth()) {
@@ -89,25 +97,25 @@ public class SnsCardAdTagListView
       }
       for (;;)
       {
-        if ((i >= 0) && (i < this.oYz.size()))
+        if ((i >= 0) && (i < this.rQS.size()))
         {
-          View localView = (View)this.oYz.get(i);
-          TextView localTextView = (TextView)localView.findViewById(i.f.card_ad_tag_text);
+          View localView = (View)this.rQS.get(i);
+          TextView localTextView = (TextView)localView.findViewById(2131821035);
           localTextView.setEllipsize(TextUtils.TruncateAt.END);
           getViewTreeObserver().addOnPreDrawListener(new SnsCardAdTagListView.1(this, localTextView, localView));
           paramInt1 = i + 1;
           for (;;)
           {
-            if (paramInt1 < this.oYz.size())
+            if (paramInt1 < this.rQS.size())
             {
-              removeView((View)this.oYz.get(paramInt1));
-              this.oYz.remove(paramInt1);
+              removeView((View)this.rQS.get(paramInt1));
+              this.rQS.remove(paramInt1);
               paramInt1 += 1;
               continue;
-              paramInt2 = ((View)this.oYz.get(paramInt1)).getMeasuredWidth() + paramInt2;
+              paramInt2 = ((View)this.rQS.get(paramInt1)).getMeasuredWidth() + paramInt2;
               i = paramInt1;
               if (paramInt2 >= getMeasuredWidth()) {
-                break label48;
+                break label53;
               }
               paramInt1 += 1;
               break;
@@ -115,14 +123,17 @@ public class SnsCardAdTagListView
           }
         }
       }
+      AppMethodBeat.o(40469);
       return;
     }
   }
   
   public void removeAllViews()
   {
+    AppMethodBeat.i(40468);
     super.removeAllViews();
-    this.oYz.clear();
+    this.rQS.clear();
+    AppMethodBeat.o(40468);
   }
   
   public void setActivityContext(Activity paramActivity)
@@ -132,7 +143,7 @@ public class SnsCardAdTagListView
   
   public void setTagSpace(int paramInt)
   {
-    this.space = paramInt;
+    this.smQ = paramInt;
   }
 }
 

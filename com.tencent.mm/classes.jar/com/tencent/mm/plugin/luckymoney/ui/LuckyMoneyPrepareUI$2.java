@@ -1,18 +1,25 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.c;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LuckyMoneyPrepareUI$2
-  implements n.c
+  implements View.OnTouchListener
 {
   LuckyMoneyPrepareUI$2(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI) {}
   
-  public final void a(l paraml)
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paraml.add(0, 0, 0, this.lXg.getString(a.i.lucky_money_check_mine_title_opt));
-    paraml.add(0, 1, 0, this.lXg.getString(a.i.wallet_index_ui_opt_common_questions));
+    AppMethodBeat.i(142057);
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.owL.hideTenpayKB();
+      this.owL.hideVKB();
+    }
+    AppMethodBeat.o(142057);
+    return false;
   }
 }
 

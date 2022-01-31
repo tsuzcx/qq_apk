@@ -2,19 +2,23 @@ package com.tencent.mm.plugin.sns.ui;
 
 public abstract interface ae$a
 {
-  public abstract void Sg();
+  public abstract void alq();
   
-  public abstract boolean bHP();
+  public abstract void bw(String paramString, boolean paramBoolean);
   
-  public abstract void bg(String paramString, boolean paramBoolean);
+  public abstract boolean ctX();
   
   public abstract int getPlayErrorCode();
   
   public abstract int getPlayVideoDuration();
   
+  public abstract int getPlayVideoDurationByResume();
+  
+  public abstract ae.c getRptStruct();
+  
   public abstract int getUiStayTime();
   
-  public abstract void tP(int paramInt);
+  public abstract void zi(int paramInt);
 }
 
 

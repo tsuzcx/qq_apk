@@ -2,89 +2,110 @@ package com.google.android.exoplayer2.source.b.a;
 
 import android.net.Uri;
 import android.os.Handler;
-import com.google.android.exoplayer2.h.r;
-import com.google.android.exoplayer2.h.r.a;
-import com.google.android.exoplayer2.h.s;
-import com.google.android.exoplayer2.h.s.a;
+import com.google.android.exoplayer2.h.t;
+import com.google.android.exoplayer2.h.t.a;
+import com.google.android.exoplayer2.h.u;
+import com.google.android.exoplayer2.h.u.a;
 import com.google.android.exoplayer2.source.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
 import java.util.List;
 
 public final class e
-  implements r.a<s<c>>
+  implements t.a<u<c>>
 {
-  public a aJI;
-  public final d aKd;
-  final com.google.android.exoplayer2.source.a.a aKf;
-  public final s.a<c> aKn;
-  public final Uri aLN;
-  public final int aLO;
-  public final IdentityHashMap<a.a, e.a> aLP;
-  public final Handler aLQ;
-  final e.e aLR;
-  public final List<e.b> aLS;
-  public final r aLT;
-  public a.a aLU;
-  b aLV;
-  public boolean aLW;
+  public final d aRI;
+  final com.google.android.exoplayer2.source.a.a aRJ;
+  public final u.a<c> aRR;
+  public a aRo;
+  public final Uri aTh;
+  public final int aTi;
+  public final IdentityHashMap<a.a, e.a> aTj;
+  public final Handler aTk;
+  final e.e aTl;
+  public final List<e.b> aTm;
+  public final t aTn;
+  public a.a aTo;
+  b aTp;
+  public boolean aTq;
   
-  public e(Uri paramUri, d paramd, com.google.android.exoplayer2.source.a.a parama, int paramInt, e.e parame, s.a<c> parama1)
+  public e(Uri paramUri, d paramd, com.google.android.exoplayer2.source.a.a parama, int paramInt, e.e parame, u.a<c> parama1)
   {
-    this.aLN = paramUri;
-    this.aKd = paramd;
-    this.aKf = parama;
-    this.aLO = paramInt;
-    this.aLR = parame;
-    this.aKn = parama1;
-    this.aLS = new ArrayList();
-    this.aLT = new r("HlsPlaylistTracker:MasterPlaylist");
-    this.aLP = new IdentityHashMap();
-    this.aLQ = new Handler();
+    AppMethodBeat.i(125990);
+    this.aTh = paramUri;
+    this.aRI = paramd;
+    this.aRJ = parama;
+    this.aTi = paramInt;
+    this.aTl = parame;
+    this.aRR = parama1;
+    this.aTm = new ArrayList();
+    this.aTn = new t("HlsPlaylistTracker:MasterPlaylist");
+    this.aTj = new IdentityHashMap();
+    this.aTk = new Handler();
+    AppMethodBeat.o(125990);
   }
   
   static b.a a(b paramb1, b paramb2)
   {
-    int i = paramb2.aKZ - paramb1.aKZ;
-    paramb1 = paramb1.aLf;
-    if (i < paramb1.size()) {
-      return (b.a)paramb1.get(i);
+    AppMethodBeat.i(125995);
+    int i = paramb2.aSt - paramb1.aSt;
+    paramb1 = paramb1.aSz;
+    if (i < paramb1.size())
+    {
+      paramb1 = (b.a)paramb1.get(i);
+      AppMethodBeat.o(125995);
+      return paramb1;
     }
+    AppMethodBeat.o(125995);
     return null;
   }
   
-  private void s(List<a.a> paramList)
+  private void e(a.a parama)
   {
+    AppMethodBeat.i(125993);
+    if ((parama == this.aTo) || (!this.aRo.aSm.contains(parama)) || ((this.aTp != null) && (this.aTp.aSw)))
+    {
+      AppMethodBeat.o(125993);
+      return;
+    }
+    this.aTo = parama;
+    ((e.a)this.aTj.get(this.aTo)).pE();
+    AppMethodBeat.o(125993);
+  }
+  
+  private void u(List<a.a> paramList)
+  {
+    AppMethodBeat.i(125994);
     int j = paramList.size();
     int i = 0;
     while (i < j)
     {
       a.a locala = (a.a)paramList.get(i);
       e.a locala1 = new e.a(this, locala);
-      this.aLP.put(locala, locala1);
+      this.aTj.put(locala, locala1);
       i += 1;
     }
+    AppMethodBeat.o(125994);
   }
   
   public final b c(a.a parama)
   {
-    b localb = ((e.a)this.aLP.get(parama)).aMa;
-    if ((localb == null) || (parama == this.aLU) || (!this.aJI.aKS.contains(parama)) || ((this.aLV != null) && (this.aLV.aLc))) {
-      return localb;
+    AppMethodBeat.i(125991);
+    b localb = ((e.a)this.aTj.get(parama)).aTu;
+    if (localb != null) {
+      e(parama);
     }
-    this.aLU = parama;
-    ((e.a)this.aLP.get(this.aLU)).nh();
+    AppMethodBeat.o(125991);
     return localb;
   }
   
   public final void d(a.a parama)
   {
-    parama = (e.a)this.aLP.get(parama);
-    parama.aLY.mD();
-    if (parama.aMg != null) {
-      throw parama.aMg;
-    }
+    AppMethodBeat.i(125992);
+    this.aTj.get(parama);
+    AppMethodBeat.o(125992);
   }
   
   public static final class c

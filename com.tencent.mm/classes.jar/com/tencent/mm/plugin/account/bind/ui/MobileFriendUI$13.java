@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import com.tencent.mm.ui.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.p.a;
 
 final class MobileFriendUI$13
-  implements r.a
+  implements p.a
 {
   MobileFriendUI$13(MobileFriendUI paramMobileFriendUI) {}
   
-  public final void Wp()
+  public final void apT()
   {
-    MobileFriendUI localMobileFriendUI = this.fes;
-    MobileFriendUI.d(this.fes).getCount();
+    AppMethodBeat.i(13731);
+    MobileFriendUI localMobileFriendUI = this.gwb;
+    MobileFriendUI.d(this.gwb).getCount();
     MobileFriendUI.e(localMobileFriendUI);
+    AppMethodBeat.o(13731);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.MobileFriendUI.13
  * JD-Core Version:    0.7.0.1
  */

@@ -4,11 +4,11 @@ import android.os.Parcel;
 
 public abstract interface a
 {
-  public abstract boolean X(Object paramObject);
-  
   public abstract void a(Object paramObject, Parcel paramParcel);
   
-  public abstract Object c(Parcel paramParcel);
+  public abstract boolean af(Object paramObject);
+  
+  public abstract Object d(Parcel paramParcel);
 }
 
 

@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.collect.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CollectBillUI$5
   implements MenuItem.OnMenuItemClickListener
@@ -13,8 +12,10 @@ final class CollectBillUI$5
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new Intent(this.iKD.mController.uMN, CollectBillListUI.class);
-    this.iKD.startActivity(paramMenuItem);
+    AppMethodBeat.i(41215);
+    paramMenuItem = new Intent(this.kRi.getContext(), CollectBillListUI.class);
+    this.kRi.startActivity(paramMenuItem);
+    AppMethodBeat.o(41215);
     return false;
   }
 }

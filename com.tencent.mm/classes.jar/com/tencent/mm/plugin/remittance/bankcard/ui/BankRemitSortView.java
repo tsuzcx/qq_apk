@@ -4,8 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ListView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.c.a;
@@ -15,7 +14,7 @@ public class BankRemitSortView
   extends BaseSortView
 {
   private final String TAG = "MicroMsg.BankcardSortView";
-  private ListView ier;
+  private ListView jVf;
   
   public BankRemitSortView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,13 +28,19 @@ public class BankRemitSortView
   
   public c.a getItemViewCreator()
   {
-    return new BankRemitSortView.1(this);
+    AppMethodBeat.i(44702);
+    BankRemitSortView.1 local1 = new BankRemitSortView.1(this);
+    AppMethodBeat.o(44702);
+    return local1;
   }
   
   public ListView getListView()
   {
-    this.ier = ((ListView)findViewById(a.f.listview));
-    return this.ier;
+    AppMethodBeat.i(44701);
+    this.jVf = ((ListView)findViewById(2131821736));
+    ListView localListView = this.jVf;
+    AppMethodBeat.o(44701);
+    return localListView;
   }
   
   public View getNoResultView()
@@ -45,17 +50,23 @@ public class BankRemitSortView
   
   public VerticalScrollBar getScrollBar()
   {
-    return (VerticalScrollBar)findViewById(a.f.sidrbar);
+    AppMethodBeat.i(44700);
+    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(2131821737);
+    AppMethodBeat.o(44700);
+    return localVerticalScrollBar;
   }
   
   public final View inflate()
   {
-    return View.inflate(getContext(), a.g.bank_remit_sort_view, this);
+    AppMethodBeat.i(44699);
+    View localView = View.inflate(getContext(), 2130968835, this);
+    AppMethodBeat.o(44699);
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitSortView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,47 @@
 package com.tencent.ttpic.ar.sensor.representation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class Vector4f
 {
-  protected float[] points = { 0.0F, 0.0F, 0.0F, 0.0F };
+  protected float[] points;
   
   public Vector4f()
   {
+    AppMethodBeat.i(81741);
+    this.points = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
     this.points[0] = 0.0F;
     this.points[1] = 0.0F;
     this.points[2] = 0.0F;
     this.points[3] = 0.0F;
+    AppMethodBeat.o(81741);
   }
   
   public Vector4f(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
+    AppMethodBeat.i(81740);
+    this.points = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
     this.points[0] = paramFloat1;
     this.points[1] = paramFloat2;
     this.points[2] = paramFloat3;
     this.points[3] = paramFloat4;
+    AppMethodBeat.o(81740);
   }
   
   public Vector4f(Vector3f paramVector3f, float paramFloat)
   {
+    AppMethodBeat.i(81742);
+    this.points = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
     this.points[0] = paramVector3f.x();
     this.points[1] = paramVector3f.y();
     this.points[2] = paramVector3f.z();
     this.points[3] = paramFloat;
+    AppMethodBeat.o(81742);
   }
   
   public void add(Vector3f paramVector3f, float paramFloat)
   {
+    AppMethodBeat.i(81743);
     float[] arrayOfFloat = this.points;
     arrayOfFloat[0] += paramVector3f.x();
     arrayOfFloat = this.points;
@@ -38,6 +50,7 @@ public class Vector4f
     arrayOfFloat[2] += paramVector3f.z();
     paramVector3f = this.points;
     paramVector3f[3] += paramFloat;
+    AppMethodBeat.o(81743);
   }
   
   public void add(Vector4f paramVector4f)
@@ -64,10 +77,12 @@ public class Vector4f
   
   public void copyFromV3f(Vector3f paramVector3f, float paramFloat)
   {
+    AppMethodBeat.i(81746);
     this.points[0] = paramVector3f.x();
     this.points[1] = paramVector3f.y();
     this.points[2] = paramVector3f.z();
     this.points[3] = paramFloat;
+    AppMethodBeat.o(81746);
   }
   
   public void copyVec4(Vector4f paramVector4f)
@@ -125,7 +140,10 @@ public class Vector4f
   
   public void normalize()
   {
-    if (this.points[3] == 0.0F) {
+    AppMethodBeat.i(81745);
+    if (this.points[3] == 0.0F)
+    {
+      AppMethodBeat.o(81745);
       return;
     }
     float[] arrayOfFloat = this.points;
@@ -138,6 +156,7 @@ public class Vector4f
     this.points[0] = ((float)(this.points[0] / d));
     this.points[1] = ((float)(this.points[1] / d));
     this.points[2] = ((float)(this.points[2] / d));
+    AppMethodBeat.o(81745);
   }
   
   public void setW(float paramFloat)
@@ -194,12 +213,17 @@ public class Vector4f
   
   public void subtract(Vector4f paramVector4f1, Vector4f paramVector4f2)
   {
+    AppMethodBeat.i(81744);
     paramVector4f2.setXYZW(this.points[0] - paramVector4f1.points[0], this.points[1] - paramVector4f1.points[1], this.points[2] - paramVector4f1.points[2], this.points[3] - paramVector4f1.points[3]);
+    AppMethodBeat.o(81744);
   }
   
   public String toString()
   {
-    return "X:" + this.points[0] + " Y:" + this.points[1] + " Z:" + this.points[2] + " W:" + this.points[3];
+    AppMethodBeat.i(81747);
+    String str = "X:" + this.points[0] + " Y:" + this.points[1] + " Z:" + this.points[2] + " W:" + this.points[3];
+    AppMethodBeat.o(81747);
+    return str;
   }
   
   public float w()

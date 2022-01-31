@@ -12,7 +12,7 @@ public abstract class SQLiteClosable
     try
     {
       if (this.mReferenceCount <= 0) {
-        throw new IllegalStateException("attempt to re-open an already-closed object: " + this);
+        throw new IllegalStateException("attempt to re-open an already-closed object: ".concat(String.valueOf(this)));
       }
     }
     finally {}
@@ -24,7 +24,7 @@ public abstract class SQLiteClosable
     releaseReference();
   }
   
-  public abstract void onAllReferencesReleased();
+  protected abstract void onAllReferencesReleased();
   
   @Deprecated
   protected void onAllReferencesReleasedFromContainer()
@@ -55,7 +55,7 @@ public abstract class SQLiteClosable
     //   22: iload_1
     //   23: ifeq +7 -> 30
     //   26: aload_0
-    //   27: invokevirtual 43	com/tencent/wcdb/database/SQLiteClosable:onAllReferencesReleased	()V
+    //   27: invokevirtual 42	com/tencent/wcdb/database/SQLiteClosable:onAllReferencesReleased	()V
     //   30: return
     //   31: iconst_0
     //   32: istore_1
@@ -101,7 +101,7 @@ public abstract class SQLiteClosable
     //   22: iload_1
     //   23: ifeq +7 -> 30
     //   26: aload_0
-    //   27: invokevirtual 43	com/tencent/wcdb/database/SQLiteClosable:onAllReferencesReleased	()V
+    //   27: invokevirtual 42	com/tencent/wcdb/database/SQLiteClosable:onAllReferencesReleased	()V
     //   30: return
     //   31: iconst_0
     //   32: istore_1

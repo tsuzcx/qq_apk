@@ -1,44 +1,67 @@
 package com.tencent.mm.plugin.appbrand.m;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class c
 {
-  private volatile int count = 2;
-  private final LinkedList<Runnable> gQf = new LinkedList();
+  private static AtomicInteger isF;
+  public HashMap<String, b> hIm;
   
-  public final void C(Runnable paramRunnable)
+  static
   {
-    Object localObject = null;
-    if (paramRunnable != null) {}
-    try
+    AppMethodBeat.i(108147);
+    isF = new AtomicInteger(1);
+    AppMethodBeat.o(108147);
+  }
+  
+  private c()
+  {
+    AppMethodBeat.i(108143);
+    this.hIm = new HashMap();
+    AppMethodBeat.o(108143);
+  }
+  
+  public static int aIg()
+  {
+    AppMethodBeat.i(108144);
+    int i = isF.incrementAndGet();
+    AppMethodBeat.o(108144);
+    return i;
+  }
+  
+  public static c aIh()
+  {
+    AppMethodBeat.i(108145);
+    c localc = a.aIi();
+    AppMethodBeat.o(108145);
+    return localc;
+  }
+  
+  public final b DP(String paramString)
+  {
+    AppMethodBeat.i(108146);
+    if (this.hIm.containsKey(paramString))
     {
-      this.gQf.addLast(paramRunnable);
-      int i = this.count - 1;
-      this.count = i;
-      paramRunnable = localObject;
-      if (i <= 0)
-      {
-        paramRunnable = localObject;
-        if (this.gQf.size() > 0)
-        {
-          paramRunnable = new LinkedList();
-          paramRunnable.addAll(this.gQf);
-          this.gQf.clear();
-        }
-      }
-      if (paramRunnable != null)
-      {
-        paramRunnable = paramRunnable.iterator();
-        while (paramRunnable.hasNext()) {
-          ((Runnable)paramRunnable.next()).run();
-        }
-      }
-      return;
+      paramString = (b)this.hIm.get(paramString);
+      AppMethodBeat.o(108146);
+      return paramString;
     }
-    finally {}
+    AppMethodBeat.o(108146);
+    return null;
+  }
+  
+  static final class a
+  {
+    private static c isG;
+    
+    static
+    {
+      AppMethodBeat.i(108142);
+      isG = new c((byte)0);
+      AppMethodBeat.o(108142);
+    }
   }
 }
 

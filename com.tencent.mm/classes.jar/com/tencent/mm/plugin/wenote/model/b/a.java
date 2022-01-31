@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wenote.model.b;
 
 public abstract interface a
 {
-  public abstract void chD();
+  public abstract void dhT();
   
-  public abstract void chE();
+  public abstract void dhU();
 }
 
 

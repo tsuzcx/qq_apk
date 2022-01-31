@@ -1,29 +1,37 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
 import android.os.HandlerThread;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 
 final class RecyclerThumbSeekBar$d
 {
-  ah handler = new ah();
-  int mie = 4;
-  HandlerThread[] mmr = new HandlerThread[this.mie];
-  int mms = 0;
-  private BlockingDeque<RecyclerThumbSeekBar.b> mmt = new LinkedBlockingDeque();
+  ak handler;
+  int oIl;
+  int oLA;
+  private BlockingDeque<RecyclerThumbSeekBar.b> oLB;
+  HandlerThread[] oLz;
   
   public RecyclerThumbSeekBar$d(RecyclerThumbSeekBar paramRecyclerThumbSeekBar)
   {
+    AppMethodBeat.i(54994);
+    this.handler = new ak();
+    this.oIl = 4;
+    this.oLA = 0;
+    this.oLB = new LinkedBlockingDeque();
+    this.oLz = new HandlerThread[this.oIl];
     int i = 0;
-    while (i < this.mmr.length)
+    while (i < this.oLz.length)
     {
-      this.mmr[i] = e.ds("RecyclerThumbSeekBar_SimpleImageLoader_" + i, -1);
-      this.mmr[i].start();
+      this.oLz[i] = d.ey("RecyclerThumbSeekBar_SimpleImageLoader_".concat(String.valueOf(i)), -1);
+      this.oLz[i].start();
       i += 1;
     }
-    this.mms = 0;
+    this.oLA = 0;
+    AppMethodBeat.o(54994);
   }
 }
 

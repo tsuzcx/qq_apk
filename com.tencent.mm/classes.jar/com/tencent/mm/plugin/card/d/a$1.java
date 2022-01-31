@@ -1,52 +1,55 @@
 package com.tencent.mm.plugin.card.d;
 
-import com.tencent.mm.j.c;
-import com.tencent.mm.j.d;
-import com.tencent.mm.j.f.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.i.c;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.ByteArrayOutputStream;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
 final class a$1
-  implements f.a
+  implements g.a
 {
   a$1(String paramString1, String paramString2) {}
   
   public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
-    if (paramInt == -21005) {
-      y.i("MicroMsg.CDNDownloadHelpper", "duplicate request, ignore this request, media id is %s", new Object[] { paramString });
-    }
-    for (;;)
+    AppMethodBeat.i(88802);
+    if (paramInt == -21005)
     {
+      ab.i("MicroMsg.CDNDownloadHelpper", "duplicate request, ignore this request, media id is %s", new Object[] { paramString });
+      AppMethodBeat.o(88802);
       return 0;
-      if (paramInt == 0) {
-        break;
-      }
-      y.e("MicroMsg.CDNDownloadHelpper", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    }
+    if (paramInt != 0)
+    {
+      ab.e("MicroMsg.CDNDownloadHelpper", "start failed : %d, media id is :%s", new Object[] { Integer.valueOf(paramInt), paramString });
       paramInt = 0;
-      while (paramInt < a.Kd().size())
+      while (paramInt < a.Yo().size())
       {
-        paramString = (WeakReference)a.Kd().get(paramInt);
+        paramString = (WeakReference)a.Yo().get(paramInt);
         if (paramString != null)
         {
           paramString = (a.a)paramString.get();
           if (paramString != null) {
-            paramString.fail(this.eGX);
+            paramString.Ig(this.fWN);
           }
         }
         paramInt += 1;
       }
+      AppMethodBeat.o(88802);
+      return 0;
     }
     if (paramc != null)
     {
-      y.i("MicroMsg.CDNDownloadHelpper", "progressInfo : %s", new Object[] { paramc.toString() });
+      ab.i("MicroMsg.CDNDownloadHelpper", "progressInfo : %s", new Object[] { paramc.toString() });
       if (paramc.field_toltalLength <= 0) {
-        break label426;
+        break label457;
       }
     }
-    label426:
+    label457:
     for (int i = paramc.field_finishedLength * 100 / paramc.field_toltalLength;; i = 0)
     {
       if (i < 0) {
@@ -55,71 +58,76 @@ final class a$1
       for (;;)
       {
         i = 0;
-        while (i < a.Kd().size())
+        while (i < a.Yo().size())
         {
-          paramString = (WeakReference)a.Kd().get(i);
+          paramString = (WeakReference)a.Yo().get(i);
           if (paramString != null)
           {
             paramString = (a.a)paramString.get();
             if (paramString != null) {
-              paramString.bm(this.eGX, paramInt);
+              paramString.bO(this.fWN, paramInt);
             }
           }
           i += 1;
         }
-        break;
         paramInt = i;
         if (i > 100) {
           paramInt = 100;
         }
       }
-      if (paramd == null) {
-        break;
-      }
-      if (paramd.field_retCode != 0)
+      AppMethodBeat.o(88802);
+      return 0;
+      if (paramd != null)
       {
-        y.e("MicroMsg.CDNDownloadHelpper", "cdntra clientid:%s , sceneResult.retCode:%d , sceneResult[%s]", new Object[] { paramString, Integer.valueOf(paramd.field_retCode), paramd });
-        paramInt = 0;
-        while (paramInt < a.Kd().size())
+        if (paramd.field_retCode != 0)
         {
-          paramString = (WeakReference)a.Kd().get(paramInt);
+          ab.e("MicroMsg.CDNDownloadHelpper", "cdntra clientid:%s , sceneResult.retCode:%d , sceneResult[%s]", new Object[] { paramString, Integer.valueOf(paramd.field_retCode), paramd });
+          paramInt = 0;
+          while (paramInt < a.Yo().size())
+          {
+            paramString = (WeakReference)a.Yo().get(paramInt);
+            if (paramString != null)
+            {
+              paramString = (a.a)paramString.get();
+              if (paramString != null) {
+                paramString.Ig(this.fWN);
+              }
+            }
+            paramInt += 1;
+          }
+        }
+        ab.i("MicroMsg.CDNDownloadHelpper", "cdn trans suceess, sceneResult[%s]", new Object[] { paramd });
+        paramInt = 0;
+        while (paramInt < a.Yo().size())
+        {
+          paramString = (WeakReference)a.Yo().get(paramInt);
           if (paramString != null)
           {
             paramString = (a.a)paramString.get();
             if (paramString != null) {
-              paramString.fail(this.eGX);
+              paramString.du(this.fWN, this.val$filePath);
             }
           }
           paramInt += 1;
         }
-        break;
       }
-      y.i("MicroMsg.CDNDownloadHelpper", "cdn trans suceess, sceneResult[%s]", new Object[] { paramd });
-      paramInt = 0;
-      while (paramInt < a.Kd().size())
-      {
-        paramString = (WeakReference)a.Kd().get(paramInt);
-        if (paramString != null)
-        {
-          paramString = (a.a)paramString.get();
-          if (paramString != null) {
-            paramString.cx(this.eGX, this.val$filePath);
-          }
-        }
-        paramInt += 1;
-      }
-      break;
+      AppMethodBeat.o(88802);
+      return 0;
     }
   }
   
   public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream)
   {
-    y.i("MicroMsg.CDNDownloadHelpper", "getCdnAuthInfo, mediaId = %s", new Object[] { paramString });
+    AppMethodBeat.i(88803);
+    ab.i("MicroMsg.CDNDownloadHelpper", "getCdnAuthInfo, mediaId = %s", new Object[] { paramString });
+    AppMethodBeat.o(88803);
   }
   
-  public final byte[] f(String paramString, byte[] paramArrayOfByte)
+  public final byte[] l(String paramString, byte[] paramArrayOfByte)
   {
-    y.i("MicroMsg.CDNDownloadHelpper", "decodePrepareResponse, mediaId = %s", new Object[] { paramString });
+    AppMethodBeat.i(88804);
+    ab.i("MicroMsg.CDNDownloadHelpper", "decodePrepareResponse, mediaId = %s", new Object[] { paramString });
+    AppMethodBeat.o(88804);
     return null;
   }
 }

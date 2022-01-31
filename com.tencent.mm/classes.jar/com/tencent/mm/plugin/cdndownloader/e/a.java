@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.cdndownloader.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 
 public final class a<E>
   extends HashSet<E>
 {
-  private b iAO;
+  private b kDW;
   
   public a(b paramb)
   {
-    this.iAO = paramb;
+    this.kDW = paramb;
   }
   
-  private void aDA()
+  private void bfW()
   {
     try
     {
-      this.iAO.remove();
+      AppMethodBeat.i(932);
+      this.kDW.bfV();
+      AppMethodBeat.o(932);
       return;
     }
     finally
@@ -26,11 +29,13 @@ public final class a<E>
     }
   }
   
-  private void aDB()
+  private void bfX()
   {
     try
     {
-      this.iAO.clear();
+      AppMethodBeat.i(933);
+      this.kDW.remove();
+      AppMethodBeat.o(933);
       return;
     }
     finally
@@ -40,11 +45,13 @@ public final class a<E>
     }
   }
   
-  private void aDz()
+  private void bfY()
   {
     try
     {
-      this.iAO.aDy();
+      AppMethodBeat.i(934);
+      this.kDW.clear();
+      AppMethodBeat.o(934);
       return;
     }
     finally
@@ -58,8 +65,10 @@ public final class a<E>
   {
     try
     {
+      AppMethodBeat.i(935);
       boolean bool = super.add(paramE);
-      aDz();
+      bfW();
+      AppMethodBeat.o(935);
       return bool;
     }
     finally
@@ -71,16 +80,20 @@ public final class a<E>
   
   public final void clear()
   {
+    AppMethodBeat.i(936);
     super.clear();
-    aDB();
+    bfY();
+    AppMethodBeat.o(936);
   }
   
   public final boolean remove(Object paramObject)
   {
     try
     {
+      AppMethodBeat.i(937);
       boolean bool = super.remove(paramObject);
-      aDA();
+      bfX();
+      AppMethodBeat.o(937);
       return bool;
     }
     finally
@@ -92,7 +105,7 @@ public final class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.e.a
  * JD-Core Version:    0.7.0.1
  */

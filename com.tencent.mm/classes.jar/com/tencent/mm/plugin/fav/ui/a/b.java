@@ -9,6 +9,9 @@ import android.widget.AbsListView.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.plugin.fav.a.ae;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.d.a.b;
 import com.tencent.mm.plugin.fav.ui.d.a.c;
@@ -23,12 +26,11 @@ import com.tencent.mm.plugin.fav.ui.d.n;
 import com.tencent.mm.plugin.fav.ui.d.o;
 import com.tencent.mm.plugin.fav.ui.d.p;
 import com.tencent.mm.plugin.fav.ui.d.q;
-import com.tencent.mm.plugin.fav.ui.n.b;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.protocal.c.yl;
-import com.tencent.mm.protocal.c.yw;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.acs;
+import com.tencent.mm.protocal.protobuf.add;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -40,73 +42,123 @@ import java.util.TreeMap;
 public final class b
   extends a
 {
-  public String bVk = "";
-  private com.tencent.mm.sdk.b.c giK = new b.1(this);
-  public int jYS;
-  private boolean keB = false;
-  public List<com.tencent.mm.plugin.fav.a.g> keC = new ArrayList();
-  private List<com.tencent.mm.plugin.fav.a.g> keD = new ArrayList();
-  private List<com.tencent.mm.plugin.fav.a.g> keE = new LinkedList();
-  public List<Long> keF = new ArrayList();
-  public boolean keG = false;
-  private Map<Long, com.tencent.mm.plugin.fav.a.g> keH = new TreeMap();
-  private List<Integer> keI = new ArrayList();
-  private List<String> keJ = new LinkedList();
-  private List<String> keK = new LinkedList();
-  private SparseArray<com.tencent.mm.plugin.fav.ui.d.a> keL = new SparseArray();
-  private boolean keM = false;
-  public a.c keN;
-  public boolean keO = false;
-  public boolean keP = false;
-  public ListView keQ;
+  private com.tencent.mm.sdk.b.c hCe;
+  public int kbN;
+  private boolean mzk;
+  public List<com.tencent.mm.plugin.fav.a.g> mzl;
+  private List<com.tencent.mm.plugin.fav.a.g> mzm;
+  private List<com.tencent.mm.plugin.fav.a.g> mzn;
+  public List<Long> mzo;
+  public boolean mzp;
+  private Map<Long, com.tencent.mm.plugin.fav.a.g> mzq;
+  private List<Integer> mzr;
+  private List<String> mzs;
+  private List<String> mzt;
+  private SparseArray<com.tencent.mm.plugin.fav.ui.d.a> mzu;
+  private boolean mzv;
+  public a.c mzw;
+  public boolean mzx;
+  public boolean mzy;
+  public ListView mzz;
+  public String query;
   public int scene;
   
   public b(com.tencent.mm.plugin.fav.ui.l paraml, boolean paramBoolean)
   {
+    AppMethodBeat.i(74294);
+    this.mzk = false;
+    this.mzl = new ArrayList();
+    this.mzm = new ArrayList();
+    this.mzn = new LinkedList();
+    this.mzo = new ArrayList();
+    this.mzp = false;
+    this.mzq = new TreeMap();
+    this.mzr = new ArrayList();
+    this.mzs = new LinkedList();
+    this.mzt = new LinkedList();
+    this.mzu = new SparseArray();
+    this.mzv = false;
+    this.mzx = false;
+    this.mzy = false;
+    this.query = "";
+    this.hCe = new com.tencent.mm.sdk.b.c() {};
     this.type = -1;
-    this.keL.put(1, new m(paraml));
-    this.keL.put(2, new d(paraml));
-    this.keL.put(3, new q(paraml));
-    this.keL.put(4, new p(paraml));
-    this.keL.put(5, new o(paraml));
-    this.keL.put(6, new e(paraml));
-    this.keL.put(7, new com.tencent.mm.plugin.fav.ui.d.g(paraml));
-    this.keL.put(8, new com.tencent.mm.plugin.fav.ui.d.c(paraml));
-    this.keL.put(10, new i(paraml));
-    this.keL.put(12, new com.tencent.mm.plugin.fav.ui.d.l(paraml));
-    this.keL.put(15, new com.tencent.mm.plugin.fav.ui.d.l(paraml));
-    this.keL.put(11, new f(paraml));
-    this.keL.put(14, new j(paraml));
-    this.keL.put(16, new k(paraml));
-    this.keL.put(17, new com.tencent.mm.plugin.fav.ui.d.b(paraml));
-    this.keL.put(18, new com.tencent.mm.plugin.fav.ui.d.h(paraml));
-    this.keL.put(-2, new n(paraml));
-    if (paramBoolean != this.keO)
+    this.mzu.put(1, new m(paraml));
+    this.mzu.put(2, new d(paraml));
+    this.mzu.put(3, new q(paraml));
+    this.mzu.put(4, new p(paraml));
+    this.mzu.put(5, new o(paraml));
+    this.mzu.put(6, new e(paraml));
+    this.mzu.put(7, new com.tencent.mm.plugin.fav.ui.d.g(paraml));
+    this.mzu.put(8, new com.tencent.mm.plugin.fav.ui.d.c(paraml));
+    this.mzu.put(10, new i(paraml));
+    this.mzu.put(12, new com.tencent.mm.plugin.fav.ui.d.l(paraml));
+    this.mzu.put(15, new com.tencent.mm.plugin.fav.ui.d.l(paraml));
+    this.mzu.put(11, new f(paraml));
+    this.mzu.put(14, new j(paraml));
+    this.mzu.put(16, new k(paraml));
+    this.mzu.put(17, new com.tencent.mm.plugin.fav.ui.d.b(paraml));
+    this.mzu.put(18, new com.tencent.mm.plugin.fav.ui.d.h(paraml));
+    this.mzu.put(-2, new n(paraml));
+    if (paramBoolean != this.mzx)
     {
-      this.keO = paramBoolean;
+      this.mzx = paramBoolean;
       if (paramBoolean) {
-        this.keH.clear();
+        this.mzq.clear();
       }
     }
-    if (!this.keO) {
-      aRz();
+    if (!this.mzx) {
+      bxO();
     }
-    aRA();
+    bxP();
     notifyDataSetChanged();
-    com.tencent.mm.sdk.b.a.udP.d(this.giK);
-    com.tencent.mm.sdk.b.a.udP.c(this.giK);
+    com.tencent.mm.sdk.b.a.ymk.d(this.hCe);
+    com.tencent.mm.sdk.b.a.ymk.c(this.hCe);
+    AppMethodBeat.o(74294);
   }
   
-  private boolean aRB()
+  private void bM(List<com.tencent.mm.plugin.fav.a.g> paramList)
   {
-    return (!this.keJ.isEmpty()) || (!this.keK.isEmpty()) || (!this.keI.isEmpty());
+    AppMethodBeat.i(74299);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(74299);
+      return;
+    }
+    ab.d("MicroMsg.FavoriteAdapter", "before do recycle, need recycle list size[%d]", new Object[] { Integer.valueOf(paramList.size()) });
+    ab.d("MicroMsg.FavoriteAdapter", "after do recycle, current can reused list size[%d]", new Object[] { Integer.valueOf(this.mzn.size()) });
+    paramList.clear();
+    AppMethodBeat.o(74299);
   }
   
-  private static List<com.tencent.mm.plugin.fav.a.g> f(List<com.tencent.mm.plugin.fav.a.g> paramList, List<Long> paramList1)
+  private void bxQ()
+  {
+    AppMethodBeat.i(74298);
+    setSubScene(0);
+    this.mzo = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().bwQ();
+    AppMethodBeat.o(74298);
+  }
+  
+  private boolean bxR()
+  {
+    AppMethodBeat.i(74300);
+    if ((!this.mzs.isEmpty()) || (!this.mzt.isEmpty()) || (!this.mzr.isEmpty()))
+    {
+      AppMethodBeat.o(74300);
+      return true;
+    }
+    AppMethodBeat.o(74300);
+    return false;
+  }
+  
+  private static List<com.tencent.mm.plugin.fav.a.g> h(List<com.tencent.mm.plugin.fav.a.g> paramList, List<Long> paramList1)
   {
     int k = 0;
+    AppMethodBeat.i(74297);
     ArrayList localArrayList = new ArrayList();
-    if (paramList1 == null) {
+    if (paramList1 == null)
+    {
+      AppMethodBeat.o(74297);
       return localArrayList;
     }
     int i = k;
@@ -136,7 +188,7 @@ public final class b
         j = i;
         while ((j < i + 20) && (j < paramList1.size()))
         {
-          paramList = ((com.tencent.mm.plugin.fav.a.ae)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.fav.a.ae.class)).getFavItemInfoStorage().eE(((Long)paramList1.get(j)).longValue());
+          paramList = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(((Long)paramList1.get(j)).longValue());
           if (paramList != null) {
             localArrayList.add(paramList);
           }
@@ -145,256 +197,209 @@ public final class b
       }
       j += 1;
     }
+    AppMethodBeat.o(74297);
     return localArrayList;
   }
   
-  private void rc(int paramInt)
+  private void setSubScene(int paramInt)
   {
-    int i = this.jYS;
+    int i = this.kbN;
     if (paramInt == 0) {
-      this.jYS = 0;
+      this.kbN = 0;
     }
     do
     {
       return;
       if (i == 0)
       {
-        this.jYS = paramInt;
+        this.kbN = paramInt;
         return;
       }
     } while (i == paramInt);
-    this.jYS = 4;
+    this.kbN = 4;
   }
   
   public final void a(boolean paramBoolean, com.tencent.mm.plugin.fav.a.g paramg)
   {
-    if (paramBoolean == this.keG) {
+    AppMethodBeat.i(74301);
+    if (paramBoolean == this.mzp)
+    {
+      AppMethodBeat.o(74301);
       return;
     }
-    this.keG = paramBoolean;
+    this.mzp = paramBoolean;
     if (paramBoolean)
     {
-      this.keH.clear();
+      this.mzq.clear();
       if (paramg != null)
       {
-        paramg = ((com.tencent.mm.plugin.fav.a.ae)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.fav.a.ae.class)).getFavItemInfoStorage().eE(paramg.field_localId);
+        paramg = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(paramg.field_localId);
         if (paramg != null) {
-          this.keH.put(Long.valueOf(paramg.field_localId), paramg);
+          this.mzq.put(Long.valueOf(paramg.field_localId), paramg);
         }
       }
     }
     notifyDataSetChanged();
+    AppMethodBeat.o(74301);
   }
   
-  public final void aRA()
+  public final void bxO()
   {
-    y.v("MicroMsg.FavoriteAdapter", "reset data list beg");
-    this.keB = false;
-    List localList = this.keD;
-    if (localList != null)
+    AppMethodBeat.i(74296);
+    if (bxR())
     {
-      y.d("MicroMsg.FavoriteAdapter", "before do recycle, need recycle list size[%d]", new Object[] { Integer.valueOf(localList.size()) });
-      y.d("MicroMsg.FavoriteAdapter", "after do recycle, current can reused list size[%d]", new Object[] { Integer.valueOf(this.keE.size()) });
-      localList.clear();
+      ab.v("MicroMsg.FavoriteAdapter", "searching, do not load more data");
+      AppMethodBeat.o(74296);
+      return;
     }
-    if (!aRB())
+    if (com.tencent.mm.plugin.fav.a.b.bwg())
     {
-      y.i("MicroMsg.FavoriteAdapter", "on reset data list, last update time is %d, type is %d", new Object[] { Long.valueOf(this.lastUpdateTime), Integer.valueOf(this.type) });
-      if (!this.keO)
+      ab.w("MicroMsg.FavoriteAdapter", "want to load more data, but now doing batchget");
+      AppMethodBeat.o(74296);
+      return;
+    }
+    if (!this.mzx) {
+      try
       {
-        this.keD = com.tencent.mm.plugin.fav.a.b.a(this.lastUpdateTime, this.type, this.kex, this.kez);
-        if ((this.keD != null) && (this.lastUpdateTime == 0L) && (this.keD.size() > 0)) {
-          this.lastUpdateTime = ((com.tencent.mm.plugin.fav.a.g)this.keD.get(this.keD.size() - 1)).field_updateTime;
+        this.lastUpdateTime = com.tencent.mm.plugin.fav.a.b.s(this.lastUpdateTime, this.type);
+        AppMethodBeat.o(74296);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.FavoriteAdapter", localException, "", new Object[0]);
+        AppMethodBeat.o(74296);
+        return;
+      }
+    }
+    this.mzm = h(this.mzl, this.mzo);
+    this.mzk = true;
+    AppMethodBeat.o(74296);
+  }
+  
+  public final void bxP()
+  {
+    AppMethodBeat.i(74306);
+    ab.v("MicroMsg.FavoriteAdapter", "reset data list beg");
+    this.mzk = false;
+    bM(this.mzm);
+    if (!bxR())
+    {
+      ab.i("MicroMsg.FavoriteAdapter", "on reset data list, last update time is %d, type is %d", new Object[] { Long.valueOf(this.lastUpdateTime), Integer.valueOf(this.type) });
+      if (!this.mzx)
+      {
+        this.mzm = com.tencent.mm.plugin.fav.a.b.a(this.lastUpdateTime, this.type, this.mzh, this.mzi);
+        if ((this.mzm != null) && (this.lastUpdateTime == 0L) && (this.mzm.size() > 0)) {
+          this.lastUpdateTime = ((com.tencent.mm.plugin.fav.a.g)this.mzm.get(this.mzm.size() - 1)).field_updateTime;
         }
       }
       for (;;)
       {
-        if (this.keD == null)
+        if (this.mzm == null)
         {
-          y.w("MicroMsg.FavoriteAdapter", "reset data list fail, get null list, new empty one");
-          this.keD = new ArrayList();
+          ab.w("MicroMsg.FavoriteAdapter", "reset data list fail, get null list, new empty one");
+          this.mzm = new ArrayList();
         }
-        if ((!this.keO) && (!aRB()) && (this.keD.size() < 20) && (!((com.tencent.mm.plugin.fav.a.ae)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.fav.a.ae.class)).getFavItemInfoStorage().q(this.lastUpdateTime, this.type)))
+        if ((!this.mzx) && (!bxR()) && (this.mzm.size() < 20) && (!((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().v(this.lastUpdateTime, this.type)))
         {
-          y.v("MicroMsg.FavoriteAdapter", "least than page count, loadMoreData");
-          aRz();
+          ab.v("MicroMsg.FavoriteAdapter", "least than page count, loadMoreData");
+          bxO();
         }
-        this.keB = true;
-        y.v("MicroMsg.FavoriteAdapter", "reset data list end");
+        this.mzk = true;
+        ab.v("MicroMsg.FavoriteAdapter", "reset data list end");
+        AppMethodBeat.o(74306);
         return;
-        rc(0);
-        this.keF = ((com.tencent.mm.plugin.fav.a.ae)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.fav.a.ae.class)).getFavItemInfoStorage().aQB();
-        this.keD = f(null, this.keF);
+        bxQ();
+        this.mzm = h(null, this.mzo);
       }
     }
-    y.i("MicroMsg.FavoriteAdapter", "on reset data list, do search, searchStr:%s, tagStr:%s, searchTypes:%s", new Object[] { this.keJ, this.keK, this.keI });
-    this.keD = com.tencent.mm.plugin.fav.a.b.a(this.keJ, this.keK, this.keI, this.keE, this.kex, this.kez);
-    if (this.keD == null) {}
-    for (int i = 0;; i = this.keD.size())
+    ab.i("MicroMsg.FavoriteAdapter", "on reset data list, do search, searchStr:%s, tagStr:%s, searchTypes:%s", new Object[] { this.mzs, this.mzt, this.mzr });
+    this.mzm = com.tencent.mm.plugin.fav.a.b.a(this.mzs, this.mzt, this.mzr, this.mzn, this.mzh, this.mzi);
+    if (this.mzm == null) {}
+    for (int i = 0;; i = this.mzm.size())
     {
-      com.tencent.mm.plugin.report.service.h.nFQ.f(10649, new Object[] { Integer.valueOf(i) });
+      com.tencent.mm.plugin.report.service.h.qsU.e(10649, new Object[] { Integer.valueOf(i) });
       break;
     }
   }
   
-  public final int aRC()
+  public final int bxS()
   {
-    return this.keH.size();
+    AppMethodBeat.i(74303);
+    int i = this.mzq.size();
+    AppMethodBeat.o(74303);
+    return i;
   }
   
-  public final long aRD()
+  public final long bxT()
   {
-    Iterator localIterator = this.keH.values().iterator();
+    AppMethodBeat.i(74304);
+    Iterator localIterator = this.mzq.values().iterator();
     long l = 0L;
     if (localIterator.hasNext())
     {
       com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)localIterator.next();
       if (localg == null) {
-        break label55;
+        break label67;
       }
       l = localg.field_datatotalsize + l;
     }
-    label55:
+    label67:
     for (;;)
     {
       break;
+      AppMethodBeat.o(74304);
       return l;
     }
   }
   
-  public final void aRz()
+  public final void c(List<Integer> paramList, List<String> paramList1, List<String> paramList2)
   {
-    if (aRB())
-    {
-      y.v("MicroMsg.FavoriteAdapter", "searching, do not load more data");
-      return;
-    }
-    if (com.tencent.mm.plugin.fav.a.b.aPS())
-    {
-      y.w("MicroMsg.FavoriteAdapter", "want to load more data, but now doing batchget");
-      return;
-    }
-    if (!this.keO) {
-      try
-      {
-        this.lastUpdateTime = com.tencent.mm.plugin.fav.a.b.n(this.lastUpdateTime, this.type);
-        return;
-      }
-      catch (Exception localException)
-      {
-        y.printErrStackTrace("MicroMsg.FavoriteAdapter", localException, "", new Object[0]);
-        return;
-      }
-    }
-    this.keD = f(this.keC, this.keF);
-    this.keB = true;
-  }
-  
-  public final void b(List<Integer> paramList, List<String> paramList1, List<String> paramList2)
-  {
-    rc(0);
-    this.keI.clear();
+    AppMethodBeat.i(74305);
+    setSubScene(0);
+    this.mzr.clear();
     if (paramList != null)
     {
-      this.keI.addAll(paramList);
+      this.mzr.addAll(paramList);
       if (!paramList.isEmpty()) {
-        rc(2);
+        setSubScene(2);
       }
     }
-    this.keJ.clear();
+    this.mzs.clear();
     if (paramList1 != null)
     {
-      this.keJ.addAll(paramList1);
+      this.mzs.addAll(paramList1);
       if (!paramList1.isEmpty()) {
-        rc(3);
+        setSubScene(3);
       }
     }
-    this.keK.clear();
+    this.mzt.clear();
     if (paramList2 != null)
     {
-      this.keK.addAll(paramList2);
+      this.mzt.addAll(paramList2);
       if (!paramList2.isEmpty()) {
-        rc(1);
+        setSubScene(1);
       }
     }
-    this.keM = true;
-    aRA();
-    this.keM = false;
-  }
-  
-  public final int eJ(long paramLong)
-  {
-    int j = 0;
-    int i = 0;
-    Object localObject = ((com.tencent.mm.plugin.fav.a.ae)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.fav.a.ae.class)).getFavItemInfoStorage().eE(paramLong);
-    if (localObject == null) {
-      return -1;
-    }
-    if (this.keH.size() >= 30)
-    {
-      y.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
-      com.tencent.mm.ui.base.h.bC(com.tencent.mm.sdk.platformtools.ae.getContext(), com.tencent.mm.sdk.platformtools.ae.getContext().getResources().getString(n.i.favorite_max_selected_tips, new Object[] { Integer.valueOf(30) }));
-      return -1;
-    }
-    this.keH.put(Long.valueOf(paramLong), localObject);
-    if (((com.tencent.mm.plugin.fav.a.g)localObject).field_updateTime < this.lastUpdateTime)
-    {
-      this.lastUpdateTime = ((com.tencent.mm.plugin.fav.a.g)localObject).field_updateTime;
-      aRA();
-      localObject = this.keD.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        if (((com.tencent.mm.plugin.fav.a.g)((Iterator)localObject).next()).field_localId == paramLong)
-        {
-          notifyDataSetChanged();
-          return i;
-        }
-        i += 1;
-      }
-      notifyDataSetChanged();
-    }
-    for (;;)
-    {
-      return -1;
-      localObject = this.keC.iterator();
-      i = j;
-      while (((Iterator)localObject).hasNext())
-      {
-        if (((com.tencent.mm.plugin.fav.a.g)((Iterator)localObject).next()).field_localId == paramLong)
-        {
-          notifyDataSetChanged();
-          return i;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  public final List<com.tencent.mm.plugin.fav.a.g> fX(boolean paramBoolean)
-  {
-    LinkedList localLinkedList = new LinkedList();
-    Iterator localIterator = this.keH.values().iterator();
-    while (localIterator.hasNext())
-    {
-      com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)localIterator.next();
-      if (localg != null) {
-        localLinkedList.add(localg);
-      }
-    }
-    if (paramBoolean) {
-      this.keH.clear();
-    }
-    return localLinkedList;
+    this.mzv = true;
+    bxP();
+    this.mzv = false;
+    AppMethodBeat.o(74305);
   }
   
   public final void finish()
   {
-    com.tencent.mm.sdk.b.a.udP.d(this.giK);
+    AppMethodBeat.i(74295);
+    com.tencent.mm.sdk.b.a.ymk.d(this.hCe);
+    AppMethodBeat.o(74295);
   }
   
   public final int getCount()
   {
-    return this.keC.size() + 1;
+    AppMethodBeat.i(74313);
+    int i = this.mzl.size();
+    AppMethodBeat.o(74313);
+    return i + 1;
   }
   
   public final long getItemId(int paramInt)
@@ -404,144 +409,255 @@ public final class b
   
   public final int getItemViewType(int paramInt)
   {
-    if (paramInt == 0) {
+    AppMethodBeat.i(74309);
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(74309);
       return 0;
     }
-    com.tencent.mm.plugin.fav.a.g localg = rd(paramInt - 1);
+    com.tencent.mm.plugin.fav.a.g localg = vZ(paramInt - 1);
     switch (localg.field_type)
     {
     case 9: 
     case 13: 
     default: 
-      y.w("MicroMsg.FavoriteAdapter", "get item view type unknown, %d", new Object[] { Integer.valueOf(localg.field_type) });
+      ab.w("MicroMsg.FavoriteAdapter", "get item view type unknown, %d", new Object[] { Integer.valueOf(localg.field_type) });
+      AppMethodBeat.o(74309);
       return -2;
     }
-    return localg.field_type;
+    paramInt = localg.field_type;
+    AppMethodBeat.o(74309);
+    return paramInt;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(74311);
     if (paramInt == 0)
     {
       paramView = new View(paramViewGroup.getContext());
       paramView.setLayoutParams(new AbsListView.LayoutParams(0, 0));
-      paramView.setBackgroundResource(n.b.fav_listitem_divider_bg);
+      paramView.setBackgroundResource(2131690052);
       paramView.setPadding(0, 0, 0, 0);
       paramView.setEnabled(false);
+      AppMethodBeat.o(74311);
       return paramView;
     }
-    com.tencent.mm.plugin.fav.a.g localg = rd(paramInt - 1);
-    com.tencent.mm.plugin.fav.ui.d.a locala = (com.tencent.mm.plugin.fav.ui.d.a)this.keL.get(localg.field_type);
+    com.tencent.mm.plugin.fav.a.g localg = vZ(paramInt - 1);
+    com.tencent.mm.plugin.fav.ui.d.a locala = (com.tencent.mm.plugin.fav.ui.d.a)this.mzu.get(localg.field_type);
     if (locala == null)
     {
-      y.w("MicroMsg.FavoriteAdapter", "unknown type %d, use unknown item creator", new Object[] { Integer.valueOf(localg.field_type) });
-      locala = (com.tencent.mm.plugin.fav.ui.d.a)this.keL.get(-2);
-      aRy();
-      return locala.a(paramView, paramViewGroup, localg);
+      ab.w("MicroMsg.FavoriteAdapter", "unknown type %d, use unknown item creator", new Object[] { Integer.valueOf(localg.field_type) });
+      locala = (com.tencent.mm.plugin.fav.ui.d.a)this.mzu.get(-2);
+      bxN();
+      paramView = locala.a(paramView, paramViewGroup, localg);
+      AppMethodBeat.o(74311);
+      return paramView;
     }
-    locala.kio.idd = aRB();
-    locala.kio.lastUpdateTime = this.lastUpdateTime;
-    locala.kio.keG = this.keG;
-    locala.kio.keH = this.keH;
-    locala.kio.kiq = this.keN;
-    locala.kio.keO = this.keO;
-    return locala.a(paramView, paramViewGroup, localg);
+    locala.mCS.jTS = bxR();
+    locala.mCS.lastUpdateTime = this.lastUpdateTime;
+    locala.mCS.mzp = this.mzp;
+    locala.mCS.mzq = this.mzq;
+    locala.mCS.mCU = this.mzw;
+    locala.mCS.mzx = this.mzx;
+    paramView = locala.a(paramView, paramViewGroup, localg);
+    AppMethodBeat.o(74311);
+    return paramView;
   }
   
   public final int getViewTypeCount()
   {
-    return this.keL.size() + 4;
+    AppMethodBeat.i(74310);
+    int i = this.mzu.size();
+    AppMethodBeat.o(74310);
+    return i + 4;
+  }
+  
+  public final List<com.tencent.mm.plugin.fav.a.g> hB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(74302);
+    LinkedList localLinkedList = new LinkedList();
+    Iterator localIterator = this.mzq.values().iterator();
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)localIterator.next();
+      if (localg != null) {
+        localLinkedList.add(localg);
+      }
+    }
+    if (paramBoolean) {
+      this.mzq.clear();
+    }
+    AppMethodBeat.o(74302);
+    return localLinkedList;
   }
   
   public final boolean isEmpty()
   {
-    return this.keC.isEmpty();
+    AppMethodBeat.i(74307);
+    boolean bool = this.mzl.isEmpty();
+    AppMethodBeat.o(74307);
+    return bool;
+  }
+  
+  public final int kh(long paramLong)
+  {
+    int j = 0;
+    int i = 0;
+    AppMethodBeat.i(74314);
+    Object localObject = ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().kb(paramLong);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(74314);
+      return -1;
+    }
+    if (this.mzq.size() >= 30)
+    {
+      ab.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
+      com.tencent.mm.ui.base.h.bO(ah.getContext(), ah.getContext().getResources().getString(2131299755, new Object[] { Integer.valueOf(30) }));
+      AppMethodBeat.o(74314);
+      return -1;
+    }
+    this.mzq.put(Long.valueOf(paramLong), localObject);
+    if (((com.tencent.mm.plugin.fav.a.g)localObject).field_updateTime < this.lastUpdateTime)
+    {
+      this.lastUpdateTime = ((com.tencent.mm.plugin.fav.a.g)localObject).field_updateTime;
+      bxP();
+      localObject = this.mzm.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        if (((com.tencent.mm.plugin.fav.a.g)((Iterator)localObject).next()).field_localId == paramLong)
+        {
+          notifyDataSetChanged();
+          AppMethodBeat.o(74314);
+          return i;
+        }
+        i += 1;
+      }
+      notifyDataSetChanged();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(74314);
+      return -1;
+      localObject = this.mzl.iterator();
+      i = j;
+      while (((Iterator)localObject).hasNext())
+      {
+        if (((com.tencent.mm.plugin.fav.a.g)((Iterator)localObject).next()).field_localId == paramLong)
+        {
+          notifyDataSetChanged();
+          AppMethodBeat.o(74314);
+          return i;
+        }
+        i += 1;
+      }
+    }
   }
   
   public final void notifyDataSetChanged()
   {
-    y.v("MicroMsg.FavoriteAdapter", "on notify data set changed requset, can exchange tempList[%B]", new Object[] { Boolean.valueOf(this.keB) });
-    if (this.keB)
+    AppMethodBeat.i(74308);
+    ab.v("MicroMsg.FavoriteAdapter", "on notify data set changed requset, can exchange tempList[%B]", new Object[] { Boolean.valueOf(this.mzk) });
+    if (this.mzk)
     {
-      if ((this.keO) && (this.keD != null) && (this.keC != null) && (this.keD.size() == this.keC.size())) {
-        this.keP = true;
+      if ((this.mzx) && (this.mzm != null) && (this.mzl != null) && (this.mzm.size() == this.mzl.size())) {
+        this.mzy = true;
       }
-      List localList = this.keC;
-      this.keC = this.keD;
-      this.keD = localList;
-      this.keB = false;
+      List localList = this.mzl;
+      this.mzl = this.mzm;
+      this.mzm = localList;
+      this.mzk = false;
     }
-    y.v("MicroMsg.FavoriteAdapter", "on notify data set changed end");
+    ab.v("MicroMsg.FavoriteAdapter", "on notify data set changed end");
     super.notifyDataSetChanged();
+    AppMethodBeat.o(74308);
   }
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(74315);
     paramAdapterView = (a.b)paramView.getTag();
-    if (paramAdapterView == null) {
-      y.w("MicroMsg.FavoriteAdapter", "on item click, holder is null");
-    }
-    com.tencent.mm.plugin.fav.ui.d.a locala;
-    do
+    if (paramAdapterView == null)
     {
+      ab.w("MicroMsg.FavoriteAdapter", "on item click, holder is null");
+      AppMethodBeat.o(74315);
       return;
-      if (paramAdapterView.jZN == null)
+    }
+    if (paramAdapterView.muk == null)
+    {
+      ab.w("MicroMsg.FavoriteAdapter", "on item click, info is null");
+      AppMethodBeat.o(74315);
+      return;
+    }
+    if ((this.mzp) || (this.mzx))
+    {
+      if ((!paramAdapterView.gpN.isChecked()) && (this.mzq.size() >= 30))
       {
-        y.w("MicroMsg.FavoriteAdapter", "on item click, info is null");
+        ab.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
+        com.tencent.mm.ui.base.h.bO(ah.getContext(), ah.getContext().getResources().getString(2131299755, new Object[] { Integer.valueOf(30) }));
+        AppMethodBeat.o(74315);
         return;
       }
-      if ((this.keG) || (this.keO))
+      paramView = paramAdapterView.gpN;
+      if (!paramAdapterView.gpN.isChecked()) {}
+      for (boolean bool = true;; bool = false)
       {
-        if ((!paramAdapterView.eXQ.isChecked()) && (this.keH.size() >= 30))
-        {
-          y.w("MicroMsg.FavoriteAdapter", "call select item, match max select count %d", new Object[] { Integer.valueOf(30) });
-          com.tencent.mm.ui.base.h.bC(com.tencent.mm.sdk.platformtools.ae.getContext(), com.tencent.mm.sdk.platformtools.ae.getContext().getResources().getString(n.i.favorite_max_selected_tips, new Object[] { Integer.valueOf(30) }));
-          return;
-        }
-        paramView = paramAdapterView.eXQ;
-        if (!paramAdapterView.eXQ.isChecked()) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramView.setChecked(bool);
-          return;
-        }
-      }
-      locala = (com.tencent.mm.plugin.fav.ui.d.a)this.keL.get(paramAdapterView.jZN.field_type);
-    } while (locala == null);
-    StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = paramAdapterView.jZN;
-    String str = ((com.tencent.mm.plugin.fav.a.g)localObject).field_id + "_" + System.currentTimeMillis() / 1000L;
-    localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_tagProto.sXq;
-    if (!bk.dk((List)localObject))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        localStringBuilder.append((String)((Iterator)localObject).next()).append(";");
+        paramView.setChecked(bool);
+        AppMethodBeat.o(74315);
+        return;
       }
     }
-    localObject = new yl();
-    ((yl)localObject).scene = this.scene;
-    ((yl)localObject).jYS = this.jYS;
-    if (this.keQ != null) {}
-    for (((yl)localObject).index = (paramInt - this.keQ.getHeaderViewsCount());; ((yl)localObject).index = paramInt)
+    com.tencent.mm.plugin.fav.ui.d.a locala = (com.tencent.mm.plugin.fav.ui.d.a)this.mzu.get(paramAdapterView.muk.field_type);
+    StringBuilder localStringBuilder;
+    Object localObject;
+    String str;
+    if (locala != null)
     {
-      ((yl)localObject).bVk = this.bVk;
-      ((yl)localObject).bIB = str;
-      ((yl)localObject).jYU = localStringBuilder.toString();
-      locala.a(paramView, (yl)localObject);
-      y.d("MicroMsg.FavoriteAdapter", "item click type %s", new Object[] { Integer.valueOf(paramAdapterView.jZN.field_type) });
+      localStringBuilder = new StringBuilder();
+      localObject = paramAdapterView.muk;
+      str = ((com.tencent.mm.plugin.fav.a.g)localObject).field_id + "_" + System.currentTimeMillis() / 1000L;
+      localObject = ((com.tencent.mm.plugin.fav.a.g)localObject).field_tagProto.wVq;
+      if (!bo.es((List)localObject))
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          localStringBuilder.append((String)((Iterator)localObject).next()).append(";");
+        }
+      }
+      localObject = new acs();
+      ((acs)localObject).scene = this.scene;
+      ((acs)localObject).kbN = this.kbN;
+      if (this.mzz == null) {
+        break label439;
+      }
+    }
+    label439:
+    for (((acs)localObject).index = (paramInt - this.mzz.getHeaderViewsCount());; ((acs)localObject).index = paramInt)
+    {
+      ((acs)localObject).query = this.query;
+      ((acs)localObject).cpW = str;
+      ((acs)localObject).mtm = localStringBuilder.toString();
+      locala.a(paramView, (acs)localObject);
+      ab.d("MicroMsg.FavoriteAdapter", "item click type %s", new Object[] { Integer.valueOf(paramAdapterView.muk.field_type) });
+      AppMethodBeat.o(74315);
       return;
     }
   }
   
-  public final com.tencent.mm.plugin.fav.a.g rd(int paramInt)
+  public final com.tencent.mm.plugin.fav.a.g vZ(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.keC.size()))
+    AppMethodBeat.i(74312);
+    if ((paramInt < 0) || (paramInt >= this.mzl.size()))
     {
-      y.e("MicroMsg.FavoriteAdapter", "get item, but position error");
-      return new com.tencent.mm.plugin.fav.a.g();
+      ab.e("MicroMsg.FavoriteAdapter", "get item, but position error");
+      localg = new com.tencent.mm.plugin.fav.a.g();
+      AppMethodBeat.o(74312);
+      return localg;
     }
-    return (com.tencent.mm.plugin.fav.a.g)this.keC.get(paramInt);
+    com.tencent.mm.plugin.fav.a.g localg = (com.tencent.mm.plugin.fav.a.g)this.mzl.get(paramInt);
+    AppMethodBeat.o(74312);
+    return localg;
   }
 }
 

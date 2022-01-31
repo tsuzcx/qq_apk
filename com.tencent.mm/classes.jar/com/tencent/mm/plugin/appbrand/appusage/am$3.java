@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.plugin.appbrand.config.l.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.k.a;
 import com.tencent.mm.plugin.appbrand.config.s;
-import com.tencent.mm.protocal.c.akd;
-import com.tencent.mm.protocal.c.bsc;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.apo;
+import com.tencent.mm.protocal.protobuf.ccn;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,19 +13,21 @@ import java.util.List;
 final class am$3
   implements Runnable
 {
-  am$3(am paramam, akd paramakd) {}
+  am$3(am paramam, apo paramapo) {}
   
   public final void run()
   {
-    if (!bk.dk(this.fKi.tgH))
+    AppMethodBeat.i(129729);
+    if (!bo.es(this.hcX.xfp))
     {
       LinkedList localLinkedList = new LinkedList();
-      Iterator localIterator = this.fKi.tgH.iterator();
+      Iterator localIterator = this.hcX.xfp.iterator();
       while (localIterator.hasNext()) {
-        localLinkedList.add(((bsc)localIterator.next()).username);
+        localLinkedList.add(((ccn)localIterator.next()).username);
       }
-      s.a(localLinkedList, l.a.fQu);
+      s.a(localLinkedList, k.a.hjf);
     }
+    AppMethodBeat.o(129729);
   }
 }
 

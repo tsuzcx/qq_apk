@@ -1,39 +1,41 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class l
-  extends s
+  extends t
 {
   public float fontSize;
-  public String oAk;
-  public String oAl;
-  public int oCC;
-  public String oCD;
-  public String oCE;
-  public String oCF;
-  public float oCG;
-  public String oCH;
-  public String oCI;
-  public String oCJ;
-  public int oCK;
-  public int oCL;
-  public int oCM;
-  public int oCN;
-  public String oCO = "";
-  public String oCP = "";
-  public String oCQ = "";
-  public s oCR;
+  public int rsd;
+  public String rse;
+  public String rsf;
+  public String rsg;
+  public float rsh;
+  public int rsi;
+  public String rsj;
+  public String rsk;
+  public String rsl;
+  public int rsm;
+  public int rsn;
+  public int rso;
+  public int rsp;
+  public String rsq = "";
+  public String rsr = "";
+  public String rss = "";
+  public t rst;
   public int textAlignment;
   public String title;
   
-  protected final List<s> bEY()
+  protected final List<t> cqF()
   {
-    ArrayList localArrayList = new ArrayList(super.bEY());
-    if (this.oCR != null) {
-      localArrayList.add(this.oCR);
+    AppMethodBeat.i(36938);
+    ArrayList localArrayList = new ArrayList(super.cqF());
+    if (this.rst != null) {
+      localArrayList.add(this.rst);
     }
+    AppMethodBeat.o(36938);
     return localArrayList;
   }
 }

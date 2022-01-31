@@ -1,5 +1,7 @@
 package com.eclipsesource.v8;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MultiContextNodeJS$1
   implements JavaVoidCallback
 {
@@ -7,6 +9,7 @@ final class MultiContextNodeJS$1
   
   public final void invoke(V8Object paramV8Object, V8Array paramV8Array)
   {
+    AppMethodBeat.i(74963);
     paramV8Object = (V8Function)paramV8Array.get(0);
     try
     {
@@ -16,6 +19,7 @@ final class MultiContextNodeJS$1
     finally
     {
       paramV8Object.release();
+      AppMethodBeat.o(74963);
     }
   }
 }

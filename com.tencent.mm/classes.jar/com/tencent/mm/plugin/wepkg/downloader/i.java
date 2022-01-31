@@ -2,18 +2,20 @@ package com.tencent.mm.plugin.wepkg.downloader;
 
 import android.content.Context;
 import android.content.IntentFilter;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class i
 {
-  private static int iPW = -1;
-  private static i.a rOO;
+  private static int kZo = -1;
+  private static i.a vFD;
   
-  public static void aFI()
+  public static void bje()
   {
-    if (rOO == null) {
-      rOO = new i.a((byte)0);
+    AppMethodBeat.i(63454);
+    if (vFD == null) {
+      vFD = new i.a((byte)0);
     }
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.net.wifi.STATE_CHANGE");
@@ -21,31 +23,34 @@ public final class i
     localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
     try
     {
-      ae.getContext().registerReceiver(rOO, localIntentFilter);
-      label54:
-      y.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader startListen");
+      ah.getContext().registerReceiver(vFD, localIntentFilter);
+      label59:
+      ab.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader startListen");
+      AppMethodBeat.o(63454);
       return;
     }
     catch (Exception localException)
     {
-      break label54;
+      break label59;
     }
   }
   
-  public static void aFJ()
+  public static void bjf()
   {
-    if (rOO != null) {}
+    AppMethodBeat.i(63455);
+    if (vFD != null) {}
     try
     {
-      ae.getContext().unregisterReceiver(rOO);
-      label15:
-      rOO = null;
-      y.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader stopListen");
+      ah.getContext().unregisterReceiver(vFD);
+      label20:
+      vFD = null;
+      ab.i("MicroMsg.Wepkg.WepkgAutoDownloader", "WepkgAutoDownloader stopListen");
+      AppMethodBeat.o(63455);
       return;
     }
     catch (Exception localException)
     {
-      break label15;
+      break label20;
     }
   }
 }

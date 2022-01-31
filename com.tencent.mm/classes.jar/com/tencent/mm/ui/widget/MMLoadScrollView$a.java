@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget;
 
 public abstract interface MMLoadScrollView$a
 {
-  public abstract void aJC();
+  public abstract void bnl();
 }
 
 

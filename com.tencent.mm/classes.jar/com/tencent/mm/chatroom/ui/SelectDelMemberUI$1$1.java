@@ -3,7 +3,8 @@ package com.tencent.mm.chatroom.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SelectDelMemberUI$1$1
   implements DialogInterface.OnClickListener
@@ -12,10 +13,12 @@ final class SelectDelMemberUI$1$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(104386);
     paramDialogInterface = new Intent();
-    paramDialogInterface.putExtra("Select_Contact", bk.c(SelectDelMemberUI.a(this.drP.drO), ","));
-    this.drP.drO.setResult(-1, paramDialogInterface);
-    this.drP.drO.finish();
+    paramDialogInterface.putExtra("Select_Contact", bo.d(SelectDelMemberUI.a(this.ejx.ejw), ","));
+    this.ejx.ejw.setResult(-1, paramDialogInterface);
+    this.ejx.ejw.finish();
+    AppMethodBeat.o(104386);
   }
 }
 

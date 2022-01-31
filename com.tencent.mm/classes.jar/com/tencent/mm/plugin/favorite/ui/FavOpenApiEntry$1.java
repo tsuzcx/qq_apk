@@ -2,27 +2,32 @@ package com.tencent.mm.plugin.favorite.ui;
 
 import android.view.View;
 import android.view.Window;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.plugin.base.stub.d;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class FavOpenApiEntry$1
-  implements am.a
+  implements ap.a
 {
   FavOpenApiEntry$1(FavOpenApiEntry paramFavOpenApiEntry) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    boolean bool = false;
-    if ((this.kki.getWindow() == null) || (this.kki.getWindow().getDecorView() == null) || (this.kki.getWindow().getDecorView().getWindowToken() == null))
+    AppMethodBeat.i(20540);
+    if ((this.mEN.getWindow() == null) || (this.mEN.getWindow().getDecorView() == null) || (this.mEN.getWindow().getDecorView().getWindowToken() == null))
     {
-      if (FavOpenApiEntry.a(this.kki) < 10)
+      if (FavOpenApiEntry.a(this.mEN) < 10)
       {
-        FavOpenApiEntry.b(this.kki);
-        bool = true;
+        FavOpenApiEntry.b(this.mEN);
+        AppMethodBeat.o(20540);
+        return true;
       }
-      return bool;
+      AppMethodBeat.o(20540);
+      return false;
     }
-    FavOpenApiEntry.a(this.kki, FavOpenApiEntry.c(this.kki).message);
+    new d(this.mEN, FavOpenApiEntry.c(this.mEN), FavOpenApiEntry.d(this.mEN).openId, new FavOpenApiEntry.1.1(this)).aVE();
+    AppMethodBeat.o(20540);
     return false;
   }
 }

@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.subapp;
 
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class b
-  implements n
+  implements o
 {
-  public static m eUR;
-  public static l eUS;
-  
-  public final void a(l paraml)
-  {
-    eUS = paraml;
-  }
+  public static n gmO;
+  public static m gmP;
   
   public final void a(m paramm)
   {
-    eUR = paramm;
+    gmP = paramm;
+  }
+  
+  public final void a(n paramn)
+  {
+    gmO = paramn;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.b
  * JD-Core Version:    0.7.0.1
  */

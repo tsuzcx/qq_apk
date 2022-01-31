@@ -8,42 +8,51 @@ import android.os.Process;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public class NoRomSpaceDexUI
   extends Activity
 {
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(29832);
     super.onCreate(paramBundle);
-    x.initLanguage(ae.getContext());
-    setContentView(R.i.no_space_dex);
-    String str = getString(R.l.check_db_size_tip_dangerous_message);
-    paramBundle = new q(this);
-    paramBundle.setTitle(R.l.check_db_size_tip_dangerous_title);
-    paramBundle.uMb.setVisibility(0);
-    paramBundle.uLZ.setVisibility(0);
-    paramBundle.uLZ.setText(str);
-    str = getString(R.l.check_db_size_btn_dangerous_message);
+    aa.initLanguage(ah.getContext());
+    setContentView(2130970362);
+    String str = getString(2131298348);
+    paramBundle = new o(this);
+    paramBundle.setTitle(2131298349);
+    paramBundle.zai.setVisibility(0);
+    paramBundle.zag.setVisibility(0);
+    paramBundle.zag.setText(str);
+    str = getString(2131298346);
     DialogInterface.OnClickListener local1 = new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
+        AppMethodBeat.i(29831);
         Process.killProcess(Process.myPid());
+        AppMethodBeat.o(29831);
       }
     };
-    if (paramBundle.qFr != null)
+    if (paramBundle.usy != null)
     {
-      paramBundle.qFr.setVisibility(0);
-      paramBundle.qFr.setText(str);
-      paramBundle.qFr.setOnClickListener(new q.1(paramBundle, local1));
+      paramBundle.usy.setVisibility(0);
+      paramBundle.usy.setText(str);
+      paramBundle.usy.setOnClickListener(new o.1(paramBundle, local1));
     }
     paramBundle.setCancelable(false);
-    paramBundle.cze();
+    paramBundle.dCp();
     paramBundle.show();
+    AppMethodBeat.o(29832);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

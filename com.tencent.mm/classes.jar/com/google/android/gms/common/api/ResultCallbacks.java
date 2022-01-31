@@ -1,10 +1,13 @@
 package com.google.android.gms.common.api;
 
+import com.google.android.gms.common.annotation.KeepForSdk;
+
 public abstract class ResultCallbacks<R extends Result>
   implements ResultCallback<R>
 {
   public abstract void onFailure(Status paramStatus);
   
+  @KeepForSdk
   public final void onResult(R paramR)
   {
     Status localStatus = paramR.getStatus();

@@ -1,68 +1,28 @@
 package com.tencent.matrix.trace.d;
 
-import android.os.Handler;
-import android.os.HandlerThread;
-
 public final class a
 {
-  private final long brn;
-  private volatile boolean bro = false;
-  private final Handler mHandler;
+  public int aVH;
+  public int bRM;
+  public int bRN;
+  public int count = 1;
   
-  public a(HandlerThread paramHandlerThread, long paramLong)
+  public a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.brn = paramLong;
-    this.mHandler = new Handler(paramHandlerThread.getLooper());
+    this.bRM = paramInt1;
+    this.bRN = paramInt2;
+    this.aVH = paramInt3;
   }
   
-  public final void a(a parama, boolean paramBoolean)
+  public final void az(long paramLong)
   {
-    if (this.mHandler != null)
-    {
-      this.bro = true;
-      this.mHandler.removeCallbacksAndMessages(null);
-      parama = new b(this.mHandler, this.brn, parama, paramBoolean);
-      this.mHandler.postDelayed(parama, this.brn);
-    }
+    this.count += 1;
+    this.bRN = ((int)(this.bRN + paramLong));
   }
   
-  public final void cancel()
+  public final String toString()
   {
-    if (this.mHandler != null)
-    {
-      this.bro = false;
-      this.mHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void rq();
-  }
-  
-  static final class b
-    implements Runnable
-  {
-    private final long brn;
-    private final a.a brp;
-    private final boolean brq;
-    private final Handler handler;
-    
-    b(Handler paramHandler, long paramLong, a.a parama, boolean paramBoolean)
-    {
-      this.handler = paramHandler;
-      this.brn = paramLong;
-      this.brp = parama;
-      this.brq = paramBoolean;
-    }
-    
-    public final void run()
-    {
-      this.brp.rq();
-      if (this.brq) {
-        this.handler.postDelayed(this, this.brn);
-      }
-    }
+    return this.aVH + "," + this.bRM + "," + this.count + "," + this.bRN;
   }
 }
 

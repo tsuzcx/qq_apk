@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.fts.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.ui.WebSearchWebVideoViewControlBar;
 
 final class FtsWebVideoView$3
@@ -11,8 +12,10 @@ final class FtsWebVideoView$3
   
   public final void onClick(View paramView)
   {
-    FtsWebVideoView.v(this.raW);
-    FtsWebVideoView.c(this.raW).akG();
+    AppMethodBeat.i(5825);
+    FtsWebVideoView.v(this.uQE);
+    FtsWebVideoView.c(this.uQE).aFn();
+    AppMethodBeat.o(5825);
   }
 }
 

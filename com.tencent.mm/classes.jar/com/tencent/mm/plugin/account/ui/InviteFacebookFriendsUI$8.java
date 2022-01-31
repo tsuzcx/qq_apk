@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class InviteFacebookFriendsUI$8
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class InviteFacebookFriendsUI$8
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.fmd.XM();
-    this.fmd.finish();
+    AppMethodBeat.i(124879);
+    this.gDx.hideVKB();
+    this.gDx.finish();
+    AppMethodBeat.o(124879);
     return true;
   }
 }

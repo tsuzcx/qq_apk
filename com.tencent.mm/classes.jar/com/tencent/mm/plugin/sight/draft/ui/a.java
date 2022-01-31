@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.sight.draft.ui;
 
 public abstract interface a
 {
-  public abstract void bBu();
+  public abstract void cmU();
   
-  public abstract void bBv();
+  public abstract void cmV();
 }
 
 

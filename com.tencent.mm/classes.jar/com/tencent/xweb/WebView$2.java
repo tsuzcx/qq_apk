@@ -7,12 +7,12 @@ final class WebView$2
 {
   WebView$2(WebView paramWebView) {}
   
-  public final boolean agV(String paramString)
+  public final boolean axY(String paramString)
   {
     return false;
   }
   
-  public final void cSv() {}
+  public final void dYB() {}
 }
 
 

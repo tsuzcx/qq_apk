@@ -1,83 +1,79 @@
 package com.tencent.mm.plugin.sns.ui.a.b;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.plugin.sns.ui.c.a.c;
-import com.tencent.mm.plugin.sns.ui.c.b.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.plugin.sns.model.an.a;
+import com.tencent.mm.plugin.sns.storage.l;
+import com.tencent.mm.plugin.sns.storage.m;
+import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.storage.o;
+import com.tencent.mm.protocal.protobuf.abx;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class c
   extends a
 {
-  b.a plG;
-  private ValueAnimator plk;
-  private ValueAnimator pll;
-  AnimatorSet plm;
-  ViewGroup pln;
-  LinearLayout.LayoutParams plo;
-  LinearLayout.LayoutParams plp;
-  LinearLayout.LayoutParams plq;
-  FrameLayout.LayoutParams plr;
-  int[] pls = new int[2];
-  
-  public c(MMActivity paramMMActivity, a.c paramc)
+  public c()
   {
-    this.gfb = paramMMActivity;
-    this.plG = ((b.a)paramc);
-    this.plk = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.plk.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
-    {
-      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
-      {
-        float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        if (f != 0.0F)
-        {
-          paramAnonymousValueAnimator = (FrameLayout.LayoutParams)c.this.plG.pnL.getLayoutParams();
-          paramAnonymousValueAnimator.leftMargin = ((int)(c.this.plr.leftMargin * f));
-          paramAnonymousValueAnimator.rightMargin = ((int)(c.this.plr.rightMargin * f));
-          paramAnonymousValueAnimator.topMargin = ((int)(c.this.plr.topMargin * f));
-          paramAnonymousValueAnimator.bottomMargin = ((int)(c.this.plr.bottomMargin * f));
-          c.this.plG.pnL.setLayoutParams(paramAnonymousValueAnimator);
-          c.this.plG.pnM.setScaleX(f);
-          c.this.plG.pnM.setScaleY(f);
-          c.this.plG.pnM.setAlpha(f);
-        }
-      }
-    });
-    this.plk.setDuration(400L);
-    this.pll = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.pll.addUpdateListener(new c.2(this));
-    this.pll.setDuration(100L);
-    this.pll.setStartDelay(300L);
-    this.plo = ((LinearLayout.LayoutParams)this.plG.pnL.getLayoutParams());
-    this.plp = ((LinearLayout.LayoutParams)this.plG.pnM.getLayoutParams());
-    this.plq = ((LinearLayout.LayoutParams)this.plG.pnN.getLayoutParams());
-    this.plm = new AnimatorSet();
-    this.plm.playTogether(new Animator[] { this.plk, this.pll });
-    this.pln = ((FrameLayout)paramMMActivity.mController.uMz.getParent());
-    this.plm.addListener(new c.3(this));
+    super(new n());
+    AppMethodBeat.i(39954);
+    dQd();
+    AppMethodBeat.o(39954);
   }
   
-  public final void gA(long paramLong)
+  public final String w(long paramLong, String paramString)
   {
-    if (!this.plm.isStarted())
+    AppMethodBeat.i(39955);
+    ab.d("MicroMsg.SnsTimeLineVending", "updateLitmitSeq %s %s", new Object[] { Integer.valueOf(ag.coV().cpD()), paramString });
+    Object localObject = ag.cpf();
+    int i;
+    String str;
+    if (paramString.equals(""))
     {
-      this.plm.setStartDelay(paramLong);
-      this.plm.start();
+      i = ag.coV().cpD() / 2;
+      localObject = i.lr(((o)localObject).g(paramLong, i, false));
+      str = cwO();
+      if (!str.equals("")) {
+        break label130;
+      }
+      paramString = (String)localObject;
     }
+    for (;;)
+    {
+      localObject = ag.cpj().abz("@__weixintimtline").csy();
+      if (((abx)localObject).wSq != 0L) {
+        break label149;
+      }
+      AppMethodBeat.o(39955);
+      return paramString;
+      i = ag.coV().cpD();
+      break;
+      label130:
+      paramString = (String)localObject;
+      if (((String)localObject).compareTo(str) >= 0) {
+        paramString = str;
+      }
+    }
+    label149:
+    localObject = i.lr(((abx)localObject).wSq);
+    if (paramString.equals(""))
+    {
+      AppMethodBeat.o(39955);
+      return localObject;
+    }
+    if (((String)localObject).compareTo(paramString) > 0)
+    {
+      AppMethodBeat.o(39955);
+      return localObject;
+    }
+    AppMethodBeat.o(39955);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b.c
  * JD-Core Version:    0.7.0.1
  */

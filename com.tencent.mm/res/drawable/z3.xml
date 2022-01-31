@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/a5l" />
-    <item android:drawable="@drawable/a5k" />
-</selector>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/tj" />
+            <size android:height="60.0dip" android:width="60.0dip" />
+        </shape>
+    </item>
+    <item>
+        <rotate android:drawable="@drawable/bkn" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
+    </item>
+</layer-list>

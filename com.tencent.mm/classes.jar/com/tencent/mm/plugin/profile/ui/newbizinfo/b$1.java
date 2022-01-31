@@ -1,23 +1,22 @@
 package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.profile.ui.ContactInfoUI;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ki;
+import com.tencent.mm.sdk.b.c;
 
 final class b$1
-  implements MenuItem.OnMenuItemClickListener
+  extends c<ki>
 {
-  b$1(b paramb) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  b$1(b paramb)
   {
-    this.mZA.mZy.onBackPressed();
-    return true;
+    AppMethodBeat.i(153575);
+    this.__eventId = ki.class.getName().hashCode();
+    AppMethodBeat.o(153575);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.b.1
  * JD-Core Version:    0.7.0.1
  */

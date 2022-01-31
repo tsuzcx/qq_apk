@@ -1,19 +1,23 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fl;
+import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
+import com.tencent.mm.sdk.b.a;
 
 final class g$93
-  implements w.a
+  implements Runnable
 {
-  g$93(g paramg) {}
+  g$93(g paramg, WebViewJSSDKFileItem paramWebViewJSSDKFileItem) {}
   
-  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
+  public final void run()
   {
-    y.i("MicroMsg.MsgHandler", "doUxSearchOpLog rsp errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    return 0;
+    AppMethodBeat.i(9161);
+    fl localfl = new fl();
+    localfl.ctw.op = 2;
+    localfl.ctw.fileName = this.vrl.fileName;
+    a.ymk.l(localfl);
+    AppMethodBeat.o(9161);
   }
 }
 

@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.voip;
 
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class c
-  implements n
+  implements o
 {
-  public static m eUR;
-  public static l eUS;
-  
-  public final void a(l paraml)
-  {
-    eUS = paraml;
-  }
+  public static n gmO;
+  public static m gmP;
   
   public final void a(m paramm)
   {
-    eUR = paramm;
+    gmP = paramm;
+  }
+  
+  public final void a(n paramn)
+  {
+    gmO = paramn;
   }
 }
 

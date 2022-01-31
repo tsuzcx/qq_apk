@@ -1,5 +1,7 @@
 package com.tencent.soter.core.d;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$3
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class d$3
   
   public final void run()
   {
-    this.wPo.cPu();
+    AppMethodBeat.i(73071);
+    this.BmN.bfU();
     com.tencent.soter.core.c.d.i("Soter.SoterCoreTreble", "soter: initSoter binding", new Object[0]);
+    AppMethodBeat.o(73071);
   }
 }
 

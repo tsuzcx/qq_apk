@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
-import com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiGetStorageInfoTask;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.storage.GetStorageSizeTask;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class AppBrandPerformanceManager$a$1
   implements Runnable
 {
-  AppBrandPerformanceManager$a$1(AppBrandPerformanceManager.a parama, JsApiGetStorageInfoTask paramJsApiGetStorageInfoTask) {}
+  AppBrandPerformanceManager$a$1(AppBrandPerformanceManager.a parama, GetStorageSizeTask paramGetStorageSizeTask) {}
   
   public final void run()
   {
-    AppBrandPerformanceManager.m(this.gWk.mAppId, 401, bk.cm(this.gBZ.size));
-    this.gBZ.ahD();
+    AppMethodBeat.i(102214);
+    AppBrandPerformanceManager.a(this.iAQ.bEZ, 401, bo.hk(this.iAP.size));
+    this.iAP.aBk();
+    AppMethodBeat.o(102214);
   }
 }
 

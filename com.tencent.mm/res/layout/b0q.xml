@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="vertical" android:background="@color/sz" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/u9"
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dp" android:layout_marginBottom="@dimen/dp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="#ff868686" android:gravity="bottom|center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="52.0dip" android:layout_marginBottom="25.0dip" android:text="@string/ezt" android:shadowColor="@color/a23" android:shadowDx="1.2" android:shadowDy="1.2" android:shadowRadius="1.0" android:drawablePadding="12.0dip" />
-    <TextView android:textSize="@dimen/lj" android:gravity="center|left" android:id="@id/eti" android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="@dimen/ld" android:layout_marginBottom="25.0dip" android:text="@string/fld" />
-    <TextView android:id="@id/eiw" android:text="@string/f6s" style="@style/mx" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/f12" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" android:layout_marginEnd="@dimen/lb" style="@style/a02" />
+    <TextView android:textSize="@dimen/dq" android:textColor="@color/a6q" android:layout_gravity="center" android:id="@id/f13" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ey2" />
 </LinearLayout>

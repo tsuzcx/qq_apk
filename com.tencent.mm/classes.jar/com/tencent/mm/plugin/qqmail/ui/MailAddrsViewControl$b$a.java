@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.widget.Filter;
 import android.widget.Filter.FilterResults;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.o;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,55 +14,63 @@ final class MailAddrsViewControl$b$a
   
   protected final Filter.FilterResults performFiltering(CharSequence arg1)
   {
-    Filter.FilterResults localFilterResults1 = new Filter.FilterResults();
-    if (MailAddrsViewControl.b.a(this.niw) == null) {}
-    synchronized (MailAddrsViewControl.b.b(this.niw))
+    AppMethodBeat.i(68349);
+    Filter.FilterResults localFilterResults = new Filter.FilterResults();
+    if (MailAddrsViewControl.b.a(this.pNJ) == null) {}
+    synchronized (MailAddrsViewControl.b.b(this.pNJ))
     {
-      MailAddrsViewControl.b.a(this.niw, new ArrayList(MailAddrsViewControl.b.c(this.niw)));
+      MailAddrsViewControl.b.a(this.pNJ, new ArrayList(MailAddrsViewControl.b.c(this.pNJ)));
       if (??? != null) {
         if (???.length() != 0) {
-          break label130;
+          break label150;
         }
       }
     }
-    synchronized (MailAddrsViewControl.b.b(this.niw))
+    for (;;)
     {
-      ??? = new ArrayList(MailAddrsViewControl.b.a(this.niw));
-      localFilterResults1.values = ???;
-      localFilterResults1.count = ((ArrayList)???).size();
-      return localFilterResults1;
-      ??? = finally;
-      throw ???;
-    }
-    label130:
-    ??? = ???.toString().toLowerCase();
-    ??? = MailAddrsViewControl.b.a(this.niw);
-    int j = ((ArrayList)???).size();
-    ArrayList localArrayList = new ArrayList(j);
-    int i = 0;
-    while (i < j)
-    {
-      o localo = (o)((ArrayList)???).get(i);
-      if ((localo.name.toLowerCase().contains(???)) || (localo.lCF.toLowerCase().contains(???))) {
-        localArrayList.add(localo);
+      synchronized (MailAddrsViewControl.b.b(this.pNJ))
+      {
+        ??? = new ArrayList(MailAddrsViewControl.b.a(this.pNJ));
+        localFilterResults.values = ???;
+        localFilterResults.count = ((ArrayList)???).size();
+        AppMethodBeat.o(68349);
+        return localFilterResults;
+        ??? = finally;
+        AppMethodBeat.o(68349);
+        throw ???;
       }
-      i += 1;
+      label150:
+      ??? = ???.toString().toLowerCase();
+      ??? = MailAddrsViewControl.b.a(this.pNJ);
+      int j = ((ArrayList)???).size();
+      ArrayList localArrayList = new ArrayList(j);
+      int i = 0;
+      while (i < j)
+      {
+        o localo = (o)((ArrayList)???).get(i);
+        if ((localo.name.toLowerCase().contains(???)) || (localo.nZR.toLowerCase().contains(???))) {
+          localArrayList.add(localo);
+        }
+        i += 1;
+      }
+      localObject1.values = localArrayList;
+      localObject1.count = localArrayList.size();
     }
-    localFilterResults2.values = localArrayList;
-    localFilterResults2.count = localArrayList.size();
-    return localFilterResults2;
   }
   
   protected final void publishResults(CharSequence paramCharSequence, Filter.FilterResults paramFilterResults)
   {
-    MailAddrsViewControl.b.a(this.niw, (List)paramFilterResults.values);
+    AppMethodBeat.i(68350);
+    MailAddrsViewControl.b.a(this.pNJ, (List)paramFilterResults.values);
     if (paramFilterResults.count > 0)
     {
-      this.niw.notifyDataSetChanged();
+      this.pNJ.notifyDataSetChanged();
+      AppMethodBeat.o(68350);
       return;
     }
-    MailAddrsViewControl.b.a(this.niw, new ArrayList(MailAddrsViewControl.b.a(this.niw)));
-    this.niw.notifyDataSetInvalidated();
+    MailAddrsViewControl.b.a(this.pNJ, new ArrayList(MailAddrsViewControl.b.a(this.pNJ)));
+    this.pNJ.notifyDataSetInvalidated();
+    AppMethodBeat.o(68350);
   }
 }
 

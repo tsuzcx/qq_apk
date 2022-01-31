@@ -1,54 +1,71 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.model.ah;
+import a.f.b.j;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ai;
 import com.tencent.mm.platformtools.t.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
 public final class e
-  extends ah
+  extends ai
 {
   @Deprecated
-  public static final e.a fIb = new e.a((byte)0);
+  public static final e.a haT;
+  
+  static
+  {
+    AppMethodBeat.i(134508);
+    haT = new e.a((byte)0);
+    AppMethodBeat.o(134508);
+  }
   
   public final String getTag()
   {
     return "MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer";
   }
   
-  public final boolean hJ(int paramInt)
+  public final boolean kv(int paramInt)
   {
-    boolean bool1 = false;
-    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.DP();
-    a.d.b.g.j(locale, "MMKernel.storage()");
-    boolean bool2 = locale.Dz().getBoolean(ac.a.uti, false);
-    y.d("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", "needTransfer doneIssue " + bool2);
-    if (!bool2) {
-      bool1 = true;
+    AppMethodBeat.i(134507);
+    com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.RL();
+    j.p(locale, "MMKernel.storage()");
+    boolean bool = locale.Ru().getBoolean(ac.a.yDi, false);
+    ab.d("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", "needTransfer doneIssue ".concat(String.valueOf(bool)));
+    if (!bool)
+    {
+      AppMethodBeat.o(134507);
+      return true;
     }
-    return bool1;
+    AppMethodBeat.o(134507);
+    return false;
   }
   
   public final void transfer(int paramInt)
   {
+    AppMethodBeat.i(134506);
     try
     {
-      com.tencent.mm.plugin.appbrand.app.e.aaP().aaQ().gk("AppBrandStarApp", "update AppBrandStarApp set orderSequence = updateTime");
-      com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.DP();
-      a.d.b.g.j(locale, "MMKernel.storage()");
-      locale.Dz().c(ac.a.uti, Boolean.valueOf(true));
+      com.tencent.mm.plugin.appbrand.app.g.auC().auD().execSQL("AppBrandStarApp", "update AppBrandStarApp set orderSequence = updateTime");
+      com.tencent.mm.kernel.e locale = com.tencent.mm.kernel.g.RL();
+      j.p(locale, "MMKernel.storage()");
+      locale.Ru().set(ac.a.yDi, Boolean.TRUE);
+      AppMethodBeat.o(134506);
       return;
     }
     catch (Throwable localThrowable)
     {
-      y.printErrStackTrace("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", localThrowable, "transfer failed", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", localThrowable, "transfer failed", new Object[0]);
+      AppMethodBeat.o(134506);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.e
  * JD-Core Version:    0.7.0.1
  */

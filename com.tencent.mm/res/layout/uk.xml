@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_gravity="center_horizontal" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/mq" android:paddingRight="@dimen/li" android:paddingBottom="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <ImageView android:id="@id/ban" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/a_2" android:contentDescription="@string/o0" />
-            <TextView android:textSize="@dimen/lj" android:textColor="@color/a23" android:ellipsize="end" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/b_v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/bak" android:singleLine="true" android:shadowColor="#99000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="10.0" />
-        </LinearLayout>
+    <com.tencent.mm.ui.base.HeaderGridView android:id="@id/bgf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:numColumns="5" android:layout_above="@id/bgg" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/bgg" android:background="@drawable/emoji_bottombar_bg" android:padding="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <Button android:textColor="@color/a7k" android:gravity="center" android:id="@id/bgh" android:background="@drawable/w6" android:minWidth="@dimen/lx" android:text="@string/bew" android:layout_alignParentLeft="true" style="@style/no" />
+        <Button android:textColor="@color/a8q" android:gravity="center" android:id="@id/bgi" android:background="@drawable/w6" android:minWidth="@dimen/lx" android:text="@string/pn" android:layout_alignParentRight="true" style="@style/no" />
     </RelativeLayout>
-</merge>
+</RelativeLayout>

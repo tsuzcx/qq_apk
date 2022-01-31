@@ -1,19 +1,17 @@
 package com.tencent.smtt.sdk;
 
-import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class z
-  implements Runnable
+  implements ValueCallback<String[]>
 {
-  z(SystemWebChromeClient paramSystemWebChromeClient, WebView.WebViewTransport paramWebViewTransport, Message paramMessage) {}
+  z(SystemWebChromeClient paramSystemWebChromeClient, android.webkit.ValueCallback paramValueCallback) {}
   
-  public void run()
+  public void a(String[] paramArrayOfString)
   {
-    WebView localWebView = this.a.getWebView();
-    if (localWebView != null) {
-      ((android.webkit.WebView.WebViewTransport)this.b.obj).setWebView(localWebView.b());
-    }
-    this.b.sendToTarget();
+    AppMethodBeat.i(139126);
+    this.a.onReceiveValue(paramArrayOfString);
+    AppMethodBeat.o(139126);
   }
 }
 

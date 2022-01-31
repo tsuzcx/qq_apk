@@ -1,164 +1,53 @@
 package com.tencent.mm.plugin.appbrand.v;
 
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.luggage.j.h;
-import com.tencent.mm.plugin.appbrand.u.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.d.a.t.a;
+import com.tencent.mm.d.a.u;
+import com.tencent.mm.plugin.appbrand.report.quality.a;
 
-public final class c
+public class c
+  extends b
 {
-  private static final Set<Object> geC = new HashSet();
-  private static final String hle = ;
-  private static final char[] hlf = { 60, 62, 34, 39, 38, 32, 39 };
-  private static final String[] hlg = { "&lt;", "&gt;", "&quot;", "&apos;", "&amp;", "&nbsp;", "&#39;" };
-  
-  @Deprecated
-  public static ai DS()
+  static
   {
-    return n.DS();
-  }
-  
-  public static <T> T aU(T paramT)
-  {
-    if (paramT != null) {
-      geC.add(paramT);
-    }
-    return paramT;
-  }
-  
-  public static void aa(Object paramObject)
-  {
-    if (paramObject == null) {
+    AppMethodBeat.i(143671);
+    if (!c.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      $assertionsDisabled = bool;
+      AppMethodBeat.o(143671);
       return;
     }
-    geC.remove(paramObject);
   }
   
-  @Deprecated
-  public static void aqp() {}
-  
-  public static void aqu()
+  public c(u paramu)
   {
-    Intent localIntent = new Intent();
-    localIntent.setComponent(new ComponentName(hle, "com.tencent.mm.booter.MMReceivers$ToolsProcessReceiver"));
-    localIntent.putExtra("tools_process_action_code_key", "com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS");
-    ae.getContext().sendBroadcast(localIntent);
-    localIntent = new Intent();
-    localIntent.setComponent(new ComponentName(hle, "com.tencent.mm.booter.MMReceivers$ToolsMpProcessReceiver"));
-    localIntent.putExtra("tools_process_action_code_key", "com.tencent.mm.intent.ACTION_START_TOOLS_PROCESS");
-    ae.getContext().sendBroadcast(localIntent);
+    super(paramu);
   }
   
-  public static long aqv()
+  protected final void a(t.a parama, long paramLong)
   {
-    return bk.UX();
-  }
-  
-  public static String b(ComponentName paramComponentName)
-  {
-    if (paramComponentName == null) {}
-    for (;;)
+    AppMethodBeat.i(143670);
+    if (!parama.filePath.endsWith("WAWorker.js"))
     {
-      return "[UNKNOWN]";
-      PackageManager localPackageManager = ae.getContext().getPackageManager();
-      if (localPackageManager != null) {
-        try
-        {
-          paramComponentName = localPackageManager.getActivityInfo(paramComponentName, 128);
-          if (paramComponentName != null)
-          {
-            paramComponentName = paramComponentName.taskAffinity;
-            return paramComponentName;
-          }
-        }
-        catch (Exception paramComponentName)
-        {
-          y.e("MicroMsg.AppBrandUtil", "getActivityTaskAffinity e = %s", new Object[] { paramComponentName });
-        }
-      }
+      AppMethodBeat.o(143670);
+      return;
     }
-    return "[UNKNOWN]";
-  }
-  
-  @Deprecated
-  public static void c(Map paramMap)
-  {
-    h.c(paramMap);
-  }
-  
-  public static int cz(Context paramContext)
-  {
-    return Math.round(paramContext.getResources().getDisplayMetrics().density * 1.0F);
-  }
-  
-  public static String getMMString(int paramInt, Object... paramVarArgs)
-  {
-    return ae.getResources().getString(paramInt, paramVarArgs);
-  }
-  
-  @Deprecated
-  public static void runOnUiThread(Runnable paramRunnable)
-  {
-    n.runOnUiThread(paramRunnable);
-  }
-  
-  public static String wG(String paramString)
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int m = paramString.length();
-    int i = 0;
-    while (i < m)
+    if ((!$assertionsDisabled) && (!(parama instanceof b.a)))
     {
-      int j = 0;
-      while (j < hlf.length)
-      {
-        String str = hlg[j];
-        int k = 0;
-        while ((k < str.length()) && (i + k < m) && (str.charAt(k) == paramString.charAt(i + k))) {
-          k += 1;
-        }
-        if (k == str.length()) {
-          break;
-        }
-        j += 1;
-      }
-      if (j != hlf.length)
-      {
-        localStringBuffer.append(hlf[j]);
-        i = hlg[j].length() + i;
-      }
-      else
-      {
-        localStringBuffer.append(paramString.charAt(i));
-        i += 1;
-      }
+      parama = new AssertionError();
+      AppMethodBeat.o(143670);
+      throw parama;
     }
-    return localStringBuffer.toString();
-  }
-  
-  public static String wH(String paramString)
-  {
-    if (paramString == null) {
-      return null;
-    }
-    return paramString.replace(' ', '\n').replace(' ', '\n');
+    b.a locala = (b.a)parama;
+    a.aLt();
+    com.tencent.mm.plugin.appbrand.report.quality.b.a(locala.jxo, locala.appId, paramLong, "WAWorker.js", parama.script.length());
+    AppMethodBeat.o(143670);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.v.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,57 @@
 package com.tencent.mm.pluginsdk.g.a.a;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.pm;
-import com.tencent.mm.protocal.c.pn;
-import com.tencent.mm.protocal.c.vo;
-import com.tencent.mm.protocal.c.vp;
-import com.tencent.mm.protocal.p.a;
-import com.tencent.mm.protocal.p.b;
+import com.tencent.mm.protocal.f;
+import com.tencent.mm.protocal.protobuf.sq;
+import com.tencent.mm.protocal.protobuf.sr;
+import com.tencent.mm.protocal.protobuf.zs;
+import com.tencent.mm.protocal.protobuf.zt;
+import com.tencent.mm.protocal.q.a;
+import com.tencent.mm.protocal.q.b;
 import java.util.LinkedList;
 
 public final class o
   extends n
 {
-  public static void awa()
+  public static void aVE()
   {
+    AppMethodBeat.i(79560);
     o localo = new o();
-    g.DO().dJT.a(localo, 0);
+    g.RK().eHt.a(localo, 0);
+    AppMethodBeat.o(79560);
   }
   
-  protected final q clE()
+  protected final q dmr()
   {
+    AppMethodBeat.i(79561);
     o.a locala = new o.a();
-    p.a locala1 = (p.a)locala.rXh;
-    locala1.fn(0);
-    locala1.sqa.sSR.sSP.sNo.addAll(this.rXd);
+    q.a locala1 = (q.a)locala.getReqObjImp();
+    locala1.setUin(0);
+    locala1.wiE.wQN.wQL.wLe.addAll(this.vNV);
+    AppMethodBeat.o(79561);
     return locala;
   }
   
   protected final String getTag()
   {
-    return "MicroMsg.ResDownloader.CheckResUpdate.NetSceneEncryptCheckResUpdate";
+    return "MicroMsg.NetSceneEncryptCheckResUpdate";
   }
   
   public final int getType()
   {
+    if (f.whQ) {
+      return 784;
+    }
     return 722;
   }
   
-  protected final pn i(q paramq)
+  protected final sr h(q paramq)
   {
-    return ((o.a)paramq).rXi.sqd;
+    return ((o.a)paramq).vOa.wiH;
   }
 }
 

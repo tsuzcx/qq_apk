@@ -10,172 +10,176 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.g;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.p;
 import com.tencent.mm.vfs.e;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public final class d
-  extends r<bi>
+  extends p<bi>
   implements View.OnClickListener
 {
-  private static Map<String, Integer> kbL;
-  private static Map<String, Integer> vuv;
-  private LayoutInflater Lu;
-  String drJ;
-  protected com.tencent.mm.as.a.a.c drd = null;
-  boolean kax;
-  private boolean khG;
+  private static Map<String, Integer> mwh;
+  private static Map<String, Integer> zKw;
+  protected com.tencent.mm.at.a.a.c eiK;
+  String ejr;
+  private boolean kFs;
   Context mContext;
-  public boolean nHq = false;
-  long voj;
-  private final ImageGalleryGridUI vut;
-  boolean vuu = false;
+  private LayoutInflater mInflater;
+  boolean muT;
+  public boolean quM;
+  long zDF;
+  private final ImageGalleryGridUI zKu;
+  boolean zKv;
   
   static
   {
+    AppMethodBeat.i(32033);
     HashMap localHashMap = new HashMap();
-    kbL = localHashMap;
-    localHashMap.put("avi", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("m4v", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("vob", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("mpeg", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("mpe", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("asx", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("asf", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("f4v", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("flv", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("mkv", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("wmv", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("wm", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("3gp", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("mp4", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("rmvb", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("rm", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("ra", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("ram", Integer.valueOf(R.k.app_attach_file_icon_video_in_gird));
-    kbL.put("mp3pro", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("vqf", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("cd", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("md", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("mod", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("vorbis", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("au", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("amr", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("silk", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("wma", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("mmf", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("mid", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("midi", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("mp3", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("aac", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("ape", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("aiff", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("aif", Integer.valueOf(R.k.app_attach_file_icon_music_in_gird));
-    kbL.put("doc", Integer.valueOf(R.k.app_attach_file_icon_word_in_gird));
-    kbL.put("docx", Integer.valueOf(R.k.app_attach_file_icon_word_in_gird));
-    kbL.put("ppt", Integer.valueOf(R.k.app_attach_file_icon_ppt_in_gird));
-    kbL.put("pptx", Integer.valueOf(R.k.app_attach_file_icon_ppt_in_gird));
-    kbL.put("xls", Integer.valueOf(R.k.app_attach_file_icon_excel_in_gird));
-    kbL.put("xlsx", Integer.valueOf(R.k.app_attach_file_icon_excel_in_gird));
-    kbL.put("pdf", Integer.valueOf(R.k.app_attach_file_icon_pdf_in_gird));
-    kbL.put("unknown", Integer.valueOf(R.k.app_attach_file_icon_unknow_in_gird));
+    mwh = localHashMap;
+    localHashMap.put("avi", Integer.valueOf(2131230827));
+    mwh.put("m4v", Integer.valueOf(2131230827));
+    mwh.put("vob", Integer.valueOf(2131230827));
+    mwh.put("mpeg", Integer.valueOf(2131230827));
+    mwh.put("mpe", Integer.valueOf(2131230827));
+    mwh.put("asx", Integer.valueOf(2131230827));
+    mwh.put("asf", Integer.valueOf(2131230827));
+    mwh.put("f4v", Integer.valueOf(2131230827));
+    mwh.put("flv", Integer.valueOf(2131230827));
+    mwh.put("mkv", Integer.valueOf(2131230827));
+    mwh.put("wmv", Integer.valueOf(2131230827));
+    mwh.put("wm", Integer.valueOf(2131230827));
+    mwh.put("3gp", Integer.valueOf(2131230827));
+    mwh.put("mp4", Integer.valueOf(2131230827));
+    mwh.put("rmvb", Integer.valueOf(2131230827));
+    mwh.put("rm", Integer.valueOf(2131230827));
+    mwh.put("ra", Integer.valueOf(2131230827));
+    mwh.put("ram", Integer.valueOf(2131230827));
+    mwh.put("mp3pro", Integer.valueOf(2131230810));
+    mwh.put("vqf", Integer.valueOf(2131230810));
+    mwh.put("cd", Integer.valueOf(2131230810));
+    mwh.put("md", Integer.valueOf(2131230810));
+    mwh.put("mod", Integer.valueOf(2131230810));
+    mwh.put("vorbis", Integer.valueOf(2131230810));
+    mwh.put("au", Integer.valueOf(2131230810));
+    mwh.put("amr", Integer.valueOf(2131230810));
+    mwh.put("silk", Integer.valueOf(2131230810));
+    mwh.put("wma", Integer.valueOf(2131230810));
+    mwh.put("mmf", Integer.valueOf(2131230810));
+    mwh.put("mid", Integer.valueOf(2131230810));
+    mwh.put("midi", Integer.valueOf(2131230810));
+    mwh.put("mp3", Integer.valueOf(2131230810));
+    mwh.put("aac", Integer.valueOf(2131230810));
+    mwh.put("ape", Integer.valueOf(2131230810));
+    mwh.put("aiff", Integer.valueOf(2131230810));
+    mwh.put("aif", Integer.valueOf(2131230810));
+    mwh.put("doc", Integer.valueOf(2131230831));
+    mwh.put("docx", Integer.valueOf(2131230831));
+    mwh.put("ppt", Integer.valueOf(2131230817));
+    mwh.put("pptx", Integer.valueOf(2131230817));
+    mwh.put("xls", Integer.valueOf(2131230803));
+    mwh.put("xlsx", Integer.valueOf(2131230803));
+    mwh.put("pdf", Integer.valueOf(2131230814));
+    mwh.put("unknown", Integer.valueOf(2131230823));
     localHashMap = new HashMap();
-    vuv = localHashMap;
-    localHashMap.put("doc", Integer.valueOf(R.e.app_attach_file_bg_doc_in_gird));
-    vuv.put("docx", Integer.valueOf(R.e.app_attach_file_bg_doc_in_gird));
-    vuv.put("ppt", Integer.valueOf(R.e.app_attach_file_bg_ppt_in_gird));
-    vuv.put("pptx", Integer.valueOf(R.e.app_attach_file_bg_ppt_in_gird));
-    vuv.put("xls", Integer.valueOf(R.e.app_attach_file_bg_xls_in_gird));
-    vuv.put("xlsx", Integer.valueOf(R.e.app_attach_file_bg_xls_in_gird));
-    vuv.put("pdf", Integer.valueOf(R.e.app_attach_file_bg_pdf_in_gird));
-    vuv.put("unknown", Integer.valueOf(R.e.app_attach_file_bg_unknow_in_gird));
-    vuv.put("mp3pro", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("vqf", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("cd", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("md", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("mod", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("vorbis", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("au", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("amr", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("silk", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("wma", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("mmf", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("mid", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("midi", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("mp3", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("aac", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("ape", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("aiff", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
-    vuv.put("aif", Integer.valueOf(R.e.app_attach_file_bg_music_in_gird));
+    zKw = localHashMap;
+    localHashMap.put("doc", Integer.valueOf(2131689671));
+    zKw.put("docx", Integer.valueOf(2131689671));
+    zKw.put("ppt", Integer.valueOf(2131689674));
+    zKw.put("pptx", Integer.valueOf(2131689674));
+    zKw.put("xls", Integer.valueOf(2131689677));
+    zKw.put("xlsx", Integer.valueOf(2131689677));
+    zKw.put("pdf", Integer.valueOf(2131689673));
+    zKw.put("unknown", Integer.valueOf(2131689675));
+    zKw.put("mp3pro", Integer.valueOf(2131689672));
+    zKw.put("vqf", Integer.valueOf(2131689672));
+    zKw.put("cd", Integer.valueOf(2131689672));
+    zKw.put("md", Integer.valueOf(2131689672));
+    zKw.put("mod", Integer.valueOf(2131689672));
+    zKw.put("vorbis", Integer.valueOf(2131689672));
+    zKw.put("au", Integer.valueOf(2131689672));
+    zKw.put("amr", Integer.valueOf(2131689672));
+    zKw.put("silk", Integer.valueOf(2131689672));
+    zKw.put("wma", Integer.valueOf(2131689672));
+    zKw.put("mmf", Integer.valueOf(2131689672));
+    zKw.put("mid", Integer.valueOf(2131689672));
+    zKw.put("midi", Integer.valueOf(2131689672));
+    zKw.put("mp3", Integer.valueOf(2131689672));
+    zKw.put("aac", Integer.valueOf(2131689672));
+    zKw.put("ape", Integer.valueOf(2131689672));
+    zKw.put("aiff", Integer.valueOf(2131689672));
+    zKw.put("aif", Integer.valueOf(2131689672));
+    AppMethodBeat.o(32033);
   }
   
   public d(Context paramContext, bi parambi, String paramString)
   {
     super(paramContext, parambi);
-    this.vut = ((ImageGalleryGridUI)paramContext);
-    this.drJ = paramString;
-    this.kax = f.eW(this.drJ);
-    if (this.kax) {
-      this.voj = parambi.field_bizChatId;
+    AppMethodBeat.i(32022);
+    this.eiK = null;
+    this.zKv = false;
+    this.quM = false;
+    this.zKu = ((ImageGalleryGridUI)paramContext);
+    this.ejr = paramString;
+    this.muT = f.lg(this.ejr);
+    if (this.muT) {
+      this.zDF = parambi.field_bizChatId;
     }
-    au.Hx();
-    this.khG = com.tencent.mm.model.c.isSDCardAvailable();
-    this.Lu = LayoutInflater.from(paramContext);
+    aw.aaz();
+    this.kFs = com.tencent.mm.model.c.isSDCardAvailable();
+    this.mInflater = LayoutInflater.from(paramContext);
     parambi = new c.a();
-    parambi.erk = 1;
-    parambi.erF = true;
-    parambi.erm = (com.tencent.mm.cb.a.fj(paramContext) / 3);
-    parambi.erl = (com.tencent.mm.cb.a.fj(paramContext) / 3);
-    parambi.ery = R.e.pic_thum_bg_color;
-    this.drd = parambi.OV();
+    parambi.fHt = 1;
+    parambi.eOf = true;
+    parambi.eNT = (com.tencent.mm.cb.a.gw(paramContext) / 3);
+    parambi.eNS = (com.tencent.mm.cb.a.gw(paramContext) / 3);
+    parambi.eOa = 2131690341;
+    this.eiK = parambi.ahY();
+    AppMethodBeat.o(32022);
   }
   
-  private static String bp(bi parambi)
+  private static String by(bi parambi)
   {
+    AppMethodBeat.i(32028);
     Object localObject1;
-    if ((parambi.aRQ()) || (parambi.aRR()))
+    if ((parambi.byj()) || (parambi.byk()))
     {
-      com.tencent.mm.modelvideo.o.Sr();
-      localObject1 = t.nT(parambi.field_imgPath);
+      com.tencent.mm.modelvideo.o.alE();
+      localObject1 = t.vg(parambi.field_imgPath);
     }
     for (;;)
     {
-      y.i("MicroMsg.ImageGalleryGridAdapter", "MsgInfoForMonetUri imgPath : %s", new Object[] { localObject1 });
+      ab.i("MicroMsg.ImageGalleryGridAdapter", "MsgInfoForMonetUri imgPath : %s", new Object[] { localObject1 });
       Object localObject2 = localObject1;
-      if (parambi.cvr())
+      if (parambi.dxV())
       {
-        Object localObject3 = g.a.gp(parambi.field_content);
+        Object localObject3 = j.b.mY(parambi.field_content);
         localObject2 = null;
         parambi = (bi)localObject2;
         if (localObject3 != null)
         {
           parambi = (bi)localObject2;
-          if (((g.a)localObject3).bFE != null)
+          if (((j.b)localObject3).cmN != null)
           {
             parambi = (bi)localObject2;
-            if (((g.a)localObject3).bFE.length() > 0)
+            if (((j.b)localObject3).cmN.length() > 0)
             {
-              localObject3 = ap.avh().VQ(((g.a)localObject3).bFE);
+              localObject3 = al.aUJ().alo(((j.b)localObject3).cmN);
               parambi = (bi)localObject2;
               if (localObject3 != null) {
                 parambi = ((b)localObject3).field_fileFullPath;
@@ -188,16 +192,17 @@ public final class d
           localObject2 = parambi;
         }
       }
+      AppMethodBeat.o(32028);
       return localObject2;
-      localObject2 = com.tencent.mm.as.o.OJ().b(parambi.field_imgPath, false, false);
+      localObject2 = com.tencent.mm.at.o.ahC().c(parambi.field_imgPath, false, false);
       localObject1 = localObject2;
-      if (!ah.bl((String)localObject2))
+      if (!ah.isNullOrNil((String)localObject2))
       {
         localObject1 = localObject2;
         if (!((String)localObject2).endsWith("hd"))
         {
           localObject1 = localObject2;
-          if (e.bK((String)localObject2 + "hd")) {
+          if (e.cN((String)localObject2 + "hd")) {
             localObject1 = (String)localObject2 + "hd";
           }
         }
@@ -205,48 +210,102 @@ public final class d
     }
   }
   
-  private static int f(g.a parama)
+  private static int e(j.b paramb)
   {
-    if (parama == null)
+    AppMethodBeat.i(32026);
+    if (paramb == null)
     {
-      y.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + R.k.app_attach_file_icon_unknow);
-      return R.k.app_attach_file_icon_unknow_in_gird;
+      ab.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:2131230822");
+      AppMethodBeat.o(32026);
+      return 2131230823;
     }
-    if ((parama.type == 5) || (parama.type == 7) || (parama.type == 15)) {
-      return R.k.app_attach_file_icon_url_in_gird;
-    }
-    if (parama.type == 3) {
-      return R.k.app_attach_file_icon_music_in_gird;
-    }
-    if ((parama.type == 6) && (kbL.containsKey(ah.pm(parama.dQw))))
+    if ((paramb.type == 5) || (paramb.type == 7) || (paramb.type == 15))
     {
-      y.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + kbL.get(ah.pm(parama.dQw)));
-      return ((Integer)kbL.get(ah.pm(parama.dQw))).intValue();
+      AppMethodBeat.o(32026);
+      return 2131230825;
     }
-    return R.k.app_attach_file_icon_unknow_in_gird;
+    if (paramb.type == 3)
+    {
+      AppMethodBeat.o(32026);
+      return 2131230810;
+    }
+    if ((paramb.type == 6) && (mwh.containsKey(ah.nullAsNil(paramb.fgx))))
+    {
+      ab.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + mwh.get(ah.nullAsNil(paramb.fgx)));
+      int i = ((Integer)mwh.get(ah.nullAsNil(paramb.fgx))).intValue();
+      AppMethodBeat.o(32026);
+      return i;
+    }
+    AppMethodBeat.o(32026);
+    return 2131230823;
   }
   
-  private static int g(g.a parama)
+  private static int f(j.b paramb)
   {
-    if (parama == null)
+    AppMethodBeat.i(32027);
+    if (paramb == null)
     {
-      y.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + R.e.app_attach_file_bg_unknow_in_gird);
-      return R.e.app_attach_file_bg_unknow_in_gird;
+      ab.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:2131689675");
+      AppMethodBeat.o(32027);
+      return 2131689675;
     }
-    if ((parama.type == 5) || (parama.type == 7) || (parama.type == 15)) {
-      return R.e.app_attach_file_bg_url_in_gird;
-    }
-    if ((parama.type == 6) && (vuv.containsKey(ah.pm(parama.dQw))))
+    if ((paramb.type == 5) || (paramb.type == 7) || (paramb.type == 15))
     {
-      y.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + vuv.get(ah.pm(parama.dQw)));
-      return ((Integer)vuv.get(ah.pm(parama.dQw))).intValue();
+      AppMethodBeat.o(32027);
+      return 2131689676;
     }
-    return R.e.app_attach_file_bg_unknow_in_gird;
+    if ((paramb.type == 6) && (zKw.containsKey(ah.nullAsNil(paramb.fgx))))
+    {
+      ab.i("MicroMsg.ImageGalleryGridAdapter", "getIconId:" + zKw.get(ah.nullAsNil(paramb.fgx)));
+      int i = ((Integer)zKw.get(ah.nullAsNil(paramb.fgx))).intValue();
+      AppMethodBeat.o(32027);
+      return i;
+    }
+    AppMethodBeat.o(32027);
+    return 2131689675;
+  }
+  
+  public final void Ku()
+  {
+    AppMethodBeat.i(32023);
+    if (this.muT)
+    {
+      aw.aaz();
+      setCursor(com.tencent.mm.model.c.YD().bc(this.ejr, this.zDF));
+      AppMethodBeat.o(32023);
+      return;
+    }
+    aw.aaz();
+    setCursor(com.tencent.mm.model.c.YC().Tq(this.ejr));
+    AppMethodBeat.o(32023);
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(32024);
+    if (this.muT)
+    {
+      aw.aaz();
+      setCursor(com.tencent.mm.model.c.YD().bc(this.ejr, this.zDF));
+      AppMethodBeat.o(32024);
+      return;
+    }
+    aw.aaz();
+    setCursor(com.tencent.mm.model.c.YC().Tq(this.ejr));
+    AppMethodBeat.o(32024);
   }
   
   public final boolean areAllItemsEnabled()
   {
     return false;
+  }
+  
+  public final void byh()
+  {
+    AppMethodBeat.i(32029);
+    this.quM = false;
+    notifyDataSetChanged();
+    AppMethodBeat.o(32029);
   }
   
   public final long getItemId(int paramInt)
@@ -256,217 +315,204 @@ public final class d
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(32025);
     if (paramView == null)
     {
-      paramView = this.Lu.inflate(R.i.image_gallary_grid_item, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2130969882, paramViewGroup, false);
       paramViewGroup = new d.a();
-      paramViewGroup.khQ = ((ImageView)paramView.findViewById(R.h.grid_header_item));
-      paramViewGroup.khR = paramView.findViewById(R.h.video_tips_root);
-      paramViewGroup.vuz = ((TextView)paramView.findViewById(R.h.file_name_tv));
-      paramViewGroup.vuz.setVisibility(8);
-      paramViewGroup.vuy = ((ImageView)paramView.findViewById(R.h.file_icon));
-      paramViewGroup.khS = ((TextView)paramView.findViewById(R.h.video_time_tv));
-      paramViewGroup.khR.setVisibility(8);
-      paramViewGroup.khU = paramView.findViewById(R.h.sight_tips_root);
-      paramViewGroup.khU.setVisibility(8);
-      paramViewGroup.vuA = paramView.findViewById(R.h.file_tips_root);
-      paramViewGroup.vuA.setVisibility(8);
-      paramViewGroup.khT = ((ImageView)paramView.findViewById(R.h.grid_selected_item_mask));
-      paramViewGroup.khV = ((CheckBox)paramView.findViewById(R.h.media_cbx));
-      paramViewGroup.khW = paramView.findViewById(R.h.media_cbx_clickarea);
+      paramViewGroup.mCy = ((ImageView)paramView.findViewById(2131824016));
+      paramViewGroup.mCz = paramView.findViewById(2131824020);
+      paramViewGroup.zKA = ((TextView)paramView.findViewById(2131824017));
+      paramViewGroup.zKA.setVisibility(8);
+      paramViewGroup.zKz = ((ImageView)paramView.findViewById(2131824019));
+      paramViewGroup.kFj = ((TextView)paramView.findViewById(2131822813));
+      paramViewGroup.mCz.setVisibility(8);
+      paramViewGroup.mCB = paramView.findViewById(2131824022);
+      paramViewGroup.mCB.setVisibility(8);
+      paramViewGroup.zKB = paramView.findViewById(2131824018);
+      paramViewGroup.zKB.setVisibility(8);
+      paramViewGroup.mCA = ((ImageView)paramView.findViewById(2131824024));
+      paramViewGroup.mCC = ((CheckBox)paramView.findViewById(2131824025));
+      paramViewGroup.mCD = paramView.findViewById(2131824026);
       paramView.setTag(paramViewGroup);
     }
     bi localbi;
     for (;;)
     {
-      paramViewGroup.khU.setVisibility(8);
-      paramViewGroup.khR.setVisibility(8);
-      paramViewGroup.vuA.setVisibility(8);
-      paramViewGroup.vuz.setVisibility(8);
+      paramViewGroup.mCB.setVisibility(8);
+      paramViewGroup.mCz.setVisibility(8);
+      paramViewGroup.zKB.setVisibility(8);
+      paramViewGroup.zKA.setVisibility(8);
       localbi = (bi)getItem(paramInt);
       if (localbi != null) {
         break;
       }
+      AppMethodBeat.o(32025);
       return paramView;
       paramViewGroup = (d.a)paramView.getTag();
     }
     Object localObject2;
     Object localObject1;
     int i;
-    if (this.khG)
+    if (this.kFs)
     {
-      if (!(this.vut instanceof ImageGalleryGridUI)) {
-        throw new IllegalArgumentException("the context should be ImageGalleryGridUI");
+      if (!(this.zKu instanceof ImageGalleryGridUI))
+      {
+        paramView = new IllegalArgumentException("the context should be ImageGalleryGridUI");
+        AppMethodBeat.o(32025);
+        throw paramView;
       }
       localObject2 = localbi.field_content;
       localObject1 = null;
       if (localObject2 != null) {
-        localObject1 = g.a.M((String)localObject2, localbi.field_reserved);
+        localObject1 = j.b.ab((String)localObject2, localbi.field_reserved);
       }
-      if (this.vut.vuB == paramInt)
+      if (this.zKu.zKC == paramInt)
       {
-        paramViewGroup.khT.setVisibility(0);
-        if ((c.bh(localbi)) && (localObject1 != null) && (((g.a)localObject1).type != 3))
+        paramViewGroup.mCA.setVisibility(0);
+        if ((c.br(localbi)) && (localObject1 != null) && (((j.b)localObject1).type != 3))
         {
-          paramViewGroup.vuy.setImageDrawable(this.vut.getResources().getDrawable(f((g.a)localObject1)));
-          paramViewGroup.khQ.setImageResource(g((g.a)localObject1));
-          paramViewGroup.khQ.setPadding(0, 0, 0, 0);
-          paramInt = paramViewGroup.khQ.getMeasuredWidth();
-          i = paramViewGroup.khQ.getMeasuredHeight();
+          paramViewGroup.zKz.setImageDrawable(this.zKu.getResources().getDrawable(e((j.b)localObject1)));
+          paramViewGroup.mCy.setImageResource(f((j.b)localObject1));
+          paramViewGroup.mCy.setPadding(0, 0, 0, 0);
+          paramInt = paramViewGroup.mCy.getMeasuredWidth();
+          i = paramViewGroup.mCy.getMeasuredHeight();
           if ((paramInt > 0) && (i > 0)) {
-            break label748;
+            break label774;
           }
-          label425:
-          if (!c.bf(localbi)) {
-            break label782;
+          label445:
+          if (!c.f(localbi)) {
+            break label808;
           }
           if (paramViewGroup != null)
           {
-            paramViewGroup.khR.setVisibility(0);
-            localObject1 = j.bz(localbi);
+            paramViewGroup.mCz.setVisibility(0);
+            localObject1 = j.bH(localbi);
             if (localObject1 != null) {
-              paramViewGroup.khS.setText(ah.jL(((s)localObject1).eHH));
+              paramViewGroup.kFj.setText(ah.mH(((s)localObject1).fXx));
             }
           }
+          label492:
+          paramViewGroup.mCC.setChecked(h.a.dKg().bF(localbi));
+          paramViewGroup.mCC.setTag(localbi);
+          paramViewGroup.mCD.setTag(paramViewGroup);
+          paramViewGroup.mCD.setOnClickListener(this);
+          if (!h.a.dKg().mCm) {
+            break label979;
+          }
+          paramViewGroup.mCC.setVisibility(0);
+          paramViewGroup.mCD.setVisibility(0);
+          paramViewGroup.mCA.setVisibility(0);
         }
       }
     }
     for (;;)
     {
-      paramViewGroup.khV.setChecked(h.a.cGc().bx(localbi));
-      paramViewGroup.khV.setTag(localbi);
-      paramViewGroup.khW.setTag(paramViewGroup);
-      paramViewGroup.khW.setOnClickListener(this);
-      if (!h.a.cGc().khC) {
-        break label953;
-      }
-      paramViewGroup.khV.setVisibility(0);
-      paramViewGroup.khW.setVisibility(0);
-      paramViewGroup.khT.setVisibility(0);
+      AppMethodBeat.o(32025);
       return paramView;
-      if ((localObject1 != null) && (((g.a)localObject1).type == 3)) {
-        paramViewGroup.vuy.setImageDrawable(this.vut.getResources().getDrawable(f((g.a)localObject1)));
+      if ((localObject1 != null) && (((j.b)localObject1).type == 3)) {
+        paramViewGroup.zKz.setImageDrawable(this.zKu.getResources().getDrawable(e((j.b)localObject1)));
       }
-      com.tencent.mm.as.o.ON().a(bp(localbi), paramViewGroup.khQ, this.drd, new d.1(this));
+      com.tencent.mm.at.o.ahG().a(by(localbi), paramViewGroup.mCy, this.eiK, new d.1(this));
       break;
-      paramViewGroup.khT.setVisibility(0);
-      paramViewGroup.khT.setBackgroundResource(R.e.image_gallery_mask);
-      if ((c.bh(localbi)) && (localObject1 != null) && (((g.a)localObject1).type != 3))
+      paramViewGroup.mCA.setVisibility(0);
+      paramViewGroup.mCA.setBackgroundResource(2131690180);
+      if ((c.br(localbi)) && (localObject1 != null) && (((j.b)localObject1).type != 3))
       {
-        paramViewGroup.vuy.setImageDrawable(this.vut.getResources().getDrawable(f((g.a)localObject1)));
-        paramViewGroup.khQ.setImageResource(g((g.a)localObject1));
+        paramViewGroup.zKz.setImageDrawable(this.zKu.getResources().getDrawable(e((j.b)localObject1)));
+        paramViewGroup.mCy.setImageResource(f((j.b)localObject1));
         break;
       }
-      if ((localObject1 != null) && (((g.a)localObject1).type == 3)) {
-        paramViewGroup.vuy.setImageDrawable(this.vut.getResources().getDrawable(f((g.a)localObject1)));
+      if ((localObject1 != null) && (((j.b)localObject1).type == 3)) {
+        paramViewGroup.zKz.setImageDrawable(this.zKu.getResources().getDrawable(e((j.b)localObject1)));
       }
-      com.tencent.mm.as.o.ON().a(bp(localbi), paramViewGroup.khQ, this.drd);
+      com.tencent.mm.at.o.ahG().a(by(localbi), paramViewGroup.mCy, this.eiK);
       break;
-      label748:
-      localObject2 = paramViewGroup.khT.getLayoutParams();
+      label774:
+      localObject2 = paramViewGroup.mCA.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject2).width = paramInt;
       ((ViewGroup.LayoutParams)localObject2).height = i;
-      paramViewGroup.khT.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      break label425;
-      label782:
-      if (c.bg(localbi))
+      paramViewGroup.mCA.setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      break label445;
+      label808:
+      if (c.bq(localbi))
       {
-        paramViewGroup.khU.setVisibility(0);
+        paramViewGroup.mCB.setVisibility(0);
+        break label492;
       }
-      else if ((c.bh(localbi)) && (paramViewGroup != null))
+      if ((!c.br(localbi)) || (paramViewGroup == null)) {
+        break label492;
+      }
+      paramViewGroup.zKB.setVisibility(0);
+      paramViewGroup.zKA.setVisibility(0);
+      if (localObject1 == null) {
+        break label492;
+      }
+      ab.i("MicroMsg.ImageGalleryGridAdapter", "initFileName--->content:%s", new Object[] { ah.nullAsNil(((j.b)localObject1).title) });
+      if (((j.b)localObject1).type != 24)
       {
-        paramViewGroup.vuA.setVisibility(0);
-        paramViewGroup.vuz.setVisibility(0);
-        if (localObject1 != null)
-        {
-          y.i("MicroMsg.ImageGalleryGridAdapter", "initFileName--->content:%s", new Object[] { ah.pm(((g.a)localObject1).title) });
-          if (((g.a)localObject1).type != 24)
-          {
-            paramViewGroup.vuz.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.mContext, ah.pm(((g.a)localObject1).title), paramViewGroup.vuz.getTextSize()));
-          }
-          else
-          {
-            paramViewGroup.vuz.setText(com.tencent.mm.pluginsdk.ui.d.j.a(paramViewGroup.vuz.getContext(), paramViewGroup.vuz.getContext().getString(R.l.favorite_wenote), paramViewGroup.vuz.getTextSize()));
-            continue;
-            paramViewGroup.khQ.setImageResource(R.g.nosdcard_chatting_bg);
-          }
-        }
+        paramViewGroup.zKA.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.mContext, ah.nullAsNil(((j.b)localObject1).title), paramViewGroup.zKA.getTextSize()));
+        break label492;
       }
+      paramViewGroup.zKA.setText(com.tencent.mm.pluginsdk.ui.d.j.b(paramViewGroup.zKA.getContext(), paramViewGroup.zKA.getContext().getString(2131299857), paramViewGroup.zKA.getTextSize()));
+      break label492;
+      paramViewGroup.mCy.setImageResource(2130839821);
+      break label492;
+      label979:
+      paramViewGroup.mCC.setVisibility(8);
+      paramViewGroup.mCD.setVisibility(8);
+      paramViewGroup.mCA.setVisibility(8);
     }
-    label953:
-    paramViewGroup.khV.setVisibility(8);
-    paramViewGroup.khW.setVisibility(8);
-    paramViewGroup.khT.setVisibility(8);
-    return paramView;
   }
   
   public final void notifyDataSetChanged()
   {
+    AppMethodBeat.i(32030);
     super.notifyDataSetChanged();
-    this.vuu = false;
+    this.zKv = false;
+    AppMethodBeat.o(32030);
   }
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(32031);
     paramView = (d.a)paramView.getTag();
-    if (paramView.khV == null) {}
-    label145:
+    if (paramView.mCC == null)
+    {
+      AppMethodBeat.o(32031);
+      return;
+    }
+    bi localbi = (bi)paramView.mCC.getTag();
+    if (localbi == null)
+    {
+      AppMethodBeat.o(32031);
+      return;
+    }
+    h localh = h.a.dKg();
+    if (localh.bF(localbi))
+    {
+      localh.bE(localbi);
+      if (!h.a.dKg().bF(localbi)) {
+        break label151;
+      }
+      paramView.mCC.setChecked(true);
+      paramView.mCA.setBackgroundResource(2131690159);
+    }
     for (;;)
     {
-      return;
-      bi localbi = (bi)paramView.khV.getTag();
-      if (localbi != null)
+      if ((!this.quM) && (h.a.dKg().mCl.size() > 1))
       {
-        h localh = h.a.cGc();
-        if (localh.bx(localbi))
-        {
-          localh.bw(localbi);
-          if (!h.a.cGc().bx(localbi)) {
-            break label126;
-          }
-          paramView.khV.setChecked(true);
-          paramView.khT.setBackgroundResource(R.e.half_alpha_black);
-        }
-        for (;;)
-        {
-          if ((this.nHq) || (h.a.cGc().khB.size() <= 1)) {
-            break label145;
-          }
-          com.tencent.mm.plugin.report.service.h.nFQ.a(219L, 20L, 1L, true);
-          this.nHq = true;
-          return;
-          localh.bv(localbi);
-          break;
-          label126:
-          paramView.khV.setChecked(false);
-          paramView.khT.setBackgroundResource(R.e.image_gallery_mask);
-        }
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(219L, 20L, 1L, true);
+        this.quM = true;
       }
-    }
-  }
-  
-  public final void yc()
-  {
-    if (this.kax)
-    {
-      au.Hx();
-      setCursor(com.tencent.mm.model.c.Fz().au(this.drJ, this.voj));
+      AppMethodBeat.o(32031);
       return;
+      localh.bD(localbi);
+      break;
+      label151:
+      paramView.mCC.setChecked(false);
+      paramView.mCA.setBackgroundResource(2131690180);
     }
-    au.Hx();
-    setCursor(com.tencent.mm.model.c.Fy().HE(this.drJ));
-  }
-  
-  protected final void yd()
-  {
-    if (this.kax)
-    {
-      au.Hx();
-      setCursor(com.tencent.mm.model.c.Fz().au(this.drJ, this.voj));
-      return;
-    }
-    au.Hx();
-    setCursor(com.tencent.mm.model.c.Fy().HE(this.drJ));
   }
 }
 

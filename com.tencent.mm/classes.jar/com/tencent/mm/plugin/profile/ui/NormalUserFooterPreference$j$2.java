@@ -5,9 +5,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.t;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -19,34 +19,39 @@ final class NormalUserFooterPreference$j$2
   
   public final void onClick(View paramView)
   {
-    if (NormalUserFooterPreference.a(this.mYW.mYC).Bg())
+    AppMethodBeat.i(23727);
+    if (NormalUserFooterPreference.a(this.pCq.pCe).NW())
     {
-      s.j(NormalUserFooterPreference.a(this.mYW.mYC));
-      NormalUserFooterPreference.a(this.mYW.mYC).AK();
-      this.mYW.bsI();
+      t.j(NormalUserFooterPreference.a(this.pCq.pCe));
+      NormalUserFooterPreference.a(this.pCq.pCe).NA();
+      this.pCq.ccx();
+      AppMethodBeat.o(23727);
       return;
     }
-    paramView = this.mYW.mYC.mContext;
-    Context localContext = this.mYW.mYC.mContext;
-    if (ad.aaU(NormalUserFooterPreference.a(this.mYW.mYC).field_username)) {}
-    for (int i = R.l.contact_info_movein_blacklist_confirm_for_openim;; i = R.l.contact_info_movein_blacklist_confirm)
+    paramView = this.pCq.pCe.mContext;
+    Context localContext = this.pCq.pCe.mContext;
+    if (ad.arf(NormalUserFooterPreference.a(this.pCq.pCe).field_username)) {}
+    for (int i = 2131298677;; i = 2131298676)
     {
-      h.a(paramView, localContext.getString(i), this.mYW.mYC.mContext.getString(R.l.contact_info_movein_blacklist), new DialogInterface.OnClickListener()
+      h.a(paramView, localContext.getString(i), this.pCq.pCe.mContext.getString(2131298675), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          s.i(NormalUserFooterPreference.a(NormalUserFooterPreference.j.2.this.mYW.mYC));
-          NormalUserFooterPreference.a(NormalUserFooterPreference.j.2.this.mYW.mYC).AJ();
-          NormalUserFooterPreference.j.2.this.mYW.bsI();
+          AppMethodBeat.i(23726);
+          t.i(NormalUserFooterPreference.a(NormalUserFooterPreference.j.2.this.pCq.pCe));
+          NormalUserFooterPreference.a(NormalUserFooterPreference.j.2.this.pCq.pCe).Nz();
+          NormalUserFooterPreference.j.2.this.pCq.ccx();
+          AppMethodBeat.o(23726);
         }
       }, null);
+      AppMethodBeat.o(23727);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference.j.2
  * JD-Core Version:    0.7.0.1
  */

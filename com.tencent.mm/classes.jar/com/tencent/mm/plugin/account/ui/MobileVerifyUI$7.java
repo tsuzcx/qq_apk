@@ -4,7 +4,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MobileVerifyUI$7
   implements TextWatcher
@@ -13,19 +14,22 @@ final class MobileVerifyUI$7
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    if (bk.bl(this.fpS.fcd.getText().toString()))
+    AppMethodBeat.i(125272);
+    if (bo.isNullOrNil(this.gHp.gtO.getText().toString()))
     {
-      this.fpS.fcd.setTextSize(15.0F);
-      this.fpS.fcd.setGravity(16);
+      this.gHp.gtO.setTextSize(15.0F);
+      this.gHp.gtO.setGravity(16);
     }
-    while ((this.fpS.fcd.getText() != null) && (this.fpS.fcd.getText().toString().length() > 0))
+    while ((this.gHp.gtO.getText() != null) && (this.gHp.gtO.getText().toString().length() > 0))
     {
-      this.fpS.fpF.setEnabled(true);
+      this.gHp.gHb.setEnabled(true);
+      AppMethodBeat.o(125272);
       return;
-      this.fpS.fcd.setTextSize(24.0F);
-      this.fpS.fcd.setGravity(16);
+      this.gHp.gtO.setTextSize(24.0F);
+      this.gHp.gtO.setGravity(16);
     }
-    this.fpS.fpF.setEnabled(false);
+    this.gHp.gHb.setEnabled(false);
+    AppMethodBeat.o(125272);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -34,7 +38,7 @@ final class MobileVerifyUI$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileVerifyUI.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,29 @@
 package com.tencent.mm.ui.conversation;
 
 import android.app.ProgressDialog;
-import com.tencent.mm.model.bd.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bf.a;
 
 final class NewBizConversationUI$8
-  implements bd.a
+  implements bf.a
 {
   NewBizConversationUI$8(NewBizConversationUI paramNewBizConversationUI, ProgressDialog paramProgressDialog) {}
   
-  public final void xA()
+  public final boolean JS()
   {
-    if (this.doh != null) {
-      this.doh.dismiss();
-    }
+    AppMethodBeat.i(34539);
+    boolean bool = NewBizConversationUI.m(this.AlC);
+    AppMethodBeat.o(34539);
+    return bool;
   }
   
-  public final boolean xz()
+  public final void JT()
   {
-    return NewBizConversationUI.m(this.vTG);
+    AppMethodBeat.i(34540);
+    if (this.efE != null) {
+      this.efE.dismiss();
+    }
+    AppMethodBeat.o(34540);
   }
 }
 

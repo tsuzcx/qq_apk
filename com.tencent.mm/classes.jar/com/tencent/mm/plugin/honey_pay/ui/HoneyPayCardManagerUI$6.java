@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.protocal.c.bek;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bme;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 import java.util.List;
 
@@ -14,17 +15,19 @@ final class HoneyPayCardManagerUI$6
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    HoneyPayCardManagerUI.a(this.lla, (Bankcard)this.llc.get(paramInt));
-    y.i(this.lla.TAG, "select bankcard: %s, %s", new Object[] { HoneyPayCardManagerUI.g(this.lla).field_bindSerial, HoneyPayCardManagerUI.g(this.lla).field_bankcardTypeName });
-    HoneyPayCardManagerUI.b(this.lla, HoneyPayCardManagerUI.c(this.lla));
-    paramMenuItem = new bek();
-    paramMenuItem.tzs = HoneyPayCardManagerUI.g(this.lla).field_desc;
-    paramMenuItem.mOb = HoneyPayCardManagerUI.g(this.lla).field_bankcardType;
-    paramMenuItem.tzu = HoneyPayCardManagerUI.g(this.lla).field_bindSerial;
-    paramMenuItem.tzv = HoneyPayCardManagerUI.g(this.lla).field_bankcardTail;
-    HoneyPayCardManagerUI.a(this.lla, paramMenuItem);
-    HoneyPayCardManagerUI.d(this.lla);
-    HoneyPayCardManagerUI.h(this.lla);
+    AppMethodBeat.i(41798);
+    HoneyPayCardManagerUI.a(this.nIw, (Bankcard)this.nIy.get(paramInt));
+    ab.i(this.nIw.TAG, "select bankcard: %s, %s", new Object[] { HoneyPayCardManagerUI.h(this.nIw).field_bindSerial, HoneyPayCardManagerUI.h(this.nIw).field_bankcardTypeName });
+    HoneyPayCardManagerUI.b(this.nIw, HoneyPayCardManagerUI.c(this.nIw));
+    paramMenuItem = new bme();
+    paramMenuItem.xAA = HoneyPayCardManagerUI.h(this.nIw).field_desc;
+    paramMenuItem.poq = HoneyPayCardManagerUI.h(this.nIw).field_bankcardType;
+    paramMenuItem.xAC = HoneyPayCardManagerUI.h(this.nIw).field_bindSerial;
+    paramMenuItem.xAD = HoneyPayCardManagerUI.h(this.nIw).field_bankcardTail;
+    HoneyPayCardManagerUI.a(this.nIw, paramMenuItem);
+    HoneyPayCardManagerUI.d(this.nIw);
+    HoneyPayCardManagerUI.i(this.nIw);
+    AppMethodBeat.o(41798);
   }
 }
 

@@ -4,34 +4,40 @@ import android.opengl.GLES20;
 import com.tencent.filter.BaseFilter;
 import com.tencent.filter.GLSLRender;
 import com.tencent.filter.QImage;
-import com.tencent.view.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.view.g;
 
 public final class e$a
   extends BaseFilter
 {
-  int aVo = 0;
+  int paramTEXTRUEID = 0;
   
   public e$a()
   {
-    super(GLSLRender.beo);
+    super(GLSLRender.buR);
   }
   
   public final void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    this.aVo = f.cRo();
+    AppMethodBeat.i(86303);
+    this.paramTEXTRUEID = g.dXe();
     super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    AppMethodBeat.o(86303);
   }
   
   public final void ClearGLSL()
   {
-    f.Ku(this.aVo);
+    AppMethodBeat.i(86306);
+    g.Tn(this.paramTEXTRUEID);
     super.ClearGLSL();
+    AppMethodBeat.o(86306);
   }
   
   public final void beforeRender(int paramInt1, int paramInt2, int paramInt3)
   {
     int j = 0;
-    Object localObject = f.ay(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(86304);
+    Object localObject = g.aK(paramInt1, paramInt2, paramInt3);
     int[] arrayOfInt = ((QImage)localObject).nativeGetArrayHistogram();
     ((QImage)localObject).Dispose();
     paramInt3 = 0;
@@ -56,7 +62,7 @@ public final class e$a
     for (paramInt1 = paramInt2;; paramInt1 = 0)
     {
       paramInt2 += 1;
-      label110:
+      label115:
       if (paramInt2 < 256)
       {
         paramInt3 += arrayOfInt[paramInt2];
@@ -84,7 +90,7 @@ public final class e$a
               paramInt2 += 1;
               break;
               paramInt2 += 1;
-              break label110;
+              break label115;
             }
           }
           paramInt3 = paramInt1;
@@ -110,7 +116,8 @@ public final class e$a
             paramInt1 += 1;
           }
           GLES20.glActiveTexture(33984);
-          GLSLRender.nativeTextCure(arrayOfInt, this.aVo);
+          GLSLRender.nativeTextCure(arrayOfInt, this.paramTEXTRUEID);
+          AppMethodBeat.o(86304);
           return;
         }
         paramInt2 = 255;
@@ -120,8 +127,11 @@ public final class e$a
   
   public final boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    setTextureParam(this.aVo, 1);
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(86305);
+    setTextureParam(this.paramTEXTRUEID, 1);
+    boolean bool = super.renderTexture(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(86305);
+    return bool;
   }
 }
 

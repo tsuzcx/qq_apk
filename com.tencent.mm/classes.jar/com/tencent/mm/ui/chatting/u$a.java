@@ -1,8 +1,8 @@
 package com.tencent.mm.ui.chatting;
 
- enum u$a
+public abstract interface u$a
 {
-  private u$a() {}
+  public abstract void Ps(int paramInt);
 }
 
 

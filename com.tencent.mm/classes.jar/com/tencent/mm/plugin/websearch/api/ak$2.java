@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import com.tencent.mm.ipcinvoker.wx_extension.a.a;
-import com.tencent.mm.ipcinvoker.wx_extension.a.a.b;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.c;
-import java.util.Map;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.WebView;
+import com.tencent.xweb.w;
 
 final class ak$2
-  implements Runnable
+  extends w
 {
-  ak$2(ak paramak) {}
+  ak$2(ak paramak, MMWebView paramMMWebView) {}
   
-  public final void run()
+  public final boolean a(WebView paramWebView, String paramString)
   {
-    Object localObject = a.b.dHs;
-    localObject = a.fJ("100344");
-    if (localObject == null)
+    AppMethodBeat.i(124192);
+    if (!u.x(paramString, "weixin://private/setresult/"))
     {
-      y.i("MicroMsg.WebSearch.WebSearchPreloadExport", "openSearchPreload item is null");
-      return;
+      AppMethodBeat.o(124192);
+      return false;
     }
-    ak localak = this.qUG;
-    if ((((c)localObject).isValid()) && ("1".equals(((c)localObject).ctr().get("isOpen")))) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ak.a(localak, bool);
-      y.i("MicroMsg.WebSearch.WebSearchPreloadExport", "openSearchPreload :%b", new Object[] { Boolean.valueOf(ak.a(this.qUG)) });
-      localObject = a.b.dHs;
-      localObject = a.fJ("100346");
-      if (localObject != null) {
-        break;
-      }
-      y.i("MicroMsg.WebSearch.WebSearchPreloadExport", "openSearchPreload item is null");
-      return;
-    }
-    localak = this.qUG;
-    if ((((c)localObject).isValid()) && ("1".equals(((c)localObject).ctr().get("isOpen")))) {}
-    for (bool = true;; bool = false)
-    {
-      ak.b(localak, bool);
-      y.i("MicroMsg.WebSearch.WebSearchPreloadExport", "openRecommendPreload :%b", new Object[] { Boolean.valueOf(ak.b(this.qUG)) });
-      return;
-    }
+    ab.i(this.uJV.TAG, "handleUrl %s ,view %s", new Object[] { paramString, paramWebView.toString() });
+    this.uJW.evaluateJavascript("javascript:WeixinJSBridge._continueSetResult()", null);
+    AppMethodBeat.o(124192);
+    return true;
+  }
+  
+  public final void b(WebView paramWebView, String paramString)
+  {
+    AppMethodBeat.i(124190);
+    ab.i(this.uJV.TAG, "onPageFinished, view %s", new Object[] { paramWebView.toString() });
+    this.uJV.b(this.uJW);
+    AppMethodBeat.o(124190);
+  }
+  
+  public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(124191);
+    super.b(paramWebView, paramString, paramBitmap);
+    ab.i(this.uJV.TAG, "onPageStarted, view %s", new Object[] { paramWebView.toString() });
+    u.d(this.uJW);
+    AppMethodBeat.o(124191);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ak.2
  * JD-Core Version:    0.7.0.1
  */

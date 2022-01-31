@@ -1,5 +1,7 @@
 package com.davemorrissey.labs.subscaleview.view;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SubsamplingScaleImageView$7$1
   implements Runnable
 {
@@ -7,14 +9,16 @@ final class SubsamplingScaleImageView$7$1
   
   public final void run()
   {
-    if (SubsamplingScaleImageView.v(this.arf.aqZ) != null) {
-      SubsamplingScaleImageView.v(this.arf.aqZ).f(SubsamplingScaleImageView.u(this.arf.aqZ));
+    AppMethodBeat.i(115648);
+    if (SubsamplingScaleImageView.v(this.atx.ats) != null) {
+      SubsamplingScaleImageView.v(this.atx.ats).g(SubsamplingScaleImageView.u(this.atx.ats));
     }
+    AppMethodBeat.o(115648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView.7.1
  * JD-Core Version:    0.7.0.1
  */

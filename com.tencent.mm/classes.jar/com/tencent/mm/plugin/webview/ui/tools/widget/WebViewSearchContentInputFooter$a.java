@@ -10,17 +10,15 @@ public abstract interface WebViewSearchContentInputFooter$a
   
   public abstract boolean c(int paramInt, KeyEvent paramKeyEvent);
   
-  public abstract void cbg();
+  public abstract void dbj();
   
-  public abstract void cbh();
+  public abstract void dbk();
   
-  public abstract void cbi();
-  
-  public abstract void onShow();
+  public abstract void dbl();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.WebViewSearchContentInputFooter.a
  * JD-Core Version:    0.7.0.1
  */

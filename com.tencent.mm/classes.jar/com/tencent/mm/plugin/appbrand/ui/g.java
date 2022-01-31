@@ -2,76 +2,100 @@ package com.tencent.mm.plugin.appbrand.ui;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.MutableContextWrapper;
+import android.content.ServiceConnection;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.Window;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mm.plugin.appbrand.config.a.d;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.ui.statusbar.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.w;
 
 public final class g
-  extends b
-  implements n
+  extends MutableContextWrapper
 {
-  private final i fzT;
-  private final Bitmap hdM;
+  private ContextThemeWrapper iOw;
+  private volatile LayoutInflater mInflater;
   
-  public g(Context paramContext, i parami, Bitmap paramBitmap)
+  private g(Context paramContext)
   {
     super(paramContext);
-    this.hdM = paramBitmap;
-    this.fzT = parami;
-    setupFullscreen(this.fzT.ZH());
-    dN(true);
-    setBackground(new BitmapDrawable(getResources(), paramBitmap));
-    paramContext = LayoutInflater.from(paramContext).inflate(y.h.app_brand_show_toast, this, false);
-    addView(paramContext, new FrameLayout.LayoutParams(-2, -2, 17));
-    ((TextView)paramContext.findViewById(y.g.title)).setText(y.j.app_brand_jsapi_update_app_updating);
-    paramContext.findViewById(y.g.iv_icon).setVisibility(8);
+    AppMethodBeat.i(143608);
+    this.iOw = new ContextThemeWrapper(paramContext.getApplicationContext(), 2131493046);
+    AppMethodBeat.o(143608);
   }
   
-  private void setupFullscreen(boolean paramBoolean)
+  public static g dc(Context paramContext)
   {
-    Object localObject = l.cx(getContext());
-    if (localObject == null) {}
-    do
+    AppMethodBeat.i(143607);
+    paramContext = new g(paramContext);
+    AppMethodBeat.o(143607);
+    return paramContext;
+  }
+  
+  public final Object getSystemService(String paramString)
+  {
+    AppMethodBeat.i(143610);
+    if ("layout_inflater".equals(paramString)) {
+      try
+      {
+        if (this.mInflater == null) {
+          this.mInflater = w.hM(getBaseContext());
+        }
+        paramString = this.mInflater;
+        return paramString;
+      }
+      finally
+      {
+        AppMethodBeat.o(143610);
+      }
+    }
+    paramString = getBaseContext().getSystemService(paramString);
+    AppMethodBeat.o(143610);
+    return paramString;
+  }
+  
+  public final void setBaseContext(Context paramContext)
+  {
+    AppMethodBeat.i(143609);
+    if (paramContext == getBaseContext())
     {
+      AppMethodBeat.o(143609);
       return;
-      localObject = ((Activity)localObject).getWindow();
-    } while (localObject == null);
-    l.c((Window)localObject, paramBoolean);
+    }
+    if ((paramContext instanceof Activity)) {
+      super.setBaseContext(paramContext);
+    }
+    for (;;)
+    {
+      try
+      {
+        this.mInflater = null;
+        getSystemService("layout_inflater");
+        return;
+      }
+      finally
+      {
+        AppMethodBeat.o(143609);
+      }
+      super.setBaseContext(this.iOw);
+    }
   }
   
-  public final void a(a.d paramd) {}
-  
-  public final void aoS()
+  public final void unbindService(ServiceConnection paramServiceConnection)
   {
-    post(new g.1(this));
+    AppMethodBeat.i(154862);
+    try
+    {
+      super.unbindService(paramServiceConnection);
+      AppMethodBeat.o(154862);
+      return;
+    }
+    catch (IllegalArgumentException paramServiceConnection)
+    {
+      ab.printErrStackTrace("MicroMsg.AppBrandRuntimePersistentContextWrapper", paramServiceConnection, "[CAPTURED CRASH]", new Object[0]);
+      AppMethodBeat.o(154862);
+    }
   }
-  
-  public final void aoT() {}
-  
-  public final void cd(String paramString1, String paramString2) {}
-  
-  public final View getView()
-  {
-    return this;
-  }
-  
-  protected final void onDetachedFromWindow()
-  {
-    super.onDetachedFromWindow();
-    this.hdM.recycle();
-  }
-  
-  public final void setProgress(int paramInt) {}
 }
 
 

@@ -1,27 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.res.Resources;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class k$3
-  extends ClickableSpan
+  implements DialogInterface.OnClickListener
 {
-  k$3(k paramk, MobileInputUI paramMobileInputUI) {}
+  k$3(k paramk) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    bk.I(this.fod.mController.uMN, this.fod.getString(q.j.url_agreement));
-  }
-  
-  public final void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(this.fod.getResources().getColor(q.c.link_color));
-    paramTextPaint.setUnderlineText(true);
+    AppMethodBeat.i(154703);
+    k.a(this.gFD);
+    AppMethodBeat.o(154703);
   }
 }
 

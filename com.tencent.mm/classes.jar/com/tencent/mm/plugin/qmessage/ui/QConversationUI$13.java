@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.qmessage.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class QConversationUI$13
   implements MenuItem.OnMenuItemClickListener
@@ -11,9 +12,11 @@ final class QConversationUI$13
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (!bk.bl(QConversationUI.f(this.ncU))) {
-      QConversationUI.a(this.ncU, QConversationUI.f(this.ncU), QConversationUI.g(this.ncU));
+    AppMethodBeat.i(24139);
+    if (!bo.isNullOrNil(QConversationUI.f(this.pIm))) {
+      QConversationUI.a(this.pIm, QConversationUI.f(this.pIm), QConversationUI.g(this.pIm));
     }
+    AppMethodBeat.o(24139);
     return true;
   }
 }

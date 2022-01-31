@@ -1,52 +1,23 @@
 package com.tencent.mm.ui.chatting;
 
-import android.content.Context;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.as.d.a;
-import com.tencent.mm.as.e;
-import com.tencent.mm.as.f;
-import com.tencent.mm.as.o;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.messenger.a.d;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.t;
+import com.tencent.mm.af.t.a;
 
 final class k$3
-  implements d.a
+  implements DialogInterface.OnClickListener
 {
-  k$3(Context paramContext, String paramString1, e parame, String paramString2) {}
+  k$3(t paramt) {}
   
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject) {}
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, m paramm) {}
-  
-  public final void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, m paramm)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt3 == 0) && (paramInt4 == 0)) {}
-    for (paramInt2 = 1; (paramObject instanceof HashMap); paramInt2 = 0)
-    {
-      paramObject = (HashMap)paramObject;
-      if (paramObject == null) {
-        break;
-      }
-      paramObject = paramObject.entrySet().iterator();
-      while (paramObject.hasNext())
-      {
-        paramm = (Map.Entry)paramObject.next();
-        paramString = (Long)paramm.getKey();
-        paramm = (e)paramm.getValue();
-        paramm = o.OJ().o(f.c(paramm), "", "");
-        if (paramInt2 != 0)
-        {
-          au.Hx();
-          c.Fy().fe(paramString.longValue());
-          com.tencent.mm.plugin.messenger.a.g.bhI().a(this.val$context, this.egy, paramm, paramInt1, this.epf.enA, this.eot);
-        }
-      }
+    AppMethodBeat.i(30575);
+    if (this.zyn != null) {
+      this.zyn.a(t.a.fke);
     }
+    AppMethodBeat.o(30575);
   }
 }
 

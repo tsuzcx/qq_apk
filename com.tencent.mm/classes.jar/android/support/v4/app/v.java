@@ -1,98 +1,160 @@
 package android.support.v4.app;
 
-import android.app.Activity;
+import android.app.AppOpsManager;
+import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
-import android.os.Bundle;
+import android.provider.Settings.Secure;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class v
 {
-  public static Intent a(Context paramContext, ComponentName paramComponentName)
+  private static final Object sLock = new Object();
+  private static final Object yY = new Object();
+  private static String yZ;
+  private static Set<String> za = new HashSet();
+  private static v.d zc;
+  public final Context mContext;
+  public final NotificationManager zb;
+  
+  private v(Context paramContext)
   {
-    String str = b(paramContext, paramComponentName);
-    if (str == null) {
-      return null;
-    }
-    paramComponentName = new ComponentName(paramComponentName.getPackageName(), str);
-    if (b(paramContext, paramComponentName) == null) {
-      return Intent.makeMainActivity(paramComponentName);
-    }
-    return new Intent().setComponent(paramComponentName);
+    this.mContext = paramContext;
+    this.zb = ((NotificationManager)this.mContext.getSystemService("notification"));
   }
   
-  private static String b(Context paramContext, ComponentName paramComponentName)
+  public static v K(Context paramContext)
   {
-    Object localObject = paramContext.getPackageManager().getActivityInfo(paramComponentName, 128);
-    if (Build.VERSION.SDK_INT >= 16)
-    {
-      paramComponentName = ((ActivityInfo)localObject).parentActivityName;
-      if (paramComponentName == null) {}
-    }
-    do
-    {
-      return paramComponentName;
-      if (((ActivityInfo)localObject).metaData == null) {
-        return null;
-      }
-      localObject = ((ActivityInfo)localObject).metaData.getString("android.support.PARENT_ACTIVITY");
-      if (localObject == null) {
-        return null;
-      }
-      paramComponentName = (ComponentName)localObject;
-    } while (((String)localObject).charAt(0) != '.');
-    return paramContext.getPackageName() + (String)localObject;
+    return new v(paramContext);
   }
   
-  public static Intent f(Activity paramActivity)
+  public static Set<String> L(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 16)
+    Object localObject1 = Settings.Secure.getString(paramContext.getContentResolver(), "enabled_notification_listeners");
+    paramContext = yY;
+    if (localObject1 != null) {}
+    for (;;)
     {
-      localObject = paramActivity.getParentActivityIntent();
-      if (localObject != null) {
-        return localObject;
+      int i;
+      try
+      {
+        if (!((String)localObject1).equals(yZ))
+        {
+          String[] arrayOfString = ((String)localObject1).split(":", -1);
+          HashSet localHashSet = new HashSet(arrayOfString.length);
+          int j = arrayOfString.length;
+          i = 0;
+          if (i < j)
+          {
+            ComponentName localComponentName = ComponentName.unflattenFromString(arrayOfString[i]);
+            if (localComponentName != null) {
+              localHashSet.add(localComponentName.getPackageName());
+            }
+          }
+          else
+          {
+            za = localHashSet;
+            yZ = (String)localObject1;
+          }
+        }
+        else
+        {
+          localObject1 = za;
+          return localObject1;
+        }
       }
+      finally {}
+      i += 1;
     }
-    Object localObject = g(paramActivity);
-    if (localObject == null) {
-      return null;
+  }
+  
+  public final void a(v.e parame)
+  {
+    synchronized (sLock)
+    {
+      if (zc == null) {
+        zc = new v.d(this.mContext.getApplicationContext());
+      }
+      zc.b(parame);
+      return;
     }
-    ComponentName localComponentName = new ComponentName(paramActivity, (String)localObject);
+  }
+  
+  public final boolean areNotificationsEnabled()
+  {
+    if (Build.VERSION.SDK_INT >= 24) {
+      return this.zb.areNotificationsEnabled();
+    }
+    AppOpsManager localAppOpsManager;
+    Object localObject;
+    String str;
+    int i;
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      localAppOpsManager = (AppOpsManager)this.mContext.getSystemService("appops");
+      localObject = this.mContext.getApplicationInfo();
+      str = this.mContext.getApplicationContext().getPackageName();
+      i = ((ApplicationInfo)localObject).uid;
+    }
     try
     {
-      if (b(paramActivity, localComponentName) == null) {
-        return Intent.makeMainActivity(localComponentName);
-      }
-      paramActivity = new Intent().setComponent(localComponentName);
-      return paramActivity;
+      localObject = Class.forName(AppOpsManager.class.getName());
+      i = ((Integer)((Class)localObject).getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class }).invoke(localAppOpsManager, new Object[] { Integer.valueOf(((Integer)((Class)localObject).getDeclaredField("OP_POST_NOTIFICATION").get(Integer.class)).intValue()), Integer.valueOf(i), str })).intValue();
+      return i == 0;
     }
-    catch (PackageManager.NameNotFoundException paramActivity)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      new StringBuilder("getParentActivityIntent: bad parentActivityName '").append((String)localObject).append("' in manifest");
+      return true;
+      return true;
     }
-    return null;
+    catch (RuntimeException localRuntimeException)
+    {
+      break label160;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      break label160;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      break label160;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label160;
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      label160:
+      break label160;
+    }
   }
   
-  public static String g(Activity paramActivity)
+  public final void cancel(int paramInt)
   {
-    try
-    {
-      paramActivity = b(paramActivity, paramActivity.getComponentName());
-      return paramActivity;
+    this.zb.cancel(null, paramInt);
+    if (Build.VERSION.SDK_INT <= 19) {
+      a(new v.a(this.mContext.getPackageName(), paramInt));
     }
-    catch (PackageManager.NameNotFoundException paramActivity)
-    {
-      throw new IllegalArgumentException(paramActivity);
+  }
+  
+  public final int getImportance()
+  {
+    if (Build.VERSION.SDK_INT >= 24) {
+      return this.zb.getImportance();
     }
+    return -1000;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.app.v
  * JD-Core Version:    0.7.0.1
  */

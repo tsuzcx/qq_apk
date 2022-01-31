@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeReportUI$7$2
   implements DialogInterface.OnCancelListener
@@ -10,12 +11,14 @@ final class ShakeReportUI$7$2
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    ShakeReportUI.b(this.odo.odm, true);
+    AppMethodBeat.i(24783);
+    ShakeReportUI.b(this.qRv.qRs, true);
+    AppMethodBeat.o(24783);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeReportUI.7.2
  * JD-Core Version:    0.7.0.1
  */

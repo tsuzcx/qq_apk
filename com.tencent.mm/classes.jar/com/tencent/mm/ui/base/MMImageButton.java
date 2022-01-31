@@ -7,14 +7,14 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.ac.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 
 public class MMImageButton
   extends FrameLayout
 {
-  private ImageView bQf;
-  private TextView mTE;
+  private ImageView cxy;
+  private TextView pvK;
   
   public MMImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,53 +24,65 @@ public class MMImageButton
   public MMImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(106676);
     paramAttributeSet = new FrameLayout.LayoutParams(-2, -2);
     paramAttributeSet.gravity = 17;
-    this.bQf = new ImageView(paramContext);
-    this.bQf.setLayoutParams(paramAttributeSet);
-    addView(this.bQf);
+    this.cxy = new ImageView(paramContext);
+    this.cxy.setLayoutParams(paramAttributeSet);
+    addView(this.cxy);
     paramAttributeSet = new FrameLayout.LayoutParams(-2, -2);
     paramAttributeSet.gravity = 17;
-    this.mTE = new TextView(paramContext);
-    this.mTE.setLayoutParams(paramAttributeSet);
-    this.mTE.setClickable(false);
-    this.mTE.setFocusable(false);
-    this.mTE.setFocusableInTouchMode(false);
-    this.mTE.setTextColor(a.h(paramContext, a.d.mm_title_btn_text));
-    addView(this.mTE);
+    this.pvK = new TextView(paramContext);
+    this.pvK.setLayoutParams(paramAttributeSet);
+    this.pvK.setClickable(false);
+    this.pvK.setFocusable(false);
+    this.pvK.setFocusableInTouchMode(false);
+    this.pvK.setTextColor(a.l(paramContext, 2131690778));
+    addView(this.pvK);
+    AppMethodBeat.o(106676);
   }
   
   public void setEnabled(boolean paramBoolean)
   {
+    AppMethodBeat.i(106681);
     super.setEnabled(paramBoolean);
-    this.mTE.setEnabled(paramBoolean);
-    this.bQf.setEnabled(paramBoolean);
+    this.pvK.setEnabled(paramBoolean);
+    this.cxy.setEnabled(paramBoolean);
+    AppMethodBeat.o(106681);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.bQf.setImageDrawable(paramDrawable);
-    this.bQf.setVisibility(0);
-    this.mTE.setVisibility(8);
+    AppMethodBeat.i(106678);
+    this.cxy.setImageDrawable(paramDrawable);
+    this.cxy.setVisibility(0);
+    this.pvK.setVisibility(8);
+    AppMethodBeat.o(106678);
   }
   
   public void setImageRsource(int paramInt)
   {
-    setImageDrawable(a.g(getContext(), paramInt));
+    AppMethodBeat.i(106677);
+    setImageDrawable(a.k(getContext(), paramInt));
+    AppMethodBeat.o(106677);
   }
   
   public void setText(int paramInt)
   {
-    this.mTE.setText(paramInt);
-    this.mTE.setVisibility(0);
-    this.bQf.setVisibility(8);
+    AppMethodBeat.i(106680);
+    this.pvK.setText(paramInt);
+    this.pvK.setVisibility(0);
+    this.cxy.setVisibility(8);
+    AppMethodBeat.o(106680);
   }
   
   public void setText(String paramString)
   {
-    this.mTE.setText(paramString);
-    this.mTE.setVisibility(0);
-    this.bQf.setVisibility(8);
+    AppMethodBeat.i(106679);
+    this.pvK.setText(paramString);
+    this.pvK.setVisibility(0);
+    this.cxy.setVisibility(8);
+    AppMethodBeat.o(106679);
   }
 }
 

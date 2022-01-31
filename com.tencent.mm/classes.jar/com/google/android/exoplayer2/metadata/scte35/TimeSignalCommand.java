@@ -2,42 +2,57 @@ package com.google.android.exoplayer2.metadata.scte35;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.exoplayer2.i.j;
-import com.google.android.exoplayer2.i.q;
+import com.google.android.exoplayer2.i.m;
+import com.google.android.exoplayer2.i.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class TimeSignalCommand
   extends SpliceCommand
 {
-  public static final Parcelable.Creator<TimeSignalCommand> CREATOR = new Parcelable.Creator() {};
-  public final long aHK;
-  public final long aHL;
+  public static final Parcelable.Creator<TimeSignalCommand> CREATOR;
+  public final long aOE;
+  public final long aOF;
+  
+  static
+  {
+    AppMethodBeat.i(95386);
+    CREATOR = new Parcelable.Creator() {};
+    AppMethodBeat.o(95386);
+  }
   
   private TimeSignalCommand(long paramLong1, long paramLong2)
   {
-    this.aHK = paramLong1;
-    this.aHL = paramLong2;
+    this.aOE = paramLong1;
+    this.aOF = paramLong2;
   }
   
-  static long a(j paramj, long paramLong)
+  static TimeSignalCommand b(m paramm, long paramLong, u paramu)
   {
-    long l2 = paramj.readUnsignedByte();
+    AppMethodBeat.i(95383);
+    paramLong = c(paramm, paramLong);
+    paramm = new TimeSignalCommand(paramLong, paramu.ah(paramLong));
+    AppMethodBeat.o(95383);
+    return paramm;
+  }
+  
+  static long c(m paramm, long paramLong)
+  {
+    AppMethodBeat.i(95384);
+    long l2 = paramm.readUnsignedByte();
     long l1 = -9223372036854775807L;
     if ((0x80 & l2) != 0L) {
-      l1 = ((1L & l2) << 32 | paramj.bp()) + paramLong & 0xFFFFFFFF;
+      l1 = ((1L & l2) << 32 | paramm.cc()) + paramLong & 0xFFFFFFFF;
     }
+    AppMethodBeat.o(95384);
     return l1;
-  }
-  
-  static TimeSignalCommand b(j paramj, long paramLong, q paramq)
-  {
-    paramLong = a(paramj, paramLong);
-    return new TimeSignalCommand(paramLong, paramq.W(paramLong));
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.aHK);
-    paramParcel.writeLong(this.aHL);
+    AppMethodBeat.i(95385);
+    paramParcel.writeLong(this.aOE);
+    paramParcel.writeLong(this.aOF);
+    AppMethodBeat.o(95385);
   }
 }
 

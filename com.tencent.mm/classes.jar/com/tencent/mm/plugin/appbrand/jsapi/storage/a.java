@@ -1,22 +1,20 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.sdk.g.d;
 
 public final class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.a<h>
 {
   public static final int CTRL_INDEX = 18;
   public static final String NAME = "clearStorage";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  private void a(h paramh, int paramInt)
   {
-    paramJSONObject = new JsApiClearStorageTask();
-    paramJSONObject.appId = paramc.getAppId();
-    AppBrandMainProcessService.a(paramJSONObject);
-    paramc.C(paramInt, h("ok", null));
+    AppMethodBeat.i(102023);
+    d.post(new a.1(this, paramh, paramInt), "JsApiClearStorage");
+    AppMethodBeat.o(102023);
   }
 }
 

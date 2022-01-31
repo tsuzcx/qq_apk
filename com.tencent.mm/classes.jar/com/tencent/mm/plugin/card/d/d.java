@@ -1,142 +1,183 @@
 package com.tencent.mm.plugin.card.d;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.widget.b.c;
 
 public final class d
 {
+  private static c a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    AppMethodBeat.i(88842);
+    View localView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
+    TextView localTextView;
+    String str;
+    if (paramInt == 2130968998)
+    {
+      localTextView = (TextView)localView.findViewById(2131822379);
+      str = paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        str = paramContext.getResources().getString(2131297892);
+      }
+      localTextView.setText(paramContext.getResources().getString(2131297865, new Object[] { str }));
+    }
+    for (;;)
+    {
+      paramContext = h.a(paramContext, paramString1, paramString3, localView, paramOnClickListener);
+      AppMethodBeat.o(88842);
+      return paramContext;
+      if (paramInt == 2130968997)
+      {
+        localTextView = (TextView)localView.findViewById(2131822379);
+        str = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          str = paramContext.getResources().getString(2131297892);
+        }
+        localTextView.setText(paramContext.getResources().getString(2131297864, new Object[] { str }));
+      }
+    }
+  }
+  
+  private static c a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
+  {
+    AppMethodBeat.i(88843);
+    View localView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt, null);
+    TextView localTextView;
+    String str;
+    if (paramInt == 2130968998)
+    {
+      localTextView = (TextView)localView.findViewById(2131822379);
+      str = paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        str = paramContext.getResources().getString(2131297892);
+      }
+      localTextView.setText(paramContext.getResources().getString(2131297865, new Object[] { str }));
+    }
+    for (;;)
+    {
+      paramContext = h.a(paramContext, paramString1, localView, paramString3, paramString4, paramOnClickListener1, paramOnClickListener2);
+      AppMethodBeat.o(88843);
+      return paramContext;
+      if (paramInt == 2130968997)
+      {
+        localTextView = (TextView)localView.findViewById(2131822379);
+        str = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          str = paramContext.getResources().getString(2131297892);
+        }
+        localTextView.setText(paramContext.getResources().getString(2131297864, new Object[] { str }));
+      }
+    }
+  }
+  
   public static void a(MMActivity paramMMActivity, d.b paramb)
   {
-    h.a(paramMMActivity, true, paramMMActivity.getString(a.g.card_clear_list_tip), "", paramMMActivity.getString(a.g.app_ok), paramMMActivity.getString(a.g.app_cancel), new d.4(paramb), new d.5());
+    AppMethodBeat.i(88836);
+    h.a(paramMMActivity, true, paramMMActivity.getString(2131297877), "", paramMMActivity.getString(2131297018), paramMMActivity.getString(2131296888), new d.4(paramb), new d.5());
+    AppMethodBeat.o(88836);
   }
   
   public static void a(MMActivity paramMMActivity, String paramString1, String paramString2, d.b paramb)
   {
+    AppMethodBeat.i(88835);
     if (TextUtils.isEmpty(paramString2)) {
-      paramString2 = paramMMActivity.getString(a.g.app_delete_tips);
+      paramString2 = paramMMActivity.getString(2131296902);
     }
     for (;;)
     {
-      h.a(paramMMActivity, true, paramString2, paramMMActivity.getString(a.g.app_tip), paramMMActivity.getString(a.g.app_ok), paramMMActivity.getString(a.g.app_cancel), new d.1(paramb, paramString1), new d.3());
+      h.a(paramMMActivity, true, paramString2, paramMMActivity.getString(2131297087), paramMMActivity.getString(2131297018), paramMMActivity.getString(2131296888), new d.1(paramb, paramString1), new d.3());
+      AppMethodBeat.o(88835);
       return;
     }
   }
   
   public static void a(MMActivity paramMMActivity, String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(88839);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = paramMMActivity.getString(a.g.card_wallet_unknown_err);
+      str = paramMMActivity.getString(2131298085);
     }
     h.a(paramMMActivity, str, null, false, new d.6(paramBoolean, paramMMActivity));
-  }
-  
-  public static void b(MMActivity paramMMActivity, String paramString)
-  {
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = paramMMActivity.getString(a.g.card_wallet_unknown_err);
-    }
-    a(paramMMActivity, str, false);
+    AppMethodBeat.o(88839);
   }
   
   public static void b(MMActivity paramMMActivity, String paramString, int paramInt)
   {
+    AppMethodBeat.i(88838);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = "errcode = " + paramInt;
+      str = "errcode = ".concat(String.valueOf(paramInt));
     }
     a(paramMMActivity, str, false);
+    AppMethodBeat.o(88838);
   }
   
   public static void c(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramInt1 == -1) {
+    AppMethodBeat.i(88841);
+    if (paramInt1 == -1)
+    {
+      AppMethodBeat.o(88841);
       return;
     }
-    String str1;
-    if (paramInt1 == a.e.card_show_share_card_entrance_tips)
-    {
-      str2 = paramContext.getResources().getString(paramInt2);
-      str3 = paramContext.getResources().getString(a.g.card_iknow);
-      localObject1 = new d.9();
-      localObject2 = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt1, null);
-      if (paramInt1 == a.e.card_show_accepted_tips_for_share)
-      {
-        localObject3 = (TextView)((View)localObject2).findViewById(a.d.card_show_accepted_tips_tv);
-        str1 = paramString;
-        if (TextUtils.isEmpty(paramString)) {
-          str1 = paramContext.getResources().getString(a.g.card_coupon);
-        }
-        ((TextView)localObject3).setText(paramContext.getResources().getString(a.g.card_accepted_tips_for_share, new Object[] { str1 }));
-      }
-      for (;;)
-      {
-        paramContext = h.a(paramContext, str2, str3, (View)localObject2, (DialogInterface.OnClickListener)localObject1);
-        label139:
-        if (paramContext == null) {
-          break;
-        }
-        paramContext.show();
-        return;
-        if (paramInt1 == a.e.card_show_accepted_tips)
+    if (paramInt1 == 2130968999) {}
+    for (paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131297952), new DialogInterface.OnClickListener()
         {
-          localObject3 = (TextView)((View)localObject2).findViewById(a.d.card_show_accepted_tips_tv);
-          str1 = paramString;
-          if (TextUtils.isEmpty(paramString)) {
-            str1 = paramContext.getResources().getString(a.g.card_coupon);
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(88833);
+            paramAnonymousDialogInterface.dismiss();
+            AppMethodBeat.o(88833);
           }
-          ((TextView)localObject3).setText(paramContext.getResources().getString(a.g.card_accepted_tips, new Object[] { str1 }));
-        }
-      }
-    }
-    String str2 = paramContext.getResources().getString(paramInt2);
-    String str3 = paramContext.getResources().getString(a.g.card_jump_to_card_entrance_tips_btn);
-    Object localObject1 = paramContext.getResources().getString(a.g.card_iknow);
-    Object localObject2 = new d.10(paramContext);
-    Object localObject3 = new d.2();
-    View localView = ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(paramInt1, null);
-    TextView localTextView;
-    if (paramInt1 == a.e.card_show_accepted_tips_for_share)
+        });; paramContext = a(paramContext, paramInt1, paramContext.getResources().getString(paramInt2), paramString, paramContext.getResources().getString(2131297968), paramContext.getResources().getString(2131297952), new d.10(paramContext), new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(88827);
+            paramAnonymousDialogInterface.dismiss();
+            AppMethodBeat.o(88827);
+          }
+        }))
     {
-      localTextView = (TextView)localView.findViewById(a.d.card_show_accepted_tips_tv);
-      str1 = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str1 = paramContext.getResources().getString(a.g.card_coupon);
+      if (paramContext != null) {
+        paramContext.show();
       }
-      localTextView.setText(paramContext.getResources().getString(a.g.card_accepted_tips_for_share, new Object[] { str1 }));
+      AppMethodBeat.o(88841);
+      return;
     }
-    for (;;)
-    {
-      paramContext = h.a(paramContext, str2, localView, str3, (String)localObject1, (DialogInterface.OnClickListener)localObject2, (DialogInterface.OnClickListener)localObject3);
-      break label139;
-      break;
-      if (paramInt1 == a.e.card_show_accepted_tips)
-      {
-        localTextView = (TextView)localView.findViewById(a.d.card_show_accepted_tips_tv);
-        str1 = paramString;
-        if (TextUtils.isEmpty(paramString)) {
-          str1 = paramContext.getResources().getString(a.g.card_coupon);
-        }
-        localTextView.setText(paramContext.getResources().getString(a.g.card_accepted_tips, new Object[] { str1 }));
-      }
+  }
+  
+  public static void c(MMActivity paramMMActivity)
+  {
+    AppMethodBeat.i(88840);
+    h.a(paramMMActivity, paramMMActivity.getString(2131298015, new Object[] { paramMMActivity.getString(2131297868) }), paramMMActivity.getString(2131297087), new d.7(paramMMActivity), new d.8());
+    AppMethodBeat.o(88840);
+  }
+  
+  public static void c(MMActivity paramMMActivity, String paramString)
+  {
+    AppMethodBeat.i(88837);
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      str = paramMMActivity.getString(2131298085);
     }
+    a(paramMMActivity, str, false);
+    AppMethodBeat.o(88837);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.d
  * JD-Core Version:    0.7.0.1
  */

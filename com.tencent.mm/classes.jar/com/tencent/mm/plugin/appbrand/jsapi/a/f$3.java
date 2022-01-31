@@ -2,22 +2,25 @@ package com.tencent.mm.plugin.appbrand.jsapi.a;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.protocal.c.er;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.protocal.protobuf.fu;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$3
   implements DialogInterface.OnClickListener
 {
-  f$3(f paramf, er paramer, q paramq, int paramInt, com.tencent.mm.ah.b paramb) {}
+  f$3(f paramf, fu paramfu, v paramv, int paramInt) {}
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.i("MicroMsg.JsApiRequestAuthUserAutoFillData", "do accept the auto fill data protocol");
-    this.gkN.syz = true;
-    this.gkf.C(this.dIS, this.gkR.h("ok", null));
-    com.tencent.mm.ipcinvoker.wx_extension.b.a(this.eew, new f.3.1(this));
+    AppMethodBeat.i(101967);
+    ab.i("MicroMsg.JsApiRequestAuthUserAutoFillData", "do not accept the auto fill data protocol");
+    this.hED.wsf = false;
+    this.hEe.h(this.bAX, this.hEH.j("cancel", null));
+    f.a(this.hEe, this.hED);
+    AppMethodBeat.o(101967);
   }
 }
 

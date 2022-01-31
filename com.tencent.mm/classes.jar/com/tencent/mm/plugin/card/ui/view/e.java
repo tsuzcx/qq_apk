@@ -4,49 +4,54 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.c.ly;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.ov;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class e
   extends i
 {
-  private View ixS;
+  private View kAZ;
   
-  public final void aCU()
+  public final void bfq()
   {
-    if (this.ixS != null) {
-      this.ixS.setVisibility(8);
+    AppMethodBeat.i(88743);
+    if (this.kAZ != null) {
+      this.kAZ.setVisibility(8);
     }
+    AppMethodBeat.o(88743);
   }
   
   public final void initView() {}
   
   public final void update()
   {
-    b localb = this.iya.aBE();
-    ly locally = localb.azx().sIE;
-    if (locally != null)
+    AppMethodBeat.i(88742);
+    b localb = this.kBh.bdv();
+    ov localov = localb.bbd().wGn;
+    if (localov != null)
     {
-      y.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + locally.nZA);
-      y.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + locally.text);
-      y.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + locally.sHO);
+      ab.i("MicroMsg.CardAnnoucementView", "card tp annoucement  endtime: " + localov.qNK);
+      ab.i("MicroMsg.CardAnnoucementView", "card tp annoucement  text: " + localov.text);
+      ab.i("MicroMsg.CardAnnoucementView", "card tp annoucement  thumb_url: " + localov.wFr);
     }
-    if ((locally != null) && (!TextUtils.isEmpty(locally.text)) && (localb.azv()))
+    if ((localov != null) && (!TextUtils.isEmpty(localov.text)) && (localb.bbb()))
     {
-      if (this.ixS == null) {
-        this.ixS = ((ViewStub)findViewById(a.d.card_annoucement_layout_stub)).inflate();
+      if (this.kAZ == null) {
+        this.kAZ = ((ViewStub)findViewById(2131822081)).inflate();
       }
-      ((TextView)this.ixS.findViewById(a.d.public_notice)).setText(locally.text);
-      this.ixS.setOnClickListener(this.iya.aBI());
-    }
-    while (this.ixS == null) {
+      ((TextView)this.kAZ.findViewById(2131821997)).setText(localov.text);
+      this.kAZ.setOnClickListener(this.kBh.bdz());
+      AppMethodBeat.o(88742);
       return;
     }
-    this.ixS.setVisibility(8);
+    if (this.kAZ != null) {
+      this.kAZ.setVisibility(8);
+    }
+    AppMethodBeat.o(88742);
   }
 }
 

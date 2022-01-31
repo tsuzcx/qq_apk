@@ -3,6 +3,7 @@ package com.tencent.smtt.sdk;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.utils.Apn;
 import com.tencent.smtt.utils.TbsLog;
 
@@ -11,6 +12,7 @@ class WebView$a
 {
   public void onReceive(Context arg1, Intent paramIntent)
   {
+    AppMethodBeat.i(64840);
     if (paramIntent != null) {}
     for (;;)
     {
@@ -34,6 +36,7 @@ class WebView$a
           {
             bool = true;
             QbSdk.e = bool;
+            AppMethodBeat.o(64840);
             return;
           }
         }
@@ -41,6 +44,7 @@ class WebView$a
       }
       catch (Throwable ???)
       {
+        AppMethodBeat.o(64840);
         return;
       }
     }

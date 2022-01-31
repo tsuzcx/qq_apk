@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.c.a;
 
 final class FaceDetectPrepareUI$11
@@ -7,11 +8,13 @@ final class FaceDetectPrepareUI$11
 {
   FaceDetectPrepareUI$11(FaceDetectPrepareUI paramFaceDetectPrepareUI) {}
   
-  public final void n(int paramInt1, int paramInt2, String paramString)
+  public final void s(int paramInt1, int paramInt2, String paramString)
   {
-    if (FaceDetectPrepareUI.b(this.jRg) != null) {
-      FaceDetectPrepareUI.b(this.jRg).c(paramInt1, paramInt2, paramString, null);
+    AppMethodBeat.i(414);
+    if (FaceDetectPrepareUI.b(this.mlC) != null) {
+      FaceDetectPrepareUI.b(this.mlC).c(paramInt1, paramInt2, paramString, null);
     }
+    AppMethodBeat.o(414);
   }
 }
 

@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.appbrand.ipc;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandMainProcessService$3
   extends Handler
@@ -15,15 +16,23 @@ final class AppBrandMainProcessService$3
   
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(90985);
     paramMessage = AppBrandMainProcessService.b(paramMessage.getData(), false);
-    MainProcessTask localMainProcessTask = AppBrandMainProcessService.tG(paramMessage.gep);
+    if (paramMessage == null)
+    {
+      AppMethodBeat.o(90985);
+      return;
+    }
+    MainProcessTask localMainProcessTask = AppBrandMainProcessService.BF(paramMessage.hwp);
     if (localMainProcessTask == null)
     {
-      y.e("MicroMsg.AppBrandMainProcessService", "receive client msg, get null task by id %s", new Object[] { paramMessage.gep });
+      ab.e("MicroMsg.AppBrandMainProcessService", "receive client msg, get null task by id %s", new Object[] { paramMessage.hwp });
+      AppMethodBeat.o(90985);
       return;
     }
     AppBrandMainProcessService.b(paramMessage, localMainProcessTask);
-    localMainProcessTask.Zv();
+    localMainProcessTask.atb();
+    AppMethodBeat.o(90985);
   }
 }
 

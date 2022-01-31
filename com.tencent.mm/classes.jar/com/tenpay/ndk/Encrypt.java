@@ -1,5 +1,6 @@
 package com.tenpay.ndk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.UnsupportedEncodingException;
 
 public class Encrypt
@@ -28,213 +29,266 @@ public class Encrypt
   
   public String desedeDecode(String paramString1, String paramString2)
   {
-    if ((paramString1 != null) && (paramString2 != null) && (paramString1.length() > 0)) {}
-    for (;;)
-    {
+    AppMethodBeat.i(49569);
+    if ((paramString1 != null) && (paramString2 != null) && (paramString1.length() > 0)) {
       try
       {
         this.raw_buf = paramString1.getBytes("UTF-8");
         this.key_buf = paramString2.getBytes("UTF-8");
         decrypt(this.key_buf, this.raw_buf);
-        if (this.dec_buf == null) {
+        if (this.dec_buf == null)
+        {
+          AppMethodBeat.o(49569);
           return null;
         }
-        try
-        {
-          paramString1 = new String(this.dec_buf, "UTF-8");
-          return paramString1;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-        paramString1 = null;
       }
       catch (Exception paramString1)
       {
+        AppMethodBeat.o(49569);
         return null;
       }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString1 = new String(this.dec_buf, "UTF-8");
+        AppMethodBeat.o(49569);
+        return paramString1;
+      }
+      catch (Exception paramString1)
+      {
+        AppMethodBeat.o(49569);
+        return null;
+      }
+      paramString1 = null;
     }
   }
   
   public String desedeEncode(String paramString)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    for (;;)
-    {
+    AppMethodBeat.i(49566);
+    if ((paramString != null) && (paramString.length() > 0)) {
       try
       {
         this.raw_buf = paramString.getBytes("UTF-8");
         encrypt(null, this.raw_buf);
-        if (this.enc_buf == null) {
+        if (this.enc_buf == null)
+        {
+          AppMethodBeat.o(49566);
           return null;
         }
-        try
-        {
-          paramString = new String(this.enc_buf, "UTF-8");
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          return null;
-        }
-        paramString = null;
       }
       catch (Exception paramString)
       {
+        AppMethodBeat.o(49566);
         return null;
       }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString = new String(this.enc_buf, "UTF-8");
+        AppMethodBeat.o(49566);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        AppMethodBeat.o(49566);
+        return null;
+      }
+      paramString = null;
     }
   }
   
   public String desedeEncode(String paramString1, String paramString2)
   {
-    if ((paramString1 != null) && (paramString2 != null) && (paramString1.length() > 0)) {}
-    for (;;)
-    {
+    AppMethodBeat.i(49568);
+    if ((paramString1 != null) && (paramString2 != null) && (paramString1.length() > 0)) {
       try
       {
         this.raw_buf = paramString1.getBytes("UTF-8");
         this.key_buf = paramString2.getBytes("UTF-8");
         encrypt(this.key_buf, this.raw_buf);
-        if (this.enc_buf == null) {
+        if (this.enc_buf == null)
+        {
+          AppMethodBeat.o(49568);
           return null;
         }
-        try
-        {
-          paramString1 = new String(this.enc_buf, "UTF-8");
-          return paramString1;
-        }
-        catch (Exception paramString1)
-        {
-          return null;
-        }
-        paramString1 = null;
       }
       catch (Exception paramString1)
       {
+        AppMethodBeat.o(49568);
         return null;
       }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString1 = new String(this.enc_buf, "UTF-8");
+        AppMethodBeat.o(49568);
+        return paramString1;
+      }
+      catch (Exception paramString1)
+      {
+        AppMethodBeat.o(49568);
+        return null;
+      }
+      paramString1 = null;
     }
   }
   
   public String desedeVerifyCode(String paramString)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    for (;;)
-    {
+    AppMethodBeat.i(49567);
+    if ((paramString != null) && (paramString.length() > 0)) {
       try
       {
         this.raw_buf = paramString.getBytes("UTF-8");
         encryptVerifyCode(this.raw_buf);
-        if (this.enc_buf == null) {
+        if (this.enc_buf == null)
+        {
+          AppMethodBeat.o(49567);
           return null;
         }
-        try
-        {
-          paramString = new String(this.enc_buf, "UTF-8");
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          return null;
-        }
-        paramString = null;
       }
       catch (Exception paramString)
       {
+        AppMethodBeat.o(49567);
         return null;
       }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramString = new String(this.enc_buf, "UTF-8");
+        AppMethodBeat.o(49567);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        AppMethodBeat.o(49567);
+        return null;
+      }
+      paramString = null;
     }
   }
   
   public String encryptPasswd(String paramString)
   {
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    for (;;)
-    {
+    AppMethodBeat.i(49572);
+    if ((paramString != null) && (paramString.length() > 0)) {
       try
       {
         this.raw_passwd = paramString.getBytes("UTF-8");
         encryptPasswd((byte)2, this.raw_passwd);
-        if (this.enc_passwd == null) {
+        if (this.enc_passwd == null)
+        {
+          AppMethodBeat.o(49572);
           return null;
         }
-        try
-        {
-          int i = this.enc_passwd.length / 2;
-          paramString = new byte[i];
-          System.arraycopy(this.enc_passwd, i, paramString, 0, i);
-          paramString = new String(paramString, "UTF-8");
-          return paramString;
-        }
-        catch (Exception paramString)
-        {
-          return null;
-        }
-        paramString = null;
       }
       catch (Exception paramString)
       {
+        AppMethodBeat.o(49572);
         return null;
       }
+    }
+    for (;;)
+    {
+      try
+      {
+        int i = this.enc_passwd.length / 2;
+        paramString = new byte[i];
+        System.arraycopy(this.enc_passwd, i, paramString, 0, i);
+        paramString = new String(paramString, "UTF-8");
+        AppMethodBeat.o(49572);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        AppMethodBeat.o(49572);
+        return null;
+      }
+      paramString = null;
     }
   }
   
   public String encryptPasswdWithRSA2048(String paramString)
   {
-    if ((paramString != null) && (paramString.length() > 0))
+    Object localObject2 = null;
+    AppMethodBeat.i(49571);
+    Object localObject1 = localObject2;
+    if (paramString != null)
     {
-      this.raw_passwd = null;
-      this.enc_passwd = null;
-      if (paramString.length() <= 0) {}
-    }
-    for (;;)
-    {
-      try
+      localObject1 = localObject2;
+      if (paramString.length() > 0)
       {
-        this.raw_passwd = paramString.getBytes("ASCII");
-        if (!encryptPasswdWithRSA2048((byte)2, this.raw_passwd, 1)) {
-          return null;
-        }
-        if (this.enc_passwd != null)
-        {
+        this.raw_passwd = null;
+        this.enc_passwd = null;
+        if (paramString.length() > 0) {
           try
           {
-            paramString = new String(this.enc_passwd, "ASCII");
-            return paramString;
+            this.raw_passwd = paramString.getBytes("UTF-8");
+            if (!encryptPasswdWithRSA2048((byte)2, this.raw_passwd, 1))
+            {
+              AppMethodBeat.o(49571);
+              return null;
+            }
           }
           catch (Exception paramString)
           {
+            AppMethodBeat.o(49571);
             return null;
           }
-          paramString = null;
+        }
+        if (this.enc_passwd == null)
+        {
+          AppMethodBeat.o(49571);
+          return null;
         }
       }
-      catch (Exception paramString)
-      {
-        return null;
-      }
     }
+    try
+    {
+      localObject1 = "V01_" + new String(this.enc_passwd, "UTF-8");
+      AppMethodBeat.o(49571);
+      return localObject1;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(49571);
+    }
+    return null;
   }
   
   public String getPasswdTimeStamp()
   {
-    return String.valueOf(this.time_stamp);
+    AppMethodBeat.i(49570);
+    int i = this.time_stamp;
+    AppMethodBeat.o(49570);
+    return String.valueOf(i);
   }
   
   public String getRandomKey()
   {
-    Object localObject = getRandom();
-    if (localObject != null) {
+    AppMethodBeat.i(49573);
+    Object localObject1 = getRandom();
+    if (localObject1 != null) {}
+    for (;;)
+    {
       try
       {
-        localObject = new String((byte[])localObject, "UTF-8");
-        return localObject;
+        localObject1 = new String((byte[])localObject1, "UTF-8");
+        AppMethodBeat.o(49573);
+        return localObject1;
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+      Object localObject2 = null;
     }
-    return null;
   }
   
   public void setTimeStamp(String paramString)
@@ -248,7 +302,7 @@ public class Encrypt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tenpay.ndk.Encrypt
  * JD-Core Version:    0.7.0.1
  */

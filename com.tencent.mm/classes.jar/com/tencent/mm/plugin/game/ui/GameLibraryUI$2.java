@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.game.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameLibraryUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -11,9 +12,11 @@ final class GameLibraryUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new Intent(this.lcP, GameSearchUI.class);
+    AppMethodBeat.i(112031);
+    paramMenuItem = new Intent(this.nAK, GameSearchUI.class);
     paramMenuItem.putExtra("game_report_from_scene", 1109);
-    this.lcP.startActivity(paramMenuItem);
+    this.nAK.startActivity(paramMenuItem);
+    AppMethodBeat.o(112031);
     return true;
   }
 }

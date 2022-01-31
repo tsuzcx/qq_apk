@@ -1,108 +1,128 @@
 package com.tencent.mm.plugin.appbrand.ui.banner;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class AppBrandStickyBannerLogic$b
 {
-  static final Set<f> dup = new HashSet();
+  static final Set<f> bLQ;
   
-  static void apr()
+  static
   {
-    AppBrandStickyBannerLogic.access$200();
+    AppMethodBeat.i(133298);
+    bLQ = new HashSet();
+    AppMethodBeat.o(133298);
   }
   
-  public static boolean apw()
+  public static void M(Intent paramIntent)
   {
+    AppMethodBeat.i(133289);
+    if ((paramIntent == null) || (!g.RG()))
+    {
+      AppMethodBeat.o(133289);
+      return;
+    }
+    g.RO().ac(new AppBrandStickyBannerLogic.b.1(paramIntent));
+    AppMethodBeat.o(133289);
+  }
+  
+  static void aMH()
+  {
+    AppMethodBeat.i(133291);
     AppBrandStickyBannerLogic.access$200();
+    AppMethodBeat.o(133291);
+  }
+  
+  public static boolean aMM()
+  {
+    AppMethodBeat.i(133295);
+    AppBrandStickyBannerLogic.access$200();
+    AppMethodBeat.o(133295);
     return false;
   }
   
-  private static void apx()
+  private static void aMN()
   {
-    ??? = BannerModel.apz();
+    AppMethodBeat.i(133292);
+    ??? = BannerModel.aMP();
     String str1;
     if (??? == null)
     {
       str1 = null;
       if (??? != null) {
-        break label72;
+        break label82;
       }
     }
-    label72:
-    for (int i = -1;; i = ((BannerModel)???).fJy)
+    label82:
+    for (int i = -1;; i = ((BannerModel)???).hcr)
     {
-      synchronized (dup)
+      synchronized (bLQ)
       {
-        Iterator localIterator = dup.iterator();
+        Iterator localIterator = bLQ.iterator();
         if (!localIterator.hasNext()) {
-          break label80;
+          break label90;
         }
-        ((f)localIterator.next()).aP(str1, i);
+        ((f)localIterator.next()).bf(str1, i);
       }
       String str2 = ((BannerModel)???).appId;
       break;
     }
-    label80:
+    label90:
+    AppMethodBeat.o(133292);
   }
   
-  public static void apy()
+  public static void aMO()
   {
+    AppMethodBeat.i(133296);
     AppBrandStickyBannerLogic.access$200();
+    AppMethodBeat.o(133296);
   }
   
   static void b(AppBrandStickyBannerLogic.OperateTask paramOperateTask)
   {
+    AppMethodBeat.i(133290);
     if (b.a(paramOperateTask)) {
-      apx();
+      aMN();
     }
+    AppMethodBeat.o(133290);
   }
   
   public static void c(f paramf)
   {
+    AppMethodBeat.i(133294);
     if (paramf != null) {
-      synchronized (dup)
+      synchronized (bLQ)
       {
-        dup.remove(paramf);
+        bLQ.remove(paramf);
+        AppMethodBeat.o(133294);
         return;
       }
     }
+    AppMethodBeat.o(133294);
   }
   
   public static void d(f paramf)
   {
+    AppMethodBeat.i(133293);
     if (paramf != null) {
-      synchronized (dup)
+      synchronized (bLQ)
       {
-        dup.add(paramf);
+        bLQ.add(paramf);
+        AppMethodBeat.o(133293);
         return;
       }
     }
-  }
-  
-  public static void u(Intent paramIntent)
-  {
-    if ((paramIntent == null) || (!g.DK())) {
-      return;
-    }
-    g.DS().O(new Runnable()
-    {
-      public final void run()
-      {
-        if (b.t(this.val$intent)) {
-          AppBrandStickyBannerLogic.b.access$100();
-        }
-      }
-    });
+    AppMethodBeat.o(133293);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.AppBrandStickyBannerLogic.b
  * JD-Core Version:    0.7.0.1
  */

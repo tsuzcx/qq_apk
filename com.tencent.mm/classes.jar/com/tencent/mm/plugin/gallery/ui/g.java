@@ -1,31 +1,19 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.content.Context;
-import android.graphics.PointF;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.af;
-import android.util.DisplayMetrics;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
   extends LinearLayoutManager
 {
   public final void a(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramRecyclerView = new af(paramRecyclerView.getContext())
-    {
-      protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
-      {
-        return 50.0F / paramAnonymousDisplayMetrics.densityDpi;
-      }
-      
-      public final PointF bD(int paramAnonymousInt)
-      {
-        return g.this.bD(paramAnonymousInt);
-      }
-    };
-    paramRecyclerView.ahA = paramInt;
+    AppMethodBeat.i(21604);
+    paramRecyclerView = new g.1(this, paramRecyclerView.getContext());
+    paramRecyclerView.ajQ = paramInt;
     a(paramRecyclerView);
+    AppMethodBeat.o(21604);
   }
 }
 

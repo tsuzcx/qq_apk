@@ -5,7 +5,7 @@ import com.tencent.mm.storage.bi;
 @Deprecated
 public abstract interface l
 {
-  public abstract String I(bi parambi);
+  public abstract String N(bi parambi);
 }
 
 

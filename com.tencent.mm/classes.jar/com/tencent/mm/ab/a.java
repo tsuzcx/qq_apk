@@ -1,68 +1,43 @@
 package com.tencent.mm.ab;
 
-public abstract interface a
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.g.a;
+import com.tencent.mm.sdk.platformtools.ab;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/kt/CodeMan;", "", "taskName", "", "(Ljava/lang/String;)V", "testTime", "Lcom/tencent/mm/compatible/util/CodeInfo$TestTime;", "begin", "", "diff", "getdiff", "", "mark", "toString", "libktcomm_release"})
+public final class a
 {
-  public abstract a ac(Object paramObject);
+  public g.a eMo;
+  private final String eMp;
   
-  public abstract a bC(boolean paramBoolean);
+  public a(String paramString)
+  {
+    AppMethodBeat.i(114168);
+    this.eMp = paramString;
+    this.eMo = new g.a();
+    this.eMo.reset();
+    AppMethodBeat.o(114168);
+  }
   
-  public abstract a bw(long paramLong);
+  public final void SS()
+  {
+    AppMethodBeat.i(114166);
+    ab.i("MicroMsg.CodeUtil", toString());
+    AppMethodBeat.o(114166);
+  }
   
-  public abstract Object get(int paramInt);
-  
-  public abstract boolean getBoolean(int paramInt);
-  
-  public abstract double getDouble(int paramInt);
-  
-  public abstract int getInt(int paramInt);
-  
-  public abstract long getLong(int paramInt);
-  
-  public abstract String getString(int paramInt);
-  
-  public abstract a hj(int paramInt);
-  
-  public abstract a hk(int paramInt);
-  
-  public abstract a hl(int paramInt);
-  
-  public abstract c hm(int paramInt);
-  
-  public abstract c hn(int paramInt);
-  
-  public abstract boolean isNull(int paramInt);
-  
-  public abstract int length();
-  
-  public abstract a n(double paramDouble);
-  
-  public abstract Object opt(int paramInt);
-  
-  public abstract boolean optBoolean(int paramInt);
-  
-  public abstract boolean optBoolean(int paramInt, boolean paramBoolean);
-  
-  public abstract double optDouble(int paramInt);
-  
-  public abstract double optDouble(int paramInt, double paramDouble);
-  
-  public abstract int optInt(int paramInt);
-  
-  public abstract int optInt(int paramInt1, int paramInt2);
-  
-  public abstract long optLong(int paramInt);
-  
-  public abstract long optLong(int paramInt, long paramLong);
-  
-  public abstract String optString(int paramInt);
-  
-  public abstract String optString(int paramInt, String paramString);
-  
-  public abstract Object remove(int paramInt);
+  public final String toString()
+  {
+    AppMethodBeat.i(114167);
+    String str = "CodeMan task " + this.eMp + " cost : " + this.eMo.Mm();
+    AppMethodBeat.o(114167);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ab.a
  * JD-Core Version:    0.7.0.1
  */

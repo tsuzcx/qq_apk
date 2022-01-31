@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface c
 {
-  public abstract boolean cw(View paramView);
+  public abstract boolean M(View paramView, int paramInt);
 }
 
 

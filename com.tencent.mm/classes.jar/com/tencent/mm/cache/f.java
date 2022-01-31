@@ -1,22 +1,16 @@
 package com.tencent.mm.cache;
 
-import android.graphics.Bitmap;
-import android.os.IInterface;
-
 public abstract interface f
-  extends IInterface
 {
-  public abstract void b(String paramString, Bitmap paramBitmap);
+  public abstract void d(Object paramObject1, Object paramObject2);
   
-  public abstract MCacheItem eu(String paramString);
+  public abstract Object get(Object paramObject);
   
-  public abstract void ev(String paramString);
-  
-  public abstract Bitmap getBitmap(String paramString);
+  public abstract Object remove(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.cache.f
  * JD-Core Version:    0.7.0.1
  */

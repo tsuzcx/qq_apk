@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceDeviceProfileUI$6
   implements Runnable
@@ -12,12 +10,14 @@ final class ExdeviceDeviceProfileUI$6
   
   public final void run()
   {
-    Toast.makeText(this.jDf.mController.uMN, R.l.exdevice_unbind_failed, 1).show();
+    AppMethodBeat.i(19942);
+    Toast.makeText(this.lMD.getContext(), 2131299485, 1).show();
+    AppMethodBeat.o(19942);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceDeviceProfileUI.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.vending.g.d.a;
 
 final class LaunchAAUI$17
-  implements TextWatcher
+  implements d.a
 {
   LaunchAAUI$17(LaunchAAUI paramLaunchAAUI) {}
   
-  public final void afterTextChanged(Editable paramEditable)
+  public final void aX(Object paramObject)
   {
-    LaunchAAUI.c(this.eZt);
+    AppMethodBeat.i(40838);
+    ab.i("MicroMsg.LaunchAAUI", "fetch operation data failed");
+    AppMethodBeat.o(40838);
   }
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.17
  * JD-Core Version:    0.7.0.1
  */

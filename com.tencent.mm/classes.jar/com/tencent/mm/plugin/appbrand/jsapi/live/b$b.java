@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
 
 final class b$b
-  extends ac
+  extends ai
 {
-  private static final int CTRL_INDEX = 412;
-  private static final String NAME = "onLivePlayerNetStatus";
+  private static final int CTRL_INDEX = 514;
+  private static final String NAME = "onLivePusherBGMProgress";
 }
 
 

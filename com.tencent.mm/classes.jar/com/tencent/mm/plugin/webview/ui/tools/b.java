@@ -1,118 +1,153 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.http.SslCertificate;
-import android.net.http.SslCertificate.DName;
-import android.net.http.SslError;
-import android.util.Base64;
-import com.jg.JgClassChecked;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.h;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
-@JgClassChecked(author=20, fComment="checked", lastDate="20141210", reviewer=20, vComment={com.jg.EType.HTTPSCHECK})
 public final class b
 {
-  Context context;
-  private final SimpleDateFormat nwJ = new SimpleDateFormat("yyyy-MM-dd HH:mmZ", Locale.getDefault());
-  WebView rlh;
-  Map<String, List<h>> rli;
-  Map<String, Boolean> rlj;
+  private static final Map<Integer, Integer> uZV;
+  private static final Map<Integer, Integer> uZW;
+  private static final Map<Integer, Integer> uZX;
+  private static final Map<String, Integer> uZY;
   
-  public b(Context paramContext, WebView paramWebView)
+  static
   {
-    this.context = paramContext;
-    this.rlh = paramWebView;
-    this.rli = new HashMap();
-    this.rlj = new HashMap();
+    AppMethodBeat.i(7347);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(-1), Integer.valueOf(5));
+    localHashMap.put(Integer.valueOf(-2), Integer.valueOf(6));
+    localHashMap.put(Integer.valueOf(-3), Integer.valueOf(7));
+    localHashMap.put(Integer.valueOf(-4), Integer.valueOf(8));
+    localHashMap.put(Integer.valueOf(-5), Integer.valueOf(9));
+    localHashMap.put(Integer.valueOf(-6), Integer.valueOf(10));
+    localHashMap.put(Integer.valueOf(-7), Integer.valueOf(11));
+    localHashMap.put(Integer.valueOf(-8), Integer.valueOf(12));
+    localHashMap.put(Integer.valueOf(-9), Integer.valueOf(13));
+    localHashMap.put(Integer.valueOf(-10), Integer.valueOf(14));
+    localHashMap.put(Integer.valueOf(-11), Integer.valueOf(15));
+    localHashMap.put(Integer.valueOf(-12), Integer.valueOf(16));
+    localHashMap.put(Integer.valueOf(-13), Integer.valueOf(17));
+    localHashMap.put(Integer.valueOf(-14), Integer.valueOf(18));
+    localHashMap.put(Integer.valueOf(-15), Integer.valueOf(19));
+    uZV = Collections.unmodifiableMap(localHashMap);
+    localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(-1), Integer.valueOf(4));
+    localHashMap.put(Integer.valueOf(-2), Integer.valueOf(5));
+    localHashMap.put(Integer.valueOf(-3), Integer.valueOf(6));
+    localHashMap.put(Integer.valueOf(-4), Integer.valueOf(7));
+    localHashMap.put(Integer.valueOf(-5), Integer.valueOf(8));
+    localHashMap.put(Integer.valueOf(-6), Integer.valueOf(9));
+    uZW = Collections.unmodifiableMap(localHashMap);
+    localHashMap = new HashMap();
+    localHashMap.put(Integer.valueOf(0), Integer.valueOf(0));
+    localHashMap.put(Integer.valueOf(1), Integer.valueOf(1));
+    localHashMap.put(Integer.valueOf(2), Integer.valueOf(2));
+    uZX = Collections.unmodifiableMap(localHashMap);
+    localHashMap = new HashMap();
+    localHashMap.put("imagePreview", Integer.valueOf(2));
+    localHashMap.put("profile", Integer.valueOf(3));
+    localHashMap.put("addContact", Integer.valueOf(4));
+    localHashMap.put("shareTimeline", Integer.valueOf(7));
+    localHashMap.put("scanQRCode", Integer.valueOf(8));
+    localHashMap.put("hideOptionMenu", Integer.valueOf(10));
+    localHashMap.put("getBrandWCPayRequest", Integer.valueOf(11));
+    localHashMap.put("editAddress", Integer.valueOf(12));
+    localHashMap.put("getLatestAddress", Integer.valueOf(13));
+    localHashMap.put("jumpWCMall", Integer.valueOf(14));
+    localHashMap.put("geoLocation", Integer.valueOf(15));
+    localHashMap.put("openProductView", Integer.valueOf(16));
+    localHashMap.put("openProductViewWithPid", Integer.valueOf(16));
+    localHashMap.put("openLocation", Integer.valueOf(17));
+    localHashMap.put("hideMenuItems", Integer.valueOf(19));
+    localHashMap.put("connectToFreeWifi", Integer.valueOf(20));
+    localHashMap.put("startRecord", Integer.valueOf(21));
+    localHashMap.put("chooseImage", Integer.valueOf(22));
+    localHashMap.put("scanCover", Integer.valueOf(23));
+    localHashMap.put("openGameWebView", Integer.valueOf(28));
+    uZY = Collections.unmodifiableMap(localHashMap);
+    AppMethodBeat.o(7347);
   }
   
-  @TargetApi(14)
-  final String a(String paramString, SslError paramSslError)
+  public static int Kl(int paramInt)
   {
-    try
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("<sslerror>");
-      localStringBuilder.append("<primaryerror>");
-      Object localObject;
-      if (paramSslError == null)
-      {
-        localObject = "-1";
-        localStringBuilder.append(localObject);
-        localStringBuilder.append("</primaryerror>");
-        localStringBuilder.append("<clienttime>");
-        localStringBuilder.append(Base64.encodeToString(this.nwJ.format(new Date()).getBytes(), 0));
-        localStringBuilder.append("</clienttime>");
-        localStringBuilder.append("<currenturl>");
-        if (!bk.bl(paramString)) {
-          localStringBuilder.append(bk.ZP(paramString));
-        }
-        localStringBuilder.append("</currenturl>");
-        if (paramSslError != null) {
-          break label334;
-        }
-      }
-      label334:
-      for (paramString = null;; paramString = paramSslError.getCertificate())
-      {
-        if (paramString != null)
-        {
-          paramSslError = paramString.getIssuedBy();
-          if (paramSslError != null)
-          {
-            localStringBuilder.append("<issuedby>");
-            if (paramSslError.getDName() != null) {
-              localStringBuilder.append(Base64.encodeToString(paramSslError.getDName().getBytes(), 0));
-            }
-            localStringBuilder.append("</issuedby>");
-          }
-          paramSslError = paramString.getIssuedTo();
-          if (paramSslError != null)
-          {
-            localStringBuilder.append("<issuedto>");
-            if (paramSslError.getDName() != null) {
-              localStringBuilder.append(Base64.encodeToString(paramSslError.getDName().getBytes(), 0));
-            }
-            localStringBuilder.append("</issuedto>");
-          }
-          paramSslError = paramString.getValidNotAfter();
-          if (paramSslError != null)
-          {
-            localStringBuilder.append("<getvalidnotafter>");
-            localStringBuilder.append(Base64.encodeToString(paramSslError.getBytes(), 0));
-            localStringBuilder.append("</getvalidnotafter>");
-          }
-          paramString = paramString.getValidNotBefore();
-          if (paramString != null)
-          {
-            localStringBuilder.append("<getvalidnotbefore>");
-            localStringBuilder.append(Base64.encodeToString(paramString.getBytes(), 0));
-            localStringBuilder.append("</getvalidnotbefore>");
-          }
-        }
-        localStringBuilder.append("</sslerror>");
-        return localStringBuilder.toString();
-        localObject = Integer.valueOf(paramSslError.getPrimaryError());
-        break;
-      }
-      return "";
+    AppMethodBeat.i(7343);
+    Integer localInteger2 = (Integer)uZV.get(Integer.valueOf(paramInt));
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = (Integer)uZV.get(Integer.valueOf(-1));
     }
-    catch (Exception paramString)
-    {
-      y.w("MicroMsg.WebView.MMSslErrorHandler", "buildXml ex = %s", new Object[] { paramString.getMessage() });
+    paramInt = localInteger1.intValue();
+    AppMethodBeat.o(7343);
+    return paramInt;
+  }
+  
+  public static int Km(int paramInt)
+  {
+    AppMethodBeat.i(7344);
+    Integer localInteger2 = (Integer)uZW.get(Integer.valueOf(paramInt));
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = (Integer)uZW.get(Integer.valueOf(-1));
     }
+    paramInt = localInteger1.intValue();
+    AppMethodBeat.o(7344);
+    return paramInt;
+  }
+  
+  public static int Kn(int paramInt)
+  {
+    AppMethodBeat.i(7345);
+    Integer localInteger2 = (Integer)uZX.get(Integer.valueOf(paramInt));
+    Integer localInteger1 = localInteger2;
+    if (localInteger2 == null) {
+      localInteger1 = Integer.valueOf(-1);
+    }
+    paramInt = localInteger1.intValue();
+    AppMethodBeat.o(7345);
+    return paramInt;
+  }
+  
+  public static void Ko(int paramInt)
+  {
+    AppMethodBeat.i(153174);
+    h.qsU.idkeyStat(1061L, paramInt, 1L, false);
+    AppMethodBeat.o(153174);
+  }
+  
+  public static int ahY(String paramString)
+  {
+    AppMethodBeat.i(7346);
+    Integer localInteger = (Integer)uZY.get(paramString);
+    paramString = localInteger;
+    if (localInteger == null) {
+      paramString = Integer.valueOf(-1);
+    }
+    int i = paramString.intValue();
+    AppMethodBeat.o(7346);
+    return i;
+  }
+  
+  public static int np(long paramLong)
+  {
+    if (paramLong < 0L) {
+      return -1;
+    }
+    if (paramLong <= 2000L) {
+      return 1;
+    }
+    if (paramLong <= 6000L) {
+      return 2;
+    }
+    if (paramLong <= 12000L) {
+      return 3;
+    }
+    if (paramLong <= 60000L) {
+      return 4;
+    }
+    return 5;
   }
 }
 

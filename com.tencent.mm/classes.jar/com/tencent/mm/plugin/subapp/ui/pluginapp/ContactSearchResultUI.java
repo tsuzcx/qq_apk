@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.subapp.ui.pluginapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ag.c;
-import com.tencent.mm.ag.o;
-import com.tencent.mm.protocal.c.bnk;
-import com.tencent.mm.protocal.c.bnm;
-import com.tencent.mm.protocal.c.bob;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.c;
+import com.tencent.mm.ah.o;
+import com.tencent.mm.protocal.protobuf.bxf;
+import com.tencent.mm.protocal.protobuf.bxh;
+import com.tencent.mm.protocal.protobuf.bxw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.applet.a;
 import java.util.HashMap;
@@ -25,76 +24,105 @@ import java.util.Map;
 public class ContactSearchResultUI
   extends MMActivity
 {
-  private static ah dPu = new ah(Looper.getMainLooper());
-  private LinkedList<bnk> dTx = new LinkedList();
-  private ListView pxH;
-  private ContactSearchResultUI.a pxI;
-  private LinkedList<bob> pxJ = new LinkedList();
-  private Map<String, ContactSearchResultUI.b> pxK;
+  private static ak feT;
+  private LinkedList<bxf> fjy;
+  private ListView sZv;
+  private ContactSearchResultUI.a sZw;
+  private LinkedList<bxw> sZx;
+  private Map<String, ContactSearchResultUI.b> sZy;
   
-  protected final int getLayoutId()
+  static
   {
-    return R.i.contact_search_result;
+    AppMethodBeat.i(25524);
+    feT = new ak(Looper.getMainLooper());
+    AppMethodBeat.o(25524);
   }
   
-  protected final void initView()
+  public ContactSearchResultUI()
   {
-    setMMTitle(R.l.contact_search_result);
+    AppMethodBeat.i(25519);
+    this.fjy = new LinkedList();
+    this.sZx = new LinkedList();
+    AppMethodBeat.o(25519);
+  }
+  
+  public int getLayoutId()
+  {
+    return 2130969272;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(25521);
+    setMMTitle(2131298845);
     setBackBtn(new ContactSearchResultUI.1(this));
-    this.pxK = new HashMap();
-    this.pxH = ((ListView)findViewById(R.h.result_contactlist));
-    Object localObject = (TextView)findViewById(R.h.empty);
-    this.pxH.setEmptyView((View)localObject);
+    this.sZy = new HashMap();
+    this.sZv = ((ListView)findViewById(2131823244));
+    Object localObject = (TextView)findViewById(2131821788);
+    this.sZv.setEmptyView((View)localObject);
     localObject = getIntent().getByteArrayExtra("result");
     int i = getIntent().getIntExtra("add_more_friend_search_scene", 0);
     if (localObject != null) {}
     try
     {
-      bnm localbnm = (bnm)new bnm().aH((byte[])localObject);
-      if (localbnm != null)
+      bxh localbxh = (bxh)new bxh().parseFrom((byte[])localObject);
+      if (localbxh != null)
       {
-        this.dTx = localbnm.tcB;
-        this.pxJ = localbnm.tGw;
+        this.fjy = localbxh.xaT;
+        this.sZx = localbxh.xKl;
       }
     }
     catch (Exception localException2)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.ContactSearchResultUI", localException2, "SearchContactResponse", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.ContactSearchResultUI", localException2, "SearchContactResponse", new Object[0]);
         try
         {
-          localObject = (bob)new bob().aH((byte[])localObject);
-          this.pxJ.add(localObject);
+          localObject = (bxw)new bxw().parseFrom((byte[])localObject);
+          this.sZx.add(localObject);
         }
         catch (Exception localException1)
         {
-          y.printErrStackTrace("MicroMsg.ContactSearchResultUI", localException1, "SearchOpenIMContactItem", new Object[0]);
+          ab.printErrStackTrace("MicroMsg.ContactSearchResultUI", localException1, "SearchOpenIMContactItem", new Object[0]);
         }
       }
-      this.pxI = new ContactSearchResultUI.a(this, this);
-      this.pxH.setAdapter(this.pxI);
-      this.pxH.setOnItemClickListener(new ContactSearchResultUI.2(this, i));
-      this.pxH.setOnScrollListener(new a());
+      this.sZw = new ContactSearchResultUI.a(this, this);
+      this.sZv.setAdapter(this.sZw);
+      this.sZv.setOnItemClickListener(new ContactSearchResultUI.2(this, i));
+      this.sZv.setOnScrollListener(new a());
+      AppMethodBeat.o(25521);
     }
-    if ((this.dTx.size() == 0) && (this.pxJ.isEmpty())) {
+    if ((this.fjy.size() == 0) && (this.sZx.isEmpty()))
+    {
+      AppMethodBeat.o(25521);
       return;
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(25520);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(25520);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    o.Kj().cancel();
-    if (this.pxK != null) {
-      this.pxK.clear();
+    AppMethodBeat.i(25522);
+    o.adi().cancel();
+    if (this.sZy != null) {
+      this.sZy.clear();
     }
     super.onDestroy();
+    AppMethodBeat.o(25522);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

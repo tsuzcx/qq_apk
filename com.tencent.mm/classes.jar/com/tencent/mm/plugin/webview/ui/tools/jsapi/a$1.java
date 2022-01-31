@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
 
 final class a$1
@@ -7,6 +8,7 @@ final class a$1
 {
   a$1()
   {
+    AppMethodBeat.i(8850);
     add("application/msword");
     add("application/vnd.ms-powerpoint");
     add("application/vnd.ms-excel");
@@ -18,6 +20,7 @@ final class a$1
     add("application/ksdps");
     add("application/pdf");
     add("text/plain");
+    AppMethodBeat.o(8850);
   }
 }
 

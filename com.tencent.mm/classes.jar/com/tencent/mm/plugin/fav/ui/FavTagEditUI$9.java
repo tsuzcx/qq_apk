@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fav.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.widget.FavTagPanel;
 
 final class FavTagEditUI$9
@@ -12,7 +13,9 @@ final class FavTagEditUI$9
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    FavTagEditUI.d(this.kdx).cBb();
+    AppMethodBeat.i(74151);
+    FavTagEditUI.d(this.myh).dEo();
+    AppMethodBeat.o(74151);
     return false;
   }
 }

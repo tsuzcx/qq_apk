@@ -1,26 +1,27 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.matrix.trace.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.matrix.trace.e.b;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SnsMsgUI$10
-  extends a
+  extends b
 {
   SnsMsgUI$10(SnsMsgUI paramSnsMsgUI) {}
   
-  public final void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public final void a(String paramString, long paramLong, int paramInt)
   {
-    super.a(paramLong1, paramLong2, paramString, paramInt);
-    y.d("MicroMsg.SnsMsgUI", "summerhardcoder sync fps scene:%s vs %s, droppedFrames:%s, lastFrameNanos:%d, frameNanos:%d", new Object[] { paramString, this.paq.getClass().getSimpleName(), Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if ((paramInt > 0) && (!bk.bl(paramString)) && (paramString.endsWith(this.paq.getClass().getSimpleName()))) {
-      SnsMsgUI.a(this.paq, SnsMsgUI.b(this.paq) + paramInt);
+    AppMethodBeat.i(39075);
+    super.a(paramString, paramLong, paramInt);
+    if ((paramInt > 0) && (!bo.isNullOrNil(paramString)) && (paramString.endsWith(this.rSU.getClass().getSimpleName()))) {
+      SnsMsgUI.a(this.rSU, SnsMsgUI.b(this.rSU) + paramInt);
     }
+    AppMethodBeat.o(39075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsMsgUI.10
  * JD-Core Version:    0.7.0.1
  */

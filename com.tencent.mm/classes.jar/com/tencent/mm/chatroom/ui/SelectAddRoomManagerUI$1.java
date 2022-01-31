@@ -3,7 +3,8 @@ package com.tencent.mm.chatroom.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SelectAddRoomManagerUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -12,11 +13,13 @@ final class SelectAddRoomManagerUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(104370);
     paramMenuItem = new Intent();
-    paramMenuItem.putExtra("Select_Contact", bk.c(SelectAddRoomManagerUI.a(this.drH), ","));
-    this.drH.setResult(-1, paramMenuItem);
-    this.drH.finish();
-    this.drH.XM();
+    paramMenuItem.putExtra("Select_Contact", bo.d(SelectAddRoomManagerUI.a(this.ejp), ","));
+    this.ejp.setResult(-1, paramMenuItem);
+    this.ejp.finish();
+    this.ejp.hideVKB();
+    AppMethodBeat.o(104370);
     return false;
   }
 }

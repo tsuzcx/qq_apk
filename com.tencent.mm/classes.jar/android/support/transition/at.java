@@ -1,32 +1,16 @@
 package android.support.transition;
 
 import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewOverlay;
 
-final class at
-  implements au
+abstract interface at
 {
-  private final ViewOverlay tq;
+  public abstract void add(Drawable paramDrawable);
   
-  at(View paramView)
-  {
-    this.tq = paramView.getOverlay();
-  }
-  
-  public final void add(Drawable paramDrawable)
-  {
-    this.tq.add(paramDrawable);
-  }
-  
-  public final void remove(Drawable paramDrawable)
-  {
-    this.tq.remove(paramDrawable);
-  }
+  public abstract void remove(Drawable paramDrawable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.at
  * JD-Core Version:    0.7.0.1
  */

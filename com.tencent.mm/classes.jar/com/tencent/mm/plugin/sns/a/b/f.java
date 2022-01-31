@@ -1,104 +1,118 @@
 package com.tencent.mm.plugin.sns.a.b;
 
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelsns.d;
 import com.tencent.mm.modelstat.p;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.e;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.c.bvo;
-import com.tencent.mm.protocal.c.bvp;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.cgh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.IOException;
 
 public final class f
 {
-  private static String MM(String paramString)
+  private static String Zt(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(35715);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(35715);
       return "";
     }
     paramString = Base64.decode(paramString, 0);
-    bvo localbvo = new bvo();
+    cgh localcgh = new cgh();
     try
     {
-      localbvo.aH(paramString);
-      paramString = p.a(localbvo.tMm);
+      localcgh.parseFrom(paramString);
+      paramString = p.a(localcgh.xQY);
+      AppMethodBeat.o(35715);
       return paramString;
     }
     catch (IOException paramString)
     {
-      y.e("SnsAdExtUtil", "", new Object[] { paramString });
+      ab.e("SnsAdExtUtil", "", new Object[] { paramString });
+      AppMethodBeat.o(35715);
     }
     return "";
   }
   
   public static String a(long paramLong, Object... paramVarArgs)
   {
-    af.bDz();
-    paramVarArgs = new StringBuilder(i.o(paramVarArgs));
+    AppMethodBeat.i(35712);
+    ag.coZ();
+    paramVarArgs = new StringBuilder(i.t(paramVarArgs));
     a(paramLong, paramVarArgs);
-    return paramVarArgs.toString();
+    paramVarArgs = paramVarArgs.toString();
+    AppMethodBeat.o(35712);
+    return paramVarArgs;
   }
   
-  public static String a(bxk parambxk)
+  public static String a(TimeLineObject paramTimeLineObject)
   {
-    if (parambxk != null) {
-      return MM(parambxk.oPO);
+    AppMethodBeat.i(35714);
+    if (paramTimeLineObject != null)
+    {
+      paramTimeLineObject = Zt(paramTimeLineObject.rHA);
+      AppMethodBeat.o(35714);
+      return paramTimeLineObject;
     }
-    y.v("SnsAdExtUtil", "getSnsStatExt timeLineObject null");
+    ab.v("SnsAdExtUtil", "getSnsStatExt timeLineObject null");
+    AppMethodBeat.o(35714);
     return null;
   }
   
   public static void a(long paramLong, StringBuilder paramStringBuilder)
   {
-    Object localObject = af.bDI().gk(paramLong);
+    AppMethodBeat.i(35713);
+    Object localObject = ag.cpi().lQ(paramLong);
     if (localObject != null)
     {
-      localObject = ((e)localObject).bGe();
+      localObject = ((e)localObject).csh();
       if (localObject != null)
       {
-        localObject = p.nu(((bxk)localObject).oPO);
-        StringBuilder localStringBuilder = paramStringBuilder.append(",");
-        if (localObject == null) {}
-        for (int i = -1;; i = ((bvp)localObject).source)
-        {
-          localStringBuilder.append(i);
-          paramStringBuilder.append(",").append(p.a((bvp)localObject));
-          return;
-        }
+        p.a(((TimeLineObject)localObject).rHA, paramStringBuilder);
+        AppMethodBeat.o(35713);
+        return;
       }
-      y.v("SnsAdExtUtil", "l timeLineObject null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+      ab.v("SnsAdExtUtil", "l timeLineObject null, snsId %d", new Object[] { Long.valueOf(paramLong) });
       paramStringBuilder.append(",,");
+      AppMethodBeat.o(35713);
       return;
     }
-    y.v("SnsAdExtUtil", "l snsInfo null, snsId %d", new Object[] { Long.valueOf(paramLong) });
+    ab.v("SnsAdExtUtil", "l snsInfo null, snsId %d", new Object[] { Long.valueOf(paramLong) });
     paramStringBuilder.append(",,");
+    AppMethodBeat.o(35713);
   }
   
   public static void a(String paramString, d paramd)
   {
-    Object localObject = af.bDF().OA(paramString);
+    AppMethodBeat.i(35711);
+    Object localObject = ag.cpf().abu(paramString);
     if (localObject != null)
     {
-      localObject = ((n)localObject).bGe();
+      localObject = ((n)localObject).csh();
       if (localObject != null)
       {
-        p.a(((bxk)localObject).oPO, paramd);
+        p.a(((TimeLineObject)localObject).rHA, paramd);
+        AppMethodBeat.o(35711);
         return;
       }
-      y.v("SnsAdExtUtil", "timeLineObject null, snsId %s", new Object[] { paramString });
+      ab.v("SnsAdExtUtil", "timeLineObject null, snsId %s", new Object[] { paramString });
+      AppMethodBeat.o(35711);
       return;
     }
-    y.v("SnsAdExtUtil", "snsInfo null, snsId %s", new Object[] { paramString });
+    ab.v("SnsAdExtUtil", "snsInfo null, snsId %s", new Object[] { paramString });
+    AppMethodBeat.o(35711);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -3,20 +3,17 @@ package com.tencent.mm.plugin.offline.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.f;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 import com.tencent.mm.wallet_core.d.i;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
-import com.tencent.mm.wallet_core.ui.g;
-import com.tencent.mm.y.a;
-import com.tencent.mm.y.c;
+import com.tencent.mm.x.a;
+import com.tencent.mm.x.c;
 
 final class WalletOfflineCoinPurseUI$10
   implements View.OnClickListener
@@ -25,28 +22,30 @@ final class WalletOfflineCoinPurseUI$10
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletOfflineCoinPurseUI", "click qr reward");
-    h.nFQ.f(14021, new Object[] { Integer.valueOf(5), Integer.valueOf(WalletOfflineCoinPurseUI.p(this.mNj)) });
-    if (c.BS().b(ac.a.uyt, ac.a.uxr))
+    AppMethodBeat.i(43515);
+    ab.i("MicroMsg.WalletOfflineCoinPurseUI", "click qr reward");
+    h.qsU.e(14021, new Object[] { Integer.valueOf(5), Integer.valueOf(WalletOfflineCoinPurseUI.p(this.pny)) });
+    if (c.PJ().b(ac.a.yID, ac.a.yHA))
     {
-      c.BS().c(ac.a.uyt, ac.a.uxr);
-      this.mNv.setVisibility(8);
+      c.PJ().c(ac.a.yID, ac.a.yHA);
+      this.pnK.setVisibility(8);
     }
-    if (o.bVs().bVN()) {
-      d.x(this.mNj.mController.uMN, "collect", ".reward.ui.QrRewardMainUI");
-    }
-    i locali;
-    do
+    if (t.cTN().cUl())
     {
+      d.H(this.pny.getContext(), "collect", ".reward.ui.QrRewardMainUI");
+      AppMethodBeat.o(43515);
       return;
-      WalletOfflineCoinPurseUI.a(this.mNj, g.a(this.mNj.mController.uMN, false, new WalletOfflineCoinPurseUI.10.1(this)));
-      o.bVn();
-      paramView = this.mNj;
-      locali = WalletOfflineCoinPurseUI.r(this.mNj);
-      new WalletOfflineCoinPurseUI.10.2(this);
-    } while (o.b(paramView, locali));
-    paramView = new f("reward");
-    this.mNj.a(paramView, true, false);
+    }
+    t.cTI();
+    paramView = this.pny;
+    i locali = WalletOfflineCoinPurseUI.q(this.pny);
+    new WalletOfflineCoinPurseUI.10.1(this);
+    if (!t.b(paramView, locali, 1006))
+    {
+      paramView = new f("reward");
+      this.pny.doSceneForceProgress(paramView);
+    }
+    AppMethodBeat.o(43515);
   }
 }
 

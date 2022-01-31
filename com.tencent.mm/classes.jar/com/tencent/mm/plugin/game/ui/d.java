@@ -11,121 +11,150 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.h.c.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.d;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.plugin.game.g.j;
-import com.tencent.mm.plugin.game.model.ay;
-import com.tencent.mm.plugin.game.model.f;
-import com.tencent.mm.plugin.game.model.l;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.game.model.ax;
+import com.tencent.mm.plugin.game.model.e;
+import com.tencent.mm.plugin.game.model.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.i;
 import java.util.Set;
 
 public final class d
 {
-  private static Object lock = new Object();
-  private am iRj = new am(Looper.getMainLooper(), new d.1(this), false);
-  int kQh = 0;
-  String kWO = null;
-  private h kWZ = null;
-  private u kXa = null;
-  private q kXb = null;
-  private t kXc = null;
-  DialogInterface.OnClickListener kXd = null;
-  private Dialog kXe;
-  private int kXf = 3000;
+  private static Object lock;
+  private Dialog dialog;
+  private ap kZH;
   private Context mContext;
+  int nok;
+  String nuQ;
+  private h nvb;
+  private u nvc;
+  private q nvd;
+  private t nve;
+  DialogInterface.OnClickListener nvf;
+  private int nvg;
+  
+  static
+  {
+    AppMethodBeat.i(111717);
+    lock = new Object();
+    AppMethodBeat.o(111717);
+  }
   
   public d(Context paramContext)
   {
+    AppMethodBeat.i(111713);
+    this.nvb = null;
+    this.nvc = null;
+    this.nvd = null;
+    this.nve = null;
+    this.nvf = null;
+    this.nok = 0;
+    this.nuQ = null;
+    this.nvg = 3000;
+    this.kZH = new ap(Looper.getMainLooper(), new d.1(this), false);
     this.mContext = paramContext;
+    AppMethodBeat.o(111713);
   }
   
   private static boolean a(Set<String> paramSet, String paramString)
   {
-    if ((paramSet == null) || (paramSet.isEmpty())) {}
-    while (!paramSet.contains(paramString)) {
+    AppMethodBeat.i(111716);
+    if ((paramSet == null) || (paramSet.isEmpty()))
+    {
+      AppMethodBeat.o(111716);
       return false;
     }
+    if (!paramSet.contains(paramString))
+    {
+      AppMethodBeat.o(111716);
+      return false;
+    }
+    AppMethodBeat.o(111716);
     return true;
   }
   
-  public final void a(ProgressBar paramProgressBar, Button paramButton, com.tencent.mm.plugin.game.model.d paramd, l paraml)
+  public final void a(ProgressBar paramProgressBar, Button paramButton, com.tencent.mm.plugin.game.model.c paramc, k paramk)
   {
-    if ((paramProgressBar == null) || (paramButton == null)) {
+    AppMethodBeat.i(111715);
+    if ((paramProgressBar == null) || (paramButton == null))
+    {
+      AppMethodBeat.o(111715);
       return;
     }
     paramButton.setEnabled(true);
     paramButton.setVisibility(0);
-    if (paramd.status == 1)
+    if (paramc.status == 1)
     {
-      if (paramd.kOb)
+      if (paramc.nlY)
       {
         paramButton.setEnabled(false);
-        paramButton.setText(g.i.game_action_subscribed);
+        paramButton.setText(2131300330);
         paramButton.setVisibility(0);
         paramProgressBar.setVisibility(8);
+        AppMethodBeat.o(111715);
         return;
       }
-      paramButton.setText(g.i.game_action_subscribe);
+      paramButton.setText(2131300329);
       paramButton.setVisibility(0);
       paramProgressBar.setVisibility(8);
+      AppMethodBeat.o(111715);
       return;
     }
-    if (com.tencent.mm.pluginsdk.model.app.g.a(this.mContext, paramd))
+    if (com.tencent.mm.pluginsdk.model.app.g.a(this.mContext, paramc))
     {
-      int i = c.Fe(paramd.field_packageName);
-      if (paramd.versionCode > i) {
-        if (paraml.status == 1)
+      int i = com.tencent.mm.plugin.game.f.c.Qy(paramc.field_packageName);
+      if (paramc.versionCode > i) {
+        if (paramk.status == 1)
         {
           paramProgressBar.setVisibility(0);
-          paramProgressBar.setProgress(paraml.progress);
+          paramProgressBar.setProgress(paramk.progress);
           paramButton.setVisibility(8);
         }
       }
       for (;;)
       {
-        y.i("MicroMsg.GameActionBtnHandler", "AppId: %s installed, local: %d, server: %d", new Object[] { paramd.field_appId, Integer.valueOf(i), Integer.valueOf(paramd.versionCode) });
+        ab.i("MicroMsg.GameActionBtnHandler", "AppId: %s installed, local: %d, server: %d", new Object[] { paramc.field_appId, Integer.valueOf(i), Integer.valueOf(paramc.versionCode) });
+        AppMethodBeat.o(111715);
         return;
-        if (paramd.scene == 12) {
-          paramButton.setText(g.i.game_detail_rank_update);
+        if (paramc.scene == 12) {
+          paramButton.setText(2131300351);
         }
         for (;;)
         {
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           break;
-          paramButton.setText(g.i.game_action_update);
+          paramButton.setText(2131300332);
         }
         paramButton.setVisibility(0);
         paramProgressBar.setVisibility(8);
-        if (paramd.scene == 12) {
-          paramButton.setText(g.i.game_detail_rank_launch);
+        if (paramc.scene == 12) {
+          paramButton.setText(2131300349);
         } else {
-          paramButton.setText(g.i.game_list_launch);
+          paramButton.setText(2131300408);
         }
       }
     }
-    if (paramd.aYR())
+    if (paramc.bFQ())
     {
       paramButton.setVisibility(0);
       paramProgressBar.setVisibility(8);
-      if (paramd.scene == 12)
+      if (paramc.scene == 12)
       {
-        paramButton.setText(g.i.game_detail_rank_launch);
+        paramButton.setText(2131300349);
+        AppMethodBeat.o(111715);
         return;
       }
-      paramButton.setText(g.i.game_list_launch);
+      paramButton.setText(2131300408);
+      AppMethodBeat.o(111715);
       return;
     }
-    switch (paramd.status)
+    switch (paramc.status)
     {
     default: 
       paramButton.setVisibility(8);
@@ -133,25 +162,27 @@ public final class d
     }
     for (;;)
     {
-      y.i("MicroMsg.GameActionBtnHandler", "updateBtnStateAndText: %s, Status: %d, Text: %s", new Object[] { paramd.field_appId, Integer.valueOf(paramd.status), paramButton.getText() });
+      ab.i("MicroMsg.GameActionBtnHandler", "updateBtnStateAndText: %s, Status: %d, Text: %s", new Object[] { paramc.field_appId, Integer.valueOf(paramc.status), paramButton.getText() });
+      AppMethodBeat.o(111715);
       return;
-      if (paraml == null)
+      if (paramk == null)
       {
         paramButton.setVisibility(8);
         paramProgressBar.setVisibility(8);
+        AppMethodBeat.o(111715);
         return;
       }
-      switch (paraml.status)
+      switch (paramk.status)
       {
       default: 
         break;
       case 0: 
-        if (paramd.scene == 12) {
-          if (paramd.kOi)
+        if (paramc.scene == 12) {
+          if (paramc.nmf)
           {
-            paraml = paramd.field_appId;
-            if (!a(f.ds(this.mContext), paraml)) {
-              paramButton.setText(g.i.game_download_gift);
+            paramk = paramc.field_appId;
+            if (!a(e.ef(this.mContext), paramk)) {
+              paramButton.setText(2131300359);
             }
           }
         }
@@ -160,13 +191,13 @@ public final class d
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           break;
-          paramButton.setText(g.i.game_list_download_app);
+          paramButton.setText(2131300400);
           continue;
-          paramButton.setText(g.i.game_list_download);
+          paramButton.setText(2131300399);
         }
       case 1: 
-        if (paraml.mode == 3) {
-          paramButton.setText(g.i.game_list_download_view);
+        if (paramk.mode == 3) {
+          paramButton.setText(2131300406);
         }
       case 2: 
       case 3: 
@@ -175,59 +206,60 @@ public final class d
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           break;
-          if (paraml.mode != 1) {
+          if (paramk.mode != 1) {
             break;
           }
-          paramProgressBar.setProgress(paraml.progress);
+          paramProgressBar.setProgress(paramk.progress);
           paramButton.setVisibility(8);
           paramProgressBar.setVisibility(0);
           break;
-          if (paramd.scene == 12) {
-            paramButton.setText(g.i.game_download_continue_task);
+          if (paramc.scene == 12) {
+            paramButton.setText(2131300358);
           }
           for (;;)
           {
             paramButton.setVisibility(0);
             paramProgressBar.setVisibility(8);
             break;
-            paramButton.setText(g.i.game_list_download_continue);
+            paramButton.setText(2131300404);
           }
-          if (paramd.scene == 12) {
-            paramButton.setText(g.i.game_list_app_install_btn);
+          if (paramc.scene == 12) {
+            paramButton.setText(2131300398);
           } else {
-            paramButton.setText(g.i.game_list_app_install);
+            paramButton.setText(2131300397);
           }
         }
-        if (paramd.kOb)
+        if (paramc.nlY)
         {
           paramButton.setEnabled(false);
-          paramButton.setText(g.i.game_action_subscribed);
+          paramButton.setText(2131300330);
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
         }
         else
         {
-          paramButton.setText(g.i.game_action_subscribe);
+          paramButton.setText(2131300329);
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           continue;
-          paramButton.setText(g.i.game_action_preemptive);
+          paramButton.setText(2131300328);
           paramButton.setVisibility(0);
           paramProgressBar.setVisibility(8);
           continue;
-          if (paraml == null)
+          if (paramk == null)
           {
-            paramButton.setText(g.i.game_action_grab);
+            paramButton.setText(2131300327);
             paramButton.setVisibility(0);
             paramProgressBar.setVisibility(8);
+            AppMethodBeat.o(111715);
             return;
           }
-          switch (paraml.status)
+          switch (paramk.status)
           {
           default: 
             break;
           case 0: 
-            paramButton.setText(g.i.game_action_grab);
+            paramButton.setText(2131300327);
           case 1: 
           case 2: 
           case 3: 
@@ -236,35 +268,35 @@ public final class d
               paramButton.setVisibility(0);
               paramProgressBar.setVisibility(8);
               break;
-              if (paraml.mode == 3)
+              if (paramk.mode == 3)
               {
-                paramButton.setText(g.i.game_list_download_view);
+                paramButton.setText(2131300406);
                 break;
               }
-              if (paraml.mode != 1) {
+              if (paramk.mode != 1) {
                 break;
               }
-              paramProgressBar.setProgress(paraml.progress);
+              paramProgressBar.setProgress(paramk.progress);
               paramButton.setVisibility(8);
               paramProgressBar.setVisibility(0);
               break;
-              if (paramd.scene == 12) {
-                paramButton.setText(g.i.game_download_continue_task);
+              if (paramc.scene == 12) {
+                paramButton.setText(2131300358);
               }
               for (;;)
               {
                 paramButton.setVisibility(0);
                 paramProgressBar.setVisibility(8);
                 break;
-                paramButton.setText(g.i.game_list_download_continue);
+                paramButton.setText(2131300404);
               }
-              if (paramd.scene == 12) {
-                paramButton.setText(g.i.game_list_app_install_btn);
+              if (paramc.scene == 12) {
+                paramButton.setText(2131300398);
               } else {
-                paramButton.setText(g.i.game_list_app_install);
+                paramButton.setText(2131300397);
               }
             }
-            paramButton.setText(g.i.game_action_trial);
+            paramButton.setText(2131300331);
             paramButton.setVisibility(0);
             paramProgressBar.setVisibility(8);
           }
@@ -274,124 +306,127 @@ public final class d
     }
   }
   
-  public final void a(com.tencent.mm.plugin.game.model.d paramd, l paraml)
+  public final void a(com.tencent.mm.plugin.game.model.c paramc, k paramk)
   {
-    if ((paramd == null) || (paraml == null))
+    AppMethodBeat.i(111714);
+    if ((paramc == null) || (paramk == null))
     {
-      y.e("MicroMsg.GameActionBtnHandler", "Null appInfo or null downloadInfo");
+      ab.e("MicroMsg.GameActionBtnHandler", "Null appInfo or null downloadInfo");
+      AppMethodBeat.o(111714);
       return;
     }
     Object localObject1 = new View(this.mContext);
-    ((View)localObject1).setTag(paramd);
-    y.i("MicroMsg.GameActionBtnHandler", "App Status: %d, Download Mode: %d, Download Status: %d", new Object[] { Integer.valueOf(paramd.status), Integer.valueOf(paraml.mode), Integer.valueOf(paraml.status) });
-    if ((com.tencent.mm.pluginsdk.model.app.g.o(this.mContext, paramd.field_appId)) || (paramd.aYR())) {
-      paraml.mode = 1;
+    ((View)localObject1).setTag(paramc);
+    ab.i("MicroMsg.GameActionBtnHandler", "App Status: %d, Download Mode: %d, Download Status: %d", new Object[] { Integer.valueOf(paramc.status), Integer.valueOf(paramk.mode), Integer.valueOf(paramk.status) });
+    if ((com.tencent.mm.pluginsdk.model.app.g.u(this.mContext, paramc.field_appId)) || (paramc.bFQ())) {
+      paramk.mode = 1;
     }
     int i;
-    if (paraml.mode == 3)
+    if (paramk.mode == 3)
     {
-      ay.aZP();
-      i = ay.h(this.mContext, "com.tencent.android.qqdownloader", paramd.cvN);
-      y.i("MicroMsg.GameActionBtnHandler", "qqdownloader install status:[%d], yybSupportedVersionCode:[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramd.cvN) });
+      ax.bGV();
+      i = ax.k(this.mContext, "com.tencent.android.qqdownloader", paramc.djY);
+      ab.i("MicroMsg.GameActionBtnHandler", "qqdownloader install status:[%d], yybSupportedVersionCode:[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(paramc.djY) });
       if ((i == -1) || (i == 1) || (i == 2)) {
-        paraml.mode = 1;
+        paramk.mode = 1;
       }
     }
-    switch (paramd.status)
+    switch (paramc.status)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(111714);
       return;
-    case 0: 
-    case 3: 
-    case 4: 
-      switch (paraml.mode)
+      switch (paramk.mode)
       {
       default: 
-        y.d("MicroMsg.GameActionBtnHandler", "summertoken downloadInfo.mode[%d]", new Object[] { Integer.valueOf(paraml.mode) });
-        if (this.kWZ == null) {
-          this.kWZ = new h(this.mContext);
+        ab.d("MicroMsg.GameActionBtnHandler", "summertoken downloadInfo.mode[%d]", new Object[] { Integer.valueOf(paramk.mode) });
+        if (this.nvb == null) {
+          this.nvb = new h(this.mContext);
         }
-        this.kWZ.setSourceScene(this.kQh);
-        this.kWZ.dr(this.kWO, "");
-        this.kWZ.onClick((View)localObject1);
+        this.nvb.setSourceScene(this.nok);
+        this.nvb.eI(this.nuQ, "");
+        this.nvb.onClick((View)localObject1);
       }
-      while (paramd.kOi)
+      while (paramc.nmf)
       {
-        localObject1 = f.ds(this.mContext);
-        if (a((Set)localObject1, paramd.field_appId)) {
-          break;
-        }
-        if (paraml.mode != 3)
+        localObject1 = e.ef(this.mContext);
+        if (!a((Set)localObject1, paramc.field_appId))
         {
-          paraml = LayoutInflater.from(this.mContext).inflate(g.f.game_gift_tips, null);
-          ((LinearLayout)paraml.findViewById(g.e.mm_alert_msg_area)).setGravity(17);
-          localObject2 = (ImageView)paraml.findViewById(g.e.mm_alert_msg_icon);
-          localObject3 = (TextView)paraml.findViewById(g.e.mm_alert_msg);
-          TextView localTextView = (TextView)paraml.findViewById(g.e.mm_alert_msg_subdesc);
-          ((ImageView)localObject2).setBackgroundResource(g.d.download_gift);
-          ((TextView)localObject3).setText(g.i.game_gift_title);
-          localTextView.setText(g.i.game_gift_content);
-          this.kXe = new i(this.mContext, g.j.GameNoticStyle);
-          this.kXe.setContentView(paraml);
-          this.kXe.setCancelable(true);
-          this.kXe.setCanceledOnTouchOutside(true);
-          this.kXe.show();
-          paraml = this.iRj;
-          long l = this.kXf;
-          paraml.S(l, l);
+          if (paramk.mode != 3)
+          {
+            paramk = LayoutInflater.from(this.mContext).inflate(2130969759, null);
+            ((LinearLayout)paramk.findViewById(2131824644)).setGravity(17);
+            localObject2 = (ImageView)paramk.findViewById(2131822985);
+            localObject3 = (TextView)paramk.findViewById(2131826150);
+            TextView localTextView = (TextView)paramk.findViewById(2131822987);
+            ((ImageView)localObject2).setBackgroundResource(2130838569);
+            ((TextView)localObject3).setText(2131300381);
+            localTextView.setText(2131300380);
+            this.dialog = new i(this.mContext, 2131493291);
+            this.dialog.setContentView(paramk);
+            this.dialog.setCancelable(true);
+            this.dialog.setCanceledOnTouchOutside(true);
+            this.dialog.show();
+            paramk = this.kZH;
+            long l = this.nvg;
+            paramk.ag(l, l);
+          }
+          ((com.tencent.mm.plugin.game.api.d)com.tencent.mm.kernel.g.E(com.tencent.mm.plugin.game.api.d.class)).bEQ();
+          com.tencent.mm.plugin.game.model.t.b(paramc.field_appId, 1, 0, null, null);
+          ((Set)localObject1).add(paramc.field_appId);
+          e.a(this.mContext, (Set)localObject1);
         }
-        ((com.tencent.mm.plugin.game.a.b)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.game.a.b.class)).aYd();
-        com.tencent.mm.plugin.game.model.u.b(paramd.field_appId, 1, 0, null, null);
-        ((Set)localObject1).add(paramd.field_appId);
-        f.a(this.mContext, (Set)localObject1);
+        AppMethodBeat.o(111714);
         return;
-        Object localObject2 = com.tencent.mm.plugin.downloader.model.d.aFP().zL(paramd.field_appId);
+        Object localObject2 = f.bjl().JH(paramc.field_appId);
         if ((localObject2 != null) && (((FileDownloadTaskInfo)localObject2).id > 0L)) {
-          com.tencent.mm.plugin.downloader.model.d.aFP().dc(((FileDownloadTaskInfo)localObject2).id);
+          f.bjl().iz(((FileDownloadTaskInfo)localObject2).id);
         }
-        if (this.kXa == null) {
-          this.kXa = new u(this.mContext);
+        if (this.nvc == null) {
+          this.nvc = new u(this.mContext);
         }
-        localObject2 = this.kXa;
-        i = this.kQh;
-        Object localObject3 = this.kWO;
-        ((u)localObject2).kQh = i;
-        ((u)localObject2).kWO = ((String)localObject3);
-        this.kXa.onClick((View)localObject1);
+        localObject2 = this.nvc;
+        i = this.nok;
+        Object localObject3 = this.nuQ;
+        ((u)localObject2).nok = i;
+        ((u)localObject2).nuQ = ((String)localObject3);
+        this.nvc.onClick((View)localObject1);
         continue;
-        if (!bk.bl(paramd.cvE))
+        if (!bo.isNullOrNil(paramc.djP))
         {
-          y.i("MicroMsg.GameActionBtnHandler", "gp download url is not null and download flag is download directly by gp store");
-          com.tencent.mm.pluginsdk.model.app.q.bk(this.mContext, paramd.cvE);
-          com.tencent.mm.plugin.game.e.b.a(this.mContext, paramd.scene, paramd.bXn, paramd.position, 25, paramd.field_appId, this.kQh, paramd.bGy, this.kWO);
+          ab.i("MicroMsg.GameActionBtnHandler", "gp download url is not null and download flag is download directly by gp store");
+          com.tencent.mm.pluginsdk.model.app.q.bw(this.mContext, paramc.djP);
+          com.tencent.mm.game.report.c.a(this.mContext, paramc.scene, paramc.cFj, paramc.position, 25, paramc.field_appId, this.nok, paramc.cnG, this.nuQ);
         }
       }
-    case 1: 
-      if (this.kXc == null)
+      if (this.nve == null)
       {
-        this.kXc = new t(this.mContext);
-        this.kXc.lfH = this.kXd;
+        this.nve = new t(this.mContext);
+        this.nve.nDC = this.nvf;
       }
-      this.kXc.kQh = this.kQh;
-      this.kXc.onClick((View)localObject1);
-      com.tencent.mm.plugin.game.e.b.a(this.mContext, paramd.scene, paramd.bXn, paramd.position, 9, paramd.field_appId, this.kQh, paramd.bGy, this.kWO);
+      this.nve.nok = this.nok;
+      this.nve.onClick((View)localObject1);
+      com.tencent.mm.game.report.c.a(this.mContext, paramc.scene, paramc.cFj, paramc.position, 9, paramc.field_appId, this.nok, paramc.cnG, this.nuQ);
+      AppMethodBeat.o(111714);
       return;
+      paramk = f.bjl().JH(paramc.field_appId);
+      if ((paramk != null) && (paramk.id > 0L)) {
+        f.bjl().iz(paramk.id);
+      }
+      if (this.nvd == null) {
+        this.nvd = new q(this.mContext);
+      }
+      this.nvd.ejF = this.nok;
+      this.nvd.nCq = paramc.djT;
+      this.nvd.onClick((View)localObject1);
     }
-    paraml = com.tencent.mm.plugin.downloader.model.d.aFP().zL(paramd.field_appId);
-    if ((paraml != null) && (paraml.id > 0L)) {
-      com.tencent.mm.plugin.downloader.model.d.aFP().dc(paraml.id);
-    }
-    if (this.kXb == null) {
-      this.kXb = new q(this.mContext);
-    }
-    this.kXb.drX = this.kQh;
-    this.kXb.lev = paramd.cvI;
-    this.kXb.onClick((View)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.d
  * JD-Core Version:    0.7.0.1
  */

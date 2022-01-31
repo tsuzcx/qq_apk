@@ -1,54 +1,60 @@
 package com.tencent.mm.plugin.radar.b;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import a.f.b.j;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.model.lbs.Location;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "onTimerExpired"})
 final class e$h
-  implements am.a
+  implements ap.a
 {
   e$h(e parame) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (!e.a(this.nlG))
+    AppMethodBeat.i(102919);
+    if (!e.a(this.pQV))
     {
-      e.a(this.nlG, e.f.nlD);
-      localObject1 = e.nlp;
-      y.d(e.access$getTAG$cp(), "status: %s", new Object[] { e.b(this.nlG) });
-      localObject1 = e.c(this.nlG);
-      if (localObject1 != null)
+      e.a(this.pQV, e.f.pQS);
+      ab.d(e.access$getTAG$cp(), "status: %s", new Object[] { e.b(this.pQV) });
+      Object localObject = e.c(this.pQV);
+      if (localObject != null)
       {
-        if (((Location)localObject1).clg())
+        if (((Location)localObject).dlP())
         {
-          localObject1 = e.nlp;
-          y.e(e.access$getTAG$cp(), "error! location is null!");
+          ab.e(e.access$getTAG$cp(), "error! location is null!");
+          AppMethodBeat.o(102919);
           return false;
         }
-        Object localObject2 = e.nlp;
-        y.d(e.access$getTAG$cp(), "do once search");
-        localObject2 = this.nlG;
-        float f1 = ((Location)localObject1).elk;
-        float f2 = ((Location)localObject1).ell;
-        int i = ((Location)localObject1).accuracy;
-        int j = ((Location)localObject1).bTe;
-        String str = ((Location)localObject1).mac;
-        a.d.b.g.j(str, "it.mac");
-        localObject1 = ((Location)localObject1).bTg;
-        a.d.b.g.j(localObject1, "it.cellId");
-        e.a((e)localObject2, new b(1, f1, f2, i, j, str, (String)localObject1));
-        com.tencent.mm.kernel.g.Dk().d((m)e.d(this.nlG));
-        return false;
+        ab.d(e.access$getTAG$cp(), "do once search");
+        e locale = this.pQV;
+        float f1 = ((Location)localObject).fBB;
+        float f2 = ((Location)localObject).fBC;
+        int i = ((Location)localObject).accuracy;
+        int j = ((Location)localObject).cAJ;
+        String str = ((Location)localObject).mac;
+        j.p(str, "it.mac");
+        localObject = ((Location)localObject).cAL;
+        j.p(localObject, "it.cellId");
+        e.a(locale, new b(1, f1, f2, i, j, str, (String)localObject));
+        g.Rc().b((m)e.d(this.pQV));
       }
-      localObject1 = e.nlp;
-      y.e(e.access$getTAG$cp(), "error! location is null!");
-      return false;
     }
-    Object localObject1 = e.nlp;
-    y.d(e.access$getTAG$cp(), "cancel radar searching");
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(102919);
+      return false;
+      ab.e(e.access$getTAG$cp(), "error! location is null!");
+      AppMethodBeat.o(102919);
+      return false;
+      ab.d(e.access$getTAG$cp(), "cancel radar searching");
+    }
   }
 }
 

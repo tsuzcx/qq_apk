@@ -2,16 +2,19 @@ package com.tencent.mm.ui.chatting.viewitems;
 
 import android.graphics.Bitmap;
 import android.view.View;
-import com.tencent.mm.as.a.c.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.c.i;
 
 final class f$1
   implements i
 {
   public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
   {
-    if ((paramBitmap != null) && (paramString.equals(paramView.getTag(255)))) {
-      paramView.setBackground(f.aa(paramBitmap));
+    AppMethodBeat.i(32876);
+    if ((paramBitmap != null) && (paramString.equals(paramView.getTag(2131824346)))) {
+      paramView.setBackground(f.aq(paramBitmap));
     }
+    AppMethodBeat.o(32876);
   }
 }
 

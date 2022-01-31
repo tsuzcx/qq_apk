@@ -3,8 +3,8 @@ package com.google.android.exoplayer2.b;
 public abstract class f
   extends a
 {
-  public long ayE;
-  public int ayz;
+  public int aAO;
+  public long aAT;
 }
 
 

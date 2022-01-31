@@ -2,19 +2,17 @@ package com.tencent.mm.plugin.appbrand.widget.input.panel;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.cd.e;
-import com.tencent.mm.plugin.appbrand.y.e;
-import com.tencent.mm.plugin.appbrand.y.f;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.w;
 
 final class AppBrandSmileyGrid$a
   extends BaseAdapter
@@ -23,7 +21,10 @@ final class AppBrandSmileyGrid$a
   
   public final int getCount()
   {
-    return AppBrandSmileyGrid.d(this.hxL);
+    AppMethodBeat.i(134308);
+    int i = AppBrandSmileyGrid.d(this.jpV);
+    AppMethodBeat.o(134308);
+    return i;
   }
   
   public final Object getItem(int paramInt)
@@ -38,29 +39,37 @@ final class AppBrandSmileyGrid$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(134309);
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = y.gt(this.hxL.getContext()).inflate(y.h.appbrand_smiley_grid_item, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (AppBrandSmileyGrid.b(this.hxL).hxU - a.aa(this.hxL.getContext(), y.e.LittlePadding) - a.aa(this.hxL.getContext(), y.e.emoji_panel_tab_height)) / AppBrandSmileyGrid.f(this.hxL)));
+      paramView = w.hM(new ContextThemeWrapper(this.jpV.getContext(), 2131493194)).inflate(2130968776, null);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (AppBrandSmileyGrid.b(this.jpV).jqe - a.ao(this.jpV.getContext(), 2131427782) - a.ao(this.jpV.getContext(), 2131428385)) / AppBrandSmileyGrid.f(this.jpV)));
       paramViewGroup = new AppBrandSmileyGrid.b(paramView);
       paramView.setTag(paramViewGroup);
+      if (paramInt != getCount() - 1) {
+        break label168;
+      }
+      paramViewGroup.ivs.setImageResource(2130838499);
+      paramViewGroup.ivs.setContentDescription(this.jpV.getContext().getString(2131298947));
     }
-    while (paramInt == getCount() - 1)
+    for (;;)
     {
-      paramViewGroup.gSx.setImageResource(y.f.del_btn);
-      paramViewGroup.gSx.setContentDescription(this.hxL.getContext().getString(y.j.delete_btn));
+      AppMethodBeat.o(134309);
       return paramView;
       paramViewGroup = (AppBrandSmileyGrid.b)paramView.getTag();
+      break;
+      label168:
+      paramInt = (AppBrandSmileyGrid.d(this.jpV) - 1) * AppBrandSmileyGrid.c(this.jpV) + paramInt;
+      if (paramInt > AppBrandSmileyGrid.e(this.jpV) - 1)
+      {
+        paramViewGroup.ivs.setImageDrawable(null);
+      }
+      else
+      {
+        Drawable localDrawable = AppBrandSmileyGrid.b(this.jpV).aRy().qA(paramInt);
+        paramViewGroup.ivs.setImageDrawable(localDrawable);
+      }
     }
-    paramInt = (AppBrandSmileyGrid.d(this.hxL) - 1) * AppBrandSmileyGrid.c(this.hxL) + paramInt;
-    if (paramInt > AppBrandSmileyGrid.e(this.hxL) - 1)
-    {
-      paramViewGroup.gSx.setImageDrawable(null);
-      return paramView;
-    }
-    Drawable localDrawable = AppBrandSmileyGrid.b(this.hxL).asu().mW(paramInt);
-    paramViewGroup.gSx.setImageDrawable(localDrawable);
-    return paramView;
   }
 }
 

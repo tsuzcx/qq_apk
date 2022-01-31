@@ -6,11 +6,11 @@ import android.os.Message;
 final class MediaControllerCompat$a$a
   extends Handler
 {
-  boolean Cj;
+  boolean CS;
   
   public final void handleMessage(Message paramMessage)
   {
-    if (!this.Cj) {
+    if (!this.CS) {
       return;
     }
     switch (paramMessage.what)

@@ -3,6 +3,7 @@ package com.tencent.mm.ui.contact;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelectContactUI$a$1
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class SelectContactUI$a$1
   
   public final void onClick(View paramView)
   {
-    this.vNK.vNJ = true;
-    this.vNK.ac(this.eRW);
+    AppMethodBeat.i(33867);
+    this.Afr.Afq = true;
+    this.Afr.aE(this.gjR);
+    AppMethodBeat.o(33867);
   }
 }
 

@@ -3,66 +3,33 @@ package com.tencent.mm.plugin.webview.modeltools;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.a.ov;
-import com.tencent.mm.h.a.ov.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
 import org.json.JSONObject;
 
 public final class e
 {
-  String rhX = null;
-  private a rhY;
-  private c rhZ = new e.1(this);
-  private c ria = new e.2(this);
-  private c rib = new c()
+  private c scanBankCardConfirmResultListener;
+  private c uXA;
+  String uXx;
+  private a uXy;
+  private c uXz;
+  
+  public e()
   {
-    private boolean a(ov paramAnonymousov)
-    {
-      if (((paramAnonymousov instanceof ov)) && (e.this.rhX.equalsIgnoreCase(paramAnonymousov.bYr.cardType)))
-      {
-        if (paramAnonymousov.bYr.bYs != 0) {
-          break label60;
-        }
-        e.b(e.this, e.this.rhX);
-      }
-      label177:
-      for (;;)
-      {
-        e.a(e.this);
-        return false;
-        label60:
-        if (paramAnonymousov.bYr.bYs == 2)
-        {
-          e.a(e.this, e.this.rhX);
-        }
-        else
-        {
-          try
-          {
-            if (bk.bl(paramAnonymousov.bYr.bYt)) {
-              break label177;
-            }
-            JSONObject localJSONObject = new JSONObject(paramAnonymousov.bYr.bYt);
-            e.a(e.this, e.this.rhX, localJSONObject, paramAnonymousov.bYr.bYu);
-          }
-          catch (Exception paramAnonymousov)
-          {
-            y.e("MicroMsg.LicenceScanner", "Failed to parse json string: %s", new Object[] { paramAnonymousov.getMessage() });
-            e.b(e.this, e.this.rhX);
-          }
-          continue;
-          e.a(e.this, e.this.rhX, null, paramAnonymousov.bYr.bYu);
-        }
-      }
-    }
-  };
+    AppMethodBeat.i(6940);
+    this.uXx = null;
+    this.uXz = new e.1(this);
+    this.scanBankCardConfirmResultListener = new e.2(this);
+    this.uXA = new e.3(this);
+    AppMethodBeat.o(6940);
+  }
   
   public final boolean a(String paramString, Context paramContext, a parama)
   {
+    AppMethodBeat.i(6941);
     if ("bank".equalsIgnoreCase(paramString))
     {
       paramString = new Intent();
@@ -70,10 +37,11 @@ public final class e
       paramString.putExtra("scan_bankcard_with_confirm_ui", true);
       paramString.addFlags(268435456);
       d.b(paramContext, "scanner", ".ui.BaseScanUI", paramString);
-      this.rhY = parama;
-      this.rhX = "bank";
-      a.udP.c(this.rhZ);
-      a.udP.c(this.ria);
+      this.uXy = parama;
+      this.uXx = "bank";
+      a.ymk.c(this.uXz);
+      a.ymk.c(this.scanBankCardConfirmResultListener);
+      AppMethodBeat.o(6941);
       return true;
     }
     if ("identity_pay_auth".equalsIgnoreCase(paramString))
@@ -81,22 +49,24 @@ public final class e
       paramString = new Intent();
       paramString.putExtra("BaseScanUI_select_scan_mode", 11);
       d.b(paramContext, "scanner", ".ui.BaseScanUI", paramString);
-      this.rhY = parama;
-      this.rhX = "identity";
-      a.udP.c(this.rhZ);
-      a.udP.c(this.rib);
+      this.uXy = parama;
+      this.uXx = "identity";
+      a.ymk.c(this.uXz);
+      a.ymk.c(this.uXA);
+      AppMethodBeat.o(6941);
       return true;
     }
+    AppMethodBeat.o(6941);
     return false;
   }
   
   public static abstract interface a
   {
-    public abstract void SF(String paramString);
+    public abstract void CF(String paramString);
     
     public abstract void a(String paramString, JSONObject paramJSONObject, Bitmap paramBitmap);
     
-    public abstract void uv(String paramString);
+    public abstract void ahA(String paramString);
   }
 }
 

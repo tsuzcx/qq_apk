@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.i;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -12,39 +13,48 @@ public final class c
   implements a
 {
   private String appId;
-  private String fLi;
-  private String fTF;
-  private Map<String, Integer> fXi = new HashMap();
+  private String heu;
+  private String hng;
+  private Map<String, Integer> hqI;
   
   public c(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(10977);
+    this.hqI = new HashMap();
     this.appId = paramString1;
-    this.fTF = paramString2;
-    this.fLi = (this.fTF + "-" + this.appId);
+    this.hng = paramString2;
+    this.heu = (this.hng + "-" + this.appId);
+    AppMethodBeat.o(10977);
   }
   
-  public final void tk(String paramString)
+  public final void Bo(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    AppMethodBeat.i(10978);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(10978);
       return;
     }
-    Integer localInteger2 = (Integer)this.fXi.get(paramString);
+    Integer localInteger2 = (Integer)this.hqI.get(paramString);
     Integer localInteger1 = localInteger2;
     if (localInteger2 == null) {
       localInteger1 = Integer.valueOf(0);
     }
-    this.fXi.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
+    this.hqI.put(paramString, Integer.valueOf(localInteger1.intValue() + 1));
+    AppMethodBeat.o(10978);
   }
   
-  public final void wn()
+  public final void IE()
   {
-    Iterator localIterator = this.fXi.entrySet().iterator();
+    AppMethodBeat.i(10979);
+    Iterator localIterator = this.hqI.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      h.nFQ.f(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.fLi, this.fTF, this.appId });
+      h.qsU.e(14705, new Object[] { localEntry.getKey(), localEntry.getValue(), this.heu, this.hng, this.appId });
     }
-    this.fXi.clear();
+    this.hqI.clear();
+    AppMethodBeat.o(10979);
   }
 }
 

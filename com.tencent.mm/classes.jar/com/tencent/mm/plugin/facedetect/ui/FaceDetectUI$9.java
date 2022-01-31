@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FaceDetectUI$9
   implements FaceDetectUI.a
@@ -9,9 +10,11 @@ final class FaceDetectUI$9
   
   public final void onFinish()
   {
-    y.i("MicroMsg.FaceDetectUI", "alvinluo set result and return to FaceDetectPrepareUI");
-    FaceDetectUI.k(this.jRF);
-    this.jRF.a(0, 0, "collect data ok", null);
+    AppMethodBeat.i(469);
+    ab.i("MicroMsg.FaceDetectUI", "alvinluo set result and return to FaceDetectPrepareUI");
+    FaceDetectUI.k(this.mmb);
+    this.mmb.a(0, 0, "collect data ok", null);
+    AppMethodBeat.o(469);
   }
 }
 

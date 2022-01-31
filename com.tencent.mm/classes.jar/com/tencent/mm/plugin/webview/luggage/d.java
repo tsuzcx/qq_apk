@@ -6,82 +6,120 @@ import android.webkit.ConsoleMessage;
 import android.webkit.GeolocationPermissions.Callback;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.CustomViewCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.e;
-import com.tencent.xweb.f;
+import com.tencent.xweb.i;
 import com.tencent.xweb.j;
-import com.tencent.xweb.j.a;
+import com.tencent.xweb.p;
+import com.tencent.xweb.p.a;
 
 public class d
-  extends j
+  extends p
 {
-  private j rbz = new j();
+  private p uRj;
+  
+  public d()
+  {
+    AppMethodBeat.i(5989);
+    this.uRj = new p();
+    AppMethodBeat.o(5989);
+  }
   
   public final void a(WebView paramWebView, int paramInt)
   {
-    this.rbz.a(paramWebView, paramInt);
+    AppMethodBeat.i(5999);
+    this.uRj.a(paramWebView, paramInt);
+    AppMethodBeat.o(5999);
   }
   
-  public final void a(j paramj)
+  public final void a(p paramp)
   {
-    if (paramj != null) {
-      this.rbz = paramj;
+    if (paramp != null) {
+      this.uRj = paramp;
     }
   }
   
-  public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, j.a parama)
+  public final boolean a(WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, p.a parama)
   {
-    return this.rbz.a(paramWebView, paramValueCallback, parama);
+    AppMethodBeat.i(5998);
+    boolean bool = this.uRj.a(paramWebView, paramValueCallback, parama);
+    AppMethodBeat.o(5998);
+    return bool;
   }
   
-  public final boolean a(WebView paramWebView, String paramString1, String paramString2, f paramf)
+  public final boolean a(WebView paramWebView, String paramString1, String paramString2, j paramj)
   {
-    return this.rbz.a(paramWebView, paramString1, paramString2, paramf);
+    AppMethodBeat.i(5993);
+    boolean bool = this.uRj.a(paramWebView, paramString1, paramString2, paramj);
+    AppMethodBeat.o(5993);
+    return bool;
   }
   
-  public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, e parame)
+  public final boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, i parami)
   {
-    return this.rbz.a(paramWebView, paramString1, paramString2, paramString3, parame);
+    AppMethodBeat.i(5995);
+    boolean bool = this.uRj.a(paramWebView, paramString1, paramString2, paramString3, parami);
+    AppMethodBeat.o(5995);
+    return bool;
   }
   
-  public final boolean b(WebView paramWebView, String paramString1, String paramString2, f paramf)
+  public final boolean b(WebView paramWebView, String paramString1, String paramString2, j paramj)
   {
-    return this.rbz.b(paramWebView, paramString1, paramString2, paramf);
+    AppMethodBeat.i(5994);
+    boolean bool = this.uRj.b(paramWebView, paramString1, paramString2, paramj);
+    AppMethodBeat.o(5994);
+    return bool;
   }
   
   public void d(WebView paramWebView, String paramString)
   {
-    this.rbz.d(paramWebView, paramString);
+    AppMethodBeat.i(6000);
+    this.uRj.d(paramWebView, paramString);
+    AppMethodBeat.o(6000);
   }
   
   public final View getVideoLoadingProgressView()
   {
-    return this.rbz.getVideoLoadingProgressView();
+    AppMethodBeat.i(5996);
+    View localView = this.uRj.getVideoLoadingProgressView();
+    AppMethodBeat.o(5996);
+    return localView;
   }
   
   public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    return this.rbz.onConsoleMessage(paramConsoleMessage);
+    AppMethodBeat.i(5990);
+    boolean bool = this.uRj.onConsoleMessage(paramConsoleMessage);
+    AppMethodBeat.o(5990);
+    return bool;
   }
   
   public final void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissions.Callback paramCallback)
   {
-    this.rbz.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+    AppMethodBeat.i(5991);
+    this.uRj.onGeolocationPermissionsShowPrompt(paramString, paramCallback);
+    AppMethodBeat.o(5991);
   }
   
   public final void onHideCustomView()
   {
-    this.rbz.onHideCustomView();
+    AppMethodBeat.i(5992);
+    this.uRj.onHideCustomView();
+    AppMethodBeat.o(5992);
   }
   
   public final void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    this.rbz.onShowCustomView(paramView, paramCustomViewCallback);
+    AppMethodBeat.i(6001);
+    this.uRj.onShowCustomView(paramView, paramCustomViewCallback);
+    AppMethodBeat.o(6001);
   }
   
   public final void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
-    this.rbz.openFileChooser(paramValueCallback, paramString1, paramString2);
+    AppMethodBeat.i(5997);
+    this.uRj.openFileChooser(paramValueCallback, paramString1, paramString2);
+    AppMethodBeat.o(5997);
   }
 }
 

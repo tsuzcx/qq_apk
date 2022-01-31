@@ -1,25 +1,19 @@
 package com.tencent.mm.ui.transmit;
 
-import com.tencent.mm.pluginsdk.model.j.a;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.vending.c.a;
+import java.util.LinkedList;
 
 final class SendAppMessageWrapperUI$8
-  implements j.a
+  implements a<Void, WxaAttributes>
 {
-  SendAppMessageWrapperUI$8(SendAppMessageWrapperUI paramSendAppMessageWrapperUI) {}
-  
-  public final void ckA()
-  {
-    if (SendAppMessageWrapperUI.g(this.whK) != null)
-    {
-      SendAppMessageWrapperUI.g(this.whK).dismiss();
-      SendAppMessageWrapperUI.h(this.whK);
-    }
-  }
+  SendAppMessageWrapperUI$8(SendAppMessageWrapperUI paramSendAppMessageWrapperUI, WXMediaMessage paramWXMediaMessage, WXMiniProgramObject paramWXMiniProgramObject, LinkedList paramLinkedList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SendAppMessageWrapperUI.8
  * JD-Core Version:    0.7.0.1
  */

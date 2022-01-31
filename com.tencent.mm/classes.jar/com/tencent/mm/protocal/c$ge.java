@@ -5,7 +5,7 @@ public final class c$ge
 {
   public c$ge()
   {
-    super("playVoice", "playVoice", 99, false);
+    super("openUrlByExtBrowser", "open_url_by_ext_browser", 55, false);
   }
 }
 

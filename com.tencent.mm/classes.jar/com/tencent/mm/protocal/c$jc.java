@@ -5,12 +5,12 @@ public final class c$jc
 {
   public c$jc()
   {
-    super("getSupportSoter", "getSupportSoter", 213, true);
+    super("setPageOwner", "setPageOwner", 114, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.jc
  * JD-Core Version:    0.7.0.1
  */

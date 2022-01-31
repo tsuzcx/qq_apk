@@ -1,88 +1,103 @@
 package com.tencent.mm.plugin.ipcall;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public final class a
   implements f
 {
-  private static a lod = null;
-  private boolean dZI = false;
-  private long lnZ = -1L;
-  private long loa = -1L;
-  private long lob = -1L;
-  private long loc = -1L;
+  private static a nLA = null;
+  private boolean fpN = false;
+  private long nLw = -1L;
+  private long nLx = -1L;
+  private long nLy = -1L;
+  private long nLz = -1L;
   
-  public static a bbv()
+  public static a bID()
   {
-    if (lod == null) {
-      lod = new a();
+    AppMethodBeat.i(21660);
+    if (nLA == null) {
+      nLA = new a();
     }
-    return lod;
+    a locala = nLA;
+    AppMethodBeat.o(21660);
+    return locala;
   }
   
-  private static void bbx()
+  private static void bIF()
   {
+    AppMethodBeat.i(21663);
     long l = System.currentTimeMillis();
-    au.Hx();
-    c.Dz().c(ac.a.uqd, Long.valueOf(l));
+    aw.aaz();
+    c.Ru().set(ac.a.yAd, Long.valueOf(l));
+    AppMethodBeat.o(21663);
   }
   
-  public final void bbw()
+  public final void bIE()
   {
-    if (!com.tencent.mm.plugin.ipcall.b.a.WS()) {
-      y.d("MicroMsg.IPCallAddressBookUsernameUpdater", "tryUpdate, can't sync addr book");
+    AppMethodBeat.i(21661);
+    if (!com.tencent.mm.plugin.ipcall.b.a.aqt()) {
+      ab.d("MicroMsg.IPCallAddressBookUsernameUpdater", "tryUpdate, can't sync addr book");
     }
-    if (this.dZI)
+    if (this.fpN)
     {
-      y.d("MicroMsg.IPCallAddressBookUsernameUpdater", "tryUpdate, updating");
+      ab.d("MicroMsg.IPCallAddressBookUsernameUpdater", "tryUpdate, updating");
+      AppMethodBeat.o(21661);
       return;
     }
     long l = System.currentTimeMillis();
-    au.Hx();
-    if (Math.abs(l - ((Long)c.Dz().get(ac.a.uqd, Long.valueOf(0L))).longValue()) >= 86400000L)
+    aw.aaz();
+    if (Math.abs(l - ((Long)c.Ru().get(ac.a.yAd, Long.valueOf(0L))).longValue()) >= 86400000L)
     {
-      this.dZI = true;
-      this.lnZ = -1L;
-      this.loa = -1L;
-      this.lob = -1L;
-      this.loc = -1L;
-      au.Dk().a(32, this);
-      e.post(new a.1(this), "IPCallAddressBookUpdater_updateUsername");
+      this.fpN = true;
+      this.nLw = -1L;
+      this.nLx = -1L;
+      this.nLy = -1L;
+      this.nLz = -1L;
+      aw.Rc().a(32, this);
+      d.post(new a.1(this), "IPCallAddressBookUpdater_updateUsername");
+      AppMethodBeat.o(21661);
       return;
     }
-    y.d("MicroMsg.IPCallAddressBookUsernameUpdater", "tryUpdate, not reach time limit");
+    ab.d("MicroMsg.IPCallAddressBookUsernameUpdater", "tryUpdate, not reach time limit");
+    AppMethodBeat.o(21661);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.IPCallAddressBookUsernameUpdater", "onSceneEnd, errType: %d, errCode: %d, isUpdating: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.dZI) });
-    if (!this.dZI) {
+    AppMethodBeat.i(21662);
+    ab.d("MicroMsg.IPCallAddressBookUsernameUpdater", "onSceneEnd, errType: %d, errCode: %d, isUpdating: %b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(this.fpN) });
+    if (!this.fpN)
+    {
+      AppMethodBeat.o(21662);
       return;
     }
-    au.Dk().b(32, this);
-    this.loa = System.currentTimeMillis();
-    y.d("MicroMsg.IPCallAddressBookUsernameUpdater", "GetMFriend used %dms", new Object[] { Long.valueOf(this.loa - this.lnZ) });
+    aw.Rc().b(32, this);
+    this.nLx = System.currentTimeMillis();
+    ab.d("MicroMsg.IPCallAddressBookUsernameUpdater", "GetMFriend used %dms", new Object[] { Long.valueOf(this.nLx - this.nLw) });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      y.d("MicroMsg.IPCallAddressBookUsernameUpdater", "GetMFriend failed");
-      this.dZI = false;
-      bbx();
+      ab.d("MicroMsg.IPCallAddressBookUsernameUpdater", "GetMFriend failed");
+      this.fpN = false;
+      bIF();
+      AppMethodBeat.o(21662);
       return;
     }
-    e.post(new a.2(this), "IPCallAddressBookUsernameUpdater_updateUsernameAfterGetMFriend");
+    d.post(new a.2(this), "IPCallAddressBookUsernameUpdater_updateUsernameAfterGetMFriend");
+    AppMethodBeat.o(21662);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a
  * JD-Core Version:    0.7.0.1
  */

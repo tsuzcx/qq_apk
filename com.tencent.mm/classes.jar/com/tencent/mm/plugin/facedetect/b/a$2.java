@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.facedetect.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$2
   implements Runnable
 {
@@ -7,14 +9,16 @@ final class a$2
   
   public final void run()
   {
-    if (this.jMz.jMn != null) {
-      this.jMz.jMn.a(this.jMz.jMs, this.bEf, this.bEg, this.edL);
+    AppMethodBeat.i(58);
+    if (this.mgF.mgt != null) {
+      this.mgF.mgt.a(this.mgF.mgy, this.val$errType, this.val$errCode, this.ftO);
     }
+    AppMethodBeat.o(58);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.a.2
  * JD-Core Version:    0.7.0.1
  */

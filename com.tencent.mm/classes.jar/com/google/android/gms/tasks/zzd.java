@@ -1,46 +1,50 @@
 package com.google.android.gms.tasks;
 
-import java.util.concurrent.Executor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-class zzd<TResult>
-  implements zzf<TResult>
+final class zzd
+  implements Runnable
 {
-  private final Executor zzbFQ;
-  private OnFailureListener zzbNA;
-  private final Object zzrJ = new Object();
+  zzd(zzc paramzzc, Task paramTask) {}
   
-  public zzd(Executor paramExecutor, OnFailureListener paramOnFailureListener)
+  public final void run()
   {
-    this.zzbFQ = paramExecutor;
-    this.zzbNA = paramOnFailureListener;
-  }
-  
-  public void cancel()
-  {
-    synchronized (this.zzrJ)
+    AppMethodBeat.i(57383);
+    if (this.zzafn.isCanceled())
     {
-      this.zzbNA = null;
+      zzc.zza(this.zzafo).zzdp();
+      AppMethodBeat.o(57383);
       return;
     }
-  }
-  
-  public void onComplete(Task<TResult> paramTask)
-  {
-    if (!paramTask.isSuccessful()) {
-      synchronized (this.zzrJ)
+    try
+    {
+      Object localObject = zzc.zzb(this.zzafo).then(this.zzafn);
+      zzc.zza(this.zzafo).setResult(localObject);
+      AppMethodBeat.o(57383);
+      return;
+    }
+    catch (RuntimeExecutionException localRuntimeExecutionException)
+    {
+      if ((localRuntimeExecutionException.getCause() instanceof Exception))
       {
-        if (this.zzbNA == null) {
-          return;
-        }
-        this.zzbFQ.execute(new zzd.1(this, paramTask));
+        zzc.zza(this.zzafo).setException((Exception)localRuntimeExecutionException.getCause());
+        AppMethodBeat.o(57383);
         return;
       }
+      zzc.zza(this.zzafo).setException(localRuntimeExecutionException);
+      AppMethodBeat.o(57383);
+      return;
+    }
+    catch (Exception localException)
+    {
+      zzc.zza(this.zzafo).setException(localException);
+      AppMethodBeat.o(57383);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.tasks.zzd
  * JD-Core Version:    0.7.0.1
  */

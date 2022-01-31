@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class TouchImageView$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class TouchImageView$1
   
   public final void run()
   {
-    this.pky.setPressed(false);
-    this.pky.invalidate();
+    AppMethodBeat.i(39895);
+    this.sdb.setPressed(false);
+    this.sdb.invalidate();
+    AppMethodBeat.o(39895);
   }
 }
 

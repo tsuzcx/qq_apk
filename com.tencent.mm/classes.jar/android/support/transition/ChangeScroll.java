@@ -11,7 +11,7 @@ import java.util.Map;
 public class ChangeScroll
   extends Transition
 {
-  private static final String[] qc = { "android:changeScroll:x", "android:changeScroll:y" };
+  private static final String[] qZ = { "android:changeScroll:x", "android:changeScroll:y" };
   
   public ChangeScroll() {}
   
@@ -20,22 +20,22 @@ public class ChangeScroll
     super(paramContext, paramAttributeSet);
   }
   
-  private static void c(ai paramai)
+  private static void c(ah paramah)
   {
-    paramai.values.put("android:changeScroll:x", Integer.valueOf(paramai.view.getScrollX()));
-    paramai.values.put("android:changeScroll:y", Integer.valueOf(paramai.view.getScrollY()));
+    paramah.values.put("android:changeScroll:x", Integer.valueOf(paramah.view.getScrollX()));
+    paramah.values.put("android:changeScroll:y", Integer.valueOf(paramah.view.getScrollY()));
   }
   
-  public final Animator a(ViewGroup paramViewGroup, ai paramai1, ai paramai2)
+  public final Animator a(ViewGroup paramViewGroup, ah paramah1, ah paramah2)
   {
-    if ((paramai1 == null) || (paramai2 == null)) {
+    if ((paramah1 == null) || (paramah2 == null)) {
       return null;
     }
-    View localView = paramai2.view;
-    int i = ((Integer)paramai1.values.get("android:changeScroll:x")).intValue();
-    int j = ((Integer)paramai2.values.get("android:changeScroll:x")).intValue();
-    int k = ((Integer)paramai1.values.get("android:changeScroll:y")).intValue();
-    int m = ((Integer)paramai2.values.get("android:changeScroll:y")).intValue();
+    View localView = paramah2.view;
+    int i = ((Integer)paramah1.values.get("android:changeScroll:x")).intValue();
+    int j = ((Integer)paramah2.values.get("android:changeScroll:x")).intValue();
+    int k = ((Integer)paramah1.values.get("android:changeScroll:y")).intValue();
+    int m = ((Integer)paramah2.values.get("android:changeScroll:y")).intValue();
     if (i != j) {
       localView.setScrollX(i);
     }
@@ -44,30 +44,30 @@ public class ChangeScroll
       if (k != m) {
         localView.setScrollY(k);
       }
-      for (paramai1 = ObjectAnimator.ofInt(localView, "scrollY", new int[] { k, m });; paramai1 = null) {
-        return ah.a(paramViewGroup, paramai1);
+      for (paramah1 = ObjectAnimator.ofInt(localView, "scrollY", new int[] { k, m });; paramah1 = null) {
+        return ag.a(paramViewGroup, paramah1);
       }
     }
   }
   
-  public final void a(ai paramai)
+  public final void a(ah paramah)
   {
-    c(paramai);
+    c(paramah);
   }
   
-  public final void b(ai paramai)
+  public final void b(ah paramah)
   {
-    c(paramai);
+    c(paramah);
   }
   
   public final String[] getTransitionProperties()
   {
-    return qc;
+    return qZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.transition.ChangeScroll
  * JD-Core Version:    0.7.0.1
  */

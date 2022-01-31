@@ -1,66 +1,95 @@
 package com.tencent.mm.plugin.game.d;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
+import java.util.LinkedList;
 
 public final class ct
   extends com.tencent.mm.bv.a
 {
-  public String kSE;
+  public dq ntT;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111660);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kSE == null) {
-        throw new b("Not all required fields were included: PkgId");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.ntT == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: AppInfo");
+        AppMethodBeat.o(111660);
+        throw paramVarArgs;
       }
-      if (this.kSE != null) {
-        paramVarArgs.d(1, this.kSE);
+      if (this.ntT != null)
+      {
+        paramVarArgs.iQ(1, this.ntT.computeSize());
+        this.ntT.writeFields(paramVarArgs);
       }
+      AppMethodBeat.o(111660);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kSE == null) {
-        break label210;
+      if (this.ntT == null) {
+        break label358;
       }
     }
-    label210:
-    for (paramInt = d.a.a.b.b.a.e(1, this.kSE) + 0;; paramInt = 0)
+    label358:
+    for (paramInt = e.a.a.a.iP(1, this.ntT.computeSize()) + 0;; paramInt = 0)
     {
+      AppMethodBeat.o(111660);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.kSE != null) {
-          break;
+        if (this.ntT == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: AppInfo");
+          AppMethodBeat.o(111660);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: PkgId");
+        AppMethodBeat.o(111660);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (e.a.a.a.a)paramVarArgs[0];
         ct localct = (ct)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
+          AppMethodBeat.o(111660);
           return -1;
         }
-        localct.kSE = locala.xpH.readString();
+        paramVarArgs = ((e.a.a.a.a)localObject1).Wp(paramInt);
+        int i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new dq();
+          localObject2 = new e.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((dq)localObject1).populateBuilderWithField((e.a.a.a.a)localObject2, (com.tencent.mm.bv.a)localObject1, com.tencent.mm.bv.a.getNextFieldNumber((e.a.a.a.a)localObject2))) {}
+          localct.ntT = ((dq)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(111660);
         return 0;
       }
+      AppMethodBeat.o(111660);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.game.d.ct
  * JD-Core Version:    0.7.0.1
  */

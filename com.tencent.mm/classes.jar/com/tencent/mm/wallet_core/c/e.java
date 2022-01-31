@@ -2,7 +2,13 @@ package com.tencent.mm.wallet_core.c;
 
 public abstract interface e
 {
-  public abstract void bgs();
+  public abstract void onCancel();
+  
+  public abstract void onEnter();
+  
+  public abstract void onUrlCancel();
+  
+  public abstract void onUrlOk();
 }
 
 

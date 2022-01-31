@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.music.model.notification;
 
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class MMMusicPlayerService$1
   implements Runnable
@@ -10,9 +11,11 @@ final class MMMusicPlayerService$1
   
   public final void run()
   {
-    y.i("MicroMsg.Music.MMMusicPlayerService", "quit");
-    ai.S(MMMusicPlayerService.a(this.mzV));
-    this.mzV.stopSelf();
+    AppMethodBeat.i(104991);
+    ab.i("MicroMsg.Music.MMMusicPlayerService", "quit");
+    al.ae(MMMusicPlayerService.a(this.pab));
+    this.pab.stopSelf();
+    AppMethodBeat.o(104991);
   }
 }
 

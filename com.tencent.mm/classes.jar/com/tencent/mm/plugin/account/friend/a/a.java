@@ -2,294 +2,439 @@ package com.tencent.mm.plugin.account.friend.a;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.v;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.sdk.platformtools.y;
 
 public final class a
 {
-  String aVr = "";
-  private String bIW = "";
-  public int bcw = -1;
-  public String cCt = "";
-  public String dBS = "";
-  public String ebN = "";
-  public int ebQ = 0;
-  public String feW = "";
-  long feX = 0L;
-  public String feY = "";
-  public String feZ = "";
-  String ffa = "";
-  String ffb = "";
-  public String ffc = "";
-  public int ffd = 0;
-  public byte[] ffe;
-  public int fff;
-  public String ffg = "";
-  public int ffh = 0;
-  public String ffi = "";
-  public String ffj = "";
-  public String ffk = "";
-  int ffl = 0;
-  public String ffm = "";
-  int ffn = 0;
-  int ffo = 0;
-  String ffp = "";
-  public String ffq = "";
-  String ffr = "";
-  int ffs = -1;
-  String fft = "";
-  long ffu = -1L;
-  int ffv = -1;
-  String ffw = "";
-  String ffx = "";
-  String ffy = "";
-  public long ffz = 0L;
-  private int id = 0;
-  public int status = 0;
-  public int type = 0;
-  public String username = "";
+  String blZ;
+  public int bsY;
+  private String cqq;
+  public String dqF;
+  public String ezj;
+  public String fsf;
+  public int fsi;
+  public String gwE;
+  long gwF;
+  public String gwG;
+  public String gwH;
+  String gwI;
+  String gwJ;
+  public String gwK;
+  public int gwL;
+  public byte[] gwM;
+  public int gwN;
+  public String gwO;
+  public int gwP;
+  public String gwQ;
+  public String gwR;
+  public String gwS;
+  int gwT;
+  public String gwU;
+  int gwV;
+  int gwW;
+  String gwX;
+  public String gwY;
+  String gwZ;
+  int gxa;
+  String gxb;
+  long gxc;
+  int gxd;
+  String gxe;
+  String gxf;
+  String gxg;
+  public long gxh;
+  private int id;
+  public int status;
+  public int type;
+  public String username;
   
-  private byte[] Wu()
+  public a()
   {
+    AppMethodBeat.i(108301);
+    this.bsY = -1;
+    this.id = 0;
+    this.cqq = "";
+    this.gwE = "";
+    this.gwF = 0L;
+    this.ezj = "";
+    this.gwG = "";
+    this.gwH = "";
+    this.username = "";
+    this.blZ = "";
+    this.gwI = "";
+    this.gwJ = "";
+    this.type = 0;
+    this.gwK = "";
+    this.dqF = "";
+    this.status = 0;
+    this.fsf = "";
+    this.fsi = 0;
+    this.gwL = 0;
+    this.gwO = "";
+    this.gwP = 0;
+    this.gwQ = "";
+    this.gwR = "";
+    this.gwS = "";
+    this.gwT = 0;
+    this.gwU = "";
+    this.gwV = 0;
+    this.gwW = 0;
+    this.gwX = "";
+    this.gwY = "";
+    this.gwZ = "";
+    this.gxa = -1;
+    this.gxb = "";
+    this.gxc = -1L;
+    this.gxd = -1;
+    this.gxe = "";
+    this.gxf = "";
+    this.gxg = "";
+    this.gxh = 0L;
+    AppMethodBeat.o(108301);
+  }
+  
+  private void ag(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108303);
     try
     {
-      Object localObject = new v();
-      ((v)localObject).cqy();
-      ((v)localObject).Zg(this.ffg);
-      ((v)localObject).Fb(this.ffh);
-      ((v)localObject).Zg(this.ffi);
-      ((v)localObject).Zg(this.ffj);
-      ((v)localObject).Zg(this.ffk);
-      ((v)localObject).Fb(this.ffl);
-      ((v)localObject).Zg(this.ffm);
-      ((v)localObject).Fb(this.ffn);
-      ((v)localObject).Fb(this.ffo);
-      ((v)localObject).Zg(this.ffp);
-      ((v)localObject).Zg(this.ffq);
-      ((v)localObject).Zg(this.ffr);
-      ((v)localObject).Fb(this.ffs);
-      ((v)localObject).Zg(this.fft);
-      ((v)localObject).ho(this.ffu);
-      ((v)localObject).Fb(this.ffv);
-      ((v)localObject).Zg(this.ffw);
-      ((v)localObject).Zg(this.ffx);
-      ((v)localObject).Zg(this.ffy);
-      ((v)localObject).ho(this.ffz);
-      localObject = ((v)localObject).cqz();
+      y localy = new y();
+      int i = localy.ca(paramArrayOfByte);
+      if (i != 0)
+      {
+        ab.e("MicroMsg.AddrUpload", "parse LVBuffer error:".concat(String.valueOf(i)));
+        AppMethodBeat.o(108303);
+        return;
+      }
+      this.gwO = localy.getString();
+      this.gwP = localy.getInt();
+      this.gwQ = localy.getString();
+      this.gwR = localy.getString();
+      this.gwS = localy.getString();
+      this.gwT = localy.getInt();
+      this.gwU = localy.getString();
+      this.gwV = localy.getInt();
+      this.gwW = localy.getInt();
+      this.gwX = localy.getString();
+      this.gwY = localy.getString();
+      this.gwZ = localy.getString();
+      this.gxa = localy.getInt();
+      this.gxb = localy.getString();
+      this.gxc = localy.getLong();
+      this.gxd = localy.getInt();
+      this.gxe = localy.getString();
+      this.gxf = localy.getString();
+      this.gxg = localy.getString();
+      this.gxh = localy.getLong();
+      AppMethodBeat.o(108303);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      ab.printErrStackTrace("MicroMsg.AddrUpload", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(108303);
+    }
+  }
+  
+  private byte[] apX()
+  {
+    AppMethodBeat.i(108305);
+    try
+    {
+      Object localObject = new y();
+      ((y)localObject).dsv();
+      ((y)localObject).ape(this.gwO);
+      ((y)localObject).Nd(this.gwP);
+      ((y)localObject).ape(this.gwQ);
+      ((y)localObject).ape(this.gwR);
+      ((y)localObject).ape(this.gwS);
+      ((y)localObject).Nd(this.gwT);
+      ((y)localObject).ape(this.gwU);
+      ((y)localObject).Nd(this.gwV);
+      ((y)localObject).Nd(this.gwW);
+      ((y)localObject).ape(this.gwX);
+      ((y)localObject).ape(this.gwY);
+      ((y)localObject).ape(this.gwZ);
+      ((y)localObject).Nd(this.gxa);
+      ((y)localObject).ape(this.gxb);
+      ((y)localObject).nN(this.gxc);
+      ((y)localObject).Nd(this.gxd);
+      ((y)localObject).ape(this.gxe);
+      ((y)localObject).ape(this.gxf);
+      ((y)localObject).ape(this.gxg);
+      ((y)localObject).nN(this.gxh);
+      localObject = ((y)localObject).dsw();
+      AppMethodBeat.o(108305);
       return localObject;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.AddrUpload", localException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.AddrUpload", localException, "", new Object[0]);
+      AppMethodBeat.o(108305);
     }
     return null;
   }
   
-  public static int pF(String paramString)
+  public static int wV(String paramString)
   {
+    int i = 0;
+    AppMethodBeat.i(108306);
     try
     {
-      int i = bk.ZJ("0x" + paramString.substring(0, 8));
-      return i;
+      int j = bo.apN("0x" + paramString.substring(0, 8));
+      i = j;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.AddrUpload", localException, "md5: %s", new Object[] { paramString });
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.AddrUpload", localException, "md5: %s", new Object[] { paramString });
+      }
     }
-    return 0;
+    AppMethodBeat.o(108306);
+    return i;
   }
   
-  public final int AE()
+  public final String Al()
   {
+    if (this.cqq == null) {
+      return "";
+    }
+    return this.cqq;
+  }
+  
+  public final int Nu()
+  {
+    AppMethodBeat.i(108308);
     int i = 32;
     int j;
-    if (!bk.bl(Wy()))
+    if (!bo.isNullOrNil(aqa()))
     {
-      i = Wy().charAt(0);
+      i = aqa().charAt(0);
       if ((i < 97) || (i > 122)) {
-        break label64;
+        break label74;
       }
       j = (char)(i - 32);
     }
-    label64:
-    do
+    for (;;)
     {
+      AppMethodBeat.o(108308);
       return j;
-      if (bk.bl(Wz())) {
+      if (bo.isNullOrNil(aqb())) {
         break;
       }
-      i = Wz().charAt(0);
+      i = aqb().charAt(0);
       break;
-      if (i < 65) {
-        break label78;
+      label74:
+      if (i >= 65)
+      {
+        j = i;
+        if (i <= 90) {}
       }
-      j = i;
-    } while (i <= 90);
-    label78:
-    return 123;
+      else
+      {
+        j = 123;
+      }
+    }
   }
   
-  public final String WA()
+  public final String apY()
   {
-    if (this.aVr == null) {
+    if (this.gwE == null) {
       return "";
     }
-    return this.aVr;
+    return this.gwE;
   }
   
-  public final String WB()
+  public final String apZ()
   {
-    if (this.ffa == null) {
+    if (this.ezj == null) {
       return "";
     }
-    return this.ffa;
+    return this.ezj;
   }
   
-  public final String WC()
+  public final String aqa()
   {
-    if (this.ffb == null) {
+    if (this.gwG == null) {
       return "";
     }
-    return this.ffb;
+    return this.gwG;
   }
   
-  public final String WD()
+  public final String aqb()
   {
-    if (this.ffc == null) {
+    if (this.gwH == null) {
       return "";
     }
-    return this.ffc;
+    return this.gwH;
   }
   
-  public final void WE()
+  public final String aqc()
   {
-    this.ffd |= 0x1;
-  }
-  
-  public final boolean WF()
-  {
-    return (this.ffd & 0x1) == 0;
-  }
-  
-  public final String Wv()
-  {
-    if (this.bIW == null) {
+    if (this.blZ == null) {
       return "";
     }
-    return this.bIW;
+    return this.blZ;
   }
   
-  public final String Ww()
+  public final String aqd()
   {
-    if (this.feW == null) {
+    if (this.gwI == null) {
       return "";
     }
-    return this.feW;
+    return this.gwI;
   }
   
-  public final String Wx()
+  public final String aqe()
   {
-    if (this.dBS == null) {
+    if (this.gwJ == null) {
       return "";
     }
-    return this.dBS;
+    return this.gwJ;
   }
   
-  public final String Wy()
+  public final String aqf()
   {
-    if (this.feY == null) {
+    if (this.gwK == null) {
       return "";
     }
-    return this.feY;
+    return this.gwK;
   }
   
-  public final String Wz()
+  public final void aqg()
   {
-    if (this.feZ == null) {
-      return "";
-    }
-    return this.feZ;
+    this.gwL |= 0x1;
   }
   
-  public final void d(Cursor paramCursor)
+  public final boolean aqh()
   {
-    pG(paramCursor.getString(1));
-    this.feW = paramCursor.getString(2);
-    this.feX = paramCursor.getLong(3);
-    this.dBS = paramCursor.getString(4);
-    this.feY = paramCursor.getString(5);
-    this.feZ = paramCursor.getString(6);
+    return (this.gwL & 0x1) == 0;
+  }
+  
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(108302);
+    wW(paramCursor.getString(1));
+    this.gwE = paramCursor.getString(2);
+    this.gwF = paramCursor.getLong(3);
+    this.ezj = paramCursor.getString(4);
+    this.gwG = paramCursor.getString(5);
+    this.gwH = paramCursor.getString(6);
     this.username = paramCursor.getString(7);
-    this.aVr = paramCursor.getString(8);
-    this.ffa = paramCursor.getString(9);
-    this.ffb = paramCursor.getString(10);
+    this.blZ = paramCursor.getString(8);
+    this.gwI = paramCursor.getString(9);
+    this.gwJ = paramCursor.getString(10);
     this.type = paramCursor.getInt(11);
-    this.ffc = paramCursor.getString(12);
-    this.cCt = paramCursor.getString(13);
+    this.gwK = paramCursor.getString(12);
+    this.dqF = paramCursor.getString(13);
     int i = paramCursor.getInt(14);
-    byte[] arrayOfByte;
-    if (i == 65536)
+    if (i == 65536) {}
+    for (this.status = 0;; this.status = i)
     {
-      this.status = 0;
-      this.ffd = paramCursor.getInt(17);
-      this.ebN = paramCursor.getString(15);
-      this.ebQ = paramCursor.getInt(18);
-      this.ffe = paramCursor.getBlob(19);
-      if (!bk.bE(this.ffe)) {
-        arrayOfByte = this.ffe;
+      this.gwL = paramCursor.getInt(17);
+      this.fsf = paramCursor.getString(15);
+      this.fsi = paramCursor.getInt(18);
+      this.gwM = paramCursor.getBlob(19);
+      if (!bo.ce(this.gwM)) {
+        ag(this.gwM);
       }
+      this.gwN = paramCursor.getInt(20);
+      AppMethodBeat.o(108302);
+      return;
+    }
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(108304);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.bsY & 0x1) != 0) {
+      localContentValues.put("id", Integer.valueOf(this.id));
+    }
+    if ((this.bsY & 0x2) != 0) {
+      localContentValues.put("md5", Al());
+    }
+    if ((this.bsY & 0x4) != 0) {
+      localContentValues.put("peopleid", apY());
+    }
+    if ((this.bsY & 0x8) != 0) {
+      localContentValues.put("uploadtime", Long.valueOf(this.gwF));
+    }
+    if ((this.bsY & 0x10) != 0) {
+      localContentValues.put("realname", apZ());
+    }
+    if ((this.bsY & 0x20) != 0) {
+      localContentValues.put("realnamepyinitial", aqa());
+    }
+    if ((this.bsY & 0x40) != 0) {
+      localContentValues.put("realnamequanpin", aqb());
+    }
+    if ((this.bsY & 0x80) != 0) {
+      localContentValues.put("username", getUsername());
+    }
+    if ((this.bsY & 0x100) != 0) {
+      localContentValues.put("nickname", aqc());
+    }
+    if ((this.bsY & 0x200) != 0) {
+      localContentValues.put("nicknamepyinitial", aqd());
+    }
+    if ((this.bsY & 0x400) != 0) {
+      localContentValues.put("nicknamequanpin", aqe());
+    }
+    if ((this.bsY & 0x800) != 0) {
+      localContentValues.put("type", Integer.valueOf(this.type));
+    }
+    if ((this.bsY & 0x1000) != 0) {
+      localContentValues.put("moblie", aqf());
+    }
+    if ((this.bsY & 0x2000) != 0) {
+      localContentValues.put("email", getEmail());
+    }
+    int i;
+    if ((this.bsY & 0x4000) != 0)
+    {
+      i = this.status;
+      if (i != 0) {
+        break label489;
+      }
+      localContentValues.put("status", Integer.valueOf(65536));
     }
     for (;;)
     {
-      try
-      {
-        localv = new v();
-        i = localv.bA(arrayOfByte);
-        if (i == 0) {
-          continue;
-        }
-        y.e("MicroMsg.AddrUpload", "parse LVBuffer error:" + i);
+      if ((this.bsY & 0x8000) != 0) {
+        localContentValues.put("reserved1", this.fsf);
       }
-      catch (Exception localException)
-      {
-        v localv;
-        y.printErrStackTrace("MicroMsg.AddrUpload", localException, "", new Object[0]);
-        continue;
+      if ((this.bsY & 0x20000) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.gwL));
       }
-      this.fff = paramCursor.getInt(20);
-      return;
-      this.status = i;
-      break;
-      this.ffg = localv.getString();
-      this.ffh = localv.getInt();
-      this.ffi = localv.getString();
-      this.ffj = localv.getString();
-      this.ffk = localv.getString();
-      this.ffl = localv.getInt();
-      this.ffm = localv.getString();
-      this.ffn = localv.getInt();
-      this.ffo = localv.getInt();
-      this.ffp = localv.getString();
-      this.ffq = localv.getString();
-      this.ffr = localv.getString();
-      this.ffs = localv.getInt();
-      this.fft = localv.getString();
-      this.ffu = localv.getLong();
-      this.ffv = localv.getInt();
-      this.ffw = localv.getString();
-      this.ffx = localv.getString();
-      this.ffy = localv.getString();
-      this.ffz = localv.getLong();
+      if ((this.bsY & 0x40000) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.fsi));
+      }
+      if ((this.bsY & 0x80000) != 0)
+      {
+        this.gwM = apX();
+        localContentValues.put("lvbuf", this.gwM);
+      }
+      if ((this.bsY & 0x100000) != 0) {
+        localContentValues.put("showhead", Integer.valueOf(this.gwN));
+      }
+      AppMethodBeat.o(108304);
+      return localContentValues;
+      label489:
+      localContentValues.put("status", Integer.valueOf(i));
     }
   }
   
   public final String getEmail()
   {
-    if (this.cCt == null) {
+    if (this.dqF == null) {
       return "";
     }
-    return this.cCt;
+    return this.dqF;
   }
   
   public final String getUsername()
@@ -300,94 +445,17 @@ public final class a
     return this.username;
   }
   
-  public final void pG(String paramString)
+  public final void wW(String paramString)
   {
-    this.bIW = paramString;
-    this.id = pF(paramString);
-  }
-  
-  public final ContentValues vf()
-  {
-    ContentValues localContentValues = new ContentValues();
-    if ((this.bcw & 0x1) != 0) {
-      localContentValues.put("id", Integer.valueOf(this.id));
-    }
-    if ((this.bcw & 0x2) != 0) {
-      localContentValues.put("md5", Wv());
-    }
-    if ((this.bcw & 0x4) != 0) {
-      localContentValues.put("peopleid", Ww());
-    }
-    if ((this.bcw & 0x8) != 0) {
-      localContentValues.put("uploadtime", Long.valueOf(this.feX));
-    }
-    if ((this.bcw & 0x10) != 0) {
-      localContentValues.put("realname", Wx());
-    }
-    if ((this.bcw & 0x20) != 0) {
-      localContentValues.put("realnamepyinitial", Wy());
-    }
-    if ((this.bcw & 0x40) != 0) {
-      localContentValues.put("realnamequanpin", Wz());
-    }
-    if ((this.bcw & 0x80) != 0) {
-      localContentValues.put("username", getUsername());
-    }
-    if ((this.bcw & 0x100) != 0) {
-      localContentValues.put("nickname", WA());
-    }
-    if ((this.bcw & 0x200) != 0) {
-      localContentValues.put("nicknamepyinitial", WB());
-    }
-    if ((this.bcw & 0x400) != 0) {
-      localContentValues.put("nicknamequanpin", WC());
-    }
-    if ((this.bcw & 0x800) != 0) {
-      localContentValues.put("type", Integer.valueOf(this.type));
-    }
-    if ((this.bcw & 0x1000) != 0) {
-      localContentValues.put("moblie", WD());
-    }
-    if ((this.bcw & 0x2000) != 0) {
-      localContentValues.put("email", getEmail());
-    }
-    int i;
-    if ((this.bcw & 0x4000) != 0)
-    {
-      i = this.status;
-      if (i != 0) {
-        break label476;
-      }
-      localContentValues.put("status", Integer.valueOf(65536));
-    }
-    for (;;)
-    {
-      if ((this.bcw & 0x8000) != 0) {
-        localContentValues.put("reserved1", this.ebN);
-      }
-      if ((this.bcw & 0x20000) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.ffd));
-      }
-      if ((this.bcw & 0x40000) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.ebQ));
-      }
-      if ((this.bcw & 0x80000) != 0)
-      {
-        this.ffe = Wu();
-        localContentValues.put("lvbuf", this.ffe);
-      }
-      if ((this.bcw & 0x100000) != 0) {
-        localContentValues.put("showhead", Integer.valueOf(this.fff));
-      }
-      return localContentValues;
-      label476:
-      localContentValues.put("status", Integer.valueOf(i));
-    }
+    AppMethodBeat.i(108307);
+    this.cqq = paramString;
+    this.id = wV(paramString);
+    AppMethodBeat.o(108307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.a
  * JD-Core Version:    0.7.0.1
  */

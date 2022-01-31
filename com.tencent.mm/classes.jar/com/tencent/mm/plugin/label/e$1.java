@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.label;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.storage.ai;
 
 final class e$1
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return ai.dXp;
+    return ai.SQL_CREATE;
   }
 }
 

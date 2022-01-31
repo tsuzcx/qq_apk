@@ -12,135 +12,171 @@ import android.support.v7.widget.RecyclerView.h;
 import android.support.v7.widget.RecyclerView.i;
 import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fav.ui.n.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class h
   implements e.b, g.a
 {
-  ArrayList<f.c> hka = null;
-  List<Long> idList = new ArrayList();
-  g.b kid;
-  f kie;
-  private GridLayoutManager kif;
-  boolean kig = false;
-  int kih = 0;
-  int kii = 0;
+  ArrayList<f.c> iVH;
+  List<Long> idList;
+  private GridLayoutManager kFI;
+  g.b mCK;
+  f mCL;
+  boolean mCM;
+  int mCN;
+  int mCO;
   Context mContext;
-  private ah mHandler = new ah(Looper.getMainLooper());
+  private ak mHandler;
   
   public h(Context paramContext)
   {
+    AppMethodBeat.i(74595);
+    this.iVH = null;
+    this.mCM = false;
+    this.mHandler = new ak(Looper.getMainLooper());
+    this.mCN = 0;
+    this.idList = new ArrayList();
+    this.mCO = 0;
     this.mContext = paramContext;
-    this.hka = new ArrayList();
+    this.iVH = new ArrayList();
+    AppMethodBeat.o(74595);
   }
   
-  public final void aRO()
+  public final <T extends RecyclerView.i> T bgA()
   {
-    this.kie.khJ = true;
-    e.a.aRT().khC = true;
-    GridLayoutManager localGridLayoutManager = (GridLayoutManager)aRV();
-    int i = localGridLayoutManager.gY();
-    int j = localGridLayoutManager.ha();
-    this.kie.c(i, j - i + 1, Integer.valueOf(0));
-  }
-  
-  public final void aRP()
-  {
-    this.kie.khJ = false;
-    e.a.aRT().clear();
-    e.a.aRT().khC = false;
-    this.kie.agL.notifyChanged();
-  }
-  
-  public final void aRU()
-  {
-    this.kig = true;
-  }
-  
-  public final <T extends RecyclerView.i> T aRV()
-  {
-    if (this.kif == null)
+    AppMethodBeat.i(74597);
+    if (this.kFI == null)
     {
-      this.kif = new GridLayoutManager(4);
-      this.kif.adw = new h.1(this);
+      this.kFI = new GridLayoutManager(4);
+      this.kFI.afL = new h.1(this);
     }
-    return this.kif;
+    GridLayoutManager localGridLayoutManager = this.kFI;
+    AppMethodBeat.o(74597);
+    return localGridLayoutManager;
   }
   
-  public final RecyclerView.a aRW()
+  public final RecyclerView.a bgz()
   {
-    this.kie = new f(this.mContext, this.hka, this.kid);
-    this.kie.khI = new h.3(this);
-    return this.kie;
+    AppMethodBeat.i(74599);
+    this.mCL = new f(this.mContext, this.iVH, this.mCK);
+    this.mCL.mCq = new h.3(this);
+    f localf = this.mCL;
+    AppMethodBeat.o(74599);
+    return localf;
   }
   
-  public final boolean aRY()
+  public final void byh()
   {
-    return e.a.aRT().khC;
+    AppMethodBeat.i(74601);
+    this.mCL.mCr = true;
+    e.a.bym().mCm = true;
+    GridLayoutManager localGridLayoutManager = (GridLayoutManager)bgA();
+    int i = localGridLayoutManager.it();
+    int j = localGridLayoutManager.iv();
+    this.mCL.e(i, j - i + 1, Integer.valueOf(0));
+    AppMethodBeat.o(74601);
   }
   
-  public final RecyclerView.h df(final Context paramContext)
+  public final void byi()
   {
-    new RecyclerView.h()
+    AppMethodBeat.i(74602);
+    this.mCL.mCr = false;
+    e.a.bym().clear();
+    e.a.bym().mCm = false;
+    this.mCL.ajb.notifyChanged();
+    AppMethodBeat.o(74602);
+  }
+  
+  public final void byn()
+  {
+    this.mCM = true;
+  }
+  
+  public final boolean byp()
+  {
+    AppMethodBeat.i(74603);
+    boolean bool = e.a.bym().mCm;
+    AppMethodBeat.o(74603);
+    return bool;
+  }
+  
+  public final RecyclerView.h dR(final Context paramContext)
+  {
+    AppMethodBeat.i(74598);
+    paramContext = new RecyclerView.h()
     {
       public final void a(Rect paramAnonymousRect, View paramAnonymousView, RecyclerView paramAnonymousRecyclerView, RecyclerView.s paramAnonymouss)
       {
-        int i = (int)paramContext.getResources().getDimension(n.c.OneDPPadding);
+        AppMethodBeat.i(74591);
+        int i = (int)paramContext.getResources().getDimension(2131427811);
         paramAnonymousRect.bottom = i;
         paramAnonymousRect.top = i;
         paramAnonymousRect.left = i;
         paramAnonymousRect.right = i;
+        AppMethodBeat.o(74591);
       }
     };
-  }
-  
-  public final void l(boolean paramBoolean, int paramInt)
-  {
-    this.kie.khH = true;
-    this.kid.ga(paramBoolean);
-    g.DQ();
-    g.DS().O(new h.4(this, paramBoolean, paramInt));
+    AppMethodBeat.o(74598);
+    return paramContext;
   }
   
   public final void onDetach()
   {
-    if (this.kid != null)
+    AppMethodBeat.i(74596);
+    if (this.mCK != null)
     {
-      this.kid.a(null);
-      this.kid = null;
+      this.mCK.a(null);
+      this.mCK = null;
     }
-    e locale = e.a.aRT();
-    locale.khD.clear();
+    e locale = e.a.bym();
+    locale.mCn.clear();
     locale.clear();
-    locale.khC = false;
+    locale.mCm = false;
+    AppMethodBeat.o(74596);
   }
   
   public final void onResume()
   {
-    if ((this.kig) && (e.a.aRT().khC))
+    AppMethodBeat.i(74604);
+    if ((this.mCM) && (e.a.bym().mCm))
     {
-      this.kid.re(e.a.aRT().khB.size());
-      this.kie.agL.notifyChanged();
+      this.mCK.wa(e.a.bym().mCl.size());
+      this.mCL.ajb.notifyChanged();
     }
+    AppMethodBeat.o(74604);
   }
   
-  public final void rg(int paramInt)
+  public final void v(boolean paramBoolean, int paramInt)
   {
-    y.i("MicroMsg.MediaHistoryGalleryPresenter", "[handleSelectedItem] type:%s", new Object[] { Integer.valueOf(paramInt) });
-    ArrayList localArrayList = e.a.aRT().khB;
+    AppMethodBeat.i(74605);
+    this.mCL.kFv = true;
+    this.mCK.gf(paramBoolean);
+    g.RM();
+    g.RO().ac(new h.4(this, paramBoolean, paramInt));
+    AppMethodBeat.o(74605);
+  }
+  
+  public final void wc(int paramInt)
+  {
+    AppMethodBeat.i(74600);
+    ab.i("MicroMsg.MediaHistoryGalleryPresenter", "[handleSelectedItem] type:%s", new Object[] { Integer.valueOf(paramInt) });
+    ArrayList localArrayList = e.a.bym().mCl;
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    this.kid.bv(localArrayList);
-    this.kid.aRP();
+    for (;;)
+    {
+      AppMethodBeat.o(74600);
+      return;
+      this.mCK.bP(localArrayList);
+      this.mCK.byi();
+    }
   }
 }
 

@@ -5,22 +5,22 @@ import android.content.Intent;
 public class GooglePlayServicesRepairableException
   extends UserRecoverableException
 {
-  private final int zzaiH;
+  private final int zzbq;
   
-  GooglePlayServicesRepairableException(int paramInt, String paramString, Intent paramIntent)
+  public GooglePlayServicesRepairableException(int paramInt, String paramString, Intent paramIntent)
   {
     super(paramString, paramIntent);
-    this.zzaiH = paramInt;
+    this.zzbq = paramInt;
   }
   
   public int getConnectionStatusCode()
   {
-    return this.zzaiH;
+    return this.zzbq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.GooglePlayServicesRepairableException
  * JD-Core Version:    0.7.0.1
  */

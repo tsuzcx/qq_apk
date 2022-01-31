@@ -1,73 +1,83 @@
 package com.tencent.mm.plugin.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.RandomAccessFile;
 import java.util.Arrays;
 
 public final class c
 {
-  public static long K(byte[] paramArrayOfByte)
+  public static long A(byte[] paramArrayOfByte, int paramInt)
   {
-    return (paramArrayOfByte[0] & 0xFF) << 56 | (paramArrayOfByte[1] & 0xFF) << 48 | (paramArrayOfByte[2] & 0xFF) << 40 | (paramArrayOfByte[3] & 0xFF) << 32 | (paramArrayOfByte[4] & 0xFF) << 24 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[6] & 0xFF) << 8 | paramArrayOfByte[7] & 0xFF;
+    AppMethodBeat.i(117834);
+    byte[] arrayOfByte = new byte[8];
+    Arrays.fill(arrayOfByte, (byte)0);
+    System.arraycopy(paramArrayOfByte, paramInt, arrayOfByte, 4, 4);
+    long l = ae(arrayOfByte);
+    AppMethodBeat.o(117834);
+    return l;
   }
   
   public static a a(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte, int paramInt)
   {
-    for (;;)
+    AppMethodBeat.i(117835);
+    try
     {
-      int i;
-      int j;
-      int k;
-      long l;
-      try
+      i = paramRandomAccessFile.read(paramArrayOfByte);
+      if (i >= 8)
       {
-        i = paramRandomAccessFile.read(paramArrayOfByte);
-        if (i < 8) {
-          break;
-        }
         j = readInt(paramArrayOfByte, 0);
         k = readInt(paramArrayOfByte, 4);
-        if (k != paramInt) {
-          break label163;
-        }
-        l = paramRandomAccessFile.getFilePointer() - i;
-        if (k == a.aAn) {
-          return new i(j, l, k);
-        }
-        if (k == a.aAo)
+        if (k == paramInt)
         {
-          paramRandomAccessFile = new e(j, l, k);
-          return paramRandomAccessFile;
+          l = paramRandomAccessFile.getFilePointer() - i;
+          if (k == a.aES) {}
+          for (paramRandomAccessFile = new i(j, l, k);; paramRandomAccessFile = new e(j, l, k))
+          {
+            AppMethodBeat.o(117835);
+            return paramRandomAccessFile;
+            if (k != a.aET) {
+              break;
+            }
+          }
         }
-      }
-      catch (Exception paramRandomAccessFile)
-      {
-        y.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
-        y.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
-        return null;
-      }
-      if (k == a.aAq) {
-        return new h(j, l, k);
-      }
-      return new a(j, l, k, 0L);
-      label163:
-      if ((k == a.aAl) || (k == a.aAp))
-      {
-        i = paramRandomAccessFile.read(paramArrayOfByte);
-      }
-      else
-      {
-        if (!a(paramRandomAccessFile, j - 8)) {
-          break;
-        }
-        i = paramRandomAccessFile.read(paramArrayOfByte);
       }
     }
-    return null;
+    catch (Exception paramRandomAccessFile)
+    {
+      for (;;)
+      {
+        int i;
+        int j;
+        int k;
+        long l;
+        ab.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
+        ab.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
+        paramRandomAccessFile = null;
+        continue;
+        if (k == a.aEV)
+        {
+          paramRandomAccessFile = new h(j, l, k);
+        }
+        else
+        {
+          paramRandomAccessFile = new a(j, l, k, 0L);
+          continue;
+          if ((k == a.aEQ) || (k == a.aEU)) {
+            i = paramRandomAccessFile.read(paramArrayOfByte);
+          } else if (a(paramRandomAccessFile, j - 8)) {
+            i = paramRandomAccessFile.read(paramArrayOfByte);
+          } else {
+            paramRandomAccessFile = null;
+          }
+        }
+      }
+    }
   }
   
   public static boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
   {
+    AppMethodBeat.i(117836);
     long l = 0L;
     while (paramLong > 2147483647L)
     {
@@ -77,14 +87,17 @@ public final class c
     l += paramRandomAccessFile.skipBytes((int)paramLong);
     if (l != paramLong)
     {
-      y.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
+      ab.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
+      AppMethodBeat.o(117836);
       return false;
     }
+    AppMethodBeat.o(117836);
     return true;
   }
   
-  public static int aG(String paramString)
+  public static int aS(String paramString)
   {
+    AppMethodBeat.i(117833);
     int k = paramString.length();
     int j = 0;
     int m;
@@ -93,182 +106,25 @@ public final class c
       m = paramString.charAt(j);
       j += 1;
     }
+    AppMethodBeat.o(117833);
     return i;
   }
   
-  public static boolean bl(String paramString)
+  public static long ae(byte[] paramArrayOfByte)
   {
-    return (paramString == null) || (paramString.length() <= 0);
+    return (paramArrayOfByte[0] & 0xFF) << 56 | (paramArrayOfByte[1] & 0xFF) << 48 | (paramArrayOfByte[2] & 0xFF) << 40 | (paramArrayOfByte[3] & 0xFF) << 32 | (paramArrayOfByte[4] & 0xFF) << 24 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[6] & 0xFF) << 8 | paramArrayOfByte[7] & 0xFF;
   }
   
-  /* Error */
-  public static boolean pp(String paramString)
+  public static boolean isNullOrNil(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 129	com/tencent/mm/plugin/a/c:bl	(Ljava/lang/String;)Z
-    //   4: ifeq +5 -> 9
-    //   7: iconst_0
-    //   8: ireturn
-    //   9: new 131	java/io/FileInputStream
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 132	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   17: astore 4
-    //   19: aload 4
-    //   21: astore_0
-    //   22: bipush 8
-    //   24: newarray byte
-    //   26: astore 5
-    //   28: aload 4
-    //   30: astore_0
-    //   31: aload 4
-    //   33: aload 5
-    //   35: iconst_0
-    //   36: bipush 8
-    //   38: invokevirtual 137	java/io/InputStream:read	([BII)I
-    //   41: istore_1
-    //   42: iload_1
-    //   43: bipush 8
-    //   45: if_icmpge +25 -> 70
-    //   48: aload 4
-    //   50: invokevirtual 141	java/io/InputStream:close	()V
-    //   53: iconst_0
-    //   54: ireturn
-    //   55: astore_0
-    //   56: ldc 47
-    //   58: aload_0
-    //   59: ldc 49
-    //   61: iconst_0
-    //   62: anewarray 4	java/lang/Object
-    //   65: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   68: iconst_0
-    //   69: ireturn
-    //   70: aload 4
-    //   72: astore_0
-    //   73: aload 5
-    //   75: iconst_0
-    //   76: invokestatic 23	com/tencent/mm/plugin/a/c:readInt	([BI)I
-    //   79: istore_1
-    //   80: aload 4
-    //   82: astore_0
-    //   83: aload 5
-    //   85: iconst_4
-    //   86: invokestatic 23	com/tencent/mm/plugin/a/c:readInt	([BI)I
-    //   89: istore_2
-    //   90: aload 4
-    //   92: astore_0
-    //   93: getstatic 144	com/tencent/mm/plugin/a/a:azK	I
-    //   96: istore_3
-    //   97: iload_2
-    //   98: iload_3
-    //   99: if_icmpne +30 -> 129
-    //   102: iload_1
-    //   103: ifle +26 -> 129
-    //   106: aload 4
-    //   108: invokevirtual 141	java/io/InputStream:close	()V
-    //   111: iconst_1
-    //   112: ireturn
-    //   113: astore_0
-    //   114: ldc 47
-    //   116: aload_0
-    //   117: ldc 49
-    //   119: iconst_0
-    //   120: anewarray 4	java/lang/Object
-    //   123: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   126: goto -15 -> 111
-    //   129: aload 4
-    //   131: invokevirtual 141	java/io/InputStream:close	()V
-    //   134: iconst_0
-    //   135: ireturn
-    //   136: astore_0
-    //   137: ldc 47
-    //   139: aload_0
-    //   140: ldc 49
-    //   142: iconst_0
-    //   143: anewarray 4	java/lang/Object
-    //   146: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   149: iconst_0
-    //   150: ireturn
-    //   151: astore 5
-    //   153: aconst_null
-    //   154: astore 4
-    //   156: aload 4
-    //   158: astore_0
-    //   159: ldc 47
-    //   161: aload 5
-    //   163: ldc 49
-    //   165: iconst_0
-    //   166: anewarray 4	java/lang/Object
-    //   169: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   172: aload 4
-    //   174: ifnull -167 -> 7
-    //   177: aload 4
-    //   179: invokevirtual 141	java/io/InputStream:close	()V
-    //   182: iconst_0
-    //   183: ireturn
-    //   184: astore_0
-    //   185: ldc 47
-    //   187: aload_0
-    //   188: ldc 49
-    //   190: iconst_0
-    //   191: anewarray 4	java/lang/Object
-    //   194: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   197: iconst_0
-    //   198: ireturn
-    //   199: astore 4
-    //   201: aconst_null
-    //   202: astore_0
-    //   203: aload_0
-    //   204: ifnull +7 -> 211
-    //   207: aload_0
-    //   208: invokevirtual 141	java/io/InputStream:close	()V
-    //   211: aload 4
-    //   213: athrow
-    //   214: astore_0
-    //   215: ldc 47
-    //   217: aload_0
-    //   218: ldc 49
-    //   220: iconst_0
-    //   221: anewarray 4	java/lang/Object
-    //   224: invokestatic 55	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   227: goto -16 -> 211
-    //   230: astore 4
-    //   232: goto -29 -> 203
-    //   235: astore 5
-    //   237: goto -81 -> 156
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	240	0	paramString	String
-    //   41	62	1	i	int
-    //   89	11	2	j	int
-    //   96	4	3	k	int
-    //   17	161	4	localFileInputStream	java.io.FileInputStream
-    //   199	13	4	localObject1	Object
-    //   230	1	4	localObject2	Object
-    //   26	58	5	arrayOfByte	byte[]
-    //   151	11	5	localException1	Exception
-    //   235	1	5	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   48	53	55	java/io/IOException
-    //   106	111	113	java/io/IOException
-    //   129	134	136	java/io/IOException
-    //   9	19	151	java/lang/Exception
-    //   177	182	184	java/io/IOException
-    //   9	19	199	finally
-    //   207	211	214	java/io/IOException
-    //   22	28	230	finally
-    //   31	42	230	finally
-    //   73	80	230	finally
-    //   83	90	230	finally
-    //   93	97	230	finally
-    //   159	172	230	finally
-    //   22	28	235	java/lang/Exception
-    //   31	42	235	java/lang/Exception
-    //   73	80	235	java/lang/Exception
-    //   83	90	235	java/lang/Exception
-    //   93	97	235	java/lang/Exception
+    AppMethodBeat.i(117832);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(117832);
+      return true;
+    }
+    AppMethodBeat.o(117832);
+    return false;
   }
   
   public static int readInt(byte[] paramArrayOfByte, int paramInt)
@@ -279,12 +135,185 @@ public final class c
     return (paramArrayOfByte[i] & 0xFF) << 16 | (paramInt & 0xFF) << 24 | (paramArrayOfByte[j] & 0xFF) << 8 | paramArrayOfByte[(j + 1)] & 0xFF;
   }
   
-  public static long z(byte[] paramArrayOfByte, int paramInt)
+  /* Error */
+  public static boolean wE(String paramString)
   {
-    byte[] arrayOfByte = new byte[8];
-    Arrays.fill(arrayOfByte, (byte)0);
-    System.arraycopy(paramArrayOfByte, paramInt, arrayOfByte, 4, 4);
-    return K(arrayOfByte);
+    // Byte code:
+    //   0: ldc 158
+    //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokestatic 160	com/tencent/mm/plugin/a/c:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: ifeq +10 -> 19
+    //   12: ldc 158
+    //   14: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   17: iconst_0
+    //   18: ireturn
+    //   19: new 162	java/io/FileInputStream
+    //   22: dup
+    //   23: aload_0
+    //   24: invokespecial 163	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   27: astore 4
+    //   29: aload 4
+    //   31: astore_0
+    //   32: bipush 8
+    //   34: newarray byte
+    //   36: astore 5
+    //   38: aload 4
+    //   40: astore_0
+    //   41: aload 4
+    //   43: aload 5
+    //   45: iconst_0
+    //   46: bipush 8
+    //   48: invokevirtual 168	java/io/InputStream:read	([BII)I
+    //   51: istore_1
+    //   52: iload_1
+    //   53: bipush 8
+    //   55: if_icmpge +31 -> 86
+    //   58: aload 4
+    //   60: invokevirtual 172	java/io/InputStream:close	()V
+    //   63: ldc 158
+    //   65: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   68: iconst_0
+    //   69: ireturn
+    //   70: astore_0
+    //   71: ldc 72
+    //   73: aload_0
+    //   74: ldc 74
+    //   76: iconst_0
+    //   77: anewarray 4	java/lang/Object
+    //   80: invokestatic 80	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   83: goto -20 -> 63
+    //   86: aload 4
+    //   88: astore_0
+    //   89: aload 5
+    //   91: iconst_0
+    //   92: invokestatic 48	com/tencent/mm/plugin/a/c:readInt	([BI)I
+    //   95: istore_1
+    //   96: aload 4
+    //   98: astore_0
+    //   99: aload 5
+    //   101: iconst_4
+    //   102: invokestatic 48	com/tencent/mm/plugin/a/c:readInt	([BI)I
+    //   105: istore_2
+    //   106: aload 4
+    //   108: astore_0
+    //   109: getstatic 175	com/tencent/mm/plugin/a/a:aEp	I
+    //   112: istore_3
+    //   113: iload_2
+    //   114: iload_3
+    //   115: if_icmpne +35 -> 150
+    //   118: iload_1
+    //   119: ifle +31 -> 150
+    //   122: aload 4
+    //   124: invokevirtual 172	java/io/InputStream:close	()V
+    //   127: ldc 158
+    //   129: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: iconst_1
+    //   133: ireturn
+    //   134: astore_0
+    //   135: ldc 72
+    //   137: aload_0
+    //   138: ldc 74
+    //   140: iconst_0
+    //   141: anewarray 4	java/lang/Object
+    //   144: invokestatic 80	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   147: goto -20 -> 127
+    //   150: aload 4
+    //   152: invokevirtual 172	java/io/InputStream:close	()V
+    //   155: ldc 158
+    //   157: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   160: iconst_0
+    //   161: ireturn
+    //   162: astore_0
+    //   163: ldc 72
+    //   165: aload_0
+    //   166: ldc 74
+    //   168: iconst_0
+    //   169: anewarray 4	java/lang/Object
+    //   172: invokestatic 80	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   175: goto -20 -> 155
+    //   178: astore 5
+    //   180: aconst_null
+    //   181: astore 4
+    //   183: aload 4
+    //   185: astore_0
+    //   186: ldc 72
+    //   188: aload 5
+    //   190: ldc 74
+    //   192: iconst_0
+    //   193: anewarray 4	java/lang/Object
+    //   196: invokestatic 80	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   199: aload 4
+    //   201: ifnull +8 -> 209
+    //   204: aload 4
+    //   206: invokevirtual 172	java/io/InputStream:close	()V
+    //   209: ldc 158
+    //   211: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   214: iconst_0
+    //   215: ireturn
+    //   216: astore_0
+    //   217: ldc 72
+    //   219: aload_0
+    //   220: ldc 74
+    //   222: iconst_0
+    //   223: anewarray 4	java/lang/Object
+    //   226: invokestatic 80	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   229: goto -20 -> 209
+    //   232: astore 4
+    //   234: aconst_null
+    //   235: astore_0
+    //   236: aload_0
+    //   237: ifnull +7 -> 244
+    //   240: aload_0
+    //   241: invokevirtual 172	java/io/InputStream:close	()V
+    //   244: ldc 158
+    //   246: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   249: aload 4
+    //   251: athrow
+    //   252: astore_0
+    //   253: ldc 72
+    //   255: aload_0
+    //   256: ldc 74
+    //   258: iconst_0
+    //   259: anewarray 4	java/lang/Object
+    //   262: invokestatic 80	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   265: goto -21 -> 244
+    //   268: astore 4
+    //   270: goto -34 -> 236
+    //   273: astore 5
+    //   275: goto -92 -> 183
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	278	0	paramString	String
+    //   51	68	1	i	int
+    //   105	11	2	j	int
+    //   112	4	3	k	int
+    //   27	178	4	localFileInputStream	java.io.FileInputStream
+    //   232	18	4	localObject1	Object
+    //   268	1	4	localObject2	Object
+    //   36	64	5	arrayOfByte	byte[]
+    //   178	11	5	localException1	Exception
+    //   273	1	5	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   58	63	70	java/io/IOException
+    //   122	127	134	java/io/IOException
+    //   150	155	162	java/io/IOException
+    //   19	29	178	java/lang/Exception
+    //   204	209	216	java/io/IOException
+    //   19	29	232	finally
+    //   240	244	252	java/io/IOException
+    //   32	38	268	finally
+    //   41	52	268	finally
+    //   89	96	268	finally
+    //   99	106	268	finally
+    //   109	113	268	finally
+    //   186	199	268	finally
+    //   32	38	273	java/lang/Exception
+    //   41	52	273	java/lang/Exception
+    //   89	96	273	java/lang/Exception
+    //   99	106	273	java/lang/Exception
+    //   109	113	273	java/lang/Exception
   }
 }
 

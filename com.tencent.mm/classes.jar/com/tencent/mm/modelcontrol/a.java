@@ -1,229 +1,227 @@
 package com.tencent.mm.modelcontrol;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
 {
-  private static f[] ejB = null;
+  private static f[] fzF;
   
   static
   {
+    AppMethodBeat.i(50591);
+    fzF = null;
     f[] arrayOff = new f[2];
-    ejB = arrayOff;
+    fzF = arrayOff;
     arrayOff[0] = new f(0, 120, 540, 960, 30, 1200000, 1200000);
-    ejB[1] = new f(120, 300, 360, 640, 24, 544000, 544000);
+    fzF[1] = new f(120, 300, 360, 640, 24, 544000, 544000);
+    AppMethodBeat.o(50591);
   }
   
   public static int a(f[] paramArrayOff, VideoTransPara paramVideoTransPara1, VideoTransPara paramVideoTransPara2)
   {
+    AppMethodBeat.i(50590);
     f[] arrayOff;
     if (paramArrayOff != null) {
       arrayOff = paramArrayOff;
     }
-    for (;;)
+    try
     {
-      int k;
-      int i1;
-      int i2;
-      try
+      if (paramArrayOff.length <= 0) {
+        arrayOff = fzF;
+      }
+      n = arrayOff.length;
+      paramVideoTransPara2.width = paramVideoTransPara1.width;
+      paramVideoTransPara2.height = paramVideoTransPara1.height;
+      paramVideoTransPara2.fps = paramVideoTransPara1.fps;
+      paramVideoTransPara2.videoBitrate = paramVideoTransPara1.videoBitrate;
+      paramVideoTransPara2.duration = paramVideoTransPara1.duration;
+      if (paramVideoTransPara1.width <= paramVideoTransPara1.height) {
+        break label424;
+      }
+      k = 1;
+      if (k == 0) {
+        break label430;
+      }
+      i = paramVideoTransPara1.width;
+      label91:
+      if (k == 0) {
+        break label438;
+      }
+      j = paramVideoTransPara1.height;
+      label102:
+      i1 = paramVideoTransPara1.duration;
+      if (paramVideoTransPara2.duration < arrayOff[(n - 1)].fAa) {
+        break label855;
+      }
+      if (paramVideoTransPara2.duration >= fzF[1].fAa) {
+        break label794;
+      }
+    }
+    catch (Exception paramArrayOff)
+    {
+      for (;;)
       {
-        if (paramArrayOff.length <= 0) {
-          arrayOff = ejB;
-        }
-        n = arrayOff.length;
-        paramVideoTransPara2.width = paramVideoTransPara1.width;
-        paramVideoTransPara2.height = paramVideoTransPara1.height;
-        paramVideoTransPara2.fps = paramVideoTransPara1.fps;
-        paramVideoTransPara2.videoBitrate = paramVideoTransPara1.videoBitrate;
-        paramVideoTransPara2.duration = paramVideoTransPara1.duration;
-        if (paramVideoTransPara1.width <= paramVideoTransPara1.height) {
-          break label934;
-        }
-        k = 1;
-        if (k != 0)
+        int k;
+        int i1;
+        int i2;
+        label272:
+        label424:
+        label430:
+        label438:
+        label462:
+        ab.e("MicroMsg.BitrateCalculator", "do calc bitrate error: " + paramArrayOff.toString());
+        label777:
+        label794:
+        int i = 0;
+        continue;
+        int n = i;
+        i = j;
+        int j = n;
+        break label982;
+        n = i;
+        i = j;
+        j = n;
+        break label899;
+        int m = 0;
+        continue;
+        if (i * i2 > j * i1)
         {
-          i = paramVideoTransPara1.width;
+          n = 1;
+          continue;
+          j = j + 8 >> 4 << 4;
+          i = i + 8 >> 4 << 4;
           if (k != 0)
           {
-            j = paramVideoTransPara1.height;
-            i1 = paramVideoTransPara1.duration;
-            if (paramVideoTransPara2.duration < arrayOff[(n - 1)].ejT) {
-              break label878;
-            }
-            if (paramVideoTransPara2.duration >= ejB[1].ejT) {
-              continue;
-            }
-            break label878;
-            if (m >= n) {
-              break label967;
-            }
-            if ((i1 < arrayOff[m].ejS) || (i1 >= arrayOff[m].ejT)) {
-              break label958;
-            }
-            i1 = arrayOff[m].ejU;
-            i2 = arrayOff[m].ejV;
-            if (i > i1) {
-              break label884;
-            }
-            if (j <= i2) {
-              break label865;
-            }
-            break label884;
-            if (n == 0) {
-              continue;
-            }
-            i = j * i1 / i;
-            j = i1;
-            break label902;
-            paramVideoTransPara2.width = n;
-            if (k == 0) {
-              break label952;
-            }
-            paramVideoTransPara2.height = i;
-            if (paramVideoTransPara2.fps <= arrayOff[m].ejW) {
-              continue;
-            }
-            i = arrayOff[m].ejW;
-            paramVideoTransPara2.fps = i;
-            paramVideoTransPara2.videoBitrate = ((int)((arrayOff[m].ejX * arrayOff[m].ejT + arrayOff[m].ejY * paramVideoTransPara2.duration - arrayOff[m].ejX * paramVideoTransPara2.duration - arrayOff[m].ejY * arrayOff[m].ejS) / (arrayOff[m].ejT - arrayOff[m].ejS) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOff[m].ejU * arrayOff[m].ejV)) * paramVideoTransPara2.fps / arrayOff[m].ejW * (1.0D + (arrayOff[m].ejW - paramVideoTransPara2.fps) * 0.015D)));
-            return paramVideoTransPara2.videoBitrate;
+            n = j;
+            continue;
           }
         }
         else
         {
-          i = paramVideoTransPara1.height;
+          n = 0;
           continue;
         }
-        j = paramVideoTransPara1.width;
+        n = i;
         continue;
-        j = i * i2 / j;
-        i = i2;
-        break label902;
-        i = paramVideoTransPara2.fps;
+        i = j;
         continue;
-        if (m < 2)
+        m += 1;
+        continue;
+        m = 0;
+        continue;
+        if (i * i2 > j * i1)
         {
-          if ((i1 >= ejB[m].ejS) && (i1 < ejB[m].ejT))
+          n = 1;
+          continue;
+          j = j + 8 >> 4 << 4;
+          i = i + 8 >> 4 << 4;
+          if (k != 0)
           {
-            i1 = ejB[m].ejU;
-            i2 = ejB[m].ejV;
-            if (i > i1) {
-              break label973;
-            }
-            if (j > i2)
+            n = j;
+            continue;
+          }
+        }
+        else
+        {
+          n = 0;
+          continue;
+        }
+        n = i;
+        continue;
+        i = j;
+      }
+    }
+    if (m < n) {
+      if ((i1 >= arrayOff[m].fzZ) && (i1 < arrayOff[m].fAa))
+      {
+        i1 = arrayOff[m].fAb;
+        i2 = arrayOff[m].fAc;
+        if (i <= i1) {
+          if (j > i2)
+          {
+            break label861;
+            if (n != 0)
             {
-              break label973;
-              if (n != 0)
-              {
-                i = j * i1 / i;
-                j = i1;
-                break label991;
-                paramVideoTransPara2.width = n;
-                if (k == 0) {
-                  break label1035;
-                }
-                paramVideoTransPara2.height = i;
-                if (paramVideoTransPara2.fps > ejB[m].ejW)
-                {
-                  i = ejB[m].ejW;
-                  paramVideoTransPara2.fps = i;
-                  paramVideoTransPara2.videoBitrate = ((int)((ejB[m].ejX * ejB[m].ejT + ejB[m].ejY * paramVideoTransPara2.duration - ejB[m].ejX * paramVideoTransPara2.duration - ejB[m].ejY * ejB[m].ejS) / (ejB[m].ejT - ejB[m].ejS) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (ejB[m].ejU * ejB[m].ejV)) * paramVideoTransPara2.fps / ejB[m].ejW * (1.0D + (ejB[m].ejW - paramVideoTransPara2.fps) * 0.015D)));
-                  return paramVideoTransPara2.videoBitrate;
-                }
+              i = j * i1 / i;
+              j = i1;
+              break label879;
+              paramVideoTransPara2.width = n;
+              if (k == 0) {
+                break label923;
               }
-              else
-              {
-                j = i * i2 / j;
-                i = i2;
-                break label991;
+              paramVideoTransPara2.height = i;
+              if (paramVideoTransPara2.fps <= arrayOff[m].fAd) {
+                break label462;
               }
+              i = arrayOff[m].fAd;
+              paramVideoTransPara2.fps = i;
+              paramVideoTransPara2.videoBitrate = ((int)((arrayOff[m].fAe * arrayOff[m].fAa + arrayOff[m].fAf * paramVideoTransPara2.duration - arrayOff[m].fAe * paramVideoTransPara2.duration - arrayOff[m].fAf * arrayOff[m].fzZ) / (arrayOff[m].fAa - arrayOff[m].fzZ) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (arrayOff[m].fAb * arrayOff[m].fAc)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+              i = paramVideoTransPara2.videoBitrate;
+            }
+            for (;;)
+            {
+              AppMethodBeat.o(50590);
+              return i;
+              k = 0;
+              break;
+              i = paramVideoTransPara1.height;
+              break label91;
+              j = paramVideoTransPara1.width;
+              break label102;
+              j = i * i2 / j;
+              i = i2;
+              break label879;
               i = paramVideoTransPara2.fps;
-              continue;
+              break label272;
+              for (;;)
+              {
+                if (m >= 2) {
+                  break label794;
+                }
+                if ((i1 >= fzF[m].fzZ) && (i1 < fzF[m].fAa))
+                {
+                  i1 = fzF[m].fAb;
+                  i2 = fzF[m].fAc;
+                  if (i > i1) {
+                    break label944;
+                  }
+                  if (j <= i2) {
+                    break label829;
+                  }
+                  break label944;
+                  if (n != 0)
+                  {
+                    i = j * i1 / i;
+                    j = i1;
+                    break label962;
+                    paramVideoTransPara2.width = n;
+                    if (k == 0) {
+                      break label1006;
+                    }
+                    paramVideoTransPara2.height = i;
+                    if (paramVideoTransPara2.fps <= fzF[m].fAd) {
+                      break label777;
+                    }
+                  }
+                  for (i = fzF[m].fAd;; i = paramVideoTransPara2.fps)
+                  {
+                    paramVideoTransPara2.fps = i;
+                    paramVideoTransPara2.videoBitrate = ((int)((fzF[m].fAe * fzF[m].fAa + fzF[m].fAf * paramVideoTransPara2.duration - fzF[m].fAe * paramVideoTransPara2.duration - fzF[m].fAf * fzF[m].fzZ) / (fzF[m].fAa - fzF[m].fzZ) * Math.sqrt(1.0D * (paramVideoTransPara2.width * paramVideoTransPara2.height) / (fzF[m].fAb * fzF[m].fAc)) * (paramVideoTransPara2.fps + 10) / 40.0D));
+                    i = paramVideoTransPara2.videoBitrate;
+                    break;
+                    j = i * i2 / j;
+                    i = i2;
+                    break label962;
+                  }
+                }
+                m += 1;
+              }
+              i = 0;
             }
           }
-          else
-          {
-            m += 1;
-          }
-        }
-        else {
-          return 0;
         }
       }
-      catch (Exception paramArrayOff)
-      {
-        y.e("MicroMsg.BitrateCalculator", "do calc bitrate error: " + paramArrayOff.toString());
-        return 0;
-      }
-      int n = i;
-      int i = j;
-      int j = n;
-      break label1011;
-      label865:
-      n = i;
-      i = j;
-      j = n;
-      break label922;
-      label878:
-      int m = 0;
-      continue;
-      label884:
-      if (i * i2 > j * i1)
-      {
-        n = 1;
-        continue;
-        j = j + 8 >> 4 << 4;
-        i = i + 8 >> 4 << 4;
-        if (k != 0)
-        {
-          n = j;
-          continue;
-          k = 0;
-        }
-      }
-      else
-      {
-        n = 0;
-        continue;
-      }
-      label902:
-      label922:
-      label934:
-      n = i;
-      continue;
-      label952:
-      i = j;
-      continue;
-      label958:
-      m += 1;
-      continue;
-      label967:
-      m = 0;
-      continue;
-      label973:
-      if (i * i2 > j * i1)
-      {
-        n = 1;
-        continue;
-        label991:
-        j = j + 8 >> 4 << 4;
-        i = i + 8 >> 4 << 4;
-        label1011:
-        if (k != 0)
-        {
-          n = j;
-          continue;
-        }
-      }
-      else
-      {
-        n = 0;
-        continue;
-      }
-      n = i;
-      continue;
-      label1035:
-      i = j;
     }
   }
 }

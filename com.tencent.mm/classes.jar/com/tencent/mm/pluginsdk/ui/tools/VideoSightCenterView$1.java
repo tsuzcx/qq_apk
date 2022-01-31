@@ -1,38 +1,41 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.a.b;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoSightCenterView$1
   implements b.e
 {
   VideoSightCenterView$1(VideoSightCenterView paramVideoSightCenterView) {}
   
-  public final void d(b paramb, int paramInt)
+  public final void c(b paramb, int paramInt)
   {
+    AppMethodBeat.i(70397);
     if (-1 == paramInt)
     {
-      y.i("MicroMsg.VideoSightCenterView", "error stop, isCompletion: %s", new Object[] { Boolean.valueOf(VideoSightCenterView.a(this.snp)) });
-      if ((this.snp.joM != null) && (!VideoSightCenterView.a(this.snp))) {
-        this.snp.joM.onError(0, 0);
+      ab.i("MicroMsg.VideoSightCenterView", "error stop, isCompletion: %s", new Object[] { Boolean.valueOf(VideoSightCenterView.a(this.wfK)) });
+      if ((this.wfK.lxA != null) && (!VideoSightCenterView.a(this.wfK)))
+      {
+        this.wfK.lxA.onError(0, 0);
+        AppMethodBeat.o(70397);
       }
     }
-    do
+    else if (paramInt == 0)
     {
-      do
-      {
-        return;
-      } while (paramInt != 0);
-      y.i("MicroMsg.VideoSightCenterView", "normal stop");
-      VideoSightCenterView.b(this.snp);
-    } while (this.snp.joM == null);
-    this.snp.joM.ug();
+      ab.i("MicroMsg.VideoSightCenterView", "normal stop");
+      VideoSightCenterView.b(this.wfK);
+      if (this.wfK.lxA != null) {
+        this.wfK.lxA.Es();
+      }
+    }
+    AppMethodBeat.o(70397);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoSightCenterView.1
  * JD-Core Version:    0.7.0.1
  */

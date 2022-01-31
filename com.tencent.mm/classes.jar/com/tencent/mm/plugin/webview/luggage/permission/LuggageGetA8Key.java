@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.webview.luggage.permission;
 
 import android.text.TextUtils;
-import com.tencent.mm.plugin.webview.luggage.ipc.LuggageMainProcessService;
-import com.tencent.mm.plugin.webview.luggage.ipc.MainProcessTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.protocal.GeneralControlWrapper;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.protocal.c.aao;
-import com.tencent.mm.protocal.c.apm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.afg;
+import com.tencent.mm.protocal.protobuf.avl;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -20,39 +20,56 @@ import java.util.regex.Pattern;
 
 public final class LuggageGetA8Key
 {
-  private static final Pattern reA = Pattern.compile(".*#.*wechat_redirect");
-  private int fzn = 0;
-  private String hcm = "";
-  private final HashSet<String> kMM = new HashSet();
-  private byte[] kMN = new byte[0];
-  private String mAppId = "";
-  private int rew = (int)System.currentTimeMillis();
-  private boolean rex = true;
-  private a rey = new a();
-  private HashMap<String, String> rez = new HashMap();
+  private static final Pattern uUE;
+  private String ikj;
+  private String mAppId;
+  private int mScene;
+  private boolean uUA;
+  private a uUB;
+  private final HashMap<String, String> uUC;
+  private LuggageGetA8Key.RunCgiTask uUD;
+  private final HashSet<String> uUw;
+  private byte[] uUx;
+  private int uUy;
+  private boolean uUz;
   
-  private static String RL(String paramString)
+  static
   {
-    int i = paramString.indexOf("#");
-    if (i < 0) {
-      return paramString;
-    }
-    return paramString.substring(0, i);
+    AppMethodBeat.i(6480);
+    uUE = Pattern.compile(".*#.*wechat_redirect");
+    AppMethodBeat.o(6480);
   }
   
-  private static void a(String paramString, aao paramaao, LuggageGetA8Key.a parama)
+  public LuggageGetA8Key()
   {
-    int i = paramaao.ssy;
-    String str = paramaao.kVs;
-    Object localObject = paramaao.tah;
+    AppMethodBeat.i(6467);
+    this.uUw = new HashSet();
+    this.mScene = 0;
+    this.ikj = "";
+    this.mAppId = "";
+    this.uUx = new byte[0];
+    this.uUz = true;
+    this.uUA = false;
+    this.uUC = new HashMap();
+    this.uUy = ((int)System.currentTimeMillis());
+    this.uUB = new a();
+    AppMethodBeat.o(6467);
+  }
+  
+  private static void a(String paramString, afg paramafg, LuggageGetA8Key.a parama)
+  {
+    AppMethodBeat.i(6477);
+    int i = paramafg.wld;
+    String str = paramafg.ntu;
+    Object localObject = paramafg.wYy;
     HashMap localHashMap = new HashMap();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        apm localapm = (apm)((Iterator)localObject).next();
-        localHashMap.put(localapm.sCH, localapm.nFs);
+        avl localavl = (avl)((Iterator)localObject).next();
+        localHashMap.put(localavl.wxP, localavl.qsu);
       }
     }
     switch (i)
@@ -61,164 +78,236 @@ public final class LuggageGetA8Key
     case 4: 
     case 5: 
     default: 
+      AppMethodBeat.o(6477);
       return;
     case 1: 
       if ((str == null) || (str.length() == 0))
       {
-        y.e("MicroMsg.LuggageGetA8Key", "getA8key-text fail, invalid content");
+        ab.e("MicroMsg.LuggageGetA8Key", "getA8key-text fail, invalid content");
+        AppMethodBeat.o(6477);
         return;
       }
-      parama.fu(paramString, str);
+      parama.hp(paramString, str);
+      AppMethodBeat.o(6477);
       return;
     case 2: 
     case 7: 
-      parama.b(paramString, paramaao.sZV, localHashMap);
+      parama.e(paramString, paramafg.wYn, localHashMap);
+      AppMethodBeat.o(6477);
       return;
     }
-    parama.b(paramString, paramaao.sZV, localHashMap);
+    parama.e(paramString, paramafg.wYn, localHashMap);
+    AppMethodBeat.o(6477);
   }
   
-  private static boolean eF(int paramInt1, int paramInt2)
+  private static String agP(String paramString)
+  {
+    AppMethodBeat.i(6476);
+    int i = paramString.indexOf("#");
+    if (i < 0)
+    {
+      AppMethodBeat.o(6476);
+      return paramString;
+    }
+    paramString = paramString.substring(0, i);
+    AppMethodBeat.o(6476);
+    return paramString;
+  }
+  
+  private static boolean gI(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 0) && (paramInt2 == 0);
   }
   
-  private static boolean eG(int paramInt1, int paramInt2)
+  private static boolean gJ(int paramInt1, int paramInt2)
   {
     return (paramInt1 == 4) && (paramInt2 == -2005);
   }
   
-  public final JsapiPermissionWrapper RP(String paramString)
+  public final boolean a(String paramString, int paramInt, LuggageGetA8Key.a parama)
   {
-    a locala = this.rey;
-    if (locala.reF != null)
+    for (;;)
     {
-      y.i("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm, return hardcodeJsPerm = " + locala.reF);
-      return locala.reF;
-    }
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, url = " + paramString);
-      return locala.reH;
-    }
-    paramString = a.RL(paramString);
-    if (locala.reE == null)
-    {
-      y.e("MicroMsg.LuggageGetA8KeyPermission", "getJsPerm fail, permMap is null");
-      return locala.reH;
-    }
-    paramString = (a.a)locala.reE.get(paramString);
-    if (paramString == null) {
-      return locala.reH;
-    }
-    return paramString.reJ;
-  }
-  
-  public final GeneralControlWrapper RQ(String paramString)
-  {
-    a locala = this.rey;
-    if (locala.reG != null)
-    {
-      y.i("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl, return hardcodeGenCtrl = " + locala.reG);
-      return locala.reG;
-    }
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.LuggageGetA8KeyPermission", "getGenCtrl fail, url = " + paramString);
-      return locala.reI;
-    }
-    String str = a.RL(paramString);
-    a.a locala1 = (a.a)locala.reE.get(str);
-    StringBuilder localStringBuilder = new StringBuilder("edw getGenCtrl, genCtrl = ");
-    if (locala1 == null) {}
-    for (paramString = null;; paramString = locala1.reK)
-    {
-      y.i("MicroMsg.LuggageGetA8KeyPermission", paramString + ", url = " + str);
-      if (locala1 != null) {
-        break;
+      try
+      {
+        AppMethodBeat.i(6474);
+        boolean bool;
+        if (agW(paramString))
+        {
+          AppMethodBeat.o(6474);
+          bool = true;
+          return bool;
+        }
+        a locala = this.uUB;
+        if (bo.isNullOrNil(paramString))
+        {
+          ab.e("MicroMsg.LuggageGetA8KeyPermission", "has fail, url is null");
+          break label351;
+          if (i != 0)
+          {
+            AppMethodBeat.o(6474);
+            bool = false;
+          }
+        }
+        else
+        {
+          Object localObject = a.agP(paramString);
+          localObject = (a.a)locala.uUM.get(localObject);
+          if ((localObject == null) || (((a.a)localObject).uUR == locala.uUP) || (((a.a)localObject).uUS == locala.uUQ)) {
+            break label351;
+          }
+          i = 1;
+          continue;
+        }
+        if ((paramInt == 5) && (this.uUA))
+        {
+          ab.w("MicroMsg.LuggageGetA8Key", "disable iframe request");
+          AppMethodBeat.o(6474);
+          bool = false;
+          continue;
+        }
+        this.uUw.add(paramString);
+        if (parama != null) {
+          parama.PQ(paramString);
+        }
+        if (this.uUD != null)
+        {
+          this.uUD.aBk();
+          this.uUD = null;
+          ab.i("MicroMsg.LuggageGetA8Key", "runCgiTask set null: %s", new Object[] { paramString });
+        }
+        if (paramInt == -1)
+        {
+          paramInt = agV(paramString);
+          ab.i("MicroMsg.LuggageGetA8Key", "startGetA8Key, url: %s", new Object[] { paramString });
+          try
+          {
+            this.uUD = new LuggageGetA8Key.RunCgiTask(paramString, this.ikj, this.mScene, paramInt, this.uUy, this.mAppId, this.uUx);
+            this.uUD.uUJ = new LuggageGetA8Key.1(this, paramString, paramInt, parama);
+            AppBrandMainProcessService.a(this.uUD);
+            AppMethodBeat.o(6474);
+            bool = true;
+          }
+          catch (Exception paramString)
+          {
+            ab.i("MicroMsg.LuggageGetA8Key", "ERROR %s", new Object[] { paramString });
+            AppMethodBeat.o(6474);
+            bool = false;
+          }
+          continue;
+        }
+        continue;
       }
-      return locala.reI;
+      finally {}
+      label351:
+      int i = 0;
     }
-    return locala1.reK;
-  }
-  
-  public final String RR(String paramString)
-  {
-    y.i("MicroMsg.LuggageGetA8Key", "getShareUrl, dropHashUrl = " + RL(paramString));
-    Iterator localIterator = this.rez.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      y.i("MicroMsg.LuggageGetA8Key", "getShareUrl, Key = %s, value = %s", new Object[] { str, this.rez.get(str) });
-    }
-    return (String)this.rez.get(RL(paramString));
   }
   
   public final boolean a(String paramString, LuggageGetA8Key.a parama)
   {
-    if (this.kMM.contains(paramString)) {
-      return false;
-    }
-    Object localObject1 = this.rey;
-    if (bk.bl(paramString)) {
-      y.e("MicroMsg.LuggageGetA8KeyPermission", "has fail, url is null");
-    }
-    for (int i = 0;; i = 1)
-    {
-      if (i == 0) {
-        break label102;
-      }
-      return false;
-      Object localObject2 = a.RL(paramString);
-      localObject2 = (a.a)((a)localObject1).reE.get(localObject2);
-      if ((localObject2 == null) || (((a.a)localObject2).reJ == ((a)localObject1).reH) || (((a.a)localObject2).reK == ((a)localObject1).reI)) {
-        break;
-      }
-    }
-    label102:
-    this.kMM.add(paramString);
-    if (parama != null) {
-      parama.EC(paramString);
-    }
     try
     {
-      if (TextUtils.isEmpty(paramString))
-      {
-        y.e("MicroMsg.LuggageGetA8Key", "getReason fail, url is null");
-        i = 0;
-      }
-      for (;;)
-      {
-        localObject1 = new LuggageGetA8Key.RunCgiTask(paramString, this.hcm, this.fzn, i, this.rew, this.mAppId, this.kMN);
-        ((LuggageGetA8Key.RunCgiTask)localObject1).kMP = new LuggageGetA8Key.1(this, paramString, i, (LuggageGetA8Key.RunCgiTask)localObject1, parama);
-        LuggageMainProcessService.a((MainProcessTask)localObject1);
-        break;
-        if (this.rex)
-        {
-          this.rex = false;
-          i = 0;
-        }
-        else
-        {
-          boolean bool = reA.matcher(paramString).find();
-          if (bool) {
-            i = 2;
-          } else {
-            i = 1;
-          }
-        }
-      }
-      return true;
+      AppMethodBeat.i(6475);
+      boolean bool = a(paramString, -1, parama);
+      AppMethodBeat.o(6475);
+      return bool;
     }
-    catch (Exception paramString)
+    finally
     {
-      y.i("MicroMsg.LuggageGetA8Key", "ERROR %s", new Object[] { paramString });
+      paramString = finally;
+      throw paramString;
     }
   }
   
-  public final boolean cO(String paramString, int paramInt)
+  public final JsapiPermissionWrapper agS(String paramString)
   {
-    return RP(paramString).ED(paramInt) == 1;
+    AppMethodBeat.i(6468);
+    paramString = this.uUB.agS(paramString);
+    AppMethodBeat.o(6468);
+    return paramString;
+  }
+  
+  public final GeneralControlWrapper agT(String paramString)
+  {
+    AppMethodBeat.i(6469);
+    paramString = this.uUB.agT(paramString);
+    AppMethodBeat.o(6469);
+    return paramString;
+  }
+  
+  public final String agU(String paramString)
+  {
+    AppMethodBeat.i(6471);
+    synchronized (this.uUC)
+    {
+      ab.i("MicroMsg.LuggageGetA8Key", "getShareUrl, dropHashUrl = " + agP(paramString));
+      Iterator localIterator = this.uUC.keySet().iterator();
+      if (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        ab.i("MicroMsg.LuggageGetA8Key", "getShareUrl, Key = %s, value = %s", new Object[] { str, this.uUC.get(str) });
+      }
+    }
+    paramString = (String)this.uUC.get(agP(paramString));
+    AppMethodBeat.o(6471);
+    return paramString;
+  }
+  
+  public final int agV(String paramString)
+  {
+    AppMethodBeat.i(6472);
+    if (TextUtils.isEmpty(paramString))
+    {
+      ab.e("MicroMsg.LuggageGetA8Key", "getReason fail, url is null");
+      AppMethodBeat.o(6472);
+      return 0;
+    }
+    if (this.uUz)
+    {
+      this.uUz = false;
+      AppMethodBeat.o(6472);
+      return 0;
+    }
+    if (uUE.matcher(paramString).find())
+    {
+      AppMethodBeat.o(6472);
+      return 2;
+    }
+    AppMethodBeat.o(6472);
+    return 1;
+  }
+  
+  public final boolean agW(String paramString)
+  {
+    AppMethodBeat.i(6473);
+    boolean bool = this.uUw.contains(paramString);
+    AppMethodBeat.o(6473);
+    return bool;
+  }
+  
+  public final boolean dN(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(6470);
+    if (agS(paramString).MB(paramInt) == 1)
+    {
+      AppMethodBeat.o(6470);
+      return true;
+    }
+    AppMethodBeat.o(6470);
+    return false;
+  }
+  
+  public final void destroy()
+  {
+    AppMethodBeat.i(153128);
+    if (this.uUD != null)
+    {
+      this.uUD.aBk();
+      this.uUD = null;
+      ab.i("MicroMsg.LuggageGetA8Key", "destroy runCgiTask set null");
+    }
+    AppMethodBeat.o(153128);
   }
 }
 

@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.appbrand.widget.b;
 
-import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.protocal.c.bna;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -15,25 +14,25 @@ final class c$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(102350);
     paramView = new ArrayList();
     int i = 0;
-    while (i < this.fXW.size())
+    while (i < this.hDM.size())
     {
-      if ((((bna)this.fXW.get(i)).tGf == 2) || (((bna)this.fXW.get(i)).tGf == 3)) {
-        paramView.add(((bna)this.fXW.get(i)).sEi);
+      if ((((c.c)this.hDM.get(i)).state == 2) || (((c.c)this.hDM.get(i)).state == 3)) {
+        paramView.add(((c.c)this.hDM.get(i)).scope);
       }
       i += 1;
     }
-    y.i("MicroMsg.AppBrandAuthorizeDialog", "stev rejectButton click!");
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("key_scope", paramView);
-    this.hsr.e(2, localBundle);
-    this.hss.dismiss();
+    ab.i("MicroMsg.AppBrandAuthorizeDialog", "stev rejectButton click!");
+    this.jjb.b(2, paramView);
+    this.jjc.dismiss();
+    AppMethodBeat.o(102350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.b.c.2
  * JD-Core Version:    0.7.0.1
  */

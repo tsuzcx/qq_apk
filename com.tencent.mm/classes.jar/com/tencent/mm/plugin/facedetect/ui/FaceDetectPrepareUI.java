@@ -1,246 +1,291 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Messenger;
+import android.support.v4.app.a.a;
 import android.view.View;
 import android.view.Window;
 import android.widget.RelativeLayout;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.facedetect.a.d;
-import com.tencent.mm.plugin.facedetect.a.e;
-import com.tencent.mm.plugin.facedetect.a.g;
-import com.tencent.mm.plugin.facedetect.a.i;
-import com.tencent.mm.plugin.facedetect.b.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.facedetect.c.f;
 import com.tencent.mm.plugin.facedetect.model.FaceContextData;
 import com.tencent.mm.plugin.facedetect.model.FaceDetectReporter;
-import com.tencent.mm.plugin.facedetect.model.k;
-import com.tencent.mm.plugin.facedetect.model.o;
+import com.tencent.mm.plugin.facedetect.model.e;
+import com.tencent.mm.plugin.facedetect.model.l;
 import com.tencent.mm.plugin.facedetect.service.FaceDetectProcessService;
 import com.tencent.mm.plugin.facedetectlight.Utils.a.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMFragmentActivity;
 
 @com.tencent.mm.ui.base.a(3)
 public class FaceDetectPrepareUI
   extends MMFragmentActivity
-  implements android.support.v4.app.a.a, com.tencent.mm.plugin.facedetect.c.e
+  implements a.a, f
 {
-  private String djD;
-  private boolean edT = false;
-  private boolean gxZ = false;
-  private String jMP = null;
-  private float jMR;
-  private int jMm;
-  private com.tencent.mm.plugin.facedetect.b.d jMn = null;
-  private int jMx;
-  private long jNI;
-  private com.tencent.mm.plugin.facedetect.c.a jQM = null;
-  private a jQN = null;
-  private c jQO = null;
-  private boolean jQP;
-  private byte[] jQQ;
-  private boolean jQR = false;
-  private boolean jQS = false;
-  private FaceDetectPrepareUI.b jQT;
-  private boolean jQU = false;
-  private boolean jQV = false;
-  private long jQW = -1L;
-  private Messenger jQX = null;
-  private FaceDetectPrepareUI.a jQY = null;
-  private int jQZ = -1;
-  private int jQp;
-  private boolean jRa = false;
-  private com.tencent.mm.plugin.facedetectlight.Utils.a jRb;
-  private RelativeLayout jRc;
-  private boolean jRd = false;
-  private int jRe = -1;
-  private boolean jRf = false;
+  private boolean eRZ = false;
+  private boolean eUJ = false;
+  private String eaX;
   private String mAppId;
+  private int mgD;
+  private String mgX = null;
+  private float mgZ;
+  private int mgs;
+  private com.tencent.mm.plugin.facedetect.b.d mgt = null;
+  private long mhU;
+  private int mkG;
+  private boolean mlA = false;
+  private float mlB = 0.0F;
+  private com.tencent.mm.plugin.facedetect.c.a mlg = null;
+  private a mlh = null;
+  private FaceTutorial mli = null;
+  private boolean mlj;
+  private byte[] mlk;
+  private boolean mll = false;
+  private boolean mlm = false;
+  private FaceDetectPrepareUI.b mln;
+  private boolean mlo = false;
+  private boolean mlp = false;
+  private String mlq = null;
+  private long mlr = -1L;
+  private Messenger mls = null;
+  private FaceDetectPrepareUI.a mlt = null;
+  private int mlu = -1;
+  private boolean mlv = false;
+  private com.tencent.mm.plugin.facedetectlight.Utils.a mlw;
+  private RelativeLayout mlx;
+  private boolean mly = false;
+  private int mlz = -1;
   
-  private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean, FaceDetectPrepareUI.c paramc)
+  private void a(int paramInt1, int paramInt2, String paramString1, String paramString2, boolean paramBoolean, c paramc)
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo showFailJumper showErrMsg: %s", new Object[] { paramString2 });
+    AppMethodBeat.i(436);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo showFailJumper showErrMsg: %s", new Object[] { paramString2 });
     Object localObject;
-    if (this.jRf)
+    if (this.mlA)
     {
-      localObject = findViewById(a.e.face_tutorial_root);
+      localObject = findViewById(2131823944);
       if (localObject != null)
       {
-        y.i("MicroMsg.FaceDetectPrepareUI", "carson: hide tutorialRoot");
+        ab.i("MicroMsg.FaceDetectPrepareUI", "carson: hide tutorialRoot");
         ((View)localObject).setVisibility(8);
       }
-      this.jRc.setVisibility(0);
+      this.mlx.setVisibility(0);
     }
     if (paramBoolean)
     {
-      localObject = getResources().getString(a.i.face_try_again);
+      localObject = getResources().getString(2131299605);
       if (!paramBoolean) {
-        break label183;
+        break label204;
       }
     }
-    label183:
-    for (String str = getResources().getString(a.i.app_cancel);; str = null)
+    label204:
+    for (String str = getResources().getString(2131296888);; str = null)
     {
-      paramString1 = a.a(a.d.face_err_icon, paramString2, (String)localObject, str, new FaceDetectPrepareUI.2(this, paramBoolean, paramc, paramInt1, paramInt2, paramString1), new FaceDetectPrepareUI.3(this, paramInt1, paramInt2, paramString1));
-      paramString1.status = 3;
-      a.a(paramString1, getString(a.i.face_detect_feedback), new FaceDetectPrepareUI.4(this, paramInt2));
-      ai.d(new FaceDetectPrepareUI.5(this, paramString1));
+      paramString2 = a.a(2130838689, paramString2, (String)localObject, str, new FaceDetectPrepareUI.2(this, paramBoolean, paramc, paramInt1, paramInt2, paramString1), new FaceDetectPrepareUI.3(this, paramInt1, paramInt2, paramString1));
+      paramString2.status = 3;
+      paramString1 = getString(2131299560);
+      if (this.mgX == null) {
+        paramString1 = null;
+      }
+      a.a(paramString2, paramString1, new FaceDetectPrepareUI.4(this, paramInt2));
+      al.d(new FaceDetectPrepareUI.5(this, paramString2));
+      AppMethodBeat.o(436);
       return;
-      localObject = getString(a.i.face_severe_error_main_btn);
+      localObject = getString(2131299603);
       break;
     }
   }
   
-  private void aOX()
+  private void aCL()
   {
-    if (this.jQM != null) {
-      this.jQM.aNZ();
-    }
+    AppMethodBeat.i(444);
+    d(4, 90013, "init lib failed", getString(2131299566));
+    AppMethodBeat.o(444);
   }
   
-  private void aOY()
+  private void az(int paramInt, String paramString)
   {
-    switch (this.jQp)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jRe = 0;
-      return;
-    case 1: 
-      this.jRe = 1;
-      return;
-    }
-    com.tencent.mm.plugin.facedetectlight.Utils.a locala = this.jRb;
-    if (locala.jXd != null) {
-      new StringBuilder("Light lux: ").append(com.tencent.mm.plugin.facedetectlight.Utils.a.a.a(locala.jXd));
-    }
-    for (float f = com.tencent.mm.plugin.facedetectlight.Utils.a.a.a(locala.jXd);; f = -1.0F)
-    {
-      y.i("MicroMsg.FaceDetectPrepareUI", "curLux is : " + f);
-      y.i("MicroMsg.FaceDetectPrepareUI", "Light threshold is : " + this.jMR);
-      if (f >= this.jMR) {
-        break;
-      }
-      this.jRb.stop();
-      this.jRe = 1;
-      return;
-    }
-    this.jRe = 0;
-  }
-  
-  private void aOZ()
-  {
-    this.jQZ = 2;
-    if (this.jQM != null) {
-      this.jQM.qG(0);
-    }
-    Intent localIntent = new Intent(this, FaceDetectUI.class);
-    localIntent.putExtra("k_user_name", this.djD);
-    localIntent.putExtra("k_server_scene", this.jMm);
-    localIntent.putExtra("k_need_signature", this.jQP);
-    localIntent.putExtra("k_bio_id", String.valueOf(this.jNI));
-    localIntent.putExtra("k_bio_config", this.jQQ);
-    y.i("MicroMsg.FaceDetectPrepareUI", "carson logic ");
-    y.i("MicroMsg.FaceDetectPrepareUI", "Config is " + this.jQQ);
-    y.i("MicroMsg.FaceDetectPrepareUI", "Carson bioID is " + this.jNI + "  string：" + String.valueOf(this.jNI));
-    y.v("MicroMsg.FaceDetectPrepareUI", "alvinluo FaceDetectReporter info: %s", new Object[] { Long.valueOf(FaceDetectReporter.aOy().fKz) });
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.aOy());
-    localIntent.putExtra("key_reporter_bundle", localBundle);
-    if (this.jQN != null) {
-      this.jQN.aOW();
-    }
-    startActivityForResult(localIntent, 1);
-  }
-  
-  private void aPa()
-  {
-    if (this.jQN != null) {
-      this.jQN.dismiss();
-    }
-    y.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.jRd) });
-    if (!this.jRd)
-    {
-      this.jQN = new a(this);
-      this.jQN.create();
-      return;
-    }
-    this.jQN = new b(this);
-    this.jQN.create();
-  }
-  
-  private void aPb()
-  {
-    String str = getString(a.i.face_detect_uploading);
-    d locald = a.b(a.d.face_confirm_icon, str, null, getString(a.i.app_cancel), null, new FaceDetectPrepareUI.17(this));
-    locald.jSs = true;
-    locald.jSu = (str.length() - 3);
-    locald.status = 1;
-    a(false, true, locald);
-  }
-  
-  private void aPc()
-  {
-    d(4, 90011, "get image failed", getString(a.i.face_detect_get_face_image_failed));
-  }
-  
-  private void ag(int paramInt, String paramString)
-  {
+    AppMethodBeat.i(449);
     if (hasError()) {
-      if (this.jQM != null) {
-        this.jQM.c(this.jQT.errType, this.jQT.errCode, this.jQT.aox, this.jQT.extras);
+      if (this.mlg != null) {
+        this.mlg.c(this.mln.errType, this.mln.errCode, this.mln.errMsg, this.mln.extras);
       }
     }
     for (;;)
     {
-      this.edT = true;
+      this.eUJ = true;
       finish();
+      AppMethodBeat.o(449);
       return;
-      if (this.jQM != null) {
-        this.jQM.ae(paramInt, paramString);
+      if (this.mlg != null) {
+        this.mlg.ax(paramInt, paramString);
       }
     }
   }
   
-  private void aiO()
+  private void bvb()
   {
-    d(4, 90013, "init lib failed", getString(a.i.face_detect_init_err));
+    AppMethodBeat.i(428);
+    if (this.mlg != null) {
+      this.mlg.buc();
+    }
+    AppMethodBeat.o(428);
+  }
+  
+  private void bvc()
+  {
+    AppMethodBeat.i(430);
+    switch (this.mkG)
+    {
+    default: 
+      this.mlz = 0;
+      AppMethodBeat.o(430);
+      return;
+    case 0: 
+      this.mlz = 0;
+      FaceDetectReporter.buB().miJ = 4;
+      AppMethodBeat.o(430);
+      return;
+    case 1: 
+      this.mlz = 1;
+      FaceDetectReporter.buB().miJ = 6;
+      AppMethodBeat.o(430);
+      return;
+    }
+    float f = this.mlw.bvK();
+    FaceDetectReporter.buB().miK = Math.round(f);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "curLux is : ".concat(String.valueOf(f)));
+    ab.i("MicroMsg.FaceDetectPrepareUI", "Light threshold is : " + this.mgZ);
+    if (f < this.mgZ)
+    {
+      this.mlw.stop();
+      this.mlz = 1;
+      FaceDetectReporter.buB().miJ = 6;
+      AppMethodBeat.o(430);
+      return;
+    }
+    this.mlz = 0;
+    FaceDetectReporter.buB().miJ = 4;
+    AppMethodBeat.o(430);
+  }
+  
+  private void bvd()
+  {
+    AppMethodBeat.i(431);
+    this.mlu = 2;
+    if (this.mlg != null) {
+      this.mlg.vB(0);
+    }
+    Intent localIntent = new Intent(this, FaceDetectUI.class);
+    localIntent.putExtra("k_user_name", this.eaX);
+    localIntent.putExtra("k_server_scene", this.mgs);
+    localIntent.putExtra("k_need_signature", this.mlj);
+    localIntent.putExtra("k_bio_id", String.valueOf(this.mhU));
+    localIntent.putExtra("k_bio_config", this.mlk);
+    localIntent.putExtra("business_tips", this.mlq);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "carson logic ");
+    ab.i("MicroMsg.FaceDetectPrepareUI", "Config is " + this.mlk);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "Carson bioID is " + this.mhU + "  string：" + String.valueOf(this.mhU));
+    ab.v("MicroMsg.FaceDetectPrepareUI", "alvinluo FaceDetectReporter info: %s", new Object[] { Long.valueOf(FaceDetectReporter.buB().sessionId) });
+    Bundle localBundle = new Bundle();
+    localBundle.putParcelable("key_parcelable_reporter", FaceDetectReporter.buB());
+    localIntent.putExtra("key_reporter_bundle", localBundle);
+    if (this.mlh != null) {
+      this.mlh.resetAll();
+    }
+    startActivityForResult(localIntent, 1);
+    AppMethodBeat.o(431);
+  }
+  
+  private void bve()
+  {
+    AppMethodBeat.i(433);
+    if (this.mlh != null) {
+      this.mlh.dismiss();
+    }
+    ab.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.mly) });
+    if (!this.mly)
+    {
+      this.mlh = new a(this);
+      this.mlh.create();
+      AppMethodBeat.o(433);
+      return;
+    }
+    this.mlh = new b(this);
+    this.mlh.create();
+    AppMethodBeat.o(433);
+  }
+  
+  private void bvf()
+  {
+    AppMethodBeat.i(435);
+    String str = getString(2131299570);
+    c localc = a.b(2130838678, str, null, getString(2131296888), null, new FaceDetectPrepareUI.17(this));
+    localc.mmO = true;
+    localc.mmQ = (str.length() - 3);
+    localc.status = 1;
+    a(false, true, localc);
+    AppMethodBeat.o(435);
+  }
+  
+  private void bvg()
+  {
+    AppMethodBeat.i(443);
+    d(4, 90011, "get image failed", getString(2131299561));
+    AppMethodBeat.o(443);
   }
   
   private void d(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "onProcessingError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1 });
+    AppMethodBeat.i(445);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "onProcessingError errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString1 });
     d(paramInt1, paramInt2, paramString1, null);
-    this.jQS = true;
-    a(paramInt1, paramInt2, paramString1, paramString2, false, new FaceDetectPrepareUI.10(this));
+    this.mlm = true;
+    a(paramInt1, paramInt2, paramString1, paramString2, false, new c()
+    {
+      public final void s(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
+      {
+        AppMethodBeat.i(413);
+        if (FaceDetectPrepareUI.b(FaceDetectPrepareUI.this) != null) {
+          FaceDetectPrepareUI.b(FaceDetectPrepareUI.this).c(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, FaceDetectPrepareUI.i(FaceDetectPrepareUI.this).extras);
+        }
+        AppMethodBeat.o(413);
+      }
+    });
+    AppMethodBeat.o(445);
   }
   
   private boolean hasError()
   {
-    boolean bool2 = this.jQR;
-    if (this.jQT == null) {}
+    AppMethodBeat.i(446);
+    boolean bool2 = this.mll;
+    if (this.mln == null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo hasLastError: %b, lastError == null: %b, hashCode: %d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Integer.valueOf(hashCode()) });
-      if ((!this.jQR) || (this.jQT == null)) {
+      ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo hasLastError: %b, lastError == null: %b, hashCode: %d", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Integer.valueOf(hashCode()) });
+      if ((!this.mll) || (this.mln == null)) {
         break;
       }
+      AppMethodBeat.o(446);
       return true;
     }
+    AppMethodBeat.o(446);
     return false;
   }
   
-  private void l(int paramInt, Bundle paramBundle)
+  private void o(int paramInt, Bundle paramBundle)
   {
+    AppMethodBeat.i(427);
     if (paramBundle != null) {}
     for (Object localObject = paramBundle.toString();; localObject = "null")
     {
-      y.i("MicroMsg.FaceDetectPrepareUI", "hy: sending msg: cmd: %d, data: %s", new Object[] { Integer.valueOf(paramInt), localObject });
+      ab.i("MicroMsg.FaceDetectPrepareUI", "hy: sending msg: cmd: %d, data: %s", new Object[] { Integer.valueOf(paramInt), localObject });
       localObject = paramBundle;
       if (paramBundle == null) {
         localObject = new Bundle();
@@ -248,16 +293,22 @@ public class FaceDetectPrepareUI
       ((Bundle)localObject).putInt("k_cmd", paramInt);
       paramBundle = new Intent(this, FaceDetectProcessService.class);
       paramBundle.putExtras((Bundle)localObject);
-      startService(paramBundle);
+      com.tencent.mm.bq.d.j(paramBundle, "tools");
+      AppMethodBeat.o(427);
       return;
     }
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "finishWithResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    int i = 1;
+    AppMethodBeat.i(437);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "finishWithResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (paramBundle != null) {
+      paramBundle.putString("k_bio_id", String.valueOf(this.mhU));
+    }
     Bundle localBundle = new Bundle();
-    localBundle.putInt("err_code", k.qM(paramInt2));
+    localBundle.putInt("err_code", l.vH(paramInt2));
     localBundle.putString("err_msg", paramString);
     if (paramBundle != null) {
       localBundle.putAll(paramBundle);
@@ -265,63 +316,78 @@ public class FaceDetectPrepareUI
     paramString = new Intent();
     paramString.putExtras(localBundle);
     setResult(-1, paramString);
-    if (this.jQU)
+    if (this.mlo)
     {
-      this.jQV = true;
-      l(5, this.jQM.aOd());
-    }
-    finish();
-  }
-  
-  public final void a(boolean paramBoolean1, boolean paramBoolean2, d paramd)
-  {
-    if (paramBoolean2)
-    {
-      y.i("MicroMsg.FaceDetectPrepareUI", "hy: need blur");
-      com.tencent.mm.sdk.f.e.post(new FaceDetectPrepareUI.16(this), "face_refresh_background");
-    }
-    this.jQN.a(paramd);
-  }
-  
-  public final void aNZ()
-  {
-    y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo startFaceDetect");
-    y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo preparing");
-    if (this.jQM != null)
-    {
-      String str = getIntent().getExtras().getString("k_ticket");
-      if (!bk.bl(str))
-      {
-        y.i("MicroMsg.FaceDetectBaseController", "hy: has prepared ticket. force set");
-        p.Cm(str);
+      this.mlp = true;
+      o(5, this.mlg.bug());
+      paramString = FaceDetectReporter.buB();
+      if (!this.mlo) {
+        break label176;
       }
     }
-    y.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.jRd) });
-    if (!this.jRd)
+    label176:
+    for (paramInt1 = i;; paramInt1 = 0)
     {
-      y.i("MicroMsg.FaceDetectPrepareUI", "hy: start show jumper: %b", new Object[] { Boolean.valueOf(true) });
-      this.jQW = bk.UZ();
-      com.tencent.mm.sdk.f.e.post(new FaceDetectPrepareUI.15(this), "face_prepareInit");
+      paramString.miL = paramInt1;
+      finish();
+      AppMethodBeat.o(437);
+      return;
     }
-    aOY();
+  }
+  
+  public final void a(boolean paramBoolean1, boolean paramBoolean2, c paramc)
+  {
+    AppMethodBeat.i(434);
+    if (paramBoolean2)
+    {
+      ab.i("MicroMsg.FaceDetectPrepareUI", "hy: need blur");
+      com.tencent.mm.sdk.g.d.post(new FaceDetectPrepareUI.16(this), "face_refresh_background");
+    }
+    this.mlh.a(paramc);
+    AppMethodBeat.o(434);
+  }
+  
+  public final void buc()
+  {
+    AppMethodBeat.i(429);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo startFaceDetect");
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo preparing");
+    if (this.mlg != null)
+    {
+      String str = getIntent().getExtras().getString("k_ticket");
+      if (!bo.isNullOrNil(str))
+      {
+        ab.i("MicroMsg.FaceDetectBaseController", "hy: has prepared ticket. force set");
+        com.tencent.mm.plugin.facedetect.b.p.Nn(str);
+      }
+    }
+    ab.i("MicroMsg.FaceDetectPrepareUI", "carson init jumper: %b", new Object[] { Boolean.valueOf(this.mly) });
+    if (!this.mly)
+    {
+      ab.i("MicroMsg.FaceDetectPrepareUI", "hy: start show jumper: %b", new Object[] { Boolean.TRUE });
+      this.mlr = bo.yB();
+      com.tencent.mm.sdk.g.d.post(new FaceDetectPrepareUI.15(this), "face_prepareInit");
+    }
+    bvc();
     int i;
-    switch (this.jRe)
+    switch (this.mlz)
     {
     default: 
       i = 1;
     }
     for (;;)
     {
-      if ((this.jMm == 0) || (this.jMm == 1) || (this.jMm == 3) || (this.jMm == 4)) {
+      if ((this.mgs == 0) || (this.mgs == 1) || (this.mgs == 3) || (this.mgs == 4)) {
         i = 1;
       }
-      this.jMx = i;
-      if (this.jQM != null)
+      this.mgD = i;
+      if (this.mlg != null)
       {
-        this.jQM.jNj = this.jMx;
-        this.jQM.aNY();
+        this.mlg.mhs = this.mgD;
+        this.mlg.bub();
       }
-      this.jRa = true;
+      this.mlv = true;
+      AppMethodBeat.o(429);
       return;
       i = 1;
       continue;
@@ -329,94 +395,104 @@ public class FaceDetectPrepareUI
     }
   }
   
-  public final void aOb() {}
+  public final void bue() {}
   
-  public final void aOe()
+  public final void buh()
   {
-    this.jRa = false;
+    this.mlv = false;
   }
   
   public final void d(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo saveError errType: %d, errCode: %d, errMsg: %s, hashCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(hashCode()) });
-    if (this.jQT == null) {
-      this.jQT = new FaceDetectPrepareUI.b(this, (byte)0);
+    AppMethodBeat.i(447);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo saveError errType: %d, errCode: %d, errMsg: %s, hashCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(hashCode()) });
+    if (this.mln == null) {
+      this.mln = new FaceDetectPrepareUI.b(this, (byte)0);
     }
-    this.jQR = true;
-    FaceDetectPrepareUI.b localb = this.jQT;
-    localb.errType = paramInt1;
-    localb.errCode = paramInt2;
-    localb.aox = paramString;
-    localb.extras = paramBundle;
+    this.mll = true;
+    this.mln.e(paramInt1, paramInt2, paramString, paramBundle);
+    AppMethodBeat.o(447);
   }
   
   public void finish()
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "dismissJumper");
-    if ((this.jQN != null) && (this.jQN.akH())) {
-      this.jQN.dismiss();
+    AppMethodBeat.i(442);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "dismissJumper");
+    if ((this.mlh != null) && (this.mlh.Pk())) {
+      this.mlh.dismiss();
     }
-    if (this.jQO != null) {
-      this.jQO.dismiss();
+    if (this.mli != null) {
+      this.mli.dismiss();
     }
-    y.v("MicroMsg.FaceDetectPrepareUI", "alvinluo: releaseFaceDetect");
-    if (this.jQM != null) {
-      this.jQM.aOb();
+    ab.v("MicroMsg.FaceDetectPrepareUI", "alvinluo: releaseFaceDetect");
+    if (this.mlg != null) {
+      this.mlg.bue();
     }
     super.finish();
-    this.gxZ = true;
+    this.eRZ = true;
+    AppMethodBeat.o(442);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     boolean bool2 = false;
     boolean bool1 = false;
-    y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(432);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult requestCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 2)
     {
-      this.jQZ = 1;
-      this.jRc.setVisibility(0);
+      this.mlu = 1;
+      this.mlx.setVisibility(0);
       if (paramIntent == null)
       {
-        y.e("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult data is null");
-        a(4, 90018, "system error", getString(a.i.face_get_confirm_info_failed_tips), false, new FaceDetectPrepareUI.11(this));
-      }
-    }
-    String str;
-    do
-    {
-      do
-      {
+        ab.e("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult data is null");
+        a(4, 90018, "system error", getString(2131299581), false, new FaceDetectPrepareUI.11(this));
+        AppMethodBeat.o(432);
         return;
-        localObject = (FaceDetectReporter)paramIntent.getParcelableExtra("key_parcelable_reporter");
-        if (localObject != null) {
-          FaceDetectReporter.aOy().a((FaceDetectReporter)localObject);
-        }
+      }
+      localObject = (FaceDetectReporter)paramIntent.getParcelableExtra("key_parcelable_reporter");
+      if (localObject != null) {
+        FaceDetectReporter.buB().a((FaceDetectReporter)localObject);
+      }
+      localObject = FaceDetectReporter.buB();
+      if (this.mlo) {}
+      for (paramInt1 = 1;; paramInt1 = 0)
+      {
+        ((FaceDetectReporter)localObject).miL = paramInt1;
+        FaceDetectReporter.buB().miK = Math.round(this.mlB);
         paramInt1 = paramIntent.getIntExtra("err_type", -1);
         paramInt2 = paramIntent.getIntExtra("err_code", -1);
         str = paramIntent.getStringExtra("err_msg");
-        if (this.jQM != null)
+        if (this.mlg != null)
         {
-          localObject = this.jQM;
+          localObject = this.mlg;
           paramIntent.getExtras();
-          ((com.tencent.mm.plugin.facedetect.c.a)localObject).m(paramInt1, paramInt2, str);
+          ((com.tencent.mm.plugin.facedetect.c.a)localObject).q(paramInt1, paramInt2, str);
         }
-        y.i("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
-        if ((paramInt1 == 0) && (paramInt2 == 0))
-        {
-          aPb();
-          l(6, paramIntent.getExtras());
-          return;
-        }
-        if (paramInt1 != 1) {
+        ab.i("MicroMsg.FaceDetectPrepareUI", "carson onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
+        if ((paramInt1 != 0) || (paramInt2 != 0)) {
           break;
         }
-      } while ((paramInt2 != 90004) && (paramInt2 != 90025));
-      ag(paramInt2, str);
-      return;
-      localObject = paramIntent.getStringExtra("show_err_msg");
-      if (paramInt2 == 90013) {
-        paramIntent = getString(a.i.face_detect_init_err);
+        bvf();
+        o(6, paramIntent.getExtras());
+        AppMethodBeat.o(432);
+        return;
+      }
+      if (paramInt1 == 1)
+      {
+        if ((paramInt2 == 90004) || (paramInt2 == 90025))
+        {
+          az(paramInt2, str);
+          AppMethodBeat.o(432);
+        }
+      }
+      else
+      {
+        localObject = paramIntent.getStringExtra("show_err_msg");
+        if (paramInt2 != 90013) {
+          break label381;
+        }
+        paramIntent = getString(2131299566);
       }
       for (;;)
       {
@@ -425,59 +501,80 @@ public class FaceDetectPrepareUI
           bool1 = true;
         }
         a(paramInt1, paramInt2, str, paramIntent, bool1, new FaceDetectPrepareUI.12(this));
+        AppMethodBeat.o(432);
         return;
+        label381:
         if ((paramInt2 == 90008) || (paramInt2 == 90010))
         {
-          paramIntent = getString(a.i.permission_camera_request_again_msg);
+          paramIntent = getString(2131302067);
         }
         else if (paramInt2 == 90009)
         {
-          paramIntent = getString(a.i.permission_microphone_request_again_msg);
+          paramIntent = getString(2131302075);
         }
         else
         {
           paramIntent = (Intent)localObject;
-          if (bk.bl((String)localObject)) {
-            paramIntent = getString(a.i.soter_face_err_msg_retry);
+          if (bo.isNullOrNil((String)localObject)) {
+            paramIntent = getString(2131304062);
           }
         }
       }
-      this.jQZ = 1;
-      if (paramIntent == null)
+    }
+    this.mlu = 1;
+    if (paramIntent == null)
+    {
+      ab.e("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult data is null");
+      a(4, 90018, "system error", getString(2131299581), false, new c()
       {
-        y.e("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult data is null");
-        a(4, 90018, "system error", getString(a.i.face_get_confirm_info_failed_tips), false, new FaceDetectPrepareUI.13(this));
-        return;
-      }
-      localObject = (FaceDetectReporter)paramIntent.getParcelableExtra("key_parcelable_reporter");
-      if (localObject != null) {
-        FaceDetectReporter.aOy().a((FaceDetectReporter)localObject);
-      }
-      paramInt1 = paramIntent.getIntExtra("err_type", -1);
-      paramInt2 = paramIntent.getIntExtra("err_code", -1);
-      str = paramIntent.getStringExtra("err_msg");
-      if (this.jQM != null)
+        public final void s(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
+        {
+          AppMethodBeat.i(416);
+          if (FaceDetectPrepareUI.b(FaceDetectPrepareUI.this) != null) {
+            FaceDetectPrepareUI.b(FaceDetectPrepareUI.this).c(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null);
+          }
+          AppMethodBeat.o(416);
+        }
+      });
+      AppMethodBeat.o(432);
+      return;
+    }
+    Object localObject = (FaceDetectReporter)paramIntent.getParcelableExtra("key_parcelable_reporter");
+    if (localObject != null) {
+      FaceDetectReporter.buB().a((FaceDetectReporter)localObject);
+    }
+    paramInt1 = paramIntent.getIntExtra("err_type", -1);
+    paramInt2 = paramIntent.getIntExtra("err_code", -1);
+    String str = paramIntent.getStringExtra("err_msg");
+    if (this.mlg != null)
+    {
+      localObject = this.mlg;
+      paramIntent.getExtras();
+      ((com.tencent.mm.plugin.facedetect.c.a)localObject).q(paramInt1, paramInt2, str);
+    }
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      bvf();
+      o(1, null);
+      AppMethodBeat.o(432);
+      return;
+    }
+    if (paramInt1 == 1)
+    {
+      if ((paramInt2 == 90004) || (paramInt2 == 90025))
       {
-        localObject = this.jQM;
-        paramIntent.getExtras();
-        ((com.tencent.mm.plugin.facedetect.c.a)localObject).m(paramInt1, paramInt2, str);
+        az(paramInt2, str);
+        AppMethodBeat.o(432);
       }
-      y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onActivityResult errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str });
-      if ((paramInt1 == 0) && (paramInt2 == 0))
-      {
-        aPb();
-        l(1, null);
-        return;
+    }
+    else
+    {
+      localObject = paramIntent.getStringExtra("show_err_msg");
+      if (paramInt2 != 90013) {
+        break label738;
       }
-      if (paramInt1 != 1) {
-        break;
-      }
-    } while ((paramInt2 != 90004) && (paramInt2 != 90025));
-    ag(paramInt2, str);
-    return;
-    Object localObject = paramIntent.getStringExtra("show_err_msg");
-    if (paramInt2 == 90013) {
-      paramIntent = getString(a.i.face_detect_init_err);
+      paramIntent = getString(2131299566);
     }
     for (;;)
     {
@@ -487,20 +584,22 @@ public class FaceDetectPrepareUI
         bool1 = true;
       }
       a(paramInt1, paramInt2, str, paramIntent, bool1, new FaceDetectPrepareUI.14(this));
+      AppMethodBeat.o(432);
       return;
+      label738:
       if ((paramInt2 == 90008) || (paramInt2 == 90010))
       {
-        paramIntent = getString(a.i.permission_camera_request_again_msg);
+        paramIntent = getString(2131302067);
       }
       else if (paramInt2 == 90009)
       {
-        paramIntent = getString(a.i.permission_microphone_request_again_msg);
+        paramIntent = getString(2131302075);
       }
       else
       {
         paramIntent = (Intent)localObject;
-        if (bk.bl((String)localObject)) {
-          paramIntent = getString(a.i.soter_face_err_msg_retry);
+        if (bo.isNullOrNil((String)localObject)) {
+          paramIntent = getString(2131304062);
         }
       }
     }
@@ -508,172 +607,212 @@ public class FaceDetectPrepareUI
   
   public void onBackPressed()
   {
+    AppMethodBeat.i(448);
     if (hasError())
     {
-      if (this.jQM != null) {
-        this.jQM.c(this.jQT.errType, this.jQT.errCode, this.jQT.aox, this.jQT.extras);
+      if (this.mlg != null)
+      {
+        this.mlg.c(this.mln.errType, this.mln.errCode, this.mln.errMsg, this.mln.extras);
+        AppMethodBeat.o(448);
       }
-      return;
     }
-    if (this.jQZ == 1)
+    else
     {
-      ag(90003, "user cancel in init");
-      return;
+      if (this.mlu == 1)
+      {
+        az(90003, "user cancel in init");
+        AppMethodBeat.o(448);
+        return;
+      }
+      if (this.mlu == 3)
+      {
+        az(90005, "user cancel in uploading");
+        AppMethodBeat.o(448);
+        return;
+      }
+      if (this.mlu == 0)
+      {
+        az(90002, "user cancel in tutorial");
+        AppMethodBeat.o(448);
+        return;
+      }
+      az(90050, "user cancel unknown");
     }
-    if (this.jQZ == 3)
-    {
-      ag(90005, "user cancel in uploading");
-      return;
-    }
-    if (this.jQZ == 0)
-    {
-      ag(90002, "user cancel in tutorial");
-      return;
-    }
-    ag(90050, "user cancel unknown");
+    AppMethodBeat.o(448);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(426);
     super.onCreate(paramBundle);
-    setContentView(a.g.face_prepare_ui);
-    this.jRc = ((RelativeLayout)findViewById(a.e.face_prepare_ui));
-    this.jRc.setVisibility(4);
+    setContentView(2130969504);
+    this.mlx = ((RelativeLayout)findViewById(2131823905));
+    this.mlx.setVisibility(4);
     getWindow().addFlags(2097280);
     this.mAppId = getIntent().getStringExtra("k_app_id");
-    this.djD = getIntent().getStringExtra("k_user_name");
-    this.jMm = getIntent().getIntExtra("k_server_scene", -1);
-    this.jQP = getIntent().getBooleanExtra("k_need_signature", false);
+    this.eaX = getIntent().getStringExtra("k_user_name");
+    this.mgs = getIntent().getIntExtra("k_server_scene", -1);
+    this.mlj = getIntent().getBooleanExtra("k_need_signature", false);
     boolean bool;
-    if ((com.tencent.mm.plugin.facedetect.model.e.aOj()) || (getIntent().getBooleanExtra("key_is_need_video", false)))
+    if ((e.bum()) || (getIntent().getBooleanExtra("key_is_need_video", false)))
     {
       bool = true;
-      this.jQU = bool;
-      this.jMP = getIntent().getStringExtra("key_feedback_url");
-      this.jQp = getIntent().getIntExtra("check_alive_type_response", -1);
-      this.jMR = getIntent().getFloatExtra("mLight_threshold", -1.0F);
-      this.jRb = a.b.aPA();
-      this.jRb.de(this);
-      y.i("MicroMsg.FaceDetectPrepareUI", "mIsNeedVideo： " + this.jQU);
-      y.i("MicroMsg.FaceDetectPrepareUI", "check_alive_type is " + this.jQp);
-      y.i("MicroMsg.FaceDetectPrepareUI", "mLight_threshold is " + this.jMR);
-      y.i("MicroMsg.FaceDetectPrepareUI", "mChechLiveFlag is " + this.jMx);
-      this.jQY = new FaceDetectPrepareUI.a(this, (byte)0);
-      this.jQX = new Messenger(this.jQY);
-      paramBundle = new Intent(this, FaceDetectProcessService.class);
-      paramBundle.putExtra("k_messenger", this.jQX);
-      startService(paramBundle);
-      FaceContextData.a(new FaceContextData());
-      o.z(this);
-      paramBundle = com.tencent.mm.plugin.facedetect.c.b.jNn;
-      this.jQM = com.tencent.mm.plugin.facedetect.c.b.a(this, this, this.jMm, this.jMx, getIntent().getExtras());
-      if (this.jQM != null) {
-        break label515;
+      this.mlo = bool;
+      this.mgX = getIntent().getStringExtra("key_feedback_url");
+      this.mlq = getIntent().getStringExtra("business_tips");
+      this.mkG = getIntent().getIntExtra("check_alive_type_response", -1);
+      if (this.mkG == -1) {
+        this.mkG = getIntent().getIntExtra("check_alive_type", 0);
       }
-      aiO();
-      label401:
-      if (this.jQT != null)
+      this.mgZ = getIntent().getFloatExtra("mLight_threshold", -1.0F);
+      this.mlw = a.b.bvL();
+      this.mlw.bvJ();
+      ab.i("MicroMsg.FaceDetectPrepareUI", "mIsNeedVideo： " + this.mlo);
+      ab.i("MicroMsg.FaceDetectPrepareUI", "check_alive_type is " + this.mkG);
+      ab.i("MicroMsg.FaceDetectPrepareUI", "mLight_threshold is " + this.mgZ);
+      ab.i("MicroMsg.FaceDetectPrepareUI", "mChechLiveFlag is " + this.mgD);
+      this.mlt = new FaceDetectPrepareUI.a(this, (byte)0);
+      this.mls = new Messenger(this.mlt);
+      paramBundle = new Intent(this, FaceDetectProcessService.class);
+      paramBundle.putExtra("k_messenger", this.mls);
+      com.tencent.mm.bq.d.j(paramBundle, "tools");
+      FaceContextData.a(new FaceContextData());
+      com.tencent.mm.plugin.facedetect.model.p.T(this);
+      paramBundle = getIntent().getExtras();
+      float f = this.mlw.bvK();
+      this.mlB = f;
+      if (paramBundle != null)
       {
-        paramBundle = this.jQT;
+        paramBundle.putFloat("key_current_light", f);
+        paramBundle.putBoolean("key_upload_video", this.mlo);
+      }
+      com.tencent.mm.plugin.facedetect.c.b localb = com.tencent.mm.plugin.facedetect.c.b.mhw;
+      this.mlg = com.tencent.mm.plugin.facedetect.c.b.a(this, this, this.mgs, this.mgD, paramBundle);
+      if (this.mlg != null) {
+        break label603;
+      }
+      aCL();
+      label483:
+      if (this.mln != null)
+      {
+        paramBundle = this.mln;
         paramBundle.errType = -1;
         paramBundle.errCode = -1;
-        paramBundle.aox = "";
+        paramBundle.errMsg = "";
         if (paramBundle.extras != null) {
           paramBundle.extras.clear();
         }
       }
-      this.jQR = false;
-      this.jQZ = 1;
-      aPa();
-      if (!o.y(this)) {
-        break label556;
+      this.mll = false;
+      this.mlu = 1;
+      bve();
+      if (!com.tencent.mm.plugin.facedetect.model.p.S(this)) {
+        break label644;
       }
-      y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo checkFacePermissionAnd Request true and do init ");
-      aOX();
+      ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo checkFacePermissionAnd Request true and do init ");
+      bvb();
     }
     for (;;)
     {
-      if (this.jQU)
+      if (this.mlo)
       {
         paramBundle = new Bundle();
-        paramBundle.putBoolean("key_is_need_video", this.jQU);
-        l(4, paramBundle);
+        paramBundle.putBoolean("key_is_need_video", this.mlo);
+        o(4, paramBundle);
       }
+      AppMethodBeat.o(426);
       return;
       bool = false;
       break;
-      label515:
-      this.jQM.a(new FaceDetectPrepareUI.6(this));
-      this.jMn = new com.tencent.mm.plugin.facedetect.b.d()
+      label603:
+      this.mlg.a(new FaceDetectPrepareUI.6(this));
+      this.mgt = new com.tencent.mm.plugin.facedetect.b.d()
       {
-        private double jRk = 0.0D;
+        private double mlG = 0.0D;
         
         public final void a(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, String paramAnonymousString)
         {
-          y.i("MicroMsg.FaceDetectPrepareUI", "onError scene: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), paramAnonymousString });
-          FaceDetectPrepareUI.a(FaceDetectPrepareUI.this, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, FaceDetectPrepareUI.this.getString(a.i.soter_face_err_msg_retry));
+          AppMethodBeat.i(408);
+          ab.i("MicroMsg.FaceDetectPrepareUI", "onError scene: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(paramAnonymousInt3), paramAnonymousString });
+          FaceDetectPrepareUI.a(FaceDetectPrepareUI.this, paramAnonymousInt2, paramAnonymousInt3, paramAnonymousString, FaceDetectPrepareUI.this.getString(2131304062));
+          AppMethodBeat.o(408);
         }
         
-        public final void h(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
+        public final void f(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
         {
-          y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onVerifyEnd sceneType: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousm.getType()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-          paramAnonymousInt1 = FaceDetectPrepareUI.qR(paramAnonymousInt1);
+          AppMethodBeat.i(410);
+          ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onVerifyEnd sceneType: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousm.getType()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          paramAnonymousInt1 = FaceDetectPrepareUI.vM(paramAnonymousInt1);
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
             FaceDetectPrepareUI.this.d(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null);
           }
           if (FaceDetectPrepareUI.b(FaceDetectPrepareUI.this) != null) {
-            FaceDetectPrepareUI.b(FaceDetectPrepareUI.this).h(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousm);
+            FaceDetectPrepareUI.b(FaceDetectPrepareUI.this).f(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, paramAnonymousm);
           }
+          AppMethodBeat.o(410);
         }
         
-        public final void i(String paramAnonymousString, Bundle paramAnonymousBundle)
+        public final void n(String paramAnonymousString, Bundle paramAnonymousBundle)
         {
-          y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onUploadEnd");
-          int i = FaceDetectPrepareUI.qR(0);
+          AppMethodBeat.i(409);
+          ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onUploadEnd");
+          int i = FaceDetectPrepareUI.vM(0);
           if (i != 0) {
             FaceDetectPrepareUI.this.d(i, 0, paramAnonymousString, paramAnonymousBundle);
           }
           if (FaceDetectPrepareUI.b(FaceDetectPrepareUI.this) != null) {
             FaceDetectPrepareUI.b(FaceDetectPrepareUI.this).b(i, paramAnonymousString, paramAnonymousBundle);
           }
+          AppMethodBeat.o(409);
         }
         
-        public final void s(double paramAnonymousDouble)
+        public final void v(double paramAnonymousDouble)
         {
-          y.i("MicroMsg.FaceDetectPrepareUI", "hy: reg on process : %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
-          this.jRk = (100.0D * paramAnonymousDouble);
+          AppMethodBeat.i(407);
+          ab.i("MicroMsg.FaceDetectPrepareUI", "hy: reg on process : %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
+          this.mlG = (100.0D * paramAnonymousDouble);
+          if (FaceDetectPrepareUI.b(FaceDetectPrepareUI.this) != null) {
+            FaceDetectPrepareUI.b(FaceDetectPrepareUI.this);
+          }
+          AppMethodBeat.o(407);
         }
       };
-      this.jQM.a(this.jMn);
-      break label401;
-      label556:
-      y.i("MicroMsg.FaceDetectPrepareUI", "hy: no camera permission. request permission");
+      this.mlg.a(this.mgt);
+      break label483;
+      label644:
+      ab.i("MicroMsg.FaceDetectPrepareUI", "hy: no camera permission. request permission");
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "onDestroy");
+    AppMethodBeat.i(438);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "onDestroy");
     super.onDestroy();
-    if (!this.jQV) {
-      stopService(new Intent(this, FaceDetectProcessService.class));
+    if (!this.mlp) {
+      com.tencent.mm.bq.d.l(new Intent(this, FaceDetectProcessService.class), "tools");
     }
-    if (this.jRb != null) {
-      this.jRb.stop();
+    if (this.mlw != null) {
+      this.mlw.stop();
     }
+    AppMethodBeat.o(438);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     int i = 90008;
-    y.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onRequestPermissionsResult");
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
+    AppMethodBeat.i(450);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "alvinluo onRequestPermissionsResult");
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
+    {
+      AppMethodBeat.o(450);
       return;
     }
     switch (paramInt)
     {
     default: 
-      y.i("MicroMsg.FaceDetectPrepareUI", "carson：finish()");
+      ab.i("MicroMsg.FaceDetectPrepareUI", "carson：finish()");
+      AppMethodBeat.o(450);
       return;
     }
     Object localObject1 = "";
@@ -683,59 +822,60 @@ public class FaceDetectPrepareUI
       if (paramArrayOfInt[0] == 0)
       {
         paramInt = 1;
-        label77:
+        label95:
         if (paramInt == 0) {
-          break label232;
+          break label255;
         }
-        aOX();
+        bvb();
+        AppMethodBeat.o(450);
         return;
       }
       if (paramArrayOfString[0].equals("android.permission.CAMERA"))
       {
         localObject1 = "camera permission not granted";
-        paramArrayOfString = getString(a.i.permission_camera_request_again_msg);
+        paramArrayOfString = getString(2131302067);
         paramInt = i;
       }
     }
     for (;;)
     {
-      this.jRc.setVisibility(0);
-      y.i("MicroMsg.FaceDetectPrepareUI", " mFacePrepareLayout, visible: %s", new Object[] { Integer.valueOf(this.jRc.getVisibility()) });
-      paramArrayOfInt = findViewById(a.e.face_tutorial_root);
+      this.mlx.setVisibility(0);
+      ab.i("MicroMsg.FaceDetectPrepareUI", " mFacePrepareLayout, visible: %s", new Object[] { Integer.valueOf(this.mlx.getVisibility()) });
+      paramArrayOfInt = findViewById(2131823944);
       if (paramArrayOfInt != null) {
         paramArrayOfInt.setVisibility(8);
       }
       d(1, paramInt, (String)localObject1, paramArrayOfString);
       paramInt = 0;
-      break label77;
+      break label95;
       if (paramArrayOfString[0].equals("android.permission.RECORD_AUDIO"))
       {
-        localObject1 = "audio permission not granted";
-        paramArrayOfString = getString(a.i.permission_microphone_request_again_msg);
         paramInt = 90009;
+        localObject1 = "audio permission not granted";
+        paramArrayOfString = getString(2131302075);
         continue;
         if (paramArrayOfInt.length == 2)
         {
           if ((paramArrayOfInt[0] == 0) && (paramArrayOfInt[1] == 0))
           {
             paramInt = 1;
-            break label77;
-            label232:
+            break label95;
+            label255:
             break;
           }
           Object localObject2;
           if (paramArrayOfInt[0] != 0)
           {
             localObject2 = "camera permission not granted";
-            str = getString(a.i.permission_camera_request_again_msg);
+            str = getString(2131302067);
           }
           for (;;)
           {
             if (paramArrayOfInt[1] != 0)
             {
-              localObject2 = "audio permission not granted";
-              str = getString(a.i.permission_microphone_request_again_msg);
               i = 90009;
+              localObject2 = "audio permission not granted";
+              str = getString(2131302075);
             }
             paramArrayOfString = str;
             localObject1 = localObject2;
@@ -751,7 +891,7 @@ public class FaceDetectPrepareUI
             }
             paramInt = 90010;
             localObject1 = "both camera and audio permission not granted";
-            paramArrayOfString = getString(a.i.permission_camera_request_again_msg);
+            paramArrayOfString = getString(2131302067);
             break;
             i = -1;
             localObject2 = localObject1;
@@ -763,31 +903,48 @@ public class FaceDetectPrepareUI
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    y.i("MicroMsg.FaceDetectPrepareUI", "onResume");
+    AppMethodBeat.i(440);
+    ab.i("MicroMsg.FaceDetectPrepareUI", "onResume");
     super.onResume();
-    this.jRa = true;
+    this.mlv = true;
+    AppMethodBeat.o(440);
   }
   
   public void onStart()
   {
+    AppMethodBeat.i(439);
     super.onStart();
+    AppMethodBeat.o(439);
   }
   
   public void onStop()
   {
+    AppMethodBeat.i(441);
     super.onStop();
-    if (this.jRa)
+    if (this.mlv)
     {
-      if ((!this.gxZ) && (hasError())) {
-        a(this.jQT.errType, this.jQT.errCode, this.jQT.aox, this.jQT.extras);
+      if ((!this.eRZ) && (hasError()))
+      {
+        a(this.mln.errType, this.mln.errCode, this.mln.errMsg, this.mln.extras);
+        AppMethodBeat.o(441);
+        return;
       }
+      finish();
     }
-    else {
-      return;
-    }
-    finish();
+    AppMethodBeat.o(441);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  static abstract interface c
+  {
+    public abstract void s(int paramInt1, int paramInt2, String paramString);
   }
 }
 

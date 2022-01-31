@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.masssend.a;
 import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.z;
@@ -22,73 +22,91 @@ import java.util.Map;
 
 public final class c
 {
-  private LinkedList<d> maL;
+  private LinkedList<d> oBk;
   
-  private static String bha()
+  private static String bOZ()
   {
-    if (au.DK())
+    AppMethodBeat.i(22732);
+    if (aw.RG())
     {
-      au.Hx();
-      String str = String.format("%s/masssend_%s.ini", new Object[] { com.tencent.mm.model.c.FT(), x.cqJ() });
-      y.d("MicroMsg.MassSendService", "config file path is %s", new Object[] { str });
+      aw.aaz();
+      String str = String.format("%s/masssend_%s.ini", new Object[] { com.tencent.mm.model.c.Rp(), aa.dsG() });
+      ab.d("MicroMsg.MassSendService", "config file path is %s", new Object[] { str });
+      AppMethodBeat.o(22732);
       return str;
     }
+    AppMethodBeat.o(22732);
     return "";
   }
   
-  private boolean bhb()
+  private boolean bPa()
   {
+    AppMethodBeat.i(22733);
     byte[] arrayOfByte;
-    if (this.maL == null)
+    if (this.oBk == null)
     {
-      localObject = bha();
-      arrayOfByte = com.tencent.mm.vfs.e.c((String)localObject, 0, -1);
-      if (arrayOfByte == null) {
+      localObject = bOZ();
+      arrayOfByte = com.tencent.mm.vfs.e.i((String)localObject, 0, -1);
+      if (arrayOfByte == null)
+      {
+        AppMethodBeat.o(22733);
         return false;
       }
     }
     try
     {
-      this.maL = ((e)new e().aH(arrayOfByte)).maM;
-      if (this.maL == null)
+      this.oBk = ((e)new e().parseFrom(arrayOfByte)).oBl;
+      if (this.oBk == null)
       {
-        y.w("MicroMsg.MassSendService", "info list is empty");
+        ab.w("MicroMsg.MassSendService", "info list is empty");
+        AppMethodBeat.o(22733);
         return false;
       }
     }
     catch (Exception localException)
     {
       com.tencent.mm.vfs.e.deleteFile((String)localObject);
+      AppMethodBeat.o(22733);
       return false;
     }
-    y.i("MicroMsg.MassSendService", "info list[%s]", new Object[] { this.maL.toString() });
-    long l = bk.UX();
-    Object localObject = this.maL.iterator();
+    ab.i("MicroMsg.MassSendService", "info list[%s]", new Object[] { this.oBk.toString() });
+    long l = bo.aox();
+    Object localObject = this.oBk.iterator();
     while (((Iterator)localObject).hasNext())
     {
       d locald = (d)((Iterator)localObject).next();
-      if ((locald.bud <= l) && (l <= locald.end)) {
+      if ((locald.bVp <= l) && (l <= locald.end))
+      {
+        AppMethodBeat.o(22733);
         return true;
       }
     }
+    AppMethodBeat.o(22733);
     return false;
   }
   
-  public static void fc(long paramLong)
+  public static void kA(long paramLong)
   {
-    au.Hx();
-    com.tencent.mm.model.c.Dz().o(102409, Long.valueOf(paramLong));
+    AppMethodBeat.i(22731);
+    aw.aaz();
+    com.tencent.mm.model.c.Ru().set(102409, Long.valueOf(paramLong));
+    AppMethodBeat.o(22731);
   }
   
-  public final void GT(String paramString)
+  public final void SD(String paramString)
   {
-    if (bk.bl(paramString)) {}
-    Object localObject1;
-    do
+    AppMethodBeat.i(22734);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(22734);
       return;
-      localObject1 = bn.s(paramString, "Festivals");
-    } while (localObject1 == null);
+    }
+    Object localObject1 = br.F(paramString, "Festivals");
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(22734);
+      return;
+    }
     e locale = new e();
     int i = 0;
     Object localObject2 = new StringBuilder(".Festivals.Festival");
@@ -97,141 +115,148 @@ public final class c
     {
       paramString = paramString;
       if (!((Map)localObject1).containsKey(paramString)) {
-        break label181;
+        break label200;
       }
       localObject2 = new d();
-      ((d)localObject2).bud = bk.ZI((String)((Map)localObject1).get(paramString + ".StartTime"));
-      ((d)localObject2).end = (bk.ZI((String)((Map)localObject1).get(paramString + ".EndTime")) + 86400000);
-      locale.maM.add(localObject2);
+      ((d)localObject2).bVp = bo.apM((String)((Map)localObject1).get(paramString + ".StartTime"));
+      ((d)localObject2).end = (bo.apM((String)((Map)localObject1).get(paramString + ".EndTime")) + 86400000);
+      locale.oBl.add(localObject2);
       i += 1;
       break;
     }
-    label181:
-    locale.count = locale.maM.size();
-    this.maL = locale.maM;
-    try
-    {
-      paramString = locale.toByteArray();
-      localObject1 = bha();
-      if (bk.bl((String)localObject1))
-      {
-        y.w("MicroMsg.MassSendService", "mass send config file path is null, return");
-        return;
-      }
-    }
-    catch (Exception paramString)
-    {
-      y.printErrStackTrace("MicroMsg.MassSendService", paramString, "", new Object[0]);
-      return;
-    }
-    localObject2 = new com.tencent.mm.vfs.b((String)localObject1);
-    if (!((com.tencent.mm.vfs.b)localObject2).exists())
-    {
-      au.Hx();
-      com.tencent.mm.model.c.Dz().o(102408, Boolean.valueOf(false));
-    }
-    label352:
+    label200:
+    locale.count = locale.oBl.size();
+    this.oBk = locale.oBl;
     for (;;)
     {
-      y.d("MicroMsg.MassSendService", "save to config file : %s", new Object[] { locale.toString() });
-      com.tencent.mm.vfs.e.b((String)localObject1, paramString, paramString.length);
-      return;
-      if (!com.tencent.mm.vfs.e.aeY(j.n(((com.tencent.mm.vfs.b)localObject2).mUri)).equals(g.o(paramString))) {}
-      for (i = 1;; i = 0)
+      try
       {
-        if (i == 0) {
-          break label352;
+        paramString = locale.toByteArray();
+        localObject1 = bOZ();
+        if (bo.isNullOrNil((String)localObject1))
+        {
+          ab.w("MicroMsg.MassSendService", "mass send config file path is null, return");
+          AppMethodBeat.o(22734);
+          return;
         }
-        au.Hx();
-        com.tencent.mm.model.c.Dz().o(102408, Boolean.valueOf(false));
-        break;
+        localObject2 = new com.tencent.mm.vfs.b((String)localObject1);
+        if (!((com.tencent.mm.vfs.b)localObject2).exists())
+        {
+          aw.aaz();
+          com.tencent.mm.model.c.Ru().set(102408, Boolean.FALSE);
+          ab.d("MicroMsg.MassSendService", "save to config file : %s", new Object[] { locale.toString() });
+          com.tencent.mm.vfs.e.b((String)localObject1, paramString, paramString.length);
+          AppMethodBeat.o(22734);
+          return;
+        }
+        if (!com.tencent.mm.vfs.e.avP(j.p(((com.tencent.mm.vfs.b)localObject2).mUri)).equals(g.w(paramString)))
+        {
+          i = 1;
+          if (i != 0)
+          {
+            aw.aaz();
+            com.tencent.mm.model.c.Ru().set(102408, Boolean.FALSE);
+          }
+        }
+        else
+        {
+          i = 0;
+        }
+      }
+      catch (Exception paramString)
+      {
+        ab.printErrStackTrace("MicroMsg.MassSendService", paramString, "", new Object[0]);
+        AppMethodBeat.o(22734);
+        return;
       }
     }
   }
   
-  public final void bgZ()
+  public final void bOY()
   {
     Object localObject1 = null;
-    boolean bool1 = bhb();
-    au.Hx();
-    boolean bool2 = ((Boolean)com.tencent.mm.model.c.Dz().get(102408, Boolean.valueOf(false))).booleanValue();
+    AppMethodBeat.i(22730);
+    boolean bool1 = bPa();
+    aw.aaz();
+    boolean bool2 = ((Boolean)com.tencent.mm.model.c.Ru().get(102408, Boolean.FALSE)).booleanValue();
     int i;
-    if ((q.Gu() & 0x10000) == 0)
+    if ((r.Zy() & 0x10000) == 0)
     {
       i = 1;
-      y.d("MicroMsg.MassSendService", "hadSetTop is %B", new Object[] { Boolean.valueOf(bool2) });
+      ab.d("MicroMsg.MassSendService", "hadSetTop is %B", new Object[] { Boolean.valueOf(bool2) });
       if ((i == 0) || (bool2) || (!bool1)) {
-        break label401;
+        break label411;
       }
-      y.d("MicroMsg.MassSendService", "set top conversation");
-      au.Hx();
-      if (com.tencent.mm.model.c.FB().abv("masssendapp") != null) {
-        break label242;
+      ab.d("MicroMsg.MassSendService", "set top conversation");
+      aw.aaz();
+      if (com.tencent.mm.model.c.YF().arH("masssendapp") != null) {
+        break label252;
       }
-      au.Hx();
-      if (com.tencent.mm.model.c.FB().abv("masssendapp") == null)
+      aw.aaz();
+      if (com.tencent.mm.model.c.YF().arH("masssendapp") == null)
       {
         localObject1 = new ak();
         ((ak)localObject1).setUsername("masssendapp");
-        ((ak)localObject1).setContent(ae.getContext().getResources().getString(R.l.contact_info_masssend_tip));
-        ((ak)localObject1).ba(bk.UY() + 2000L);
-        ((ak)localObject1).fA(0);
-        ((ak)localObject1).fy(0);
-        au.Hx();
-        com.tencent.mm.model.c.FB().d((ak)localObject1);
+        ((ak)localObject1).setContent(ah.getContext().getResources().getString(2131298661));
+        ((ak)localObject1).fK(bo.aoy() + 2000L);
+        ((ak)localObject1).hL(0);
+        ((ak)localObject1).hJ(0);
+        aw.aaz();
+        com.tencent.mm.model.c.YF().d((ak)localObject1);
       }
     }
-    label242:
+    label252:
     Object localObject2;
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.h.nFQ.aC(10425, "");
-      au.Hx();
-      com.tencent.mm.model.c.Dz().o(102409, Long.valueOf(bk.UY()));
-      au.Hx();
-      com.tencent.mm.model.c.Dz().o(102408, Boolean.valueOf(true));
+      com.tencent.mm.plugin.report.service.h.qsU.kvStat(10425, "");
+      aw.aaz();
+      com.tencent.mm.model.c.Ru().set(102409, Long.valueOf(bo.aoy()));
+      aw.aaz();
+      com.tencent.mm.model.c.Ru().set(102408, Boolean.TRUE);
+      AppMethodBeat.o(22730);
       return;
       i = 0;
       break;
-      localObject2 = h.bhd().dXo.a("select * from massendinfo ORDER BY createtime DESC  limit 1", null, 2);
+      localObject2 = h.bPc().fnw.a("select * from massendinfo ORDER BY createtime DESC  limit 1", null, 2);
       if (localObject2 != null) {
-        break label351;
+        break label361;
       }
-      label263:
       if (localObject1 != null) {
-        break label387;
+        break label397;
       }
-      localObject1 = ae.getContext().getResources().getString(R.l.contact_info_masssend_tip);
-      label282:
+      localObject1 = ah.getContext().getResources().getString(2131298661);
+      label292:
       localObject2 = new ak();
       ((ak)localObject2).setUsername("masssendapp");
       ((ak)localObject2).setContent((String)localObject1);
-      ((ak)localObject2).ba(bk.UY() + 2000L);
-      ((ak)localObject2).fA(0);
-      ((ak)localObject2).fy(0);
-      au.Hx();
-      com.tencent.mm.model.c.FB().a((ak)localObject2, "masssendapp");
+      ((ak)localObject2).fK(bo.aoy() + 2000L);
+      ((ak)localObject2).hL(0);
+      ((ak)localObject2).hJ(0);
+      aw.aaz();
+      com.tencent.mm.model.c.YF().a((ak)localObject2, "masssendapp");
     }
-    label351:
+    label361:
     if (((Cursor)localObject2).moveToFirst())
     {
       localObject1 = new a();
-      ((a)localObject1).d((Cursor)localObject2);
+      ((a)localObject1).convertFrom((Cursor)localObject2);
     }
     for (;;)
     {
       ((Cursor)localObject2).close();
-      break label263;
-      label387:
-      h.bhd();
+      break;
+      label397:
+      h.bPc();
       localObject1 = b.a((a)localObject1);
-      break label282;
-      label401:
-      if (bool1) {
-        break;
+      break label292;
+      label411:
+      if (!bool1)
+      {
+        aw.aaz();
+        com.tencent.mm.model.c.Ru().set(102408, Boolean.FALSE);
       }
-      au.Hx();
-      com.tencent.mm.model.c.Dz().o(102408, Boolean.valueOf(false));
+      AppMethodBeat.o(22730);
       return;
       localObject1 = null;
     }

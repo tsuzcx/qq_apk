@@ -1,26 +1,20 @@
 package com.tencent.mm.plugin.scanner.util;
 
-import com.tencent.mm.j.f.a;
-import java.util.HashMap;
-import java.util.Map;
-
 public final class p
 {
-  public f.a epa = new p.1(this);
-  public Map<String, p.a> hLB = new HashMap();
+  public volatile p.b qDA;
+  public p.a qDB;
+  public volatile int qDz;
   
-  public final class b
+  public final void cjM()
   {
-    public String aeskey;
-    public int errCode;
-    public String fileId;
-    
-    public b() {}
+    this.qDz = 0;
+    this.qDA = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.p
  * JD-Core Version:    0.7.0.1
  */

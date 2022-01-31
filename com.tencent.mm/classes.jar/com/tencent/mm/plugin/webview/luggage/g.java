@@ -3,82 +3,118 @@ package com.tencent.mm.plugin.webview.luggage;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.h;
-import com.tencent.xweb.l;
 import com.tencent.xweb.m;
-import com.tencent.xweb.p;
+import com.tencent.xweb.r;
+import com.tencent.xweb.s;
+import com.tencent.xweb.w;
 
 public class g
-  extends p
+  extends w
 {
-  private p mTi = new p();
+  private w pvo;
   
-  public m a(WebView paramWebView, l paraml)
+  public g()
   {
-    return this.mTi.a(paramWebView, paraml);
+    AppMethodBeat.i(6106);
+    this.pvo = new w();
+    AppMethodBeat.o(6106);
   }
   
-  public m a(WebView paramWebView, l paraml, Bundle paramBundle)
+  public s a(WebView paramWebView, r paramr)
   {
-    return this.mTi.a(paramWebView, paraml, paramBundle);
+    AppMethodBeat.i(6113);
+    paramWebView = this.pvo.a(paramWebView, paramr);
+    AppMethodBeat.o(6113);
+    return paramWebView;
+  }
+  
+  public s a(WebView paramWebView, r paramr, Bundle paramBundle)
+  {
+    AppMethodBeat.i(6114);
+    paramWebView = this.pvo.a(paramWebView, paramr, paramBundle);
+    AppMethodBeat.o(6114);
+    return paramWebView;
   }
   
   public final void a(WebView paramWebView, float paramFloat1, float paramFloat2)
   {
-    this.mTi.a(paramWebView, paramFloat1, paramFloat2);
+    AppMethodBeat.i(6117);
+    this.pvo.a(paramWebView, paramFloat1, paramFloat2);
+    AppMethodBeat.o(6117);
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    this.mTi.a(paramWebView, paramInt, paramString1, paramString2);
+    AppMethodBeat.i(6110);
+    this.pvo.a(paramWebView, paramInt, paramString1, paramString2);
+    AppMethodBeat.o(6110);
   }
   
-  public void a(WebView paramWebView, h paramh, SslError paramSslError)
+  public void a(WebView paramWebView, m paramm, SslError paramSslError)
   {
-    this.mTi.a(paramWebView, paramh, paramSslError);
+    AppMethodBeat.i(6116);
+    this.pvo.a(paramWebView, paramm, paramSslError);
+    AppMethodBeat.o(6116);
   }
   
-  public void a(WebView paramWebView, l paraml, m paramm)
+  public void a(WebView paramWebView, r paramr, s params)
   {
-    this.mTi.a(paramWebView, paraml, paramm);
-  }
-  
-  public void a(WebView paramWebView, String paramString)
-  {
-    this.mTi.a(paramWebView, paramString);
+    AppMethodBeat.i(6118);
+    this.pvo.a(paramWebView, paramr, params);
+    AppMethodBeat.o(6118);
   }
   
   public final void a(WebView paramWebView, String paramString, boolean paramBoolean)
   {
-    this.mTi.a(paramWebView, paramString, paramBoolean);
+    AppMethodBeat.i(6115);
+    this.pvo.a(paramWebView, paramString, paramBoolean);
+    AppMethodBeat.o(6115);
   }
   
-  public final void a(p paramp)
+  public final void a(w paramw)
   {
-    if (paramp != null) {
-      this.mTi = paramp;
+    if (paramw != null) {
+      this.pvo = paramw;
     }
+  }
+  
+  public boolean a(WebView paramWebView, String paramString)
+  {
+    AppMethodBeat.i(6111);
+    boolean bool = this.pvo.a(paramWebView, paramString);
+    AppMethodBeat.o(6111);
+    return bool;
+  }
+  
+  public void b(WebView paramWebView, String paramString)
+  {
+    AppMethodBeat.i(6109);
+    this.pvo.b(paramWebView, paramString);
+    AppMethodBeat.o(6109);
   }
   
   public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.mTi.b(paramWebView, paramString, paramBitmap);
+    AppMethodBeat.i(6108);
+    this.pvo.b(paramWebView, paramString, paramBitmap);
+    AppMethodBeat.o(6108);
   }
   
-  public boolean b(WebView paramWebView, String paramString)
+  public s c(WebView paramWebView, String paramString)
   {
-    return this.mTi.b(paramWebView, paramString);
+    AppMethodBeat.i(6112);
+    paramWebView = this.pvo.c(paramWebView, paramString);
+    AppMethodBeat.o(6112);
+    return paramWebView;
   }
   
-  public m c(WebView paramWebView, String paramString)
+  public void h(WebView paramWebView, String paramString)
   {
-    return this.mTi.c(paramWebView, paramString);
-  }
-  
-  public final void f(WebView paramWebView, String paramString)
-  {
-    this.mTi.f(paramWebView, paramString);
+    AppMethodBeat.i(6107);
+    this.pvo.h(paramWebView, paramString);
+    AppMethodBeat.o(6107);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.product.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MallProductSubmitUI$7
   implements Runnable
@@ -10,7 +11,9 @@ final class MallProductSubmitUI$7
   
   public final void run()
   {
-    MallProductSubmitUI.e(this.mUW).setImageBitmap(this.ara);
+    AppMethodBeat.i(44145);
+    MallProductSubmitUI.e(this.pxb).setImageBitmap(this.val$bitmap);
+    AppMethodBeat.o(44145);
   }
 }
 

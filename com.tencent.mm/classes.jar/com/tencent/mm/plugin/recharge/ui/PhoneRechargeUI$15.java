@@ -1,14 +1,12 @@
 package com.tencent.mm.plugin.recharge.ui;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.provider.ContactsContract.Contacts;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.base.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class PhoneRechargeUI$15
   implements View.OnClickListener
@@ -17,16 +15,15 @@ final class PhoneRechargeUI$15
   
   public final void onClick(View paramView)
   {
-    if (this.nrb.getPackageManager().checkPermission("android.permission.READ_CONTACTS", ae.getPackageName()) == 0) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(44269);
+    if (b.a(this.pWp.getContext(), "android.permission.READ_CONTACTS", 48, null, null))
     {
       paramView = new Intent("android.intent.action.PICK", ContactsContract.Contacts.CONTENT_URI);
-      if (bk.i(this.nrb, paramView)) {
-        this.nrb.startActivityForResult(paramView, 1);
+      if (bo.k(this.pWp, paramView)) {
+        this.pWp.startActivityForResult(paramView, 1);
       }
-      return;
     }
-    h.b(this.nrb, this.nrb.getString(a.i.wallet_recharge_no_permission), "", true);
+    AppMethodBeat.o(44269);
   }
 }
 

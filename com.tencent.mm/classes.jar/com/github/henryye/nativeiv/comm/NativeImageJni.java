@@ -1,16 +1,23 @@
 package com.github.henryye.nativeiv.comm;
 
+import android.support.annotation.Keep;
 import java.nio.ByteBuffer;
 
 public class NativeImageJni
 {
-  protected static native CommNativeBitmapStruct decodeNative(ByteBuffer paramByteBuffer, int paramInt);
+  long mNativeInst = 0L;
   
-  protected static native void destroy();
+  @Keep
+  native CommNativeBitmapStruct nativeDecodeNative(long paramLong, ByteBuffer paramByteBuffer, int paramInt);
   
-  protected static native void init();
+  @Keep
+  native void nativeDestroy(long paramLong);
   
-  protected static native void recycleNative(long paramLong);
+  @Keep
+  native long nativeInit();
+  
+  @Keep
+  native void nativeRecycleNative(long paramLong1, long paramLong2);
 }
 
 

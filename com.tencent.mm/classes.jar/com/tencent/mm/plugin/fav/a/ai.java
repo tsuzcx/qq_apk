@@ -1,22 +1,23 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.ak.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.b;
+import com.tencent.mm.al.a;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.ok;
-import com.tencent.mm.protocal.c.ol;
-import com.tencent.mm.protocal.c.om;
-import com.tencent.mm.protocal.c.xu;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yj;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.abz;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.rm;
+import com.tencent.mm.protocal.protobuf.rn;
+import com.tencent.mm.protocal.protobuf.ro;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,110 +28,113 @@ public final class ai
   extends m
   implements k
 {
-  private final com.tencent.mm.ah.b dmK;
-  private com.tencent.mm.ah.f dmL = null;
-  private int jZM = 0;
-  public g jZN;
-  private boolean jZO = true;
-  private boolean jZP = false;
-  HashMap<xv, Boolean> jZQ = new HashMap();
+  private com.tencent.mm.ai.f callback;
+  private int muj;
+  public g muk;
+  private boolean mul;
+  private boolean mum;
+  HashMap<aca, Boolean> mun;
+  private final com.tencent.mm.ai.b rr;
   
   public ai(g paramg)
   {
+    AppMethodBeat.i(102731);
+    this.muj = 0;
+    this.callback = null;
+    this.mul = true;
+    this.mum = false;
+    this.mun = new HashMap();
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new ol();
-    ((b.a)localObject).ecI = new om();
+    ((b.a)localObject).fsX = new rn();
+    ((b.a)localObject).fsY = new ro();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/checkcdn";
-    ((b.a)localObject).ecG = 404;
-    ((b.a)localObject).ecJ = 197;
-    ((b.a)localObject).ecK = 1000000197;
-    this.dmK = ((b.a)localObject).Kt();
-    this.jZN = paramg;
-    paramg = paramg.field_favProto.sXc.iterator();
+    ((b.a)localObject).funcId = 404;
+    ((b.a)localObject).reqCmdId = 197;
+    ((b.a)localObject).respCmdId = 1000000197;
+    this.rr = ((b.a)localObject).ado();
+    this.muk = paramg;
+    paramg = paramg.field_favProto.wVc.iterator();
     while (paramg.hasNext())
     {
-      localObject = (xv)paramg.next();
-      this.jZQ.put(localObject, Boolean.valueOf(false));
+      localObject = (aca)paramg.next();
+      this.mun.put(localObject, Boolean.FALSE);
     }
+    AppMethodBeat.o(102731);
   }
   
-  protected final int Ka()
+  public final int doScene(e parame, com.tencent.mm.ai.f paramf)
   {
-    return 10;
-  }
-  
-  public final int a(e parame, com.tencent.mm.ah.f paramf)
-  {
-    this.dmL = paramf;
-    paramf = this.jZQ.keySet().iterator();
+    AppMethodBeat.i(102732);
+    this.callback = paramf;
+    paramf = this.mun.keySet().iterator();
     int j = 0;
     Object localObject;
     if (paramf.hasNext())
     {
-      localObject = (xv)paramf.next();
-      if (((Boolean)this.jZQ.get(localObject)).booleanValue()) {
-        break label634;
+      localObject = (aca)paramf.next();
+      if (((Boolean)this.mun.get(localObject)).booleanValue()) {
+        break label656;
       }
     }
-    label527:
-    label548:
-    label625:
-    label631:
-    label634:
+    label647:
+    label653:
+    label656:
     for (int i = j + 1;; i = j)
     {
       j = i;
       break;
       if (j == 0)
       {
-        y.e("MicroMsg.NetSceneCheckCDN", "klem doScene data list null");
-        this.jZM = -100;
+        ab.e("MicroMsg.NetSceneCheckCDN", "klem doScene data list null");
+        this.muj = -100;
+        AppMethodBeat.o(102732);
         return -100;
       }
-      paramf = (ol)this.dmK.ecE.ecN;
-      paramf.hPT.clear();
-      localObject = this.jZN.field_favProto.sXc;
+      paramf = (rn)this.rr.fsV.fta;
+      paramf.jJv.clear();
+      localObject = this.muk.field_favProto.wVc;
       int m = 0;
       i = 0;
       int k;
       if (m < ((List)localObject).size())
       {
-        xv localxv = (xv)((List)localObject).get(m);
-        if (((Boolean)this.jZQ.get(localxv)).booleanValue()) {
-          break label631;
+        aca localaca = (aca)((List)localObject).get(m);
+        if (((Boolean)this.mun.get(localaca)).booleanValue()) {
+          break label653;
         }
         k = i;
-        if (!localxv.sVs)
+        if (!localaca.wTo)
         {
-          localok = new ok();
-          localok.sLV = ((int)localxv.sVb);
-          localok.sLT = localxv.sUX;
-          localok.sLU = localxv.sUZ;
-          localok.sLS = String.valueOf(m);
-          localok.sLX = localxv.sVo;
-          localok.sLW = this.jZN.field_sourceType;
-          localok.sLY = 0;
-          paramf.hPT.add(localok);
+          localrm = new rm();
+          localrm.wJI = ((int)localaca.wSX);
+          localrm.wJG = localaca.wST;
+          localrm.wJH = localaca.wSV;
+          localrm.wJF = String.valueOf(m);
+          localrm.wJK = localaca.wTk;
+          localrm.wJJ = this.muk.field_sourceType;
+          localrm.wJL = 0;
+          paramf.jJv.add(localrm);
           k = i + 1;
-          y.i("MicroMsg.NetSceneCheckCDN", "check CDN, dataId %s, dataSourceId %s, DataSourceType %s, FullSize %d, FullMd5 %s, Head256Md5 %s", new Object[] { localok.sLS, localok.sLX, Integer.valueOf(localok.sLW), Integer.valueOf(localok.sLV), localok.sLT, localok.sLU });
+          ab.i("MicroMsg.NetSceneCheckCDN", "check CDN, dataId %s, dataSourceId %s, DataSourceType %s, FullSize %d, FullMd5 %s, Head256Md5 %s", new Object[] { localrm.wJF, localrm.wJK, Integer.valueOf(localrm.wJJ), Integer.valueOf(localrm.wJI), localrm.wJG, localrm.wJH });
         }
-        if (localxv.sVu) {
-          break label625;
+        if (localaca.wTq) {
+          break label647;
         }
-        ok localok = new ok();
-        localok.sLV = ((int)localxv.sVm);
-        localok.sLT = localxv.sVi;
-        localok.sLU = localxv.sVk;
-        localok.sLX = localxv.sVo;
-        localok.sLW = this.jZN.field_sourceType;
-        localok.sLS = (m + "t");
-        localok.sLY = 1;
-        paramf.hPT.add(localok);
+        rm localrm = new rm();
+        localrm.wJI = ((int)localaca.wTi);
+        localrm.wJG = localaca.wTe;
+        localrm.wJH = localaca.wTg;
+        localrm.wJK = localaca.wTk;
+        localrm.wJJ = this.muk.field_sourceType;
+        localrm.wJF = (m + "t");
+        localrm.wJL = 1;
+        paramf.jJv.add(localrm);
         i = k + 1;
-        y.i("MicroMsg.NetSceneCheckCDN", "check CDN thumb, dataId %s, dataSourceId %s, DataSourceType %s, FullSize %d, FullMd5 %s, Head256Md5 %s", new Object[] { localok.sLS, localok.sLX, Integer.valueOf(localok.sLW), Integer.valueOf(localok.sLV), localok.sLT, localok.sLU });
+        ab.i("MicroMsg.NetSceneCheckCDN", "check CDN thumb, dataId %s, dataSourceId %s, DataSourceType %s, FullSize %d, FullMd5 %s, Head256Md5 %s", new Object[] { localrm.wJF, localrm.wJK, Integer.valueOf(localrm.wJJ), Integer.valueOf(localrm.wJI), localrm.wJG, localrm.wJH });
+        label537:
         k = i;
         if (i >= 19) {
-          break label548;
+          break label558;
         }
       }
       for (;;)
@@ -138,24 +142,34 @@ public final class ai
         m += 1;
         break;
         k = i;
-        y.i("MicroMsg.NetSceneCheckCDN", "doScene:  usedCount %d, dataSize %d, nextBegIndex %d", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m + 1) });
-        paramf.hPS = k;
+        label558:
+        ab.i("MicroMsg.NetSceneCheckCDN", "doScene:  usedCount %d, dataSize %d, nextBegIndex %d", new Object[] { Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m + 1) });
+        paramf.jJu = k;
         if (k == 0)
         {
-          y.w("MicroMsg.NetSceneCheckCDN", "no more data, must not check cdn!");
-          this.jZM = -101;
+          ab.w("MicroMsg.NetSceneCheckCDN", "no more data, must not check cdn!");
+          this.muj = -101;
+          AppMethodBeat.o(102732);
           return -101;
         }
-        return a(parame, this.dmK, this);
+        i = dispatch(parame, this.rr, this);
+        AppMethodBeat.o(102732);
+        return i;
         i = k;
-        break label527;
+        break label537;
       }
     }
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int getType()
   {
-    y.i("MicroMsg.NetSceneCheckCDN", "netId %d errType %d errCode %d localErrCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.jZM), paramString });
+    return 404;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(102733);
+    ab.i("MicroMsg.NetSceneCheckCDN", "netId %d errType %d errCode %d localErrCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.muj), paramString });
     int i;
     if (paramInt2 == 0)
     {
@@ -164,270 +178,275 @@ public final class ai
     }
     else
     {
-      if ((paramInt2 == 3) && (this.jZM == -100))
+      if ((paramInt2 == 3) && (this.muj == -100))
       {
-        y.d("MicroMsg.NetSceneCheckCDN", "need not check cdn, add fav now");
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().x(9, this.jZN.field_localId);
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getSendService().run();
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        ab.d("MicroMsg.NetSceneCheckCDN", "need not check cdn, add fav now");
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().O(9, this.muk.field_localId);
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getSendService().run();
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        AppMethodBeat.o(102733);
         return;
       }
-      if ((paramInt2 != 3) || (this.jZM != -101)) {
-        break label817;
+      if ((paramInt2 != 3) || (this.muj != -101)) {
+        break label828;
       }
       i = 0;
     }
-    if ((this.jZM != -101) && (paramInt2 == 0) && (i == 0))
+    if ((this.muj != -101) && (paramInt2 == 0) && (i == 0))
     {
-      paramq = ((om)((com.tencent.mm.ah.b)paramq).ecF.ecN).hPT;
-      paramArrayOfByte = this.jZN.field_favProto.sXc;
+      paramq = ((ro)((com.tencent.mm.ai.b)paramq).fsW.fta).jJv;
+      paramArrayOfByte = this.muk.field_favProto.wVc;
       paramInt1 = 0;
       Object localObject2;
       if (paramInt1 < paramq.size())
       {
-        localObject1 = (xu)paramq.get(paramInt1);
-        localObject2 = ((xu)localObject1).sLS;
-        xv localxv;
-        if (!bk.bl((String)localObject2))
+        localObject1 = (abz)paramq.get(paramInt1);
+        localObject2 = ((abz)localObject1).wJF;
+        aca localaca;
+        if (!bo.isNullOrNil((String)localObject2))
         {
-          y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet status:%d, tmpId %s", new Object[] { Integer.valueOf(((xu)localObject1).hQq), localObject2 });
-          if (((xu)localObject1).hQq == 1)
+          ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet status:%d, tmpId %s", new Object[] { Integer.valueOf(((abz)localObject1).jJS), localObject2 });
+          if (((abz)localObject1).jJS == 1)
           {
             if (((String)localObject2).endsWith("t")) {
-              break label832;
+              break label849;
             }
-            localxv = (xv)paramArrayOfByte.get(bk.getInt((String)localObject2, 0));
-            y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn data exist, update url:%s, key:%s, DataId %s, FullMd5 %s, FullSize %d, Head256Md5 %s", new Object[] { ((xu)localObject1).sUw, ((xu)localObject1).sGQ, ((xu)localObject1).sLS, ((xu)localObject1).sLT, Integer.valueOf(((xu)localObject1).sLV), ((xu)localObject1).sLU });
-            localxv.Xz(((xu)localObject1).sGQ);
-            localxv.Xy(((xu)localObject1).sUw);
-            if (!bk.bl(((xu)localObject1).sUx)) {
-              localxv.XN(((xu)localObject1).sUx);
+            localaca = (aca)paramArrayOfByte.get(bo.getInt((String)localObject2, 0));
+            ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn data exist, update url:%s, key:%s, DataId %s, FullMd5 %s, FullSize %d, Head256Md5 %s", new Object[] { ((abz)localObject1).wSt, ((abz)localObject1).wDo, ((abz)localObject1).wJF, ((abz)localObject1).wJG, Integer.valueOf(((abz)localObject1).wJI), ((abz)localObject1).wJH });
+            localaca.anv(((abz)localObject1).wDo);
+            localaca.anu(((abz)localObject1).wSt);
+            if (!bo.isNullOrNil(((abz)localObject1).wxt)) {
+              localaca.anJ(((abz)localObject1).wxt);
             }
-            if (bk.bl(localxv.sUX))
+            if (bo.isNullOrNil(localaca.wST))
             {
-              y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn exist, local not exist");
-              localxv.XF(((xu)localObject1).sLT);
-              localxv.hf(((xu)localObject1).sLV);
-              localxv.XG(((xu)localObject1).sLU);
-              b.a(localxv, this.jZN, 1, false);
+              ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn exist, local not exist");
+              localaca.anB(((abz)localObject1).wJG);
+              localaca.nC(((abz)localObject1).wJI);
+              localaca.anC(((abz)localObject1).wJH);
+              b.a(localaca, this.muk, 1, false);
             }
-            if ((!bk.bl(((xu)localObject1).sLT)) && (!((xu)localObject1).sLT.equals(localxv.sUX)))
+            if ((!bo.isNullOrNil(((abz)localObject1).wJG)) && (!((abz)localObject1).wJG.equals(localaca.wST)))
             {
-              y.w("MicroMsg.NetSceneCheckCDN", "svrFullMd5 %s, localMd5 %s", new Object[] { ((xu)localObject1).sLT, localxv.sUX });
-              localxv.XF(((xu)localObject1).sLT);
+              ab.w("MicroMsg.NetSceneCheckCDN", "svrFullMd5 %s, localMd5 %s", new Object[] { ((abz)localObject1).wJG, localaca.wST });
+              localaca.anB(((abz)localObject1).wJG);
             }
-            if ((!bk.bl(((xu)localObject1).sLU)) && (!((xu)localObject1).sLU.equals(localxv.sUZ)))
+            if ((!bo.isNullOrNil(((abz)localObject1).wJH)) && (!((abz)localObject1).wJH.equals(localaca.wSV)))
             {
-              y.w("MicroMsg.NetSceneCheckCDN", "svrHead256md5 %s, localHead256md5 %s", new Object[] { ((xu)localObject1).sLU, localxv.sUZ });
-              localxv.XG(((xu)localObject1).sLU);
+              ab.w("MicroMsg.NetSceneCheckCDN", "svrHead256md5 %s, localHead256md5 %s", new Object[] { ((abz)localObject1).wJH, localaca.wSV });
+              localaca.anC(((abz)localObject1).wJH);
             }
-            if ((((xu)localObject1).sLV > 0) && (((xu)localObject1).sLV != localxv.sVb))
+            if ((((abz)localObject1).wJI > 0) && (((abz)localObject1).wJI != localaca.wSX))
             {
-              y.w("MicroMsg.NetSceneCheckCDN", "svrFullSize %d, localFullSize %d", new Object[] { Integer.valueOf(((xu)localObject1).sLV), Long.valueOf(localxv.sVb) });
-              localxv.hf(((xu)localObject1).sLV);
+              ab.w("MicroMsg.NetSceneCheckCDN", "svrFullSize %d, localFullSize %d", new Object[] { Integer.valueOf(((abz)localObject1).wJI), Long.valueOf(localaca.wSX) });
+              localaca.nC(((abz)localObject1).wJI);
             }
           }
-          label689:
+          label701:
           if (((String)localObject2).endsWith("t")) {
-            break label1102;
+            break label1119;
           }
-          localxv = (xv)paramArrayOfByte.get(bk.getInt((String)localObject2, 0));
-          this.jZQ.put(localxv, Boolean.valueOf(true));
-          label732:
-          if ((((xu)localObject1).hQq == 1) || (((xu)localObject1).hQq == 2)) {
-            break label1237;
+          localaca = (aca)paramArrayOfByte.get(bo.getInt((String)localObject2, 0));
+          this.mun.put(localaca, Boolean.TRUE);
+          label743:
+          if ((((abz)localObject1).jJS == 1) || (((abz)localObject1).jJS == 2)) {
+            break label1253;
           }
           if (((String)localObject2).endsWith("t")) {
-            break label1578;
+            break label1594;
           }
-          localxv = (xv)paramArrayOfByte.get(bk.getInt((String)localObject2, 0));
-          if (!bk.bl(localxv.sUX)) {
-            break label1148;
+          localaca = (aca)paramArrayOfByte.get(bo.getInt((String)localObject2, 0));
+          if (!bo.isNullOrNil(localaca.wST)) {
+            break label1164;
           }
-          y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet data cdn not exist, local not exist ", new Object[] { localxv.sUX });
+          ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet data cdn not exist, local not exist ", new Object[] { localaca.wST });
         }
         for (;;)
         {
           paramInt1 += 1;
           break;
-          label817:
-          this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+          label828:
+          this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+          AppMethodBeat.o(102733);
           return;
-          label832:
-          localxv = (xv)paramArrayOfByte.get(bk.getInt(((String)localObject2).substring(0, ((String)localObject2).length() - 1), 0));
-          y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn thumb exist, update url:%s, key:%s, DataId %s, FullMd5 %s, FullSize %d, Head256Md5 %s", new Object[] { ((xu)localObject1).sUw, ((xu)localObject1).sGQ, ((xu)localObject1).sLS, ((xu)localObject1).sLT, Integer.valueOf(((xu)localObject1).sLV), ((xu)localObject1).sLU });
-          localxv.Xx(((xu)localObject1).sGQ);
-          localxv.Xw(((xu)localObject1).sUw);
-          if (((xu)localObject1).sLV <= 0) {
-            break label689;
+          label849:
+          localaca = (aca)paramArrayOfByte.get(bo.getInt(((String)localObject2).substring(0, ((String)localObject2).length() - 1), 0));
+          ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn thumb exist, update url:%s, key:%s, DataId %s, FullMd5 %s, FullSize %d, Head256Md5 %s", new Object[] { ((abz)localObject1).wSt, ((abz)localObject1).wDo, ((abz)localObject1).wJF, ((abz)localObject1).wJG, Integer.valueOf(((abz)localObject1).wJI), ((abz)localObject1).wJH });
+          localaca.ant(((abz)localObject1).wDo);
+          localaca.ans(((abz)localObject1).wSt);
+          if (((abz)localObject1).wJI <= 0) {
+            break label701;
           }
-          localxv.hg(((xu)localObject1).sLV);
-          if ((!bk.bl(((xu)localObject1).sLT)) && (!((xu)localObject1).sLT.equals(localxv.sVi)))
+          localaca.nD(((abz)localObject1).wJI);
+          if ((!bo.isNullOrNil(((abz)localObject1).wJG)) && (!((abz)localObject1).wJG.equals(localaca.wTe)))
           {
-            y.w("MicroMsg.NetSceneCheckCDN", "svrThumbMd5 %s, localThumbMd5 %s", new Object[] { ((xu)localObject1).sLT, localxv.sVi });
-            localxv.XK(((xu)localObject1).sLT);
+            ab.w("MicroMsg.NetSceneCheckCDN", "svrThumbMd5 %s, localThumbMd5 %s", new Object[] { ((abz)localObject1).wJG, localaca.wTe });
+            localaca.anG(((abz)localObject1).wJG);
           }
-          if ((bk.bl(((xu)localObject1).sLU)) || (((xu)localObject1).sLU.equals(localxv.sVk))) {
-            break label689;
+          if ((bo.isNullOrNil(((abz)localObject1).wJH)) || (((abz)localObject1).wJH.equals(localaca.wTg))) {
+            break label701;
           }
-          y.w("MicroMsg.NetSceneCheckCDN", "svrThumbHead256md5 %s, localThumbHead256md5 %s", new Object[] { ((xu)localObject1).sLU, localxv.sVk });
-          localxv.XL(((xu)localObject1).sLU);
-          break label689;
-          label1102:
-          localxv = (xv)paramArrayOfByte.get(bk.getInt(((String)localObject2).substring(0, ((String)localObject2).length() - 1), 0));
-          this.jZQ.put(localxv, Boolean.valueOf(true));
-          break label732;
-          label1148:
-          this.jZO = false;
+          ab.w("MicroMsg.NetSceneCheckCDN", "svrThumbHead256md5 %s, localThumbHead256md5 %s", new Object[] { ((abz)localObject1).wJH, localaca.wTg });
+          localaca.anH(((abz)localObject1).wJH);
+          break label701;
+          label1119:
+          localaca = (aca)paramArrayOfByte.get(bo.getInt(((String)localObject2).substring(0, ((String)localObject2).length() - 1), 0));
+          this.mun.put(localaca, Boolean.TRUE);
+          break label743;
+          label1164:
+          this.mul = false;
           String str;
-          if (bk.bl(localxv.sUI))
+          if (bo.isNullOrNil(localaca.wSE))
           {
-            com.tencent.mm.ak.f.Ne();
-            str = a.MW();
-            localxv.Xz(str);
-            y.i("MicroMsg.NetSceneCheckCDN", "local not exist cdn data key, generate %s", new Object[] { str });
+            com.tencent.mm.al.f.afP();
+            str = a.afG();
+            localaca.anv(str);
+            ab.i("MicroMsg.NetSceneCheckCDN", "local not exist cdn data key, generate %s", new Object[] { str });
           }
-          y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn not exist, insert data md5:%s cdnkey:%s", new Object[] { localxv.sUX, localxv.sUI });
-          b.a(localxv, this.jZN, 0, false);
+          ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn not exist, insert data md5:%s cdnkey:%s", new Object[] { localaca.wST, localaca.wSE });
+          b.a(localaca, this.muk, 0, false);
           for (;;)
           {
-            label1237:
-            if (((xu)localObject1).hQq != 2) {
-              break label1730;
+            label1253:
+            if (((abz)localObject1).jJS != 2) {
+              break label1746;
             }
-            this.jZP = true;
+            this.mum = true;
             if (((String)localObject2).endsWith("t")) {
-              break label1732;
+              break label1748;
             }
-            y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet data cdn not exist svr upload, dataStatus:%d, CdnUrl:%s, CdnKey:%s", new Object[] { Integer.valueOf(((xu)localObject1).sUy), ((xu)localObject1).sUw, ((xu)localObject1).sGQ });
-            localObject2 = (xv)paramArrayOfByte.get(bk.getInt((String)localObject2, 0));
-            ((xv)localObject2).EI(((xu)localObject1).sUy);
-            ((xv)localObject2).Xz(((xu)localObject1).sGQ);
-            ((xv)localObject2).Xy(((xu)localObject1).sUw);
-            if (!bk.bl(((xu)localObject1).sUx)) {
-              ((xv)localObject2).XN(((xu)localObject1).sUx);
+            ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet data cdn not exist svr upload, dataStatus:%d, CdnUrl:%s, CdnKey:%s", new Object[] { Integer.valueOf(((abz)localObject1).wSu), ((abz)localObject1).wSt, ((abz)localObject1).wDo });
+            localObject2 = (aca)paramArrayOfByte.get(bo.getInt((String)localObject2, 0));
+            ((aca)localObject2).MJ(((abz)localObject1).wSu);
+            ((aca)localObject2).anv(((abz)localObject1).wDo);
+            ((aca)localObject2).anu(((abz)localObject1).wSt);
+            if (!bo.isNullOrNil(((abz)localObject1).wxt)) {
+              ((aca)localObject2).anJ(((abz)localObject1).wxt);
             }
-            if ((!bk.bl(((xu)localObject1).sLT)) && (!((xu)localObject1).sLT.equals(((xv)localObject2).sUX)))
+            if ((!bo.isNullOrNil(((abz)localObject1).wJG)) && (!((abz)localObject1).wJG.equals(((aca)localObject2).wST)))
             {
-              y.w("MicroMsg.NetSceneCheckCDN", "SVR_UPLOADING::svrFullMd5 %s, localMd5 %s", new Object[] { ((xu)localObject1).sLT, ((xv)localObject2).sUX });
-              ((xv)localObject2).XF(((xu)localObject1).sLT);
+              ab.w("MicroMsg.NetSceneCheckCDN", "SVR_UPLOADING::svrFullMd5 %s, localMd5 %s", new Object[] { ((abz)localObject1).wJG, ((aca)localObject2).wST });
+              ((aca)localObject2).anB(((abz)localObject1).wJG);
             }
-            if ((!bk.bl(((xu)localObject1).sLU)) && (!((xu)localObject1).sLU.equals(((xv)localObject2).sUZ)))
+            if ((!bo.isNullOrNil(((abz)localObject1).wJH)) && (!((abz)localObject1).wJH.equals(((aca)localObject2).wSV)))
             {
-              y.w("MicroMsg.NetSceneCheckCDN", "SVR_UPLOADING::svrHead256md5 %s, localHead256md5 %s", new Object[] { ((xu)localObject1).sLU, ((xv)localObject2).sUZ });
-              ((xv)localObject2).XG(((xu)localObject1).sLU);
+              ab.w("MicroMsg.NetSceneCheckCDN", "SVR_UPLOADING::svrHead256md5 %s, localHead256md5 %s", new Object[] { ((abz)localObject1).wJH, ((aca)localObject2).wSV });
+              ((aca)localObject2).anC(((abz)localObject1).wJH);
             }
-            if ((((xu)localObject1).sLV <= 0) || (((xu)localObject1).sLV == ((xv)localObject2).sVb)) {
+            if ((((abz)localObject1).wJI <= 0) || (((abz)localObject1).wJI == ((aca)localObject2).wSX)) {
               break;
             }
-            y.w("MicroMsg.NetSceneCheckCDN", "SVR_UPLOADING::svrFullSize %d, localFullSize %d", new Object[] { Integer.valueOf(((xu)localObject1).sLV), Long.valueOf(((xv)localObject2).sVb) });
-            ((xv)localObject2).hf(((xu)localObject1).sLV);
+            ab.w("MicroMsg.NetSceneCheckCDN", "SVR_UPLOADING::svrFullSize %d, localFullSize %d", new Object[] { Integer.valueOf(((abz)localObject1).wJI), Long.valueOf(((aca)localObject2).wSX) });
+            ((aca)localObject2).nC(((abz)localObject1).wJI);
             break;
-            label1578:
-            localxv = (xv)paramArrayOfByte.get(bk.getInt(((String)localObject2).substring(0, ((String)localObject2).length() - 1), 0));
-            if (bk.bl(localxv.sVi))
+            label1594:
+            localaca = (aca)paramArrayOfByte.get(bo.getInt(((String)localObject2).substring(0, ((String)localObject2).length() - 1), 0));
+            if (bo.isNullOrNil(localaca.wTe))
             {
-              y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet thumb cdn not exist, local not exist ", new Object[] { localxv.sVi });
+              ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet thumb cdn not exist, local not exist ", new Object[] { localaca.wTe });
               break;
             }
-            this.jZO = false;
-            if (bk.bl(localxv.sUI))
+            this.mul = false;
+            if (bo.isNullOrNil(localaca.wSE))
             {
-              com.tencent.mm.ak.f.Ne();
-              str = a.MW();
-              localxv.Xz(str);
-              y.i("MicroMsg.NetSceneCheckCDN", "local not exist cdn data key, generate %s", new Object[] { str });
+              com.tencent.mm.al.f.afP();
+              str = a.afG();
+              localaca.anv(str);
+              ab.i("MicroMsg.NetSceneCheckCDN", "local not exist cdn data key, generate %s", new Object[] { str });
             }
-            y.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn not exist, insert thumb md5:%s cdnkey:%s", new Object[] { localxv.sUX, localxv.sUI });
-            b.a(localxv, this.jZN, 0);
+            ab.i("MicroMsg.NetSceneCheckCDN", "klem OnGYNet cdn not exist, insert thumb md5:%s cdnkey:%s", new Object[] { localaca.wST, localaca.wSE });
+            b.a(localaca, this.muk, 0);
           }
-          label1730:
+          label1746:
           continue;
-          label1732:
-          y.e("MicroMsg.NetSceneCheckCDN", "klem OnGYNet svr uploading thumb?! should not reach here!!");
+          label1748:
+          ab.e("MicroMsg.NetSceneCheckCDN", "klem OnGYNet svr uploading thumb?! should not reach here!!");
         }
       }
-      Object localObject1 = this.jZQ.keySet().iterator();
+      Object localObject1 = this.mun.keySet().iterator();
       paramInt1 = 0;
-      label1759:
       if (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (xv)((Iterator)localObject1).next();
-        if (((Boolean)this.jZQ.get(localObject2)).booleanValue()) {
-          break label2276;
+        localObject2 = (aca)((Iterator)localObject1).next();
+        if (((Boolean)this.mun.get(localObject2)).booleanValue()) {
+          break label2311;
         }
         paramInt1 += 1;
       }
     }
-    label2276:
+    label2311:
     for (;;)
     {
-      break label1759;
-      y.i("MicroMsg.NetSceneCheckCDN", "onGYSceneEnd:  resultCount %d, dataSize %d", new Object[] { Integer.valueOf(paramq.size()), Integer.valueOf(paramArrayOfByte.size()) });
+      break;
+      ab.i("MicroMsg.NetSceneCheckCDN", "onGYSceneEnd:  resultCount %d, dataSize %d", new Object[] { Integer.valueOf(paramq.size()), Integer.valueOf(paramArrayOfByte.size()) });
       if (paramInt1 > 0)
       {
-        y.w("MicroMsg.NetSceneCheckCDN", "check cdn list not end, continues");
-        paramInt1 = a(this.edc, this.dmL);
-        if ((paramInt1 != -100) && (paramInt1 != -101)) {
-          break;
+        ab.w("MicroMsg.NetSceneCheckCDN", "check cdn list not end, continues");
+        paramInt1 = doScene(dispatcher(), this.callback);
+        if ((paramInt1 != -100) && (paramInt1 != -101))
+        {
+          AppMethodBeat.o(102733);
+          return;
         }
       }
-      if (this.jZP)
+      if (this.mum)
       {
-        y.i("MicroMsg.NetSceneCheckCDN", "klem onGYNet waitServerUpload, send item now");
-        this.jZN.field_itemStatus = 12;
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().a(this.jZN, new String[] { "localId" });
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getSendService().run();
-        this.dmL.onSceneEnd(paramInt2, i, paramString, this);
+        ab.i("MicroMsg.NetSceneCheckCDN", "klem onGYNet waitServerUpload, send item now");
+        this.muk.field_itemStatus = 12;
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().a(this.muk, new String[] { "localId" });
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getSendService().run();
+        this.callback.onSceneEnd(paramInt2, i, paramString, this);
+        AppMethodBeat.o(102733);
         return;
       }
-      if (this.jZO)
+      if (this.mul)
       {
-        y.i("MicroMsg.NetSceneCheckCDN", "klem onGYNet all data exist, start send item");
-        if (this.jZN.field_id > 0)
+        ab.i("MicroMsg.NetSceneCheckCDN", "klem onGYNet all data exist, start send item");
+        if (this.muk.field_id > 0)
         {
-          this.jZN.field_itemStatus = 17;
-          ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().a(this.jZN, new String[] { "localId" });
-          ((ae)com.tencent.mm.kernel.g.t(ae.class)).getModService().run();
+          this.muk.field_itemStatus = 17;
+          ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().a(this.muk, new String[] { "localId" });
+          ((ae)com.tencent.mm.kernel.g.G(ae.class)).getModService().run();
         }
         for (;;)
         {
-          this.dmL.onSceneEnd(paramInt2, i, paramString, this);
+          this.callback.onSceneEnd(paramInt2, i, paramString, this);
+          AppMethodBeat.o(102733);
           return;
-          if (this.jZN.field_type == 18) {
-            this.jZN.field_favProto.EP(1);
+          if (this.muk.field_type == 18) {
+            this.muk.field_favProto.MQ(1);
           }
-          this.jZN.field_itemStatus = 9;
-          ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().a(this.jZN, new String[] { "localId" });
-          ((ae)com.tencent.mm.kernel.g.t(ae.class)).getSendService().run();
+          this.muk.field_itemStatus = 9;
+          ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().a(this.muk, new String[] { "localId" });
+          ((ae)com.tencent.mm.kernel.g.G(ae.class)).getSendService().run();
         }
       }
-      if (this.jZN.field_id > 0) {}
-      for (this.jZN.field_itemStatus = 15;; this.jZN.field_itemStatus = 4)
+      if (this.muk.field_id > 0) {}
+      for (this.muk.field_itemStatus = 15;; this.muk.field_itemStatus = 4)
       {
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavItemInfoStorage().a(this.jZN, new String[] { "localId" });
-        ((ae)com.tencent.mm.kernel.g.t(ae.class)).getFavCdnService().run();
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavItemInfoStorage().a(this.muk, new String[] { "localId" });
+        ((ae)com.tencent.mm.kernel.g.G(ae.class)).getFavCdnService().run();
         break;
-        if (this.jZN.field_type == 18) {
-          this.jZN.field_favProto.EP(1);
+        if (this.muk.field_type == 18) {
+          this.muk.field_favProto.MQ(1);
         }
       }
     }
   }
   
-  protected final m.b b(q paramq)
+  public final int securityLimitCount()
   {
-    return m.b.edr;
+    return 10;
   }
   
-  public final int getType()
+  public final m.b securityVerificationChecked(q paramq)
   {
-    return 404;
+    return m.b.ftu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.ai
  * JD-Core Version:    0.7.0.1
  */

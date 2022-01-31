@@ -8,32 +8,24 @@ import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.view.MotionEvent;
-import com.tencent.mm.cache.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cache.e;
+import com.tencent.mm.sdk.platformtools.ab;
 
-public abstract class b<T extends d>
+public abstract class b<T extends e>
 {
-  public static final b bAa = new b()
-  {
-    public final void onDraw(Canvas paramAnonymousCanvas) {}
-    
-    public final a tG()
-    {
-      return a.bzO;
-    }
-    
-    public final void tH() {}
-  };
-  private Canvas bAb = new Canvas();
-  private Runnable bAc;
-  PointF bAd = new PointF();
-  private PointF bAe = new PointF();
-  public com.tencent.mm.bt.b bzV;
-  private Matrix bzW;
-  Rect bzX;
-  private boolean bzY;
-  private Bitmap bzZ;
-  public boolean isCreated;
+  public static final b ccW = new b.1();
+  public boolean bRJ;
+  private boolean bRn;
+  public com.tencent.mm.bs.b ccS;
+  private Matrix ccT;
+  Rect ccU;
+  private Bitmap ccV;
+  private Canvas ccX = new Canvas();
+  private Runnable ccY;
+  PointF ccZ = new PointF();
+  private PointF cda = new PointF();
+  protected b.a cdb;
   private Context mContext;
   float[] values = new float[9];
   
@@ -43,7 +35,7 @@ public abstract class b<T extends d>
     return this.values[paramInt];
   }
   
-  protected static int n(MotionEvent paramMotionEvent)
+  protected static int p(MotionEvent paramMotionEvent)
   {
     int i = 0;
     if (paramMotionEvent.getPointerCount() > 1)
@@ -55,7 +47,7 @@ public abstract class b<T extends d>
     return i;
   }
   
-  protected static int[] o(MotionEvent paramMotionEvent)
+  protected static int[] q(MotionEvent paramMotionEvent)
   {
     int[] arrayOfInt = new int[2];
     if (paramMotionEvent.getPointerCount() > 1)
@@ -66,10 +58,10 @@ public abstract class b<T extends d>
     return arrayOfInt;
   }
   
-  protected final float[] A(float paramFloat1, float paramFloat2)
+  protected final float[] B(float paramFloat1, float paramFloat2)
   {
-    Matrix localMatrix = new Matrix(this.bzW);
-    this.bzW.invert(localMatrix);
+    Matrix localMatrix = new Matrix(this.ccT);
+    this.ccT.invert(localMatrix);
     float[] arrayOfFloat = new float[2];
     arrayOfFloat[0] = paramFloat1;
     arrayOfFloat[1] = paramFloat2;
@@ -77,29 +69,119 @@ public abstract class b<T extends d>
     return arrayOfFloat;
   }
   
-  protected final float[] B(float paramFloat1, float paramFloat2)
+  protected final float[] C(float paramFloat1, float paramFloat2)
   {
     float[] arrayOfFloat = new float[2];
     arrayOfFloat[0] = paramFloat1;
     arrayOfFloat[1] = paramFloat2;
-    this.bzW.mapPoints(arrayOfFloat);
+    this.ccT.mapPoints(arrayOfFloat);
     return arrayOfFloat;
   }
   
-  public void a(com.tencent.mm.bt.b paramb, Matrix paramMatrix, Rect paramRect)
+  public abstract void CA();
+  
+  public T CB()
   {
-    y.i("MicroMsg.BaseArtist" + tG(), "[onCreate]");
-    this.isCreated = true;
-    this.mContext = paramb.getContext();
-    this.bzV = paramb;
-    this.bzW = paramMatrix;
-    this.bzX = paramRect;
+    return this.ccS.a(Cz());
   }
   
-  public void aS(boolean paramBoolean)
+  public void CC()
   {
-    this.bAb.setBitmap(tN());
-    tI().a(this.bAb, paramBoolean);
+    ab.i("MicroMsg.BaseArtist" + Cz(), "[onSelected] ");
+  }
+  
+  public final void CD()
+  {
+    if ((this.ccV != null) && (!this.ccV.isRecycled())) {
+      this.ccV.recycle();
+    }
+  }
+  
+  public boolean CE()
+  {
+    try
+    {
+      int i = CB().ad(true);
+      return i > 0;
+    }
+    catch (Exception localException) {}
+    return false;
+  }
+  
+  protected final Bitmap CF()
+  {
+    Rect localRect;
+    int i;
+    if ((this.ccV == null) || (this.ccV.isRecycled()))
+    {
+      localRect = this.ccS.dqc().getBaseBoardView().getImageBitmapRect();
+      if ((!localRect.isEmpty()) && (this.ccS.dqc().getBaseBoardView().dQS())) {
+        break label121;
+      }
+      i = this.ccS.dqc().getBaseBoardView().getBoardRect().width();
+    }
+    for (int j = this.ccS.dqc().getBaseBoardView().getBoardRect().height(); (i > 0) && (j > 0); j = localRect.height())
+    {
+      this.ccV = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
+      return this.ccV;
+      label121:
+      i = localRect.width();
+    }
+    return null;
+  }
+  
+  protected final boolean CG()
+  {
+    return this.ccS.dqd().Cz() == Cz();
+  }
+  
+  public final void CH()
+  {
+    if (CB().pop() != null) {
+      CB().CH();
+    }
+    this.ccS.dqc().removeCallbacks(this.ccY);
+    com.tencent.mm.view.a locala = this.ccS.dqc();
+    Runnable local2 = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(116148);
+        b.this.CA();
+        b.this.CI();
+        b.a(b.this);
+        AppMethodBeat.o(116148);
+      }
+    };
+    this.ccY = local2;
+    locala.postDelayed(local2, 66L);
+  }
+  
+  public final void CI()
+  {
+    this.ccS.dqc().getBaseBoardView().postInvalidate();
+  }
+  
+  public final void CJ()
+  {
+    this.ccS.dqc().getBaseFooterView().postInvalidate();
+  }
+  
+  public abstract a Cz();
+  
+  public void a(com.tencent.mm.bs.b paramb, Matrix paramMatrix, Rect paramRect)
+  {
+    ab.i("MicroMsg.BaseArtist" + Cz(), "[onCreate]");
+    this.bRJ = true;
+    this.mContext = paramb.getContext();
+    this.ccS = paramb;
+    this.ccT = paramMatrix;
+    this.ccU = paramRect;
+  }
+  
+  public final void a(b.a parama)
+  {
+    this.cdb = parama;
   }
   
   public final float b(Matrix paramMatrix)
@@ -109,87 +191,99 @@ public abstract class b<T extends d>
   
   public final void b(Canvas paramCanvas)
   {
-    if ((this.bzZ != null) && (!this.bzZ.isRecycled())) {
-      paramCanvas.drawBitmap(this.bzZ, 0.0F, 0.0F, null);
+    if ((this.ccV != null) && (!this.ccV.isRecycled())) {
+      paramCanvas.drawBitmap(this.ccV, 0.0F, 0.0F, null);
     }
+  }
+  
+  public void bt(boolean paramBoolean)
+  {
+    this.ccX.setBitmap(CF());
+    e locale = CB();
+    if (locale != null)
+    {
+      locale.a(this.ccX, paramBoolean);
+      return;
+    }
+    ab.i("MicroMsg.BaseArtist", "updateCache: cache is null");
   }
   
   protected final Rect getBoardRect()
   {
-    return this.bzV.coH().getBaseBoardView().getBoardRect();
+    return this.ccS.dqc().getBaseBoardView().getBoardRect();
   }
   
   public final Matrix getMainMatrix()
   {
-    return this.bzV.coH().getBaseBoardView().getMainMatrix();
+    return this.ccS.dqc().getBaseBoardView().getMainMatrix();
   }
   
   public final float getRotation()
   {
-    return (float)Math.round(Math.atan2(a(this.bzW, 1), a(this.bzW, 0)) * 57.295779513082323D);
+    return (float)Math.round(Math.atan2(a(this.ccT, 1), a(this.ccT, 0)) * 57.295779513082323D);
   }
   
   public final float getScale()
   {
-    float f1 = a(this.bzW, 3);
-    float f2 = a(this.bzW, 0);
+    float f1 = a(this.ccT, 3);
+    float f2 = a(this.ccT, 0);
     return (float)Math.sqrt(f1 * f1 + f2 * f2);
   }
   
   public final boolean isAlive()
   {
-    return (this.isCreated) && (this.bzY);
+    return (this.bRJ) && (this.bRn);
   }
   
-  protected final void j(Bitmap paramBitmap)
+  protected final void l(Bitmap paramBitmap)
   {
-    if ((tN() != null) && (!tN().isRecycled())) {
-      tN().recycle();
+    if ((CF() != null) && (!CF().isRecycled())) {
+      CF().recycle();
     }
-    this.bzZ = paramBitmap;
+    this.ccV = paramBitmap;
   }
   
-  public boolean m(MotionEvent paramMotionEvent)
+  public boolean o(MotionEvent paramMotionEvent)
   {
-    if (q(paramMotionEvent)) {
-      p(paramMotionEvent);
+    if (s(paramMotionEvent)) {
+      r(paramMotionEvent);
     }
     return false;
   }
   
   public void onDestroy()
   {
-    this.isCreated = false;
-    this.bzY = false;
-    y.i("MicroMsg.BaseArtist" + tG(), "[onDestroy]");
-    tL();
+    this.bRJ = false;
+    this.bRn = false;
+    ab.i("MicroMsg.BaseArtist" + Cz(), "[onDestroy]");
+    CD();
   }
   
   public abstract void onDraw(Canvas paramCanvas);
   
   public final void onFinish()
   {
-    y.i("MicroMsg.BaseArtist", "[onFinish] type:%s", new Object[] { tG() });
-    this.bzY = false;
-    this.isCreated = false;
-    d locald = tI();
-    if (locald != null) {
-      locald.bf(true);
+    ab.i("MicroMsg.BaseArtist", "[onFinish] type:%s", new Object[] { Cz() });
+    this.bRn = false;
+    this.bRJ = false;
+    e locale = CB();
+    if (locale != null) {
+      locale.bH(true);
     }
     for (;;)
     {
-      tL();
+      CD();
       return;
-      y.e("MicroMsg.BaseArtist", "[onFinish] type:%s cache is null", new Object[] { tG() });
+      ab.e("MicroMsg.BaseArtist", "[onFinish] type:%s cache is null", new Object[] { Cz() });
     }
   }
   
-  protected final void p(MotionEvent paramMotionEvent)
+  protected final void r(MotionEvent paramMotionEvent)
   {
     if (paramMotionEvent.getPointerCount() > 1)
     {
-      this.bAe.x = paramMotionEvent.getX(1);
-      this.bAe.y = paramMotionEvent.getY(1);
+      this.cda.x = paramMotionEvent.getX(1);
+      this.cda.y = paramMotionEvent.getY(1);
     }
     for (;;)
     {
@@ -198,29 +292,29 @@ public abstract class b<T extends d>
         if ((paramMotionEvent.getPointerCount() <= 1) || (1 - paramMotionEvent.getActionIndex() < 0) || (1 - paramMotionEvent.getActionIndex() >= paramMotionEvent.getPointerCount())) {
           break;
         }
-        this.bAd.x = paramMotionEvent.getX(1 - paramMotionEvent.getActionIndex());
-        this.bAd.y = paramMotionEvent.getY(1 - paramMotionEvent.getActionIndex());
+        this.ccZ.x = paramMotionEvent.getX(1 - paramMotionEvent.getActionIndex());
+        this.ccZ.y = paramMotionEvent.getY(1 - paramMotionEvent.getActionIndex());
       }
       return;
       if (paramMotionEvent.getPointerCount() == 1)
       {
-        this.bAd.x = paramMotionEvent.getX(0);
-        this.bAd.y = paramMotionEvent.getY(0);
+        this.ccZ.x = paramMotionEvent.getX(0);
+        this.ccZ.y = paramMotionEvent.getY(0);
       }
     }
-    this.bAd.x = paramMotionEvent.getX(0);
-    this.bAd.y = paramMotionEvent.getY(0);
+    this.ccZ.x = paramMotionEvent.getX(0);
+    this.ccZ.y = paramMotionEvent.getY(0);
   }
   
-  protected final boolean q(MotionEvent paramMotionEvent)
+  protected final boolean s(MotionEvent paramMotionEvent)
   {
     boolean bool2 = false;
     boolean bool1;
     if (paramMotionEvent.getPointerCount() > 1) {
-      if ((Math.abs(this.bAd.x - paramMotionEvent.getX(0)) <= 3.0F) && (Math.abs(this.bAd.y - paramMotionEvent.getY(0)) <= 3.0F) && (Math.abs(this.bAe.x - paramMotionEvent.getX(1)) <= 3.0F))
+      if ((Math.abs(this.ccZ.x - paramMotionEvent.getX(0)) <= 3.0F) && (Math.abs(this.ccZ.y - paramMotionEvent.getY(0)) <= 3.0F) && (Math.abs(this.cda.x - paramMotionEvent.getX(1)) <= 3.0F))
       {
         bool1 = bool2;
-        if (Math.abs(this.bAe.y - paramMotionEvent.getY(1)) <= 3.0F) {}
+        if (Math.abs(this.cda.y - paramMotionEvent.getY(1)) <= 3.0F) {}
       }
       else
       {
@@ -234,126 +328,38 @@ public abstract class b<T extends d>
         return bool1;
         bool1 = bool2;
       } while (paramMotionEvent.getPointerCount() != 1);
-      if (Math.abs(this.bAd.x - paramMotionEvent.getX(0)) > 3.0F) {
+      if (Math.abs(this.ccZ.x - paramMotionEvent.getX(0)) > 3.0F) {
         break;
       }
       bool1 = bool2;
-    } while (Math.abs(this.bAd.y - paramMotionEvent.getY(0)) <= 3.0F);
+    } while (Math.abs(this.ccZ.y - paramMotionEvent.getY(0)) <= 3.0F);
     return true;
   }
   
   public final void setOneFingerMoveEnable(boolean paramBoolean)
   {
-    this.bzV.coH().getBaseBoardView().setOneFingerMoveEnable(paramBoolean);
+    this.ccS.dqc().getBaseBoardView().setOneFingerMoveEnable(paramBoolean);
   }
   
-  public abstract a tG();
-  
-  public abstract void tH();
-  
-  public final T tI()
+  public void zy()
   {
-    return this.bzV.a(tG());
-  }
-  
-  public void tJ()
-  {
-    y.i("MicroMsg.BaseArtist" + tG(), "[onAlive] isAlive:%s", new Object[] { Boolean.valueOf(this.bzY) });
-    if (this.bzY) {
+    ab.i("MicroMsg.BaseArtist" + Cz(), "[onAlive] isAlive:%s", new Object[] { Boolean.valueOf(this.bRn) });
+    if (this.bRn) {
       return;
     }
-    this.bzY = true;
-    d locald = tI();
-    if (locald != null)
+    this.bRn = true;
+    e locale = CB();
+    if (locale != null)
     {
-      locald.wN();
-      locald.bf(false);
+      locale.Jd();
+      locale.bH(false);
     }
     for (;;)
     {
-      this.bzZ = tN();
+      this.ccV = CF();
       return;
-      y.e("MicroMsg.BaseArtist", "[onAlive] type:%s cache is null", new Object[] { tG() });
+      ab.e("MicroMsg.BaseArtist", "[onAlive] type:%s cache is null", new Object[] { Cz() });
     }
-  }
-  
-  public void tK()
-  {
-    y.i("MicroMsg.BaseArtist" + tG(), "[onSelected] ");
-  }
-  
-  public final void tL()
-  {
-    if ((this.bzZ != null) && (!this.bzZ.isRecycled())) {
-      this.bzZ.recycle();
-    }
-  }
-  
-  public boolean tM()
-  {
-    try
-    {
-      int i = tI().bg(true);
-      return i > 0;
-    }
-    catch (Exception localException) {}
-    return false;
-  }
-  
-  protected final Bitmap tN()
-  {
-    Rect localRect;
-    int i;
-    if ((this.bzZ == null) || (this.bzZ.isRecycled()))
-    {
-      localRect = this.bzV.coH().getBaseBoardView().getImageBitmapRect();
-      if ((!localRect.isEmpty()) && (this.bzV.coH().getBaseBoardView().cLB())) {
-        break label113;
-      }
-      i = this.bzV.coH().getBaseBoardView().getBoardRect().width();
-    }
-    for (int j = this.bzV.coH().getBaseBoardView().getBoardRect().height();; j = localRect.height())
-    {
-      this.bzZ = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_4444);
-      return this.bzZ;
-      label113:
-      i = localRect.width();
-    }
-  }
-  
-  protected final boolean tO()
-  {
-    return this.bzV.coI().tG() == tG();
-  }
-  
-  public final void tP()
-  {
-    if (tI().pop() != null) {
-      tI().tP();
-    }
-    this.bzV.coH().removeCallbacks(this.bAc);
-    com.tencent.mm.view.a locala = this.bzV.coH();
-    Runnable local2 = new Runnable()
-    {
-      public final void run()
-      {
-        b.this.tH();
-        b.this.tQ();
-        b.a(b.this);
-      }
-    };
-    this.bAc = local2;
-    locala.postDelayed(local2, 66L);
-  }
-  
-  public final void tQ()
-  {
-    this.bzV.coH().getBaseBoardView().postInvalidate();
-  }
-  
-  public final void tR()
-  {
-    this.bzV.coH().getBaseFooterView().postInvalidate();
   }
 }
 

@@ -1,14 +1,35 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import com.tencent.mm.h.a.nb;
-import com.tencent.mm.sdk.b.c;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.v;
+import com.tencent.mm.model.v.b;
 
 final class FavoriteImgDetailUI$2
-  extends c<nb>
+  implements View.OnTouchListener
 {
   FavoriteImgDetailUI$2(FavoriteImgDetailUI paramFavoriteImgDetailUI)
   {
-    this.udX = nb.class.getName().hashCode();
+    AppMethodBeat.i(74375);
+    AppMethodBeat.o(74375);
+  }
+  
+  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(151527);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(151527);
+      return false;
+      paramView = v.aae().z("basescanui@datacenter", true);
+      paramView.i("key_basescanui_screen_x", Integer.valueOf((int)paramMotionEvent.getRawX()));
+      paramView.i("key_basescanui_screen_y", Integer.valueOf((int)paramMotionEvent.getRawY()));
+    }
   }
 }
 

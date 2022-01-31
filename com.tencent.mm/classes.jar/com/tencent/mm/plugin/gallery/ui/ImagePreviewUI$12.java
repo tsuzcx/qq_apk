@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import com.tencent.mm.plugin.gallery.model.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.gallery.model.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ImagePreviewUI$12
   implements Runnable
@@ -12,9 +13,11 @@ final class ImagePreviewUI$12
   
   public final void run()
   {
-    ImagePreviewUI.a(this.kKb, true);
-    c.aXc().rN(-8);
-    y.v("MicroMsg.ImagePreviewUI", "test oncreate post: %d", new Object[] { Long.valueOf(bk.cp(this.kKd)) });
+    AppMethodBeat.i(21510);
+    ImagePreviewUI.a(this.ngC, true);
+    e.bDR().wL(-8);
+    ab.v("MicroMsg.ImagePreviewUI", "test oncreate post: %d", new Object[] { Long.valueOf(bo.av(this.ngG)) });
+    AppMethodBeat.o(21510);
   }
 }
 

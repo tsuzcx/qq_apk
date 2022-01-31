@@ -1,37 +1,40 @@
 package com.tencent.mm.ui.transmit;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.encode.ui.b;
 import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.chatting.ChattingUI;
-import com.tencent.mm.ui.s;
 
 final class SightForwardUI$1
   implements b
 {
   SightForwardUI$1(SightForwardUI paramSightForwardUI) {}
   
-  public final void bBH()
+  public final void cng()
   {
+    AppMethodBeat.i(35275);
     Intent localIntent = new Intent();
-    localIntent.setClass(this.wia.mController.uMN, LauncherUI.class).addFlags(67108864);
-    this.wia.startActivity(localIntent);
-    this.wia.finish();
+    localIntent.setClass(this.AAX.getContext(), LauncherUI.class).addFlags(67108864);
+    this.AAX.startActivity(localIntent);
+    this.AAX.finish();
+    AppMethodBeat.o(35275);
   }
   
   public final void startChattingUI(String paramString)
   {
-    Intent localIntent = new Intent(this.wia.mController.uMN, ChattingUI.class);
+    AppMethodBeat.i(35274);
+    Intent localIntent = new Intent(this.AAX.getContext(), ChattingUI.class);
     localIntent.addFlags(67108864);
     localIntent.putExtra("Chat_User", paramString);
-    this.wia.startActivity(localIntent);
-    this.wia.finish();
+    this.AAX.startActivity(localIntent);
+    this.AAX.finish();
+    AppMethodBeat.o(35274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SightForwardUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.webkit.ValueCallback;
 final class JsApiOpenDocument$a$2
   implements ValueCallback<String>
 {
-  JsApiOpenDocument$a$2(JsApiOpenDocument.a parama) {}
+  JsApiOpenDocument$a$2(JsApiOpenDocument.a parama, String paramString1, String paramString2, String paramString3) {}
 }
 
 

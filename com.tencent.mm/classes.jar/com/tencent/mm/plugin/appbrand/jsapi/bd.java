@@ -1,18 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.b.c.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i.e;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class bd
+  extends a<c>
 {
-  static final Map<String, c.a> ghI = new HashMap();
-  
-  public static void ahS()
-  {
-    e.a(new bd.1());
-  }
+  public static final int CTRL_INDEX = 192;
+  public static final String NAME = "openSetting";
 }
 
 

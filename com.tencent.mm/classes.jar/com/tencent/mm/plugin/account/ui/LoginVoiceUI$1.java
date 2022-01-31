@@ -3,10 +3,9 @@ package com.tencent.mm.plugin.account.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 final class LoginVoiceUI$1
   implements View.OnClickListener
@@ -15,11 +14,13 @@ final class LoginVoiceUI$1
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11557, new Object[] { Integer.valueOf(2) });
+    AppMethodBeat.i(125073);
+    h.qsU.e(11557, new Object[] { Integer.valueOf(2) });
     paramView = new Intent();
-    paramView.putExtra("Kusername", this.fnO.fmI);
+    paramView.putExtra("Kusername", this.gFi.gEc);
     paramView.putExtra("kscene_type", 1);
-    d.b(this.fnO.mController.uMN, "voiceprint", ".ui.VoiceLoginUI", paramView, 1024);
+    d.b(this.gFi.getContext(), "voiceprint", ".ui.VoiceLoginUI", paramView, 1024);
+    AppMethodBeat.o(125073);
   }
 }
 

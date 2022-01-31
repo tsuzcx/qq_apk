@@ -5,7 +5,7 @@ public final class c$cd
 {
   public c$cd()
   {
-    super("getNetworkType", "network_type", 16, false);
+    super("getH5PrepayRequest", "getH5PrepayRequest", 137, true);
   }
 }
 

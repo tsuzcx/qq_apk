@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class WebViewSmileyPanel$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class WebViewSmileyPanel$1
   
   public final void run()
   {
-    this.rDv.R(WebViewSmileyPanel.a(this.rDv).getCurrentItem());
+    AppMethodBeat.i(10109);
+    this.vtH.onPageSelected(WebViewSmileyPanel.a(this.vtH).getCurrentItem());
+    AppMethodBeat.o(10109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyPanel.1
  * JD-Core Version:    0.7.0.1
  */

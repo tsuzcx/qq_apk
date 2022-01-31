@@ -1,43 +1,45 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
-import android.os.Bundle;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.wallet_core.c.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public final class h
 {
-  public int quD = 0;
-  public String quE = "";
-  public int quF = 0;
-  public String quG = "";
-  public int quH = 0;
-  public b quI = new b();
+  public int ugt;
+  public String ugu;
+  public String ugv;
+  public String ugw;
+  public String ugx;
+  public String ugy;
   
-  public h() {}
-  
-  public h(Bundle paramBundle)
+  public static h aff(String paramString)
   {
-    this.quD = paramBundle.getInt("key_is_gen_cert", 0);
-    this.quF = paramBundle.getInt("key_is_hint_crt", 0);
-    this.quH = paramBundle.getInt("key_is_ignore_cert", 0);
-    this.quE = paramBundle.getString("key_crt_token", "");
-    this.quG = paramBundle.getString("key_crt_wording", "");
-    this.quI = new b(this.quG);
-  }
-  
-  public final boolean bUZ()
-  {
-    return (this.quF != 0) && (!bk.bl(this.quG));
-  }
-  
-  public final boolean bVa()
-  {
-    return this.quD == 1;
-  }
-  
-  public final boolean bVb()
-  {
-    return (bVa()) && (this.quH == 0);
+    AppMethodBeat.i(46720);
+    if (!bo.isNullOrNil(paramString)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        h localh = new h();
+        localh.ugt = paramString.optInt("menu_jump_type", -1);
+        localh.ugu = paramString.optString("menu_jump_url", "");
+        localh.ugv = paramString.optString("menu_username", "");
+        localh.ugw = paramString.optString("menu_path", "");
+        localh.ugx = paramString.optString("menu_title", "");
+        localh.ugy = paramString.optString("menu_icon_url", "");
+        ab.i("BindCardMenu", "parse bind card menu, type: %s, title: %s", new Object[] { Integer.valueOf(localh.ugt), localh.ugx });
+        AppMethodBeat.o(46720);
+        return localh;
+      }
+      catch (JSONException paramString)
+      {
+        ab.printErrStackTrace("BindCardMenu", paramString, "", new Object[0]);
+      }
+    }
+    AppMethodBeat.o(46720);
+    return null;
   }
 }
 

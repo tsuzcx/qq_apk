@@ -1,36 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.plugin.appbrand.g.b;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$2
-  extends g.b
+  implements Runnable
 {
-  i$2(i parami, u.b paramb) {}
+  i$2(i parami, boolean paramBoolean) {}
   
-  public final void onDestroy()
+  public final void run()
   {
-    String str = this.giE.getString("appId", "");
-    y.i("MicroMsg.Music.JsApiOperateBackgroundAudio", "onDestroy, appId:%s", new Object[] { str });
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("operationType", "stop");
-      label44:
-      JsApiOperateBackgroundAudio.OperateBackgroundAudioTask localOperateBackgroundAudioTask = new JsApiOperateBackgroundAudio.OperateBackgroundAudioTask(this.giF, this.giF.giA.ggu, this.giF.giA.gfg);
-      localOperateBackgroundAudioTask.giD = localJSONObject.toString();
-      localOperateBackgroundAudioTask.appId = str;
-      AppBrandMainProcessService.b(localOperateBackgroundAudioTask);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      break label44;
-    }
+    AppMethodBeat.i(130743);
+    i.a(this.hCp, this.hCq);
+    AppMethodBeat.o(130743);
   }
 }
 

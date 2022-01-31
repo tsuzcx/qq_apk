@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.j;
-import com.tencent.mm.ui.MMActivity;
+import android.support.v4.app.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandLauncherUI$1
   implements Runnable
@@ -11,14 +11,20 @@ final class AppBrandLauncherUI$1
   
   public final void run()
   {
-    if ((this.hcX.uMr) || (this.hcX.isFinishing())) {}
-    Fragment localFragment;
-    do
+    AppMethodBeat.i(132970);
+    if ((this.iML.activityHasDestroyed()) || (this.iML.isFinishing()))
     {
+      AppMethodBeat.o(132970);
       return;
-      localFragment = AppBrandLauncherUI.a(this.hcX).Z(16908290);
-    } while ((localFragment == null) || (!(localFragment instanceof AppBrandLauncherUI.a)));
-    ((AppBrandLauncherUI.a)localFragment).aoV();
+    }
+    Fragment localFragment = AppBrandLauncherUI.a(this.iML).findFragmentById(16908290);
+    if ((localFragment == null) || (!(localFragment instanceof AppBrandLauncherUI.Fragment)))
+    {
+      AppMethodBeat.o(132970);
+      return;
+    }
+    ((AppBrandLauncherUI.Fragment)localFragment).aMd();
+    AppMethodBeat.o(132970);
   }
 }
 

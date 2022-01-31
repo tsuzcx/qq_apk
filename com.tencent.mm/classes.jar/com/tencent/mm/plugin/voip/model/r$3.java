@@ -1,43 +1,17 @@
 package com.tencent.mm.plugin.voip.model;
 
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.cfe;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class r$3
-  implements am.a
+  implements DialogInterface.OnClickListener
 {
-  r$3(r paramr) {}
-  
-  public final boolean tC()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    y.v("MicroMsg.Voip.VoipService", "voip repeat check is foreground");
-    if (r.c(this.pTG) == null)
-    {
-      r.d(this.pTG);
-      r.e(this.pTG).stopTimer();
-      return false;
-    }
-    if (r.em(ae.getContext()))
-    {
-      this.pTG.T(r.c(this.pTG).sST, r.c(this.pTG).sSU);
-      this.pTG.a(r.c(this.pTG));
-      r.f(this.pTG);
-      r.d(this.pTG);
-      r.e(this.pTG).stopTimer();
-      h.nFQ.a(500L, 5L, 1L, false);
-      return false;
-    }
-    if (System.currentTimeMillis() - r.g(this.pTG) < 60000L) {
-      return true;
-    }
-    r.f(this.pTG);
-    r.d(this.pTG);
-    r.e(this.pTG).stopTimer();
-    return false;
+    AppMethodBeat.i(4578);
+    r.access$000();
+    AppMethodBeat.o(4578);
   }
 }
 

@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.k;
 import java.io.File;
 
 final class NetworkDiagnoseReportUI$4
@@ -14,17 +15,19 @@ final class NetworkDiagnoseReportUI$4
   
   public final void onClick(View paramView)
   {
-    if (!bk.bl(NetworkDiagnoseReportUI.access$100()))
+    AppMethodBeat.i(26019);
+    if (!bo.isNullOrNil(NetworkDiagnoseReportUI.access$100()))
     {
       paramView = new File(NetworkDiagnoseReportUI.access$100());
       if (paramView.exists())
       {
         Intent localIntent = new Intent("android.intent.action.VIEW");
-        localIntent.setDataAndType(Uri.fromFile(paramView), "text/plain");
+        k.a(this.tnG.getContext(), localIntent, paramView, "text/plain");
         localIntent.addFlags(268435456);
-        this.pJs.startActivity(localIntent);
+        this.tnG.startActivity(localIntent);
       }
     }
+    AppMethodBeat.o(26019);
   }
 }
 

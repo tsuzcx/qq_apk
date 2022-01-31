@@ -1,40 +1,56 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.ai.a.e;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.e;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.l.a;
+import com.tencent.mm.l.a.a;
+import com.tencent.mm.model.bh;
 import com.tencent.mm.plugin.messenger.foundation.a.g;
-import com.tencent.mm.protocal.c.awn;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.bdc;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
 
 public final class m
   implements g, com.tencent.mm.plugin.messenger.foundation.a.m
 {
-  public final void a(awn paramawn, bi parambi)
+  public final String B(bi parambi)
   {
-    if (f.eW(parambi.field_talker))
+    AppMethodBeat.i(18270);
+    if (f.lg(parambi.field_talker))
     {
-      paramawn.svK = parambi.czr;
-      if (bk.bl(paramawn.svK)) {
-        paramawn.svK = e.lv(parambi.czr);
-      }
-      return;
+      parambi = e.aaQ();
+      AppMethodBeat.o(18270);
+      return parambi;
     }
-    paramawn.svK = parambi.czr;
+    parambi = bh.aaR();
+    AppMethodBeat.o(18270);
+    return parambi;
   }
   
-  public final String v(bi parambi)
+  public final void a(bdc parambdc, bi parambi)
   {
-    if (f.eW(parambi.field_talker)) {
-      return e.HR();
+    AppMethodBeat.i(18269);
+    if (f.lg(parambi.field_talker))
+    {
+      parambdc.woU = parambi.dns;
+      if (bo.isNullOrNil(parambdc.woU))
+      {
+        parambdc.woU = a.a.Ky().h(parambi);
+        AppMethodBeat.o(18269);
+      }
     }
-    return null;
+    else
+    {
+      parambdc.woU = parambi.dns;
+    }
+    AppMethodBeat.o(18269);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.m
  * JD-Core Version:    0.7.0.1
  */

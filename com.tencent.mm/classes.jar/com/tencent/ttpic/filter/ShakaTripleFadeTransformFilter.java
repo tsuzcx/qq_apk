@@ -2,6 +2,7 @@ package com.tencent.ttpic.filter;
 
 import com.tencent.filter.m.a;
 import com.tencent.filter.m.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import java.util.Map;
 
@@ -17,9 +18,11 @@ public class ShakaTripleFadeTransformFilter
   
   private void setParams(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
+    AppMethodBeat.i(82850);
     addParam(new m.i("layers", paramInt));
     addParam(new m.a("scales", paramArrayOfFloat1));
     addParam(new m.a("alphaRatios", paramArrayOfFloat2));
+    AppMethodBeat.o(82850);
   }
   
   protected float getDefaultParamValue()
@@ -34,13 +37,16 @@ public class ShakaTripleFadeTransformFilter
   
   public void initParams()
   {
+    AppMethodBeat.i(82849);
     addParam(new m.i("layers", 1));
     addParam(new m.a("scales", new float[] { 1.0F, 0.0F, 0.0F, 0.0F }));
     addParam(new m.a("alphaRatios", new float[] { 1.0F, 0.0F, 0.0F, 0.0F }));
+    AppMethodBeat.o(82849);
   }
   
   public void setParameterDic(Map<String, Float> paramMap)
   {
+    AppMethodBeat.i(82851);
     float f2 = ((Float)paramMap.get("scaleUp")).floatValue();
     float f3 = ((Float)paramMap.get("scaleMid")).floatValue();
     float f4 = ((Float)paramMap.get("scaleDown")).floatValue();
@@ -62,6 +68,7 @@ public class ShakaTripleFadeTransformFilter
       i += 1;
     }
     setParams(3, new float[] { f2, f3, f4 }, arrayOfFloat);
+    AppMethodBeat.o(82851);
   }
 }
 

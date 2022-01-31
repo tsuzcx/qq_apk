@@ -4,11 +4,9 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
-import android.support.v4.view.q;
-import android.support.v4.view.u;
-import android.support.v4.view.v;
-import android.support.v7.a.a.j;
-import android.support.v7.view.menu.h;
+import android.support.v4.view.t;
+import android.support.v4.view.x;
+import android.support.v4.view.y;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ContextThemeWrapper;
@@ -20,25 +18,25 @@ import android.view.ViewGroup;
 abstract class a
   extends ViewGroup
 {
-  protected final a WA = new a();
-  protected final Context WB;
-  protected ActionMenuView WC;
-  protected ActionMenuPresenter WD;
-  protected int WE;
-  protected u WF;
-  private boolean WG;
-  private boolean WH;
+  protected final a Xn = new a();
+  protected final Context Xo;
+  protected ActionMenuView Xp;
+  protected ActionMenuPresenter Xq;
+  protected int Xr;
+  protected x Xs;
+  private boolean Xt;
+  private boolean Xu;
   
   a(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramAttributeSet = new TypedValue();
-    if ((paramContext.getTheme().resolveAttribute(android.support.v7.a.a.a.actionBarPopupTheme, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
+    if ((paramContext.getTheme().resolveAttribute(2130772138, paramAttributeSet, true)) && (paramAttributeSet.resourceId != 0))
     {
-      this.WB = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
+      this.Xo = new ContextThemeWrapper(paramContext, paramAttributeSet.resourceId);
       return;
     }
-    this.WB = paramContext;
+    this.Xo = paramContext;
   }
   
   protected static int a(View paramView, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
@@ -68,61 +66,54 @@ abstract class a
     return paramInt1 + paramInt2;
   }
   
-  protected static int g(View paramView, int paramInt1, int paramInt2)
+  protected static int k(View paramView, int paramInt1, int paramInt2)
   {
     paramView.measure(View.MeasureSpec.makeMeasureSpec(paramInt1, -2147483648), paramInt2);
     return Math.max(0, paramInt1 - paramView.getMeasuredWidth() + 0);
   }
   
-  public u c(int paramInt, long paramLong)
+  public x c(int paramInt, long paramLong)
   {
-    if (this.WF != null) {
-      this.WF.cancel();
+    if (this.Xs != null) {
+      this.Xs.cancel();
     }
     if (paramInt == 0)
     {
       if (getVisibility() != 0) {
         setAlpha(0.0F);
       }
-      localu = q.Y(this).s(1.0F);
-      localu.k(paramLong);
-      localu.a(this.WA.a(localu, paramInt));
-      return localu;
+      localx = t.ab(this).s(1.0F);
+      localx.h(paramLong);
+      localx.a(this.Xn.a(localx, paramInt));
+      return localx;
     }
-    u localu = q.Y(this).s(0.0F);
-    localu.k(paramLong);
-    localu.a(this.WA.a(localu, paramInt));
-    return localu;
+    x localx = t.ab(this).s(0.0F);
+    localx.h(paramLong);
+    localx.a(this.Xn.a(localx, paramInt));
+    return localx;
   }
   
   public int getAnimatedVisibility()
   {
-    if (this.WF != null) {
-      return this.WA.tP;
+    if (this.Xs != null) {
+      return this.Xn.uQ;
     }
     return getVisibility();
   }
   
   public int getContentHeight()
   {
-    return this.WE;
+    return this.Xr;
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    paramConfiguration = getContext().obtainStyledAttributes(null, a.j.ActionBar, android.support.v7.a.a.a.actionBarStyle, 0);
-    setContentHeight(paramConfiguration.getLayoutDimension(a.j.ActionBar_height, 0));
+    paramConfiguration = getContext().obtainStyledAttributes(null, android.support.v7.a.a.a.ActionBar, 2130772139, 0);
+    setContentHeight(paramConfiguration.getLayoutDimension(0, 0));
     paramConfiguration.recycle();
-    if (this.WD != null)
-    {
-      paramConfiguration = this.WD;
-      if (!paramConfiguration.XK) {
-        paramConfiguration.XJ = android.support.v7.view.a.T(paramConfiguration.mContext).eL();
-      }
-      if (paramConfiguration.dm != null) {
-        paramConfiguration.dm.q(true);
-      }
+    if (this.Xq != null) {
+      this.Xq.gA();
     }
   }
   
@@ -130,17 +121,17 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 9) {
-      this.WH = false;
+      this.Xu = false;
     }
-    if (!this.WH)
+    if (!this.Xu)
     {
       boolean bool = super.onHoverEvent(paramMotionEvent);
       if ((i == 9) && (!bool)) {
-        this.WH = true;
+        this.Xu = true;
       }
     }
     if ((i == 10) || (i == 3)) {
-      this.WH = false;
+      this.Xu = false;
     }
     return true;
   }
@@ -149,24 +140,24 @@ abstract class a
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      this.WG = false;
+      this.Xt = false;
     }
-    if (!this.WG)
+    if (!this.Xt)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       if ((i == 0) && (!bool)) {
-        this.WG = true;
+        this.Xt = true;
       }
     }
     if ((i == 1) || (i == 3)) {
-      this.WG = false;
+      this.Xt = false;
     }
     return true;
   }
   
   public void setContentHeight(int paramInt)
   {
-    this.WE = paramInt;
+    this.Xr = paramInt;
     requestLayout();
   }
   
@@ -174,8 +165,8 @@ abstract class a
   {
     if (paramInt != getVisibility())
     {
-      if (this.WF != null) {
-        this.WF.cancel();
+      if (this.Xs != null) {
+        this.Xs.cancel();
       }
       super.setVisibility(paramInt);
     }
@@ -183,45 +174,45 @@ abstract class a
   
   public boolean showOverflowMenu()
   {
-    if (this.WD != null) {
-      return this.WD.showOverflowMenu();
+    if (this.Xq != null) {
+      return this.Xq.showOverflowMenu();
     }
     return false;
   }
   
   protected final class a
-    implements v
+    implements y
   {
-    private boolean pP = false;
-    int tP;
+    private boolean qM = false;
+    int uQ;
     
     protected a() {}
     
-    public final a a(u paramu, int paramInt)
+    public final a a(x paramx, int paramInt)
     {
-      a.this.WF = paramu;
-      this.tP = paramInt;
+      a.this.Xs = paramx;
+      this.uQ = paramInt;
       return this;
     }
     
-    public final void au(View paramView)
+    public final void aB(View paramView)
     {
       a.a(a.this);
-      this.pP = false;
+      this.qM = false;
     }
     
-    public final void av(View paramView)
+    public final void aC(View paramView)
     {
-      if (this.pP) {
+      if (this.qM) {
         return;
       }
-      a.this.WF = null;
-      a.a(a.this, this.tP);
+      a.this.Xs = null;
+      a.a(a.this, this.uQ);
     }
     
-    public final void aw(View paramView)
+    public final void aD(View paramView)
     {
-      this.pP = true;
+      this.qM = true;
     }
   }
 }

@@ -1,17 +1,20 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.os.Looper;
-import com.tencent.mm.model.am.b.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.b.a;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class SnsCommentDetailUI$19
-  implements am.b.a
+  implements ao.b.a
 {
   SnsCommentDetailUI$19(SnsCommentDetailUI paramSnsCommentDetailUI) {}
   
-  public final void m(String paramString, boolean paramBoolean)
+  public final void p(String paramString, boolean paramBoolean)
   {
-    new ah(Looper.getMainLooper()).postDelayed(new SnsCommentDetailUI.19.1(this, paramBoolean), 500L);
+    AppMethodBeat.i(38799);
+    new ak(Looper.getMainLooper()).postDelayed(new SnsCommentDetailUI.19.1(this, paramBoolean), 500L);
+    AppMethodBeat.o(38799);
   }
 }
 

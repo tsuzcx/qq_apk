@@ -1,19 +1,27 @@
 package com.tencent.mm.ui.transmit;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelappbrand.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.i.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class SelectConversationUI$2
-  implements DialogInterface.OnDismissListener
+  implements i.b
 {
-  SelectConversationUI$2(SelectConversationUI paramSelectConversationUI, String paramString, View paramView) {}
+  SelectConversationUI$2(SelectConversationUI paramSelectConversationUI, e parame) {}
   
-  public final void onDismiss(DialogInterface paramDialogInterface)
+  public final void kP(int paramInt)
   {
-    ((i)g.r(i.class)).b(this.fVG, this.val$view);
+    AppMethodBeat.i(35125);
+    ab.i("MicroMsg.SelectConversationUI", "onLoadImageResult() result:%d", new Object[] { Integer.valueOf(paramInt) });
+    e locale = this.AAq;
+    locale.iNl = true;
+    if (locale.lw())
+    {
+      al.ae(locale.hGy);
+      locale.aMj();
+    }
+    AppMethodBeat.o(35125);
   }
 }
 

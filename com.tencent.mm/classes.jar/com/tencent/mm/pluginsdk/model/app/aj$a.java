@@ -1,8 +1,8 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-abstract interface aj$a
+public abstract interface aj$a
 {
-  public abstract void bw(int paramInt1, int paramInt2);
+  public abstract void r(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

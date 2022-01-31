@@ -3,13 +3,14 @@ package com.tencent.mm.protocal;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class a
 {
-  public static int coN()
+  public static int dqk()
   {
     if (b.foreground) {
       return 1;
@@ -19,12 +20,15 @@ public class a
   
   public static int getNetType(Context paramContext)
   {
+    AppMethodBeat.i(58787);
     for (;;)
     {
       try
       {
         paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-        if (paramContext == null) {
+        if (paramContext == null)
+        {
+          AppMethodBeat.o(58787);
           return 0;
         }
         i = paramContext.getSubtype();
@@ -36,10 +40,11 @@ public class a
       }
       catch (Exception paramContext)
       {
-        y.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bk.j(paramContext) });
+        ab.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bo.l(paramContext) });
         int i = 1;
         continue;
       }
+      AppMethodBeat.o(58787);
       return i;
       if ((i == 13) || (i == 15) || (i == 14)) {
         i = 4;

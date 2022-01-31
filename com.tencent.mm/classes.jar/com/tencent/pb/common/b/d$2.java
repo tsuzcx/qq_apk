@@ -9,18 +9,18 @@ final class d$2
   
   public final void run()
   {
-    if (this.wFB.hXh) {
-      c.d("MicroMsg.Voip", new Object[] { this.wFB.TAG2, "onResp netscene already canceled, cmd:" + this.wFB.wFy });
+    if (this.Bdb.jRa) {
+      c.d("MicroMsg.Voip", new Object[] { this.Bdb.TAG2, "onResp netscene already canceled, cmd:" + this.Bdb.BcZ });
     }
-    while (this.wFB.wFv == null) {
+    while (this.Bdb.BcW == null) {
       return;
     }
-    this.wFB.wFv.a(this.wFC, this.wFD, "", this.wFB);
+    this.Bdb.BcW.a(this.Bdc, this.Bdd, "", this.Bdb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.pb.common.b.d.2
  * JD-Core Version:    0.7.0.1
  */

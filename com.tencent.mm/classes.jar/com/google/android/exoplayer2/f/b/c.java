@@ -7,29 +7,29 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<a> aMM;
+  private final List<a> aUg;
   
   public c(List<a> paramList)
   {
-    this.aMM = paramList;
+    this.aUg = paramList;
   }
   
-  public final int S(long paramLong)
+  public final int ab(long paramLong)
   {
     return -1;
   }
   
-  public final List<a> T(long paramLong)
+  public final List<a> ac(long paramLong)
   {
-    return this.aMM;
+    return this.aUg;
   }
   
-  public final long dn(int paramInt)
+  public final long dT(int paramInt)
   {
     return 0L;
   }
   
-  public final int nk()
+  public final int pH()
   {
     return 1;
   }

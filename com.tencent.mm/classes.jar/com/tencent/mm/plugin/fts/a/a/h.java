@@ -1,79 +1,79 @@
 package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.mm.plugin.fts.a.l;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.UnsupportedEncodingException;
 import java.lang.ref.WeakReference;
 
 public abstract class h
   extends a
 {
-  private WeakReference<l> ktv;
-  public i kwT;
-  public j kwU;
+  private WeakReference<l> mPj;
+  public i mSJ;
+  public j mSK;
   
   public h(i parami)
   {
-    this.kwT = parami;
-    this.ktv = new WeakReference(parami.kxf);
-    this.kwT.kxf = null;
+    this.mSJ = parami;
+    this.mPj = new WeakReference(parami.mSU);
+    this.mSJ.mSU = null;
   }
   
-  public void a(j paramj)
+  protected void a(j paramj)
   {
-    paramj.kwi = g.aF(this.kwT.bVk, false);
-    paramj.aYY = -5;
+    paramj.mRX = g.aU(this.mSJ.query, false);
+    paramj.bpE = -5;
   }
   
   public final boolean execute()
   {
-    Object localObject1 = this.kwT;
-    if (!bk.bl(((i)localObject1).bVk)) {}
+    Object localObject1 = this.mSJ;
+    if (!bo.isNullOrNil(((i)localObject1).query)) {}
     try
     {
-      ((i)localObject1).bVk = new String(((i)localObject1).bVk.getBytes("UTF8"), "UTF8");
+      ((i)localObject1).query = new String(((i)localObject1).query.getBytes("UTF8"), "UTF8");
       label37:
-      this.kwU = new j(this.kwT);
+      this.mSK = new j(this.mSJ);
       try
       {
-        this.kwU.kxg = this;
-        a(this.kwU);
-        this.kwU.aYY = 0;
-        if (this.kwT.handler == null)
+        this.mSK.mSV = this;
+        a(this.mSK);
+        this.mSK.bpE = 0;
+        if (this.mSJ.handler == null)
         {
-          localObject1 = (l)this.ktv.get();
+          localObject1 = (l)this.mPj.get();
           if (localObject1 != null) {
-            ((l)localObject1).b(this.kwU);
+            ((l)localObject1).b(this.mSK);
           }
           return true;
         }
-        this.kwT.handler.post(new h.1(this));
+        this.mSJ.handler.post(new h.1(this));
         return true;
       }
       catch (Exception localException)
       {
         if ((localException instanceof InterruptedException))
         {
-          this.kwU.aYY = 1;
+          this.mSK.bpE = 1;
           throw localException;
         }
       }
       finally
       {
-        if (this.kwT.handler == null)
+        if (this.mSJ.handler == null)
         {
-          l locall = (l)this.ktv.get();
+          l locall = (l)this.mPj.get();
           if (locall != null) {
-            locall.b(this.kwU);
+            locall.b(this.mSK);
           }
         }
         for (;;)
         {
           throw localObject2;
-          this.kwU.aYY = -1;
+          this.mSK.bpE = -1;
           break;
-          this.kwT.handler.post(new h.1(this));
+          this.mSJ.handler.post(new h.1(this));
         }
       }
     }

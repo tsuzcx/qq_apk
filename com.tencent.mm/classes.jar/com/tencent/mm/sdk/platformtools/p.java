@@ -1,64 +1,42 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.util.ArrayMap;
+import android.annotation.TargetApi;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class p
 {
-  public ArrayMap<String, Object> ueu = null;
-  public boolean uev = false;
-  
-  private static void a(String paramString1, Object paramObject1, String paramString2, Object paramObject2, ClassCastException paramClassCastException)
+  @TargetApi(11)
+  public static void cn(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("Key ");
-    localStringBuilder.append(paramString1);
-    localStringBuilder.append(" expected ");
-    localStringBuilder.append(paramString2);
-    localStringBuilder.append(" but value was a ");
-    localStringBuilder.append(paramObject1.getClass().getName());
-    localStringBuilder.append(".  The default value ");
-    localStringBuilder.append(paramObject2);
-    localStringBuilder.append(" was returned.");
-    y.w("MicroMsg.ImmutableBundle", localStringBuilder.toString());
-    y.w("MicroMsg.ImmutableBundle", "Attempt to cast generated internal exception:", new Object[] { paramClassCastException });
+    AppMethodBeat.i(52001);
+    if (paramView.getLayerType() == 1)
+    {
+      AppMethodBeat.o(52001);
+      return;
+    }
+    paramView.setLayerType(1, null);
+    AppMethodBeat.o(52001);
   }
   
-  public final boolean Zd(String paramString)
+  @TargetApi(11)
+  public static void x(View paramView, int paramInt1, int paramInt2)
   {
-    Object localObject = this.ueu.get(paramString);
-    if (localObject == null) {
-      return false;
-    }
-    try
+    AppMethodBeat.i(52002);
+    if ((paramInt1 >= 2048) || (paramInt2 >= 2048)) {}
+    for (paramInt1 = 1;; paramInt1 = 2)
     {
-      boolean bool = ((Boolean)localObject).booleanValue();
-      return bool;
+      if (paramView.getLayerType() != paramInt1) {
+        paramView.setLayerType(paramInt1, null);
+      }
+      AppMethodBeat.o(52002);
+      return;
     }
-    catch (ClassCastException localClassCastException)
-    {
-      a(paramString, localObject, "Boolean", Boolean.valueOf(false), localClassCastException);
-    }
-    return false;
-  }
-  
-  public final String getString(String paramString)
-  {
-    Object localObject = this.ueu.get(paramString);
-    try
-    {
-      String str = (String)localObject;
-      return str;
-    }
-    catch (ClassCastException localClassCastException)
-    {
-      a(paramString, localObject, "String", "<null>", localClassCastException);
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.p
  * JD-Core Version:    0.7.0.1
  */

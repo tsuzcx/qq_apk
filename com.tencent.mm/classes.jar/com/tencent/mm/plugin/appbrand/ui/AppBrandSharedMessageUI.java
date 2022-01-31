@@ -1,35 +1,43 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
 import com.tencent.mm.ui.MMActivity;
 
 public class AppBrandSharedMessageUI
   extends MMActivity
 {
-  private ListView Nn;
-  private MRecyclerView hdY;
+  private MRecyclerView iOL;
+  private ListView mListView;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return y.h.app_brand_shared_message_ui;
+    return 2130968736;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(133097);
     super.onCreate(paramBundle);
-    this.Nn = ((ListView)findViewById(y.g.list_view));
-    this.hdY = ((MRecyclerView)findViewById(y.g.data_rv));
-    this.Nn.setAdapter(new AppBrandSharedMessageUI.b(getLayoutInflater()));
-    this.Nn.setOnItemClickListener(new AppBrandSharedMessageUI.1(this));
-    this.hdY.setLayoutManager(new LinearLayoutManager(1));
-    this.hdY.setAdapter(new AppBrandSharedMessageUI.a());
-    this.hdY.addHeaderView(getLayoutInflater().inflate(y.h.app_brand_shared_message_list_header, null));
+    this.mListView = ((ListView)findViewById(2131821401));
+    this.iOL = ((MRecyclerView)findViewById(2131821402));
+    this.mListView.setAdapter(new AppBrandSharedMessageUI.b(getLayoutInflater()));
+    this.mListView.setOnItemClickListener(new AppBrandSharedMessageUI.1(this));
+    this.iOL.setLayoutManager(new LinearLayoutManager(1));
+    this.iOL.setAdapter(new AppBrandSharedMessageUI.a());
+    this.iOL.addHeaderView(getLayoutInflater().inflate(2130968735, null));
+    AppMethodBeat.o(133097);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

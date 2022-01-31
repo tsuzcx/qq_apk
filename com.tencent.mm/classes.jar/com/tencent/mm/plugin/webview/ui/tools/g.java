@@ -1,307 +1,283 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Matrix;
-import android.net.Uri;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.LinearInterpolator;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.os.RemoteException;
+import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.af;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public final class g
-  implements LogoWebViewWrapper.b
 {
-  static final int rmZ = R.g.webview_pulldown_refresh;
-  private boolean aoK = false;
-  boolean fOd = false;
-  g.a rmV;
-  ImageView rmW;
-  LogoWebViewWrapper rmX;
-  int rmY = 0;
-  private boolean rna = false;
-  private int rnb = 0;
-  private float rnc = 0.0F;
-  private ValueAnimator rnd;
-  private ViewPropertyAnimator rne;
-  private float rnf;
-  View rng;
-  View rnh;
-  TextView rni;
-  boolean rnj = true;
-  boolean rnk = false;
+  private static final HashMap<String, WeakReference<Bitmap>> vbm;
   
-  public final void CC(int paramInt)
+  static
   {
-    if (this.rng != null) {
-      this.rng.setBackgroundColor(paramInt);
+    AppMethodBeat.i(7489);
+    vbm = new HashMap();
+    AppMethodBeat.o(7489);
+  }
+  
+  private static long G(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(7485);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(7485);
+      return paramLong;
+    }
+    Object localObject = paramString;
+    if (paramString.startsWith("#"))
+    {
+      localObject = paramString;
+      if (paramString.length() == 4)
+      {
+        localObject = new StringBuilder(paramString);
+        ((StringBuilder)localObject).insert(2, paramString.charAt(1));
+        ((StringBuilder)localObject).insert(4, paramString.charAt(2));
+        ((StringBuilder)localObject).insert(6, paramString.charAt(3));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    try
+    {
+      int i = Color.parseColor((String)localObject);
+      paramLong = i;
+      AppMethodBeat.o(7485);
+      return 0xFFFFFFFF & paramLong;
+    }
+    catch (Exception paramString)
+    {
+      ab.e("MicroMsg.WebView.RemoteUtil", "Failed to parse color: %s", new Object[] { localObject });
+      AppMethodBeat.o(7485);
+    }
+    return paramLong;
+  }
+  
+  public static int Kq(int paramInt)
+  {
+    AppMethodBeat.i(7487);
+    paramInt = af.Kq(paramInt);
+    AppMethodBeat.o(7487);
+    return paramInt;
+  }
+  
+  public static void a(com.tencent.mm.plugin.webview.stub.d paramd, int paramInt, List<String> paramList)
+  {
+    AppMethodBeat.i(7481);
+    if ((paramList == null) || (paramList.size() == 0))
+    {
+      AppMethodBeat.o(7481);
+      return;
+    }
+    try
+    {
+      paramd.k(paramInt, paramList);
+      AppMethodBeat.o(7481);
+      return;
+    }
+    catch (Exception paramd)
+    {
+      ab.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + paramd.getMessage());
+      AppMethodBeat.o(7481);
     }
   }
   
-  public final void ae(int paramInt, boolean paramBoolean)
+  public static void a(com.tencent.mm.plugin.webview.stub.d paramd, int paramInt, Object... paramVarArgs)
   {
-    Object localObject;
-    String str1;
-    label22:
-    String str2;
-    if (this.rmW == null)
+    AppMethodBeat.i(7480);
+    ArrayList localArrayList = new ArrayList();
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
-      localObject = "null";
-      if (this.rmW != null) {
-        break label96;
-      }
-      str1 = "null";
-      if (this.rmW != null) {
-        break label111;
-      }
-      str2 = "null";
-      label33:
-      y.v("MicroMsg.WebViewPullDownLogoDelegate", "onOverScrollOffset, offset = %d, pointerDown = %b, refreshImage.visibility = %s, refreshImage.drawable = %s, refreshImage.alpha = %s", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), localObject, str1, str2 });
-      if (this.fOd) {
-        break label126;
-      }
+      AppMethodBeat.o(7480);
+      return;
     }
-    label96:
-    label111:
-    label126:
-    do
+    try
     {
-      do
+      int j = paramVarArgs.length;
+      int i = 0;
+      while (i < j)
       {
-        return;
-        localObject = String.valueOf(this.rmW.getVisibility());
-        break;
-        str1 = this.rmW.getDrawable().toString();
-        break label22;
-        str2 = String.valueOf(this.rmW.getAlpha());
-        break label33;
-        if (paramInt == 0) {
-          this.rna = false;
+        localArrayList.add(String.valueOf(paramVarArgs[i]));
+        i += 1;
+      }
+      paramd.k(paramInt, localArrayList);
+      AppMethodBeat.o(7480);
+      return;
+    }
+    catch (Exception paramd)
+    {
+      ab.w("MicroMsg.WebView.RemoteUtil", "kvReport, ex = " + paramd.getMessage());
+      AppMethodBeat.o(7480);
+    }
+  }
+  
+  public static boolean a(Bundle paramBundle, String paramString1, String paramString2, com.tencent.mm.plugin.webview.stub.e parame, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(7488);
+    if (parame == null)
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      AppMethodBeat.o(7488);
+      return true;
+    }
+    Bundle localBundle = new Bundle(3);
+    localBundle.putBundle("open_ui_with_webview_ui_extras", paramBundle);
+    localBundle.putString("open_ui_with_webview_ui_plugin_name", paramString1);
+    localBundle.putString("open_ui_with_webview_ui_plugin_entry", paramString2);
+    try
+    {
+      parame.i(101, localBundle);
+      AppMethodBeat.o(7488);
+      return true;
+    }
+    catch (RemoteException paramBundle)
+    {
+      ab.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      AppMethodBeat.o(7488);
+      return false;
+    }
+    catch (Exception paramBundle)
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      ab.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramBundle, "startUIWithWebViewUI, exp, pluginName %s, pluginEntry %s", new Object[] { paramString1, paramString2 });
+      AppMethodBeat.o(7488);
+    }
+    return false;
+  }
+  
+  public static Bitmap aie(String paramString)
+  {
+    AppMethodBeat.i(7482);
+    Object localObject = (WeakReference)vbm.get(paramString);
+    if ((localObject != null) && (((WeakReference)localObject).get() != null) && (!((Bitmap)((WeakReference)localObject).get()).isRecycled()))
+    {
+      paramString = (Bitmap)((WeakReference)localObject).get();
+      AppMethodBeat.o(7482);
+      return paramString;
+    }
+    if (com.tencent.mm.vfs.e.cN(paramString)) {}
+    for (localObject = com.tencent.mm.sdk.platformtools.d.decodeFile(paramString, null);; localObject = null)
+    {
+      if (localObject != null) {
+        vbm.put(paramString, new WeakReference(localObject));
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(7482);
+        return localObject;
+        try
+        {
+          Bitmap localBitmap = BackwardSupportUtil.b.b(ah.getContext().getAssets().open("avatar/default_nor_avatar.png"), a.getDensity(null));
+          localObject = localBitmap;
+          vbm.put(paramString, new WeakReference(localBitmap));
+          localObject = localBitmap;
         }
-      } while (this.rmW == null);
-      if (paramBoolean) {
-        break label397;
-      }
-      if ((Math.abs(paramInt) > this.rmY) && (!this.aoK))
-      {
-        y.d("MicroMsg.WebViewPullDownLogoDelegate", "startLoading()");
-        startLoading();
-        return;
-      }
-    } while (this.aoK);
-    if ((this.rmW != null) && (this.rmW.getAlpha() < 1.0F) && (this.rne == null) && (paramBoolean))
-    {
-      y.d("MicroMsg.WebViewPullDownLogoDelegate", "refreshImage alpha to 1.0f");
-      this.rne = this.rmW.animate().alpha(1.0F).setDuration(500L);
-      this.rne.setListener(new g.1(this));
-      this.rne.start();
-    }
-    int i;
-    if (!this.rna)
-    {
-      i = -paramInt - this.rnb;
-      if (Math.abs(paramInt) < this.rmY) {
-        break label447;
-      }
-      i *= 5;
-    }
-    for (;;)
-    {
-      this.rnb = (-paramInt);
-      float f1 = this.rmW.getHeight() / 2.0F;
-      float f2 = this.rmW.getWidth() / 2.0F;
-      this.rnc -= i;
-      this.rmW.setScaleType(ImageView.ScaleType.MATRIX);
-      localObject = this.rmW.getImageMatrix();
-      ((Matrix)localObject).postRotate(-i, f2, f1);
-      this.rmW.setImageMatrix((Matrix)localObject);
-      this.rmW.setImageResource(rmZ);
-      this.rmW.invalidate();
-      return;
-      label397:
-      if (Math.abs(paramInt) >= this.rmY)
-      {
-        if (this.rmX == null) {
-          break;
+        catch (Exception paramString)
+        {
+          ab.printErrStackTrace("MicroMsg.WebView.RemoteUtil", paramString, "", new Object[0]);
         }
-        this.rmX.setReleaseTargetHeight(this.rmY);
-        break;
       }
-      if (this.rmX == null) {
-        break;
-      }
-      this.rmX.setReleaseTargetHeight(0);
-      break;
-      label447:
-      i *= 2;
     }
   }
   
-  public final void cdL()
+  public static long aif(String paramString)
   {
-    this.fOd = false;
-    stopLoading();
-    if ((this.rnj) && (this.rnh != null) && (!this.rnk))
+    AppMethodBeat.i(7483);
+    long l = G(paramString, -1L);
+    AppMethodBeat.o(7483);
+    return l;
+  }
+  
+  public static Bitmap aig(String paramString)
+  {
+    AppMethodBeat.i(7486);
+    if (bo.isNullOrNil(paramString))
     {
-      lh(false);
-      this.rmX.setReleaseTargetHeight(0);
-      this.rnh.setVisibility(0);
+      AppMethodBeat.o(7486);
+      return null;
     }
-  }
-  
-  public final float getStartLoadingStep()
-  {
-    return this.rnf;
-  }
-  
-  public final void lh(boolean paramBoolean)
-  {
-    if ((this.rmX != null) && (this.rmX.rkS != paramBoolean))
+    Object localObject1 = (WeakReference)vbm.get(paramString);
+    if ((localObject1 != null) && (((WeakReference)localObject1).get() != null) && (!((Bitmap)((WeakReference)localObject1).get()).isRecycled()))
     {
-      this.rmX.lh(paramBoolean);
-      if (this.rnh != null) {
-        this.rnh.setVisibility(8);
-      }
-      this.rnk = paramBoolean;
+      paramString = (Bitmap)((WeakReference)localObject1).get();
+      AppMethodBeat.o(7486);
+      return paramString;
     }
-  }
-  
-  public final void release()
-  {
-    if (this.rmX != null)
+    localObject1 = Base64.decode(paramString, 0);
+    if (localObject1 == null)
     {
-      LogoWebViewWrapper localLogoWebViewWrapper = this.rmX;
-      if (localLogoWebViewWrapper.rkM != null)
+      AppMethodBeat.o(7486);
+      return null;
+    }
+    Object localObject2 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = true;
+    BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
+    int k = ((BitmapFactory.Options)localObject2).outWidth;
+    int j = ((BitmapFactory.Options)localObject2).outHeight;
+    int i = Math.min(((BitmapFactory.Options)localObject2).outWidth, ((BitmapFactory.Options)localObject2).outHeight);
+    ((BitmapFactory.Options)localObject2).inJustDecodeBounds = false;
+    if (i > 96)
+    {
+      ((BitmapFactory.Options)localObject2).inSampleSize = Math.max((int)(i * 1.0F / 96.0F), 1);
+      localObject1 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
+      if (localObject1 == null)
       {
-        localLogoWebViewWrapper.rkM.removeView(localLogoWebViewWrapper.dpt);
-        localLogoWebViewWrapper.dpt = null;
+        AppMethodBeat.o(7486);
+        return null;
       }
-      localLogoWebViewWrapper = this.rmX;
-      localLogoWebViewWrapper.rkW = null;
-      localLogoWebViewWrapper.rkV = null;
+      k = ((Bitmap)localObject1).getWidth();
+      j = ((Bitmap)localObject1).getHeight();
+      i = Math.min(k, j);
     }
-    if (this.rng != null) {
-      ((ViewGroup)this.rng).removeAllViews();
-    }
-    this.rmX = null;
-    this.rmW = null;
-    this.rnb = 0;
-    if (this.rnd != null)
-    {
-      this.rnd.cancel();
-      this.rnd = null;
-    }
-  }
-  
-  public final void setCurrentURL(String paramString)
-  {
-    if ((!this.rnj) || (this.rnk))
-    {
-      lh(true);
-      if ((this.rnh != null) && (this.rnh.getVisibility() == 0)) {
-        this.rnh.setVisibility(8);
-      }
-    }
-    while (this.rni == null) {
-      return;
-    }
-    if (!bk.bl(paramString))
-    {
-      paramString = Uri.parse(paramString).getHost();
-      if (!bk.bl(paramString))
-      {
-        paramString = this.rni.getContext().getString(R.l.webview_logo_url, new Object[] { paramString });
-        this.rni.setVisibility(0);
-        this.rni.setText(paramString);
-        lh(false);
-        return;
-      }
-    }
-    this.rni.setVisibility(8);
-  }
-  
-  public final void setStartLoadingStep(float paramFloat)
-  {
-    float f2 = 0.0F;
-    this.rnf = paramFloat;
-    this.rmW.setScaleType(ImageView.ScaleType.MATRIX);
-    Matrix localMatrix = this.rmW.getImageMatrix();
-    float f1;
-    if (this.rmW == null)
-    {
-      f1 = 0.0F;
-      if (this.rmW != null) {
-        break label77;
-      }
-    }
-    for (;;)
-    {
-      localMatrix.setRotate(paramFloat, f1, f2);
-      this.rnc = paramFloat;
-      this.rmW.invalidate();
-      return;
-      f1 = this.rmW.getWidth() / 2.0F;
-      break;
-      label77:
-      f2 = this.rmW.getHeight() / 2.0F;
-    }
-  }
-  
-  public final void startLoading()
-  {
-    if (this.aoK) {}
     do
     {
-      do
-      {
-        return;
-      } while ((this.rmW == null) || (this.rmX == null));
-      this.aoK = true;
-      this.rmX.lh(true);
-      this.rmW.clearAnimation();
-      if (this.rnd != null) {
-        this.rnd.cancel();
+      localObject2 = Bitmap.createBitmap((Bitmap)localObject1, Math.max(k / 2 - i / 2, 0), Math.max(j / 2 - i / 2, 0), i, i);
+      if (localObject2 != localObject1) {
+        ((Bitmap)localObject1).recycle();
       }
-      this.rnd = ObjectAnimator.ofFloat(this, "startLoadingStep", new float[] { this.rnc + 0.0F, this.rnc + 354.0F });
-      this.rnd.setDuration(960L);
-      this.rnd.setRepeatMode(1);
-      this.rnd.setRepeatCount(-1);
-      this.rnd.setInterpolator(new LinearInterpolator());
-      this.rnd.start();
-    } while (this.rmV == null);
-    this.rmV.cdM();
+      localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, 96, 96, false);
+      if (localObject2 != localObject1)
+      {
+        ab.i("MicroMsg.WebView.RemoteUtil", "bitmap recycle %s", new Object[] { localObject2.toString() });
+        ((Bitmap)localObject2).recycle();
+      }
+      if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
+        vbm.put(paramString, new WeakReference(localObject1));
+      }
+      AppMethodBeat.o(7486);
+      return localObject1;
+      localObject2 = BitmapFactory.decodeByteArray((byte[])localObject1, 0, localObject1.length, (BitmapFactory.Options)localObject2);
+      localObject1 = localObject2;
+    } while (localObject2 != null);
+    AppMethodBeat.o(7486);
+    return null;
   }
   
-  public final void stopLoading()
+  public static int by(String paramString, int paramInt)
   {
-    if (!this.aoK) {}
-    do
-    {
-      return;
-      y.d("MicroMsg.WebViewPullDownLogoDelegate", "stopLoading()");
-      this.rna = true;
-      this.aoK = false;
-      if ((this.rmX != null) && (this.fOd)) {
-        this.rmX.lh(false);
-      }
-      if (this.rnd != null) {
-        this.rnd.cancel();
-      }
-      if (this.rmX != null) {
-        this.rmX.o(0, 250L);
-      }
-    } while (this.rmW == null);
-    y.d("MicroMsg.WebViewPullDownLogoDelegate", "refreshImage, alpha to 0f");
-    this.rmW.animate().alpha(0.0F).setDuration(500L).start();
+    AppMethodBeat.i(7484);
+    paramInt = (int)G(paramString, paramInt);
+    AppMethodBeat.o(7484);
+    return paramInt;
   }
 }
 

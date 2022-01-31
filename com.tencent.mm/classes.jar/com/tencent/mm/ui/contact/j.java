@@ -1,29 +1,22 @@
 package com.tencent.mm.ui.contact;
 
 import android.content.Context;
-import android.content.Intent;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.ai.m;
-import com.tencent.mm.br.d;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.c;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.m;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.c;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.n.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.MaskLayout.a;
 
@@ -31,56 +24,41 @@ public final class j
   extends LinearLayout
 {
   private Context context;
-  private String eeM;
+  private String fuO;
   
   public j(Context paramContext, String paramString)
   {
     super(paramContext);
+    AppMethodBeat.i(33711);
     this.context = paramContext;
-    this.eeM = paramString;
-    paramContext = View.inflate(getContext(), R.i.enterprise_biz_item_in_addressui_header, this);
-    paramString = findViewById(R.h.enterprise_biz_item_ll);
-    paramContext.setOnClickListener(new View.OnClickListener()
+    this.fuO = paramString;
+    paramContext = View.inflate(getContext(), 2130969426, this);
+    paramString = findViewById(2131823728);
+    paramContext.setOnClickListener(new j.1(this));
+    paramString.setOnTouchListener(new j.2(this));
+    aw.aaz();
+    paramContext = c.YA().aru(this.fuO);
+    if ((paramContext == null) || ((int)paramContext.euF <= 0))
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        Intent localIntent = new Intent();
-        localIntent.putExtra("enterprise_from_scene", 2);
-        localIntent.putExtra("enterprise_biz_name", j.a(j.this));
-        d.b(paramAnonymousView.getContext(), "brandservice", ".ui.EnterpriseBizContactListUI", localIntent);
-      }
-    });
-    paramString.setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        if ((j.b(j.this) instanceof MMActivity)) {
-          ((MMActivity)j.b(j.this)).XM();
-        }
-        return false;
-      }
-    });
-    au.Hx();
-    paramContext = c.Fw().abj(this.eeM);
-    if ((paramContext == null) || ((int)paramContext.dBe <= 0))
-    {
-      y.e("MicroMsg.EnterpriseBizViewItem", "contact is null, %s", new Object[] { this.eeM });
+      ab.e("MicroMsg.EnterpriseBizViewItem", "contact is null, %s", new Object[] { this.fuO });
+      AppMethodBeat.o(33711);
       return;
     }
-    paramString = (MaskLayout)paramString.findViewById(R.h.biz_contact_entrance_avatar_iv);
-    a.b.a((ImageView)paramString.getContentView(), this.eeM);
+    paramString = (MaskLayout)paramString.findViewById(2131821837);
+    a.b.c((ImageView)paramString.getContentView(), this.fuO);
     if (paramContext.field_verifyFlag != 0) {
-      if (am.a.dVA != null)
+      if (ao.a.flK != null)
       {
-        String str = am.a.dVA.hM(paramContext.field_verifyFlag);
+        String str = ao.a.flK.ky(paramContext.field_verifyFlag);
         if (str != null) {
-          paramString.a(m.lk(str), MaskLayout.a.uZF);
+          paramString.a(m.sf(str), MaskLayout.a.znW);
         }
       }
     }
     for (;;)
     {
-      ((TextView)findViewById(R.h.enterprise_biz_title)).setText(paramContext.Bp());
+      ((TextView)findViewById(2131823729)).setText(paramContext.Oe());
+      AppMethodBeat.o(33711);
       return;
       paramString.setMaskBitmap(null);
       continue;
@@ -92,7 +70,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.contact.j
  * JD-Core Version:    0.7.0.1
  */

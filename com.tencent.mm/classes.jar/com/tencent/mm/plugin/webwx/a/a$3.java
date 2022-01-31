@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webwx.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$3
   
   public final void run()
   {
-    a.a(this.rDE);
+    AppMethodBeat.i(26482);
+    a.a(this.vug);
+    AppMethodBeat.o(26482);
   }
 }
 

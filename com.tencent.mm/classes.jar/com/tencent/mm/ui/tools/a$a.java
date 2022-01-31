@@ -2,7 +2,7 @@ package com.tencent.mm.ui.tools;
 
 public abstract interface a$a
 {
-  public abstract String Pj(String paramString);
+  public abstract String acd(String paramString);
 }
 
 

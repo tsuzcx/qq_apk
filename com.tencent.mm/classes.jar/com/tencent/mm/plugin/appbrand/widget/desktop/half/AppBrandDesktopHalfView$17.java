@@ -6,7 +6,7 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.plugin.appbrand.y.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandDesktopHalfView$17
   implements View.OnCreateContextMenuListener
@@ -15,7 +15,9 @@ final class AppBrandDesktopHalfView$17
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramContextMenu.add(0, 11, 0, this.hrR.getContext().getResources().getString(y.j.app_brand_desktop_menu_add_to_my_app_brand));
+    AppMethodBeat.i(134177);
+    paramContextMenu.add(0, 11, 0, this.jin.getContext().getResources().getString(2131296615));
+    AppMethodBeat.o(134177);
   }
 }
 

@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedAddTopicView android:orientation="vertical" android:padding="@dimen/jd" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/bwp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/je" />
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="@dimen/jk" android:src="@drawable/abd" android:scaleType="fitXY" />
-            <TextView android:textSize="@dimen/j4" android:textColor="@color/na" android:id="@id/bwq" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingBottom="0.0dip" android:layout_marginBottom="0.0dip" style="@style/l0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip">
+            <TextView android:textSize="18.0sp" android:layout_marginRight="5.0dip" android:text="Wi-Fi名称:" android:singleLine="true" style="@style/jl" />
+            <TextView android:textSize="22.0sp" android:textColor="@color/a6i" android:ellipsize="end" android:id="@id/byx" android:text="Tecent-DevNet-WiFi-WIFi" android:singleLine="true" style="@style/jl" />
         </LinearLayout>
-        <View android:background="@color/na" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/ji" />
-    </com.tencent.mm.plugin.game.ui.GameFeedAddTopicView>
-</FrameLayout>
+        <LinearLayout android:gravity="center" android:layout_marginTop="60.0dip" style="@style/mj">
+            <TextView android:id="@id/byy" android:visibility="invisible" android:text="@string/c22" style="@style/j8" />
+            <TextView android:id="@id/byz" android:visibility="invisible" android:text="@string/c20" style="@style/j8" />
+            <TextView android:autoLink="email|phone|web" android:id="@id/bz0" android:visibility="invisible" android:layout_marginLeft="8.0dip" android:text="@string/c30" style="@style/jv" />
+        </LinearLayout>
+        <Button android:textSize="15.0sp" android:textColor="@color/a6i" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bz1" android:background="@drawable/pj" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginTop="120.0dip" android:layout_marginBottom="60.0dip" android:minHeight="@dimen/lw" android:text="@string/c25" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_marginBottom="33.0dip" style="@style/mj">
+        <ImageView android:layout_width="114.0dip" android:layout_height="18.0dip" android:src="@drawable/age" />
+    </LinearLayout>
+</LinearLayout>

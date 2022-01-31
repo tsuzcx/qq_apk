@@ -1,42 +1,45 @@
 package com.tencent.mm.plugin.appbrand.jsapi.camera;
 
-import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.f;
-import com.tencent.mm.plugin.sight.base.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class AppBrandCameraView$b$2
-  implements MMSightRecordView.f
+  implements MMSightRecordView.h
 {
   AppBrandCameraView$b$2(AppBrandCameraView.b paramb) {}
   
-  public final void db(boolean paramBoolean)
+  public final void ef(boolean paramBoolean)
   {
-    y.i("MicroMsg.AppBrandCameraView", "onRecordFinish error %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (AppBrandCameraView.e(this.goT.goS) == null)
+    AppMethodBeat.i(130915);
+    ab.i("MicroMsg.AppBrandCameraView", "onRecordFinish error %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (AppBrandCameraView.f(this.hIR.hIQ) == null)
     {
-      y.i("MicroMsg.AppBrandCameraView", "onRecordFinish recordView is null");
-      AppBrandCameraView.b.a(this.goT, -1, "camera is null", null, null);
+      ab.i("MicroMsg.AppBrandCameraView", "onRecordFinish recordView is null");
+      AppBrandCameraView.b.a(this.hIR, "camera is null");
+      AppMethodBeat.o(130915);
       return;
     }
-    this.goT.goS.goN = 1;
-    if (paramBoolean) {
-      AppBrandCameraView.b.a(this.goT, -1, "stop error", null, null);
-    }
-    for (;;)
+    this.hIR.hIQ.hIJ = 1;
+    if (paramBoolean)
     {
-      AppBrandCameraView.t(this.goT.goS);
-      AppBrandCameraView.a(this.goT.goS, false);
+      AppBrandCameraView.b.a(this.hIR, "stop error");
+      this.hIR.aCN();
+      AppMethodBeat.o(130915);
       return;
-      Object localObject = AppBrandCameraView.e(this.goT.goS).getVideoFilePath();
-      int i = AppBrandCameraView.q(this.goT.goS);
-      int j = AppBrandCameraView.r(this.goT.goS);
-      AppBrandCameraView.e(this.goT.goS).getCameraRotation();
-      localObject = d.ab((String)localObject, i, j);
-      this.goT.a((Bitmap)localObject, AppBrandCameraView.s(this.goT.goS));
-      AppBrandCameraView.b.a(this.goT, 0, "", AppBrandCameraView.s(this.goT.goS), AppBrandCameraView.e(this.goT.goS).getVideoFilePath());
     }
+    if (AppBrandCameraView.s(this.hIR.hIQ))
+    {
+      AppBrandCameraView.b localb = this.hIR;
+      d.ysm.execute(new AppBrandCameraView.b.3(localb));
+      AppMethodBeat.o(130915);
+      return;
+    }
+    AppBrandCameraView.b.b(this.hIR, AppBrandCameraView.f(this.hIR.hIQ).getVideoFilePath());
+    AppMethodBeat.o(130915);
   }
 }
 

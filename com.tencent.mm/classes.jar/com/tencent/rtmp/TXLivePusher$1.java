@@ -1,19 +1,38 @@
 package com.tencent.rtmp;
 
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.liteav.renderer.d.a;
+import com.tencent.liteav.audio.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class TXLivePusher$1
-  implements d.a
+  implements e
 {
-  TXLivePusher$1(TXLivePusher paramTXLivePusher, TXLivePusher.ITXSnapshotListener paramITXSnapshotListener) {}
+  TXLivePusher$1(TXLivePusher paramTXLivePusher) {}
   
-  public void onTakePhotoComplete(Bitmap paramBitmap)
+  public void onPlayEnd(int paramInt)
   {
-    TXLivePusher.access$000(this.this$0, this.val$listener, paramBitmap);
-    TXLivePusher.access$102(this.this$0, false);
-    TXLivePusher.access$300(this.this$0).removeCallbacks(TXLivePusher.access$200(this.this$0));
+    AppMethodBeat.i(146982);
+    if (this.this$0.mBGMNotify != null) {
+      this.this$0.mBGMNotify.onBGMComplete(paramInt);
+    }
+    AppMethodBeat.o(146982);
+  }
+  
+  public void onPlayProgress(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(146983);
+    if (this.this$0.mBGMNotify != null) {
+      this.this$0.mBGMNotify.onBGMProgress(paramLong1, paramLong2);
+    }
+    AppMethodBeat.o(146983);
+  }
+  
+  public void onPlayStart()
+  {
+    AppMethodBeat.i(146981);
+    if (this.this$0.mBGMNotify != null) {
+      this.this$0.mBGMNotify.onBGMStart();
+    }
+    AppMethodBeat.o(146981);
   }
 }
 

@@ -5,54 +5,63 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.c;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 
 public final class e
   extends a
 {
-  private TextView rMQ;
-  private View rMR;
-  public LinearLayout rMS;
+  private TextView vDu;
+  private View vDv;
+  public LinearLayout vDw;
   
   public e(View paramView, k paramk)
   {
     super(paramView, paramk);
-    this.rMS = ((LinearLayout)paramView.findViewById(R.h.note_header_ll));
-    this.rMS.setVisibility(0);
-    this.rMQ = ((TextView)paramView.findViewById(R.h.note_header_tips));
-    this.rMR = paramView.findViewById(R.h.note_header_split_line);
+    AppMethodBeat.i(27157);
+    this.vDw = ((LinearLayout)paramView.findViewById(2131826571));
+    this.vDw.setVisibility(0);
+    this.vDu = ((TextView)paramView.findViewById(2131826572));
+    this.vDv = paramView.findViewById(2131826573);
+    AppMethodBeat.o(27157);
   }
   
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
-    if (paramc.getType() != -3) {}
-    do
+    AppMethodBeat.i(27158);
+    if (paramc.getType() != -3)
     {
+      AppMethodBeat.o(27158);
       return;
-      if (this.rLi.rJg == 3)
-      {
-        this.rMS.setVisibility(8);
-        return;
-      }
-      this.rMS.setVisibility(0);
-      paramc = (com.tencent.mm.plugin.wenote.model.a.e)paramc;
-    } while (paramc.rGy <= 0L);
-    Object localObject = this.rMQ.getContext();
-    long l = paramc.rGy;
-    if (l < 3600000L) {}
-    for (paramc = "";; paramc = DateFormat.format(((Context)localObject).getString(R.l.favorite_longdate), l))
+    }
+    if (this.vBM.vzL == 3)
     {
-      localObject = this.rMQ.getContext().getString(R.l.note_edit_time);
+      this.vDw.setVisibility(8);
+      AppMethodBeat.o(27158);
+      return;
+    }
+    this.vDw.setVisibility(0);
+    paramc = (com.tencent.mm.plugin.wenote.model.a.e)paramc;
+    if (paramc.vxh <= 0L)
+    {
+      AppMethodBeat.o(27158);
+      return;
+    }
+    Object localObject = this.vDu.getContext();
+    long l = paramc.vxh;
+    if (l < 3600000L) {}
+    for (paramc = "";; paramc = DateFormat.format(((Context)localObject).getString(2131299753), l))
+    {
+      localObject = this.vDu.getContext().getString(2131301880);
       paramc = (String)localObject + " " + paramc;
-      this.rMQ.setText(paramc);
+      this.vDu.setText(paramc);
+      AppMethodBeat.o(27158);
       return;
     }
   }
   
-  public final int cjv()
+  public final int djX()
   {
     return -3;
   }

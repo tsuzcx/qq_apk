@@ -1,19 +1,22 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.model.am.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.ao.b.a;
 
 final class CheckCanSubscribeBizUI$1
-  implements am.b.a
+  implements ao.b.a
 {
   CheckCanSubscribeBizUI$1(CheckCanSubscribeBizUI paramCheckCanSubscribeBizUI) {}
   
-  public final void m(String paramString, boolean paramBoolean)
+  public final void p(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(29141);
     if (!paramBoolean)
     {
-      CheckCanSubscribeBizUI.a(this.uHE);
-      CheckCanSubscribeBizUI.b(this.uHE);
+      CheckCanSubscribeBizUI.a(this.yUP);
+      CheckCanSubscribeBizUI.b(this.yUP);
     }
+    AppMethodBeat.o(29141);
   }
 }
 

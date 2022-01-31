@@ -2,9 +2,9 @@ package com.tencent.mm.kernel.a.b;
 
 public final class h
 {
-  public Class dMR;
-  public Class dMS;
-  public Class dMk;
+  public Class eJL;
+  public Class eKt;
+  public Class eKu;
 }
 
 

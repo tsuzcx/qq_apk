@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.mm.ci.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class SearchBarUI$1
@@ -18,33 +18,32 @@ final class SearchBarUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    Object localObject = this.uQA;
-    if (!((BaseActivity)localObject).uGV.isEmpty())
+    AppMethodBeat.i(112457);
+    Object localObject = this.zeM;
+    if (!((BaseActivity)localObject).yUg.isEmpty())
     {
-      ((BaseActivity)localObject).uGV.clear();
+      ((BaseActivity)localObject).yUg.clear();
       ((BaseActivity)localObject).supportInvalidateOptionsMenu();
     }
-    ((SearchBarUI)localObject).uQz = new ah((Context)localObject);
-    ((SearchBarUI)localObject).uQz.setSearchViewListener((ah.a)localObject);
-    ((SearchBarUI)localObject).uQz.setHint(((SearchBarUI)localObject).getResources().getString(a.i.ui_search));
-    ((SearchBarUI)localObject).getSupportActionBar().setCustomView(((SearchBarUI)localObject).uQz);
-    if (localObject != null)
+    ((SearchBarUI)localObject).zeL = new ac((Context)localObject);
+    ((SearchBarUI)localObject).zeL.setSearchViewListener((ac.a)localObject);
+    ((SearchBarUI)localObject).zeL.setHint(((SearchBarUI)localObject).getResources().getString(2131304401));
+    ((SearchBarUI)localObject).getSupportActionBar().setCustomView(((SearchBarUI)localObject).zeL);
+    paramMenuItem = (InputMethodManager)((Activity)localObject).getSystemService("input_method");
+    if (paramMenuItem != null)
     {
-      paramMenuItem = (InputMethodManager)((Activity)localObject).getSystemService("input_method");
-      if (paramMenuItem != null)
-      {
-        localObject = ((Activity)localObject).getCurrentFocus();
-        if ((localObject != null) && (((View)localObject).getWindowToken() != null)) {
-          paramMenuItem.toggleSoftInput(0, 2);
-        }
+      localObject = ((Activity)localObject).getCurrentFocus();
+      if ((localObject != null) && (((View)localObject).getWindowToken() != null)) {
+        paramMenuItem.toggleSoftInput(0, 2);
       }
     }
+    AppMethodBeat.o(112457);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.SearchBarUI.1
  * JD-Core Version:    0.7.0.1
  */

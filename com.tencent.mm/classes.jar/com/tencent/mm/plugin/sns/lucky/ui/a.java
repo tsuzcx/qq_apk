@@ -5,68 +5,44 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
 {
-  public static Dialog e(Context paramContext, final View paramView)
+  public static Dialog f(Context paramContext, View paramView)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(i.g.lucky_comment_dialog, null);
+    AppMethodBeat.i(35903);
+    View localView = LayoutInflater.from(paramContext).inflate(2130970013, null);
     Object localObject;
-    if (x.cqG()) {
+    if (aa.dsD()) {
       localObject = "font_1.otf";
     }
     for (;;)
     {
-      TextView localTextView = (TextView)localView.findViewById(i.f.lucky_money_title_tv);
-      if (!bk.bl((String)localObject)) {
+      TextView localTextView = (TextView)localView.findViewById(2131825541);
+      if (!bo.isNullOrNil((String)localObject)) {
         localTextView.setTypeface(Typeface.createFromAsset(paramContext.getAssets(), (String)localObject));
       }
-      if (!x.cqF()) {
+      if (!aa.dsC()) {
         localTextView.setTextSize(1, 10.0F);
       }
-      localObject = new Dialog(paramContext, i.k.mmalertdialog);
+      localObject = new com.tencent.mm.plugin.crashfix.b.a(paramContext, 2131493881);
       ((Dialog)localObject).setContentView(localView);
       ((Dialog)localObject).setTitle(null);
       ((Dialog)localObject).setOnCancelListener(new a.1((Dialog)localObject));
-      ((TextView)localView.findViewById(i.f.go_shake_lucky_btn)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          y.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog onClick");
-          if ((this.oof != null) && (this.oof.isShowing())) {
-            this.oof.dismiss();
-          }
-          paramAnonymousView = paramView;
-          if (paramAnonymousView != null) {
-            paramAnonymousView.performClick();
-          }
-        }
-      });
-      paramView = localView.findViewById(i.f.tips_dialog_close_btn);
+      ((TextView)localView.findViewById(2131825543)).setOnClickListener(new a.2((Dialog)localObject, paramView));
+      paramView = localView.findViewById(2131825539);
       int i = BackwardSupportUtil.b.b(paramContext, 10.0F);
-      bk.j(paramView, i, i, i, i);
-      paramView.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          y.i("MicroMsg.SnsLuckyCommentAlertUI", "showTipsDialog OnClick: close");
-          if ((this.oof != null) && (this.oof.isShowing())) {
-            this.oof.dismiss();
-          }
-        }
-      });
+      bo.n(paramView, i, i, i, i);
+      paramView.setOnClickListener(new a.3((Dialog)localObject));
       ((Dialog)localObject).show();
+      AppMethodBeat.o(35903);
       return localObject;
-      if (x.cqH()) {
+      if (aa.dsE()) {
         localObject = "font_2.otf";
       } else {
         localObject = null;

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.readerapp.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ReaderAppIntroUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class ReaderAppIntroUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.noF.finish();
+    AppMethodBeat.i(76798);
+    this.pTT.finish();
+    AppMethodBeat.o(76798);
     return true;
   }
 }

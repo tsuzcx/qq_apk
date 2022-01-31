@@ -1,16 +1,11 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.q;
+import com.tencent.mm.ui.widget.b.c;
 
 public abstract interface t
 {
-  public abstract c a(s params, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, q.a parama);
-  
-  public static final class a
-  {
-    public static t sdu;
-  }
+  public abstract c a(q paramq, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, q.a parama);
 }
 
 

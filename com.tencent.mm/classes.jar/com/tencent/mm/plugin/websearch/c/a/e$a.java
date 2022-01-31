@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.websearch.c.a;
 
 public final class e$a
 {
-  public String aVr;
-  public String cMT;
+  public String blZ;
+  public String dCJ;
   public String desc;
-  public String fGK;
-  public String qWf;
+  public String hKa;
+  public String uLr;
   public String userName;
 }
 

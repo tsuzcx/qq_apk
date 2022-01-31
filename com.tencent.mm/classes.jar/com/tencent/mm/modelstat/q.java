@@ -1,103 +1,133 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.ah.e.d;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.ck.c;
-import com.tencent.mm.ck.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.d;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.cm.c;
+import com.tencent.mm.cm.h;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.at;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.n;
-import com.tencent.mm.network.x;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.network.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 public class q
-  implements ar
+  implements at
 {
-  private static HashMap<Integer, h.d> dgp;
-  private l eEN = new l();
-  private h<m> eEO = new h(new c() {});
-  private x eEP = new x();
-  private h<g> eEQ = new h(new q.2(this));
-  private n eiF = new q.3(this);
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private l fUE;
+  private h<m> fUF;
+  private y fUG;
+  private h<g> fUH;
+  private n fyJ;
   
   static
   {
+    AppMethodBeat.i(78801);
     HashMap localHashMap = new HashMap();
-    dgp = localHashMap;
+    baseDBFactories = localHashMap;
     localHashMap.put(Integer.valueOf("NETSTAT_TABLE".hashCode()), new q.4());
+    AppMethodBeat.o(78801);
   }
   
-  public static g RA()
+  public q()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    return (g)RB().eEQ.get();
+    AppMethodBeat.i(78793);
+    this.fUE = new l();
+    this.fUF = new h(new c() {});
+    this.fUG = new y();
+    this.fUH = new h(new q.2(this));
+    this.fyJ = new q.3(this);
+    AppMethodBeat.o(78793);
   }
   
-  private static q RB()
+  public static g akJ()
   {
-    return (q)p.B(q.class);
+    AppMethodBeat.i(78794);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    g localg = (g)akK().fUH.get();
+    AppMethodBeat.o(78794);
+    return localg;
   }
   
-  public static m RC()
+  private static q akK()
   {
-    com.tencent.mm.kernel.g.DN().CX();
-    return (m)RB().eEO.get();
+    AppMethodBeat.i(78795);
+    q localq = (q)com.tencent.mm.model.q.S(q.class);
+    AppMethodBeat.o(78795);
+    return localq;
+  }
+  
+  public static m akL()
+  {
+    AppMethodBeat.i(78796);
+    com.tencent.mm.kernel.g.RJ().QQ();
+    m localm = (m)akK().fUF.get();
+    AppMethodBeat.o(78796);
+    return localm;
+  }
+  
+  public static void d(e parame)
+  {
+    AppMethodBeat.i(78797);
+    if (parame == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ab.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bo.dtY() });
+      if (parame != null) {
+        parame.a(akK().fUE);
+      }
+      AppMethodBeat.o(78797);
+      return;
+    }
   }
   
   public static void e(e parame)
   {
+    AppMethodBeat.i(78798);
     if (parame == null) {}
     for (boolean bool = true;; bool = false)
     {
-      y.d("MicroMsg.SubCoreStat", "dknetstat setNetworkMoniter  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bk.csb() });
+      ab.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bo.dtY() });
       if (parame != null) {
-        parame.a(RB().eEN);
+        parame.a(akK().fUG);
       }
+      AppMethodBeat.o(78798);
       return;
     }
   }
   
-  public static void f(e parame)
+  public void clearPluginData(int paramInt) {}
+  
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    if (parame == null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      y.d("MicroMsg.SubCoreStat", "setKVReportMonitor  isnull:%b  ,  %s ", new Object[] { Boolean.valueOf(bool), bk.csb() });
-      if (parame != null) {
-        parame.a(RB().eEP);
-      }
-      return;
-    }
+    return baseDBFactories;
   }
   
-  public final void bh(boolean paramBoolean)
+  public void onAccountPostReset(boolean paramBoolean)
   {
-    e.d.a(Integer.valueOf(9998), this.eEN);
-    com.tencent.mm.kernel.g.DO().a(this.eiF);
-    com.tencent.mm.model.am.a.dVz = new q.5(this);
+    AppMethodBeat.i(78800);
+    e.d.a(Integer.valueOf(9998), this.fUE);
+    com.tencent.mm.kernel.g.RK().a(this.fyJ);
+    com.tencent.mm.model.ao.a.flJ = new q.5(this);
+    AppMethodBeat.o(78800);
   }
   
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt) {}
-  
-  public final void onAccountRelease()
+  public void onAccountRelease()
   {
-    com.tencent.mm.kernel.g.DO().b(this.eiF);
-    e.d.b(Integer.valueOf(9998), this.eEN);
-    this.eEN = new l();
-    com.tencent.mm.model.am.a.dVz = null;
+    AppMethodBeat.i(78799);
+    com.tencent.mm.kernel.g.RK().b(this.fyJ);
+    e.d.b(Integer.valueOf(9998), this.fUE);
+    this.fUE = new l();
+    com.tencent.mm.model.ao.a.flJ = null;
+    AppMethodBeat.o(78799);
   }
   
-  public final HashMap<Integer, h.d> xe()
-  {
-    return dgp;
-  }
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

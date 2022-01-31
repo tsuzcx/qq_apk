@@ -1,47 +1,50 @@
 package com.tencent.mm.ui.contact.a;
 
 import android.content.Context;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.selectcontact.a.c;
-import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 
 public final class b
-  extends e
+  extends f
 {
-  public String aVr;
-  public int kCB = 0;
-  private boolean vOm;
+  private boolean AfU;
+  public String blZ;
+  public int resId = 0;
   
   public b(int paramInt)
   {
     super(paramInt);
   }
   
-  public final void bW(Context paramContext)
+  public final void a(Context paramContext, a.a parama)
   {
-    if ((this.kCB != 0) && (this.aVr != null))
+    AppMethodBeat.i(105269);
+    if ((this.resId != 0) && (this.blZ != null))
     {
-      this.vOz = this.kCB;
-      this.vOy = this.aVr;
+      this.Agj = this.resId;
+      this.Agi = this.blZ;
+      AppMethodBeat.o(105269);
       return;
     }
-    ad localad = this.dnp;
-    if (!this.vOm)
+    parama = this.contact;
+    if (!this.AfU)
     {
-      g.DQ();
-      localad = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(this.username);
-      this.dnp = localad;
-      this.vOm = true;
+      g.RM();
+      parama = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(this.username);
+      this.contact = parama;
+      this.AfU = true;
     }
-    if (localad == null)
+    if (parama == null)
     {
-      this.eXK = "";
+      this.gpH = "";
+      AppMethodBeat.o(105269);
       return;
     }
-    this.eXK = com.tencent.mm.pluginsdk.ui.d.j.b(paramContext, ((com.tencent.mm.plugin.messenger.a.b)g.r(com.tencent.mm.plugin.messenger.a.b.class)).c(localad), com.tencent.mm.cb.a.aa(paramContext, a.c.NormalTextSize));
-    this.username = localad.field_username;
+    this.gpH = com.tencent.mm.pluginsdk.ui.d.j.b(paramContext, ((com.tencent.mm.plugin.messenger.a.b)g.E(com.tencent.mm.plugin.messenger.a.b.class)).c(parama), com.tencent.mm.cb.a.ao(paramContext, 2131427809));
+    this.username = parama.field_username;
+    AppMethodBeat.o(105269);
   }
 }
 

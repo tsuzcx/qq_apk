@@ -4,8 +4,8 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.MenuItem;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.l;
 import java.util.HashMap;
 
@@ -16,16 +16,18 @@ final class WalletBalanceSaveUI$4$1$1
   
   public final void run()
   {
-    y.i("MicroMsg.WalletBalanceSaveUI", "dancy test get picture finish, notifyKey:%s, finalIconUrl:%s", new Object[] { this.mNE, this.qhA.mNB });
-    if (WalletBalanceSaveUI.d(this.qhA.qhz.qhx).containsKey(this.mNE))
+    AppMethodBeat.i(45472);
+    ab.i("MicroMsg.WalletBalanceSaveUI", "dancy test get picture finish, notifyKey:%s, finalIconUrl:%s", new Object[] { this.pnT, this.tOV.pnQ });
+    if (WalletBalanceSaveUI.d(this.tOV.tOU.tOS).containsKey(this.pnT))
     {
-      int i = ((Integer)WalletBalanceSaveUI.d(this.qhA.qhz.qhx).get(this.mNE)).intValue();
-      if (this.qhA.mNC.getItem(i) != null)
+      int i = ((Integer)WalletBalanceSaveUI.d(this.tOV.tOU.tOS).get(this.pnT)).intValue();
+      if (this.tOV.pnR.getItem(i) != null)
       {
-        this.qhA.mNC.getItem(i).setIcon(new BitmapDrawable(com.tencent.mm.sdk.platformtools.c.a(this.ara, this.qhA.qhz.qhx.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), this.qhA.qhz.qhx.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), true, false)));
-        this.qhA.qhz.qhy.cKf();
+        this.tOV.pnR.getItem(i).setIcon(new BitmapDrawable(com.tencent.mm.sdk.platformtools.d.a(this.val$bitmap, this.tOV.tOU.tOS.getResources().getDimensionPixelOffset(2131428824), this.tOV.tOU.tOS.getResources().getDimensionPixelOffset(2131428824), true, false)));
+        this.tOV.tOU.tOT.dPa();
       }
     }
+    AppMethodBeat.o(45472);
   }
 }
 

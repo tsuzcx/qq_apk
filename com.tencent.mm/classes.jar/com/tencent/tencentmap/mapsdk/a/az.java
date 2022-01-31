@@ -1,368 +1,308 @@
 package com.tencent.tencentmap.mapsdk.a;
 
+import com.tencent.map.lib.basemap.data.GeoPoint;
+import com.tencent.map.lib.element.j;
+import com.tencent.map.lib.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.ie;
+import com.tencent.tencentmap.mapsdk.maps.a.jx;
+import com.tencent.tencentmap.mapsdk.maps.a.jy;
+import com.tencent.tencentmap.mapsdk.maps.a.ka;
+import com.tencent.tencentmap.mapsdk.maps.a.kx;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 
 public class az
-  implements nr
+  extends ca
 {
-  Map<Integer, List<bg>> a = new HashMap();
-  Map<Integer, List<bg>> b = new HashMap();
-  List<bg> c = new ArrayList();
-  List<bg> d = new ArrayList();
-  List<bg> e = new ArrayList();
-  List<bg> f = new ArrayList();
-  ReentrantReadWriteLock g = new ReentrantReadWriteLock();
-  ReentrantReadWriteLock.ReadLock h = this.g.readLock();
-  ReentrantReadWriteLock.WriteLock i = this.g.writeLock();
-  String j;
-  private HashSet<String> k = new HashSet();
+  private kx a;
   
-  public az(String paramString)
+  public az(ie paramie)
   {
-    this.j = paramString;
+    AppMethodBeat.i(149793);
+    this.a = null;
+    this.a = ((kx)paramie.getVectorMapDelegate());
+    AppMethodBeat.o(149793);
   }
   
-  private ArrayList<bg> a(ArrayList<fq> paramArrayList, boolean paramBoolean)
+  private ArrayList<GeoPoint> a(List<cz> paramList)
   {
-    ArrayList localArrayList = new ArrayList(paramArrayList.size());
-    int m = 0;
-    while (m < paramArrayList.size())
+    AppMethodBeat.i(149803);
+    if (paramList == null)
     {
-      bg localbg = new bg(this.j, (fq)paramArrayList.get(m));
-      localbg.b(paramBoolean);
-      localArrayList.add(localbg);
-      m += 1;
+      AppMethodBeat.o(149803);
+      return null;
     }
-    Collections.sort(localArrayList);
+    int j = paramList.size();
+    if (j <= 0)
+    {
+      AppMethodBeat.o(149803);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject = (cz)paramList.get(i);
+      if (localObject != null)
+      {
+        localObject = ka.a((cz)localObject);
+        if (localObject != null) {
+          localArrayList.add(localObject);
+        }
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(149803);
     return localArrayList;
   }
   
-  public bg a(int paramInt1, int paramInt2)
+  dh a(di paramdi, ay paramay)
   {
-    try
+    AppMethodBeat.i(149795);
+    if (this.a == null)
     {
-      this.h.lock();
-      Object localObject1 = (List)this.b.get(Integer.valueOf(paramInt1));
-      if (localObject1 != null)
-      {
-        paramInt1 = ((List)localObject1).size();
-        if (paramInt1 != 0) {}
-      }
-      else
-      {
-        return null;
-      }
-      localObject1 = (bg)((List)localObject1).get(Math.abs(paramInt2) % ((List)localObject1).size());
-      return localObject1;
+      AppMethodBeat.o(149795);
+      return null;
     }
-    finally
+    jy localjy = new jy(this.a, paramdi);
+    localjy.a(paramdi);
+    localjy.c();
+    if (!this.a.a(localjy))
     {
-      this.h.unlock();
+      AppMethodBeat.o(149795);
+      return null;
     }
+    this.a.b().a();
+    paramdi = new dh(paramdi, paramay, localjy.A());
+    AppMethodBeat.o(149795);
+    return paramdi;
   }
   
-  public List<bg> a()
+  public void a()
   {
-    try
+    AppMethodBeat.i(149794);
+    if (this.a != null)
     {
-      this.h.lock();
-      List localList = this.d;
-      return localList;
+      this.a.b(jy.class);
+      this.a = null;
     }
-    finally
-    {
-      this.h.unlock();
-    }
+    AppMethodBeat.o(149794);
   }
   
-  public void a(bk parambk)
+  void a(String paramString)
   {
-    try
+    AppMethodBeat.i(149796);
+    if (this.a == null)
     {
-      this.i.lock();
-      Iterator localIterator = this.f.iterator();
-      while (localIterator.hasNext())
-      {
-        bg localbg = (bg)localIterator.next();
-        if (localbg.equals(parambk.d()))
-        {
-          localbg.a(true);
-          this.d.remove(localbg);
-          this.k.remove(localbg.a());
-          if (!this.e.contains(localbg)) {
-            this.e.add(localbg);
-          }
-          if (this.b.get(Integer.valueOf(localbg.e())) != null) {
-            ((List)this.b.get(Integer.valueOf(localbg.e()))).remove(localbg);
-          }
-        }
-      }
-    }
-    finally
-    {
-      this.i.unlock();
-    }
-    bc.c(this.j + " " + parambk.d() + " setServiceFail activeServices:" + this.d + " inactiveServices:" + this.e);
-  }
-  
-  public void a(ArrayList<fq> paramArrayList1, ArrayList<fq> paramArrayList2)
-  {
-    b(a(paramArrayList1, true), a(paramArrayList2, false));
-  }
-  
-  /* Error */
-  public boolean a(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 66	com/tencent/tencentmap/mapsdk/a/az:h	Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   4: invokevirtual 115	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:lock	()V
-    //   7: aload_0
-    //   8: getfield 37	com/tencent/tencentmap/mapsdk/a/az:a	Ljava/util/Map;
-    //   11: iload_1
-    //   12: invokestatic 121	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   15: invokeinterface 126 2 0
-    //   20: checkcast 128	java/util/List
-    //   23: astore_3
-    //   24: aload_3
-    //   25: ifnull +25 -> 50
-    //   28: aload_3
-    //   29: invokeinterface 216 1 0
-    //   34: istore_2
-    //   35: iload_2
-    //   36: ifne +14 -> 50
-    //   39: iconst_1
-    //   40: istore_2
-    //   41: aload_0
-    //   42: getfield 66	com/tencent/tencentmap/mapsdk/a/az:h	Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   45: invokevirtual 132	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
-    //   48: iload_2
-    //   49: ireturn
-    //   50: iconst_0
-    //   51: istore_2
-    //   52: goto -11 -> 41
-    //   55: astore_3
-    //   56: aload_0
-    //   57: getfield 66	com/tencent/tencentmap/mapsdk/a/az:h	Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   60: invokevirtual 132	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
-    //   63: aload_3
-    //   64: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	65	0	this	az
-    //   0	65	1	paramInt	int
-    //   34	18	2	bool	boolean
-    //   23	6	3	localList	List
-    //   55	9	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   0	24	55	finally
-    //   28	35	55	finally
-  }
-  
-  public List<bg> b()
-  {
-    try
-    {
-      this.h.lock();
-      List localList = this.e;
-      return localList;
-    }
-    finally
-    {
-      this.h.unlock();
-    }
-  }
-  
-  public void b(bk parambk)
-  {
-    try
-    {
-      this.i.lock();
-      Iterator localIterator = this.f.iterator();
-      while (localIterator.hasNext())
-      {
-        bg localbg = (bg)localIterator.next();
-        if (localbg.equals(parambk.d()))
-        {
-          localbg.a(false);
-          if (!this.d.contains(localbg))
-          {
-            this.d.add(localbg);
-            this.k.add(localbg.a());
-          }
-          if (this.b.get(Integer.valueOf(localbg.e())) == null) {
-            this.b.put(Integer.valueOf(localbg.e()), new ArrayList());
-          }
-          if (!((List)this.b.get(Integer.valueOf(localbg.e()))).contains(localbg)) {
-            ((List)this.b.get(Integer.valueOf(localbg.e()))).add(localbg);
-          }
-          this.e.remove(localbg);
-        }
-      }
-    }
-    finally
-    {
-      this.i.unlock();
-    }
-    bc.c(this.j + " " + parambk.d() + " setServiceActive activeServices:" + this.d + " inactiveServices:" + this.e);
-  }
-  
-  void b(ArrayList<bg> paramArrayList1, ArrayList<bg> paramArrayList2)
-  {
-    Object localObject = new HashMap();
-    HashMap localHashMap = new HashMap();
-    ArrayList localArrayList1 = new ArrayList();
-    HashSet localHashSet = new HashSet();
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList3 = new ArrayList();
-    ArrayList localArrayList4 = new ArrayList();
-    paramArrayList1 = paramArrayList1.iterator();
-    while (paramArrayList1.hasNext())
-    {
-      bg localbg = (bg)paramArrayList1.next();
-      if (!((Map)localObject).containsKey(Integer.valueOf(localbg.e()))) {
-        ((Map)localObject).put(Integer.valueOf(localbg.e()), new ArrayList());
-      }
-      if (!localHashMap.containsKey(Integer.valueOf(localbg.e()))) {
-        localHashMap.put(Integer.valueOf(localbg.e()), new ArrayList());
-      }
-      ((List)((Map)localObject).get(Integer.valueOf(localbg.e()))).add(localbg);
-      ((List)localHashMap.get(Integer.valueOf(localbg.e()))).add(localbg);
-      localArrayList1.add(localbg);
-      localHashSet.add(localbg.a());
-      localArrayList3.add(localbg);
-      localArrayList4.add(localbg);
-    }
-    paramArrayList1 = paramArrayList2.iterator();
-    while (paramArrayList1.hasNext())
-    {
-      paramArrayList2 = (bg)paramArrayList1.next();
-      if (!((Map)localObject).containsKey(Integer.valueOf(paramArrayList2.e()))) {
-        ((Map)localObject).put(Integer.valueOf(paramArrayList2.e()), new ArrayList());
-      }
-      ((List)((Map)localObject).get(Integer.valueOf(paramArrayList2.e()))).add(paramArrayList2);
-      localArrayList2.add(paramArrayList2);
-      localArrayList3.add(paramArrayList2);
-    }
-    try
-    {
-      this.i.lock();
-      this.c = localArrayList4;
-      this.a = ((Map)localObject);
-      this.b = localHashMap;
-      this.d = localArrayList1;
-      this.k = localHashSet;
-      this.e = localArrayList2;
-      this.f = localArrayList3;
-      this.i.unlock();
-      paramArrayList1 = new StringBuffer();
-      paramArrayList1.append(this.j + " setServices gridServices:" + this.a + " gridActiveServices:" + this.b);
-      paramArrayList1.append(" allServices: ");
-      paramArrayList2 = this.f.iterator();
-      if (paramArrayList2.hasNext())
-      {
-        localObject = (bg)paramArrayList2.next();
-        paramArrayList1.append(localObject + ";");
-      }
+      AppMethodBeat.o(149796);
       return;
     }
-    finally
+    this.a.b(paramString, true);
+    this.a.b().a();
+    AppMethodBeat.o(149796);
+  }
+  
+  void a(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(149800);
+    if ((this.a == null) || (this.a.b() == null))
     {
-      this.i.unlock();
+      AppMethodBeat.o(149800);
+      return;
+    }
+    synchronized (this.a.b)
+    {
+      paramString = this.a.b(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(149800);
+        return;
+      }
+      paramString.d(paramFloat);
+      this.a.b().a();
+      AppMethodBeat.o(149800);
+      return;
     }
   }
   
-  public List<bg> c()
+  void a(String paramString, int paramInt)
   {
-    try
+    AppMethodBeat.i(149797);
+    if (this.a == null)
     {
-      this.h.lock();
-      List localList = this.f;
-      return localList;
+      AppMethodBeat.o(149797);
+      return;
     }
-    finally
+    synchronized (this.a.b)
     {
-      this.h.unlock();
+      paramString = this.a.b(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(149797);
+        return;
+      }
+      paramString.d(paramInt);
+      this.a.b().a();
+      AppMethodBeat.o(149797);
+      return;
     }
   }
   
-  public boolean c(bk parambk)
+  void a(String paramString, List<cz> paramList)
   {
-    return this.k.contains(parambk.e());
-  }
-  
-  /* Error */
-  public boolean d()
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: getfield 66	com/tencent/tencentmap/mapsdk/a/az:h	Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   6: invokevirtual 115	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:lock	()V
-    //   9: aload_0
-    //   10: getfield 37	com/tencent/tencentmap/mapsdk/a/az:a	Ljava/util/Map;
-    //   13: invokeinterface 248 1 0
-    //   18: istore_1
-    //   19: iload_1
-    //   20: iconst_1
-    //   21: if_icmpne +12 -> 33
-    //   24: aload_0
-    //   25: getfield 66	com/tencent/tencentmap/mapsdk/a/az:h	Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   28: invokevirtual 132	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
-    //   31: iload_2
-    //   32: ireturn
-    //   33: iconst_0
-    //   34: istore_2
-    //   35: goto -11 -> 24
-    //   38: astore_3
-    //   39: aload_0
-    //   40: getfield 66	com/tencent/tencentmap/mapsdk/a/az:h	Ljava/util/concurrent/locks/ReentrantReadWriteLock$ReadLock;
-    //   43: invokevirtual 132	java/util/concurrent/locks/ReentrantReadWriteLock$ReadLock:unlock	()V
-    //   46: aload_3
-    //   47: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	48	0	this	az
-    //   18	4	1	m	int
-    //   1	34	2	bool	boolean
-    //   38	9	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	19	38	finally
-  }
-  
-  public String e()
-  {
-    return this.j;
-  }
-  
-  public List<bg> f()
-  {
-    return this.c;
-  }
-  
-  public String toString()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append(this.j);
-    Iterator localIterator = this.f.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(149798);
+    if ((this.a == null) || (this.a.b() == null))
     {
-      bg localbg = (bg)localIterator.next();
-      localStringBuffer.append(";" + localbg.d());
+      AppMethodBeat.o(149798);
+      return;
     }
-    return localStringBuffer.toString();
+    synchronized (this.a.b)
+    {
+      paramString = this.a.b(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(149798);
+        return;
+      }
+      if (!(paramString instanceof jy))
+      {
+        AppMethodBeat.o(149798);
+        return;
+      }
+      paramString = (jy)paramString;
+      paramString.a(a(paramList));
+      paramString.c();
+      this.a.b().a();
+      AppMethodBeat.o(149798);
+      return;
+    }
+  }
+  
+  void a(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(149801);
+    if ((this.a == null) || (this.a.b() == null))
+    {
+      AppMethodBeat.o(149801);
+      return;
+    }
+    synchronized (this.a.b)
+    {
+      paramString = this.a.b(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(149801);
+        return;
+      }
+      paramString.a(paramBoolean);
+      this.a.b().a();
+      AppMethodBeat.o(149801);
+      return;
+    }
+  }
+  
+  List<j> b(String paramString)
+  {
+    AppMethodBeat.i(149805);
+    if ((this.a == null) || (this.a.b() == null))
+    {
+      AppMethodBeat.o(149805);
+      return null;
+    }
+    synchronized (this.a.b)
+    {
+      paramString = this.a.b(paramString);
+      if ((paramString == null) || (!(paramString instanceof jy)))
+      {
+        AppMethodBeat.o(149805);
+        return null;
+      }
+      paramString = (jy)paramString;
+      ??? = new ArrayList(1);
+      ((List)???).add(paramString);
+      AppMethodBeat.o(149805);
+      return ???;
+    }
+  }
+  
+  void b()
+  {
+    AppMethodBeat.i(149804);
+    if (this.a != null) {
+      this.a.c(jy.class);
+    }
+    AppMethodBeat.o(149804);
+  }
+  
+  void b(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(149802);
+    if ((this.a == null) || (this.a.b() == null))
+    {
+      AppMethodBeat.o(149802);
+      return;
+    }
+    synchronized (this.a.b)
+    {
+      paramString = this.a.b(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(149802);
+        return;
+      }
+      paramString.c(paramFloat);
+      this.a.b().a();
+      AppMethodBeat.o(149802);
+      return;
+    }
+  }
+  
+  void b(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(149799);
+    if ((this.a == null) || (this.a.b() == null))
+    {
+      AppMethodBeat.o(149799);
+      return;
+    }
+    synchronized (this.a.b)
+    {
+      paramString = this.a.b(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(149799);
+        return;
+      }
+      paramString.c(paramInt);
+      this.a.b().a();
+      AppMethodBeat.o(149799);
+      return;
+    }
+  }
+  
+  void c(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(149806);
+    if ((this.a == null) || (this.a.b() == null))
+    {
+      AppMethodBeat.o(149806);
+      return;
+    }
+    synchronized (this.a.b)
+    {
+      paramString = this.a.b(paramString);
+      if (paramString == null)
+      {
+        AppMethodBeat.o(149806);
+        return;
+      }
+      paramString.a_(paramInt);
+      paramString.c();
+      this.a.b().a();
+      AppMethodBeat.o(149806);
+      return;
+    }
   }
 }
 

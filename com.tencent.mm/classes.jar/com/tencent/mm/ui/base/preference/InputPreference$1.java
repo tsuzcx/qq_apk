@@ -3,6 +3,7 @@ package com.tencent.mm.ui.base.preference;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class InputPreference$1
   implements View.OnClickListener
@@ -11,9 +12,19 @@ final class InputPreference$1
   
   public final void onClick(View paramView)
   {
-    if ((InputPreference.a(this.vcQ) != null) && (InputPreference.b(this.vcQ) != null) && (InputPreference.b(this.vcQ).getText() != null)) {
-      InputPreference.b(this.vcQ).getText().toString();
+    AppMethodBeat.i(107195);
+    if ((InputPreference.a(this.zrq) != null) && (InputPreference.b(this.zrq) != null))
+    {
+      if (InputPreference.b(this.zrq).getText() == null)
+      {
+        InputPreference.a(this.zrq);
+        AppMethodBeat.o(107195);
+        return;
+      }
+      InputPreference.a(this.zrq);
+      InputPreference.b(this.zrq).getText();
     }
+    AppMethodBeat.o(107195);
   }
 }
 

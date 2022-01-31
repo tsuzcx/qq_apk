@@ -3,15 +3,15 @@ package com.tencent.mm.app.plugin;
 import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.wallet.a;
-import com.tencent.mm.pluginsdk.s;
 import com.tencent.mm.pluginsdk.ui.applet.m;
 import com.tencent.mm.pluginsdk.ui.d.g;
+import com.tencent.mm.pluginsdk.v;
 import com.tencent.mm.pluginsdk.wallet.h;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 @URISpanHandlerSet.a
 class URISpanHandlerSet$PayTransferUriSpanHandler
@@ -22,30 +22,37 @@ class URISpanHandlerSet$PayTransferUriSpanHandler
     super(paramURISpanHandlerSet);
   }
   
+  final int[] Cf()
+  {
+    return new int[0];
+  }
+  
   final boolean a(m paramm, g paramg)
   {
     return false;
   }
   
-  final boolean a(String paramString, boolean paramBoolean, s params, Bundle paramBundle)
+  final boolean a(String paramString, boolean paramBoolean, v paramv, Bundle paramBundle)
   {
+    AppMethodBeat.i(15681);
     if (paramString.startsWith("wxpay://"))
     {
-      if (params == null) {
-        break label215;
+      if (paramv == null) {
+        break label244;
       }
-      paramBundle = params.cko().toString();
-      params = params.ckp();
-      if (!(params instanceof a)) {
-        break label210;
+      paramBundle = paramv.dkU().toString();
+      paramv = paramv.dkV();
+      if (!(paramv instanceof a)) {
+        break label239;
       }
-      params = (a)params;
+      paramv = (a)paramv;
     }
     for (;;)
     {
-      if (bk.bl(paramBundle))
+      if (bo.isNullOrNil(paramBundle))
       {
-        y.e("MicroMsg.URISpanHandlerSet", "SERVICE_JUMP_TO_PAY fail, null username");
+        ab.e("MicroMsg.URISpanHandlerSet", "SERVICE_JUMP_TO_PAY fail, null username");
+        AppMethodBeat.o(15681);
         return false;
       }
       String str = paramString.substring(8);
@@ -57,38 +64,36 @@ class URISpanHandlerSet$PayTransferUriSpanHandler
       if (i >= 0) {}
       for (paramString = paramString.substring(i + 1);; paramString = "")
       {
-        if (bk.getInt(paramString, 0) == 1)
+        if (bo.getInt(paramString, 0) == 1)
         {
-          if ((q.Gx()) || (q.Gy())) {
-            h.a(URISpanHandlerSet.a(this.byk), 5, paramBundle, 11, params);
+          if ((r.ZC()) || (r.ZD())) {
+            h.a(URISpanHandlerSet.a(this.cam), 5, paramBundle, 11, paramv);
           }
           for (;;)
           {
+            AppMethodBeat.o(15681);
             return true;
-            h.a(URISpanHandlerSet.a(this.byk), 2, paramBundle, 11, params);
+            h.a(URISpanHandlerSet.a(this.cam), 2, paramBundle, 11, paramv);
           }
         }
-        Toast.makeText(URISpanHandlerSet.a(this.byk), URISpanHandlerSet.a(this.byk).getString(R.l.service_app_service_not_support), 0).show();
+        Toast.makeText(URISpanHandlerSet.a(this.cam), URISpanHandlerSet.a(this.cam).getString(2131303134), 0).show();
+        AppMethodBeat.o(15681);
         return false;
+        AppMethodBeat.o(15681);
         return false;
       }
-      label210:
-      params = null;
+      label239:
+      paramv = null;
       continue;
-      label215:
-      params = null;
+      label244:
+      paramv = null;
       paramBundle = null;
     }
   }
   
-  final m cA(String paramString)
+  final m dN(String paramString)
   {
     return null;
-  }
-  
-  final int[] tA()
-  {
-    return new int[0];
   }
 }
 

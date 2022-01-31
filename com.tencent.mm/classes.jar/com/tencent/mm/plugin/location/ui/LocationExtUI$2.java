@@ -3,10 +3,7 @@ package com.tencent.mm.plugin.location.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.map.a.a;
-import com.tencent.mm.plugin.map.a.h;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LocationExtUI$2
   implements View.OnClickListener
@@ -15,16 +12,18 @@ final class LocationExtUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = new Intent(this.lEO.mController.uMN, RemarkUI.class);
+    AppMethodBeat.i(113432);
+    paramView = new Intent(this.occ.getContext(), RemarkUI.class);
     paramView.putExtra("key_nullable", true);
-    paramView.putExtra("key_value", this.lEO.getIntent().getStringExtra("key_value"));
-    paramView.putExtra("key_hint", this.lEO.getString(a.h.location_remark_hint));
-    paramView.putExtra("Kwebmap_locaion", this.lEO.getIntent().getStringExtra("Kwebmap_locaion"));
-    paramView.putExtra("MMActivity.OverrideExitAnimation", a.a.push_down_out);
-    paramView.putExtra("MMActivity.OverrideEnterAnimation", a.a.fast_faded_in);
-    paramView.putExtra("kFavInfoLocalId", this.lEO.getIntent().getLongExtra("kFavInfoLocalId", -1L));
-    paramView.putExtra("kRemark", this.lEO.getIntent().getStringExtra("kRemark"));
-    this.lEO.startActivityForResult(paramView, 4097);
+    paramView.putExtra("key_value", this.occ.getIntent().getStringExtra("key_value"));
+    paramView.putExtra("key_hint", this.occ.getString(2131301102));
+    paramView.putExtra("Kwebmap_locaion", this.occ.getIntent().getStringExtra("Kwebmap_locaion"));
+    paramView.putExtra("MMActivity.OverrideExitAnimation", 2131034228);
+    paramView.putExtra("MMActivity.OverrideEnterAnimation", 2131034181);
+    paramView.putExtra("kFavInfoLocalId", this.occ.getIntent().getLongExtra("kFavInfoLocalId", -1L));
+    paramView.putExtra("kRemark", this.occ.getIntent().getStringExtra("kRemark"));
+    this.occ.startActivityForResult(paramView, 4097);
+    AppMethodBeat.o(113432);
   }
 }
 

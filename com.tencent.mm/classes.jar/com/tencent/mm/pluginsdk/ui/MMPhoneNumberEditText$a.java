@@ -2,9 +2,9 @@ package com.tencent.mm.pluginsdk.ui;
 
 public abstract interface MMPhoneNumberEditText$a
 {
-  public abstract void cmo();
+  public abstract void dne();
   
-  public abstract void cmp();
+  public abstract void dnf();
   
   public abstract void f(MMPhoneNumberEditText paramMMPhoneNumberEditText);
   

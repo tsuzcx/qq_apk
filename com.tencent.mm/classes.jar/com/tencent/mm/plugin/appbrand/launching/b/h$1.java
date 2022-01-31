@@ -1,46 +1,44 @@
 package com.tencent.mm.plugin.appbrand.launching.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.a;
-import com.tencent.mm.plugin.appbrand.launching.t;
-import com.tencent.mm.plugin.appbrand.r.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.service.i.a;
 
 final class h$1
-  implements c.a
+  implements i.a
 {
-  h$1(h.a parama, t paramt) {}
+  h$1(h.a parama, com.tencent.mm.plugin.appbrand.launching.ab paramab) {}
   
-  public final void b(WxaAttributes paramWxaAttributes)
+  public final void d(WxaAttributes paramWxaAttributes)
   {
+    AppMethodBeat.i(132044);
     if (paramWxaAttributes == null)
     {
-      y.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, get contact info fail");
-      h.a(this.gMk);
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, get contact info fail");
+      h.a(this.inB);
+      AppMethodBeat.o(132044);
       return;
     }
-    if (paramWxaAttributes.aen().dWx == 4) {}
-    for (int i = 1;; i = 0)
+    boolean bool = paramWxaAttributes.ayC().vY();
+    if (((this.inC.Dn("banJumpGame")) && (bool)) || ((this.inC.Dn("banJumpApp")) && (!bool)))
     {
-      if (((!this.gMl.uU("banJumpGame")) || (i == 0)) && ((!this.gMl.uU("banJumpApp")) || (i != 0))) {
-        break label92;
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, return should ban jump");
+      paramWxaAttributes = this.inB;
+      if (paramWxaAttributes != null) {
+        paramWxaAttributes.aHo();
       }
-      y.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, return should ban jump");
-      paramWxaAttributes = this.gMk;
-      if (paramWxaAttributes == null) {
-        break;
-      }
-      paramWxaAttributes.alU();
+      AppMethodBeat.o(132044);
       return;
     }
-    label92:
-    y.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, no need to ban jump");
-    h.a(this.gMk);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.AppBrand.WxaBanJumpHelper", "[banjump] shouldBanJump, no need to ban jump");
+    h.a(this.inB);
+    AppMethodBeat.o(132044);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.b.h.1
  * JD-Core Version:    0.7.0.1
  */

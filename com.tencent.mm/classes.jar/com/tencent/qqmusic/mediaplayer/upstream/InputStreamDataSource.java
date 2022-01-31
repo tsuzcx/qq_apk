@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.formatdetector.FormatDetector;
 import java.io.IOException;
@@ -20,14 +21,19 @@ public class InputStreamDataSource
   
   public void close()
   {
+    AppMethodBeat.i(128365);
     if (this.currentStream != null) {
       this.currentStream.close();
     }
+    AppMethodBeat.o(128365);
   }
   
   public AudioFormat.AudioType getAudioType()
   {
-    return FormatDetector.getAudioFormat(this, false);
+    AppMethodBeat.i(128364);
+    AudioFormat.AudioType localAudioType = FormatDetector.getAudioFormat(this, false);
+    AppMethodBeat.o(128364);
+    return localAudioType;
   }
   
   public long getSize()
@@ -37,49 +43,55 @@ public class InputStreamDataSource
   
   public void open()
   {
+    AppMethodBeat.i(128362);
     if (this.currentStream != null) {
       this.currentStream.close();
     }
     this.currentStream = this.factory.create();
     this.size = this.currentStream.available();
     this.currentPosition = 0L;
+    AppMethodBeat.o(128362);
   }
   
   public int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(128363);
     if (paramLong < this.currentPosition)
     {
       open();
       paramInt1 = readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
-    }
-    do
-    {
+      AppMethodBeat.o(128363);
       return paramInt1;
-      if (paramLong > this.currentPosition)
+    }
+    if (paramLong > this.currentPosition)
+    {
+      long l1 = paramLong - this.currentPosition;
+      long l3;
+      long l2;
+      do
       {
-        long l1 = paramLong - this.currentPosition;
-        long l3;
-        long l2;
         do
         {
-          do
-          {
-            l3 = this.currentStream.skip(l1);
-            l2 = l1 - l3;
-            l1 = l2;
-          } while (l2 > 0L);
+          l3 = this.currentStream.skip(l1);
+          l2 = l1 - l3;
           l1 = l2;
-        } while (l3 <= 0L);
-        if (l2 < 0L) {
-          throw new IOException("skipped too much bytes");
-        }
-        this.currentPosition = paramLong;
+        } while (l2 > 0L);
+        l1 = l2;
+      } while (l3 <= 0L);
+      if (l2 < 0L)
+      {
+        paramArrayOfByte = new IOException("skipped too much bytes");
+        AppMethodBeat.o(128363);
+        throw paramArrayOfByte;
       }
-      paramInt2 = this.currentStream.read(paramArrayOfByte, paramInt1, paramInt2);
-      paramInt1 = paramInt2;
-    } while (paramInt2 <= 0);
-    this.currentPosition += paramInt2;
-    return paramInt2;
+      this.currentPosition = paramLong;
+    }
+    paramInt1 = this.currentStream.read(paramArrayOfByte, paramInt1, paramInt2);
+    if (paramInt1 > 0) {
+      this.currentPosition += paramInt1;
+    }
+    AppMethodBeat.o(128363);
+    return paramInt1;
   }
 }
 

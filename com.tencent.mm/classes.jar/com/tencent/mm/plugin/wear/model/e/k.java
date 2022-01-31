@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.wear.model.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.chatroom.e.b;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.wear.model.g;
-import com.tencent.mm.protocal.c.cjx;
+import com.tencent.mm.protocal.protobuf.cxk;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import java.io.IOException;
@@ -17,67 +18,71 @@ import java.util.List;
 public final class k
   extends a
 {
-  public final List<Integer> bYY()
+  public final List<Integer> cYL()
   {
+    AppMethodBeat.i(26407);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(11011));
     localArrayList.add(Integer.valueOf(11010));
+    AppMethodBeat.o(26407);
     return localArrayList;
   }
   
-  protected final byte[] p(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] q(int paramInt, byte[] paramArrayOfByte)
   {
-    Object localObject;
+    AppMethodBeat.i(26408);
     switch (paramInt)
     {
-    default: 
-      return null;
-    case 11010: 
-      localObject = new cjx();
     }
-    try
+    for (;;)
     {
-      ((cjx)localObject).aH(paramArrayOfByte);
-      label40:
-      com.tencent.mm.plugin.wear.model.a.bYL().qRw.cI(((cjx)localObject).tXp, ((cjx)localObject).tXB);
+      AppMethodBeat.o(26408);
       return null;
+      Object localObject = new cxk();
       try
       {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf8");
-        au.Hx();
-        localObject = c.Fw().abl(paramArrayOfByte);
-        if (s.fn(paramArrayOfByte))
+        ((cxk)localObject).parseFrom(paramArrayOfByte);
+        label50:
+        com.tencent.mm.plugin.wear.model.a.cYy().uGE.dH(((cxk)localObject).xlH, ((cxk)localObject).xLK);
+        AppMethodBeat.o(26408);
+        return null;
+        try
         {
-          au.Hx();
-          localObject = c.Fw().abl(paramArrayOfByte);
-          ((ad)localObject).fq(0);
-          au.Hx();
-          c.Fw().a(paramArrayOfByte, (ad)localObject);
-          au.Hx();
-          c.Fv().b(new b(paramArrayOfByte, 0));
-          com.tencent.mm.plugin.wear.model.c.a.ez(4, 0);
-          return null;
+          paramArrayOfByte = new String(paramArrayOfByte, "utf8");
+          aw.aaz();
+          localObject = c.YA().arw(paramArrayOfByte);
+          if (t.lA(paramArrayOfByte))
+          {
+            aw.aaz();
+            localObject = c.YA().arw(paramArrayOfByte);
+            ((ad)localObject).hB(0);
+            aw.aaz();
+            c.YA().b(paramArrayOfByte, (ad)localObject);
+            aw.aaz();
+            c.Yz().c(new b(paramArrayOfByte, 0));
+            com.tencent.mm.plugin.wear.model.c.a.gD(4, 0);
+          }
+        }
+        catch (UnsupportedEncodingException paramArrayOfByte)
+        {
+          for (;;)
+          {
+            paramArrayOfByte = "";
+            continue;
+            t.o((ad)localObject);
+          }
         }
       }
-      catch (UnsupportedEncodingException paramArrayOfByte)
+      catch (IOException paramArrayOfByte)
       {
-        for (;;)
-        {
-          paramArrayOfByte = "";
-          continue;
-          s.o((ad)localObject);
-        }
+        break label50;
       }
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      break label40;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.k
  * JD-Core Version:    0.7.0.1
  */

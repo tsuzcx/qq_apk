@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
 import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ComposeUI$18
   implements Runnable
@@ -9,7 +10,9 @@ final class ComposeUI$18
   
   public final void run()
   {
-    ComposeUI.g(this.ngJ).fullScroll(130);
+    AppMethodBeat.i(68196);
+    ComposeUI.g(this.pLX).fullScroll(130);
+    AppMethodBeat.o(68196);
   }
 }
 

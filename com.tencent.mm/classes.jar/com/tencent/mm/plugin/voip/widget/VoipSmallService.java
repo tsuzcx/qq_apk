@@ -4,33 +4,47 @@ import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.luggage.g.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class VoipSmallService
   extends Service
 {
   public IBinder onBind(Intent paramIntent)
   {
-    y.i("MicroMsg.VoipSmallService", "VoipSmallService onBind");
+    AppMethodBeat.i(5167);
+    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onBind");
+    paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
+    if ((b.fv(26)) && (paramIntent != null)) {
+      startForeground(40, paramIntent);
+    }
+    AppMethodBeat.o(5167);
     return null;
   }
   
   public void onCreate()
   {
-    y.i("MicroMsg.VoipSmallService", "VoipSmallService onCreate");
-    startForeground(-1234, new Notification());
+    AppMethodBeat.i(5169);
+    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onCreate");
+    AppMethodBeat.o(5169);
   }
   
   public void onDestroy()
   {
-    y.i("MicroMsg.VoipSmallService", "VoipSmallService onDestroy");
+    AppMethodBeat.i(5170);
+    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onDestroy");
+    AppMethodBeat.o(5170);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    y.i("MicroMsg.VoipSmallService", "VoipSmallService onUnbind");
+    AppMethodBeat.i(5168);
+    ab.i("MicroMsg.VoipSmallService", "VoipSmallService onUnbind");
     stopSelf();
-    return super.onUnbind(paramIntent);
+    boolean bool = super.onUnbind(paramIntent);
+    AppMethodBeat.o(5168);
+    return bool;
   }
 }
 

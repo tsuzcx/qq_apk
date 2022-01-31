@@ -3,9 +3,8 @@ package android.support.v7.widget;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.support.v4.view.q;
-import android.support.v7.a.a.f;
-import android.support.v7.a.a.j;
+import android.support.v4.view.t;
+import android.support.v7.a.a.a;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -16,15 +15,15 @@ import android.widget.LinearLayout.LayoutParams;
 public class ButtonBarLayout
   extends LinearLayout
 {
-  private boolean aaR;
-  private int aaS = -1;
-  private int aaT = 0;
+  private boolean abC;
+  private int abD = -1;
+  private int abE = 0;
   
   public ButtonBarLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.j.ButtonBarLayout);
-    this.aaR = paramContext.getBoolean(a.j.ButtonBarLayout_allowStacking, true);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ButtonBarLayout);
+    this.abC = paramContext.getBoolean(0, true);
     paramContext.recycle();
   }
   
@@ -41,7 +40,7 @@ public class ButtonBarLayout
     return -1;
   }
   
-  private boolean gt()
+  private boolean ht()
   {
     return getOrientation() == 1;
   }
@@ -55,19 +54,19 @@ public class ButtonBarLayout
       i = 1;
       setOrientation(i);
       if (!paramBoolean) {
-        break label78;
+        break label77;
       }
       i = 5;
       setGravity(i);
-      localView = findViewById(a.f.spacer);
+      localView = findViewById(2131820931);
       if (localView != null) {
         if (!paramBoolean) {
-          break label84;
+          break label83;
         }
       }
     }
-    label78:
-    label84:
+    label77:
+    label83:
     for (int i = 8;; i = 4)
     {
       localView.setVisibility(i);
@@ -86,30 +85,30 @@ public class ButtonBarLayout
   
   public int getMinimumHeight()
   {
-    return Math.max(this.aaT, super.getMinimumHeight());
+    return Math.max(this.abE, super.getMinimumHeight());
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt1);
-    if (this.aaR)
+    if (this.abC)
     {
-      if ((i > this.aaS) && (gt())) {
+      if ((i > this.abD) && (ht())) {
         setStacked(false);
       }
-      this.aaS = i;
+      this.abD = i;
     }
     int j;
-    if ((!gt()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
+    if ((!ht()) && (View.MeasureSpec.getMode(paramInt1) == 1073741824))
     {
       j = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
       i = 1;
       super.onMeasure(j, paramInt2);
       int k = i;
-      if (this.aaR)
+      if (this.abC)
       {
         k = i;
-        if (!gt())
+        if (!ht())
         {
           if ((getMeasuredWidthAndState() & 0xFF000000) != 16777216) {
             break label261;
@@ -137,7 +136,7 @@ public class ButtonBarLayout
       i = localView.getMeasuredHeight();
       j = localLayoutParams.topMargin;
       paramInt2 = localLayoutParams.bottomMargin + (i + paramInt2 + j) + 0;
-      if (!gt()) {
+      if (!ht()) {
         break label267;
       }
       i = br(paramInt1 + 1);
@@ -148,7 +147,7 @@ public class ButtonBarLayout
     }
     for (;;)
     {
-      if (q.X(this) != paramInt1) {
+      if (t.aa(this) != paramInt1) {
         setMinimumHeight(paramInt1);
       }
       return;
@@ -168,10 +167,10 @@ public class ButtonBarLayout
   
   public void setAllowStacking(boolean paramBoolean)
   {
-    if (this.aaR != paramBoolean)
+    if (this.abC != paramBoolean)
     {
-      this.aaR = paramBoolean;
-      if ((!this.aaR) && (getOrientation() == 1)) {
+      this.abC = paramBoolean;
+      if ((!this.abC) && (getOrientation() == 1)) {
         setStacked(false);
       }
       requestLayout();

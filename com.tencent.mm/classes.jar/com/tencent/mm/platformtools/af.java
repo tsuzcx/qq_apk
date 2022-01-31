@@ -1,5 +1,6 @@
 package com.tencent.mm.platformtools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.util.Random;
 public final class af
 {
   private int crypt;
-  private boolean header = true;
+  private boolean header;
   private byte[] key;
   private byte[] out;
   private int padding;
@@ -16,10 +17,19 @@ public final class af
   private int pos;
   private int preCrypt;
   private byte[] prePlain;
-  private Random random = new Random();
+  private Random random;
+  
+  public af()
+  {
+    AppMethodBeat.i(79042);
+    this.header = true;
+    this.random = new Random();
+    AppMethodBeat.o(79042);
+  }
   
   private byte[] encipher(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(79044);
     int i = 16;
     for (;;)
     {
@@ -32,17 +42,18 @@ public final class af
       long l1;
       try
       {
-        l3 = y(paramArrayOfByte, 0);
-        l2 = y(paramArrayOfByte, 4);
-        l4 = y(this.key, 0);
-        l5 = y(this.key, 4);
-        l6 = y(this.key, 8);
-        l7 = y(this.key, 12);
+        l3 = z(paramArrayOfByte, 0);
+        l2 = z(paramArrayOfByte, 4);
+        l4 = z(this.key, 0);
+        l5 = z(this.key, 4);
+        l6 = z(this.key, 8);
+        l7 = z(this.key, 12);
         l1 = 0L;
       }
       catch (IOException paramArrayOfByte)
       {
         DataOutputStream localDataOutputStream;
+        AppMethodBeat.o(79044);
         return null;
       }
       paramArrayOfByte = new ByteArrayOutputStream(8);
@@ -51,6 +62,7 @@ public final class af
       localDataOutputStream.writeInt((int)l2);
       localDataOutputStream.close();
       paramArrayOfByte = paramArrayOfByte.toByteArray();
+      AppMethodBeat.o(79044);
       return paramArrayOfByte;
       while (i > 0)
       {
@@ -64,6 +76,7 @@ public final class af
   
   private void encrypt8Bytes()
   {
+    AppMethodBeat.i(79045);
     this.pos = 0;
     byte[] arrayOfByte;
     int i;
@@ -96,9 +109,10 @@ public final class af
     this.crypt += 8;
     this.pos = 0;
     this.header = false;
+    AppMethodBeat.o(79045);
   }
   
-  private static long y(byte[] paramArrayOfByte, int paramInt)
+  private static long z(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
     int i = paramInt;
@@ -112,6 +126,7 @@ public final class af
   
   public final byte[] a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
+    AppMethodBeat.i(79043);
     this.plain = new byte[8];
     this.prePlain = new byte[8];
     this.pos = 1;
@@ -160,7 +175,7 @@ public final class af
     if (i > 0)
     {
       if (this.pos >= 8) {
-        break label430;
+        break label442;
       }
       paramArrayOfByte2 = this.plain;
       int k = this.pos;
@@ -170,7 +185,7 @@ public final class af
       i -= 1;
       paramInt = j;
     }
-    label430:
+    label442:
     for (;;)
     {
       if (this.pos == 8)
@@ -192,7 +207,9 @@ public final class af
             encrypt8Bytes();
           }
         }
-        return this.out;
+        paramArrayOfByte1 = this.out;
+        AppMethodBeat.o(79043);
+        return paramArrayOfByte1;
       }
       break;
     }
@@ -200,7 +217,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.platformtools.af
  * JD-Core Version:    0.7.0.1
  */

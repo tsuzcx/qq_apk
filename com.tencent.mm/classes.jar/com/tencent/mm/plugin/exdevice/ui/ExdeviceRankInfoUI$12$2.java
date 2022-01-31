@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ExdeviceRankInfoUI$12$2
   implements Runnable
@@ -10,8 +10,10 @@ final class ExdeviceRankInfoUI$12$2
   
   public final void run()
   {
-    Toast.makeText(this.jFW.jFV, R.l.exdevice_open_rank_list_failed, 1).show();
-    this.jFW.jFV.finish();
+    AppMethodBeat.i(20147);
+    Toast.makeText(this.lPu.lPt, 2131299433, 1).show();
+    this.lPu.lPt.finish();
+    AppMethodBeat.o(20147);
   }
 }
 

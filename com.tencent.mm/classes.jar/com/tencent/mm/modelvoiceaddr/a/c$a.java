@@ -2,17 +2,17 @@ package com.tencent.mm.modelvoiceaddr.a;
 
 public abstract interface c$a
 {
-  public abstract void TA();
+  public abstract void CO();
   
-  public abstract void TB();
+  public abstract void amM();
   
-  public abstract void b(short[] paramArrayOfShort, int paramInt);
+  public abstract void amN();
   
-  public abstract void tW();
+  public abstract void c(short[] paramArrayOfShort, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelvoiceaddr.a.c.a
  * JD-Core Version:    0.7.0.1
  */

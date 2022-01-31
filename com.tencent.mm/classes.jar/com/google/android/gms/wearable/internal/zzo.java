@@ -1,121 +1,145 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
-import com.google.android.gms.common.internal.zzac;
-import com.google.android.gms.wearable.CapabilityInfo;
-import com.google.android.gms.wearable.Node;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import android.content.IntentFilter;
+import android.net.Uri;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.common.internal.Asserts;
+import com.google.android.gms.common.internal.Preconditions;
+import com.google.android.gms.wearable.CapabilityApi;
+import com.google.android.gms.wearable.CapabilityApi.AddLocalCapabilityResult;
+import com.google.android.gms.wearable.CapabilityApi.CapabilityListener;
+import com.google.android.gms.wearable.CapabilityApi.GetAllCapabilitiesResult;
+import com.google.android.gms.wearable.CapabilityApi.GetCapabilityResult;
+import com.google.android.gms.wearable.CapabilityApi.RemoveLocalCapabilityResult;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzo
-  extends zza
-  implements CapabilityInfo
+public final class zzo
+  implements CapabilityApi
 {
-  public static final Parcelable.Creator<zzo> CREATOR = new zzp();
-  private final String mName;
-  private Set<Node> zzbTR;
-  private final List<zzcc> zzbTU;
-  private final Object zzrJ = new Object();
-  
-  public zzo(String paramString, List<zzcc> paramList)
+  private static PendingResult<Status> zza(GoogleApiClient paramGoogleApiClient, CapabilityApi.CapabilityListener paramCapabilityListener, IntentFilter[] paramArrayOfIntentFilter)
   {
-    this.mName = paramString;
-    this.zzbTU = paramList;
-    this.zzbTR = null;
-    zzUr();
+    AppMethodBeat.i(71461);
+    paramGoogleApiClient = zzb.zza(paramGoogleApiClient, new zzt(paramArrayOfIntentFilter), paramCapabilityListener);
+    AppMethodBeat.o(71461);
+    return paramGoogleApiClient;
   }
   
-  private void zzUr()
+  public final PendingResult<Status> addCapabilityListener(GoogleApiClient paramGoogleApiClient, CapabilityApi.CapabilityListener paramCapabilityListener, String paramString)
   {
-    zzac.zzw(this.mName);
-    zzac.zzw(this.zzbTU);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(71459);
+    Asserts.checkNotNull(paramString, "capability must not be null");
+    zzv localzzv = new zzv(paramCapabilityListener, paramString);
+    IntentFilter localIntentFilter = zzgj.zzc("com.google.android.gms.wearable.CAPABILITY_CHANGED");
+    if (!paramString.startsWith("/"))
     {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
+      paramCapabilityListener = String.valueOf(paramString);
+      if (paramCapabilityListener.length() != 0) {
+        paramCapabilityListener = "/".concat(paramCapabilityListener);
       }
-      paramObject = (zzo)paramObject;
-      if (this.mName != null)
-      {
-        if (this.mName.equals(paramObject.mName)) {}
-      }
-      else {
-        while (paramObject.mName != null) {
-          return false;
-        }
-      }
-      if (this.zzbTU == null) {
-        break;
-      }
-    } while (this.zzbTU.equals(paramObject.zzbTU));
+    }
     for (;;)
     {
-      return false;
-      if (paramObject.zzbTU == null) {
-        break;
-      }
+      localIntentFilter.addDataPath(paramCapabilityListener, 0);
+      paramGoogleApiClient = zza(paramGoogleApiClient, localzzv, new IntentFilter[] { localIntentFilter });
+      AppMethodBeat.o(71459);
+      return paramGoogleApiClient;
+      paramCapabilityListener = new String("/");
+      continue;
+      paramCapabilityListener = paramString;
     }
   }
   
-  public String getName()
+  public final PendingResult<Status> addListener(GoogleApiClient paramGoogleApiClient, CapabilityApi.CapabilityListener paramCapabilityListener, Uri paramUri, int paramInt)
   {
-    return this.mName;
-  }
-  
-  public Set<Node> getNodes()
-  {
-    synchronized (this.zzrJ)
+    AppMethodBeat.i(71460);
+    Asserts.checkNotNull(paramUri, "uri must not be null");
+    if ((paramInt == 0) || (paramInt == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (this.zzbTR == null) {
-        this.zzbTR = new HashSet(this.zzbTU);
-      }
-      Set localSet = this.zzbTR;
-      return localSet;
+      Preconditions.checkArgument(bool, "invalid filter type");
+      paramGoogleApiClient = zza(paramGoogleApiClient, paramCapabilityListener, new IntentFilter[] { zzgj.zza("com.google.android.gms.wearable.CAPABILITY_CHANGED", paramUri, paramInt) });
+      AppMethodBeat.o(71460);
+      return paramGoogleApiClient;
     }
   }
   
-  public int hashCode()
+  public final PendingResult<CapabilityApi.AddLocalCapabilityResult> addLocalCapability(GoogleApiClient paramGoogleApiClient, String paramString)
   {
-    int j = 0;
-    if (this.mName != null) {}
-    for (int i = this.mName.hashCode();; i = 0)
+    AppMethodBeat.i(71457);
+    paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzr(this, paramGoogleApiClient, paramString));
+    AppMethodBeat.o(71457);
+    return paramGoogleApiClient;
+  }
+  
+  public final PendingResult<CapabilityApi.GetAllCapabilitiesResult> getAllCapabilities(GoogleApiClient paramGoogleApiClient, int paramInt)
+  {
+    boolean bool2 = true;
+    AppMethodBeat.i(71456);
+    boolean bool1 = bool2;
+    if (paramInt != 0) {
+      if (paramInt != 1) {
+        break label49;
+      }
+    }
+    label49:
+    for (bool1 = bool2;; bool1 = false)
     {
-      if (this.zzbTU != null) {
-        j = this.zzbTU.hashCode();
-      }
-      return (i + 31) * 31 + j;
+      Preconditions.checkArgument(bool1);
+      paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzq(this, paramGoogleApiClient, paramInt));
+      AppMethodBeat.o(71456);
+      return paramGoogleApiClient;
     }
   }
   
-  public String toString()
+  public final PendingResult<CapabilityApi.GetCapabilityResult> getCapability(GoogleApiClient paramGoogleApiClient, String paramString, int paramInt)
   {
-    String str1 = this.mName;
-    String str2 = String.valueOf(this.zzbTU);
-    return String.valueOf(str1).length() + 18 + String.valueOf(str2).length() + "CapabilityInfo{" + str1 + ", " + str2 + "}";
+    boolean bool2 = true;
+    AppMethodBeat.i(71455);
+    boolean bool1 = bool2;
+    if (paramInt != 0) {
+      if (paramInt != 1) {
+        break label53;
+      }
+    }
+    label53:
+    for (bool1 = bool2;; bool1 = false)
+    {
+      Preconditions.checkArgument(bool1);
+      paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzp(this, paramGoogleApiClient, paramString, paramInt));
+      AppMethodBeat.o(71455);
+      return paramGoogleApiClient;
+    }
   }
   
-  public void writeToParcel(Parcel paramParcel, int paramInt)
+  public final PendingResult<Status> removeCapabilityListener(GoogleApiClient paramGoogleApiClient, CapabilityApi.CapabilityListener paramCapabilityListener, String paramString)
   {
-    zzp.zza(this, paramParcel, paramInt);
+    AppMethodBeat.i(71462);
+    paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzz(paramGoogleApiClient, new zzv(paramCapabilityListener, paramString), null));
+    AppMethodBeat.o(71462);
+    return paramGoogleApiClient;
   }
   
-  public List<zzcc> zzUs()
+  public final PendingResult<Status> removeListener(GoogleApiClient paramGoogleApiClient, CapabilityApi.CapabilityListener paramCapabilityListener)
   {
-    return this.zzbTU;
+    AppMethodBeat.i(71463);
+    paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzz(paramGoogleApiClient, paramCapabilityListener, null));
+    AppMethodBeat.o(71463);
+    return paramGoogleApiClient;
+  }
+  
+  public final PendingResult<CapabilityApi.RemoveLocalCapabilityResult> removeLocalCapability(GoogleApiClient paramGoogleApiClient, String paramString)
+  {
+    AppMethodBeat.i(71458);
+    paramGoogleApiClient = paramGoogleApiClient.enqueue(new zzs(this, paramGoogleApiClient, paramString));
+    AppMethodBeat.o(71458);
+    return paramGoogleApiClient;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.gms.wearable.internal.zzo
  * JD-Core Version:    0.7.0.1
  */

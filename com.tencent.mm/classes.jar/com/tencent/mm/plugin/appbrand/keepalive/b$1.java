@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.keepalive;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.b.c.a;
 
 public final class b$1
@@ -9,15 +10,19 @@ public final class b$1
   
   public final void a(String paramString, com.tencent.mm.plugin.appbrand.b.b paramb)
   {
-    switch (b.2.fGc[paramb.ordinal()])
+    AppMethodBeat.i(131684);
+    switch (b.2.gYx[paramb.ordinal()])
     {
-    default: 
-      return;
-    case 1: 
-      b.a(this.gIS, paramString);
-      return;
     }
-    b.a(this.gIS);
+    for (;;)
+    {
+      AppMethodBeat.o(131684);
+      return;
+      b.a(this.ijC, paramString);
+      AppMethodBeat.o(131684);
+      return;
+      b.a(this.ijC);
+    }
   }
 }
 

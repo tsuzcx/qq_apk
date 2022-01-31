@@ -1,34 +1,86 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.s;
 
 public class WalletSelectProfessionUI
   extends MMPreference
 {
-  private f dnn;
-  private Profession[] qrb = null;
+  private static final String TAG = "MicroMsg.WalletSelectProfessionUI";
+  protected Profession[] mProfessions = null;
+  private f screen;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
+    return -1;
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(47662);
+    super.onCreate(paramBundle);
+    setMMTitle(2131305643);
+    this.screen = getPreferenceScreen();
+    paramBundle = new PreferenceTitleCategory(getContext());
+    paramBundle.setTitle(getString(2131305642));
+    paramBundle.setKey("title_category");
+    this.screen.b(paramBundle);
+    paramBundle = getIntent().getParcelableArrayExtra("key_profession_list");
+    int i;
+    if ((paramBundle != null) && (paramBundle.length > 0))
+    {
+      this.mProfessions = new Profession[paramBundle.length];
+      i = 0;
+      while (i < this.mProfessions.length)
+      {
+        this.mProfessions[i] = ((Profession)paramBundle[i]);
+        i += 1;
+      }
+    }
+    if (this.mProfessions != null)
+    {
+      paramBundle = this.mProfessions;
+      int k = paramBundle.length;
+      i = 0;
+      int j = 0;
+      while (i < k)
+      {
+        Object localObject = paramBundle[i];
+        if ((localObject != null) && (!bo.isNullOrNil(localObject.ues)))
+        {
+          Preference localPreference = new Preference(getContext());
+          localPreference.setTitle(localObject.ues);
+          localPreference.setKey("index_".concat(String.valueOf(j)));
+          this.screen.b(localPreference);
+        }
+        j += 1;
+        i += 1;
+      }
+    }
+    setBackBtn(new WalletSelectProfessionUI.1(this));
+    AppMethodBeat.o(47662);
+  }
+  
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  {
+    AppMethodBeat.i(47663);
     if (paramPreference.mKey.startsWith("index_"))
     {
       paramf = paramPreference.mKey.split("_");
       if (paramf.length != 2) {
-        break label71;
+        break label81;
       }
-      int i = bk.getInt(paramf[1], 0);
-      paramf = this.qrb[i];
+      int i = bo.getInt(paramf[1], 0);
+      paramf = this.mProfessions[i];
       paramPreference = new Intent();
       paramPreference.putExtra("key_select_profession", paramf);
       setResult(-1, paramPreference);
@@ -36,60 +88,18 @@ public class WalletSelectProfessionUI
     for (;;)
     {
       finish();
+      AppMethodBeat.o(47663);
       return true;
-      label71:
-      y.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
+      label81:
+      ab.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
       setResult(0);
     }
   }
   
-  public void onCreate(Bundle paramBundle)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    super.onCreate(paramBundle);
-    setMMTitle(a.i.wallet_select_profession_title);
-    this.dnn = this.vdd;
-    paramBundle = new PreferenceTitleCategory(this.mController.uMN);
-    paramBundle.setTitle(getString(a.i.wallet_select_profession_tips));
-    paramBundle.setKey("title_category");
-    this.dnn.a(paramBundle);
-    paramBundle = getIntent().getParcelableArrayExtra("key_profession_list");
-    int i;
-    if ((paramBundle != null) && (paramBundle.length > 0))
-    {
-      this.qrb = new Profession[paramBundle.length];
-      i = 0;
-      while (i < this.qrb.length)
-      {
-        this.qrb[i] = ((Profession)paramBundle[i]);
-        i += 1;
-      }
-    }
-    if (this.qrb != null)
-    {
-      paramBundle = this.qrb;
-      int k = paramBundle.length;
-      i = 0;
-      int j = 0;
-      while (i < k)
-      {
-        Object localObject = paramBundle[i];
-        if ((localObject != null) && (!bk.bl(localObject.qst)))
-        {
-          Preference localPreference = new Preference(this.mController.uMN);
-          localPreference.setTitle(localObject.qst);
-          localPreference.setKey("index_" + j);
-          this.dnn.a(localPreference);
-        }
-        j += 1;
-        i += 1;
-      }
-    }
-    setBackBtn(new WalletSelectProfessionUI.1(this));
-  }
-  
-  public final int xj()
-  {
-    return -1;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

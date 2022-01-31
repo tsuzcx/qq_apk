@@ -1,48 +1,34 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.os.Looper;
-import com.tencent.luggage.e.k;
-import com.tencent.luggage.e.m;
-import com.tencent.luggage.j.c;
-import com.tencent.mm.plugin.webview.luggage.permission.LuggageGetA8Key;
-import com.tencent.mm.plugin.webview.luggage.permission.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import java.util.HashMap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.b.l;
+import com.tencent.mm.ui.widget.d;
 
-public final class o
+public class o
 {
-  private static HashMap<String, Integer> rcO = new HashMap();
+  d uSM;
+  e uSb;
+  l uSv;
   
-  public static int a(k paramk, LuggageGetA8Key paramLuggageGetA8Key)
+  public o(e parame, l paraml)
   {
-    int i = m.a(ae.getContext(), paramk).intValue();
-    b.a(paramk.hashCode(), paramLuggageGetA8Key);
-    return i;
+    AppMethodBeat.i(6221);
+    this.uSb = parame;
+    this.uSv = paraml;
+    this.uSM = new d(this.uSb.mContext, 0, false);
+    this.uSM.sao = new o.1(this);
+    this.uSM.sap = new o.2(this);
+    this.uSM.crd();
+    AppMethodBeat.o(6221);
   }
   
-  public static void remove(int paramInt)
+  public final void dbu()
   {
-    k localk = m.a(Integer.valueOf(paramInt));
-    if (localk != null)
-    {
-      b.BZ(localk.hashCode());
-      if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId()) {}
+    AppMethodBeat.i(6222);
+    if (this.uSM != null) {
+      this.uSM.cre();
     }
-    else
-    {
-      try
-      {
-        localk.destroy();
-        return;
-      }
-      catch (Exception localException)
-      {
-        c.printErrStackTrace("MicroMsg.LuggageWebCoreStash", localException, "", new Object[0]);
-        return;
-      }
-    }
-    ai.d(new o.1(localException));
+    AppMethodBeat.o(6222);
   }
 }
 

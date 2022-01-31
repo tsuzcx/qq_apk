@@ -2,9 +2,9 @@ package com.tencent.mm.chatroom.a;
 
 public abstract interface a
 {
-  public abstract void a(com.tencent.mm.chatroom.c.a parama);
+  public abstract long Jy();
   
-  public abstract long xg();
+  public abstract void a(com.tencent.mm.chatroom.c.a parama);
 }
 
 

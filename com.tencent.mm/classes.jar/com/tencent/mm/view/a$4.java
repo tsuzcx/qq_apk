@@ -2,6 +2,7 @@ package com.tencent.mm.view;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 
 final class a$4
@@ -11,7 +12,9 @@ final class a$4
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    a.d(this.wvE).setVisibility(0);
+    AppMethodBeat.i(116375);
+    a.d(this.AQD).setVisibility(0);
+    AppMethodBeat.o(116375);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
@@ -20,7 +23,7 @@ final class a$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.view.a.4
  * JD-Core Version:    0.7.0.1
  */

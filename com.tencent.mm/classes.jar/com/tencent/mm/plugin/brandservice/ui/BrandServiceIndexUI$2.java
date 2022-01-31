@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.brandservice.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BrandServiceIndexUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class BrandServiceIndexUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.idj.finish();
+    AppMethodBeat.i(13915);
+    this.jTX.finish();
+    AppMethodBeat.o(13915);
     return true;
   }
 }

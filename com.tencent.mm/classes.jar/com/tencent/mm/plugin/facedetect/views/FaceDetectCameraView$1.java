@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.facedetect.views;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FaceDetectCameraView$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class FaceDetectCameraView$1
   
   public final void run()
   {
-    this.jUa.a(FaceDetectCameraView.b(this.jUa), FaceDetectCameraView.c(this.jUa));
-    FaceDetectCameraView.a(this.jUa, false);
+    AppMethodBeat.i(572);
+    this.mot.a(FaceDetectCameraView.b(this.mot), FaceDetectCameraView.c(this.mot));
+    FaceDetectCameraView.a(this.mot, false);
+    AppMethodBeat.o(572);
   }
 }
 

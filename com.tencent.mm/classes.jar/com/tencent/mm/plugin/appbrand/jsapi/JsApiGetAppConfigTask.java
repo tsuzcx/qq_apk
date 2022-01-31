@@ -3,72 +3,90 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.app.e;
-import com.tencent.mm.plugin.appbrand.appcache.b.d.b;
-import com.tencent.mm.plugin.appbrand.config.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appcache.b.e.b;
+import com.tencent.mm.plugin.appbrand.config.m;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 
 class JsApiGetAppConfigTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<JsApiGetAppConfigTask> CREATOR = new JsApiGetAppConfigTask.2();
+  public static final Parcelable.Creator<JsApiGetAppConfigTask> CREATOR;
   public String appId;
-  public Runnable gfD;
+  public Runnable hxp;
   public String key;
   public int scene;
   public int type;
   public String value;
   
+  static
+  {
+    AppMethodBeat.i(130433);
+    CREATOR = new JsApiGetAppConfigTask.2();
+    AppMethodBeat.o(130433);
+  }
+  
   public JsApiGetAppConfigTask() {}
   
   public JsApiGetAppConfigTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(130427);
+    f(paramParcel);
+    AppMethodBeat.o(130427);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    if (!g.DN().dJH) {
+    AppMethodBeat.i(130428);
+    if (!com.tencent.mm.kernel.g.RJ().eHg)
+    {
+      AppMethodBeat.o(130428);
       return;
     }
-    Pair localPair = ((b)e.G(b.class)).w(this.appId, 4, this.scene);
+    Pair localPair = ((b)com.tencent.mm.plugin.appbrand.app.g.w(b.class)).I(this.appId, 4, this.scene);
     if (((Boolean)localPair.first).booleanValue())
     {
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.fFB;
-      com.tencent.mm.plugin.appbrand.appcache.b.c.a.s(((Integer)localPair.second).intValue(), 166L);
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a locala = com.tencent.mm.plugin.appbrand.appcache.b.c.a.gXW;
+      com.tencent.mm.plugin.appbrand.appcache.b.c.a.B(((Integer)localPair.second).intValue(), 166L);
     }
     if (!((Boolean)localPair.first).booleanValue()) {}
     for (boolean bool = true;; bool = false)
     {
-      n.a(this.appId, this.type, 0, new JsApiGetAppConfigTask.1(this), bool);
+      m.a(this.appId, this.type, 0, new JsApiGetAppConfigTask.1(this), bool);
+      AppMethodBeat.o(130428);
       return;
     }
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.gfD != null) {
-      this.gfD.run();
+    AppMethodBeat.i(130429);
+    if (this.hxp != null) {
+      this.hxp.run();
     }
+    AppMethodBeat.o(130429);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
+    AppMethodBeat.i(130430);
     this.appId = paramParcel.readString();
     this.key = paramParcel.readString();
     this.value = paramParcel.readString();
     this.type = paramParcel.readInt();
     this.scene = paramParcel.readInt();
+    AppMethodBeat.o(130430);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(130431);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.key);
     paramParcel.writeString(this.value);
     paramParcel.writeInt(this.type);
     paramParcel.writeInt(this.scene);
+    AppMethodBeat.o(130431);
   }
 }
 

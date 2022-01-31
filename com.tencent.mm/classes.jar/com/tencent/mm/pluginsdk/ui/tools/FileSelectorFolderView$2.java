@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FileSelectorFolderView$2
   implements Animation.AnimationListener
@@ -10,8 +11,10 @@ final class FileSelectorFolderView$2
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    FileSelectorFolderView.a(this.slV, true);
-    FileSelectorFolderView.b(this.slV);
+    AppMethodBeat.i(28159);
+    FileSelectorFolderView.a(this.wex, true);
+    FileSelectorFolderView.b(this.wex);
+    AppMethodBeat.o(28159);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

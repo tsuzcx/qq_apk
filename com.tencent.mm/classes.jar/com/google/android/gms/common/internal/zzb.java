@@ -1,28 +1,26 @@
 package com.google.android.gms.common.internal;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.common.api.zza;
-import com.google.android.gms.common.api.zzd;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class zzb
+final class zzb
+  extends DialogRedirect
 {
-  public static zza zzG(Status paramStatus)
-  {
-    if (paramStatus.hasResolution()) {
-      return new zzd(paramStatus);
-    }
-    return new zza(paramStatus);
-  }
+  zzb(Intent paramIntent, Activity paramActivity, int paramInt) {}
   
-  public static zza zzl(ConnectionResult paramConnectionResult)
+  public final void redirect()
   {
-    return zzG(new Status(paramConnectionResult.getErrorCode(), paramConnectionResult.getErrorMessage(), paramConnectionResult.getResolution()));
+    AppMethodBeat.i(61401);
+    if (this.zzsh != null) {
+      this.val$activity.startActivityForResult(this.zzsh, this.val$requestCode);
+    }
+    AppMethodBeat.o(61401);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.internal.zzb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,202 +1,150 @@
 package com.tencent.matrix.trace.core;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.os.Handler;
+import android.os.Build.VERSION;
 import android.os.Looper;
-import android.support.v4.app.Fragment;
-import com.tencent.matrix.d.b;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
+import android.util.Printer;
+import com.tencent.matrix.g.c;
+import java.lang.reflect.Field;
+import java.util.HashSet;
 
 public final class a
-  implements Application.ActivityLifecycleCallbacks
+  implements MessageQueue.IdleHandler
 {
-  private static a bqT;
-  private final LinkedList<a> bqU;
-  private boolean bqV;
-  private String bqW;
-  private Runnable bqX;
-  private boolean mIsPaused;
-  private final Handler mMainHandler;
+  private static Printer bRh;
+  public static Printer bRi = null;
+  private static final a bRj = new a();
+  private static final HashSet<a> listeners = new HashSet();
   
-  private a(Application paramApplication)
+  private a()
   {
-    if (paramApplication != null)
+    zs();
+    if (Build.VERSION.SDK_INT >= 23)
     {
-      paramApplication.unregisterActivityLifecycleCallbacks(this);
-      paramApplication.registerActivityLifecycleCallbacks(this);
+      Looper.getMainLooper().getQueue().addIdleHandler(this);
+      return;
     }
-    this.bqU = new LinkedList();
-    this.mMainHandler = new Handler(Looper.getMainLooper());
+    ((MessageQueue)e(Looper.getMainLooper(), "mQueue")).addIdleHandler(this);
   }
   
-  public static void b(Application paramApplication)
+  public static void a(a parama)
   {
-    if (bqT == null) {
-      bqT = new a(paramApplication);
-    }
-  }
-  
-  private static String i(Activity paramActivity)
-  {
-    return paramActivity.getClass().getName() + paramActivity.hashCode();
-  }
-  
-  public static a rn()
-  {
-    return bqT;
-  }
-  
-  public final void a(a parama)
-  {
-    if (this.bqU != null) {
-      this.bqU.add(parama);
-    }
-  }
-  
-  public final void b(a parama)
-  {
-    if (this.bqU != null) {
-      this.bqU.remove(parama);
-    }
-  }
-  
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
-  {
-    paramBundle = this.bqU.iterator();
-    while (paramBundle.hasNext()) {
-      ((a)paramBundle.next()).onActivityCreated(paramActivity);
-    }
-  }
-  
-  public final void onActivityDestroyed(Activity paramActivity)
-  {
-    if (i(paramActivity).equals(this.bqW)) {
-      this.bqW = null;
-    }
-  }
-  
-  public final void onActivityPaused(Activity paramActivity)
-  {
-    Object localObject = this.bqU.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      ((a)((Iterator)localObject).next()).onActivityPause(paramActivity);
-    }
-    this.mIsPaused = true;
-    if (this.bqX != null) {
-      this.mMainHandler.removeCallbacks(this.bqX);
-    }
-    localObject = new WeakReference(paramActivity);
-    paramActivity = this.mMainHandler;
-    localObject = new Runnable()
+    synchronized (listeners)
     {
-      public final void run()
+      listeners.add(parama);
+      return;
+    }
+  }
+  
+  public static void b(a parama)
+  {
+    if (parama == null) {
+      return;
+    }
+    synchronized (listeners)
+    {
+      listeners.remove(parama);
+      return;
+    }
+  }
+  
+  private static <T> T e(Object paramObject, String paramString)
+  {
+    try
+    {
+      paramString = paramObject.getClass().getDeclaredField(paramString);
+      paramString.setAccessible(true);
+      paramObject = paramString.get(paramObject);
+      return paramObject;
+    }
+    catch (Exception paramObject)
+    {
+      c.e("Matrix.LooperMonitor", paramObject.toString(), new Object[0]);
+    }
+    return null;
+  }
+  
+  private static void zs()
+  {
+    Object localObject = (Printer)e(Looper.getMainLooper(), "mLogging");
+    if ((localObject == bRh) && (bRh != null)) {
+      return;
+    }
+    if (bRh != null) {
+      c.w("Matrix.LooperMonitor", "[resetPrinter] maybe looper printer was replace other!", new Object[0]);
+    }
+    Looper localLooper = Looper.getMainLooper();
+    localObject = new Printer()
+    {
+      boolean bRg = false;
+      boolean bRk = false;
+      
+      public final void println(String paramAnonymousString)
       {
-        Activity localActivity;
-        if ((a.b(a.this)) && (a.c(a.this)))
-        {
-          a.d(a.this);
-          localActivity = (Activity)this.bqZ.get();
-          if (localActivity != null) {
-            break label55;
-          }
-          b.w("Matrix.ApplicationLifeObserver", "onBackground ac is null!", new Object[0]);
+        boolean bool2 = true;
+        if (this.bRl != null) {
+          this.bRl.println(paramAnonymousString);
         }
-        for (;;)
+        if (!this.bRk)
         {
-          return;
-          label55:
-          Iterator localIterator = a.a(a.this).iterator();
-          while (localIterator.hasNext()) {
-            ((a.a)localIterator.next()).onBackground(localActivity);
+          if ((paramAnonymousString.charAt(0) != '>') && (paramAnonymousString.charAt(0) != '<')) {
+            break label119;
           }
+          bool1 = true;
+          this.bRg = bool1;
+          this.bRk = true;
+          if (!this.bRg) {
+            c.e("Matrix.LooperMonitor", "[println] Printer is inValid! x:%s", new Object[] { paramAnonymousString });
+          }
+        }
+        if (this.bRg) {
+          if (paramAnonymousString.charAt(0) != '>') {
+            break label124;
+          }
+        }
+        label119:
+        label124:
+        for (boolean bool1 = bool2;; bool1 = false)
+        {
+          a.bj(bool1);
+          if (a.bRi != null) {
+            a.bRi.println(paramAnonymousString);
+          }
+          return;
+          bool1 = false;
+          break;
         }
       }
     };
-    this.bqX = ((Runnable)localObject);
-    paramActivity.postDelayed((Runnable)localObject, 600L);
+    bRh = (Printer)localObject;
+    localLooper.setMessageLogging((Printer)localObject);
   }
   
-  public final void onActivityResumed(final Activity paramActivity)
+  public final boolean queueIdle()
   {
-    final boolean bool = false;
-    Object localObject1 = this.bqU.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((a)((Iterator)localObject1).next()).onActivityResume(paramActivity);
-    }
-    this.mIsPaused = false;
-    if (!this.bqV) {
-      bool = true;
-    }
-    this.bqV = true;
-    localObject1 = i(paramActivity);
-    if (!((String)localObject1).equals(this.bqW))
+    zs();
+    return true;
+  }
+  
+  public static abstract class a
+  {
+    boolean bRm = false;
+    
+    void dispatchEnd()
     {
-      localObject2 = this.bqU.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((a)((Iterator)localObject2).next()).onChange(paramActivity, null);
-      }
-      this.bqW = ((String)localObject1);
+      this.bRm = false;
     }
-    Object localObject2 = new WeakReference(paramActivity);
-    localObject1 = this.mMainHandler;
-    paramActivity = new Runnable()
+    
+    void dispatchStart()
     {
-      public final void run()
-      {
-        if (bool)
-        {
-          if ((Activity)this.bqZ.get() != null) {
-            break label32;
-          }
-          b.w("Matrix.ApplicationLifeObserver", "onFront ac is null!", new Object[0]);
-        }
-        for (;;)
-        {
-          return;
-          label32:
-          Iterator localIterator = a.a(a.this).iterator();
-          while (localIterator.hasNext()) {
-            ((a.a)localIterator.next()).onFront(paramActivity);
-          }
-        }
-      }
-    };
-    this.bqX = paramActivity;
-    ((Handler)localObject1).postDelayed(paramActivity, 600L);
-  }
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity)
-  {
-    Iterator localIterator = this.bqU.iterator();
-    while (localIterator.hasNext()) {
-      ((a)localIterator.next()).onActivityStarted(paramActivity);
+      this.bRm = true;
     }
-  }
-  
-  public final void onActivityStopped(Activity paramActivity) {}
-  
-  public static abstract interface a
-  {
-    public abstract void onActivityCreated(Activity paramActivity);
     
-    public abstract void onActivityPause(Activity paramActivity);
-    
-    public abstract void onActivityResume(Activity paramActivity);
-    
-    public abstract void onActivityStarted(Activity paramActivity);
-    
-    public abstract void onBackground(Activity paramActivity);
-    
-    public abstract void onChange(Activity paramActivity, Fragment paramFragment);
-    
-    public abstract void onFront(Activity paramActivity);
+    boolean isValid()
+    {
+      return false;
+    }
   }
 }
 

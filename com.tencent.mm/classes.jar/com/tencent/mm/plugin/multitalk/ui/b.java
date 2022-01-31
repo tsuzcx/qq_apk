@@ -1,82 +1,96 @@
 package com.tencent.mm.plugin.multitalk.ui;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
+import com.tencent.mm.model.ag;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.contact.MMBaseSelectContactUI;
-import com.tencent.mm.ui.contact.q;
+import com.tencent.mm.ui.contact.r;
 
 public final class b
-  extends q
+  extends r
 {
-  private String bVk;
   private String chatroomName;
-  private String[] eYc;
-  private Cursor eYd;
+  private String[] gpZ;
+  private Cursor gqa;
+  private String query;
   
   public b(MMBaseSelectContactUI paramMMBaseSelectContactUI, String paramString)
   {
     super(paramMMBaseSelectContactUI, null, true, 0);
+    AppMethodBeat.i(54177);
     this.chatroomName = paramString;
-    paramMMBaseSelectContactUI = ((c)g.r(c.class)).FF().ir(this.chatroomName);
+    paramMMBaseSelectContactUI = ((c)g.E(c.class)).YJ().oY(this.chatroomName);
     if (paramMMBaseSelectContactUI != null) {
-      this.eYc = bk.dj(paramMMBaseSelectContactUI);
+      this.gpZ = bo.er(paramMMBaseSelectContactUI);
     }
+    AppMethodBeat.o(54177);
   }
   
   public final void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    y.i("MicroMsg.multitalk.MultiTalkSelectSearchAdapter", "doSearch: %s", new Object[] { paramString });
+    AppMethodBeat.i(54178);
+    ab.i("MicroMsg.multitalk.MultiTalkSelectSearchAdapter", "doSearch: %s", new Object[] { paramString });
     clearCache();
-    this.bVk = paramString;
-    if (this.eYd != null)
+    this.query = paramString;
+    if (this.gqa != null)
     {
-      this.eYd.close();
-      this.eYd = null;
+      this.gqa.close();
+      this.gqa = null;
     }
-    if ((!bk.bl(this.bVk)) && (this.eYc != null)) {
-      this.eYd = ((j)g.r(j.class)).Fw().a(this.eYc, "@all.chatroom", this.bVk, null, null);
+    if ((!bo.isNullOrNil(this.query)) && (this.gpZ != null)) {
+      this.gqa = ((j)g.E(j.class)).YA().a(this.gpZ, "@all.chatroom", this.query, null, null);
     }
     notifyDataSetChanged();
-    bN(paramString, true);
+    cp(paramString, true);
+    AppMethodBeat.o(54178);
   }
   
   public final void finish()
   {
+    AppMethodBeat.i(54180);
     super.finish();
-    if (this.eYd != null)
+    if (this.gqa != null)
     {
-      this.eYd.close();
-      this.eYd = null;
+      this.gqa.close();
+      this.gqa = null;
     }
+    AppMethodBeat.o(54180);
   }
   
   public final int getCount()
   {
-    if (this.eYd == null) {
+    AppMethodBeat.i(54181);
+    if (this.gqa == null)
+    {
+      AppMethodBeat.o(54181);
       return 0;
     }
-    return this.eYd.getCount();
+    int i = this.gqa.getCount();
+    AppMethodBeat.o(54181);
+    return i;
   }
   
-  protected final com.tencent.mm.ui.contact.a.a jQ(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
   {
+    AppMethodBeat.i(54179);
     com.tencent.mm.plugin.multitalk.ui.widget.a locala = null;
-    if (this.eYd.moveToPosition(paramInt))
+    if (this.gqa.moveToPosition(paramInt))
     {
       ad localad = new ad();
-      localad.d(this.eYd);
+      localad.convertFrom(this.gqa);
       locala = new com.tencent.mm.plugin.multitalk.ui.widget.a(paramInt);
-      locala.dnp = localad;
-      locala.vLJ = bBJ();
-      locala.bVk = this.bVk;
+      locala.contact = localad;
+      locala.Adl = cni();
+      locala.query = this.query;
     }
+    AppMethodBeat.o(54179);
     return locala;
   }
 }

@@ -1,17 +1,15 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.k;
 import com.tencent.mm.modelstat.m;
 import com.tencent.mm.modelstat.q;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.plugin.setting.a.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
@@ -22,96 +20,106 @@ import java.util.Locale;
 public class SettingsNetStatUI
   extends MMPreference
 {
-  private f dnn;
   private long period;
+  private f screen;
   
-  private void bzi()
+  private void cks()
   {
-    Object localObject2 = q.RC().jj((int)(this.period / 86400000L));
+    AppMethodBeat.i(127347);
+    Object localObject2 = q.akL().mc((int)(this.period / 86400000L));
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new k();
     }
-    this.period = q.RC().Rv();
-    localObject2 = this.dnn.add("settings_netstat_info");
-    String str = DateFormat.format(getString(a.i.fmt_longdate, new Object[] { "" }), this.period).toString();
-    ((Preference)localObject2).setTitle(getString(a.i.settings_traffic_all_statistic, new Object[] { str }));
-    localObject2 = this.dnn.add("settings_netstat_mobile");
-    y.i("MicroMsg.SettingsNetStatUI", "dknetflow updateFlowStatistic mobile out:%d in:%d", new Object[] { Integer.valueOf(((k)localObject1).eDX), Integer.valueOf(((k)localObject1).eDL) });
-    ((Preference)localObject2).setSummary(j(this, ((k)localObject1).eDX + ((k)localObject1).eDL));
-    localObject2 = this.dnn.add("settings_netstat_wifi");
-    y.i("MicroMsg.SettingsNetStatUI", "dknetflow updateFlowStatistic wifi out:%d in:%d", new Object[] { Integer.valueOf(((k)localObject1).eDY), Integer.valueOf(((k)localObject1).eDM) });
-    ((Preference)localObject2).setSummary(j(this, ((k)localObject1).eDY + ((k)localObject1).eDM));
-    ((NetStatPreference)this.dnn.add("settings_netstat_mobile_detail")).nRY = false;
-    ((NetStatPreference)this.dnn.add("settings_netstat_wifi_detail")).nRY = true;
-    this.dnn.notifyDataSetChanged();
+    this.period = q.akL().akE();
+    this.screen.atx("settings_netstat_info").setTitle(getString(2131303478, new Object[] { DateFormat.format(getString(2131300050, new Object[] { "" }), this.period).toString() }));
+    localObject2 = this.screen.atx("settings_netstat_mobile");
+    ab.i("MicroMsg.SettingsNetStatUI", "dknetflow updateFlowStatistic mobile out:%d in:%d", new Object[] { Integer.valueOf(((k)localObject1).fTO), Integer.valueOf(((k)localObject1).fTC) });
+    ((Preference)localObject2).setSummary(k(this, ((k)localObject1).fTO + ((k)localObject1).fTC));
+    ((Preference)localObject2).OW(8);
+    localObject2 = this.screen.atx("settings_netstat_wifi");
+    ab.i("MicroMsg.SettingsNetStatUI", "dknetflow updateFlowStatistic wifi out:%d in:%d", new Object[] { Integer.valueOf(((k)localObject1).fTP), Integer.valueOf(((k)localObject1).fTD) });
+    ((Preference)localObject2).setSummary(k(this, ((k)localObject1).fTP + ((k)localObject1).fTD));
+    ((Preference)localObject2).OW(8);
+    ((NetStatPreference)this.screen.atx("settings_netstat_mobile_detail")).qFW = false;
+    ((NetStatPreference)this.screen.atx("settings_netstat_wifi_detail")).qFW = true;
+    this.screen.notifyDataSetChanged();
+    AppMethodBeat.o(127347);
   }
   
-  private static String j(Context paramContext, long paramLong)
+  private static String k(Context paramContext, long paramLong)
   {
-    return paramContext.getString(a.i.settings_total_traffic_statistic_all, new Object[] { bk.cm(paramLong) });
+    AppMethodBeat.i(127348);
+    paramContext = paramContext.getString(2131303477, new Object[] { bo.hk(paramLong) });
+    AppMethodBeat.o(127348);
+    return paramContext;
   }
   
-  protected final boolean XI()
+  public boolean autoRefresh()
   {
     return false;
   }
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    return false;
+    return 2131165285;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(a.i.settings_traffic_statistic);
-    Object localObject1 = q.RC();
-    int i = (int)(bk.crW() / 86400000L);
-    if (((m)localObject1).ji(i) == null)
+    AppMethodBeat.i(127346);
+    setMMTitle(2131303480);
+    Object localObject1 = q.akL();
+    int i = (int)(bo.dtT() / 86400000L);
+    if (((m)localObject1).mb(i) == null)
     {
       localObject2 = new k();
-      ((k)localObject2).eDC = i;
+      ((k)localObject2).fTt = i;
       ((k)localObject2).id = -1;
       ((m)localObject1).b((k)localObject2);
     }
-    this.dnn = this.vdd;
-    this.period = q.RC().Rv();
-    localObject1 = this.dnn.add("settings_netstat_info");
-    Object localObject2 = new SimpleDateFormat(getString(a.i.fmt_longdate), Locale.US).format(new Date(this.period));
-    ((Preference)localObject1).setTitle(getString(a.i.settings_traffic_all_statistic, new Object[] { localObject2 }));
-    y.i("MicroMsg.SettingsNetStatUI", "title datatime = " + (String)localObject2);
-    y.d("MicroMsg.SettingsNetStatUI", "title datatime = " + (String)localObject2);
+    this.screen = getPreferenceScreen();
+    this.period = q.akL().akE();
+    localObject1 = this.screen.atx("settings_netstat_info");
+    Object localObject2 = new SimpleDateFormat(getString(2131300050), Locale.US).format(new Date(this.period));
+    ((Preference)localObject1).setTitle(getString(2131303478, new Object[] { localObject2 }));
+    ab.i("MicroMsg.SettingsNetStatUI", "title datatime = ".concat(String.valueOf(localObject2)));
+    ab.d("MicroMsg.SettingsNetStatUI", "title datatime = ".concat(String.valueOf(localObject2)));
     setBackBtn(new SettingsNetStatUI.1(this));
-    addTextOptionMenu(0, getString(a.i.settings_traffic_statistic_clear), new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        SettingsNetStatUI.a(SettingsNetStatUI.this);
-        return true;
-      }
-    });
+    addTextOptionMenu(0, getString(2131303481), new SettingsNetStatUI.2(this));
+    AppMethodBeat.o(127346);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127344);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(127344);
+  }
+  
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  {
+    return false;
   }
   
   public void onResume()
   {
+    AppMethodBeat.i(127345);
     super.onResume();
-    bzi();
+    cks();
+    AppMethodBeat.o(127345);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return a.k.settings_pref_netstat;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsNetStatUI
  * JD-Core Version:    0.7.0.1
  */

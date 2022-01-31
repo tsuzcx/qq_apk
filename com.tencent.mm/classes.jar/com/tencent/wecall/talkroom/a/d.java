@@ -1,6 +1,7 @@
 package com.tencent.wecall.talkroom.a;
 
 import com.google.a.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.a.a.a;
 import com.tencent.pb.common.b.a.a.al;
 import com.tencent.pb.common.b.a.a.at;
@@ -14,84 +15,92 @@ import com.tencent.wecall.talkroom.model.k;
 public final class d
   extends com.tencent.pb.common.b.d
 {
+  public String BAy;
+  public boolean BCv;
   public int mType;
-  public String xdQ;
-  public boolean xfO = true;
   
   public d(String paramString1, String[] paramArrayOfString, byte[] paramArrayOfByte, String paramString2, a.ay paramay, int paramInt1, int paramInt2, long paramLong, String paramString3, boolean paramBoolean, String paramString4)
   {
+    AppMethodBeat.i(128013);
+    this.BCv = true;
     c.d("MicroMsg.Voip", new Object[] { this.TAG2, "create" });
     a.d locald = new a.d();
     for (;;)
     {
       try
       {
-        locald.wGf = paramString1;
-        this.xdQ = paramString1;
-        locald.wGk = paramInt1;
-        this.wFA = paramInt1;
+        locald.BdG = paramString1;
+        this.BAy = paramString1;
+        locald.BdL = paramInt1;
+        this.Bda = paramInt1;
         if (paramay != null) {
-          locald.wGm = paramay;
+          locald.BdN = paramay;
         }
         paramString1 = new a.at();
         paramString1.name = paramString2;
-        paramString1.wIC = paramString4;
-        paramString1.wIB = a.cOl();
-        paramString1.bNM = paramInt2;
+        paramString1.Bgc = paramString4;
+        paramString1.Bgb = a.dTX();
+        paramString1.cve = paramInt2;
         this.mType = paramInt2;
-        this.xfO = paramBoolean;
-        paramString1.wIu = paramLong;
-        locald.wGh = paramString1;
-        locald.wGo = paramArrayOfString;
+        this.BCv = paramBoolean;
+        paramString1.BfU = paramLong;
+        locald.BdI = paramString1;
+        locald.BdP = paramArrayOfString;
         paramString1 = paramString3;
         if (paramString3 == null) {
           paramString1 = "";
         }
-        locald.wGn = paramString1;
+        locald.BdO = paramString1;
         paramString1 = new a.al();
         if (paramArrayOfByte == null) {
           continue;
         }
         paramString1.buffer = paramArrayOfByte;
-        paramString1.tFK = paramArrayOfByte.length;
+        paramString1.iLen = paramArrayOfByte.length;
         paramArrayOfString = new a.ba();
         paramArrayOfString.type = 3;
-        paramArrayOfString.wJw = paramString1;
-        locald.wGj = paramArrayOfString;
-        this.wFz = 3;
-        locald.wGl = 2;
-        locald.netType = k.ij(com.tencent.pb.common.c.d.pZI);
+        paramArrayOfString.BgW = paramString1;
+        locald.BdK = paramArrayOfString;
+        this.mNetType = 3;
+        locald.BdM = 2;
+        locald.netType = k.jN(com.tencent.pb.common.c.d.tFk);
       }
       catch (Exception paramString1)
       {
-        c.x(this.TAG2, new Object[] { "NetSceneCreateVoiceGroup constructor", paramString1 });
+        c.w(this.TAG2, new Object[] { "NetSceneCreateVoiceGroup constructor", paramString1 });
         continue;
       }
       c(139, locald);
+      AppMethodBeat.o(128013);
       return;
-      paramString1.tFK = 0;
+      paramString1.iLen = 0;
     }
   }
   
-  protected final Object bK(byte[] paramArrayOfByte)
+  public final Object ck(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(128014);
     c.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
-    if (paramArrayOfByte != null) {
+    if (paramArrayOfByte != null) {}
+    for (;;)
+    {
       try
       {
         paramArrayOfByte = (a.z)e.a(new a.z(), paramArrayOfByte, paramArrayOfByte.length);
+        AppMethodBeat.o(128014);
         return paramArrayOfByte;
       }
       catch (Exception paramArrayOfByte)
       {
-        c.x(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
-        return null;
+        c.w(this.TAG2, new Object[] { "data2Resp", paramArrayOfByte.getMessage() });
+        paramArrayOfByte = null;
+        continue;
       }
+      paramArrayOfByte = null;
     }
-    return null;
   }
   
-  protected final String cNR()
+  public final String dTD()
   {
     return "CsCmd.Cmd_V_CSCreateVoiceGroupReq";
   }

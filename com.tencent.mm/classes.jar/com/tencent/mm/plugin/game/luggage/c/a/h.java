@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.game.luggage.c.a;
 
 import android.content.Context;
-import com.tencent.luggage.e.g;
-import com.tencent.mm.protocal.c.awk;
+import com.tencent.luggage.d.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bcz;
 
 public final class h
   extends a
@@ -12,9 +13,11 @@ public final class h
     super(1);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.e parame, awk paramawk)
+  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.e parame, bcz parambcz)
   {
-    parame.bil.qj().bb(paramawk.sYY);
+    AppMethodBeat.i(135908);
+    parame.byJ.un().bC(parambcz.wXs);
+    AppMethodBeat.o(135908);
   }
 }
 

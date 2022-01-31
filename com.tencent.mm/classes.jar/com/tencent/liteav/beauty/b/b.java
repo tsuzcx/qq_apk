@@ -1,16 +1,16 @@
 package com.tencent.liteav.beauty.b;
 
-import com.tencent.liteav.basic.d.d;
+import com.tencent.liteav.basic.d.g;
 
 public class b
-  extends d
+  extends g
 {
-  public boolean b(int paramInt1, int paramInt2)
+  public void c(int paramInt) {}
+  
+  public boolean c(int paramInt1, int paramInt2)
   {
     return false;
   }
-  
-  public void c(int paramInt) {}
   
   public void d(int paramInt) {}
   

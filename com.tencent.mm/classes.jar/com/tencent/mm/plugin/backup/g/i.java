@@ -1,39 +1,44 @@
 package com.tencent.mm.plugin.backup.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.a;
 import com.tencent.mm.plugin.backup.i.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class i
   extends b
 {
-  private com.tencent.mm.plugin.backup.i.i hMr = new com.tencent.mm.plugin.backup.i.i();
-  public j hMs = new j();
+  private com.tencent.mm.plugin.backup.i.i jFT;
+  public j jFU;
   
   public i(LinkedList<String> paramLinkedList, long paramLong1, long paramLong2)
   {
-    y.i("MicroMsg.BackupRequestSessionScene", "init sessionName[%d], startTime[%d], endTime[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    this.hMr.hPU = paramLinkedList;
-    this.hMr.hPV = new LinkedList();
+    AppMethodBeat.i(17674);
+    this.jFT = new com.tencent.mm.plugin.backup.i.i();
+    this.jFU = new j();
+    ab.i("MicroMsg.BackupRequestSessionScene", "init sessionName[%d], startTime[%d], endTime[%d]", new Object[] { Integer.valueOf(paramLinkedList.size()), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    this.jFT.jJw = paramLinkedList;
+    this.jFT.jJx = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
       paramLinkedList.next();
-      this.hMr.hPV.add(Long.valueOf(paramLong1));
-      this.hMr.hPV.add(Long.valueOf(paramLong2));
+      this.jFT.jJx.add(Long.valueOf(paramLong1));
+      this.jFT.jJx.add(Long.valueOf(paramLong2));
     }
+    AppMethodBeat.o(17674);
   }
   
-  public final a auJ()
+  public final a aUl()
   {
-    return this.hMs;
+    return this.jFU;
   }
   
-  public final a auK()
+  public final a aUm()
   {
-    return this.hMr;
+    return this.jFT;
   }
   
   public final int getType()
@@ -41,19 +46,22 @@ public final class i
     return 11;
   }
   
-  public final void nF(int paramInt)
+  public final void rt(int paramInt)
   {
-    if ((this.hMs.hPU == null) || (this.hMs.hPV == null) || (this.hMs.hPU.isEmpty()) || (this.hMs.hPU.size() * 2 != this.hMs.hPV.size()))
+    AppMethodBeat.i(17675);
+    if ((this.jFU.jJw == null) || (this.jFU.jJx == null) || (this.jFU.jJw.isEmpty()) || (this.jFU.jJw.size() * 2 != this.jFU.jJx.size()))
     {
-      if ((this.hMs.hPU != null) && (this.hMs.hPV != null)) {
-        y.e("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName and TimeInterval size error. sessionName size[%d], timeInterval size[%d]", new Object[] { Integer.valueOf(this.hMs.hPU.size()), Integer.valueOf(this.hMs.hPV.size()) });
+      if ((this.jFU.jJw != null) && (this.jFU.jJx != null)) {
+        ab.e("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName and TimeInterval size error. sessionName size[%d], timeInterval size[%d]", new Object[] { Integer.valueOf(this.jFU.jJw.size()), Integer.valueOf(this.jFU.jJx.size()) });
       }
-      j(4, -1, "BackupRequestSession failed");
+      n(4, -1, "BackupRequestSession failed");
+      AppMethodBeat.o(17675);
       return;
     }
-    y.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName size[%d], name:%s", new Object[] { Integer.valueOf(this.hMs.hPU.size()), this.hMs.hPU.toString() });
-    y.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd requestsession resp, TimeInterval:%s", new Object[] { this.hMs.hPV.toString() });
-    j(0, 0, "BackupRequestSession success");
+    ab.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd sessionName size[%d], name:%s", new Object[] { Integer.valueOf(this.jFU.jJw.size()), this.jFU.jJw.toString() });
+    ab.i("MicroMsg.BackupRequestSessionScene", "onSceneEnd requestsession resp, TimeInterval:%s", new Object[] { this.jFU.jJx.toString() });
+    n(0, 0, "BackupRequestSession success");
+    AppMethodBeat.o(17675);
   }
 }
 

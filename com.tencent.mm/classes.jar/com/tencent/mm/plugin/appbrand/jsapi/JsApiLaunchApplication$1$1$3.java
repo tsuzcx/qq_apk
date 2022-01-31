@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiLaunchApplication$1$1$3
   implements Runnable
@@ -10,14 +11,17 @@ final class JsApiLaunchApplication$1$1$3
   
   public final void run()
   {
-    y.i("MicroMsg.JsApiLaunchApplication", "callback task.success:%b", new Object[] { Boolean.valueOf(this.ggm.success) });
-    this.ggm.ahD();
-    if (!this.ggm.success)
+    AppMethodBeat.i(130437);
+    ab.i("MicroMsg.JsApiLaunchApplication", "callback task.success:%b", new Object[] { Boolean.valueOf(this.hyl.success) });
+    this.hyl.aBk();
+    if (!this.hyl.success)
     {
-      this.ggj.ggi.gcp.C(this.ggj.ggi.dIS, this.ggj.ggi.ggh.h("fail:sdk launch fail", null));
+      this.hyi.hyh.bAW.h(this.hyi.hyh.bAX, this.hyi.hyh.hyg.j("fail:sdk launch fail", null));
+      AppMethodBeat.o(130437);
       return;
     }
-    this.ggj.ggi.gcp.C(this.ggj.ggi.dIS, this.ggj.ggi.ggh.h("ok", null));
+    this.hyi.hyh.bAW.h(this.hyi.hyh.bAX, this.hyi.hyh.hyg.j("ok", null));
+    AppMethodBeat.o(130437);
   }
 }
 

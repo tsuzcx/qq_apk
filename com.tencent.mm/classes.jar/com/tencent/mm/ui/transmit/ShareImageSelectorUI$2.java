@@ -1,16 +1,19 @@
 package com.tencent.mm.ui.transmit;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class ShareImageSelectorUI$2
-  extends ah
+  extends ak
 {
   ShareImageSelectorUI$2(ShareImageSelectorUI paramShareImageSelectorUI) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    this.whT.finish();
+    AppMethodBeat.i(35248);
+    this.AAQ.finish();
+    AppMethodBeat.o(35248);
   }
 }
 

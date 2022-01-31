@@ -1,85 +1,89 @@
 package com.google.android.exoplayer2.f.a;
 
-import com.google.android.exoplayer2.c.k;
-import com.google.android.exoplayer2.i.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public static void a(long paramLong, j paramj, k[] paramArrayOfk)
+  private static int A(com.google.android.exoplayer2.i.m paramm)
   {
-    while (paramj.oe() > 1)
-    {
-      int i = e(paramj);
-      int j = e(paramj);
-      if ((j == -1) || (j > paramj.oe()))
-      {
-        paramj.setPosition(paramj.limit);
-      }
-      else
-      {
-        if ((i != 4) || (j < 8)) {
-          i = 0;
-        }
-        for (;;)
-        {
-          if (i != 0)
-          {
-            paramj.dB(8);
-            int k = paramj.readUnsignedByte() & 0x1F;
-            paramj.dB(1);
-            int m = k * 3;
-            int n = paramj.position;
-            int i1 = paramArrayOfk.length;
-            i = 0;
-            for (;;)
-            {
-              if (i < i1)
-              {
-                k localk = paramArrayOfk[i];
-                paramj.setPosition(n);
-                localk.a(paramj, m);
-                localk.a(paramLong, 1, m, 0, null);
-                i += 1;
-                continue;
-                i = paramj.position;
-                k = paramj.readUnsignedByte();
-                m = paramj.readUnsignedShort();
-                n = paramj.readInt();
-                i1 = paramj.readUnsignedByte();
-                paramj.setPosition(i);
-                if ((k == 181) && (m == 49) && (n == 1195456820) && (i1 == 3))
-                {
-                  i = 1;
-                  break;
-                }
-                i = 0;
-                break;
-              }
-            }
-            paramj.dB(j - (k * 3 + 10));
-            break;
-          }
-        }
-        paramj.dB(j);
-      }
-    }
-  }
-  
-  private static int e(j paramj)
-  {
+    AppMethodBeat.i(95620);
     int i = 0;
     int k;
     int j;
     do
     {
-      if (paramj.oe() == 0) {
+      if (paramm.qM() == 0)
+      {
+        AppMethodBeat.o(95620);
         return -1;
       }
-      k = paramj.readUnsignedByte();
+      k = paramm.readUnsignedByte();
       j = i + k;
       i = j;
     } while (k == 255);
+    AppMethodBeat.o(95620);
     return j;
+  }
+  
+  public static void a(long paramLong, com.google.android.exoplayer2.i.m paramm, com.google.android.exoplayer2.c.m[] paramArrayOfm)
+  {
+    AppMethodBeat.i(95619);
+    while (paramm.qM() > 1)
+    {
+      int i = A(paramm);
+      int j = A(paramm);
+      if ((j == -1) || (j > paramm.qM()))
+      {
+        paramm.setPosition(paramm.limit);
+      }
+      else if (a(i, j, paramm))
+      {
+        paramm.en(8);
+        int k = paramm.readUnsignedByte() & 0x1F;
+        paramm.en(1);
+        int m = k * 3;
+        int n = paramm.position;
+        int i1 = paramArrayOfm.length;
+        i = 0;
+        while (i < i1)
+        {
+          com.google.android.exoplayer2.c.m localm = paramArrayOfm[i];
+          paramm.setPosition(n);
+          localm.a(paramm, m);
+          localm.a(paramLong, 1, m, 0, null);
+          i += 1;
+        }
+        paramm.en(j - (k * 3 + 10));
+      }
+      else
+      {
+        paramm.en(j);
+      }
+    }
+    AppMethodBeat.o(95619);
+  }
+  
+  private static boolean a(int paramInt1, int paramInt2, com.google.android.exoplayer2.i.m paramm)
+  {
+    AppMethodBeat.i(95621);
+    if ((paramInt1 != 4) || (paramInt2 < 8))
+    {
+      AppMethodBeat.o(95621);
+      return false;
+    }
+    paramInt1 = paramm.position;
+    paramInt2 = paramm.readUnsignedByte();
+    int i = paramm.readUnsignedShort();
+    int j = paramm.readInt();
+    int k = paramm.readUnsignedByte();
+    paramm.setPosition(paramInt1);
+    if ((paramInt2 == 181) && (i == 49) && (j == 1195456820) && (k == 3))
+    {
+      AppMethodBeat.o(95621);
+      return true;
+    }
+    AppMethodBeat.o(95621);
+    return false;
   }
 }
 

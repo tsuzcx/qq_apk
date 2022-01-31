@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.game.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class j$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class j$1
   
   public final void run()
   {
-    this.laL.invalidateSelf();
+    AppMethodBeat.i(111905);
+    this.nyH.invalidateSelf();
+    AppMethodBeat.o(111905);
   }
 }
 

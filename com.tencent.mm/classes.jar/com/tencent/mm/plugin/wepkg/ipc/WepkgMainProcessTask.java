@@ -4,41 +4,41 @@ import android.os.Message;
 import android.os.Messenger;
 import android.os.Parcel;
 import android.os.Parcelable;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class WepkgMainProcessTask
   implements Parcelable
 {
-  private static final Set<Object> gem = new HashSet();
-  Messenger geD;
+  private static final Set<Object> hwm = new HashSet();
+  Messenger hwC;
   int mTaskId;
   
-  public abstract void Zu();
-  
-  public void Zv() {}
-  
-  public final void ahC()
+  public final void aBj()
   {
-    gem.add(this);
+    hwm.add(this);
   }
   
-  public final void ahD()
+  public final void aBk()
   {
-    gem.remove(this);
+    hwm.remove(this);
   }
+  
+  public abstract void ata();
+  
+  public void atb() {}
   
   public int describeContents()
   {
     return 0;
   }
   
-  public void e(Parcel paramParcel) {}
+  public void f(Parcel paramParcel) {}
   
-  public final void pQ()
+  public final void tU()
   {
-    if (this.geD == null) {
+    if (this.hwC == null) {
       return;
     }
     Message localMessage = Message.obtain();
@@ -46,12 +46,12 @@ public abstract class WepkgMainProcessTask
     localMessage.setData(WepkgMainProcessService.c(this));
     try
     {
-      this.geD.send(localMessage);
+      this.hwC.send(localMessage);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.Wepkg.WepkgMainProcessTask", localException.getMessage());
+      ab.e("MicroMsg.Wepkg.WepkgMainProcessTask", localException.getMessage());
     }
   }
   

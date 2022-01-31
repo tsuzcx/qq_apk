@@ -1,8 +1,19 @@
 package com.tencent.mm.modelstat;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum a$a
 {
   public int value = 0;
+  
+  static
+  {
+    AppMethodBeat.i(16611);
+    fRq = new a("Expose", 0, 1);
+    fRr = new a("Click", 1, 2);
+    fRs = new a[] { fRq, fRr };
+    AppMethodBeat.o(16611);
+  }
   
   private a$a(int paramInt)
   {

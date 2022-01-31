@@ -3,89 +3,134 @@ package com.tencent.mm.plugin.mmsight;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.protocal.c.avn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bby;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class SightCaptureResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<SightCaptureResult> CREATOR = new SightCaptureResult.1();
-  public boolean khM = false;
-  public boolean mfh = false;
-  public boolean mfi = true;
-  public String mfj = "";
-  public String mfk = "";
-  public String mfl = "";
-  public String mfm = "";
-  public int mfn = 0;
-  public avn mfo = new avn();
-  public String mfp = "";
+  public static final Parcelable.Creator<SightCaptureResult> CREATOR;
+  public boolean mCu;
+  public boolean oFG;
+  public boolean oFH;
+  public String oFI;
+  public String oFJ;
+  public String oFK;
+  public String oFL;
+  public int oFM;
+  public bby oFN;
+  public String oFO;
+  
+  static
+  {
+    AppMethodBeat.i(60276);
+    CREATOR = new SightCaptureResult.1();
+    AppMethodBeat.o(60276);
+  }
   
   protected SightCaptureResult(Parcel paramParcel)
   {
+    AppMethodBeat.i(60274);
+    this.mCu = false;
+    this.oFG = false;
+    this.oFH = true;
+    this.oFI = "";
+    this.oFJ = "";
+    this.oFK = "";
+    this.oFL = "";
+    this.oFM = 0;
+    this.oFN = new bby();
+    this.oFO = "";
     if (paramParcel.readByte() != 0)
     {
       bool = true;
-      this.khM = bool;
+      this.mCu = bool;
       if (paramParcel.readByte() == 0) {
-        break label193;
+        break label203;
       }
       bool = true;
-      label88:
-      this.mfh = bool;
+      label93:
+      this.oFG = bool;
       if (paramParcel.readByte() == 0) {
-        break label198;
+        break label208;
       }
     }
-    label193:
-    label198:
+    label203:
+    label208:
     for (boolean bool = true;; bool = false)
     {
-      this.mfi = bool;
-      this.mfj = paramParcel.readString();
-      this.mfk = paramParcel.readString();
-      this.mfl = paramParcel.readString();
-      this.mfm = paramParcel.readString();
-      this.mfn = paramParcel.readInt();
-      this.mfp = paramParcel.readString();
+      this.oFH = bool;
+      this.oFI = paramParcel.readString();
+      this.oFJ = paramParcel.readString();
+      this.oFK = paramParcel.readString();
+      this.oFL = paramParcel.readString();
+      this.oFM = paramParcel.readInt();
+      this.oFO = paramParcel.readString();
       try
       {
         byte[] arrayOfByte = new byte[paramParcel.readInt()];
         paramParcel.readByteArray(arrayOfByte);
-        this.mfo = new avn();
-        this.mfo.aH(arrayOfByte);
+        this.oFN = new bby();
+        this.oFN.parseFrom(arrayOfByte);
+        AppMethodBeat.o(60274);
         return;
       }
       catch (Exception paramParcel)
       {
-        y.e("MicroMsg.SightCaptureResult", "read ext info error: %s", new Object[] { paramParcel.getMessage() });
+        ab.e("MicroMsg.SightCaptureResult", "read ext info error: %s", new Object[] { paramParcel.getMessage() });
+        AppMethodBeat.o(60274);
       }
       bool = false;
       break;
       bool = false;
-      break label88;
+      break label93;
     }
   }
   
   public SightCaptureResult(boolean paramBoolean, String paramString)
   {
-    this.mfi = paramBoolean;
-    this.mfp = paramString;
-    this.khM = false;
-    this.mfh = true;
+    AppMethodBeat.i(60273);
+    this.mCu = false;
+    this.oFG = false;
+    this.oFH = true;
+    this.oFI = "";
+    this.oFJ = "";
+    this.oFK = "";
+    this.oFL = "";
+    this.oFM = 0;
+    this.oFN = new bby();
+    this.oFO = "";
+    this.oFH = paramBoolean;
+    this.oFO = paramString;
+    this.mCu = false;
+    this.oFG = true;
+    AppMethodBeat.o(60273);
   }
   
-  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, avn paramavn)
+  public SightCaptureResult(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, bby parambby)
   {
-    this.mfi = paramBoolean;
-    this.mfj = paramString1;
-    this.mfk = paramString2;
-    this.mfl = paramString3;
-    this.mfn = paramInt;
-    this.mfo = paramavn;
-    this.mfm = paramString4;
-    this.khM = true;
-    this.mfh = false;
+    AppMethodBeat.i(60272);
+    this.mCu = false;
+    this.oFG = false;
+    this.oFH = true;
+    this.oFI = "";
+    this.oFJ = "";
+    this.oFK = "";
+    this.oFL = "";
+    this.oFM = 0;
+    this.oFN = new bby();
+    this.oFO = "";
+    this.oFH = paramBoolean;
+    this.oFI = paramString1;
+    this.oFJ = paramString2;
+    this.oFK = paramString3;
+    this.oFM = paramInt;
+    this.oFN = parambby;
+    this.oFL = paramString4;
+    this.mCu = true;
+    this.oFG = false;
+    AppMethodBeat.o(60272);
   }
   
   public int describeContents()
@@ -96,46 +141,49 @@ public class SightCaptureResult
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    if (this.khM)
+    AppMethodBeat.i(60275);
+    if (this.mCu)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.mfh) {
-        break label123;
+      if (!this.oFG) {
+        break label133;
       }
       paramInt = 1;
-      label26:
+      label31:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.mfi) {
-        break label128;
+      if (!this.oFH) {
+        break label138;
       }
     }
-    label128:
+    label133:
+    label138:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.mfj);
-      paramParcel.writeString(this.mfk);
-      paramParcel.writeString(this.mfl);
-      paramParcel.writeString(this.mfm);
-      paramParcel.writeInt(this.mfn);
-      paramParcel.writeString(this.mfp);
+      paramParcel.writeString(this.oFI);
+      paramParcel.writeString(this.oFJ);
+      paramParcel.writeString(this.oFK);
+      paramParcel.writeString(this.oFL);
+      paramParcel.writeInt(this.oFM);
+      paramParcel.writeString(this.oFO);
       try
       {
-        byte[] arrayOfByte = this.mfo.toByteArray();
+        byte[] arrayOfByte = this.oFN.toByteArray();
         paramParcel.writeInt(arrayOfByte.length);
         paramParcel.writeByteArray(arrayOfByte);
+        AppMethodBeat.o(60275);
         return;
       }
       catch (Exception paramParcel)
       {
-        y.e("MicroMsg.SightCaptureResult", "write ext info error");
+        ab.e("MicroMsg.SightCaptureResult", "write ext info error");
+        AppMethodBeat.o(60275);
       }
       paramInt = 0;
       break;
-      label123:
       paramInt = 0;
-      break label26;
+      break label31;
     }
   }
 }

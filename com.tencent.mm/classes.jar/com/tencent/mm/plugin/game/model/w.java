@@ -1,37 +1,100 @@
 package com.tencent.mm.plugin.game.model;
 
-import com.tencent.mm.h.c.bv;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bv.a;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.io.IOException;
 
 public final class w
-  extends bv
+  extends j<v>
 {
-  protected static c.a buS;
+  public static final String[] SQL_CREATE;
   
   static
   {
-    c.a locala = new c.a();
-    locala.ujL = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.ujN.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.ujM = "key";
-    locala.columns[1] = "value";
-    locala.ujN.put("value", "BLOB");
-    localStringBuilder.append(" value BLOB");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    buS = locala;
+    AppMethodBeat.i(111357);
+    SQL_CREATE = new String[] { j.getCreateSQLs(v.info, "GamePBCache") };
+    AppMethodBeat.o(111357);
   }
   
-  protected final c.a rM()
+  public w(com.tencent.mm.sdk.e.e parame)
   {
-    return buS;
+    super(parame, v.info, "GamePBCache", null);
+  }
+  
+  public final byte[] PN(String paramString)
+  {
+    AppMethodBeat.i(111354);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(111354);
+      return null;
+    }
+    if (!aa.dsG().equals(e.bFY()))
+    {
+      AppMethodBeat.o(111354);
+      return null;
+    }
+    v localv = new v();
+    localv.field_key = paramString;
+    if (super.get(localv, new String[0]))
+    {
+      paramString = localv.field_value;
+      AppMethodBeat.o(111354);
+      return paramString;
+    }
+    AppMethodBeat.o(111354);
+    return null;
+  }
+  
+  public final boolean b(String paramString, a parama)
+  {
+    AppMethodBeat.i(111355);
+    if ((bo.isNullOrNil(paramString)) || (parama == null))
+    {
+      AppMethodBeat.o(111355);
+      return false;
+    }
+    try
+    {
+      parama = parama.toByteArray();
+      boolean bool = w(paramString, parama);
+      AppMethodBeat.o(111355);
+      return bool;
+    }
+    catch (IOException paramString)
+    {
+      ab.e("MicroMsg.GamePBCacheStorage", "Saving Failed: %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(111355);
+    }
+    return false;
+  }
+  
+  public final boolean w(String paramString, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(111356);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
+    {
+      AppMethodBeat.o(111356);
+      return false;
+    }
+    v localv = new v();
+    localv.field_key = paramString;
+    if (super.get(localv, new String[0])) {
+      localv.field_value = paramArrayOfByte;
+    }
+    for (boolean bool = super.update(localv, new String[0]);; bool = super.insert(localv))
+    {
+      if (!bool) {
+        ab.e("MicroMsg.GamePBCacheStorage", "Saving cache failed (update or insert)");
+      }
+      AppMethodBeat.o(111356);
+      return bool;
+      localv.field_value = paramArrayOfByte;
+    }
   }
 }
 

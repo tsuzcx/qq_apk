@@ -46,52 +46,26 @@ public class EncryptUtil
     return 0;
   }
   
-  public static byte[] i(byte[] paramArrayOfByte, String paramString)
-  {
-    paramString = new X509EncodedKeySpec(Base64.decode(paramString, 0));
-    paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
-    Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
-    localCipher.init(2, paramString);
-    int k = paramArrayOfByte.length;
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    int i = 0;
-    int j = 0;
-    if (k - j > 0)
-    {
-      if (k - j > 128) {}
-      for (paramString = localCipher.doFinal(paramArrayOfByte, j, 128);; paramString = localCipher.doFinal(paramArrayOfByte, j, k - j))
-      {
-        localByteArrayOutputStream.write(paramString, 0, paramString.length);
-        i += 1;
-        j = i * 128;
-        break;
-      }
-    }
-    paramArrayOfByte = localByteArrayOutputStream.toByteArray();
-    localByteArrayOutputStream.close();
-    return paramArrayOfByte;
-  }
-  
   /* Error */
-  public static byte[] l(byte[] paramArrayOfByte)
+  public static byte[] compress(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: new 86	java/util/zip/Deflater
+    //   0: new 32	java/util/zip/Deflater
     //   3: dup
-    //   4: invokespecial 87	java/util/zip/Deflater:<init>	()V
+    //   4: invokespecial 33	java/util/zip/Deflater:<init>	()V
     //   7: astore 4
     //   9: aload 4
-    //   11: invokevirtual 90	java/util/zip/Deflater:reset	()V
+    //   11: invokevirtual 36	java/util/zip/Deflater:reset	()V
     //   14: aload 4
     //   16: aload_0
-    //   17: invokevirtual 93	java/util/zip/Deflater:setInput	([B)V
+    //   17: invokevirtual 40	java/util/zip/Deflater:setInput	([B)V
     //   20: aload 4
-    //   22: invokevirtual 96	java/util/zip/Deflater:finish	()V
-    //   25: new 60	java/io/ByteArrayOutputStream
+    //   22: invokevirtual 43	java/util/zip/Deflater:finish	()V
+    //   25: new 45	java/io/ByteArrayOutputStream
     //   28: dup
     //   29: aload_0
     //   30: arraylength
-    //   31: invokespecial 99	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   31: invokespecial 48	java/io/ByteArrayOutputStream:<init>	(I)V
     //   34: astore_2
     //   35: aload_2
     //   36: astore_1
@@ -101,7 +75,7 @@ public class EncryptUtil
     //   43: aload_2
     //   44: astore_1
     //   45: aload 4
-    //   47: invokevirtual 103	java/util/zip/Deflater:finished	()Z
+    //   47: invokevirtual 52	java/util/zip/Deflater:finished	()Z
     //   50: ifne +54 -> 104
     //   53: aload_2
     //   54: astore_1
@@ -110,87 +84,87 @@ public class EncryptUtil
     //   57: iconst_0
     //   58: aload 4
     //   60: aload_3
-    //   61: invokevirtual 107	java/util/zip/Deflater:deflate	([B)I
-    //   64: invokevirtual 69	java/io/ByteArrayOutputStream:write	([BII)V
+    //   61: invokevirtual 56	java/util/zip/Deflater:deflate	([B)I
+    //   64: invokevirtual 60	java/io/ByteArrayOutputStream:write	([BII)V
     //   67: goto -24 -> 43
     //   70: astore_3
     //   71: aload_2
     //   72: astore_1
-    //   73: ldc 109
+    //   73: ldc 62
     //   75: aload_3
-    //   76: ldc 111
+    //   76: ldc 64
     //   78: iconst_0
     //   79: anewarray 4	java/lang/Object
-    //   82: invokestatic 117	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   82: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   85: aload_0
     //   86: astore_1
     //   87: aload_2
     //   88: ifnull +9 -> 97
     //   91: aload_2
-    //   92: invokevirtual 76	java/io/ByteArrayOutputStream:close	()V
+    //   92: invokevirtual 73	java/io/ByteArrayOutputStream:close	()V
     //   95: aload_0
     //   96: astore_1
     //   97: aload 4
-    //   99: invokevirtual 120	java/util/zip/Deflater:end	()V
+    //   99: invokevirtual 76	java/util/zip/Deflater:end	()V
     //   102: aload_1
     //   103: areturn
     //   104: aload_2
     //   105: astore_1
     //   106: aload_2
-    //   107: invokevirtual 73	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   107: invokevirtual 80	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   110: astore_3
     //   111: aload_3
     //   112: astore_1
     //   113: aload_2
-    //   114: invokevirtual 76	java/io/ByteArrayOutputStream:close	()V
+    //   114: invokevirtual 73	java/io/ByteArrayOutputStream:close	()V
     //   117: goto -20 -> 97
     //   120: astore_0
-    //   121: ldc 109
+    //   121: ldc 62
     //   123: aload_0
-    //   124: ldc 111
+    //   124: ldc 64
     //   126: iconst_0
     //   127: anewarray 4	java/lang/Object
-    //   130: invokestatic 117	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   130: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   133: goto -36 -> 97
     //   136: astore_1
-    //   137: ldc 109
+    //   137: ldc 62
     //   139: aload_1
-    //   140: ldc 111
+    //   140: ldc 64
     //   142: iconst_0
     //   143: anewarray 4	java/lang/Object
-    //   146: invokestatic 117	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   146: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   149: aload_0
     //   150: astore_1
     //   151: goto -54 -> 97
     //   154: astore_1
     //   155: aconst_null
     //   156: astore_1
-    //   157: new 82	java/lang/OutOfMemoryError
+    //   157: new 28	java/lang/OutOfMemoryError
     //   160: dup
-    //   161: new 122	java/lang/StringBuilder
+    //   161: new 82	java/lang/StringBuilder
     //   164: dup
-    //   165: ldc 124
-    //   167: invokespecial 127	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   165: ldc 84
+    //   167: invokespecial 87	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   170: aload_0
     //   171: arraylength
-    //   172: invokevirtual 131	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   175: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   178: invokespecial 136	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
+    //   172: invokevirtual 91	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   175: invokevirtual 95	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   178: invokespecial 96	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
     //   181: athrow
     //   182: astore_0
     //   183: aload_1
     //   184: ifnull +7 -> 191
     //   187: aload_1
-    //   188: invokevirtual 76	java/io/ByteArrayOutputStream:close	()V
+    //   188: invokevirtual 73	java/io/ByteArrayOutputStream:close	()V
     //   191: aload_0
     //   192: athrow
     //   193: astore_1
-    //   194: ldc 109
+    //   194: ldc 62
     //   196: aload_1
-    //   197: ldc 111
+    //   197: ldc 64
     //   199: iconst_0
     //   200: anewarray 4	java/lang/Object
-    //   203: invokestatic 117	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   203: invokestatic 70	com/tencent/recovery/log/RecoveryLog:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   206: goto -15 -> 191
     //   209: astore_0
     //   210: aconst_null
@@ -246,7 +220,33 @@ public class EncryptUtil
     //   25	35	221	java/lang/Exception
   }
   
-  public static final String o(byte[] paramArrayOfByte)
+  public static byte[] g(byte[] paramArrayOfByte, String paramString)
+  {
+    paramString = new X509EncodedKeySpec(Base64.decode(paramString, 0));
+    paramString = KeyFactory.getInstance("RSA").generatePublic(paramString);
+    Cipher localCipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+    localCipher.init(2, paramString);
+    int k = paramArrayOfByte.length;
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    int i = 0;
+    int j = 0;
+    if (k - j > 0)
+    {
+      if (k - j > 128) {}
+      for (paramString = localCipher.doFinal(paramArrayOfByte, j, 128);; paramString = localCipher.doFinal(paramArrayOfByte, j, k - j))
+      {
+        localByteArrayOutputStream.write(paramString, 0, paramString.length);
+        i += 1;
+        j = i * 128;
+        break;
+      }
+    }
+    paramArrayOfByte = localByteArrayOutputStream.toByteArray();
+    localByteArrayOutputStream.close();
+    return paramArrayOfByte;
+  }
+  
+  public static final String w(byte[] paramArrayOfByte)
   {
     char[] arrayOfChar = new char[16];
     char[] tmp8_6 = arrayOfChar;

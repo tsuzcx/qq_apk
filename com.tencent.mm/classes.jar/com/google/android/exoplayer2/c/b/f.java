@@ -1,89 +1,88 @@
 package com.google.android.exoplayer2.c.b;
 
-import com.google.android.exoplayer2.c.k.a;
-import com.google.android.exoplayer2.i.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class f
+final class f
 {
-  public final boolean aCF;
-  public final String aCG;
-  public final k.a aCH;
-  public final int aCI;
-  public final byte[] aCJ;
+  private static final long[] aDX = { 128L, 64L, 32L, 16L, 8L, 4L, 2L, 1L };
+  private final byte[] aCi;
+  int length;
+  private int state;
   
-  public f(boolean paramBoolean, String paramString, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, int paramInt3, byte[] paramArrayOfByte2)
+  public f()
   {
-    int i;
-    int j;
-    if (paramInt1 == 0)
-    {
-      i = 1;
-      if (paramArrayOfByte2 != null) {
-        break label88;
-      }
-      j = 1;
-      label25:
-      a.aB(j ^ i);
-      this.aCF = paramBoolean;
-      this.aCG = paramString;
-      this.aCI = paramInt1;
-      this.aCJ = paramArrayOfByte2;
-      if (paramString != null) {
-        break label94;
-      }
-      i = k;
+    AppMethodBeat.i(94917);
+    this.aCi = new byte[8];
+    AppMethodBeat.o(94917);
+  }
+  
+  public static long b(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
+  {
+    long l2 = paramArrayOfByte[0] & 0xFF;
+    long l1 = l2;
+    if (paramBoolean) {
+      l1 = l2 & (aDX[(paramInt - 1)] ^ 0xFFFFFFFF);
     }
-    for (;;)
+    int i = 1;
+    while (i < paramInt)
     {
-      label62:
-      this.aCH = new k.a(i, paramArrayOfByte1, paramInt2, paramInt3);
-      return;
-      i = 0;
-      break;
-      label88:
-      j = 0;
-      break label25;
-      label94:
-      switch (paramString.hashCode())
-      {
-      default: 
-        paramInt1 = -1;
-      }
-      for (;;)
-      {
-        label140:
-        i = k;
-        switch (paramInt1)
-        {
-        case 0: 
-        case 1: 
-        default: 
-          new StringBuilder("Unsupported protection scheme type '").append(paramString).append("'. Assuming AES-CTR crypto mode.");
-          i = k;
-          break label62;
-          if (!paramString.equals("cenc")) {
-            break label140;
-          }
-          paramInt1 = m;
-          continue;
-          if (!paramString.equals("cens")) {
-            break label140;
-          }
-          paramInt1 = 1;
-          continue;
-          if (!paramString.equals("cbc1")) {
-            break label140;
-          }
-          paramInt1 = 2;
-          continue;
-          if (!paramString.equals("cbcs")) {
-            break label140;
-          }
-          paramInt1 = 3;
-        }
-      }
-      i = 2;
+      l1 = l1 << 8 | paramArrayOfByte[i] & 0xFF;
+      i += 1;
     }
+    return l1;
+  }
+  
+  public static int dr(int paramInt)
+  {
+    int i = 0;
+    while (i < aDX.length)
+    {
+      if ((aDX[i] & paramInt) != 0L) {
+        return i + 1;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
+  public final long a(com.google.android.exoplayer2.c.f paramf, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    AppMethodBeat.i(94918);
+    if (this.state == 0)
+    {
+      if (!paramf.a(this.aCi, 0, 1, paramBoolean1))
+      {
+        AppMethodBeat.o(94918);
+        return -1L;
+      }
+      this.length = dr(this.aCi[0] & 0xFF);
+      if (this.length == -1)
+      {
+        paramf = new IllegalStateException("No valid varint length mask found");
+        AppMethodBeat.o(94918);
+        throw paramf;
+      }
+      this.state = 1;
+    }
+    if (this.length > paramInt)
+    {
+      this.state = 0;
+      AppMethodBeat.o(94918);
+      return -2L;
+    }
+    if (this.length != 1) {
+      paramf.readFully(this.aCi, 1, this.length - 1);
+    }
+    this.state = 0;
+    long l = b(this.aCi, this.length, paramBoolean2);
+    AppMethodBeat.o(94918);
+    return l;
+  }
+  
+  public final void reset()
+  {
+    this.state = 0;
+    this.length = 0;
   }
 }
 

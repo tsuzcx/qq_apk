@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:gravity="center_horizontal" android:id="@id/egk" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/ko" android:layout_marginRight="@dimen/kl" android:layout_marginBottom="@dimen/kl" android:text="@string/f3r" style="@style/uv" />
-    <com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView android:id="@id/c7u" wallet:format="fb" style="@style/o8" />
-    <include layout="@layout/jt" />
+<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/a_t" style="@style/lx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/nw" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/a_t">
+        <ImageView android:id="@id/bl_" android:paddingRight="@dimen/m1" android:layout_width="@dimen/a_t" android:layout_height="@dimen/a_t" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/dh9" android:paddingLeft="@dimen/m1" android:layout_width="wrap_content" android:layout_height="@dimen/a_t" android:src="@raw/drag_sort_icon" android:maxHeight="@dimen/a_t" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/dh_" android:layout_width="@dimen/no" android:layout_height="wrap_content" android:layout_toLeftOf="@id/dh9" />
+        <TextView android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bl9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/dh_" android:layout_toRightOf="@id/bl_" android:layout_centerVertical="true" style="@style/ln" />
+    </RelativeLayout>
 </LinearLayout>

@@ -1,31 +1,34 @@
 package com.tencent.mm.plugin.brandservice;
 
-import com.tencent.mm.model.ar;
-import com.tencent.mm.pluginsdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  public n createApplication()
+  public o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(13800);
+    b localb = new b();
+    AppMethodBeat.o(13800);
+    return localb;
   }
   
-  public ar createSubCore()
+  public at createSubCore()
   {
     return null;
   }
   
-  public b getContactWidgetFactory()
+  public com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.Plugin
  * JD-Core Version:    0.7.0.1
  */

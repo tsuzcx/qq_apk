@@ -1,17 +1,33 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.d.a.b;
-import a.d.b.h;
-import a.n;
-import com.tencent.mm.ui.base.p;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.emojicapture.c.b.b;
+import com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureUI.b;
+import com.tencent.mm.plugin.emojicapture.ui.EmojiVideoPlayTextureView;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "run"})
 final class c$g
-  extends h
-  implements b<Boolean, n>
+  implements Runnable
 {
-  c$g(c paramc, p paramp, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
+  c$g(c paramc) {}
+  
+  public final void run()
   {
-    super(1);
+    AppMethodBeat.i(2772);
+    if ((c.e(this.lww)) && (c.c(this.lww)))
+    {
+      EmojiVideoPlayTextureView localEmojiVideoPlayTextureView = c.a(this.lww).getVideoPlayView();
+      if (localEmojiVideoPlayTextureView != null) {
+        EmojiVideoPlayTextureView.a(localEmojiVideoPlayTextureView, c.b(this.lww));
+      }
+      c.a(this.lww).bnD();
+      c.h(this.lww).boR();
+      c.a(this.lww, c.g(this.lww), c.i(this.lww), true);
+      c.a(this.lww, false);
+      c.b(this.lww, false);
+    }
+    AppMethodBeat.o(2772);
   }
 }
 

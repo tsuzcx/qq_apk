@@ -2,12 +2,11 @@ package com.tencent.mm.chatroom.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.m.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.a.c;
+import com.tencent.mm.ui.tools.b.c;
 
 final class ModRemarkRoomNameUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -16,14 +15,17 @@ final class ModRemarkRoomNameUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.dpp.XM();
-    paramMenuItem = b.Ak();
-    if ((!bk.bl(paramMenuItem)) && ("".matches(".*[" + paramMenuItem + "].*")))
+    AppMethodBeat.i(104119);
+    this.egL.hideVKB();
+    paramMenuItem = b.MZ();
+    if ((!bo.isNullOrNil(paramMenuItem)) && ("".matches(".*[" + paramMenuItem + "].*")))
     {
-      h.b(this.dpp.mController.uMN, this.dpp.getString(a.i.invalid_input_character_toast, new Object[] { paramMenuItem }), this.dpp.getString(a.i.app_tip), true);
+      h.b(this.egL.getContext(), this.egL.getString(2131300749, new Object[] { paramMenuItem }), this.egL.getString(2131297087), true);
+      AppMethodBeat.o(104119);
       return false;
     }
-    c.d(ModRemarkRoomNameUI.a(this.dpp)).fJ(1, 32).a(this.dpp);
+    c.d(ModRemarkRoomNameUI.a(this.egL)).hR(1, 32).a(this.egL);
+    AppMethodBeat.o(104119);
     return true;
   }
 }

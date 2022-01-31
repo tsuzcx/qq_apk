@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.sns.g.b;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.h.b;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.vi;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 final class SnsGalleryUI$3
@@ -18,30 +19,34 @@ final class SnsGalleryUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    Object localObject = this.oYh.oVy.getSelectId();
-    String str = this.oYh.oVy.getSelectedMediaId();
-    paramMenuItem = this.oYh.oVy.getSelectItem();
-    y.d("MicroMsg.SnsGalleryUI", "click selectLocalId " + (String)localObject);
-    y.d("MicroMsg.SnsGalleryUI", "click position " + str);
-    localObject = af.bDF().OB((String)localObject);
-    try
+    AppMethodBeat.i(38937);
+    Object localObject = this.rQA.rNT.getSelectId();
+    String str = this.rQA.rNT.getSelectedMediaId();
+    paramMenuItem = this.rQA.rNT.getSelectItem();
+    ab.d("MicroMsg.SnsGalleryUI", "click selectLocalId ".concat(String.valueOf(localObject)));
+    ab.d("MicroMsg.SnsGalleryUI", "click position ".concat(String.valueOf(str)));
+    localObject = ag.cpf().abv((String)localObject);
+    for (;;)
     {
-      int i = this.oYh.oVy.getPosition();
-      int j = ((n)localObject).bGe().tNr.sPJ.size();
-      if ((j > 1) && (i > 1) && (i <= j)) {
-        i -= 1;
-      }
-      for (;;)
+      try
       {
-        this.oYh.oVv.a(this.oYi, (n)localObject, paramMenuItem.bZK, true, i);
-        return true;
-        i = 0;
+        i = this.rQA.rNT.getPosition();
+        int j = ((n)localObject).csh().xTS.wOa.size();
+        if ((j <= 1) || (i <= 1) || (i > j)) {
+          continue;
+        }
+        i -= 1;
+        this.rQA.rNP.a(this.rQB, (n)localObject, paramMenuItem.cIc, true, i);
       }
+      catch (Exception paramMenuItem)
+      {
+        int i;
+        ab.printErrStackTrace("MicroMsg.SnsGalleryUI", paramMenuItem, "", new Object[0]);
+        continue;
+      }
+      AppMethodBeat.o(38937);
       return true;
-    }
-    catch (Exception paramMenuItem)
-    {
-      y.printErrStackTrace("MicroMsg.SnsGalleryUI", paramMenuItem, "", new Object[0]);
+      i = 0;
     }
   }
 }

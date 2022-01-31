@@ -5,8 +5,9 @@ import android.content.pm.ResolveInfo;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.mm.ui.widget.b.c;
 
 final class AppChooserUI$1
   implements AdapterView.OnItemClickListener
@@ -15,34 +16,36 @@ final class AppChooserUI$1
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (AppChooserUI.a(this.slj) != null)
+    AppMethodBeat.i(125854);
+    if (AppChooserUI.a(this.wdL) != null)
     {
-      AppChooserUI.a(this.slj, AppChooserUI.a(this.slj).Ew(paramInt));
-      AppChooserUI.a(this.slj).notifyDataSetChanged();
-      if ((AppChooserUI.b(this.slj) != null) && (AppChooserUI.b(this.slj).fvH.isShowing()))
+      AppChooserUI.a(this.wdL, AppChooserUI.a(this.wdL).Mu(paramInt));
+      AppChooserUI.a(this.wdL).notifyDataSetChanged();
+      if ((AppChooserUI.b(this.wdL) != null) && (AppChooserUI.b(this.wdL).gNn.isShowing()))
       {
-        if ((AppChooserUI.c(this.slj) == null) || (!AppChooserUI.c(this.slj).slq) || ((AppChooserUI.c(this.slj).lnq) && ((AppChooserUI.c(this.slj).pKW) || (AppChooserUI.d(this.slj) >= AppChooserUI.e(this.slj))))) {
-          break label252;
+        if ((AppChooserUI.c(this.wdL) == null) || (!AppChooserUI.c(this.wdL).wdS) || ((AppChooserUI.c(this.wdL).nKJ) && ((AppChooserUI.c(this.wdL).tqS) || (AppChooserUI.d(this.wdL) >= AppChooserUI.e(this.wdL))))) {
+          break label262;
         }
-        AppChooserUI.b(this.slj).mg(false);
+        AppChooserUI.b(this.wdL).pv(false);
       }
     }
     for (;;)
     {
-      if (((AppChooserUI.f(this.slj) == 6) || (AppChooserUI.g(this.slj) == 2)) && (AppChooserUI.c(this.slj) != null) && (AppChooserUI.c(this.slj).sln != null))
+      if (((AppChooserUI.f(this.wdL) == 6) || (AppChooserUI.g(this.wdL) == 2)) && (AppChooserUI.c(this.wdL) != null) && (AppChooserUI.c(this.wdL).wdP != null))
       {
-        AppChooserUI.a(this.slj, AppChooserUI.c(this.slj).sln.activityInfo.packageName, false);
-        h.nFQ.f(12809, new Object[] { Integer.valueOf(4), AppChooserUI.c(this.slj).sln.activityInfo.packageName });
+        AppChooserUI.a(this.wdL, AppChooserUI.c(this.wdL).wdP.activityInfo.packageName, false);
+        h.qsU.e(12809, new Object[] { Integer.valueOf(4), AppChooserUI.c(this.wdL).wdP.activityInfo.packageName });
       }
+      AppMethodBeat.o(125854);
       return;
-      label252:
-      AppChooserUI.b(this.slj).mg(true);
+      label262:
+      AppChooserUI.b(this.wdL).pv(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.AppChooserUI.1
  * JD-Core Version:    0.7.0.1
  */

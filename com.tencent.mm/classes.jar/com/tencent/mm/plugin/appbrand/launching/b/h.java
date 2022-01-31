@@ -1,12 +1,16 @@
 package com.tencent.mm.plugin.appbrand.launching.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class h
 {
   static void a(h.a parama)
   {
+    AppMethodBeat.i(132045);
     if (parama != null) {
-      parama.alV();
+      parama.aHp();
     }
+    AppMethodBeat.o(132045);
   }
 }
 

@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.misc.b;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.q;
 
 final class a$1
   implements Runnable
@@ -9,12 +11,41 @@ final class a$1
   
   public final void run()
   {
-    int j = this.bEe.getType();
-    int i = 0;
-    if ((j == 1616) || (j == 1518) || (j == 385)) {
-      i = 1;
+    int j = 1;
+    AppMethodBeat.i(50504);
+    int k = this.ckS.getType();
+    Object localObject = this.ckS.getReqResp();
+    int i = j;
+    if (k != 1616)
+    {
+      i = j;
+      if (k != 1518)
+      {
+        if (k != 385) {
+          break label70;
+        }
+        i = j;
+      }
     }
-    a.t(i, this.bEf, this.bEg, j);
+    for (;;)
+    {
+      a.z(i, this.val$errType, this.val$errCode, k);
+      AppMethodBeat.o(50504);
+      return;
+      label70:
+      if (localObject != null)
+      {
+        localObject = ((q)localObject).getUri();
+        if (localObject != null)
+        {
+          i = j;
+          if (((String)localObject).startsWith("/cgi-bin/mmpay-bin/")) {
+            continue;
+          }
+        }
+      }
+      i = 0;
+    }
   }
 }
 

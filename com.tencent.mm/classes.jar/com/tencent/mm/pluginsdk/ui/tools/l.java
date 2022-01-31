@@ -1,412 +1,326 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mm.br.d;
-import com.tencent.mm.modelvideo.o;
-import com.tencent.mm.modelvideo.t;
-import com.tencent.mm.platformtools.ae;
-import com.tencent.mm.platformtools.q;
-import com.tencent.mm.plugin.ai.a.a;
-import com.tencent.mm.plugin.ai.a.h;
-import com.tencent.mm.plugin.mmsight.SightParams;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.x;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.model.t;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.WXImageObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject;
+import com.tencent.mm.opensdk.modelmsg.WXMusicObject;
+import com.tencent.mm.opensdk.modelmsg.WXVideoFileObject;
+import com.tencent.mm.opensdk.modelmsg.WXVideoObject;
+import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.pluginsdk.model.app.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.w;
+import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class l
 {
-  private static String filePath = null;
+  public static int wfw = 2;
   
-  public static boolean T(Activity paramActivity)
+  public static void a(int paramInt, f paramf, WXMediaMessage paramWXMediaMessage, LinkedList<String> paramLinkedList)
   {
-    a(paramActivity, 2, 1, 0, 1, false, null);
-    return true;
-  }
-  
-  public static void U(Activity paramActivity)
-  {
-    a(paramActivity, 2, 1, 10, 1, true, null);
-  }
-  
-  public static String UL()
-  {
-    return q.UL();
-  }
-  
-  public static void a(Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, Intent paramIntent)
-  {
-    Intent localIntent = new Intent();
-    if (paramIntent != null) {
-      localIntent.putExtras(paramIntent.getExtras());
-    }
-    localIntent.putExtra("max_select_count", paramInt2);
-    localIntent.putExtra("query_source_type", paramInt3);
-    localIntent.putExtra("query_media_type", paramInt4);
-    localIntent.putExtra("show_header_view", paramBoolean);
-    localIntent.addFlags(67108864);
-    d.b(paramActivity, "gallery", ".ui.GalleryEntryUI", localIntent, paramInt1);
-  }
-  
-  public static void a(Activity paramActivity, int paramInt1, int paramInt2, int paramInt3, Intent paramIntent)
-  {
-    Intent localIntent = new Intent();
-    if (paramIntent != null) {
-      localIntent.putExtras(paramIntent.getExtras());
-    }
-    localIntent.putExtra("max_select_count", paramInt2);
-    localIntent.putExtra("query_source_type", paramInt3);
-    localIntent.addFlags(67108864);
-    d.b(paramActivity, "gallery", ".ui.GalleryEntryUI", localIntent, paramInt1);
-  }
-  
-  public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    paramString = new File(paramString);
-    if (paramString.exists()) {
-      paramString.delete();
-    }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("output", Uri.fromFile(paramString));
-    localIntent.putExtra("android.intent.extra.videoQuality", paramInt3);
-    if (paramBoolean) {}
-    for (paramInt3 = 1;; paramInt3 = 0)
+    AppMethodBeat.i(79951);
+    paramLinkedList = paramLinkedList.iterator();
+    if (paramLinkedList.hasNext())
     {
-      localIntent.putExtra("android.intent.extras.CAMERA_FACING", paramInt3);
-      if (paramInt2 > 0) {
-        localIntent.putExtra("android.intent.extra.durationLimit", paramInt2);
-      }
-      localIntent.setAction("android.media.action.VIDEO_CAPTURE");
-      localIntent.addCategory("android.intent.category.DEFAULT");
-      paramActivity.startActivityForResult(localIntent, paramInt1);
-      return;
-    }
-  }
-  
-  private static void a(Fragment paramFragment, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2)
-  {
-    Intent localIntent = new Intent();
-    if (!bk.bl(paramString2))
-    {
-      localIntent.putExtra("GalleryUI_FromUser", paramString1);
-      localIntent.putExtra("GalleryUI_ToUser", paramString2);
-    }
-    localIntent.putExtra("max_select_count", paramInt2);
-    localIntent.putExtra("query_source_type", paramInt3);
-    localIntent.putExtra("query_media_type", paramInt4);
-    if (ae.eTJ) {
-      localIntent.putExtra("show_header_view", true);
-    }
-    for (;;)
-    {
-      localIntent.addFlags(67108864);
-      d.a(paramFragment, "gallery", ".ui.AlbumPreviewUI", localIntent, paramInt1);
-      return;
-      localIntent.putExtra("show_header_view", false);
-    }
-  }
-  
-  public static void a(Fragment paramFragment, int paramInt, String paramString1, String paramString2)
-  {
-    a(paramFragment, 217, 9, paramInt, 1, paramString1, paramString2);
-  }
-  
-  public static void a(String paramString, Context paramContext)
-  {
-    q.a(paramString, paramContext);
-  }
-  
-  public static boolean a(Activity paramActivity, int paramInt, Intent paramIntent)
-  {
-    a(paramActivity, paramInt, 1, 0, paramIntent);
-    return true;
-  }
-  
-  public static boolean a(Context paramContext, int paramInt1, Intent paramIntent, int paramInt2, int paramInt3)
-  {
-    return a(paramContext, paramInt1, paramIntent, paramInt2, "", paramInt3, "");
-  }
-  
-  private static boolean a(Context paramContext, int paramInt1, Intent paramIntent, int paramInt2, String paramString1, int paramInt3, String paramString2)
-  {
-    SightParams localSightParams1 = null;
-    if (paramIntent != null) {
-      localSightParams1 = (SightParams)paramIntent.getParcelableExtra("KEY_SIGHT_PARAMS");
-    }
-    SightParams localSightParams2 = localSightParams1;
-    if (localSightParams1 == null) {
-      localSightParams2 = new SightParams(paramInt2, paramInt3);
-    }
-    localSightParams2.mfz = paramString2;
-    if (paramInt2 == 1)
-    {
-      paramString1 = t.nR(paramString1);
-      o.Sr();
-      paramString2 = t.nS(paramString1);
-      o.Sr();
-      localSightParams2.o(paramString1, paramString2, t.nT(paramString1), com.tencent.mm.compatible.util.e.dzD + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
-    }
-    if (localSightParams2 == null) {
-      y.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
-    }
-    for (;;)
-    {
-      d.b(paramContext, "mmsight", ".ui.SightCaptureUI", paramIntent, paramInt1);
-      if ((paramContext instanceof Activity)) {
-        ((Activity)paramContext).overridePendingTransition(a.a.sight_slide_bottom_in, -1);
-      }
-      return true;
-      paramIntent.putExtra("KEY_SIGHT_PARAMS", localSightParams2);
-    }
-  }
-  
-  public static boolean a(Fragment paramFragment, Intent paramIntent, String paramString, int paramInt)
-  {
-    SightParams localSightParams = new SightParams(1, paramInt);
-    paramString = t.nR(paramString);
-    o.Sr();
-    String str = t.nS(paramString);
-    o.Sr();
-    localSightParams.o(paramString, str, t.nT(paramString), com.tencent.mm.compatible.util.e.dzD + String.format("%s%d.%s", new Object[] { "capture", Long.valueOf(System.currentTimeMillis()), "jpg" }));
-    paramIntent.putExtra("KEY_SIGHT_PARAMS", localSightParams);
-    d.a(paramFragment, "mmsight", ".ui.SightCaptureUI", paramIntent, 226);
-    paramFragment.getActivity().overridePendingTransition(a.a.sight_slide_bottom_in, -1);
-    return true;
-  }
-  
-  public static boolean a(x paramx, String paramString1, String paramString2)
-  {
-    boolean bool = b(paramx, paramString1, paramString2);
-    y.i("MicroMsg.TakePhotoUtil", "takePhoto(), dir = [%s], filename = [%s], cmd = [%s], result = [%s]", new Object[] { paramString1, paramString2, Integer.valueOf(201), Boolean.valueOf(bool) });
-    return bool;
-  }
-  
-  public static void b(Fragment paramFragment, int paramInt, String paramString1, String paramString2)
-  {
-    a(paramFragment, 217, 9, paramInt, 3, paramString1, paramString2);
-  }
-  
-  public static boolean b(Context paramContext, Intent paramIntent, String paramString)
-  {
-    return a(paramContext, 17, paramIntent, 2, "", 0, paramString);
-  }
-  
-  private static boolean b(x paramx, String paramString1, String paramString2)
-  {
-    if ((com.tencent.mm.r.a.bj(paramx.getContext())) || (com.tencent.mm.r.a.bi(paramx.getContext()))) {
-      return false;
-    }
-    filePath = paramString1 + paramString2;
-    y.i("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), filePath = " + filePath);
-    bq(paramx.getContext(), filePath);
-    paramString2 = new Intent("android.media.action.IMAGE_CAPTURE");
-    File localFile = new File(paramString1);
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.mkdirs();
-      if (!localFile.exists())
+      String str1 = (String)paramLinkedList.next();
+      String str2 = paramf.field_appId;
+      String str3 = paramf.field_appName;
+      int i;
+      label52:
+      int k;
+      if (paramf.vY())
       {
-        y.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), dir not exist. " + paramString1);
-        return false;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        y.printErrStackTrace("MicroMsg.TakePhotoUtil", localException, "", new Object[0]);
-      }
-      paramString2.putExtra("output", Uri.fromFile(new File(filePath)));
-      try
-      {
-        paramx.startActivityForResult(paramString2, 201);
-        return true;
-      }
-      catch (ActivityNotFoundException paramx)
-      {
-        y.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), " + paramx.getMessage());
-      }
-    }
-    return false;
-  }
-  
-  private static void bq(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("system_config_prefs", 0).edit();
-    paramContext.putString("camera_file_path", paramString);
-    paramContext.commit();
-  }
-  
-  public static boolean c(Activity paramActivity, String paramString1, String paramString2, int paramInt)
-  {
-    boolean bool = d(paramActivity, paramString1, paramString2, paramInt);
-    y.i("MicroMsg.TakePhotoUtil", "takePhoto(), dir = [%s], filename = [%s], cmd = [%s], result = [%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-    return bool;
-  }
-  
-  public static boolean c(Context paramContext, Intent paramIntent, String paramString)
-  {
-    return a(paramContext, 8, paramIntent, 1, paramString, 0, "");
-  }
-  
-  public static void d(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    paramIntent.putExtra("max_select_count", paramInt1);
-    paramIntent.putExtra("query_media_type", 2);
-    paramIntent.putExtra("query_source_type", paramInt2);
-    paramIntent.addFlags(67108864);
-    d.b(paramActivity, "gallery", ".ui.GalleryEntryUI", paramIntent, 4);
-  }
-  
-  private static boolean d(Activity paramActivity, String paramString1, String paramString2, int paramInt)
-  {
-    if ((com.tencent.mm.r.a.bj(paramActivity)) || (com.tencent.mm.r.a.bi(paramActivity))) {
-      return false;
-    }
-    filePath = paramString1 + paramString2;
-    y.i("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), filePath = " + filePath);
-    bq(paramActivity, filePath);
-    paramString2 = new Intent("android.media.action.IMAGE_CAPTURE");
-    File localFile = new File(paramString1);
-    if (!localFile.exists()) {}
-    try
-    {
-      localFile.mkdirs();
-      if (!localFile.exists())
-      {
-        y.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), dir not exist. " + paramString1);
-        return false;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        y.printErrStackTrace("MicroMsg.TakePhotoUtil", localException, "", new Object[0]);
-      }
-      paramString2.putExtra("output", Uri.fromFile(new File(filePath)));
-      try
-      {
-        paramActivity.startActivityForResult(paramString2, paramInt);
-        return true;
-      }
-      catch (Exception paramActivity)
-      {
-        y.e("MicroMsg.TakePhotoUtil", "takePhotoFromSys(), " + paramActivity.getMessage());
-      }
-    }
-    return false;
-  }
-  
-  public static boolean d(Context paramContext, Intent paramIntent, String paramString)
-  {
-    return e(paramContext, paramIntent, paramString);
-  }
-  
-  private static boolean e(Context paramContext, Intent paramIntent, String paramString)
-  {
-    Object localObject1 = null;
-    if (paramIntent != null) {
-      localObject1 = (SightParams)paramIntent.getParcelableExtra("KEY_SIGHT_PARAMS");
-    }
-    Object localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = new SightParams(2, 0);
-    }
-    ((SightParams)localObject2).mfz = paramString;
-    if (localObject2 == null) {
-      y.e("MicroMsg.TakePhotoUtil", "videoParams takeMMSight is null");
-    }
-    for (;;)
-    {
-      try
-      {
-        paramContext.startActivity(paramIntent);
-        if ((paramContext instanceof Activity)) {
-          ((Activity)paramContext).overridePendingTransition(a.a.sight_slide_bottom_in, -1);
+        i = 1;
+        k = paramWXMediaMessage.getType();
+        if (!t.lA(str1)) {
+          break label376;
         }
-        return true;
       }
-      catch (Exception paramContext)
+      label376:
+      for (int j = 1;; j = 0)
       {
-        y.w("MicroMsg.TakePhotoUtil", "takeWeishiSight Exception: %s", new Object[] { paramContext.getMessage() });
+        try
+        {
+          String str4 = q.encode(bo.nullAsNil(b(paramWXMediaMessage)), "UTF-8");
+          String str5 = q.encode(bo.nullAsNil(paramWXMediaMessage.title), "UTF-8");
+          String str6 = q.encode(bo.nullAsNil(paramWXMediaMessage.description), "UTF-8");
+          ab.i("MicroMsg.ShareReport", paramInt + "," + str2 + "," + str3 + "," + i + "," + k + "," + j + ",1," + str1 + "," + str5 + "," + str6 + "," + str4 + "," + "" + "," + "" + "," + "");
+          h.qsU.e(16492, new Object[] { Integer.valueOf(paramInt), str2, str3, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(1), str1, str5, str6, str4, "", "", "" });
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          ab.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+        }
+        break;
+        i = 0;
+        break label52;
       }
-      localObject1 = ((SightParams)localObject2).mfz;
-      paramString = (String)localObject1;
-      if (bk.bl((String)localObject1)) {
-        paramString = bk.UY() + "_" + bk.Fe(5);
+    }
+    AppMethodBeat.o(79951);
+  }
+  
+  public static void a(int paramInt, f paramf, WxaAttributes paramWxaAttributes, WXMediaMessage paramWXMediaMessage, WXMiniProgramObject paramWXMiniProgramObject, LinkedList<String> paramLinkedList)
+  {
+    AppMethodBeat.i(79950);
+    paramLinkedList = paramLinkedList.iterator();
+    if (paramLinkedList.hasNext())
+    {
+      String str1 = (String)paramLinkedList.next();
+      String str2 = paramf.field_appId;
+      String str3 = paramf.field_appName;
+      int i;
+      label56:
+      int k;
+      if (paramf.vY())
+      {
+        i = 1;
+        k = paramWXMediaMessage.getType();
+        if (!t.lA(str1)) {
+          break label412;
+        }
       }
-      localObject1 = new StringBuilder("weishi://camera?forceNoShowLogin=1");
-      y.d("MicroMsg.TakePhotoUtil", "weishi_url = %s", new Object[] { ((StringBuilder)localObject1).toString() });
-      paramIntent.setAction("android.intent.action.VIEW");
-      paramIntent.setData(Uri.parse(((StringBuilder)localObject1).toString()));
-      paramIntent.setPackage("com.tencent.weishi");
-      paramIntent.setFlags(268435456);
-      localObject1 = paramIntent.getPackage();
-      paramContext.getSharedPreferences("opensdk_shareTicket", 0).edit().putString((String)localObject1, paramString).apply();
+      label412:
+      for (int j = 1;; j = 0)
+      {
+        try
+        {
+          String str4 = q.encode(bo.nullAsNil(paramWXMiniProgramObject.webpageUrl), "UTF-8");
+          String str5 = q.encode(bo.nullAsNil(paramWXMediaMessage.title), "UTF-8");
+          String str6 = q.encode(bo.nullAsNil(paramWXMediaMessage.description), "UTF-8");
+          String str7 = paramWxaAttributes.field_appId;
+          String str8 = q.encode(bo.nullAsNil(paramWXMiniProgramObject.path), "UTF-8");
+          int m = paramWXMiniProgramObject.miniprogramType;
+          ab.i("MicroMsg.ShareReport", paramInt + "," + str2 + "," + str3 + "," + i + "," + k + "," + j + ",1," + str1 + "," + str5 + "," + str6 + "," + str4 + "," + str7 + "," + str8 + "," + m);
+          h.qsU.e(16492, new Object[] { Integer.valueOf(paramInt), str2, str3, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(1), str1, str5, str6, str4, str7, str8, Integer.valueOf(m) });
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          ab.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+        }
+        break;
+        i = 0;
+        break label56;
+      }
     }
-    return true;
+    AppMethodBeat.o(79950);
   }
   
-  public static String f(Context paramContext, Intent paramIntent, String paramString)
+  public static void a(int paramInt, String paramString, WXMediaMessage paramWXMediaMessage)
   {
-    if (filePath == null) {
-      filePath = paramContext.getSharedPreferences("system_config_prefs", 0).getString("camera_file_path", null);
+    AppMethodBeat.i(79954);
+    Object localObject = g.ca(paramString, true);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(79954);
+      return;
     }
-    if ((filePath == null) || (!com.tencent.mm.a.e.bK(filePath))) {
-      filePath = com.tencent.mm.ui.tools.a.g(paramContext, paramIntent, paramString);
+    paramString = ((f)localObject).field_appId;
+    String str1 = ((f)localObject).field_appName;
+    if (((f)localObject).vY()) {}
+    for (int i = 1;; i = 0)
+    {
+      int j = paramWXMediaMessage.getType();
+      try
+      {
+        localObject = q.encode(bo.nullAsNil(b(paramWXMediaMessage)), "UTF-8");
+        String str2 = q.encode(bo.nullAsNil(paramWXMediaMessage.title), "UTF-8");
+        paramWXMediaMessage = q.encode(bo.nullAsNil(paramWXMediaMessage.description), "UTF-8");
+        ab.i("MicroMsg.ShareReport", paramInt + "," + paramString + "," + str1 + "," + i + "," + j + ",3,1," + "" + "," + str2 + "," + paramWXMediaMessage + "," + (String)localObject);
+        h.qsU.e(16492, new Object[] { Integer.valueOf(paramInt), paramString, str1, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(3), Integer.valueOf(1), "", localObject, str2, paramWXMediaMessage });
+        AppMethodBeat.o(79954);
+        return;
+      }
+      catch (UnsupportedEncodingException paramString)
+      {
+        ab.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+        AppMethodBeat.o(79954);
+      }
     }
-    q.a(filePath, paramContext);
-    return filePath;
   }
   
-  public static void i(String paramString, Context paramContext)
+  public static void aF(Intent paramIntent)
   {
-    q.a(paramString, paramContext, a.h.image_saved);
+    AppMethodBeat.i(79953);
+    Object localObject1 = paramIntent.getBundleExtra("Ksnsupload_timeline");
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(79953);
+      return;
+    }
+    String str1 = w.n(paramIntent, "Ksnsupload_appid");
+    String str2 = w.n(paramIntent, "Ksnsupload_appname");
+    int k = w.a(paramIntent, "Ksnsupload_open_sdk_version", 0);
+    boolean bool1 = w.a(paramIntent, "KThrid_app", false);
+    boolean bool2 = w.a(paramIntent, "Ksnsupload_app_is_game", false);
+    paramIntent = new SendMessageToWX.Req();
+    paramIntent.fromBundle((Bundle)localObject1);
+    paramIntent = paramIntent.message;
+    if (paramIntent == null)
+    {
+      AppMethodBeat.o(79953);
+      return;
+    }
+    try
+    {
+      localObject1 = q.encode(bo.nullAsNil(b(paramIntent)), "UTF-8");
+      String str3 = q.encode(bo.nullAsNil(paramIntent.title), "UTF-8");
+      String str4 = q.encode(bo.nullAsNil(paramIntent.description), "UTF-8");
+      Object localObject2 = new StringBuilder().append(k).append(",").append(str1).append(",").append(str2).append(",");
+      int i;
+      label214:
+      int m;
+      if (bool2)
+      {
+        i = 1;
+        localObject2 = ((StringBuilder)localObject2).append(i).append(",").append(paramIntent.getType()).append(",2,");
+        if (!bool1) {
+          break label378;
+        }
+        i = 1;
+        ab.i("MicroMsg.ShareReport", i + ",," + str3 + "," + str4 + "," + (String)localObject1);
+        localObject2 = h.qsU;
+        if (!bool2) {
+          break label383;
+        }
+        i = 1;
+        label270:
+        m = paramIntent.getType();
+        if (!bool1) {
+          break label388;
+        }
+      }
+      label388:
+      for (int j = 1;; j = 2)
+      {
+        ((h)localObject2).e(16492, new Object[] { Integer.valueOf(k), str1, str2, Integer.valueOf(i), Integer.valueOf(m), Integer.valueOf(2), Integer.valueOf(j), "", str3, str4, localObject1 });
+        AppMethodBeat.o(79953);
+        return;
+        i = 0;
+        break;
+        label378:
+        i = 2;
+        break label214;
+        label383:
+        i = 0;
+        break label270;
+      }
+      return;
+    }
+    catch (UnsupportedEncodingException paramIntent)
+    {
+      ab.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+      AppMethodBeat.o(79953);
+    }
   }
   
-  public static boolean j(Activity paramActivity, int paramInt)
+  private static String b(WXMediaMessage paramWXMediaMessage)
   {
-    a(paramActivity, paramInt, 1, 11, null);
-    return true;
+    AppMethodBeat.i(79955);
+    if (paramWXMediaMessage == null)
+    {
+      ab.w("MicroMsg.ShareReport", "sendImgMsg msg not img");
+      AppMethodBeat.o(79955);
+      return null;
+    }
+    if ((paramWXMediaMessage.mediaObject instanceof WXImageObject))
+    {
+      paramWXMediaMessage = ((WXImageObject)paramWXMediaMessage.mediaObject).imagePath;
+      AppMethodBeat.o(79955);
+      return paramWXMediaMessage;
+    }
+    if ((paramWXMediaMessage.mediaObject instanceof WXVideoFileObject))
+    {
+      paramWXMediaMessage = ((WXVideoFileObject)paramWXMediaMessage.mediaObject).filePath;
+      AppMethodBeat.o(79955);
+      return paramWXMediaMessage;
+    }
+    if ((paramWXMediaMessage.mediaObject instanceof WXMusicObject))
+    {
+      paramWXMediaMessage = ((WXMusicObject)paramWXMediaMessage.mediaObject).musicUrl;
+      AppMethodBeat.o(79955);
+      return paramWXMediaMessage;
+    }
+    if ((paramWXMediaMessage.mediaObject instanceof WXVideoObject))
+    {
+      paramWXMediaMessage = ((WXVideoObject)paramWXMediaMessage.mediaObject).videoUrl;
+      AppMethodBeat.o(79955);
+      return paramWXMediaMessage;
+    }
+    if ((paramWXMediaMessage.mediaObject instanceof WXWebpageObject))
+    {
+      paramWXMediaMessage = ((WXWebpageObject)paramWXMediaMessage.mediaObject).webpageUrl;
+      AppMethodBeat.o(79955);
+      return paramWXMediaMessage;
+    }
+    AppMethodBeat.o(79955);
+    return "";
   }
   
-  public static boolean k(Activity paramActivity, int paramInt)
+  public static void hY(String paramString1, String paramString2)
   {
-    a(paramActivity, paramInt, 1, 5, null);
-    return true;
-  }
-  
-  public static String pd(String paramString)
-  {
-    return q.pd(paramString);
-  }
-  
-  @TargetApi(8)
-  public static String qt()
-  {
-    return com.tencent.mm.compatible.util.e.dzD;
-  }
-  
-  public static boolean r(Fragment paramFragment)
-  {
-    a(paramFragment, 200, 1, 0, 1, "", "");
-    return true;
-  }
-  
-  public static boolean z(Context paramContext, Intent paramIntent)
-  {
-    return b(paramContext, paramIntent, "");
+    AppMethodBeat.i(79952);
+    paramString1 = j.b.mX(bo.apU(paramString1));
+    if (paramString1 == null)
+    {
+      AppMethodBeat.o(79952);
+      return;
+    }
+    Object localObject = g.ca(paramString1.appId, true);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(79952);
+      return;
+    }
+    String str1 = ((f)localObject).field_appId;
+    String str2 = ((f)localObject).field_appName;
+    int i;
+    int k;
+    if (((f)localObject).vY())
+    {
+      i = 1;
+      k = paramString1.type;
+      if (!t.lA(paramString2)) {
+        break label402;
+      }
+    }
+    label402:
+    for (int j = 1;; j = 0)
+    {
+      int m = wfw;
+      try
+      {
+        localObject = q.encode(bo.nullAsNil(paramString1.url), "UTF-8");
+        String str3 = q.encode(bo.nullAsNil(paramString1.title), "UTF-8");
+        String str4 = q.encode(bo.nullAsNil(paramString1.description), "UTF-8");
+        String str5 = paramString1.fiY;
+        String str6 = paramString1.fiW;
+        int n = paramString1.fjh;
+        ab.i("MicroMsg.ShareReport", "," + str1 + "," + str2 + "," + i + "," + k + "," + j + "," + m + "," + paramString2 + "," + str3 + "," + str4 + "," + (String)localObject + "," + str5 + "," + str6 + "," + n);
+        h.qsU.e(16492, new Object[] { "", str1, str2, Integer.valueOf(i), Integer.valueOf(k), Integer.valueOf(j), Integer.valueOf(m), paramString2, str3, str4, localObject, str5, str6, Integer.valueOf(n) });
+        AppMethodBeat.o(79952);
+        return;
+      }
+      catch (UnsupportedEncodingException paramString1)
+      {
+        ab.e("MicroMsg.ShareReport", "URLEncoder.encode Error");
+        AppMethodBeat.o(79952);
+      }
+      i = 0;
+      break;
+    }
   }
 }
 

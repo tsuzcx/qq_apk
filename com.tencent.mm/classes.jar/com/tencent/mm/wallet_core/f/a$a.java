@@ -1,8 +1,17 @@
 package com.tencent.mm.wallet_core.f;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$a
 {
-  static a wBk = new a();
+  static a AXI;
+  
+  static
+  {
+    AppMethodBeat.i(49162);
+    AXI = new a();
+    AppMethodBeat.o(49162);
+  }
 }
 
 

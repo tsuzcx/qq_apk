@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.readerapp.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class g$2
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class g$2
   
   public final void run()
   {
-    if (this.noz != null) {
-      this.noz.buW();
+    AppMethodBeat.i(76764);
+    if (this.pTN != null) {
+      this.pTN.cfi();
     }
+    AppMethodBeat.o(76764);
   }
 }
 

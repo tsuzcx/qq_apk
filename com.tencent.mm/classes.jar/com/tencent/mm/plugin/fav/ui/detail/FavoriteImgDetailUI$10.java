@@ -1,23 +1,42 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.app.Dialog;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.ui.widget.snackbar.b;
+import android.support.v7.app.AppCompatActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fav.a.g;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
+import com.tencent.mm.ui.widget.b.d;
 
 final class FavoriteImgDetailUI$10
-  implements Runnable
+  implements n.c
 {
-  FavoriteImgDetailUI$10(FavoriteImgDetailUI paramFavoriteImgDetailUI, Dialog paramDialog) {}
+  FavoriteImgDetailUI$10(FavoriteImgDetailUI paramFavoriteImgDetailUI, d paramd, FavoriteImgDetailUI.a parama) {}
   
-  public final void run()
+  public final void onCreateMMMenu(l paraml)
   {
-    this.kbH.dismiss();
-    b.h(this.kfM, this.kfM.getString(n.i.fav_finish_sent));
+    AppMethodBeat.i(74387);
+    paraml.clear();
+    this.mAE.setFooterView(null);
+    if (FavoriteImgDetailUI.a(this.mAv))
+    {
+      if (FavoriteImgDetailUI.b(this.mAv).bwl()) {
+        paraml.e(2, this.mAv.getContext().getString(2131299826));
+      }
+      if (FavoriteImgDetailUI.b(this.mAv).bwm()) {
+        paraml.e(1, this.mAv.getContext().getString(2131299779));
+      }
+      paraml.e(3, this.mAv.getContext().getString(2131299819));
+      if (!bo.isNullOrNil(this.mAB.mAH)) {
+        this.mAE.setFooterView(FavoriteImgDetailUI.b(this.mAv, this.mAB));
+      }
+    }
+    AppMethodBeat.o(74387);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteImgDetailUI.10
  * JD-Core Version:    0.7.0.1
  */

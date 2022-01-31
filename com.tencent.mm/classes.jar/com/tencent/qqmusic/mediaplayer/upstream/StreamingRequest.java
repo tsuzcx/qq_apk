@@ -1,6 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.upstream;
 
 import android.net.Uri;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 public class StreamingRequest
@@ -16,7 +17,10 @@ public class StreamingRequest
   
   public String toString()
   {
-    return "StreamingRequest{uri='" + this.uri + '\'' + ", headers=" + this.headers + '}';
+    AppMethodBeat.i(105509);
+    String str = "StreamingRequest{uri='" + this.uri + '\'' + ", headers=" + this.headers + '}';
+    AppMethodBeat.o(105509);
+    return str;
   }
 }
 

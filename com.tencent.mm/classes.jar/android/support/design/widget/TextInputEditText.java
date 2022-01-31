@@ -2,7 +2,7 @@ package android.support.design.widget;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.bg;
+import android.support.v7.widget.bi;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewParent;
@@ -29,8 +29,8 @@ public class TextInputEditText
     for (ViewParent localViewParent = getParent();; localViewParent = localViewParent.getParent()) {
       if ((localViewParent instanceof View))
       {
-        if ((localViewParent instanceof bg)) {
-          paramEditorInfo.hintText = ((bg)localViewParent).getHint();
+        if ((localViewParent instanceof bi)) {
+          paramEditorInfo.hintText = ((bi)localViewParent).getHint();
         }
       }
       else {

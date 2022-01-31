@@ -1,62 +1,189 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.task.d;
-import com.tencent.mm.plugin.report.service.h;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.j;
+import com.tencent.mm.plugin.appbrand.page.r;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandEmbedUI;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
+import com.tencent.mm.plugin.appbrand.widget.input.w;
+import com.tencent.mm.plugin.appbrand.widget.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.base.b;
+import java.util.LinkedList;
 
 public final class l
+  extends com.tencent.luggage.sdk.d.a
 {
-  long[] fzl = new long[15];
-  int fzm;
-  int fzn;
-  private int fzo = 0;
-  boolean fzp;
-  boolean fzq;
-  int fzr;
-  int mType;
-  int mVersion;
+  private boolean gQL;
+  public final Class[] gQM;
   
-  public l()
+  public l(com.tencent.mm.plugin.appbrand.task.i parami)
   {
-    if (d.aaE()) {
-      i = 1;
+    super(parami, o.class);
+    AppMethodBeat.i(128961);
+    this.gQL = false;
+    this.gQM = new Class[] { j.class };
+    if ((Build.VERSION.SDK_INT >= 21) && (com.tencent.mm.plugin.appbrand.widget.input.a.aQr())) {
+      m.a(this.gQx, this.gQx.getWindow().getDecorView());
     }
-    this.fzo = i;
+    AppMethodBeat.o(128961);
   }
   
-  final void e(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  private void atL()
   {
-    int i = 1;
-    h localh = h.nFQ;
-    int j = this.mVersion;
-    int k = this.mType;
-    long l = this.fzl[paramInt2];
-    int m = this.fzm;
-    int n = this.fzo;
-    int i1 = this.fzn;
-    if (this.fzp)
+    AppMethodBeat.i(128969);
+    if ((this.gQx instanceof AppBrandPluginUI)) {
+      b.aD(this.gQx);
+    }
+    AppMethodBeat.o(128969);
+  }
+  
+  private void h(AppBrandInitConfig paramAppBrandInitConfig)
+  {
+    AppMethodBeat.i(156243);
+    if (paramAppBrandInitConfig == null)
     {
-      paramInt2 = 1;
-      if (!this.fzq) {
-        break label215;
+      AppMethodBeat.o(156243);
+      return;
+    }
+    int i;
+    if (((paramAppBrandInitConfig instanceof AppBrandInitConfigLU)) && (((AppBrandInitConfigLU)paramAppBrandInitConfig).vY()))
+    {
+      i = 1;
+      if (i == 0) {
+        break label82;
       }
     }
-    for (;;)
+    label82:
+    for (paramAppBrandInitConfig = w.cQ(this.gQy);; paramAppBrandInitConfig = com.tencent.luggage.game.widget.input.a.cf(this.gQy))
     {
-      localh.f(13886, new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt1), "", "", Long.valueOf(l), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(paramInt3), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.fzr) });
+      if ((paramAppBrandInitConfig != null) && ((paramAppBrandInitConfig.getParent() instanceof ViewGroup))) {
+        ((ViewGroup)paramAppBrandInitConfig.getParent()).removeView(paramAppBrandInitConfig);
+      }
+      AppMethodBeat.o(156243);
       return;
-      paramInt2 = 0;
-      break;
-      label215:
       i = 0;
+      break;
     }
   }
   
-  public final void n(int paramInt, long paramLong)
+  public final void a(WindowManager.LayoutParams paramLayoutParams)
   {
-    if ((paramInt >= this.fzl.length) || (this.fzl[paramInt] != 0L)) {
+    AppMethodBeat.i(143031);
+    super.a(paramLayoutParams);
+    int j;
+    if ((this.gQx != null) && (this.gQx.getWindow() != null))
+    {
+      paramLayoutParams = this.gQx.getWindow().getDecorView();
+      if ((paramLayoutParams.getWindowSystemUiVisibility() & 0x2) == 0)
+      {
+        paramLayoutParams = paramLayoutParams.getBackground();
+        if ((paramLayoutParams instanceof m))
+        {
+          paramLayoutParams = (m)paramLayoutParams;
+          j = this.gQx.getWindow().getNavigationBarColor();
+          if (j == paramLayoutParams.jaK) {
+            break label104;
+          }
+        }
+      }
+    }
+    label104:
+    for (int i = 1;; i = 0)
+    {
+      paramLayoutParams.jaK = j;
+      if (i != 0) {
+        paramLayoutParams.invalidateSelf();
+      }
+      AppMethodBeat.o(143031);
       return;
     }
-    this.fzl[paramInt] = paramLong;
+  }
+  
+  public final void a(i parami, MiniProgramNavigationBackResult paramMiniProgramNavigationBackResult)
+  {
+    AppMethodBeat.i(128965);
+    if (paramMiniProgramNavigationBackResult != null) {
+      try
+      {
+        if ((this.gQx instanceof AppBrandEmbedUI))
+        {
+          Intent localIntent = new Intent();
+          localIntent.putExtra("result_key_mini_program_navigate_back_result", paramMiniProgramNavigationBackResult);
+          this.gQx.setResult(-1, localIntent);
+          this.gQx.finish();
+          AppMethodBeat.o(128965);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.AppBrandRuntimeContainerWC", localException, "close runtime %s", new Object[] { parami.mAppId });
+      }
+    }
+    super.a(parami, paramMiniProgramNavigationBackResult);
+    AppMethodBeat.o(128965);
+  }
+  
+  public final void b(i parami1, i parami2, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(128967);
+    super.b(parami1, parami2, new l.1(this, paramRunnable));
+    AppMethodBeat.o(128967);
+  }
+  
+  public final void bf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(128966);
+    if (this.gQL)
+    {
+      ab.i("MicroMsg.AppBrandRuntimeContainerWC", "closeActivity(%b), mKeepActivityFrontOnce=TRUE", new Object[] { Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(128966);
+      return;
+    }
+    super.bf(paramBoolean);
+    if (((this.gQx instanceof AppBrandPluginUI)) && (this.gQx.isFinishing()))
+    {
+      i locali = atG();
+      if (locali != null) {}
+      try
+      {
+        if (locali.atj().getCurrentPage().mSwiping) {
+          this.gQx.overridePendingTransition(0, 0);
+        }
+        AppMethodBeat.o(128966);
+        return;
+      }
+      catch (NullPointerException localNullPointerException) {}
+    }
+    AppMethodBeat.o(128966);
+  }
+  
+  public final Activity getContext()
+  {
+    return this.gQx;
+  }
+  
+  public final boolean wN()
+  {
+    AppMethodBeat.i(128970);
+    if (this.gQz.size() <= 0)
+    {
+      bf(false);
+      AppMethodBeat.o(128970);
+      return true;
+    }
+    AppMethodBeat.o(128970);
+    return false;
   }
 }
 

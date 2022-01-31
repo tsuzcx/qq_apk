@@ -3,35 +3,36 @@ package com.tencent.mm.modelstat;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.HandlerThread;
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.ax.b;
-import com.tencent.mm.sdk.platformtools.ax.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bb;
+import com.tencent.mm.sdk.platformtools.bb.b;
+import com.tencent.mm.sdk.platformtools.bb.c;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashSet;
 import junit.framework.Assert;
 
 public final class m
-  extends j
-  implements ax.c<Integer, k>
+  extends com.tencent.mm.sdk.e.k
+  implements bb.c<Integer, k>
 {
-  public static final String[] dXp = { "CREATE TABLE IF NOT EXISTS netstat ( id INTEGER PRIMARY KEY, peroid INT, textCountIn INT, textBytesIn INT, imageCountIn INT, imageBytesIn INT, voiceCountIn INT, voiceBytesIn INT, videoCountIn INT, videoBytesIn INT, mobileBytesIn INT, wifiBytesIn INT, sysMobileBytesIn INT, sysWifiBytesIn INT, textCountOut INT, textBytesOut INT, imageCountOut INT, imageBytesOut INT, voiceCountOut INT, voiceBytesOut INT, videoCountOut INT, videoBytesOut INT, mobileBytesOut INT, wifiBytesOut INT, sysMobileBytesOut INT, sysWifiBytesOut INT, reserved1 INT, reserved2 INT, reserved3 TEXT, realMobileBytesIn INT, realWifiBytesIn INT, realMobileBytesOut INT, realWifiBytesOut INT) ", "CREATE INDEX IF NOT EXISTS  statInfoIndex ON netstat ( peroid ) " };
-  private static final String[] eEr = { "realMobileBytesIn", "realWifiBytesIn", "realMobileBytesOut", "realWifiBytesOut" };
-  public h dXo;
-  private long eEo;
-  public ax<Integer, k> eEp;
-  private long eEq;
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS netstat ( id INTEGER PRIMARY KEY, peroid INT, textCountIn INT, textBytesIn INT, imageCountIn INT, imageBytesIn INT, voiceCountIn INT, voiceBytesIn INT, videoCountIn INT, videoBytesIn INT, mobileBytesIn INT, wifiBytesIn INT, sysMobileBytesIn INT, sysWifiBytesIn INT, textCountOut INT, textBytesOut INT, imageCountOut INT, imageBytesOut INT, voiceCountOut INT, voiceBytesOut INT, videoCountOut INT, videoBytesOut INT, mobileBytesOut INT, wifiBytesOut INT, sysMobileBytesOut INT, sysWifiBytesOut INT, reserved1 INT, reserved2 INT, reserved3 TEXT, realMobileBytesIn INT, realWifiBytesIn INT, realMobileBytesOut INT, realWifiBytesOut INT) ", "CREATE INDEX IF NOT EXISTS  statInfoIndex ON netstat ( peroid ) " };
+  private static final String[] fUi = { "realMobileBytesIn", "realWifiBytesIn", "realMobileBytesOut", "realWifiBytesOut" };
+  private long fUf;
+  public bb<Integer, k> fUg;
+  private long fUh;
+  public h fnw;
   
   public m(h paramh)
   {
-    this.dXo = paramh;
-    this.eEp = new ax(this, g.DS().mnU.getLooper(), 30, 2, 300000L, 1000L);
+    AppMethodBeat.i(78753);
+    this.fnw = paramh;
+    this.fUg = new bb(this, g.RO().oNc.getLooper(), 30, 2);
     paramh = new HashSet();
-    Object localObject1 = eEr;
+    Object localObject1 = fUi;
     int k = localObject1.length;
     int i = 0;
     while (i < k)
@@ -39,13 +40,13 @@ public final class m
       paramh.add(localObject1[i]);
       i += 1;
     }
-    localObject1 = this.dXo.a("PRAGMA table_info(netstat);", null, 2);
+    localObject1 = this.fnw.a("PRAGMA table_info(netstat);", null, 2);
     i = ((Cursor)localObject1).getColumnIndex("name");
     while (((Cursor)localObject1).moveToNext()) {
       paramh.remove(((Cursor)localObject1).getString(i));
     }
     ((Cursor)localObject1).close();
-    localObject1 = eEr;
+    localObject1 = fUi;
     k = localObject1.length;
     i = j;
     while (i < k)
@@ -54,309 +55,331 @@ public final class m
       if (paramh.contains(localObject2))
       {
         localObject2 = "ALTER TABLE netstat ADD COLUMN " + (String)localObject2 + " INT;";
-        this.dXo.gk("netstat", (String)localObject2);
+        this.fnw.execSQL("netstat", (String)localObject2);
       }
       i += 1;
     }
-    this.eEq = System.currentTimeMillis();
-  }
-  
-  public final long Rv()
-  {
-    this.eEp.mx(true);
-    int j = (int)((bk.UY() - 1296000000L) / 86400000L);
-    int i = (int)(bk.crW() / 86400000L);
-    Object localObject = "SELECT peroid FROM netstat  WHERE peroid > " + j + " order by peroid limit 1";
-    localObject = this.dXo.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst()) {
-      i = ((Cursor)localObject).getInt(((Cursor)localObject).getColumnIndex("peroid"));
-    }
-    ((Cursor)localObject).close();
-    return i * 86400000L;
-  }
-  
-  public final boolean Rw()
-  {
-    if (this.dXo.inTransaction())
-    {
-      y.i("MicroMsg.NetStat", "summer preAppend inTransaction return false");
-      return false;
-    }
-    this.eEo = this.dXo.eV(Thread.currentThread().getId());
-    if (this.eEo <= 0L)
-    {
-      y.i("MicroMsg.NetStat", "summer preAppend ticket: " + this.eEo + " return false");
-      return false;
-    }
-    return true;
-  }
-  
-  public final void Rx()
-  {
-    if (this.eEo > 0L) {
-      this.dXo.hI(this.eEo);
-    }
+    this.fUh = System.currentTimeMillis();
+    AppMethodBeat.o(78753);
   }
   
   public final void a(k paramk)
   {
+    AppMethodBeat.i(78755);
     Assert.assertNotNull(paramk);
     long l = System.currentTimeMillis();
-    if (paramk.eDC <= 0) {
-      paramk.eDC = ((int)(l / 86400000L));
+    if (paramk.fTt <= 0) {
+      paramk.fTt = ((int)(l / 86400000L));
     }
-    if (paramk.eDC <= 0) {
+    if (paramk.fTt <= 0)
+    {
+      AppMethodBeat.o(78755);
       return;
     }
-    k localk = ji(paramk.eDC);
-    if ((localk != null) && (paramk.eDC == localk.eDC))
+    k localk = mb(paramk.fTt);
+    if ((localk != null) && (paramk.fTt == localk.fTt))
     {
-      localk.bcw |= 0x1;
-      paramk.eDD += localk.eDE;
-      paramk.eDE += localk.eDE;
-      paramk.eDF += localk.eDG;
-      paramk.eDG += localk.eDG;
-      paramk.eDH += localk.eDH;
-      paramk.eDI += localk.eDI;
-      paramk.eDJ += localk.eDJ;
-      paramk.eDK += localk.eDK;
-      paramk.eDL += localk.eDL;
-      paramk.eDM += localk.eDM;
-      paramk.eDN += localk.eDN;
-      paramk.eDO += localk.eDO;
-      paramk.eDP += localk.eDQ;
-      paramk.eDQ += localk.eDQ;
-      paramk.eDR += localk.eDS;
-      paramk.eDS += localk.eDS;
-      paramk.eDT += localk.eDT;
-      paramk.eDU += localk.eDU;
-      paramk.eDV += localk.eDV;
-      paramk.eDW += localk.eDW;
-      paramk.eDX += localk.eDX;
-      paramk.eDY += localk.eDY;
-      paramk.eDZ += localk.eDZ;
-      paramk.eEa += localk.eEa;
-      paramk.eEb += localk.eEb;
-      paramk.eEc += localk.eEc;
-      paramk.eEd += localk.eEd;
-      paramk.eEe += localk.eEe;
-      if ((paramk.eDL <= 4096) && (paramk.eDM <= 4096) && (paramk.eDX <= 4096)) {
-        int i = paramk.eDY;
-      }
+      localk.bsY |= 0x1;
+      paramk.fTu += localk.fTv;
+      paramk.fTv += localk.fTv;
+      paramk.fTw += localk.fTx;
+      paramk.fTx += localk.fTx;
+      paramk.fTy += localk.fTy;
+      paramk.fTz += localk.fTz;
+      paramk.fTA += localk.fTA;
+      paramk.fTB += localk.fTB;
+      paramk.fTC += localk.fTC;
+      paramk.fTD += localk.fTD;
+      paramk.fTE += localk.fTE;
+      paramk.fTF += localk.fTF;
+      paramk.fTG += localk.fTH;
+      paramk.fTH += localk.fTH;
+      paramk.fTI += localk.fTJ;
+      paramk.fTJ += localk.fTJ;
+      paramk.fTK += localk.fTK;
+      paramk.fTL += localk.fTL;
+      paramk.fTM += localk.fTM;
+      paramk.fTN += localk.fTN;
+      paramk.fTO += localk.fTO;
+      paramk.fTP += localk.fTP;
+      paramk.fTQ += localk.fTQ;
+      paramk.fTR += localk.fTR;
+      paramk.fTS += localk.fTS;
+      paramk.fTT += localk.fTT;
+      paramk.fTU += localk.fTU;
+      paramk.fTV += localk.fTV;
       paramk.id = localk.id;
-      if (l - this.eEq > 300000L) {
-        y.i("MicroMsg.NetStat", paramk.toString());
+      if (l - this.fUh > 300000L) {
+        ab.i("MicroMsg.NetStat", paramk.toString());
       }
     }
     for (;;)
     {
-      this.eEq = l;
+      this.fUh = l;
       b(paramk);
+      AppMethodBeat.o(78755);
       return;
-      paramk.bcw |= 0x2;
+      paramk.bsY |= 0x2;
       paramk.id = -1;
       if (localk != null) {
-        y.i("MicroMsg.NetStat", localk.toString());
+        ab.i("MicroMsg.NetStat", localk.toString());
       } else {
-        y.i("MicroMsg.NetStat", "NetStat started.");
+        ab.i("MicroMsg.NetStat", "NetStat started.");
       }
     }
   }
   
-  public final void a(ax<Integer, k> paramax, ax.b<Integer, k> paramb)
+  public final void a(bb.b<Integer, k> paramb)
   {
-    int i = paramb.uhL;
-    paramax = (k)paramb.values;
-    if ((paramax != null) && (i == 1))
+    AppMethodBeat.i(78761);
+    int i = paramb.ypQ;
+    paramb = (k)paramb.values;
+    if ((paramb != null) && (i == 1))
     {
-      i = paramax.eDC;
-      int j = paramax.id;
+      i = paramb.fTt;
+      int j = paramb.id;
       if (i > 0)
       {
-        paramb = new ContentValues();
-        if ((paramax.bcw & 0x2) != 0) {
-          paramb.put("peroid", Integer.valueOf(paramax.eDC));
+        ContentValues localContentValues = new ContentValues();
+        if ((paramb.bsY & 0x2) != 0) {
+          localContentValues.put("peroid", Integer.valueOf(paramb.fTt));
         }
-        if ((paramax.bcw & 0x4) != 0) {
-          paramb.put("textCountIn", Integer.valueOf(paramax.eDD));
+        if ((paramb.bsY & 0x4) != 0) {
+          localContentValues.put("textCountIn", Integer.valueOf(paramb.fTu));
         }
-        if ((paramax.bcw & 0x8) != 0) {
-          paramb.put("textBytesIn", Integer.valueOf(paramax.eDE));
+        if ((paramb.bsY & 0x8) != 0) {
+          localContentValues.put("textBytesIn", Integer.valueOf(paramb.fTv));
         }
-        if ((paramax.bcw & 0x10) != 0) {
-          paramb.put("imageCountIn", Integer.valueOf(paramax.eDF));
+        if ((paramb.bsY & 0x10) != 0) {
+          localContentValues.put("imageCountIn", Integer.valueOf(paramb.fTw));
         }
-        if ((paramax.bcw & 0x20) != 0) {
-          paramb.put("imageBytesIn", Integer.valueOf(paramax.eDG));
+        if ((paramb.bsY & 0x20) != 0) {
+          localContentValues.put("imageBytesIn", Integer.valueOf(paramb.fTx));
         }
-        if ((paramax.bcw & 0x40) != 0) {
-          paramb.put("voiceCountIn", Integer.valueOf(paramax.eDH));
+        if ((paramb.bsY & 0x40) != 0) {
+          localContentValues.put("voiceCountIn", Integer.valueOf(paramb.fTy));
         }
-        if ((paramax.bcw & 0x80) != 0) {
-          paramb.put("voiceBytesIn", Integer.valueOf(paramax.eDI));
+        if ((paramb.bsY & 0x80) != 0) {
+          localContentValues.put("voiceBytesIn", Integer.valueOf(paramb.fTz));
         }
-        if ((paramax.bcw & 0x100) != 0) {
-          paramb.put("videoCountIn", Integer.valueOf(paramax.eDJ));
+        if ((paramb.bsY & 0x100) != 0) {
+          localContentValues.put("videoCountIn", Integer.valueOf(paramb.fTA));
         }
-        if ((paramax.bcw & 0x200) != 0) {
-          paramb.put("videoBytesIn", Integer.valueOf(paramax.eDK));
+        if ((paramb.bsY & 0x200) != 0) {
+          localContentValues.put("videoBytesIn", Integer.valueOf(paramb.fTB));
         }
-        if ((paramax.bcw & 0x400) != 0) {
-          paramb.put("mobileBytesIn", Integer.valueOf(paramax.eDL));
+        if ((paramb.bsY & 0x400) != 0) {
+          localContentValues.put("mobileBytesIn", Integer.valueOf(paramb.fTC));
         }
-        if ((paramax.bcw & 0x800) != 0) {
-          paramb.put("wifiBytesIn", Integer.valueOf(paramax.eDM));
+        if ((paramb.bsY & 0x800) != 0) {
+          localContentValues.put("wifiBytesIn", Integer.valueOf(paramb.fTD));
         }
-        if ((paramax.bcw & 0x1000) != 0) {
-          paramb.put("sysMobileBytesIn", Integer.valueOf(paramax.eDN));
+        if ((paramb.bsY & 0x1000) != 0) {
+          localContentValues.put("sysMobileBytesIn", Integer.valueOf(paramb.fTE));
         }
-        if ((paramax.bcw & 0x2000) != 0) {
-          paramb.put("sysWifiBytesIn", Integer.valueOf(paramax.eDO));
+        if ((paramb.bsY & 0x2000) != 0) {
+          localContentValues.put("sysWifiBytesIn", Integer.valueOf(paramb.fTF));
         }
-        if ((paramax.bcw & 0x4000) != 0) {
-          paramb.put("textCountOut", Integer.valueOf(paramax.eDP));
+        if ((paramb.bsY & 0x4000) != 0) {
+          localContentValues.put("textCountOut", Integer.valueOf(paramb.fTG));
         }
-        if ((paramax.bcw & 0x8000) != 0) {
-          paramb.put("textBytesOut", Integer.valueOf(paramax.eDQ));
+        if ((paramb.bsY & 0x8000) != 0) {
+          localContentValues.put("textBytesOut", Integer.valueOf(paramb.fTH));
         }
-        if ((paramax.bcw & 0x10000) != 0) {
-          paramb.put("imageCountOut", Integer.valueOf(paramax.eDR));
+        if ((paramb.bsY & 0x10000) != 0) {
+          localContentValues.put("imageCountOut", Integer.valueOf(paramb.fTI));
         }
-        if ((paramax.bcw & 0x20000) != 0) {
-          paramb.put("imageBytesOut", Integer.valueOf(paramax.eDS));
+        if ((paramb.bsY & 0x20000) != 0) {
+          localContentValues.put("imageBytesOut", Integer.valueOf(paramb.fTJ));
         }
-        if ((paramax.bcw & 0x40000) != 0) {
-          paramb.put("voiceCountOut", Integer.valueOf(paramax.eDT));
+        if ((paramb.bsY & 0x40000) != 0) {
+          localContentValues.put("voiceCountOut", Integer.valueOf(paramb.fTK));
         }
-        if ((paramax.bcw & 0x80000) != 0) {
-          paramb.put("voiceBytesOut", Integer.valueOf(paramax.eDU));
+        if ((paramb.bsY & 0x80000) != 0) {
+          localContentValues.put("voiceBytesOut", Integer.valueOf(paramb.fTL));
         }
-        if ((paramax.bcw & 0x100000) != 0) {
-          paramb.put("videoCountOut", Integer.valueOf(paramax.eDV));
+        if ((paramb.bsY & 0x100000) != 0) {
+          localContentValues.put("videoCountOut", Integer.valueOf(paramb.fTM));
         }
-        if ((paramax.bcw & 0x200000) != 0) {
-          paramb.put("videoBytesOut", Integer.valueOf(paramax.eDW));
+        if ((paramb.bsY & 0x200000) != 0) {
+          localContentValues.put("videoBytesOut", Integer.valueOf(paramb.fTN));
         }
-        if ((paramax.bcw & 0x400000) != 0) {
-          paramb.put("mobileBytesOut", Integer.valueOf(paramax.eDX));
+        if ((paramb.bsY & 0x400000) != 0) {
+          localContentValues.put("mobileBytesOut", Integer.valueOf(paramb.fTO));
         }
-        if ((paramax.bcw & 0x800000) != 0) {
-          paramb.put("wifiBytesOut", Integer.valueOf(paramax.eDY));
+        if ((paramb.bsY & 0x800000) != 0) {
+          localContentValues.put("wifiBytesOut", Integer.valueOf(paramb.fTP));
         }
-        if ((paramax.bcw & 0x1000000) != 0) {
-          paramb.put("sysMobileBytesOut", Integer.valueOf(paramax.eDZ));
+        if ((paramb.bsY & 0x1000000) != 0) {
+          localContentValues.put("sysMobileBytesOut", Integer.valueOf(paramb.fTQ));
         }
-        if ((paramax.bcw & 0x2000000) != 0) {
-          paramb.put("sysWifiBytesOut", Integer.valueOf(paramax.eEa));
+        if ((paramb.bsY & 0x2000000) != 0) {
+          localContentValues.put("sysWifiBytesOut", Integer.valueOf(paramb.fTR));
         }
-        if ((paramax.bcw & 0x4000000) != 0) {
-          paramb.put("realMobileBytesIn", Integer.valueOf(paramax.eEb));
+        if ((paramb.bsY & 0x4000000) != 0) {
+          localContentValues.put("realMobileBytesIn", Integer.valueOf(paramb.fTS));
         }
-        if ((paramax.bcw & 0x8000000) != 0) {
-          paramb.put("realWifiBytesIn", Integer.valueOf(paramax.eEc));
+        if ((paramb.bsY & 0x8000000) != 0) {
+          localContentValues.put("realWifiBytesIn", Integer.valueOf(paramb.fTT));
         }
-        if ((paramax.bcw & 0x10000000) != 0) {
-          paramb.put("realMobileBytesOut", Integer.valueOf(paramax.eEd));
+        if ((paramb.bsY & 0x10000000) != 0) {
+          localContentValues.put("realMobileBytesOut", Integer.valueOf(paramb.fTU));
         }
-        if ((paramax.bcw & 0x20000000) != 0) {
-          paramb.put("realWifiBytesOut", Integer.valueOf(paramax.eEe));
+        if ((paramb.bsY & 0x20000000) != 0) {
+          localContentValues.put("realWifiBytesOut", Integer.valueOf(paramb.fTV));
         }
-        if (j >= 0) {
-          break label781;
+        if (j < 0)
+        {
+          paramb.id = ((int)this.fnw.a("netstat", "id", localContentValues));
+          AppMethodBeat.o(78761);
+          return;
         }
-        paramax.id = ((int)this.dXo.insert("netstat", "id", paramb));
+        this.fnw.update("netstat", localContentValues, "peroid=".concat(String.valueOf(i)), null);
       }
     }
-    return;
-    label781:
-    this.dXo.update("netstat", paramb, "peroid=" + i, null);
+    AppMethodBeat.o(78761);
+  }
+  
+  public final long akE()
+  {
+    AppMethodBeat.i(78758);
+    this.fUg.pM(true);
+    int j = (int)((bo.aoy() - 1296000000L) / 86400000L);
+    int i = (int)(bo.dtT() / 86400000L);
+    Object localObject = "SELECT peroid FROM netstat  WHERE peroid > " + j + " order by peroid limit 1";
+    localObject = this.fnw.a((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst()) {
+      i = ((Cursor)localObject).getInt(((Cursor)localObject).getColumnIndex("peroid"));
+    }
+    ((Cursor)localObject).close();
+    long l = i;
+    AppMethodBeat.o(78758);
+    return l * 86400000L;
+  }
+  
+  public final boolean akF()
+  {
+    AppMethodBeat.i(78760);
+    if (this.fnw.inTransaction())
+    {
+      ab.i("MicroMsg.NetStat", "summer preAppend inTransaction return false");
+      AppMethodBeat.o(78760);
+      return false;
+    }
+    this.fUf = this.fnw.kr(Thread.currentThread().getId());
+    if (this.fUf <= 0L)
+    {
+      ab.i("MicroMsg.NetStat", "summer preAppend ticket: " + this.fUf + " return false");
+      AppMethodBeat.o(78760);
+      return false;
+    }
+    AppMethodBeat.o(78760);
+    return true;
+  }
+  
+  public final void akG()
+  {
+    AppMethodBeat.i(78762);
+    if (this.fUf > 0L) {
+      this.fnw.nY(this.fUf);
+    }
+    AppMethodBeat.o(78762);
   }
   
   public final boolean b(k paramk)
   {
+    AppMethodBeat.i(78756);
     Assert.assertNotNull(paramk);
-    if (paramk.eDC > 0) {}
+    if (paramk.fTt > 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      return this.eEp.n(Integer.valueOf(paramk.eDC), paramk);
+      bool = this.fUg.x(Integer.valueOf(paramk.fTt), paramk);
+      AppMethodBeat.o(78756);
+      return bool;
     }
   }
   
-  public final k ji(int paramInt)
+  public final k mb(int paramInt)
   {
-    k localk1 = (k)this.eEp.get(Integer.valueOf(paramInt));
-    Object localObject;
-    if (localk1 == null)
+    AppMethodBeat.i(78754);
+    Object localObject2 = (k)this.fUg.get(Integer.valueOf(paramInt));
+    Object localObject3;
+    Object localObject1;
+    if (localObject2 == null)
     {
-      localObject = this.dXo.a("netstat", null, "peroid = " + paramInt, null, null, null, null, 2);
-      if (((Cursor)localObject).moveToFirst())
+      localObject3 = this.fnw.a("netstat", null, "peroid = ".concat(String.valueOf(paramInt)), null, null, null, null, 2);
+      localObject1 = localObject2;
+      if (((Cursor)localObject3).moveToFirst())
       {
-        localk1 = new k();
-        localk1.d((Cursor)localObject);
+        localObject1 = new k();
+        ((k)localObject1).convertFrom((Cursor)localObject3);
       }
-      ((Cursor)localObject).close();
-      if (localk1 != null)
-      {
-        this.eEp.n(Integer.valueOf(paramInt), localk1);
-        localObject = localk1;
+      ((Cursor)localObject3).close();
+      if (localObject1 != null) {
+        this.fUg.x(Integer.valueOf(paramInt), localObject1);
       }
     }
-    do
+    for (;;)
     {
-      return localObject;
-      localObject = this.eEp;
-      k localk2 = new k();
-      localk2.bcw = 0;
-      localk2.id = 0;
-      localk2.eDC = 0;
-      localk2.eDD = 0;
-      localk2.eDE = 0;
-      localk2.eDF = 0;
-      localk2.eDG = 0;
-      localk2.eDH = 0;
-      localk2.eDI = 0;
-      localk2.eDJ = 0;
-      localk2.eDK = 0;
-      localk2.eDL = 0;
-      localk2.eDM = 0;
-      localk2.eDN = 0;
-      localk2.eDO = 0;
-      localk2.eDP = 0;
-      localk2.eDQ = 0;
-      localk2.eDR = 0;
-      localk2.eDS = 0;
-      localk2.eDT = 0;
-      localk2.eDU = 0;
-      localk2.eDV = 0;
-      localk2.eDW = 0;
-      localk2.eDX = 0;
-      localk2.eDY = 0;
-      localk2.eDZ = 0;
-      localk2.eEa = 0;
-      localk2.eEb = 0;
-      localk2.eEc = 0;
-      localk2.eEd = 0;
-      localk2.eEe = 0;
-      ((ax)localObject).n(Integer.valueOf(paramInt), localk2);
-      return localk1;
-      localObject = localk1;
-    } while (localk1.eDC == paramInt);
-    return null;
+      AppMethodBeat.o(78754);
+      return localObject1;
+      localObject2 = this.fUg;
+      localObject3 = new k();
+      ((k)localObject3).bsY = 0;
+      ((k)localObject3).id = 0;
+      ((k)localObject3).fTt = 0;
+      ((k)localObject3).fTu = 0;
+      ((k)localObject3).fTv = 0;
+      ((k)localObject3).fTw = 0;
+      ((k)localObject3).fTx = 0;
+      ((k)localObject3).fTy = 0;
+      ((k)localObject3).fTz = 0;
+      ((k)localObject3).fTA = 0;
+      ((k)localObject3).fTB = 0;
+      ((k)localObject3).fTC = 0;
+      ((k)localObject3).fTD = 0;
+      ((k)localObject3).fTE = 0;
+      ((k)localObject3).fTF = 0;
+      ((k)localObject3).fTG = 0;
+      ((k)localObject3).fTH = 0;
+      ((k)localObject3).fTI = 0;
+      ((k)localObject3).fTJ = 0;
+      ((k)localObject3).fTK = 0;
+      ((k)localObject3).fTL = 0;
+      ((k)localObject3).fTM = 0;
+      ((k)localObject3).fTN = 0;
+      ((k)localObject3).fTO = 0;
+      ((k)localObject3).fTP = 0;
+      ((k)localObject3).fTQ = 0;
+      ((k)localObject3).fTR = 0;
+      ((k)localObject3).fTS = 0;
+      ((k)localObject3).fTT = 0;
+      ((k)localObject3).fTU = 0;
+      ((k)localObject3).fTV = 0;
+      ((bb)localObject2).x(Integer.valueOf(paramInt), localObject3);
+      continue;
+      localObject1 = localObject2;
+      if (((k)localObject2).fTt != paramInt) {
+        localObject1 = null;
+      }
+    }
   }
   
-  public final k jj(int paramInt)
+  public final k mc(int paramInt)
   {
     k localk = null;
-    this.eEp.mx(true);
-    Object localObject = "SELECT MAX( id), MAX( peroid), SUM( textCountIn), SUM( textBytesIn), SUM( imageCountIn), SUM( imageBytesIn), SUM( voiceCountIn), SUM( voiceBytesIn), SUM( videoCountIn), SUM( videoBytesIn), SUM( mobileBytesIn), SUM( wifiBytesIn), SUM( sysMobileBytesIn), SUM( sysWifiBytesIn), SUM( textCountOut), SUM( textBytesOut), SUM( imageCountOut), SUM( imageBytesOut), SUM( voiceCountOut), SUM( voiceBytesOut), SUM( videoCountOut), SUM( videoBytesOut), SUM( mobileBytesOut), SUM( wifiBytesOut), SUM( sysMobileBytesOut), SUM( sysWifiBytesOut ), SUM( realMobileBytesIn ), SUM( realWifiBytesIn ), SUM( realMobileBytesOut ), SUM( realWifiBytesOut ) FROM netstat WHERE peroid >= " + paramInt;
-    localObject = this.dXo.a((String)localObject, null, 2);
+    AppMethodBeat.i(78759);
+    this.fUg.pM(true);
+    Object localObject = "SELECT MAX( id), MAX( peroid), SUM( textCountIn), SUM( textBytesIn), SUM( imageCountIn), SUM( imageBytesIn), SUM( voiceCountIn), SUM( voiceBytesIn), SUM( videoCountIn), SUM( videoBytesIn), SUM( mobileBytesIn), SUM( wifiBytesIn), SUM( sysMobileBytesIn), SUM( sysWifiBytesIn), SUM( textCountOut), SUM( textBytesOut), SUM( imageCountOut), SUM( imageBytesOut), SUM( voiceCountOut), SUM( voiceBytesOut), SUM( videoCountOut), SUM( videoBytesOut), SUM( mobileBytesOut), SUM( wifiBytesOut), SUM( sysMobileBytesOut), SUM( sysWifiBytesOut ), SUM( realMobileBytesIn ), SUM( realWifiBytesIn ), SUM( realMobileBytesOut ), SUM( realWifiBytesOut ) FROM netstat WHERE peroid >= ".concat(String.valueOf(paramInt));
+    localObject = this.fnw.a((String)localObject, null, 2);
     if (((Cursor)localObject).moveToFirst())
     {
       localk = new k();
-      localk.d((Cursor)localObject);
+      localk.convertFrom((Cursor)localObject);
     }
     ((Cursor)localObject).close();
+    AppMethodBeat.o(78759);
     return localk;
   }
 }

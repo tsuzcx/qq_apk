@@ -9,11 +9,8 @@ import android.view.Window;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.plugin.wxpay.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.i;
 import com.tencent.mm.ui.base.q;
@@ -21,117 +18,138 @@ import com.tencent.mm.ui.base.q;
 public final class g
   extends q
 {
-  private View QR;
-  private ProgressBar hox;
+  private View Qz;
+  private ProgressBar jba;
   private Context mContext;
-  private TextView uLZ;
+  private TextView zag;
   
-  private g(Context paramContext, int paramInt)
+  private g(Context paramContext)
   {
-    super(paramContext, paramInt);
+    super(paramContext, 2131493881);
+    AppMethodBeat.i(49335);
     this.mContext = paramContext;
-    this.QR = null;
-    if (this.QR == null)
+    this.Qz = null;
+    if (this.Qz == null)
     {
-      paramInt = a.g.wallet_progress_bar;
-      this.QR = View.inflate(this.mContext, paramInt, null);
-      this.uLZ = ((TextView)this.QR.findViewById(a.f.mm_progress_dialog_msg));
-      this.hox = ((ProgressBar)this.QR.findViewById(a.f.mm_progress_dialog_icon));
+      this.Qz = View.inflate(this.mContext, 2130971237, null);
+      this.zag = ((TextView)this.Qz.findViewById(2131821848));
+      this.jba = ((ProgressBar)this.Qz.findViewById(2131821847));
       setCanceledOnTouchOutside(true);
     }
+    AppMethodBeat.o(49335);
   }
   
-  public static Dialog a(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
+  public static Dialog a(Context paramContext, CharSequence paramCharSequence, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    View localView = View.inflate(paramContext, a.g.wallet_progress_dialog_view, null);
-    paramContext = new i(paramContext, a.j.WalletProgressDialogStyle);
-    paramContext.setCancelable(paramBoolean);
-    paramContext.setContentView(localView);
-    paramContext.setOnCancelListener(paramOnCancelListener);
-    paramContext.show();
-    return paramContext;
-  }
-  
-  public static Dialog b(Context paramContext, CharSequence paramCharSequence, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    paramContext = new g(paramContext, a.j.mmalertdialog);
+    AppMethodBeat.i(49339);
+    paramContext = new g(paramContext);
     paramContext.setMessage(paramCharSequence);
     paramContext.setCancelable(true);
     paramContext.setOnCancelListener(paramOnCancelListener);
     paramContext.setCanceledOnTouchOutside(false);
     paramContext.show();
+    AppMethodBeat.o(49339);
+    return paramContext;
+  }
+  
+  public static Dialog a(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(49341);
+    View localView = View.inflate(paramContext, 2130971238, null);
+    paramContext = new i(paramContext, 2131493742);
+    paramContext.setCancelable(paramBoolean);
+    paramContext.setContentView(localView);
+    paramContext.setOnCancelListener(paramOnCancelListener);
+    paramContext.show();
+    AppMethodBeat.o(49341);
     return paramContext;
   }
   
   public static Dialog b(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    paramContext.getString(a.i.app_empty_string);
-    return h.b(paramContext, paramContext.getString(a.i.wallet_pay_loading), paramBoolean, paramOnCancelListener);
-  }
-  
-  public static Dialog e(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    View localView = View.inflate(paramContext, a.g.wallet_progress_dialog_view, null);
-    paramContext = new i(paramContext, a.j.WalletProgressDialogStyle);
-    paramContext.setCancelable(true);
+    AppMethodBeat.i(142677);
+    View localView = View.inflate(paramContext, 2130971238, null);
+    paramContext = new i(paramContext, 2131493742);
+    paramContext.setCancelable(paramBoolean);
     paramContext.setContentView(localView);
     paramContext.setCanceledOnTouchOutside(false);
     paramContext.setOnCancelListener(paramOnCancelListener);
     paramContext.show();
+    AppMethodBeat.o(142677);
     return paramContext;
   }
   
-  public static Dialog e(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
+  public static Dialog c(Context paramContext, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    View localView = View.inflate(paramContext, a.g.wallet_progress_dialog_view, null);
-    ((TextView)localView.findViewById(a.f.dialog_title)).setText(paramString);
-    paramContext = new i(paramContext, a.j.WalletProgressDialogStyle);
+    AppMethodBeat.i(49343);
+    paramContext.getString(2131296919);
+    paramContext = h.b(paramContext, paramContext.getString(2131305479), paramBoolean, paramOnCancelListener);
+    AppMethodBeat.o(49343);
+    return paramContext;
+  }
+  
+  public static Dialog d(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(49340);
+    View localView = View.inflate(paramContext, 2130971238, null);
+    ((TextView)localView.findViewById(2131829357)).setText(paramString);
+    paramContext = new i(paramContext, 2131493742);
     paramContext.setCancelable(false);
     paramContext.setContentView(localView);
     paramContext.setOnCancelListener(paramOnCancelListener);
     paramContext.show();
+    AppMethodBeat.o(49340);
     return paramContext;
   }
   
   public final void dismiss()
   {
+    AppMethodBeat.i(49344);
     try
     {
       super.dismiss();
+      AppMethodBeat.o(49344);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.WalletProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      ab.e("MicroMsg.WalletProgressDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(49344);
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(49336);
     super.onCreate(paramBundle);
-    setContentView(this.QR, new LinearLayout.LayoutParams(-1, -1));
+    setContentView(this.Qz, new LinearLayout.LayoutParams(-1, -1));
     paramBundle = getWindow().getAttributes();
     paramBundle.width = -2;
     paramBundle.height = -2;
     getWindow().addFlags(2);
     paramBundle.dimAmount = 0.65F;
     onWindowAttributesChanged(paramBundle);
+    AppMethodBeat.o(49336);
   }
   
   public final void setCancelable(boolean paramBoolean)
   {
+    AppMethodBeat.i(49337);
     super.setCancelable(paramBoolean);
     setCanceledOnTouchOutside(paramBoolean);
+    AppMethodBeat.o(49337);
   }
   
   public final void setMessage(CharSequence paramCharSequence)
   {
-    this.uLZ.setText(paramCharSequence);
+    AppMethodBeat.i(49338);
+    this.zag.setText(paramCharSequence);
+    AppMethodBeat.o(49338);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.g
  * JD-Core Version:    0.7.0.1
  */

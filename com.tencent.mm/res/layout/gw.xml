@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.bottle.ui.ThrowBottleUI style="@style/y_"
+<LinearLayout android:orientation="vertical" android:background="@drawable/a9o" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/a5s" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:layout_gravity="center" android:id="@id/a5t" android:background="@anim/cm" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="120.0dip" />
-        <ImageView android:id="@id/a5u" android:background="@drawable/a64" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-        <LinearLayout android:orientation="vertical" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
-            <com.tencent.mm.ui.widget.MMEditText android:gravity="center|left|top" android:id="@id/a5v" android:layout_marginLeft="20.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="20.0dip" android:layout_weight="0.3" style="@style/yb" />
-            <View android:id="@id/a5w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="0.7" />
-        </LinearLayout>
+    <TextView android:textSize="17.0dip" android:textColor="@color/h6" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="24.0dip" android:text="@string/a9s" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+        <CheckBox android:id="@id/a7r" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/l6" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/bx6" />
     </LinearLayout>
-    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/a5x" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:layout_gravity="right" android:id="@id/a5y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/am2" />
-        <com.tencent.mm.plugin.bottle.ui.ThrowBottleFooter android:gravity="bottom" android:layout_gravity="bottom|center|left" android:orientation="horizontal" android:id="@id/a5z" android:background="@color/ch" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/kt">
-            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
-                <ImageButton android:id="@id/a60" android:background="@null" android:paddingLeft="8.0dip" android:paddingTop="3.0dip" android:paddingRight="8.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hl" android:minWidth="0.0dip" android:contentDescription="@string/a9b" style="@style/ms" />
-            </LinearLayout>
-            <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/a61" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <Button android:textSize="@dimen/lj" android:textColor="#ffffffff" android:gravity="center" android:id="@id/a62" android:background="@drawable/v2" android:layout_width="fill_parent" android:layout_height="42.0dip" android:text="@string/a9_" android:shadowColor="#ff000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="2.0" android:layout_weight="1.0" android:soundEffectsEnabled="true" />
-            </LinearLayout>
-        </com.tencent.mm.plugin.bottle.ui.ThrowBottleFooter>
-    </LinearLayout>
-</com.tencent.mm.plugin.bottle.ui.ThrowBottleUI>
+    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="32.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a7z" android:gravity="center_horizontal" android:id="@id/a7s" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9p" />
+    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a7z" android:gravity="center_horizontal" android:id="@id/a7t" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9r" />
+    <View android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a7k" android:gravity="center_horizontal" android:id="@id/a7u" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/a9n" />
+</LinearLayout>

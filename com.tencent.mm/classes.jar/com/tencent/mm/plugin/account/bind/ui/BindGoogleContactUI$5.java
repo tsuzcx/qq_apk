@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.storage.z;
@@ -13,8 +14,10 @@ final class BindGoogleContactUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    g.DP().Dz().o(208905, Boolean.valueOf(true));
-    this.faN.finish();
+    AppMethodBeat.i(13352);
+    g.RL().Ru().set(208905, Boolean.TRUE);
+    this.gsF.finish();
+    AppMethodBeat.o(13352);
   }
 }
 

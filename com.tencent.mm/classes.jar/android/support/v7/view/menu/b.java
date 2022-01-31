@@ -9,34 +9,29 @@ import java.util.ArrayList;
 public abstract class b
   implements o
 {
-  protected LayoutInflater Lu;
-  public Context Ur;
-  protected LayoutInflater Us;
-  private int Ut;
-  private int Uu;
-  public p Uv;
-  public o.a dL;
-  public h dm;
-  public Context mContext;
+  protected Context Vc;
+  protected LayoutInflater Vd;
+  private int Ve;
+  private int Vf;
+  public p Vg;
+  public o.a eN;
+  public h eq;
+  protected Context mContext;
   public int mId;
+  protected LayoutInflater mInflater;
   
-  public b(Context paramContext, int paramInt1, int paramInt2)
+  public b(Context paramContext)
   {
-    this.Ur = paramContext;
-    this.Us = LayoutInflater.from(paramContext);
-    this.Ut = paramInt1;
-    this.Uu = paramInt2;
-  }
-  
-  public boolean V()
-  {
-    return false;
+    this.Vc = paramContext;
+    this.Vd = LayoutInflater.from(paramContext);
+    this.Ve = 2130968587;
+    this.Vf = 2130968586;
   }
   
   public View a(j paramj, View paramView, ViewGroup paramViewGroup)
   {
     if ((paramView instanceof p.a)) {}
-    for (paramView = (p.a)paramView;; paramView = (p.a)this.Us.inflate(this.Uu, paramViewGroup, false))
+    for (paramView = (p.a)paramView;; paramView = (p.a)this.Vd.inflate(this.Vf, paramViewGroup, false))
     {
       a(paramj, paramView);
       return (View)paramView;
@@ -46,14 +41,14 @@ public abstract class b
   public void a(Context paramContext, h paramh)
   {
     this.mContext = paramContext;
-    this.Lu = LayoutInflater.from(this.mContext);
-    this.dm = paramh;
+    this.mInflater = LayoutInflater.from(this.mContext);
+    this.eq = paramh;
   }
   
   public void a(h paramh, boolean paramBoolean)
   {
-    if (this.dL != null) {
-      this.dL.a(paramh, paramBoolean);
+    if (this.eN != null) {
+      this.eN.a(paramh, paramBoolean);
     }
   }
   
@@ -61,14 +56,19 @@ public abstract class b
   
   public final void a(o.a parama)
   {
-    this.dL = parama;
+    this.eN = parama;
   }
   
   public boolean a(u paramu)
   {
-    if (this.dL != null) {
-      return this.dL.d(paramu);
+    if (this.eN != null) {
+      return this.eN.d(paramu);
     }
+    return false;
+  }
+  
+  public boolean aG()
+  {
     return false;
   }
   
@@ -77,15 +77,26 @@ public abstract class b
     return false;
   }
   
+  protected boolean b(ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup.removeViewAt(paramInt);
+    return true;
+  }
+  
   public final boolean c(j paramj)
   {
     return false;
   }
   
-  public boolean c(ViewGroup paramViewGroup, int paramInt)
+  public p e(ViewGroup paramViewGroup)
   {
-    paramViewGroup.removeViewAt(paramInt);
-    return true;
+    if (this.Vg == null)
+    {
+      this.Vg = ((p)this.Vd.inflate(this.Ve, paramViewGroup, false));
+      this.Vg.a(this.eq);
+      n(true);
+    }
+    return this.Vg;
   }
   
   public boolean e(j paramj)
@@ -93,25 +104,14 @@ public abstract class b
     return true;
   }
   
-  public p g(ViewGroup paramViewGroup)
-  {
-    if (this.Uv == null)
-    {
-      this.Uv = ((p)this.Us.inflate(this.Ut, paramViewGroup, false));
-      this.Uv.a(this.dm);
-      o(true);
-    }
-    return this.Uv;
-  }
-  
   public final int getId()
   {
     return this.mId;
   }
   
-  public void o(boolean paramBoolean)
+  public void n(boolean paramBoolean)
   {
-    ViewGroup localViewGroup = (ViewGroup)this.Uv;
+    ViewGroup localViewGroup = (ViewGroup)this.Vg;
     if (localViewGroup == null) {}
     label225:
     label231:
@@ -119,10 +119,10 @@ public abstract class b
     {
       return;
       int j;
-      if (this.dm != null)
+      if (this.eq != null)
       {
-        this.dm.fm();
-        ArrayList localArrayList = this.dm.fl();
+        this.eq.gd();
+        ArrayList localArrayList = this.eq.gb();
         int m = localArrayList.size();
         int k = 0;
         int i = 0;
@@ -149,7 +149,7 @@ public abstract class b
               if (localObject != null) {
                 ((ViewGroup)localObject).removeView(localView2);
               }
-              ((ViewGroup)this.Uv).addView(localView2, i);
+              ((ViewGroup)this.Vg).addView(localView2, i);
             }
             i += 1;
             k += 1;
@@ -162,7 +162,7 @@ public abstract class b
         if (j >= localViewGroup.getChildCount()) {
           break label231;
         }
-        if (!c(localViewGroup, j))
+        if (!b(localViewGroup, j))
         {
           j += 1;
           continue;

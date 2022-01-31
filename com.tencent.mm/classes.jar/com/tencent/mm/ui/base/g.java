@@ -4,19 +4,19 @@ import android.graphics.Matrix;
 
 public abstract interface g
 {
-  public abstract void ac(float paramFloat1, float paramFloat2);
+  public abstract void an(float paramFloat1, float paramFloat2);
   
-  public abstract void ad(float paramFloat1, float paramFloat2);
+  public abstract void ao(float paramFloat1, float paramFloat2);
   
-  public abstract void ae(float paramFloat1, float paramFloat2);
+  public abstract void ap(float paramFloat1, float paramFloat2);
   
-  public abstract boolean cAw();
+  public abstract boolean dDH();
   
-  public abstract boolean cAx();
+  public abstract boolean dDI();
   
-  public abstract void cAy();
+  public abstract void dDJ();
   
-  public abstract void cAz();
+  public abstract void dDK();
   
   public abstract float getDoubleTabScale();
   

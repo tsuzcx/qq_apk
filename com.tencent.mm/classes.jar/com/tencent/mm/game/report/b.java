@@ -1,233 +1,128 @@
 package com.tencent.mm.game.report;
 
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.mm.game.report.a.a;
-import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.game.report.api.d;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.w;
+import com.tencent.mm.ipcinvoker.f;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.protocal.protobuf.aew;
+import com.tencent.mm.protocal.protobuf.aex;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.LinkedList;
 
-public final class b
-  extends com.tencent.mm.game.report.api.c
+final class b
 {
-  static void b(GameWebPerformanceInfo paramGameWebPerformanceInfo)
+  private static LinkedList<com.tencent.mm.game.report.api.b> ezI;
+  private static boolean ezJ;
+  private static String ezK;
+  private static String ezL;
+  
+  static
   {
-    long l1;
-    if (paramGameWebPerformanceInfo.dCE > 0L) {
-      l1 = paramGameWebPerformanceInfo.dCE - paramGameWebPerformanceInfo.startTime;
-    }
+    AppMethodBeat.i(59591);
+    ezI = new LinkedList();
+    ezK = "log_id";
+    ezL = "log_ext";
+    AppMethodBeat.o(59591);
+  }
+  
+  private static void Ps()
+  {
     for (;;)
     {
-      long l7 = paramGameWebPerformanceInfo.dCF - paramGameWebPerformanceInfo.startTime;
-      int i;
-      label41:
-      long l3;
-      long l2;
-      long l5;
-      long l4;
-      long l8;
-      long l9;
-      long l10;
-      long l11;
-      long l6;
-      long l12;
-      long l13;
-      long l14;
-      long l15;
-      long l16;
-      long l17;
-      int j;
-      label254:
-      Object localObject;
-      if (paramGameWebPerformanceInfo.dCG > 0L)
-      {
-        i = 1;
-        l3 = 0L;
-        l2 = 0L;
-        if (i == 1)
-        {
-          l3 = paramGameWebPerformanceInfo.dCG - paramGameWebPerformanceInfo.startTime;
-          l2 = paramGameWebPerformanceInfo.dCH - paramGameWebPerformanceInfo.startTime;
-        }
-        l5 = 0L;
-        l4 = 0L;
-        if (paramGameWebPerformanceInfo.dCC == 1)
-        {
-          l5 = paramGameWebPerformanceInfo.dCI - paramGameWebPerformanceInfo.startTime;
-          l4 = paramGameWebPerformanceInfo.dCJ - paramGameWebPerformanceInfo.startTime;
-        }
-        l8 = paramGameWebPerformanceInfo.dCK - paramGameWebPerformanceInfo.startTime;
-        l9 = paramGameWebPerformanceInfo.dCL - paramGameWebPerformanceInfo.startTime;
-        l10 = paramGameWebPerformanceInfo.dCM - paramGameWebPerformanceInfo.startTime;
-        l11 = paramGameWebPerformanceInfo.dCN - paramGameWebPerformanceInfo.startTime;
-        l6 = 0L;
-        if (paramGameWebPerformanceInfo.dCO != 0L) {
-          l6 = paramGameWebPerformanceInfo.dCO - paramGameWebPerformanceInfo.startTime;
-        }
-        l12 = paramGameWebPerformanceInfo.dCP - paramGameWebPerformanceInfo.startTime;
-        l13 = paramGameWebPerformanceInfo.dCQ - paramGameWebPerformanceInfo.startTime;
-        l14 = paramGameWebPerformanceInfo.dCR - paramGameWebPerformanceInfo.startTime;
-        l15 = paramGameWebPerformanceInfo.dCS - paramGameWebPerformanceInfo.startTime;
-        l16 = paramGameWebPerformanceInfo.dCT - paramGameWebPerformanceInfo.startTime;
-        l17 = paramGameWebPerformanceInfo.dCV - paramGameWebPerformanceInfo.startTime;
-        if (paramGameWebPerformanceInfo.dCR <= 0L) {
-          break label758;
-        }
-        j = 1;
-        localObject = paramGameWebPerformanceInfo.url;
-        if (!bk.bl((String)localObject)) {
-          break label763;
-        }
-        localObject = "";
-        y.d("MicroMsg.GameReportImpl", "url : %s, pkgId: %s, isLuggage : %d, isWePkg: %d, isPreloadWePkg: %d, isPreloadWebCore: %d, hasLoadFinished: %d, gameCenterUICreate: %d, startWebUI: %d,preloadWePkgBgn: %d, preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d,webUICreate: %d, webUIOnshowBgn: %d, createViewBgn: %d, createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d, onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInfront: %d,webUIDestroy: %d", new Object[] { localObject, paramGameWebPerformanceInfo.dCD, Integer.valueOf(paramGameWebPerformanceInfo.dCA), Integer.valueOf(paramGameWebPerformanceInfo.dCB), Integer.valueOf(i), Integer.valueOf(paramGameWebPerformanceInfo.dCC), Integer.valueOf(j), Long.valueOf(l1), Long.valueOf(l7), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l5), Long.valueOf(l4), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Long.valueOf(l6), Long.valueOf(l12), Long.valueOf(l13), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Long.valueOf(paramGameWebPerformanceInfo.dCU), Long.valueOf(l17) });
-      }
       try
       {
-        localObject = URLEncoder.encode((String)localObject, "utf-8");
-        h.nFQ.f(16141, new Object[] { localObject, Integer.valueOf(paramGameWebPerformanceInfo.dCA), Integer.valueOf(paramGameWebPerformanceInfo.dCB), Integer.valueOf(i), Integer.valueOf(paramGameWebPerformanceInfo.dCC), Long.valueOf(l1), Long.valueOf(l7), Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l5), Long.valueOf(l4), Long.valueOf(l8), Long.valueOf(l9), Long.valueOf(l10), Long.valueOf(l11), Long.valueOf(l6), Long.valueOf(l12), Long.valueOf(l13), Long.valueOf(l14), Long.valueOf(l15), Long.valueOf(l16), Long.valueOf(paramGameWebPerformanceInfo.dCU), Long.valueOf(l17), Integer.valueOf(j), paramGameWebPerformanceInfo.dCD });
-        return;
-        l1 = 0L;
-        continue;
-        i = 0;
-        break label41;
-        label758:
-        j = 0;
-        break label254;
-        label763:
-        localObject = Uri.parse((String)localObject);
-        localObject = ((Uri)localObject).getScheme() + "://" + ((Uri)localObject).getHost() + ((Uri)localObject).getPath();
-        y.i("MicroMsg.GameReportImpl", "getDomainAndPath, newUrl: %s", new Object[] { localObject });
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
+        AppMethodBeat.i(59589);
+        if (ezJ)
         {
-          String str = "";
+          ab.i("MicroMsg.ReportService", "tryDoScene isBusy");
+          AppMethodBeat.o(59589);
+          return;
         }
+        if (bo.es(ezI))
+        {
+          ab.i("MicroMsg.ReportService", "waitingList is null");
+          AppMethodBeat.o(59589);
+          continue;
+        }
+        localb = (com.tencent.mm.game.report.api.b)ezI.remove(0);
+      }
+      finally {}
+      com.tencent.mm.game.report.api.b localb;
+      if (localb != null)
+      {
+        ezJ = true;
+        com.tencent.mm.ai.b.a locala = new com.tencent.mm.ai.b.a();
+        locala.uri = "/cgi-bin/micromsg-bin/gamereportkv";
+        locala.funcId = 427;
+        locala.reqCmdId = 0;
+        locala.respCmdId = 0;
+        aew localaew = new aew();
+        localaew.wAb = d.whC;
+        localaew.wAc = d.whB;
+        localaew.wAd = d.whE;
+        localaew.wAe = d.whF;
+        localaew.wAf = aa.dsG();
+        localaew.qst = localb.ezN;
+        localaew.wAg = localb.ezO;
+        locala.fsX = localaew;
+        locala.fsY = new aex();
+        w.a(locala.ado(), new b.1());
+        AppMethodBeat.o(59589);
+      }
+      else
+      {
+        Ps();
+        AppMethodBeat.o(59589);
       }
     }
   }
   
-  public final void J(String paramString1, String paramString2)
+  public static void a(com.tencent.mm.game.report.api.b paramb)
   {
-    h.nFQ.f(16171, new Object[] { Integer.valueOf(0), Integer.valueOf(1), paramString1, paramString2, Long.valueOf(0L) });
+    AppMethodBeat.i(59587);
+    if (ah.brt())
+    {
+      b(paramb);
+      AppMethodBeat.o(59587);
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(ezK, paramb.ezN);
+    localBundle.putString(ezL, paramb.ezO);
+    f.a("com.tencent.mm", localBundle, b.a.class, null);
+    AppMethodBeat.o(59587);
   }
   
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, long paramLong, String paramString5)
+  private static void b(com.tencent.mm.game.report.api.b paramb)
   {
-    y.d("MicroMsg.GameReportImpl", "reportMsgClick 10531, appId = %s, pkgName = %s, msgSvrId:%d, snsOgjId:%s", new Object[] { paramString1, paramString2, Long.valueOf(paramLong), paramString5 });
-    if (bk.bl(paramString1))
+    for (;;)
     {
-      y.e("MicroMsg.GameReportImpl", "reportMsgClick fail, appId is null");
-      return;
+      try
+      {
+        AppMethodBeat.i(59588);
+        if ((!g.RJ().QU()) || (a.QP()))
+        {
+          ab.w("MicroMsg.ReportService", "report, account not ready");
+          AppMethodBeat.o(59588);
+          return;
+        }
+        if (paramb == null)
+        {
+          AppMethodBeat.o(59588);
+          continue;
+        }
+        ezI.add(paramb);
+      }
+      finally {}
+      Ps();
+      AppMethodBeat.o(59588);
     }
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = ae.getContext();
-    }
-    paramContext = g.by(paramString1, false);
-    if (paramContext == null)
-    {
-      y.e("MicroMsg.GameReportImpl", "reportMsgClick fail, appinfo is null");
-      return;
-    }
-    c.a(d.c(10531, new Object[] { paramString1, Integer.valueOf(a.B(localContext, paramString2)), a.BI(), paramString3, Integer.valueOf(paramInt1), paramString4, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(a.getNetworkType(localContext)), bk.pm(paramContext.field_packageName), bk.pm(paramContext.field_signature), Long.toString(paramLong), "", paramString5 }));
-  }
-  
-  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2)
-  {
-    y.d("MicroMsg.GameReportImpl", "reportMsgClick, appId = " + paramString1 + ", pkgName = " + paramString2);
-    if (bk.bl(paramString1))
-    {
-      y.e("MicroMsg.GameReportImpl", "reportDelGameMsg fail, appId is null");
-      return;
-    }
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = ae.getContext();
-    }
-    c.a(d.c(10583, new Object[] { paramString1, Integer.valueOf(a.B(localContext, paramString2)), a.BI(), paramString3, Integer.valueOf(paramInt1), paramString4, Integer.valueOf(paramInt2), Integer.valueOf(0), Integer.valueOf(a.getNetworkType(localContext)) }));
-  }
-  
-  public final void a(GameWebPerformanceInfo paramGameWebPerformanceInfo)
-  {
-    if (paramGameWebPerformanceInfo == null)
-    {
-      y.e("MicroMsg.GameReportImpl", "info is null");
-      return;
-    }
-    if (ae.cqV())
-    {
-      b(paramGameWebPerformanceInfo);
-      return;
-    }
-    com.tencent.mm.ipcinvoker.f.a("com.tencent.mm", paramGameWebPerformanceInfo, b.a.class, null);
-  }
-  
-  public final void a(d paramd)
-  {
-    c.a(paramd);
-  }
-  
-  public final void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, int paramInt3)
-  {
-    y.d("MicroMsg.GameReportImpl", "rejectGameMsg, fromUserName = " + paramString1 + ", appId = " + paramString2 + ", msgType = " + paramInt1 + ", scene = " + paramInt2 + ", actionName = " + paramString3);
-    if (bk.bl(paramString2))
-    {
-      y.e("MicroMsg.GameReportImpl", "rejectGameMsg fail, appId is null");
-      return;
-    }
-    h.nFQ.f(10546, new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), a.BI(), Integer.valueOf(paramInt2), paramString3, Integer.valueOf(paramInt3) });
-  }
-  
-  public final void a(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, long paramLong)
-  {
-    y.d("MicroMsg.GameReportImpl", "reportReadMsg, appId = " + paramString1);
-    if (bk.bl(paramString1))
-    {
-      y.e("MicroMsg.GameReportImpl", "reportReadMsg fail, appId is null");
-      return;
-    }
-    String str = a.bv(paramLong);
-    h.nFQ.f(10532, new Object[] { paramString1, str, paramString2, Integer.valueOf(paramInt1), paramString3, Integer.valueOf(paramInt2) });
-  }
-  
-  public final void f(String paramString, int paramInt1, int paramInt2)
-  {
-    y.d("MicroMsg.GameReportImpl", "reportGameDetail, appId = " + paramString + ", scene = " + paramInt1);
-    if (bk.bl(paramString))
-    {
-      y.e("MicroMsg.GameReportImpl", "reportGameDetail fail, appId is null");
-      return;
-    }
-    h.nFQ.f(10700, new Object[] { paramString, Integer.valueOf(1), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-  }
-  
-  public final void h(Context paramContext, String paramString1, String paramString2)
-  {
-    y.d("MicroMsg.GameReportImpl", "reportRegToWx, appId = " + paramString1 + ", pkgName = " + paramString2);
-    if (bk.bl(paramString1))
-    {
-      y.e("MicroMsg.GameReportImpl", "reportRegToWx fail, appId is null");
-      return;
-    }
-    h.nFQ.f(10534, new Object[] { paramString1, Integer.valueOf(a.B(paramContext, paramString2)), a.BI(), Long.valueOf(System.currentTimeMillis() / 1000L) });
-  }
-  
-  public final void k(String paramString1, String paramString2, String paramString3)
-  {
-    if ((bk.bl(paramString1)) || (bk.bl(paramString2)))
-    {
-      y.e("MicroMsg.GameReportImpl", "null open or null username");
-      return;
-    }
-    h.nFQ.f(10738, new Object[] { paramString1, paramString2, paramString1, paramString3 });
   }
 }
 

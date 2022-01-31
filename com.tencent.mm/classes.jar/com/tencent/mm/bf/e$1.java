@@ -1,18 +1,32 @@
 package com.tencent.mm.bf;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Looper;
+import android.os.MessageQueue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az;
 
 final class e$1
-  implements DialogInterface.OnClickListener
+  extends j.a
 {
-  e$1(Runnable paramRunnable) {}
+  e$1(e parame) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onAppBackground(String paramString)
   {
-    if (this.eEU != null) {
-      this.eEU.run();
-    }
+    AppMethodBeat.i(145803);
+    paramString = this.fRn;
+    Looper.myQueue().addIdleHandler(new e.2(paramString));
+    AppMethodBeat.o(145803);
+  }
+  
+  public final void onAppForeground(String paramString)
+  {
+    AppMethodBeat.i(145802);
+    paramString = this.fRn;
+    ab.d("MicroMsg.SpeexUploadCore", "now pause speex uploader");
+    paramString.fBI.pL(true);
+    AppMethodBeat.o(145802);
   }
 }
 

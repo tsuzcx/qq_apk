@@ -9,36 +9,41 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import com.tencent.mm.model.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.t;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.w;
 
 public class MMAutoMessageReplyReceiver
   extends BroadcastReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = t.j(paramIntent, "key_username");
-    if (str == null) {
+    AppMethodBeat.i(17110);
+    String str = w.n(paramIntent, "key_username");
+    if (str == null)
+    {
+      AppMethodBeat.o(17110);
       return;
     }
     if (Build.VERSION.SDK_INT >= 20)
     {
       paramContext = RemoteInput.getResultsFromIntent(paramIntent);
       if (paramContext == null) {
-        break label148;
+        break label166;
       }
     }
-    label143:
-    label148:
+    label161:
+    label166:
     for (paramContext = paramContext.getCharSequence("key_voice_reply_text");; paramContext = null)
     {
       if (paramContext != null) {
-        break label153;
+        break label171;
       }
-      y.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
+      ab.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
+      AppMethodBeat.o(17110);
       return;
       if (Build.VERSION.SDK_INT >= 16)
       {
@@ -49,7 +54,7 @@ public class MMAutoMessageReplyReceiver
         for (;;)
         {
           if (paramContext == null) {
-            break label143;
+            break label161;
           }
           paramContext = (Bundle)paramContext.getExtras().getParcelable("android.remoteinput.resultsData");
           break;
@@ -66,9 +71,10 @@ public class MMAutoMessageReplyReceiver
       paramContext = null;
       break;
     }
-    label153:
-    y.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
-    g.bhI().D(str, paramContext.toString(), s.hW(str));
+    label171:
+    ab.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
+    g.bPJ().K(str, paramContext.toString(), t.oF(str));
+    AppMethodBeat.o(17110);
   }
 }
 

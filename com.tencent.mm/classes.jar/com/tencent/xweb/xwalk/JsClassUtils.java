@@ -2,6 +2,7 @@ package com.tencent.xweb.xwalk;
 
 import android.support.annotation.Keep;
 import android.webkit.JavascriptInterface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 
@@ -9,6 +10,7 @@ public class JsClassUtils
 {
   private static void getDescriptor(StringBuilder paramStringBuilder, Class<?> paramClass)
   {
+    AppMethodBeat.i(4162);
     char c1;
     for (;;)
     {
@@ -20,6 +22,7 @@ public class JsClassUtils
         for (;;)
         {
           paramStringBuilder.append(c1);
+          AppMethodBeat.o(4162);
           return;
           if (paramClass == Void.TYPE) {
             c1 = 'V';
@@ -61,47 +64,71 @@ public class JsClassUtils
       i += 1;
     }
     paramStringBuilder.append(';');
+    AppMethodBeat.o(4162);
   }
   
   private static int getJavaType(Class<?> paramClass)
   {
-    if (paramClass == Integer.TYPE) {
+    AppMethodBeat.i(4163);
+    if (paramClass == Integer.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 5;
     }
-    if (paramClass == Void.TYPE) {
+    if (paramClass == Void.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 0;
     }
-    if (paramClass == Boolean.TYPE) {
+    if (paramClass == Boolean.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 1;
     }
-    if (paramClass == Byte.TYPE) {
+    if (paramClass == Byte.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 3;
     }
-    if (paramClass == Character.TYPE) {
+    if (paramClass == Character.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 2;
     }
-    if (paramClass == Short.TYPE) {
+    if (paramClass == Short.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 4;
     }
-    if (paramClass == Double.TYPE) {
+    if (paramClass == Double.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 8;
     }
-    if (paramClass == Float.TYPE) {
+    if (paramClass == Float.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 6;
     }
-    if (paramClass == Long.TYPE) {
+    if (paramClass == Long.TYPE)
+    {
+      AppMethodBeat.o(4163);
       return 7;
     }
-    if (paramClass.getCanonicalName().equals("java.lang.String")) {
+    if (paramClass.getCanonicalName().equals("java.lang.String"))
+    {
+      AppMethodBeat.o(4163);
       return 9;
     }
+    AppMethodBeat.o(4163);
     return 10;
   }
   
   @Keep
   public static Method[] getJavascriptInterfaceMethod(Object paramObject)
   {
-    localArrayList = new ArrayList();
+    AppMethodBeat.i(4159);
+    ArrayList localArrayList = new ArrayList();
     try
     {
       paramObject = paramObject.getClass().getMethods();
@@ -115,20 +142,28 @@ public class JsClassUtils
         }
         i += 1;
       }
-      return (Method[])localArrayList.toArray(new Method[localArrayList.size()]);
+      return paramObject;
     }
-    catch (Exception paramObject) {}
+    catch (Exception paramObject)
+    {
+      paramObject = (Method[])localArrayList.toArray(new Method[localArrayList.size()]);
+      AppMethodBeat.o(4159);
+    }
   }
   
   @Keep
   public static String getMethodName(Method paramMethod)
   {
-    return paramMethod.getName();
+    AppMethodBeat.i(4161);
+    paramMethod = paramMethod.getName();
+    AppMethodBeat.o(4161);
+    return paramMethod;
   }
   
   @Keep
   public static String getMethodSignature(Method paramMethod)
   {
+    AppMethodBeat.i(4160);
     Class[] arrayOfClass = paramMethod.getParameterTypes();
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append('(');
@@ -140,13 +175,16 @@ public class JsClassUtils
     }
     localStringBuilder.append(')');
     getDescriptor(localStringBuilder, paramMethod.getReturnType());
-    return localStringBuilder.toString();
+    paramMethod = localStringBuilder.toString();
+    AppMethodBeat.o(4160);
+    return paramMethod;
   }
   
   @Keep
   public static int[] getMethodType(Method paramMethod)
   {
     int i = 0;
+    AppMethodBeat.i(4164);
     Class[] arrayOfClass = paramMethod.getParameterTypes();
     int[] arrayOfInt = new int[arrayOfClass.length + 2];
     arrayOfInt[0] = arrayOfClass.length;
@@ -156,6 +194,7 @@ public class JsClassUtils
       arrayOfInt[(i + 2)] = getJavaType(arrayOfClass[i]);
       i += 1;
     }
+    AppMethodBeat.o(4164);
     return arrayOfInt;
   }
 }

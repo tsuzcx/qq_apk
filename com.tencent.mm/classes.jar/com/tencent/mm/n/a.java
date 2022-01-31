@@ -1,203 +1,216 @@
 package com.tencent.mm.n;
 
 import android.database.Cursor;
-import com.tencent.mm.a.o;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class a
-  extends ao
+  extends aq
 {
-  public static c.a buS;
-  private static a dBf = null;
-  public long dBe;
-  public int versionCode = 0;
+  private static a euG;
+  public static c.a info;
+  public long euF;
+  public int versionCode;
   
   static
   {
+    AppMethodBeat.i(59708);
     c.a locala = new c.a();
-    locala.ujL = new Field[21];
-    locala.columns = new String[22];
+    locala.yrK = new Field[22];
+    locala.columns = new String[23];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "username";
-    locala.ujN.put("username", "TEXT default ''  PRIMARY KEY ");
+    locala.yrM.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "username";
+    locala.yrL = "username";
     locala.columns[1] = "alias";
-    locala.ujN.put("alias", "TEXT default '' ");
+    locala.yrM.put("alias", "TEXT default '' ");
     localStringBuilder.append(" alias TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "conRemark";
-    locala.ujN.put("conRemark", "TEXT default '' ");
+    locala.yrM.put("conRemark", "TEXT default '' ");
     localStringBuilder.append(" conRemark TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[3] = "domainList";
-    locala.ujN.put("domainList", "TEXT default '' ");
+    locala.yrM.put("domainList", "TEXT default '' ");
     localStringBuilder.append(" domainList TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[4] = "nickname";
-    locala.ujN.put("nickname", "TEXT default '' ");
+    locala.yrM.put("nickname", "TEXT default '' ");
     localStringBuilder.append(" nickname TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[5] = "pyInitial";
-    locala.ujN.put("pyInitial", "TEXT default '' ");
+    locala.yrM.put("pyInitial", "TEXT default '' ");
     localStringBuilder.append(" pyInitial TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[6] = "quanPin";
-    locala.ujN.put("quanPin", "TEXT default '' ");
+    locala.yrM.put("quanPin", "TEXT default '' ");
     localStringBuilder.append(" quanPin TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[7] = "showHead";
-    locala.ujN.put("showHead", "INTEGER default '0' ");
+    locala.yrM.put("showHead", "INTEGER default '0' ");
     localStringBuilder.append(" showHead INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[8] = "type";
-    locala.ujN.put("type", "INTEGER default '0' ");
+    locala.yrM.put("type", "INTEGER default '0' ");
     localStringBuilder.append(" type INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[9] = "weiboFlag";
-    locala.ujN.put("weiboFlag", "INTEGER default '0' ");
+    locala.yrM.put("weiboFlag", "INTEGER default '0' ");
     localStringBuilder.append(" weiboFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[10] = "weiboNickname";
-    locala.ujN.put("weiboNickname", "TEXT default '' ");
+    locala.yrM.put("weiboNickname", "TEXT default '' ");
     localStringBuilder.append(" weiboNickname TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[11] = "conRemarkPYFull";
-    locala.ujN.put("conRemarkPYFull", "TEXT default '' ");
+    locala.yrM.put("conRemarkPYFull", "TEXT default '' ");
     localStringBuilder.append(" conRemarkPYFull TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[12] = "conRemarkPYShort";
-    locala.ujN.put("conRemarkPYShort", "TEXT default '' ");
+    locala.yrM.put("conRemarkPYShort", "TEXT default '' ");
     localStringBuilder.append(" conRemarkPYShort TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[13] = "lvbuff";
-    locala.ujN.put("lvbuff", "BLOB");
+    locala.yrM.put("lvbuff", "BLOB");
     localStringBuilder.append(" lvbuff BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "verifyFlag";
-    locala.ujN.put("verifyFlag", "INTEGER default '0' ");
+    locala.yrM.put("verifyFlag", "INTEGER default '0' ");
     localStringBuilder.append(" verifyFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[15] = "encryptUsername";
-    locala.ujN.put("encryptUsername", "TEXT default '' ");
+    locala.yrM.put("encryptUsername", "TEXT default '' ");
     localStringBuilder.append(" encryptUsername TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[16] = "chatroomFlag";
-    locala.ujN.put("chatroomFlag", "INTEGER");
+    locala.yrM.put("chatroomFlag", "INTEGER");
     localStringBuilder.append(" chatroomFlag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[17] = "deleteFlag";
-    locala.ujN.put("deleteFlag", "INTEGER default '0' ");
+    locala.yrM.put("deleteFlag", "INTEGER default '0' ");
     localStringBuilder.append(" deleteFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
     locala.columns[18] = "contactLabelIds";
-    locala.ujN.put("contactLabelIds", "TEXT default '' ");
+    locala.yrM.put("contactLabelIds", "TEXT default '' ");
     localStringBuilder.append(" contactLabelIds TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[19] = "descWordingId";
-    locala.ujN.put("descWordingId", "TEXT default '' ");
+    locala.yrM.put("descWordingId", "TEXT default '' ");
     localStringBuilder.append(" descWordingId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "openImAppid";
-    locala.ujN.put("openImAppid", "TEXT");
+    locala.yrM.put("openImAppid", "TEXT");
     localStringBuilder.append(" openImAppid TEXT");
-    locala.columns[21] = "rowid";
+    localStringBuilder.append(", ");
+    locala.columns[21] = "sourceExtInfo";
+    locala.yrM.put("sourceExtInfo", "TEXT");
+    localStringBuilder.append(" sourceExtInfo TEXT");
+    locala.columns[22] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    euG = null;
+    AppMethodBeat.o(59708);
   }
   
   public a()
   {
-    super.setUsername("");
-    super.dk("");
-    super.dl("");
-    super.dm("");
-    super.cZ("");
-    super.df("");
-    super.dp("");
-    super.jdMethod_do("");
-    super.dg("");
-    super.fh(0);
-    super.dn("");
-    super.fg(0);
-    super.setType(0);
-    super.fi(0);
-    super.fj(0);
-    super.dr("");
-    super.fm(0);
-    super.dC("");
-    super.fs(0);
-    super.fn(0);
-    super.dv("");
-    super.dw("");
-    super.fo(0);
-    super.fp(0);
-    super.dx("");
-    super.dy("");
-    super.fq(1);
-    super.fl(0);
-    super.fr(0);
-    super.dz("");
-    super.dA("");
-    super.dB("");
-    super.setSource(0);
-    super.dE("");
-    super.dD("");
-    super.aZ(0L);
-    super.du("");
-    super.dF("");
-    super.ft(0);
-    super.dI("");
-    super.dJ("");
-    super.dK("");
-    super.dN("");
-    super.ds("");
-    super.dt("");
+    AppMethodBeat.i(59621);
     this.versionCode = 0;
+    super.setUsername("");
+    super.jp("");
+    super.jq("");
+    super.jr("");
+    super.jm("");
+    super.jn("");
+    super.ju("");
+    super.jt("");
+    super.jo("");
+    super.ht(0);
+    super.js("");
+    super.hs(0);
+    super.setType(0);
+    super.hu(0);
+    super.hv(0);
+    super.jw("");
+    super.hy(0);
+    super.jI("");
+    super.hD(0);
+    super.setUin(0);
+    super.jB("");
+    super.jC("");
+    super.hz(0);
+    super.hA(0);
+    super.jD("");
+    super.jE("");
+    super.hB(1);
+    super.hx(0);
+    super.hC(0);
+    super.jF("");
+    super.jG("");
+    super.jH("");
+    super.setSource(0);
+    super.jK("");
+    super.jJ("");
+    super.fJ(0L);
+    super.jA("");
+    super.jL("");
+    super.hE(0);
+    super.jO("");
+    super.jP("");
+    super.jQ("");
+    super.jT("");
+    super.jx("");
+    super.jy("");
+    this.versionCode = 0;
+    AppMethodBeat.o(59621);
   }
   
   public a(String paramString)
   {
     this();
+    AppMethodBeat.i(59620);
     String str = paramString;
     if (paramString == null) {
       str = "";
     }
     setUsername(str);
+    AppMethodBeat.o(59620);
   }
   
-  public static int AY()
+  public static int NO()
   {
     return 1;
   }
   
-  public static int AZ()
+  public static int NP()
   {
     return 8;
   }
   
-  public static int Ba()
+  public static int NQ()
   {
     return 524288;
   }
   
-  public static int Bb()
+  public static int NR()
   {
     return 16;
   }
   
-  public static int Bc()
+  public static int NS()
   {
     return 32;
   }
   
-  private int Bt()
+  private int Oi()
   {
     int i = this.versionCode + 1;
     this.versionCode = i;
@@ -206,20 +219,7 @@ public class a
   
   public static void a(a parama)
   {
-    dBf = parama;
-  }
-  
-  public static String ft(String paramString)
-  {
-    if (dBf != null) {
-      return dBf.cx(paramString);
-    }
-    return null;
-  }
-  
-  public static boolean gR(int paramInt)
-  {
-    return (paramInt & 0x1) != 0;
+    euG = parama;
   }
   
   private static boolean isLetter(char paramChar)
@@ -227,35 +227,284 @@ public class a
     return ((paramChar >= 'A') && (paramChar <= 'Z')) || ((paramChar >= 'a') && (paramChar <= 'z'));
   }
   
-  public final int AE()
+  public static boolean je(int paramInt)
   {
+    return (paramInt & 0x1) != 0;
+  }
+  
+  public static String lG(String paramString)
+  {
+    AppMethodBeat.i(59622);
+    if (euG != null)
+    {
+      paramString = euG.dK(paramString);
+      AppMethodBeat.o(59622);
+      return paramString;
+    }
+    AppMethodBeat.o(59622);
+    return null;
+  }
+  
+  private static String lH(String paramString)
+  {
+    AppMethodBeat.i(59653);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(59653);
+      return null;
+    }
+    if (paramString.toLowerCase().endsWith("@t.qq.com"))
+    {
+      paramString = "@" + paramString.replace("@t.qq.com", "");
+      AppMethodBeat.o(59653);
+      return paramString;
+    }
+    if (paramString.toLowerCase().endsWith("@qqim"))
+    {
+      paramString = paramString.replace("@qqim", "");
+      long l = Long.valueOf(paramString).longValue();
+      if (l < 0L)
+      {
+        paramString = new p(l).toString();
+        AppMethodBeat.o(59653);
+        return paramString;
+      }
+      AppMethodBeat.o(59653);
+      return paramString;
+    }
+    AppMethodBeat.o(59653);
+    return paramString;
+  }
+  
+  public final boolean DP()
+  {
+    return (this.field_type & 0x200) != 0;
+  }
+  
+  public final void G(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(59669);
+    if (!bo.isEqual(this.field_lvbuff, paramArrayOfByte))
+    {
+      super.G(paramArrayOfByte);
+      Oi();
+    }
+    AppMethodBeat.o(59669);
+  }
+  
+  public final String Hq()
+  {
+    AppMethodBeat.i(59647);
+    if (euG != null) {}
+    for (String str = euG.dL(this.field_username); str == null; str = null)
+    {
+      str = super.Hq();
+      AppMethodBeat.o(59647);
+      return str;
+    }
+    AppMethodBeat.o(59647);
+    return str;
+  }
+  
+  public final String Ht()
+  {
+    AppMethodBeat.i(59645);
+    if ((super.Ht() == null) || (super.Ht().length() < 0))
+    {
+      str = Hu();
+      AppMethodBeat.o(59645);
+      return str;
+    }
+    String str = super.Ht();
+    AppMethodBeat.o(59645);
+    return str;
+  }
+  
+  public final String Hu()
+  {
+    AppMethodBeat.i(59646);
+    if ((super.Hu() == null) || (super.Hu().length() < 0))
+    {
+      str = this.field_nickname;
+      AppMethodBeat.o(59646);
+      return str;
+    }
+    String str = super.Hu();
+    AppMethodBeat.o(59646);
+    return str;
+  }
+  
+  public final boolean JY()
+  {
+    return (this.field_type & 0x400) == 0;
+  }
+  
+  public final void NA()
+  {
+    AppMethodBeat.i(59629);
+    setType(this.field_type & 0xFFFFFFF7);
+    AppMethodBeat.o(59629);
+  }
+  
+  public final void NB()
+  {
+    AppMethodBeat.i(59630);
+    setType(this.field_type | 0x80000);
+    AppMethodBeat.o(59630);
+  }
+  
+  public final void NC()
+  {
+    AppMethodBeat.i(59631);
+    setType(this.field_type & 0xFFF7FFFF);
+    AppMethodBeat.o(59631);
+  }
+  
+  public final void ND()
+  {
+    AppMethodBeat.i(59632);
+    setType(this.field_type | 0x2);
+    AppMethodBeat.o(59632);
+  }
+  
+  public final void NE()
+  {
+    AppMethodBeat.i(59633);
+    setType(this.field_type & 0xFFFFFFFD);
+    AppMethodBeat.o(59633);
+  }
+  
+  public final void NF()
+  {
+    AppMethodBeat.i(59634);
+    setType(this.field_type & 0xFFFFF7FF);
+    AppMethodBeat.o(59634);
+  }
+  
+  public final void NG()
+  {
+    AppMethodBeat.i(59635);
+    setType(this.field_type | 0x20);
+    AppMethodBeat.o(59635);
+  }
+  
+  public final void NH()
+  {
+    AppMethodBeat.i(59636);
+    setType(this.field_type & 0xFFFFFFDF);
+    AppMethodBeat.o(59636);
+  }
+  
+  public final void NI()
+  {
+    AppMethodBeat.i(59637);
+    setType(this.field_type | 0x40);
+    AppMethodBeat.o(59637);
+  }
+  
+  public final void NJ()
+  {
+    AppMethodBeat.i(59638);
+    setType(this.field_type & 0xFFFFFFBF);
+    AppMethodBeat.o(59638);
+  }
+  
+  public final void NK()
+  {
+    AppMethodBeat.i(59639);
+    setType(this.field_type | 0x200);
+    AppMethodBeat.o(59639);
+  }
+  
+  public final void NL()
+  {
+    AppMethodBeat.i(59640);
+    setType(this.field_type & 0xFFFFFDFF);
+    AppMethodBeat.o(59640);
+  }
+  
+  public final void NM()
+  {
+    AppMethodBeat.i(59641);
+    setType(this.field_type | 0x100);
+    AppMethodBeat.o(59641);
+  }
+  
+  public final void NN()
+  {
+    AppMethodBeat.i(59642);
+    setType(this.field_type & 0xFFFFFEFF);
+    AppMethodBeat.o(59642);
+  }
+  
+  public final boolean NT()
+  {
+    AppMethodBeat.i(156800);
+    boolean bool = je(this.field_type);
+    AppMethodBeat.o(156800);
+    return bool;
+  }
+  
+  public final boolean NU()
+  {
+    return (this.field_type & 0x2) != 0;
+  }
+  
+  public final boolean NV()
+  {
+    return (this.field_type & 0x4) != 0;
+  }
+  
+  public final boolean NW()
+  {
+    return (this.field_type & 0x8) != 0;
+  }
+  
+  public final boolean NX()
+  {
+    return (0x80000 & this.field_type) != 0;
+  }
+  
+  public final boolean NY()
+  {
+    return (this.field_type & 0x40) != 0;
+  }
+  
+  public final boolean NZ()
+  {
+    return (this.field_type & 0x100) != 0;
+  }
+  
+  public final int Nu()
+  {
+    AppMethodBeat.i(59623);
     int j = 32;
     int i;
     if ((this.field_conRemarkPYShort != null) && (!this.field_conRemarkPYShort.equals("")))
     {
       i = this.field_conRemarkPYShort.charAt(0);
       if ((i < 97) || (i > 122)) {
-        break label240;
+        break label252;
       }
       j = (char)(i - 32);
     }
-    label240:
-    do
+    for (;;)
     {
+      AppMethodBeat.o(59623);
       return j;
       if ((this.field_conRemarkPYFull != null) && (!this.field_conRemarkPYFull.equals("")))
       {
         i = this.field_conRemarkPYFull.charAt(0);
         break;
       }
-      if ((super.vn() != null) && (!super.vn().equals("")))
+      if ((super.Ht() != null) && (!super.Ht().equals("")))
       {
-        i = super.vn().charAt(0);
+        i = super.Ht().charAt(0);
         break;
       }
-      if ((super.vo() != null) && (!super.vo().equals("")))
+      if ((super.Hu() != null) && (!super.Hu().equals("")))
       {
-        i = super.vo().charAt(0);
+        i = super.Hu().charAt(0);
         break;
       }
       if ((this.field_nickname != null) && (!this.field_nickname.equals("")) && (isLetter(this.field_nickname.charAt(0))))
@@ -277,683 +526,324 @@ public class a
       }
       i = this.field_username.charAt(0);
       break;
-      if (i < 65) {
-        break label254;
+      label252:
+      if (i >= 65)
+      {
+        j = i;
+        if (i <= 90) {}
       }
-      j = i;
-    } while (i <= 90);
-    label254:
-    return 123;
+      else
+      {
+        j = 123;
+      }
+    }
   }
   
-  public final void AF()
+  public final void Nv()
   {
+    AppMethodBeat.i(59624);
     setType(0);
+    AppMethodBeat.o(59624);
   }
   
-  public final void AG()
+  public final void Nw()
   {
+    AppMethodBeat.i(59625);
     setType(this.field_type | 0x4);
+    AppMethodBeat.o(59625);
   }
   
-  public final void AH()
+  public final void Nx()
   {
+    AppMethodBeat.i(59626);
     setType(this.field_type | 0x1);
+    AppMethodBeat.o(59626);
   }
   
-  public final void AI()
+  public final void Ny()
   {
-    y.w("MicroMsg.RContact", "unSetContact!! user:%s oldType:%d [%s]", new Object[] { this.field_username, Integer.valueOf(this.field_type), bk.csb() });
+    AppMethodBeat.i(59627);
+    ab.w("MicroMsg.RContact", "unSetContact!! user:%s oldType:%d [%s]", new Object[] { this.field_username, Integer.valueOf(this.field_type), bo.dtY() });
     setType(this.field_type & 0xFFFFFFFE);
+    AppMethodBeat.o(59627);
   }
   
-  public final void AJ()
+  public final void Nz()
   {
+    AppMethodBeat.i(59628);
     setType(this.field_type | 0x8);
+    AppMethodBeat.o(59628);
   }
   
-  public final void AK()
-  {
-    setType(this.field_type & 0xFFFFFFF7);
-  }
-  
-  public final void AL()
-  {
-    setType(this.field_type | 0x80000);
-  }
-  
-  public final void AM()
-  {
-    setType(this.field_type & 0xFFF7FFFF);
-  }
-  
-  public final void AN()
-  {
-    setType(this.field_type | 0x2);
-  }
-  
-  public final void AO()
-  {
-    setType(this.field_type & 0xFFFFFFFD);
-  }
-  
-  public final void AP()
-  {
-    setType(this.field_type & 0xFFFFF7FF);
-  }
-  
-  public final void AQ()
-  {
-    setType(this.field_type | 0x20);
-  }
-  
-  public final void AR()
-  {
-    setType(this.field_type & 0xFFFFFFDF);
-  }
-  
-  public final void AS()
-  {
-    setType(this.field_type | 0x40);
-  }
-  
-  public final void AT()
-  {
-    setType(this.field_type & 0xFFFFFFBF);
-  }
-  
-  public final void AU()
-  {
-    setType(this.field_type | 0x200);
-  }
-  
-  public final void AV()
-  {
-    setType(this.field_type & 0xFFFFFDFF);
-  }
-  
-  public final void AW()
-  {
-    setType(this.field_type | 0x100);
-  }
-  
-  public final void AX()
-  {
-    setType(this.field_type & 0xFFFFFEFF);
-  }
-  
-  public final boolean Bd()
-  {
-    return gR(this.field_type);
-  }
-  
-  public final boolean Be()
-  {
-    return (this.field_type & 0x2) != 0;
-  }
-  
-  public final boolean Bf()
-  {
-    return (this.field_type & 0x4) != 0;
-  }
-  
-  public final boolean Bg()
-  {
-    return (this.field_type & 0x8) != 0;
-  }
-  
-  public final boolean Bh()
-  {
-    return (0x80000 & this.field_type) != 0;
-  }
-  
-  public final boolean Bi()
-  {
-    return (this.field_type & 0x40) != 0;
-  }
-  
-  public final boolean Bj()
-  {
-    return (this.field_type & 0x200) != 0;
-  }
-  
-  public final boolean Bk()
-  {
-    return (this.field_type & 0x100) != 0;
-  }
-  
-  public final boolean Bl()
+  public final boolean Oa()
   {
     return (this.field_type & 0x800) != 0;
   }
   
-  public final boolean Bm()
+  public final boolean Ob()
   {
     return (0x8000 & this.field_type) != 0;
   }
   
-  public final void Bn()
+  public final void Oc()
   {
+    AppMethodBeat.i(59644);
     setType(this.field_type | 0x8000);
+    AppMethodBeat.o(59644);
   }
   
-  public final int Bo()
+  public final int Od()
   {
-    return (int)this.dBe;
+    return (int)this.euF;
   }
   
-  public final String Bp()
+  public final String Oe()
   {
-    if (dBf != null) {}
-    for (String str = dBf.cx(this.field_username); str != null; str = null) {
+    AppMethodBeat.i(59648);
+    if (euG != null) {}
+    for (String str = euG.dK(this.field_username); str != null; str = null)
+    {
+      AppMethodBeat.o(59648);
       return str;
     }
-    if ((this.field_nickname == null) || (this.field_nickname.length() <= 0)) {
-      return Br();
-    }
-    return this.field_nickname;
-  }
-  
-  public final String Bq()
-  {
-    if ((this.field_conRemark != null) && (!this.field_conRemark.trim().equals(""))) {
-      return this.field_conRemark;
-    }
-    return Bp();
-  }
-  
-  public final String Br()
-  {
-    Object localObject2 = vk();
-    if (!bk.bl((String)localObject2)) {
-      return localObject2;
-    }
-    localObject2 = this.field_username;
-    Object localObject1;
-    if (localObject2 == null) {
-      localObject1 = null;
-    }
-    for (;;)
+    if ((this.field_nickname == null) || (this.field_nickname.length() <= 0))
     {
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        if (((String)localObject1).length() != 0) {
-          break;
-        }
-      }
-      return this.field_username;
-      if (((String)localObject2).toLowerCase().endsWith("@t.qq.com"))
-      {
-        localObject1 = "@" + ((String)localObject2).replace("@t.qq.com", "");
-      }
-      else
-      {
-        localObject1 = localObject2;
-        if (((String)localObject2).toLowerCase().endsWith("@qqim"))
-        {
-          localObject1 = ((String)localObject2).replace("@qqim", "");
-          long l = Long.valueOf((String)localObject1).longValue();
-          if (l < 0L) {
-            localObject1 = new o(l).toString();
-          }
-        }
-      }
+      str = Og();
+      AppMethodBeat.o(59648);
+      return str;
     }
+    str = this.field_nickname;
+    AppMethodBeat.o(59648);
+    return str;
   }
   
-  public final int Bs()
+  public final String Of()
   {
-    return super.getSource();
-  }
-  
-  public final void aZ(long paramLong)
-  {
-    if (!bk.T(this.cCs, paramLong))
+    AppMethodBeat.i(59649);
+    if ((this.field_conRemark != null) && (!this.field_conRemark.trim().equals("")))
     {
-      super.aZ(paramLong);
-      Bt();
+      str = this.field_conRemark;
+      AppMethodBeat.o(59649);
+      return str;
     }
+    String str = Oe();
+    AppMethodBeat.o(59649);
+    return str;
   }
   
-  public final void cZ(String paramString)
+  public final String Og()
   {
-    if (!bk.isEqual(vk(), paramString))
+    AppMethodBeat.i(59650);
+    String str = Hq();
+    if (!bo.isNullOrNil(str))
     {
-      super.cZ(paramString);
-      Bt();
+      AppMethodBeat.o(59650);
+      return str;
     }
-  }
-  
-  public final void d(Cursor paramCursor)
-  {
-    super.d(paramCursor);
-    this.dBe = this.ujK;
-    super.v(null);
-  }
-  
-  public void dA(String paramString)
-  {
-    if (!bk.isEqual(getProvince(), paramString))
+    str = lH(this.field_username);
+    if ((str != null) && (str.length() != 0))
     {
-      super.dA(paramString);
-      Bt();
+      AppMethodBeat.o(59650);
+      return str;
     }
+    str = this.field_username;
+    AppMethodBeat.o(59650);
+    return str;
   }
   
-  public void dB(String paramString)
+  public final int Oh()
   {
-    if (!bk.isEqual(getCity(), paramString))
+    AppMethodBeat.i(59652);
+    int i = super.getSource();
+    AppMethodBeat.o(59652);
+    return i;
+  }
+  
+  public void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(59655);
+    super.convertFrom(paramCursor);
+    this.euF = this.systemRowid;
+    super.G(null);
+    AppMethodBeat.o(59655);
+  }
+  
+  public final void fJ(long paramLong)
+  {
+    AppMethodBeat.i(59678);
+    if (!bo.ah(this.dqE, paramLong))
     {
-      super.dB(paramString);
-      Bt();
+      super.fJ(paramLong);
+      Oi();
     }
+    AppMethodBeat.o(59678);
   }
   
-  public final void dC(String paramString)
+  public c.a getDBInfo()
   {
-    if (!bk.isEqual(this.cCC, paramString))
-    {
-      super.dC(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dD(String paramString)
-  {
-    if (!bk.isEqual(this.cCE, paramString))
-    {
-      super.dD(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dE(String paramString)
-  {
-    if (!bk.isEqual(this.cCF, paramString))
-    {
-      super.dE(paramString);
-      Bt();
-    }
-  }
-  
-  public void dF(String paramString)
-  {
-    if (!bk.isEqual(this.cCG, paramString))
-    {
-      super.dF(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dG(String paramString)
-  {
-    if (!bk.isEqual(this.cCJ, paramString))
-    {
-      super.dG(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dH(String paramString)
-  {
-    if (!bk.isEqual(this.cCK, paramString))
-    {
-      super.dH(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dI(String paramString)
-  {
-    if (!bk.isEqual(this.cCL, paramString))
-    {
-      super.dI(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dJ(String paramString)
-  {
-    if (!bk.isEqual(this.cCM, paramString))
-    {
-      super.dJ(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dK(String paramString)
-  {
-    if (!bk.isEqual(this.cCN, paramString))
-    {
-      super.dK(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dL(String paramString)
-  {
-    if (!bk.isEqual(this.cCO, paramString))
-    {
-      super.dL(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dM(String paramString)
-  {
-    if (!bk.isEqual(this.cCP, paramString))
-    {
-      super.dM(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dN(String paramString)
-  {
-    if (!bk.isEqual(this.cCQ, paramString))
-    {
-      super.dN(paramString);
-      Bt();
-    }
-  }
-  
-  public final void df(String paramString)
-  {
-    if (!bk.isEqual(this.field_conRemark, paramString))
-    {
-      super.df(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dg(String paramString)
-  {
-    if (!bk.isEqual(this.field_domainList, paramString))
-    {
-      super.dg(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dk(String paramString)
-  {
-    if (!bk.isEqual(this.field_nickname, paramString))
-    {
-      super.dk(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dl(String paramString)
-  {
-    if (!bk.isEqual(vn(), paramString))
-    {
-      super.dl(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dm(String paramString)
-  {
-    if (!bk.isEqual(vo(), paramString))
-    {
-      super.dm(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dn(String paramString)
-  {
-    if (!bk.isEqual(this.field_weiboNickname, paramString))
-    {
-      super.dn(paramString);
-      Bt();
-    }
-  }
-  
-  public final void jdMethod_do(String paramString)
-  {
-    if (!bk.isEqual(this.field_conRemarkPYFull, paramString))
-    {
-      super.jdMethod_do(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dp(String paramString)
-  {
-    if (!bk.isEqual(this.field_conRemarkPYShort, paramString))
-    {
-      super.dp(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dq(String paramString)
-  {
-    if (!bk.isEqual(this.field_encryptUsername, paramString))
-    {
-      super.dq(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dr(String paramString)
-  {
-    if (!bk.isEqual(this.field_contactLabelIds, paramString))
-    {
-      super.dr(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dt(String paramString)
-  {
-    if (!bk.isEqual(this.field_openImAppid, paramString))
-    {
-      super.dt(paramString);
-      Bt();
-    }
-  }
-  
-  public final void du(String paramString)
-  {
-    if (!bk.isEqual(this.cCr, paramString))
-    {
-      super.du(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dv(String paramString)
-  {
-    if (!bk.isEqual(this.cCt, paramString))
-    {
-      super.dv(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dw(String paramString)
-  {
-    if (!bk.isEqual(this.bSe, paramString))
-    {
-      super.dw(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dx(String paramString)
-  {
-    if (!bk.isEqual(this.cCw, paramString))
-    {
-      super.dx(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dy(String paramString)
-  {
-    if (!bk.isEqual(this.cCx, paramString))
-    {
-      super.dy(paramString);
-      Bt();
-    }
-  }
-  
-  public final void dz(String paramString)
-  {
-    if (!bk.isEqual(this.signature, paramString))
-    {
-      super.dz(paramString);
-      Bt();
-    }
-  }
-  
-  public final void fg(int paramInt)
-  {
-    if (!bk.ff(this.field_showHead, paramInt))
-    {
-      super.fg(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fh(int paramInt)
-  {
-    if (!bk.ff(this.field_weiboFlag, paramInt))
-    {
-      super.fh(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fi(int paramInt)
-  {
-    if (!bk.ff(this.field_verifyFlag, paramInt))
-    {
-      super.fi(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fj(int paramInt)
-  {
-    if (!bk.ff(this.field_chatroomFlag, paramInt))
-    {
-      super.fj(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fk(int paramInt)
-  {
-    if (!bk.ff(this.field_deleteFlag, paramInt))
-    {
-      super.fk(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fl(int paramInt)
-  {
-    if (!bk.ff(this.cCq, paramInt))
-    {
-      super.fl(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fm(int paramInt)
-  {
-    if (!bk.ff(this.sex, paramInt))
-    {
-      super.fm(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fn(int paramInt)
-  {
-    if (!bk.ff(this.uin, paramInt))
-    {
-      super.fn(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fo(int paramInt)
-  {
-    if (!bk.ff(this.cCu, paramInt))
-    {
-      super.fo(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fp(int paramInt)
-  {
-    if (!bk.ff(this.cCv, paramInt))
-    {
-      super.fp(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fq(int paramInt)
-  {
-    if (!bk.ff(this.cCy, paramInt))
-    {
-      super.fq(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fr(int paramInt)
-  {
-    if (!bk.ff(this.cCz, paramInt))
-    {
-      super.fr(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fs(int paramInt)
-  {
-    if (!bk.ff(this.cCD, paramInt))
-    {
-      super.fs(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void ft(int paramInt)
-  {
-    if (!bk.ff(this.cCH, paramInt))
-    {
-      super.ft(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void fu(int paramInt)
-  {
-    if (!bk.ff(this.cCI, paramInt))
-    {
-      super.fu(paramInt);
-      Bt();
-    }
-  }
-  
-  public final void gS(int paramInt)
-  {
-    fj(this.field_chatroomFlag & 0xFFFFFFFE | paramInt & 0x1);
+    return info;
   }
   
   public final int getSource()
   {
-    return super.getSource() % 1000000;
+    AppMethodBeat.i(59651);
+    int i = super.getSource();
+    AppMethodBeat.o(59651);
+    return i % 1000000;
+  }
+  
+  public final void hA(int paramInt)
+  {
+    AppMethodBeat.i(59683);
+    if (!bo.hl(this.dqH, paramInt))
+    {
+      super.hA(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59683);
+  }
+  
+  public final void hB(int paramInt)
+  {
+    AppMethodBeat.i(59686);
+    if (!bo.hl(this.dqK, paramInt))
+    {
+      super.hB(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59686);
+  }
+  
+  public final void hC(int paramInt)
+  {
+    AppMethodBeat.i(59687);
+    if (!bo.hl(this.dqL, paramInt))
+    {
+      super.hC(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59687);
+  }
+  
+  public final void hD(int paramInt)
+  {
+    AppMethodBeat.i(59692);
+    if (!bo.hl(this.dqN, paramInt))
+    {
+      super.hD(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59692);
+  }
+  
+  public final void hE(int paramInt)
+  {
+    AppMethodBeat.i(59697);
+    if (!bo.hl(this.dqR, paramInt))
+    {
+      super.hE(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59697);
+  }
+  
+  public final void hF(int paramInt)
+  {
+    AppMethodBeat.i(59698);
+    if (!bo.hl(this.dqS, paramInt))
+    {
+      super.hF(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59698);
+  }
+  
+  public final void hs(int paramInt)
+  {
+    AppMethodBeat.i(59663);
+    if (!bo.hl(this.field_showHead, paramInt))
+    {
+      super.hs(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59663);
+  }
+  
+  public final void ht(int paramInt)
+  {
+    AppMethodBeat.i(59665);
+    if (!bo.hl(this.field_weiboFlag, paramInt))
+    {
+      super.ht(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59665);
+  }
+  
+  public final void hu(int paramInt)
+  {
+    AppMethodBeat.i(59670);
+    if (!bo.hl(this.field_verifyFlag, paramInt))
+    {
+      super.hu(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59670);
+  }
+  
+  public final void hv(int paramInt)
+  {
+    AppMethodBeat.i(59672);
+    if (!bo.hl(this.field_chatroomFlag, paramInt))
+    {
+      super.hv(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59672);
+  }
+  
+  public final void hw(int paramInt)
+  {
+    AppMethodBeat.i(59673);
+    if (!bo.hl(this.field_deleteFlag, paramInt))
+    {
+      super.hw(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59673);
+  }
+  
+  public final void hx(int paramInt)
+  {
+    AppMethodBeat.i(59675);
+    if (!bo.hl(this.dqB, paramInt))
+    {
+      super.hx(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59675);
+  }
+  
+  public final void hy(int paramInt)
+  {
+    AppMethodBeat.i(59676);
+    if (!bo.hl(this.dqC, paramInt))
+    {
+      super.hy(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59676);
+  }
+  
+  public final void hz(int paramInt)
+  {
+    AppMethodBeat.i(59682);
+    if (!bo.hl(this.dqG, paramInt))
+    {
+      super.hz(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59682);
   }
   
   public final boolean isHidden()
@@ -961,86 +851,425 @@ public class a
     return (this.field_type & 0x20) != 0;
   }
   
-  public final c.a rM()
+  public final void jA(String paramString)
   {
-    return buS;
+    AppMethodBeat.i(59677);
+    if (!bo.isEqual(this.dqD, paramString))
+    {
+      super.jA(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59677);
+  }
+  
+  public final void jB(String paramString)
+  {
+    AppMethodBeat.i(59680);
+    if (!bo.isEqual(this.dqF, paramString))
+    {
+      super.jB(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59680);
+  }
+  
+  public final void jC(String paramString)
+  {
+    AppMethodBeat.i(59681);
+    if (!bo.isEqual(this.czF, paramString))
+    {
+      super.jC(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59681);
+  }
+  
+  public final void jD(String paramString)
+  {
+    AppMethodBeat.i(59684);
+    if (!bo.isEqual(this.dqI, paramString))
+    {
+      super.jD(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59684);
+  }
+  
+  public final void jE(String paramString)
+  {
+    AppMethodBeat.i(59685);
+    if (!bo.isEqual(this.dqJ, paramString))
+    {
+      super.jE(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59685);
+  }
+  
+  public final void jF(String paramString)
+  {
+    AppMethodBeat.i(59688);
+    if (!bo.isEqual(this.signature, paramString))
+    {
+      super.jF(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59688);
+  }
+  
+  public void jG(String paramString)
+  {
+    AppMethodBeat.i(59689);
+    if (!bo.isEqual(getProvince(), paramString))
+    {
+      super.jG(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59689);
+  }
+  
+  public void jH(String paramString)
+  {
+    AppMethodBeat.i(59690);
+    if (!bo.isEqual(getCity(), paramString))
+    {
+      super.jH(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59690);
+  }
+  
+  public final void jI(String paramString)
+  {
+    AppMethodBeat.i(59691);
+    if (!bo.isEqual(this.dqM, paramString))
+    {
+      super.jI(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59691);
+  }
+  
+  public final void jJ(String paramString)
+  {
+    AppMethodBeat.i(59694);
+    if (!bo.isEqual(this.dqO, paramString))
+    {
+      super.jJ(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59694);
+  }
+  
+  public final void jK(String paramString)
+  {
+    AppMethodBeat.i(59695);
+    if (!bo.isEqual(this.dqP, paramString))
+    {
+      super.jK(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59695);
+  }
+  
+  public void jL(String paramString)
+  {
+    AppMethodBeat.i(59696);
+    if (!bo.isEqual(this.dqQ, paramString))
+    {
+      super.jL(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59696);
+  }
+  
+  public final void jM(String paramString)
+  {
+    AppMethodBeat.i(59699);
+    if (!bo.isEqual(this.dqT, paramString))
+    {
+      super.jM(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59699);
+  }
+  
+  public final void jN(String paramString)
+  {
+    AppMethodBeat.i(59700);
+    if (!bo.isEqual(this.dqU, paramString))
+    {
+      super.jN(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59700);
+  }
+  
+  public final void jO(String paramString)
+  {
+    AppMethodBeat.i(59701);
+    if (!bo.isEqual(this.dqV, paramString))
+    {
+      super.jO(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59701);
+  }
+  
+  public final void jP(String paramString)
+  {
+    AppMethodBeat.i(59702);
+    if (!bo.isEqual(this.dqW, paramString))
+    {
+      super.jP(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59702);
+  }
+  
+  public final void jQ(String paramString)
+  {
+    AppMethodBeat.i(59703);
+    if (!bo.isEqual(this.dqX, paramString))
+    {
+      super.jQ(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59703);
+  }
+  
+  public final void jR(String paramString)
+  {
+    AppMethodBeat.i(59704);
+    if (!bo.isEqual(this.dqY, paramString))
+    {
+      super.jR(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59704);
+  }
+  
+  public final void jS(String paramString)
+  {
+    AppMethodBeat.i(59705);
+    if (!bo.isEqual(this.dqZ, paramString))
+    {
+      super.jS(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59705);
+  }
+  
+  public final void jT(String paramString)
+  {
+    AppMethodBeat.i(59706);
+    if (!bo.isEqual(this.dra, paramString))
+    {
+      super.jT(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59706);
+  }
+  
+  public final void jf(int paramInt)
+  {
+    AppMethodBeat.i(59654);
+    hv(this.field_chatroomFlag & 0xFFFFFFFE | paramInt & 0x1);
+    AppMethodBeat.o(59654);
+  }
+  
+  public final void jm(String paramString)
+  {
+    AppMethodBeat.i(59657);
+    if (!bo.isEqual(Hq(), paramString))
+    {
+      super.jm(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59657);
+  }
+  
+  public final void jn(String paramString)
+  {
+    AppMethodBeat.i(59658);
+    if (!bo.isEqual(this.field_conRemark, paramString))
+    {
+      super.jn(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59658);
+  }
+  
+  public final void jo(String paramString)
+  {
+    AppMethodBeat.i(59659);
+    if (!bo.isEqual(this.field_domainList, paramString))
+    {
+      super.jo(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59659);
+  }
+  
+  public final void jp(String paramString)
+  {
+    AppMethodBeat.i(59660);
+    if (!bo.isEqual(this.field_nickname, paramString))
+    {
+      super.jp(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59660);
+  }
+  
+  public final void jq(String paramString)
+  {
+    AppMethodBeat.i(59661);
+    if (!bo.isEqual(Ht(), paramString))
+    {
+      super.jq(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59661);
+  }
+  
+  public final void jr(String paramString)
+  {
+    AppMethodBeat.i(59662);
+    if (!bo.isEqual(Hu(), paramString))
+    {
+      super.jr(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59662);
+  }
+  
+  public final void js(String paramString)
+  {
+    AppMethodBeat.i(59666);
+    if (!bo.isEqual(this.field_weiboNickname, paramString))
+    {
+      super.js(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59666);
+  }
+  
+  public final void jt(String paramString)
+  {
+    AppMethodBeat.i(59667);
+    if (!bo.isEqual(this.field_conRemarkPYFull, paramString))
+    {
+      super.jt(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59667);
+  }
+  
+  public final void ju(String paramString)
+  {
+    AppMethodBeat.i(59668);
+    if (!bo.isEqual(this.field_conRemarkPYShort, paramString))
+    {
+      super.ju(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59668);
+  }
+  
+  public final void jv(String paramString)
+  {
+    AppMethodBeat.i(59671);
+    if (!bo.isEqual(this.field_encryptUsername, paramString))
+    {
+      super.jv(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59671);
+  }
+  
+  public final void jw(String paramString)
+  {
+    AppMethodBeat.i(59674);
+    if (!bo.isEqual(this.field_contactLabelIds, paramString))
+    {
+      super.jw(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59674);
+  }
+  
+  public final void jy(String paramString)
+  {
+    AppMethodBeat.i(59707);
+    if (!bo.isEqual(this.field_openImAppid, paramString))
+    {
+      super.jy(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(59707);
+  }
+  
+  public final void jz(String paramString)
+  {
+    AppMethodBeat.i(141739);
+    if (!bo.isEqual(this.field_sourceExtInfo, paramString))
+    {
+      super.jz(paramString);
+      Oi();
+    }
+    AppMethodBeat.o(141739);
   }
   
   public final void setSource(int paramInt)
   {
-    if (!bk.ff(super.getSource(), paramInt))
+    AppMethodBeat.i(59693);
+    if (!bo.hl(super.getSource(), paramInt))
     {
       super.setSource(paramInt);
-      Bt();
+      Oi();
     }
+    AppMethodBeat.o(59693);
   }
   
   public final void setType(int paramInt)
   {
-    if (!bk.ff(this.field_type, paramInt))
+    AppMethodBeat.i(59664);
+    if (!bo.hl(this.field_type, paramInt))
     {
       super.setType(paramInt);
-      Bt();
+      Oi();
     }
+    AppMethodBeat.o(59664);
+  }
+  
+  public final void setUin(int paramInt)
+  {
+    AppMethodBeat.i(59679);
+    if (!bo.hl(this.uin, paramInt))
+    {
+      super.setUin(paramInt);
+      Oi();
+    }
+    AppMethodBeat.o(59679);
   }
   
   public final void setUsername(String paramString)
   {
-    if (!bk.isEqual(this.field_username, paramString))
+    AppMethodBeat.i(59656);
+    if (!bo.isEqual(this.field_username, paramString))
     {
       super.setUsername(paramString);
-      Bt();
+      Oi();
     }
-  }
-  
-  public final void v(byte[] paramArrayOfByte)
-  {
-    if (!bk.isEqual(this.field_lvbuff, paramArrayOfByte))
-    {
-      super.v(paramArrayOfByte);
-      Bt();
-    }
-  }
-  
-  public final String vk()
-  {
-    if (dBf != null) {}
-    for (String str1 = dBf.cy(this.field_username);; str1 = null)
-    {
-      String str2 = str1;
-      if (str1 == null) {
-        str2 = super.vk();
-      }
-      return str2;
-    }
-  }
-  
-  public final String vn()
-  {
-    if ((super.vn() == null) || (super.vn().length() < 0)) {
-      return vo();
-    }
-    return super.vn();
-  }
-  
-  public final String vo()
-  {
-    if ((super.vo() == null) || (super.vo().length() < 0)) {
-      return this.field_nickname;
-    }
-    return super.vo();
-  }
-  
-  public final boolean xG()
-  {
-    return (this.field_type & 0x400) == 0;
+    AppMethodBeat.o(59656);
   }
   
   public static abstract interface a
   {
-    public abstract String cx(String paramString);
+    public abstract String dK(String paramString);
     
-    public abstract String cy(String paramString);
+    public abstract String dL(String paramString);
   }
 }
 

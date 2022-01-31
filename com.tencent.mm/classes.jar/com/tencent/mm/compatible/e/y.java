@@ -1,43 +1,41 @@
 package com.tencent.mm.compatible.e;
 
-import java.lang.reflect.Method;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class y
 {
-  private static Class<?> aov = null;
-  private static Method dyR = null;
-  private static Method dyS = null;
+  public boolean erh;
+  public int eri;
+  public int erj;
+  public int erk;
+  public int erl;
+  public int erm;
+  public int ern;
+  public int ero;
+  public int erp;
+  public int mVideoHeight;
+  public int mVideoWidth;
   
-  static
+  public y()
   {
-    try
-    {
-      Class localClass = Class.forName("android.os.SystemProperties");
-      aov = localClass;
-      dyR = localClass.getDeclaredMethod("get", new Class[] { String.class });
-      dyS = aov.getDeclaredMethod("getInt", new Class[] { String.class, Integer.TYPE });
-      dyR.setAccessible(true);
-      dyS.setAccessible(true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.SystemProperties", localException, "", new Object[0]);
-    }
+    AppMethodBeat.i(93017);
+    reset();
+    AppMethodBeat.o(93017);
   }
   
-  public static String get(String paramString)
+  public final void reset()
   {
-    try
-    {
-      paramString = (String)dyR.invoke(null, new Object[] { paramString });
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.SystemProperties", paramString, "", new Object[0]);
-    }
-    return null;
+    this.erh = false;
+    this.mVideoHeight = 224;
+    this.mVideoWidth = 288;
+    this.eri = 10;
+    this.erj = 3000000;
+    this.erk = 1;
+    this.erl = 1;
+    this.erm = 1;
+    this.ern = 0;
+    this.ero = 1;
+    this.erp = 0;
   }
 }
 

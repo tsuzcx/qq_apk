@@ -5,17 +5,17 @@ import android.content.Intent;
 public class GooglePlayServicesAvailabilityException
   extends UserRecoverableAuthException
 {
-  private final int zzaiH;
+  private final int zzx;
   
   GooglePlayServicesAvailabilityException(int paramInt, String paramString, Intent paramIntent)
   {
     super(paramString, paramIntent);
-    this.zzaiH = paramInt;
+    this.zzx = paramInt;
   }
   
   public int getConnectionStatusCode()
   {
-    return this.zzaiH;
+    return this.zzx;
   }
 }
 

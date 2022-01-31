@@ -1,37 +1,54 @@
 package com.tencent.magicbrush.handler.image;
 
-import com.github.henryye.nativeiv.bitmap.IBitmap;
+import com.tencent.magicbrush.a.c.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
+import java.net.URL;
 
 final class a$c
-  implements Runnable
+  extends a.d
 {
-  private String bmf;
-  private boolean bmh = false;
-  private a.b bmi;
-  
-  private a$c(a parama, String paramString)
+  public a$c(IMBImageHandler paramIMBImageHandler)
   {
-    this.bmf = paramString;
+    super(paramIMBImageHandler);
   }
   
-  public final void run()
+  public final boolean bL(String paramString)
   {
-    IBitmap localIBitmap = this.bmj.loadBitmapSync(this.bmf);
+    AppMethodBeat.i(115966);
+    if ((paramString != null) && ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))))
+    {
+      AppMethodBeat.o(115966);
+      return true;
+    }
+    AppMethodBeat.o(115966);
+    return false;
+  }
+  
+  public final InputStream bM(String paramString)
+  {
+    AppMethodBeat.i(115967);
     try
     {
-      if (this.bmh) {
-        return;
-      }
-      this.bmi = new a.b(this.bmf, localIBitmap, (byte)0);
-      this.bmj.blW.g(this.bmi);
-      return;
+      BufferedInputStream localBufferedInputStream = new BufferedInputStream(new URL(paramString).openStream());
+      paramString = localBufferedInputStream;
     }
-    finally {}
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        c.c.e("HttpDecoder", "fetch error failed. path = [%s], error = [%s]", new Object[] { paramString, localException.toString() });
+        paramString = null;
+      }
+    }
+    AppMethodBeat.o(115967);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.magicbrush.handler.image.a.c
  * JD-Core Version:    0.7.0.1
  */

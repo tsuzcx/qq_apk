@@ -1,72 +1,52 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import android.os.Bundle;
-import com.tencent.mm.compatible.util.q;
+import a.l;
+import android.util.SparseIntArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandServiceTypeCache;", "", "()V", "TAG", "", "serviceTypeMap", "Landroid/util/SparseIntArray;", "addServiceTypeMap", "", "appId", "serviceType", "", "getServiceTypeMap", "default", "plugin-appbrand-integration_release"})
 public final class f
 {
-  public static int g(int paramInt, Bundle paramBundle)
+  private static final SparseIntArray iFS;
+  public static final f iFT;
+  
+  static
   {
-    if ((paramBundle == null) || (!mm(paramInt))) {
-      return 0;
-    }
-    return paramBundle.getInt("stat_scene");
+    AppMethodBeat.i(134937);
+    iFT = new f();
+    iFS = new SparseIntArray();
+    AppMethodBeat.o(134937);
   }
   
-  public static String h(int paramInt, Bundle paramBundle)
+  public static final int EE(String paramString)
   {
-    if ((paramBundle == null) || (!mm(paramInt))) {
-      return "";
-    }
-    switch (paramBundle.getInt("stat_scene"))
+    AppMethodBeat.i(134936);
+    if (paramString != null)
     {
-    case 5: 
-    default: 
-      return "";
-    case 1: 
-      return paramBundle.getString("stat_send_msg_user");
-    case 2: 
-      str = paramBundle.getString("stat_chat_talker_username");
-      paramBundle = paramBundle.getString("stat_send_msg_user");
-      return str + ":" + paramBundle;
-    case 3: 
-      str = paramBundle.getString("stat_msg_id");
-      paramBundle = paramBundle.getString("stat_send_msg_user");
-      return str + ":" + paramBundle;
-    case 4: 
-      return q.encode(paramBundle.getString("stat_url"));
-    case 6: 
-      Object localObject = paramBundle.getString("stat_app_id");
-      str = paramBundle.getString("stat_url");
-      localObject = new StringBuilder().append((String)localObject).append(":");
-      paramBundle = str;
-      if (str == null) {
-        paramBundle = "";
-      }
-      return q.encode(paramBundle);
-    case 7: 
-      return paramBundle.getString("stat_chat_talker_username");
-    case 8: 
-      return "search:" + paramBundle.getString("stat_search_id");
+      int i = iFS.get(paramString.hashCode(), -1);
+      ab.d("MicroMsg.AppBrandServiceTypeCache", "getServiceTypeMap appId: " + paramString + ", ret " + i);
+      AppMethodBeat.o(134936);
+      return i;
     }
-    String str = paramBundle.getString("stat_chat_talker_username");
-    paramBundle = paramBundle.getString("stat_send_msg_user");
-    return str + ":" + paramBundle;
+    AppMethodBeat.o(134936);
+    return -1;
   }
   
-  private static boolean mm(int paramInt)
+  public static final void br(String paramString, int paramInt)
   {
-    switch (paramInt)
+    AppMethodBeat.i(134934);
+    if (paramString != null)
     {
-    default: 
-      return false;
+      ab.d("MicroMsg.AppBrandServiceTypeCache", "addServiceTypeMap appId: " + paramString + ", serviceType: " + paramInt);
+      iFS.put(paramString.hashCode(), paramInt);
     }
-    return true;
+    AppMethodBeat.o(134934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.f
  * JD-Core Version:    0.7.0.1
  */

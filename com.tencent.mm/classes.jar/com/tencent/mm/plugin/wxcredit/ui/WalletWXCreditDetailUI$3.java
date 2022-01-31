@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.wxcredit.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxcredit.a.j;
 import com.tencent.mm.plugin.wxcredit.a.k;
-import com.tencent.mm.plugin.wxpay.a.f;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletWXCreditDetailUI$3
@@ -14,15 +14,19 @@ final class WalletWXCreditDetailUI$3
   
   public final void onClick(View paramView)
   {
-    if (paramView.getId() == a.f.wallet_wxcredit_detail_username_tv) {
-      if (WalletWXCreditDetailUI.b(this.rRL) != null) {
-        e.ab(this.rRL, WalletWXCreditDetailUI.b(this.rRL).rRc.username);
+    AppMethodBeat.i(48722);
+    if (paramView.getId() == 2131829429)
+    {
+      if (WalletWXCreditDetailUI.b(this.vIB) != null)
+      {
+        e.ae(this.vIB, WalletWXCreditDetailUI.b(this.vIB).vHS.username);
+        AppMethodBeat.o(48722);
       }
     }
-    while ((paramView.getId() != a.f.wallet_wxcredit_detail_help_tv) || (WalletWXCreditDetailUI.b(this.rRL) == null)) {
-      return;
+    else if ((paramView.getId() == 2131829430) && (WalletWXCreditDetailUI.b(this.vIB) != null)) {
+      e.m(this.vIB, WalletWXCreditDetailUI.b(this.vIB).vHR, false);
     }
-    e.l(this.rRL, WalletWXCreditDetailUI.b(this.rRL).rRb, false);
+    AppMethodBeat.o(48722);
   }
 }
 

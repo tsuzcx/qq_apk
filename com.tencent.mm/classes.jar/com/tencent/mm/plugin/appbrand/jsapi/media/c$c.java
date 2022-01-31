@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-final class c$c
+import a.l;
+import com.tencent.mm.vending.c.a;
+
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "Lcom/tencent/mm/plugin/mmsight/SightParams;", "<anonymous parameter 0>", "Ljava/lang/Void;", "kotlin.jvm.PlatformType", "call"})
+final class c$c<_Ret, _Var>
+  implements a<_Ret, _Var>
 {
-  public String fNK;
-  public int height;
-  public String type;
-  public int width;
+  c$c(c paramc) {}
 }
 
 

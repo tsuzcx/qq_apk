@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.traceroute.b;
 
 public abstract interface a$b
 {
-  public abstract void bOM();
+  public abstract void cKI();
 }
 
 

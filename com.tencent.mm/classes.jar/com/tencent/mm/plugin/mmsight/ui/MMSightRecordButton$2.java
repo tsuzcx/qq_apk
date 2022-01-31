@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMSightRecordButton$2
   extends AnimatorListenerAdapter
@@ -10,18 +11,22 @@ final class MMSightRecordButton$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    MMSightRecordButton.a(this.moU, false);
-    if (this.moW != null) {
-      this.moW.onAnimationEnd(paramAnimator);
+    AppMethodBeat.i(55093);
+    MMSightRecordButton.a(this.oOg, false);
+    if (this.oOi != null) {
+      this.oOi.onAnimationEnd(paramAnimator);
     }
+    AppMethodBeat.o(55093);
   }
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    MMSightRecordButton.a(this.moU, true);
-    if (this.moW != null) {
-      this.moW.onAnimationStart(paramAnimator);
+    AppMethodBeat.i(55092);
+    MMSightRecordButton.a(this.oOg, true);
+    if (this.oOi != null) {
+      this.oOi.onAnimationStart(paramAnimator);
     }
+    AppMethodBeat.o(55092);
   }
 }
 

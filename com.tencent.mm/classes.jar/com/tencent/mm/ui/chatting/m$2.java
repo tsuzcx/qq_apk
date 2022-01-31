@@ -1,28 +1,38 @@
 package com.tencent.mm.ui.chatting;
 
-import android.graphics.Bitmap;
-import com.tencent.mm.ae.m;
-import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.plugin.appbrand.u.o;
-import com.tencent.mm.sdk.platformtools.y;
+import android.content.Context;
+import android.view.MenuItem;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.n.a;
+import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bd;
+import com.tencent.mm.ui.base.n.b;
 
 final class m$2
-  implements b.h
+  implements n.b
 {
-  m$2(m paramm) {}
+  m$2(Context paramContext) {}
   
-  public final void JG() {}
-  
-  public final void JH() {}
-  
-  public final void p(Bitmap paramBitmap)
+  public final void a(TextView paramTextView, MenuItem paramMenuItem)
   {
-    y.d("MicroMsg.ChattingEditModeSendToAppBrand", "onBitmapLoaded %s", new Object[] { this.ifo.dTN });
-  }
-  
-  public final String pU()
-  {
-    return o.aX(this);
+    AppMethodBeat.i(30598);
+    if (paramTextView != null)
+    {
+      aw.aaz();
+      ad localad = c.YA().arw(paramMenuItem.getTitle());
+      if ((localad == null) || ((int)localad.euF <= 0))
+      {
+        paramTextView.setText(paramMenuItem.getTitle());
+        AppMethodBeat.o(30598);
+        return;
+      }
+      paramTextView.setText(j.b(this.val$context, localad.Oe()));
+    }
+    AppMethodBeat.o(30598);
   }
 }
 

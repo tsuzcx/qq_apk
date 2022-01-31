@@ -1,111 +1,110 @@
 package com.tencent.mm.plugin.qqmail.b;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.at;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.model.q;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 import com.tencent.mm.storage.be;
-import com.tencent.mm.vfs.e;
 import java.util.HashMap;
-import java.util.LinkedList;
 
 public class ac
-  implements ar
+  implements at
 {
-  private ab neI;
-  private v nfk;
-  private b nfl = new b();
+  private ab pJX;
+  private b pKA;
+  private v pKz;
   
-  private static ac btE()
+  public ac()
   {
-    return (ac)p.B(ac.class);
+    AppMethodBeat.i(68060);
+    this.pKA = new b();
+    AppMethodBeat.o(68060);
   }
   
-  public static v btF()
+  private static ac cdP()
   {
-    g.DN().CX();
-    if (btE().nfk == null) {
-      btE().nfk = new v(d.spa, d.dOM);
+    AppMethodBeat.i(68061);
+    ac localac = (ac)q.S(ac.class);
+    AppMethodBeat.o(68061);
+    return localac;
+  }
+  
+  public static v cdQ()
+  {
+    AppMethodBeat.i(68062);
+    g.RJ().QQ();
+    if (cdP().pKz == null) {
+      cdP().pKz = new v(d.whH, d.eQs);
     }
-    return btE().nfk;
+    v localv = cdP().pKz;
+    AppMethodBeat.o(68062);
+    return localv;
   }
   
-  public static ab btG()
+  public static ab cdR()
   {
-    g.DN().CX();
-    if (btE().neI == null) {
-      btE().neI = new ab();
+    AppMethodBeat.i(68063);
+    g.RJ().QQ();
+    if (cdP().pJX == null) {
+      cdP().pJX = new ab();
     }
-    return btE().neI;
+    ab localab = cdP().pJX;
+    AppMethodBeat.o(68063);
+    return localab;
   }
   
-  public static void btH()
+  public static void cdS()
   {
-    bd.iL("qqmail");
-    ((j)g.r(j.class)).FB().abu("qqmail");
-    v localv = btF();
-    e.K(v.btA(), true);
-    localv.reset();
+    AppMethodBeat.i(68066);
+    bf.pz("qqmail");
+    ((j)g.E(j.class)).YF().arF("qqmail");
+    cdQ().clearData();
+    AppMethodBeat.o(68066);
   }
   
-  public final void bh(boolean paramBoolean)
+  public void clearPluginData(int paramInt)
   {
-    com.tencent.mm.sdk.b.a.udP.c(this.nfl);
-    g.DS().O(new Runnable()
-    {
-      public final void run()
-      {
-        if (!g.DK()) {
-          return;
-        }
-        long l = System.currentTimeMillis();
-        y localy = new y();
-        if (localy.neG.maL.size() > 0)
-        {
-          int i = 0;
-          while (i < localy.neG.maL.size())
-          {
-            y.Lm(((w)localy.neG.maL.get(i)).ndx);
-            i += 1;
-          }
-          localy.neG.maL.clear();
-          localy.save();
-        }
-        com.tencent.mm.sdk.platformtools.y.i("SubCoreQQMail", "summeranrt onAccountPostReset notifyAllFail take[%d]ms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-      }
-    });
-  }
-  
-  public final void bi(boolean paramBoolean) {}
-  
-  public final void gf(int paramInt)
-  {
+    AppMethodBeat.i(68065);
     if ((paramInt & 0x1) != 0) {
-      btH();
+      cdS();
     }
+    AppMethodBeat.o(68065);
   }
   
-  public final void onAccountRelease()
-  {
-    v localv = btE().nfk;
-    if (localv != null) {
-      localv.reset();
-    }
-    com.tencent.mm.sdk.b.a.udP.d(this.nfl);
-  }
-  
-  public final HashMap<Integer, h.d> xe()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
     return null;
   }
+  
+  public void onAccountPostReset(boolean paramBoolean)
+  {
+    AppMethodBeat.i(68067);
+    com.tencent.mm.sdk.b.a.ymk.c(this.pKA);
+    g.RO().ac(new ac.1(this));
+    AppMethodBeat.o(68067);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(68064);
+    v localv = cdP().pKz;
+    if (localv != null) {
+      localv.reset();
+    }
+    com.tencent.mm.sdk.b.a.ymk.d(this.pKA);
+    AppMethodBeat.o(68064);
+  }
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.ac
  * JD-Core Version:    0.7.0.1
  */

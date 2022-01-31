@@ -1,68 +1,96 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class d
 {
-  public static Integer bf(Object paramObject)
+  private static int ag(Class paramClass)
   {
-    if (paramObject == null) {
+    AppMethodBeat.i(77453);
+    if (!paramClass.isEnum())
+    {
+      AppMethodBeat.o(77453);
+      return 0;
+    }
+    paramClass = paramClass.getEnumConstants();
+    int k = paramClass.length;
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j = Math.max(((Enum)paramClass[i]).name().length(), j);
+      i += 1;
+    }
+    AppMethodBeat.o(77453);
+    return j;
+  }
+  
+  public static Integer bk(Object paramObject)
+  {
+    AppMethodBeat.i(77455);
+    if (paramObject == null)
+    {
+      AppMethodBeat.o(77455);
       return null;
     }
-    if ((paramObject instanceof Integer)) {
-      return (Integer)paramObject;
+    if ((paramObject instanceof Integer))
+    {
+      paramObject = (Integer)paramObject;
+      AppMethodBeat.o(77455);
+      return paramObject;
     }
-    if ((paramObject instanceof Number)) {
-      return Integer.valueOf(((Number)paramObject).intValue());
+    int i;
+    if ((paramObject instanceof Number))
+    {
+      i = ((Number)paramObject).intValue();
+      AppMethodBeat.o(77455);
+      return Integer.valueOf(i);
     }
     if ((paramObject instanceof String)) {
       try
       {
-        int i = (int)Double.parseDouble((String)paramObject);
+        i = (int)Double.parseDouble((String)paramObject);
+        AppMethodBeat.o(77455);
         return Integer.valueOf(i);
       }
       catch (NumberFormatException paramObject) {}
     }
+    AppMethodBeat.o(77455);
     return null;
   }
   
-  static <T extends Enum> T h(String paramString, Class<T> paramClass)
+  static <T extends Enum> T g(String paramString, Class<T> paramClass)
   {
-    if (!paramClass.isEnum()) {
-      i = 0;
-    }
-    Object[] arrayOfObject;
-    while ((bk.bl(paramString)) || (paramString.length() > i))
+    AppMethodBeat.i(77454);
+    int i = ag(paramClass);
+    if ((bo.isNullOrNil(paramString)) || (paramString.length() > i))
     {
+      AppMethodBeat.o(77454);
       return null;
-      arrayOfObject = paramClass.getEnumConstants();
-      int k = arrayOfObject.length;
-      j = 0;
-      i = 0;
-      while (j < k)
-      {
-        i = Math.max(((Enum)arrayOfObject[j]).name().length(), i);
-        j += 1;
-      }
     }
     paramString = paramString.toUpperCase();
     paramClass = (Enum[])paramClass.getEnumConstants();
     int j = paramClass.length;
-    int i = 0;
+    i = 0;
     while (i < j)
     {
-      arrayOfObject = paramClass[i];
-      if (paramString.equals(((Enum)arrayOfObject).name())) {
-        return (Enum)arrayOfObject;
+      Object localObject = paramClass[i];
+      if (paramString.equals(((Enum)localObject).name()))
+      {
+        paramString = (Enum)localObject;
+        AppMethodBeat.o(77454);
+        return paramString;
       }
       i += 1;
     }
+    AppMethodBeat.o(77454);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.d
  * JD-Core Version:    0.7.0.1
  */

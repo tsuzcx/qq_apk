@@ -4,15 +4,15 @@ import com.google.android.exoplayer2.p;
 
 final class f$g
 {
-  final p atv;
-  final long aui;
-  final long axA;
+  final p avN;
+  final long awA;
+  final long azQ;
   
   private f$g(p paramp, long paramLong1, long paramLong2)
   {
-    this.atv = paramp;
-    this.axA = paramLong1;
-    this.aui = paramLong2;
+    this.avN = paramp;
+    this.azQ = paramLong1;
+    this.awA = paramLong2;
   }
 }
 

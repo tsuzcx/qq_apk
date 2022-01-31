@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.fav.a;
 
 public abstract interface n$a
 {
-  public abstract void bj(String paramString, int paramInt);
+  public abstract void bK(String paramString, int paramInt);
   
   public abstract void onFinish();
   

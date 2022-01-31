@@ -1,129 +1,129 @@
 package com.tencent.mm.plugin.appbrand.widget.input.d;
 
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public abstract class f
 {
-  public String aPg;
-  public String fLT;
-  public String fMb = null;
-  public Integer hyA;
-  public Integer hyB;
-  public Integer hyC;
-  public Integer hyD;
-  public Integer hyE = null;
-  public Integer hyF = null;
-  public Float hyG = null;
-  public Integer hyH;
-  public String hyI;
-  public String hyJ;
-  public Integer hyK;
-  public Integer hyL;
-  public Boolean hyM = Boolean.valueOf(false);
-  public Boolean hyN = Boolean.valueOf(false);
-  public Boolean hyO = Boolean.valueOf(false);
-  public Boolean hyP = Boolean.valueOf(false);
-  public Boolean hyQ = null;
-  public Boolean hyR = null;
-  public Integer hyS = null;
-  public b hyT = null;
-  public Boolean hyU = null;
-  public Boolean hyV = null;
-  public Integer hyW = null;
-  public Integer hyX = null;
-  public String hyx;
-  public Integer hyy;
-  public Integer hyz;
+  public String aWz;
+  public String hfd;
+  public String hfl = null;
+  public String jqH;
+  public Integer jqI;
+  public Integer jqJ;
+  public Integer jqK;
+  public Integer jqL;
+  public Integer jqM;
+  public Integer jqN;
+  public Integer jqO = null;
+  public Integer jqP = null;
+  public Float jqQ = null;
+  public Integer jqR;
+  public String jqS;
+  public String jqT;
+  public Integer jqU;
+  public Integer jqV;
+  public Boolean jqW = Boolean.FALSE;
+  public Boolean jqX = Boolean.FALSE;
+  public Boolean jqY = Boolean.FALSE;
+  public Boolean jqZ = Boolean.FALSE;
+  public Boolean jra = null;
+  public Boolean jrb = null;
+  public Integer jrc = null;
+  public b jrd = null;
+  public Boolean jre = null;
+  public Boolean jrf = null;
+  public Integer jrg = null;
+  public Integer jrh = null;
   
   public final void a(f paramf)
   {
-    this.hyx = paramf.hyx;
-    if (paramf.hyy != null) {
-      this.hyy = paramf.hyy;
+    this.jqH = paramf.jqH;
+    if (paramf.jqI != null) {
+      this.jqI = paramf.jqI;
     }
-    if (paramf.hyz != null) {
-      this.hyz = paramf.hyz;
+    if (paramf.jqJ != null) {
+      this.jqJ = paramf.jqJ;
     }
-    if (paramf.hyA != null) {
-      this.hyA = paramf.hyA;
+    if (paramf.jqK != null) {
+      this.jqK = paramf.jqK;
     }
-    if (paramf.hyB != null) {
-      this.hyB = paramf.hyB;
+    if (paramf.jqL != null) {
+      this.jqL = paramf.jqL;
     }
-    if (paramf.hyC != null) {
-      this.hyC = paramf.hyC;
+    if (paramf.jqM != null) {
+      this.jqM = paramf.jqM;
     }
-    if (paramf.hyD != null) {
-      this.hyD = paramf.hyD;
+    if (paramf.jqN != null) {
+      this.jqN = paramf.jqN;
     }
-    if (paramf.hyE != null) {
-      this.hyE = paramf.hyE;
+    if (paramf.jqO != null) {
+      this.jqO = paramf.jqO;
     }
-    if (paramf.hyF != null) {
-      this.hyF = paramf.hyF;
+    if (paramf.jqP != null) {
+      this.jqP = paramf.jqP;
     }
-    if (paramf.hyG != null) {
-      this.hyG = paramf.hyG;
+    if (paramf.jqQ != null) {
+      this.jqQ = paramf.jqQ;
     }
-    if (!bk.bl(paramf.aPg)) {
-      this.aPg = paramf.aPg;
+    if (!bo.isNullOrNil(paramf.aWz)) {
+      this.aWz = paramf.aWz;
     }
-    if (!bk.bl(paramf.fLT)) {
-      this.fLT = paramf.fLT;
+    if (!bo.isNullOrNil(paramf.hfd)) {
+      this.hfd = paramf.hfd;
     }
-    if (paramf.hyH != null) {
-      this.hyH = paramf.hyH;
+    if (paramf.jqR != null) {
+      this.jqR = paramf.jqR;
     }
-    if (!bk.bl(paramf.hyI)) {
-      this.hyI = paramf.hyI;
+    if (!bo.isNullOrNil(paramf.jqS)) {
+      this.jqS = paramf.jqS;
     }
-    if (!bk.bl(paramf.hyJ)) {
-      this.hyJ = paramf.hyJ;
+    if (!bo.isNullOrNil(paramf.jqT)) {
+      this.jqT = paramf.jqT;
     }
-    if (paramf.hyK != null) {
-      this.hyK = paramf.hyK;
+    if (paramf.jqU != null) {
+      this.jqU = paramf.jqU;
     }
-    if (paramf.hyL != null) {
-      this.hyL = paramf.hyL;
+    if (paramf.jqV != null) {
+      this.jqV = paramf.jqV;
     }
-    if (paramf.hyM != null) {
-      this.hyM = paramf.hyM;
+    if (paramf.jqW != null) {
+      this.jqW = paramf.jqW;
     }
-    if (paramf.hyN != null) {
-      this.hyN = paramf.hyN;
+    if (paramf.jqX != null) {
+      this.jqX = paramf.jqX;
     }
-    if (paramf.hyO != null) {
-      this.hyO = paramf.hyO;
+    if (paramf.jqY != null) {
+      this.jqY = paramf.jqY;
     }
-    if (paramf.hyP != null) {
-      this.hyP = paramf.hyP;
+    if (paramf.jqZ != null) {
+      this.jqZ = paramf.jqZ;
     }
-    if (paramf.hyQ != null) {
-      this.hyQ = paramf.hyQ;
+    if (paramf.jra != null) {
+      this.jra = paramf.jra;
     }
-    if (!bk.bl(paramf.fMb)) {
-      this.fMb = paramf.fMb;
+    if (!bo.isNullOrNil(paramf.hfl)) {
+      this.hfl = paramf.hfl;
     }
-    if (paramf.hyR != null) {
-      this.hyR = paramf.hyR;
+    if (paramf.jrb != null) {
+      this.jrb = paramf.jrb;
     }
-    if (paramf.hyS != null) {
-      this.hyS = paramf.hyS;
+    if (paramf.jrc != null) {
+      this.jrc = paramf.jrc;
     }
-    if (paramf.hyT != null) {
-      this.hyT = paramf.hyT;
+    if (paramf.jrd != null) {
+      this.jrd = paramf.jrd;
     }
-    if (paramf.hyU != null) {
-      this.hyU = paramf.hyU;
+    if (paramf.jre != null) {
+      this.jre = paramf.jre;
     }
-    if (paramf.hyV != null) {
-      this.hyV = paramf.hyV;
+    if (paramf.jrf != null) {
+      this.jrf = paramf.jrf;
     }
-    if (paramf.hyW != null) {
-      this.hyW = paramf.hyW;
+    if (paramf.jrg != null) {
+      this.jrg = paramf.jrg;
     }
-    if (paramf.hyX != null) {
-      this.hyX = paramf.hyX;
+    if (paramf.jrh != null) {
+      this.jrh = paramf.jrh;
     }
   }
 }

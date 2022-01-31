@@ -1,38 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
-    <Preference android:title="@string/dtt" android:key="see_room_member" android:layout="@layout/k0" />
-    <NormalIconPreference android:title="@string/c_" android:icon="@drawable/a5r" android:key="add_selector_btn" />
-    <NormalIconPreference android:title="@string/b0z" android:icon="@drawable/a_7" android:key="del_selector_btn" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:title="@string/dm8" android:key="room_name" />
-    <Preference android:title="@string/dmn" android:key="room_qr_code" android:widgetLayout="@layout/acm" android:layout="@layout/ab8" />
-    <com.tencent.mm.chatroom.ui.preference.RoomCardPreference android:key="room_card" android:layout="@layout/ab8" />
-    <Preference android:title="@string/cs0" android:key="manage_room" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.plugin.appbrand.ui.widget.AppBrandLoadIconPreference android:title="@string/afp" android:key="chat_room_app_brand" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dnd" android:key="room_search_chatting_content" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dnv" android:key="room_upgrade_entry" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.pluginsdk.ui.preference.SpecialCheckBoxPreference android:key="chatroom_info_chexboxes" android:layout="@layout/abe" />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:title="@string/dm5" android:key="room_notify_new_msg" android:layout="@layout/ab8" />
-    <CheckBoxPreference android:title="@string/dmm" android:key="room_placed_to_the_top" android:widgetLayout="@layout/abf" android:layout="@layout/ab8" />
-    <CheckBoxPreference android:title="@string/dn8" android:key="room_save_to_contact" android:widgetLayout="@layout/abf" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:title="@string/dm7" android:key="room_nickname" android:layout="@layout/ab8" />
-    <CheckBoxPreference android:title="@string/dm6" android:key="room_msg_show_username" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dnk" android:key="room_set_chatting_background" android:layout="@layout/ab8" />
-    <Preference android:title="@string/dl9" android:key="room_report_it" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dkk" android:key="room_clear_chatting_history" android:layout="@layout/ab8" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dmi" android:key="room_openim_about" android:layout="@layout/act" />
-    <PreferenceSmallCategory />
-    <Preference android:title="@string/dkp" android:key="room_del_quit" android:layout="@layout/a84" />
     <PreferenceCategory />
+    <CheckBoxPreference android:title="@string/dx_" android:key="room_msg_show_username" android:layout="@layout/afi" />
+    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:title="@string/dxa" android:key="room_name" android:layout="@layout/afi" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:title="@string/dx8" android:key="room_msg_notify" android:layout="@layout/afi" />
+    <CheckBoxPreference android:title="@string/dxe" android:key="room_show_msg_count" android:layout="@layout/afi" />
+    <PreferenceCategory />
+    <Preference android:title="@string/dyo" android:key="room_set_chatting_background" android:layout="@layout/afi" />
+    <PreferenceCategory />
+    <Preference android:title="@string/dvo" android:key="room_clear_chatting_history" android:layout="@layout/afi" />
 </PreferenceScreen>

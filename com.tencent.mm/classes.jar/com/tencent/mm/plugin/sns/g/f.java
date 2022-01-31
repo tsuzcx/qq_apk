@@ -1,49 +1,84 @@
 package com.tencent.mm.plugin.sns.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public final class f
-  extends com.tencent.mm.bv.a
 {
-  public int owZ;
-  public long oxb;
+  public static final Pattern rlA;
+  public static String[] rlB;
+  public static HashMap<String, f.a> rlC;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  static
   {
-    if (paramInt == 0)
+    AppMethodBeat.i(36809);
+    rlA = Pattern.compile("\\{([\\s\\S]*?)\\}");
+    rlB = new String[] { "{sex", "{username", "{richtext" };
+    rlC = new HashMap();
+    AppMethodBeat.o(36809);
+  }
+  
+  public static String a(d.a parama)
+  {
+    AppMethodBeat.i(36808);
+    if (rlC.containsKey(parama.rlx))
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.Y(1, this.oxb);
-      paramVarArgs.gB(2, this.owZ);
-      return 0;
-    }
-    if (paramInt == 1) {
-      return d.a.a.a.X(1, this.oxb) + 0 + d.a.a.a.gy(2, this.owZ);
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
-        }
-      }
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
-      f localf = (f)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      if ((f.a)rlC.get(parama.rlx) == f.a.rlD)
       {
-      default: 
-        return -1;
-      case 1: 
-        localf.oxb = locala.xpH.oE();
-        return 0;
+        parama = parama.rlx;
+        AppMethodBeat.o(36808);
+        return parama;
       }
-      localf.owZ = locala.xpH.oD();
-      return 0;
+      parama = parama.rlw;
+      AppMethodBeat.o(36808);
+      return parama;
     }
-    return -1;
+    Object localObject2 = parama.rlx;
+    Object localObject1 = localObject2;
+    if (bo.isNullOrNil((String)localObject2))
+    {
+      parama = parama.rlw;
+      AppMethodBeat.o(36808);
+      return parama;
+    }
+    label237:
+    label240:
+    for (;;)
+    {
+      localObject2 = rlA.matcher((CharSequence)localObject1);
+      if (((Matcher)localObject2).find())
+      {
+        i = ((Matcher)localObject2).groupCount();
+        localObject2 = ((Matcher)localObject2).group();
+        ab.i("MicroMsg.SnsAbTestUtil", "hello matcher group() " + i + " " + (String)localObject2);
+        localObject1 = ((String)localObject1).replace((CharSequence)localObject2, "");
+        i = 0;
+        if (i >= rlB.length) {
+          break label237;
+        }
+        if (((String)localObject2).indexOf(rlB[i]) < 0) {}
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label240;
+        }
+        rlC.put(parama.rlx, f.a.rlE);
+        parama = parama.rlw;
+        AppMethodBeat.o(36808);
+        return parama;
+        i += 1;
+        break;
+        rlC.put(parama.rlx, f.a.rlD);
+        parama = parama.rlx;
+        AppMethodBeat.o(36808);
+        return parama;
+      }
+    }
   }
 }
 

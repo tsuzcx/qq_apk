@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$3
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class a$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    a.b(this.nho);
+    AppMethodBeat.i(68263);
+    a.b(this.pMB);
+    AppMethodBeat.o(68263);
   }
 }
 

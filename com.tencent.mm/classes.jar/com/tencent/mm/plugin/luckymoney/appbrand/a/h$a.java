@@ -1,12 +1,23 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum h$a
 {
-  public final int blr;
+  public final int bKp;
+  
+  static
+  {
+    AppMethodBeat.i(42001);
+    oiA = new a("RANDOM_LUCK", 0, 1);
+    oiB = new a("FIX_NORMAL", 1, 0);
+    oiC = new a[] { oiA, oiB };
+    AppMethodBeat.o(42001);
+  }
   
   private h$a(int paramInt)
   {
-    this.blr = paramInt;
+    this.bKp = paramInt;
   }
 }
 

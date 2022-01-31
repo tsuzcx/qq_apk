@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
 import android.location.LocationManager;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExdeviceAddDataSourceUI$4$1
   implements Runnable
@@ -10,13 +11,16 @@ final class ExdeviceAddDataSourceUI$4$1
   
   public final void run()
   {
-    if ((ExdeviceAddDataSourceUI.a(this.jAG.jAD)) && (!ExdeviceAddDataSourceUI.b(this.jAG.jAD).isProviderEnabled("gps")))
+    AppMethodBeat.i(19773);
+    if ((ExdeviceAddDataSourceUI.a(this.lKf.lKc)) && (!ExdeviceAddDataSourceUI.b(this.lKf.lKc).isProviderEnabled("gps")))
     {
-      ExdeviceAddDataSourceUI.a(this.jAG.jAD, 4);
+      ExdeviceAddDataSourceUI.a(this.lKf.lKc, 4);
+      AppMethodBeat.o(19773);
       return;
     }
-    ExdeviceAddDataSourceUI.a(this.jAG.jAD, 3);
-    y.i("MicroMsg.ExdeviceAddDataSourceUI", "Start scan...");
+    ExdeviceAddDataSourceUI.a(this.lKf.lKc, 3);
+    ab.i("MicroMsg.ExdeviceAddDataSourceUI", "Start scan...");
+    AppMethodBeat.o(19773);
   }
 }
 

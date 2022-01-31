@@ -1,33 +1,38 @@
 package com.tencent.mm.plugin.ipcall.ui;
 
-import com.tencent.mm.ui.tools.n.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.tools.q.b;
 
 final class IPCallCountryCodeSelectUI$2
-  implements n.b
+  implements q.b
 {
   IPCallCountryCodeSelectUI$2(IPCallCountryCodeSelectUI paramIPCallCountryCodeSelectUI) {}
   
-  public final void Wl()
+  public final void apN()
   {
-    IPCallCountryCodeSelectUI.a(this.lvu, "");
-    IPCallCountryCodeSelectUI.a(this.lvu);
+    AppMethodBeat.i(22113);
+    IPCallCountryCodeSelectUI.a(this.nSK, "");
+    IPCallCountryCodeSelectUI.a(this.nSK);
+    AppMethodBeat.o(22113);
   }
   
-  public final void Wm() {}
+  public final void apO() {}
   
-  public final void Wn() {}
+  public final void apP() {}
   
-  public final void Wo() {}
+  public final void apQ() {}
   
-  public final boolean pB(String paramString)
+  public final boolean wR(String paramString)
   {
     return false;
   }
   
-  public final void pC(String paramString)
+  public final void wS(String paramString)
   {
-    IPCallCountryCodeSelectUI.a(this.lvu, paramString);
-    IPCallCountryCodeSelectUI.a(this.lvu);
+    AppMethodBeat.i(22112);
+    IPCallCountryCodeSelectUI.a(this.nSK, paramString);
+    IPCallCountryCodeSelectUI.a(this.nSK);
+    AppMethodBeat.o(22112);
   }
 }
 

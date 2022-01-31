@@ -5,24 +5,24 @@ import java.util.Map;
 
 public class ActivityStubManager
 {
-  private static final int[] wXA = { 10, 3 };
-  private static final int[] wXB = { 0, 0 };
-  private static final int[] wXC = { 0, 0 };
-  private static final int[] wXD = { 0, 0 };
-  private static final int[] wXE = { 0, 0 };
-  private static Map<String, String> wXw = new HashMap();
-  private static final int[] wXx = { 10, 3 };
-  private static final int[] wXy = { 10, 3 };
-  private static final int[] wXz = { 10, 3 };
+  private static Map<String, String> Bua = new HashMap();
+  private static final int[] Bub = { 10, 3 };
+  private static final int[] Buc = { 10, 3 };
+  private static final int[] Bud = { 10, 3 };
+  private static final int[] Bue = { 10, 3 };
+  private static final int[] Buf = { 0, 0 };
+  private static final int[] Bug = { 0, 0 };
+  private static final int[] Buh = { 0, 0 };
+  private static final int[] Bui = { 0, 0 };
   
   private ActivityStubManager()
   {
     throw new UnsupportedOperationException();
   }
   
-  public static String u(String paramString, int paramInt, boolean paramBoolean)
+  public static String y(String paramString, int paramInt, boolean paramBoolean)
   {
-    String str = (String)wXw.get(paramString);
+    String str = (String)Bua.get(paramString);
     if (str != null) {
       return str;
     }
@@ -33,9 +33,9 @@ public class ActivityStubManager
     switch (paramInt)
     {
     default: 
-      str = ActivityStubs.wXG;
-      arrayOfInt2 = wXB;
-      arrayOfInt1 = wXx;
+      str = ActivityStubs.Buk;
+      arrayOfInt2 = Buf;
+      arrayOfInt1 = Bub;
       if (paramBoolean)
       {
         str = str + "_T";
@@ -53,19 +53,19 @@ public class ActivityStubManager
     for (paramInt = 0;; paramInt = i)
     {
       str = String.format(str, new Object[] { Integer.valueOf(paramInt) });
-      wXw.put(paramString, str);
+      Bua.put(paramString, str);
       return str;
-      str = ActivityStubs.wXH;
-      arrayOfInt2 = wXC;
-      arrayOfInt1 = wXy;
+      str = ActivityStubs.Bul;
+      arrayOfInt2 = Bug;
+      arrayOfInt1 = Buc;
       break;
-      str = ActivityStubs.wXI;
-      arrayOfInt2 = wXD;
-      arrayOfInt1 = wXz;
+      str = ActivityStubs.Bum;
+      arrayOfInt2 = Buh;
+      arrayOfInt1 = Bud;
       break;
-      str = ActivityStubs.wXJ;
-      arrayOfInt2 = wXE;
-      arrayOfInt1 = wXA;
+      str = ActivityStubs.Bun;
+      arrayOfInt2 = Bui;
+      arrayOfInt1 = Bue;
       break;
       paramInt = 0;
       break label91;

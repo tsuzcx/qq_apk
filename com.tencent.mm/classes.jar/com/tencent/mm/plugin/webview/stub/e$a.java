@@ -16,7 +16,7 @@ public abstract class e$a
     attachInterface(this, "com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
   }
   
-  public static e I(IBinder paramIBinder)
+  public static e G(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -56,7 +56,7 @@ public abstract class e$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      bool1 = Cl(paramParcel1.readInt());
+      bool1 = Ke(paramParcel1.readInt());
       paramParcel2.writeNoException();
       if (bool1) {}
       for (paramInt1 = 1;; paramInt1 = 0)
@@ -71,7 +71,7 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      bool1 = b(paramInt1, (Bundle)localObject1);
+      bool1 = e(paramInt1, (Bundle)localObject1);
       paramParcel2.writeNoException();
       if (bool1) {}
       for (paramInt1 = 1;; paramInt1 = 0)
@@ -130,7 +130,7 @@ public abstract class e$a
       }
     case 5: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      paramParcel1 = cdb();
+      paramParcel1 = dcW();
       paramParcel2.writeNoException();
       paramParcel2.writeString(paramParcel1);
       return true;
@@ -142,13 +142,13 @@ public abstract class e$a
       return true;
     case 7: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      paramParcel1 = cdc();
+      paramParcel1 = dcX();
       paramParcel2.writeNoException();
       paramParcel2.writeString(paramParcel1);
       return true;
     case 8: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      paramInt1 = cdd();
+      paramInt1 = dcY();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -157,7 +157,7 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      le(bool1);
+      om(bool1);
       paramParcel2.writeNoException();
       return true;
     case 10: 
@@ -166,7 +166,7 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      lf(bool1);
+      on(bool1);
       paramParcel2.writeNoException();
       return true;
     case 11: 
@@ -176,12 +176,12 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      p(paramInt1, (Bundle)localObject1);
+      t(paramInt1, (Bundle)localObject1);
       paramParcel2.writeNoException();
       return true;
     case 12: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      cde();
+      dcZ();
       paramParcel2.writeNoException();
       return true;
     case 13: 
@@ -190,22 +190,22 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      N((Bundle)localObject1);
+      af((Bundle)localObject1);
       paramParcel2.writeNoException();
       return true;
     case 14: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      SJ(paramParcel1.readString());
+      ahL(paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     case 15: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      fx(paramParcel1.readString(), paramParcel1.readString());
+      hu(paramParcel1.readString(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     case 16: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-      cdf();
+      dda();
       paramParcel2.writeNoException();
       return true;
     case 17: 
@@ -220,7 +220,7 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      paramParcel1 = f(paramInt1, (Bundle)localObject1);
+      paramParcel1 = i(paramInt1, (Bundle)localObject1);
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -236,7 +236,7 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         localObject1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
       }
-      O((Bundle)localObject1);
+      ag((Bundle)localObject1);
       paramParcel2.writeNoException();
       return true;
     case 20: 
@@ -245,19 +245,31 @@ public abstract class e$a
       if (paramParcel1.readInt() != 0) {
         bool1 = true;
       }
-      lg(bool1);
+      oo(bool1);
+      paramParcel2.writeNoException();
+      return true;
+    case 21: 
+      paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
+      hv(paramParcel1.readString(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.webview.stub.WebViewStub_Callback_AIDL");
-    fy(paramParcel1.readString(), paramParcel1.readString());
+    paramParcel1 = dm(paramParcel1.readString(), paramParcel1.readString());
     paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.stub.e.a
  * JD-Core Version:    0.7.0.1
  */

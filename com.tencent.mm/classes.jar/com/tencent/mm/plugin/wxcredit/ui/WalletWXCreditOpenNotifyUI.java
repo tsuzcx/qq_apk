@@ -1,43 +1,39 @@
 package com.tencent.mm.plugin.wxcredit.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public class WalletWXCreditOpenNotifyUI
   extends WalletBaseUI
 {
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public int getLayoutId()
   {
-    return false;
+    return 2130971272;
   }
   
-  protected final int getLayoutId()
-  {
-    return a.g.wallet_wxcredit_open_notify_ui;
-  }
-  
-  protected final void initView()
+  public void initView()
   {
     int i = 0;
-    setMMTitle(a.i.wallet_wxcredit_open_notify_title);
+    AppMethodBeat.i(48743);
+    setMMTitle(2131305792);
     showHomeBtn(false);
     enableBackMenu(false);
-    addTextOptionMenu(0, getString(a.i.app_finish), new WalletWXCreditOpenNotifyUI.1(this));
-    ((TextView)findViewById(a.f.wallet_wxcredit_amount)).setText(com.tencent.mm.wallet_core.ui.e.B(this.BX.getDouble("key_total_amount")));
-    Button localButton = (Button)findViewById(a.f.next_btn);
+    addTextOptionMenu(0, getString(2131296964), new WalletWXCreditOpenNotifyUI.1(this));
+    ((TextView)findViewById(2131829418)).setText(com.tencent.mm.wallet_core.ui.e.F(getInput().getDouble("key_total_amount")));
+    Button localButton = (Button)findViewById(2131822914);
     localButton.setOnClickListener(new WalletWXCreditOpenNotifyUI.2(this));
-    if (this.BX.getBoolean("key_can_upgrade_amount", true)) {}
+    if (getInput().getBoolean("key_can_upgrade_amount", true)) {}
     for (;;)
     {
       localButton.setVisibility(i);
+      AppMethodBeat.o(48743);
       return;
       i = 8;
     }
@@ -45,10 +41,23 @@ public class WalletWXCreditOpenNotifyUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(48742);
     super.onCreate(paramBundle);
-    g.DQ();
-    g.DP().Dz().o(196658, Boolean.valueOf(false));
+    g.RM();
+    g.RL().Ru().set(196658, Boolean.FALSE);
     initView();
+    AppMethodBeat.o(48742);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

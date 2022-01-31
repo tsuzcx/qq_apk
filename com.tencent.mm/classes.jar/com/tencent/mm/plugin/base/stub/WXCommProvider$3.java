@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.base.stub;
 
-import com.tencent.mm.h.a.ih;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.im;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WXCommProvider$3
   implements Runnable
 {
-  WXCommProvider$3(WXCommProvider paramWXCommProvider, ih paramih) {}
+  WXCommProvider$3(WXCommProvider paramWXCommProvider, im paramim) {}
   
   public final void run()
   {
-    if (!a.udP.m(this.hSs)) {
-      y.e("MicroMsg.WXCommProvider", "handle scan result failed again");
+    AppMethodBeat.i(18164);
+    if (!a.ymk.l(this.jMb)) {
+      ab.e("MicroMsg.WXCommProvider", "handle scan result failed again");
     }
+    AppMethodBeat.o(18164);
   }
 }
 

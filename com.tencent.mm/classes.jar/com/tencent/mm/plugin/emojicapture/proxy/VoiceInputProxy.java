@@ -1,189 +1,153 @@
 package com.tencent.mm.plugin.emojicapture.proxy;
 
-import a.h.l;
-import a.k;
+import a.f.b.j;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelvoiceaddr.g;
 import com.tencent.mm.modelvoiceaddr.g.b;
 import com.tencent.mm.remoteservice.a;
 import com.tencent.mm.remoteservice.d;
+import com.tencent.mm.remoteservice.e;
 import com.tencent.mm.remoteservice.f;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Set;
+import com.tencent.mm.sdk.platformtools.ab;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy;", "Lcom/tencent/mm/remoteservice/BaseClientRequest;", "uiCallback", "Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "serverProxy", "Lcom/tencent/mm/remoteservice/RemoteServiceProxy;", "(Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;Lcom/tencent/mm/remoteservice/RemoteServiceProxy;)V", "TAG", "", "getUiCallback", "()Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;", "setUiCallback", "(Lcom/tencent/mm/plugin/emojicapture/proxy/VoiceInputProxy$UICallback;)V", "getMaxAmplitudeRate", "", "getMaxAmplitudeRateRemote", "onRecongnizeFinish", "", "onRes", "voiceText", "start", "startRemote", "stop", "fromUI", "", "stopRemote", "Companion", "UICallback", "plugin-emojicapture_release"})
 public final class VoiceInputProxy
   extends a
 {
-  private static com.tencent.mm.modelvoiceaddr.g jny;
-  public static final VoiceInputProxy.a jnz = new VoiceInputProxy.a((byte)0);
+  private static g lwN;
+  public static final VoiceInputProxy.a lwO;
   private final String TAG;
-  private final VoiceInputProxy.b jnx;
+  private VoiceInputProxy.b lwM;
+  
+  static
+  {
+    AppMethodBeat.i(2855);
+    lwO = new VoiceInputProxy.a((byte)0);
+    AppMethodBeat.o(2855);
+  }
   
   public VoiceInputProxy(VoiceInputProxy.b paramb, d paramd)
   {
     super(paramd);
-    this.jnx = paramb;
+    this.lwM = paramb;
     this.TAG = "MicroMsg.VoiceInputProxy";
   }
   
-  @com.tencent.mm.remoteservice.e
+  @e
   public final int getMaxAmplitudeRate()
   {
+    AppMethodBeat.i(2851);
     Object localObject = REMOTE_CALL("getMaxAmplitudeRateRemote", new Object[0]);
-    if ((localObject != null) && ((localObject instanceof Integer))) {
-      return ((Number)localObject).intValue();
+    if ((localObject != null) && ((localObject instanceof Integer)))
+    {
+      int i = ((Number)localObject).intValue();
+      AppMethodBeat.o(2851);
+      return i;
     }
+    AppMethodBeat.o(2851);
     return 0;
   }
   
   @f
   public final int getMaxAmplitudeRateRemote()
   {
-    y.d(this.TAG, "getMaxAmplitudeRateRemote call " + access$getVoiceInputRemote$cp());
-    if (access$getVoiceInputRemote$cp() != null)
+    AppMethodBeat.i(2853);
+    ab.d(this.TAG, "getMaxAmplitudeRateRemote call " + lwN);
+    if (lwN != null)
     {
-      com.tencent.mm.modelvoiceaddr.g localg = access$getVoiceInputRemote$cp();
+      g localg = lwN;
       if (localg == null) {
-        a.d.b.g.cUk();
+        j.ebi();
       }
-      return localg.getMaxAmplitudeRate();
+      int i = localg.getMaxAmplitudeRate();
+      AppMethodBeat.o(2853);
+      return i;
     }
+    AppMethodBeat.o(2853);
     return 0;
   }
   
-  @com.tencent.mm.remoteservice.e
+  public final VoiceInputProxy.b getUiCallback()
+  {
+    return this.lwM;
+  }
+  
+  @e
   public final void onRecongnizeFinish()
   {
-    VoiceInputProxy.b localb = this.jnx;
-    if (localb != null) {
-      localb.TC();
+    AppMethodBeat.i(2850);
+    VoiceInputProxy.b localb = this.lwM;
+    if (localb != null)
+    {
+      localb.amO();
+      AppMethodBeat.o(2850);
+      return;
     }
+    AppMethodBeat.o(2850);
   }
   
-  @com.tencent.mm.remoteservice.e
+  @e
   public final void onRes(String paramString)
   {
-    VoiceInputProxy.b localb = this.jnx;
-    if (localb != null) {
+    AppMethodBeat.i(2849);
+    VoiceInputProxy.b localb = this.lwM;
+    if (localb != null)
+    {
       localb.onRes(paramString);
+      AppMethodBeat.o(2849);
+      return;
     }
+    AppMethodBeat.o(2849);
   }
   
-  @com.tencent.mm.remoteservice.e
+  public final void setUiCallback(VoiceInputProxy.b paramb)
+  {
+    this.lwM = paramb;
+  }
+  
+  @e
   public final void start()
   {
+    AppMethodBeat.i(2847);
     REMOTE_CALL("startRemote", new Object[0]);
+    AppMethodBeat.o(2847);
   }
   
   @f
   public final void startRemote()
   {
-    Object localObject = new c(this);
-    access$setVoiceInputRemote$cp(new com.tencent.mm.modelvoiceaddr.g(com.tencent.mm.modelvoiceaddr.g.eLT, 0, (g.b)localObject));
-    localObject = access$getVoiceInputRemote$cp();
-    if (localObject != null) {
-      ((com.tencent.mm.modelvoiceaddr.g)localObject).start();
-    }
+    AppMethodBeat.i(2852);
+    Object localObject = new VoiceInputProxy.c(this);
+    localObject = new g(g.gbA, 9, (g.b)localObject);
+    lwN = (g)localObject;
+    ((g)localObject).start();
+    AppMethodBeat.o(2852);
   }
   
-  @com.tencent.mm.remoteservice.e
+  @e
   public final void stop(boolean paramBoolean)
   {
+    AppMethodBeat.i(2848);
     REMOTE_CALL("stopRemote", new Object[] { Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(2848);
   }
   
   @f
   public final void stopRemote(boolean paramBoolean)
   {
-    com.tencent.mm.modelvoiceaddr.g localg = access$getVoiceInputRemote$cp();
+    AppMethodBeat.i(2854);
+    g localg = lwN;
     if (localg != null) {
       localg.stop(paramBoolean);
     }
-    access$setVoiceInputRemote$cp(null);
-  }
-  
-  public static final class c
-    implements g.b
-  {
-    public final void TC()
-    {
-      y.i(VoiceInputProxy.access$getTAG$p(this.jnA), "onRecognizeFinish");
-      this.jnA.CLIENT_CALL("onRecognizeFinish", new Object[0]);
-    }
-    
-    public final void Ty()
-    {
-      y.i(VoiceInputProxy.access$getTAG$p(this.jnA), "onRecordFin");
-    }
-    
-    public final void a(String[] paramArrayOfString, Set<String> paramSet)
-    {
-      if (paramArrayOfString != null)
-      {
-        if (((Object[])paramArrayOfString).length == 0)
-        {
-          i = 1;
-          if (i != 0) {
-            break label142;
-          }
-          i = 1;
-          label20:
-          if (i == 0) {
-            return;
-          }
-          if (((CharSequence)paramArrayOfString[0]).length() <= 0) {
-            break label147;
-          }
-          i = 1;
-          label40:
-          if (i == 0) {
-            return;
-          }
-          paramSet = paramArrayOfString[0];
-          y.i(VoiceInputProxy.access$getTAG$p(this.jnA), "onRes remote " + paramSet);
-          paramArrayOfString = (CharSequence)paramSet;
-          i = a.h.e.Y(paramArrayOfString);
-          a.d.b.g.k(paramArrayOfString, "$receiver");
-          a.d.b.g.k("。", "string");
-          if ((paramArrayOfString instanceof String)) {
-            break label152;
-          }
-        }
-        label142:
-        label147:
-        label152:
-        for (int i = l.b(paramArrayOfString, (CharSequence)"。", i, 0, true);; i = ((String)paramArrayOfString).lastIndexOf("。", i))
-        {
-          paramArrayOfString = paramSet;
-          if (i < 0) {
-            break label179;
-          }
-          if (paramSet != null) {
-            break label166;
-          }
-          throw new k("null cannot be cast to non-null type java.lang.String");
-          i = 0;
-          break;
-          i = 0;
-          break label20;
-          i = 0;
-          break label40;
-        }
-        label166:
-        paramArrayOfString = paramSet.substring(0, i);
-        a.d.b.g.j(paramArrayOfString, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-        label179:
-        this.jnA.CLIENT_CALL("onRes", new Object[] { paramArrayOfString });
-      }
-    }
-    
-    public final void c(int paramInt1, int paramInt2, int paramInt3, long paramLong)
-    {
-      y.w(VoiceInputProxy.access$getTAG$p(this.jnA), "onError " + paramInt1 + ' ' + paramInt2 + ' ' + paramInt3 + ' ' + paramLong);
-    }
+    lwN = null;
+    AppMethodBeat.o(2854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.proxy.VoiceInputProxy
  * JD-Core Version:    0.7.0.1
  */

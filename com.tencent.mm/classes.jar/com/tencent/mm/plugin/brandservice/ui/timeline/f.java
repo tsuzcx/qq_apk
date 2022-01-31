@@ -1,215 +1,129 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.os.Looper;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ae.i;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.model.r;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.plugin.brandservice.b.h;
-import com.tencent.mm.plugin.brandservice.ui.b.b;
-import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.brandservice.b;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.et;
+import com.tencent.mm.protocal.protobuf.eu;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.q;
-import com.tencent.mm.storage.r.c;
-import com.tencent.mm.storage.t;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public final class f
-  extends BaseAdapter
 {
-  private int drX;
-  List<q> hfb;
-  r.c ibN = new f.1(this);
-  boolean ifk = false;
-  private BizTimeLineNewMsgUI igu;
-  boolean igv = false;
+  int cnU;
+  HashMap<String, f.a> jWA;
+  int jWy;
+  int jWz;
   
-  public f(BizTimeLineNewMsgUI paramBizTimeLineNewMsgUI, List<q> paramList, int paramInt)
+  public f(int paramInt)
   {
-    this.igu = paramBizTimeLineNewMsgUI;
-    z.MF().a(this.ibN, Looper.getMainLooper());
-    this.hfb = paramList;
-    this.drX = paramInt;
+    AppMethodBeat.i(14174);
+    this.jWA = new HashMap();
+    this.cnU = paramInt;
+    AppMethodBeat.o(14174);
   }
   
-  public final q axL()
+  static int a(q paramq, String paramString)
   {
-    if (this.hfb.size() > 0) {
-      return (q)this.hfb.get(this.hfb.size() - 1);
-    }
-    return null;
-  }
-  
-  public final int getCount()
-  {
-    return this.hfb.size();
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject = oy(paramInt);
-    if (localObject == null)
+    AppMethodBeat.i(14176);
+    if ((paramq.field_appMsgStatInfoProto == null) || (bo.isNullOrNil(paramString)) || (bo.es(paramq.field_appMsgStatInfoProto.wqW)))
     {
-      y.e("MicroMsg.BizTimeLineAdapter", "getView info is null");
-      return paramView;
+      AppMethodBeat.o(14176);
+      return 0;
     }
-    View localView;
-    if (paramView == null)
+    paramq = paramq.field_appMsgStatInfoProto.wqW.iterator();
+    et localet;
+    do
     {
-      paramViewGroup = new f.a();
-      localView = View.inflate(this.igu, b.e.biz_time_line_new_msg_item, null);
-      paramViewGroup.dpY = ((ImageView)localView.findViewById(b.d.avatar_iv));
-      paramViewGroup.feh = ((TextView)localView.findViewById(b.d.nick_name_tv));
-      paramViewGroup.igx = ((TextView)localView.findViewById(b.d.time_tv));
-      paramViewGroup.eXr = ((TextView)localView.findViewById(b.d.title_tv));
-      paramViewGroup.hgH = localView.findViewById(b.d.bottom_line);
-      localView.setTag(paramViewGroup);
-      a.b.a(paramViewGroup.dpY, ((q)localObject).field_talker);
-      paramView = r.gV(((q)localObject).field_talker);
-      paramViewGroup.feh.setText(j.a(this.igu, paramView, paramViewGroup.feh.getTextSize()));
-      paramViewGroup.igx.setText(b.e(this.igu, ((q)localObject).field_createTime));
-      if (!((q)localObject).ctz()) {
-        break label249;
+      if (!paramq.hasNext()) {
+        break;
       }
-      paramViewGroup.eXr.setText(i.gt(((q)localObject).field_content));
-      label209:
-      if (paramInt != getCount() - 1) {
-        break label863;
-      }
-      paramViewGroup.hgH.setVisibility(4);
-    }
-    for (;;)
+      localet = (et)paramq.next();
+    } while (!bo.isEqual(localet.url, paramString));
+    for (int i = localet.wqV;; i = 0)
     {
-      oz(paramInt);
-      return localView;
-      paramViewGroup = (f.a)paramView.getTag();
-      localView = paramView;
-      break;
-      label249:
-      if (!((q)localObject).isText()) {
-        if (((q)localObject).field_type != 10000) {
-          break label306;
-        }
-      }
-      label306:
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label312;
-        }
-        paramViewGroup.eXr.setText(j.a(this.igu, ((q)localObject).field_content, (int)paramViewGroup.eXr.getTextSize()));
-        break;
-      }
-      label312:
-      if (((q)localObject).ctB())
-      {
-        paramViewGroup.eXr.setText(this.igu.getString(b.h.app_pic));
-        break label209;
-      }
-      if (((q)localObject).ctA())
-      {
-        paramViewGroup.eXr.setText(this.igu.getString(b.h.app_voice));
-        break label209;
-      }
-      if (((q)localObject).field_type == 43) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label412;
-        }
-        paramViewGroup.eXr.setText(this.igu.getString(b.h.app_video));
-        break;
-      }
-      label412:
-      if ((((q)localObject).field_type == 42) || (((q)localObject).field_type == 66)) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label466;
-        }
-        paramViewGroup.eXr.setText(this.igu.getString(b.h.app_product_card_ticket));
-        break;
-      }
-      label466:
-      label482:
-      g.a locala;
-      if ((((q)localObject).field_type & 0xFFFF) == 49)
-      {
-        i = 1;
-        if (i == 0) {
-          break label843;
-        }
-        locala = g.a.gp(((q)localObject).field_content);
-        if (locala == null) {
-          break label843;
-        }
-        paramView = "";
-        switch (locala.type)
-        {
-        }
-      }
-      for (;;)
-      {
-        localObject = paramView;
-        if (bk.bl(paramView)) {
-          localObject = locala.getTitle();
-        }
-        paramViewGroup.eXr.setText(j.a(this.igu, (CharSequence)localObject, paramViewGroup.eXr.getTextSize()));
-        break;
-        i = 0;
-        break label482;
-        paramView = locala.title;
-        continue;
-        paramView = this.igu.getString(b.h.app_pic);
-        continue;
-        paramView = this.igu.getString(b.h.app_music) + locala.title;
-        continue;
-        paramView = this.igu.getString(b.h.app_video) + locala.title;
-        continue;
-        paramView = this.igu.getString(b.h.app_url) + locala.getTitle();
-        continue;
-        paramView = this.igu.getString(b.h.app_product_card_ticket) + locala.getTitle();
-        continue;
-        paramView = "[" + locala.dSf + "]" + locala.dSb;
-      }
-      label843:
-      paramViewGroup.eXr.setText(this.igu.getString(b.h.biz_time_line_item_un_support_type));
-      break label209;
-      label863:
-      paramViewGroup.hgH.setVisibility(0);
+      AppMethodBeat.o(14176);
+      return i;
     }
   }
   
-  public final q oy(int paramInt)
+  static void a(f.a parama, String paramString)
   {
-    if (paramInt < this.hfb.size()) {
-      return (q)this.hfb.get(paramInt);
-    }
-    return null;
-  }
-  
-  public final void oz(int paramInt)
-  {
-    if ((this.drX == 1) && (!this.igv)) {}
-    while ((paramInt != getCount() - 1) || (this.ifk)) {
+    AppMethodBeat.i(14177);
+    if (((j)g.E(j.class)).YA().arw(paramString).Oa())
+    {
+      parama.wze = 1;
+      parama.wzi = 1;
+      AppMethodBeat.o(14177);
       return;
     }
-    ai.l(new f.2(this, paramInt), 300L);
+    parama.wze = 0;
+    parama.wzi = 0;
+    AppMethodBeat.o(14177);
+  }
+  
+  public final void a(q paramq, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(14180);
+    b.a("BrandServiceWorkerThread", new f.4(this, paramq, paramInt1, paramInt2, paramInt3), 0L);
+    AppMethodBeat.o(14180);
+  }
+  
+  public final void a(q paramq, boolean paramBoolean)
+  {
+    AppMethodBeat.i(14178);
+    paramq = (f.a)this.jWA.get(Long.valueOf(paramq.field_msgId));
+    if (paramq == null)
+    {
+      AppMethodBeat.o(14178);
+      return;
+    }
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      paramq.wyy = i;
+      AppMethodBeat.o(14178);
+      return;
+    }
+  }
+  
+  public final void a(String paramString, long paramLong, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(14182);
+    int i = paramInt3;
+    if (paramInt3 <= 0) {
+      i = (int)(System.currentTimeMillis() / 1000L);
+    }
+    h.qsU.e(15721, new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(i), Integer.valueOf(this.cnU), Integer.valueOf(paramInt1) });
+    AppMethodBeat.o(14182);
+  }
+  
+  public final void c(q paramq, int paramInt)
+  {
+    AppMethodBeat.i(14175);
+    b.a("BrandServiceWorkerThread", new f.1(this, paramq, paramInt, paramq.field_status, paramq.field_isRead), 0L);
+    AppMethodBeat.o(14175);
+  }
+  
+  public final void d(q paramq, int paramInt)
+  {
+    AppMethodBeat.i(14179);
+    a(paramq, 0, paramInt, -1);
+    AppMethodBeat.o(14179);
+  }
+  
+  public final void sg(int paramInt)
+  {
+    AppMethodBeat.i(14181);
+    a("", 0L, 0, paramInt, -1);
+    AppMethodBeat.o(14181);
   }
 }
 

@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.sns.data;
 
 public final class h
 {
+  public int cIp;
   public String desc = "";
   public int fileSize = 0;
   public int filterId = 0;
   public int height = -1;
-  public int ona;
-  public int onb;
-  public int onc;
-  public String ond = "";
-  public String one = "";
-  public String onf = "";
-  public boolean ong = false;
   public String path = "";
+  public int rbq;
+  public int rbr;
+  public String rbs = "";
+  public String rbt = "";
+  public String rbu = "";
+  public boolean rbv = false;
   public String thumbPath = "";
   public int type;
   public int width = -1;
@@ -22,7 +22,7 @@ public final class h
   
   public h(int paramInt1, int paramInt2)
   {
-    this.onc = paramInt1;
+    this.cIp = paramInt1;
     this.type = paramInt2;
     this.path = "";
   }
@@ -31,7 +31,7 @@ public final class h
   {
     this.path = paramString;
     this.type = paramInt;
-    this.onc = -1;
+    this.cIp = -1;
   }
 }
 

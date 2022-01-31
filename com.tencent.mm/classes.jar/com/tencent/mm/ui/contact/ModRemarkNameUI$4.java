@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ModRemarkNameUI$4
   implements View.OnClickListener
@@ -12,10 +13,12 @@ final class ModRemarkNameUI$4
   
   public final void onClick(View paramView)
   {
-    ModRemarkNameUI.f(this.vML).setVisibility(0);
-    ModRemarkNameUI.g(this.vML).setVisibility(8);
-    ModRemarkNameUI.h(this.vML).requestFocus();
-    this.vML.showVKB();
+    AppMethodBeat.i(33747);
+    ModRemarkNameUI.f(this.Aeo).setVisibility(0);
+    ModRemarkNameUI.g(this.Aeo).setVisibility(8);
+    ModRemarkNameUI.h(this.Aeo).requestFocus();
+    this.Aeo.showVKB();
+    AppMethodBeat.o(33747);
   }
 }
 

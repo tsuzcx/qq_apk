@@ -8,39 +8,39 @@ public final class a$i
 {
   public int action = 0;
   public String groupId = "";
-  public int lpD = 0;
-  public long lpE = 0L;
+  public int nMZ = 0;
+  public long nNa = 0L;
   public long timestamp = 0L;
   
   public a$i()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
-    paramb.aM(1, this.action);
-    paramb.aL(2, this.lpD);
-    paramb.i(3, this.lpE);
+    paramb.bk(1, this.action);
+    paramb.bj(2, this.nMZ);
+    paramb.n(3, this.nNa);
     if (!this.groupId.equals("")) {
-      paramb.d(4, this.groupId);
+      paramb.e(4, this.groupId);
     }
     if (this.timestamp != 0L) {
-      paramb.h(5, this.timestamp);
+      paramb.m(5, this.timestamp);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
-    int j = super.oQ() + b.aO(1, this.action) + b.aN(2, this.lpD) + b.k(3, this.lpE);
+    int j = super.sz() + b.bm(1, this.action) + b.bl(2, this.nMZ) + b.p(3, this.nNa);
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.e(4, this.groupId);
+      i = j + b.f(4, this.groupId);
     }
     j = i;
     if (this.timestamp != 0L) {
-      j = i + b.j(5, this.timestamp);
+      j = i + b.o(5, this.timestamp);
     }
     return j;
   }

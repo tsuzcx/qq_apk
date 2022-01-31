@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.game.luggage.c;
 
 import com.tencent.mm.plugin.webview.luggage.b.l;
 import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.plugin.webview.luggage.p;
+import com.tencent.mm.plugin.webview.luggage.o;
 
 public final class b
-  extends p
+  extends o
 {
   public b(e parame, l paraml)
   {

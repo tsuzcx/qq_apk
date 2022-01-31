@@ -2,10 +2,11 @@ package com.tencent.mm.ui;
 
 import android.view.MenuItem;
 import android.view.View;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelsimple.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 
 final class AllRemindMsgUI$c$3$2
@@ -15,10 +16,12 @@ final class AllRemindMsgUI$c$3$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    paramMenuItem = (AllRemindMsgUI.d)this.hdG.getTag();
-    y.i("MicroMsg.emoji.AllRemindMsgUI", "[onMMMenuItemSelected] delete item:%s", new Object[] { paramMenuItem });
-    paramMenuItem = new x(2, paramMenuItem.uGI);
-    au.Dk().a(paramMenuItem, 0);
+    AppMethodBeat.i(29124);
+    paramMenuItem = (AllRemindMsgUI.d)this.bTJ.getTag();
+    ab.i("MicroMsg.emoji.AllRemindMsgUI", "[onMMMenuItemSelected] delete item:%s", new Object[] { paramMenuItem });
+    paramMenuItem = new y(2, paramMenuItem.yTK);
+    aw.Rc().a(paramMenuItem, 0);
+    AppMethodBeat.o(29124);
   }
 }
 

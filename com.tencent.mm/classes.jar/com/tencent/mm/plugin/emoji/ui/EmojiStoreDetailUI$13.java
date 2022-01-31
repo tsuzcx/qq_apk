@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import com.tencent.mm.plugin.emoji.f.g;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -10,10 +9,12 @@ final class EmojiStoreDetailUI$13
 {
   EmojiStoreDetailUI$13(EmojiStoreDetailUI paramEmojiStoreDetailUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.a(1001, this.jeK.getString(f.h.emoji_share_to_friend), f.g.bottomsheet_icon_transmit);
-    paraml.a(1000, this.jeK.getString(f.h.emoji_share_to_timeline), f.g.bottomsheet_icon_moment);
+    AppMethodBeat.i(53430);
+    paraml.a(1001, this.lnA.getString(2131299175), 2131231038);
+    paraml.a(1000, this.lnA.getString(2131299176), 2131231024);
+    AppMethodBeat.o(53430);
   }
 }
 

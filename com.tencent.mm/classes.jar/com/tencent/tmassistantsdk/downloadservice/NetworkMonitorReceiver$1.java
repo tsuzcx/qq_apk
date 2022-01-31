@@ -1,22 +1,27 @@
 package com.tencent.tmassistantsdk.downloadservice;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 class NetworkMonitorReceiver$1
-  extends ah
+  extends ak
 {
   NetworkMonitorReceiver$1(NetworkMonitorReceiver paramNetworkMonitorReceiver) {}
   
   public void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(75770);
     super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
-    default: 
-      return;
     }
-    this.this$0.notifyNetworkChanged();
+    for (;;)
+    {
+      AppMethodBeat.o(75770);
+      return;
+      this.this$0.notifyNetworkChanged();
+    }
   }
 }
 

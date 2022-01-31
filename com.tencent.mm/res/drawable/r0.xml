@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/media_preview_btn_album_pressed" />
-    <item android:drawable="@raw/media_preview_btn_album_normal" />
-</selector>
+    <item android:drawable="@raw/friendactivity_likeicon_golden" android:right="1.0dip" />
+</layer-list>

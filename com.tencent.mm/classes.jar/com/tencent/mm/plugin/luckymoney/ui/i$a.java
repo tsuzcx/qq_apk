@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i$a
   implements i.b
@@ -14,21 +13,23 @@ final class i$a
   
   public final void a(i.c paramc, Context paramContext)
   {
-    int i = paramContext.getResources().getColor(a.c.lucky_money_goldstyle_busi_detail_primary_text_color);
-    int j = paramContext.getResources().getColor(a.c.lucky_money_goldstyle_busi_detail_sub_text_color);
-    int k = paramContext.getResources().getColor(a.c.lucky_money_goldstyle_text_red_color);
-    paramc.iUL.setBackgroundResource(a.c.transparent);
-    paramc.iUL.setPadding(0, paramContext.getResources().getDimensionPixelOffset(a.d.MiddlePadding), 0, paramContext.getResources().getDimensionPixelOffset(a.d.MiddlePadding));
-    paramc.lbC.setTextColor(i);
-    paramc.lLL.setTextColor(j);
-    paramc.lLM.setTextColor(i);
-    paramc.lLN.setTextColor(i);
-    paramc.lLO.setTextColor(k);
+    AppMethodBeat.i(43029);
+    int i = paramContext.getResources().getColor(2131690232);
+    int j = paramContext.getResources().getColor(2131690233);
+    int k = paramContext.getResources().getColor(2131690247);
+    paramc.ldP.setBackgroundResource(2131690605);
+    paramc.ldP.setPadding(0, paramContext.getResources().getDimensionPixelOffset(2131427792), 0, paramContext.getResources().getDimensionPixelOffset(2131427792));
+    paramc.nzx.setTextColor(i);
+    paramc.ojf.setTextColor(j);
+    paramc.ojg.setTextColor(i);
+    paramc.ojh.setTextColor(i);
+    paramc.oji.setTextColor(k);
+    AppMethodBeat.o(43029);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.i.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wxcredit.ui;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletWXCreditChangeAmountUI$8
   implements AdapterView.OnItemClickListener
@@ -11,22 +12,24 @@ final class WalletWXCreditChangeAmountUI$8
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.rRF.dismissDialog(2);
-    if (WalletWXCreditChangeAmountUI.l(this.rRF)) {
+    AppMethodBeat.i(48696);
+    this.vIv.dismissDialog(2);
+    if (WalletWXCreditChangeAmountUI.l(this.vIv)) {
       if (paramInt == 0) {
-        WalletWXCreditChangeAmountUI.c(this.rRF).lQN = "Y";
+        WalletWXCreditChangeAmountUI.c(this.vIv).ooD = "Y";
       }
     }
     for (;;)
     {
-      WalletWXCreditChangeAmountUI.k(this.rRF);
+      WalletWXCreditChangeAmountUI.k(this.vIv);
+      AppMethodBeat.o(48696);
       return;
-      WalletWXCreditChangeAmountUI.c(this.rRF).lQN = "N";
+      WalletWXCreditChangeAmountUI.c(this.vIv).ooD = "N";
       continue;
       if (paramInt == 0) {
-        WalletWXCreditChangeAmountUI.f(this.rRF).lQN = "Y";
+        WalletWXCreditChangeAmountUI.f(this.vIv).ooD = "Y";
       } else {
-        WalletWXCreditChangeAmountUI.f(this.rRF).lQN = "N";
+        WalletWXCreditChangeAmountUI.f(this.vIv).ooD = "N";
       }
     }
   }

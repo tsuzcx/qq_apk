@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.bbom;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.widget.MMWebViewWithJsApi.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.f;
 import com.tencent.mm.ui.widget.MMWebView;
@@ -10,9 +11,12 @@ final class PluginBigBallOfMudAsync$4
 {
   PluginBigBallOfMudAsync$4(PluginBigBallOfMudAsync paramPluginBigBallOfMudAsync) {}
   
-  public final MMWebView cO(Context paramContext)
+  public final MMWebView dz(Context paramContext)
   {
-    return MMWebViewWithJsApi.a.eC(paramContext);
+    AppMethodBeat.i(18310);
+    paramContext = MMWebViewWithJsApi.a.fD(paramContext);
+    AppMethodBeat.o(18310);
+    return paramContext;
   }
 }
 

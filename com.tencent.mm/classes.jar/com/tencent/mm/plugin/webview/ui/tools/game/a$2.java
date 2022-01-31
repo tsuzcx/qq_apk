@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.webview.ui.tools.game;
 
-import com.tencent.mm.plugin.wepkg.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wepkg.event.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class a$2
-  extends c
+  extends b
 {
   a$2(a parama) {}
   
-  public final void aYy()
+  public final void bFx()
   {
-    y.i("MicroMsg.GameFloatWebView", "float page, reload url:%s from net", new Object[] { this.rwe.kMs });
-    if ((this.rwe.dYF != null) && (this.rwe.dYF.getParent() != null) && (this.rwe.rwb != null) && (!bk.bl(this.rwe.kMs)))
+    AppMethodBeat.i(8648);
+    ab.i("MicroMsg.GameFloatWebView", "float page, reload url:%s from net", new Object[] { this.vmw.nkp });
+    if ((this.vmw.foJ != null) && (this.vmw.foJ.getParent() != null) && (this.vmw.vmr != null) && (!bo.isNullOrNil(this.vmw.nkp)))
     {
-      this.rwe.dYF.stopLoading();
-      this.rwe.rwb.TI(this.rwe.kMs);
+      this.vmw.foJ.stopLoading();
+      this.vmw.foJ.loadUrl(this.vmw.vmr.dfZ());
     }
+    AppMethodBeat.o(8648);
   }
 }
 

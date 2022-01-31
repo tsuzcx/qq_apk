@@ -5,9 +5,9 @@ import android.content.Context;
 public final class ae
   implements l
 {
-  public final void Rq(String paramString) {}
+  public final void agp(String paramString) {}
   
-  public final Object ew(Context paramContext)
+  public final Object ft(Context paramContext)
   {
     return null;
   }

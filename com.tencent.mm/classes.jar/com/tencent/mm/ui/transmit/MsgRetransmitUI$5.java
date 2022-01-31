@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.transmit;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MsgRetransmitUI$5
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class MsgRetransmitUI$5
   
   public final void run()
   {
-    this.wgG.finish();
+    AppMethodBeat.i(35067);
+    this.Azx.finish();
+    AppMethodBeat.o(35067);
   }
 }
 

@@ -1,309 +1,119 @@
 package com.tencent.mm.ab;
 
-import android.annotation.TargetApi;
-import junit.framework.Assert;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import a.f.b.j;
+import a.l;
+import a.y;
+import android.os.Looper;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import java.math.BigInteger;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"codeConsume", "R", "block", "Lkotlin/Function0;", "(Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "tag", "", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "commonShadow", "", "textView", "Landroid/widget/TextView;", "consumeList", "T", "list", "", "freeMMHandlerThread", "Lcom/tencent/mm/sdk/platformtools/MMHandlerThread;", "threadName", "freeThread", "opAddFlag", "", "value", "flag", "opCheckFlag", "", "opCleanFlag", "reverseConsumeList", "threadPool", "uiThread", "delay", "", "ulonglong", "seq", "safeBufferToByte", "", "Lcom/tencent/mm/protocal/protobuf/SKBuiltinBuffer_t;", "safeParser", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "byteArray", "(Lcom/tencent/mm/protobuf/BaseProtoBuf;[B)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "Lkotlin/Function1;", "Ljava/lang/Exception;", "Lkotlin/ParameterName;", "name", "e", "(Lcom/tencent/mm/protobuf/BaseProtoBuf;[BLkotlin/jvm/functions/Function1;)Lcom/tencent/mm/protobuf/BaseProtoBuf;", "synchronizedForEach", "", "action", "synchronizedForEachIndexed", "Lkotlin/Function2;", "index", "libktcomm_release"})
 public final class b
-  implements a
 {
-  private JSONArray dJf;
-  
-  public b()
+  public static final <T extends com.tencent.mm.bv.a> T a(T paramT, byte[] paramArrayOfByte, a.f.a.b<? super Exception, y> paramb)
   {
-    this.dJf = new JSONArray();
-  }
-  
-  public b(String paramString)
-  {
+    AppMethodBeat.i(155619);
+    j.q(paramT, "receiver$0");
+    j.q(paramb, "block");
     try
     {
-      this.dJf = new JSONArray(paramString);
+      paramT.parseFrom(paramArrayOfByte);
+      AppMethodBeat.o(155619);
+      return paramT;
+    }
+    catch (Exception paramT)
+    {
+      ab.a("safeParser", "", new Object[] { paramT });
+      paramb.S(paramT);
+      AppMethodBeat.o(155619);
+    }
+    return null;
+  }
+  
+  public static final void a(long paramLong, a.f.a.a<y> parama)
+  {
+    AppMethodBeat.i(155615);
+    j.q(parama, "block");
+    al.p((Runnable)new c(parama), paramLong);
+    AppMethodBeat.o(155615);
+  }
+  
+  public static final <R> void a(a.f.a.a<? extends R> parama, String paramString)
+  {
+    AppMethodBeat.i(155617);
+    j.q(parama, "block");
+    j.q(paramString, "threadName");
+    paramString = new al(paramString);
+    paramString.ac((Runnable)new b.c(parama, paramString));
+    AppMethodBeat.o(155617);
+  }
+  
+  public static final void a(String paramString, a.f.a.a<y> parama)
+  {
+    AppMethodBeat.i(155616);
+    j.q(paramString, "threadName");
+    j.q(parama, "block");
+    d.post((Runnable)new c(parama), paramString);
+    AppMethodBeat.o(155616);
+  }
+  
+  public static final <R> al b(a.f.a.a<? extends R> parama, String paramString)
+  {
+    AppMethodBeat.i(155618);
+    j.q(parama, "block");
+    j.q(paramString, "threadName");
+    paramString = new al(paramString);
+    paramString.ac((Runnable)new b.b(parama));
+    AppMethodBeat.o(155618);
+    return paramString;
+  }
+  
+  public static final void b(a.f.a.a<y> parama)
+  {
+    AppMethodBeat.i(155614);
+    j.q(parama, "block");
+    Thread localThread = Thread.currentThread();
+    Looper localLooper = Looper.getMainLooper();
+    j.p(localLooper, "Looper.getMainLooper()");
+    if (j.e(localThread, localLooper.getThread()))
+    {
+      parama.invoke();
+      AppMethodBeat.o(155614);
       return;
     }
-    catch (JSONException paramString)
-    {
-      throw new g(paramString);
-    }
+    al.d((Runnable)new c(parama));
+    AppMethodBeat.o(155614);
   }
   
-  b(JSONArray paramJSONArray)
+  public static final boolean ck(int paramInt1, int paramInt2)
   {
-    Assert.assertNotNull(paramJSONArray);
-    this.dJf = paramJSONArray;
+    return (paramInt1 & paramInt2) > 0;
   }
   
-  public final a ac(Object paramObject)
+  public static final void e(TextView paramTextView)
   {
-    this.dJf.put(paramObject);
-    return this;
+    AppMethodBeat.i(155621);
+    j.q(paramTextView, "textView");
+    paramTextView.setShadowLayer(com.tencent.mm.cb.a.fromDPToPix(paramTextView.getContext(), 3), 0.0F, com.tencent.mm.cb.a.fromDPToPix(paramTextView.getContext(), 1), -2147483648);
+    AppMethodBeat.o(155621);
   }
   
-  public final a bC(boolean paramBoolean)
+  public static final String gj(long paramLong)
   {
-    this.dJf.put(paramBoolean);
-    return this;
-  }
-  
-  public final a bw(long paramLong)
-  {
-    this.dJf.put(paramLong);
-    return this;
-  }
-  
-  public final Object get(int paramInt)
-  {
-    try
-    {
-      Object localObject = this.dJf.get(paramInt);
-      if ((localObject instanceof JSONObject)) {
-        return new d((JSONObject)localObject);
-      }
-      if ((localObject instanceof JSONArray))
-      {
-        localObject = new b((JSONArray)localObject);
-        return localObject;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-    return localJSONException;
-  }
-  
-  public final boolean getBoolean(int paramInt)
-  {
-    try
-    {
-      boolean bool = this.dJf.getBoolean(paramInt);
-      return bool;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final double getDouble(int paramInt)
-  {
-    try
-    {
-      double d = this.dJf.getDouble(paramInt);
-      return d;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final int getInt(int paramInt)
-  {
-    try
-    {
-      paramInt = this.dJf.getInt(paramInt);
-      return paramInt;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final long getLong(int paramInt)
-  {
-    try
-    {
-      long l = this.dJf.getLong(paramInt);
-      return l;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final String getString(int paramInt)
-  {
-    try
-    {
-      String str = this.dJf.getString(paramInt);
-      return str;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final a hj(int paramInt)
-  {
-    this.dJf.put(paramInt);
-    return this;
-  }
-  
-  public final a hk(int paramInt)
-  {
-    try
-    {
-      Object localObject = this.dJf.getJSONArray(paramInt);
-      if (localObject == null) {
-        return null;
-      }
-      localObject = new b((JSONArray)localObject);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final a hl(int paramInt)
-  {
-    JSONArray localJSONArray = this.dJf.optJSONArray(paramInt);
-    if (localJSONArray == null) {
-      return null;
-    }
-    return new b(localJSONArray);
-  }
-  
-  public final c hm(int paramInt)
-  {
-    try
-    {
-      Object localObject = this.dJf.getJSONObject(paramInt);
-      if (localObject == null) {
-        return null;
-      }
-      localObject = new d((JSONObject)localObject);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final c hn(int paramInt)
-  {
-    JSONObject localJSONObject = this.dJf.optJSONObject(paramInt);
-    if (localJSONObject == null) {
-      return null;
-    }
-    return new d(localJSONObject);
-  }
-  
-  public final boolean isNull(int paramInt)
-  {
-    return this.dJf.isNull(paramInt);
-  }
-  
-  public final int length()
-  {
-    return this.dJf.length();
-  }
-  
-  public final a n(double paramDouble)
-  {
-    try
-    {
-      this.dJf.put(paramDouble);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      throw new g(localJSONException);
-    }
-  }
-  
-  public final Object opt(int paramInt)
-  {
-    Object localObject2 = this.dJf.opt(paramInt);
-    Object localObject1;
-    if ((localObject2 instanceof JSONObject)) {
-      localObject1 = new d((JSONObject)localObject2);
-    }
-    do
-    {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (!(localObject2 instanceof JSONArray));
-    return new b((JSONArray)localObject2);
-  }
-  
-  public final boolean optBoolean(int paramInt)
-  {
-    return this.dJf.optBoolean(paramInt);
-  }
-  
-  public final boolean optBoolean(int paramInt, boolean paramBoolean)
-  {
-    return this.dJf.optBoolean(paramInt, paramBoolean);
-  }
-  
-  public final double optDouble(int paramInt)
-  {
-    return this.dJf.optDouble(paramInt);
-  }
-  
-  public final double optDouble(int paramInt, double paramDouble)
-  {
-    return this.dJf.optDouble(paramInt, paramDouble);
-  }
-  
-  public final int optInt(int paramInt)
-  {
-    return this.dJf.optInt(paramInt);
-  }
-  
-  public final int optInt(int paramInt1, int paramInt2)
-  {
-    return this.dJf.optInt(paramInt1, paramInt2);
-  }
-  
-  public final long optLong(int paramInt)
-  {
-    return this.dJf.optLong(paramInt);
-  }
-  
-  public final long optLong(int paramInt, long paramLong)
-  {
-    return this.dJf.optLong(paramInt, paramLong);
-  }
-  
-  public final String optString(int paramInt)
-  {
-    return this.dJf.optString(paramInt);
-  }
-  
-  public final String optString(int paramInt, String paramString)
-  {
-    return this.dJf.optString(paramInt, paramString);
-  }
-  
-  @TargetApi(19)
-  public final Object remove(int paramInt)
-  {
-    Object localObject2 = this.dJf.remove(paramInt);
-    Object localObject1;
-    if ((localObject2 instanceof JSONObject)) {
-      localObject1 = new d((JSONObject)localObject2);
-    }
-    do
-    {
-      return localObject1;
-      localObject1 = localObject2;
-    } while (!(localObject2 instanceof JSONArray));
-    return new b((JSONArray)localObject2);
+    AppMethodBeat.i(155620);
+    String str = new BigInteger(Long.toBinaryString(paramLong), 2).toString();
+    j.p(str, "big.toString()");
+    AppMethodBeat.o(155620);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ab.b
  * JD-Core Version:    0.7.0.1
  */

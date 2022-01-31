@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.hp.b;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hp.d.b;
 
 final class e$1
@@ -11,9 +12,11 @@ final class e$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.lmV.lmT.bbm()) {
-      this.lmV.bbf();
+    AppMethodBeat.i(90593);
+    if (this.nKn.nKl.bIr()) {
+      this.nKn.bIg();
     }
+    AppMethodBeat.o(90593);
   }
 }
 

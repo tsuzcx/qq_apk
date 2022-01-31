@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.walletlock.gesture.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GestureGuardLogicUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,10 +11,14 @@ final class GestureGuardLogicUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (GestureGuardLogicUI.a(this.qPX)) {
+    AppMethodBeat.i(51586);
+    if (GestureGuardLogicUI.a(this.uFf))
+    {
+      AppMethodBeat.o(51586);
       return true;
     }
-    GestureGuardLogicUI.a(this.qPX, 0, 4, "user cancel when setting gesture");
+    GestureGuardLogicUI.a(this.uFf, 0, 4, "user cancel when setting gesture");
+    AppMethodBeat.o(51586);
     return true;
   }
 }

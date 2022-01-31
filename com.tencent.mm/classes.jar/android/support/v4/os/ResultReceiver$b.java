@@ -5,18 +5,18 @@ import android.os.Bundle;
 final class ResultReceiver$b
   implements Runnable
 {
-  final int CX;
-  final Bundle CY;
+  final int DG;
+  final Bundle DH;
   
   ResultReceiver$b(ResultReceiver paramResultReceiver, int paramInt, Bundle paramBundle)
   {
-    this.CX = paramInt;
-    this.CY = paramBundle;
+    this.DG = paramInt;
+    this.DH = paramBundle;
   }
   
   public final void run()
   {
-    this.CW.onReceiveResult(this.CX, this.CY);
+    this.DF.onReceiveResult(this.DG, this.DH);
   }
 }
 

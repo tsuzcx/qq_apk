@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center" android:id="@id/agz" android:layout_width="@dimen/a3n" android:layout_height="@dimen/a3n" android:layout_marginTop="@dimen/fb" />
-    <TextView android:textSize="@dimen/fk" android:textColor="@color/jb" android:ellipsize="end" android:gravity="center" android:id="@id/ah0" android:layout_width="@dimen/a3n" android:layout_height="wrap_content" android:layout_marginTop="@dimen/dl" android:maxLines="1" />
+    <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/aj1" android:layout_width="272.0dip" android:layout_height="153.0dip" />
+    <TextView android:textSize="@dimen/dw" android:textColor="@color/rv" android:gravity="center" android:id="@id/aj2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" />
 </LinearLayout>

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
-import com.tencent.luggage.j.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
@@ -14,64 +14,81 @@ public final class u
 {
   private static boolean b(com.tencent.mm.plugin.appbrand.canvas.d paramd, String paramString)
   {
+    AppMethodBeat.i(103248);
     int i = -1;
     switch (paramString.hashCode())
     {
+    default: 
+      switch (i)
+      {
+      }
+      break;
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        return true;
-        if (paramString.equals("bold"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("normal")) {
-            i = 1;
-          }
-        }
+      AppMethodBeat.o(103248);
+      return true;
+      if (!paramString.equals("bold")) {
         break;
       }
+      i = 0;
+      break;
+      if (!paramString.equals("normal")) {
+        break;
+      }
+      i = 1;
+      break;
+      paramd.heB.setFakeBoldText(true);
+      paramd.heC.setFakeBoldText(true);
+      continue;
+      paramd.heB.setFakeBoldText(false);
+      paramd.heC.setFakeBoldText(false);
     }
-    paramd.fLp.setFakeBoldText(true);
-    paramd.fLq.setFakeBoldText(true);
-    return true;
-    paramd.fLp.setFakeBoldText(false);
-    paramd.fLq.setFakeBoldText(false);
-    return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
+    AppMethodBeat.i(103249);
     paramCanvas = (SetFontWeightArg)paramDrawActionArg;
-    if (paramCanvas == null) {
+    if (paramCanvas == null)
+    {
+      AppMethodBeat.o(103249);
       return false;
     }
-    return b(paramd, paramCanvas.fLT);
+    boolean bool = b(paramd, paramCanvas.hfd);
+    AppMethodBeat.o(103249);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    if (paramJSONArray.length() == 0) {
+    AppMethodBeat.i(103247);
+    if (paramJSONArray.length() == 0)
+    {
+      AppMethodBeat.o(103247);
       return false;
     }
     try
     {
       paramCanvas = paramJSONArray.getString(0);
-      return b(paramd, paramCanvas);
+      boolean bool = b(paramd, paramCanvas);
+      AppMethodBeat.o(103247);
+      return bool;
     }
     catch (JSONException paramd)
     {
-      c.i("MicroMsg.SetFontWeight", "get 'fontWeight' error.");
+      com.tencent.luggage.g.d.i("MicroMsg.SetFontWeight", "get 'fontWeight' error.");
+      AppMethodBeat.o(103247);
     }
     return false;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new SetFontWeightArg();
+    AppMethodBeat.i(103246);
+    SetFontWeightArg localSetFontWeightArg = new SetFontWeightArg();
+    AppMethodBeat.o(103246);
+    return localSetFontWeightArg;
   }
   
   public final String getMethod()
@@ -81,7 +98,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.u
  * JD-Core Version:    0.7.0.1
  */

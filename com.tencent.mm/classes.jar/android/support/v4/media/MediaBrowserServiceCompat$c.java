@@ -2,36 +2,36 @@ package android.support.v4.media;
 
 public class MediaBrowserServiceCompat$c<T>
 {
-  final Object Bu;
-  private boolean Bv;
-  boolean Bw;
-  boolean Bx;
-  int wg;
+  final Object Cg;
+  private boolean Ch;
+  boolean Ci;
+  boolean Cj;
+  int wy;
   
   MediaBrowserServiceCompat$c(Object paramObject)
   {
-    this.Bu = paramObject;
+    this.Cg = paramObject;
   }
   
-  void cA() {}
+  void dd() {}
   
-  void cB()
+  void de()
   {
-    throw new UnsupportedOperationException("It is not supported to send an error for " + this.Bu);
+    throw new UnsupportedOperationException("It is not supported to send an error for " + this.Cg);
   }
   
-  public final void cC()
+  public final void df()
   {
-    if ((this.Bw) || (this.Bx)) {
-      throw new IllegalStateException("sendResult() called when either sendResult() or sendError() had already been called for: " + this.Bu);
+    if ((this.Ci) || (this.Cj)) {
+      throw new IllegalStateException("sendResult() called when either sendResult() or sendError() had already been called for: " + this.Cg);
     }
-    this.Bw = true;
-    cA();
+    this.Ci = true;
+    dd();
   }
   
   final boolean isDone()
   {
-    return (this.Bv) || (this.Bw) || (this.Bx);
+    return (this.Ch) || (this.Ci) || (this.Cj);
   }
 }
 

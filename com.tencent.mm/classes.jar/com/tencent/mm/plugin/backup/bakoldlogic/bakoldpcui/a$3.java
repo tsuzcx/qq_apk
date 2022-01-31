@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class a$3
   
   public final void run()
   {
-    this.hOO.apu();
+    AppMethodBeat.i(17902);
+    this.jIq.aMK();
+    AppMethodBeat.o(17902);
   }
 }
 

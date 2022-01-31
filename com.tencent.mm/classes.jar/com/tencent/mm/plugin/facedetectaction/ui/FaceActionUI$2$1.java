@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.facedetectaction.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FaceActionUI$2$1
   implements Runnable
 {
@@ -7,11 +9,13 @@ final class FaceActionUI$2$1
   
   public final void run()
   {
-    FaceActionUI.a(this.jWX.jWU, this.jWV);
-    FaceActionUI.a(this.jWX.jWU, this.jWW);
-    FaceActionUI.c(this.jWX.jWU);
-    FaceActionUI.d(this.jWX.jWU);
-    FaceActionUI.e(this.jWX.jWU);
+    AppMethodBeat.i(710);
+    FaceActionUI.a(this.mro.mrl, this.mrm);
+    FaceActionUI.a(this.mro.mrl, this.mrn);
+    FaceActionUI.c(this.mro.mrl);
+    FaceActionUI.d(this.mro.mrl);
+    FaceActionUI.e(this.mro.mrl);
+    AppMethodBeat.o(710);
   }
 }
 

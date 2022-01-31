@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="@dimen/ph" android:insetRight="@dimen/ph" android:insetTop="@dimen/ph" android:insetBottom="@dimen/ph"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@drawable/a3y" />
-    <item android:drawable="@drawable/a3x" />
-</selector>
+    <selector>
+        <item android:state_checked="false" android:state_pressed="false">
+            <layer-list>
+                <item android:drawable="@drawable/aaw" />
+                <item android:drawable="@drawable/aam" />
+            </layer-list>
+        </item>
+        <item>
+            <layer-list>
+                <item android:drawable="@drawable/aav" />
+                <item android:drawable="@drawable/aam" />
+            </layer-list>
+        </item>
+    </selector>
+</inset>

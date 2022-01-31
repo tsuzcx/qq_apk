@@ -1,32 +1,19 @@
 package com.tencent.mm.ui.contact;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelectContactUI$17
-  implements MenuItem.OnMenuItemClickListener
+  implements DialogInterface.OnClickListener
 {
   SelectContactUI$17(SelectContactUI paramSelectContactUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramMenuItem = SelectContactUI.c(this.vNB, s.fA(SelectContactUI.a(this.vNB), 8192));
-    paramMenuItem.remove(q.Gj());
-    if ((s.fA(SelectContactUI.a(this.vNB), 4096)) && (paramMenuItem.size() > 1)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      if (!SelectContactUI.d(this.vNB))
-      {
-        SelectContactUI.d(this.vNB, true);
-        SelectContactUI.e(this.vNB);
-      }
-      y.i("MicroMsg.SelectContactUI", "Create the chatroom");
-      return true;
-    }
-    return SelectContactUI.b(this.vNB, SelectContactUI.a(this.vNB, s.fA(SelectContactUI.a(this.vNB), 8192)));
+    AppMethodBeat.i(33866);
+    SelectContactUI.b(this.Afg, false);
+    AppMethodBeat.o(33866);
   }
 }
 

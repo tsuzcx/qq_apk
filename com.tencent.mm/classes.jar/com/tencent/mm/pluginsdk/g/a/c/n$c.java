@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.g.a.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.concurrent.PriorityBlockingQueue;
 
 final class n$c
@@ -8,18 +9,28 @@ final class n$c
   public n$c()
   {
     super(11, new n.c.1());
+    AppMethodBeat.i(79593);
+    AppMethodBeat.o(79593);
   }
   
-  private static String Q(Runnable paramRunnable)
+  private static String Z(Runnable paramRunnable)
   {
+    AppMethodBeat.i(79594);
     if ((paramRunnable instanceof f.c))
     {
-      if ((((f.c)paramRunnable).rXr instanceof l)) {
-        return String.format("priority = %d, urlKey = %s", new Object[] { Integer.valueOf(((l)((f.c)paramRunnable).rXr).priority), ((f.c)paramRunnable).rXr.cls() });
+      if ((((f.c)paramRunnable).vOi instanceof l))
+      {
+        paramRunnable = String.format("priority = %d, urlKey = %s", new Object[] { Integer.valueOf(((l)((f.c)paramRunnable).vOi).priority), ((f.c)paramRunnable).vOi.dlZ() });
+        AppMethodBeat.o(79594);
+        return paramRunnable;
       }
-      return String.format("unknown request = %s", new Object[] { ((f.c)paramRunnable).rXr });
+      paramRunnable = String.format("unknown request = %s", new Object[] { ((f.c)paramRunnable).vOi });
+      AppMethodBeat.o(79594);
+      return paramRunnable;
     }
-    return String.format("unknown runnable = %s", new Object[] { paramRunnable });
+    paramRunnable = String.format("unknown runnable = %s", new Object[] { paramRunnable });
+    AppMethodBeat.o(79594);
+    return paramRunnable;
   }
 }
 

@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class WalletBankcardIdUI$7
@@ -14,8 +15,10 @@ final class WalletBankcardIdUI$7
   
   public final void onClick(View paramView)
   {
-    h.nFQ.f(11353, new Object[] { Integer.valueOf(2), Integer.valueOf(0) });
-    e.d(this.qAC, o.bVs().aEZ());
+    AppMethodBeat.i(47167);
+    h.qsU.e(11353, new Object[] { Integer.valueOf(2), Integer.valueOf(0) });
+    e.d(this.unn, t.cTN().getTrueName());
+    AppMethodBeat.o(47167);
   }
 }
 

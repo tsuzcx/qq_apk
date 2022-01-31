@@ -1,109 +1,120 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.plugin.luckymoney.b.h;
-import com.tencent.mm.plugin.luckymoney.b.i;
-import com.tencent.mm.plugin.luckymoney.b.z;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.luckymoney.model.ai;
+import com.tencent.mm.plugin.luckymoney.model.q;
+import com.tencent.mm.plugin.luckymoney.model.r;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
-import com.tencent.mm.ui.s;
 import java.util.LinkedList;
 import java.util.List;
 
 public class LuckyMoneyCanShareListUI
   extends LuckyMoneyBaseUI
 {
-  private int El = 0;
-  private boolean gDQ = false;
-  private List<i> lLG = new LinkedList();
-  private String lUF = "";
-  private boolean lUw = true;
-  private MMLoadMoreListView lVd;
-  private d lVe;
+  private int Fb;
+  private boolean icT;
+  private List<r> oja;
+  private boolean orF;
+  private String orO;
+  private MMLoadMoreListView osm;
+  private e osn;
   
-  private void bge()
+  public LuckyMoneyCanShareListUI()
   {
-    this.gDQ = true;
-    if (this.El == 0) {
-      this.lUF = "";
-    }
-    l(new z(10, this.El, 3, "", "v1.0", this.lUF));
+    AppMethodBeat.i(42639);
+    this.Fb = 0;
+    this.oja = new LinkedList();
+    this.orF = true;
+    this.icT = false;
+    this.orO = "";
+    AppMethodBeat.o(42639);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  private void bNR()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if ((paramm instanceof z))
-    {
-      bool1 = bool2;
-      if (paramInt1 == 0)
-      {
-        bool1 = bool2;
-        if (paramInt2 == 0)
-        {
-          paramString = (z)paramm;
-          paramm = paramString.lRv.lQn;
-          this.lUF = paramString.lRl;
-          if (paramm != null)
-          {
-            paramInt1 = 0;
-            while (paramInt1 < paramm.size())
-            {
-              this.lLG.add(paramm.get(paramInt1));
-              paramInt1 += 1;
-            }
-            this.El += paramm.size();
-            this.lUw = paramString.bfN();
-            this.gDQ = false;
-            this.lVe.bM(this.lLG);
-          }
-          if (!this.lUw) {
-            break label157;
-          }
-          this.lVd.cAO();
-        }
-      }
+    AppMethodBeat.i(42643);
+    this.icT = true;
+    if (this.Fb == 0) {
+      this.orO = "";
     }
-    for (;;)
-    {
-      bool1 = true;
-      return bool1;
-      label157:
-      this.lVd.cAP();
-    }
+    doSceneProgress(new ai(10, this.Fb, 3, "", "v1.0", this.orO));
+    AppMethodBeat.o(42643);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.lucky_money_my_record_ui;
+    return 2130970035;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(42641);
     setBackBtn(new LuckyMoneyCanShareListUI.1(this));
-    this.lVd = ((MMLoadMoreListView)findViewById(a.f.lucky_money_my_record_list));
-    setMMTitle(getString(a.i.lucky_money_has_can_share_list_title));
-    this.lVe = new e(this.mController.uMN);
-    this.lVd.setAdapter(this.lVe);
-    this.lVd.setOnItemClickListener(new LuckyMoneyCanShareListUI.2(this));
-    this.lVd.setOnLoadMoreListener(new LuckyMoneyCanShareListUI.3(this));
+    this.osm = ((MMLoadMoreListView)findViewById(2131825718));
+    setMMTitle(getString(2131301244));
+    this.osn = new f(getContext());
+    this.osm.setAdapter(this.osn);
+    this.osm.setOnItemClickListener(new LuckyMoneyCanShareListUI.2(this));
+    this.osm.setOnLoadMoreListener(new LuckyMoneyCanShareListUI.3(this));
+    AppMethodBeat.o(42641);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(42640);
     super.onCreate(paramBundle);
     initView();
-    bge();
+    bNR();
+    AppMethodBeat.o(42640);
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(42642);
+    if (((paramm instanceof ai)) && (paramInt1 == 0) && (paramInt2 == 0))
+    {
+      paramString = (ai)paramm;
+      paramm = paramString.opr.onL;
+      this.orO = paramString.opa;
+      if (paramm != null)
+      {
+        paramInt1 = 0;
+        while (paramInt1 < paramm.size())
+        {
+          this.oja.add(paramm.get(paramInt1));
+          paramInt1 += 1;
+        }
+        this.Fb += paramm.size();
+        this.orF = paramString.bNr();
+        this.icT = false;
+        this.osn.ci(this.oja);
+      }
+      if (this.orF) {
+        this.osm.dDY();
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(42642);
+        return true;
+        this.osm.dDZ();
+      }
+    }
+    AppMethodBeat.o(42642);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyCanShareListUI
  * JD-Core Version:    0.7.0.1
  */

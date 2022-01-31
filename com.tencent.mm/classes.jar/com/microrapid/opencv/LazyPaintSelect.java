@@ -2,11 +2,12 @@ package com.microrapid.opencv;
 
 import android.graphics.Bitmap;
 import com.tencent.filter.QImage;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class LazyPaintSelect
 {
-  private final long aVf;
-  private boolean aVg;
+  private final long blO;
+  private boolean blP;
   
   public static native void FormatAlphaBitmap(Bitmap paramBitmap);
   
@@ -60,17 +61,19 @@ public class LazyPaintSelect
   
   protected void finalize()
   {
-    if (this.aVg)
+    AppMethodBeat.i(86265);
+    if (this.blP)
     {
-      nativeDispose(this.aVf);
-      this.aVg = false;
+      nativeDispose(this.blO);
+      this.blP = false;
     }
     super.finalize();
+    AppMethodBeat.o(86265);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.microrapid.opencv.LazyPaintSelect
  * JD-Core Version:    0.7.0.1
  */

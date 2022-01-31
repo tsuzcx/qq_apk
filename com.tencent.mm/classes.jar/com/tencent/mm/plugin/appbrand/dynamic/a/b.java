@@ -1,75 +1,89 @@
 package com.tencent.mm.plugin.appbrand.dynamic.a;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.c;
 import com.tencent.mm.modelappbrand.d;
 import com.tencent.mm.plugin.appbrand.dynamic.widget.IPCDynamicPageView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Iterator;
 import java.util.Set;
 
 final class b
   implements d
 {
-  c fUu;
-  Runnable fUv = new b.1(this);
-  Runnable fUw = new b.2(this);
-  Runnable fUx = new b.3(this);
+  c hnW;
+  Runnable hnX;
+  Runnable hnY;
+  Runnable hnZ;
   
   b(c paramc)
   {
-    this.fUu = paramc;
+    AppMethodBeat.i(10737);
+    this.hnX = new b.1(this);
+    this.hnY = new b.2(this);
+    this.hnZ = new b.3(this);
+    this.hnW = paramc;
+    AppMethodBeat.o(10737);
   }
   
   public final void exit()
   {
-    com.tencent.mm.plugin.appbrand.dynamic.b.u(this.fUw);
+    AppMethodBeat.i(10738);
+    com.tencent.mm.plugin.appbrand.dynamic.b.C(this.hnY);
+    AppMethodBeat.o(10738);
   }
   
-  public final void js(String paramString)
+  public final void qg(String paramString)
   {
-    paramString = this.fUu.ay(paramString);
-    if ((paramString == null) || (paramString.isEmpty())) {}
-    for (;;)
+    AppMethodBeat.i(10740);
+    paramString = this.hnW.aS(paramString);
+    if ((paramString == null) || (paramString.isEmpty()))
     {
+      AppMethodBeat.o(10740);
       return;
-      paramString = paramString.iterator();
-      while (paramString.hasNext())
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext())
+    {
+      View localView = (View)paramString.next();
+      if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
       {
-        View localView = (View)paramString.next();
-        if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
-        {
-          y.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do pause view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
-          ((IPCDynamicPageView)localView).onPause();
-        }
+        ab.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do pause view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
+        ((IPCDynamicPageView)localView).onPause();
       }
     }
+    AppMethodBeat.o(10740);
   }
   
-  public final void jt(String paramString)
+  public final void qh(String paramString)
   {
-    paramString = this.fUu.ay(paramString);
-    if ((paramString == null) || (paramString.isEmpty())) {}
-    for (;;)
+    AppMethodBeat.i(10741);
+    paramString = this.hnW.aS(paramString);
+    if ((paramString == null) || (paramString.isEmpty()))
     {
+      AppMethodBeat.o(10741);
       return;
-      paramString = paramString.iterator();
-      while (paramString.hasNext())
+    }
+    paramString = paramString.iterator();
+    while (paramString.hasNext())
+    {
+      View localView = (View)paramString.next();
+      if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
       {
-        View localView = (View)paramString.next();
-        if ((localView != null) && ((localView instanceof IPCDynamicPageView)))
-        {
-          y.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do resume view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
-          ((IPCDynamicPageView)localView).onResume();
-        }
+        ab.v("MicroMsg.DynamicPagePerformance", "pauseAllView, do resume view(%s)", new Object[] { Integer.valueOf(localView.hashCode()) });
+        ((IPCDynamicPageView)localView).onResume();
       }
     }
+    AppMethodBeat.o(10741);
   }
   
   public final void restart()
   {
-    com.tencent.mm.plugin.appbrand.dynamic.b.u(this.fUx);
-    com.tencent.mm.plugin.appbrand.dynamic.b.h(this.fUv, 2000L);
+    AppMethodBeat.i(10739);
+    com.tencent.mm.plugin.appbrand.dynamic.b.C(this.hnZ);
+    com.tencent.mm.plugin.appbrand.dynamic.b.l(this.hnX, 2000L);
+    AppMethodBeat.o(10739);
   }
 }
 

@@ -1,44 +1,69 @@
 package com.tencent.mm.plugin.appbrand.game.b;
 
-import com.tencent.luggage.j.a;
-import com.tencent.magicbrush.handler.image.a.a;
-import com.tencent.mm.plugin.appbrand.appstorage.h;
-import com.tencent.mm.plugin.appbrand.appstorage.l;
-import com.tencent.mm.plugin.appbrand.n;
-import com.tencent.mm.plugin.appbrand.u.k;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.a.c;
+import com.tencent.mm.plugin.fts.a.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Iterator;
+import java.util.List;
 
-public final class b$d
-  extends a.a
+final class b$d
+  extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private final n gaS;
+  private int hrK;
   
-  private b$d(n paramn)
+  b$d(b paramb) {}
+  
+  public final String aAn()
   {
-    this.gaS = paramn;
+    AppMethodBeat.i(130072);
+    String str = String.format("{updateSize: %d}", new Object[] { Integer.valueOf(this.hrK) });
+    AppMethodBeat.o(130072);
+    return str;
   }
   
-  public final boolean bs(String paramString)
+  public final boolean execute()
   {
+    AppMethodBeat.i(130071);
+    Object localObject = i.aAA();
+    if ((localObject == null) || (((List)localObject).isEmpty()))
+    {
+      ab.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "MiniGame search list is nil.");
+      AppMethodBeat.o(130071);
+      return true;
+    }
+    this.hrK = ((List)localObject).size();
+    this.hsB.hsz.beginTransaction();
+    this.hsB.hsz.u(c.mQF);
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      com.tencent.mm.plugin.appbrand.game.b.a.b localb = (com.tencent.mm.plugin.appbrand.game.b.a.b)((Iterator)localObject).next();
+      if ((localb == null) || (bo.isNullOrNil(localb.field_AppName)))
+      {
+        ab.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "UpdateMiniGameIndexTask appname is null");
+        this.hrK -= 1;
+      }
+      else
+      {
+        String str = bo.nullAsNil(localb.field_RecordId);
+        int i = str.hashCode();
+        long l = System.currentTimeMillis();
+        this.hsB.hsz.a(458752, 1, i, str, l, localb.field_AppName);
+        this.hsB.hsz.a(458752, 2, i, str, l, d.aR(localb.field_AppName, false));
+        this.hsB.hsz.a(458752, 3, i, str, l, d.aR(localb.field_AppName, true));
+      }
+    }
+    this.hsB.hsz.commit();
+    ab.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "update MiniGame info id listSize:%d", new Object[] { Integer.valueOf(this.hrK) });
+    AppMethodBeat.o(130071);
     return true;
   }
   
-  public final InputStream bt(String paramString)
+  public final String getName()
   {
-    if (this.gaS == null)
-    {
-      y.e("MicroMsg.WAGameRuntimeFileSystemDecoder", "fetch %s, runtime NULL", new Object[] { paramString });
-      return null;
-    }
-    k localk = new k();
-    h localh = this.gaS.fzC.b(paramString, localk);
-    if ((localh == h.fGU) && (localk.value != null)) {
-      return new a((ByteBuffer)localk.value);
-    }
-    y.e("MicroMsg.WAGameRuntimeFileSystemDecoder", "fetch %s, ret %s", new Object[] { paramString, localh.name() });
-    return null;
+    return "UpdateMiniGameIndexTask";
   }
 }
 

@@ -1,100 +1,116 @@
 package com.tencent.mm.plugin.traceroute.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.traceroute.b.a;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ap;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMProgressBar;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 
 public class NetworkDiagnoseUI
   extends MMActivity
 {
-  private ah handler = new NetworkDiagnoseUI.2(this);
-  private TextView kgZ;
-  private int moo = 0;
-  private final int pJt = 100;
-  private int pJu = 0;
-  private a pJv;
-  private MMProgressBar pJw;
-  private am pJx = new am(new am.a()
-  {
-    public final boolean tC()
-    {
-      NetworkDiagnoseUI.a(NetworkDiagnoseUI.this, NetworkDiagnoseUI.a(NetworkDiagnoseUI.this) + 1);
-      NetworkDiagnoseUI.b(NetworkDiagnoseUI.this, NetworkDiagnoseUI.b(NetworkDiagnoseUI.this));
-      if (NetworkDiagnoseUI.b(NetworkDiagnoseUI.this) < 100)
-      {
-        NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(NetworkDiagnoseUI.b(NetworkDiagnoseUI.this));
-        return true;
-      }
-      NetworkDiagnoseUI.c(NetworkDiagnoseUI.this).setProgress(100);
-      return false;
-    }
-  }, true);
+  private ak handler;
+  private TextView mBO;
+  private int oNy;
+  private final int tnH;
+  private int tnI;
+  private a tnJ;
+  private MMProgressBar tnK;
+  private ap tnL;
   
-  private void bOP()
+  public NetworkDiagnoseUI()
   {
-    h.a(this, R.l.confirm_cancel_diagnose, R.l.diagnose_cancel_confirm_title, R.l.app_yes, R.l.app_no, new NetworkDiagnoseUI.7(this), new NetworkDiagnoseUI.8(this));
+    AppMethodBeat.i(26034);
+    this.tnH = 100;
+    this.oNy = 0;
+    this.tnI = 0;
+    this.tnL = new ap(new NetworkDiagnoseUI.1(this), true);
+    this.handler = new NetworkDiagnoseUI.2(this);
+    AppMethodBeat.o(26034);
   }
   
-  protected final int getLayoutId()
+  private void cKL()
   {
-    return R.i.network_diagnose_run;
+    AppMethodBeat.i(26040);
+    h.a(this, 2131298493, 2131298957, 2131297115, 2131297014, new NetworkDiagnoseUI.7(this), new NetworkDiagnoseUI.8(this));
+    AppMethodBeat.o(26040);
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
-    this.kgZ = ((TextView)findViewById(R.h.report_status_tv));
-    this.pJw = ((MMProgressBar)findViewById(R.h.diagnose_progress));
-    this.pJw.setOnProgressChangedListener(new NetworkDiagnoseUI.3(this));
+    return 2130970355;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(26036);
+    this.mBO = ((TextView)findViewById(2131826531));
+    this.tnK = ((MMProgressBar)findViewById(2131826530));
+    this.tnK.setOnProgressChangedListener(new NetworkDiagnoseUI.3(this));
     setMMTitle("");
     setBackBtn(new NetworkDiagnoseUI.4(this));
-    new ah().postDelayed(new NetworkDiagnoseUI.5(this), 200L);
+    new ak().postDelayed(new NetworkDiagnoseUI.5(this), 200L);
+    AppMethodBeat.o(26036);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(26035);
     super.onCreate(paramBundle);
     initView();
+    AppMethodBeat.o(26035);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(26039);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      bOP();
+      cKL();
+      AppMethodBeat.o(26039);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(26039);
+    return bool;
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    this.pJw.setAutoProgress(false);
+    AppMethodBeat.i(26037);
+    this.tnK.setAutoProgress(false);
     super.onPause();
+    AppMethodBeat.o(26037);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    au.Hx();
+    AppMethodBeat.i(26038);
+    aw.aaz();
     if (!c.isSDCardAvailable())
     {
-      s.gM(this);
+      t.ii(this);
+      AppMethodBeat.o(26038);
       return;
     }
-    this.pJw.setAutoProgress(true);
+    this.tnK.setAutoProgress(true);
     super.onResume();
+    AppMethodBeat.o(26038);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

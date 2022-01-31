@@ -10,25 +10,25 @@ final class ActivityChooserView$2
   
   public final void onGlobalLayout()
   {
-    if (this.YX.fX())
+    if (this.ZI.gU())
     {
-      if (this.YX.isShown()) {
+      if (this.ZI.isShown()) {
         break label31;
       }
-      this.YX.getListPopupWindow().dismiss();
+      this.ZI.getListPopupWindow().dismiss();
     }
     label31:
     do
     {
       return;
-      this.YX.getListPopupWindow().show();
-    } while (this.YX.YQ == null);
-    this.YX.YQ.E(true);
+      this.ZI.getListPopupWindow().show();
+    } while (this.ZI.ZB == null);
+    this.ZI.ZB.E(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v7.widget.ActivityChooserView.2
  * JD-Core Version:    0.7.0.1
  */

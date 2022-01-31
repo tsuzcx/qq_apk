@@ -1,20 +1,37 @@
 package com.tencent.mm.compatible.b;
 
-import android.media.AudioRecord;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.ac;
+import com.tencent.mm.compatible.e.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class c
-  extends AudioRecord
 {
-  public c(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static c.a KA()
   {
-    super(paramInt1, paramInt2, paramInt3, 2, paramInt4);
-    f.gu(hashCode());
-  }
-  
-  public final void release()
-  {
-    super.release();
-    f.gv(hashCode());
+    AppMethodBeat.i(92833);
+    Object localObject = ah.getContext().getSharedPreferences(ah.dsP(), 0);
+    if (ac.erv.emL == 1) {}
+    for (boolean bool = false;; bool = true)
+    {
+      if (!((SharedPreferences)localObject).contains("settings_voicerecorder_mode")) {
+        ((SharedPreferences)localObject).edit().putBoolean("settings_voicerecorder_mode", bool).commit();
+      }
+      ab.i("AudioConfig", "getModeByConfig mVoiceRecordMode:%d defValue:%b settings_voicerecorder_mode:%b", new Object[] { Integer.valueOf(ac.erv.emL), Boolean.valueOf(bool), Boolean.valueOf(((SharedPreferences)localObject).getBoolean("settings_voicerecorder_mode", bool)) });
+      if (!((SharedPreferences)localObject).getBoolean("settings_voicerecorder_mode", bool)) {
+        break;
+      }
+      localObject = c.a.elO;
+      AppMethodBeat.o(92833);
+      return localObject;
+    }
+    localObject = c.a.elP;
+    AppMethodBeat.o(92833);
+    return localObject;
   }
 }
 

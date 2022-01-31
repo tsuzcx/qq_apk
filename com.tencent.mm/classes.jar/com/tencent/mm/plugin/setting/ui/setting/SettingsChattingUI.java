@@ -1,172 +1,183 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.plugin.setting.a.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.s;
 
 public class SettingsChattingUI
   extends MMPreference
 {
-  private f dnn;
   private boolean isDeleteCancel = false;
-  private ProgressDialog nTd = null;
+  private ProgressDialog qHd = null;
+  private f screen;
   
-  public final boolean a(f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    boolean bool2 = false;
-    boolean bool1 = true;
-    paramf = paramPreference.mKey;
-    int i = -1;
-    switch (paramf.hashCode())
-    {
-    default: 
-      switch (i)
-      {
-      default: 
-        bool1 = false;
-      }
-      break;
-    }
-    do
-    {
-      return bool1;
-      if (!paramf.equals("settings_voice_play_mode")) {
-        break;
-      }
-      i = 0;
-      break;
-      if (!paramf.equals("settings_enter_button_send")) {
-        break;
-      }
-      i = 1;
-      break;
-      if (!paramf.equals("settings_bak_chat")) {
-        break;
-      }
-      i = 2;
-      break;
-      if (!paramf.equals("settings_chatting_bg")) {
-        break;
-      }
-      i = 3;
-      break;
-      if (!paramf.equals("settings_emoji_manager")) {
-        break;
-      }
-      i = 4;
-      break;
-      if (!paramf.equals("settings_reset")) {
-        break;
-      }
-      i = 5;
-      break;
-      if (!paramf.equals("settings_recovery")) {
-        break;
-      }
-      i = 6;
-      break;
-      boolean bool3 = ((Boolean)g.DP().Dz().get(26, Boolean.valueOf(false))).booleanValue();
-      if (!bool3) {}
-      for (bool1 = true;; bool1 = false)
-      {
-        y.d("MicroMsg.SettingsChattingUI", "set voice mode from %B to %B", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
-        paramf = g.DP().Dz();
-        bool1 = bool2;
-        if (!bool3) {
-          bool1 = true;
-        }
-        paramf.o(26, Boolean.valueOf(bool1));
-        return true;
-      }
-      paramf = (CheckBoxPreference)this.dnn.add("settings_enter_button_send");
-    } while (paramf == null);
-    bool1 = paramf.isChecked();
-    y.d("MicroMsg.SettingsChattingUI", "set enter button send : %s", new Object[] { Boolean.valueOf(bool1) });
-    g.DP().Dz().o(66832, Boolean.valueOf(bool1));
-    return true;
-    paramf = new Intent().setClassName(this.mController.uMN, "com.tencent.mm.plugin.backup.backupui.BackupChooseBackupModeUI");
-    MMWizardActivity.C(this.mController.uMN, paramf);
-    return true;
-    paramf = new Intent();
-    paramf.setClass(this, SettingsChattingBackgroundUI.class);
-    this.mController.uMN.startActivity(paramf);
-    return true;
-    paramf = new Intent();
-    paramf.putExtra("10931", 2);
-    d.b(this.mController.uMN, "emoji", ".ui.EmojiMineUI", paramf);
-    return true;
-    h.a(this.mController.uMN, getResources().getString(a.i.settings_reset_warning), "", getString(a.i.app_clear), getString(a.i.app_cancel), new SettingsChattingUI.2(this), null);
-    return true;
-    paramf = new Intent().setClassName(this.mController.uMN, "com.tencent.mm.plugin.dbbackup.DBRecoveryUI");
-    paramf.putExtra("scene", 1);
-    this.mController.uMN.startActivity(paramf);
-    return true;
+    return 2131165282;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(a.i.settings_chatting);
-    this.dnn = this.vdd;
-    if (g.DP().Dz().getInt(89, 0) != 2) {
-      this.dnn.ade("settings_recovery");
+    AppMethodBeat.i(127217);
+    setMMTitle(2131303227);
+    this.screen = getPreferenceScreen();
+    if (g.RL().Ru().getInt(89, 0) != 2) {
+      this.screen.aty("settings_recovery");
     }
     setBackBtn(new SettingsChattingUI.1(this));
+    AppMethodBeat.o(127217);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127216);
     super.onCreate(paramBundle);
-    if (!g.DN().Dc())
+    if (!g.RJ().QU())
     {
       finish();
+      AppMethodBeat.o(127216);
       return;
     }
     initView();
+    AppMethodBeat.o(127216);
   }
   
-  protected void onResume()
+  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
   {
+    boolean bool2 = false;
+    AppMethodBeat.i(127219);
+    paramf = paramPreference.mKey;
+    int i = -1;
+    switch (paramf.hashCode())
+    {
+    }
+    for (;;)
+    {
+      switch (i)
+      {
+      default: 
+        AppMethodBeat.o(127219);
+        return false;
+        if (paramf.equals("settings_voice_play_mode"))
+        {
+          i = 0;
+          continue;
+          if (paramf.equals("settings_enter_button_send"))
+          {
+            i = 1;
+            continue;
+            if (paramf.equals("settings_bak_chat"))
+            {
+              i = 2;
+              continue;
+              if (paramf.equals("settings_chatting_bg"))
+              {
+                i = 3;
+                continue;
+                if (paramf.equals("settings_emoji_manager"))
+                {
+                  i = 4;
+                  continue;
+                  if (paramf.equals("settings_reset"))
+                  {
+                    i = 5;
+                    continue;
+                    if (paramf.equals("settings_recovery")) {
+                      i = 6;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        break;
+      }
+    }
+    boolean bool3 = ((Boolean)g.RL().Ru().get(26, Boolean.FALSE)).booleanValue();
+    if (!bool3) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      ab.d("MicroMsg.SettingsChattingUI", "set voice mode from %B to %B", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+      paramf = g.RL().Ru();
+      bool1 = bool2;
+      if (!bool3) {
+        bool1 = true;
+      }
+      paramf.set(26, Boolean.valueOf(bool1));
+      AppMethodBeat.o(127219);
+      return true;
+    }
+    paramf = (CheckBoxPreference)this.screen.atx("settings_enter_button_send");
+    if (paramf != null)
+    {
+      bool1 = paramf.isChecked();
+      ab.d("MicroMsg.SettingsChattingUI", "set enter button send : %s", new Object[] { Boolean.valueOf(bool1) });
+      g.RL().Ru().set(66832, Boolean.valueOf(bool1));
+    }
+    AppMethodBeat.o(127219);
+    return true;
+    startActivity(new Intent().setClassName(getContext(), "com.tencent.mm.plugin.backup.backupui.BackupChooseBackupModeUI"));
+    AppMethodBeat.o(127219);
+    return true;
+    paramf = new Intent();
+    paramf.setClass(this, SettingsChattingBackgroundUI.class);
+    getContext().startActivity(paramf);
+    AppMethodBeat.o(127219);
+    return true;
+    paramf = new Intent();
+    paramf.putExtra("10931", 2);
+    d.b(getContext(), "emoji", ".ui.EmojiMineUI", paramf);
+    AppMethodBeat.o(127219);
+    return true;
+    h.d(getContext(), getResources().getString(2131303402), "", getString(2131296891), getString(2131296888), new SettingsChattingUI.2(this), null);
+    AppMethodBeat.o(127219);
+    return true;
+    paramf = new Intent().setClassName(getContext(), "com.tencent.mm.plugin.dbbackup.DBRecoveryUI");
+    paramf.putExtra("scene", 1);
+    getContext().startActivity(paramf);
+    AppMethodBeat.o(127219);
+    return true;
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(127218);
     super.onResume();
-    Object localObject = (CheckBoxPreference)this.dnn.add("settings_voice_play_mode");
-    if (localObject != null)
+    CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)this.screen.atx("settings_voice_play_mode");
+    if (localCheckBoxPreference != null)
     {
-      ((CheckBoxPreference)localObject).rHo = ((Boolean)g.DP().Dz().get(26, Boolean.valueOf(false))).booleanValue();
-      ((Preference)localObject).vdK = false;
+      localCheckBoxPreference.vxW = ((Boolean)g.RL().Ru().get(26, Boolean.FALSE)).booleanValue();
+      localCheckBoxPreference.zsk = false;
     }
-    localObject = (CheckBoxPreference)this.dnn.add("settings_enter_button_send");
-    if (localObject != null)
+    localCheckBoxPreference = (CheckBoxPreference)this.screen.atx("settings_enter_button_send");
+    if (localCheckBoxPreference != null)
     {
-      ((CheckBoxPreference)localObject).rHo = ((Boolean)g.DP().Dz().get(66832, Boolean.valueOf(false))).booleanValue();
-      ((Preference)localObject).vdK = false;
+      localCheckBoxPreference.vxW = ((Boolean)g.RL().Ru().get(66832, Boolean.FALSE)).booleanValue();
+      localCheckBoxPreference.zsk = false;
     }
-    localObject = this.dnn.add("settings_text_size");
-    if (localObject != null) {
-      ((Preference)localObject).setSummary(getString(SetTextSizeUI.eb(this)));
-    }
-    this.dnn.notifyDataSetChanged();
+    AppMethodBeat.o(127218);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return a.k.settings_pref_chatting;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

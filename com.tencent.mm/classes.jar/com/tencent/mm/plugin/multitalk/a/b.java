@@ -1,43 +1,60 @@
 package com.tencent.mm.plugin.multitalk.a;
 
-import android.graphics.Bitmap;
-import com.tencent.mm.plugin.multitalk.ui.widget.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.df;
+import com.tencent.mm.sdk.e.c.a;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public abstract interface b
+public final class b
+  extends df
 {
-  public abstract int IE(String paramString);
+  protected static c.a info;
   
-  public abstract void a(j.a parama);
+  static
+  {
+    AppMethodBeat.i(54110);
+    c.a locala = new c.a();
+    locala.yrK = new Field[7];
+    locala.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    locala.columns[0] = "memberUuid";
+    locala.yrM.put("memberUuid", "LONG");
+    localStringBuilder.append(" memberUuid LONG");
+    localStringBuilder.append(", ");
+    locala.columns[1] = "wxGroupId";
+    locala.yrM.put("wxGroupId", "TEXT");
+    localStringBuilder.append(" wxGroupId TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[2] = "userName";
+    locala.yrM.put("userName", "TEXT");
+    localStringBuilder.append(" userName TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[3] = "inviteUserName";
+    locala.yrM.put("inviteUserName", "TEXT");
+    localStringBuilder.append(" inviteUserName TEXT");
+    localStringBuilder.append(", ");
+    locala.columns[4] = "memberId";
+    locala.yrM.put("memberId", "LONG");
+    localStringBuilder.append(" memberId LONG");
+    localStringBuilder.append(", ");
+    locala.columns[5] = "status";
+    locala.yrM.put("status", "INTEGER");
+    localStringBuilder.append(" status INTEGER");
+    localStringBuilder.append(", ");
+    locala.columns[6] = "createTime";
+    locala.yrM.put("createTime", "LONG");
+    localStringBuilder.append(" createTime LONG");
+    locala.columns[7] = "rowid";
+    locala.sql = localStringBuilder.toString();
+    info = locala;
+    AppMethodBeat.o(54110);
+  }
   
-  public abstract void a(e parame);
-  
-  public abstract void a(String paramString, Bitmap paramBitmap, int paramInt1, int paramInt2);
-  
-  public abstract void a(String paramString, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void bbP();
-  
-  public abstract void bbQ();
-  
-  public abstract void bhw();
-  
-  public abstract void bkE();
-  
-  public abstract void bkF();
-  
-  public abstract void bkG();
-  
-  public abstract boolean bkH();
-  
-  public abstract void dk(int paramInt1, int paramInt2);
-  
-  public abstract void hE(boolean paramBoolean);
-  
-  public abstract void hF(boolean paramBoolean);
-  
-  public abstract void hG(boolean paramBoolean);
-  
-  public abstract void onError(int paramInt);
+  public final c.a getDBInfo()
+  {
+    return info;
+  }
 }
 
 

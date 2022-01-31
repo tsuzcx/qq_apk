@@ -1,5 +1,6 @@
 package com.tencent.mm.ipcinvoker;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Map;
 
 final class b$2
@@ -9,23 +10,32 @@ final class b$2
   
   public final void run()
   {
-    com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCBridgeManager", "on connect timeout(%s, tid : %s)", new Object[] { Integer.valueOf(this.dGv.hashCode()), Long.valueOf(Thread.currentThread().getId()) });
-    if (!this.dGv.dGB) {
+    AppMethodBeat.i(114009);
+    com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCBridgeManager", "on connect timeout(%s, tid : %s)", new Object[] { Integer.valueOf(this.eDY.hashCode()), Long.valueOf(Thread.currentThread().getId()) });
+    if (!this.eDY.eEd)
+    {
+      AppMethodBeat.o(114009);
       return;
     }
-    synchronized (this.dGv)
+    synchronized (this.eDY)
     {
-      if (!this.dGv.dGB) {
+      if (!this.eDY.eEd)
+      {
+        AppMethodBeat.o(114009);
         return;
       }
+      this.eDY.eEd = false;
+      this.eDY.notifyAll();
+      this.eDY.eEe = null;
     }
-    this.dGv.dGB = false;
-    this.dGv.notifyAll();
-    this.dGv.dGC = null;
-    synchronized (b.a(this.dGx))
+    synchronized (b.a(this.eEa))
     {
-      b.a(this.dGx).remove(this.dGw);
+      b.a(this.eEa).remove(this.eDZ);
+      AppMethodBeat.o(114009);
       return;
+      localObject2 = finally;
+      AppMethodBeat.o(114009);
+      throw localObject2;
     }
   }
 }

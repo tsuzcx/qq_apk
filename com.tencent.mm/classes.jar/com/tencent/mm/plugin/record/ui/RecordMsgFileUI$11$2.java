@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.view.MenuItem;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
-import com.tencent.mm.plugin.record.b.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.record.b.n;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 import java.io.File;
 
@@ -16,28 +16,34 @@ final class RecordMsgFileUI$11$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(24264);
     switch (paramMenuItem.getItemId())
     {
-    default: 
-      return;
     }
-    if (RecordMsgFileUI.c(this.nuh.nue) == 8)
+    for (;;)
     {
-      paramMenuItem = h.c(RecordMsgFileUI.a(this.nuh.nue), RecordMsgFileUI.b(this.nuh.nue));
-      if (!e.bK(paramMenuItem))
+      AppMethodBeat.o(24264);
+      return;
+      if (RecordMsgFileUI.c(this.pZQ.pZN) == 8)
       {
-        y.e("MicroMsg.RecordMsgFileUI", "share file failed, file not exists");
-        Toast.makeText(this.nuh.nue, this.nuh.nue.getString(R.l.favorite_share_file_not_exists), 1).show();
-        return;
+        paramMenuItem = n.c(RecordMsgFileUI.a(this.pZQ.pZN), RecordMsgFileUI.b(this.pZQ.pZN));
+        if (!e.cN(paramMenuItem))
+        {
+          ab.e("MicroMsg.RecordMsgFileUI", "share file failed, file not exists");
+          Toast.makeText(this.pZQ.pZN, this.pZQ.pZN.getString(2131299824), 1).show();
+          AppMethodBeat.o(24264);
+          return;
+        }
+        if (new File(paramMenuItem).length() > 10485760L)
+        {
+          ab.e("MicroMsg.RecordMsgFileUI", "share file failed, file too large");
+          Toast.makeText(this.pZQ.pZN, this.pZQ.pZN.getString(2131299825), 1).show();
+          AppMethodBeat.o(24264);
+          return;
+        }
       }
-      if (new File(paramMenuItem).length() > 10485760L)
-      {
-        y.e("MicroMsg.RecordMsgFileUI", "share file failed, file too large");
-        Toast.makeText(this.nuh.nue, this.nuh.nue.getString(R.l.favorite_share_too_large), 1).show();
-        return;
-      }
+      RecordMsgFileUI.h(this.pZQ.pZN);
     }
-    RecordMsgFileUI.h(this.nuh.nue);
   }
 }
 

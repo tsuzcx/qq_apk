@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.os.Message;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class b$5
-  extends ah
+  extends ak
 {
   b$5(b paramb) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if (!b.f(this.iCF)) {
-      this.iCF.notifyDataSetChanged();
+    AppMethodBeat.i(18750);
+    if (!b.f(this.kHM)) {
+      this.kHM.notifyDataSetChanged();
     }
+    AppMethodBeat.o(18750);
   }
 }
 

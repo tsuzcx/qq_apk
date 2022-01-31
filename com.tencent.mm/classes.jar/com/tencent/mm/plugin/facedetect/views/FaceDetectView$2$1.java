@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.facedetect.views;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FaceDetectView$2$1
   implements Runnable
@@ -11,8 +12,10 @@ final class FaceDetectView$2$1
   
   public final void run()
   {
-    FaceDetectView.i(this.jUK.jUI).setVisibility(0);
-    FaceDetectView.i(this.jUK.jUI).setBackgroundDrawable(new BitmapDrawable(this.jUJ));
+    AppMethodBeat.i(620);
+    FaceDetectView.i(this.mpd.mpb).setVisibility(0);
+    FaceDetectView.i(this.mpd.mpb).setBackgroundDrawable(new BitmapDrawable(this.mpc));
+    AppMethodBeat.o(620);
   }
 }
 

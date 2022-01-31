@@ -1,6 +1,7 @@
 package com.tencent.mm.e;
 
 import android.graphics.Matrix;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cache.a;
 import com.tencent.mm.view.b.a.b;
 
@@ -9,16 +10,20 @@ public final class c$7
 {
   public c$7(c paramc) {}
   
-  public final void onStart()
+  public final void CO()
   {
-    c.a(this.bAK, false);
+    AppMethodBeat.i(116160);
+    this.cdH.getMainMatrix().set(((a)this.cdH.CB()).ecs);
+    this.cdH.CJ();
+    c.a(this.cdH, 300L, false, false);
+    AppMethodBeat.o(116160);
   }
   
-  public final void tW()
+  public final void onStart()
   {
-    this.bAK.getMainMatrix().set(((a)this.bAK.tI()).dkY);
-    this.bAK.tR();
-    c.a(this.bAK, 300L, false, false);
+    AppMethodBeat.i(116161);
+    c.a(this.cdH, false);
+    AppMethodBeat.o(116161);
   }
 }
 

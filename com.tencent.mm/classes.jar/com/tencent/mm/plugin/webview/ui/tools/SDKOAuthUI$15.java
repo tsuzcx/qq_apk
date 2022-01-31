@@ -1,13 +1,23 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SDKOAuthUI$15
-  implements Runnable
+  implements View.OnClickListener
 {
   SDKOAuthUI$15(SDKOAuthUI paramSDKOAuthUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    this.rmk.finish();
+    AppMethodBeat.i(7538);
+    paramView = new Intent(this.vbR, CreateAvatarUI.class);
+    paramView.putExtra("0", SDKOAuthUI.a(this.vbR));
+    paramView.putExtra("default_fileid", SDKOAuthUI.m(this.vbR));
+    this.vbR.startActivityForResult(paramView, 6);
+    AppMethodBeat.o(7538);
   }
 }
 

@@ -2,133 +2,164 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 
 import android.os.Looper;
 import android.view.Surface;
-import com.tencent.mm.plugin.s.i;
-import com.tencent.mm.plugin.s.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.n.i;
+import com.tencent.mm.plugin.n.j;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class b
   implements a
 {
-  boolean PT = false;
-  boolean bSr = false;
-  boolean eaP = false;
-  i mnK = new i(Looper.getMainLooper());
-  int mnL;
-  int mnM = 0;
-  private int mnN = 0;
-  a.a mnO;
-  a.d mnP;
-  a.b mnQ;
-  a.c mnR;
+  boolean Pz;
+  boolean fqY;
+  boolean isStart;
+  i oMS;
+  int oMT;
+  int oMU;
+  private int oMV;
+  a.a oMW;
+  a.d oMX;
+  a.b oMY;
+  a.c oMZ;
   
   public b()
   {
-    Object localObject = this.mnK;
-    if (((i)localObject).meE != null)
+    AppMethodBeat.i(3713);
+    this.fqY = false;
+    this.isStart = false;
+    this.Pz = false;
+    this.oMU = 0;
+    this.oMV = 0;
+    this.oMS = new i(Looper.getMainLooper());
+    Object localObject = this.oMS;
+    if (((i)localObject).oFd != null)
     {
-      localObject = ((i)localObject).meE;
-      if (((j)localObject).mep != null) {
-        ((j)localObject).mep.mel = false;
+      localObject = ((i)localObject).oFd;
+      if (((j)localObject).oEN != null) {
+        ((j)localObject).oEN.oEJ = false;
       }
     }
-    this.mnK.setNeedResetExtractor(false);
-    this.mnK.meF = new b.1(this);
+    this.oMS.setNeedResetExtractor(false);
+    this.oMS.oFe = new b.1(this);
+    AppMethodBeat.o(3713);
   }
   
   public final void a(a.a parama)
   {
-    this.mnO = parama;
+    this.oMW = parama;
   }
   
   public final void a(a.b paramb)
   {
-    this.mnQ = paramb;
+    this.oMY = paramb;
   }
   
   public final void a(a.c paramc)
   {
-    this.mnR = paramc;
+    this.oMZ = paramc;
   }
   
   public final void a(a.d paramd)
   {
-    this.mnP = paramd;
+    this.oMX = paramd;
   }
   
   public final int getCurrentPosition()
   {
-    return this.mnK.bix();
+    AppMethodBeat.i(3722);
+    int i = this.oMS.bQz();
+    AppMethodBeat.o(3722);
+    return i;
   }
   
   public final int getDuration()
   {
-    return (int)this.mnK.meE.aGU;
+    return (int)this.oMS.oFd.aNP;
   }
   
   public final boolean isPlaying()
   {
-    return this.mnK.isPlaying();
+    AppMethodBeat.i(3720);
+    boolean bool = this.oMS.isPlaying();
+    AppMethodBeat.o(3720);
+    return bool;
   }
   
   public final void pause()
   {
-    this.mnK.pause();
+    AppMethodBeat.i(3719);
+    this.oMS.pause();
+    AppMethodBeat.o(3719);
   }
   
   public final void prepareAsync()
   {
-    this.mnK.prepare();
+    AppMethodBeat.i(3716);
+    this.oMS.prepare();
+    AppMethodBeat.o(3716);
   }
   
   public final void release()
   {
-    this.mnK.release();
+    AppMethodBeat.i(3723);
+    this.oMS.release();
+    AppMethodBeat.o(3723);
   }
   
   public final void seekTo(int paramInt)
   {
-    if (this.mnK != null)
+    AppMethodBeat.i(3721);
+    if (this.oMS != null)
     {
-      y.i("MicroMsg.MMSegmentVideoPlayer", "seekTo: %s", new Object[] { Integer.valueOf(paramInt) });
-      this.mnK.tP(paramInt);
+      ab.i("MicroMsg.MMSegmentVideoPlayer", "seekTo: %s", new Object[] { Integer.valueOf(paramInt) });
+      this.oMS.zi(paramInt);
     }
+    AppMethodBeat.o(3721);
   }
   
   public final void setAudioStreamType(int paramInt) {}
   
   public final void setDataSource(String paramString)
   {
-    this.mnK.setPath(paramString);
+    AppMethodBeat.i(3715);
+    this.oMS.setPath(paramString);
+    AppMethodBeat.o(3715);
   }
   
   public final void setLoop(int paramInt1, int paramInt2)
   {
-    this.mnM = paramInt1;
-    this.mnN = paramInt2;
+    this.oMU = paramInt1;
+    this.oMV = paramInt2;
   }
   
   public final void setLooping(boolean paramBoolean)
   {
-    this.eaP = paramBoolean;
+    this.fqY = paramBoolean;
   }
   
   public final void setSurface(Surface paramSurface)
   {
-    this.mnK.setSurface(paramSurface);
+    AppMethodBeat.i(3714);
+    this.oMS.setSurface(paramSurface);
+    AppMethodBeat.o(3714);
   }
   
   public final void start()
   {
-    if (this.PT) {
-      this.mnK.start();
+    AppMethodBeat.i(3717);
+    if (this.Pz) {
+      this.oMS.start();
     }
-    this.bSr = true;
+    this.isStart = true;
+    AppMethodBeat.o(3717);
   }
   
   public final void stop()
   {
-    this.mnK.meE.stop();
-    this.bSr = false;
+    AppMethodBeat.i(3718);
+    this.oMS.oFd.stop();
+    this.isStart = false;
+    AppMethodBeat.o(3718);
   }
 }
 

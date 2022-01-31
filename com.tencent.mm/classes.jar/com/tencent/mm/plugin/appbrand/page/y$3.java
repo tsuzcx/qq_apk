@@ -1,13 +1,18 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class y$3
-  extends bf<Boolean>
+  implements Runnable
 {
-  y$3(y paramy, Boolean paramBoolean, int paramInt)
+  y$3(y paramy) {}
+  
+  public final void run()
   {
-    super(1000L, paramBoolean, (byte)0);
+    AppMethodBeat.i(143484);
+    y.a(this.ixC, bo.yB());
+    AppMethodBeat.o(143484);
   }
 }
 

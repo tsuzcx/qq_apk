@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.offline;
 
-import com.tencent.mm.h.a.tz;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vv;
 import com.tencent.mm.sdk.b.c;
 
 final class m$1
-  extends c<tz>
+  extends c<vv>
 {
   m$1(m paramm)
   {
-    this.udX = tz.class.getName().hashCode();
+    AppMethodBeat.i(43376);
+    this.__eventId = vv.class.getName().hashCode();
+    AppMethodBeat.o(43376);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.m.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.o.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.j.a.b;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,21 +15,30 @@ public final class InvoiceListUI$a
   extends BaseAdapter
 {
   private final Context context;
-  List<b> items = new ArrayList();
+  List<b> items;
   
   public InvoiceListUI$a(InvoiceListUI paramInvoiceListUI, Context paramContext)
   {
+    AppMethodBeat.i(16864);
+    this.items = new ArrayList();
     this.context = paramContext;
+    AppMethodBeat.o(16864);
   }
   
-  private b kk(int paramInt)
+  private b nc(int paramInt)
   {
-    return (b)this.items.get(paramInt);
+    AppMethodBeat.i(16867);
+    b localb = (b)this.items.get(paramInt);
+    AppMethodBeat.o(16867);
+    return localb;
   }
   
   public final int getCount()
   {
-    return this.items.size();
+    AppMethodBeat.i(16866);
+    int i = this.items.size();
+    AppMethodBeat.o(16866);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -42,41 +48,44 @@ public final class InvoiceListUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(16865);
     paramViewGroup = new InvoiceListUI.a.a(this);
     b localb;
     if (paramView == null)
     {
-      paramView = View.inflate(this.context, R.i.wallet_addr_select_item, null);
-      paramViewGroup.fuO = ((ImageView)paramView.findViewById(R.h.check_state));
-      paramViewGroup.fuN = ((TextView)paramView.findViewById(R.h.address_content_tv));
-      paramViewGroup.fdt = ((TextView)paramView.findViewById(R.h.address_name_tv));
+      paramView = View.inflate(this.context, 2130971121, null);
+      paramViewGroup.gMq = ((ImageView)paramView.findViewById(2131828918));
+      paramViewGroup.gMp = ((TextView)paramView.findViewById(2131828917));
+      paramViewGroup.gve = ((TextView)paramView.findViewById(2131828916));
       paramView.setTag(paramViewGroup);
-      localb = kk(paramInt);
+      localb = nc(paramInt);
       if ((localb.type == null) || (!localb.type.equals("0"))) {
-        break label183;
+        break label189;
       }
-      paramViewGroup.fuN.setText(R.l.invoice_company_type);
-      paramViewGroup.fdt.setText(localb.title);
+      paramViewGroup.gMp.setText(2131300794);
+      paramViewGroup.gve.setText(localb.title);
+      label123:
+      if ((!InvoiceListUI.d(this.gMn)) || (InvoiceListUI.e(this.gMn) == null) || (InvoiceListUI.e(this.gMn).nLm != localb.nLm)) {
+        break label234;
+      }
+      paramViewGroup.gMq.setImageResource(2131231906);
     }
     for (;;)
     {
-      if ((!InvoiceListUI.d(this.fuL)) || (InvoiceListUI.e(this.fuL) == null) || (InvoiceListUI.e(this.fuL).lnP != localb.lnP)) {
-        break label229;
-      }
-      paramViewGroup.fuO.setImageResource(R.k.radio_on);
+      AppMethodBeat.o(16865);
       return paramView;
       paramViewGroup = (InvoiceListUI.a.a)paramView.getTag();
       break;
-      label183:
-      if ((localb.type != null) && (localb.type.equals("1")))
-      {
-        paramViewGroup.fuN.setText(R.l.invoice_personal_type);
-        paramViewGroup.fdt.setText(localb.lnQ);
+      label189:
+      if ((localb.type == null) || (!localb.type.equals("1"))) {
+        break label123;
       }
+      paramViewGroup.gMp.setText(2131300800);
+      paramViewGroup.gve.setText(localb.nLn);
+      break label123;
+      label234:
+      paramViewGroup.gMq.setImageBitmap(null);
     }
-    label229:
-    paramViewGroup.fuO.setImageBitmap(null);
-    return paramView;
   }
 }
 

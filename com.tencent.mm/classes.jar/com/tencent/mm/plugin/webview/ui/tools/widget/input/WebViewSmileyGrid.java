@@ -11,50 +11,57 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.cd.e;
-import com.tencent.mm.ui.y;
+import com.tencent.mm.ui.w;
 
 public class WebViewSmileyGrid
   extends GridView
 {
-  AdapterView.OnItemClickListener ajR = new WebViewSmileyGrid.1(this);
-  int hxF;
-  int hxG = 0;
-  int hxH;
-  int hxI = 0;
-  int hxJ = 0;
-  int hxK = 0;
-  private c rDq;
-  a rDr;
+  AdapterView.OnItemClickListener amh;
+  int jpP;
+  int jpQ;
+  int jpR;
+  int jpS;
+  int jpT;
+  int jpU;
+  private c vtC;
+  a vtD;
   
   public WebViewSmileyGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(10108);
+    this.jpQ = 0;
+    this.jpS = 0;
+    this.jpT = 0;
+    this.jpU = 0;
+    this.amh = new WebViewSmileyGrid.1(this);
+    AppMethodBeat.o(10108);
   }
   
   int getRowSpacing()
   {
-    return this.hxI;
+    return this.jpS;
   }
   
   public void setPanelManager(c paramc)
   {
-    this.rDq = paramc;
+    this.vtC = paramc;
   }
   
-  private final class a
+  final class a
     extends BaseAdapter
   {
     private a() {}
     
     public final int getCount()
     {
-      return WebViewSmileyGrid.d(WebViewSmileyGrid.this);
+      AppMethodBeat.i(10105);
+      int i = WebViewSmileyGrid.d(WebViewSmileyGrid.this);
+      AppMethodBeat.o(10105);
+      return i;
     }
     
     public final Object getItem(int paramInt)
@@ -69,35 +76,44 @@ public class WebViewSmileyGrid
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
+      AppMethodBeat.i(10106);
       if ((paramView == null) || (paramView.getTag() == null))
       {
-        paramView = y.gt(WebViewSmileyGrid.this.getContext()).inflate(R.i.webview_smiley_grid_item, null);
-        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (WebViewSmileyGrid.b(WebViewSmileyGrid.this).hxU - a.aa(WebViewSmileyGrid.this.getContext(), R.f.LittlePadding) - a.aa(WebViewSmileyGrid.this.getContext(), R.f.emoji_panel_tab_height)) / WebViewSmileyGrid.f(WebViewSmileyGrid.this)));
+        paramView = w.hM(WebViewSmileyGrid.this.getContext()).inflate(2130971307, null);
+        paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (WebViewSmileyGrid.b(WebViewSmileyGrid.this).jqe - a.ao(WebViewSmileyGrid.this.getContext(), 2131427782) - a.ao(WebViewSmileyGrid.this.getContext(), 2131428385)) / WebViewSmileyGrid.f(WebViewSmileyGrid.this)));
         paramViewGroup = new WebViewSmileyGrid.b(paramView);
         paramView.setTag(paramViewGroup);
+        if (paramInt != getCount() - 1) {
+          break label161;
+        }
+        paramViewGroup.ivs.setImageResource(2130838499);
+        paramViewGroup.ivs.setContentDescription(WebViewSmileyGrid.this.getContext().getString(2131298947));
       }
-      while (paramInt == getCount() - 1)
+      for (;;)
       {
-        paramViewGroup.gSx.setImageResource(R.g.del_btn);
-        paramViewGroup.gSx.setContentDescription(WebViewSmileyGrid.this.getContext().getString(R.l.delete_btn));
+        AppMethodBeat.o(10106);
         return paramView;
         paramViewGroup = (WebViewSmileyGrid.b)paramView.getTag();
+        break;
+        label161:
+        paramInt = (WebViewSmileyGrid.d(WebViewSmileyGrid.this) - 1) * WebViewSmileyGrid.c(WebViewSmileyGrid.this) + paramInt;
+        if (paramInt > WebViewSmileyGrid.e(WebViewSmileyGrid.this) - 1)
+        {
+          paramViewGroup.ivs.setImageDrawable(null);
+        }
+        else
+        {
+          WebViewSmileyGrid.b(WebViewSmileyGrid.this);
+          Drawable localDrawable = e.dve().qA(paramInt);
+          paramViewGroup.ivs.setImageDrawable(localDrawable);
+        }
       }
-      paramInt = (WebViewSmileyGrid.d(WebViewSmileyGrid.this) - 1) * WebViewSmileyGrid.c(WebViewSmileyGrid.this) + paramInt;
-      if (paramInt > WebViewSmileyGrid.e(WebViewSmileyGrid.this) - 1)
-      {
-        paramViewGroup.gSx.setImageDrawable(null);
-        return paramView;
-      }
-      Drawable localDrawable = e.csH().mW(paramInt);
-      paramViewGroup.gSx.setImageDrawable(localDrawable);
-      return paramView;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewSmileyGrid
  * JD-Core Version:    0.7.0.1
  */

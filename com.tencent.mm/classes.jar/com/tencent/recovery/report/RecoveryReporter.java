@@ -10,7 +10,7 @@ public class RecoveryReporter
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 19	com/tencent/recovery/report/RecoveryReporter:hr	(Landroid/content/Context;)Ljava/io/File;
+    //   1: invokestatic 19	com/tencent/recovery/report/RecoveryReporter:iS	(Landroid/content/Context;)Ljava/io/File;
     //   4: astore_0
     //   5: new 21	java/util/LinkedList
     //   8: dup
@@ -135,7 +135,7 @@ public class RecoveryReporter
     //   226: astore_0
     //   227: aload 8
     //   229: aload 7
-    //   231: invokevirtual 106	com/tencent/recovery/model/RecoveryPersistentItem:afz	(Ljava/lang/String;)Z
+    //   231: invokevirtual 106	com/tencent/recovery/model/RecoveryPersistentItem:awv	(Ljava/lang/String;)Z
     //   234: ifeq +18 -> 252
     //   237: aload_1
     //   238: astore_0
@@ -235,10 +235,10 @@ public class RecoveryReporter
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 19	com/tencent/recovery/report/RecoveryReporter:hr	(Landroid/content/Context;)Ljava/io/File;
+    //   1: invokestatic 19	com/tencent/recovery/report/RecoveryReporter:iS	(Landroid/content/Context;)Ljava/io/File;
     //   4: astore_0
     //   5: aload_2
-    //   6: invokevirtual 124	com/tencent/recovery/model/RecoveryPersistentItem:cOC	()Ljava/lang/String;
+    //   6: invokevirtual 124	com/tencent/recovery/model/RecoveryPersistentItem:dUr	()Ljava/lang/String;
     //   9: astore_2
     //   10: ldc 35
     //   12: ldc 126
@@ -361,9 +361,9 @@ public class RecoveryReporter
     //   114	118	182	java/lang/Exception
   }
   
-  public static void bJ(Context paramContext, String paramString)
+  public static void bW(Context paramContext, String paramString)
   {
-    new File(hr(paramContext), paramString).delete();
+    new File(iS(paramContext), paramString).delete();
   }
   
   /* Error */
@@ -388,7 +388,7 @@ public class RecoveryReporter
     //   27: new 24	java/io/File
     //   30: dup
     //   31: aload_0
-    //   32: invokestatic 19	com/tencent/recovery/report/RecoveryReporter:hr	(Landroid/content/Context;)Ljava/io/File;
+    //   32: invokestatic 19	com/tencent/recovery/report/RecoveryReporter:iS	(Landroid/content/Context;)Ljava/io/File;
     //   35: aload_1
     //   36: invokespecial 27	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   39: astore_0
@@ -432,7 +432,7 @@ public class RecoveryReporter
     //   111: aload_2
     //   112: invokeinterface 185 1 0
     //   117: checkcast 102	com/tencent/recovery/model/RecoveryPersistentItem
-    //   120: invokevirtual 124	com/tencent/recovery/model/RecoveryPersistentItem:cOC	()Ljava/lang/String;
+    //   120: invokevirtual 124	com/tencent/recovery/model/RecoveryPersistentItem:dUr	()Ljava/lang/String;
     //   123: astore 4
     //   125: aload_3
     //   126: astore_0
@@ -534,7 +534,7 @@ public class RecoveryReporter
     //   79	89	233	java/lang/Exception
   }
   
-  private static File hr(Context paramContext)
+  private static File iS(Context paramContext)
   {
     paramContext = new File(paramContext.getFilesDir(), "recovery");
     if (!paramContext.exists()) {

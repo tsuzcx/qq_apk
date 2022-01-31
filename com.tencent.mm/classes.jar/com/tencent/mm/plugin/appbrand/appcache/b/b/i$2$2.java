@@ -10,7 +10,7 @@ final class i$2$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.b.b.i.2.2
  * JD-Core Version:    0.7.0.1
  */

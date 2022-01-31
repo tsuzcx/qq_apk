@@ -1,84 +1,98 @@
 package com.tencent.mm.ui.transmit;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.fts.a.a.i;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.fts.a.a.j;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.contact.a.d;
-import com.tencent.mm.ui.contact.a.h;
-import com.tencent.mm.ui.contact.m;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ui.contact.a.e;
+import com.tencent.mm.ui.contact.o;
 import java.util.HashSet;
 import java.util.List;
 
 public final class b
-  extends m
+  extends com.tencent.mm.ui.contact.n
 {
-  String bVk;
-  private ah handler = new ah(Looper.getMainLooper());
-  j kwU;
-  private com.tencent.mm.plugin.fts.a.a.a kxg;
-  private MMCreateChatroomUI wfY;
-  private com.tencent.mm.plugin.fts.a.l wfZ = new b.1(this);
+  private MMCreateChatroomUI AyP;
+  private com.tencent.mm.plugin.fts.a.l AyQ;
+  private ak handler;
+  j mSK;
+  private com.tencent.mm.plugin.fts.a.a.a mSV;
+  String query;
   
   public b(MMCreateChatroomUI paramMMCreateChatroomUI, int paramInt)
   {
     super(paramMMCreateChatroomUI, false, paramInt);
-    this.wfY = paramMMCreateChatroomUI;
+    AppMethodBeat.i(35035);
+    this.handler = new ak(Looper.getMainLooper());
+    this.AyQ = new b.1(this);
+    this.AyP = paramMMCreateChatroomUI;
+    AppMethodBeat.o(35035);
   }
   
   public final void a(String paramString, int[] paramArrayOfInt, boolean paramBoolean)
   {
-    this.bVk = paramString;
-    paramArrayOfInt = new i();
+    AppMethodBeat.i(35036);
+    this.query = paramString;
+    paramArrayOfInt = new com.tencent.mm.plugin.fts.a.a.i();
     paramArrayOfInt.handler = this.handler;
-    paramArrayOfInt.kxf = this.wfZ;
-    paramArrayOfInt.bVk = paramString;
-    paramArrayOfInt.kxe = com.tencent.mm.plugin.fts.a.c.b.kxE;
-    paramArrayOfInt.kxa = new int[] { 131072 };
-    paramArrayOfInt.kxd.add("filehelper");
-    paramArrayOfInt.kxd.add(q.Gj());
-    paramArrayOfInt.kxd.addAll(this.wfY.wgc.cJr());
-    this.kxg = ((com.tencent.mm.plugin.fts.a.n)g.t(com.tencent.mm.plugin.fts.a.n.class)).search(2, paramArrayOfInt);
+    paramArrayOfInt.mSU = this.AyQ;
+    paramArrayOfInt.query = paramString;
+    paramArrayOfInt.mST = com.tencent.mm.plugin.fts.a.c.b.mTt;
+    paramArrayOfInt.mSP = new int[] { 131072 };
+    paramArrayOfInt.mSS.add("filehelper");
+    paramArrayOfInt.mSS.add(r.Zn());
+    paramArrayOfInt.mSS.addAll(this.AyP.AyT.dOh());
+    this.mSV = ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).search(2, paramArrayOfInt);
+    AppMethodBeat.o(35036);
   }
   
-  public final void adg()
+  public final void clearData()
   {
-    if (this.kxg != null) {
-      ((com.tencent.mm.plugin.fts.a.n)g.t(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.kxg);
+    AppMethodBeat.i(35037);
+    if (this.mSV != null) {
+      ((com.tencent.mm.plugin.fts.a.n)g.G(com.tencent.mm.plugin.fts.a.n.class)).cancelSearchTask(this.mSV);
     }
-    this.bVk = null;
+    this.query = null;
+    AppMethodBeat.o(35037);
   }
   
   public final int getCount()
   {
-    if ((this.kwU != null) && (this.kwU.kxh != null)) {
-      return this.kwU.kxh.size();
+    AppMethodBeat.i(35039);
+    if ((this.mSK != null) && (this.mSK.mSW != null))
+    {
+      int i = this.mSK.mSW.size();
+      AppMethodBeat.o(35039);
+      return i;
     }
+    AppMethodBeat.o(35039);
     return 0;
   }
   
-  protected final com.tencent.mm.ui.contact.a.a jQ(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a mM(int paramInt)
   {
-    com.tencent.mm.plugin.fts.a.a.l locall = (com.tencent.mm.plugin.fts.a.a.l)this.kwU.kxh.get(paramInt);
+    AppMethodBeat.i(35038);
+    com.tencent.mm.plugin.fts.a.a.l locall = (com.tencent.mm.plugin.fts.a.a.l)this.mSK.mSW.get(paramInt);
     Object localObject;
-    if (locall.kwg.equals("no_result​")) {
-      localObject = new h(paramInt);
+    if (locall.mRV.equals("no_result​")) {
+      localObject = new com.tencent.mm.ui.contact.a.i(paramInt);
     }
     for (;;)
     {
-      ((com.tencent.mm.ui.contact.a.a)localObject).bVk = this.bVk;
+      ((com.tencent.mm.ui.contact.a.a)localObject).query = this.query;
       ((com.tencent.mm.ui.contact.a.a)localObject).scene = this.scene;
-      ((com.tencent.mm.ui.contact.a.a)localObject).vLJ = false;
+      ((com.tencent.mm.ui.contact.a.a)localObject).Adl = false;
+      AppMethodBeat.o(35038);
       return localObject;
-      localObject = new d(paramInt);
-      ((d)localObject).fYx = locall;
-      ((com.tencent.mm.ui.contact.a.a)localObject).kwi = this.kwU.kwi;
-      ((com.tencent.mm.ui.contact.a.a)localObject).vLJ = bBJ();
-      ((d)localObject).dDQ = true;
-      ((d)localObject).kxV = (paramInt + 1);
-      ((d)localObject).cU(((d)localObject).fYx.type, ((d)localObject).fYx.kwf);
+      localObject = new e(paramInt);
+      ((e)localObject).hrL = locall;
+      ((com.tencent.mm.ui.contact.a.a)localObject).mRX = this.mSK.mRX;
+      ((com.tencent.mm.ui.contact.a.a)localObject).Adl = cni();
+      ((e)localObject).eBr = true;
+      ((e)localObject).mTI = (paramInt + 1);
+      ((e)localObject).es(((e)localObject).hrL.type, ((e)localObject).hrL.mRU);
     }
   }
 }

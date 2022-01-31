@@ -2,98 +2,121 @@ package com.tencent.mm.plugin.appbrand.jsapi.appdownload;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.jsapi.c;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.downloader.model.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONObject;
 
 class JsApiInstallDownloadTask$InstallDownloadTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<InstallDownloadTask> CREATOR = new JsApiInstallDownloadTask.InstallDownloadTask.1();
-  private int bhx;
-  private com.tencent.mm.plugin.appbrand.jsapi.c gfZ;
-  private i gho;
-  private long ghp;
-  private boolean ghr;
-  private String ghs;
+  public static final Parcelable.Creator<InstallDownloadTask> CREATOR;
+  private int bxX;
+  private c hAC;
+  private m hyA;
+  private boolean hyI;
+  private String hyJ;
+  private long hyK;
   private String mAppId;
+  
+  static
+  {
+    AppMethodBeat.i(130688);
+    CREATOR = new JsApiInstallDownloadTask.InstallDownloadTask.3();
+    AppMethodBeat.o(130688);
+  }
   
   public JsApiInstallDownloadTask$InstallDownloadTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(130683);
+    f(paramParcel);
+    AppMethodBeat.o(130683);
   }
   
-  public JsApiInstallDownloadTask$InstallDownloadTask(i parami, com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt, JSONObject paramJSONObject)
+  public JsApiInstallDownloadTask$InstallDownloadTask(m paramm, c paramc, int paramInt, JSONObject paramJSONObject)
   {
-    this.gho = parami;
-    this.gfZ = paramc;
-    this.bhx = paramInt;
-    this.ghp = paramJSONObject.optLong("downloadId");
+    AppMethodBeat.i(130682);
+    this.hyA = paramm;
+    this.hAC = paramc;
+    this.bxX = paramInt;
+    this.hyK = paramJSONObject.optLong("downloadId");
     this.mAppId = paramJSONObject.optString("appId");
-    this.ghr = true;
+    this.hyI = true;
+    AppMethodBeat.o(130682);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    y.i("MicroMsg.JsApiInstallDownloadTask", "doInstallDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.ghp) });
-    com.tencent.mm.plugin.downloader.f.a locala;
-    if (!bk.bl(this.mAppId))
+    AppMethodBeat.i(130684);
+    ab.i("MicroMsg.JsApiInstallDownloadTask", "doInstallDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.hyK) });
+    com.tencent.mm.plugin.downloader.g.a locala;
+    if (!bo.isNullOrNil(this.mAppId))
     {
-      locala = com.tencent.mm.plugin.downloader.model.c.zH(this.mAppId);
-      if ((locala != null) && (locala.field_status == 3) && (e.bK(locala.field_filePath)))
-      {
-        if (com.tencent.mm.plugin.downloader.h.a.m(locala.field_downloadId, false)) {
-          break label87;
-        }
-        this.ghr = bool1;
+      locala = d.JD(this.mAppId);
+      if ((locala != null) && (locala.field_status == 3) && (e.cN(locala.field_filePath))) {
+        com.tencent.mm.plugin.downloader.i.a.a(locala.field_downloadId, false, new com.tencent.mm.pluginsdk.permission.a()
+        {
+          public final void eb(boolean paramAnonymousBoolean)
+          {
+            AppMethodBeat.i(130679);
+            JsApiInstallDownloadTask.InstallDownloadTask localInstallDownloadTask = JsApiInstallDownloadTask.InstallDownloadTask.this;
+            if (!paramAnonymousBoolean) {}
+            for (paramAnonymousBoolean = true;; paramAnonymousBoolean = false)
+            {
+              JsApiInstallDownloadTask.InstallDownloadTask.a(localInstallDownloadTask, paramAnonymousBoolean);
+              AppMethodBeat.o(130679);
+              return;
+            }
+          }
+        });
       }
     }
-    label87:
-    do
+    for (;;)
     {
-      ahI();
+      aBp();
+      AppMethodBeat.o(130684);
       return;
-      bool1 = false;
-      break;
-      locala = com.tencent.mm.plugin.downloader.model.c.dk(this.ghp);
-    } while ((locala == null) || (locala.field_status != 3) || (!e.bK(locala.field_filePath)));
-    if (!com.tencent.mm.plugin.downloader.h.a.m(locala.field_downloadId, false)) {}
-    for (bool1 = bool2;; bool1 = false)
-    {
-      this.ghr = bool1;
-      break;
+      locala = d.iJ(this.hyK);
+      if ((locala != null) && (locala.field_status == 3) && (e.cN(locala.field_filePath))) {
+        com.tencent.mm.plugin.downloader.i.a.a(locala.field_downloadId, false, new JsApiInstallDownloadTask.InstallDownloadTask.2(this));
+      }
     }
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.ghr)
+    AppMethodBeat.i(130685);
+    if (this.hyI)
     {
-      if (bk.bl(this.ghs)) {}
-      for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.ghs }))
+      if (bo.isNullOrNil(this.hyJ)) {}
+      for (String str = "fail";; str = String.format("fail:%s", new Object[] { this.hyJ }))
       {
-        this.gfZ.C(this.bhx, this.gho.h(str, null));
+        this.hAC.h(this.bxX, this.hyA.j(str, null));
+        AppMethodBeat.o(130685);
         return;
       }
     }
-    this.gfZ.C(this.bhx, this.gho.h("ok", null));
+    this.hAC.h(this.bxX, this.hyA.j("ok", null));
+    AppMethodBeat.o(130685);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool = true;
-    this.ghp = paramParcel.readLong();
+    AppMethodBeat.i(130686);
+    this.hyK = paramParcel.readLong();
     this.mAppId = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.ghr = bool;
-      this.ghs = paramParcel.readString();
+      this.hyI = bool;
+      this.hyJ = paramParcel.readString();
+      AppMethodBeat.o(130686);
       return;
       bool = false;
     }
@@ -101,20 +124,22 @@ class JsApiInstallDownloadTask$InstallDownloadTask
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeLong(this.ghp);
+    AppMethodBeat.i(130687);
+    paramParcel.writeLong(this.hyK);
     paramParcel.writeString(this.mAppId);
-    if (this.ghr) {}
+    if (this.hyI) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.ghs);
+      paramParcel.writeString(this.hyJ);
+      AppMethodBeat.o(130687);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.JsApiInstallDownloadTask.InstallDownloadTask
  * JD-Core Version:    0.7.0.1
  */

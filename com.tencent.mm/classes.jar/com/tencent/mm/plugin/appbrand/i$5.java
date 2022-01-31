@@ -1,13 +1,21 @@
 package com.tencent.mm.plugin.appbrand;
 
+import android.app.Activity;
+import android.app.ActivityManager.TaskDescription;
+import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.a.b.b;
+
 final class i$5
-  implements Runnable
+  extends b.b
 {
-  i$5(i parami) {}
+  i$5(i parami, Activity paramActivity, ActivityManager.TaskDescription paramTaskDescription) {}
   
-  public final void run()
+  public final void w(Bitmap paramBitmap)
   {
-    this.fyM.ZI();
+    AppMethodBeat.i(141624);
+    this.val$activity.setTaskDescription(new ActivityManager.TaskDescription(this.gQb.getLabel(), paramBitmap, this.gQb.getPrimaryColor()));
+    AppMethodBeat.o(141624);
   }
 }
 

@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.w;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class j$8
-  implements f.a
+  implements c.a
 {
-  j$8(j paramj, w paramw) {}
+  j$8(j paramj, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ab paramab) {}
   
-  public final void Op(String paramString)
+  public final void CF(String paramString)
   {
-    j.a(this.oKJ, this.oKN.oDK);
+    AppMethodBeat.i(37769);
+    com.tencent.mm.sdk.platformtools.ab.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.rCw.rsB + "is error");
+    j.a(this.rCs, this.rCw.rsB);
+    AppMethodBeat.o(37769);
   }
   
-  public final void bCF()
-  {
-    y.e("AdLandingPagesPreDownloadResHelper", " pre download " + this.oKN.oDK + "is error");
-    j.a(this.oKJ, this.oKN.oCZ);
-  }
+  public final void dq(String paramString, int paramInt) {}
   
-  public final void bFl() {}
+  public final void mP(String paramString)
+  {
+    AppMethodBeat.i(37770);
+    j.a(this.rCs, this.rCw.rsB);
+    AppMethodBeat.o(37770);
+  }
 }
 
 

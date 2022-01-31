@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/b28" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:textSize="@dimen/lj" android:textColor="@color/gp" android:id="@id/as3" android:background="@drawable/b9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/eu" android:minHeight="48.0dip" android:text="@string/a9y" android:layout_alignParentLeft="true" />
-        <Button android:textSize="@dimen/lj" android:textColor="@color/op" android:id="@id/b0t" android:background="@drawable/b9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/eu" android:minHeight="48.0dip" android:text="@string/a9z" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-    <com.tencent.mm.ui.widget.picker.CustomDatePicker android:gravity="center" android:layout_gravity="center" android:id="@id/b0u" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="250.0dip" android:layout_height="200.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/l2" android:minHeight="@dimen/lm" android:layout_weight="1.0">
+        <TextView android:id="@id/b2a" android:text="hello" style="@style/h7" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <FrameLayout android:layout_gravity="center" android:id="@id/b2d" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center" android:id="@id/b25" android:padding="@dimen/ne" android:layout_width="@dimen/dm" android:layout_height="@dimen/dm" android:src="@drawable/adb" />
+            </FrameLayout>
+            <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                    <TextView android:id="@id/b26" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_marginRight="@dimen/n_" android:text="message" android:maxLines="4" style="@style/h7" />
+                </ScrollView>
+                <TextView android:id="@id/b27" android:layout_marginLeft="@dimen/n_" android:layout_marginRight="@dimen/n_" android:text="source" style="@style/h5" />
+            </LinearLayout>
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/b24" style="@style/h2" />
+    </LinearLayout>
 </LinearLayout>

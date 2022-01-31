@@ -1,17 +1,14 @@
 package com.tencent.mm.plugin.r;
 
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.storage.bh;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 
 final class a$1
-  implements h.d
+  implements f
 {
   a$1(a parama) {}
   
-  public final String[] rK()
-  {
-    return bh.dXp;
-  }
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm) {}
 }
 
 

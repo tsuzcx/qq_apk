@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.soter.d;
 
 public abstract interface g
 {
-  public abstract void ai(int paramInt, String paramString);
+  public abstract void aC(int paramInt, String paramString);
 }
 
 

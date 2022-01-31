@@ -1,285 +1,123 @@
 package android.support.v7.app;
 
+import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Resources.NotFoundException;
-import android.content.res.TypedArray;
-import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.support.v4.view.e.a;
 import android.support.v7.view.b;
 import android.support.v7.view.b.a;
-import android.support.v7.view.g;
-import android.support.v7.view.i;
-import android.support.v7.view.menu.h;
-import android.support.v7.widget.ax;
+import android.util.TypedValue;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import android.view.Window.Callback;
 
-abstract class e
-  extends d
+public class e
+  extends Dialog
+  implements c
 {
-  private static boolean OH;
-  private static final boolean OI;
-  private static final int[] OJ;
-  CharSequence BM;
-  final Window Nk;
-  final Window.Callback OL;
-  final Window.Callback OM;
-  final c OO;
-  boolean OP;
-  boolean OQ;
-  boolean OR;
-  boolean OS;
-  boolean OT;
-  private boolean OU;
-  boolean OV;
-  MenuInflater fe;
-  ActionBar mActionBar;
-  final Context mContext;
-  
-  static
+  private final e.a PF = new e.a()
   {
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (boolean bool = true;; bool = false)
+    public final boolean superDispatchKeyEvent(KeyEvent paramAnonymousKeyEvent)
     {
-      OI = bool;
-      if ((bool) && (!OH))
-      {
-        Thread.setDefaultUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler()
-        {
-          public final void uncaughtException(Thread paramAnonymousThread, Throwable paramAnonymousThrowable)
-          {
-            int j = 0;
-            int i = j;
-            Object localObject;
-            if ((paramAnonymousThrowable instanceof Resources.NotFoundException))
-            {
-              localObject = paramAnonymousThrowable.getMessage();
-              i = j;
-              if (localObject != null) {
-                if (!((String)localObject).contains("drawable"))
-                {
-                  i = j;
-                  if (!((String)localObject).contains("Drawable")) {}
-                }
-                else
-                {
-                  i = 1;
-                }
-              }
-            }
-            if (i != 0)
-            {
-              localObject = new Resources.NotFoundException(paramAnonymousThrowable.getMessage() + ". If the resource you are trying to use is a vector resource, you may be referencing it in an unsupported way. See AppCompatDelegate.setCompatVectorFromResourcesEnabled() for more info.");
-              ((Throwable)localObject).initCause(paramAnonymousThrowable.getCause());
-              ((Throwable)localObject).setStackTrace(paramAnonymousThrowable.getStackTrace());
-              this.OW.uncaughtException(paramAnonymousThread, (Throwable)localObject);
-              return;
-            }
-            this.OW.uncaughtException(paramAnonymousThread, paramAnonymousThrowable);
-          }
-        });
-        OH = true;
-      }
-      OJ = new int[] { 16842836 };
-      return;
+      return e.this.superDispatchKeyEvent(paramAnonymousKeyEvent);
     }
+  };
+  private d mDelegate;
+  
+  public e(Context paramContext, int paramInt)
+  {
+    super(paramContext, i);
+    getDelegate().onCreate(null);
+    getDelegate().eD();
   }
   
-  e(Context paramContext, Window paramWindow, c paramc)
+  private d getDelegate()
   {
-    this.mContext = paramContext;
-    this.Nk = paramWindow;
-    this.OO = paramc;
-    this.OL = this.Nk.getCallback();
-    if ((this.OL instanceof b)) {
-      throw new IllegalStateException("AppCompat has already installed itself into the Window");
+    if (this.mDelegate == null) {
+      this.mDelegate = d.a(this, this);
     }
-    this.OM = a(this.OL);
-    this.Nk.setCallback(this.OM);
-    paramContext = ax.a(paramContext, null, OJ);
-    paramWindow = paramContext.cr(0);
-    if (paramWindow != null) {
-      this.Nk.setBackgroundDrawable(paramWindow);
-    }
-    paramContext.alZ.recycle();
+    return this.mDelegate;
   }
   
-  Window.Callback a(Window.Callback paramCallback)
+  public void addContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    return new b(paramCallback);
+    getDelegate().addContentView(paramView, paramLayoutParams);
   }
   
-  abstract void aS(int paramInt);
-  
-  abstract boolean aT(int paramInt);
-  
-  abstract b b(b.a parama);
-  
-  abstract boolean dispatchKeyEvent(KeyEvent paramKeyEvent);
-  
-  public boolean eh()
+  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    return false;
+    View localView = getWindow().getDecorView();
+    return android.support.v4.view.e.a(this.PF, localView, this, paramKeyEvent);
   }
   
-  abstract void ej();
-  
-  final Context ek()
+  public final boolean eS()
   {
-    Context localContext = null;
-    Object localObject = getSupportActionBar();
-    if (localObject != null) {
-      localContext = ((ActionBar)localObject).getThemedContext();
-    }
-    localObject = localContext;
-    if (localContext == null) {
-      localObject = this.mContext;
-    }
-    return localObject;
+    return getDelegate().requestWindowFeature(1);
   }
   
-  public final a.a getDrawerToggleDelegate()
+  public <T extends View> T findViewById(int paramInt)
   {
-    return new a();
+    return getDelegate().findViewById(paramInt);
   }
   
-  public final MenuInflater getMenuInflater()
+  public void invalidateOptionsMenu()
   {
-    if (this.fe == null)
-    {
-      ej();
-      if (this.mActionBar == null) {
-        break label43;
-      }
-    }
-    label43:
-    for (Context localContext = this.mActionBar.getThemedContext();; localContext = this.mContext)
-    {
-      this.fe = new g(localContext);
-      return this.fe;
-    }
+    getDelegate().invalidateOptionsMenu();
   }
   
-  public final ActionBar getSupportActionBar()
+  protected void onCreate(Bundle paramBundle)
   {
-    ej();
-    return this.mActionBar;
+    getDelegate().eC();
+    super.onCreate(paramBundle);
+    getDelegate().onCreate(paramBundle);
   }
   
-  abstract void i(CharSequence paramCharSequence);
-  
-  public void onDestroy()
+  protected void onStop()
   {
-    this.OV = true;
+    super.onStop();
+    getDelegate().onStop();
   }
   
-  abstract boolean onKeyShortcut(int paramInt, KeyEvent paramKeyEvent);
+  public void onSupportActionModeFinished(b paramb) {}
   
-  public void onSaveInstanceState(Bundle paramBundle) {}
+  public void onSupportActionModeStarted(b paramb) {}
   
-  public void onStart()
+  public b onWindowStartingSupportActionMode(b.a parama)
   {
-    this.OU = true;
+    return null;
   }
   
-  public void onStop()
+  public void setContentView(int paramInt)
   {
-    this.OU = false;
+    getDelegate().setContentView(paramInt);
   }
   
-  public final void setTitle(CharSequence paramCharSequence)
+  public void setContentView(View paramView)
   {
-    this.BM = paramCharSequence;
-    i(paramCharSequence);
+    getDelegate().setContentView(paramView);
   }
   
-  private final class a
-    implements a.a
+  public void setContentView(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    a() {}
-    
-    public final void aR(int paramInt)
-    {
-      ActionBar localActionBar = e.this.getSupportActionBar();
-      if (localActionBar != null) {
-        localActionBar.setHomeActionContentDescription(paramInt);
-      }
-    }
+    getDelegate().setContentView(paramView, paramLayoutParams);
   }
   
-  class b
-    extends i
+  public void setTitle(int paramInt)
   {
-    b(Window.Callback paramCallback)
-    {
-      super();
-    }
-    
-    public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
-    {
-      return (e.this.dispatchKeyEvent(paramKeyEvent)) || (super.dispatchKeyEvent(paramKeyEvent));
-    }
-    
-    public boolean dispatchKeyShortcutEvent(KeyEvent paramKeyEvent)
-    {
-      return (super.dispatchKeyShortcutEvent(paramKeyEvent)) || (e.this.onKeyShortcut(paramKeyEvent.getKeyCode(), paramKeyEvent));
-    }
-    
-    public void onContentChanged() {}
-    
-    public boolean onCreatePanelMenu(int paramInt, Menu paramMenu)
-    {
-      if ((paramInt == 0) && (!(paramMenu instanceof h))) {
-        return false;
-      }
-      return super.onCreatePanelMenu(paramInt, paramMenu);
-    }
-    
-    public boolean onMenuOpened(int paramInt, Menu paramMenu)
-    {
-      super.onMenuOpened(paramInt, paramMenu);
-      e.this.aT(paramInt);
-      return true;
-    }
-    
-    public void onPanelClosed(int paramInt, Menu paramMenu)
-    {
-      super.onPanelClosed(paramInt, paramMenu);
-      e.this.aS(paramInt);
-    }
-    
-    public boolean onPreparePanel(int paramInt, View paramView, Menu paramMenu)
-    {
-      h localh;
-      boolean bool1;
-      if ((paramMenu instanceof h))
-      {
-        localh = (h)paramMenu;
-        if ((paramInt != 0) || (localh != null)) {
-          break label34;
-        }
-        bool1 = false;
-      }
-      label34:
-      boolean bool2;
-      do
-      {
-        return bool1;
-        localh = null;
-        break;
-        if (localh != null) {
-          localh.VQ = true;
-        }
-        bool2 = super.onPreparePanel(paramInt, paramView, paramMenu);
-        bool1 = bool2;
-      } while (localh == null);
-      localh.VQ = false;
-      return bool2;
-    }
+    super.setTitle(paramInt);
+    getDelegate().setTitle(getContext().getString(paramInt));
+  }
+  
+  public void setTitle(CharSequence paramCharSequence)
+  {
+    super.setTitle(paramCharSequence);
+    getDelegate().setTitle(paramCharSequence);
+  }
+  
+  final boolean superDispatchKeyEvent(KeyEvent paramKeyEvent)
+  {
+    return super.dispatchKeyEvent(paramKeyEvent);
   }
 }
 

@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/f1" style="@style/lx"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.video.ObservableTextureView android:id="@id/b60" android:layout_width="1.0dip" android:layout_height="1.0dip" />
-    <FrameLayout android:id="@id/b61" android:layout_width="@dimen/a49" android:layout_height="@dimen/a49" android:layout_marginTop="@dimen/f" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
-        <com.tencent.mm.plugin.emojicapture.ui.EmojiCaptureTextureView android:id="@id/b62" android:layout_width="@dimen/a49" android:layout_height="@dimen/a49" />
-        <com.tencent.mm.plugin.emojicapture.ui.capture.CaptureDecoration android:id="@id/b63" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/b64" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/b65" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:id="@id/b66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c" android:minWidth="@dimen/a3k" android:minHeight="@dimen/a3k" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/b67" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:src="@raw/flip_camera_icon_nor" android:layout_alignTop="@id/b61" android:layout_marginEnd="8.0dip" android:layout_alignEnd="@id/b61" />
-    <ImageView android:id="@id/b68" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:src="@raw/voice_input_icon" android:layout_alignBottom="@id/b61" android:layout_marginEnd="12.0dip" android:layout_alignEnd="@id/b61" />
-    <TextView android:textSize="@dimen/mr" android:id="@id/b69" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/td" android:text="@string/a_i" android:layout_above="@id/b66" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/b6_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/tc" android:src="@raw/close_icon_nor" android:layout_alignTop="@id/b66" android:layout_marginEnd="@dimen/tb" android:layout_toStartOf="@id/b66" />
-    <ImageView android:id="@id/b6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/tc" android:src="@raw/album_icon_nor" android:layout_alignTop="@id/b66" android:layout_marginStart="@dimen/tb" android:layout_toEndOf="@id/b66" />
-    <Button android:id="@id/b6b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/kv" android:layout_marginRight="@dimen/kv" android:text="@string/a3c" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/mw" />
-</merge>
+    <RelativeLayout android:id="@id/om" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/f1">
+        <com.tencent.mm.ui.AddressView android:id="@id/ok" android:layout_width="fill_parent" android:layout_height="@dimen/f1" />
+    </RelativeLayout>
+</LinearLayout>

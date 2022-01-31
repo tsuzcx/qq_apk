@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletCardImportUI$1$1
   implements Runnable
@@ -9,9 +10,11 @@ final class WalletCardImportUI$1$1
   
   public final void run()
   {
-    if (this.qCy != WalletCardImportUI.a(this.qCz.qCx).getVisibility()) {
-      WalletCardImportUI.a(this.qCz.qCx).setVisibility(this.qCy);
+    AppMethodBeat.i(47264);
+    if (this.upi != WalletCardImportUI.a(this.upj.uph).getVisibility()) {
+      WalletCardImportUI.a(this.upj.uph).setVisibility(this.upi);
     }
+    AppMethodBeat.o(47264);
   }
 }
 

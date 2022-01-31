@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.facedetect.e;
 
 public abstract interface a$b
 {
-  public abstract void Cr(String paramString);
+  public abstract void Ns(String paramString);
 }
 
 

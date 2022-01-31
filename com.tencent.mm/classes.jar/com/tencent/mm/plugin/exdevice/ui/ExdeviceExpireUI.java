@@ -1,28 +1,36 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 public class ExdeviceExpireUI
   extends MMActivity
 {
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.exdevice_expire_ui;
+    return 2130969452;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(19967);
     super.onCreate(paramBundle);
-    setMMTitle(R.l.exdevice_rank_tile);
+    setMMTitle(2131299461);
     setBackBtn(new ExdeviceExpireUI.1(this));
+    AppMethodBeat.o(19967);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceExpireUI
  * JD-Core Version:    0.7.0.1
  */

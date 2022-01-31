@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.lucky.a.b;
 import com.tencent.mm.plugin.sns.lucky.b.a;
-import com.tencent.mm.plugin.sns.model.af;
+import com.tencent.mm.plugin.sns.model.ag;
 import com.tencent.mm.plugin.sns.storage.o;
-import com.tencent.mm.pluginsdk.model.t.a;
+import com.tencent.mm.pluginsdk.model.s.a;
 
 final class SnsBrowseUI$1
-  implements t.a
+  implements s.a
 {
   SnsBrowseUI$1(SnsBrowseUI paramSnsBrowseUI) {}
   
-  public final void bIy()
+  public final void cuT()
   {
-    b.jdMethod_if(44);
-    a.a(4, af.bDF().OB(SnsBrowseUI.a(this.oVL)));
+    AppMethodBeat.i(38749);
+    b.kS(44);
+    a.a(4, ag.cpf().abv(SnsBrowseUI.a(this.rOg)));
+    AppMethodBeat.o(38749);
   }
 }
 

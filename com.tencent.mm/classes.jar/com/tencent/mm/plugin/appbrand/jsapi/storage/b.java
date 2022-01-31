@@ -1,23 +1,38 @@
 package com.tencent.mm.plugin.appbrand.jsapi.storage;
 
+import com.tencent.luggage.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.f;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
 
 public final class b
-  extends s
+  extends u<h>
 {
   public static final int CTRL_INDEX = 18;
   public static final String NAME = "clearStorageSync";
   
-  public final String a(c paramc, JSONObject paramJSONObject)
+  private String b(h paramh, int paramInt)
   {
-    paramJSONObject = new JsApiClearStorageTask();
-    paramJSONObject.appId = paramc.getAppId();
-    AppBrandMainProcessService.b(paramJSONObject);
-    return h("ok", null);
+    AppMethodBeat.i(102025);
+    JsApiClearStorageTask localJsApiClearStorageTask = new JsApiClearStorageTask();
+    localJsApiClearStorageTask.appId = paramh.getAppId();
+    localJsApiClearStorageTask.ias = paramInt;
+    AppBrandMainProcessService.b(localJsApiClearStorageTask);
+    paramh = j("ok", null);
+    AppMethodBeat.o(102025);
+    return paramh;
+  }
+  
+  private String c(h paramh, int paramInt)
+  {
+    AppMethodBeat.i(102026);
+    ((com.tencent.luggage.sdk.customize.b)e.q(com.tencent.luggage.sdk.customize.b.class)).cc(paramh.getAppId()).I(paramInt, paramh.getAppId());
+    paramh = j("ok", null);
+    AppMethodBeat.o(102026);
+    return paramh;
   }
 }
 

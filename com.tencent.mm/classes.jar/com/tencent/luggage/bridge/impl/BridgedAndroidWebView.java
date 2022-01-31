@@ -5,13 +5,14 @@ import android.util.AttributeSet;
 import android.webkit.WebChromeClient;
 import android.webkit.WebViewClient;
 import com.tencent.luggage.bridge.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class BridgedAndroidWebView
   extends BridgedAndroidWebViewBase
 {
-  private o bhF = new o(this);
-  private WebViewClient bhV = new BridgedAndroidWebView.1(this);
-  private WebChromeClient bhW = new BridgedAndroidWebView.2(this);
+  private o byf;
+  private WebViewClient byv;
+  private WebChromeClient byw;
   
   public BridgedAndroidWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,13 +22,18 @@ public class BridgedAndroidWebView
   public BridgedAndroidWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setWebViewClient(this.bhV);
-    setWebChromeClient(this.bhW);
+    AppMethodBeat.i(90752);
+    this.byv = new BridgedAndroidWebView.1(this);
+    this.byw = new BridgedAndroidWebView.2(this);
+    this.byf = new o(this);
+    setWebViewClient(this.byv);
+    setWebChromeClient(this.byw);
+    AppMethodBeat.o(90752);
   }
   
   public o getBridge()
   {
-    return this.bhF;
+    return this.byf;
   }
 }
 

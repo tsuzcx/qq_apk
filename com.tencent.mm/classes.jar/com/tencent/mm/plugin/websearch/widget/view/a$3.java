@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.websearch.widget.view;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.api.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.n.d;
 import java.util.Map;
 
@@ -13,11 +14,13 @@ public final class a$3
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    y.v("FTSSearchActionSheetMgr", "selected pos %d", new Object[] { Integer.valueOf(paramInt) });
-    if (this.qXx != null) {
-      this.qXx.eA(paramInt, this.val$id);
+    AppMethodBeat.i(91475);
+    ab.v("FTSSearchActionSheetMgr", "selected pos %d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.uMM != null) {
+      this.uMM.gE(paramInt, this.val$id);
     }
-    a.b(this.qXw).remove(Integer.valueOf(this.val$id));
+    a.b(this.uML).remove(Integer.valueOf(this.val$id));
+    AppMethodBeat.o(91475);
   }
 }
 

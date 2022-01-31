@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/dt6" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:overScrollMode="always" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="20.0dip" android:id="@id/d8" android:layout_marginRight="10.0dip" android:text="" style="@style/vj" />
+        <TextView android:textSize="17.0dip" android:textColor="#ffb2b2b2" android:id="@id/de" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+</merge>

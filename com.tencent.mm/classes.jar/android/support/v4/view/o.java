@@ -1,24 +1,15 @@
 package android.support.v4.view;
 
-import android.content.Context;
-import android.os.Build.VERSION;
-import android.view.PointerIcon;
+import android.view.ViewGroup;
 
 public final class o
 {
-  Object Gb;
+  private final ViewGroup Gc;
+  public int Gd;
   
-  private o(Object paramObject)
+  public o(ViewGroup paramViewGroup)
   {
-    this.Gb = paramObject;
-  }
-  
-  public static o S(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 24) {
-      return new o(PointerIcon.getSystemIcon(paramContext, 1002));
-    }
-    return new o(null);
+    this.Gc = paramViewGroup;
   }
 }
 

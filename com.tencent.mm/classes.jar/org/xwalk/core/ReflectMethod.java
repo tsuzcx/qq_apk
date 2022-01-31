@@ -1,5 +1,6 @@
 package org.xwalk.core;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.concurrent.RejectedExecutionException;
@@ -17,12 +18,16 @@ public class ReflectMethod
   
   public ReflectMethod(Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
+    AppMethodBeat.i(85517);
     init(null, paramClass, paramString, paramVarArgs);
+    AppMethodBeat.o(85517);
   }
   
   public ReflectMethod(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
+    AppMethodBeat.i(85516);
     init(paramObject, null, paramString, paramVarArgs);
+    AppMethodBeat.o(85516);
   }
   
   public Object[] getArguments()
@@ -42,6 +47,7 @@ public class ReflectMethod
   
   public boolean init(Object paramObject, Class<?> paramClass, String paramString, Class<?>... paramVarArgs)
   {
+    AppMethodBeat.i(85518);
     this.mInstance = paramObject;
     if (paramClass != null) {}
     for (;;)
@@ -53,6 +59,7 @@ public class ReflectMethod
       if (this.mClass != null) {
         break;
       }
+      AppMethodBeat.o(85518);
       return false;
       if (paramObject != null) {
         paramClass = paramObject.getClass();
@@ -63,7 +70,9 @@ public class ReflectMethod
     try
     {
       this.mMethod = this.mClass.getMethod(this.mName, this.mParameterTypes);
-      if (this.mMethod != null) {
+      if (this.mMethod != null)
+      {
+        AppMethodBeat.o(85518);
         return true;
       }
     }
@@ -81,42 +90,56 @@ public class ReflectMethod
           paramObject = paramObject.getSuperclass();
         }
       }
+      AppMethodBeat.o(85518);
     }
     return false;
   }
   
   public Object invoke(Object... paramVarArgs)
   {
-    if (this.mMethod == null) {
-      throw new UnsupportedOperationException(toString());
+    AppMethodBeat.i(85519);
+    if (this.mMethod == null)
+    {
+      paramVarArgs = new UnsupportedOperationException(toString());
+      AppMethodBeat.o(85519);
+      throw paramVarArgs;
     }
     try
     {
       paramVarArgs = this.mMethod.invoke(this.mInstance, paramVarArgs);
+      AppMethodBeat.o(85519);
       return paramVarArgs;
     }
     catch (NullPointerException paramVarArgs)
     {
-      throw new RejectedExecutionException(paramVarArgs);
+      paramVarArgs = new RejectedExecutionException(paramVarArgs);
+      AppMethodBeat.o(85519);
+      throw paramVarArgs;
     }
     catch (IllegalArgumentException paramVarArgs)
     {
+      AppMethodBeat.o(85519);
       throw paramVarArgs;
     }
     catch (InvocationTargetException paramVarArgs)
     {
-      throw new RuntimeException(paramVarArgs.getCause());
+      paramVarArgs = new RuntimeException(paramVarArgs.getCause());
+      AppMethodBeat.o(85519);
+      throw paramVarArgs;
     }
     catch (IllegalAccessException paramVarArgs)
     {
-      label35:
-      break label35;
+      label52:
+      break label52;
     }
   }
   
   public Object invokeWithArguments()
   {
-    return invoke(this.mArguments);
+    AppMethodBeat.i(85521);
+    Object localObject = invoke(this.mArguments);
+    AppMethodBeat.o(85521);
+    return localObject;
   }
   
   public boolean isNull()
@@ -131,26 +154,28 @@ public class ReflectMethod
   
   public String toString()
   {
-    Object localObject;
-    if (this.mMethod != null) {
-      localObject = this.mMethod.toString();
-    }
-    String str;
-    do
+    AppMethodBeat.i(85520);
+    if (this.mMethod != null)
     {
-      return localObject;
-      str = "";
-      if (this.mClass != null) {
-        str = "" + this.mClass.toString() + ".";
-      }
-      localObject = str;
-    } while (this.mName == null);
-    return str + this.mName;
+      str1 = this.mMethod.toString();
+      AppMethodBeat.o(85520);
+      return str1;
+    }
+    String str1 = "";
+    if (this.mClass != null) {
+      str1 = "" + this.mClass.toString() + ".";
+    }
+    String str2 = str1;
+    if (this.mName != null) {
+      str2 = str1 + this.mName;
+    }
+    AppMethodBeat.o(85520);
+    return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     org.xwalk.core.ReflectMethod
  * JD-Core Version:    0.7.0.1
  */

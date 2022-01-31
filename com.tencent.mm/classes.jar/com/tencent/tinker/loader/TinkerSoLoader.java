@@ -15,12 +15,12 @@ public class TinkerSoLoader
 {
   public static boolean a(String paramString, ShareSecurityCheck paramShareSecurityCheck, Intent paramIntent)
   {
-    paramShareSecurityCheck = (String)paramShareSecurityCheck.wZE.get("assets/so_meta.txt");
+    paramShareSecurityCheck = (String)paramShareSecurityCheck.Bwk.get("assets/so_meta.txt");
     if (paramShareSecurityCheck == null) {
       return true;
     }
     Object localObject1 = new ArrayList();
-    ShareBsDiffPatchInfo.l(paramShareSecurityCheck, (ArrayList)localObject1);
+    ShareBsDiffPatchInfo.n(paramShareSecurityCheck, (ArrayList)localObject1);
     if (((ArrayList)localObject1).isEmpty()) {
       return true;
     }
@@ -34,15 +34,15 @@ public class TinkerSoLoader
       if (!ShareBsDiffPatchInfo.a((ShareBsDiffPatchInfo)localObject2))
       {
         paramIntent.putExtra("intent_patch_package_patch_check", -4);
-        ShareIntentUtil.a(paramIntent, -8);
+        ShareIntentUtil.b(paramIntent, -8);
         return false;
       }
-      paramShareSecurityCheck.put(((ShareBsDiffPatchInfo)localObject2).path + "/" + ((ShareBsDiffPatchInfo)localObject2).name, ((ShareBsDiffPatchInfo)localObject2).bIW);
+      paramShareSecurityCheck.put(((ShareBsDiffPatchInfo)localObject2).path + "/" + ((ShareBsDiffPatchInfo)localObject2).name, ((ShareBsDiffPatchInfo)localObject2).cqq);
     }
     localObject1 = new File(paramString);
     if ((!((File)localObject1).exists()) || (!((File)localObject1).isDirectory()))
     {
-      ShareIntentUtil.a(paramIntent, -17);
+      ShareIntentUtil.b(paramIntent, -17);
       return false;
     }
     localObject1 = paramShareSecurityCheck.keySet().iterator();
@@ -50,9 +50,9 @@ public class TinkerSoLoader
     {
       localObject2 = (String)((Iterator)localObject1).next();
       localObject2 = new File(paramString + (String)localObject2);
-      if (!SharePatchFileUtil.ae((File)localObject2))
+      if (!SharePatchFileUtil.an((File)localObject2))
       {
-        ShareIntentUtil.a(paramIntent, -18);
+        ShareIntentUtil.b(paramIntent, -18);
         paramIntent.putExtra("intent_patch_missing_lib_path", ((File)localObject2).getAbsolutePath());
         return false;
       }

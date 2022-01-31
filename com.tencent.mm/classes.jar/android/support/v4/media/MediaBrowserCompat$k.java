@@ -7,19 +7,19 @@ import java.util.List;
 
 final class MediaBrowserCompat$k
 {
-  final List<Bundle> Ba = new ArrayList();
-  final List<MediaBrowserCompat.l> eU = new ArrayList();
+  final List<Bundle> BM = new ArrayList();
+  final List<MediaBrowserCompat.l> fT = new ArrayList();
   
-  public final MediaBrowserCompat.l c(Context paramContext, Bundle paramBundle)
+  public final MediaBrowserCompat.l d(Context paramContext, Bundle paramBundle)
   {
     if (paramBundle != null) {
       paramBundle.setClassLoader(paramContext.getClassLoader());
     }
     int i = 0;
-    while (i < this.Ba.size())
+    while (i < this.BM.size())
     {
-      if (c.a((Bundle)this.Ba.get(i), paramBundle)) {
-        return (MediaBrowserCompat.l)this.eU.get(i);
+      if (c.a((Bundle)this.BM.get(i), paramBundle)) {
+        return (MediaBrowserCompat.l)this.fT.get(i);
       }
       i += 1;
     }

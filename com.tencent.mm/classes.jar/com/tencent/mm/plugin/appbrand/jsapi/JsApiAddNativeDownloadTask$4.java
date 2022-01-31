@@ -1,31 +1,36 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.r;
 import java.util.HashMap;
 import java.util.Map;
 
 final class JsApiAddNativeDownloadTask$4
   implements Runnable
 {
-  JsApiAddNativeDownloadTask$4(JsApiAddNativeDownloadTask paramJsApiAddNativeDownloadTask, JsApiAddNativeDownloadTask.AddNativeDownloadTaskTask paramAddNativeDownloadTaskTask, o paramo, int paramInt) {}
+  JsApiAddNativeDownloadTask$4(JsApiAddNativeDownloadTask paramJsApiAddNativeDownloadTask, JsApiAddNativeDownloadTask.AddNativeDownloadTaskTask paramAddNativeDownloadTaskTask, r paramr, int paramInt) {}
   
   public final void run()
   {
-    this.gfB.ahD();
+    AppMethodBeat.i(130378);
+    this.hxn.aBk();
     HashMap localHashMap = new HashMap();
-    switch (this.gfB.bcw)
+    switch (this.hxn.bsY)
     {
-    default: 
-      return;
-    case 0: 
-      this.gcp.C(this.dIS, this.gfA.h("fail:cancel", null));
-      return;
-    case 1: 
-      this.gcp.C(this.dIS, this.gfA.h("fail:download fail", null));
-      return;
     }
-    localHashMap.put("download_id", Long.valueOf(this.gfB.bFb));
-    this.gcp.C(this.dIS, this.gfA.h("ok", localHashMap));
+    for (;;)
+    {
+      AppMethodBeat.o(130378);
+      return;
+      this.bAW.h(this.bAX, this.hxm.j("fail:cancel", null));
+      AppMethodBeat.o(130378);
+      return;
+      this.bAW.h(this.bAX, this.hxm.j("fail:download fail", null));
+      AppMethodBeat.o(130378);
+      return;
+      localHashMap.put("download_id", Long.valueOf(this.hxn.cmm));
+      this.bAW.h(this.bAX, this.hxm.j("ok", localHashMap));
+    }
   }
 }
 

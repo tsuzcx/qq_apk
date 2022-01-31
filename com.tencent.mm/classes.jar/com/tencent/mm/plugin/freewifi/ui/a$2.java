@@ -1,11 +1,9 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
 import android.view.View;
-import com.tencent.mm.R.h;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vending.g.c;
+import com.tencent.mm.vending.g.f;
 
 final class a$2
   implements Runnable
@@ -14,13 +12,10 @@ final class a$2
   
   public final void run()
   {
-    View localView = a.b(this.kqX).findViewById(R.h.free_wifi_tip_view);
-    if (aq.getNetType(ae.getContext()) != 0)
-    {
-      localView.setVisibility(8);
-      return;
-    }
-    au.DS().O(new a.2.1(this, localView));
+    AppMethodBeat.i(20927);
+    View localView = a.b(this.mMK).findViewById(2131824295);
+    f.dQr().d(new a.2.3(this)).f(new a.2.2(this, localView)).d(new a.2.1(this, localView));
+    AppMethodBeat.o(20927);
   }
 }
 

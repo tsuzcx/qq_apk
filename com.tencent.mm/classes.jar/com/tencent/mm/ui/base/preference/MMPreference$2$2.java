@@ -2,19 +2,22 @@ package com.tencent.mm.ui.base.preference;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMPreference$2$2
   implements EditPreference.a
 {
   MMPreference$2$2(MMPreference.2 param2, EditPreference paramEditPreference, Preference paramPreference) {}
   
-  public final void cBt()
+  public final void dEI()
   {
-    MMPreference.c(this.vdj.vdh);
-    if (this.vdk.vdK) {
-      MMPreference.b(this.vdj.vdh).edit().putString(this.hcw.mKey, this.vdk.value).commit();
+    AppMethodBeat.i(107210);
+    MMPreference.access$202(this.zrG.zrE, true);
+    if (this.zrH.zsk) {
+      MMPreference.access$100(this.zrG.zrE).edit().putString(this.iLK.mKey, this.zrH.value).commit();
     }
-    MMPreference.d(this.vdj.vdh).notifyDataSetChanged();
+    MMPreference.access$300(this.zrG.zrE).notifyDataSetChanged();
+    AppMethodBeat.o(107210);
   }
 }
 

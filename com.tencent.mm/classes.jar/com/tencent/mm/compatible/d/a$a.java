@@ -2,7 +2,7 @@ package com.tencent.mm.compatible.d;
 
 public abstract interface a$a
 {
-  public abstract void br(long paramLong);
+  public abstract void w(long paramLong1, long paramLong2);
 }
 
 

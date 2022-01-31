@@ -1,37 +1,92 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
-import android.app.Activity;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.ai;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.permission.e;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.WebView.d;
 
 public final class j
-  extends a
+  implements a
 {
-  public static final int CTRL_INDEX = 229;
-  public static final String NAME = "setScreenBrightness";
-  float gCm = (0.0F / 0.0F);
-  float gCn;
-  
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  private static boolean aEF()
   {
-    y.d("MicroMsg.JsApiSetScreenBrightness", "JsApiSetScreenBrightness!");
-    if (paramJSONObject == null)
+    AppMethodBeat.i(131436);
+    if (MMWebView.getUsingTbsCoreVersion(ah.getContext()) >= 36867)
     {
-      paramc.C(paramInt, h("fail:data is null", null));
-      y.e("MicroMsg.JsApiSetScreenBrightness", "data is null");
-      return;
+      AppMethodBeat.o(131436);
+      return true;
     }
-    if (!(paramc.getContext() instanceof Activity))
+    if (MMWebView.getCurWebType() == WebView.d.BEq)
     {
-      y.e("MicroMsg.JsApiSetScreenBrightness", "setScreenBrightness, server context is not activity, don't do invoke");
-      paramc.C(paramInt, h("fail:context is not activity", null));
-      return;
+      AppMethodBeat.o(131436);
+      return true;
     }
-    ai.d(new j.1(this, paramJSONObject, paramc, paramInt));
+    AppMethodBeat.o(131436);
+    return false;
+  }
+  
+  public final boolean a(c paramc, ai paramai)
+  {
+    AppMethodBeat.i(131435);
+    boolean bool;
+    if (!paramc.isRunning()) {
+      bool = false;
+    }
+    while (bool)
+    {
+      AppMethodBeat.o(131435);
+      return true;
+      if (!(paramc instanceof h))
+      {
+        ab.e("MicroMsg.SensorJsEventControllerWx", "hasPermission AppBrandComponentWithExtra");
+        bool = false;
+      }
+      else
+      {
+        h localh = (h)paramc;
+        if (!(localh.getRuntime() instanceof o))
+        {
+          ab.e("MicroMsg.SensorJsEventControllerWx", "hasPermission not AppBrandRuntimeWC");
+          bool = false;
+        }
+        else
+        {
+          bool = ((o)localh.getRuntime()).wO().a(paramc, paramai);
+        }
+      }
+    }
+    AppMethodBeat.o(131435);
+    return false;
+  }
+  
+  public final int aEB()
+  {
+    AppMethodBeat.i(131433);
+    if (aEF())
+    {
+      AppMethodBeat.o(131433);
+      return 5;
+    }
+    AppMethodBeat.o(131433);
+    return 20;
+  }
+  
+  public final int aEC()
+  {
+    AppMethodBeat.i(131434);
+    if (aEF())
+    {
+      AppMethodBeat.o(131434);
+      return 20;
+    }
+    AppMethodBeat.o(131434);
+    return 200;
   }
 }
 

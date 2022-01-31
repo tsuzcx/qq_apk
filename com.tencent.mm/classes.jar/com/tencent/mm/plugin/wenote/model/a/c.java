@@ -4,22 +4,22 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract class c
 {
-  public String kgC = "";
-  public boolean rGn = false;
-  public int rGo = 0;
-  public int rGp = -1;
-  public WXRTEditText rGq;
-  public WXRTEditText rGr;
-  public WXRTEditText rGs;
-  public boolean rGt = false;
-  public boolean rGu = false;
-  public boolean rGv = false;
-  public int rGw = 0;
-  public int rGx = 0;
+  public String mBq = "";
+  public boolean vwW = false;
+  public int vwX = 0;
+  public int vwY = -1;
+  public WXRTEditText vwZ;
+  public WXRTEditText vxa;
+  public WXRTEditText vxb;
+  public boolean vxc = false;
+  public boolean vxd = false;
+  public boolean vxe = false;
+  public int vxf = 0;
+  public int vxg = 0;
   
-  public abstract String chA();
+  public abstract String dhQ();
   
-  public String chB()
+  public String dhR()
   {
     return "";
   }

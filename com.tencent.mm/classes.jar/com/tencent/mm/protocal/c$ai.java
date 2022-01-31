@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$ai
+final class c$ai
   extends c.g
 {
-  public c$ai()
+  c$ai()
   {
-    super("closeWindow", "close_window", 17, false);
+    super("clearGameData", "clearGameData", 300, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.filter.QImage;
 import com.tencent.filter.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.view.b;
 
 public class OilPaintFilter
@@ -29,6 +30,7 @@ public class OilPaintFilter
   public QImage ApplyFilter(QImage paramQImage)
   {
     int i = 0;
+    AppMethodBeat.i(86310);
     long l = nativeInitialize(paramQImage, this.type);
     int j = nativeGetBrushSize(l);
     Bitmap[] arrayOfBitmap = new Bitmap[4];
@@ -56,12 +58,13 @@ public class OilPaintFilter
       arrayOfBitmap[2] = b.a("brush/brush12.png", Bitmap.Config.ARGB_8888, j, j);
       arrayOfBitmap[3] = b.a("brush/brush13.png", Bitmap.Config.ARGB_8888, j, j);
     }
+    AppMethodBeat.o(86310);
     return paramQImage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.filter.art.OilPaintFilter
  * JD-Core Version:    0.7.0.1
  */

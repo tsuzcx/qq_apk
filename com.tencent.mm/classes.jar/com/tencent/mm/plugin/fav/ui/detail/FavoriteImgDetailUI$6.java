@@ -1,29 +1,29 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mm.protocal.c.xv;
-import java.util.HashMap;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class FavoriteImgDetailUI$6
-  implements View.OnLongClickListener
+  implements MenuItem.OnMenuItemClickListener
 {
-  FavoriteImgDetailUI$6(FavoriteImgDetailUI paramFavoriteImgDetailUI) {}
+  FavoriteImgDetailUI$6(FavoriteImgDetailUI paramFavoriteImgDetailUI, long paramLong) {}
   
-  public final boolean onLongClick(View paramView)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramView = (xv)paramView.getTag();
-    paramView = (FavoriteImgDetailUI.a)FavoriteImgDetailUI.c(this.kfM).get(paramView.kgC);
-    FavoriteImgDetailUI.a(this.kfM, paramView);
-    if (!paramView.kfU) {
-      FavoriteImgDetailUI.b(paramView);
-    }
+    AppMethodBeat.i(74381);
+    paramMenuItem = new d(this.mAv.getContext(), 1, false);
+    paramMenuItem.sao = new FavoriteImgDetailUI.6.1(this);
+    paramMenuItem.sap = new FavoriteImgDetailUI.6.2(this);
+    paramMenuItem.crd();
+    AppMethodBeat.o(74381);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteImgDetailUI.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.h.a.fl;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.sdk.b.a;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class g$79
-  implements Runnable
+final class g$79
+  implements DialogInterface.OnCancelListener
 {
-  public g$79(g paramg, WebViewJSSDKFileItem paramWebViewJSSDKFileItem) {}
+  g$79(g paramg, i parami) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    fl localfl = new fl();
-    localfl.bMj.op = 2;
-    localfl.bMj.filePath = this.rAi.fMZ;
-    a.udP.m(localfl);
-    g.C(this.rzi);
+    AppMethodBeat.i(155000);
+    this.vqm.a(this.uZa, "doChooseMedia:cancel", null);
+    AppMethodBeat.o(155000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.79
  * JD-Core Version:    0.7.0.1
  */

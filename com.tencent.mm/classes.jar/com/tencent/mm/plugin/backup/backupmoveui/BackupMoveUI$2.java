@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.backupmoveui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BackupMoveUI$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class BackupMoveUI$2
   
   public final void onClick(View paramView)
   {
-    BackupMoveUI.b(this.hJH);
+    AppMethodBeat.i(17409);
+    BackupMoveUI.e(this.jDk);
+    AppMethodBeat.o(17409);
   }
 }
 

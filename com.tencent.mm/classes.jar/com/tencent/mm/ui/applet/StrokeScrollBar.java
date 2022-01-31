@@ -2,7 +2,7 @@ package com.tencent.mm.ui.applet;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 
 public class StrokeScrollBar
@@ -13,22 +13,24 @@ public class StrokeScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  protected int getToastLayoutId()
+  public final void Kr()
   {
-    return R.i.show_head_toast_stroke;
-  }
-  
-  protected final void xZ()
-  {
-    this.lvg = new String[18];
+    AppMethodBeat.i(29979);
+    this.nSx = new String[18];
     int i = 0;
-    while (i < this.lvg.length)
+    while (i < this.nSx.length)
     {
-      this.lvg[i] = (Integer.toString(i + 3) + "劃");
+      this.nSx[i] = (Integer.toString(i + 3) + "劃");
       i += 1;
     }
-    this.lve = 2.0F;
-    this.lvf = 79;
+    this.nSv = 2.0F;
+    this.nSw = 79;
+    AppMethodBeat.o(29979);
+  }
+  
+  public int getToastLayoutId()
+  {
+    return 2130970735;
   }
 }
 

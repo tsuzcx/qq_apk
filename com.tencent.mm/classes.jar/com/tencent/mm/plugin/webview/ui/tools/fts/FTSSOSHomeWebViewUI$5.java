@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FTSSOSHomeWebViewUI$5
   implements a.a
 {
@@ -7,18 +9,22 @@ final class FTSSOSHomeWebViewUI$5
   
   public final void onAnimationEnd()
   {
-    FTSSOSHomeWebViewUI.a(this.ruD).Ff(3);
-    FTSSOSHomeWebViewUI.v(this.ruD);
+    AppMethodBeat.i(8430);
+    FTSSOSHomeWebViewUI.a(this.vkS).sendMessage(3);
+    FTSSOSHomeWebViewUI.s(this.vkS);
+    AppMethodBeat.o(8430);
   }
   
   public final void onAnimationStart()
   {
-    FTSSOSHomeWebViewUI.w(this.ruD);
+    AppMethodBeat.i(8431);
+    FTSSOSHomeWebViewUI.t(this.vkS);
+    AppMethodBeat.o(8431);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.FTSSOSHomeWebViewUI.5
  * JD-Core Version:    0.7.0.1
  */

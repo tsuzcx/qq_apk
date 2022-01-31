@@ -5,28 +5,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.tencent.mm.plugin.expt.b.a;
-import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomExptDebugUI$6
   extends ArrayAdapter
 {
-  RoomExptDebugUI$6(RoomExptDebugUI paramRoomExptDebugUI, Context paramContext, int paramInt1, int paramInt2)
+  RoomExptDebugUI$6(RoomExptDebugUI paramRoomExptDebugUI, Context paramContext)
   {
-    super(paramContext, paramInt1, paramInt2);
+    super(paramContext, 2130970589, 2131827380);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(73596);
     paramView = super.getView(paramInt, paramView, paramViewGroup);
-    paramViewGroup = (TextView)paramView.findViewById(b.b.room_expt_ui_tv);
-    if (paramInt % 2 == 0)
-    {
-      paramViewGroup.setBackgroundResource(b.a.wechat_green);
-      return paramView;
+    paramViewGroup = (TextView)paramView.findViewById(2131827380);
+    if (paramInt % 2 == 0) {
+      paramViewGroup.setBackgroundResource(2131690701);
     }
-    paramViewGroup.setBackgroundResource(b.a.transparent);
-    return paramView;
+    for (;;)
+    {
+      AppMethodBeat.o(73596);
+      return paramView;
+      paramViewGroup.setBackgroundResource(2131690605);
+    }
   }
 }
 

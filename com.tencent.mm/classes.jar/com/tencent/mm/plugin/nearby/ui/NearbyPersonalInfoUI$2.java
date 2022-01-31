@@ -3,12 +3,13 @@ package com.tencent.mm.plugin.nearby.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bn;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class NearbyPersonalInfoUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -17,34 +18,39 @@ final class NearbyPersonalInfoUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (NearbyPersonalInfoUI.a(this.mDH) != -1)
+    AppMethodBeat.i(55484);
+    if (NearbyPersonalInfoUI.a(this.pdJ) != -1)
     {
-      paramMenuItem = bn.Id();
-      paramMenuItem.sex = NearbyPersonalInfoUI.a(this.mDH);
-      bn.a(paramMenuItem);
+      paramMenuItem = bp.aba();
+      paramMenuItem.dqC = NearbyPersonalInfoUI.a(this.pdJ);
+      bp.a(paramMenuItem);
     }
-    paramMenuItem = bn.Ie();
-    if (paramMenuItem == null)
+    paramMenuItem = bp.abb();
+    if (paramMenuItem == null) {
+      NearbyPersonalInfoUI.b(this.pdJ);
+    }
+    for (;;)
     {
-      NearbyPersonalInfoUI.b(this.mDH);
+      AppMethodBeat.o(55484);
       return true;
+      String str = bo.nullAsNil(paramMenuItem.getProvince());
+      bo.nullAsNil(paramMenuItem.getCity());
+      int i = paramMenuItem.dqC;
+      if ((bo.isNullOrNil(str)) || (i == 0))
+      {
+        NearbyPersonalInfoUI.b(this.pdJ);
+      }
+      else
+      {
+        this.pdJ.startActivity(new Intent(this.pdJ, NearbyFriendsUI.class));
+        paramMenuItem = bp.aba();
+        if (i != -1) {
+          paramMenuItem.dqC = i;
+        }
+        ((j)g.E(j.class)).Yz().c(new j.a(1, bp.a(paramMenuItem)));
+        this.pdJ.finish();
+      }
     }
-    String str = bk.pm(paramMenuItem.getProvince());
-    bk.pm(paramMenuItem.getCity());
-    int i = paramMenuItem.sex;
-    if ((bk.bl(str)) || (i == 0))
-    {
-      NearbyPersonalInfoUI.b(this.mDH);
-      return true;
-    }
-    this.mDH.startActivity(new Intent(this.mDH, NearbyFriendsUI.class));
-    paramMenuItem = bn.Id();
-    if (i != -1) {
-      paramMenuItem.sex = i;
-    }
-    ((j)g.r(j.class)).Fv().b(new i.a(1, bn.a(paramMenuItem)));
-    this.mDH.finish();
-    return true;
   }
 }
 

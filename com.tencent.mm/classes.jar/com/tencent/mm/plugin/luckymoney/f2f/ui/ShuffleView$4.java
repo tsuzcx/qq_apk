@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShuffleView$4
   implements Animator.AnimatorListener
@@ -14,18 +15,22 @@ final class ShuffleView$4
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    ShuffleView.a(this.lPv, false);
-    ShuffleView.u(this.lPv).setVisibility(0);
-    if (ShuffleView.v(this.lPv) != null) {
-      ShuffleView.v(this.lPv).start();
+    AppMethodBeat.i(42229);
+    ShuffleView.a(this.omN, false);
+    ShuffleView.u(this.omN).setVisibility(0);
+    if (ShuffleView.v(this.omN) != null) {
+      ShuffleView.v(this.omN).start();
     }
+    AppMethodBeat.o(42229);
   }
   
   public final void onAnimationRepeat(Animator paramAnimator) {}
   
   public final void onAnimationStart(Animator paramAnimator)
   {
-    ShuffleView.a(this.lPv, true);
+    AppMethodBeat.i(42228);
+    ShuffleView.a(this.omN, true);
+    AppMethodBeat.o(42228);
   }
 }
 

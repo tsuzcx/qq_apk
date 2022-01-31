@@ -1,21 +1,43 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.r;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cg;
+import com.tencent.mm.plugin.sns.data.i;
+import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.b.d;
 
 final class s$9
-  implements DialogInterface.OnCancelListener
+  implements View.OnClickListener
 {
-  s$9(s params, r paramr) {}
+  s$9(s params, n paramn) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface)
+  public final void onClick(View paramView)
   {
-    g.DQ();
-    g.DO().dJT.c(this.oPJ);
+    AppMethodBeat.i(145457);
+    ab.i("MicroMsg.GalleryTitleManager", "request deal QBAR string");
+    if (this.rHr.rHk.isShowing()) {
+      this.rHr.rHk.cre();
+    }
+    paramView = new Bundle();
+    paramView.putString("stat_msg_id", "sns_" + i.lq(this.rHq.field_snsId));
+    paramView.putString("stat_send_msg_user", this.rHq.field_userName);
+    paramView.putInt("stat_scene", 3);
+    s locals = this.rHr;
+    ab.i("MicroMsg.GalleryTitleManager", "request deal QBAR string");
+    cg localcg = new cg();
+    localcg.cpD.activity = ((Activity)locals.context);
+    localcg.cpD.cnR = locals.rGz;
+    localcg.cpD.cpE = locals.cpE;
+    localcg.cpD.cpF = locals.cpF;
+    localcg.cpD.cpJ = paramView;
+    a.ymk.l(localcg);
+    AppMethodBeat.o(145457);
   }
 }
 

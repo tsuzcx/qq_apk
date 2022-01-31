@@ -1,114 +1,14 @@
 package android.support.v4.view;
 
-import android.os.Build.VERSION;
-import android.view.WindowInsets;
+import android.view.View;
 
-public final class y
+public abstract interface y
 {
-  public final Object HI;
+  public abstract void aB(View paramView);
   
-  private y(Object paramObject)
-  {
-    this.HI = paramObject;
-  }
+  public abstract void aC(View paramView);
   
-  static y G(Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    return new y(paramObject);
-  }
-  
-  static Object c(y paramy)
-  {
-    if (paramy == null) {
-      return null;
-    }
-    return paramy.HI;
-  }
-  
-  public final y dv()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return new y(((WindowInsets)this.HI).consumeSystemWindowInsets());
-    }
-    return null;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (this == paramObject) {}
-    do
-    {
-      return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (y)paramObject;
-      if (this.HI != null) {
-        break;
-      }
-    } while (paramObject.HI == null);
-    return false;
-    return this.HI.equals(paramObject.HI);
-  }
-  
-  public final y f(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return new y(((WindowInsets)this.HI).replaceSystemWindowInsets(paramInt1, paramInt2, paramInt3, paramInt4));
-    }
-    return null;
-  }
-  
-  public final int getSystemWindowInsetBottom()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.HI).getSystemWindowInsetBottom();
-    }
-    return 0;
-  }
-  
-  public final int getSystemWindowInsetLeft()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.HI).getSystemWindowInsetLeft();
-    }
-    return 0;
-  }
-  
-  public final int getSystemWindowInsetRight()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.HI).getSystemWindowInsetRight();
-    }
-    return 0;
-  }
-  
-  public final int getSystemWindowInsetTop()
-  {
-    if (Build.VERSION.SDK_INT >= 20) {
-      return ((WindowInsets)this.HI).getSystemWindowInsetTop();
-    }
-    return 0;
-  }
-  
-  public final int hashCode()
-  {
-    if (this.HI == null) {
-      return 0;
-    }
-    return this.HI.hashCode();
-  }
-  
-  public final boolean isConsumed()
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return ((WindowInsets)this.HI).isConsumed();
-    }
-    return false;
-  }
+  public abstract void aD(View paramView);
 }
 
 

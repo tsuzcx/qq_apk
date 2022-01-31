@@ -1,5 +1,6 @@
 package com.eclipsesource.v8.utils.typedarrays;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
 public class UInt8Array
@@ -8,6 +9,8 @@ public class UInt8Array
   public UInt8Array(ArrayBuffer paramArrayBuffer)
   {
     this(paramArrayBuffer.getByteBuffer());
+    AppMethodBeat.i(75076);
+    AppMethodBeat.o(75076);
   }
   
   public UInt8Array(ByteBuffer paramByteBuffer)
@@ -17,7 +20,10 @@ public class UInt8Array
   
   public short get(int paramInt)
   {
-    return (short)(this.buffer.get(paramInt) & 0xFF);
+    AppMethodBeat.i(75077);
+    short s = (short)(this.buffer.get(paramInt) & 0xFF);
+    AppMethodBeat.o(75077);
+    return s;
   }
   
   public int getType()
@@ -27,12 +33,17 @@ public class UInt8Array
   
   public int length()
   {
-    return this.buffer.limit();
+    AppMethodBeat.i(75078);
+    int i = this.buffer.limit();
+    AppMethodBeat.o(75078);
+    return i;
   }
   
   public void put(int paramInt, short paramShort)
   {
+    AppMethodBeat.i(75079);
     this.buffer.put(paramInt, (byte)(paramShort & 0xFF));
+    AppMethodBeat.o(75079);
   }
 }
 

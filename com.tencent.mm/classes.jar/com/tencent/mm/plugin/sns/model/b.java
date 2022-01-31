@@ -3,19 +3,21 @@ package com.tencent.mm.plugin.sns.model;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.os.MessageQueue;
-import com.tencent.mm.ah.m;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.i.h.a;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.model.am.a;
-import com.tencent.mm.model.am.e;
+import com.tencent.mm.model.ao.a;
+import com.tencent.mm.model.ao.e;
+import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.sns.model.a.c.a;
-import com.tencent.mm.plugin.sns.model.a.h;
-import com.tencent.mm.protocal.c.awd;
+import com.tencent.mm.protocal.protobuf.bcs;
 import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.an;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.az;
 import com.tencent.mm.storage.z;
 import java.text.SimpleDateFormat;
@@ -29,658 +31,288 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class b
-  implements com.tencent.mm.ah.f, c.a
+  implements com.tencent.mm.ai.f, c.a
 {
-  static int ooB = 0;
-  private static final int ooC;
-  public byte[] dIn = new byte[0];
-  LinkedList<com.tencent.mm.plugin.sns.data.f> dtH = new LinkedList();
-  Set<b.b> dup = new HashSet();
-  private ah handler = null;
-  private long ooD = 0L;
-  private int ooE = 0;
-  private int ooF = 2;
-  private LinkedList<com.tencent.mm.plugin.sns.data.g> ooG = new LinkedList();
-  public HashMap<String, Long> ooH = new HashMap();
-  public boolean ooI = true;
-  public Set<b.a> ooJ = new HashSet();
-  private Map<String, Long> ooK = new ConcurrentHashMap();
-  Map<String, com.tencent.mm.plugin.sns.data.c> ooL = new HashMap();
+  static int rcV = 0;
+  private static final int rcW;
+  Set<b.b> bLQ;
+  public final byte[] eFQ;
+  LinkedList<com.tencent.mm.plugin.sns.data.f> elu;
+  private ak handler;
+  private long rcX;
+  private int rcY;
+  private int rcZ;
+  private LinkedList<com.tencent.mm.plugin.sns.data.g> rda;
+  public HashMap<String, Long> rdb;
+  private HashMap<String, String> rdc;
+  public boolean rdd;
+  public Set<b.a> rde;
+  private Map<String, Long> rdf;
+  Map<String, com.tencent.mm.plugin.sns.data.c> rdg;
+  public ConcurrentHashMap<String, c> rdh;
+  public CopyOnWriteArrayList<String> rdi;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 14) {}
     for (int i = 100;; i = 25)
     {
-      ooC = i;
+      rcW = i;
       return;
     }
   }
   
   public b()
   {
-    bCK();
+    AppMethodBeat.i(36107);
+    this.handler = null;
+    this.rcX = 0L;
+    this.rcY = 0;
+    this.rcZ = 2;
+    this.rda = new LinkedList();
+    this.rdb = new HashMap();
+    this.eFQ = new byte[0];
+    this.rdc = new HashMap();
+    this.rdd = true;
+    this.bLQ = new HashSet();
+    this.rde = new HashSet();
+    this.elu = new LinkedList();
+    this.rdf = new ConcurrentHashMap();
+    this.rdg = new HashMap();
+    this.rdh = new ConcurrentHashMap();
+    this.rdi = new CopyOnWriteArrayList();
+    this.handler = ag.bEf();
+    coi();
+    AppMethodBeat.o(36107);
   }
   
-  private boolean a(awd arg1, int paramInt, com.tencent.mm.plugin.sns.data.e parame, az paramaz, String paramString1, String paramString2)
+  private boolean Iu()
   {
-    if (!com.tencent.mm.plugin.sns.data.i.Nd(af.FU()))
+    AppMethodBeat.i(36118);
+    if (bo.gz(this.rcX) * 1000L > 300000L)
     {
-      y.i("MicroMsg.DownloadManager", "isHasSdcard is false accpath %s sdcard: %s", new Object[] { af.FU(), com.tencent.mm.compatible.util.e.bkF });
+      AppMethodBeat.o(36118);
+      return true;
+    }
+    AppMethodBeat.o(36118);
+    return false;
+  }
+  
+  private boolean a(bcs parambcs, int paramInt, com.tencent.mm.plugin.sns.data.e parame, az paramaz, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(36112);
+    if (!com.tencent.mm.plugin.sns.data.i.ZK(ag.getAccPath()))
+    {
+      ab.i("MicroMsg.DownloadManager", "isHasSdcard is false accpath %s sdcard: %s", new Object[] { ag.getAccPath(), com.tencent.mm.compatible.util.e.eQx });
+      AppMethodBeat.o(36112);
       return false;
     }
-    if ((???.lsK.startsWith("Locall_path")) || (???.lsK.startsWith("pre_temp_sns_pic")))
+    if ((parambcs.Id.startsWith("Locall_path")) || (parambcs.Id.startsWith("pre_temp_sns_pic")))
     {
-      y.d("MicroMsg.DownloadManager", "is a local img not need download");
+      ab.d("MicroMsg.DownloadManager", "is a local img not need download");
+      AppMethodBeat.o(36112);
       return false;
     }
-    String str = com.tencent.mm.plugin.sns.data.i.aH(paramInt, ???.lsK);
+    String str = com.tencent.mm.plugin.sns.data.i.bd(paramInt, parambcs.Id);
     for (;;)
     {
-      synchronized (this.dIn)
+      synchronized (this.eFQ)
       {
-        if (!this.ooL.containsKey(str))
+        if (!this.rdg.containsKey(str))
         {
-          y.i("MicroMsg.DownloadManager", "add list %s", new Object[] { ???.lsK });
-          this.ooL.put(str, new com.tencent.mm.plugin.sns.data.c(parame, paramInt));
-          this.dtH.add(new com.tencent.mm.plugin.sns.data.f(???, paramInt, str, paramaz, paramString1, paramString2));
+          ab.i("MicroMsg.DownloadManager", "add list %s", new Object[] { parambcs.Id });
+          this.rdg.put(str, new com.tencent.mm.plugin.sns.data.c(parame, paramInt));
+          this.elu.add(new com.tencent.mm.plugin.sns.data.f(parambcs, paramInt, str, paramaz, paramString1, paramString2));
           continue;
-          y.d("MicroMsg.DownloadManager", "tryStartNetscene size %s Tsize : %s", new Object[] { Integer.valueOf(af.bDE().bDj()), Integer.valueOf(this.ooK.size()) });
-          y.v("MicroMsg.DownloadManager", "lockwaitdownload. %s * %s memeryFiles.size() ", new Object[] { Integer.valueOf(this.ooL.size()), Integer.valueOf(this.ooL.size()), Integer.valueOf(this.ooG.size()) });
+          ab.d("MicroMsg.DownloadManager", "tryStartNetscene size %s Tsize : %s", new Object[] { Integer.valueOf(ag.cpe().coI()), Integer.valueOf(this.rdf.size()) });
+          ab.v("MicroMsg.DownloadManager", "lockwaitdownload. %s * %s memeryFiles.size() ", new Object[] { Integer.valueOf(this.rdg.size()), Integer.valueOf(this.rdg.size()), Integer.valueOf(this.rda.size()) });
           if (Looper.myLooper() == null) {
-            break label486;
+            break label430;
           }
-          Looper.myQueue().addIdleHandler(new b.c(this));
-          if (bk.cn(this.ooD) * 1000L <= 300000L) {
-            break label497;
+          Looper.myQueue().addIdleHandler(new b.d(this));
+          cok();
+          col();
+          if (this.elu.size() > 0) {
+            ahb();
           }
-          paramInt = 1;
-          if (paramInt != 0) {
-            this.handler.postDelayed(new b.4(this), 500L);
-          }
-          parame = new LinkedList();
-          synchronized (this.dIn)
-          {
-            paramaz = this.ooK.entrySet().iterator();
-            if (!paramaz.hasNext()) {
-              break;
-            }
-            parame.add(((Map.Entry)paramaz.next()).getKey());
-          }
+          AppMethodBeat.o(36112);
+          return true;
         }
         else
         {
-          parame = this.dtH.iterator();
+          parame = this.elu.iterator();
         }
         if (!parame.hasNext()) {
           continue;
         }
         paramaz = (com.tencent.mm.plugin.sns.data.f)parame.next();
-        if ((!paramaz.bZK.lsK.equals(???.lsK)) || (paramaz.requestType != paramInt)) {
+        if ((paramaz.cIc == null) || (!paramaz.cIc.Id.equals(parambcs.Id)) || (paramaz.requestType != paramInt)) {
           continue;
         }
-        if (this.dtH.remove(paramaz)) {
-          this.dtH.addLast(paramaz);
+        if (this.elu.remove(paramaz)) {
+          this.elu.addLast(paramaz);
         }
-        y.v("MicroMsg.DownloadManager", "update the donwload list ");
+        ab.v("MicroMsg.DownloadManager", "update the donwload list ");
       }
-      label486:
-      y.w("MicroMsg.DownloadManager", "Looper.myLooper() == null");
-      continue;
-      label497:
-      paramInt = 0;
+      label430:
+      ab.w("MicroMsg.DownloadManager", "Looper.myLooper() == null");
     }
-    parame = parame.iterator();
-    while (parame.hasNext())
+  }
+  
+  private static boolean aae(String paramString)
+  {
+    AppMethodBeat.i(36122);
+    if ((paramString == null) || (paramString.equals("")))
     {
-      paramaz = (String)parame.next();
-      if ((this.ooK.containsKey(paramaz)) && (bk.cn(((Long)this.ooK.get(paramaz)).longValue()) * 1000L > 300000L))
-      {
-        y.d("MicroMsg.DownloadManager", "too long to download");
-        this.ooK.remove(paramaz);
-        this.ooL.remove(paramaz);
-      }
+      ab.d("MicroMsg.DownloadManager", "url  ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(36122);
+      return false;
     }
-    if (this.dtH.size() > 0) {
-      Om();
-    }
+    AppMethodBeat.o(36122);
     return true;
   }
   
-  public static void bCI() {}
-  
-  public static boolean bCJ()
+  private void coi()
   {
-    return false;
-  }
-  
-  private void bCK()
-  {
-    synchronized (this.dIn)
+    AppMethodBeat.i(36108);
+    synchronized (this.eFQ)
     {
-      this.dtH.clear();
-      this.ooL.clear();
-      this.ooK.clear();
-      this.ooG.clear();
-      this.ooH.clear();
+      this.elu.clear();
+      this.rdg.clear();
+      this.rdf.clear();
+      this.rda.clear();
+      this.rdb.clear();
+      AppMethodBeat.o(36108);
       return;
     }
   }
   
-  private boolean bCL()
+  private boolean coj()
   {
-    synchronized (this.dIn)
+    AppMethodBeat.i(36109);
+    synchronized (this.eFQ)
     {
-      if ((this.ooG != null) && (this.ooG.size() > 0))
+      if ((this.rda != null) && (this.rda.size() > 0))
       {
-        com.tencent.mm.plugin.sns.data.g localg = (com.tencent.mm.plugin.sns.data.g)this.ooG.remove();
-        new as().p(new com.tencent.mm.plugin.sns.data.g[] { localg });
+        com.tencent.mm.plugin.sns.data.g localg = (com.tencent.mm.plugin.sns.data.g)this.rda.remove();
+        new at().v(new com.tencent.mm.plugin.sns.data.g[] { localg });
+        AppMethodBeat.o(36109);
         return true;
       }
+      AppMethodBeat.o(36109);
       return false;
     }
   }
   
-  public final boolean Nm(String paramString)
+  public final void a(int paramInt1, bcs parambcs, int paramInt2, boolean paramBoolean1, String paramString, int paramInt3, int paramInt4, boolean paramBoolean2)
   {
-    synchronized (this.dIn)
+    AppMethodBeat.i(36124);
+    if (parambcs == null) {}
+    for (??? = Integer.valueOf(-1);; ??? = parambcs.Id)
     {
-      if (this.ooK.containsKey(com.tencent.mm.plugin.sns.data.i.aH(1, paramString))) {
-        return true;
-      }
-      if (this.ooK.containsKey(com.tencent.mm.plugin.sns.data.i.aH(5, paramString))) {
-        return true;
-      }
-    }
-    return false;
-  }
-  
-  public final boolean Nn(String paramString)
-  {
-    synchronized (this.dIn)
-    {
-      return (this.ooK.containsKey(com.tencent.mm.plugin.sns.data.i.aH(2, paramString))) || (this.ooK.containsKey(com.tencent.mm.plugin.sns.data.i.aH(8, paramString)));
-    }
-  }
-  
-  public final void No(String paramString)
-  {
-    for (;;)
-    {
-      int i;
-      synchronized (this.dIn)
+      ab.i("MicroMsg.DownloadManager", "state:%d, mediaId:%s, reqDownloadType:%d, isThumb:%b,requestKey:%s, totalSize:%d", new Object[] { Integer.valueOf(paramInt1), ???, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean1), paramString, Integer.valueOf(paramInt3) });
+      if (!ag.coN())
       {
-        y.d("MicroMsg.DownloadManager", "unLockDownLoad the thread id is %s %s", new Object[] { Long.valueOf(Thread.currentThread().getId()), paramString });
-        Object localObject1 = (com.tencent.mm.plugin.sns.data.c)this.ooL.get(paramString);
-        com.tencent.mm.plugin.sns.data.e locale;
-        Object localObject2;
-        if (localObject1 != null)
-        {
-          locale = ((com.tencent.mm.plugin.sns.data.c)localObject1).omO;
-          if (locale != null)
-          {
-            g localg = af.bDC();
-            localObject2 = (awd)locale.list.get(0);
-            i = 1;
-            if (i >= locale.list.size()) {
-              break label339;
-            }
-            localObject1 = (awd)locale.list.get(i);
-            if ((paramString == null) || (paramString.indexOf(((awd)localObject1).lsK) < 0)) {
-              break label342;
-            }
-            localObject2 = localObject1;
-            String str1 = an.eJ(af.getAccSnsPath(), ((awd)localObject2).lsK);
-            if (locale.omU != 0) {
-              continue;
-            }
-            localObject1 = com.tencent.mm.plugin.sns.data.i.f((awd)localObject2);
-            String str2 = com.tencent.mm.plugin.sns.data.i.aG(locale.omU, ((awd)localObject2).lsK);
-            if (!localg.ooR.aC(str2)) {
-              new g.b(localg, com.tencent.mm.plugin.sns.data.i.aG(locale.omU, ((awd)localObject2).lsK), str1 + (String)localObject1, str1, (awd)localObject2, locale.omU).p(new String[] { "" });
-            }
-          }
-        }
-        this.ooL.remove(paramString);
-        return;
-        if (locale.omU == 4)
-        {
-          localObject1 = com.tencent.mm.plugin.sns.data.i.g((awd)localObject2);
-          continue;
-        }
-        if (locale.omU == 5)
-        {
-          localObject1 = com.tencent.mm.plugin.sns.data.i.g((awd)localObject2);
-          continue;
-        }
-        if (locale.omU == 3)
-        {
-          localObject1 = com.tencent.mm.plugin.sns.data.i.l((awd)localObject2);
-          continue;
-        }
-        localObject1 = com.tencent.mm.plugin.sns.data.i.e((awd)localObject2);
-      }
-      label339:
-      continue;
-      label342:
-      i += 1;
-    }
-  }
-  
-  public final void Np(String paramString)
-  {
-    af.aXq().post(new b.5(this, paramString));
-  }
-  
-  public final void Om()
-  {
-    if (!this.ooI) {}
-    do
-    {
-      return;
-      if (af.bDo())
-      {
-        bCK();
-        return;
-      }
-    } while (!com.tencent.mm.plugin.sns.data.i.Nd(af.FU()));
-    int i = this.ooF;
-    if (com.tencent.mm.platformtools.ae.eSu > 0) {
-      i = com.tencent.mm.platformtools.ae.eSu;
-    }
-    com.tencent.mm.plugin.sns.data.f localf;
-    synchronized (this.dIn)
-    {
-      if ((this.dtH.size() <= 0) || (af.bDE().bDj() + this.ooK.size() > i)) {
-        break label579;
-      }
-      y.i("MicroMsg.DownloadManager", "tryStartNetscene size %s Tsize : %s listsize %s max_thread_downloading: %s", new Object[] { Integer.valueOf(af.bDE().bDj()), Integer.valueOf(this.ooK.size()), Integer.valueOf(this.dtH.size()), Integer.valueOf(this.ooF) });
-      localf = (com.tencent.mm.plugin.sns.data.f)this.dtH.removeLast();
-      if (localf == null) {
-        return;
-      }
-    }
-    awd localawd = localf.bZK;
-    i = localf.requestType;
-    String str1 = localf.key;
-    String str2 = localf.omV;
-    String str3 = localf.omW;
-    if ((!this.ooL.containsKey(str1)) || (this.ooL.get(str1) == null))
-    {
-      this.ooL.remove(str1);
-      return;
-    }
-    com.tencent.mm.plugin.sns.data.e locale = ((com.tencent.mm.plugin.sns.data.c)this.ooL.get(str1)).omO;
-    int j = i;
-    boolean bool;
-    Object localObject3;
-    Object localObject2;
-    label371:
-    int k;
-    if (i == 1)
-    {
-      j = i;
-      if (localawd.omL)
-      {
-        j = 8;
-        break label1245;
-        bool = true;
-        localObject3 = localawd.trP;
-        localObject2 = localObject3;
-        if (j == 7)
-        {
-          localObject2 = localObject3;
-          if (!bk.bl(localawd.trZ)) {
-            localObject2 = localawd.trZ;
-          }
-        }
-        i = localawd.trQ;
-        if ((bk.bl((String)localObject2)) && (localawd.hQR == 2))
-        {
-          localObject2 = localawd.kSC;
-          i = localawd.trO;
-          label1036:
-          for (;;)
-          {
-            label923:
-            if ((localObject2 == null) || (((String)localObject2).equals("")))
-            {
-              y.d("MicroMsg.DownloadManager", "url  " + (String)localObject2);
-              k = 0;
-              label412:
-              if (k == 0)
-              {
-                this.ooL.remove(str1);
-                return;
-                label432:
-                if (j == 6)
-                {
-                  bool = false;
-                  localObject2 = localawd.trW;
-                  i = localawd.trO;
-                }
-                else
-                {
-                  bool = false;
-                  localObject2 = localawd.kSC;
-                  i = localawd.trO;
-                }
-              }
-              else
-              {
-                if (i != 2) {
-                  break label1269;
-                }
-                if (!af.bDE().isDownloading(str1))
-                {
-                  y.d("MicroMsg.DownloadManager", "to downLoad scene " + localawd.lsK + "  " + (String)localObject2);
-                  com.tencent.mm.kernel.g.DQ();
-                  com.tencent.mm.kernel.g.DO().dJT.a(new p(localawd, localawd.lsK, (String)localObject2, localawd.hQR, bool, j, str1), 0);
-                  af.bDE().NA(str1);
-                }
-                label579:
-                label583:
-                do
-                {
-                  return;
-                  if (i == 0) {
-                    y.e("MicroMsg.DownloadManager", "others http: urlType" + i + " -- url : " + (String)localObject2 + " isThumb :" + bool);
-                  }
-                } while (this.ooK.containsKey(str1));
-                y.i("MicroMsg.DownloadManager", "to downLoad cdn " + localawd.lsK + "  " + (String)localObject2);
-                if ((localawd != null) && (j != 6) && (j != 8) && (this.ooH.containsKey(str1)))
-                {
-                  long l = ((Long)this.ooH.get(str1)).longValue();
-                  if (System.currentTimeMillis() - l < 300000L)
-                  {
-                    this.ooL.remove(str1);
-                    y.w("MicroMsg.DownloadManager", "download error pass " + l + " url " + (String)localObject2 + " id: " + localawd.lsK);
-                    return;
-                  }
-                }
-                this.ooK.put(str1, Long.valueOf(bk.UX()));
-                if ((j == 2) || (j == 8))
-                {
-                  com.tencent.mm.kernel.g.DQ();
-                  i = bk.a((Integer)com.tencent.mm.kernel.g.DP().Dz().get(68391, null), 0);
-                  com.tencent.mm.kernel.g.DQ();
-                  com.tencent.mm.kernel.g.DP().Dz().o(68391, Integer.valueOf(i + 1));
-                }
-                localObject3 = new com.tencent.mm.plugin.sns.model.a.a(localawd.lsK);
-                ((com.tencent.mm.plugin.sns.model.a.a)localObject3).oqa = localawd;
-                ((com.tencent.mm.plugin.sns.model.a.a)localObject3).ouK = localf.omX;
-                if (j == 4)
-                {
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).ouI = true;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).url = ((String)localObject2);
-                  i = localawd.hQR;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).ouH = bool;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).ouJ = j;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).opZ = str1;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).omO = locale;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).omV = str2;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).omW = str3;
-                  localObject2 = null;
-                  if ((j != 1) && (j != 5) && (j != 7)) {
-                    break label1036;
-                  }
-                  localObject2 = new com.tencent.mm.plugin.sns.model.a.i(this, (com.tencent.mm.plugin.sns.model.a.a)localObject3);
-                  label1007:
-                  break;
-                }
-                for (;;)
-                {
-                  label1008:
-                  ((com.tencent.mm.plugin.sns.model.a.c)localObject2).p(new String[] { "" });
-                  break;
-                  ((com.tencent.mm.plugin.sns.model.a.a)localObject3).ouI = false;
-                  break label923;
-                  if (j != 4) {
-                    break label1287;
-                  }
-                  y.w("MicroMsg.DownloadManager", "it can not download sight, may be something warn here.");
-                  localObject2 = com.tencent.mm.model.c.c.IX().fJ("100438");
-                  bool = false;
-                  if (((com.tencent.mm.storage.c)localObject2).isValid())
-                  {
-                    if (bk.getInt((String)((com.tencent.mm.storage.c)localObject2).ctr().get("CDNDownload"), 0) == 0) {
-                      break label1281;
-                    }
-                    bool = true;
-                  }
-                  label1097:
-                  y.i("MicroMsg.DownloadManager", "is Ad %s, downloadByCDN %s", new Object[] { Boolean.valueOf(localawd.omL), Boolean.valueOf(bool) });
-                  if ((!localawd.omL) || (bool)) {
-                    localObject2 = new com.tencent.mm.plugin.sns.model.a.g(this, (com.tencent.mm.plugin.sns.model.a.a)localObject3);
-                  } else {
-                    localObject2 = new h(this, (com.tencent.mm.plugin.sns.model.a.a)localObject3);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = new com.tencent.mm.plugin.sns.model.a.e(this, (com.tencent.mm.plugin.sns.model.a.a)localObject3);
-      break label1008;
-      if (j != 6) {
-        break label1008;
-      }
-      ((com.tencent.mm.plugin.sns.model.a.a)localObject3).url = localawd.trW;
-      ((com.tencent.mm.plugin.sns.model.a.a)localObject3).bIW = localawd.trY;
-      localObject2 = new com.tencent.mm.plugin.sns.model.a.d(this, (com.tencent.mm.plugin.sns.model.a.a)localObject3);
-      break label1008;
-      label1245:
-      label1269:
-      do
-      {
-        this.ooL.remove(str1);
-        break label579;
-        break label371;
-        if ((j == 1) || (j == 5)) {
+        com.tencent.mm.kernel.g.RM();
+        if (com.tencent.mm.kernel.g.RJ().QU()) {
           break;
         }
-        if (j != 7) {
-          break label432;
-        }
-        break;
-        k = 1;
-        break label412;
-        if (i == 1) {
-          break label583;
-        }
-      } while (i != 0);
-      break label583;
-      label1281:
-      bool = false;
-      break label1097;
-      label1287:
-      if ((j != 2) && (j != 8)) {
-        if (j != 3) {
-          break label1007;
-        }
       }
-    }
-  }
-  
-  public final void T(int paramInt, boolean paramBoolean)
-  {
-    this.ooF = paramInt;
-    for (;;)
-    {
-      label122:
-      int i;
-      try
-      {
-        String str;
-        if (aq.isWifi(com.tencent.mm.sdk.platformtools.ae.getContext()))
-        {
-          str = com.tencent.mm.m.g.AA().getValue("SnsImgDownloadConcurrentCountForWifi");
-          if ((!bk.bl(str)) || (!com.tencent.mm.sdk.a.b.cqk())) {
-            break label445;
-          }
-          str = "00:00-18:30-1-3;19:30-23:00-1-2;23:00-23:59-1-3;18:30-19:30-3-5;";
-          if (bk.bl(str)) {
-            continue;
-          }
-          localObject = new SimpleDateFormat("HH:mm").format(new Date()).split(":");
-          paramInt = bk.ZR(localObject[0]);
-          paramInt = bk.ZR(localObject[1]) + paramInt * 60 - ((int)com.tencent.mm.plugin.sns.data.i.Nh() - 8) * 60;
-          if (paramInt >= 0) {
-            break label455;
-          }
-          paramInt += 1440;
-          String[] arrayOfString1 = str.split(";");
-          i = 0;
-          label134:
-          if (i >= arrayOfString1.length) {
-            continue;
-          }
-          if (bk.bl(arrayOfString1[i])) {
-            break label448;
-          }
-          localObject = arrayOfString1[i].split("-");
-          if ((localObject == null) || (localObject.length < 4))
-          {
-            y.e("MicroMsg.DownloadManager", "setMaxThread Err i%d :%s", new Object[] { Integer.valueOf(i), str });
-            break label448;
-          }
-        }
-        else
-        {
-          str = com.tencent.mm.m.g.AA().getValue("SnsImgDownloadConcurrentCountForNotWifi");
-          continue;
-        }
-        String[] arrayOfString2 = localObject[0].split(":");
-        int j = bk.ZR(arrayOfString2[0]);
-        j = bk.ZR(arrayOfString2[1]) + j * 60;
-        arrayOfString2 = localObject[1].split(":");
-        int k = bk.ZR(arrayOfString2[0]);
-        k = bk.ZR(arrayOfString2[1]) + k * 60;
-        y.i("MicroMsg.DownloadManager", "setMaxThread i:%d [%d,%d] now:%d threadcnt:[%s,%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt), localObject[2], localObject[3] });
-        if ((paramInt > k) || (paramInt <= j)) {
-          break label448;
-        }
-        if (paramBoolean)
-        {
-          localObject = localObject[2];
-          j = bk.ZR((String)localObject);
-          if (j <= 0) {
-            break label448;
-          }
-          this.ooF = j;
-        }
-      }
-      catch (Exception localException)
-      {
-        y.e("MicroMsg.DownloadManager", "setMaxThread :%s", new Object[] { bk.j(localException) });
-        y.i("MicroMsg.DownloadManager", "setMaxThread Res:%d ", new Object[] { Integer.valueOf(this.ooF) });
-        return;
-      }
-      Object localObject = localObject[3];
-      continue;
-      label445:
-      label448:
-      label455:
-      do
-      {
-        break label122;
-        break;
-        i += 1;
-        break label134;
-      } while (paramInt < 1440);
-      paramInt -= 1440;
-    }
-  }
-  
-  public final void a(int paramInt1, awd arg2, int paramInt2, boolean paramBoolean, String paramString, int paramInt3)
-  {
-    y.i("MicroMsg.DownloadManager", "state:%d, mediaId:%s, reqDownloadType:%d, isThumb:%b, requestKey:%s, totalSize:%d", new Object[] { Integer.valueOf(paramInt1), ???.lsK, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean), paramString, Integer.valueOf(paramInt3) });
-    if (!af.bDo())
-    {
-      com.tencent.mm.kernel.g.DQ();
-      if (com.tencent.mm.kernel.g.DN().Dc()) {}
-    }
-    else
-    {
-      bCK();
+      coi();
+      AppMethodBeat.o(36124);
       return;
     }
-    this.ooE += paramInt3;
+    if (paramInt1 != 2) {
+      this.rcY += paramInt3;
+    }
     for (;;)
     {
       Object localObject2;
-      synchronized (this.dIn)
+      synchronized (this.eFQ)
       {
-        if ((this.ooE <= 512000) || (this.dtH.size() != 0)) {
-          break label546;
+        if ((this.rcY <= 512000) || (this.elu.size() != 0)) {
+          break label801;
         }
-        y.d("MicroMsg.DownloadManager", "netSizeAdd %s", new Object[] { Integer.valueOf(this.ooE) });
-        am.a.dVz.bg(this.ooE, 0);
-        this.ooE = 0;
-        break label546;
-        this.ooH.put(paramString, Long.valueOf(System.currentTimeMillis()));
-        if ((paramInt1 != 3) && (paramInt1 == 1) && (paramInt2 != 3))
+        ab.d("MicroMsg.DownloadManager", "netSizeAdd %s", new Object[] { Integer.valueOf(this.rcY) });
+        ao.a.flJ.cq(this.rcY, 0);
+        this.rcY = 0;
+        break label801;
+        if (paramBoolean2) {
+          this.rdb.put(paramString, Long.valueOf(System.currentTimeMillis()));
+        }
+        if ((paramInt1 != 3) && (paramInt1 == 1) && (paramInt2 != 3) && (parambcs != null))
         {
-          ??? = af.bDC();
-          y.d("MicroMsg.LazyerImageLoader2", "updateCache " + ???.lsK);
-          localObject2 = com.tencent.mm.plugin.sns.data.i.aG(1, ???.lsK);
-          localObject2 = (n)((g)???).ooR.get(localObject2);
+          ??? = ag.cpc();
+          ab.d("MicroMsg.LazyerImageLoader2", "updateCache " + parambcs.Id);
+          localObject2 = com.tencent.mm.plugin.sns.data.i.bc(1, parambcs.Id);
+          localObject2 = (n)((g)???).rdp.get((String)localObject2);
           if (com.tencent.mm.plugin.sns.data.i.b((n)localObject2))
           {
-            ((n)localObject2).Ff();
-            y.d("MicroMsg.LazyerImageLoader2", "force update");
-            af.bDs().post(new g.9((g)???, ???));
+            ((n)localObject2).XU();
+            ab.d("MicroMsg.LazyerImageLoader2", "force update");
+            ag.coS().execute(new g.2((g)???, parambcs));
           }
         }
-        ??? = this.dup.iterator();
+        ??? = this.bLQ.iterator();
         if (!((Iterator)???).hasNext()) {
-          break label490;
+          break label587;
         }
         localObject2 = (b.b)((Iterator)???).next();
         if (localObject2 == null) {
           continue;
         }
-        if (paramInt1 == 2) {
-          break label438;
+        if ((paramInt1 == 2) || (parambcs == null)) {
+          break label527;
         }
-        if (paramInt2 == 3) {
-          ((b.b)localObject2).bCt();
+        if (paramInt2 == 3)
+        {
+          ((b.b)localObject2).cnV();
+          continue;
+          if ((paramInt1 != 1) && (paramInt1 != 3)) {
+            continue;
+          }
+          this.rdb.put(paramString, Long.valueOf(System.currentTimeMillis()));
         }
       }
-      if ((paramInt2 == 1) || (paramInt2 == 5) || (paramInt2 == 7)) {
-        ((b.b)localObject2).Ni(???.lsK);
-      } else if ((paramInt2 == 2) || (paramInt2 == 8)) {
-        ((b.b)localObject2).ba(???.lsK, true);
-      } else {
-        label546:
-        if ((paramInt2 == 4) || (paramInt2 == 6))
+      if ((paramInt2 == 1) || (paramInt2 == 9) || (paramInt2 == 5) || (paramInt2 == 7))
+      {
+        ((b.b)localObject2).ZU(parambcs.Id);
+      }
+      else if ((paramInt2 == 2) || (paramInt2 == 8))
+      {
+        ((b.b)localObject2).bp(parambcs.Id, true);
+      }
+      else if ((paramInt2 == 4) || (paramInt2 == 6))
+      {
+        ((b.b)localObject2).bq(parambcs.Id, true);
+        continue;
+        label527:
+        if (((paramInt2 == 2) || (paramInt2 == 8)) && (parambcs != null))
         {
-          ((b.b)localObject2).bb(???.lsK, true);
+          ((b.b)localObject2).bp(parambcs.Id, false);
+        }
+        else if (((paramInt2 == 4) || (paramInt2 == 6)) && (parambcs != null))
+        {
+          ((b.b)localObject2).bq(parambcs.Id, false);
           continue;
-          label438:
-          if ((paramInt2 == 2) || (paramInt2 == 8))
+          label587:
+          long l;
+          synchronized (this.eFQ)
           {
-            ((b.b)localObject2).ba(???.lsK, false);
-          }
-          else if ((paramInt2 == 4) || (paramInt2 == 6))
-          {
-            ((b.b)localObject2).bb(???.lsK, false);
-            continue;
-            label490:
-            synchronized (this.dIn)
-            {
-              y.d("MicroMsg.DownloadManager", "onDownLoadFinish by cdn %s", new Object[] { paramString });
-              this.ooK.remove(paramString);
-              Om();
-              No(paramString);
-              return;
+            ab.d("MicroMsg.DownloadManager", "onDownLoadFinish by cdn %s, batchDownloaded %s.", new Object[] { paramString, Boolean.valueOf(paramBoolean2) });
+            if (paramBoolean2) {
+              this.rdf.remove(paramString);
             }
+            ahb();
+            p(paramString, paramInt4, paramBoolean2);
+            paramString = this.eFQ;
+            if (parambcs == null) {}
+          }
+          label801:
+          if (9 == paramInt2) {
             if (paramInt1 != 1) {
               if (paramInt1 != 3) {}
             }
@@ -692,90 +324,731 @@ public final class b
   
   public final void a(b.b paramb)
   {
+    AppMethodBeat.i(36110);
     this.handler.post(new b.1(this, paramb));
+    AppMethodBeat.o(36110);
   }
   
-  public final boolean a(awd paramawd, int paramInt, com.tencent.mm.plugin.sns.data.e parame, az paramaz)
+  public final void a(String paramString, c paramc)
   {
-    if (paramawd == null)
+    AppMethodBeat.i(36127);
+    if ((!bo.isNullOrNil(paramString)) && (paramc != null))
     {
-      y.e("MicroMsg.DownloadManager", "unknow case media is null " + bk.csb().toString());
+      c localc = (c)this.rdh.get(paramString);
+      if ((localc == null) || (!localc.czw.equals(paramc.czw))) {
+        this.rdh.put(paramString, paramc);
+      }
+    }
+    AppMethodBeat.o(36127);
+  }
+  
+  public final void a(String paramString1, String arg2, String paramString3, h.a parama)
+  {
+    AppMethodBeat.i(145243);
+    com.tencent.mm.i.h localh = new com.tencent.mm.i.h();
+    localh.field_mediaId = paramString1;
+    localh.url = ???;
+    localh.edJ = 1;
+    localh.field_fileType = 100;
+    localh.edE = 5;
+    localh.concurrentCount = 3;
+    localh.field_fullpath = paramString3;
+    localh.edQ = parama;
+    o.alF().a(localh, false);
+    synchronized (this.rdc)
+    {
+      this.rdc.put(paramString1, paramString3);
+      AppMethodBeat.o(145243);
+      return;
+    }
+  }
+  
+  public final boolean a(bcs parambcs, int paramInt, com.tencent.mm.plugin.sns.data.e parame, az paramaz)
+  {
+    AppMethodBeat.i(36113);
+    if (parambcs == null)
+    {
+      ab.e("MicroMsg.DownloadManager", "unknow case media is null " + bo.dtY().toString());
+      AppMethodBeat.o(36113);
       return false;
     }
-    synchronized (this.dIn)
+    synchronized (this.eFQ)
     {
-      av.NN(paramawd.lsK);
-      a(paramawd, paramInt, parame, paramaz, null, null);
+      aw.aaH(parambcs.Id);
+      a(parambcs, paramInt, parame, paramaz, null, null);
+      AppMethodBeat.o(36113);
       return true;
     }
   }
   
-  public final boolean a(awd paramawd, com.tencent.mm.plugin.sns.data.e parame, az paramaz, String paramString1, String paramString2)
+  public final boolean a(bcs parambcs, com.tencent.mm.plugin.sns.data.e parame, az paramaz, String paramString1, String paramString2)
   {
-    if (paramawd == null)
+    AppMethodBeat.i(36114);
+    if (parambcs == null)
     {
-      y.e("MicroMsg.DownloadManager", "unknow case media is null " + bk.csb().toString());
+      ab.e("MicroMsg.DownloadManager", "unknow case media is null " + bo.dtY().toString());
+      AppMethodBeat.o(36114);
       return false;
     }
-    synchronized (this.dIn)
+    synchronized (this.eFQ)
     {
-      av.NN(paramawd.lsK);
-      a(paramawd, 8, parame, paramaz, paramString1, paramString2);
+      aw.aaH(parambcs.Id);
+      a(parambcs, 8, parame, paramaz, paramString1, paramString2);
+      AppMethodBeat.o(36114);
       return true;
+    }
+  }
+  
+  public final void aaa(String paramString)
+  {
+    AppMethodBeat.i(36115);
+    o.alF().j(paramString, null);
+    synchronized (this.rdc)
+    {
+      this.rdc.remove(paramString);
+      AppMethodBeat.o(36115);
+      return;
+    }
+  }
+  
+  public final boolean aab(String paramString)
+  {
+    AppMethodBeat.i(36119);
+    synchronized (this.eFQ)
+    {
+      if (this.rdf.containsKey(com.tencent.mm.plugin.sns.data.i.bd(1, paramString)))
+      {
+        AppMethodBeat.o(36119);
+        return true;
+      }
+      if (this.rdf.containsKey(com.tencent.mm.plugin.sns.data.i.bd(5, paramString)))
+      {
+        AppMethodBeat.o(36119);
+        return true;
+      }
+      AppMethodBeat.o(36119);
+      return false;
+    }
+  }
+  
+  public final boolean aac(String paramString)
+  {
+    AppMethodBeat.i(36120);
+    synchronized (this.eFQ)
+    {
+      if ((this.rdf.containsKey(com.tencent.mm.plugin.sns.data.i.bd(2, paramString))) || (this.rdf.containsKey(com.tencent.mm.plugin.sns.data.i.bd(8, paramString))))
+      {
+        AppMethodBeat.o(36120);
+        return true;
+      }
+      AppMethodBeat.o(36120);
+      return false;
+    }
+  }
+  
+  public final boolean aad(String paramString)
+  {
+    AppMethodBeat.i(145244);
+    synchronized (this.rdc)
+    {
+      if (this.rdc.containsKey(paramString))
+      {
+        AppMethodBeat.o(145244);
+        return true;
+      }
+      AppMethodBeat.o(145244);
+      return false;
+    }
+  }
+  
+  public final void aaf(String paramString)
+  {
+    AppMethodBeat.i(36125);
+    ag.bEf().post(new b.5(this, paramString));
+    AppMethodBeat.o(36125);
+  }
+  
+  public final c aag(String paramString)
+  {
+    AppMethodBeat.i(36128);
+    if (!bo.isNullOrNil(paramString))
+    {
+      paramString = (c)this.rdh.remove(paramString);
+      if (paramString != null) {
+        paramString.com();
+      }
+      AppMethodBeat.o(36128);
+      return paramString;
+    }
+    AppMethodBeat.o(36128);
+    return null;
+  }
+  
+  public final void aah(String paramString)
+  {
+    AppMethodBeat.i(36129);
+    this.rdi.add(paramString);
+    AppMethodBeat.o(36129);
+  }
+  
+  public final void ac(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(36106);
+    this.rcZ = paramInt;
+    for (;;)
+    {
+      label128:
+      int i;
+      try
+      {
+        String str;
+        if (com.tencent.mm.sdk.platformtools.at.isWifi(ah.getContext()))
+        {
+          str = com.tencent.mm.m.g.Nq().getValue("SnsImgDownloadConcurrentCountForWifi");
+          if ((!bo.isNullOrNil(str)) || (!com.tencent.mm.sdk.a.b.dsf())) {
+            break label457;
+          }
+          str = "00:00-18:30-1-3;19:30-23:00-1-2;23:00-23:59-1-3;18:30-19:30-3-5;";
+          if (bo.isNullOrNil(str)) {
+            continue;
+          }
+          localObject = new SimpleDateFormat("HH:mm").format(new Date()).split(":");
+          paramInt = bo.apV(localObject[0]);
+          paramInt = bo.apV(localObject[1]) + paramInt * 60 - ((int)com.tencent.mm.plugin.sns.data.i.afS() - 8) * 60;
+          if (paramInt >= 0) {
+            break label467;
+          }
+          paramInt += 1440;
+          String[] arrayOfString1 = str.split(";");
+          i = 0;
+          label140:
+          if (i >= arrayOfString1.length) {
+            continue;
+          }
+          if (bo.isNullOrNil(arrayOfString1[i])) {
+            break label460;
+          }
+          localObject = arrayOfString1[i].split("-");
+          if ((localObject == null) || (localObject.length < 4))
+          {
+            ab.e("MicroMsg.DownloadManager", "setMaxThread Err i%d :%s", new Object[] { Integer.valueOf(i), str });
+            break label460;
+          }
+        }
+        else
+        {
+          str = com.tencent.mm.m.g.Nq().getValue("SnsImgDownloadConcurrentCountForNotWifi");
+          continue;
+        }
+        String[] arrayOfString2 = localObject[0].split(":");
+        int j = bo.apV(arrayOfString2[0]);
+        j = bo.apV(arrayOfString2[1]) + j * 60;
+        arrayOfString2 = localObject[1].split(":");
+        int k = bo.apV(arrayOfString2[0]);
+        k = bo.apV(arrayOfString2[1]) + k * 60;
+        ab.i("MicroMsg.DownloadManager", "setMaxThread i:%d [%d,%d] now:%d threadcnt:[%s,%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(paramInt), localObject[2], localObject[3] });
+        if ((paramInt > k) || (paramInt <= j)) {
+          break label460;
+        }
+        if (paramBoolean)
+        {
+          localObject = localObject[2];
+          j = bo.apV((String)localObject);
+          if (j <= 0) {
+            break label460;
+          }
+          this.rcZ = j;
+        }
+      }
+      catch (Exception localException)
+      {
+        ab.e("MicroMsg.DownloadManager", "setMaxThread :%s", new Object[] { bo.l(localException) });
+        ab.i("MicroMsg.DownloadManager", "setMaxThread Res:%d ", new Object[] { Integer.valueOf(this.rcZ) });
+        AppMethodBeat.o(36106);
+        return;
+      }
+      Object localObject = localObject[3];
+      continue;
+      label457:
+      label460:
+      label467:
+      do
+      {
+        break label128;
+        break;
+        i += 1;
+        break label140;
+      } while (paramInt < 1440);
+      paramInt -= 1440;
+    }
+  }
+  
+  public final void ahb()
+  {
+    AppMethodBeat.i(36123);
+    if (!this.rdd)
+    {
+      AppMethodBeat.o(36123);
+      return;
+    }
+    if (ag.coN())
+    {
+      coi();
+      AppMethodBeat.o(36123);
+      return;
+    }
+    if (!com.tencent.mm.plugin.sns.data.i.ZK(ag.getAccPath()))
+    {
+      AppMethodBeat.o(36123);
+      return;
+    }
+    int i = this.rcZ;
+    if (com.tencent.mm.platformtools.ae.gkp > 0) {
+      i = com.tencent.mm.platformtools.ae.gkp;
+    }
+    com.tencent.mm.plugin.sns.data.f localf;
+    bcs localbcs;
+    String str2;
+    String str3;
+    String str4;
+    String str1;
+    SparseArray localSparseArray1;
+    com.tencent.mm.plugin.sns.data.e locale;
+    SparseArray localSparseArray2;
+    int j;
+    Object localObject4;
+    boolean bool1;
+    label457:
+    label487:
+    Object localObject3;
+    for (;;)
+    {
+      synchronized (this.eFQ)
+      {
+        Object localObject1;
+        if ((this.elu.size() > 0) && (ag.cpe().coI() + this.rdf.size() <= i))
+        {
+          ab.i("MicroMsg.DownloadManager", "tryStartNetscene size %s Tsize : %s listsize %s max_thread_downloading: %s", new Object[] { Integer.valueOf(ag.cpe().coI()), Integer.valueOf(this.rdf.size()), Integer.valueOf(this.elu.size()), Integer.valueOf(this.rcZ) });
+          localf = (com.tencent.mm.plugin.sns.data.f)this.elu.removeLast();
+          if (localf == null)
+          {
+            AppMethodBeat.o(36123);
+            return;
+          }
+          localbcs = localf.cIc;
+          i = localf.requestType;
+          str2 = localf.key;
+          str3 = localf.rbk;
+          str4 = localf.rbl;
+          str1 = localf.czw;
+          localSparseArray1 = localf.rbn;
+          if ((!this.rdg.containsKey(str2)) || (this.rdg.get(str2) == null))
+          {
+            this.rdg.remove(str2);
+            AppMethodBeat.o(36123);
+            return;
+          }
+          locale = ((com.tencent.mm.plugin.sns.data.c)this.rdg.get(str2)).rbc;
+          localSparseArray2 = ((com.tencent.mm.plugin.sns.data.c)this.rdg.get(str2)).rbd;
+          j = i;
+          if (i != 1) {
+            break label1493;
+          }
+          j = i;
+          if (!localbcs.raZ) {
+            break label1493;
+          }
+          j = 8;
+          break label1493;
+          boolean bool2 = true;
+          localObject1 = localbcs.xrS;
+          localObject4 = localObject1;
+          if (j == 7)
+          {
+            localObject4 = localObject1;
+            if (!bo.isNullOrNil(localbcs.xsc)) {
+              localObject4 = localbcs.xsc;
+            }
+          }
+          int k = localbcs.xrT;
+          i = k;
+          localObject1 = localObject4;
+          bool1 = bool2;
+          if (bo.isNullOrNil((String)localObject4))
+          {
+            i = k;
+            localObject1 = localObject4;
+            bool1 = bool2;
+            if (localbcs.jKs == 2)
+            {
+              localObject1 = localbcs.Url;
+              i = localbcs.xrR;
+              bool1 = bool2;
+            }
+          }
+          if (!aae((String)localObject1))
+          {
+            this.rdg.remove(str2);
+            AppMethodBeat.o(36123);
+            return;
+            if (j == 6)
+            {
+              bool1 = false;
+              localObject1 = localbcs.xrZ;
+              i = localbcs.xrR;
+              continue;
+            }
+            if (j == 9)
+            {
+              localObject4 = (bcs)localSparseArray1.valueAt(0);
+              bool1 = true;
+              localObject1 = ((bcs)localObject4).xrS;
+              i = ((bcs)localObject4).xrT;
+              if ((!bo.isNullOrNil((String)localObject1)) || (((bcs)localObject4).jKs != 2)) {
+                break label1490;
+              }
+              localObject1 = ((bcs)localObject4).Url;
+              i = ((bcs)localObject4).xrR;
+              break label1512;
+            }
+            bool1 = false;
+            localObject1 = localbcs.Url;
+            i = localbcs.xrR;
+            continue;
+          }
+          if (i != 2) {
+            continue;
+          }
+          if (!ag.cpe().isDownloading(str2))
+          {
+            ab.d("MicroMsg.DownloadManager", "to downLoad scene " + localbcs.Id + "  " + (String)localObject1);
+            com.tencent.mm.kernel.g.RM();
+            com.tencent.mm.kernel.g.RK().eHt.a(new p(localbcs, localbcs.Id, (String)localObject1, localbcs.jKs, bool1, j, str2), 0);
+            ag.cpe().aau(str2);
+          }
+        }
+        label700:
+        AppMethodBeat.o(36123);
+        return;
+        if ((i != 1) && (i != 0)) {
+          break label1475;
+        }
+        if (i == 0) {
+          ab.e("MicroMsg.DownloadManager", "others http: urlType" + i + " -- url : " + (String)localObject1 + " isThumb :" + bool1);
+        }
+        if (this.rdf.containsKey(str2)) {
+          continue;
+        }
+        if (j == 9)
+        {
+          ab.i("MicroMsg.DownloadManager", "batch download, snsId: %s.", new Object[] { str1 });
+          if (((localbcs == null) && ((localSparseArray1 == null) || (localSparseArray1.size() <= 0))) || (j == 6) || (j == 8) || (!this.rdb.containsKey(str2))) {
+            break;
+          }
+          long l = ((Long)this.rdb.get(str2)).longValue();
+          if (System.currentTimeMillis() - l >= 300000L) {
+            break;
+          }
+          this.rdg.remove(str2);
+          localObject4 = new StringBuilder("no need download. lastTime: ").append(l).append(" url: ").append((String)localObject1).append(" id: ");
+          if (localbcs == null)
+          {
+            localObject1 = str1;
+            ab.i("MicroMsg.DownloadManager", (String)localObject1);
+            AppMethodBeat.o(36123);
+          }
+        }
+        else
+        {
+          ab.i("MicroMsg.DownloadManager", "to downLoad cdn " + localbcs.Id + "  " + (String)localObject1);
+        }
+      }
+      localObject3 = localbcs.Id;
+    }
+    this.rdf.put(str2, Long.valueOf(bo.aox()));
+    if ((j == 2) || (j == 8))
+    {
+      com.tencent.mm.kernel.g.RM();
+      i = bo.a((Integer)com.tencent.mm.kernel.g.RL().Ru().get(68391, null), 0);
+      com.tencent.mm.kernel.g.RM();
+      com.tencent.mm.kernel.g.RL().Ru().set(68391, Integer.valueOf(i + 1));
+    }
+    if (j == 9)
+    {
+      localObject4 = new com.tencent.mm.plugin.sns.model.a.a(str1, localSparseArray1, localSparseArray2, localf.size);
+      label1122:
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).rjD = localf.rbm;
+      if (j != 4) {
+        break label1275;
+      }
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).rjB = true;
+      label1143:
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).rjA = bool1;
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).rjC = j;
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).reG = str2;
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).url = ((String)localObject3);
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).gr(str3, str4);
+      localObject3 = null;
+      if ((j != 1) && (j != 5) && (j != 7) && (j != 9)) {
+        break label1284;
+      }
+      ab.d("MicroMsg.DownloadManager", "SnsDownloadThumb task create.");
+      localObject3 = new com.tencent.mm.plugin.sns.model.a.i(this, (com.tencent.mm.plugin.sns.model.a.a)localObject4);
+      label1224:
+      break label1434;
+    }
+    for (;;)
+    {
+      label1225:
+      ((com.tencent.mm.plugin.sns.model.a.c)localObject3).v(new String[] { "" });
+      break;
+      localObject4 = new com.tencent.mm.plugin.sns.model.a.a(localbcs.Id);
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).reH = localbcs;
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).rbc = locale;
+      break label1122;
+      label1275:
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).rjB = false;
+      break label1143;
+      label1284:
+      if (j != 4) {
+        break label1521;
+      }
+      ab.w("MicroMsg.DownloadManager", "it can not download sight, may be something warn here.");
+      localObject3 = com.tencent.mm.model.c.c.abU().me("100438");
+      bool1 = false;
+      if (((com.tencent.mm.storage.c)localObject3).isValid())
+      {
+        if (bo.getInt((String)((com.tencent.mm.storage.c)localObject3).dvN().get("CDNDownload"), 0) == 0) {
+          break label1515;
+        }
+        bool1 = true;
+      }
+      label1345:
+      ab.i("MicroMsg.DownloadManager", "is Ad %s, downloadByCDN %s", new Object[] { Boolean.valueOf(localbcs.raZ), Boolean.valueOf(bool1) });
+      if ((!localbcs.raZ) || (bool1)) {
+        localObject3 = new com.tencent.mm.plugin.sns.model.a.g(this, (com.tencent.mm.plugin.sns.model.a.a)localObject4);
+      } else {
+        localObject3 = new com.tencent.mm.plugin.sns.model.a.h(this, (com.tencent.mm.plugin.sns.model.a.a)localObject4);
+      }
+    }
+    for (;;)
+    {
+      localObject3 = new com.tencent.mm.plugin.sns.model.a.e(this, (com.tencent.mm.plugin.sns.model.a.a)localObject4);
+      break label1225;
+      label1434:
+      if (j != 6) {
+        break label1225;
+      }
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).url = localbcs.xrZ;
+      ((com.tencent.mm.plugin.sns.model.a.a)localObject4).cqq = localbcs.xsb;
+      localObject3 = new com.tencent.mm.plugin.sns.model.a.d(this, (com.tencent.mm.plugin.sns.model.a.a)localObject4);
+      break label1225;
+      label1475:
+      this.rdg.remove(str2);
+      break label700;
+      label1490:
+      break label1512;
+      label1493:
+      if ((j == 1) || (j == 5)) {
+        break;
+      }
+      if (j != 7) {
+        break label487;
+      }
+      break;
+      label1512:
+      break label457;
+      label1515:
+      bool1 = false;
+      break label1345;
+      label1521:
+      if ((j != 2) && (j != 8)) {
+        if (j != 3) {
+          break label1224;
+        }
+      }
     }
   }
   
   public final void b(b.b paramb)
   {
+    AppMethodBeat.i(36111);
     this.handler.post(new b.2(this, paramb));
+    AppMethodBeat.o(36111);
+  }
+  
+  final void cok()
+  {
+    AppMethodBeat.i(36116);
+    if (Iu()) {
+      this.handler.postDelayed(new b.4(this), 500L);
+    }
+    AppMethodBeat.o(36116);
+  }
+  
+  final void col()
+  {
+    AppMethodBeat.i(36117);
+    LinkedList localLinkedList = new LinkedList();
+    Object localObject2;
+    synchronized (this.eFQ)
+    {
+      localObject2 = this.rdf.entrySet().iterator();
+      if (((Iterator)localObject2).hasNext()) {
+        localLinkedList.add(((Map.Entry)((Iterator)localObject2).next()).getKey());
+      }
+    }
+    Iterator localIterator = localObject1.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject2 = (String)localIterator.next();
+      if ((this.rdf.containsKey(localObject2)) && (bo.gz(((Long)this.rdf.get(localObject2)).longValue()) * 1000L > 300000L))
+      {
+        ab.d("MicroMsg.DownloadManager", "too long to download");
+        this.rdf.remove(localObject2);
+        this.rdg.remove(localObject2);
+      }
+    }
+    AppMethodBeat.o(36117);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.DownloadManager", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramm.getType() + " @" + hashCode());
-    if (paramm.getType() != 208) {}
-    for (;;)
+    AppMethodBeat.i(36126);
+    ab.i("MicroMsg.DownloadManager", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString + " type = " + paramm.getType() + " @" + hashCode());
+    if (paramm.getType() != 208)
     {
+      AppMethodBeat.o(36126);
       return;
-      paramString = (p)paramm;
-      b.b localb;
-      if ((paramInt1 != 0) || (paramInt2 != 0))
+    }
+    paramString = (p)paramm;
+    b.b localb;
+    if ((paramInt1 != 0) || (paramInt2 != 0))
+    {
+      if ((paramString.reE == 2) || (paramString.reE == 8))
       {
-        if ((paramString.opX == 2) || (paramString.opX == 8))
-        {
-          paramm = this.dup.iterator();
-          while (paramm.hasNext())
-          {
-            localb = (b.b)paramm.next();
-            if (localb != null) {
-              localb.ba(paramString.bUi, false);
-            }
-          }
-        }
-      }
-      else if (paramm.getType() == 208)
-      {
-        paramm = this.dup.iterator();
+        paramm = this.bLQ.iterator();
         while (paramm.hasNext())
         {
           localb = (b.b)paramm.next();
           if (localb != null) {
-            if (paramString.opX == 3) {
-              localb.bCt();
-            } else if ((paramString.opX == 1) || (paramString.opX == 5) || (paramString.opX == 7)) {
-              localb.Ni(paramString.bUi);
-            } else if ((paramString.opX == 2) || (paramString.opX == 8)) {
-              localb.ba(paramString.bUi, true);
-            }
+            localb.bp(paramString.cBO, false);
           }
         }
       }
+      AppMethodBeat.o(36126);
+      return;
+    }
+    if (paramm.getType() == 208)
+    {
+      paramm = this.bLQ.iterator();
+      while (paramm.hasNext())
+      {
+        localb = (b.b)paramm.next();
+        if (localb != null) {
+          if (paramString.reE == 3) {
+            localb.cnV();
+          } else if ((paramString.reE == 1) || (paramString.reE == 5) || (paramString.reE == 7)) {
+            localb.ZU(paramString.cBO);
+          } else if ((paramString.reE == 2) || (paramString.reE == 8)) {
+            localb.bp(paramString.cBO, true);
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(36126);
+  }
+  
+  public final void p(String paramString, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(36121);
+    synchronized (this.eFQ)
+    {
+      ab.d("MicroMsg.DownloadManager", "unLockDownLoad the thread id is %s %s %s.", new Object[] { Long.valueOf(Thread.currentThread().getId()), paramString, Boolean.valueOf(paramBoolean) });
+      Object localObject = (com.tencent.mm.plugin.sns.data.c)this.rdg.get(paramString);
+      if (localObject != null)
+      {
+        if (9 != ((com.tencent.mm.plugin.sns.data.c)localObject).requestType) {
+          break label134;
+        }
+        localObject = (com.tencent.mm.plugin.sns.data.e)((com.tencent.mm.plugin.sns.data.c)localObject).rbd.get(paramInt);
+        if (localObject != null) {
+          ag.cpc().a((com.tencent.mm.plugin.sns.data.e)localObject, paramString);
+        }
+      }
+      label134:
+      do
+      {
+        if (paramBoolean) {
+          this.rdg.remove(paramString);
+        }
+        AppMethodBeat.o(36121);
+        return;
+        localObject = ((com.tencent.mm.plugin.sns.data.c)localObject).rbc;
+      } while (localObject == null);
+      ag.cpc().a((com.tencent.mm.plugin.sns.data.e)localObject, paramString);
+    }
+  }
+  
+  public static final class c
+  {
+    final String czw;
+    private final byte[] eKs;
+    boolean eRZ;
+    private int fjZ;
+    public boolean rdm;
+    long startTime;
+    
+    public c(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(36104);
+      this.eKs = new byte[0];
+      this.czw = paramString;
+      this.fjZ = paramInt;
+      this.startTime = -1L;
+      this.rdm = false;
+      this.eRZ = false;
+      ab.d("MicroMsg.DownloadManager", "new reporter, snsId id: %s, picNum: %d, this: %s.", new Object[] { paramString, Integer.valueOf(paramInt), this });
+      AppMethodBeat.o(36104);
+    }
+    
+    public final void com()
+    {
+      synchronized (this.eKs)
+      {
+        if (this.fjZ > 0) {
+          this.fjZ -= 1;
+        }
+        if (this.fjZ == 0) {
+          this.eRZ = true;
+        }
+        return;
+      }
+    }
+    
+    public final void setStartTime(long paramLong)
+    {
+      AppMethodBeat.i(138245);
+      if (!this.rdm) {
+        synchronized (this.eKs)
+        {
+          if (!this.rdm)
+          {
+            this.rdm = true;
+            this.startTime = paramLong;
+            ab.d("MicroMsg.DownloadManager", "set start time, snsId id: %s, time: %d, this: %s.", new Object[] { this.czw, Long.valueOf(this.startTime), this });
+          }
+          AppMethodBeat.o(138245);
+          return;
+        }
+      }
+      AppMethodBeat.o(138245);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.b
  * JD-Core Version:    0.7.0.1
  */

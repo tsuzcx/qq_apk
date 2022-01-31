@@ -1,41 +1,36 @@
 package com.tencent.ttpic.filter;
 
-import android.graphics.PointF;
 import android.opengl.GLES20;
 import android.text.TextUtils;
 import com.tencent.filter.h;
 import com.tencent.filter.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.PTDetectInfo;
 import com.tencent.ttpic.gles.AttributeParam;
 import com.tencent.ttpic.gles.GlUtil;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.HandActionCounter;
+import com.tencent.ttpic.gles.GlUtil.DRAW_MODE;
 import com.tencent.ttpic.shader.Shader;
 import com.tencent.ttpic.shader.ShaderCreateFactory.PROGRAM_TYPE;
 import com.tencent.ttpic.shader.ShaderManager;
-import com.tencent.ttpic.util.VideoFilterUtil;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public abstract class VideoFilterBase
 {
   public String dataPath;
-  public int height;
+  protected int height;
   private Map<String, AttributeParam> mAttrParams;
   private int mCoordNum;
-  private VideoFilterUtil.DRAW_MODE mDrawMode;
+  private GlUtil.DRAW_MODE mDrawMode;
   protected double mFaceDetScale;
-  protected boolean mIsRenderForBitmap = false;
   private Map<String, m> mParamList;
-  private int mRenderMode = 1;
+  private int mRenderMode;
   protected int mSTextureHandle;
   private boolean needDelProgram;
   private Shader shader;
-  public int width;
+  protected int width;
   
   private VideoFilterBase(Shader paramShader)
   {
@@ -44,7 +39,7 @@ public abstract class VideoFilterBase
     this.mParamList = new HashMap();
     this.mSTextureHandle = -1;
     this.mCoordNum = 4;
-    this.mDrawMode = VideoFilterUtil.DRAW_MODE.TRIANGLE_FAN;
+    this.mDrawMode = GlUtil.DRAW_MODE.TRIANGLE_FAN;
   }
   
   public VideoFilterBase(ShaderCreateFactory.PROGRAM_TYPE paramPROGRAM_TYPE)
@@ -61,9 +56,7 @@ public abstract class VideoFilterBase
   public void ApplyGLSLFilter()
   {
     initAttribParams();
-    GlUtil.debugCheckGlError(this);
     this.shader.compile();
-    GlUtil.debugCheckGlError(this);
     Iterator localIterator = this.mParamList.values().iterator();
     while (localIterator.hasNext()) {
       ((m)localIterator.next()).initialParams(this.shader.getShaderProgram());
@@ -72,9 +65,7 @@ public abstract class VideoFilterBase
     while (localIterator.hasNext()) {
       ((AttributeParam)localIterator.next()).initialParams(this.shader.getShaderProgram());
     }
-    GlUtil.debugCheckGlError(this);
     this.mSTextureHandle = GLES20.glGetUniformLocation(this.shader.getShaderProgram(), "inputImageTexture");
-    GlUtil.debugCheckGlError(this);
   }
   
   public void OnDrawFrameGLSL()
@@ -188,8 +179,8 @@ public abstract class VideoFilterBase
   
   public void initAttribParams()
   {
-    setPositions(VideoFilterUtil.ORIGIN_POSITION_COORDS);
-    setTexCords(VideoFilterUtil.ORIGIN_TEX_COORDS);
+    setPositions(GlUtil.ORIGIN_POSITION_COORDS);
+    setTexCords(GlUtil.ORIGIN_TEX_COORDS);
   }
   
   public abstract void initParams();
@@ -203,32 +194,37 @@ public abstract class VideoFilterBase
     GLES20.glTexParameterf(3553, 10242, 33071.0F);
     GLES20.glTexParameterf(3553, 10243, 33071.0F);
     GLES20.glUniform1i(this.mSTextureHandle, 0);
-    if (this.mDrawMode == VideoFilterUtil.DRAW_MODE.TRIANGLE_STRIP)
+    if (this.mDrawMode == GlUtil.DRAW_MODE.TRIANGLE_STRIP)
     {
       GLES20.glDrawArrays(5, 0, this.mCoordNum);
       if (this.mRenderMode != 0) {
-        break label162;
+        break label184;
       }
       GLES20.glFinish();
     }
-    label162:
+    label184:
     while (this.mRenderMode != 1)
     {
       return true;
-      if (this.mDrawMode == VideoFilterUtil.DRAW_MODE.TRIANGLES)
+      if (this.mDrawMode == GlUtil.DRAW_MODE.TRIANGLES)
       {
         GLES20.glDrawArrays(4, 0, this.mCoordNum);
         break;
       }
-      if (this.mDrawMode == VideoFilterUtil.DRAW_MODE.TRIANGLE_FAN)
+      if (this.mDrawMode == GlUtil.DRAW_MODE.TRIANGLE_FAN)
       {
         GLES20.glDrawArrays(6, 0, this.mCoordNum);
         break;
       }
-      if (this.mDrawMode != VideoFilterUtil.DRAW_MODE.LINES) {
+      if (this.mDrawMode == GlUtil.DRAW_MODE.LINES)
+      {
+        GLES20.glDrawArrays(1, 0, this.mCoordNum);
         break;
       }
-      GLES20.glDrawArrays(1, 0, this.mCoordNum);
+      if (this.mDrawMode != GlUtil.DRAW_MODE.POINTS) {
+        break;
+      }
+      GLES20.glDrawArrays(0, 0, this.mCoordNum);
       break;
     }
     GLES20.glFlush();
@@ -241,7 +237,7 @@ public abstract class VideoFilterBase
     return true;
   }
   
-  public void setDrawMode(VideoFilterUtil.DRAW_MODE paramDRAW_MODE)
+  public void setDrawMode(GlUtil.DRAW_MODE paramDRAW_MODE)
   {
     this.mDrawMode = paramDRAW_MODE;
   }
@@ -250,11 +246,6 @@ public abstract class VideoFilterBase
   {
     addAttribParam("inputGrayTextureCoordinate", paramArrayOfFloat);
     return true;
-  }
-  
-  public void setIsRenderForBitmap(boolean paramBoolean)
-  {
-    this.mIsRenderForBitmap = paramBoolean;
   }
   
   public boolean setPositions(float[] paramArrayOfFloat)
@@ -299,7 +290,7 @@ public abstract class VideoFilterBase
     this.needDelProgram = true;
   }
   
-  public abstract void updatePreview(List<PointF> paramList1, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, List<PointF> paramList2, Map<Integer, HandActionCounter> paramMap1, Set<Integer> paramSet, float paramFloat, long paramLong);
+  public void updatePreview(PTDetectInfo paramPTDetectInfo) {}
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
@@ -307,10 +298,34 @@ public abstract class VideoFilterBase
     this.height = paramInt2;
     this.mFaceDetScale = paramDouble;
   }
+  
+  public static enum SHADER_FIELD
+  {
+    public String name;
+    
+    static
+    {
+      AppMethodBeat.i(83077);
+      CANVAS_SIZE = new SHADER_FIELD("CANVAS_SIZE", 0, "canvasSize");
+      FACE_DETECT_IMAGE_SIZE = new SHADER_FIELD("FACE_DETECT_IMAGE_SIZE", 1, "faceDetectImageSize");
+      FACE_POINT = new SHADER_FIELD("FACE_POINT", 2, "facePoints");
+      FACE_ACTION_TYPE = new SHADER_FIELD("FACE_ACTION_TYPE", 3, "faceActionType");
+      FRAME_DURATION = new SHADER_FIELD("FRAME_DURATION", 4, "frameDuration");
+      ELEMENT_DURATIONS = new SHADER_FIELD("ELEMENT_DURATIONS", 5, "elementDurations");
+      AUDIO_POWER_SCALE = new SHADER_FIELD("AUDIO_POWER_SCALE", 6, "audioPowerScale");
+      $VALUES = new SHADER_FIELD[] { CANVAS_SIZE, FACE_DETECT_IMAGE_SIZE, FACE_POINT, FACE_ACTION_TYPE, FRAME_DURATION, ELEMENT_DURATIONS, AUDIO_POWER_SCALE };
+      AppMethodBeat.o(83077);
+    }
+    
+    private SHADER_FIELD(String paramString)
+    {
+      this.name = paramString;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.ttpic.filter.VideoFilterBase
  * JD-Core Version:    0.7.0.1
  */

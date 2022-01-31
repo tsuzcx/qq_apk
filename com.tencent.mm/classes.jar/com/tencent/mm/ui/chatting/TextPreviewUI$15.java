@@ -3,6 +3,7 @@ package com.tencent.mm.ui.chatting;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TextPreviewUI$15
   implements View.OnTouchListener
@@ -11,24 +12,25 @@ final class TextPreviewUI$15
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(31059);
     switch (paramMotionEvent.getAction())
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        TextPreviewUI.a(this.vnn, true);
-        return false;
-      } while (TextPreviewUI.e(this.vnn));
-      TextPreviewUI.b(this.vnn, true);
-      TextPreviewUI.a(this.vnn, true);
-      return false;
     }
-    TextPreviewUI.a(this.vnn, false);
-    TextPreviewUI.b(this.vnn, false);
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(31059);
+      return false;
+      TextPreviewUI.a(this.zCJ, true);
+      continue;
+      if (!TextPreviewUI.e(this.zCJ))
+      {
+        TextPreviewUI.b(this.zCJ, true);
+        TextPreviewUI.a(this.zCJ, true);
+        continue;
+        TextPreviewUI.a(this.zCJ, false);
+        TextPreviewUI.b(this.zCJ, false);
+      }
+    }
   }
 }
 

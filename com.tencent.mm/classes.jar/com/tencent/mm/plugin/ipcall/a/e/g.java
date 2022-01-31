@@ -1,43 +1,48 @@
 package com.tencent.mm.plugin.ipcall.a.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class g
   extends a
 {
-  private long lrT;
-  public long lrU;
-  public long lsj = 0L;
-  public String lsk = "";
-  public String lsl = "";
-  public long lsm = 0L;
-  public long lsn = 0L;
-  public long lso = 0L;
-  public String lsp = "";
+  public long nPE = 0L;
+  public String nPF = "";
+  public String nPG = "";
+  public long nPH = 0L;
+  public long nPI = 0L;
+  public long nPJ = 0L;
+  public String nPK = "";
+  private long nPp;
+  public long nPq;
   
-  protected final void bcI()
+  protected final void bJP()
   {
-    h.nFQ.f(12933, new Object[] { Long.valueOf(this.lrT), Long.valueOf(this.lrU), Long.valueOf(this.lsj), this.lsk, this.lsl, Long.valueOf(this.lsm), Long.valueOf(this.lsn), Long.valueOf(this.lso), this.lsp });
+    AppMethodBeat.i(21891);
+    h.qsU.e(12933, new Object[] { Long.valueOf(this.nPp), Long.valueOf(this.nPq), Long.valueOf(this.nPE), this.nPF, this.nPG, Long.valueOf(this.nPH), Long.valueOf(this.nPI), Long.valueOf(this.nPJ), this.nPK });
+    AppMethodBeat.o(21891);
   }
   
   public final void reset()
   {
-    this.lrT = 0L;
-    this.lrU = 0L;
-    this.lsj = 0L;
-    this.lsk = "";
-    this.lsl = "";
-    this.lsm = 0L;
-    this.lsn = 0L;
-    this.lso = 0L;
-    this.lsp = "";
+    this.nPp = 0L;
+    this.nPq = 0L;
+    this.nPE = 0L;
+    this.nPF = "";
+    this.nPG = "";
+    this.nPH = 0L;
+    this.nPI = 0L;
+    this.nPJ = 0L;
+    this.nPK = "";
   }
   
   public final void start()
   {
+    AppMethodBeat.i(21890);
     super.start();
-    this.lrT = bk.UY();
+    this.nPp = bo.aoy();
+    AppMethodBeat.o(21890);
   }
 }
 

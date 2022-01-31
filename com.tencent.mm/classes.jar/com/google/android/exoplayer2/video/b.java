@@ -1,89 +1,95 @@
 package com.google.android.exoplayer2.video;
 
-import com.google.android.exoplayer2.i.h;
-import com.google.android.exoplayer2.i.j;
+import com.google.android.exoplayer2.i.k;
+import com.google.android.exoplayer2.i.m;
 import com.google.android.exoplayer2.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.List;
 
 public final class b
 {
-  public final int aBL;
-  public final List<byte[]> auu;
+  public final int aCh;
+  public final List<byte[]> awM;
   
   private b(List<byte[]> paramList, int paramInt)
   {
-    this.auu = paramList;
-    this.aBL = paramInt;
+    this.awM = paramList;
+    this.aCh = paramInt;
   }
   
-  public static b o(j paramj)
+  public static b M(m paramm)
   {
+    AppMethodBeat.i(95995);
     for (;;)
     {
       int j;
       int i;
       try
       {
-        paramj.dB(21);
-        int n = paramj.readUnsignedByte();
-        int i1 = paramj.readUnsignedByte();
-        int m = paramj.position;
+        paramm.en(21);
+        int n = paramm.readUnsignedByte();
+        int i1 = paramm.readUnsignedByte();
+        int m = paramm.position;
         j = 0;
         i = 0;
         if (j < i1)
         {
-          paramj.dB(1);
-          i2 = paramj.readUnsignedShort();
+          paramm.en(1);
+          i2 = paramm.readUnsignedShort();
           k = 0;
           if (k >= i2) {
-            break label223;
+            break label242;
           }
-          i3 = paramj.readUnsignedShort();
+          i3 = paramm.readUnsignedShort();
           i += i3 + 4;
-          paramj.dB(i3);
+          paramm.en(i3);
           k += 1;
           continue;
         }
-        paramj.setPosition(m);
+        paramm.setPosition(m);
         arrayOfByte = new byte[i];
         j = 0;
         m = 0;
         if (j >= i1) {
-          break label237;
+          break label256;
         }
-        paramj.dB(1);
-        int i2 = paramj.readUnsignedShort();
+        paramm.en(1);
+        int i2 = paramm.readUnsignedShort();
         int k = 0;
         if (k >= i2) {
-          break label230;
+          break label249;
         }
-        int i3 = paramj.readUnsignedShort();
-        System.arraycopy(h.aSg, 0, arrayOfByte, m, h.aSg.length);
-        m += h.aSg.length;
-        System.arraycopy(paramj.data, paramj.position, arrayOfByte, m, i3);
+        int i3 = paramm.readUnsignedShort();
+        System.arraycopy(k.baF, 0, arrayOfByte, m, k.baF.length);
+        m += k.baF.length;
+        System.arraycopy(paramm.data, paramm.position, arrayOfByte, m, i3);
         m += i3;
-        paramj.dB(i3);
+        paramm.en(i3);
         k += 1;
         continue;
-        return new b(paramj, (n & 0x3) + 1);
+        paramm = new b(paramm, (n & 0x3) + 1);
+        AppMethodBeat.o(95995);
+        return paramm;
       }
-      catch (ArrayIndexOutOfBoundsException paramj)
+      catch (ArrayIndexOutOfBoundsException paramm)
       {
         byte[] arrayOfByte;
-        throw new o("Error parsing HEVC config", paramj);
+        paramm = new o("Error parsing HEVC config", paramm);
+        AppMethodBeat.o(95995);
+        throw paramm;
       }
-      paramj = Collections.singletonList(arrayOfByte);
+      paramm = Collections.singletonList(arrayOfByte);
       continue;
-      label223:
+      label242:
       j += 1;
       continue;
-      label230:
+      label249:
       j += 1;
       continue;
-      label237:
+      label256:
       if (i == 0) {
-        paramj = null;
+        paramm = null;
       }
     }
   }

@@ -1,61 +1,57 @@
 package com.tencent.mm.plugin.fts.ui;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.util.Pair;
-import com.tencent.mm.br.d;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.fts.a.e;
-import com.tencent.mm.plugin.websearch.api.aa;
-import com.tencent.mm.plugin.websearch.api.ac;
-import com.tencent.mm.plugin.websearch.api.ao;
-import com.tencent.mm.plugin.websearch.api.j;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Map;
+import com.tencent.mm.plugin.websearch.api.m;
+import org.json.JSONObject;
 
 final class FTSMainUI$13
-  implements Runnable
+  implements View.OnClickListener
 {
-  FTSMainUI$13(FTSMainUI paramFTSMainUI, int paramInt) {}
+  FTSMainUI$13(FTSMainUI paramFTSMainUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - FTSMainUI.v(this.kCm) <= 1000L) {
-      return;
-    }
-    FTSMainUI.a(this.kCm, System.currentTimeMillis());
-    if (!aa.Br(0))
+    AppMethodBeat.i(61882);
+    try
     {
-      y.e("MicroMsg.FTS.FTSMainUI", "fts h5 template not avail");
-      return;
+      if (paramView.getTag() != null)
+      {
+        i = ((JSONObject)paramView.getTag()).optInt("businessType");
+        if (i != 0) {
+          break label147;
+        }
+        paramView = ((TextView)paramView).getText().toString();
+        if (!paramView.equals(this.mYi.getString(2131302999))) {
+          break label104;
+        }
+        i = 2;
+        if (i != 0)
+        {
+          paramView = this.mYi;
+          ((m)g.E(m.class)).a(paramView, new FTSMainUI.11(paramView, i));
+        }
+        AppMethodBeat.o(61882);
+      }
     }
-    Object localObject = ac.Rv("searchID");
-    ao.u(this.bns, 14, (String)localObject);
-    y.i("MicroMsg.FTS.FTSMainUI", "FTSWebReportLogic.kvReportGlobalTabClick reported type %d, searchId %s", new Object[] { Integer.valueOf(this.bns), localObject });
-    this.kCm.XM();
-    Intent localIntent = aa.bZt();
-    localIntent.putExtra("ftsneedkeyboard", true);
-    localIntent.putExtra("ftsbizscene", 14);
-    localIntent.putExtra("ftsType", this.bns);
-    localObject = aa.b(14, true, this.bns);
-    ((Map)localObject).put("sessionId", e.kvx);
-    ((Map)localObject).put("subSessionId", e.kvx);
-    localIntent.putExtra("sessionId", e.kvx);
-    localIntent.putExtra("subSessionId", e.kvx);
-    localIntent.putExtra("rawUrl", aa.v((Map)localObject));
-    localIntent.putExtra("key_load_js_without_delay", true);
-    localObject = null;
-    if (Build.VERSION.SDK_INT >= 21) {
-      localObject = ActivityOptions.makeSceneTransitionAnimation(this.kCm, new Pair[0]).toBundle();
-    }
-    if (this.bns != 64)
+    catch (Exception localException)
     {
-      d.a(this.kCm, "webview", ".ui.tools.fts.FTSSearchTabWebViewUI", localIntent, (Bundle)localObject);
-      return;
+      label147:
+      for (;;)
+      {
+        int i = 0;
+        continue;
+        label104:
+        if (paramView.equals(this.mYi.getString(2131303003))) {
+          i = 8;
+        } else if (paramView.equals(this.mYi.getString(2131303000))) {
+          i = 1;
+        }
+      }
     }
-    ((j)g.r(j.class)).ev(this.kCm);
   }
 }
 

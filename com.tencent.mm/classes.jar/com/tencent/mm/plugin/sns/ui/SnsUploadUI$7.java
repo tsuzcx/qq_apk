@@ -1,33 +1,23 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mm.plugin.sns.i.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.j;
 
 final class SnsUploadUI$7
-  implements TextWatcher
+  implements Runnable
 {
   SnsUploadUI$7(SnsUploadUI paramSnsUploadUI) {}
   
-  public final void afterTextChanged(Editable paramEditable) {}
-  
-  public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public final void run()
   {
-    if (SnsUploadUI.f(this.pjp).getText().toString().trim().length() > 10)
-    {
-      paramCharSequence = this.pjp.findViewById(i.f.sns_img_tips);
-      if (paramCharSequence != null) {
-        paramCharSequence.setVisibility(8);
-      }
-    }
+    AppMethodBeat.i(145657);
+    j.q(this.sbR);
+    AppMethodBeat.o(145657);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadUI.7
  * JD-Core Version:    0.7.0.1
  */

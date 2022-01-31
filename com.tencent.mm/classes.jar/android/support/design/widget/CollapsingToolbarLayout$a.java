@@ -1,8 +1,8 @@
 package android.support.design.widget;
 
-import android.support.v4.c.a;
-import android.support.v4.view.q;
-import android.support.v4.view.y;
+import android.support.v4.b.a;
+import android.support.v4.view.ab;
+import android.support.v4.view.t;
 import android.view.View;
 
 final class CollapsingToolbarLayout$a
@@ -10,26 +10,26 @@ final class CollapsingToolbarLayout$a
 {
   CollapsingToolbarLayout$a(CollapsingToolbarLayout paramCollapsingToolbarLayout) {}
   
-  public final void r(int paramInt)
+  public final void q(int paramInt)
   {
-    this.hp.ho = paramInt;
+    this.ij.ii = paramInt;
     int i;
     label41:
     View localView;
     CollapsingToolbarLayout.LayoutParams localLayoutParams;
-    p localp;
-    if (this.hp.ev != null)
+    o localo;
+    if (this.ij.fu != null)
     {
-      i = this.hp.ev.getSystemWindowInsetTop();
-      k = this.hp.getChildCount();
+      i = this.ij.fu.getSystemWindowInsetTop();
+      k = this.ij.getChildCount();
       j = 0;
       if (j >= k) {
         break label165;
       }
-      localView = this.hp.getChildAt(j);
+      localView = this.ij.getChildAt(j);
       localLayoutParams = (CollapsingToolbarLayout.LayoutParams)localView.getLayoutParams();
-      localp = CollapsingToolbarLayout.k(localView);
-      switch (localLayoutParams.hq)
+      localo = CollapsingToolbarLayout.l(localView);
+      switch (localLayoutParams.ik)
       {
       }
     }
@@ -39,19 +39,19 @@ final class CollapsingToolbarLayout$a
       break label41;
       i = 0;
       break;
-      localp.q(a.clamp(-paramInt, 0, this.hp.l(localView)));
+      localo.p(a.clamp(-paramInt, 0, this.ij.m(localView)));
       continue;
       float f = -paramInt;
-      localp.q(Math.round(localLayoutParams.hr * f));
+      localo.p(Math.round(localLayoutParams.il * f));
     }
     label165:
-    this.hp.aD();
-    if ((this.hp.hh != null) && (i > 0)) {
-      q.O(this.hp);
+    this.ij.bl();
+    if ((this.ij.ia != null) && (i > 0)) {
+      t.R(this.ij);
     }
-    int j = this.hp.getHeight();
-    int k = q.X(this.hp);
-    this.hp.hd.h(Math.abs(paramInt) / (j - k - i));
+    int j = this.ij.getHeight();
+    int k = t.aa(this.ij);
+    this.ij.hW.h(Math.abs(paramInt) / (j - k - i));
   }
 }
 

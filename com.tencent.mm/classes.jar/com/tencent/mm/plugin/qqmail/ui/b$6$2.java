@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qqmail.b.ai;
 
 final class b$6$2
@@ -9,7 +10,9 @@ final class b$6$2
   
   public final void run()
   {
-    this.nhP.nhJ.b(this.nhO);
+    AppMethodBeat.i(68292);
+    this.pNc.pMW.b(this.pNb);
+    AppMethodBeat.o(68292);
   }
 }
 

@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.ext.c;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vfs.e;
 
 public final class d$a
   implements d.c
 {
-  public final d.b az(String paramString, boolean paramBoolean)
+  public final d.b aM(String paramString, boolean paramBoolean)
   {
-    if (!e.bK(paramString))
+    AppMethodBeat.i(20412);
+    if (!e.cN(paramString))
     {
-      y.w("MicroMsg.ExtQbarYuvRetrieverFactory", "hy: handle not exist");
+      ab.w("MicroMsg.ExtQbarYuvRetrieverFactory", "hy: handle not exist");
+      AppMethodBeat.o(20412);
       return null;
     }
-    return d.c(e.c(paramString, 0, -1), paramBoolean);
+    paramString = d.d(e.i(paramString, 0, -1), paramBoolean);
+    AppMethodBeat.o(20412);
+    return paramString;
   }
 }
 

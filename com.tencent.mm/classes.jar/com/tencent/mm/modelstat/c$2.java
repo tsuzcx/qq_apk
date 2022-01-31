@@ -1,9 +1,9 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 final class c$2
-  extends bf<Boolean>
+  extends bj<Boolean>
 {
   c$2(c paramc, Boolean paramBoolean)
   {
@@ -12,7 +12,7 @@ final class c$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelstat.c.2
  * JD-Core Version:    0.7.0.1
  */

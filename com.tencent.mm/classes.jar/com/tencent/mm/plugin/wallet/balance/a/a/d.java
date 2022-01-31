@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.wallet.balance.a.a;
 
-import com.tencent.mm.ah.a;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.bfi;
-import com.tencent.mm.protocal.c.bfj;
-import com.tencent.mm.protocal.c.fu;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.protocal.protobuf.bfb;
+import com.tencent.mm.protocal.protobuf.bfc;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
-  extends a<bfj>
+  extends a<bfc>
 {
-  public d(int paramInt1, fu paramfu, int paramInt2, int paramInt3)
+  public d(int paramInt1, String paramString1, String paramString2, String paramString3, long paramLong, int paramInt2, String paramString4)
   {
+    AppMethodBeat.i(45230);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bfi();
-    ((b.a)localObject).ecI = new bfj();
-    ((b.a)localObject).ecG = 1324;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/preredeemfund";
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    localObject = ((b.a)localObject).Kt();
-    bfi localbfi = (bfi)((b)localObject).ecE.ecN;
-    localbfi.tzY = paramInt1;
-    if (paramfu != null) {
-      localbfi.tzZ = 1;
-    }
-    for (localbfi.tAa = paramfu;; localbfi.tAa = null)
-    {
-      localbfi.sOy = paramInt2;
-      localbfi.tAb = paramInt3;
-      this.dmK = ((b)localObject);
-      return;
-      localbfi.tzZ = 0;
-    }
+    ((b.a)localObject).fsX = new bfb();
+    ((b.a)localObject).fsY = new bfc();
+    ((b.a)localObject).funcId = 2614;
+    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyplan";
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    localObject = ((b.a)localObject).ado();
+    bfb localbfb = (bfb)((b)localObject).fsV.fta;
+    localbfb.wpg = paramInt1;
+    localbfb.poq = paramString1;
+    localbfb.ppo = paramString2;
+    localbfb.wpe = paramString3;
+    localbfb.cNd = paramLong;
+    localbfb.eel = paramInt2;
+    localbfb.wpf = paramString4;
+    this.rr = ((b)localObject);
+    ab.i("MicroMsg.CgiLqtModifyPlan", "plan_id: %s, card_tail: %s, amount: %s, day: %s", new Object[] { Integer.valueOf(paramInt1), paramString2, Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(45230);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mm.lib.riskscanner;
 
 import android.os.Bundle;
-import com.tencent.d.a.c.a;
+import com.tencent.e.a.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RiskScannerReqBufferProvider$1
   implements c.a
@@ -10,8 +11,9 @@ final class RiskScannerReqBufferProvider$1
   
   public final void f(int paramInt, byte[] paramArrayOfByte)
   {
-    a.hD(paramInt);
-    Bundle[] arrayOfBundle = this.dOK;
+    AppMethodBeat.i(114458);
+    a.jU(paramInt);
+    Bundle[] arrayOfBundle = this.eMB;
     Bundle localBundle = new Bundle();
     arrayOfBundle[0] = localBundle;
     if ((paramInt == 0) && (paramArrayOfByte != null))
@@ -19,11 +21,12 @@ final class RiskScannerReqBufferProvider$1
       localBundle.putInt("errCode", paramInt);
       localBundle.putByteArray("reqBufferBase64", paramArrayOfByte);
     }
+    AppMethodBeat.o(114458);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.RiskScannerReqBufferProvider.1
  * JD-Core Version:    0.7.0.1
  */

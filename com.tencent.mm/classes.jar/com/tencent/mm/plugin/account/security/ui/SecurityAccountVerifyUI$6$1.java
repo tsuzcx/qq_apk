@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.account.security.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 
 final class SecurityAccountVerifyUI$6$1
@@ -13,7 +14,9 @@ final class SecurityAccountVerifyUI$6$1
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    g.Dk().c(this.fkM);
+    AppMethodBeat.i(69921);
+    g.Rc().a(this.gCd);
+    AppMethodBeat.o(69921);
   }
 }
 

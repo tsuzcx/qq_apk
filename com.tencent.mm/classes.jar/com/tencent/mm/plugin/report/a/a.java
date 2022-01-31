@@ -1,36 +1,39 @@
 package com.tencent.mm.plugin.report.a;
 
-import com.tencent.mm.h.c.aw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ay;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends aw
+  extends ay
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(72663);
     c.a locala = new c.a();
-    locala.ujL = new Field[2];
+    locala.yrK = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "bakLogId";
-    locala.ujN.put("bakLogId", "INTEGER");
+    locala.yrM.put("bakLogId", "INTEGER");
     localStringBuilder.append(" bakLogId INTEGER");
     localStringBuilder.append(", ");
     locala.columns[1] = "valueStr";
-    locala.ujN.put("valueStr", "TEXT");
+    locala.yrM.put("valueStr", "TEXT");
     localStringBuilder.append(" valueStr TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(72663);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

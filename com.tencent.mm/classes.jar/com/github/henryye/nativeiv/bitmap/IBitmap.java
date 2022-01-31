@@ -6,11 +6,11 @@ import java.io.InputStream;
 
 public abstract interface IBitmap<Type>
 {
-  public abstract void a(InputStream paramInputStream, Bitmap.Config paramConfig);
+  public abstract void decodeInputStream(InputStream paramInputStream, Bitmap.Config paramConfig, c paramc);
+  
+  public abstract long getDecodeTime();
   
   public abstract BitmapType getType();
-  
-  public abstract long ko();
   
   public abstract Type provide();
   
@@ -19,7 +19,7 @@ public abstract interface IBitmap<Type>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.github.henryye.nativeiv.bitmap.IBitmap
  * JD-Core Version:    0.7.0.1
  */

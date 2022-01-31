@@ -3,21 +3,24 @@ package com.tencent.mm.plugin.webwx.ui;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.ac;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.modelsimple.ad;
 
 final class WebWXLogoutUI$8$1
   implements DialogInterface.OnCancelListener
 {
-  WebWXLogoutUI$8$1(WebWXLogoutUI.8 param8, ac paramac) {}
+  WebWXLogoutUI$8$1(WebWXLogoutUI.8 param8, ad paramad) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().c(this.nTi);
-    if (WebWXLogoutUI.i(this.rEj.rEh) != null) {
-      WebWXLogoutUI.i(this.rEj.rEh).cancel();
+    AppMethodBeat.i(26545);
+    aw.Rc().a(this.qHi);
+    if (WebWXLogoutUI.i(this.vuL.vuJ) != null) {
+      WebWXLogoutUI.i(this.vuL.vuJ).cancel();
     }
+    AppMethodBeat.o(26545);
   }
 }
 

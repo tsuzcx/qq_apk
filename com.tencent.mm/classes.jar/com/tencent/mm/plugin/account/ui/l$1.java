@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class l$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class l$1
   
   public final void run()
   {
-    l.a(this.fok, f.XP(), f.XQ());
+    AppMethodBeat.i(125133);
+    l.a(this.gFF, f.arv(), f.arw());
+    AppMethodBeat.o(125133);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.l.1
  * JD-Core Version:    0.7.0.1
  */

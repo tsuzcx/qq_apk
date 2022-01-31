@@ -5,256 +5,283 @@ import android.graphics.Point;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.HandlerThread;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.api.a.a;
 import com.tencent.mm.plugin.mmsight.model.a.j;
 import com.tencent.mm.plugin.mmsight.segment.MP4MuxerJNI;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
 public final class b
   extends com.tencent.mm.plugin.mmsight.api.a
 {
-  private int auC;
-  private MediaExtractor eIP;
-  private int eIz;
-  private Point eJJ = null;
+  private int awU;
+  private MediaExtractor cfO;
+  private int eRG;
+  private int eRm;
+  private int eVA;
+  private Bitmap eVZ;
+  private int eWJ;
+  private int eWK;
+  private int eWL;
+  private long eWM;
+  private long eWN;
+  private String eXn;
+  private int eXo;
+  private int eXp;
+  private int eXq;
+  private int eXu;
+  private Point fZm;
   private String filePath;
-  private int jlu = -1;
-  private a mkE;
-  private f mkF;
-  private String mkG;
-  private int mkH;
-  private int mkI;
-  private int mkJ;
-  private int mkK;
-  private int mkL;
-  private int mkM;
-  private long mkN = -1L;
-  private long mkO = -1L;
-  private int mkP = -1;
-  private int mkQ;
-  private HandlerThread mkR;
-  private b.a mkS;
-  private Bitmap mkT;
-  private byte[] mkU = null;
-  private byte[] mkV = null;
+  private a oJU;
+  private f oJV;
+  private HandlerThread oJW;
+  private b.a oJX;
+  private byte[] oJY;
+  private byte[] oJZ;
+  private a.a oKa;
   private int videoFps;
   
   public b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((bk.bl(paramString1)) || (bk.bl(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    AppMethodBeat.i(76694);
+    this.eVA = -1;
+    this.eWM = -1L;
+    this.eWN = -1L;
+    this.eXu = -1;
+    this.fZm = null;
+    this.oJY = null;
+    this.oJZ = null;
+    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      y.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
+      ab.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
+      AppMethodBeat.o(76694);
       return;
     }
     this.filePath = paramString1;
-    this.mkG = paramString2;
-    this.mkJ = paramInt1;
-    this.mkK = paramInt2;
-    this.mkL = paramInt3;
-    this.mkP = paramInt4;
-    this.mkM = SightVideoJNI.getMp4Rotate(paramString1);
-    com.tencent.mm.plugin.sight.base.a locala = com.tencent.mm.plugin.sight.base.d.MH(paramString1);
+    this.eXn = paramString2;
+    this.eXo = paramInt1;
+    this.eXp = paramInt2;
+    this.eXq = paramInt3;
+    this.eXu = paramInt4;
+    this.eWL = SightVideoJNI.getMp4Rotate(paramString1);
+    com.tencent.mm.plugin.sight.base.a locala = com.tencent.mm.plugin.sight.base.d.Zo(paramString1);
     if (locala != null)
     {
-      this.mkH = locala.width;
-      this.mkI = locala.height;
-      this.jlu = locala.jlu;
-      this.videoFps = locala.eIM;
+      this.eWJ = locala.width;
+      this.eWK = locala.height;
+      this.eVA = locala.eVA;
+      this.videoFps = locala.eRw;
     }
-    this.mkN = 0L;
-    this.mkO = this.jlu;
-    y.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.mkH), Integer.valueOf(this.mkI), Integer.valueOf(this.mkM), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.eWM = 0L;
+    this.eWN = this.eVA;
+    ab.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.eWJ), Integer.valueOf(this.eWK), Integer.valueOf(this.eWL), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(76694);
   }
   
   public b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2)
   {
-    if ((bk.bl(paramString1)) || (bk.bl(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    AppMethodBeat.i(76695);
+    this.eVA = -1;
+    this.eWM = -1L;
+    this.eWN = -1L;
+    this.eXu = -1;
+    this.fZm = null;
+    this.oJY = null;
+    this.oJZ = null;
+    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)) || (paramInt1 <= 0) || (paramInt2 <= 0))
     {
-      y.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
+      ab.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer error, filePath: %s, outputFilePath: %s, outputWidth: %s, outputHeight: %s, outputFps: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt4) });
+      AppMethodBeat.o(76695);
       return;
     }
     this.filePath = paramString1;
-    this.mkG = paramString2;
-    this.mkJ = paramInt1;
-    this.mkK = paramInt2;
-    this.mkL = paramInt3;
-    this.mkP = paramInt4;
-    this.mkM = SightVideoJNI.getMp4Rotate(paramString1);
-    com.tencent.mm.plugin.sight.base.a locala = com.tencent.mm.plugin.sight.base.d.MH(paramString1);
+    this.eXn = paramString2;
+    this.eXo = paramInt1;
+    this.eXp = paramInt2;
+    this.eXq = paramInt3;
+    this.eXu = paramInt4;
+    this.eWL = SightVideoJNI.getMp4Rotate(paramString1);
+    com.tencent.mm.plugin.sight.base.a locala = com.tencent.mm.plugin.sight.base.d.Zo(paramString1);
     if (locala != null)
     {
-      this.mkH = locala.width;
-      this.mkI = locala.height;
-      this.videoFps = locala.eIM;
+      this.eWJ = locala.width;
+      this.eWK = locala.height;
+      this.videoFps = locala.eRw;
     }
-    this.mkN = paramLong1;
-    this.mkO = paramLong2;
-    y.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s, startTimeMs: %s, endTimeMs: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.mkH), Integer.valueOf(this.mkI), Integer.valueOf(this.mkM), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    this.eWM = paramLong1;
+    this.eWN = paramLong2;
+    ab.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "create MMSightFFMpegMediaCodecRemuxer, filePath: %s, outputFilePath: %s, inputWidth: %s, inputHeight: %s, videoRotate: %s, outputWidth: %s, outputHeight: %s, startTimeMs: %s, endTimeMs: %s", new Object[] { paramString1, paramString2, Integer.valueOf(this.eWJ), Integer.valueOf(this.eWK), Integer.valueOf(this.eWL), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    AppMethodBeat.o(76695);
   }
   
-  public final void B(Bitmap paramBitmap)
+  public final int Va()
   {
-    if (paramBitmap != null) {
-      this.mkT = paramBitmap;
-    }
-  }
-  
-  public final int biD()
-  {
-    j = Math.round(this.jlu / 1000.0F);
-    i = j;
-    if (this.mkN >= 0L)
+    AppMethodBeat.i(76696);
+    int j = Math.round(this.eVA / 1000.0F);
+    int i = j;
+    if (this.eWM >= 0L)
     {
       i = j;
-      if (this.mkO >= 0L) {
-        i = Math.round((float)(this.mkO - this.mkN) / 1000.0F) + 1;
+      if (this.eWN >= 0L) {
+        i = Math.round((float)(this.eWN - this.eWM) / 1000.0F) + 1;
       }
     }
-    this.eIz = MP4MuxerJNI.initDataBuf(i);
-    if (com.tencent.mm.bi.e.om(this.filePath))
+    this.eRm = MP4MuxerJNI.initDataBufLock(i);
+    if (com.tencent.mm.bj.e.vB(this.filePath))
     {
-      y.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "ish265, create mediacodec decoder");
-      this.mkE = new e();
-      if (this.jlu <= 0) {
-        break label165;
+      ab.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "ish265, create mediacodec decoder");
+      this.oJU = new e();
+      if (this.eVA <= 0) {
+        break label175;
       }
     }
-    for (i = this.mkE.e(this.filePath, 0L, this.jlu, this.videoFps);; i = this.mkE.e(this.filePath, this.mkN, this.mkO, this.videoFps))
+    for (i = this.oJU.e(this.filePath, 0L, this.eVA, this.videoFps);; i = this.oJU.e(this.filePath, this.eWM, this.eWN, this.videoFps))
     {
-      y.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "decoder init ret: %s", new Object[] { Integer.valueOf(i) });
+      ab.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "decoder init ret: %s", new Object[] { Integer.valueOf(i) });
       if (i >= 0) {
-        break label262;
+        break label277;
       }
-      MP4MuxerJNI.releaseDataBuf(this.eIz);
+      MP4MuxerJNI.releaseDataBufLock(this.eRm);
+      AppMethodBeat.o(76696);
       return -1;
-      this.mkE = new d();
+      this.oJU = new d();
       break;
-      label165:
-      if ((this.mkN < 0L) || (this.mkO < 0L)) {
-        break label212;
+      label175:
+      if ((this.eWM < 0L) || (this.eWN < 0L)) {
+        break label222;
       }
     }
-    label212:
-    y.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "remux time error, videoDuration: %s, remuxStartTime: %s, remuxEndTime: %s", new Object[] { Integer.valueOf(this.jlu), Long.valueOf(this.mkN), Long.valueOf(this.mkO) });
-    MP4MuxerJNI.releaseDataBuf(this.eIz);
+    label222:
+    ab.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "remux time error, videoDuration: %s, remuxStartTime: %s, remuxEndTime: %s", new Object[] { Integer.valueOf(this.eVA), Long.valueOf(this.eWM), Long.valueOf(this.eWN) });
+    MP4MuxerJNI.releaseDataBufLock(this.eRm);
+    AppMethodBeat.o(76696);
     return -1;
-    label262:
-    if ((this.mkP > 0) && (this.mkP < this.videoFps)) {
-      this.mkE.ju((int)Math.ceil(this.videoFps / this.mkP));
+    label277:
+    if ((this.eXu > 0) && (this.eXu < this.videoFps)) {
+      this.oJU.mm((int)Math.ceil(this.videoFps / this.eXu));
     }
-    if (this.mkP > 0) {}
-    for (i = Math.min(this.mkP, this.videoFps);; i = this.videoFps)
+    if (this.eXu > 0)
     {
-      this.mkF = new f(this.mkH, this.mkI, this.mkJ, this.mkK, this.mkL, i);
-      this.mkE.a(new b.1(this));
-      this.mkF.mle = new f.a()
+      i = Math.min(this.eXu, this.videoFps);
+      this.oJV = new f(this.eWJ, this.eWK, this.eXo, this.eXp, this.eXq, i);
+      this.oJU.a(new b.1(this));
+      this.oJV.oKl = new f.a()
       {
         public final void a(int paramAnonymousInt1, ByteBuffer paramAnonymousByteBuffer, int paramAnonymousInt2)
         {
-          MP4MuxerJNI.writeH264Data(paramAnonymousInt1, paramAnonymousByteBuffer, paramAnonymousInt2);
+          AppMethodBeat.i(76692);
+          MP4MuxerJNI.writeH264DataLock(paramAnonymousInt1, paramAnonymousByteBuffer, paramAnonymousInt2);
+          AppMethodBeat.o(76692);
         }
       };
+    }
+    for (;;)
+    {
+      Object localObject2;
       try
       {
-        this.mkF.jv(this.eIz);
-        localObject1 = this.mkF;
-        y.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "Start");
-        ((f)localObject1).bSr = true;
-        this.mkE.bjJ();
-        this.mkR.quitSafely();
-        this.mkR.join();
-        this.mkS = null;
-        this.eIP = new MediaExtractor();
+        this.oJV.mn(this.eRm);
+        Object localObject1 = this.oJV;
+        ab.i("MicroMsg.MMSightRemuxMediaCodecEncoder", "Start");
+        ((f)localObject1).isStart = true;
+        this.oJU.bRx();
+        this.oJW.quitSafely();
+        this.oJW.join();
+        this.oJX = null;
+        this.cfO = new MediaExtractor();
+        try
+        {
+          this.cfO.setDataSource(this.filePath);
+          localObject1 = null;
+          i = 0;
+          if (i >= this.cfO.getTrackCount()) {
+            break label991;
+          }
+          localObject2 = this.cfO.getTrackFormat(i);
+          localObject1 = ((MediaFormat)localObject2).getString("mime");
+          if (!((String)localObject1).startsWith("audio/")) {
+            break label912;
+          }
+          if ((i >= 0) && (localObject2 != null) && (!bo.isNullOrNil((String)localObject1)))
+          {
+            this.awU = ((MediaFormat)localObject2).getInteger("channel-count");
+            this.eRG = ((MediaFormat)localObject2).getInteger("sample-rate");
+            this.cfO.selectTrack(i);
+            if (this.eWM > 0L) {
+              this.cfO.seekTo(this.eWM * 1000L, 0);
+            }
+            localObject1 = ByteBuffer.allocateDirect(((MediaFormat)localObject2).getInteger("max-input-size"));
+            ((ByteBuffer)localObject1).clear();
+            j = this.cfO.readSampleData((ByteBuffer)localObject1, 0);
+            ab.d("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "sampleSize: %d", new Object[] { Integer.valueOf(j) });
+            if (j > 0) {
+              break label919;
+            }
+            ab.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "muxAudio size = %d. Saw eos.", new Object[] { Integer.valueOf(j) });
+          }
+        }
+        catch (IOException localIOException)
+        {
+          long l;
+          ab.printErrStackTrace("MicroMsg.MMSightFFMpegMediaCodecRemuxer", localIOException, "muxAudio create extractor failed: %s", new Object[] { localIOException.getMessage() });
+          continue;
+        }
+        localObject2 = this.eXn;
+        localObject1 = localObject2;
+        if (this.eWL > 0) {
+          localObject1 = (String)localObject2 + "tempRotate.mp4";
+        }
+        l = this.eVA;
+        if (l > 0L) {
+          break label988;
+        }
+        l = this.eWN - this.eWM;
+        i = MP4MuxerJNI.muxingLock(this.eRm, this.eRG, 1024, 2, this.awU, (String)localObject1, this.oJV.frameCount * 1000.0F / (float)l, null, 0);
+        ab.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "muxing ret: %s", new Object[] { Integer.valueOf(i) });
+        if (this.eWL > 0)
+        {
+          SightVideoJNI.tagRotateVideo((String)localObject1, this.eXn, this.eWL);
+          com.tencent.mm.vfs.e.deleteFile((String)localObject1);
+        }
+        MP4MuxerJNI.releaseDataBufLock(this.eRm);
+        j.oJp.XJ();
+        AppMethodBeat.o(76696);
+        return i;
       }
       catch (Exception localException)
       {
-        Object localObject1;
-        label477:
-        label606:
-        long l;
-        label519:
-        y.printErrStackTrace("MicroMsg.MMSightFFMpegMediaCodecRemuxer", localException, "decode error: %s", new Object[] { localException.getMessage() });
+        ab.printErrStackTrace("MicroMsg.MMSightFFMpegMediaCodecRemuxer", localException, "decode error: %s", new Object[] { localException.getMessage() });
+        AppMethodBeat.o(76696);
         return -1;
       }
-      try
-      {
-        this.eIP.setDataSource(this.filePath);
-        localObject1 = null;
-        i = 0;
-      }
-      catch (IOException localIOException)
-      {
-        y.printErrStackTrace("MicroMsg.MMSightFFMpegMediaCodecRemuxer", localIOException, "muxAudio create extractor failed: %s", new Object[] { localIOException.getMessage() });
-        break label665;
-        if (this.eIP.getSampleTime() >= this.mkO * 1000L) {
-          break label665;
+      i = this.videoFps;
+      break;
+      label912:
+      i += 1;
+      continue;
+      label919:
+      if (this.cfO.getSampleTime() < this.eWN * 1000L) {
+        if (this.cfO.getSampleTrackIndex() != i)
+        {
+          ab.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "track index not match! break");
         }
-        if (this.eIP.getSampleTrackIndex() == i) {
-          break label927;
+        else
+        {
+          localException.position(0);
+          MP4MuxerJNI.writeAACDataLock(this.eRm, localException, j);
+          this.cfO.advance();
+          continue;
+          label988:
+          continue;
+          label991:
+          localObject2 = null;
+          i = -1;
         }
-        y.e("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "track index not match! break");
-        break label665;
-        localIOException.position(0);
-        MP4MuxerJNI.writeAACData(this.eIz, localIOException, j);
-        this.eIP.advance();
-        break label606;
-        break label727;
-        localObject2 = null;
-        i = -1;
-        break label519;
-        i += 1;
-        break label477;
       }
-      if (i >= this.eIP.getTrackCount()) {
-        break label958;
-      }
-      localObject2 = this.eIP.getTrackFormat(i);
-      localObject1 = ((MediaFormat)localObject2).getString("mime");
-      if (!((String)localObject1).startsWith("audio/")) {
-        break label966;
-      }
-      if ((i >= 0) && (localObject2 != null) && (!bk.bl((String)localObject1)))
-      {
-        this.auC = ((MediaFormat)localObject2).getInteger("channel-count");
-        this.mkQ = ((MediaFormat)localObject2).getInteger("sample-rate");
-        this.eIP.selectTrack(i);
-        if (this.mkN > 0L) {
-          this.eIP.seekTo(this.mkN * 1000L, 0);
-        }
-        localObject1 = ByteBuffer.allocateDirect(((MediaFormat)localObject2).getInteger("max-input-size"));
-        ((ByteBuffer)localObject1).clear();
-        j = this.eIP.readSampleData((ByteBuffer)localObject1, 0);
-        y.d("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "sampleSize: %d", new Object[] { Integer.valueOf(j) });
-        if (j > 0) {
-          break;
-        }
-        y.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "muxAudio size = %d. Saw eos.", new Object[] { Integer.valueOf(j) });
-      }
-      label665:
-      localObject2 = this.mkG;
-      localObject1 = localObject2;
-      if (this.mkM > 0) {
-        localObject1 = (String)localObject2 + "tempRotate.mp4";
-      }
-      l = this.jlu;
-      if (l > 0L) {
-        break label955;
-      }
-      l = this.mkO - this.mkN;
-      label727:
-      i = MP4MuxerJNI.muxing(this.eIz, this.mkQ, 1024, 2, this.auC, (String)localObject1, this.mkF.frameCount * 1000.0F / (float)l, null, 0);
-      y.i("MicroMsg.MMSightFFMpegMediaCodecRemuxer", "muxing ret: %s", new Object[] { Integer.valueOf(i) });
-      if (this.mkM > 0)
-      {
-        SightVideoJNI.tagRotateVideo((String)localObject1, this.mkG, this.mkM);
-        com.tencent.mm.vfs.e.deleteFile((String)localObject1);
-      }
-      MP4MuxerJNI.releaseDataBuf(this.eIz);
-      j.mji.ET();
-      return i;
     }
   }
   
@@ -262,10 +289,17 @@ public final class b
   {
     return 1;
   }
+  
+  public final void p(Bitmap paramBitmap)
+  {
+    if (paramBitmap != null) {
+      this.eVZ = paramBitmap;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.b.b
  * JD-Core Version:    0.7.0.1
  */

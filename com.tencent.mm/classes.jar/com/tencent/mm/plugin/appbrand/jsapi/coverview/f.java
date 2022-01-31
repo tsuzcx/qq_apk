@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.b;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.page.y;
+import com.tencent.mm.plugin.appbrand.page.af;
 import org.json.JSONObject;
 
 public final class f
@@ -12,15 +13,21 @@ public final class f
   private static final int CTRL_INDEX = 255;
   public static final String NAME = "removeImageView";
   
-  protected final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean b(e parame, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    parame.agW().mh(paramInt);
-    return super.b(parame, paramInt, paramView, paramJSONObject);
+    AppMethodBeat.i(126309);
+    parame.vC().pj(paramInt);
+    boolean bool = super.b(parame, paramInt, paramView, paramJSONObject);
+    AppMethodBeat.o(126309);
+    return bool;
   }
   
-  protected final int p(JSONObject paramJSONObject)
+  public final int w(JSONObject paramJSONObject)
   {
-    return paramJSONObject.getInt("viewId");
+    AppMethodBeat.i(126308);
+    int i = paramJSONObject.getInt("viewId");
+    AppMethodBeat.o(126308);
+    return i;
   }
 }
 

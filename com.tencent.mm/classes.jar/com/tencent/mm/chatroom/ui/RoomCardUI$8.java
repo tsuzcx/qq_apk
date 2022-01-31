@@ -1,17 +1,19 @@
 package com.tencent.mm.chatroom.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ui.base.n.c;
 
 final class RoomCardUI$8
-  implements MenuItem.OnMenuItemClickListener
+  implements n.c
 {
   RoomCardUI$8(RoomCardUI paramRoomCardUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onCreateMMMenu(l paraml)
   {
-    RoomCardUI.c(this.dpS);
-    return true;
+    AppMethodBeat.i(155173);
+    paraml.add(2131296895);
+    AppMethodBeat.o(155173);
   }
 }
 

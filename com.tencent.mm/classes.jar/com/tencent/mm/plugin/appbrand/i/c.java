@@ -1,35 +1,48 @@
 package com.tencent.mm.plugin.appbrand.i;
 
-final class c
-  extends b
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.d.a.g;
+import com.tencent.mm.d.a.l;
+import com.tencent.mm.d.a.l.7;
+
+public class c
+  extends a
 {
-  private final int fZV;
-  private final com.tencent.mm.d.a.b gIu;
-  
-  public c(com.tencent.mm.d.a.b paramb, int paramInt)
+  public c()
   {
-    this.gIu = paramb;
-    this.fZV = paramInt;
+    this(null, null);
   }
   
-  public final boolean age()
+  public c(String paramString, byte[] paramArrayOfByte)
   {
-    return false;
+    super(paramString, paramArrayOfByte);
   }
   
-  public final int agf()
+  protected final l a(com.tencent.mm.d.a.c paramc, int paramInt)
   {
-    return this.fZV;
+    AppMethodBeat.i(113933);
+    paramc = paramc.gg(paramInt);
+    AppMethodBeat.o(113933);
+    return paramc;
   }
   
-  protected final com.tencent.mm.d.a.b alz()
+  public final void a(w paramw)
   {
-    return this.gIu;
+    AppMethodBeat.i(145892);
+    if (this.ijd != null)
+    {
+      l locall = this.ijd;
+      locall.cbC.k(new l.7(locall, paramw));
+    }
+    AppMethodBeat.o(145892);
   }
   
-  public final void setJsExceptionHandler(e parame)
+  protected com.tencent.mm.d.a.c r(String paramString, byte[] paramArrayOfByte)
   {
-    this.gIu.a(this.fZV, parame);
+    AppMethodBeat.i(113932);
+    paramString = g.h(paramString, paramArrayOfByte);
+    AppMethodBeat.o(113932);
+    return paramString;
   }
 }
 

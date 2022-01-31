@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.a;
-import com.tencent.mm.plugin.backup.i.ab;
 import com.tencent.mm.plugin.backup.i.ac;
-import com.tencent.mm.sdk.platformtools.y;
 
 public final class b
   extends com.tencent.mm.plugin.backup.g.b
 {
-  private ab hOE = new ab();
-  private ac hOF = new ac();
+  private com.tencent.mm.plugin.backup.i.ab jIg;
+  private ac jIh;
   
   public b(int paramInt)
   {
-    this.hOE.hPE = paramInt;
+    AppMethodBeat.i(17881);
+    this.jIg = new com.tencent.mm.plugin.backup.i.ab();
+    this.jIh = new ac();
+    this.jIg.jJg = paramInt;
+    AppMethodBeat.o(17881);
   }
   
-  public final a auJ()
+  public final a aUl()
   {
-    return this.hOF;
+    return this.jIh;
   }
   
-  public final a auK()
+  public final a aUm()
   {
-    return this.hOE;
+    return this.jIg;
   }
   
   public final int getType()
@@ -31,15 +34,18 @@ public final class b
     return 3;
   }
   
-  public final void nF(int paramInt)
+  public final void rt(int paramInt)
   {
-    if (this.hOF.hQq == 0)
+    AppMethodBeat.i(17882);
+    if (this.jIh.jJS == 0)
     {
-      j(0, 0, "ok");
+      n(0, 0, "ok");
+      AppMethodBeat.o(17882);
       return;
     }
-    y.e("MicroMsg.BakSceneCommand", " type:%d  errCode:%d", new Object[] { Integer.valueOf(this.hOE.hPE), Integer.valueOf(this.hOF.hQq) });
-    j(4, this.hOF.hQq, "fail");
+    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.BakSceneCommand", " type:%d  errCode:%d", new Object[] { Integer.valueOf(this.jIg.jJg), Integer.valueOf(this.jIh.jJS) });
+    n(4, this.jIh.jJS, "fail");
+    AppMethodBeat.o(17882);
   }
 }
 

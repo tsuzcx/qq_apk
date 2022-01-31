@@ -1,43 +1,52 @@
 package com.tencent.mm.plugin.walletlock.gesture.a;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
 public final class b
 {
-  public static boolean bYc()
+  public static boolean cXK()
   {
-    return ((Boolean)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uxP, Boolean.valueOf(false))).booleanValue();
+    AppMethodBeat.i(51547);
+    boolean bool = ((Boolean)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yHZ, Boolean.FALSE)).booleanValue();
+    AppMethodBeat.o(51547);
+    return bool;
   }
   
-  public static boolean bYd()
+  public static boolean cXL()
   {
-    g localg = d.bYe();
-    y.v("MicroMsg.GestureUtil", "alvinluo timeInfo: %d, %d", new Object[] { Long.valueOf(localg.qPE), Long.valueOf(localg.qPF) });
-    if (localg.qPE != -1L)
+    AppMethodBeat.i(51549);
+    g localg = d.cXM();
+    ab.v("MicroMsg.GestureUtil", "alvinluo timeInfo: %d, %d", new Object[] { Long.valueOf(localg.uEM), Long.valueOf(localg.uEN) });
+    if (localg.uEM != -1L)
     {
       e.a(localg);
-      if (localg.qPF / 1000L < 600L)
+      if (localg.uEN / 1000L < 600L)
       {
-        d.Q(localg.qPE, localg.qPF);
+        d.ae(localg.uEM, localg.uEN);
+        AppMethodBeat.o(51549);
         return true;
       }
-      d.bYf();
+      d.cXN();
     }
+    AppMethodBeat.o(51549);
     return false;
   }
   
-  public static void kR(boolean paramBoolean)
+  public static void oa(boolean paramBoolean)
   {
-    y.i("MicroMsg.GestureGuardManager", "alvinluo setUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    com.tencent.mm.kernel.g.DP().Dz().c(ac.a.uxP, Boolean.valueOf(paramBoolean));
-    com.tencent.mm.kernel.g.DP().Dz().mC(true);
+    AppMethodBeat.i(51548);
+    ab.i("MicroMsg.GestureGuardManager", "alvinluo setUserSetGesturePwd: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    com.tencent.mm.kernel.g.RL().Ru().set(ac.a.yHZ, Boolean.valueOf(paramBoolean));
+    com.tencent.mm.kernel.g.RL().Ru().dww();
+    AppMethodBeat.o(51548);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.b
  * JD-Core Version:    0.7.0.1
  */

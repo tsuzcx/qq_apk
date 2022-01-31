@@ -1,5 +1,6 @@
 package com.tencent.oscarcamera.particlesystem;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +46,7 @@ public class AttributeConst
   
   static
   {
+    AppMethodBeat.i(81510);
     HashMap localHashMap = new HashMap();
     ATTR_INDEX_MAP = localHashMap;
     localHashMap.put("life", Integer.valueOf(2));
@@ -57,11 +59,12 @@ public class AttributeConst
     ATTR_INDEX_MAP.put("colorG", Integer.valueOf(4));
     ATTR_INDEX_MAP.put("colorB", Integer.valueOf(5));
     ATTR_INDEX_MAP.put("colorA", Integer.valueOf(6));
+    AppMethodBeat.o(81510);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.AttributeConst
  * JD-Core Version:    0.7.0.1
  */

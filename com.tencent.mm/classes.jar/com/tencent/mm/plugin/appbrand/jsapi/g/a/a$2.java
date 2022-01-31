@@ -2,34 +2,44 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 import com.tencent.mapsdk.raster.model.CameraPosition;
 import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
 
 final class a$2
   implements TencentMap.OnMapCameraChangeListener
 {
-  a$2(a parama, b.q paramq) {}
+  a$2(a parama, b.s params) {}
   
   public final void onCameraChange(CameraPosition paramCameraPosition)
   {
-    if (this.gtX != null)
+    AppMethodBeat.i(138412);
+    if (this.hON != null)
     {
       b.a locala = new b.a();
-      locala.gul = new b.f(paramCameraPosition.getTarget().getLatitude(), paramCameraPosition.getTarget().getLongitude());
+      locala.hPd = new b.h(paramCameraPosition.getTarget().getLatitude(), paramCameraPosition.getTarget().getLongitude());
       locala.zoom = paramCameraPosition.getZoom();
-      this.gtX.a(locala);
+      locala.rotate = paramCameraPosition.getBearing();
+      locala.skew = paramCameraPosition.getSkew();
+      this.hON.a(locala, a.k(this.hOM));
     }
+    AppMethodBeat.o(138412);
   }
   
   public final void onCameraChangeFinish(CameraPosition paramCameraPosition)
   {
-    if (this.gtX != null)
+    AppMethodBeat.i(138413);
+    a.a(this.hOM, paramCameraPosition);
+    if (this.hON != null)
     {
       b.a locala = new b.a();
-      locala.gul = new b.f(paramCameraPosition.getTarget().getLatitude(), paramCameraPosition.getTarget().getLongitude());
+      locala.hPd = new b.h(paramCameraPosition.getTarget().getLatitude(), paramCameraPosition.getTarget().getLongitude());
       locala.zoom = paramCameraPosition.getZoom();
-      this.gtX.a(locala, this.gtW.gtI);
+      locala.rotate = paramCameraPosition.getBearing();
+      locala.skew = paramCameraPosition.getSkew();
+      this.hON.b(locala, a.k(this.hOM));
     }
-    a.a(this.gtW);
+    a.g(this.hOM);
+    AppMethodBeat.o(138413);
   }
 }
 

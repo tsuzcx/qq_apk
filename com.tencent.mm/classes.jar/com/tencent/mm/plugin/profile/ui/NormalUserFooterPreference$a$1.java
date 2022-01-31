@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class NormalUserFooterPreference$a$1
   implements MenuItem.OnMenuItemClickListener
@@ -11,16 +12,18 @@ final class NormalUserFooterPreference$a$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new d(NormalUserFooterPreference.b(this.mYE.mYC), 1, false);
-    paramMenuItem.phI = new NormalUserFooterPreference.a.1.1(this);
-    paramMenuItem.phH = new NormalUserFooterPreference.a.1.2(this);
-    paramMenuItem.cfU();
+    AppMethodBeat.i(23676);
+    paramMenuItem = new d(NormalUserFooterPreference.b(this.pCf.pCe), 1, false);
+    paramMenuItem.sap = new NormalUserFooterPreference.a.1.1(this);
+    paramMenuItem.sao = new NormalUserFooterPreference.a.1.2(this);
+    paramMenuItem.crd();
+    AppMethodBeat.o(23676);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference.a.1
  * JD-Core Version:    0.7.0.1
  */

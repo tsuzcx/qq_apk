@@ -1,73 +1,37 @@
 package com.tencent.mm.plugin.emojicapture.model.a;
 
-import a.d.b.g;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import a.f.b.j;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.a.a;
+import com.tencent.mm.emoji.a.a.a;
+import com.tencent.mm.plugin.emojicapture.model.c.c;
+import com.tencent.mm.plugin.emojicapture.model.c.h;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"checkStickerValid", "", "item", "Lcom/tencent/mm/plugin/emojicapture/model/xml/EmoticonLensItem;", "plugin-emojicapture_release"})
 public final class d
-  extends a
 {
-  private final Matrix aqv;
-  private int jkx;
-  private final List<Bitmap> jky;
-  private final long jkz = 100L;
-  
-  public d(Bitmap[] paramArrayOfBitmap, Matrix paramMatrix)
+  public static final boolean a(c paramc)
   {
-    super(paramMatrix);
-    this.aqv = paramMatrix;
-    this.jky = ((List)new ArrayList());
-    if (paramArrayOfBitmap != null)
+    AppMethodBeat.i(2646);
+    j.q(paramc, "item");
+    Object localObject = e.luf;
+    localObject = e.uI(paramc.lvl);
+    h localh = new h();
+    a.a locala = a.ewm;
+    a.a.a((String)localObject, (a)localh);
+    if (localh.lvE >= paramc.lvn)
     {
-      int j = paramArrayOfBitmap.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramMatrix = paramArrayOfBitmap[i];
-        if (paramMatrix != null) {
-          this.jky.add(paramMatrix);
-        }
-        i += 1;
-      }
+      AppMethodBeat.o(2646);
+      return true;
     }
+    AppMethodBeat.o(2646);
+    return false;
   }
-  
-  public final long aKf()
-  {
-    if (this.jky.isEmpty()) {
-      return 9223372036854775807L;
-    }
-    this.jkx += 1;
-    this.jkx %= ((Collection)this.jky).size();
-    return this.jkz;
-  }
-  
-  public final void destroy() {}
-  
-  public final void draw(Canvas paramCanvas, Paint paramPaint)
-  {
-    g.k(paramCanvas, "canvas");
-    g.k(paramPaint, "paint");
-    if (this.jky.isEmpty()) {
-      return;
-    }
-    Bitmap localBitmap = (Bitmap)this.jky.get(this.jkx);
-    paramCanvas.save();
-    paramCanvas.concat(this.aqv);
-    paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, paramPaint);
-    paramCanvas.restore();
-  }
-  
-  public final void init() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.model.a.d
  * JD-Core Version:    0.7.0.1
  */

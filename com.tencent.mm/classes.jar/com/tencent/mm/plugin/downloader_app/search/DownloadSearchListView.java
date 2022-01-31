@@ -1,104 +1,101 @@
 package com.tencent.mm.plugin.downloader_app.search;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
 import android.util.AttributeSet;
-import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
 import com.tencent.mm.plugin.downloader.b.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DownloadSearchListView
   extends MRecyclerView
 {
-  a iSN;
-  List<b> iSO;
-  List<b> iSP;
-  private a.b iSQ = new DownloadSearchListView.1(this);
+  private a.b lbA;
+  a lbx;
+  List<b> lby;
+  List<b> lbz;
   Context mContext;
   
   public DownloadSearchListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(136174);
+    this.lbA = new DownloadSearchListView.1(this);
     this.mContext = paramContext;
+    AppMethodBeat.o(136174);
   }
   
   public DownloadSearchListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(136175);
+    this.lbA = new DownloadSearchListView.1(this);
     this.mContext = paramContext;
+    AppMethodBeat.o(136175);
   }
   
-  public final void Ag(String paramString)
+  public final void Kd(String paramString)
   {
-    int i = 0;
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(136179);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(136179);
       return;
     }
-    Object localObject = this.mContext;
-    if (!bk.bl(paramString))
-    {
-      b.ad((Context)localObject, paramString);
-      localObject = ((Context)localObject).getSharedPreferences("search_history_href", 0);
-      String str = ((SharedPreferences)localObject).getString("search_history_list", "");
-      StringBuffer localStringBuffer = new StringBuffer();
-      localStringBuffer.append(Base64.encodeToString(paramString.getBytes(), 0));
-      localStringBuffer.append(";");
-      localStringBuffer.append(str);
-      paramString = localStringBuffer.toString().split(";");
-      localStringBuffer.setLength(0);
-      while ((i < paramString.length) && (i < 10))
-      {
-        localStringBuffer.append(paramString[i]);
-        localStringBuffer.append(";");
-        i += 1;
-      }
-      ((SharedPreferences)localObject).edit().putString("search_history_list", localStringBuffer.toString()).commit();
-    }
-    this.iSO = b.cV(this.mContext);
+    b.ak(this.mContext, paramString);
+    this.lby = b.dI(this.mContext);
+    AppMethodBeat.o(136179);
   }
   
-  protected void onAttachedToWindow()
+  public void onAttachedToWindow()
   {
-    y.i("MicroMsg.DownloadSearchListView", "onAttachedToWindow");
+    AppMethodBeat.i(136176);
+    ab.i("MicroMsg.DownloadSearchListView", "onAttachedToWindow");
     super.onAttachedToWindow();
-    com.tencent.mm.plugin.downloader.b.a.a(this.iSQ);
+    com.tencent.mm.plugin.downloader.b.a.a(this.lbA);
+    AppMethodBeat.o(136176);
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
-    y.i("MicroMsg.DownloadSearchListView", "onDetachedFromWindow");
+    AppMethodBeat.i(136177);
+    ab.i("MicroMsg.DownloadSearchListView", "onDetachedFromWindow");
     super.onDetachedFromWindow();
-    com.tencent.mm.plugin.downloader.b.a.b(this.iSQ);
+    com.tencent.mm.plugin.downloader.b.a.b(this.lbA);
+    AppMethodBeat.o(136177);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(136178);
     super.onFinishInflate();
     getContext();
     setLayoutManager(new LinearLayoutManager());
-    this.iSN = new a(this.mContext, this);
-    setAdapter(this.iSN);
+    this.lbx = new a(this.mContext, this);
+    setAdapter(this.lbx);
     a(new c(getResources()));
-    this.iSO = b.cV(this.mContext);
-    this.iSP = new ArrayList();
+    this.lby = b.dI(this.mContext);
+    this.lbz = new ArrayList();
+    AppMethodBeat.o(136178);
   }
   
   void setData(List<b> paramList)
   {
-    a locala = this.iSN;
-    locala.hka.clear();
-    if (!bk.dk(paramList)) {
-      locala.hka.addAll(paramList);
+    AppMethodBeat.i(136180);
+    a locala = this.lbx;
+    locala.iVH.clear();
+    if (!bo.es(paramList)) {
+      locala.iVH.addAll(paramList);
     }
-    locala.agL.notifyChanged();
+    locala.ajb.notifyChanged();
+    AppMethodBeat.o(136180);
   }
 }
 

@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
+import android.support.design.widget.c;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.protocal.c.bhm;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.wallet_core.ui.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletLqtDetailUI$8
   implements View.OnClickListener
 {
-  WalletLqtDetailUI$8(WalletLqtDetailUI paramWalletLqtDetailUI) {}
+  WalletLqtDetailUI$8(WalletLqtDetailUI paramWalletLqtDetailUI, c paramc) {}
   
   public final void onClick(View paramView)
   {
-    if (!bk.bl(WalletLqtDetailUI.c(this.qil).tCk)) {
-      e.l(this.qil, WalletLqtDetailUI.c(this.qil).tCk, false);
-    }
+    AppMethodBeat.i(45529);
+    this.tPR.dismiss();
+    AppMethodBeat.o(45529);
   }
 }
 

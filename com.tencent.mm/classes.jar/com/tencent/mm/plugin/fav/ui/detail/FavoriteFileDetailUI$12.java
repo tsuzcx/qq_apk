@@ -2,10 +2,8 @@ package com.tencent.mm.plugin.fav.ui.detail;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
-import com.tencent.mm.plugin.fav.a.g;
-import com.tencent.mm.plugin.fav.ui.n.i;
 
 final class FavoriteFileDetailUI$12
   implements View.OnClickListener
@@ -14,23 +12,22 @@ final class FavoriteFileDetailUI$12
   
   public final void onClick(View paramView)
   {
-    if (FavoriteFileDetailUI.b(this.kfu).isDownloading())
+    AppMethodBeat.i(74334);
+    paramView = b.b(FavoriteFileDetailUI.a(this.mAf));
+    if (4 == FavoriteFileDetailUI.c(this.mAf))
     {
-      b.d(FavoriteFileDetailUI.a(this.kfu));
-      FavoriteFileDetailUI.h(this.kfu).setText(n.i.favorite_item_restart_download);
-    }
-    for (;;)
-    {
-      FavoriteFileDetailUI.i(this.kfu);
+      FavoriteFileDetailUI.d(this.mAf);
+      FavoriteFileDetailUI.e(this.mAf);
+      AppMethodBeat.o(74334);
       return;
-      b.n(FavoriteFileDetailUI.b(this.kfu));
-      FavoriteFileDetailUI.h(this.kfu).setText(n.i.favorite_item_restart_upload);
     }
+    FavoriteFileDetailUI.a(this.mAf, paramView);
+    AppMethodBeat.o(74334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.detail.FavoriteFileDetailUI.12
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.hardwareopt.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 
 final class a$a
@@ -8,6 +9,8 @@ final class a$a
   a$a()
   {
     super("hy: positively stop in " + g.getLine());
+    AppMethodBeat.i(59275);
+    AppMethodBeat.o(59275);
   }
 }
 

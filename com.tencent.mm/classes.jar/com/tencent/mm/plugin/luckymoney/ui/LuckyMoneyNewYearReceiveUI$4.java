@@ -1,22 +1,26 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import com.tencent.mm.j.d;
-import com.tencent.mm.plugin.luckymoney.b.k.a;
-import com.tencent.mm.sdk.platformtools.ah;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 
 final class LuckyMoneyNewYearReceiveUI$4
-  implements k.a
+  implements View.OnClickListener
 {
   LuckyMoneyNewYearReceiveUI$4(LuckyMoneyNewYearReceiveUI paramLuckyMoneyNewYearReceiveUI) {}
   
-  public final void a(d paramd, String paramString, boolean paramBoolean)
+  public final void onClick(View paramView)
   {
-    LuckyMoneyNewYearReceiveUI.g(this.lWq).post(new LuckyMoneyNewYearReceiveUI.4.1(this, paramBoolean, paramd));
+    AppMethodBeat.i(42787);
+    this.ouD.finish();
+    h.qsU.e(13079, new Object[] { Integer.valueOf(6), Integer.valueOf(2) });
+    AppMethodBeat.o(42787);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyNewYearReceiveUI.4
  * JD-Core Version:    0.7.0.1
  */

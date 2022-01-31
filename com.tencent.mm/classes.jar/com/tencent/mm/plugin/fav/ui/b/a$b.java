@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.h.a.gf;
-import com.tencent.mm.h.a.gf.a;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gi;
+import com.tencent.mm.g.a.gi.a;
 import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.ui.m;
-import com.tencent.mm.protocal.c.yl;
+import com.tencent.mm.protocal.protobuf.acs;
 import com.tencent.mm.ui.MMImageView;
 
 public final class a$b
@@ -24,41 +23,53 @@ public final class a$b
   
   public final View a(Context paramContext, ViewGroup paramViewGroup)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(n.f.fts_favorite_item, paramViewGroup, false);
-    paramViewGroup = (a.a)this.kha.kgW;
-    paramViewGroup.kgX = ((MMImageView)paramContext.findViewById(n.e.avatar_iv));
-    paramViewGroup.eXO = ((TextView)paramContext.findViewById(n.e.title_tv));
-    paramViewGroup.kgY = ((TextView)paramContext.findViewById(n.e.abstract_tv));
-    paramViewGroup.kgZ = ((TextView)paramContext.findViewById(n.e.status_tv));
-    paramViewGroup.contentView = paramContext.findViewById(n.e.search_item_content_layout);
+    AppMethodBeat.i(74489);
+    paramContext = LayoutInflater.from(paramContext).inflate(2130969658, paramViewGroup, false);
+    paramViewGroup = (a.a)this.mBP.mBL;
+    paramViewGroup.mBM = ((MMImageView)paramContext.findViewById(2131821210));
+    paramViewGroup.gpL = ((TextView)paramContext.findViewById(2131821212));
+    paramViewGroup.mBN = ((TextView)paramContext.findViewById(2131824327));
+    paramViewGroup.mBO = ((TextView)paramContext.findViewById(2131824328));
+    paramViewGroup.gqg = paramContext.findViewById(2131821148);
     paramContext.setTag(paramViewGroup);
+    AppMethodBeat.o(74489);
     return paramContext;
   }
   
   public final void a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a.a parama, com.tencent.mm.plugin.fts.a.d.a.a parama1, Object... paramVarArgs)
   {
+    AppMethodBeat.i(74490);
     parama = (a.a)parama;
     parama1 = (a)parama1;
-    m.k(parama.contentView, this.kha.kxT);
-    m.a(paramContext, parama.kgX, parama1.foS, parama1.kgT, parama1.kgU, false, parama.kgX.getMeasuredWidth(), parama.kgX.getMeasuredHeight());
-    a.a(parama.eXO, parama.kgY, this.kha.kgQ, this.kha.kgR);
-    m.a(this.kha.kgS, parama.kgZ);
+    m.a(paramContext, parama.mBM, parama1.gGm, parama1.mBI, parama1.mBJ, parama.mBM.getMeasuredWidth(), parama.mBM.getMeasuredHeight());
+    a.a(parama.gpL, parama.mBN, this.mBP.mBF, this.mBP.mBG);
+    m.a(this.mBP.mBH, parama.mBO);
+    if (this.mBP.mBE)
+    {
+      parama.gqg.setVisibility(0);
+      AppMethodBeat.o(74490);
+      return;
+    }
+    parama.gqg.setVisibility(8);
+    AppMethodBeat.o(74490);
   }
   
   public final boolean a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
   {
+    AppMethodBeat.i(74491);
     paramVarArgs = (a)paramVarArgs;
-    gf localgf = new gf();
-    localgf.bNF.type = 10;
-    localgf.bNF.bIr = paramVarArgs.fYx.kxk;
-    localgf.bNF.context = paramContext;
-    localgf.bNF.bNQ = new yl();
-    if (this.kha.pageType == 1) {}
-    for (localgf.bNF.bNQ.scene = 3;; localgf.bNF.bNQ.scene = 4)
+    gi localgi = new gi();
+    localgi.cuX.type = 10;
+    localgi.cuX.cpM = paramVarArgs.hrL.mSZ;
+    localgi.cuX.context = paramContext;
+    localgi.cuX.cvi = new acs();
+    if (this.mBP.pageType == 1) {}
+    for (localgi.cuX.cvi.scene = 3;; localgi.cuX.cvi.scene = 4)
     {
-      localgf.bNF.bNQ.jYS = 3;
-      localgf.bNF.bNQ.index = this.kha.kxW;
-      com.tencent.mm.sdk.b.a.udP.m(localgf);
+      localgi.cuX.cvi.kbN = 3;
+      localgi.cuX.cvi.index = this.mBP.mTJ;
+      com.tencent.mm.sdk.b.a.ymk.l(localgi);
+      AppMethodBeat.o(74491);
       return true;
     }
   }

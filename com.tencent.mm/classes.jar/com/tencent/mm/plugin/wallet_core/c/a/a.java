@@ -1,55 +1,67 @@
 package com.tencent.mm.plugin.wallet_core.c.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bdg;
-import com.tencent.mm.protocal.c.bdh;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bla;
+import com.tencent.mm.protocal.protobuf.blb;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class a
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
+  private f callback;
+  private b rr;
   
   public a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
+    AppMethodBeat.i(46560);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new bdg();
-    ((b.a)localObject).ecI = new bdh();
+    ((b.a)localObject).fsX = new bla();
+    ((b.a)localObject).fsY = new blb();
     ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/payibgcheckjsapisign";
-    ((b.a)localObject).ecG = 1767;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (bdg)this.dmK.ecE.ecN;
-    ((bdg)localObject).euK = paramString1;
-    ((bdg)localObject).sNg = paramString4;
-    ((bdg)localObject).sNf = paramString2;
-    ((bdg)localObject).sNh = paramString5;
-    ((bdg)localObject).sNi = paramString6;
-    ((bdg)localObject).sBi = paramString3;
-    ((bdg)localObject).sMg = paramString7;
+    ((b.a)localObject).funcId = 1767;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bla)this.rr.fsV.fta;
+    ((bla)localObject).fKw = paramString1;
+    ((bla)localObject).wKW = paramString4;
+    ((bla)localObject).wKV = paramString2;
+    ((bla)localObject).wKX = paramString5;
+    ((bla)localObject).wKY = paramString6;
+    ((bla)localObject).wvC = paramString3;
+    ((bla)localObject).wJT = paramString7;
+    AppMethodBeat.o(46560);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
+    AppMethodBeat.i(46562);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(46562);
+    return i;
   }
   
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final int getType()
   {
-    y.i("MicroMsg.NetSceneIbgCheckJsapi", "check jsapi: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramArrayOfByte = (bdh)((b)paramq).ecF.ecN;
+    return 1767;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(46561);
+    ab.i("MicroMsg.NetSceneIbgCheckJsapi", "check jsapi: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramArrayOfByte = (blb)((b)paramq).fsW.fta;
     paramInt1 = paramInt3;
     paramq = paramString;
     if (paramInt3 == 0)
@@ -58,21 +70,17 @@ public final class a
       paramq = paramString;
       if (paramInt2 == 0)
       {
-        paramInt1 = paramArrayOfByte.jxl;
-        paramq = paramArrayOfByte.jxm;
+        paramInt1 = paramArrayOfByte.lGK;
+        paramq = paramArrayOfByte.lGL;
       }
     }
-    this.dmL.onSceneEnd(paramInt2, paramInt1, paramq, this);
-  }
-  
-  public final int getType()
-  {
-    return 1767;
+    this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
+    AppMethodBeat.o(46561);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.a.a
  * JD-Core Version:    0.7.0.1
  */

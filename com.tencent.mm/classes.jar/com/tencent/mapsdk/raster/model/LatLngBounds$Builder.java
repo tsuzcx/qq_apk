@@ -1,5 +1,6 @@
 package com.tencent.mapsdk.raster.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 
 public final class LatLngBounds$Builder
@@ -24,31 +25,40 @@ public final class LatLngBounds$Builder
   
   public final LatLngBounds build()
   {
-    return new LatLngBounds(new LatLng(this.mSouth, this.mWest), new LatLng(this.mNorth, this.mEast));
+    AppMethodBeat.i(101201);
+    LatLngBounds localLatLngBounds = new LatLngBounds(new LatLng(this.mSouth, this.mWest), new LatLng(this.mNorth, this.mEast));
+    AppMethodBeat.o(101201);
+    return localLatLngBounds;
   }
   
   public final Builder include(LatLng paramLatLng)
   {
+    AppMethodBeat.i(101199);
     this.mSouth = Math.min(this.mSouth, paramLatLng.getLatitude());
     this.mNorth = Math.max(this.mNorth, paramLatLng.getLatitude());
     double d = paramLatLng.getLongitude();
-    if (Double.isNaN(this.mWest)) {
-      this.mWest = d;
-    }
-    do
+    if (Double.isNaN(this.mWest))
     {
+      this.mWest = d;
       this.mEast = d;
-      do
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(101199);
+      return this;
+      if (!containsLongitude(d))
       {
-        return this;
-      } while (containsLongitude(d));
-    } while (LatLngBounds.access$400(this.mWest, d) >= LatLngBounds.access$500(this.mEast, d));
-    this.mWest = d;
-    return this;
+        if (LatLngBounds.access$400(this.mWest, d) >= LatLngBounds.access$500(this.mEast, d)) {
+          break;
+        }
+        this.mWest = d;
+      }
+    }
   }
   
   public final Builder include(Iterable<LatLng> paramIterable)
   {
+    AppMethodBeat.i(101200);
     if (paramIterable != null)
     {
       paramIterable = paramIterable.iterator();
@@ -56,6 +66,7 @@ public final class LatLngBounds$Builder
         include((LatLng)paramIterable.next());
       }
     }
+    AppMethodBeat.o(101200);
     return this;
   }
 }

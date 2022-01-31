@@ -1,45 +1,51 @@
 package com.tencent.mm.plugin.wallet_payu.pay.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.bea;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.s;
+import com.tencent.mm.protocal.protobuf.blu;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.u;
 
 public final class a
-  extends s
+  extends u
 {
-  private b dmK;
-  private f dmL;
+  private f callback;
+  private b rr;
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void e(int paramInt1, int paramInt2, String paramString, q paramq)
-  {
-    y.d("MicroMsg.NetScenePayUCheckJsApi", "errType:" + paramInt1 + ",errCode:" + paramInt2 + ",errMsg" + paramString);
-    paramString = (bea)((b)paramq).ecF.ecN;
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      y.d("MicroMsg.NetScenePayUCheckJsApi", "rr " + paramString.jxl);
-    }
-    paramString = paramString.jxm;
-    this.dmL.onSceneEnd(paramInt1, paramInt2, paramString, this);
+    AppMethodBeat.i(48438);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(48438);
+    return i;
   }
   
   public final int getType()
   {
     return 1554;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  {
+    AppMethodBeat.i(142601);
+    ab.d("MicroMsg.NetScenePayUCheckJsApi", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    paramString = (blu)((b)paramq).fsW.fta;
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      ab.d("MicroMsg.NetScenePayUCheckJsApi", "rr " + paramString.lGK);
+    }
+    paramString = paramString.lGL;
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(142601);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pay.a.a
  * JD-Core Version:    0.7.0.1
  */

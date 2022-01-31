@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class NoteEditorUI$35
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class NoteEditorUI$35
   
   public final void run()
   {
-    this.rLT.f(this.ryd, false, false);
+    AppMethodBeat.i(27045);
+    this.vCx.j(this.voX, false, false);
+    AppMethodBeat.o(27045);
   }
 }
 

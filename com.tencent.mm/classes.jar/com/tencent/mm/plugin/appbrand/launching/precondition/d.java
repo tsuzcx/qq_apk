@@ -1,97 +1,67 @@
 package com.tencent.mm.plugin.appbrand.launching.precondition;
 
-import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
-import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import java.util.Queue;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.TimeUnit;
 
 public final class d
-  extends b
-  implements h
+  extends a
 {
-  int gdS = 0;
-  private Intent mIntent;
+  private static final Map<String, d> inY;
+  private final WeakReference<Context> aon;
+  private final String inZ;
+  private final String ioa;
   
-  public d(AppBrandLaunchProxyUI paramAppBrandLaunchProxyUI)
+  static
   {
-    setBaseContext(paramAppBrandLaunchProxyUI);
+    AppMethodBeat.i(132073);
+    inY = new ConcurrentHashMap();
+    AppMethodBeat.o(132073);
   }
   
-  private void amc()
+  d(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if ((isFinishing()) || (amb())) {
-      return;
-    }
-    super.ama();
+    AppMethodBeat.i(132071);
+    this.inZ = paramString;
+    this.ioa = paramContext.getClass().getName();
+    this.aon = new WeakReference(paramContext);
+    this.inL = paramBoolean;
+    inY.put(paramString, this);
+    paramContext = new d.a(paramString);
+    long l = TimeUnit.SECONDS.toMillis(300L);
+    paramContext.ag(l, l);
+    AppMethodBeat.o(132071);
   }
   
-  protected final String alZ()
+  public static d Dr(String paramString)
   {
-    return this.mIntent.getStringExtra("extra_launch_source_context");
-  }
-  
-  protected final void ama() {}
-  
-  protected final boolean b(AppBrandInitConfigWC paramAppBrandInitConfigWC)
-  {
-    try
+    AppMethodBeat.i(132070);
+    if (bo.isNullOrNil(paramString))
     {
-      Class localClass = Class.forName(bk.pm(this.mIntent.getStringExtra("extra_launch_source_context")));
-      if ((localClass != null) && (AppBrandUI.class.isAssignableFrom(localClass))) {
-        return false;
-      }
+      AppMethodBeat.o(132070);
+      return null;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-      }
-    }
-    return super.b(paramAppBrandInitConfigWC);
+    paramString = (d)inY.remove(paramString);
+    AppMethodBeat.o(132070);
+    return paramString;
   }
   
-  protected final void d(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
+  protected final String aHs()
   {
-    super.d(paramAppBrandInitConfigWC, paramAppBrandStatObject);
-    paramAppBrandInitConfigWC = new d.1(this);
-    if ((getBaseContext() instanceof AppBrandLaunchProxyUI))
-    {
-      ai.d(paramAppBrandInitConfigWC);
-      return;
-    }
-    this.gMp.offer(paramAppBrandInitConfigWC);
+    return this.ioa;
   }
   
-  public final void onPause()
+  protected final Context aHu()
   {
-    amc();
-  }
-  
-  public final void onResume()
-  {
-    int i = this.gdS + 1;
-    this.gdS = i;
-    if (i > 1) {
-      amc();
-    }
-  }
-  
-  public final void p(Intent paramIntent)
-  {
-    this.mIntent = paramIntent;
-    paramIntent = (LaunchParcel)paramIntent.getParcelableExtra("extra_launch_parcel");
-    if (paramIntent == null)
-    {
-      finish();
-      return;
-    }
-    a(paramIntent);
+    AppMethodBeat.i(132072);
+    Context localContext = (Context)this.aon.get();
+    AppMethodBeat.o(132072);
+    return localContext;
   }
 }
 

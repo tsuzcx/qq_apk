@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.e.i;
+import com.tencent.mm.sdk.e.g;
+import com.tencent.mm.sdk.e.j;
 
 public abstract interface s
-  extends f
+  extends g
 {
-  public static final String[] dXp = { i.a(e.buS, "FavConfigInfo") };
+  public static final String[] SQL_CREATE = { j.getCreateSQLs(e.info, "FavConfigInfo") };
   
-  public abstract byte[] aQr();
+  public abstract void aW(byte[] paramArrayOfByte);
   
-  public abstract void ay(byte[] paramArrayOfByte);
+  public abstract byte[] bwG();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.s
  * JD-Core Version:    0.7.0.1
  */

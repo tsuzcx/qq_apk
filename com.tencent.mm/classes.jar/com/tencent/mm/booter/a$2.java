@@ -1,14 +1,17 @@
 package com.tencent.mm.booter;
 
-import com.tencent.mm.h.a.ne;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ob;
 import com.tencent.mm.sdk.b.c;
 
 final class a$2
-  extends c<ne>
+  extends c<ob>
 {
   a$2(a parama)
   {
-    this.udX = ne.class.getName().hashCode();
+    AppMethodBeat.i(77619);
+    this.__eventId = ob.class.getName().hashCode();
+    AppMethodBeat.o(77619);
   }
 }
 

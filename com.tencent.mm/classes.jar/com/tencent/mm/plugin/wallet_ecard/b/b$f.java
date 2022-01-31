@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.wallet_ecard.b;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.wallet.balance.a.a.q;
-import com.tencent.mm.protocal.c.bca;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.plugin.wallet.balance.a.a.ad;
+import com.tencent.mm.protocal.protobuf.bjb;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.d.g;
@@ -21,44 +20,49 @@ final class b$f
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if ((paramm instanceof q))
+    AppMethodBeat.i(48097);
+    if ((paramm instanceof ad))
     {
-      y.i("MicroMsg.OpenECardProcess", "openLqbAccount scene end, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      q localq = (q)paramm;
+      ab.i("MicroMsg.OpenECardProcess", "openLqbAccount scene end, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      ad localad = (ad)paramm;
+      Bundle localBundle = new Bundle();
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = localq.qgm;
-        if (paramString.ino == 0)
+        paramString = localad.tNB;
+        if (paramString.koj == 0)
         {
-          paramString = new Intent();
-          paramString.putExtra("key_account_type", 2);
-          d.b(this.gfb, "wallet", ".balance.ui.lqt.WalletLqtDetailUI", paramString);
+          b.P(this.uzs).putBoolean("key_goto_lqt_detail", true);
+          localBundle.putInt("key_process_result_code", -1);
         }
       }
       for (;;)
       {
-        this.gfb.finish();
-        this.qKz.b(this.gfb, new Bundle());
+        this.uzs.b(this.hwZ, localBundle);
+        AppMethodBeat.o(48097);
         return true;
-        Toast.makeText(this.gfb, paramString.inp, 1).show();
+        ab.i("MicroMsg.OpenECardProcess", "toast: %s", new Object[] { paramString.kok });
+        Toast.makeText(this.hwZ, paramString.kok, 1).show();
         continue;
-        y.w("MicroMsg.OpenECardProcess", "net error: %s", new Object[] { paramm });
-        paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.gfb, new String[] { paramString });
-        h.b(this.gfb, paramString, "", false);
+        ab.w("MicroMsg.OpenECardProcess", "net error: %s", new Object[] { paramm });
+        paramString = com.tencent.mm.plugin.wallet_ecard.a.b.d(this.hwZ, new String[] { paramString });
+        h.b(this.hwZ, paramString, "", false);
       }
     }
+    AppMethodBeat.o(48097);
     return false;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
+    AppMethodBeat.i(48096);
     ((Integer)paramVarArgs[0]).intValue();
     paramVarArgs = (String)paramVarArgs[1];
-    this.wBd.kh(2996);
-    paramVarArgs = new q(b.b(this.qKz), paramVarArgs);
-    this.wBd.a(paramVarArgs, true);
+    this.AXB.addSceneEndListener(2996);
+    paramVarArgs = new ad(b.b(this.uzs), paramVarArgs);
+    this.AXB.a(paramVarArgs, true);
+    AppMethodBeat.o(48096);
     return false;
   }
 }

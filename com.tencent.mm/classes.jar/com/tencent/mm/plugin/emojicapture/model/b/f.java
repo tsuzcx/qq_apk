@@ -1,35 +1,11 @@
 package com.tencent.mm.plugin.emojicapture.model.b;
 
-import a.d.a.a;
-import a.n;
+import a.l;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"TAG", "", "plugin-emojicapture_release"})
 public final class f
 {
-  public final String TAG;
-  public int frameCount;
-  public long jkM;
-  e jld;
-  public com.tencent.mm.plugin.emojicapture.ui.a.c jle;
-  public g jlf;
-  public d jlg;
-  public a<n> jlh;
-  public final c jli;
-  public final String jlj;
-  public final int jlk;
-  public final boolean jll;
-  public final boolean jlm;
-  public final String videoPath;
-  
-  public f(String paramString1, c paramc, String paramString2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    this.videoPath = paramString1;
-    this.jli = paramc;
-    this.jlj = paramString2;
-    this.jlk = paramInt;
-    this.jll = paramBoolean1;
-    this.jlm = paramBoolean2;
-    this.TAG = "MicroMsg.EmojiMixer";
-  }
+  private static final String TAG = "MicroMsg.EmojiMixManager";
 }
 
 

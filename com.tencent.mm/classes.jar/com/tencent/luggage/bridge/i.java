@@ -1,20 +1,23 @@
 package com.tencent.luggage.bridge;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONObject;
 
 public final class i
 {
-  private JSONObject bhA;
-  String bhz;
+  String bxZ;
+  private JSONObject bya;
   
   i(m paramm)
   {
-    paramm = paramm.pO();
-    this.bhz = paramm.getString("event");
-    this.bhA = paramm.optJSONObject("data");
-    if (this.bhA == null) {
-      this.bhA = new JSONObject();
+    AppMethodBeat.i(90724);
+    paramm = paramm.tS();
+    this.bxZ = paramm.getString("event");
+    this.bya = paramm.optJSONObject("data");
+    if (this.bya == null) {
+      this.bya = new JSONObject();
     }
+    AppMethodBeat.o(90724);
   }
 }
 

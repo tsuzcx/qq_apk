@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.page.w;
-import org.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.v;
+import org.a.a;
 
 final class d$2$1
   implements Runnable
@@ -11,19 +12,24 @@ final class d$2$1
   
   public final void run()
   {
+    AppMethodBeat.i(132203);
     try
     {
-      if ((this.gOR.gjp.gTF instanceof w)) {
-        a.cz(((w)this.gOR.gjp.gTF).getX5WebViewExtension()).y("notifyMemoryPressure", new Object[] { Integer.valueOf(80) });
+      if ((this.iqz.hKE.iuy instanceof ad)) {
+        a.ep(((ad)this.iqz.hKE.iuy).getX5WebViewExtension()).q("notifyMemoryPressure", new Object[] { Integer.valueOf(80) });
       }
+      AppMethodBeat.o(132203);
       return;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      AppMethodBeat.o(132203);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.d.2.1
  * JD-Core Version:    0.7.0.1
  */

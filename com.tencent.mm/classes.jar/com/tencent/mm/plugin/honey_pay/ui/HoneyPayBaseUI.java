@@ -1,27 +1,34 @@
 package com.tencent.mm.plugin.honey_pay.ui;
 
+import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.mm.plugin.wxpay.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public abstract class HoneyPayBaseUI
   extends WalletBaseUI
 {
   protected final String TAG = "MicroMsg." + getClass().getSimpleName();
-  protected int lkb = a.c.white;
+  protected int nHx = 2131690709;
   
-  protected void baU()
+  protected void bHV()
   {
-    ta(getResources().getColor(this.lkb));
-    czo();
+    setActionbarColor(getResources().getColor(this.nHx));
+    hideActionbarLine();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    baU();
+    bHV();
     setBackBtn(new HoneyPayBaseUI.1(this));
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

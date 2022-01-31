@@ -6,7 +6,7 @@ import android.support.v4.os.ResultReceiver;
 class MediaBrowserCompat$ItemReceiver
   extends ResultReceiver
 {
-  protected final void onReceiveResult(int paramInt, Bundle paramBundle)
+  public final void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     if (paramBundle != null) {
       paramBundle.setClassLoader(MediaBrowserCompat.class.getClassLoader());
@@ -19,7 +19,7 @@ class MediaBrowserCompat$ItemReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserCompat.ItemReceiver
  * JD-Core Version:    0.7.0.1
  */

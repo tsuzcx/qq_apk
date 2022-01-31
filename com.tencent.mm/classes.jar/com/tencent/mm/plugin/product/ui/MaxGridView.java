@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.GridView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MaxGridView
   extends GridView
@@ -15,7 +16,9 @@ public class MaxGridView
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(44174);
     super.onMeasure(paramInt1, View.MeasureSpec.makeMeasureSpec(536870911, -2147483648));
+    AppMethodBeat.o(44174);
   }
 }
 

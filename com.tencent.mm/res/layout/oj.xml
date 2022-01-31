@@ -1,9 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ly" android:background="@drawable/ih" android:layout_width="fill_parent" android:layout_height="@dimen/ey">
-        <TextView android:id="@id/m6" android:paddingLeft="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dk" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/ks" />
-    </RelativeLayout>
-    <ImageView android:id="@id/m4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/ri" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <ProgressBar android:id="@id/avr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/zh" />
-</RelativeLayout>
+<com.tencent.mm.ui.chatting.ChattingAnimFrame android:id="@id/awu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

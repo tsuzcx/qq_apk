@@ -2,7 +2,7 @@ package com.tencent.mm.ui.base.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import com.tencent.mm.ac.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PreferenceCategory
   extends Preference
@@ -20,7 +20,9 @@ public class PreferenceCategory
   public PreferenceCategory(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(a.h.mm_preference_catalog);
+    AppMethodBeat.i(107278);
+    setLayoutResource(2130970184);
+    AppMethodBeat.o(107278);
   }
 }
 

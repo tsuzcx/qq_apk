@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.notification.d;
 
-import com.tencent.mm.h.a.ob;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pc;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bi;
 
 final class d$3
@@ -12,10 +13,12 @@ final class d$3
   
   public final void run()
   {
-    y.d("MicroMsg.SendNormalMsgFailNotificaiton", "resend msgId:%d", new Object[] { Long.valueOf(this.byn) });
-    ob localob = new ob();
-    localob.bXM.bFH = this.dUy;
-    a.udP.m(localob);
+    AppMethodBeat.i(23135);
+    ab.d("MicroMsg.SendNormalMsgFailNotificaiton", "resend msgId:%d", new Object[] { Long.valueOf(this.cap) });
+    pc localpc = new pc();
+    localpc.cFK.cmQ = this.fkH;
+    a.ymk.l(localpc);
+    AppMethodBeat.o(23135);
   }
 }
 

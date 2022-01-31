@@ -10,297 +10,372 @@ import android.media.MediaCodecInfo.CodecProfileLevel;
 import android.media.MediaCodecInfo.EncoderCapabilities;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
-import android.opengl.EGL14;
 import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.util.Range;
 import android.view.Surface;
 import com.tencent.liteav.basic.d.g;
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.d.j;
+import com.tencent.liteav.basic.d.k;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
 import java.util.ArrayDeque;
-import javax.microedition.khronos.egl.EGL10;
 
 public class a
   extends c
 {
-  private static final String a = a.class.getSimpleName();
-  private boolean A = true;
-  private boolean B = false;
-  private ByteBuffer[] C = null;
-  private byte[] D = null;
-  private volatile long E = 0L;
-  private long F = 0L;
-  private long G = 0L;
-  private int H;
+  private static final String a;
+  private boolean A;
+  private boolean B;
+  private ByteBuffer[] C;
+  private byte[] D;
+  private volatile long E;
+  private long F;
+  private long G;
+  private long H;
   private int I;
-  private boolean J;
-  private int K = 0;
-  private int L = 0;
-  private int M = 0;
-  private int N = -1;
-  private int b = 0;
-  private long c = 0L;
-  private long d = 0L;
-  private long e = 0L;
-  private long f = 0L;
-  private int g = 0;
-  private boolean h = false;
-  private boolean i = true;
-  private long j = 0L;
-  private long k = 0L;
-  private long l = 0L;
-  private long m = 0L;
-  private long n = 0L;
+  private int J;
+  private int K;
+  private int L;
+  private int M;
+  private boolean N;
+  private boolean O;
+  private int P;
+  private int Q;
+  private int R;
+  private int S;
+  private boolean T;
+  private int b;
+  private long c;
+  private double d;
+  private long e;
+  private long f;
+  private int g;
+  private boolean h;
+  private boolean i;
+  private long j;
+  private long k;
+  private long l;
+  private long m;
+  private long n;
   private boolean o;
-  private long p = 0L;
-  private long q = 0L;
-  private MediaCodec r = null;
-  private com.tencent.liteav.basic.util.b s = null;
-  private Runnable t = new a.6(this);
-  private Runnable u = new a.7(this);
-  private Runnable v = new a.8(this);
-  private ArrayDeque<Long> w = new ArrayDeque(10);
+  private long p;
+  private long q;
+  private MediaCodec r;
+  private com.tencent.liteav.basic.util.c s;
+  private Runnable t;
+  private Runnable u;
+  private Runnable v;
+  private ArrayDeque<Long> w;
   private Object x;
-  private Surface y = null;
-  private boolean z = true;
+  private Surface y;
+  private boolean z;
+  
+  static
+  {
+    AppMethodBeat.i(67395);
+    a = a.class.getSimpleName();
+    AppMethodBeat.o(67395);
+  }
+  
+  public a()
+  {
+    AppMethodBeat.i(67366);
+    this.b = 0;
+    this.c = 0L;
+    this.d = 0.0D;
+    this.e = 0L;
+    this.f = 0L;
+    this.g = 0;
+    this.h = false;
+    this.i = true;
+    this.j = 0L;
+    this.k = 0L;
+    this.l = 0L;
+    this.m = 0L;
+    this.n = 0L;
+    this.p = 0L;
+    this.q = 0L;
+    this.r = null;
+    this.s = null;
+    this.t = new a.7(this);
+    this.u = new a.8(this);
+    this.v = new a.9(this);
+    this.w = new ArrayDeque(10);
+    this.y = null;
+    this.z = true;
+    this.A = true;
+    this.B = false;
+    this.C = null;
+    this.D = null;
+    this.E = 0L;
+    this.F = 0L;
+    this.G = 0L;
+    this.H = 0L;
+    this.O = true;
+    this.P = 0;
+    this.Q = 0;
+    this.R = 0;
+    this.S = -1;
+    this.T = false;
+    this.s = new com.tencent.liteav.basic.util.c("HWVideoEncoder");
+    this.F = 0L;
+    AppMethodBeat.o(67366);
+  }
   
   private int a(int paramInt)
   {
-    if (this.r == null) {
-      i1 = -1;
+    AppMethodBeat.i(67382);
+    if (this.r == null)
+    {
+      AppMethodBeat.o(67382);
+      return -1;
     }
-    MediaCodec.BufferInfo localBufferInfo;
-    ByteBuffer localByteBuffer;
+    MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
+    int i3;
+    try
+    {
+      i3 = this.r.dequeueOutputBuffer(localBufferInfo, paramInt * 1000);
+      if (i3 == -1)
+      {
+        AppMethodBeat.o(67382);
+        return 0;
+      }
+    }
+    catch (IllegalStateException localIllegalStateException1)
+    {
+      AppMethodBeat.o(67382);
+      return -1;
+    }
+    if (i3 == -3)
+    {
+      this.C = this.r.getOutputBuffers();
+      AppMethodBeat.o(67382);
+      return 1;
+    }
+    if (i3 == -2)
+    {
+      callDelegate(this.r.getOutputFormat());
+      AppMethodBeat.o(67382);
+      return 1;
+    }
+    if (i3 < 0)
+    {
+      AppMethodBeat.o(67382);
+      return -1;
+    }
+    ByteBuffer localByteBuffer = this.C[i3];
+    if (localByteBuffer == null) {
+      paramInt = -1;
+    }
     for (;;)
     {
-      return i1;
-      localBufferInfo = new MediaCodec.BufferInfo();
-      int i3;
+      byte[] arrayOfByte1;
       try
       {
-        i3 = this.r.dequeueOutputBuffer(localBufferInfo, paramInt * 1000);
-        if (i3 == -1) {
-          return 0;
+        if (this.r != null) {
+          this.r.releaseOutputBuffer(i3, false);
         }
-      }
-      catch (IllegalStateException localIllegalStateException1)
-      {
-        return -1;
-      }
-      if (i3 == -3)
-      {
-        this.C = this.r.getOutputBuffers();
-        return 1;
-      }
-      if (i3 == -2)
-      {
-        callDelegate(this.r.getOutputFormat());
-        return 1;
-      }
-      if (i3 < 0) {
-        return -1;
-      }
-      localByteBuffer = this.C[i3];
-      if (localByteBuffer == null)
-      {
-        paramInt = -1;
-        i1 = paramInt;
-        try
-        {
-          if (this.r != null)
-          {
-            this.r.releaseOutputBuffer(i3, false);
-            return paramInt;
-          }
+        AppMethodBeat.o(67382);
+        return paramInt;
+        arrayOfByte1 = new byte[localBufferInfo.size];
+        localByteBuffer.position(localBufferInfo.offset);
+        localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
+        localByteBuffer.get(arrayOfByte1, 0, localBufferInfo.size);
+        i1 = arrayOfByte1.length;
+        if ((localBufferInfo.size <= 5) || (arrayOfByte1[0] != 0) || (arrayOfByte1[1] != 0) || (arrayOfByte1[2] != 0) || (arrayOfByte1[3] != 0) || (arrayOfByte1[4] != 0) || (arrayOfByte1[5] != 0)) {
+          break label1177;
         }
-        catch (IllegalStateException localIllegalStateException2)
-        {
-          return paramInt;
+        paramInt = 3;
+        if (paramInt >= i1 - 4) {
+          break label1168;
         }
-      }
-    }
-    byte[] arrayOfByte1 = new byte[localBufferInfo.size];
-    localByteBuffer.position(localBufferInfo.offset);
-    localByteBuffer.limit(localBufferInfo.offset + localBufferInfo.size);
-    localByteBuffer.get(arrayOfByte1, 0, localBufferInfo.size);
-    int i1 = arrayOfByte1.length;
-    label245:
-    int i2;
-    label295:
-    Object localObject;
-    if ((localBufferInfo.size > 5) && (arrayOfByte1[0] == 0) && (arrayOfByte1[1] == 0) && (arrayOfByte1[2] == 0) && (arrayOfByte1[3] == 0) && (arrayOfByte1[4] == 0) && (arrayOfByte1[5] == 0))
-    {
-      paramInt = 3;
-      if (paramInt < i1 - 4) {
+        Object localObject1;
         if ((arrayOfByte1[paramInt] == 0) && (arrayOfByte1[(paramInt + 1)] == 0) && (arrayOfByte1[(paramInt + 2)] == 0) && (arrayOfByte1[(paramInt + 3)] == 1))
         {
           i2 = i1 - paramInt;
           i1 = paramInt;
           paramInt = i2;
-          localObject = new byte[paramInt];
-          System.arraycopy(arrayOfByte1, i1, localObject, 0, paramInt);
-        }
-      }
-    }
-    for (;;)
-    {
-      if (localBufferInfo.size == 0)
-      {
-        if ((localBufferInfo.flags & 0x4) != 0)
-        {
-          if (this.mListener != null) {
-            this.mListener.a(null, 0);
+          localObject1 = new byte[paramInt];
+          System.arraycopy(arrayOfByte1, i1, localObject1, 0, paramInt);
+          if (localBufferInfo.size != 0) {
+            continue;
           }
-          paramInt = -2;
-          break;
+          if ((localBufferInfo.flags & 0x4) != 0)
+          {
+            if (this.mListener != null) {
+              this.mListener.a(null, 0);
+            }
+            paramInt = -2;
+          }
+        }
+        else
+        {
           paramInt += 1;
-          break label245;
+          continue;
         }
         paramInt = -1;
-        break;
-      }
-      paramInt = 1;
-      if ((localBufferInfo.flags & 0x2) == 2)
-      {
-        if (this.h) {}
-        for (this.D = ((byte[])((byte[])localObject).clone());; this.D = a((byte[])((byte[])localObject).clone()))
+        continue;
+        if ((localBufferInfo.flags & 0x2) == 2)
         {
-          paramInt = 1;
-          break;
-        }
-      }
-      byte[] arrayOfByte2;
-      if ((localBufferInfo.flags & 0x1) == 1)
-      {
-        paramInt = 0;
-        this.H = -1;
-        if (this.h)
-        {
-          arrayOfByte2 = new byte[this.D.length + localObject.length];
-          System.arraycopy(this.D, 0, arrayOfByte2, 0, this.D.length);
-          System.arraycopy(localObject, 0, arrayOfByte2, this.D.length, localObject.length);
-          localObject = arrayOfByte2;
-        }
-      }
-      label1064:
-      label1069:
-      for (;;)
-      {
-        label494:
-        if (!this.J)
-        {
-          i1 = this.H + 1;
-          this.H = i1;
-          if (i1 == this.g * this.I) {
-            d();
-          }
-        }
-        long l2 = a();
-        long l1 = localBufferInfo.presentationTimeUs / 1000L;
-        if (this.G == 0L) {
-          this.G = l2;
-        }
-        if (this.F == 0L) {
-          this.F = l1;
-        }
-        long l3 = l1 + (this.G - this.F);
-        l1 = l2;
-        if (l2 <= this.n) {
-          l1 = this.n + 1L;
-        }
-        l2 = l1;
-        if (l1 > l3) {
-          l2 = l3;
-        }
-        this.n = l2;
-        l1 = TXCTimeUtil.getTimeTick();
-        if (paramInt == 0)
-        {
-          if (l1 > this.e + 1000L)
+          if (this.h)
           {
-            this.c = ((this.p * 8000.0D / (l1 - this.e) / 1024.0D));
-            this.p = 0L;
-            this.e = l1;
+            this.D = ((byte[])((byte[])localObject1).clone());
+            paramInt = 1;
+            continue;
           }
-          this.k += 1L;
-          this.l = 0L;
-          label711:
-          this.p += localObject.length;
-          if (l1 > this.f + 2000L)
+          this.D = a((byte[])((byte[])localObject1).clone());
+          continue;
+        }
+        long l3;
+        if ((localBufferInfo.flags & 0x1) == 1)
+        {
+          this.I = -1;
+          byte[] arrayOfByte2;
+          if (this.h)
           {
-            this.d = ((this.q * 1000.0D / (l1 - this.f)));
-            this.q = 0L;
-            this.f = l1;
+            arrayOfByte2 = new byte[this.D.length + localObject1.length];
+            System.arraycopy(this.D, 0, arrayOfByte2, 0, this.D.length);
+            System.arraycopy(localObject1, 0, arrayOfByte2, this.D.length, localObject1.length);
+            paramInt = 0;
+            localObject1 = arrayOfByte2;
+            if (!this.N)
+            {
+              i1 = this.I + 1;
+              this.I = i1;
+              if (i1 == this.g * this.J) {
+                f();
+              }
+            }
+            l2 = a();
+            l1 = localBufferInfo.presentationTimeUs / 1000L;
+            if (this.H == 0L) {
+              this.H = l2;
+            }
+            if (this.G == 0L) {
+              this.G = l1;
+            }
+            l3 = l1 + (this.H - this.G);
+            l1 = l2;
+            if (l2 <= this.n) {
+              l1 = this.n + 1L;
+            }
+            l2 = l1;
+            if (l1 > l3) {
+              l2 = l3;
+            }
+            this.n = l2;
+            l1 = TXCTimeUtil.getTimeTick();
+            if (paramInt == 0)
+            {
+              if (l1 > this.e + 1000L)
+              {
+                this.c = ((this.p * 8000.0D / (l1 - this.e) / 1024.0D));
+                this.p = 0L;
+                this.e = l1;
+              }
+              this.k += 1L;
+              if (this.k % 256L == 0L) {
+                this.k += 1L;
+              }
+              this.l = 0L;
+              this.p += localObject1.length;
+              if (l1 > this.f + 2000L)
+              {
+                this.d = (this.q * 1000.0D / (l1 - this.f));
+                this.q = 0L;
+                this.f = l1;
+              }
+              this.q += 1L;
+              localByteBuffer.position(localBufferInfo.offset);
+              this.m += 1L;
+              if (this.mListener != null) {
+                this.mListener.a(2L, this.k, this.l);
+              }
+              if (!this.i) {
+                continue;
+              }
+              l2 = this.k;
+              l4 = this.l;
+              l5 = this.m;
+              if (paramInt != 0) {
+                continue;
+              }
+              l1 = this.l;
+              callDelegate((byte[])localObject1, paramInt, l2, l4, l5, l1, l3, l3, 0, localByteBuffer, localBufferInfo);
+              this.R += 1;
+              if ((localBufferInfo.flags & 0x4) == 0) {
+                continue;
+              }
+              if (this.mListener != null) {
+                this.mListener.a(null, 0);
+              }
+              paramInt = -2;
+            }
           }
-          this.q += 1L;
-          localByteBuffer.position(localBufferInfo.offset);
-          if (!this.i) {
-            break label1001;
-          }
-          l2 = this.k;
-          l4 = this.l;
-          l5 = this.m;
-          if (paramInt != 0) {
-            break label990;
+          else
+          {
+            arrayOfByte2 = a((byte[])localObject1);
+            localObject1 = new byte[this.D.length + arrayOfByte2.length];
+            System.arraycopy(this.D, 0, localObject1, 0, this.D.length);
+            System.arraycopy(arrayOfByte2, 0, localObject1, this.D.length, arrayOfByte2.length);
+            paramInt = 0;
+            continue;
           }
         }
-        label990:
-        for (l1 = 0L;; l1 = this.l - 1L)
+        else
         {
-          callDelegate((byte[])localObject, paramInt, l2, l4, l5, l1, l3, l3, 0, localByteBuffer, localBufferInfo);
-          this.m += 1L;
-          this.M += 1;
-          if ((localBufferInfo.flags & 0x4) == 0) {
-            break label1064;
-          }
-          if (this.mListener != null) {
-            this.mListener.a(null, 0);
-          }
-          paramInt = -2;
-          break;
-          arrayOfByte2 = a((byte[])localObject);
-          localObject = new byte[this.D.length + arrayOfByte2.length];
-          System.arraycopy(this.D, 0, localObject, 0, this.D.length);
-          System.arraycopy(arrayOfByte2, 0, localObject, this.D.length, arrayOfByte2.length);
-          break label494;
           if (this.h) {
-            break label1069;
+            break label1163;
           }
-          localObject = a((byte[])localObject);
-          break label494;
-          this.l += 1L;
-          break label711;
+          localObject1 = a((byte[])localObject1);
+          paramInt = 1;
+          continue;
         }
-        label1001:
-        l2 = this.k;
+        this.l += 1L;
+        continue;
+        long l1 = this.l - 1L;
+        continue;
+        long l2 = this.k;
         long l4 = this.l;
         long l5 = this.m;
-        if (paramInt == 0) {}
-        for (l1 = 0L;; l1 = this.l - 1L)
+        if (paramInt == 0)
         {
+          l1 = this.l;
           callDelegate(arrayOfByte1, paramInt, l2, l4, l5, l1, l3, l3, 0, localByteBuffer, localBufferInfo);
-          break;
+          continue;
         }
-        paramInt = 1;
-        break;
+        l1 = this.l - 1L;
+        continue;
       }
-      i2 = 0;
+      catch (IllegalStateException localIllegalStateException2)
+      {
+        continue;
+        paramInt = 1;
+      }
+      continue;
+      label1163:
+      paramInt = 1;
+      continue;
+      label1168:
+      int i2 = 0;
       paramInt = i1;
-      i1 = i2;
-      break label295;
-      localObject = arrayOfByte1;
+      int i1 = i2;
+      continue;
+      label1177:
+      Object localObject2 = arrayOfByte1;
     }
   }
   
   private int a(int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt3)
   {
-    int i1 = paramInt3;
+    AppMethodBeat.i(67384);
+    i1 = paramInt3;
     if (paramInt2 > 0)
     {
       i1 = paramInt3;
@@ -316,27 +391,37 @@ public class a
       System.arraycopy(localByteBuffer.array(), 0, paramArrayOfByte1, paramInt3, 4);
       System.arraycopy(paramArrayOfByte2, paramInt2, paramArrayOfByte1, paramInt3 + 4, paramInt1);
       i1 = paramInt3 + (paramInt1 + 4);
-      return i1;
     }
     catch (Exception paramArrayOfByte1)
     {
-      TXCLog.e(a, "setNalData exception");
+      for (;;)
+      {
+        TXCLog.e(a, "setNalData exception");
+        i1 = paramInt3;
+      }
     }
-    return paramInt3;
+    AppMethodBeat.o(67384);
+    return i1;
   }
   
   private long a()
   {
+    AppMethodBeat.i(67378);
     Long localLong = (Long)this.w.poll();
-    if (localLong == null) {
+    if (localLong == null)
+    {
+      AppMethodBeat.o(67378);
       return 0L;
     }
-    return localLong.longValue();
+    long l1 = localLong.longValue();
+    AppMethodBeat.o(67378);
+    return l1;
   }
   
   @TargetApi(16)
   private static MediaCodecInfo a(String paramString)
   {
+    AppMethodBeat.i(67376);
     int i3 = MediaCodecList.getCodecCount();
     int i1 = 0;
     while (i1 < i3)
@@ -349,7 +434,9 @@ public class a
         int i2 = 0;
         while (i2 < i4)
         {
-          if (arrayOfString[i2].equalsIgnoreCase(paramString)) {
+          if (arrayOfString[i2].equalsIgnoreCase(paramString))
+          {
+            AppMethodBeat.o(67376);
             return localMediaCodecInfo;
           }
           i2 += 1;
@@ -357,13 +444,17 @@ public class a
       }
       i1 += 1;
     }
+    AppMethodBeat.o(67376);
     return null;
   }
   
   @TargetApi(16)
   private MediaFormat a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0) || (paramInt3 == 0) || (paramInt4 == 0)) {
+    AppMethodBeat.i(67374);
+    if ((paramInt1 == 0) || (paramInt2 == 0) || (paramInt3 == 0) || (paramInt4 == 0))
+    {
+      AppMethodBeat.o(67374);
       return null;
     }
     MediaFormat localMediaFormat = MediaFormat.createVideoFormat("video/avc", paramInt1, paramInt2);
@@ -371,20 +462,26 @@ public class a
     localMediaFormat.setInteger("frame-rate", paramInt4);
     localMediaFormat.setInteger("color-format", 2130708361);
     localMediaFormat.setInteger("i-frame-interval", paramInt5);
+    AppMethodBeat.o(67374);
     return localMediaFormat;
   }
   
   @TargetApi(16)
   private MediaFormat a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
+    AppMethodBeat.i(67375);
     MediaFormat localMediaFormat = a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-    if (localMediaFormat == null) {
+    if (localMediaFormat == null)
+    {
+      AppMethodBeat.o(67375);
       return null;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
       Object localObject = a("video/avc");
-      if (localObject == null) {
+      if (localObject == null)
+      {
+        AppMethodBeat.o(67375);
         return localMediaFormat;
       }
       localObject = ((MediaCodecInfo)localObject).getCapabilitiesForType("video/avc");
@@ -395,13 +492,14 @@ public class a
       for (;;)
       {
         localMediaFormat.setInteger("complexity", ((Integer)localEncoderCapabilities.getComplexityRange().clamp(Integer.valueOf(5))).intValue());
+        paramInt2 = 0;
         if (Build.VERSION.SDK_INT < 23) {
           break;
         }
         localObject = ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels;
         paramInt4 = localObject.length;
         paramInt1 = 0;
-        for (paramInt2 = 0; paramInt1 < paramInt4; paramInt2 = paramInt3)
+        while (paramInt1 < paramInt4)
         {
           localEncoderCapabilities = localObject[paramInt1];
           paramInt3 = paramInt2;
@@ -416,88 +514,90 @@ public class a
             }
           }
           paramInt1 += 1;
+          paramInt2 = paramInt3;
         }
         if (localEncoderCapabilities.isBitrateModeSupported(2)) {
           localMediaFormat.setInteger("bitrate-mode", 2);
         }
       }
     }
+    AppMethodBeat.o(67375);
     return localMediaFormat;
   }
   
   private void a(long paramLong)
   {
+    AppMethodBeat.i(67377);
     this.w.add(Long.valueOf(paramLong));
+    AppMethodBeat.o(67377);
   }
   
   private boolean a(Surface paramSurface, int paramInt1, int paramInt2)
   {
-    if (paramSurface == null) {
+    AppMethodBeat.i(67379);
+    if (paramSurface == null)
+    {
+      AppMethodBeat.o(67379);
       return false;
     }
-    Object localObject2;
-    Object localObject1;
-    if (this.B)
+    TXCLog.d(a, "HWVideoEncode createGL");
+    if ((this.mGLContextExternal != null) && ((this.mGLContextExternal instanceof android.opengl.EGLContext))) {}
+    for (this.x = com.tencent.liteav.basic.d.c.a(null, (android.opengl.EGLContext)this.mGLContextExternal, paramSurface, paramInt1, paramInt2); this.x == null; this.x = com.tencent.liteav.basic.d.b.a(null, (javax.microedition.khronos.egl.EGLContext)this.mGLContextExternal, paramSurface, paramInt1, paramInt2))
     {
-      localObject2 = (android.opengl.EGLContext)this.mGLContextExternal;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = EGL14.EGL_NO_CONTEXT;
-      }
-    }
-    for (this.x = com.tencent.liteav.basic.d.c.a(null, (android.opengl.EGLContext)localObject1, paramSurface, paramInt1, paramInt2); this.x == null; this.x = com.tencent.liteav.basic.d.b.a(null, (javax.microedition.khronos.egl.EGLContext)localObject1, paramSurface, paramInt1, paramInt2))
-    {
+      AppMethodBeat.o(67379);
       return false;
-      localObject2 = (javax.microedition.khronos.egl.EGLContext)this.mGLContextExternal;
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = EGL10.EGL_NO_CONTEXT;
-      }
     }
     GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
-    this.mEncodeFilter = new com.tencent.liteav.basic.d.d();
-    this.mEncodeFilter.a(h.e, h.a(g.a, false, false));
+    this.mEncodeFilter = new g();
+    this.mEncodeFilter.a(k.e, k.a(j.a, false, false));
     if (!this.mEncodeFilter.a())
     {
       this.mEncodeFilter = null;
+      AppMethodBeat.o(67379);
       return false;
     }
     GLES20.glViewport(0, 0, paramInt1, paramInt2);
+    AppMethodBeat.o(67379);
     return true;
   }
   
   @TargetApi(18)
   private boolean a(TXSVideoEncoderParam paramTXSVideoEncoderParam)
   {
-    int i2 = 2;
+    AppMethodBeat.i(67381);
     this.A = false;
     this.z = false;
     this.c = 0L;
-    this.d = 0L;
+    this.d = 0.0D;
     this.e = 0L;
     this.f = 0L;
     this.g = 0;
     this.j = 0L;
-    this.k = 0L;
+    this.k = paramTXSVideoEncoderParam.baseGopIndex;
     this.l = 0L;
-    this.m = 0L;
+    this.m = paramTXSVideoEncoderParam.baseFrameIndex;
     this.n = 0L;
     this.p = 0L;
     this.q = 0L;
     this.C = null;
     this.D = null;
     this.E = 0L;
-    this.H = -1;
+    this.I = -1;
     this.mOutputWidth = paramTXSVideoEncoderParam.width;
     this.mOutputHeight = paramTXSVideoEncoderParam.height;
-    this.I = paramTXSVideoEncoderParam.gop;
-    this.J = paramTXSVideoEncoderParam.fullIFrame;
+    this.J = paramTXSVideoEncoderParam.gop;
+    this.K = paramTXSVideoEncoderParam.fps;
+    TXCLog.w(a, "FPS-TEST  HWEncode FPS start" + this.K);
+    this.N = paramTXSVideoEncoderParam.fullIFrame;
     this.o = paramTXSVideoEncoderParam.syncOutput;
     this.B = paramTXSVideoEncoderParam.enableEGL14;
     this.w.clear();
+    this.O = paramTXSVideoEncoderParam.bLimitFps;
+    this.F = 0L;
     if ((paramTXSVideoEncoderParam == null) || (paramTXSVideoEncoderParam.width == 0) || (paramTXSVideoEncoderParam.height == 0) || (paramTXSVideoEncoderParam.fps == 0) || (paramTXSVideoEncoderParam.gop == 0))
     {
       this.z = true;
+      AppMethodBeat.o(67381);
       return false;
     }
     this.h = paramTXSVideoEncoderParam.annexb;
@@ -507,102 +607,41 @@ public class a
     }
     this.j = this.b;
     this.g = paramTXSVideoEncoderParam.fps;
-    int i1;
+    int i1 = 2;
     switch (paramTXSVideoEncoderParam.encoderMode)
     {
-    default: 
-      i1 = 2;
-      if (com.tencent.liteav.basic.e.b.a().c() == 1) {
-        paramTXSVideoEncoderParam.encoderProfile = 1;
-      }
-      try
-      {
-        MediaFormat localMediaFormat = a(paramTXSVideoEncoderParam.width, paramTXSVideoEncoderParam.height, this.b, paramTXSVideoEncoderParam.fps, paramTXSVideoEncoderParam.gop, i1, 1);
-        if (localMediaFormat == null)
-        {
-          this.z = true;
-          return false;
-        }
-      }
-      catch (Exception localException1)
-      {
-        i1 = 1;
-      }
     }
     for (;;)
     {
-      if ((i1 >= 5) && (this.r != null)) {
-        this.r.stop();
+      if (com.tencent.liteav.basic.e.b.a().c() == 1) {
+        paramTXSVideoEncoderParam.encoderProfile = 1;
       }
-      this.r = null;
-      if (this.y != null) {
-        this.y.release();
+      this.L = i1;
+      this.M = 1;
+      if (c()) {
+        break;
       }
-      this.y = null;
-      for (;;)
-      {
-        if ((this.r == null) || (this.C == null) || (this.y == null))
-        {
-          this.z = true;
-          return false;
-          i1 = 2;
-          break;
-          i1 = 1;
-          break;
-          i1 = 0;
-          break;
-          this.r = MediaCodec.createEncoderByType("video/avc");
-          try
-          {
-            this.r.configure(localException1, null, null, 1);
-            i1 = 3;
-          }
-          catch (Exception localException2)
-          {
-            for (;;)
-            {
-              try
-              {
-                this.y = this.r.createInputSurface();
-                i1 = 4;
-                this.r.start();
-                i1 = 5;
-                this.C = this.r.getOutputBuffers();
-              }
-              catch (Exception localException3) {}
-              localException2 = localException2;
-              i1 = i2;
-              if (!(localException2 instanceof IllegalArgumentException))
-              {
-                i1 = i2;
-                if (Build.VERSION.SDK_INT < 21) {
-                  continue;
-                }
-                i1 = i2;
-                if (!(localException2 instanceof MediaCodec.CodecException)) {
-                  continue;
-                }
-              }
-              i1 = i2;
-              this.r.configure(a(paramTXSVideoEncoderParam.width, paramTXSVideoEncoderParam.height, this.b, paramTXSVideoEncoderParam.fps, paramTXSVideoEncoderParam.gop), null, null, 1);
-            }
-            i1 = i2;
-            throw localException2;
-          }
-        }
-      }
-      if (!a(this.y, paramTXSVideoEncoderParam.width, paramTXSVideoEncoderParam.height))
-      {
-        this.z = true;
-        return false;
-      }
-      this.mInit = true;
-      return true;
+      AppMethodBeat.o(67381);
+      return false;
+      i1 = 2;
+      continue;
+      i1 = 1;
+      continue;
+      i1 = 0;
     }
+    this.mInit = true;
+    if (this.O)
+    {
+      this.S = -1;
+      this.s.a(this.u, 1000 / this.K);
+    }
+    AppMethodBeat.o(67381);
+    return true;
   }
   
   private byte[] a(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(67383);
     int i7 = paramArrayOfByte.length;
     byte[] arrayOfByte = new byte[i7 + 20];
     int i1 = 0;
@@ -616,7 +655,7 @@ public class a
       if (i1 < i7)
       {
         if ((paramArrayOfByte[i1] != 0) || (paramArrayOfByte[(i1 + 1)] != 0) || (paramArrayOfByte[(i1 + 2)] != 1)) {
-          break label150;
+          break label162;
         }
         i3 = a(i1, i5, arrayOfByte, paramArrayOfByte, i4);
         i2 = i1 + 3;
@@ -628,8 +667,9 @@ public class a
         i1 = a(i6, i2, arrayOfByte, paramArrayOfByte, i3);
         paramArrayOfByte = new byte[i1];
         System.arraycopy(arrayOfByte, 0, paramArrayOfByte, 0, i1);
+        AppMethodBeat.o(67383);
         return paramArrayOfByte;
-        label150:
+        label162:
         i6 = i1;
         i2 = i5;
         i3 = i4;
@@ -665,6 +705,8 @@ public class a
   
   private void b()
   {
+    AppMethodBeat.i(67380);
+    TXCLog.d(a, "HWVideoEncode destroyGL");
     if (this.mEncodeFilter != null)
     {
       this.mEncodeFilter.d();
@@ -680,255 +722,412 @@ public class a
       ((com.tencent.liteav.basic.d.c)this.x).b();
       this.x = null;
     }
+    AppMethodBeat.o(67380);
   }
   
   @TargetApi(18)
   private void b(int paramInt)
   {
-    if ((this.z == true) || (this.x == null)) {
+    AppMethodBeat.i(67385);
+    if ((this.z == true) || (this.x == null))
+    {
+      AppMethodBeat.o(67385);
       return;
     }
+    int i3 = this.S;
+    if (this.O)
+    {
+      this.S = -1;
+      if (i3 == -1)
+      {
+        this.T = true;
+        AppMethodBeat.o(67385);
+        return;
+      }
+      this.s.a(this.u, 1000 / this.K);
+    }
     a(this.E);
-    this.mEncodeFilter.a(this.N);
-    if ((this.x instanceof com.tencent.liteav.basic.d.c))
-    {
-      ((com.tencent.liteav.basic.d.c)this.x).a(this.E * 1000000L);
-      ((com.tencent.liteav.basic.d.c)this.x).c();
-    }
-    if ((this.x instanceof com.tencent.liteav.basic.d.b)) {
-      ((com.tencent.liteav.basic.d.b)this.x).a();
-    }
+    Object localObject = com.tencent.liteav.basic.util.b.a(this.mInputWidth, this.mInputHeight, this.mOutputWidth, this.mOutputHeight);
+    localObject = this.mEncodeFilter.a(this.mInputWidth, this.mInputHeight, null, (com.tencent.liteav.basic.d.a)localObject, 0);
+    int i4 = (720 - this.mRotation) % 360;
     int i1;
-    do
+    if ((i4 == 90) || (i4 == 270))
     {
-      i1 = a(paramInt);
-    } while (i1 > 0);
-    if ((i1 == -1) || (i1 == -2))
+      i1 = this.mOutputHeight;
+      if ((i4 != 90) && (i4 != 270)) {
+        break label341;
+      }
+    }
+    label341:
+    for (int i2 = this.mOutputWidth;; i2 = this.mOutputHeight)
     {
+      this.mEncodeFilter.a(this.mInputWidth, this.mInputHeight, i4, (float[])localObject, i1 / i2, false, true);
+      this.mEncodeFilter.a(i3);
+      if ((this.x instanceof com.tencent.liteav.basic.d.c))
+      {
+        ((com.tencent.liteav.basic.d.c)this.x).a(this.E * 1000000L);
+        ((com.tencent.liteav.basic.d.c)this.x).c();
+      }
+      if ((this.x instanceof com.tencent.liteav.basic.d.b)) {
+        ((com.tencent.liteav.basic.d.b)this.x).a();
+      }
+      do
+      {
+        i1 = a(paramInt);
+      } while (i1 > 0);
+      if ((i1 != -1) && (i1 != -2)) {
+        break label349;
+      }
       if (i1 == -1) {
         callDelegate(10000005);
       }
       this.z = true;
-      c();
+      e();
+      AppMethodBeat.o(67385);
       return;
+      i1 = this.mOutputWidth;
+      break;
     }
-    this.L += 1;
-  }
-  
-  /* Error */
-  private void c()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 603	com/tencent/liteav/videoencoder/a:mInit	Z
-    //   4: ifne +4 -> 8
-    //   7: return
-    //   8: aload_0
-    //   9: iconst_1
-    //   10: putfield 131	com/tencent/liteav/videoencoder/a:z	Z
-    //   13: aload_0
-    //   14: iconst_1
-    //   15: putfield 133	com/tencent/liteav/videoencoder/a:A	Z
-    //   18: aload_0
-    //   19: invokespecial 632	com/tencent/liteav/videoencoder/a:b	()V
-    //   22: aload_0
-    //   23: getfield 101	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
-    //   26: invokevirtual 574	android/media/MediaCodec:stop	()V
-    //   29: aload_0
-    //   30: getfield 101	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
-    //   33: invokevirtual 633	android/media/MediaCodec:release	()V
-    //   36: aload_0
-    //   37: aconst_null
-    //   38: putfield 101	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
-    //   41: aload_0
-    //   42: iconst_m1
-    //   43: putfield 153	com/tencent/liteav/videoencoder/a:N	I
-    //   46: aload_0
-    //   47: lconst_0
-    //   48: putfield 73	com/tencent/liteav/videoencoder/a:c	J
-    //   51: aload_0
-    //   52: lconst_0
-    //   53: putfield 75	com/tencent/liteav/videoencoder/a:d	J
-    //   56: aload_0
-    //   57: lconst_0
-    //   58: putfield 77	com/tencent/liteav/videoencoder/a:e	J
-    //   61: aload_0
-    //   62: lconst_0
-    //   63: putfield 79	com/tencent/liteav/videoencoder/a:f	J
-    //   66: aload_0
-    //   67: iconst_0
-    //   68: putfield 81	com/tencent/liteav/videoencoder/a:g	I
-    //   71: aload_0
-    //   72: lconst_0
-    //   73: putfield 87	com/tencent/liteav/videoencoder/a:j	J
-    //   76: aload_0
-    //   77: lconst_0
-    //   78: putfield 89	com/tencent/liteav/videoencoder/a:k	J
-    //   81: aload_0
-    //   82: lconst_0
-    //   83: putfield 91	com/tencent/liteav/videoencoder/a:l	J
-    //   86: aload_0
-    //   87: lconst_0
-    //   88: putfield 93	com/tencent/liteav/videoencoder/a:m	J
-    //   91: aload_0
-    //   92: lconst_0
-    //   93: putfield 95	com/tencent/liteav/videoencoder/a:n	J
-    //   96: aload_0
-    //   97: lconst_0
-    //   98: putfield 97	com/tencent/liteav/videoencoder/a:p	J
-    //   101: aload_0
-    //   102: lconst_0
-    //   103: putfield 99	com/tencent/liteav/videoencoder/a:q	J
-    //   106: aload_0
-    //   107: aconst_null
-    //   108: putfield 444	com/tencent/liteav/videoencoder/a:mGLContextExternal	Ljava/lang/Object;
-    //   111: aload_0
-    //   112: aconst_null
-    //   113: putfield 137	com/tencent/liteav/videoencoder/a:C	[Ljava/nio/ByteBuffer;
-    //   116: aload_0
-    //   117: aconst_null
-    //   118: putfield 139	com/tencent/liteav/videoencoder/a:D	[B
-    //   121: aload_0
-    //   122: lconst_0
-    //   123: putfield 141	com/tencent/liteav/videoencoder/a:E	J
-    //   126: aload_0
-    //   127: iconst_0
-    //   128: putfield 516	com/tencent/liteav/videoencoder/a:mOutputWidth	I
-    //   131: aload_0
-    //   132: iconst_0
-    //   133: putfield 522	com/tencent/liteav/videoencoder/a:mOutputHeight	I
-    //   136: aload_0
-    //   137: iconst_0
-    //   138: putfield 603	com/tencent/liteav/videoencoder/a:mInit	Z
-    //   141: aload_0
-    //   142: aconst_null
-    //   143: putfield 220	com/tencent/liteav/videoencoder/a:mListener	Lcom/tencent/liteav/videoencoder/d;
-    //   146: aload_0
-    //   147: getfield 127	com/tencent/liteav/videoencoder/a:w	Ljava/util/ArrayDeque;
-    //   150: invokevirtual 539	java/util/ArrayDeque:clear	()V
-    //   153: return
-    //   154: astore_1
-    //   155: aload_0
-    //   156: getfield 101	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
-    //   159: invokevirtual 633	android/media/MediaCodec:release	()V
-    //   162: goto -126 -> 36
-    //   165: astore_1
-    //   166: goto -130 -> 36
-    //   169: astore_1
-    //   170: aload_0
-    //   171: getfield 101	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
-    //   174: invokevirtual 633	android/media/MediaCodec:release	()V
-    //   177: aload_1
-    //   178: athrow
-    //   179: astore_2
-    //   180: goto -3 -> 177
-    //   183: astore_1
-    //   184: goto -148 -> 36
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	187	0	this	a
-    //   154	1	1	localIllegalStateException	IllegalStateException
-    //   165	1	1	localException1	Exception
-    //   169	9	1	localObject	Object
-    //   183	1	1	localException2	Exception
-    //   179	1	2	localException3	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   22	29	154	java/lang/IllegalStateException
-    //   155	162	165	java/lang/Exception
-    //   22	29	169	finally
-    //   170	177	179	java/lang/Exception
-    //   29	36	183	java/lang/Exception
+    label349:
+    this.Q += 1;
+    AppMethodBeat.o(67385);
   }
   
   private void c(int paramInt)
   {
-    if (this.j == this.b) {}
-    do
+    AppMethodBeat.i(67387);
+    if (this.j == this.b)
     {
+      AppMethodBeat.o(67387);
       return;
-      this.j = this.b;
-    } while ((Build.VERSION.SDK_INT < 19) || (this.r == null));
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("video-bitrate", this.b * 1024);
-    this.r.setParameters(localBundle);
+    }
+    this.j = this.b;
+    if ((Build.VERSION.SDK_INT >= 19) && (this.r != null))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("video-bitrate", this.b * 1024);
+      this.r.setParameters(localBundle);
+    }
+    AppMethodBeat.o(67387);
   }
   
+  private boolean c()
+  {
+    AppMethodBeat.i(146309);
+    for (;;)
+    {
+      try
+      {
+        MediaFormat localMediaFormat = a(this.mOutputWidth, this.mOutputHeight, this.b, this.K, this.J, this.L, this.M);
+        if (localMediaFormat == null)
+        {
+          this.z = true;
+          AppMethodBeat.o(146309);
+          return false;
+        }
+        this.r = MediaCodec.createEncoderByType("video/avc");
+        try
+        {
+          this.r.configure(localMediaFormat, null, null, 1);
+          i1 = 3;
+        }
+        catch (Exception localException1)
+        {
+          try
+          {
+            this.y = this.r.createInputSurface();
+            i1 = 4;
+            this.r.start();
+          }
+          catch (Exception localException5)
+          {
+            continue;
+          }
+          try
+          {
+            this.C = this.r.getOutputBuffers();
+            if ((this.r != null) && (this.C != null) && (this.y != null)) {
+              continue;
+            }
+            this.z = true;
+            AppMethodBeat.o(146309);
+            return false;
+          }
+          catch (Exception localException6)
+          {
+            i1 = 5;
+            continue;
+          }
+          localException1 = localException1;
+          try
+          {
+            if ((!(localException1 instanceof IllegalArgumentException)) && ((Build.VERSION.SDK_INT < 21) || (!(localException1 instanceof MediaCodec.CodecException)))) {
+              continue;
+            }
+            this.r.configure(a(this.mOutputWidth, this.mOutputHeight, this.b, this.K, this.J), null, null, 1);
+          }
+          catch (Exception localException2)
+          {
+            i1 = 2;
+          }
+        }
+      }
+      catch (Exception localException4)
+      {
+        i1 = 1;
+        continue;
+      }
+      if (i1 >= 5) {}
+      try
+      {
+        if (this.r != null) {
+          this.r.stop();
+        }
+        this.r = null;
+        if (this.y != null) {
+          this.y.release();
+        }
+        this.y = null;
+      }
+      catch (Exception localException3) {}
+    }
+    AppMethodBeat.o(146309);
+    throw localException3;
+    if (!a(this.y, this.mOutputWidth, this.mOutputHeight))
+    {
+      this.z = true;
+      AppMethodBeat.o(146309);
+      return false;
+    }
+    AppMethodBeat.o(146309);
+    return true;
+  }
+  
+  /* Error */
   private void d()
   {
+    // Byte code:
+    //   0: ldc_w 738
+    //   3: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: aload_0
+    //   7: getfield 116	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
+    //   10: ifnonnull +10 -> 20
+    //   13: ldc_w 738
+    //   16: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   19: return
+    //   20: aload_0
+    //   21: getfield 116	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
+    //   24: invokevirtual 730	android/media/MediaCodec:stop	()V
+    //   27: aload_0
+    //   28: getfield 116	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
+    //   31: invokevirtual 739	android/media/MediaCodec:release	()V
+    //   34: aload_0
+    //   35: aconst_null
+    //   36: putfield 116	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
+    //   39: ldc_w 738
+    //   42: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: return
+    //   46: astore_1
+    //   47: aload_0
+    //   48: getfield 116	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
+    //   51: invokevirtual 739	android/media/MediaCodec:release	()V
+    //   54: goto -20 -> 34
+    //   57: astore_1
+    //   58: goto -24 -> 34
+    //   61: astore_1
+    //   62: aload_0
+    //   63: getfield 116	com/tencent/liteav/videoencoder/a:r	Landroid/media/MediaCodec;
+    //   66: invokevirtual 739	android/media/MediaCodec:release	()V
+    //   69: ldc_w 738
+    //   72: invokestatic 79	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: aload_1
+    //   76: athrow
+    //   77: astore_2
+    //   78: goto -9 -> 69
+    //   81: astore_1
+    //   82: goto -48 -> 34
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	85	0	this	a
+    //   46	1	1	localIllegalStateException	IllegalStateException
+    //   57	1	1	localException1	Exception
+    //   61	15	1	localObject	Object
+    //   81	1	1	localException2	Exception
+    //   77	1	2	localException3	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   20	27	46	java/lang/IllegalStateException
+    //   47	54	57	java/lang/Exception
+    //   20	27	61	finally
+    //   62	69	77	java/lang/Exception
+    //   27	34	81	java/lang/Exception
+  }
+  
+  private void d(int paramInt)
+  {
+    AppMethodBeat.i(146312);
+    if ((paramInt == 0) || (this.K == paramInt))
+    {
+      AppMethodBeat.o(146312);
+      return;
+    }
+    TXCLog.w(a, "FPS-TEST  HWEncode FPS set".concat(String.valueOf(paramInt)));
+    b();
+    d();
+    this.K = paramInt;
+    c();
+    AppMethodBeat.o(146312);
+  }
+  
+  private void e()
+  {
+    AppMethodBeat.i(146310);
+    if (!this.mInit)
+    {
+      AppMethodBeat.o(146310);
+      return;
+    }
+    this.z = true;
+    this.A = true;
+    b();
+    d();
+    this.S = -1;
+    this.c = 0L;
+    this.d = 0.0D;
+    this.e = 0L;
+    this.f = 0L;
+    this.g = 0;
+    this.j = 0L;
+    this.k = 0L;
+    this.l = 0L;
+    this.m = 0L;
+    this.n = 0L;
+    this.p = 0L;
+    this.q = 0L;
+    this.mGLContextExternal = null;
+    this.C = null;
+    this.D = null;
+    this.E = 0L;
+    this.mOutputWidth = 0;
+    this.mOutputHeight = 0;
+    this.mInit = false;
+    this.mListener = null;
+    this.w.clear();
+    AppMethodBeat.o(146310);
+  }
+  
+  private void f()
+  {
+    AppMethodBeat.i(146311);
     if ((Build.VERSION.SDK_INT >= 19) && (this.r != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putInt("request-sync", 0);
       this.r.setParameters(localBundle);
     }
+    AppMethodBeat.o(146311);
   }
-  
-  private void d(int paramInt) {}
   
   public long getRealBitrate()
   {
     return this.c;
   }
   
-  public long getRealFPS()
+  public double getRealFPS()
   {
     return this.d;
   }
   
   public long pushVideoFrame(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    if (this.A) {
+    AppMethodBeat.i(67371);
+    if (this.A)
+    {
+      AppMethodBeat.o(67371);
       return 10000004L;
     }
     GLES20.glFinish();
-    this.E = paramLong;
-    this.N = paramInt1;
-    this.K += 1;
-    if (this.J) {
-      d();
+    long l1 = TXCTimeUtil.getTimeTick();
+    if (this.F == 0L) {
+      this.F = (l1 - paramLong);
     }
-    this.s.b(this.u);
+    this.E = (l1 - this.F);
+    this.S = paramInt1;
+    this.P += 1;
+    this.mInputWidth = paramInt2;
+    this.mInputHeight = paramInt3;
+    if (this.N) {
+      f();
+    }
+    if ((!this.O) || (this.T))
+    {
+      this.s.b(this.u);
+      this.T = false;
+    }
+    AppMethodBeat.o(67371);
     return 0L;
   }
   
   public long pushVideoFrameSync(int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
-    if (this.A) {
+    AppMethodBeat.i(67372);
+    if (this.A)
+    {
+      AppMethodBeat.o(67372);
       return 10000004L;
     }
     GLES20.glFinish();
     this.E = paramLong;
-    this.N = paramInt1;
-    this.K += 1;
-    if (this.J) {
-      d();
+    this.S = paramInt1;
+    this.P += 1;
+    if (this.N) {
+      f();
     }
     this.s.a(this.v);
+    AppMethodBeat.o(67372);
     return 0L;
   }
   
   public void setBitrate(int paramInt)
   {
+    AppMethodBeat.i(67370);
     this.b = paramInt;
     this.s.b(new a.4(this, paramInt));
+    AppMethodBeat.o(67370);
   }
+  
+  public void setBitrateFromQos(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(146308);
+    this.b = paramInt1;
+    this.s.b(new a.5(this, paramInt1));
+    AppMethodBeat.o(146308);
+  }
+  
+  public void setEncodeIdrFpsFromQos(int paramInt) {}
   
   public void setFPS(int paramInt)
   {
+    AppMethodBeat.i(67369);
     this.s.b(new a.3(this, paramInt));
+    AppMethodBeat.o(67369);
   }
   
   public void signalEOSAndFlush()
   {
-    if (this.A) {
+    AppMethodBeat.i(67373);
+    if (this.A)
+    {
+      AppMethodBeat.o(67373);
       return;
     }
-    this.s.a(new a.5(this));
+    this.s.a(new a.6(this));
+    AppMethodBeat.o(67373);
   }
   
   public int start(TXSVideoEncoderParam paramTXSVideoEncoderParam)
   {
+    AppMethodBeat.i(67367);
     super.start(paramTXSVideoEncoderParam);
     boolean[] arrayOfBoolean = new boolean[1];
     if (Build.VERSION.SDK_INT < 18) {
@@ -941,26 +1140,35 @@ public class a
       }
       if (arrayOfBoolean[0] != 0)
       {
+        AppMethodBeat.o(67367);
         return 0;
         try
         {
           this.s.a(new a.1(this, arrayOfBoolean, paramTXSVideoEncoderParam));
         }
-        finally {}
+        finally
+        {
+          AppMethodBeat.o(67367);
+        }
       }
     }
+    AppMethodBeat.o(67367);
     return 10000004;
   }
   
   public void stop()
   {
+    AppMethodBeat.i(67368);
     this.A = true;
     try
     {
       this.s.a(new a.2(this));
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(67368);
+    }
   }
 }
 

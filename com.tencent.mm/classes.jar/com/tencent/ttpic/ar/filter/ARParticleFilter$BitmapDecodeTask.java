@@ -3,10 +3,11 @@ package com.tencent.ttpic.ar.filter;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.oscarcamera.particlesystem.Sprite;
-import com.tencent.ttpic.util.VideoBitmapUtil;
+import com.tencent.ttpic.baseutils.BitmapUtils;
+import com.tencent.ttpic.baseutils.FileUtils;
 import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoUtil;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ class ARParticleFilter$BitmapDecodeTask
   
   private void preCalTexCoords(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
+    AppMethodBeat.i(81649);
     int i = paramInt3 / paramInt5;
     int j = paramInt2 / paramInt4;
     float f1 = paramInt4 * 1.0F / paramInt2;
@@ -51,10 +53,12 @@ class ARParticleFilter$BitmapDecodeTask
       }
       paramInt2 += 1;
     }
+    AppMethodBeat.o(81649);
   }
   
   protected Void doInBackground(Void... paramVarArgs)
   {
+    AppMethodBeat.i(81650);
     if ((ARParticleFilter.access$100(this.this$0) != null) && (ARParticleFilter.access$200(this.this$0) != null))
     {
       int i = 0;
@@ -63,7 +67,7 @@ class ARParticleFilter$BitmapDecodeTask
         Sprite localSprite = (Sprite)ARParticleFilter.access$100(this.this$0).get(i);
         paramVarArgs = ARParticleFilter.access$300(this.this$0) + File.separator + (String)ARParticleFilter.access$200(this.this$0).get(i) + File.separator + localSprite.path;
         if (paramVarArgs.startsWith("assets://")) {}
-        for (paramVarArgs = VideoBitmapUtil.decodeSampleBitmapFromAssets(VideoGlobalContext.getContext(), VideoUtil.getRealPath(paramVarArgs), 2147483647, 2147483647);; paramVarArgs = VideoBitmapUtil.decodeSampledBitmapFromFile(paramVarArgs, 2147483647, 2147483647))
+        for (paramVarArgs = BitmapUtils.decodeSampledBitmapFromAssets(VideoGlobalContext.getContext(), FileUtils.getRealPath(paramVarArgs), 2147483647, 2147483647);; paramVarArgs = BitmapUtils.decodeSampledBitmapFromFile(paramVarArgs, 2147483647, 2147483647))
         {
           if (ARParticleFilter.access$400(this.this$0, paramVarArgs))
           {
@@ -75,12 +79,13 @@ class ARParticleFilter$BitmapDecodeTask
         }
       }
     }
+    AppMethodBeat.o(81650);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.ttpic.ar.filter.ARParticleFilter.BitmapDecodeTask
  * JD-Core Version:    0.7.0.1
  */

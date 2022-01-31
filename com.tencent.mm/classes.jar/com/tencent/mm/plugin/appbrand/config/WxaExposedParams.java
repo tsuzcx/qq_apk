@@ -3,34 +3,44 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WxaExposedParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<WxaExposedParams> CREATOR = new WxaExposedParams.1();
+  public static final Parcelable.Creator<WxaExposedParams> CREATOR;
   public String appId;
-  public String bUo;
-  public int fEM;
-  public int fEN;
-  public String fRx;
-  public String fRy;
   public int from;
+  public int gXe;
+  public int gXf;
+  public String hko;
+  public String hkp;
   public String iconUrl;
   public String nickname;
+  public String pageId;
   public String username;
+  
+  static
+  {
+    AppMethodBeat.i(114918);
+    CREATOR = new WxaExposedParams.1();
+    AppMethodBeat.o(114918);
+  }
   
   protected WxaExposedParams(Parcel paramParcel)
   {
+    AppMethodBeat.i(114915);
     this.appId = paramParcel.readString();
     this.username = paramParcel.readString();
     this.nickname = paramParcel.readString();
     this.iconUrl = paramParcel.readString();
-    this.fEM = paramParcel.readInt();
-    this.fEN = paramParcel.readInt();
-    this.fRx = paramParcel.readString();
+    this.gXe = paramParcel.readInt();
+    this.gXf = paramParcel.readInt();
+    this.hko = paramParcel.readString();
     this.from = paramParcel.readInt();
-    this.bUo = paramParcel.readString();
-    this.fRy = paramParcel.readString();
+    this.pageId = paramParcel.readString();
+    this.hkp = paramParcel.readString();
+    AppMethodBeat.o(114915);
   }
   
   private WxaExposedParams(WxaExposedParams.a parama)
@@ -39,12 +49,12 @@ public class WxaExposedParams
     this.username = parama.username;
     this.nickname = parama.nickname;
     this.iconUrl = parama.iconUrl;
-    this.fEM = parama.fEM;
-    this.fEN = parama.fEN;
-    this.fRx = parama.fRx;
+    this.gXe = parama.gXe;
+    this.gXf = parama.gXf;
+    this.hko = parama.hko;
     this.from = parama.from;
-    this.bUo = parama.bUo;
-    this.fRy = parama.fRy;
+    this.pageId = parama.pageId;
+    this.hkp = parama.hkp;
   }
   
   public int describeContents()
@@ -54,21 +64,26 @@ public class WxaExposedParams
   
   public String toString()
   {
-    return "WxaExposedParams{appId='" + this.appId + '\'' + ", username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", pkgDebugType=" + this.fEM + ", pkgVersion=" + this.fEN + ", pkgMD5='" + this.fRx + '\'' + ", from=" + this.from + ", pageId='" + this.bUo + '\'' + ", errorUrl='" + this.fRy + '\'' + '}';
+    AppMethodBeat.i(114917);
+    String str = "WxaExposedParams{appId='" + this.appId + '\'' + ", username='" + this.username + '\'' + ", nickname='" + this.nickname + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", pkgDebugType=" + this.gXe + ", pkgVersion=" + this.gXf + ", pkgMD5='" + this.hko + '\'' + ", from=" + this.from + ", pageId='" + this.pageId + '\'' + ", errorUrl='" + this.hkp + '\'' + '}';
+    AppMethodBeat.o(114917);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(114916);
     paramParcel.writeString(this.appId);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.nickname);
     paramParcel.writeString(this.iconUrl);
-    paramParcel.writeInt(this.fEM);
-    paramParcel.writeInt(this.fEN);
-    paramParcel.writeString(this.fRx);
+    paramParcel.writeInt(this.gXe);
+    paramParcel.writeInt(this.gXf);
+    paramParcel.writeString(this.hko);
     paramParcel.writeInt(this.from);
-    paramParcel.writeString(this.bUo);
-    paramParcel.writeString(this.fRy);
+    paramParcel.writeString(this.pageId);
+    paramParcel.writeString(this.hkp);
+    AppMethodBeat.o(114916);
   }
 }
 

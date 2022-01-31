@@ -1,30 +1,42 @@
 package com.tencent.mm.plugin.scanner.a;
 
-import android.app.Activity;
-import com.tencent.mm.plugin.scanner.util.a;
-import com.tencent.mm.plugin.scanner.util.e;
-import com.tencent.mm.plugin.scanner.util.e.a;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.eg;
+import com.tencent.mm.plugin.scanner.model.q;
+import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.e.j;
 
 public final class b
+  extends j
 {
-  Activity mActivity;
-  String nGM;
-  e nGN;
-  a nGO;
-  e.a nGP = new b.1(this);
-  public c nGQ = new b.2(this);
-  public c nGR = new b.3(this);
+  public static final String[] SQL_CREATE;
+  private e db;
   
-  public final void bxf()
+  static
   {
-    if (this.nGN != null)
+    AppMethodBeat.i(80897);
+    SQL_CREATE = new String[] { j.getCreateSQLs(q.info, "ScanTranslationResult") };
+    AppMethodBeat.o(80897);
+  }
+  
+  public b(e parame)
+  {
+    super(parame, q.info, "ScanTranslationResult", null);
+    this.db = parame;
+  }
+  
+  public final eg Yz(String paramString)
+  {
+    AppMethodBeat.i(80896);
+    q localq = new q();
+    localq.field_originMD5 = paramString;
+    if (get(localq, new String[0]))
     {
-      this.nGN.bym();
-      this.nGN = null;
+      AppMethodBeat.o(80896);
+      return localq;
     }
-    this.mActivity = null;
-    this.nGM = null;
+    AppMethodBeat.o(80896);
+    return null;
   }
 }
 

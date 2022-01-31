@@ -5,9 +5,9 @@ import android.view.View;
 
 public abstract interface DragSortListView$i
 {
-  public abstract View II(int paramInt);
+  public abstract View RC(int paramInt);
   
-  public abstract void en(View paramView);
+  public abstract void fy(View paramView);
   
   public abstract void i(Point paramPoint);
 }

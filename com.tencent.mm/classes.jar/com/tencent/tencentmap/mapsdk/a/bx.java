@@ -1,13 +1,6 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-public class bx
-  extends bo
-{
-  public bx(int paramInt)
-  {
-    super(paramInt);
-  }
-}
+abstract class bx {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar

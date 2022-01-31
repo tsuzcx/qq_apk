@@ -1,7 +1,19 @@
 package com.tencent.mm.plugin.facedetect.views;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum FaceScanRect$a
 {
+  static
+  {
+    AppMethodBeat.i(664);
+    mpV = new a("OPENED", 0);
+    mpW = new a("CLOSED", 1);
+    mpX = new a("INIT", 2);
+    mpY = new a[] { mpV, mpW, mpX };
+    AppMethodBeat.o(664);
+  }
+  
   private FaceScanRect$a() {}
 }
 

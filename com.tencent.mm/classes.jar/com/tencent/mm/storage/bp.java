@@ -1,51 +1,68 @@
 package com.tencent.mm.storage;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class bp
-  extends i<bo>
+  extends j<bo>
 {
-  public static final String[] dXp = { i.a(bo.buS, "OpenMsgListener") };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(29069);
+    SQL_CREATE = new String[] { j.getCreateSQLs(bo.info, "OpenMsgListener") };
+    AppMethodBeat.o(29069);
+  }
   
   public bp(e parame)
   {
-    super(parame, bo.buS, "OpenMsgListener", null);
-    this.dXw = parame;
-    parame.gk("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
-    parame.gk("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
+    super(parame, bo.info, "OpenMsgListener", null);
+    AppMethodBeat.i(29065);
+    this.db = parame;
+    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
+    parame.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
+    AppMethodBeat.o(29065);
   }
   
-  public final bo acj(String paramString)
+  public final bo asu(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {
+    AppMethodBeat.i(29066);
+    if ((paramString == null) || (paramString.length() <= 0))
+    {
+      AppMethodBeat.o(29066);
       return null;
     }
-    Cursor localCursor = this.dXw.a("OpenMsgListener", null, "appId=?", new String[] { bk.pl(paramString) }, null, null, null, 2);
+    Cursor localCursor = this.db.a("OpenMsgListener", null, "appId=?", new String[] { com.tencent.mm.sdk.platformtools.bo.wC(paramString) }, null, null, null, 2);
     if (!localCursor.moveToFirst())
     {
-      y.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:" + paramString);
+      ab.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:".concat(String.valueOf(paramString)));
       localCursor.close();
+      AppMethodBeat.o(29066);
       return null;
     }
     paramString = new bo();
-    paramString.d(localCursor);
+    paramString.convertFrom(localCursor);
     localCursor.close();
+    AppMethodBeat.o(29066);
     return paramString;
   }
   
-  public final Cursor cvU()
+  public final Cursor dyD()
   {
-    return rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
+    AppMethodBeat.i(29067);
+    Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
+    AppMethodBeat.o(29067);
+    return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.bp
  * JD-Core Version:    0.7.0.1
  */

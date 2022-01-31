@@ -1,32 +1,35 @@
 package com.tencent.neattextview.textview.layout;
 
-import android.graphics.Canvas;
-import android.graphics.RectF;
-import android.text.TextPaint;
-import java.io.Serializable;
+import com.tencent.neattextview.textview.b.c;
+import java.util.List;
 
 public abstract interface a
-  extends Serializable
 {
-  public abstract void a(Canvas paramCanvas, TextPaint paramTextPaint, float paramFloat);
+  public abstract int dTo();
   
-  public abstract float[] cNG();
+  public abstract List<c> dTp();
   
-  public abstract RectF cNH();
+  public abstract int getLineBaseline(int paramInt);
   
-  public abstract float cNI();
+  public abstract int getLineBottom(int paramInt);
   
-  public abstract boolean cNJ();
+  public abstract int getLineForOffset(int paramInt);
   
-  public abstract float cNK();
+  public abstract int getLineForVertical(int paramInt);
   
-  public abstract int getEnd();
+  public abstract float getLineRight(int paramInt);
   
-  public abstract float getHeight();
+  public abstract int getLineStart(int paramInt);
   
-  public abstract int getStart();
+  public abstract int getLineTop(int paramInt);
   
-  public abstract float getWidth();
+  public abstract float getLineWidth(int paramInt);
+  
+  public abstract int getOffsetForHorizontal(int paramInt, float paramFloat);
+  
+  public abstract float getPrimaryHorizontal(int paramInt);
+  
+  public abstract int ii(int paramInt1, int paramInt2);
 }
 
 

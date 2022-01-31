@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class JsApiOperateMusicPlayer$OperateMusicPlayer$5
   implements Runnable
@@ -9,11 +10,13 @@ final class JsApiOperateMusicPlayer$OperateMusicPlayer$5
   
   public final void run()
   {
-    y.i("MicroMsg.JsApiOperateMusicPlayer", "stop ok");
-    this.giR.action = -1;
-    this.giR.error = false;
-    this.giR.errorMsg = "";
-    JsApiOperateMusicPlayer.OperateMusicPlayer.g(this.giR);
+    AppMethodBeat.i(130723);
+    ab.i("MicroMsg.JsApiOperateMusicPlayer", "stop ok");
+    this.hCl.action = -1;
+    this.hCl.error = false;
+    this.hCl.errorMsg = "";
+    JsApiOperateMusicPlayer.OperateMusicPlayer.g(this.hCl);
+    AppMethodBeat.o(130723);
   }
 }
 

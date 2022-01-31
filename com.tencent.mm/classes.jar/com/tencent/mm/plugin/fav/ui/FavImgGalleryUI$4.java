@@ -1,18 +1,12 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.util.Pair;
+import com.tencent.mm.vending.g.d.b;
 
 final class FavImgGalleryUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements d.b<Pair<String, String>>
 {
-  FavImgGalleryUI$4(FavImgGalleryUI paramFavImgGalleryUI) {}
-  
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
-  {
-    this.kbW.finish();
-    return true;
-  }
+  FavImgGalleryUI$4(FavImgGalleryUI paramFavImgGalleryUI, FavImgGalleryUI.b paramb) {}
 }
 
 

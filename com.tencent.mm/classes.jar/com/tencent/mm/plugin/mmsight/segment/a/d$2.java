@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.mmsight.segment.a;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnSeekCompleteListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class d$2
   implements MediaPlayer.OnSeekCompleteListener
@@ -10,7 +11,9 @@ final class d$2
   
   public final void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    this.mob.bt(paramMediaPlayer);
+    AppMethodBeat.i(3746);
+    this.oNj.bX(paramMediaPlayer);
+    AppMethodBeat.o(3746);
   }
 }
 

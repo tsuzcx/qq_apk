@@ -2,11 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.MMEditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RoomCardUI$11
   implements DialogInterface.OnClickListener
@@ -15,15 +11,8 @@ final class RoomCardUI$11
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.dpS;
-    AppCompatActivity localAppCompatActivity = this.dpS.mController.uMN;
-    this.dpS.getString(a.i.app_tip);
-    RoomCardUI.a(paramDialogInterface, h.b(localAppCompatActivity, this.dpS.getString(a.i.room_saving_notice), false, null));
-    if (RoomCardUI.e(this.dpS))
-    {
-      RoomCardUI.f(this.dpS);
-      RoomCardUI.a(this.dpS, RoomCardUI.b(this.dpS).getText().toString());
-    }
+    AppMethodBeat.i(104154);
+    AppMethodBeat.o(104154);
   }
 }
 

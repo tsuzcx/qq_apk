@@ -6,11 +6,10 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.ipcall.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 final class IPCallRechargeUI$7
@@ -20,10 +19,11 @@ final class IPCallRechargeUI$7
   
   public final void onClick(View paramView)
   {
-    ((TextView)paramView).setHighlightColor(this.lxJ.getResources().getColor(R.e.transparent));
+    AppMethodBeat.i(22257);
+    ((TextView)paramView).setHighlightColor(this.nUW.getResources().getColor(2131690605));
     Intent localIntent = new Intent();
-    paramView = this.lxJ.getString(R.l.ip_call_recharge_price_url) + "&usedcc=";
-    Object localObject = com.tencent.mm.plugin.ipcall.a.c.bbS().bbV();
+    paramView = this.nUW.getString(2131300879) + "&usedcc=";
+    Object localObject = com.tencent.mm.plugin.ipcall.a.c.bIZ().bJc();
     int j;
     if (((List)localObject).size() > 0)
     {
@@ -35,25 +35,26 @@ final class IPCallRechargeUI$7
       j = 0;
       if (j < i)
       {
-        String str = a.FZ(((Integer)((List)localObject).get(j)).toString());
-        if (bk.bl(str)) {
-          break label245;
+        String str = a.RB(((Integer)((List)localObject).get(j)).toString());
+        if (bo.isNullOrNil(str)) {
+          break label255;
         }
         paramView = paramView + str + "|";
       }
     }
-    label245:
+    label255:
     for (;;)
     {
       j += 1;
       break;
       localObject = paramView;
       if (paramView.endsWith("|")) {}
-      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.FZ(com.tencent.mm.plugin.ipcall.b.c.bdr()))
+      for (localObject = paramView.substring(0, paramView.length() - 1);; localObject = paramView + a.RB(com.tencent.mm.plugin.ipcall.b.c.bKM()))
       {
         localIntent.putExtra("rawUrl", (String)localObject);
         localIntent.putExtra("showShare", false);
-        d.b(this.lxJ, "webview", ".ui.tools.WebViewUI", localIntent);
+        d.b(this.nUW, "webview", ".ui.tools.WebViewUI", localIntent);
+        AppMethodBeat.o(22257);
         return;
       }
     }
@@ -61,8 +62,10 @@ final class IPCallRechargeUI$7
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.lxJ.getResources().getColor(R.e.link_color));
+    AppMethodBeat.i(22258);
+    paramTextPaint.setColor(this.nUW.getResources().getColor(2131690214));
     paramTextPaint.setUnderlineText(false);
+    AppMethodBeat.o(22258);
   }
 }
 

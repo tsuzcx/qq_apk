@@ -4,70 +4,74 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class l
   extends a
 {
-  private WXRTEditText rNu;
+  private WXRTEditText vDY;
   
   public l(View paramView, k paramk)
   {
     super(paramView, paramk);
-    this.rNu = ((WXRTEditText)paramView.findViewById(R.h.rte_text));
-    if ((paramk.rJg != 2) || (!this.rLi.rJh))
+    AppMethodBeat.i(27178);
+    this.vDY = ((WXRTEditText)paramView.findViewById(2131826607));
+    if ((paramk.vzL != 2) || (!this.vBM.vzM))
     {
-      this.rNu.setKeyListener(null);
-      this.rNu.setFocusable(false);
-      this.rNu.setClickable(true);
+      this.vDY.setKeyListener(null);
+      this.vDY.setFocusable(false);
+      this.vDY.setClickable(true);
     }
-    this.rNu.rIp = this;
-    this.rNu.setEditTextType(0);
-    this.rLi.o(this.rNu);
-    this.rNu.getViewTreeObserver().addOnGlobalLayoutListener(new l.1(this));
+    this.vDY.vyV = this;
+    this.vDY.setEditTextType(0);
+    this.vBM.q(this.vDY);
+    this.vDY.getViewTreeObserver().addOnGlobalLayoutListener(new l.1(this));
+    AppMethodBeat.o(27178);
   }
   
   public final void a(com.tencent.mm.plugin.wenote.model.a.c paramc, int paramInt1, int paramInt2)
   {
-    this.rNu.setPosInDataList(paramInt1);
+    AppMethodBeat.i(27179);
+    this.vDY.setPosInDataList(paramInt1);
     paramc = (i)paramc;
-    paramc.rGs = this.rNu;
-    paramc.rGq = null;
-    paramc.rGr = null;
-    Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(paramInt1 - 1);
+    paramc.vxb = this.vDY;
+    paramc.vwZ = null;
+    paramc.vxa = null;
+    Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(paramInt1 - 1);
     if ((localObject != null) && (((com.tencent.mm.plugin.wenote.model.a.c)localObject).getType() == 1))
     {
-      localObject = (LinearLayout.LayoutParams)this.rNu.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)this.vDY.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
-      this.rNu.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.vDY.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(paramInt1 + 1);
+    localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(paramInt1 + 1);
     if ((localObject != null) && (((com.tencent.mm.plugin.wenote.model.a.c)localObject).getType() == 1))
     {
-      localObject = (LinearLayout.LayoutParams)this.rNu.getLayoutParams();
+      localObject = (LinearLayout.LayoutParams)this.vDY.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).bottomMargin = 0;
-      this.rNu.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.vDY.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    if ((this.rLi.rJg != 2) || (!this.rLi.rJh))
+    if ((this.vBM.vzL != 2) || (!this.vBM.vzM))
     {
-      this.rNu.setRichTextEditing(paramc.content);
-      j.h(this.rNu);
+      this.vDY.setRichTextEditing(paramc.content);
+      j.l(this.vDY);
     }
     for (;;)
     {
-      y.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + ic());
+      ab.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + jM());
+      AppMethodBeat.o(27179);
       return;
-      ai.d(new l.2(this, paramc));
+      al.d(new l.2(this, paramc));
     }
   }
   
-  public final int cjv()
+  public final int djX()
   {
     return 1;
   }

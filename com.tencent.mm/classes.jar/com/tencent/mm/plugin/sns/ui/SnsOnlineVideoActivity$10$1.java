@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsOnlineVideoActivity$10$1
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class SnsOnlineVideoActivity$10$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SnsOnlineVideoActivity.m(this.pbu.pbr);
-    this.pbu.pbr.aBR();
+    AppMethodBeat.i(39155);
+    SnsOnlineVideoActivity.m(this.rUi.rUf);
+    this.rUi.rUf.bdV();
+    AppMethodBeat.o(39155);
   }
 }
 

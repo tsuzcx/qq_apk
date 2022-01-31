@@ -1,25 +1,38 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.view.View;
-import com.tencent.mm.plugin.appbrand.config.a.d;
+import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.b.c;
+import com.tencent.mm.plugin.appbrand.b.d;
+import com.tencent.mm.plugin.appbrand.b.d.a;
+import com.tencent.mm.plugin.appbrand.b.f;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.plugin.appbrand.k;
 
-public abstract interface n
+class n
+  extends f
 {
-  public abstract void a(a.d paramd);
+  private k iPE;
   
-  public abstract void aoS();
+  n(Activity paramActivity, k paramk)
+  {
+    super(paramActivity);
+    this.iPE = paramk;
+  }
   
-  public abstract void aoT();
-  
-  public abstract void cd(String paramString1, String paramString2);
-  
-  public abstract View getView();
-  
-  public abstract void setProgress(int paramInt);
+  public void awv()
+  {
+    AppMethodBeat.i(114422);
+    i locali = this.iPE.atG();
+    if (locali != null) {
+      locali.gPL.gYj.a(d.a.gYD);
+    }
+    AppMethodBeat.o(114422);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.n
  * JD-Core Version:    0.7.0.1
  */

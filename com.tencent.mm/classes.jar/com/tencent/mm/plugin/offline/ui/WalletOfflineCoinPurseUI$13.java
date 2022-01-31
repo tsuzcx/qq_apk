@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.offline.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WalletOfflineCoinPurseUI$13
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class WalletOfflineCoinPurseUI$13
   
   public final void onClick(View paramView)
   {
-    WalletOfflineCoinPurseUI.s(this.mNj);
+    AppMethodBeat.i(43519);
+    WalletOfflineCoinPurseUI.r(this.pny);
+    AppMethodBeat.o(43519);
   }
 }
 

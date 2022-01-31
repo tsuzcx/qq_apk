@@ -2,16 +2,18 @@ package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.luggage.e.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$3
   implements DialogInterface.OnCancelListener
 {
-  h$3(h paramh, a.a parama) {}
+  h$3(h paramh) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.kNj.a("cancel", null);
+    AppMethodBeat.i(6290);
+    h.a(this.uTu, "cancel");
+    AppMethodBeat.o(6290);
   }
 }
 

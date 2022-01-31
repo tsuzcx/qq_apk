@@ -1,5 +1,7 @@
 package com.tencent.oscarcamera.particlesystem;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class Attribute
 {
   public String mName;
@@ -8,17 +10,27 @@ public class Attribute
   
   public long expression()
   {
-    if (this.mValue != null) {
-      return this.mValue.expression();
+    AppMethodBeat.i(81509);
+    if (this.mValue != null)
+    {
+      long l = this.mValue.expression();
+      AppMethodBeat.o(81509);
+      return l;
     }
+    AppMethodBeat.o(81509);
     return -1L;
   }
   
   public double value()
   {
-    if (this.mValue != null) {
-      return this.mValue.value();
+    AppMethodBeat.i(81508);
+    if (this.mValue != null)
+    {
+      double d = this.mValue.value();
+      AppMethodBeat.o(81508);
+      return d;
     }
+    AppMethodBeat.o(81508);
     return 0.0D;
   }
 }

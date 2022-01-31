@@ -1,41 +1,47 @@
 package com.tencent.mm.plugin.fav.b.a;
 
-import com.tencent.mm.plugin.fts.a.m;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$1
-  implements j.a
+  implements k.a
 {
   b$1(b paramb) {}
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
   {
-    if (paraml == null) {}
-    int i;
-    long l;
-    do
+    AppMethodBeat.i(5301);
+    if (paramm == null)
     {
-      do
-      {
-        return;
-        i = paraml.gbI;
-      } while (paraml.obj == null);
-      l = ((Long)paraml.obj).longValue();
-    } while (l < 0L);
-    y.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "EventData: %s", new Object[] { paraml });
-    switch (i)
-    {
-    case 4: 
-    default: 
-      return;
-    case 2: 
-    case 3: 
-      this.kap.dBO.a(65576, new b.d(this.kap, l, (byte)0));
+      AppMethodBeat.o(5301);
       return;
     }
-    this.kap.dBO.a(65576, new b.b(this.kap, l));
+    int i = paramm.htj;
+    if (paramm.obj == null)
+    {
+      AppMethodBeat.o(5301);
+      return;
+    }
+    long l = ((Long)paramm.obj).longValue();
+    if (l < 0L)
+    {
+      AppMethodBeat.o(5301);
+      return;
+    }
+    ab.i("MicroMsg.FTS.FTS5SearchFavoriteLogic", "EventData: %s", new Object[] { paramm });
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(5301);
+      return;
+      this.muL.ezf.a(65576, new b.d(this.muL, l, (byte)0));
+      AppMethodBeat.o(5301);
+      return;
+      this.muL.ezf.a(65576, new b.b(this.muL, l));
+    }
   }
 }
 

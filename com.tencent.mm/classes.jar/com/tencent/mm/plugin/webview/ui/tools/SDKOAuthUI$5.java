@@ -1,13 +1,29 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class SDKOAuthUI$5
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
   SDKOAuthUI$5(SDKOAuthUI paramSDKOAuthUI) {}
   
-  public final void run()
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.rmk.finish();
+    AppMethodBeat.i(153189);
+    try
+    {
+      paramDialogInterface.dismiss();
+      AppMethodBeat.o(153189);
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      ab.e("MicroMsg.SdkOAuthUI", "showProgressDlg onCancel exp: %s ", new Object[] { paramDialogInterface.getLocalizedMessage() });
+      AppMethodBeat.o(153189);
+    }
   }
 }
 

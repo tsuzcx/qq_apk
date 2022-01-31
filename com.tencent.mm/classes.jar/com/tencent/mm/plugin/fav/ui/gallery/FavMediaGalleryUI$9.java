@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.gallery;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import java.util.ArrayList;
 
@@ -11,29 +12,34 @@ final class FavMediaGalleryUI$9
   
   public final void run()
   {
-    if (this.kbX != -1)
+    AppMethodBeat.i(74516);
+    if (this.mwx != -1)
     {
-      y.d("MicroMsg.FavMediaGalleryUI", "match selection %d", new Object[] { Integer.valueOf(this.kbX) });
-      FavMediaGalleryUI.g(this.khg).setSelection(this.kbX);
-      FavMediaGalleryUI.a(this.khg, this.kbX);
+      ab.d("MicroMsg.FavMediaGalleryUI", "match selection %d", new Object[] { Integer.valueOf(this.mwx) });
+      FavMediaGalleryUI.g(this.mBV).setSelection(this.mwx);
+      FavMediaGalleryUI.a(this.mBV, this.mwx);
+      AppMethodBeat.o(74516);
       return;
     }
-    if ((FavMediaGalleryUI.c(this.khg) - 1 >= 0) && (FavMediaGalleryUI.c(this.khg) - 1 < FavMediaGalleryUI.h(this.khg).size()))
+    if ((FavMediaGalleryUI.c(this.mBV) - 1 >= 0) && (FavMediaGalleryUI.c(this.mBV) - 1 < FavMediaGalleryUI.h(this.mBV).size()))
     {
-      y.d("MicroMsg.FavMediaGalleryUI", "adjust selection %d, list size %d", new Object[] { Integer.valueOf(FavMediaGalleryUI.c(this.khg) - 1), Integer.valueOf(FavMediaGalleryUI.h(this.khg).size()) });
-      FavMediaGalleryUI.g(this.khg).setSelection(FavMediaGalleryUI.c(this.khg) - 1);
-      FavMediaGalleryUI.a(this.khg, FavMediaGalleryUI.c(this.khg) - 1);
+      ab.d("MicroMsg.FavMediaGalleryUI", "adjust selection %d, list size %d", new Object[] { Integer.valueOf(FavMediaGalleryUI.c(this.mBV) - 1), Integer.valueOf(FavMediaGalleryUI.h(this.mBV).size()) });
+      FavMediaGalleryUI.g(this.mBV).setSelection(FavMediaGalleryUI.c(this.mBV) - 1);
+      FavMediaGalleryUI.a(this.mBV, FavMediaGalleryUI.c(this.mBV) - 1);
+      AppMethodBeat.o(74516);
       return;
     }
-    if (FavMediaGalleryUI.h(this.khg).size() > 0)
+    if (FavMediaGalleryUI.h(this.mBV).size() > 0)
     {
-      y.d("MicroMsg.FavMediaGalleryUI", "adjust selection fail, set selection 0, list size %d", new Object[] { Integer.valueOf(FavMediaGalleryUI.h(this.khg).size()) });
-      FavMediaGalleryUI.g(this.khg).setSelection(0);
-      FavMediaGalleryUI.a(this.khg, 0);
+      ab.d("MicroMsg.FavMediaGalleryUI", "adjust selection fail, set selection 0, list size %d", new Object[] { Integer.valueOf(FavMediaGalleryUI.h(this.mBV).size()) });
+      FavMediaGalleryUI.g(this.mBV).setSelection(0);
+      FavMediaGalleryUI.a(this.mBV, 0);
+      AppMethodBeat.o(74516);
       return;
     }
-    y.w("MicroMsg.FavMediaGalleryUI", "data list size %d, empty, finish", new Object[] { Integer.valueOf(FavMediaGalleryUI.h(this.khg).size()) });
-    this.khg.finish();
+    ab.w("MicroMsg.FavMediaGalleryUI", "data list size %d, empty, finish", new Object[] { Integer.valueOf(FavMediaGalleryUI.h(this.mBV).size()) });
+    this.mBV.finish();
+    AppMethodBeat.o(74516);
   }
 }
 

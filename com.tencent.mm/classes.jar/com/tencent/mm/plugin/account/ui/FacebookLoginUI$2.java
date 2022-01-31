@@ -1,30 +1,28 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.kernel.a;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.network.c;
-import com.tencent.mm.network.e;
 
 final class FacebookLoginUI$2
-  implements bi.a
+  implements DialogInterface.OnCancelListener
 {
   FacebookLoginUI$2(FacebookLoginUI paramFacebookLoginUI) {}
   
-  public final void a(e parame)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (parame == null) {
-      return;
+    AppMethodBeat.i(124831);
+    if (FacebookLoginUI.h(this.gDq) != null) {
+      g.Rc().a(FacebookLoginUI.h(this.gDq));
     }
-    parame = parame.KR();
-    g.DN();
-    int i = a.CK();
-    parame.w(new byte[0], i);
+    AppMethodBeat.o(124831);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.FacebookLoginUI.2
  * JD-Core Version:    0.7.0.1
  */

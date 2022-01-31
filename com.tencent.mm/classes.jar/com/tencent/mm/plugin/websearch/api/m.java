@@ -10,9 +10,11 @@ public abstract interface m
   
   public abstract boolean b(Context paramContext, Runnable paramRunnable);
   
-  public abstract void bZg();
+  public abstract void cYV();
   
-  public abstract void bZh();
+  public abstract void cYW();
+  
+  public abstract boolean cYX();
 }
 
 

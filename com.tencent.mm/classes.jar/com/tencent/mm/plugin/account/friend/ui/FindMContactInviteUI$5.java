@@ -1,53 +1,61 @@
 package com.tencent.mm.plugin.account.friend.ui;
 
 import android.app.ProgressDialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.i;
-import com.tencent.mm.sdk.platformtools.ai.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al.a;
 
 final class FindMContactInviteUI$5
-  implements ai.a
+  implements al.a
 {
   FindMContactInviteUI$5(FindMContactInviteUI paramFindMContactInviteUI) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
+    AppMethodBeat.i(108541);
     try
     {
-      FindMContactInviteUI.a(this.fhx, com.tencent.mm.pluginsdk.a.ck(this.fhx));
-      FindMContactInviteUI.b(this.fhx).fcV = FindMContactInviteUI.c(this.fhx);
-      FindMContactInviteUI.b(this.fhx).r(((com.tencent.mm.plugin.account.a.a.a)g.t(com.tencent.mm.plugin.account.a.a.a.class)).getFriendData());
+      FindMContactInviteUI.a(this.gzf, com.tencent.mm.pluginsdk.a.cL(this.gzf));
+      FindMContactInviteUI.b(this.gzf).guG = FindMContactInviteUI.c(this.gzf);
+      FindMContactInviteUI.b(this.gzf).r(((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).getFriendData());
+      AppMethodBeat.o(108541);
       return true;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.FindMContactInviteUI", localException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.FindMContactInviteUI", localException, "", new Object[0]);
       }
     }
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
-    if (FindMContactInviteUI.a(this.fhx) != null)
+    AppMethodBeat.i(108540);
+    if (FindMContactInviteUI.a(this.gzf) != null)
     {
-      FindMContactInviteUI.a(this.fhx).dismiss();
-      FindMContactInviteUI.a(this.fhx, null);
+      FindMContactInviteUI.a(this.gzf).dismiss();
+      FindMContactInviteUI.a(this.gzf, null);
     }
-    FindMContactInviteUI.b(this.fhx).notifyDataSetChanged();
+    FindMContactInviteUI.b(this.gzf).notifyDataSetChanged();
+    AppMethodBeat.o(108540);
     return false;
   }
   
   public final String toString()
   {
-    return super.toString() + "|listMFriendData";
+    AppMethodBeat.i(108542);
+    String str = super.toString() + "|listMFriendData";
+    AppMethodBeat.o(108542);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.FindMContactInviteUI.5
  * JD-Core Version:    0.7.0.1
  */

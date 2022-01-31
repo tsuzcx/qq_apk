@@ -4,6 +4,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnKeyListener;
 import android.widget.EditText;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class FTSEditTextView$1
@@ -13,17 +14,19 @@ final class FTSEditTextView$1
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(62105);
     if ((paramKeyEvent.getAction() == 0) && (67 == paramInt))
     {
-      paramInt = FTSEditTextView.a(this.kEA).getSelectionStart();
-      int i = FTSEditTextView.a(this.kEA).getSelectionEnd();
-      if ((paramInt == 0) && (i == 0) && (FTSEditTextView.b(this.kEA).size() > 0) && (FTSEditTextView.c(this.kEA)))
+      paramInt = FTSEditTextView.a(this.naY).getSelectionStart();
+      int i = FTSEditTextView.a(this.naY).getSelectionEnd();
+      if ((paramInt == 0) && (i == 0) && (FTSEditTextView.b(this.naY).size() > 0) && (FTSEditTextView.c(this.naY)))
       {
-        FTSEditTextView.b(this.kEA).remove(FTSEditTextView.b(this.kEA).size() - 1);
-        FTSEditTextView.d(this.kEA);
-        FTSEditTextView.e(this.kEA);
+        FTSEditTextView.b(this.naY).remove(FTSEditTextView.b(this.naY).size() - 1);
+        FTSEditTextView.d(this.naY);
+        FTSEditTextView.e(this.naY);
       }
     }
+    AppMethodBeat.o(62105);
     return false;
   }
 }

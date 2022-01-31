@@ -7,70 +7,79 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class RemarkInfoPreference
   extends Preference
 {
-  private MMActivity bER;
-  private TextView eXr;
-  private ImageView heN;
-  private TextView mXQ;
-  private boolean mZa = false;
+  private MMActivity cmc;
+  private ImageView iQd;
+  private TextView pAD;
+  private boolean pCB;
   private String summary;
   private String title;
+  private TextView titleTv;
   
   public RemarkInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(23761);
+    this.pCB = false;
+    this.cmc = ((MMActivity)paramContext);
+    AppMethodBeat.o(23761);
   }
   
   public RemarkInfoPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
-    setWidgetLayoutResource(R.i.mm_preference_submenu);
+    AppMethodBeat.i(23762);
+    this.pCB = false;
+    setLayoutResource(2130970179);
+    setWidgetLayoutResource(2130970254);
+    AppMethodBeat.o(23762);
   }
   
   public final void onBindView(View paramView)
   {
-    this.eXr = ((TextView)paramView.findViewById(R.h.title));
-    this.mXQ = ((TextView)paramView.findViewById(R.h.summary));
-    this.heN = ((ImageView)paramView.findViewById(R.h.image_iv));
-    if (!this.mZa) {
-      this.heN.setVisibility(8);
+    AppMethodBeat.i(23764);
+    this.titleTv = ((TextView)paramView.findViewById(2131820680));
+    this.pAD = ((TextView)paramView.findViewById(2131821890));
+    this.iQd = ((ImageView)paramView.findViewById(2131822243));
+    if (!this.pCB) {
+      this.iQd.setVisibility(8);
     }
     for (;;)
     {
-      if (this.eXr != null) {
-        this.eXr.setText(this.title);
+      if (this.titleTv != null) {
+        this.titleTv.setText(this.title);
       }
-      if (this.mXQ != null) {
-        this.mXQ.setText(this.summary);
+      if (this.pAD != null) {
+        this.pAD.setText(this.summary);
       }
       super.onBindView(paramView);
+      AppMethodBeat.o(23764);
       return;
-      this.heN.setVisibility(0);
+      this.iQd.setVisibility(0);
     }
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(23763);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_remark_info, localViewGroup);
+    localLayoutInflater.inflate(2130970217, localViewGroup);
+    AppMethodBeat.o(23763);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.RemarkInfoPreference
  * JD-Core Version:    0.7.0.1
  */

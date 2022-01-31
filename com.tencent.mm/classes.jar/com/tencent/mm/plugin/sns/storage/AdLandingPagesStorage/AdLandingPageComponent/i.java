@@ -1,16 +1,10 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
-import java.util.List;
-
 public final class i
   extends l
 {
-  public List<String> oCu;
-  
-  public i(List<String> paramList)
-  {
-    this.oCu = paramList;
-  }
+  public String cIS;
+  public String username;
 }
 
 

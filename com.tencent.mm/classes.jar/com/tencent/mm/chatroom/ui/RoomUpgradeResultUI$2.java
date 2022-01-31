@@ -3,9 +3,10 @@ package com.tencent.mm.chatroom.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+import com.tencent.mm.model.r;
+import com.tencent.mm.sdk.platformtools.aa;
 
 final class RoomUpgradeResultUI$2
   implements View.OnClickListener
@@ -14,10 +15,12 @@ final class RoomUpgradeResultUI$2
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(104221);
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.dqw.getString(a.i.chatroom_how_to_upgrade, new Object[] { x.cqJ() }));
-    paramView.putExtra("geta8key_username", q.Gj());
-    d.c(this.dqw, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", 0);
+    paramView.putExtra("rawUrl", this.ehU.getString(2131298131, new Object[] { aa.dsG() }));
+    paramView.putExtra("geta8key_username", r.Zn());
+    d.c(this.ehU, "webview", "com.tencent.mm.plugin.webview.ui.tools.WebViewUI", 0);
+    AppMethodBeat.o(104221);
   }
 }
 

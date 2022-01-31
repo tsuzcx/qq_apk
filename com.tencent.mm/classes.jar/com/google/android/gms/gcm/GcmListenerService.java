@@ -1,26 +1,25 @@
 package com.google.android.gms.gcm;
 
-import android.annotation.TargetApi;
-import android.app.Service;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.KeyguardManager;
+import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.IBinder;
-import android.support.v4.content.WakefulBroadcastReceiver;
+import android.os.Process;
+import com.google.android.gms.iid.zze;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Executor;
 
-public abstract class GcmListenerService
-  extends Service
+@Deprecated
+public class GcmListenerService
+  extends zze
 {
-  private int zzbgm;
-  private int zzbgn = 0;
-  private final Object zzrJ = new Object();
-  
-  static void zzD(Bundle paramBundle)
+  static void zzd(Bundle paramBundle)
   {
+    AppMethodBeat.i(69934);
     paramBundle = paramBundle.keySet().iterator();
     while (paramBundle.hasNext())
     {
@@ -29,79 +28,32 @@ public abstract class GcmListenerService
         paramBundle.remove();
       }
     }
+    AppMethodBeat.o(69934);
   }
   
-  private void zzGN()
+  public void handleIntent(Intent paramIntent)
   {
-    synchronized (this.zzrJ)
+    AppMethodBeat.i(69933);
+    if (!"com.google.android.c2dm.intent.RECEIVE".equals(paramIntent.getAction()))
     {
-      this.zzbgn -= 1;
-      if (this.zzbgn == 0) {
-        zzjA(this.zzbgm);
+      paramIntent = String.valueOf(paramIntent.getAction());
+      if (paramIntent.length() != 0)
+      {
+        "Unknown intent action: ".concat(paramIntent);
+        AppMethodBeat.o(69933);
+        return;
       }
+      new String("Unknown intent action: ");
+      AppMethodBeat.o(69933);
       return;
     }
-  }
-  
-  @TargetApi(11)
-  private void zzl(Intent paramIntent)
-  {
-    int i = Build.VERSION.SDK_INT;
-    AsyncTask.THREAD_POOL_EXECUTOR.execute(new GcmListenerService.1(this, paramIntent));
-  }
-  
-  private void zzm(Intent paramIntent)
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        str = paramIntent.getAction();
-        i = -1;
-        switch (str.hashCode())
-        {
-        case 366519424: 
-          str = String.valueOf(paramIntent.getAction());
-          if (str.length() == 0) {
-            break label90;
-          }
-          "Unknown intent action: ".concat(str);
-          zzGN();
-          return;
-        }
-      }
-      finally
-      {
-        String str;
-        WakefulBroadcastReceiver.completeWakefulIntent(paramIntent);
-      }
-      if (str.equals("com.google.android.c2dm.intent.RECEIVE"))
-      {
-        i = 0;
-        break label103;
-        zzn(paramIntent);
-        continue;
-        label90:
-        new String("Unknown intent action: ");
-        continue;
-      }
-      label103:
-      switch (i)
-      {
-      }
-    }
-  }
-  
-  private void zzn(Intent paramIntent)
-  {
-    String str2 = paramIntent.getStringExtra("message_type");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "gcm";
+    Object localObject2 = paramIntent.getStringExtra("message_type");
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "gcm";
     }
     int i = -1;
-    switch (str1.hashCode())
+    switch (((String)localObject1).hashCode())
     {
     }
     for (;;)
@@ -109,25 +61,26 @@ public abstract class GcmListenerService
       switch (i)
       {
       default: 
-        paramIntent = String.valueOf(str1);
+        paramIntent = String.valueOf(localObject1);
         if (paramIntent.length() == 0) {
-          break label214;
+          break label662;
         }
         "Received message with unknown type: ".concat(paramIntent);
+        AppMethodBeat.o(69933);
         return;
-        if (str1.equals("gcm"))
+        if (((String)localObject1).equals("gcm"))
         {
           i = 0;
           continue;
-          if (str1.equals("deleted_messages"))
+          if (((String)localObject1).equals("deleted_messages"))
           {
             i = 1;
             continue;
-            if (str1.equals("send_event"))
+            if (((String)localObject1).equals("send_event"))
             {
               i = 2;
               continue;
-              if (str1.equals("send_error")) {
+              if (((String)localObject1).equals("send_error")) {
                 i = 3;
               }
             }
@@ -136,51 +89,104 @@ public abstract class GcmListenerService
         break;
       }
     }
-    zzo(paramIntent);
+    localObject2 = paramIntent.getExtras();
+    ((Bundle)localObject2).remove("message_type");
+    ((Bundle)localObject2).remove("android.support.content.wakelockid");
+    if (("1".equals(zzd.zzd((Bundle)localObject2, "gcm.n.e"))) || (zzd.zzd((Bundle)localObject2, "gcm.n.icon") != null))
+    {
+      i = 1;
+      if (i == 0) {
+        break label563;
+      }
+      if (((KeyguardManager)getSystemService("keyguard")).inKeyguardRestrictedInputMode()) {
+        break label403;
+      }
+      i = Process.myPid();
+      paramIntent = ((ActivityManager)getSystemService("activity")).getRunningAppProcesses();
+      if (paramIntent == null) {
+        break label403;
+      }
+      paramIntent = paramIntent.iterator();
+      for (;;)
+      {
+        if (paramIntent.hasNext())
+        {
+          localObject1 = (ActivityManager.RunningAppProcessInfo)paramIntent.next();
+          if (((ActivityManager.RunningAppProcessInfo)localObject1).pid == i) {
+            if (((ActivityManager.RunningAppProcessInfo)localObject1).importance == 100) {
+              i = 1;
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        break label408;
+      }
+      zzd.zzd(this).zze((Bundle)localObject2);
+      AppMethodBeat.o(69933);
+      return;
+      i = 0;
+      break;
+      i = 0;
+      continue;
+      label403:
+      i = 0;
+    }
+    label408:
+    Bundle localBundle = new Bundle();
+    Iterator localIterator = ((Bundle)localObject2).keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      localObject1 = (String)localIterator.next();
+      String str = ((Bundle)localObject2).getString((String)localObject1);
+      paramIntent = (Intent)localObject1;
+      if (((String)localObject1).startsWith("gcm.notification.")) {
+        paramIntent = ((String)localObject1).replace("gcm.notification.", "gcm.n.");
+      }
+      if (paramIntent.startsWith("gcm.n."))
+      {
+        if (!"gcm.n.e".equals(paramIntent)) {
+          localBundle.putString(paramIntent.substring(6), str);
+        }
+        localIterator.remove();
+      }
+    }
+    paramIntent = localBundle.getString("sound2");
+    if (paramIntent != null)
+    {
+      localBundle.remove("sound2");
+      localBundle.putString("sound", paramIntent);
+    }
+    if (!localBundle.isEmpty()) {
+      ((Bundle)localObject2).putBundle("notification", localBundle);
+    }
+    label563:
+    paramIntent = ((Bundle)localObject2).getString("from");
+    ((Bundle)localObject2).remove("from");
+    zzd((Bundle)localObject2);
+    onMessageReceived(paramIntent, (Bundle)localObject2);
+    AppMethodBeat.o(69933);
     return;
     onDeletedMessages();
+    AppMethodBeat.o(69933);
     return;
     onMessageSent(paramIntent.getStringExtra("google.message_id"));
+    AppMethodBeat.o(69933);
     return;
-    onSendError(zzp(paramIntent), paramIntent.getStringExtra("error"));
+    localObject2 = paramIntent.getStringExtra("google.message_id");
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = paramIntent.getStringExtra("message_id");
+    }
+    onSendError((String)localObject1, paramIntent.getStringExtra("error"));
+    AppMethodBeat.o(69933);
     return;
-    label214:
+    label662:
     new String("Received message with unknown type: ");
-  }
-  
-  private void zzo(Intent paramIntent)
-  {
-    paramIntent = paramIntent.getExtras();
-    paramIntent.remove("message_type");
-    paramIntent.remove("android.support.content.wakelockid");
-    if (zza.zzE(paramIntent))
-    {
-      if (!zza.zzbu(this))
-      {
-        zza.zzbt(this).zzG(paramIntent);
-        return;
-      }
-      zza.zzF(paramIntent);
-    }
-    String str = paramIntent.getString("from");
-    paramIntent.remove("from");
-    zzD(paramIntent);
-    onMessageReceived(str, paramIntent);
-  }
-  
-  private String zzp(Intent paramIntent)
-  {
-    String str2 = paramIntent.getStringExtra("google.message_id");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = paramIntent.getStringExtra("message_id");
-    }
-    return str1;
-  }
-  
-  public final IBinder onBind(Intent paramIntent)
-  {
-    return null;
+    AppMethodBeat.o(69933);
   }
   
   public void onDeletedMessages() {}
@@ -190,27 +196,6 @@ public abstract class GcmListenerService
   public void onMessageSent(String paramString) {}
   
   public void onSendError(String paramString1, String paramString2) {}
-  
-  public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
-  {
-    synchronized (this.zzrJ)
-    {
-      this.zzbgm = paramInt2;
-      this.zzbgn += 1;
-      if (paramIntent == null)
-      {
-        zzGN();
-        return 2;
-      }
-    }
-    zzl(paramIntent);
-    return 3;
-  }
-  
-  boolean zzjA(int paramInt)
-  {
-    return stopSelfResult(paramInt);
-  }
 }
 
 

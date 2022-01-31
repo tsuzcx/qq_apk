@@ -7,30 +7,30 @@ import android.widget.ImageView;
 
 final class l
 {
-  private static final o rc = new m();
+  private static final o rZ = new m();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 21)
     {
-      rc = new n();
+      rZ = new n();
       return;
     }
   }
   
   static void a(ImageView paramImageView)
   {
-    rc.a(paramImageView);
+    rZ.a(paramImageView);
   }
   
   static void a(ImageView paramImageView, Animator paramAnimator)
   {
-    rc.a(paramImageView, paramAnimator);
+    rZ.a(paramImageView, paramAnimator);
   }
   
   static void a(ImageView paramImageView, Matrix paramMatrix)
   {
-    rc.a(paramImageView, paramMatrix);
+    rZ.a(paramImageView, paramMatrix);
   }
 }
 

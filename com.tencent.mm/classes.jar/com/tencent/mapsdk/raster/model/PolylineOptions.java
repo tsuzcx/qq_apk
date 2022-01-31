@@ -1,5 +1,6 @@
 package com.tencent.mapsdk.raster.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -9,52 +10,85 @@ public final class PolylineOptions
 {
   public static final int LINE_TYPE_DOTTEDLINE = 2;
   public static final int LINE_TYPE_MULTICOLORLINE = 0;
-  private float arrowGap = 90.0F;
+  private float arrowGap;
   private BitmapDescriptor arrowTexture;
-  private int color = -16777216;
-  private BitmapDescriptor colorTexture = null;
-  private int edgeColor = -983041;
-  private float edgeWidth = 0.0F;
-  private boolean isDottedLine = false;
-  private boolean isGeodesic = false;
-  private boolean isVisible = true;
-  private int lineType = 0;
+  private int color;
+  private BitmapDescriptor colorTexture;
+  private int edgeColor;
+  private float edgeWidth;
+  private int eraseColor;
+  private int iLevel;
+  private boolean isDottedLine;
+  private boolean isGeodesic;
+  private boolean isVisible;
+  private int lineType;
   private IndoorInfo mIndoorInfo;
-  private final List<LatLng> points = new ArrayList();
-  private float width = 10.0F;
-  private float zIndex = 0.0F;
+  private final List<LatLng> points;
+  private float width;
+  private float zIndex;
+  
+  public PolylineOptions()
+  {
+    AppMethodBeat.i(101220);
+    this.isDottedLine = false;
+    this.isGeodesic = false;
+    this.isVisible = true;
+    this.color = -16777216;
+    this.eraseColor = -7829368;
+    this.width = 10.0F;
+    this.zIndex = 0.0F;
+    this.edgeWidth = 0.0F;
+    this.edgeColor = -983041;
+    this.arrowGap = 90.0F;
+    this.lineType = 0;
+    this.colorTexture = null;
+    this.iLevel = OverlayLevel.OverlayLevelAboveRoads;
+    this.points = new ArrayList();
+    AppMethodBeat.o(101220);
+  }
   
   public final PolylineOptions add(LatLng paramLatLng)
   {
-    if (paramLatLng == null) {
+    AppMethodBeat.i(101221);
+    if (paramLatLng == null)
+    {
+      AppMethodBeat.o(101221);
       return this;
     }
     this.points.add(paramLatLng);
+    AppMethodBeat.o(101221);
     return this;
   }
   
   public final PolylineOptions add(LatLng... paramVarArgs)
   {
-    if (paramVarArgs == null) {
+    AppMethodBeat.i(101222);
+    if (paramVarArgs == null)
+    {
+      AppMethodBeat.o(101222);
       return this;
     }
     this.points.addAll(Arrays.asList(paramVarArgs));
+    AppMethodBeat.o(101222);
     return this;
   }
   
   public final PolylineOptions addAll(Iterable<LatLng> paramIterable)
   {
-    if (paramIterable == null) {}
-    for (;;)
+    AppMethodBeat.i(101223);
+    if (paramIterable == null)
     {
+      AppMethodBeat.o(101223);
       return this;
-      paramIterable = paramIterable.iterator();
-      while (paramIterable.hasNext())
-      {
-        LatLng localLatLng = (LatLng)paramIterable.next();
-        this.points.add(localLatLng);
-      }
     }
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext())
+    {
+      LatLng localLatLng = (LatLng)paramIterable.next();
+      this.points.add(localLatLng);
+    }
+    AppMethodBeat.o(101223);
+    return this;
   }
   
   public final PolylineOptions arrowGap(float paramFloat)
@@ -99,6 +133,12 @@ public final class PolylineOptions
     return this;
   }
   
+  public final PolylineOptions eraseColor(int paramInt)
+  {
+    this.eraseColor = paramInt;
+    return this;
+  }
+  
   public final PolylineOptions geodesic(boolean paramBoolean)
   {
     this.isGeodesic = paramBoolean;
@@ -135,9 +175,19 @@ public final class PolylineOptions
     return this.edgeWidth;
   }
   
+  public final int getEraseColor()
+  {
+    return this.eraseColor;
+  }
+  
   public final IndoorInfo getIndoorInfo()
   {
     return this.mIndoorInfo;
+  }
+  
+  public final int getLevel()
+  {
+    return this.iLevel;
   }
   
   public final int getLineType()
@@ -179,6 +229,15 @@ public final class PolylineOptions
   public final boolean isVisible()
   {
     return this.isVisible;
+  }
+  
+  public final PolylineOptions level(int paramInt)
+  {
+    if ((paramInt < OverlayLevel.OverlayLevelAboveRoads) || (paramInt > OverlayLevel.OverlayLevelAboveLabels)) {
+      return this;
+    }
+    this.iLevel = paramInt;
+    return this;
   }
   
   public final PolylineOptions lineType(int paramInt)

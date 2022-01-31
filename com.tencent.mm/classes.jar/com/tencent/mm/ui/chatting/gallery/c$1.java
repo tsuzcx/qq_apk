@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.chatting.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.model.app.l;
 import com.tencent.mm.storage.bi;
 
@@ -10,7 +11,9 @@ final class c$1
   
   public final void run()
   {
-    l.a(this.dUy, new c.1.1(this));
+    AppMethodBeat.i(31961);
+    l.a(this.fkH, new c.1.1(this));
+    AppMethodBeat.o(31961);
   }
 }
 

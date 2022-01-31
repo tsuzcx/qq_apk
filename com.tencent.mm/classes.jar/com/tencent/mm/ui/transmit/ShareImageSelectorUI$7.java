@@ -2,6 +2,7 @@ package com.tencent.mm.ui.transmit;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShareImageSelectorUI$7
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class ShareImageSelectorUI$7
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    ShareImageSelectorUI.b(this.whT);
+    AppMethodBeat.i(35253);
+    ShareImageSelectorUI.b(this.AAQ);
+    AppMethodBeat.o(35253);
   }
 }
 

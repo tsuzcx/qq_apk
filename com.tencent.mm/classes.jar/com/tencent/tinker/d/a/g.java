@@ -16,11 +16,11 @@ import java.util.zip.ZipException;
 public final class g
   implements Closeable
 {
+  private File BwA;
+  private RandomAccessFile BwB;
+  private final LinkedHashMap<String, f> Bwz = new LinkedHashMap();
   private final String filename;
-  public String tIg;
-  private final LinkedHashMap<String, f> wZT = new LinkedHashMap();
-  private File wZU;
-  private RandomAccessFile wZV;
+  public String wqH;
   
   public g(File paramFile)
   {
@@ -30,9 +30,9 @@ public final class g
   private g(File paramFile, byte paramByte)
   {
     this.filename = paramFile.getPath();
-    this.wZU = null;
-    this.wZV = new RandomAccessFile(this.filename, "r");
-    cQW();
+    this.BwA = null;
+    this.BwB = new RandomAccessFile(this.filename, "r");
+    dWL();
   }
   
   public g(String paramString)
@@ -46,23 +46,23 @@ public final class g
     throw new ZipException("file name:" + paramString1 + ", file size" + paramLong1 + ", entry name:" + paramString2 + ", entry localHeaderRelOffset:" + paramLong2 + ", " + paramString3 + " signature not found; was " + str);
   }
   
-  private void cQW()
+  private void dWL()
   {
     long l1 = 0L;
-    long l2 = this.wZV.length() - 22L;
+    long l2 = this.BwB.length() - 22L;
     if (l2 < 0L) {
-      throw new ZipException("File too short to be a zip file: " + this.wZV.length());
+      throw new ZipException("File too short to be a zip file: " + this.BwB.length());
     }
-    this.wZV.seek(0L);
-    if (Integer.reverseBytes(this.wZV.readInt()) != 67324752L) {
+    this.BwB.seek(0L);
+    if (Integer.reverseBytes(this.BwB.readInt()) != 67324752L) {
       throw new ZipException("Not a zip archive");
     }
     long l3 = l2 - 65536L;
     if (l3 < 0L) {}
     for (;;)
     {
-      this.wZV.seek(l2);
-      if (Integer.reverseBytes(this.wZV.readInt()) != 101010256L)
+      this.BwB.seek(l2);
+      if (Integer.reverseBytes(this.BwB.readInt()) != 101010256L)
       {
         l2 -= 1L;
         if (l2 < l1) {
@@ -72,13 +72,13 @@ public final class g
       else
       {
         Object localObject = new byte[18];
-        this.wZV.readFully((byte[])localObject);
+        this.BwB.readFully((byte[])localObject);
         localObject = c.a((byte[])localObject, 18, ByteOrder.LITTLE_ENDIAN);
         int i = ((b)localObject).readShort();
         int k = ((b)localObject).readShort();
         int j = ((b)localObject).readShort() & 0xFFFF;
         int m = ((b)localObject).readShort();
-        ((b)localObject).cQU();
+        ((b)localObject).dWJ();
         l1 = ((b)localObject).readInt() & 0xFFFFFFFF;
         int n = ((b)localObject).readShort() & 0xFFFF;
         if ((j != (m & 0xFFFF)) || ((i & 0xFFFF) != 0) || ((k & 0xFFFF) != 0)) {
@@ -87,21 +87,21 @@ public final class g
         if (n > 0)
         {
           localObject = new byte[n];
-          this.wZV.readFully((byte[])localObject);
-          this.tIg = new String((byte[])localObject, 0, localObject.length, d.UTF_8);
+          this.BwB.readFully((byte[])localObject);
+          this.wqH = new String((byte[])localObject, 0, localObject.length, d.UTF_8);
         }
-        localObject = new BufferedInputStream(new a(this.wZV, l1), 4096);
+        localObject = new BufferedInputStream(new a(this.BwB, l1), 4096);
         byte[] arrayOfByte = new byte[46];
         i = 0;
         while (i < j)
         {
           f localf = new f(arrayOfByte, (InputStream)localObject, d.UTF_8);
-          if (localf.wZR >= l1) {
+          if (localf.Bwx >= l1) {
             throw new ZipException("Local file header offset is after central directory");
           }
           String str = localf.name;
-          if (this.wZT.put(str, localf) != null) {
-            throw new ZipException("Duplicate entry name: " + str);
+          if (this.Bwz.put(str, localf) != null) {
+            throw new ZipException("Duplicate entry name: ".concat(String.valueOf(str)));
           }
           i += 1;
         }
@@ -114,24 +114,24 @@ public final class g
   
   public final InputStream a(f arg1)
   {
-    f localf = agq(???.name);
+    f localf = axh(???.name);
     if (localf == null) {
       return null;
     }
     a locala;
     DataInputStream localDataInputStream;
-    synchronized (this.wZV)
+    synchronized (this.BwB)
     {
-      locala = new a(???, localf.wZR);
+      locala = new a(???, localf.Bwx);
       localDataInputStream = new DataInputStream(locala);
       i = Integer.reverseBytes(localDataInputStream.readInt());
       if (i != 67324752L) {
-        a(this.filename, ???.length(), localf.name, localf.wZR, "Local File Header", i);
+        a(this.filename, ???.length(), localf.name, localf.Bwx, "Local File Header", i);
       }
       localDataInputStream.skipBytes(2);
       i = Short.reverseBytes(localDataInputStream.readShort()) & 0xFFFF;
       if ((i & 0x1) != 0) {
-        throw new ZipException("Invalid General Purpose Bit Flag: " + i);
+        throw new ZipException("Invalid General Purpose Bit Flag: ".concat(String.valueOf(i)));
       }
     }
     localDataInputStream.skipBytes(18);
@@ -139,64 +139,64 @@ public final class g
     int j = Short.reverseBytes(localDataInputStream.readShort());
     localDataInputStream.close();
     locala.skip((i & 0xFFFF) + (j & 0xFFFF));
-    if (localObject.wZO == 0) {
+    if (localObject.Bwu == 0) {
       a.a(locala, a.a(locala) + localObject.size);
     }
     for (;;)
     {
       return locala;
-      a.a(locala, a.a(locala) + localObject.wZN);
+      a.a(locala, a.a(locala) + localObject.Bwt);
     }
   }
   
-  public final f agq(String paramString)
+  public final f axh(String paramString)
   {
-    cQV();
+    dWK();
     if (paramString == null) {
       throw new NullPointerException("entryName == null");
     }
-    f localf2 = (f)this.wZT.get(paramString);
+    f localf2 = (f)this.Bwz.get(paramString);
     f localf1 = localf2;
     if (localf2 == null) {
-      localf1 = (f)this.wZT.get(paramString + "/");
+      localf1 = (f)this.Bwz.get(paramString + "/");
     }
     return localf1;
   }
   
-  public final void cQV()
-  {
-    if (this.wZV == null) {
-      throw new IllegalStateException("Zip file closed");
-    }
-  }
-  
   public final void close()
   {
-    RandomAccessFile localRandomAccessFile = this.wZV;
+    RandomAccessFile localRandomAccessFile = this.BwB;
     if (localRandomAccessFile != null) {}
     try
     {
-      this.wZV = null;
+      this.BwB = null;
       localRandomAccessFile.close();
-      if (this.wZU != null)
+      if (this.BwA != null)
       {
-        this.wZU.delete();
-        this.wZU = null;
+        this.BwA.delete();
+        this.BwA = null;
       }
       return;
     }
     finally {}
   }
   
+  public final void dWK()
+  {
+    if (this.BwB == null) {
+      throw new IllegalStateException("Zip file closed");
+    }
+  }
+  
   public final Enumeration<? extends f> entries()
   {
-    cQV();
+    dWK();
     new Enumeration()
     {
       public final boolean hasMoreElements()
       {
         g.a(g.this);
-        return this.ary.hasNext();
+        return this.atQ.hasNext();
       }
     };
   }
@@ -204,9 +204,9 @@ public final class g
   public static final class a
     extends InputStream
   {
-    private long aHc;
-    private long pj;
-    private final RandomAccessFile wZX;
+    private final RandomAccessFile BwD;
+    private long aNX;
+    private long offset;
     
     public a(RandomAccessFile paramRandomAccessFile, long paramLong)
     {
@@ -215,14 +215,14 @@ public final class g
     
     private a(RandomAccessFile paramRandomAccessFile, long paramLong1, long paramLong2)
     {
-      this.wZX = paramRandomAccessFile;
-      this.pj = paramLong1;
-      this.aHc = paramLong2;
+      this.BwD = paramRandomAccessFile;
+      this.offset = paramLong1;
+      this.aNX = paramLong2;
     }
     
     public final int available()
     {
-      if (this.pj < this.aHc) {
+      if (this.offset < this.aNX) {
         return 1;
       }
       return 0;
@@ -230,23 +230,23 @@ public final class g
     
     public final int read()
     {
-      return e.J(this);
+      return e.K(this);
     }
     
     public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
     {
-      synchronized (this.wZX)
+      synchronized (this.BwD)
       {
-        long l = this.aHc - this.pj;
+        long l = this.aNX - this.offset;
         int i = paramInt2;
         if (paramInt2 > l) {
           i = (int)l;
         }
-        this.wZX.seek(this.pj);
-        paramInt1 = this.wZX.read(paramArrayOfByte, paramInt1, i);
+        this.BwD.seek(this.offset);
+        paramInt1 = this.BwD.read(paramArrayOfByte, paramInt1, i);
         if (paramInt1 > 0)
         {
-          this.pj += paramInt1;
+          this.offset += paramInt1;
           return paramInt1;
         }
         return -1;
@@ -256,10 +256,10 @@ public final class g
     public final long skip(long paramLong)
     {
       long l = paramLong;
-      if (paramLong > this.aHc - this.pj) {
-        l = this.aHc - this.pj;
+      if (paramLong > this.aNX - this.offset) {
+        l = this.aNX - this.offset;
       }
-      this.pj += l;
+      this.offset += l;
       return l;
     }
   }

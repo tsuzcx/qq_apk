@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.monitor;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$10
   implements Runnable
@@ -9,8 +11,12 @@ final class b$10
   
   public final void run()
   {
-    y.i("MicroMsg.SubCoreBaseMonitor", "summerhv reportHeavyUserRunnable run");
-    b.h(this.msl);
+    AppMethodBeat.i(84527);
+    ab.i("MicroMsg.SubCoreBaseMonitor", "summerhv reportHeavyUserRunnable run");
+    if (g.RG()) {
+      b.h(this.oRW);
+    }
+    AppMethodBeat.o(84527);
   }
 }
 

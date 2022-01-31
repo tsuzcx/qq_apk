@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.card.ui;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardDetailBaseUI$1
   implements View.OnClickListener
@@ -11,14 +12,16 @@ final class CardDetailBaseUI$1
   
   public final void onClick(View paramView)
   {
-    if (this.irQ != null) {
-      this.irQ.onMenuItemClick(null);
+    AppMethodBeat.i(88255);
+    if (this.ksX != null) {
+      this.ksX.onMenuItemClick(null);
     }
+    AppMethodBeat.o(88255);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardDetailBaseUI.1
  * JD-Core Version:    0.7.0.1
  */

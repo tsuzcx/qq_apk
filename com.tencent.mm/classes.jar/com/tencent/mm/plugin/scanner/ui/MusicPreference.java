@@ -6,22 +6,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class MusicPreference
   extends Preference
 {
   private boolean isPlaying;
-  private View mView = null;
-  public String nGD = "";
-  public String nGE = "";
-  public String nGF = "";
-  private ImageButton nJK = null;
-  MusicPreference.a nJL;
-  private View.OnClickListener nuB;
+  private View mView;
+  private View.OnClickListener qaq;
+  public String qtT;
+  public String qtU;
+  public String qtV;
+  private ImageButton qxm;
+  MusicPreference.a qxn;
   
   public MusicPreference(Context paramContext)
   {
@@ -36,47 +34,62 @@ public class MusicPreference
   public MusicPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference_music);
+    AppMethodBeat.i(81036);
+    this.mView = null;
+    this.qxm = null;
+    this.qtT = "";
+    this.qtU = "";
+    this.qtV = "";
+    setLayoutResource(2130970247);
+    AppMethodBeat.o(81036);
   }
   
   public final View getView(View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(81037);
     if (this.mView == null) {
       this.mView = onCreateView(paramViewGroup);
     }
     onBindView(this.mView);
-    return this.mView;
+    paramView = this.mView;
+    AppMethodBeat.o(81037);
+    return paramView;
   }
   
-  public final void iy(boolean paramBoolean)
+  public final void kB(boolean paramBoolean)
   {
+    AppMethodBeat.i(81038);
     this.isPlaying = paramBoolean;
-    if (this.nJK != null)
+    if (this.qxm != null)
     {
-      if (paramBoolean) {
-        this.nJK.setImageResource(R.g.product_music_stop_btn);
+      if (paramBoolean)
+      {
+        this.qxm.setImageResource(2130839970);
+        AppMethodBeat.o(81038);
+        return;
       }
+      this.qxm.setImageResource(2130839969);
     }
-    else {
-      return;
-    }
-    this.nJK.setImageResource(R.g.product_music_play_btn);
+    AppMethodBeat.o(81038);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(81039);
     super.onBindView(paramView);
-    if (this.nuB == null) {
-      this.nuB = new MusicPreference.1(this);
+    if (this.qaq == null) {
+      this.qaq = new MusicPreference.1(this);
     }
-    this.nJK = ((ImageButton)paramView.findViewById(R.h.pref_music_play_ib));
-    this.nJK.setOnClickListener(this.nuB);
+    this.qxm = ((ImageButton)paramView.findViewById(2131826253));
+    this.qxm.setOnClickListener(this.qaq);
     if (this.isPlaying)
     {
-      this.nJK.setImageResource(R.g.product_music_stop_btn);
+      this.qxm.setImageResource(2130839970);
+      AppMethodBeat.o(81039);
       return;
     }
-    this.nJK.setImageResource(R.g.product_music_play_btn);
+    this.qxm.setImageResource(2130839969);
+    AppMethodBeat.o(81039);
   }
 }
 

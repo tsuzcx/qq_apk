@@ -1,31 +1,43 @@
 package android.support.transition;
 
-import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroupOverlay;
 
 final class al
-  extends as
-  implements an
+  implements am
 {
-  al(Context paramContext, ViewGroup paramViewGroup, View paramView)
+  private final ViewGroupOverlay uc;
+  
+  al(ViewGroup paramViewGroup)
   {
-    super(paramContext, paramViewGroup, paramView);
+    this.uc = paramViewGroup.getOverlay();
+  }
+  
+  public final void add(Drawable paramDrawable)
+  {
+    this.uc.add(paramDrawable);
   }
   
   public final void add(View paramView)
   {
-    this.tk.add(paramView);
+    this.uc.add(paramView);
+  }
+  
+  public final void remove(Drawable paramDrawable)
+  {
+    this.uc.remove(paramDrawable);
   }
   
   public final void remove(View paramView)
   {
-    this.tk.remove(paramView);
+    this.uc.remove(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.transition.al
  * JD-Core Version:    0.7.0.1
  */

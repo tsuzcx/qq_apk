@@ -3,7 +3,8 @@ package com.tencent.mm.ui.contact;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class SelectContactUI$13
   implements View.OnClickListener
@@ -12,9 +13,11 @@ final class SelectContactUI$13
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(33861);
     paramView = new Intent();
     paramView.putExtra("list_attr", 16384);
-    d.b(this.vNB, "brandservice", ".ui.BrandServiceIndexUI", paramView, 2);
+    d.b(this.Afg, "brandservice", ".ui.BrandServiceIndexUI", paramView, 2);
+    AppMethodBeat.o(33861);
   }
 }
 

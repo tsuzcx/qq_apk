@@ -3,6 +3,7 @@ package com.tencent.tmassistantsdk.protocol.jce;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 public final class AppSimpleDetail
@@ -46,6 +47,7 @@ public final class AppSimpleDetail
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76033);
     this.appId = paramJceInputStream.read(this.appId, 0, false);
     this.apkId = paramJceInputStream.read(this.apkId, 1, false);
     this.appName = paramJceInputStream.readString(2, false);
@@ -66,10 +68,12 @@ public final class AppSimpleDetail
     this.diffApkMd5 = paramJceInputStream.readString(11, false);
     this.diffFileSize = paramJceInputStream.read(this.diffFileSize, 12, false);
     this.channelId = paramJceInputStream.readString(13, false);
+    AppMethodBeat.o(76033);
   }
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76032);
     paramJceOutputStream.write(this.appId, 0);
     paramJceOutputStream.write(this.apkId, 1);
     if (this.appName != null) {
@@ -102,6 +106,7 @@ public final class AppSimpleDetail
     if (this.channelId != null) {
       paramJceOutputStream.write(this.channelId, 13);
     }
+    AppMethodBeat.o(76032);
   }
 }
 

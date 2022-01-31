@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.downloader_app.search;
 
 import android.os.Bundle;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.n;
+import com.tencent.mm.plugin.downloader_app.a.d;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.tools.q;
 import java.util.List;
 
 final class DownloadSearchUI$1
@@ -15,41 +15,41 @@ final class DownloadSearchUI$1
 {
   DownloadSearchUI$1(DownloadSearchUI paramDownloadSearchUI) {}
   
-  public final void B(View paramView, int paramInt)
+  public final void N(View paramView, int paramInt)
   {
-    paramView = DownloadSearchUI.a(this.iSV).iSN.hka;
-    if ((paramView != null) && (paramInt >= 0) && (paramInt < paramView.size()))
+    AppMethodBeat.i(136181);
+    paramView = DownloadSearchUI.a(this.lbG).lbx.iVH;
+    if ((paramView != null) && (paramInt >= 0) && (paramInt < paramView.size())) {}
+    for (paramView = (b)paramView.get(paramInt); paramView == null; paramView = null)
     {
-      paramView = (b)paramView.get(paramInt);
-      if (paramView != null) {
-        break label53;
-      }
+      AppMethodBeat.o(136181);
+      return;
     }
-    label53:
-    do
+    if (paramView.type == 2)
     {
-      do
+      DownloadSearchUI.a(this.lbG).Kd(paramView.lbI);
+      DownloadSearchUI.b(this.lbG).setSearchContent(paramView.lbI);
+      com.tencent.mm.plugin.downloader_app.c.a.a(13, 1302, paramView.position, 2, "", "", com.tencent.mm.plugin.downloader_app.c.a.dG("search_key_word", paramView.lbI));
+      AppMethodBeat.o(136181);
+      return;
+    }
+    if (paramView.type == 3)
+    {
+      DownloadSearchUI.a(this.lbG).Kd(DownloadSearchUI.b(this.lbG).getSearchContent());
+      if (!bo.isNullOrNil(paramView.jumpUrl))
       {
-        return;
-        paramView = null;
-        break;
-        if (paramView.type == 2)
-        {
-          DownloadSearchUI.a(this.iSV).Ag(paramView.iSX);
-          DownloadSearchUI.b(this.iSV).setSearchContent(paramView.iSX);
-          return;
-        }
-      } while (paramView.type != 3);
-      DownloadSearchUI.a(this.iSV).Ag(DownloadSearchUI.b(this.iSV).getSearchContent());
-    } while (bk.bl(paramView.jumpUrl));
-    Bundle localBundle = new Bundle();
-    localBundle.putString("rawUrl", paramView.jumpUrl);
-    ((com.tencent.mm.plugin.downloader_app.a.a)g.r(com.tencent.mm.plugin.downloader_app.a.a.class)).e(this.iSV.mController.uMN, localBundle);
+        Bundle localBundle = new Bundle();
+        localBundle.putString("rawUrl", paramView.jumpUrl);
+        ((d)g.E(d.class)).g(this.lbG.getContext(), localBundle);
+      }
+      com.tencent.mm.plugin.downloader_app.c.a.a(13, 1303, paramView.position, 40, paramView.appId, "", "");
+    }
+    AppMethodBeat.o(136181);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.search.DownloadSearchUI.1
  * JD-Core Version:    0.7.0.1
  */

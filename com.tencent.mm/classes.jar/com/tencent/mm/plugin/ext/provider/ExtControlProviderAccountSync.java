@@ -5,22 +5,25 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import com.jg.JgClassChecked;
-import com.tencent.mm.h.a.fk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fn;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 @JgClassChecked(author=32, fComment="checked", lastDate="20141016", reviewer=20, vComment={com.jg.EType.PROVIDERCHECK})
 public class ExtControlProviderAccountSync
   extends ExtContentProviderBase
 {
-  private static final UriMatcher jKj;
+  private static final UriMatcher meo;
   
   static
   {
+    AppMethodBeat.i(20342);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    jKj = localUriMatcher;
+    meo = localUriMatcher;
     localUriMatcher.addURI("com.tencent.mm.plugin.ext.AccountSync", "accountSync", 1);
+    AppMethodBeat.o(20342);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -45,45 +48,54 @@ public class ExtControlProviderAccountSync
   
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    y.d("MicroMsg.ExtControlAccountSyncProvider", "query()");
-    a(paramUri, getContext(), jKj);
+    AppMethodBeat.i(20341);
+    ab.d("MicroMsg.ExtControlAccountSyncProvider", "query()");
+    a(paramUri, getContext(), meo);
     if (paramUri == null)
     {
-      qF(3);
+      vA(3);
+      AppMethodBeat.o(20341);
       return null;
     }
-    if ((bk.bl(this.jKd)) || (bk.bl(aNA())))
+    if ((bo.isNullOrNil(this.mei)) || (bo.isNullOrNil(btD())))
     {
-      qF(3);
+      vA(3);
+      AppMethodBeat.o(20341);
       return null;
     }
-    if (!awd())
+    if (!aVH())
     {
-      qF(1);
-      return this.hSn;
+      vA(1);
+      paramUri = this.jLW;
+      AppMethodBeat.o(20341);
+      return paramUri;
     }
-    if (!dc(getContext()))
+    if (!dO(getContext()))
     {
-      y.w("MicroMsg.ExtControlAccountSyncProvider", "invalid appid ! return null");
-      qF(2);
+      ab.w("MicroMsg.ExtControlAccountSyncProvider", "invalid appid ! return null");
+      vA(2);
+      AppMethodBeat.o(20341);
       return null;
     }
-    switch (jKj.match(paramUri))
+    switch (meo.match(paramUri))
     {
     default: 
-      qF(3);
+      vA(3);
+      AppMethodBeat.o(20341);
       return null;
     }
-    y.i("MicroMsg.ExtControlAccountSyncProvider", "startContactSync()");
-    paramUri = new fk();
-    if (a.udP.m(paramUri))
+    ab.i("MicroMsg.ExtControlAccountSyncProvider", "startContactSync()");
+    paramUri = new fn();
+    if (a.ymk.l(paramUri)) {
+      vA(0);
+    }
+    for (;;)
     {
-      qF(0);
+      AppMethodBeat.o(20341);
       return null;
+      ab.e("MicroMsg.ExtControlAccountSyncProvider", "AccountHelper == null");
+      vA(4);
     }
-    y.e("MicroMsg.ExtControlAccountSyncProvider", "AccountHelper == null");
-    qF(4);
-    return null;
   }
   
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)

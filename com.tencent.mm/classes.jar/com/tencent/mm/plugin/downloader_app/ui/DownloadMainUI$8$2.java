@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
 import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.l;
-import com.tencent.mm.plugin.downloader_app.b.h;
 import com.tencent.mm.plugin.downloader_app.b.f;
+import com.tencent.mm.plugin.downloader_app.b.i;
 import com.tencent.mm.plugin.downloader_app.b.j;
-import com.tencent.mm.plugin.downloader_app.b.k;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 
 final class DownloadMainUI$8$2
@@ -16,21 +16,23 @@ final class DownloadMainUI$8$2
   
   public final void run()
   {
-    if (!bk.bl(this.iTw.iTv))
+    AppMethodBeat.i(136235);
+    if (!bo.isNullOrNil(this.lcl.lck))
     {
-      j localj = DownloadMainUI.c(this.iTw.iTt).Ad(this.iTw.iTv);
-      if (localj == null) {
-        break label86;
+      i locali = DownloadMainUI.c(this.lcl.lci).Kb(this.lcl.lck);
+      if (locali == null) {
+        break label96;
       }
-      k.Af(this.iTw.iTv);
-      l.postDelayed(new DownloadMainUI.8.2.1(this, localj), 200L);
+      j.JP(this.lcl.lck);
+      l.postDelayed(new DownloadMainUI.8.2.1(this, locali), 200L);
     }
     for (;;)
     {
-      DownloadMainUI.a(this.iTw.iTt, DownloadMainUI.c(this.iTw.iTt), true);
+      DownloadMainUI.a(this.lcl.lci, DownloadMainUI.c(this.lcl.lci), true);
+      AppMethodBeat.o(136235);
       return;
-      label86:
-      h.b(this.iTw.iTt, "", this.iTw.iTt.getResources().getString(b.h.no_appid_cgi_data), true);
+      label96:
+      h.b(this.lcl.lci, "", this.lcl.lci.getResources().getString(2131301858), true);
     }
   }
 }

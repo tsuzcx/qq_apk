@@ -5,69 +5,78 @@ import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.h;
-import com.tencent.mm.plugin.p.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.k.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class f
   implements c
 {
-  public boolean bMo = false;
-  private boolean isVisible = true;
-  private String lCF;
-  private double lCJ = 1000000.0D;
-  private double lCK = 1000000.0D;
-  private String lEK = "";
-  private boolean lFk = true;
-  private View lFl;
-  private d lFm;
-  public String lFn;
-  private TextView lFo;
-  private TextView lFp;
-  public ImageButton lFq;
+  public boolean ctJ;
+  public String eSM;
+  private boolean isVisible;
+  private String nZR;
+  private double nZV;
+  private double nZW;
+  private String obY;
+  private d ocA;
+  private TextView ocB;
+  private TextView ocC;
+  public ImageButton ocD;
+  private boolean ocy;
+  private View ocz;
   
   public f(d paramd, Context paramContext)
   {
-    paramContext = ((Activity)paramContext).findViewById(a.e.location_info_frame);
-    this.lFo = ((TextView)paramContext.findViewById(a.e.location_info));
-    this.lFp = ((TextView)paramContext.findViewById(a.e.location_info_detail));
-    this.lFq = ((ImageButton)paramContext.findViewById(a.e.location_navigate_iv));
-    this.lFm = paramd;
-    this.lFl = paramContext;
+    AppMethodBeat.i(113459);
+    this.ctJ = false;
+    this.ocy = true;
+    this.nZV = 1000000.0D;
+    this.nZW = 1000000.0D;
+    this.isVisible = true;
+    this.obY = "";
+    paramContext = ((Activity)paramContext).findViewById(2131826543);
+    this.ocB = ((TextView)paramContext.findViewById(2131826544));
+    this.ocC = ((TextView)paramContext.findViewById(2131826545));
+    this.ocD = ((ImageButton)paramContext.findViewById(2131826546));
+    this.ocA = paramd;
+    this.ocz = paramContext;
+    AppMethodBeat.o(113459);
   }
   
   public final String getPreText()
   {
-    return this.lEK;
+    return this.obY;
   }
   
   public final void setText(String paramString)
   {
-    this.lCF = paramString;
-    paramString = this.lCF;
-    y.d("NewItemOverlay", "popView " + this.lFl.getWidth() + " " + this.lFl.getHeight());
+    AppMethodBeat.i(113460);
+    this.nZR = paramString;
+    paramString = this.nZR;
+    ab.d("NewItemOverlay", "popView " + this.ocz.getWidth() + " " + this.ocz.getHeight());
     if ((paramString != null) && (!paramString.equals(""))) {
-      this.lFp.setText(paramString);
+      this.ocC.setText(paramString);
     }
-    if ((this.lFn != null) && (!this.lFn.equals(""))) {
-      this.lFo.setText(this.lFn);
+    if ((this.eSM != null) && (!this.eSM.equals(""))) {
+      this.ocB.setText(this.eSM);
     }
     for (;;)
     {
-      if (this.lFk)
+      if (this.ocy)
       {
-        this.lFl.setVisibility(0);
-        this.lFl.invalidate();
+        this.ocz.setVisibility(0);
+        this.ocz.invalidate();
       }
+      AppMethodBeat.o(113460);
       return;
-      this.lFo.setText(a.h.location_conversation);
+      this.ocB.setText(2131301088);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.f
  * JD-Core Version:    0.7.0.1
  */

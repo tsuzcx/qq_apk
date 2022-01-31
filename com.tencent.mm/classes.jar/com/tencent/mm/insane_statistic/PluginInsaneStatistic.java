@@ -1,5 +1,6 @@
 package com.tencent.mm.insane_statistic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 
@@ -9,11 +10,13 @@ public class PluginInsaneStatistic
 {
   public void execute(g paramg)
   {
-    if (paramg.Ex())
+    AppMethodBeat.i(16183);
+    if (paramg.SD())
     {
-      com.tencent.mm.as.r.eqt = new b();
-      com.tencent.mm.modelstat.r.eET = new a();
+      com.tencent.mm.at.r.fGU = new b();
+      com.tencent.mm.modelstat.r.fUK = new a();
     }
+    AppMethodBeat.o(16183);
   }
 }
 

@@ -1,28 +1,33 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ChatFooter$26
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
-  ChatFooter$26(ChatFooter paramChatFooter) {}
-  
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  ChatFooter$26(ChatFooter paramChatFooter)
   {
-    if (paramBoolean)
+    AppMethodBeat.i(27808);
+    AppMethodBeat.o(27808);
+  }
+  
+  public final void run()
+  {
+    AppMethodBeat.i(153699);
+    if (!this.vXU.doA())
     {
-      ChatFooter.c(this.sgd).setBackground(this.sgd.getResources().getDrawable(R.g.input_bar_bg_active));
+      ChatFooter.ap(this.vXU);
+      AppMethodBeat.o(153699);
       return;
     }
-    ChatFooter.c(this.sgd).setBackground(this.sgd.getResources().getDrawable(R.g.input_bar_bg_normal));
+    ab.i("changelcai", "isScrolling!! pass this event!");
+    AppMethodBeat.o(153699);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.ChatFooter.26
  * JD-Core Version:    0.7.0.1
  */

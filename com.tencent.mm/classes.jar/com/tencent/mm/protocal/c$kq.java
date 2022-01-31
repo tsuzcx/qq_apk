@@ -5,12 +5,12 @@ public final class c$kq
 {
   public c$kq()
   {
-    super("publicCache", "publicCache", 149, false);
+    super("translateVoice", "translateVoice", 97, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.c.kq
  * JD-Core Version:    0.7.0.1
  */

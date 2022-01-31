@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.config;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class s$1
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class s$1
   
   public final void run()
   {
-    s.sE(this.dol);
+    AppMethodBeat.i(129905);
+    s.Ay(this.efI);
+    AppMethodBeat.o(129905);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.s.1
  * JD-Core Version:    0.7.0.1
  */

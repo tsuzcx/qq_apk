@@ -1,137 +1,259 @@
 package com.tencent.mm.plugin.mmsight.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class o
 {
-  public int dys = 1;
-  public VideoTransPara mfr;
-  public int mgf = -1;
-  public int mhK = -1;
-  public boolean mhL = false;
-  public boolean mhM = false;
-  public boolean mhN = true;
-  public boolean mhO = false;
-  g.b mhP;
-  public boolean mhy = false;
+  public int eZQ = -1;
+  public int eqK = 2;
+  public VideoTransPara fcu;
+  public boolean fdl = false;
+  public int gNQ = -1;
+  public boolean oHD = false;
+  public int oHR = -1;
+  public boolean oHS = false;
+  public boolean oHT = true;
+  public boolean oHU = false;
+  g.b oHV;
   public int videoBitrate;
   
   public o() {}
   
   private o(int paramInt, VideoTransPara paramVideoTransPara)
   {
-    this.mfr = paramVideoTransPara;
-    this.dys = paramInt;
+    this.fcu = paramVideoTransPara;
+    this.eqK = paramInt;
     this.videoBitrate = paramVideoTransPara.videoBitrate;
-    this.mgf = paramVideoTransPara.width;
+    this.eZQ = paramVideoTransPara.width;
   }
   
   public static o a(int paramInt, VideoTransPara paramVideoTransPara)
   {
-    Object localObject;
+    AppMethodBeat.i(76546);
     switch (paramInt)
     {
     default: 
-      localObject = null;
-      return localObject;
+      AppMethodBeat.o(76546);
+      return null;
     case 1: 
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig1");
-      paramVideoTransPara = new o(2, paramVideoTransPara);
-      paramVideoTransPara.mhM = false;
+      paramVideoTransPara = e(paramVideoTransPara);
     }
     for (;;)
     {
-      localObject = paramVideoTransPara;
-      if (paramVideoTransPara == null) {
-        break;
+      if (paramVideoTransPara != null) {
+        paramVideoTransPara.oHR = paramInt;
       }
-      paramVideoTransPara.mhK = paramInt;
+      AppMethodBeat.o(76546);
       return paramVideoTransPara;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig2");
-      paramVideoTransPara = new o(2, paramVideoTransPara);
-      paramVideoTransPara.mhM = false;
-      paramVideoTransPara = paramVideoTransPara.bjb().bja();
+      paramVideoTransPara = f(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig3");
-      paramVideoTransPara = new o(1, paramVideoTransPara);
-      paramVideoTransPara.mhM = false;
+      paramVideoTransPara = g(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig4");
-      paramVideoTransPara = new o(1, paramVideoTransPara);
-      paramVideoTransPara.mhM = false;
-      paramVideoTransPara = paramVideoTransPara.bjb().bja();
+      paramVideoTransPara = h(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig5");
-      paramVideoTransPara = new o(2, paramVideoTransPara);
-      paramVideoTransPara.mhM = true;
-      paramVideoTransPara.mhL = false;
-      paramVideoTransPara = paramVideoTransPara.bja();
+      paramVideoTransPara = i(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig6");
-      paramVideoTransPara = new o(1, paramVideoTransPara);
-      paramVideoTransPara.mhM = true;
-      paramVideoTransPara = paramVideoTransPara.bja();
+      paramVideoTransPara = j(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig7");
-      paramVideoTransPara = new o(2, paramVideoTransPara);
-      paramVideoTransPara.mhM = true;
-      paramVideoTransPara = paramVideoTransPara.bjc();
-      paramVideoTransPara.mhL = false;
+      paramVideoTransPara = k(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig8");
-      paramVideoTransPara = new o(2, paramVideoTransPara);
-      paramVideoTransPara.mhM = true;
-      paramVideoTransPara = paramVideoTransPara.bjc();
-      paramVideoTransPara.mhL = true;
+      paramVideoTransPara = l(paramVideoTransPara);
       continue;
-      paramVideoTransPara = new o(1, paramVideoTransPara);
-      paramVideoTransPara.mhM = true;
-      paramVideoTransPara = paramVideoTransPara.bjc();
-      paramVideoTransPara.mhL = false;
+      paramVideoTransPara = m(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
-      paramVideoTransPara = new o(1, paramVideoTransPara);
-      paramVideoTransPara.mhM = true;
-      paramVideoTransPara = paramVideoTransPara.bjc();
-      paramVideoTransPara.mhL = true;
+      paramVideoTransPara = n(paramVideoTransPara);
       continue;
-      y.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
-      paramVideoTransPara = new o(2, paramVideoTransPara);
-      paramVideoTransPara.mhM = true;
-      paramVideoTransPara = paramVideoTransPara.bjc();
-      paramVideoTransPara.mhL = false;
-      paramVideoTransPara = paramVideoTransPara.bjb();
+      paramVideoTransPara = o(paramVideoTransPara);
+      continue;
+      paramVideoTransPara = p(paramVideoTransPara);
     }
   }
   
-  public final o bja()
+  private o bRf()
   {
-    this.mgf = 720;
+    this.eZQ = 1080;
+    if ((this.gNQ > 0) && (this.eZQ > this.gNQ)) {
+      this.eZQ = this.gNQ;
+    }
     return this;
   }
   
-  public final o bjb()
+  private static o e(VideoTransPara paramVideoTransPara)
   {
-    this.videoBitrate = (this.mfr.videoBitrate * 2);
-    this.mhO = true;
+    AppMethodBeat.i(76547);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig1");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.oHS = false;
+    AppMethodBeat.o(76547);
+    return paramVideoTransPara;
+  }
+  
+  private static o f(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76548);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig2");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.oHS = false;
+    paramVideoTransPara = paramVideoTransPara.bRd().bRc();
+    AppMethodBeat.o(76548);
+    return paramVideoTransPara;
+  }
+  
+  private static o g(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76549);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig3");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.oHS = false;
+    AppMethodBeat.o(76549);
+    return paramVideoTransPara;
+  }
+  
+  private static o h(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76550);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig4");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.oHS = false;
+    paramVideoTransPara = paramVideoTransPara.bRd().bRc();
+    AppMethodBeat.o(76550);
+    return paramVideoTransPara;
+  }
+  
+  private static o i(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76551);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig5");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara.fdl = false;
+    paramVideoTransPara = paramVideoTransPara.bRc();
+    AppMethodBeat.o(76551);
+    return paramVideoTransPara;
+  }
+  
+  private static o j(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76552);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig6");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara = paramVideoTransPara.bRc();
+    AppMethodBeat.o(76552);
+    return paramVideoTransPara;
+  }
+  
+  private static o k(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76553);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig7");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara = paramVideoTransPara.bRe();
+    paramVideoTransPara.fdl = false;
+    AppMethodBeat.o(76553);
+    return paramVideoTransPara;
+  }
+  
+  private static o l(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76554);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig8");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara = paramVideoTransPara.bRe();
+    paramVideoTransPara.fdl = true;
+    AppMethodBeat.o(76554);
+    return paramVideoTransPara;
+  }
+  
+  private static o m(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76555);
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara = paramVideoTransPara.bRe();
+    paramVideoTransPara.fdl = false;
+    AppMethodBeat.o(76555);
+    return paramVideoTransPara;
+  }
+  
+  private static o n(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76556);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    paramVideoTransPara = new o(1, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara = paramVideoTransPara.bRe();
+    paramVideoTransPara.fdl = true;
+    AppMethodBeat.o(76556);
+    return paramVideoTransPara;
+  }
+  
+  private static o o(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76557);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara = paramVideoTransPara.bRe();
+    paramVideoTransPara.fdl = false;
+    paramVideoTransPara = paramVideoTransPara.bRd();
+    AppMethodBeat.o(76557);
+    return paramVideoTransPara;
+  }
+  
+  private static o p(VideoTransPara paramVideoTransPara)
+  {
+    AppMethodBeat.i(76558);
+    ab.i("MicroMsg.RecoderParameter", "setToPresetConfig10");
+    paramVideoTransPara = new o(2, paramVideoTransPara);
+    paramVideoTransPara.oHS = true;
+    paramVideoTransPara = paramVideoTransPara.bRf();
+    paramVideoTransPara.fdl = false;
+    paramVideoTransPara = paramVideoTransPara.bRd();
+    AppMethodBeat.o(76558);
+    return paramVideoTransPara;
+  }
+  
+  public final o bRc()
+  {
+    this.eZQ = 720;
+    if ((this.gNQ > 0) && (this.eZQ > this.gNQ)) {
+      this.eZQ = this.gNQ;
+    }
     return this;
   }
   
-  public final o bjc()
+  public final o bRd()
   {
-    this.mgf = (this.mfr.width * 2);
+    this.videoBitrate = (this.fcu.videoBitrate * 2);
+    this.oHU = true;
     return this;
   }
   
-  public final boolean bjd()
+  public final o bRe()
   {
-    return this.mfr.width < this.mgf;
+    this.eZQ = (this.fcu.width * 2);
+    if ((this.gNQ > 0) && (this.eZQ > this.gNQ)) {
+      this.eZQ = this.gNQ;
+    }
+    return this;
+  }
+  
+  public final boolean bRg()
+  {
+    return this.fcu.width < this.eZQ;
   }
   
   public final String toString()
   {
-    return String.format("mediatype %s videoBitrate : %s isEnableLandscapeMode %s needRotateEachFrame %s isNeedRealtimeScale %s resolutionLimit %s videoParams %s", new Object[] { Integer.valueOf(this.dys), Integer.valueOf(this.videoBitrate), Boolean.valueOf(this.mhy), Boolean.valueOf(this.mhL), Boolean.valueOf(this.mhM), Integer.valueOf(this.mgf), this.mfr });
+    AppMethodBeat.i(76559);
+    String str = String.format("mediatype %s videoBitrate : %s isEnableLandscapeMode %s needRotateEachFrame %s isNeedRealtimeScale %s resolutionLimit %s videoParams %s", new Object[] { Integer.valueOf(this.eqK), Integer.valueOf(this.videoBitrate), Boolean.valueOf(this.oHD), Boolean.valueOf(this.fdl), Boolean.valueOf(this.oHS), Integer.valueOf(this.eZQ), this.fcu });
+    AppMethodBeat.o(76559);
+    return str;
   }
 }
 

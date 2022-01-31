@@ -1,21 +1,20 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.h.a.id;
-import com.tencent.mm.h.a.id.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.network.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.g.a.ih;
+import com.tencent.mm.g.a.ih.a;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.cin;
-import com.tencent.mm.protocal.c.cio;
+import com.tencent.mm.protocal.protobuf.cvz;
+import com.tencent.mm.protocal.protobuf.cwa;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 
@@ -23,78 +22,86 @@ public final class r
   extends com.tencent.mm.plugin.websearch.api.b
   implements k
 {
-  private f dIJ;
-  private com.tencent.mm.ah.b dZP;
-  private cio dZS;
+  private f eGj;
+  private com.tencent.mm.ai.b fpW;
+  private cwa fpZ;
   
   public r(String paramString, int paramInt1, int paramInt2)
   {
-    this.Db = paramString;
-    this.fzn = paramInt1;
-    this.qTt = paramInt2;
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(93740);
+    this.DK = paramString;
+    this.mScene = paramInt1;
+    this.uIB = paramInt2;
+    if (!bo.isNullOrNil(paramString))
     {
-      y.i("MicroMsg.NetSceneWeAppSuggest", "Constructors: query = %s", new Object[] { paramString });
+      ab.i("MicroMsg.NetSceneWeAppSuggest", "Constructors: query = %s", new Object[] { paramString });
       Object localObject = new b.a();
-      ((b.a)localObject).ecG = 1173;
+      ((b.a)localObject).funcId = getType();
       ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxaapp/weappsearchsuggestion";
-      ((b.a)localObject).ecH = new cin();
-      ((b.a)localObject).ecI = new cio();
-      this.dZP = ((b.a)localObject).Kt();
-      localObject = (cin)this.dZP.ecE.ecN;
-      ((cin)localObject).bVk = paramString;
-      paramString = new id();
-      a.udP.m(paramString);
-      ((cin)localObject).tpI = paramString.bQn.bQo;
-      au.Hx();
-      paramString = c.Dz().get(ac.a.uuP, null);
+      ((b.a)localObject).fsX = new cvz();
+      ((b.a)localObject).fsY = new cwa();
+      this.fpW = ((b.a)localObject).ado();
+      localObject = (cvz)this.fpW.fsV.fta;
+      ((cvz)localObject).query = paramString;
+      paramString = new ih();
+      a.ymk.l(paramString);
+      ((cvz)localObject).xpF = paramString.cxG.cxH;
+      paramString = g.RL().Ru().get(ac.a.yEW, null);
       if ((paramString != null) && ((paramString instanceof String))) {
-        ((cin)localObject).tWX = ((String)paramString);
+        ((cvz)localObject).yer = ((String)paramString);
       }
-      ((cin)localObject).tpM = b.dZL;
-      ((cin)localObject).tWS = b.dZM;
+      ((cvz)localObject).xpJ = b.fpQ;
+      ((cvz)localObject).yem = b.fpR;
+      AppMethodBeat.o(93740);
       return;
     }
-    y.e("MicroMsg.NetSceneWeAppSuggest", "keyword is unavailable");
+    ab.e("MicroMsg.NetSceneWeAppSuggest", "keyword is unavailable");
+    AppMethodBeat.o(93740);
   }
   
-  public final String Jv()
+  public final String act()
   {
-    if (this.dZS != null) {
-      return this.dZS.sEb;
+    if (this.fpZ != null) {
+      return this.fpZ.wAa;
     }
     return "";
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dIJ = paramf;
-    return a(parame, this.dZP, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneWeAppSuggest", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    this.dZS = ((cio)this.dZP.ecF.ecN);
-    if (this.dZS != null) {
-      y.v("MicroMsg.NetSceneWeAppSuggest", "return data\n%s", new Object[] { this.dZS.sEb });
-    }
-    this.dIJ.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(93742);
+    this.eGj = paramf;
+    int i = dispatch(parame, this.fpW, this);
+    AppMethodBeat.o(93742);
+    return i;
   }
   
   public final int getType()
   {
     return 1173;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(93741);
+    ab.i("MicroMsg.NetSceneWeAppSuggest", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(93741);
+      return;
+    }
+    this.fpZ = ((cwa)this.fpW.fsW.fta);
+    if (this.fpZ != null) {
+      ab.v("MicroMsg.NetSceneWeAppSuggest", "return data\n%s", new Object[] { this.fpZ.wAa });
+    }
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(93741);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.r
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,7 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MusicPreference$1
   implements View.OnClickListener
@@ -13,27 +12,34 @@ final class MusicPreference$1
   
   public final void onClick(View paramView)
   {
-    if (MusicPreference.a(this.nJM) == null) {}
-    while (paramView.getId() != R.h.pref_music_play_ib) {
+    AppMethodBeat.i(81035);
+    if (MusicPreference.a(this.qxo) == null)
+    {
+      AppMethodBeat.o(81035);
       return;
     }
-    if (MusicPreference.b(this.nJM))
+    if (paramView.getId() == 2131826253)
     {
-      MusicPreference.a(this.nJM, false);
-      MusicPreference.c(this.nJM).setImageResource(R.g.product_music_play_btn);
+      if (!MusicPreference.b(this.qxo)) {
+        break label83;
+      }
+      MusicPreference.a(this.qxo, false);
+      MusicPreference.c(this.qxo).setImageResource(2130839969);
     }
     for (;;)
     {
-      MusicPreference.a(this.nJM).d(this.nJM);
+      MusicPreference.a(this.qxo).d(this.qxo);
+      AppMethodBeat.o(81035);
       return;
-      MusicPreference.a(this.nJM, true);
-      MusicPreference.c(this.nJM).setImageResource(R.g.product_music_stop_btn);
+      label83:
+      MusicPreference.a(this.qxo, true);
+      MusicPreference.c(this.qxo).setImageResource(2130839970);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.MusicPreference.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote.b;
 
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class l$1
   implements ViewTreeObserver.OnGlobalLayoutListener
@@ -11,7 +12,9 @@ final class l$1
   
   public final void onGlobalLayout()
   {
-    au.DS().O(new l.1.1(this));
+    AppMethodBeat.i(27175);
+    aw.RO().ac(new l.1.1(this));
+    AppMethodBeat.o(27175);
   }
 }
 

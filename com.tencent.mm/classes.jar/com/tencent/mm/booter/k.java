@@ -1,98 +1,50 @@
 package com.tencent.mm.booter;
 
-import android.bluetooth.BluetoothAdapter;
-import android.os.Build.VERSION;
-import android.os.Looper;
-import com.tencent.mm.h.a.dq;
-import com.tencent.mm.m.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.protocal.c.apw;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ac.a;
-import com.tencent.mm.storage.z;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.i;
+import com.tencent.mm.m.e;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.a.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class k
 {
-  private static com.tencent.mm.modelgeo.c dhZ;
-  private static float dia = -85.0F;
-  private static float dib = -1000.0F;
-  private static boolean dic = false;
-  private static Map<String, apw> did = new ConcurrentHashMap();
-  private static List<apw> die = new CopyOnWriteArrayList();
-  private static Boolean dif = Boolean.valueOf(false);
-  private static a.a dig = new k.1();
-  private static am dih = new am(Looper.getMainLooper(), new k.2(), true);
-  private static com.tencent.mm.sdk.b.c dii = new k.3();
-  
   public static void run()
   {
-    if ((!au.DK()) || (au.CW())) {}
-    do
+    AppMethodBeat.i(15853);
+    int i = com.tencent.mm.m.g.Nq().getInt("EnableForgroundService", 0);
+    aw.aaz();
+    int j = i.bQ(c.getUin(), 101);
+    if ((b.dsf()) || ((i > 0) && (j >= 0) && (j <= i))) {}
+    for (boolean bool2 = true;; bool2 = false)
     {
-      do
-      {
-        return;
-        au.Hx();
-        localObject = Boolean.valueOf(bk.a((Boolean)com.tencent.mm.model.c.Dz().get(ac.a.urc, null), false));
-        y.i("MicroMsg.PostTaskStartRangeForIBeacon", "the range road status is " + localObject);
-      } while (!((Boolean)localObject).booleanValue());
-      long l1 = bk.UX();
-      au.Hx();
-      long l2 = bk.a((Long)com.tencent.mm.model.c.Dz().get(ac.a.urd, null), 0L);
-      au.Hx();
-      if (l1 - l2 > bk.a((Long)com.tencent.mm.model.c.Dz().get(ac.a.uqX, null), 0L))
-      {
-        au.Hx();
-        com.tencent.mm.model.c.Dz().c(ac.a.urc, Boolean.valueOf(false));
-        au.Hx();
-        com.tencent.mm.model.c.Dz().c(ac.a.urb, "");
-        au.Hx();
-        com.tencent.mm.model.c.Dz().c(ac.a.ura, "");
-        au.Hx();
-        com.tencent.mm.model.c.CY();
-        return;
+      boolean bool1 = bool2;
+      if (!bool2) {
+        bool1 = d.whK;
       }
-      localObject = BluetoothAdapter.getDefaultAdapter();
-      if ((Build.VERSION.SDK_INT < 18) || (localObject == null) || (((BluetoothAdapter)localObject).getState() != 12)) {
-        break;
+      bool2 = bool1;
+      if (!bool1) {
+        bool2 = b.dsf();
       }
-      localObject = g.AB().Aq();
-    } while (localObject == null);
-    Object localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      y.i("MicroMsg.PostTaskStartRangeForIBeacon", "op=true,iBeacon = %s", new Object[] { str });
-      dq localdq = new dq();
-      localdq.bKd.bKf = str;
-      localdq.bKd.bKc = true;
-      a.udP.m(localdq);
+      if (com.tencent.mm.sdk.platformtools.g.bWu == 1) {
+        bool2 = false;
+      }
+      ah.getContext().getSharedPreferences("system_config_prefs", 0).edit().putBoolean("set_service", bool2).commit();
+      ab.i("MicroMsg.PostTaskSetPushForegroundService", "Set service, userHash:%d, prob:%d, enabled: %b  isalpha:%b channel:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(d.whK), Integer.valueOf(com.tencent.mm.sdk.platformtools.g.bWu) });
+      AppMethodBeat.o(15853);
+      return;
     }
-    dhZ = com.tencent.mm.modelgeo.c.Ob();
-    if (dih.crl()) {
-      dih.S(3000L, 3000L);
-    }
-    if ((!dic) && (dhZ != null)) {
-      dhZ.b(dig);
-    }
-    a.udP.c(dii);
-    return;
-    au.Hx();
-    com.tencent.mm.model.c.Dz().c(ac.a.ura, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.booter.k
  * JD-Core Version:    0.7.0.1
  */

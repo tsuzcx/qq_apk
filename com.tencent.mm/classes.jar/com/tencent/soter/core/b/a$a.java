@@ -5,22 +5,22 @@ import java.security.spec.AlgorithmParameterSpec;
 final class a$a
   extends a
 {
-  public final a N(String... paramVarArgs)
+  public final a W(String... paramVarArgs)
   {
     return null;
   }
   
-  public final a O(String... paramVarArgs)
+  public final a X(String... paramVarArgs)
   {
     return null;
   }
   
-  public final AlgorithmParameterSpec cPo()
+  public final AlgorithmParameterSpec dVj()
   {
     return null;
   }
   
-  public final a cPp()
+  public final a dVk()
   {
     return null;
   }

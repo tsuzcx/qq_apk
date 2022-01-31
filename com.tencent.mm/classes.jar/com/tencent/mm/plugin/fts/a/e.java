@@ -1,80 +1,172 @@
 package com.tencent.mm.plugin.fts.a;
 
 import com.tencent.mars.smc.IDKey;
-import com.tencent.mm.a.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.a.p;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 
 public final class e
 {
-  public static final int[] kvv = { 8, 9, 10, 11, 12, 14, 19, 20, 21, 22, 24, 25, 26 };
-  public static final e.a kvw = new e.a();
-  public static String kvx = "";
+  public static final int[] mRi;
+  public static final e.a mRj;
+  public static long mRk;
+  public static long mRl;
   
-  public static final void aVx()
+  static
   {
-    y.i("MicroMsg.FTS.FTSReportApiLogic", "reportIDKeyFTSData %d %d %d %d %d", new Object[] { Long.valueOf(kvw.kvy), Long.valueOf(kvw.kvz), Long.valueOf(kvw.kvA), Long.valueOf(kvw.kvC), Long.valueOf(kvw.kvB) });
-    ArrayList localArrayList = new ArrayList();
-    d(localArrayList, 0);
-    if (kvw.kvy > 1536L) {
-      d(localArrayList, 1);
-    }
-    if (kvw.kvz >= 10000L) {
-      d(localArrayList, 2);
-    }
-    if (kvw.kvA >= 5000L) {
-      d(localArrayList, 3);
-    }
-    if (kvw.kvC >= 10000L) {
-      d(localArrayList, 4);
-    }
-    if (kvw.kvB >= 1000000L) {
-      d(localArrayList, 5);
-    }
-    f.nEG.b(localArrayList, false);
+    AppMethodBeat.i(114217);
+    mRi = new int[] { 8, 9, 10, 11, 12, 14, 19, 20, 21, 22, 24, 25, 26, 15, 28, 29 };
+    mRj = new e.a();
+    mRk = 0L;
+    mRl = 0L;
+    AppMethodBeat.o(114217);
   }
   
-  private static final void d(ArrayList<IDKey> paramArrayList, int paramInt)
+  public static void P(int paramInt, long paramLong)
   {
+    AppMethodBeat.i(114211);
+    if (paramInt > 0)
+    {
+      int i = (paramInt - 1) * 2 + 1;
+      ab.v("MicroMsg.FTS.FTSReportApiLogic", "reportIDKeySearchTime: reportKey=%d taskId=%d time=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+      ArrayList localArrayList = new ArrayList();
+      IDKey localIDKey = new IDKey();
+      localIDKey.SetID(601);
+      localIDKey.SetKey(i);
+      localIDKey.SetValue((int)paramLong);
+      localArrayList.add(localIDKey);
+      localIDKey = new IDKey();
+      localIDKey.SetID(601);
+      localIDKey.SetKey(i + 1);
+      localIDKey.SetValue(1L);
+      localArrayList.add(localIDKey);
+      com.tencent.mm.plugin.report.e.qrI.b(localArrayList, false);
+    }
+    AppMethodBeat.o(114211);
+  }
+  
+  public static void Q(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(114212);
+    ArrayList localArrayList;
+    IDKey localIDKey;
+    if (paramInt > 0)
+    {
+      paramInt = (paramInt - 1) * 4 + 1;
+      localArrayList = new ArrayList();
+      localIDKey = new IDKey();
+      localIDKey.SetID(602);
+      localIDKey.SetKey(paramInt);
+      localIDKey.SetValue(1L);
+      localArrayList.add(localIDKey);
+      if (paramLong > 100L) {
+        break label121;
+      }
+      localIDKey = new IDKey();
+      localIDKey.SetID(602);
+      localIDKey.SetKey(paramInt + 1);
+      localIDKey.SetValue(1L);
+      localArrayList.add(localIDKey);
+    }
+    for (;;)
+    {
+      com.tencent.mm.plugin.report.e.qrI.b(localArrayList, false);
+      AppMethodBeat.o(114212);
+      return;
+      label121:
+      if (paramLong <= 500L)
+      {
+        localIDKey = new IDKey();
+        localIDKey.SetID(602);
+        localIDKey.SetKey(paramInt + 2);
+        localIDKey.SetValue(1L);
+        localArrayList.add(localIDKey);
+      }
+      else
+      {
+        localIDKey = new IDKey();
+        localIDKey.SetID(602);
+        localIDKey.SetKey(paramInt + 3);
+        localIDKey.SetValue(1L);
+        localArrayList.add(localIDKey);
+      }
+    }
+  }
+  
+  public static final void bBV()
+  {
+    AppMethodBeat.i(114215);
+    ab.i("MicroMsg.FTS.FTSReportApiLogic", "reportIDKeyFTSData %d %d %d %d %d", new Object[] { Long.valueOf(mRj.mRm), Long.valueOf(mRj.mRn), Long.valueOf(mRj.mRo), Long.valueOf(mRj.mRq), Long.valueOf(mRj.mRp) });
+    ArrayList localArrayList = new ArrayList();
+    c(localArrayList, 0);
+    if (mRj.mRm > 1536L) {
+      c(localArrayList, 1);
+    }
+    if (mRj.mRn >= 10000L) {
+      c(localArrayList, 2);
+    }
+    if (mRj.mRo >= 5000L) {
+      c(localArrayList, 3);
+    }
+    if (mRj.mRq >= 10000L) {
+      c(localArrayList, 4);
+    }
+    if (mRj.mRp >= 1000000L) {
+      c(localArrayList, 5);
+    }
+    com.tencent.mm.plugin.report.e.qrI.b(localArrayList, false);
+    AppMethodBeat.o(114215);
+  }
+  
+  private static final void c(ArrayList<IDKey> paramArrayList, int paramInt)
+  {
+    AppMethodBeat.i(114216);
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(729);
     localIDKey.SetKey(paramInt);
     localIDKey.SetValue(1L);
     paramArrayList.add(localIDKey);
+    AppMethodBeat.o(114216);
   }
   
-  public static final void g(int paramInt, long paramLong1, long paramLong2)
+  public static final void i(int paramInt, long paramLong1, long paramLong2)
   {
-    if (!d.c(paramInt, kvv)) {}
-    long l;
-    do
+    AppMethodBeat.i(114210);
+    if (!d.e(paramInt, mRi))
     {
+      AppMethodBeat.o(114210);
       return;
-      g.DN();
-      l = new o(a.CK()).longValue();
-      if (!com.tencent.mm.protocal.d.spb) {
-        break;
+    }
+    g.RJ();
+    long l = new p(a.getUin()).longValue();
+    if (com.tencent.mm.protocal.d.whI)
+    {
+      if (l % 100L != 1L) {
+        AppMethodBeat.o(114210);
       }
-    } while (l % 100L != 1L);
-    if (kvw.kvy >= 1536L) {}
+    }
+    else if ((com.tencent.mm.protocal.d.whJ) && (l % 10L != 1L))
+    {
+      AppMethodBeat.o(114210);
+      return;
+    }
+    if (mRj.mRm >= 1536L) {}
     for (int i = 1;; i = 0)
     {
-      String str = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt), Long.valueOf(paramLong1), Integer.valueOf(0), Integer.valueOf(i), Long.valueOf(kvw.kvy), Long.valueOf(kvw.kvz), Long.valueOf(kvw.kvA), Long.valueOf(kvw.kvB), Long.valueOf(kvw.kvC), Long.valueOf(paramLong2) });
-      y.v("MicroMsg.FTS.FTSReportApiLogic", "reportKVSearchTime: %d %s", new Object[] { Integer.valueOf(14175), str });
-      f.nEG.aC(14175, str);
-      return;
-      if ((!com.tencent.mm.protocal.d.spc) || (l % 10L == 1L)) {
-        break;
-      }
+      String str = String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", new Object[] { Integer.valueOf(0), Integer.valueOf(paramInt), Long.valueOf(paramLong1), Integer.valueOf(0), Integer.valueOf(i), Long.valueOf(mRj.mRm), Long.valueOf(mRj.mRn), Long.valueOf(mRj.mRo), Long.valueOf(mRj.mRp), Long.valueOf(mRj.mRq), Long.valueOf(paramLong2) });
+      ab.v("MicroMsg.FTS.FTSReportApiLogic", "reportKVSearchTime: %d %s", new Object[] { Integer.valueOf(14175), str });
+      com.tencent.mm.plugin.report.e.qrI.kvStat(14175, str);
+      AppMethodBeat.o(114210);
       return;
     }
   }
   
-  public static void rv(int paramInt)
+  public static void wq(int paramInt)
   {
+    AppMethodBeat.i(114213);
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(146);
     localIDKey.SetKey(0);
@@ -96,7 +188,8 @@ public final class e
     }
     for (;;)
     {
-      f.nEG.b(localArrayList, false);
+      com.tencent.mm.plugin.report.e.qrI.b(localArrayList, false);
+      AppMethodBeat.o(114213);
       return;
       localIDKey = new IDKey();
       localIDKey.SetID(146);
@@ -106,82 +199,17 @@ public final class e
     }
   }
   
-  public static final void rw(int paramInt)
+  public static final void wr(int paramInt)
   {
-    y.i("MicroMsg.FTS.FTSReportApiLogic", "reportCommonChatroom: %d %d", new Object[] { Integer.valueOf(14731), Integer.valueOf(paramInt) });
-    f.nEG.f(14731, new Object[] { Integer.valueOf(paramInt) });
-  }
-  
-  public static void y(int paramInt, long paramLong)
-  {
-    if (paramInt > 0)
-    {
-      int i = (paramInt - 1) * 2 + 1;
-      y.v("MicroMsg.FTS.FTSReportApiLogic", "reportIDKeySearchTime: reportKey=%d taskId=%d time=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-      ArrayList localArrayList = new ArrayList();
-      IDKey localIDKey = new IDKey();
-      localIDKey.SetID(601);
-      localIDKey.SetKey(i);
-      localIDKey.SetValue((int)paramLong);
-      localArrayList.add(localIDKey);
-      localIDKey = new IDKey();
-      localIDKey.SetID(601);
-      localIDKey.SetKey(i + 1);
-      localIDKey.SetValue(1L);
-      localArrayList.add(localIDKey);
-      f.nEG.b(localArrayList, false);
-    }
-  }
-  
-  public static void z(int paramInt, long paramLong)
-  {
-    ArrayList localArrayList;
-    IDKey localIDKey;
-    if (paramInt > 0)
-    {
-      paramInt = (paramInt - 1) * 4 + 1;
-      localArrayList = new ArrayList();
-      localIDKey = new IDKey();
-      localIDKey.SetID(602);
-      localIDKey.SetKey(paramInt);
-      localIDKey.SetValue(1L);
-      localArrayList.add(localIDKey);
-      if (paramLong > 100L) {
-        break label111;
-      }
-      localIDKey = new IDKey();
-      localIDKey.SetID(602);
-      localIDKey.SetKey(paramInt + 1);
-      localIDKey.SetValue(1L);
-      localArrayList.add(localIDKey);
-    }
-    for (;;)
-    {
-      f.nEG.b(localArrayList, false);
-      return;
-      label111:
-      if (paramLong <= 500L)
-      {
-        localIDKey = new IDKey();
-        localIDKey.SetID(602);
-        localIDKey.SetKey(paramInt + 2);
-        localIDKey.SetValue(1L);
-        localArrayList.add(localIDKey);
-      }
-      else
-      {
-        localIDKey = new IDKey();
-        localIDKey.SetID(602);
-        localIDKey.SetKey(paramInt + 3);
-        localIDKey.SetValue(1L);
-        localArrayList.add(localIDKey);
-      }
-    }
+    AppMethodBeat.i(114214);
+    ab.i("MicroMsg.FTS.FTSReportApiLogic", "reportCommonChatroom: %d %d", new Object[] { Integer.valueOf(14731), Integer.valueOf(paramInt) });
+    com.tencent.mm.plugin.report.e.qrI.e(14731, new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.o(114214);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.e
  * JD-Core Version:    0.7.0.1
  */

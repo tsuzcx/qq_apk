@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.sns.storage;
 public final class b$c
 {
   public String description;
-  public int oBK;
-  public int oBL = 30;
-  public int oBM;
+  public int rqV;
+  public int rqW = 30;
+  public int rqX;
+  public b.c.a rqY;
   public String title;
 }
 

@@ -1,30 +1,36 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class o$4
-  implements am.a
+  implements ap.a
 {
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
+    AppMethodBeat.i(78770);
     try
     {
-      o.Rz();
-      if ((o.access$300() < 2000) && (o.access$300() > 1000))
-      {
-        o.jm(o.access$300());
-        return false;
+      o.akI();
+      if ((o.access$300() < 2000) && (o.access$300() > 1000)) {
+        o.me(o.access$300());
       }
-      o.jn(o.access$300());
-      return false;
+      for (;;)
+      {
+        AppMethodBeat.o(78770);
+        return false;
+        o.mf(o.access$300());
+      }
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.NetTypeReporter", "run :%s", new Object[] { bk.j(localException) });
+      for (;;)
+      {
+        ab.e("MicroMsg.NetTypeReporter", "run :%s", new Object[] { bo.l(localException) });
+      }
     }
-    return false;
   }
 }
 

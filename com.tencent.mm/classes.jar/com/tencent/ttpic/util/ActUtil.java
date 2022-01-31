@@ -1,8 +1,7 @@
 package com.tencent.ttpic.util;
 
 import android.graphics.PointF;
-import com.tencent.ttpic.model.Rect;
-import com.tencent.ttpic.model.SizeI;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,78 +10,39 @@ public class ActUtil
   public static final String EXPRESSION = "expression";
   public static final int EXPRESSION_ITEM_COUNT = 7;
   public static final int HEIGHT = 1280;
-  private static final String TAG = ActUtil.class.getSimpleName();
-  public static final double[] WEIGHT = { 0.2D, 0.2D, 0.3D, 0.06D, 0.06D, 0.06D, 0.12D };
+  private static final String TAG;
+  public static final double[] WEIGHT;
   public static final int WIDTH = 720;
   
-  private static SizeI calCutAspectSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  static
   {
-    double d4 = paramInt1 / paramInt2;
-    double d2 = paramInt4;
-    double d3 = (int)(d2 * d4);
-    double d1 = d3;
-    if (d3 < paramInt3)
-    {
-      d1 = paramInt3;
-      d2 = d1 / d4;
-    }
-    return new SizeI((int)d1, (int)d2);
-  }
-  
-  public static float[] calPositions(Rect paramRect, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    if (paramInt5 == ActUtil.FILL_STYLE.access$000(ActUtil.FILL_STYLE.SPACE))
-    {
-      SizeI localSizeI = calSpaceAspectSize(paramInt1, paramInt2, paramRect.width, paramRect.height);
-      paramInt1 = paramRect.x + (paramRect.width - localSizeI.width) / 2;
-      paramInt2 = paramRect.y;
-      paramInt2 = (paramRect.height - localSizeI.height) / 2 + paramInt2;
-      paramInt5 = localSizeI.width;
-      i = localSizeI.height;
-      return AlgoUtils.calPositions(paramInt1, paramInt2 + i, paramInt5 + paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-    paramInt1 = paramRect.x;
-    paramInt2 = paramRect.y;
-    paramInt5 = paramRect.width;
-    int i = paramRect.height;
-    return AlgoUtils.calPositions(paramInt1, i + paramInt2, paramInt1 + paramInt5, paramInt2, paramInt3, paramInt4);
-  }
-  
-  private static SizeI calSpaceAspectSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    double d4 = paramInt1 / paramInt2;
-    double d2 = paramInt4;
-    double d3 = (int)(d2 * d4);
-    double d1 = d3;
-    if (d3 > paramInt3)
-    {
-      d1 = paramInt3;
-      d2 = d1 / d4;
-    }
-    return new SizeI((int)d1, (int)d2);
-  }
-  
-  public static float[] calTexCords(Rect paramRect, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramInt3 == ActUtil.FILL_STYLE.access$000(ActUtil.FILL_STYLE.CUT)) {
-      return AlgoUtils.calTexCoords(paramInt1, paramInt2, paramRect.width / paramRect.height);
-    }
-    return VideoFilterUtil.ORIGIN_TEX_COORDS;
+    AppMethodBeat.i(83804);
+    TAG = ActUtil.class.getSimpleName();
+    WEIGHT = new double[] { 0.2D, 0.2D, 0.3D, 0.06D, 0.06D, 0.06D, 0.12D };
+    AppMethodBeat.o(83804);
   }
   
   private static float distanceOfPoint(PointF paramPointF1, PointF paramPointF2)
   {
-    return (float)Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
+    AppMethodBeat.i(83802);
+    float f = (float)Math.sqrt((paramPointF1.x - paramPointF2.x) * (paramPointF1.x - paramPointF2.x) + (paramPointF1.y - paramPointF2.y) * (paramPointF1.y - paramPointF2.y));
+    AppMethodBeat.o(83802);
+    return f;
   }
   
   public static float getExpressionSimilarity(List<PointF> paramList1, List<PointF> paramList2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, double[] paramArrayOfDouble)
   {
-    if ((paramList1 == null) || (paramList2 == null) || (paramArrayOfFloat1 == null) || (paramArrayOfFloat1.length < 3) || (paramArrayOfDouble == null) || (paramArrayOfDouble.length < 7)) {
+    AppMethodBeat.i(83801);
+    if ((paramList1 == null) || (paramList2 == null) || (paramArrayOfFloat1 == null) || (paramArrayOfFloat1.length < 3) || (paramArrayOfDouble == null) || (paramArrayOfDouble.length < 7))
+    {
+      AppMethodBeat.o(83801);
       return 0.0F;
     }
     paramList1 = FaceOffUtil.getFullCoords(FaceDetectUtil.facePointf83to90(paramList1), 2.0F);
     paramList2 = FaceOffUtil.getFullCoords(FaceDetectUtil.facePointf83to90(paramList2), 2.0F);
-    if ((paramList2.size() < 106) || (paramList1.size() < 106)) {
+    if ((paramList2.size() < 106) || (paramList1.size() < 106))
+    {
+      AppMethodBeat.o(83801);
       return 0.0F;
     }
     ArrayList localArrayList1 = new ArrayList(paramList1.size());
@@ -118,11 +78,14 @@ public class ActUtil
       f1 = (float)(f1 + paramArrayOfDouble[i]);
       i += 1;
     }
-    return f2 / f1 * 100.0F;
+    f1 = f2 / f1;
+    AppMethodBeat.o(83801);
+    return f1 * 100.0F;
   }
   
   private static float getSimilarityOfValue(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
+    AppMethodBeat.i(83803);
     if (paramFloat1 < paramFloat3) {
       paramFloat1 = paramFloat3;
     }
@@ -143,7 +106,9 @@ public class ActUtil
           if (paramFloat2 > 1.0D) {
             paramFloat1 = 1.0F;
           }
-          return 1.0F - smoothStep(paramFloat1);
+          paramFloat1 = smoothStep(paramFloat1);
+          AppMethodBeat.o(83803);
+          return 1.0F - paramFloat1;
         }
       }
     }

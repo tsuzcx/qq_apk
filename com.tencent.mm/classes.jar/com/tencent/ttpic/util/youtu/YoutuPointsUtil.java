@@ -1,6 +1,8 @@
 package com.tencent.ttpic.util.youtu;
 
 import android.graphics.PointF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BaseUtils;
 import com.tencent.ttpic.util.AlgoUtils;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +32,7 @@ public class YoutuPointsUtil
   
   private static PointF getArrayMiddleV2(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(84410);
     PointF localPointF = new PointF();
     int i = paramInt1;
     while (i <= paramInt2)
@@ -40,16 +43,99 @@ public class YoutuPointsUtil
     }
     localPointF.x /= (paramInt2 - paramInt1 + 1);
     localPointF.y /= (paramInt2 - paramInt1 + 1);
+    AppMethodBeat.o(84410);
     return localPointF;
+  }
+  
+  public static List<PointF> getIris3Points(List<List<PointF>> paramList1, List<List<PointF>> paramList2)
+  {
+    AppMethodBeat.i(84414);
+    ArrayList localArrayList = new ArrayList();
+    if ((BaseUtils.isEmpty(paramList1)) || (BaseUtils.isEmpty(paramList2)))
+    {
+      AppMethodBeat.o(84414);
+      return localArrayList;
+    }
+    paramList1 = (List)paramList1.get(0);
+    paramList2.get(0);
+    localArrayList.add(paramList1.get(43));
+    localArrayList.add(paramList1.get(53));
+    AppMethodBeat.o(84414);
+    return localArrayList;
+  }
+  
+  public static List<PointF> getIris4Points(List<List<PointF>> paramList1, List<List<PointF>> paramList2)
+  {
+    AppMethodBeat.i(84413);
+    ArrayList localArrayList = new ArrayList();
+    if ((BaseUtils.isEmpty(paramList1)) || (BaseUtils.isEmpty(paramList2)))
+    {
+      AppMethodBeat.o(84413);
+      return localArrayList;
+    }
+    paramList1 = (List)paramList1.get(0);
+    paramList2.get(0);
+    localArrayList.add(paramList1.get(44));
+    localArrayList.add(paramList1.get(54));
+    AppMethodBeat.o(84413);
+    return localArrayList;
+  }
+  
+  public static List<PointF> getIrisPoints(float[] paramArrayOfFloat)
+  {
+    AppMethodBeat.i(84411);
+    ArrayList localArrayList = new ArrayList();
+    if (paramArrayOfFloat.length != 188)
+    {
+      AppMethodBeat.o(84411);
+      return localArrayList;
+    }
+    int i = 90;
+    while (i < 94)
+    {
+      localArrayList.add(new PointF(paramArrayOfFloat[(i * 2)], paramArrayOfFloat[(i * 2 + 1)]));
+      i += 1;
+    }
+    AppMethodBeat.o(84411);
+    return localArrayList;
+  }
+  
+  public static List<PointF> getIrisRelatedPoints(List<List<PointF>> paramList1, List<List<PointF>> paramList2)
+  {
+    AppMethodBeat.i(84412);
+    ArrayList localArrayList = new ArrayList();
+    if ((BaseUtils.isEmpty(paramList1)) || (BaseUtils.isEmpty(paramList2)))
+    {
+      AppMethodBeat.o(84412);
+      return localArrayList;
+    }
+    paramList1 = (List)paramList1.get(0);
+    paramList2 = (List)paramList2.get(0);
+    localArrayList.add(paramList1.get(44));
+    localArrayList.add(paramList1.get(41));
+    localArrayList.add(paramList2.get(0));
+    localArrayList.add(paramList1.get(37));
+    localArrayList.add(paramList2.get(1));
+    localArrayList.add(paramList1.get(54));
+    localArrayList.add(paramList1.get(51));
+    localArrayList.add(paramList2.get(2));
+    localArrayList.add(paramList1.get(47));
+    localArrayList.add(paramList2.get(3));
+    AppMethodBeat.o(84412);
+    return localArrayList;
   }
   
   private static PointF getMiddleV2(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
-    return new PointF((paramArrayOfFloat[(paramInt1 * 2)] + paramArrayOfFloat[(paramInt2 * 2)]) / 2.0F, (paramArrayOfFloat[(paramInt1 * 2 + 1)] + paramArrayOfFloat[(paramInt2 * 2 + 1)]) / 2.0F);
+    AppMethodBeat.i(84409);
+    paramArrayOfFloat = new PointF((paramArrayOfFloat[(paramInt1 * 2)] + paramArrayOfFloat[(paramInt2 * 2)]) / 2.0F, (paramArrayOfFloat[(paramInt1 * 2 + 1)] + paramArrayOfFloat[(paramInt2 * 2 + 1)]) / 2.0F);
+    AppMethodBeat.o(84409);
+    return paramArrayOfFloat;
   }
   
   private static List<PointF> transform90PointsTo83(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(84408);
     PointF[] arrayOfPointF = new PointF[83];
     int i = 0;
     while (i < 83)
@@ -139,11 +225,13 @@ public class YoutuPointsUtil
     adjustEyeFeatureV2(arrayOfPointF);
     paramArrayOfFloat = new ArrayList();
     paramArrayOfFloat.addAll(Arrays.asList(arrayOfPointF));
+    AppMethodBeat.o(84408);
     return paramArrayOfFloat;
   }
   
   public static List<PointF> transformYTPointsToPtuPoints(float[] paramArrayOfFloat)
   {
+    AppMethodBeat.i(84407);
     paramArrayOfFloat = transform90PointsTo83(paramArrayOfFloat);
     PointF localPointF = AlgoUtils.middlePoint((PointF)paramArrayOfFloat.get(55), (PointF)paramArrayOfFloat.get(63));
     paramArrayOfFloat.add(localPointF);
@@ -156,6 +244,7 @@ public class YoutuPointsUtil
     float f2 = ((PointF)paramArrayOfFloat.get(59)).x;
     float f3 = ((PointF)paramArrayOfFloat.get(39)).y;
     paramArrayOfFloat.add(new PointF(2.0F * f1 - f2, (float)((((PointF)paramArrayOfFloat.get(49)).y + f3) / 2.0D - (((PointF)paramArrayOfFloat.get(64)).y - localPointF.y) * 1.4D)));
+    AppMethodBeat.o(84407);
     return paramArrayOfFloat;
   }
 }

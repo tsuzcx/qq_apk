@@ -4,41 +4,39 @@ import java.util.Collection;
 
 public abstract interface e
 {
-  public abstract String acb();
+  public abstract String avS();
   
-  public abstract boolean acc();
+  public abstract boolean avT();
   
-  public abstract boolean acd();
+  public abstract boolean avU();
   
-  public abstract boolean ace();
+  public abstract boolean avV();
   
-  public abstract boolean acg();
+  public abstract boolean avX();
   
-  public abstract boolean ach();
+  public abstract String dlZ();
   
-  public abstract String bjl();
+  public abstract String dmt();
   
-  public abstract String clF();
+  public abstract Collection<b> dmu();
   
-  public abstract Collection<b> clG();
+  public abstract int dmv();
   
-  public abstract int clH();
-  
-  public abstract String clI();
-  
-  public abstract String cls();
-  
-  public abstract boolean ct(long paramLong);
+  public abstract String dmw();
   
   public abstract int getConnectTimeout();
+  
+  public abstract String getFilePath();
   
   public abstract int getReadTimeout();
   
   public abstract String getURL();
+  
+  public abstract boolean hq(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.g.a.c.e
  * JD-Core Version:    0.7.0.1
  */

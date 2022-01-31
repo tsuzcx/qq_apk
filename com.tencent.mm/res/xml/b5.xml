@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory />
-    <com.tencent.mm.pluginsdk.ui.preference.AccountInfoPreference mm:title="@string/e2c" mm:key="more_tab_setting_personal_info" mm:layout="@layout/aed" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/e10" mm:icon="@raw/more_my_bank_card" mm:key="settings_mm_wallet" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/e0y" mm:icon="@raw/more_my_favorite" mm:key="settings_mm_favorite" />
-    <NormalIconPreference mm:title="@string/e1i" mm:icon="@raw/more_my_album" mm:key="settings_my_album" />
-    <NormalIconPreference mm:title="@string/e0w" mm:icon="@raw/more_my_card" mm:key="settings_mm_cardpackage" />
-    <NormalIconPreference mm:title="@string/dza" mm:icon="@raw/find_more_emji" mm:key="settings_emoji_store" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/e55" mm:icon="@raw/more_setting" mm:key="more_setting" />
-    <PreferenceSmallCategory />
-    <NormalIconPreference mm:title="@string/ent" mm:icon="@raw/more_ui_show" mm:key="more_uishow" />
-    <PreferenceCategory />
-    <Preference mm:key="settings_privacy_agreements" mm:layout="@layout/acs" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <Preference mm:title="@string/d8i" mm:layout="@layout/ah2" />
+    <com.tencent.mm.ui.base.preference.ChoicePreference mm:title="@string/eee" mm:entries="@array/ae" mm:entryValues="@array/af" mm:key="settings_sex" mm:layout="@layout/ahd" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:title="@string/e_k" mm:key="settings_district" mm:layout="@layout/afi" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:title="@string/eem" mm:key="settings_signature" mm:layout="@layout/afi" />
 </PreferenceScreen>

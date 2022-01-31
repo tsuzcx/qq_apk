@@ -1,17 +1,16 @@
 package com.tencent.mm.sdk.e;
 
-import java.lang.annotation.Annotation;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.os.Looper;
 
-@Retention(RetentionPolicy.RUNTIME)
-@Target({java.lang.annotation.ElementType.FIELD})
-public @interface h
+public abstract interface h
 {
-  String csq();
+  public abstract void a(n.b paramb);
   
-  int csr() default 0;
+  public abstract void a(n.b paramb, Looper paramLooper);
+  
+  public abstract void b(int paramInt, n paramn, Object paramObject);
+  
+  public abstract void b(n.b paramb);
 }
 
 

@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.hp.tinker;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class a$1
   implements Runnable
 {
@@ -7,11 +9,13 @@ final class a$1
   
   public final void run()
   {
-    if (this.lnl != null)
+    AppMethodBeat.i(90624);
+    if (this.nKC != null)
     {
       com.tencent.tinker.lib.f.a.i("Tinker.ScreenOffRetryPatch", "ScreenOffRetryPatch runnable try to start", new Object[0]);
-      this.lnl.bbg();
+      this.nKC.bIk();
     }
+    AppMethodBeat.o(90624);
   }
 }
 

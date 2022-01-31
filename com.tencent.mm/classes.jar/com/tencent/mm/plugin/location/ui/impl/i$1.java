@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.location.ui.impl;
 
 import android.app.Activity;
 import android.content.Intent;
-import com.tencent.mm.h.a.do;
-import com.tencent.mm.h.a.do.b;
-import com.tencent.mm.plugin.map.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.dr;
+import com.tencent.mm.g.a.dr.b;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -15,26 +15,34 @@ final class i$1
 {
   i$1(i parami) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.a(1, this.lKF.getString(a.h.app_share_to_weixin), 0);
-    if (this.lKF.type == 1) {
-      paraml.a(3, this.lKF.getString(a.h.plugin_favorite_opt), 0);
+    AppMethodBeat.i(113738);
+    paraml.a(1, this.ohX.getString(2131297075), 0);
+    if (this.ohX.type == 1) {
+      paraml.a(3, this.ohX.getString(2131302102), 0);
     }
     for (;;)
     {
-      do localdo = new do();
-      localdo.bJZ.bIt = this.lKF.bIt;
-      com.tencent.mm.sdk.b.a.udP.m(localdo);
-      if ((localdo.bKa.bJy) || (g.m(ae.getContext(), 4L))) {
-        paraml.a(6, this.lKF.getString(a.h.download_other_open), 0);
+      dr localdr = new dr();
+      localdr.crt.cpO = this.ohX.cpO;
+      com.tencent.mm.sdk.b.a.ymk.l(localdr);
+      if ((localdr.cru.cqS) || (g.o(ah.getContext(), 4L))) {
+        paraml.a(6, this.ohX.getString(2131299012), 0);
       }
+      AppMethodBeat.o(113738);
       return;
-      if ((this.lKF.type == 2) && (this.lKF.activity.getIntent().getBooleanExtra("kFavCanDel", true)))
+      if (this.ohX.type == 2)
       {
-        paraml.a(7, this.lKF.getString(a.h.favorite_save_as_note_1), 0);
-        paraml.a(5, this.lKF.getString(a.h.favorite_edit_tag_tips_1), 0);
-        paraml.a(4, this.lKF.getString(a.h.app_delete), 0);
+        if (this.ohX.activity.getIntent().getBooleanExtra("kFavCanDel", true))
+        {
+          paraml.a(7, this.ohX.getString(2131299815), 0);
+          paraml.a(5, this.ohX.getString(2131299704), 0);
+          paraml.a(4, this.ohX.getString(2131296901), 0);
+        }
+      }
+      else if (this.ohX.type == 10) {
+        paraml.a(8, this.ohX.getString(2131302102), 0);
       }
     }
   }

@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 
 final class c$a
 {
-  String bTY;
   Bitmap bitmap;
+  String cBD;
   
   c$a(c paramc) {}
 }

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.gif;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 
 public class MMGIFException
@@ -24,8 +25,10 @@ public class MMGIFException
   
   public MMGIFException(int paramInt)
   {
-    super("MicroMsg.GIF.MMGIFException" + paramInt);
+    super("MicroMsg.GIF.MMGIFException".concat(String.valueOf(paramInt)));
+    AppMethodBeat.i(62407);
     this.errorCode = paramInt;
+    AppMethodBeat.o(62407);
   }
   
   public int getErrorCode()

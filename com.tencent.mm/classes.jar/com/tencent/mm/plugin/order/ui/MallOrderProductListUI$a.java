@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.plugin.order.c.b;
 import com.tencent.mm.plugin.order.model.ProductSectionItem;
 import com.tencent.mm.plugin.order.model.ProductSectionItem.Skus;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.h;
 import com.tencent.mm.wallet_core.ui.e;
 import java.util.List;
 
@@ -22,14 +20,20 @@ final class MallOrderProductListUI$a
 {
   private MallOrderProductListUI$a(MallOrderProductListUI paramMallOrderProductListUI) {}
   
-  private ProductSectionItem vJ(int paramInt)
+  private ProductSectionItem Bh(int paramInt)
   {
-    return (ProductSectionItem)MallOrderProductListUI.a(this.mQI).get(paramInt);
+    AppMethodBeat.i(43837);
+    ProductSectionItem localProductSectionItem = (ProductSectionItem)MallOrderProductListUI.a(this.pqV).get(paramInt);
+    AppMethodBeat.o(43837);
+    return localProductSectionItem;
   }
   
   public final int getCount()
   {
-    return MallOrderProductListUI.a(this.mQI).size();
+    AppMethodBeat.i(43836);
+    int i = MallOrderProductListUI.a(this.pqV).size();
+    AppMethodBeat.o(43836);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -39,45 +43,47 @@ final class MallOrderProductListUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(43838);
     ProductSectionItem localProductSectionItem;
     if (paramView == null)
     {
-      paramView = View.inflate(this.mQI, a.g.mall_order_product_list_item, null);
-      paramViewGroup = new MallOrderProductListUI.b(this.mQI, (byte)0);
-      paramViewGroup.iwn = ((ImageView)paramView.findViewById(a.f.item_product_logo_img));
-      paramViewGroup.mQJ = ((TextView)paramView.findViewById(a.f.item_product_descript_tv));
-      paramViewGroup.mQK = ((TextView)paramView.findViewById(a.f.item_product_catalog_tv));
-      paramViewGroup.mQL = ((TextView)paramView.findViewById(a.f.item_product_price_tv));
-      paramViewGroup.mQM = ((TextView)paramView.findViewById(a.f.item_product_count_tv));
-      paramViewGroup.mQN = ((TextView)paramView.findViewById(a.f.item_product_seperator_tv));
+      paramView = View.inflate(this.pqV, 2130970109, null);
+      paramViewGroup = new MallOrderProductListUI.b(this.pqV, (byte)0);
+      paramViewGroup.kxr = ((ImageView)paramView.findViewById(2131826014));
+      paramViewGroup.pqW = ((TextView)paramView.findViewById(2131826015));
+      paramViewGroup.pqX = ((TextView)paramView.findViewById(2131826022));
+      paramViewGroup.pqY = ((TextView)paramView.findViewById(2131826023));
+      paramViewGroup.pqZ = ((TextView)paramView.findViewById(2131826024));
+      paramViewGroup.pra = ((TextView)paramView.findViewById(2131826021));
       paramView.setTag(paramViewGroup);
-      localProductSectionItem = vJ(paramInt);
-      paramViewGroup.ilp = localProductSectionItem.iconUrl;
-      if ((TextUtils.isEmpty(paramViewGroup.ilp)) || (!e.afi(paramViewGroup.ilp))) {
-        break label272;
+      localProductSectionItem = Bh(paramInt);
+      paramViewGroup.kmm = localProductSectionItem.iconUrl;
+      if ((TextUtils.isEmpty(paramViewGroup.kmm)) || (!e.awb(paramViewGroup.kmm))) {
+        break label275;
       }
-      Bitmap localBitmap = x.a(new b(paramViewGroup.ilp));
-      paramViewGroup.iwn.setImageBitmap(localBitmap);
+      Bitmap localBitmap = x.a(new b(paramViewGroup.kmm));
+      paramViewGroup.kxr.setImageBitmap(localBitmap);
     }
     for (;;)
     {
-      paramViewGroup.mQJ.setText(localProductSectionItem.name);
-      paramViewGroup.mQK.setText(ProductSectionItem.Skus.bT(localProductSectionItem.mQm));
-      paramViewGroup.mQL.setText(localProductSectionItem.mQn);
-      paramViewGroup.mQM.setText("+" + localProductSectionItem.count);
+      paramViewGroup.pqW.setText(localProductSectionItem.name);
+      paramViewGroup.pqX.setText(ProductSectionItem.Skus.cr(localProductSectionItem.pqB));
+      paramViewGroup.pqY.setText(localProductSectionItem.pqC);
+      paramViewGroup.pqZ.setText("+" + localProductSectionItem.count);
       x.a(paramViewGroup);
-      paramViewGroup.mQN.setVisibility(8);
+      paramViewGroup.pra.setVisibility(8);
+      AppMethodBeat.o(43838);
       return paramView;
       paramViewGroup = (MallOrderProductListUI.b)paramView.getTag();
       break;
-      label272:
-      paramViewGroup.iwn.setImageResource(a.h.mall_order_detail_frame);
+      label275:
+      paramViewGroup.kxr.setImageResource(2131231622);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.MallOrderProductListUI.a
  * JD-Core Version:    0.7.0.1
  */

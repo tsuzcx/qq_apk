@@ -1,5 +1,6 @@
 package com.tencent.mm.ui.chatting.gallery;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 
 final class k$4$2
@@ -9,12 +10,14 @@ final class k$4$2
   
   public final void run()
   {
-    h localh = h.nFQ;
-    int j = this.vxC.vxz.vxx;
-    if (this.ogw <= 0) {}
-    for (int i = this.vxC.vxz.oHM * 1000;; i = this.ogw)
+    AppMethodBeat.i(32386);
+    h localh = h.qsU;
+    int j = this.zNO.zNL.zNJ;
+    if (this.qUL <= 0) {}
+    for (int i = this.zNO.zNL.rxA * 1000;; i = this.qUL)
     {
-      localh.f(12084, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.gFM), Integer.valueOf(1), this.vxC.vxz.bRO, Integer.valueOf(this.vxC.vxz.vxy), this.vxC.vxz.fileId, Long.valueOf(this.vxC.vxz.createTime) });
+      localh.e(12084, new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.ieP), Integer.valueOf(1), this.zNO.zNL.czp, Integer.valueOf(this.zNO.zNL.zNK), this.zNO.zNL.fileId, Long.valueOf(this.zNO.zNL.createTime) });
+      AppMethodBeat.o(32386);
       return;
     }
   }

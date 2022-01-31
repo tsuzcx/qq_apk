@@ -2,15 +2,13 @@ package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.h.a.gf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gi;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.s;
 
 final class NoteEditorUI$23$2$3
   implements DialogInterface.OnClickListener
@@ -19,22 +17,26 @@ final class NoteEditorUI$23$2$3
   
   public final void onClick(final DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = h.b(this.rMb.rMa.rLT.mController.uMN, this.rMb.rMa.rLT.getString(R.l.app_delete_tips), false, null);
-    NoteEditorUI.j(this.rMb.rMa.rLT).ciF();
-    gf localgf = new gf();
-    localgf.bNF.type = 12;
-    localgf.bNF.bIr = NoteEditorUI.h(this.rMb.rMa.rLT);
-    localgf.bNF.bNK = new Runnable()
+    AppMethodBeat.i(27024);
+    paramDialogInterface = h.b(this.vCF.vCE.vCx.getContext(), this.vCF.vCE.vCx.getString(2131296902), false, null);
+    NoteEditorUI.j(this.vCF.vCE.vCx).diW();
+    gi localgi = new gi();
+    localgi.cuX.type = 12;
+    localgi.cuX.cpM = NoteEditorUI.h(this.vCF.vCE.vCx);
+    localgi.cuX.cvc = new Runnable()
     {
       public final void run()
       {
-        NoteEditorUI.l(NoteEditorUI.23.2.3.this.rMb.rMa.rLT).jYQ = true;
+        AppMethodBeat.i(27023);
+        NoteEditorUI.l(NoteEditorUI.23.2.3.this.vCF.vCE.vCx).mtj = true;
         paramDialogInterface.dismiss();
-        y.d("MicroMsg.Note.NoteEditorUI", "do del, local id %d", new Object[] { Long.valueOf(NoteEditorUI.h(NoteEditorUI.23.2.3.this.rMb.rMa.rLT)) });
-        NoteEditorUI.23.2.3.this.rMb.rMa.rLT.finish();
+        ab.d("MicroMsg.Note.NoteEditorUI", "do del, local id %d", new Object[] { Long.valueOf(NoteEditorUI.h(NoteEditorUI.23.2.3.this.vCF.vCE.vCx)) });
+        NoteEditorUI.23.2.3.this.vCF.vCE.vCx.finish();
+        AppMethodBeat.o(27023);
       }
     };
-    a.udP.m(localgf);
+    a.ymk.l(localgi);
+    AppMethodBeat.o(27024);
   }
 }
 

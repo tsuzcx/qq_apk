@@ -1,102 +1,114 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
 import android.media.MediaRecorder;
-import com.tencent.mm.compatible.b.b.a;
-import com.tencent.mm.f.b.b;
-import com.tencent.mm.f.b.b.b;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.b;
+import com.tencent.mm.audio.b.b.b;
+import com.tencent.mm.compatible.b.c.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class a
 {
-  private static b gNk = null;
-  private static String gNl = null;
-  private static a gNm = null;
-  private static am gNn = null;
+  private static b ipe = null;
+  private static String ipf = null;
+  private static a ipg = null;
+  private static ap iph = null;
   
   public static boolean a(String paramString, a parama, int paramInt)
   {
-    y.i("MicroMsg.Record.AudioRecorder", "startRecord");
-    lS(1);
-    if (bk.bl(paramString))
+    AppMethodBeat.i(105585);
+    ab.i("MicroMsg.Record.AudioRecorder", "startRecord");
+    oO(1);
+    if (bo.isNullOrNil(paramString))
     {
-      y.e("MicroMsg.Record.AudioRecorder", "startRecord, path is null or nil");
+      ab.e("MicroMsg.Record.AudioRecorder", "startRecord, path is null or nil");
+      AppMethodBeat.o(105585);
       return false;
     }
-    b localb = new b(b.a.duc);
-    gNk = localb;
-    if (localb.bCd == b.a.dub) {
-      if (localb.bCb != null) {
-        localb.bCb.reset();
+    b localb = new b(c.a.elQ);
+    ipe = localb;
+    if (localb.ciS == c.a.elP) {
+      if (localb.ciQ != null) {
+        localb.ciQ.reset();
       }
     }
     for (;;)
     {
-      gNk.uk();
-      gNk.ul();
-      gNk.uj();
-      gNk.setOutputFile(paramString);
-      gNk.a(new a.2());
+      ipe.Ew();
+      ipe.Ex();
+      ipe.Ev();
+      ipe.setOutputFile(paramString);
+      ipe.a(new a.2());
       try
       {
-        gNk.prepare();
-        gNk.start();
-        gNm = parama;
-        gNl = paramString;
+        ipe.prepare();
+        ipe.start();
+        ipg = parama;
+        ipf = paramString;
         long l = paramInt;
         stopTimer();
-        paramString = new am(new a.1(), false);
-        gNn = paramString;
-        paramString.S(l, l);
+        paramString = new ap(new a.1(), false);
+        iph = paramString;
+        paramString.ag(l, l);
+        AppMethodBeat.o(105585);
         return true;
       }
       catch (Exception paramString)
       {
-        y.e("MicroMsg.Record.AudioRecorder", "record prepare, exp = %s", new Object[] { bk.j(paramString) });
+        ab.e("MicroMsg.Record.AudioRecorder", "record prepare, exp = %s", new Object[] { bo.l(paramString) });
+        AppMethodBeat.o(105585);
       }
-      if (localb.bCe != b.b.bCq)
+      if (localb.ciT != b.b.cje)
       {
         localb.release();
-        localb.um();
+        localb.Ey();
       }
     }
     return false;
   }
   
-  public static void lS(int paramInt)
+  public static void oO(int paramInt)
   {
-    y.i("MicroMsg.Record.AudioRecorder", "stopRecord what:%d", new Object[] { Integer.valueOf(paramInt) });
-    if (bk.bl(gNl)) {
-      return;
-    }
-    if (gNk == null)
+    AppMethodBeat.i(105586);
+    ab.i("MicroMsg.Record.AudioRecorder", "stopRecord what:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (bo.isNullOrNil(ipf))
     {
-      y.i("MicroMsg.Record.AudioRecorder", "sRecorder is null,err");
+      AppMethodBeat.o(105586);
       return;
     }
-    gNk.un();
-    gNk.release();
-    gNk = null;
-    stopTimer();
-    gNl = null;
-    if (gNm != null) {
-      gNm.li(paramInt);
+    if (ipe == null)
+    {
+      ab.i("MicroMsg.Record.AudioRecorder", "sRecorder is null,err");
+      AppMethodBeat.o(105586);
+      return;
     }
-    gNm = null;
+    ipe.Ez();
+    ipe.release();
+    ipe = null;
+    stopTimer();
+    ipf = null;
+    if (ipg != null) {
+      ipg.nR(paramInt);
+    }
+    ipg = null;
+    AppMethodBeat.o(105586);
   }
   
   private static void stopTimer()
   {
-    if (gNn != null) {
-      gNn.stopTimer();
+    AppMethodBeat.i(105584);
+    if (iph != null) {
+      iph.stopTimer();
     }
-    gNn = null;
+    iph = null;
+    AppMethodBeat.o(105584);
   }
   
   public static abstract interface a
   {
-    public abstract void li(int paramInt);
+    public abstract void nR(int paramInt);
   }
 }
 

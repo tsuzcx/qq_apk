@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.b.a.a.as;
 import com.tencent.pb.common.b.a.a.av;
 
@@ -10,12 +11,14 @@ final class f$4
   
   public final void run()
   {
-    f.a(this.xeA, this.hPw - 1, this.xeD, this.xeE, this.xeF, this.xeG, this.iFN, this.pzR, this.pzS, this.xeH, this.xeI, this.xeJ, this.xeK, this.xeL);
+    AppMethodBeat.i(127873);
+    f.a(this.BBh, this.jIY - 1, this.BBk, this.BBl, this.BBm, this.BBn, this.kLx, this.tbD, this.tbE, this.BBo, this.BBp, this.BBq, this.BBr, this.BBs);
+    AppMethodBeat.o(127873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.f.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.qqmusic.mediaplayer.codec.ffmpeg;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.AudioFormat.AudioType;
 import com.tencent.qqmusic.mediaplayer.codec.IAudioRecognition;
 
@@ -19,131 +20,146 @@ public class FfmpegRecognition
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: aload_2
-    //   4: ifnull +8 -> 12
-    //   7: aload_2
-    //   8: arraylength
-    //   9: ifne +137 -> 146
-    //   12: new 36	java/io/FileInputStream
-    //   15: dup
-    //   16: aload_1
-    //   17: invokespecial 39	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   20: astore_2
-    //   21: aload_2
-    //   22: astore_1
-    //   23: bipush 64
-    //   25: newarray byte
-    //   27: astore_3
-    //   28: aload_2
-    //   29: astore_1
-    //   30: aload_2
-    //   31: aload_3
-    //   32: invokevirtual 45	java/io/InputStream:read	([B)I
-    //   35: pop
-    //   36: aload_2
-    //   37: astore_1
-    //   38: new 47	java/lang/String
-    //   41: dup
-    //   42: aload_3
-    //   43: invokespecial 50	java/lang/String:<init>	([B)V
-    //   46: astore_3
-    //   47: aload_2
-    //   48: invokevirtual 53	java/io/InputStream:close	()V
-    //   51: aload_3
-    //   52: astore_1
-    //   53: aload_1
-    //   54: ifnull +104 -> 158
-    //   57: aload_1
-    //   58: ldc 55
-    //   60: invokevirtual 59	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
-    //   63: ifeq +95 -> 158
-    //   66: getstatic 65	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:M4A	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
-    //   69: areturn
-    //   70: astore_1
-    //   71: ldc 25
-    //   73: aload_1
-    //   74: invokestatic 71	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   77: aload_3
-    //   78: astore_1
-    //   79: goto -26 -> 53
-    //   82: astore_3
-    //   83: aconst_null
-    //   84: astore_2
-    //   85: aload_2
-    //   86: astore_1
-    //   87: ldc 25
+    //   3: ldc 35
+    //   5: invokestatic 41	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_2
+    //   9: ifnull +8 -> 17
+    //   12: aload_2
+    //   13: arraylength
+    //   14: ifne +149 -> 163
+    //   17: new 43	java/io/FileInputStream
+    //   20: dup
+    //   21: aload_1
+    //   22: invokespecial 46	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   25: astore_2
+    //   26: aload_2
+    //   27: astore_1
+    //   28: bipush 64
+    //   30: newarray byte
+    //   32: astore_3
+    //   33: aload_2
+    //   34: astore_1
+    //   35: aload_2
+    //   36: aload_3
+    //   37: invokevirtual 52	java/io/InputStream:read	([B)I
+    //   40: pop
+    //   41: aload_2
+    //   42: astore_1
+    //   43: new 54	java/lang/String
+    //   46: dup
+    //   47: aload_3
+    //   48: invokespecial 57	java/lang/String:<init>	([B)V
+    //   51: astore_3
+    //   52: aload_2
+    //   53: invokevirtual 60	java/io/InputStream:close	()V
+    //   56: aload_3
+    //   57: astore_1
+    //   58: aload_1
+    //   59: ifnull +116 -> 175
+    //   62: aload_1
+    //   63: ldc 62
+    //   65: invokevirtual 66	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   68: ifeq +107 -> 175
+    //   71: getstatic 72	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:M4A	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
+    //   74: astore_1
+    //   75: ldc 35
+    //   77: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: aload_1
+    //   81: areturn
+    //   82: astore_1
+    //   83: ldc 25
+    //   85: aload_1
+    //   86: invokestatic 81	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   89: aload_3
-    //   90: invokestatic 71	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   93: aload 4
-    //   95: astore_1
-    //   96: aload_2
-    //   97: ifnull -44 -> 53
-    //   100: aload_2
-    //   101: invokevirtual 53	java/io/InputStream:close	()V
-    //   104: aload 4
-    //   106: astore_1
-    //   107: goto -54 -> 53
-    //   110: astore_1
-    //   111: ldc 25
-    //   113: aload_1
-    //   114: invokestatic 71	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   117: aload 4
-    //   119: astore_1
-    //   120: goto -67 -> 53
-    //   123: astore_2
-    //   124: aconst_null
-    //   125: astore_1
-    //   126: aload_1
-    //   127: ifnull +7 -> 134
-    //   130: aload_1
-    //   131: invokevirtual 53	java/io/InputStream:close	()V
-    //   134: aload_2
-    //   135: athrow
-    //   136: astore_1
-    //   137: ldc 25
-    //   139: aload_1
-    //   140: invokestatic 71	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   143: goto -9 -> 134
-    //   146: new 47	java/lang/String
-    //   149: dup
-    //   150: aload_2
-    //   151: invokespecial 50	java/lang/String:<init>	([B)V
-    //   154: astore_1
-    //   155: goto -102 -> 53
-    //   158: getstatic 74	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:UNSUPPORT	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
-    //   161: areturn
-    //   162: astore_2
-    //   163: goto -37 -> 126
-    //   166: astore_3
-    //   167: goto -82 -> 85
+    //   90: astore_1
+    //   91: goto -33 -> 58
+    //   94: astore_3
+    //   95: aconst_null
+    //   96: astore_2
+    //   97: aload_2
+    //   98: astore_1
+    //   99: ldc 25
+    //   101: aload_3
+    //   102: invokestatic 81	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   105: aload 4
+    //   107: astore_1
+    //   108: aload_2
+    //   109: ifnull -51 -> 58
+    //   112: aload_2
+    //   113: invokevirtual 60	java/io/InputStream:close	()V
+    //   116: aload 4
+    //   118: astore_1
+    //   119: goto -61 -> 58
+    //   122: astore_1
+    //   123: ldc 25
+    //   125: aload_1
+    //   126: invokestatic 81	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   129: aload 4
+    //   131: astore_1
+    //   132: goto -74 -> 58
+    //   135: astore_2
+    //   136: aconst_null
+    //   137: astore_1
+    //   138: aload_1
+    //   139: ifnull +7 -> 146
+    //   142: aload_1
+    //   143: invokevirtual 60	java/io/InputStream:close	()V
+    //   146: ldc 35
+    //   148: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   151: aload_2
+    //   152: athrow
+    //   153: astore_1
+    //   154: ldc 25
+    //   156: aload_1
+    //   157: invokestatic 81	com/tencent/qqmusic/mediaplayer/util/Logger:e	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   160: goto -14 -> 146
+    //   163: new 54	java/lang/String
+    //   166: dup
+    //   167: aload_2
+    //   168: invokespecial 57	java/lang/String:<init>	([B)V
+    //   171: astore_1
+    //   172: goto -114 -> 58
+    //   175: getstatic 84	com/tencent/qqmusic/mediaplayer/AudioFormat$AudioType:UNSUPPORT	Lcom/tencent/qqmusic/mediaplayer/AudioFormat$AudioType;
+    //   178: astore_1
+    //   179: ldc 35
+    //   181: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   184: aload_1
+    //   185: areturn
+    //   186: astore_2
+    //   187: goto -49 -> 138
+    //   190: astore_3
+    //   191: goto -94 -> 97
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	170	0	this	FfmpegRecognition
-    //   0	170	1	paramString	String
-    //   0	170	2	paramArrayOfByte	byte[]
-    //   27	51	3	localObject1	Object
-    //   82	8	3	localException1	java.lang.Exception
-    //   166	1	3	localException2	java.lang.Exception
-    //   1	117	4	localObject2	Object
+    //   0	194	0	this	FfmpegRecognition
+    //   0	194	1	paramString	String
+    //   0	194	2	paramArrayOfByte	byte[]
+    //   32	58	3	localObject1	Object
+    //   94	8	3	localException1	java.lang.Exception
+    //   190	1	3	localException2	java.lang.Exception
+    //   1	129	4	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   47	51	70	java/lang/Exception
-    //   12	21	82	java/lang/Exception
-    //   100	104	110	java/lang/Exception
-    //   12	21	123	finally
-    //   130	134	136	java/lang/Exception
-    //   23	28	162	finally
-    //   30	36	162	finally
-    //   38	47	162	finally
-    //   87	93	162	finally
-    //   23	28	166	java/lang/Exception
-    //   30	36	166	java/lang/Exception
-    //   38	47	166	java/lang/Exception
+    //   52	56	82	java/lang/Exception
+    //   17	26	94	java/lang/Exception
+    //   112	116	122	java/lang/Exception
+    //   17	26	135	finally
+    //   142	146	153	java/lang/Exception
+    //   28	33	186	finally
+    //   35	41	186	finally
+    //   43	52	186	finally
+    //   99	105	186	finally
+    //   28	33	190	java/lang/Exception
+    //   35	41	190	java/lang/Exception
+    //   43	52	190	java/lang/Exception
   }
   
   public AudioFormat.AudioType guessAudioType(String paramString)
   {
-    return getAudioType(paramString, null);
+    AppMethodBeat.i(128580);
+    paramString = getAudioType(paramString, null);
+    AppMethodBeat.o(128580);
+    return paramString;
   }
 }
 

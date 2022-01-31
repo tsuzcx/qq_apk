@@ -1,5 +1,6 @@
 package com.tencent.mm.pluginsdk.g.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.g.a.c.q;
 import com.tencent.mm.pluginsdk.g.a.c.q.a;
 import com.tencent.mm.pluginsdk.g.a.c.s;
@@ -11,17 +12,19 @@ final class b$1
   
   public final void run()
   {
-    s locals = q.a.clL().Wl(i.eW(this.lPI, this.lPJ));
-    if ((locals != null) && ((-1 == this.iiK) || (String.valueOf(this.iiK).equals(locals.field_fileVersion)))) {
-      if (this.rWh) {
-        break label69;
+    AppMethodBeat.i(79467);
+    s locals = q.a.dmz().alQ(i.hd(this.onf, this.ong));
+    if ((locals != null) && ((-1 == this.gTU) || (String.valueOf(this.gTU).equals(locals.field_fileVersion)))) {
+      if (this.vMY) {
+        break label79;
       }
     }
-    label69:
+    label79:
     for (boolean bool = true;; bool = false)
     {
       locals.field_needRetry = bool;
-      q.a.clL().g(locals);
+      q.a.dmz().h(locals);
+      AppMethodBeat.o(79467);
       return;
     }
   }

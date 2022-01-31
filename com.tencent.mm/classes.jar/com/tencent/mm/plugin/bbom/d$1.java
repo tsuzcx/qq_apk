@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.bbom;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.storage.q;
-import com.tencent.mm.ui.chatting.s;
+import com.tencent.mm.ui.chatting.r;
 
 final class d$1
   implements View.OnClickListener
@@ -12,7 +13,9 @@ final class d$1
   
   public final void onClick(View paramView)
   {
-    s.a(paramView, paramView.getContext(), this.hSM.field_talker);
+    AppMethodBeat.i(18243);
+    r.a(paramView, paramView.getContext(), this.jMz.field_talker);
+    AppMethodBeat.o(18243);
   }
 }
 

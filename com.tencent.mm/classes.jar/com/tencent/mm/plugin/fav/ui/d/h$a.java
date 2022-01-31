@@ -7,22 +7,22 @@ import android.widget.TextView;
 public final class h$a
   extends a.b
 {
-  View kiC;
-  View kiD;
-  View kiE;
-  View kiF;
-  View kiG;
-  ImageView kiH;
-  ImageView kiI;
-  View kiJ;
-  TextView kiK;
-  TextView kiL;
-  TextView kiM;
-  ImageView kiN;
-  TextView kiO;
-  TextView kiP;
-  TextView kiQ;
-  TextView kiR;
+  View mDh;
+  View mDi;
+  View mDj;
+  View mDk;
+  View mDl;
+  ImageView mDm;
+  ImageView mDn;
+  View mDo;
+  TextView mDp;
+  TextView mDq;
+  TextView mDr;
+  ImageView mDs;
+  TextView mDt;
+  TextView mDu;
+  TextView mDv;
+  TextView mDw;
 }
 
 

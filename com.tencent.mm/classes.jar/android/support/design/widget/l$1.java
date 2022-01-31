@@ -15,11 +15,11 @@ final class l$1
     default: 
       return false;
     }
-    l locall = this.jH;
+    l locall = this.kF;
     l.b localb = (l.b)???.obj;
     synchronized (locall.mLock)
     {
-      if ((locall.jF == localb) || (locall.jG == localb)) {
+      if ((locall.kD == localb) || (locall.kE == localb)) {
         locall.a(localb);
       }
       return true;
@@ -28,7 +28,7 @@ final class l$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.design.widget.l.1
  * JD-Core Version:    0.7.0.1
  */

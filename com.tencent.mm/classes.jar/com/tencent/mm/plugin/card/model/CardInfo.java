@@ -4,138 +4,147 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.mm.h.c.el;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.fb;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
-import com.tencent.mm.protocal.c.bru;
-import com.tencent.mm.protocal.c.lv;
-import com.tencent.mm.protocal.c.ly;
-import com.tencent.mm.protocal.c.mb;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.ccf;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.ov;
+import com.tencent.mm.protocal.protobuf.oz;
+import com.tencent.mm.protocal.protobuf.pg;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class CardInfo
-  extends el
+  extends fb
   implements Parcelable, b
 {
-  public static final Parcelable.Creator<CardInfo> CREATOR = new Parcelable.Creator() {};
-  protected static c.a buS;
-  public String ils = "";
-  public mg ims;
-  public lv imt;
-  public bru imu;
-  public mb imv;
-  public boolean imw = true;
+  public static final Parcelable.Creator<CardInfo> CREATOR;
+  protected static c.a info;
+  public String kmp;
+  public pg kno;
+  public oj knp;
+  public ccf knq;
+  public oz knr;
+  public boolean kns;
   
   static
   {
+    AppMethodBeat.i(87823);
     c.a locala = new c.a();
-    locala.ujL = new Field[22];
+    locala.yrK = new Field[22];
     locala.columns = new String[23];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "card_id";
-    locala.ujN.put("card_id", "TEXT PRIMARY KEY ");
+    locala.yrM.put("card_id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" card_id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "card_id";
+    locala.yrL = "card_id";
     locala.columns[1] = "card_tp_id";
-    locala.ujN.put("card_tp_id", "TEXT");
+    locala.yrM.put("card_tp_id", "TEXT");
     localStringBuilder.append(" card_tp_id TEXT");
     localStringBuilder.append(", ");
     locala.columns[2] = "from_username";
-    locala.ujN.put("from_username", "TEXT");
+    locala.yrM.put("from_username", "TEXT");
     localStringBuilder.append(" from_username TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "status";
-    locala.ujN.put("status", "INTEGER");
+    locala.yrM.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
     locala.columns[4] = "delete_state_flag";
-    locala.ujN.put("delete_state_flag", "INTEGER");
+    locala.yrM.put("delete_state_flag", "INTEGER");
     localStringBuilder.append(" delete_state_flag INTEGER");
     localStringBuilder.append(", ");
     locala.columns[5] = "local_updateTime";
-    locala.ujN.put("local_updateTime", "LONG");
+    locala.yrM.put("local_updateTime", "LONG");
     localStringBuilder.append(" local_updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[6] = "updateTime";
-    locala.ujN.put("updateTime", "LONG");
+    locala.yrM.put("updateTime", "LONG");
     localStringBuilder.append(" updateTime LONG");
     localStringBuilder.append(", ");
     locala.columns[7] = "updateSeq";
-    locala.ujN.put("updateSeq", "LONG");
+    locala.yrM.put("updateSeq", "LONG");
     localStringBuilder.append(" updateSeq LONG");
     localStringBuilder.append(", ");
     locala.columns[8] = "create_time";
-    locala.ujN.put("create_time", "LONG");
+    locala.yrM.put("create_time", "LONG");
     localStringBuilder.append(" create_time LONG");
     localStringBuilder.append(", ");
     locala.columns[9] = "begin_time";
-    locala.ujN.put("begin_time", "LONG");
+    locala.yrM.put("begin_time", "LONG");
     localStringBuilder.append(" begin_time LONG");
     localStringBuilder.append(", ");
     locala.columns[10] = "end_time";
-    locala.ujN.put("end_time", "LONG");
+    locala.yrM.put("end_time", "LONG");
     localStringBuilder.append(" end_time LONG");
     localStringBuilder.append(", ");
     locala.columns[11] = "block_mask";
-    locala.ujN.put("block_mask", "TEXT");
+    locala.yrM.put("block_mask", "TEXT");
     localStringBuilder.append(" block_mask TEXT");
     localStringBuilder.append(", ");
     locala.columns[12] = "dataInfoData";
-    locala.ujN.put("dataInfoData", "BLOB");
+    locala.yrM.put("dataInfoData", "BLOB");
     localStringBuilder.append(" dataInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[13] = "cardTpInfoData";
-    locala.ujN.put("cardTpInfoData", "BLOB");
+    locala.yrM.put("cardTpInfoData", "BLOB");
     localStringBuilder.append(" cardTpInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[14] = "shareInfoData";
-    locala.ujN.put("shareInfoData", "BLOB");
+    locala.yrM.put("shareInfoData", "BLOB");
     localStringBuilder.append(" shareInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[15] = "shopInfoData";
-    locala.ujN.put("shopInfoData", "BLOB");
+    locala.yrM.put("shopInfoData", "BLOB");
     localStringBuilder.append(" shopInfoData BLOB");
     localStringBuilder.append(", ");
     locala.columns[16] = "stickyIndex";
-    locala.ujN.put("stickyIndex", "INTEGER");
+    locala.yrM.put("stickyIndex", "INTEGER");
     localStringBuilder.append(" stickyIndex INTEGER");
     localStringBuilder.append(", ");
     locala.columns[17] = "stickyEndTime";
-    locala.ujN.put("stickyEndTime", "INTEGER");
+    locala.yrM.put("stickyEndTime", "INTEGER");
     localStringBuilder.append(" stickyEndTime INTEGER");
     localStringBuilder.append(", ");
     locala.columns[18] = "stickyAnnouncement";
-    locala.ujN.put("stickyAnnouncement", "TEXT");
+    locala.yrM.put("stickyAnnouncement", "TEXT");
     localStringBuilder.append(" stickyAnnouncement TEXT");
     localStringBuilder.append(", ");
     locala.columns[19] = "card_type";
-    locala.ujN.put("card_type", "INTEGER default '-1' ");
+    locala.yrM.put("card_type", "INTEGER default '-1' ");
     localStringBuilder.append(" card_type INTEGER default '-1' ");
     localStringBuilder.append(", ");
     locala.columns[20] = "label_wording";
-    locala.ujN.put("label_wording", "TEXT");
+    locala.yrM.put("label_wording", "TEXT");
     localStringBuilder.append(" label_wording TEXT");
     localStringBuilder.append(", ");
     locala.columns[21] = "is_dynamic";
-    locala.ujN.put("is_dynamic", "INTEGER");
+    locala.yrM.put("is_dynamic", "INTEGER");
     localStringBuilder.append(" is_dynamic INTEGER");
     locala.columns[22] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    CREATOR = new CardInfo.1();
+    AppMethodBeat.o(87823);
   }
   
   public CardInfo()
   {
+    this.kns = true;
+    this.kmp = "";
     this.field_card_type = -1;
   }
   
   public CardInfo(Parcel paramParcel)
   {
+    AppMethodBeat.i(87817);
+    this.kns = true;
+    this.kmp = "";
     this.field_card_id = paramParcel.readString();
     this.field_card_tp_id = paramParcel.readString();
     this.field_from_username = paramParcel.readString();
@@ -198,300 +207,531 @@ public class CardInfo
         i += 1;
       }
     }
+    AppMethodBeat.o(87817);
   }
   
-  public final void a(lv paramlv)
+  public final void Hx(String paramString)
   {
-    this.imt = paramlv;
-    if (this.imt != null)
-    {
-      this.field_status = this.imt.status;
-      if (paramlv == null) {}
-    }
+    this.field_from_username = paramString;
+  }
+  
+  public final void a(ccf paramccf)
+  {
+    AppMethodBeat.i(87814);
+    this.knq = paramccf;
+    if (paramccf != null) {}
     try
     {
-      this.field_dataInfoData = paramlv.toByteArray();
+      this.field_shareInfoData = paramccf.toByteArray();
+      AppMethodBeat.o(87814);
       return;
     }
-    catch (Exception paramlv)
+    catch (Exception paramccf)
     {
-      y.e("MicroMsg.CardInfo", "setDataInfo fail, ex = %s", new Object[] { paramlv.getMessage() });
-      y.printErrStackTrace("MicroMsg.CardInfo", paramlv, "", new Object[0]);
+      ab.e("MicroMsg.CardInfo", "setShareInfo fail, ex = %s", new Object[] { paramccf.getMessage() });
+      ab.printErrStackTrace("MicroMsg.CardInfo", paramccf, "", new Object[0]);
+      AppMethodBeat.o(87814);
     }
   }
   
-  public final void a(mb parammb)
+  public final void a(oj paramoj)
   {
-    this.imv = parammb;
-    if (parammb != null) {}
-    try
+    AppMethodBeat.i(87812);
+    this.knp = paramoj;
+    if (this.knp != null)
     {
-      this.field_shopInfoData = parammb.toByteArray();
-      return;
-    }
-    catch (Exception parammb)
-    {
-      y.e("MicroMsg.CardInfo", "setShopInfo fail, ex = %s", new Object[] { parammb.getMessage() });
-      y.printErrStackTrace("MicroMsg.CardInfo", parammb, "", new Object[0]);
-    }
-  }
-  
-  public final mb azA()
-  {
-    if (this.imv != null) {
-      return this.imv;
-    }
-    try
-    {
-      if (this.field_shopInfoData != null)
+      this.field_status = this.knp.status;
+      if (paramoj != null) {}
+      try
       {
-        this.imv = ((mb)new mb().aH(this.field_shopInfoData));
-        return this.imv;
+        this.field_dataInfoData = paramoj.toByteArray();
+        AppMethodBeat.o(87812);
+        return;
       }
-      return null;
+      catch (Exception paramoj)
+      {
+        ab.e("MicroMsg.CardInfo", "setDataInfo fail, ex = %s", new Object[] { paramoj.getMessage() });
+        ab.printErrStackTrace("MicroMsg.CardInfo", paramoj, "", new Object[0]);
+      }
     }
-    catch (Exception localException)
+    AppMethodBeat.o(87812);
+  }
+  
+  public final void a(oz paramoz)
+  {
+    AppMethodBeat.i(87816);
+    this.knr = paramoz;
+    if (paramoz != null) {}
+    try
     {
-      y.e("MicroMsg.CardInfo", "getShopInfo fail ex = %s", new Object[] { localException.getMessage() });
-      y.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      this.field_shopInfoData = paramoz.toByteArray();
+      AppMethodBeat.o(87816);
+      return;
     }
-    return null;
-  }
-  
-  public final String azB()
-  {
-    return this.field_card_id;
-  }
-  
-  public final String azC()
-  {
-    return this.field_card_tp_id;
-  }
-  
-  public final String azD()
-  {
-    return this.field_from_username;
-  }
-  
-  public final long azE()
-  {
-    return this.field_local_updateTime;
-  }
-  
-  public final String azF()
-  {
-    return null;
-  }
-  
-  public final int azG()
-  {
-    return 0;
-  }
-  
-  public final String azH()
-  {
-    y.d("MicroMsg.CardInfo", "encrypt_code:" + this.ils);
-    return this.ils;
-  }
-  
-  public final boolean azd()
-  {
-    return (azx() != null) && (azx().sIH == 0);
-  }
-  
-  public final boolean aze()
-  {
-    return (azx() != null) && (azx().sIH == 1);
-  }
-  
-  public final boolean azf()
-  {
-    return (azx() != null) && (azx().ilo == 10);
-  }
-  
-  public final boolean azg()
-  {
-    return (azx() != null) && (azx().ilo == 0);
-  }
-  
-  public final boolean azh()
-  {
-    return (azx() != null) && (azx().ilo == 20);
-  }
-  
-  public final boolean azi()
-  {
-    return (azx() != null) && (azx().ilo == 11);
-  }
-  
-  public final boolean azj()
-  {
-    return (azx() != null) && (azx().ilo == 30);
-  }
-  
-  public final boolean azk()
-  {
-    return l.oN(azx().ilo);
-  }
-  
-  public final boolean azl()
-  {
-    return (azx().sIx & 0x2) == 0;
-  }
-  
-  public final boolean azm()
-  {
-    return (azx().sIx & 0x1) == 0;
-  }
-  
-  public final boolean azn()
-  {
-    return (azx().sIA & 1L) == 0L;
-  }
-  
-  public final boolean azo()
-  {
-    return (azx().sIA & 0x10) == 0L;
-  }
-  
-  public final boolean azp()
-  {
-    return (azx().sIA & 0x2) > 0L;
-  }
-  
-  public final boolean azq()
-  {
-    return (azx().sIA & 0x20) > 0L;
-  }
-  
-  public final boolean azr()
-  {
-    return (azx().sIA & 0x4) > 0L;
-  }
-  
-  public final boolean azs()
-  {
-    return (azx().sIA & 0x8) > 0L;
-  }
-  
-  public final boolean azt()
-  {
-    return (azx() != null) && (azx().sIM == 1);
-  }
-  
-  public final boolean azu()
-  {
-    if (!isNormal()) {}
-    do
+    catch (Exception paramoz)
     {
-      return false;
-      if (this.ims != null) {
-        y.i("MicroMsg.CardInfo", "is_acceptable:" + this.ims.sIN);
-      }
-      y.i("MicroMsg.CardInfo", "avail_num:" + this.imt.sHw);
-      if ((this.ims != null) && (this.ims.sIN == 1)) {
-        return true;
-      }
-      if (this.imt.sHw > 0) {
-        return true;
-      }
-    } while (((this.ims != null) && (this.ims.sIN == 0)) || (this.imt.sHw != 0));
+      ab.e("MicroMsg.CardInfo", "setShopInfo fail, ex = %s", new Object[] { paramoz.getMessage() });
+      ab.printErrStackTrace("MicroMsg.CardInfo", paramoz, "", new Object[0]);
+      AppMethodBeat.o(87816);
+    }
+  }
+  
+  public final void a(pg parampg)
+  {
+    AppMethodBeat.i(87810);
+    this.kno = parampg;
+    if (parampg != null) {}
+    try
+    {
+      this.field_cardTpInfoData = parampg.toByteArray();
+      AppMethodBeat.o(87810);
+      return;
+    }
+    catch (Exception parampg)
+    {
+      ab.e("MicroMsg.CardInfo", "setCardTpInfo fail, ex = %s", new Object[] { parampg.getMessage() });
+      AppMethodBeat.o(87810);
+    }
+  }
+  
+  public final boolean baJ()
+  {
+    AppMethodBeat.i(87819);
+    if ((bbd() != null) && (bbd().wGq == 0))
+    {
+      AppMethodBeat.o(87819);
+      return true;
+    }
+    AppMethodBeat.o(87819);
     return false;
   }
   
-  public final boolean azv()
+  public final boolean baK()
   {
-    if ((this.ims == null) || (this.ims.sIE == null) || (TextUtils.isEmpty(this.ims.sIE.text))) {}
-    ly locally;
-    int i;
-    int j;
-    do
+    AppMethodBeat.i(87820);
+    if ((bbd() != null) && (bbd().wGq == 1))
     {
+      AppMethodBeat.o(87820);
+      return true;
+    }
+    AppMethodBeat.o(87820);
+    return false;
+  }
+  
+  public final boolean baL()
+  {
+    AppMethodBeat.i(87792);
+    if ((bbd() != null) && (bbd().iFL == 10))
+    {
+      AppMethodBeat.o(87792);
+      return true;
+    }
+    AppMethodBeat.o(87792);
+    return false;
+  }
+  
+  public final boolean baM()
+  {
+    AppMethodBeat.i(87793);
+    if ((bbd() != null) && (bbd().iFL == 0))
+    {
+      AppMethodBeat.o(87793);
+      return true;
+    }
+    AppMethodBeat.o(87793);
+    return false;
+  }
+  
+  public final boolean baN()
+  {
+    AppMethodBeat.i(87794);
+    if ((bbd() != null) && (bbd().iFL == 20))
+    {
+      AppMethodBeat.o(87794);
+      return true;
+    }
+    AppMethodBeat.o(87794);
+    return false;
+  }
+  
+  public final boolean baO()
+  {
+    AppMethodBeat.i(87795);
+    if ((bbd() != null) && (bbd().iFL == 11))
+    {
+      AppMethodBeat.o(87795);
+      return true;
+    }
+    AppMethodBeat.o(87795);
+    return false;
+  }
+  
+  public final boolean baP()
+  {
+    AppMethodBeat.i(87796);
+    if ((bbd() != null) && (bbd().iFL == 30))
+    {
+      AppMethodBeat.o(87796);
+      return true;
+    }
+    AppMethodBeat.o(87796);
+    return false;
+  }
+  
+  public final boolean baQ()
+  {
+    AppMethodBeat.i(87797);
+    boolean bool = l.sX(bbd().iFL);
+    AppMethodBeat.o(87797);
+    return bool;
+  }
+  
+  public final boolean baR()
+  {
+    AppMethodBeat.i(87798);
+    if ((bbd().wGg & 0x2) == 0)
+    {
+      AppMethodBeat.o(87798);
+      return true;
+    }
+    AppMethodBeat.o(87798);
+    return false;
+  }
+  
+  public final boolean baS()
+  {
+    AppMethodBeat.i(87799);
+    if ((bbd().wGg & 0x1) == 0)
+    {
+      AppMethodBeat.o(87799);
+      return true;
+    }
+    AppMethodBeat.o(87799);
+    return false;
+  }
+  
+  public final boolean baT()
+  {
+    AppMethodBeat.i(87800);
+    if ((bbd().wGj & 1L) == 0L)
+    {
+      AppMethodBeat.o(87800);
+      return true;
+    }
+    AppMethodBeat.o(87800);
+    return false;
+  }
+  
+  public final boolean baU()
+  {
+    AppMethodBeat.i(87801);
+    if ((bbd().wGj & 0x10) == 0L)
+    {
+      AppMethodBeat.o(87801);
+      return true;
+    }
+    AppMethodBeat.o(87801);
+    return false;
+  }
+  
+  public final boolean baV()
+  {
+    AppMethodBeat.i(87802);
+    if ((bbd().wGj & 0x2) > 0L)
+    {
+      AppMethodBeat.o(87802);
+      return true;
+    }
+    AppMethodBeat.o(87802);
+    return false;
+  }
+  
+  public final boolean baW()
+  {
+    AppMethodBeat.i(87803);
+    if ((bbd().wGj & 0x20) > 0L)
+    {
+      AppMethodBeat.o(87803);
+      return true;
+    }
+    AppMethodBeat.o(87803);
+    return false;
+  }
+  
+  public final boolean baX()
+  {
+    AppMethodBeat.i(87804);
+    if ((bbd().wGj & 0x4) > 0L)
+    {
+      AppMethodBeat.o(87804);
+      return true;
+    }
+    AppMethodBeat.o(87804);
+    return false;
+  }
+  
+  public final boolean baY()
+  {
+    AppMethodBeat.i(87805);
+    if ((bbd().wGj & 0x8) > 0L)
+    {
+      AppMethodBeat.o(87805);
+      return true;
+    }
+    AppMethodBeat.o(87805);
+    return false;
+  }
+  
+  public final boolean baZ()
+  {
+    AppMethodBeat.i(87822);
+    if ((bbd() != null) && (bbd().wGv == 1))
+    {
+      AppMethodBeat.o(87822);
+      return true;
+    }
+    AppMethodBeat.o(87822);
+    return false;
+  }
+  
+  public final boolean bba()
+  {
+    AppMethodBeat.i(87807);
+    if (!isNormal())
+    {
+      AppMethodBeat.o(87807);
       return false;
-      locally = this.ims.sIE;
-      i = (int)(System.currentTimeMillis() / 1000L);
-      j = locally.nZA;
-    } while ((locally.nZA <= 0) || (j - i <= 0));
-    return true;
+    }
+    if (this.kno != null) {
+      ab.i("MicroMsg.CardInfo", "is_acceptable:" + this.kno.wGw);
+    }
+    ab.i("MicroMsg.CardInfo", "avail_num:" + this.knp.wDS);
+    if ((this.kno != null) && (this.kno.wGw == 1))
+    {
+      AppMethodBeat.o(87807);
+      return true;
+    }
+    if (this.knp.wDS > 0)
+    {
+      AppMethodBeat.o(87807);
+      return true;
+    }
+    if ((this.kno != null) && (this.kno.wGw == 0))
+    {
+      AppMethodBeat.o(87807);
+      return false;
+    }
+    if (this.knp.wDS == 0)
+    {
+      AppMethodBeat.o(87807);
+      return false;
+    }
+    AppMethodBeat.o(87807);
+    return false;
   }
   
-  public final boolean azw()
+  public final boolean bbb()
   {
-    return (this.ims != null) && (this.ims.sIR == 1);
+    AppMethodBeat.i(87808);
+    if ((this.kno == null) || (this.kno.wGn == null) || (TextUtils.isEmpty(this.kno.wGn.text)))
+    {
+      AppMethodBeat.o(87808);
+      return false;
+    }
+    ov localov = this.kno.wGn;
+    int i = (int)(System.currentTimeMillis() / 1000L);
+    int j = localov.qNK;
+    if ((localov.qNK > 0) && (j - i > 0))
+    {
+      AppMethodBeat.o(87808);
+      return true;
+    }
+    AppMethodBeat.o(87808);
+    return false;
   }
   
-  public final mg azx()
+  public final boolean bbc()
   {
-    if (this.ims != null) {
-      return this.ims;
+    return (this.kno != null) && (this.kno.wGA == 1);
+  }
+  
+  public final pg bbd()
+  {
+    AppMethodBeat.i(87809);
+    pg localpg1;
+    if (this.kno != null)
+    {
+      localpg1 = this.kno;
+      AppMethodBeat.o(87809);
+      return localpg1;
     }
     try
     {
       if (this.field_cardTpInfoData != null)
       {
-        this.ims = ((mg)new mg().aH(this.field_cardTpInfoData));
-        return this.ims;
+        this.kno = ((pg)new pg().parseFrom(this.field_cardTpInfoData));
+        localpg1 = this.kno;
+        AppMethodBeat.o(87809);
+        return localpg1;
       }
-      mg localmg = new mg();
-      return localmg;
+      localpg1 = new pg();
+      AppMethodBeat.o(87809);
+      return localpg1;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.CardInfo", "getCardTpInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      y.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      ab.e("MicroMsg.CardInfo", "getCardTpInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ab.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      pg localpg2 = new pg();
+      AppMethodBeat.o(87809);
+      return localpg2;
     }
-    return new mg();
   }
   
-  public final lv azy()
+  public final oj bbe()
   {
-    if (this.imt != null) {
-      return this.imt;
+    AppMethodBeat.i(87811);
+    oj localoj1;
+    if (this.knp != null)
+    {
+      localoj1 = this.knp;
+      AppMethodBeat.o(87811);
+      return localoj1;
     }
     try
     {
       if (this.field_dataInfoData != null)
       {
-        this.imt = ((lv)new lv().aH(this.field_dataInfoData));
-        return this.imt;
+        this.knp = ((oj)new oj().parseFrom(this.field_dataInfoData));
+        localoj1 = this.knp;
+        AppMethodBeat.o(87811);
+        return localoj1;
       }
-      lv locallv = new lv();
-      return locallv;
+      localoj1 = new oj();
+      AppMethodBeat.o(87811);
+      return localoj1;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.CardInfo", "getDataInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      y.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      ab.e("MicroMsg.CardInfo", "getDataInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ab.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      oj localoj2 = new oj();
+      AppMethodBeat.o(87811);
+      return localoj2;
     }
-    return new lv();
   }
   
-  public final bru azz()
+  public final ccf bbf()
   {
-    if (this.imu != null) {
-      return this.imu;
+    AppMethodBeat.i(87813);
+    ccf localccf1;
+    if (this.knq != null)
+    {
+      localccf1 = this.knq;
+      AppMethodBeat.o(87813);
+      return localccf1;
     }
     try
     {
       if (this.field_shareInfoData != null)
       {
-        this.imu = ((bru)new bru().aH(this.field_shareInfoData));
-        return this.imu;
+        this.knq = ((ccf)new ccf().parseFrom(this.field_shareInfoData));
+        localccf1 = this.knq;
+        AppMethodBeat.o(87813);
+        return localccf1;
       }
-      bru localbru = new bru();
-      return localbru;
+      localccf1 = new ccf();
+      AppMethodBeat.o(87813);
+      return localccf1;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.CardInfo", "getShareInfo fail, ex = %s", new Object[] { localException.getMessage() });
-      y.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      ab.e("MicroMsg.CardInfo", "getShareInfo fail, ex = %s", new Object[] { localException.getMessage() });
+      ab.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      ccf localccf2 = new ccf();
+      AppMethodBeat.o(87813);
+      return localccf2;
     }
-    return new bru();
+  }
+  
+  public final oz bbg()
+  {
+    AppMethodBeat.i(87815);
+    oz localoz;
+    if (this.knr != null)
+    {
+      localoz = this.knr;
+      AppMethodBeat.o(87815);
+      return localoz;
+    }
+    try
+    {
+      if (this.field_shopInfoData != null)
+      {
+        this.knr = ((oz)new oz().parseFrom(this.field_shopInfoData));
+        localoz = this.knr;
+        AppMethodBeat.o(87815);
+        return localoz;
+      }
+      AppMethodBeat.o(87815);
+      return null;
+    }
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.CardInfo", "getShopInfo fail ex = %s", new Object[] { localException.getMessage() });
+      ab.printErrStackTrace("MicroMsg.CardInfo", localException, "", new Object[0]);
+      AppMethodBeat.o(87815);
+    }
+    return null;
+  }
+  
+  public final String bbh()
+  {
+    return this.field_card_id;
+  }
+  
+  public final String bbi()
+  {
+    return this.field_card_tp_id;
+  }
+  
+  public final String bbj()
+  {
+    return this.field_from_username;
+  }
+  
+  public final long bbk()
+  {
+    return this.field_local_updateTime;
+  }
+  
+  public final String bbl()
+  {
+    return null;
+  }
+  
+  public final int bbm()
+  {
+    return 0;
+  }
+  
+  public final String bbn()
+  {
+    AppMethodBeat.i(87821);
+    ab.d("MicroMsg.CardInfo", "encrypt_code:" + this.kmp);
+    String str = this.kmp;
+    AppMethodBeat.o(87821);
+    return str;
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  public c.a getDBInfo()
+  {
+    return info;
   }
   
   public final long getEndTime()
@@ -501,39 +741,49 @@ public class CardInfo
   
   public final boolean isAcceptable()
   {
-    if (!isNormal()) {}
-    do
+    AppMethodBeat.i(87806);
+    if (!isNormal())
     {
+      AppMethodBeat.o(87806);
       return false;
-      if (this.ims != null) {
-        y.i("MicroMsg.CardInfo", "is_acceptable:" + this.ims.sIN);
-      }
-      y.i("MicroMsg.CardInfo", "stock_num:" + this.imt.sHz + " limit_num:" + this.imt.sHA);
-      if ((this.ims != null) && (this.ims.sIN == 1)) {
-        return true;
-      }
-    } while (((this.ims != null) && (this.ims.sIN == 0)) || (this.imt.sHz == 0L) || (this.imt.sHA != 0));
+    }
+    if (this.kno != null) {
+      ab.i("MicroMsg.CardInfo", "is_acceptable:" + this.kno.wGw);
+    }
+    ab.i("MicroMsg.CardInfo", "stock_num:" + this.knp.wDV + " limit_num:" + this.knp.wDW);
+    if ((this.kno != null) && (this.kno.wGw == 1))
+    {
+      AppMethodBeat.o(87806);
+      return true;
+    }
+    if ((this.kno != null) && (this.kno.wGw == 0))
+    {
+      AppMethodBeat.o(87806);
+      return false;
+    }
+    if ((this.knp.wDV == 0L) || (this.knp.wDW == 0))
+    {
+      AppMethodBeat.o(87806);
+      return false;
+    }
+    AppMethodBeat.o(87806);
     return false;
   }
   
   public final boolean isNormal()
   {
-    return (this.imt != null) && (this.imt.status == 0);
+    return (this.knp != null) && (this.knp.status == 0);
   }
   
-  public final String oL(int paramInt)
+  public final String sV(int paramInt)
   {
     return null;
-  }
-  
-  protected final c.a rM()
-  {
-    return buS;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 0;
+    AppMethodBeat.i(87818);
     paramParcel.writeString(this.field_card_id);
     paramParcel.writeString(this.field_card_tp_id);
     paramParcel.writeString(this.field_from_username);
@@ -593,18 +843,16 @@ public class CardInfo
         paramParcel.writeByte(this.field_shopInfoData[paramInt]);
         paramInt += 1;
       }
+      AppMethodBeat.o(87818);
+      return;
     }
     paramParcel.writeInt(0);
-  }
-  
-  public final void xW(String paramString)
-  {
-    this.field_from_username = paramString;
+    AppMethodBeat.o(87818);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.CardInfo
  * JD-Core Version:    0.7.0.1
  */

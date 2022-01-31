@@ -1,8 +1,28 @@
 package com.tencent.mm.plugin.appbrand.game;
 
-public abstract interface b
+import com.tencent.luggage.game.e.a.a.a.a;
+import com.tencent.luggage.sdk.b.a.c.e;
+import com.tencent.magicbrush.MBRuntime;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+public final class b
+  extends com.tencent.mm.plugin.appbrand.service.c
 {
-  public abstract void g(Runnable paramRunnable);
+  public b()
+  {
+    super(new a.a());
+    AppMethodBeat.i(143109);
+    AppMethodBeat.o(143109);
+  }
+  
+  public final MBRuntime aAr()
+  {
+    e locale = this.bEO;
+    if ((locale instanceof a)) {
+      return ((a)locale).bBi.bzF.bzI;
+    }
+    return null;
+  }
 }
 
 

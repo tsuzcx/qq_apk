@@ -1,41 +1,46 @@
 package com.tencent.mm.plugin.dbbackup.a;
 
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.repair.RepairKit.Callback;
 
 final class a$1
   implements RepairKit.Callback
 {
-  private int iNQ = 0;
-  private boolean iNR = false;
-  private int xL = 0;
+  private int kUT = 0;
+  private boolean kUU = false;
+  private int ym = 0;
   
   a$1(a parama, int[] paramArrayOfInt) {}
   
   public final int onProgress(String paramString, int paramInt, Cursor paramCursor)
   {
-    if (this.iNQ == 0) {
-      if (paramString.equalsIgnoreCase("message"))
-      {
-        this.iNQ = paramInt;
-        paramInt = this.xL;
-        this.xL = (paramInt + 1);
-        if (paramInt % 1000 == 0) {
-          a.b(this.iNT, new Integer[] { Integer.valueOf(2), Integer.valueOf(this.xL - 1), Integer.valueOf(a.a(this.iNT)) });
-        }
-        paramString = this.iNS;
-        paramString[0] += 1;
+    AppMethodBeat.i(19002);
+    if (this.kUT == 0) {
+      if (paramString.equalsIgnoreCase("message")) {
+        this.kUT = paramInt;
       }
     }
-    do
+    while (this.kUT == paramInt)
     {
-      return 0;
-      if (this.iNQ == paramInt) {
-        break;
+      paramInt = this.ym;
+      this.ym = (paramInt + 1);
+      if (paramInt % 1000 == 0) {
+        a.b(this.kUW, new Integer[] { Integer.valueOf(2), Integer.valueOf(this.ym - 1), Integer.valueOf(a.a(this.kUW)) });
       }
-    } while (this.iNR);
-    this.iNR = true;
-    a.a(this.iNT, new Integer[] { Integer.valueOf(3) });
+      paramString = this.kUV;
+      paramString[0] += 1;
+      AppMethodBeat.o(19002);
+      return 0;
+      AppMethodBeat.o(19002);
+      return 0;
+    }
+    if (!this.kUU)
+    {
+      this.kUU = true;
+      a.a(this.kUW, new Integer[] { Integer.valueOf(3) });
+    }
+    AppMethodBeat.o(19002);
     return 0;
   }
 }

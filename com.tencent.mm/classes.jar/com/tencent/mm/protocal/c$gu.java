@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$gu
+final class c$gu
   extends c.g
 {
   public c$gu()
   {
-    super("reportIDKey", "reportIDKey", 163, false);
+    super("preloadMiniProgramContacts", "preloadMiniProgramContacts", 303, false);
   }
 }
 

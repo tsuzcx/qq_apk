@@ -1,13 +1,15 @@
 package com.tencent.mm.plugin.record.ui;
 
 import android.content.Context;
-import com.tencent.mm.plugin.record.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.record.a.d;
+import com.tencent.mm.plugin.record.a.i;
 import com.tencent.mm.plugin.record.ui.a.b;
 import java.util.List;
 
 public final class e
   extends h
-  implements c
+  implements d
 {
   int fromScene = 0;
   
@@ -16,25 +18,29 @@ public final class e
     super(paramContext, parama);
   }
   
-  public final void a(int paramInt, com.tencent.mm.plugin.record.a.f paramf)
+  public final void a(int paramInt, i parami)
   {
-    bvK();
+    AppMethodBeat.i(24223);
+    cgb();
+    AppMethodBeat.o(24223);
   }
   
   public final void a(a parama)
   {
-    this.ntO = parama;
-    this.ntu.clear();
-    this.ntu.addAll(parama.ntu);
+    AppMethodBeat.i(24222);
+    this.pZv = parama;
+    this.pZa.clear();
+    this.pZa.addAll(parama.pZa);
     notifyDataSetChanged();
+    AppMethodBeat.o(24222);
   }
   
   public final void d(b paramb)
   {
-    paramb.aYU = 0;
+    paramb.dataType = 0;
     paramb.fromScene = this.fromScene;
-    paramb.bIt = ((f)this.ntO).bIt;
-    paramb.bWL = ((f)this.ntO).bWL;
+    paramb.cpO = ((f)this.pZv).cpO;
+    paramb.cEB = ((f)this.pZv).cEB;
   }
 }
 

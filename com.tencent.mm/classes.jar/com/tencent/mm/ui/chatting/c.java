@@ -2,168 +2,175 @@ package com.tencent.mm.ui.chatting;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.s;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bf;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.d;
 import com.tencent.mm.pluginsdk.model.app.g;
-import com.tencent.mm.pluginsdk.model.app.t;
 import com.tencent.mm.pluginsdk.model.app.x;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.h.c;
-import com.tencent.mm.ui.chatting.c.a;
-import com.tencent.mm.ui.chatting.viewitems.aw;
-import com.tencent.mm.ui.w.a;
+import com.tencent.mm.ui.chatting.d.a;
+import com.tencent.mm.ui.chatting.viewitems.az;
+import com.tencent.mm.ui.v.a;
 
 public final class c
-  implements View.OnClickListener, f, t
+  implements View.OnClickListener, f, com.tencent.mm.pluginsdk.model.app.t
 {
-  private ProgressDialog dnm;
-  private a vhq;
+  private ProgressDialog eeN;
+  private a zwk;
   
   public c(a parama)
   {
-    this.vhq = parama;
+    this.zwk = parama;
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString, x paramx)
   {
-    y.d("MicroMsg.AppSpamClickListener", "appsettings errType = " + paramInt1 + ", errCode = " + paramInt2);
-    if ((this.dnm != null) && (this.dnm.isShowing()))
+    AppMethodBeat.i(30384);
+    ab.d("MicroMsg.AppSpamClickListener", "appsettings errType = " + paramInt1 + ", errCode = " + paramInt2);
+    if ((this.eeN != null) && (this.eeN.isShowing()))
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
-    ap.brq().b(2, this);
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      h.bC(this.vhq.vtz.getContext(), this.vhq.vtz.getMMResources().getString(R.l.game_refuse_message_ok));
-    }
-    while (w.a.a(this.vhq.vtz.getContext(), paramInt1, paramInt2, paramString, 4)) {
+    al.caf().b(2, this);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      h.bO(this.zwk.zJz.getContext(), this.zwk.zJz.getMMResources().getString(2131300445));
+      AppMethodBeat.o(30384);
       return;
     }
-    Toast.makeText(this.vhq.vtz.getContext(), this.vhq.vtz.getMMResources().getString(R.l.game_liset_set_refuse_msg_failed, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    if (v.a.a(this.zwk.zJz.getContext(), paramInt1, paramInt2, paramString, 4))
+    {
+      AppMethodBeat.o(30384);
+      return;
+    }
+    Toast.makeText(this.zwk.zJz.getContext(), this.zwk.zJz.getMMResources().getString(2131300391, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    AppMethodBeat.o(30384);
   }
   
   public final void onClick(View paramView)
   {
     boolean bool = true;
     int i = 0;
+    AppMethodBeat.i(30383);
     if (paramView.getTag() == null)
     {
-      y.e("MicroMsg.AppSpamClickListener", "onClick tag is null");
+      ab.e("MicroMsg.AppSpamClickListener", "onClick tag is null");
+      AppMethodBeat.o(30383);
       return;
     }
     Object localObject1;
-    if ((paramView.getTag() instanceof aw))
+    if ((paramView.getTag() instanceof az))
     {
-      localObject1 = (aw)paramView.getTag();
+      localObject1 = (az)paramView.getTag();
       if (localObject1 == null)
       {
-        y.e("MicroMsg.AppSpamClickListener", "ItemDataTag is null");
+        ab.e("MicroMsg.AppSpamClickListener", "ItemDataTag is null");
+        AppMethodBeat.o(30383);
         return;
       }
-      paramView = ((aw)localObject1).bWy.appId;
-      if (bk.bl(paramView))
+      paramView = ((az)localObject1).cEn.appId;
+      if (bo.isNullOrNil(paramView)) {
+        ab.e("MicroMsg.AppSpamClickListener", "appId is null or nil");
+      }
+      while (i == 0)
       {
-        y.e("MicroMsg.AppSpamClickListener", "appId is null or nil");
-        label74:
-        if (i == 0) {
-          break label271;
+        AppMethodBeat.o(30383);
+        return;
+        if (g.ca(paramView, false) == null) {
+          ab.e("MicroMsg.AppSpamClickListener", "get null appinfo : appid = ".concat(String.valueOf(paramView)));
+        } else {
+          i = 1;
         }
-        ap.brq().a(2, this);
-        if (!this.vhq.cFE()) {
-          break label273;
-        }
+      }
+      al.caf().a(2, this);
+      if (this.zwk.dJG())
+      {
         i = 2;
-        label98:
-        paramView = this.vhq.getTalkerUserName();
-        if (!s.fn(paramView)) {
-          break label472;
+        paramView = this.zwk.getTalkerUserName();
+        if (!com.tencent.mm.model.t.lA(paramView)) {
+          break label509;
         }
-        paramView = bd.iI(((aw)localObject1).bWO.field_content);
+        paramView = bf.pu(((az)localObject1).cEE.field_content);
       }
     }
-    label271:
-    label273:
-    label472:
+    label509:
     for (;;)
     {
-      localObject1 = ((aw)localObject1).bWy;
-      h.a(this.vhq.vtz.getContext(), this.vhq.vtz.getMMResources().getString(R.l.app_message_setting_confirm), this.vhq.vtz.getMMResources().getString(R.l.app_message_setting_title), this.vhq.vtz.getMMResources().getString(R.l.ac_app_message_btn_tip), this.vhq.vtz.getMMResources().getString(R.l.refuse_app_message_btn_tip), new c.2(this, (g.a)localObject1, paramView, i), new c.3(this, (g.a)localObject1, paramView, i));
+      localObject1 = ((az)localObject1).cEn;
+      h.d(this.zwk.zJz.getContext(), this.zwk.zJz.getMMResources().getString(2131296993), this.zwk.zJz.getMMResources().getString(2131296994), this.zwk.zJz.getMMResources().getString(2131296391), this.zwk.zJz.getMMResources().getString(2131302372), new c.2(this, (j.b)localObject1, paramView, i), new c.3(this, (j.b)localObject1, paramView, i));
+      AppMethodBeat.o(30383);
       return;
-      if (g.by(paramView, false) == null)
-      {
-        y.e("MicroMsg.AppSpamClickListener", "get null appinfo : appid = " + paramView);
-        break label74;
-      }
       i = 1;
-      break label74;
       break;
-      i = 1;
-      break label98;
-      if (!(paramView.getTag() instanceof t.n)) {
-        break;
-      }
-      Object localObject2 = (t.n)paramView.getTag();
-      if (localObject2 == null)
+      if ((paramView.getTag() instanceof s.o))
       {
-        y.e("MicroMsg.AppSpamClickListener", "TemplateItemDataTag is null");
-        return;
-      }
-      if ((localObject2 == null) || (bk.bl(((t.n)localObject2).dRD)) || (((t.n)localObject2).bWO == null))
-      {
-        if (localObject2 == null) {}
-        for (;;)
+        Object localObject2 = (s.o)paramView.getTag();
+        if (localObject2 == null)
         {
-          y.e("MicroMsg.AppSpamClickListener", "wrong args, tag is null ? ", new Object[] { Boolean.valueOf(bool) });
+          ab.e("MicroMsg.AppSpamClickListener", "TemplateItemDataTag is null");
+          AppMethodBeat.o(30383);
           return;
-          bool = false;
         }
+        if ((localObject2 == null) || (bo.isNullOrNil(((s.o)localObject2).fhC)) || (((s.o)localObject2).cEE == null))
+        {
+          if (localObject2 == null) {}
+          for (;;)
+          {
+            ab.e("MicroMsg.AppSpamClickListener", "wrong args, tag is null ? ", new Object[] { Boolean.valueOf(bool) });
+            AppMethodBeat.o(30383);
+            return;
+            bool = false;
+          }
+        }
+        paramView = this.zwk.zJz.getMMResources().getString(2131304270);
+        localObject1 = this.zwk.zJz.getMMResources().getString(2131304271);
+        String str = this.zwk.zJz.getMMResources().getString(2131296888);
+        Activity localActivity = this.zwk.zJz.getContext();
+        localObject2 = new c.1(this, (s.o)localObject2);
+        h.a(localActivity, null, new String[] { paramView, localObject1, str }, null, true, (h.c)localObject2);
       }
-      paramView = this.vhq.vtz.getMMResources().getString(R.l.template_msg_btn_expose);
-      localObject1 = this.vhq.vtz.getMMResources().getString(R.l.template_msg_btn_refuse);
-      String str = this.vhq.vtz.getMMResources().getString(R.l.app_cancel);
-      Activity localActivity = this.vhq.vtz.getContext();
-      localObject2 = new c.1(this, (t.n)localObject2);
-      h.a(localActivity, null, new String[] { paramView, localObject1, str }, null, true, (h.c)localObject2);
+      AppMethodBeat.o(30383);
       return;
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if ((this.dnm != null) && (this.dnm.isShowing()))
+    AppMethodBeat.i(30385);
+    if ((this.eeN != null) && (this.eeN.isShowing()))
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
-    au.Dk().b(1030, this);
+    aw.Rc().b(1030, this);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      h.bC(this.vhq.vtz.getContext(), this.vhq.vtz.getMMResources().getString(R.l.game_refuse_message_ok));
+      h.bO(this.zwk.zJz.getContext(), this.zwk.zJz.getMMResources().getString(2131300445));
+      AppMethodBeat.o(30385);
       return;
     }
-    Toast.makeText(this.vhq.vtz.getContext(), this.vhq.vtz.getMMResources().getString(R.l.template_msg_refuse_success, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    Toast.makeText(this.zwk.zJz.getContext(), this.zwk.zJz.getMMResources().getString(2131304272, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+    AppMethodBeat.o(30385);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.c
  * JD-Core Version:    0.7.0.1
  */

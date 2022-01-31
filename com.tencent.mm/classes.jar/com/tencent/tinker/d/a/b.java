@@ -2,7 +2,7 @@ package com.tencent.tinker.d.a;
 
 public abstract class b
 {
-  public abstract void cQU();
+  public abstract void dWJ();
   
   public abstract int readInt();
   

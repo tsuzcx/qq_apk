@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="@dimen/m0" style="@style/lx"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/bjn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/n9" android:maxLines="2" android:layout_centerVertical="true" style="@style/ln" />
+</RelativeLayout>

@@ -1,45 +1,75 @@
 package com.tencent.mm.sdk.platformtools;
 
-import java.io.FileInputStream;
-import java.io.FilterInputStream;
-import java.nio.channels.FileChannel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
-  extends FilterInputStream
 {
-  private long asE = 0L;
+  public static String jDr = "]]>";
+  public StringBuffer jDt;
+  public String ymP;
   
-  public i(FileInputStream paramFileInputStream)
+  public i()
   {
-    super(paramFileInputStream);
+    AppMethodBeat.i(51972);
+    this.ymP = "";
+    this.jDt = new StringBuffer();
+    AppMethodBeat.o(51972);
   }
   
-  public final void mark(int paramInt)
+  public i(String paramString)
   {
-    try
+    AppMethodBeat.i(51973);
+    this.ymP = "";
+    this.jDt = new StringBuffer();
+    this.ymP = paramString;
+    Gp(this.ymP);
+    AppMethodBeat.o(51973);
+  }
+  
+  private void Gp(String paramString)
+  {
+    AppMethodBeat.i(51974);
+    this.jDt.append("<" + paramString + ">");
+    AppMethodBeat.o(51974);
+  }
+  
+  private void setText(String paramString)
+  {
+    AppMethodBeat.i(51976);
+    if (bo.isNullOrNil(paramString))
     {
-      this.asE = ((FileInputStream)this.in).getChannel().position();
+      AppMethodBeat.o(51976);
       return;
     }
-    catch (Exception localException)
+    if (paramString.contains(jDr))
     {
-      y.printErrStackTrace("MicroMsg.FileSeekingInputStream", localException, "Failed seeking FileChannel.", new Object[0]);
+      this.jDt.append("<![CDATA[" + bo.apT(paramString) + "]]>");
+      AppMethodBeat.o(51976);
+      return;
     }
+    this.jDt.append("<![CDATA[" + paramString + "]]>");
+    AppMethodBeat.o(51976);
   }
   
-  public final boolean markSupported()
+  public final void Gq(String paramString)
   {
-    return true;
+    AppMethodBeat.i(51975);
+    this.jDt.append("</" + paramString + ">");
+    AppMethodBeat.o(51975);
   }
   
-  public final void reset()
+  public final void da(String paramString1, String paramString2)
   {
-    ((FileInputStream)this.in).getChannel().position(this.asE);
+    AppMethodBeat.i(51977);
+    Gp(paramString1);
+    setText(paramString2);
+    Gq(paramString1);
+    AppMethodBeat.o(51977);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.i
  * JD-Core Version:    0.7.0.1
  */

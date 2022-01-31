@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.fts.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.ui.widget.FTSEditTextView;
 import com.tencent.mm.plugin.fts.ui.widget.a;
 
@@ -10,8 +11,10 @@ final class FTSAddFriendUI$1
   
   public final void run()
   {
-    this.kAI.kAW.getFtsEditText().aWy();
-    this.kAI.kAW.getFtsEditText().aWx();
+    AppMethodBeat.i(61725);
+    this.mWA.mWO.getFtsEditText().bDf();
+    this.mWA.mWO.getFtsEditText().bDe();
+    AppMethodBeat.o(61725);
   }
 }
 

@@ -10,100 +10,117 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.as.a.a.c;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.plugin.websearch.a.b;
-import com.tencent.mm.ui.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a.c;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.ui.w;
 
 public class BtnSwitchFooter
   extends LinearLayout
   implements a
 {
   private Context context;
-  private c qXu;
-  private ImageView qYc;
-  private TextView qYd;
-  private View qYe;
-  private View qYf;
-  private a.a qYg;
+  private ImageView iWb;
+  private c uMJ;
+  private TextView uNq;
+  private View uNr;
+  private View uNs;
+  private a.a uNt;
   
   public BtnSwitchFooter(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(91561);
     c.a locala = new c.a();
-    locala.erf = true;
-    locala.ere = true;
-    this.qXu = locala.OV();
+    locala.eNM = true;
+    locala.eNL = true;
+    this.uMJ = locala.ahY();
     this.context = paramContext;
     init();
+    AppMethodBeat.o(91561);
   }
   
   public BtnSwitchFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(91562);
     paramAttributeSet = new c.a();
-    paramAttributeSet.erf = true;
-    paramAttributeSet.ere = true;
-    this.qXu = paramAttributeSet.OV();
+    paramAttributeSet.eNM = true;
+    paramAttributeSet.eNL = true;
+    this.uMJ = paramAttributeSet.ahY();
     this.context = paramContext;
     init();
+    AppMethodBeat.o(91562);
   }
   
   private void init()
   {
-    ViewGroup localViewGroup = (ViewGroup)y.gt(this.context).inflate(a.b.widget_footer_switch, this);
-    this.qYf = localViewGroup.findViewById(com.tencent.mm.plugin.websearch.a.a.footer_debug);
-    this.qYe = localViewGroup.findViewById(com.tencent.mm.plugin.websearch.a.a.footer_switch);
-    this.qYd = ((TextView)localViewGroup.findViewById(com.tencent.mm.plugin.websearch.a.a.footer_title));
-    this.qYc = ((ImageView)localViewGroup.findViewById(com.tencent.mm.plugin.websearch.a.a.footer_icon));
-    this.qYf.setVisibility(8);
-    this.qYe.setOnClickListener(new BtnSwitchFooter.1(this));
+    AppMethodBeat.i(91563);
+    ViewGroup localViewGroup = (ViewGroup)w.hM(this.context).inflate(2130971326, this);
+    this.uNs = localViewGroup.findViewById(2131829594);
+    this.uNr = localViewGroup.findViewById(2131829595);
+    this.uNq = ((TextView)localViewGroup.findViewById(2131829593));
+    this.iWb = ((ImageView)localViewGroup.findViewById(2131829592));
+    this.uNs.setVisibility(8);
+    this.uNr.setOnClickListener(new BtnSwitchFooter.1(this));
+    AppMethodBeat.o(91563);
   }
   
   public void setCallback(a.a parama)
   {
-    this.qYg = parama;
+    AppMethodBeat.i(91568);
+    this.uNt = parama;
     if (parama != null)
     {
-      if (parama.getItemCount() > 1) {
-        this.qYe.setVisibility(0);
+      if (parama.getItemCount() > 1)
+      {
+        this.uNr.setVisibility(0);
+        AppMethodBeat.o(91568);
+        return;
       }
+      this.uNr.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.qYe.setVisibility(8);
+    AppMethodBeat.o(91568);
   }
   
   public void setIcon(String paramString)
   {
+    AppMethodBeat.i(91567);
     if (TextUtils.isEmpty(paramString))
     {
-      this.qYc.setVisibility(8);
+      this.iWb.setVisibility(8);
+      AppMethodBeat.o(91567);
       return;
     }
-    this.qYc.setVisibility(0);
-    com.tencent.mm.as.a.a.OT().a(paramString, this.qYc, this.qXu);
+    this.iWb.setVisibility(0);
+    com.tencent.mm.at.a.a.ahM().a(paramString, this.iWb, this.uMJ);
+    AppMethodBeat.o(91567);
   }
   
   public void setSwitchClickLsn(View.OnClickListener paramOnClickListener)
   {
-    this.qYe.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.i(91564);
+    this.uNr.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(91564);
   }
   
   public void setSwitchVisible(int paramInt)
   {
-    this.qYe.setVisibility(paramInt);
+    AppMethodBeat.i(91565);
+    this.uNr.setVisibility(paramInt);
+    AppMethodBeat.o(91565);
   }
   
   public void setTitle(String paramString)
   {
-    this.qYd.setText(paramString);
+    AppMethodBeat.i(91566);
+    this.uNq.setText(paramString);
+    AppMethodBeat.o(91566);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.footer.BtnSwitchFooter
  * JD-Core Version:    0.7.0.1
  */

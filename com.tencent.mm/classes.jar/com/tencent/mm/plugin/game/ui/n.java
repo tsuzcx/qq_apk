@@ -11,532 +11,616 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.f.b;
-import com.tencent.mm.plugin.game.f.e;
 import com.tencent.mm.plugin.game.f.e.a.a;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.c;
-import com.tencent.mm.plugin.game.g.d;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.plugin.game.model.o.e;
-import com.tencent.mm.plugin.game.model.o.f;
-import com.tencent.mm.plugin.game.model.o.g;
-import com.tencent.mm.plugin.game.model.o.h;
-import com.tencent.mm.plugin.game.model.p.a;
-import com.tencent.mm.plugin.game.model.s;
+import com.tencent.mm.plugin.game.model.n.f;
+import com.tencent.mm.plugin.game.model.n.g;
+import com.tencent.mm.plugin.game.model.n.h;
+import com.tencent.mm.plugin.game.model.n.i;
+import com.tencent.mm.plugin.game.model.o.a;
+import com.tencent.mm.plugin.game.model.r;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
-import com.tencent.mm.ui.r;
-import com.tencent.mm.ui.r.a;
+import com.tencent.mm.ui.p.a;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class n
-  extends r<com.tencent.mm.plugin.game.model.o>
+  extends com.tencent.mm.ui.p<com.tencent.mm.plugin.game.model.n>
 {
-  private static w ldr;
-  private int bFo = 0;
-  int dsw = 0;
-  int iwi = 15;
-  private int kQh = 0;
-  private View.OnClickListener lds;
-  private View.OnClickListener ldt;
-  private v ldu;
-  private v ldv;
-  private long ldw = 0L;
-  private int ldx = 0;
-  private com.tencent.mm.plugin.game.model.p ldy;
-  private f<String, Bitmap> ldz;
+  private static w nBm;
+  private int cmy;
+  private int eke;
+  private int kxm;
   private Context mContext;
+  private View.OnClickListener nBn;
+  private View.OnClickListener nBo;
+  private v nBp;
+  private v nBq;
+  private long nBr;
+  private int nBs;
+  private com.tencent.mm.plugin.game.model.o nBt;
+  private f<String, Bitmap> nBu;
+  private int nok;
   
-  public n(Context paramContext, com.tencent.mm.plugin.game.model.o paramo, int paramInt)
+  public n(Context paramContext, com.tencent.mm.plugin.game.model.n paramn, int paramInt)
   {
-    super(paramContext, paramo);
+    super(paramContext, paramn);
+    AppMethodBeat.i(112068);
+    this.kxm = 15;
+    this.eke = 0;
+    this.cmy = 0;
+    this.nBr = 0L;
+    this.nok = 0;
+    this.nBs = 0;
     this.mContext = paramContext;
-    this.kQh = paramInt;
-    paramo = ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYf();
-    String str = s.n(new int[] { 2, 5, 6, 10, 11, 100 });
-    paramo = paramo.rawQuery("select count(*) from GameRawMessage where " + str + " and showInMsgList = 1 and isHidden = 0", new String[0]);
-    if (paramo == null)
+    this.nok = paramInt;
+    paramn = ((com.tencent.mm.plugin.game.api.e)g.E(com.tencent.mm.plugin.game.api.e.class)).bES();
+    String str = r.x(new int[] { 2, 5, 6, 10, 11, 100 });
+    paramn = paramn.rawQuery("select count(*) from GameRawMessage where " + str + " and showInMsgList = 1 and isHidden = 0", new String[0]);
+    if (paramn == null)
     {
-      this.dsw = i;
-      this.bFo = ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYf().aZv();
-      ldr = new w();
-      this.lds = new o(paramContext, paramInt);
-      this.ldt = new p(paramContext, paramInt);
-      this.ldu = new v(paramContext);
-      this.ldu.cY(paramInt, 1);
-      this.ldv = new v(paramContext);
-      this.ldv.cY(paramInt, 2);
-      this.ldy = new com.tencent.mm.plugin.game.model.p(paramContext, this.kQh);
+      this.eke = i;
+      this.cmy = ((com.tencent.mm.plugin.game.api.e)g.E(com.tencent.mm.plugin.game.api.e.class)).bES().bGx();
+      nBm = new w();
+      this.nBn = new o(paramContext, paramInt);
+      this.nBo = new p(paramContext, paramInt);
+      this.nBp = new v(paramContext);
+      this.nBp.ev(paramInt, 1);
+      this.nBq = new v(paramContext);
+      this.nBq.ev(paramInt, 2);
+      this.nBt = new com.tencent.mm.plugin.game.model.o(paramContext, this.nok);
       paramInt = com.tencent.mm.plugin.game.f.c.getScreenWidth(this.mContext);
-      i = this.mContext.getResources().getDimensionPixelSize(g.c.GameRankIconSize);
-      int j = this.mContext.getResources().getDimensionPixelSize(g.c.BiggerPadding);
-      int k = this.mContext.getResources().getDimensionPixelSize(g.c.MiddlePadding);
-      this.ldx = (a.ad(this.mContext, paramInt - j * 2 - i - k) / 34);
-      this.ldz = new f(30);
+      i = this.mContext.getResources().getDimensionPixelSize(2131427734);
+      int j = this.mContext.getResources().getDimensionPixelSize(2131427506);
+      int k = this.mContext.getResources().getDimensionPixelSize(2131427792);
+      this.nBs = (a.ar(this.mContext, paramInt - j * 2 - i - k) / 34);
+      this.nBu = new com.tencent.mm.memory.a.b(30, getClass());
+      AppMethodBeat.o(112068);
       return;
     }
-    if (paramo.moveToFirst()) {}
-    for (i = paramo.getInt(0);; i = 0)
+    if (paramn.moveToFirst()) {}
+    for (i = paramn.getInt(0);; i = 0)
     {
-      paramo.close();
+      paramn.close();
       break;
     }
   }
   
-  private static com.tencent.mm.plugin.game.model.o a(com.tencent.mm.plugin.game.model.o paramo, Cursor paramCursor)
+  private static com.tencent.mm.plugin.game.model.n a(com.tencent.mm.plugin.game.model.n paramn, Cursor paramCursor)
   {
-    com.tencent.mm.plugin.game.model.o localo = paramo;
-    if (paramo == null) {
-      localo = new com.tencent.mm.plugin.game.model.o();
+    AppMethodBeat.i(112077);
+    com.tencent.mm.plugin.game.model.n localn = paramn;
+    if (paramn == null) {
+      localn = new com.tencent.mm.plugin.game.model.n();
     }
-    localo.d(paramCursor);
-    return localo;
+    localn.convertFrom(paramCursor);
+    AppMethodBeat.o(112077);
+    return localn;
   }
   
-  private void a(com.tencent.mm.plugin.game.model.o paramo, n.a parama)
+  private void a(com.tencent.mm.plugin.game.model.n paramn, n.a parama)
   {
+    AppMethodBeat.i(112070);
     LinkedList localLinkedList = new LinkedList();
     int i = 1;
-    while (i < paramo.kPd.size())
+    while (i < paramn.nmZ.size())
     {
-      localLinkedList.add(paramo.kPd.get(i));
+      localLinkedList.add(paramn.nmZ.get(i));
       i += 1;
     }
-    parama.ldN.a(paramo, localLinkedList, this.ldx, this.kQh, this.ldz);
-  }
-  
-  private void c(ImageView paramImageView, String paramString)
-  {
-    if (bk.bl(paramString))
-    {
-      a.b.a(paramImageView, paramString);
-      return;
-    }
-    if (!this.ldz.aC(paramString))
-    {
-      d(paramImageView, paramString);
-      return;
-    }
-    Bitmap localBitmap = (Bitmap)this.ldz.get(paramString);
-    if ((localBitmap == null) || (localBitmap.isRecycled()))
-    {
-      d(paramImageView, paramString);
-      return;
-    }
-    paramImageView.setImageBitmap(localBitmap);
-  }
-  
-  private void d(ImageView paramImageView, String paramString)
-  {
-    paramImageView = e.baw().h(paramImageView, paramString);
-    if (paramImageView != null) {
-      this.ldz.put(paramString, paramImageView);
-    }
+    parama.nBI.a(paramn, localLinkedList, this.nBs, this.nok, this.nBu);
+    AppMethodBeat.o(112070);
   }
   
   private void e(ImageView paramImageView, String paramString)
   {
-    if (this.ldz.aC(paramString))
+    AppMethodBeat.i(112071);
+    if (bo.isNullOrNil(paramString))
     {
-      Bitmap localBitmap = (Bitmap)this.ldz.get(paramString);
-      if ((localBitmap == null) || (localBitmap.isRecycled()))
-      {
-        f(paramImageView, paramString);
-        return;
-      }
-      paramImageView.setImageBitmap(localBitmap);
+      a.b.c(paramImageView, paramString);
+      AppMethodBeat.o(112071);
       return;
     }
-    f(paramImageView, paramString);
+    if (!this.nBu.Z(paramString))
+    {
+      f(paramImageView, paramString);
+      AppMethodBeat.o(112071);
+      return;
+    }
+    Bitmap localBitmap = (Bitmap)this.nBu.get(paramString);
+    if ((localBitmap == null) || (localBitmap.isRecycled()))
+    {
+      f(paramImageView, paramString);
+      AppMethodBeat.o(112071);
+      return;
+    }
+    paramImageView.setImageBitmap(localBitmap);
+    AppMethodBeat.o(112071);
   }
   
   private void f(ImageView paramImageView, String paramString)
   {
+    AppMethodBeat.i(112072);
+    paramImageView = com.tencent.mm.plugin.game.f.e.bHE().k(paramImageView, paramString);
+    if (paramImageView != null) {
+      this.nBu.put(paramString, paramImageView);
+    }
+    AppMethodBeat.o(112072);
+  }
+  
+  private void g(ImageView paramImageView, String paramString)
+  {
+    AppMethodBeat.i(112073);
+    if (this.nBu.Z(paramString))
+    {
+      Bitmap localBitmap = (Bitmap)this.nBu.get(paramString);
+      if ((localBitmap == null) || (localBitmap.isRecycled()))
+      {
+        h(paramImageView, paramString);
+        AppMethodBeat.o(112073);
+        return;
+      }
+      paramImageView.setImageBitmap(localBitmap);
+      AppMethodBeat.o(112073);
+      return;
+    }
+    h(paramImageView, paramString);
+    AppMethodBeat.o(112073);
+  }
+  
+  private void h(ImageView paramImageView, String paramString)
+  {
+    AppMethodBeat.i(112074);
     e.a.a locala = new e.a.a();
-    locala.erd = false;
-    e.baw().a(paramImageView, paramString, locala.bax(), new n.1(this, paramString));
+    locala.eNK = false;
+    com.tencent.mm.plugin.game.f.e.bHE().a(paramImageView, paramString, locala.bHF(), new n.1(this, paramString));
+    AppMethodBeat.o(112074);
   }
   
-  private com.tencent.mm.plugin.game.model.o sl(int paramInt)
+  private com.tencent.mm.plugin.game.model.n xk(int paramInt)
   {
-    if (sk(paramInt)) {
-      localObject = (com.tencent.mm.plugin.game.model.o)this.uMg;
+    AppMethodBeat.i(112080);
+    if (xj(paramInt))
+    {
+      localn = (com.tencent.mm.plugin.game.model.n)this.zan;
+      AppMethodBeat.o(112080);
+      return localn;
     }
-    com.tencent.mm.plugin.game.model.o localo;
-    do
+    if (this.zap != null)
     {
-      return localObject;
-      if (this.uMh == null) {
-        break;
-      }
-      localo = (com.tencent.mm.plugin.game.model.o)this.uMh.get(Integer.valueOf(paramInt));
-      localObject = localo;
-    } while (localo != null);
-    if ((this.dsw > this.bFo) && (this.bFo > 0) && (paramInt > this.bFo))
-    {
-      i = 1;
-      if (i == 0) {
-        break label111;
+      localn = (com.tencent.mm.plugin.game.model.n)this.zap.get(Integer.valueOf(paramInt));
+      if (localn != null)
+      {
+        AppMethodBeat.o(112080);
+        return localn;
       }
     }
-    label111:
-    for (int i = paramInt - 1;; i = paramInt)
+    if (xl(paramInt)) {}
+    for (int i = paramInt - 1; (paramInt < 0) || (!getCursor().moveToPosition(i)); i = paramInt)
     {
-      if ((paramInt >= 0) && (getCursor().moveToPosition(i))) {
-        break label116;
-      }
+      AppMethodBeat.o(112080);
       return null;
-      i = 0;
-      break;
     }
-    label116:
-    if (this.uMh == null) {
-      return a((com.tencent.mm.plugin.game.model.o)this.uMg, getCursor());
+    if (this.zap == null)
+    {
+      localn = a((com.tencent.mm.plugin.game.model.n)this.zan, getCursor());
+      AppMethodBeat.o(112080);
+      return localn;
     }
-    Object localObject = a(null, getCursor());
-    this.uMh.put(Integer.valueOf(paramInt), localObject);
-    return localObject;
+    com.tencent.mm.plugin.game.model.n localn = a(null, getCursor());
+    this.zap.put(Integer.valueOf(paramInt), localn);
+    AppMethodBeat.o(112080);
+    return localn;
   }
   
-  public final boolean aCc()
+  private boolean xl(int paramInt)
   {
-    return this.iwi >= this.dsw;
+    return (this.eke > this.cmy) && (this.cmy > 0) && (paramInt > this.cmy);
   }
   
-  protected final int bam()
+  public final void Ku()
   {
-    if ((this.dsw > this.bFo) && (this.bFo > 0)) {
+    AppMethodBeat.i(112075);
+    r localr = ((com.tencent.mm.plugin.game.api.e)g.E(com.tencent.mm.plugin.game.api.e.class)).bES();
+    int i = this.kxm;
+    String str = r.x(new int[] { 2, 5, 6, 10, 11, 100 });
+    setCursor(localr.rawQuery("select * from GameRawMessage where " + str + " and showInMsgList = 1 and isHidden = 0 order by isRead, createTime desc limit " + i, new String[0]));
+    this.kxm = getCount();
+    if (this.zaq != null) {
+      this.zaq.apT();
+    }
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(112075);
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(112076);
+    bKb();
+    Ku();
+    AppMethodBeat.o(112076);
+  }
+  
+  public final void a(String paramString, m paramm)
+  {
+    AppMethodBeat.i(151891);
+    getCursor().close();
+    Ku();
+    AppMethodBeat.o(151891);
+  }
+  
+  public final void bHr()
+  {
+    AppMethodBeat.i(112078);
+    if (bem())
+    {
+      if (this.zaq != null) {
+        this.zaq.apT();
+      }
+      AppMethodBeat.o(112078);
+      return;
+    }
+    this.kxm += 15;
+    if (this.kxm > this.eke) {
+      this.kxm = this.eke;
+    }
+    AppMethodBeat.o(112078);
+  }
+  
+  public final int bHs()
+  {
+    if ((this.eke > this.cmy) && (this.cmy > 0)) {
       return 1;
     }
     return 0;
   }
   
+  public final boolean bem()
+  {
+    return this.kxm >= this.eke;
+  }
+  
   public final int getCount()
   {
+    AppMethodBeat.i(112079);
     if (this.count < 0) {
       this.count = getCursor().getCount();
     }
-    if (this.count <= 0) {
+    if (this.count <= 0)
+    {
+      AppMethodBeat.o(112079);
       return 0;
     }
-    return this.count + bam();
+    int i = this.count;
+    int j = bHs();
+    AppMethodBeat.o(112079);
+    return i + j;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(112069);
     n.a locala;
     View localView;
-    com.tencent.mm.plugin.game.model.o localo;
+    com.tencent.mm.plugin.game.model.n localn;
     if (paramView == null)
     {
       locala = new n.a();
-      localView = View.inflate(this.context, g.f.game_message_item, null);
-      locala.ldC = ((ImageView)localView.findViewById(g.e.icon_iv));
-      locala.ldB = ((LinearLayout)localView.findViewById(g.e.msg));
-      locala.ldD = ((LinearLayout)localView.findViewById(g.e.msg_content));
-      locala.doV = ((TextView)localView.findViewById(g.e.nickname_tv));
-      locala.ldE = ((ImageView)localView.findViewById(g.e.badge_icon));
-      locala.gSy = ((TextView)localView.findViewById(g.e.tips_tv));
-      locala.ldF = ((TextView)localView.findViewById(g.e.msg_first_line_text));
-      locala.ldG = ((LinearLayout)localView.findViewById(g.e.msg_second_line));
-      locala.ldH = ((TextView)localView.findViewById(g.e.msg_second_line_text));
-      locala.ldI = ((ImageView)localView.findViewById(g.e.msg_second_line_icon));
-      locala.ldJ = ((ImageView)localView.findViewById(g.e.msg_img_iv));
-      locala.ldK = ((TextView)localView.findViewById(g.e.msg_time_tv));
-      locala.ldL = ((TextView)localView.findViewById(g.e.msg_sourcename_tv));
-      locala.ldN = ((GameMessageListContainerView)localView.findViewById(g.e.msg_user_icon_view));
-      locala.ldM = ((LinearLayout)localView.findViewById(g.e.msg_dividing));
+      localView = View.inflate(this.context, 2130969793, null);
+      locala.nBx = ((ImageView)localView.findViewById(2131821253));
+      locala.nBw = ((LinearLayout)localView.findViewById(2131824171));
+      locala.nBy = ((LinearLayout)localView.findViewById(2131824700));
+      locala.egr = ((TextView)localView.findViewById(2131823254));
+      locala.nBz = ((ImageView)localView.findViewById(2131824511));
+      locala.ivt = ((TextView)localView.findViewById(2131823916));
+      locala.nBA = ((TextView)localView.findViewById(2131824701));
+      locala.nBB = ((LinearLayout)localView.findViewById(2131824703));
+      locala.nBC = ((TextView)localView.findViewById(2131824705));
+      locala.nBD = ((ImageView)localView.findViewById(2131824704));
+      locala.nBE = ((ImageView)localView.findViewById(2131824706));
+      locala.nBF = ((TextView)localView.findViewById(2131824707));
+      locala.nBG = ((TextView)localView.findViewById(2131824708));
+      locala.nBI = ((GameMessageListContainerView)localView.findViewById(2131824702));
+      locala.nBH = ((LinearLayout)localView.findViewById(2131824709));
       localView.setTag(locala);
-      localo = sl(paramInt);
-      if ((localo == null) || (!localo.kPQ)) {
-        break label330;
+      localn = xk(paramInt);
+      if ((localn == null) || (!localn.nnP)) {
+        break label342;
       }
-      locala.ldB.setVisibility(8);
-      locala.ldM.setVisibility(0);
+      locala.nBw.setVisibility(8);
+      locala.nBH.setVisibility(0);
     }
-    label330:
-    while (localo == null)
+    label318:
+    label342:
+    while (localn == null)
     {
+      AppMethodBeat.o(112069);
       return localView;
       locala = (n.a)paramView.getTag();
       localView = paramView;
       break;
     }
-    localo.aZm();
-    locala.ldB.setVisibility(0);
-    locala.ldM.setVisibility(8);
-    locala.ldK.setText(b.g(this.context, localo.field_createTime * 1000L));
-    label506:
-    Object localObject;
-    if (localo.field_msgType == 100)
+    localn.bGm();
+    if (!localn.nmt)
     {
-      if (localo.kPH != null)
+      localn.nmt = true;
+      com.tencent.mm.game.report.c.a(this.mContext, 13, 1301, paramInt + 1001, 1, 0, null, this.nok, 0, null, null, null);
+    }
+    locala.nBw.setVisibility(0);
+    locala.nBH.setVisibility(8);
+    locala.nBF.setText(com.tencent.mm.plugin.game.f.b.h(this.context, localn.field_createTime * 1000L));
+    label560:
+    label750:
+    label759:
+    Object localObject;
+    if (localn.field_msgType == 100)
+    {
+      if (localn.nnD != null)
       {
-        e(locala.ldC, localo.kPH.kPY);
-        locala.ldC.setVisibility(0);
-        if (!bk.bl(localo.kPH.kPX))
+        g(locala.nBx, localn.nnD.nnZ);
+        locala.nBx.setVisibility(0);
+        if (!bo.isNullOrNil(localn.nnD.nnY))
         {
-          locala.doV.setText(localo.kPH.kPX);
-          locala.doV.setVisibility(0);
-          if (bk.bl(localo.kPH.kPZ)) {
-            break label1127;
+          locala.egr.setText(localn.nnD.nnY);
+          locala.egr.setVisibility(0);
+          if (bo.isNullOrNil(localn.nnD.noa)) {
+            break label1187;
           }
-          e(locala.ldE, localo.kPH.kPZ);
-          locala.ldE.setVisibility(0);
-          if (bk.bl(localo.kPH.kPT)) {
-            break label1140;
+          g(locala.nBz, localn.nnD.noa);
+          locala.nBz.setVisibility(0);
+          if (bo.isNullOrNil(localn.nnD.nnU)) {
+            break label1200;
           }
-          locala.doV.setEnabled(true);
-          locala.ldC.setEnabled(true);
-          paramView = new p.a(localo, localo.kPH.kPT, 1);
-          paramViewGroup = new p.a(localo, localo.kPH.kPT, 2);
-          locala.doV.setTag(paramView);
-          locala.doV.setOnClickListener(this.ldy);
-          locala.ldC.setTag(paramViewGroup);
-          locala.ldC.setOnClickListener(this.ldy);
-          label618:
-          if (bk.bl(localo.kPD)) {
-            break label1580;
+          locala.egr.setEnabled(true);
+          locala.nBx.setEnabled(true);
+          paramView = new o.a(localn, localn.nnD.nnU, 1);
+          paramViewGroup = new o.a(localn, localn.nnD.nnU, 2);
+          locala.egr.setTag(paramView);
+          locala.egr.setOnClickListener(this.nBt);
+          locala.nBx.setTag(paramViewGroup);
+          locala.nBx.setOnClickListener(this.nBt);
+          label672:
+          if (bo.isNullOrNil(localn.nnz)) {
+            break label1640;
           }
-          paramInt = localo.kPd.size();
+          paramInt = localn.nmZ.size();
           if (paramInt <= 1) {
-            break label1564;
+            break label1624;
           }
-          locala.gSy.setText(this.context.getResources().getString(g.i.game_msg_user_count, new Object[] { Integer.valueOf(paramInt) }) + localo.kPD);
-          label696:
-          locala.gSy.setVisibility(0);
-          label705:
-          if (bk.bl(localo.kPE)) {
-            break label1593;
+          locala.ivt.setText(this.context.getResources().getString(2131300433, new Object[] { Integer.valueOf(paramInt) }) + localn.nnz);
+          locala.ivt.setVisibility(0);
+          if (bo.isNullOrNil(localn.nnA)) {
+            break label1653;
           }
-          locala.ldF.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, localo.kPE, locala.ldF.getTextSize()));
-          locala.ldF.setVisibility(0);
-          label753:
-          a(localo, locala);
-          if (bk.bl(localo.kPI.kPW)) {
-            break label1631;
+          locala.nBA.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, localn.nnA, locala.nBA.getTextSize()));
+          locala.nBA.setVisibility(0);
+          label807:
+          a(localn, locala);
+          if (bo.isNullOrNil(localn.nnE.mContent)) {
+            break label1691;
           }
-          locala.ldG.setVisibility(0);
-          if (bk.bl(localo.kPI.kPT)) {
-            break label1606;
+          locala.nBB.setVisibility(0);
+          if (bo.isNullOrNil(localn.nnE.nnU)) {
+            break label1666;
           }
-          paramView = new p.a(localo, localo.kPI.kPT, 3);
-          locala.ldG.setTag(paramView);
-          locala.ldG.setOnClickListener(this.ldy);
-          locala.ldG.setEnabled(true);
-          label847:
-          locala.ldH.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, localo.kPI.kPW, locala.ldH.getTextSize()));
-          if (bk.bl(localo.kPI.kPS)) {
-            break label1618;
+          paramView = new o.a(localn, localn.nnE.nnU, 3);
+          locala.nBB.setTag(paramView);
+          locala.nBB.setOnClickListener(this.nBt);
+          locala.nBB.setEnabled(true);
+          label901:
+          locala.nBC.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, localn.nnE.mContent, locala.nBC.getTextSize()));
+          if (bo.isNullOrNil(localn.nnE.nnT)) {
+            break label1678;
           }
-          e(locala.ldI, localo.kPI.kPS);
-          locala.ldI.setVisibility(0);
-          label918:
-          if (bk.bl(localo.kPF)) {
-            break label1656;
+          g(locala.nBD, localn.nnE.nnT);
+          locala.nBD.setVisibility(0);
+          label972:
+          if (bo.isNullOrNil(localn.nnB)) {
+            break label1716;
           }
-          e(locala.ldJ, localo.kPF);
-          locala.ldJ.setVisibility(0);
-          if (bk.bl(localo.kPG)) {
-            break label1644;
+          g(locala.nBE, localn.nnB);
+          locala.nBE.setVisibility(0);
+          if (bo.isNullOrNil(localn.nnC)) {
+            break label1704;
           }
-          paramView = new p.a(localo, localo.kPG, 3);
-          locala.ldJ.setTag(paramView);
-          locala.ldJ.setOnClickListener(this.ldy);
-          locala.ldJ.setEnabled(true);
+          paramView = new o.a(localn, localn.nnC, 3);
+          locala.nBE.setTag(paramView);
+          locala.nBE.setOnClickListener(this.nBt);
+          locala.nBE.setEnabled(true);
+          label1063:
+          if (bo.isNullOrNil(localn.nnF.mName)) {
+            break label1741;
+          }
+          locala.nBG.setText(localn.nnF.mName);
+          locala.nBG.setVisibility(0);
+          if (bo.isNullOrNil(localn.nnF.nnU)) {
+            break label1729;
+          }
+          paramView = new o.a(localn, localn.nnF.nnU, 5);
+          locala.nBG.setTag(paramView);
+          locala.nBG.setOnClickListener(this.nBt);
+          locala.nBG.setEnabled(true);
         }
       }
       for (;;)
       {
-        if (!bk.bl(localo.kPJ.mName))
+        AppMethodBeat.o(112069);
+        return localView;
+        locala.egr.setVisibility(8);
+        break;
+        label1187:
+        locala.nBz.setVisibility(8);
+        break label560;
+        label1200:
+        locala.egr.setEnabled(false);
+        locala.nBx.setEnabled(false);
+        break label672;
+        if (!bo.es(localn.nmZ))
         {
-          locala.ldL.setText(localo.kPJ.mName);
-          locala.ldL.setVisibility(0);
-          if (!bk.bl(localo.kPJ.kPT))
+          paramViewGroup = (n.i)localn.nmZ.get(0);
+          if (!bo.isNullOrNil(paramViewGroup.blZ))
           {
-            paramView = new p.a(localo, localo.kPJ.kPT, 5);
-            locala.ldL.setTag(paramView);
-            locala.ldL.setOnClickListener(this.ldy);
-            locala.ldL.setEnabled(true);
-            return localView;
-            locala.doV.setVisibility(8);
-            break;
-            label1127:
-            locala.ldE.setVisibility(8);
-            break label506;
-            label1140:
-            locala.doV.setEnabled(false);
-            locala.ldC.setEnabled(false);
-            break label618;
-            if (!bk.dk(localo.kPd))
-            {
-              paramViewGroup = (o.h)localo.kPd.get(0);
-              if (!bk.bl(paramViewGroup.aVr))
-              {
-                paramView = paramViewGroup.aVr;
-                label1200:
-                if (bk.bl(paramViewGroup.kQe)) {
-                  break label1468;
-                }
-                locala.doV.setEnabled(true);
-                locala.ldC.setEnabled(true);
-                localObject = new p.a(localo, paramViewGroup.kQe, 1);
-                p.a locala1 = new p.a(localo, paramViewGroup.kQe, 2);
-                locala.doV.setTag(localObject);
-                locala.doV.setOnClickListener(this.ldy);
-                locala.ldC.setTag(locala1);
-                locala.ldC.setOnClickListener(this.ldy);
-                label1304:
-                if (bk.bl(paramView)) {
-                  break label1489;
-                }
-                locala.doV.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, paramView, locala.doV.getTextSize()), TextView.BufferType.SPANNABLE);
-                locala.doV.setVisibility(0);
-                label1347:
-                locala.ldC.setVisibility(0);
-                if (bk.bl(paramViewGroup.kQb)) {
-                  break label1502;
-                }
-                e(locala.ldC, paramViewGroup.kQb);
-              }
-              for (;;)
-              {
-                if (bk.bl(paramViewGroup.kQd)) {
-                  break label1518;
-                }
-                e(locala.ldE, paramViewGroup.kQd);
-                locala.ldE.setVisibility(0);
-                break;
-                paramView = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(paramViewGroup.userName);
-                if ((paramView == null) || (bk.bl(paramView.Bq())))
-                {
-                  paramView = paramViewGroup.userName;
-                  break label1200;
-                }
-                paramView = paramView.Bq();
-                break label1200;
-                label1468:
-                locala.doV.setEnabled(false);
-                locala.ldC.setEnabled(false);
-                break label1304;
-                label1489:
-                locala.doV.setVisibility(8);
-                break label1347;
-                label1502:
-                c(locala.ldC, paramViewGroup.userName);
-              }
-              label1518:
-              locala.ldE.setVisibility(8);
-              break label618;
+            paramView = paramViewGroup.blZ;
+            label1260:
+            if (bo.isNullOrNil(paramViewGroup.nof)) {
+              break label1528;
             }
-            locala.ldC.setVisibility(8);
-            locala.doV.setVisibility(8);
-            locala.ldE.setVisibility(8);
-            break label618;
-            label1564:
-            locala.gSy.setText(localo.kPD);
-            break label696;
-            label1580:
-            locala.gSy.setVisibility(8);
-            break label705;
-            label1593:
-            locala.ldF.setVisibility(8);
-            break label753;
-            label1606:
-            locala.ldG.setEnabled(false);
-            break label847;
-            label1618:
-            locala.ldI.setVisibility(8);
-            break label918;
-            label1631:
-            locala.ldG.setVisibility(8);
-            break label918;
-            label1644:
-            locala.ldJ.setEnabled(false);
-            continue;
-            label1656:
-            locala.ldJ.setVisibility(8);
-            continue;
+            locala.egr.setEnabled(true);
+            locala.nBx.setEnabled(true);
+            localObject = new o.a(localn, paramViewGroup.nof, 1);
+            o.a locala1 = new o.a(localn, paramViewGroup.nof, 2);
+            locala.egr.setTag(localObject);
+            locala.egr.setOnClickListener(this.nBt);
+            locala.nBx.setTag(locala1);
+            locala.nBx.setOnClickListener(this.nBt);
+            label1364:
+            if (bo.isNullOrNil(paramView)) {
+              break label1549;
+            }
+            locala.egr.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, paramView, locala.egr.getTextSize()), TextView.BufferType.SPANNABLE);
+            locala.egr.setVisibility(0);
+            label1407:
+            locala.nBx.setVisibility(0);
+            if (bo.isNullOrNil(paramViewGroup.noc)) {
+              break label1562;
+            }
+            g(locala.nBx, paramViewGroup.noc);
           }
-          locala.ldL.setEnabled(false);
-          return localView;
+          for (;;)
+          {
+            if (bo.isNullOrNil(paramViewGroup.noe)) {
+              break label1578;
+            }
+            g(locala.nBz, paramViewGroup.noe);
+            locala.nBz.setVisibility(0);
+            break;
+            paramView = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(paramViewGroup.userName);
+            if ((paramView == null) || (bo.isNullOrNil(paramView.Of())))
+            {
+              paramView = paramViewGroup.userName;
+              break label1260;
+            }
+            paramView = paramView.Of();
+            break label1260;
+            label1528:
+            locala.egr.setEnabled(false);
+            locala.nBx.setEnabled(false);
+            break label1364;
+            label1549:
+            locala.egr.setVisibility(8);
+            break label1407;
+            label1562:
+            e(locala.nBx, paramViewGroup.userName);
+          }
+          label1578:
+          locala.nBz.setVisibility(8);
+          break label672;
         }
+        locala.nBx.setVisibility(8);
+        locala.egr.setVisibility(8);
+        locala.nBz.setVisibility(8);
+        break label672;
+        label1624:
+        locala.ivt.setText(localn.nnz);
+        break label750;
+        label1640:
+        locala.ivt.setVisibility(8);
+        break label759;
+        label1653:
+        locala.nBA.setVisibility(8);
+        break label807;
+        label1666:
+        locala.nBB.setEnabled(false);
+        break label901;
+        label1678:
+        locala.nBD.setVisibility(8);
+        break label972;
+        label1691:
+        locala.nBB.setVisibility(8);
+        break label972;
+        label1704:
+        locala.nBE.setEnabled(false);
+        break label1063;
+        label1716:
+        locala.nBE.setVisibility(8);
+        break label1063;
+        label1729:
+        locala.nBG.setEnabled(false);
+        continue;
+        label1741:
+        locala.nBG.setVisibility(8);
       }
-      locala.ldL.setVisibility(8);
-      return localView;
     }
-    locala.gSy.setVisibility(8);
-    locala.ldF.setVisibility(8);
-    locala.ldG.setVisibility(8);
-    locala.ldI.setVisibility(8);
-    locala.ldJ.setVisibility(8);
-    locala.ldL.setVisibility(8);
-    locala.ldL.setEnabled(false);
-    locala.ldJ.setEnabled(false);
-    locala.ldC.setEnabled(false);
-    locala.doV.setEnabled(false);
-    locala.ldN.setVisibility(8);
-    locala.ldE.setVisibility(8);
-    if (!bk.dk(localo.kPd))
+    locala.ivt.setVisibility(8);
+    locala.nBA.setVisibility(8);
+    locala.nBB.setVisibility(8);
+    locala.nBD.setVisibility(8);
+    locala.nBE.setVisibility(8);
+    locala.nBG.setVisibility(8);
+    locala.nBG.setEnabled(false);
+    locala.nBE.setEnabled(false);
+    locala.nBx.setEnabled(false);
+    locala.egr.setEnabled(false);
+    locala.nBI.setVisibility(8);
+    locala.nBz.setVisibility(8);
+    if (!bo.es(localn.nmZ))
     {
-      localObject = (o.h)localo.kPd.get(0);
-      paramView = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw().abl(((o.h)localObject).userName);
+      localObject = (n.i)localn.nmZ.get(0);
+      paramView = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw(((n.i)localObject).userName);
       if (paramView != null)
       {
-        paramView = paramView.Bq();
-        label1869:
+        paramView = paramView.Of();
+        label1929:
         paramViewGroup = paramView;
-        if (bk.bl(paramView)) {
-          paramViewGroup = ((o.h)localObject).aVr;
+        if (bo.isNullOrNil(paramView)) {
+          paramViewGroup = ((n.i)localObject).blZ;
         }
-        if (!bk.bl(((o.h)localObject).kQc)) {
+        if (!bo.isNullOrNil(((n.i)localObject).nod)) {
           paramInt = 1;
         }
       }
     }
     for (;;)
     {
-      int i = localo.kPd.size();
+      int i = localn.nmZ.size();
       int j;
-      if ((!bk.bl(localo.kPb)) && ((localo.kPr & 1L) == 0L))
+      if ((!bo.isNullOrNil(localn.nmX)) && ((localn.nnn & 1L) == 0L))
       {
-        locala.ldL.setText(localo.kPb);
-        locala.ldL.setVisibility(0);
-        if ((localo.kPr & 0x2) > 0L)
+        locala.nBG.setText(localn.nmX);
+        locala.nBG.setVisibility(0);
+        if ((localn.nnn & 0x2) > 0L)
         {
-          j = this.context.getResources().getColor(g.b.gc_link_color);
-          locala.ldL.setTextColor(j);
-          locala.ldL.setBackgroundResource(g.d.game_click_change_bg_selector);
-          locala.ldL.setOnClickListener(this.lds);
-          locala.ldL.setTag(localo);
-          locala.ldL.setEnabled(true);
+          j = this.context.getResources().getColor(2131690115);
+          locala.nBG.setTextColor(j);
+          locala.nBG.setBackgroundResource(2130838957);
+          locala.nBG.setOnClickListener(this.nBn);
+          locala.nBG.setTag(localn);
+          locala.nBG.setEnabled(true);
         }
       }
       else
       {
-        label2033:
-        if ((localo.field_msgType != 10) && (localo.field_msgType != 11)) {
-          break label2305;
+        label2093:
+        if ((localn.field_msgType != 10) && (localn.field_msgType != 11)) {
+          break label2365;
         }
-        if (bk.bl(localo.mAppName)) {
-          break label2249;
+        if (bo.isNullOrNil(localn.mAppName)) {
+          break label2309;
         }
-        locala.doV.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, localo.mAppName, locala.doV.getTextSize()), TextView.BufferType.SPANNABLE);
-        locala.doV.setVisibility(0);
+        locala.egr.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, localn.mAppName, locala.egr.getTextSize()), TextView.BufferType.SPANNABLE);
+        locala.egr.setVisibility(0);
       }
       for (;;)
       {
-        switch (localo.field_msgType)
+        switch (localn.field_msgType)
         {
         case 3: 
         case 4: 
@@ -544,229 +628,212 @@ public final class n
         case 8: 
         case 9: 
         default: 
-          y.e("MicroMsg.GameMessageAdapter", "error msgtype: " + localo.field_msgType);
-          return localView;
-          j = this.context.getResources().getColor(g.b.game_msg_text_color);
-          locala.ldL.setTextColor(j);
-          locala.ldL.setBackgroundResource(0);
-          locala.ldL.setOnClickListener(null);
-          locala.ldL.setEnabled(false);
-          break label2033;
-          label2249:
-          if (!bk.bl(paramViewGroup))
+          ab.e("MicroMsg.GameMessageAdapter", "error msgtype: " + localn.field_msgType);
+          break label318;
+          j = this.context.getResources().getColor(2131690097);
+          locala.nBG.setTextColor(j);
+          locala.nBG.setBackgroundResource(0);
+          locala.nBG.setOnClickListener(null);
+          locala.nBG.setEnabled(false);
+          break label2093;
+          label2309:
+          if (!bo.isNullOrNil(paramViewGroup))
           {
-            locala.doV.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, paramViewGroup, locala.doV.getTextSize()));
-            locala.doV.setVisibility(0);
+            locala.egr.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, paramViewGroup, locala.egr.getTextSize()));
+            locala.egr.setVisibility(0);
           }
           else
           {
-            locala.doV.setVisibility(8);
+            locala.egr.setVisibility(8);
             continue;
-            if (!bk.bl(paramViewGroup))
+            label2365:
+            if (!bo.isNullOrNil(paramViewGroup))
             {
-              locala.doV.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, paramViewGroup, locala.doV.getTextSize()));
-              locala.doV.setVisibility(0);
+              locala.egr.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, paramViewGroup, locala.egr.getTextSize()));
+              locala.egr.setVisibility(0);
               if (paramInt != 0)
               {
-                locala.doV.setOnClickListener(this.ldu);
-                locala.doV.setTag(localo);
-                locala.doV.setEnabled(true);
+                locala.egr.setOnClickListener(this.nBp);
+                locala.egr.setTag(localn);
+                locala.egr.setEnabled(true);
               }
             }
             else
             {
-              locala.doV.setVisibility(8);
+              locala.egr.setVisibility(8);
             }
           }
-          label2305:
           break;
         }
       }
-      if (!bk.bl(localo.kOX))
+      if (!bo.isNullOrNil(localn.nmT))
       {
-        e(locala.ldC, localo.kOX);
-        locala.ldC.setVisibility(0);
-        label2430:
-        if (!bk.bl(localo.jcc))
+        g(locala.nBx, localn.nmT);
+        locala.nBx.setVisibility(0);
+        label2490:
+        if (!bo.isNullOrNil(localn.lkK))
         {
-          if (bk.bl(localo.kPj)) {
-            break label2581;
+          if (bo.isNullOrNil(localn.nnf)) {
+            break label2641;
           }
-          locala.ldF.setText(localo.jcc);
-          locala.ldF.setVisibility(0);
+          locala.nBA.setText(localn.lkK);
+          locala.nBA.setVisibility(0);
         }
       }
-      while (!bk.bl(localo.kPj))
+      while (!bo.isNullOrNil(localn.nnf))
       {
-        e(locala.ldJ, localo.kPj);
-        locala.ldJ.setTag(Long.valueOf(localo.field_msgId));
-        locala.ldJ.setOnTouchListener(ldr);
-        locala.ldJ.setOnClickListener(this.ldt);
-        locala.ldJ.setVisibility(0);
-        locala.ldJ.setEnabled(true);
-        return localView;
-        y.e("MicroMsg.GameMessageAdapter", "mAppIcon is null");
-        locala.ldC.setVisibility(8);
-        break label2430;
-        label2581:
-        locala.ldG.setVisibility(0);
-        locala.ldH.setText(localo.jcc);
-        locala.ldG.setOnClickListener(this.ldt);
-        locala.ldG.setTag(Long.valueOf(localo.field_msgId));
+        g(locala.nBE, localn.nnf);
+        locala.nBE.setTag(Long.valueOf(localn.field_msgId));
+        locala.nBE.setOnTouchListener(nBm);
+        locala.nBE.setOnClickListener(this.nBo);
+        locala.nBE.setVisibility(0);
+        locala.nBE.setEnabled(true);
+        break;
+        ab.e("MicroMsg.GameMessageAdapter", "mAppIcon is null");
+        locala.nBx.setVisibility(8);
+        break label2490;
+        label2641:
+        locala.nBB.setVisibility(0);
+        locala.nBC.setText(localn.lkK);
+        locala.nBB.setOnClickListener(this.nBo);
+        locala.nBB.setTag(Long.valueOf(localn.field_msgId));
       }
-      if (!bk.dk(localo.kPd))
+      if (!bo.es(localn.nmZ))
       {
-        locala.ldC.setVisibility(0);
-        if (!bk.bl(((o.h)localo.kPd.get(0)).kQb))
+        locala.nBx.setVisibility(0);
+        if (!bo.isNullOrNil(((n.i)localn.nmZ.get(0)).noc))
         {
-          e(locala.ldC, ((o.h)localo.kPd.get(0)).kQb);
-          if (!bk.bl(((o.h)localo.kPd.get(0)).kQc))
+          g(locala.nBx, ((n.i)localn.nmZ.get(0)).noc);
+          label2759:
+          if (!bo.isNullOrNil(((n.i)localn.nmZ.get(0)).nod))
           {
-            locala.ldC.setOnClickListener(this.ldv);
-            locala.ldC.setTag(localo);
-            locala.ldC.setEnabled(true);
+            locala.nBx.setOnClickListener(this.nBq);
+            locala.nBx.setTag(localn);
+            locala.nBx.setEnabled(true);
           }
         }
       }
       for (;;)
       {
-        locala.ldG.setVisibility(0);
-        locala.ldG.setOnClickListener(this.ldt);
-        locala.ldG.setTag(Long.valueOf(localo.field_msgId));
-        if (localo.kPL != 1) {
-          break label2890;
+        locala.nBB.setVisibility(0);
+        locala.nBB.setOnClickListener(this.nBo);
+        locala.nBB.setTag(Long.valueOf(localn.field_msgId));
+        if (localn.nnK != 1) {
+          break label2950;
         }
-        locala.ldF.setVisibility(0);
-        locala.ldF.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, localo.kPv, locala.ldF.getTextSize()));
-        locala.ldH.setText(localo.kPy);
-        return localView;
-        c(locala.ldC, ((o.h)localo.kPd.get(0)).userName);
+        locala.nBA.setVisibility(0);
+        locala.nBA.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, localn.nnr, locala.nBA.getTextSize()));
+        locala.nBC.setText(localn.nnu);
         break;
-        locala.ldC.setVisibility(8);
+        e(locala.nBx, ((n.i)localn.nmZ.get(0)).userName);
+        break label2759;
+        locala.nBx.setVisibility(8);
       }
-      label2890:
-      if (localo.kPL == 2)
+      label2950:
+      if (localn.nnK == 2)
       {
-        locala.ldF.setVisibility(0);
-        locala.ldF.setText(com.tencent.mm.pluginsdk.ui.d.j.a(this.context, localo.kPv, locala.ldF.getTextSize()));
-        locala.ldH.setText(localo.kPw);
-        return localView;
-      }
-      if (localo.kPL != 3) {
+        locala.nBA.setVisibility(0);
+        locala.nBA.setText(com.tencent.mm.pluginsdk.ui.d.j.b(this.context, localn.nnr, locala.nBA.getTextSize()));
+        locala.nBC.setText(localn.nns);
         break;
       }
-      locala.gSy.setVisibility(0);
+      if (localn.nnK != 3) {
+        break;
+      }
+      locala.ivt.setVisibility(0);
       if (i > 1)
       {
-        locala.gSy.setText(this.context.getResources().getString(g.i.game_msg_group_like_more, new Object[] { String.valueOf(i) }));
-        a(localo, locala);
+        locala.ivt.setText(this.context.getResources().getString(2131300427, new Object[] { String.valueOf(i) }));
+        a(localn, locala);
       }
       for (;;)
       {
-        locala.ldH.setText(localo.kPy);
-        return localView;
-        locala.gSy.setText(this.context.getResources().getString(g.i.game_msg_group_like_one));
+        locala.nBC.setText(localn.nnu);
+        break;
+        locala.ivt.setText(this.context.getResources().getString(2131300428));
       }
-      e(locala.ldC, localo.kOX);
+      g(locala.nBx, localn.nmT);
       paramView = "礼物";
-      if (localo.kPo.contains("爱心"))
+      if (localn.nnk.contains("爱心"))
       {
         paramView = "爱心";
+        label3153:
         if (i <= 1) {
-          break label3177;
+          break label3237;
         }
-        locala.gSy.setText(this.context.getResources().getString(g.i.game_msg_share_more, new Object[] { String.valueOf(i), paramView }));
+        locala.ivt.setText(this.context.getResources().getString(2131300431, new Object[] { String.valueOf(i), paramView }));
       }
       for (;;)
       {
-        locala.gSy.setVisibility(0);
-        a(localo, locala);
-        return localView;
-        if (!localo.kPo.contains("体力")) {
-          break;
+        locala.ivt.setVisibility(0);
+        a(localn, locala);
+        break;
+        if (!localn.nnk.contains("体力")) {
+          break label3153;
         }
         paramView = "体力";
-        break;
-        label3177:
-        locala.gSy.setText(this.context.getResources().getString(g.i.game_msg_share_one, new Object[] { paramView }));
+        break label3153;
+        label3237:
+        locala.ivt.setText(this.context.getResources().getString(2131300432, new Object[] { paramView }));
       }
-      if (!bk.dk(localo.kPd))
+      if (!bo.es(localn.nmZ))
       {
-        locala.ldC.setVisibility(0);
-        if (!bk.bl(((o.h)localo.kPd.get(0)).kQb))
+        locala.nBx.setVisibility(0);
+        if (!bo.isNullOrNil(((n.i)localn.nmZ.get(0)).noc))
         {
-          e(locala.ldC, ((o.h)localo.kPd.get(0)).kQb);
-          label3274:
-          if (!bk.bl(((o.h)localo.kPd.get(0)).kQc))
+          g(locala.nBx, ((n.i)localn.nmZ.get(0)).noc);
+          label3334:
+          if (!bo.isNullOrNil(((n.i)localn.nmZ.get(0)).nod))
           {
-            locala.ldC.setOnClickListener(this.ldv);
-            locala.ldC.setTag(localo);
-            locala.ldC.setEnabled(true);
+            locala.nBx.setOnClickListener(this.nBq);
+            locala.nBx.setTag(localn);
+            locala.nBx.setEnabled(true);
           }
-          label3326:
+          label3386:
           if (i <= 1) {
-            break label3509;
+            break label3569;
           }
-          locala.gSy.setText(this.context.getResources().getString(g.i.game_msg_like_more, new Object[] { String.valueOf(i) }));
-          a(localo, locala);
+          locala.ivt.setText(this.context.getResources().getString(2131300429, new Object[] { String.valueOf(i) }));
+          a(localn, locala);
         }
       }
       for (;;)
       {
-        locala.ldG.setVisibility(0);
-        locala.gSy.setVisibility(0);
-        locala.ldH.setText(localo.kPz);
-        locala.ldG.setOnClickListener(this.ldt);
-        locala.ldG.setTag(Long.valueOf(localo.field_msgId));
-        if (bk.bl(localo.kPB)) {
+        locala.nBB.setVisibility(0);
+        locala.ivt.setVisibility(0);
+        locala.nBC.setText(localn.nnv);
+        locala.nBB.setOnClickListener(this.nBo);
+        locala.nBB.setTag(Long.valueOf(localn.field_msgId));
+        if (bo.isNullOrNil(localn.nnx)) {
           break;
         }
-        locala.ldI.setVisibility(0);
-        e(locala.ldI, localo.kPB);
-        return localView;
-        c(locala.ldC, ((o.h)localo.kPd.get(0)).userName);
-        break label3274;
-        locala.ldC.setVisibility(8);
-        break label3326;
-        label3509:
-        locala.gSy.setText(this.context.getResources().getString(g.i.game_msg_like_one));
+        locala.nBD.setVisibility(0);
+        g(locala.nBD, localn.nnx);
+        break;
+        e(locala.nBx, ((n.i)localn.nmZ.get(0)).userName);
+        break label3334;
+        locala.nBx.setVisibility(8);
+        break label3386;
+        label3569:
+        locala.ivt.setText(this.context.getResources().getString(2131300430));
       }
       paramInt = 0;
       continue;
       paramView = null;
-      break label1869;
+      break label1929;
       paramInt = 0;
       paramViewGroup = null;
     }
   }
   
-  public final boolean sk(int paramInt)
+  public final boolean xj(int paramInt)
   {
-    return (this.dsw > this.bFo) && (this.bFo > 0) && (paramInt == this.bFo);
-  }
-  
-  public final void yc()
-  {
-    s locals = ((com.tencent.mm.plugin.game.a.c)g.r(com.tencent.mm.plugin.game.a.c.class)).aYf();
-    int i = this.iwi;
-    String str = s.n(new int[] { 2, 5, 6, 10, 11, 100 });
-    setCursor(locals.rawQuery("select * from GameRawMessage where " + str + " and showInMsgList = 1 and isHidden = 0 order by isRead, createTime desc limit " + i, new String[0]));
-    this.iwi = getCount();
-    if (this.uMi != null) {
-      this.uMi.Wp();
-    }
-    super.notifyDataSetChanged();
-  }
-  
-  protected final void yd()
-  {
-    bcS();
-    yc();
+    return (this.eke > this.cmy) && (this.cmy > 0) && (paramInt == this.cmy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.n
  * JD-Core Version:    0.7.0.1
  */

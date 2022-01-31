@@ -5,7 +5,7 @@ public final class c$ee
 {
   public c$ee()
   {
-    super("nfcBatchTransceive", "nfcBatchTransceive", 142, false);
+    super("kvReport", "kvReport", 170, false);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 public abstract interface d$a
 {
-  public abstract void ai(int paramInt, String paramString);
+  public abstract void aC(int paramInt, String paramString);
 }
 
 

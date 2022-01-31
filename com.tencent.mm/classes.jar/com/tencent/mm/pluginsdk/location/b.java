@@ -1,25 +1,30 @@
 package com.tencent.mm.pluginsdk.location;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class b
 {
-  public int bRv;
-  public float elk;
-  public float ell;
+  public int cyX;
+  public float fBB;
+  public float fBC;
   public long itemId;
   public int scene;
   
   public b(long paramLong, float paramFloat1, float paramFloat2, int paramInt1, int paramInt2)
   {
-    this.elk = paramFloat1;
-    this.ell = paramFloat2;
-    this.bRv = paramInt1;
+    this.fBB = paramFloat1;
+    this.fBC = paramFloat2;
+    this.cyX = paramInt1;
     this.scene = paramInt2;
     this.itemId = paramLong;
   }
   
   public final String toString()
   {
-    return String.format("%d-%d-%d", new Object[] { Integer.valueOf((int)(this.elk * 1000000.0F)), Integer.valueOf((int)(this.ell * 1000000.0F)), Integer.valueOf(this.bRv) });
+    AppMethodBeat.i(79210);
+    String str = String.format("%d-%d-%d", new Object[] { Integer.valueOf((int)(this.fBB * 1000000.0F)), Integer.valueOf((int)(this.fBC * 1000000.0F)), Integer.valueOf(this.cyX) });
+    AppMethodBeat.o(79210);
+    return str;
   }
 }
 

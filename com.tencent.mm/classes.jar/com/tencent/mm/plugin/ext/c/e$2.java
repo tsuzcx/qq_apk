@@ -1,24 +1,28 @@
 package com.tencent.mm.plugin.ext.c;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.ext.c.a.a;
-import com.tencent.mm.sdk.platformtools.bf;
+import com.tencent.mm.sdk.platformtools.bj;
 
 public final class e$2
-  extends bf<Boolean>
+  extends bj<Boolean>
 {
   public e$2(e parame, Boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
   {
     super(5000L, paramBoolean);
   }
   
-  private Boolean anE()
+  private Boolean aJK()
   {
-    g.DO().dJT.a(782, new e.2.1(this));
-    g.DO().dJT.a(new a(this.val$url, this.gpu, this.gpv), 0);
-    return Boolean.valueOf(true);
+    AppMethodBeat.i(20421);
+    g.RK().eHt.a(782, new e.2.1(this));
+    g.RK().eHt.a(new a(this.val$url, this.hJy, this.hJz), 0);
+    Boolean localBoolean = Boolean.TRUE;
+    AppMethodBeat.o(20421);
+    return localBoolean;
   }
 }
 

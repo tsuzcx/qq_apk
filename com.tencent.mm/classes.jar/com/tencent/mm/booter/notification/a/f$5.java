@@ -2,7 +2,8 @@ package com.tencent.mm.booter.notification.a;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$5
   implements MediaPlayer.OnCompletionListener
@@ -11,13 +12,15 @@ final class f$5
   
   public final void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    y.i("MicroMsg.Notification.Tool.Sound", "WiredHeadset play sound finish, player: %s", new Object[] { this.dkb.djY });
+    AppMethodBeat.i(16028);
+    ab.i("MicroMsg.Notification.Tool.Sound", "WiredHeadset play sound finish, player: %s", new Object[] { this.ebw.ebt });
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
-    if (this.dkb.djY != null) {
-      this.dkb.djY.release();
+    if (this.ebw.ebt != null) {
+      this.ebw.ebt.release();
     }
+    AppMethodBeat.o(16028);
   }
 }
 

@@ -2,156 +2,162 @@ package com.google.android.gms.wearable;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.google.android.gms.common.internal.Objects;
 import com.google.android.gms.common.internal.ReflectedParcelable;
-import com.google.android.gms.common.internal.safeparcel.zza;
-import com.google.android.gms.common.internal.zzaa;
+import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Reserved;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@SafeParcelable.Class(creator="ConnectionConfigurationCreator")
+@SafeParcelable.Reserved({1})
 public class ConnectionConfiguration
-  extends zza
+  extends AbstractSafeParcelable
   implements ReflectedParcelable
 {
-  public static final Parcelable.Creator<ConnectionConfiguration> CREATOR = new zzg();
-  private final String mName;
-  private final int zzaLu;
-  private final String zzaSq;
-  private boolean zzagx;
-  private final int zzakD;
-  private final boolean zzbST;
-  private String zzbSU;
-  private boolean zzbSV;
-  private String zzbSW;
+  public static final Parcelable.Creator<ConnectionConfiguration> CREATOR;
+  @SafeParcelable.Field(getter="getName", id=2)
+  private final String name;
+  @SafeParcelable.Field(getter="getType", id=4)
+  private final int type;
+  @SafeParcelable.Field(getter="getAddress", id=3)
+  private final String zzi;
+  @SafeParcelable.Field(getter="getRole", id=5)
+  private final int zzj;
+  @SafeParcelable.Field(getter="isEnabled", id=6)
+  private final boolean zzk;
+  @SafeParcelable.Field(getter="isConnected", id=7)
+  private volatile boolean zzl;
+  @SafeParcelable.Field(getter="getPeerNodeId", id=8)
+  private volatile String zzm;
+  @SafeParcelable.Field(getter="getBtlePriority", id=9)
+  private boolean zzn;
+  @SafeParcelable.Field(getter="getNodeId", id=10)
+  private String zzo;
   
-  ConnectionConfiguration(String paramString1, String paramString2, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString3, boolean paramBoolean3, String paramString4)
+  static
   {
-    this.mName = paramString1;
-    this.zzaSq = paramString2;
-    this.zzakD = paramInt1;
-    this.zzaLu = paramInt2;
-    this.zzbST = paramBoolean1;
-    this.zzagx = paramBoolean2;
-    this.zzbSU = paramString3;
-    this.zzbSV = paramBoolean3;
-    this.zzbSW = paramString4;
+    AppMethodBeat.i(70798);
+    CREATOR = new zzg();
+    AppMethodBeat.o(70798);
+  }
+  
+  @SafeParcelable.Constructor
+  ConnectionConfiguration(@SafeParcelable.Param(id=2) String paramString1, @SafeParcelable.Param(id=3) String paramString2, @SafeParcelable.Param(id=4) int paramInt1, @SafeParcelable.Param(id=5) int paramInt2, @SafeParcelable.Param(id=6) boolean paramBoolean1, @SafeParcelable.Param(id=7) boolean paramBoolean2, @SafeParcelable.Param(id=8) String paramString3, @SafeParcelable.Param(id=9) boolean paramBoolean3, @SafeParcelable.Param(id=10) String paramString4)
+  {
+    this.name = paramString1;
+    this.zzi = paramString2;
+    this.type = paramInt1;
+    this.zzj = paramInt2;
+    this.zzk = paramBoolean1;
+    this.zzl = paramBoolean2;
+    this.zzm = paramString3;
+    this.zzn = paramBoolean3;
+    this.zzo = paramString4;
   }
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof ConnectionConfiguration)) {}
-    do
+    AppMethodBeat.i(70796);
+    if (!(paramObject instanceof ConnectionConfiguration))
     {
+      AppMethodBeat.o(70796);
       return false;
-      paramObject = (ConnectionConfiguration)paramObject;
-    } while ((!zzaa.equal(this.mName, paramObject.mName)) || (!zzaa.equal(this.zzaSq, paramObject.zzaSq)) || (!zzaa.equal(Integer.valueOf(this.zzakD), Integer.valueOf(paramObject.zzakD))) || (!zzaa.equal(Integer.valueOf(this.zzaLu), Integer.valueOf(paramObject.zzaLu))) || (!zzaa.equal(Boolean.valueOf(this.zzbST), Boolean.valueOf(paramObject.zzbST))) || (!zzaa.equal(Boolean.valueOf(this.zzbSV), Boolean.valueOf(paramObject.zzbSV))));
-    return true;
-  }
-  
-  public String getAddress()
-  {
-    return this.zzaSq;
-  }
-  
-  public String getName()
-  {
-    return this.mName;
-  }
-  
-  public String getNodeId()
-  {
-    return this.zzbSW;
-  }
-  
-  public int getRole()
-  {
-    return this.zzaLu;
-  }
-  
-  public int getType()
-  {
-    return this.zzakD;
+    }
+    paramObject = (ConnectionConfiguration)paramObject;
+    if ((Objects.equal(this.name, paramObject.name)) && (Objects.equal(this.zzi, paramObject.zzi)) && (Objects.equal(Integer.valueOf(this.type), Integer.valueOf(paramObject.type))) && (Objects.equal(Integer.valueOf(this.zzj), Integer.valueOf(paramObject.zzj))) && (Objects.equal(Boolean.valueOf(this.zzk), Boolean.valueOf(paramObject.zzk))) && (Objects.equal(Boolean.valueOf(this.zzn), Boolean.valueOf(paramObject.zzn))))
+    {
+      AppMethodBeat.o(70796);
+      return true;
+    }
+    AppMethodBeat.o(70796);
+    return false;
   }
   
   public int hashCode()
   {
-    return zzaa.hashCode(new Object[] { this.mName, this.zzaSq, Integer.valueOf(this.zzakD), Integer.valueOf(this.zzaLu), Boolean.valueOf(this.zzbST), Boolean.valueOf(this.zzbSV) });
-  }
-  
-  public boolean isConnected()
-  {
-    return this.zzagx;
-  }
-  
-  public boolean isEnabled()
-  {
-    return this.zzbST;
+    AppMethodBeat.i(70797);
+    int i = Objects.hashCode(new Object[] { this.name, this.zzi, Integer.valueOf(this.type), Integer.valueOf(this.zzj), Boolean.valueOf(this.zzk), Boolean.valueOf(this.zzn) });
+    AppMethodBeat.o(70797);
+    return i;
   }
   
   public String toString()
   {
+    AppMethodBeat.i(70795);
     StringBuilder localStringBuilder = new StringBuilder("ConnectionConfiguration[ ");
-    String str = String.valueOf(this.mName);
+    String str = String.valueOf(this.name);
     if (str.length() != 0)
     {
       str = "mName=".concat(str);
       localStringBuilder.append(str);
-      str = String.valueOf(this.zzaSq);
+      str = String.valueOf(this.zzi);
       if (str.length() == 0) {
-        break label314;
+        break label326;
       }
       str = ", mAddress=".concat(str);
-      label62:
+      label67:
       localStringBuilder.append(str);
-      int i = this.zzakD;
+      int i = this.type;
       localStringBuilder.append(19 + ", mType=" + i);
-      i = this.zzaLu;
+      i = this.zzj;
       localStringBuilder.append(19 + ", mRole=" + i);
-      boolean bool = this.zzbST;
+      boolean bool = this.zzk;
       localStringBuilder.append(16 + ", mEnabled=" + bool);
-      bool = this.zzagx;
+      bool = this.zzl;
       localStringBuilder.append(20 + ", mIsConnected=" + bool);
-      str = String.valueOf(this.zzbSU);
+      str = String.valueOf(this.zzm);
       if (str.length() == 0) {
-        break label327;
+        break label339;
       }
       str = ", mPeerNodeId=".concat(str);
-      label219:
+      label224:
       localStringBuilder.append(str);
-      bool = this.zzbSV;
+      bool = this.zzn;
       localStringBuilder.append(21 + ", mBtlePriority=" + bool);
-      str = String.valueOf(this.zzbSW);
+      str = String.valueOf(this.zzo);
       if (str.length() == 0) {
-        break label340;
+        break label352;
       }
     }
-    label314:
-    label327:
-    label340:
+    label326:
+    label339:
+    label352:
     for (str = ", mNodeId=".concat(str);; str = new String(", mNodeId="))
     {
       localStringBuilder.append(str);
       localStringBuilder.append("]");
-      return localStringBuilder.toString();
+      str = localStringBuilder.toString();
+      AppMethodBeat.o(70795);
+      return str;
       str = new String("mName=");
       break;
       str = new String(", mAddress=");
-      break label62;
+      break label67;
       str = new String(", mPeerNodeId=");
-      break label219;
+      break label224;
     }
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    zzg.zza(this, paramParcel, paramInt);
-  }
-  
-  public String zzUd()
-  {
-    return this.zzbSU;
-  }
-  
-  public boolean zzUe()
-  {
-    return this.zzbSV;
+    AppMethodBeat.i(70794);
+    paramInt = SafeParcelWriter.beginObjectHeader(paramParcel);
+    SafeParcelWriter.writeString(paramParcel, 2, this.name, false);
+    SafeParcelWriter.writeString(paramParcel, 3, this.zzi, false);
+    SafeParcelWriter.writeInt(paramParcel, 4, this.type);
+    SafeParcelWriter.writeInt(paramParcel, 5, this.zzj);
+    SafeParcelWriter.writeBoolean(paramParcel, 6, this.zzk);
+    SafeParcelWriter.writeBoolean(paramParcel, 7, this.zzl);
+    SafeParcelWriter.writeString(paramParcel, 8, this.zzm, false);
+    SafeParcelWriter.writeBoolean(paramParcel, 9, this.zzn);
+    SafeParcelWriter.writeString(paramParcel, 10, this.zzo, false);
+    SafeParcelWriter.finishObjectHeader(paramParcel, paramInt);
+    AppMethodBeat.o(70794);
   }
 }
 

@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.card.b;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class i$1
-  implements am.a
+  implements ap.a
 {
   i$1(i parami) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    this.ikJ.wn();
-    this.ikJ.azY();
+    AppMethodBeat.i(87701);
+    this.klH.IE();
+    this.klH.bbJ();
+    AppMethodBeat.o(87701);
     return true;
   }
 }

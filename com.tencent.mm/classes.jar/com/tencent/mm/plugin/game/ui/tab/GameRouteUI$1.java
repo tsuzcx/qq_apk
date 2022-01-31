@@ -1,24 +1,20 @@
 package com.tencent.mm.plugin.game.ui.tab;
 
-import com.tencent.mm.plugin.game.d.bf;
-import com.tencent.mm.plugin.game.model.ak.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameRouteUI$1
-  implements ak.a
+  implements MenuItem.OnMenuItemClickListener
 {
   GameRouteUI$1(GameRouteUI paramGameRouteUI) {}
   
-  public final void b(bf parambf)
+  public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((parambf != null) && (!bk.dk(parambf.kTw)))
-    {
-      GameRouteUI.a(this.lfP, parambf.kTw);
-      return;
-    }
-    y.e("MicroMsg.GameRouteUI", "get GameIndex4TabNavData err");
-    GameRouteUI.a(this.lfP);
+    AppMethodBeat.i(112220);
+    GameRouteUI.a(this.nDK);
+    AppMethodBeat.o(112220);
+    return true;
   }
 }
 

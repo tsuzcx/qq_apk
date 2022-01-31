@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsChattingUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class SettingsChattingUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nUf.XM();
-    this.nUf.finish();
+    AppMethodBeat.i(127209);
+    this.qIf.hideVKB();
+    this.qIf.finish();
+    AppMethodBeat.o(127209);
     return true;
   }
 }

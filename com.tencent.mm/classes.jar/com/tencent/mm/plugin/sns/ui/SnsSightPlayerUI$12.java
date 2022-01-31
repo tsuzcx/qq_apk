@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsSightPlayerUI$12
   extends GestureDetector.SimpleOnGestureListener
@@ -11,23 +12,27 @@ final class SnsSightPlayerUI$12
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    SnsSightPlayerUI.b(this.pdk, true);
+    AppMethodBeat.i(39266);
+    SnsSightPlayerUI.b(this.rVT, true);
     super.onLongPress(paramMotionEvent);
+    AppMethodBeat.o(39266);
   }
   
   public final boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    paramFloat1 = ((View)SnsSightPlayerUI.g(this.pdk)).getTranslationX();
+    AppMethodBeat.i(39265);
+    paramFloat1 = ((View)SnsSightPlayerUI.g(this.rVT)).getTranslationX();
     paramFloat2 = paramMotionEvent2.getX();
     float f1 = paramMotionEvent1.getX();
-    float f2 = ((View)SnsSightPlayerUI.g(this.pdk)).getTranslationY();
+    float f2 = ((View)SnsSightPlayerUI.g(this.rVT)).getTranslationY();
     float f3 = paramMotionEvent2.getY();
     float f4 = paramMotionEvent1.getY();
-    if (SnsSightPlayerUI.m(this.pdk))
+    if (SnsSightPlayerUI.m(this.rVT))
     {
-      ((View)SnsSightPlayerUI.g(this.pdk)).setTranslationX(paramFloat1 + paramFloat2 - f1);
-      ((View)SnsSightPlayerUI.g(this.pdk)).setTranslationY(f2 + f3 - f4);
+      ((View)SnsSightPlayerUI.g(this.rVT)).setTranslationX(paramFloat1 + paramFloat2 - f1);
+      ((View)SnsSightPlayerUI.g(this.rVT)).setTranslationY(f2 + f3 - f4);
     }
+    AppMethodBeat.o(39265);
     return true;
   }
 }

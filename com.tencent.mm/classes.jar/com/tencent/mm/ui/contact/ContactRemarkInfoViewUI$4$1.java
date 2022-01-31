@@ -1,6 +1,6 @@
 package com.tencent.mm.ui.contact;
 
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class ContactRemarkInfoViewUI$4$1
@@ -10,17 +10,20 @@ final class ContactRemarkInfoViewUI$4$1
   
   public final void run()
   {
-    if (!this.dpq)
+    AppMethodBeat.i(33690);
+    if (!this.egM)
     {
-      h.bC(this.vKZ.vKY, this.vKZ.vKY.getString(R.l.app_err_system_busy_tip));
+      h.bO(this.AcB.AcA, this.AcB.AcA.getString(2131296926));
+      AppMethodBeat.o(33690);
       return;
     }
-    ContactRemarkInfoViewUI.e(this.vKZ.vKY);
+    ContactRemarkInfoViewUI.e(this.AcB.AcA);
+    AppMethodBeat.o(33690);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.contact.ContactRemarkInfoViewUI.4.1
  * JD-Core Version:    0.7.0.1
  */

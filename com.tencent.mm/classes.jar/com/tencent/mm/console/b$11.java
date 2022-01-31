@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.text.ClipboardManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b$11
   implements DialogInterface.OnClickListener
@@ -12,7 +13,9 @@ final class b$11
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ClipboardManager)this.dAE.getSystemService("clipboard")).setText(this.dAG);
+    AppMethodBeat.i(16092);
+    ((ClipboardManager)this.eug.getSystemService("clipboard")).setText(this.val$text);
+    AppMethodBeat.o(16092);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.view;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$11
   implements Animation.AnimationListener
@@ -11,7 +12,10 @@ final class a$11
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    this.wvE.getActionBar().setVisibility(0);
+    AppMethodBeat.i(116383);
+    this.AQD.getActionBar().setVisibility(0);
+    this.AQD.getFooterBg().setVisibility(0);
+    AppMethodBeat.o(116383);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

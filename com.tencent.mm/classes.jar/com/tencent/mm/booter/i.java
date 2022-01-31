@@ -1,44 +1,36 @@
 package com.tencent.mm.booter;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bt;
-import com.tencent.mm.protocal.c.asx;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.storage.y;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.c;
+import com.tencent.mm.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.storage.z;
 
 public final class i
 {
-  public static void run()
+  public static boolean Iu()
   {
-    LinkedList localLinkedList = new LinkedList();
-    int j = bk.a((Integer)au.Hv().get(19), 0);
-    int i = 0;
-    asx localasx;
-    while (i < j)
+    AppMethodBeat.i(15852);
+    try
     {
-      localasx = new asx();
-      localasx.nFi = 31;
-      localasx.nFs = "0";
-      localLinkedList.add(localasx);
-      i += 1;
+      aw.aaz();
+      ah.d((Long)c.Ru().get(66817, null));
+      if (ah.gz(0L) * 1000L > 1800000L)
+      {
+        AppMethodBeat.o(15852);
+        return true;
+      }
     }
-    j = bk.a((Integer)au.Hv().get(20), 0);
-    i = 0;
-    while (i < j)
+    catch (Exception localException)
     {
-      localasx = new asx();
-      localasx.nFi = 31;
-      localasx.nFs = "1";
-      localLinkedList.add(localasx);
-      i += 1;
+      for (;;)
+      {
+        ab.printErrStackTrace("MicroMsg.PostTaskMediaNoteStat", localException, "", new Object[0]);
+      }
+      AppMethodBeat.o(15852);
     }
-    if (localLinkedList.size() > 0)
-    {
-      bt.c(localLinkedList);
-      au.Hv().set(19, Integer.valueOf(0));
-      au.Hv().set(20, Integer.valueOf(0));
-    }
+    return false;
   }
 }
 

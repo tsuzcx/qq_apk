@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:gravity="center_horizontal" android:id="@id/dnm" android:src="@drawable/a_3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/py" />
-    <ImageView android:gravity="center" android:id="@id/dnn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ch" android:layout_alignLeft="@id/dnm" android:layout_alignTop="@id/dnm" />
-    <ImageView android:id="@id/dno" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/dnm" android:layout_alignBottom="@id/dnm" />
-    <ImageView android:id="@id/aq9" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/ajd" android:layout_alignRight="@id/dnm" android:layout_alignBottom="@id/dnm" />
-    <RelativeLayout android:id="@id/dnp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/dnm" android:layout_centerHorizontal="true">
-        <TextView android:id="@id/dnq" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/pz" />
-        <TextView android:id="@id/dnr" android:paddingTop="@dimen/dl" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/pz" />
-    </RelativeLayout>
-    <TextView android:textColor="#fffd8f44" android:id="@id/dns" android:visibility="gone" android:layout_below="@id/dnp" android:layout_centerHorizontal="true" style="@style/pz" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/a_a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/bnt" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_gravity="center_horizontal" layout="@layout/ali" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dcj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/m2" android:textColor="@color/a6i" android:id="@id/b1u" android:background="@drawable/ba" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/lw" android:text="@string/pa" android:layout_weight="1.0" />
+                <ImageView android:id="@id/b2e" android:background="@color/ve" android:layout_width="@dimen/fq" android:layout_height="fill_parent" />
+                <Button android:textSize="@dimen/m2" android:textColor="@color/a6i" android:id="@id/b1v" android:background="@drawable/ba" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/lw" android:text="@string/fxd" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/b1e" />
+</LinearLayout>

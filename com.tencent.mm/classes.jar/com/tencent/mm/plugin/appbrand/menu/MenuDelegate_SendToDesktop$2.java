@@ -1,17 +1,32 @@
 package com.tencent.mm.plugin.appbrand.menu;
 
 import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.u;
+import com.tencent.mm.plugin.appbrand.u.a;
+import com.tencent.mm.plugin.base.model.c;
+import com.tencent.mm.plugin.report.service.h;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 final class MenuDelegate_SendToDesktop$2
-  implements View.OnClickListener
+  implements Runnable
 {
-  MenuDelegate_SendToDesktop$2(MenuDelegate_SendToDesktop paramMenuDelegate_SendToDesktop, Context paramContext, String paramString) {}
+  MenuDelegate_SendToDesktop$2(MenuDelegate_SendToDesktop paramMenuDelegate_SendToDesktop, AtomicBoolean paramAtomicBoolean, Context paramContext, u.a parama, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    MenuDelegate_SendToDesktop.a(this.val$context, false, this.gOY, this.val$appId);
+    AppMethodBeat.i(155929);
+    this.iqH.set(u.a(this.val$context, this.iqI, this.gSl, false));
+    if (this.iqH.get()) {
+      h.qsU.idkeyStat(443L, 1L, 1L, false);
+    }
+    if ((this.val$context == null) || (!this.iqH.get()))
+    {
+      AppMethodBeat.o(155929);
+      return;
+    }
+    c.a(this.val$context, this.iqJ, this.iqK, this.iqL, this.iqI.appId, true);
+    AppMethodBeat.o(155929);
   }
 }
 

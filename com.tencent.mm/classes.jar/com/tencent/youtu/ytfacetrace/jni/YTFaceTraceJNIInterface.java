@@ -1,6 +1,7 @@
 package com.tencent.youtu.ytfacetrace.jni;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class YTFaceTraceJNIInterface
 {
@@ -8,12 +9,16 @@ public class YTFaceTraceJNIInterface
   
   static
   {
+    AppMethodBeat.i(117807);
     nativeInit();
+    AppMethodBeat.o(117807);
   }
   
   public YTFaceTraceJNIInterface()
   {
+    AppMethodBeat.i(117804);
     NativeConstructor();
+    AppMethodBeat.o(117804);
   }
   
   public static native boolean Init(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
@@ -44,12 +49,16 @@ public class YTFaceTraceJNIInterface
   
   public void destroy()
   {
+    AppMethodBeat.i(117805);
     NativeDestructor();
+    AppMethodBeat.o(117805);
   }
   
   protected void finalize()
   {
+    AppMethodBeat.i(117806);
     NativeDestructor();
+    AppMethodBeat.o(117806);
   }
 }
 

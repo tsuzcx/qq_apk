@@ -2,130 +2,143 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.p;
+import com.tencent.xweb.w;
 import java.net.URLDecoder;
 import java.util.Map;
 
 final class ComposeUI$b
-  extends p
+  extends w
 {
-  private boolean ngV = false;
+  private boolean pMj = false;
   
   private ComposeUI$b(ComposeUI paramComposeUI) {}
   
-  public final void a(WebView paramWebView, String paramString)
+  public final boolean a(WebView paramWebView, String paramString)
   {
-    y.d("MicroMsg.ComposeUI", "onPageFinished, url = %s, firstTimeLoaded = %b", new Object[] { paramString, Boolean.valueOf(this.ngV) });
-    if (!this.ngV)
+    AppMethodBeat.i(68208);
+    ab.d("MicroMsg.ComposeUI", "shouldOverrideUrlLoading, url = %s", new Object[] { paramString });
+    Object localObject;
+    if (paramString.startsWith(ComposeUI.m(this.pLX)))
     {
-      this.ngV = true;
-      s.c(ComposeUI.s(this.ngJ), ComposeUI.n(this.ngJ), ComposeUI.x(this.ngJ));
-    }
-    super.a(paramWebView, paramString);
-  }
-  
-  public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    super.b(paramWebView, paramString, paramBitmap);
-    if (!ComposeUI.v(this.ngJ))
-    {
-      s.b(ComposeUI.s(this.ngJ));
-      ComposeUI.w(this.ngJ);
-    }
-  }
-  
-  public final boolean b(WebView paramWebView, String paramString)
-  {
-    y.d("MicroMsg.ComposeUI", "shouldOverrideUrlLoading, url = %s", new Object[] { paramString });
-    if (paramString.startsWith(ComposeUI.m(this.ngJ))) {
-      this.ngJ.XM();
-    }
-    for (;;)
-    {
-      Object localObject;
+      this.pLX.hideVKB();
       try
       {
-        paramWebView = URLDecoder.decode(paramString.substring(ComposeUI.m(this.ngJ).length()), "utf-8").split("@@");
+        paramWebView = URLDecoder.decode(paramString.substring(ComposeUI.m(this.pLX).length()), "utf-8").split("@@");
         localObject = paramWebView[0].split(":");
         paramString = localObject[0];
         localObject = localObject[1];
-        y.i("MicroMsg.ComposeUI", "img onclick, src: %s, msgLocalId: %s, msgSvrId: %s", new Object[] { paramWebView[1], paramString, localObject });
-        paramWebView = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().fd(Integer.valueOf(paramString).intValue());
-        paramString = new Intent(this.ngJ, MailImageDownloadUI.class);
+        ab.i("MicroMsg.ComposeUI", "img onclick, src: %s, msgLocalId: %s, msgSvrId: %s", new Object[] { paramWebView[1], paramString, localObject });
+        paramWebView = ((j)g.E(j.class)).bPQ().kB(Integer.valueOf(paramString).intValue());
+        paramString = new Intent(this.pLX, MailImageDownloadUI.class);
         paramString.putExtra("img_msg_id", paramWebView.field_msgId);
         paramString.putExtra("img_server_id", paramWebView.field_msgSvrId);
         paramString.putExtra("img_download_compress_type", 0);
         paramString.putExtra("img_download_username", paramWebView.field_talker);
-        this.ngJ.startActivity(paramString);
+        this.pLX.startActivity(paramString);
+        AppMethodBeat.o(68208);
         return true;
       }
       catch (Exception paramWebView)
       {
-        y.w("MicroMsg.ComposeUI", "shouldOverrideUrlLoading IMG_ONCLICK, ex = %s", new Object[] { paramWebView.getMessage() });
-        return true;
+        ab.w("MicroMsg.ComposeUI", "shouldOverrideUrlLoading IMG_ONCLICK, ex = %s", new Object[] { paramWebView.getMessage() });
       }
-      if (paramString.startsWith(ComposeUI.n(this.ngJ)))
-      {
+    }
+    do
+    {
+      AppMethodBeat.o(68208);
+      return true;
+      if (paramString.startsWith(ComposeUI.n(this.pLX))) {
         try
         {
-          ComposeUI.a(this.ngJ, URLDecoder.decode(paramString.substring(ComposeUI.n(this.ngJ).length()), "utf-8"));
-          if (!ComposeUI.o(this.ngJ)) {
-            continue;
-          }
-          if (ComposeUI.p(this.ngJ).indexOf("<img") == -1)
-          {
-            ComposeUI.q(this.ngJ).clear();
-            ComposeUI.r(this.ngJ);
-            return true;
+          ComposeUI.a(this.pLX, URLDecoder.decode(paramString.substring(ComposeUI.n(this.pLX).length()), "utf-8"));
+          if (ComposeUI.o(this.pLX)) {
+            if (ComposeUI.p(this.pLX).indexOf("<img") == -1)
+            {
+              ComposeUI.q(this.pLX).clear();
+              ComposeUI.r(this.pLX);
+              AppMethodBeat.o(68208);
+              return true;
+            }
           }
         }
         catch (Exception paramWebView)
         {
           for (;;)
           {
-            y.w("MicroMsg.ComposeUI", "shouldOverrideUrlLoading GET_MAIL_CONTENT, ex = %s", new Object[] { paramWebView.getMessage() });
+            ab.w("MicroMsg.ComposeUI", "shouldOverrideUrlLoading GET_MAIL_CONTENT, ex = %s", new Object[] { paramWebView.getMessage() });
           }
-          s.c(ComposeUI.s(this.ngJ), ComposeUI.t(this.ngJ), ComposeUI.u(this.ngJ));
+          u.b(ComposeUI.s(this.pLX), ComposeUI.t(this.pLX), ComposeUI.u(this.pLX));
+          AppMethodBeat.o(68208);
           return true;
         }
       }
-      else if (paramString.startsWith(ComposeUI.t(this.ngJ)))
+    } while (!paramString.startsWith(ComposeUI.t(this.pLX)));
+    ComposeUI.q(this.pLX).clear();
+    try
+    {
+      paramWebView = URLDecoder.decode(paramString.substring(ComposeUI.t(this.pLX).length()), "utf-8");
+      localObject = paramWebView.split("&&");
+      int i = 0;
+      while (i < localObject.length)
       {
-        ComposeUI.q(this.ngJ).clear();
-        try
-        {
-          paramWebView = URLDecoder.decode(paramString.substring(ComposeUI.t(this.ngJ).length()), "utf-8");
-          localObject = paramWebView.split("&&");
-          int i = 0;
-          while (i < localObject.length)
-          {
-            paramWebView = localObject[i].split("@@");
-            String str = paramWebView[0].split(":")[1];
-            paramString = paramWebView[1];
-            paramWebView = paramString;
-            if (paramString.startsWith("file://")) {
-              paramWebView = paramString.replaceFirst("file://", "");
-            }
-            y.i("MicroMsg.ComposeUI", "put msgImgInfoMap, msgSvrId: %s, path: %s", new Object[] { str, paramWebView });
-            ComposeUI.q(this.ngJ).put(str, paramWebView);
-            i += 1;
-          }
-          if (!ComposeUI.o(this.ngJ)) {}
+        paramWebView = localObject[i].split("@@");
+        String str = paramWebView[0].split(":")[1];
+        paramString = paramWebView[1];
+        paramWebView = paramString;
+        if (paramString.startsWith("file://")) {
+          paramWebView = paramString.replaceFirst("file://", "");
         }
-        catch (Exception paramWebView)
-        {
-          y.w("MicroMsg.ComposeUI", "shouldOverrideUrlLoading GET_IMG_INFO, ex = %s", new Object[] { paramWebView.getMessage() });
-          return true;
-        }
+        ab.i("MicroMsg.ComposeUI", "put msgImgInfoMap, msgSvrId: %s, path: %s", new Object[] { str, paramWebView });
+        ComposeUI.q(this.pLX).put(str, paramWebView);
+        i += 1;
+      }
+      if (!ComposeUI.o(this.pLX)) {
+        break label577;
       }
     }
-    ComposeUI.r(this.ngJ);
+    catch (Exception paramWebView)
+    {
+      ab.w("MicroMsg.ComposeUI", "shouldOverrideUrlLoading GET_IMG_INFO, ex = %s", new Object[] { paramWebView.getMessage() });
+      AppMethodBeat.o(68208);
+      return true;
+    }
+    ComposeUI.r(this.pLX);
+    label577:
+    AppMethodBeat.o(68208);
     return true;
+  }
+  
+  public final void b(WebView paramWebView, String paramString)
+  {
+    AppMethodBeat.i(68210);
+    ab.d("MicroMsg.ComposeUI", "onPageFinished, url = %s, firstTimeLoaded = %b", new Object[] { paramString, Boolean.valueOf(this.pMj) });
+    if (!this.pMj)
+    {
+      this.pMj = true;
+      u.b(ComposeUI.s(this.pLX), ComposeUI.n(this.pLX), ComposeUI.x(this.pLX));
+    }
+    super.b(paramWebView, paramString);
+    AppMethodBeat.o(68210);
+  }
+  
+  public final void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(68209);
+    super.b(paramWebView, paramString, paramBitmap);
+    if (!ComposeUI.v(this.pLX))
+    {
+      u.d(ComposeUI.s(this.pLX));
+      ComposeUI.w(this.pLX);
+    }
+    AppMethodBeat.o(68209);
   }
 }
 

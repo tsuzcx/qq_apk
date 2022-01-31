@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class SnsInfoFlip$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class SnsInfoFlip$3
   
   public final void run()
   {
-    SnsInfoFlip.d(this.oZi).bIW();
+    AppMethodBeat.i(38969);
+    SnsInfoFlip.d(this.rRB).cvr();
+    AppMethodBeat.o(38969);
   }
 }
 

@@ -1,5 +1,7 @@
 package com.tencent.xweb.extension.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class VideoStatusLayout$a
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class VideoStatusLayout$a
   
   public final void run()
   {
-    this.xhN.setVisibility(8);
+    AppMethodBeat.i(84567);
+    this.BFa.setVisibility(8);
+    AppMethodBeat.o(84567);
   }
 }
 

@@ -1,55 +1,63 @@
 package com.tencent.mm.plugin.setting.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.aal;
-import com.tencent.mm.protocal.c.aam;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.afd;
+import com.tencent.mm.protocal.protobuf.afe;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   extends m
   implements k
 {
-  private b dmK;
-  private f dmL;
+  private f callback;
+  private b rr;
   
   public d(String paramString)
   {
+    AppMethodBeat.i(126844);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new aal();
-    ((b.a)localObject).ecI = new aam();
+    ((b.a)localObject).fsX = new afd();
+    ((b.a)localObject).fsY = new afe();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/generalset";
-    ((b.a)localObject).ecG = 177;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (aal)this.dmK.ecE.ecN;
-    ((aal)localObject).sRV = 1;
-    ((aal)localObject).sZF = paramString;
+    ((b.a)localObject).funcId = 177;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (afd)this.rr.fsV.fta;
+    ((afd)localObject).SetType = 1;
+    ((afd)localObject).wXY = paramString;
+    AppMethodBeat.o(126844);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    y.d("MicroMsg.NetSceneGeneralSet", "doScene");
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneGeneralSet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(126845);
+    ab.d("MicroMsg.NetSceneGeneralSet", "doScene");
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(126845);
+    return i;
   }
   
   public final int getType()
   {
     return 177;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(126846);
+    ab.d("MicroMsg.NetSceneGeneralSet", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(126846);
   }
 }
 

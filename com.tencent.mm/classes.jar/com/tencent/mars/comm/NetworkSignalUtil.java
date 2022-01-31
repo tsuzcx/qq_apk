@@ -6,7 +6,7 @@ import android.net.wifi.WifiManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class NetworkSignalUtil
 {
@@ -79,7 +79,7 @@ public class NetworkSignalUtil
     if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null))
     {
       int j = WifiManager.calculateSignalLevel(localWifiInfo.getRssi(), 10);
-      y.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:" + j * 10);
+      ab.v("MicroMsg.NetworkSignalUtil", "Wifi Signal:" + j * 10);
       int i = j;
       if (j > 10) {
         i = 10;
@@ -90,7 +90,7 @@ public class NetworkSignalUtil
       }
       return j * 10;
     }
-    y.v("MicroMsg.NetworkSignalUtil", "Can Not Get Wifi Signal");
+    ab.v("MicroMsg.NetworkSignalUtil", "Can Not Get Wifi Signal");
     return 0L;
   }
 }

@@ -1,115 +1,154 @@
 package com.tencent.mm.plugin.ipcall.a.c;
 
 import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bv.b;
 import com.tencent.mm.plugin.ipcall.a.g;
 import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.protocal.c.cec;
-import com.tencent.mm.protocal.c.cfm;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.crn;
+import com.tencent.mm.protocal.protobuf.csx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 
 public final class a
 {
-  public v2protocal lqG = new v2protocal(this.lqH);
-  private ah lqH = new a.1(this, Looper.getMainLooper());
-  private boolean lqI = false;
-  public boolean lqJ = false;
-  public boolean lqK = false;
-  public a.a lqL = null;
+  public v2protocal nOc;
+  private ak nOd;
+  private boolean nOe;
+  public boolean nOf;
+  public boolean nOg;
+  public a.a nOh;
   
-  public final void bcA()
+  public a()
   {
-    if (this.lqI) {
-      y.d("MicroMsg.IPCallEngineManager", "requestChannelConnect, already request channel connect");
+    AppMethodBeat.i(21823);
+    this.nOe = false;
+    this.nOf = false;
+    this.nOg = false;
+    this.nOh = null;
+    this.nOd = new a.1(this, Looper.getMainLooper());
+    this.nOc = new v2protocal(this.nOd);
+    AppMethodBeat.o(21823);
+  }
+  
+  public final void aEa()
+  {
+    this.nOf = false;
+    this.nOe = false;
+    this.nOg = false;
+  }
+  
+  public final void bJH()
+  {
+    AppMethodBeat.i(21824);
+    ab.d("MicroMsg.IPCallEngineManager", "setChannelActiveAfterAccept");
+    if (!this.nOf) {
+      ab.d("MicroMsg.IPCallEngineManager", "channel not connect now");
     }
-    com.tencent.mm.plugin.ipcall.a.a.c localc;
-    do
+    this.nOc.setActive();
+    AppMethodBeat.o(21824);
+  }
+  
+  public final void bJI()
+  {
+    AppMethodBeat.i(21825);
+    if (this.nOe)
     {
+      ab.d("MicroMsg.IPCallEngineManager", "requestChannelConnect, already request channel connect");
+      AppMethodBeat.o(21825);
       return;
-      y.i("MicroMsg.IPCallEngineManager", "requestChannelConnect");
-      localc = i.bcg().loW;
-    } while (localc == null);
-    if (localc.hID != null)
+    }
+    ab.i("MicroMsg.IPCallEngineManager", "requestChannelConnect");
+    com.tencent.mm.plugin.ipcall.a.a.c localc = i.bJn().nMs;
+    if (localc != null)
     {
-      cec localcec1 = com.tencent.mm.plugin.ipcall.b.c.ab(localc.hID);
-      cec localcec2 = com.tencent.mm.plugin.ipcall.b.c.ab(localc.lqb);
-      cfm localcfm = new cfm();
-      localcfm.tUF = 0;
-      localcfm.tUG = 0;
-      localcfm.tUH = 0;
-      localcfm.userName = "";
-      localcfm.foj = "";
-      this.lqG.a(localcec1, localcec1, localcec2, localcfm, null);
+      if (localc.jCd != null)
+      {
+        crn localcrn1 = com.tencent.mm.plugin.ipcall.b.c.aj(localc.jCd);
+        crn localcrn2 = com.tencent.mm.plugin.ipcall.b.c.aj(localc.nNx);
+        csx localcsx = new csx();
+        localcsx.ybW = 0;
+        localcsx.ybX = 0;
+        localcsx.ybY = 0;
+        localcsx.userName = "";
+        localcsx.gFE = "";
+        this.nOc.a(localcrn1, localcrn1, localcrn2, localcsx, null);
+      }
+      ab.d("MicroMsg.IPCallEngineManager", "finish set svr addr");
+      this.nOc.tAf = localc.nNs;
+      this.nOc.tBe = localc.nNv;
+      if (localc.nNw != null) {
+        this.nOc.tBf = localc.nNw.toByteArray();
+      }
+      if (localc.nNt != null) {
+        this.nOc.tAg = localc.nNt.toByteArray();
+      }
+      this.nOc.nMZ = localc.nMZ;
+      this.nOc.nNa = localc.nNa;
+      this.nOc.nNh = localc.nNh;
+      this.nOc.tAi = localc.nNq;
+      this.nOc.tAh = localc.nNr;
+      this.nOc.tAj = localc.nNy;
+      if (this.nOc.tAg != null) {
+        break label465;
+      }
     }
-    y.d("MicroMsg.IPCallEngineManager", "finish set svr addr");
-    this.lqG.pUE = localc.lpW;
-    this.lqG.pVz = localc.lpZ;
-    if (localc.lqa != null) {
-      this.lqG.pVA = localc.lqa.toByteArray();
-    }
-    if (localc.lpX != null) {
-      this.lqG.pUF = localc.lpX.toByteArray();
-    }
-    this.lqG.lpD = localc.lpD;
-    this.lqG.lpE = localc.lpE;
-    this.lqG.lpL = localc.lpL;
-    this.lqG.pUH = localc.lpU;
-    this.lqG.pUG = localc.lpV;
-    this.lqG.pUI = localc.lqc;
-    if (this.lqG.pUF == null) {}
-    for (int i = 0;; i = this.lqG.pUF.length)
+    label465:
+    for (int i = 0;; i = this.nOc.tAg.length)
     {
-      int j = this.lqG.setConfigInfo(this.lqG.pUz, this.lqG.lpD, this.lqG.lpL, this.lqG.lpE, this.lqG.field_peerId, 1, this.lqG.pUG, this.lqG.pUH, this.lqG.pUE, i, this.lqG.pUF, this.lqG.pUI, 0, 0, this.lqG.pVz, this.lqG.pVA, 255, 0, 0, null);
-      y.d("MicroMsg.IPCallEngineManager", "setConfigInfo, ret: %d", new Object[] { Integer.valueOf(j) });
+      int j = this.nOc.setConfigInfo(this.nOc.tAa, this.nOc.nMZ, this.nOc.nNh, this.nOc.nNa, this.nOc.field_peerId, 1, this.nOc.tAh, this.nOc.tAi, this.nOc.tAf, i, this.nOc.tAg, this.nOc.tAj, 0, 0, this.nOc.tBe, this.nOc.tBf, 255, 0, 0, null, 0);
+      ab.d("MicroMsg.IPCallEngineManager", "setConfigInfo, ret: %d", new Object[] { Integer.valueOf(j) });
       i = j;
       if (j == 0) {
-        i = this.lqG.connectToPeer();
+        i = this.nOc.connectToPeer();
       }
       if (i < 0)
       {
-        y.e("MicroMsg.IPCallEngineManager", "setConfigInfo failed, ret: %d", new Object[] { Integer.valueOf(i) });
-        if (this.lqL != null) {
-          this.lqL.sD(21);
+        ab.e("MicroMsg.IPCallEngineManager", "setConfigInfo failed, ret: %d", new Object[] { Integer.valueOf(i) });
+        if (this.nOh != null) {
+          this.nOh.xD(21);
         }
       }
-      this.lqI = true;
+      this.nOe = true;
+      AppMethodBeat.o(21825);
       return;
     }
   }
   
-  public final void bcB()
+  public final void iE(boolean paramBoolean)
   {
-    this.lqJ = false;
-    this.lqI = false;
-    this.lqK = false;
-  }
-  
-  public final void bcz()
-  {
-    y.d("MicroMsg.IPCallEngineManager", "setChannelActiveAfterAccept");
-    if (!this.lqJ) {
-      y.d("MicroMsg.IPCallEngineManager", "channel not connect now");
-    }
-    this.lqG.setActive();
-  }
-  
-  public final void sI(int paramInt)
-  {
-    if (!this.lqJ) {}
-    do
+    AppMethodBeat.i(21827);
+    if (paramBoolean) {}
+    for (int i = this.nOc.setAppCmd(401);; i = this.nOc.setAppCmd(402))
     {
+      if (i < 0) {
+        ab.e("MicroMsg.IPCallEngineManager", "setSpeakerPhoneOn, failed, ret: %d", new Object[] { Integer.valueOf(i) });
+      }
+      AppMethodBeat.o(21827);
       return;
-      y.d("MicroMsg.IPCallEngineManager", "setDtmfPayloadType: %d", new Object[] { Integer.valueOf(paramInt) });
-      paramInt = this.lqG.SetDTMFPayload(paramInt);
-    } while (paramInt >= 0);
-    y.i("MicroMsg.IPCallEngineManager", "setDtmfPayloadType failed, ret: %d", new Object[] { Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public final void xJ(int paramInt)
+  {
+    AppMethodBeat.i(21826);
+    if (!this.nOf)
+    {
+      AppMethodBeat.o(21826);
+      return;
+    }
+    ab.d("MicroMsg.IPCallEngineManager", "setDtmfPayloadType: %d", new Object[] { Integer.valueOf(paramInt) });
+    paramInt = this.nOc.SetDTMFPayload(paramInt);
+    if (paramInt < 0) {
+      ab.i("MicroMsg.IPCallEngineManager", "setDtmfPayloadType failed, ret: %d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    AppMethodBeat.o(21826);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.a.c.a
  * JD-Core Version:    0.7.0.1
  */

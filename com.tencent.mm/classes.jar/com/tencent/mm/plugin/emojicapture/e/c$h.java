@@ -1,23 +1,18 @@
 package com.tencent.mm.plugin.emojicapture.e;
 
-import a.d.b.l.a;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.emojicapture.c.b.b;
-import com.tencent.mm.plugin.emojicapture.f.a;
-import com.tencent.mm.plugin.emojicapture.f.a.a;
-import com.tencent.mm.plugin.emojicapture.ui.editor.TextEditorItemView;
+import a.f.a.a;
+import a.f.b.k;
+import a.l;
+import a.y;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"<anonymous>", "", "invoke"})
 final class c$h
-  implements View.OnClickListener
+  extends k
+  implements a<y>
 {
-  c$h(c paramc, l.a parama) {}
-  
-  public final void onClick(View paramView)
+  c$h(c paramc)
   {
-    this.jmJ.jmF.a(true, ((TextEditorItemView)this.jmU.xov).getText(), ((TextEditorItemView)this.jmU.xov).getTextColor());
-    paramView = a.jnW;
-    a.a.a(13, 0L, 0L, 0L);
+    super(0);
   }
 }
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/amp" android:layout_width="160.0dip" android:layout_height="160.0dip" android:minWidth="160.0dip" android:minHeight="160.0dip"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/wi" android:background="@drawable/ch" android:layout_width="120.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="@color/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/jh" />
-    <TextView android:textSize="14.0sp" android:textColor="#ffededed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/jg" />
-    <ProgressBar android:layout_width="36.0dip" android:layout_height="8.0dip" android:layout_marginTop="20.0dip" android:max="100" android:progress="0" style="@style/de" />
+    <ProgressBar android:id="@id/wj" android:padding="7.5dip" android:layout_width="41.0dip" android:layout_height="41.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/ci" />
+    <ImageView android:id="@id/wk" android:layout_width="41.0dip" android:layout_height="41.0dip" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/a6q" android:gravity="center" android:id="@id/cz" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dp" android:layout_marginTop="@dimen/dv" android:layout_marginRight="@dimen/dp" android:layout_marginBottom="18.0dip" android:maxLines="1" />
 </LinearLayout>

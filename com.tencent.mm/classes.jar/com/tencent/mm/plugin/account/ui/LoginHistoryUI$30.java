@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,22 +10,24 @@ final class LoginHistoryUI$30
 {
   LoginHistoryUI$30(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
+    AppMethodBeat.i(124939);
     if (paraml.size() == 0)
     {
-      paraml.fq(7002, q.j.login_by_others);
-      paraml.fq(7003, q.j.intro_create_account_qq);
-      paraml.fq(7004, q.j.wechat_safe_center);
-      if (!x.cqG()) {
-        paraml.fq(7009, q.j.wechat_help_center);
+      paraml.hx(7002, 2131301129);
+      paraml.hx(7003, 2131300744);
+      paraml.hx(7004, 2131305945);
+      if (!aa.dsD()) {
+        paraml.hx(7009, 2131305943);
       }
     }
+    AppMethodBeat.o(124939);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginHistoryUI.30
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 import com.tencent.mapsdk.raster.model.Marker;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMarkerClickListener;
 
 final class a$12
@@ -12,62 +13,74 @@ final class a$12
   
   public final boolean onMarkerClick(Marker paramMarker)
   {
-    y.i("MicroMsg.DefaultTencentMapView", "map:%s markerid:%s, onMarkerClick", new Object[] { this, paramMarker.getTag() });
-    if (bk.bl((String)paramMarker.getTag()))
+    AppMethodBeat.i(51158);
+    if (paramMarker == null)
     {
-      y.w("MicroMsg.DefaultTencentMapView", "realMarker.getTag is null, return");
+      AppMethodBeat.o(51158);
+      return false;
+    }
+    ab.i("MicroMsg.DefaultTencentMapView", "map:%s markerid:%s, onMarkerClick", new Object[] { this, paramMarker.getTag() });
+    if (bo.isNullOrNil((String)paramMarker.getTag()))
+    {
+      ab.w("MicroMsg.DefaultTencentMapView", "realMarker.getTag is null, return");
+      AppMethodBeat.o(51158);
       return false;
     }
     if (((String)paramMarker.getTag()).endsWith("#label"))
     {
-      y.w("MicroMsg.DefaultTencentMapView", "realMarker.getTag is label marker, return");
+      ab.w("MicroMsg.DefaultTencentMapView", "realMarker.getTag is label marker, return");
+      AppMethodBeat.o(51158);
       return false;
     }
-    paramMarker = (a.d)this.gtW.ug((String)paramMarker.getTag());
+    paramMarker = (a.d)this.hOM.Ch((String)paramMarker.getTag());
     if (paramMarker == null)
     {
-      y.e("MicroMsg.DefaultTencentMapView", "[onMarkerClickListener] map:%s appbrandMarker is null, return", new Object[] { this });
+      ab.e("MicroMsg.DefaultTencentMapView", "[onMarkerClickListener] map:%s appbrandMarker is null, return", new Object[] { this });
+      AppMethodBeat.o(51158);
       return false;
     }
-    if (this.gtW.gtA == null)
+    if (a.b(this.hOM) == null)
     {
-      y.e("MicroMsg.DefaultTencentMapView", "[onMarkerClickListener] map:%s mapCalloutClick is null, return", new Object[] { this });
+      ab.e("MicroMsg.DefaultTencentMapView", "[onMarkerClickListener] map:%s mapCalloutClick is null, return", new Object[] { this });
+      AppMethodBeat.o(51158);
       return false;
     }
     Object localObject;
-    if (paramMarker.gux != null)
+    if (paramMarker.hPr != null)
     {
-      y.e("MicroMsg.DefaultTencentMapView", "[onMarkerClickListener] map:%s mapCalloutClick is null, return", new Object[] { this });
-      localObject = paramMarker.gux.guA;
-      if ((localObject == null) || (((b.p.a)localObject).guH != b.p.a.guI) || (!paramMarker.guj.isInfoWindowShown())) {
-        break label287;
+      ab.e("MicroMsg.DefaultTencentMapView", "[onMarkerClickListener] map:%s mapCalloutClick is null, return", new Object[] { this });
+      localObject = paramMarker.hPr.hPv;
+      if ((localObject == null) || (((b.r.a)localObject).hPC != b.r.a.hPD) || (!paramMarker.hPb.isInfoWindowShown())) {
+        break label330;
       }
-      paramMarker.guj.hideInfoWindow();
+      paramMarker.hPb.hideInfoWindow();
     }
     for (;;)
     {
-      if (paramMarker.guj != null) {
-        paramMarker.guj.set2Top();
+      if (paramMarker.hPb != null) {
+        paramMarker.hPb.set2Top();
       }
-      if (paramMarker.guk != null) {
-        paramMarker.guk.set2Top();
+      if (paramMarker.hPc != null) {
+        paramMarker.hPc.set2Top();
       }
-      if (this.gtW.gtS != null)
+      if (a.c(this.hOM) != null)
       {
-        localObject = this.gtW.gtS;
-        if (((d)localObject).guj != null) {
-          ((d)localObject).guj.set2Top();
+        localObject = a.c(this.hOM);
+        if (((d)localObject).hPb != null) {
+          ((d)localObject).hPb.set2Top();
         }
       }
-      return this.gtW.gtA.b(paramMarker);
-      label287:
-      paramMarker.guj.showInfoWindow();
+      boolean bool = a.b(this.hOM).b(paramMarker);
+      AppMethodBeat.o(51158);
+      return bool;
+      label330:
+      paramMarker.hPb.showInfoWindow();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.a.a.12
  * JD-Core Version:    0.7.0.1
  */

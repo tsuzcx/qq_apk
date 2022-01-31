@@ -3,6 +3,7 @@ package com.tencent.liteav.audio.impl.Record;
 import android.content.Context;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
 
@@ -20,6 +21,7 @@ public class a
   
   private void a(byte[] paramArrayOfByte, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(66647);
     h localh = null;
     try
     {
@@ -29,15 +31,21 @@ public class a
       if (localh != null)
       {
         localh.onAudioRecordPCM(paramArrayOfByte, paramInt, paramLong);
+        AppMethodBeat.o(66647);
         return;
       }
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(66647);
+    }
     TXCLog.e("AudioCenter:TXCAudioBGMRecord", "onRecordPcmData:no callback");
+    AppMethodBeat.o(66647);
   }
   
   private void c()
   {
+    AppMethodBeat.i(66648);
     h localh = null;
     try
     {
@@ -47,15 +55,21 @@ public class a
       if (localh != null)
       {
         localh.onAudioRecordStart();
+        AppMethodBeat.o(66648);
         return;
       }
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(66648);
+    }
     TXCLog.e("AudioCenter:TXCAudioBGMRecord", "onRecordStart:no callback");
+    AppMethodBeat.o(66648);
   }
   
   private void d()
   {
+    AppMethodBeat.i(66649);
     h localh = null;
     try
     {
@@ -65,15 +79,21 @@ public class a
       if (localh != null)
       {
         localh.onAudioRecordStop();
+        AppMethodBeat.o(66649);
         return;
       }
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(66649);
+    }
     TXCLog.e("AudioCenter:TXCAudioBGMRecord", "onRecordStop:no callback");
+    AppMethodBeat.o(66649);
   }
   
   public void a()
   {
+    AppMethodBeat.i(66646);
     this.f = false;
     long l = System.currentTimeMillis();
     if ((this.g != null) && (this.g.isAlive()) && (Thread.currentThread().getId() != this.g.getId())) {}
@@ -82,6 +102,7 @@ public class a
       this.g.join();
       TXCLog.i("AudioCenter:TXCAudioBGMRecord", "stop record cost time(MS): " + (System.currentTimeMillis() - l));
       this.g = null;
+      AppMethodBeat.o(66646);
       return;
     }
     catch (Exception localException)
@@ -95,6 +116,7 @@ public class a
   
   public void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(66645);
     a();
     this.b = paramContext;
     this.c = paramInt1;
@@ -103,21 +125,50 @@ public class a
     this.f = true;
     this.g = new Thread(this, "AudioSysRecord Thread");
     this.g.start();
+    AppMethodBeat.o(66645);
   }
   
+  /* Error */
   public void a(h paramh)
   {
-    if (paramh == null) {}
-    for (;;)
-    {
-      try
-      {
-        this.a = null;
-        return;
-      }
-      finally {}
-      this.a = new WeakReference(paramh);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc 147
+    //   4: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_1
+    //   8: ifnonnull +16 -> 24
+    //   11: aload_0
+    //   12: aconst_null
+    //   13: putfield 36	com/tencent/liteav/audio/impl/Record/a:a	Ljava/lang/ref/WeakReference;
+    //   16: ldc 147
+    //   18: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: return
+    //   24: aload_0
+    //   25: new 38	java/lang/ref/WeakReference
+    //   28: dup
+    //   29: aload_1
+    //   30: invokespecial 150	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
+    //   33: putfield 36	com/tencent/liteav/audio/impl/Record/a:a	Ljava/lang/ref/WeakReference;
+    //   36: ldc 147
+    //   38: invokestatic 50	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   41: goto -20 -> 21
+    //   44: astore_1
+    //   45: aload_0
+    //   46: monitorexit
+    //   47: aload_1
+    //   48: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	49	0	this	a
+    //   0	49	1	paramh	h
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	44	finally
+    //   11	21	44	finally
+    //   24	41	44	finally
   }
   
   public boolean b()
@@ -127,9 +178,11 @@ public class a
   
   public void run()
   {
+    AppMethodBeat.i(66650);
     if (!this.f)
     {
       TXCLog.w("AudioCenter:TXCAudioBGMRecord", "audio record: abandom start audio sys record thread!");
+      AppMethodBeat.o(66650);
       return;
     }
     c();
@@ -157,11 +210,12 @@ public class a
       }
     }
     d();
+    AppMethodBeat.o(66650);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.liteav.audio.impl.Record.a
  * JD-Core Version:    0.7.0.1
  */

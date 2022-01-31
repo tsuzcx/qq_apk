@@ -5,12 +5,12 @@ public final class c$cu
 {
   public c$cu()
   {
-    super("getTeachSearchData", "", 10000, false);
+    super("getSearchGuideData", "", 10000, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.cu
  * JD-Core Version:    0.7.0.1
  */

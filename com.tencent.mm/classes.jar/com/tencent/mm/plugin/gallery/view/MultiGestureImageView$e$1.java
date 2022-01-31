@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.gallery.view;
 
 import android.graphics.Matrix;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 
 final class MultiGestureImageView$e$1
@@ -10,24 +11,26 @@ final class MultiGestureImageView$e$1
   
   public final void run()
   {
-    this.kLm.kLl.getImageMatrix().getValues(this.kLm.kLk);
-    float f1 = this.kLm.kLl.getScale();
-    float f2 = this.kLm.kLl.getImageHeight() * f1;
-    float f3 = this.kLm.kLk[5];
-    f1 = MultiGestureImageView.i(this.kLm.kLj);
-    if (f2 < MultiGestureImageView.i(this.kLm.kLj)) {
-      f1 = MultiGestureImageView.i(this.kLm.kLj) / 2.0F + f2 / 2.0F;
+    AppMethodBeat.i(21621);
+    this.nhP.nhO.getImageMatrix().getValues(this.nhP.nhN);
+    float f1 = this.nhP.nhO.getScale();
+    float f2 = this.nhP.nhO.getImageHeight() * f1;
+    float f3 = this.nhP.nhN[5];
+    f1 = MultiGestureImageView.i(this.nhP.nhM);
+    if (f2 < MultiGestureImageView.i(this.nhP.nhM)) {
+      f1 = MultiGestureImageView.i(this.nhP.nhM) / 2.0F + f2 / 2.0F;
     }
     f1 -= f3 + f2;
     if (f1 <= 0.0F) {
-      this.kLm.bur = true;
+      this.nhP.bVC = true;
     }
     for (;;)
     {
-      this.kLm.kLl.ae(0.0F, f1);
+      this.nhP.nhO.ap(0.0F, f1);
+      AppMethodBeat.o(21621);
       return;
       if (Math.abs(f1) <= 5.0F) {
-        this.kLm.bur = true;
+        this.nhP.bVC = true;
       } else {
         f1 = (float)(Math.abs(f1) - Math.pow(Math.sqrt(Math.abs(f1)) - 1.0D, 2.0D)) * 2.0F;
       }
@@ -36,7 +39,7 @@ final class MultiGestureImageView$e$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.view.MultiGestureImageView.e.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.clean.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PLong;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac;
 import com.tencent.mm.vfs.b;
 import com.tencent.mm.vfs.j;
@@ -17,58 +18,53 @@ import java.util.Iterator;
 public final class f
   extends Thread
 {
-  private h iBO;
-  private HashSet<String> iBT;
-  private int iBy = 0;
-  private int iBz = 0;
   private boolean isStop = false;
+  private int kGF = 0;
+  private int kGG = 0;
+  private h kGV;
+  private HashSet<String> kHa;
   
   public f(HashSet<String> paramHashSet, h paramh)
   {
-    this.iBT = paramHashSet;
-    this.iBO = paramh;
+    this.kHa = paramHashSet;
+    this.kGV = paramh;
   }
   
   private int a(b paramb, PInt paramPInt, PLong paramPLong)
   {
-    int j = 0;
+    AppMethodBeat.i(18714);
     int i = paramPInt.value;
-    Object localObject;
-    if (paramb != null)
+    if (paramb != null) {}
+    for (Object localObject = j.p(paramb.dQJ());; localObject = "null")
     {
-      localObject = j.n(paramb.cLr());
-      y.d("MicroMsg.DeleteOtherAccController", "delete [%d] [%s]", new Object[] { Integer.valueOf(i), localObject });
+      ab.d("MicroMsg.DeleteOtherAccController", "delete [%d] [%s]", new Object[] { Integer.valueOf(i), localObject });
       if (paramPInt.value < 10) {
-        break label80;
+        break label85;
       }
       if (!this.isStop) {
-        break label75;
-      }
-      i = -1;
-    }
-    label75:
-    label80:
-    do
-    {
-      do
-      {
-        return i;
-        localObject = "null";
         break;
-        paramPInt.value = 0;
-        i = j;
-      } while (paramb == null);
-      i = j;
-    } while (!paramb.exists());
+      }
+      AppMethodBeat.o(18714);
+      return -1;
+    }
+    paramPInt.value = 0;
+    label85:
+    if ((paramb == null) || (!paramb.exists()))
+    {
+      AppMethodBeat.o(18714);
+      return 0;
+    }
     if (paramb.isDirectory())
     {
-      localObject = paramb.cLt();
+      localObject = paramb.dQL();
       if (localObject != null)
       {
         i = 0;
         while (i < localObject.length)
         {
-          if (a(localObject[i], paramPInt, paramPLong) == -1) {
+          if (a(localObject[i], paramPInt, paramPLong) == -1)
+          {
+            AppMethodBeat.o(18714);
             return -1;
           }
           i += 1;
@@ -78,6 +74,7 @@ public final class f
     }
     for (;;)
     {
+      AppMethodBeat.o(18714);
       return 1;
       paramPLong.value += paramb.length();
       paramb.delete();
@@ -85,77 +82,89 @@ public final class f
     }
   }
   
-  private void aEa()
+  private void bha()
   {
-    if (this.isStop) {
+    AppMethodBeat.i(18712);
+    if (this.isStop)
+    {
+      AppMethodBeat.o(18712);
       return;
     }
-    ai.d(new f.1(this));
+    al.d(new f.1(this));
+    AppMethodBeat.o(18712);
   }
   
-  private static void c(String paramString, ArrayList<String> paramArrayList)
+  private static void e(String paramString, ArrayList<String> paramArrayList)
   {
-    if (bk.bl(paramString)) {}
-    for (;;)
+    AppMethodBeat.i(18711);
+    if (bo.isNullOrNil(paramString))
     {
+      AppMethodBeat.o(18711);
       return;
-      y.i("MicroMsg.DeleteOtherAccController", "check paths [%s]", new Object[] { paramString });
-      Object localObject = new b(paramString);
-      if ((((b)localObject).exists()) && (((b)localObject).isDirectory()))
+    }
+    ab.i("MicroMsg.DeleteOtherAccController", "check paths [%s]", new Object[] { paramString });
+    Object localObject = new b(paramString);
+    if ((((b)localObject).exists()) && (((b)localObject).isDirectory()))
+    {
+      localObject = ((b)localObject).list();
+      if ((localObject != null) && (localObject.length > 0))
       {
-        localObject = ((b)localObject).list();
-        if ((localObject != null) && (localObject.length > 0))
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
         {
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            String str = localObject[i];
-            str = paramString + "/" + str;
-            y.d("MicroMsg.DeleteOtherAccController", "check add path[%s]", new Object[] { str });
-            paramArrayList.add(str);
-            i += 1;
-          }
+          String str = localObject[i];
+          str = paramString + "/" + str;
+          ab.d("MicroMsg.DeleteOtherAccController", "check add path[%s]", new Object[] { str });
+          paramArrayList.add(str);
+          i += 1;
         }
       }
     }
+    AppMethodBeat.o(18711);
   }
   
-  private void cY(long paramLong)
+  private void iu(long paramLong)
   {
-    if (this.isStop) {
+    AppMethodBeat.i(18713);
+    if (this.isStop)
+    {
+      AppMethodBeat.o(18713);
       return;
     }
-    ai.d(new f.2(this, paramLong));
+    al.d(new f.2(this, paramLong));
+    AppMethodBeat.o(18713);
   }
   
   public final void run()
   {
-    if ((this.iBT == null) || (this.iBT.isEmpty()))
+    AppMethodBeat.i(18710);
+    if ((this.kHa == null) || (this.kHa.isEmpty()))
     {
-      y.w("MicroMsg.DeleteOtherAccController", "delete paths is null.");
-      cY(0L);
+      ab.w("MicroMsg.DeleteOtherAccController", "delete paths is null.");
+      iu(0L);
+      AppMethodBeat.o(18710);
       return;
     }
     Object localObject1 = new ArrayList();
     ArrayList localArrayList = new ArrayList();
     Object localObject2 = new StringBuilder("mm");
-    com.tencent.mm.kernel.g.DQ();
-    com.tencent.mm.kernel.g.DN();
-    localObject2 = com.tencent.mm.a.g.o(a.CK().getBytes());
-    Object localObject3 = this.iBT.iterator();
+    com.tencent.mm.kernel.g.RM();
+    com.tencent.mm.kernel.g.RJ();
+    localObject2 = com.tencent.mm.a.g.w(a.getUin().getBytes());
+    Object localObject3 = this.kHa.iterator();
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (String)((Iterator)localObject3).next();
-      y.i("MicroMsg.DeleteOtherAccController", "uinPath[%s] path[%s]", new Object[] { localObject2, localObject4 });
-      if (!bk.isEqual((String)localObject2, (String)localObject4))
+      ab.i("MicroMsg.DeleteOtherAccController", "uinPath[%s] path[%s]", new Object[] { localObject2, localObject4 });
+      if (!bo.isEqual((String)localObject2, (String)localObject4))
       {
-        c(com.tencent.mm.kernel.g.DP().dKs + (String)localObject4, (ArrayList)localObject1);
-        c(ac.dOP + (String)localObject4, localArrayList);
+        e(com.tencent.mm.kernel.g.RL().eHQ + (String)localObject4, (ArrayList)localObject1);
+        e(ac.eQv + (String)localObject4, localArrayList);
       }
     }
-    this.iBy = (((ArrayList)localObject1).size() + localArrayList.size());
-    this.iBz = 0;
+    this.kGF = (((ArrayList)localObject1).size() + localArrayList.size());
+    this.kGG = 0;
     localObject2 = new PLong();
     localObject3 = new PLong();
     int j = ((ArrayList)localObject1).size();
@@ -166,12 +175,12 @@ public final class f
       ((PInt)localObject4).value = 0;
       String str = (String)((ArrayList)localObject1).get(i);
       i += 1;
-      y.i("MicroMsg.DeleteOtherAccController", "ready to delete index[%d] path[%s] pDelete[%d]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(((PInt)localObject4).value) });
+      ab.i("MicroMsg.DeleteOtherAccController", "ready to delete index[%d] path[%s] pDelete[%d]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(((PInt)localObject4).value) });
       if (a(new b(str), (PInt)localObject4, (PLong)localObject2) == -1) {
         break;
       }
-      this.iBz += 1;
-      aEa();
+      this.kGG += 1;
+      bha();
     }
     j = localArrayList.size();
     localObject1 = new PInt();
@@ -181,15 +190,16 @@ public final class f
       ((PInt)localObject1).value = 0;
       localObject4 = (String)localArrayList.get(i);
       i += 1;
-      y.i("MicroMsg.DeleteOtherAccController", "ready to delete index[%d] path[%s] pDelete[%d]", new Object[] { Integer.valueOf(i), localObject4, Integer.valueOf(((PInt)localObject1).value) });
+      ab.i("MicroMsg.DeleteOtherAccController", "ready to delete index[%d] path[%s] pDelete[%d]", new Object[] { Integer.valueOf(i), localObject4, Integer.valueOf(((PInt)localObject1).value) });
       if (a(new b((String)localObject4), (PInt)localObject1, (PLong)localObject3) == -1) {
         break;
       }
-      this.iBz += 1;
-      aEa();
+      this.kGG += 1;
+      bha();
     }
-    y.i("MicroMsg.DeleteOtherAccController", "delete finish sd[%d] data[%d]", new Object[] { Long.valueOf(((PLong)localObject2).value), Long.valueOf(((PLong)localObject3).value) });
-    cY(((PLong)localObject2).value);
+    ab.i("MicroMsg.DeleteOtherAccController", "delete finish sd[%d] data[%d]", new Object[] { Long.valueOf(((PLong)localObject2).value), Long.valueOf(((PLong)localObject3).value) });
+    iu(((PLong)localObject2).value);
+    AppMethodBeat.o(18710);
   }
 }
 

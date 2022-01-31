@@ -1,146 +1,171 @@
 package com.tencent.mm.plugin.exdevice.j;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import junit.framework.Assert;
 
 public final class a
 {
-  private final int jHT = 1024;
-  private ByteBuffer jHU;
-  private ByteBuffer jHV;
+  private final int lRr;
+  private ByteBuffer lRs;
+  private ByteBuffer lRt;
   
   public a(int paramInt)
   {
-    y.d("MicroMsg.exdevice.AutoBuffer", "******AutoBuffer****** capacity = " + paramInt);
+    AppMethodBeat.i(20237);
+    this.lRr = 1024;
+    ab.d("MicroMsg.exdevice.AutoBuffer", "******AutoBuffer****** capacity = ".concat(String.valueOf(paramInt)));
     if (paramInt >= 0)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      this.jHV = ByteBuffer.allocate(paramInt);
-      this.jHU = this.jHV.asReadOnlyBuffer();
-      if (this.jHV == null) {
-        break label95;
-      }
-      bool1 = true;
-      label72:
-      Assert.assertTrue(bool1);
-      if (this.jHU == null) {
+      this.lRt = ByteBuffer.allocate(paramInt);
+      this.lRs = this.lRt.asReadOnlyBuffer();
+      if (this.lRt == null) {
         break label100;
       }
+      bool1 = true;
+      label71:
+      Assert.assertTrue(bool1);
+      if (this.lRs == null) {
+        break label105;
+      }
     }
-    label95:
     label100:
+    label105:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
+      AppMethodBeat.o(20237);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label72;
+      break label71;
     }
   }
   
-  public final void O(byte[] paramArrayOfByte, int paramInt)
+  private int getCapacity()
+  {
+    AppMethodBeat.i(20238);
+    ab.d("MicroMsg.exdevice.AutoBuffer", "getCapacity = " + this.lRt.capacity());
+    int i = this.lRt.capacity();
+    AppMethodBeat.o(20238);
+    return i;
+  }
+  
+  public final void P(byte[] paramArrayOfByte, int paramInt)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(20241);
     Assert.assertTrue(true);
     if (paramInt >= 0)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
       if (paramArrayOfByte.length < 0) {
-        break label98;
-      }
-      bool1 = true;
-      label24:
-      Assert.assertTrue(bool1);
-      if (paramArrayOfByte.length < paramInt + 0) {
         break label103;
       }
       bool1 = true;
-      label38:
+      label30:
       Assert.assertTrue(bool1);
-      if (this.jHU.remaining() < paramInt) {
+      if (paramArrayOfByte.length < paramInt + 0) {
         break label108;
       }
+      bool1 = true;
+      label44:
+      Assert.assertTrue(bool1);
+      if (this.lRs.remaining() < paramInt) {
+        break label113;
+      }
     }
-    label98:
     label103:
     label108:
+    label113:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      y.d("MicroMsg.exdevice.AutoBuffer", "readByte dstOffset = 0 byteCount = " + paramInt);
-      this.jHU.get(paramArrayOfByte, 0, paramInt);
+      ab.d("MicroMsg.exdevice.AutoBuffer", "readByte dstOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
+      this.lRs.get(paramArrayOfByte, 0, paramInt);
+      AppMethodBeat.o(20241);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label24;
+      break label30;
       bool1 = false;
-      break label38;
+      break label44;
     }
   }
   
-  public final void P(byte[] paramArrayOfByte, int paramInt)
+  public final void Q(byte[] paramArrayOfByte, int paramInt)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(20242);
     Assert.assertTrue(true);
     if (paramInt >= 0)
     {
       bool1 = true;
       Assert.assertTrue(bool1);
       if (paramArrayOfByte == null) {
-        break label177;
+        break label152;
       }
     }
-    label177:
+    label152:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      y.d("MicroMsg.exdevice.AutoBuffer", "writeByte srcOffset = 0 byteCount = " + paramInt);
-      if (paramInt <= this.jHV.remaining()) {
-        break label183;
+      ab.d("MicroMsg.exdevice.AutoBuffer", "writeByte srcOffset = 0 byteCount = ".concat(String.valueOf(paramInt)));
+      if (paramInt <= this.lRt.remaining()) {
+        break label158;
       }
-      y.d("MicroMsg.exdevice.AutoBuffer", "byteCount > mWriteStream.remaining() Recalloc");
-      y.d("MicroMsg.exdevice.AutoBuffer", "getCapacity = " + this.jHV.capacity());
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(this.jHV.capacity() + paramInt + 1024);
-      int i = this.jHU.position();
-      localByteBuffer.put(this.jHV.array());
+      ab.d("MicroMsg.exdevice.AutoBuffer", "byteCount > mWriteStream.remaining() Recalloc");
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(getCapacity() + paramInt + 1024);
+      int i = this.lRs.position();
+      localByteBuffer.put(this.lRt.array());
       localByteBuffer.put(paramArrayOfByte, 0, paramInt);
-      this.jHV = localByteBuffer;
-      this.jHU = localByteBuffer.asReadOnlyBuffer();
-      this.jHU.position(i);
+      this.lRt = localByteBuffer;
+      this.lRs = localByteBuffer.asReadOnlyBuffer();
+      this.lRs.position(i);
+      AppMethodBeat.o(20242);
       return;
       bool1 = false;
       break;
     }
-    label183:
-    this.jHV.put(paramArrayOfByte, 0, paramInt);
+    label158:
+    this.lRt.put(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.o(20242);
   }
   
   public final int getSize()
   {
-    y.d("MicroMsg.exdevice.AutoBuffer", "size = " + this.jHV.position());
-    return this.jHV.position();
+    AppMethodBeat.i(20239);
+    ab.d("MicroMsg.exdevice.AutoBuffer", "size = " + this.lRt.position());
+    int i = this.lRt.position();
+    AppMethodBeat.o(20239);
+    return i;
   }
   
   public final short readShort()
   {
-    if (getSize() <= 1) {
-      throw new IOException("There is only one byte in array");
+    AppMethodBeat.i(20240);
+    if (getSize() <= 1)
+    {
+      IOException localIOException = new IOException("There is only one byte in array");
+      AppMethodBeat.o(20240);
+      throw localIOException;
     }
-    short s = this.jHU.getShort();
-    y.d("MicroMsg.exdevice.AutoBuffer", "getShort = " + s);
+    short s = this.lRs.getShort();
+    ab.d("MicroMsg.exdevice.AutoBuffer", "getShort = ".concat(String.valueOf(s)));
+    AppMethodBeat.o(20240);
     return s;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.j.a
  * JD-Core Version:    0.7.0.1
  */

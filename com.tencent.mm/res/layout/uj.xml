@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/dl" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bc2" android:layout_width="@dimen/ev" android:layout_height="@dimen/ev" />
-</LinearLayout>
+    <com.tencent.mm.plugin.emojicapture.ui.capture.CaptureContainer android:id="@id/bgd" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.CaptureEditorContainer android:id="@id/bge" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

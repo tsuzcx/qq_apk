@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-public final class c$ir
+final class c$ir
   extends c.g
 {
-  public c$ir()
+  c$ir()
   {
-    super("shareWeiboApp", "shareWeiboApp", 107, false);
+    super("setWCPayPassword", "setWCPayPassword", 289, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ir
  * JD-Core Version:    0.7.0.1
  */

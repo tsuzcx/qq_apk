@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$gx
+final class c$gx
   extends c.g
 {
-  public c$gx()
+  c$gx()
   {
-    super("reportSearchStatistics", "", 10000, false);
+    super("previewVideo", "previewVideo", 252, true);
   }
 }
 

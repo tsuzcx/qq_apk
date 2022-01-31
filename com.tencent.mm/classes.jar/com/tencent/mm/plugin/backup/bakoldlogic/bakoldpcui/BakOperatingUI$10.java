@@ -1,7 +1,10 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.ah;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class BakOperatingUI$10
@@ -11,15 +14,40 @@ final class BakOperatingUI$10
   
   public final void run()
   {
-    if (6 == BakOperatingUI.j(this.hPc)) {
-      BakOperatingUI.m(this.hPc).post(new BakOperatingUI.10.1(this));
-    }
-    while (1 != BakOperatingUI.j(this.hPc)) {
+    AppMethodBeat.i(17943);
+    if (6 == BakOperatingUI.j(this.jIE))
+    {
+      BakOperatingUI.m(this.jIE).post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(17942);
+          BakOperatingUI.10.this.jIE.showOptionMenu(false);
+          if (BakOperatingUI.h(BakOperatingUI.10.this.jIE) != null) {
+            BakOperatingUI.h(BakOperatingUI.10.this.jIE).setProgress(0);
+          }
+          if (BakOperatingUI.k(BakOperatingUI.10.this.jIE) != null) {
+            BakOperatingUI.k(BakOperatingUI.10.this.jIE).setText(BakOperatingUI.10.this.jIE.getString(2131297424));
+          }
+          if (BakOperatingUI.l(BakOperatingUI.10.this.jIE) != null) {
+            BakOperatingUI.l(BakOperatingUI.10.this.jIE).setText(BakOperatingUI.10.this.jIE.getString(2131297423));
+          }
+          if (BakOperatingUI.i(BakOperatingUI.10.this.jIE) != null) {
+            BakOperatingUI.i(BakOperatingUI.10.this.jIE).setText(BakOperatingUI.10.this.jIE.getString(2131297414) + "0%");
+          }
+          AppMethodBeat.o(17942);
+        }
+      });
+      AppMethodBeat.o(17943);
       return;
     }
-    Intent localIntent = new Intent(this.hPc, BakFinishUI.class);
-    localIntent.putExtra("cmd", BakOperatingUI.j(this.hPc));
-    MMWizardActivity.C(this.hPc, localIntent);
+    if (1 == BakOperatingUI.j(this.jIE))
+    {
+      Intent localIntent = new Intent(this.jIE, BakFinishUI.class);
+      localIntent.putExtra("cmd", BakOperatingUI.j(this.jIE));
+      MMWizardActivity.J(this.jIE, localIntent);
+    }
+    AppMethodBeat.o(17943);
   }
 }
 

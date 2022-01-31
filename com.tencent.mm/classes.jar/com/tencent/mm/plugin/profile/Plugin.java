@@ -1,33 +1,43 @@
 package com.tencent.mm.plugin.profile;
 
-import com.tencent.mm.model.ar;
-import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
+import com.tencent.mm.pluginsdk.o;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class Plugin
-  implements c
+  implements com.tencent.mm.pluginsdk.b.c
 {
   public Plugin()
   {
-    y.i("MicroMsg.Plugin.profile", "profile constructor " + System.currentTimeMillis());
+    AppMethodBeat.i(23239);
+    ab.i("MicroMsg.Plugin.profile", "profile constructor " + System.currentTimeMillis());
+    AppMethodBeat.o(23239);
   }
   
-  public final n createApplication()
+  public final o createApplication()
   {
-    y.i("MicroMsg.Plugin.profile", "profile createApplication " + System.currentTimeMillis());
-    return new a();
+    AppMethodBeat.i(23240);
+    ab.i("MicroMsg.Plugin.profile", "profile createApplication " + System.currentTimeMillis());
+    b localb = new b();
+    AppMethodBeat.o(23240);
+    return localb;
   }
   
-  public final ar createSubCore()
+  public final at createSubCore()
   {
-    y.i("MicroMsg.Plugin.profile", "profile createSubCore " + System.currentTimeMillis());
-    return new b();
+    AppMethodBeat.i(23242);
+    ab.i("MicroMsg.Plugin.profile", "profile createSubCore " + System.currentTimeMillis());
+    c localc = new c();
+    AppMethodBeat.o(23242);
+    return localc;
   }
   
   public final com.tencent.mm.pluginsdk.b.b getContactWidgetFactory()
   {
-    y.i("MicroMsg.Plugin.profile", "profile getContactWidgetFactory " + System.currentTimeMillis());
+    AppMethodBeat.i(23241);
+    ab.i("MicroMsg.Plugin.profile", "profile getContactWidgetFactory " + System.currentTimeMillis());
+    AppMethodBeat.o(23241);
     return null;
   }
 }

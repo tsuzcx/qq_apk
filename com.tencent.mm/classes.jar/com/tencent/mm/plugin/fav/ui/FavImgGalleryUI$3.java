@@ -1,25 +1,17 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.u.b;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.MMGestureGallery;
-import com.tencent.mm.ui.tools.MMGestureGallery.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ny;
+import com.tencent.mm.sdk.b.c;
 
 final class FavImgGalleryUI$3
-  implements MMGestureGallery.c
+  extends c<ny>
 {
-  FavImgGalleryUI$3(FavImgGalleryUI paramFavImgGalleryUI) {}
-  
-  public final void aRg()
+  FavImgGalleryUI$3(FavImgGalleryUI paramFavImgGalleryUI)
   {
-    if ((!this.kbW.isFinishing()) && (!this.kbW.uMr))
-    {
-      u.b localb = u.Hc().v("basescanui@datacenter", true);
-      localb.h("key_basescanui_screen_x", Integer.valueOf(FavImgGalleryUI.a(this.kbW).getXDown()));
-      localb.h("key_basescanui_screen_y", Integer.valueOf(FavImgGalleryUI.a(this.kbW).getYDown()));
-      FavImgGalleryUI.b(this.kbW);
-    }
+    AppMethodBeat.i(151520);
+    this.__eventId = ny.class.getName().hashCode();
+    AppMethodBeat.o(151520);
   }
 }
 

@@ -1,76 +1,57 @@
 package com.tencent.mm.plugin.notification.d;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 import java.io.IOException;
 
 public final class b
 {
-  private static final String mIH = com.tencent.mm.compatible.util.e.bkH + "FailMsgFileCache";
+  private static final String piW;
   
-  public static void a(int paramInt, b.a parama)
+  static
   {
-    String str = null;
-    if (paramInt == 1) {
-      str = mIH + File.separator + "normalMsg";
-    }
-    while (bk.bl(str))
-    {
-      y.e("MicroMsg.FailMsgFileCache", "flushToDisk error, cannot find filename");
-      return;
-      if (paramInt == 2) {
-        str = mIH + File.separator + "snsMsg";
-      }
-    }
-    y.d("MicroMsg.FailMsgFileCache", "flushToDisk, filename:%s", new Object[] { str });
-    parama = parama.bpG();
-    y.d("MicroMsg.FailMsgFileCache", "flushToDisk, cacheContent:%s", new Object[] { parama });
-    if (bk.bl(parama))
-    {
-      y.d("MicroMsg.FailMsgFileCache", "flushToDisk, content is empty");
-      return;
-    }
-    com.tencent.mm.a.e.b(str, parama.getBytes(), parama.length());
+    AppMethodBeat.i(23128);
+    piW = com.tencent.mm.compatible.util.e.eQz + "FailMsgFileCache";
+    AppMethodBeat.o(23128);
   }
   
-  public static void init()
+  public static b.a AT(int paramInt)
   {
-    y.d("MicroMsg.FailMsgFileCache", "init FailMsgFileCache");
-    new File(mIH).mkdirs();
-  }
-  
-  public static b.a vv(int paramInt)
-  {
+    AppMethodBeat.i(23126);
     String str;
     if (paramInt == 1) {
-      str = mIH + File.separator + "normalMsg";
+      str = piW + File.separator + "normalMsg";
     }
     for (;;)
     {
-      if (bk.bl(str))
+      if (bo.isNullOrNil(str))
       {
-        y.e("MicroMsg.FailMsgFileCache", "extractFromDisk error, cannot find filename");
+        ab.e("MicroMsg.FailMsgFileCache", "extractFromDisk error, cannot find filename");
+        AppMethodBeat.o(23126);
         return null;
         if (paramInt == 2) {
-          str = mIH + File.separator + "snsMsg";
+          str = piW + File.separator + "snsMsg";
         }
       }
       else
       {
-        y.d("MicroMsg.FailMsgFileCache", "extractFromDisk, filename:%s", new Object[] { str });
+        ab.d("MicroMsg.FailMsgFileCache", "extractFromDisk, filename:%s", new Object[] { str });
         try
         {
-          str = com.tencent.mm.a.e.bP(str);
-          y.d("MicroMsg.FailMsgFileCache", "extractFromDisk, cacheContent:%s", new Object[] { str });
+          str = com.tencent.mm.a.e.cS(str);
+          ab.d("MicroMsg.FailMsgFileCache", "extractFromDisk, cacheContent:%s", new Object[] { str });
           b.a locala = new b.a();
-          locala.Kh(str);
+          locala.Wg(str);
+          AppMethodBeat.o(23126);
           return locala;
         }
         catch (IOException localIOException)
         {
-          y.printErrStackTrace("MicroMsg.FailMsgFileCache", localIOException, "", new Object[0]);
-          y.d("MicroMsg.FailMsgFileCache", "extractFromDisk error:%s", new Object[] { localIOException.toString() });
+          ab.printErrStackTrace("MicroMsg.FailMsgFileCache", localIOException, "", new Object[0]);
+          ab.d("MicroMsg.FailMsgFileCache", "extractFromDisk error:%s", new Object[] { localIOException.toString() });
+          AppMethodBeat.o(23126);
           return null;
         }
       }
@@ -78,24 +59,64 @@ public final class b
     }
   }
   
-  public static void vw(int paramInt)
+  public static void AU(int paramInt)
   {
+    AppMethodBeat.i(23127);
     String str = null;
-    if (paramInt == 1) {}
-    do
+    if (paramInt == 1) {
+      str = piW + File.separator + "normalMsg";
+    }
+    while (bo.isNullOrNil(str))
     {
-      str = mIH + File.separator + "normalMsg";
-      while (bk.bl(str))
-      {
-        y.e("MicroMsg.FailMsgFileCache", "removeFile error, cannot find filename");
-        return;
-        if (paramInt == 2) {
-          str = mIH + File.separator + "snsMsg";
-        }
+      ab.e("MicroMsg.FailMsgFileCache", "removeFile error, cannot find filename");
+      AppMethodBeat.o(23127);
+      return;
+      if (paramInt == 2) {
+        str = piW + File.separator + "snsMsg";
       }
-      y.d("MicroMsg.FailMsgFileCache", "removeFile, filename:%s", new Object[] { str });
-    } while (!com.tencent.mm.a.e.bK(str));
-    new File(str).delete();
+    }
+    ab.d("MicroMsg.FailMsgFileCache", "removeFile, filename:%s", new Object[] { str });
+    if (com.tencent.mm.a.e.cN(str)) {
+      new File(str).delete();
+    }
+    AppMethodBeat.o(23127);
+  }
+  
+  public static void a(int paramInt, b.a parama)
+  {
+    AppMethodBeat.i(23125);
+    String str = null;
+    if (paramInt == 1) {
+      str = piW + File.separator + "normalMsg";
+    }
+    while (bo.isNullOrNil(str))
+    {
+      ab.e("MicroMsg.FailMsgFileCache", "flushToDisk error, cannot find filename");
+      AppMethodBeat.o(23125);
+      return;
+      if (paramInt == 2) {
+        str = piW + File.separator + "snsMsg";
+      }
+    }
+    ab.d("MicroMsg.FailMsgFileCache", "flushToDisk, filename:%s", new Object[] { str });
+    parama = parama.bYm();
+    ab.d("MicroMsg.FailMsgFileCache", "flushToDisk, cacheContent:%s", new Object[] { parama });
+    if (bo.isNullOrNil(parama))
+    {
+      ab.d("MicroMsg.FailMsgFileCache", "flushToDisk, content is empty");
+      AppMethodBeat.o(23125);
+      return;
+    }
+    com.tencent.mm.a.e.b(str, parama.getBytes(), parama.length());
+    AppMethodBeat.o(23125);
+  }
+  
+  public static void init()
+  {
+    AppMethodBeat.i(23124);
+    ab.d("MicroMsg.FailMsgFileCache", "init FailMsgFileCache");
+    new File(piW).mkdirs();
+    AppMethodBeat.o(23124);
   }
 }
 

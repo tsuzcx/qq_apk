@@ -12,21 +12,17 @@ import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.plugin.facedetect.a.a;
-import com.tencent.mm.plugin.facedetect.a.b;
-import com.tencent.mm.plugin.facedetect.a.d;
-import com.tencent.mm.plugin.facedetect.a.e;
-import com.tencent.mm.plugin.facedetect.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.model.h;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class FaceProcessHintView
   extends LinearLayout
 {
-  private h jVh = null;
-  private int jVi = 0;
-  private Animation jVj = null;
+  private int Sl;
+  private h mpA;
+  private Animation mpB;
   
   public FaceProcessHintView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -36,41 +32,51 @@ public class FaceProcessHintView
   public FaceProcessHintView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(659);
+    this.mpA = null;
+    this.Sl = 0;
+    this.mpB = null;
     setOrientation(0);
     setMinimumHeight(BackwardSupportUtil.b.b(getContext(), 36.0F));
-    this.jVj = AnimationUtils.loadAnimation(paramContext, a.a.face_zoom_out_from_left);
-    this.jVj.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.mpB = AnimationUtils.loadAnimation(paramContext, 2131034171);
+    this.mpB.setInterpolator(new AccelerateDecelerateInterpolator());
+    AppMethodBeat.o(659);
   }
   
   private void setCurrentProcessing(int paramInt)
   {
-    TextView localTextView = (TextView)getChildAt(paramInt).findViewById(a.e.current_process_number);
-    localTextView.setTextColor(getResources().getColor(a.b.white));
-    localTextView.setBackgroundResource(a.d.face_prefix_number_bg);
+    AppMethodBeat.i(661);
+    TextView localTextView = (TextView)getChildAt(paramInt).findViewById(2131823910);
+    localTextView.setTextColor(getResources().getColor(2131690709));
+    localTextView.setBackgroundResource(2130838711);
+    AppMethodBeat.o(661);
   }
   
   @SuppressLint({"SetTextI18n"})
   public void setDataAndInvalidate(h paramh)
   {
-    this.jVh = paramh;
-    if ((this.jVh == null) || (this.jVh.jNS <= 0))
+    AppMethodBeat.i(660);
+    this.mpA = paramh;
+    if ((this.mpA == null) || (this.mpA.mie <= 0))
     {
-      y.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
+      ab.e("MicroMsg.FaceProcessHintView", "hy: model invalid");
+      AppMethodBeat.o(660);
       return;
     }
     removeAllViews();
     int i = 0;
-    while (i < this.jVh.jNS)
+    while (i < this.mpA.mie)
     {
-      paramh = LayoutInflater.from(getContext()).inflate(a.g.face_process_hint_item, null, false);
+      paramh = LayoutInflater.from(getContext()).inflate(2130969506, null, false);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
-      ((TextView)paramh.findViewById(a.e.current_process_number)).setText(String.valueOf(i + 1));
+      ((TextView)paramh.findViewById(2131823910)).setText(String.valueOf(i + 1));
       addView(paramh, localLayoutParams);
       i += 1;
     }
-    getChildAt(getChildCount() - 1).findViewById(a.e.face_progress_area).setVisibility(8);
+    getChildAt(getChildCount() - 1).findViewById(2131823911).setVisibility(8);
     setCurrentProcessing(0);
     invalidate();
+    AppMethodBeat.o(660);
   }
 }
 

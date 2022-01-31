@@ -1,16 +1,12 @@
 package com.tencent.mm.api;
 
-import com.tencent.mm.pluginsdk.ui.chat.f;
-
-public class r
-  implements f
+public abstract interface r
 {
-  public r.a bvd;
+  public abstract void a(e parame);
   
-  public final void a(r.a parama)
-  {
-    this.bvd = parama;
-  }
+  public abstract void a(e parame, int paramInt);
+  
+  public abstract void bk(boolean paramBoolean);
 }
 
 

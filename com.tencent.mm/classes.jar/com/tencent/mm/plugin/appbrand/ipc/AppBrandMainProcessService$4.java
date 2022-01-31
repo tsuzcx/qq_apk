@@ -4,38 +4,45 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.Binder;
 import android.os.IBinder;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class AppBrandMainProcessService$4
   implements ServiceConnection
 {
   public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
+    AppMethodBeat.i(90986);
     AppBrandMainProcessService.a(c.a.q(paramIBinder));
-    AppBrandMainProcessService.ahw();
-    AppBrandMainProcessService.ahv();
+    AppBrandMainProcessService.aBd();
+    ah.getPackageName();
+    AppBrandMainProcessService.aBc();
     try
     {
-      AppBrandMainProcessService.ahx().a(new Binder(), ae.getProcessName());
-      y.i("MicroMsg.AppBrandMainProcessService", "onServiceConnected(%s)", new Object[] { ae.getProcessName() });
+      AppBrandMainProcessService.aBe().a(new Binder(), ah.getProcessName());
+      ab.i("MicroMsg.AppBrandMainProcessService", "onServiceConnected(%s)", new Object[] { ah.getProcessName() });
+      AppMethodBeat.o(90986);
       return;
     }
     catch (Exception paramComponentName)
     {
       for (;;)
       {
-        y.e("MicroMsg.AppBrandMainProcessService", "onServiceConnected, registerDeathRecipient, %s", new Object[] { paramComponentName });
+        ab.e("MicroMsg.AppBrandMainProcessService", "onServiceConnected, registerDeathRecipient, %s", new Object[] { paramComponentName });
       }
     }
   }
   
   public final void onServiceDisconnected(ComponentName paramComponentName)
   {
+    AppMethodBeat.i(90987);
     AppBrandMainProcessService.a(null);
-    AppBrandMainProcessService.ahu();
-    AppBrandMainProcessService.aht();
-    y.i("MicroMsg.AppBrandMainProcessService", "onServiceDisconnected(%s)", new Object[] { ae.getProcessName() });
+    ah.getPackageName();
+    AppBrandMainProcessService.aBb();
+    AppBrandMainProcessService.aBa();
+    ab.i("MicroMsg.AppBrandMainProcessService", "onServiceDisconnected(%s)", new Object[] { ah.getProcessName() });
+    AppMethodBeat.o(90987);
   }
 }
 

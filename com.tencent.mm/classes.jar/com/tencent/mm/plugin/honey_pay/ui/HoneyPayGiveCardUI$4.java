@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.honey_pay.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class HoneyPayGiveCardUI$4
   implements View.OnClickListener
@@ -11,14 +12,17 @@ final class HoneyPayGiveCardUI$4
   
   public final void onClick(View paramView)
   {
-    y.d(this.llB.TAG, "click give btn");
-    if (HoneyPayGiveCardUI.a(this.llB))
+    AppMethodBeat.i(41862);
+    ab.d(this.nIX.TAG, "click give btn");
+    if (HoneyPayGiveCardUI.a(this.nIX))
     {
-      this.llB.VH();
-      HoneyPayGiveCardUI.d(this.llB);
+      this.nIX.hideTenpayKB();
+      HoneyPayGiveCardUI.d(this.nIX);
+      AppMethodBeat.o(41862);
       return;
     }
-    y.w(this.llB.TAG, "over limit when click");
+    ab.w(this.nIX.TAG, "over limit when click");
+    AppMethodBeat.o(41862);
   }
 }
 

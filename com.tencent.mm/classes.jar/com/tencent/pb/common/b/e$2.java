@@ -9,13 +9,13 @@ final class e$2
   
   public final void run()
   {
-    e.a(this.wFH).remove(this.wFI);
-    this.wFH.a(2, -1, "doScene failed", this.wFI);
+    e.a(this.Bdh).remove(this.Bdi);
+    this.Bdh.a(2, -1, "doScene failed", this.Bdi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.pb.common.b.e.2
  * JD-Core Version:    0.7.0.1
  */

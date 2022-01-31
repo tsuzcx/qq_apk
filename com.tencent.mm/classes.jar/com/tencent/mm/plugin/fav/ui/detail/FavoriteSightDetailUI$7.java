@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
 import android.app.Dialog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavoriteSightDetailUI$7
   implements Runnable
@@ -9,7 +10,9 @@ final class FavoriteSightDetailUI$7
   
   public final void run()
   {
-    this.kbH.dismiss();
+    AppMethodBeat.i(74422);
+    this.mwd.dismiss();
+    AppMethodBeat.o(74422);
   }
 }
 

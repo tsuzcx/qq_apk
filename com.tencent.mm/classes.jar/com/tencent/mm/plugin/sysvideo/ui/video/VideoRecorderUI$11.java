@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sysvideo.ui.video;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VideoRecorderUI$11
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class VideoRecorderUI$11
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.pzG.finish();
+    AppMethodBeat.i(25656);
+    this.tbs.finish();
+    AppMethodBeat.o(25656);
   }
 }
 

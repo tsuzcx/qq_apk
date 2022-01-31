@@ -1,11 +1,16 @@
 package com.tenpay.ndk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class MessageDigestUtil
 {
   public static String bytesToHex(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(49574);
     StringBuilder localStringBuilder = new StringBuilder("");
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
+    {
+      AppMethodBeat.o(49574);
       return null;
     }
     int i = 0;
@@ -18,15 +23,18 @@ public class MessageDigestUtil
       localStringBuilder.append(str.toUpperCase());
       i += 1;
     }
-    return localStringBuilder.toString();
+    paramArrayOfByte = localStringBuilder.toString();
+    AppMethodBeat.o(49574);
+    return paramArrayOfByte;
   }
   
   private native byte[] doSHA256(byte[] paramArrayOfByte);
   
   public String getSHA256Hex(byte[] paramArrayOfByte)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
+    AppMethodBeat.i(49575);
+    localObject2 = null;
+    localObject1 = localObject2;
     if (paramArrayOfByte != null) {}
     try
     {
@@ -35,15 +43,21 @@ public class MessageDigestUtil
       if (paramArrayOfByte != null) {
         localObject1 = bytesToHex(paramArrayOfByte);
       }
-      return localObject1;
     }
-    catch (Exception paramArrayOfByte) {}
-    return null;
+    catch (Exception paramArrayOfByte)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+      }
+    }
+    AppMethodBeat.o(49575);
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tenpay.ndk.MessageDigestUtil
  * JD-Core Version:    0.7.0.1
  */

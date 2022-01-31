@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.h;
 
 final class MMSightRecordViewTestUI$4$1$1
-  implements MMSightRecordView.f
+  implements MMSightRecordView.h
 {
   MMSightRecordViewTestUI$4$1$1(MMSightRecordViewTestUI.4.1 param1) {}
   
-  public final void db(boolean paramBoolean)
+  public final void ef(boolean paramBoolean)
   {
-    Toast.makeText(this.mpb.mpa.moY, "record finish, error: " + paramBoolean, 0).show();
+    AppMethodBeat.i(55120);
+    Toast.makeText(this.oOn.oOm.oOk, "record finish, error: ".concat(String.valueOf(paramBoolean)), 0).show();
+    AppMethodBeat.o(55120);
   }
 }
 

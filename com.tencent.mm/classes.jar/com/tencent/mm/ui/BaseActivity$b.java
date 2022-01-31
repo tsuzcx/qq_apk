@@ -6,17 +6,17 @@ import android.view.View.OnLongClickListener;
 
 public final class BaseActivity$b
 {
-  boolean aoL = true;
-  boolean bIU = true;
-  MenuItem.OnMenuItemClickListener fkl;
-  View.OnLongClickListener kfL;
+  boolean arf = true;
+  boolean enable = true;
+  MenuItem.OnMenuItemClickListener gBC;
+  View.OnLongClickListener mAd;
   String text;
-  int uHd = -1;
-  int uHe;
-  View uHf;
-  View uHg;
-  View uHh;
-  BaseActivity.c uHi = BaseActivity.c.uHj;
+  int yUo = -1;
+  int yUp;
+  View yUq;
+  View yUr;
+  View yUs;
+  BaseActivity.c yUt = BaseActivity.c.yUu;
 }
 
 

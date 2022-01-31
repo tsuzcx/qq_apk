@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.utils.Log;
 import com.tencent.mm.opensdk.utils.c.a;
 import com.tencent.mm.opensdk.utils.c.b;
@@ -17,24 +18,32 @@ class MMSharedPreferences
   implements SharedPreferences
 {
   private static final String TAG = "MicroMsg.SDK.SharedPreferences";
-  private final String[] columns = { "_id", "key", "type", "value" };
+  private final String[] columns;
   private final ContentResolver cr;
-  private MMSharedPreferences.REditor editor = null;
-  private final HashMap<String, Object> values = new HashMap();
+  private MMSharedPreferences.REditor editor;
+  private final HashMap<String, Object> values;
   
   public MMSharedPreferences(Context paramContext)
   {
+    AppMethodBeat.i(128080);
+    this.columns = new String[] { "_id", "key", "type", "value" };
+    this.values = new HashMap();
+    this.editor = null;
     this.cr = paramContext.getContentResolver();
+    AppMethodBeat.o(128080);
   }
   
   private Object getValue(String paramString)
   {
+    AppMethodBeat.i(128081);
     for (;;)
     {
       try
       {
         Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, "key = ?", new String[] { paramString }, null);
-        if (localCursor == null) {
+        if (localCursor == null)
+        {
+          AppMethodBeat.o(128081);
           return null;
         }
         int i = localCursor.getColumnIndex("type");
@@ -43,12 +52,14 @@ class MMSharedPreferences
         {
           paramString = c.a.a(localCursor.getInt(i), localCursor.getString(j));
           localCursor.close();
+          AppMethodBeat.o(128081);
           return paramString;
         }
       }
       catch (Exception paramString)
       {
         Log.e("MicroMsg.SDK.SharedPreferences", "getValue exception:" + paramString.getMessage());
+        AppMethodBeat.o(128081);
         return null;
       }
       paramString = null;
@@ -57,23 +68,36 @@ class MMSharedPreferences
   
   public boolean contains(String paramString)
   {
-    return getValue(paramString) != null;
+    AppMethodBeat.i(128088);
+    if (getValue(paramString) != null)
+    {
+      AppMethodBeat.o(128088);
+      return true;
+    }
+    AppMethodBeat.o(128088);
+    return false;
   }
   
   public SharedPreferences.Editor edit()
   {
+    AppMethodBeat.i(128089);
     if (this.editor == null) {
       this.editor = new MMSharedPreferences.REditor(this.cr);
     }
-    return this.editor;
+    MMSharedPreferences.REditor localREditor = this.editor;
+    AppMethodBeat.o(128089);
+    return localREditor;
   }
   
   public Map<String, ?> getAll()
   {
+    AppMethodBeat.i(128082);
     try
     {
       Cursor localCursor = this.cr.query(c.b.CONTENT_URI, this.columns, null, null, null);
-      if (localCursor == null) {
+      if (localCursor == null)
+      {
+        AppMethodBeat.o(128082);
         return null;
       }
       int i = localCursor.getColumnIndex("key");
@@ -84,79 +108,87 @@ class MMSharedPreferences
         Object localObject = c.a.a(localCursor.getInt(j), localCursor.getString(k));
         this.values.put(localCursor.getString(i), localObject);
       }
-      localException.close();
+      localHashMap.close();
     }
     catch (Exception localException)
     {
       Log.e("MicroMsg.SDK.SharedPreferences", "getAll exception:" + localException.getMessage());
-      return this.values;
+      localHashMap = this.values;
+      AppMethodBeat.o(128082);
+      return localHashMap;
     }
     HashMap localHashMap = this.values;
+    AppMethodBeat.o(128082);
     return localHashMap;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
   {
+    AppMethodBeat.i(128087);
     paramString = getValue(paramString);
-    boolean bool = paramBoolean;
-    if (paramString != null)
+    if ((paramString != null) && ((paramString instanceof Boolean)))
     {
-      bool = paramBoolean;
-      if ((paramString instanceof Boolean)) {
-        bool = ((Boolean)paramString).booleanValue();
-      }
+      paramBoolean = ((Boolean)paramString).booleanValue();
+      AppMethodBeat.o(128087);
+      return paramBoolean;
     }
-    return bool;
+    AppMethodBeat.o(128087);
+    return paramBoolean;
   }
   
   public float getFloat(String paramString, float paramFloat)
   {
+    AppMethodBeat.i(128086);
     paramString = getValue(paramString);
-    float f = paramFloat;
-    if (paramString != null)
+    if ((paramString != null) && ((paramString instanceof Float)))
     {
-      f = paramFloat;
-      if ((paramString instanceof Float)) {
-        f = ((Float)paramString).floatValue();
-      }
+      paramFloat = ((Float)paramString).floatValue();
+      AppMethodBeat.o(128086);
+      return paramFloat;
     }
-    return f;
+    AppMethodBeat.o(128086);
+    return paramFloat;
   }
   
   public int getInt(String paramString, int paramInt)
   {
+    AppMethodBeat.i(128084);
     paramString = getValue(paramString);
-    int i = paramInt;
-    if (paramString != null)
+    if ((paramString != null) && ((paramString instanceof Integer)))
     {
-      i = paramInt;
-      if ((paramString instanceof Integer)) {
-        i = ((Integer)paramString).intValue();
-      }
+      paramInt = ((Integer)paramString).intValue();
+      AppMethodBeat.o(128084);
+      return paramInt;
     }
-    return i;
+    AppMethodBeat.o(128084);
+    return paramInt;
   }
   
   public long getLong(String paramString, long paramLong)
   {
+    AppMethodBeat.i(128085);
     paramString = getValue(paramString);
-    long l = paramLong;
-    if (paramString != null)
+    if ((paramString != null) && ((paramString instanceof Long)))
     {
-      l = paramLong;
-      if ((paramString instanceof Long)) {
-        l = ((Long)paramString).longValue();
-      }
+      paramLong = ((Long)paramString).longValue();
+      AppMethodBeat.o(128085);
+      return paramLong;
     }
-    return l;
+    AppMethodBeat.o(128085);
+    return paramLong;
   }
   
   public String getString(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(128083);
     paramString1 = getValue(paramString1);
-    if ((paramString1 != null) && ((paramString1 instanceof String))) {
-      return (String)paramString1;
+    if ((paramString1 != null) && ((paramString1 instanceof String)))
+    {
+      paramString1 = (String)paramString1;
+      AppMethodBeat.o(128083);
+      return paramString1;
     }
+    AppMethodBeat.o(128083);
     return paramString2;
   }
   

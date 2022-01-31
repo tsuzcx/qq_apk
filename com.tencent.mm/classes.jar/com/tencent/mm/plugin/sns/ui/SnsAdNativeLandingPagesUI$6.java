@@ -1,37 +1,44 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ad;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.AdlandingDummyViewPager;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.a.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.verticalviewpager.a.c;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ui.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.SwipeBackLayout;
 
 final class SnsAdNativeLandingPagesUI$6
-  implements Runnable
+  implements a
 {
   SnsAdNativeLandingPagesUI$6(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI) {}
   
-  public final void run()
+  public final void bd(float paramFloat)
   {
-    if (this.oUU.mController.uNh != 1) {
-      SnsAdNativeLandingPagesUI.b(this.oUU);
+    AppMethodBeat.i(38631);
+    SnsAdNativeLandingPagesUI.H(this.rMW).setAlpha(1.0F - paramFloat);
+    AppMethodBeat.o(38631);
+  }
+  
+  public final void onAnimationEnd()
+  {
+    AppMethodBeat.i(38632);
+    SnsAdNativeLandingPagesUI.I(this.rMW);
+    ab.i("MicroMsg.SnsAdNativeLandingPagesUI", "sns enter anim end");
+    SnsAdNativeLandingPagesUI.e(this.rMW).setVisibility(0);
+    SnsAdNativeLandingPagesUI.i(this.rMW).setVisibility(0);
+    SnsAdNativeLandingPagesUI.q(this.rMW);
+    SnsAdNativeLandingPagesUI.J(this.rMW);
+    if (this.rMW.isSupportNavigationSwipeBack()) {
+      this.rMW.getSwipeBackLayout().setEnableGesture(true);
     }
-    for (;;)
-    {
-      new ArrayList();
-      Iterator localIterator = ((c)SnsAdNativeLandingPagesUI.a(this.oUU).getAdapter()).oJM.iterator();
-      while (localIterator.hasNext())
-      {
-        b localb = (b)localIterator.next();
-        int i = this.oUU.mController.uNh;
-        localb.bFM();
-      }
-      ad.O(this.oUU);
-    }
+    AppMethodBeat.o(38632);
+  }
+  
+  public final void onAnimationStart()
+  {
+    AppMethodBeat.i(38630);
+    ab.i("MicroMsg.SnsAdNativeLandingPagesUI", "sns enter anim start");
+    AppMethodBeat.o(38630);
   }
 }
 

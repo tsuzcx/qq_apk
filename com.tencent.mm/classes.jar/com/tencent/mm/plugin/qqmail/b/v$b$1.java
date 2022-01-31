@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class v$b$1
   implements Runnable
 {
@@ -7,14 +9,19 @@ final class v$b$1
   
   public final void run()
   {
-    if (v.b.a(this.nex) != null) {
-      v.b.a(this.nex).cancel();
+    AppMethodBeat.i(67993);
+    if (v.b.a(this.pJM) != null) {
+      v.b.a(this.pJM).cancel();
     }
+    AppMethodBeat.o(67993);
   }
   
   public final String toString()
   {
-    return super.toString() + "|onCancelled";
+    AppMethodBeat.i(67994);
+    String str = super.toString() + "|onCancelled";
+    AppMethodBeat.o(67994);
+    return str;
   }
 }
 

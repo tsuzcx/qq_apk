@@ -1,40 +1,43 @@
 package com.tencent.mm.pluginsdk.model.app;
 
-import com.tencent.mm.h.c.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.v;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends t
+  extends v
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(27350);
     c.a locala = new c.a();
-    locala.ujL = new Field[3];
+    locala.yrK = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "flag";
-    locala.ujN.put("flag", "LONG default '0' ");
+    locala.yrM.put("flag", "LONG default '0' ");
     localStringBuilder.append(" flag LONG default '0' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "appId";
-    locala.ujN.put("appId", "TEXT default '' ");
+    locala.yrM.put("appId", "TEXT default '' ");
     localStringBuilder.append(" appId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "sortId";
-    locala.ujN.put("sortId", "INTEGER default '0' ");
+    locala.yrM.put("sortId", "INTEGER default '0' ");
     localStringBuilder.append(" sortId INTEGER default '0' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(27350);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

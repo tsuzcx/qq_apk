@@ -2,53 +2,38 @@ package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.a.d;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.f;
-import com.tencent.mm.plugin.fts.ui.n.g;
 
 public final class a
   extends com.tencent.mm.plugin.fts.a.d.a.a
 {
-  public CharSequence kCs;
-  private a.b kCt = new a.b(this);
-  private a kCu = new a();
+  public CharSequence mYp;
+  private a.b mYq;
+  private a.a mYr;
   
   public a(int paramInt)
   {
     super(10, paramInt);
+    AppMethodBeat.i(61970);
+    this.mYq = new a.b(this);
+    this.mYr = new a.a(this);
+    AppMethodBeat.o(61970);
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b BD()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b Pr()
   {
-    return this.kCt;
+    return this.mYq;
   }
   
   public final void a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a.a parama, Object... paramVarArgs)
   {
-    this.kCs = f.a(paramContext.getResources().getString(n.g.fts_find_comm_tip_prefix), "", d.b(this.kwi.kwG, this.kwi.kwG)).kwz;
-  }
-  
-  protected final com.tencent.mm.plugin.fts.a.d.a.a.a afK()
-  {
-    return this.kCu;
-  }
-  
-  public final class a
-    extends com.tencent.mm.plugin.fts.a.d.a.a.a
-  {
-    public View contentView;
-    public ImageView gSx;
-    public TextView kCv;
-    
-    public a()
-    {
-      super();
-    }
+    AppMethodBeat.i(61971);
+    this.mYp = f.a(paramContext.getResources().getString(2131300203), "", d.b(this.mRX.mSw, this.mRX.mSw)).mSp;
+    AppMethodBeat.o(61971);
   }
 }
 

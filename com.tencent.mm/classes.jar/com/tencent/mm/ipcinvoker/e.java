@@ -2,210 +2,239 @@ package com.tencent.mm.ipcinvoker;
 
 import android.content.Context;
 import android.os.Process;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import junit.framework.Assert;
 
 public final class e
 {
-  private static String dGH;
+  private static String eEj;
   public static Context sContext;
   
-  public static String BV()
+  /* Error */
+  private static String B(Context paramContext, int paramInt)
   {
-    if ((dGH == null) || (dGH.length() == 0)) {
-      dGH = v(sContext, Process.myPid());
-    }
-    return dGH;
+    // Byte code:
+    //   0: ldc 13
+    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ifnonnull +10 -> 16
+    //   9: ldc 13
+    //   11: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   14: aconst_null
+    //   15: areturn
+    //   16: aload_0
+    //   17: ldc 24
+    //   19: invokevirtual 30	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   22: checkcast 32	android/app/ActivityManager
+    //   25: astore_0
+    //   26: aload_0
+    //   27: ifnull +75 -> 102
+    //   30: aload_0
+    //   31: invokevirtual 36	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   34: astore_0
+    //   35: aload_0
+    //   36: ifnull +66 -> 102
+    //   39: aload_0
+    //   40: invokeinterface 42 1 0
+    //   45: ifne +57 -> 102
+    //   48: aload_0
+    //   49: invokeinterface 46 1 0
+    //   54: astore_0
+    //   55: aload_0
+    //   56: invokeinterface 51 1 0
+    //   61: ifeq +41 -> 102
+    //   64: aload_0
+    //   65: invokeinterface 55 1 0
+    //   70: checkcast 57	android/app/ActivityManager$RunningAppProcessInfo
+    //   73: astore 4
+    //   75: aload 4
+    //   77: ifnull -22 -> 55
+    //   80: aload 4
+    //   82: getfield 61	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   85: iload_1
+    //   86: if_icmpne -31 -> 55
+    //   89: aload 4
+    //   91: getfield 64	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   94: astore_0
+    //   95: ldc 13
+    //   97: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: aload_0
+    //   101: areturn
+    //   102: sipush 128
+    //   105: newarray byte
+    //   107: astore 5
+    //   109: new 66	java/io/FileInputStream
+    //   112: dup
+    //   113: new 68	java/lang/StringBuilder
+    //   116: dup
+    //   117: ldc 70
+    //   119: invokespecial 74	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   122: iload_1
+    //   123: invokevirtual 78	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   126: ldc 80
+    //   128: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   134: invokespecial 88	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   137: astore 4
+    //   139: aload 4
+    //   141: astore_0
+    //   142: aload 4
+    //   144: aload 5
+    //   146: invokevirtual 92	java/io/FileInputStream:read	([B)I
+    //   149: istore_3
+    //   150: iload_3
+    //   151: ifle +44 -> 195
+    //   154: iconst_0
+    //   155: istore_1
+    //   156: goto +137 -> 293
+    //   159: aload 4
+    //   161: astore_0
+    //   162: new 94	java/lang/String
+    //   165: dup
+    //   166: aload 5
+    //   168: iconst_0
+    //   169: iload_2
+    //   170: invokespecial 97	java/lang/String:<init>	([BII)V
+    //   173: astore 5
+    //   175: aload 4
+    //   177: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   180: ldc 13
+    //   182: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   185: aload 5
+    //   187: areturn
+    //   188: iload_1
+    //   189: iconst_1
+    //   190: iadd
+    //   191: istore_1
+    //   192: goto +101 -> 293
+    //   195: aload 4
+    //   197: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   200: ldc 13
+    //   202: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   205: aconst_null
+    //   206: areturn
+    //   207: astore 5
+    //   209: aconst_null
+    //   210: astore 4
+    //   212: aload 4
+    //   214: astore_0
+    //   215: ldc 103
+    //   217: ldc 105
+    //   219: iconst_1
+    //   220: anewarray 4	java/lang/Object
+    //   223: dup
+    //   224: iconst_0
+    //   225: aload 5
+    //   227: invokestatic 111	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   230: aastore
+    //   231: invokestatic 117	com/tencent/mm/ipcinvoker/h/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   234: aload 4
+    //   236: ifnull -36 -> 200
+    //   239: aload 4
+    //   241: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   244: goto -44 -> 200
+    //   247: astore_0
+    //   248: goto -48 -> 200
+    //   251: astore 4
+    //   253: aconst_null
+    //   254: astore_0
+    //   255: aload_0
+    //   256: ifnull +7 -> 263
+    //   259: aload_0
+    //   260: invokevirtual 101	java/io/FileInputStream:close	()V
+    //   263: ldc 13
+    //   265: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   268: aload 4
+    //   270: athrow
+    //   271: astore_0
+    //   272: goto -92 -> 180
+    //   275: astore_0
+    //   276: goto -76 -> 200
+    //   279: astore_0
+    //   280: goto -17 -> 263
+    //   283: astore 4
+    //   285: goto -30 -> 255
+    //   288: astore 5
+    //   290: goto -78 -> 212
+    //   293: iload_3
+    //   294: istore_2
+    //   295: iload_1
+    //   296: iload_3
+    //   297: if_icmpge -138 -> 159
+    //   300: aload 5
+    //   302: iload_1
+    //   303: baload
+    //   304: sipush 128
+    //   307: if_icmpgt +10 -> 317
+    //   310: aload 5
+    //   312: iload_1
+    //   313: baload
+    //   314: ifgt -126 -> 188
+    //   317: iload_1
+    //   318: istore_2
+    //   319: goto -160 -> 159
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	322	0	paramContext	Context
+    //   0	322	1	paramInt	int
+    //   169	150	2	i	int
+    //   149	149	3	j	int
+    //   73	167	4	localObject1	Object
+    //   251	18	4	localObject2	Object
+    //   283	1	4	localObject3	Object
+    //   107	79	5	localObject4	Object
+    //   207	19	5	localException1	java.lang.Exception
+    //   288	23	5	localException2	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   109	139	207	java/lang/Exception
+    //   239	244	247	java/lang/Exception
+    //   109	139	251	finally
+    //   175	180	271	java/lang/Exception
+    //   195	200	275	java/lang/Exception
+    //   259	263	279	java/lang/Exception
+    //   142	150	283	finally
+    //   162	175	283	finally
+    //   215	234	283	finally
+    //   142	150	288	java/lang/Exception
+    //   162	175	288	java/lang/Exception
   }
   
-  public static boolean fE(String paramString)
+  public static String PM()
   {
-    return (paramString != null) && (paramString.equals(BV()));
+    AppMethodBeat.i(114023);
+    if ((eEj == null) || (eEj.length() == 0)) {
+      eEj = B(sContext, Process.myPid());
+    }
+    String str = eEj;
+    AppMethodBeat.o(114023);
+    return str;
   }
   
   public static Context getContext()
   {
+    AppMethodBeat.i(114021);
     Assert.assertNotNull("IPCInvoker not initialize.", sContext);
-    return sContext;
+    Context localContext = sContext;
+    AppMethodBeat.o(114021);
+    return localContext;
   }
   
-  /* Error */
-  private static String v(Context paramContext, int paramInt)
+  public static boolean lZ(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +5 -> 6
-    //   4: aconst_null
-    //   5: areturn
-    //   6: aload_0
-    //   7: ldc 52
-    //   9: invokevirtual 58	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   12: checkcast 60	android/app/ActivityManager
-    //   15: astore_0
-    //   16: aload_0
-    //   17: ifnull +63 -> 80
-    //   20: aload_0
-    //   21: invokevirtual 64	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
-    //   24: astore_0
-    //   25: aload_0
-    //   26: ifnull +54 -> 80
-    //   29: aload_0
-    //   30: invokeinterface 70 1 0
-    //   35: ifne +45 -> 80
-    //   38: aload_0
-    //   39: invokeinterface 74 1 0
-    //   44: astore_0
-    //   45: aload_0
-    //   46: invokeinterface 79 1 0
-    //   51: ifeq +29 -> 80
-    //   54: aload_0
-    //   55: invokeinterface 83 1 0
-    //   60: checkcast 85	android/app/ActivityManager$RunningAppProcessInfo
-    //   63: astore 4
-    //   65: aload 4
-    //   67: getfield 89	android/app/ActivityManager$RunningAppProcessInfo:pid	I
-    //   70: iload_1
-    //   71: if_icmpne -26 -> 45
-    //   74: aload 4
-    //   76: getfield 92	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
-    //   79: areturn
-    //   80: sipush 128
-    //   83: newarray byte
-    //   85: astore 5
-    //   87: new 94	java/io/FileInputStream
-    //   90: dup
-    //   91: new 96	java/lang/StringBuilder
-    //   94: dup
-    //   95: ldc 98
-    //   97: invokespecial 102	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   100: iload_1
-    //   101: invokevirtual 106	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   104: ldc 108
-    //   106: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: invokevirtual 114	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   112: invokespecial 115	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   115: astore 4
-    //   117: aload 4
-    //   119: astore_0
-    //   120: aload 4
-    //   122: aload 5
-    //   124: invokevirtual 119	java/io/FileInputStream:read	([B)I
-    //   127: istore_3
-    //   128: iload_3
-    //   129: ifle +43 -> 172
-    //   132: iconst_0
-    //   133: istore_1
-    //   134: goto +122 -> 256
-    //   137: aload 4
-    //   139: astore_0
-    //   140: new 14	java/lang/String
-    //   143: dup
-    //   144: aload 5
-    //   146: iconst_0
-    //   147: iload_2
-    //   148: invokespecial 122	java/lang/String:<init>	([BII)V
-    //   151: astore 5
-    //   153: aload 4
-    //   155: invokevirtual 126	java/io/FileInputStream:close	()V
-    //   158: aload 5
-    //   160: areturn
-    //   161: astore_0
-    //   162: aload 5
-    //   164: areturn
-    //   165: iload_1
-    //   166: iconst_1
-    //   167: iadd
-    //   168: istore_1
-    //   169: goto +87 -> 256
-    //   172: aload 4
-    //   174: invokevirtual 126	java/io/FileInputStream:close	()V
-    //   177: aconst_null
-    //   178: areturn
-    //   179: astore 5
-    //   181: aconst_null
-    //   182: astore 4
-    //   184: aload 4
-    //   186: astore_0
-    //   187: ldc 128
-    //   189: ldc 130
-    //   191: iconst_1
-    //   192: anewarray 4	java/lang/Object
-    //   195: dup
-    //   196: iconst_0
-    //   197: aload 5
-    //   199: invokestatic 136	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   202: aastore
-    //   203: invokestatic 142	com/tencent/mm/ipcinvoker/h/b:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   206: aload 4
-    //   208: ifnull -31 -> 177
-    //   211: aload 4
-    //   213: invokevirtual 126	java/io/FileInputStream:close	()V
-    //   216: goto -39 -> 177
-    //   219: astore_0
-    //   220: goto -43 -> 177
-    //   223: astore 4
-    //   225: aconst_null
-    //   226: astore_0
-    //   227: aload_0
-    //   228: ifnull +7 -> 235
-    //   231: aload_0
-    //   232: invokevirtual 126	java/io/FileInputStream:close	()V
-    //   235: aload 4
-    //   237: athrow
-    //   238: astore_0
-    //   239: goto -62 -> 177
-    //   242: astore_0
-    //   243: goto -8 -> 235
-    //   246: astore 4
-    //   248: goto -21 -> 227
-    //   251: astore 5
-    //   253: goto -69 -> 184
-    //   256: iload_3
-    //   257: istore_2
-    //   258: iload_1
-    //   259: iload_3
-    //   260: if_icmpge -123 -> 137
-    //   263: aload 5
-    //   265: iload_1
-    //   266: baload
-    //   267: sipush 128
-    //   270: if_icmpgt +10 -> 280
-    //   273: aload 5
-    //   275: iload_1
-    //   276: baload
-    //   277: ifgt -112 -> 165
-    //   280: iload_1
-    //   281: istore_2
-    //   282: goto -145 -> 137
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	285	0	paramContext	Context
-    //   0	285	1	paramInt	int
-    //   147	135	2	i	int
-    //   127	134	3	j	int
-    //   63	149	4	localObject1	Object
-    //   223	13	4	localObject2	Object
-    //   246	1	4	localObject3	Object
-    //   85	78	5	localObject4	Object
-    //   179	19	5	localException1	java.lang.Exception
-    //   251	23	5	localException2	java.lang.Exception
-    // Exception table:
-    //   from	to	target	type
-    //   153	158	161	java/lang/Exception
-    //   87	117	179	java/lang/Exception
-    //   211	216	219	java/lang/Exception
-    //   87	117	223	finally
-    //   172	177	238	java/lang/Exception
-    //   231	235	242	java/lang/Exception
-    //   120	128	246	finally
-    //   140	153	246	finally
-    //   187	206	246	finally
-    //   120	128	251	java/lang/Exception
-    //   140	153	251	java/lang/Exception
+    AppMethodBeat.i(114022);
+    if ((paramString != null) && (paramString.equals(PM())))
+    {
+      AppMethodBeat.o(114022);
+      return true;
+    }
+    AppMethodBeat.o(114022);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.e
  * JD-Core Version:    0.7.0.1
  */

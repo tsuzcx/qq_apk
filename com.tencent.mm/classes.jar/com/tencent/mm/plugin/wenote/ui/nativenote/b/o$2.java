@@ -2,26 +2,30 @@ package com.tencent.mm.plugin.wenote.ui.nativenote.b;
 
 import android.os.Message;
 import android.widget.TextView;
-import com.tencent.mm.bj.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bk.a;
 import com.tencent.mm.plugin.wenote.model.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class o$2
-  extends ah
+  extends ak
 {
   o$2(o paramo) {}
   
   public final void handleMessage(Message paramMessage)
   {
-    if (o.a(this.rNE).rGJ)
+    AppMethodBeat.i(27185);
+    if (o.a(this.vEi).vxs)
     {
-      o.b(this.rNE).removeMessages(4096);
+      o.b(this.vEi).removeMessages(4096);
+      AppMethodBeat.o(27185);
       return;
     }
-    paramMessage = " " + a.x(ae.getContext(), o.a(this.rNE).rGW).toString();
-    o.c(this.rNE).setText(paramMessage);
+    paramMessage = " " + a.C(ah.getContext(), o.a(this.vEi).vxE).toString();
+    o.c(this.vEi).setText(paramMessage);
     sendEmptyMessageDelayed(4096, 500L);
+    AppMethodBeat.o(27185);
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.chatroom.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelectMemberUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -11,9 +12,11 @@ final class SelectMemberUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(104411);
     paramMenuItem = new Intent();
-    this.dsb.setResult(0, paramMenuItem);
-    this.dsb.finish();
+    this.ejJ.setResult(0, paramMenuItem);
+    this.ejJ.finish();
+    AppMethodBeat.o(104411);
     return true;
   }
 }

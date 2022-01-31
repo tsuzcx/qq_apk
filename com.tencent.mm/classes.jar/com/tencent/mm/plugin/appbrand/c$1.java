@@ -1,32 +1,43 @@
 package com.tencent.mm.plugin.appbrand;
 
+import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c.a;
-import com.tencent.mm.plugin.appbrand.jsapi.f;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.plugin.appbrand.permission.d.a;
-import com.tencent.mm.plugin.appbrand.permission.d.b;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.permission.e.a;
+import com.tencent.mm.plugin.appbrand.permission.e.b;
 
 final class c$1
-  implements d.b
+  implements e.b
 {
-  c$1(c paramc, c.a parama, int paramInt, i parami) {}
+  c$1(c paramc, c.a parama, m paramm) {}
   
-  public final void a(d.a parama)
+  public final void a(e.a parama)
   {
-    if ((this.fxB.fxx == null) || (!this.fxB.fxx.isRunning())) {
+    AppMethodBeat.i(101709);
+    if ((this.gOR.gOO == null) || (!this.gOR.gOO.isRunning()))
+    {
+      AppMethodBeat.o(101709);
       return;
     }
     if (parama.ret == 0)
     {
-      this.fxz.proceed();
+      this.gOP.proceed();
+      AppMethodBeat.o(101709);
       return;
     }
-    this.fxB.fxx.C(this.dIS, this.fxA.h(parama.bHk, null));
+    if (TextUtils.isEmpty(parama.bjm)) {}
+    for (parama = "fail:internal error";; parama = parama.bjm)
+    {
+      this.gOP.BI(this.gOQ.j(parama, null));
+      AppMethodBeat.o(101709);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.c.1
  * JD-Core Version:    0.7.0.1
  */

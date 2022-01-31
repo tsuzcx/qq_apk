@@ -6,11 +6,17 @@ import android.content.Intent;
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract int a(a.a parama);
+  public abstract float a(a.a parama, float paramFloat);
+  
+  public abstract int a(a.a parama, int paramInt);
+  
+  public abstract long a(a.a parama, long paramLong);
+  
+  public abstract String a(a.a parama, String paramString);
   
   public abstract boolean a(a.a parama, boolean paramBoolean);
   
-  public abstract void p(Context paramContext, Intent paramIntent);
+  public abstract void r(Context paramContext, Intent paramIntent);
 }
 
 

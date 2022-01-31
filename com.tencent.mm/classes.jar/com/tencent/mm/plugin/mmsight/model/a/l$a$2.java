@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.mmsight.model.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class l$a$2
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class l$a$2
   
   public final void run()
   {
-    if (this.mjW.mjO.mjJ != null) {
-      this.mjW.mjO.mjJ.Zf();
+    AppMethodBeat.i(76602);
+    if (this.oJu.oJt.fcz != null) {
+      this.oJu.oJt.fcz.asO();
     }
+    AppMethodBeat.o(76602);
   }
 }
 

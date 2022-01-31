@@ -1,7 +1,8 @@
 package com.tencent.mm.roomsdk.a.c;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 
 final class d$1
   implements f
@@ -10,21 +11,25 @@ final class d$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(80270);
     if ((paramm instanceof com.tencent.mm.roomsdk.a.a)) {
-      ((com.tencent.mm.roomsdk.a.a)paramm).a(this.ubE.ubu);
+      ((com.tencent.mm.roomsdk.a.a)paramm).a(this.yjT.yjK);
     }
-    if (this.ubE.ubu != null) {
-      this.ubE.ubu.a(paramInt1, paramInt2, paramString, this.ubE.ubu);
+    if (this.yjT.yjK != null) {
+      this.yjT.yjK.a(paramInt1, paramInt2, paramString, this.yjT.yjK);
     }
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      if (this.ubE.ubs != null) {
-        this.ubE.ubs.a(paramInt1, paramInt2, paramString, this.ubE.ubs);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if (this.yjT.yjI != null)
+      {
+        this.yjT.yjI.a(paramInt1, paramInt2, paramString, this.yjT.yjI);
+        AppMethodBeat.o(80270);
       }
     }
-    while (this.ubE.ubt == null) {
-      return;
+    else if (this.yjT.yjJ != null) {
+      this.yjT.yjJ.a(paramInt1, paramInt2, paramString, this.yjT.yjJ);
     }
-    this.ubE.ubt.a(paramInt1, paramInt2, paramString, this.ubE.ubt);
+    AppMethodBeat.o(80270);
   }
 }
 

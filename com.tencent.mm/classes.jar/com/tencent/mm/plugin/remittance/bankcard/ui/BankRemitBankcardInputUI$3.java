@@ -1,37 +1,40 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.remittance.bankcard.a.a;
 import com.tencent.mm.plugin.remittance.bankcard.model.BankcardElemParcel;
-import com.tencent.mm.protocal.c.ei;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.n.a;
+import com.tencent.mm.protocal.protobuf.fj;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.p.a;
 
 final class BankRemitBankcardInputUI$3
-  implements n.a
+  implements p.a
 {
   BankRemitBankcardInputUI$3(BankRemitBankcardInputUI paramBankRemitBankcardInputUI, a parama) {}
   
-  public final void f(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final void d(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    BankRemitBankcardInputUI.a(this.nwd, this.nwe.nuQ.sxV);
-    BankRemitBankcardInputUI.a(this.nwd, new BankcardElemParcel(this.nwe.nuQ.sxU));
-    if (BankRemitBankcardInputUI.s(this.nwd) != null) {}
-    for (paramString = BankRemitBankcardInputUI.s(this.nwd).lnT;; paramString = "")
+    AppMethodBeat.i(44515);
+    BankRemitBankcardInputUI.c(this.qhe, this.qhf.qfJ.wry);
+    BankRemitBankcardInputUI.a(this.qhe, new BankcardElemParcel(this.qhf.qfJ.wrx));
+    if (BankRemitBankcardInputUI.v(this.qhe) != null) {}
+    for (paramString = BankRemitBankcardInputUI.v(this.qhe).nLq;; paramString = "")
     {
-      y.i("MicroMsg.BankRemitBankcardInputUI", "response bank: %s", new Object[] { paramString });
-      BankRemitBankcardInputUI.w(this.nwd);
-      BankRemitBankcardInputUI.x(this.nwd);
-      BankRemitBankcardInputUI.y(this.nwd);
-      BankRemitBankcardInputUI.z(this.nwd);
-      BankRemitBankcardInputUI.k(this.nwd);
+      ab.i("MicroMsg.BankRemitBankcardInputUI", "response bank: %s", new Object[] { paramString });
+      BankRemitBankcardInputUI.H(this.qhe);
+      BankRemitBankcardInputUI.I(this.qhe);
+      BankRemitBankcardInputUI.J(this.qhe);
+      BankRemitBankcardInputUI.K(this.qhe);
+      BankRemitBankcardInputUI.k(this.qhe);
+      AppMethodBeat.o(44515);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitBankcardInputUI.3
  * JD-Core Version:    0.7.0.1
  */

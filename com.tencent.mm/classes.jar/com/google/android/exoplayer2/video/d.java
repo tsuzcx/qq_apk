@@ -2,21 +2,22 @@ package com.google.android.exoplayer2.video;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 @TargetApi(16)
 public final class d
 {
-  final d.a aTU;
-  final boolean aTV;
-  final long aTW;
-  final long aTX;
-  long aTY;
-  long aTZ;
-  long aUa;
-  boolean aUb;
-  long aUc;
-  long aUd;
-  long aUe;
+  long bcA;
+  long bcB;
+  long bcC;
+  final d.a bcs;
+  final boolean bct;
+  final long bcu;
+  final long bcv;
+  long bcw;
+  long bcx;
+  long bcy;
+  boolean bcz;
   
   public d()
   {
@@ -25,29 +26,39 @@ public final class d
   
   private d(double paramDouble)
   {
+    AppMethodBeat.i(96036);
     if (paramDouble != -1.0D) {}
     for (boolean bool = true;; bool = false)
     {
-      this.aTV = bool;
-      if (!this.aTV) {
+      this.bct = bool;
+      if (!this.bct) {
         break;
       }
-      this.aTU = d.a.oy();
-      this.aTW = ((1000000000.0D / paramDouble));
-      this.aTX = (this.aTW * 80L / 100L);
+      this.bcs = d.a.rk();
+      this.bcu = ((1000000000.0D / paramDouble));
+      this.bcv = (this.bcu * 80L / 100L);
+      AppMethodBeat.o(96036);
       return;
     }
-    this.aTU = null;
-    this.aTW = -1L;
-    this.aTX = -1L;
+    this.bcs = null;
+    this.bcu = -1L;
+    this.bcv = -1L;
+    AppMethodBeat.o(96036);
   }
   
   public d(Context paramContext) {}
   
-  final boolean h(long paramLong1, long paramLong2)
+  final boolean o(long paramLong1, long paramLong2)
   {
-    long l = this.aUd;
-    return Math.abs(paramLong2 - this.aUc - (paramLong1 - l)) > 20000000L;
+    AppMethodBeat.i(96037);
+    long l = this.bcB;
+    if (Math.abs(paramLong2 - this.bcA - (paramLong1 - l)) > 20000000L)
+    {
+      AppMethodBeat.o(96037);
+      return true;
+    }
+    AppMethodBeat.o(96037);
+    return false;
   }
 }
 

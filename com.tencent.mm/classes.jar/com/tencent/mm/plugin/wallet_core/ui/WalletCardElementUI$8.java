@@ -1,21 +1,60 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.wallet_core.ui.e;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckedTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet_core.model.ElementQuery;
+import com.tencent.mm.plugin.wallet_core.model.t;
+import com.tencent.mm.plugin.wallet_core.model.v;
+import java.util.List;
 
 final class WalletCardElementUI$8
-  implements View.OnClickListener
+  extends BaseAdapter
 {
   WalletCardElementUI$8(WalletCardElementUI paramWalletCardElementUI) {}
   
-  public final void onClick(View paramView)
+  private Integer IE(int paramInt)
   {
-    h.nFQ.f(11353, new Object[] { Integer.valueOf(2), Integer.valueOf(0) });
-    e.d(this.qCj, o.bVs().aEZ());
+    AppMethodBeat.i(47219);
+    Integer localInteger = (Integer)WalletCardElementUI.o(this.uoW).cTw().get(paramInt);
+    AppMethodBeat.o(47219);
+    return localInteger;
+  }
+  
+  public final int getCount()
+  {
+    AppMethodBeat.i(47218);
+    if (WalletCardElementUI.o(this.uoW).cTw() != null)
+    {
+      int i = WalletCardElementUI.o(this.uoW).cTw().size();
+      AppMethodBeat.o(47218);
+      return i;
+    }
+    AppMethodBeat.o(47218);
+    return 0;
+  }
+  
+  public final long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    AppMethodBeat.i(47220);
+    paramView = (CheckedTextView)View.inflate(this.uoW, 2130971195, null);
+    paramView.setText(t.cTV().ab(this.uoW, IE(paramInt).intValue()));
+    if (WalletCardElementUI.w(this.uoW) == IE(paramInt).intValue()) {
+      paramView.setChecked(true);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(47220);
+      return paramView;
+      paramView.setChecked(false);
+    }
   }
 }
 

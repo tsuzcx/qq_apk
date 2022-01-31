@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 
 final class BakFinishUI$1
@@ -11,8 +12,10 @@ final class BakFinishUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    a.avr().avs().hOi = -1;
-    BakFinishUI.a(this.hOT);
+    AppMethodBeat.i(17921);
+    a.aUU().aUV().jHK = -1;
+    BakFinishUI.a(this.jIv);
+    AppMethodBeat.o(17921);
     return true;
   }
 }

@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.backup.c;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.backup.b.b.d;
 import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.l;
 import com.tencent.mm.storage.n;
@@ -21,150 +22,156 @@ final class d$1
   
   public final void run()
   {
+    AppMethodBeat.i(17198);
     e.reset();
-    e.atN();
-    d.a(this.hHe).begin();
+    e.aTl();
+    d.a(this.jAA).begin();
     Object localObject1 = new HashMap();
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = d.b(this.hHe).keySet().iterator();
+    Iterator localIterator = d.b(this.jAA).keySet().iterator();
     for (;;)
     {
-      label212:
-      long l;
+      long l1;
+      label357:
+      long l2;
       if (localIterator.hasNext())
       {
         String str = (String)localIterator.next();
-        d.atI();
-        Object localObject2 = g.xo(str) + str;
-        if (b.cqk())
+        d.aTg();
+        Object localObject2 = g.Gg(str) + str;
+        if (b.dsf())
         {
-          d.a(this.hHe, (String)localObject2, (HashMap)localObject1, localHashMap);
-          if (d.c(this.hHe))
+          l1 = d.a(this.jAA, (String)localObject2, (HashMap)localObject1, localHashMap);
+          if (d.c(this.jAA))
           {
-            y.e("MicroMsg.BackupRecoverMerger", "recoverFromSdcardImp Thread has been canceled, msgDataId[%s], transferMsgList[%d], recovering session num[%d]", new Object[] { str, Long.valueOf(d.d(this.hHe)), Integer.valueOf(d.e(this.hHe)) });
-            d.atJ();
-            d.a(this.hHe).end();
+            ab.e("MicroMsg.BackupRecoverMerger", "recoverFromSdcardImp Thread has been canceled, msgDataId[%s], transferMsgList[%d], recovering session num[%d]", new Object[] { str, Long.valueOf(d.d(this.jAA)), Integer.valueOf(d.e(this.jAA)) });
+            d.aTh();
+            d.a(this.jAA).end();
             com.tencent.mm.plugin.backup.h.c.k((HashMap)localObject1);
-            d.a(this.hHe, d.f(this.hHe), d.g(this.hHe));
+            d.a(this.jAA, d.f(this.jAA), d.g(this.jAA));
+            AppMethodBeat.o(17198);
           }
         }
         else
         {
           try
           {
-            d.a(this.hHe, (String)localObject2, (HashMap)localObject1, localHashMap);
-            if (!d.c(this.hHe)) {
-              break label337;
+            l1 = d.a(this.jAA, (String)localObject2, (HashMap)localObject1, localHashMap);
+            if (!d.c(this.jAA)) {
+              break label357;
             }
-            y.e("MicroMsg.BackupRecoverMerger", "recoverFromSdcardImp Thread has been canceled, msgDataId[%s], transferMsgList[%d], recovering session num[%d]", new Object[] { str, Long.valueOf(d.d(this.hHe)), Integer.valueOf(d.e(this.hHe)) });
-            d.atJ();
-            d.a(this.hHe).end();
+            ab.e("MicroMsg.BackupRecoverMerger", "recoverFromSdcardImp Thread has been canceled, msgDataId[%s], transferMsgList[%d], recovering session num[%d]", new Object[] { str, Long.valueOf(d.d(this.jAA)), Integer.valueOf(d.e(this.jAA)) });
+            d.aTh();
+            d.a(this.jAA).end();
             com.tencent.mm.plugin.backup.h.c.k((HashMap)localObject1);
-            d.a(this.hHe, d.f(this.hHe), d.g(this.hHe));
+            d.a(this.jAA, d.f(this.jAA), d.g(this.jAA));
+            AppMethodBeat.o(17198);
             return;
           }
           catch (Exception localException)
           {
-            y.printErrStackTrace("MicroMsg.BackupRecoverMerger", localException, "recoverFromSdcard MMThread.run():", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.BackupRecoverMerger", localException, "recoverFromSdcard MMThread.run():", new Object[0]);
           }
           continue;
         }
-        label337:
-        d.h(this.hHe).add(d.b(this.hHe).get(localException));
-        d.i(this.hHe);
-        d.j(this.hHe).atn().hFu = 26;
-        localObject2 = d.j(this.hHe).atn();
-        if (d.d(this.hHe) > d.k(this.hHe))
+        d.a(this.jAA, d.h(this.jAA) + l1);
+        d.i(this.jAA).add(d.b(this.jAA).get(localException));
+        d.j(this.jAA);
+        d.k(this.jAA).aSL().jyN = 26;
+        localObject2 = d.k(this.jAA).aSL();
+        if (d.d(this.jAA) > d.l(this.jAA))
         {
-          l = 100L;
-          label417:
-          ((com.tencent.mm.plugin.backup.b.e)localObject2).hFx = ((int)l);
-          this.hHe.nv(26);
-          d.a(this.hHe).atL();
-          d.atJ();
+          l2 = 100L;
+          label455:
+          ((com.tencent.mm.plugin.backup.b.e)localObject2).jyQ = ((int)l2);
+          this.jAA.rh(26);
+          d.a(this.jAA).aTj();
+          d.aTh();
         }
       }
       try
       {
         Thread.sleep(10L);
-        label452:
-        y.i("MicroMsg.BackupRecoverMerger", "msgDataId[%s] merge finish, transferMsgList[%d], transferSessions size[%d]", new Object[] { localException, Long.valueOf(d.d(this.hHe)), Integer.valueOf(d.h(this.hHe).size()) });
+        label491:
+        ab.i("MicroMsg.BackupRecoverMerger", "msgDataId[%s] merge finish, transferMsgList[%d], transferSessions size[%d], msgListMsgCount:%d, receiveMsgCount:%d", new Object[] { localException, Long.valueOf(d.d(this.jAA)), Integer.valueOf(d.i(this.jAA).size()), Long.valueOf(l1), Long.valueOf(d.h(this.jAA)) });
         continue;
-        l = d.d(this.hHe) * 100L / d.k(this.hHe);
-        break label417;
-        this.hHe.nv(30);
+        l2 = d.d(this.jAA) * 100L / d.l(this.jAA);
+        break label455;
+        d.k(this.jAA).aSL().jyX = d.h(this.jAA);
+        this.jAA.rh(30);
         com.tencent.mm.plugin.backup.h.c.k((HashMap)localObject1);
-        y.i("MicroMsg.BackupRecoverMerger", "readFromSdcard build temDB finish! transferMsgList[%d], totalMsgList[%d], transferSession[%d], totalSession[%d]", new Object[] { Long.valueOf(d.d(this.hHe)), Long.valueOf(d.k(this.hHe)), Integer.valueOf(d.h(this.hHe).size()), Integer.valueOf(d.e(this.hHe)) });
-        d.a(this.hHe).end();
-        if (b.cqk())
+        ab.i("MicroMsg.BackupRecoverMerger", "readFromSdcard build temDB finish! transferMsgList[%d], totalMsgList[%d], transferSession[%d], totalSession[%d]", new Object[] { Long.valueOf(d.d(this.jAA)), Long.valueOf(d.l(this.jAA)), Integer.valueOf(d.i(this.jAA).size()), Integer.valueOf(d.e(this.jAA)) });
+        d.a(this.jAA).end();
+        if (b.dsf())
         {
-          localObject1 = d.j(this.hHe).atn();
-          if (d.h(this.hHe).size() > d.e(this.hHe))
+          localObject1 = d.k(this.jAA).aSL();
+          if (d.i(this.jAA).size() > d.e(this.jAA))
           {
-            i = d.e(this.hHe);
-            ((com.tencent.mm.plugin.backup.b.e)localObject1).hFv = i;
-            localObject1 = d.j(this.hHe).atn();
-            if (d.d(this.hHe) <= d.k(this.hHe)) {
-              break label940;
+            i = d.e(this.jAA);
+            ((com.tencent.mm.plugin.backup.b.e)localObject1).jyO = i;
+            localObject1 = d.k(this.jAA).aSL();
+            if (d.d(this.jAA) <= d.l(this.jAA)) {
+              break label1026;
             }
-            l = 100L;
-            label699:
-            ((com.tencent.mm.plugin.backup.b.e)localObject1).hFx = ((int)l);
-            label706:
-            d.j(this.hHe).atn().hFw = d.e(this.hHe);
-            y.cqL();
-            if (d.l(this.hHe) == d.access$1400()) {
-              break label212;
-            }
-            d.a(this.hHe, d.access$1400());
-            d.atH();
-            y.i("MicroMsg.BackupRecoverMerger", "recoverFromSdcardImp backupRecoverCloseTempDb merge success, restart sync");
-            if (d.m(this.hHe) != 1) {
-              break label1019;
-            }
-            au.Hx();
-            com.tencent.mm.model.c.Dz().c(ac.a.uuo, Boolean.valueOf(false));
-            label791:
-            if (d.n(this.hHe) != null) {
-              d.n(this.hHe).atm();
-            }
-            au.Hx().Gd().ctu();
-            au.Hx().Ge().ctu();
-            localObject1 = d.j(this.hHe).atn();
-            if (d.h(this.hHe).size() <= d.e(this.hHe)) {
-              break label1050;
+            l1 = 100L;
+            label779:
+            ((com.tencent.mm.plugin.backup.b.e)localObject1).jyQ = ((int)l1);
+            label786:
+            d.k(this.jAA).aSL().jyP = d.e(this.jAA);
+            ab.dsI();
+            if (d.m(this.jAA) != d.access$1500())
+            {
+              d.a(this.jAA, d.access$1500());
+              d.aTf();
+              ab.i("MicroMsg.BackupRecoverMerger", "recoverFromSdcardImp backupRecoverCloseTempDb merge success, restart sync");
+              if (d.n(this.jAA) != 1) {
+                break label1105;
+              }
+              aw.aaz();
+              com.tencent.mm.model.c.Ru().set(ac.a.yEr, Boolean.FALSE);
+              label871:
+              if (d.o(this.jAA) != null) {
+                d.o(this.jAA).aSK();
+              }
+              aw.aaz().Ze().dvQ();
+              aw.aaz().Zf().dvQ();
+              localObject1 = d.k(this.jAA).aSL();
+              if (d.i(this.jAA).size() <= d.e(this.jAA)) {
+                break label1135;
+              }
             }
           }
         }
-        label1050:
-        for (int i = d.e(this.hHe);; i = d.h(this.hHe).size())
+        label1026:
+        label1105:
+        label1135:
+        for (int i = d.e(this.jAA);; i = d.i(this.jAA).size())
         {
-          ((com.tencent.mm.plugin.backup.b.e)localObject1).B(27, i, d.e(this.hHe));
-          this.hHe.nv(27);
-          d.a(this.hHe, d.atK());
-          d.o(this.hHe);
-          d.j(this.hHe).atp();
+          ((com.tencent.mm.plugin.backup.b.e)localObject1).N(27, i, d.e(this.jAA));
+          this.jAA.rh(27);
+          d.a(this.jAA, d.aTi());
+          d.p(this.jAA);
+          d.k(this.jAA).aSN();
+          AppMethodBeat.o(17198);
           return;
-          i = d.h(this.hHe).size();
+          i = d.i(this.jAA).size();
           break;
-          label940:
-          l = d.d(this.hHe) * 100L / d.k(this.hHe);
-          break label699;
-          d.j(this.hHe).atn().hFv = d.e(this.hHe);
-          d.j(this.hHe).atn().hFx = ((int)(d.d(this.hHe) * 100L / d.k(this.hHe)));
-          break label706;
-          label1019:
-          if (d.m(this.hHe) != 2) {
-            break label791;
+          l1 = d.d(this.jAA) * 100L / d.l(this.jAA);
+          break label779;
+          d.k(this.jAA).aSL().jyO = d.e(this.jAA);
+          d.k(this.jAA).aSL().jyQ = ((int)(d.d(this.jAA) * 100L / d.l(this.jAA)));
+          break label786;
+          if (d.n(this.jAA) != 2) {
+            break label871;
           }
-          au.Hx();
-          com.tencent.mm.model.c.Dz().c(ac.a.uur, Boolean.valueOf(false));
-          break label791;
+          aw.aaz();
+          com.tencent.mm.model.c.Ru().set(ac.a.yEu, Boolean.FALSE);
+          break label871;
         }
       }
       catch (InterruptedException localInterruptedException)
       {
-        break label452;
+        break label491;
       }
     }
   }

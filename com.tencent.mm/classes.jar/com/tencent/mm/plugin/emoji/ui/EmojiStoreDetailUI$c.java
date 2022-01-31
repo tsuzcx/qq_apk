@@ -2,16 +2,18 @@ package com.tencent.mm.plugin.emoji.ui;
 
 import android.view.View;
 import android.widget.ImageView.ScaleType;
-import com.tencent.mm.plugin.emoji.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class EmojiStoreDetailUI$c
 {
-  SquareImageView jeM;
+  SquareImageView lnC;
   
   public EmojiStoreDetailUI$c(EmojiStoreDetailUI paramEmojiStoreDetailUI, View paramView)
   {
-    this.jeM = ((SquareImageView)paramView.findViewById(f.e.detail_image));
-    this.jeM.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    AppMethodBeat.i(53448);
+    this.lnC = ((SquareImageView)paramView.findViewById(2131823645));
+    this.lnC.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    AppMethodBeat.o(53448);
   }
 }
 

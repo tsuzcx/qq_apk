@@ -1,114 +1,132 @@
 package com.tencent.mm.plugin.appbrand.i;
 
 import android.util.SparseArray;
-import android.webkit.ValueCallback;
-import com.tencent.mm.d.a.k;
-import com.tencent.mm.d.a.k.1;
-import java.net.URL;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mm.d.a.c;
+import com.tencent.mm.d.a.l;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.ArrayList;
 
-public class a
-  extends b
-  implements f, h, l, m
+public abstract class a
+  extends d
+  implements i, k, m, q, r, s
 {
-  private final k bzI = k.tF();
-  public final com.tencent.mm.d.a.b gIp = this.bzI.ev(1);
-  private final AtomicInteger gIq = new AtomicInteger(1);
-  private final SparseArray<c> gIr = new SparseArray();
+  private final c cbT = r(paramString, paramArrayOfByte);
+  final l ijd = a(this.cbT, e.aGE());
+  private final e ije = new e(new a.1(this));
+  private ArrayList<m.a> ijf = new ArrayList();
   
-  static
+  public a(String paramString, byte[] paramArrayOfByte)
   {
-    if (!a.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    paramString = this.ije;
+    ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "setMainContext id:%d", new Object[] { Integer.valueOf(1) });
+    paramString.ijl.put(1, this);
+  }
+  
+  protected abstract l a(c paramc, int paramInt);
+  
+  public final void a(m.a parama)
+  {
+    try
     {
-      $assertionsDisabled = bool;
+      this.ijf.add(parama);
       return;
+    }
+    finally
+    {
+      parama = finally;
+      throw parama;
     }
   }
   
-  public a()
+  public final int aGA()
   {
-    assert (this.gIp != null);
+    return e.aGE();
   }
   
-  public final void a(URL paramURL, String paramString1, String paramString2, String paramString3, ValueCallback<String> paramValueCallback)
+  public final g aGB()
   {
-    super.a(paramURL, paramString3, paramValueCallback);
+    return this.ije.ow(1);
   }
   
-  public final boolean age()
+  public final g aGC()
+  {
+    return this.ije.aGC();
+  }
+  
+  protected final c aGx()
+  {
+    return this.cbT;
+  }
+  
+  protected final l aGy()
+  {
+    return this.ijd;
+  }
+  
+  public final boolean aGz()
   {
     return true;
   }
   
-  public final int agf()
-  {
-    return 1;
-  }
-  
-  public final d ago()
-  {
-    return this;
-  }
-  
-  public final d agp()
-  {
-    int i = this.gIq.incrementAndGet();
-    c localc = new c(this.bzI.ev(i), i);
-    synchronized (this.gIr)
-    {
-      this.gIr.put(i, localc);
-      return localc;
-    }
-  }
-  
-  protected final com.tencent.mm.d.a.b alz()
-  {
-    return this.gIp;
-  }
-  
   public void destroy()
   {
-    super.destroy();
-    k localk = this.bzI;
-    localk.byY.i(new k.1(localk));
-  }
-  
-  public final d kQ(int paramInt)
-  {
-    if (1 == paramInt) {
-      return this;
-    }
-    synchronized (this.gIr)
-    {
-      d locald = (d)this.gIr.get(paramInt);
-      return locald;
-    }
-  }
-  
-  public final void kR(int paramInt)
-  {
-    if (1 == paramInt) {
-      destroy();
-    }
+    this.ijd.cbC.l(new a.2(this));
+    e locale = this.ije;
+    SparseArray localSparseArray = locale.ijl;
+    int i = 0;
     for (;;)
     {
-      return;
-      synchronized (this.gIr)
+      try
       {
-        c localc = (c)this.gIr.get(paramInt);
-        if (localc == null) {
-          continue;
+        if (i < locale.ijl.size())
+        {
+          int j = locale.ijl.keyAt(i);
+          if (j == 1) {
+            break label163;
+          }
+          ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d", new Object[] { Integer.valueOf(j) });
+          if (locale.ijl.get(j) == null) {
+            ab.w("MicroMsg.AppBrandJ2V8ContextMgr", "destroyRestButNotMainContext contextId:%d null", new Object[] { Integer.valueOf(j) });
+          } else {
+            ((d)locale.ijl.get(j)).destroy();
+          }
         }
-        localc.destroy();
-        return;
       }
+      finally {}
+      localObject.ijl.clear();
+      super.destroy();
+      this.cbT.quit();
+      return;
+      label163:
+      i += 1;
     }
   }
   
-  public void setJsExceptionHandler(e parame)
+  public final g ow(int paramInt)
   {
-    this.gIp.a(1, parame);
+    return this.ije.ow(paramInt);
+  }
+  
+  public final void ox(int paramInt)
+  {
+    e locale = this.ije;
+    ab.i("MicroMsg.AppBrandJ2V8ContextMgr", "destroyJsContext id:%d", new Object[] { Integer.valueOf(paramInt) });
+    synchronized (locale.ijl)
+    {
+      d locald = (d)locale.ijl.get(paramInt);
+      locale.ijl.delete(paramInt);
+      if (locald != null) {
+        locald.destroy();
+      }
+      return;
+    }
+  }
+  
+  protected abstract c r(String paramString, byte[] paramArrayOfByte);
+  
+  public void setJsExceptionHandler(h paramh)
+  {
+    this.ijd.a(e.aGE(), paramh);
   }
 }
 

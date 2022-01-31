@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.voip.video;
 
 import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$1
   implements Camera.AutoFocusCallback
@@ -11,8 +12,10 @@ final class a$1
   
   public final void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    y.d("MicroMsg.Voip.CaptureRender", "onAutoFocus, success:%b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.qao.qai = true;
+    AppMethodBeat.i(5020);
+    ab.d("MicroMsg.Voip.CaptureRender", "onAutoFocus, success:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.tFR.tFK = true;
+    AppMethodBeat.o(5020);
   }
 }
 

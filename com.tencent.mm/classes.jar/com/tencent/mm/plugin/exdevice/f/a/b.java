@@ -1,37 +1,45 @@
 package com.tencent.mm.plugin.exdevice.f.a;
 
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ag;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.j;
 import java.io.IOException;
 
 public final class b
 {
-  public static String Bw(String paramString)
+  public static String Ly(String paramString)
   {
-    if ((bk.bl(paramString)) || ("#".equals(paramString))) {
+    AppMethodBeat.i(19434);
+    if ((bo.isNullOrNil(paramString)) || ("#".equals(paramString)))
+    {
+      AppMethodBeat.o(19434);
       return "";
     }
-    Object localObject = ad.bB(paramString);
-    localObject = new com.tencent.mm.vfs.b(d.aLY(), (String)localObject);
-    if (((com.tencent.mm.vfs.b)localObject).exists()) {
-      return j.n(((com.tencent.mm.vfs.b)localObject).cLr());
+    Object localObject = ag.cE(paramString);
+    localObject = new com.tencent.mm.vfs.b(d.bql(), (String)localObject);
+    if (((com.tencent.mm.vfs.b)localObject).exists())
+    {
+      paramString = j.p(((com.tencent.mm.vfs.b)localObject).dQJ());
+      AppMethodBeat.o(19434);
+      return paramString;
     }
     try
     {
       ((com.tencent.mm.vfs.b)localObject).createNewFile();
-      au.DS().O(new a(paramString, (com.tencent.mm.vfs.b)localObject));
+      aw.RO().ac(new a(paramString, (com.tencent.mm.vfs.b)localObject));
+      AppMethodBeat.o(19434);
       return "";
     }
     catch (IOException localIOException)
     {
       for (;;)
       {
-        y.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
+        ab.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
       }
     }
   }
@@ -39,32 +47,37 @@ public final class b
   static final class a
     implements Runnable
   {
-    private com.tencent.mm.vfs.b jxG;
+    private com.tencent.mm.vfs.b lHf;
     private String url;
     
     a(String paramString, com.tencent.mm.vfs.b paramb)
     {
       this.url = paramString;
-      this.jxG = paramb;
+      this.lHf = paramb;
     }
     
     public final void run()
     {
-      byte[] arrayOfByte = bk.ZV(this.url);
+      AppMethodBeat.i(19432);
+      byte[] arrayOfByte = bo.apZ(this.url);
       if (arrayOfByte != null) {
-        e.b(j.n(this.jxG.mUri), arrayOfByte, arrayOfByte.length);
+        e.b(j.p(this.lHf.mUri), arrayOfByte, arrayOfByte.length);
       }
+      AppMethodBeat.o(19432);
     }
     
     public final String toString()
     {
-      return super.toString() + "|DownloadRunnable";
+      AppMethodBeat.i(19433);
+      String str = super.toString() + "|DownloadRunnable";
+      AppMethodBeat.o(19433);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.matrix.resource.c.a;
 
 public final class a
 {
-  public final b bpA;
-  public final Object bpB;
-  public final int bpz;
+  public final int bPA;
+  public final b bPB;
+  public final Object bPC;
   
   public a(int paramInt, b paramb, Object paramObject)
   {
-    this.bpz = paramInt;
-    this.bpA = paramb;
-    this.bpB = paramObject;
+    this.bPA = paramInt;
+    this.bPB = paramb;
+    this.bPC = paramObject;
   }
   
   public final boolean equals(Object paramObject)
@@ -23,19 +23,19 @@ public final class a
         return false;
       }
       paramObject = (a)paramObject;
-      if (this.bpz != paramObject.bpz) {
+      if (this.bPA != paramObject.bPA) {
         return false;
       }
-      if (!this.bpA.equals(paramObject.bpA)) {
+      if (!this.bPB.equals(paramObject.bPB)) {
         return false;
       }
-    } while (((this.bpB == null) || (this.bpB.equals(paramObject.bpB))) && ((paramObject.bpB == null) || (paramObject.bpB.equals(this.bpB))));
+    } while (((this.bPC == null) || (this.bPC.equals(paramObject.bPC))) && ((paramObject.bPC == null) || (paramObject.bPC.equals(this.bPC))));
     return false;
   }
   
   public final int hashCode()
   {
-    return (this.bpA.hashCode() << 31) + this.bpz;
+    return (this.bPB.hashCode() << 31) + this.bPA;
   }
 }
 

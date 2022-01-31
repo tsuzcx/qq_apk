@@ -3,7 +3,8 @@ package com.tencent.mm.ui.contact;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.bb.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bc.c;
 
 final class ContactRemarkInfoViewUI$1
   implements View.OnClickListener
@@ -12,15 +13,19 @@ final class ContactRemarkInfoViewUI$1
   
   public final void onClick(View paramView)
   {
-    if (!ContactRemarkInfoViewUI.a(this.vKY)) {
+    AppMethodBeat.i(33687);
+    if (!ContactRemarkInfoViewUI.a(this.AcA))
+    {
+      AppMethodBeat.o(33687);
       return;
     }
-    paramView = new Intent(this.vKY, ContactRemarkImagePreviewUI.class);
-    paramView.putExtra("Contact_User", ContactRemarkInfoViewUI.b(this.vKY));
-    c.PO();
-    paramView.putExtra("remark_image_path", c.mK(ContactRemarkInfoViewUI.b(this.vKY)));
+    paramView = new Intent(this.AcA, ContactRemarkImagePreviewUI.class);
+    paramView.putExtra("Contact_User", ContactRemarkInfoViewUI.b(this.AcA));
+    c.aiT();
+    paramView.putExtra("remark_image_path", c.tU(ContactRemarkInfoViewUI.b(this.AcA)));
     paramView.putExtra("view_only", true);
-    this.vKY.startActivity(paramView);
+    this.AcA.startActivity(paramView);
+    AppMethodBeat.o(33687);
   }
 }
 

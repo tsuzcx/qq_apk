@@ -1,20 +1,24 @@
 package com.tencent.mm.ax;
 
-public final class f
-  extends a
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.at;
+import java.util.HashMap;
+
+public class f
+  implements at
 {
-  public String evO;
-  public long evP;
+  public void clearPluginData(int paramInt) {}
   
-  public f()
+  public HashMap<Integer, h.d> getBaseDBFactories()
   {
-    super(null, null);
+    return null;
   }
   
-  protected final boolean Ib()
-  {
-    return false;
-  }
+  public void onAccountPostReset(boolean paramBoolean) {}
+  
+  public void onAccountRelease() {}
+  
+  public void onSdcardMount(boolean paramBoolean) {}
 }
 
 

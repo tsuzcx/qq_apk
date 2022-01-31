@@ -4,8 +4,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.c.a;
 
 final class SnsMsgUI$2
   implements AdapterView.OnItemLongClickListener
@@ -14,12 +15,15 @@ final class SnsMsgUI$2
   
   public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramInt < SnsMsgUI.c(this.paq).getHeaderViewsCount())
+    AppMethodBeat.i(39066);
+    if (paramInt < SnsMsgUI.c(this.rSU).getHeaderViewsCount())
     {
-      y.w("MicroMsg.SnsMsgUI", "on header view long click, ignore");
+      ab.w("MicroMsg.SnsMsgUI", "on header view long click, ignore");
+      AppMethodBeat.o(39066);
       return true;
     }
-    new a(this.paq).a(paramView, paramInt, paramLong, this.paq, SnsMsgUI.k(this.paq), SnsMsgUI.j(this.paq)[0], SnsMsgUI.j(this.paq)[1]);
+    new a(this.rSU).a(paramView, paramInt, paramLong, this.rSU, SnsMsgUI.k(this.rSU), SnsMsgUI.j(this.rSU)[0], SnsMsgUI.j(this.rSU)[1]);
+    AppMethodBeat.o(39066);
     return true;
   }
 }

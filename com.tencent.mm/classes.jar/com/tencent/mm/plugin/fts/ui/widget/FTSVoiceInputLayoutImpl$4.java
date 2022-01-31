@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.fts.ui.widget;
 
-import android.animation.ValueAnimator;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FTSVoiceInputLayoutImpl$4
   implements Runnable
@@ -10,12 +10,12 @@ final class FTSVoiceInputLayoutImpl$4
   
   public final void run()
   {
-    c localc = FTSVoiceInputLayoutImpl.a(this.kFs);
-    y.d("MicroMsg.VoiceInputDrawable", "disableState %s", new Object[] { Integer.valueOf(localc.kFU) });
-    localc.kFU = 5;
-    localc.hsF.cancel();
-    localc.kFN = 0.0F;
-    localc.invalidateSelf();
+    AppMethodBeat.i(62184);
+    b localb = FTSVoiceInputLayoutImpl.b(this.ncg);
+    ab.d("MicroMsg.FTSVoiceInputDrawable", "disableState %s", new Object[] { Integer.valueOf(localb.currentState) });
+    localb.currentState = 5;
+    localb.invalidateSelf();
+    AppMethodBeat.o(62184);
   }
 }
 

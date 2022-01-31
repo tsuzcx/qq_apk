@@ -4,7 +4,7 @@ public abstract interface b$a
 {
   public abstract void a(a parama);
   
-  public abstract void bkm();
+  public abstract void bSn();
 }
 
 

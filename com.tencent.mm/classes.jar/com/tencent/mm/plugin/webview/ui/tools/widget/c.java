@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.os.Bundle;
 import com.tencent.mm.ui.widget.MMWebView;
-import com.tencent.xweb.p;
+import com.tencent.xweb.w;
 
 public abstract interface c
 {
-  public abstract p a(MMWebView paramMMWebView, d paramd, Bundle paramBundle);
+  public abstract w a(MMWebView paramMMWebView, d paramd, Bundle paramBundle);
   
-  public abstract p a(MMWebView paramMMWebView, boolean paramBoolean, d paramd);
+  public abstract w a(MMWebView paramMMWebView, boolean paramBoolean, d paramd);
 }
 
 

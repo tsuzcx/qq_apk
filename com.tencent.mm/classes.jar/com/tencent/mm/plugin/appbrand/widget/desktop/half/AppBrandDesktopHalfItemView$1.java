@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.widget.desktop.half;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appusage.ag;
 import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView.c;
@@ -10,9 +11,12 @@ final class AppBrandDesktopHalfItemView$1
 {
   AppBrandDesktopHalfItemView$1(AppBrandDesktopHalfItemView paramAppBrandDesktopHalfItemView) {}
   
-  public final List mG(int paramInt)
+  public final List qi(int paramInt)
   {
-    return ((ag)g.r(ag.class)).kz(paramInt);
+    AppMethodBeat.i(134125);
+    List localList = ((ag)g.E(ag.class)).nu(paramInt);
+    AppMethodBeat.o(134125);
+    return localList;
   }
 }
 

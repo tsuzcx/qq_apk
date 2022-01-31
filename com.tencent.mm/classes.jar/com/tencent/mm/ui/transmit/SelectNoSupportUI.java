@@ -1,33 +1,33 @@
 package com.tencent.mm.ui.transmit;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 
 public class SelectNoSupportUI
   extends MMActivity
 {
-  private String whB = "friend";
-  private TextView whC;
-  private TextView whD;
+  private String AAw = "friend";
+  private TextView AAx;
+  private TextView AAy;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.mm_select_no_support_ui;
+    return 2130970271;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(getString(R.l.select_conversation_title));
-    this.whC = ((TextView)findViewById(R.h.no_share_title_tx));
-    this.whD = ((TextView)findViewById(R.h.no_share_detail_tv));
-    this.whC.setText(getString(R.l.select_no_support_no_share_to_wechat));
-    String str = this.whB;
+    AppMethodBeat.i(35210);
+    setMMTitle(getString(2131303059));
+    this.AAx = ((TextView)findViewById(2131826278));
+    this.AAy = ((TextView)findViewById(2131826279));
+    this.AAx.setText(getString(2131303069));
+    String str = this.AAw;
     int i = -1;
     switch (str.hashCode())
     {
@@ -40,6 +40,7 @@ public class SelectNoSupportUI
     for (;;)
     {
       setBackBtn(new SelectNoSupportUI.1(this));
+      AppMethodBeat.o(35210);
       return;
       if (!str.equals("friend")) {
         break;
@@ -51,25 +52,33 @@ public class SelectNoSupportUI
       }
       i = 1;
       break;
-      this.whD.setText(getString(R.l.select_no_support_share_excced_pricture_to_friend));
+      this.AAy.setText(getString(2131303070));
       continue;
-      this.whD.setText(getString(R.l.select_no_support_share_multi_pricture_to_sns));
+      this.AAy.setText(getString(2131303071));
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(35209);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.SelectNoSupportUI", "onCreate!");
-    this.whB = getIntent().getStringExtra("sharePictureTo");
-    y.i("MicroMsg.SelectNoSupportUI", "initData done!");
+    ab.i("MicroMsg.SelectNoSupportUI", "onCreate!");
+    this.AAw = getIntent().getStringExtra("sharePictureTo");
+    ab.i("MicroMsg.SelectNoSupportUI", "initData done!");
     initView();
-    y.i("MicroMsg.SelectNoSupportUI", "initView done!");
+    ab.i("MicroMsg.SelectNoSupportUI", "initView done!");
+    AppMethodBeat.o(35209);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.SelectNoSupportUI
  * JD-Core Version:    0.7.0.1
  */

@@ -3,21 +3,20 @@ package com.tencent.toybrick.c;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
-import com.tencent.mm.ci.a.d;
 import com.tencent.toybrick.f.a;
 
 public abstract class g<S extends g, T extends a>
   extends f<S, T>
   implements Comparable<g>
 {
-  CharSequence BM;
-  public int vdE;
-  public boolean xbe;
-  private int[] xbf;
+  public boolean BxK;
+  private int[] BxL;
+  CharSequence Cv;
+  public int bdv;
   
-  public g.b cQZ()
+  public g.b dWO()
   {
-    return g.b.xbl;
+    return g.b.BxR;
   }
   
   public boolean equals(Object paramObject)
@@ -30,20 +29,20 @@ public abstract class g<S extends g, T extends a>
         return false;
       } while (!(paramObject instanceof g));
       paramObject = (g)paramObject;
-    } while ((paramObject.xba == null) || (!paramObject.xba.equals(this.xba)) || (paramObject.BM == null) || (!paramObject.BM.equals(this.BM)) || (paramObject.xbe != this.xbe) || (paramObject.isVisible != this.isVisible) || (paramObject.xbb != this.xbb));
+    } while ((paramObject.BxG == null) || (!paramObject.BxG.equals(this.BxG)) || (paramObject.Cv == null) || (!paramObject.Cv.equals(this.Cv)) || (paramObject.BxK != this.BxK) || (paramObject.isVisible != this.isVisible) || (paramObject.BxH != this.BxH));
     return true;
   }
   
-  public final int[] es(View paramView)
+  public final int[] fG(View paramView)
   {
     paramView = paramView.findViewById(16908310);
-    int[] arrayOfInt = this.xbf;
+    int[] arrayOfInt = this.BxL;
     if (paramView == null) {}
-    for (int i = (int)this.xaY.getResources().getDimension(a.d.EdgePadding);; i = paramView.getLeft())
+    for (int i = (int)this.BxE.getResources().getDimension(2131427578);; i = paramView.getLeft())
     {
       arrayOfInt[0] = i;
-      this.xbf[1] = ((int)this.xaY.getResources().getDimension(a.d.EdgePadding));
-      return this.xbf;
+      this.BxL[1] = ((int)this.BxE.getResources().getDimension(2131427578));
+      return this.BxL;
     }
   }
 }

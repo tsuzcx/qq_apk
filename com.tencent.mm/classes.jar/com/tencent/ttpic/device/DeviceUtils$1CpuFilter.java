@@ -1,5 +1,6 @@
 package com.tencent.ttpic.device;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileFilter;
 import java.util.regex.Pattern;
@@ -9,7 +10,14 @@ class DeviceUtils$1CpuFilter
 {
   public boolean accept(File paramFile)
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    AppMethodBeat.i(49868);
+    if (Pattern.matches("cpu[0-9]", paramFile.getName()))
+    {
+      AppMethodBeat.o(49868);
+      return true;
+    }
+    AppMethodBeat.o(49868);
+    return false;
   }
 }
 

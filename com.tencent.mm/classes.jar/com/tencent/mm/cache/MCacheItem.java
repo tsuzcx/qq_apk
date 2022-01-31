@@ -3,10 +3,10 @@ package com.tencent.mm.cache;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -14,132 +14,146 @@ import java.util.Map;
 public class MCacheItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<MCacheItem> CREATOR = new MCacheItem.1();
-  private c dlb;
+  public static final Parcelable.Creator<MCacheItem> CREATOR;
+  private c ecx;
+  
+  static
+  {
+    AppMethodBeat.i(57848);
+    CREATOR = new MCacheItem.1();
+    AppMethodBeat.o(57848);
+  }
   
   public MCacheItem(Parcel paramParcel)
   {
-    this.dlb = b(paramParcel);
+    AppMethodBeat.i(57845);
+    this.ecx = c(paramParcel);
+    AppMethodBeat.o(57845);
   }
   
   public MCacheItem(c paramc)
   {
-    this.dlb = paramc;
+    this.ecx = paramc;
   }
   
   /* Error */
-  private c b(Parcel paramParcel)
+  private c c(Parcel paramParcel)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: invokevirtual 40	android/os/Parcel:readString	()Ljava/lang/String;
-    //   4: invokestatic 46	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   7: astore 4
-    //   9: aload_0
-    //   10: aload 4
-    //   12: invokevirtual 50	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   15: checkcast 52	com/tencent/mm/sdk/e/c
-    //   18: putfield 31	com/tencent/mm/cache/MCacheItem:dlb	Lcom/tencent/mm/sdk/e/c;
-    //   21: aload 4
-    //   23: invokestatic 56	com/tencent/mm/sdk/e/c:V	(Ljava/lang/Class;)Lcom/tencent/mm/sdk/e/c$a;
-    //   26: getfield 62	com/tencent/mm/sdk/e/c$a:ujL	[Ljava/lang/reflect/Field;
-    //   29: astore 4
-    //   31: aload 4
-    //   33: arraylength
-    //   34: istore_3
-    //   35: iconst_0
-    //   36: istore_2
-    //   37: iload_2
-    //   38: iload_3
-    //   39: if_icmpge +111 -> 150
-    //   42: aload 4
-    //   44: iload_2
-    //   45: aaload
-    //   46: astore 5
-    //   48: getstatic 66	com/tencent/mm/cache/MCacheItem$a:dld	Ljava/util/Map;
-    //   51: aload 5
-    //   53: invokevirtual 72	java/lang/reflect/Field:getType	()Ljava/lang/Class;
-    //   56: invokeinterface 78 2 0
-    //   61: checkcast 80	java/lang/reflect/Method
-    //   64: astore 6
-    //   66: aload 6
-    //   68: ifnull +30 -> 98
-    //   71: aload 6
-    //   73: aconst_null
-    //   74: iconst_3
-    //   75: anewarray 4	java/lang/Object
-    //   78: dup
-    //   79: iconst_0
-    //   80: aload_1
-    //   81: aastore
-    //   82: dup
-    //   83: iconst_1
-    //   84: aload 5
-    //   86: aastore
-    //   87: dup
-    //   88: iconst_2
-    //   89: aload_0
-    //   90: getfield 31	com/tencent/mm/cache/MCacheItem:dlb	Lcom/tencent/mm/sdk/e/c;
-    //   93: aastore
-    //   94: invokevirtual 84	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   97: pop
-    //   98: iload_2
-    //   99: iconst_1
-    //   100: iadd
-    //   101: istore_2
-    //   102: goto -65 -> 37
-    //   105: astore 5
-    //   107: ldc 86
-    //   109: ldc 88
-    //   111: iconst_1
-    //   112: anewarray 4	java/lang/Object
-    //   115: dup
-    //   116: iconst_0
-    //   117: aload 5
-    //   119: invokestatic 94	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   122: aastore
-    //   123: invokestatic 100	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   126: goto -28 -> 98
-    //   129: astore_1
-    //   130: ldc 86
-    //   132: ldc 88
-    //   134: iconst_1
-    //   135: anewarray 4	java/lang/Object
-    //   138: dup
-    //   139: iconst_0
-    //   140: aload_1
-    //   141: invokestatic 94	com/tencent/mm/sdk/platformtools/bk:j	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   144: aastore
-    //   145: invokestatic 100	com/tencent/mm/sdk/platformtools/y:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   148: aconst_null
-    //   149: areturn
-    //   150: aload_0
-    //   151: getfield 31	com/tencent/mm/cache/MCacheItem:dlb	Lcom/tencent/mm/sdk/e/c;
-    //   154: astore_1
-    //   155: aload_1
+    //   0: ldc 46
+    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_1
+    //   6: invokevirtual 52	android/os/Parcel:readString	()Ljava/lang/String;
+    //   9: invokestatic 58	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   12: astore 4
+    //   14: aload_0
+    //   15: aload 4
+    //   17: invokevirtual 62	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   20: checkcast 64	com/tencent/mm/sdk/e/c
+    //   23: putfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   26: aload 4
+    //   28: invokestatic 68	com/tencent/mm/sdk/e/c:getValidFields	(Ljava/lang/Class;)[Ljava/lang/reflect/Field;
+    //   31: astore 4
+    //   33: aload 4
+    //   35: arraylength
+    //   36: istore_3
+    //   37: iconst_0
+    //   38: istore_2
+    //   39: iload_2
+    //   40: iload_3
+    //   41: if_icmpge +116 -> 157
+    //   44: aload 4
+    //   46: iload_2
+    //   47: aaload
+    //   48: astore 5
+    //   50: getstatic 72	com/tencent/mm/cache/MCacheItem$a:ecz	Ljava/util/Map;
+    //   53: aload 5
+    //   55: invokevirtual 78	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   58: invokeinterface 84 2 0
+    //   63: checkcast 86	java/lang/reflect/Method
+    //   66: astore 6
+    //   68: aload 6
+    //   70: ifnull +30 -> 100
+    //   73: aload 6
+    //   75: aconst_null
+    //   76: iconst_3
+    //   77: anewarray 4	java/lang/Object
+    //   80: dup
+    //   81: iconst_0
+    //   82: aload_1
+    //   83: aastore
+    //   84: dup
+    //   85: iconst_1
+    //   86: aload 5
+    //   88: aastore
+    //   89: dup
+    //   90: iconst_2
+    //   91: aload_0
+    //   92: getfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   95: aastore
+    //   96: invokevirtual 90	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   99: pop
+    //   100: iload_2
+    //   101: iconst_1
+    //   102: iadd
+    //   103: istore_2
+    //   104: goto -65 -> 39
+    //   107: astore 5
+    //   109: ldc 92
+    //   111: ldc 94
+    //   113: iconst_1
+    //   114: anewarray 4	java/lang/Object
+    //   117: dup
+    //   118: iconst_0
+    //   119: aload 5
+    //   121: invokestatic 100	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   124: aastore
+    //   125: invokestatic 106	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   128: goto -28 -> 100
+    //   131: astore_1
+    //   132: ldc 92
+    //   134: ldc 94
+    //   136: iconst_1
+    //   137: anewarray 4	java/lang/Object
+    //   140: dup
+    //   141: iconst_0
+    //   142: aload_1
+    //   143: invokestatic 100	com/tencent/mm/sdk/platformtools/bo:l	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   146: aastore
+    //   147: invokestatic 106	com/tencent/mm/sdk/platformtools/ab:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   150: ldc 46
+    //   152: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   155: aconst_null
     //   156: areturn
-    //   157: astore 5
-    //   159: goto -138 -> 21
+    //   157: aload_0
+    //   158: getfield 42	com/tencent/mm/cache/MCacheItem:ecx	Lcom/tencent/mm/sdk/e/c;
+    //   161: astore_1
+    //   162: ldc 46
+    //   164: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   167: aload_1
+    //   168: areturn
+    //   169: astore 5
+    //   171: goto -145 -> 26
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	162	0	this	MCacheItem
-    //   0	162	1	paramParcel	Parcel
-    //   36	66	2	i	int
-    //   34	6	3	j	int
-    //   7	36	4	localObject1	Object
-    //   46	39	5	localObject2	Object
-    //   105	13	5	localException1	Exception
-    //   157	1	5	localException2	Exception
-    //   64	8	6	localMethod	Method
+    //   0	174	0	this	MCacheItem
+    //   0	174	1	paramParcel	Parcel
+    //   38	66	2	i	int
+    //   36	6	3	j	int
+    //   12	33	4	localObject1	Object
+    //   48	39	5	localObject2	Object
+    //   107	13	5	localException1	Exception
+    //   169	1	5	localException2	Exception
+    //   66	8	6	localMethod	Method
     // Exception table:
     //   from	to	target	type
-    //   71	98	105	java/lang/Exception
-    //   0	9	129	java/lang/Exception
-    //   21	35	129	java/lang/Exception
-    //   48	66	129	java/lang/Exception
-    //   107	126	129	java/lang/Exception
-    //   150	155	129	java/lang/Exception
-    //   9	21	157	java/lang/Exception
+    //   73	100	107	java/lang/Exception
+    //   5	14	131	java/lang/Exception
+    //   26	37	131	java/lang/Exception
+    //   50	68	131	java/lang/Exception
+    //   109	128	131	java/lang/Exception
+    //   157	162	131	java/lang/Exception
+    //   14	26	169	java/lang/Exception
   }
   
   public int describeContents()
@@ -149,8 +163,9 @@ public class MCacheItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.dlb.getClass().getName());
-    Field[] arrayOfField = c.V(this.dlb.getClass()).ujL;
+    AppMethodBeat.i(57847);
+    paramParcel.writeString(this.ecx.getClass().getName());
+    Field[] arrayOfField = c.getValidFields(this.ecx.getClass());
     int i = arrayOfField.length;
     paramInt = 0;
     for (;;)
@@ -158,22 +173,23 @@ public class MCacheItem
       if (paramInt < i)
       {
         Field localField = arrayOfField[paramInt];
-        Method localMethod = (Method)MCacheItem.a.dlc.get(localField.getType());
+        Method localMethod = (Method)MCacheItem.a.ecy.get(localField.getType());
         if (localMethod != null) {}
         try
         {
-          localMethod.invoke(null, new Object[] { paramParcel, localField, this.dlb });
+          localMethod.invoke(null, new Object[] { paramParcel, localField, this.ecx });
           paramInt += 1;
         }
         catch (Exception localException)
         {
           for (;;)
           {
-            y.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bk.j(localException) });
+            ab.e("MicroMsg.MCacheItem", "exception:%s", new Object[] { bo.l(localException) });
           }
         }
       }
     }
+    AppMethodBeat.o(57847);
   }
 }
 

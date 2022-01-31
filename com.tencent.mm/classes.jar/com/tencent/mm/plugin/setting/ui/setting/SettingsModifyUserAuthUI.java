@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.setting.a.i;
 import com.tencent.mm.plugin.setting.model.UserAuthItemParcelable;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -16,29 +19,23 @@ import java.util.List;
 
 public class SettingsModifyUserAuthUI
   extends MMPreference
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
   private String appId;
-  private com.tencent.mm.ui.base.p dnV;
-  private com.tencent.mm.ui.base.preference.h nVb;
+  private com.tencent.mm.ui.base.p efs;
+  private com.tencent.mm.ui.base.preference.h qJg;
   private int scene;
   
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public int getResourceId()
   {
-    if (((CheckBoxPreference)paramPreference).isChecked()) {}
-    for (int i = 1;; i = 2)
-    {
-      paramf = new com.tencent.mm.plugin.setting.model.h(this.appId, paramPreference.mKey, i, this.scene);
-      g.Dk().a(paramf, 0);
-      this.dnV = com.tencent.mm.ui.base.h.b(this, getString(a.i.app_sending), true, new SettingsModifyUserAuthUI.2(this, paramf));
-      return true;
-    }
+    return -1;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127319);
     super.onCreate(paramBundle);
-    this.nVb = ((com.tencent.mm.ui.base.preference.h)this.vdd);
+    this.qJg = ((com.tencent.mm.ui.base.preference.h)getPreferenceScreen());
     paramBundle = getIntent().getParcelableArrayListExtra("app_auth_items");
     this.appId = getIntent().getStringExtra("app_id");
     this.scene = getIntent().getIntExtra("modify_scene", 1);
@@ -49,69 +46,100 @@ public class SettingsModifyUserAuthUI
       {
         UserAuthItemParcelable localUserAuthItemParcelable = (UserAuthItemParcelable)paramBundle.next();
         CheckBoxPreference localCheckBoxPreference = new CheckBoxPreference(this);
-        localCheckBoxPreference.setTitle(localUserAuthItemParcelable.nRj);
+        localCheckBoxPreference.setTitle(localUserAuthItemParcelable.qFg);
         if (localUserAuthItemParcelable.scope.equals("snsapi_friend")) {
-          localCheckBoxPreference.setSummary(a.i.settings_auth_close_friend_tip);
+          localCheckBoxPreference.setSummary(2131303206);
         }
         localCheckBoxPreference.setKey(localUserAuthItemParcelable.scope);
         if (localUserAuthItemParcelable.state == 1) {}
         for (boolean bool = true;; bool = false)
         {
-          localCheckBoxPreference.rHo = bool;
-          localCheckBoxPreference.vdK = false;
-          this.nVb.a(localCheckBoxPreference, -1);
+          localCheckBoxPreference.vxW = bool;
+          localCheckBoxPreference.zsk = false;
+          this.qJg.a(localCheckBoxPreference, -1);
           break;
         }
       }
     }
     setMMTitle(getIntent().getStringExtra("app_name"));
     setBackBtn(new SettingsModifyUserAuthUI.1(this));
+    AppMethodBeat.o(127319);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(127322);
     super.onPause();
-    g.Dk().b(1144, this);
+    g.Rc().b(1144, this);
+    AppMethodBeat.o(127322);
   }
   
-  protected void onResume()
+  public boolean onPreferenceTreeClick(final com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
+    AppMethodBeat.i(127323);
+    if (((CheckBoxPreference)paramPreference).isChecked()) {}
+    for (int i = 1;; i = 2)
+    {
+      paramf = new com.tencent.mm.plugin.setting.model.h(this.appId, paramPreference.mKey, i, this.scene);
+      g.Rc().a(paramf, 0);
+      this.efs = com.tencent.mm.ui.base.h.b(this, getString(2131297069), true, new DialogInterface.OnCancelListener()
+      {
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(127318);
+          g.Rc().a(paramf);
+          AppMethodBeat.o(127318);
+        }
+      });
+      AppMethodBeat.o(127323);
+      return true;
+    }
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(127321);
     super.onResume();
-    g.Dk().a(1144, this);
+    g.Rc().a(1144, this);
+    AppMethodBeat.o(127321);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     boolean bool = true;
-    y.i("MicroMsg.SettingsModifyUserAuthUI", "errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), paramString });
-    if (this.dnV != null) {
-      this.dnV.dismiss();
+    AppMethodBeat.i(127320);
+    ab.i("MicroMsg.SettingsModifyUserAuthUI", "errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), paramString });
+    if (this.efs != null) {
+      this.efs.dismiss();
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((com.tencent.mm.plugin.setting.model.h)paramm).nQI;
-      paramInt1 = ((com.tencent.mm.plugin.setting.model.h)paramm).nQJ;
-      if (!bk.bl(paramString))
+      paramString = ((com.tencent.mm.plugin.setting.model.h)paramm).qEF;
+      paramInt1 = ((com.tencent.mm.plugin.setting.model.h)paramm).qEG;
+      if (!bo.isNullOrNil(paramString))
       {
-        paramString = (CheckBoxPreference)this.nVb.add(paramString);
+        paramString = (CheckBoxPreference)this.qJg.atx(paramString);
         if (paramInt1 != 1) {
-          break label96;
+          break label106;
         }
       }
       for (;;)
       {
-        paramString.rHo = bool;
+        paramString.vxW = bool;
+        AppMethodBeat.o(127320);
         return;
-        label96:
+        label106:
         bool = false;
       }
     }
-    com.tencent.mm.ui.base.h.bC(this, paramString);
+    com.tencent.mm.ui.base.h.bO(this, paramString);
+    AppMethodBeat.o(127320);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return -1;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

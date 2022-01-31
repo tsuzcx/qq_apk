@@ -1,41 +1,68 @@
 package com.tencent.mm.plugin.appbrand.jsapi.q;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.s;
-import com.tencent.mm.plugin.appbrand.u.h;
-import com.tencent.mm.ui.ak;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.u;
+import com.tencent.mm.plugin.appbrand.t.t;
+import com.tencent.mm.plugin.appbrand.t.t.a;
+import com.tencent.mm.plugin.appbrand.t.t.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import org.json.JSONObject;
 
-public class e<C extends c>
-  extends s<C>
+public final class e
+  extends u
 {
-  public static final int CTRL_INDEX = 40;
-  public static final String NAME = "getSystemInfo";
+  public static final int CTRL_INDEX = 472;
+  public static final String NAME = "enableDeviceOrientationChangeListening";
+  private boolean hYK;
+  protected t hYL;
+  private t.b hYM;
   
-  public final String a(C paramC, JSONObject paramJSONObject)
+  public e()
   {
-    return h("ok", g(paramC));
+    AppMethodBeat.i(126380);
+    this.hYK = false;
+    this.hYM = new t.b()
+    {
+      public final void a(t.a paramAnonymousa1, t.a paramAnonymousa2)
+      {
+        AppMethodBeat.i(126379);
+        ab.i("MicroMsg.JsApiEnableDeviceOrientation", "OrientationListener lastOrientation:" + paramAnonymousa1.name() + "; newOrientation:" + paramAnonymousa2.name());
+        al.p(new e.1.1(this, paramAnonymousa2), 500L);
+        AppMethodBeat.o(126379);
+      }
+    };
+    AppMethodBeat.o(126380);
   }
   
-  public Map<String, Object> g(C paramC)
+  public final String a(c paramc, JSONObject paramJSONObject)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("brand", Build.BRAND);
-    localHashMap.put("model", Build.MODEL);
-    localHashMap.put("system", "Android " + Build.VERSION.RELEASE);
-    DisplayMetrics localDisplayMetrics = paramC.getContext().getResources().getDisplayMetrics();
-    localHashMap.put("pixelRatio", Float.valueOf(localDisplayMetrics.density));
-    localHashMap.put("screenWidth", Integer.valueOf(h.mx(localDisplayMetrics.widthPixels)));
-    localHashMap.put("screenHeight", Integer.valueOf(h.mx(localDisplayMetrics.heightPixels)));
-    localHashMap.put("statusBarHeight", Integer.valueOf(h.mx(ak.gy(paramC.getContext()))));
-    return localHashMap;
+    AppMethodBeat.i(126381);
+    if (paramJSONObject.optBoolean("enable", false))
+    {
+      h.u(paramc);
+      if (!this.hYK)
+      {
+        this.hYL = new t(paramc.getContext(), this.hYM);
+        this.hYL.enable();
+        this.hYK = true;
+      }
+    }
+    for (;;)
+    {
+      paramc = j("ok", null);
+      AppMethodBeat.o(126381);
+      return paramc;
+      h.v(paramc);
+      if (this.hYK)
+      {
+        this.hYL.disable();
+        this.hYL = null;
+        this.hYK = false;
+      }
+    }
   }
 }
 

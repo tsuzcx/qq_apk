@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.detail;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.p;
 
 final class FavoriteVoiceDetailUI$2$2$1$1
@@ -10,10 +11,12 @@ final class FavoriteVoiceDetailUI$2$2$1$1
   
   public final void run()
   {
-    this.kgN.kgK.kgJ.kgI.keY.jYQ = true;
-    this.kfC.dismiss();
-    y.d("MicroMsg.FavoriteDetailUI", "do del fav voice, local id %d, fav id %d", new Object[] { Long.valueOf(this.kgL), Long.valueOf(this.kgM) });
-    this.kgN.kgK.kgJ.kgI.finish();
+    AppMethodBeat.i(74480);
+    this.mBB.mBy.mBx.mBw.mzH.mtj = true;
+    this.mAo.dismiss();
+    ab.d("MicroMsg.FavoriteDetailUI", "do del fav voice, local id %d, fav id %d", new Object[] { Long.valueOf(this.mBz), Long.valueOf(this.mBA) });
+    this.mBB.mBy.mBx.mBw.finish();
+    AppMethodBeat.o(74480);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
 import android.widget.Toast;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NoteEditorUI$11
   implements Runnable
@@ -10,7 +10,9 @@ final class NoteEditorUI$11
   
   public final void run()
   {
-    Toast.makeText(this.rLT, this.rLT.getString(R.l.share_ok), 0).show();
+    AppMethodBeat.i(27006);
+    Toast.makeText(this.vCx, this.vCx.getString(2131303664), 0).show();
+    AppMethodBeat.o(27006);
   }
 }
 

@@ -2,11 +2,11 @@ package com.tencent.qqpinyin.voicerecoapi;
 
 public final class c$a
 {
-  public int wKn = 0;
-  public int wKo = 256;
-  public int wKp = 512;
-  private int wKq = 0;
-  public int wKr = 0;
+  public int BhO = 0;
+  public int BhP = 256;
+  public int BhQ = 512;
+  private int BhR = 0;
+  public int BhS = 0;
 }
 
 

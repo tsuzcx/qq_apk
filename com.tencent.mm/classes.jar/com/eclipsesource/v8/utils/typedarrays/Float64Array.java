@@ -1,5 +1,6 @@
 package com.eclipsesource.v8.utils.typedarrays;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.DoubleBuffer;
 
@@ -9,6 +10,8 @@ public class Float64Array
   public Float64Array(ArrayBuffer paramArrayBuffer)
   {
     this(paramArrayBuffer.getByteBuffer());
+    AppMethodBeat.i(75052);
+    AppMethodBeat.o(75052);
   }
   
   public Float64Array(ByteBuffer paramByteBuffer)
@@ -18,7 +21,10 @@ public class Float64Array
   
   public double get(int paramInt)
   {
-    return this.buffer.asDoubleBuffer().get(paramInt);
+    AppMethodBeat.i(75053);
+    double d = this.buffer.asDoubleBuffer().get(paramInt);
+    AppMethodBeat.o(75053);
+    return d;
   }
   
   public int getType()
@@ -28,12 +34,17 @@ public class Float64Array
   
   public int length()
   {
-    return this.buffer.asDoubleBuffer().limit();
+    AppMethodBeat.i(75054);
+    int i = this.buffer.asDoubleBuffer().limit();
+    AppMethodBeat.o(75054);
+    return i;
   }
   
   public void put(int paramInt, double paramDouble)
   {
+    AppMethodBeat.i(75055);
     this.buffer.asDoubleBuffer().put(paramInt, paramDouble);
+    AppMethodBeat.o(75055);
   }
 }
 

@@ -8,16 +8,16 @@ import com.tencent.toybrick.ui.BaseToyUI;
 
 public abstract class f<S extends f, T extends a>
 {
+  BaseToyUI BxE;
+  public Runnable BxF;
+  public String BxG;
+  public b.a<S> BxH;
   public boolean isVisible;
   public Handler mMainHandler;
-  BaseToyUI xaY;
-  public Runnable xaZ;
-  public String xba;
-  public b.a<S> xbb;
   
   public abstract void a(T paramT);
   
-  public abstract T er(View paramView);
+  public abstract T fF(View paramView);
   
   public abstract int getLayoutResource();
 }

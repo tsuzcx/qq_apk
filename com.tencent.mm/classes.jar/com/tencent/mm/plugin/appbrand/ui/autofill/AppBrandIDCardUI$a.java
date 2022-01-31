@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.appbrand.ui.autofill;
 
-import com.tencent.mm.protocal.c.bsa;
-import com.tencent.mm.protocal.c.ex;
-import com.tencent.mm.protocal.c.ey;
+import com.tencent.mm.protocal.protobuf.ccl;
+import com.tencent.mm.protocal.protobuf.gb;
+import com.tencent.mm.protocal.protobuf.gc;
 
 public abstract interface AppBrandIDCardUI$a
 {
-  public abstract void a(ex paramex);
+  public abstract void Fe(String paramString);
   
-  public abstract void a(String paramString, ex paramex);
+  public abstract void Ff(String paramString);
   
-  public abstract void apl();
+  public abstract void Fg(String paramString);
   
-  public abstract void apm();
+  public abstract void a(gb paramgb);
   
-  public abstract void apn();
+  public abstract void a(String paramString, gb paramgb);
   
-  public abstract bsa apo();
+  public abstract void aMB();
   
-  public abstract ey app();
+  public abstract void aMC();
+  
+  public abstract void aMD();
+  
+  public abstract ccl aME();
+  
+  public abstract gc aMF();
   
   public abstract void back();
   
   public abstract void onSwipeBack();
-  
-  public abstract void wv(String paramString);
-  
-  public abstract void ww(String paramString);
-  
-  public abstract void wx(String paramString);
 }
 
 

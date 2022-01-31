@@ -1,9 +1,11 @@
 package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
@@ -13,221 +15,258 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mm.plugin.sns.i.a;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.plugin.sns.i.g;
-import com.tencent.mm.plugin.sns.i.i;
-import com.tencent.mm.plugin.sns.i.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.pluginsdk.ui.chat.d;
-import com.tencent.mm.pluginsdk.ui.chat.e;
 import com.tencent.mm.pluginsdk.ui.chat.e.b;
-import com.tencent.mm.protocal.c.btd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.u;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.BasePanelKeybordLayout;
+import com.tencent.mm.protocal.protobuf.cds;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.mm.storage.ac.a;
+import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.ak;
+import com.tencent.mm.ui.af;
+import com.tencent.mm.ui.tools.b.c;
+import com.tencent.mm.ui.widget.InputPanelLinearLayout;
 import com.tencent.mm.ui.widget.MMEditText;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class SnsCommentFooter
-  extends BasePanelKeybordLayout
+  extends InputPanelLinearLayout
 {
-  MMActivity bER;
-  ChatFooterPanel jpC;
-  private ImageButton kEW;
-  MMEditText lXN;
-  private Button lXO;
-  private boolean lXP = false;
-  public boolean lXQ = false;
-  private boolean lXR = true;
-  boolean lXS = true;
-  private TextWatcher lXT = new SnsCommentFooter.3(this);
-  private ImageView oXA;
-  private Button oXB;
-  private int oXC = 0;
-  private boolean oXD = false;
-  private boolean oXE = false;
-  private int oXF = -1;
-  private int oXG = -1;
-  private String oXH;
-  private boolean oXI = u.fA(getContext());
-  public boolean oXJ;
-  private String oXK = "";
-  private boolean oXL = false;
-  private SnsCommentFooter.a oXM;
-  private SnsCommentFooter.d oXN;
-  private bh oXO;
-  ImageView oXz;
-  btd oqc = null;
-  int state = 0;
+  MMActivity cmc;
+  ChatFooterPanel eys;
+  private int kjA;
+  private ImageButton kjv;
+  private int kjy;
+  private int kjz;
+  MMEditText oxm;
+  private Button oxn;
+  private boolean oxo;
+  public boolean oxp;
+  private boolean oxq;
+  boolean oxr;
+  private TextWatcher oxs;
+  private ImageView rPX;
+  private ImageView rPY;
+  private Button rPZ;
+  int rQa;
+  private String rQb;
+  private boolean rQc;
+  public boolean rQd;
+  private String rQe;
+  private boolean rQf;
+  private SnsCommentFooter.a rQg;
+  private SnsCommentFooter.c rQh;
+  private bf rQi;
+  cds reJ;
+  int state;
   
   public SnsCommentFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.bER = ((MMActivity)paramContext);
+    AppMethodBeat.i(38890);
+    this.reJ = null;
+    this.rQa = 0;
+    this.state = 0;
+    this.oxo = false;
+    this.kjy = -1;
+    this.kjz = -1;
+    this.kjA = 0;
+    this.rQc = x.gN(getContext());
+    this.oxp = false;
+    this.oxq = true;
+    this.rQe = "";
+    this.rQf = false;
+    this.oxr = true;
+    this.oxs = new SnsCommentFooter.4(this);
+    this.cmc = ((MMActivity)paramContext);
+    AppMethodBeat.o(38890);
   }
   
-  private void ash()
+  private void aRl()
   {
-    this.jpC.onResume();
-    int i;
-    if (u.fA(getContext()))
-    {
-      i = ak.gv(getContext());
-      y.i("MicroMsg.SnsCommentFooter", "is show key board %d, %d, %d", new Object[] { Integer.valueOf(this.oXG), Integer.valueOf(this.oXF), Integer.valueOf(i) });
-      if ((this.oXG > 0) && (this.oXG < this.oXF - i))
-      {
-        i = 1;
-        if (i == 0) {
-          break label182;
-        }
-        this.oXE = true;
-        postDelayed(new SnsCommentFooter.2(this), 100L);
-      }
+    AppMethodBeat.i(38894);
+    this.eys.onResume();
+    if ((x.gN(getContext())) && (cvg())) {
+      getInputPanelHelper().az(new SnsCommentFooter.2(this));
     }
     for (;;)
     {
-      ViewGroup.LayoutParams localLayoutParams = this.jpC.getLayoutParams();
-      if ((localLayoutParams != null) && ((this.lXR) || (localLayoutParams.height == 0)))
-      {
-        localLayoutParams.height = com.tencent.mm.compatible.util.j.fy(getContext());
-        this.jpC.setLayoutParams(localLayoutParams);
-        this.lXR = false;
+      if (this.rQh != null) {
+        this.rQh.onShow();
       }
-      if (this.oXN != null) {
-        this.oXN.onShow();
-      }
+      AppMethodBeat.o(38894);
       return;
-      i = 0;
-      break;
-      label182:
-      this.jpC.setVisibility(0);
+      this.eys.setVisibility(0);
     }
   }
   
-  private void hideSmileyPanel()
+  private void baf()
   {
-    this.jpC.onPause();
-    if (u.fA(getContext()))
+    AppMethodBeat.i(38905);
+    int i = x.gL(getContext());
+    if (this.eys != null)
     {
-      this.oXD = true;
-      return;
+      this.eys.setPortHeightPx(i);
+      this.eys.AD();
+      ViewGroup.LayoutParams localLayoutParams = this.eys.getLayoutParams();
+      if (localLayoutParams != null) {
+        localLayoutParams.height = i;
+      }
     }
-    this.jpC.setVisibility(8);
+    AppMethodBeat.o(38905);
   }
   
-  private void ho(boolean paramBoolean)
+  private boolean cvg()
   {
-    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), i.a.pop_in);
-    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), i.a.pop_out);
+    AppMethodBeat.i(38906);
+    int i = af.fx(getContext());
+    ab.i("MicroMsg.SnsCommentFooter", "is show key board %d, %d, %d", new Object[] { Integer.valueOf(this.kjz), Integer.valueOf(this.kjy), Integer.valueOf(i) });
+    if ((this.kjz > 0) && (this.kjz < this.kjy - i))
+    {
+      AppMethodBeat.o(38906);
+      return true;
+    }
+    AppMethodBeat.o(38906);
+    return false;
+  }
+  
+  private void jf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(38909);
+    Animation localAnimation1 = AnimationUtils.loadAnimation(getContext(), 2131034217);
+    Animation localAnimation2 = AnimationUtils.loadAnimation(getContext(), 2131034222);
     localAnimation1.setDuration(150L);
     localAnimation2.setDuration(150L);
-    if ((this.lXO == null) || (this.oXB == null)) {}
-    do
+    if ((this.oxn == null) || (this.rPZ == null))
     {
+      AppMethodBeat.o(38909);
       return;
-      if (!paramBoolean) {
-        break;
+    }
+    if (paramBoolean)
+    {
+      if ((this.oxn.getVisibility() == 8) || (this.oxn.getVisibility() == 4))
+      {
+        AppMethodBeat.o(38909);
+        return;
       }
-    } while ((this.lXO.getVisibility() == 8) || (this.lXO.getVisibility() == 4));
-    this.oXB.startAnimation(localAnimation1);
-    this.oXB.setVisibility(0);
-    this.lXO.startAnimation(localAnimation2);
-    this.lXO.setVisibility(8);
+      this.rPZ.startAnimation(localAnimation1);
+      this.rPZ.setVisibility(0);
+      this.oxn.startAnimation(localAnimation2);
+      this.oxn.setVisibility(8);
+    }
     for (;;)
     {
-      this.oXB.getParent().requestLayout();
+      this.rPZ.getParent().requestLayout();
+      AppMethodBeat.o(38909);
       return;
-      if ((this.lXO.getVisibility() == 0) || (this.lXO.getVisibility() == 0)) {
-        break;
+      if ((this.oxn.getVisibility() == 0) || (this.oxn.getVisibility() == 0))
+      {
+        AppMethodBeat.o(38909);
+        return;
       }
-      this.lXO.startAnimation(localAnimation1);
-      this.lXO.setVisibility(0);
-      this.oXB.startAnimation(localAnimation2);
-      this.oXB.setVisibility(8);
+      this.oxn.startAnimation(localAnimation1);
+      this.oxn.setVisibility(0);
+      this.rPZ.startAnimation(localAnimation2);
+      this.rPZ.setVisibility(8);
     }
   }
   
-  public final boolean bII()
+  public final void EN(int paramInt)
   {
-    return (this.lXN.getText() == null) || (bk.bl(this.lXN.getText().toString()));
+    this.rQa &= (paramInt ^ 0xFFFFFFFF);
   }
   
-  public final boolean bIJ()
+  public final void bOo()
+  {
+    AppMethodBeat.i(38908);
+    this.rQi = null;
+    if (this.eys != null)
+    {
+      ab.i("MicroMsg.SnsCommentFooter", "commentfooter release");
+      this.eys.Ay();
+      this.eys.destroy();
+    }
+    AppMethodBeat.o(38908);
+  }
+  
+  public final boolean cvc()
+  {
+    AppMethodBeat.i(38889);
+    if ((this.oxm.getText() == null) || (bo.isNullOrNil(this.oxm.getText().toString())))
+    {
+      AppMethodBeat.o(38889);
+      return true;
+    }
+    AppMethodBeat.o(38889);
+    return false;
+  }
+  
+  public final boolean cvd()
   {
     return this.state == 1;
   }
   
-  public final void bIK()
+  public final void cve()
   {
-    if (this.lXN == null)
+    AppMethodBeat.i(38895);
+    if (this.oxm == null)
     {
-      y.e("MicroMsg.SnsCommentFooter", "send edittext is null");
+      ab.e("MicroMsg.SnsCommentFooter", "send edittext is null");
+      AppMethodBeat.o(38895);
       return;
     }
-    this.lXN.removeTextChangedListener(this.lXT);
-    this.lXN.addTextChangedListener(this.lXT);
+    this.oxm.removeTextChangedListener(this.oxs);
+    this.oxm.addTextChangedListener(this.oxs);
+    AppMethodBeat.o(38895);
   }
   
-  public final void bIL()
+  public final void cvf()
   {
-    this.lXN.setText("");
-    this.lXN.setHint("");
-    this.oqc = null;
-    this.oXC = 0;
+    AppMethodBeat.i(38900);
+    this.oxm.setText("");
+    this.oxm.setHint("");
+    this.reJ = null;
+    this.rQa = 0;
     this.state = 0;
-  }
-  
-  public final void bgu()
-  {
-    this.oXO = null;
-    if (this.jpC != null)
-    {
-      y.i("MicroMsg.SnsCommentFooter", "commentfooter release");
-      this.jpC.sj();
-      this.jpC.destroy();
-    }
+    AppMethodBeat.o(38900);
   }
   
   public String getCommentAtPrefix()
   {
-    return this.oXH;
+    return this.rQb;
   }
   
   public int getCommentFlag()
   {
-    return this.oXC;
+    return this.rQa;
   }
   
-  public btd getCommentInfo()
+  public cds getCommentInfo()
   {
-    if (this.oqc == null) {
-      return new btd();
+    AppMethodBeat.i(38901);
+    if (this.reJ == null)
+    {
+      localcds = new cds();
+      AppMethodBeat.o(38901);
+      return localcds;
     }
-    return this.oqc;
-  }
-  
-  protected List<View> getPanelView()
-  {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(this.jpC);
-    return localArrayList;
+    cds localcds = this.reJ;
+    AppMethodBeat.o(38901);
+    return localcds;
   }
   
   public final void h(List<k> paramList, String paramString)
   {
-    this.oXK = paramString;
+    AppMethodBeat.i(38896);
+    this.rQe = paramString;
     k localk;
-    if (this.lXN != null)
+    if (this.oxm != null)
     {
-      if (bk.bl(paramString)) {
-        break label160;
+      if (bo.isNullOrNil(paramString)) {
+        break label172;
       }
       Iterator localIterator = paramList.iterator();
       while (localIterator.hasNext())
@@ -238,237 +277,260 @@ public class SnsCommentFooter
         }
       }
     }
-    label160:
-    for (paramString = bk.aM(localk.text, "");; paramString = "")
+    label172:
+    for (paramString = bo.bf(localk.text, "");; paramString = "")
     {
-      if (!bk.bl(paramString))
+      if (!bo.isNullOrNil(paramString))
       {
-        this.oXB.setVisibility(0);
-        this.lXO.setVisibility(8);
-        this.lXN.setText("");
-        this.lXN.aex(paramString);
+        this.rPZ.setVisibility(0);
+        this.oxn.setVisibility(8);
+        this.oxm.setText("");
+        this.oxm.avk(paramString);
       }
       for (;;)
       {
-        if (!this.oXL) {
-          this.lXN.addTextChangedListener(new SnsCommentFooter.4(this, paramList));
+        if (!this.rQf) {
+          this.oxm.addTextChangedListener(new SnsCommentFooter.5(this, paramList));
         }
-        this.oXL = true;
+        this.rQf = true;
+        AppMethodBeat.o(38896);
         return;
-        this.lXN.setText("");
+        this.oxm.setText("");
       }
     }
   }
   
-  public final void jw(boolean paramBoolean)
+  public final void lC(boolean paramBoolean)
   {
-    if (this.jpC == null) {
+    AppMethodBeat.i(38893);
+    if (this.eys == null)
+    {
+      AppMethodBeat.o(38893);
       return;
     }
-    this.oXJ = paramBoolean;
-    y.i("MicroMsg.SnsCommentFooter", "showState " + paramBoolean);
+    this.rQd = paramBoolean;
+    ab.i("MicroMsg.SnsCommentFooter", "showState ".concat(String.valueOf(paramBoolean)));
     if (!paramBoolean)
     {
-      this.jpC.setVisibility(8);
-      this.kEW.setImageResource(i.i.textfield_icon_emoji_normal);
-      this.bER.XM();
+      this.eys.setVisibility(8);
+      this.kjv.setImageResource(2131231506);
+      this.cmc.hideVKB();
       requestLayout();
+      AppMethodBeat.o(38893);
       return;
     }
     if (this.state == 0)
     {
-      this.bER.showVKB();
-      this.lXN.requestFocus();
-      this.jpC.setVisibility(8);
+      this.cmc.showVKB();
+      this.oxm.requestFocus();
+      this.eys.setVisibility(8);
     }
     for (;;)
     {
-      this.lXR = false;
+      this.oxq = false;
+      AppMethodBeat.o(38893);
       return;
-      this.bER.XM();
-      this.lXN.requestFocus();
-      ash();
+      this.cmc.hideVKB();
+      this.oxm.requestFocus();
+      aRl();
     }
   }
   
-  public final void jx(boolean paramBoolean)
+  public final void lD(boolean paramBoolean)
   {
-    if (this.oXA != null)
+    AppMethodBeat.i(38899);
+    if (this.rPX != null)
     {
-      if (paramBoolean) {
-        this.oXA.setVisibility(0);
+      if (paramBoolean)
+      {
+        this.rPX.setVisibility(0);
+        if ((com.tencent.mm.m.g.Nq().getInt("SnsAdAtFriendRedDot", 0) == 1) && (com.tencent.mm.kernel.g.RL().Ru().getBoolean(ac.a.yLq, true)))
+        {
+          this.rPY.setVisibility(0);
+          AppMethodBeat.o(38899);
+          return;
+        }
+        this.rPY.setVisibility(8);
+        AppMethodBeat.o(38899);
+        return;
       }
+      this.rPX.setVisibility(8);
+      this.rPY.setVisibility(8);
     }
-    else {
-      return;
+    AppMethodBeat.o(38899);
+  }
+  
+  protected void onConfigurationChanged(Configuration paramConfiguration)
+  {
+    AppMethodBeat.i(38903);
+    super.onConfigurationChanged(paramConfiguration);
+    if (this.eys != null) {
+      baf();
     }
-    this.oXA.setVisibility(8);
+    AppMethodBeat.o(38903);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(38907);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.oXE) || (this.oXD)) {
-      y.i("MicroMsg.SnsCommentFooter", "onLayout maxBottom %d currBottom %d layoutBottom %d", new Object[] { Integer.valueOf(this.oXF), Integer.valueOf(this.oXG), Integer.valueOf(paramInt4) });
-    }
-    if ((this.oXE) && (this.jpC != null) && (this.oXG != paramInt4))
+    if (this.kjy < paramInt4) {}
+    for (paramInt1 = paramInt4;; paramInt1 = this.kjy)
     {
-      this.jpC.setVisibility(0);
-      this.oXE = false;
-    }
-    if (this.oXF < paramInt4) {}
-    for (paramInt1 = paramInt4;; paramInt1 = this.oXF)
-    {
-      this.oXF = paramInt1;
-      this.oXG = paramInt4;
-      if ((this.oXD) && (this.jpC != null))
-      {
-        this.jpC.setVisibility(8);
-        this.oXD = false;
-      }
-      if (u.fA(getContext()) != this.oXI)
-      {
-        this.jpC.setPortHeightPx(u.fy(getContext()));
-        this.jpC.refresh();
-        this.oXI = u.fA(getContext());
-        hideSmileyPanel();
-        this.kEW.setImageResource(i.e.chatting_setmode_biaoqing_btn);
-        this.state = 0;
-      }
+      this.kjy = paramInt1;
+      this.kjz = paramInt4;
+      AppMethodBeat.o(38907);
       return;
     }
   }
   
-  protected final void rD(int paramInt)
+  public final void p(boolean paramBoolean, int paramInt)
   {
-    super.rD(paramInt);
-    switch (paramInt)
+    AppMethodBeat.i(38904);
+    super.p(paramBoolean, paramInt);
+    this.oxp = paramBoolean;
+    if ((paramBoolean) && (getVisibility() == 0) && (this.rQi != null))
     {
-    default: 
-      this.lXQ = false;
+      ab.d("MicroMsg.SnsCommentFooter", "jacks dynamic adjust animation up");
+      this.rQi.cwI();
     }
-    do
+    if ((this.kjA != paramInt) && (paramInt != 0))
     {
-      return;
-      this.lXQ = true;
-    } while ((getVisibility() != 0) || (this.oXO == null));
-    y.d("MicroMsg.SnsCommentFooter", "jacks dynamic adjust animation up");
-    this.oXO.bKg();
+      this.kjA = paramInt;
+      com.tencent.mm.compatible.util.j.z(getContext(), paramInt);
+      baf();
+    }
+    AppMethodBeat.o(38904);
   }
   
   public void setAfterEditAction(Runnable paramRunnable)
   {
-    paramRunnable = (ViewGroup)inflate(this.bER, i.g.sns_comment_footer, this);
-    this.oXz = ((ImageView)paramRunnable.findViewById(i.f.sns_liked_iv));
-    this.oXA = ((ImageView)paramRunnable.findViewById(i.f.album_comment_at_btn));
-    this.lXO = ((Button)paramRunnable.findViewById(i.f.album_comment_send_btn));
-    this.oXB = ((Button)paramRunnable.findViewById(i.f.album_comment_green_send_btn));
-    this.lXN = ((MMEditText)paramRunnable.findViewById(i.f.album_comment_content_et));
-    ho(false);
-    this.oXA.setOnClickListener(new SnsCommentFooter.5(this));
-    this.kEW = ((ImageButton)paramRunnable.findViewById(i.f.album_comment_mode_iv));
-    this.kEW.setOnClickListener(new SnsCommentFooter.6(this));
-    this.lXN.setHint(this.bER.getString(i.j.sns_ui_comment));
-    this.lXN.setOnTouchListener(new SnsCommentFooter.7(this));
-    if (e.sgr == null)
+    AppMethodBeat.i(38891);
+    paramRunnable = (ViewGroup)inflate(this.cmc, 2130970819, this);
+    this.rPX = ((ImageView)paramRunnable.findViewById(2131827963));
+    this.rPY = ((ImageView)paramRunnable.findViewById(2131827964));
+    this.oxn = ((Button)paramRunnable.findViewById(2131827966));
+    this.rPZ = ((Button)paramRunnable.findViewById(2131827967));
+    this.oxm = ((MMEditText)paramRunnable.findViewById(2131827965));
+    jf(false);
+    this.rPX.setOnClickListener(new SnsCommentFooter.6(this));
+    this.kjv = ((ImageButton)paramRunnable.findViewById(2131825850));
+    this.kjv.setOnClickListener(new SnsCommentFooter.7(this));
+    this.oxm.setHint(this.cmc.getString(2131304029));
+    this.oxm.setOnTouchListener(new SnsCommentFooter.8(this));
+    if (com.tencent.mm.pluginsdk.ui.chat.e.vYI == null)
     {
-      this.jpC = new d(this.bER);
+      this.eys = new com.tencent.mm.pluginsdk.ui.chat.d(this.cmc);
+      AppMethodBeat.o(38891);
       return;
     }
-    this.jpC = e.sgr.cX(getContext());
-    this.jpC.setEntranceScene(ChatFooterPanel.SCENE_SNS);
-    this.jpC.setVisibility(8);
-    this.jpC.setBackgroundResource(i.e.bottombar_bg);
-    ((LinearLayout)findViewById(i.f.root)).addView(this.jpC, -1, 0);
-    this.jpC.sk();
-    this.jpC.aN(false);
-    this.jpC.setOnTextOperationListener(new SnsCommentFooter.8(this));
+    this.eys = com.tencent.mm.pluginsdk.ui.chat.e.vYI.dK(getContext());
+    this.eys.setEntranceScene(ChatFooterPanel.vQn);
+    this.eys.setVisibility(8);
+    this.eys.setBackgroundResource(2130838214);
+    paramRunnable = (LinearLayout)findViewById(2131821003);
+    this.kjA = x.gL(getContext());
+    paramRunnable.addView(this.eys, -1, this.kjA);
+    this.eys.Az();
+    this.eys.bo(false);
+    this.eys.onResume();
+    this.eys.setOnTextOperationListener(new SnsCommentFooter.9(this));
+    AppMethodBeat.o(38891);
   }
   
-  public void setAnitiomAdjust(bh parambh)
+  public void setAnitiomAdjust(bf parambf)
   {
-    this.oXO = parambh;
+    this.rQi = parambf;
   }
   
   public void setCommentAtPrefix(String paramString)
   {
-    this.oXH = paramString;
+    this.rQb = paramString;
   }
   
   public void setCommentFlag(int paramInt)
   {
-    this.oXC = paramInt;
+    this.rQa |= paramInt;
   }
   
   public void setCommentHint(String paramString)
   {
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(38898);
+    if (!bo.isNullOrNil(paramString))
     {
-      if (this.oXC == 1)
+      if (com.tencent.mm.plugin.sns.ui.widget.d.fS(this.rQa, 1))
       {
-        this.lXN.setHint(com.tencent.mm.pluginsdk.ui.d.j.a(getContext(), this.bER.getString(i.j.sns_ad_at_tips1) + paramString + this.bER.getString(i.j.sns_after_reply, new Object[] { Float.valueOf(this.lXN.getTextSize()) }), this.lXN.getTextSize()));
+        this.oxm.setHint(com.tencent.mm.pluginsdk.ui.d.j.b(getContext(), this.cmc.getString(2131303742) + paramString + this.cmc.getString(2131303772, new Object[] { Float.valueOf(this.oxm.getTextSize()) }), this.oxm.getTextSize()));
+        AppMethodBeat.o(38898);
         return;
       }
-      this.lXN.setHint(com.tencent.mm.pluginsdk.ui.d.j.a(getContext(), paramString, this.lXN.getTextSize()));
+      this.oxm.setHint(com.tencent.mm.pluginsdk.ui.d.j.b(getContext(), paramString, this.oxm.getTextSize()));
+      AppMethodBeat.o(38898);
       return;
     }
-    this.lXN.setHint("");
+    this.oxm.setHint("");
+    AppMethodBeat.o(38898);
   }
   
-  public void setCommentInfo(btd parambtd)
+  public void setCommentInfo(cds paramcds)
   {
-    this.oqc = parambtd;
-  }
-  
-  public void setHeartBtnVisibility(int paramInt)
-  {
-    this.oXz.setVisibility(paramInt);
+    this.reJ = paramcds;
   }
   
   public void setModeClick(boolean paramBoolean)
   {
-    this.lXP = paramBoolean;
+    this.oxo = paramBoolean;
   }
   
-  public final void setOnCommentLikedImp$632a1e7b(SnsCommentFooter.b paramb)
+  public void setOnCommentSendImp(final SnsCommentFooter.b paramb)
   {
-    this.oXz.setVisibility(0);
-    this.oXz.setOnClickListener(new SnsCommentFooter.1(this, paramb));
-  }
-  
-  public void setOnCommentSendImp(SnsCommentFooter.c paramc)
-  {
-    this.oXB.setOnClickListener(new SnsCommentFooter.9(this, paramc));
+    AppMethodBeat.i(38902);
+    this.rPZ.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(38875);
+        paramAnonymousView = c.d(SnsCommentFooter.b(SnsCommentFooter.this)).QS(com.tencent.mm.m.b.MS());
+        paramAnonymousView.AyD = true;
+        paramAnonymousView.a(new SnsCommentFooter.1.1(this));
+        AppMethodBeat.o(38875);
+      }
+    });
+    AppMethodBeat.o(38902);
   }
   
   public void setOnEditTouchListener(SnsCommentFooter.a parama)
   {
-    this.oXM = parama;
+    this.rQg = parama;
   }
   
-  public void setOnSmileyShowListener(SnsCommentFooter.d paramd)
+  public void setOnSmileyShowListener(SnsCommentFooter.c paramc)
   {
-    this.oXN = paramd;
+    this.rQh = paramc;
   }
   
   public void setText(String paramString)
   {
-    if (this.lXN != null)
+    AppMethodBeat.i(38897);
+    if (this.oxm != null)
     {
-      this.lXN.setText("");
-      this.lXN.aex(paramString);
+      this.oxm.setText("");
+      this.oxm.avk(paramString);
     }
+    AppMethodBeat.o(38897);
   }
   
   public void setVisibility(int paramInt)
   {
     boolean bool = false;
+    AppMethodBeat.i(38892);
     this.state = 0;
     if (paramInt == 0) {
       bool = true;
     }
-    jw(bool);
+    lC(bool);
     super.setVisibility(paramInt);
+    AppMethodBeat.o(38892);
   }
 }
 

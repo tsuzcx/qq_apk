@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.mmsight.model.b;
 
 import android.media.MediaCodec;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class e$1
   implements Runnable
@@ -10,20 +11,24 @@ final class e$1
   
   public final void run()
   {
-    if (this.mld.eIT != null) {
-      y.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "delay to stop decoder");
-    }
-    try
+    AppMethodBeat.i(76704);
+    if (this.oKk.eRD != null)
     {
-      this.mld.eIT.stop();
-      this.mld.eIT.release();
-      this.mld.eIT = null;
-      return;
+      ab.i("MicroMsg.MMSightRemuxMediaCodecDecoder", "delay to stop decoder");
+      try
+      {
+        this.oKk.eRD.stop();
+        this.oKk.eRD.release();
+        this.oKk.eRD = null;
+        AppMethodBeat.o(76704);
+        return;
+      }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecDecoder", localException, "delay to stop decoder error: %s", new Object[] { localException.getMessage() });
+      }
     }
-    catch (Exception localException)
-    {
-      y.printErrStackTrace("MicroMsg.MMSightRemuxMediaCodecDecoder", localException, "delay to stop decoder error: %s", new Object[] { localException.getMessage() });
-    }
+    AppMethodBeat.o(76704);
   }
 }
 

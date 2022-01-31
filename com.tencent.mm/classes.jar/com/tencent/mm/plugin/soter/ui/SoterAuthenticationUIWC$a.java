@@ -5,101 +5,122 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.soter.d.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 public final class SoterAuthenticationUIWC$a
   extends Handler
 {
-  private WeakReference<SoterAuthenticationUIWC> jQC = null;
+  private WeakReference<SoterAuthenticationUIWC> mkX;
   
   private SoterAuthenticationUIWC$a(SoterAuthenticationUIWC paramSoterAuthenticationUIWC)
   {
-    this.jQC = new WeakReference(paramSoterAuthenticationUIWC);
+    AppMethodBeat.i(59362);
+    this.mkX = null;
+    this.mkX = new WeakReference(paramSoterAuthenticationUIWC);
+    AppMethodBeat.o(59362);
   }
   
   @TargetApi(23)
   public final void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(59363);
     super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
     default: 
-      y.e("MicroMsg.SoterAuthenticationUIWC", "hy: unidentified msg: %d", new Object[] { Integer.valueOf(paramMessage.what) });
+      ab.e("MicroMsg.SoterAuthenticationUIWC", "hy: unidentified msg: %d", new Object[] { Integer.valueOf(paramMessage.what) });
+      AppMethodBeat.o(59363);
       return;
     case 0: 
-      y.i("MicroMsg.SoterAuthenticationUIWC", "hy: inform ok");
+      ab.i("MicroMsg.SoterAuthenticationUIWC", "hy: inform ok");
       paramMessage = (k)paramMessage.obj;
-      if ((this.jQC != null) && (this.jQC.get() != null))
+      if ((this.mkX != null) && (this.mkX.get() != null))
       {
-        SoterAuthenticationUIWC.a((SoterAuthenticationUIWC)this.jQC.get(), paramMessage);
+        SoterAuthenticationUIWC.a((SoterAuthenticationUIWC)this.mkX.get(), paramMessage);
+        AppMethodBeat.o(59363);
         return;
       }
-      y.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      ab.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      AppMethodBeat.o(59363);
       return;
     case 1: 
-      y.i("MicroMsg.SoterAuthenticationUIWC", "hy: inform cancel");
+      ab.i("MicroMsg.SoterAuthenticationUIWC", "hy: inform cancel");
       paramMessage = (k)paramMessage.obj;
-      if ((this.jQC != null) && (this.jQC.get() != null))
+      if ((this.mkX != null) && (this.mkX.get() != null))
       {
-        SoterAuthenticationUIWC.b((SoterAuthenticationUIWC)this.jQC.get(), paramMessage);
+        SoterAuthenticationUIWC.b((SoterAuthenticationUIWC)this.mkX.get(), paramMessage);
+        AppMethodBeat.o(59363);
         return;
       }
-      y.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      ab.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      AppMethodBeat.o(59363);
       return;
     case 2: 
-      y.i("MicroMsg.SoterAuthenticationUIWC", "hy: inform fail");
+      ab.i("MicroMsg.SoterAuthenticationUIWC", "hy: inform fail");
       paramMessage = (k)paramMessage.obj;
-      if ((this.jQC != null) && (this.jQC.get() != null))
+      if ((this.mkX != null) && (this.mkX.get() != null))
       {
-        SoterAuthenticationUIWC.c((SoterAuthenticationUIWC)this.jQC.get(), paramMessage);
+        SoterAuthenticationUIWC.c((SoterAuthenticationUIWC)this.mkX.get(), paramMessage);
+        AppMethodBeat.o(59363);
         return;
       }
-      y.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      ab.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      AppMethodBeat.o(59363);
       return;
     case 3: 
-      y.i("MicroMsg.SoterAuthenticationUIWC", "hy: request permission");
-      if ((this.jQC != null) && (this.jQC.get() != null))
+      ab.i("MicroMsg.SoterAuthenticationUIWC", "hy: request permission");
+      if ((this.mkX != null) && (this.mkX.get() != null))
       {
         String[] arrayOfString = paramMessage.getData().getStringArray("permissions");
         int i = paramMessage.getData().getInt("request_code");
         if ((arrayOfString == null) || (arrayOfString.length <= 1))
         {
-          y.e("MicroMsg.SoterAuthenticationUIWC", "hy: permission null");
+          ab.e("MicroMsg.SoterAuthenticationUIWC", "hy: permission null");
+          AppMethodBeat.o(59363);
           return;
         }
-        ((SoterAuthenticationUIWC)this.jQC.get()).requestPermissions(arrayOfString, i);
+        ((SoterAuthenticationUIWC)this.mkX.get()).requestPermissions(arrayOfString, i);
+        AppMethodBeat.o(59363);
         return;
       }
-      y.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      ab.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      AppMethodBeat.o(59363);
       return;
     case 4: 
-      y.i("MicroMsg.SoterAuthenticationUIWC", "hy: show progress");
-      if ((this.jQC != null) && (this.jQC.get() != null))
+      ab.i("MicroMsg.SoterAuthenticationUIWC", "hy: show progress");
+      if ((this.mkX != null) && (this.mkX.get() != null))
       {
-        SoterAuthenticationUIWC.a((SoterAuthenticationUIWC)this.jQC.get());
+        SoterAuthenticationUIWC.a((SoterAuthenticationUIWC)this.mkX.get());
+        AppMethodBeat.o(59363);
         return;
       }
-      y.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      ab.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      AppMethodBeat.o(59363);
       return;
     case 5: 
-      y.i("MicroMsg.SoterAuthenticationUIWC", "hy: dismiss progress");
-      if ((this.jQC != null) && (this.jQC.get() != null))
+      ab.i("MicroMsg.SoterAuthenticationUIWC", "hy: dismiss progress");
+      if ((this.mkX != null) && (this.mkX.get() != null))
       {
-        SoterAuthenticationUIWC.b((SoterAuthenticationUIWC)this.jQC.get());
+        SoterAuthenticationUIWC.b((SoterAuthenticationUIWC)this.mkX.get());
+        AppMethodBeat.o(59363);
         return;
       }
-      y.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      ab.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+      AppMethodBeat.o(59363);
       return;
     }
-    y.i("MicroMsg.SoterAuthenticationUIWC", "hy: show dialog");
-    if ((this.jQC != null) && (this.jQC.get() != null))
+    ab.i("MicroMsg.SoterAuthenticationUIWC", "hy: show dialog");
+    if ((this.mkX != null) && (this.mkX.get() != null))
     {
       SoterAuthenticationUIWC.b((b)paramMessage.obj);
+      AppMethodBeat.o(59363);
       return;
     }
-    y.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+    ab.w("MicroMsg.SoterAuthenticationUIWC", "hy: ui cleared");
+    AppMethodBeat.o(59363);
   }
 }
 

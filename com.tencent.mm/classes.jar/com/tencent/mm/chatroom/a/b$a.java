@@ -5,7 +5,7 @@ import java.io.Serializable;
 public final class b$a<K>
   implements Serializable
 {
-  K dmD;
+  K eeg;
   K first;
 }
 

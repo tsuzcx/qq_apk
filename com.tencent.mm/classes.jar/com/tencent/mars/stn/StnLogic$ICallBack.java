@@ -19,7 +19,7 @@ public abstract interface StnLogic$ICallBack
   
   public abstract boolean isLogoned();
   
-  public abstract boolean makesureAuthed();
+  public abstract boolean makesureAuthed(String paramString);
   
   public abstract void networkAnalysisCallBack(int paramInt1, int paramInt2, boolean paramBoolean, String paramString);
   
@@ -33,7 +33,7 @@ public abstract interface StnLogic$ICallBack
   
   public abstract void reportConnectInfo(int paramInt1, int paramInt2);
   
-  public abstract boolean req2Buf(int paramInt1, Object paramObject, ByteArrayOutputStream paramByteArrayOutputStream, int[] paramArrayOfInt, int paramInt2);
+  public abstract boolean req2Buf(int paramInt1, Object paramObject, ByteArrayOutputStream paramByteArrayOutputStream, int[] paramArrayOfInt, int paramInt2, String paramString);
   
   public abstract void requestDoSync();
   

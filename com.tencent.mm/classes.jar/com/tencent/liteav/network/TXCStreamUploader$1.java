@@ -3,6 +3,7 @@ package com.tencent.liteav.network;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class TXCStreamUploader$1
   extends Handler
@@ -14,11 +15,13 @@ class TXCStreamUploader$1
   
   public void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(67477);
     switch (paramMessage.what)
     {
     }
-    do
+    for (;;)
     {
+      AppMethodBeat.o(67477);
       return;
       TXCStreamUploader localTXCStreamUploader = this.a;
       String str = (String)paramMessage.obj;
@@ -26,18 +29,22 @@ class TXCStreamUploader$1
       for (boolean bool = true;; bool = false)
       {
         TXCStreamUploader.access$000(localTXCStreamUploader, str, bool, 0);
+        AppMethodBeat.o(67477);
         return;
       }
       TXCStreamUploader.access$100(this.a);
+      AppMethodBeat.o(67477);
       return;
       TXCStreamUploader.access$200(this.a);
-    } while (TXCStreamUploader.access$300(this.a) == null);
-    TXCStreamUploader.access$300(this.a).sendEmptyMessageDelayed(104, 2000L);
+      if (TXCStreamUploader.access$300(this.a) != null) {
+        TXCStreamUploader.access$300(this.a).sendEmptyMessageDelayed(104, 2000L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.liteav.network.TXCStreamUploader.1
  * JD-Core Version:    0.7.0.1
  */

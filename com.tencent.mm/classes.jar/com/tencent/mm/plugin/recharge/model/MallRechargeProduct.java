@@ -3,85 +3,101 @@ package com.tencent.mm.plugin.recharge.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class MallRechargeProduct
   implements Parcelable
 {
-  public static final Parcelable.Creator<MallRechargeProduct> CREATOR = new MallRechargeProduct.1();
+  public static final Parcelable.Creator<MallRechargeProduct> CREATOR;
   public String appId;
-  public String bJd;
-  public int dWX;
+  public String cqx;
+  public int fnf;
   public boolean isDefault;
-  public String jfG;
-  public float npA = 0.0F;
-  public float npB = 0.0F;
-  public boolean npC;
-  public int npD;
-  public int npE;
-  public final boolean npF;
-  public boolean npG = true;
-  public String npy;
-  public String npz;
+  public String loz;
+  public String pUM;
+  public String pUN;
+  public float pUO;
+  public float pUP;
+  public boolean pUQ;
+  public int pUR;
+  public int pUS;
+  public final boolean pUT;
+  public boolean pUU;
+  
+  static
+  {
+    AppMethodBeat.i(44192);
+    CREATOR = new MallRechargeProduct.1();
+    AppMethodBeat.o(44192);
+  }
   
   public MallRechargeProduct(Parcel paramParcel)
   {
-    this.npy = paramParcel.readString();
+    AppMethodBeat.i(44190);
+    this.pUO = 0.0F;
+    this.pUP = 0.0F;
+    this.pUU = true;
+    this.pUM = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.bJd = paramParcel.readString();
-    this.jfG = paramParcel.readString();
-    this.npz = paramParcel.readString();
-    this.npA = paramParcel.readFloat();
-    this.npB = paramParcel.readFloat();
+    this.cqx = paramParcel.readString();
+    this.loz = paramParcel.readString();
+    this.pUN = paramParcel.readString();
+    this.pUO = paramParcel.readFloat();
+    this.pUP = paramParcel.readFloat();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.npC = bool1;
-      this.npD = paramParcel.readInt();
-      this.npE = paramParcel.readInt();
+      this.pUQ = bool1;
+      this.pUR = paramParcel.readInt();
+      this.pUS = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
-        break label152;
+        break label162;
       }
       bool1 = true;
-      label118:
+      label123:
       this.isDefault = bool1;
       if (paramParcel.readInt() != 1) {
-        break label157;
+        break label167;
       }
     }
-    label152:
-    label157:
+    label162:
+    label167:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.npF = bool1;
-      this.dWX = paramParcel.readInt();
+      this.pUT = bool1;
+      this.fnf = paramParcel.readInt();
+      AppMethodBeat.o(44190);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label118;
+      break label123;
     }
   }
   
   public MallRechargeProduct(boolean paramBoolean)
   {
-    this.npF = paramBoolean;
+    this.pUO = 0.0F;
+    this.pUP = 0.0F;
+    this.pUU = true;
+    this.pUT = paramBoolean;
   }
   
   public static void a(MallRechargeProduct paramMallRechargeProduct1, MallRechargeProduct paramMallRechargeProduct2)
   {
     paramMallRechargeProduct2.appId = paramMallRechargeProduct1.appId;
-    paramMallRechargeProduct2.npy = paramMallRechargeProduct1.npy;
-    paramMallRechargeProduct2.bJd = paramMallRechargeProduct1.bJd;
-    paramMallRechargeProduct2.jfG = paramMallRechargeProduct1.jfG;
-    paramMallRechargeProduct2.npz = paramMallRechargeProduct1.npz;
-    paramMallRechargeProduct2.npA = paramMallRechargeProduct1.npA;
-    paramMallRechargeProduct2.npB = paramMallRechargeProduct1.npB;
-    paramMallRechargeProduct2.npC = paramMallRechargeProduct1.npC;
-    paramMallRechargeProduct2.npD = paramMallRechargeProduct1.npD;
-    paramMallRechargeProduct2.npE = paramMallRechargeProduct1.npE;
+    paramMallRechargeProduct2.pUM = paramMallRechargeProduct1.pUM;
+    paramMallRechargeProduct2.cqx = paramMallRechargeProduct1.cqx;
+    paramMallRechargeProduct2.loz = paramMallRechargeProduct1.loz;
+    paramMallRechargeProduct2.pUN = paramMallRechargeProduct1.pUN;
+    paramMallRechargeProduct2.pUO = paramMallRechargeProduct1.pUO;
+    paramMallRechargeProduct2.pUP = paramMallRechargeProduct1.pUP;
+    paramMallRechargeProduct2.pUQ = paramMallRechargeProduct1.pUQ;
+    paramMallRechargeProduct2.pUR = paramMallRechargeProduct1.pUR;
+    paramMallRechargeProduct2.pUS = paramMallRechargeProduct1.pUS;
     paramMallRechargeProduct2.isDefault = paramMallRechargeProduct1.isDefault;
-    paramMallRechargeProduct2.npG = paramMallRechargeProduct1.npG;
-    paramMallRechargeProduct2.dWX = paramMallRechargeProduct1.dWX;
+    paramMallRechargeProduct2.pUU = paramMallRechargeProduct1.pUU;
+    paramMallRechargeProduct2.fnf = paramMallRechargeProduct1.fnf;
   }
   
   public int describeContents()
@@ -91,46 +107,48 @@ public class MallRechargeProduct
   
   public final boolean isValid()
   {
-    return (!this.npC) || (this.npD > 0);
+    return (!this.pUQ) || (this.pUR > 0);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeString(this.npy);
+    AppMethodBeat.i(44191);
+    paramParcel.writeString(this.pUM);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.bJd);
-    paramParcel.writeString(this.jfG);
-    paramParcel.writeString(this.npz);
-    paramParcel.writeFloat(this.npA);
-    paramParcel.writeFloat(this.npB);
-    if (this.npC)
+    paramParcel.writeString(this.cqx);
+    paramParcel.writeString(this.loz);
+    paramParcel.writeString(this.pUN);
+    paramParcel.writeFloat(this.pUO);
+    paramParcel.writeFloat(this.pUP);
+    if (this.pUQ)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.npD);
-      paramParcel.writeInt(this.npE);
+      paramParcel.writeInt(this.pUR);
+      paramParcel.writeInt(this.pUS);
       if (!this.isDefault) {
-        break label130;
+        break label140;
       }
       paramInt = 1;
-      label97:
+      label102:
       paramParcel.writeInt(paramInt);
-      if (!this.npF) {
-        break label135;
+      if (!this.pUT) {
+        break label145;
       }
     }
-    label130:
-    label135:
+    label140:
+    label145:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.dWX);
+      paramParcel.writeInt(this.fnf);
+      AppMethodBeat.o(44191);
       return;
       paramInt = 0;
       break;
       paramInt = 0;
-      break label97;
+      break label102;
     }
   }
 }

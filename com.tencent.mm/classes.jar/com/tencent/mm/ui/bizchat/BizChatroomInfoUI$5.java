@@ -2,9 +2,10 @@ package com.tencent.mm.ui.bizchat;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ai.a.n;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.aj.a.n;
+import com.tencent.mm.model.aw;
 
 final class BizChatroomInfoUI$5
   implements DialogInterface.OnCancelListener
@@ -13,12 +14,14 @@ final class BizChatroomInfoUI$5
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().c(this.vfQ);
+    AppMethodBeat.i(30201);
+    aw.Rc().a(this.zup);
+    AppMethodBeat.o(30201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatroomInfoUI.5
  * JD-Core Version:    0.7.0.1
  */

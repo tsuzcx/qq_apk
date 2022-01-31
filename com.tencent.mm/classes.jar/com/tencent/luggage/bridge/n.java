@@ -2,127 +2,100 @@ package com.tencent.luggage.bridge;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import com.tencent.luggage.j.c;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONException;
+import com.tencent.luggage.g.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONObject;
 
 final class n
 {
-  private o bhF;
-  private Handler bhG;
+  private o byf;
+  private Handler byg;
   
   n(o paramo)
   {
-    this.bhF = paramo;
+    AppMethodBeat.i(90732);
+    this.byf = paramo;
     paramo = new HandlerThread("AsyncJSThread");
     paramo.start();
-    this.bhG = new Handler(paramo.getLooper());
+    this.byg = new Handler(paramo.getLooper());
+    AppMethodBeat.o(90732);
   }
   
-  private static m aU(String paramString)
+  private static m bv(String paramString)
   {
+    AppMethodBeat.i(90735);
     try
     {
       paramString = new m(new JSONObject(paramString));
+      AppMethodBeat.o(90735);
       return paramString;
     }
     catch (Exception paramString)
     {
-      c.e("Js2JavaMessageQueue", "Message parse failed, ex = %s", new Object[] { paramString.getMessage() });
+      d.e("Js2JavaMessageQueue", "Message parse failed, ex = %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(90735);
     }
     return null;
   }
   
-  final String g(String paramString, boolean paramBoolean)
+  final String i(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return h(paramString, true);
+    AppMethodBeat.i(90733);
+    if (paramBoolean)
+    {
+      paramString = j(paramString, true);
+      AppMethodBeat.o(90733);
+      return paramString;
     }
-    this.bhG.post(new n.1(this, paramString));
+    this.byg.post(new n.1(this, paramString));
+    AppMethodBeat.o(90733);
     return "";
   }
   
-  final String h(String paramString, boolean paramBoolean)
+  final String j(String paramString, boolean paramBoolean)
   {
-    paramString = aU(paramString);
-    if (paramString == null) {
+    AppMethodBeat.i(90734);
+    Object localObject = bv(paramString);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(90734);
       return "";
     }
-    c.v("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { paramString.pN().name() });
-    switch (n.2.bhJ[paramString.pN().ordinal()])
+    d.i("Js2JavaMessageQueue", "processImpl, jsMsg.type = %s", new Object[] { ((m)localObject).tR().name() });
+    paramString = null;
+    switch (n.2.byj[localObject.tR().ordinal()])
     {
     default: 
-      paramString = null;
-      label78:
       if (paramString != null) {
         break;
       }
     }
-    for (Object localObject = "null";; localObject = paramString.pN().name())
+    for (localObject = "null";; localObject = paramString.tR().name())
     {
-      for (;;)
-      {
-        for (;;)
-        {
-          c.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
-          if (paramString != null) {
-            break label345;
-          }
-          return "";
-          this.bhF.bhM.pP();
-          paramString = null;
-          break;
-          paramString = this.bhF.a(paramString, paramBoolean);
-          break;
-          localObject = this.bhF;
-          try
-          {
-            paramString = new i(paramString);
-            c.i("LuggageBridge", "processEventFromJs, EventName = %s", new Object[] { paramString.bhz });
-            if ((j)((o)localObject).bhP.get(paramString.bhz) == null) {
-              c.e("LuggageBridge", "no listener for event: %s", new Object[] { paramString.bhz });
-            }
-            paramString = null;
-          }
-          catch (JSONException paramString)
-          {
-            c.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramString });
-            paramString = null;
-          }
-        }
-        break;
-        localObject = this.bhF;
-        try
-        {
-          paramString = new g(paramString);
-          if ((h)((o)localObject).bhQ.get(Integer.valueOf(paramString.bhx)) != null) {
-            break label309;
-          }
-          c.e("LuggageBridge", "no listener for callback: %d", new Object[] { Integer.valueOf(paramString.bhx) });
-          paramString = null;
-        }
-        catch (JSONException paramString)
-        {
-          c.e("LuggageBridge", "inflate Js2JavaEventContext failed: %s", new Object[] { paramString });
-          paramString = null;
-        }
+      d.v("Js2JavaMessageQueue", "processImpl, javaMsg.type = %s", new Object[] { localObject });
+      if (paramString != null) {
+        break label181;
       }
-      break label78;
-      label309:
-      if (paramString.bhy) {
-        break;
-      }
-      ((o)localObject).bhQ.remove(Integer.valueOf(paramString.bhx));
+      AppMethodBeat.o(90734);
+      return "";
+      this.byf.bym.tT();
+      break;
+      paramString = this.byf.a((m)localObject, paramBoolean);
+      break;
+      this.byf.a((m)localObject);
+      break;
+      this.byf.b((m)localObject);
       break;
     }
-    label345:
-    return paramString.toString();
+    label181:
+    paramString = paramString.toString();
+    AppMethodBeat.o(90734);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.bridge.n
  * JD-Core Version:    0.7.0.1
  */

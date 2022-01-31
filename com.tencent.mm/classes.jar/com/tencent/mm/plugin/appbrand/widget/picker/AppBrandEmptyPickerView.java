@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.picker;
 import android.content.Context;
 import android.support.annotation.Keep;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.m.b;
+import com.tencent.mm.plugin.appbrand.jsapi.n.b;
 
 public class AppBrandEmptyPickerView
   extends View
@@ -17,14 +17,14 @@ public class AppBrandEmptyPickerView
   
   public final void a(d paramd) {}
   
-  public final Object ajO()
+  public final Object aEr()
   {
     return null;
   }
   
-  public final void ajP() {}
+  public final void aEs() {}
   
-  public final void ajQ() {}
+  public final void aEt() {}
   
   public final void b(d paramd) {}
   

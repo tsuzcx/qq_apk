@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$1
   implements ViewTreeObserver.OnGlobalLayoutListener
@@ -11,13 +12,15 @@ final class g$1
   
   public final void onGlobalLayout()
   {
+    AppMethodBeat.i(22151);
     Object localObject = new Rect();
-    this.gOM.getWindowVisibleDisplayFrame((Rect)localObject);
-    if (this.gOM.getRootView().getHeight() - (((Rect)localObject).bottom - ((Rect)localObject).top) > 100)
+    this.val$rootView.getWindowVisibleDisplayFrame((Rect)localObject);
+    if (this.val$rootView.getRootView().getHeight() - (((Rect)localObject).bottom - ((Rect)localObject).top) > 100)
     {
-      localObject = this.lwq;
-      ((g)localObject).ipf.postDelayed(new g.2((g)localObject), 100L);
+      localObject = this.nTF;
+      ((g)localObject).iCk.postDelayed(new g.2((g)localObject), 100L);
     }
+    AppMethodBeat.o(22151);
   }
 }
 

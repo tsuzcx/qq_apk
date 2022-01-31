@@ -4,56 +4,55 @@ import android.graphics.Bitmap;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x.a;
-import com.tencent.mm.plugin.wallet_core.model.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.g;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$a
   implements x.a
 {
-  public ViewGroup qHD = null;
-  public e qHE;
-  public ViewGroup qHF = null;
-  public TextView qHG = null;
-  public ImageView qHH = null;
-  public TextView qHI = null;
-  public TextView qjA = null;
-  public TextView qjB = null;
-  public TextView qjC = null;
-  public ImageView qjE = null;
-  public ImageView qjF = null;
-  public TextView qjG = null;
-  public TextView qjH = null;
-  public TextView qjI = null;
+  public TextView tSA = null;
+  public TextView tSB = null;
+  public TextView tSC = null;
+  public ImageView tSE = null;
+  public ImageView tSF = null;
+  public TextView tSG = null;
+  public TextView tSH = null;
+  public TextView tSI = null;
+  public ViewGroup uwo = null;
+  public g uwp;
+  public ViewGroup uwq = null;
+  public TextView uwr = null;
+  public ImageView uws = null;
+  public TextView uwt = null;
   
-  public final void l(String paramString, Bitmap paramBitmap)
+  public final void m(String paramString, Bitmap paramBitmap)
   {
+    AppMethodBeat.i(47875);
     StringBuilder localStringBuilder = new StringBuilder().append(paramString).append(", bitmap = ");
-    boolean bool;
-    if (paramBitmap == null)
+    if (paramBitmap == null) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool = true;
-      y.d("MicroMsg.BankcardListAdapter", bool);
-      if (this.qHE != null) {
-        break label51;
+      ab.d("MicroMsg.BankcardListAdapter", bool);
+      if (this.uwp != null) {
+        break;
       }
-    }
-    label51:
-    do
-    {
+      AppMethodBeat.o(47875);
       return;
-      bool = false;
-      break;
-      if (paramString.equals(this.qHE.mEi)) {
-        this.qjF.post(new b.a.1(this, paramBitmap));
-      }
-    } while ((!paramString.equals(this.qHE.qtT)) || (this.qjE == null));
-    this.qjE.post(new b.a.2(this, paramBitmap));
+    }
+    if (paramString.equals(this.uwp.pek)) {
+      this.tSF.post(new b.a.1(this, paramBitmap));
+    }
+    if ((paramString.equals(this.uwp.ugo)) && (this.tSE != null)) {
+      this.tSE.post(new b.a.2(this, paramBitmap));
+    }
+    AppMethodBeat.o(47875);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.b.a
  * JD-Core Version:    0.7.0.1
  */

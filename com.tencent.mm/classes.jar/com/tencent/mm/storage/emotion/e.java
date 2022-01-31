@@ -1,31 +1,34 @@
 package com.tencent.mm.storage.emotion;
 
-import com.tencent.mm.h.c.bb;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.bd;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends bb
+  extends bd
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(62846);
     c.a locala = new c.a();
-    locala.ujL = new Field[2];
+    locala.yrK = new Field[2];
     locala.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "groupID";
-    locala.ujN.put("groupID", "TEXT");
+    locala.yrM.put("groupID", "TEXT");
     localStringBuilder.append(" groupID TEXT");
     localStringBuilder.append(", ");
     locala.columns[1] = "desc";
-    locala.ujN.put("desc", "TEXT");
+    locala.yrM.put("desc", "TEXT");
     localStringBuilder.append(" desc TEXT");
     locala.columns[2] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(62846);
   }
   
   public e() {}
@@ -36,7 +39,7 @@ public final class e
     this.field_desc = paramString2;
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
     return null;
   }

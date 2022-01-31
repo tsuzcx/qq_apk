@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public abstract class e
 {
-  public volatile int aUI = -1;
+  protected volatile int bgY = -1;
   
   public static <T extends e> T a(T paramT, byte[] paramArrayOfByte, int paramInt)
   {
@@ -12,7 +12,7 @@ public abstract class e
     {
       paramArrayOfByte = new a(paramArrayOfByte, paramInt);
       paramT.a(paramArrayOfByte);
-      paramArrayOfByte.dH(0);
+      paramArrayOfByte.eN(0);
       return paramT;
     }
     catch (d paramT)
@@ -27,7 +27,7 @@ public abstract class e
   
   public static final byte[] b(e parame)
   {
-    byte[] arrayOfByte = new byte[parame.oP()];
+    byte[] arrayOfByte = new byte[parame.sy()];
     int i = arrayOfByte.length;
     try
     {
@@ -48,14 +48,22 @@ public abstract class e
   
   public void a(b paramb) {}
   
-  public final int oP()
+  public final int sx()
   {
-    int i = oQ();
-    this.aUI = i;
+    if (this.bgY < 0) {
+      sy();
+    }
+    return this.bgY;
+  }
+  
+  public final int sy()
+  {
+    int i = sz();
+    this.bgY = i;
     return i;
   }
   
-  public int oQ()
+  protected int sz()
   {
     return 0;
   }

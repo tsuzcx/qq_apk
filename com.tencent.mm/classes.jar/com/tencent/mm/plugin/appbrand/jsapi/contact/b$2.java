@@ -1,26 +1,40 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
-import android.support.v4.app.a.a;
+import android.app.Activity;
+import android.content.Intent;
+import android.provider.ContactsContract.Contacts;
+import android.view.MenuItem;
+import com.tencent.luggage.g.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import org.json.JSONObject;
+import com.tencent.mm.ui.base.n.d;
 
 final class b$2
-  implements a.a
+  implements n.d
 {
-  b$2(b paramb, c paramc, JSONObject paramJSONObject, int paramInt) {}
+  b$2(b paramb, Activity paramActivity, c paramc1, c paramc2, int paramInt) {}
   
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    if (paramInt != 48) {
-      return;
-    }
-    if ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0) && (paramArrayOfInt[0] == 0))
+    AppMethodBeat.i(126263);
+    switch (paramInt)
     {
-      this.gpI.a(this.ggH, this.gbZ, this.dIS);
-      return;
     }
-    this.ggH.C(this.dIS, this.gpI.h("permission_denied", null));
+    for (;;)
+    {
+      AppMethodBeat.o(126263);
+      return;
+      paramMenuItem = new Intent("android.intent.action.INSERT", ContactsContract.Contacts.CONTENT_URI);
+      b.a(this.hKj, paramMenuItem, this.val$activity, this.hKk);
+      this.val$activity.startActivity(paramMenuItem);
+      e.at(this.val$activity).a(paramMenuItem, new b.2.1(this));
+      AppMethodBeat.o(126263);
+      return;
+      paramMenuItem = new Intent("android.intent.action.INSERT_OR_EDIT", ContactsContract.Contacts.CONTENT_URI);
+      paramMenuItem.setType("vnd.android.cursor.item/person");
+      b.a(this.hKj, paramMenuItem, this.val$activity, this.hKk);
+      e.at(this.val$activity).a(paramMenuItem, new b.2.2(this));
+    }
   }
 }
 

@@ -5,6 +5,7 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$1
   implements ViewTreeObserver.OnGlobalLayoutListener
@@ -13,8 +14,10 @@ final class f$1
   
   public final void onGlobalLayout()
   {
-    ((f.d)this.abK).khQ.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    ((f.d)this.abK).khT.setLayoutParams(new RelativeLayout.LayoutParams(((f.d)this.abK).khQ.getWidth(), ((f.d)this.abK).khQ.getHeight()));
+    AppMethodBeat.i(74565);
+    ((f.d)this.acv).mCy.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+    ((f.d)this.acv).mCA.setLayoutParams(new RelativeLayout.LayoutParams(((f.d)this.acv).mCy.getWidth(), ((f.d)this.acv).mCy.getHeight()));
+    AppMethodBeat.o(74565);
   }
 }
 

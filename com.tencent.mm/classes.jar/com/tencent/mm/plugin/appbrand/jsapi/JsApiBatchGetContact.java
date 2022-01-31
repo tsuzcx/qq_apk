@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.r;
 
 public class JsApiBatchGetContact
-  extends a<o>
+  extends a<r>
 {
   public static final int CTRL_INDEX = 410;
   public static final String NAME = "batchGetContact";

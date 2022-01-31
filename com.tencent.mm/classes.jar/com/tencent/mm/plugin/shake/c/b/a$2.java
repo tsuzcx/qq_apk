@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.shake.c.b;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$2
   implements View.OnClickListener
@@ -12,39 +12,44 @@ final class a$2
   
   public final void onClick(View paramView)
   {
-    if (paramView.getId() == R.h.card_close_img)
+    AppMethodBeat.i(24548);
+    if (paramView.getId() == 2131827694)
     {
-      this.oai.dismiss();
-      if (a.a(this.oai) != null) {
-        a.a(this.oai).bAj();
+      this.qOr.dismiss();
+      if (a.a(this.qOr) != null) {
+        a.a(this.qOr).clB();
       }
-      y.i("MicroMsg.ShakeCardDialog", "close ShakeCardDialog");
+      ab.i("MicroMsg.ShakeCardDialog", "close ShakeCardDialog");
+      AppMethodBeat.o(24548);
+      return;
     }
-    do
+    if (paramView.getId() == 2131821984)
     {
-      do
+      if (a.b(this.qOr) == a.a.qOt)
       {
-        do
-        {
-          return;
-        } while (paramView.getId() != R.h.card_accept_btn);
-        if (a.b(this.oai) == a.a.oak)
-        {
-          a.a(this.oai, a.a.oal);
-          a.a(this.oai, 0);
-          a.c(this.oai);
-          a.d(this.oai);
-          return;
-        }
-      } while (a.b(this.oai) == a.a.oal);
-      if (a.b(this.oai) == a.a.oan)
-      {
-        a.d(this.oai);
+        a.a(this.qOr, a.a.qOu);
+        a.a(this.qOr, 0);
+        a.c(this.qOr);
+        a.d(this.qOr);
+        AppMethodBeat.o(24548);
         return;
       }
-    } while (a.b(this.oai) != a.a.oam);
-    com.tencent.mm.sdk.b.a.udP.c(a.e(this.oai));
-    a.f(this.oai);
+      if (a.b(this.qOr) != a.a.qOu)
+      {
+        if (a.b(this.qOr) == a.a.qOw)
+        {
+          a.d(this.qOr);
+          AppMethodBeat.o(24548);
+          return;
+        }
+        if (a.b(this.qOr) == a.a.qOv)
+        {
+          com.tencent.mm.sdk.b.a.ymk.c(a.e(this.qOr));
+          a.f(this.qOr);
+        }
+      }
+    }
+    AppMethodBeat.o(24548);
   }
 }
 

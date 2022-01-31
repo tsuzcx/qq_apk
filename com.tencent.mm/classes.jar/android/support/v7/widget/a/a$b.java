@@ -9,7 +9,7 @@ import android.view.View;
 final class a$b
   extends GestureDetector.SimpleOnGestureListener
 {
-  boolean aoi = true;
+  boolean aqz = true;
   
   a$b(a parama) {}
   
@@ -20,39 +20,35 @@ final class a$b
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (!this.aoi) {}
-    for (;;)
+    if (!this.aqz) {}
+    Object localObject;
+    do
     {
-      return;
-      Object localObject = this.aoa.k(paramMotionEvent);
-      if (localObject != null)
+      do
       {
-        localObject = this.aoa.acI.aT((View)localObject);
-        if (localObject != null)
+        do
         {
-          if ((a.a.g(this.aoa.acI) & 0xFF0000) != 0) {}
-          for (int i = 1; (i != 0) && (paramMotionEvent.getPointerId(0) == this.aoa.fC); i = 0)
-          {
-            i = paramMotionEvent.findPointerIndex(this.aoa.fC);
-            float f1 = paramMotionEvent.getX(i);
-            float f2 = paramMotionEvent.getY(i);
-            this.aoa.anF = f1;
-            this.aoa.anG = f2;
-            paramMotionEvent = this.aoa;
-            this.aoa.anK = 0.0F;
-            paramMotionEvent.anJ = 0.0F;
-            this.aoa.anN.jl();
-            this.aoa.e((RecyclerView.v)localObject, 2);
-            return;
-          }
-        }
-      }
-    }
+          return;
+          localObject = this.aqr.k(paramMotionEvent);
+        } while (localObject == null);
+        localObject = this.aqr.adt.bb((View)localObject);
+      } while (localObject == null);
+      a.a.j(this.aqr.adt);
+    } while (paramMotionEvent.getPointerId(0) != this.aqr.mActivePointerId);
+    int i = paramMotionEvent.findPointerIndex(this.aqr.mActivePointerId);
+    float f1 = paramMotionEvent.getX(i);
+    float f2 = paramMotionEvent.getY(i);
+    this.aqr.apW = f1;
+    this.aqr.apX = f2;
+    paramMotionEvent = this.aqr;
+    this.aqr.aqb = 0.0F;
+    paramMotionEvent.aqa = 0.0F;
+    this.aqr.e((RecyclerView.v)localObject, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v7.widget.a.a.b
  * JD-Core Version:    0.7.0.1
  */

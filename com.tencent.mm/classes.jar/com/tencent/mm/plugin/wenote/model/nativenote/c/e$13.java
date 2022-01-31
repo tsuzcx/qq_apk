@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.wenote.model.nativenote.c;
 import android.text.Spanned;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wenote.model.a.i;
 import com.tencent.mm.plugin.wenote.model.nativenote.a.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class e$13
   implements View.OnClickListener
@@ -14,42 +15,47 @@ public final class e$13
   
   public final void onClick(View paramView)
   {
-    y.i("NoteSelectManager", "select all");
-    this.rKn.ciP();
-    if (!e.ciX())
+    AppMethodBeat.i(26870);
+    ab.i("NoteSelectManager", "select all");
+    this.vAR.dji();
+    if (!e.djy())
     {
-      y.e("NoteSelectManager", "select all: not init");
+      ab.e("NoteSelectManager", "select all: not init");
+      AppMethodBeat.o(26870);
       return;
     }
-    int j = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().cih();
-    int k = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().cii();
-    paramView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(j);
-    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(k);
+    int j = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().diy();
+    int k = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().diz();
+    paramView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(j);
+    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(k);
     if ((paramView == null) || (localc == null))
     {
-      y.e("NoteSelectManager", "select all: item is null");
-      e.h(this.rKn);
+      ab.e("NoteSelectManager", "select all: item is null");
+      e.h(this.vAR);
+      AppMethodBeat.o(26870);
       return;
     }
     if (localc.getType() == 1)
     {
-      paramView = a.Uw(((i)localc).content);
+      paramView = a.ajK(((i)localc).content);
       if (paramView == null)
       {
-        y.e("NoteSelectManager", "select all: spanned is null");
-        e.h(this.rKn);
+        ab.e("NoteSelectManager", "select all: spanned is null");
+        e.h(this.vAR);
+        AppMethodBeat.o(26870);
         return;
       }
     }
     for (int i = paramView.length();; i = 1)
     {
-      e.e(this.rKn);
-      this.rKn.A(j, 0, k, i);
-      this.rKn.ciR();
-      this.rKn.ciP();
-      e.j(this.rKn);
-      this.rKn.lI(false);
-      this.rKn.lG(false);
+      e.e(this.vAR);
+      this.vAR.G(j, 0, k, i);
+      this.vAR.djk();
+      this.vAR.dji();
+      e.j(this.vAR);
+      this.vAR.oT(false);
+      this.vAR.oR(false);
+      AppMethodBeat.o(26870);
       return;
     }
   }

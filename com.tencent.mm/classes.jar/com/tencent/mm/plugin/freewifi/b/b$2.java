@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.freewifi.b;
 
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.ui.FreeWifiManufacturerLoadingUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class b$2
   implements Runnable
@@ -12,12 +13,14 @@ final class b$2
   
   public final void run()
   {
+    AppMethodBeat.i(20669);
     Intent localIntent = new Intent();
-    localIntent.putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Ssid", this.knT);
-    localIntent.putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Bssid", this.knU);
-    localIntent.setClass(ae.getContext(), FreeWifiManufacturerLoadingUI.class);
+    localIntent.putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Ssid", this.mJG);
+    localIntent.putExtra("ConstantsFreeWifi.FreeWifiManufacturerConnectWifiHelper_Bssid", this.mJH);
+    localIntent.setClass(ah.getContext(), FreeWifiManufacturerLoadingUI.class);
     localIntent.addFlags(268435456);
-    ae.getContext().startActivity(localIntent);
+    ah.getContext().startActivity(localIntent);
+    AppMethodBeat.o(20669);
   }
 }
 

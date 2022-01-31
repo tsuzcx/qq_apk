@@ -13,66 +13,75 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.card.a.a;
-import com.tencent.mm.plugin.card.a.c;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.e;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.model.b;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class m
   extends BaseAdapter
 {
-  List<b> iko = new ArrayList();
-  View.OnClickListener ixn;
-  boolean ixo = false;
+  private List<b> klo;
+  View.OnClickListener kyq;
+  boolean kyr;
   private Context mContext;
   
   public m(Context paramContext)
   {
+    AppMethodBeat.i(88685);
+    this.klo = new ArrayList();
+    this.kyr = false;
     this.mContext = paramContext;
+    AppMethodBeat.o(88685);
   }
   
   private static void a(View paramView, b paramb)
   {
-    if (paramb == null) {
+    AppMethodBeat.i(88690);
+    if (paramb == null)
+    {
+      AppMethodBeat.o(88690);
       return;
     }
-    j(paramView, paramb.ilA);
+    o(paramView, paramb.kmy);
+    AppMethodBeat.o(88690);
   }
   
-  private static void j(View paramView, boolean paramBoolean)
+  private static void o(View paramView, boolean paramBoolean)
   {
-    Rect localRect = new Rect();
-    localRect.left = paramView.getPaddingLeft();
-    localRect.right = paramView.getPaddingRight();
-    localRect.top = paramView.getPaddingTop();
-    localRect.bottom = paramView.getPaddingBottom();
+    AppMethodBeat.i(88691);
+    Rect localRect = com.tencent.mm.plugin.card.d.m.dg(paramView);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
     if (paramBoolean) {
-      paramView.setBackgroundResource(a.c.mm_trans);
+      paramView.setBackgroundResource(2130839676);
     }
     for (;;)
     {
       paramView.setLayoutParams(localLayoutParams);
-      paramView.setPadding(localRect.left, localRect.top, localRect.right, localRect.bottom);
+      com.tencent.mm.plugin.card.d.m.k(paramView, localRect);
+      AppMethodBeat.o(88691);
       return;
-      paramView.setBackgroundResource(a.c.list_item_normal);
+      paramView.setBackgroundResource(2130839276);
     }
   }
   
-  private b pd(int paramInt)
+  private b tn(int paramInt)
   {
-    return (b)this.iko.get(paramInt);
+    AppMethodBeat.i(88688);
+    b localb = (b)this.klo.get(paramInt);
+    AppMethodBeat.o(88688);
+    return localb;
   }
   
   public final int getCount()
   {
-    return this.iko.size();
+    AppMethodBeat.i(88687);
+    int i = this.klo.size();
+    AppMethodBeat.o(88687);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -82,8 +91,9 @@ public final class m
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    final b localb = pd(paramInt);
-    switch (localb.ilz)
+    AppMethodBeat.i(88689);
+    b localb = tn(paramInt);
+    switch (localb.kmx)
     {
     default: 
       if (paramView == null) {
@@ -100,134 +110,133 @@ public final class m
       }
       else
       {
-        paramView = View.inflate(this.mContext, a.e.card_cell_list_item, null);
+        paramView = View.inflate(this.mContext, 2130968913, null);
         localObject = new m.a(this, (byte)0);
-        ((m.a)localObject).iwq = ((TextView)paramView.findViewById(a.d.card_cell_item_title_tv));
-        ((m.a)localObject).ixt = ((TextView)paramView.findViewById(a.d.card_cell_item_subtitle_tv));
-        ((m.a)localObject).ixu = ((TextView)paramView.findViewById(a.d.card_cell_item_divider_tv));
-        ((m.a)localObject).ixv = ((ImageView)paramView.findViewById(a.d.card_cell_item_icon_iv));
-        ((m.a)localObject).hNa = paramView.findViewById(a.d.card_cell_item_content_layout);
-        ((m.a)localObject).ixw = ((CheckBox)paramView.findViewById(a.d.card_cell_item_follow_cbx));
+        ((m.a)localObject).kxu = ((TextView)paramView.findViewById(2131822006));
+        ((m.a)localObject).kyw = ((TextView)paramView.findViewById(2131822007));
+        ((m.a)localObject).kyx = ((TextView)paramView.findViewById(2131822003));
+        ((m.a)localObject).kyy = ((ImageView)paramView.findViewById(2131822005));
+        ((m.a)localObject).jIo = paramView.findViewById(2131822004);
+        ((m.a)localObject).kyz = ((CheckBox)paramView.findViewById(2131822008));
         paramView.setTag(localObject);
       }
-      ((m.a)localObject).iwq.setText(localb.title);
-      label252:
+      ((m.a)localObject).kxu.setText(localb.title);
+      label249:
       int i;
-      if (localb.ilB)
+      if (localb.kmz)
       {
-        ((m.a)localObject).ixw.setVisibility(0);
-        ((m.a)localObject).ixw.setChecked(localb.ilC);
-        ((m.a)localObject).ixw.setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            if (((CheckBox)paramAnonymousView).isChecked())
-            {
-              localb.ilC = true;
-              return;
-            }
-            localb.ilC = false;
-          }
-        });
-        if (!TextUtils.isEmpty(localb.ilq)) {
+        ((m.a)localObject).kyz.setVisibility(0);
+        ((m.a)localObject).kyz.setChecked(localb.cJz);
+        ((m.a)localObject).kyz.setOnClickListener(new m.2(this, localb));
+        if (!TextUtils.isEmpty(localb.kmn)) {
           break label601;
         }
-        ((m.a)localObject).ixt.setVisibility(4);
-        if ((localb.sJq & 1L) <= 0L) {
+        ((m.a)localObject).kyw.setVisibility(4);
+        if ((localb.wGZ & 1L) <= 0L) {
           break label626;
         }
         i = 1;
-        label267:
+        label264:
         if (i == 0) {
           break label632;
         }
-        ((m.a)localObject).iwq.setGravity(17);
-        ((m.a)localObject).iwq.setTextColor(this.mContext.getResources().getColor(a.a.link_color));
-        ((m.a)localObject).ixt.setVisibility(8);
-        label313:
-        if (!localb.ilA) {
+        ((m.a)localObject).kxu.setGravity(17);
+        ((m.a)localObject).kxu.setTextColor(this.mContext.getResources().getColor(2131690214));
+        ((m.a)localObject).kyw.setVisibility(8);
+        label309:
+        if (!localb.kmy) {
           break label665;
         }
-        ((m.a)localObject).ixu.setVisibility(0);
-        label330:
-        ((m.a)localObject).ixt.setTextColor(this.mContext.getResources().getColor(a.a.item_subtitle_color));
-        if (bk.bl(localb.iQn)) {
+        ((m.a)localObject).kyx.setVisibility(0);
+        label326:
+        ((m.a)localObject).kyw.setTextColor(this.mContext.getResources().getColor(2131690195));
+        if (bo.isNullOrNil(localb.kWy)) {
           break label678;
         }
         i = 1;
-        label365:
+        label360:
         if (i == 0) {
           break label684;
         }
-        ((m.a)localObject).ixv.setVisibility(0);
-        com.tencent.mm.plugin.card.d.m.a(((m.a)localObject).ixv, localb.iQn, a.fromDPToPix(this.mContext, 20), a.c.my_card_package_defaultlogo, false);
-        label405:
+        ((m.a)localObject).kyy.setVisibility(0);
+        com.tencent.mm.plugin.card.d.m.a(((m.a)localObject).kyy, localb.kWy, a.fromDPToPix(this.mContext, 20), 2130839758, false);
+        label399:
         if (paramInt + 1 >= getCount()) {
           break label697;
         }
-        paramViewGroup = pd(paramInt);
-        a(((m.a)localObject).hNa, paramViewGroup);
-        paramViewGroup = pd(paramInt + 1);
-        a(((m.a)localObject).hNa, paramViewGroup);
+        paramViewGroup = tn(paramInt);
+        a(((m.a)localObject).jIo, paramViewGroup);
+        paramViewGroup = tn(paramInt + 1);
+        a(((m.a)localObject).jIo, paramViewGroup);
       }
-      label601:
-      label626:
-      label632:
-      while (paramInt + 1 != getCount())
+      for (;;)
       {
+        AppMethodBeat.o(88689);
         return paramView;
-        paramView = View.inflate(this.mContext, a.e.card_cell_first_shop_item, null);
-        paramViewGroup = (TextView)paramView.findViewById(a.d.card_cell_shop_item_title_tv);
-        localObject = (TextView)paramView.findViewById(a.d.card_cell_shop_item_subtitle_tv);
-        LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(a.d.shop_phone_layout);
-        if (!TextUtils.isEmpty(localb.ilD))
+        paramView = View.inflate(this.mContext, 2130968912, null);
+        paramViewGroup = (TextView)paramView.findViewById(2131821998);
+        localObject = (TextView)paramView.findViewById(2131821999);
+        LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131822000);
+        if (!TextUtils.isEmpty(localb.kmA))
         {
-          localLinearLayout.setTag(localb.ilD);
+          localLinearLayout.setTag(localb.kmA);
           localLinearLayout.setOnClickListener(new m.1(this));
-          ((ImageView)paramView.findViewById(a.d.card_cell_shop_item_phone_iv)).setBackgroundColor(l.yR(localb.color));
+          ((ImageView)paramView.findViewById(2131822001)).setBackgroundColor(l.IB(localb.color));
           localLinearLayout.setVisibility(0);
         }
         for (;;)
         {
           paramViewGroup.setText(localb.title);
-          ((TextView)localObject).setText(localb.ilq);
+          ((TextView)localObject).setText(localb.kmn);
+          AppMethodBeat.o(88689);
           return paramView;
           localLinearLayout.setVisibility(8);
         }
-        ((m.a)localObject).ixw.setVisibility(8);
+        ((m.a)localObject).kyz.setVisibility(8);
         break;
-        ((m.a)localObject).ixt.setVisibility(0);
-        ((m.a)localObject).ixt.setText(localb.ilq);
-        break label252;
+        label601:
+        ((m.a)localObject).kyw.setVisibility(0);
+        ((m.a)localObject).kyw.setText(localb.kmn);
+        break label249;
+        label626:
         i = 0;
-        break label267;
-        ((m.a)localObject).iwq.setGravity(3);
-        ((m.a)localObject).iwq.setTextColor(this.mContext.getResources().getColor(a.a.item_title_color));
-        break label313;
-        ((m.a)localObject).ixu.setVisibility(8);
-        break label330;
+        break label264;
+        label632:
+        ((m.a)localObject).kxu.setGravity(3);
+        ((m.a)localObject).kxu.setTextColor(this.mContext.getResources().getColor(2131690196));
+        break label309;
+        label665:
+        ((m.a)localObject).kyx.setVisibility(8);
+        break label326;
+        label678:
         i = 0;
-        break label365;
-        ((m.a)localObject).ixv.setVisibility(8);
-        break label405;
+        break label360;
+        label684:
+        ((m.a)localObject).kyy.setVisibility(8);
+        break label399;
+        label697:
+        if (paramInt + 1 == getCount()) {
+          if (this.kyr) {
+            o(((m.a)localObject).jIo, true);
+          } else {
+            o(((m.a)localObject).jIo, false);
+          }
+        }
       }
-      label665:
-      label678:
-      label684:
-      label697:
-      if (this.ixo)
-      {
-        j(((m.a)localObject).hNa, true);
-        return paramView;
-      }
-      j(((m.a)localObject).hNa, false);
-      return paramView;
     }
+  }
+  
+  public final void setData(List<b> paramList)
+  {
+    AppMethodBeat.i(88686);
+    this.klo.clear();
+    this.klo.addAll(paramList);
+    AppMethodBeat.o(88686);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.m
  * JD-Core Version:    0.7.0.1
  */

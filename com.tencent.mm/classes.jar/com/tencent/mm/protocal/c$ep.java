@@ -1,16 +1,16 @@
 package com.tencent.mm.protocal;
 
-final class c$ep
+public final class c$ep
   extends c.g
 {
-  c$ep()
+  public c$ep()
   {
-    super("openCustomWebview", "openCustomWebview", 256, false);
+    super("timelineCheckIn", "timeline_check_in", 64, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ep
  * JD-Core Version:    0.7.0.1
  */

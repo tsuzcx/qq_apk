@@ -3,9 +3,8 @@ package com.tencent.mm.plugin.freewifi.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.br.d;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class ProtocolThreeOneUI$4
   implements View.OnClickListener
@@ -14,16 +13,18 @@ final class ProtocolThreeOneUI$4
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(21124);
     paramView = new Intent();
-    paramView.putExtra("rawUrl", this.kti.krL);
+    paramView.putExtra("rawUrl", this.mOW.mNz);
     paramView.putExtra("showShare", false);
     paramView.putExtra("show_bottom", false);
-    d.b(this.kti.mController.uMN, "webview", ".ui.tools.WebViewUI", paramView);
+    d.b(this.mOW.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(21124);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.ProtocolThreeOneUI.4
  * JD-Core Version:    0.7.0.1
  */

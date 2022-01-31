@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.topstory;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.xweb.WebView.c;
 
 final class PluginTopStory$1
@@ -8,14 +9,18 @@ final class PluginTopStory$1
 {
   PluginTopStory$1(PluginTopStory paramPluginTopStory) {}
   
-  public final void onCoreInitFinished()
+  public final void BG()
   {
-    y.i("MicroMsg.TopStory.PluginTopStory", "onCoreInitFinished");
+    AppMethodBeat.i(65444);
+    ab.i("MicroMsg.TopStory.PluginTopStory", "onCoreInitFailed");
+    AppMethodBeat.o(65444);
   }
   
-  public final void tc()
+  public final void onCoreInitFinished()
   {
-    y.i("MicroMsg.TopStory.PluginTopStory", "onCoreInitFailed");
+    AppMethodBeat.i(65443);
+    ab.i("MicroMsg.TopStory.PluginTopStory", "onCoreInitFinished");
+    AppMethodBeat.o(65443);
   }
 }
 

@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnCancelListener;
 
 final class LoginHistoryUI$17
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
   LoginHistoryUI$17(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 

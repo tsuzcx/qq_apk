@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.appbrand.b;
 
-abstract class h
-  extends com.tencent.mm.plugin.appbrand.report.h
+import com.tencent.mm.sdk.d.c;
+
+public abstract class h
+  extends c
 {
-  private final i fGo;
+  private final i gYV;
   
-  h(i parami)
+  public h(i parami)
   {
-    this.fGo = parami;
+    this.gYV = parami;
   }
   
   public void enter()
   {
     super.enter();
-    this.fGo.a(this);
+    this.gYV.a(this);
   }
 }
 

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.music.AppBrandMusicClientService.a;
 
 final class g$1
@@ -7,19 +8,23 @@ final class g$1
 {
   g$1(g paramg) {}
   
-  public final void acF()
+  public final void awx()
   {
-    this.fGm.kv(1);
+    AppMethodBeat.i(86864);
+    this.gYT.np(1);
+    AppMethodBeat.o(86864);
   }
   
   public final void onStop()
   {
-    this.fGm.kv(1);
+    AppMethodBeat.i(86865);
+    this.gYT.np(1);
+    AppMethodBeat.o(86865);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.b.g.1
  * JD-Core Version:    0.7.0.1
  */

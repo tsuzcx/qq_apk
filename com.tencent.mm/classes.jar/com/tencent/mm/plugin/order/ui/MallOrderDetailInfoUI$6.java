@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.c.c;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.a;
 import java.util.List;
@@ -15,11 +16,13 @@ final class MallOrderDetailInfoUI$6
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (MallOrderDetailObject.a)MallOrderDetailInfoUI.e(this.mQG).get(paramInt);
+    AppMethodBeat.i(43801);
+    paramAdapterView = (MallOrderDetailObject.a)MallOrderDetailInfoUI.e(this.pqU).get(paramInt);
     if (!TextUtils.isEmpty(paramAdapterView.jumpUrl)) {
-      c.aD(this.mQG, paramAdapterView.jumpUrl);
+      c.aM(this.pqU, paramAdapterView.jumpUrl);
     }
-    MallOrderDetailInfoUI.a(this.mQG, paramAdapterView.name);
+    MallOrderDetailInfoUI.a(this.pqU, paramAdapterView.name);
+    AppMethodBeat.o(43801);
   }
 }
 

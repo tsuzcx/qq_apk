@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.game.ui;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -18,39 +19,38 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.plugin.game.d.az;
-import com.tencent.mm.plugin.game.d.bq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.plugin.game.api.e;
+import com.tencent.mm.plugin.game.d.ba;
 import com.tencent.mm.plugin.game.d.br;
-import com.tencent.mm.plugin.game.d.bu;
+import com.tencent.mm.plugin.game.d.bs;
 import com.tencent.mm.plugin.game.d.bv;
-import com.tencent.mm.plugin.game.d.cz;
-import com.tencent.mm.plugin.game.d.u;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.plugin.game.g.i;
-import com.tencent.mm.plugin.game.model.aa;
-import com.tencent.mm.plugin.game.model.aa.a;
-import com.tencent.mm.plugin.game.model.aa.b;
-import com.tencent.mm.plugin.game.model.ab;
-import com.tencent.mm.plugin.game.model.an;
+import com.tencent.mm.plugin.game.d.bw;
+import com.tencent.mm.plugin.game.d.da;
+import com.tencent.mm.plugin.game.d.v;
+import com.tencent.mm.plugin.game.model.am;
+import com.tencent.mm.plugin.game.model.j;
+import com.tencent.mm.plugin.game.model.j.a;
 import com.tencent.mm.plugin.game.model.k;
-import com.tencent.mm.plugin.game.model.k.a;
+import com.tencent.mm.plugin.game.model.w;
+import com.tencent.mm.plugin.game.model.z;
+import com.tencent.mm.plugin.game.model.z.a;
+import com.tencent.mm.plugin.game.model.z.b;
 import com.tencent.mm.plugin.game.widget.TextProgressBar;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.t;
 import com.tencent.mm.pluginsdk.ui.applet.t.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.s;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -59,505 +59,585 @@ public class GameDetailUI2
   extends MMActivity
   implements f
 {
-  private String appId = null;
-  private Dialog jwv;
-  private com.tencent.mm.plugin.game.model.d kOM = null;
-  private int kQh = 0;
-  private com.tencent.mm.plugin.game.model.l kZA = null;
-  private ViewGroup kZB;
-  private ImageView kZC;
-  private ImageView kZD;
-  private TextView kZE;
-  private Button kZF;
-  private TextProgressBar kZG;
-  private TextView kZH;
-  private LinearLayout kZI;
-  private GameDetailAutoScrollView kZJ;
-  private LinearLayout kZK;
-  private TextView kZL;
-  private LinearLayout kZM;
-  private TextView kZN;
-  private LinearLayout kZO;
-  private ImageView kZP;
-  private View kZQ;
-  private TextView kZR;
-  private TextView kZS;
-  private View kZT;
-  private TextView kZU;
-  private ImageView kZV;
-  private TextView kZW;
-  private TextView kZX;
-  private LinearLayout kZY;
-  private GameMediaList kZZ;
-  private String kZr = null;
-  private String kZs = null;
-  private int kZu = 18;
-  private boolean kZv;
-  private boolean kZw;
-  private String kZx = null;
-  private k.a kZy = null;
-  private d kZz = null;
-  private TextView laa;
-  private TextView lab;
-  private TextView lac;
-  private boolean lad = false;
-  private LinearLayout lae;
-  private TextView laf;
-  private LinearLayout lag;
-  private TextView lah;
-  private cz lai;
-  private DialogInterface.OnClickListener laj = new GameDetailUI2.15(this);
-  private View.OnClickListener lak = new GameDetailUI2.16(this);
-  private View.OnClickListener lal = new GameDetailUI2.17(this);
-  private View.OnClickListener lam = new GameDetailUI2.2(this);
-  private View.OnClickListener lan = new GameDetailUI2.3(this);
-  private View.OnClickListener lao = new GameDetailUI2.4(this);
-  private View.OnClickListener lap = new GameDetailUI2.5(this);
+  private String appId;
+  private Dialog lFU;
+  private com.tencent.mm.plugin.game.model.c nmJ;
+  private int nok;
+  private ImageView nxA;
+  private TextView nxB;
+  private Button nxC;
+  private TextProgressBar nxD;
+  private TextView nxE;
+  private LinearLayout nxF;
+  private GameDetailAutoScrollView nxG;
+  private LinearLayout nxH;
+  private TextView nxI;
+  private LinearLayout nxJ;
+  private TextView nxK;
+  private LinearLayout nxL;
+  private ImageView nxM;
+  private View nxN;
+  private TextView nxO;
+  private TextView nxP;
+  private View nxQ;
+  private TextView nxR;
+  private ImageView nxS;
+  private TextView nxT;
+  private TextView nxU;
+  private LinearLayout nxV;
+  private GameMediaList nxW;
+  private TextView nxX;
+  private TextView nxY;
+  private TextView nxZ;
+  private String nxo;
+  private String nxp;
+  private int nxr;
+  private boolean nxs;
+  private boolean nxt;
+  private String nxu;
+  private j.a nxv;
+  private d nxw;
+  private k nxx;
+  private ViewGroup nxy;
+  private ImageView nxz;
+  private boolean nya;
+  private LinearLayout nyb;
+  private TextView nyc;
+  private LinearLayout nyd;
+  private TextView nye;
+  private da nyf;
+  private DialogInterface.OnClickListener nyg;
+  private View.OnClickListener nyh;
+  private View.OnClickListener nyi;
+  private View.OnClickListener nyj;
+  private View.OnClickListener nyk;
+  private View.OnClickListener nyl;
+  private View.OnClickListener nym;
   
-  private void a(aa paramaa)
+  public GameDetailUI2()
   {
+    AppMethodBeat.i(111859);
+    this.appId = null;
+    this.nmJ = null;
+    this.nxo = null;
+    this.nxp = null;
+    this.nxr = 18;
+    this.nok = 0;
+    this.nxu = null;
+    this.nxv = null;
+    this.nxw = null;
+    this.nxx = null;
+    this.nya = false;
+    this.nyg = new GameDetailUI2.15(this);
+    this.nyh = new GameDetailUI2.16(this);
+    this.nyi = new GameDetailUI2.17(this);
+    this.nyj = new GameDetailUI2.2(this);
+    this.nyk = new GameDetailUI2.3(this);
+    this.nyl = new GameDetailUI2.4(this);
+    this.nym = new GameDetailUI2.5(this);
+    AppMethodBeat.o(111859);
+  }
+  
+  private void a(z paramz)
+  {
+    AppMethodBeat.i(111868);
     Object localObject1 = null;
-    if ((paramaa.kQr.kQs == null) || (paramaa.kQr.kQs.size() == 0)) {
-      localObject1 = paramaa.kQo.kUq;
+    if ((paramz.nov.now == null) || (paramz.nov.now.size() == 0)) {
+      localObject1 = paramz.nos.nss;
     }
     if ((localObject1 == null) || (((LinkedList)localObject1).size() == 0))
     {
-      this.kZI.setVisibility(8);
+      this.nxF.setVisibility(8);
+      AppMethodBeat.o(111868);
       return;
     }
-    this.kZI.setVisibility(0);
-    this.kZI.removeAllViews();
-    paramaa = ((LinkedList)localObject1).iterator();
-    label76:
-    View localView;
-    ImageView localImageView;
-    TextView localTextView1;
-    TextView localTextView2;
-    if (paramaa.hasNext())
+    this.nxF.setVisibility(0);
+    this.nxF.removeAllViews();
+    paramz = ((LinkedList)localObject1).iterator();
+    if (paramz.hasNext())
     {
-      localObject1 = (u)paramaa.next();
-      localView = LayoutInflater.from(this.mController.uMN).inflate(g.f.game_detail2_trend_item, this.kZI, false);
-      localImageView = (ImageView)localView.findViewById(g.e.game_detail_trend_item_icon);
-      localTextView1 = (TextView)localView.findViewById(g.e.game_detail_trend_item_title);
-      localTextView2 = (TextView)localView.findViewById(g.e.game_detail_trend_item_detail);
-      if (bk.bl(((u)localObject1).hPY)) {
-        break label205;
+      localObject1 = (v)paramz.next();
+      View localView = LayoutInflater.from(getContext()).inflate(2130969737, this.nxF, false);
+      ImageView localImageView = (ImageView)localView.findViewById(2131824593);
+      TextView localTextView1 = (TextView)localView.findViewById(2131824594);
+      TextView localTextView2 = (TextView)localView.findViewById(2131824595);
+      if (!bo.isNullOrNil(((v)localObject1).jJA)) {
+        a.b.a(localImageView, ((v)localObject1).jJA, 0.5F, false);
       }
-      a.b.a(localImageView, ((u)localObject1).hPY, 0.5F, false);
+      for (;;)
+      {
+        localTextView1.setText(((v)localObject1).Title);
+        localTextView2.setText(((v)localObject1).nqY);
+        this.nxF.addView(localView);
+        break;
+        Object localObject2 = new c.a();
+        ((c.a)localObject2).eOk = true;
+        localObject2 = ((c.a)localObject2).ahY();
+        o.ahG().a(((v)localObject1).nqa, localImageView, (com.tencent.mm.at.a.a.c)localObject2);
+      }
+    }
+    AppMethodBeat.o(111868);
+  }
+  
+  private void b(com.tencent.mm.plugin.game.model.aa paramaa)
+  {
+    int i = 0;
+    AppMethodBeat.i(111867);
+    List localList = paramaa.now;
+    if ((localList == null) || (localList.size() == 0))
+    {
+      this.nxH.setVisibility(8);
+      this.nxI.setVisibility(8);
+      AppMethodBeat.o(111867);
+      return;
+    }
+    this.nxH.setVisibility(0);
+    if (localList.size() > 3) {
+      this.nxI.setVisibility(0);
     }
     for (;;)
     {
-      localTextView1.setText(((u)localObject1).bGw);
-      localTextView2.setText(((u)localObject1).kSY);
-      this.kZI.addView(localView);
-      break label76;
-      break;
-      label205:
-      Object localObject2 = new c.a();
-      ((c.a)localObject2).erD = true;
-      localObject2 = ((c.a)localObject2).OV();
-      o.ON().a(((u)localObject1).kRY, localImageView, (com.tencent.mm.as.a.a.c)localObject2);
+      this.nxH.removeAllViews();
+      i locali = new i(getContext());
+      locali.Ld = 2130969734;
+      locali.a(paramaa);
+      locali.nok = this.nok;
+      while ((i < localList.size()) && (i < 3))
+      {
+        paramaa = locali.getView(i, null, this.nxF);
+        this.nxH.addView(paramaa);
+        i += 1;
+      }
+      this.nxI.setVisibility(8);
     }
+    AppMethodBeat.o(111867);
   }
   
-  private void b(aa paramaa)
+  private void b(z paramz)
   {
-    if ((paramaa.aZy() != null) && (!paramaa.aZy().isEmpty()))
+    AppMethodBeat.i(111869);
+    if ((paramz.bGB() != null) && (!paramz.bGB().isEmpty()))
     {
-      this.kZM.setVisibility(0);
-      int i;
-      if (!bk.bl(paramaa.aZx()))
+      this.nxJ.setVisibility(0);
+      if (!bo.isNullOrNil(paramz.bGA()))
       {
-        this.kZN.setVisibility(0);
-        this.kZN.setText(paramaa.aZx());
-        this.kZO.removeAllViews();
-        if (paramaa.aZz() != 1) {
-          break label268;
+        this.nxK.setVisibility(0);
+        this.nxK.setText(paramz.bGA());
+        this.nxL.removeAllViews();
+        if (paramz.bGC() != 1) {
+          break label271;
         }
-        this.kZO.setOrientation(1);
-        i = g.f.game_detail2_gift_item;
-        this.kZP.setVisibility(8);
+        this.nxL.setOrientation(1);
+        this.nxM.setVisibility(8);
       }
       Object localObject;
-      for (;;)
+      for (int i = 2130969729;; i = 2130969728)
       {
-        localObject = paramaa.aZy();
+        localObject = paramz.bGB();
         if (localObject == null) {
-          break label291;
+          break label294;
         }
         localObject = ((LinkedList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
-          aa.b localb = (aa.b)((Iterator)localObject).next();
-          View localView = LayoutInflater.from(this.mController.uMN).inflate(i, this.kZO, false);
-          ImageView localImageView = (ImageView)localView.findViewById(g.e.game_detail_gift_item_icon);
-          o.ON().a(localb.bVO, localImageView);
-          if (paramaa.aZz() == 1) {
-            ((TextView)localView.findViewById(g.e.game_detail_gift_item_title)).setText(localb.title);
+          z.b localb = (z.b)((Iterator)localObject).next();
+          View localView = LayoutInflater.from(getContext()).inflate(i, this.nxL, false);
+          ImageView localImageView = (ImageView)localView.findViewById(2131824573);
+          o.ahG().a(localb.cDz, localImageView);
+          if (paramz.bGC() == 1) {
+            ((TextView)localView.findViewById(2131824575)).setText(localb.title);
           }
-          ((TextView)localView.findViewById(g.e.game_detail_gift_item_detail)).setText(localb.desc);
-          if (paramaa.aZz() == 1)
+          ((TextView)localView.findViewById(2131824574)).setText(localb.desc);
+          if (paramz.bGC() == 1)
           {
             localView.setTag(localb.url);
-            localView.setOnClickListener(this.lam);
+            localView.setOnClickListener(this.nyj);
           }
-          this.kZO.addView(localView);
+          this.nxL.addView(localView);
         }
-        this.kZN.setVisibility(8);
+        this.nxK.setVisibility(8);
         break;
-        label268:
-        this.kZO.setOrientation(0);
-        i = g.f.game_detail2_gift2_item;
-        this.kZP.setVisibility(0);
+        label271:
+        this.nxL.setOrientation(0);
+        this.nxM.setVisibility(0);
       }
-      label291:
-      if (paramaa.kQo.kUy != null)
+      label294:
+      if (paramz.nos.nsA != null)
       {
-        localObject = new aa.a();
-        ((aa.a)localObject).title = paramaa.kQo.kUy.summary;
-        ((aa.a)localObject).desc = paramaa.kQo.kUy.desc;
-        ((aa.a)localObject).url = paramaa.kQo.kUy.url;
-        paramaa = (aa)localObject;
-        if (paramaa == null) {
-          break label528;
+        localObject = new z.a();
+        ((z.a)localObject).title = paramz.nos.nsA.summary;
+        ((z.a)localObject).desc = paramz.nos.nsA.desc;
+        ((z.a)localObject).url = paramz.nos.nsA.url;
+        paramz = (z)localObject;
+        if (paramz == null) {
+          break label537;
         }
-        this.kZQ.setVisibility(0);
-        this.kZR.setText(paramaa.title);
-        if (bk.bl(paramaa.desc)) {
-          break label516;
+        this.nxN.setVisibility(0);
+        this.nxO.setText(paramz.title);
+        if (bo.isNullOrNil(paramz.desc)) {
+          break label525;
         }
-        this.kZS.setVisibility(0);
-        this.kZS.setText(paramaa.desc);
+        this.nxP.setVisibility(0);
+        this.nxP.setText(paramz.desc);
       }
       for (;;)
       {
-        this.kZQ.setTag(paramaa.url);
-        this.kZQ.setOnClickListener(this.lam);
+        this.nxN.setTag(paramz.url);
+        this.nxN.setOnClickListener(this.nyj);
+        AppMethodBeat.o(111869);
         return;
-        if ((paramaa.kQo.kUt != null) && (!bk.bl(paramaa.kQo.kUt.kVg)) && (!bk.bl(paramaa.kQo.kUt.kVh)))
+        if ((paramz.nos.nsv != null) && (!bo.isNullOrNil(paramz.nos.nsv.nti)) && (!bo.isNullOrNil(paramz.nos.nsv.ntj)))
         {
-          localObject = new aa.a();
-          ((aa.a)localObject).title = paramaa.kQo.kUt.kVg;
-          ((aa.a)localObject).url = paramaa.kQo.kUt.kVh;
-          paramaa = (aa)localObject;
+          localObject = new z.a();
+          ((z.a)localObject).title = paramz.nos.nsv.nti;
+          ((z.a)localObject).url = paramz.nos.nsv.ntj;
+          paramz = (z)localObject;
           break;
         }
-        paramaa = null;
+        paramz = null;
         break;
-        label516:
-        this.kZS.setVisibility(8);
+        label525:
+        this.nxP.setVisibility(8);
       }
-      label528:
-      this.kZQ.setVisibility(8);
+      label537:
+      this.nxN.setVisibility(8);
+      AppMethodBeat.o(111869);
       return;
     }
-    this.kZM.setVisibility(8);
+    this.nxJ.setVisibility(8);
+    AppMethodBeat.o(111869);
   }
   
-  private void b(ab paramab)
+  private void bHl()
   {
-    int i = 0;
-    List localList = paramab.kQs;
-    if ((localList == null) || (localList.size() == 0))
-    {
-      this.kZK.setVisibility(8);
-      this.kZL.setVisibility(8);
-      return;
-    }
-    this.kZK.setVisibility(0);
-    if (localList.size() > 3) {
-      this.kZL.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.kZK.removeAllViews();
-      i locali = new i(this.mController.uMN);
-      locali.Ls = g.f.game_detail2_rank_item_small;
-      locali.a(paramab);
-      locali.kQh = this.kQh;
-      while ((i < localList.size()) && (i < 3))
-      {
-        paramab = locali.getView(i, null, this.kZI);
-        this.kZK.addView(paramab);
-        i += 1;
-      }
-      break;
-      this.kZL.setVisibility(8);
-    }
-  }
-  
-  private void c(aa paramaa)
-  {
-    if ((paramaa.aZE() != null) && (!paramaa.aZE().isEmpty()))
-    {
-      this.lae.setVisibility(0);
-      if (!bk.bl(paramaa.aZD()))
-      {
-        this.laf.setVisibility(0);
-        this.laf.setText(paramaa.aZD());
-      }
-      for (;;)
-      {
-        this.lag.removeAllViews();
-        this.lag.setOnClickListener(null);
-        Iterator localIterator = paramaa.aZE().iterator();
-        while (localIterator.hasNext())
-        {
-          bv localbv = (bv)localIterator.next();
-          View localView = LayoutInflater.from(this.mController.uMN).inflate(g.f.game_detail2_guide_item, this.lag, false);
-          TextView localTextView1 = (TextView)localView.findViewById(g.e.game_detail_guide_item_tag);
-          TextView localTextView2 = (TextView)localView.findViewById(g.e.game_detail_guide_item_title);
-          TextView localTextView3 = (TextView)localView.findViewById(g.e.game_detail_guide_item_detail);
-          ImageView localImageView = (ImageView)localView.findViewById(g.e.game_detail_guide_item_icon);
-          localTextView1.setText(localbv.kVl);
-          localTextView2.setText(localbv.bGw);
-          localTextView3.setText(localbv.kSY);
-          o.ON().a(localbv.kVi, localImageView);
-          localView.setTag(localbv.kRS);
-          localView.setOnClickListener(this.lan);
-          this.lag.addView(localView);
-        }
-        this.laf.setVisibility(8);
-      }
-      if (paramaa.kQo.kUt == null) {
-        paramaa = null;
-      }
-      while (paramaa != null)
-      {
-        this.lah.setVisibility(0);
-        this.lah.setText((CharSequence)paramaa.first);
-        this.lah.setTag(paramaa.second);
-        this.lah.setOnClickListener(this.lao);
-        return;
-        if ((bk.bl(paramaa.kQo.kUs.bGw)) || (bk.bl(paramaa.kQo.kUs.kVh))) {
-          paramaa = null;
-        } else {
-          paramaa = new Pair(paramaa.kQo.kUs.kVg, paramaa.kQo.kUs.kVh);
-        }
-      }
-      this.lah.setVisibility(8);
-      return;
-    }
-    this.lae.setVisibility(8);
-  }
-  
-  private void goBack()
-  {
+    AppMethodBeat.i(111865);
     Object localObject = getIntent().getStringExtra("jump_game_center");
-    if ((!bk.bl((String)localObject)) && (((String)localObject).equals("jump_game_center")))
+    if ((!bo.isNullOrNil((String)localObject)) && (((String)localObject).equals("jump_game_center")))
     {
       localObject = new Intent(this, GameCenterUI.class);
       ((Intent)localObject).putExtra("jump_find_more_friends", "jump_find_more_friends");
       startActivity((Intent)localObject);
     }
-    finish();
+    AppMethodBeat.o(111865);
   }
   
-  protected final int getForceOrientation()
+  private void c(z paramz)
+  {
+    AppMethodBeat.i(111870);
+    if ((paramz.bGH() != null) && (!paramz.bGH().isEmpty()))
+    {
+      this.nyb.setVisibility(0);
+      if (!bo.isNullOrNil(paramz.bGG()))
+      {
+        this.nyc.setVisibility(0);
+        this.nyc.setText(paramz.bGG());
+      }
+      for (;;)
+      {
+        this.nyd.removeAllViews();
+        this.nyd.setOnClickListener(null);
+        Iterator localIterator = paramz.bGH().iterator();
+        while (localIterator.hasNext())
+        {
+          bw localbw = (bw)localIterator.next();
+          View localView = LayoutInflater.from(getContext()).inflate(2130969730, this.nyd, false);
+          TextView localTextView1 = (TextView)localView.findViewById(2131824576);
+          TextView localTextView2 = (TextView)localView.findViewById(2131824577);
+          TextView localTextView3 = (TextView)localView.findViewById(2131824578);
+          ImageView localImageView = (ImageView)localView.findViewById(2131824579);
+          localTextView1.setText(localbw.ntn);
+          localTextView2.setText(localbw.Title);
+          localTextView3.setText(localbw.nqY);
+          o.ahG().a(localbw.ntk, localImageView);
+          localView.setTag(localbw.npU);
+          localView.setOnClickListener(this.nyk);
+          this.nyd.addView(localView);
+        }
+        this.nyc.setVisibility(8);
+      }
+      if (paramz.nos.nsv == null) {
+        paramz = null;
+      }
+      while (paramz != null)
+      {
+        this.nye.setVisibility(0);
+        this.nye.setText((CharSequence)paramz.first);
+        this.nye.setTag(paramz.second);
+        this.nye.setOnClickListener(this.nyl);
+        AppMethodBeat.o(111870);
+        return;
+        if ((bo.isNullOrNil(paramz.nos.nsu.Title)) || (bo.isNullOrNil(paramz.nos.nsu.ntj))) {
+          paramz = null;
+        } else {
+          paramz = new Pair(paramz.nos.nsu.nti, paramz.nos.nsu.ntj);
+        }
+      }
+      this.nye.setVisibility(8);
+      AppMethodBeat.o(111870);
+      return;
+    }
+    this.nyb.setVisibility(8);
+    AppMethodBeat.o(111870);
+  }
+  
+  private void goBack()
+  {
+    AppMethodBeat.i(111864);
+    bHl();
+    finish();
+    AppMethodBeat.o(111864);
+  }
+  
+  public int getForceOrientation()
   {
     return 1;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return g.f.game_detail2;
+    return 2130969726;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(g.i.game_detail_title);
+    AppMethodBeat.i(111866);
+    setMMTitle(2131300355);
     setBackBtn(new GameDetailUI2.1(this));
-    this.kZB = ((ViewGroup)findViewById(g.e.game_detail));
-    this.kZC = ((ImageView)findViewById(g.e.game_detail_bg));
-    this.kZD = ((ImageView)findViewById(g.e.game_icon));
-    this.kZE = ((TextView)findViewById(g.e.game_name));
-    this.kZH = ((TextView)findViewById(g.e.game_info));
-    this.kZF = ((Button)findViewById(g.e.game_action_btn));
-    this.kZG = ((TextProgressBar)findViewById(g.e.game_progress));
-    this.kZG.setTextSize(this.kZu);
-    this.kZI = ((LinearLayout)findViewById(g.e.game_detail_trend_container));
-    this.kZJ = ((GameDetailAutoScrollView)findViewById(g.e.game_detail_trend_brief));
-    this.kZK = ((LinearLayout)findViewById(g.e.game_detail_rank_container));
-    this.kZL = ((TextView)findViewById(g.e.game_detail_rank_entrance));
-    this.kZM = ((LinearLayout)findViewById(g.e.game_detail_gift));
-    this.kZN = ((TextView)findViewById(g.e.game_detail_gift_title));
-    this.kZO = ((LinearLayout)findViewById(g.e.game_detail_gift_container));
-    this.kZP = ((ImageView)findViewById(g.e.game_detail_gift_divider));
-    this.kZQ = findViewById(g.e.game_detail_gift_entrance);
-    this.kZR = ((TextView)findViewById(g.e.game_detail_gift_entrance_title));
-    this.kZS = ((TextView)findViewById(g.e.game_detail_gift_entrance_desc));
-    this.kZT = findViewById(g.e.game_detail_group);
-    this.kZU = ((TextView)findViewById(g.e.game_detail_group_title));
-    this.kZV = ((ImageView)findViewById(g.e.game_detail_group_icon));
-    this.kZW = ((TextView)findViewById(g.e.game_detail_group_desc));
-    this.kZX = ((TextView)findViewById(g.e.game_detail_group_detail));
-    this.kZY = ((LinearLayout)findViewById(g.e.game_detail_desc));
-    this.kZZ = ((GameMediaList)findViewById(g.e.game_detail_intro_media));
-    GameMediaList localGameMediaList = this.kZZ;
+    this.nxy = ((ViewGroup)findViewById(2131824547));
+    this.nxz = ((ImageView)findViewById(2131824548));
+    this.nxA = ((ImageView)findViewById(2131821573));
+    this.nxB = ((TextView)findViewById(2131821575));
+    this.nxE = ((TextView)findViewById(2131824537));
+    this.nxC = ((Button)findViewById(2131824569));
+    this.nxD = ((TextProgressBar)findViewById(2131824570));
+    this.nxD.setTextSize(this.nxr);
+    this.nxF = ((LinearLayout)findViewById(2131824541));
+    this.nxG = ((GameDetailAutoScrollView)findViewById(2131824549));
+    this.nxH = ((LinearLayout)findViewById(2131824550));
+    this.nxI = ((TextView)findViewById(2131824542));
+    this.nxJ = ((LinearLayout)findViewById(2131824551));
+    this.nxK = ((TextView)findViewById(2131824552));
+    this.nxL = ((LinearLayout)findViewById(2131824553));
+    this.nxM = ((ImageView)findViewById(2131824554));
+    this.nxN = findViewById(2131824555);
+    this.nxO = ((TextView)findViewById(2131824556));
+    this.nxP = ((TextView)findViewById(2131824557));
+    this.nxQ = findViewById(2131824560);
+    this.nxR = ((TextView)findViewById(2131824561));
+    this.nxS = ((ImageView)findViewById(2131824562));
+    this.nxT = ((TextView)findViewById(2131824563));
+    this.nxU = ((TextView)findViewById(2131824564));
+    this.nxV = ((LinearLayout)findViewById(2131824558));
+    this.nxW = ((GameMediaList)findViewById(2131824544));
+    GameMediaList localGameMediaList = this.nxW;
     String str = this.appId;
-    int i = this.kQh;
+    int i = this.nok;
     localGameMediaList.appId = str;
-    localGameMediaList.jNi = 12;
-    localGameMediaList.lbK = i;
+    localGameMediaList.mhr = 12;
+    localGameMediaList.nzF = i;
     localGameMediaList.mContext = this;
-    this.kZZ.setItemLayout(g.f.game_media_item_big);
-    this.laa = ((TextView)findViewById(g.e.game_detail_desc_title));
-    this.lab = ((TextView)findViewById(g.e.game_detail_desc_content));
-    this.lab.getViewTreeObserver().addOnGlobalLayoutListener(new GameDetailUI2.10(this));
-    this.lac = ((TextView)findViewById(g.e.game_detail_desc_toggle));
-    this.lac.setOnClickListener(new GameDetailUI2.11(this));
-    this.lae = ((LinearLayout)findViewById(g.e.game_detail_guide));
-    this.laf = ((TextView)findViewById(g.e.game_detail_guide_title));
-    this.lag = ((LinearLayout)findViewById(g.e.game_detail_guide_container));
-    this.lah = ((TextView)findViewById(g.e.game_detail_guide_entrance));
+    this.nxW.setItemLayout(2130969785);
+    this.nxX = ((TextView)findViewById(2131824543));
+    this.nxY = ((TextView)findViewById(2131824546));
+    this.nxY.getViewTreeObserver().addOnGlobalLayoutListener(new GameDetailUI2.10(this));
+    this.nxZ = ((TextView)findViewById(2131824559));
+    this.nxZ.setOnClickListener(new GameDetailUI2.11(this));
+    this.nyb = ((LinearLayout)findViewById(2131824565));
+    this.nyc = ((TextView)findViewById(2131824566));
+    this.nyd = ((LinearLayout)findViewById(2131824567));
+    this.nye = ((TextView)findViewById(2131824568));
+    AppMethodBeat.o(111866);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(111872);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    y.i("MicroMsg.GameDetailUI2", "requestCode = %d, resultCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    ab.i("MicroMsg.GameDetailUI2", "requestCode = %d, resultCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     switch (paramInt1)
     {
     default: 
-      y.e("MicroMsg.GameDetailUI2", "error request code");
-    }
-    do
-    {
-      String str2;
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              switch (paramInt2)
-              {
-              case 0: 
-              case 1: 
-              default: 
-                return;
-              }
-            } while ((this.kOM == null) || (this.kZA == null));
-            this.kZA.aZk();
-            this.kZz.a(this.kOM, this.kZA);
-            return;
-          } while (this.kZA == null);
-          this.kZA.aGu();
-          return;
-        } while (paramInt2 != -1);
-        str2 = paramIntent.getStringExtra("Select_Conv_User");
-      } while (bk.bl(str2));
-      String str1 = this.lai.kRY;
-      paramIntent = str1;
-      if (bk.bl(str1)) {
-        paramIntent = this.kOM.field_appIconUrl;
-      }
-      t.a.sdu.a(this.mController, this.lai.kWe, paramIntent, this.lai.kWf, true, getResources().getString(g.i.app_send), new GameDetailUI2.9(this, str2));
+      ab.e("MicroMsg.GameDetailUI2", "error request code");
+      AppMethodBeat.o(111872);
       return;
-    } while (paramInt2 != -1);
-    com.tencent.mm.plugin.game.e.b.a(this.mController.uMN, 12, 1207, 2, 15, this.appId, this.kQh, null);
+    case 1: 
+      switch (paramInt2)
+      {
+      case 1: 
+      default: 
+        AppMethodBeat.o(111872);
+        return;
+      case 3: 
+        if (this.nxx != null)
+        {
+          this.nxx.bjZ();
+          AppMethodBeat.o(111872);
+          return;
+        }
+        break;
+      case 2: 
+        if ((this.nmJ != null) && (this.nxx != null))
+        {
+          this.nxx.bGk();
+          this.nxw.a(this.nmJ, this.nxx);
+          AppMethodBeat.o(111872);
+          return;
+        }
+        break;
+      case 0: 
+        AppMethodBeat.o(111872);
+        return;
+      }
+      break;
+    case 2: 
+      if (paramInt2 == -1)
+      {
+        String str2 = paramIntent.getStringExtra("Select_Conv_User");
+        if (!bo.isNullOrNil(str2))
+        {
+          String str1 = this.nyf.nqa;
+          paramIntent = str1;
+          if (bo.isNullOrNil(str1)) {
+            paramIntent = this.nmJ.field_appIconUrl;
+          }
+          t.a.vUz.a(this.mController, this.nyf.nud, paramIntent, this.nyf.nue, true, getResources().getString(2131297067), new GameDetailUI2.9(this, str2));
+        }
+        AppMethodBeat.o(111872);
+        return;
+      }
+      break;
+    case 3: 
+      if (paramInt2 == -1)
+      {
+        com.tencent.mm.game.report.c.a(getContext(), 12, 1207, 2, 15, this.appId, this.nok, null);
+        AppMethodBeat.o(111872);
+        return;
+      }
+      break;
+    }
+    AppMethodBeat.o(111872);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(111860);
     super.onCreate(paramBundle);
-    if (!com.tencent.mm.kernel.g.DK())
+    if (!com.tencent.mm.kernel.g.RG())
     {
-      y.e("MicroMsg.GameDetailUI2", "account not ready");
+      ab.e("MicroMsg.GameDetailUI2", "account not ready");
       finish();
+      AppMethodBeat.o(111860);
       return;
     }
-    this.kZv = true;
-    this.kZw = false;
+    this.nxs = true;
+    this.nxt = false;
     this.appId = getIntent().getStringExtra("game_app_id");
-    if (bk.bl(this.appId))
+    if (bo.isNullOrNil(this.appId))
     {
-      y.e("MicroMsg.GameDetailUI2", "appid is null or nill");
+      ab.e("MicroMsg.GameDetailUI2", "appid is null or nill");
       finish();
       initView();
-      com.tencent.mm.kernel.g.Dk().a(1217, this);
-      paramBundle = ((com.tencent.mm.plugin.game.a.c)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.game.a.c.class)).aYg().Ey(this.appId);
+      com.tencent.mm.kernel.g.Rc().a(1217, this);
+      paramBundle = ((e)com.tencent.mm.kernel.g.E(e.class)).bET().PN(this.appId);
       if ((paramBundle != null) && (paramBundle.length != 0)) {
-        break label202;
+        break label220;
       }
-      y.i("MicroMsg.GameDetailUI2", "No cache found");
+      ab.i("MicroMsg.GameDetailUI2", "No cache found");
     }
     for (int i = 0;; i = 1)
     {
       if (i == 0)
       {
-        this.jwv = com.tencent.mm.plugin.game.f.c.dA(this);
-        this.jwv.show();
+        this.lFU = com.tencent.mm.plugin.game.f.c.en(this);
+        this.lFU.show();
       }
-      paramBundle = com.tencent.mm.sdk.platformtools.x.cqJ();
-      boolean bool = com.tencent.mm.pluginsdk.model.app.g.o(this, this.appId);
-      paramBundle = new an(paramBundle, this.appId, bool);
-      com.tencent.mm.kernel.g.Dk().a(paramBundle, 0);
+      paramBundle = com.tencent.mm.sdk.platformtools.aa.dsG();
+      boolean bool = com.tencent.mm.pluginsdk.model.app.g.u(this, this.appId);
+      paramBundle = new am(paramBundle, this.appId, bool);
+      com.tencent.mm.kernel.g.Rc().a(paramBundle, 0);
+      AppMethodBeat.o(111860);
       return;
-      this.kQh = getIntent().getIntExtra("game_report_from_scene", 0);
+      this.nok = getIntent().getIntExtra("game_report_from_scene", 0);
       break;
-      label202:
-      com.tencent.mm.kernel.g.DS().O(new GameDetailUI2.12(this, paramBundle));
+      label220:
+      com.tencent.mm.kernel.g.RO().ac(new GameDetailUI2.12(this, paramBundle));
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(111862);
     super.onDestroy();
-    com.tencent.mm.kernel.g.Dk().b(1217, this);
-    if (this.kZy != null) {
-      k.b(this.kZy);
+    com.tencent.mm.kernel.g.Rc().b(1217, this);
+    if (this.nxv != null) {
+      j.b(this.nxv);
     }
+    AppMethodBeat.o(111862);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(111863);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
       goBack();
+      AppMethodBeat.o(111863);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(111863);
+    return bool;
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(111861);
     super.onResume();
-    if ((this.kOM != null) && (this.kZA != null))
+    if ((this.nmJ != null) && (this.nxx != null))
     {
-      this.kZA.aGu();
-      this.kZz.a(this.kZG, this.kZF, this.kOM, this.kZA);
+      this.nxx.bjZ();
+      this.nxw.a(this.nxD, this.nxC, this.nmJ, this.nxx);
     }
-    if (!this.kZv)
+    if (!this.nxs)
     {
-      b(new ab(this.appId));
+      b(new com.tencent.mm.plugin.game.model.aa(this.appId));
+      AppMethodBeat.o(111861);
       return;
     }
-    this.kZv = false;
+    this.nxs = false;
+    AppMethodBeat.o(111861);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
+    AppMethodBeat.i(111871);
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      if (!com.tencent.mm.plugin.game.b.a.eUS.a(this, paramInt1, paramInt2, paramString)) {
-        Toast.makeText(this, getString(g.i.game_list_get_failed, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      if (!com.tencent.mm.plugin.game.a.a.gmP.a(this, paramInt1, paramInt2, paramString)) {
+        Toast.makeText(this, getString(2131300407, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       }
-      if (this.jwv != null) {
-        this.jwv.cancel();
+      if (this.lFU != null) {
+        this.lFU.cancel();
       }
+      AppMethodBeat.o(111871);
       return;
     }
     switch (paramm.getType())
     {
-    default: 
-      return;
     }
-    paramString = ((an)paramm).jvQ.ecF.ecN;
-    com.tencent.mm.kernel.g.DS().O(new GameDetailUI2.14(this, paramString));
+    for (;;)
+    {
+      AppMethodBeat.o(111871);
+      return;
+      paramString = ((am)paramm).lFp.fsW.fta;
+      com.tencent.mm.kernel.g.RO().ac(new GameDetailUI2.14(this, paramString));
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

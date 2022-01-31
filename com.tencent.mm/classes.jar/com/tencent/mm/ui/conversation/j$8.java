@@ -1,11 +1,12 @@
 package com.tencent.mm.ui.conversation;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mm.plugin.dbbackup.DBRecoveryUI;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.widget.b.c;
 
 final class j$8
   implements DialogInterface.OnClickListener
@@ -14,10 +15,11 @@ final class j$8
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    j.e(this.vTn).dismiss();
-    paramDialogInterface = new Intent(j.a(this.vTn), DBRecoveryUI.class);
-    paramDialogInterface.putExtra("scene", 0);
-    j.a(this.vTn).startActivity(paramDialogInterface);
+    AppMethodBeat.i(34476);
+    g.RO().ac(new j.8.1(this));
+    j.e(this.Alf).dismiss();
+    h.a(j.a(this.Alf), 2131298911, 2131297087, false, new j.8.2(this));
+    AppMethodBeat.o(34476);
   }
 }
 

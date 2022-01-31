@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/e4q" android:background="#44000000" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/agy" />
-</LinearLayout>
+<CheckedTextView android:textAppearance="?android:textAppearanceMedium" android:textColor="?g4" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@android:id/text1" android:paddingLeft="@dimen/q5" android:paddingRight="?em" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="?fd" android:drawableLeft="?android:listChoiceIndicatorSingle" android:drawablePadding="20.0dip" android:drawableStart="?android:listChoiceIndicatorSingle" android:paddingStart="@dimen/q5" android:paddingEnd="?em"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

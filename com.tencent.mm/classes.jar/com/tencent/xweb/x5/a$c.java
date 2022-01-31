@@ -1,26 +1,31 @@
 package com.tencent.xweb.x5;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.JsResult;
-import com.tencent.xweb.f;
+import com.tencent.xweb.j;
 
 public final class a$c
   implements JsResult
 {
-  public f xkk;
+  public j BHP;
   
-  public a$c(f paramf)
+  public a$c(j paramj)
   {
-    this.xkk = paramf;
+    this.BHP = paramj;
   }
   
   public final void cancel()
   {
-    this.xkk.cancel();
+    AppMethodBeat.i(84780);
+    this.BHP.cancel();
+    AppMethodBeat.o(84780);
   }
   
   public final void confirm()
   {
-    this.xkk.confirm();
+    AppMethodBeat.i(84779);
+    this.BHP.confirm();
+    AppMethodBeat.o(84779);
   }
 }
 

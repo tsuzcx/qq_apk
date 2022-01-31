@@ -1,25 +1,43 @@
 package com.tencent.ttpic.ar.sensor.representation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class Matrix
 {
   private static final float[] TEMP_MATRIX_ARRAY = new float[32];
   
   public static void frustumM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    if (paramFloat1 == paramFloat2) {
-      throw new IllegalArgumentException("left == right");
+    AppMethodBeat.i(81684);
+    if (paramFloat1 == paramFloat2)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("left == right");
+      AppMethodBeat.o(81684);
+      throw paramArrayOfFloat;
     }
-    if (paramFloat4 == paramFloat3) {
-      throw new IllegalArgumentException("top == bottom");
+    if (paramFloat4 == paramFloat3)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("top == bottom");
+      AppMethodBeat.o(81684);
+      throw paramArrayOfFloat;
     }
-    if (paramFloat5 == paramFloat6) {
-      throw new IllegalArgumentException("near == far");
+    if (paramFloat5 == paramFloat6)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("near == far");
+      AppMethodBeat.o(81684);
+      throw paramArrayOfFloat;
     }
-    if (paramFloat5 <= 0.0F) {
-      throw new IllegalArgumentException("near <= 0.0f");
+    if (paramFloat5 <= 0.0F)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("near <= 0.0f");
+      AppMethodBeat.o(81684);
+      throw paramArrayOfFloat;
     }
-    if (paramFloat6 <= 0.0F) {
-      throw new IllegalArgumentException("far <= 0.0f");
+    if (paramFloat6 <= 0.0F)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("far <= 0.0f");
+      AppMethodBeat.o(81684);
+      throw paramArrayOfFloat;
     }
     float f1 = 1.0F / (paramFloat2 - paramFloat1);
     float f2 = 1.0F / (paramFloat4 - paramFloat3);
@@ -40,6 +58,7 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 12)] = 0.0F;
     paramArrayOfFloat[(paramInt + 13)] = 0.0F;
     paramArrayOfFloat[(paramInt + 15)] = 0.0F;
+    AppMethodBeat.o(81684);
   }
   
   public static boolean invertM(float[] paramArrayOfFloat1, int paramInt1, float[] paramArrayOfFloat2, int paramInt2)
@@ -114,7 +133,10 @@ public class Matrix
   
   public static float length(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2 + paramFloat3 * paramFloat3);
+    AppMethodBeat.i(81686);
+    paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2 + paramFloat3 * paramFloat3);
+    AppMethodBeat.o(81686);
+    return paramFloat1;
   }
   
   public static void multiplyMM(float[] paramArrayOfFloat1, int paramInt1, float[] paramArrayOfFloat2, int paramInt2, float[] paramArrayOfFloat3, int paramInt3)
@@ -182,14 +204,24 @@ public class Matrix
   
   public static void orthoM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    if (paramFloat1 == paramFloat2) {
-      throw new IllegalArgumentException("left == right");
+    AppMethodBeat.i(81683);
+    if (paramFloat1 == paramFloat2)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("left == right");
+      AppMethodBeat.o(81683);
+      throw paramArrayOfFloat;
     }
-    if (paramFloat3 == paramFloat4) {
-      throw new IllegalArgumentException("bottom == top");
+    if (paramFloat3 == paramFloat4)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("bottom == top");
+      AppMethodBeat.o(81683);
+      throw paramArrayOfFloat;
     }
-    if (paramFloat5 == paramFloat6) {
-      throw new IllegalArgumentException("near == far");
+    if (paramFloat5 == paramFloat6)
+    {
+      paramArrayOfFloat = new IllegalArgumentException("near == far");
+      AppMethodBeat.o(81683);
+      throw paramArrayOfFloat;
     }
     float f1 = 1.0F / (paramFloat2 - paramFloat1);
     float f2 = 1.0F / (paramFloat4 - paramFloat3);
@@ -213,10 +245,12 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 8)] = 0.0F;
     paramArrayOfFloat[(paramInt + 9)] = 0.0F;
     paramArrayOfFloat[(paramInt + 11)] = 0.0F;
+    AppMethodBeat.o(81683);
   }
   
   public static void perspectiveM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
+    AppMethodBeat.i(81685);
     paramFloat1 = 1.0F / (float)Math.tan(paramFloat1 * 0.008726646259971648D);
     float f = 1.0F / (paramFloat3 - paramFloat4);
     paramArrayOfFloat[(paramInt + 0)] = (paramFloat1 / paramFloat2);
@@ -235,25 +269,30 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 13)] = 0.0F;
     paramArrayOfFloat[(paramInt + 14)] = (f * (2.0F * paramFloat4 * paramFloat3));
     paramArrayOfFloat[(paramInt + 15)] = 0.0F;
+    AppMethodBeat.o(81685);
   }
   
   public static void rotateM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
+    AppMethodBeat.i(81688);
     synchronized (TEMP_MATRIX_ARRAY)
     {
       setRotateM(TEMP_MATRIX_ARRAY, 0, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
       multiplyMM(TEMP_MATRIX_ARRAY, 16, paramArrayOfFloat, paramInt, TEMP_MATRIX_ARRAY, 0);
       System.arraycopy(TEMP_MATRIX_ARRAY, 16, paramArrayOfFloat, paramInt, 16);
+      AppMethodBeat.o(81688);
       return;
     }
   }
   
   public static void rotateM(float[] paramArrayOfFloat1, int paramInt1, float[] paramArrayOfFloat2, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
+    AppMethodBeat.i(81687);
     synchronized (TEMP_MATRIX_ARRAY)
     {
       setRotateM(TEMP_MATRIX_ARRAY, 0, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
       multiplyMM(paramArrayOfFloat1, paramInt1, paramArrayOfFloat2, paramInt2, TEMP_MATRIX_ARRAY, 0);
+      AppMethodBeat.o(81687);
       return;
     }
   }
@@ -311,6 +350,7 @@ public class Matrix
   
   public static void setLookAtM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9)
   {
+    AppMethodBeat.i(81691);
     paramFloat4 -= paramFloat1;
     paramFloat5 -= paramFloat2;
     paramFloat6 -= paramFloat3;
@@ -342,12 +382,14 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 14)] = 0.0F;
     paramArrayOfFloat[(paramInt + 15)] = 1.0F;
     translateM(paramArrayOfFloat, paramInt, -paramFloat1, -paramFloat2, -paramFloat3);
+    AppMethodBeat.o(81691);
   }
   
   public static void setRotateEulerM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    float f2 = paramFloat1 * 0.01745329F;
-    float f1 = paramFloat2 * 0.01745329F;
+    AppMethodBeat.i(81690);
+    float f2 = 0.01745329F * paramFloat1;
+    float f1 = 0.01745329F * paramFloat2;
     float f3 = 0.01745329F * paramFloat3;
     paramFloat1 = (float)Math.cos(f2);
     paramFloat2 = (float)Math.sin(f2);
@@ -373,10 +415,12 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 13)] = 0.0F;
     paramArrayOfFloat[(paramInt + 14)] = 0.0F;
     paramArrayOfFloat[(paramInt + 15)] = 1.0F;
+    AppMethodBeat.o(81690);
   }
   
   public static void setRotateM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
+    AppMethodBeat.i(81689);
     paramArrayOfFloat[(paramInt + 3)] = 0.0F;
     paramArrayOfFloat[(paramInt + 7)] = 0.0F;
     paramArrayOfFloat[(paramInt + 11)] = 0.0F;
@@ -398,6 +442,7 @@ public class Matrix
       paramArrayOfFloat[(paramInt + 4)] = 0.0F;
       paramArrayOfFloat[(paramInt + 8)] = 0.0F;
       paramArrayOfFloat[(paramInt + 0)] = 1.0F;
+      AppMethodBeat.o(81689);
       return;
     }
     if ((0.0F == paramFloat2) && (1.0F == paramFloat3) && (0.0F == paramFloat4))
@@ -411,6 +456,7 @@ public class Matrix
       paramArrayOfFloat[(paramInt + 6)] = 0.0F;
       paramArrayOfFloat[(paramInt + 9)] = 0.0F;
       paramArrayOfFloat[(paramInt + 5)] = 1.0F;
+      AppMethodBeat.o(81689);
       return;
     }
     if ((0.0F == paramFloat2) && (0.0F == paramFloat3) && (1.0F == paramFloat4))
@@ -424,6 +470,7 @@ public class Matrix
       paramArrayOfFloat[(paramInt + 8)] = 0.0F;
       paramArrayOfFloat[(paramInt + 9)] = 0.0F;
       paramArrayOfFloat[(paramInt + 10)] = 1.0F;
+      AppMethodBeat.o(81689);
       return;
     }
     float f5 = length(paramFloat2, paramFloat3, paramFloat4);
@@ -453,6 +500,7 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 2)] = (f5 * paramFloat2 - f7);
     paramArrayOfFloat[(paramInt + 6)] = (paramFloat4 * paramFloat2 + f6);
     paramArrayOfFloat[(paramInt + 10)] = (f4 + paramFloat2 * (paramFloat1 * paramFloat1));
+    AppMethodBeat.o(81689);
   }
   
   public static void translateM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
@@ -511,7 +559,7 @@ public class Matrix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.Matrix
  * JD-Core Version:    0.7.0.1
  */

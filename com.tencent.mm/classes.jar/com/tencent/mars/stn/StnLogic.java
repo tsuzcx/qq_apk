@@ -5,7 +5,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class StnLogic
 {
@@ -107,12 +106,12 @@ public class StnLogic
   
   public static native void keepSignalling();
   
-  private static boolean makesureAuthed()
+  private static boolean makesureAuthed(String paramString)
   {
     if (callBack == null) {
       return false;
     }
-    return callBack.makesureAuthed();
+    return callBack.makesureAuthed(paramString);
   }
   
   public static native void makesureLongLinkConnected();
@@ -169,12 +168,12 @@ public class StnLogic
   
   private static void reportTaskProfile(String paramString) {}
   
-  private static boolean req2Buf(int paramInt1, Object paramObject, ByteArrayOutputStream paramByteArrayOutputStream, int[] paramArrayOfInt, int paramInt2)
+  private static boolean req2Buf(int paramInt1, Object paramObject, ByteArrayOutputStream paramByteArrayOutputStream, int[] paramArrayOfInt, int paramInt2, String paramString)
   {
     if (callBack == null) {
       return false;
     }
-    return callBack.req2Buf(paramInt1, paramObject, paramByteArrayOutputStream, paramArrayOfInt, paramInt2);
+    return callBack.req2Buf(paramInt1, paramObject, paramByteArrayOutputStream, paramArrayOfInt, paramInt2, paramString);
   }
   
   public static void requestDoSync()
@@ -224,74 +223,17 @@ public class StnLogic
   
   public static native boolean startNetworkAnalysis();
   
-  public static native void startTask(Task paramTask);
+  public static native void startTask(StnLogic.Task paramTask);
   
   public static native void stopSignalling();
   
   public static native void stopTask(int paramInt);
   
   private static void trafficData(int paramInt1, int paramInt2) {}
-  
-  public static class Task
-  {
-    public static final int EBoth = 3;
-    public static final int EFAST = 1;
-    public static final int ELong = 2;
-    public static final int ENORMAL = 0;
-    public static final int EShort = 1;
-    public static final int ETASK_PRIORITY_0 = 0;
-    public static final int ETASK_PRIORITY_1 = 1;
-    public static final int ETASK_PRIORITY_2 = 2;
-    public static final int ETASK_PRIORITY_3 = 3;
-    public static final int ETASK_PRIORITY_4 = 4;
-    public static final int ETASK_PRIORITY_5 = 5;
-    public static final int ETASK_PRIORITY_HIGHEST = 0;
-    public static final int ETASK_PRIORITY_LOWEST = 5;
-    public static final int ETASK_PRIORITY_NORMAL = 3;
-    private static AtomicInteger ai = new AtomicInteger(0);
-    public String cgi;
-    public int channelSelect;
-    public int channelStrategy;
-    public int cmdID;
-    public boolean limitFlow;
-    public boolean limitFrequency;
-    public boolean needAuthed;
-    public boolean networkStatusSensitive;
-    public int priority;
-    public String reportArg;
-    public int retryCount = -1;
-    public boolean sendOnly;
-    public int serverProcessCost;
-    public ArrayList<String> shortLinkHostList;
-    public int taskID = ai.incrementAndGet();
-    public int totalTimeout;
-    public Object userContext;
-    
-    public Task() {}
-    
-    public Task(int paramInt1, int paramInt2, String paramString, ArrayList<String> paramArrayList)
-    {
-      this.channelSelect = paramInt1;
-      this.cmdID = paramInt2;
-      this.cgi = paramString;
-      this.shortLinkHostList = paramArrayList;
-      this.sendOnly = false;
-      this.needAuthed = true;
-      this.limitFlow = true;
-      this.limitFrequency = true;
-      this.channelStrategy = 0;
-      this.networkStatusSensitive = false;
-      this.priority = 3;
-      this.retryCount = -1;
-      this.serverProcessCost = 0;
-      this.totalTimeout = 0;
-      this.userContext = null;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mars.stn.StnLogic
  * JD-Core Version:    0.7.0.1
  */

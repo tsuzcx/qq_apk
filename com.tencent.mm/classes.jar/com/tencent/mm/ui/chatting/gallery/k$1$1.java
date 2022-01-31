@@ -1,14 +1,11 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 import java.io.File;
 
 final class k$1$1
@@ -18,23 +15,27 @@ final class k$1$1
   
   public final void run()
   {
-    if (bk.bl(this.gBs))
+    AppMethodBeat.i(32378);
+    if (bo.isNullOrNil(this.hZn))
     {
-      h.h(this.vxA.vxz.vuf.vtJ, R.l.video_file_play_faile, R.l.chatting_play_err);
+      h.h(this.zNM.zNL.zKg.zJK, 2131304519, 2131298283);
+      AppMethodBeat.o(32378);
       return;
     }
     Intent localIntent = new Intent();
     localIntent.setAction("android.intent.action.VIEW");
-    localIntent.setDataAndType(Uri.fromFile(new File(this.gBs)), "video/*");
+    com.tencent.mm.sdk.platformtools.k.a(this.zNM.zNL.zKg.zJK, localIntent, new File(this.hZn), "video/*");
     try
     {
-      this.vxA.vxz.vuf.vtJ.startActivity(Intent.createChooser(localIntent, this.vxA.vxz.vuf.vtJ.mController.uMN.getString(R.l.favorite_video)));
+      this.zNM.zNL.zKg.zJK.startActivity(Intent.createChooser(localIntent, this.zNM.zNL.zKg.zJK.getContext().getString(2131299853)));
+      AppMethodBeat.o(32378);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.ImageGalleryViewHolder", "startActivity fail, activity not found");
-      h.h(this.vxA.vxz.vuf.vtJ, R.l.favorite_no_match_msg, R.l.favorite_no_match_title);
+      ab.e("MicroMsg.ImageGalleryViewHolder", "startActivity fail, activity not found");
+      h.h(this.zNM.zNL.zKg.zJK, 2131299759, 2131299760);
+      AppMethodBeat.o(32378);
     }
   }
 }

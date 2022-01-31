@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.voiceprint.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseVoicePrintUI$2
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class BaseVoicePrintUI$2
   
   public final void onClick(View paramView)
   {
-    this.pMb.finish();
+    AppMethodBeat.i(26131);
+    this.trX.finish();
+    AppMethodBeat.o(26131);
   }
 }
 

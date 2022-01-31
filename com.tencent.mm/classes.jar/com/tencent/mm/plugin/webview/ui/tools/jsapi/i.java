@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -9,34 +10,26 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public Map<String, Object> ndL;
-  public String rAL;
-  public JSONObject rAM;
-  Map<String, Object> rAN = new HashMap();
-  public String rAO;
+  public Map<String, Object> pJb;
   public String type;
+  public String vrN;
+  public JSONObject vrO;
+  Map<String, Object> vrP;
+  public String vrQ;
   
-  public static Map<String, Object> af(Bundle paramBundle)
+  public i()
   {
-    if (paramBundle == null) {}
-    do
-    {
-      return null;
-      localObject = paramBundle.keySet();
-    } while (localObject == null);
-    HashMap localHashMap = new HashMap();
-    Object localObject = ((Set)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      String str = (String)((Iterator)localObject).next();
-      localHashMap.put(str, paramBundle.get(str));
-    }
-    return localHashMap;
+    AppMethodBeat.i(9818);
+    this.vrP = new HashMap();
+    AppMethodBeat.o(9818);
   }
   
-  public static Bundle aq(Map<String, Object> paramMap)
+  public static Bundle aQ(Map<String, Object> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() == 0)) {
+    AppMethodBeat.i(9819);
+    if ((paramMap == null) || (paramMap.size() == 0))
+    {
+      AppMethodBeat.o(9819);
       return null;
     }
     Bundle localBundle = new Bundle();
@@ -53,12 +46,38 @@ public final class i
         localBundle.putString(str, String.valueOf(localObject));
       }
     }
+    AppMethodBeat.o(9819);
     return localBundle;
   }
   
-  public final Map<String, Object> cgB()
+  public static Map<String, Object> az(Bundle paramBundle)
   {
-    return this.rAN;
+    AppMethodBeat.i(9820);
+    if (paramBundle == null)
+    {
+      AppMethodBeat.o(9820);
+      return null;
+    }
+    Object localObject = paramBundle.keySet();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(9820);
+      return null;
+    }
+    HashMap localHashMap = new HashMap();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      String str = (String)((Iterator)localObject).next();
+      localHashMap.put(str, paramBundle.get(str));
+    }
+    AppMethodBeat.o(9820);
+    return localHashMap;
+  }
+  
+  public final Map<String, Object> dgQ()
+  {
+    return this.vrP;
   }
 }
 

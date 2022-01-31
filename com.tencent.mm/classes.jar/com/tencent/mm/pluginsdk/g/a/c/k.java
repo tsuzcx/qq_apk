@@ -1,6 +1,6 @@
 package com.tencent.mm.pluginsdk.g.a.c;
 
-public class k {}
+public abstract interface k {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar

@@ -3,17 +3,19 @@ package com.tencent.mm.plugin.webview.ui.tools.game.menu;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f$a
 {
-  TextView fcy;
-  ImageView hic;
+  TextView gui;
+  ImageView iTH;
   
   public f$a(f paramf, View paramView)
   {
-    this.fcy = ((TextView)paramView.findViewById(R.h.title));
-    this.hic = ((ImageView)paramView.findViewById(R.h.icon));
+    AppMethodBeat.i(8844);
+    this.gui = ((TextView)paramView.findViewById(2131820680));
+    this.iTH = ((ImageView)paramView.findViewById(2131820929));
+    AppMethodBeat.o(8844);
   }
 }
 

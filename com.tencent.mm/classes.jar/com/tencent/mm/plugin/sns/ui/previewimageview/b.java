@@ -8,50 +8,60 @@ import java.util.List;
 public abstract class b
   extends a
 {
-  ArrayList<Object> dU = new ArrayList();
   protected Context mContext;
-  int ppC;
+  ArrayList<Object> mItems = new ArrayList();
+  int sku;
   
   protected b(Context paramContext)
   {
     this.mContext = paramContext;
-    this.ppC = 3;
+    this.sku = 3;
+  }
+  
+  public boolean Fk(int paramInt)
+  {
+    return true;
+  }
+  
+  public boolean Fl(int paramInt)
+  {
+    return true;
   }
   
   public final void add(int paramInt, Object paramObject)
   {
-    bF(paramObject);
-    this.dU.add(paramInt, paramObject);
+    cj(paramObject);
+    this.mItems.add(paramInt, paramObject);
     notifyDataSetChanged();
   }
   
   public final void add(Object paramObject)
   {
-    bF(paramObject);
-    this.dU.add(paramObject);
-    notifyDataSetChanged();
-  }
-  
-  public void cJ(List<?> paramList)
-  {
-    clear();
-    cI(paramList);
-    this.dU.addAll(paramList);
+    cj(paramObject);
+    this.mItems.add(paramObject);
     notifyDataSetChanged();
   }
   
   public void clear()
   {
-    this.ppB.clear();
-    this.dU.clear();
+    this.skt.clear();
+    this.mItems.clear();
     notifyDataSetChanged();
   }
   
-  public void eb(int paramInt1, int paramInt2)
+  public void du(List<?> paramList)
+  {
+    clear();
+    dt(paramList);
+    this.mItems.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public void fO(int paramInt1, int paramInt2)
   {
     if (paramInt2 < getCount())
     {
-      ArrayList localArrayList = this.dU;
+      ArrayList localArrayList = this.mItems;
       localArrayList.add(paramInt2, localArrayList.remove(paramInt1));
       notifyDataSetChanged();
     }
@@ -59,7 +69,7 @@ public abstract class b
   
   public final int getColumnCount()
   {
-    return this.ppC;
+    return this.sku;
   }
   
   protected final Context getContext()
@@ -69,27 +79,17 @@ public abstract class b
   
   public int getCount()
   {
-    return this.dU.size();
+    return this.mItems.size();
   }
   
   public Object getItem(int paramInt)
   {
-    return this.dU.get(paramInt);
-  }
-  
-  public boolean yZ(int paramInt)
-  {
-    return true;
-  }
-  
-  public boolean za(int paramInt)
-  {
-    return true;
+    return this.mItems.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.previewimageview.b
  * JD-Core Version:    0.7.0.1
  */

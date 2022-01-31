@@ -1,43 +1,59 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.ah.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bx;
-import com.tencent.mm.model.bx.a;
+import com.tencent.mm.model.bz;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.appbrand.v.c;
+import com.tencent.mm.plugin.appbrand.t.e;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class v$a
-  implements bx.a
+  implements bz.a
 {
-  private static final a fJt = new a();
+  private static final a hcm;
   
-  public static void adn()
+  static
   {
-    ((p)g.t(p.class)).getSysCmdMsgExtension().a("UpdateWxaUsageListNotify", fJt, true);
+    AppMethodBeat.i(129671);
+    hcm = new a();
+    AppMethodBeat.o(129671);
+  }
+  
+  public static void uD()
+  {
+    AppMethodBeat.i(129667);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().a("UpdateWxaUsageListNotify", hcm, true);
+    AppMethodBeat.o(129667);
   }
   
   public static void unregister()
   {
-    ((p)g.t(p.class)).getSysCmdMsgExtension().b("UpdateWxaUsageListNotify", fJt, true);
+    AppMethodBeat.i(129668);
+    ((p)g.G(p.class)).getSysCmdMsgExtension().b("UpdateWxaUsageListNotify", hcm, true);
+    AppMethodBeat.o(129668);
   }
   
   public final void a(e.a parama)
   {
-    parama = aa.a(parama.dBs.svH);
-    if (bk.bl(parama)) {
+    AppMethodBeat.i(129669);
+    parama = aa.a(parama.eyJ.woR);
+    if (bo.isNullOrNil(parama))
+    {
+      AppMethodBeat.o(129669);
       return;
     }
-    c.DS().O(new v.a.1(this, parama));
+    e.aNS().ac(new v.a.1(this, parama));
+    AppMethodBeat.o(129669);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.v.a
  * JD-Core Version:    0.7.0.1
  */

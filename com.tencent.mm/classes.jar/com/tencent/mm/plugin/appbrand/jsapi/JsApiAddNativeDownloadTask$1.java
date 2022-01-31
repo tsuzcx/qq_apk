@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi;
 
 import android.content.Context;
 import android.widget.Toast;
-import com.tencent.mm.plugin.appbrand.y.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class JsApiAddNativeDownloadTask$1
   implements Runnable
@@ -11,12 +11,14 @@ final class JsApiAddNativeDownloadTask$1
   
   public final void run()
   {
-    Toast.makeText(this.val$context, this.val$context.getString(y.j.game_download_network_unavailable), 0).show();
+    AppMethodBeat.i(130375);
+    Toast.makeText(this.val$context, this.val$context.getString(2131300360), 0).show();
+    AppMethodBeat.o(130375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiAddNativeDownloadTask.1
  * JD-Core Version:    0.7.0.1
  */

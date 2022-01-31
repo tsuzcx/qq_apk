@@ -1,5 +1,7 @@
 package com.tencent.mm.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class BaseActivity$6
   implements Runnable
 {
@@ -7,12 +9,14 @@ final class BaseActivity$6
   
   public final void run()
   {
-    this.uGW.supportInvalidateOptionsMenu();
+    AppMethodBeat.i(112450);
+    this.yUh.supportInvalidateOptionsMenu();
+    AppMethodBeat.o(112450);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.BaseActivity.6
  * JD-Core Version:    0.7.0.1
  */

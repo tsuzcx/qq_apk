@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
@@ -14,34 +15,56 @@ import javax.crypto.spec.IvParameterSpec;
 
 public final class k
 {
-  public static int ndz = 100;
-  private int dng = ndz;
-  public String ndA = null;
+  public static int pIQ = 100;
+  private int eeH;
+  public String pIR;
   
   public k(String paramString, int paramInt)
   {
-    y.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
-    this.ndA = paramString;
-    paramString = new File(this.ndA);
+    AppMethodBeat.i(67933);
+    this.pIR = null;
+    this.eeH = pIQ;
+    ab.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
+    this.pIR = paramString;
+    paramString = new File(this.pIR);
     if (!paramString.exists()) {
       paramString.mkdir();
     }
     if (paramInt > 0) {}
     for (;;)
     {
-      this.dng = paramInt;
+      this.eeH = paramInt;
+      AppMethodBeat.o(67933);
       return;
-      paramInt = ndz;
+      paramInt = pIQ;
     }
   }
   
-  private static byte[] Lf(String paramString)
+  private static byte[] Xo(String paramString)
   {
-    return g.o(paramString.toString().getBytes()).substring(8, 16).getBytes();
+    AppMethodBeat.i(67937);
+    paramString = g.w(paramString.toString().getBytes()).substring(8, 16).getBytes();
+    AppMethodBeat.o(67937);
+    return paramString;
+  }
+  
+  private static int Xp(String paramString)
+  {
+    AppMethodBeat.i(67938);
+    paramString = new File(paramString).list();
+    if (paramString != null)
+    {
+      int i = paramString.length;
+      AppMethodBeat.o(67938);
+      return i;
+    }
+    AppMethodBeat.o(67938);
+    return 0;
   }
   
   private static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
+    AppMethodBeat.i(67941);
     try
     {
       paramArrayOfByte2 = new DESKeySpec(paramArrayOfByte2);
@@ -49,17 +72,22 @@ public final class k
       Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
       localCipher.init(2, paramArrayOfByte2, new IvParameterSpec("12345678".getBytes()));
       paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      AppMethodBeat.o(67941);
       return paramArrayOfByte1;
     }
     catch (Exception paramArrayOfByte1)
     {
-      y.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        paramArrayOfByte1 = null;
+      }
     }
-    return null;
   }
   
   private static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
+    AppMethodBeat.i(67940);
     try
     {
       paramArrayOfByte2 = new DESKeySpec(paramArrayOfByte2);
@@ -67,17 +95,172 @@ public final class k
       Cipher localCipher = Cipher.getInstance("DES/CBC/PKCS5Padding");
       localCipher.init(1, paramArrayOfByte2, new IvParameterSpec("12345678".getBytes()));
       paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+      AppMethodBeat.o(67940);
       return paramArrayOfByte1;
     }
     catch (Exception paramArrayOfByte1)
     {
-      y.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+      for (;;)
+      {
+        ab.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        paramArrayOfByte1 = null;
+      }
     }
-    return null;
   }
   
-  private static String q(String paramString, Map<String, String> paramMap)
+  /* Error */
+  public static byte[] readFromFile(String paramString)
   {
+    // Byte code:
+    //   0: ldc 150
+    //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 58	java/io/File
+    //   8: dup
+    //   9: aload_0
+    //   10: invokespecial 59	java/io/File:<init>	(Ljava/lang/String;)V
+    //   13: astore_0
+    //   14: aload_0
+    //   15: invokevirtual 63	java/io/File:exists	()Z
+    //   18: istore_3
+    //   19: iload_3
+    //   20: ifne +10 -> 30
+    //   23: ldc 150
+    //   25: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   28: aconst_null
+    //   29: areturn
+    //   30: aload_0
+    //   31: invokevirtual 154	java/io/File:length	()J
+    //   34: l2i
+    //   35: istore_1
+    //   36: new 156	java/io/FileInputStream
+    //   39: dup
+    //   40: aload_0
+    //   41: invokespecial 159	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   44: astore 4
+    //   46: aload 4
+    //   48: astore_0
+    //   49: iload_1
+    //   50: newarray byte
+    //   52: astore 5
+    //   54: aload 4
+    //   56: astore_0
+    //   57: aload 4
+    //   59: aload 5
+    //   61: invokevirtual 163	java/io/FileInputStream:read	([B)I
+    //   64: istore_2
+    //   65: iload_2
+    //   66: iload_1
+    //   67: if_icmpeq +31 -> 98
+    //   70: aload 4
+    //   72: invokevirtual 166	java/io/FileInputStream:close	()V
+    //   75: ldc 150
+    //   77: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   80: aconst_null
+    //   81: areturn
+    //   82: astore_0
+    //   83: ldc 31
+    //   85: aload_0
+    //   86: ldc 140
+    //   88: iconst_0
+    //   89: anewarray 4	java/lang/Object
+    //   92: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   95: goto -20 -> 75
+    //   98: aload 4
+    //   100: invokevirtual 166	java/io/FileInputStream:close	()V
+    //   103: ldc 150
+    //   105: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   108: aload 5
+    //   110: areturn
+    //   111: astore_0
+    //   112: ldc 31
+    //   114: aload_0
+    //   115: ldc 140
+    //   117: iconst_0
+    //   118: anewarray 4	java/lang/Object
+    //   121: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   124: goto -21 -> 103
+    //   127: astore 5
+    //   129: aconst_null
+    //   130: astore 4
+    //   132: aload 4
+    //   134: astore_0
+    //   135: ldc 31
+    //   137: aload 5
+    //   139: ldc 140
+    //   141: iconst_0
+    //   142: anewarray 4	java/lang/Object
+    //   145: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   148: aload 4
+    //   150: ifnull +8 -> 158
+    //   153: aload 4
+    //   155: invokevirtual 166	java/io/FileInputStream:close	()V
+    //   158: ldc 150
+    //   160: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   163: aconst_null
+    //   164: areturn
+    //   165: astore_0
+    //   166: ldc 31
+    //   168: aload_0
+    //   169: ldc 140
+    //   171: iconst_0
+    //   172: anewarray 4	java/lang/Object
+    //   175: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   178: goto -20 -> 158
+    //   181: astore 4
+    //   183: aconst_null
+    //   184: astore_0
+    //   185: aload_0
+    //   186: ifnull +7 -> 193
+    //   189: aload_0
+    //   190: invokevirtual 166	java/io/FileInputStream:close	()V
+    //   193: ldc 150
+    //   195: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   198: aload 4
+    //   200: athrow
+    //   201: astore_0
+    //   202: ldc 31
+    //   204: aload_0
+    //   205: ldc 140
+    //   207: iconst_0
+    //   208: anewarray 4	java/lang/Object
+    //   211: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   214: goto -21 -> 193
+    //   217: astore 4
+    //   219: goto -34 -> 185
+    //   222: astore 5
+    //   224: goto -92 -> 132
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	227	0	paramString	String
+    //   35	33	1	i	int
+    //   64	4	2	j	int
+    //   18	2	3	bool	boolean
+    //   44	110	4	localFileInputStream	java.io.FileInputStream
+    //   181	18	4	localObject1	Object
+    //   217	1	4	localObject2	Object
+    //   52	57	5	arrayOfByte	byte[]
+    //   127	11	5	localException1	Exception
+    //   222	1	5	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   70	75	82	java/io/IOException
+    //   98	103	111	java/io/IOException
+    //   5	19	127	java/lang/Exception
+    //   30	46	127	java/lang/Exception
+    //   153	158	165	java/io/IOException
+    //   5	19	181	finally
+    //   30	46	181	finally
+    //   189	193	201	java/io/IOException
+    //   49	54	217	finally
+    //   57	65	217	finally
+    //   135	148	217	finally
+    //   49	54	222	java/lang/Exception
+    //   57	65	222	java/lang/Exception
+  }
+  
+  private static String w(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(67936);
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(paramString);
     if (paramMap != null)
@@ -92,323 +275,190 @@ public final class k
         localStringBuffer.append((String)localObject);
       }
     }
-    return g.o(localStringBuffer.toString().getBytes());
+    paramString = g.w(localStringBuffer.toString().getBytes());
+    AppMethodBeat.o(67936);
+    return paramString;
   }
   
   /* Error */
-  public static boolean r(String paramString, byte[] paramArrayOfByte)
+  public static boolean z(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: new 173	java/io/FileOutputStream
-    //   5: dup
-    //   6: aload_0
-    //   7: invokespecial 174	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   10: astore_3
-    //   11: aload_3
-    //   12: astore_0
-    //   13: aload_3
-    //   14: aload_1
-    //   15: invokevirtual 177	java/io/FileOutputStream:write	([B)V
-    //   18: aload_3
-    //   19: astore_0
-    //   20: aload_3
-    //   21: invokevirtual 180	java/io/FileOutputStream:flush	()V
-    //   24: aload_3
-    //   25: invokevirtual 183	java/io/FileOutputStream:close	()V
-    //   28: iconst_1
-    //   29: istore_2
-    //   30: iload_2
-    //   31: ireturn
-    //   32: astore_0
-    //   33: ldc 24
-    //   35: aload_0
-    //   36: ldc 122
-    //   38: iconst_0
-    //   39: anewarray 4	java/lang/Object
-    //   42: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   45: goto -17 -> 28
-    //   48: astore 4
-    //   50: aconst_null
-    //   51: astore_1
-    //   52: aload_1
-    //   53: astore_0
-    //   54: ldc 24
-    //   56: aload 4
-    //   58: ldc 122
-    //   60: iconst_0
-    //   61: anewarray 4	java/lang/Object
-    //   64: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   67: aload_1
-    //   68: ifnull -38 -> 30
-    //   71: aload_1
-    //   72: invokevirtual 183	java/io/FileOutputStream:close	()V
-    //   75: iconst_0
-    //   76: ireturn
-    //   77: astore_0
-    //   78: ldc 24
-    //   80: aload_0
-    //   81: ldc 122
-    //   83: iconst_0
-    //   84: anewarray 4	java/lang/Object
-    //   87: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   90: iconst_0
-    //   91: ireturn
-    //   92: astore_1
-    //   93: aconst_null
-    //   94: astore_0
-    //   95: aload_0
-    //   96: ifnull +7 -> 103
-    //   99: aload_0
-    //   100: invokevirtual 183	java/io/FileOutputStream:close	()V
-    //   103: aload_1
-    //   104: athrow
-    //   105: astore_0
-    //   106: ldc 24
-    //   108: aload_0
-    //   109: ldc 122
-    //   111: iconst_0
-    //   112: anewarray 4	java/lang/Object
-    //   115: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   118: goto -15 -> 103
-    //   121: astore_1
-    //   122: goto -27 -> 95
-    //   125: astore 4
-    //   127: aload_3
-    //   128: astore_1
-    //   129: goto -77 -> 52
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	132	0	paramString	String
-    //   0	132	1	paramArrayOfByte	byte[]
-    //   1	30	2	bool	boolean
-    //   10	118	3	localFileOutputStream	java.io.FileOutputStream
-    //   48	9	4	localException1	Exception
-    //   125	1	4	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   24	28	32	java/io/IOException
-    //   2	11	48	java/lang/Exception
-    //   71	75	77	java/io/IOException
-    //   2	11	92	finally
-    //   99	103	105	java/io/IOException
-    //   13	18	121	finally
-    //   20	24	121	finally
-    //   54	67	121	finally
-    //   13	18	125	java/lang/Exception
-    //   20	24	125	java/lang/Exception
-  }
-  
-  /* Error */
-  public static byte[] readFromFile(String paramString)
-  {
-    // Byte code:
-    //   0: new 52	java/io/File
-    //   3: dup
-    //   4: aload_0
-    //   5: invokespecial 53	java/io/File:<init>	(Ljava/lang/String;)V
-    //   8: astore_0
+    //   0: ldc 209
+    //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 211	java/io/FileOutputStream
+    //   8: dup
     //   9: aload_0
-    //   10: invokevirtual 57	java/io/File:exists	()Z
-    //   13: ifne +5 -> 18
-    //   16: aconst_null
-    //   17: areturn
-    //   18: aload_0
-    //   19: invokevirtual 188	java/io/File:length	()J
-    //   22: l2i
-    //   23: istore_1
-    //   24: new 190	java/io/FileInputStream
-    //   27: dup
-    //   28: aload_0
-    //   29: invokespecial 193	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   32: astore_3
-    //   33: aload_3
-    //   34: astore_0
-    //   35: iload_1
-    //   36: newarray byte
-    //   38: astore 4
-    //   40: aload_3
-    //   41: astore_0
-    //   42: aload_3
-    //   43: aload 4
-    //   45: invokevirtual 197	java/io/FileInputStream:read	([B)I
-    //   48: istore_2
-    //   49: iload_2
-    //   50: iload_1
-    //   51: if_icmpeq +24 -> 75
-    //   54: aload_3
-    //   55: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   58: aconst_null
-    //   59: areturn
-    //   60: astore_0
-    //   61: ldc 24
-    //   63: aload_0
-    //   64: ldc 122
-    //   66: iconst_0
-    //   67: anewarray 4	java/lang/Object
-    //   70: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   73: aconst_null
-    //   74: areturn
-    //   75: aload_3
-    //   76: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   79: aload 4
-    //   81: areturn
-    //   82: astore_0
-    //   83: ldc 24
-    //   85: aload_0
-    //   86: ldc 122
-    //   88: iconst_0
-    //   89: anewarray 4	java/lang/Object
-    //   92: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   95: goto -16 -> 79
-    //   98: astore 4
-    //   100: aconst_null
-    //   101: astore_3
-    //   102: aload_3
-    //   103: astore_0
-    //   104: ldc 24
-    //   106: aload 4
-    //   108: ldc 122
-    //   110: iconst_0
-    //   111: anewarray 4	java/lang/Object
-    //   114: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   117: aload_3
-    //   118: ifnull +62 -> 180
-    //   121: aload_3
-    //   122: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   125: aconst_null
-    //   126: areturn
-    //   127: astore_0
-    //   128: ldc 24
-    //   130: aload_0
-    //   131: ldc 122
-    //   133: iconst_0
-    //   134: anewarray 4	java/lang/Object
-    //   137: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   140: aconst_null
-    //   141: areturn
-    //   142: astore_3
-    //   143: aconst_null
-    //   144: astore_0
-    //   145: aload_0
-    //   146: ifnull +7 -> 153
-    //   149: aload_0
-    //   150: invokevirtual 198	java/io/FileInputStream:close	()V
-    //   153: aload_3
-    //   154: athrow
-    //   155: astore_0
-    //   156: ldc 24
-    //   158: aload_0
-    //   159: ldc 122
-    //   161: iconst_0
-    //   162: anewarray 4	java/lang/Object
-    //   165: invokestatic 126	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   168: goto -15 -> 153
-    //   171: astore_3
-    //   172: goto -27 -> 145
-    //   175: astore 4
-    //   177: goto -75 -> 102
-    //   180: aconst_null
-    //   181: areturn
+    //   10: invokespecial 212	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: astore_0
+    //   16: aload_2
+    //   17: aload_1
+    //   18: invokevirtual 215	java/io/FileOutputStream:write	([B)V
+    //   21: aload_2
+    //   22: astore_0
+    //   23: aload_2
+    //   24: invokevirtual 218	java/io/FileOutputStream:flush	()V
+    //   27: aload_2
+    //   28: invokevirtual 219	java/io/FileOutputStream:close	()V
+    //   31: ldc 209
+    //   33: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   36: iconst_1
+    //   37: ireturn
+    //   38: astore_0
+    //   39: ldc 31
+    //   41: aload_0
+    //   42: ldc 140
+    //   44: iconst_0
+    //   45: anewarray 4	java/lang/Object
+    //   48: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   51: goto -20 -> 31
+    //   54: astore_3
+    //   55: aconst_null
+    //   56: astore_1
+    //   57: aload_1
+    //   58: astore_0
+    //   59: ldc 31
+    //   61: aload_3
+    //   62: ldc 140
+    //   64: iconst_0
+    //   65: anewarray 4	java/lang/Object
+    //   68: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   71: aload_1
+    //   72: ifnull +7 -> 79
+    //   75: aload_1
+    //   76: invokevirtual 219	java/io/FileOutputStream:close	()V
+    //   79: ldc 209
+    //   81: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: iconst_0
+    //   85: ireturn
+    //   86: astore_0
+    //   87: ldc 31
+    //   89: aload_0
+    //   90: ldc 140
+    //   92: iconst_0
+    //   93: anewarray 4	java/lang/Object
+    //   96: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   99: goto -20 -> 79
+    //   102: astore_1
+    //   103: aconst_null
+    //   104: astore_0
+    //   105: aload_0
+    //   106: ifnull +7 -> 113
+    //   109: aload_0
+    //   110: invokevirtual 219	java/io/FileOutputStream:close	()V
+    //   113: ldc 209
+    //   115: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   118: aload_1
+    //   119: athrow
+    //   120: astore_0
+    //   121: ldc 31
+    //   123: aload_0
+    //   124: ldc 140
+    //   126: iconst_0
+    //   127: anewarray 4	java/lang/Object
+    //   130: invokestatic 144	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   133: goto -20 -> 113
+    //   136: astore_1
+    //   137: goto -32 -> 105
+    //   140: astore_3
+    //   141: aload_2
+    //   142: astore_1
+    //   143: goto -86 -> 57
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	182	0	paramString	String
-    //   23	29	1	i	int
-    //   48	4	2	j	int
-    //   32	90	3	localFileInputStream	java.io.FileInputStream
-    //   142	12	3	localObject1	Object
-    //   171	1	3	localObject2	Object
-    //   38	42	4	arrayOfByte	byte[]
-    //   98	9	4	localException1	Exception
-    //   175	1	4	localException2	Exception
+    //   0	146	0	paramString	String
+    //   0	146	1	paramArrayOfByte	byte[]
+    //   13	129	2	localFileOutputStream	java.io.FileOutputStream
+    //   54	8	3	localException1	Exception
+    //   140	1	3	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   54	58	60	java/io/IOException
-    //   75	79	82	java/io/IOException
-    //   0	16	98	java/lang/Exception
-    //   18	33	98	java/lang/Exception
-    //   121	125	127	java/io/IOException
-    //   0	16	142	finally
-    //   18	33	142	finally
-    //   149	153	155	java/io/IOException
-    //   35	40	171	finally
-    //   42	49	171	finally
-    //   104	117	171	finally
-    //   35	40	175	java/lang/Exception
-    //   42	49	175	java/lang/Exception
+    //   27	31	38	java/io/IOException
+    //   5	14	54	java/lang/Exception
+    //   75	79	86	java/io/IOException
+    //   5	14	102	finally
+    //   109	113	120	java/io/IOException
+    //   16	21	136	finally
+    //   23	27	136	finally
+    //   59	71	136	finally
+    //   16	21	140	java/lang/Exception
+    //   23	27	140	java/lang/Exception
   }
   
-  public final boolean a(String paramString, Map<String, String> paramMap, byte[] paramArrayOfByte)
+  public final boolean b(String paramString, Map<String, String> paramMap, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(67935);
     if ((paramString == null) || (paramString.length() == 0) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
-      y.e("Msg.Plugin.HttpRequestCache", "setCache, invalid argument");
+      ab.e("Msg.Plugin.HttpRequestCache", "setCache, invalid argument");
+      AppMethodBeat.o(67935);
       return false;
     }
-    bts();
-    paramString = q(paramString, paramMap);
-    paramMap = encrypt(paramArrayOfByte, Lf(paramString));
+    cdC();
+    paramString = w(paramString, paramMap);
+    paramMap = encrypt(paramArrayOfByte, Xo(paramString));
     if (paramMap == null)
     {
-      y.e("Msg.Plugin.HttpRequestCache", "encrypt fail, cipherText is null");
+      ab.e("Msg.Plugin.HttpRequestCache", "encrypt fail, cipherText is null");
+      AppMethodBeat.o(67935);
       return false;
     }
-    return r(this.ndA + paramString, paramMap);
+    boolean bool = z(this.pIR + paramString, paramMap);
+    AppMethodBeat.o(67935);
+    return bool;
   }
   
-  public final void bts()
+  public final void cdC()
   {
-    int j = 0;
-    Object localObject = new File(this.ndA).list();
-    int i;
-    if (localObject != null)
+    AppMethodBeat.i(67939);
+    if (Xp(this.pIR) < this.eeH)
     {
-      i = localObject.length;
-      if (i >= this.dng) {
-        break label41;
-      }
-    }
-    label41:
-    do
-    {
+      AppMethodBeat.o(67939);
       return;
-      i = 0;
-      break;
-      String[] arrayOfString = new File(this.ndA).list();
-      localObject = null;
-      int k = arrayOfString.length;
-      i = j;
-      while (i < k)
-      {
-        localObject = new File(arrayOfString[i]);
-        ((File)localObject).lastModified();
-        i += 1;
-      }
-    } while (!((File)localObject).exists());
-    ((File)localObject).delete();
+    }
+    String[] arrayOfString = new File(this.pIR).list();
+    File localFile = null;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      localFile = new File(arrayOfString[i]);
+      localFile.lastModified();
+      i += 1;
+    }
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    AppMethodBeat.o(67939);
   }
   
-  public final byte[] p(String paramString, Map<String, String> paramMap)
+  public final byte[] v(String paramString, Map<String, String> paramMap)
   {
+    AppMethodBeat.i(67934);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      y.e("Msg.Plugin.HttpRequestCache", "getCache, invalid argument");
+      ab.e("Msg.Plugin.HttpRequestCache", "getCache, invalid argument");
+      AppMethodBeat.o(67934);
       return null;
     }
-    paramString = q(paramString, paramMap);
-    paramMap = readFromFile(this.ndA + paramString);
+    paramString = w(paramString, paramMap);
+    paramMap = readFromFile(this.pIR + paramString);
     if (paramMap == null)
     {
-      y.i("Msg.Plugin.HttpRequestCache", "readFromFile fail, cipherText is null, read error or cache not exist");
+      ab.i("Msg.Plugin.HttpRequestCache", "readFromFile fail, cipherText is null, read error or cache not exist");
+      AppMethodBeat.o(67934);
       return null;
     }
-    paramString = decrypt(paramMap, Lf(paramString));
+    paramString = decrypt(paramMap, Xo(paramString));
     if (paramString == null)
     {
-      y.e("Msg.Plugin.HttpRequestCache", "decrypt fail, plaintText is null");
+      ab.e("Msg.Plugin.HttpRequestCache", "decrypt fail, plaintText is null");
+      AppMethodBeat.o(67934);
       return null;
     }
+    AppMethodBeat.o(67934);
     return paramString;
   }
 }

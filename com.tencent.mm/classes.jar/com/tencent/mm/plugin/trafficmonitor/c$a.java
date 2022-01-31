@@ -1,9 +1,6 @@
 package com.tencent.mm.plugin.trafficmonitor;
 
-public abstract interface c$a
-{
-  public abstract void bOS();
-}
+public abstract interface c$a {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar

@@ -2,7 +2,7 @@ package com.tencent.tinker.lib.c;
 
 public class b
 {
-  public static int Kj(int paramInt)
+  public static int Td(int paramInt)
   {
     if (paramInt == 3) {
       return -3;
@@ -77,45 +77,45 @@ public class b
     //   114: aload 8
     //   116: astore_2
     //   117: aload_1
-    //   118: invokestatic 77	com/tencent/tinker/c/b/a:S	(Ljava/lang/Object;)V
+    //   118: invokestatic 77	com/tencent/tinker/c/b/a:V	(Ljava/lang/Object;)V
     //   121: aload_2
-    //   122: invokestatic 77	com/tencent/tinker/c/b/a:S	(Ljava/lang/Object;)V
+    //   122: invokestatic 77	com/tencent/tinker/c/b/a:V	(Ljava/lang/Object;)V
     //   125: aload_0
     //   126: athrow
     //   127: aload 9
-    //   129: invokestatic 77	com/tencent/tinker/c/b/a:S	(Ljava/lang/Object;)V
+    //   129: invokestatic 77	com/tencent/tinker/c/b/a:V	(Ljava/lang/Object;)V
     //   132: aload 8
-    //   134: invokestatic 77	com/tencent/tinker/c/b/a:S	(Ljava/lang/Object;)V
+    //   134: invokestatic 77	com/tencent/tinker/c/b/a:V	(Ljava/lang/Object;)V
     //   137: aload_3
     //   138: ifnull +100 -> 238
     //   141: iload 4
     //   143: ifeq +85 -> 228
     //   146: aload_2
     //   147: aload_3
-    //   148: invokestatic 83	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:g	(Ljava/io/File;Ljava/lang/String;)Z
+    //   148: invokestatic 82	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:i	(Ljava/io/File;Ljava/lang/String;)Z
     //   151: istore 7
     //   153: ldc 11
-    //   155: ldc 85
+    //   155: ldc 84
     //   157: iconst_1
     //   158: anewarray 4	java/lang/Object
     //   161: dup
     //   162: iconst_0
     //   163: iload 7
-    //   165: invokestatic 91	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   165: invokestatic 90	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   168: aastore
     //   169: invokestatic 38	com/tencent/tinker/lib/f/a:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   172: iload 7
     //   174: ifne +45 -> 219
     //   177: aload_2
-    //   178: invokevirtual 95	java/io/File:delete	()Z
+    //   178: invokevirtual 94	java/io/File:delete	()Z
     //   181: ifeq +10 -> 191
     //   184: aload_2
-    //   185: invokevirtual 98	java/io/File:exists	()Z
+    //   185: invokevirtual 97	java/io/File:exists	()Z
     //   188: ifeq +31 -> 219
     //   191: ldc 11
     //   193: new 13	java/lang/StringBuilder
     //   196: dup
-    //   197: ldc 100
+    //   197: ldc 99
     //   199: invokespecial 19	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   202: aload_2
     //   203: invokevirtual 25	java/io/File:getPath	()Ljava/lang/String;
@@ -123,7 +123,7 @@ public class b
     //   209: invokevirtual 32	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   212: iconst_0
     //   213: anewarray 4	java/lang/Object
-    //   216: invokestatic 103	com/tencent/tinker/lib/f/a:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   216: invokestatic 102	com/tencent/tinker/lib/f/a:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   219: iload 5
     //   221: iconst_1
     //   222: iadd
@@ -131,7 +131,7 @@ public class b
     //   225: goto -219 -> 6
     //   228: aload_2
     //   229: aload_3
-    //   230: invokestatic 106	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:f	(Ljava/io/File;Ljava/lang/String;)Z
+    //   230: invokestatic 105	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:h	(Ljava/io/File;Ljava/lang/String;)Z
     //   233: istore 7
     //   235: goto -82 -> 153
     //   238: iconst_1

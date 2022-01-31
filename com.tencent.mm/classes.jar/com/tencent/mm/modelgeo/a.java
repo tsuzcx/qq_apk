@@ -1,19 +1,33 @@
 package com.tencent.mm.modelgeo;
 
-import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface a
+public final class a
 {
-  public abstract void a(a.a parama);
-  
-  public abstract void b(a.a parama);
-  
-  public abstract void c(a.a parama);
-  
-  public static abstract interface b
-    extends a.a
+  public static boolean p(double paramDouble)
   {
-    public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2, Bundle paramBundle);
+    AppMethodBeat.i(78104);
+    paramDouble = Math.abs(paramDouble);
+    if ((paramDouble >= 0.0D) && (paramDouble <= 180.0D))
+    {
+      AppMethodBeat.o(78104);
+      return true;
+    }
+    AppMethodBeat.o(78104);
+    return false;
+  }
+  
+  public static boolean q(double paramDouble)
+  {
+    AppMethodBeat.i(78105);
+    paramDouble = Math.abs(paramDouble);
+    if ((paramDouble >= 0.0D) && (paramDouble <= 90.0D))
+    {
+      AppMethodBeat.o(78105);
+      return true;
+    }
+    AppMethodBeat.o(78105);
+    return false;
   }
 }
 

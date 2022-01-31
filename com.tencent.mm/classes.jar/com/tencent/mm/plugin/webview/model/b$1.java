@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.webview.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.net.InetAddress;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,7 +20,8 @@ public final class b$1
   
   public final void run()
   {
-    localObject4 = bn.s(this.rfh, "DNSAdvanceRelateDomain");
+    AppMethodBeat.i(6568);
+    Object localObject4 = br.F(this.uVi, "DNSAdvanceRelateDomain");
     Object localObject3 = new LinkedList();
     int i;
     Object localObject5;
@@ -31,22 +33,24 @@ public final class b$1
       {
         localObject5 = new StringBuilder(".DNSAdvanceRelateDomain.RelateDomain");
         if (i != 0) {
-          break label639;
+          break label651;
         }
         localObject1 = "";
-        label67:
+        label73:
         localObject1 = (String)((Map)localObject4).get(localObject1 + ".$domain");
-        if (!bk.bl((String)localObject1)) {
-          break label648;
+        if (!bo.isNullOrNil((String)localObject1)) {
+          break label660;
         }
-        y.i("MicroMsg.DNSPreGetOptimize", "now break for main domain i = %d", new Object[] { Integer.valueOf(i) });
+        ab.i("MicroMsg.DNSPreGetOptimize", "now break for main domain i = %d", new Object[] { Integer.valueOf(i) });
       }
       i = 0;
     }
+    label147:
+    long l2;
+    long l1;
     for (;;)
     {
       localObject5 = new StringBuilder(".DNSAdvanceRelateDomain.RelateDomain");
-      label141:
       Object localObject6;
       if (i == 0)
       {
@@ -54,34 +58,35 @@ public final class b$1
         localObject5 = (String)((Map)localObject4).get(localObject1 + ".Relate");
         localObject6 = new StringBuilder(".DNSAdvanceRelateDomain.RelateDomain.Relate");
         if (i != 0) {
-          break label682;
+          break label694;
         }
       }
-      label648:
-      label682:
+      label651:
+      label660:
+      label694:
       for (localObject1 = "";; localObject2 = Integer.valueOf(i))
       {
         localObject1 = (String)((Map)localObject4).get(localObject1);
-        if ((!bk.bl((String)localObject5)) || (!bk.bl((String)localObject1))) {
-          break label691;
+        if ((!bo.isNullOrNil((String)localObject5)) || (!bo.isNullOrNil((String)localObject1))) {
+          break label703;
         }
-        y.i("MicroMsg.DNSPreGetOptimize", "now break for releated domain j = %d", new Object[] { Integer.valueOf(i) });
-        localObject4 = this.rfj.rfg.ccd();
+        ab.i("MicroMsg.DNSPreGetOptimize", "now break for releated domain j = %d", new Object[] { Integer.valueOf(i) });
+        localObject4 = this.uVk.uVh.dcg();
         for (;;)
         {
           try
           {
             localObject5 = ((LinkedList)localObject3).iterator();
-            if (((Iterator)localObject5).hasNext())
-            {
-              localObject6 = (String)((Iterator)localObject5).next();
-              l2 = System.currentTimeMillis();
-              localObject1 = null;
+            if (!((Iterator)localObject5).hasNext()) {
+              break label819;
             }
+            localObject6 = (String)((Iterator)localObject5).next();
+            l2 = System.currentTimeMillis();
+            localObject1 = null;
           }
           catch (Exception localException1)
           {
-            y.e("MicroMsg.DNSPreGetOptimize", "get dns failed 2 : %s", new Object[] { localException1.getMessage() });
+            ab.e("MicroMsg.DNSPreGetOptimize", "get dns failed 2 : %s", new Object[] { localException1.getMessage() });
           }
           try
           {
@@ -89,65 +94,68 @@ public final class b$1
             localObject1 = localObject3;
             l1 = System.currentTimeMillis() - l2;
             localObject1 = localObject3;
-            y.i("MicroMsg.DNSPreGetOptimize", "get dns for domain : %s, cost time : %d", new Object[] { localObject6, Long.valueOf(l1) });
+            ab.i("MicroMsg.DNSPreGetOptimize", "get dns for domain : %s, cost time : %d", new Object[] { localObject6, Long.valueOf(l1) });
             localObject1 = localObject3;
           }
           catch (Exception localException2)
           {
-            y.e("MicroMsg.DNSPreGetOptimize", "get dns failed : %s", new Object[] { localException2.getMessage() });
+            ab.e("MicroMsg.DNSPreGetOptimize", "get dns failed : %s", new Object[] { localException2.getMessage() });
             l1 = System.currentTimeMillis() - l2;
             continue;
-            ((an.n)localObject4).bKQ = false;
+            ((as.o)localObject4).csk = false;
             continue;
-            Object localObject2 = ((an.n)localObject4).url.replace(",", "!");
+            Object localObject2 = ((as.o)localObject4).url.replace(",", "!");
             continue;
           }
-          ((an.n)localObject4).gYL = l1;
-          ((an.n)localObject4).url = ((String)localObject6);
+          ((as.o)localObject4).iHc = l1;
+          ((as.o)localObject4).url = ((String)localObject6);
           if (localObject1 == null) {
-            break label781;
+            break;
           }
-          ((an.n)localObject4).bKQ = true;
-          localObject3 = this.rfi;
+          ((as.o)localObject4).csk = true;
+          localObject3 = this.uVj;
           if (localObject3 != null)
           {
-            y.i("MicroMsg.WebviewReporter", "WebviewPreGetDNSReporter, netType = %d, costTime = %d, url = %s, isSuccess = %s", new Object[] { Integer.valueOf(an.ccb()), Long.valueOf(((an.n)localObject4).gYL), ((an.n)localObject4).url, Boolean.valueOf(((an.n)localObject4).bKQ) });
-            localObject6 = ((an.n)localObject4).rgH;
-            l1 = ((an.n)localObject4).gYL;
-            i = aq.getNetType(ae.getContext());
-            if (((an.n)localObject4).url != null) {
-              break label790;
+            ab.i("MicroMsg.WebviewReporter", "WebviewPreGetDNSReporter, netType = %d, costTime = %d, url = %s, isSuccess = %s", new Object[] { Integer.valueOf(as.aDS()), Long.valueOf(((as.o)localObject4).iHc), ((as.o)localObject4).url, Boolean.valueOf(((as.o)localObject4).csk) });
+            localObject6 = ((as.o)localObject4).uWU;
+            l1 = ((as.o)localObject4).iHc;
+            i = at.getNetType(ah.getContext());
+            if (((as.o)localObject4).url != null) {
+              break label802;
             }
-            localObject1 = ((an.n)localObject4).url;
-            an.a((d)localObject3, (String)localObject6, new Object[] { Integer.valueOf(1), Long.valueOf(l1), Integer.valueOf(i), localObject1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(an.access$000()), Integer.valueOf(an.access$100()), Integer.valueOf(((an.n)localObject4).cfb), ((an.n)localObject4).rgH });
-            if (!((an.n)localObject4).bKQ) {
-              h.nFQ.a(32L, 12L, 1L, true);
+            localObject1 = ((as.o)localObject4).url;
+            as.b((d)localObject3, (String)localObject6, new Object[] { Integer.valueOf(1), Long.valueOf(l1), Integer.valueOf(i), localObject1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(as.access$000()), Integer.valueOf(as.access$100()), Integer.valueOf(((as.o)localObject4).cNH), ((as.o)localObject4).uWU });
+            if (!((as.o)localObject4).csk) {
+              h.qsU.idkeyStat(32L, 12L, 1L, true);
             }
-            h.nFQ.a(32L, 1L, 1L, true);
-            h.nFQ.a(32L, 5L, ((an.n)localObject4).gYL, true);
+            h.qsU.idkeyStat(32L, 1L, 1L, true);
+            h.qsU.idkeyStat(32L, 5L, ((as.o)localObject4).iHc, true);
           }
         }
+        AppMethodBeat.o(6568);
         return;
-        label639:
         localObject2 = Integer.valueOf(i);
-        break label67;
+        break label73;
         if (!((LinkedList)localObject3).contains(localObject2)) {
           ((LinkedList)localObject3).add(localObject2);
         }
         i += 1;
         break;
         localObject2 = Integer.valueOf(i);
-        break label141;
+        break label147;
       }
-      label691:
-      if ((!bk.bl((String)localObject5)) && (!((LinkedList)localObject3).contains(localObject5))) {
+      label703:
+      if ((!bo.isNullOrNil((String)localObject5)) && (!((LinkedList)localObject3).contains(localObject5))) {
         ((LinkedList)localObject3).add(localObject5);
       }
-      if ((!bk.bl((String)localObject2)) && (!((LinkedList)localObject3).contains(localObject2))) {
+      if ((!bo.isNullOrNil((String)localObject2)) && (!((LinkedList)localObject3).contains(localObject2))) {
         ((LinkedList)localObject3).add(localObject2);
       }
       i += 1;
     }
+    label802:
+    label819:
+    AppMethodBeat.o(6568);
   }
 }
 

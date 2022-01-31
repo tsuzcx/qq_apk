@@ -1,15 +1,8 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.plugin.gallery.model.GalleryItem.VideoMediaItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.m;
 import com.tencent.mm.plugin.gallery.model.m.a;
-import java.util.ArrayList;
 
 final class ImagePreviewUI$18
   implements m.a
@@ -18,31 +11,14 @@ final class ImagePreviewUI$18
   
   public final void a(m paramm)
   {
-    if (paramm.position != ImagePreviewUI.g(this.kKb).intValue()) {
+    AppMethodBeat.i(21517);
+    if (paramm.position != ImagePreviewUI.g(this.ngC).intValue())
+    {
+      AppMethodBeat.o(21517);
       return;
     }
-    if ((paramm.kHv.eAx >= 300000) || ((paramm.kHv.eAx > 0) && (paramm.kHv.eAx < 1000)))
-    {
-      ImagePreviewUI.a(this.kKb).setVisibility(0);
-      TextView localTextView = ImagePreviewUI.x(this.kKb);
-      if (paramm.kHv.eAx >= 300000) {}
-      for (paramm = this.kKb.getString(R.l.gallery_pic_video_too_long_desc);; paramm = this.kKb.getString(R.l.gallery_pic_video_too_short_desc))
-      {
-        localTextView.setText(paramm);
-        ImagePreviewUI.y(this.kKb).setEnabled(false);
-        ImagePreviewUI.e(this.kKb).setEnabled(false);
-        ImagePreviewUI.y(this.kKb).setTextColor(this.kKb.getResources().getColor(R.e.white_text_color_disabled));
-        if (ImagePreviewUI.d(this.kKb).size() != 0) {
-          break;
-        }
-        this.kKb.enableOptionMenu(false);
-        return;
-      }
-    }
-    ImagePreviewUI.y(this.kKb).setEnabled(true);
-    ImagePreviewUI.e(this.kKb).setEnabled(true);
-    ImagePreviewUI.y(this.kKb).setTextColor(this.kKb.getResources().getColor(R.e.white_text_color));
-    ImagePreviewUI.a(this.kKb).setVisibility(8);
+    ImagePreviewUI.a(this.ngC, paramm.path, paramm.ndF);
+    AppMethodBeat.o(21517);
   }
 }
 

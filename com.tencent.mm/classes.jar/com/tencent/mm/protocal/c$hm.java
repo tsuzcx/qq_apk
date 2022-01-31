@@ -5,7 +5,7 @@ public final class c$hm
 {
   public c$hm()
   {
-    super("sendAppMessageToSpecifiedContact", "sendAppMessageToSpecifiedContact", 168, true);
+    super("reportActionInfo", "reportActionInfo", 234, false);
   }
 }
 

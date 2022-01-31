@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.facedetect.views;
 
 public abstract interface FaceScanRect$b
 {
-  public abstract void aPg();
+  public abstract void bvl();
 }
 
 

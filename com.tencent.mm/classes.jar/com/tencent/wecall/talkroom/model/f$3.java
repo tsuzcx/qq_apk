@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.common.c.c;
 import com.tencent.wecall.talkroom.a.m;
 import java.util.TimerTask;
@@ -11,21 +12,25 @@ final class f$3
   
   public final void run()
   {
-    if (this.xeC == null)
+    AppMethodBeat.i(127872);
+    if (this.BBj == null)
     {
-      c.x("TalkRoomService", new Object[] { "doHelloTimeOutTask scene is null" });
+      c.w("TalkRoomService", new Object[] { "doHelloTimeOutTask scene is null" });
+      AppMethodBeat.o(127872);
       return;
     }
-    if (!f.a(this.xeA, this.xeC.kWU, this.xeC.lvU, this.xeC.xdR, false))
+    if (!f.a(this.BBh, this.BBj.nuW, this.BBj.nTj, this.BBj.tFh, false))
     {
-      c.x("TalkRoomService", new Object[] { "doHelloTimeOutTask isCurrentRoom is false scene.mGroupId: ", this.xeC.kWU, " scene.mRoomId: ", Integer.valueOf(this.xeC.lvU), " scene.mRoomKey: ", Long.valueOf(this.xeC.xdR) });
+      c.w("TalkRoomService", new Object[] { "doHelloTimeOutTask isCurrentRoom is false scene.mGroupId: ", this.BBj.nuW, " scene.mRoomId: ", Integer.valueOf(this.BBj.nTj), " scene.mRoomKey: ", Long.valueOf(this.BBj.tFh) });
+      AppMethodBeat.o(127872);
       return;
     }
-    c.x("TalkRoomService", new Object[] { "doHelloTimeOutTask mGroupId: ", f.b(this.xeA), " mRoomId: ", Integer.valueOf(f.g(this.xeA)), " mRoomKey: ", Long.valueOf(f.h(this.xeA)) });
-    this.xeA.xdZ.KE(330);
-    h.KA(-1606);
-    this.xeA.a(this.xeC.kWU, this.xeC.lvU, this.xeC.xdR, 117, true);
-    f.f(this.xeA).i(-600, null);
+    c.w("TalkRoomService", new Object[] { "doHelloTimeOutTask mGroupId: ", f.b(this.BBh), " mRoomId: ", Integer.valueOf(f.g(this.BBh)), " mRoomKey: ", Long.valueOf(f.h(this.BBh)) });
+    this.BBh.BAG.Tx(330);
+    h.Tt(-1606);
+    this.BBh.a(this.BBj.nuW, this.BBj.nTj, this.BBj.tFh, 117, true);
+    f.f(this.BBh).l(-600, null);
+    AppMethodBeat.o(127872);
   }
 }
 

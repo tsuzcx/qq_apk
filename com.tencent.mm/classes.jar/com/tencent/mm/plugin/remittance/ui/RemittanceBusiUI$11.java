@@ -1,14 +1,35 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.remittance.model.a;
+import com.tencent.mm.protocal.protobuf.adg;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.picker.d.b;
 
 final class RemittanceBusiUI$11
-  implements DialogInterface.OnClickListener
+  implements d.b
 {
   RemittanceBusiUI$11(RemittanceBusiUI paramRemittanceBusiUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void kx(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142184);
+    if (paramBoolean)
+    {
+      localObject = RemittanceBusiUI.H(this.qoF).qkU;
+      if (localObject != null) {
+        break label56;
+      }
+    }
+    label56:
+    for (Object localObject = "";; localObject = a.a((adg)localObject))
+    {
+      ab.i("MicroMsg.RemittanceBusiUI", "onFavorSelected %s ", new Object[] { localObject });
+      RemittanceBusiUI.I(this.qoF);
+      AppMethodBeat.o(142184);
+      return;
+    }
+  }
 }
 
 

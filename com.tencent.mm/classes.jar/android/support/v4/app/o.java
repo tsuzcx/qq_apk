@@ -1,34 +1,16 @@
 package android.support.v4.app;
 
-public abstract class o
+import android.app.Notification;
+import android.os.IInterface;
+
+public abstract interface o
+  extends IInterface
 {
-  public abstract o a(int paramInt, Fragment paramFragment);
+  public abstract void I(String paramString);
   
-  public abstract o a(int paramInt, Fragment paramFragment, String paramString);
+  public abstract void a(String paramString1, int paramInt, String paramString2, Notification paramNotification);
   
-  public abstract o a(Fragment paramFragment);
-  
-  public abstract o a(Fragment paramFragment, String paramString);
-  
-  public abstract o b(int paramInt, Fragment paramFragment);
-  
-  public abstract o b(Fragment paramFragment);
-  
-  public abstract o bI();
-  
-  public abstract o c(Fragment paramFragment);
-  
-  public abstract int commit();
-  
-  public abstract int commitAllowingStateLoss();
-  
-  public abstract void commitNow();
-  
-  public abstract void commitNowAllowingStateLoss();
-  
-  public abstract o d(Fragment paramFragment);
-  
-  public abstract o m(int paramInt1, int paramInt2);
+  public abstract void b(String paramString1, int paramInt, String paramString2);
 }
 
 

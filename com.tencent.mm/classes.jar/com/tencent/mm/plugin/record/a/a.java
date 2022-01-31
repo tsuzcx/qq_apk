@@ -1,11 +1,17 @@
 package com.tencent.mm.plugin.record.a;
 
+import com.tencent.mm.kernel.b.d;
+
 public abstract interface a
-  extends com.tencent.mm.kernel.b.d
+  extends d
 {
-  public abstract d getRecordMsgCDNStorage();
+  public abstract b getRecordMsgCDNService();
   
-  public abstract e getRecordMsgInfoStorage();
+  public abstract e getRecordMsgCDNStorage();
+  
+  public abstract h getRecordMsgService();
+  
+  public abstract g getRecordMsgStorage();
 }
 
 

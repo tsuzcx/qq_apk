@@ -5,127 +5,143 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mm.as.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.o;
 import com.tencent.mm.plugin.emoji.a.a.d;
-import com.tencent.mm.plugin.emoji.e.e;
-import com.tencent.mm.plugin.emoji.f.d;
-import com.tencent.mm.plugin.emoji.f.h;
-import com.tencent.mm.protocal.c.vn;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.emoji.a.a.f;
+import com.tencent.mm.plugin.emoji.e.g;
+import com.tencent.mm.plugin.emoji.model.e;
+import com.tencent.mm.protocal.protobuf.EmotionSummary;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
   extends com.tencent.mm.plugin.emoji.a.a.a
 {
   private final String TAG = "MicroMsg.emoji.EmojiMineAdapter";
-  private ProgressDialog faz;
+  private ProgressDialog gsr;
   
   public c(Context paramContext)
   {
     super(paramContext);
   }
   
-  protected final com.tencent.mm.plugin.emoji.a.a.c a(com.tencent.mm.plugin.emoji.model.f paramf)
+  public final com.tencent.mm.plugin.emoji.a.a.c a(e parame)
   {
-    return new d(paramf);
-  }
-  
-  protected final void aGP()
-  {
-    super.aGP();
-  }
-  
-  public final int aGQ()
-  {
-    return 0;
-  }
-  
-  public final int aGR()
-  {
-    return 0;
-  }
-  
-  public final int aGS()
-  {
-    return 0;
+    AppMethodBeat.i(52730);
+    parame = new d(parame);
+    AppMethodBeat.o(52730);
+    return parame;
   }
   
   public final View b(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(52728);
     paramViewGroup = (c.a)paramView.getTag();
-    Object localObject = pP(paramInt);
+    Object localObject = uj(paramInt);
     if ((paramViewGroup != null) && (localObject != null))
     {
-      localObject = ((com.tencent.mm.plugin.emoji.a.a.f)localObject).iVU;
+      localObject = ((f)localObject).lfa;
       if (localObject != null)
       {
-        if (!com.tencent.mm.plugin.emoji.h.a.d((vn)localObject)) {
-          break label80;
+        if (!com.tencent.mm.plugin.emoji.h.a.g((EmotionSummary)localObject)) {
+          break label83;
         }
-        paramViewGroup.setTitle(f.h.emoji_store_tuzi_title);
-        paramViewGroup.pI(f.d.icon_002_cover);
+        paramViewGroup.bkn();
+        paramViewGroup.bkp();
       }
     }
-    while (paramInt + 1 == getCount())
+    for (;;)
     {
-      paramViewGroup.iUw.setBackgroundResource(f.d.comm_list_item_selector_no_divider);
+      if (paramInt + 1 == getCount()) {
+        paramViewGroup.ldA.setBackgroundResource(2130838447);
+      }
+      AppMethodBeat.o(52728);
       return paramView;
-      label80:
-      if (!bk.bl(((vn)localObject).sSc)) {
-        paramViewGroup.setTitle(((vn)localObject).sSc);
+      label83:
+      if (!bo.isNullOrNil(((EmotionSummary)localObject).PackName)) {
+        paramViewGroup.setTitle(((EmotionSummary)localObject).PackName);
       }
       for (;;)
       {
-        if (bk.bl(((vn)localObject).kSy)) {
-          break label154;
+        if (bo.isNullOrNil(((EmotionSummary)localObject).IconUrl)) {
+          break label157;
         }
-        o.ON().a(((vn)localObject).kSy, paramViewGroup.aGE(), e.cJ(((vn)localObject).syc, ((vn)localObject).kSy));
+        o.ahG().a(((EmotionSummary)localObject).IconUrl, paramViewGroup.bko(), g.dK(((EmotionSummary)localObject).ProductID, ((EmotionSummary)localObject).IconUrl));
         break;
-        paramViewGroup.setTitle(((vn)localObject).syc);
+        paramViewGroup.setTitle(((EmotionSummary)localObject).ProductID);
       }
-      label154:
-      y.i("MicroMsg.emoji.EmojiMineAdapter", "Icon rul is null");
-      paramViewGroup.aGE().setImageDrawable(null);
+      label157:
+      ab.i("MicroMsg.emoji.EmojiMineAdapter", "Icon rul is null");
+      paramViewGroup.bko().setImageDrawable(null);
     }
-    paramViewGroup.iUw.setBackgroundResource(f.d.comm_list_item_selector);
-    return paramView;
   }
   
-  public final void bt(String paramString, int paramInt)
+  public final void bX(String paramString, int paramInt)
   {
+    AppMethodBeat.i(52731);
     if (paramInt == 7) {
-      super.bt(paramString, paramInt);
+      super.bX(paramString, paramInt);
     }
+    AppMethodBeat.o(52731);
   }
   
-  protected final a c(Context paramContext, View paramView)
+  public final void bkB()
   {
-    paramContext = new c.a(this, paramContext, paramView);
-    paramContext.a(this.iVJ);
-    return paramContext;
+    AppMethodBeat.i(52733);
+    super.bkB();
+    AppMethodBeat.o(52733);
+  }
+  
+  public final int bkC()
+  {
+    return 0;
+  }
+  
+  public final int bkD()
+  {
+    return 0;
+  }
+  
+  public final int bkE()
+  {
+    return 0;
   }
   
   public final void clear()
   {
-    if (this.faz != null) {
-      this.faz.cancel();
+    AppMethodBeat.i(52732);
+    if (this.gsr != null) {
+      this.gsr.cancel();
     }
     super.clear();
+    AppMethodBeat.o(52732);
+  }
+  
+  public final a d(Context paramContext, View paramView)
+  {
+    AppMethodBeat.i(52729);
+    paramContext = new c.a(this, paramContext, paramView);
+    paramContext.a(this.leP);
+    AppMethodBeat.o(52729);
+    return paramContext;
   }
   
   public final void notifyDataSetChanged()
   {
-    if (this.iVI == null) {
-      this.iVI = a(null);
+    AppMethodBeat.i(52727);
+    if (this.leO == null) {
+      this.leO = a(null);
     }
     super.notifyDataSetChanged();
+    AppMethodBeat.o(52727);
   }
   
-  public final void pM(int paramInt) {}
+  public final void ug(int paramInt) {}
   
-  public final void pN(int paramInt) {}
+  public final void uh(int paramInt) {}
   
-  public final void pO(int paramInt) {}
+  public final void ui(int paramInt) {}
 }
 
 

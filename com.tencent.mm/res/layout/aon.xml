@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/sz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fillViewport="true"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="vertical" android:id="@id/b9g" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="horizontal" android:id="@id/dv5" android:background="@drawable/z3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/mp">
-                <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_gravity="center_vertical" android:id="@id/dv6" android:layout_marginLeft="10.0dip" android:layout_weight="1.0" style="@style/kn" />
-                <ImageView android:layout_gravity="center_vertical" android:id="@id/ap8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/z7" />
-            </LinearLayout>
-            <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:src="@raw/trust_friend" />
+    <ScrollView android:scrollbars="none" style="@style/ni">
+        <LinearLayout android:gravity="center_horizontal" android:paddingLeft="13.0dip" android:paddingRight="13.0dip" style="@style/l0">
+            <ImageView android:id="@id/e0i" android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:gravity="center" android:id="@id/e0j" android:paddingBottom="20.0dip" android:lineSpacingExtra="4.0dip" style="@style/l1" />
         </LinearLayout>
-        <TextView android:textSize="@dimen/dr" android:gravity="center" android:paddingTop="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/e5d" />
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/pf" android:layout_gravity="center_horizontal" android:id="@id/dv7" android:paddingLeft="14.0dip" android:paddingTop="19.0dip" android:paddingRight="14.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/e5h" />
-        <TextView android:id="@id/dv8" android:paddingLeft="14.0dip" android:paddingTop="14.0dip" android:paddingRight="14.0dip" android:text="@string/e5e" style="@style/jj" />
-        <TextView android:layout_marginLeft="14.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="14.0dip" style="@style/kf" />
-        <RelativeLayout android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <com.tencent.mm.ui.widget.MMScrollGridView android:id="@id/dv9" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="@dimen/a0f" android:layout_marginRight="14.0dip" android:listSelector="@drawable/a3d" android:overScrollMode="never" />
-        </RelativeLayout>
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

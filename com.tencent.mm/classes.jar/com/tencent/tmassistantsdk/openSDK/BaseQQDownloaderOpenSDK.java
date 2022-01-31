@@ -131,8 +131,7 @@ public abstract class BaseQQDownloaderOpenSDK
   
   protected String formatEncryptUrl(String paramString)
   {
-    paramString = URLEncoder.encode(OpenSDKTool4Assistant.encryptUri(paramString));
-    return "tmast://encrypt?encryptdata=" + paramString;
+    return "tmast://encrypt?encryptdata=".concat(String.valueOf(URLEncoder.encode(OpenSDKTool4Assistant.encryptUri(paramString))));
   }
   
   protected String formatIntentUriPath(int paramInt, Map<String, String> paramMap)
@@ -162,7 +161,7 @@ public abstract class BaseQQDownloaderOpenSDK
             str1 = (String)((Map.Entry)localObject).getKey();
             String str3 = (String)((Map.Entry)localObject).getValue();
             if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str3))) {
-              break label298;
+              break label293;
             }
             if (paramInt <= 0)
             {
@@ -175,7 +174,7 @@ public abstract class BaseQQDownloaderOpenSDK
       }
       break;
     }
-    label298:
+    label293:
     for (;;)
     {
       paramInt += 1;
@@ -193,7 +192,7 @@ public abstract class BaseQQDownloaderOpenSDK
       localObject = "&";
       break label171;
       paramMap = str2 + (String)localObject;
-      TMLog.i("BaseQQDownloaderOpenSDK", "path:" + paramMap);
+      TMLog.i("BaseQQDownloaderOpenSDK", "path:".concat(String.valueOf(paramMap)));
       return formatEncryptUrl(paramMap);
     }
   }
@@ -319,7 +318,7 @@ public abstract class BaseQQDownloaderOpenSDK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.BaseQQDownloaderOpenSDK
  * JD-Core Version:    0.7.0.1
  */

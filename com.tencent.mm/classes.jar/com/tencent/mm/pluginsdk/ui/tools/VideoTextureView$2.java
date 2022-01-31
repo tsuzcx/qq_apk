@@ -1,38 +1,32 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnVideoSizeChangedListener;
-import com.tencent.mm.sdk.platformtools.y;
+import android.view.Surface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class VideoTextureView$2
-  implements MediaPlayer.OnVideoSizeChangedListener
+  implements Runnable
 {
-  VideoTextureView$2(VideoTextureView paramVideoTextureView) {}
+  VideoTextureView$2(VideoTextureView paramVideoTextureView, Surface paramSurface) {}
   
-  public final void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public final void run()
   {
+    AppMethodBeat.i(146030);
     try
     {
-      if (paramMediaPlayer != VideoTextureView.a(this.snF))
+      if ((this.wfH != null) && (this.wfH.isValid()))
       {
-        y.w("MicroMsg.VideoTextureView", "another player on video size changed, return now.[%s, %s]", new Object[] { paramMediaPlayer, VideoTextureView.a(this.snF) });
-        return;
+        ab.i("MicroMsg.VideoTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.wga.hashCode()), Integer.valueOf(this.wfH.hashCode()) });
+        this.wfH.release();
       }
-      VideoTextureView.a(this.snF, paramMediaPlayer.getVideoWidth());
-      VideoTextureView.b(this.snF, paramMediaPlayer.getVideoHeight());
-      y.i("MicroMsg.VideoTextureView", "on size change size:( " + VideoTextureView.b(this.snF) + " , " + VideoTextureView.c(this.snF) + " )");
-      if (VideoTextureView.d(this.snF) != null) {
-        VideoTextureView.d(this.snF).cw(VideoTextureView.b(this.snF), VideoTextureView.c(this.snF));
-      }
+      AppMethodBeat.o(146030);
+      return;
     }
-    catch (Exception paramMediaPlayer)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        y.printErrStackTrace("MicroMsg.VideoTextureView", paramMediaPlayer, "on video size changed error[%d, %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      }
+      ab.printErrStackTrace("MicroMsg.VideoTextureView", localException, "release Surface error", new Object[0]);
+      AppMethodBeat.o(146030);
     }
-    VideoTextureView.e(this.snF);
   }
 }
 

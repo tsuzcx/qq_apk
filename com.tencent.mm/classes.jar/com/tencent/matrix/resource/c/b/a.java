@@ -5,6 +5,7 @@ import com.tencent.matrix.resource.c.a.c;
 import java.io.EOFException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
 
 public final class a
 {
@@ -17,7 +18,7 @@ public final class a
   
   public static Object a(InputStream paramInputStream, c paramc, int paramInt)
   {
-    switch (1.bpO[paramc.ordinal()])
+    switch (1.bPP[paramc.ordinal()])
     {
     default: 
       return null;
@@ -29,19 +30,19 @@ public final class a
         return Boolean.valueOf(bool);
       }
     case 3: 
-      return Character.valueOf((char)g(paramInputStream));
+      return Character.valueOf((char)h(paramInputStream));
     case 4: 
-      return Float.valueOf(Float.intBitsToFloat(h(paramInputStream)));
+      return Float.valueOf(Float.intBitsToFloat(i(paramInputStream)));
     case 5: 
-      return Double.valueOf(Double.longBitsToDouble(i(paramInputStream)));
+      return Double.valueOf(Double.longBitsToDouble(j(paramInputStream)));
     case 6: 
       return Byte.valueOf((byte)paramInputStream.read());
     case 7: 
-      return Short.valueOf(g(paramInputStream));
+      return Short.valueOf(h(paramInputStream));
     case 8: 
-      return Integer.valueOf(h(paramInputStream));
+      return Integer.valueOf(i(paramInputStream));
     }
-    return Long.valueOf(i(paramInputStream));
+    return Long.valueOf(j(paramInputStream));
   }
   
   public static void a(InputStream paramInputStream, byte[] paramArrayOfByte, long paramLong)
@@ -70,26 +71,21 @@ public final class a
   
   public static void a(OutputStream paramOutputStream, b paramb)
   {
-    paramOutputStream.write(paramb.bpC);
+    paramOutputStream.write(paramb.bPD);
   }
   
   public static int b(InputStream paramInputStream, c paramc, int paramInt)
   {
     paramInt = paramc.getSize(paramInt);
-    b(paramInputStream, paramInt);
+    c(paramInputStream, paramInt);
     return paramInt;
   }
   
-  public static void b(InputStream paramInputStream, long paramLong)
+  public static String b(InputStream paramInputStream, long paramLong)
   {
-    long l2;
-    for (long l1 = 0L; l1 < paramLong; l1 += l2)
-    {
-      l2 = paramInputStream.skip(paramLong - l1);
-      if (l2 < 0L) {
-        throw new EOFException();
-      }
-    }
+    byte[] arrayOfByte = new byte[(int)paramLong];
+    a(paramInputStream, arrayOfByte, paramLong);
+    return new String(arrayOfByte, Charset.forName("UTF-8"));
   }
   
   public static void b(OutputStream paramOutputStream, int paramInt)
@@ -112,7 +108,19 @@ public final class a
     paramOutputStream.write(arrayOfByte, 0, (int)(0xFFF & paramLong));
   }
   
-  public static short g(InputStream paramInputStream)
+  public static void c(InputStream paramInputStream, long paramLong)
+  {
+    long l2;
+    for (long l1 = 0L; l1 < paramLong; l1 += l2)
+    {
+      l2 = paramInputStream.skip(paramLong - l1);
+      if (l2 < 0L) {
+        throw new EOFException();
+      }
+    }
+  }
+  
+  public static short h(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -122,7 +130,7 @@ public final class a
     return (short)(i << 8 | j);
   }
   
-  public static int h(InputStream paramInputStream)
+  public static int i(InputStream paramInputStream)
   {
     int i = paramInputStream.read();
     int j = paramInputStream.read();
@@ -134,7 +142,7 @@ public final class a
     return (i << 24) + (j << 16) + (k << 8) + m;
   }
   
-  public static long i(InputStream paramInputStream)
+  public static long j(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[8];
     a(paramInputStream, arrayOfByte, 8L);
@@ -146,6 +154,15 @@ public final class a
     long l6 = (arrayOfByte[5] & 0xFF) << 16;
     long l7 = (arrayOfByte[6] & 0xFF) << 8;
     return (arrayOfByte[7] & 0xFF) + ((l1 << 56) + (l2 << 48) + (l3 << 40) + (l4 << 32) + (l5 << 24) + l6 + l7);
+  }
+  
+  public static String k(InputStream paramInputStream)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    for (int i = paramInputStream.read(); i != 0; i = paramInputStream.read()) {
+      localStringBuilder.append((char)i);
+    }
+    return localStringBuilder.toString();
   }
 }
 

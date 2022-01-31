@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.jsapi.e;
 
 import android.os.Message;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.d.c;
 import com.tencent.mm.sdk.d.d;
 
@@ -11,30 +12,40 @@ final class l$3
   
   public final void enter()
   {
+    AppMethodBeat.i(93836);
     super.enter();
-    if (this.grQ.grM != null) {
-      this.grQ.grM.uc("StateSuspend");
+    if (this.hNo.hNk != null) {
+      this.hNo.hNk.Cc("StateSuspend");
     }
-  }
-  
-  public final boolean g(Message paramMessage)
-  {
-    if (2 == paramMessage.what)
-    {
-      this.grQ.b(this.grQ.grN);
-      return true;
-    }
-    if (4 == paramMessage.what)
-    {
-      this.grQ.b(this.grQ.grO);
-      return true;
-    }
-    return super.g(paramMessage);
+    AppMethodBeat.o(93836);
   }
   
   public final String getName()
   {
-    return this.grQ.mName + "$StateSuspend";
+    AppMethodBeat.i(93834);
+    String str = this.hNo.mName + "$StateSuspend";
+    AppMethodBeat.o(93834);
+    return str;
+  }
+  
+  public final boolean k(Message paramMessage)
+  {
+    AppMethodBeat.i(93835);
+    if (2 == paramMessage.what)
+    {
+      this.hNo.b(this.hNo.hNl);
+      AppMethodBeat.o(93835);
+      return true;
+    }
+    if (4 == paramMessage.what)
+    {
+      this.hNo.b(this.hNo.hNm);
+      AppMethodBeat.o(93835);
+      return true;
+    }
+    boolean bool = super.k(paramMessage);
+    AppMethodBeat.o(93835);
+    return bool;
   }
 }
 

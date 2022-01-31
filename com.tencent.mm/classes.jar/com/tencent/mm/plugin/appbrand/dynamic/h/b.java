@@ -1,55 +1,72 @@
 package com.tencent.mm.plugin.appbrand.dynamic.h;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.e;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.wx_extension.b.b.a;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class b
 {
-  private static final am fWY = new am(new b.1(), true);
+  private static final ap hqy;
   
-  public static void afx()
+  static
   {
-    if (!e.fE("com.tencent.mm:support"))
+    AppMethodBeat.i(10953);
+    hqy = new ap(new b.1(), true);
+    AppMethodBeat.o(10953);
+  }
+  
+  public static void aAb()
+  {
+    AppMethodBeat.i(10950);
+    if (!e.lZ("com.tencent.mm:support"))
     {
-      y.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
+      ab.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
+      AppMethodBeat.o(10950);
       return;
     }
-    int i = b.a.Cg().size();
+    int i = b.a.PY().size();
     if (i != 0)
     {
-      y.i("MicroMsg.DynamicProcessPerformance", "try to exit process, but has many tasks(%d) running. Abort it.", new Object[] { Integer.valueOf(i) });
+      ab.i("MicroMsg.DynamicProcessPerformance", "try to exit process, but has many tasks(%d) running. Abort it.", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(10950);
       return;
     }
-    y.i("MicroMsg.DynamicProcessPerformance", "post delayed(60s) to kill the support process.");
-    fWY.S(60000L, 60000L);
+    ab.i("MicroMsg.DynamicProcessPerformance", "post delayed(60s) to kill the support process.");
+    hqy.ag(60000L, 60000L);
+    AppMethodBeat.o(10950);
   }
   
-  public static void afy()
+  public static void aAc()
   {
-    if (!e.fE("com.tencent.mm:support"))
+    AppMethodBeat.i(10951);
+    if (!e.lZ("com.tencent.mm:support"))
     {
-      y.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
+      ab.i("MicroMsg.DynamicProcessPerformance", "try to kill process failed, current process is not the support process.");
+      AppMethodBeat.o(10951);
       return;
     }
-    y.i("MicroMsg.DynamicProcessPerformance", "kill support process");
-    fWY.postDelayed(new b.2(), 500L);
+    ab.i("MicroMsg.DynamicProcessPerformance", "kill support process");
+    hqy.postDelayed(new b.2(), 500L);
+    AppMethodBeat.o(10951);
   }
   
-  public static void afz()
+  public static void aAd()
   {
-    y.i("MicroMsg.DynamicProcessPerformance", "killAllProcess");
-    if (com.tencent.mm.ipcinvoker.b.BT().fC("com.tencent.mm:tools")) {
+    AppMethodBeat.i(10952);
+    ab.i("MicroMsg.DynamicProcessPerformance", "killAllProcess");
+    if (com.tencent.mm.ipcinvoker.b.PK().lX("com.tencent.mm:tools")) {
       f.a("com.tencent.mm:tools", null, c.class, new b.3());
     }
-    if (com.tencent.mm.ipcinvoker.b.BT().fC("com.tencent.mm:toolsmp")) {
+    if (com.tencent.mm.ipcinvoker.b.PK().lX("com.tencent.mm:toolsmp")) {
       f.a("com.tencent.mm:toolsmp", null, c.class, new b.4());
     }
-    if (com.tencent.mm.ipcinvoker.b.BT().fC("com.tencent.mm:support")) {
+    if (com.tencent.mm.ipcinvoker.b.PK().lX("com.tencent.mm:support")) {
       f.a("com.tencent.mm:support", null, c.class, new b.5());
     }
+    AppMethodBeat.o(10952);
   }
 }
 

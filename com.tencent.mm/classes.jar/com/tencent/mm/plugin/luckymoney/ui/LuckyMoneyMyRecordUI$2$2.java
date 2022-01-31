@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.n.d;
 
 final class LuckyMoneyMyRecordUI$2$2
@@ -10,25 +11,31 @@ final class LuckyMoneyMyRecordUI$2$2
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(42757);
     switch (paramMenuItem.getItemId())
     {
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-      } while (LuckyMoneyMyRecordUI.a(this.lVX.lVW) == 2);
-      LuckyMoneyMyRecordUI.a(this.lVX.lVW, 2);
-      LuckyMoneyMyRecordUI.b(this.lVX.lVW);
-      LuckyMoneyMyRecordUI.c(this.lVX.lVW);
-      LuckyMoneyMyRecordUI.d(this.lVX.lVW);
+      AppMethodBeat.o(42757);
       return;
-    } while (LuckyMoneyMyRecordUI.a(this.lVX.lVW) == 1);
-    LuckyMoneyMyRecordUI.a(this.lVX.lVW, 1);
-    LuckyMoneyMyRecordUI.b(this.lVX.lVW);
-    LuckyMoneyMyRecordUI.c(this.lVX.lVW);
-    LuckyMoneyMyRecordUI.d(this.lVX.lVW);
+      if (LuckyMoneyMyRecordUI.a(this.oub.oua) != 2)
+      {
+        LuckyMoneyMyRecordUI.a(this.oub.oua, 2);
+        LuckyMoneyMyRecordUI.b(this.oub.oua);
+        LuckyMoneyMyRecordUI.c(this.oub.oua);
+        LuckyMoneyMyRecordUI.d(this.oub.oua);
+        AppMethodBeat.o(42757);
+        return;
+        if (LuckyMoneyMyRecordUI.a(this.oub.oua) != 1)
+        {
+          LuckyMoneyMyRecordUI.a(this.oub.oua, 1);
+          LuckyMoneyMyRecordUI.b(this.oub.oua);
+          LuckyMoneyMyRecordUI.c(this.oub.oua);
+          LuckyMoneyMyRecordUI.d(this.oub.oua);
+        }
+      }
+    }
   }
 }
 

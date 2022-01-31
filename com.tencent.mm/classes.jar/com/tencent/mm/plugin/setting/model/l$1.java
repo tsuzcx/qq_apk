@@ -1,10 +1,13 @@
 package com.tencent.mm.plugin.setting.model;
 
 import android.database.Cursor;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.r;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k;
+import com.tencent.mm.plugin.messenger.foundation.a.j;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.bq;
@@ -19,17 +22,18 @@ public final class l$1
   
   public final void run()
   {
-    l locall = this.nRa;
+    AppMethodBeat.i(126865);
+    l locall = this.qEX;
     long l = System.currentTimeMillis();
     LinkedList localLinkedList = new LinkedList();
-    Object localObject1 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).Fw();
+    Object localObject1 = ((j)g.E(j.class)).YA();
     Object localObject2 = new ArrayList();
     ((List)localObject2).add("tmessage");
     ((List)localObject2).add("officialaccounts");
     ((List)localObject2).add("filehelper");
     ((List)localObject2).add("helper_entry");
-    ((List)localObject2).add(q.Gj());
-    bq localbq = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.r(com.tencent.mm.plugin.messenger.foundation.a.j.class)).FE().Ic("@t.qq.com");
+    ((List)localObject2).add(r.Zn());
+    bq localbq = ((j)g.E(j.class)).YI().TL("@t.qq.com");
     if (localbq != null) {
       ((List)localObject2).add(localbq.name);
     }
@@ -41,14 +45,15 @@ public final class l$1
       while (!((Cursor)localObject1).isAfterLast())
       {
         localObject2 = new ad();
-        ((ad)localObject2).d((Cursor)localObject1);
-        localLinkedList.add(((ao)localObject2).field_username);
+        ((ad)localObject2).convertFrom((Cursor)localObject1);
+        localLinkedList.add(((aq)localObject2).field_username);
         ((Cursor)localObject1).moveToNext();
       }
       ((Cursor)localObject1).close();
     }
-    y.i("MicroMsg.UnfamiliarContactEngine", "[getQuery] cost:%sms list size:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localLinkedList.size()) });
+    ab.i("MicroMsg.UnfamiliarContactEngine", "[getQuery] cost:%sms list size:%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Integer.valueOf(localLinkedList.size()) });
     l.a(locall, localLinkedList);
+    AppMethodBeat.o(126865);
   }
 }
 

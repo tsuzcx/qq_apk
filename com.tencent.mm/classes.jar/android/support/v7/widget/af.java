@@ -1,179 +1,249 @@
 package android.support.v7.widget;
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.PointF;
-import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 
-public class af
-  extends RecyclerView.r
+public final class af
+  extends at
 {
-  public final DecelerateInterpolator Mh = new DecelerateInterpolator();
-  protected PointF aeA;
-  private final float aeB = a(paramContext.getResources().getDisplayMetrics());
-  protected int aeC = 0;
-  protected int aeD = 0;
-  protected final LinearInterpolator aez = new LinearInterpolator();
+  private aj agR;
+  private aj agS;
   
-  public af(Context paramContext) {}
-  
-  private static int ab(int paramInt1, int paramInt2)
+  private int a(RecyclerView.i parami, aj paramaj, int paramInt1, int paramInt2)
   {
-    int i = paramInt1 - paramInt2;
-    paramInt2 = i;
-    if (paramInt1 * i <= 0) {
-      paramInt2 = 0;
+    int[] arrayOfInt = aG(paramInt1, paramInt2);
+    float f = b(parami, paramaj);
+    if (f <= 0.0F) {
+      return 0;
     }
-    return paramInt2;
+    if (Math.abs(arrayOfInt[0]) > Math.abs(arrayOfInt[1])) {}
+    for (paramInt1 = arrayOfInt[0];; paramInt1 = arrayOfInt[1]) {
+      return Math.round(paramInt1 / f);
+    }
   }
   
-  public float a(DisplayMetrics paramDisplayMetrics)
+  private static int a(RecyclerView.i parami, View paramView, aj paramaj)
   {
-    return 25.0F / paramDisplayMetrics.densityDpi;
+    int j = paramaj.bh(paramView);
+    int k = paramaj.bl(paramView) / 2;
+    if (parami.getClipToPadding()) {}
+    for (int i = paramaj.iI() + paramaj.iK() / 2;; i = paramaj.getEnd() / 2) {
+      return k + j - i;
+    }
   }
   
-  protected final void a(int paramInt1, int paramInt2, RecyclerView.r.a parama)
+  private static View a(RecyclerView.i parami, aj paramaj)
   {
-    if (this.acI.afG.getChildCount() == 0) {
-      stop();
-    }
+    Object localObject1 = null;
+    Object localObject2 = null;
+    int n = parami.getChildCount();
+    if (n == 0) {}
+    int j;
+    int i;
+    int k;
+    label45:
     do
     {
-      return;
-      this.aeC = ab(this.aeC, paramInt1);
-      this.aeD = ab(this.aeD, paramInt2);
-    } while ((this.aeC != 0) || (this.aeD != 0));
-    PointF localPointF = bD(this.ahA);
-    if ((localPointF == null) || ((localPointF.x == 0.0F) && (localPointF.y == 0.0F)))
+      return localObject2;
+      if (!parami.getClipToPadding()) {
+        break;
+      }
+      j = paramaj.iI() + paramaj.iK() / 2;
+      i = 2147483647;
+      k = 0;
+      localObject2 = localObject1;
+    } while (k >= n);
+    localObject2 = parami.getChildAt(k);
+    int m = Math.abs(paramaj.bh((View)localObject2) + paramaj.bl((View)localObject2) / 2 - j);
+    if (m < i)
     {
-      parama.ahH = this.ahA;
-      stop();
-      return;
+      localObject1 = localObject2;
+      i = m;
     }
-    float f = (float)Math.sqrt(localPointF.x * localPointF.x + localPointF.y * localPointF.y);
-    localPointF.x /= f;
-    localPointF.y /= f;
-    this.aeA = localPointF;
-    this.aeC = ((int)(localPointF.x * 10000.0F));
-    this.aeD = ((int)(localPointF.y * 10000.0F));
-    paramInt1 = bH(10000);
-    parama.a((int)(this.aeC * 1.2F), (int)(this.aeD * 1.2F), (int)(paramInt1 * 1.2F), this.aez);
+    for (;;)
+    {
+      k += 1;
+      break label45;
+      j = paramaj.getEnd() / 2;
+      break;
+    }
   }
   
-  public void a(View paramView, RecyclerView.r.a parama)
+  private static float b(RecyclerView.i parami, aj paramaj)
   {
-    int m = 0;
-    int i = he();
-    RecyclerView.i locali = this.afm;
+    int i = 2147483647;
+    int k = -2147483648;
+    int i2 = parami.getChildCount();
+    if (i2 == 0) {
+      return 1.0F;
+    }
+    int n = 0;
+    Object localObject2 = null;
+    Object localObject1 = null;
+    int m;
+    Object localObject3;
     int j;
-    if ((locali == null) || (!locali.gO()))
+    if (n < i2)
     {
-      j = 0;
-      if ((this.aeA != null) && (this.aeA.y != 0.0F)) {
-        break label174;
+      View localView = parami.getChildAt(n);
+      int i1 = RecyclerView.i.bv(localView);
+      m = i;
+      localObject3 = localObject1;
+      if (i1 == -1) {
+        break label179;
       }
-      i = 0;
-      label51:
-      locali = this.afm;
-      k = m;
-      if (locali != null) {
-        if (locali.gP()) {
-          break label196;
+      j = i;
+      if (i1 < i)
+      {
+        j = i1;
+        localObject1 = localView;
+      }
+      m = j;
+      localObject3 = localObject1;
+      if (i1 <= k) {
+        break label179;
+      }
+      localObject2 = localView;
+      i = j;
+      j = i1;
+    }
+    for (;;)
+    {
+      n += 1;
+      k = j;
+      break;
+      if ((localObject1 == null) || (localObject2 == null)) {
+        return 1.0F;
+      }
+      j = Math.min(paramaj.bh(localObject1), paramaj.bh(localObject2));
+      j = Math.max(paramaj.bi(localObject1), paramaj.bi(localObject2)) - j;
+      if (j == 0) {
+        return 1.0F;
+      }
+      return j * 1.0F / (k - i + 1);
+      label179:
+      j = k;
+      i = m;
+      localObject1 = localObject3;
+    }
+  }
+  
+  private aj b(RecyclerView.i parami)
+  {
+    if ((this.agR == null) || (this.agR.ahB != parami)) {
+      this.agR = aj.e(parami);
+    }
+    return this.agR;
+  }
+  
+  private aj c(RecyclerView.i parami)
+  {
+    if ((this.agS == null) || (this.agS.ahB != parami)) {
+      this.agS = aj.d(parami);
+    }
+    return this.agS;
+  }
+  
+  public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
+  {
+    if (!(parami instanceof RecyclerView.r.b)) {
+      paramInt2 = -1;
+    }
+    int j;
+    label151:
+    label169:
+    label174:
+    label179:
+    do
+    {
+      return paramInt2;
+      j = parami.getItemCount();
+      if (j == 0) {
+        return -1;
+      }
+      Object localObject = a(parami);
+      if (localObject == null) {
+        return -1;
+      }
+      int k = RecyclerView.i.bv((View)localObject);
+      if (k == -1) {
+        return -1;
+      }
+      localObject = ((RecyclerView.r.b)parami).bI(j - 1);
+      if (localObject == null) {
+        return -1;
+      }
+      if (parami.ij())
+      {
+        int i = a(parami, c(parami), paramInt1, 0);
+        paramInt1 = i;
+        if (((PointF)localObject).x < 0.0F) {
+          paramInt1 = -i;
+        }
+        if (!parami.ik()) {
+          break label169;
+        }
+        i = a(parami, b(parami), 0, paramInt2);
+        paramInt2 = i;
+        if (((PointF)localObject).y < 0.0F) {
+          paramInt2 = -i;
+        }
+        if (!parami.ik()) {
+          break label174;
         }
       }
-    }
-    RecyclerView.LayoutParams localLayoutParams;
-    for (int k = m;; k = e(RecyclerView.i.bp(paramView) - localLayoutParams.topMargin, RecyclerView.i.br(paramView) + localLayoutParams.bottomMargin, locali.getPaddingTop(), locali.mHeight - locali.getPaddingBottom(), i))
-    {
-      i = bG((int)Math.sqrt(j * j + k * k));
-      if (i > 0) {
-        parama.a(-j, -k, i, this.Mh);
-      }
-      return;
-      localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-      j = e(RecyclerView.i.bo(paramView) - localLayoutParams.leftMargin, RecyclerView.i.bq(paramView) + localLayoutParams.rightMargin, locali.getPaddingLeft(), locali.mWidth - locali.getPaddingRight(), i);
-      break;
-      label174:
-      if (this.aeA.y > 0.0F)
+      for (;;)
       {
-        i = 1;
-        break label51;
+        if (paramInt2 != 0) {
+          break label179;
+        }
+        return -1;
+        paramInt1 = 0;
+        break;
+        paramInt2 = 0;
+        break label151;
+        paramInt2 = paramInt1;
       }
-      i = -1;
-      break label51;
-      label196:
-      localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    }
+      paramInt2 = k + paramInt2;
+      paramInt1 = paramInt2;
+      if (paramInt2 < 0) {
+        paramInt1 = 0;
+      }
+      paramInt2 = paramInt1;
+    } while (paramInt1 < j);
+    return j - 1;
   }
   
-  public PointF bD(int paramInt)
+  public final View a(RecyclerView.i parami)
   {
-    RecyclerView.i locali = this.afm;
-    if ((locali instanceof RecyclerView.r.b)) {
-      return ((RecyclerView.r.b)locali).bD(paramInt);
+    if (parami.ik()) {
+      return a(parami, b(parami));
     }
-    new StringBuilder("You should override computeScrollVectorForPosition when the LayoutManager does not implement ").append(RecyclerView.r.b.class.getCanonicalName());
+    if (parami.ij()) {
+      return a(parami, c(parami));
+    }
     return null;
   }
   
-  public final int bG(int paramInt)
+  public final int[] a(RecyclerView.i parami, View paramView)
   {
-    return (int)Math.ceil(bH(paramInt) / 0.3356D);
-  }
-  
-  public int bH(int paramInt)
-  {
-    return (int)Math.ceil(Math.abs(paramInt) * this.aeB);
-  }
-  
-  public int e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    switch (paramInt5)
+    int[] arrayOfInt = new int[2];
+    if (parami.ij()) {
+      arrayOfInt[0] = a(parami, paramView, c(parami));
+    }
+    while (parami.ik())
     {
-    default: 
-      throw new IllegalArgumentException("snap preference should be one of the constants defined in SmoothScroller, starting with SNAP_");
-    case -1: 
-      paramInt1 = paramInt3 - paramInt1;
+      arrayOfInt[1] = a(parami, paramView, b(parami));
+      return arrayOfInt;
+      arrayOfInt[0] = 0;
     }
-    do
-    {
-      do
-      {
-        return paramInt1;
-        return paramInt4 - paramInt2;
-        paramInt3 -= paramInt1;
-        paramInt1 = paramInt3;
-      } while (paramInt3 > 0);
-      paramInt2 = paramInt4 - paramInt2;
-      paramInt1 = paramInt2;
-    } while (paramInt2 < 0);
-    return 0;
-  }
-  
-  public int he()
-  {
-    if ((this.aeA == null) || (this.aeA.x == 0.0F)) {
-      return 0;
-    }
-    if (this.aeA.x > 0.0F) {
-      return 1;
-    }
-    return -1;
-  }
-  
-  public void onStop()
-  {
-    this.aeD = 0;
-    this.aeC = 0;
-    this.aeA = null;
+    arrayOfInt[1] = 0;
+    return arrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.v7.widget.af
  * JD-Core Version:    0.7.0.1
  */

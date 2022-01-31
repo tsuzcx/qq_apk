@@ -1,22 +1,33 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.mm.R.l;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$51
-  implements Runnable
+  implements SensorEventListener
 {
-  g$51(g paramg) {}
-  
-  public final void run()
+  g$51(g paramg)
   {
-    Toast.makeText(g.i(this.rzi), g.i(this.rzi).getString(R.l.game_download_not_enough_space), 0).show();
+    AppMethodBeat.i(9110);
+    AppMethodBeat.o(9110);
+  }
+  
+  public final void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    AppMethodBeat.i(154975);
+    if (paramSensorEvent.sensor.getType() == 3) {
+      g.a(this.vqm, paramSensorEvent.values[0]);
+    }
+    AppMethodBeat.o(154975);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.51
  * JD-Core Version:    0.7.0.1
  */

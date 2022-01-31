@@ -10,16 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.plugin.account.security.a.a;
-import com.tencent.mm.plugin.account.security.a.b;
-import com.tencent.mm.plugin.account.security.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.plugin.account.security.a.d;
 import com.tencent.mm.plugin.account.security.a.e;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -28,12 +24,12 @@ public class SafeDeviceListPreference
   implements f
 {
   private Context context;
-  private ProgressDialog dnm;
-  d fkq;
-  private boolean fkr = false;
-  private Button fks;
-  SafeDeviceListPreference.a fkt;
-  SafeDeviceListPreference.b fku;
+  private ProgressDialog eeN;
+  d gBH;
+  private boolean gBI = false;
+  private Button gBJ;
+  SafeDeviceListPreference.a gBK;
+  SafeDeviceListPreference.b gBL;
   int mode = -2;
   
   public SafeDeviceListPreference(Context paramContext)
@@ -52,80 +48,101 @@ public class SafeDeviceListPreference
     this.context = paramContext;
   }
   
-  private void Tw()
+  private void amI()
   {
-    com.tencent.mm.kernel.g.Dk().b(362, this);
+    AppMethodBeat.i(69897);
+    com.tencent.mm.kernel.g.Rc().b(362, this);
+    AppMethodBeat.o(69897);
   }
   
   final void initView()
   {
-    if (!this.fkr) {
-      y.d("MicroMsg.SafeDeviceListPreference", "has not binded");
-    }
-    do
+    AppMethodBeat.i(69898);
+    if (!this.gBI)
     {
+      ab.d("MicroMsg.SafeDeviceListPreference", "has not binded");
+      AppMethodBeat.o(69898);
       return;
-      switch (this.mode)
-      {
-      case -1: 
-      case 0: 
-      default: 
-        setWidgetLayoutResource(a.b.mm_preference_submenu);
-        return;
-      case 1: 
-        setWidgetLayoutResource(a.b.delete_safe_divice);
+    }
+    switch (this.mode)
+    {
+    case -1: 
+    case 0: 
+    default: 
+      setWidgetLayoutResource(0);
+      OW(0);
+      AppMethodBeat.o(69898);
+      return;
+    case 1: 
+      setWidgetLayoutResource(2130969302);
+      if (this.gBJ != null) {
+        this.gBJ.setOnClickListener(new SafeDeviceListPreference.3(this));
       }
-    } while (this.fks == null);
-    this.fks.setOnClickListener(new SafeDeviceListPreference.3(this));
-    return;
-    setWidgetLayoutResource(a.b.mm_preference_submenu);
+      OW(8);
+      AppMethodBeat.o(69898);
+      return;
+    }
+    setWidgetLayoutResource(0);
+    OW(0);
+    AppMethodBeat.o(69898);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
-    this.fkr = true;
-    this.fks = ((Button)paramView.findViewById(a.a.del_safe_device_btn));
+    AppMethodBeat.i(69896);
+    this.gBI = true;
+    this.gBJ = ((Button)paramView.findViewById(2131823365));
     initView();
     super.onBindView(paramView);
+    AppMethodBeat.o(69896);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(69895);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.context.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(a.a.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     if (localViewGroup != null)
     {
       localViewGroup.removeAllViews();
-      localLayoutInflater.inflate(a.b.mm_preference_edit_safe_device, localViewGroup);
+      localLayoutInflater.inflate(2130970228, localViewGroup);
     }
+    AppMethodBeat.o(69895);
     return paramViewGroup;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ai.m paramm)
   {
-    Tw();
-    if ((this.dnm != null) && (this.dnm.isShowing()))
+    AppMethodBeat.i(69899);
+    amI();
+    if ((this.eeN != null) && (this.eeN.isShowing()))
     {
-      this.dnm.dismiss();
-      this.dnm = null;
+      this.eeN.dismiss();
+      this.eeN = null;
     }
     if ((paramInt2 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.plugin.account.security.a.g.XB().a(this.fkq, new String[0]);
-      if (this.fku != null) {
-        this.fku.pY(this.mKey);
+      com.tencent.mm.plugin.account.security.a.g.ard().delete(this.gBH, new String[0]);
+      if (this.gBL != null)
+      {
+        this.gBL.xu(this.mKey);
+        AppMethodBeat.o(69899);
       }
     }
-    do
+    else
     {
-      do
+      if (com.tencent.mm.plugin.account.a.a.gmP.a(this.context, paramInt1, paramInt2, paramString))
       {
+        AppMethodBeat.o(69899);
         return;
-      } while (com.tencent.mm.plugin.account.a.a.eUS.a(this.context, paramInt1, paramInt2, paramString));
-      Toast.makeText(this.context, this.context.getString(a.d.safe_device_del_failed, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
-    } while (this.fkt == null);
-    this.fkt.onFailed(this.fkq.field_uid);
+      }
+      Toast.makeText(this.context, this.context.getString(2131302844, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      if (this.gBK != null) {
+        this.gBK.onFailed(this.gBH.field_uid);
+      }
+    }
+    AppMethodBeat.o(69899);
   }
 }
 

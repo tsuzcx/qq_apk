@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.remittance.bankcard.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class BankRemitMoneyInputUI$8$2$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class BankRemitMoneyInputUI$8$2$1
   
   public final void run()
   {
-    this.nxl.nxk.nxh.XM();
+    AppMethodBeat.i(44638);
+    this.qim.qil.qij.hideVKB();
+    AppMethodBeat.o(44638);
   }
 }
 

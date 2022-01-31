@@ -5,6 +5,7 @@ import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,81 +13,115 @@ import java.util.List;
 public final class c
   extends BaseAdapter
 {
-  private static boolean vWt;
-  private DataSetObserver JP = new c.1(this);
+  private static boolean AoB;
+  final b AoC;
+  private GridHeadersGridView AoD;
+  private final List<View> AoE;
+  private View[] AoF;
+  private DataSetObserver Jv;
   private final Context mContext;
   int mCount;
-  int mNumColumns = 1;
-  final b vWu;
-  private GridHeadersGridView vWv;
-  private final List<View> vWw = new ArrayList();
-  private View[] vWx;
+  int mNumColumns;
   
   public c(Context paramContext, GridHeadersGridView paramGridHeadersGridView, b paramb)
   {
+    AppMethodBeat.i(107342);
+    this.Jv = new c.1(this);
+    this.AoE = new ArrayList();
+    this.mNumColumns = 1;
     this.mContext = paramContext;
-    this.vWu = paramb;
-    this.vWv = paramGridHeadersGridView;
-    paramb.registerDataSetObserver(this.JP);
+    this.AoC = paramb;
+    this.AoD = paramGridHeadersGridView;
+    paramb.registerDataSetObserver(this.Jv);
+    AppMethodBeat.o(107342);
   }
   
-  private void HV(int paramInt)
+  private void QH(int paramInt)
   {
-    this.vWx = new View[paramInt];
-    Arrays.fill(this.vWx, null);
+    AppMethodBeat.i(107355);
+    this.AoF = new View[paramInt];
+    Arrays.fill(this.AoF, null);
+    AppMethodBeat.o(107355);
   }
   
-  private int HW(int paramInt)
+  private int QI(int paramInt)
   {
-    paramInt = this.vWu.HU(paramInt) % this.mNumColumns;
-    if (paramInt == 0) {
+    AppMethodBeat.i(107356);
+    paramInt = this.AoC.QG(paramInt) % this.mNumColumns;
+    if (paramInt == 0)
+    {
+      AppMethodBeat.o(107356);
       return 0;
     }
-    return this.mNumColumns - paramInt;
+    int i = this.mNumColumns;
+    AppMethodBeat.o(107356);
+    return i - paramInt;
   }
   
-  protected final c.c HX(int paramInt)
+  protected final c.c QJ(int paramInt)
   {
     int k = 0;
-    int m = this.vWu.cIA();
+    AppMethodBeat.i(107359);
+    int m = this.AoC.dNk();
     if (m == 0)
     {
-      if (paramInt >= this.vWu.getCount()) {
-        return new c.c(this, -1, 0);
+      if (paramInt >= this.AoC.getCount())
+      {
+        localc = new c.c(this, -1, 0);
+        AppMethodBeat.o(107359);
+        return localc;
       }
-      return new c.c(this, paramInt, 0);
+      localc = new c.c(this, paramInt, 0);
+      AppMethodBeat.o(107359);
+      return localc;
     }
     int i = paramInt;
     int j = paramInt;
     paramInt = k;
     while (paramInt < m)
     {
-      k = this.vWu.HU(paramInt);
-      if (j == 0) {
-        return new c.c(this, -2, paramInt);
+      k = this.AoC.QG(paramInt);
+      if (j == 0)
+      {
+        localc = new c.c(this, -2, paramInt);
+        AppMethodBeat.o(107359);
+        return localc;
       }
       j -= this.mNumColumns;
-      if (j < 0) {
-        return new c.c(this, -1, paramInt);
+      if (j < 0)
+      {
+        localc = new c.c(this, -1, paramInt);
+        AppMethodBeat.o(107359);
+        return localc;
       }
       i -= this.mNumColumns;
-      if (j < k) {
-        return new c.c(this, i, paramInt);
+      if (j < k)
+      {
+        localc = new c.c(this, i, paramInt);
+        AppMethodBeat.o(107359);
+        return localc;
       }
-      int n = HW(paramInt);
+      int n = QI(paramInt);
       j -= k + n;
       paramInt += 1;
       i -= n;
     }
-    return new c.c(this, -1, paramInt);
+    c.c localc = new c.c(this, -1, paramInt);
+    AppMethodBeat.o(107359);
+    return localc;
   }
   
   protected final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.vWu.cIA() == 0) {
+    AppMethodBeat.i(107358);
+    if (this.AoC.dNk() == 0)
+    {
+      AppMethodBeat.o(107358);
       return null;
     }
-    return this.vWu.a(HX(paramInt).vWB, paramView, paramViewGroup);
+    paramView = this.AoC.a(QJ(paramInt).AoJ, paramView, paramViewGroup);
+    AppMethodBeat.o(107358);
+    return paramView;
   }
   
   public final boolean areAllItemsEnabled()
@@ -97,61 +132,85 @@ public final class c
   public final int getCount()
   {
     int i = 0;
+    AppMethodBeat.i(107343);
     this.mCount = 0;
-    int j = this.vWu.cIA();
-    if (j == 0) {
-      return this.vWu.getCount();
+    int j = this.AoC.dNk();
+    if (j == 0)
+    {
+      i = this.AoC.getCount();
+      AppMethodBeat.o(107343);
+      return i;
     }
     while (i < j)
     {
-      this.mCount += this.vWu.HU(i) + HW(i) + this.mNumColumns;
+      this.mCount += this.AoC.QG(i) + QI(i) + this.mNumColumns;
       i += 1;
     }
-    return this.mCount;
+    i = this.mCount;
+    AppMethodBeat.o(107343);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    c.c localc = HX(paramInt);
-    if ((localc.mPosition == -1) || (localc.mPosition == -2)) {
+    AppMethodBeat.i(107344);
+    Object localObject = QJ(paramInt);
+    if ((((c.c)localObject).mPosition == -1) || (((c.c)localObject).mPosition == -2))
+    {
+      AppMethodBeat.o(107344);
       return null;
     }
-    return this.vWu.getItem(localc.mPosition);
+    localObject = this.AoC.getItem(((c.c)localObject).mPosition);
+    AppMethodBeat.o(107344);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
   {
-    c.c localc = HX(paramInt);
-    if (localc.mPosition == -2) {
+    AppMethodBeat.i(107345);
+    c.c localc = QJ(paramInt);
+    if (localc.mPosition == -2)
+    {
+      AppMethodBeat.o(107345);
       return -1L;
     }
-    if (localc.mPosition == -1) {
+    if (localc.mPosition == -1)
+    {
+      AppMethodBeat.o(107345);
       return -2L;
     }
-    return this.vWu.getItemId(localc.mPosition);
+    long l = this.AoC.getItemId(localc.mPosition);
+    AppMethodBeat.o(107345);
+    return l;
   }
   
   public final int getItemViewType(int paramInt)
   {
-    c.c localc = HX(paramInt);
-    if (localc.mPosition == -2) {
-      paramInt = 1;
-    }
-    int i;
-    do
+    AppMethodBeat.i(107346);
+    c.c localc = QJ(paramInt);
+    if (localc.mPosition == -2)
     {
+      AppMethodBeat.o(107346);
+      return 1;
+    }
+    if (localc.mPosition == -1)
+    {
+      AppMethodBeat.o(107346);
+      return 0;
+    }
+    paramInt = this.AoC.getItemViewType(localc.mPosition);
+    if (paramInt == -1)
+    {
+      AppMethodBeat.o(107346);
       return paramInt;
-      if (localc.mPosition == -1) {
-        return 0;
-      }
-      i = this.vWu.getItemViewType(localc.mPosition);
-      paramInt = i;
-    } while (i == -1);
-    return i + 2;
+    }
+    AppMethodBeat.o(107346);
+    return paramInt + 2;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(107347);
     Object localObject1;
     if ((paramView instanceof c.d))
     {
@@ -160,14 +219,14 @@ public final class c
     }
     for (;;)
     {
-      Object localObject2 = HX(paramInt);
+      Object localObject2 = QJ(paramInt);
       if (((c.c)localObject2).mPosition == -2)
       {
         localObject1 = new c.b(this, this.mContext);
-        ((c.b)localObject1).setHeaderWidth(this.vWv.getWidth());
-        ((c.b)localObject1).setHeaderId(((c.c)localObject2).vWB);
+        ((c.b)localObject1).setHeaderWidth(this.AoD.getWidth());
+        ((c.b)localObject1).setHeaderId(((c.c)localObject2).AoJ);
         View localView = (View)((View)localObject1).getTag();
-        ((View)localObject1).setTag(this.vWu.a(((c.c)localObject2).vWB, localView, paramViewGroup));
+        ((View)localObject1).setTag(this.AoC.a(((c.c)localObject2).AoJ, localView, paramViewGroup));
       }
       for (;;)
       {
@@ -179,15 +238,15 @@ public final class c
         ((c.d)localObject2).addView((View)localObject1);
         ((c.d)localObject2).setPosition(paramInt);
         ((c.d)localObject2).setNumColumns(this.mNumColumns);
-        this.vWx[(paramInt % this.mNumColumns)] = localObject2;
+        this.AoF[(paramInt % this.mNumColumns)] = localObject2;
         if (paramInt % this.mNumColumns != 0) {
-          break label288;
+          break label293;
         }
-        vWt = true;
+        AoB = true;
         int i = 1;
-        while (i < this.vWx.length)
+        while (i < this.AoF.length)
         {
-          this.vWx[i] = getView(paramInt + i, null, paramViewGroup);
+          this.AoF[i] = getView(paramInt + i, null, paramViewGroup);
           i += 1;
         }
         if (((c.c)localObject2).mPosition == -1)
@@ -200,15 +259,16 @@ public final class c
         }
         else
         {
-          localObject1 = this.vWu.getView(((c.c)localObject2).mPosition, (View)localObject1, paramViewGroup);
+          localObject1 = this.AoC.getView(((c.c)localObject2).mPosition, (View)localObject1, paramViewGroup);
         }
       }
-      vWt = false;
-      label288:
-      ((c.d)localObject2).setRowSiblings(this.vWx);
-      if ((!vWt) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
-        HV(this.mNumColumns);
+      AoB = false;
+      label293:
+      ((c.d)localObject2).setRowSiblings(this.AoF);
+      if ((!AoB) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
+        QH(this.mNumColumns);
       }
+      AppMethodBeat.o(107347);
       return localObject2;
       localObject2 = null;
       localObject1 = paramView;
@@ -218,47 +278,70 @@ public final class c
   
   public final int getViewTypeCount()
   {
-    return this.vWu.getViewTypeCount() + 2;
+    AppMethodBeat.i(107348);
+    int i = this.AoC.getViewTypeCount();
+    AppMethodBeat.o(107348);
+    return i + 2;
   }
   
   public final boolean hasStableIds()
   {
-    return this.vWu.hasStableIds();
+    AppMethodBeat.i(107349);
+    boolean bool = this.AoC.hasStableIds();
+    AppMethodBeat.o(107349);
+    return bool;
   }
   
   public final boolean isEmpty()
   {
-    return this.vWu.isEmpty();
+    AppMethodBeat.i(107350);
+    boolean bool = this.AoC.isEmpty();
+    AppMethodBeat.o(107350);
+    return bool;
   }
   
   public final boolean isEnabled(int paramInt)
   {
-    c.c localc = HX(paramInt);
-    if ((localc.mPosition == -1) || (localc.mPosition == -2)) {
+    AppMethodBeat.i(107351);
+    c.c localc = QJ(paramInt);
+    if ((localc.mPosition == -1) || (localc.mPosition == -2))
+    {
+      AppMethodBeat.o(107351);
       return false;
     }
-    return this.vWu.isEnabled(localc.mPosition);
-  }
-  
-  protected final long pm(int paramInt)
-  {
-    return HX(paramInt).vWB;
+    boolean bool = this.AoC.isEnabled(localc.mPosition);
+    AppMethodBeat.o(107351);
+    return bool;
   }
   
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.vWu.registerDataSetObserver(paramDataSetObserver);
+    AppMethodBeat.i(107352);
+    this.AoC.registerDataSetObserver(paramDataSetObserver);
+    AppMethodBeat.o(107352);
   }
   
   public final void setNumColumns(int paramInt)
   {
+    AppMethodBeat.i(107353);
     this.mNumColumns = paramInt;
-    HV(paramInt);
+    QH(paramInt);
+    AppMethodBeat.o(107353);
+  }
+  
+  protected final long tC(int paramInt)
+  {
+    AppMethodBeat.i(107357);
+    long l = QJ(paramInt).AoJ;
+    AppMethodBeat.o(107357);
+    return l;
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
-    this.vWu.unregisterDataSetObserver(paramDataSetObserver);
+    AppMethodBeat.i(107354);
+    this.AoC.unregisterDataSetObserver(paramDataSetObserver);
+    AppMethodBeat.o(107354);
   }
 }
 

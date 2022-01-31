@@ -2,8 +2,7 @@ package com.tencent.mm.ui.chatting.gallery;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.List;
 
 final class ImageGalleryGridUI$2
@@ -13,8 +12,10 @@ final class ImageGalleryGridUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    c.e(this.vuT.mController.uMN, this.vuU);
-    this.vuT.aRP();
+    AppMethodBeat.i(32035);
+    c.f(this.zKU.getContext(), this.zKV);
+    this.zKU.byi();
+    AppMethodBeat.o(32035);
   }
 }
 

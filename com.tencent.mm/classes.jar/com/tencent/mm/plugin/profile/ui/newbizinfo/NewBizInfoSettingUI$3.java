@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ai.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.d;
 
 final class NewBizInfoSettingUI$3
   implements DialogInterface.OnClickListener
@@ -11,8 +12,10 @@ final class NewBizInfoSettingUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.byp.field_hadAlert = 1;
-    NewBizInfoSettingUI.a(this.nad, this.byp, false);
+    AppMethodBeat.i(23914);
+    this.car.field_hadAlert = 1;
+    NewBizInfoSettingUI.a(this.pDY, this.car, false);
+    AppMethodBeat.o(23914);
   }
 }
 

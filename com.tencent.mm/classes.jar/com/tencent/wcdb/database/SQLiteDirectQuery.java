@@ -1,5 +1,6 @@
 package com.tencent.wcdb.database;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.support.CancellationSignal;
 import com.tencent.wcdb.support.Log;
 
@@ -30,31 +31,47 @@ public class SQLiteDirectQuery
   
   public byte[] getBlob(int paramInt)
   {
-    return nativeGetBlob(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.i(12576);
+    byte[] arrayOfByte = nativeGetBlob(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.o(12576);
+    return arrayOfByte;
   }
   
   public double getDouble(int paramInt)
   {
-    return nativeGetDouble(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.i(12574);
+    double d = nativeGetDouble(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.o(12574);
+    return d;
   }
   
   public long getLong(int paramInt)
   {
-    return nativeGetLong(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.i(12573);
+    long l = nativeGetLong(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.o(12573);
+    return l;
   }
   
   public String getString(int paramInt)
   {
-    return nativeGetString(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.i(12575);
+    String str = nativeGetString(this.mPreparedStatement.getPtr(), paramInt);
+    AppMethodBeat.o(12575);
+    return str;
   }
   
   public int getType(int paramInt)
   {
-    return SQLITE_TYPE_MAPPING[nativeGetType(this.mPreparedStatement.getPtr(), paramInt)];
+    AppMethodBeat.i(12577);
+    paramInt = SQLITE_TYPE_MAPPING[nativeGetType(this.mPreparedStatement.getPtr(), paramInt)];
+    AppMethodBeat.o(12577);
+    return paramInt;
   }
   
   protected void onAllReferencesReleased()
   {
+    AppMethodBeat.i(12580);
     try
     {
       if (this.mPreparedStatement != null)
@@ -63,15 +80,20 @@ public class SQLiteDirectQuery
         this.mPreparedStatement.endOperation(null);
       }
       super.onAllReferencesReleased();
+      AppMethodBeat.o(12580);
       return;
     }
-    finally {}
+    finally
+    {
+      AppMethodBeat.o(12580);
+    }
   }
   
   public void reset(boolean paramBoolean)
   {
     try
     {
+      AppMethodBeat.i(12579);
       if (this.mPreparedStatement != null)
       {
         this.mPreparedStatement.reset(false);
@@ -82,6 +104,7 @@ public class SQLiteDirectQuery
           releasePreparedStatement();
         }
       }
+      AppMethodBeat.o(12579);
       return;
     }
     finally {}
@@ -89,14 +112,16 @@ public class SQLiteDirectQuery
   
   public int step(int paramInt)
   {
+    AppMethodBeat.i(12578);
     try
     {
-      if (acquirePreparedStatement())
+      if (acquirePreparedStatement(false))
       {
         this.mPreparedStatement.beginOperation("directQuery", getBindArgs());
         this.mPreparedStatement.attachCancellationSignal(this.mCancellationSignal);
       }
       paramInt = nativeStep(this.mPreparedStatement.getPtr(), paramInt);
+      AppMethodBeat.o(12578);
       return paramInt;
     }
     catch (RuntimeException localRuntimeException)
@@ -112,6 +137,7 @@ public class SQLiteDirectQuery
         this.mPreparedStatement.failOperation(localRuntimeException);
       }
       releasePreparedStatement();
+      AppMethodBeat.o(12578);
       throw localRuntimeException;
     }
   }

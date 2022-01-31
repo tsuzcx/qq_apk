@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.zero.tasks;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.MMProtocalJni;
 
 class LoadProtocolJNITask$3
@@ -9,7 +10,9 @@ class LoadProtocolJNITask$3
   
   public void run()
   {
+    AppMethodBeat.i(58783);
     MMProtocalJni.setIsLite(false);
+    AppMethodBeat.o(58783);
   }
 }
 

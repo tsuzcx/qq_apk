@@ -9,15 +9,15 @@ final class ChangeTransform$3
   extends AnimatorListenerAdapter
 {
   private boolean mIsCanceled;
-  private Matrix qh = new Matrix();
+  private Matrix re = new Matrix();
   
   ChangeTransform$3(ChangeTransform paramChangeTransform, boolean paramBoolean, Matrix paramMatrix, View paramView, ChangeTransform.c paramc, ChangeTransform.b paramb) {}
   
   private void a(Matrix paramMatrix)
   {
-    this.qh.set(paramMatrix);
-    this.val$view.setTag(z.a.transition_transform, this.qh);
-    this.qk.v(this.val$view);
+    this.re.set(paramMatrix);
+    this.val$view.setTag(2131820686, this.re);
+    this.rh.y(this.val$view);
   }
   
   public final void onAnimationCancel(Animator paramAnimator)
@@ -29,35 +29,35 @@ final class ChangeTransform$3
   {
     if (!this.mIsCanceled)
     {
-      if ((!this.qi) || (!ChangeTransform.a(this.qm))) {
+      if ((!this.rf) || (!ChangeTransform.a(this.rj))) {
         break label52;
       }
-      a(this.qj);
+      a(this.rg);
     }
     for (;;)
     {
-      av.c(this.val$view, null);
-      this.qk.v(this.val$view);
+      au.c(this.val$view, null);
+      this.rh.y(this.val$view);
       return;
       label52:
-      this.val$view.setTag(z.a.transition_transform, null);
-      this.val$view.setTag(z.a.parent_matrix, null);
+      this.val$view.setTag(2131820686, null);
+      this.val$view.setTag(2131820648, null);
     }
   }
   
   public final void onAnimationPause(Animator paramAnimator)
   {
-    a(this.ql.mMatrix);
+    a(this.ri.mMatrix);
   }
   
   public final void onAnimationResume(Animator paramAnimator)
   {
-    ChangeTransform.u(this.val$view);
+    ChangeTransform.x(this.val$view);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.ChangeTransform.3
  * JD-Core Version:    0.7.0.1
  */

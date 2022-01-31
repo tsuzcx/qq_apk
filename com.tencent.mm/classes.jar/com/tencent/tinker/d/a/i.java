@@ -12,16 +12,16 @@ public final class i
     paramf = new f(paramf);
     paramf.setMethod(0);
     paramf.setSize(paramFile.length());
-    paramf.wZN = paramFile.length();
+    paramf.Bwt = paramFile.length();
     if ((paramLong >= 0L) && (paramLong <= 4294967295L)) {
-      paramf.wZD = paramLong;
+      paramf.Bwi = paramLong;
     }
     try
     {
       paramFile = new BufferedInputStream(new FileInputStream(paramFile));
       int i;
       if (paramFile == null) {
-        break label161;
+        break label154;
       }
     }
     finally
@@ -35,7 +35,7 @@ public final class i
         {
           paramh.write(paramf, 0, i);
           i = paramFile.read(paramf);
-          throw new IllegalArgumentException("Bad CRC32: " + paramLong);
+          throw new IllegalArgumentException("Bad CRC32: ".concat(String.valueOf(paramLong)));
         }
         paramh.closeEntry();
         paramFile.close();
@@ -43,14 +43,14 @@ public final class i
       }
       finally
       {
-        break label153;
+        break label146;
       }
       paramf = finally;
       paramFile = null;
     }
-    label153:
+    label146:
     paramFile.close();
-    label161:
+    label154:
     throw paramf;
   }
   

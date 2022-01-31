@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public abstract interface LocationWidget$a
 {
-  public abstract ArrayList<Exif.a> bHD();
+  public abstract ArrayList<Exif.a> ctJ();
   
-  public abstract boolean bHE();
+  public abstract boolean ctK();
 }
 
 

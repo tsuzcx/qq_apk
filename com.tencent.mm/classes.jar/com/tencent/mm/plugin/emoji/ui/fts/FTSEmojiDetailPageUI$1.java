@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.emoji.ui.fts;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FTSEmojiDetailPageUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class FTSEmojiDetailPageUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jfO.finish();
+    AppMethodBeat.i(53535);
+    this.loH.finish();
+    AppMethodBeat.o(53535);
     return false;
   }
 }

@@ -2,6 +2,7 @@ package com.tencent.smtt.export.external;
 
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.TimerTask;
 
@@ -12,6 +13,7 @@ final class DexClassLoaderProvider$1
   
   public final void run()
   {
+    AppMethodBeat.i(63721);
     try
     {
       ArrayList localArrayList = new ArrayList(4);
@@ -22,19 +24,25 @@ final class DexClassLoaderProvider$1
       Intent localIntent = new Intent(DexClassLoaderProvider.access$000(), DexClassLoaderProviderService.class);
       localIntent.putStringArrayListExtra("dex2oat", localArrayList);
       DexClassLoaderProvider.access$000().startService(localIntent);
+      new StringBuilder("shouldUseDexLoaderService(").append(this.val$dexName).append(", ").append(localIntent).append(")");
+      AppMethodBeat.o(63721);
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      AppMethodBeat.o(63721);
       return;
     }
     catch (Throwable localThrowable)
     {
       new StringBuilder("after shouldUseDexLoaderService exception: ").append(localThrowable);
-      return;
+      AppMethodBeat.o(63721);
     }
-    catch (SecurityException localSecurityException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.smtt.export.external.DexClassLoaderProvider.1
  * JD-Core Version:    0.7.0.1
  */

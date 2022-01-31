@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.h.a.je;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jn;
 import com.tencent.mm.sdk.b.c;
 
 final class RegByMobileRegAIOUI$1
-  extends c<je>
+  extends c<jn>
 {
   RegByMobileRegAIOUI$1(RegByMobileRegAIOUI paramRegByMobileRegAIOUI)
   {
-    this.udX = je.class.getName().hashCode();
+    AppMethodBeat.i(125334);
+    this.__eventId = jn.class.getName().hashCode();
+    AppMethodBeat.o(125334);
   }
 }
 

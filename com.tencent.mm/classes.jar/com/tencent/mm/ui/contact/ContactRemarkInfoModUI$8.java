@@ -1,14 +1,20 @@
 package com.tencent.mm.ui.contact;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactRemarkInfoModUI$8
-  implements DialogInterface.OnCancelListener
+  implements DialogInterface.OnClickListener
 {
   ContactRemarkInfoModUI$8(ContactRemarkInfoModUI paramContactRemarkInfoModUI) {}
   
-  public final void onCancel(DialogInterface paramDialogInterface) {}
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(153956);
+    ContactRemarkInfoModUI.p(this.Acv);
+    AppMethodBeat.o(153956);
+  }
 }
 
 

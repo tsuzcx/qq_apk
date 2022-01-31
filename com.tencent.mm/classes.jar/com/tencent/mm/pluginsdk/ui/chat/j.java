@@ -5,19 +5,19 @@ import com.tencent.mm.storage.emotion.EmojiInfo;
 public abstract interface j
   extends f
 {
-  public abstract boolean bhC();
+  public abstract void B(EmojiInfo paramEmojiInfo);
   
-  public abstract boolean bhD();
+  public abstract void C(EmojiInfo paramEmojiInfo);
   
-  public abstract void bhE();
+  public abstract boolean bPD();
   
-  public abstract void m(EmojiInfo paramEmojiInfo);
+  public abstract boolean bPE();
   
-  public abstract void n(EmojiInfo paramEmojiInfo);
+  public abstract void bPF();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.j
  * JD-Core Version:    0.7.0.1
  */

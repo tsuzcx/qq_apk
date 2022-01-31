@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="@dimen/li" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b82" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/p6" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/b_1" android:paddingLeft="@dimen/li" android:paddingTop="@dimen/li" android:paddingRight="@dimen/kv" android:paddingBottom="@dimen/li" android:layout_width="96.0dip" android:layout_height="96.0dip" android:src="@drawable/icon" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/kv" android:paddingRight="@dimen/li" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/di" android:layout_gravity="left" android:id="@id/b7w" android:paddingBottom="@dimen/mq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/ks" />
-            <TextView android:layout_gravity="left" android:id="@id/b_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/kr" />
-        </LinearLayout>
-        <FrameLayout android:layout_gravity="center_vertical" android:paddingLeft="@dimen/li" android:layout_width="wrap_content" android:layout_height="32.0dip">
-            <Button android:id="@id/b_3" android:layout_width="wrap_content" android:layout_height="32.0dip" android:maxWidth="100.0dip" android:text="@string/b6v" style="@style/mw" />
-            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/b81" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="wrap_content" style="@style/ki" />
-        </FrameLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <View android:background="?android:listDivider" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+</FrameLayout>

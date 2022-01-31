@@ -15,45 +15,53 @@ public abstract class c<_Callback>
     super(paramd);
   }
   
-  public final void a(com.tencent.mm.vending.j.a parama)
+  private void b(com.tencent.mm.vending.j.a parama)
   {
-    for (;;)
+    Iterator localIterator = dQk().iterator();
+    while (localIterator.hasNext())
     {
-      try
+      b localb = (b)localIterator.next();
+      if (localb != null)
       {
-        Iterator localIterator = cKT().iterator();
-        if (!localIterator.hasNext()) {
-          break;
+        if (localb.AOk != null) {
+          this.AOi.c(localb.AOk);
         }
-        b localb = (b)localIterator.next();
-        if (localb != null) {
-          if (localb.wtp != null)
-          {
-            this.wtn.b(localb.wtp);
-            this.wtn.a(new c.1(this, localb, parama), com.tencent.mm.vending.c.a.wtt, true);
-          }
-          else
-          {
-            this.wtn.b(d.cLe());
-          }
+        for (;;)
+        {
+          this.AOi.a(new c.1(this, localb, parama), com.tencent.mm.vending.c.a.AOo, true);
+          break;
+          this.AOi.c(d.dQu());
         }
       }
-      finally {}
+    }
+  }
+  
+  public final void a(com.tencent.mm.vending.j.a parama)
+  {
+    try
+    {
+      b(parama);
+      return;
+    }
+    finally
+    {
+      parama = finally;
+      throw parama;
     }
   }
   
   public abstract void a(_Callback param_Callback, com.tencent.mm.vending.j.a parama);
   
-  public final b<_Callback> aj(_Callback param_Callback)
+  public final b<_Callback> at(_Callback param_Callback)
   {
     return a(new b(param_Callback, this));
   }
   
-  public final void cKU()
+  public final void ate()
   {
     try
     {
-      a(null);
+      b(null);
       return;
     }
     finally
@@ -70,7 +78,7 @@ public abstract class c<_Callback>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.vending.b.c
  * JD-Core Version:    0.7.0.1
  */

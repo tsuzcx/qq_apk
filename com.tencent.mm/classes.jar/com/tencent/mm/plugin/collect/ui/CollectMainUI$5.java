@@ -7,12 +7,10 @@ import android.graphics.Canvas;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class CollectMainUI$5
   implements Runnable
@@ -21,32 +19,34 @@ final class CollectMainUI$5
   
   public final void run()
   {
-    y.d("MicroMsg.CollectMainUI", "height: %d, width: %d", new Object[] { Integer.valueOf(this.iLR.getHeight()), Integer.valueOf(this.iLR.getWidth()) });
-    Bitmap localBitmap = Bitmap.createBitmap(this.iLR.getWidth(), this.iLR.getHeight(), Bitmap.Config.ARGB_8888);
+    AppMethodBeat.i(41256);
+    ab.d("MicroMsg.CollectMainUI", "height: %d, width: %d", new Object[] { Integer.valueOf(this.kSB.getHeight()), Integer.valueOf(this.kSB.getWidth()) });
+    Bitmap localBitmap = Bitmap.createBitmap(this.kSB.getWidth(), this.kSB.getHeight(), Bitmap.Config.ARGB_8888);
     Object localObject = new Canvas(localBitmap);
-    this.iLR.draw((Canvas)localObject);
+    this.kSB.draw((Canvas)localObject);
     try
     {
-      localObject = l.qt() + "mm_facetoface_collect_qrcode_" + System.currentTimeMillis() + ".png";
-      c.a(localBitmap, 100, Bitmap.CompressFormat.PNG, (String)localObject, false);
-      if (this.iLS) {
-        Toast.makeText(this.iLP.mController.uMN, this.iLP.getString(a.i.wallet_cropimage_saved, new Object[] { localObject }), 1).show();
+      localObject = n.aok() + "mm_facetoface_collect_qrcode_" + System.currentTimeMillis() + ".png";
+      d.a(localBitmap, 100, Bitmap.CompressFormat.PNG, (String)localObject, false);
+      if (this.kSC) {
+        Toast.makeText(this.kSz.getContext(), this.kSz.getString(2131305031, new Object[] { localObject }), 1).show();
       }
-      l.a((String)localObject, this.iLP.mController.uMN);
+      n.a((String)localObject, this.kSz.getContext());
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.w("MicroMsg.CollectMainUI", "save fixed amount qrcode failed!" + localException.getMessage());
+        ab.w("MicroMsg.CollectMainUI", "save fixed amount qrcode failed!" + localException.getMessage());
       }
     }
-    this.iLP.iIZ.setVisibility(8);
+    this.kSz.kPF.setVisibility(8);
+    AppMethodBeat.o(41256);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectMainUI.5
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.talkroom.model;
 
-import com.tencent.mm.sdk.platformtools.ac.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.af.b;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class TalkRoomReceiver$1
-  implements ac.b
+  implements af.b
 {
   public final void cancel()
   {
-    TalkRoomReceiver.aU(ae.getContext());
+    AppMethodBeat.i(25789);
+    TalkRoomReceiver.bv(ah.getContext());
+    AppMethodBeat.o(25789);
   }
   
   public final void prepare()
   {
-    TalkRoomReceiver.aT(ae.getContext());
+    AppMethodBeat.i(25788);
+    TalkRoomReceiver.bu(ah.getContext());
+    AppMethodBeat.o(25788);
   }
 }
 

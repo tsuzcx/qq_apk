@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.hp.b;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.hp.d.b;
-import com.tencent.mm.plugin.hp.tinker.g;
+import com.tencent.mm.plugin.hp.tinker.h;
 
 final class e$2
   implements DialogInterface.OnClickListener
@@ -13,7 +14,9 @@ final class e$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    g.as(this.val$context, this.lmV.lmT.lny);
+    AppMethodBeat.i(90594);
+    h.aA(this.val$context, this.nKn.nKl.nKR);
+    AppMethodBeat.o(90594);
   }
 }
 

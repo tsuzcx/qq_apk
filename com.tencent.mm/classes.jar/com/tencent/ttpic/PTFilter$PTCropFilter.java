@@ -1,8 +1,7 @@
 package com.tencent.ttpic;
 
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.GLSLRender;
-import com.tencent.filter.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PTFilter$PTCropFilter
   extends PTFilter
@@ -10,24 +9,22 @@ public class PTFilter$PTCropFilter
   private float bottom = 0.0F;
   private float left = 0.0F;
   
-  public PTFilter$PTCropFilter()
-  {
-    this.mFilter = new BaseFilter(GLSLRender.bcE);
-    this.mFilterFrame = new h();
-  }
-  
   public void updateCorpRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(80653);
     float f1 = (paramInt3 - paramInt1) / 2.0F / paramInt3;
     float f2 = 1.0F - f1;
     float f3 = (paramInt4 - paramInt2) / 2.0F / paramInt4;
     float f4 = 1.0F - f3;
-    if ((Float.compare(f1, this.left) == 0) && (Float.compare(f3, this.bottom) == 0)) {
+    if ((Float.compare(f1, this.left) == 0) && (Float.compare(f3, this.bottom) == 0))
+    {
+      AppMethodBeat.o(80653);
       return;
     }
     this.left = f1;
     this.bottom = f3;
     this.mFilter.setTexCords(new float[] { f1, f3, f1, f4, f2, f4, f2, f3 });
+    AppMethodBeat.o(80653);
   }
 }
 

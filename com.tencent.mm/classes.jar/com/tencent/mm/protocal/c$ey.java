@@ -5,12 +5,12 @@ public final class c$ey
 {
   public c$ey()
   {
-    super("openGameCenter", "openGameCenter", 175, true);
+    super("nfcTransceive", "nfcTransceive", 141, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ey
  * JD-Core Version:    0.7.0.1
  */

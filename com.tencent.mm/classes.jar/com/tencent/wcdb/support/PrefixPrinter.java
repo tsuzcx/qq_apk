@@ -1,6 +1,7 @@
 package com.tencent.wcdb.support;
 
 import android.util.Printer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PrefixPrinter
   implements Printer
@@ -16,15 +17,22 @@ public class PrefixPrinter
   
   public static Printer create(Printer paramPrinter, String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
+    AppMethodBeat.i(12736);
+    if ((paramString == null) || (paramString.equals("")))
+    {
+      AppMethodBeat.o(12736);
       return paramPrinter;
     }
-    return new PrefixPrinter(paramPrinter, paramString);
+    paramPrinter = new PrefixPrinter(paramPrinter, paramString);
+    AppMethodBeat.o(12736);
+    return paramPrinter;
   }
   
   public void println(String paramString)
   {
+    AppMethodBeat.i(12737);
     this.mPrinter.println(this.mPrefix + paramString);
+    AppMethodBeat.o(12737);
   }
 }
 

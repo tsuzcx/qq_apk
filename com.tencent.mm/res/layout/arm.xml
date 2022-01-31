@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/e3d" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/e3e" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="160.0dip" />
-</com.tencent.mm.plugin.sns.ui.PhotosContent>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/ebq" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <TextView android:textSize="@dimen/a3x" android:textColor="@color/st" android:id="@id/ebr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b9i" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/a3x" android:textColor="@color/st" android:id="@id/ebs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b98" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ebt" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip">
+        <ImageView android:id="@id/ebu" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/avh" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/ebv" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/avg" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/a41" android:textColor="#ff323232" android:id="@id/ebw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_toLeftOf="@id/ebv" android:layout_toRightOf="@id/ebu" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/ebx" android:background="@drawable/ke" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/yc" android:layout_width="@dimen/a40" android:layout_height="@dimen/a40" android:layout_marginLeft="@dimen/a42" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/auc" android:layout_alignParentLeft="true" />
+        <Button android:textSize="13.0sp" android:textColor="@color/ik" android:id="@id/eby" android:background="@drawable/mv" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="16.0dip" android:text="下载" android:layout_alignParentRight="true" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ebz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a42" android:layout_marginBottom="12.0dip" android:layout_toLeftOf="@id/eby" android:layout_toRightOf="@id/yc">
+            <TextView android:textSize="@dimen/a41" android:textColor="@color/st" android:id="@id/pu" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/ec0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/a1m" android:id="@id/ec1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

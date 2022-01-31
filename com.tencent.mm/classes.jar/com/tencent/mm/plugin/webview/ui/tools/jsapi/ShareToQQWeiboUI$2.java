@@ -5,13 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelsimple.w;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelsimple.x;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class ShareToQQWeiboUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -20,18 +18,20 @@ final class ShareToQQWeiboUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new w(this.rBc.getIntent().getIntExtra("type", 0), this.rBc.getIntent().getStringExtra("shortUrl"), ShareToQQWeiboUI.a(this.rBc).getText().toString());
-    au.Dk().a(paramMenuItem, 0);
-    ShareToQQWeiboUI localShareToQQWeiboUI = this.rBc;
-    AppCompatActivity localAppCompatActivity = this.rBc.mController.uMN;
-    this.rBc.getString(R.l.app_tip);
-    ShareToQQWeiboUI.a(localShareToQQWeiboUI, h.b(localAppCompatActivity, this.rBc.getString(R.l.main_sending), true, new ShareToQQWeiboUI.2.1(this, paramMenuItem)));
+    AppMethodBeat.i(9842);
+    paramMenuItem = new x(this.vsf.getIntent().getIntExtra("type", 0), this.vsf.getIntent().getStringExtra("shortUrl"), ShareToQQWeiboUI.a(this.vsf).getText().toString());
+    g.Rc().a(paramMenuItem, 0);
+    ShareToQQWeiboUI localShareToQQWeiboUI = this.vsf;
+    AppCompatActivity localAppCompatActivity = this.vsf.getContext();
+    this.vsf.getString(2131297087);
+    ShareToQQWeiboUI.a(localShareToQQWeiboUI, h.b(localAppCompatActivity, this.vsf.getString(2131306038), true, new ShareToQQWeiboUI.2.1(this, paramMenuItem)));
+    AppMethodBeat.o(9842);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.ShareToQQWeiboUI.2
  * JD-Core Version:    0.7.0.1
  */

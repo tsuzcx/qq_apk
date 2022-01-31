@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.exdevice.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.f.a.e;
 
 final class ExdeviceRankInfoUI$21
@@ -11,7 +12,9 @@ final class ExdeviceRankInfoUI$21
   
   public final void onClick(View paramView)
   {
-    e.d(this.jFV);
+    AppMethodBeat.i(20159);
+    e.e(this.lPt);
+    AppMethodBeat.o(20159);
   }
 }
 

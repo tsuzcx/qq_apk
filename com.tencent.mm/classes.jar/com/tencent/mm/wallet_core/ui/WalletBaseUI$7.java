@@ -1,34 +1,30 @@
 package com.tencent.mm.wallet_core.ui;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletBaseUI$7
-  implements View.OnFocusChangeListener
+  implements DialogInterface.OnCancelListener
 {
-  WalletBaseUI$7(WalletBaseUI paramWalletBaseUI, boolean paramBoolean1, boolean paramBoolean2, View paramView, EditText paramEditText, int paramInt, View.OnFocusChangeListener paramOnFocusChangeListener) {}
+  WalletBaseUI$7(WalletBaseUI paramWalletBaseUI) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((paramView.isFocused()) && (!this.eYg))
-    {
-      ((InputMethodManager)this.wCn.mController.uMN.getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      new ah().postDelayed(new WalletBaseUI.7.1(this, paramView), 300L);
+    AppMethodBeat.i(142666);
+    if ((WalletBaseUI.access$300(this.AYz) != null) && (WalletBaseUI.access$300(this.AYz).isShowing())) {
+      WalletBaseUI.access$300(this.AYz).dismiss();
     }
-    for (;;)
+    if ((WalletBaseUI.access$400(this.AYz).getVisibility() == 8) || (WalletBaseUI.access$500(this.AYz).getVisibility() == 4))
     {
-      if (this.wCo != null) {
-        this.wCo.onFocusChange(paramView, paramBoolean);
-      }
-      return;
-      new ah().postDelayed(new WalletBaseUI.7.2(this), 200L);
+      ab.i("MicroMsg.WalletBaseUI", "usr cancel, & visibility not visiable, so finish");
+      this.AYz.finish();
     }
+    this.AYz.forceCancel();
+    AppMethodBeat.o(142666);
   }
 }
 

@@ -1,38 +1,43 @@
 package com.tencent.mm.plugin.wear.model;
 
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class b$3
-  implements m.b
+  implements n.b
 {
   b$3(b paramb) {}
   
-  public final void a(int paramInt, m paramm, Object paramObject)
+  public final void a(int paramInt, n paramn, Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof String))) {
-      y.d("MicroMsg.Wear.WearBizLogic", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramm, paramObject });
-    }
-    do
+    AppMethodBeat.i(26276);
+    if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      do
+      ab.d("MicroMsg.Wear.WearBizLogic", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      AppMethodBeat.o(26276);
+      return;
+    }
+    paramn = (String)paramObject;
+    if ((paramn != null) && (paramn.equals("gh_43f2581f6fd6")))
+    {
+      if ((!b.cYz()) && (this.uGP.uGM))
       {
-        return;
-        paramm = (String)paramObject;
-      } while ((paramm == null) || (!paramm.equals("gh_43f2581f6fd6")));
-      if ((!b.bYM()) && (this.qRH.qRE))
-      {
-        this.qRH.qRE = false;
+        this.uGP.uGM = false;
+        AppMethodBeat.o(26276);
         return;
       }
-    } while ((!b.bYM()) || (this.qRH.qRE));
-    this.qRH.connect();
+      if ((b.cYz()) && (!this.uGP.uGM)) {
+        this.uGP.connect();
+      }
+    }
+    AppMethodBeat.o(26276);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.b.3
  * JD-Core Version:    0.7.0.1
  */

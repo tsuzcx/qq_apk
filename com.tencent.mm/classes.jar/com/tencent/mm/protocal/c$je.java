@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$je
+final class c$je
   extends c.g
 {
-  public c$je()
+  c$je()
   {
-    super("startPullDownRefresh", "startPullDownRefresh", 204, false);
+    super("setScreenOrientation", "setScreenOrientation", 270, false);
   }
 }
 

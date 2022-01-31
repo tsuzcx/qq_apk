@@ -13,7 +13,7 @@ class c$b
     paramView.setTranslationY(paramFloat2);
   }
   
-  public void bI(View paramView)
+  public void cb(View paramView)
   {
     paramView.setTranslationX(0.0F);
     paramView.setTranslationY(0.0F);
@@ -21,7 +21,7 @@ class c$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.a.c.b
  * JD-Core Version:    0.7.0.1
  */

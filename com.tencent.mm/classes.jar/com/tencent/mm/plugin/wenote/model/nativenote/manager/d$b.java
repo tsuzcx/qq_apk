@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelvideo.u;
@@ -8,43 +9,44 @@ import com.tencent.mm.plugin.sight.base.SightVideoJNI;
 import com.tencent.mm.plugin.wenote.model.a.k;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bh;
 import com.tencent.mm.vfs.e;
 import com.tencent.mm.vfs.j;
 import java.util.HashMap;
 
 final class d$b
-  implements av.a
+  implements az.a
 {
-  String eFj;
-  VideoTransPara eHv;
+  private int eXo;
+  private int eXp;
+  String fVa;
+  VideoTransPara fXm;
   String fileName;
-  private int mkJ;
-  private int mkK;
-  d.a rHJ;
-  k rHK;
-  String rHT;
-  int rHU;
-  private boolean rHV;
-  private int rHW = 0;
+  String hAo;
+  int vyA;
+  private boolean vyB;
+  private int vyC = 0;
+  d.a vyq;
+  k vyr;
   
-  public final boolean JS()
+  public final boolean acS()
   {
+    AppMethodBeat.i(26756);
     for (;;)
     {
-      synchronized ()
+      synchronized (d.access$600())
       {
         int i;
-        if (!d.cil().containsKey(this.fileName))
+        if (!d.bUP().containsKey(this.fileName))
         {
           i = 1;
           j = i;
           if (i == 0)
           {
-            if (u.oe(this.fileName) == null) {
+            if (u.vr(this.fileName) == null) {
               j = 1;
             }
           }
@@ -53,7 +55,8 @@ final class d$b
             if (j == 0) {
               break;
             }
-            y.w("MicroMsg.NoteVideoCompress", "remuxing job has been removed, filename %s", new Object[] { this.fileName });
+            ab.w("MicroMsg.NoteVideoCompress", "remuxing job has been removed, filename %s", new Object[] { this.fileName });
+            AppMethodBeat.o(26756);
             return true;
           }
         }
@@ -64,95 +67,99 @@ final class d$b
       }
       int j = 0;
     }
-    if ((this.eHv != null) && (!this.eHv.isDefault)) {
-      this.mkJ = this.eHv.width;
+    if ((this.fXm != null) && (!this.fXm.isDefault)) {
+      this.eXo = this.fXm.width;
     }
     Object localObject3;
-    for (this.mkK = this.eHv.height;; this.mkK = ???[1])
+    for (this.eXp = this.fXm.height;; this.eXp = ???[1])
     {
       ??? = new PString();
       localObject3 = new PInt();
-      au.Hx();
-      if ((!c.FD().a(this.eFj, (PString)???, (PInt)localObject3)) || (e.r(((PString)???).value, this.rHT) < 0L)) {
+      aw.aaz();
+      if ((!c.YH().a(this.fVa, (PString)???, (PInt)localObject3)) || (e.C(((PString)???).value, this.hAo) < 0L)) {
         break;
       }
-      y.i("MicroMsg.NoteVideoCompress", "copy remuxing file success, do not remuxing again.");
-      this.rHU = ((PInt)localObject3).value;
-      this.rHV = true;
+      ab.i("MicroMsg.NoteVideoCompress", "copy remuxing file success, do not remuxing again.");
+      this.vyA = ((PInt)localObject3).value;
+      this.vyB = true;
+      AppMethodBeat.o(26756);
       return true;
       ??? = new int[2];
-      d.c(this.eFj, (int[])???);
-      this.mkJ = ???[0];
+      d.c(this.fVa, (int[])???);
+      this.eXo = ???[0];
     }
-    long l = bk.UZ();
-    if (this.eHv != null)
+    long l = bo.yB();
+    if (this.fXm != null)
     {
-      y.i("MicroMsg.NoteVideoCompress", "remuxing new para %s", new Object[] { this.eHv });
-      this.rHU = SightVideoJNI.remuxing(this.eFj, this.rHT, this.mkJ, this.mkK, this.eHv.videoBitrate, this.eHv.ejP, 8, this.eHv.ejO, 25.0F, this.eHv.fps, null, 0, false);
-      this.rHW = ((int)bk.cp(l));
-      y.i("MicroMsg.NoteVideoCompress", "remuxing [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { this.eFj, this.rHT, Integer.valueOf(this.rHU), Integer.valueOf(this.mkJ), Integer.valueOf(this.mkK) });
-      if (this.rHU < 0) {
-        break label543;
+      ab.i("MicroMsg.NoteVideoCompress", "remuxing new para %s", new Object[] { this.fXm });
+      this.vyA = SightVideoJNI.remuxing(this.fVa, this.hAo, this.eXo, this.eXp, this.fXm.videoBitrate, this.fXm.fzW, 8, this.fXm.fzV, 25.0F, this.fXm.fps, null, 0, false, 0, 51);
+      this.vyC = ((int)bo.av(l));
+      ab.i("MicroMsg.NoteVideoCompress", "remuxing [%s] to [%s], result %d, resolution:[%d, %d]", new Object[] { this.fVa, this.hAo, Integer.valueOf(this.vyA), Integer.valueOf(this.eXo), Integer.valueOf(this.eXp) });
+      if (this.vyA < 0) {
+        break label579;
       }
     }
-    label543:
+    label579:
     for (boolean bool = true;; bool = false)
     {
-      this.rHV = bool;
+      this.vyB = bool;
       ??? = new PInt();
       localObject3 = new PInt();
-      if (u.a(this.rHT, (PInt)???, (PInt)localObject3)) {
-        this.rHU = ((PInt)???).value;
+      if (u.a(this.hAo, (PInt)???, (PInt)localObject3)) {
+        this.vyA = ((PInt)???).value;
       }
-      if (this.rHV) {
-        break label549;
+      if (this.vyB) {
+        break label585;
       }
-      y.w("MicroMsg.NoteVideoCompress", "remuxing video error, copy source video to send.");
-      e.deleteFile(this.rHT);
-      e.r(this.eFj, this.rHT);
+      ab.w("MicroMsg.NoteVideoCompress", "remuxing video error, copy source video to send.");
+      e.deleteFile(this.hAo);
+      e.C(this.fVa, this.hAo);
+      AppMethodBeat.o(26756);
       return true;
-      y.w("MicroMsg.NoteVideoCompress", "remuxing but new para is null. %s", new Object[] { this.fileName });
-      this.rHU = SightVideoJNI.remuxing(this.eFj, this.rHT, this.mkJ, this.mkK, com.tencent.mm.plugin.sight.base.b.oeb, com.tencent.mm.plugin.sight.base.b.oea, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.b.oec, null, 0, false);
+      ab.w("MicroMsg.NoteVideoCompress", "remuxing but new para is null. %s", new Object[] { this.fileName });
+      this.vyA = SightVideoJNI.remuxing(this.fVa, this.hAo, this.eXo, this.eXp, com.tencent.mm.plugin.sight.base.b.qSq, com.tencent.mm.plugin.sight.base.b.qSp, 8, 2, 25.0F, com.tencent.mm.plugin.sight.base.b.qSr, null, 0, false, 0, 51);
       break;
     }
-    label549:
-    y.i("MicroMsg.NoteVideoCompress", "remuxing video sucess,insert to media duplication storage");
+    label585:
+    ab.i("MicroMsg.NoteVideoCompress", "remuxing video sucess,insert to media duplication storage");
     for (;;)
     {
       PInt localPInt;
       try
       {
-        localObject3 = new com.tencent.mm.vfs.b(this.rHT);
+        localObject3 = new com.tencent.mm.vfs.b(this.hAo);
         ??? = ((com.tencent.mm.vfs.b)localObject3).getName();
-        String str = this.rHT + ".tmp";
+        String str = this.hAo + ".tmp";
         localPInt = new PInt(0);
-        if (!com.tencent.mm.plugin.a.d.b(this.rHT, str, localPInt)) {
-          break label769;
+        if (!com.tencent.mm.plugin.a.d.b(this.hAo, str, localPInt)) {
+          break label806;
         }
         bool = ((com.tencent.mm.vfs.b)localObject3).delete();
         localObject3 = new com.tencent.mm.vfs.b(str);
-        y.i("MicroMsg.NoteVideoCompress", "fast start success. delOld[%b] rename[%b] path[%s] target[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(e.f(((com.tencent.mm.vfs.b)localObject3).getParent() + "/", ((com.tencent.mm.vfs.b)localObject3).getName(), (String)???)), j.n(((com.tencent.mm.vfs.b)localObject3).cLr()), this.rHT });
-        au.Hx();
-        c.FD().L(this.eFj, this.rHT, this.rHU);
+        ab.i("MicroMsg.NoteVideoCompress", "fast start success. delOld[%b] rename[%b] path[%s] target[%s]", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(e.h(((com.tencent.mm.vfs.b)localObject3).getParent() + "/", ((com.tencent.mm.vfs.b)localObject3).getName(), (String)???)), j.p(((com.tencent.mm.vfs.b)localObject3).dQJ()), this.hAo });
+        aw.aaz();
+        c.YH().U(this.fVa, this.hAo, this.vyA);
       }
       catch (Exception localException)
       {
-        y.e("MicroMsg.NoteVideoCompress", "fast start exception e[%s]", new Object[] { localException.toString() });
+        ab.e("MicroMsg.NoteVideoCompress", "fast start exception e[%s]", new Object[] { localException.toString() });
       }
       break;
-      label769:
-      y.i("MicroMsg.NoteVideoCompress", "fast start fail. msg[%d] importpath[%s] targetPath[%s]", new Object[] { Integer.valueOf(localPInt.value), this.eFj, this.rHT });
+      label806:
+      ab.i("MicroMsg.NoteVideoCompress", "fast start fail. msg[%d] importpath[%s] targetPath[%s]", new Object[] { Integer.valueOf(localPInt.value), this.fVa, this.hAo });
     }
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
-    synchronized ()
+    AppMethodBeat.i(26757);
+    synchronized (d.access$600())
     {
-      d.cil().remove(this.fileName);
-      if (this.rHJ != null) {
-        this.rHJ.b(this.rHT, this.rHK);
+      d.bUP().remove(this.fileName);
+      if (this.vyq != null) {
+        this.vyq.b(this.hAo, this.vyr);
       }
+      AppMethodBeat.o(26757);
       return false;
     }
   }

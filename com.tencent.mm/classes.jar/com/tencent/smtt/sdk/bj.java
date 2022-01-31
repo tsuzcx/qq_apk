@@ -1,50 +1,55 @@
 package com.tencent.smtt.sdk;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.DexLoader;
-import dalvik.system.DexClassLoader;
 
 class bj
 {
-  protected DexLoader a = null;
+  private DexLoader a = null;
   
   public bj(DexLoader paramDexLoader)
   {
     this.a = paramDexLoader;
   }
   
-  public Object a(Context paramContext)
+  public String a(Context paramContext)
   {
-    DexLoader localDexLoader = this.a;
-    DexClassLoader localDexClassLoader = this.a.getClassLoader();
-    return localDexLoader.newInstance("com.tencent.tbs.player.TbsPlayerProxy", new Class[] { Context.class, DexClassLoader.class }, new Object[] { paramContext, localDexClassLoader });
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.a.invokeMethod(paramObject, "com.tencent.tbs.player.TbsPlayerProxy", "onUserStateChanged", new Class[0], new Object[0]);
-  }
-  
-  public void a(Object paramObject, Activity paramActivity, int paramInt)
-  {
-    this.a.invokeMethod(paramObject, "com.tencent.tbs.player.TbsPlayerProxy", "onActivity", new Class[] { Activity.class, Integer.TYPE }, new Object[] { paramActivity, Integer.valueOf(paramInt) });
-  }
-  
-  public boolean a(Object paramObject1, Bundle paramBundle, FrameLayout paramFrameLayout, Object paramObject2)
-  {
-    if (paramObject2 != null) {}
-    for (paramObject1 = this.a.invokeMethod(paramObject1, "com.tencent.tbs.player.TbsPlayerProxy", "play", new Class[] { Bundle.class, FrameLayout.class, Object.class }, new Object[] { paramBundle, paramFrameLayout, paramObject2 }); (paramObject1 instanceof Boolean); paramObject1 = this.a.invokeMethod(paramObject1, "com.tencent.tbs.player.TbsPlayerProxy", "play", new Class[] { Bundle.class, FrameLayout.class }, new Object[] { paramBundle, paramFrameLayout })) {
-      return ((Boolean)paramObject1).booleanValue();
+    AppMethodBeat.i(139395);
+    if (this.a != null)
+    {
+      Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
+      if (localObject != null)
+      {
+        paramContext = this.a.invokeMethod(localObject, "com.tencent.tbs.utils.TbsVideoUtilsProxy", "getCurWDPDecodeType", new Class[] { Context.class }, new Object[] { paramContext });
+        if (paramContext != null)
+        {
+          paramContext = String.valueOf(paramContext);
+          AppMethodBeat.o(139395);
+          return paramContext;
+        }
+      }
     }
-    return false;
+    AppMethodBeat.o(139395);
+    return "";
+  }
+  
+  public void a(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(139394);
+    if (this.a != null)
+    {
+      Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
+      if (localObject != null) {
+        this.a.invokeMethod(localObject, "com.tencent.tbs.utils.TbsVideoUtilsProxy", "deleteVideoCache", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString });
+      }
+    }
+    AppMethodBeat.o(139394);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.bj
  * JD-Core Version:    0.7.0.1
  */

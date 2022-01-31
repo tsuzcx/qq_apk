@@ -1,3 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<View android:id="@id/dfp" android:background="@color/i9" android:layout_width="fill_parent" android:layout_height="@dimen/li" android:minHeight="@dimen/li"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/djx" android:background="@drawable/wt" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/djy" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <FrameLayout android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="8.0dip">
+                <ImageView android:id="@id/djz" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/tipsbanner_multitalk_icon" android:scaleType="fitXY" android:contentDescription="@null" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/vo" android:ellipsize="end" android:gravity="left" android:id="@id/dk0" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/vq" android:ellipsize="end" android:gravity="left" android:id="@id/dk1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxEms="7" android:singleLine="true" android:layout_weight="0.0" />
+            <TextView android:textSize="@dimen/m2" android:textColor="@color/vo" android:gravity="left" android:id="@id/dk2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/d5w" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/dk3" android:background="@drawable/wz" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:paddingLeft="24.0dip" android:paddingTop="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/di" android:textStyle="bold" android:textColor="#cc000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/dk4" android:paddingTop="0.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/dk5" android:paddingLeft="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginRight="22.0dip" />
+            <LinearLayout android:orientation="vertical" android:id="@id/dk6" android:paddingTop="24.0dip" android:paddingRight="22.0dip" android:paddingBottom="10.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="right" android:orientation="horizontal" android:id="@id/dk7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <Button android:textSize="@dimen/m2" android:textColor="@color/io" android:id="@id/dk8" android:background="@drawable/b_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginRight="8.0dip" android:minWidth="55.0dip" android:text="@string/d59" style="@style/ny" />
+                    <Button android:textSize="@dimen/m2" android:textColor="@color/hk" android:id="@id/dk9" android:background="@drawable/b_" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="32.0dip" android:minWidth="55.0dip" android:text="@string/d5b" style="@style/ny" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

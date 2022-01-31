@@ -1,13 +1,13 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.ag.e.b;
+import com.tencent.mm.ah.e.c;
 
 final class a$1
-  implements e.b
+  implements e.c
 {
   a$1(a parama) {}
   
-  public final int bl(int paramInt1, int paramInt2)
+  public final int cv(int paramInt1, int paramInt2)
   {
     return 0;
   }

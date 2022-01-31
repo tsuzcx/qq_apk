@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.multitalk.ui.widget;
 final class f$c
 {
   int h;
-  int[] muz;
+  int[] oUo;
   int w;
   
   private f$c(f paramf) {}

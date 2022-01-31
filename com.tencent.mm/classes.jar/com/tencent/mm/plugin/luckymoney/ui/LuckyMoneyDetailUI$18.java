@@ -1,21 +1,42 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import com.tencent.mm.plugin.luckymoney.b.ac;
-import com.tencent.mm.sdk.platformtools.bk;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.particles.a;
+import com.tencent.mm.particles.b;
+import com.tencent.mm.particles.c;
+import com.tencent.mm.particles.d;
+import com.tencent.mm.particles.e;
 
 final class LuckyMoneyDetailUI$18
-  implements LuckyMoneyWishFooter.b
+  implements Runnable
 {
   LuckyMoneyDetailUI$18(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
-  public final void GP(String paramString)
+  public final void run()
   {
-    if ((!bk.bl(paramString)) && (!bk.bl(LuckyMoneyDetailUI.p(this.lVz))))
-    {
-      paramString = new ac(LuckyMoneyDetailUI.q(this.lVz), paramString, LuckyMoneyDetailUI.p(this.lVz), "v1.0");
-      this.lVz.l(paramString);
-      LuckyMoneyDetailUI.n(this.lVz);
-    }
+    AppMethodBeat.i(42667);
+    Object localObject = LuckyMoneyDetailUI.J(this.otz);
+    b localb = LuckyMoneyDetailUI.K(this.otz);
+    a locala = new a((ViewGroup)localObject);
+    localObject = new c(((ViewGroup)localObject).getContext(), localb, new d(-100, ((ViewGroup)localObject).getHeight() / 2), (ViewGroup)localObject).H(600.0F, 150.0F).I(-1000.0F, 250.0F).ai(-200.0F).aj(1500.0F);
+    ((c)localObject).ghz = 600.0F;
+    ((c)localObject).ghA = 300.0F;
+    localObject = ((c)localObject).anR();
+    ((c)localObject).ghc = e.aoa();
+    locala.ggQ = ((c)localObject).anS().anT();
+    locala.A(100, 400L);
+    localObject = LuckyMoneyDetailUI.J(this.otz);
+    localb = LuckyMoneyDetailUI.K(this.otz);
+    locala = new a((ViewGroup)localObject);
+    localObject = new c(((ViewGroup)localObject).getContext(), localb, new d(((ViewGroup)localObject).getWidth() + 100, ((ViewGroup)localObject).getHeight() / 2), (ViewGroup)localObject).H(-600.0F, 150.0F).I(-1000.0F, 250.0F).ai(200.0F).aj(1500.0F);
+    ((c)localObject).ghz = 600.0F;
+    ((c)localObject).ghA = 300.0F;
+    localObject = ((c)localObject).anR();
+    ((c)localObject).ghc = e.aoa();
+    locala.ggQ = ((c)localObject).anS().anT();
+    locala.A(100, 400L);
+    AppMethodBeat.o(42667);
   }
 }
 

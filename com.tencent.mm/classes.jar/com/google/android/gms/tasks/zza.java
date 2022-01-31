@@ -1,34 +1,45 @@
 package com.google.android.gms.tasks;
 
-import java.util.concurrent.Executor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-class zza<TResult, TContinuationResult>
-  implements zzf<TResult>
+final class zza
+  extends CancellationToken
 {
-  private final Executor zzbFQ;
-  private final Continuation<TResult, TContinuationResult> zzbNt;
-  private final zzh<TContinuationResult> zzbNu;
+  private final zzu<Void> zzafh;
   
-  public zza(Executor paramExecutor, Continuation<TResult, TContinuationResult> paramContinuation, zzh<TContinuationResult> paramzzh)
+  zza()
   {
-    this.zzbFQ = paramExecutor;
-    this.zzbNt = paramContinuation;
-    this.zzbNu = paramzzh;
+    AppMethodBeat.i(57376);
+    this.zzafh = new zzu();
+    AppMethodBeat.o(57376);
   }
   
-  public void cancel()
+  public final void cancel()
   {
-    throw new UnsupportedOperationException();
+    AppMethodBeat.i(57379);
+    this.zzafh.trySetResult(null);
+    AppMethodBeat.o(57379);
   }
   
-  public void onComplete(Task<TResult> paramTask)
+  public final boolean isCancellationRequested()
   {
-    this.zzbFQ.execute(new zza.1(this, paramTask));
+    AppMethodBeat.i(57377);
+    boolean bool = this.zzafh.isComplete();
+    AppMethodBeat.o(57377);
+    return bool;
+  }
+  
+  public final CancellationToken onCanceledRequested(OnTokenCanceledListener paramOnTokenCanceledListener)
+  {
+    AppMethodBeat.i(57378);
+    this.zzafh.addOnSuccessListener(new zzb(this, paramOnTokenCanceledListener));
+    AppMethodBeat.o(57378);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.tasks.zza
  * JD-Core Version:    0.7.0.1
  */

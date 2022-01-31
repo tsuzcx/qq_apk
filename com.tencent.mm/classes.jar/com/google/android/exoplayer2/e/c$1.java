@@ -1,21 +1,29 @@
 package com.google.android.exoplayer2.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class c$1
   implements c
 {
-  public final a d(String paramString, boolean paramBoolean)
+  public final a f(String paramString, boolean paramBoolean)
   {
-    return d.d(paramString, paramBoolean);
+    AppMethodBeat.i(95237);
+    paramString = d.f(paramString, paramBoolean);
+    AppMethodBeat.o(95237);
+    return paramString;
   }
   
-  public final a mq()
+  public final a oH()
   {
-    return d.mq();
+    AppMethodBeat.i(95238);
+    a locala = d.oH();
+    AppMethodBeat.o(95238);
+    return locala;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.google.android.exoplayer2.e.c.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,79 +1,29 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public final class de
-  extends dc
+public class de
 {
-  private static byte[] k = null;
-  private static Map<String, String> l = null;
-  public short a = 3;
-  public int b = 0;
-  public String c = null;
-  public String d = null;
-  public byte[] e;
-  private byte f = 0;
-  private int g = 0;
-  private int h = 0;
-  private Map<String, String> i;
-  private Map<String, String> j;
+  private int a;
+  private long b;
+  private int c;
   
-  public final void a(da paramda)
+  public int a()
   {
-    try
-    {
-      this.a = paramda.a(this.a, 1, true);
-      this.f = paramda.a(this.f, 2, true);
-      this.g = paramda.a(this.g, 3, true);
-      this.b = paramda.a(this.b, 4, true);
-      this.c = paramda.a(5, true);
-      this.d = paramda.a(6, true);
-      if (k == null) {
-        k = new byte[] { 0 };
-      }
-      this.e = ((byte[])paramda.b(7, true));
-      this.h = paramda.a(this.h, 8, true);
-      HashMap localHashMap;
-      if (l == null)
-      {
-        localHashMap = new HashMap();
-        l = localHashMap;
-        localHashMap.put("", "");
-      }
-      this.i = ((Map)paramda.a(l, 9, true));
-      if (l == null)
-      {
-        localHashMap = new HashMap();
-        l = localHashMap;
-        localHashMap.put("", "");
-      }
-      this.j = ((Map)paramda.a(l, 10, true));
-      return;
-    }
-    catch (Exception paramda)
-    {
-      throw new RuntimeException(paramda);
-    }
+    return this.a;
   }
   
-  public final void a(db paramdb)
+  public long b()
   {
-    paramdb.a(this.a, 1);
-    paramdb.a(this.f, 2);
-    paramdb.a(this.g, 3);
-    paramdb.a(this.b, 4);
-    paramdb.a(this.c, 5);
-    paramdb.a(this.d, 6);
-    paramdb.a(this.e, 7);
-    paramdb.a(this.h, 8);
-    paramdb.a(this.i, 9);
-    paramdb.a(this.j, 10);
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.a.de
  * JD-Core Version:    0.7.0.1
  */

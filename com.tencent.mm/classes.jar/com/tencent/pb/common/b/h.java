@@ -8,20 +8,20 @@ import com.tencent.pb.common.c.d;
 
 public final class h
 {
-  public static boolean wFU = true;
-  private static long wFV = -1L;
-  public static h.a wFW = h.a.wFY;
-  private static h.a wFX = h.a.wFY;
+  public static boolean Bdv = true;
+  private static long Bdw = -1L;
+  public static h.a Bdx = h.a.Bdz;
+  private static h.a Bdy = h.a.Bdz;
   
-  private static NetworkInfo cNW()
+  private static NetworkInfo dTI()
   {
     NetworkInfo localNetworkInfo;
     try
     {
-      ConnectivityManager localConnectivityManager = (ConnectivityManager)d.pZI.getSystemService("connectivity");
+      ConnectivityManager localConnectivityManager = (ConnectivityManager)d.tFk.getSystemService("connectivity");
       if (localConnectivityManager == null)
       {
-        c.x("getSystemService(Context.CONNECTIVITY_SERVICE) null", new Object[0]);
+        c.w("getSystemService(Context.CONNECTIVITY_SERVICE) null", new Object[0]);
         return null;
       }
     }
@@ -41,7 +41,7 @@ public final class h
     {
       for (;;)
       {
-        c.x("getActiveNetworkInfo exception:", new Object[] { localThrowable });
+        c.w("getActiveNetworkInfo exception:", new Object[] { localThrowable });
         Object localObject = null;
       }
     }
@@ -51,7 +51,7 @@ public final class h
   {
     try
     {
-      NetworkInfo localNetworkInfo = cNW();
+      NetworkInfo localNetworkInfo = dTI();
       if (localNetworkInfo == null) {
         return false;
       }
@@ -64,7 +64,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.pb.common.b.h
  * JD-Core Version:    0.7.0.1
  */

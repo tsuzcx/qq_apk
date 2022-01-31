@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qmessage.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.qmessage.a.g;
 
 final class b$3
@@ -9,7 +10,12 @@ final class b$3
 {
   b$3(b paramb) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    AppMethodBeat.i(24105);
+    g.cdt();
+    AppMethodBeat.o(24105);
+  }
 }
 
 

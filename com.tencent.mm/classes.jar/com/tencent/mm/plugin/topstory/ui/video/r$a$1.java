@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.topstory.ui.video;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.a.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class r$a$1
   implements Runnable
@@ -10,23 +11,25 @@ final class r$a$1
   
   public final void run()
   {
-    if ((this.pGG.pGD.pGu != null) && (this.pGG.pGD.pEp != null))
+    AppMethodBeat.i(1823);
+    if ((this.tkb.tjY.tjP != null) && (this.tkb.tjY.thM != null))
     {
-      a locala = this.pGG.pGD.pEp.bNt().pGq;
-      if ((locala != null) && (locala.pDr == 0L))
+      a locala = this.tkb.tjY.thM.cJd().tjL;
+      if ((locala != null) && (locala.tfg == 0L))
       {
-        locala.pDr = (System.currentTimeMillis() - locala.pDe);
-        locala.pDs = this.ejr;
-        locala.pDt = (this.ejr + this.ejs);
-        y.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "onMoovReady %d %d %d", new Object[] { Long.valueOf(locala.pDr), Integer.valueOf(this.ejr), Integer.valueOf(this.ejs) });
+        locala.tfg = (System.currentTimeMillis() - locala.teT);
+        locala.tfh = this.fzv;
+        locala.tfi = (this.fzv + this.fzw);
+        ab.i("MicroMsg.TopStory.TopStoryVideoViewMgr", "onMoovReady %d %d %d", new Object[] { Long.valueOf(locala.tfg), Integer.valueOf(this.fzv), Integer.valueOf(this.fzw) });
       }
-      this.pGG.pGD.pGu.jq(this.ejr);
+      this.tkb.tjY.tjP.mi(this.fzv);
     }
+    AppMethodBeat.o(1823);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.r.a.1
  * JD-Core Version:    0.7.0.1
  */

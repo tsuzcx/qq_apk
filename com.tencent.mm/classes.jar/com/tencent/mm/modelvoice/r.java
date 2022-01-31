@@ -1,176 +1,169 @@
 package com.tencent.mm.modelvoice;
 
-import com.tencent.mm.ah.e;
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
-import com.tencent.mm.ah.e.c;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.bd;
-import com.tencent.mm.model.s;
-import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ak;
-import com.tencent.mm.storage.be;
-import com.tencent.mm.storage.bi;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.ContentValues;
+import android.database.Cursor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class r
-  implements e
 {
-  private static Set<c> eLe = new HashSet();
+  public int bsY;
+  public String cDt;
+  public long cFn;
+  public String clientId;
+  public long createTime;
+  int dnr;
+  String dns;
+  public int fWa;
+  public String fXq;
+  public int fXs;
+  public long fXv;
+  public int fXy;
+  int fXz;
+  String fZr;
+  int fZy;
+  public String fileName;
+  public int fsd;
+  public int gaD;
+  int gaE;
+  long gaF;
+  int gaG;
+  public int status;
   
-  public static void b(c paramc)
+  public r()
   {
-    eLe.remove(paramc);
+    AppMethodBeat.i(116613);
+    this.bsY = -1;
+    this.fZy = 0;
+    this.fileName = "";
+    this.cDt = "";
+    this.clientId = "";
+    this.cFn = 0L;
+    this.fWa = 0;
+    this.fXs = 0;
+    this.fsd = 0;
+    this.status = 0;
+    this.createTime = 0L;
+    this.fXv = 0L;
+    this.gaD = 0;
+    this.fXy = 0;
+    this.fXq = "";
+    this.fXz = 0;
+    this.fZr = "";
+    this.dns = "";
+    this.dnr = 0;
+    this.gaE = 0;
+    this.gaF = 0L;
+    this.gaG = 0;
+    AppMethodBeat.o(116613);
   }
   
-  public static void c(c paramc)
+  public final boolean amv()
   {
-    if (!eLe.contains(paramc)) {
-      eLe.add(paramc);
-    }
+    return (this.status == 5) || (this.status == 6);
   }
   
-  public final void a(e.c paramc)
+  public final boolean amw()
   {
-    paramc = paramc.bWO;
-    y.d("MicroMsg.VoiceMsgExtension", "onPreDelMessage " + paramc.field_imgPath + " " + paramc.field_talker);
-    if (!s.hH(paramc.field_talker)) {
-      q.oD(paramc.field_imgPath);
-    }
+    return ((this.status > 1) && (this.status <= 3)) || (this.status == 8);
   }
   
-  public final e.b b(e.a parama)
+  public final void convertFrom(Cursor paramCursor)
   {
-    cd localcd = parama.dBs;
-    if (localcd == null)
-    {
-      y.e("MicroMsg.VoiceMsgExtension", "onPreAddMessage cmdAM is null , give up.");
-      return null;
+    AppMethodBeat.i(116612);
+    this.fileName = paramCursor.getString(0);
+    this.cDt = paramCursor.getString(1);
+    this.cFn = paramCursor.getLong(2);
+    this.fWa = paramCursor.getInt(3);
+    this.fXs = paramCursor.getInt(4);
+    this.fsd = paramCursor.getInt(5);
+    this.status = paramCursor.getInt(6);
+    this.createTime = paramCursor.getLong(7);
+    this.fXv = paramCursor.getLong(8);
+    this.clientId = paramCursor.getString(9);
+    this.gaD = paramCursor.getInt(10);
+    this.fXy = paramCursor.getInt(11);
+    this.fXq = paramCursor.getString(12);
+    this.fXz = paramCursor.getInt(13);
+    this.fZr = paramCursor.getString(14);
+    this.dns = paramCursor.getString(15);
+    this.dnr = paramCursor.getInt(16);
+    this.gaE = paramCursor.getInt(17);
+    this.gaF = paramCursor.getLong(18);
+    this.gaG = paramCursor.getInt(19);
+    AppMethodBeat.o(116612);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(116611);
+    ContentValues localContentValues = new ContentValues();
+    if ((this.bsY & 0x1) != 0) {
+      localContentValues.put("FileName", this.fileName);
     }
-    y.i("MicroMsg.VoiceMsgExtension", "summerbadcr parseVoiceMsg srvId:" + localcd.ndp);
-    Object localObject2 = aa.a(localcd.svF);
-    if (((String)localObject2).equals(com.tencent.mm.model.q.Gj())) {}
-    for (Object localObject1 = aa.a(localcd.svG);; localObject1 = localObject2)
-    {
-      Object localObject3 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().O((String)localObject1, localcd.ndp);
-      if ((((cs)localObject3).field_msgId != 0L) && (((cs)localObject3).field_createTime + 604800000L < bd.o((String)localObject1, localcd.mPL)))
-      {
-        y.w("MicroMsg.VoiceMsgExtension", "dkmsgid prepareMsgInfo msg Too Old Remove it. svrid:%d", new Object[] { Long.valueOf(localcd.ndp) });
-        bd.p((String)localObject1, localcd.ndp);
-        localObject3 = m.Tg().cl(localcd.ndp);
-        if ((localObject3 != null) && (!bk.bl(((p)localObject3).fileName))) {
-          q.oD(((p)localObject3).fileName);
-        }
-      }
-      p localp = new p();
-      localp.bVI = ((String)localObject1);
-      localp.createTime = localcd.mPL;
-      localp.bXr = localcd.ndp;
-      localp.czr = localcd.svK;
-      y.d("MicroMsg.VoiceMsgExtension", "voiceMsgExtension, onPreAddMessage.(MsgSource : %s)", new Object[] { localcd.svK });
-      localObject3 = aa.a(localcd.svH);
-      if (s.fn((String)localObject2))
-      {
-        localObject2 = bd.iJ((String)localObject3);
-        y.i("MicroMsg.VoiceMsgExtension", "chatroom voicemsg, new content=" + (String)localObject2);
-      }
-      for (;;)
-      {
-        localObject3 = bn.s((String)localObject2, "msg");
-        if (localObject3 == null)
-        {
-          h.nFQ.a(111L, 227L, 1L, false);
-          return null;
-        }
-        try
-        {
-          localp.eGk = Integer.valueOf((String)((Map)localObject3).get(".msg.voicemsg.$length")).intValue();
-          localp.clientId = ((String)((Map)localObject3).get(".msg.voicemsg.$clientmsgid"));
-          i = Integer.valueOf((String)((Map)localObject3).get(".msg.voicemsg.$endflag")).intValue();
-          int j = Integer.valueOf((String)((Map)localObject3).get(".msg.voicemsg.$cancelflag")).intValue();
-          localp.eKW = Integer.valueOf((String)((Map)localObject3).get(".msg.voicemsg.$voicelength")).intValue();
-          localp.eHA = ((String)((Map)localObject3).get(".msg.voicemsg.$fromusername"));
-          localObject2 = (String)((Map)localObject3).get(".msg.commenturl");
-          localp.eJW = Integer.valueOf(bk.aM((String)((Map)localObject3).get(".msg.voicemsg.$forwardflag"), "0")).intValue();
-          localp.eJP = ((String)((Map)localObject3).get(".msg.voicemsg.$voiceformat"));
-          localp.eKY = bk.getLong((String)((Map)localObject3).get(".msg.voicemsg.$bufid"), 0L);
-          if (j == 1)
-          {
-            y.v("MicroMsg.VoiceMsgExtension", "cancelFlag = 1 srvId:" + localcd.ndp);
-            parama = m.Tg().cl(localp.bXr);
-            if (parama != null) {
-              q.oB(parama.fileName);
-            }
-            return null;
-          }
-        }
-        catch (Exception parama)
-        {
-          h.nFQ.a(111L, 227L, 1L, false);
-          y.e("MicroMsg.VoiceMsgExtension", "parsing voice msg xml failed");
-          y.e("MicroMsg.VoiceMsgExtension", "exception:%s", new Object[] { bk.j(parama) });
-          return null;
-        }
-        if (i == 1)
-        {
-          y.v("MicroMsg.VoiceMsgExtension", "endFlag = 1 srvId:" + localcd.ndp);
-          localp.ebK = localp.eGk;
-        }
-        localp.bcw = 284334;
-        localObject3 = aa.a(localcd.svJ);
-        if (localObject3 != null) {
-          y.d("MicroMsg.VoiceMsgExtension", "Voice Buf Len:" + localObject3.length + " srvId:" + localcd.ndp);
-        }
-        int i = q.a(localp, (byte[])localObject3, localcd.hQq, (String)localObject2, localcd.svK, parama);
-        if (i > 0)
-        {
-          y.i("MicroMsg.VoiceMsgExtension", "summerbadcr parseVoiceMsg setRecvSync[%d], svrId[%d], msgseq[%d]", new Object[] { Integer.valueOf(i), Long.valueOf(localcd.ndp), Integer.valueOf(localcd.svM) });
-          h.nFQ.a(111L, 228L, 1L, false);
-          localObject2 = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().O(localp.bVI, localp.bXr);
-          ((bi)localObject2).Fq(0);
-          localObject3 = eLe.iterator();
-          for (;;)
-          {
-            parama = (e.a)localObject2;
-            if (!((Iterator)localObject3).hasNext()) {
-              break;
-            }
-            ai.d(new r.1(this, (c)((Iterator)localObject3).next(), localp));
-          }
-        }
-        y.i("MicroMsg.VoiceMsgExtension", "summerbadcr parseVoiceMsg setRecvSync[%d], svrId[%d], msgseq[%d], stack[%s]", new Object[] { Integer.valueOf(i), Long.valueOf(localcd.ndp), Integer.valueOf(localcd.svM), bk.csb() });
-        parama = null;
-        if (parama != null)
-        {
-          localObject2 = ((j)com.tencent.mm.kernel.g.r(j.class)).FB().abv((String)localObject1);
-          if (localObject2 != null)
-          {
-            ((ak)localObject2).gU(16777216);
-            ((j)com.tencent.mm.kernel.g.r(j.class)).FB().a((ak)localObject2, (String)localObject1);
-          }
-        }
-        if ((parama != null) && (parama.field_msgId > 0L)) {}
-        for (boolean bool = true;; bool = false) {
-          return new e.b(parama, bool);
-        }
-        localObject2 = localObject3;
-      }
+    if ((this.bsY & 0x2) != 0) {
+      localContentValues.put("User", this.cDt);
     }
+    if ((this.bsY & 0x4) != 0) {
+      localContentValues.put("MsgId", Long.valueOf(this.cFn));
+    }
+    if ((this.bsY & 0x8) != 0) {
+      localContentValues.put("NetOffset", Integer.valueOf(this.fWa));
+    }
+    if ((this.bsY & 0x10) != 0) {
+      localContentValues.put("FileNowSize", Integer.valueOf(this.fXs));
+    }
+    if ((this.bsY & 0x20) != 0) {
+      localContentValues.put("TotalLen", Integer.valueOf(this.fsd));
+    }
+    if ((this.bsY & 0x40) != 0) {
+      localContentValues.put("Status", Integer.valueOf(this.status));
+    }
+    if ((this.bsY & 0x80) != 0) {
+      localContentValues.put("CreateTime", Long.valueOf(this.createTime));
+    }
+    if ((this.bsY & 0x100) != 0) {
+      localContentValues.put("LastModifyTime", Long.valueOf(this.fXv));
+    }
+    if ((this.bsY & 0x200) != 0) {
+      localContentValues.put("ClientId", this.clientId);
+    }
+    if ((this.bsY & 0x400) != 0) {
+      localContentValues.put("VoiceLength", Integer.valueOf(this.gaD));
+    }
+    if ((this.bsY & 0x800) != 0) {
+      localContentValues.put("MsgLocalId", Integer.valueOf(this.fXy));
+    }
+    if ((this.bsY & 0x1000) != 0) {
+      localContentValues.put("Human", this.fXq);
+    }
+    if ((this.bsY & 0x2000) != 0) {
+      localContentValues.put("reserved1", Integer.valueOf(this.fXz));
+    }
+    if ((this.bsY & 0x4000) != 0) {
+      localContentValues.put("reserved2", this.fZr);
+    }
+    if ((this.bsY & 0x8000) != 0) {
+      localContentValues.put("MsgSource", this.dns);
+    }
+    if ((this.bsY & 0x10000) != 0) {
+      localContentValues.put("MsgFlag", Integer.valueOf(this.dnr));
+    }
+    if ((this.bsY & 0x20000) != 0) {
+      localContentValues.put("MsgSeq", Integer.valueOf(this.gaE));
+    }
+    if ((this.bsY & 0x40000) != 0) {
+      localContentValues.put("MasterBufId", Long.valueOf(this.gaF));
+    }
+    if ((this.bsY & 0x80000) != 0) {
+      localContentValues.put("checksum", Integer.valueOf(this.gaG));
+    }
+    AppMethodBeat.o(116611);
+    return localContentValues;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelvoice.r
  * JD-Core Version:    0.7.0.1
  */

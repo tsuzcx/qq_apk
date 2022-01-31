@@ -1,32 +1,20 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.app.Activity;
-import com.tencent.mm.plugin.appbrand.ui.q;
-import java.util.Iterator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class k$4
   implements Runnable
 {
-  k$4(k paramk, Runnable paramRunnable, i parami) {}
+  k$4(k paramk) {}
   
   public final void run()
   {
-    if (this.fzj != null) {
-      this.fzj.run();
+    AppMethodBeat.i(86714);
+    i locali = this.gQD.atG();
+    if (locali != null) {
+      locali.atw();
     }
-    if (this.fzi.ZV() == null) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((!this.fzi.fzf) && (i != 0) && (this.fzk == null) && (!this.fzi.fyk.isFinishing()) && ((this.fzi.fyk instanceof q)) && (((q)this.fzi.fyk).aoO()))
-      {
-        if (!this.fzi.ZY().hasNext()) {
-          break;
-        }
-        this.fzi.fyk.moveTaskToBack(true);
-      }
-      return;
-    }
-    this.fzi.fyk.finish();
+    AppMethodBeat.o(86714);
   }
 }
 

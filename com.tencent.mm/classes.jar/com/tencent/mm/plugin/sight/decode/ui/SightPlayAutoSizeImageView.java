@@ -6,18 +6,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.a.b;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
 import com.tencent.mm.plugin.sight.decode.a.b.f;
 import com.tencent.mm.plugin.sight.decode.a.b.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class SightPlayAutoSizeImageView
   extends ImageView
   implements com.tencent.mm.plugin.sight.decode.a.a
 {
-  private b ofD = new SightPlayAutoSizeImageView.a(this);
+  private b qTR;
   
   public SightPlayAutoSizeImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,115 +27,145 @@ public class SightPlayAutoSizeImageView
   public SightPlayAutoSizeImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(24958);
+    this.qTR = new SightPlayAutoSizeImageView.a(this);
+    AppMethodBeat.o(24958);
   }
   
-  public final void aW(String paramString, boolean paramBoolean)
+  public final void bl(String paramString, boolean paramBoolean)
   {
-    this.ofD.aW(paramString, paramBoolean);
-  }
-  
-  public final void bAX()
-  {
-    setImageBitmap(null);
-    setImageResource(R.g.nosdcard_chatting_bg);
-  }
-  
-  public final boolean bAY()
-  {
-    return this.ofD.bBb();
+    AppMethodBeat.i(24960);
+    this.qTR.bl(paramString, paramBoolean);
+    AppMethodBeat.o(24960);
   }
   
   public final void clear()
   {
-    this.ofD.clear();
+    AppMethodBeat.i(24959);
+    this.qTR.clear();
+    AppMethodBeat.o(24959);
   }
   
-  public final void dL(int paramInt1, int paramInt2) {}
+  public final void cmx()
+  {
+    AppMethodBeat.i(24965);
+    setImageBitmap(null);
+    setImageResource(2130839821);
+    AppMethodBeat.o(24965);
+  }
+  
+  public final boolean cmy()
+  {
+    AppMethodBeat.i(24961);
+    boolean bool = this.qTR.cmB();
+    AppMethodBeat.o(24961);
+    return bool;
+  }
+  
+  public final void ft(int paramInt1, int paramInt2) {}
   
   public Object getTagObject()
   {
-    return getTag();
+    AppMethodBeat.i(24967);
+    Object localObject = getTag();
+    AppMethodBeat.o(24967);
+    return localObject;
   }
   
   public Context getUIContext()
   {
-    return getContext();
+    AppMethodBeat.i(24968);
+    Context localContext = getContext();
+    AppMethodBeat.o(24968);
+    return localContext;
   }
   
   public String getVideoPath()
   {
-    return this.ofD.oep;
+    return this.qTR.bHM;
   }
   
   protected void onAttachedToWindow()
   {
-    y.d("MicroMsg.SightPlayAutoSizeImageView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
+    AppMethodBeat.i(24963);
+    ab.d("MicroMsg.SightPlayAutoSizeImageView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
     super.onAttachedToWindow();
-    com.tencent.mm.sdk.b.a.udP.c(this.ofD.bBd());
+    com.tencent.mm.sdk.b.a.ymk.c(this.qTR.cmD());
+    AppMethodBeat.o(24963);
   }
   
   protected void onDetachedFromWindow()
   {
+    AppMethodBeat.i(24962);
     super.onDetachedFromWindow();
-    y.i("MicroMsg.SightPlayAutoSizeImageView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
-    this.ofD.clear();
-    com.tencent.mm.sdk.b.a.udP.d(this.ofD.bBd());
+    ab.i("MicroMsg.SightPlayAutoSizeImageView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
+    this.qTR.clear();
+    com.tencent.mm.sdk.b.a.ymk.d(this.qTR.cmD());
+    AppMethodBeat.o(24962);
   }
   
   public void setCanPlay(boolean paramBoolean)
   {
-    this.ofD.oeK = paramBoolean;
+    this.qTR.qSZ = paramBoolean;
   }
   
   public void setDrawableWidth(int paramInt) {}
   
   public void setForceRecordState(boolean paramBoolean)
   {
-    this.ofD.oeT = paramBoolean;
+    this.qTR.qTi = paramBoolean;
   }
   
   public void setIsWhatsNew(boolean paramBoolean)
   {
-    this.ofD.oeN = paramBoolean;
+    this.qTR.qTc = paramBoolean;
   }
   
   public void setMaskID(int paramInt) {}
   
   public void setOnCompletionListener(b.e parame)
   {
-    this.ofD.oeV = parame;
+    this.qTR.qTk = parame;
   }
   
   public void setOnDecodeDurationListener(b.f paramf)
   {
-    this.ofD.oeW = paramf;
+    this.qTR.qTl = paramf;
   }
   
   public void setOnSightCompletionAction(b.g paramg) {}
   
   public void setPosition(int paramInt)
   {
-    this.ofD.position = paramInt;
+    this.qTR.position = paramInt;
   }
   
   public void setSightInfoView(TextView paramTextView)
   {
-    this.ofD.setSightInfoView(paramTextView);
+    AppMethodBeat.i(24970);
+    this.qTR.setSightInfoView(paramTextView);
+    AppMethodBeat.o(24970);
   }
   
   public void setTagObject(Object paramObject)
   {
+    AppMethodBeat.i(24966);
     setTag(paramObject);
+    AppMethodBeat.o(24966);
   }
   
   public void setThumbBgView(View paramView)
   {
-    this.ofD.setThumbBgView(paramView);
+    AppMethodBeat.i(24969);
+    this.qTR.setThumbBgView(paramView);
+    AppMethodBeat.o(24969);
   }
   
   public void setThumbBmp(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(24964);
     setImageBitmap(paramBitmap);
+    AppMethodBeat.o(24964);
   }
 }
 

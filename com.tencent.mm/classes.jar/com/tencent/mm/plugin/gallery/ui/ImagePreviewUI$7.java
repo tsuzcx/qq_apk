@@ -1,27 +1,19 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.s;
 import android.view.View;
-import com.tencent.mm.R.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ImagePreviewUI$7
-  extends RecyclerView.h
+  implements View.OnClickListener
 {
   ImagePreviewUI$7(ImagePreviewUI paramImagePreviewUI) {}
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
+  public final void onClick(View paramView)
   {
-    int i = (int)ae.getContext().getResources().getDimension(R.f.LargePadding);
-    paramRect.left = (i / 2);
-    paramRect.bottom = i;
-    paramRect.top = i;
-    paramRect.right = (i / 2);
+    AppMethodBeat.i(150880);
+    ImagePreviewUI.o(this.ngC);
+    AppMethodBeat.o(150880);
   }
 }
 

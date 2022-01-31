@@ -1,16 +1,20 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FileFilter;
 
 class at
   implements FileFilter
 {
-  at(ar paramar) {}
+  at(as paramas) {}
   
   public boolean accept(File paramFile)
   {
-    return paramFile.getName().endsWith("tbs.conf");
+    AppMethodBeat.i(64400);
+    boolean bool = paramFile.getName().endsWith(".dex");
+    AppMethodBeat.o(64400);
+    return bool;
   }
 }
 

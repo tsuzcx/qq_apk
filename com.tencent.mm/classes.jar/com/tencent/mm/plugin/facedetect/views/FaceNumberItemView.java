@@ -12,25 +12,23 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.facedetect.a.b;
-import com.tencent.mm.plugin.facedetect.a.c;
-import com.tencent.mm.plugin.facedetect.a.d;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Timer;
 
 public class FaceNumberItemView
   extends View
 {
-  static final long jUN = 29L;
-  Timer jUM = null;
-  private boolean jUO = false;
-  private Paint jUP = null;
-  private RectF jUQ = null;
-  private Bitmap jUR = null;
-  private int jUS = 17;
-  int jUT = 0;
-  Runnable jUU = new FaceNumberItemView.1(this);
+  static final long mpg = 29L;
+  Timer mpf;
+  private boolean mph;
+  private Paint mpi;
+  private RectF mpj;
+  private Bitmap mpk;
+  private int mpl;
+  int mpm;
+  Runnable mpn;
   
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,79 +38,113 @@ public class FaceNumberItemView
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(645);
+    this.mpf = null;
+    this.mph = false;
+    this.mpi = null;
+    this.mpj = null;
+    this.mpk = null;
+    this.mpl = 17;
+    this.mpm = 0;
+    this.mpn = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(642);
+        if (FaceNumberItemView.a(FaceNumberItemView.this) <= 30)
+        {
+          FaceNumberItemView.b(FaceNumberItemView.this);
+          FaceNumberItemView.this.invalidate();
+          AppMethodBeat.o(642);
+          return;
+        }
+        FaceNumberItemView.this.bvB();
+        AppMethodBeat.o(642);
+      }
+    };
     setLayerType(1, null);
-    this.jUP = new Paint();
-    this.jUP.setColor(paramContext.getResources().getColor(a.b.face_number_shader_color));
-    this.jUP.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    this.jUQ = new RectF();
+    this.mpi = new Paint();
+    this.mpi.setColor(paramContext.getResources().getColor(2131690032));
+    this.mpi.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+    this.mpj = new RectF();
+    AppMethodBeat.o(645);
   }
   
-  public final void aPv()
+  public final void bvB()
   {
-    if (this.jUM != null)
+    AppMethodBeat.i(648);
+    if (this.mpf != null)
     {
-      this.jUM.cancel();
-      this.jUM = null;
+      this.mpf.cancel();
+      this.mpf = null;
     }
+    AppMethodBeat.o(648);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(649);
     super.onDraw(paramCanvas);
     float f2;
     float f1;
-    if (this.jUS == 17)
+    if (this.mpl == 17)
     {
-      f2 = getWidth() - this.jUR.getWidth() >> 1;
-      f1 = getHeight() - this.jUR.getHeight() >> 1;
+      f2 = getWidth() - this.mpk.getWidth() >> 1;
+      f1 = getHeight() - this.mpk.getHeight() >> 1;
     }
     for (;;)
     {
-      if (!this.jUO) {
-        paramCanvas.drawBitmap(this.jUR, f2, f1, null);
+      if (!this.mph) {
+        paramCanvas.drawBitmap(this.mpk, f2, f1, null);
       }
-      this.jUQ.set(f2, 0.0F, this.jUR.getWidth() * this.jUT / 30.0F + f2, getHeight());
-      paramCanvas.drawRect(this.jUQ, this.jUP);
+      this.mpj.set(f2, 0.0F, this.mpk.getWidth() * this.mpm / 30.0F + f2, getHeight());
+      paramCanvas.drawRect(this.mpj, this.mpi);
+      AppMethodBeat.o(649);
       return;
-      if (this.jUS == 3)
+      if (this.mpl == 3)
       {
-        f1 = getHeight() - this.jUR.getHeight() >> 1;
+        f1 = getHeight() - this.mpk.getHeight() >> 1;
         f2 = 0.0F;
       }
-      else if (this.jUS == 5)
+      else if (this.mpl == 5)
       {
-        f2 = getWidth() - this.jUR.getWidth();
-        f1 = getHeight() - this.jUR.getHeight() >> 1;
+        f2 = getWidth() - this.mpk.getWidth();
+        f1 = getHeight() - this.mpk.getHeight() >> 1;
       }
       else
       {
-        y.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
-        f2 = getWidth() - this.jUR.getWidth() >> 1;
-        f1 = getHeight() - this.jUR.getHeight() >> 1;
+        ab.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
+        f2 = getWidth() - this.mpk.getWidth() >> 1;
+        f1 = getHeight() - this.mpk.getHeight() >> 1;
       }
     }
   }
   
   public void setGravity(int paramInt)
   {
-    y.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
-    this.jUS = paramInt;
+    AppMethodBeat.i(647);
+    ab.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
+    this.mpl = paramInt;
+    AppMethodBeat.o(647);
   }
   
   public void setImageResource(int paramInt)
   {
+    AppMethodBeat.i(646);
     Bitmap localBitmap1 = BitmapFactory.decodeResource(getResources(), paramInt);
-    if (paramInt == a.d.face_point)
+    if (paramInt == 2130838710)
     {
-      paramInt = (getResources().getDimensionPixelSize(a.c.face_number_width) - a.fromDPToPix(getContext(), 8)) / 2;
+      paramInt = (getResources().getDimensionPixelSize(2131428413) - a.fromDPToPix(getContext(), 8)) / 2;
       Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth() + paramInt * 2, localBitmap1.getHeight() + 0, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap2);
       localCanvas.drawARGB(0, 255, 255, 255);
       localCanvas.drawBitmap(localBitmap1, paramInt, 0.0F, null);
-      this.jUR = localBitmap2;
+      this.mpk = localBitmap2;
+      AppMethodBeat.o(646);
       return;
     }
-    this.jUR = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    this.mpk = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    AppMethodBeat.o(646);
   }
 }
 

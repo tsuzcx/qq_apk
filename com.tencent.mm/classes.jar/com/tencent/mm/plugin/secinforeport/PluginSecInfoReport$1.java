@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.secinforeport;
 
-import com.tencent.mm.h.a.md;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.mv;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginSecInfoReport$1
-  extends c<md>
+  extends c<mv>
 {
   PluginSecInfoReport$1(PluginSecInfoReport paramPluginSecInfoReport)
   {
-    this.udX = md.class.getName().hashCode();
+    AppMethodBeat.i(57475);
+    this.__eventId = mv.class.getName().hashCode();
+    AppMethodBeat.o(57475);
   }
 }
 

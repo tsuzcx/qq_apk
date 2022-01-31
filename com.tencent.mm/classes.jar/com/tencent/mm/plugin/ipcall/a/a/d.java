@@ -1,14 +1,19 @@
 package com.tencent.mm.plugin.ipcall.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class d
 {
-  public int dJB;
-  public int iEo;
-  public int lpM;
+  public int eHa;
+  public int kJx;
+  public int nNi;
   
   public final String toString()
   {
-    return String.format("IPCallUserInfo, userStatus: %d, syncKey: %d, memberId: %d", new Object[] { Integer.valueOf(this.dJB), Integer.valueOf(this.lpM), Integer.valueOf(this.iEo) });
+    AppMethodBeat.i(21797);
+    String str = String.format("IPCallUserInfo, userStatus: %d, syncKey: %d, memberId: %d", new Object[] { Integer.valueOf(this.eHa), Integer.valueOf(this.nNi), Integer.valueOf(this.kJx) });
+    AppMethodBeat.o(21797);
+    return str;
   }
 }
 

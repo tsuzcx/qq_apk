@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/u9"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textColor="@color/pf" android:id="@id/d89" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fdl" />
-    <LinearLayout style="@style/v1">
-        <com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView android:id="@id/d8_" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" app:tipmsg="@string/fdp" />
-        <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/d8a" android:singleLine="false" android:imeOptions="actionNext" app:titleText="@string/fdn" app:contentHint="@string/fdm" style="@style/v3" />
-    </LinearLayout>
-    <Button android:id="@id/d8b" android:layout_marginTop="@dimen/kl" android:text="@string/fdi" style="@style/uy" />
-</LinearLayout>
+<TextView android:id="@android:id/title" android:background="@color/y" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/gc" android:maxHeight="@dimen/gc" android:minHeight="@dimen/gc" android:contentDescription="分隔栏"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

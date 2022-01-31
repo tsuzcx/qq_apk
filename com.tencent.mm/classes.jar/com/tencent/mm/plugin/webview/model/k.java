@@ -1,70 +1,71 @@
 package com.tencent.mm.plugin.webview.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.acc;
-import com.tencent.mm.protocal.c.acd;
-import com.tencent.mm.protocal.c.apw;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.protocal.protobuf.bbg;
+import com.tencent.mm.protocal.protobuf.bbh;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class k
   extends m
   implements com.tencent.mm.network.k
 {
-  private f dmL;
-  public final b esv;
+  String appId;
+  private f eGj;
+  String hgk;
+  final b rr;
   
-  public k(List<apw> paramList, String paramString)
+  public k(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(6592);
+    this.appId = paramString1;
+    this.hgk = paramString2;
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new acc();
-    ((b.a)localObject).ecI = new acd();
-    ((b.a)localObject).uri = "/cgi-bin/mmo2o-bin/getbeaconsingroup";
-    ((b.a)localObject).ecG = 1704;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.esv = ((b.a)localObject).Kt();
-    localObject = (acc)this.esv.ecE.ecN;
-    ((acc)localObject).tbc.addAll(paramList);
-    ((acc)localObject).bOL = paramString;
-    y.i("MicroMsg.NetSceneGetBeaconSinGroup", "[oneliang]getBeaconsInGroupRequest.beacons.size:%d", new Object[] { Integer.valueOf(((acc)localObject).tbc.size()) });
+    ((b.a)localObject).fsX = new bbg();
+    ((b.a)localObject).fsY = new bbh();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/usrmsg/mmbizjsapi_downloadcdninfo";
+    ((b.a)localObject).funcId = 1035;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bbg)this.rr.fsV.fta;
+    ((bbg)localObject).cwc = paramString1;
+    ((bbg)localObject).xqG = paramString2;
+    ab.i("MicroMsg.NetSceneDownloadCdnInfo", "download cdn info, appid : %s, mediaId : %s", new Object[] { paramString1, paramString2 });
+    AppMethodBeat.o(6592);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.esv, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneGetBeaconSinGroup", "[oneliang][NetSceneGetBeaconSinGroup]:netId:%s,errType:%s,errCode:%s,errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      y.d("MicroMsg.NetSceneGetBeaconSinGroup", "[oneliang][NetSceneGetBeaconSinGroup]:net end ok");
-    }
-    for (;;)
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      y.d("MicroMsg.NetSceneGetBeaconSinGroup", "[oneliang][NetSceneGetBeaconSinGroup]:net end not ok");
-    }
+    AppMethodBeat.i(6594);
+    this.eGj = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(6594);
+    return i;
   }
   
   public final int getType()
   {
-    return 1704;
+    return 1035;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(6593);
+    ab.i("MicroMsg.NetSceneDownloadCdnInfo", "onGYNetEnd, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(6593);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@raw/checkbox_unselected" />
-    <item android:state_pressed="true" android:drawable="@raw/checkbox_unselected" />
-    <item android:drawable="@raw/checkbox_unselected" />
-</selector>
+    <solid android:color="@color/k_" />
+    <corners android:radius="@dimen/uc" android:topLeftRadius="0.0dip" android:topRightRadius="0.0dip" android:bottomLeftRadius="@dimen/uc" android:bottomRightRadius="@dimen/uc" />
+</shape>

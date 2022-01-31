@@ -1,13 +1,19 @@
 package com.tencent.ytcommon.auth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class Log
 {
   public static void d(String paramString, Object paramObject)
   {
-    if (!Config.DEBUG) {
+    AppMethodBeat.i(19);
+    if (!Config.DEBUG)
+    {
+      AppMethodBeat.o(19);
       return;
     }
     String.valueOf(paramObject);
+    AppMethodBeat.o(19);
   }
   
   public static void d(String paramString1, String paramString2, Throwable paramThrowable)

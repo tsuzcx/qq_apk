@@ -1,62 +1,77 @@
 package com.tencent.mm.plugin.emoji.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mm.sdk.f.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.d;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class EmojiBaseActivity
   extends MMActivity
 {
-  EmojiBaseActivity.a jcs;
-  EmojiBaseActivity.b jct;
+  private EmojiBaseActivity.a lle;
+  EmojiBaseActivity.b llf;
   private HandlerThread mHandlerThread;
   
-  public final void aIU()
+  public final void bms()
   {
-    if (this.jct != null) {
-      this.jct.removeMessages(131074);
+    if (this.llf != null) {
+      this.llf.removeMessages(131074);
     }
   }
   
-  public final void cD(int paramInt1, int paramInt2)
+  public final void eb(int paramInt1, int paramInt2)
   {
-    if (this.jct != null) {
-      this.jct.sendEmptyMessageDelayed(paramInt1, paramInt2);
+    if (this.llf != null) {
+      this.llf.sendEmptyMessageDelayed(paramInt1, paramInt2);
     }
   }
   
-  public abstract void h(Message paramMessage);
+  public abstract void m(Message paramMessage);
   
-  public abstract void i(Message paramMessage);
+  public abstract void n(Message paramMessage);
   
-  public final void j(Message paramMessage)
+  public final void o(Message paramMessage)
   {
-    if (this.jct != null) {
-      this.jct.sendMessage(paramMessage);
+    if (this.llf != null) {
+      this.llf.sendMessage(paramMessage);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.mHandlerThread = e.aap("EmojiBaseActivity_handlerThread");
+    this.mHandlerThread = d.aqu("EmojiBaseActivity_handlerThread");
     this.mHandlerThread.start();
-    this.jcs = new EmojiBaseActivity.a(this, this.mHandlerThread.getLooper());
-    this.jct = new EmojiBaseActivity.b(this, getMainLooper());
+    this.lle = new EmojiBaseActivity.a(this, this.mHandlerThread.getLooper());
+    this.llf = new EmojiBaseActivity.b(this, getMainLooper());
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
-    if ((this.jcs != null) && (this.jcs.getLooper() != null)) {
-      this.jcs.getLooper().quit();
+    if ((this.lle != null) && (this.lle.getLooper() != null)) {
+      this.lle.getLooper().quit();
     }
     this.mHandlerThread = null;
-    this.jcs = null;
-    this.jct = null;
+    this.lle = null;
+    this.llf = null;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final void p(Message paramMessage)
+  {
+    if (this.lle != null) {
+      this.lle.sendMessage(paramMessage);
+    }
   }
 }
 

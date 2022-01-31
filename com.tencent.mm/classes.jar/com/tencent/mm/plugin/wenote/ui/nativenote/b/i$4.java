@@ -3,11 +3,12 @@ package com.tencent.mm.plugin.wenote.ui.nativenote.b;
 import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.h.a.ku;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.li;
 import com.tencent.mm.plugin.wenote.model.a.o;
 import com.tencent.mm.plugin.wenote.model.d;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class i$4
   implements View.OnClickListener
@@ -16,28 +17,32 @@ final class i$4
   
   public final void onClick(View paramView)
   {
-    if (this.rNp.rLi.rJg == 2)
+    AppMethodBeat.i(27168);
+    if (this.vDT.vBM.vzL == 2)
     {
-      this.rNp.rLi.rIT.cjp().chS();
-      this.rNp.rLi.ciF();
+      this.vDT.vBM.vzz.djQ().dii();
+      this.vDT.vBM.diW();
     }
-    int i = ((RecyclerView.v)paramView.getTag()).id();
-    ku localku = new ku();
-    if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(i) == null)
+    int i = ((RecyclerView.v)paramView.getTag()).jN();
+    li localli = new li();
+    if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(i) == null)
     {
-      y.e("Micromsg.NoteOtherItemHolder", "click not response, null == NoteDataManager.getMgr().get(position),position is %d,datalist size = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().size()) });
+      ab.e("Micromsg.NoteOtherItemHolder", "click not response, null == NoteDataManager.getMgr().get(position),position is %d,datalist size = %d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().size()) });
+      AppMethodBeat.o(27168);
       return;
     }
-    if (com.tencent.mm.plugin.wenote.model.c.chu().rFh == null)
+    if (com.tencent.mm.plugin.wenote.model.c.dhH().vvQ == null)
     {
-      y.e("Micromsg.NoteOtherItemHolder", "getWnNoteBase is null");
+      ab.e("Micromsg.NoteOtherItemHolder", "getWnNoteBase is null");
+      AppMethodBeat.o(27168);
       return;
     }
-    y.i("Micromsg.NoteOtherItemHolder", "click item, type is %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(i).getType()) });
-    localku.bTL.bTN = ((o)com.tencent.mm.plugin.wenote.model.nativenote.manager.c.chX().Dq(i)).rGI;
-    localku.bTL.context = paramView.getContext();
-    localku.bTL.type = 1;
-    com.tencent.mm.plugin.wenote.model.c.chu().rFh.b(localku);
+    ab.i("Micromsg.NoteOtherItemHolder", "click item, type is %d", new Object[] { Integer.valueOf(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(i).getType()) });
+    localli.cBr.cBt = ((o)com.tencent.mm.plugin.wenote.model.nativenote.manager.c.din().Lj(i)).vxr;
+    localli.cBr.context = paramView.getContext();
+    localli.cBr.type = 1;
+    com.tencent.mm.plugin.wenote.model.c.dhH().vvQ.b(localli);
+    AppMethodBeat.o(27168);
   }
 }
 

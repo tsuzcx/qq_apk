@@ -1,108 +1,50 @@
 package com.tencent.mm.modelsimple;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.m.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.ho;
-import com.tencent.mm.protocal.l;
-import com.tencent.mm.protocal.l.a;
-import com.tencent.mm.protocal.l.b;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.protocal.j.c;
+import com.tencent.mm.protocal.j.d;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 
 public final class c
-  extends m
-  implements k
+  extends k
 {
-  private f dmL;
-  private q edR = new c.a();
+  private static int fOC = 3941;
+  private final l.e fum;
+  private final l.d req;
   
-  private c(boolean paramBoolean)
+  public c()
   {
-    l.a locala = (l.a)this.edR.Kv();
-    locala.netType = l.getNetType(com.tencent.mm.sdk.platformtools.ae.getContext());
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      locala.spQ = i;
-      return;
-    }
+    AppMethodBeat.i(154514);
+    this.req = new j.c();
+    this.fum = new j.d();
+    AppMethodBeat.o(154514);
   }
   
-  private static boolean Qe()
+  public final l.d getReqObjImp()
   {
-    int i;
-    if (com.tencent.mm.platformtools.ae.eTv != -1) {
-      i = com.tencent.mm.platformtools.ae.eTv;
-    }
-    boolean bool;
-    for (;;)
-    {
-      bool = b.foreground;
-      y.i("MicroMsg.NetSceneBgFg", "somr DynamicConfig checkBit:%d TestMuteRoomEnable:%d muteRoomDisable:%d fg:%b", new Object[] { Integer.valueOf(1), Integer.valueOf(com.tencent.mm.platformtools.ae.eTv), Integer.valueOf(i), Boolean.valueOf(bool) });
-      if ((i & 0x1) == 0) {
-        break;
-      }
-      return true;
-      try
-      {
-        i = bk.getInt(g.AA().getValue("MuteRoomDisable"), 0);
-      }
-      catch (Exception localException)
-      {
-        y.printErrStackTrace("MicroMsg.NetSceneBgFg", localException, "", new Object[0]);
-        i = 0;
-      }
-    }
-    return bool;
+    return this.req;
   }
   
-  public static void bZ(boolean paramBoolean)
+  public final l.e getRespObj()
   {
-    y.i("MicroMsg.NetSceneBgFg", "summerbgfg setBgFgForMuteRoom isFg[%s], accHasReady[%s] stack[%s]", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(au.DK()), bk.csb() });
-    if (!au.DK()) {
-      return;
-    }
-    if ((au.Dk() == null) || (au.Dk().edx == null) || (au.Dk().edx.KR() == null))
-    {
-      y.i("MicroMsg.NetSceneBgFg", "summerbgfg setBgFgForMuteRoom push not rready");
-      return;
-    }
-    au.Dk().edx.KR().bN(paramBoolean);
-    if (paramBoolean)
-    {
-      au.Dk().a(new c(true), 0);
-      return;
-    }
-    c localc = new c(Qe());
-    au.Dk().a(localc, 0);
-  }
-  
-  public final int a(com.tencent.mm.network.e parame, f paramf)
-  {
-    this.dmL = paramf;
-    return a(parame, this.edR, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneBgFg", " ret[%d]", new Object[] { Integer.valueOf(((l.b)paramq.HF()).spR.iHq) });
-    this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    return this.fum;
   }
   
   public final int getType()
   {
-    return 0;
+    return fOC;
+  }
+  
+  public final String getUri()
+  {
+    return "/cgi-bin/micromsg-bin/disasterauth";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.c
  * JD-Core Version:    0.7.0.1
  */

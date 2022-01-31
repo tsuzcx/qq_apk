@@ -1,5 +1,6 @@
 package com.tencent.ttpic.gles;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 
 public class GeneratedTexture
@@ -10,7 +11,7 @@ public class GeneratedTexture
   private static final int CYAN = 16776960;
   private static final int FORMAT = 6408;
   private static final int GREEN = 65280;
-  private static final int[] GRID = { -16776961, -16711681, -16711936, -65281, -1, 1073742079, 1073807104, -16711681, -65281, 65280, -2147483393, -16777216, -256, -65281, -256, -65536 };
+  private static final int[] GRID;
   private static final int HALF = -2147483648;
   private static final int LOW = 1073741824;
   private static final int MAGENTA = 16711935;
@@ -20,8 +21,17 @@ public class GeneratedTexture
   private static final int TRANSP = 0;
   private static final int WHITE = 16777215;
   private static final int YELLOW = 65535;
-  private static final ByteBuffer sCoarseImageData = generateCoarseData();
-  private static final ByteBuffer sFineImageData = generateFineData();
+  private static final ByteBuffer sCoarseImageData;
+  private static final ByteBuffer sFineImageData;
+  
+  static
+  {
+    AppMethodBeat.i(49997);
+    GRID = new int[] { -16776961, -16711681, -16711936, -65281, -1, 1073742079, 1073807104, -16711681, -65281, 65280, -2147483393, -16777216, -256, -65281, -256, -65536 };
+    sCoarseImageData = generateCoarseData();
+    sFineImageData = generateFineData();
+    AppMethodBeat.o(49997);
+  }
   
   private static void checkerPattern(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
@@ -50,18 +60,25 @@ public class GeneratedTexture
   
   public static int createTestTexture(GeneratedTexture.Image paramImage)
   {
+    AppMethodBeat.i(49994);
     switch (GeneratedTexture.1.$SwitchMap$com$tencent$ttpic$gles$GeneratedTexture$Image[paramImage.ordinal()])
     {
     default: 
-      throw new RuntimeException("unknown image");
+      paramImage = new RuntimeException("unknown image");
+      AppMethodBeat.o(49994);
+      throw paramImage;
     }
-    for (paramImage = sCoarseImageData;; paramImage = sFineImageData) {
-      return GlUtil.createImageTexture(paramImage, 64, 64, 6408);
+    for (paramImage = sCoarseImageData;; paramImage = sFineImageData)
+    {
+      int i = GlUtil.createImageTexture(paramImage, 64, 64, 6408);
+      AppMethodBeat.o(49994);
+      return i;
     }
   }
   
   private static ByteBuffer generateCoarseData()
   {
+    AppMethodBeat.i(49995);
     byte[] arrayOfByte = new byte[16384];
     int j = 0;
     if (j < 16384)
@@ -92,11 +109,13 @@ public class GeneratedTexture
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(16384);
     localByteBuffer.put(arrayOfByte);
     localByteBuffer.position(0);
+    AppMethodBeat.o(49995);
     return localByteBuffer;
   }
   
   private static ByteBuffer generateFineData()
   {
+    AppMethodBeat.i(49996);
     byte[] arrayOfByte = new byte[16384];
     checkerPattern(arrayOfByte, 0, 0, 32, 32, -16776961, -65536, 1);
     checkerPattern(arrayOfByte, 32, 32, 64, 64, -16776961, -16711936, 2);
@@ -105,12 +124,13 @@ public class GeneratedTexture
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(16384);
     localByteBuffer.put(arrayOfByte);
     localByteBuffer.position(0);
+    AppMethodBeat.o(49996);
     return localByteBuffer;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.ttpic.gles.GeneratedTexture
  * JD-Core Version:    0.7.0.1
  */

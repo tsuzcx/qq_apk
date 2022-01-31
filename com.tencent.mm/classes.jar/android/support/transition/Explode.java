@@ -14,9 +14,9 @@ import java.util.Map;
 public class Explode
   extends Visibility
 {
-  private static final TimeInterpolator qx = new DecelerateInterpolator();
-  private static final TimeInterpolator qy = new AccelerateInterpolator();
-  private int[] qz = new int[2];
+  private static final TimeInterpolator ru = new DecelerateInterpolator();
+  private static final TimeInterpolator rv = new AccelerateInterpolator();
+  private int[] rw = new int[2];
   
   public Explode()
   {
@@ -31,22 +31,20 @@ public class Explode
   
   private void a(View paramView, Rect paramRect, int[] paramArrayOfInt)
   {
-    paramView.getLocationOnScreen(this.qz);
-    int m = this.qz[0];
-    int k = this.qz[1];
+    paramView.getLocationOnScreen(this.rw);
+    int k = this.rw[0];
+    int m = this.rw[1];
     Rect localRect = getEpicenter();
-    int j;
-    if (localRect == null)
-    {
-      i = paramView.getWidth() / 2;
-      j = Math.round(paramView.getTranslationX()) + (i + m);
+    int i;
+    if (localRect == null) {
+      i = paramView.getWidth() / 2 + k + Math.round(paramView.getTranslationX());
     }
-    for (int i = paramView.getHeight() / 2 + k + Math.round(paramView.getTranslationY());; i = localRect.centerY())
+    for (int j = paramView.getHeight() / 2 + m + Math.round(paramView.getTranslationY());; j = localRect.centerY())
     {
       int n = paramRect.centerX();
       int i1 = paramRect.centerY();
-      float f3 = n - j;
-      float f4 = i1 - i;
+      float f3 = n - i;
+      float f4 = i1 - j;
       float f2 = f3;
       float f1 = f4;
       if (f3 == 0.0F)
@@ -62,27 +60,30 @@ public class Explode
       f3 = q(f2, f1);
       f2 /= f3;
       f1 /= f3;
-      j -= m;
-      i -= k;
-      j = Math.max(j, paramView.getWidth() - j);
-      i = Math.max(i, paramView.getHeight() - i);
-      f3 = q(j, i);
+      f3 = g(paramView, i - k, j - m);
       paramArrayOfInt[0] = Math.round(f2 * f3);
       paramArrayOfInt[1] = Math.round(f3 * f1);
       return;
-      j = localRect.centerX();
+      i = localRect.centerX();
     }
   }
   
-  private void c(ai paramai)
+  private void c(ah paramah)
   {
-    View localView = paramai.view;
-    localView.getLocationOnScreen(this.qz);
-    int i = this.qz[0];
-    int j = this.qz[1];
+    View localView = paramah.view;
+    localView.getLocationOnScreen(this.rw);
+    int i = this.rw[0];
+    int j = this.rw[1];
     int k = localView.getWidth();
     int m = localView.getHeight();
-    paramai.values.put("android:explode:screenBounds", new Rect(i, j, k + i, m + j));
+    paramah.values.put("android:explode:screenBounds", new Rect(i, j, k + i, m + j));
+  }
+  
+  private static float g(View paramView, int paramInt1, int paramInt2)
+  {
+    paramInt1 = Math.max(paramInt1, paramView.getWidth() - paramInt1);
+    paramInt2 = Math.max(paramInt2, paramView.getHeight() - paramInt2);
+    return q(paramInt1, paramInt2);
   }
   
   private static float q(float paramFloat1, float paramFloat2)
@@ -90,17 +91,17 @@ public class Explode
     return (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
   }
   
-  public final Animator a(ViewGroup paramViewGroup, View paramView, ai paramai)
+  public final Animator a(ViewGroup paramViewGroup, View paramView, ah paramah)
   {
-    if (paramai == null) {
+    if (paramah == null) {
       return null;
     }
-    Rect localRect = (Rect)paramai.values.get("android:explode:screenBounds");
+    Rect localRect = (Rect)paramah.values.get("android:explode:screenBounds");
     int i = localRect.left;
     int j = localRect.top;
     float f3 = paramView.getTranslationX();
     float f4 = paramView.getTranslationY();
-    int[] arrayOfInt = (int[])paramai.view.getTag(z.a.transition_position);
+    int[] arrayOfInt = (int[])paramah.view.getTag(2131820684);
     float f2;
     float f1;
     if (arrayOfInt != null)
@@ -112,42 +113,42 @@ public class Explode
     }
     for (;;)
     {
-      a(paramViewGroup, localRect, this.qz);
-      return ak.a(paramView, paramai, i, j, f3, f4, f2 + this.qz[0], f1 + this.qz[1], qy);
+      a(paramViewGroup, localRect, this.rw);
+      return aj.a(paramView, paramah, i, j, f3, f4, f2 + this.rw[0], f1 + this.rw[1], rv);
       f1 = f4;
       f2 = f3;
     }
   }
   
-  public final Animator a(ViewGroup paramViewGroup, View paramView, ai paramai1, ai paramai2)
+  public final Animator a(ViewGroup paramViewGroup, View paramView, ah paramah1, ah paramah2)
   {
-    if (paramai2 == null) {
+    if (paramah2 == null) {
       return null;
     }
-    paramai1 = (Rect)paramai2.values.get("android:explode:screenBounds");
+    paramah1 = (Rect)paramah2.values.get("android:explode:screenBounds");
     float f1 = paramView.getTranslationX();
     float f2 = paramView.getTranslationY();
-    a(paramViewGroup, paramai1, this.qz);
-    float f3 = this.qz[0];
-    float f4 = this.qz[1];
-    return ak.a(paramView, paramai2, paramai1.left, paramai1.top, f1 + f3, f2 + f4, f1, f2, qx);
+    a(paramViewGroup, paramah1, this.rw);
+    float f3 = this.rw[0];
+    float f4 = this.rw[1];
+    return aj.a(paramView, paramah2, paramah1.left, paramah1.top, f1 + f3, f2 + f4, f1, f2, ru);
   }
   
-  public final void a(ai paramai)
+  public final void a(ah paramah)
   {
-    super.a(paramai);
-    c(paramai);
+    super.a(paramah);
+    c(paramah);
   }
   
-  public final void b(ai paramai)
+  public final void b(ah paramah)
   {
-    super.b(paramai);
-    c(paramai);
+    super.b(paramah);
+    c(paramah);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.transition.Explode
  * JD-Core Version:    0.7.0.1
  */

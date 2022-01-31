@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sysvideo.ui.video;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.video.VideoView;
 
@@ -13,8 +13,10 @@ final class VideoRecorderPreviewUI$3
   
   public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    VideoRecorderPreviewUI.a(this.pzh).stopPlayback();
-    h.h(this.pzh, R.l.video_play_faile, R.l.video_play_err);
+    AppMethodBeat.i(25632);
+    VideoRecorderPreviewUI.a(this.taU).stopPlayback();
+    h.h(this.taU, 2131304530, 2131304528);
+    AppMethodBeat.o(25632);
     return false;
   }
 }

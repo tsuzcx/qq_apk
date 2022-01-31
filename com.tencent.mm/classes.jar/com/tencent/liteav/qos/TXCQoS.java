@@ -1,97 +1,49 @@
 package com.tencent.liteav.qos;
 
-import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.liteav.basic.log.TXCLog;
-import com.tencent.liteav.basic.util.TXCTimeUtil;
+import com.tencent.liteav.basic.util.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TXCQoS
 {
   public static final int AUTO_ADJUST_LIVEPUSH_RESOLUTION_STRATEGY = 1;
   public static final int AUTO_ADJUST_REALTIME_VIDEOCHAT_STRATEGY = 5;
   static final String TAG = "TXCQos";
-  private int mAutoStrategy = -1;
-  private int mBitrate = 0;
-  private Handler mHandler = new Handler();
-  private int mHeight = 0;
+  private int mAutoStrategy;
+  private int mBitrate;
+  private Handler mHandler;
+  private int mHeight;
   private long mInstance;
-  private long mInterval = 1000L;
-  private boolean mIsEnableDrop = false;
+  private long mInterval;
+  private boolean mIsEnableDrop;
   private a mListener;
   private com.tencent.liteav.basic.c.a mNotifyListener;
-  private Runnable mRunnable = new Runnable()
-  {
-    public void run()
-    {
-      int i;
-      int j;
-      int k;
-      Bundle localBundle;
-      if (TXCQoS.this.mListener != null)
-      {
-        i = TXCQoS.this.mListener.onGetEncoderRealBitrate();
-        j = TXCQoS.this.mListener.onGetQueueInputSize();
-        k = TXCQoS.this.mListener.onGetQueueOutputSize();
-        int m = TXCQoS.this.mListener.onGetVideoQueueMaxCount();
-        int n = TXCQoS.this.mListener.onGetVideoQueueCurrentCount();
-        int i1 = TXCQoS.this.mListener.onGetVideoDropCount();
-        TXCQoS.this.nativeSetVideoRealBitrate(TXCQoS.this.mInstance, i);
-        TXCQoS.this.nativeAdjustBitrate(TXCQoS.this.mInstance, m, n, i1, k, j);
-        boolean bool = TXCQoS.this.nativeIsEnableDrop(TXCQoS.this.mInstance);
-        if (TXCQoS.this.mIsEnableDrop != bool)
-        {
-          TXCQoS.access$502(TXCQoS.this, bool);
-          TXCQoS.this.mListener.onEnableDropStatusChanged(bool);
-        }
-        i = TXCQoS.this.nativeGetBitrate(TXCQoS.this.mInstance);
-        j = TXCQoS.this.nativeGetWidth(TXCQoS.this.mInstance);
-        k = TXCQoS.this.nativeGetHeight(TXCQoS.this.mInstance);
-        if ((j == TXCQoS.this.mWidth) && (k == TXCQoS.this.mHeight)) {
-          break label418;
-        }
-        if ((TXCQoS.this.mAutoStrategy == 1) || (TXCQoS.this.mAutoStrategy == 5))
-        {
-          TXCQoS.this.mListener.onEncoderParamsChanged(i, j, k);
-          if (TXCQoS.this.mNotifyListener != null)
-          {
-            localBundle = new Bundle();
-            localBundle.putCharSequence("EVT_MSG", "调整分辨率:new bitrate:" + i + " new resolution:" + j + "*" + k);
-            localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-            TXCQoS.this.mNotifyListener.onNotifyEvent(1005, localBundle);
-          }
-        }
-      }
-      for (;;)
-      {
-        TXCQoS.access$1302(TXCQoS.this, i);
-        TXCQoS.access$902(TXCQoS.this, j);
-        TXCQoS.access$1002(TXCQoS.this, k);
-        TXCQoS.this.mHandler.postDelayed(this, TXCQoS.this.mInterval);
-        return;
-        label418:
-        if (i != TXCQoS.this.mBitrate)
-        {
-          TXCQoS.this.mListener.onEncoderParamsChanged(i, 0, 0);
-          if (TXCQoS.this.mNotifyListener != null)
-          {
-            localBundle = new Bundle();
-            localBundle.putCharSequence("EVT_MSG", "调整编码码率:new bitrate:" + i);
-            localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
-            localBundle.putLong("EVT_USERID", TXCQoS.this.mUserID);
-            TXCQoS.this.mNotifyListener.onNotifyEvent(1006, localBundle);
-          }
-        }
-      }
-    }
-  };
-  private long mUserID = 0L;
-  private int mWidth = 0;
+  private Runnable mRunnable;
+  private String mUserID;
+  private int mWidth;
   
-  static {}
+  static
+  {
+    AppMethodBeat.i(66821);
+    b.f();
+    AppMethodBeat.o(66821);
+  }
   
   public TXCQoS(boolean paramBoolean)
   {
+    AppMethodBeat.i(66803);
+    this.mInterval = 1000L;
+    this.mUserID = "";
+    this.mIsEnableDrop = false;
+    this.mBitrate = 0;
+    this.mWidth = 0;
+    this.mHeight = 0;
+    this.mAutoStrategy = -1;
+    this.mHandler = new Handler();
+    this.mRunnable = new TXCQoS.1(this);
     this.mInstance = nativeInit(paramBoolean);
+    AppMethodBeat.o(66803);
   }
   
   private native void nativeAddQueueInputSize(long paramLong, int paramInt);
@@ -132,6 +84,7 @@ public class TXCQoS
   
   protected void finalize()
   {
+    AppMethodBeat.i(66804);
     try
     {
       nativeDeinit(this.mInstance);
@@ -140,54 +93,68 @@ public class TXCQoS
     finally
     {
       super.finalize();
+      AppMethodBeat.o(66804);
     }
   }
   
-  public long getUserID()
+  public String getUserID()
   {
     return this.mUserID;
   }
   
   public boolean isEnableDrop()
   {
-    return nativeIsEnableDrop(this.mInstance);
+    AppMethodBeat.i(66808);
+    boolean bool = nativeIsEnableDrop(this.mInstance);
+    AppMethodBeat.o(66808);
+    return bool;
   }
   
   public void reset(boolean paramBoolean)
   {
+    AppMethodBeat.i(66807);
     nativeReset(this.mInstance, paramBoolean);
+    AppMethodBeat.o(66807);
   }
   
   public void setAutoAdjustBitrate(boolean paramBoolean)
   {
+    AppMethodBeat.i(66810);
     StringBuilder localStringBuilder = new StringBuilder("autoAdjustBitrate is ");
     if (paramBoolean) {}
     for (String str = "yes";; str = "no")
     {
       TXCLog.d("TXCQos", str);
       nativeSetAutoAdjustBitrate(this.mInstance, paramBoolean);
+      AppMethodBeat.o(66810);
       return;
     }
   }
   
   public void setAutoAdjustStrategy(int paramInt)
   {
-    TXCLog.d("TXCQos", "autoAdjustStrategy is " + paramInt);
+    AppMethodBeat.i(66811);
+    TXCLog.d("TXCQos", "autoAdjustStrategy is ".concat(String.valueOf(paramInt)));
     nativeSetAutoAdjustStrategy(this.mInstance, paramInt);
     this.mAutoStrategy = paramInt;
+    AppMethodBeat.o(66811);
   }
   
   public void setDefaultVideoResolution(int paramInt)
   {
-    TXCLog.d("TXCQos", "DefaultVideoResolution is " + paramInt);
+    AppMethodBeat.i(66812);
+    TXCLog.d("TXCQos", "DefaultVideoResolution is ".concat(String.valueOf(paramInt)));
     this.mWidth = 0;
     this.mHeight = 0;
     nativeSetVideoDefaultResolution(this.mInstance, paramInt);
+    AppMethodBeat.o(66812);
   }
   
   public void setHasVideo(boolean paramBoolean)
   {
+    AppMethodBeat.i(66809);
     nativeSetHasVideo(this.mInstance, paramBoolean);
+    AppMethodBeat.o(66809);
   }
   
   public void setListener(a parama)
@@ -200,32 +167,40 @@ public class TXCQoS
     this.mNotifyListener = parama;
   }
   
-  public void setUserID(long paramLong)
+  public void setUserID(String paramString)
   {
-    this.mUserID = paramLong;
+    this.mUserID = paramString;
   }
   
   public void setVideoEncBitrate(int paramInt1, int paramInt2, int paramInt3)
   {
+    AppMethodBeat.i(66813);
     this.mBitrate = 0;
     nativeSetVideoEncBitrate(this.mInstance, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(66813);
   }
   
   public void setVideoExpectBitrate(int paramInt)
   {
+    AppMethodBeat.i(66814);
     nativeSetVideoExpectBitrate(this.mInstance, paramInt);
+    AppMethodBeat.o(66814);
   }
   
   public void start(long paramLong)
   {
+    AppMethodBeat.i(66805);
     this.mInterval = paramLong;
     this.mHandler.postDelayed(this.mRunnable, this.mInterval);
+    AppMethodBeat.o(66805);
   }
   
   public void stop()
   {
+    AppMethodBeat.i(66806);
     this.mHandler.removeCallbacks(this.mRunnable);
     this.mAutoStrategy = -1;
+    AppMethodBeat.o(66806);
   }
 }
 

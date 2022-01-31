@@ -1,5 +1,6 @@
 package com.tencent.mm.cache;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.e.a;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,21 +9,28 @@ import java.util.Set;
 
 public final class ArtistCacheManager$a
 {
-  public HashMap<a, d> dkV = new HashMap();
+  HashMap<a, e> ecp;
   
-  public ArtistCacheManager$a(ArtistCacheManager paramArtistCacheManager) {}
+  public ArtistCacheManager$a(ArtistCacheManager paramArtistCacheManager)
+  {
+    AppMethodBeat.i(116208);
+    this.ecp = new HashMap();
+    AppMethodBeat.o(116208);
+  }
   
   public final void clearAll()
   {
-    Iterator localIterator = this.dkV.entrySet().iterator();
+    AppMethodBeat.i(116209);
+    Iterator localIterator = this.ecp.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((d)((Map.Entry)localIterator.next()).getValue()).onDestroy();
+      ((e)((Map.Entry)localIterator.next()).getValue()).onDestroy();
     }
+    AppMethodBeat.o(116209);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.cache.ArtistCacheManager.a
  * JD-Core Version:    0.7.0.1
  */

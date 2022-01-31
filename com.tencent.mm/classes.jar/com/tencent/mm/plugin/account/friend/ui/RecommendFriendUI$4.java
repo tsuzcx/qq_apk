@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.friend.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
 
 final class RecommendFriendUI$4
@@ -11,7 +12,9 @@ final class RecommendFriendUI$4
   
   public final void onClick(View paramView)
   {
-    BackwardSupportUtil.c.a(RecommendFriendUI.e(this.fiz));
+    AppMethodBeat.i(108631);
+    BackwardSupportUtil.c.a(RecommendFriendUI.e(this.gAg));
+    AppMethodBeat.o(108631);
   }
 }
 

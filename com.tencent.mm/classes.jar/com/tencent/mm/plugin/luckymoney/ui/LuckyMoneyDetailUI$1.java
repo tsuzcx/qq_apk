@@ -4,49 +4,47 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.plugin.luckymoney.b.j;
-import com.tencent.mm.plugin.wxpay.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.s;
 
 final class LuckyMoneyDetailUI$1
   implements AbsListView.OnScrollListener
 {
-  private boolean lMc = false;
-  private boolean lMd;
+  private boolean ojw = false;
+  private boolean ojx;
   
   LuckyMoneyDetailUI$1(LuckyMoneyDetailUI paramLuckyMoneyDetailUI) {}
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
     boolean bool = true;
-    if ((paramInt3 == 0) || (!this.lMc)) {
+    AppMethodBeat.i(42646);
+    if ((paramInt3 == 0) || (!this.ojw))
+    {
+      AppMethodBeat.o(42646);
       return;
     }
     if (paramInt1 > 0) {}
-    label20:
-    label87:
-    label90:
+    label101:
     for (;;)
     {
-      if (this.lMd != bool)
+      if (this.ojx != bool)
       {
         if (bool) {
-          this.lVz.getResources().getDrawable(a.e.lucky_money_actionbar_bg);
+          this.otz.getResources().getDrawable(2130839340);
         }
-        LuckyMoneyDetailUI.bgb();
-        this.lMd = bool;
-        return;
-        paramAbsListView = paramAbsListView.getChildAt(paramInt1);
-        if (paramAbsListView == null) {
-          break label87;
-        }
+        this.ojx = bool;
       }
+      AppMethodBeat.o(42646);
+      return;
+      paramAbsListView = paramAbsListView.getChildAt(paramInt1);
+      if (paramAbsListView != null) {}
       for (paramInt1 = 0 - paramAbsListView.getTop();; paramInt1 = 0)
       {
         if (paramInt1 > 100) {
-          break label90;
+          break label101;
         }
         bool = false;
-        break label20;
         break;
       }
     }
@@ -54,27 +52,33 @@ final class LuckyMoneyDetailUI$1
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramAbsListView.getCount() == 0) {
+    AppMethodBeat.i(42645);
+    if (paramAbsListView.getCount() == 0)
+    {
+      AppMethodBeat.o(42645);
       return;
     }
     switch (paramInt)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(42645);
       return;
-    case 0: 
       if (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1)
       {
-        if (!this.lVz.lUq.bfI()) {
-          LuckyMoneyDetailUI.a(this.lVz);
+        if (!this.otz.orz.isProcessing()) {
+          LuckyMoneyDetailUI.a(this.otz);
         }
-        if ((LuckyMoneyDetailUI.b(this.lVz)) && (!LuckyMoneyDetailUI.c(this.lVz))) {
-          LuckyMoneyDetailUI.d(this.lVz);
+        if ((LuckyMoneyDetailUI.b(this.otz)) && (!LuckyMoneyDetailUI.c(this.otz))) {
+          LuckyMoneyDetailUI.d(this.otz);
         }
       }
-      this.lMc = false;
+      this.ojw = false;
+      AppMethodBeat.o(42645);
       return;
+      this.ojw = true;
     }
-    this.lMc = true;
   }
 }
 

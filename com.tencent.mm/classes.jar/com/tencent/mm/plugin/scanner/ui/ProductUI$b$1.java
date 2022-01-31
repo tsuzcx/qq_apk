@@ -1,31 +1,33 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ProductUI$b$1
   implements ProductScrollView.a
 {
   ProductUI$b$1(ProductUI.b paramb) {}
   
-  public final void aMI()
+  public final void bqW()
   {
     float f3 = 1.0F;
-    ProductUI.b localb = this.nKN;
-    int i = localb.nKK.getScrollY();
+    AppMethodBeat.i(81103);
+    ProductUI.b localb = this.qyq;
+    int i = localb.qyn.getScrollY();
     float f1;
-    label67:
+    label65:
     float f2;
     if (i < 0)
     {
       f1 = -1.0F;
-      y.v("MicroMsg.ProductUI.HeaderEffectHelper", "rate=" + f1);
+      ab.v("MicroMsg.ProductUI.HeaderEffectHelper", "rate=".concat(String.valueOf(f1)));
       if (f1 != 1.0F) {
-        break label208;
+        break label211;
       }
-      if (!localb.nKL)
+      if (!localb.qyo)
       {
-        localb.nKL = true;
-        if (ProductUI.v(localb.nKF) != null)
+        localb.qyo = true;
+        if (ProductUI.x(localb.qyh) != null)
         {
           float f4 = 1.0F - f1 - 0.2F;
           f2 = f4;
@@ -35,12 +37,12 @@ final class ProductUI$b$1
           if (f1 == 0.0F) {
             f2 = 1.0F;
           }
-          ProductUI.n(ProductUI.v(localb.nKF), f2);
+          ProductUI.q(ProductUI.x(localb.qyh), f2);
         }
-        if (ProductUI.w(localb.nKF) != null)
+        if (ProductUI.y(localb.qyh) != null)
         {
           if (f1 != 0.0F) {
-            break label217;
+            break label220;
           }
           f2 = 0.0F;
         }
@@ -48,19 +50,20 @@ final class ProductUI$b$1
     }
     for (;;)
     {
-      ProductUI.n(ProductUI.w(localb.nKF), f2);
+      ProductUI.q(ProductUI.y(localb.qyh), f2);
+      AppMethodBeat.o(81103);
       return;
-      if ((i >= ProductUI.x(localb.nKF) - localb.Xc) || (ProductUI.x(localb.nKF) == 0.0F))
+      if ((i >= ProductUI.z(localb.qyh) - localb.XO) || (ProductUI.z(localb.qyh) == 0.0F))
       {
         f1 = 1.0F;
         break;
       }
-      f1 = i * 1.37F / ProductUI.x(localb.nKF);
+      f1 = i * 1.37F / ProductUI.z(localb.qyh);
       break;
-      label208:
-      localb.nKL = false;
-      break label67;
-      label217:
+      label211:
+      localb.qyo = false;
+      break label65;
+      label220:
       f2 = f3;
       if (f1 >= 0.0F)
       {

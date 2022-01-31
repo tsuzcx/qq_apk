@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardHomePageUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -10,13 +11,16 @@ final class CardHomePageUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if ((CardHomePageUI.a(this.ivb) == 1) || (CardHomePageUI.a(this.ivb) == 2))
-    {
-      CardHomePageUI.b(this.ivb);
-      return true;
+    AppMethodBeat.i(88485);
+    if ((CardHomePageUI.a(this.kwf) == 1) || (CardHomePageUI.a(this.kwf) == 2)) {
+      CardHomePageUI.b(this.kwf);
     }
-    this.ivb.finish();
-    return true;
+    for (;;)
+    {
+      AppMethodBeat.o(88485);
+      return true;
+      this.kwf.finish();
+    }
   }
 }
 

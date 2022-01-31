@@ -1,15 +1,25 @@
 package com.tencent.smtt.utils;
 
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
-
-public abstract interface j$b
+class j$b
+  extends j.a
 {
-  public abstract boolean a(InputStream paramInputStream, ZipEntry paramZipEntry, String paramString);
+  int k;
+  int l;
+  int m;
+  
+  long a()
+  {
+    return this.m;
+  }
+  
+  long b()
+  {
+    return this.l;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.utils.j.b
  * JD-Core Version:    0.7.0.1
  */

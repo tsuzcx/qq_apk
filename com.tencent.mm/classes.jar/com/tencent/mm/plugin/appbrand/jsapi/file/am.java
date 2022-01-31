@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.mm.plugin.appbrand.appstorage.h;
-import com.tencent.mm.plugin.appbrand.appstorage.k;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import org.json.JSONObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-final class am
-  extends d
+public final class am
+  extends e<ba>
 {
-  final f.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  private static final int CTRL_INDEX = 379;
+  private static final String NAME = "writeFileSync";
+  
+  public am()
   {
-    if (paramc.Zl().ru(paramString) == h.fGU) {}
-    for (paramc = "ok";; paramc = String.format("fail no such file or directory \"%s\"", new Object[] { paramString })) {
-      return new f.a(paramc, new Object[0]);
-    }
+    super(new ba());
+    AppMethodBeat.i(102814);
+    AppMethodBeat.o(102814);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.am
  * JD-Core Version:    0.7.0.1
  */

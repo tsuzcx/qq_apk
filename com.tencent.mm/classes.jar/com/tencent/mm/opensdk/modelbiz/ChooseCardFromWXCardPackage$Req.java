@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelbiz;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 
 public class ChooseCardFromWXCardPackage$Req
@@ -18,10 +19,23 @@ public class ChooseCardFromWXCardPackage$Req
   
   public boolean checkArgs()
   {
-    if ((this.appId == null) || (this.appId.length() <= 0)) {}
-    while ((this.signType == null) || (this.signType.length() <= 0) || (this.cardSign == null) || (this.cardSign.length() <= 0)) {
+    AppMethodBeat.i(128176);
+    if ((this.appId == null) || (this.appId.length() <= 0))
+    {
+      AppMethodBeat.o(128176);
       return false;
     }
+    if ((this.signType == null) || (this.signType.length() <= 0))
+    {
+      AppMethodBeat.o(128176);
+      return false;
+    }
+    if ((this.cardSign == null) || (this.cardSign.length() <= 0))
+    {
+      AppMethodBeat.o(128176);
+      return false;
+    }
+    AppMethodBeat.o(128176);
     return true;
   }
   
@@ -32,6 +46,7 @@ public class ChooseCardFromWXCardPackage$Req
   
   public void toBundle(Bundle paramBundle)
   {
+    AppMethodBeat.i(128177);
     super.toBundle(paramBundle);
     paramBundle.putString("_wxapi_choose_card_from_wx_card_app_id", this.appId);
     paramBundle.putString("_wxapi_choose_card_from_wx_card_location_id", this.locationId);
@@ -42,6 +57,7 @@ public class ChooseCardFromWXCardPackage$Req
     paramBundle.putString("_wxapi_choose_card_from_wx_card_card_id", this.cardId);
     paramBundle.putString("_wxapi_choose_card_from_wx_card_card_type", this.cardType);
     paramBundle.putString("_wxapi_choose_card_from_wx_card_can_multi_select", this.canMultiSelect);
+    AppMethodBeat.o(128177);
   }
 }
 

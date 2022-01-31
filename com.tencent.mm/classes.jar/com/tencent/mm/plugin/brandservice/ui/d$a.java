@@ -6,7 +6,7 @@ import com.tencent.mm.ui.base.sortview.a.a;
 public final class d$a
   implements a.a
 {
-  public TextView icl;
+  public TextView jTb;
 }
 
 

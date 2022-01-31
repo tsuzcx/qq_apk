@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.gwallet;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gwallet.a.b.a;
 import com.tencent.mm.plugin.gwallet.a.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class GWalletUI$1
   implements b.a
@@ -12,21 +13,25 @@ final class GWalletUI$1
   
   public final void a(c paramc)
   {
-    y.d("MicroMsg.GWalletUI", "Setup finished.");
+    AppMethodBeat.i(41674);
+    ab.d("MicroMsg.GWalletUI", "Setup finished.");
     if (!paramc.isSuccess())
     {
-      y.e("MicroMsg.GWalletUI", "Problem setting up in-app billing: " + paramc);
+      ab.e("MicroMsg.GWalletUI", "Problem setting up in-app billing: ".concat(String.valueOf(paramc)));
       Intent localIntent = new Intent();
-      localIntent.putExtra("RESPONSE_CODE", paramc.baN());
-      GWalletUI.a(this.liT, -1, localIntent);
+      localIntent.putExtra("RESPONSE_CODE", paramc.bHN());
+      GWalletUI.a(this.nGi, -1, localIntent);
+      AppMethodBeat.o(41674);
       return;
     }
-    if ("com.tencent.mm.gwallet.ACTION_PAY_REQUEST".equals(this.liT.getIntent().getAction()))
+    if ("com.tencent.mm.gwallet.ACTION_PAY_REQUEST".equals(this.nGi.getIntent().getAction()))
     {
-      GWalletUI.a(this.liT);
+      GWalletUI.a(this.nGi);
+      AppMethodBeat.o(41674);
       return;
     }
-    this.liT.gE(this.liT.getIntent().getBooleanExtra("is_direct", true));
+    this.nGi.io(this.nGi.getIntent().getBooleanExtra("is_direct", true));
+    AppMethodBeat.o(41674);
   }
 }
 

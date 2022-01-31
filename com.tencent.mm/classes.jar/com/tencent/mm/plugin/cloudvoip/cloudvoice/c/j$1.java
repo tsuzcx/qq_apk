@@ -1,13 +1,18 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.c;
 
-public final class j$1
-  implements Runnable
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.TimerTask;
+
+final class j$1
+  extends TimerTask
 {
-  public j$1(j paramj, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt, String paramString5, a parama1, a parama2, a parama3, a parama4) {}
+  j$1(j paramj) {}
   
   public final void run()
   {
-    j.a(this.iFU, this.gge, this.iFL, this.iFM, this.iFN, this.iFO, this.iFP, this.iFQ, this.iFR, this.iFS, this.iFT);
+    AppMethodBeat.i(135478);
+    o.kKN.O(new j.1.1(this));
+    AppMethodBeat.o(135478);
   }
 }
 

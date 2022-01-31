@@ -1,6 +1,7 @@
 package com.tencent.mm.console.a;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelstat.WatchDogPushReceiver;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
@@ -14,15 +15,18 @@ public final class i
 {
   static
   {
+    AppMethodBeat.i(16141);
     b.a(new i(), new String[] { "//assert", "//netassert", "//jniassert", "//jnipushassert", "//pushassert" });
+    AppMethodBeat.o(16141);
   }
   
   public static void init() {}
   
-  public final boolean a(Context paramContext, String[] paramArrayOfString)
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
+    AppMethodBeat.i(16140);
     paramContext = paramArrayOfString[0];
-    label60:
+    label64:
     int i;
     switch (paramContext.hashCode())
     {
@@ -34,42 +38,48 @@ public final class i
       switch (i)
       {
       default: 
+        AppMethodBeat.o(16140);
         return false;
         if (!paramContext.equals("//assert")) {
-          break label60;
+          break label64;
         }
         i = 0;
         continue;
         if (!paramContext.equals("//netassert")) {
-          break label60;
+          break label64;
         }
         i = 1;
         continue;
         if (!paramContext.equals("//jniassert")) {
-          break label60;
+          break label64;
         }
         i = 2;
         continue;
         if (!paramContext.equals("//jnipushassert")) {
-          break label60;
+          break label64;
         }
         i = 3;
         continue;
         if (!paramContext.equals("//pushassert")) {
-          break label60;
+          break label64;
         }
         i = 4;
       }
     }
     Assert.assertTrue("test errlog " + new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), false);
+    AppMethodBeat.o(16140);
     return true;
     Assert.assertTrue("NetsceneQueue forbid in ", false);
+    AppMethodBeat.o(16140);
     return true;
     MMProtocalJni.setClientPackVersion(-1);
+    AppMethodBeat.o(16140);
     return true;
-    WatchDogPushReceiver.jo(2);
+    WatchDogPushReceiver.mg(2);
+    AppMethodBeat.o(16140);
     return true;
-    WatchDogPushReceiver.jo(1);
+    WatchDogPushReceiver.mg(1);
+    AppMethodBeat.o(16140);
     return true;
   }
 }

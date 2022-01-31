@@ -2,11 +2,12 @@ package com.tencent.mm.ui.applet;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   implements AbsListView.OnScrollListener
 {
-  private AbsListView.OnScrollListener rZe = null;
+  private AbsListView.OnScrollListener vPV = null;
   
   public a()
   {
@@ -17,16 +18,20 @@ public final class a
   
   public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.rZe != null) {
-      this.rZe.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.i(106221);
+    if (this.vPV != null) {
+      this.vPV.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
+    AppMethodBeat.o(106221);
   }
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.rZe != null) {
-      this.rZe.onScrollStateChanged(paramAbsListView, paramInt);
+    AppMethodBeat.i(106222);
+    if (this.vPV != null) {
+      this.vPV.onScrollStateChanged(paramAbsListView, paramInt);
     }
+    AppMethodBeat.o(106222);
   }
 }
 

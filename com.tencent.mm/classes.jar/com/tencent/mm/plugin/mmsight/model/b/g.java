@@ -2,29 +2,33 @@ package com.tencent.mm.plugin.mmsight.model.b;
 
 public final class g
 {
-  boolean bSr = false;
   int bitrate;
-  int eIB;
-  int eIC;
-  int eIM;
-  int ejO;
-  int ejP;
+  int eRu;
+  int eRv;
+  int eRw;
+  Thread eUH;
   int frameCount = 0;
-  int fvY;
-  int fvZ;
-  g.a mlf;
-  Thread mlg;
+  int fzV;
+  int fzW;
+  int gNA;
+  int gNB;
+  boolean isStart = false;
+  int oKd;
+  int oKe;
+  g.a oKm;
   
-  public g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
+  public g(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    this.fvY = paramInt1;
-    this.fvZ = paramInt2;
-    this.eIB = paramInt3;
-    this.eIC = paramInt4;
+    this.gNA = paramInt1;
+    this.gNB = paramInt2;
+    this.eRu = paramInt3;
+    this.eRv = paramInt4;
     this.bitrate = paramInt5;
-    this.eIM = paramInt6;
-    this.ejO = 2;
-    this.ejP = paramInt7;
+    this.eRw = paramInt6;
+    this.fzV = 2;
+    this.fzW = paramInt7;
+    this.oKd = paramInt8;
+    this.oKe = paramInt9;
   }
 }
 

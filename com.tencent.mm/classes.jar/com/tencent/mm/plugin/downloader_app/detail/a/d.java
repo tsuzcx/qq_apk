@@ -1,33 +1,39 @@
 package com.tencent.mm.plugin.downloader_app.detail.a;
 
-import com.tencent.mm.plugin.webview.luggage.jsapi.ae;
-import com.tencent.mm.plugin.webview.luggage.jsapi.o;
-import com.tencent.mm.plugin.webview.luggage.jsapi.w;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.luggage.jsapi.al;
+import com.tencent.mm.plugin.webview.luggage.jsapi.q;
+import com.tencent.mm.plugin.webview.luggage.jsapi.y;
 import java.util.LinkedList;
 
 public final class d
 {
-  private static LinkedList<Class<? extends com.tencent.luggage.e.a>> iRP;
+  private static LinkedList<Class<? extends com.tencent.luggage.d.a>> laz;
   
-  private static void O(Class<? extends com.tencent.luggage.e.a> paramClass)
+  private static void ai(Class<? extends com.tencent.luggage.d.a> paramClass)
   {
-    iRP.add(paramClass);
+    AppMethodBeat.i(136073);
+    laz.add(paramClass);
+    AppMethodBeat.o(136073);
   }
   
-  public static LinkedList<Class<? extends com.tencent.luggage.e.a>> aGk()
+  public static LinkedList<Class<? extends com.tencent.luggage.d.a>> bjM()
   {
     try
     {
-      iRP = new LinkedList();
-      O(a.class);
-      O(e.class);
-      O(f.class);
-      O(ae.class);
-      O(w.class);
-      O(o.class);
-      O(c.class);
-      O(b.class);
-      LinkedList localLinkedList = iRP;
+      AppMethodBeat.i(136072);
+      laz = new LinkedList();
+      ai(a.class);
+      ai(e.class);
+      ai(g.class);
+      ai(al.class);
+      ai(y.class);
+      ai(q.class);
+      ai(c.class);
+      ai(b.class);
+      ai(f.class);
+      LinkedList localLinkedList = laz;
+      AppMethodBeat.o(136072);
       return localLinkedList;
     }
     finally

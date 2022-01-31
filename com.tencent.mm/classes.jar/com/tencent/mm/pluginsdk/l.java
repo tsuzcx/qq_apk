@@ -1,80 +1,79 @@
 package com.tencent.mm.pluginsdk;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import com.tencent.mm.ah.g;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.protocal.c.axd;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bi.a;
+import com.tencent.mm.g.a.ma;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.pluginsdk.wallet.d;
+import com.tencent.mm.pluginsdk.wallet.k;
+import java.util.Map;
 
-@Deprecated
 public abstract interface l
+  extends a
 {
-  public abstract Bitmap a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
+  public abstract int a(d paramd);
   
-  public abstract m a(g paramg);
+  public abstract int a(d paramd, boolean paramBoolean);
   
-  public abstract void a(Context paramContext, ad paramad, bi.a parama, Bundle paramBundle, String paramString);
+  public abstract void a(ma paramma, int paramInt);
   
-  public abstract void a(Context paramContext, bi.a parama, Bundle paramBundle);
+  public abstract void a(ma paramma, int paramInt, String paramString);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5);
+  public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2, Bundle paramBundle);
   
-  public abstract void a(Intent paramIntent, String paramString);
+  public abstract void byR();
   
-  public abstract void a(axd paramaxd, String paramString);
+  public abstract boolean byS();
   
-  public abstract void a(String paramString1, String paramString2, String paramString3, long paramLong);
+  public abstract boolean byT();
   
-  public abstract boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString);
+  public abstract boolean byU();
   
-  public abstract boolean a(ad paramad);
+  public abstract boolean byV();
   
-  public abstract void aJ(Context paramContext);
+  public abstract String byW();
   
-  public abstract m aQ(boolean paramBoolean);
+  public abstract k byZ();
   
-  public abstract boolean b(Context paramContext, int paramInt1, int paramInt2, String paramString);
+  public abstract boolean bza();
   
-  public abstract String cs(String paramString);
+  public abstract boolean bzb();
   
-  public abstract boolean ct(String paramString);
+  public abstract void bzc();
   
-  public abstract boolean cu(String paramString);
+  public abstract boolean bze();
   
-  public abstract void es(int paramInt);
+  public abstract boolean bzf();
   
-  public abstract String f(Context paramContext, String paramString1, String paramString2);
+  public abstract void bzg();
   
-  public abstract boolean m(Activity paramActivity);
+  public abstract void bzh();
   
-  public abstract String n(Context paramContext, String paramString);
+  public abstract void bzi();
   
-  public abstract void n(Activity paramActivity);
+  public abstract Map<String, String> bzj();
   
-  public abstract boolean o(Context paramContext, String paramString);
+  public abstract com.tencent.mm.pluginsdk.wallet.l bzk();
   
-  public abstract String q(String paramString, int paramInt);
+  public abstract Map<String, String> bzl();
   
-  public abstract void tk();
+  public abstract boolean bzm();
   
-  public abstract void tm();
+  public abstract boolean bzn();
   
-  public abstract void tn();
+  public abstract boolean bzo();
   
-  public abstract Intent to();
+  public abstract void dS(Context paramContext);
   
-  public abstract boolean tp();
+  public abstract void dT(Context paramContext);
   
-  public abstract void tq();
+  public abstract void hH(boolean paramBoolean);
   
-  public abstract boolean tr();
+  public abstract void hI(boolean paramBoolean);
   
-  public abstract String u(String paramString1, String paramString2);
+  public abstract int type();
+  
+  public abstract void userCancel();
 }
 
 

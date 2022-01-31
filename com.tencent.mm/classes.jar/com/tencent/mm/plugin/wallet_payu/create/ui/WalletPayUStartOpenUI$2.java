@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.wallet_payu.create.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMFormMobileInputView;
 import com.tencent.mm.wallet_core.d.g;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class WalletPayUStartOpenUI$2
   implements View.OnClickListener
@@ -14,12 +14,14 @@ final class WalletPayUStartOpenUI$2
   
   public final void onClick(View paramView)
   {
-    if (WalletPayUStartOpenUI.b(this.qNy).getVisibility() == 0)
+    AppMethodBeat.i(48396);
+    if (WalletPayUStartOpenUI.b(this.uCF).getVisibility() == 0)
     {
-      this.qNy.BX.putString("key_mobile", WalletPayUStartOpenUI.c(this.qNy));
-      this.qNy.BX.putString("dial_code", WalletPayUStartOpenUI.d(this.qNy));
+      this.uCF.getInput().putString("key_mobile", WalletPayUStartOpenUI.c(this.uCF));
+      this.uCF.getInput().putString("dial_code", WalletPayUStartOpenUI.d(this.uCF));
     }
-    this.qNy.cNk().m(new Object[0]);
+    this.uCF.getNetController().p(new Object[0]);
+    AppMethodBeat.o(48396);
   }
 }
 

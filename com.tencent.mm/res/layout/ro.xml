@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="top" android:layout_gravity="center" android:orientation="vertical" android:id="@id/b5c" android:background="@color/d0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lx"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.view.PhotoEditText android:textSize="@dimen/x9" android:textColor="@android:color/white" android:gravity="top" android:id="@id/b5d" android:background="@null" android:paddingLeft="@dimen/x7" android:paddingTop="50.0dip" android:paddingRight="@dimen/x7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:height="800.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Switch android:id="@id/b5e" android:background="@drawable/g8" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="20.0dip" android:thumb="@android:color/transparent" android:track="@android:color/transparent" />
-        <com.tencent.mm.view.footer.SelectColorBar android:gravity="top" android:id="@id/b5f" android:layout_width="fill_parent" android:layout_height="@dimen/vj" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b6r" android:background="@drawable/vw" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
+        <com.tencent.mm.ui.widget.MMTextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b6s" android:layout_width="wrap_content" android:layout_height="@dimen/n9" android:maxWidth="240.0dip" android:singleLine="true" />
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/w_" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/b6t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/n9" android:singleLine="true" />
     </LinearLayout>
 </LinearLayout>

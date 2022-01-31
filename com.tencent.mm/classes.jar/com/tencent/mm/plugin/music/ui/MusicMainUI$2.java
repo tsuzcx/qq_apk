@@ -1,17 +1,22 @@
 package com.tencent.mm.plugin.music.ui;
 
-import com.tencent.mm.av.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aw.a;
+import com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar;
+import com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar.a;
 
 final class MusicMainUI$2
   implements MusicSeekBar.a
 {
   MusicMainUI$2(MusicMainUI paramMusicMainUI) {}
   
-  public final void uZ(int paramInt)
+  public final void qH(int paramInt)
   {
-    a.iV(paramInt);
-    MusicMainUI.d(this.mCa).setProgress(paramInt);
-    MusicMainUI.d(this.mCa).hU(true);
+    AppMethodBeat.i(105090);
+    a.lN(paramInt);
+    MusicMainUI.d(this.pcd).setProgress(paramInt);
+    MusicMainUI.d(this.pcd).fs(true);
+    AppMethodBeat.o(105090);
   }
 }
 

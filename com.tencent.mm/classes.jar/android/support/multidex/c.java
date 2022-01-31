@@ -11,7 +11,7 @@ final class c
   {
     CRC32 localCRC32 = new CRC32();
     long l = parama.size;
-    paramRandomAccessFile.seek(parama.pj);
+    paramRandomAccessFile.seek(parama.offset);
     int i = (int)Math.min(16384L, l);
     parama = new byte[16384];
     for (i = paramRandomAccessFile.read(parama, 0, i); i != -1; i = paramRandomAccessFile.read(parama, 0, (int)Math.min(16384L, l)))
@@ -53,7 +53,7 @@ final class c
       paramRandomAccessFile.skipBytes(2);
       c.a locala = new c.a();
       locala.size = (Integer.reverseBytes(paramRandomAccessFile.readInt()) & 0xFFFFFFFF);
-      locala.pj = (Integer.reverseBytes(paramRandomAccessFile.readInt()) & 0xFFFFFFFF);
+      locala.offset = (Integer.reverseBytes(paramRandomAccessFile.readInt()) & 0xFFFFFFFF);
       return locala;
       l1 = l3;
     }
@@ -75,7 +75,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.multidex.c
  * JD-Core Version:    0.7.0.1
  */

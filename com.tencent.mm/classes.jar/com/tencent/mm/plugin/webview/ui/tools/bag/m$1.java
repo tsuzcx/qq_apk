@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.bag;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class m$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class m$1
   
   public final void run()
   {
-    l.rss.ccW();
+    AppMethodBeat.i(8243);
+    l.vix.dcS();
+    AppMethodBeat.o(8243);
   }
 }
 

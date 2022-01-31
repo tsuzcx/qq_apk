@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.wxawidget.console;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.f;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.plugin.appbrand.collector.c;
@@ -10,15 +11,18 @@ final class PerformancePanel$4
 {
   PerformancePanel$4(PerformancePanel paramPerformancePanel) {}
   
-  public final void cr(boolean paramBoolean)
+  public final void onStatusChange(boolean paramBoolean)
   {
+    AppMethodBeat.i(11176);
     f.a("com.tencent.mm:support", new IPCBoolean(paramBoolean), PerformancePanel.b.class, null);
     if (paramBoolean)
     {
-      c.rW("jsapi_draw_canvas");
+      c.zM("jsapi_draw_canvas");
+      AppMethodBeat.o(11176);
       return;
     }
-    c.rX("jsapi_draw_canvas");
+    c.zN("jsapi_draw_canvas");
+    AppMethodBeat.o(11176);
   }
 }
 

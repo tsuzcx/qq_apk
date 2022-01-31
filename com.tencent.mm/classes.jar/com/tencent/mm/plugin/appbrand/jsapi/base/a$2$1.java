@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.page.y;
+import com.tencent.mm.plugin.appbrand.page.af;
 
 final class a$2$1
   implements Runnable
@@ -10,7 +11,9 @@ final class a$2$1
   
   public final void run()
   {
-    this.gkZ.gkV.agW().mc(this.gkZ.gkY);
+    AppMethodBeat.i(91044);
+    this.hEP.hEL.vC().pf(this.hEP.hEO);
+    AppMethodBeat.o(91044);
   }
 }
 

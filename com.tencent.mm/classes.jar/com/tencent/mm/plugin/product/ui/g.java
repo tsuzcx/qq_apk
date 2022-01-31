@@ -2,23 +2,24 @@ package com.tencent.mm.plugin.product.ui;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v4.view.n;
+import android.support.v4.view.q;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class g
-  extends n
+  extends q
 {
   Context mContext;
-  private ArrayList<g.b> mTR;
-  private boolean mTS = false;
-  g.a mTT = null;
-  private List<String> mTv;
+  private List<String> pvB;
+  private ArrayList<g.b> pvX;
+  private boolean pvY;
+  g.a pvZ;
   
   public g(Context paramContext)
   {
@@ -27,72 +28,99 @@ public final class g
   
   private g(Context paramContext, byte paramByte)
   {
+    AppMethodBeat.i(44073);
+    this.pvY = false;
+    this.pvZ = null;
     this.mContext = paramContext;
-    this.mTv = null;
-    setData(this.mTv);
+    this.pvB = null;
+    setData(this.pvB);
+    AppMethodBeat.o(44073);
   }
   
-  public final int F(Object paramObject)
+  private void cbv()
   {
-    return -2;
-  }
-  
-  public final void a(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    y.d("MicroMsg.MallProductImageAdapter", "destroy item");
-    if (this.mTR != null) {
-      paramViewGroup.removeView(((g.b)this.mTR.get(paramInt)).bQf);
+    AppMethodBeat.i(44074);
+    if (this.pvX == null) {
+      this.pvX = new ArrayList();
     }
-  }
-  
-  public final boolean a(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
-  }
-  
-  public final Object b(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (this.mTR != null)
+    for (;;)
     {
-      y.d("MicroMsg.MallProductImageAdapter", "data valid");
-      paramViewGroup.addView(((g.b)this.mTR.get(paramInt)).bQf, 0);
-      return ((g.b)this.mTR.get(paramInt)).bQf;
+      Iterator localIterator = this.pvB.iterator();
+      while (localIterator.hasNext())
+      {
+        g.b localb = new g.b(this, (String)localIterator.next());
+        this.pvX.add(localb);
+      }
+      this.pvX.clear();
     }
-    return super.b(paramViewGroup, paramInt);
+    AppMethodBeat.o(44074);
+  }
+  
+  public final void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    AppMethodBeat.i(44077);
+    ab.d("MicroMsg.MallProductImageAdapter", "destroy item");
+    if (this.pvX != null) {
+      paramViewGroup.removeView(((g.b)this.pvX.get(paramInt)).cxy);
+    }
+    AppMethodBeat.o(44077);
   }
   
   public final int getCount()
   {
-    if (this.mTv == null) {
+    AppMethodBeat.i(44076);
+    if (this.pvB == null)
+    {
+      AppMethodBeat.o(44076);
       return 0;
     }
-    if (this.mTS) {
+    if (this.pvY)
+    {
+      AppMethodBeat.o(44076);
       return 2147483647;
     }
-    return this.mTv.size();
+    int i = this.pvB.size();
+    AppMethodBeat.o(44076);
+    return i;
+  }
+  
+  public final int getItemPosition(Object paramObject)
+  {
+    return -2;
+  }
+  
+  public final Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    AppMethodBeat.i(44078);
+    if (this.pvX != null)
+    {
+      ab.d("MicroMsg.MallProductImageAdapter", "data valid");
+      paramViewGroup.addView(((g.b)this.pvX.get(paramInt)).cxy, 0);
+      paramViewGroup = ((g.b)this.pvX.get(paramInt)).cxy;
+      AppMethodBeat.o(44078);
+      return paramViewGroup;
+    }
+    paramViewGroup = super.instantiateItem(paramViewGroup, paramInt);
+    AppMethodBeat.o(44078);
+    return paramViewGroup;
+  }
+  
+  public final boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
   
   public final void setData(List<String> paramList)
   {
+    AppMethodBeat.i(44075);
     if (paramList != null)
     {
       if (paramList.size() > 0) {
-        this.mTv = paramList;
+        this.pvB = paramList;
       }
-      if (this.mTR == null) {
-        this.mTR = new ArrayList();
-      }
-      for (;;)
-      {
-        paramList = this.mTv.iterator();
-        while (paramList.hasNext())
-        {
-          g.b localb = new g.b(this, (String)paramList.next());
-          this.mTR.add(localb);
-        }
-        this.mTR.clear();
-      }
+      cbv();
     }
+    AppMethodBeat.o(44075);
   }
 }
 

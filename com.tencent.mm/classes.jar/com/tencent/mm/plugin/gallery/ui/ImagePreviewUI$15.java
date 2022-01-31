@@ -1,22 +1,20 @@
 package com.tencent.mm.plugin.gallery.ui;
 
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.MMViewPager.e;
 
 final class ImagePreviewUI$15
-  implements am.a
+  implements MMViewPager.e
 {
   ImagePreviewUI$15(ImagePreviewUI paramImagePreviewUI) {}
   
-  public final boolean tC()
+  public final void bEG() {}
+  
+  public final void bdW()
   {
-    ImagePreviewUI localImagePreviewUI = this.kKb;
-    if (!ImagePreviewUI.w(this.kKb)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ImagePreviewUI.c(localImagePreviewUI, bool);
-      ImagePreviewUI.a(this.kKb, ImagePreviewUI.w(this.kKb));
-      return false;
-    }
+    AppMethodBeat.i(150891);
+    ImagePreviewUI.w(this.ngC);
+    AppMethodBeat.o(150891);
   }
 }
 

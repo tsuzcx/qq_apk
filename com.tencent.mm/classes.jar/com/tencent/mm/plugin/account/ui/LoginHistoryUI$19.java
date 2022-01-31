@@ -1,25 +1,19 @@
 package com.tencent.mm.plugin.account.ui;
 
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n.c;
-import java.util.Iterator;
-import java.util.List;
+import android.view.MenuItem;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.n.d;
 
 final class LoginHistoryUI$19
-  implements n.c
+  implements n.d
 {
-  LoginHistoryUI$19(LoginHistoryUI paramLoginHistoryUI, List paramList) {}
+  LoginHistoryUI$19(LoginHistoryUI paramLoginHistoryUI) {}
   
-  public final void a(l paraml)
+  public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    if (paraml.size() == 0)
-    {
-      Iterator localIterator = this.fng.iterator();
-      while (localIterator.hasNext()) {
-        paraml.i((m)localIterator.next());
-      }
-    }
+    AppMethodBeat.i(152548);
+    LoginHistoryUI.a(this.gEw, paramMenuItem.getItemId());
+    AppMethodBeat.o(152548);
   }
 }
 

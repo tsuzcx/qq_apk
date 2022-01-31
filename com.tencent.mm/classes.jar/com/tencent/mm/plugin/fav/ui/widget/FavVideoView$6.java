@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui.widget;
 
 import android.widget.ProgressBar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
 
 final class FavVideoView$6
@@ -10,17 +11,19 @@ final class FavVideoView$6
   
   public final void run()
   {
-    if ((FavVideoView.d(this.kjX) != null) && (FavVideoView.d(this.kjX).getVisibility() != 8)) {
-      FavVideoView.d(this.kjX).setVisibility(8);
+    AppMethodBeat.i(74719);
+    if ((FavVideoView.d(this.mEC) != null) && (FavVideoView.d(this.mEC).getVisibility() != 8)) {
+      FavVideoView.d(this.mEC).setVisibility(8);
     }
-    if ((FavVideoView.e(this.kjX) != null) && (FavVideoView.e(this.kjX).getVisibility() != 8)) {
-      FavVideoView.e(this.kjX).setVisibility(8);
+    if ((FavVideoView.e(this.mEC) != null) && (FavVideoView.e(this.mEC).getVisibility() != 8)) {
+      FavVideoView.e(this.mEC).setVisibility(8);
     }
+    AppMethodBeat.o(74719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavVideoView.6
  * JD-Core Version:    0.7.0.1
  */

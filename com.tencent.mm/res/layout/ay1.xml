@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
-    <TextView android:gravity="left" android:id="@id/egk" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/ko" android:layout_marginRight="@dimen/kl" android:layout_marginBottom="@dimen/kl" android:text="@string/fb1" style="@style/uv" />
-    <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ek7" android:imeOptions="actionNext" wallet:titleText="@string/f21" wallet:contentHint="@string/f1y" style="@style/us" />
-    <TextView android:id="@id/eke" android:visibility="visible" android:text="@string/f20" style="@style/uo" />
-    <Button android:id="@id/eky" android:layout_marginLeft="@dimen/kl" android:layout_marginTop="@dimen/du" android:layout_marginRight="@dimen/kl" android:text="@string/fba" style="@style/mu" />
-    <include layout="@layout/jt" />
+<LinearLayout android:orientation="vertical" android:id="@id/ero" android:background="@color/h6" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="fill_parent" android:layout_height="1.0dip" android:src="@drawable/a32" />
+    <LinearLayout android:background="@color/h6" android:paddingRight="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.sns.ui.SnsEditText android:textSize="@dimen/ni" android:textColor="@color/a6q" android:textColorHint="@color/a18" android:gravity="center|left|top" android:id="@id/cwv" android:background="@null" android:paddingLeft="@dimen/a_g" android:paddingTop="@dimen/a_g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/ev6" android:maxLines="4" android:minLines="4" android:singleLine="false" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/r1" />
+        <LinearLayout android:gravity="center|right|top" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/erp" android:paddingLeft="@dimen/l2" android:paddingTop="@dimen/l2" android:paddingBottom="@dimen/ll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/m0" />
+    </LinearLayout>
+    <LinearLayout android:gravity="bottom" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.sns.ui.SnsSightUploadSayFooter android:gravity="bottom" android:layout_gravity="bottom" android:id="@id/erq" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

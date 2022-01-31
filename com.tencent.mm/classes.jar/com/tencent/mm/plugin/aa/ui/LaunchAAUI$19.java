@@ -1,21 +1,28 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vending.g.d.a;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 
 final class LaunchAAUI$19
-  implements d.a
+  implements View.OnClickListener
 {
-  LaunchAAUI$19(LaunchAAUI paramLaunchAAUI) {}
+  LaunchAAUI$19(LaunchAAUI paramLaunchAAUI, String paramString) {}
   
-  public final void aE(Object paramObject)
+  public final void onClick(View paramView)
   {
-    y.i("MicroMsg.LaunchAAUI", "fetch operation data failed");
+    AppMethodBeat.i(40840);
+    paramView = new Intent();
+    paramView.putExtra("rawUrl", this.val$url);
+    d.b(this.grm.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    AppMethodBeat.o(40840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAUI.19
  * JD-Core Version:    0.7.0.1
  */

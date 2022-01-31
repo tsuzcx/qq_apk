@@ -4,10 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.clean.c.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.k;
 import com.tencent.mm.vfs.e;
 
 final class b$4
@@ -17,39 +18,48 @@ final class b$4
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    y.i("MicroMsg.CleanChattingDetailAdapter", "Click Item position=%d", new Object[] { Integer.valueOf(paramInt) });
-    paramAdapterView = this.iCF.pl(paramInt);
+    AppMethodBeat.i(18749);
+    ab.i("MicroMsg.CleanChattingDetailAdapter", "Click Item position=%d, count=%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.kHM.getCount()) });
+    if ((paramInt < 0) || (paramInt >= this.kHM.getCount()))
+    {
+      AppMethodBeat.o(18749);
+      return;
+    }
+    paramAdapterView = this.kHM.tB(paramInt);
     paramView = new Intent();
     switch (paramAdapterView.type)
     {
-    case 2: 
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(18749);
       return;
-    case 3: 
       paramView.setAction("android.intent.action.VIEW");
-      paramView.setDataAndType(e.aeP(paramAdapterView.filePath), "video/*");
+      k.a(b.e(this.kHM), paramView, e.avH(paramAdapterView.filePath), "video/*");
       try
       {
-        b.e(this.iCF).startActivity(Intent.createChooser(paramView, b.e(this.iCF).getString(R.l.video_title)));
+        b.e(this.kHM).startActivity(Intent.createChooser(paramView, b.e(this.kHM).getString(2131304541)));
+        AppMethodBeat.o(18749);
         return;
       }
       catch (Exception paramAdapterView)
       {
+        AppMethodBeat.o(18749);
         return;
       }
-    case 1: 
-      paramView.putExtra("key_title", b.e(this.iCF).getString(R.l.clean_image_detail_title));
+      paramView.putExtra("key_title", b.e(this.kHM).getString(2131298380));
       paramView.putExtra("show_menu", false);
-      if (e.bK(paramAdapterView.filePath)) {}
+      if (e.cN(paramAdapterView.filePath)) {}
       for (paramAdapterView = paramAdapterView.filePath;; paramAdapterView = paramAdapterView.thumbPath)
       {
         paramView.putExtra("key_image_path", paramAdapterView);
-        d.e(b.e(this.iCF), ".ui.tools.ShowImageUI", paramView);
+        d.f(b.e(this.kHM), ".ui.tools.ShowImageUI", paramView);
+        AppMethodBeat.o(18749);
         return;
       }
+      paramView.putExtra("app_msg_id", paramAdapterView.cpg);
+      d.f(b.e(this.kHM), ".ui.chatting.AppAttachDownloadUI", paramView);
     }
-    paramView.putExtra("app_msg_id", paramAdapterView.bHR);
-    d.e(b.e(this.iCF), ".ui.chatting.AppAttachDownloadUI", paramView);
   }
 }
 

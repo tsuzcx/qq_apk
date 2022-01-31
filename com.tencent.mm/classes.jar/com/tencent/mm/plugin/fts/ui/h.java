@@ -1,81 +1,98 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.ui.d.g;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashSet;
 
 public final class h
   extends d
   implements e.b
 {
-  private ah gNQ = new ah();
-  private boolean kBj;
-  private g kBm;
+  private ak ipC;
+  private boolean mXb;
+  private g mXe;
   
   public h(e parame, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
   {
     super(parame);
-    this.kBm = new g(parame.getContext(), this, paramInt1);
-    this.kBm.kwZ = paramString2;
-    this.kBm.talker = paramString1;
-    this.kBm.kwY = paramString3;
-    this.kBm.showType = paramInt2;
+    AppMethodBeat.i(61824);
+    this.ipC = new ak();
+    this.mXe = new g(parame.getContext(), this, paramInt1);
+    this.mXe.mSO = paramString2;
+    this.mXe.talker = paramString1;
+    this.mXe.mSN = paramString3;
+    this.mXe.showType = paramInt2;
+    AppMethodBeat.o(61824);
   }
   
   public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
   {
-    setCount(parame.rx(0));
+    AppMethodBeat.i(61828);
+    setCount(parame.wt(0));
     notifyDataSetChanged();
-    N(getCount(), true);
+    V(getCount(), true);
+    AppMethodBeat.o(61828);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
-    paramBoolean = this.kBm.a(paramView, parama, paramBoolean);
-    if ((parama.kyc) && (!this.kBj))
+    AppMethodBeat.i(61827);
+    paramBoolean = this.mXe.a(paramView, parama, paramBoolean);
+    if ((parama.mTP) && (!this.mXb))
     {
-      this.kBj = true;
-      k.c(this.bVk, true, this.kBm.aVU(), -2);
+      this.mXb = true;
+      k.c(this.query, true, this.mXe.bCx(), -2);
     }
     if (paramBoolean)
     {
       clearCache();
-      setCount(this.kBm.rx(0));
+      setCount(this.mXe.wt(0));
       notifyDataSetChanged();
-      N(getCount(), true);
+      V(getCount(), true);
     }
+    AppMethodBeat.o(61827);
     return paramBoolean;
   }
   
-  protected final int aVE()
+  protected final int bCf()
   {
-    return this.kBm.aVU();
+    AppMethodBeat.i(156822);
+    int i = this.mXe.bCx();
+    AppMethodBeat.o(156822);
+    return i;
   }
   
-  protected final void aVV()
+  protected final void bCy()
   {
-    this.kBj = false;
-    this.kBm.a(this.bVk, this.gNQ, new HashSet());
+    AppMethodBeat.i(61826);
+    this.mXb = false;
+    this.mXe.a(this.query, this.ipC, new HashSet(), 0L);
+    AppMethodBeat.o(61826);
   }
   
   public final void finish()
   {
+    AppMethodBeat.i(61829);
     super.finish();
-    if (!this.kBj)
+    if (!this.mXb)
     {
-      this.kBj = true;
-      k.c(this.bVk, false, this.kBm.aVU(), -2);
+      this.mXb = true;
+      k.c(this.query, false, this.mXe.bCx(), -2);
     }
+    AppMethodBeat.o(61829);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a ry(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a wu(int paramInt)
   {
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.kBm.ry(paramInt);
+    AppMethodBeat.i(61825);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.mXe.wu(paramInt);
     if (locala != null) {
       locala.pageType = 5;
     }
+    AppMethodBeat.o(61825);
     return locala;
   }
 }

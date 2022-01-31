@@ -1,56 +1,82 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.websearch.api.f;
 
 public final class e
 {
-  f qXH;
+  private f uMV;
   
   public e(f paramf)
   {
-    this.qXH = paramf;
+    this.uMV = paramf;
   }
   
-  public final void aa(Bundle paramBundle)
+  public final void ar(Bundle paramBundle)
   {
+    AppMethodBeat.i(8628);
     paramBundle = (String)paramBundle.get("widgetId");
-    this.qXH.Ro(paramBundle);
+    this.uMV.agn(paramBundle);
+    AppMethodBeat.o(8628);
   }
   
-  public final void ab(Bundle paramBundle)
+  public final void as(Bundle paramBundle)
   {
+    AppMethodBeat.i(8629);
     paramBundle = paramBundle.getString("fts_key_widget_view_cache_key");
-    this.qXH.Rp(paramBundle);
+    this.uMV.ago(paramBundle);
+    AppMethodBeat.o(8629);
   }
   
-  public final void ac(Bundle paramBundle)
+  public final void at(Bundle paramBundle)
   {
+    AppMethodBeat.i(8630);
     String str = paramBundle.getString("fts_key_json_data");
     paramBundle = paramBundle.getString("fts_key_widget_view_cache_key");
-    this.qXH.fn(str, paramBundle);
+    this.uMV.hg(str, paramBundle);
+    AppMethodBeat.o(8630);
+  }
+  
+  public final void au(Bundle paramBundle)
+  {
+    AppMethodBeat.i(8632);
+    int i = paramBundle.getInt("x", -1);
+    int j = paramBundle.getInt("y", -1);
+    String str = paramBundle.getString("widgetId");
+    paramBundle = paramBundle.getString("eventId");
+    this.uMV.f(i, j, str, paramBundle);
+    AppMethodBeat.o(8632);
   }
   
   public final void b(Bundle paramBundle, int paramInt)
   {
+    AppMethodBeat.i(8627);
     String str1 = paramBundle.getString("fts_key_json_data");
     String str2 = paramBundle.getString("fts_key_widget_view_cache_key");
-    this.qXH.n(str1, str2, paramBundle.getInt("websearch_is_test_draw_json"), paramInt);
+    this.uMV.n(str1, str2, paramBundle.getInt("websearch_is_test_draw_json"), paramInt);
+    AppMethodBeat.o(8627);
   }
   
   public final void onDestroy()
   {
-    this.qXH.onDestroy();
+    AppMethodBeat.i(8631);
+    this.uMV.onDestroy();
+    AppMethodBeat.o(8631);
   }
   
   public final void onPause()
   {
-    this.qXH.onPause();
+    AppMethodBeat.i(8626);
+    this.uMV.onPause();
+    AppMethodBeat.o(8626);
   }
   
   public final void onResume()
   {
-    this.qXH.onResume();
+    AppMethodBeat.i(8625);
+    this.uMV.onResume();
+    AppMethodBeat.o(8625);
   }
 }
 

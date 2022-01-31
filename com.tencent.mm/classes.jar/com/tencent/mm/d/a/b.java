@@ -1,83 +1,36 @@
 package com.tencent.mm.d.a;
 
-import com.eclipsesource.v8.MultiContextV8;
-import com.eclipsesource.v8.V8Context;
-import com.tencent.mm.plugin.appbrand.i.e;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.LinkedList;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Looper;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class b
+final class b
+  extends v
 {
-  volatile V8Context byX;
-  public final h byY;
-  public final a byZ;
-  public final LinkedList<c> bza = new LinkedList();
-  
-  b(MultiContextV8 paramMultiContextV8, h paramh, a parama, int paramInt)
+  private b(String paramString, byte[] paramArrayOfByte)
   {
-    paramh.i(new b.1(this, paramMultiContextV8, paramInt));
-    this.byY = paramh;
-    paramMultiContextV8 = parama;
-    if (parama == null) {
-      paramMultiContextV8 = new g();
-    }
-    this.byZ = paramMultiContextV8;
-    this.byY.i(new b.2(this));
+    super(paramString, paramArrayOfByte);
   }
   
-  public final void a(int paramInt, e parame)
+  static v f(String paramString, byte[] paramArrayOfByte)
   {
-    this.byY.bzD.put(Integer.valueOf(paramInt), parame);
+    AppMethodBeat.i(113797);
+    paramString = new b(paramString, paramArrayOfByte);
+    AppMethodBeat.o(113797);
+    return paramString;
   }
   
-  public final void a(String paramString, b.a parama)
+  final d Ci()
   {
-    this.byY.i(new b.3(this, parama, paramString));
-  }
-  
-  public final void a(String paramString1, String paramString2, b.a parama)
-  {
-    this.byY.i(new b.4(this, paramString1, parama, paramString2));
-  }
-  
-  public final void destroy()
-  {
-    this.byY.i(new Runnable()
-    {
-      public final void run()
-      {
-        y.i("MicroMsg.J2V8.V8ContextEngine", "destroy");
-        int i = 0;
-        while (i < b.this.bza.size())
-        {
-          ((c)b.this.bza.get(i)).cleanup();
-          i += 1;
-        }
-        b.this.byX.release();
-      }
-    });
-  }
-  
-  public final void pause()
-  {
-    this.byY.sn = true;
-  }
-  
-  public final void resume()
-  {
-    h localh = this.byY;
-    localh.sn = false;
-    synchronized (localh.bzC)
-    {
-      localh.bzC.notify();
-      return;
-    }
+    AppMethodBeat.i(113798);
+    Looper.prepare();
+    h localh = new h(Looper.myLooper());
+    AppMethodBeat.o(113798);
+    return localh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.d.a.b
  * JD-Core Version:    0.7.0.1
  */

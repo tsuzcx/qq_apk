@@ -2,22 +2,24 @@ package com.tencent.mm.plugin.mmsight.ui;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.e;
-import com.tencent.mm.plugin.u.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.api.MMSightRecordView.g;
 
 final class MMSightRecordViewTestUI$3$1
-  implements MMSightRecordView.e
+  implements MMSightRecordView.g
 {
   MMSightRecordViewTestUI$3$1(MMSightRecordViewTestUI.3 param3) {}
   
-  public final void aiP() {}
-  
-  public final void u(Bitmap paramBitmap)
+  public final void D(Bitmap paramBitmap)
   {
+    AppMethodBeat.i(55118);
     if (paramBitmap != null) {
-      ((ImageView)this.moZ.moY.findViewById(a.e.image_iv)).setImageBitmap(paramBitmap);
+      ((ImageView)this.oOl.oOk.findViewById(2131822243)).setImageBitmap(paramBitmap);
     }
+    AppMethodBeat.o(55118);
   }
+  
+  public final void aCO() {}
 }
 
 

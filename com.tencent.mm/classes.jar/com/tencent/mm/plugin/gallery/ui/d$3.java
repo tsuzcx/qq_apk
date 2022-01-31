@@ -3,53 +3,60 @@ package com.tencent.mm.plugin.gallery.ui;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.f;
-import com.tencent.mm.plugin.gallery.model.j;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.gallery.model.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 
 final class d$3
-  implements av.a
+  implements az.a
 {
-  private Bitmap kJz = null;
+  private Bitmap nfX = null;
   
   d$3(d paramd, String paramString) {}
   
-  public final boolean JS()
+  public final boolean acS()
   {
-    if ((this.kJy.kJw == null) || (TextUtils.isEmpty(this.kJA))) {
+    AppMethodBeat.i(21487);
+    if ((this.nfW.nfU == null) || (TextUtils.isEmpty(this.nfY)))
+    {
+      AppMethodBeat.o(21487);
       return false;
     }
-    String str = this.kJA;
-    long l = bk.UZ();
-    Bitmap localBitmap = j.Er(str);
-    y.v("MicroMsg.ImageAdapter", "test decode: %d filePath:%s", new Object[] { Long.valueOf(bk.cp(l)), str });
-    this.kJz = localBitmap;
+    String str = this.nfY;
+    long l = bo.yB();
+    Bitmap localBitmap = k.PC(str);
+    ab.v("MicroMsg.ImageAdapter", "test decode: %d filePath:%s", new Object[] { Long.valueOf(bo.av(l)), str });
+    this.nfX = localBitmap;
+    AppMethodBeat.o(21487);
     return true;
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
-    this.kJy.kJx = false;
+    AppMethodBeat.i(21486);
+    this.nfW.nfV = false;
     int i;
-    if (this.kJy.kJq.containsKey(this.kJA))
+    if (this.nfW.nfO.containsKey(this.nfY))
     {
-      i = ((Integer)this.kJy.kJq.get(this.kJA)).intValue();
-      if (this.kJy.aXR()) {
-        break label103;
+      i = ((Integer)this.nfW.nfO.get(this.nfY)).intValue();
+      if (this.nfW.bEz()) {
+        break label117;
       }
-      this.kJy.kJs.put(i, this.kJz);
+      this.nfW.nfQ.put(i, this.nfX);
     }
     for (;;)
     {
-      this.kJy.kJt.f(this.kJA, this.kJz);
-      this.kJz = null;
-      this.kJy.ahX();
+      this.nfW.nfR.f(this.nfY, this.nfX);
+      this.nfX = null;
+      this.nfW.Dh();
+      AppMethodBeat.o(21486);
       return false;
-      label103:
-      d.a(this.kJy, i, this.kJz);
+      label117:
+      d.a(this.nfW, i, this.nfX);
     }
   }
 }

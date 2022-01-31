@@ -1,21 +1,24 @@
 package com.tencent.tencentmap.mapsdk.a;
 
 import android.location.Location;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class ah$1
-  implements oo.a
+  implements bg.a
 {
   ah$1(ah paramah) {}
   
   public void a()
   {
+    AppMethodBeat.i(147102);
     this.a.c(true);
     Object localObject = this.a.k();
     if (localObject != null)
     {
-      localObject = new qc(((Location)localObject).getLatitude(), ((Location)localObject).getLongitude());
-      this.a.b(ad.a((qc)localObject));
+      localObject = new cz(((Location)localObject).getLatitude(), ((Location)localObject).getLongitude());
+      this.a.b(ac.a((cz)localObject));
     }
+    AppMethodBeat.o(147102);
   }
 }
 

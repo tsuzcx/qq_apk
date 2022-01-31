@@ -10,17 +10,14 @@ final class SwipeRefreshLayout$1
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.MA.LV)
+    if (this.Mk.LD)
     {
-      this.MA.Mn.setAlpha(255);
-      this.MA.Mn.start();
-      if ((this.MA.Mt) && (this.MA.LU != null)) {
-        paramAnimation = this.MA.LU;
-      }
-      this.MA.Md = this.MA.Mi.getTop();
+      this.Mk.LX.setAlpha(255);
+      this.Mk.LX.start();
+      this.Mk.LL = this.Mk.LQ.getTop();
       return;
     }
-    this.MA.reset();
+    this.Mk.reset();
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}
@@ -29,7 +26,7 @@ final class SwipeRefreshLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.widget.SwipeRefreshLayout.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.luggage.j.b;
-import com.tencent.mm.plugin.appbrand.appstorage.f;
-import com.tencent.mm.plugin.appbrand.appstorage.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.j;
+import com.tencent.mm.plugin.appbrand.appstorage.o;
 import com.tencent.mm.plugin.appbrand.jsapi.c;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 final class ar
-  extends d
+  extends f
 {
-  final f.a a(c paramc, String paramString, JSONObject paramJSONObject)
+  final h.a a(c paramc, String paramString, JSONObject paramJSONObject)
   {
-    paramJSONObject = new LinkedList();
-    com.tencent.mm.plugin.appbrand.u.k localk = new com.tencent.mm.plugin.appbrand.u.k();
-    paramc = paramc.Zl().a(paramString, localk);
-    b.c(paramJSONObject, (List)localk.value);
-    switch (ar.1.gqS[paramc.ordinal()])
+    boolean bool = true;
+    AppMethodBeat.i(102821);
+    paramc = paramc.wX().ze(paramString);
+    switch (ar.1.hMg[paramc.ordinal()])
     {
     default: 
-      return new f.a("fail " + paramc.name(), new Object[0]);
+      paramc = new h.a("fail " + paramc.name(), new Object[0]);
+      AppMethodBeat.o(102821);
+      return paramc;
     case 1: 
-    case 2: 
-      return new f.a("fail no such file or directory \"%s\"", new Object[] { paramString });
-    case 3: 
-      return new f.a("fail not a directory \"%s\"", new Object[] { paramString });
-    case 4: 
-      return new f.a("fail permission denied, open \"%s\"", new Object[] { paramString });
-    case 5: 
-      return new f.a("fail \"%s\" is not a regular file", new Object[] { paramString });
+      paramc = new h.a("fail no such file or directory \"%s\"", new Object[] { paramString });
+      AppMethodBeat.o(102821);
+      return paramc;
     }
-    paramc = new JSONArray();
-    paramString = paramJSONObject.iterator();
-    while (paramString.hasNext()) {
-      paramc.put(((f)paramString.next()).fileName);
+    paramString = new h.a("ok", new Object[0]);
+    if (paramc == j.gZA) {}
+    for (;;)
+    {
+      paramc = paramString.n("result", Boolean.valueOf(bool));
+      AppMethodBeat.o(102821);
+      return paramc;
+      bool = false;
     }
-    return new f.a("ok", new Object[0]).m("files", paramc);
   }
 }
 

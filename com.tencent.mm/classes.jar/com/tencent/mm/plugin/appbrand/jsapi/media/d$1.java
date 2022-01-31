@@ -1,34 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
-import android.content.Intent;
-import com.tencent.mm.ui.MMActivity.a;
-import java.io.File;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.io.InputStream;
 
 final class d$1
-  implements MMActivity.a
+  implements d
 {
-  d$1(d paramd, String[] paramArrayOfString) {}
-  
-  public final void c(int paramInt1, int paramInt2, Intent paramIntent)
+  public final Bitmap b(InputStream paramInputStream, BitmapFactory.Options paramOptions)
   {
-    paramIntent = this.gwn;
-    paramInt1 = 0;
-    for (;;)
-    {
-      if (paramInt1 < paramIntent.length) {}
-      try
-      {
-        new File(paramIntent[paramInt1]).delete();
-        label27:
-        paramInt1 += 1;
-        continue;
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label27;
-      }
-    }
+    AppMethodBeat.i(114352);
+    paramInputStream = BitmapFactory.decodeStream(paramInputStream, null, paramOptions);
+    AppMethodBeat.o(114352);
+    return paramInputStream;
+  }
+  
+  public final Bitmap decodeFile(String paramString, BitmapFactory.Options paramOptions)
+  {
+    AppMethodBeat.i(114351);
+    paramString = BitmapFactory.decodeFile(paramString, paramOptions);
+    AppMethodBeat.o(114351);
+    return paramString;
   }
 }
 

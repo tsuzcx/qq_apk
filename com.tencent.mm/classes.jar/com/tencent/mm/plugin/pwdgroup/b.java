@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.pwdgroup;
 
-import com.tencent.mm.ag.d.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.d.a;
 import com.tencent.mm.pluginsdk.ui.i;
 
 public final class b
@@ -9,12 +10,14 @@ public final class b
 {
   private b(String paramString)
   {
-    super(b.a.nav, paramString);
+    super(b.a.pFL, paramString);
   }
   
-  public final void kk(String paramString)
+  public final void re(String paramString)
   {
-    super.kk(paramString);
+    AppMethodBeat.i(23975);
+    super.re(paramString);
+    AppMethodBeat.o(23975);
   }
 }
 

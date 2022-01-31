@@ -8,26 +8,36 @@ import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 
 public final class AppBrandNearbyShowcaseView
   extends FrameLayout
 {
-  private int dz = a.fromDPToPix(getContext(), 25);
-  private int hnE = a.fromDPToPix(getContext(), 19);
+  private int eB;
+  private int jak;
   
   public AppBrandNearbyShowcaseView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(93789);
+    this.eB = a.fromDPToPix(getContext(), 25);
+    this.jak = a.fromDPToPix(getContext(), 19);
+    AppMethodBeat.o(93789);
   }
   
   public AppBrandNearbyShowcaseView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(93790);
+    this.eB = a.fromDPToPix(getContext(), 25);
+    this.jak = a.fromDPToPix(getContext(), 19);
+    AppMethodBeat.o(93790);
   }
   
-  private void aqS()
+  private void aOw()
   {
+    AppMethodBeat.i(93793);
     if (getChildCount() > 0)
     {
       int i = getChildCount() - 1;
@@ -36,22 +46,24 @@ public final class AppBrandNearbyShowcaseView
         View localView = getChildAt(i);
         Object localObject = localView.getLayoutParams();
         ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-        int j = this.dz;
+        int j = this.eB;
         localLayoutParams.height = j;
         ((ViewGroup.LayoutParams)localObject).width = j;
         localObject = (FrameLayout.LayoutParams)localView.getLayoutParams();
         ((FrameLayout.LayoutParams)localObject).gravity |= 0x5;
-        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.hnE * i);
+        ((FrameLayout.LayoutParams)localView.getLayoutParams()).rightMargin = (this.jak * i);
         i -= 1;
       }
       requestLayout();
       invalidate();
     }
+    AppMethodBeat.o(93793);
   }
   
-  public final void aqT()
+  public final void aOx()
   {
     int i = 1;
+    AppMethodBeat.i(93797);
     if (getChildCount() > 1)
     {
       int j = 200;
@@ -62,10 +74,12 @@ public final class AppBrandNearbyShowcaseView
         i += 1;
       }
     }
+    AppMethodBeat.o(93797);
   }
   
-  public final void dK(boolean paramBoolean)
+  public final void fa(boolean paramBoolean)
   {
+    AppMethodBeat.i(93796);
     if (getChildCount() > 1)
     {
       int j = 200;
@@ -85,32 +99,44 @@ public final class AppBrandNearbyShowcaseView
         }
       }
     }
+    AppMethodBeat.o(93796);
   }
   
   public final int getExpandDuration()
   {
-    if (getChildCount() <= 1) {
+    AppMethodBeat.i(93798);
+    if (getChildCount() <= 1)
+    {
+      AppMethodBeat.o(93798);
       return 0;
     }
-    return (getChildCount() - 2) * 50 + 200;
+    int i = getChildCount();
+    AppMethodBeat.o(93798);
+    return (i - 2) * 50 + 200;
   }
   
-  public final ImageView mB(int paramInt)
+  public final ImageView pU(int paramInt)
   {
-    return (ImageView)getChildAt(getChildCount() - 1 - paramInt);
+    AppMethodBeat.i(93795);
+    ImageView localImageView = (ImageView)getChildAt(getChildCount() - 1 - paramInt);
+    AppMethodBeat.o(93795);
+    return localImageView;
   }
   
   public final void setIconGap(int paramInt)
   {
-    if ((paramInt >= 0) && (this.hnE != paramInt))
+    AppMethodBeat.i(93792);
+    if ((paramInt >= 0) && (this.jak != paramInt))
     {
-      this.hnE = paramInt;
-      aqS();
+      this.jak = paramInt;
+      aOw();
     }
+    AppMethodBeat.o(93792);
   }
   
   public final void setIconLayerCount(int paramInt)
   {
+    AppMethodBeat.i(93794);
     if ((paramInt >= 0) && (paramInt != getChildCount()))
     {
       if (paramInt > getChildCount())
@@ -120,7 +146,7 @@ public final class AppBrandNearbyShowcaseView
         while (i < paramInt - j)
         {
           ImageView localImageView = new ImageView(getContext());
-          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.dz, this.dz);
+          FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.eB, this.eB);
           localLayoutParams.gravity = 16;
           addViewInLayout(localImageView, 0, localLayoutParams, true);
           i += 1;
@@ -129,17 +155,20 @@ public final class AppBrandNearbyShowcaseView
       if (paramInt < getChildCount()) {
         removeViewsInLayout(0, getChildCount() - paramInt);
       }
-      aqS();
+      aOw();
     }
+    AppMethodBeat.o(93794);
   }
   
   public final void setIconSize(int paramInt)
   {
-    if ((paramInt > 0) && (paramInt != this.dz))
+    AppMethodBeat.i(93791);
+    if ((paramInt > 0) && (paramInt != this.eB))
     {
-      this.dz = paramInt;
-      aqS();
+      this.eB = paramInt;
+      aOw();
     }
+    AppMethodBeat.o(93791);
   }
 }
 

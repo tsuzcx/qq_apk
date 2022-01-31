@@ -1,89 +1,89 @@
 package com.google.android.exoplayer2;
 
 import com.google.android.exoplayer2.b.e;
-import com.google.android.exoplayer2.i.f;
-import com.google.android.exoplayer2.source.i;
+import com.google.android.exoplayer2.i.i;
+import com.google.android.exoplayer2.source.l;
 
 public abstract class a
   implements r, s
 {
-  private final int asG;
-  public t asH;
-  public i asI;
-  public long asJ;
-  public boolean asK;
-  public boolean asL;
-  public int index;
-  public int state;
+  private final int auX;
+  protected t auY;
+  protected l auZ;
+  protected long ava;
+  protected boolean avb;
+  protected boolean avc;
+  protected int index;
+  protected int state;
   
   public a(int paramInt)
   {
-    this.asG = paramInt;
-    this.asK = true;
+    this.auX = paramInt;
+    this.avb = true;
   }
   
-  public final int a(k paramk, e parame, boolean paramBoolean)
+  protected final int a(k paramk, e parame, boolean paramBoolean)
   {
-    int i = this.asI.b(paramk, parame, paramBoolean);
+    int i = this.auZ.b(paramk, parame, paramBoolean);
     if (i == -4)
     {
-      if (parame.lz())
+      if (parame.nE())
       {
-        this.asK = true;
-        if (this.asL) {
+        this.avb = true;
+        if (this.avc) {
           return -4;
         }
         return -3;
       }
-      parame.ayE += this.asJ;
+      parame.aAT += this.ava;
     }
     for (;;)
     {
       return i;
       if (i == -5)
       {
-        parame = paramk.auL;
-        if (parame.auG != 9223372036854775807L) {
-          paramk.auL = parame.x(parame.auG + this.asJ);
+        parame = paramk.axd;
+        if (parame.awY != 9223372036854775807L) {
+          paramk.axd = parame.w(parame.awY + this.ava);
         }
       }
     }
   }
   
-  public final void a(t paramt, Format[] paramArrayOfFormat, i parami, long paramLong1, boolean paramBoolean, long paramLong2)
+  public final void a(t paramt, Format[] paramArrayOfFormat, l paraml, long paramLong1, boolean paramBoolean, long paramLong2)
   {
     if (this.state == 0) {}
     for (boolean bool = true;; bool = false)
     {
-      com.google.android.exoplayer2.i.a.aC(bool);
-      this.asH = paramt;
+      com.google.android.exoplayer2.i.a.checkState(bool);
+      this.auY = paramt;
       this.state = 1;
-      as(paramBoolean);
-      a(paramArrayOfFormat, parami, paramLong2);
+      aB(paramBoolean);
+      a(paramArrayOfFormat, paraml, paramLong2);
       b(paramLong1, paramBoolean);
       return;
     }
   }
   
-  public void a(Format[] paramArrayOfFormat, long paramLong) {}
+  protected void a(Format[] paramArrayOfFormat, long paramLong) {}
   
-  public final void a(Format[] paramArrayOfFormat, i parami, long paramLong)
+  public final void a(Format[] paramArrayOfFormat, l paraml, long paramLong)
   {
-    if (!this.asL) {}
+    if (!this.avc) {}
     for (boolean bool = true;; bool = false)
     {
-      com.google.android.exoplayer2.i.a.aC(bool);
-      this.asI = parami;
-      this.asK = false;
-      this.asJ = paramLong;
+      com.google.android.exoplayer2.i.a.checkState(bool);
+      this.auZ = paraml;
+      this.avb = false;
+      this.ava = paramLong;
       a(paramArrayOfFormat, paramLong);
       return;
     }
   }
   
-  public void as(boolean paramBoolean) {}
+  protected void aB(boolean paramBoolean) {}
   
-  public void b(long paramLong, boolean paramBoolean) {}
+  protected void b(long paramLong, boolean paramBoolean) {}
   
   public void d(int paramInt, Object paramObject) {}
   
@@ -93,11 +93,11 @@ public abstract class a
     if (this.state == 1) {}
     for (;;)
     {
-      com.google.android.exoplayer2.i.a.aC(bool);
+      com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 0;
-      this.asI = null;
-      this.asL = false;
-      kz();
+      this.auZ = null;
+      this.avc = false;
+      mF();
       return;
       bool = false;
     }
@@ -110,61 +110,61 @@ public abstract class a
   
   public final int getTrackType()
   {
-    return this.asG;
+    return this.auX;
   }
   
-  public final s kr()
+  public final boolean mA()
   {
-    return this;
+    return this.avb;
   }
   
-  public f ks()
+  public final void mB()
   {
-    return null;
+    this.avc = true;
   }
   
-  public final i kt()
+  public final boolean mC()
   {
-    return this.asI;
+    return this.avc;
   }
   
-  public final boolean ku()
+  public final void mD()
   {
-    return this.asK;
+    this.auZ.oX();
   }
   
-  public final void kv()
-  {
-    this.asL = true;
-  }
-  
-  public final boolean kw()
-  {
-    return this.asL;
-  }
-  
-  public final void kx()
-  {
-    this.asI.mD();
-  }
-  
-  public int ky()
+  public int mE()
   {
     return 0;
   }
   
-  public void kz() {}
+  protected void mF() {}
   
-  public void onStarted() {}
-  
-  public void onStopped() {}
-  
-  public final void p(long paramLong)
+  public final s mx()
   {
-    this.asL = false;
-    this.asK = false;
+    return this;
+  }
+  
+  public i my()
+  {
+    return null;
+  }
+  
+  public final l mz()
+  {
+    return this.auZ;
+  }
+  
+  public final void n(long paramLong)
+  {
+    this.avc = false;
+    this.avb = false;
     b(paramLong, false);
   }
+  
+  protected void onStarted() {}
+  
+  protected void onStopped() {}
   
   public final void setIndex(int paramInt)
   {
@@ -177,7 +177,7 @@ public abstract class a
     if (this.state == 1) {}
     for (;;)
     {
-      com.google.android.exoplayer2.i.a.aC(bool);
+      com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 2;
       onStarted();
       return;
@@ -190,7 +190,7 @@ public abstract class a
     if (this.state == 2) {}
     for (boolean bool = true;; bool = false)
     {
-      com.google.android.exoplayer2.i.a.aC(bool);
+      com.google.android.exoplayer2.i.a.checkState(bool);
       this.state = 1;
       onStopped();
       return;

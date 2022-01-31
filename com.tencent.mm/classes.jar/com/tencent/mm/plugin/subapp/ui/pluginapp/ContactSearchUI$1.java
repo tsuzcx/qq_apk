@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.subapp.ui.pluginapp;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactSearchUI$1
   implements TextWatcher
@@ -10,11 +11,13 @@ final class ContactSearchUI$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    ContactSearchUI localContactSearchUI = this.pxO;
+    AppMethodBeat.i(25525);
+    ContactSearchUI localContactSearchUI = this.sZC;
     if (paramEditable.length() > 0) {}
     for (boolean bool = true;; bool = false)
     {
       localContactSearchUI.enableOptionMenu(bool);
+      AppMethodBeat.o(25525);
       return;
     }
   }

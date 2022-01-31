@@ -1,13 +1,21 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
+
 final class LoginUI$11
-  implements Runnable
+  implements View.OnClickListener
 {
-  LoginUI$11(LoginUI paramLoginUI, int paramInt) {}
+  LoginUI$11(LoginUI paramLoginUI) {}
   
-  public final void run()
+  public final void onClick(View paramView)
   {
-    LoginUI.h(this.fnM).smoothScrollBy(0, this.aUp);
+    AppMethodBeat.i(152558);
+    d.H(this.gFf, "login_exdevice", ".ui.LoginAsExDeviceUI");
+    this.gFf.overridePendingTransition(2131034227, 2131034130);
+    AppMethodBeat.o(152558);
   }
 }
 

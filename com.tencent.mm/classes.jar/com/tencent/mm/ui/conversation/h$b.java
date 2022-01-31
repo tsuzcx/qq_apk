@@ -2,7 +2,7 @@ package com.tencent.mm.ui.conversation;
 
 public abstract interface h$b
 {
-  public abstract void cIh();
+  public abstract void dMN();
 }
 
 

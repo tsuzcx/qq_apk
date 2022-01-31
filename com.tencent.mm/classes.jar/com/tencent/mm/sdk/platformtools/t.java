@@ -1,175 +1,64 @@
 package com.tencent.mm.sdk.platformtools;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Parcelable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public final class t
 {
-  public static int a(Intent paramIntent, String paramString, int paramInt)
+  private static final Pattern ymX;
+  private static final Pattern ymY;
+  private static final Pattern ymZ;
+  
+  static
   {
-    if (paramIntent == null) {
-      return paramInt;
-    }
-    try
-    {
-      int i = paramIntent.getIntExtra(paramString, paramInt);
-      return i;
-    }
-    catch (Exception paramIntent)
-    {
-      y.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramIntent.getMessage() });
-    }
-    return paramInt;
+    AppMethodBeat.i(52006);
+    ymX = Pattern.compile("^(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)(\\.(25[0-5]|2[0-4]\\d|[0-1]?\\d?\\d)){3}$");
+    ymY = Pattern.compile("^(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$");
+    ymZ = Pattern.compile("^((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)::((?:[0-9A-Fa-f]{1,4}(?::[0-9A-Fa-f]{1,4})*)?)$");
+    AppMethodBeat.o(52006);
   }
   
-  public static boolean a(Intent paramIntent, String paramString, boolean paramBoolean)
+  public static InetAddress apc(String paramString)
   {
-    if (paramIntent == null) {
-      return paramBoolean;
-    }
-    try
+    AppMethodBeat.i(52005);
+    if (isIPv4Address(paramString))
     {
-      boolean bool = paramIntent.getBooleanExtra(paramString, paramBoolean);
-      return bool;
+      paramString = InetAddress.getByName(paramString);
+      AppMethodBeat.o(52005);
+      return paramString;
     }
-    catch (Exception paramIntent)
+    if (isIPv6Address(paramString))
     {
-      y.e("MicroMsg.IntentUtil", "getBooleanExtra exception:%s", new Object[] { paramIntent.getMessage() });
+      paramString = InetAddress.getByName(paramString);
+      AppMethodBeat.o(52005);
+      return paramString;
     }
-    return paramBoolean;
+    paramString = new UnknownHostException("invalid ipv4 or ipv6 dotted string");
+    AppMethodBeat.o(52005);
+    throw paramString;
   }
   
-  public static Bundle al(Intent paramIntent)
+  public static boolean isIPv4Address(String paramString)
   {
-    if (paramIntent == null) {
-      return null;
-    }
-    try
-    {
-      paramIntent = paramIntent.getExtras();
-      return paramIntent;
-    }
-    catch (Exception paramIntent)
-    {
-      y.e("MicroMsg.IntentUtil", "getExtras exception:%s", new Object[] { paramIntent.getMessage() });
-    }
-    return null;
+    AppMethodBeat.i(52003);
+    boolean bool = ymX.matcher(paramString).matches();
+    AppMethodBeat.o(52003);
+    return bool;
   }
   
-  public static void b(Intent paramIntent, String paramString, boolean paramBoolean)
+  public static boolean isIPv6Address(String paramString)
   {
-    try
+    AppMethodBeat.i(52004);
+    if ((ymY.matcher(paramString).matches()) || (ymZ.matcher(paramString).matches()))
     {
-      paramIntent.putExtra(paramString, paramBoolean);
-      return;
+      AppMethodBeat.o(52004);
+      return true;
     }
-    catch (Exception paramIntent)
-    {
-      y.printErrStackTrace("MicroMsg.IntentUtil", paramIntent, "", new Object[0]);
-    }
-  }
-  
-  public static long i(Intent paramIntent, String paramString)
-  {
-    if (paramIntent == null) {
-      return 0L;
-    }
-    try
-    {
-      long l = paramIntent.getLongExtra(paramString, 0L);
-      return l;
-    }
-    catch (Exception paramIntent)
-    {
-      y.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramIntent.getMessage() });
-    }
-    return 0L;
-  }
-  
-  public static int j(Bundle paramBundle, String paramString)
-  {
-    if (paramBundle == null) {
-      return 0;
-    }
-    try
-    {
-      int i = paramBundle.getInt(paramString, 0);
-      return i;
-    }
-    catch (Exception paramBundle)
-    {
-      y.e("MicroMsg.IntentUtil", "getIntExtra exception:%s", new Object[] { paramBundle.getMessage() });
-    }
-    return 0;
-  }
-  
-  public static String j(Intent paramIntent, String paramString)
-  {
-    if (paramIntent == null) {
-      return null;
-    }
-    try
-    {
-      paramIntent = paramIntent.getStringExtra(paramString);
-      return paramIntent;
-    }
-    catch (Exception paramIntent)
-    {
-      y.e("MicroMsg.IntentUtil", "getStringExtra exception:%s", new Object[] { paramIntent.getMessage() });
-    }
-    return null;
-  }
-  
-  public static String k(Bundle paramBundle, String paramString)
-  {
-    if (paramBundle == null) {
-      return null;
-    }
-    try
-    {
-      paramBundle = paramBundle.getString(paramString);
-      return paramBundle;
-    }
-    catch (Exception paramBundle)
-    {
-      y.e("MicroMsg.IntentUtil", "getStringExtra exception:%s", new Object[] { paramBundle.getMessage() });
-    }
-    return null;
-  }
-  
-  public static byte[] k(Intent paramIntent, String paramString)
-  {
-    if (paramIntent == null) {
-      return null;
-    }
-    try
-    {
-      paramIntent = paramIntent.getByteArrayExtra(paramString);
-      return paramIntent;
-    }
-    catch (Exception paramIntent)
-    {
-      y.e("MicroMsg.IntentUtil", "getByteArrayExtra exception:%s", new Object[] { paramIntent.getMessage() });
-    }
-    return null;
-  }
-  
-  public static Parcelable l(Intent paramIntent, String paramString)
-  {
-    if (paramIntent == null) {
-      return null;
-    }
-    try
-    {
-      paramIntent = paramIntent.getParcelableExtra(paramString);
-      return paramIntent;
-    }
-    catch (Exception paramIntent)
-    {
-      y.e("MicroMsg.IntentUtil", "getParcelableExtra exception:%s", new Object[] { paramIntent.getMessage() });
-    }
-    return null;
+    AppMethodBeat.o(52004);
+    return false;
   }
 }
 

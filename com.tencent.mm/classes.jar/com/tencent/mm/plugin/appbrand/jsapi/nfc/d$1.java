@@ -1,10 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.Application;
+import android.content.ComponentName;
 import android.os.Looper;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCEService;
+import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,26 +17,35 @@ final class d$1
 {
   d$1(d paramd) {}
   
-  public final void J(int paramInt, String paramString)
+  public final void U(int paramInt, String paramString)
   {
-    Object localObject = new HashMap();
-    ((Map)localObject).put("errCode", Integer.valueOf(paramInt));
+    AppMethodBeat.i(137872);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errCode", Integer.valueOf(paramInt));
     if (paramInt == 0)
     {
-      paramString = this.gyb;
-      if (!(paramString.gfZ.getContext() instanceof Activity))
+      paramString = this.hUA;
+      if (!(paramString.hAC.getContext() instanceof Activity))
       {
-        paramString.tT(paramString.h("fail: unknown error", null));
+        paramString.BS(paramString.j("fail: unknown error", null));
+        AppMethodBeat.o(137872);
         return;
       }
-      paramString.fyk = ((Activity)paramString.gfZ.getContext());
-      localObject = new Intent(paramString.fyk, paramString.gxX);
-      ((Intent)localObject).putExtra("HCE_Result_Receiver", new JsApiNFCStartHCE.2(paramString, ah.fetchFreeHandler(Looper.getMainLooper())));
-      paramString.fyk.startActivity((Intent)localObject);
+      paramString.gQx = ((Activity)paramString.hAC.getContext());
+      paramString.hUx = new d.2(paramString);
+      paramString.gQx.getApplication().registerActivityLifecycleCallbacks(paramString.hUx);
+      paramString.Di = new JsApiNFCStartHCE.3(paramString, ak.fetchFreeHandler(Looper.getMainLooper()));
+      a.hUM.a(paramString.gQx, paramString.Di);
+      a.hUM.aEa();
+      paramString = new ComponentName(paramString.gQx, HCEService.class.getCanonicalName());
+      a.hUM.b(paramString);
+      a.hUM.aDZ();
+      AppMethodBeat.o(137872);
       return;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.c.E(this.gyb.gfZ.getAppId(), paramInt, -1);
-    this.gyb.tT(this.gyb.h("fail: " + paramString, (Map)localObject));
+    com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.c.Q(this.hUA.hAC.getAppId(), paramInt, -1);
+    this.hUA.BS(this.hUA.j("fail: ".concat(String.valueOf(paramString)), localHashMap));
+    AppMethodBeat.o(137872);
   }
 }
 

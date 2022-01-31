@@ -2,7 +2,7 @@ package com.tencent.pb.common.b;
 
 public abstract interface a
 {
-  public abstract void dR(String paramString, int paramInt);
+  public abstract void fb(String paramString, int paramInt);
 }
 
 

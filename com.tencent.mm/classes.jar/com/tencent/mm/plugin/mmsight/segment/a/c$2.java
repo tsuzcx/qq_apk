@@ -1,42 +1,57 @@
 package com.tencent.mm.plugin.mmsight.segment.a;
 
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 
 final class c$2
-  implements am.a
+  implements ap.a
 {
   c$2(c paramc) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (this.mnY.released) {}
-    do
+    AppMethodBeat.i(3725);
+    if (this.oNg.released)
     {
+      AppMethodBeat.o(3725);
       return false;
-      try
+    }
+    try
+    {
+      boolean bool = this.oNg.isPlaying();
+      if (!bool)
       {
-        if (!this.mnY.isPlaying()) {
-          return true;
-        }
-        int i = this.mnY.getCurrentPosition();
-        if (this.mnY.mnu != null) {
-          this.mnY.mnu.ui(i);
-        }
-        y.d("MicroMsg.SectionRepeatMediaPlayer", "position[%d] repeat[%d, %d] duration[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.mnY.mnM), Integer.valueOf(this.mnY.mnN), Integer.valueOf(this.mnY.getDuration()) });
-        if (i < this.mnY.mnN) {
-          return true;
-        }
-        y.i("MicroMsg.SectionRepeatMediaPlayer", "reach repeat end time, seek to %s", new Object[] { Integer.valueOf(this.mnY.mnN) });
-        this.mnY.seekTo(this.mnY.mnM);
-        return false;
+        AppMethodBeat.o(3725);
+        return true;
       }
-      catch (IllegalStateException localIllegalStateException)
+      int i = this.oNg.getCurrentPosition();
+      if (this.oNg.oMC != null) {
+        this.oNg.oMC.zx(i);
+      }
+      ab.d("MicroMsg.SectionRepeatMediaPlayer", "position[%d] repeat[%d, %d] duration[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.oNg.oMU), Integer.valueOf(this.oNg.oMV), Integer.valueOf(this.oNg.getDuration()) });
+      int j = this.oNg.oMV;
+      if (i < j)
       {
-        y.e("MicroMsg.SectionRepeatMediaPlayer", "MediaPlayer may be released. %s", new Object[] { localIllegalStateException.getMessage() });
+        AppMethodBeat.o(3725);
+        return true;
       }
-    } while (this.mnY.released);
-    return true;
+      ab.i("MicroMsg.SectionRepeatMediaPlayer", "reach repeat end time, seek to %s", new Object[] { Integer.valueOf(this.oNg.oMV) });
+      this.oNg.seekTo(this.oNg.oMU);
+      AppMethodBeat.o(3725);
+      return false;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      ab.e("MicroMsg.SectionRepeatMediaPlayer", "MediaPlayer may be released. %s", new Object[] { localIllegalStateException.getMessage() });
+      if (!this.oNg.released)
+      {
+        AppMethodBeat.o(3725);
+        return true;
+      }
+      AppMethodBeat.o(3725);
+    }
+    return false;
   }
 }
 

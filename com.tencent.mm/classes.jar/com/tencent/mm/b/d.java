@@ -3,22 +3,27 @@ package com.tencent.mm.b;
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Matrix;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.view.b.a;
 
 public final class d
   extends b
 {
-  public float buA;
-  public float buB;
-  public boolean buC = true;
-  public boolean buD = false;
-  public a buz;
-  public ValueAnimator jQ;
+  public a bVK;
+  public float bVL;
+  public float bVM;
+  public boolean bVN = true;
+  public boolean bVO = false;
+  public ValueAnimator kO;
   public float mScale = 1.0F;
   
   public d(a parama)
   {
-    this.buz = parama;
+    this.bVK = parama;
   }
 }
 

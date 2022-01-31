@@ -3,22 +3,32 @@ package com.tencent.soter.soterserver;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SoterDeviceResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<SoterDeviceResult> CREATOR = new SoterDeviceResult.1();
-  public int aYY;
-  public byte[] wPq;
-  public int wPr;
+  public static final Parcelable.Creator<SoterDeviceResult> CREATOR;
+  public byte[] BmP;
+  public int BmQ;
+  public int bpE;
+  
+  static
+  {
+    AppMethodBeat.i(73106);
+    CREATOR = new SoterDeviceResult.1();
+    AppMethodBeat.o(73106);
+  }
   
   public SoterDeviceResult() {}
   
   protected SoterDeviceResult(Parcel paramParcel)
   {
-    this.aYY = paramParcel.readInt();
-    this.wPq = paramParcel.createByteArray();
-    this.wPr = paramParcel.readInt();
+    AppMethodBeat.i(73104);
+    this.bpE = paramParcel.readInt();
+    this.BmP = paramParcel.createByteArray();
+    this.BmQ = paramParcel.readInt();
+    AppMethodBeat.o(73104);
   }
   
   public int describeContents()
@@ -28,9 +38,11 @@ public class SoterDeviceResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.aYY);
-    paramParcel.writeByteArray(this.wPq);
-    paramParcel.writeInt(this.wPr);
+    AppMethodBeat.i(73105);
+    paramParcel.writeInt(this.bpE);
+    paramParcel.writeByteArray(this.BmP);
+    paramParcel.writeInt(this.BmQ);
+    AppMethodBeat.o(73105);
   }
 }
 

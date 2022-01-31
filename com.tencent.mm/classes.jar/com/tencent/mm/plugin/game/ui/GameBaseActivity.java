@@ -1,28 +1,30 @@
 package com.tencent.mm.plugin.game.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class GameBaseActivity
   extends MMActivity
 {
-  private int kXn = 1;
-  private long kXo = 0L;
-  private long kXp = 0L;
   private long mStartTime = 0L;
+  private int nvp = 1;
+  private long nvq = 0L;
+  private long nvr = 0L;
   
-  public boolean aZX()
+  protected boolean bHf()
   {
     return true;
   }
   
-  public abstract int aZY();
+  public abstract int bHg();
   
-  public abstract int aZZ();
+  public abstract int bHh();
   
-  public abstract int baa();
+  public abstract int getScene();
   
   public void onCreate(Bundle paramBundle)
   {
@@ -34,18 +36,18 @@ public abstract class GameBaseActivity
     if (this.mStartTime != 0L)
     {
       long l = System.currentTimeMillis() - this.mStartTime;
-      y.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.kXo) });
-      if (aZX()) {
-        a.a(this.kXn, aZY(), aZZ(), baa(), "", "", l / 1000L, this.kXo / 1000L);
+      ab.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.nvq) });
+      if (bHf()) {
+        a.a(this.nvp, getScene(), bHg(), bHh(), "", "", l / 1000L, this.nvq / 1000L);
       }
     }
     super.onDestroy();
   }
   
-  protected void onPause()
+  public void onPause()
   {
     super.onPause();
-    this.kXo += System.currentTimeMillis() - this.kXp;
+    this.nvq += System.currentTimeMillis() - this.nvr;
   }
   
   public void onResume()
@@ -53,13 +55,19 @@ public abstract class GameBaseActivity
     if (this.mStartTime == 0L) {
       this.mStartTime = System.currentTimeMillis();
     }
-    this.kXp = System.currentTimeMillis();
+    this.nvr = System.currentTimeMillis();
     super.onResume();
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameBaseActivity
  * JD-Core Version:    0.7.0.1
  */

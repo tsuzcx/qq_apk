@@ -1,6 +1,7 @@
 package com.google.android.exoplayer2.a;
 
 import com.google.android.exoplayer2.b.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e$a$1
   implements Runnable
@@ -9,7 +10,9 @@ final class e$a$1
   
   public final void run()
   {
-    this.awb.avZ.c(this.awa);
+    AppMethodBeat.i(94652);
+    this.ayr.ayp.c(this.ayq);
+    AppMethodBeat.o(94652);
   }
 }
 

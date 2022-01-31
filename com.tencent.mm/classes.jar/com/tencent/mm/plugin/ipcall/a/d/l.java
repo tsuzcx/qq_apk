@@ -1,85 +1,96 @@
 package com.tencent.mm.plugin.ipcall.a.d;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.aa;
 import com.tencent.mm.plugin.ipcall.a.i;
 import com.tencent.mm.plugin.ipcall.b.c;
-import com.tencent.mm.protocal.c.bge;
-import com.tencent.mm.protocal.c.bgf;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bok;
+import com.tencent.mm.protocal.protobuf.bol;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class l
   extends m
   implements k
 {
-  private com.tencent.mm.ah.b dmK = null;
-  private f dmL;
-  private bge lrL = null;
-  private bgf lrM = null;
+  private f callback;
+  private bok nPh;
+  private bol nPi;
+  private com.tencent.mm.ai.b rr;
   
   public l(int paramInt, long paramLong, boolean paramBoolean)
   {
+    AppMethodBeat.i(21869);
+    this.rr = null;
+    this.nPh = null;
+    this.nPi = null;
     Object localObject1 = new b.a();
-    ((b.a)localObject1).ecH = new bge();
-    ((b.a)localObject1).ecI = new bgf();
-    ((b.a)localObject1).ecG = 227;
+    ((b.a)localObject1).fsX = new bok();
+    ((b.a)localObject1).fsY = new bol();
+    ((b.a)localObject1).funcId = 227;
     ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/pstnreport";
-    ((b.a)localObject1).ecJ = 0;
-    ((b.a)localObject1).ecK = 0;
-    this.dmK = ((b.a)localObject1).Kt();
-    this.lrL = ((bge)this.dmK.ecE.ecN);
-    this.lrL.sST = paramInt;
-    this.lrL.tAE = paramLong;
-    localObject1 = this.lrL;
+    ((b.a)localObject1).reqCmdId = 0;
+    ((b.a)localObject1).respCmdId = 0;
+    this.rr = ((b.a)localObject1).ado();
+    this.nPh = ((bok)this.rr.fsV.fta);
+    this.nPh.wQP = paramInt;
+    this.nPh.xCm = paramLong;
+    localObject1 = this.nPh;
     if (paramBoolean) {}
     for (paramInt = 1;; paramInt = 0)
     {
-      ((bge)localObject1).tAX = paramInt;
-      y.d("MicroMsg.NetSceneIPCallReport", "NetSceneIPCallReport, roomId: %d, callseq: %d, gotAnswer: %d", new Object[] { Integer.valueOf(this.lrL.sST), Long.valueOf(this.lrL.tAE), Integer.valueOf(this.lrL.tAX) });
-      localObject1 = this.lrL;
-      Object localObject2 = i.bci();
-      localObject2 = ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lpD + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lpE + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqX + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).fjn + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqY + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqN + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqO + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqP + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqQ + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqR + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqS + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqT + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqU + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqV + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqW + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqZ + "," + c.bdq() + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lri + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).countryCode + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lrj + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lrk + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lrl + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lrg + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lrn;
-      y.i("MicroMsg.IPCallReportHelper", "getPstnClientReportString, result: %s", new Object[] { localObject2 });
-      ((bge)localObject1).tAU = aa.pj((String)localObject2);
-      localObject1 = this.lrL;
-      localObject2 = i.bci();
-      localObject2 = ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lpD + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lpE + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqX + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lrf;
-      y.i("MicroMsg.IPCallReportHelper", "getPstnChannelReportString, result: %s", new Object[] { localObject2 });
-      ((bge)localObject1).tAV = aa.pj((String)localObject2);
-      localObject1 = this.lrL;
-      localObject2 = i.bci();
-      localObject2 = ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lpD + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lpE + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lqX + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).lre;
-      y.i("MicroMsg.IPCallReportHelper", "getPstnEngineReport, result: %s", new Object[] { localObject2 });
-      ((bge)localObject1).tAW = aa.pj((String)localObject2);
+      ((bok)localObject1).xCF = paramInt;
+      ab.d("MicroMsg.NetSceneIPCallReport", "NetSceneIPCallReport, roomId: %d, callseq: %d, gotAnswer: %d", new Object[] { Integer.valueOf(this.nPh.wQP), Long.valueOf(this.nPh.xCm), Integer.valueOf(this.nPh.xCF) });
+      localObject1 = this.nPh;
+      Object localObject2 = i.bJp();
+      localObject2 = ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nMZ + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nNa + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOt + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).gAF + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOu + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOj + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOk + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOl + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOm + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOn + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOo + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOp + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOq + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOr + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOs + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOv + "," + c.bKK() + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOE + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).countryCode + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOF + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOG + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOH + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOC + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOJ;
+      ab.i("MicroMsg.IPCallReportHelper", "getPstnClientReportString, result: %s", new Object[] { localObject2 });
+      ((bok)localObject1).xCC = aa.wA((String)localObject2);
+      localObject1 = this.nPh;
+      localObject2 = i.bJp();
+      localObject2 = ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nMZ + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nNa + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOt + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOB;
+      ab.i("MicroMsg.IPCallReportHelper", "getPstnChannelReportString, result: %s", new Object[] { localObject2 });
+      ((bok)localObject1).xCD = aa.wA((String)localObject2);
+      localObject1 = this.nPh;
+      localObject2 = i.bJp();
+      localObject2 = ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nMZ + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nNa + "," + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOt + ((com.tencent.mm.plugin.ipcall.a.c.b)localObject2).nOA;
+      ab.i("MicroMsg.IPCallReportHelper", "getPstnEngineReport, result: %s", new Object[] { localObject2 });
+      ((bok)localObject1).xCE = aa.wA((String)localObject2);
+      AppMethodBeat.o(21869);
       return;
     }
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneIPCallReport", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.lrM = ((bgf)((com.tencent.mm.ah.b)paramq).ecF.ecN);
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
+    AppMethodBeat.i(21870);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(21870);
+    return i;
   }
   
   public final int getType()
   {
     return 227;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(21871);
+    ab.i("MicroMsg.NetSceneIPCallReport", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.nPi = ((bol)((com.tencent.mm.ai.b)paramq).fsW.fta);
+    if (this.callback != null) {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    }
+    AppMethodBeat.o(21871);
   }
 }
 

@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelectedMemberChattingRecordUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -10,14 +11,16 @@ final class SelectedMemberChattingRecordUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.dst.setResult(0);
-    this.dst.finish();
+    AppMethodBeat.i(104438);
+    this.ekb.setResult(0);
+    this.ekb.finish();
+    AppMethodBeat.o(104438);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.SelectedMemberChattingRecordUI.3
  * JD-Core Version:    0.7.0.1
  */

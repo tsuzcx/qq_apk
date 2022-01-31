@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.ext.provider;
 
 import android.database.MatrixCursor;
-import com.tencent.mm.h.a.fj;
-import com.tencent.mm.h.a.fj.b;
-import com.tencent.mm.h.a.fp;
-import com.tencent.mm.h.a.fp.b;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fm;
+import com.tencent.mm.g.a.fm.b;
+import com.tencent.mm.g.a.fs;
+import com.tencent.mm.g.a.fs.b;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
 
 final class ExtControlProviderMsg$1
   implements Runnable
@@ -17,96 +18,102 @@ final class ExtControlProviderMsg$1
   
   public final void run()
   {
+    AppMethodBeat.i(20348);
     Object localObject1;
     Object localObject2;
-    if (this.jKt == 1)
+    if (this.jWH == 1)
     {
-      com.tencent.mm.plugin.ext.b.aNn();
-      localObject1 = com.tencent.mm.plugin.ext.b.eg(this.jKu);
-      if ((localObject1 == null) || ((int)((com.tencent.mm.n.a)localObject1).dBe <= 0))
+      com.tencent.mm.plugin.ext.b.btq();
+      localObject1 = com.tencent.mm.plugin.ext.b.jD(this.mey);
+      if ((localObject1 == null) || ((int)((com.tencent.mm.n.a)localObject1).euF <= 0))
       {
-        this.jKv.qF(3);
-        this.hSx.countDown();
+        this.mez.vA(3);
+        this.jMg.countDown();
+        AppMethodBeat.o(20348);
         return;
       }
-      localObject2 = new fj();
-      ((fj)localObject2).bMh.op = 1;
-      ((fj)localObject2).bMh.username = ((ao)localObject1).field_username;
-      if (!com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject2))
+      localObject2 = new fm();
+      ((fm)localObject2).ctC.op = 1;
+      ((fm)localObject2).ctC.username = ((aq)localObject1).field_username;
+      if (!com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject2))
       {
-        this.jKv.qF(4);
-        this.hSx.countDown();
+        this.mez.vA(4);
+        this.jMg.countDown();
+        AppMethodBeat.o(20348);
         return;
       }
-      ExtControlProviderMsg.a(this.jKv, new MatrixCursor(ExtControlProviderMsg.aND()));
-      if ((localObject1 != null) && ((int)((com.tencent.mm.n.a)localObject1).dBe > 0) && (((fj)localObject2).bMi.bIe))
+      ExtControlProviderMsg.a(this.mez, new MatrixCursor(ExtControlProviderMsg.btG()));
+      if ((localObject1 != null) && ((int)((com.tencent.mm.n.a)localObject1).euF > 0) && (((fm)localObject2).ctD.cpz))
       {
-        ExtControlProviderMsg.a(this.jKv).addRow(new Object[] { this.dAS[1], Integer.valueOf(1), "0" });
-        this.jKv.qF(0);
-        y.d("MicroMsg.ExtControlProviderMsg", "start record, ret=[%s], fileName=[%s]", new Object[] { Boolean.valueOf(((fj)localObject2).bMi.bIe), ((fj)localObject2).bMi.fileName });
+        ExtControlProviderMsg.a(this.mez).addRow(new Object[] { this.eut[1], Integer.valueOf(1), "0" });
+        this.mez.vA(0);
+        ab.d("MicroMsg.ExtControlProviderMsg", "start record, ret=[%s], fileName=[%s]", new Object[] { Boolean.valueOf(((fm)localObject2).ctD.cpz), ((fm)localObject2).ctD.fileName });
       }
     }
     for (;;)
     {
-      this.hSx.countDown();
+      this.jMg.countDown();
+      AppMethodBeat.o(20348);
       return;
-      ExtControlProviderMsg.a(this.jKv).addRow(new Object[] { this.dAS[1], Integer.valueOf(2), "0" });
-      this.jKv.qF(3);
+      ExtControlProviderMsg.a(this.mez).addRow(new Object[] { this.eut[1], Integer.valueOf(2), "0" });
+      this.mez.vA(3);
       break;
-      if (this.jKt == 2)
+      if (this.jWH == 2)
       {
-        localObject1 = new fj();
-        ((fj)localObject1).bMh.op = 2;
-        if (!com.tencent.mm.sdk.b.a.udP.m((com.tencent.mm.sdk.b.b)localObject1))
+        localObject1 = new fm();
+        ((fm)localObject1).ctC.op = 2;
+        if (!com.tencent.mm.sdk.b.a.ymk.l((com.tencent.mm.sdk.b.b)localObject1))
         {
-          this.jKv.qF(4);
-          this.hSx.countDown();
+          this.mez.vA(4);
+          this.jMg.countDown();
+          AppMethodBeat.o(20348);
           return;
         }
-        localObject2 = ((fj)localObject1).bMi.fileName;
-        ExtControlProviderMsg.a(this.jKv, new MatrixCursor(ExtControlProviderMsg.aND()));
-        fp localfp = new fp();
-        localfp.bME.fileName = ((String)localObject2);
-        if (!com.tencent.mm.sdk.b.a.udP.m(localfp))
+        localObject2 = ((fm)localObject1).ctD.fileName;
+        ExtControlProviderMsg.a(this.mez, new MatrixCursor(ExtControlProviderMsg.btG()));
+        fs localfs = new fs();
+        localfs.ctY.fileName = ((String)localObject2);
+        if (!com.tencent.mm.sdk.b.a.ymk.l(localfs))
         {
-          this.jKv.qF(4);
-          ExtControlProviderMsg.a(this.jKv).close();
-          this.hSx.countDown();
+          this.mez.vA(4);
+          ExtControlProviderMsg.a(this.mez).close();
+          this.jMg.countDown();
+          AppMethodBeat.o(20348);
           return;
         }
-        y.d("MicroMsg.ExtControlProviderMsg", "stop record, msgId=[%s]", new Object[] { Long.valueOf(localfp.bMF.bIt) });
-        long l = localfp.bMF.bIt;
+        ab.d("MicroMsg.ExtControlProviderMsg", "stop record, msgId=[%s]", new Object[] { Long.valueOf(localfs.ctZ.cpO) });
+        long l = localfs.ctZ.cpO;
         if (l > 0L)
         {
           try
           {
-            if (!((fj)localObject1).bMi.bIe) {
-              break label607;
+            if (!((fm)localObject1).ctD.cpz) {
+              break label643;
             }
-            if ((ae.getContext() == null) || (!aq.isConnected(ae.getContext()))) {
-              break label558;
+            if ((ah.getContext() == null) || (!at.isConnected(ah.getContext()))) {
+              break label594;
             }
-            ExtControlProviderMsg.a(this.jKv).addRow(new Object[] { this.dAS[1], Integer.valueOf(1), com.tencent.mm.plugin.ext.a.a.ei(l) });
-            this.jKv.qF(0);
+            ExtControlProviderMsg.a(this.mez).addRow(new Object[] { this.eut[1], Integer.valueOf(1), com.tencent.mm.plugin.ext.a.a.jF(l) });
+            this.mez.vA(0);
           }
           catch (Exception localException)
           {
-            y.w("MicroMsg.ExtControlProviderMsg", localException.getMessage());
-            y.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
-            this.jKv.qF(4);
+            ab.w("MicroMsg.ExtControlProviderMsg", localException.getMessage());
+            ab.printErrStackTrace("MicroMsg.ExtControlProviderMsg", localException, "", new Object[0]);
+            this.mez.vA(4);
           }
           continue;
-          label558:
-          ExtControlProviderMsg.a(this.jKv).addRow(new Object[] { this.dAS[1], Integer.valueOf(6), com.tencent.mm.plugin.ext.a.a.ei(l) });
-          this.jKv.qF(4);
+          label594:
+          ExtControlProviderMsg.a(this.mez).addRow(new Object[] { this.eut[1], Integer.valueOf(6), com.tencent.mm.plugin.ext.a.a.jF(l) });
+          this.mez.vA(4);
           continue;
-          label607:
-          ExtControlProviderMsg.a(this.jKv).addRow(new Object[] { this.dAS[1], Integer.valueOf(4), com.tencent.mm.plugin.ext.a.a.ei(l) });
-          this.jKv.qF(4);
+          label643:
+          ExtControlProviderMsg.a(this.mez).addRow(new Object[] { this.eut[1], Integer.valueOf(4), com.tencent.mm.plugin.ext.a.a.jF(l) });
+          this.mez.vA(4);
         }
         else
         {
-          this.jKv.qF(3);
+          this.mez.vA(3);
         }
       }
     }

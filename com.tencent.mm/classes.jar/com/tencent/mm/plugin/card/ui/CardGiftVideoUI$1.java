@@ -4,7 +4,7 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CardGiftVideoUI$1
   implements View.OnCreateContextMenuListener
@@ -13,12 +13,14 @@ final class CardGiftVideoUI$1
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramContextMenu.add(0, 0, 0, this.iuJ.getString(a.g.card_long_click_menu_save_video));
+    AppMethodBeat.i(88448);
+    paramContextMenu.add(0, 0, 0, this.kvN.getString(2131297982));
+    AppMethodBeat.o(88448);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftVideoUI.1
  * JD-Core Version:    0.7.0.1
  */

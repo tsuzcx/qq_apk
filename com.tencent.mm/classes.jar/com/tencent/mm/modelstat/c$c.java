@@ -1,55 +1,67 @@
 package com.tencent.mm.modelstat;
 
 import android.util.Pair;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 final class c$c
 {
-  int dCy;
-  long eCv;
-  float eCw;
-  String eCx;
-  ArrayList<Pair<String, Boolean>> eCy = new ArrayList();
-  ArrayList<Pair<String, String>> eCz = new ArrayList();
+  int ezN;
+  long fSm;
+  float fSn;
+  String fSo;
+  ArrayList<Pair<String, Boolean>> fSp;
+  ArrayList<Pair<String, String>> fSq;
   int id;
   String name;
   
+  private c$c()
+  {
+    AppMethodBeat.i(78667);
+    this.fSp = new ArrayList();
+    this.fSq = new ArrayList();
+    AppMethodBeat.o(78667);
+  }
+  
   public final String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ReportConfigEvent{");
-    localStringBuilder.append("id=" + this.id);
-    localStringBuilder.append(", name='" + this.name + "'");
-    localStringBuilder.append(", expireTime=" + this.eCv);
-    localStringBuilder.append(", rate=" + this.eCw);
-    localStringBuilder.append(", logId=" + this.dCy);
-    localStringBuilder.append(", pagesType='" + this.eCx + "'");
-    localStringBuilder.append(", pageList=[");
-    Iterator localIterator = this.eCy.iterator();
+    AppMethodBeat.i(78668);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ReportConfigEvent{");
+    ((StringBuilder)localObject).append("id=" + this.id);
+    ((StringBuilder)localObject).append(", name='" + this.name + "'");
+    ((StringBuilder)localObject).append(", expireTime=" + this.fSm);
+    ((StringBuilder)localObject).append(", rate=" + this.fSn);
+    ((StringBuilder)localObject).append(", logId=" + this.ezN);
+    ((StringBuilder)localObject).append(", pagesType='" + this.fSo + "'");
+    ((StringBuilder)localObject).append(", pageList=[");
+    Iterator localIterator = this.fSp.iterator();
     Pair localPair;
     while (localIterator.hasNext())
     {
       localPair = (Pair)localIterator.next();
-      localStringBuilder.append("{" + (String)localPair.first + "," + localPair.second + "}");
-      localStringBuilder.append(",");
+      ((StringBuilder)localObject).append("{" + (String)localPair.first + "," + localPair.second + "}");
+      ((StringBuilder)localObject).append(",");
     }
-    localStringBuilder.append("]");
-    localStringBuilder.append(", specialPVPages=[");
-    localIterator = this.eCz.iterator();
+    ((StringBuilder)localObject).append("]");
+    ((StringBuilder)localObject).append(", specialPVPages=[");
+    localIterator = this.fSq.iterator();
     while (localIterator.hasNext())
     {
       localPair = (Pair)localIterator.next();
-      localStringBuilder.append("{" + (String)localPair.first + "," + (String)localPair.second + "}");
-      localStringBuilder.append(",");
+      ((StringBuilder)localObject).append("{" + (String)localPair.first + "," + (String)localPair.second + "}");
+      ((StringBuilder)localObject).append(",");
     }
-    localStringBuilder.append("]}");
-    return localStringBuilder.toString();
+    ((StringBuilder)localObject).append("]}");
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(78668);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelstat.c.c
  * JD-Core Version:    0.7.0.1
  */

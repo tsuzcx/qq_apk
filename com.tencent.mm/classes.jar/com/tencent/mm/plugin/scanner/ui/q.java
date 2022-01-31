@@ -5,266 +5,308 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.compatible.e.d;
-import com.tencent.mm.model.au;
-import com.tencent.mm.modelgeo.a.a;
-import com.tencent.mm.modelgeo.c;
-import com.tencent.mm.modelsimple.v;
-import com.tencent.mm.modelsimple.v.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelsimple.w;
+import com.tencent.mm.modelsimple.w.b;
 import com.tencent.mm.plugin.scanner.util.b;
-import com.tencent.mm.plugin.scanner.util.b.a;
-import com.tencent.mm.protocal.c.bmz;
+import com.tencent.mm.protocal.protobuf.bws;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
+import com.tencent.mm.sdk.platformtools.h;
 import java.util.Map;
 
-@com.tencent.mm.sdk.platformtools.f(cqs={BaseScanUI.class})
+@h(dsp={BaseScanUI.class})
 public final class q
   extends i
-  implements com.tencent.mm.ah.f, b.a
+  implements f, com.tencent.mm.plugin.scanner.util.b.a
 {
-  private static int nLN = 300;
-  private float dia;
-  private float dib;
-  private a.a dig = new q.1(this);
-  private c egs;
-  private boolean egv = false;
-  private TextView nID;
-  private final int nLT = 300;
-  private final int nLU = 400;
-  private int nMC;
-  private int nMD;
-  private String nME;
-  private String nMF;
-  private boolean nMG = false;
-  private float nMH = -10000.0F;
-  private boolean nMI = false;
-  private boolean nMJ = false;
-  private boolean nMK = false;
-  private q.a nML;
-  protected ah nMM = new q.2(this);
-  private float pitch = -10000.0F;
+  private static int qzu = 300;
+  private com.tencent.mm.modelgeo.b.a dZA;
+  private float dZu;
+  private float dZv;
+  private com.tencent.mm.modelgeo.d fwu;
+  private boolean fwx;
+  private boolean ogA;
+  private float pitch;
+  private int qAk;
+  private int qAl;
+  private String qAm;
+  private String qAn;
+  private boolean qAo;
+  private float qAp;
+  private boolean qAq;
+  private boolean qAr;
+  private boolean qAs;
+  private q.a qAt;
+  protected ak qAu;
+  private TextView qwc;
+  private final int qzA;
+  private final int qzB;
   
   public q(i.b paramb, Point paramPoint)
   {
     super(paramb, paramPoint);
-    dG(300, 400);
+    AppMethodBeat.i(81242);
+    this.qzA = 300;
+    this.qzB = 400;
+    this.qAo = false;
+    this.qAp = -10000.0F;
+    this.pitch = -10000.0F;
+    this.qAq = false;
+    this.qAr = false;
+    this.qAs = false;
+    this.fwx = false;
+    this.dZA = new q.1(this);
+    this.qAu = new q.2(this);
+    fo(300, 400);
+    AppMethodBeat.o(81242);
   }
   
-  private void bxR()
+  private void ciS()
   {
-    if (this.nLB == null) {
-      y.e("MicroMsg.scanner.ScanModeStreetView", "dealWithNetWork(), scanUICallback == null");
-    }
-    do
+    AppMethodBeat.i(81247);
+    if (this.qzg == null)
     {
-      do
-      {
-        return;
-        if (this.nMJ)
-        {
-          this.nLB.ix(true);
-          return;
-        }
-      } while ((!au.DK()) || ((au.Dk().KG() != 6) && (au.Dk().KG() != 4)));
-      this.nLB.fD(0L);
-    } while (this.egs != null);
-    if (this.nLB == null)
-    {
-      y.w("MicroMsg.scanner.ScanModeStreetView", "initLBS(), scanUICallback == null");
+      ab.e("MicroMsg.scanner.ScanModeStreetView", "dealWithNetWork(), scanUICallback == null");
+      AppMethodBeat.o(81247);
       return;
     }
-    if (this.egs == null) {
-      this.egs = c.Ob();
+    if ((g.RG()) && ((g.Rc().adt() == 6) || (g.Rc().adt() == 4)))
+    {
+      this.qzg.lg(0L);
+      ciZ();
     }
-    this.dia = -85.0F;
-    this.dib = -1000.0F;
-    this.nMD = -1000;
-    this.nMC = 1;
-    this.nME = "";
-    this.nMF = "";
-    this.egs.a(this.dig, true);
+    AppMethodBeat.o(81247);
   }
   
-  public final void C(Bundle paramBundle) {}
-  
-  public final void b(int paramInt1, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3) {}
-  
-  protected final void bxo()
+  private void ciZ()
   {
-    if (this.nLB == null)
+    AppMethodBeat.i(81243);
+    if (this.qzg == null)
     {
-      y.w("MicroMsg.scanner.ScanModeStreetView", "handleNetworkChange(), scanUICallback == null");
+      ab.w("MicroMsg.scanner.ScanModeStreetView", "initLBS(), scanUICallback == null");
+      AppMethodBeat.o(81243);
       return;
     }
-    bxR();
+    if (this.fwu == null) {
+      this.fwu = com.tencent.mm.modelgeo.d.agQ();
+    }
+    this.dZu = -85.0F;
+    this.dZv = -1000.0F;
+    this.qAl = -1000;
+    this.qAk = 1;
+    this.qAm = "";
+    this.qAn = "";
+    this.fwu.a(this.dZA, true);
+    AppMethodBeat.o(81243);
   }
   
-  protected final b bxp()
+  public final void T(Bundle paramBundle) {}
+  
+  public final void a(int paramInt1, String paramString1, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3, String paramString2) {}
+  
+  protected final void cil()
+  {
+    AppMethodBeat.i(81246);
+    if (this.qzg == null)
+    {
+      ab.w("MicroMsg.scanner.ScanModeStreetView", "handleNetworkChange(), scanUICallback == null");
+      AppMethodBeat.o(81246);
+      return;
+    }
+    ciS();
+    AppMethodBeat.o(81246);
+  }
+  
+  protected final b cim()
   {
     return null;
   }
   
-  protected final int bxq()
+  protected final int cin()
   {
-    return R.i.scan_street_view_body;
+    return 2130970611;
   }
   
-  protected final int bxr()
+  protected final int cio()
   {
-    return nLN;
+    return qzu;
   }
   
-  protected final void bxs()
+  protected final void cip()
   {
-    j(new Rect(0, 0, 0, 0));
-    this.nLB.b(4, null);
+    AppMethodBeat.i(81245);
+    k(new Rect(0, 0, 0, 0));
+    this.qzg.b(4, null);
     onResume();
+    AppMethodBeat.o(81245);
   }
   
-  protected final boolean bxt()
+  protected final boolean ciq()
   {
     return true;
   }
   
-  protected final boolean bxu()
+  protected final boolean cir()
   {
     return true;
   }
   
-  public final void fB(long paramLong) {}
-  
-  protected final void j(Rect paramRect)
+  protected final void k(Rect paramRect)
   {
-    this.nID = ((TextView)this.nLB.findViewById(R.h.scan_no_network_tips));
-    this.nID.setText(R.l.scan_no_network);
-    this.gSy = ((TextView)this.nLB.findViewById(R.h.scan_tip_tv));
+    AppMethodBeat.i(81244);
+    this.qwc = ((TextView)this.qzg.findViewById(2131827416));
+    this.qwc.setText(2131302918);
+    this.ivt = ((TextView)this.qzg.findViewById(2131827431));
     if (paramRect.bottom > 0)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.gSy.getLayoutParams();
-      localLayoutParams.topMargin = (paramRect.bottom + 0 + BackwardSupportUtil.b.b(this.nLB.getContext(), 13.0F));
-      this.gSy.setLayoutParams(localLayoutParams);
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.ivt.getLayoutParams();
+      localLayoutParams.topMargin = (paramRect.bottom + 0 + BackwardSupportUtil.b.b(this.qzg.getContext(), 13.0F));
+      this.ivt.setLayoutParams(localLayoutParams);
     }
-    if (d.yN()) {
-      this.gSy.setPadding(BackwardSupportUtil.b.b(this.nLB.getContext(), 54.0F), this.gSy.getPaddingTop(), BackwardSupportUtil.b.b(this.nLB.getContext(), 54.0F), this.gSy.getPaddingBottom());
+    if (com.tencent.mm.compatible.e.d.Ll()) {
+      this.ivt.setPadding(BackwardSupportUtil.b.b(this.qzg.getContext(), 54.0F), this.ivt.getPaddingTop(), BackwardSupportUtil.b.b(this.qzg.getContext(), 54.0F), this.ivt.getPaddingBottom());
     }
-    bxR();
-    iz(true);
+    ciS();
+    kC(true);
+    AppMethodBeat.o(81244);
   }
   
-  protected final void onDestroy() {}
+  public final void le(long paramLong) {}
+  
+  protected final void onDestroy()
+  {
+    AppMethodBeat.i(81251);
+    if (this.fwu != null) {
+      this.fwu.c(this.dZA);
+    }
+    AppMethodBeat.o(81251);
+  }
   
   protected final void onPause()
   {
-    this.nMI = true;
-    iz(false);
-    if (au.DK()) {
-      au.Dk().b(424, this);
+    AppMethodBeat.i(81250);
+    this.qAq = true;
+    kC(false);
+    if (g.RG()) {
+      g.Rc().b(424, this);
     }
-    if (this.egs != null) {
-      this.egs.c(this.dig);
+    if (this.qAu != null) {
+      this.qAu.removeMessages(0);
     }
-    if (this.nMM != null) {
-      this.nMM.removeMessages(0);
-    }
+    AppMethodBeat.o(81250);
   }
   
   protected final void onResume()
   {
-    this.nMI = false;
-    if (au.DK()) {
-      au.Dk().a(424, this);
+    AppMethodBeat.i(81249);
+    this.qAq = false;
+    if (g.RG()) {
+      g.Rc().a(424, this);
     }
-    if (this.nLB == null)
+    if (this.qzg == null)
     {
-      y.w("MicroMsg.scanner.ScanModeStreetView", "scanUICallback == null");
+      ab.w("MicroMsg.scanner.ScanModeStreetView", "scanUICallback == null");
+      AppMethodBeat.o(81249);
       return;
     }
-    bxR();
+    ciS();
+    AppMethodBeat.o(81249);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    if (this.nLB == null) {
-      y.w("MicroMsg.scanner.ScanModeStreetView", "onSceneEnd(), scanUICallback == null");
+    AppMethodBeat.i(81248);
+    if (this.qzg == null)
+    {
+      ab.w("MicroMsg.scanner.ScanModeStreetView", "onSceneEnd(), scanUICallback == null");
+      AppMethodBeat.o(81248);
+      return;
+    }
+    this.qAs = false;
+    switch (paramm.getType())
+    {
     }
     for (;;)
     {
+      AppMethodBeat.o(81248);
       return;
-      this.nMK = false;
-      switch (paramm.getType())
-      {
-      default: 
-        return;
-      }
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        y.e("MicroMsg.scanner.ScanModeStreetView", "onSceneEnd() errType = [%s], errCode = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        ab.e("MicroMsg.scanner.ScanModeStreetView", "onSceneEnd() errType = [%s], errCode = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        AppMethodBeat.o(81248);
         return;
       }
-      this.nMK = true;
-      paramString = ((v)paramm).QP();
-      if ((paramString == null) || (paramString.sDW == null))
+      this.qAs = true;
+      paramString = ((w)paramm).ajW();
+      if ((paramString == null) || (paramString.wzV == null))
       {
-        y.d("MicroMsg.scanner.ScanModeStreetView", "resp null");
+        ab.d("MicroMsg.scanner.ScanModeStreetView", "resp null");
+        AppMethodBeat.o(81248);
         return;
       }
-      y.i("MicroMsg.scanner.ScanModeStreetView", "onSceneEnd() errType = [%s], errCode = [%s], resp.Type=[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramString.hQR) });
-      if (paramString.hQR == 0)
+      ab.i("MicroMsg.scanner.ScanModeStreetView", "onSceneEnd() errType = [%s], errCode = [%s], resp.Type=[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramString.jKs) });
+      if (paramString.jKs == 0)
       {
-        paramString = v.nf(paramString.sDW);
-        if (bk.bl(paramString))
+        paramString = w.us(paramString.wzV);
+        if (bo.isNullOrNil(paramString))
         {
-          y.e("MicroMsg.scanner.ScanModeStreetView", "SCAN_STREET_VIEW_TYPE_STREETVIEW url is null");
+          ab.e("MicroMsg.scanner.ScanModeStreetView", "SCAN_STREET_VIEW_TYPE_STREETVIEW url is null");
+          AppMethodBeat.o(81248);
           return;
         }
-        if (this.nML == null) {
-          this.nML = new q.a(this, (byte)0);
+        if (this.qAt == null) {
+          this.qAt = new q.a(this, (byte)0);
         }
-        this.nML.url = paramString;
-        ai.S(this.nML);
-        ai.l(this.nML, 800L);
+        this.qAt.url = paramString;
+        al.ae(this.qAt);
+        al.p(this.qAt, 800L);
+        AppMethodBeat.o(81248);
         return;
       }
-      if (paramString.hQR == 2)
+      if (paramString.jKs == 2)
       {
-        if ((this.nMM != null) && (!this.nMI))
+        if ((this.qAu == null) || (this.qAq))
         {
-          this.nMM.removeMessages(0);
-          this.nMM.sendEmptyMessageDelayed(0, 1000L);
+          AppMethodBeat.o(81248);
+          return;
         }
+        this.qAu.removeMessages(0);
+        this.qAu.sendEmptyMessageDelayed(0, 1000L);
+        AppMethodBeat.o(81248);
+        return;
       }
-      else if (paramString.hQR == 1) {
+      if (paramString.jKs == 1) {
         try
         {
-          paramString = paramString.sDW;
+          paramString = paramString.wzV;
           if (paramString != null)
           {
-            paramString = bn.s(paramString, "recommend");
+            paramString = br.F(paramString, "recommend");
             if (paramString != null)
             {
-              paramm = v.b.f(paramString, ".recommend");
-              v.b localb = new v.b();
-              localb.title = bk.pm((String)paramString.get(".recommend.title"));
-              localb.desc = bk.pm((String)paramString.get(".recommend.desc"));
-              localb.eAm = paramm;
-              return;
+              paramm = w.b.f(paramString, ".recommend");
+              w.b localb = new w.b();
+              localb.title = bo.nullAsNil((String)paramString.get(".recommend.title"));
+              localb.desc = bo.nullAsNil((String)paramString.get(".recommend.desc"));
+              localb.fQb = paramm;
             }
           }
+          AppMethodBeat.o(81248);
+          return;
         }
         catch (Exception paramString)
         {
-          y.printErrStackTrace("MicroMsg.scanner.ScanModeStreetView", paramString, "", new Object[0]);
-          y.e("MicroMsg.scanner.ScanModeStreetView", "MM_SCAN_STREET_VIEW_TYPE_RECOMMEND， [%s]", new Object[] { paramString.getMessage() });
+          ab.printErrStackTrace("MicroMsg.scanner.ScanModeStreetView", paramString, "", new Object[0]);
+          ab.e("MicroMsg.scanner.ScanModeStreetView", "MM_SCAN_STREET_VIEW_TYPE_RECOMMEND， [%s]", new Object[] { paramString.getMessage() });
         }
       }
     }

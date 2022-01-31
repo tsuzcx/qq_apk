@@ -2,11 +2,11 @@ package com.tencent.mm.compatible.util;
 
 public abstract interface b$b
 {
+  public abstract boolean Mh();
+  
   public abstract void a(b.a parama);
   
   public abstract boolean requestFocus();
-  
-  public abstract boolean zE();
 }
 
 

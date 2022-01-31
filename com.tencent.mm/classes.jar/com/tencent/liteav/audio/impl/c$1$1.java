@@ -2,6 +2,7 @@ package com.tencent.liteav.audio.impl;
 
 import android.telephony.PhoneStateListener;
 import com.tencent.liteav.basic.log.TXCLog;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class c$1$1
   extends PhoneStateListener
@@ -10,9 +11,11 @@ class c$1$1
   
   public void onCallStateChanged(int paramInt, String paramString)
   {
+    AppMethodBeat.i(66544);
     super.onCallStateChanged(paramInt, paramString);
-    TXCLog.i("AudioCenter:TXCTelephonyMgr", "onCallStateChanged:" + paramInt);
+    TXCLog.i("AudioCenter:TXCTelephonyMgr", "onCallStateChanged:".concat(String.valueOf(paramInt)));
     c.a(this.a.a, paramInt);
+    AppMethodBeat.o(66544);
   }
 }
 

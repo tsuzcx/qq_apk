@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet_payu.pay.ui;
 
-import com.tencent.mm.plugin.wallet_core.e.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
+import com.tencent.mm.plugin.wallet_core.utils.d;
 
 final class WalletPayUPayUI$1
   implements b.b
@@ -10,11 +11,13 @@ final class WalletPayUPayUI$1
   
   public final void a(String paramString1, String paramString2, FavorPayInfo paramFavorPayInfo)
   {
-    this.qOg.XM();
-    WalletPayUPayUI.a(this.qOg, paramString1);
-    WalletPayUPayUI.b(this.qOg, paramString2);
-    this.qOg.kx(false);
-    c.bXt();
+    AppMethodBeat.i(48483);
+    this.uDn.hideVKB();
+    WalletPayUPayUI.a(this.uDn, paramString1);
+    WalletPayUPayUI.b(this.uDn, paramString2);
+    this.uDn.nB(false);
+    d.cWY();
+    AppMethodBeat.o(48483);
   }
 }
 

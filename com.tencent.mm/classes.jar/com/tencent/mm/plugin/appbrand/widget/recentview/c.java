@@ -5,11 +5,11 @@ import android.support.v7.widget.RecyclerView;
 public class c
   implements e.a
 {
-  public void G(int paramInt, boolean paramBoolean) {}
-  
-  public final void d(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
+  public void L(int paramInt, boolean paramBoolean) {}
   
   public final void e(RecyclerView paramRecyclerView, int paramInt) {}
+  
+  public final void h(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 

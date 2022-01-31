@@ -7,153 +7,153 @@ import com.google.a.a.g;
 public final class a$e
   extends e
 {
+  public int BdE = 0;
+  public a.at BdI = null;
+  public a.ba BdK = null;
+  public int BdM = 0;
+  public String[] BdP = g.EMPTY_STRING_ARRAY;
+  public a.m[] BdQ = a.m.dTJ();
+  public int BdR = 0;
+  public int BdS = 0;
+  public a.s BdT = null;
+  public int BdU = 0;
   public String groupId = "";
   public int netType = 0;
-  public int pRI = 0;
-  public long pRJ = 0L;
-  public int wGd = 0;
-  public a.at wGh = null;
-  public a.ba wGj = null;
-  public int wGl = 0;
-  public String[] wGo = g.EMPTY_STRING_ARRAY;
-  public a.m[] wGp = a.m.cNX();
-  public int wGq = 0;
-  public int wGr = 0;
-  public a.s wGs = null;
-  public int wGt = 0;
+  public int twP = 0;
+  public long twQ = 0L;
   
   public a$e()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     int j = 0;
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.pRI != 0) {
-      paramb.aL(2, this.pRI);
+    if (this.twP != 0) {
+      paramb.bj(2, this.twP);
     }
-    if (this.pRJ != 0L) {
-      paramb.i(3, this.pRJ);
+    if (this.twQ != 0L) {
+      paramb.n(3, this.twQ);
     }
-    if (this.wGj != null) {
-      paramb.a(4, this.wGj);
+    if (this.BdK != null) {
+      paramb.a(4, this.BdK);
     }
-    if (this.wGr != 0) {
-      paramb.aL(5, this.wGr);
+    if (this.BdS != 0) {
+      paramb.bj(5, this.BdS);
     }
-    if (this.wGl != 0) {
-      paramb.aM(6, this.wGl);
+    if (this.BdM != 0) {
+      paramb.bk(6, this.BdM);
     }
-    if (this.wGd != 0) {
-      paramb.aL(7, this.wGd);
+    if (this.BdE != 0) {
+      paramb.bj(7, this.BdE);
     }
     if (this.netType != 0) {
-      paramb.aM(8, this.netType);
+      paramb.bk(8, this.netType);
     }
-    if (this.wGh != null) {
-      paramb.a(200, this.wGh);
+    if (this.BdI != null) {
+      paramb.a(200, this.BdI);
     }
     int i;
     Object localObject;
-    if ((this.wGo != null) && (this.wGo.length > 0))
+    if ((this.BdP != null) && (this.BdP.length > 0))
     {
       i = 0;
-      while (i < this.wGo.length)
+      while (i < this.BdP.length)
       {
-        localObject = this.wGo[i];
+        localObject = this.BdP[i];
         if (localObject != null) {
-          paramb.d(201, (String)localObject);
+          paramb.e(201, (String)localObject);
         }
         i += 1;
       }
     }
-    if ((this.wGp != null) && (this.wGp.length > 0))
+    if ((this.BdQ != null) && (this.BdQ.length > 0))
     {
       i = j;
-      while (i < this.wGp.length)
+      while (i < this.BdQ.length)
       {
-        localObject = this.wGp[i];
+        localObject = this.BdQ[i];
         if (localObject != null) {
           paramb.a(202, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.wGs != null) {
-      paramb.a(203, this.wGs);
+    if (this.BdT != null) {
+      paramb.a(203, this.BdT);
     }
-    if (this.wGt != 0) {
-      paramb.aM(204, this.wGt);
+    if (this.BdU != 0) {
+      paramb.bk(204, this.BdU);
     }
-    if (this.wGq != 0) {
-      paramb.aM(240, this.wGq);
+    if (this.BdR != 0) {
+      paramb.bk(240, this.BdR);
     }
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
     int i2 = 0;
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
+      i = j + b.f(1, this.groupId);
     }
     j = i;
-    if (this.pRI != 0) {
-      j = i + b.aN(2, this.pRI);
+    if (this.twP != 0) {
+      j = i + b.bl(2, this.twP);
     }
     i = j;
-    if (this.pRJ != 0L) {
-      i = j + b.k(3, this.pRJ);
+    if (this.twQ != 0L) {
+      i = j + b.p(3, this.twQ);
     }
     j = i;
-    if (this.wGj != null) {
-      j = i + b.b(4, this.wGj);
+    if (this.BdK != null) {
+      j = i + b.b(4, this.BdK);
     }
     i = j;
-    if (this.wGr != 0) {
-      i = j + b.aN(5, this.wGr);
+    if (this.BdS != 0) {
+      i = j + b.bl(5, this.BdS);
     }
     j = i;
-    if (this.wGl != 0) {
-      j = i + b.aO(6, this.wGl);
+    if (this.BdM != 0) {
+      j = i + b.bm(6, this.BdM);
     }
     i = j;
-    if (this.wGd != 0) {
-      i = j + b.aN(7, this.wGd);
+    if (this.BdE != 0) {
+      i = j + b.bl(7, this.BdE);
     }
     int k = i;
     if (this.netType != 0) {
-      k = i + b.aO(8, this.netType);
+      k = i + b.bm(8, this.netType);
     }
     j = k;
-    if (this.wGh != null) {
-      j = k + b.b(200, this.wGh);
+    if (this.BdI != null) {
+      j = k + b.b(200, this.BdI);
     }
     i = j;
     Object localObject;
-    if (this.wGo != null)
+    if (this.BdP != null)
     {
       i = j;
-      if (this.wGo.length > 0)
+      if (this.BdP.length > 0)
       {
         i = 0;
         k = 0;
         int n;
-        for (int m = 0; i < this.wGo.length; m = n)
+        for (int m = 0; i < this.BdP.length; m = n)
         {
-          localObject = this.wGo[i];
+          localObject = this.BdP[i];
           int i1 = k;
           n = m;
           if (localObject != null)
           {
             n = m + 1;
-            i1 = k + b.aI((String)localObject);
+            i1 = k + b.bf((String)localObject);
           }
           i += 1;
           k = i1;
@@ -162,19 +162,19 @@ public final class a$e
       }
     }
     j = i;
-    if (this.wGp != null)
+    if (this.BdQ != null)
     {
       j = i;
-      if (this.wGp.length > 0)
+      if (this.BdQ.length > 0)
       {
         k = i2;
         for (;;)
         {
           j = i;
-          if (k >= this.wGp.length) {
+          if (k >= this.BdQ.length) {
             break;
           }
-          localObject = this.wGp[k];
+          localObject = this.BdQ[k];
           j = i;
           if (localObject != null) {
             j = i + b.b(202, (e)localObject);
@@ -185,16 +185,16 @@ public final class a$e
       }
     }
     i = j;
-    if (this.wGs != null) {
-      i = j + b.b(203, this.wGs);
+    if (this.BdT != null) {
+      i = j + b.b(203, this.BdT);
     }
     j = i;
-    if (this.wGt != 0) {
-      j = i + b.aO(204, this.wGt);
+    if (this.BdU != 0) {
+      j = i + b.bm(204, this.BdU);
     }
     i = j;
-    if (this.wGq != 0) {
-      i = j + b.aO(240, this.wGq);
+    if (this.BdR != 0) {
+      i = j + b.bm(240, this.BdR);
     }
     return i;
   }

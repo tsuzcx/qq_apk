@@ -6,9 +6,9 @@ import android.widget.TextView;
 public final class a$a
   extends com.tencent.mm.ui.contact.a.a.a
 {
-  public ImageView doU;
-  public TextView doV;
-  public TextView eXP;
+  public ImageView egq;
+  public TextView egr;
+  public TextView gpM;
   
   public a$a(a parama)
   {

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emoji.ui.v2;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.emoji.f.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.ui.base.MMTagPanel;
 import com.tencent.mm.ui.contact.LabelContainerView;
@@ -15,16 +15,18 @@ final class EmojiStoreV2SingleProductUI$13
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    if (EmojiStoreV2SingleProductUI.f(this.jiI) != null)
+    AppMethodBeat.i(53759);
+    if (EmojiStoreV2SingleProductUI.f(this.lrz) != null)
     {
-      EmojiStoreV2SingleProductUI.f(this.jiI).setVisibility(0);
+      EmojiStoreV2SingleProductUI.f(this.lrz).setVisibility(0);
       paramMenuItem = new ArrayList();
-      paramMenuItem.add(EmojiStoreV2SingleProductUI.l(this.jiI));
-      EmojiStoreV2SingleProductUI.m(this.jiI).a(paramMenuItem, EmojiStoreV2SingleProductUI.n(this.jiI));
-      this.jiI.setMMTitle(f.h.emoji_store_seach_by_tag);
-      this.jiI.showOptionMenu(1001, false);
-      h.nFQ.aC(12788, "1");
+      paramMenuItem.add(EmojiStoreV2SingleProductUI.l(this.lrz));
+      EmojiStoreV2SingleProductUI.m(this.lrz).a(paramMenuItem, EmojiStoreV2SingleProductUI.n(this.lrz));
+      this.lrz.setMMTitle(2131299246);
+      this.lrz.showOptionMenu(1001, false);
+      h.qsU.kvStat(12788, "1");
     }
+    AppMethodBeat.o(53759);
     return false;
   }
 }

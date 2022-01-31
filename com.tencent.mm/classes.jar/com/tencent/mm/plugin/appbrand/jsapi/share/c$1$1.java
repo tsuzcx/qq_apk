@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.share;
 
 import android.util.Log;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -19,21 +20,22 @@ final class c$1$1
   
   public final void run()
   {
-    y.i("MicroMsg.JsApiShareAppMessage", "task callback");
-    this.gBx.ahD();
+    AppMethodBeat.i(131438);
+    ab.i("MicroMsg.JsApiShareAppMessage", "task callback");
+    this.hZt.aBk();
     Object localObject = new HashMap();
     JSONArray localJSONArray = new JSONArray();
     try
     {
-      if (!bk.dk(this.gBx.gBO))
+      if (!bo.es(this.hZt.iah))
       {
-        Iterator localIterator = this.gBx.gBO.iterator();
+        Iterator localIterator = this.hZt.iah.iterator();
         while (localIterator.hasNext())
         {
           ShareInfo localShareInfo = (ShareInfo)localIterator.next();
           JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("shareKey", localShareInfo.dTX);
-          localJSONObject.put("shareName", localShareInfo.dZN);
+          localJSONObject.put("shareKey", localShareInfo.bCZ);
+          localJSONObject.put("shareName", localShareInfo.bCY);
           localJSONArray.put(localJSONObject);
         }
       }
@@ -42,21 +44,25 @@ final class c$1$1
     }
     catch (JSONException localJSONException)
     {
-      y.e("MicroMsg.JsApiShareAppMessage", Log.getStackTraceString(localJSONException));
+      ab.e("MicroMsg.JsApiShareAppMessage", Log.getStackTraceString(localJSONException));
       ((Map)localObject).put("shareInfos", localJSONArray);
-      this.gBy.gbW.C(this.gBy.dIS, this.gBy.gBw.h("ok", (Map)localObject));
+      this.hZu.hxC.h(this.hZu.bAX, this.hZu.hZs.j("ok", (Map)localObject));
       i = 16;
-      localObject = this.bxX + ":";
-      if (this.bxX.toLowerCase().endsWith("@chatroom")) {
+      localObject = this.bZZ + ":";
+      if (this.bZZ.toLowerCase().endsWith("@chatroom")) {
         i = 15;
       }
-      c.a(this.gBy.val$appId, this.gBy.gBl, i, (String)localObject, 1, this.val$resultCode);
+      c.a(this.hZu.val$appId, this.hZu.hZg, i, (String)localObject, 1, this.val$resultCode);
+      if ("wxfe02ecfe70800f46".equalsIgnoreCase(this.hZu.val$appId)) {
+        h.qsU.e(16979, new Object[] { this.hZu.val$appId, this.hZu.hZg, Integer.valueOf(0), Integer.valueOf(3) });
+      }
+      AppMethodBeat.o(131438);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.c.1.1
  * JD-Core Version:    0.7.0.1
  */

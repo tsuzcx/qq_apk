@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.webview.stub;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WebViewStubTempUI$4
   implements DialogInterface.OnCancelListener
@@ -10,7 +11,9 @@ final class WebViewStubTempUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    this.rks.finish();
+    AppMethodBeat.i(7221);
+    this.uZM.finish();
+    AppMethodBeat.o(7221);
   }
 }
 

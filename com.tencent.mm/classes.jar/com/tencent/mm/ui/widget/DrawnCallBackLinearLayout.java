@@ -6,14 +6,16 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import org.xwalk.core.Log;
 
 public class DrawnCallBackLinearLayout
   extends LinearLayout
 {
+  private DrawnCallBackLinearLayout.a ABY;
+  private DrawnCallBackLinearLayout.b ABZ;
   public final boolean DEBUG = true;
   public final String TAG = "MicroMsg.TestTimeForChatting";
-  private DrawnCallBackLinearLayout.a wuT;
-  private b xvN;
   
   public DrawnCallBackLinearLayout(Context paramContext)
   {
@@ -31,49 +33,51 @@ public class DrawnCallBackLinearLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(107845);
     super.dispatchDraw(paramCanvas);
-    if (this.wuT != null)
+    if (this.ABY != null)
     {
-      this.wuT.cVv();
-      this.wuT = null;
+      this.ABY.dJg();
+      this.ABY = null;
     }
+    AppMethodBeat.o(107845);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.xvN != null)
-    {
-      this.xvN.bIG();
-      this.xvN = null;
+    AppMethodBeat.i(107843);
+    if (this.ABZ != null) {
+      this.ABZ = null;
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(107843);
+    return bool;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(107844);
+    long l = System.currentTimeMillis();
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    Log.i("MicroMsg.TestTimeForChatting", "[onLayout] " + (System.currentTimeMillis() - l));
+    AppMethodBeat.o(107844);
   }
   
   public void setListener(DrawnCallBackLinearLayout.a parama)
   {
-    this.wuT = parama;
+    this.ABY = parama;
   }
   
-  public void setTouchedCallback(b paramb)
+  public void setTouchedCallback(DrawnCallBackLinearLayout.b paramb)
   {
-    this.xvN = paramb;
-  }
-  
-  public static abstract interface b
-  {
-    public abstract void bIG();
+    this.ABZ = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.DrawnCallBackLinearLayout
  * JD-Core Version:    0.7.0.1
  */

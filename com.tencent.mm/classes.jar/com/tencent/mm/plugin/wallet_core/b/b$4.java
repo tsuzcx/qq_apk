@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.wallet_core.b;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.h;
-import com.tencent.mm.plugin.wallet_core.model.p;
+import com.tencent.mm.plugin.wallet_core.model.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.d.g;
@@ -17,32 +18,39 @@ final class b$4
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(46474);
     if ((paramm instanceof com.tencent.mm.plugin.wallet_core.b.a.b))
     {
-      this.qqt.a(this.wBd);
-      if (((com.tencent.mm.plugin.wallet_core.b.a.b)paramm).qqu != null) {
-        b.h(this.qqt).putParcelable("key_bindcard_value_result", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramm).qqu);
+      this.ubp.a(this.AXB);
+      if (((com.tencent.mm.plugin.wallet_core.b.a.b)paramm).ubq != null) {
+        b.g(this.ubp).putParcelable("key_bindcard_value_result", ((com.tencent.mm.plugin.wallet_core.b.a.b)paramm).ubq);
       }
     }
-    while (!(paramm instanceof h)) {
+    while (!(paramm instanceof h))
+    {
+      AppMethodBeat.o(46474);
       return false;
     }
+    AppMethodBeat.o(46474);
     return true;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    paramVarArgs = (p)paramVarArgs[0];
-    b.i(this.qqt).getString("verify_card_flag", "0");
-    if ("realname_verify_process".equals(this.qqt.aTh()))
-    {
-      this.wBd.a(new com.tencent.mm.plugin.wallet_core.b.a.b(paramVarArgs, this.qqt.kke.getInt("entry_scene", -1)), true);
-      return false;
+    AppMethodBeat.i(46475);
+    paramVarArgs = (u)paramVarArgs[0];
+    b.h(this.ubp).getString("verify_card_flag", "0");
+    if ("realname_verify_process".equals(this.ubp.bzC())) {
+      this.AXB.a(new com.tencent.mm.plugin.wallet_core.b.a.b(paramVarArgs, this.ubp.mEJ.getInt("entry_scene", -1)), true);
     }
-    this.wBd.a(new com.tencent.mm.plugin.wallet_core.b.a.b(paramVarArgs), true);
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(46475);
+      return false;
+      this.AXB.a(new com.tencent.mm.plugin.wallet_core.b.a.b(paramVarArgs), true);
+    }
   }
 }
 

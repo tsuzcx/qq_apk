@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.facedetect.d;
 
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class c$2$1
   implements Runnable
@@ -9,14 +10,16 @@ final class c$2$1
   
   public final void run()
   {
-    if (this.jPo.jPn.aOO() != null) {
-      this.jPo.jPn.aOO().startAnimation(c.d(this.jPo.jPn));
+    AppMethodBeat.i(298);
+    if (this.mjE.mjD.buS() != null) {
+      this.mjE.mjD.buS().startAnimation(c.d(this.mjE.mjD));
     }
+    AppMethodBeat.o(298);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.d.c.2.1
  * JD-Core Version:    0.7.0.1
  */

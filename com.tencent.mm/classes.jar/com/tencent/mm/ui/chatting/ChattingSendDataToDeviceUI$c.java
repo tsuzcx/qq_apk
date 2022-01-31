@@ -2,14 +2,14 @@ package com.tencent.mm.ui.chatting;
 
 public final class ChattingSendDataToDeviceUI$c
 {
-  String bJp;
-  String bKO;
-  String bKT;
+  String cqJ;
+  String csi;
+  String csn;
   String deviceID;
-  String dtK;
+  String elx;
   String iconUrl;
   int progress;
-  String vlJ;
+  String zBi;
   
   public ChattingSendDataToDeviceUI$c(ChattingSendDataToDeviceUI paramChattingSendDataToDeviceUI) {}
 }

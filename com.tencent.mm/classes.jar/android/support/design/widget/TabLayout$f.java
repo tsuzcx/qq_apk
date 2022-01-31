@@ -1,65 +1,71 @@
 package android.support.design.widget;
 
-import android.support.v4.view.ViewPager.e;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import java.lang.ref.WeakReference;
 
 public final class TabLayout$f
-  implements ViewPager.e
+  implements ViewPager.OnPageChangeListener
 {
-  private final WeakReference<TabLayout> ld;
-  int le;
-  int lf;
+  private int mScrollState;
+  private final WeakReference<TabLayout> ma;
+  private int mb;
   
   public TabLayout$f(TabLayout paramTabLayout)
   {
-    this.ld = new WeakReference(paramTabLayout);
+    this.ma = new WeakReference(paramTabLayout);
   }
   
-  public final void Q(int paramInt)
+  public final void onPageScrollStateChanged(int paramInt)
   {
-    this.le = this.lf;
-    this.lf = paramInt;
+    this.mb = this.mScrollState;
+    this.mScrollState = paramInt;
   }
   
-  public final void R(int paramInt)
-  {
-    TabLayout localTabLayout = (TabLayout)this.ld.get();
-    if ((localTabLayout != null) && (localTabLayout.getSelectedTabPosition() != paramInt) && (paramInt < localTabLayout.getTabCount())) {
-      if ((this.lf != 0) && ((this.lf != 2) || (this.le != 0))) {
-        break label66;
-      }
-    }
-    label66:
-    for (boolean bool = true;; bool = false)
-    {
-      localTabLayout.b(localTabLayout.L(paramInt), bool);
-      return;
-    }
-  }
-  
-  public final void a(int paramInt1, float paramFloat, int paramInt2)
+  public final void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
     boolean bool2 = false;
-    TabLayout localTabLayout = (TabLayout)this.ld.get();
+    TabLayout localTabLayout = (TabLayout)this.ma.get();
     if (localTabLayout != null) {
-      if ((this.lf == 2) && (this.le != 1)) {
+      if ((this.mScrollState == 2) && (this.mb != 1)) {
         break label69;
       }
     }
     label69:
     for (boolean bool1 = true;; bool1 = false)
     {
-      if ((this.lf != 2) || (this.le != 0)) {
+      if ((this.mScrollState != 2) || (this.mb != 0)) {
         bool2 = true;
       }
       localTabLayout.a(paramInt1, paramFloat, bool1, bool2);
       return;
     }
   }
+  
+  public final void onPageSelected(int paramInt)
+  {
+    TabLayout localTabLayout = (TabLayout)this.ma.get();
+    if ((localTabLayout != null) && (localTabLayout.getSelectedTabPosition() != paramInt) && (paramInt < localTabLayout.getTabCount())) {
+      if ((this.mScrollState != 0) && ((this.mScrollState != 2) || (this.mb != 0))) {
+        break label66;
+      }
+    }
+    label66:
+    for (boolean bool = true;; bool = false)
+    {
+      localTabLayout.b(localTabLayout.K(paramInt), bool);
+      return;
+    }
+  }
+  
+  final void reset()
+  {
+    this.mScrollState = 0;
+    this.mb = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.design.widget.TabLayout.f
  * JD-Core Version:    0.7.0.1
  */

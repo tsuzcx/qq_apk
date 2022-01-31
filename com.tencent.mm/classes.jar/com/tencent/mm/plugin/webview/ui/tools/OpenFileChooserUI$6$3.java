@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class OpenFileChooserUI$6$3
   implements Runnable
 {
@@ -7,13 +9,15 @@ final class OpenFileChooserUI$6$3
   
   public final void run()
   {
-    this.rlF.rlE.setResult(1);
-    this.rlF.rlE.finish();
+    AppMethodBeat.i(7451);
+    this.vbh.vbg.setResult(1);
+    this.vbh.vbg.finish();
+    AppMethodBeat.o(7451);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.OpenFileChooserUI.6.3
  * JD-Core Version:    0.7.0.1
  */

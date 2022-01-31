@@ -1,45 +1,48 @@
 package com.tencent.mm.plugin.freewifi.g;
 
-import com.tencent.mm.h.c.bt;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.bw;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class e
-  extends bt
+  extends bw
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(20885);
     c.a locala = new c.a();
-    locala.ujL = new Field[4];
+    locala.yrK = new Field[4];
     locala.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "id";
-    locala.ujN.put("id", "TEXT PRIMARY KEY ");
+    locala.yrM.put("id", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" id TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.ujM = "id";
+    locala.yrL = "id";
     locala.columns[1] = "protocolNumber";
-    locala.ujN.put("protocolNumber", "INTEGER");
+    locala.yrM.put("protocolNumber", "INTEGER");
     localStringBuilder.append(" protocolNumber INTEGER");
     localStringBuilder.append(", ");
     locala.columns[2] = "logContent";
-    locala.ujN.put("logContent", "TEXT");
+    locala.yrM.put("logContent", "TEXT");
     localStringBuilder.append(" logContent TEXT");
     localStringBuilder.append(", ");
     locala.columns[3] = "createTime";
-    locala.ujN.put("createTime", "LONG");
+    locala.yrM.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     locala.columns[4] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(20885);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

@@ -1,54 +1,54 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.h.a.jj;
+import com.tencent.mm.g.a.js;
 import com.tencent.mm.sdk.b.a;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
+import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
 
 public abstract class d
-  implements j.a
+  implements k.a
 {
-  public int rSS = 0;
+  public int vJQ = 0;
   
-  public abstract b Ew(String paramString);
+  public abstract b PL(String paramString);
   
-  public final void a(String paramString, l paraml)
+  public final void a(String paramString, m paramm)
   {
-    paraml = new jj();
-    paraml.bRH.bRI = Ew(paramString);
-    a.udP.m(paraml);
+    paramm = new js();
+    paramm.czj.czk = PL(paramString);
+    a.ymk.l(paramm);
   }
   
-  public abstract j aYb();
+  public abstract k bEO();
   
-  public final void adn()
+  public final void uD()
   {
-    if (this.rSS == 0)
+    if (this.vJQ == 0)
     {
-      j localj = aYb();
-      if (localj != null) {
-        localj.c(this);
+      k localk = bEO();
+      if (localk != null) {
+        localk.add(this);
       }
     }
-    this.rSS += 1;
+    this.vJQ += 1;
   }
   
   public final void unregister()
   {
-    if (this.rSS == 0) {}
-    j localj;
+    if (this.vJQ == 0) {}
+    k localk;
     do
     {
       do
       {
         return;
-        this.rSS -= 1;
-      } while (this.rSS != 0);
-      localj = aYb();
-    } while (localj == null);
-    localj.d(this);
+        this.vJQ -= 1;
+      } while (this.vJQ != 0);
+      localk = bEO();
+    } while (localk == null);
+    localk.remove(this);
   }
 }
 

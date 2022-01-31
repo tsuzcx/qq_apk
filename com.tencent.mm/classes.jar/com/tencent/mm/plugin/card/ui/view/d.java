@@ -9,110 +9,117 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.a;
-import com.tencent.mm.plugin.card.a.b;
-import com.tencent.mm.plugin.card.a.d;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.ui.a.g;
 import com.tencent.mm.plugin.card.ui.n;
-import com.tencent.mm.protocal.c.mg;
+import com.tencent.mm.protocal.protobuf.pg;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
   extends i
 {
-  private TextView ipN;
-  private View ixP;
-  private TextView ixQ;
-  private TextView ixR;
+  private View kAW;
+  private TextView kAX;
+  private TextView kAY;
+  private TextView kqV;
   
-  public final void aCU()
+  public final void Ir(String paramString)
   {
-    this.ixP.setVisibility(8);
+    AppMethodBeat.i(88741);
+    this.kAY.setText(paramString);
+    AppMethodBeat.o(88741);
+  }
+  
+  public final void bfq()
+  {
+    AppMethodBeat.i(88740);
+    this.kAW.setVisibility(8);
+    AppMethodBeat.o(88740);
   }
   
   public final void initView()
   {
-    this.ixP = findViewById(a.d.advertise_layout);
-    this.ixQ = ((TextView)findViewById(a.d.advertise_text));
-    this.ipN = ((TextView)findViewById(a.d.share_detail_tv));
-    this.ixR = ((TextView)findViewById(a.d.card_private_setting_tv));
-    this.ixQ.setOnClickListener(this.iya.aBI());
-    this.ixP.setVisibility(8);
+    AppMethodBeat.i(88738);
+    this.kAW = findViewById(2131822093);
+    this.kAX = ((TextView)findViewById(2131822094));
+    this.kqV = ((TextView)findViewById(2131822098));
+    this.kAY = ((TextView)findViewById(2131821986));
+    this.kAX.setOnClickListener(this.kBh.bdz());
+    this.kAW.setVisibility(8);
+    AppMethodBeat.o(88738);
   }
   
   public final void update()
   {
-    b localb = this.iya.aBE();
-    Object localObject1 = this.iya.aBH();
-    this.ixP.setVisibility(0);
-    if (!TextUtils.isEmpty(localb.azx().sIB))
+    AppMethodBeat.i(88739);
+    b localb = this.kBh.bdv();
+    Object localObject1 = this.kBh.bdy();
+    this.kAW.setVisibility(0);
+    if (!TextUtils.isEmpty(localb.bbd().wGk))
     {
-      this.ixQ.setVisibility(0);
-      this.ixQ.setText(localb.azx().sIB);
-      if ((localb.aze()) || ((localb.azd()) && (localb.azg()))) {
-        this.ixQ.setTextColor(((MMActivity)localObject1).getResources().getColor(a.a.white));
+      this.kAX.setVisibility(0);
+      this.kAX.setText(localb.bbd().wGk);
+      if ((localb.baK()) || ((localb.baJ()) && (localb.baM()))) {
+        this.kAX.setTextColor(((MMActivity)localObject1).getResources().getColor(2131690709));
       }
     }
     Object localObject2;
     for (;;)
     {
-      localObject2 = this.ixP.findViewById(a.d.card_setting_layout_container);
-      if (!this.iya.aBJ().aCR()) {
-        break label528;
+      localObject2 = this.kAW.findViewById(2131822095);
+      if (!this.kBh.bdA().bfb()) {
+        break label529;
       }
       ((View)localObject2).setVisibility(0);
-      this.ixR.setText(((MMActivity)localObject1).getString(a.g.card_share_card_private_setting));
-      this.ixR.setTextColor(((MMActivity)localObject1).getResources().getColor(a.a.white));
-      int i = ((MMActivity)localObject1).getResources().getDimensionPixelOffset(a.b.NormalPadding);
-      localObject2 = (Button)this.ixP.findViewById(a.d.card_private_setting_btn);
-      ShapeDrawable localShapeDrawable1 = l.b((Context)localObject1, ((MMActivity)localObject1).getResources().getColor(a.a.white), i);
-      ShapeDrawable localShapeDrawable2 = l.cx(((MMActivity)localObject1).getResources().getColor(a.a.white), i);
+      this.kAY.setText(((MMActivity)localObject1).getString(2131298038));
+      this.kAY.setTextColor(((MMActivity)localObject1).getResources().getColor(2131690709));
+      int i = ((MMActivity)localObject1).getResources().getDimensionPixelOffset(2131427808);
+      localObject2 = (Button)this.kAW.findViewById(2131821987);
+      ShapeDrawable localShapeDrawable1 = l.b((Context)localObject1, ((MMActivity)localObject1).getResources().getColor(2131690709), i);
+      ShapeDrawable localShapeDrawable2 = l.dR(((MMActivity)localObject1).getResources().getColor(2131690709), i);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842919 }, localShapeDrawable2);
       localStateListDrawable.addState(new int[0], localShapeDrawable1);
       ((Button)localObject2).setBackgroundDrawable(localStateListDrawable);
-      i = l.yR(localb.azx().color);
-      int j = ((MMActivity)localObject1).getResources().getColor(a.a.white);
+      i = l.IB(localb.bbd().color);
+      int j = ((MMActivity)localObject1).getResources().getColor(2131690709);
       ((Button)localObject2).setTextColor(new ColorStateList(new int[][] { { 16842919, 16842910 }, new int[0] }, new int[] { i, j }));
-      ((Button)localObject2).setOnClickListener(this.iya.aBI());
-      localObject1 = this.ixP.findViewById(a.d.middle_divider);
-      localObject2 = this.ixP.findViewById(a.d.card_hongbao_layout);
-      if (localb.azx().sIP != 1) {
+      ((Button)localObject2).setOnClickListener(this.kBh.bdz());
+      localObject1 = this.kAW.findViewById(2131822096);
+      localObject2 = this.kAW.findViewById(2131822097);
+      if (localb.bbd().wGy != 1) {
         break;
       }
       ((View)localObject1).setVisibility(0);
       ((View)localObject2).setVisibility(0);
+      AppMethodBeat.o(88739);
       return;
-      if ((localb.azd()) && (localb.azf()))
+      if ((localb.baJ()) && (localb.baL()))
       {
-        this.ixQ.setTextColor(((MMActivity)localObject1).getResources().getColor(a.a.card_advertise_text_color));
-        this.ixP.setBackgroundColor(((MMActivity)localObject1).getResources().getColor(a.a.card_bg_color));
+        this.kAX.setTextColor(((MMActivity)localObject1).getResources().getColor(2131689822));
+        this.kAW.setBackgroundColor(((MMActivity)localObject1).getResources().getColor(2131689824));
       }
       else
       {
-        this.ixQ.setTextColor(((MMActivity)localObject1).getResources().getColor(a.a.white));
+        this.kAX.setTextColor(((MMActivity)localObject1).getResources().getColor(2131690709));
         continue;
-        this.ixQ.setVisibility(8);
+        this.kAX.setVisibility(8);
       }
     }
     ((View)localObject1).setVisibility(8);
     ((View)localObject2).setVisibility(8);
+    AppMethodBeat.o(88739);
     return;
-    label528:
+    label529:
     ((View)localObject2).setVisibility(8);
-  }
-  
-  public final void yH(String paramString)
-  {
-    this.ixR.setText(paramString);
+    AppMethodBeat.o(88739);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.d
  * JD-Core Version:    0.7.0.1
  */

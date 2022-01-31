@@ -1,38 +1,25 @@
 package com.tencent.mm.plugin.sns.ui.a;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.vending.base.Vending.a;
 
 final class c$1
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Vending.a
 {
   c$1(c paramc) {}
   
-  public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public final void cwM()
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.plh.view.setAlpha(1.0F - f);
-    if (f != 0.0F)
-    {
-      paramValueAnimator = (FrameLayout.LayoutParams)this.plh.view.getLayoutParams();
-      paramValueAnimator.leftMargin = ((int)(this.plh.plb * f));
-      paramValueAnimator.topMargin = ((int)(this.plh.plc * f));
-      ViewGroup localViewGroup = (ViewGroup)this.plh.view.getParent();
-      paramValueAnimator.rightMargin = ((int)(localViewGroup.getWidth() * f - this.plh.pld * f - paramValueAnimator.leftMargin));
-      paramValueAnimator.bottomMargin = ((int)(localViewGroup.getHeight() * f - this.plh.ple * f - paramValueAnimator.topMargin));
-      this.plh.view.setLayoutParams(paramValueAnimator);
+    AppMethodBeat.i(39932);
+    if (!c.a(this.sdx)) {
+      this.sdx.notifyDataSetChanged();
     }
-    if (this.plh.plf != null) {
-      this.plh.plf.aE(f);
-    }
+    AppMethodBeat.o(39932);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.c.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mm.view;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.Switch;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.view.footer.SelectColorBar;
 
 final class a$7
@@ -12,19 +13,22 @@ final class a$7
   
   public final void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
+    AppMethodBeat.i(116378);
     if (paramBoolean)
     {
-      this.wvF.setSelectColor(((Integer)a.c(this.wvE).getTag()).intValue());
-      a.b(this.wvE).setTextBackground(((Integer)a.c(this.wvE).getTag()).intValue());
+      this.AQE.setSelectColor(((Integer)a.c(this.AQD).getTag()).intValue());
+      a.b(this.AQD).setTextBackground(((Integer)a.c(this.AQD).getTag()).intValue());
+      AppMethodBeat.o(116378);
       return;
     }
-    a.c(this.wvE).setTag(Integer.valueOf(this.wvF.getCurColor()));
-    a.b(this.wvE).setTextBackground(0);
+    a.c(this.AQD).setTag(Integer.valueOf(this.AQE.getCurColor()));
+    a.b(this.AQD).setTextBackground(0);
+    AppMethodBeat.o(116378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.view.a.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.modelappbrand;
 
-import com.tencent.mm.protocal.c.bzp;
+import com.tencent.mm.protocal.protobuf.cmn;
 
 public abstract interface k$a
 {
-  public abstract void a(String paramString, bzp parambzp);
+  public abstract void a(String paramString, cmn paramcmn);
 }
 
 

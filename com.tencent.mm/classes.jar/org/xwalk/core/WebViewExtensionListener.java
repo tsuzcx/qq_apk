@@ -1,7 +1,11 @@
 package org.xwalk.core;
 
+import java.util.List;
+
 public abstract class WebViewExtensionListener
 {
+  public abstract int getHostByName(String paramString, List<String> paramList);
+  
   public abstract Object onMiscCallBack(String paramString, Object... paramVarArgs);
 }
 

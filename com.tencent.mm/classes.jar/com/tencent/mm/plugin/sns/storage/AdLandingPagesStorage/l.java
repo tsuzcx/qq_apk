@@ -1,16 +1,14 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage;
 
 import android.content.Context;
-import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.i;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.h;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.t;
 import com.tencent.mm.plugin.sns.ui.al;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -20,101 +18,107 @@ public final class l
 {
   private int bgColor;
   private Context context;
-  private int gHR;
-  private int gHS;
-  private ViewGroup nhB;
-  private LinkedHashMap<String, i> oJh;
-  private LayoutInflater oJi;
-  private List<s> oKY;
+  private ViewGroup pMO;
+  private List<t> rCJ;
+  private LinkedHashMap<String, h> rzc;
   
-  public l(List<s> paramList, Context paramContext, int paramInt, ViewGroup paramViewGroup)
+  public l(List<t> paramList, Context paramContext, ViewGroup paramViewGroup)
   {
-    this.oKY = paramList;
+    this.rCJ = paramList;
     this.context = paramContext;
-    this.bgColor = paramInt;
-    this.nhB = paramViewGroup;
+    this.bgColor = 0;
+    this.pMO = paramViewGroup;
   }
   
-  public final Collection<i> bFL()
+  public final Collection<h> crG()
   {
-    if (this.oJh == null) {
-      return Collections.EMPTY_LIST;
+    AppMethodBeat.i(37787);
+    if (this.rzc == null)
+    {
+      localObject = Collections.EMPTY_LIST;
+      AppMethodBeat.o(37787);
+      return localObject;
     }
-    return this.oJh.values();
+    Object localObject = this.rzc.values();
+    AppMethodBeat.o(37787);
+    return localObject;
   }
   
-  public final void bFX()
+  public final void dg(List<t> paramList)
   {
-    if ((this.oKY == null) || (this.oKY.isEmpty())) {
+    AppMethodBeat.i(37785);
+    if ((paramList != null) && (!paramList.equals(this.rCJ)))
+    {
+      this.rCJ = paramList;
+      layout();
+    }
+    AppMethodBeat.o(37785);
+  }
+  
+  public final void layout()
+  {
+    AppMethodBeat.i(37786);
+    if ((this.rCJ == null) || (this.rCJ.isEmpty()))
+    {
+      AppMethodBeat.o(37786);
       return;
     }
-    if (this.oJh == null) {
-      this.oJh = new LinkedHashMap();
-    }
-    Object localObject;
-    if (this.oJi == null)
-    {
-      this.oJi = ((LayoutInflater)this.context.getSystemService("layout_inflater"));
-      localObject = (WindowManager)this.context.getSystemService("window");
-      this.gHR = ((WindowManager)localObject).getDefaultDisplay().getWidth();
-      this.gHS = ((WindowManager)localObject).getDefaultDisplay().getHeight();
+    if (this.rzc == null) {
+      this.rzc = new LinkedHashMap();
     }
     int i = 0;
-    while (i < this.oKY.size())
+    for (;;)
     {
-      s locals = (s)this.oKY.get(i);
-      localObject = (i)this.oJh.get(locals.oDg);
-      if (localObject != null) {
-        ((i)localObject).a(locals);
-      }
-      try
+      if (i < this.rCJ.size())
       {
-        label156:
-        if (this.nhB != ((i)localObject).getView().getParent())
-        {
-          if (this.nhB.getChildCount() <= i) {
-            break label243;
-          }
-          this.nhB.addView(((i)localObject).getView(), i);
+        t localt = (t)this.rCJ.get(i);
+        Object localObject = (h)this.rzc.get(localt.rsI);
+        if (localObject != null) {
+          ((h)localObject).a(localt);
         }
-        for (;;)
+        try
         {
-          i += 1;
-          break;
-          i locali = al.a(this.context, locals, this.nhB, this.bgColor);
-          localObject = locali;
-          if (locali == null) {
-            break label156;
+          label104:
+          if (this.pMO != ((h)localObject).getView().getParent())
+          {
+            if (this.pMO.getChildCount() <= i) {
+              break label195;
+            }
+            this.pMO.addView(((h)localObject).getView(), i);
+            ((h)localObject).cqZ();
           }
-          this.oJh.put(locals.oDg, locali);
-          localObject = locali;
-          break label156;
-          label243:
-          this.nhB.addView(((i)localObject).getView());
+          for (;;)
+          {
+            i += 1;
+            break;
+            h localh = al.a(this.context, localt, this.pMO, this.bgColor);
+            localObject = localh;
+            if (localh == null) {
+              break label104;
+            }
+            this.rzc.put(localt.rsI, localh);
+            localObject = localh;
+            break label104;
+            label195:
+            this.pMO.addView(((h)localObject).getView());
+            ((h)localObject).cqZ();
+          }
         }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        catch (Exception localException)
         {
-          y.e("CompRenderer", "component may have same id %s,%s", new Object[] { locals.oDg, bk.j(localException) });
+          for (;;)
+          {
+            ab.e("CompRenderer", "component may have same id %s,%s", new Object[] { localt.rsI, bo.l(localException) });
+          }
         }
       }
     }
-  }
-  
-  public final void cA(List<s> paramList)
-  {
-    if ((paramList != null) && (!paramList.equals(this.oKY)))
-    {
-      this.oKY = paramList;
-      bFX();
-    }
+    AppMethodBeat.o(37786);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.l
  * JD-Core Version:    0.7.0.1
  */

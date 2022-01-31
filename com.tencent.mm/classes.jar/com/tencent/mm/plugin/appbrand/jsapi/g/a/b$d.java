@@ -2,10 +2,16 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 public final class b$d
 {
-  public String gum;
-  public double latitude;
-  public double longitude;
+  public String hPe;
+  double latitude;
+  double longitude;
   public float rotate;
+  
+  public final void g(double paramDouble1, double paramDouble2)
+  {
+    this.latitude = paramDouble1;
+    this.longitude = paramDouble2;
+  }
 }
 
 

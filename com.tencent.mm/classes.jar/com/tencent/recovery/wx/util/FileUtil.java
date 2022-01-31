@@ -7,7 +7,7 @@ import java.io.InputStream;
 public class FileUtil
 {
   /* Error */
-  public static java.lang.String T(java.io.File paramFile)
+  public static java.lang.String ac(java.io.File paramFile)
   {
     // Byte code:
     //   0: new 17	java/io/FileInputStream
@@ -18,7 +18,7 @@ public class FileUtil
     //   9: new 22	java/lang/String
     //   12: dup
     //   13: aload_0
-    //   14: invokestatic 26	com/tencent/recovery/wx/util/FileUtil:k	(Ljava/io/InputStream;)[B
+    //   14: invokestatic 26	com/tencent/recovery/wx/util/FileUtil:m	(Ljava/io/InputStream;)[B
     //   17: invokespecial 29	java/lang/String:<init>	([B)V
     //   20: astore_1
     //   21: aload_0
@@ -72,7 +72,7 @@ public class FileUtil
     //   9	21	68	java/lang/Exception
   }
   
-  public static byte[] k(InputStream paramInputStream)
+  public static byte[] m(InputStream paramInputStream)
   {
     if (paramInputStream == null) {
       return null;

@@ -1,236 +1,242 @@
 package com.tencent.mm.plugin.normsg.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class a$c
 {
-  static boolean boV()
+  static boolean bXx()
   {
+    AppMethodBeat.i(10368);
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
-      localStringBuilder.append(d.Kd("Þä¦Ê¡ã¡"));
-      String str1 = localStringBuilder.toString();
-      localStringBuilder.delete(0, localStringBuilder.length());
-      localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-      if (localStringBuilder.toString().equals(a.ek(str1, localStringBuilder.toString()))) {
-        break label70;
-      }
+      localStringBuilder.append(d.Wd("Þä¦Ê¡ã¡"));
+      String str1;
+      return false;
     }
     finally
     {
-      String str2;
-      do
+      String str2 = localStringBuilder.toString();
+      localStringBuilder.delete(0, localStringBuilder.length());
+      localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+      if (!localStringBuilder.toString().equals(a.fF(str2, localStringBuilder.toString())))
       {
-        str2 = localStringBuilder.toString();
-        localStringBuilder.delete(0, localStringBuilder.length());
-        localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-      } while (!localStringBuilder.toString().equals(a.ek(str2, localStringBuilder.toString())));
+        AppMethodBeat.o(10368);
+        return true;
+      }
+      AppMethodBeat.o(10368);
     }
-    return true;
-    label70:
-    return false;
     return false;
   }
   
   /* Error */
-  public static int boW()
+  public static int bXy()
   {
     // Byte code:
-    //   0: new 16	java/lang/StringBuilder
-    //   3: dup
-    //   4: invokespecial 17	java/lang/StringBuilder:<init>	()V
-    //   7: astore_3
-    //   8: aload_3
-    //   9: ldc 60
-    //   11: invokestatic 25	com/tencent/mm/plugin/normsg/b/d:Kd	(Ljava/lang/String;)Ljava/lang/String;
-    //   14: invokevirtual 29	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   17: pop
-    //   18: ldc 2
-    //   20: invokevirtual 44	java/lang/Object:hashCode	()I
-    //   23: bipush 31
-    //   25: iushr
-    //   26: iconst_1
-    //   27: ior
-    //   28: istore_1
-    //   29: aload_3
-    //   30: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: astore_2
-    //   34: iload_1
-    //   35: istore_0
-    //   36: iload_1
-    //   37: ifeq +47 -> 84
-    //   40: ldc 2
-    //   42: invokevirtual 44	java/lang/Object:hashCode	()I
-    //   45: istore_0
-    //   46: iload_0
-    //   47: bipush 31
-    //   49: iushr
-    //   50: iconst_1
-    //   51: ior
-    //   52: iconst_1
-    //   53: ixor
-    //   54: istore_1
-    //   55: aload_3
-    //   56: iconst_0
-    //   57: aload_3
-    //   58: invokevirtual 37	java/lang/StringBuilder:length	()I
-    //   61: invokevirtual 41	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   64: pop
-    //   65: aload_3
-    //   66: iload_1
-    //   67: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   70: pop
-    //   71: aload_2
-    //   72: aload_3
-    //   73: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   76: invokestatic 51	com/tencent/mm/plugin/normsg/b/a:ek	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   79: iload_1
-    //   80: invokestatic 66	com/tencent/mm/sdk/platformtools/bk:getInt	(Ljava/lang/String;I)I
-    //   83: istore_0
-    //   84: iload_0
-    //   85: ireturn
-    //   86: astore_2
-    //   87: aload_3
-    //   88: iload_1
-    //   89: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   92: pop
-    //   93: aload_2
-    //   94: athrow
-    //   95: astore_2
-    //   96: ldc 2
-    //   98: invokevirtual 44	java/lang/Object:hashCode	()I
-    //   101: bipush 31
-    //   103: iushr
-    //   104: iconst_1
-    //   105: ior
-    //   106: istore_1
-    //   107: aload_3
-    //   108: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   111: astore_2
-    //   112: iload_1
-    //   113: istore_0
-    //   114: iload_1
-    //   115: ifeq -31 -> 84
-    //   118: ldc 2
-    //   120: invokevirtual 44	java/lang/Object:hashCode	()I
-    //   123: istore_0
-    //   124: iload_0
+    //   0: sipush 10369
+    //   3: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 22	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 23	java/lang/StringBuilder:<init>	()V
+    //   13: astore_3
+    //   14: aload_3
+    //   15: ldc 69
+    //   17: invokestatic 31	com/tencent/mm/plugin/normsg/b/d:Wd	(Ljava/lang/String;)Ljava/lang/String;
+    //   20: invokevirtual 35	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: ldc 2
+    //   26: invokevirtual 50	java/lang/Object:hashCode	()I
+    //   29: bipush 31
+    //   31: iushr
+    //   32: iconst_1
+    //   33: ior
+    //   34: istore_0
+    //   35: aload_3
+    //   36: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   39: astore_2
+    //   40: iload_0
+    //   41: ifeq +70 -> 111
+    //   44: ldc 2
+    //   46: invokevirtual 50	java/lang/Object:hashCode	()I
+    //   49: istore_1
+    //   50: iload_1
+    //   51: bipush 31
+    //   53: iushr
+    //   54: iconst_1
+    //   55: ior
+    //   56: iconst_1
+    //   57: ixor
+    //   58: istore_0
+    //   59: aload_3
+    //   60: iconst_0
+    //   61: aload_3
+    //   62: invokevirtual 43	java/lang/StringBuilder:length	()I
+    //   65: invokevirtual 47	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   68: pop
+    //   69: aload_3
+    //   70: iload_0
+    //   71: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   74: pop
+    //   75: aload_2
+    //   76: aload_3
+    //   77: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokestatic 57	com/tencent/mm/plugin/normsg/b/a:fF	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   83: iload_0
+    //   84: invokestatic 75	com/tencent/mm/sdk/platformtools/bo:getInt	(Ljava/lang/String;I)I
+    //   87: istore_0
+    //   88: sipush 10369
+    //   91: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: iload_0
+    //   95: ireturn
+    //   96: astore_2
+    //   97: aload_3
+    //   98: iload_0
+    //   99: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   102: pop
+    //   103: sipush 10369
+    //   106: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   109: aload_2
+    //   110: athrow
+    //   111: sipush 10369
+    //   114: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: iload_0
+    //   118: ireturn
+    //   119: astore_2
+    //   120: ldc 2
+    //   122: invokevirtual 50	java/lang/Object:hashCode	()I
     //   125: bipush 31
     //   127: iushr
     //   128: iconst_1
     //   129: ior
-    //   130: iconst_1
-    //   131: ixor
-    //   132: istore_1
-    //   133: aload_3
-    //   134: iconst_0
-    //   135: aload_3
-    //   136: invokevirtual 37	java/lang/StringBuilder:length	()I
-    //   139: invokevirtual 41	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
-    //   142: pop
-    //   143: aload_3
-    //   144: iload_1
-    //   145: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   148: pop
-    //   149: aload_2
-    //   150: aload_3
-    //   151: invokevirtual 33	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   154: invokestatic 51	com/tencent/mm/plugin/normsg/b/a:ek	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   157: iload_1
-    //   158: invokestatic 66	com/tencent/mm/sdk/platformtools/bk:getInt	(Ljava/lang/String;I)I
-    //   161: ireturn
-    //   162: astore_2
-    //   163: aload_3
-    //   164: iload_1
-    //   165: invokevirtual 47	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   168: pop
-    //   169: aload_2
-    //   170: athrow
-    //   171: astore_2
-    //   172: goto -9 -> 163
-    //   175: astore_2
-    //   176: goto -89 -> 87
+    //   130: istore_0
+    //   131: aload_3
+    //   132: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: astore_2
+    //   136: iload_0
+    //   137: ifeq +70 -> 207
+    //   140: ldc 2
+    //   142: invokevirtual 50	java/lang/Object:hashCode	()I
+    //   145: istore_1
+    //   146: iload_1
+    //   147: bipush 31
+    //   149: iushr
+    //   150: iconst_1
+    //   151: ior
+    //   152: iconst_1
+    //   153: ixor
+    //   154: istore_0
+    //   155: aload_3
+    //   156: iconst_0
+    //   157: aload_3
+    //   158: invokevirtual 43	java/lang/StringBuilder:length	()I
+    //   161: invokevirtual 47	java/lang/StringBuilder:delete	(II)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload_3
+    //   166: iload_0
+    //   167: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   170: pop
+    //   171: aload_2
+    //   172: aload_3
+    //   173: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   176: invokestatic 57	com/tencent/mm/plugin/normsg/b/a:fF	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   179: iload_0
+    //   180: invokestatic 75	com/tencent/mm/sdk/platformtools/bo:getInt	(Ljava/lang/String;I)I
+    //   183: istore_0
+    //   184: sipush 10369
+    //   187: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   190: iload_0
+    //   191: ireturn
+    //   192: astore_2
+    //   193: aload_3
+    //   194: iload_0
+    //   195: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   198: pop
+    //   199: sipush 10369
+    //   202: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   205: aload_2
+    //   206: athrow
+    //   207: sipush 10369
+    //   210: invokestatic 66	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   213: iload_0
+    //   214: ireturn
+    //   215: astore_2
+    //   216: goto -23 -> 193
+    //   219: astore_2
+    //   220: goto -123 -> 97
     // Local variable table:
     //   start	length	slot	name	signature
-    //   35	93	0	i	int
-    //   28	137	1	j	int
-    //   33	39	2	str1	String
-    //   86	8	2	localObject1	Object
-    //   95	1	2	localObject2	Object
-    //   111	39	2	str2	String
-    //   162	8	2	localObject3	Object
-    //   171	1	2	localObject4	Object
-    //   175	1	2	localObject5	Object
-    //   7	157	3	localStringBuilder	StringBuilder
+    //   34	180	0	i	int
+    //   49	101	1	j	int
+    //   39	37	2	str1	String
+    //   96	14	2	localObject1	Object
+    //   119	1	2	localObject2	Object
+    //   135	37	2	str2	String
+    //   192	14	2	localObject3	Object
+    //   215	1	2	localObject4	Object
+    //   219	1	2	localObject5	Object
+    //   13	181	3	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   40	46	86	finally
-    //   8	18	95	finally
-    //   118	124	162	finally
-    //   133	143	171	finally
-    //   55	65	175	finally
+    //   44	50	96	finally
+    //   14	24	119	finally
+    //   140	146	192	finally
+    //   155	165	215	finally
+    //   59	69	219	finally
   }
   
-  static boolean boX()
+  static boolean bXz()
   {
+    AppMethodBeat.i(10370);
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
-      localStringBuilder.append(d.Kd("Àú¿ÑÄ"));
-      String str1 = localStringBuilder.toString();
-      localStringBuilder.delete(0, localStringBuilder.length());
-      localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-      if (localStringBuilder.toString().equals(a.ek(str1, localStringBuilder.toString()))) {
-        break label70;
-      }
+      localStringBuilder.append(d.Wd("Àú¿ÑÄ"));
+      String str1;
+      return false;
     }
     finally
     {
-      String str2;
-      do
+      String str2 = localStringBuilder.toString();
+      localStringBuilder.delete(0, localStringBuilder.length());
+      localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+      if (!localStringBuilder.toString().equals(a.fF(str2, localStringBuilder.toString())))
       {
-        str2 = localStringBuilder.toString();
-        localStringBuilder.delete(0, localStringBuilder.length());
-        localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-      } while (!localStringBuilder.toString().equals(a.ek(str2, localStringBuilder.toString())));
+        AppMethodBeat.o(10370);
+        return true;
+      }
+      AppMethodBeat.o(10370);
     }
-    return true;
-    label70:
-    return false;
     return false;
   }
   
   public static boolean isEnabled()
   {
+    AppMethodBeat.i(10367);
     StringBuilder localStringBuilder = new StringBuilder();
     try
     {
-      localStringBuilder.append(d.Kd("Úà¯ßºÔ"));
-      String str1 = localStringBuilder.toString();
-      localStringBuilder.delete(0, localStringBuilder.length());
-      localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-      if (localStringBuilder.toString().equals(a.ek(str1, localStringBuilder.toString()))) {
-        break label70;
-      }
+      localStringBuilder.append(d.Wd("Úà¯ßºÔ"));
+      String str1;
+      return false;
     }
     finally
     {
-      String str2;
-      do
+      String str2 = localStringBuilder.toString();
+      localStringBuilder.delete(0, localStringBuilder.length());
+      localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
+      if (!localStringBuilder.toString().equals(a.fF(str2, localStringBuilder.toString())))
       {
-        str2 = localStringBuilder.toString();
-        localStringBuilder.delete(0, localStringBuilder.length());
-        localStringBuilder.append((c.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-      } while (!localStringBuilder.toString().equals(a.ek(str2, localStringBuilder.toString())));
+        AppMethodBeat.o(10367);
+        return true;
+      }
+      AppMethodBeat.o(10367);
     }
-    return true;
-    label70:
-    return false;
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.b.a.c
  * JD-Core Version:    0.7.0.1
  */

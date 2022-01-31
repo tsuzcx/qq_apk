@@ -1,44 +1,59 @@
 package com.tencent.mm.plugin.sight.decode.a;
 
-import com.tencent.mm.h.a.si;
-import com.tencent.mm.h.a.si.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ua;
+import com.tencent.mm.g.a.ua.a;
 import com.tencent.mm.sdk.b.c;
 import java.lang.ref.WeakReference;
 
 final class b$a
-  extends c<si>
+  extends c<ua>
 {
-  int hkH = 0;
-  int ofa = 0;
-  int ofb = 0;
-  WeakReference<b> ofc;
+  int mwo;
+  int qTp;
+  int qTq;
+  WeakReference<b> qTr;
   
   public b$a(b paramb)
   {
     super(0);
-    this.ofc = new WeakReference(paramb);
-    this.udX = si.class.getName().hashCode();
+    AppMethodBeat.i(70229);
+    this.qTp = 0;
+    this.qTq = 0;
+    this.mwo = 0;
+    this.qTr = new WeakReference(paramb);
+    this.__eventId = ua.class.getName().hashCode();
+    AppMethodBeat.o(70229);
   }
   
-  private void a(si paramsi)
+  private void a(ua paramua)
   {
-    this.ofa = paramsi.cbT.cbW;
-    this.ofb = paramsi.cbT.cbU;
-    this.hkH = paramsi.cbT.cbV;
+    this.qTp = paramua.cKz.cKC;
+    this.qTq = paramua.cKz.cKA;
+    this.mwo = paramua.cKz.cKB;
   }
   
-  private boolean bBg()
+  private boolean cmG()
   {
-    if (this.ofc.get() == null) {
+    AppMethodBeat.i(70230);
+    if (this.qTr.get() == null)
+    {
+      AppMethodBeat.o(70230);
       return false;
     }
-    int i = b.D((b)this.ofc.get()) + this.ofa;
-    return (i >= this.ofb) && (i <= this.hkH);
+    int i = b.E((b)this.qTr.get()) + this.qTp;
+    if ((i < this.qTq) || (i > this.mwo))
+    {
+      AppMethodBeat.o(70230);
+      return false;
+    }
+    AppMethodBeat.o(70230);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.a.b.a
  * JD-Core Version:    0.7.0.1
  */

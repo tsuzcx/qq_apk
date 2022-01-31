@@ -8,86 +8,98 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class SensorController
   extends BroadcastReceiver
   implements SensorEventListener
 {
-  private static float uie = 4.294967E+009F;
-  private static float uig = 0.5F;
-  public static boolean uio = false;
-  public static double uiq = -1.0D;
+  private static float yqj = 4.294967E+009F;
+  private static float yql = 0.5F;
+  public static boolean yqs = false;
+  public static double yqt = -1.0D;
   private Context context;
-  private float oEK = -1.0F;
+  private float rul;
   private SensorManager sensorManager;
-  private float uif;
-  private a uih;
-  private Sensor uii;
-  private final boolean uij;
-  private boolean uik = false;
-  public boolean uil = false;
-  private float uim = -1.0F;
+  private float yqk;
+  private a yqm;
+  private Sensor yqn;
+  private final boolean yqo;
+  private boolean yqp;
+  public boolean yqq;
+  private float yqr;
   
   public SensorController(Context paramContext)
   {
+    AppMethodBeat.i(52265);
+    this.yqp = false;
+    this.yqq = false;
+    this.rul = -1.0F;
+    this.yqr = -1.0F;
     if (paramContext == null)
     {
-      this.uij = false;
+      this.yqo = false;
+      AppMethodBeat.o(52265);
       return;
     }
     this.context = paramContext;
     this.sensorManager = ((SensorManager)paramContext.getSystemService("sensor"));
-    this.uii = this.sensorManager.getDefaultSensor(8);
-    if (this.uii != null) {
-      this.oEK = Math.min(10.0F, this.uii.getMaximumRange());
+    this.yqn = this.sensorManager.getDefaultSensor(8);
+    if (this.yqn != null) {
+      this.rul = Math.min(10.0F, this.yqn.getMaximumRange());
     }
-    if (this.oEK < 0.0F)
+    if (this.rul < 0.0F)
     {
-      y.e("MicroMsg.SensorController", "error, getMaximumRange return %s, set to 1", new Object[] { Float.valueOf(this.oEK) });
-      this.oEK = 1.0F;
+      ab.e("MicroMsg.SensorController", "error, getMaximumRange return %s, set to 1", new Object[] { Float.valueOf(this.rul) });
+      this.rul = 1.0F;
     }
-    if (this.uii != null) {}
+    if (this.yqn != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.uij = bool;
-      this.uif = (uig + 1.0F);
+      this.yqo = bool;
+      this.yqk = (yql + 1.0F);
+      AppMethodBeat.o(52265);
       return;
     }
   }
   
   public final void a(a parama)
   {
-    y.i("MicroMsg.SensorController", "sensor callback set, isRegistered:" + this.uil + ", proximitySensor: " + this.uii + ", maxValue: " + this.oEK);
-    if (!this.uil)
+    AppMethodBeat.i(52266);
+    ab.i("MicroMsg.SensorController", "sensor callback set, isRegistered:" + this.yqq + ", proximitySensor: " + this.yqn + ", maxValue: " + this.rul);
+    if (!this.yqq)
     {
-      this.uim = -1.0F;
+      this.yqr = -1.0F;
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.HEADSET_PLUG");
       this.context.registerReceiver(this, localIntentFilter);
-      this.sensorManager.registerListener(this, this.uii, 2);
-      this.uil = true;
+      this.sensorManager.registerListener(this, this.yqn, 2);
+      this.yqq = true;
     }
-    this.uih = parama;
+    this.yqm = parama;
+    AppMethodBeat.o(52266);
   }
   
-  public final void crJ()
+  public final void dtJ()
   {
-    y.i("MicroMsg.SensorController", "sensor callback removed");
+    AppMethodBeat.i(52267);
+    ab.i("MicroMsg.SensorController", "sensor callback removed");
     try
     {
       this.context.unregisterReceiver(this);
-      this.sensorManager.unregisterListener(this, this.uii);
+      this.sensorManager.unregisterListener(this, this.yqn);
       this.sensorManager.unregisterListener(this);
-      this.uil = false;
-      this.uih = null;
-      this.uim = -1.0F;
+      this.yqq = false;
+      this.yqm = null;
+      this.yqr = -1.0F;
+      AppMethodBeat.o(52267);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.v("MicroMsg.SensorController", "sensor receiver has already unregistered");
+        ab.v("MicroMsg.SensorController", "sensor receiver has already unregistered");
       }
     }
   }
@@ -96,72 +108,85 @@ public class SensorController
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    int i;
-    do
+    AppMethodBeat.i(52269);
+    if (paramIntent == null)
     {
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-      } while ((paramContext == null) || (!paramContext.equals("android.intent.action.HEADSET_PLUG")));
-      i = paramIntent.getIntExtra("state", 0);
+      AppMethodBeat.o(52269);
+      return;
+    }
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equals("android.intent.action.HEADSET_PLUG")))
+    {
+      int i = paramIntent.getIntExtra("state", 0);
       if (i == 1) {
-        this.uik = true;
+        this.yqp = true;
       }
-    } while (i != 0);
-    this.uik = false;
+      if (i == 0) {
+        this.yqp = false;
+      }
+    }
+    AppMethodBeat.o(52269);
   }
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if ((paramSensorEvent == null) || (paramSensorEvent.sensor == null) || (this.uii == null)) {}
-    float f2;
-    float f1;
-    float f3;
-    do
+    AppMethodBeat.i(52268);
+    if ((paramSensorEvent == null) || (paramSensorEvent.sensor == null) || (this.yqn == null))
     {
-      do
-      {
-        return;
-      } while (this.uik);
-      f2 = paramSensorEvent.values[0];
-      double d = 3.0D;
-      y.i("MicroMsg.SensorController", "newValue: %s, maxValue: %s, divideRatio: %s, configNearFarDivideRatio: %s, lastValue: %s, maxRange: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.oEK), Double.valueOf(3.0D), Double.valueOf(uiq), Float.valueOf(this.uim), Float.valueOf(this.uii.getMaximumRange()) });
-      if (uiq > 0.0D) {
-        d = uiq;
-      }
-      if ((uiq <= 0.0D) && (this.oEK >= 0.0F)) {
-        break;
-      }
-      f1 = this.uii.getMaximumRange();
+      AppMethodBeat.o(52268);
+      return;
+    }
+    if (this.yqp)
+    {
+      AppMethodBeat.o(52268);
+      return;
+    }
+    float f2 = paramSensorEvent.values[0];
+    double d = 3.0D;
+    ab.i("MicroMsg.SensorController", "newValue: %s, maxValue: %s, divideRatio: %s, configNearFarDivideRatio: %s, lastValue: %s, maxRange: %s", new Object[] { Float.valueOf(f2), Float.valueOf(this.rul), Double.valueOf(3.0D), Double.valueOf(yqt), Float.valueOf(this.yqr), Float.valueOf(this.yqn.getMaximumRange()) });
+    if (yqt > 0.0D) {
+      d = yqt;
+    }
+    if ((yqt > 0.0D) || (this.rul < 0.0F)) {}
+    float f3;
+    for (float f1 = this.yqn.getMaximumRange();; f1 = this.rul)
+    {
       f3 = Math.max(0.1F, (float)(f1 / d));
-      y.i("MicroMsg.SensorController", "onSensorChanged, near threshold: %s, max: %s", new Object[] { Float.valueOf(f3), Float.valueOf(f1) });
+      ab.i("MicroMsg.SensorController", "onSensorChanged, near threshold: %s, max: %s", new Object[] { Float.valueOf(f3), Float.valueOf(f1) });
       switch (paramSensorEvent.sensor.getType())
       {
       default: 
+        AppMethodBeat.o(52268);
         return;
       }
-    } while ((this.uih == null) || (f2 == this.uim));
+    }
+    if (this.yqm == null)
+    {
+      AppMethodBeat.o(52268);
+      return;
+    }
+    if (f2 == this.yqr)
+    {
+      AppMethodBeat.o(52268);
+      return;
+    }
     if (f2 < f3)
     {
-      y.i("MicroMsg.SensorController", "sensor near-far event near false");
-      this.uih.eq(false);
+      ab.i("MicroMsg.SensorController", "sensor near-far event near false");
+      this.yqm.hv(false);
     }
     for (;;)
     {
-      this.uim = f2;
-      return;
-      f1 = this.oEK;
+      this.yqr = f2;
       break;
-      y.i("MicroMsg.SensorController", "sensor near-far event far true");
-      this.uih.eq(true);
+      ab.i("MicroMsg.SensorController", "sensor near-far event far true");
+      this.yqm.hv(true);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void eq(boolean paramBoolean);
+    public abstract void hv(boolean paramBoolean);
   }
 }
 

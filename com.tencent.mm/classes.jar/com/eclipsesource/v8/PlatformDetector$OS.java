@@ -1,66 +1,96 @@
 package com.eclipsesource.v8;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class PlatformDetector$OS
 {
   public static String getLibFileExtension()
   {
-    if (isWindows()) {
+    AppMethodBeat.i(75012);
+    if (isWindows())
+    {
+      AppMethodBeat.o(75012);
       return "dll";
     }
-    if (isMac()) {
+    if (isMac())
+    {
+      AppMethodBeat.o(75012);
       return "dylib";
     }
-    if ((isLinux()) || (isAndroid()) || (isNativeClient())) {
+    if ((isLinux()) || (isAndroid()) || (isNativeClient()))
+    {
+      AppMethodBeat.o(75012);
       return "so";
     }
-    throw new UnsatisfiedLinkError("Unsupported platform library-extension for: " + getName());
+    UnsatisfiedLinkError localUnsatisfiedLinkError = new UnsatisfiedLinkError("Unsupported platform library-extension for: " + getName());
+    AppMethodBeat.o(75012);
+    throw localUnsatisfiedLinkError;
   }
   
   public static String getName()
   {
-    String str3 = System.getProperty("os.name");
-    String str2 = PlatformDetector.access$100(str3);
-    String str4 = System.getProperty("java.specification.vendor");
-    String str1;
-    if ((PlatformDetector.access$200(str4).contains("android")) || (str2.contains("android"))) {
-      str1 = "android";
-    }
-    do
+    AppMethodBeat.i(75006);
+    Object localObject = System.getProperty("os.name");
+    String str1 = PlatformDetector.access$100((String)localObject);
+    String str2 = System.getProperty("java.specification.vendor");
+    if ((PlatformDetector.access$200(str2).contains("android")) || (str1.contains("android")))
     {
-      return str1;
-      str1 = str2;
-    } while (!str2.equals("unknown"));
-    throw new UnsatisfiedLinkError("Unsupported platform/vendor: " + str3 + " / " + str4);
+      AppMethodBeat.o(75006);
+      return "android";
+    }
+    if (str1.equals("unknown"))
+    {
+      localObject = new UnsatisfiedLinkError("Unsupported platform/vendor: " + (String)localObject + " / " + str2);
+      AppMethodBeat.o(75006);
+      throw ((Throwable)localObject);
+    }
+    AppMethodBeat.o(75006);
+    return str1;
   }
   
   public static boolean isAndroid()
   {
-    return getName().equals("android");
+    AppMethodBeat.i(75011);
+    boolean bool = getName().equals("android");
+    AppMethodBeat.o(75011);
+    return bool;
   }
   
   public static boolean isLinux()
   {
-    return getName().equals("linux");
+    AppMethodBeat.i(75009);
+    boolean bool = getName().equals("linux");
+    AppMethodBeat.o(75009);
+    return bool;
   }
   
   public static boolean isMac()
   {
-    return getName().equals("macosx");
+    AppMethodBeat.i(75008);
+    boolean bool = getName().equals("macosx");
+    AppMethodBeat.o(75008);
+    return bool;
   }
   
   public static boolean isNativeClient()
   {
-    return getName().equals("nacl");
+    AppMethodBeat.i(75010);
+    boolean bool = getName().equals("nacl");
+    AppMethodBeat.o(75010);
+    return bool;
   }
   
   public static boolean isWindows()
   {
-    return getName().equals("windows");
+    AppMethodBeat.i(75007);
+    boolean bool = getName().equals("windows");
+    AppMethodBeat.o(75007);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.eclipsesource.v8.PlatformDetector.OS
  * JD-Core Version:    0.7.0.1
  */

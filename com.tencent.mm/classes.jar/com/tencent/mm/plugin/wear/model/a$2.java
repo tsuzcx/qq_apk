@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.wear.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a.b;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.f.c;
@@ -14,18 +15,20 @@ final class a$2
     return "SyncFileTask";
   }
   
-  protected final void send()
+  public final void send()
   {
-    if (this.qRD.qRu.bYR() != null) {
-      this.qRD.qRu.bYR().bYX();
+    AppMethodBeat.i(26266);
+    if (this.uGL.uGC.cYE() != null) {
+      this.uGL.uGC.cYE().cYK();
     }
-    r.b(20009, null, false);
-    r.b(20017, null, false);
+    r.a(20009, null, false);
+    r.a(20017, null, false);
+    AppMethodBeat.o(26266);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.a.2
  * JD-Core Version:    0.7.0.1
  */

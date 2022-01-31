@@ -5,12 +5,12 @@ public final class c$bu
 {
   public c$bu()
   {
-    super("getPoiInfo", "", 10000, false);
+    super("getBrandWCPayRequest", "get_brand_wcpay_request", 28, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.protocal.c.bu
  * JD-Core Version:    0.7.0.1
  */

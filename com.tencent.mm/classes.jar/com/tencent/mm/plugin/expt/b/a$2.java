@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.expt.b;
 
-import com.tencent.mm.ah.e.a;
-import com.tencent.mm.ah.e.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
+import com.tencent.mm.ai.e.b;
 import com.tencent.mm.plugin.messenger.foundation.a.n;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class a$2
@@ -13,18 +14,22 @@ final class a$2
   
   public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
   {
+    AppMethodBeat.i(73487);
     if (!"expt".equals(paramString))
     {
-      y.w("MicroMsg.ExptService", "receive expt xml but subtype[%s] is error", new Object[] { paramString });
+      ab.w("MicroMsg.ExptService", "receive expt xml but subtype[%s] is error", new Object[] { paramString });
+      AppMethodBeat.o(73487);
       return null;
     }
     if ((paramMap == null) || (paramMap.size() <= 0))
     {
-      y.w("MicroMsg.ExptService", "receive expt xml but map is null");
+      ab.w("MicroMsg.ExptService", "receive expt xml but map is null");
+      AppMethodBeat.o(73487);
       return null;
     }
     paramString = (String)paramMap.get(".sysmsg.content");
-    this.jIq.BW(paramString);
+    this.mbZ.MV(paramString);
+    AppMethodBeat.o(73487);
     return null;
   }
 }

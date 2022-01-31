@@ -1,72 +1,62 @@
 package com.tencent.mm.plugin.webview.model;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.network.e;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.c.acs;
-import com.tencent.mm.protocal.c.act;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.aga;
+import com.tencent.mm.protocal.protobuf.agb;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class l
   extends m
   implements k
 {
-  public b dmK;
-  private f dmL;
+  private f callback;
+  public final b lFp;
   
-  public l(String paramString1, String paramString2, Map<String, Object> paramMap)
+  public l(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(6595);
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new acs();
-    ((b.a)localObject).ecI = new act();
-    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/getbizjsapiredirecturl";
-    ((b.a)localObject).ecG = 1393;
-    ((b.a)localObject).ecJ = 0;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (acs)this.dmK.ecE.ecN;
-    ((acs)localObject).sPM = paramString1;
-    ((acs)localObject).sEy = paramString2;
-    ((acs)localObject).tbv = ((String)paramMap.get("groupId"));
-    ((acs)localObject).quW = ((String)paramMap.get("timestamp"));
-    ((acs)localObject).ivF = ((String)paramMap.get("nonceStr"));
-    ((acs)localObject).signature = ((String)paramMap.get("signature"));
-    ((acs)localObject).tbw = paramMap.get("params").toString();
+    ((b.a)localObject).fsX = new aga();
+    ((b.a)localObject).fsY = new agb();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/getappticket";
+    ((b.a)localObject).funcId = 1097;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.lFp = ((b.a)localObject).ado();
+    localObject = (aga)this.lFp.fsV.fta;
+    ((aga)localObject).cwc = paramString1;
+    ((aga)localObject).signature = paramString2;
+    AppMethodBeat.o(6595);
   }
   
-  public final int a(e parame, f paramf)
+  public final int doScene(e parame, f paramf)
   {
-    this.dmL = paramf;
-    y.i("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "do scene");
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.d("MicroMsg.NetSceneGetBizJsApiRedirectUrl", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (this.dmL != null) {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-  }
-  
-  public final act cbH()
-  {
-    if ((this.dmK != null) && (this.dmK.ecF.ecN != null)) {
-      return (act)this.dmK.ecF.ecN;
-    }
-    return null;
+    AppMethodBeat.i(6596);
+    this.callback = paramf;
+    int i = dispatch(parame, this.lFp, this);
+    AppMethodBeat.o(6596);
+    return i;
   }
   
   public final int getType()
   {
-    return 1393;
+    return 1097;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(6597);
+    ab.i("MicroMsg.NetSceneGetAppTicket", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(6597);
   }
 }
 

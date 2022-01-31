@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsTagDetailUI$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class SnsTagDetailUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.pdQ.bIv();
+    AppMethodBeat.i(39345);
+    this.rWD.cuP();
+    AppMethodBeat.o(39345);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.clean.c.a;
 
 import android.os.Looper;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashMap;
 
 final class b$1
@@ -11,10 +12,12 @@ final class b$1
   
   public final void run()
   {
+    AppMethodBeat.i(18726);
     Looper.prepare();
-    ah localah = new ah(Looper.myLooper());
-    this.iCd.iCb.put(Long.valueOf(Thread.currentThread().getId()), localah);
+    ak localak = new ak(Looper.myLooper());
+    this.kHk.kHi.put(Long.valueOf(Thread.currentThread().getId()), localak);
     Looper.loop();
+    AppMethodBeat.o(18726);
   }
 }
 

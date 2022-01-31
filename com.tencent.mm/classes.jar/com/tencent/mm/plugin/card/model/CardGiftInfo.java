@@ -3,207 +3,231 @@ package com.tencent.mm.plugin.card.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.protocal.c.adh;
-import com.tencent.mm.protocal.c.ao;
-import com.tencent.mm.protocal.c.ap;
-import com.tencent.mm.protocal.c.aq;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.ahz;
+import com.tencent.mm.protocal.protobuf.ao;
+import com.tencent.mm.protocal.protobuf.ap;
+import com.tencent.mm.protocal.protobuf.aq;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class CardGiftInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<CardGiftInfo> CREATOR = new CardGiftInfo.1();
-  public String bXl;
+  public static final Parcelable.Creator<CardGiftInfo> CREATOR;
+  public String cFh;
   public String color;
-  public String ilE;
-  public String ilF;
-  public String ilG;
-  public String ilH;
-  public String ilI;
-  public String ilJ;
-  public String ilK;
-  public String ilL;
-  public String ilM;
-  public String ilN;
-  public String ilO;
-  public String ilP;
-  public String ilQ;
-  public boolean ilR;
-  public int ilS;
-  public int ilT;
-  public int ilU;
-  public String ilV;
-  public String ilW;
-  public int ilX;
-  public String ilY;
-  public String ilZ;
-  public String ima;
-  public String imb;
-  public String imc;
-  public String imd;
-  public String ime;
-  public String imf;
-  public String imh;
-  public LinkedList<CardGiftInfo.AcceptedCardItem> imi = new LinkedList();
-  public LinkedList<CardGiftInfo.AccepterItem> imj = new LinkedList();
-  public String imk;
-  public int iml;
-  public String imm;
-  public String imn;
+  public String kmB;
+  public String kmC;
+  public String kmD;
+  public String kmE;
+  public String kmF;
+  public String kmG;
+  public String kmH;
+  public String kmI;
+  public String kmJ;
+  public String kmK;
+  public String kmL;
+  public String kmM;
+  public String kmN;
+  public boolean kmO;
+  public int kmP;
+  public int kmQ;
+  public int kmR;
+  public String kmS;
+  public String kmT;
+  public int kmU;
+  public String kmV;
+  public String kmW;
+  public String kmX;
+  public String kmY;
+  public String kmZ;
+  public String kna;
+  public String knb;
+  public String knc;
+  public String knd;
+  public LinkedList<CardGiftInfo.AcceptedCardItem> kne;
+  public LinkedList<CardGiftInfo.AccepterItem> knf;
+  public String kng;
+  public int knh;
+  public String kni;
+  public String knj;
   public String toUserName;
   
-  public CardGiftInfo() {}
+  static
+  {
+    AppMethodBeat.i(87790);
+    CREATOR = new CardGiftInfo.1();
+    AppMethodBeat.o(87790);
+  }
+  
+  public CardGiftInfo()
+  {
+    AppMethodBeat.i(87784);
+    this.kne = new LinkedList();
+    this.knf = new LinkedList();
+    AppMethodBeat.o(87784);
+  }
   
   protected CardGiftInfo(Parcel paramParcel)
   {
+    AppMethodBeat.i(87785);
+    this.kne = new LinkedList();
+    this.knf = new LinkedList();
     this.toUserName = paramParcel.readString();
-    this.bXl = paramParcel.readString();
-    this.ilE = paramParcel.readString();
-    this.ilF = paramParcel.readString();
-    this.ilG = paramParcel.readString();
-    this.ilH = paramParcel.readString();
-    this.ilI = paramParcel.readString();
-    this.ilJ = paramParcel.readString();
-    this.ilK = paramParcel.readString();
-    this.ilL = paramParcel.readString();
-    this.ilM = paramParcel.readString();
-    this.ilN = paramParcel.readString();
-    this.ilO = paramParcel.readString();
-    this.ilP = paramParcel.readString();
-    this.ilQ = paramParcel.readString();
+    this.cFh = paramParcel.readString();
+    this.kmB = paramParcel.readString();
+    this.kmC = paramParcel.readString();
+    this.kmD = paramParcel.readString();
+    this.kmE = paramParcel.readString();
+    this.kmF = paramParcel.readString();
+    this.kmG = paramParcel.readString();
+    this.kmH = paramParcel.readString();
+    this.kmI = paramParcel.readString();
+    this.kmJ = paramParcel.readString();
+    this.kmK = paramParcel.readString();
+    this.kmL = paramParcel.readString();
+    this.kmM = paramParcel.readString();
+    this.kmN = paramParcel.readString();
     this.color = paramParcel.readString();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ilR = bool;
-      this.ilS = paramParcel.readInt();
-      this.ilT = paramParcel.readInt();
-      this.ilU = paramParcel.readInt();
-      this.ilV = paramParcel.readString();
-      this.ilW = paramParcel.readString();
-      this.ilX = paramParcel.readInt();
-      this.ilY = paramParcel.readString();
-      this.ilZ = paramParcel.readString();
-      this.ima = paramParcel.readString();
-      this.imb = paramParcel.readString();
-      this.imc = paramParcel.readString();
-      this.imd = paramParcel.readString();
-      this.ime = paramParcel.readString();
-      this.imf = paramParcel.readString();
-      this.imh = paramParcel.readString();
-      paramParcel.readTypedList(this.imi, CardGiftInfo.AcceptedCardItem.CREATOR);
-      paramParcel.readTypedList(this.imj, CardGiftInfo.AccepterItem.CREATOR);
-      this.imk = paramParcel.readString();
-      this.iml = paramParcel.readInt();
-      this.imm = paramParcel.readString();
-      this.imn = paramParcel.readString();
+      this.kmO = bool;
+      this.kmP = paramParcel.readInt();
+      this.kmQ = paramParcel.readInt();
+      this.kmR = paramParcel.readInt();
+      this.kmS = paramParcel.readString();
+      this.kmT = paramParcel.readString();
+      this.kmU = paramParcel.readInt();
+      this.kmV = paramParcel.readString();
+      this.kmW = paramParcel.readString();
+      this.kmX = paramParcel.readString();
+      this.kmY = paramParcel.readString();
+      this.kmZ = paramParcel.readString();
+      this.kna = paramParcel.readString();
+      this.knb = paramParcel.readString();
+      this.knc = paramParcel.readString();
+      this.knd = paramParcel.readString();
+      paramParcel.readTypedList(this.kne, CardGiftInfo.AcceptedCardItem.CREATOR);
+      paramParcel.readTypedList(this.knf, CardGiftInfo.AccepterItem.CREATOR);
+      this.kng = paramParcel.readString();
+      this.knh = paramParcel.readInt();
+      this.kni = paramParcel.readString();
+      this.knj = paramParcel.readString();
+      AppMethodBeat.o(87785);
       return;
     }
   }
   
-  public static CardGiftInfo a(adh paramadh)
+  public static CardGiftInfo a(ahz paramahz)
   {
+    AppMethodBeat.i(87789);
     CardGiftInfo localCardGiftInfo = new CardGiftInfo();
-    localCardGiftInfo.toUserName = paramadh.stl;
-    localCardGiftInfo.bXl = paramadh.stm;
-    localCardGiftInfo.ilE = paramadh.stn;
-    localCardGiftInfo.ilF = paramadh.content;
-    localCardGiftInfo.ilG = paramadh.sto;
-    localCardGiftInfo.ilH = paramadh.stp;
-    localCardGiftInfo.ilI = paramadh.stq;
-    localCardGiftInfo.ilJ = paramadh.str;
-    localCardGiftInfo.ilL = paramadh.stt;
-    localCardGiftInfo.ilK = paramadh.sts;
-    localCardGiftInfo.ilM = paramadh.stu;
-    localCardGiftInfo.ilN = paramadh.stv;
-    localCardGiftInfo.ilO = paramadh.imo;
-    localCardGiftInfo.ilP = paramadh.imp;
-    localCardGiftInfo.ilQ = paramadh.stw;
-    localCardGiftInfo.color = paramadh.color;
-    localCardGiftInfo.ilR = paramadh.stx;
-    localCardGiftInfo.ilS = paramadh.sty;
-    localCardGiftInfo.ilT = paramadh.stz;
-    localCardGiftInfo.ilU = paramadh.stA;
-    localCardGiftInfo.ilV = paramadh.stB;
-    localCardGiftInfo.ilW = paramadh.stC;
-    localCardGiftInfo.ilX = paramadh.stD;
-    localCardGiftInfo.ilY = paramadh.stE;
-    localCardGiftInfo.ilZ = paramadh.stF;
-    localCardGiftInfo.ima = paramadh.stG;
-    localCardGiftInfo.imb = paramadh.stH;
-    localCardGiftInfo.imc = paramadh.stI;
-    localCardGiftInfo.imd = paramadh.stJ;
-    localCardGiftInfo.ime = paramadh.stK;
-    localCardGiftInfo.imf = paramadh.iln;
-    localCardGiftInfo.imh = paramadh.stL;
+    localCardGiftInfo.toUserName = paramahz.wlP;
+    localCardGiftInfo.cFh = paramahz.wlQ;
+    localCardGiftInfo.kmB = paramahz.wlR;
+    localCardGiftInfo.kmC = paramahz.content;
+    localCardGiftInfo.kmD = paramahz.wlS;
+    localCardGiftInfo.kmE = paramahz.wlT;
+    localCardGiftInfo.kmF = paramahz.wlU;
+    localCardGiftInfo.kmG = paramahz.wlV;
+    localCardGiftInfo.kmI = paramahz.wlX;
+    localCardGiftInfo.kmH = paramahz.wlW;
+    localCardGiftInfo.kmJ = paramahz.wlY;
+    localCardGiftInfo.kmK = paramahz.wlZ;
+    localCardGiftInfo.kmL = paramahz.knk;
+    localCardGiftInfo.kmM = paramahz.knl;
+    localCardGiftInfo.kmN = paramahz.wma;
+    localCardGiftInfo.color = paramahz.color;
+    localCardGiftInfo.kmO = paramahz.wmb;
+    localCardGiftInfo.kmP = paramahz.wmc;
+    localCardGiftInfo.kmQ = paramahz.wmd;
+    localCardGiftInfo.kmR = paramahz.wme;
+    localCardGiftInfo.kmS = paramahz.wmf;
+    localCardGiftInfo.kmT = paramahz.wmg;
+    localCardGiftInfo.kmU = paramahz.wZX;
+    localCardGiftInfo.kmV = paramahz.wmi;
+    localCardGiftInfo.kmW = paramahz.wmj;
+    localCardGiftInfo.kmX = paramahz.wmk;
+    localCardGiftInfo.kmY = paramahz.wml;
+    localCardGiftInfo.kmZ = paramahz.wmm;
+    localCardGiftInfo.kna = paramahz.wmn;
+    localCardGiftInfo.knb = paramahz.wmo;
+    localCardGiftInfo.knc = paramahz.kml;
+    localCardGiftInfo.knd = paramahz.wmp;
+    localCardGiftInfo.kni = paramahz.kni;
+    localCardGiftInfo.knj = paramahz.knj;
+    AppMethodBeat.o(87789);
     return localCardGiftInfo;
   }
   
   public static CardGiftInfo a(ao paramao)
   {
+    AppMethodBeat.i(87788);
     CardGiftInfo localCardGiftInfo = new CardGiftInfo();
-    localCardGiftInfo.toUserName = paramao.stl;
-    localCardGiftInfo.bXl = paramao.stm;
-    localCardGiftInfo.ilE = paramao.stn;
-    localCardGiftInfo.ilF = paramao.content;
-    localCardGiftInfo.ilG = paramao.sto;
-    localCardGiftInfo.ilH = paramao.stp;
-    localCardGiftInfo.ilI = paramao.stq;
-    localCardGiftInfo.ilJ = paramao.str;
-    localCardGiftInfo.ilL = paramao.stt;
-    localCardGiftInfo.ilK = paramao.sts;
-    localCardGiftInfo.ilM = paramao.stu;
-    localCardGiftInfo.ilN = paramao.stv;
-    localCardGiftInfo.ilO = paramao.imo;
-    localCardGiftInfo.ilP = paramao.imp;
-    localCardGiftInfo.ilQ = paramao.stw;
+    localCardGiftInfo.toUserName = paramao.wlP;
+    localCardGiftInfo.cFh = paramao.wlQ;
+    localCardGiftInfo.kmB = paramao.wlR;
+    localCardGiftInfo.kmC = paramao.content;
+    localCardGiftInfo.kmD = paramao.wlS;
+    localCardGiftInfo.kmE = paramao.wlT;
+    localCardGiftInfo.kmF = paramao.wlU;
+    localCardGiftInfo.kmG = paramao.wlV;
+    localCardGiftInfo.kmI = paramao.wlX;
+    localCardGiftInfo.kmH = paramao.wlW;
+    localCardGiftInfo.kmJ = paramao.wlY;
+    localCardGiftInfo.kmK = paramao.wlZ;
+    localCardGiftInfo.kmL = paramao.knk;
+    localCardGiftInfo.kmM = paramao.knl;
+    localCardGiftInfo.kmN = paramao.wma;
     localCardGiftInfo.color = paramao.color;
-    localCardGiftInfo.ilR = paramao.stx;
-    localCardGiftInfo.ilS = paramao.sty;
-    localCardGiftInfo.ilT = paramao.stz;
-    localCardGiftInfo.ilU = paramao.stA;
-    localCardGiftInfo.ilV = paramao.stB;
-    localCardGiftInfo.ilW = paramao.stC;
-    localCardGiftInfo.ilX = paramao.stD;
-    localCardGiftInfo.ilY = paramao.stE;
-    localCardGiftInfo.ilZ = paramao.stF;
-    localCardGiftInfo.ima = paramao.stG;
-    localCardGiftInfo.imb = paramao.stH;
-    localCardGiftInfo.imc = paramao.stI;
-    localCardGiftInfo.imd = paramao.stJ;
-    localCardGiftInfo.ime = paramao.stK;
-    localCardGiftInfo.imf = paramao.iln;
-    localCardGiftInfo.imh = paramao.stL;
-    Iterator localIterator = paramao.imi.iterator();
+    localCardGiftInfo.kmO = paramao.wmb;
+    localCardGiftInfo.kmP = paramao.wmc;
+    localCardGiftInfo.kmQ = paramao.wmd;
+    localCardGiftInfo.kmR = paramao.wme;
+    localCardGiftInfo.kmS = paramao.wmf;
+    localCardGiftInfo.kmT = paramao.wmg;
+    localCardGiftInfo.kmU = paramao.wmh;
+    localCardGiftInfo.kmV = paramao.wmi;
+    localCardGiftInfo.kmW = paramao.wmj;
+    localCardGiftInfo.kmX = paramao.wmk;
+    localCardGiftInfo.kmY = paramao.wml;
+    localCardGiftInfo.kmZ = paramao.wmm;
+    localCardGiftInfo.kna = paramao.wmn;
+    localCardGiftInfo.knb = paramao.wmo;
+    localCardGiftInfo.knc = paramao.kml;
+    localCardGiftInfo.knd = paramao.wmp;
+    Iterator localIterator = paramao.kne.iterator();
     Object localObject1;
     LinkedList localLinkedList;
     Object localObject2;
     while (localIterator.hasNext())
     {
       localObject1 = (ap)localIterator.next();
-      localLinkedList = localCardGiftInfo.imi;
+      localLinkedList = localCardGiftInfo.kne;
       localObject2 = new CardGiftInfo.AcceptedCardItem();
-      ((CardGiftInfo.AcceptedCardItem)localObject2).imp = ((ap)localObject1).imp;
-      ((CardGiftInfo.AcceptedCardItem)localObject2).imo = ((ap)localObject1).imo;
+      ((CardGiftInfo.AcceptedCardItem)localObject2).knl = ((ap)localObject1).knl;
+      ((CardGiftInfo.AcceptedCardItem)localObject2).knk = ((ap)localObject1).knk;
       localLinkedList.add(localObject2);
     }
-    localIterator = paramao.imj.iterator();
+    localIterator = paramao.knf.iterator();
     while (localIterator.hasNext())
     {
       localObject1 = (aq)localIterator.next();
-      localLinkedList = localCardGiftInfo.imj;
+      localLinkedList = localCardGiftInfo.knf;
       localObject2 = new CardGiftInfo.AccepterItem();
-      ((CardGiftInfo.AccepterItem)localObject2).imp = ((aq)localObject1).imp;
-      ((CardGiftInfo.AccepterItem)localObject2).imo = ((aq)localObject1).imo;
-      ((CardGiftInfo.AccepterItem)localObject2).imr = ((aq)localObject1).imr;
-      ((CardGiftInfo.AccepterItem)localObject2).imq = ((aq)localObject1).imq;
+      ((CardGiftInfo.AccepterItem)localObject2).knl = ((aq)localObject1).knl;
+      ((CardGiftInfo.AccepterItem)localObject2).knk = ((aq)localObject1).knk;
+      ((CardGiftInfo.AccepterItem)localObject2).knn = ((aq)localObject1).knn;
+      ((CardGiftInfo.AccepterItem)localObject2).knm = ((aq)localObject1).knm;
       localLinkedList.add(localObject2);
     }
-    localCardGiftInfo.imk = paramao.imk;
-    localCardGiftInfo.iml = paramao.iml;
-    localCardGiftInfo.imm = paramao.imm;
-    localCardGiftInfo.imn = paramao.imn;
+    localCardGiftInfo.kng = paramao.kng;
+    localCardGiftInfo.knh = paramao.knh;
+    localCardGiftInfo.kni = paramao.kni;
+    localCardGiftInfo.knj = paramao.knj;
+    AppMethodBeat.o(87788);
     return localCardGiftInfo;
   }
   
@@ -214,59 +238,64 @@ public class CardGiftInfo
   
   public String toString()
   {
-    return "CardGiftInfo{toUserName='" + this.toUserName + '\'' + ", fromUserName='" + this.bXl + '\'' + ", fromUserImgUrl='" + this.ilE + '\'' + ", fromUserContent='" + this.ilF + '\'' + ", fromUserContentPicUrl='" + this.ilG + '\'' + ", fromUserContentVideoUrl='" + this.ilH + '\'' + ", fromUserContentThumbPicUrl='" + this.ilI + '\'' + ", picAESKey='" + this.ilJ + '\'' + ", videoAESKey='" + this.ilK + '\'' + ", thumbVideoAESKey='" + this.ilL + '\'' + ", cardBackgroundPicUrl='" + this.ilM + '\'' + ", cardLogoLUrl='" + this.ilN + '\'' + ", cardTitle='" + this.ilO + '\'' + ", cardPrice='" + this.ilP + '\'' + ", footerWording='" + this.ilQ + '\'' + ", color='" + this.color + '\'' + ", needJump=" + this.ilR + ", picDataLength=" + this.ilS + ", videoDataLength=" + this.ilT + ", thumbDataLength=" + this.ilU + ", descTitle='" + this.ilV + '\'' + ", descIconUrl='" + this.ilW + '\'' + ", descLayoutMode=" + this.ilX + ", giftingMediaTitle='" + this.ilY + '\'' + ", descriptionTitleColor='" + this.ilZ + '\'' + ", cardTitleColor='" + this.ima + '\'' + ", cardPriceTitleColor='" + this.imb + '\'' + ", userCardId='" + this.imc + '\'' + ", operationTitle='" + this.imd + '\'' + ", operationUrl='" + this.ime + '\'' + ", cardTpId='" + this.imf + '\'' + ", cardCode='" + this.imh + '\'' + ", accepted_card_list_size='" + this.imi.size() + '\'' + ", accepter_list_size='" + this.imj.size() + '\'' + ", accepter_list_title='" + this.imk + '\'' + ", out_of_card='" + this.iml + '\'' + ", operation_wxa_username='" + this.imm + '\'' + ", operation_wxa_path='" + this.imn + '\'' + '}';
+    AppMethodBeat.i(87787);
+    String str = "CardGiftInfo{toUserName='" + this.toUserName + '\'' + ", fromUserName='" + this.cFh + '\'' + ", fromUserImgUrl='" + this.kmB + '\'' + ", fromUserContent='" + this.kmC + '\'' + ", fromUserContentPicUrl='" + this.kmD + '\'' + ", fromUserContentVideoUrl='" + this.kmE + '\'' + ", fromUserContentThumbPicUrl='" + this.kmF + '\'' + ", picAESKey='" + this.kmG + '\'' + ", videoAESKey='" + this.kmH + '\'' + ", thumbVideoAESKey='" + this.kmI + '\'' + ", cardBackgroundPicUrl='" + this.kmJ + '\'' + ", cardLogoLUrl='" + this.kmK + '\'' + ", cardTitle='" + this.kmL + '\'' + ", cardPrice='" + this.kmM + '\'' + ", footerWording='" + this.kmN + '\'' + ", color='" + this.color + '\'' + ", needJump=" + this.kmO + ", picDataLength=" + this.kmP + ", videoDataLength=" + this.kmQ + ", thumbDataLength=" + this.kmR + ", descTitle='" + this.kmS + '\'' + ", descIconUrl='" + this.kmT + '\'' + ", descLayoutMode=" + this.kmU + ", giftingMediaTitle='" + this.kmV + '\'' + ", descriptionTitleColor='" + this.kmW + '\'' + ", cardTitleColor='" + this.kmX + '\'' + ", cardPriceTitleColor='" + this.kmY + '\'' + ", userCardId='" + this.kmZ + '\'' + ", operationTitle='" + this.kna + '\'' + ", operationUrl='" + this.knb + '\'' + ", cardTpId='" + this.knc + '\'' + ", cardCode='" + this.knd + '\'' + ", accepted_card_list_size='" + this.kne.size() + '\'' + ", accepter_list_size='" + this.knf.size() + '\'' + ", accepter_list_title='" + this.kng + '\'' + ", out_of_card='" + this.knh + '\'' + ", operation_wxa_username='" + this.kni + '\'' + ", operation_wxa_path='" + this.knj + '\'' + '}';
+    AppMethodBeat.o(87787);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(87786);
     paramParcel.writeString(this.toUserName);
-    paramParcel.writeString(this.bXl);
-    paramParcel.writeString(this.ilE);
-    paramParcel.writeString(this.ilF);
-    paramParcel.writeString(this.ilG);
-    paramParcel.writeString(this.ilH);
-    paramParcel.writeString(this.ilI);
-    paramParcel.writeString(this.ilJ);
-    paramParcel.writeString(this.ilK);
-    paramParcel.writeString(this.ilL);
-    paramParcel.writeString(this.ilM);
-    paramParcel.writeString(this.ilN);
-    paramParcel.writeString(this.ilO);
-    paramParcel.writeString(this.ilP);
-    paramParcel.writeString(this.ilQ);
+    paramParcel.writeString(this.cFh);
+    paramParcel.writeString(this.kmB);
+    paramParcel.writeString(this.kmC);
+    paramParcel.writeString(this.kmD);
+    paramParcel.writeString(this.kmE);
+    paramParcel.writeString(this.kmF);
+    paramParcel.writeString(this.kmG);
+    paramParcel.writeString(this.kmH);
+    paramParcel.writeString(this.kmI);
+    paramParcel.writeString(this.kmJ);
+    paramParcel.writeString(this.kmK);
+    paramParcel.writeString(this.kmL);
+    paramParcel.writeString(this.kmM);
+    paramParcel.writeString(this.kmN);
     paramParcel.writeString(this.color);
-    if (this.ilR) {}
+    if (this.kmO) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.ilS);
-      paramParcel.writeInt(this.ilT);
-      paramParcel.writeInt(this.ilU);
-      paramParcel.writeString(this.ilV);
-      paramParcel.writeString(this.ilW);
-      paramParcel.writeInt(this.ilX);
-      paramParcel.writeString(this.ilY);
-      paramParcel.writeString(this.ilZ);
-      paramParcel.writeString(this.ima);
-      paramParcel.writeString(this.imb);
-      paramParcel.writeString(this.imc);
-      paramParcel.writeString(this.imd);
-      paramParcel.writeString(this.ime);
-      paramParcel.writeString(this.imf);
-      paramParcel.writeString(this.imh);
-      paramParcel.writeTypedList(this.imi);
-      paramParcel.writeTypedList(this.imj);
-      paramParcel.writeString(this.imk);
-      paramParcel.writeInt(this.iml);
-      paramParcel.writeString(this.imm);
-      paramParcel.writeString(this.imn);
+      paramParcel.writeInt(this.kmP);
+      paramParcel.writeInt(this.kmQ);
+      paramParcel.writeInt(this.kmR);
+      paramParcel.writeString(this.kmS);
+      paramParcel.writeString(this.kmT);
+      paramParcel.writeInt(this.kmU);
+      paramParcel.writeString(this.kmV);
+      paramParcel.writeString(this.kmW);
+      paramParcel.writeString(this.kmX);
+      paramParcel.writeString(this.kmY);
+      paramParcel.writeString(this.kmZ);
+      paramParcel.writeString(this.kna);
+      paramParcel.writeString(this.knb);
+      paramParcel.writeString(this.knc);
+      paramParcel.writeString(this.knd);
+      paramParcel.writeTypedList(this.kne);
+      paramParcel.writeTypedList(this.knf);
+      paramParcel.writeString(this.kng);
+      paramParcel.writeInt(this.knh);
+      paramParcel.writeString(this.kni);
+      paramParcel.writeString(this.knj);
+      AppMethodBeat.o(87786);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.CardGiftInfo
  * JD-Core Version:    0.7.0.1
  */

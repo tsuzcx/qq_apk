@@ -1,153 +1,234 @@
 package com.google.android.exoplayer2.h;
 
-import android.content.Context;
-import android.net.Uri;
+import android.os.Handler;
 import com.google.android.exoplayer2.i.a;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
+import com.google.android.exoplayer2.i.c;
+import com.google.android.exoplayer2.i.r;
+import com.google.android.exoplayer2.i.r.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public final class l
-  implements f
+  implements d, w<Object>
 {
-  private final t<? super f> aQN;
-  private final f aRr;
-  private f aRs;
-  private f aRt;
-  private f aRu;
-  private f aRv;
-  private f ayZ;
-  private final Context context;
+  private final d.a aYG;
+  private final r aYH;
+  private final c aYI;
+  private int aYJ;
+  private long aYK;
+  private long aYL;
+  private long aYM;
+  private long aYN;
+  private long aYO;
+  private final Handler eventHandler;
   
-  public l(Context paramContext, t<? super f> paramt, f paramf)
+  public l()
   {
-    this.context = paramContext.getApplicationContext();
-    this.aQN = paramt;
-    this.aRr = ((f)a.E(paramf));
+    this(null, null);
   }
   
-  private f nV()
+  public l(Handler paramHandler, d.a parama)
   {
-    if (this.aRt == null) {
-      this.aRt = new c(this.context, this.aQN);
-    }
-    return this.aRt;
+    this(paramHandler, parama, (byte)0);
   }
   
-  private f nW()
+  private l(Handler paramHandler, d.a parama, byte paramByte)
   {
-    if (this.aRv == null) {}
+    this(paramHandler, parama, c.baE);
+  }
+  
+  private l(Handler paramHandler, d.a parama, c paramc)
+  {
+    AppMethodBeat.i(95813);
+    this.eventHandler = paramHandler;
+    this.aYG = parama;
+    this.aYH = new r();
+    this.aYI = paramc;
+    this.aYO = -1L;
+    AppMethodBeat.o(95813);
+  }
+  
+  public final void el(int paramInt)
+  {
     try
     {
-      this.aRv = ((f)Class.forName("com.google.android.exoplayer2.ext.rtmp.RtmpDataSource").getDeclaredConstructor(new Class[0]).newInstance(new Object[0]));
-      label33:
-      if (this.aRv == null) {
-        this.aRv = this.aRr;
-      }
-      return this.aRv;
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      break label33;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label33;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      break label33;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      break label33;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      break label33;
-    }
-  }
-  
-  public final long a(i parami)
-  {
-    boolean bool;
-    String str;
-    if (this.ayZ == null)
-    {
-      bool = true;
-      a.aC(bool);
-      str = parami.uri.getScheme();
-      if (!com.google.android.exoplayer2.i.t.f(parami.uri)) {
-        break label103;
-      }
-      if (!parami.uri.getPath().startsWith("/android_asset/")) {
-        break label70;
-      }
-      this.ayZ = nV();
-    }
-    for (;;)
-    {
-      return this.ayZ.a(parami);
-      bool = false;
-      break;
-      label70:
-      if (this.aRs == null) {
-        this.aRs = new p(this.aQN);
-      }
-      this.ayZ = this.aRs;
-      continue;
-      label103:
-      if ("asset".equals(str))
-      {
-        this.ayZ = nV();
-      }
-      else if ("content".equals(str))
-      {
-        if (this.aRu == null) {
-          this.aRu = new e(this.context, this.aQN);
-        }
-        this.ayZ = this.aRu;
-      }
-      else if ("rtmp".equals(str))
-      {
-        this.ayZ = nW();
-      }
-      else
-      {
-        this.ayZ = this.aRr;
-      }
-    }
-  }
-  
-  public final void close()
-  {
-    if (this.ayZ != null) {}
-    try
-    {
-      this.ayZ.close();
+      this.aYL += paramInt;
       return;
     }
     finally
     {
-      this.ayZ = null;
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public final Uri getUri()
+  public final long qm()
   {
-    if (this.ayZ == null) {
-      return null;
+    try
+    {
+      long l = this.aYO;
+      return l;
     }
-    return this.ayZ.getUri();
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
-  public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public final void qq()
   {
-    return this.ayZ.read(paramArrayOfByte, paramInt1, paramInt2);
+    try
+    {
+      AppMethodBeat.i(95814);
+      if (this.aYJ == 0) {
+        this.aYK = this.aYI.elapsedRealtime();
+      }
+      this.aYJ += 1;
+      AppMethodBeat.o(95814);
+      return;
+    }
+    finally {}
+  }
+  
+  public final void qr()
+  {
+    long l2;
+    int k;
+    float f;
+    Object localObject4;
+    int i;
+    int j;
+    label345:
+    Object localObject3;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(95815);
+        if (this.aYJ > 0)
+        {
+          bool = true;
+          a.checkState(bool);
+          l2 = this.aYI.elapsedRealtime();
+          k = (int)(l2 - this.aYK);
+          this.aYM += k;
+          this.aYN += this.aYL;
+          if (k <= 0) {
+            break label517;
+          }
+          f = (float)(this.aYL * 8000L / k);
+          localObject4 = this.aYH;
+          i = (int)Math.sqrt(this.aYL);
+          if (((r)localObject4).bbl != 1)
+          {
+            Collections.sort(((r)localObject4).bbj, r.bbg);
+            ((r)localObject4).bbl = 1;
+          }
+          if (((r)localObject4).bbo <= 0) {
+            break label345;
+          }
+          Object localObject1 = ((r)localObject4).bbk;
+          j = ((r)localObject4).bbo - 1;
+          ((r)localObject4).bbo = j;
+          localObject1 = localObject1[j];
+          j = ((r)localObject4).bbm;
+          ((r)localObject4).bbm = (j + 1);
+          ((r.a)localObject1).index = j;
+          ((r.a)localObject1).weight = i;
+          ((r.a)localObject1).value = f;
+          ((r)localObject4).bbj.add(localObject1);
+          ((r)localObject4).bbn += i;
+          if (((r)localObject4).bbn <= ((r)localObject4).bbi) {
+            break;
+          }
+          i = ((r)localObject4).bbn - ((r)localObject4).bbi;
+          localObject1 = (r.a)((r)localObject4).bbj.get(0);
+          if (((r.a)localObject1).weight > i) {
+            break label358;
+          }
+          ((r)localObject4).bbn -= ((r.a)localObject1).weight;
+          ((r)localObject4).bbj.remove(0);
+          if (((r)localObject4).bbo >= 5) {
+            continue;
+          }
+          r.a[] arrayOfa = ((r)localObject4).bbk;
+          i = ((r)localObject4).bbo;
+          ((r)localObject4).bbo = (i + 1);
+          arrayOfa[i] = localObject1;
+          continue;
+        }
+        boolean bool = false;
+      }
+      finally {}
+      continue;
+      localObject3 = new r.a((byte)0);
+      continue;
+      label358:
+      ((r.a)localObject3).weight -= i;
+      ((r)localObject4).bbn -= i;
+    }
+    if ((this.aYM >= 2000L) || (this.aYN >= 524288L))
+    {
+      localObject3 = this.aYH;
+      if (((r)localObject3).bbl != 0)
+      {
+        Collections.sort(((r)localObject3).bbj, r.bbh);
+        ((r)localObject3).bbl = 0;
+      }
+      f = ((r)localObject3).bbn;
+      i = 0;
+      j = 0;
+      if (i >= ((r)localObject3).bbj.size()) {
+        break label607;
+      }
+      localObject4 = (r.a)((r)localObject3).bbj.get(i);
+      j = ((r.a)localObject4).weight + j;
+      if (j < 0.5F * f) {
+        break label600;
+      }
+      f = ((r.a)localObject4).value;
+      label499:
+      if (!Float.isNaN(f)) {
+        break label652;
+      }
+    }
+    label517:
+    label652:
+    for (long l1 = -1L;; l1 = f)
+    {
+      this.aYO = l1;
+      l1 = this.aYL;
+      long l3 = this.aYO;
+      if ((this.eventHandler != null) && (this.aYG != null)) {
+        this.eventHandler.post(new l.1(this, k, l1, l3));
+      }
+      i = this.aYJ - 1;
+      this.aYJ = i;
+      if (i > 0) {
+        this.aYK = l2;
+      }
+      this.aYL = 0L;
+      AppMethodBeat.o(95815);
+      return;
+      label600:
+      i += 1;
+      break;
+      label607:
+      if (((r)localObject3).bbj.isEmpty())
+      {
+        f = (0.0F / 0.0F);
+        break label499;
+      }
+      f = ((r.a)((r)localObject3).bbj.get(((r)localObject3).bbj.size() - 1)).value;
+      break label499;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.h.l
  * JD-Core Version:    0.7.0.1
  */

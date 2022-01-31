@@ -2,37 +2,47 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 
 final class JsApiChooseVideo$ChooseRequest
   extends AppBrandProxyUIProcessTask.ProcessRequest
 {
-  public static final Parcelable.Creator<ChooseRequest> CREATOR = new JsApiChooseVideo.ChooseRequest.1();
+  public static final Parcelable.Creator<ChooseRequest> CREATOR;
   String appId;
-  boolean gvV;
-  boolean gvm;
-  boolean gvn;
+  boolean hQD;
+  boolean hQE;
+  boolean hRG;
   int maxDuration;
+  
+  static
+  {
+    AppMethodBeat.i(131276);
+    CREATOR = new JsApiChooseVideo.ChooseRequest.1();
+    AppMethodBeat.o(131276);
+  }
   
   JsApiChooseVideo$ChooseRequest() {}
   
   JsApiChooseVideo$ChooseRequest(Parcel paramParcel)
   {
-    h(paramParcel);
+    AppMethodBeat.i(131275);
+    j(paramParcel);
+    AppMethodBeat.o(131275);
   }
   
-  protected final boolean ahF()
+  public final boolean aBm()
   {
     return true;
   }
   
-  protected final String ahG()
+  public final String aBn()
   {
     return "GalleryChooseVideo";
   }
   
-  protected final Class<? extends AppBrandProxyUIProcessTask> ahH()
+  public final Class<? extends AppBrandProxyUIProcessTask> aBo()
   {
     return JsApiChooseVideo.a.class;
   }
@@ -42,67 +52,71 @@ final class JsApiChooseVideo$ChooseRequest
     return 0;
   }
   
-  protected final void h(Parcel paramParcel)
+  public final void j(Parcel paramParcel)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(131273);
     this.appId = paramParcel.readString();
     this.maxDuration = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.gvm = bool1;
+      this.hQD = bool1;
       if (paramParcel.readByte() == 0) {
-        break label66;
+        break label76;
       }
       bool1 = true;
-      label41:
-      this.gvn = bool1;
+      label46:
+      this.hQE = bool1;
       if (paramParcel.readByte() == 0) {
-        break label71;
+        break label81;
       }
     }
-    label66:
-    label71:
+    label76:
+    label81:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.gvV = bool1;
+      this.hRG = bool1;
+      AppMethodBeat.o(131273);
       return;
       bool1 = false;
       break;
       bool1 = false;
-      break label41;
+      break label46;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     byte b2 = 1;
+    AppMethodBeat.i(131274);
     paramParcel.writeString(this.appId);
     paramParcel.writeInt(this.maxDuration);
-    if (this.gvm)
+    if (this.hQD)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.gvn) {
-        break label68;
+      if (!this.hQE) {
+        break label78;
       }
       b1 = 1;
-      label42:
+      label47:
       paramParcel.writeByte(b1);
-      if (!this.gvV) {
-        break label73;
+      if (!this.hRG) {
+        break label83;
       }
     }
-    label68:
-    label73:
+    label78:
+    label83:
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
+      AppMethodBeat.o(131274);
       return;
       b1 = 0;
       break;
       b1 = 0;
-      break label42;
+      break label47;
     }
   }
 }

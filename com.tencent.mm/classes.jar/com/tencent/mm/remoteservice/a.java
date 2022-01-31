@@ -2,8 +2,9 @@ package com.tencent.mm.remoteservice;
 
 import android.os.Bundle;
 import android.os.Parcelable;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
@@ -12,47 +13,55 @@ import java.util.List;
 public class a
   extends b.a
 {
-  private final d eMh;
-  public b uaA;
-  protected RemoteService uaz;
+  private final d evl;
+  protected RemoteService yip;
+  public b yiq;
   
   public a(d paramd)
   {
-    this.eMh = paramd;
+    this.evl = paramd;
   }
   
   public Object CLIENT_CALL(String paramString, Object... paramVarArgs)
   {
+    AppMethodBeat.i(80219);
     paramVarArgs = objectsToBundle(paramVarArgs);
     try
     {
-      this.uaA.onCallback(paramString, paramVarArgs, true);
-      return paramVarArgs.get("result_key");
+      this.yiq.onCallback(paramString, paramVarArgs, true);
+      paramString = paramVarArgs.get("result_key");
+      AppMethodBeat.o(80219);
+      return paramString;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        y.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bk.j(paramString) });
+        ab.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bo.l(paramString) });
       }
     }
   }
   
   public Object REMOTE_CALL(String paramString, Object... paramVarArgs)
   {
-    if (this.eMh.isConnected())
+    AppMethodBeat.i(80218);
+    if (this.evl.isConnected())
     {
       paramVarArgs = objectsToBundle(paramVarArgs);
-      this.eMh.a(this, paramString, paramVarArgs);
+      this.evl.a(this, paramString, paramVarArgs);
       paramVarArgs.setClassLoader(getClass().getClassLoader());
-      return paramVarArgs.get("result_key");
+      paramString = paramVarArgs.get("result_key");
+      AppMethodBeat.o(80218);
+      return paramString;
     }
-    this.eMh.connect(new a.1(this, paramVarArgs, paramString));
+    this.evl.connect(new a.1(this, paramVarArgs, paramString));
+    AppMethodBeat.o(80218);
     return null;
   }
   
   public Object[] getArgs(Bundle paramBundle)
   {
+    AppMethodBeat.i(80221);
     LinkedList localLinkedList = new LinkedList();
     int i = 0;
     int j = paramBundle.size();
@@ -64,11 +73,14 @@ public class a
       }
       i += 1;
     }
-    return localLinkedList.toArray();
+    paramBundle = localLinkedList.toArray();
+    AppMethodBeat.o(80221);
+    return paramBundle;
   }
   
-  public Bundle objectsToBundle(Object... paramVarArgs)
+  protected Bundle objectsToBundle(Object... paramVarArgs)
   {
+    AppMethodBeat.i(80220);
     Bundle localBundle = new Bundle();
     int j = paramVarArgs.length;
     int i = 0;
@@ -88,65 +100,66 @@ public class a
         }
       }
     }
+    AppMethodBeat.o(80220);
     return localBundle;
   }
   
   public void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
-    y.d("MicroMsg.BaseClientRequest", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.i(80217);
+    ab.d("MicroMsg.BaseClientRequest", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject2 = null;
     for (;;)
     {
-      int i;
-      Object localObject1;
       try
       {
         Method[] arrayOfMethod = getClass().getMethods();
         int j = arrayOfMethod.length;
-        i = 0;
-        localObject1 = localObject2;
-        if (i >= j) {
-          break label154;
+        int i = 0;
+        Object localObject1 = localObject2;
+        if (i < j)
+        {
+          localObject1 = arrayOfMethod[i];
+          if (((Method)localObject1).getName().equalsIgnoreCase(paramString))
+          {
+            break label178;
+            if (((Method)localObject1).isAnnotationPresent(paramString))
+            {
+              paramString = ((Method)localObject1).invoke(this, getArgs(paramBundle));
+              if (((Method)localObject1).getReturnType() != Void.TYPE) {
+                paramBundle.putSerializable("result_key", (Serializable)paramString);
+              }
+            }
+            AppMethodBeat.o(80217);
+          }
+          else
+          {
+            i += 1;
+            continue;
+            paramString = f.class;
+            continue;
+          }
         }
-        localObject1 = arrayOfMethod[i];
-        if (!((Method)localObject1).getName().equalsIgnoreCase(paramString)) {
-          break label170;
+        if (localObject1 == null) {
+          continue;
         }
       }
       catch (Exception paramString)
       {
-        y.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bk.j(paramString) });
+        ab.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bo.l(paramString) });
+        AppMethodBeat.o(80217);
         return;
       }
-      if (((Method)localObject1).isAnnotationPresent(paramString))
-      {
-        paramString = ((Method)localObject1).invoke(this, getArgs(paramBundle));
-        if (((Method)localObject1).getReturnType() != Void.TYPE)
-        {
-          paramBundle.putSerializable("result_key", (Serializable)paramString);
-          return;
-          paramString = f.class;
-          continue;
-          label154:
-          if (localObject1 != null)
-          {
-            if (!paramBoolean) {
-              continue;
-            }
-            paramString = e.class;
-            continue;
-          }
-        }
+      label178:
+      if (paramBoolean) {
+        paramString = e.class;
       }
-      return;
-      label170:
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.remoteservice.a
  * JD-Core Version:    0.7.0.1
  */

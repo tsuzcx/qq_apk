@@ -6,22 +6,22 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.p;
+import com.tencent.mm.ui.tools.s;
+import junit.framework.Assert;
 
 public class AppHeaderPreference
   extends Preference
 {
-  boolean cce = false;
-  private ImageView dpY;
-  private TextView eXu;
-  private boolean faU = false;
-  private TextView fuT;
-  private TextView mYa;
-  AppHeaderPreference.a pwX;
+  private boolean cKK = false;
+  private ImageView ehv;
+  private TextView gMv;
+  private TextView gpr;
+  private boolean gsM = false;
+  private TextView pAN;
+  private AppHeaderPreference.a sYM;
   
   public AppHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,66 +33,82 @@ public class AppHeaderPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public final void a(AppHeaderPreference.a parama, boolean paramBoolean)
+  {
+    AppMethodBeat.i(25440);
+    if (parama != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      this.sYM = parama;
+      this.cKK = paramBoolean;
+      AppMethodBeat.o(25440);
+      return;
+    }
+  }
+  
   public final void onBindView(View paramView)
   {
-    this.dpY = ((ImageView)paramView.findViewById(R.h.contact_info_avatar_iv));
-    this.eXu = ((TextView)paramView.findViewById(R.h.contact_info_status_tv));
-    this.mYa = ((TextView)paramView.findViewById(R.h.contact_info_nickname_tv));
-    this.fuT = ((TextView)paramView.findViewById(R.h.contact_info_helper_hing_tv));
-    this.faU = true;
-    if ((!this.faU) || (this.pwX == null)) {
-      y.w("MicroMsg.HeaderPreference", "initView : bindView = " + this.faU);
+    AppMethodBeat.i(25439);
+    this.ehv = ((ImageView)paramView.findViewById(2131821497));
+    this.gpr = ((TextView)paramView.findViewById(2131823105));
+    this.pAN = ((TextView)paramView.findViewById(2131821498));
+    this.gMv = ((TextView)paramView.findViewById(2131821499));
+    this.gsM = true;
+    if ((!this.gsM) || (this.sYM == null)) {
+      ab.w("MicroMsg.HeaderPreference", "initView : bindView = " + this.gsM);
     }
     for (;;)
     {
       super.onBindView(paramView);
+      AppMethodBeat.o(25439);
       return;
-      Object localObject = this.pwX.bMb();
-      if ((this.dpY != null) && (localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        this.dpY.setImageBitmap((Bitmap)localObject);
+      Object localObject = this.sYM.cGZ();
+      if ((this.ehv != null) && (localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+        this.ehv.setImageBitmap((Bitmap)localObject);
       }
-      localObject = this.pwX.bMa();
-      if ((this.mYa != null) && (localObject != null) && (((String)localObject).length() > 0)) {
-        this.mYa.setText((CharSequence)localObject);
+      localObject = this.sYM.cGY();
+      if ((this.pAN != null) && (localObject != null) && (((String)localObject).length() > 0)) {
+        this.pAN.setText((CharSequence)localObject);
       }
-      localObject = this.pwX.getHint();
+      localObject = this.sYM.getHint();
       if (localObject != null)
       {
-        this.fuT.setText((CharSequence)localObject);
-        this.fuT.setVisibility(0);
+        this.gMv.setText((CharSequence)localObject);
+        this.gMv.setVisibility(0);
       }
       for (;;)
       {
-        boolean bool = this.cce;
-        if (this.eXu == null) {
+        boolean bool = this.cKK;
+        if (this.gpr == null) {
           break;
         }
-        localObject = this.pwX.jE(bool);
+        localObject = this.sYM.mw(bool);
         if (!bool) {
-          break label307;
+          break label314;
         }
         if ((localObject == null) || (((String)localObject).length() <= 0)) {
-          break label295;
+          break label302;
         }
-        this.eXu.setTextColor(p.hf(this.mContext));
-        this.eXu.setText((CharSequence)localObject);
-        this.eXu.setCompoundDrawablesWithIntrinsicBounds(R.g.status_enable, 0, 0, 0);
+        this.gpr.setTextColor(s.iD(this.mContext));
+        this.gpr.setText((CharSequence)localObject);
+        this.gpr.setCompoundDrawablesWithIntrinsicBounds(2130840454, 0, 0, 0);
         break;
-        this.fuT.setVisibility(8);
+        this.gMv.setVisibility(8);
       }
-      label295:
-      this.eXu.setVisibility(8);
+      label302:
+      this.gpr.setVisibility(8);
       continue;
-      label307:
+      label314:
       if ((localObject != null) && (((String)localObject).length() > 0))
       {
-        this.eXu.setTextColor(p.hg(this.mContext));
-        this.eXu.setText((CharSequence)localObject);
-        this.eXu.setCompoundDrawablesWithIntrinsicBounds(R.g.status_disable, 0, 0, 0);
+        this.gpr.setTextColor(s.iE(this.mContext));
+        this.gpr.setText((CharSequence)localObject);
+        this.gpr.setCompoundDrawablesWithIntrinsicBounds(2130840453, 0, 0, 0);
       }
       else
       {
-        this.eXu.setVisibility(8);
+        this.gpr.setVisibility(8);
       }
     }
   }

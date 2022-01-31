@@ -1,3 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
+        <TextView android:id="@id/de" style="@style/vo" />
+        <TextView android:id="@id/dc" style="@style/vm" />
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center_vertical" android:id="@id/a3f" android:background="@color/a3x" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:id="@id/d8" style="@style/vj" />
+        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/db" android:src="@drawable/ami" style="@style/vk" />
+    </LinearLayout>
+</merge>

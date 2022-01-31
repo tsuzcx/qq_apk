@@ -2,10 +2,11 @@ package com.tencent.mm.plugin.recharge.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.wallet.a.m;
-import com.tencent.mm.protocal.f;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.wallet.a.p;
+import com.tencent.mm.protocal.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
@@ -16,21 +17,25 @@ final class PhoneRechargeUI$19
   
   public final void onClick(View paramView)
   {
-    if (PhoneRechargeUI.f(this.nrb) != null)
+    AppMethodBeat.i(44273);
+    if (PhoneRechargeUI.f(this.pWp) != null)
     {
-      f.eZ(6, 1);
-      if ((PhoneRechargeUI.a(this.nrb, PhoneRechargeUI.f(this.nrb).qkP, PhoneRechargeUI.f(this.nrb).dTJ)) || (bk.bl(PhoneRechargeUI.f(this.nrb).url))) {}
+      g.gK(6, 1);
+      if ((!PhoneRechargeUI.a(this.pWp, PhoneRechargeUI.f(this.pWp).tTY, PhoneRechargeUI.f(this.pWp).fjP)) && (!bo.isNullOrNil(PhoneRechargeUI.f(this.pWp).url))) {
+        try
+        {
+          paramView = URLDecoder.decode(PhoneRechargeUI.f(this.pWp).url, "utf-8");
+          PhoneRechargeUI.c(this.pWp, paramView);
+          AppMethodBeat.o(44273);
+          return;
+        }
+        catch (UnsupportedEncodingException paramView)
+        {
+          ab.printErrStackTrace("MicroMsg.PhoneRechargeUI", paramView, "", new Object[0]);
+        }
+      }
     }
-    try
-    {
-      paramView = URLDecoder.decode(PhoneRechargeUI.f(this.nrb).url, "utf-8");
-      PhoneRechargeUI.c(this.nrb, paramView);
-      return;
-    }
-    catch (UnsupportedEncodingException paramView)
-    {
-      y.printErrStackTrace("MicroMsg.PhoneRechargeUI", paramView, "", new Object[0]);
-    }
+    AppMethodBeat.o(44273);
   }
 }
 

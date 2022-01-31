@@ -2,13 +2,14 @@ package com.tencent.mm.plugin.sns.ui.d;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.storage.e;
 import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.storage.v;
-import com.tencent.mm.protocal.c.bxk;
-import com.tencent.mm.protocal.c.rp;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.protocal.protobuf.vi;
 import java.util.LinkedList;
 
 final class b$1
@@ -19,61 +20,66 @@ final class b$1
   public final void onClick(View paramView)
   {
     boolean bool = false;
-    if (paramView.getTag() == null) {}
-    n localn;
-    do
+    AppMethodBeat.i(40239);
+    if (paramView.getTag() == null)
     {
+      AppMethodBeat.o(40239);
       return;
-      localn = b.dc(paramView);
-    } while ((localn == null) || (!localn.yr(32)));
+    }
+    n localn = b.dT(paramView);
+    if ((localn == null) || (!localn.Ex(32)))
+    {
+      AppMethodBeat.o(40239);
+      return;
+    }
     int j;
     int i;
-    label72:
     Object localObject;
-    label105:
+    label121:
     int k;
-    if (localn.bGN().bFZ().bEM())
+    if (localn.csQ().csb().cqs())
     {
-      j = v.eY(localn.bGN().bFZ().bEH(), localn.bGM());
+      j = v.gG(localn.csQ().csb().cqn(), localn.csP());
       if (j > 0)
       {
         i = 1;
-        localObject = localn.bGN().bFZ().bEH();
-        String str1 = localn.bGM();
-        g.DN();
-        String str2 = a.CL();
+        localObject = localn.csQ().csb().cqn();
+        String str1 = localn.csP();
+        g.RJ();
+        String str2 = a.QC();
         if (i == 0) {
-          break label192;
+          break label213;
         }
         if (i == 0) {
-          break label197;
+          break label218;
         }
         k = 0;
-        label112:
-        v.g((String)localObject, str1, str2, j, k);
+        label128:
+        v.h((String)localObject, str1, str2, j, k);
         if (i != 0) {}
       }
     }
     for (bool = true;; bool = false)
     {
-      localObject = localn.bGe();
-      if ((((bxk)localObject).tNr.sPI == 15) && (((bxk)localObject).tNy != 1))
+      localObject = localn.csh();
+      if ((((TimeLineObject)localObject).xTS.wNZ == 15) && (((TimeLineObject)localObject).xTZ != 1))
       {
-        b.a(this.ppl, paramView, localn, 1001, localn.bGN().bFZ().bEN(), bool);
+        b.a(this.skd, paramView, localn, 1001, localn.csQ().csb().cqt(), bool);
+        AppMethodBeat.o(40239);
         return;
         i = 0;
-        break label72;
-        label192:
-        j = 1;
-        break label105;
-        label197:
-        k = 1;
-        break label112;
-      }
-      if (((((bxk)localObject).tNr.sPI != 1) || (((bxk)localObject).tNr.sPJ.size() != 1)) && (((bxk)localObject).tNr.sPI != 7)) {
         break;
+        label213:
+        j = 1;
+        break label121;
+        label218:
+        k = 1;
+        break label128;
       }
-      b.b(this.ppl, paramView, localn, 1001, localn.bGN().bFZ().bEN(), bool);
+      if (((((TimeLineObject)localObject).xTS.wNZ == 1) && (((TimeLineObject)localObject).xTS.wOa.size() == 1)) || (((TimeLineObject)localObject).xTS.wNZ == 7)) {
+        b.b(this.skd, paramView, localn, 1001, localn.csQ().csb().cqt(), bool);
+      }
+      AppMethodBeat.o(40239);
       return;
     }
   }

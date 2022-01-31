@@ -2,10 +2,9 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.base.h;
@@ -15,19 +14,15 @@ final class b$1
 {
   b$1(b paramb, Context paramContext) {}
   
-  public final void onClick(final DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.fkU.a(this.fkU.fkS, this.fkU.fex.getSecImgCode());
-    g.Dk().a(paramDialogInterface, 0);
-    Context localContext = this.fkT;
-    this.fkT.getString(q.j.app_tip);
-    h.b(localContext, this.fkT.getString(q.j.login_logining), true, new DialogInterface.OnCancelListener()
-    {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        g.Dk().c(paramDialogInterface);
-      }
-    });
+    AppMethodBeat.i(124716);
+    paramDialogInterface = this.gCl.a(this.gCl.gCj, this.gCl.gwg.getSecImgCode());
+    g.Rc().a(paramDialogInterface, 0);
+    Context localContext = this.gCk;
+    this.gCk.getString(2131297087);
+    h.b(localContext, this.gCk.getString(2131301149), true, new b.1.1(this, paramDialogInterface));
+    AppMethodBeat.o(124716);
   }
 }
 

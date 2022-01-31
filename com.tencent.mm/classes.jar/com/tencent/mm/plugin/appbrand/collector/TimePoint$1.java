@@ -7,7 +7,7 @@ final class TimePoint$1
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.collector.TimePoint.1
  * JD-Core Version:    0.7.0.1
  */

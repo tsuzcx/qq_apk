@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.widget.FrameLayout;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.p;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.g;
 
 final class e$13
-  extends p
+  implements Runnable
 {
-  e$13(e parame) {}
+  e$13(e parame, String paramString) {}
   
-  public final void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
+  public final void run()
   {
-    y.i("MicroMsg.LuggageMMWebPage", "onReceivedError, errCode = %d, description = %s, failingUrl = %s", new Object[] { Integer.valueOf(paramInt), paramString1, paramString2 });
-    e.a(this.rca).setVisibility(0);
+    AppMethodBeat.i(6027);
+    int i = g.by(this.uRV, this.uRQ.mContext.getResources().getColor(2131690695));
+    this.uRQ.uRl.setBackgroundColor(i);
+    this.uRQ.uRl.setX5LogoViewVisibility(8);
+    AppMethodBeat.o(6027);
   }
 }
 

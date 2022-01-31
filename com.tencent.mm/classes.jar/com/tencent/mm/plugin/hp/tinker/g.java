@@ -1,51 +1,86 @@
 package com.tencent.mm.plugin.hp.tinker;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mm.m.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.plugin.boots.a.c;
+import com.tencent.mm.protocal.protobuf.bjt;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.at;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public final class g
+  extends com.tinkerboots.sdk.a.a.a
 {
-  public static void E(Context paramContext, int paramInt)
+  public final void M(Map<String, String> paramMap)
   {
-    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putInt("tinker_node_retry_time", paramInt).apply();
-  }
-  
-  public static boolean ar(Context paramContext, String paramString)
-  {
-    paramContext = paramContext.getSharedPreferences("tinker_patch_share_config", 4).getString("tinker_before_install", "");
-    y.i("MicroMsg.Tinker.TinkerPatchSharedPreferencesUtil", "isBeforeDownloadDialogHaveCancel current patchID :%s patchID:%s", new Object[] { paramContext, paramString });
-    return (!bk.bl(paramContext)) && (!bk.bl(paramString)) && (paramContext.equalsIgnoreCase(paramString));
-  }
-  
-  public static void as(Context paramContext, String paramString)
-  {
-    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putString("tinker_before_install", paramString).apply();
-  }
-  
-  public static void at(Context paramContext, String paramString)
-  {
-    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putString("tinker_node", paramString).apply();
-  }
-  
-  public static void dE(Context paramContext)
-  {
-    int i = com.tencent.mm.m.g.AA().getInt("TinkerCheckUpdateInterval", 12);
-    if (i < 0)
+    AppMethodBeat.i(90659);
+    super.M(paramMap);
+    com.tencent.mm.plugin.hp.b.b.xu(2);
+    String str2 = "tinker_id_" + com.tencent.mm.loader.j.a.Uj();
+    if (com.tencent.mm.loader.j.a.eQt == null) {}
+    LinkedList localLinkedList;
+    Object localObject;
+    for (String str1 = "";; str1 = "tinker_id_" + com.tencent.mm.loader.j.a.eQt)
     {
-      y.i("MicroMsg.Tinker.TinkerPatchSharedPreferencesUtil", "saveTinkerCheckUpdateTinker hours < 0 ");
-      return;
+      localLinkedList = new LinkedList();
+      localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        localObject = (String)localIterator.next();
+        bjt localbjt = new bjt();
+        localbjt.key = ((String)localObject);
+        localbjt.value = ((String)paramMap.get(localObject));
+        localLinkedList.add(localbjt);
+      }
     }
-    y.i("MicroMsg.Tinker.TinkerPatchSharedPreferencesUtil", "saveTinkerCheckUpdateTinker hours:%d", new Object[] { Integer.valueOf(i) });
-    paramContext.getSharedPreferences("tinker_patch_share_config", 4).edit().putInt("check_tinker_update_interval", i).apply();
+    paramMap = new StringBuilder();
+    Iterator localIterator = localLinkedList.iterator();
+    while (localIterator.hasNext())
+    {
+      localObject = (bjt)localIterator.next();
+      paramMap.append(((bjt)localObject).key).append(":").append(((bjt)localObject).value).append("\n");
+    }
+    ab.i("Tinker.TinkerPatchRequestCallback", "checkAvailableUpdate BaseID:%s PatchID:%s config:%s", new Object[] { str2, str1, paramMap.toString() });
+    paramMap = new com.tencent.mm.plugin.hp.c.b(str2, str1, localLinkedList);
+    com.tencent.mm.kernel.g.Rc().a(paramMap, 0);
+    AppMethodBeat.o(90659);
   }
   
-  public static int dF(Context paramContext)
+  public final boolean bIp()
   {
-    return paramContext.getSharedPreferences("tinker_patch_share_config", 4).getInt("check_tinker_update_interval", 12);
+    AppMethodBeat.i(90658);
+    boolean bool = super.bIp();
+    AppMethodBeat.o(90658);
+    return bool;
+  }
+  
+  public final void bIq()
+  {
+    AppMethodBeat.i(90660);
+    super.bIq();
+    long l = com.tencent.mm.kernel.a.QW();
+    Object localObject = com.tinkerboots.sdk.a.eaJ().ji("uin", String.valueOf(l & 0xFFFFFFFF));
+    if (at.isWifi(ah.getContext())) {}
+    for (int i = 3;; i = 2)
+    {
+      ((com.tinkerboots.sdk.a)localObject).ji("network", String.valueOf(i));
+      localObject = ((c)com.tencent.mm.kernel.g.E(c.class)).aWg();
+      if (localObject == null) {
+        break;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        com.tencent.mm.plugin.boots.a.a locala = (com.tencent.mm.plugin.boots.a.a)((Iterator)localObject).next();
+        com.tinkerboots.sdk.a.eaJ().ji(Integer.toHexString(locala.field_key), String.valueOf(locala.field_dau));
+      }
+    }
+    AppMethodBeat.o(90660);
   }
 }
 

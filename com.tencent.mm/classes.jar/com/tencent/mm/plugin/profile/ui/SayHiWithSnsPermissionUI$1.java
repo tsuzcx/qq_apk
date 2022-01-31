@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
 
 final class SayHiWithSnsPermissionUI$1
-  implements m.b
+  implements n.b
 {
   SayHiWithSnsPermissionUI$1(SayHiWithSnsPermissionUI paramSayHiWithSnsPermissionUI) {}
   
-  public final void a(int paramInt, m paramm, Object paramObject)
+  public final void a(int paramInt, n paramn, Object paramObject)
   {
-    SayHiWithSnsPermissionUI.a(this.mZo);
+    AppMethodBeat.i(23766);
+    SayHiWithSnsPermissionUI.a(this.pCR);
+    AppMethodBeat.o(23766);
   }
 }
 

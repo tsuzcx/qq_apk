@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.wallet_core.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.am.b.a;
+import com.tencent.mm.model.ao.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 
 final class WalletOrderInfoUI$1
-  implements am.b.a
+  implements ao.b.a
 {
   WalletOrderInfoUI$1(WalletOrderInfoUI paramWalletOrderInfoUI) {}
   
-  public final void m(String paramString, boolean paramBoolean)
+  public final void p(String paramString, boolean paramBoolean)
   {
-    g.DQ();
-    ad localad = ((j)g.r(j.class)).Fw().abl(paramString);
-    y.d("MicroMsg.WalletOrderInfoUI", "call back from contactServer " + paramString + " succ: " + paramBoolean);
-    this.qFk.O(localad);
+    AppMethodBeat.i(47523);
+    g.RM();
+    ad localad = ((j)g.E(j.class)).YA().arw(paramString);
+    ab.d("MicroMsg.WalletOrderInfoUI", "call back from contactServer " + paramString + " succ: " + paramBoolean);
+    this.usr.R(localad);
+    AppMethodBeat.o(47523);
   }
 }
 

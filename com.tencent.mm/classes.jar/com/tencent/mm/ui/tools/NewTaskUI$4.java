@@ -2,6 +2,7 @@ package com.tencent.mm.ui.tools;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class NewTaskUI$4
   implements DialogInterface.OnCancelListener
@@ -10,11 +11,13 @@ final class NewTaskUI$4
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    if (NewTaskUI.wdY != null)
+    AppMethodBeat.i(34920);
+    if (NewTaskUI.AwI != null)
     {
-      NewTaskUI.wdY = null;
-      this.wea.finish();
+      NewTaskUI.AwI = null;
+      this.AwK.finish();
     }
+    AppMethodBeat.o(34920);
   }
 }
 

@@ -6,91 +6,117 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.b;
-import com.tencent.mm.plugin.card.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class CardTextPreference
   extends Preference
 {
-  private TextView ama;
-  private TextView izt;
-  public int izu = 0;
-  boolean izv = true;
+  private TextView aop;
+  public int kCA;
+  boolean kCB;
+  private TextView kCz;
   Context mContext;
   
   public CardTextPreference(Context paramContext)
   {
     super(paramContext, null);
+    this.kCA = 0;
+    this.kCB = true;
     this.mContext = paramContext;
   }
   
   public CardTextPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    setLayoutResource(a.e.mm_preference);
+    AppMethodBeat.i(88957);
+    this.kCA = 0;
+    this.kCB = true;
+    setLayoutResource(2130970179);
     this.mContext = paramContext;
+    AppMethodBeat.o(88957);
   }
   
   public CardTextPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    this.kCA = 0;
+    this.kCB = true;
     this.mContext = paramContext;
   }
   
-  private void eC(boolean paramBoolean)
+  private static Rect dh(View paramView)
   {
-    TextView localTextView;
-    Rect localRect;
-    if (this.ama != null)
+    AppMethodBeat.i(88963);
+    Rect localRect = new Rect();
+    localRect.left = paramView.getPaddingLeft();
+    localRect.right = paramView.getPaddingRight();
+    localRect.top = paramView.getPaddingTop();
+    localRect.bottom = paramView.getPaddingBottom();
+    AppMethodBeat.o(88963);
+    return localRect;
+  }
+  
+  private void gb(boolean paramBoolean)
+  {
+    AppMethodBeat.i(88962);
+    if (this.aop != null)
     {
-      localTextView = this.ama;
-      localRect = new Rect();
-      localRect.left = localTextView.getPaddingLeft();
-      localRect.right = localTextView.getPaddingRight();
-      localRect.top = localTextView.getPaddingTop();
-      localRect.bottom = localTextView.getPaddingBottom();
-      this.ama.setSingleLine(paramBoolean);
+      Rect localRect = dh(this.aop);
+      this.aop.setSingleLine(paramBoolean);
       if (!paramBoolean)
       {
-        localRect.top = this.mContext.getResources().getDimensionPixelOffset(a.b.LargePadding);
-        localRect.bottom = this.mContext.getResources().getDimensionPixelOffset(a.b.LargePadding);
-        localTextView = this.ama;
-        if (localTextView != null) {
-          break label108;
-        }
+        localRect.top = this.mContext.getResources().getDimensionPixelOffset(2131427772);
+        localRect.bottom = this.mContext.getResources().getDimensionPixelOffset(2131427772);
+        j(this.aop, localRect);
       }
     }
-    return;
-    label108:
-    localTextView.setPadding(localRect.left, localRect.top, localRect.right, localRect.bottom);
+    AppMethodBeat.o(88962);
   }
   
-  public final void aDh()
+  private static void j(View paramView, Rect paramRect)
   {
-    if ((this.izt != null) && (this.izu != 0)) {
-      this.izt.setTextColor(this.izu);
+    AppMethodBeat.i(88964);
+    if ((paramView == null) || (paramRect == null))
+    {
+      AppMethodBeat.o(88964);
+      return;
     }
+    paramView.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+    AppMethodBeat.o(88964);
   }
   
-  public final void aDi()
+  public final void bfE()
   {
-    eC(false);
-    this.izv = false;
+    AppMethodBeat.i(88960);
+    if ((this.kCz != null) && (this.kCA != 0)) {
+      this.kCz.setTextColor(this.kCA);
+    }
+    AppMethodBeat.o(88960);
   }
   
-  protected final void onBindView(View paramView)
+  public final void bfF()
   {
+    AppMethodBeat.i(88961);
+    gb(false);
+    this.kCB = false;
+    AppMethodBeat.o(88961);
+  }
+  
+  public final void onBindView(View paramView)
+  {
+    AppMethodBeat.i(88958);
     super.onBindView(paramView);
-    this.izt = ((TextView)paramView.findViewById(16908304));
-    this.ama = ((TextView)paramView.findViewById(16908310));
-    aDh();
-    eC(this.izv);
+    this.kCz = ((TextView)paramView.findViewById(16908304));
+    this.aop = ((TextView)paramView.findViewById(16908310));
+    bfE();
+    gb(this.kCB);
+    AppMethodBeat.o(88958);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.CardTextPreference
  * JD-Core Version:    0.7.0.1
  */

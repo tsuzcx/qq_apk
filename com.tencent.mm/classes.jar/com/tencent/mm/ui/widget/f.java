@@ -1,20 +1,20 @@
 package com.tencent.mm.ui.widget;
 
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.content.Context;
+import com.tencent.mm.ui.widget.c.a;
 
-public abstract class f
-  implements TextWatcher
+@Deprecated
+public final class f
+  extends a
 {
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public f(Context paramContext)
+  {
+    super(paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.widget.f
  * JD-Core Version:    0.7.0.1
  */

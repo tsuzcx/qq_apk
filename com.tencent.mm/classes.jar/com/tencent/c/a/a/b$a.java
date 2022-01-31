@@ -10,62 +10,78 @@ import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Locale;
 import java.util.TimeZone;
 
 final class b$a
 {
-  String auI = Locale.getDefault().getLanguage();
-  String bth;
-  String bti = "2.21";
-  DisplayMetrics btj;
-  int btk = Build.VERSION.SDK_INT;
-  String btl = Build.MANUFACTURER;
-  String btm;
-  String bto;
-  int btp = 0;
-  String btq = null;
-  String btr = null;
-  String channel = "WX";
-  Context ctx = null;
+  String appVersion;
+  String axa;
+  String bUA;
+  String bUB;
+  String bUt;
+  DisplayMetrics bUu;
+  int bUv;
+  String bUw;
+  String bUx;
+  String bUy;
+  int bUz;
+  String channel;
+  Context ctx;
   String imsi;
-  String model = Build.MODEL;
-  String packageName = null;
+  String model;
+  String packageName;
   String timezone;
   
   private b$a(Context paramContext)
   {
+    AppMethodBeat.i(125744);
+    this.bUt = "2.21";
+    this.bUv = Build.VERSION.SDK_INT;
+    this.model = Build.MODEL;
+    this.bUw = Build.MANUFACTURER;
+    this.axa = Locale.getDefault().getLanguage();
+    this.channel = "WX";
+    this.bUz = 0;
+    this.packageName = null;
+    this.ctx = null;
+    this.bUA = null;
+    this.bUB = null;
     this.ctx = paramContext.getApplicationContext();
     try
     {
-      this.bth = this.ctx.getPackageManager().getPackageInfo(this.ctx.getPackageName(), 0).versionName;
-      label105:
-      this.btj = new DisplayMetrics();
-      ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.btj);
-      if (s.l(paramContext, "android.permission.READ_PHONE_STATE"))
+      this.appVersion = this.ctx.getPackageManager().getPackageInfo(this.ctx.getPackageName(), 0).versionName;
+      this.bUu = new DisplayMetrics();
+      ((WindowManager)this.ctx.getApplicationContext().getSystemService("window")).getDefaultDisplay().getMetrics(this.bUu);
+      if (s.q(paramContext, "android.permission.READ_PHONE_STATE"))
       {
         paramContext = (TelephonyManager)paramContext.getSystemService("phone");
         if (paramContext != null)
         {
-          this.btm = paramContext.getSimOperator();
+          this.bUx = paramContext.getSimOperator();
           this.imsi = paramContext.getSubscriberId();
         }
       }
       this.timezone = TimeZone.getDefault().getID();
-      this.bto = s.av(this.ctx);
+      this.bUy = s.aT(this.ctx);
       this.packageName = this.ctx.getPackageName();
-      this.btr = s.rF();
+      this.bUB = s.zX();
+      AppMethodBeat.o(125744);
       return;
     }
     catch (PackageManager.NameNotFoundException localNameNotFoundException)
     {
-      break label105;
+      for (;;)
+      {
+        s.zV();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.c.a.a.b.a
  * JD-Core Version:    0.7.0.1
  */

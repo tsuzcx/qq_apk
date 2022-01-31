@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.talkroom;
 
-import com.tencent.mm.h.a.rw;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.tn;
 import com.tencent.mm.sdk.b.c;
 
 final class Plugin$c
-  extends c<rw>
+  extends c<tn>
 {
   private Plugin$c(Plugin paramPlugin)
   {
-    this.udX = rw.class.getName().hashCode();
+    AppMethodBeat.i(25686);
+    this.__eventId = tn.class.getName().hashCode();
+    AppMethodBeat.o(25686);
   }
 }
 

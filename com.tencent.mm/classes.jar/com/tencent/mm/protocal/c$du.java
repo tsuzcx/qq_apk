@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-final class c$du
+public final class c$du
   extends c.g
 {
-  c$du()
+  public c$du()
   {
-    super("launchApplication", "launchApplication", 260, true);
+    super("insertSearchWAWidgetView", "", 10000, false);
   }
 }
 

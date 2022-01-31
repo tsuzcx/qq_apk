@@ -1,61 +1,50 @@
 package com.google.android.exoplayer2.c.c;
 
-import com.google.android.exoplayer2.c.e;
-import com.google.android.exoplayer2.c.f;
-import com.google.android.exoplayer2.c.g;
-import com.google.android.exoplayer2.c.j.a;
-import com.google.android.exoplayer2.i.j;
-import com.google.android.exoplayer2.i.t;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public final class c
-  implements com.google.android.exoplayer2.c.d
+final class c
+  implements b.a
 {
-  private static final int aDc = t.aG("ID3");
-  public static final g azq = new c.1();
-  private final long aDd;
-  private boolean aDg;
-  private final d aDn;
-  private final j aDo;
+  private final long[] aBm;
+  private final long[] aEk;
+  private final long axh;
   
-  public c()
+  c(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long paramLong)
   {
-    this(0L);
+    this.aBm = paramArrayOfLong1;
+    this.aEk = paramArrayOfLong2;
+    this.axh = paramLong;
   }
   
-  public c(long paramLong)
+  public final long E(long paramLong)
   {
-    this.aDd = paramLong;
-    this.aDn = new d();
-    this.aDo = new j(200);
+    AppMethodBeat.i(94931);
+    paramLong = this.aEk[com.google.android.exoplayer2.i.x.a(this.aBm, paramLong, true)];
+    AppMethodBeat.o(94931);
+    return paramLong;
   }
   
-  public final int a(e parame)
+  public final long G(long paramLong)
   {
-    int i = parame.read(this.aDo.data, 0, 200);
-    if (i == -1) {
-      return -1;
-    }
-    this.aDo.setPosition(0);
-    this.aDo.dA(i);
-    if (!this.aDg)
-    {
-      this.aDn.ayE = this.aDd;
-      this.aDg = true;
-    }
-    this.aDn.b(this.aDo);
-    return 0;
+    AppMethodBeat.i(94932);
+    paramLong = this.aBm[com.google.android.exoplayer2.i.x.a(this.aEk, paramLong, true)];
+    AppMethodBeat.o(94932);
+    return paramLong;
   }
   
-  public final void a(f paramf)
+  public final long getDurationUs()
   {
-    this.aDn.a(paramf, new u.d());
-    paramf.lV();
-    new j.a(-9223372036854775807L);
+    return this.axh;
+  }
+  
+  public final boolean nV()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.c.c.c
  * JD-Core Version:    0.7.0.1
  */

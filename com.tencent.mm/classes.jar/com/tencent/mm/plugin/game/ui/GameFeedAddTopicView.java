@@ -6,22 +6,20 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.d.ac;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.d.ad;
 import com.tencent.mm.plugin.game.d.o;
 import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.plugin.game.g.e;
-import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.game.model.d;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class GameFeedAddTopicView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private e kXy;
-  private GameFeedTitleDescView laV;
-  private TextView laW;
+  private d nvA;
+  private GameFeedTitleDescView nyR;
+  private TextView nyS;
   
   public GameFeedAddTopicView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -30,37 +28,49 @@ public class GameFeedAddTopicView
   
   public void onClick(View paramView)
   {
-    if ((this.kXy == null) || (this.kXy.kOu == null)) {}
-    while (bk.bl(this.kXy.kOu.kRP)) {
+    AppMethodBeat.i(111924);
+    if ((this.nvA == null) || (this.nvA.nmr == null))
+    {
+      AppMethodBeat.o(111924);
       return;
     }
-    int i = c.an(getContext(), this.kXy.kOu.kRP);
-    b.a(getContext(), 10, 1024, this.kXy.position, i, this.kXy.kOu.euK, GameIndexListView.getSourceScene(), a.O(this.kXy.kOu.kSs, "clickType", "card"));
+    if (!bo.isNullOrNil(this.nvA.nmr.npR))
+    {
+      int i = com.tencent.mm.plugin.game.f.c.ax(getContext(), this.nvA.nmr.npR);
+      com.tencent.mm.game.report.c.a(getContext(), 10, 1024, this.nvA.position, i, this.nvA.nmr.fKw, GameIndexListView.getSourceScene(), a.V(this.nvA.nmr.nqt, "clickType", "card"));
+    }
+    AppMethodBeat.o(111924);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111922);
     super.onFinishInflate();
-    this.laV = ((GameFeedTitleDescView)findViewById(g.e.game_feed_title_desc));
-    this.laW = ((TextView)findViewById(g.e.add_topic_text));
+    this.nyR = ((GameFeedTitleDescView)findViewById(2131824608));
+    this.nyS = ((TextView)findViewById(2131824609));
     setOnClickListener(this);
+    AppMethodBeat.o(111922);
   }
   
-  public void setData(e parame)
+  public void setData(d paramd)
   {
-    if ((parame == null) || (parame.kOu == null) || (parame.kOu.kTp == null)) {
-      setVisibility(8);
-    }
-    do
+    AppMethodBeat.i(111923);
+    if ((paramd == null) || (paramd.nmr == null) || (paramd.nmr.nrp == null))
     {
+      setVisibility(8);
+      AppMethodBeat.o(111923);
       return;
-      this.kXy = parame;
-      setVisibility(0);
-      this.laV.a(parame.kOu.kTp.bGw, parame.kOu.kTp.kRN, null);
-      this.laW.setText(parame.kOu.kTp.kSH);
-    } while (this.kXy.kOw);
-    a.a(getContext(), 10, 1024, this.kXy.position, this.kXy.kOu.euK, GameIndexListView.getSourceScene(), a.fy(this.kXy.kOu.kSs));
-    this.kXy.kOw = true;
+    }
+    this.nvA = paramd;
+    setVisibility(0);
+    this.nyR.b(paramd.nmr.nrp.Title, paramd.nmr.nrp.Desc, null);
+    this.nyS.setText(paramd.nmr.nrp.nqG);
+    if (!this.nvA.nmt)
+    {
+      a.a(getContext(), 10, 1024, this.nvA.position, this.nvA.nmr.fKw, GameIndexListView.getSourceScene(), a.lR(this.nvA.nmr.nqt));
+      this.nvA.nmt = true;
+    }
+    AppMethodBeat.o(111923);
   }
 }
 

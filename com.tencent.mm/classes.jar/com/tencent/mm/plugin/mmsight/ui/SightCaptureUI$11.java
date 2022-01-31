@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
-import android.widget.TextView;
-import com.tencent.mm.plugin.mmsight.model.a.k;
-import com.tencent.mm.plugin.u.a.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.m;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SightCaptureUI$11
   implements Runnable
 {
-  SightCaptureUI$11(SightCaptureUI paramSightCaptureUI, String paramString) {}
+  SightCaptureUI$11(SightCaptureUI paramSightCaptureUI) {}
   
   public final void run()
   {
-    y.i("MicroMsg.SightCaptureUI", "DEBUG showCameraInfoImpl: %s", new Object[] { this.mqF });
-    k.bjA();
-    if (!k.isDebug()) {
+    AppMethodBeat.i(55197);
+    String str = com.tencent.mm.plugin.mmsight.d.TX(SightCaptureUI.p(this.oQf).getFilePath());
+    if (bo.isNullOrNil(str))
+    {
+      AppMethodBeat.o(55197);
       return;
     }
-    TextView localTextView = (TextView)this.mqB.findViewById(a.e.video_debug_info);
-    localTextView.setVisibility(0);
-    localTextView.setText(this.mqF);
+    str = str + "\n" + String.format("FPS: %s", new Object[] { Float.valueOf(SightCaptureUI.p(this.oQf).Xv()) });
+    str = str + "\n" + String.format("TIME_RECODER_2_PLAY: %s", new Object[] { Long.valueOf(com.tencent.mm.plugin.mmsight.d.Ua("TIME_RECODER_2_PLAY")) });
+    al.d(new SightCaptureUI.11.1(this, str + "\n" + String.format("CPU: cur %s max:%s", new Object[] { m.Lr(), m.Lp() })));
+    AppMethodBeat.o(55197);
   }
 }
 

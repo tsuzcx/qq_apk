@@ -7,7 +7,8 @@ import android.os.Looper;
 import android.os.Message;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.beauty.a.a.c;
-import com.tencent.liteav.beauty.b.l;
+import com.tencent.liteav.beauty.b.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class b$a
   extends Handler
@@ -21,6 +22,7 @@ class b$a
   
   private void a(Object paramObject)
   {
+    AppMethodBeat.i(66902);
     TXCLog.i(this.b, "come into InitEGL");
     paramObject = (c.b)paramObject;
     a();
@@ -30,13 +32,16 @@ class b$a
     if (!b.a(this.a, paramObject))
     {
       TXCLog.e(this.b, "initInternal failed!");
+      AppMethodBeat.o(66902);
       return;
     }
     TXCLog.i(this.b, "come out InitEGL");
+    AppMethodBeat.o(66902);
   }
   
   public void a()
   {
+    AppMethodBeat.i(66903);
     TXCLog.i(this.b, "come into releaseEGL");
     if ((b.o(this.a) != null) && (b.o(this.a)[0] > 0))
     {
@@ -54,45 +59,53 @@ class b$a
       b.m(this.a).a();
       b.a(this.a, null);
     }
-    b.a(this.a, false);
+    b.b(this.a, false);
     NativeLoad.getInstance();
     NativeLoad.nativeDeleteYuv2Yuv();
     TXCLog.i(this.b, "come out releaseEGL");
+    AppMethodBeat.o(66903);
   }
   
   /* Error */
   void b()
   {
     // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: invokevirtual 122	java/lang/Object:wait	()V
-    //   6: aload_0
-    //   7: monitorexit
-    //   8: return
-    //   9: astore_1
-    //   10: aload_0
-    //   11: monitorexit
-    //   12: aload_1
-    //   13: athrow
-    //   14: astore_1
-    //   15: goto -9 -> 6
+    //   0: ldc 127
+    //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: monitorenter
+    //   7: aload_0
+    //   8: invokevirtual 132	java/lang/Object:wait	()V
+    //   11: aload_0
+    //   12: monitorexit
+    //   13: ldc 127
+    //   15: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   18: return
+    //   19: astore_1
+    //   20: aload_0
+    //   21: monitorexit
+    //   22: ldc 127
+    //   24: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   27: aload_1
+    //   28: athrow
+    //   29: astore_1
+    //   30: goto -19 -> 11
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	18	0	this	a
-    //   9	4	1	localObject	Object
-    //   14	1	1	localInterruptedException	java.lang.InterruptedException
+    //   0	33	0	this	a
+    //   19	9	1	localObject	Object
+    //   29	1	1	localInterruptedException	java.lang.InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   2	6	9	finally
-    //   6	8	9	finally
-    //   10	12	9	finally
-    //   2	6	14	java/lang/InterruptedException
+    //   7	11	19	finally
+    //   11	13	19	finally
+    //   20	22	19	finally
+    //   7	11	29	java/lang/InterruptedException
   }
   
   public void handleMessage(Message paramMessage)
   {
+    AppMethodBeat.i(66904);
     super.handleMessage(paramMessage);
     switch (paramMessage.what)
     {
@@ -108,9 +121,12 @@ class b$a
           notify();
           return;
         }
-        finally {}
+        finally
+        {
+          AppMethodBeat.o(66904);
+        }
         a(paramMessage.obj);
-        b.a(this.a, true);
+        b.b(this.a, true);
         i = 1;
         continue;
         a();

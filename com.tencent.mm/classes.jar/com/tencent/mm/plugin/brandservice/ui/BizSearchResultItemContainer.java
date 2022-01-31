@@ -9,342 +9,370 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.plugin.brandservice.b.h;
 import com.tencent.mm.plugin.brandservice.b.h;
 import com.tencent.mm.plugin.brandservice.b.i;
-import com.tencent.mm.protocal.c.bny;
-import com.tencent.mm.protocal.c.kq;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bxt;
+import com.tencent.mm.protocal.protobuf.nc;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.List;
 
 public class BizSearchResultItemContainer
   extends LinearLayout
   implements f
 {
-  private int fzn = 0;
-  private ListView icN;
-  c icO;
-  private TextView icP;
-  BizSearchResultItemContainer.c icQ;
-  private BizSearchResultItemContainer.a icR;
-  i icS;
-  private BizSearchResultItemContainer.b icT;
-  private long[] icU;
-  int icV;
-  private boolean icW;
-  private int icX;
-  private int icy;
+  private ListView jTC;
+  c jTD;
+  private TextView jTE;
+  BizSearchResultItemContainer.c jTF;
+  private BizSearchResultItemContainer.a jTG;
+  i jTH;
+  private BizSearchResultItemContainer.b jTI;
+  private long[] jTJ;
+  int jTK;
+  private boolean jTL;
+  private int jTM;
+  private int jTn;
+  private int mScene;
   
   public BizSearchResultItemContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = View.inflate(getContext(), b.e.search_result_lv, this);
-    this.icQ = new BizSearchResultItemContainer.c((byte)0);
-    this.icR = new BizSearchResultItemContainer.a((byte)0);
-    this.icP = ((TextView)paramContext.findViewById(b.d.emptyTipsTV));
-    this.icN = ((ListView)paramContext.findViewById(b.d.resultLV));
+    AppMethodBeat.i(13902);
+    this.mScene = 0;
+    paramContext = View.inflate(getContext(), 2130970633, this);
+    this.jTF = new BizSearchResultItemContainer.c((byte)0);
+    this.jTG = new BizSearchResultItemContainer.a((byte)0);
+    this.jTE = ((TextView)paramContext.findViewById(2131827505));
+    this.jTC = ((ListView)paramContext.findViewById(2131827506));
+    AppMethodBeat.o(13902);
   }
   
-  private void c(String paramString, int paramInt, long paramLong)
+  private void b(String paramString, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(13904);
+    this.jTF.jTS = true;
+    g.Rc().a(1071, this);
     Object localObject2 = null;
-    this.icQ.idd = true;
-    g.Dk().a(1071, this);
-    Object localObject1 = this.icO.cN(this.icU[(this.icU.length - 1)]);
+    Object localObject1 = this.jTD.hP(this.jTJ[(this.jTJ.length - 1)]);
     if (localObject1 != null)
     {
-      localObject1 = ((c.a)localObject1).icM;
+      localObject1 = ((c.a)localObject1).jTB;
       if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
-        break label189;
+        break label201;
       }
-      y.i("MicroMsg.BrandService.BizSearchResultItemContainer", "Get business content by type failed.(keyword : %s, offset : %s, businessType : %s)", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+      ab.i("MicroMsg.BrandService.BizSearchResultItemContainer", "Get business content by type failed.(keyword : %s, offset : %s, businessType : %s)", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
       localObject1 = localObject2;
-      label102:
+      label108:
       if (localObject1 == null) {
-        break label213;
+        break label225;
       }
     }
-    label189:
-    label213:
-    for (localObject1 = ((kq)localObject1).sFF;; localObject1 = "")
+    label201:
+    label225:
+    for (localObject1 = ((nc)localObject1).wBZ;; localObject1 = "")
     {
-      y.d("MicroMsg.BrandService.BizSearchResultItemContainer", "keyword(%s), offset(%d), businessType(%d), searchId(%s).", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject1 });
-      paramString = new h(paramString, paramLong, paramInt, this.fzn, (String)localObject1);
-      g.Dk().a(paramString, 0);
-      this.icR.ov(1);
+      ab.d("MicroMsg.BrandService.BizSearchResultItemContainer", "keyword(%s), offset(%d), businessType(%d), searchId(%s).", new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong), localObject1 });
+      paramString = new h(paramString, paramLong, paramInt, this.mScene, (String)localObject1);
+      g.Rc().a(paramString, 0);
+      this.jTG.sb(1);
+      AppMethodBeat.o(13904);
       return;
       localObject1 = null;
       break;
-      localObject1 = (kq)((List)localObject1).get(((List)localObject1).size() - 1);
-      break label102;
+      localObject1 = (nc)((List)localObject1).get(((List)localObject1).size() - 1);
+      break label108;
     }
   }
   
-  public final void bi(String paramString, int paramInt)
+  public final void bJ(String paramString, int paramInt)
   {
-    if (this.icO.isEmpty()) {
-      this.icP.setVisibility(8);
+    AppMethodBeat.i(13909);
+    if (this.jTD.isEmpty()) {
+      this.jTE.setVisibility(8);
     }
-    if (paramString == null) {}
+    if (paramString == null)
+    {
+      AppMethodBeat.o(13909);
+      return;
+    }
+    paramString = paramString.trim();
+    if (("".equals(paramString)) || ((paramString.equals(this.jTF.cnv)) && (!this.jTL)))
+    {
+      AppMethodBeat.o(13909);
+      return;
+    }
+    if (this.jTF.jTS)
+    {
+      AppMethodBeat.o(13909);
+      return;
+    }
+    reset();
+    this.jTF.jTS = true;
+    this.jTF.cnv = paramString;
+    this.jTK = paramInt;
+    if (this.jTM != 1)
+    {
+      g.Rc().a(1070, this);
+      this.jTH = new i(this.jTF.cnv, this.jTF.jST, this.mScene);
+      g.Rc().a(this.jTH, 0);
+    }
     for (;;)
     {
-      return;
-      paramString = paramString.trim();
-      if ((!"".equals(paramString)) && ((!paramString.equals(this.icQ.bGm)) || (this.icW)) && (!this.icQ.idd))
-      {
-        reset();
-        this.icQ.idd = true;
-        this.icQ.bGm = paramString;
-        this.icV = paramInt;
-        if (this.icX != 1)
-        {
-          g.Dk().a(1070, this);
-          this.icS = new i(this.icQ.bGm, this.icQ.icd, this.fzn);
-          g.Dk().a(this.icS, 0);
-        }
-        while (this.icT != null)
-        {
-          this.icT.axA();
-          return;
-          if (this.icU.length == 0)
-          {
-            y.i("MicroMsg.BrandService.BizSearchResultItemContainer", "business type size is 0.");
-            return;
-          }
-          c(paramString, paramInt, this.icU[0]);
-          this.icR.ov(0);
-        }
+      if (this.jTI != null) {
+        this.jTI.aWy();
       }
+      AppMethodBeat.o(13909);
+      return;
+      if (this.jTJ.length == 0)
+      {
+        ab.i("MicroMsg.BrandService.BizSearchResultItemContainer", "business type size is 0.");
+        AppMethodBeat.o(13909);
+        return;
+      }
+      b(paramString, paramInt, this.jTJ[0]);
+      this.jTG.sb(0);
     }
   }
   
   public c getAdapter()
   {
-    return this.icO;
+    return this.jTD;
   }
   
   public BizSearchResultItemContainer.b getIOnSearchStateChangedListener()
   {
-    return this.icT;
+    return this.jTI;
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
     int i = 3;
-    y.i("MicroMsg.BrandService.BizSearchResultItemContainer", "errType (%d) , errCode (%d) , errMsg (errMsg)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.icT != null) {
-      this.icT.axB();
+    AppMethodBeat.i(13905);
+    ab.i("MicroMsg.BrandService.BizSearchResultItemContainer", "errType (%d) , errCode (%d) , errMsg (errMsg)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.jTI != null) {
+      this.jTI.aWz();
     }
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      this.icQ.idd = false;
-      this.icW = true;
-      Toast.makeText(getContext(), getContext().getString(b.h.fmt_search_err, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      this.jTF.jTS = false;
+      this.jTL = true;
+      Toast.makeText(getContext(), getContext().getString(2131300093, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      AppMethodBeat.o(13905);
       return;
     }
-    this.icW = false;
+    this.jTL = false;
     if (paramm == null)
     {
-      y.e("MicroMsg.BrandService.BizSearchResultItemContainer", "scene is null.");
+      ab.e("MicroMsg.BrandService.BizSearchResultItemContainer", "scene is null.");
+      AppMethodBeat.o(13905);
       return;
     }
     if (paramm.getType() == 1070)
     {
-      y.i("MicroMsg.BrandService.BizSearchResultItemContainer", "BizSearchHomePage.");
-      g.Dk().b(1070, this);
+      ab.i("MicroMsg.BrandService.BizSearchResultItemContainer", "BizSearchHomePage.");
+      g.Rc().b(1070, this);
       paramString = (i)paramm;
-      if (paramString.ice == null)
+      if (paramString.jSU == null)
       {
         paramString = null;
-        this.icO.h(this.icQ.bGm, paramString);
-        paramm = this.icO.cN(this.icU[(this.icU.length - 1)]);
-        if ((paramm != null) && (!paramm.icL)) {
-          break label374;
+        this.jTD.i(this.jTF.cnv, paramString);
+        paramm = this.jTD.hP(this.jTJ[(this.jTJ.length - 1)]);
+        if ((paramm != null) && (!paramm.jTA)) {
+          break label397;
         }
         paramInt1 = 0;
-        label223:
+        label240:
         if (paramInt1 != 0) {
-          break label383;
+          break label406;
         }
         paramInt2 = i;
-        label230:
+        label247:
         if ((paramString != null) && (paramString.size() > 0))
         {
-          paramString = (kq)paramString.get(paramString.size() - 1);
+          paramString = (nc)paramString.get(paramString.size() - 1);
           if (paramString != null) {
-            this.icQ.offset = (paramString.sDT + this.icV);
+            this.jTF.offset = (paramString.wzS + this.jTK);
           }
         }
-        if (!this.icO.isEmpty()) {
-          break label545;
+        if (!this.jTD.isEmpty()) {
+          break label574;
         }
-        new ah(Looper.getMainLooper()).post(new Runnable()
-        {
-          public final void run()
-          {
-            TextView localTextView = BizSearchResultItemContainer.e(BizSearchResultItemContainer.this);
-            if (BizSearchResultItemContainer.d(BizSearchResultItemContainer.this).isEmpty()) {}
-            for (int i = 0;; i = 8)
-            {
-              localTextView.setVisibility(i);
-              return;
-            }
-          }
-        });
+        new ak(Looper.getMainLooper()).post(new BizSearchResultItemContainer.2(this));
       }
     }
     for (;;)
     {
-      this.icQ.icI = paramInt1;
-      this.icR.ov(paramInt2);
-      this.icQ.idd = false;
-      y.v("MicroMsg.BrandService.BizSearchResultItemContainer", "The next load data offset is (%d).", new Object[] { Integer.valueOf(this.icQ.offset) });
+      this.jTF.jTx = paramInt1;
+      this.jTG.sb(paramInt2);
+      this.jTF.jTS = false;
+      ab.v("MicroMsg.BrandService.BizSearchResultItemContainer", "The next load data offset is (%d).", new Object[] { Integer.valueOf(this.jTF.offset) });
+      AppMethodBeat.o(13905);
       return;
-      paramString = paramString.ice.tGF;
+      paramString = paramString.jSU.xKt;
       break;
-      label374:
-      paramInt1 = paramm.icI;
-      break label223;
-      label383:
+      label397:
+      paramInt1 = paramm.jTx;
+      break label240;
+      label406:
       paramInt2 = 2;
-      break label230;
+      break label247;
       if (paramm.getType() == 1071)
       {
-        g.Dk().b(1071, this);
-        y.i("MicroMsg.BrandService.BizSearchResultItemContainer", "BizSearchDetailPage.");
-        paramString = ((h)paramm).axv();
-        if ((paramString == null) || (paramString.kTw == null)) {
-          y.e("MicroMsg.BrandService.BizSearchResultItemContainer", "BusinessContent or itemList is null.");
+        g.Rc().b(1071, this);
+        ab.i("MicroMsg.BrandService.BizSearchResultItemContainer", "BizSearchDetailPage.");
+        paramString = ((h)paramm).aWt();
+        if ((paramString == null) || (paramString.nrw == null)) {
+          ab.e("MicroMsg.BrandService.BizSearchResultItemContainer", "BusinessContent or itemList is null.");
         }
         if (paramString == null)
         {
           paramInt1 = 0;
-          label451:
+          label474:
           if (paramInt1 != 0) {
-            break label516;
+            break label539;
           }
         }
-        label516:
+        label539:
         for (paramInt2 = 3;; paramInt2 = 2)
         {
-          this.icO.a(paramString, true);
+          this.jTD.a(paramString, true);
           if (paramString != null)
           {
-            y.d("MicroMsg.BrandService.BizSearchResultItemContainer", "searchId : %s.", new Object[] { paramString.sFF });
-            this.icQ.offset = (paramString.sDT + this.icV);
+            ab.d("MicroMsg.BrandService.BizSearchResultItemContainer", "searchId : %s.", new Object[] { paramString.wBZ });
+            this.jTF.offset = (paramString.wzS + this.jTK);
           }
           break;
-          paramInt1 = paramString.sFD;
-          break label451;
+          paramInt1 = paramString.wBX;
+          break label474;
         }
       }
-      y.e("MicroMsg.BrandService.BizSearchResultItemContainer", "Error type(%d).", new Object[] { Integer.valueOf(paramm.getType()) });
+      ab.e("MicroMsg.BrandService.BizSearchResultItemContainer", "Error type(%d).", new Object[] { Integer.valueOf(paramm.getType()) });
+      AppMethodBeat.o(13905);
       return;
-      label545:
-      this.icQ.ide = true;
+      label574:
+      this.jTF.isSearchMode = true;
     }
   }
   
   final void reset()
   {
-    this.icO.axz();
-    this.icR.ov(0);
-    this.icQ.ide = false;
-    this.icQ.idd = false;
-    this.icQ.offset = 0;
-    this.icQ.bGm = null;
-    this.icQ.icI = 1;
+    AppMethodBeat.i(13906);
+    this.jTD.aWx();
+    this.jTG.sb(0);
+    this.jTF.isSearchMode = false;
+    this.jTF.jTS = false;
+    this.jTF.offset = 0;
+    this.jTF.cnv = null;
+    this.jTF.jTx = 1;
+    AppMethodBeat.o(13906);
   }
   
   public void setAdapter(c paramc)
   {
-    this.icO = paramc;
-    if (this.icO != null)
+    AppMethodBeat.i(13903);
+    this.jTD = paramc;
+    if (this.jTD != null)
     {
-      this.icO.setScene(this.fzn);
-      paramc = this.icN;
-      BizSearchResultItemContainer.a locala = this.icR;
-      View localView = View.inflate(getContext(), b.e.loading_footer, null);
-      locala.ida = localView.findViewById(b.d.loading_progress);
-      locala.idb = localView.findViewById(b.d.loading_end);
-      locala.idc = localView.findViewById(b.d.loading_tip);
-      locala.ida.setVisibility(8);
-      locala.idb.setVisibility(8);
-      locala.idc.setVisibility(8);
+      this.jTD.setScene(this.mScene);
+      paramc = this.jTC;
+      BizSearchResultItemContainer.a locala = this.jTG;
+      View localView = View.inflate(getContext(), 2130969988, null);
+      locala.jTP = localView.findViewById(2131825426);
+      locala.jTQ = localView.findViewById(2131822313);
+      locala.jTR = localView.findViewById(2131825427);
+      locala.jTP.setVisibility(8);
+      locala.jTQ.setVisibility(8);
+      locala.jTR.setVisibility(8);
       paramc.addFooterView(localView, null, false);
-      this.icN.setAdapter(this.icO);
-      this.icN.setOnScrollListener(new BizSearchResultItemContainer.1(this));
-      this.icN.setOnItemClickListener(this.icO);
-      if (this.icQ.icd == 0L) {
+      this.jTC.setAdapter(this.jTD);
+      this.jTC.setOnScrollListener(new BizSearchResultItemContainer.1(this));
+      this.jTC.setOnItemClickListener(this.jTD);
+      if (this.jTF.jST == 0L)
+      {
         setBusinessTypes(new long[] { 1L });
+        AppMethodBeat.o(13903);
       }
-      return;
     }
-    this.icN.setAdapter(this.icO);
+    else
+    {
+      this.jTC.setAdapter(this.jTD);
+    }
+    AppMethodBeat.o(13903);
   }
   
   public void setAddContactScene(int paramInt)
   {
-    this.icy = paramInt;
-    this.icO.setAddContactScene(paramInt);
+    AppMethodBeat.i(13911);
+    this.jTn = paramInt;
+    this.jTD.setAddContactScene(paramInt);
+    AppMethodBeat.o(13911);
   }
   
   public void setBusinessTypes(long... paramVarArgs)
   {
+    AppMethodBeat.i(13907);
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      this.icU = paramVarArgs;
-      this.icQ.icd = 0L;
+      this.jTJ = paramVarArgs;
+      this.jTF.jST = 0L;
       int i = 0;
       while (i < paramVarArgs.length)
       {
-        BizSearchResultItemContainer.c localc = this.icQ;
-        localc.icd |= paramVarArgs[i];
+        BizSearchResultItemContainer.c localc = this.jTF;
+        localc.jST |= paramVarArgs[i];
         i += 1;
       }
-      this.icO.e(paramVarArgs);
+      this.jTD.c(paramVarArgs);
     }
+    AppMethodBeat.o(13907);
   }
   
   public final void setDisplayArgs$25decb5(boolean paramBoolean)
   {
-    this.icO.u(paramBoolean, false);
+    AppMethodBeat.i(13912);
+    this.jTD.v(paramBoolean, false);
+    AppMethodBeat.o(13912);
   }
   
   public void setIOnSearchStateChangedListener(BizSearchResultItemContainer.b paramb)
   {
-    this.icT = paramb;
+    this.jTI = paramb;
   }
   
   public void setMode(int paramInt)
   {
-    this.icX = paramInt;
+    this.jTM = paramInt;
   }
   
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
+    AppMethodBeat.i(13913);
     super.setOnTouchListener(paramOnTouchListener);
-    this.icN.setOnTouchListener(paramOnTouchListener);
+    this.jTC.setOnTouchListener(paramOnTouchListener);
+    AppMethodBeat.o(13913);
   }
   
   public void setReporter(c.b paramb)
   {
-    if (this.icO != null) {
-      this.icO.setReporter(paramb);
+    AppMethodBeat.i(13908);
+    if (this.jTD != null) {
+      this.jTD.setReporter(paramb);
     }
+    AppMethodBeat.o(13908);
   }
   
   public void setScene(int paramInt)
   {
-    this.fzn = paramInt;
-    this.icO.setScene(this.fzn);
+    AppMethodBeat.i(13910);
+    this.mScene = paramInt;
+    this.jTD.setScene(this.mScene);
+    AppMethodBeat.o(13910);
   }
 }
 

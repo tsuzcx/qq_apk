@@ -2,68 +2,94 @@ package com.tencent.mm.plugin.webview.model;
 
 import android.content.ContentValues;
 import android.os.HandlerThread;
-import com.tencent.mm.cf.h;
-import com.tencent.mm.h.c.cm;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.h;
+import com.tencent.mm.g.c.cr;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ax;
-import com.tencent.mm.sdk.platformtools.ax.b;
-import com.tencent.mm.sdk.platformtools.ax.c;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bb;
+import com.tencent.mm.sdk.platformtools.bb.b;
+import com.tencent.mm.sdk.platformtools.bb.c;
 
 public final class e
-  implements ax.c<Integer, Long>
+  implements bb.c<Integer, Long>
 {
-  public static final String[] dXp = { i.a(fCU, "JsLogBlockList") };
-  private static final c.a fCU = ;
-  public final h dXo;
-  public final ax<Integer, Long> rfk;
-  private long rfl;
+  public static final String[] SQL_CREATE;
+  private static final c.a gUb;
+  public final h fnw;
+  public final bb<Integer, Long> uVm;
+  private long uVn;
+  
+  static
+  {
+    AppMethodBeat.i(6578);
+    gUb = cr.Hm();
+    SQL_CREATE = new String[] { j.getCreateSQLs(gUb, "JsLogBlockList") };
+    AppMethodBeat.o(6578);
+  }
   
   public e(h paramh)
   {
-    this.dXo = paramh;
-    this.rfk = new ax(this, au.DS().mnU.getLooper(), 100, 20, 300000L, 1000L);
+    AppMethodBeat.i(6573);
+    this.fnw = paramh;
+    this.uVm = new bb(this, g.RO().oNc.getLooper(), 100, 20);
+    AppMethodBeat.o(6573);
   }
   
-  public final boolean Rw()
+  public final void a(bb.b<Integer, Long> paramb)
   {
-    if (this.dXo.inTransaction()) {}
-    do
+    AppMethodBeat.i(6576);
+    switch (paramb.ypQ)
     {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(6576);
+      return;
+      this.fnw.delete("JsLogBlockList", "logId=" + paramb.ypR, null);
+      AppMethodBeat.o(6576);
+      return;
+      ContentValues localContentValues = new ContentValues(2);
+      localContentValues.put("logId", (Integer)paramb.ypR);
+      localContentValues.put("liftTime", (Long)paramb.values);
+      this.fnw.replace("JsLogBlockList", "logId", localContentValues);
+    }
+  }
+  
+  public final boolean akF()
+  {
+    AppMethodBeat.i(6575);
+    if (this.fnw.inTransaction())
+    {
+      AppMethodBeat.o(6575);
       return false;
-      this.rfl = this.dXo.eV(Thread.currentThread().getId());
-    } while (this.rfl <= 0L);
-    return true;
-  }
-  
-  public final void Rx()
-  {
-    if (this.rfl > 0L) {
-      this.dXo.hI(this.rfl);
     }
-  }
-  
-  public final void a(ax<Integer, Long> paramax, ax.b<Integer, Long> paramb)
-  {
-    switch (paramb.uhL)
+    this.uVn = this.fnw.kr(Thread.currentThread().getId());
+    if (this.uVn > 0L)
     {
-    default: 
-      return;
-    case 2: 
-      this.dXo.delete("JsLogBlockList", "logId=" + paramb.smD, null);
-      return;
+      AppMethodBeat.o(6575);
+      return true;
     }
-    paramax = new ContentValues(2);
-    paramax.put("logId", (Integer)paramb.smD);
-    paramax.put("liftTime", (Long)paramb.values);
-    this.dXo.replace("JsLogBlockList", "logId", paramax);
+    AppMethodBeat.o(6575);
+    return false;
   }
   
-  public final void cbF()
+  public final void akG()
   {
-    this.rfk.mx(true);
+    AppMethodBeat.i(6577);
+    if (this.uVn > 0L) {
+      this.fnw.nY(this.uVn);
+    }
+    AppMethodBeat.o(6577);
+  }
+  
+  public final void dbI()
+  {
+    AppMethodBeat.i(6574);
+    this.uVm.pM(true);
+    AppMethodBeat.o(6574);
   }
 }
 

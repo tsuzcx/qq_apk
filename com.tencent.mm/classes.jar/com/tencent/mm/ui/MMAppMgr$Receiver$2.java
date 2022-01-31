@@ -1,11 +1,18 @@
 package com.tencent.mm.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MMAppMgr$Receiver$2
   implements Runnable
 {
   MMAppMgr$Receiver$2(MMAppMgr.Receiver paramReceiver) {}
   
-  public final void run() {}
+  public final void run()
+  {
+    AppMethodBeat.i(29566);
+    MMAppMgr.dCx();
+    AppMethodBeat.o(29566);
+  }
 }
 
 

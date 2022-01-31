@@ -4,13 +4,17 @@ import android.content.Context;
 import android.net.Uri;
 import com.davemorrissey.labs.subscaleview.a.d;
 import com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
   implements com.davemorrissey.labs.subscaleview.c.a
 {
   public final com.davemorrissey.labs.subscaleview.c.b a(SubsamplingScaleImageView paramSubsamplingScaleImageView, Context paramContext, com.davemorrissey.labs.subscaleview.a.b<? extends d> paramb, Uri paramUri, boolean paramBoolean)
   {
-    return new a.a(paramSubsamplingScaleImageView, paramContext, paramb, paramUri, paramBoolean);
+    AppMethodBeat.i(115620);
+    paramSubsamplingScaleImageView = new a.a(paramSubsamplingScaleImageView, paramContext, paramb, paramUri, paramBoolean);
+    AppMethodBeat.o(115620);
+    return paramSubsamplingScaleImageView;
   }
 }
 

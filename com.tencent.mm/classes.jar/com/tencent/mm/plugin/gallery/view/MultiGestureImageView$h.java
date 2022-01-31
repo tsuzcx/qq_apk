@@ -1,23 +1,29 @@
 package com.tencent.mm.plugin.gallery.view;
 
 import android.os.Handler;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MultiTouchImageView;
 
 final class MultiGestureImageView$h
   extends MultiGestureImageView.a
 {
-  float[] kLk = new float[9];
-  MultiTouchImageView kLl;
+  float[] nhN;
+  MultiTouchImageView nhO;
   
   public MultiGestureImageView$h(MultiGestureImageView paramMultiGestureImageView, MultiTouchImageView paramMultiTouchImageView)
   {
     super(paramMultiGestureImageView);
-    this.kLl = paramMultiTouchImageView;
+    AppMethodBeat.i(21631);
+    this.nhN = new float[9];
+    this.nhO = paramMultiTouchImageView;
+    AppMethodBeat.o(21631);
   }
   
   public final void play()
   {
-    MultiGestureImageView.h(this.kLj).getHandler().post(new MultiGestureImageView.h.1(this));
+    AppMethodBeat.i(21632);
+    MultiGestureImageView.h(this.nhM).getHandler().post(new MultiGestureImageView.h.1(this));
+    AppMethodBeat.o(21632);
   }
 }
 

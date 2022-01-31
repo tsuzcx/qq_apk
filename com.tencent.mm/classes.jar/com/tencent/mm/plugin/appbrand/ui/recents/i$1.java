@@ -1,13 +1,24 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class i$1
   implements Runnable
 {
-  i$1(i parami) {}
+  i$1(i parami, boolean paramBoolean) {}
   
   public final void run()
   {
-    i.a(this.hiZ);
+    AppMethodBeat.i(133445);
+    if (this.iUF)
+    {
+      i.a(this.iUG).setVisibility(0);
+      AppMethodBeat.o(133445);
+      return;
+    }
+    i.a(this.iUG).setVisibility(8);
+    AppMethodBeat.o(133445);
   }
 }
 

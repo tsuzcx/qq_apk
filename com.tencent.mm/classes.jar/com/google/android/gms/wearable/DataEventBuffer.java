@@ -3,34 +3,31 @@ package com.google.android.gms.wearable;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.common.data.DataHolder;
-import com.google.android.gms.common.data.zzf;
-import com.google.android.gms.wearable.internal.zzaj;
+import com.google.android.gms.common.data.EntityBuffer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class DataEventBuffer
-  extends zzf<DataEvent>
+  extends EntityBuffer<DataEvent>
   implements Result
 {
-  private final Status zzair;
+  private final Status zzp;
   
   public DataEventBuffer(DataHolder paramDataHolder)
   {
     super(paramDataHolder);
-    this.zzair = new Status(paramDataHolder.getStatusCode());
+    AppMethodBeat.i(70799);
+    this.zzp = new Status(paramDataHolder.getStatusCode());
+    AppMethodBeat.o(70799);
+  }
+  
+  public String getPrimaryDataMarkerColumn()
+  {
+    return "path";
   }
   
   public Status getStatus()
   {
-    return this.zzair;
-  }
-  
-  protected DataEvent zzC(int paramInt1, int paramInt2)
-  {
-    return new zzaj(this.zzaBi, paramInt1, paramInt2);
-  }
-  
-  protected String zzxn()
-  {
-    return "path";
+    return this.zzp;
   }
 }
 

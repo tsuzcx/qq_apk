@@ -1,35 +1,45 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
 import android.content.Context;
-import android.os.SystemClock;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.wcdb.support.Log;
 
 public class MMSightCaptureTouchView
   extends RelativeLayout
 {
-  private long fxo = -1L;
-  private float fxp = -1.0F;
-  private int fxq = 0;
-  private MMSightCaptureTouchView.a mom;
+  private float gOv;
+  private int gOw;
+  private GestureDetector lOj;
+  private long oNu;
+  private MMSightCaptureTouchView.a oNv;
   
   public MMSightCaptureTouchView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(paramContext, paramAttributeSet);
+    this(paramContext, paramAttributeSet, 0);
   }
   
   public MMSightCaptureTouchView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(55076);
+    this.oNu = 0L;
+    this.gOv = -1.0F;
+    this.gOw = 0;
+    this.lOj = new GestureDetector(getContext(), new MMSightCaptureTouchView.1(this));
+    this.lOj.setIsLongpressEnabled(false);
+    AppMethodBeat.o(55076);
   }
   
-  private float s(MotionEvent paramMotionEvent)
+  private float x(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(55078);
     try
     {
-      if (this.fxq >= 2)
+      if (this.gOw >= 2)
       {
         float f3 = paramMotionEvent.getX(0);
         float f1 = paramMotionEvent.getY(0);
@@ -37,18 +47,22 @@ public class MMSightCaptureTouchView
         float f2 = paramMotionEvent.getY(1);
         f3 = Math.abs(f3 - f4);
         f1 = Math.abs(f1 - f2);
+        AppMethodBeat.o(55078);
         return f3 + f1;
       }
     }
     catch (Exception paramMotionEvent)
     {
       Log.e("MicroMsg.MMSightCaptureTouchView", "pointerDistance error: %s", new Object[] { paramMotionEvent.getMessage() });
+      AppMethodBeat.o(55078);
     }
     return 0.0F;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(55077);
+    this.lOj.onTouchEvent(paramMotionEvent);
     switch (paramMotionEvent.getAction() & 0xFF)
     {
     }
@@ -59,62 +73,53 @@ public class MMSightCaptureTouchView
       {
         do
         {
-          return true;
-          Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_DOWN");
-          if ((this.fxo > 0L) && (SystemClock.elapsedRealtime() - this.fxo < 400L)) {
-            if (this.mom != null) {
-              this.mom.aKT();
-            }
-          }
           for (;;)
           {
-            this.fxo = SystemClock.elapsedRealtime();
-            this.fxp = -1.0F;
-            this.fxq += 1;
+            AppMethodBeat.o(55077);
             return true;
-            if (this.mom != null) {
-              this.mom.O(paramMotionEvent.getX(), paramMotionEvent.getY());
-            }
+            Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_DOWN");
+            this.gOv = -1.0F;
+            this.gOw += 1;
+            continue;
+            Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_POINTER_DOWN");
+            this.gOw += 1;
+            continue;
+            Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_POINTER_UP");
+            this.gOw -= 1;
+            continue;
+            Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_UP");
+            this.gOv = -1.0F;
+            this.gOw = 0;
           }
-          Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_POINTER_DOWN");
-          this.fxq += 1;
-          return true;
-          Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_POINTER_UP");
-          this.fxq -= 1;
-          return true;
-          Log.d("MicroMsg.MMSightCaptureTouchView", "ACTION_UP");
-          this.fxp = -1.0F;
-          this.fxq = 0;
-          return true;
-        } while (this.fxq < 2);
-        f = s(paramMotionEvent);
+        } while (this.gOw < 2);
+        f = x(paramMotionEvent);
         Log.v("MicroMsg.MMSightCaptureTouchView", "distance: %s", new Object[] { Float.valueOf(f) });
       } while (f <= 0.0F);
-      if (this.fxp <= 0.0F) {
+      if (this.gOv <= 0.0F) {
         break;
       }
-    } while (Math.abs(f - this.fxp) <= 15.0F);
-    if (f > this.fxp)
+    } while (Math.abs(f - this.gOv) <= 15.0F);
+    if (f > this.gOv)
     {
       Log.d("MicroMsg.MMSightCaptureTouchView", "zoom out");
-      if (this.mom != null) {
-        this.mom.Zh();
+      if (this.oNv != null) {
+        this.oNv.asQ();
       }
     }
     for (;;)
     {
-      this.fxp = f;
-      return true;
+      this.gOv = f;
+      break;
       Log.d("MicroMsg.MMSightCaptureTouchView", "zoom in");
-      if (this.mom != null) {
-        this.mom.Zi();
+      if (this.oNv != null) {
+        this.oNv.asR();
       }
     }
   }
   
   public void setTouchCallback(MMSightCaptureTouchView.a parama)
   {
-    this.mom = parama;
+    this.oNv = parama;
   }
 }
 

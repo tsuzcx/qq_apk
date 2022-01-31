@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.game.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView.a;
 
 final class GameIndexListView$1
@@ -7,9 +8,11 @@ final class GameIndexListView$1
 {
   GameIndexListView$1(GameIndexListView paramGameIndexListView) {}
   
-  public final void apj()
+  public final void aNj()
   {
-    GameIndexListView.a(this.lbU);
+    AppMethodBeat.i(111969);
+    GameIndexListView.a(this.nzP);
+    AppMethodBeat.o(111969);
   }
 }
 

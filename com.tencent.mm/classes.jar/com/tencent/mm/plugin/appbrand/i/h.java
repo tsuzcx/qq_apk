@@ -1,15 +1,8 @@
 package com.tencent.mm.plugin.appbrand.i;
 
-import java.nio.ByteBuffer;
-
 public abstract interface h
-  extends g
 {
-  public abstract ByteBuffer getNativeBuffer(int paramInt);
-  
-  public abstract int getNativeBufferId();
-  
-  public abstract void setNativeBuffer(int paramInt, ByteBuffer paramByteBuffer);
+  public abstract void s(String paramString1, String paramString2);
 }
 
 

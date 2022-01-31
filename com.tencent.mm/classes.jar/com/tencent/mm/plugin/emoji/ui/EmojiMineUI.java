@@ -1,231 +1,291 @@
 package com.tencent.mm.plugin.emoji.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.kernel.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.a.c;
-import com.tencent.mm.plugin.emoji.f.d;
-import com.tencent.mm.plugin.emoji.f.e;
-import com.tencent.mm.plugin.emoji.f.f;
-import com.tencent.mm.plugin.emoji.f.h;
-import com.tencent.mm.plugin.emoji.model.f;
 import com.tencent.mm.plugin.emoji.model.i;
 import com.tencent.mm.plugin.emoji.sync.BKGLoaderManager;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.afi;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.GetEmotionListResponse;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 public class EmojiMineUI
   extends BaseEmojiStoreUI
   implements View.OnClickListener
 {
   private final String TAG = "MicroMsg.emoji.EmojiMineUI";
-  private View jcC;
-  private TextView jcD;
-  private ViewGroup jdp;
-  private ViewGroup jdq;
-  private ViewGroup jdr;
-  private ViewGroup jds;
-  private TextView jdt;
+  private ViewGroup llZ;
+  private View llo;
+  private TextView llp;
+  private ViewGroup lma;
+  private ViewGroup lmb;
+  private ViewGroup lmc;
+  private ViewGroup lmd;
+  private TextView lme;
   
-  public final void a(String paramString, l paraml)
+  private boolean us(int paramInt)
   {
+    AppMethodBeat.i(53378);
+    Intent localIntent = new Intent();
+    localIntent.setClass(this, EmojiCustomUI.class);
+    localIntent.putExtra("key_emoji_panel_type", paramInt);
+    startActivity(localIntent);
+    AppMethodBeat.o(53378);
+    return true;
+  }
+  
+  public final void a(String paramString, m paramm)
+  {
+    AppMethodBeat.i(53382);
     if ((paramString != null) && (paramString.equals("event_update_group")))
     {
-      aIU();
-      cD(131074, 50);
+      bms();
+      eb(131074, 50);
     }
+    AppMethodBeat.o(53382);
   }
   
-  protected final void a(boolean paramBoolean1, f paramf, boolean paramBoolean2, boolean paramBoolean3) {}
+  protected final void a(boolean paramBoolean1, com.tencent.mm.plugin.emoji.model.e parame, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  protected final boolean aIA()
+  protected final int aI(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(53380);
+    int i = super.aI(paramArrayOfByte);
+    AppMethodBeat.o(53380);
+    return i;
+  }
+  
+  protected final int blS()
+  {
+    return 24;
+  }
+  
+  protected final int blT()
+  {
+    return 7;
+  }
+  
+  protected final com.tencent.mm.plugin.emoji.a.a.a blU()
+  {
+    AppMethodBeat.i(53379);
+    c localc = new c(getContext());
+    AppMethodBeat.o(53379);
+    return localc;
+  }
+  
+  protected final void blV()
+  {
+    AppMethodBeat.i(53383);
+    this.lmd = ((ViewGroup)View.inflate(getContext(), 2130969374, null));
+    this.lme = ((TextView)this.lmd.findViewById(2131823607));
+    this.lme.setText(2131303247);
+    this.lme.setVisibility(8);
+    this.mListView.addHeaderView(this.lmd, null, false);
+    this.llZ = ((ViewGroup)View.inflate(getContext(), 2130969371, null));
+    this.lma = ((ViewGroup)this.lmd.findViewById(2131823603));
+    this.lmb = ((ViewGroup)this.lmd.findViewById(2131823604));
+    this.lmc = ((ViewGroup)this.llZ.findViewById(2131823602));
+    ((TextView)this.lma.findViewById(16908310)).setText(2131299128);
+    ((TextView)this.lmc.findViewById(16908310)).setText(2131299157);
+    ((TextView)this.lmb.findViewById(2131823606)).setText(2131299120);
+    this.lmc.findViewById(2131820946).setBackgroundResource(2130838447);
+    this.lma.setOnClickListener(this);
+    this.lmc.setOnClickListener(this);
+    this.lmb.setOnClickListener(this);
+    this.mListView.addFooterView(this.llZ, null, false);
+    AppMethodBeat.o(53383);
+  }
+  
+  protected final boolean blX()
   {
     return false;
   }
   
-  protected final boolean aIB()
+  protected final boolean blY()
   {
     return false;
   }
   
-  protected final int aIE()
+  protected final int bmb()
   {
     return 8;
   }
   
-  protected final boolean aII()
+  protected final boolean bmg()
   {
     boolean bool = true;
-    if (this.iYq != null)
+    AppMethodBeat.i(53384);
+    if (this.lhv != null)
     {
-      this.iYq.notifyDataSetChanged();
-      this.jbG = true;
-      this.hrf.setVisibility(8);
+      this.lhv.notifyDataSetChanged();
+      this.lkp = true;
+      this.xy.setVisibility(8);
     }
     for (;;)
     {
-      aIM();
+      bmk();
+      AppMethodBeat.o(53384);
       return bool;
       bool = false;
     }
   }
   
-  protected final boolean aIK()
+  protected final boolean bmi()
   {
     return true;
   }
   
-  protected final boolean aIL()
+  protected final boolean bmj()
   {
     return false;
   }
   
-  public final void aIM()
+  public final void bmk()
   {
-    if (this.jds != null)
+    AppMethodBeat.i(53387);
+    if (this.lmd != null)
     {
-      if ((this.iYq != null) && (!this.iYq.isEmpty())) {
-        this.jdt.setVisibility(0);
+      if ((this.lhv != null) && (!this.lhv.isEmpty()))
+      {
+        this.lme.setVisibility(0);
+        AppMethodBeat.o(53387);
+        return;
       }
+      this.lme.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.jdt.setVisibility(8);
+    AppMethodBeat.o(53387);
   }
   
-  protected final int aIv()
+  protected final void c(GetEmotionListResponse paramGetEmotionListResponse)
   {
-    return 24;
+    AppMethodBeat.i(53385);
+    super.c(paramGetEmotionListResponse);
+    AppMethodBeat.o(53385);
   }
   
-  protected final int aIw()
+  public int getLayoutId()
   {
-    return 7;
-  }
-  
-  protected final com.tencent.mm.plugin.emoji.a.a.a aIx()
-  {
-    return new c(this.mController.uMN);
-  }
-  
-  protected final void aIy()
-  {
-    this.jds = ((ViewGroup)View.inflate(this.mController.uMN, f.f.emoji_mine_header, null));
-    this.jdt = ((TextView)this.jds.findViewById(f.e.title_add_from_store));
-    this.jdt.setText(f.h.settings_emoji_use_tip);
-    this.jdt.setVisibility(8);
-    this.Nn.addHeaderView(this.jds, null, false);
-    this.jdp = ((ViewGroup)View.inflate(this.mController.uMN, f.f.emoji_mine_footer, null));
-    this.jdq = ((ViewGroup)this.jds.findViewById(f.e.mine_more_custom));
-    ((TextView)this.jdq.findViewById(16908310)).setText(f.h.emoji_custom);
-    this.jdr = ((ViewGroup)this.jdp.findViewById(f.e.mine_more_paid));
-    ((TextView)this.jdr.findViewById(16908310)).setText(f.h.emoji_paid);
-    this.jdr.findViewById(f.e.content).setBackgroundResource(f.d.comm_list_item_selector_no_divider);
-    this.jdq.setOnClickListener(this);
-    this.jdr.setOnClickListener(this);
-    this.Nn.addFooterView(this.jdp, null, false);
-  }
-  
-  protected final int ak(byte[] paramArrayOfByte)
-  {
-    return super.ak(paramArrayOfByte);
-  }
-  
-  protected final void c(afi paramafi)
-  {
-    super.c(paramafi);
-  }
-  
-  protected final int getLayoutId()
-  {
-    return f.f.emoji_store_mine;
+    return 2130969389;
   }
   
   public final void h(String paramString1, int paramInt1, int paramInt2, String paramString2) {}
   
-  public final void i(Message paramMessage)
+  public void initView()
   {
-    if ((paramMessage.what == 8001) && (this.jcC != null)) {
-      this.jcC.setVisibility(8);
-    }
-    super.i(paramMessage);
-  }
-  
-  protected final void initView()
-  {
-    setMMTitle(f.h.settings_emoji_mine);
+    AppMethodBeat.i(53376);
+    setMMTitle(2131303245);
     super.initView();
-    this.jcC = findViewById(f.e.sync_view);
-    this.jcD = ((TextView)this.jcC.findViewById(f.e.sync_status));
-    this.jcD.setText(f.h.emoji_sync_syncing_in_wifi);
-    if (i.aHQ().jan.jaD)
+    this.llo = findViewById(2131823566);
+    this.llp = ((TextView)this.llo.findViewById(2131823567));
+    this.llp.setText(2131299275);
+    if (i.blq().lje.ljm)
     {
-      i.aHQ();
-      if (BKGLoaderManager.aIq())
+      i.blq();
+      if (BKGLoaderManager.blP())
       {
-        this.jcC.setVisibility(0);
-        cD(8001, 3000);
+        this.llo.setVisibility(0);
+        eb(8001, 3000);
       }
     }
     for (;;)
     {
-      this.Nn.setOnScrollListener(null);
+      this.mListView.setOnScrollListener(null);
+      AppMethodBeat.o(53376);
       return;
-      this.jcC.setVisibility(8);
+      this.llo.setVisibility(8);
     }
+  }
+  
+  public final void n(Message paramMessage)
+  {
+    AppMethodBeat.i(53386);
+    if ((paramMessage.what == 8001) && (this.llo != null)) {
+      this.llo.setVisibility(8);
+    }
+    super.n(paramMessage);
+    AppMethodBeat.o(53386);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdq)
+    AppMethodBeat.i(53377);
+    if (paramView == this.lma)
     {
-      paramView = new Intent();
-      paramView.setClass(this, EmojiCustomUI.class);
-      startActivity(paramView);
-    }
-    while (paramView != this.jdr) {
+      us(0);
+      AppMethodBeat.o(53377);
       return;
     }
-    paramView = new Intent();
-    paramView.setClass(this, EmojiPaidUI.class);
-    startActivity(paramView);
+    if (paramView == this.lmc)
+    {
+      paramView = new Intent();
+      paramView.setClass(this, EmojiPaidUI.class);
+      startActivity(paramView);
+      AppMethodBeat.o(53377);
+      return;
+    }
+    if (paramView == this.lmb)
+    {
+      us(1);
+      AppMethodBeat.o(53377);
+      return;
+    }
+    AppMethodBeat.o(53377);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(53375);
     long l = System.currentTimeMillis();
     super.onCreate(paramBundle);
     int i = getIntent().getIntExtra("10931", 0);
-    h.nFQ.aC(10931, String.valueOf(i));
-    y.i("MicroMsg.emoji.EmojiMineUI", "jacks statistics enter Emoji Setting UI:%d", new Object[] { Integer.valueOf(i) });
-    setBackBtn(new EmojiMineUI.1(this));
-    addTextOptionMenu(0, getString(f.h.emoji_sequence), new EmojiMineUI.2(this));
-    if (!((Boolean)g.DP().Dz().get(ac.a.unZ, Boolean.valueOf(false))).booleanValue()) {
-      com.tencent.mm.plugin.emoji.c.a.fa(true);
+    h.qsU.kvStat(10931, String.valueOf(i));
+    ab.i("MicroMsg.emoji.EmojiMineUI", "jacks statistics enter Emoji Setting UI:%d", new Object[] { Integer.valueOf(i) });
+    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    {
+      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      {
+        AppMethodBeat.i(53373);
+        EmojiMineUI.this.finish();
+        AppMethodBeat.o(53373);
+        return true;
+      }
+    });
+    addTextOptionMenu(0, getString(2131299173), new EmojiMineUI.2(this));
+    if (!((Boolean)g.RL().Ru().get(ac.a.yxQ, Boolean.FALSE)).booleanValue()) {
+      com.tencent.mm.plugin.emoji.c.a.gD(true);
     }
-    h.nFQ.a(406L, 3L, 1L, false);
-    h.nFQ.a(406L, 5L, System.currentTimeMillis() - l, false);
-    h.nFQ.f(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(24), Integer.valueOf(24) });
+    h.qsU.idkeyStat(406L, 3L, 1L, false);
+    h.qsU.idkeyStat(406L, 5L, System.currentTimeMillis() - l, false);
+    h.qsU.e(12740, new Object[] { Integer.valueOf(4), "", "", "", Integer.valueOf(24), Integer.valueOf(24) });
+    AppMethodBeat.o(53375);
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    AppMethodBeat.i(53381);
     super.onItemClick(paramAdapterView, paramView, paramInt - 1, paramLong);
+    AppMethodBeat.o(53381);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

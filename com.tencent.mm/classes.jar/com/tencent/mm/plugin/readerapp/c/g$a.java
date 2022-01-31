@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.readerapp.c;
 
 public abstract interface g$a
 {
-  public abstract void buW();
+  public abstract void cfi();
 }
 
 

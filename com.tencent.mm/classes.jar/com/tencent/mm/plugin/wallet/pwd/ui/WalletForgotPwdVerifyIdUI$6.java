@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wallet.pwd.ui;
 
 import android.view.View;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.wallet_core.ui.a;
 
 final class WalletForgotPwdVerifyIdUI$6
@@ -9,23 +10,26 @@ final class WalletForgotPwdVerifyIdUI$6
 {
   WalletForgotPwdVerifyIdUI$6(WalletForgotPwdVerifyIdUI paramWalletForgotPwdVerifyIdUI) {}
   
-  public final void gK(boolean paramBoolean)
+  public final void onVisibleStateChange(boolean paramBoolean)
   {
+    AppMethodBeat.i(46311);
     if (paramBoolean)
     {
-      y.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS visible");
-      WalletForgotPwdVerifyIdUI.a(this.qpj, WalletForgotPwdVerifyIdUI.h(this.qpj), WalletForgotPwdVerifyIdUI.a(this.qpj));
-      WalletForgotPwdVerifyIdUI.i(this.qpj);
+      ab.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS visible");
+      WalletForgotPwdVerifyIdUI.a(this.tZw, WalletForgotPwdVerifyIdUI.h(this.tZw), WalletForgotPwdVerifyIdUI.a(this.tZw));
+      WalletForgotPwdVerifyIdUI.i(this.tZw);
+      AppMethodBeat.o(46311);
       return;
     }
-    y.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS unvisible");
-    WalletForgotPwdVerifyIdUI.j(this.qpj);
-    WalletForgotPwdVerifyIdUI.h(this.qpj).scrollTo(0, 0);
+    ab.i("MicroMsg.WalletForgotPwdVerifyIdUI", " TenpayKBS unvisible");
+    WalletForgotPwdVerifyIdUI.j(this.tZw);
+    WalletForgotPwdVerifyIdUI.h(this.tZw).scrollTo(0, 0);
+    AppMethodBeat.o(46311);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletForgotPwdVerifyIdUI.6
  * JD-Core Version:    0.7.0.1
  */

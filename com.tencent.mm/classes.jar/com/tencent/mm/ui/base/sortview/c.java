@@ -1,94 +1,136 @@
 package com.tencent.mm.ui.base.sortview;
 
+import android.os.Looper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.List<Lcom.tencent.mm.ui.base.sortview.d;>;
 import java.util.Map;
 
 public final class c
   extends BaseAdapter
 {
-  List<d> ved = null;
-  private Map<String, Integer> vei;
-  private c.a vej;
-  public Runnable vek = new c.1(this);
+  List<d> zsD;
+  private Map<String, Integer> zsI;
+  private c.a zsJ;
   
   public c(c.a parama)
   {
-    if (parama == null) {
-      throw new RuntimeException("ViewCreator can not be null.");
+    AppMethodBeat.i(107310);
+    this.zsD = null;
+    if (parama == null)
+    {
+      parama = new RuntimeException("ViewCreator can not be null.");
+      AppMethodBeat.o(107310);
+      throw parama;
     }
-    this.vej = parama;
-    this.ved = new ArrayList();
-    this.vei = new HashMap();
+    this.zsJ = parama;
+    this.zsD = new ArrayList();
+    this.zsI = new HashMap();
+    AppMethodBeat.o(107310);
   }
   
-  private String GD(int paramInt)
+  private String OX(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.ved.size())) {
+    AppMethodBeat.i(107318);
+    if ((paramInt < 0) || (paramInt >= this.zsD.size()))
+    {
+      AppMethodBeat.o(107318);
       return null;
     }
-    return ((d)this.ved.get(paramInt)).vem;
+    String str = ((d)this.zsD.get(paramInt)).zsM;
+    AppMethodBeat.o(107318);
+    return str;
   }
   
-  public final int adh(String paramString)
+  private static String a(d paramd)
   {
-    return bk.a((Integer)this.vei.get(paramString), -1);
-  }
-  
-  public final void dM(List<d> paramList)
-  {
-    if (this.ved != paramList)
-    {
-      this.ved.clear();
-      if (paramList != null) {
-        this.ved.addAll(paramList);
-      }
+    if ((paramd != null) && (paramd.zsM != null)) {
+      return paramd.zsM;
     }
-    this.vei.clear();
+    return null;
+  }
+  
+  private void dET()
+  {
+    AppMethodBeat.i(107314);
+    this.zsI.clear();
+    Object localObject = null;
     int i = 0;
-    paramList = null;
-    Object localObject;
-    if (i < this.ved.size())
+    if (i < this.zsD.size())
     {
-      localObject = (d)this.ved.get(i);
-      if ((localObject != null) && (((d)localObject).vem != null))
-      {
-        localObject = ((d)localObject).vem;
-        label88:
-        if ((localObject == null) || (((String)localObject).equalsIgnoreCase(paramList))) {
-          break label134;
-        }
-        this.vei.put(localObject, Integer.valueOf(i));
+      String str = a((d)this.zsD.get(i));
+      if ((str == null) || (str.equalsIgnoreCase((String)localObject))) {
+        break label90;
       }
+      this.zsI.put(str, Integer.valueOf(i));
+      localObject = str;
     }
+    label90:
     for (;;)
     {
       i += 1;
-      paramList = (List<d>)localObject;
       break;
-      localObject = null;
-      break label88;
-      notifyDataSetChanged();
+      AppMethodBeat.o(107314);
       return;
-      label134:
-      localObject = paramList;
     }
+  }
+  
+  private void eV(List<d> paramList)
+  {
+    AppMethodBeat.i(107313);
+    if (this.zsD != paramList)
+    {
+      this.zsD.clear();
+      if (paramList != null) {
+        this.zsD.addAll(paramList);
+      }
+    }
+    dET();
+    notifyDataSetChanged();
+    AppMethodBeat.o(107313);
+  }
+  
+  public final int atC(String paramString)
+  {
+    AppMethodBeat.i(107319);
+    int i = bo.a((Integer)this.zsI.get(paramString), -1);
+    AppMethodBeat.o(107319);
+    return i;
+  }
+  
+  public final void dI(List<d> paramList)
+  {
+    AppMethodBeat.i(107312);
+    if (Thread.currentThread().getId() != Looper.getMainLooper().getThread().getId())
+    {
+      al.d(new c.1(this, paramList));
+      AppMethodBeat.o(107312);
+      return;
+    }
+    eV(paramList);
+    AppMethodBeat.o(107312);
   }
   
   public final int getCount()
   {
-    return this.ved.size();
+    AppMethodBeat.i(107315);
+    int i = this.zsD.size();
+    AppMethodBeat.o(107315);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.ved.get(paramInt);
+    AppMethodBeat.i(107316);
+    Object localObject = this.zsD.get(paramInt);
+    AppMethodBeat.o(107316);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -99,32 +141,42 @@ public final class c
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     boolean bool2 = true;
+    AppMethodBeat.i(107317);
     paramViewGroup = (d)getItem(paramInt);
-    Object localObject = GD(paramInt);
-    String str = GD(paramInt + 1);
+    Object localObject = OX(paramInt);
+    String str = OX(paramInt + 1);
     boolean bool1;
-    if (paramInt == adh((String)localObject))
+    if (paramInt == atC((String)localObject))
     {
       bool1 = true;
       if ((localObject == null) || (((String)localObject).equalsIgnoreCase(str))) {
-        break label88;
+        break label100;
       }
     }
     for (;;)
     {
-      localObject = this.vej;
+      localObject = this.zsJ;
       getCount();
-      return ((c.a)localObject).a(paramViewGroup, paramView, paramInt, bool1, bool2);
+      paramView = ((c.a)localObject).a(paramViewGroup, paramView, paramInt, bool1, bool2);
+      AppMethodBeat.o(107317);
+      return paramView;
       bool1 = false;
       break;
-      label88:
+      label100:
       bool2 = false;
     }
+  }
+  
+  public final void refresh()
+  {
+    AppMethodBeat.i(107311);
+    dI(this.zsD);
+    AppMethodBeat.o(107311);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.sortview.c
  * JD-Core Version:    0.7.0.1
  */

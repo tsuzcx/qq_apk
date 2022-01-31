@@ -5,9 +5,9 @@ import com.tencent.mm.plugin.wallet_core.model.Orders;
 public final class s$f
   extends s.c
 {
-  public s.h cdK;
-  public String mLM;
-  public Orders mLN;
+  public s.h cMu;
+  public String pmd;
+  public Orders pme;
   
   public s$f(s params)
   {

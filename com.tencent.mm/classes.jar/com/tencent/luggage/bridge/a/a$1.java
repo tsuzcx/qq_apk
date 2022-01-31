@@ -1,20 +1,25 @@
 package com.tencent.luggage.bridge.a;
 
-import com.tencent.luggage.b.b;
-import com.tencent.luggage.b.d;
-import com.tencent.luggage.b.e;
+import com.tencent.luggage.a.b;
+import com.tencent.luggage.a.d;
+import com.tencent.luggage.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$1
   implements a.c
 {
   public final <T extends b> void a(Class<T> paramClass, T paramT)
   {
+    AppMethodBeat.i(90747);
     e.a(paramClass, paramT);
+    AppMethodBeat.o(90747);
   }
   
   public final <T extends d> void a(Class<T> paramClass, T paramT)
   {
+    AppMethodBeat.i(90748);
     e.a(paramClass, paramT);
+    AppMethodBeat.o(90748);
   }
 }
 

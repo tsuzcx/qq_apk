@@ -2,45 +2,55 @@ package com.tencent.mm.plugin.gallery.ui;
 
 import android.graphics.Bitmap;
 import android.os.SystemClock;
-import com.tencent.mm.plugin.gallery.model.a;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.gallery.model.e;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.lang.ref.WeakReference;
 
 final class h$b
   implements Runnable
 {
-  final WeakReference<h> kKN;
+  final WeakReference<ImageView> nho;
   
-  h$b(h paramh)
+  h$b(ImageView paramImageView)
   {
-    this.kKN = new WeakReference(paramh);
+    AppMethodBeat.i(138612);
+    this.nho = new WeakReference(paramImageView);
+    AppMethodBeat.o(138612);
   }
   
   public final void run()
   {
-    h localh = (h)this.kKN.get();
-    if (localh == null)
+    AppMethodBeat.i(21606);
+    Object localObject = (ImageView)this.nho.get();
+    if (localObject == null) {}
+    for (localObject = null; (localObject == null) || (!(localObject instanceof h)); localObject = ((ImageView)localObject).getDrawable())
     {
-      y.w("MicroMsg.ThumbDrawable", "[tomys] owner is recycled, ignore this task.");
+      ab.w("MicroMsg.ThumbDrawable", "[tomys] ownerView is null or not a ThumbDrawable, ignore this task.");
+      AppMethodBeat.o(21606);
       return;
     }
-    y.v("MicroMsg.ThumbDrawable", "invalidateSelf");
-    a locala = c.aXa();
-    String str1 = localh.mFilePath;
-    String str2 = localh.kGp;
-    long l = localh.kGq;
-    h.a(localh, locala.En(str1));
-    if ((localh.kKJ != null) && (h.a(localh) != null) && (!h.a(localh).isRecycled())) {
-      localh.kKJ.aXK();
+    ab.v("MicroMsg.ThumbDrawable", "invalidateSelf");
+    localObject = (h)localObject;
+    h.a((h)localObject, e.bDP().Pz(((h)localObject).mFilePath));
+    if ((((h)localObject).nhk != null) && (h.a((h)localObject) != null) && (!h.a((h)localObject).isRecycled())) {
+      ((h)localObject).nhk.bEo();
     }
-    localh.kKK = SystemClock.uptimeMillis();
-    localh.invalidateSelf();
+    if ((h.a((h)localObject) == null) || (h.a((h)localObject).isRecycled()))
+    {
+      e.bDP().b(((h)localObject).mFilePath, ((h)localObject).cth, ((h)localObject).ncH, ((h)localObject).ncI);
+      ab.v("MicroMsg.ThumbDrawable", "invalidateSelf! mBitmap is null! path:%s", new Object[] { ((h)localObject).mFilePath });
+    }
+    ((h)localObject).nhl = SystemClock.uptimeMillis();
+    ((h)localObject).invalidateSelf();
+    AppMethodBeat.o(21606);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.h.b
  * JD-Core Version:    0.7.0.1
  */

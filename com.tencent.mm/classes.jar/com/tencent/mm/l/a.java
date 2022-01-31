@@ -4,13 +4,13 @@ import com.tencent.mm.storage.bi;
 
 public abstract interface a
 {
-  public abstract String A(String paramString, int paramInt);
+  public abstract String F(String paramString, int paramInt);
   
-  public abstract void c(bi parambi);
+  public abstract void g(bi parambi);
   
-  public abstract String d(bi parambi);
+  public abstract String h(bi parambi);
   
-  public abstract boolean eW(String paramString);
+  public abstract boolean lg(String paramString);
 }
 
 

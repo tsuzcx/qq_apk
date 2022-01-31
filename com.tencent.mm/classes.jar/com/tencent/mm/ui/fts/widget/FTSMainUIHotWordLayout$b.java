@@ -2,7 +2,7 @@ package com.tencent.mm.ui.fts.widget;
 
 final class FTSMainUIHotWordLayout$b
 {
-  public String fTF;
+  public String hng;
 }
 
 

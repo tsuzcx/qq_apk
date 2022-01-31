@@ -5,93 +5,105 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MMPageControlView
   extends LinearLayout
 {
-  public ImageView bNu;
-  public Context context;
-  public int count;
-  public Map<Integer, ImageView> map = new HashMap();
-  public int uWI = a.h.mmpage_control_image;
+  protected Context context;
+  protected int count;
+  protected ImageView cuM;
+  protected Map<Integer, ImageView> map;
+  protected int zlb;
   
   public MMPageControlView(Context paramContext)
   {
     super(paramContext);
+    AppMethodBeat.i(106701);
+    this.map = new HashMap();
+    this.zlb = 2130970284;
     this.context = paramContext;
+    AppMethodBeat.o(106701);
   }
   
   public MMPageControlView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(106702);
+    this.map = new HashMap();
+    this.zlb = 2130970284;
     this.context = paramContext;
+    AppMethodBeat.o(106702);
   }
   
-  public final void fr(int paramInt1, int paramInt2)
+  protected void Eg(int paramInt)
   {
-    this.count = paramInt1;
-    yh(paramInt2);
-  }
-  
-  public void setIndicatorLayoutRes(int paramInt)
-  {
-    this.uWI = paramInt;
-  }
-  
-  public void setPage(int paramInt)
-  {
-    yh(paramInt);
-  }
-  
-  public void yh(int paramInt)
-  {
+    AppMethodBeat.i(106703);
     removeAllViews();
-    if (paramInt >= this.count) {
+    if (paramInt >= this.count)
+    {
+      AppMethodBeat.o(106703);
       return;
     }
     int j = this.count;
     int i = 0;
-    label20:
     if (i < j)
     {
-      this.bNu = null;
-      if (paramInt != i) {
-        break label156;
-      }
-      if (this.map.size() > i) {
-        this.bNu = ((ImageView)this.map.get(Integer.valueOf(i)));
-      }
-      if (this.bNu == null)
+      this.cuM = null;
+      if (paramInt == i)
       {
-        this.bNu = ((ImageView)View.inflate(this.context, this.uWI, null).findViewById(a.g.mmpage_control_img));
-        this.map.put(Integer.valueOf(i), this.bNu);
+        if (this.map.size() > i) {
+          this.cuM = ((ImageView)this.map.get(Integer.valueOf(i)));
+        }
+        if (this.cuM == null)
+        {
+          this.cuM = ((ImageView)View.inflate(this.context, this.zlb, null).findViewById(2131826286));
+          this.map.put(Integer.valueOf(i), this.cuM);
+        }
+        this.cuM.setSelected(true);
       }
-      this.bNu.setSelected(true);
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        this.bNu.setPadding(0, 0, 0, 0);
-      }
-      addView(this.bNu);
-      i += 1;
-      break label20;
-      break;
-      label156:
-      if (this.map.size() > i) {
-        this.bNu = ((ImageView)this.map.get(Integer.valueOf(i)));
-      }
-      if (this.bNu == null)
+      for (;;)
       {
-        this.bNu = ((ImageView)View.inflate(this.context, this.uWI, null).findViewById(a.g.mmpage_control_img));
-        this.map.put(Integer.valueOf(i), this.bNu);
+        if (i == 0) {
+          this.cuM.setPadding(0, 0, 0, 0);
+        }
+        addView(this.cuM);
+        i += 1;
+        break;
+        if (this.map.size() > i) {
+          this.cuM = ((ImageView)this.map.get(Integer.valueOf(i)));
+        }
+        if (this.cuM == null)
+        {
+          this.cuM = ((ImageView)View.inflate(this.context, this.zlb, null).findViewById(2131826286));
+          this.map.put(Integer.valueOf(i), this.cuM);
+        }
+        this.cuM.setSelected(false);
       }
-      this.bNu.setSelected(false);
     }
+    AppMethodBeat.o(106703);
+  }
+  
+  public final void hy(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(106699);
+    this.count = paramInt1;
+    Eg(paramInt2);
+    AppMethodBeat.o(106699);
+  }
+  
+  public void setIndicatorLayoutRes(int paramInt)
+  {
+    this.zlb = paramInt;
+  }
+  
+  public void setPage(int paramInt)
+  {
+    AppMethodBeat.i(106700);
+    Eg(paramInt);
+    AppMethodBeat.o(106700);
   }
 }
 

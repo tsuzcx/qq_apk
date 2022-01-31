@@ -1,81 +1,76 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Map;
+import android.app.Activity;
+import android.content.Context;
+import android.provider.Settings.SettingNotFoundException;
+import android.provider.Settings.System;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 
 public final class m
-  implements d
 {
-  public final int a(String paramString, b paramb)
+  private static float cN(Context paramContext)
   {
-    int i = -1;
-    Object localObject = AppBrandVideoDownLoadMgr.gDf;
-    if ((paramString == null) || (bk.bl(paramString)))
+    AppMethodBeat.i(126590);
+    paramContext = paramContext.getContentResolver();
+    float f = 0.0F;
+    try
     {
-      y.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genPreLoad illegal url or preLoadCallback");
-      return -1;
+      int i = Settings.System.getInt(paramContext, "screen_brightness");
+      f = i / 255.0F;
     }
-    a locala = new a();
-    locala.url = paramString;
-    locala.gDb = paramb;
-    y.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad genPreLoad  videoUrl = %s", new Object[] { paramString });
-    paramString = ((AppBrandVideoDownLoadMgr)localObject).genAdFileExist("gamead", locala);
-    if (!bk.bl(paramString)) {
-      if (!paramString.equalsIgnoreCase("downloading"))
+    catch (Settings.SettingNotFoundException paramContext)
+    {
+      for (;;)
       {
-        AppBrandVideoDownLoadMgr.gDe.put(locala.url, locala);
-        AppBrandVideoDownLoadMgr.ag(locala.url, true);
-        locala.gDb.bN(locala.url, paramString);
+        ab.printErrStackTrace("MicroMsg.VideoPlayerUtils", paramContext, "", new Object[0]);
       }
     }
-    for (;;)
-    {
-      return 0;
-      return -2;
-      paramString = ((AppBrandVideoDownLoadMgr)localObject).genAdFilePath("gamead", locala);
-      if (bk.bl(paramString)) {
-        break;
-      }
-      paramb = AppBrandVideoDownLoadMgr.gDg;
-      localObject = locala.url;
-      if (com.tencent.mm.t.d.dBl != null) {
-        i = com.tencent.mm.t.d.dBl.a((String)localObject, paramString, paramb);
-      }
-      y.i("MicroMsg.AppBrand.AppBrandVideoDownLoadMgr", "leonlad downloadVideo path=%s, ret=%d", new Object[] { paramString, Integer.valueOf(i) });
-      if (i != 0) {
-        return -3;
-      }
-      AppBrandVideoDownLoadMgr.gDe.put(locala.url, locala);
-    }
-    return -4;
+    AppMethodBeat.o(126590);
+    return f;
   }
   
-  public final void report(String paramString)
+  public static float cP(Context paramContext)
   {
-    AppBrandVideoDownLoadMgr.gDf.report(paramString);
+    AppMethodBeat.i(126591);
+    if (!(paramContext instanceof Activity))
+    {
+      AppMethodBeat.o(126591);
+      return 1.0F;
+    }
+    WindowManager.LayoutParams localLayoutParams = ((Activity)paramContext).getWindow().getAttributes();
+    if (localLayoutParams.screenBrightness < 0.0F)
+    {
+      f = cN(paramContext);
+      AppMethodBeat.o(126591);
+      return f;
+    }
+    float f = localLayoutParams.screenBrightness;
+    AppMethodBeat.o(126591);
+    return f;
   }
   
-  public final String uH(String paramString)
+  public static String ha(long paramLong)
   {
-    AppBrandVideoDownLoadMgr localAppBrandVideoDownLoadMgr = AppBrandVideoDownLoadMgr.gDf;
-    a locala = new a();
-    locala.url = paramString;
-    locala.gDb = null;
-    paramString = localAppBrandVideoDownLoadMgr.genAdFileExist("gamead", locala);
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(126592);
+    if (paramLong < 3600000L) {}
+    for (Object localObject = "mm:ss";; localObject = "HH:mm:ss")
     {
-      if (!paramString.equalsIgnoreCase("downloading")) {
-        return paramString;
-      }
-      return null;
+      localObject = new SimpleDateFormat((String)localObject);
+      ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT+0:00"));
+      localObject = ((SimpleDateFormat)localObject).format(Long.valueOf(paramLong));
+      AppMethodBeat.o(126592);
+      return localObject;
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.m
  * JD-Core Version:    0.7.0.1
  */

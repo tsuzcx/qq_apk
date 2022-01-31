@@ -1,73 +1,58 @@
 package com.google.android.gms.common.internal;
 
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import android.support.v4.e.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashMap;
 
-public class zze
-  implements Parcelable.Creator<zzd>
+final class zze
+  extends g<K, V>
 {
-  static void zza(zzd paramzzd, Parcel paramParcel, int paramInt)
+  zze(ExpirableLruCache paramExpirableLruCache, int paramInt)
   {
-    int i = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 1, paramzzd.zzaiI);
-    zzc.zza(paramParcel, 2, paramzzd.zzaEW, false);
-    zzc.zza(paramParcel, 3, paramzzd.zzaEX, paramInt, false);
-    zzc.zza(paramParcel, 4, paramzzd.zzaEY, false);
-    zzc.zza(paramParcel, 5, paramzzd.zzaEZ, false);
-    zzc.zzJ(paramParcel, i);
+    super(paramInt);
   }
   
-  public zzd zzaQ(Parcel paramParcel)
+  public final V create(K paramK)
   {
-    int j = zzb.zzaY(paramParcel);
-    int i = 0;
-    Integer localInteger1 = null;
-    Integer localInteger2 = null;
-    Scope[] arrayOfScope = null;
-    IBinder localIBinder = null;
-    while (paramParcel.dataPosition() < j)
+    AppMethodBeat.i(89863);
+    paramK = this.zzss.create(paramK);
+    AppMethodBeat.o(89863);
+    return paramK;
+  }
+  
+  public final void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2)
+  {
+    AppMethodBeat.i(89864);
+    this.zzss.entryRemoved(paramBoolean, paramK, paramV1, paramV2);
+    paramV1 = ExpirableLruCache.zza(this.zzss);
+    if (paramV2 == null) {}
+    try
     {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 1: 
-        i = zzb.zzg(paramParcel, k);
-        break;
-      case 2: 
-        localIBinder = zzb.zzr(paramParcel, k);
-        break;
-      case 3: 
-        arrayOfScope = (Scope[])zzb.zzb(paramParcel, k, Scope.CREATOR);
-        break;
-      case 4: 
-        localInteger2 = zzb.zzh(paramParcel, k);
-        break;
-      case 5: 
-        localInteger1 = zzb.zzh(paramParcel, k);
+      if (ExpirableLruCache.zzb(this.zzss)) {
+        ExpirableLruCache.zzc(this.zzss).remove(paramK);
       }
+      if ((paramV2 == null) && (ExpirableLruCache.zzd(this.zzss))) {
+        ExpirableLruCache.zze(this.zzss).remove(paramK);
+      }
+      return;
     }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
+    finally
+    {
+      AppMethodBeat.o(89864);
     }
-    return new zzd(i, localIBinder, arrayOfScope, localInteger2, localInteger1);
   }
   
-  public zzd[] zzcR(int paramInt)
+  public final int sizeOf(K paramK, V paramV)
   {
-    return new zzd[paramInt];
+    AppMethodBeat.i(89862);
+    int i = this.zzss.sizeOf(paramK, paramV);
+    AppMethodBeat.o(89862);
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.internal.zze
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/mp" style="@style/l2"
+<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/uy" android:paddingLeft="@dimen/a6k" android:paddingTop="@dimen/a6l" android:paddingRight="@dimen/a6k" android:paddingBottom="@dimen/a6l" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/kl" android:paddingTop="@dimen/li" android:paddingBottom="@dimen/li" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/mp">
-        <LinearLayout android:gravity="center|left" android:paddingLeft="@dimen/l9" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/kl" />
-            <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-        </LinearLayout>
-        <TextView android:gravity="left" android:id="@android:id/summary" android:paddingLeft="@dimen/mq" android:paddingRight="@dimen/mq" android:layout_marginTop="@dimen/mq" style="@style/k6" />
-    </LinearLayout>
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/v0" android:id="@id/d8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/a6m" android:includeFontPadding="false" />
+    <TextView android:textSize="@dimen/m2" android:textColor="@color/uz" android:gravity="right" android:id="@id/d8s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:includeFontPadding="false" />
 </LinearLayout>

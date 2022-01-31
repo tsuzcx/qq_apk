@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import android.graphics.Path;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.path.PathActionArgWrapper;
@@ -14,23 +15,34 @@ public final class g
 {
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, Path paramPath)
   {
-    paramCanvas.drawPath(paramPath, paramd.fLp);
+    AppMethodBeat.i(103194);
+    paramCanvas.drawPath(paramPath, paramd.heB);
+    AppMethodBeat.o(103194);
     return true;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, DrawActionArg paramDrawActionArg)
   {
-    return a(paramd, paramCanvas, e.a.fME.a((PathActionArgWrapper)paramDrawActionArg));
+    AppMethodBeat.i(103195);
+    boolean bool = a(paramd, paramCanvas, e.a.hfO.a((PathActionArgWrapper)paramDrawActionArg));
+    AppMethodBeat.o(103195);
+    return bool;
   }
   
   public final boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, JSONArray paramJSONArray)
   {
-    return a(paramd, paramCanvas, e.a.fME.f(paramJSONArray));
+    AppMethodBeat.i(103193);
+    boolean bool = a(paramd, paramCanvas, e.a.hfO.g(paramJSONArray));
+    AppMethodBeat.o(103193);
+    return bool;
   }
   
-  public final BaseDrawActionArg adE()
+  public final BaseDrawActionArg axW()
   {
-    return new PathActionArgWrapper();
+    AppMethodBeat.i(103192);
+    PathActionArgWrapper localPathActionArgWrapper = new PathActionArgWrapper();
+    AppMethodBeat.o(103192);
+    return localPathActionArgWrapper;
   }
   
   public final String getMethod()

@@ -1,20 +1,27 @@
 package com.tencent.mm.plugin.pwdgroup;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.pluginsdk.b.b;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class Plugin
   implements com.tencent.mm.pluginsdk.b.c
 {
-  public final n createApplication()
+  public final o createApplication()
   {
-    return new a();
+    AppMethodBeat.i(23972);
+    a locala = new a();
+    AppMethodBeat.o(23972);
+    return locala;
   }
   
-  public final ar createSubCore()
+  public final at createSubCore()
   {
-    return new c();
+    AppMethodBeat.i(23973);
+    c localc = new c();
+    AppMethodBeat.o(23973);
+    return localc;
   }
   
   public final b getContactWidgetFactory()

@@ -1,125 +1,123 @@
 package com.tencent.mm.plugin.game.d;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 
 public final class cw
   extends com.tencent.mm.bv.a
 {
-  public String bGw;
-  public String euK;
-  public String kRN;
-  public String kRO;
-  public String kRP;
-  public String kSs;
-  public String kVn;
+  public String Label;
+  public String jJA;
+  public int ntX;
+  public long ntY;
+  public boolean ntZ;
+  public int nua;
+  public String nub;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(111663);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.kVn == null) {
-        throw new b("Not all required fields were included: AppName");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.jJA == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: UserName");
+        AppMethodBeat.o(111663);
+        throw paramVarArgs;
       }
-      if (this.kVn != null) {
-        paramVarArgs.d(1, this.kVn);
+      if (this.jJA != null) {
+        paramVarArgs.e(1, this.jJA);
       }
-      if (this.kRO != null) {
-        paramVarArgs.d(2, this.kRO);
+      paramVarArgs.aO(2, this.ntX);
+      paramVarArgs.am(3, this.ntY);
+      if (this.Label != null) {
+        paramVarArgs.e(4, this.Label);
       }
-      if (this.bGw != null) {
-        paramVarArgs.d(3, this.bGw);
+      paramVarArgs.aS(5, this.ntZ);
+      paramVarArgs.aO(6, this.nua);
+      if (this.nub != null) {
+        paramVarArgs.e(7, this.nub);
       }
-      if (this.kRN != null) {
-        paramVarArgs.d(4, this.kRN);
-      }
-      if (this.kSs != null) {
-        paramVarArgs.d(5, this.kSs);
-      }
-      if (this.kRP != null) {
-        paramVarArgs.d(6, this.kRP);
-      }
-      if (this.euK != null) {
-        paramVarArgs.d(7, this.euK);
-      }
+      AppMethodBeat.o(111663);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.kVn == null) {
-        break label545;
+      if (this.jJA == null) {
+        break label558;
       }
     }
-    label545:
-    for (int i = d.a.a.b.b.a.e(1, this.kVn) + 0;; i = 0)
+    label558:
+    for (paramInt = e.a.a.b.b.a.f(1, this.jJA) + 0;; paramInt = 0)
     {
+      int i = paramInt + e.a.a.b.b.a.bl(2, this.ntX) + e.a.a.b.b.a.p(3, this.ntY);
       paramInt = i;
-      if (this.kRO != null) {
-        paramInt = i + d.a.a.b.b.a.e(2, this.kRO);
+      if (this.Label != null) {
+        paramInt = i + e.a.a.b.b.a.f(4, this.Label);
       }
-      i = paramInt;
-      if (this.bGw != null) {
-        i = paramInt + d.a.a.b.b.a.e(3, this.bGw);
-      }
+      i = paramInt + (e.a.a.b.b.a.eW(5) + 1) + e.a.a.b.b.a.bl(6, this.nua);
       paramInt = i;
-      if (this.kRN != null) {
-        paramInt = i + d.a.a.b.b.a.e(4, this.kRN);
+      if (this.nub != null) {
+        paramInt = i + e.a.a.b.b.a.f(7, this.nub);
       }
-      i = paramInt;
-      if (this.kSs != null) {
-        i = paramInt + d.a.a.b.b.a.e(5, this.kSs);
-      }
-      paramInt = i;
-      if (this.kRP != null) {
-        paramInt = i + d.a.a.b.b.a.e(6, this.kRP);
-      }
-      i = paramInt;
-      if (this.euK != null) {
-        i = paramInt + d.a.a.b.b.a.e(7, this.euK);
-      }
-      return i;
+      AppMethodBeat.o(111663);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.kVn != null) {
-          break;
+        if (this.jJA == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: UserName");
+          AppMethodBeat.o(111663);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: AppName");
+        AppMethodBeat.o(111663);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         cw localcw = (cw)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(111663);
           return -1;
         case 1: 
-          localcw.kVn = locala.xpH.readString();
+          localcw.jJA = locala.CLY.readString();
+          AppMethodBeat.o(111663);
           return 0;
         case 2: 
-          localcw.kRO = locala.xpH.readString();
+          localcw.ntX = locala.CLY.sl();
+          AppMethodBeat.o(111663);
           return 0;
         case 3: 
-          localcw.bGw = locala.xpH.readString();
+          localcw.ntY = locala.CLY.sm();
+          AppMethodBeat.o(111663);
           return 0;
         case 4: 
-          localcw.kRN = locala.xpH.readString();
+          localcw.Label = locala.CLY.readString();
+          AppMethodBeat.o(111663);
           return 0;
         case 5: 
-          localcw.kSs = locala.xpH.readString();
+          localcw.ntZ = locala.CLY.emu();
+          AppMethodBeat.o(111663);
           return 0;
         case 6: 
-          localcw.kRP = locala.xpH.readString();
+          localcw.nua = locala.CLY.sl();
+          AppMethodBeat.o(111663);
           return 0;
         }
-        localcw.euK = locala.xpH.readString();
+        localcw.nub = locala.CLY.readString();
+        AppMethodBeat.o(111663);
         return 0;
       }
+      AppMethodBeat.o(111663);
       return -1;
     }
   }

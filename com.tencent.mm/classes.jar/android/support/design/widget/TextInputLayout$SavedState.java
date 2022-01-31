@@ -10,17 +10,17 @@ class TextInputLayout$SavedState
   extends AbsSavedState
 {
   public static final Parcelable.Creator<SavedState> CREATOR = new TextInputLayout.SavedState.1();
-  CharSequence ma;
-  boolean mb;
+  CharSequence mV;
+  boolean mW;
   
   TextInputLayout$SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
   {
     super(paramParcel, paramClassLoader);
-    this.ma = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
+    this.mV = ((CharSequence)TextUtils.CHAR_SEQUENCE_CREATOR.createFromParcel(paramParcel));
     if (paramParcel.readInt() == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mb = bool;
+      this.mW = bool;
       return;
     }
   }
@@ -32,14 +32,14 @@ class TextInputLayout$SavedState
   
   public String toString()
   {
-    return "TextInputLayout.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " error=" + this.ma + "}";
+    return "TextInputLayout.SavedState{" + Integer.toHexString(System.identityHashCode(this)) + " error=" + this.mV + "}";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     super.writeToParcel(paramParcel, paramInt);
-    TextUtils.writeToParcel(this.ma, paramParcel, paramInt);
-    if (this.mb) {}
+    TextUtils.writeToParcel(this.mV, paramParcel, paramInt);
+    if (this.mW) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -49,7 +49,7 @@ class TextInputLayout$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     android.support.design.widget.TextInputLayout.SavedState
  * JD-Core Version:    0.7.0.1
  */

@@ -4,8 +4,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FacebookFriendUI$4
   implements DialogInterface.OnClickListener
@@ -14,10 +13,12 @@ final class FacebookFriendUI$4
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Intent(this.flO.mController.uMN, FacebookAuthUI.class);
+    AppMethodBeat.i(124810);
+    paramDialogInterface = new Intent(this.gDg.getContext(), FacebookAuthUI.class);
     paramDialogInterface.putExtra("is_force_unbind", true);
-    this.flO.mController.uMN.startActivity(paramDialogInterface);
-    this.flO.finish();
+    this.gDg.getContext().startActivity(paramDialogInterface);
+    this.gDg.finish();
+    AppMethodBeat.o(124810);
   }
 }
 

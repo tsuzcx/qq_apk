@@ -1,110 +1,135 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.plugin.webview.luggage.e;
-import com.tencent.mm.protocal.c.arf;
-import com.tencent.mm.protocal.c.arg;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.plugin.webview.luggage.r;
+import com.tencent.mm.plugin.webview.ui.tools.widget.n;
+import com.tencent.mm.protocal.protobuf.axe;
+import com.tencent.mm.protocal.protobuf.axw;
+import com.tencent.mm.protocal.protobuf.axx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.HashMap;
 import java.util.LinkedList;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class af
-  extends ax<e>
+  extends bi<com.tencent.mm.plugin.webview.luggage.e>
 {
-  public final void a(Context paramContext, String paramString, aw.a parama) {}
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
   
-  public final int aGj()
+  public final void b(final a<com.tencent.mm.plugin.webview.luggage.e>.a parama)
+  {
+    AppMethodBeat.i(6336);
+    ab.i("MicroMsg.JsApiLogin", "invoke");
+    LinkedList localLinkedList = new LinkedList();
+    final String str = ((com.tencent.mm.plugin.webview.luggage.e)parama.byE).uRD.getAppId();
+    if (bo.isNullOrNil(str))
+    {
+      ab.e("MicroMsg.JsApiLogin", "appId is null!");
+      parama.a("fail", null);
+      AppMethodBeat.o(6336);
+      return;
+    }
+    com.tencent.mm.ai.b.a locala = new com.tencent.mm.ai.b.a();
+    axw localaxw = new axw();
+    locala.fsX = localaxw;
+    locala.fsY = new axx();
+    locala.uri = "/cgi-bin/mmbiz-bin/js-login";
+    locala.funcId = 1029;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    localaxw.fKw = str;
+    localaxw.xmO = localLinkedList;
+    localaxw.xmX = 0;
+    localaxw.Url = "";
+    localaxw.xmY = "";
+    localaxw.xmQ = 0;
+    com.tencent.mm.ipcinvoker.wx_extension.b.a(locala.ado(), new com.tencent.mm.ipcinvoker.wx_extension.b.a()
+    {
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, final String paramAnonymousString, final com.tencent.mm.ai.b paramAnonymousb)
+      {
+        AppMethodBeat.i(6334);
+        ab.i("MicroMsg.JsApiLogin", "errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+        {
+          parama.a("fail", null);
+          AppMethodBeat.o(6334);
+          return;
+        }
+        paramAnonymousb = (axx)paramAnonymousb.fsW.fta;
+        if ((paramAnonymousb == null) || (paramAnonymousb.xmS == null))
+        {
+          parama.a("fail", null);
+          AppMethodBeat.o(6334);
+          return;
+        }
+        paramAnonymousInt1 = paramAnonymousb.xmS.csV;
+        Object localObject = paramAnonymousb.xmS.csW;
+        paramAnonymousString = paramAnonymousb.xmY;
+        ab.i("MicroMsg.JsApiLogin", "NetSceneJSLogin jsErrcode %d", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+        if (paramAnonymousInt1 == -12000)
+        {
+          localObject = paramAnonymousb.wYt;
+          final String str = paramAnonymousb.ntp;
+          paramAnonymousb = paramAnonymousb.wnz;
+          ab.d("MicroMsg.JsApiLogin", "appName %s, appIconUrl %s", new Object[] { str, paramAnonymousb });
+          al.d(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(6333);
+              n localn = new n(((com.tencent.mm.plugin.webview.luggage.e)af.1.this.njN.byE).mContext);
+              af.1.1.1 local1 = new af.1.1.1(this);
+              if ((this.hDM != null) && (this.hDM.size() > 0))
+              {
+                if (!localn.a(this.hDM, str, paramAnonymousb, local1)) {
+                  af.1.this.njN.a("fail", null);
+                }
+                AppMethodBeat.o(6333);
+                return;
+              }
+              ab.e("MicroMsg.JsApiLogin", "scopeInfoList is empty!");
+              af.1.this.njN.a("fail", null);
+              AppMethodBeat.o(6333);
+            }
+          });
+          AppMethodBeat.o(6334);
+          return;
+        }
+        if (paramAnonymousInt1 == 0)
+        {
+          paramAnonymousString = paramAnonymousb.xmZ;
+          new HashMap().put("code", paramAnonymousString);
+          ab.d("MicroMsg.JsApiLogin", "resp data code [%s]", new Object[] { paramAnonymousString });
+          parama.a("", null);
+          AppMethodBeat.o(6334);
+          return;
+        }
+        ab.e("MicroMsg.JsApiLogin", "onSceneEnd NetSceneJSLogin %s", new Object[] { localObject });
+        parama.a("fail", null);
+        AppMethodBeat.o(6334);
+      }
+    });
+    AppMethodBeat.o(6336);
+  }
+  
+  public final int bjL()
   {
     return 0;
   }
   
-  public final void b(com.tencent.luggage.e.a<e>.a parama)
-  {
-    y.i("MicroMsg.JsApiPreVerify", "invokeInOwn");
-    com.tencent.mm.plugin.webview.luggage.c.a.RY(((e)parama.big).caV());
-    Object localObject1 = parama.bih.bhk;
-    String str1 = ((JSONObject)localObject1).optString("verifyAppId");
-    String str2 = ((JSONObject)localObject1).optString("verifySignature");
-    String str3 = ((JSONObject)localObject1).optString("verifyNonceStr");
-    String str4 = ((JSONObject)localObject1).optString("verifyTimestamp");
-    String str5 = ((JSONObject)localObject1).optString("verifySignType");
-    Object localObject2 = ((JSONObject)localObject1).optJSONArray("verifyJsApiList");
-    y.i("MicroMsg.JsApiPreVerify", "appid : %s, %s, %s, %s, %s", new Object[] { str1, str2, str3, str4, str5 });
-    localObject1 = ((e)parama.big).getUrl();
-    LinkedList localLinkedList = new LinkedList();
-    for (;;)
-    {
-      int i;
-      Object localObject3;
-      try
-      {
-        y.i("MicroMsg.JsApiPreVerify", "jsItem length %s", new Object[] { Integer.valueOf(((JSONArray)localObject2).length()) });
-        if (((JSONArray)localObject2).length() != 0) {
-          break label438;
-        }
-        parama.a("checkJsApi:param is empty", null);
-        return;
-      }
-      catch (Exception localException)
-      {
-        y.w("MicroMsg.JsApiPreVerify", "exception occur " + localException.getMessage());
-        parama.a("", null);
-        return;
-      }
-      if (i < ((JSONArray)localObject2).length())
-      {
-        localObject3 = ((JSONArray)localObject2).getString(i);
-        if (!bk.bl((String)localObject3)) {
-          localLinkedList.add(localObject3);
-        }
-        i += 1;
-      }
-      else
-      {
-        if ((bk.bl(localException)) || (localLinkedList.size() <= 0) || (bk.bl((String)localObject1)))
-        {
-          y.e("MicroMsg.JsApiPreVerify", "handlePreVerify wrong args, %s", new Object[] { localException });
-          parama.a("pre_verify_jsapi:fail_invalid_args", null);
-          return;
-        }
-        localObject2 = new b.a();
-        ((b.a)localObject2).ecH = new arf();
-        ((b.a)localObject2).ecI = new arg();
-        ((b.a)localObject2).uri = "/cgi-bin/mmbiz-bin/jsapi-preverify";
-        ((b.a)localObject2).ecG = 1093;
-        ((b.a)localObject2).ecJ = 0;
-        ((b.a)localObject2).ecK = 0;
-        localObject2 = ((b.a)localObject2).Kt();
-        localObject3 = (arf)((com.tencent.mm.ah.b)localObject2).ecE.ecN;
-        ((arf)localObject3).url = ((String)localObject1);
-        ((arf)localObject3).bOL = localException;
-        ((arf)localObject3).tmR = localLinkedList;
-        ((arf)localObject3).bIK = str4;
-        ((arf)localObject3).tmB = str3;
-        ((arf)localObject3).signature = str2;
-        ((arf)localObject3).tmC = str5;
-        com.tencent.mm.ipcinvoker.wx_extension.b.a((com.tencent.mm.ah.b)localObject2, new af.a(parama, localException));
-        return;
-        label438:
-        i = 0;
-      }
-    }
-  }
-  
   public final String name()
   {
-    return "preVerifyJSAPI";
+    return "login";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.af
  * JD-Core Version:    0.7.0.1
  */

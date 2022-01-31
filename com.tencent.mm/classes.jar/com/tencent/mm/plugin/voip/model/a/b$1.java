@@ -1,20 +1,22 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.compatible.e.c;
-import com.tencent.mm.compatible.e.q;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.voip.a.a;
 import com.tencent.mm.plugin.voip.model.VoipScoreState;
-import com.tencent.mm.plugin.voip.model.j;
-import com.tencent.mm.plugin.voip.model.u;
+import com.tencent.mm.plugin.voip.model.k;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.cee;
-import com.tencent.mm.protocal.c.cfj;
-import com.tencent.mm.protocal.c.cfp;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.voip.model.w;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.crp;
+import com.tencent.mm.protocal.protobuf.csu;
+import com.tencent.mm.protocal.protobuf.cta;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
@@ -25,133 +27,150 @@ final class b$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    int i = 0;
-    com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "Anwser response:" + paramInt1 + " errCode:" + paramInt2 + " status:" + this.pUh.pQA.mStatus);
-    if (this.pUh.pQA.mStatus == 1)
+    AppMethodBeat.i(4698);
+    a.Logi(this.tzJ.TAG, "Anwser response:" + paramInt1 + " errCode:" + paramInt2 + " status:" + this.tzJ.tvE.mStatus);
+    if (this.tzJ.tvE.mStatus == 1)
     {
-      com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "reject ok!");
+      a.Logi(this.tzJ.TAG, "reject ok!");
+      AppMethodBeat.o(4698);
       return;
     }
-    if (this.pUh.pQA.mStatus != 4)
+    if (this.tzJ.tvE.mStatus != 4)
     {
-      com.tencent.mm.plugin.voip.a.a.Loge(this.pUh.TAG, "Anwser response not within WAITCONNECT, ignored.");
+      a.Loge(this.tzJ.TAG, "Anwser response not within WAITCONNECT, ignored.");
+      AppMethodBeat.o(4698);
       return;
     }
     if (paramInt1 != 0)
     {
       if (paramInt1 == 4)
       {
-        this.pUh.pQA.pQe.pWi.pQU = 12;
-        this.pUh.pQA.pQe.pWi.pQV = paramInt2;
-        this.pUh.pQA.s(1, paramInt2, "");
+        this.tzJ.tvE.tvj.tBN.twb = 12;
+        this.tzJ.tvE.tvj.tBN.twc = paramInt2;
+        this.tzJ.tvE.y(1, paramInt2, "");
+        AppMethodBeat.o(4698);
         return;
       }
-      this.pUh.pQA.pQe.pWi.pQU = 12;
-      this.pUh.pQA.pQe.pWi.pQV = paramInt2;
-      this.pUh.pQA.s(1, -9004, "");
+      this.tzJ.tvE.tvj.tBN.twb = 12;
+      this.tzJ.tvE.tvj.tBN.twc = paramInt2;
+      this.tzJ.tvE.y(1, -9004, "");
+      AppMethodBeat.o(4698);
       return;
     }
-    paramString = (cee)this.pUh.bRC();
-    this.pUh.pQA.pQe.lpD = paramString.sST;
-    this.pUh.pQA.pQe.lpE = paramString.sSU;
-    this.pUh.pQA.pQe.lpL = paramString.tSL;
-    this.pUh.pQA.pQe.pVf = paramString.tSY;
-    this.pUh.pQA.pQe.pVg = paramString.tSZ;
-    this.pUh.pQA.pQe.pVh = paramString.tTa;
-    this.pUh.pQA.pQe.pVi = paramString.tTb;
-    this.pUh.pQA.pQe.pVk = paramString.tTd;
-    this.pUh.pQA.pQe.pVj = paramString.tTi;
-    this.pUh.pQA.pQe.pUJ = paramString.tSP;
-    this.pUh.pQA.pQe.pVm = paramString.tTk;
-    this.pUh.pQA.Ad(paramString.tSN);
-    this.pUh.pQA.pQe.pUL = paramString.tSQ;
-    if (paramString.tSR.tFK >= 12)
+    paramString = (crp)this.tzJ.cOt();
+    this.tzJ.tvE.tvj.nMZ = paramString.wQP;
+    this.tzJ.tvE.tvj.nNa = paramString.wQQ;
+    this.tzJ.tvE.tvj.nNh = paramString.yad;
+    this.tzJ.tvE.tvj.tAH = paramString.yaq;
+    this.tzJ.tvE.tvj.tAI = paramString.yar;
+    this.tzJ.tvE.tvj.tAJ = paramString.yas;
+    this.tzJ.tvE.tvj.tAK = paramString.yat;
+    this.tzJ.tvE.tvj.tAM = paramString.yav;
+    this.tzJ.tvE.tvj.tAL = paramString.yaB;
+    this.tzJ.tvE.tvj.tAk = paramString.yah;
+    this.tzJ.tvE.tvj.tAO = paramString.yaD;
+    this.tzJ.tvE.Hq(paramString.yaf);
+    this.tzJ.tvE.tvj.tAn = paramString.yai;
+    if ((paramString.yaj != null) && (paramString.yaj.getBuffer() != null)) {
+      this.tzJ.tvE.tvj.tAm = paramString.yaj.getBuffer().toByteArray();
+    }
+    if (paramString.yaj.getILen() >= 12)
     {
-      paramm = ByteBuffer.wrap(paramString.tSR.tFM.toByteArray(), 8, 4);
+      paramm = ByteBuffer.wrap(paramString.yaj.getBuffer().toByteArray(), 8, 4);
       ByteOrder localByteOrder1 = ByteOrder.nativeOrder();
       ByteOrder localByteOrder2 = paramm.order();
       paramInt1 = paramm.getInt();
-      com.tencent.mm.plugin.voip.a.a.Logd(this.pUh.TAG, "steve:nSvrBaseBRTuneRatio1:" + paramInt1 + ", nativeOrder:" + localByteOrder1 + ", bbOrder:" + localByteOrder2);
-      this.pUh.pQA.pQe.pVl = paramInt1;
+      a.Logd(this.tzJ.TAG, "steve:nSvrBaseBRTuneRatio1:" + paramInt1 + ", nativeOrder:" + localByteOrder1 + ", bbOrder:" + localByteOrder2);
+      this.tzJ.tvE.tvj.tAN = paramInt1;
     }
-    com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "onAnwserResp: audioTsdfBeyond3G = " + this.pUh.pQA.pQe.pVf + ",audioTsdEdge = " + this.pUh.pQA.pQe.pVg + ",passthroughQosAlgorithm = " + this.pUh.pQA.pQe.pVh + ",fastPlayRepair = " + this.pUh.pQA.pQe.pVi + ", audioDtx = " + this.pUh.pQA.pQe.pVk + ", switchtcppktCnt=" + this.pUh.pQA.pQe.pUI + ", SvrCfgListV=" + this.pUh.pQA.pQe.pVj + ", setMaxBRForRelay=" + this.pUh.pQA.pQe.pVm + ", RedirectreqThreshold=" + paramString.tSM.tUs + ", BothSideSwitchFlag=" + paramString.tSM.tUt + ", WifiScanInterval=" + paramString.tSQ + ", BaseBRTuneRatio=" + this.pUh.pQA.pQe.pVl);
-    this.pUh.pQA.pQe.pVn = paramString.tTh;
-    this.pUh.pQA.pQe.pVo = paramString.tTl;
-    com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "answerResp AudioAecMode5 = " + this.pUh.pQA.pQe.pVn);
-    boolean bool2 = v2protocal.bRK();
-    paramm = com.tencent.mm.bw.a.uav;
-    boolean bool3 = com.tencent.mm.bw.a.cpo();
+    a.Logi(this.tzJ.TAG, "onAnwserResp: audioTsdfBeyond3G = " + this.tzJ.tvE.tvj.tAH + ",audioTsdEdge = " + this.tzJ.tvE.tvj.tAI + ",passthroughQosAlgorithm = " + this.tzJ.tvE.tvj.tAJ + ",fastPlayRepair = " + this.tzJ.tvE.tvj.tAK + ", audioDtx = " + this.tzJ.tvE.tvj.tAM + ", switchtcppktCnt=" + this.tzJ.tvE.tvj.tAj + ", SvrCfgListV=" + this.tzJ.tvE.tvj.tAL + ", setMaxBRForRelay=" + this.tzJ.tvE.tvj.tAO + ", RedirectreqThreshold=" + paramString.yae.ybJ + ", BothSideSwitchFlag=" + paramString.yae.ybK + ", WifiScanInterval=" + paramString.yai + ", BaseBRTuneRatio=" + this.tzJ.tvE.tvj.tAN);
+    this.tzJ.tvE.tvj.tAP = paramString.yaA;
+    this.tzJ.tvE.tvj.tAQ = paramString.yaE;
+    a.Logi(this.tzJ.TAG, "answerResp AudioAecMode5 = " + this.tzJ.tvE.tvj.tAP);
+    boolean bool2 = v2protocal.cOJ();
     boolean bool1;
+    int i;
     int j;
-    if (com.tencent.mm.plugin.voip.b.bPz() == 0)
+    int k;
+    if (com.tencent.mm.plugin.voip.b.cLE() == 0)
     {
       bool1 = true;
-      paramInt2 = q.dyd.dwE;
-      j = this.pUh.pQA.pQe.pUJ >> 4 & 0x7;
-      paramInt1 = i;
+      paramInt2 = ac.eru.eoy;
+      i = ac.eru.eoz;
+      paramInt1 = this.tzJ.tvE.tvj.tAk;
+      j = (this.tzJ.tvE.tvj.tAk >> 11 & 0x1) << 3 | paramInt1 >> 4 & 0x7;
+      k = 0;
+      paramInt1 = k;
       if (bool2)
       {
-        paramInt1 = i;
-        if (paramInt2 != 0)
+        paramInt1 = k;
+        if (bool1)
         {
-          paramInt1 = i;
-          if (bool3)
-          {
-            paramInt1 = i;
-            if (bool1)
-            {
-              if (paramInt2 <= 0) {
-                break label1431;
-              }
-              paramInt1 = paramInt2;
-            }
+          if ((i < 0) && (paramInt2 < 0)) {
+            break label1533;
           }
+          if (paramInt2 < 0) {
+            break label1511;
+          }
+          paramInt1 = paramInt2;
         }
       }
-      label972:
-      com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "NetSceneAnswerResp set voipbeauty local=" + bool2 + ", server=" + j + ", blacklist=" + paramInt2 + ", isLibReady=" + bool3 + ",isLibInitOK=" + bool1 + ", UICallback" + this.pUh.pQA.pQf + ", finalFlag=" + paramInt1);
-      if (this.pUh.pQA.pQf != null) {
-        this.pUh.pQA.pQf.setVoipBeauty(paramInt1);
+      label1061:
+      a.Logi(this.tzJ.TAG, "NetSceneAnswerResp set voipbeauty local=" + bool2 + ", server=" + j + ", blacklist=" + paramInt2 + ", whitelist=" + i + ",isLibInitOK=" + bool1 + ", UICallback" + this.tzJ.tvE.tvk + ", finalFlag=" + paramInt1);
+      if (this.tzJ.tvE.tvk != null) {
+        this.tzJ.tvE.tvk.setVoipBeauty(paramInt1);
       }
-      this.pUh.pQA.pQe.pVM = paramInt1;
-      this.pUh.pQA.pQe.pVN = j;
-      this.pUh.pQA.pPE = true;
-      com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "answer ok, roomid =" + this.pUh.pQA.pQe.lpD + ",memberid = " + this.pUh.pQA.pQe.lpL);
-      paramString = paramString.tSM;
-      if (paramString.lpZ <= 0) {
-        break label1445;
+      this.tzJ.tvE.tvj.tBr = paramInt1;
+      this.tzJ.tvE.tvj.tBs = j;
+      this.tzJ.tvE.tuJ = true;
+      a.Logi(this.tzJ.TAG, "answer ok, roomid =" + this.tzJ.tvE.tvj.nMZ + ",memberid = " + this.tzJ.tvE.tvj.nNh);
+      paramString = paramString.yae;
+      if (paramString.nNv <= 0) {
+        break label1547;
       }
-      paramString.lpZ -= 1;
-      com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "zhengxue[ENCRYPT] got encryptStrategy[" + paramString.lpZ + "] from answerresp relaydata");
+      paramString.nNv -= 1;
+      a.Logi(this.tzJ.TAG, "zhengxue[ENCRYPT] got encryptStrategy[" + paramString.nNv + "] from answerresp relaydata");
     }
     for (;;)
     {
-      com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "answer with relayData peerid.length =" + paramString.tSF.szp.tFK);
-      com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "answer with relayData capinfo.length =" + paramString.tSG.szp.tFK);
-      this.pUh.pQA.Ac(paramString.tTX);
-      this.pUh.pQA.pQq.a(paramString.tUx, paramString.tUw, this.pUh.pQA.pQe.lpD, this.pUh.pQA.pQe.lpE);
+      a.Logi(this.tzJ.TAG, "answer with relayData peerid.length =" + paramString.xZX.wtq.getILen());
+      a.Logi(this.tzJ.TAG, "answer with relayData capinfo.length =" + paramString.xZY.wtq.getILen());
+      this.tzJ.tvE.Hp(paramString.ybo);
+      this.tzJ.tvE.tvv.a(paramString.ybO, paramString.ybN, this.tzJ.tvE.tvj.nMZ, this.tzJ.tvE.tvj.nNa);
       try
       {
-        g.DS().O(new b.1.1(this, paramString));
+        g.RO().ac(new b.1.1(this, paramString));
+        AppMethodBeat.o(4698);
         return;
       }
       catch (Exception paramString)
       {
-        y.e(this.pUh.TAG, "get proxy ip fail..");
-        return;
+        label1511:
+        ab.e(this.tzJ.TAG, "get proxy ip fail..");
+        AppMethodBeat.o(4698);
       }
       bool1 = false;
       break;
-      label1431:
+      paramInt1 = k;
+      if (i < 0) {
+        break label1061;
+      }
+      paramInt1 = k;
+      if (j != 0) {
+        break label1061;
+      }
       paramInt1 = i;
-      if (j < 0) {
-        break label972;
+      break label1061;
+      label1533:
+      paramInt1 = k;
+      if (j <= 0) {
+        break label1061;
       }
       paramInt1 = j;
-      break label972;
-      label1445:
-      paramString.lpZ = 1;
-      com.tencent.mm.plugin.voip.a.a.Logi(this.pUh.TAG, "zhengxue[LOGIC]:got no EncryptStrategy in answerresp mrdata");
+      break label1061;
+      label1547:
+      paramString.nNv = 1;
+      a.Logi(this.tzJ.TAG, "zhengxue[LOGIC]:got no EncryptStrategy in answerresp mrdata");
     }
   }
 }

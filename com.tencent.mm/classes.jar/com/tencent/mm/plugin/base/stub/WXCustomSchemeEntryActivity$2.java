@@ -1,16 +1,19 @@
 package com.tencent.mm.plugin.base.stub;
 
-import com.tencent.mm.ah.m;
-import com.tencent.mm.pluginsdk.d.a;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WXCustomSchemeEntryActivity$2
-  implements d.a
+  implements DialogInterface.OnClickListener
 {
   WXCustomSchemeEntryActivity$2(WXCustomSchemeEntryActivity paramWXCustomSchemeEntryActivity) {}
   
-  public final void a(int paramInt1, int paramInt2, String paramString, m paramm, boolean paramBoolean)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.hSA.finish();
+    AppMethodBeat.i(153502);
+    this.jMj.finish();
+    AppMethodBeat.o(153502);
   }
 }
 

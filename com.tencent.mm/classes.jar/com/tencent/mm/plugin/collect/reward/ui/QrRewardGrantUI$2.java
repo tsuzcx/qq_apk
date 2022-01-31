@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.ui.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.t;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class QrRewardGrantUI$2
-  extends u
+  extends t
 {
   QrRewardGrantUI$2(QrRewardGrantUI paramQrRewardGrantUI) {}
   
-  public final void aEI()
+  public final void bhX()
   {
-    int i = (int)Math.round(bk.getDouble(QrRewardGrantUI.a(this.iIJ).getText(), 0.0D) * 100.0D);
-    if (QrRewardGrantUI.a(this.iIJ, i)) {
-      QrRewardGrantUI.b(this.iIJ);
+    AppMethodBeat.i(41064);
+    int i = (int)Math.round(bo.getDouble(QrRewardGrantUI.a(this.kPo).getText(), 0.0D) * 100.0D);
+    if (QrRewardGrantUI.a(this.kPo, i)) {
+      QrRewardGrantUI.b(this.kPo);
     }
+    AppMethodBeat.o(41064);
   }
 }
 

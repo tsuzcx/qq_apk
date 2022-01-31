@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.friend.a.l;
 
 final class FindMContactIntroUI$8
   implements DialogInterface.OnClickListener
@@ -13,7 +12,9 @@ final class FindMContactIntroUI$8
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    g.DP().Dz().o(12322, Boolean.valueOf(false));
+    AppMethodBeat.i(13604);
+    l.dx(false);
+    AppMethodBeat.o(13604);
   }
 }
 

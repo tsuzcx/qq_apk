@@ -1,13 +1,29 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.mmsight.model.a.k;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class SightCaptureUI$13
   implements Runnable
 {
-  SightCaptureUI$13(SightCaptureUI paramSightCaptureUI) {}
+  SightCaptureUI$13(SightCaptureUI paramSightCaptureUI, String paramString) {}
   
   public final void run()
   {
-    SightCaptureUI.N(this.mqB);
+    AppMethodBeat.i(55200);
+    ab.i("MicroMsg.SightCaptureUI", "DEBUG showCameraInfoImpl: %s", new Object[] { this.oQj });
+    k.bRq();
+    if (!k.isDebug())
+    {
+      AppMethodBeat.o(55200);
+      return;
+    }
+    TextView localTextView = (TextView)this.oQf.findViewById(2131821751);
+    localTextView.setVisibility(0);
+    localTextView.setText(this.oQj);
+    AppMethodBeat.o(55200);
   }
 }
 

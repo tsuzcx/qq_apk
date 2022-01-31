@@ -8,23 +8,23 @@ import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Scroller;
-import com.tencent.mm.plugin.game.g.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GameCenterListView
   extends ListView
 {
-  static boolean kYn;
-  static int kYp;
-  private Scroller GB;
-  private View VH;
-  private boolean kYj;
-  private float kYk;
-  private int kYl;
-  private boolean kYm;
-  private boolean kYo;
-  private ImageView kYq;
-  private ImageView kYr;
+  static boolean nwl;
+  static int nwn;
+  private View Ww;
   private Context mContext;
+  private Scroller mScroller;
+  private boolean nwh;
+  private float nwi;
+  private int nwj;
+  private boolean nwk;
+  private boolean nwm;
+  private ImageView nwo;
+  private ImageView nwp;
   
   public GameCenterListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,34 +34,45 @@ public class GameCenterListView
   
   public static void setCanPulldown(boolean paramBoolean)
   {
-    kYn = paramBoolean;
+    nwl = paramBoolean;
   }
   
   public static void setDefaultPadding(int paramInt)
   {
-    kYp = paramInt;
+    nwn = paramInt;
   }
   
   public void computeScroll()
   {
-    if (this.VH == null) {}
-    while (!this.GB.computeScrollOffset()) {
+    AppMethodBeat.i(111780);
+    if (this.Ww == null)
+    {
+      AppMethodBeat.o(111780);
       return;
     }
-    int i = this.GB.getCurrY();
-    this.VH.setPadding(0, i, 0, 0);
-    float f = (kYp - i) / kYp * 255.0F;
-    i = (int)f;
-    int j = (int)f;
-    this.kYr.setAlpha(255 - i);
-    this.kYq.setAlpha(j);
-    invalidate();
+    if (this.mScroller.computeScrollOffset())
+    {
+      int i = this.mScroller.getCurrY();
+      this.Ww.setPadding(0, i, 0, 0);
+      float f = (nwn - i) / nwn * 255.0F;
+      i = (int)f;
+      int j = (int)f;
+      this.nwp.setAlpha(255 - i);
+      this.nwo.setAlpha(j);
+      invalidate();
+    }
+    AppMethodBeat.o(111780);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!kYn) || (this.VH == null)) {
-      return super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.i(111779);
+    boolean bool;
+    if ((!nwl) || (this.Ww == null))
+    {
+      bool = super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(111779);
+      return bool;
     }
     switch (paramMotionEvent.getAction())
     {
@@ -75,53 +86,63 @@ public class GameCenterListView
         {
           for (;;)
           {
-            return super.dispatchTouchEvent(paramMotionEvent);
-            this.kYo = false;
-            this.kYk = paramMotionEvent.getRawY();
+            bool = super.dispatchTouchEvent(paramMotionEvent);
+            AppMethodBeat.o(111779);
+            return bool;
+            this.nwm = false;
+            this.nwi = paramMotionEvent.getRawY();
           }
-        } while (!this.kYm);
-        if (this.kYo) {
+        } while (!this.nwk);
+        if (this.nwm)
+        {
+          AppMethodBeat.o(111779);
           return true;
         }
-        i = (int)(paramMotionEvent.getRawY() - this.kYk);
-        if (this.VH.getPaddingTop() > kYp + this.kYl) {
+        i = (int)(paramMotionEvent.getRawY() - this.nwi);
+        if (this.Ww.getPaddingTop() > nwn + this.nwj) {
           break;
         }
-      } while ((i <= 0) || (Math.abs(i) < this.kYl));
-      this.kYo = true;
-      this.GB.startScroll(0, this.VH.getPaddingTop(), 0, -this.VH.getPaddingTop(), 500);
-      this.kYq.setClickable(true);
+      } while ((i <= 0) || (Math.abs(i) < this.nwj));
+      this.nwm = true;
+      this.mScroller.startScroll(0, this.Ww.getPaddingTop(), 0, -this.Ww.getPaddingTop(), 500);
+      this.nwo.setClickable(true);
       invalidate();
       paramMotionEvent.setAction(3);
       super.dispatchTouchEvent(paramMotionEvent);
+      AppMethodBeat.o(111779);
       return true;
-    } while ((this.VH.getPaddingTop() < -this.kYl) || (i >= 0) || (Math.abs(i) < this.kYl));
-    this.kYo = true;
-    this.GB.startScroll(0, 0, 0, kYp, 500);
+    } while ((this.Ww.getPaddingTop() < -this.nwj) || (i >= 0) || (Math.abs(i) < this.nwj));
+    this.nwm = true;
+    this.mScroller.startScroll(0, 0, 0, nwn, 500);
     invalidate();
     paramMotionEvent.setAction(3);
     super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(111779);
     return true;
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111777);
     super.onFinishInflate();
-    this.kYl = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
-    this.GB = new Scroller(this.mContext);
+    this.nwj = ViewConfiguration.get(this.mContext).getScaledTouchSlop();
+    this.mScroller = new Scroller(this.mContext);
     super.setOnScrollListener(new GameCenterListView.1(this));
+    AppMethodBeat.o(111777);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(111778);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (!this.kYj))
+    if ((paramBoolean) && (!this.nwh))
     {
-      this.VH = getChildAt(0);
-      this.kYr = ((ImageView)this.VH.findViewById(g.e.small_image));
-      this.kYq = ((ImageView)this.VH.findViewById(g.e.big_image));
-      this.kYj = true;
+      this.Ww = getChildAt(0);
+      this.nwp = ((ImageView)this.Ww.findViewById(2131824663));
+      this.nwo = ((ImageView)this.Ww.findViewById(2131824614));
+      this.nwh = true;
     }
+    AppMethodBeat.o(111778);
   }
 }
 

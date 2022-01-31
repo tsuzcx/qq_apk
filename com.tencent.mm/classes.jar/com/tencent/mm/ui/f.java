@@ -5,13 +5,14 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.SparseArray;
 import android.widget.BaseAdapter;
-import com.tencent.mm.cf.a.a;
-import com.tencent.mm.cf.a.d;
-import com.tencent.mm.cf.a.e;
-import com.tencent.mm.cf.a.g;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.a.a;
+import com.tencent.mm.cg.a.d;
+import com.tencent.mm.cg.a.e;
+import com.tencent.mm.cg.a.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,41 +23,41 @@ public abstract class f<K, T extends a>
 {
   public String TAG = "MicroMsg.CursorDataAdapter";
   public Context context;
-  private int lEu = 0;
+  private HashMap<K, f.b<K, T>> events;
+  private int obH = 0;
   private int pageSize;
-  public boolean uIf = true;
-  public f<K, T>.c uIg;
-  private HashMap<K, f.b<K, T>> uIh;
-  protected f.a uIi;
-  public int uIj = 1000;
-  public int uIk = 3000;
-  public boolean uIl = true;
-  int uIm = 0;
-  private boolean uIn;
-  private boolean uIo;
-  private f<K, T>.e uIp;
-  public K uIq = null;
+  protected f<K, T>.c yVA;
+  protected f.a yVB;
+  public int yVC = 1000;
+  public int yVD = 3000;
+  public boolean yVE = true;
+  int yVF = 0;
+  private boolean yVG;
+  private boolean yVH;
+  private f<K, T>.e yVI;
+  public K yVJ = null;
+  protected boolean yVz = true;
   
   public f(Context paramContext)
   {
     this(paramContext, (byte)0);
     this.pageSize = 5000;
-    y.i(this.TAG, "newCursor setPageSize %d", new Object[] { Integer.valueOf(5000) });
+    ab.i(this.TAG, "newCursor setPageSize %d", new Object[] { Integer.valueOf(5000) });
   }
   
   private f(Context paramContext, byte paramByte)
   {
     this.context = paramContext;
-    this.uIn = true;
+    this.yVG = true;
   }
   
   private f(Context paramContext, char paramChar)
   {
     this.context = paramContext;
-    this.uIn = true;
-    this.uIo = false;
-    this.uIj = 800;
-    this.uIk = 2000;
+    this.yVG = true;
+    this.yVH = false;
+    this.yVC = 800;
+    this.yVD = 2000;
   }
   
   public f(Context paramContext, short paramShort)
@@ -66,47 +67,49 @@ public abstract class f<K, T extends a>
   
   private void a(d<K> paramd)
   {
-    mK(true);
-    if ((this.uIg == null) || (this.uIg.uEU != paramd))
+    qd(true);
+    if ((this.yVA == null) || (this.yVA.yRC != paramd))
     {
-      if ((this.uIg != null) && (!this.uIg.isClosed()))
+      if ((this.yVA != null) && (!this.yVA.isClosed()))
       {
-        this.uIg.close();
-        this.uIg = null;
+        this.yVA.close();
+        this.yVA = null;
       }
-      this.uIg = new f.c(this, paramd);
-      this.uIg.getCount();
-      cya();
+      this.yVA = new f.c(this, paramd);
+      this.yVA.getCount();
+      dAX();
       notifyDataSetChanged();
     }
   }
   
   private void a(f<K, T>.c paramf)
   {
-    mK(false);
-    this.uIg = paramf;
-    this.uIg.getCount();
-    cya();
+    qd(false);
+    this.yVA = paramf;
+    this.yVA.getCount();
+    dAX();
   }
   
   private void a(final f<K, T>.c paramf, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1)
     {
-      if ((this.uIp != null) && (this.uIp.cym())) {
-        this.uIp.cyk();
+      if ((this.yVI != null) && (this.yVI.dBm())) {
+        this.yVI.dBk();
       }
-      if (this.uIh != null) {
-        this.uIh.clear();
+      if (this.events != null) {
+        this.events.clear();
       }
     }
     if (paramBoolean2)
     {
-      a(new d()
+      a(new f.d()
       {
-        public final void cyg()
+        public final void dBg()
         {
+          AppMethodBeat.i(29172);
           f.a(f.this, paramf);
+          AppMethodBeat.o(29172);
         }
       });
       return;
@@ -114,72 +117,108 @@ public abstract class f<K, T extends a>
     a(paramf);
   }
   
-  private void a(d paramd)
+  private void a(f.d paramd)
   {
     long l = System.currentTimeMillis();
-    if (this.uIi != null) {
-      this.uIi.cyh();
+    if (this.yVB != null) {
+      this.yVB.dBh();
     }
-    paramd.cyg();
+    paramd.dBg();
     notifyDataSetChanged();
-    if (this.uIi != null) {
-      this.uIi.Wp();
+    if (this.yVB != null) {
+      this.yVB.apT();
     }
-    if (this.uIp != null) {
-      this.uIp.cyn();
+    if (this.yVI != null) {
+      this.yVI.dBn();
     }
-    y.i(this.TAG, "newcursor update callback last :%d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.i(this.TAG, "newcursor update callback last :%d ", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
   }
   
-  private void bG(String paramString, boolean paramBoolean)
+  private void ci(String paramString, boolean paramBoolean)
   {
-    if (this.lEu == 0) {}
-    for (int i = 1;; i = 0)
+    if ((!dBe()) && ((this.yVE | paramBoolean)))
     {
-      if ((i == 0) && ((this.uIl | paramBoolean)))
-      {
-        if (!paramBoolean) {
-          y.i(this.TAG, "newcursor cache needRefresh : needRefreshInfront :%b from : %s %s", new Object[] { Boolean.valueOf(this.uIl), paramString, bk.csb() });
-        }
-        mJ(false);
+      if (!paramBoolean) {
+        ab.i(this.TAG, "newcursor cache needRefresh : needRefreshInfront :%b from : %s %s", new Object[] { Boolean.valueOf(this.yVE), paramString, bo.dtY() });
       }
-      return;
+      qc(false);
     }
   }
   
-  private void cya()
+  private void dAX()
   {
-    if (this.uIn) {
-      if (!this.uIg.cxa()) {
-        break label95;
+    if (this.yVG) {
+      if (!this.yVA.dzM()) {
+        break label96;
       }
     }
-    label95:
+    label96:
     for (int i = 1;; i = 2)
     {
-      if ((i != this.uIm) && (this.uIm != 0))
+      if ((i != this.yVF) && (this.yVF != 0))
       {
-        if ((this.uIp != null) && (this.uIp.cym())) {
-          a(new f.c(this, cyc()), true, false);
+        if ((this.yVI != null) && (this.yVI.dBm())) {
+          a(new f.c(this, dAZ()), true, false);
         }
-        y.i(this.TAG, "newcursor change update stats  %d ", new Object[] { Integer.valueOf(i) });
+        ab.i(this.TAG, "newcursor change update stats  %d ", new Object[] { Integer.valueOf(i) });
       }
-      this.uIm = i;
+      this.yVF = i;
       return;
     }
   }
   
-  private void cye()
+  private void dBb()
   {
-    this.uIh.clear();
-    this.uIh.put(this.uIq, null);
+    this.events.clear();
+    this.events.put(this.yVJ, null);
   }
   
-  private void cyf()
+  private void dBc()
   {
-    if ((this.uIg != null) && (!this.uIg.isClosed()) && (this.uIh.size() == 0))
+    if (!dBd()) {
+      return;
+    }
+    int i = getChangeType();
+    if (this.yVI != null)
     {
-      y.i(this.TAG, "events size is 0  ");
+      int j = this.yVI.dBo();
+      ab.i(this.TAG, "newcursor mWorkerHandler.isHandingMsg,type is %d ", new Object[] { Integer.valueOf(j) });
+      if (j != 0) {
+        this.yVI.dBk();
+      }
+      if (i != 2) {
+        i = j;
+      }
+    }
+    for (;;)
+    {
+      ab.i(this.TAG, "newcursor ensureNewState  refreshstatus is %d ", new Object[] { Integer.valueOf(i) });
+      this.obH = 0;
+      if (i == 2)
+      {
+        a(new f.c(this, dAZ()), true, true);
+        return;
+      }
+      dBf();
+      return;
+    }
+  }
+  
+  private boolean dBd()
+  {
+    return ((this.yVI != null) && (this.yVI.dBm())) || (getChangeType() != 0);
+  }
+  
+  private boolean dBe()
+  {
+    return this.obH == 0;
+  }
+  
+  private void dBf()
+  {
+    if ((this.yVA != null) && (!this.yVA.isClosed()) && (this.events.size() == 0))
+    {
+      ab.i(this.TAG, "events size is 0  ");
       return;
     }
     a(new f.1(this));
@@ -187,40 +226,40 @@ public abstract class f<K, T extends a>
   
   private int getChangeType()
   {
-    if ((this.uIh == null) || (this.uIh.size() == 0)) {
+    if ((this.events == null) || (this.events.size() == 0)) {
       return 0;
     }
-    if (this.uIh.containsKey(this.uIq)) {
+    if (this.events.containsKey(this.yVJ)) {
       return 2;
     }
     return 1;
   }
   
-  public final T FC(int paramInt)
+  public final T NM(int paramInt)
   {
-    if (this.uIg == null) {
-      a(cyc());
+    if (this.yVA == null) {
+      a(dAZ());
     }
-    bG("getItem", false);
-    this.uIg.uEU.moveToPosition(paramInt);
-    a locala = this.uIg.uEU.FC(paramInt);
+    ci("getItem", false);
+    this.yVA.yRC.moveToPosition(paramInt);
+    a locala = this.yVA.yRC.NM(paramInt);
     if (locala != null)
     {
-      locala.ctt();
+      locala.dvP();
       return locala;
     }
-    y.e(this.TAG, "newcursor getItem error %d", new Object[] { Integer.valueOf(paramInt) });
+    ab.e(this.TAG, "newcursor getItem error %d", new Object[] { Integer.valueOf(paramInt) });
     return locala;
   }
   
   public final void a(f.a parama)
   {
-    this.uIi = parama;
+    this.yVB = parama;
   }
   
   public final void a(SparseArray<K>[] paramArrayOfSparseArray)
   {
-    SparseArray[] arrayOfSparseArray = this.uIg.cwY();
+    SparseArray[] arrayOfSparseArray = this.yVA.dzK();
     int i = 0;
     while (i < arrayOfSparseArray.length)
     {
@@ -237,54 +276,44 @@ public abstract class f<K, T extends a>
   
   public abstract SparseArray<K>[] a(HashSet<f.b<K, T>> paramHashSet, SparseArray<K>[] paramArrayOfSparseArray);
   
-  public abstract ArrayList<T> ag(ArrayList<K> paramArrayList);
+  public abstract ArrayList<T> ap(ArrayList<K> paramArrayList);
   
-  public final T bZ(K paramK)
+  public final T cE(K paramK)
   {
-    if (this.uIg == null) {
+    if (this.yVA == null) {
       return null;
     }
-    return this.uIg.uEU.bZ(paramK);
+    return this.yVA.yRC.cE(paramK);
   }
   
-  public final void cxZ()
+  public final void dAW()
   {
-    this.uIi = null;
+    this.yVB = null;
   }
   
-  public boolean cxa()
+  public final int dAY()
   {
-    if (this.uIg == null) {
-      return false;
-    }
-    return this.uIg.cxa();
-  }
-  
-  public abstract T cxi();
-  
-  public final int cyb()
-  {
-    if (this.uIg == null) {
+    if (this.yVA == null) {
       return 0;
     }
-    d locald = this.uIg.uEU;
+    d locald = this.yVA.yRC;
     if (locald == null) {
       return 0;
     }
     if ((locald instanceof e)) {
-      return ((e)locald).uEL[0].getCount();
+      return ((e)locald).yRt[0].getCount();
     }
     throw new RuntimeException("the cursor is not instanceof MergeHeapCursor ,please call getCount() instead ");
   }
   
-  public abstract d<K> cyc();
+  public abstract d<K> dAZ();
   
-  public final SparseArray<K>[] cyd()
+  public final SparseArray<K>[] dBa()
   {
-    if (this.uIg == null) {
+    if (this.yVA == null) {
       return null;
     }
-    SparseArray[] arrayOfSparseArray1 = this.uIg.cwY();
+    SparseArray[] arrayOfSparseArray1 = this.yVA.dzK();
     SparseArray[] arrayOfSparseArray2 = new SparseArray[arrayOfSparseArray1.length];
     int i = 0;
     while (i < arrayOfSparseArray2.length)
@@ -301,60 +330,92 @@ public abstract class f<K, T extends a>
     return arrayOfSparseArray2;
   }
   
-  public void f(K paramK, int paramInt)
+  protected boolean dzM()
+  {
+    if (this.yVA == null) {
+      return false;
+    }
+    return this.yVA.dzM();
+  }
+  
+  public abstract T dzX();
+  
+  public int getCount()
+  {
+    if (this.yVA == null)
+    {
+      long l = System.currentTimeMillis();
+      a(dAZ());
+      ab.i(this.TAG, "newcursor createCursor last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    }
+    ci("getcount", false);
+    if (this.yVA == null)
+    {
+      ab.w(this.TAG, "[getCount] is zero!");
+      return 0;
+    }
+    return this.yVA.getCount();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public void i(K paramK, int paramInt)
   {
     boolean bool;
-    if (this.uIg != null)
+    if (this.yVA != null)
     {
-      if (this.uIh == null) {
-        this.uIh = new HashMap();
+      if (this.events == null) {
+        this.events = new HashMap();
       }
-      bool = this.uIh.containsKey(this.uIq);
-      if ((paramInt != 5) && (this.uIn) && (paramInt != 1)) {
+      bool = this.events.containsKey(this.yVJ);
+      if ((paramInt != 5) && (this.yVG) && (paramInt != 1)) {
         break label197;
       }
       if (paramInt == 5) {
         break label171;
       }
-      cye();
+      dBb();
     }
     label87:
     do
     {
       break label170;
-      y.i(this.TAG, "newcursor syncHandle is true ,changeType is %d  ", new Object[] { Integer.valueOf(paramInt) });
+      ab.i(this.TAG, "newcursor syncHandle is true ,changeType is %d  ", new Object[] { Integer.valueOf(paramInt) });
       int i = 1;
-      this.lEu = getChangeType();
+      this.obH = getChangeType();
       paramK = this.TAG;
-      int j = this.lEu;
-      if (this.uIm == 1) {}
+      int j = this.obH;
+      if (this.yVF == 1) {}
       for (bool = true;; bool = false)
       {
-        y.i(paramK, "newcursor refreshStatus: %d ,hasLoadedAllDataStatus %b changeType :%d ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
+        ab.i(paramK, "newcursor refreshStatus: %d ,hasLoadedAllDataStatus %b changeType :%d ", new Object[] { Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt) });
         if (i == 0) {
           break label711;
         }
-        y.i(this.TAG, "newcursor event is refresh sync ");
-        mJ(true);
+        ab.i(this.TAG, "newcursor event is refresh sync ");
+        qc(true);
         return;
         if (bool) {
           break;
         }
-        this.uIh.put(paramK, new f.b(paramK, paramInt));
+        this.events.put(paramK, new f.b(paramK, paramInt));
         break;
         if (bool)
         {
-          y.i(this.TAG, "newcursor need reset ,return ");
+          ab.i(this.TAG, "newcursor need reset ,return ");
           return;
         }
-        if (this.uIm == 1)
+        if (this.yVF == 1)
         {
-          if ((this.uIg.bY(paramK)) || (paramInt == 2))
+          if ((this.yVA.cD(paramK)) || (paramInt == 2))
           {
-            HashMap localHashMap = this.uIh;
+            HashMap localHashMap = this.events;
             f.b localb1 = new f.b(paramK, paramInt);
-            if ((localb1.uIt == 2) && (this.uIg.bY(localb1.object))) {
-              localb1.uIt = 3;
+            if ((localb1.yVM == 2) && (this.yVA.cD(localb1.object))) {
+              localb1.yVM = 3;
             }
             f.b localb2 = (f.b)localHashMap.get(paramK);
             if (localb2 != null)
@@ -364,17 +425,17 @@ public abstract class f<K, T extends a>
                 break label669;
               }
               localHashMap.remove(localb2);
-              switch (localb1.uIt)
+              switch (localb1.yVM)
               {
               case 3: 
               case 4: 
               default: 
-                switch (localb2.uIt)
+                switch (localb2.yVM)
                 {
                 case 3: 
                 case 4: 
                 default: 
-                  localb1.uIt = 3;
+                  localb1.yVM = 3;
                   localHashMap.put(paramK, localb1);
                 }
                 break;
@@ -382,49 +443,49 @@ public abstract class f<K, T extends a>
             }
             for (;;)
             {
-              paramK = this.uIg;
+              paramK = this.yVA;
               i = localHashMap.size();
-              if (!paramK.uEU.FB(i))
+              if (!paramK.yRC.NL(i))
               {
-                y.i(this.TAG, "newcursor events size exceed limit :size is :  %d", new Object[] { Integer.valueOf(localHashMap.size()) });
+                ab.i(this.TAG, "newcursor events size exceed limit :size is :  %d", new Object[] { Integer.valueOf(localHashMap.size()) });
                 localHashMap.clear();
-                localHashMap.put(this.uIq, null);
+                localHashMap.put(this.yVJ, null);
               }
-              y.i(this.TAG, "newcursor add event events size %d", new Object[] { Integer.valueOf(this.uIh.size()) });
+              ab.i(this.TAG, "newcursor add event events size %d", new Object[] { Integer.valueOf(this.events.size()) });
               i = 0;
               break;
               i = 0;
               break label302;
-              switch (localb2.uIt)
+              switch (localb2.yVM)
               {
               case 2: 
               case 3: 
               case 4: 
               default: 
-                localb1.uIt = 5;
+                localb1.yVM = 5;
                 break;
               case 5: 
-                y.i(this.TAG, "newcursor processEvent last delete, now delete, impossible");
-                localb1.uIt = 5;
+                ab.i(this.TAG, "newcursor processEvent last delete, now delete, impossible");
+                localb1.yVM = 5;
                 break;
-                switch (localb2.uIt)
+                switch (localb2.yVM)
                 {
                 case 3: 
                 case 4: 
                 default: 
-                  y.i(this.TAG, "newcursor processEvent last update, now insert, impossible");
-                  localb1.uIt = 2;
+                  ab.i(this.TAG, "newcursor processEvent last update, now insert, impossible");
+                  localb1.yVM = 2;
                   break;
                 case 5: 
-                  localb1.uIt = 3;
+                  localb1.yVM = 3;
                   break;
                 case 2: 
-                  y.i(this.TAG, "newcursor processEvent last insert, now insert, impossible");
-                  localb1.uIt = 2;
+                  ab.i(this.TAG, "newcursor processEvent last insert, now insert, impossible");
+                  localb1.yVM = 2;
                   break;
-                  y.i(this.TAG, "newcursor processEvent last delete, now update, impossible");
+                  ab.i(this.TAG, "newcursor processEvent last delete, now update, impossible");
                   break label384;
-                  localb1.uIt = 2;
+                  localb1.yVM = 2;
                   break;
                   localHashMap.put(paramK, localb1);
                 }
@@ -432,175 +493,125 @@ public abstract class f<K, T extends a>
               }
             }
           }
-          y.i(this.TAG, "newcursor event pass ");
+          ab.i(this.TAG, "newcursor event pass ");
           i = 0;
           break label87;
         }
-        cye();
+        dBb();
         i = 0;
         break label87;
       }
-    } while ((!this.uIf) || (!this.uIl));
+    } while ((!this.yVz) || (!this.yVE));
     label170:
     label171:
     label197:
     label711:
-    mJ(false);
+    qc(false);
     label302:
-  }
-  
-  public int getCount()
-  {
-    if (this.uIg == null)
-    {
-      long l = System.currentTimeMillis();
-      a(cyc());
-      y.i(this.TAG, "newcursor createCursor last : %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    }
-    bG("getcount", false);
-    return this.uIg.getCount();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final void mJ(boolean paramBoolean)
-  {
-    int i;
-    if ((this.uIo) || (paramBoolean)) {
-      if (((this.uIp != null) && (this.uIp.cym())) || (getChangeType() != 0))
-      {
-        i = 1;
-        if (i != 0)
-        {
-          i = getChangeType();
-          if (this.uIp == null) {
-            break label239;
-          }
-          int j = this.uIp.cyo();
-          y.i(this.TAG, "newcursor mWorkerHandler.isHandingMsg,type is %d ", new Object[] { Integer.valueOf(j) });
-          if (j != 0) {
-            this.uIp.cyk();
-          }
-          if (i == 2) {
-            break label239;
-          }
-          i = j;
-        }
-      }
-    }
-    label239:
-    for (;;)
-    {
-      y.i(this.TAG, "newcursor ensureNewState  refreshstatus is %d ", new Object[] { Integer.valueOf(i) });
-      this.lEu = 0;
-      if (i == 2) {
-        a(new f.c(this, cyc()), true, true);
-      }
-      for (;;)
-      {
-        this.lEu = 0;
-        return;
-        i = 0;
-        break;
-        cyf();
-        continue;
-        i = getChangeType();
-        if (i == 0)
-        {
-          y.i(this.TAG, "newcursor need not change ");
-          return;
-        }
-        if (i == 2)
-        {
-          y.i(this.TAG, "newcursor enqueueMessage resetcursor ");
-          this.uIh.clear();
-        }
-        if (this.uIp == null) {
-          this.uIp = new f.e(this);
-        }
-        this.uIp.FL(i);
-      }
-    }
-  }
-  
-  public final void mK(boolean paramBoolean)
-  {
-    if (this.uIg != null)
-    {
-      this.uIg.close();
-      this.uIg = null;
-    }
-    if ((paramBoolean) && (this.uIp != null))
-    {
-      this.uIp.quit();
-      this.uIp = null;
-      if (this.uIh != null)
-      {
-        this.uIh.clear();
-        y.i(this.TAG, "newcursor closeCursor,clear events");
-      }
-    }
-    this.lEu = 0;
-    this.uIm = 0;
   }
   
   public void pause()
   {
-    this.uIf = false;
-    y.i(this.TAG, "new cursor pasue");
+    this.yVz = false;
+    ab.i(this.TAG, "new cursor pasue");
+  }
+  
+  public final void qc(boolean paramBoolean)
+  {
+    if ((this.yVH) || (paramBoolean)) {
+      dBc();
+    }
+    for (;;)
+    {
+      this.obH = 0;
+      return;
+      int i = getChangeType();
+      if (i == 0)
+      {
+        ab.i(this.TAG, "newcursor need not change ");
+        return;
+      }
+      if (i == 2)
+      {
+        ab.i(this.TAG, "newcursor enqueueMessage resetcursor ");
+        this.events.clear();
+      }
+      if (this.yVI == null) {
+        this.yVI = new f.e(this);
+      }
+      this.yVI.NZ(i);
+    }
+  }
+  
+  public final void qd(boolean paramBoolean)
+  {
+    if (this.yVA != null)
+    {
+      this.yVA.close();
+      this.yVA = null;
+    }
+    if ((paramBoolean) && (this.yVI != null))
+    {
+      this.yVI.quit();
+      this.yVI = null;
+      if (this.events != null)
+      {
+        this.events.clear();
+        ab.i(this.TAG, "newcursor closeCursor,clear events");
+      }
+    }
+    this.obH = 0;
+    this.yVF = 0;
   }
   
   public final void resume()
   {
-    y.i(this.TAG, "newcursor resume ");
-    this.uIf = true;
-    bG("resume", true);
-  }
-  
-  private static abstract interface d
-  {
-    public abstract void cyg();
+    ab.i(this.TAG, "newcursor resume ");
+    this.yVz = true;
+    ci("resume", true);
   }
   
   final class e$c
-    extends ah
+    extends ak
   {
     long lastUpdateTime;
-    long uIE;
-    final int uIF = hashCode() | 0x776;
-    final int uIG = hashCode() | 0x77A;
+    long yVX;
+    final int yVY;
+    final int yVZ;
     
     public e$c(Looper paramLooper)
     {
       super();
-      f.this.uIx = new LinkedList();
+      AppMethodBeat.i(29179);
+      this.yVY = (hashCode() | 0x776);
+      this.yVZ = (hashCode() | 0x77A);
+      f.this.yVQ = new LinkedList();
+      AppMethodBeat.o(29179);
     }
     
     public final void handleMessage(Message paramMessage)
     {
+      AppMethodBeat.i(29180);
       super.handleMessage(paramMessage);
-      if (paramMessage.what == this.uIG)
+      if (paramMessage.what == this.yVZ)
       {
-        removeMessages(this.uIF);
-        l = System.currentTimeMillis();
-        if ((l - this.uIE > f.this.uIr.uIj) || (l - this.uIE < 0L) || ((this.lastUpdateTime != 0L) && (l - this.lastUpdateTime > f.this.uIr.uIk)) || (l - this.lastUpdateTime < 0L))
-        {
+        removeMessages(this.yVY);
+        long l = System.currentTimeMillis();
+        if ((l - this.yVX > f.this.yVK.yVC) || (l - this.yVX < 0L) || ((this.lastUpdateTime != 0L) && (l - this.lastUpdateTime > f.this.yVK.yVD)) || (l - this.lastUpdateTime < 0L)) {
           f.e.a(f.this);
-          this.uIE = l;
         }
-      }
-      while (paramMessage.what != this.uIF) {
         for (;;)
         {
-          long l;
+          this.yVX = l;
+          AppMethodBeat.o(29180);
           return;
-          sendEmptyMessageDelayed(this.uIF, f.this.uIr.uIj);
+          sendEmptyMessageDelayed(this.yVY, f.this.yVK.yVC);
         }
       }
-      f.e.a(f.this);
+      if (paramMessage.what == this.yVY) {
+        f.e.a(f.this);
+      }
+      AppMethodBeat.o(29180);
     }
   }
 }

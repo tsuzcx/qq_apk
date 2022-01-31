@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.qmessage.ui;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.qmessage.a.b;
 
 final class a$1
@@ -11,7 +12,9 @@ final class a$1
   
   public final void run()
   {
-    au.Dk().a(this.ncF, 0);
+    AppMethodBeat.i(24096);
+    aw.Rc().a(this.pHX, 0);
+    AppMethodBeat.o(24096);
   }
 }
 

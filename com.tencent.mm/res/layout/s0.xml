@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/b7g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/s1" />
-    <include android:id="@id/b7h" layout="@layout/s2" />
-    <include layout="@layout/s1" />
+    <LinearLayout android:padding="10.0dip" style="@style/l0">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/b47" style="@style/mm" />
+        <EditText android:id="@id/b8s" style="@style/ml" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,21 +1,21 @@
 package com.tencent.mm.modelmulti;
 
-import com.tencent.mm.protocal.c.ayy;
+import com.tencent.mm.protocal.protobuf.bgb;
 
 final class e$a
 {
-  String aox;
-  int emF = 0;
   int errCode;
+  String errMsg;
   int errType;
-  ayy esG;
-  int esH = 0;
+  int fDc = 0;
+  bgb fIt;
+  int fIu = 0;
   
   e$a(e parame) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.modelmulti.e.a
  * JD-Core Version:    0.7.0.1
  */

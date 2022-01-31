@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape>
-            <solid android:color="#ffe2e2e2" />
-        </shape>
-    </item>
-    <item android:bottom="1.0px">
-        <shape>
-            <solid android:color="@color/a23" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@color/wx" />
+    <item android:drawable="@color/a3x" />
+</selector>

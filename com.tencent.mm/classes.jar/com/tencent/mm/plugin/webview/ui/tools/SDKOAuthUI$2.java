@@ -1,24 +1,43 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mm.protocal.c.azp;
-import com.tencent.mm.ui.widget.b.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.gdpr.b;
+import com.tencent.mm.plugin.webview.f.a;
+import com.tencent.mm.plugin.webview.model.ai;
+import com.tencent.mm.protocal.protobuf.bxa;
+import com.tencent.mm.sdk.platformtools.ab;
+import java.util.LinkedList;
 
 final class SDKOAuthUI$2
-  implements AdapterView.OnItemLongClickListener
+  implements b
 {
-  SDKOAuthUI$2(SDKOAuthUI paramSDKOAuthUI) {}
+  SDKOAuthUI$2(SDKOAuthUI paramSDKOAuthUI, bxa parambxa) {}
   
-  public final boolean onItemLongClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  public final void kK(int paramInt)
   {
-    SDKOAuthUI.d(this.rmk, paramInt);
-    int i = SDKOAuthUI.d(this.rmk).CA(paramInt).id;
-    if ((i != 0) && (i != 1)) {
-      SDKOAuthUI.h(this.rmk).a(paramView, paramInt, paramLong, this.rmk, SDKOAuthUI.e(this.rmk), SDKOAuthUI.f(this.rmk), SDKOAuthUI.g(this.rmk));
+    AppMethodBeat.i(7525);
+    ab.i("MicroMsg.SdkOAuthUI", " MPGdprPolicyUtil.checkPolicy onPermissionReturn:%d", new Object[] { Integer.valueOf(paramInt) });
+    if (paramInt == 1)
+    {
+      SDKOAuthUI.a(this.vbR, -4);
+      a.vtM.a(SDKOAuthUI.a(this.vbR), SDKOAuthUI.b(this.vbR), 0, SDKOAuthUI.c(this.vbR), 2, 1, 0);
+      this.vbR.finish();
+      AppMethodBeat.o(7525);
+      return;
     }
-    return true;
+    LinkedList localLinkedList = new LinkedList();
+    SDKOAuthUI.g(this.vbR);
+    ai.a(this.vbS, localLinkedList);
+    SDKOAuthUI.n(this.vbR);
+    if (SDKOAuthUI.o(this.vbR))
+    {
+      SDKOAuthUI.g(this.vbR);
+      ai.a(localLinkedList, SDKOAuthUI.b.a(SDKOAuthUI.h(this.vbR)), SDKOAuthUI.p(this.vbR));
+      AppMethodBeat.o(7525);
+      return;
+    }
+    SDKOAuthUI.g(this.vbR).h(localLinkedList, SDKOAuthUI.b.a(SDKOAuthUI.h(this.vbR)));
+    AppMethodBeat.o(7525);
   }
 }
 

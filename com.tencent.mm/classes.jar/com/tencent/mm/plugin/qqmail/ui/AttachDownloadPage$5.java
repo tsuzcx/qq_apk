@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.qqmail.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AttachDownloadPage$5
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class AttachDownloadPage$5
   
   public final void onClick(View paramView)
   {
-    AttachDownloadPage.g(this.nfL);
+    AppMethodBeat.i(68135);
+    AttachDownloadPage.g(this.pLa);
+    AppMethodBeat.o(68135);
   }
 }
 

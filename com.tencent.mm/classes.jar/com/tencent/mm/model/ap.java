@@ -1,20 +1,14 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.protocal.c.bsx;
+import android.app.Notification;
 
 public abstract interface ap
 {
-  public abstract void Hk();
-  
-  public abstract void Hl();
-  
-  public abstract void Hm();
-  
-  public abstract void a(bsx parambsx);
+  public abstract void notify(int paramInt, Notification paramNotification);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.model.ap
  * JD-Core Version:    0.7.0.1
  */

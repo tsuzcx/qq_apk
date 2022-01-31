@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.shake.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShakeSayHiListUI$9
   implements MenuItem.OnMenuItemClickListener
@@ -10,14 +11,16 @@ final class ShakeSayHiListUI$9
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.odv.XM();
-    this.odv.finish();
+    AppMethodBeat.i(24882);
+    this.qRC.hideVKB();
+    this.qRC.finish();
+    AppMethodBeat.o(24882);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.ui.ShakeSayHiListUI.9
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,11 @@ package com.tencent.mm.plugin.scanner.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.scanner.c;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class p$3
   implements View.OnClickListener
@@ -10,7 +15,16 @@ final class p$3
   
   public final void onClick(View paramView)
   {
-    p.a(this.nMw);
+    AppMethodBeat.i(81202);
+    if (this.qAf.qzg == null)
+    {
+      ab.e("MicroMsg.scanner.ScanModeQRCode", "toMyQRCodeOnclickListener scanUICallback == null");
+      AppMethodBeat.o(81202);
+      return;
+    }
+    h.qsU.e(11264, new Object[] { Integer.valueOf(3) });
+    c.gmO.bn(this.qAf.qzg.getContext());
+    AppMethodBeat.o(81202);
   }
 }
 

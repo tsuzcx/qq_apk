@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.location.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class LocationExtUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -11,11 +12,13 @@ final class LocationExtUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(113433);
     paramMenuItem = new Intent();
-    paramMenuItem.putExtra("key_remark_result", LocationExtUI.b(this.lEO));
-    paramMenuItem.putExtra("key_tags_result", LocationExtUI.a(this.lEO));
-    this.lEO.setResult(-1, paramMenuItem);
-    this.lEO.finish();
+    paramMenuItem.putExtra("key_remark_result", LocationExtUI.b(this.occ));
+    paramMenuItem.putExtra("key_tags_result", LocationExtUI.a(this.occ));
+    this.occ.setResult(-1, paramMenuItem);
+    this.occ.finish();
+    AppMethodBeat.o(113433);
     return true;
   }
 }

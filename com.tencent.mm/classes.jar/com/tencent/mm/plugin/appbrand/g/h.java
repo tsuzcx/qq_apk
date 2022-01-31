@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.appbrand.g;
 
 import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.a.j;
@@ -8,8 +9,8 @@ import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.d.e.a;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.HashSet;
 import java.util.List;
 
@@ -21,73 +22,84 @@ public final class h
     super(paramContext, paramb, paramInt);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.a.a a(ah paramah, HashSet<String> paramHashSet)
+  public final com.tencent.mm.plugin.fts.a.a.a a(ak paramak, HashSet<String> paramHashSet)
   {
+    AppMethodBeat.i(129980);
     i locali = new i();
-    locali.bVk = this.bVk;
-    locali.kxe = com.tencent.mm.plugin.fts.a.c.d.kxG;
-    locali.kxf = this;
-    locali.handler = paramah;
-    locali.kxd = paramHashSet;
-    return ((n)g.t(n.class)).search(7, locali);
+    locali.query = this.query;
+    locali.mST = com.tencent.mm.plugin.fts.a.c.d.mTv;
+    locali.mSU = this;
+    locali.handler = paramak;
+    locali.mSS = paramHashSet;
+    paramak = ((n)g.G(n.class)).search(7, locali);
+    AppMethodBeat.o(129980);
+    return paramak;
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
+  public final com.tencent.mm.plugin.fts.a.d.a.a a(int paramInt, e.a parama)
   {
-    int i = paramInt - parama.kxK - 1;
+    AppMethodBeat.i(129982);
+    int i = paramInt - parama.mTy - 1;
     l locall = null;
     Object localObject = locall;
-    if (i < parama.kxO.size())
+    if (i < parama.mTC.size())
     {
       localObject = locall;
       if (i >= 0)
       {
-        locall = (l)parama.kxO.get(i);
+        locall = (l)parama.mTC.get(i);
         localObject = new d(paramInt);
-        ((d)localObject).fYx = locall;
-        ((d)localObject).kwi = parama.kwi;
-        ((d)localObject).cU(locall.type, locall.kwf);
+        ((d)localObject).hrL = locall;
+        ((d)localObject).mRX = parama.mRX;
+        ((d)localObject).es(locall.type, locall.mRU);
       }
     }
-    if (localObject != null) {
-      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).kxW = (i + 1);
+    if (localObject != null)
+    {
+      ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mTJ = (i + 1);
+      if (i == parama.mTC.size() - 1) {
+        ((com.tencent.mm.plugin.fts.a.d.a.a)localObject).mTH = false;
+      }
     }
+    AppMethodBeat.o(129982);
     return localObject;
   }
   
-  protected final void a(j paramj, HashSet<String> paramHashSet)
+  public final void a(j paramj, HashSet<String> paramHashSet)
   {
-    List localList = paramj.kxh;
+    AppMethodBeat.i(129981);
+    List localList = paramj.mSW;
     if ((localList != null) && (!localList.isEmpty()))
     {
       com.tencent.mm.modelsns.d locald = new com.tencent.mm.modelsns.d();
-      String str = this.bVk;
+      String str = this.query;
       paramHashSet = str;
       if (str != null) {
         paramHashSet = str.replaceAll(",", " ");
       }
-      locald.j("20KeyWordId", paramHashSet + ",");
-      locald.j("21ViewType", "1,");
-      locald.j("22OpType", "1,");
-      locald.j("23ResultCount", localList.size() + ",");
-      locald.j("24ClickPos", ",");
-      locald.j("25ClickAppUserName", ",");
-      y.i("MicroMsg.FTSWeAppUIUnit", "report oreh LocalSearchWeApp(13963), %s", new Object[] { locald.uJ() });
-      com.tencent.mm.plugin.report.service.h.nFQ.f(13963, new Object[] { locald });
+      locald.k("20KeyWordId", paramHashSet + ",");
+      locald.k("21ViewType", "1,");
+      locald.k("22OpType", "1,");
+      locald.k("23ResultCount", localList.size() + ",");
+      locald.k("24ClickPos", ",");
+      locald.k("25ClickAppUserName", ",");
+      ab.i("MicroMsg.FTSWeAppUIUnit", "report oreh LocalSearchWeApp(13963), %s", new Object[] { locald.Fg() });
+      com.tencent.mm.plugin.report.service.h.qsU.e(13963, new Object[] { locald });
     }
-    if (bA(paramj.kxh))
+    if (bU(paramj.mSW))
     {
       paramHashSet = new e.a();
       paramHashSet.businessType = -13;
-      paramHashSet.kxO = paramj.kxh;
-      paramHashSet.kwi = paramj.kwi;
-      if (paramHashSet.kxO.size() > 3)
+      paramHashSet.mTC = paramj.mSW;
+      paramHashSet.mRX = paramj.mRX;
+      if (paramHashSet.mTC.size() > 3)
       {
-        paramHashSet.kxN = true;
-        paramHashSet.kxO = paramHashSet.kxO.subList(0, 3);
+        paramHashSet.mTB = true;
+        paramHashSet.mTC = paramHashSet.mTC.subList(0, 3);
       }
-      this.kzW.add(paramHashSet);
+      this.mVO.add(paramHashSet);
     }
+    AppMethodBeat.o(129981);
   }
   
   public final int getType()

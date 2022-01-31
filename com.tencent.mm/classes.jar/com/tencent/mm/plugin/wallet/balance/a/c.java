@@ -1,89 +1,71 @@
 package com.tencent.mm.plugin.wallet.balance.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.c.g;
-import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave;
-import com.tencent.mm.wallet_core.tenpay.model.ITenpaySave.RetryPayInfo;
-import com.tencent.mm.wallet_core.tenpay.model.j;
-import com.tencent.mm.wallet_core.ui.e;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.c.x;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class c
-  extends j
-  implements g, ITenpaySave
+  extends m
 {
-  public String bOT = null;
-  public String cdl;
-  public String cdm;
-  public String cdn;
-  public String cdo;
-  public String cdp;
-  public boolean qfk = false;
-  public String qfl = "";
-  public double qfo;
-  private ITenpaySave.RetryPayInfo qfp;
+  public String cwk;
   
-  public c(double paramDouble, String paramString1, String paramString2, String paramString3)
+  public c(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4)
   {
+    AppMethodBeat.i(45221);
+    this.cwk = null;
     HashMap localHashMap = new HashMap();
-    this.qfo = Math.round(100.0D * paramDouble);
-    localHashMap.put("total_fee", e.c(String.valueOf(paramDouble), "100", RoundingMode.HALF_UP).toString());
-    localHashMap.put("fee_type", paramString1);
-    localHashMap.put("bind_serial", paramString2);
-    localHashMap.put("bank_type", paramString3);
-    D(localHashMap);
-  }
-  
-  public final int HH()
-  {
-    return 1502;
-  }
-  
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
-  {
-    y.d("Micromsg.NetSceneTenpayBalanceSave", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0) {
-      return;
-    }
-    this.bOT = paramJSONObject.optString("req_key");
-    this.qfk = "1".equals(paramJSONObject.optString("should_alert"));
-    this.qfl = paramJSONObject.optString("alert_msg");
-    if (paramJSONObject.has("real_name_info"))
+    localHashMap.put("flag", String.valueOf(paramInt1));
+    localHashMap.put("passwd", paramString1);
+    localHashMap.put("req_key", paramString3);
+    localHashMap.put("verify_code", paramString2);
+    localHashMap.put("pay_scene", String.valueOf(paramInt2));
+    localHashMap.put("ignore_bind", paramString4);
+    setRequestData(localHashMap);
+    paramString1 = new HashMap();
+    if (x.dSp())
     {
-      paramString = paramJSONObject.optJSONObject("real_name_info");
-      y.i("Micromsg.NetSceneTenpayBalanceSave", "get real_name_info %s", new Object[] { paramString.toString() });
-      this.cdl = paramString.optString("guide_flag");
-      this.cdm = paramString.optString("guide_wording");
-      this.cdn = paramString.optString("left_button_wording");
-      this.cdo = paramString.optString("right_button_wording");
-      this.cdp = paramString.optString("upload_credit_url");
+      paramString1.put("uuid_for_bindcard", x.dSr());
+      paramString1.put("bindcard_scene", x.dSq());
     }
-    this.qfp = new ITenpaySave.RetryPayInfo();
-    this.qfp.ar(paramJSONObject);
+    setWXRequestData(paramString1);
+    AppMethodBeat.o(45221);
   }
   
-  public final int aEC()
+  public final int getFuncId()
   {
-    return 74;
+    return 1506;
   }
   
-  public final ITenpaySave.RetryPayInfo bTh()
+  public final int getTenpayCgicmd()
   {
-    return this.qfp;
+    return 76;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/genpresave";
+    return "/cgi-bin/mmpay-bin/tenpay/verifybind";
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(45222);
+    ab.d("Micromsg.NetSceneTenpayBalanceSave", "errCode " + paramInt + " errMsg: " + paramString);
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(45222);
+      return;
+    }
+    this.cwk = paramJSONObject.optString("req_key");
+    AppMethodBeat.o(45222);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.a.c
  * JD-Core Version:    0.7.0.1
  */

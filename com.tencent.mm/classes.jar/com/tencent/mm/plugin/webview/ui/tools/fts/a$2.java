@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$2
   implements Runnable
@@ -9,7 +10,9 @@ final class a$2
   
   public final void run()
   {
-    this.rvA.rvh = this.rvB.getMeasuredHeight();
+    AppMethodBeat.i(8562);
+    this.vlQ.vlw = this.vlR.getMeasuredHeight();
+    AppMethodBeat.o(8562);
   }
 }
 

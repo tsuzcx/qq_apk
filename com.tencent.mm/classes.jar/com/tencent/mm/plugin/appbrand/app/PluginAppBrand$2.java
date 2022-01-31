@@ -1,16 +1,28 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.mm.kernel.api.g;
-import com.tencent.mm.plugin.appbrand.ui.banner.d;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.s.a;
 
 final class PluginAppBrand$2
-  implements g
+  extends a
 {
   PluginAppBrand$2(PluginAppBrand paramPluginAppBrand) {}
   
-  public final void aP(boolean paramBoolean) {}
+  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
+  {
+    AppMethodBeat.i(154845);
+    PluginAppBrand.access$000();
+    AppMethodBeat.o(154845);
+  }
   
-  public final void tj() {}
+  public final void onActivityStarted(Activity paramActivity)
+  {
+    AppMethodBeat.i(154846);
+    PluginAppBrand.access$000();
+    AppMethodBeat.o(154846);
+  }
 }
 
 

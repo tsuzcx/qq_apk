@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class j$1
   implements Runnable
 {
@@ -7,10 +9,14 @@ final class j$1
   
   public final void run()
   {
-    if ((this.hjk.mFinished) || (this.hjk.hjh.hiB.aie == null)) {
+    AppMethodBeat.i(133470);
+    if ((this.iUR.mFinished) || (this.iUR.iUO.iUh.aku == null))
+    {
+      AppMethodBeat.o(133470);
       return;
     }
-    j.a(this.hjk);
+    j.a(this.iUR);
+    AppMethodBeat.o(133470);
   }
 }
 

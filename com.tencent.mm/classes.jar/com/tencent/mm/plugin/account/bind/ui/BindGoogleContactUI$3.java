@@ -1,27 +1,32 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
 import android.webkit.ConsoleMessage;
-import com.tencent.mm.pluginsdk.ui.tools.s;
-import com.tencent.xweb.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.u;
+import com.tencent.xweb.p;
 
 final class BindGoogleContactUI$3
-  extends j
+  extends p
 {
   BindGoogleContactUI$3(BindGoogleContactUI paramBindGoogleContactUI) {}
   
   public final boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
+    AppMethodBeat.i(13350);
     if (paramConsoleMessage != null) {}
     for (String str = paramConsoleMessage.message();; str = null)
     {
-      str = s.Xd(str);
+      str = u.amW(str);
       if (!str.toLowerCase().startsWith("weixin://private/googlegetcode")) {
         break;
       }
-      BindGoogleContactUI.a(this.faN, str);
+      BindGoogleContactUI.a(this.gsF, str);
+      AppMethodBeat.o(13350);
       return true;
     }
-    return super.onConsoleMessage(paramConsoleMessage);
+    boolean bool = super.onConsoleMessage(paramConsoleMessage);
+    AppMethodBeat.o(13350);
+    return bool;
   }
 }
 

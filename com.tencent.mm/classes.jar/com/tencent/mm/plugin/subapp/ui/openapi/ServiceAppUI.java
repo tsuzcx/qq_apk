@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.subapp.ui.openapi;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.R.o;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.model.s;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.model.t;
+import com.tencent.mm.pluginsdk.model.app.al;
 import com.tencent.mm.pluginsdk.model.app.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
@@ -19,101 +19,112 @@ import java.util.List;
 
 public class ServiceAppUI
   extends MMPreference
-  implements com.tencent.mm.ah.f
+  implements com.tencent.mm.ai.f
 {
-  private com.tencent.mm.ui.base.preference.f dnn;
-  private ServicePreference pxi;
-  private ServicePreference pxj;
-  private PreferenceTitleCategory pxk;
-  private PreferenceTitleCategory pxl;
-  private List<com.tencent.mm.pluginsdk.model.app.f> pxm = new ArrayList();
-  private List<com.tencent.mm.pluginsdk.model.app.f> pxn = new ArrayList();
-  private AdapterView.OnItemClickListener pxo;
-  private AdapterView.OnItemClickListener pxp;
+  private ServicePreference sYW;
+  private ServicePreference sYX;
+  private PreferenceTitleCategory sYY;
+  private PreferenceTitleCategory sYZ;
+  private List<com.tencent.mm.pluginsdk.model.app.f> sZa;
+  private List<com.tencent.mm.pluginsdk.model.app.f> sZb;
+  private AdapterView.OnItemClickListener sZc;
+  private AdapterView.OnItemClickListener sZd;
+  private com.tencent.mm.ui.base.preference.f screen;
   private String talker;
   
-  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  public ServiceAppUI()
   {
-    return false;
+    AppMethodBeat.i(25474);
+    this.sZa = new ArrayList();
+    this.sZb = new ArrayList();
+    AppMethodBeat.o(25474);
   }
   
-  protected final void initView()
+  public int getResourceId()
   {
-    setMMTitle(R.l.service_app_list);
+    return 2131165269;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(25479);
+    setMMTitle(2131303133);
     this.talker = getIntent().getStringExtra("service_app_talker_user");
     setBackBtn(new ServiceAppUI.1(this));
-    this.pxm.clear();
-    this.pxn.clear();
+    this.sZa.clear();
+    this.sZb.clear();
     Cursor localCursor;
-    if (s.fn(this.talker))
+    if (t.lA(this.talker))
     {
-      localCursor = ap.brn().dz(0, 2);
+      localCursor = al.cac().eZ(0, 2);
       if (localCursor != null) {
         if (!localCursor.moveToFirst()) {}
       }
     }
-    label456:
+    label510:
     for (;;)
     {
       com.tencent.mm.pluginsdk.model.app.f localf = new com.tencent.mm.pluginsdk.model.app.f();
-      localf.d(localCursor);
+      localf.convertFrom(localCursor);
       if (localf.field_serviceAppType == 1) {
-        this.pxm.add(localf);
+        this.sZa.add(localf);
       }
       for (;;)
       {
         if (localCursor.moveToNext()) {
-          break label456;
+          break label510;
         }
         localCursor.close();
-        if (this.pxo == null) {
-          this.pxo = new ServiceAppUI.2(this);
+        ab.i("MicroMsg.ServiceAppUI", "initAppList: wxServiceList size %s, bizServiceList size %s", new Object[] { Integer.valueOf(this.sZa.size()), Integer.valueOf(this.sZb.size()) });
+        if (this.sZc == null) {
+          this.sZc = new ServiceAppUI.2(this);
         }
-        if (this.pxp == null) {
-          this.pxp = new ServiceAppUI.3(this);
+        if (this.sZd == null) {
+          this.sZd = new ServiceAppUI.3(this);
         }
-        this.dnn = this.vdd;
-        this.dnn.removeAll();
-        if (this.pxm.size() > 0)
+        this.screen = getPreferenceScreen();
+        this.screen.removeAll();
+        if (this.sZa.size() > 0)
         {
-          this.pxi = new ServicePreference(this);
-          this.pxi.nUB = this.pxm;
-          if (this.pxo != null) {
-            this.pxi.pwZ = this.pxo;
+          this.sYW = new ServicePreference(this);
+          this.sYW.qIG = this.sZa;
+          if (this.sZc != null) {
+            this.sYW.sYO = this.sZc;
           }
-          if (this.pxk == null)
+          if (this.sYY == null)
           {
-            this.pxk = new PreferenceTitleCategory(this);
-            this.pxk.setTitle(R.l.wx_service_app_list);
+            this.sYY = new PreferenceTitleCategory(this);
+            this.sYY.setTitle(2131306049);
           }
-          this.dnn.a(this.pxk);
-          this.dnn.a(this.pxi);
+          this.screen.b(this.sYY);
+          this.screen.b(this.sYW);
         }
-        if (this.pxn.size() > 0)
+        if (this.sZb.size() > 0)
         {
-          this.pxj = new ServicePreference(this);
-          this.pxj.nUB = this.pxn;
-          if (this.pxp != null) {
-            this.pxj.pwZ = this.pxp;
+          this.sYX = new ServicePreference(this);
+          this.sYX.qIG = this.sZb;
+          if (this.sZd != null) {
+            this.sYX.sYO = this.sZd;
           }
-          if (this.pxl == null)
+          if (this.sYZ == null)
           {
-            this.pxl = new PreferenceTitleCategory(this);
-            this.pxl.setTitle(R.l.biz_service_app_list);
+            this.sYZ = new PreferenceTitleCategory(this);
+            this.sYZ.setTitle(2131297685);
           }
-          this.dnn.a(this.pxl);
-          this.dnn.a(this.pxj);
+          this.screen.b(this.sYZ);
+          this.screen.b(this.sYX);
         }
+        AppMethodBeat.o(25479);
         return;
-        if (s.hl(this.talker))
+        if (t.nU(this.talker))
         {
-          localCursor = ap.brn().dz(0, 4);
+          localCursor = al.cac().eZ(0, 4);
           break;
         }
-        localCursor = ap.brn().dz(0, 1);
+        localCursor = al.cac().eZ(0, 1);
         break;
         if (localf.field_serviceAppType == 2) {
-          this.pxn.add(localf);
+          this.sZb.add(localf);
         }
       }
     }
@@ -121,44 +132,60 @@ public class ServiceAppUI
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(25475);
     super.onCreate(paramBundle);
+    AppMethodBeat.o(25475);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(25477);
     super.onPause();
-    if (this.pxi != null) {
-      this.pxi.onPause();
+    if (this.sYW != null) {
+      this.sYW.onPause();
     }
-    if (this.pxj != null) {
-      this.pxj.onPause();
+    if (this.sYX != null) {
+      this.sYX.onPause();
     }
+    AppMethodBeat.o(25477);
   }
   
-  protected void onResume()
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
   {
+    return false;
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(25476);
     super.onResume();
     initView();
-    if (this.pxi != null) {
-      this.pxi.onResume();
+    if (this.sYW != null) {
+      this.sYW.onResume();
     }
-    if (this.pxj != null) {
-      this.pxj.onResume();
+    if (this.sYX != null) {
+      this.sYX.onResume();
     }
+    AppMethodBeat.o(25476);
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+    AppMethodBeat.i(25480);
+    ab.d("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      AppMethodBeat.o(25480);
       return;
     }
-    y.e("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    ab.e("MicroMsg.ServiceAppUI", "onSceneEnd, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    AppMethodBeat.o(25480);
   }
   
-  public final int xj()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return R.o.service_app_pref;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

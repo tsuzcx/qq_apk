@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.appbrand;
 
-import com.tencent.mm.plugin.appbrand.appstorage.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appstorage.k;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.zip.ZipInputStream;
@@ -14,21 +15,23 @@ final class b$2
   
   public final void run()
   {
-    long l = bk.UY();
+    AppMethodBeat.i(128926);
+    long l = bo.aoy();
     int i = -1;
     try
     {
-      int j = i.a(new ZipInputStream(new FileInputStream(new File("/sdcard/test_zip.zip"))), "/sdcard/test_zip/");
+      int j = k.a(new ZipInputStream(new FileInputStream(new File("/sdcard/test_zip.zip"))), "/sdcard/test_zip/");
       i = j;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.e("[ZIP]", "unzip Java ex=%s", new Object[] { localException });
+        ab.e("[ZIP]", "unzip Java ex=%s", new Object[] { localException });
       }
     }
-    y.i("[ZIP]", "unzip Java %d, cost %d", new Object[] { Integer.valueOf(i), Long.valueOf(bk.UY() - l) });
+    ab.i("[ZIP]", "unzip Java %d, cost %d", new Object[] { Integer.valueOf(i), Long.valueOf(bo.aoy() - l) });
+    AppMethodBeat.o(128926);
   }
 }
 

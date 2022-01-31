@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ai.e;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.h.c.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.g.c.aq;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.n.a;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.plugin.brandservice.b.h;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
@@ -24,103 +23,123 @@ import com.tencent.mm.ui.applet.b;
 public class EnterpriseBizContactPlainListUI
   extends MMActivity
 {
-  private String eeM;
-  private ListView fry;
-  private EnterpriseBizContactPlainListUI.a idJ;
-  private long idK;
-  private AdapterView.OnItemClickListener idL;
+  private String fuO;
+  private ListView gJa;
+  private EnterpriseBizContactPlainListUI.a jUx;
+  private long jUy;
+  private AdapterView.OnItemClickListener jUz;
   private int scene;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.e.enterprise_biz_list_normal;
+    return 2130969429;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    this.fry = ((ListView)findViewById(b.d.enterprist_biz_child_lv));
-    if (this.idJ == null)
+    AppMethodBeat.i(13997);
+    this.gJa = ((ListView)findViewById(2131823733));
+    if (this.jUx == null)
     {
-      this.idJ = new EnterpriseBizContactPlainListUI.a(this, this);
-      this.idL = new EnterpriseBizContactPlainListUI.1(this);
+      this.jUx = new EnterpriseBizContactPlainListUI.a(this, this);
+      this.jUz = new EnterpriseBizContactPlainListUI.1(this);
     }
-    y.i("MicroMsg.BrandService.EnterpriseBizContactPlainListUI", "count = %s", new Object[] { Integer.valueOf(this.idJ.getCount()) });
-    Object localObject = ((j)g.r(j.class)).Fw().abl(this.eeM);
+    ab.i("MicroMsg.BrandService.EnterpriseBizContactPlainListUI", "count = %s", new Object[] { Integer.valueOf(this.jUx.getCount()) });
+    Object localObject = ((j)g.E(j.class)).YA().arw(this.fuO);
     if (this.scene == 2)
     {
-      setMMTitle(b.h.enterprise_disable);
-      if ((localObject != null) && (a.gR(((ao)localObject).field_type)) && (this.idJ.getCount() > 0)) {
-        break label203;
+      setMMTitle(2131299311);
+      if ((localObject != null) && (a.je(((aq)localObject).field_type)) && (this.jUx.getCount() > 0)) {
+        break label218;
       }
-      this.fry.setVisibility(8);
-      localObject = (TextView)findViewById(b.d.enterprist_biz_child_not_found);
-      ((TextView)localObject).setText(b.h.enterprise_no_sub_biz);
+      this.gJa.setVisibility(8);
+      localObject = (TextView)findViewById(2131823734);
+      ((TextView)localObject).setText(2131299317);
       ((TextView)localObject).setVisibility(0);
     }
     for (;;)
     {
       setBackBtn(new EnterpriseBizContactPlainListUI.2(this));
-      new EnterpriseBizContactPlainListUI.3(this);
+      setToTop(new EnterpriseBizContactPlainListUI.3(this));
+      AppMethodBeat.o(13997);
       return;
       if (localObject == null) {
         break;
       }
-      setMMTitle(((ad)localObject).Bp());
+      setMMTitle(((ad)localObject).Oe());
       break;
-      label203:
-      this.fry.setVisibility(0);
-      this.fry.setAdapter(this.idJ);
-      this.fry.setOnItemClickListener(this.idL);
+      label218:
+      this.gJa.setVisibility(0);
+      this.gJa.setAdapter(this.jUx);
+      this.gJa.setOnItemClickListener(this.jUz);
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(14001);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if (this.scene == 4) {
       finish();
     }
+    AppMethodBeat.o(14001);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(13996);
     super.onCreate(paramBundle);
     this.scene = getIntent().getIntExtra("enterprise_scene", 2);
-    this.eeM = getIntent().getStringExtra("enterprise_biz_name");
-    this.idK = getIntent().getLongExtra("biz_chat_chat_id", -1L);
-    y.i("MicroMsg.BrandService.EnterpriseBizContactPlainListUI", "bizName = %s", new Object[] { this.eeM });
+    this.fuO = getIntent().getStringExtra("enterprise_biz_name");
+    this.jUy = getIntent().getLongExtra("biz_chat_chat_id", -1L);
+    ab.i("MicroMsg.BrandService.EnterpriseBizContactPlainListUI", "bizName = %s", new Object[] { this.fuO });
     initView();
-    z.My().c(this.idJ);
-    ((j)g.r(j.class)).Fw().a(this.idJ);
+    z.afi().add(this.jUx);
+    ((j)g.E(j.class)).YA().a(this.jUx);
+    AppMethodBeat.o(13996);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    z.My().d(this.idJ);
-    ((j)g.r(j.class)).Fw().b(this.idJ);
-    this.idJ.bcS();
-    EnterpriseBizContactPlainListUI.a locala = this.idJ;
-    if (locala.ffG != null)
+    AppMethodBeat.i(14000);
+    z.afi().remove(this.jUx);
+    ((j)g.E(j.class)).YA().b(this.jUx);
+    this.jUx.bKb();
+    EnterpriseBizContactPlainListUI.a locala = this.jUx;
+    if (locala.gxo != null)
     {
-      locala.ffG.detach();
-      locala.ffG = null;
+      locala.gxo.detach();
+      locala.gxo = null;
     }
     super.onDestroy();
+    AppMethodBeat.o(14000);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(13999);
     super.onPause();
+    AppMethodBeat.o(13999);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(13998);
     super.onResume();
-    if (!s.hk(this.eeM))
+    if (!t.nT(this.fuO))
     {
-      y.e("MicroMsg.BrandService.EnterpriseBizContactPlainListUI", "%s !isContact", new Object[] { this.eeM });
+      ab.e("MicroMsg.BrandService.EnterpriseBizContactPlainListUI", "%s !isContact", new Object[] { this.fuO });
       finish();
+      AppMethodBeat.o(13998);
+      return;
     }
+    AppMethodBeat.o(13998);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

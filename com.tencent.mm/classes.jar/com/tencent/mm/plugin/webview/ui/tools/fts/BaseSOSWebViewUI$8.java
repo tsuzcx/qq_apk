@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.webview.ui.tools.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.d;
 
 final class BaseSOSWebViewUI$8
@@ -9,14 +10,16 @@ final class BaseSOSWebViewUI$8
   
   public final void run()
   {
-    if (BaseSOSWebViewUI.y(this.rtA) != null) {
-      BaseSOSWebViewUI.z(this.rtA).a(this.rtA.getTotalQuery(), this.rtA.getInEditTextQuery(), this.rtA.cfw());
+    AppMethodBeat.i(8338);
+    if (this.vjG.getJsapi() != null) {
+      this.vjG.getJsapi().a(this.vjG.getTotalQuery(), this.vjG.getInEditTextQuery(), this.vjG.dfD());
     }
+    AppMethodBeat.o(8338);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.BaseSOSWebViewUI.8
  * JD-Core Version:    0.7.0.1
  */

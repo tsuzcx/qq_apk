@@ -1,6 +1,7 @@
 package com.tencent.soter.core.c;
 
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedWriter;
 import java.io.StringWriter;
 import java.security.cert.Certificate;
@@ -11,16 +12,19 @@ public class a
 {
   static
   {
+    AppMethodBeat.i(73018);
     if (!a.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
+      AppMethodBeat.o(73018);
       return;
     }
   }
   
   public static String a(Certificate paramCertificate)
   {
+    AppMethodBeat.i(73016);
     StringWriter localStringWriter = new StringWriter();
     BufferedWriter localBufferedWriter = new BufferedWriter(localStringWriter);
     localBufferedWriter.write("-----BEGIN " + "CERTIFICATE" + "-----");
@@ -29,11 +33,14 @@ public class a
     localBufferedWriter.write("-----END " + "CERTIFICATE" + "-----");
     localBufferedWriter.write("\n");
     localBufferedWriter.close();
-    return localStringWriter.toString();
+    paramCertificate = localStringWriter.toString();
+    AppMethodBeat.o(73016);
+    return paramCertificate;
   }
   
   private static void a(BufferedWriter paramBufferedWriter, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(73015);
     char[] arrayOfChar = new char[64];
     int i = 0;
     while (i < paramArrayOfByte.length)
@@ -48,13 +55,18 @@ public class a
       paramBufferedWriter.write("\n");
       i += 64;
     }
+    AppMethodBeat.o(73015);
   }
   
   public static void a(X509Certificate paramX509Certificate, i parami)
   {
+    AppMethodBeat.i(73017);
     paramX509Certificate = paramX509Certificate.getExtensionValue("1.3.6.1.4.1.11129.2.1.17");
-    if ((paramX509Certificate == null) || (paramX509Certificate.length == 0)) {
-      throw new Exception("Couldn't find the keystore attestation extension data.");
+    if ((paramX509Certificate == null) || (paramX509Certificate.length == 0))
+    {
+      paramX509Certificate = new Exception("Couldn't find the keystore attestation extension data.");
+      AppMethodBeat.o(73017);
+      throw paramX509Certificate;
     }
     int i1;
     int k;
@@ -72,40 +84,46 @@ public class a
       {
         i2 = paramX509Certificate[i];
         if (i2 != n) {
-          break label247;
+          break label271;
         }
         m = i;
-        break label237;
+        break label261;
       }
       if ((j <= 0) || (j >= k)) {
-        break label236;
+        break label255;
       }
-      if ((!$assertionsDisabled) && (paramX509Certificate[(j - 1)] != k - j + 1)) {
-        throw new AssertionError();
+      if ((!$assertionsDisabled) && (paramX509Certificate[(j - 1)] != k - j + 1))
+      {
+        paramX509Certificate = new AssertionError();
+        AppMethodBeat.o(73017);
+        throw paramX509Certificate;
       }
     }
     catch (Exception paramX509Certificate)
     {
-      throw new Exception("Couldn't parse challenge json string in the attestation certificate" + paramX509Certificate.getStackTrace());
+      paramX509Certificate = new Exception("Couldn't parse challenge json string in the attestation certificate" + paramX509Certificate.getStackTrace());
+      AppMethodBeat.o(73017);
+      throw paramX509Certificate;
     }
     int i = k - j + 1;
     byte[] arrayOfByte = new byte[i];
     System.arraycopy(paramX509Certificate, j, arrayOfByte, 0, i);
     paramX509Certificate = new String(arrayOfByte);
-    d.i("Soter.CertUtil", "soter: challenge json in attestation certificate " + paramX509Certificate, new Object[0]);
+    d.i("Soter.CertUtil", "soter: challenge json in attestation certificate ".concat(String.valueOf(paramX509Certificate)), new Object[0]);
     paramX509Certificate = new JSONObject(paramX509Certificate);
-    parami.psl = paramX509Certificate.getString("cpu_id");
+    parami.son = paramX509Certificate.getString("cpu_id");
     parami.uid = paramX509Certificate.getInt("uid");
-    parami.wOW = paramX509Certificate.getLong("counter");
-    label236:
+    parami.Bmu = paramX509Certificate.getLong("counter");
+    label255:
+    AppMethodBeat.o(73017);
     return;
     for (;;)
     {
-      label237:
+      label261:
       i += 1;
       j = m;
       break;
-      label247:
+      label271:
       m = j;
       if (i2 == i1)
       {

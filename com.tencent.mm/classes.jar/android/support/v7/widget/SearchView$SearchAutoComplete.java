@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.support.v7.a.a.a;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -17,14 +16,14 @@ import android.view.inputmethod.InputMethodManager;
 public class SearchView$SearchAutoComplete
   extends AppCompatAutoCompleteTextView
 {
-  private SearchView ajY;
-  private boolean ajZ;
-  final Runnable aka = new SearchView.SearchAutoComplete.1(this);
+  private SearchView amo;
+  boolean amp;
+  final Runnable amq = new SearchView.SearchAutoComplete.1(this);
   private int mThreshold = getThreshold();
   
   public SearchView$SearchAutoComplete(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, a.a.autoCompleteTextViewStyle);
+    this(paramContext, paramAttributeSet, 2130772224);
   }
   
   public SearchView$SearchAutoComplete(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -46,26 +45,6 @@ public class SearchView$SearchAutoComplete
     return 160;
   }
   
-  private void setImeVisibility(boolean paramBoolean)
-  {
-    InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
-    if (!paramBoolean)
-    {
-      this.ajZ = false;
-      removeCallbacks(this.aka);
-      localInputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
-      return;
-    }
-    if (localInputMethodManager.isActive(this))
-    {
-      this.ajZ = false;
-      removeCallbacks(this.aka);
-      localInputMethodManager.showSoftInput(this, 0);
-      return;
-    }
-    this.ajZ = true;
-  }
-  
   public boolean enoughToFilter()
   {
     return (this.mThreshold <= 0) || (super.enoughToFilter());
@@ -74,10 +53,10 @@ public class SearchView$SearchAutoComplete
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
     paramEditorInfo = super.onCreateInputConnection(paramEditorInfo);
-    if (this.ajZ)
+    if (this.amp)
     {
-      removeCallbacks(this.aka);
-      post(this.aka);
+      removeCallbacks(this.amq);
+      post(this.amq);
     }
     return paramEditorInfo;
   }
@@ -92,7 +71,7 @@ public class SearchView$SearchAutoComplete
   protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
-    this.ajY.iB();
+    this.amo.kn();
   }
   
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
@@ -116,7 +95,7 @@ public class SearchView$SearchAutoComplete
         }
         if ((paramKeyEvent.isTracking()) && (!paramKeyEvent.isCanceled()))
         {
-          this.ajY.clearFocus();
+          this.amo.clearFocus();
           setImeVisibility(false);
           return true;
         }
@@ -128,11 +107,11 @@ public class SearchView$SearchAutoComplete
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (this.ajY.hasFocus()) && (getVisibility() == 0))
+    if ((paramBoolean) && (this.amo.hasFocus()) && (getVisibility() == 0))
     {
-      this.ajZ = true;
-      if (SearchView.U(getContext())) {
-        SearchView.ajL.a(this);
+      this.amp = true;
+      if (SearchView.Y(getContext())) {
+        SearchView.amb.c(this);
       }
     }
   }
@@ -141,9 +120,29 @@ public class SearchView$SearchAutoComplete
   
   protected void replaceText(CharSequence paramCharSequence) {}
   
+  void setImeVisibility(boolean paramBoolean)
+  {
+    InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
+    if (!paramBoolean)
+    {
+      this.amp = false;
+      removeCallbacks(this.amq);
+      localInputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
+      return;
+    }
+    if (localInputMethodManager.isActive(this))
+    {
+      this.amp = false;
+      removeCallbacks(this.amq);
+      localInputMethodManager.showSoftInput(this, 0);
+      return;
+    }
+    this.amp = true;
+  }
+  
   void setSearchView(SearchView paramSearchView)
   {
-    this.ajY = paramSearchView;
+    this.amo = paramSearchView;
   }
   
   public void setThreshold(int paramInt)

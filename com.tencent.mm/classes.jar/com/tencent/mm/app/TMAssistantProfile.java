@@ -1,28 +1,37 @@
 package com.tencent.mm.app;
 
 import android.content.res.Configuration;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.e;
-import com.tencent.mm.g.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.f.a;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public class TMAssistantProfile
   extends e
 {
-  public static final String bwr = ae.getPackageName() + ":TMAssistantDownloadSDKService";
+  public static final String bXW;
+  
+  static
+  {
+    AppMethodBeat.i(15404);
+    bXW = ah.getPackageName() + ":TMAssistantDownloadSDKService";
+    AppMethodBeat.o(15404);
+  }
   
   public final void onConfigurationChanged(Configuration paramConfiguration) {}
   
   public final void onCreate()
   {
-    a.aQ(ae.getContext());
-    k.cl(bwr);
-    com.tencent.mm.compatible.util.k.setupBrokenLibraryHandler();
-    p.tb();
+    AppMethodBeat.i(15403);
+    a.bp(ah.getContext());
+    m.dw(bXW);
+    s.By();
+    AppMethodBeat.o(15403);
   }
   
   public String toString()
   {
-    return bwr;
+    return bXW;
   }
 }
 

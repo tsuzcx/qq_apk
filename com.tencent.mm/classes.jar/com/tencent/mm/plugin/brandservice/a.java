@@ -1,39 +1,59 @@
 package com.tencent.mm.plugin.brandservice;
 
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.n;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.z;
+import a.f.b.j;
+import a.l;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.as;
+import com.tencent.mm.sdk.platformtools.bo;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/brandservice/BizProcessorCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "plugin-brandservice_release"})
 public final class a
-  implements n
+  implements com.tencent.mm.pluginsdk.cmd.a
 {
-  public static m eUR;
-  public static l eUS;
+  private static final String jSr = "//biz";
+  public static final a.a jSs;
   
-  public static void g(int paramInt, Object paramObject)
+  static
   {
-    if (paramObject == null) {}
-    for (String str = "null";; str = paramObject.toString())
+    AppMethodBeat.i(14761);
+    jSs = new a.a((byte)0);
+    jSr = "//biz";
+    AppMethodBeat.o(14761);
+  }
+  
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
+  {
+    AppMethodBeat.i(14760);
+    if ((paramArrayOfString != null) && (j.e(jSr, paramArrayOfString[0])))
     {
-      y.i("MicroMsg.BrandService.BrandServiceApplication", "set config, key[%d], value[%s]", new Object[] { Integer.valueOf(paramInt), str });
-      g.DQ();
-      g.DP().Dz().o(paramInt, paramObject);
-      return;
+      if ((j.e("openbiztimeline", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        paramContext = as.eu("brandService", 1);
+        paramContext.encode("BizTimeLineOpenStatus", bo.getInt(paramArrayOfString[2], -1));
+        paramContext.apply();
+        AppMethodBeat.o(14760);
+        return true;
+      }
+      if ((j.e("deleteolddata", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        paramContext = as.eu("brandService", 1);
+        paramContext.encode("BizTimeLineDeleteOldData", bo.getInt(paramArrayOfString[2], -1));
+        paramContext.apply();
+        AppMethodBeat.o(14760);
+        return true;
+      }
+      if ((j.e("showdigest", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
+      {
+        paramContext = as.eu("brandService", 1);
+        paramContext.encode("BizTimeLineShowDigest", bo.getInt(paramArrayOfString[2], -1));
+        paramContext.apply();
+        AppMethodBeat.o(14760);
+        return true;
+      }
     }
-  }
-  
-  public final void a(l paraml)
-  {
-    eUS = paraml;
-  }
-  
-  public final void a(m paramm)
-  {
-    eUR = paramm;
+    AppMethodBeat.o(14760);
+    return false;
   }
 }
 

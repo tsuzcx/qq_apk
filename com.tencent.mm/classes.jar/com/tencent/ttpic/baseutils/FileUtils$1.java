@@ -1,6 +1,7 @@
 package com.tencent.ttpic.baseutils;
 
 import android.text.TextUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.io.FilenameFilter;
 
@@ -11,10 +12,15 @@ final class FileUtils$1
   
   public final boolean accept(File paramFile, String paramString)
   {
-    if (TextUtils.isEmpty(this.val$suffix)) {
+    AppMethodBeat.i(49671);
+    if (TextUtils.isEmpty(this.val$suffix))
+    {
+      AppMethodBeat.o(49671);
       return true;
     }
-    return paramString.endsWith(this.val$suffix);
+    boolean bool = paramString.endsWith(this.val$suffix);
+    AppMethodBeat.o(49671);
+    return bool;
   }
 }
 

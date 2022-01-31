@@ -3,20 +3,30 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GameSettingParams
   implements Parcelable
 {
-  public static final Parcelable.Creator<GameSettingParams> CREATOR = new GameSettingParams.1();
-  public String rwl;
-  public String rwm;
+  public static final Parcelable.Creator<GameSettingParams> CREATOR;
+  public String vmD;
+  public String vmE;
+  
+  static
+  {
+    AppMethodBeat.i(8693);
+    CREATOR = new GameSettingParams.1();
+    AppMethodBeat.o(8693);
+  }
   
   public GameSettingParams() {}
   
   private GameSettingParams(Parcel paramParcel)
   {
-    this.rwl = paramParcel.readString();
-    this.rwm = paramParcel.readString();
+    AppMethodBeat.i(8692);
+    this.vmD = paramParcel.readString();
+    this.vmE = paramParcel.readString();
+    AppMethodBeat.o(8692);
   }
   
   public int describeContents()
@@ -26,8 +36,10 @@ public class GameSettingParams
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeString(this.rwl);
-    paramParcel.writeString(this.rwm);
+    AppMethodBeat.i(8691);
+    paramParcel.writeString(this.vmD);
+    paramParcel.writeString(this.vmE);
+    AppMethodBeat.o(8691);
   }
 }
 

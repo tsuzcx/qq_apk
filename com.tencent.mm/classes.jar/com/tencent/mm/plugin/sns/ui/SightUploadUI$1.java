@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SightUploadUI$1
   implements Runnable
@@ -10,8 +11,10 @@ final class SightUploadUI$1
   
   public final void run()
   {
-    SightUploadUI.a(this.oTB).setWidth((int)(this.oTA * 0.7D));
-    SightUploadUI.b(this.oTB).setLayoutParams(new LinearLayout.LayoutParams((int)(this.oTA * 0.3D), SightUploadUI.b(this.oTB).getHeight()));
+    AppMethodBeat.i(38583);
+    SightUploadUI.a(this.rLy).setWidth((int)(this.rLx * 0.7D));
+    SightUploadUI.b(this.rLy).setLayoutParams(new LinearLayout.LayoutParams((int)(this.rLx * 0.3D), SightUploadUI.b(this.rLy).getHeight()));
+    AppMethodBeat.o(38583);
   }
 }
 

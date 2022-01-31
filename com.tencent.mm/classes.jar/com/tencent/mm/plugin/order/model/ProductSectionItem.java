@@ -3,47 +3,57 @@ package com.tencent.mm.plugin.order.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductSectionItem
   implements Parcelable
 {
-  public static final Parcelable.Creator<ProductSectionItem> CREATER = new ProductSectionItem.1();
+  public static final Parcelable.Creator<ProductSectionItem> CREATER;
   public int count;
   public String iconUrl;
   public String jumpUrl;
-  public List<ProductSectionItem.Skus> mQm;
-  public String mQn;
-  public String mQo;
   public String name;
+  public List<ProductSectionItem.Skus> pqB;
+  public String pqC;
+  public String pqD;
   public int scene;
+  
+  static
+  {
+    AppMethodBeat.i(43791);
+    CREATER = new ProductSectionItem.1();
+    AppMethodBeat.o(43791);
+  }
   
   public ProductSectionItem() {}
   
   public ProductSectionItem(Parcel paramParcel)
   {
+    AppMethodBeat.i(43789);
     this.iconUrl = paramParcel.readString();
     this.name = paramParcel.readString();
     int j = paramParcel.readInt();
     if (j > 0)
     {
-      this.mQm = new ArrayList();
+      this.pqB = new ArrayList();
       int i = 0;
       while (i < j)
       {
         ProductSectionItem.Skus localSkus = new ProductSectionItem.Skus();
         localSkus.key = paramParcel.readString();
         localSkus.value = paramParcel.readString();
-        this.mQm.add(localSkus);
+        this.pqB.add(localSkus);
         i += 1;
       }
     }
     this.count = paramParcel.readInt();
-    this.mQn = paramParcel.readString();
+    this.pqC = paramParcel.readString();
     this.jumpUrl = paramParcel.readString();
-    this.mQo = paramParcel.readString();
+    this.pqD = paramParcel.readString();
     this.scene = paramParcel.readInt();
+    AppMethodBeat.o(43789);
   }
   
   public int describeContents()
@@ -53,15 +63,16 @@ public class ProductSectionItem
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(43790);
     paramParcel.writeString(this.iconUrl);
     paramParcel.writeString(this.name);
-    if (this.mQm != null)
+    if (this.pqB != null)
     {
-      paramParcel.writeInt(this.mQm.size());
+      paramParcel.writeInt(this.pqB.size());
       paramInt = 0;
-      while (paramInt < this.mQm.size())
+      while (paramInt < this.pqB.size())
       {
-        ProductSectionItem.Skus localSkus = (ProductSectionItem.Skus)this.mQm.get(paramInt);
+        ProductSectionItem.Skus localSkus = (ProductSectionItem.Skus)this.pqB.get(paramInt);
         paramParcel.writeString(localSkus.key);
         paramParcel.writeString(localSkus.value);
         paramInt += 1;
@@ -69,10 +80,11 @@ public class ProductSectionItem
     }
     paramParcel.writeInt(0);
     paramParcel.writeInt(this.count);
-    paramParcel.writeString(this.mQn);
+    paramParcel.writeString(this.pqC);
     paramParcel.writeString(this.jumpUrl);
-    paramParcel.writeString(this.mQo);
+    paramParcel.writeString(this.pqD);
     paramParcel.writeInt(this.scene);
+    AppMethodBeat.o(43790);
   }
 }
 

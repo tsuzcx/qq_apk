@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:id="@id/y7" android:background="@drawable/z4" android:layout_width="fill_parent" android:layout_height="@dimen/mp">
-        <ImageView android:id="@id/y8" android:layout_width="@dimen/lg" android:layout_height="@dimen/lg" android:layout_marginLeft="22.0dip" android:layout_marginRight="20.0dip" android:src="@raw/backup_pc_banner" android:contentDescription="@string/q9" />
-        <TextView android:textSize="@dimen/k9" android:textColor="@color/zf" android:id="@id/y9" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/zq" />
-    </LinearLayout>
+    <ImageView android:id="@id/a05" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <TextView android:id="@id/a06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{from source}" />
+    <EditText android:id="@id/a07" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 </LinearLayout>

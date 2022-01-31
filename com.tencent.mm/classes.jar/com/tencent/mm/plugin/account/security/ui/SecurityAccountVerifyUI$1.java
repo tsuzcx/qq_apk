@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.account.security.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SecurityAccountVerifyUI$1
   implements TextWatcher
@@ -11,10 +12,12 @@ final class SecurityAccountVerifyUI$1
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    if ((paramEditable != null) && (!bk.bl(paramEditable.toString()))) {}
+    AppMethodBeat.i(69915);
+    if ((paramEditable != null) && (!bo.isNullOrNil(paramEditable.toString()))) {}
     for (boolean bool = true;; bool = false)
     {
-      this.fkK.enableOptionMenu(bool);
+      this.gCb.enableOptionMenu(bool);
+      AppMethodBeat.o(69915);
       return;
     }
   }
@@ -25,7 +28,7 @@ final class SecurityAccountVerifyUI$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.ui.SecurityAccountVerifyUI.1
  * JD-Core Version:    0.7.0.1
  */

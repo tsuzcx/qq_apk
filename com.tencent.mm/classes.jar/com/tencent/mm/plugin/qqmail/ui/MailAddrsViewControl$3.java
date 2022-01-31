@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AutoCompleteTextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MailAddrsViewControl$3
   implements AdapterView.OnItemClickListener
@@ -12,9 +13,11 @@ final class MailAddrsViewControl$3
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = MailAddrsViewControl.e(this.nir).wo(paramInt);
-    this.nir.e(paramAdapterView);
-    this.nir.nik.setText("");
+    AppMethodBeat.i(68340);
+    paramAdapterView = MailAddrsViewControl.e(this.pNE).Ca(paramInt);
+    this.pNE.e(paramAdapterView);
+    this.pNE.pNx.setText("");
+    AppMethodBeat.o(68340);
   }
 }
 

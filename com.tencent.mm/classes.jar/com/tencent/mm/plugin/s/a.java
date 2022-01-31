@@ -1,196 +1,236 @@
 package com.tencent.mm.plugin.s;
 
-import android.media.AudioTrack;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import java.nio.ByteBuffer;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.s.a.a.a;
+import com.tencent.mm.pluginsdk.model.app.d;
+import com.tencent.mm.pluginsdk.model.app.d.3;
+import com.tencent.mm.pluginsdk.model.app.i;
+import com.tencent.mm.pluginsdk.model.app.k;
+import com.tencent.mm.pluginsdk.model.app.m;
+import com.tencent.mm.pluginsdk.model.app.t;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Vector;
 
-public final class a
-  extends h
+public class a
+  implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.bucket.b, com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.kernel.api.e, com.tencent.mm.kernel.b.c
 {
-  private AudioTrack awx;
-  private int channels;
-  private boolean dnJ = false;
-  private int sampleRate;
+  private static HashMap<Integer, h.d> baseDBFactories;
+  private static volatile a pou;
+  private m poA;
+  private d poB;
+  private com.tencent.mm.sdk.b.c poC;
+  private com.tencent.mm.pluginsdk.model.app.c pov;
+  private com.tencent.mm.pluginsdk.model.app.e pow;
+  private com.tencent.mm.pluginsdk.model.app.h pox;
+  private i poy;
+  private k poz;
   
-  public a(g paramg, ah paramah)
+  static
   {
-    super(paramg, paramah);
+    AppMethodBeat.i(79144);
+    HashMap localHashMap = new HashMap();
+    baseDBFactories = localHashMap;
+    localHashMap.put(Integer.valueOf("APPATTACHINFO_TABLE".hashCode()), new a.2());
+    baseDBFactories.put(Integer.valueOf("APPINFO_TABLE".hashCode()), new a.3());
+    AppMethodBeat.o(79144);
   }
   
-  private int getSampleRate()
+  private a()
   {
-    if (this.sampleRate == 0) {
-      this.sampleRate = this.meu.getInteger("sample-rate");
-    }
-    return this.sampleRate;
+    AppMethodBeat.i(79130);
+    this.poC = new a.4(this);
+    a.a.a(new a.1(this));
+    AppMethodBeat.o(79130);
   }
   
-  final boolean a(long paramLong1, long paramLong2, MediaCodec paramMediaCodec, ByteBuffer paramByteBuffer, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
+  public static com.tencent.mm.pluginsdk.model.app.c aUJ()
   {
-    y.d("MicroMsg.AudioTrackDataSource", "%s start to process output buffer state %d time[%d, %d] index %d", new Object[] { ayN(), Integer.valueOf(this.state), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt) });
-    if (!d.tN(this.state))
-    {
-      y.i("MicroMsg.AudioTrackDataSource", "%s it no need process buffer now state %d", new Object[] { ayN(), Integer.valueOf(this.state) });
-      return false;
+    AppMethodBeat.i(79134);
+    g.RJ().QQ();
+    if (bZY().pov == null) {
+      bZY().pov = new com.tencent.mm.pluginsdk.model.app.c(g.RL().eHS);
     }
-    if (this.awx == null)
-    {
-      y.i("MicroMsg.AudioTrackDataSource", "%s init audio track", new Object[] { ayN() });
-      if (this.channels == 0) {
-        this.channels = this.meu.getInteger("channel-count");
-      }
-      if (this.channels == 1)
-      {
-        i = 4;
-        int j = AudioTrack.getMinBufferSize(getSampleRate(), i, 2);
-        this.awx = new com.tencent.mm.compatible.b.d(3, getSampleRate(), i, j);
-        if ((this.awx == null) || (this.awx.getState() == 1)) {
-          break label256;
-        }
-        y.w("MicroMsg.AudioTrackDataSource", "%s can not create audio track [%d]", new Object[] { ayN(), Integer.valueOf(this.awx.getState()) });
-        this.awx.release();
-        this.awx = null;
-      }
-      for (i = 0;; i = 1)
-      {
-        if (i != 0) {
-          break label270;
-        }
-        return false;
-        i = 12;
-        break;
-        label256:
-        setMute(this.dnJ);
-      }
-    }
-    label270:
-    if ((d.tI(this.state)) && ((this.awx.getPlayState() == 2) || (this.awx.getPlayState() == 1))) {
-      onStart();
-    }
-    if (this.state == 4) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((i != 0) && (this.awx.getPlayState() == 3)) {
-        onPause();
-      }
-      try
-      {
-        this.mep.mei = paramBufferInfo.presentationTimeUs;
-        paramBufferInfo = new byte[paramBufferInfo.size];
-        paramByteBuffer.get(paramBufferInfo);
-        paramByteBuffer.clear();
-        if (paramBufferInfo.length > 0) {
-          this.awx.write(paramBufferInfo, 0, paramBufferInfo.length);
-        }
-        y.d("MicroMsg.AudioTrackDataSource", "%s finish to process index[%d] time[%d] to audio track", new Object[] { ayN(), Integer.valueOf(paramInt), Long.valueOf(this.mep.mei) });
-        paramMediaCodec.releaseOutputBuffer(paramInt, false);
-      }
-      catch (Exception paramMediaCodec)
-      {
-        for (;;)
-        {
-          y.e("MicroMsg.AudioTrackDataSource", "%s audio release output buffer error %s", new Object[] { ayN(), paramMediaCodec.toString() });
-        }
-      }
-      return true;
-    }
+    com.tencent.mm.pluginsdk.model.app.c localc = bZY().pov;
+    AppMethodBeat.o(79134);
+    return localc;
   }
   
-  final boolean a(MediaCodec paramMediaCodec)
+  public static a bZY()
   {
-    y.i("MicroMsg.AudioTrackDataSource", "%s handle decoder before start", new Object[] { ayN() });
-    paramMediaCodec.configure(this.meu, null, null, 0);
-    return false;
-  }
-  
-  protected final void b(MediaCodec paramMediaCodec)
-  {
-    y.i("MicroMsg.AudioTrackDataSource", "%s on output format changed", new Object[] { ayN() });
-    this.sampleRate = 0;
-    this.channels = 0;
-    if (this.awx != null) {}
+    AppMethodBeat.i(79131);
+    if (pou == null) {}
     try
     {
-      this.awx.flush();
-      this.awx.release();
-      label49:
-      this.awx = null;
-      return;
-    }
-    catch (Exception paramMediaCodec)
-    {
-      break label49;
-    }
-  }
-  
-  protected final void onPause()
-  {
-    y.i("MicroMsg.AudioTrackDataSource", "%s on pause", new Object[] { ayN() });
-    if ((this.awx != null) && (this.awx.getState() == 1)) {
-      this.awx.pause();
-    }
-  }
-  
-  protected final void onStart()
-  {
-    y.i("MicroMsg.AudioTrackDataSource", "%s on start", new Object[] { ayN() });
-    if ((this.awx != null) && (this.awx.getState() == 1)) {
-      this.awx.play();
-    }
-  }
-  
-  public final void release()
-  {
-    try
-    {
-      this.awx.flush();
-      this.awx.release();
-      label14:
-      super.release();
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label14;
-    }
-  }
-  
-  public final void setMute(boolean paramBoolean)
-  {
-    if (this.awx == null)
-    {
-      y.w("MicroMsg.AudioTrackDataSource", "%s set mute[%b] but audio track is null", new Object[] { ayN(), Boolean.valueOf(paramBoolean) });
-      this.dnJ = paramBoolean;
-      return;
-    }
-    if (com.tencent.mm.compatible.util.d.gG(21))
-    {
-      y.d("MicroMsg.AudioTrackDataSource", "%s api below 21 set mute[%b]", new Object[] { ayN(), Boolean.valueOf(paramBoolean) });
-      if (paramBoolean)
-      {
-        this.awx.setStereoVolume(0.0F, 0.0F);
-        return;
+      if (pou == null) {
+        pou = new a();
       }
-      this.awx.setStereoVolume(1.0F, 1.0F);
-      return;
+      a locala = pou;
+      AppMethodBeat.o(79131);
+      return locala;
     }
-    y.d("MicroMsg.AudioTrackDataSource", "%s api higher 21 set mute[%b]", new Object[] { ayN(), Boolean.valueOf(paramBoolean) });
-    if (paramBoolean)
+    finally
     {
-      this.awx.setVolume(0.0F);
-      return;
+      AppMethodBeat.o(79131);
     }
-    this.awx.setVolume(1.0F);
   }
   
-  final String type()
+  public static String bZZ()
   {
-    return "audio";
+    AppMethodBeat.i(79133);
+    String str = g.RL().eHR + "openapi/";
+    AppMethodBeat.o(79133);
+    return str;
   }
+  
+  public static com.tencent.mm.pluginsdk.model.app.e caa()
+  {
+    AppMethodBeat.i(79135);
+    g.RJ().QQ();
+    if (bZY().pow == null) {
+      bZY().pow = new com.tencent.mm.pluginsdk.model.app.e();
+    }
+    com.tencent.mm.pluginsdk.model.app.e locale = bZY().pow;
+    AppMethodBeat.o(79135);
+    return locale;
+  }
+  
+  public static com.tencent.mm.pluginsdk.model.app.h cab()
+  {
+    AppMethodBeat.i(79136);
+    g.RJ().QQ();
+    if (bZY().pox == null) {
+      bZY().pox = new com.tencent.mm.pluginsdk.model.app.h();
+    }
+    com.tencent.mm.pluginsdk.model.app.h localh = bZY().pox;
+    AppMethodBeat.o(79136);
+    return localh;
+  }
+  
+  public static i cac()
+  {
+    AppMethodBeat.i(79137);
+    g.RJ().QQ();
+    if (bZY().poy == null) {
+      bZY().poy = new i(g.RL().eHS);
+    }
+    i locali = bZY().poy;
+    AppMethodBeat.o(79137);
+    return locali;
+  }
+  
+  public static k cad()
+  {
+    AppMethodBeat.i(79138);
+    g.RJ().QQ();
+    if (bZY().poz == null) {
+      bZY().poz = new k(g.RL().eHS);
+    }
+    k localk = bZY().poz;
+    AppMethodBeat.o(79138);
+    return localk;
+  }
+  
+  public static m cae()
+  {
+    AppMethodBeat.i(79139);
+    g.RJ().QQ();
+    if (bZY().poA == null) {
+      bZY().poA = new m();
+    }
+    m localm = bZY().poA;
+    AppMethodBeat.o(79139);
+    return localm;
+  }
+  
+  public static d caf()
+  {
+    AppMethodBeat.i(79140);
+    g.RJ().QQ();
+    if (bZY().poB == null) {
+      bZY().poB = new d();
+    }
+    d locald = bZY().poB;
+    AppMethodBeat.o(79140);
+    return locald;
+  }
+  
+  public final List<String> RR()
+  {
+    AppMethodBeat.i(79132);
+    LinkedList localLinkedList = new LinkedList();
+    Collections.addAll(localLinkedList, new String[] { "openapi/" });
+    AppMethodBeat.o(79132);
+    return localLinkedList;
+  }
+  
+  public HashMap<Integer, h.d> collectDatabaseFactory()
+  {
+    return baseDBFactories;
+  }
+  
+  public void onAccountInitialized(e.c paramc)
+  {
+    AppMethodBeat.i(79141);
+    com.tencent.mm.model.ad.a.flG = cab();
+    com.tencent.mm.sdk.b.a.ymk.c(this.poC);
+    AppMethodBeat.o(79141);
+  }
+  
+  public void onAccountRelease()
+  {
+    AppMethodBeat.i(79142);
+    Object localObject = bZY().pox;
+    if (localObject != null) {
+      caf().b(7, (t)localObject);
+    }
+    localObject = bZY().pow;
+    if (localObject != null)
+    {
+      ((com.tencent.mm.pluginsdk.model.app.e)localObject).vKU.clear();
+      ((com.tencent.mm.pluginsdk.model.app.e)localObject).qKd.clear();
+      ((com.tencent.mm.pluginsdk.model.app.e)localObject).hqI.clear();
+    }
+    localObject = bZY().poA;
+    if (localObject != null)
+    {
+      ab.d("MicroMsg.AppSettingService", "stop service");
+      ((m)localObject).vLr.clear();
+      caf().b(1, (t)localObject);
+    }
+    if (this.poB != null)
+    {
+      localObject = this.poB;
+      g.RK().eHt.b(452, (com.tencent.mm.ai.f)localObject);
+      al.d(new d.3((d)localObject));
+    }
+    if (bZY().poy != null) {
+      bZY().poy.vLk.clear();
+    }
+    com.tencent.mm.sdk.b.a.ymk.d(this.poC);
+    ab.i("XPinOpenApi", "onAccountRelease");
+    AppMethodBeat.o(79142);
+  }
+  
+  public void onDataBaseClosed(com.tencent.mm.cg.h paramh1, com.tencent.mm.cg.h paramh2)
+  {
+    AppMethodBeat.i(79143);
+    this.pov = null;
+    this.poy = null;
+    ab.i("XPinOpenApi", "onDataBaseClosed");
+    AppMethodBeat.o(79143);
+  }
+  
+  public void onDataBaseOpened(com.tencent.mm.cg.h paramh1, com.tencent.mm.cg.h paramh2) {}
 }
 
 

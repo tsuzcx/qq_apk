@@ -4,8 +4,8 @@ import java.util.List;
 
 public final class WxaAttributes$b
 {
-  public int eft;
-  public List<WxaAttributes.b.a> fRi;
+  public int fvv;
+  public List<WxaAttributes.b.a> hjU;
   public int type;
 }
 

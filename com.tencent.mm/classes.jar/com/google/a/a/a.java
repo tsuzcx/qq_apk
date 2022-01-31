@@ -2,224 +2,249 @@ package com.google.a.a;
 
 public final class a
 {
-  private int aUA;
-  private int aUB;
-  private int aUC;
-  private int aUD = 2147483647;
-  private int aUE;
-  private int aUF = 64;
-  private int aUG = 67108864;
-  private int aUz;
+  private int bgP;
+  private int bgQ;
+  private int bgR;
+  private int bgS;
+  private int bgT = 2147483647;
+  private int bgU;
+  private int bgV = 64;
+  private int bgW = 67108864;
   private final byte[] buffer;
   private int bufferSize;
   
   a(byte[] paramArrayOfByte, int paramInt)
   {
     this.buffer = paramArrayOfByte;
-    this.aUz = 0;
+    this.bgP = 0;
     this.bufferSize = (paramInt + 0);
-    this.aUB = 0;
+    this.bgR = 0;
   }
   
-  private byte[] dM(int paramInt)
+  private byte[] eS(int paramInt)
   {
     if (paramInt < 0) {
-      throw d.oJ();
+      throw d.sr();
     }
-    if (this.aUB + paramInt > this.aUD)
+    if (this.bgR + paramInt > this.bgT)
     {
-      dN(this.aUD - this.aUB);
-      throw d.oI();
+      eT(this.bgT - this.bgR);
+      throw d.sq();
     }
-    if (paramInt <= this.bufferSize - this.aUB)
+    if (paramInt <= this.bufferSize - this.bgR)
     {
       byte[] arrayOfByte = new byte[paramInt];
-      System.arraycopy(this.buffer, this.aUB, arrayOfByte, 0, paramInt);
-      this.aUB += paramInt;
+      System.arraycopy(this.buffer, this.bgR, arrayOfByte, 0, paramInt);
+      this.bgR += paramInt;
       return arrayOfByte;
     }
-    throw d.oI();
+    throw d.sq();
   }
   
-  private void dN(int paramInt)
+  private void eT(int paramInt)
   {
     if (paramInt < 0) {
-      throw d.oJ();
+      throw d.sr();
     }
-    if (this.aUB + paramInt > this.aUD)
+    if (this.bgR + paramInt > this.bgT)
     {
-      dN(this.aUD - this.aUB);
-      throw d.oI();
+      eT(this.bgT - this.bgR);
+      throw d.sq();
     }
-    if (paramInt <= this.bufferSize - this.aUB)
+    if (paramInt <= this.bufferSize - this.bgR)
     {
-      this.aUB += paramInt;
+      this.bgR += paramInt;
       return;
     }
-    throw d.oI();
+    throw d.sq();
   }
   
-  private void oF()
+  private void sn()
   {
-    this.bufferSize += this.aUA;
+    this.bufferSize += this.bgQ;
     int i = this.bufferSize;
-    if (i > this.aUD)
+    if (i > this.bgT)
     {
-      this.aUA = (i - this.aUD);
-      this.bufferSize -= this.aUA;
+      this.bgQ = (i - this.bgT);
+      this.bufferSize -= this.bgQ;
       return;
     }
-    this.aUA = 0;
+    this.bgQ = 0;
   }
   
-  private byte oH()
+  private byte sp()
   {
-    if (this.aUB == this.bufferSize) {
-      throw d.oI();
+    if (this.bgR == this.bufferSize) {
+      throw d.sq();
     }
     byte[] arrayOfByte = this.buffer;
-    int i = this.aUB;
-    this.aUB = (i + 1);
+    int i = this.bgR;
+    this.bgR = (i + 1);
     return arrayOfByte[i];
   }
   
   public final void a(e parame)
   {
-    int i = oD();
-    if (this.aUE >= this.aUF) {
-      throw d.oO();
+    int i = sl();
+    if (this.bgU >= this.bgV) {
+      throw d.sw();
     }
-    i = dJ(i);
-    this.aUE += 1;
+    i = eP(i);
+    this.bgU += 1;
     parame.a(this);
-    dH(0);
-    this.aUE -= 1;
-    dK(i);
+    eN(0);
+    this.bgU -= 1;
+    eQ(i);
   }
   
-  public final void dH(int paramInt)
+  public final void eN(int paramInt)
   {
-    if (this.aUC != paramInt) {
-      throw d.oM();
+    if (this.bgS != paramInt) {
+      throw d.su();
     }
   }
   
-  public final boolean dI(int paramInt)
+  public final boolean eO(int paramInt)
   {
-    switch (g.dT(paramInt))
+    switch (g.eZ(paramInt))
     {
     default: 
-      throw d.oN();
+      throw d.sv();
     case 0: 
-      oD();
+      sl();
       return true;
     case 1: 
-      oH();
-      oH();
-      oH();
-      oH();
-      oH();
-      oH();
-      oH();
-      oH();
+      sp();
+      sp();
+      sp();
+      sp();
+      sp();
+      sp();
+      sp();
+      sp();
       return true;
     case 2: 
-      dN(oD());
+      eT(sl());
       return true;
     case 3: 
       int i;
       do
       {
-        i = oC();
-      } while ((i != 0) && (dI(i)));
-      dH(g.aQ(g.dU(paramInt), 4));
+        i = sk();
+      } while ((i != 0) && (eO(i)));
+      eN(g.bo(g.fa(paramInt), 4));
       return true;
     case 4: 
       return false;
     }
-    oH();
-    oH();
-    oH();
-    oH();
+    sp();
+    sp();
+    sp();
+    sp();
     return true;
   }
   
-  public final int dJ(int paramInt)
+  public final int eP(int paramInt)
   {
     if (paramInt < 0) {
-      throw d.oJ();
+      throw d.sr();
     }
-    paramInt = this.aUB + paramInt;
-    int i = this.aUD;
+    paramInt = this.bgR + paramInt;
+    int i = this.bgT;
     if (paramInt > i) {
-      throw d.oI();
+      throw d.sq();
     }
-    this.aUD = paramInt;
-    oF();
+    this.bgT = paramInt;
+    sn();
     return i;
   }
   
-  public final void dK(int paramInt)
+  public final void eQ(int paramInt)
   {
-    this.aUD = paramInt;
-    oF();
+    this.bgT = paramInt;
+    sn();
   }
   
-  public final void dL(int paramInt)
+  public final void eR(int paramInt)
   {
-    if (paramInt > this.aUB - this.aUz) {
-      throw new IllegalArgumentException("Position " + paramInt + " is beyond current " + (this.aUB - this.aUz));
+    if (paramInt > this.bgR - this.bgP) {
+      throw new IllegalArgumentException("Position " + paramInt + " is beyond current " + (this.bgR - this.bgP));
     }
     if (paramInt < 0) {
-      throw new IllegalArgumentException("Bad position " + paramInt);
+      throw new IllegalArgumentException("Bad position ".concat(String.valueOf(paramInt)));
     }
-    this.aUB = (this.aUz + paramInt);
+    this.bgR = (this.bgP + paramInt);
   }
   
   public final int getPosition()
   {
-    return this.aUB - this.aUz;
+    return this.bgR - this.bgP;
   }
   
-  public final int oC()
+  public final byte[] readBytes()
   {
-    if (this.aUB == this.bufferSize) {}
+    int i = sl();
+    if ((i <= this.bufferSize - this.bgR) && (i > 0))
+    {
+      byte[] arrayOfByte = new byte[i];
+      System.arraycopy(this.buffer, this.bgR, arrayOfByte, 0, i);
+      this.bgR = (i + this.bgR);
+      return arrayOfByte;
+    }
+    return eS(i);
+  }
+  
+  public final String readString()
+  {
+    int i = sl();
+    if ((i <= this.bufferSize - this.bgR) && (i > 0))
+    {
+      String str = new String(this.buffer, this.bgR, i, "UTF-8");
+      this.bgR = (i + this.bgR);
+      return str;
+    }
+    return new String(eS(i), "UTF-8");
+  }
+  
+  public final int sk()
+  {
+    if (this.bgR == this.bufferSize) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.aUC = 0;
+      this.bgS = 0;
       return 0;
     }
-    this.aUC = oD();
-    if (this.aUC == 0) {
-      throw d.oL();
+    this.bgS = sl();
+    if (this.bgS == 0) {
+      throw d.st();
     }
-    return this.aUC;
+    return this.bgS;
   }
   
-  public final int oD()
+  public final int sl()
   {
-    int i = oH();
+    int i = sp();
     if (i >= 0) {}
     int k;
     do
     {
       return i;
       i &= 0x7F;
-      j = oH();
+      j = sp();
       if (j >= 0) {
         return i | j << 7;
       }
       i |= (j & 0x7F) << 7;
-      j = oH();
+      j = sp();
       if (j >= 0) {
         return i | j << 14;
       }
       i |= (j & 0x7F) << 14;
-      k = oH();
+      k = sp();
       if (k >= 0) {
         return i | k << 21;
       }
-      j = oH();
+      j = sp();
       k = i | (k & 0x7F) << 21 | j << 28;
       i = k;
     } while (j >= 0);
@@ -230,68 +255,43 @@ public final class a
         break label133;
       }
       i = k;
-      if (oH() >= 0) {
+      if (sp() >= 0) {
         break;
       }
       j += 1;
     }
     label133:
-    throw d.oK();
+    throw d.ss();
   }
   
-  public final long oE()
+  public final long sm()
   {
     int i = 0;
     long l = 0L;
     while (i < 64)
     {
-      int j = oH();
+      int j = sp();
       l |= (j & 0x7F) << i;
       if ((j & 0x80) == 0) {
         return l;
       }
       i += 7;
     }
-    throw d.oK();
+    throw d.ss();
   }
   
-  public final int oG()
+  public final int so()
   {
-    if (this.aUD == 2147483647) {
+    if (this.bgT == 2147483647) {
       return -1;
     }
-    int i = this.aUB;
-    return this.aUD - i;
-  }
-  
-  public final byte[] readBytes()
-  {
-    int i = oD();
-    if ((i <= this.bufferSize - this.aUB) && (i > 0))
-    {
-      byte[] arrayOfByte = new byte[i];
-      System.arraycopy(this.buffer, this.aUB, arrayOfByte, 0, i);
-      this.aUB = (i + this.aUB);
-      return arrayOfByte;
-    }
-    return dM(i);
-  }
-  
-  public final String readString()
-  {
-    int i = oD();
-    if ((i <= this.bufferSize - this.aUB) && (i > 0))
-    {
-      String str = new String(this.buffer, this.aUB, i, "UTF-8");
-      this.aUB = (i + this.aUB);
-      return str;
-    }
-    return new String(dM(i), "UTF-8");
+    int i = this.bgR;
+    return this.bgT - i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.a.a.a
  * JD-Core Version:    0.7.0.1
  */

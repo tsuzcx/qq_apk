@@ -1,8 +1,9 @@
 package com.tencent.mm.ui.contact;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.label.a.a;
 import com.tencent.mm.plugin.label.a.b;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class MMBaseSelectContactUI$7
   implements Runnable
@@ -11,14 +12,19 @@ final class MMBaseSelectContactUI$7
   
   public final void run()
   {
-    MMBaseSelectContactUI.a(this.vLX, a.bdA().bdv());
-    MMBaseSelectContactUI.j(this.vLX);
-    ai.d(new MMBaseSelectContactUI.7.1(this));
+    AppMethodBeat.i(105223);
+    MMBaseSelectContactUI.a(this.Adz, a.bKV().bKQ());
+    MMBaseSelectContactUI.j(this.Adz);
+    al.d(new MMBaseSelectContactUI.7.1(this));
+    AppMethodBeat.o(105223);
   }
   
   public final String toString()
   {
-    return super.toString() + "|updateLabelList";
+    AppMethodBeat.i(105224);
+    String str = super.toString() + "|updateLabelList";
+    AppMethodBeat.o(105224);
+    return str;
   }
 }
 

@@ -3,22 +3,32 @@ package com.tencent.mm.plugin.facedetect;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FaceProNative$FaceResult
   implements Parcelable
 {
-  public static final Parcelable.Creator<FaceResult> CREATOR = new FaceProNative.FaceResult.1();
+  public static final Parcelable.Creator<FaceResult> CREATOR;
   public byte[] data;
   public int result;
   public byte[] sidedata;
+  
+  static
+  {
+    AppMethodBeat.i(36);
+    CREATOR = new FaceProNative.FaceResult.1();
+    AppMethodBeat.o(36);
+  }
   
   public FaceProNative$FaceResult() {}
   
   protected FaceProNative$FaceResult(Parcel paramParcel)
   {
+    AppMethodBeat.i(33);
     this.result = paramParcel.readInt();
     this.data = paramParcel.createByteArray();
     this.sidedata = paramParcel.createByteArray();
+    AppMethodBeat.o(33);
   }
   
   public int describeContents()
@@ -29,19 +39,22 @@ public class FaceProNative$FaceResult
   public String toString()
   {
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder("FaceResult{result=").append(this.result).append(", sidedataLen=");
+    AppMethodBeat.i(35);
+    Object localObject = new StringBuilder("FaceResult{result=").append(this.result).append(", sidedataLen=");
     if (this.sidedata == null)
     {
       i = 0;
-      localStringBuilder = localStringBuilder.append(i).append(", dataLen=");
+      localObject = ((StringBuilder)localObject).append(i).append(", dataLen=");
       if (this.data != null) {
-        break label76;
+        break label88;
       }
     }
-    label76:
+    label88:
     for (int i = j;; i = this.data.length)
     {
-      return i + '}';
+      localObject = i + '}';
+      AppMethodBeat.o(35);
+      return localObject;
       i = this.sidedata.length;
       break;
     }
@@ -49,9 +62,11 @@ public class FaceProNative$FaceResult
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(34);
     paramParcel.writeInt(this.result);
     paramParcel.writeByteArray(this.data);
     paramParcel.writeByteArray(this.sidedata);
+    AppMethodBeat.o(34);
   }
 }
 

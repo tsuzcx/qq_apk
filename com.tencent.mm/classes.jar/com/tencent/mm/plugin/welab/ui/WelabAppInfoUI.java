@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.welab.ui;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -18,24 +18,22 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.messenger.foundation.a.a.h;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.a;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j.b;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.welab.a.a;
-import com.tencent.mm.plugin.welab.a.b;
-import com.tencent.mm.plugin.welab.a.c;
-import com.tencent.mm.plugin.welab.a.d;
-import com.tencent.mm.plugin.welab.b;
-import com.tencent.mm.plugin.welab.e;
+import com.tencent.mm.plugin.welab.d;
+import com.tencent.mm.plugin.welab.f;
 import com.tencent.mm.plugin.welab.ui.widget.WelabRoundCornerImageView;
-import com.tencent.mm.protocal.c.atd;
-import com.tencent.mm.protocal.c.ate;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.azg;
+import com.tencent.mm.protocal.protobuf.azh;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -43,53 +41,40 @@ import java.util.List;
 public class WelabAppInfoUI
   extends MMActivity
 {
-  private String bOL;
-  private TextView eXr;
-  private TextView hfq;
-  private Button kfd;
-  private MMSwitchBtn lAy;
-  private TextView mXQ;
-  private com.tencent.mm.plugin.welab.c.a.a rEA;
-  private int rEB;
-  private boolean rEC;
-  private WelabRoundCornerImageView rED;
-  private RecyclerView rEE;
-  private View rEF;
-  private View rEG;
-  private View rEH;
-  private View rEI;
-  private WelabAppInfoUI.a rEJ;
-  private View.OnClickListener rEK = new View.OnClickListener()
-  {
-    public final void onClick(View paramAnonymousView)
-    {
-      Object localObject = paramAnonymousView.getTag().toString();
-      paramAnonymousView = new Intent();
-      paramAnonymousView.putExtra("nowUrl", (String)localObject);
-      paramAnonymousView.putExtra("urlList", (String[])((WelabAppInfoUI.a)WelabAppInfoUI.e(WelabAppInfoUI.this).getAdapter()).iJQ.toArray(new String[0]));
-      localObject = WelabAppInfoUI.this;
-      Intent localIntent = new Intent();
-      localIntent.putExtras(paramAnonymousView.getExtras());
-      if (paramAnonymousView.getFlags() != 0) {
-        localIntent.addFlags(paramAnonymousView.getFlags());
-      }
-      d.b((Context)localObject, "subapp", ".ui.gallery.GestureGalleryUI", localIntent);
-    }
-  };
+  private String cwc;
+  private MMSwitchBtn iDy;
+  private TextView iQE;
+  private Button mzM;
+  private TextView pAD;
+  private TextView titleTv;
+  private com.tencent.mm.plugin.welab.d.a.a vvj;
+  private int vvk;
+  private boolean vvl;
+  private WelabRoundCornerImageView vvm;
+  private RecyclerView vvn;
+  private View vvo;
+  private View vvp;
+  private View vvq;
+  private View vvr;
+  private a vvs;
+  private View.OnClickListener vvt;
   
-  private String chn()
+  public WelabAppInfoUI()
   {
-    return "switch_" + this.rEA.field_LabsAppId;
+    AppMethodBeat.i(80607);
+    this.vvt = new WelabAppInfoUI.5(this);
+    AppMethodBeat.o(80607);
   }
   
-  private void cho()
+  private void dhA()
   {
-    Object localObject2 = this.rEA.Um("field_ImgUrl_android");
+    AppMethodBeat.i(80614);
+    Object localObject2 = this.vvj.ajA("field_ImgUrl_android");
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = this.rEA.Um("field_ImgUrl");
+      localObject1 = this.vvj.ajA("field_ImgUrl");
     }
-    localObject1 = com.tencent.mm.plugin.welab.g.Ui((String)localObject1);
+    localObject1 = f.ajv((String)localObject1);
     localObject2 = ((List)localObject1).iterator();
     while (((Iterator)localObject2).hasNext()) {
       if (TextUtils.isEmpty((String)((Iterator)localObject2).next())) {
@@ -98,183 +83,240 @@ public class WelabAppInfoUI
     }
     if (((List)localObject1).isEmpty())
     {
-      this.rEE.setVisibility(8);
+      this.vvn.setVisibility(8);
+      AppMethodBeat.o(80614);
       return;
     }
-    this.rEE.setVisibility(0);
-    this.rEJ.iJQ = ((List)localObject1);
-    this.rEJ.agL.notifyChanged();
+    this.vvn.setVisibility(0);
+    this.vvs.kQw = ((List)localObject1);
+    this.vvs.ajb.notifyChanged();
+    AppMethodBeat.o(80614);
   }
   
-  protected final int getLayoutId()
+  private String dhz()
   {
-    return a.c.welab_appinfo;
+    AppMethodBeat.i(80613);
+    String str = "switch_" + this.vvj.field_LabsAppId;
+    AppMethodBeat.o(80613);
+    return str;
   }
   
-  protected final void initView()
+  public int getLayoutId()
   {
+    return 2130971314;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(80609);
     super.initView();
-    if (this.rEA == null)
+    if (this.vvj == null)
     {
-      y.e("WelabAppInfoUI", "info is null");
+      ab.e("WelabAppInfoUI", "info is null");
+      AppMethodBeat.o(80609);
       return;
     }
-    FP(8);
+    setMMTitleVisibility(8);
     if (Build.VERSION.SDK_INT >= 21)
     {
       Window localWindow = getWindow();
       localWindow.clearFlags(201326592);
       localWindow.addFlags(-2147483648);
-      localWindow.setStatusBarColor(getResources().getColor(a.a.welab_main_color));
+      localWindow.setStatusBarColor(getResources().getColor(2131690708));
     }
     if (getSupportActionBar() != null) {
-      getSupportActionBar().getCustomView().setBackgroundColor(getResources().getColor(a.a.welab_main_color));
+      getSupportActionBar().getCustomView().setBackgroundColor(getResources().getColor(2131690708));
     }
     setBackBtn(new WelabAppInfoUI.1(this));
-    this.rED = ((WelabRoundCornerImageView)findViewById(a.b.app_img));
-    this.eXr = ((TextView)findViewById(a.b.title));
-    this.mXQ = ((TextView)findViewById(a.b.summary));
-    this.rEE = ((RecyclerView)findViewById(a.b.img_recyclerview));
-    this.rEF = findViewById(a.b.app_switch);
-    this.kfd = ((Button)findViewById(a.b.open_btn));
-    this.rEG = findViewById(a.b.feedback_btn);
-    this.lAy = ((MMSwitchBtn)findViewById(a.b.checkbox));
-    this.hfq = ((TextView)findViewById(a.b.switch_desc));
-    this.rEH = findViewById(a.b.stopped_warning_tv);
-    this.rEI = findViewById(a.b.online_view_container);
-    this.rEE.setLayoutManager(new LinearLayoutManager(0));
-    this.rEE.setOverScrollMode(2);
-    this.rEJ = new WelabAppInfoUI.a(this);
-    this.rEE.setAdapter(this.rEJ);
+    this.vvm = ((WelabRoundCornerImageView)findViewById(2131829567));
+    this.titleTv = ((TextView)findViewById(2131820680));
+    this.pAD = ((TextView)findViewById(2131821890));
+    this.vvn = ((RecyclerView)findViewById(2131829571));
+    this.vvo = findViewById(2131829572);
+    this.mzM = ((Button)findViewById(2131824114));
+    this.vvp = findViewById(2131829574);
+    this.iDy = ((MMSwitchBtn)findViewById(2131820950));
+    this.iQE = ((TextView)findViewById(2131829573));
+    this.vvq = findViewById(2131829569);
+    this.vvr = findViewById(2131829570);
+    this.vvn.setLayoutManager(new LinearLayoutManager(0));
+    this.vvn.setOverScrollMode(2);
+    this.vvs = new a();
+    this.vvn.setAdapter(this.vvs);
+    AppMethodBeat.o(80609);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     boolean bool = true;
+    AppMethodBeat.i(80608);
     super.onCreate(paramBundle);
-    mS(true);
-    czo();
+    setIsDarkActionbarBg(true);
+    hideActionbarLine();
     paramBundle = getIntent();
     if (paramBundle != null)
     {
-      this.bOL = paramBundle.getStringExtra("para_appid");
-      this.rEA = b.chc().Uf(this.bOL);
-      this.rEB = this.rEA.field_Switch;
+      this.cwc = paramBundle.getStringExtra("para_appid");
+      this.vvj = com.tencent.mm.plugin.welab.a.dhl().ajs(this.cwc);
+      this.vvk = this.vvj.field_Switch;
       if (getIntent().getIntExtra("para_from_with_red_point", 0) != 1) {
-        break label98;
+        break label110;
       }
     }
     for (;;)
     {
-      this.rEC = bool;
+      this.vvl = bool;
       initView();
-      e.q(this.bOL, 2, this.rEC);
+      d.t(this.cwc, 2, this.vvl);
+      AppMethodBeat.o(80608);
       return;
-      label98:
+      label110:
       bool = false;
     }
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    int i = 0;
+    AppMethodBeat.i(80611);
     super.onPause();
     Object localObject;
-    if (this.rEB != this.rEA.field_Switch)
+    if (this.vvk != this.vvj.field_Switch)
     {
-      b.chc().rEr.c(this.rEA, new String[0]);
-      localObject = new ate();
-      atd localatd = new atd();
-      localatd.toJ = bk.ZR(this.rEA.field_expId);
-      localatd.toK = this.rEA.field_LabsAppId;
-      if (this.rEA.field_Switch != 2) {
-        break label164;
+      ab.i("WelabAppInfoUI", "update welab info [%b] originSwitch[%d] newSwitch[%d]", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.welab.a.dhl().vuT.update(this.vvj, new String[0])), Integer.valueOf(this.vvk), Integer.valueOf(this.vvj.field_Switch) });
+      this.vvk = this.vvj.field_Switch;
+      localObject = new azh();
+      azg localazg = new azg();
+      if (!this.vvj.dhx()) {
+        break label268;
+      }
+      localazg.xoD = i;
+      localazg.xoE = this.vvj.field_LabsAppId;
+      if (this.vvj.field_Switch != 2) {
+        break label282;
       }
       i = 1;
-      localatd.sYX = i;
-      ((ate)localObject).dtH.add(localatd);
-      localObject = new i.a(207, (com.tencent.mm.bv.a)localObject);
-      ((j)com.tencent.mm.kernel.g.r(j.class)).Fv().b((i.b)localObject);
-      localObject = this.bOL;
-      if (this.rEA.field_Switch != 2) {
-        break label169;
+      label150:
+      localazg.wzE = i;
+      ((azh)localObject).elu.add(localazg);
+      localObject = new j.a(207, (com.tencent.mm.bv.a)localObject);
+      ((j)g.E(j.class)).Yz().c((j.b)localObject);
+      localObject = this.cwc;
+      if (this.vvj.field_Switch != 2) {
+        break label287;
       }
     }
-    label164:
-    label169:
-    for (int i = 4;; i = 5)
+    label268:
+    label282:
+    label287:
+    for (i = 4;; i = 5)
     {
-      e.q((String)localObject, i, this.rEC);
+      d.t((String)localObject, i, this.vvl);
+      if (this.vvj.field_Switch == 2)
+      {
+        localObject = new ArrayList();
+        ((List)localObject).add(this.vvj);
+        com.tencent.mm.plugin.welab.a.dhl();
+        com.tencent.mm.plugin.welab.a.ej((List)localObject);
+      }
+      AppMethodBeat.o(80611);
       return;
-      i = 2;
+      i = bo.apV(this.vvj.field_expId);
       break;
+      i = 2;
+      break label150;
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(80612);
     super.onResume();
     Object localObject;
-    if ((this.rEA.chm()) && (this.rEA.field_Type == 1))
+    if ((this.vvj.dhv()) && (this.vvj.field_Type == 1))
     {
-      this.rEF.setVisibility(0);
-      this.hfq.setText(getResources().getString(a.d.welab_open) + this.rEA.Um("field_Title"));
+      this.vvo.setVisibility(0);
+      this.iQE.setText(getResources().getString(2131305954) + this.vvj.ajA("field_Title"));
       localObject = getSharedPreferences(getPackageName() + "_preferences", 0);
-      this.lAy.setEnabled(true);
-      if (this.rEA.field_Switch == 2)
+      this.iDy.setEnabled(true);
+      if (this.vvj.field_Switch == 2)
       {
-        ((SharedPreferences)localObject).edit().putBoolean(chn(), true).commit();
-        this.lAy.setCheck(true);
-        this.lAy.setSwitchListener(new WelabAppInfoUI.2(this));
-        label169:
-        if (!this.rEA.chm()) {
-          break label442;
-        }
-        this.kfd.setText(getResources().getString(a.d.welab_goto) + this.rEA.Um("field_Title"));
-        if (this.rEA.field_Type == 1) {
-          break label442;
-        }
-        this.kfd.setVisibility(0);
-        this.kfd.setOnClickListener(new WelabAppInfoUI.3(this));
-        label256:
-        localObject = this.eXr;
-        b.chc();
-        ((TextView)localObject).setText(b.a(this.rEA));
-        this.mXQ.setText(this.rEA.Um("field_Introduce"));
-        if (!this.rEA.chm()) {
+        ((SharedPreferences)localObject).edit().putBoolean(dhz(), true).commit();
+        this.iDy.setCheck(true);
+        this.iDy.setSwitchListener(new WelabAppInfoUI.2(this));
+        label175:
+        if (!this.vvj.dhv()) {
           break label454;
         }
-        this.rEG.setVisibility(0);
-        this.rEG.setOnClickListener(new WelabAppInfoUI.4(this));
-        label326:
-        if (!this.rEA.chm()) {
+        this.mzM.setText(getResources().getString(2131305952) + this.vvj.ajA("field_Title"));
+        if (this.vvj.field_Type == 1) {
+          break label454;
+        }
+        this.mzM.setVisibility(0);
+        this.mzM.setOnClickListener(new WelabAppInfoUI.3(this));
+        label262:
+        localObject = this.titleTv;
+        com.tencent.mm.plugin.welab.a.dhl();
+        ((TextView)localObject).setText(com.tencent.mm.plugin.welab.a.a(this.vvj));
+        this.pAD.setText(this.vvj.ajA("field_Introduce"));
+        if (!this.vvj.dhv()) {
           break label466;
         }
-        this.rEH.setVisibility(8);
-        this.rEI.setVisibility(0);
+        this.vvp.setVisibility(0);
+        this.vvp.setOnClickListener(new WelabAppInfoUI.4(this));
+        label332:
+        if (!this.vvj.dhv()) {
+          break label478;
+        }
+        this.vvq.setVisibility(8);
+        this.vvr.setVisibility(0);
       }
     }
     for (;;)
     {
-      cho();
-      this.rED.setCornerRadiusPercent(0.5F);
-      localObject = com.tencent.mm.as.a.a.OT();
-      b.chc();
-      ((com.tencent.mm.as.a.a)localObject).a(b.b(this.rEA), this.rED, b.chc().qXu);
+      dhA();
+      this.vvm.setCornerRadiusPercent(0.5F);
+      localObject = com.tencent.mm.at.a.a.ahM();
+      com.tencent.mm.plugin.welab.a.dhl();
+      ((com.tencent.mm.at.a.a)localObject).a(com.tencent.mm.plugin.welab.a.b(this.vvj), this.vvm, com.tencent.mm.plugin.welab.a.dhl().uMJ);
+      AppMethodBeat.o(80612);
       return;
-      ((SharedPreferences)localObject).edit().putBoolean(chn(), false).commit();
-      this.lAy.setCheck(false);
+      ((SharedPreferences)localObject).edit().putBoolean(dhz(), false).commit();
+      this.iDy.setCheck(false);
       break;
-      this.rEF.setVisibility(8);
-      break label169;
-      label442:
-      this.kfd.setVisibility(8);
-      break label256;
+      this.vvo.setVisibility(8);
+      break label175;
       label454:
-      this.rEG.setVisibility(8);
-      break label326;
+      this.mzM.setVisibility(8);
+      break label262;
       label466:
-      this.rEH.setVisibility(0);
-      this.rEI.setVisibility(8);
+      this.vvp.setVisibility(8);
+      break label332;
+      label478:
+      this.vvq.setVisibility(0);
+      this.vvr.setVisibility(8);
+    }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  final class a
+    extends RecyclerView.a<WelabAppInfoUI.b>
+  {
+    public List<String> kQw;
+    
+    public a() {}
+    
+    public final int getItemCount()
+    {
+      AppMethodBeat.i(80604);
+      int i = this.kQw.size();
+      AppMethodBeat.o(80604);
+      return i;
     }
   }
 }

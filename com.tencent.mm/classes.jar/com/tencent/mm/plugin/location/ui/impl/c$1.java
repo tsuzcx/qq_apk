@@ -3,21 +3,25 @@ package com.tencent.mm.plugin.location.ui.impl;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
 
 final class c$1
   implements View.OnTouchListener
 {
-  private float lJn;
-  private short lJo = 0;
+  private float ogB;
+  private short ogC = 0;
   
   c$1(c paramc) {}
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!c.a(this.lJp)) {
+    AppMethodBeat.i(113594);
+    if (!c.a(this.ogD))
+    {
+      AppMethodBeat.o(113594);
       return true;
     }
     switch (paramMotionEvent.getAction())
@@ -25,49 +29,55 @@ final class c$1
     }
     for (;;)
     {
+      AppMethodBeat.o(113594);
       return false;
-      y.d("MicroMsg.MMPoiMapUI", "newpoi action down %s", new Object[] { Float.valueOf(paramMotionEvent.getRawY()) });
-      this.lJn = paramMotionEvent.getRawY();
-      c.a(this.lJp, false);
+      ab.d("MicroMsg.MMPoiMapUI", "newpoi action down %s", new Object[] { Float.valueOf(paramMotionEvent.getRawY()) });
+      this.ogB = paramMotionEvent.getRawY();
+      c.a(this.ogD, false);
       continue;
-      y.d("MicroMsg.MMPoiMapUI", "newpoi action move %s", new Object[] { Float.valueOf(paramMotionEvent.getRawY()) });
-      if (c.b(this.lJp))
+      ab.d("MicroMsg.MMPoiMapUI", "newpoi action move %s", new Object[] { Float.valueOf(paramMotionEvent.getRawY()) });
+      if (c.b(this.ogD))
       {
-        y.d("MicroMsg.MMPoiMapUI", "newpoi blocked");
-        c.c(this.lJp).setSelection(0);
+        ab.d("MicroMsg.MMPoiMapUI", "newpoi blocked");
+        c.c(this.ogD).setSelection(0);
       }
-      float f = this.lJn - paramMotionEvent.getRawY();
-      if (Math.abs(f) < BackwardSupportUtil.b.b(this.lJp.activity, 20.0F)) {
-        this.lJo = 0;
+      float f = this.ogB - paramMotionEvent.getRawY();
+      if (Math.abs(f) < BackwardSupportUtil.b.b(this.ogD.activity, 20.0F)) {
+        this.ogC = 0;
       }
-      while (((this.lJp.beO() <= c.d(this.lJp)) && (this.lJo == 1)) || ((!c.c(this.lJp).getScroll2Top()) && (this.lJo == -1) && (this.lJp.beO() < c.e(this.lJp))) || ((this.lJo == -1) && (this.lJp.beO() >= c.e(this.lJp))))
+      while (((this.ogD.bMj() <= c.d(this.ogD)) && (this.ogC == 1)) || ((!c.c(this.ogD).getScroll2Top()) && (this.ogC == -1) && (this.ogD.bMj() < c.e(this.ogD))) || ((this.ogC == -1) && (this.ogD.bMj() >= c.e(this.ogD))))
       {
+        AppMethodBeat.o(113594);
         return false;
         if (f > 0.0F) {
-          this.lJo = 1;
+          this.ogC = 1;
         } else {
-          this.lJo = -1;
+          this.ogC = -1;
         }
       }
-      if ((!c.a(this.lJp)) || (this.lJo == 0)) {
-        break;
-      }
-      y.d("MicroMsg.MMPoiMapUI", "newpoi start play isUP %s", new Object[] { Short.valueOf(this.lJo) });
-      if (this.lJo == 1)
+      if ((c.a(this.ogD)) && (this.ogC != 0))
       {
-        c.b(this.lJp, true);
+        ab.d("MicroMsg.MMPoiMapUI", "newpoi start play isUP %s", new Object[] { Short.valueOf(this.ogC) });
+        if (this.ogC == 1)
+        {
+          c.b(this.ogD, true);
+          AppMethodBeat.o(113594);
+          return false;
+        }
+        c.b(this.ogD, false);
+        AppMethodBeat.o(113594);
         return false;
       }
-      c.b(this.lJp, false);
-      return false;
-      y.d("MicroMsg.MMPoiMapUI", "newpoi action up ");
-      c.a(this.lJp, false);
+      AppMethodBeat.o(113594);
+      return true;
+      ab.d("MicroMsg.MMPoiMapUI", "newpoi action up ");
+      c.a(this.ogD, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.c.1
  * JD-Core Version:    0.7.0.1
  */

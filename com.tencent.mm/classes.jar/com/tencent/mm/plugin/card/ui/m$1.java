@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.card.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class m$1
@@ -14,18 +14,20 @@ final class m$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(88683);
     paramView = (String)paramView.getTag();
     if (!TextUtils.isEmpty(paramView))
     {
       if (!paramView.contains(";")) {
-        break label88;
+        break label96;
       }
       paramView = paramView.substring(0, paramView.indexOf(";"));
     }
-    label88:
+    label96:
     for (;;)
     {
-      h.a(m.a(this.ixp), true, paramView, "", m.a(this.ixp).getString(a.g.card_contact_info_dial), m.a(this.ixp).getString(a.g.confirm_dialog_cancel), new m.1.1(this, paramView), null);
+      h.a(m.a(this.kys), true, paramView, "", m.a(this.kys).getString(2131297891), m.a(this.kys).getString(2131298499), new m.1.1(this, paramView), null);
+      AppMethodBeat.o(88683);
       return;
     }
   }

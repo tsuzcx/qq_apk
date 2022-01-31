@@ -1,7 +1,8 @@
 package com.tencent.mm.sandbox.updater;
 
-import com.tencent.mm.pluginsdk.model.v.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.model.u.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -13,23 +14,27 @@ final class UpdaterService$2
   
   public final void run()
   {
-    if (UpdaterService.b(this.udH).size() > 0)
+    AppMethodBeat.i(28985);
+    if (UpdaterService.b(this.ylW).size() > 0)
     {
-      Iterator localIterator = UpdaterService.b(this.udH).values().iterator();
+      Iterator localIterator = UpdaterService.b(this.ylW).values().iterator();
       while (localIterator.hasNext()) {
         if (((a)localIterator.next()).isBusy())
         {
-          y.i("MicroMsg.UpdaterService", "checkAndTryStopSelf2, dont stop, some download mgr still busy");
+          ab.i("MicroMsg.UpdaterService", "checkAndTryStopSelf2, dont stop, some download mgr still busy");
+          AppMethodBeat.o(28985);
           return;
         }
       }
     }
-    if (!v.a.ckG())
+    if (!u.a.dlo())
     {
-      this.udH.stopSelf();
+      this.ylW.stopSelf();
+      AppMethodBeat.o(28985);
       return;
     }
-    y.i("TBSDownloadMgr", "is still busy");
+    ab.i("TBSDownloadMgr", "is still busy");
+    AppMethodBeat.o(28985);
   }
 }
 

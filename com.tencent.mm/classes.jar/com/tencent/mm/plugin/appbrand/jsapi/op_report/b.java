@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.jsapi.op_report;
 
+import com.tencent.luggage.sdk.b.a.c.c;
 import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.p;
 
 public final class b
-  extends a<p>
+  extends a<c>
 {
   private static final int CTRL_INDEX = 245;
   private static final String NAME = "reportPageData";

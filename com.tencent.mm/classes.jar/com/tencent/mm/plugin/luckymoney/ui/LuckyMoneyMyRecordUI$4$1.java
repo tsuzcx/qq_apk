@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import com.tencent.mm.plugin.luckymoney.b.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.model.r;
 import com.tencent.mm.ui.base.h.c;
 
 final class LuckyMoneyMyRecordUI$4$1
@@ -8,24 +9,28 @@ final class LuckyMoneyMyRecordUI$4$1
 {
   LuckyMoneyMyRecordUI$4$1(LuckyMoneyMyRecordUI.4 param4, int paramInt) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(42760);
     switch (paramInt)
     {
     }
-    i locali;
-    do
+    for (;;)
     {
+      AppMethodBeat.o(42760);
       return;
-      locali = LuckyMoneyMyRecordUI.f(this.lVZ.lVW).tt(this.lVY);
-    } while (locali == null);
-    LuckyMoneyMyRecordUI.b(this.lVZ.lVW, this.lVY);
-    LuckyMoneyMyRecordUI.a(this.lVZ.lVW, locali, this.lVY);
+      r localr = LuckyMoneyMyRecordUI.f(this.oud.oua).yz(this.ouc);
+      if (localr != null)
+      {
+        LuckyMoneyMyRecordUI.b(this.oud.oua, this.ouc);
+        LuckyMoneyMyRecordUI.a(this.oud.oua, localr, this.ouc);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyMyRecordUI.4.1
  * JD-Core Version:    0.7.0.1
  */

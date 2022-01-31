@@ -1,5 +1,7 @@
 package com.qq.taf.jce.dynamic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class FloatField
   extends NumberField
 {
@@ -18,7 +20,10 @@ public class FloatField
   
   public Number getNumber()
   {
-    return Float.valueOf(this.data);
+    AppMethodBeat.i(117018);
+    float f = this.data;
+    AppMethodBeat.o(117018);
+    return Float.valueOf(f);
   }
   
   public void set(float paramFloat)

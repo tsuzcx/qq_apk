@@ -1,6 +1,7 @@
 package com.tencent.tmassistantsdk.channel;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.tmassistantsdk.util.Base64;
 import com.tencent.tmassistantsdk.util.Cryptor;
 import java.io.UnsupportedEncodingException;
@@ -13,19 +14,30 @@ public class TMAssistantSDKChannelDataItem
   private static final String ENCRYPT_KEY = "&-*)Wb5_U,[^!9'+";
   public static final int IPCDATA_MIN_VERSION = 1;
   private static final String TAG = "MicroMsg.TMAssistantSDKChannelDataItem";
-  public int mDBIdentity = -1;
-  public String mDataItemAction = "";
-  public long mDataItemEndTime = 0L;
-  public long mDataItemStartTime = 0L;
-  public int mDataItemType = 0;
-  public int mDataItemVersion = 0;
-  public String mHostPackageName = "";
-  public String mHostUserIdentity = "";
-  public int mHostVersion = 0;
-  public byte[] mIPCData = null;
+  public int mDBIdentity;
+  public String mDataItemAction;
+  public long mDataItemEndTime;
+  public long mDataItemStartTime;
+  public int mDataItemType;
+  public int mDataItemVersion;
+  public String mHostPackageName;
+  public String mHostUserIdentity;
+  public int mHostVersion;
+  public byte[] mIPCData;
   
   public TMAssistantSDKChannelDataItem(String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, long paramLong1, long paramLong2, int paramInt3, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(75618);
+    this.mDBIdentity = -1;
+    this.mHostPackageName = "";
+    this.mHostVersion = 0;
+    this.mHostUserIdentity = "";
+    this.mDataItemType = 0;
+    this.mDataItemAction = "";
+    this.mDataItemStartTime = 0L;
+    this.mDataItemEndTime = 0L;
+    this.mDataItemVersion = 0;
+    this.mIPCData = null;
     this.mHostPackageName = paramString1;
     if (this.mHostPackageName == null) {
       this.mHostPackageName = "";
@@ -44,11 +56,15 @@ public class TMAssistantSDKChannelDataItem
     this.mDataItemEndTime = paramLong2;
     this.mDataItemVersion = paramInt3;
     this.mIPCData = paramArrayOfByte;
+    AppMethodBeat.o(75618);
   }
   
   public static TMAssistantSDKChannelDataItem getDataItemFromByte(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+    AppMethodBeat.i(75619);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0))
+    {
+      AppMethodBeat.o(75619);
       return null;
     }
     paramArrayOfByte = new Cryptor().decrypt(paramArrayOfByte, "&-*)Wb5_U,[^!9'+".getBytes());
@@ -65,11 +81,11 @@ public class TMAssistantSDKChannelDataItem
       l2 = paramArrayOfByte.getLong("mDataItemEndTime");
       k = paramArrayOfByte.getInt("mDataItemVersion");
       if (k <= 0) {
-        break label187;
+        break label207;
       }
       paramArrayOfByte = paramArrayOfByte.getString("mIPCData");
       if (paramArrayOfByte == null) {
-        break label187;
+        break label207;
       }
       paramArrayOfByte = Base64.decode(paramArrayOfByte, 0);
     }
@@ -83,24 +99,27 @@ public class TMAssistantSDKChannelDataItem
       long l1;
       long l2;
       int k;
-      y.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
+      AppMethodBeat.o(75619);
       return null;
     }
     catch (JSONException paramArrayOfByte)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", paramArrayOfByte, "", new Object[0]);
         continue;
         paramArrayOfByte = null;
       }
     }
     paramArrayOfByte = new TMAssistantSDKChannelDataItem(str1, i, str2, j, str3, l1, l2, k, paramArrayOfByte);
+    AppMethodBeat.o(75619);
     return paramArrayOfByte;
   }
   
   public byte[] getBuffer()
   {
+    AppMethodBeat.i(75620);
     Object localObject = new JSONObject();
     try
     {
@@ -126,20 +145,22 @@ public class TMAssistantSDKChannelDataItem
         if (localObject != null)
         {
           localObject = new Cryptor().encrypt((byte[])localObject, "&-*)Wb5_U,[^!9'+".getBytes());
+          AppMethodBeat.o(75620);
           return localObject;
         }
       }
     }
     catch (JSONException localJSONException)
     {
-      y.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localJSONException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localJSONException, "", new Object[0]);
+      AppMethodBeat.o(75620);
       return null;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localUnsupportedEncodingException, "", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.TMAssistantSDKChannelDataItem", localUnsupportedEncodingException, "", new Object[0]);
       }
     }
   }

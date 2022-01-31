@@ -2,18 +2,20 @@ package com.tencent.mm.ui.transmit;
 
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMImageView;
 
 final class ShareImageSelectorUI$b
 {
-  MMImageView kff;
-  TextView whY;
+  TextView AAV;
+  MMImageView mzO;
   
   public ShareImageSelectorUI$b(ShareImageSelectorUI paramShareImageSelectorUI, View paramView)
   {
-    this.kff = ((MMImageView)paramView.findViewById(R.h.item_icon));
-    this.whY = ((TextView)paramView.findViewById(R.h.item_text));
+    AppMethodBeat.i(35256);
+    this.mzO = ((MMImageView)paramView.findViewById(2131823589));
+    this.AAV = ((TextView)paramView.findViewById(2131827762));
+    AppMethodBeat.o(35256);
   }
 }
 

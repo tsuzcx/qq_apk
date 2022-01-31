@@ -5,9 +5,9 @@ import android.os.IInterface;
 public abstract interface p
   extends IInterface
 {
-  public abstract o aMj();
+  public abstract o bqw();
   
-  public abstract l aMk();
+  public abstract l bqx();
 }
 
 

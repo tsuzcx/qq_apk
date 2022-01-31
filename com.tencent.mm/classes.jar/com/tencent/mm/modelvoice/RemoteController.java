@@ -2,46 +2,55 @@ package com.tencent.mm.modelvoice;
 
 import android.content.ComponentName;
 import android.media.AudioManager;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public final class RemoteController
 {
-  private static Method eKb;
-  private static Method eKc;
-  private AudioManager eJZ;
-  private ComponentName eKa;
+  private static Method fZD;
+  private static Method fZE;
+  private AudioManager fZB;
+  private ComponentName fZC;
   
   static
   {
+    AppMethodBeat.i(116588);
     try
     {
-      if (eKb == null) {
-        eKb = AudioManager.class.getMethod("registerMediaButtonEventReceiver", new Class[] { ComponentName.class });
+      if (fZD == null) {
+        fZD = AudioManager.class.getMethod("registerMediaButtonEventReceiver", new Class[] { ComponentName.class });
       }
-      if (eKc == null) {
-        eKc = AudioManager.class.getMethod("unregisterMediaButtonEventReceiver", new Class[] { ComponentName.class });
+      if (fZE == null) {
+        fZE = AudioManager.class.getMethod("unregisterMediaButtonEventReceiver", new Class[] { ComponentName.class });
       }
+      AppMethodBeat.o(116588);
       return;
     }
-    catch (NoSuchMethodException localNoSuchMethodException) {}
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      AppMethodBeat.o(116588);
+    }
   }
   
   protected final void finalize()
   {
+    AppMethodBeat.i(116587);
     for (;;)
     {
       try
       {
-        Method localMethod = eKc;
+        Method localMethod = fZE;
         if (localMethod == null)
         {
           super.finalize();
+          AppMethodBeat.o(116587);
           return;
         }
-        eKc.invoke(this.eJZ, new Object[] { this.eKa });
-        RemoteController.RemoteControlReceiver.SY();
+        fZE.invoke(this.fZB, new Object[] { this.fZC });
+        RemoteController.RemoteControlReceiver.amj();
       }
       catch (InvocationTargetException localInvocationTargetException)
       {
@@ -49,23 +58,29 @@ public final class RemoteController
         if (!(localThrowable instanceof RuntimeException)) {
           continue;
         }
-        throw ((RuntimeException)localThrowable);
+        Object localObject = (RuntimeException)localThrowable;
+        AppMethodBeat.o(116587);
+        throw ((Throwable)localObject);
         if (!(localThrowable instanceof Error)) {
           continue;
         }
-        throw ((Error)localThrowable);
-        throw new RuntimeException(localInvocationTargetException);
+        localObject = (Error)localThrowable;
+        AppMethodBeat.o(116587);
+        throw ((Throwable)localObject);
+        localObject = new RuntimeException((Throwable)localObject);
+        AppMethodBeat.o(116587);
+        throw ((Throwable)localObject);
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        y.e("MicroMsg.RemoteControlReceiver", "unexpected " + localIllegalAccessException);
+        ab.e("MicroMsg.RemoteControlReceiver", "unexpected ".concat(String.valueOf(localIllegalAccessException)));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvoice.RemoteController
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$ip
+final class c$ip
   extends c.g
 {
-  public c$ip()
+  c$ip()
   {
-    super("shareQQ", "shareQQ", 90, true);
+    super("sendSingleAppMessage", "sendSingleAppMessage", 316, true);
   }
 }
 

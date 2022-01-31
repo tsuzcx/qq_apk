@@ -1,61 +1,78 @@
 package com.tencent.mm.storage;
 
 import android.database.Cursor;
-import com.tencent.mm.cf.g;
-import com.tencent.mm.cf.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.g;
+import com.tencent.mm.cg.g.a;
 import com.tencent.mm.sdk.e.c.a;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class cd
-  extends i<cc>
+  extends j<cc>
   implements g.a
 {
-  public static final String[] dXp = { i.a(cc.buS, "VoiceTransText") };
-  public e dXw;
+  public static final String[] SQL_CREATE;
+  public e db;
+  
+  static
+  {
+    AppMethodBeat.i(116827);
+    SQL_CREATE = new String[] { j.getCreateSQLs(cc.info, "VoiceTransText") };
+    AppMethodBeat.o(116827);
+  }
   
   public cd(e parame)
   {
-    this(parame, cc.buS, "VoiceTransText");
+    this(parame, cc.info, "VoiceTransText");
   }
   
   private cd(e parame, c.a parama, String paramString)
   {
     super(parame, parama, paramString, null);
-    this.dXw = parame;
+    this.db = parame;
   }
   
   public final int a(g paramg)
   {
-    if (paramg != null) {
-      this.dXw = paramg;
-    }
+    this.db = paramg;
     return 0;
   }
   
   public final boolean a(cc paramcc)
   {
-    if (paramcc == null) {}
-    do
+    AppMethodBeat.i(116824);
+    if (paramcc == null)
     {
+      AppMethodBeat.o(116824);
       return false;
-      paramcc = paramcc.vf();
-    } while (this.dXw.replace("VoiceTransText", "msgId", paramcc) < 0L);
-    return true;
+    }
+    paramcc = paramcc.convertTo();
+    if (this.db.replace("VoiceTransText", "msgId", paramcc) >= 0L)
+    {
+      AppMethodBeat.o(116824);
+      return true;
+    }
+    AppMethodBeat.o(116824);
+    return false;
   }
   
-  public final cc acw(String paramString)
+  public final cc asI(String paramString)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(116825);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(116825);
       return null;
     }
     cc localcc = new cc();
-    paramString = this.dXw.a("VoiceTransText", null, "cmsgId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.a("VoiceTransText", null, "cmsgId=?", new String[] { String.valueOf(paramString) }, null, null, null, 2);
     if (paramString.moveToFirst()) {
-      localcc.d(paramString);
+      localcc.convertFrom(paramString);
     }
     paramString.close();
+    AppMethodBeat.o(116825);
     return localcc;
   }
 }

@@ -7,11 +7,8 @@ import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.c;
 
 final class IPCallShareCouponCardUI$6
   extends ClickableSpan
@@ -20,18 +17,22 @@ final class IPCallShareCouponCardUI$6
   
   public final void onClick(View paramView)
   {
-    ((TextView)paramView).setHighlightColor(this.lyq.getResources().getColor(R.e.transparent));
-    com.tencent.mm.plugin.report.service.h.nFQ.f(13340, new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(1) });
-    com.tencent.mm.ui.base.h.b(this.lyq.mController.uMN, this.lyv, this.lyq.getString(R.l.ipcall_share_coupon_promotion_title), true).a(R.l.ip_call_alter_tip_ok, new DialogInterface.OnClickListener()
+    AppMethodBeat.i(22287);
+    ((TextView)paramView).setHighlightColor(this.nVC.getResources().getColor(2131690605));
+    com.tencent.mm.plugin.report.service.h.qsU.e(13340, new Object[] { Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(-1), Integer.valueOf(1) });
+    com.tencent.mm.ui.base.h.b(this.nVC.getContext(), this.nVH, this.nVC.getString(2131300960), true).a(2131300832, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
     });
+    AppMethodBeat.o(22287);
   }
   
   public final void updateDrawState(TextPaint paramTextPaint)
   {
-    paramTextPaint.setColor(this.lyq.getResources().getColor(R.e.link_color));
+    AppMethodBeat.i(22288);
+    paramTextPaint.setColor(this.nVC.getResources().getColor(2131690214));
     paramTextPaint.setUnderlineText(false);
+    AppMethodBeat.o(22288);
   }
 }
 

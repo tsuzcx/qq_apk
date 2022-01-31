@@ -17,7 +17,7 @@ public final class g
   private final int height = 96;
   private final int width = 96;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class g
       return 96;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject1 = c.f(paramVarArgs);
-      Object localObject3 = c.e(paramVarArgs);
-      Object localObject2 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject3 = c.g(paramVarArgs);
+      Object localObject2 = c.k(paramVarArgs);
       ((Paint)localObject2).setFlags(385);
       ((Paint)localObject2).setStyle(Paint.Style.FILL);
-      Paint localPaint = c.i(paramVarArgs);
+      Paint localPaint = c.k(paramVarArgs);
       localPaint.setFlags(385);
       localPaint.setStyle(Paint.Style.STROKE);
       ((Paint)localObject2).setColor(-16777216);
@@ -53,7 +53,7 @@ public final class g
       localCanvas.concat((Matrix)localObject1);
       localCanvas.save();
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
-      localObject3 = c.j(paramVarArgs);
+      localObject3 = c.l(paramVarArgs);
       ((Path)localObject3).moveTo(16.0F, 3.0F);
       ((Path)localObject3).cubicTo(27.571133F, -2.860914F, 43.519093F, -0.1351836F, 52.0F, 10.0F);
       ((Path)localObject3).cubicTo(55.015995F, 12.687686F, 56.702606F, 16.060032F, 58.0F, 20.0F);
@@ -74,7 +74,7 @@ public final class g
       localCanvas.restore();
       localCanvas.save();
       localObject1 = c.a((Paint)localObject2, paramVarArgs);
-      localObject2 = c.j(paramVarArgs);
+      localObject2 = c.l(paramVarArgs);
       ((Path)localObject2).moveTo(59.0F, 25.0F);
       ((Path)localObject2).cubicTo(60.022385F, 23.507645F, 63.989056F, 23.527437F, 65.0F, 25.0F);
       ((Path)localObject2).cubicTo(65.397224F, 28.960669F, 65.11956F, 32.513546F, 65.0F, 36.0F);
@@ -94,7 +94,7 @@ public final class g
       localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
       localCanvas.restore();
       localCanvas.restore();
-      c.h(paramVarArgs);
+      c.j(paramVarArgs);
     }
   }
 }

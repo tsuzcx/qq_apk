@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class MMSightCircularProgressBar$1$1
   implements Runnable
 {
@@ -7,9 +9,11 @@ final class MMSightCircularProgressBar$1$1
   
   public final void run()
   {
-    if (MMSightCircularProgressBar.a(this.mov.mou) != null) {
-      MMSightCircularProgressBar.a(this.mov.mou).aKR();
+    AppMethodBeat.i(55079);
+    if (MMSightCircularProgressBar.a(this.oNF.oNE) != null) {
+      MMSightCircularProgressBar.a(this.oNF.oNE).boZ();
     }
+    AppMethodBeat.o(55079);
   }
 }
 

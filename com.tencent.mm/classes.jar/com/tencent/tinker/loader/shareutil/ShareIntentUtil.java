@@ -6,11 +6,6 @@ import java.util.HashMap;
 
 public class ShareIntentUtil
 {
-  public static void a(Intent paramIntent, int paramInt)
-  {
-    paramIntent.putExtra("intent_return_code", paramInt);
-  }
-  
   public static void a(Intent paramIntent, long paramLong)
   {
     paramIntent.putExtra("intent_patch_cost_time", paramLong);
@@ -26,62 +21,67 @@ public class ShareIntentUtil
     catch (Throwable paramIntent) {}
   }
   
-  public static int aA(Intent paramIntent)
+  public static void b(Intent paramIntent, int paramInt)
   {
-    return q(paramIntent, "intent_return_code");
+    paramIntent.putExtra("intent_return_code", paramInt);
   }
   
-  public static long aB(Intent paramIntent)
+  public static int bc(Intent paramIntent)
+  {
+    return v(paramIntent, "intent_return_code");
+  }
+  
+  public static long bd(Intent paramIntent)
   {
     return paramIntent.getLongExtra("intent_patch_cost_time", 0L);
   }
   
-  public static Throwable aC(Intent paramIntent)
+  public static Throwable be(Intent paramIntent)
   {
-    paramIntent = p(paramIntent, "intent_patch_exception");
+    paramIntent = u(paramIntent, "intent_patch_exception");
     if (paramIntent != null) {
       return (Throwable)paramIntent;
     }
     return null;
   }
   
-  public static Throwable aD(Intent paramIntent)
+  public static Throwable bf(Intent paramIntent)
   {
-    paramIntent = p(paramIntent, "intent_patch_interpret_exception");
+    paramIntent = u(paramIntent, "intent_patch_interpret_exception");
     if (paramIntent != null) {
       return (Throwable)paramIntent;
     }
     return null;
   }
   
-  public static HashMap<String, String> aE(Intent paramIntent)
+  public static HashMap<String, String> bg(Intent paramIntent)
   {
-    paramIntent = p(paramIntent, "intent_patch_dexes_path");
+    paramIntent = u(paramIntent, "intent_patch_dexes_path");
     if (paramIntent != null) {
       return (HashMap)paramIntent;
     }
     return null;
   }
   
-  public static HashMap<String, String> aF(Intent paramIntent)
+  public static HashMap<String, String> bh(Intent paramIntent)
   {
-    paramIntent = p(paramIntent, "intent_patch_libs_path");
+    paramIntent = u(paramIntent, "intent_patch_libs_path");
     if (paramIntent != null) {
       return (HashMap)paramIntent;
     }
     return null;
   }
   
-  public static HashMap<String, String> aG(Intent paramIntent)
+  public static HashMap<String, String> bi(Intent paramIntent)
   {
-    paramIntent = p(paramIntent, "intent_patch_package_config");
+    paramIntent = u(paramIntent, "intent_patch_package_config");
     if (paramIntent != null) {
       return (HashMap)paramIntent;
     }
     return null;
   }
   
-  public static String j(Intent paramIntent, String paramString)
+  public static String n(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
       return null;
@@ -98,7 +98,7 @@ public class ShareIntentUtil
     return null;
   }
   
-  public static Serializable p(Intent paramIntent, String paramString)
+  public static Serializable u(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
       return null;
@@ -115,7 +115,7 @@ public class ShareIntentUtil
     return null;
   }
   
-  private static int q(Intent paramIntent, String paramString)
+  private static int v(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
       return -10000;
@@ -132,7 +132,7 @@ public class ShareIntentUtil
     return -10000;
   }
   
-  public static boolean r(Intent paramIntent, String paramString)
+  public static boolean w(Intent paramIntent, String paramString)
   {
     if (paramIntent == null) {
       return false;

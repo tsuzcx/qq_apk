@@ -7,9 +7,9 @@ final class BaseFavDetailReportUI$1
 {
   BaseFavDetailReportUI$1(BaseFavDetailReportUI paramBaseFavDetailReportUI) {}
   
-  public final void aJC()
+  public final void bnl()
   {
-    this.kfb.keY.jYR = true;
+    this.mzK.mzH.mtk = true;
   }
 }
 

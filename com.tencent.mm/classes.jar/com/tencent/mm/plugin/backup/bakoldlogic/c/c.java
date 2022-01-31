@@ -1,13 +1,16 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
 import com.tencent.mm.bv.a;
 import com.tencent.mm.jniinterface.AesEcb;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.backup.i.x;
-import com.tencent.mm.protocal.c.fo;
-import com.tencent.mm.protocal.c.fp;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.backup.i.y;
+import com.tencent.mm.protocal.protobuf.gx;
+import com.tencent.mm.protocal.protobuf.gy;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -16,160 +19,169 @@ public final class c
   extends com.tencent.mm.plugin.backup.g.b
 {
   private static int progress;
-  private int ebK = 0;
   private String filePath;
-  public x hLN = new x();
-  private com.tencent.mm.plugin.backup.i.y hLO = new com.tencent.mm.plugin.backup.i.y();
-  private com.tencent.mm.ah.g hOG = null;
-  private byte[] hOH;
+  private int fsd;
+  public x jFp;
+  private y jFq;
+  private com.tencent.mm.ai.g jIi;
+  private byte[] jIj;
   private byte[] key;
-  private int offset = 0;
-  private int start = 0;
+  private int offset;
+  private int start;
   private int type;
   
-  public c(String paramString1, int paramInt, LinkedList<fo> paramLinkedList, String paramString2, com.tencent.mm.ah.g paramg, byte[] paramArrayOfByte)
+  public c(String paramString1, int paramInt, LinkedList<gx> paramLinkedList, String paramString2, com.tencent.mm.ai.g paramg, byte[] paramArrayOfByte)
   {
-    this.hLN.hQV = paramString1;
-    this.hLN.hQW = paramInt;
+    AppMethodBeat.i(17883);
+    this.jFp = new x();
+    this.jFq = new y();
+    this.jIi = null;
+    this.start = 0;
+    this.offset = 0;
+    this.fsd = 0;
+    this.jFp.jKw = paramString1;
+    this.jFp.jKx = paramInt;
     this.type = paramInt;
     if (paramInt == 1)
     {
-      paramString1 = new fp();
-      paramString1.hPT = paramLinkedList;
-      paramString1.hPS = paramLinkedList.size();
+      paramString1 = new gy();
+      paramString1.jJv = paramLinkedList;
+      paramString1.jJu = paramLinkedList.size();
     }
     for (;;)
     {
       try
       {
-        this.hOH = paramString1.toByteArray();
-        this.ebK = this.hOH.length;
-        paramInt = this.ebK;
-        this.hLN.hQX = (16 - paramInt % 16 + this.ebK);
-        com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BakSceneDataPush", "BakSceneDataPush init:%s  type:%d, localTotalLen:%d, reqDataSize:%d", new Object[] { this.hLN.hQV, Integer.valueOf(this.hLN.hQW), Integer.valueOf(this.ebK), Integer.valueOf(this.hLN.hQX) });
-        this.hOG = paramg;
+        this.jIj = paramString1.toByteArray();
+        this.fsd = this.jIj.length;
+        paramInt = this.fsd;
+        this.jFp.jKy = (16 - paramInt % 16 + this.fsd);
+        ab.i("MicroMsg.BakSceneDataPush", "BakSceneDataPush init:%s  type:%d, localTotalLen:%d, reqDataSize:%d", new Object[] { this.jFp.jKw, Integer.valueOf(this.jFp.jKx), Integer.valueOf(this.fsd), Integer.valueOf(this.jFp.jKy) });
+        this.jIi = paramg;
         this.key = paramArrayOfByte;
+        AppMethodBeat.o(17883);
         return;
       }
       catch (IOException paramString1)
       {
-        com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BakSceneDataPush", "backList to buffer error");
-        com.tencent.mm.sdk.platformtools.y.printErrStackTrace("MicroMsg.BakSceneDataPush", paramString1, "", new Object[0]);
+        ab.e("MicroMsg.BakSceneDataPush", "backList to buffer error");
+        ab.printErrStackTrace("MicroMsg.BakSceneDataPush", paramString1, "", new Object[0]);
         continue;
       }
       this.filePath = paramString2;
-      this.ebK = e.bJ(paramString2);
+      this.fsd = e.cM(paramString2);
     }
   }
   
   public static void setProgress(int paramInt)
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BakSceneDataPush", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(17884);
+    ab.i("MicroMsg.BakSceneDataPush", "setProgress %d", new Object[] { Integer.valueOf(paramInt) });
     progress = paramInt;
+    AppMethodBeat.o(17884);
   }
   
-  public final a auJ()
+  public final a aUl()
   {
-    return this.hLO;
+    return this.jFq;
   }
   
-  public final a auK()
+  public final a aUm()
   {
-    return this.hLN;
+    return this.jFp;
   }
   
-  public final boolean auT()
+  public final boolean aUv()
   {
-    long l = 524288L;
+    AppMethodBeat.i(17885);
+    Object localObject1 = null;
     Object localObject2;
-    Object localObject1;
     boolean bool;
-    label73:
+    label77:
     int j;
     if (this.type == 1)
     {
-      i = this.ebK;
-      localObject2 = this.hOH;
+      i = this.fsd;
+      localObject1 = this.jIj;
       this.start = this.offset;
       this.offset = (i + this.start);
-      localObject1 = localObject2;
+      localObject2 = localObject1;
       if (this.key != null)
       {
-        localObject1 = this.key;
-        if (this.offset != this.ebK) {
-          break label511;
+        localObject2 = this.key;
+        if (this.offset != this.fsd) {
+          break label517;
         }
         bool = true;
-        localObject1 = AesEcb.aesCryptEcb((byte[])localObject2, (byte[])localObject1, true, bool);
+        localObject2 = AesEcb.aesCryptEcb((byte[])localObject1, (byte[])localObject2, true, bool);
       }
-      this.hLN.hQY = this.start;
-      localObject2 = this.hLN;
+      this.jFp.jKz = this.start;
+      localObject1 = this.jFp;
       j = this.start;
-      if (localObject1 != null) {
-        break label517;
+      if (localObject2 != null) {
+        break label523;
       }
     }
     label517:
-    for (int i = 0;; i = localObject1.length)
+    label523:
+    for (int i = 0;; i = localObject2.length)
     {
-      ((x)localObject2).hQZ = (i + j);
-      this.hLN.hPF = new com.tencent.mm.bv.b((byte[])localObject1);
-      this.hLN.hRb = progress;
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BakSceneDataPush", "doSecne %s---total:%d, start:%d, offset:%d, data.len:%d", new Object[] { this.hLN.hQV, Integer.valueOf(this.ebK), Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.hLN.hQZ) });
-      return super.auT();
+      ((x)localObject1).jKA = (i + j);
+      this.jFp.jJh = new com.tencent.mm.bv.b((byte[])localObject2);
+      this.jFp.jKC = progress;
+      ab.i("MicroMsg.BakSceneDataPush", "doSecne %s---total:%d, start:%d, offset:%d, data.len:%d", new Object[] { this.jFp.jKw, Integer.valueOf(this.fsd), Integer.valueOf(this.start), Integer.valueOf(this.offset), Integer.valueOf(this.jFp.jKA) });
+      bool = super.aUv();
+      AppMethodBeat.o(17885);
+      return bool;
+      long l;
       int k;
-      if (this.ebK - this.offset > 524288L)
+      if (this.fsd - this.offset > 524288L)
       {
+        l = 524288L;
         k = (int)l;
         i = 3;
-        localObject1 = null;
       }
       for (;;)
       {
         j = i - 1;
         if ((i <= 0) || (localObject1 != null)) {
-          break label463;
+          break label479;
         }
-        if (!bk.bl(this.filePath))
+        if (!bo.isNullOrNil(this.filePath))
         {
           localObject1 = this.filePath;
-          au.Hx();
-          if (((String)localObject1).startsWith(com.tencent.mm.model.c.FL()))
+          aw.aaz();
+          if (((String)localObject1).startsWith(com.tencent.mm.model.c.YP()))
           {
             localObject1 = this.filePath.substring(this.filePath.lastIndexOf("/") + 1);
-            com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BakSceneDataPush", "md5:%s", new Object[] { localObject1 });
-            localObject1 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().As((String)localObject1);
-            if ((localObject1 != null) && ((((EmojiInfo)localObject1).field_reserved4 & EmojiInfo.uDo) == EmojiInfo.uDo))
+            ab.i("MicroMsg.BakSceneDataPush", "md5:%s", new Object[] { localObject1 });
+            localObject1 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().Kt((String)localObject1);
+            if ((localObject1 != null) && ((((EmojiInfo)localObject1).field_reserved4 & EmojiInfo.APx) == EmojiInfo.APx))
             {
-              localObject2 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().a((EmojiInfo)localObject1);
+              localObject2 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().l((EmojiInfo)localObject1);
               localObject1 = new byte[k];
               System.arraycopy(localObject2, this.offset, localObject1, 0, k);
               i = j;
               continue;
-              l = this.ebK - this.offset;
+              l = this.fsd - this.offset;
               break;
             }
-            localObject1 = e.c(this.filePath, this.offset, k);
+            localObject1 = e.i(this.filePath, this.offset, k);
             i = j;
             continue;
           }
         }
-        localObject1 = e.c(this.filePath, this.offset, k);
+        localObject1 = e.i(this.filePath, this.offset, k);
         i = j;
       }
-      label463:
-      localObject2 = localObject1;
-      i = k;
-      if (localObject1 != null) {
-        break;
+      label479:
+      if (localObject1 == null) {
+        ab.e("MicroMsg.BakSceneDataPush", "read file error, offset%d, len:%d", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(k) });
       }
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BakSceneDataPush", "read file error, offset%d, len:%d", new Object[] { Integer.valueOf(this.offset), Integer.valueOf(k) });
-      localObject2 = localObject1;
       i = k;
       break;
-      label511:
       bool = false;
-      break label73;
+      break label77;
     }
   }
   
@@ -178,23 +190,27 @@ public final class c
     return 5;
   }
   
-  public final void nF(int paramInt)
+  public final void rt(int paramInt)
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BakSceneDataPush", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.hLO.hQV, Integer.valueOf(this.hLO.hQW), Integer.valueOf(this.hLO.hQY), Integer.valueOf(this.hLO.hQZ), Integer.valueOf(this.hLO.hQq) });
-    if (this.hLO.hQq != 0)
+    AppMethodBeat.i(17886);
+    ab.i("MicroMsg.BakSceneDataPush", "onSceneEnd id:%s, type:%d, s:%d, e:%d, status:%d", new Object[] { this.jFq.jKw, Integer.valueOf(this.jFq.jKx), Integer.valueOf(this.jFq.jKz), Integer.valueOf(this.jFq.jKA), Integer.valueOf(this.jFq.jJS) });
+    if (this.jFq.jJS != 0)
     {
-      com.tencent.mm.sdk.platformtools.y.e("MicroMsg.BakSceneDataPush", "status:%d", new Object[] { Integer.valueOf(this.hLO.hQq) });
-      j(4, this.hLO.hQq, "error");
+      ab.e("MicroMsg.BakSceneDataPush", "status:%d", new Object[] { Integer.valueOf(this.jFq.jJS) });
+      n(4, this.jFq.jJS, "error");
+      AppMethodBeat.o(17886);
       return;
     }
-    this.hOG.a(this.hLN.hQZ - this.hLN.hQY, this.ebK, this);
-    if (this.offset == this.ebK)
+    this.jIi.a(this.jFp.jKA - this.jFp.jKz, this.fsd, this);
+    if (this.offset == this.fsd)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.BakSceneDataPush", "back complete: %s,  %d", new Object[] { this.hLN.hQV, Integer.valueOf(this.ebK) });
-      j(0, 0, "success");
+      ab.i("MicroMsg.BakSceneDataPush", "back complete: %s,  %d", new Object[] { this.jFp.jKw, Integer.valueOf(this.fsd) });
+      n(0, 0, "success");
+      AppMethodBeat.o(17886);
       return;
     }
-    auT();
+    aUv();
+    AppMethodBeat.o(17886);
   }
 }
 

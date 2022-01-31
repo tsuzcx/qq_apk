@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class ExdeviceAddDataSourceUI$4$4
   implements Runnable
@@ -9,13 +10,15 @@ final class ExdeviceAddDataSourceUI$4$4
   
   public final void run()
   {
-    ExdeviceAddDataSourceUI.a(this.jAG.jAD, 4);
-    y.i("MicroMsg.ExdeviceAddDataSourceUI", "Stop scan...");
+    AppMethodBeat.i(19776);
+    ExdeviceAddDataSourceUI.a(this.lKf.lKc, 4);
+    ab.i("MicroMsg.ExdeviceAddDataSourceUI", "Stop scan...");
+    AppMethodBeat.o(19776);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceAddDataSourceUI.4.4
  * JD-Core Version:    0.7.0.1
  */

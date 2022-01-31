@@ -1,15 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.media;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnKeyListener;
 import android.text.TextUtils;
 import android.view.KeyEvent;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.y.j;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask$4
@@ -19,25 +15,18 @@ final class JsApiUploadEncryptedFileToCDN$JsApiUploadEncryptedMediaFileTask$4
   
   public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(131309);
     if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
-      if ((!TextUtils.isEmpty(this.gwB.mimeType)) && (this.gwB.mimeType.contains("video"))) {}
-      for (paramDialogInterface = this.gwB.gwy.getString(y.j.appbrand_jssdk_video);; paramDialogInterface = this.gwB.gwy.getString(y.j.appbrand_jssdk_image))
+      if ((!TextUtils.isEmpty(this.hSw.mimeType)) && (this.hSw.mimeType.contains("video"))) {}
+      for (paramDialogInterface = this.hSw.hSt.getString(2131297157);; paramDialogInterface = this.hSw.hSt.getString(2131297151))
       {
-        h.a(this.gwB.gwy, true, this.gwB.gwy.getString(y.j.appbrand_jssdk_media_file_uploading_tips, new Object[] { paramDialogInterface }), "", this.gwB.gwy.getString(y.j.appbrand_jssdk_upload_video_cancel), this.gwB.gwy.getString(y.j.appbrand_jssdk_upload_video_continue), new DialogInterface.OnClickListener()new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.2
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-          {
-            y.e("MicroMsg.JsApiUploadEncryptedFileToCDN", "user cancel upload the media file");
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.c(JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.this.gwB).cancel();
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.this.gwB.gww = 1;
-            JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.this.gwB.gwx = 1;
-            AppBrandMainProcessService.a(JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.this.gwB);
-          }
-        }, new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.2(this));
+        h.a(this.hSw.hSt, true, this.hSw.hSt.getString(2131297152, new Object[] { paramDialogInterface }), "", this.hSw.hSt.getString(2131297154), this.hSw.hSt.getString(2131297155), new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.1(this), new JsApiUploadEncryptedFileToCDN.JsApiUploadEncryptedMediaFileTask.4.2(this));
+        AppMethodBeat.o(131309);
         return true;
       }
     }
+    AppMethodBeat.o(131309);
     return false;
   }
 }

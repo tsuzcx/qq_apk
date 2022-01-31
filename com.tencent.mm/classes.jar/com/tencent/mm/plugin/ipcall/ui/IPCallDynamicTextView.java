@@ -4,41 +4,59 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 public class IPCallDynamicTextView
   extends TextView
 {
-  private int lvI;
-  private double lvJ;
-  private double lvK;
-  private double lvL;
-  private boolean lvM;
-  private int lvN = 4000;
-  private int lvO = 50;
-  DecimalFormat lvP = new DecimalFormat("0.00");
-  private String lvQ = "";
-  private String lvR = "";
-  private ah mHandler = new IPCallDynamicTextView.1(this);
+  private ak mHandler;
   private int mHeight;
   private String mValue;
+  private int nSX;
+  private double nSY;
+  private double nSZ;
+  private double nTa;
+  private boolean nTb;
+  private int nTc;
+  private int nTd;
+  DecimalFormat nTe;
+  private String nTf;
+  private String nTg;
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(22144);
+    this.nTc = 4000;
+    this.nTd = 50;
+    this.nTe = new DecimalFormat("0.00");
+    this.nTf = "";
+    this.nTg = "";
+    this.mHandler = new IPCallDynamicTextView.1(this);
     init();
+    AppMethodBeat.o(22144);
   }
   
   public IPCallDynamicTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(22145);
+    this.nTc = 4000;
+    this.nTd = 50;
+    this.nTe = new DecimalFormat("0.00");
+    this.nTf = "";
+    this.nTg = "";
+    this.mHandler = new IPCallDynamicTextView.1(this);
     init();
+    AppMethodBeat.o(22145);
   }
   
-  public static String FO(String paramString)
+  public static String Rq(String paramString)
   {
+    AppMethodBeat.i(22148);
     String str1 = "";
     int i = 0;
     while ((i < paramString.length()) && (!Character.isDigit(paramString.charAt(i))))
@@ -53,76 +71,88 @@ public class IPCallDynamicTextView
       str2 = str2 + paramString.charAt(i);
       i -= 1;
     }
-    return paramString.substring(str1.length(), paramString.length() - str2.length());
+    paramString = paramString.substring(str1.length(), paramString.length() - str2.length());
+    AppMethodBeat.o(22148);
+    return paramString;
   }
   
   private void init()
   {
+    AppMethodBeat.i(22146);
     getViewTreeObserver().addOnGlobalLayoutListener(new IPCallDynamicTextView.2(this));
+    AppMethodBeat.o(22146);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(22149);
     super.onMeasure(paramInt1, paramInt2);
     this.mHeight = getMeasuredHeight();
+    AppMethodBeat.o(22149);
   }
   
   public void setLocHeight(int paramInt)
   {
-    this.lvI = paramInt;
+    this.nSX = paramInt;
   }
   
   public final void setValue(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString1.length() <= 0) || (paramString2 == null) || (paramString2.length() <= 0)) {
-      setText(paramString2);
-    }
-    do
+    AppMethodBeat.i(22147);
+    if ((paramString1 == null) || (paramString1.length() <= 0) || (paramString2 == null) || (paramString2.length() <= 0))
     {
+      setText(paramString2);
+      AppMethodBeat.o(22147);
       return;
-      try
+    }
+    try
+    {
+      this.nSZ = Double.parseDouble(Rq(paramString1));
+      this.nTf = "";
+      i = 0;
+      while ((i < paramString2.length()) && (!Character.isDigit(paramString2.charAt(i))))
       {
-        this.lvK = Double.parseDouble(FO(paramString1));
-        this.lvQ = "";
-        i = 0;
-        while ((i < paramString2.length()) && (!Character.isDigit(paramString2.charAt(i))))
-        {
-          this.lvQ += paramString2.charAt(i);
-          i += 1;
-        }
-        this.lvR = "";
+        this.nTf += paramString2.charAt(i);
+        i += 1;
       }
-      catch (NumberFormatException paramString1)
-      {
-        setText(paramString2);
-        return;
-      }
-      int i = paramString2.length() - 1;
-      while ((i > 0) && (!Character.isDigit(paramString2.charAt(i))))
-      {
-        this.lvR += paramString2.charAt(i);
-        i -= 1;
-      }
-      paramString1 = paramString2.substring(this.lvQ.length(), paramString2.length() - this.lvR.length());
-      try
-      {
-        this.lvL = Double.parseDouble(paramString1);
-        this.mValue = paramString2;
-        this.lvJ = ((this.lvL - this.lvK) / (this.lvN / this.lvO));
-        if (this.lvJ == 0.0D)
-        {
-          setText(paramString2);
-          return;
-        }
-      }
-      catch (NumberFormatException paramString1)
+      this.nTg = "";
+    }
+    catch (NumberFormatException paramString1)
+    {
+      setText(paramString2);
+      AppMethodBeat.o(22147);
+      return;
+    }
+    int i = paramString2.length() - 1;
+    while ((i > 0) && (!Character.isDigit(paramString2.charAt(i))))
+    {
+      this.nTg += paramString2.charAt(i);
+      i -= 1;
+    }
+    paramString1 = paramString2.substring(this.nTf.length(), paramString2.length() - this.nTg.length());
+    try
+    {
+      this.nTa = Double.parseDouble(paramString1);
+      this.mValue = paramString2;
+      this.nSY = ((this.nTa - this.nSZ) / (this.nTc / this.nTd));
+      if (this.nSY == 0.0D)
       {
         setText(paramString2);
+        AppMethodBeat.o(22147);
         return;
       }
-      this.lvJ = new BigDecimal(this.lvJ).setScale(2, 4).doubleValue();
-    } while (!isShown());
-    this.mHandler.sendEmptyMessage(1);
+    }
+    catch (NumberFormatException paramString1)
+    {
+      setText(paramString2);
+      AppMethodBeat.o(22147);
+      return;
+    }
+    this.nSY = new BigDecimal(this.nSY).setScale(2, 4).doubleValue();
+    if (isShown()) {
+      this.mHandler.sendEmptyMessage(1);
+    }
+    AppMethodBeat.o(22147);
   }
 }
 

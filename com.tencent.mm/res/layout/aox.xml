@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <TextView android:id="@id/a2w" android:visibility="gone" android:text="@string/dpz" style="@style/kk" />
-        <ListView android:id="@id/dwa" android:background="@color/a23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/n9">
+        <TextView android:id="@id/c0" style="@style/pn" />
+        <TextView android:id="@id/by" style="@style/pl" />
+        <EditText android:id="@id/bw" style="@style/pj" />
+        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/bx" android:src="@drawable/zu" style="@style/pk" />
     </LinearLayout>
-</LinearLayout>
+</merge>

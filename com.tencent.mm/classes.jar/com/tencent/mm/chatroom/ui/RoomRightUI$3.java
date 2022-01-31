@@ -2,6 +2,7 @@ package com.tencent.mm.chatroom.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 final class RoomRightUI$3
@@ -11,12 +12,14 @@ final class RoomRightUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    RoomRightUI.a(this.dqj, this.dqn);
+    AppMethodBeat.i(104207);
+    RoomRightUI.a(this.ehH, this.ehL);
+    AppMethodBeat.o(104207);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomRightUI.3
  * JD-Core Version:    0.7.0.1
  */

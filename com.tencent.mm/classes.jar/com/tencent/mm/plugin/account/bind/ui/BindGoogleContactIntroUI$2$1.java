@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BindGoogleContactIntroUI$2$1
   implements DialogInterface.OnClickListener
@@ -10,7 +11,9 @@ final class BindGoogleContactIntroUI$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BindGoogleContactIntroUI.b(this.faF.faE);
+    AppMethodBeat.i(13333);
+    BindGoogleContactIntroUI.b(this.gsx.gsw);
+    AppMethodBeat.o(13333);
   }
 }
 

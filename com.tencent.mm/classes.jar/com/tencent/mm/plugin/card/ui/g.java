@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.mm.plugin.card.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.c;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import java.util.ArrayList;
@@ -16,23 +16,34 @@ import java.util.List;
 public final class g
   extends BaseAdapter
 {
-  private View.OnClickListener fvj = new g.1(this);
-  private boolean imw = true;
-  c iqd = new l(paramContext, this);
-  List<CardInfo> iqo = new ArrayList();
-  private boolean ivo = false;
-  List<Boolean> ivp = new ArrayList();
-  g.a ivq;
+  private View.OnClickListener gMO;
+  private boolean kns;
+  c krl;
+  List<CardInfo> krw;
+  private boolean kws;
+  List<Boolean> kwt;
+  g.a kwu;
   Context mContext;
   
   public g(Context paramContext)
   {
+    AppMethodBeat.i(88546);
+    this.krw = new ArrayList();
+    this.kws = false;
+    this.kwt = new ArrayList();
+    this.kns = true;
+    this.gMO = new g.1(this);
+    this.krl = new l(paramContext, this);
     this.mContext = paramContext;
+    AppMethodBeat.o(88546);
   }
   
   public final int getCount()
   {
-    return this.iqo.size();
+    AppMethodBeat.i(88547);
+    int i = this.krw.size();
+    AppMethodBeat.o(88547);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -42,29 +53,35 @@ public final class g
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramViewGroup = oV(paramInt);
-    paramViewGroup.imw = this.imw;
-    paramView = this.iqd.a(paramInt, paramView, paramViewGroup);
-    if ((this.ivo) && (paramViewGroup.azk()))
+    AppMethodBeat.i(88549);
+    paramViewGroup = tg(paramInt);
+    paramViewGroup.kns = this.kns;
+    paramView = this.krl.a(paramInt, paramView, paramViewGroup);
+    if ((this.kws) && (paramViewGroup.baQ()))
     {
-      this.iqd.G(paramView, 0);
-      if (((Boolean)this.ivp.get(paramInt)).booleanValue()) {
-        this.iqd.F(paramView, a.c.card_add_selected_btn_bg);
-      }
-      for (;;)
+      this.krl.W(paramView, 0);
+      if (((Boolean)this.kwt.get(paramInt)).booleanValue())
       {
-        this.iqd.a(paramView, paramInt, this.fvj);
-        return paramView;
-        this.iqd.F(paramView, a.c.card_add_unselected_btn_bg);
+        this.krl.V(paramView, 2130838096);
+        this.krl.a(paramView, paramInt, this.gMO);
       }
     }
-    this.iqd.G(paramView, 8);
-    return paramView;
+    for (;;)
+    {
+      AppMethodBeat.o(88549);
+      return paramView;
+      this.krl.V(paramView, 2130838097);
+      break;
+      this.krl.W(paramView, 8);
+    }
   }
   
-  public final CardInfo oV(int paramInt)
+  public final CardInfo tg(int paramInt)
   {
-    return (CardInfo)this.iqo.get(paramInt);
+    AppMethodBeat.i(88548);
+    CardInfo localCardInfo = (CardInfo)this.krw.get(paramInt);
+    AppMethodBeat.o(88548);
+    return localCardInfo;
   }
 }
 

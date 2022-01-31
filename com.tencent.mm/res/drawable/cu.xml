@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="4.0dip" />
-    <solid android:color="@color/a23" />
-</shape>
+    <item android:duration="200" android:drawable="@drawable/acp" />
+    <item android:duration="200" android:drawable="@drawable/acq" />
+    <item android:duration="200" android:drawable="@drawable/acr" />
+</animation-list>

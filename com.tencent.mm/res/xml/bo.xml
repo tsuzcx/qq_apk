@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/dyp" />
-    <CheckBoxPreference android:title="@string/dzu" android:key="settings_find_me_by_weixin" />
-    <CheckBoxPreference android:title="@string/dzt" android:key="settings_find_me_by_mobile" />
-    <CheckBoxPreference android:title="@string/dzr" android:key="settings_find_me_by_QQ" />
-    <CheckBoxPreference android:title="@string/dzs" android:key="settings_find_me_by_google" />
-    <Preference android:title="@string/e3l" android:layout="@layout/acs" />
-    <PreferenceTitleCategory android:title="@string/dyo" android:key="settings_friend_verify" />
-    <CheckBoxPreference android:title="@string/dy4" android:key="settings_add_me_by_chatroom" />
-    <CheckBoxPreference android:title="@string/dy6" android:key="settings_add_me_by_qrcode" />
-    <CheckBoxPreference android:title="@string/dy5" android:key="settings_add_me_by_namecard" />
+    <Preference android:title="@string/eru" android:key="timline_outside_permiss" />
+    <Preference android:title="@string/eo7" android:key="timeline_black_permiss" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:title="@string/ay4" android:key="timeline_stranger_show" android:layout="@layout/afi" />
 </PreferenceScreen>

@@ -8,121 +8,161 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout.LayoutParams;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.header.GyroView;
 import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
 import com.tencent.mm.plugin.appbrand.widget.header.a.a;
-import com.tencent.mm.plugin.appbrand.y.e;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.widget.header.c;
+import com.tencent.mm.plugin.appbrand.widget.header.c.a;
+import com.tencent.mm.ui.MMFragmentActivity;
 
 public class AppBrandDesktopHalfContainer
   extends HeaderContainer
-  implements View.OnTouchListener, a.a
+  implements View.OnTouchListener, c.a
 {
-  private com.tencent.mm.plugin.appbrand.widget.header.a hpI;
-  private Rect hpK = new Rect();
-  private GyroView hpx;
-  private AppBrandDesktopHalfView hre;
-  private View hrf;
-  
-  public AppBrandDesktopHalfContainer(Context paramContext)
-  {
-    super(paramContext);
-    init(paramContext);
-  }
+  private GyroView jcR;
+  private c jdo;
+  private Rect jdr;
+  private AppBrandDesktopHalfView jhE;
+  private View xy;
   
   public AppBrandDesktopHalfContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(134115);
+    this.jdr = new Rect();
     init(paramContext);
+    AppMethodBeat.o(134115);
   }
   
   public AppBrandDesktopHalfContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(134116);
+    this.jdr = new Rect();
     init(paramContext);
+    AppMethodBeat.o(134116);
+  }
+  
+  private void dt(Context paramContext)
+  {
+    AppMethodBeat.i(134119);
+    this.jcR = new GyroView(paramContext);
+    paramContext = new FrameLayout.LayoutParams((int)getResources().getDimension(2131428452), (int)getResources().getDimension(2131428451));
+    paramContext.gravity = 81;
+    this.jcR.setId(2131820627);
+    this.jcR.setVisibility(8);
+    addView(this.jcR, paramContext);
+    AppMethodBeat.o(134119);
   }
   
   private void init(Context paramContext)
   {
-    this.hre = new AppBrandDesktopHalfView(paramContext);
-    this.hre.setId(y.g.app_brand_desktop_view);
+    AppMethodBeat.i(134118);
+    this.jhE = new AppBrandDesktopHalfView(paramContext);
+    this.jhE.setId(2131820554);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
     localLayoutParams.setMargins(localLayoutParams.leftMargin, localLayoutParams.topMargin, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
-    this.hre.setLayoutParams(localLayoutParams);
-    this.hrf = this.hre.findViewById(y.g.app_brand_desktop_empty_layout);
-    addView(this.hre);
-    this.hpx = new GyroView(paramContext);
-    paramContext = new FrameLayout.LayoutParams((int)getResources().getDimension(y.e.header_gyro_width), (int)getResources().getDimension(y.e.header_gyro_height));
-    paramContext.gravity = 81;
-    this.hpx.setId(y.g.gyro_view);
-    addView(this.hpx, paramContext);
+    this.jhE.setLayoutParams(localLayoutParams);
+    this.xy = this.jhE.findViewById(2131821191);
+    addView(this.jhE);
+    dt(paramContext);
+    AppMethodBeat.o(134118);
   }
   
-  public final void arr() {}
-  
-  public final void ars()
+  public final boolean aOY()
   {
-    if (this.hre != null) {
-      this.hre.ars();
-    }
+    return false;
   }
   
-  public final void art()
+  public final void aPm() {}
+  
+  public final void aPx() {}
+  
+  public final void aPy() {}
+  
+  public final void e(View paramView1, View paramView2) {}
+  
+  public int getAnimationScrollOffset()
   {
-    ars();
+    return 0;
   }
-  
-  public final void aru() {}
   
   public Rect getBackUpFooterRect()
   {
-    return this.hpK;
+    return this.jdr;
+  }
+  
+  public View getBackgroundGLSurfaceView()
+  {
+    return null;
+  }
+  
+  public View getBackgroundGradientView()
+  {
+    return null;
   }
   
   public View getEmptyView()
   {
-    return this.hrf;
+    return this.xy;
+  }
+  
+  public int getExtraBottomHeight()
+  {
+    return 0;
   }
   
   public GyroView getGyroView()
   {
-    return this.hpx;
+    return this.jcR;
   }
   
-  public com.tencent.mm.plugin.appbrand.widget.header.a.a getHeaderView()
+  public a getHeaderView()
   {
-    return this.hre;
+    return this.jhE;
+  }
+  
+  public View getMaskView()
+  {
+    return null;
   }
   
   public final boolean isFullScreen()
   {
-    if (this.hre != null) {}
+    if (this.jhE != null) {}
     return false;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(134117);
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(134117);
   }
   
   public final void onPause()
   {
+    AppMethodBeat.i(134124);
     super.onPause();
-    if (this.hre != null) {
-      this.hre.bNW = true;
+    if (this.jhE != null) {
+      this.jhE.cvo = true;
     }
+    AppMethodBeat.o(134124);
   }
   
   public final void onResume()
   {
+    AppMethodBeat.i(134123);
     super.onResume();
-    if (this.hre != null)
+    if (this.jhE != null)
     {
-      AppBrandDesktopHalfView localAppBrandDesktopHalfView = this.hre;
-      localAppBrandDesktopHalfView.bNW = false;
+      AppBrandDesktopHalfView localAppBrandDesktopHalfView = this.jhE;
+      localAppBrandDesktopHalfView.cvo = false;
       localAppBrandDesktopHalfView.setLayoutFrozen(false);
       localAppBrandDesktopHalfView.postDelayed(new AppBrandDesktopHalfView.14(localAppBrandDesktopHalfView), 10L);
     }
+    AppMethodBeat.o(134123);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -130,17 +170,43 @@ public class AppBrandDesktopHalfContainer
     return false;
   }
   
-  public void setAnimController(com.tencent.mm.plugin.appbrand.widget.header.a parama)
+  public final void qb(int paramInt)
   {
-    this.hpI = parama;
-    if (this.hpI != null) {
-      this.hpI.a(this);
+    AppMethodBeat.i(134121);
+    if (this.jhE != null) {
+      this.jhE.qb(paramInt);
     }
+    AppMethodBeat.o(134121);
   }
+  
+  public final void qc(int paramInt)
+  {
+    AppMethodBeat.i(134122);
+    qb(paramInt);
+    AppMethodBeat.o(134122);
+  }
+  
+  public void setActivity(MMFragmentActivity paramMMFragmentActivity) {}
+  
+  public void setAnimController(c paramc)
+  {
+    AppMethodBeat.i(134120);
+    this.jdo = paramc;
+    if (this.jdo != null) {
+      this.jdo.a(this);
+    }
+    AppMethodBeat.o(134120);
+  }
+  
+  public void setDynamicBackgroundView(View paramView) {}
+  
+  public void setExtraBottomHeight(int paramInt) {}
+  
+  public void setFixedHeight(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.desktop.half.AppBrandDesktopHalfContainer
  * JD-Core Version:    0.7.0.1
  */

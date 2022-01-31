@@ -2,29 +2,29 @@ package android.support.design.internal;
 
 import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.support.v4.view.m;
-import android.support.v4.view.q;
-import android.support.v4.view.y;
+import android.support.v4.view.ab;
+import android.support.v4.view.p;
+import android.support.v4.view.t;
 import android.view.View;
 import android.view.WindowInsets;
 
 final class ScrimInsetsFrameLayout$1
-  implements m
+  implements p
 {
   ScrimInsetsFrameLayout$1(ScrimInsetsFrameLayout paramScrimInsetsFrameLayout) {}
   
-  public final y a(View paramView, y paramy)
+  public final ab a(View paramView, ab paramab)
   {
-    if (this.ed.eb == null) {
-      this.ed.eb = new Rect();
+    if (this.fb.fa == null) {
+      this.fb.fa = new Rect();
     }
-    this.ed.eb.set(paramy.getSystemWindowInsetLeft(), paramy.getSystemWindowInsetTop(), paramy.getSystemWindowInsetRight(), paramy.getSystemWindowInsetBottom());
-    this.ed.a(paramy);
-    paramView = this.ed;
+    this.fb.fa.set(paramab.getSystemWindowInsetLeft(), paramab.getSystemWindowInsetTop(), paramab.getSystemWindowInsetRight(), paramab.getSystemWindowInsetBottom());
+    this.fb.a(paramab);
+    paramView = this.fb;
     if (Build.VERSION.SDK_INT >= 20)
     {
-      bool = ((WindowInsets)paramy.HI).hasSystemWindowInsets();
-      if ((bool) && (this.ed.ea != null)) {
+      bool = ((WindowInsets)paramab.Hp).hasSystemWindowInsets();
+      if ((bool) && (this.fb.eZ != null)) {
         break label120;
       }
     }
@@ -32,8 +32,8 @@ final class ScrimInsetsFrameLayout$1
     for (boolean bool = true;; bool = false)
     {
       paramView.setWillNotDraw(bool);
-      q.O(this.ed);
-      return paramy.dv();
+      t.R(this.fb);
+      return paramab.dK();
       bool = false;
       break;
     }
@@ -41,7 +41,7 @@ final class ScrimInsetsFrameLayout$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.design.internal.ScrimInsetsFrameLayout.1
  * JD-Core Version:    0.7.0.1
  */

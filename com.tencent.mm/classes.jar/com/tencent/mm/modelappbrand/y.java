@@ -3,12 +3,12 @@ package com.tencent.mm.modelappbrand;
 public abstract class y
   implements m
 {
+  public abstract void a(String paramString1, String paramString2, t paramt);
+  
   public final String getName()
   {
-    return "onWxaWidgetJsError";
+    return "showPicker";
   }
-  
-  public abstract void jB(String paramString);
 }
 
 

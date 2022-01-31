@@ -1,73 +1,85 @@
 package com.tencent.mm.plugin.location.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.location.b;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.az.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.vfs.e;
 
 public final class k$a
-  implements av.a
+  implements az.a
 {
   private byte[] data;
-  boolean lDs = true;
-  private int lDt;
-  private int lDu;
   private String mFilePath;
-  String url = "";
+  boolean oaE;
+  private int oaF;
+  private int oaG;
+  String url;
   
   public k$a(k paramk, boolean paramBoolean, String paramString1, String paramString2)
   {
-    this.lDs = paramBoolean;
-    this.lDt = paramk.w;
-    this.lDu = paramk.h;
+    AppMethodBeat.i(113330);
+    this.url = "";
+    this.oaE = true;
+    this.oaE = paramBoolean;
+    this.oaF = paramk.w;
+    this.oaG = paramk.h;
     this.url = paramString1;
-    while (this.lDt * this.lDu > 270000)
+    while (this.oaF * this.oaG > 270000)
     {
-      this.lDt = ((int)(this.lDt / 1.2D));
-      this.lDu = ((int)(this.lDu / 1.2D));
+      this.oaF = ((int)(this.oaF / 1.2D));
+      this.oaG = ((int)(this.oaG / 1.2D));
     }
     this.mFilePath = paramString2;
-    y.i("MicroMsg.StaticMapServer", "get url %s %s", new Object[] { paramString1, bk.aM(this.mFilePath, "") });
+    ab.i("MicroMsg.StaticMapServer", "get url %s %s", new Object[] { paramString1, bo.bf(this.mFilePath, "") });
+    AppMethodBeat.o(113330);
   }
   
-  public final boolean JS()
+  public final boolean acS()
   {
-    this.data = bk.ZV(this.url);
+    AppMethodBeat.i(113331);
+    this.data = bo.apZ(this.url);
     if (this.data != null) {
       e.b(this.mFilePath, this.data, this.data.length);
     }
+    AppMethodBeat.o(113331);
     return true;
   }
   
-  public final boolean JT()
+  public final boolean acT()
   {
+    AppMethodBeat.i(113332);
     StringBuilder localStringBuilder = new StringBuilder("http onPostExecute ");
     if (this.data == null) {}
     for (boolean bool = true;; bool = false)
     {
-      y.i("MicroMsg.StaticMapServer", bool + " isGoole: " + this.lDs);
+      ab.i("MicroMsg.StaticMapServer", bool + " isGoole: " + this.oaE);
       if (this.data != null) {
-        break label213;
+        break label233;
       }
-      if (!this.lDs) {
-        break label203;
+      if (!this.oaE) {
+        break label218;
       }
-      if (this.lDv.lDr != null) {
+      if (this.oaH.oaD != null) {
         break;
       }
-      k.a(this.lDv, false);
+      k.a(this.oaH, false);
+      AppMethodBeat.o(113332);
       return false;
     }
-    this.url = String.format("http://st.map.qq.com/api?size=%d*%d&center=%f,%f&zoom=%d&referer=weixin", new Object[] { Integer.valueOf(this.lDt), Integer.valueOf(this.lDu), Float.valueOf(this.lDv.lDr.ell), Float.valueOf(this.lDv.lDr.elk), Integer.valueOf(this.lDv.lDr.bRv) });
-    this.lDv.elq.c(new a(this.lDv, false, this.url, k.b(this.lDv.lDr)));
+    this.url = String.format("http://st.map.qq.com/api?size=%d*%d&center=%f,%f&zoom=%d&referer=weixin", new Object[] { Integer.valueOf(this.oaF), Integer.valueOf(this.oaG), Float.valueOf(this.oaH.oaD.fBC), Float.valueOf(this.oaH.oaD.fBB), Integer.valueOf(this.oaH.oaD.cyX) });
+    this.oaH.fBI.e(new a(this.oaH, false, this.url, k.b(this.oaH.oaD)));
+    AppMethodBeat.o(113332);
     return false;
-    label203:
-    k.a(this.lDv, false);
+    label218:
+    k.a(this.oaH, false);
+    AppMethodBeat.o(113332);
     return false;
-    label213:
-    k.a(this.lDv, true);
+    label233:
+    k.a(this.oaH, true);
+    AppMethodBeat.o(113332);
     return false;
   }
 }

@@ -1,13 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.k;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 
 public final class i
-  extends a<o>
+  extends p
 {
-  public static final int CTRL_INDEX = 13;
-  public static final String NAME = "redirectTo";
+  public static final int CTRL_INDEX = 518;
+  public static final String NAME = "onVoIPChatMembersChanged";
 }
 
 

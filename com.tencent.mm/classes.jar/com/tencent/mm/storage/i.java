@@ -1,40 +1,43 @@
 package com.tencent.mm.storage;
 
-import com.tencent.mm.h.c.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.w;
 import com.tencent.mm.sdk.e.c.a;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class i
-  extends u
+  extends w
 {
-  protected static c.a buS;
+  protected static c.a info;
   
   static
   {
+    AppMethodBeat.i(29002);
     c.a locala = new c.a();
-    locala.ujL = new Field[3];
+    locala.yrK = new Field[3];
     locala.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
     locala.columns[0] = "deviceId";
-    locala.ujN.put("deviceId", "TEXT default '' ");
+    locala.yrM.put("deviceId", "TEXT default '' ");
     localStringBuilder.append(" deviceId TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[1] = "sessionName";
-    locala.ujN.put("sessionName", "TEXT default '' ");
+    locala.yrM.put("sessionName", "TEXT default '' ");
     localStringBuilder.append(" sessionName TEXT default '' ");
     localStringBuilder.append(", ");
     locala.columns[2] = "moveTime";
-    locala.ujN.put("moveTime", "BLOB default '' ");
+    locala.yrM.put("moveTime", "BLOB default '' ");
     localStringBuilder.append(" moveTime BLOB default '' ");
     locala.columns[3] = "rowid";
     locala.sql = localStringBuilder.toString();
-    buS = locala;
+    info = locala;
+    AppMethodBeat.o(29002);
   }
   
-  protected final c.a rM()
+  public final c.a getDBInfo()
   {
-    return buS;
+    return info;
   }
 }
 

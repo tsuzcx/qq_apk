@@ -1,28 +1,37 @@
 package com.tencent.mm.plugin.account.friend.a;
 
-import com.tencent.mm.ah.k;
-import com.tencent.mm.protocal.k.d;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.k;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.l.e;
 
 public final class z$a
   extends k
 {
-  private r.a fgt = new r.a();
-  private r.b fgu = new r.b();
+  private r.a gyb;
+  private r.b gyc;
   
-  protected final k.d HE()
+  public z$a()
   {
-    return this.fgt;
+    AppMethodBeat.i(108436);
+    this.gyb = new r.a();
+    this.gyc = new r.b();
+    AppMethodBeat.o(108436);
   }
   
-  public final k.e HF()
-  {
-    return this.fgu;
-  }
-  
-  public final int Kq()
+  public final int getOptions()
   {
     return 1;
+  }
+  
+  public final l.d getReqObjImp()
+  {
+    return this.gyb;
+  }
+  
+  public final l.e getRespObj()
+  {
+    return this.gyc;
   }
   
   public final int getType()
@@ -37,7 +46,7 @@ public final class z$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.z.a
  * JD-Core Version:    0.7.0.1
  */

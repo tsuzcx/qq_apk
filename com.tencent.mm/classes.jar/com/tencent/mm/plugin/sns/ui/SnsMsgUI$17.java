@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsMsgUI$17
   implements View.OnTouchListener
@@ -11,15 +12,18 @@ final class SnsMsgUI$17
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(39083);
     switch (paramMotionEvent.getAction())
     {
-    default: 
-      return false;
     }
-    this.paq.XM();
-    SnsMsgUI.j(this.paq)[0] = ((int)paramMotionEvent.getRawX());
-    SnsMsgUI.j(this.paq)[1] = ((int)paramMotionEvent.getRawY());
-    return false;
+    for (;;)
+    {
+      AppMethodBeat.o(39083);
+      return false;
+      this.rSU.hideVKB();
+      SnsMsgUI.j(this.rSU)[0] = ((int)paramMotionEvent.getRawX());
+      SnsMsgUI.j(this.rSU)[1] = ((int)paramMotionEvent.getRawY());
+    }
   }
 }
 

@@ -1,20 +1,17 @@
 package com.tencent.mm.plugin.emoji.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Toast;
-import com.tencent.mm.pluginsdk.ui.emoji.MMEmojiView;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class CustomSmileyPreviewUI$8
-  implements View.OnClickListener
+  implements Runnable
 {
   CustomSmileyPreviewUI$8(CustomSmileyPreviewUI paramCustomSmileyPreviewUI) {}
   
-  public final void onClick(View paramView)
+  public final void run()
   {
-    Toast.makeText(this.jcf.mController.uMN, "isHevc:" + CustomSmileyPreviewUI.f(this.jcf).shJ, 0).show();
+    AppMethodBeat.i(53229);
+    CustomSmileyPreviewUI.a(this.lkP, CustomSmileyPreviewUI.c(this.lkP), CustomSmileyPreviewUI.b(this.lkP));
+    AppMethodBeat.o(53229);
   }
 }
 

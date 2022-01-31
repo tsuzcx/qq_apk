@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.nearby.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -7,14 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.f;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.nearby.b.d;
-import com.tencent.mm.plugin.nearby.b.e;
-import com.tencent.mm.plugin.nearby.b.f;
-import com.tencent.mm.plugin.nearby.b.h;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.storage.bf;
 import com.tencent.mm.ui.MMActivity;
@@ -22,61 +20,79 @@ import com.tencent.mm.ui.MMActivity;
 public class NearbyFriendShowSayHiUI
   extends MMActivity
 {
-  ImageView doU;
-  String mCW = "";
-  View mCX = null;
+  ImageView egq;
+  String pcQ = "";
+  View pcR = null;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return b.e.nearby_friend_show_sayhi;
+    return 2130970346;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(55432);
     setBackBtn(new NearbyFriendShowSayHiUI.1(this));
-    ((Button)findViewById(b.d.nearby_friend_intro_start_btn)).setOnClickListener(new NearbyFriendShowSayHiUI.2(this));
-    this.mCX = findViewById(b.d.goto_sayhi_btn);
-    this.mCX.setVisibility(0);
-    this.mCX.setOnClickListener(new NearbyFriendShowSayHiUI.3(this));
+    ((Button)findViewById(2131826491)).setOnClickListener(new NearbyFriendShowSayHiUI.2(this));
+    this.pcR = findViewById(2131824817);
+    this.pcR.setVisibility(0);
+    this.pcR.setOnClickListener(new NearbyFriendShowSayHiUI.3(this));
+    AppMethodBeat.o(55432);
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(55433);
     if ((paramInt1 == 2009) && (paramInt2 == -1)) {
       finish();
     }
+    AppMethodBeat.o(55433);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(55429);
     super.onCreate(paramBundle);
-    setMMTitle(b.h.nearby_friend_title);
+    setMMTitle(2131301773);
     initView();
+    AppMethodBeat.o(55429);
   }
   
   public void onPause()
   {
+    AppMethodBeat.i(55431);
     super.onPause();
+    AppMethodBeat.o(55431);
   }
   
-  protected void onResume()
+  public void onResume()
   {
+    AppMethodBeat.i(55430);
     super.onResume();
-    Object localObject = (TextView)findViewById(b.d.say_hi_count);
-    g.DN().CX();
-    int i = ((j)g.r(j.class)).bhL().aAo();
-    if (i == 0) {
-      this.mCX.setVisibility(4);
-    }
-    do
+    Object localObject = (TextView)findViewById(2131824819);
+    g.RJ().QQ();
+    int i = ((j)g.E(j.class)).bPN().bbZ();
+    if (i == 0)
     {
+      this.pcR.setVisibility(4);
+      AppMethodBeat.o(55430);
       return;
-      ((TextView)localObject).setText(getResources().getQuantityString(b.f.say_hi_count_text_quantity, i, new Object[] { Integer.valueOf(i) }));
-      this.doU = ((ImageView)findViewById(b.d.match_dlg_img));
-      localObject = ((j)g.r(j.class)).bhL().bhU();
-    } while (localObject == null);
-    this.mCW = ((bf)localObject).field_sayhiuser;
-    a.b.a(this.doU, this.mCW);
+    }
+    ((TextView)localObject).setText(getResources().getQuantityString(2131361819, i, new Object[] { Integer.valueOf(i) }));
+    this.egq = ((ImageView)findViewById(2131824818));
+    localObject = ((j)g.E(j.class)).bPN().bPW();
+    if (localObject != null)
+    {
+      this.pcQ = ((bf)localObject).field_sayhiuser;
+      a.b.c(this.egq, this.pcQ);
+    }
+    AppMethodBeat.o(55430);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

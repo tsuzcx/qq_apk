@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 
 final class WebViewSearchContentInputFooter$7
@@ -10,7 +11,9 @@ final class WebViewSearchContentInputFooter$7
   
   public final void run()
   {
-    MMActivity.showVKB((Activity)this.rDc.getContext());
+    AppMethodBeat.i(10064);
+    MMActivity.showVKB((Activity)this.vto.getContext());
+    AppMethodBeat.o(10064);
   }
 }
 

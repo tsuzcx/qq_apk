@@ -1,39 +1,34 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wallet_core.ui.view.a;
-import com.tencent.mm.plugin.wxpay.a.i;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.b.a.bv;
+import com.tencent.mm.plugin.remittance.model.v;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class RemittanceBaseUI$19
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  RemittanceBaseUI$19(RemittanceBaseUI paramRemittanceBaseUI) {}
+  RemittanceBaseUI$19(RemittanceBaseUI paramRemittanceBaseUI, v paramv, String paramString1, String paramString2, String paramString3) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.nAH.VH();
-    h.nFQ.f(12689, new Object[] { Integer.valueOf(9), Integer.valueOf(1) });
-    String str;
-    if ((this.nAH.fzn == 1) || (this.nAH.fzn == 6))
-    {
-      paramView = this.nAH.getString(a.i.remittance_add_f2f_desc_link);
-      str = this.nAH.getString(a.i.remittance_desc_max_words_count_tip);
-      h.nFQ.f(14074, new Object[] { Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      a.a(this.nAH, paramView, this.nAH.dkv, str, 20, new RemittanceBaseUI.19.1(this), new RemittanceBaseUI.19.2(this));
-      return;
-      paramView = this.nAH.getString(a.i.remittance_add_desc_link);
-      str = this.nAH.getString(a.i.remittance_busi_desc_max_words_count_tip);
-    }
+    AppMethodBeat.i(142152);
+    ab.i("MicroMsg.RemittanceBaseUI", "onClick1 realNameCheckMessage %s", new Object[] { RemittanceBaseUI.k(this.qmk) });
+    paramDialogInterface = new bv();
+    paramDialogInterface.cYX = ((int)this.qlb.qjN);
+    paramDialogInterface = paramDialogInterface.gR(this.qlb.username);
+    paramDialogInterface.cYR = 9L;
+    paramDialogInterface.ake();
+    this.qlb.qka = null;
+    this.qmk.a(this.qmn, this.val$name, this.qmo, this.qlb);
+    AppMethodBeat.o(142152);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBaseUI.19
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
 import android.view.Surface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.a.c;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -15,57 +16,61 @@ final class VideoSegmentUI$d
   
   public final void run()
   {
+    AppMethodBeat.i(55052);
     for (;;)
     {
       try
       {
-        bool1 = VideoSegmentUI.o(this.mnw).await(5L, TimeUnit.SECONDS);
-        if ((!bool1) || (VideoSegmentUI.t(this.mnw)) || (this.mnw.isFinishing()) || (VideoSegmentUI.u(this.mnw) == null) || (!VideoSegmentUI.u(this.mnw).isValid()))
+        bool1 = VideoSegmentUI.o(this.oME).await(5L, TimeUnit.SECONDS);
+        if ((!bool1) || (VideoSegmentUI.t(this.oME)) || (this.oME.isFinishing()) || (VideoSegmentUI.u(this.oME) == null) || (!VideoSegmentUI.u(this.oME).isValid()))
         {
-          boolean bool3 = VideoSegmentUI.t(this.mnw);
-          boolean bool4 = this.mnw.isFinishing();
-          if (VideoSegmentUI.u(this.mnw) != null) {
-            break label311;
+          boolean bool3 = VideoSegmentUI.t(this.oME);
+          boolean bool4 = this.oME.isFinishing();
+          if (VideoSegmentUI.u(this.oME) != null) {
+            break label336;
           }
           bool2 = true;
-          y.w("MicroMsg.VideoSegmentUI", "Waiting Prepared error result[%b] needFinish[%b] isFinishing[%b] mSurface is null[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool2) });
-          this.mnw.finish();
+          ab.w("MicroMsg.VideoSegmentUI", "Waiting Prepared error result[%b] needFinish[%b] isFinishing[%b] mSurface is null[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool2) });
+          this.oME.finish();
+          AppMethodBeat.o(55052);
         }
       }
       catch (InterruptedException localInterruptedException)
       {
-        y.e("MicroMsg.VideoSegmentUI", "count down latch error %s", new Object[] { localInterruptedException });
+        ab.e("MicroMsg.VideoSegmentUI", "count down latch error %s", new Object[] { localInterruptedException });
         boolean bool1 = false;
         continue;
-        if (VideoSegmentUI.d(this.mnw) != null)
+        if (VideoSegmentUI.d(this.oME) != null)
         {
-          VideoSegmentUI.d(this.mnw).a(null);
-          VideoSegmentUI.d(this.mnw).a(null);
-          VideoSegmentUI.d(this.mnw).release();
-          VideoSegmentUI.v(this.mnw);
+          VideoSegmentUI.d(this.oME).a(null);
+          VideoSegmentUI.d(this.oME).a(null);
+          VideoSegmentUI.d(this.oME).release();
+          VideoSegmentUI.v(this.oME);
         }
-      }
-      catch (Exception localException)
-      {
         try
         {
-          VideoSegmentUI.a(this.mnw, VideoSegmentUI.u(this.mnw));
-          VideoSegmentUI.d(this.mnw).setSurface(VideoSegmentUI.u(this.mnw));
-          ai.d(new VideoSegmentUI.d.1(this));
+          VideoSegmentUI.a(this.oME, VideoSegmentUI.u(this.oME));
+          VideoSegmentUI.d(this.oME).setSurface(VideoSegmentUI.u(this.oME));
+          al.d(new VideoSegmentUI.d.1(this));
+          AppMethodBeat.o(55052);
           return;
         }
         catch (IOException localIOException)
         {
-          y.printErrStackTrace("MicroMsg.VideoSegmentUI", localIOException, "init segmentPlayer second time %s", new Object[] { localIOException.getMessage() });
-          this.mnw.finish();
+          ab.printErrStackTrace("MicroMsg.VideoSegmentUI", localIOException, "init segmentPlayer second time %s", new Object[] { localIOException.getMessage() });
+          this.oME.finish();
+          AppMethodBeat.o(55052);
           return;
         }
-        localException = localException;
-        y.printErrStackTrace("MicroMsg.VideoSegmentUI", localException, "Finished when init", new Object[0]);
-        this.mnw.finish();
+      }
+      catch (Exception localException)
+      {
+        ab.printErrStackTrace("MicroMsg.VideoSegmentUI", localException, "Finished when init", new Object[0]);
+        this.oME.finish();
+        AppMethodBeat.o(55052);
         return;
       }
-      label311:
+      label336:
       boolean bool2 = false;
     }
   }

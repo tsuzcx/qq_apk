@@ -6,15 +6,14 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.bd;
 import java.util.List;
@@ -25,69 +24,70 @@ public final class WalletPayUI$a
   
   public final void notifyDataSetChanged()
   {
-    this.qnV.qnE.removeAllViews();
+    AppMethodBeat.i(46075);
+    this.tXq.tWV.removeAllViews();
     int i;
     ViewGroup.LayoutParams localLayoutParams;
     int j;
-    label36:
+    label41:
     View localView;
     TextView localTextView1;
     TextView localTextView2;
     Orders.Commodity localCommodity;
     String str2;
     String str1;
-    label289:
+    label290:
     label333:
-    if (this.qnV.mCount == 0)
+    if (this.tXq.mCount == 0)
     {
       i = 0;
       localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
       j = 0;
       if (j >= i) {
-        return;
+        break label565;
       }
-      localView = ((LayoutInflater)this.qnV.getSystemService("layout_inflater")).inflate(a.g.wallet_pay_item, null);
-      localTextView1 = (TextView)localView.findViewById(a.f.wallet_order_info_desc);
-      localTextView2 = (TextView)localView.findViewById(a.f.wallet_order_info_spid);
-      localCommodity = (Orders.Commodity)this.qnV.nEh.qwN.get(j);
+      localView = ((LayoutInflater)this.tXq.getSystemService("layout_inflater")).inflate(2130971227, null);
+      localTextView1 = (TextView)localView.findViewById(2131829265);
+      localTextView2 = (TextView)localView.findViewById(2131829258);
+      localCommodity = (Orders.Commodity)this.tXq.qrf.ujl.get(j);
       str2 = "";
       str1 = str2;
-      if (this.qnV.nDu != null) {
-        if ((this.qnV.nDu.bUV != 32) && (this.qnV.nDu.bUV != 33) && (this.qnV.nDu.bUV != 31))
+      if (this.tXq.mPayInfo != null) {
+        if ((this.tXq.mPayInfo.cCD != 32) && (this.tXq.mPayInfo.cCD != 33) && (this.tXq.mPayInfo.cCD != 31))
         {
           str1 = str2;
-          if (this.qnV.nDu.bUV != 48) {}
+          if (this.tXq.mPayInfo.cCD != 48) {}
         }
         else
         {
-          str1 = this.qnV.nDu.snX.getString("extinfo_key_1", "");
-          if (bk.bl(str1)) {
-            break label445;
+          str1 = this.tXq.mPayInfo.wgv.getString("extinfo_key_1", "");
+          if (bo.isNullOrNil(str1)) {
+            break label443;
           }
-          g.DQ();
-          ad localad = ((j)g.r(j.class)).Fw().abj(str1);
+          g.RM();
+          ad localad = ((j)g.E(j.class)).YA().aru(str1);
           if (localad == null) {
             break label418;
           }
-          str1 = localad.Bq();
+          str1 = localad.Of();
         }
       }
-      label250:
+      label252:
       if (localCommodity != null)
       {
-        if (bk.bl(str1)) {
-          break label458;
+        if (bo.isNullOrNil(str1)) {
+          break label461;
         }
         localTextView2.setText(str1);
         localTextView2.setVisibility(0);
-        ((TextView)localView.findViewById(a.f.wallet_order_info_spid_title)).setVisibility(0);
-        if (bk.bl(localCommodity.desc)) {
-          break label529;
+        ((TextView)localView.findViewById(2131829322)).setVisibility(0);
+        if (bo.isNullOrNil(localCommodity.desc)) {
+          break label530;
         }
         localTextView1.setText(localCommodity.desc);
         localTextView1.setVisibility(8);
-        ((TextView)localView.findViewById(a.f.wallet_order_info_desc_title)).setVisibility(8);
-        if ((bk.bl(str1)) && (bk.bl(localCommodity.mOO))) {
+        ((TextView)localView.findViewById(2131829264)).setVisibility(8);
+        if ((bo.isNullOrNil(str1)) && (bo.isNullOrNil(localCommodity.ppe))) {
           break label555;
         }
         localView.setVisibility(0);
@@ -97,47 +97,49 @@ public final class WalletPayUI$a
     {
       localView.setLayoutParams(localLayoutParams);
       localView.measure(-2, -2);
-      this.qnV.qnE.addView(localView);
+      this.tXq.tWV.addView(localView);
       j += 1;
-      break label36;
-      if (this.qnV.qns)
+      break label41;
+      if (this.tXq.tWJ)
       {
-        i = this.qnV.mCount;
+        i = this.tXq.mCount;
         break;
       }
       i = 1;
       break;
       label418:
-      y.e("MicroMsg.WalletPayUI", "can not found contact for user::" + str1);
+      ab.e(this.tXq.TAG, "can not found contact for user::".concat(String.valueOf(str1)));
       str1 = str2;
-      break label250;
-      label445:
-      y.e("MicroMsg.WalletPayUI", "userName is null ,scene is MMPAY_PAY_SCENE_TRANSFER");
+      break label252;
+      label443:
+      ab.e(this.tXq.TAG, "userName is null ,scene is MMPAY_PAY_SCENE_TRANSFER");
       str1 = str2;
-      break label250;
-      label458:
-      if (!bk.bl(localCommodity.mOO))
+      break label252;
+      label461:
+      if (!bo.isNullOrNil(localCommodity.ppe))
       {
-        localTextView2.setText(localCommodity.mOO);
+        localTextView2.setText(localCommodity.ppe);
         localTextView2.setVisibility(0);
-        ((TextView)localView.findViewById(a.f.wallet_order_info_spid_title)).setVisibility(0);
-        break label289;
+        ((TextView)localView.findViewById(2131829322)).setVisibility(0);
+        break label290;
       }
-      ((TextView)localView.findViewById(a.f.wallet_order_info_spid_title)).setVisibility(8);
+      ((TextView)localView.findViewById(2131829322)).setVisibility(8);
       localTextView2.setVisibility(8);
-      break label289;
-      label529:
-      ((TextView)localView.findViewById(a.f.wallet_order_info_desc_title)).setVisibility(8);
+      break label290;
+      label530:
+      ((TextView)localView.findViewById(2131829264)).setVisibility(8);
       localTextView1.setVisibility(8);
       break label333;
       label555:
       localView.setVisibility(8);
     }
+    label565:
+    AppMethodBeat.o(46075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.ui.WalletPayUI.a
  * JD-Core Version:    0.7.0.1
  */

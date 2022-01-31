@@ -4,7 +4,8 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class a$3
   implements ValueAnimator.AnimatorUpdateListener
@@ -13,24 +14,26 @@ final class a$3
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
+    AppMethodBeat.i(8563);
     float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    float f2 = this.rvA.rvs[1][1];
-    float f3 = this.rvA.rvs[1][0];
-    float f4 = this.rvA.rvs[1][0];
-    float f5 = this.rvA.rvs[0][1];
-    float f6 = this.rvA.rvs[0][0];
-    float f7 = this.rvA.rvs[0][0];
-    this.rvA.rvk.setX((f2 - f3) * f1 + f4);
-    this.rvA.rvk.setY((f5 - f6) * f1 + f7);
-    this.rvA.rvk.setPadding((int)((this.rvA.rvj - this.rvA.rvi) * f1 + this.rvA.rvi), 0, 0, 0);
-    y.v("MicroMsg.FTS.SosAnimatorBaseController", "searchBarView.paddingLeft %d", new Object[] { Integer.valueOf(this.rvA.rvk.getPaddingLeft()) });
-    paramValueAnimator = (RelativeLayout.LayoutParams)this.rvA.rvk.getLayoutParams();
-    int i = (int)((1.0F - f1) * this.rvA.rvg);
+    float f2 = this.vlQ.vlI[1][1];
+    float f3 = this.vlQ.vlI[1][0];
+    float f4 = this.vlQ.vlI[1][0];
+    float f5 = this.vlQ.vlI[0][1];
+    float f6 = this.vlQ.vlI[0][0];
+    float f7 = this.vlQ.vlI[0][0];
+    this.vlQ.vlz.setX((f2 - f3) * f1 + f4);
+    this.vlQ.vlz.setY((f5 - f6) * f1 + f7);
+    this.vlQ.vlz.setPadding((int)((this.vlQ.vly - this.vlQ.vlx) * f1 + this.vlQ.vlx), 0, 0, 0);
+    ab.v("MicroMsg.WebSearch.SosAnimatorBaseController", "searchBarView.paddingLeft %d", new Object[] { Integer.valueOf(this.vlQ.vlz.getPaddingLeft()) });
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.vlQ.vlz.getLayoutParams();
+    int i = (int)((1.0F - f1) * this.vlQ.vlv);
     paramValueAnimator.leftMargin = i;
     paramValueAnimator.rightMargin = i;
-    int j = (int)this.rvA.rvs[2][0];
-    paramValueAnimator.width = ((this.rvA.rvg - i) * 2 + j);
-    this.rvA.rvk.setLayoutParams(paramValueAnimator);
+    int j = (int)this.vlQ.vlI[2][0];
+    paramValueAnimator.width = ((this.vlQ.vlv - i) * 2 + j);
+    this.vlQ.vlz.setLayoutParams(paramValueAnimator);
+    AppMethodBeat.o(8563);
   }
 }
 

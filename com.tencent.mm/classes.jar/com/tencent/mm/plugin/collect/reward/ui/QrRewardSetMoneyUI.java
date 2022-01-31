@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.collect.reward.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextWatcher;
@@ -9,26 +10,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.collect.reward.a.a;
 import com.tencent.mm.plugin.collect.reward.b.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMGridView;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.u;
+import com.tencent.mm.ui.t;
 import com.tencent.mm.ui.widget.MMEditText;
 import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 import java.util.ArrayList;
@@ -40,52 +37,58 @@ public class QrRewardSetMoneyUI
   extends QrRewardBaseUI
 {
   private String desc;
-  private String fGC;
-  private TextView haW;
-  private int iIH;
-  private ImageView iIS;
-  private MMGridView iJD;
-  private Button iJE;
-  private MMEditText iJF;
+  private String hJS;
   private TextView iJG;
-  private TextView iJH;
-  private SparseArray<WalletFormView> iJI;
-  private List<Integer> iJJ;
-  private List<Integer> iJK;
-  private boolean iJL = false;
-  private Runnable iJM = new QrRewardSetMoneyUI.5(this);
-  private TextWatcher iJN = new QrRewardSetMoneyUI.6(this);
+  private int kPm;
+  private ImageView kPy;
+  private MMGridView kQj;
+  private Button kQk;
+  private MMEditText kQl;
+  private TextView kQm;
+  private TextView kQn;
+  private SparseArray<WalletFormView> kQo;
+  private List<Integer> kQp;
+  private List<Integer> kQq;
+  private boolean kQr;
+  private Runnable kQs;
+  private TextWatcher kQt;
   
-  private boolean aEQ()
+  public QrRewardSetMoneyUI()
   {
-    boolean bool2 = false;
+    AppMethodBeat.i(41158);
+    this.kQr = false;
+    this.kQs = new QrRewardSetMoneyUI.5(this);
+    this.kQt = new QrRewardSetMoneyUI.6(this);
+    AppMethodBeat.o(41158);
+  }
+  
+  private boolean big()
+  {
+    AppMethodBeat.i(41163);
     int i = 0;
-    for (;;)
+    while (i < this.kQp.size())
     {
-      boolean bool1 = bool2;
-      if (i < this.iJJ.size())
+      if (!((Integer)this.kQp.get(i)).equals(this.kQq.get(i)))
       {
-        if (!((Integer)this.iJJ.get(i)).equals(this.iJK.get(i)))
-        {
-          y.i("MicroMsg.QrRewardSetMoneyUI", "modify money: %s, %s", new Object[] { this.iJJ.get(i), this.iJK.get(i) });
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+        ab.i("MicroMsg.QrRewardSetMoneyUI", "modify money: %s, %s", new Object[] { this.kQp.get(i), this.kQq.get(i) });
+        AppMethodBeat.o(41163);
+        return true;
       }
       i += 1;
     }
+    AppMethodBeat.o(41163);
+    return false;
   }
   
-  private void aER()
+  private void bih()
   {
+    AppMethodBeat.i(41164);
     int i = 0;
-    if (i < this.iJK.size())
+    if (i < this.kQq.size())
     {
-      WalletFormView localWalletFormView = (WalletFormView)LayoutInflater.from(this.mController.uMN).inflate(a.g.qr_reward_setting_item, null);
-      localWalletFormView.a(this.iJN);
-      int j = ((Integer)this.iJK.get(i)).intValue();
+      WalletFormView localWalletFormView = (WalletFormView)LayoutInflater.from(getContext()).inflate(2130970493, null);
+      localWalletFormView.a(this.kQt);
+      int j = ((Integer)this.kQq.get(i)).intValue();
       int k = j / 100;
       double d = j / 100.0D;
       if (d > k) {
@@ -93,110 +96,127 @@ public class QrRewardSetMoneyUI
       }
       for (;;)
       {
-        e(localWalletFormView, 2, false);
-        this.iJI.put(i, localWalletFormView);
+        setEditFocusListener(localWalletFormView, 2, false);
+        this.kQo.put(i, localWalletFormView);
         i += 1;
         break;
         localWalletFormView.setText(String.format("%d", new Object[] { Integer.valueOf(k) }));
       }
     }
+    AppMethodBeat.o(41164);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public int getLayoutId()
   {
-    if ((paramm instanceof com.tencent.mm.plugin.collect.reward.a.g))
-    {
-      paramString = (com.tencent.mm.plugin.collect.reward.a.g)paramm;
-      paramString.a(new QrRewardSetMoneyUI.4(this, paramString)).b(new QrRewardSetMoneyUI.3(this, paramString)).c(new QrRewardSetMoneyUI.2(this));
-    }
-    return false;
+    return 2130970495;
   }
   
-  protected final int getLayoutId()
+  public void initView()
   {
-    return a.g.qr_reward_setting_ui;
-  }
-  
-  protected final void initView()
-  {
-    this.iJD = ((MMGridView)findViewById(a.f.qrsu_money_layout_new));
-    this.iJE = ((Button)findViewById(a.f.qrsu_gen_btn));
-    this.iJG = ((TextView)findViewById(a.f.qrsu_alert_tv));
-    this.iIS = ((ImageView)findViewById(a.f.qrsu_avatar_iv));
-    this.iJF = ((MMEditText)findViewById(a.f.qrsu_reward_et));
-    this.haW = ((TextView)findViewById(a.f.qrsu_title_tv));
-    this.iJH = ((TextView)findViewById(a.f.qrsu_bottom_tips_tv));
-    String str = q.Gl();
+    AppMethodBeat.i(41160);
+    this.kQj = ((MMGridView)findViewById(2131826972));
+    this.kQk = ((Button)findViewById(2131826973));
+    this.kQm = ((TextView)findViewById(2131826975));
+    this.kPy = ((ImageView)findViewById(2131826969));
+    this.kQl = ((MMEditText)findViewById(2131826971));
+    this.iJG = ((TextView)findViewById(2131826970));
+    this.kQn = ((TextView)findViewById(2131826974));
+    String str = r.Zp();
     Object localObject = str;
-    if (bk.bl(str)) {
-      localObject = q.Gm();
+    if (bo.isNullOrNil(str)) {
+      localObject = r.Zq();
     }
-    this.haW.setText(j.b(this.mController.uMN, (CharSequence)localObject));
-    a.b.a(this.iIS, q.Gj(), 0.06F, false);
+    this.iJG.setText(j.b(getContext(), (CharSequence)localObject));
+    a.b.a(this.kPy, r.Zn(), 0.06F, false);
     localObject = new QrRewardSetMoneyUI.a(this, (byte)0);
-    this.iJD.setAdapter((ListAdapter)localObject);
-    if (!bk.bl(this.desc)) {
-      this.iJF.setText(j.a(this, this.desc, this.iJF.getTextSize()));
+    this.kQj.setAdapter((ListAdapter)localObject);
+    if (!bo.isNullOrNil(this.desc)) {
+      this.kQl.setText(j.b(this, this.desc, this.kQl.getTextSize()));
     }
-    this.iJG.setText(getString(a.i.qr_reward_set_money_exceed_text, new Object[] { Math.round(this.iIH / 100.0F) }));
-    if (this.iJL)
+    this.kQm.setText(getString(2131302229, new Object[] { Math.round(this.kPm / 100.0F) }));
+    if (this.kQr)
     {
-      this.iJE.setText(a.i.qr_reward_first_set_money_btn_text);
-      this.iJH.setVisibility(8);
+      this.kQk.setText(2131302210);
+      this.kQn.setVisibility(8);
     }
-    this.iJE.setOnClickListener(new u()
+    this.kQk.setOnClickListener(new t()
     {
-      public final void aEI()
+      public final void bhX()
       {
+        AppMethodBeat.i(41149);
         if (!QrRewardSetMoneyUI.a(QrRewardSetMoneyUI.this)) {
           QrRewardSetMoneyUI.b(QrRewardSetMoneyUI.this);
         }
         for (;;)
         {
-          h.nFQ.f(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+          h.qsU.e(14721, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+          AppMethodBeat.o(41149);
           return;
-          y.i("MicroMsg.QrRewardSetMoneyUI", "amt error!");
+          ab.i("MicroMsg.QrRewardSetMoneyUI", "amt error!");
         }
       }
     });
+    AppMethodBeat.o(41160);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(41159);
     super.onCreate(paramBundle);
-    setMMTitle(a.i.qr_reward_set_money_title);
-    kh(1562);
-    paramBundle = bk.gg((String)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uyh, ""), ",");
-    this.iJJ = new ArrayList();
+    setMMTitle(2131302232);
+    addSceneEndListener(1562);
+    paramBundle = bo.ih((String)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yIr, ""), ",");
+    this.kQp = new ArrayList();
     if (paramBundle.isEmpty())
     {
-      y.i("MicroMsg.QrRewardSetMoneyUI", "use client hardcode amt list");
-      this.iJJ = Arrays.asList(b.iIm);
+      ab.i("MicroMsg.QrRewardSetMoneyUI", "use client hardcode amt list");
+      this.kQp = Arrays.asList(b.kOR);
     }
     for (;;)
     {
-      this.iJK = new ArrayList(this.iJJ);
-      this.iIH = ((Integer)com.tencent.mm.kernel.g.DP().Dz().get(ac.a.uyg, Integer.valueOf(20000))).intValue();
-      this.iJL = getIntent().getBooleanExtra("key_first_flag", false);
+      this.kQq = new ArrayList(this.kQp);
+      this.kPm = ((Integer)com.tencent.mm.kernel.g.RL().Ru().get(ac.a.yIq, Integer.valueOf(20000))).intValue();
+      this.kQr = getIntent().getBooleanExtra("key_first_flag", false);
       this.desc = getIntent().getStringExtra("key_desc_word");
-      this.iJI = new SparseArray();
-      aER();
+      this.kQo = new SparseArray();
+      bih();
       initView();
+      AppMethodBeat.o(41159);
       return;
       paramBundle = paramBundle.iterator();
       while (paramBundle.hasNext())
       {
         String str = (String)paramBundle.next();
-        this.iJJ.add(Integer.valueOf(bk.getInt(str, 0)));
+        this.kQp.add(Integer.valueOf(bo.getInt(str, 0)));
       }
     }
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(41161);
     super.onDestroy();
-    ki(1562);
-    ai.S(this.iJM);
+    removeSceneEndListener(1562);
+    al.ae(this.kQs);
+    AppMethodBeat.o(41161);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(41162);
+    if ((paramm instanceof com.tencent.mm.plugin.collect.reward.a.g))
+    {
+      paramString = (com.tencent.mm.plugin.collect.reward.a.g)paramm;
+      paramString.a(new QrRewardSetMoneyUI.4(this, paramString)).b(new QrRewardSetMoneyUI.3(this, paramString)).c(new QrRewardSetMoneyUI.2(this));
+    }
+    AppMethodBeat.o(41162);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

@@ -1,53 +1,62 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.app.Activity;
-import android.content.res.Resources;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.as.a.c.g;
-import com.tencent.mm.as.a.d.b;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.q;
-import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.plugin.appbrand.u.o;
+import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.at.p.a;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.websearch.api.ab;
-import com.tencent.mm.pluginsdk.model.app.am;
+import com.tencent.mm.pluginsdk.model.app.ai;
 import com.tencent.mm.pluginsdk.model.app.f;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.c;
+import com.tencent.mm.pluginsdk.model.app.l;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bi;
-import com.tencent.mm.ui.chatting.e;
+import com.tencent.mm.ui.chatting.d.a;
 
 public final class d
 {
-  public static void f(bi parambi, String paramString)
+  private static boolean sdw = false;
+  
+  protected static void a(TextView paramTextView, j.b paramb)
   {
-    String str = parambi.field_content;
-    long l = parambi.field_msgId;
-    au.DS().O(new d.1(str, paramString, l));
+    AppMethodBeat.i(32859);
+    switch (paramb.fjh)
+    {
+    default: 
+      paramTextView.setText(2131296630);
+    }
+    for (;;)
+    {
+      paramTextView.setVisibility(0);
+      AppMethodBeat.o(32859);
+      return;
+      paramTextView.setText(2131296857);
+      continue;
+      paramTextView.setText(2131296856);
+    }
   }
   
-  static boolean h(g.a parama)
+  private static boolean g(j.b paramb)
   {
-    parama = (ab)parama.A(ab.class);
-    return (parama != null) && (!bk.bl(parama.qTY));
+    AppMethodBeat.i(32860);
+    paramb = (ab)paramb.R(ab.class);
+    if ((paramb != null) && (!bo.isNullOrNil(paramb.uJi)))
+    {
+      AppMethodBeat.o(32860);
+      return true;
+    }
+    AppMethodBeat.o(32860);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.d
  * JD-Core Version:    0.7.0.1
  */

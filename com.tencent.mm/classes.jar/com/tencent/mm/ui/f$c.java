@@ -1,7 +1,9 @@
 package com.tencent.mm.ui;
 
-import com.tencent.mm.cf.a.d;
-import com.tencent.mm.cf.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.a.a;
+import com.tencent.mm.cg.a.d;
+import com.tencent.mm.cg.a.g;
 import java.util.ArrayList;
 
 final class f$c
@@ -10,16 +12,24 @@ final class f$c
   public f$c(d<K> paramd)
   {
     super(locald, f.a(paramd));
+    AppMethodBeat.i(29175);
+    AppMethodBeat.o(29175);
   }
   
-  public final ArrayList<T> ag(ArrayList paramArrayList)
+  public final ArrayList<T> ap(ArrayList paramArrayList)
   {
-    return this.uIr.ag(paramArrayList);
+    AppMethodBeat.i(29177);
+    paramArrayList = this.yVK.ap(paramArrayList);
+    AppMethodBeat.o(29177);
+    return paramArrayList;
   }
   
-  public final T cxk()
+  public final T dzZ()
   {
-    return this.uIr.cxi();
+    AppMethodBeat.i(29176);
+    a locala = this.yVK.dzX();
+    AppMethodBeat.o(29176);
+    return locala;
   }
 }
 

@@ -2,9 +2,9 @@ package com.tencent.mm.vending.a;
 
 public abstract interface b$a
 {
-  public abstract void bJI();
+  public abstract void cwn();
   
-  public abstract void bJJ();
+  public abstract void cwo();
 }
 
 

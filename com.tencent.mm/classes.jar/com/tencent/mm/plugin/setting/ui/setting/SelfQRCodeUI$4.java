@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SelfQRCodeUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
   SelfQRCodeUI$4(SelfQRCodeUI paramSelfQRCodeUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    SelfQRCodeUI.b(this.nSB);
-    return true;
+    AppMethodBeat.i(154165);
+    SelfQRCodeUI.g(this.qGz);
+    AppMethodBeat.o(154165);
   }
 }
 

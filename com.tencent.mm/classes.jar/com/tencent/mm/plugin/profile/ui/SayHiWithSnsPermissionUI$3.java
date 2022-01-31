@@ -1,23 +1,17 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SayHiWithSnsPermissionUI$3
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
   SayHiWithSnsPermissionUI$3(SayHiWithSnsPermissionUI paramSayHiWithSnsPermissionUI) {}
   
-  public final void onFocusChange(View paramView, boolean paramBoolean)
+  public final void run()
   {
-    if ((paramBoolean) && (!bk.L(SayHiWithSnsPermissionUI.b(this.mZo).getHint())) && (bk.L(SayHiWithSnsPermissionUI.b(this.mZo).getText())))
-    {
-      SayHiWithSnsPermissionUI.b(this.mZo).setText(SayHiWithSnsPermissionUI.b(this.mZo).getHint());
-      SayHiWithSnsPermissionUI.b(this.mZo).setOnFocusChangeListener(null);
-      SayHiWithSnsPermissionUI.b(this.mZo).setHint(null);
-    }
+    AppMethodBeat.i(153566);
+    this.pCR.showVKB();
+    AppMethodBeat.o(153566);
   }
 }
 

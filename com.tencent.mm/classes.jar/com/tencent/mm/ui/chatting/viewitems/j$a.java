@@ -1,47 +1,58 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.f;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.i.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.Map;
 
 public class j$a
-  extends com.tencent.mm.ae.d
+  extends f
 {
   public String appId;
   public String appName;
   public String iconUrl;
   public int state;
-  public int vCH;
+  public int zTK;
   
-  private static String v(Map<String, String> paramMap, String paramString)
+  private static String w(Map<String, String> paramMap, String paramString)
   {
-    return bk.pm((String)paramMap.get(".msg.appmsg.downloaderapp." + paramString));
+    AppMethodBeat.i(32931);
+    paramMap = bo.nullAsNil((String)paramMap.get(".msg.appmsg.downloaderapp.".concat(String.valueOf(paramString))));
+    AppMethodBeat.o(32931);
+    return paramMap;
   }
   
-  public final com.tencent.mm.ae.d Fk()
+  public final f Yk()
   {
-    return new a();
+    AppMethodBeat.i(32929);
+    a locala = new a();
+    AppMethodBeat.o(32929);
+    return locala;
   }
   
-  public final void a(StringBuilder paramStringBuilder, g.a parama, String paramString, com.tencent.mm.j.d paramd, int paramInt1, int paramInt2) {}
-  
-  public final void a(Map<String, String> paramMap, g.a parama)
+  public final void a(Map<String, String> paramMap, j.b paramb)
   {
-    if (parama.type == 671088689)
+    AppMethodBeat.i(32930);
+    if (paramb.type == 671088689)
     {
-      y.i("MicroMsg.ChattingItemAppMsgDownloader", "values: %s", new Object[] { paramMap.toString() });
-      this.state = bk.getInt(v(paramMap, "state"), 0);
-      this.appId = v(paramMap, "appid");
-      this.appName = v(paramMap, "appname");
-      this.vCH = bk.getInt(v(paramMap, "appsize"), 0);
-      this.iconUrl = v(paramMap, "iconurl");
+      ab.i("MicroMsg.ChattingItemAppMsgDownloader", "values: %s", new Object[] { paramMap.toString() });
+      this.state = bo.getInt(w(paramMap, "state"), 0);
+      this.appId = w(paramMap, "appid");
+      this.appName = w(paramMap, "appname");
+      this.zTK = bo.getInt(w(paramMap, "appsize"), 0);
+      this.iconUrl = w(paramMap, "iconurl");
     }
+    AppMethodBeat.o(32930);
   }
+  
+  public final void b(StringBuilder paramStringBuilder, j.b paramb, String paramString, d paramd, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.j.a
  * JD-Core Version:    0.7.0.1
  */

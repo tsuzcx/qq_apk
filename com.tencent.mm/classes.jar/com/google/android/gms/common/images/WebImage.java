@@ -3,27 +3,47 @@ package com.google.android.gms.common.images;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zza;
-import com.google.android.gms.common.internal.zzaa;
+import com.google.android.gms.common.internal.Objects;
+import com.google.android.gms.common.internal.safeparcel.AbstractSafeParcelable;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelWriter;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Class;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Constructor;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Field;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.Param;
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.VersionField;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Locale;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@SafeParcelable.Class(creator="WebImageCreator")
 public final class WebImage
-  extends zza
+  extends AbstractSafeParcelable
 {
-  public static final Parcelable.Creator<WebImage> CREATOR = new zzb();
-  final int zzaiI;
-  private final Uri zzata;
-  private final int zzrC;
-  private final int zzrD;
+  public static final Parcelable.Creator<WebImage> CREATOR;
+  @SafeParcelable.VersionField(id=1)
+  private final int zzal;
+  @SafeParcelable.Field(getter="getWidth", id=3)
+  private final int zzps;
+  @SafeParcelable.Field(getter="getHeight", id=4)
+  private final int zzpt;
+  @SafeParcelable.Field(getter="getUrl", id=2)
+  private final Uri zzpu;
   
-  WebImage(int paramInt1, Uri paramUri, int paramInt2, int paramInt3)
+  static
   {
-    this.zzaiI = paramInt1;
-    this.zzata = paramUri;
-    this.zzrC = paramInt2;
-    this.zzrD = paramInt3;
+    AppMethodBeat.i(61254);
+    CREATOR = new WebImageCreator();
+    AppMethodBeat.o(61254);
+  }
+  
+  @SafeParcelable.Constructor
+  WebImage(@SafeParcelable.Param(id=1) int paramInt1, @SafeParcelable.Param(id=2) Uri paramUri, @SafeParcelable.Param(id=3) int paramInt2, @SafeParcelable.Param(id=4) int paramInt3)
+  {
+    this.zzal = paramInt1;
+    this.zzpu = paramUri;
+    this.zzps = paramInt2;
+    this.zzpt = paramInt3;
   }
   
   public WebImage(Uri paramUri)
@@ -34,88 +54,133 @@ public final class WebImage
   public WebImage(Uri paramUri, int paramInt1, int paramInt2)
   {
     this(1, paramUri, paramInt1, paramInt2);
-    if (paramUri == null) {
-      throw new IllegalArgumentException("url cannot be null");
+    AppMethodBeat.i(61246);
+    if (paramUri == null)
+    {
+      paramUri = new IllegalArgumentException("url cannot be null");
+      AppMethodBeat.o(61246);
+      throw paramUri;
     }
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      throw new IllegalArgumentException("width and height must not be negative");
+    if ((paramInt1 < 0) || (paramInt2 < 0))
+    {
+      paramUri = new IllegalArgumentException("width and height must not be negative");
+      AppMethodBeat.o(61246);
+      throw paramUri;
     }
+    AppMethodBeat.o(61246);
   }
   
   public WebImage(JSONObject paramJSONObject)
   {
-    this(zzs(paramJSONObject), paramJSONObject.optInt("width", 0), paramJSONObject.optInt("height", 0));
+    this(zza(paramJSONObject), paramJSONObject.optInt("width", 0), paramJSONObject.optInt("height", 0));
+    AppMethodBeat.i(61247);
+    AppMethodBeat.o(61247);
   }
   
-  private static Uri zzs(JSONObject paramJSONObject)
+  private static Uri zza(JSONObject paramJSONObject)
   {
-    Uri localUri = null;
+    AppMethodBeat.i(61248);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
     if (paramJSONObject.has("url")) {}
     try
     {
-      localUri = Uri.parse(paramJSONObject.getString("url"));
-      return localUri;
+      localObject1 = Uri.parse(paramJSONObject.getString("url"));
+      AppMethodBeat.o(61248);
+      return localObject1;
     }
-    catch (JSONException paramJSONObject) {}
-    return null;
+    catch (JSONException paramJSONObject)
+    {
+      for (;;)
+      {
+        localObject1 = localObject2;
+      }
+    }
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(61251);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(61251);
       return true;
-      if ((paramObject == null) || (!(paramObject instanceof WebImage))) {
-        return false;
-      }
-      paramObject = (WebImage)paramObject;
-    } while ((zzaa.equal(this.zzata, paramObject.zzata)) && (this.zzrC == paramObject.zzrC) && (this.zzrD == paramObject.zzrD));
+    }
+    if ((paramObject == null) || (!(paramObject instanceof WebImage)))
+    {
+      AppMethodBeat.o(61251);
+      return false;
+    }
+    paramObject = (WebImage)paramObject;
+    if ((Objects.equal(this.zzpu, paramObject.zzpu)) && (this.zzps == paramObject.zzps) && (this.zzpt == paramObject.zzpt))
+    {
+      AppMethodBeat.o(61251);
+      return true;
+    }
+    AppMethodBeat.o(61251);
     return false;
   }
   
   public final int getHeight()
   {
-    return this.zzrD;
+    return this.zzpt;
   }
   
   public final Uri getUrl()
   {
-    return this.zzata;
+    return this.zzpu;
   }
   
   public final int getWidth()
   {
-    return this.zzrC;
+    return this.zzps;
   }
   
   public final int hashCode()
   {
-    return zzaa.hashCode(new Object[] { this.zzata, Integer.valueOf(this.zzrC), Integer.valueOf(this.zzrD) });
+    AppMethodBeat.i(61252);
+    int i = Objects.hashCode(new Object[] { this.zzpu, Integer.valueOf(this.zzps), Integer.valueOf(this.zzpt) });
+    AppMethodBeat.o(61252);
+    return i;
   }
   
   public final JSONObject toJson()
   {
+    AppMethodBeat.i(61250);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("url", this.zzata.toString());
-      localJSONObject.put("width", this.zzrC);
-      localJSONObject.put("height", this.zzrD);
+      localJSONObject.put("url", this.zzpu.toString());
+      localJSONObject.put("width", this.zzps);
+      localJSONObject.put("height", this.zzpt);
+      label49:
+      AppMethodBeat.o(61250);
       return localJSONObject;
     }
-    catch (JSONException localJSONException) {}
-    return localJSONObject;
+    catch (JSONException localJSONException)
+    {
+      break label49;
+    }
   }
   
   public final String toString()
   {
-    return String.format(Locale.US, "Image %dx%d %s", new Object[] { Integer.valueOf(this.zzrC), Integer.valueOf(this.zzrD), this.zzata.toString() });
+    AppMethodBeat.i(61249);
+    String str = String.format(Locale.US, "Image %dx%d %s", new Object[] { Integer.valueOf(this.zzps), Integer.valueOf(this.zzpt), this.zzpu.toString() });
+    AppMethodBeat.o(61249);
+    return str;
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    zzb.zza(this, paramParcel, paramInt);
+    AppMethodBeat.i(61253);
+    int i = SafeParcelWriter.beginObjectHeader(paramParcel);
+    SafeParcelWriter.writeInt(paramParcel, 1, this.zzal);
+    SafeParcelWriter.writeParcelable(paramParcel, 2, getUrl(), paramInt, false);
+    SafeParcelWriter.writeInt(paramParcel, 3, getWidth());
+    SafeParcelWriter.writeInt(paramParcel, 4, getHeight());
+    SafeParcelWriter.finishObjectHeader(paramParcel, i);
+    AppMethodBeat.o(61253);
   }
 }
 

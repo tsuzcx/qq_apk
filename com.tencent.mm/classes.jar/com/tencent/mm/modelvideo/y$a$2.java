@@ -1,8 +1,9 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Map;
 
 final class y$a$2
@@ -12,16 +13,17 @@ final class y$a$2
   
   public final void run()
   {
-    y.a.Kf();
+    AppMethodBeat.i(50868);
+    y.a.ade();
     String str;
     int i;
-    if (this.bEe.getType() == 150)
+    if (this.ckS.getType() == 150)
     {
-      y.a.b(this.eIu);
-      str = ((d)this.bEe).fileName;
-      y.eIk = str;
-      i = ((d)this.bEe).retCode;
-      y.a.c(this.eIu);
+      y.a.b(this.fYk);
+      str = ((d)this.ckS).fileName;
+      y.fYa = str;
+      i = ((d)this.ckS).retCode;
+      y.a.c(this.fYk);
     }
     for (;;)
     {
@@ -30,58 +32,60 @@ final class y$a$2
       if (str != null)
       {
         l1 = l2;
-        if (this.eIu.bDU.get(str) != null)
+        if (this.fYk.ckJ.get(str) != null)
         {
-          l1 = ((g.a)this.eIu.bDU.get(str)).zJ();
-          this.eIu.bDU.remove(str);
+          l1 = ((g.a)this.fYk.ckJ.get(str)).Mm();
+          this.fYk.ckJ.remove(str);
         }
       }
-      y.d("MicroMsg.VideoService", "onSceneEnd SceneType:" + this.bEe.getType() + " errtype:" + this.bEf + " errCode:" + this.bEg + " retCode:" + i + " file:" + str + " time:" + l1);
-      if ((this.bEf == 3) && (i != 0))
+      ab.d("MicroMsg.VideoService", "onSceneEnd SceneType:" + this.ckS.getType() + " errtype:" + this.val$errType + " errCode:" + this.val$errCode + " retCode:" + i + " file:" + str + " time:" + l1);
+      if ((this.val$errType == 3) && (i != 0))
       {
-        y.a.f(this.eIu);
-        label227:
-        y.d("MicroMsg.VideoService", "onSceneEnd  inCnt:" + y.a.access$100() + " stop:" + y.a.g(this.eIu) + " running:" + y.a.h(this.eIu) + " recving:" + y.a.i(this.eIu) + " sending:" + y.a.j(this.eIu));
-        if (y.a.g(this.eIu) <= 0) {
-          break label475;
+        y.a.f(this.fYk);
+        label232:
+        ab.d("MicroMsg.VideoService", "onSceneEnd  inCnt:" + y.a.access$100() + " stop:" + y.a.g(this.fYk) + " running:" + y.a.h(this.fYk) + " recving:" + y.a.i(this.fYk) + " sending:" + y.a.j(this.fYk));
+        if (y.a.g(this.fYk) <= 0) {
+          break label490;
         }
-        y.a.a(this.eIu);
+        y.a.a(this.fYk);
       }
       for (;;)
       {
-        y.a.SO();
+        y.a.amb();
+        AppMethodBeat.o(50868);
         return;
-        if (this.bEe.getType() == 149)
+        if (this.ckS.getType() == 149)
         {
-          y.a.d(this.eIu);
-          y.a.e(this.eIu);
-          if ((this.bEe instanceof g))
+          y.a.d(this.fYk);
+          y.a.e(this.fYk);
+          if ((this.ckS instanceof g))
           {
-            str = ((g)this.bEe).fileName;
-            i = ((g)this.bEe).retCode;
+            str = ((g)this.ckS).fileName;
+            i = ((g)this.ckS).retCode;
             break;
           }
-          if (!(this.bEe instanceof h)) {
-            break label505;
+          if (!(this.ckS instanceof h)) {
+            break label520;
           }
-          str = ((h)this.bEe).fileName;
+          str = ((h)this.ckS).fileName;
           i = 0;
           break;
         }
-        y.e("MicroMsg.VideoService", "onSceneEnd Error SceneType:" + this.bEe.getType());
-        y.a.SO();
+        ab.e("MicroMsg.VideoService", "onSceneEnd Error SceneType:" + this.ckS.getType());
+        y.a.amb();
+        AppMethodBeat.o(50868);
         return;
-        if (this.bEf == 0) {
-          break label227;
+        if (this.val$errType == 0) {
+          break label232;
         }
-        y.a.a(this.eIu, 0);
-        break label227;
-        label475:
-        if ((!y.a.j(this.eIu)) && (!y.a.i(this.eIu))) {
-          y.a.k(this.eIu);
+        y.a.a(this.fYk, 0);
+        break label232;
+        label490:
+        if ((!y.a.j(this.fYk)) && (!y.a.i(this.fYk))) {
+          y.a.k(this.fYk);
         }
       }
-      label505:
+      label520:
       i = 0;
       str = null;
     }
@@ -89,7 +93,10 @@ final class y$a$2
   
   public final String toString()
   {
-    return super.toString() + "|onSceneEnd";
+    AppMethodBeat.i(50869);
+    String str = super.toString() + "|onSceneEnd";
+    AppMethodBeat.o(50869);
+    return str;
   }
 }
 

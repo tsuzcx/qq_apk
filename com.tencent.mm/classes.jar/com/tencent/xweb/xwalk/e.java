@@ -1,85 +1,36 @@
 package com.tencent.xweb.xwalk;
 
-import android.net.Uri;
-import android.webkit.ValueCallback;
-import com.tencent.xweb.a.a;
-import com.tencent.xweb.h;
-import com.tencent.xweb.l;
-import java.util.Map;
-import org.xwalk.core.XWalkWebResourceRequest;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.c.b.b;
+import org.xwalk.core.XWalkCookieManager;
 
 public final class e
+  implements b.b
 {
-  public static final class g
-    implements h
+  XWalkCookieManager BJw;
+  
+  public e()
   {
-    ValueCallback<Boolean> xlT;
-    
-    public g(ValueCallback<Boolean> paramValueCallback)
-    {
-      this.xlT = paramValueCallback;
-    }
-    
-    public final void cancel()
-    {
-      this.xlT.onReceiveValue(Boolean.valueOf(false));
-    }
-    
-    public final void proceed()
-    {
-      this.xlT.onReceiveValue(Boolean.valueOf(true));
-    }
+    AppMethodBeat.i(85214);
+    this.BJw = new XWalkCookieManager();
+    AppMethodBeat.o(85214);
   }
   
-  public static final class h
-    implements l
+  public final void init(Context paramContext) {}
+  
+  public final void sync()
   {
-    private String method;
-    private Map<String, String> rXB;
-    private Uri xjH;
-    private boolean xjI;
-    private boolean xjJ;
-    a xjK;
-    
-    public h(XWalkWebResourceRequest paramXWalkWebResourceRequest)
-    {
-      this.xjH = paramXWalkWebResourceRequest.getUrl();
-      this.xjI = paramXWalkWebResourceRequest.isForMainFrame();
-      this.xjJ = paramXWalkWebResourceRequest.hasGesture();
-      this.method = paramXWalkWebResourceRequest.getMethod();
-      this.rXB = paramXWalkWebResourceRequest.getRequestHeaders();
-      this.xjK = new a(this);
+    AppMethodBeat.i(85215);
+    if (this.BJw != null) {
+      this.BJw.flushCookieStore();
     }
-    
-    public final String getMethod()
-    {
-      return this.method;
-    }
-    
-    public final Map<String, String> getRequestHeaders()
-    {
-      return this.rXB;
-    }
-    
-    public final Uri getUrl()
-    {
-      return this.xjH;
-    }
-    
-    public final boolean hasGesture()
-    {
-      return this.xjJ;
-    }
-    
-    public final boolean isForMainFrame()
-    {
-      return this.xjI;
-    }
+    AppMethodBeat.o(85215);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.xwalk.e
  * JD-Core Version:    0.7.0.1
  */

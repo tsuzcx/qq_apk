@@ -1,63 +1,77 @@
 package com.tencent.mm.plugin.qqmail.b;
 
 import android.util.Base64;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class q
 {
-  String bRO = null;
-  String ndx = null;
-  private String[] nea = null;
-  private String[] neb = null;
-  private String[] nec = null;
-  String ned = null;
-  a[] nee = null;
-  a[] nef = null;
+  String czp;
+  String pIO;
+  private String[] pJq;
+  private String[] pJr;
+  private String[] pJs;
+  String pJt;
+  q.a[] pJu;
+  q.a[] pJv;
   
   public q(String paramString1, String[] paramArrayOfString1, String[] paramArrayOfString2, String[] paramArrayOfString3, String paramString2)
   {
-    if (!bk.bl(paramString1)) {
-      this.bRO = paramString1;
+    AppMethodBeat.i(67973);
+    this.czp = null;
+    this.pJq = null;
+    this.pJr = null;
+    this.pJs = null;
+    this.pIO = null;
+    this.pJt = null;
+    this.pJu = null;
+    this.pJv = null;
+    if (!bo.isNullOrNil(paramString1)) {
+      this.czp = paramString1;
     }
     if ((paramArrayOfString1 != null) && (paramArrayOfString1.length > 0))
     {
-      this.nea = paramArrayOfString1;
+      this.pJq = paramArrayOfString1;
       if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0)) {
-        break label124;
+        break label134;
       }
-      this.neb = paramArrayOfString2;
-      label84:
+      this.pJr = paramArrayOfString2;
+      label89:
       if ((paramArrayOfString3 == null) || (paramArrayOfString3.length <= 0)) {
-        break label132;
+        break label142;
       }
     }
-    label132:
-    for (this.nec = paramArrayOfString3;; this.nec = null)
+    label134:
+    label142:
+    for (this.pJs = paramArrayOfString3;; this.pJs = null)
     {
-      if (bk.bl(paramString2)) {
-        break label140;
+      if (bo.isNullOrNil(paramString2)) {
+        break label150;
       }
-      this.ndx = paramString2;
+      this.pIO = paramString2;
+      AppMethodBeat.o(67973);
       return;
-      this.nea = null;
+      this.pJq = null;
       break;
-      label124:
-      this.neb = null;
-      break label84;
+      this.pJr = null;
+      break label89;
     }
-    label140:
-    this.ndx = null;
+    label150:
+    this.pIO = null;
+    AppMethodBeat.o(67973);
   }
   
-  public static String Lk(String paramString)
+  public static String Xu(String paramString)
   {
+    Object localObject = null;
+    AppMethodBeat.i(67977);
     int k = "abEdf4&^^*sxcSD$%&1sdfz@!~AZcT4s322dA%^&&*$##C$%__SDy4d_(*%".length();
     paramString = paramString + "d$3^&xRw%&*_(";
     try
     {
-      paramString = g.o(paramString.getBytes());
+      paramString = g.w(paramString.getBytes());
       arrayOfChar = new char[paramString.length() * 2];
       int i = 0;
       int j = 0;
@@ -77,32 +91,37 @@ public final class q
       char[] arrayOfChar;
       for (;;)
       {
-        y.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
-        y.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
+        ab.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
+        ab.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
         paramString = null;
       }
       paramString = new String(arrayOfChar);
-      try
+    }
+    try
+    {
+      paramString = g.w(paramString.getBytes("ISO-8859-1"));
+      AppMethodBeat.o(67977);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
       {
-        paramString = g.o(paramString.getBytes("ISO-8859-1"));
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        y.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
-        y.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
+        ab.printErrStackTrace("MicroMsg.MailContentFormatter", paramString, "", new Object[0]);
+        ab.e("MicroMsg.MailContentFormatter", "attachIdToKey, error:" + paramString.getLocalizedMessage());
+        paramString = localObject;
       }
     }
-    return null;
   }
   
-  final String btv()
+  final String cdF()
   {
-    if (this.nea != null)
+    AppMethodBeat.i(67974);
+    if (this.pJq != null)
     {
       Object localObject1 = new StringBuilder("");
       ((StringBuilder)localObject1).append("To: ");
-      Object localObject2 = this.nea;
+      Object localObject2 = this.pJq;
       int j = localObject2.length;
       int i = 0;
       while (i < j)
@@ -126,18 +145,21 @@ public final class q
       if (i != -1) {
         localObject1 = ((String)localObject2).substring(0, i);
       }
+      AppMethodBeat.o(67974);
       return localObject1;
     }
+    AppMethodBeat.o(67974);
     return null;
   }
   
-  final String btw()
+  final String cdG()
   {
-    if (this.neb != null)
+    AppMethodBeat.i(67975);
+    if (this.pJr != null)
     {
       Object localObject1 = new StringBuilder("");
       ((StringBuilder)localObject1).append("Cc: ");
-      Object localObject2 = this.neb;
+      Object localObject2 = this.pJr;
       int j = localObject2.length;
       int i = 0;
       while (i < j)
@@ -161,18 +183,21 @@ public final class q
       if (i != -1) {
         localObject1 = ((String)localObject2).substring(0, i);
       }
+      AppMethodBeat.o(67975);
       return localObject1;
     }
+    AppMethodBeat.o(67975);
     return null;
   }
   
-  final String btx()
+  final String cdH()
   {
-    if (this.nec != null)
+    AppMethodBeat.i(67976);
+    if (this.pJs != null)
     {
       Object localObject1 = new StringBuilder("");
       ((StringBuilder)localObject1).append("Bcc: ");
-      Object localObject2 = this.neb;
+      Object localObject2 = this.pJr;
       int j = localObject2.length;
       int i = 0;
       while (i < j)
@@ -196,17 +221,11 @@ public final class q
       if (i != -1) {
         localObject1 = ((String)localObject2).substring(0, i);
       }
+      AppMethodBeat.o(67976);
       return localObject1;
     }
+    AppMethodBeat.o(67976);
     return null;
-  }
-  
-  public static final class a
-  {
-    String fileName;
-    int fileSize;
-    String name;
-    String neg;
   }
 }
 

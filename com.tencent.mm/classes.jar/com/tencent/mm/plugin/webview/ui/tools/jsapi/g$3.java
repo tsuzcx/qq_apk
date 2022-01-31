@@ -1,62 +1,25 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.plugin.webview.model.ah;
-import com.tencent.mm.plugin.webview.modeltools.e.a;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.ch.a;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class g$3
-  implements e.a
+  implements w.a
 {
-  g$3(g paramg, i parami) {}
+  g$3(g paramg, i parami, String paramString1, Bundle paramBundle, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
   
-  public final void SF(String paramString)
+  public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    g.a(this.rzi, this.rzj, "chooseIdCard:cancel", null);
-  }
-  
-  public final void a(String paramString, JSONObject paramJSONObject, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null)
-    {
-      g.a(this.rzi, this.rzj, "chooseIdCard:fail", null);
-      return;
-    }
-    try
-    {
-      paramString = com.tencent.mm.compatible.util.e.dOP + "tmpScanLicense/";
-      y.d("MicroMsg.MsgHandler", "tmpSaveCardBitmapDir: %s", new Object[] { paramString });
-      if (com.tencent.mm.vfs.e.bK(paramString)) {
-        com.tencent.mm.vfs.e.K(paramString, true);
-      }
-      com.tencent.mm.vfs.e.nb(paramString);
-      com.tencent.mm.vfs.e.aeW(paramString);
-      paramString = paramString + System.currentTimeMillis() + ".jpg";
-      y.d("MicroMsg.MsgHandler", "tmpSaveCardBitmapPath: %s", new Object[] { paramString });
-      c.a(paramBitmap, 100, Bitmap.CompressFormat.JPEG, paramString, true);
-      paramString = WebViewJSSDKFileItem.Si(paramString);
-      com.tencent.mm.plugin.webview.modeltools.g.ccL().b(paramString);
-      paramJSONObject = new HashMap();
-      paramJSONObject.put("sourceType", "scan");
-      paramJSONObject.put("localId", paramString.bMB);
-      g.a(this.rzi, this.rzj, "chooseIdCard:ok", paramJSONObject);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      y.e("MicroMsg.MsgHandler", "save scan license error: %s", new Object[] { paramString.getMessage() });
-      g.a(this.rzi, this.rzj, "chooseIdCard:fail", null);
-    }
-  }
-  
-  public final void uv(String paramString)
-  {
-    g.a(this.rzi, this.rzj, "chooseIdCard:fail", null);
+    AppMethodBeat.i(154923);
+    ab.i("MicroMsg.MsgHandler", "launchApplication check result errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    a.post(new g.3.1(this, paramInt1, paramInt2, paramb));
+    AppMethodBeat.o(154923);
+    return 0;
   }
 }
 

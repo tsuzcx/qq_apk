@@ -4,14 +4,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.b;
 import com.tencent.mm.plugin.fav.a.y;
 import com.tencent.mm.plugin.fav.ui.l;
-import com.tencent.mm.plugin.fav.ui.n.e;
-import com.tencent.mm.plugin.fav.ui.n.f;
-import com.tencent.mm.plugin.fav.ui.n.i;
-import com.tencent.mm.protocal.c.xv;
-import com.tencent.mm.protocal.c.yl;
+import com.tencent.mm.protocal.protobuf.aca;
+import com.tencent.mm.protocal.protobuf.acs;
 
 public final class q
   extends a
@@ -23,36 +21,40 @@ public final class q
   
   public final View a(View paramView, ViewGroup paramViewGroup, com.tencent.mm.plugin.fav.a.g paramg)
   {
+    AppMethodBeat.i(74661);
     Context localContext = paramViewGroup.getContext();
     int i;
     if (paramView == null)
     {
       paramViewGroup = new q.a();
-      paramView = a(View.inflate(localContext, n.f.fav_listitem_voice, null), paramViewGroup, paramg);
-      paramViewGroup.eXO = ((TextView)paramView.findViewById(n.e.fav_title));
+      paramView = a(View.inflate(localContext, 2130969549, null), paramViewGroup, paramg);
+      paramViewGroup.gpL = ((TextView)paramView.findViewById(2131820619));
       a(paramViewGroup, paramg);
-      i = (int)b.ck(b.c(paramg).duration);
-      paramg = paramViewGroup.eXO;
-      paramViewGroup = this.kbg.context;
+      i = (int)b.hi(b.c(paramg).duration);
+      paramg = paramViewGroup.gpL;
+      paramViewGroup = this.mvC.context;
       if (i > 0) {
-        break label123;
+        break label130;
       }
     }
-    label123:
-    for (paramViewGroup = paramViewGroup.getString(n.i.favorite_voice_length, new Object[] { Integer.valueOf(0) });; paramViewGroup = paramViewGroup.getString(n.i.favorite_voice_length, new Object[] { Integer.valueOf(i) }))
+    label130:
+    for (paramViewGroup = paramViewGroup.getString(2131299855, new Object[] { Integer.valueOf(0) });; paramViewGroup = paramViewGroup.getString(2131299855, new Object[] { Integer.valueOf(i) }))
     {
       paramg.setText(paramViewGroup);
+      AppMethodBeat.o(74661);
       return paramView;
       paramViewGroup = (q.a)paramView.getTag();
       break;
     }
   }
   
-  public final void a(View paramView, yl paramyl)
+  public final void a(View paramView, acs paramacs)
   {
+    AppMethodBeat.i(74662);
     q.a locala = (q.a)paramView.getTag();
     paramView = paramView.getContext();
-    ((y)com.tencent.mm.kernel.g.r(y.class)).a(paramView, locala.jZN, paramyl);
+    ((y)com.tencent.mm.kernel.g.E(y.class)).a(paramView, locala.muk, paramacs);
+    AppMethodBeat.o(74662);
   }
 }
 

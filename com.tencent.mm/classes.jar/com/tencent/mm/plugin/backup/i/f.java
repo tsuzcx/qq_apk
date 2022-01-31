@@ -1,48 +1,59 @@
 package com.tencent.mm.plugin.backup.i;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class f
   extends com.tencent.mm.bv.a
 {
-  public long hMb;
+  public long jFD;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(18049);
     if (paramInt == 0)
     {
-      ((d.a.a.c.a)paramVarArgs[0]).Y(1, this.hMb);
+      ((e.a.a.c.a)paramVarArgs[0]).am(1, this.jFD);
+      AppMethodBeat.o(18049);
       return 0;
     }
-    if (paramInt == 1) {
-      return d.a.a.a.X(1, this.hMb) + 0;
+    if (paramInt == 1)
+    {
+      paramInt = e.a.a.b.b.a.p(1, this.jFD);
+      AppMethodBeat.o(18049);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-        if (!super.a(paramVarArgs, this, paramInt)) {
-          paramVarArgs.cUt();
+      paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.eqQ();
         }
       }
+      AppMethodBeat.o(18049);
       return 0;
     }
     if (paramInt == 3)
     {
-      d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+      e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
       f localf = (f)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
+        AppMethodBeat.o(18049);
         return -1;
       }
-      localf.hMb = locala.xpH.oE();
+      localf.jFD = locala.CLY.sm();
+      AppMethodBeat.o(18049);
       return 0;
     }
+    AppMethodBeat.o(18049);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.f
  * JD-Core Version:    0.7.0.1
  */

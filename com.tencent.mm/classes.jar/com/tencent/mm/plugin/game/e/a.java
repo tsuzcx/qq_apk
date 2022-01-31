@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.game.e;
 
 import android.content.Context;
-import com.tencent.mm.game.report.api.c;
-import com.tencent.mm.game.report.api.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.api.b;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.at;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.Map;
@@ -18,47 +18,16 @@ import org.json.JSONObject;
 @Deprecated
 public final class a
 {
-  private static String kWC = "";
+  private static String nuE = "";
   
-  public static String B(Map<String, String> paramMap)
+  public static void Qo(String paramString)
   {
-    if (paramMap.size() == 0) {
-      return "";
-    }
-    JSONObject localJSONObject = new JSONObject();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      try
-      {
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-      }
-      catch (Exception paramMap)
-      {
-        y.e("MicroMsg.GameReportUtil", paramMap.getMessage());
-        return "";
-      }
-    }
-    try
-    {
-      paramMap = URLEncoder.encode(localJSONObject.toString(), "UTF-8");
-      return paramMap;
-    }
-    catch (Exception paramMap)
-    {
-      y.e("MicroMsg.GameReportUtil", paramMap.getMessage());
-    }
-    return "";
+    nuE = paramString;
   }
   
-  public static void EW(String paramString)
+  public static String V(String paramString1, String paramString2, String paramString3)
   {
-    kWC = paramString;
-  }
-  
-  public static String O(String paramString1, String paramString2, String paramString3)
-  {
+    AppMethodBeat.i(111689);
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -69,40 +38,46 @@ public final class a
     {
       for (;;)
       {
-        y.e("MicroMsg.GameReportUtil", paramString2.getMessage());
+        ab.e("MicroMsg.GameReportUtil", paramString2.getMessage());
         paramString2 = null;
       }
     }
     paramString3 = paramString1;
     if (paramString2 != null) {
-      paramString3 = dp(paramString1, paramString2.toString());
+      paramString3 = eH(paramString1, paramString2.toString());
     }
-    return fy(paramString3);
+    paramString1 = lR(paramString3);
+    AppMethodBeat.o(111689);
+    return paramString1;
   }
   
   public static void a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
-    paramString1 = d.c(14683, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong1), paramString1, null, paramString2, Long.valueOf(paramLong2), Long.valueOf(paramLong3), null });
-    c.dCx.a(paramString1);
+    AppMethodBeat.i(111685);
+    paramString1 = b.b(14683, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Long.valueOf(paramLong1), paramString1, null, paramString2, Long.valueOf(paramLong2), Long.valueOf(paramLong3), null });
+    com.tencent.mm.game.report.api.a.ezM.a(paramString1);
+    AppMethodBeat.o(111685);
   }
   
   public static void a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
   {
-    y.i("MicroMsg.GameReportUtil", "reportExposureInfo : " + paramInt1 + " , " + paramInt2 + " , " + paramInt3 + " , 1 , 0 , " + bk.pm(paramString1) + " , " + paramInt4 + " , 0 , " + bk.pm(null) + " , " + bk.pm(null) + " , " + bk.pm(paramString2));
-    h localh = h.nFQ;
-    int j = bk.getInt(null, 0);
+    AppMethodBeat.i(111684);
+    ab.i("MicroMsg.GameReportUtil", "reportExposureInfo : " + paramInt1 + " , " + paramInt2 + " , " + paramInt3 + " , 1 , 0 , " + bo.nullAsNil(paramString1) + " , " + paramInt4 + " , 0 , " + bo.nullAsNil(null) + " , " + bo.nullAsNil(null) + " , " + bo.nullAsNil(paramString2));
+    h localh = h.qsU;
+    int j = bo.getInt(null, 0);
     int i;
-    if (aq.is3G(paramContext)) {
+    if (at.is3G(paramContext)) {
       i = 4;
     }
     for (;;)
     {
-      localh.f(13384, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(1), Integer.valueOf(0), paramString1, Integer.valueOf(paramInt4), Integer.valueOf(0), null, Integer.valueOf(j), Integer.valueOf(i), paramString2 });
+      localh.e(13384, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(1), Integer.valueOf(0), paramString1, Integer.valueOf(paramInt4), Integer.valueOf(0), null, Integer.valueOf(j), Integer.valueOf(i), paramString2 });
+      AppMethodBeat.o(111684);
       return;
-      if (aq.is4G(paramContext)) {
+      if (at.is4G(paramContext)) {
         i = 5;
       } else {
-        switch (aq.getNetType(paramContext))
+        switch (at.getNetType(paramContext))
         {
         case 1: 
         case 2: 
@@ -127,17 +102,22 @@ public final class a
     }
   }
   
-  public static void ar(int paramInt, String paramString)
+  public static void aL(int paramInt, String paramString)
   {
-    d locald = new d();
-    locald.dCy = paramInt;
-    locald.dCz = paramString;
-    c.dCx.a(locald);
+    AppMethodBeat.i(111686);
+    b localb = new b();
+    localb.ezN = paramInt;
+    localb.ezO = paramString;
+    com.tencent.mm.game.report.api.a.ezM.a(localb);
+    AppMethodBeat.o(111686);
   }
   
-  private static String dp(String paramString1, String paramString2)
+  private static String eH(String paramString1, String paramString2)
   {
-    if (bk.bl(paramString1)) {
+    AppMethodBeat.i(111690);
+    if (bo.isNullOrNil(paramString1))
+    {
+      AppMethodBeat.o(111690);
       return paramString2;
     }
     Iterator localIterator = null;
@@ -160,17 +140,21 @@ public final class a
               }
               catch (Exception paramString1)
               {
+                AppMethodBeat.o(111690);
                 return "";
               }
             }
           }
         }
-        return paramString2.toString();
+        paramString1 = paramString2.toString();
       }
       catch (JSONException paramString1)
       {
+        AppMethodBeat.o(111690);
         return "";
       }
+      AppMethodBeat.o(111690);
+      return paramString1;
     }
     catch (Exception paramString1)
     {
@@ -181,26 +165,71 @@ public final class a
     }
   }
   
-  public static String fy(String paramString)
+  public static String h(Map<String, String> paramMap)
   {
-    if (bk.bl(paramString)) {
+    AppMethodBeat.i(111688);
+    if (paramMap.size() == 0)
+    {
+      AppMethodBeat.o(111688);
+      return "";
+    }
+    JSONObject localJSONObject = new JSONObject();
+    paramMap = paramMap.entrySet().iterator();
+    while (paramMap.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)paramMap.next();
+      try
+      {
+        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+      }
+      catch (Exception paramMap)
+      {
+        ab.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+        AppMethodBeat.o(111688);
+        return "";
+      }
+    }
+    try
+    {
+      paramMap = URLEncoder.encode(localJSONObject.toString(), "UTF-8");
+      AppMethodBeat.o(111688);
+      return paramMap;
+    }
+    catch (Exception paramMap)
+    {
+      ab.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+      AppMethodBeat.o(111688);
+    }
+    return "";
+  }
+  
+  public static String lR(String paramString)
+  {
+    AppMethodBeat.i(111687);
+    if (bo.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(111687);
       return "";
     }
     try
     {
       paramString = URLEncoder.encode(paramString, "UTF-8");
+      AppMethodBeat.o(111687);
       return paramString;
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
-      y.e("MicroMsg.GameReportUtil", paramString.getMessage());
+      for (;;)
+      {
+        paramString = "";
+        ab.e("MicroMsg.GameReportUtil", localException.getMessage());
+      }
     }
-    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.e.a
  * JD-Core Version:    0.7.0.1
  */

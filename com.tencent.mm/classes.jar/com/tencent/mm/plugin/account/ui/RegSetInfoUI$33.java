@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.account.ui;
 import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class RegSetInfoUI$33
   implements TextView.OnEditorActionListener
@@ -11,17 +12,20 @@ final class RegSetInfoUI$33
   
   public final boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(125539);
     if ((paramInt == 6) || (paramInt == 5))
     {
-      RegSetInfoUI.p(this.fso);
+      RegSetInfoUI.p(this.gJQ);
+      AppMethodBeat.o(125539);
       return true;
     }
+    AppMethodBeat.o(125539);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegSetInfoUI.33
  * JD-Core Version:    0.7.0.1
  */

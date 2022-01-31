@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.j;
 
 public abstract interface a$e
 {
-  public abstract void Y(String paramString, boolean paramBoolean);
+  public abstract void af(String paramString, boolean paramBoolean);
 }
 
 

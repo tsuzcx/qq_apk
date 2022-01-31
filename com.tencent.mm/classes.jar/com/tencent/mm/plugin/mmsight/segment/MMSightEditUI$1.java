@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.mmsight.segment;
 
-import com.tencent.mm.compatible.e.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class MMSightEditUI$1
   implements Runnable
@@ -12,11 +13,13 @@ final class MMSightEditUI$1
   
   public final void run()
   {
-    y.i("MicroMsg.MMSightEditUI", "connect cost %sms", new Object[] { Long.valueOf(bk.cp(this.kKd)) });
+    AppMethodBeat.i(54959);
+    ab.i("MicroMsg.MMSightEditUI", "connect cost %sms", new Object[] { Long.valueOf(bo.av(this.ngG)) });
     if (CaptureMMProxy.getInstance() != null) {
-      q.fa(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+      ac.ll(CaptureMMProxy.getInstance().getDeviceInfoConfig());
     }
-    MMSightEditUI.a(this.mlC);
+    MMSightEditUI.a(this.oKK);
+    AppMethodBeat.o(54959);
   }
 }
 

@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.d;
-import com.tencent.mm.protocal.c.axd;
+import com.tencent.mm.protocal.protobuf.bdt;
 import com.tencent.mm.vending.b.b;
 
 final class PluginMessengerFoundation$10
@@ -12,12 +13,17 @@ final class PluginMessengerFoundation$10
   
   public final b a(c paramc)
   {
-    return a.a(paramc);
+    AppMethodBeat.i(1048);
+    paramc = a.a(paramc);
+    AppMethodBeat.o(1048);
+    return paramc;
   }
   
-  public final void a(axd paramaxd, String paramString)
+  public final void a(bdt parambdt, String paramString)
   {
-    a.a(paramaxd, paramString, null, true, false);
+    AppMethodBeat.i(1047);
+    a.a(parambdt, paramString, null, true, false);
+    AppMethodBeat.o(1047);
   }
 }
 

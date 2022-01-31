@@ -5,7 +5,7 @@ public final class c$fh
 {
   public c$fh()
   {
-    super("openNewPage", "openNewPage", 20000, false);
+    super("openDesignerProfileLocal", "openDesignerProfileLocal", 20000, false);
   }
 }
 

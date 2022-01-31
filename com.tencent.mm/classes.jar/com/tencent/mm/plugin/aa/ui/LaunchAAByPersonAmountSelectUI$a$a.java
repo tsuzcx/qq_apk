@@ -6,10 +6,10 @@ import com.tencent.mm.wallet_core.ui.formview.WalletFormView;
 
 final class LaunchAAByPersonAmountSelectUI$a$a
 {
-  ImageView dpY;
-  LaunchAAByPersonAmountSelectUI.c eYM;
-  TextView eYn;
-  WalletFormView eYo;
+  ImageView ehv;
+  LaunchAAByPersonAmountSelectUI.c gqD;
+  TextView gqe;
+  WalletFormView gqf;
   
   private LaunchAAByPersonAmountSelectUI$a$a(LaunchAAByPersonAmountSelectUI.a parama) {}
 }

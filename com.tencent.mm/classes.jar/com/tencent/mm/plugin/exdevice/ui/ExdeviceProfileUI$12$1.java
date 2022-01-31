@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -10,10 +9,12 @@ final class ExdeviceProfileUI$12$1
 {
   ExdeviceProfileUI$12$1(ExdeviceProfileUI.12 param12) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.a(0, this.jEP.jEM.getString(R.l.exdevice_opt_menu_send_to_friend), R.k.bottomsheet_icon_transmit);
-    paraml.a(1, this.jEP.jEM.getString(R.l.exdevice_opt_menu_share_to_timeline), R.k.bottomsheet_icon_moment);
+    AppMethodBeat.i(20033);
+    paraml.a(0, this.lOo.lOl.getString(2131299435), 2131231038);
+    paraml.a(1, this.lOo.lOl.getString(2131299438), 2131231024);
+    AppMethodBeat.o(20033);
   }
 }
 

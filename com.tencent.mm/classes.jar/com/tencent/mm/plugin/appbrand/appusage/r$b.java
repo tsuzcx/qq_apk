@@ -1,40 +1,56 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.ah.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bx;
-import com.tencent.mm.model.bx.a;
+import com.tencent.mm.model.bz;
+import com.tencent.mm.model.bz.a;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.plugin.appbrand.v.c;
+import com.tencent.mm.plugin.appbrand.t.e;
 import com.tencent.mm.plugin.messenger.foundation.a.p;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class r$b
-  implements bx.a
+  implements bz.a
 {
-  private static final b fJc = new b();
+  private static final b hbU;
   
-  public static void adn()
+  static
   {
-    q.acY();
-    ((p)g.t(p.class)).getSysCmdMsgExtension().a("wxareddot", fJc, true);
+    AppMethodBeat.i(129625);
+    hbU = new b();
+    AppMethodBeat.o(129625);
+  }
+  
+  public static void uD()
+  {
+    AppMethodBeat.i(129621);
+    q.axe();
+    ((p)g.G(p.class)).getSysCmdMsgExtension().a("wxareddot", hbU, true);
+    AppMethodBeat.o(129621);
   }
   
   public static void unregister()
   {
-    q.acY();
-    ((p)g.t(p.class)).getSysCmdMsgExtension().b("wxareddot", fJc, true);
+    AppMethodBeat.i(129622);
+    q.axe();
+    ((p)g.G(p.class)).getSysCmdMsgExtension().b("wxareddot", hbU, true);
+    AppMethodBeat.o(129622);
   }
   
   public final void a(e.a parama)
   {
-    parama = aa.a(parama.dBs.svH);
-    if (bk.bl(parama)) {
+    AppMethodBeat.i(129623);
+    parama = aa.a(parama.eyJ.woR);
+    if (bo.isNullOrNil(parama))
+    {
+      AppMethodBeat.o(129623);
       return;
     }
-    c.DS().O(new r.b.1(this, parama));
+    e.aNS().ac(new r.b.1(this, parama));
+    AppMethodBeat.o(129623);
   }
 }
 

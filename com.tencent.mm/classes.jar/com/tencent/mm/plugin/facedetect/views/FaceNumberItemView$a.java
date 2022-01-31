@@ -1,27 +1,34 @@
 package com.tencent.mm.plugin.facedetect.views;
 
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.al;
 import java.lang.ref.WeakReference;
 import java.util.TimerTask;
 
 final class FaceNumberItemView$a
   extends TimerTask
 {
-  private WeakReference<Runnable> jUW = null;
+  private WeakReference<Runnable> mpp;
   
   private FaceNumberItemView$a(FaceNumberItemView paramFaceNumberItemView, Runnable paramRunnable)
   {
-    this.jUW = new WeakReference(paramRunnable);
+    AppMethodBeat.i(643);
+    this.mpp = null;
+    this.mpp = new WeakReference(paramRunnable);
+    AppMethodBeat.o(643);
   }
   
   public final void run()
   {
-    if ((this.jUW != null) && (this.jUW.get() != null))
+    AppMethodBeat.i(644);
+    if ((this.mpp != null) && (this.mpp.get() != null))
     {
-      ai.d((Runnable)this.jUW.get());
+      al.d((Runnable)this.mpp.get());
+      AppMethodBeat.o(644);
       return;
     }
     cancel();
+    AppMethodBeat.o(644);
   }
 }
 

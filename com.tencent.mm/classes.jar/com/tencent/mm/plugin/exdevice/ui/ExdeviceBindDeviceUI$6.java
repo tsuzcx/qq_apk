@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.exdevice.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.jni.Java2CExDevice;
 
 final class ExdeviceBindDeviceUI$6
@@ -9,8 +10,10 @@ final class ExdeviceBindDeviceUI$6
   
   public final void run()
   {
+    AppMethodBeat.i(19830);
     Java2CExDevice.stopScanWCLanDevice();
     Java2CExDevice.releaseWCLanDeviceLib();
+    AppMethodBeat.o(19830);
   }
 }
 

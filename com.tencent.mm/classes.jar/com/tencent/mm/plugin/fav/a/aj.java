@@ -1,151 +1,174 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.m.b;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.m.b;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.k;
 import com.tencent.mm.network.q;
 import com.tencent.mm.platformtools.aa;
-import com.tencent.mm.protocal.c.bmk;
-import com.tencent.mm.protocal.c.qw;
-import com.tencent.mm.protocal.c.yq;
-import com.tencent.mm.protocal.c.yr;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
+import com.tencent.mm.protocal.protobuf.acx;
+import com.tencent.mm.protocal.protobuf.acy;
+import com.tencent.mm.protocal.protobuf.ue;
+import com.tencent.mm.storage.z;
 import java.util.LinkedList;
 
 public final class aj
   extends m
   implements k
 {
-  final com.tencent.mm.ah.b dmK;
-  f dmL = null;
-  private aj.a jZR = new aj.a(this);
-  long jZS = -1L;
-  public boolean jZT = false;
-  private int selector = 1;
+  f callback;
+  private int fHY;
+  private aj.a muo;
+  long mup;
+  public boolean muq;
+  final com.tencent.mm.ai.b rr;
   
   public aj()
   {
-    y.i("MicroMsg.Fav.NetSceneFavSync", "NetSceneFavSync");
+    AppMethodBeat.i(102736);
+    this.callback = null;
+    this.fHY = 1;
+    this.muo = new aj.a(this);
+    this.mup = -1L;
+    this.muq = false;
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.Fav.NetSceneFavSync", "NetSceneFavSync");
     b.a locala = new b.a();
-    locala.ecH = new yq();
-    locala.ecI = new yr();
+    locala.fsX = new acx();
+    locala.fsY = new acy();
     locala.uri = "/cgi-bin/micromsg-bin/favsync";
-    locala.ecG = 400;
-    locala.ecJ = 195;
-    locala.ecK = 1000000195;
-    locala.ecL = false;
-    this.dmK = locala.Kt();
+    locala.funcId = 400;
+    locala.reqCmdId = 195;
+    locala.respCmdId = 1000000195;
+    locala.fsZ = false;
+    this.rr = locala.ado();
+    AppMethodBeat.o(102736);
   }
   
   public aj(int paramInt)
   {
-    y.i("MicroMsg.Fav.NetSceneFavSync", "NetSceneFavSync %d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(102737);
+    this.callback = null;
+    this.fHY = 1;
+    this.muo = new aj.a(this);
+    this.mup = -1L;
+    this.muq = false;
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.Fav.NetSceneFavSync", "NetSceneFavSync %d", new Object[] { Integer.valueOf(paramInt) });
     b.a locala = new b.a();
-    locala.ecH = new yq();
-    locala.ecI = new yr();
+    locala.fsX = new acx();
+    locala.fsY = new acy();
     locala.uri = "/cgi-bin/micromsg-bin/favsync";
-    locala.ecG = 400;
-    locala.ecJ = 195;
-    locala.ecK = 1000000195;
-    locala.ecL = false;
-    this.dmK = locala.Kt();
-    this.selector = paramInt;
+    locala.funcId = 400;
+    locala.reqCmdId = 195;
+    locala.respCmdId = 1000000195;
+    locala.fsZ = false;
+    this.rr = locala.ado();
+    this.fHY = paramInt;
+    AppMethodBeat.o(102737);
   }
   
-  protected final int Ka()
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    return 50;
-  }
-  
-  public final boolean Kx()
-  {
-    return true;
-  }
-  
-  public final int a(com.tencent.mm.network.e parame, f paramf)
-  {
-    this.dmL = paramf;
-    yq localyq = (yq)this.dmK.ecE.ecN;
-    localyq.sIh = this.selector;
-    paramf = ((ae)g.t(ae.class)).getFavConfigStorage().aQr();
-    if (this.selector == 2) {
+    AppMethodBeat.i(102738);
+    this.callback = paramf;
+    acx localacx = (acx)this.rr.fsV.fta;
+    localacx.wFQ = this.fHY;
+    paramf = ((ae)g.G(ae.class)).getFavConfigStorage().bwG();
+    if (this.fHY == 2) {
       paramf = new byte[0];
     }
-    localyq.sIi = aa.I(paramf);
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.Fav.NetSceneFavSync", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    if (((ae)g.t(ae.class)).getSendService().Tk())
-    {
-      y.w("MicroMsg.Fav.NetSceneFavSync", "sending item, skip sync onGYNetEnd");
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    yr localyr = (yr)((com.tencent.mm.ah.b)paramq).ecF.ecN;
-    paramArrayOfByte = localyr.sIl.hPT;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-    {
-      y.i("MicroMsg.Fav.NetSceneFavSync", "cmdList size:" + paramArrayOfByte.size());
-      if (this.selector != 2)
-      {
-        paramString = this.jZR;
-        paramString.jZU = paramArrayOfByte;
-        if ((paramString.jZU != null) && (paramString.jZU.size() > 0))
-        {
-          paramq = new ak();
-          g.Dk().a(paramq, 0);
-        }
-        paramString.jZV.sendEmptyMessage(0);
-        return;
-      }
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    if (localyr.sIi.tFM != null)
-    {
-      paramArrayOfByte = localyr.sIi.tFM.toByteArray();
-      paramq = com.tencent.mm.protocal.z.g(((yq)((com.tencent.mm.ah.b)paramq).ecE.ecN).sIi.tFM.toByteArray(), paramArrayOfByte);
-      if ((paramq != null) && (paramq.length > 0)) {
-        ((ae)g.t(ae.class)).getFavConfigStorage().ay(paramq);
-      }
-    }
-    for (;;)
-    {
-      g.DP().Dz().o(8217, Integer.valueOf(1));
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-      y.e("MicroMsg.Fav.NetSceneFavSync", "merge key should not be null");
-    }
-  }
-  
-  protected final m.b b(q paramq)
-  {
-    return m.b.edr;
+    localacx.wFR = aa.ac(paramf);
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(102738);
+    return i;
   }
   
   public final int getType()
   {
     return 400;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(102739);
+    com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.Fav.NetSceneFavSync", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    if (((ae)g.G(ae.class)).getSendService().amw())
+    {
+      com.tencent.mm.sdk.platformtools.ab.w("MicroMsg.Fav.NetSceneFavSync", "sending item, skip sync onGYNetEnd");
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(102739);
+      return;
+    }
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(102739);
+      return;
+    }
+    acy localacy = (acy)((com.tencent.mm.ai.b)paramq).fsW.fta;
+    paramArrayOfByte = localacy.wFU.jJv;
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
+    {
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.Fav.NetSceneFavSync", "cmdList size:" + paramArrayOfByte.size());
+      if (this.fHY != 2)
+      {
+        paramString = this.muo;
+        paramString.mcO = paramArrayOfByte;
+        if ((paramString.mcO != null) && (paramString.mcO.size() > 0))
+        {
+          paramq = new ak();
+          g.Rc().a(paramq, 0);
+        }
+        paramString.mur.sendEmptyMessage(0);
+        AppMethodBeat.o(102739);
+        return;
+      }
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(102739);
+      return;
+    }
+    if (localacy.wFR.getBuffer() != null)
+    {
+      paramArrayOfByte = localacy.wFR.getBuffer().toByteArray();
+      paramq = com.tencent.mm.protocal.ab.j(((acx)((com.tencent.mm.ai.b)paramq).fsV.fta).wFR.getBuffer().toByteArray(), paramArrayOfByte);
+      if ((paramq != null) && (paramq.length > 0)) {
+        ((ae)g.G(ae.class)).getFavConfigStorage().aW(paramq);
+      }
+    }
+    for (;;)
+    {
+      g.RL().Ru().set(8217, Integer.valueOf(1));
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(102739);
+      return;
+      com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.Fav.NetSceneFavSync", "merge key should not be null");
+    }
+  }
+  
+  public final int securityLimitCount()
+  {
+    return 50;
+  }
+  
+  public final m.b securityVerificationChecked(q paramq)
+  {
+    return m.b.ftu;
+  }
+  
+  public final boolean uniqueInNetsceneQueue()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.aj
  * JD-Core Version:    0.7.0.1
  */

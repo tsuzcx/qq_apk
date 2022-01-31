@@ -1,90 +1,96 @@
 package com.tencent.mm.storage.emotion;
 
-import com.tencent.mm.cf.g;
-import com.tencent.mm.cf.g.a;
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cg.g;
+import com.tencent.mm.cg.g.a;
+import com.tencent.mm.cg.h;
 import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class f
-  extends i<e>
+  extends j<e>
   implements g.a
 {
-  public static final String[] dXp = { i.a(e.buS, "EmojiSuggestDescInfo") };
-  private com.tencent.mm.sdk.e.e dXw;
+  public static final String[] SQL_CREATE;
+  private com.tencent.mm.sdk.e.e db;
+  
+  static
+  {
+    AppMethodBeat.i(62848);
+    SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "EmojiSuggestDescInfo") };
+    AppMethodBeat.o(62848);
+  }
   
   public f(com.tencent.mm.sdk.e.e parame)
   {
-    this(parame, e.buS, "EmojiSuggestDescInfo");
+    this(parame, e.info, "EmojiSuggestDescInfo");
   }
   
   private f(com.tencent.mm.sdk.e.e parame, c.a parama, String paramString)
   {
     super(parame, parama, paramString, null);
-    this.dXw = parame;
+    this.db = parame;
   }
   
   public final int a(g paramg)
   {
-    if (paramg != null) {
-      this.dXw = paramg;
-    }
+    this.db = paramg;
     return 0;
   }
   
-  public final boolean af(ArrayList<ArrayList<String>> paramArrayList)
+  public final boolean an(ArrayList<ArrayList<String>> paramArrayList)
   {
+    AppMethodBeat.i(62847);
     if (paramArrayList.isEmpty())
     {
-      y.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
+      ab.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
+      AppMethodBeat.o(62847);
       return false;
     }
     h localh;
     long l;
-    if ((this.dXw instanceof h))
+    if ((this.db instanceof h))
     {
-      localh = (h)this.dXw;
-      l = localh.eV(Thread.currentThread().getId());
+      localh = (h)this.db;
+      l = localh.kr(Thread.currentThread().getId());
     }
     for (;;)
     {
-      this.dXw.delete("EmojiSuggestDescInfo", "", null);
+      this.db.delete("EmojiSuggestDescInfo", "", null);
       paramArrayList = paramArrayList.iterator();
       int i = 0;
       if (paramArrayList.hasNext())
       {
         Object localObject = (ArrayList)paramArrayList.next();
         if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-          break label204;
+          break label219;
         }
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          if (!bk.bl(str))
+          if (!bo.isNullOrNil(str))
           {
-            y.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
-            b(new e(String.valueOf(i), str));
+            ab.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
+            insert(new e(String.valueOf(i), str));
           }
         }
         i += 1;
       }
-      label204:
+      label219:
       for (;;)
       {
         break;
-        if (localh == null) {
-          break label205;
+        if (localh != null) {
+          localh.nY(l);
         }
-        localh.hI(l);
+        AppMethodBeat.o(62847);
         return false;
       }
-      label205:
-      break;
       l = -1L;
       localh = null;
     }
@@ -92,7 +98,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/bii" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
-    <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/chh" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/nw" android:background="@drawable/l8" android:padding="@dimen/la" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/bl_" android:layout_width="@dimen/lt" android:layout_height="@dimen/lt" android:src="@color/zm" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/m2" android:textColor="@color/h6" android:gravity="left" android:id="@id/bla" android:paddingRight="@dimen/dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/n_" android:layout_toRightOf="@id/bl_" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/blq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mm_submenu_normal" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/q5" />
+    </RelativeLayout>
 </LinearLayout>

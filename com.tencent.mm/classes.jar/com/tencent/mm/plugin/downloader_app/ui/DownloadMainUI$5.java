@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
-import com.tencent.mm.plugin.downloader.h.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.i.a;
 
 final class DownloadMainUI$5
   implements Runnable
@@ -9,7 +10,9 @@ final class DownloadMainUI$5
   
   public final void run()
   {
-    a.a(this.iTt, DownloadMainUI.d(this.iTt), null);
+    AppMethodBeat.i(136230);
+    a.a(this.lci, DownloadMainUI.d(this.lci), null);
+    AppMethodBeat.o(136230);
   }
 }
 

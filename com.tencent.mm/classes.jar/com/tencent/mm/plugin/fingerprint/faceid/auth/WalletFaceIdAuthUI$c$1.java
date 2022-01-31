@@ -1,39 +1,42 @@
 package com.tencent.mm.plugin.fingerprint.faceid.auth;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.plugin.wxpay.a.i;
 import com.tencent.mm.pluginsdk.wallet.a;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 final class WalletFaceIdAuthUI$c$1
   implements a
 {
   WalletFaceIdAuthUI$c$1(WalletFaceIdAuthUI.c paramc) {}
   
-  public final void ai(int paramInt, String paramString)
+  public final void aC(int paramInt, String paramString)
   {
+    int i = 2;
+    AppMethodBeat.i(41384);
     if (paramInt == 0)
     {
-      com.tencent.mm.sdk.platformtools.y.i("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay success");
-      this.kkE.kkD.a(new com.tencent.mm.plugin.wallet_core.c.y(null, 19), false, false);
-      paramString = h.nFQ;
-      if (this.kkE.aSp() == 1) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        paramString.f(15817, new Object[] { Integer.valueOf(paramInt) });
-        h.nFQ.h(916L, 1L, 1L);
-        return;
+      com.tencent.mm.sdk.platformtools.ab.i("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay success");
+      this.mFt.mFs.doSceneProgress(new com.tencent.mm.plugin.wallet_core.c.ab(null, 19), false);
+      paramString = h.qsU;
+      paramInt = i;
+      if (this.mFt.byI() == 1) {
+        paramInt = 1;
       }
+      paramString.e(15817, new Object[] { Integer.valueOf(paramInt) });
+      h.qsU.cT(916, 1);
+      AppMethodBeat.o(41384);
+      return;
     }
-    this.kkE.kkD.bka();
-    com.tencent.mm.sdk.platformtools.y.e("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay failed");
-    this.kkE.kkD.Dg(this.kkE.kkD.getString(a.i.faceid_open_fail));
-    h.nFQ.h(916L, 2L, 1L);
+    this.mFt.mFs.hideProgress();
+    com.tencent.mm.sdk.platformtools.ab.e("MicroMsg.WalletFaceIdAuthUI", "open fingerprintpay failed");
+    this.mFt.mFs.Oj(this.mFt.mFs.getString(2131299650));
+    h.qsU.cT(916, 2);
+    AppMethodBeat.o(41384);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthUI.c.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,117 +1,145 @@
 package com.tencent.mm.plugin.brandservice.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.az.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.ba.k;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
+import com.tencent.mm.modelvoiceaddr.ui.b.a;
 import com.tencent.mm.plugin.brandservice.ui.base.BrandServiceSortView;
 import com.tencent.mm.plugin.brandservice.ui.base.BrandServiceSortView.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.tools.n;
+import com.tencent.mm.ui.tools.q;
 
 @a(3)
 public class BrandServiceLocalSearchUI
   extends MMActivity
-  implements com.tencent.mm.modelvoiceaddr.ui.b.a, BrandServiceSortView.a
+  implements b.a, BrandServiceSortView.a
 {
-  private com.tencent.mm.modelvoiceaddr.ui.b idl;
-  private BrandServiceSortView idm;
-  
-  public final void TP()
-  {
-    XM();
-  }
-  
-  public final void Wl()
-  {
-    finish();
-  }
-  
-  public final void Wm() {}
-  
-  public final void Wn() {}
-  
-  public final void Wo() {}
+  private com.tencent.mm.modelvoiceaddr.ui.b jTZ;
+  private BrandServiceSortView jUa;
   
   public final void a(boolean paramBoolean, String[] paramArrayOfString, long paramLong, int paramInt) {}
   
-  public final boolean axC()
+  public final boolean aWA()
   {
-    XM();
+    AppMethodBeat.i(13936);
+    hideVKB();
+    AppMethodBeat.o(13936);
     return false;
   }
   
-  protected final int getLayoutId()
+  public final void anc()
   {
-    return b.e.brand_service_local_search;
+    AppMethodBeat.i(13931);
+    hideVKB();
+    AppMethodBeat.o(13931);
   }
   
-  protected final void initView()
+  public final void apN()
   {
-    this.idm = ((BrandServiceSortView)findViewById(b.d.sort_and_search_view));
-    this.idm.setMode(1);
-    this.idm.setReturnResult(getIntent().getBooleanExtra("is_return_result", false));
-    this.idm.cBz();
-    this.idm.ng(false);
-    this.idm.setShowFooterView(false);
-    this.idm.setITransferToChildOnTouchListener(this);
-    this.idl = new com.tencent.mm.modelvoiceaddr.ui.b();
-    this.idl.nK(true);
-    this.idl.a(this);
-    this.idl.eNe = false;
+    AppMethodBeat.i(13928);
+    finish();
+    AppMethodBeat.o(13928);
+  }
+  
+  public final void apO() {}
+  
+  public final void apP() {}
+  
+  public final void apQ() {}
+  
+  public int getLayoutId()
+  {
+    return 2130968899;
+  }
+  
+  public void initView()
+  {
+    AppMethodBeat.i(13927);
+    this.jUa = ((BrandServiceSortView)findViewById(2131821952));
+    this.jUa.setMode(1);
+    this.jUa.setReturnResult(getIntent().getBooleanExtra("is_return_result", false));
+    this.jUa.dES();
+    this.jUa.qM(false);
+    this.jUa.setShowFooterView(false);
+    this.jUa.setITransferToChildOnTouchListener(this);
+    this.jTZ = new com.tencent.mm.modelvoiceaddr.ui.b();
+    this.jTZ.ru(true);
+    this.jTZ.a(this);
+    this.jTZ.gcJ = false;
+    AppMethodBeat.o(13927);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(13926);
     super.onCreate(paramBundle);
-    ta(android.support.v4.content.b.i(this.mController.uMN, com.tencent.mm.plugin.brandservice.b.a.normal_actionbar_color));
+    setActionbarColor(android.support.v4.content.b.m(getContext(), 2131690316));
     initView();
     paramBundle = new k(18);
-    g.Dk().a(paramBundle, 0);
+    g.Rc().a(paramBundle, 0);
+    AppMethodBeat.o(13926);
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    this.idl.a(this, paramMenu);
+    AppMethodBeat.i(13934);
+    this.jTZ.a(this, paramMenu);
+    AppMethodBeat.o(13934);
     return true;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
+    AppMethodBeat.i(13933);
     super.onDestroy();
-    this.idm.release();
+    this.jUa.release();
+    AppMethodBeat.o(13933);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(13932);
     super.onPause();
-    this.idl.cancel();
-    this.idl.clearFocus();
+    this.jTZ.cancel();
+    this.jTZ.clearFocus();
+    AppMethodBeat.o(13932);
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    this.idl.a(this, paramMenu);
+    AppMethodBeat.i(13935);
+    this.jTZ.a(this, paramMenu);
+    AppMethodBeat.o(13935);
     return true;
   }
   
-  public final boolean pB(String paramString)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    XM();
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final boolean wR(String paramString)
+  {
+    AppMethodBeat.i(13930);
+    hideVKB();
+    AppMethodBeat.o(13930);
     return true;
   }
   
-  public final void pC(String paramString)
+  public final void wS(String paramString)
   {
-    y.i("MicroMsg.BrandServiceLocalSearchUI", "search biz, key word : %s", new Object[] { paramString });
-    this.idm.adg(paramString);
+    AppMethodBeat.i(13929);
+    ab.i("MicroMsg.BrandServiceLocalSearchUI", "search biz, key word : %s", new Object[] { paramString });
+    this.jUa.atB(paramString);
+    AppMethodBeat.o(13929);
   }
 }
 

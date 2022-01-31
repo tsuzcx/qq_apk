@@ -4,56 +4,69 @@ import android.os.Parcel;
 import android.os.ParcelUuid;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Arrays;
 import java.util.UUID;
 
 public class ScanFilterCompat
   implements Parcelable
 {
-  public static final Parcelable.Creator<ScanFilterCompat> CREATOR = new ScanFilterCompat.1();
-  private static final ScanFilterCompat gnY = new ScanFilterCompat.a().aix();
-  final String gnO;
-  final String gnP;
-  final ParcelUuid gnQ;
-  final ParcelUuid gnR;
-  final ParcelUuid gnS;
-  final byte[] gnT;
-  final byte[] gnU;
-  final int gnV;
-  final byte[] gnW;
-  final byte[] gnX;
+  public static final Parcelable.Creator<ScanFilterCompat> CREATOR;
+  private static final ScanFilterCompat hHV;
+  final String hHM;
+  final ParcelUuid hHN;
+  final ParcelUuid hHO;
+  final ParcelUuid hHP;
+  final byte[] hHQ;
+  final byte[] hHR;
+  final int hHS;
+  final byte[] hHT;
+  final byte[] hHU;
+  final String mDeviceName;
+  
+  static
+  {
+    AppMethodBeat.i(94319);
+    hHV = new ScanFilterCompat.a().aCs();
+    CREATOR = new ScanFilterCompat.1();
+    AppMethodBeat.o(94319);
+  }
   
   private ScanFilterCompat(String paramString1, String paramString2, ParcelUuid paramParcelUuid1, ParcelUuid paramParcelUuid2, ParcelUuid paramParcelUuid3, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
   {
-    this.gnO = paramString1;
-    this.gnQ = paramParcelUuid1;
-    this.gnR = paramParcelUuid2;
-    this.gnP = paramString2;
-    this.gnS = paramParcelUuid3;
-    this.gnT = paramArrayOfByte1;
-    this.gnU = paramArrayOfByte2;
-    this.gnV = paramInt;
-    this.gnW = paramArrayOfByte3;
-    this.gnX = paramArrayOfByte4;
+    this.mDeviceName = paramString1;
+    this.hHN = paramParcelUuid1;
+    this.hHO = paramParcelUuid2;
+    this.hHM = paramString2;
+    this.hHP = paramParcelUuid3;
+    this.hHQ = paramArrayOfByte1;
+    this.hHR = paramArrayOfByte2;
+    this.hHS = paramInt;
+    this.hHT = paramArrayOfByte3;
+    this.hHU = paramArrayOfByte4;
   }
   
   static boolean a(UUID paramUUID1, UUID paramUUID2, UUID paramUUID3)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramUUID2 == null) {
-      bool1 = paramUUID1.equals(paramUUID3);
-    }
-    do
+    AppMethodBeat.i(94315);
+    if (paramUUID2 == null)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while ((paramUUID1.getLeastSignificantBits() & paramUUID2.getLeastSignificantBits()) != (paramUUID3.getLeastSignificantBits() & paramUUID2.getLeastSignificantBits()));
-      bool1 = bool2;
-    } while ((paramUUID1.getMostSignificantBits() & paramUUID2.getMostSignificantBits()) != (paramUUID3.getMostSignificantBits() & paramUUID2.getMostSignificantBits()));
-    return true;
+      boolean bool = paramUUID1.equals(paramUUID3);
+      AppMethodBeat.o(94315);
+      return bool;
+    }
+    if ((paramUUID1.getLeastSignificantBits() & paramUUID2.getLeastSignificantBits()) != (paramUUID3.getLeastSignificantBits() & paramUUID2.getLeastSignificantBits()))
+    {
+      AppMethodBeat.o(94315);
+      return false;
+    }
+    if ((paramUUID1.getMostSignificantBits() & paramUUID2.getMostSignificantBits()) == (paramUUID3.getMostSignificantBits() & paramUUID2.getMostSignificantBits()))
+    {
+      AppMethodBeat.o(94315);
+      return true;
+    }
+    AppMethodBeat.o(94315);
+    return false;
   }
   
   static boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
@@ -99,154 +112,171 @@ public class ScanFilterCompat
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
+    AppMethodBeat.i(94318);
+    if (this == paramObject)
     {
+      AppMethodBeat.o(94318);
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-        return false;
-      }
-      paramObject = (ScanFilterCompat)paramObject;
-    } while ((d.equals(this.gnO, paramObject.gnO)) && (d.equals(this.gnP, paramObject.gnP)) && (this.gnV == paramObject.gnV) && (d.deepEquals(this.gnW, paramObject.gnW)) && (d.deepEquals(this.gnX, paramObject.gnX)) && (d.deepEquals(this.gnS, paramObject.gnS)) && (d.deepEquals(this.gnT, paramObject.gnT)) && (d.deepEquals(this.gnU, paramObject.gnU)) && (d.equals(this.gnQ, paramObject.gnQ)) && (d.equals(this.gnR, paramObject.gnR)));
+    }
+    if ((paramObject == null) || (getClass() != paramObject.getClass()))
+    {
+      AppMethodBeat.o(94318);
+      return false;
+    }
+    paramObject = (ScanFilterCompat)paramObject;
+    if ((d.equals(this.mDeviceName, paramObject.mDeviceName)) && (d.equals(this.hHM, paramObject.hHM)) && (this.hHS == paramObject.hHS) && (d.deepEquals(this.hHT, paramObject.hHT)) && (d.deepEquals(this.hHU, paramObject.hHU)) && (d.deepEquals(this.hHP, paramObject.hHP)) && (d.deepEquals(this.hHQ, paramObject.hHQ)) && (d.deepEquals(this.hHR, paramObject.hHR)) && (d.equals(this.hHN, paramObject.hHN)) && (d.equals(this.hHO, paramObject.hHO)))
+    {
+      AppMethodBeat.o(94318);
+      return true;
+    }
+    AppMethodBeat.o(94318);
     return false;
   }
   
   public int hashCode()
   {
-    return Arrays.hashCode(new Object[] { this.gnO, this.gnP, Integer.valueOf(this.gnV), this.gnW, this.gnX, this.gnS, this.gnT, this.gnU, this.gnQ, this.gnR });
+    AppMethodBeat.i(94317);
+    int i = Arrays.hashCode(new Object[] { this.mDeviceName, this.hHM, Integer.valueOf(this.hHS), this.hHT, this.hHU, this.hHP, this.hHQ, this.hHR, this.hHN, this.hHO });
+    AppMethodBeat.o(94317);
+    return i;
   }
   
   public String toString()
   {
-    return "BluetoothLeScanFilter [mDeviceName=" + this.gnO + ", mDeviceAddress=" + this.gnP + ", mUuid=" + this.gnQ + ", mUuidMask=" + this.gnR + ", mServiceDataUuid=" + d.toString(this.gnS) + ", mServiceData=" + Arrays.toString(this.gnT) + ", mServiceDataMask=" + Arrays.toString(this.gnU) + ", mManufacturerId=" + this.gnV + ", mManufacturerData=" + Arrays.toString(this.gnW) + ", mManufacturerDataMask=" + Arrays.toString(this.gnX) + "]";
+    AppMethodBeat.i(94316);
+    String str = "BluetoothLeScanFilter [mDeviceName=" + this.mDeviceName + ", mDeviceAddress=" + this.hHM + ", mUuid=" + this.hHN + ", mUuidMask=" + this.hHO + ", mServiceDataUuid=" + d.toString(this.hHP) + ", mServiceData=" + Arrays.toString(this.hHQ) + ", mServiceDataMask=" + Arrays.toString(this.hHR) + ", mManufacturerId=" + this.hHS + ", mManufacturerData=" + Arrays.toString(this.hHT) + ", mManufacturerDataMask=" + Arrays.toString(this.hHU) + "]";
+    AppMethodBeat.o(94316);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int j = 0;
+    AppMethodBeat.i(94314);
     int i;
-    if (this.gnO == null)
+    if (this.mDeviceName == null)
     {
       i = 0;
       paramParcel.writeInt(i);
-      if (this.gnO != null) {
-        paramParcel.writeString(this.gnO);
+      if (this.mDeviceName != null) {
+        paramParcel.writeString(this.mDeviceName);
       }
-      if (this.gnP != null) {
-        break label318;
-      }
-      i = 0;
-      label41:
-      paramParcel.writeInt(i);
-      if (this.gnP != null) {
-        paramParcel.writeString(this.gnP);
-      }
-      if (this.gnQ != null) {
-        break label323;
+      if (this.hHM != null) {
+        break label328;
       }
       i = 0;
-      label70:
+      label46:
       paramParcel.writeInt(i);
-      if (this.gnQ != null)
-      {
-        paramParcel.writeParcelable(this.gnQ, paramInt);
-        if (this.gnR != null) {
-          break label328;
-        }
-        i = 0;
-        label100:
-        paramParcel.writeInt(i);
-        if (this.gnR != null) {
-          paramParcel.writeParcelable(this.gnR, paramInt);
-        }
+      if (this.hHM != null) {
+        paramParcel.writeString(this.hHM);
       }
-      if (this.gnS != null) {
+      if (this.hHN != null) {
         break label333;
       }
       i = 0;
-      label130:
+      label75:
       paramParcel.writeInt(i);
-      if (this.gnS != null)
+      if (this.hHN != null)
       {
-        paramParcel.writeParcelable(this.gnS, paramInt);
-        if (this.gnT != null) {
+        paramParcel.writeParcelable(this.hHN, paramInt);
+        if (this.hHO != null) {
           break label338;
         }
+        i = 0;
+        label105:
+        paramParcel.writeInt(i);
+        if (this.hHO != null) {
+          paramParcel.writeParcelable(this.hHO, paramInt);
+        }
+      }
+      if (this.hHP != null) {
+        break label343;
+      }
+      i = 0;
+      label135:
+      paramParcel.writeInt(i);
+      if (this.hHP != null)
+      {
+        paramParcel.writeParcelable(this.hHP, paramInt);
+        if (this.hHQ != null) {
+          break label348;
+        }
         paramInt = 0;
-        label160:
+        label165:
         paramParcel.writeInt(paramInt);
-        if (this.gnT != null)
+        if (this.hHQ != null)
         {
-          paramParcel.writeInt(this.gnT.length);
-          paramParcel.writeByteArray(this.gnT);
-          if (this.gnU != null) {
-            break label343;
+          paramParcel.writeInt(this.hHQ.length);
+          paramParcel.writeByteArray(this.hHQ);
+          if (this.hHR != null) {
+            break label353;
           }
           paramInt = 0;
-          label198:
+          label203:
           paramParcel.writeInt(paramInt);
-          if (this.gnU != null)
+          if (this.hHR != null)
           {
-            paramParcel.writeInt(this.gnU.length);
-            paramParcel.writeByteArray(this.gnU);
+            paramParcel.writeInt(this.hHR.length);
+            paramParcel.writeByteArray(this.hHR);
           }
         }
       }
-      paramParcel.writeInt(this.gnV);
-      if (this.gnW != null) {
-        break label348;
+      paramParcel.writeInt(this.hHS);
+      if (this.hHT != null) {
+        break label358;
       }
       paramInt = 0;
-      label244:
+      label249:
       paramParcel.writeInt(paramInt);
-      if (this.gnW != null)
+      if (this.hHT != null)
       {
-        paramParcel.writeInt(this.gnW.length);
-        paramParcel.writeByteArray(this.gnW);
-        if (this.gnX != null) {
-          break label353;
+        paramParcel.writeInt(this.hHT.length);
+        paramParcel.writeByteArray(this.hHT);
+        if (this.hHU != null) {
+          break label363;
         }
       }
     }
-    label318:
-    label323:
     label328:
     label333:
     label338:
     label343:
     label348:
     label353:
+    label358:
+    label363:
     for (paramInt = j;; paramInt = 1)
     {
       paramParcel.writeInt(paramInt);
-      if (this.gnX != null)
+      if (this.hHU != null)
       {
-        paramParcel.writeInt(this.gnX.length);
-        paramParcel.writeByteArray(this.gnX);
+        paramParcel.writeInt(this.hHU.length);
+        paramParcel.writeByteArray(this.hHU);
       }
+      AppMethodBeat.o(94314);
       return;
       i = 1;
       break;
       i = 1;
-      break label41;
+      break label46;
       i = 1;
-      break label70;
+      break label75;
       i = 1;
-      break label100;
+      break label105;
       i = 1;
-      break label130;
+      break label135;
       paramInt = 1;
-      break label160;
+      break label165;
       paramInt = 1;
-      break label198;
+      break label203;
       paramInt = 1;
-      break label244;
+      break label249;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.scan.ScanFilterCompat
  * JD-Core Version:    0.7.0.1
  */

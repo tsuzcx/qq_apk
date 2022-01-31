@@ -6,10 +6,9 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.z;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.account.friend.a.l;
+import com.tencent.mm.sdk.platformtools.ah;
 
 final class ContactsSyncUI$a$3
   implements DialogInterface.OnClickListener
@@ -18,11 +17,13 @@ final class ContactsSyncUI$a$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    g.DP().Dz().o(12322, Boolean.valueOf(false));
-    this.flm.flj.getSharedPreferences(ae.cqR(), 0).edit().putBoolean("upload_contacts_already_displayed", true).commit();
+    AppMethodBeat.i(124746);
+    l.dx(false);
+    this.gCD.gCA.getSharedPreferences(ah.dsP(), 0).edit().putBoolean("upload_contacts_already_displayed", true).commit();
     if ((this.val$context instanceof Activity)) {
       ((Activity)this.val$context).finish();
     }
+    AppMethodBeat.o(124746);
   }
 }
 

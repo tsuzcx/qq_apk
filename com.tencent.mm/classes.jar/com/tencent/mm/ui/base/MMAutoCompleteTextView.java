@@ -6,81 +6,84 @@ import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.widget.AutoCompleteTextView;
-import com.tencent.mm.ac.a.f;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public class MMAutoCompleteTextView
   extends AutoCompleteTextView
 {
-  final Drawable saf = getResources().getDrawable(a.f.list_clear);
-  private a uUh;
+  final Drawable vQV;
+  private a ziI;
   
   public MMAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.saf.setBounds(0, 0, this.saf.getIntrinsicWidth(), this.saf.getIntrinsicHeight());
-    cml();
-    setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        paramAnonymousView = MMAutoCompleteTextView.this;
-        if (paramAnonymousView.getCompoundDrawables()[2] == null) {}
-        while ((paramAnonymousMotionEvent.getAction() != 1) || (paramAnonymousMotionEvent.getX() <= paramAnonymousView.getWidth() - paramAnonymousView.getPaddingRight() - MMAutoCompleteTextView.this.saf.getIntrinsicWidth())) {
-          return false;
-        }
-        paramAnonymousView.setText("");
-        MMAutoCompleteTextView.a(MMAutoCompleteTextView.this);
-        return false;
-      }
-    });
+    AppMethodBeat.i(106476);
+    this.vQV = getResources().getDrawable(2130839272);
+    this.vQV.setBounds(0, 0, this.vQV.getIntrinsicWidth(), this.vQV.getIntrinsicHeight());
+    dnb();
+    setOnTouchListener(new MMAutoCompleteTextView.1(this));
     addTextChangedListener(new MMAutoCompleteTextView.2(this));
     setOnFocusChangeListener(new MMAutoCompleteTextView.3(this));
+    AppMethodBeat.o(106476);
   }
   
-  private void cml()
+  private void dnb()
   {
+    AppMethodBeat.i(106477);
     if ((getText().toString().equals("")) || (!isFocused()))
     {
-      cmn();
+      dnd();
+      AppMethodBeat.o(106477);
       return;
     }
-    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.saf, getCompoundDrawables()[3]);
+    dnc();
+    AppMethodBeat.o(106477);
   }
   
-  private void cmn()
+  private void dnc()
   {
+    AppMethodBeat.i(106478);
+    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], this.vQV, getCompoundDrawables()[3]);
+    AppMethodBeat.o(106478);
+  }
+  
+  private void dnd()
+  {
+    AppMethodBeat.i(106479);
     setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
+    AppMethodBeat.o(106479);
   }
   
   public void setSpilter(String paramString)
   {
-    if (!bk.bl(paramString))
+    AppMethodBeat.i(106480);
+    if (!bo.isNullOrNil(paramString))
     {
-      this.uUh = new a(paramString);
-      addTextChangedListener(this.uUh);
+      this.ziI = new a(paramString);
+      addTextChangedListener(this.ziI);
     }
+    AppMethodBeat.o(106480);
   }
   
-  private final class a
+  final class a
     implements TextWatcher
   {
-    private String uUj;
+    private String ziK;
     
     public a(String paramString)
     {
-      this.uUj = paramString;
+      this.ziK = paramString;
     }
     
     public final void afterTextChanged(Editable paramEditable)
     {
-      if (paramEditable.toString().endsWith(this.uUj)) {
+      AppMethodBeat.i(106475);
+      if (paramEditable.toString().endsWith(this.ziK)) {
         MMAutoCompleteTextView.this.showDropDown();
       }
+      AppMethodBeat.o(106475);
     }
     
     public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

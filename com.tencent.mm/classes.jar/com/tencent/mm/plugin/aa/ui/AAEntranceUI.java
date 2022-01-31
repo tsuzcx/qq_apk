@@ -1,74 +1,85 @@
 package com.tencent.mm.plugin.aa.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.d.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 public class AAEntranceUI
   extends MMActivity
 {
-  private Button eXn;
-  private TextView eXo;
+  private Button gpl;
+  private TextView gpm;
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.aa_entrance_ui;
+    return 2130968576;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (paramInt2 != -1) {
+    AppMethodBeat.i(40712);
+    if (paramInt2 != -1)
+    {
+      AppMethodBeat.o(40712);
       return;
     }
     if (paramInt1 == 1)
     {
       String str = paramIntent.getStringExtra("Select_Conv_User");
-      y.i("MicroMsg.AAEntranceUI", "select chatroom：%s", new Object[] { str });
-      if (!bk.bl(str))
+      ab.i("MicroMsg.AAEntranceUI", "select chatroom：%s", new Object[] { str });
+      if (!bo.isNullOrNil(str))
       {
-        Intent localIntent = new Intent(this.mController.uMN, LaunchAAUI.class);
+        Intent localIntent = new Intent(getContext(), LaunchAAUI.class);
         localIntent.putExtra("enter_scene", 2);
         localIntent.putExtra("chatroom_name", str);
-        startActivity(localIntent);
+        if (getIntent().getExtras() != null) {
+          localIntent.putExtras(getIntent().getExtras());
+        }
+        startActivityForResult(localIntent, 2);
       }
     }
-    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    for (;;)
+    {
+      super.onActivityResult(paramInt1, paramInt2, paramIntent);
+      AppMethodBeat.o(40712);
+      return;
+      if (paramInt1 == 2) {
+        finish();
+      }
+    }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    this.uMp = true;
+    AppMethodBeat.i(40711);
+    fixStatusbar(true);
     super.onCreate(paramBundle);
-    ta(this.mController.czv());
-    setMMTitle(a.i.launch_aa_title);
-    this.eXn = ((Button)findViewById(a.f.launch_btn));
-    this.eXo = ((TextView)findViewById(a.f.check_aa_record_tv));
-    this.eXn.setOnClickListener(new AAEntranceUI.1(this));
-    this.eXo.setClickable(true);
-    this.eXo.setOnTouchListener(new m(this));
-    paramBundle = new SpannableStringBuilder(getString(a.i.check_aa_record));
+    setActionbarColor(getActionbarColor());
+    setMMTitle(2131301049);
+    this.gpl = ((Button)findViewById(2131820899));
+    this.gpm = ((TextView)findViewById(2131820900));
+    this.gpl.setOnClickListener(new AAEntranceUI.1(this));
+    this.gpm.setClickable(true);
+    this.gpm.setOnTouchListener(new m(this));
+    paramBundle = new SpannableStringBuilder(getString(2131298345));
     paramBundle.setSpan(new a(new AAEntranceUI.2(this)), 0, paramBundle.length(), 18);
-    this.eXo.setText(paramBundle);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AAEntranceUI.this.finish();
-        return false;
-      }
-    });
+    this.gpm.setText(paramBundle);
+    setBackBtn(new AAEntranceUI.3(this));
+    AppMethodBeat.o(40711);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 

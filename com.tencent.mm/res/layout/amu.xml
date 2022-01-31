@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.applet.SecurityImage android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/l0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/k5">
-        <LinearLayout android:gravity="bottom" android:padding="5.0dip" style="@style/lo">
-            <FrameLayout android:background="#ff000000" android:padding="1.0px" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip">
-                <ImageView android:id="@id/dr8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="150.0dip" android:maxHeight="80.0dip" android:minWidth="130.0dip" android:minHeight="53.0dip" />
-                <ProgressBar android:layout_gravity="center" android:id="@id/dr9" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/zh" />
-            </FrameLayout>
-            <View style="@style/n3" />
-            <Button android:id="@id/dr_" android:minHeight="40.0dip" android:text="@string/ud" android:singleLine="true" style="@style/jj" />
-        </LinearLayout>
-        <View style="@style/n3" />
-        <EditText android:textColor="@color/ta" android:id="@id/dra" android:hint="@string/ue" style="@style/lq" />
-    </LinearLayout>
-</com.tencent.mm.ui.applet.SecurityImage>
+    <AutoCompleteTextView android:textSize="@dimen/m2" android:layout_gravity="center|left" android:id="@id/dty" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="120.0dip" android:completionThreshold="1" android:dropDownSelector="@color/vy" android:dropDownWidth="fill_parent" android:dropDownHeight="wrap_content" android:dropDownHorizontalOffset="-20.0dip" android:dropDownVerticalOffset="-5.0dip" style="@style/ml" />
+</LinearLayout>

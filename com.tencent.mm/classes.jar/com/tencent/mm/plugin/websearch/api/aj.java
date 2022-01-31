@@ -1,130 +1,171 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.util.Pair;
-import com.jg.JgClassChecked;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.e;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.xweb.WebView;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.al;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.regex.Pattern;
-import junit.framework.Assert;
 
-@JgClassChecked(author=20, fComment="checked", lastDate="20140429", reviewer=20, vComment={com.jg.EType.JSEXECUTECHECK})
-public final class aj
+public class aj
 {
-  private static av eRK = null;
-  private static final Map<String, String> hly;
-  private static final Map<String, String> hlz;
-  private static final Pattern qUy = Pattern.compile("data:(image|img)/\\S+;base64,\\S+");
+  private static volatile aj uJO;
+  private al fPW;
+  private volatile boolean uJJ;
+  private volatile boolean uJK;
+  private volatile Boolean uJL;
+  private l uJM;
+  private Map<Integer, ak> uJN;
   
-  static
+  private aj()
   {
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(new Pair("silk", "audio/silk"));
-    ((ArrayList)localObject).add(new Pair("jpg", "image/jpg"));
-    HashMap localHashMap1 = new HashMap();
-    HashMap localHashMap2 = new HashMap();
-    localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      Pair localPair = (Pair)((Iterator)localObject).next();
-      localHashMap1.put(localPair.first, localPair.second);
-      localHashMap2.put(localPair.second, localPair.first);
-    }
-    hly = Collections.unmodifiableMap(localHashMap1);
-    hlz = Collections.unmodifiableMap(localHashMap2);
+    AppMethodBeat.i(124179);
+    this.uJJ = false;
+    this.uJK = false;
+    this.uJM = new ae();
+    AppMethodBeat.o(124179);
   }
   
-  public static void a(WebView paramWebView)
+  public static aj cZB()
   {
-    y.d("MicroMsg.WebSearch.WebSearchPreloadApiLogic", "initIFrame");
-    paramWebView.evaluateJavascript("javascript:var edw_iframe = document.getElementById('_edw_iframe_');if (edw_iframe === null) {edw_iframe = document.createElement('iframe');edw_iframe.id = '_edw_iframe_';edw_iframe.style.display = 'none';document.documentElement.appendChild(edw_iframe); console.log('init frame')}", new aj.1());
-  }
-  
-  public static String aX(Context paramContext, String paramString)
-  {
-    Object localObject = "MicroMsg.WebSearch.WebSearchPreloadApiLogic, appendUserAgent fail, context is null, stack = " + bk.csb();
-    boolean bool;
-    if (paramContext != null)
-    {
-      bool = true;
-      Assert.assertTrue((String)localObject, bool);
-      if (paramString != null) {
-        break label191;
-      }
-    }
-    label191:
-    for (paramString = " MicroMessenger/";; paramString = paramString + " MicroMessenger/")
-    {
-      localObject = getPackageInfo(paramContext, ae.getPackageName());
-      paramContext = paramString;
-      if (localObject != null)
-      {
-        paramContext = paramString + e.ag(null, d.spa);
-        paramContext = paramContext + "." + ((PackageInfo)localObject).versionCode;
-      }
-      paramString = aq.fH(ae.getContext());
-      paramContext = paramContext + " NetType/" + paramString;
-      paramContext = paramContext + " Language/" + x.fB(ae.getContext());
-      y.i("MicroMsg.WebSearch.WebSearchPreloadApiLogic", "appendUserAgent, uaStr = " + paramContext);
-      return paramContext;
-      bool = false;
-      break;
-    }
-  }
-  
-  private static PackageInfo getPackageInfo(Context paramContext, String paramString)
-  {
-    if (paramString == null)
-    {
-      y.e("MicroMsg.WebSearch.WebSearchPreloadApiLogic", "getPackageInfo fail, packageName is null");
-      return null;
-    }
+    AppMethodBeat.i(124180);
+    if (uJO == null) {}
     try
     {
-      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-      return paramContext;
+      if (uJO == null) {
+        uJO = new aj();
+      }
+      aj localaj = uJO;
+      AppMethodBeat.o(124180);
+      return localaj;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    finally
     {
-      y.printErrStackTrace("MicroMsg.WebSearch.WebSearchPreloadApiLogic", paramContext, "", new Object[0]);
+      AppMethodBeat.o(124180);
     }
-    return null;
   }
   
-  public static boolean n(String paramString1, String paramString2)
+  public final l Jr(int paramInt)
   {
-    y.i("MicroMsg.WebSearch.WebSearchPreloadApiLogic", "url %s,prefix %s", new Object[] { paramString1, paramString2 });
-    if ((paramString1 == null) || (paramString1.length() < 0) || (paramString2.length() < 0)) {}
-    while (paramString2.length() > paramString1.length()) {
+    AppMethodBeat.i(124181);
+    if (paramInt <= 0)
+    {
+      localObject = this.uJM;
+      AppMethodBeat.o(124181);
+      return localObject;
+    }
+    if (this.uJN == null) {
+      this.uJN = new HashMap();
+    }
+    ak localak = (ak)this.uJN.get(Integer.valueOf(paramInt));
+    Object localObject = localak;
+    if (localak == null)
+    {
+      localObject = new ak(paramInt);
+      this.uJN.put(Integer.valueOf(paramInt), localObject);
+    }
+    AppMethodBeat.o(124181);
+    return localObject;
+  }
+  
+  public final boolean Js(int paramInt)
+  {
+    AppMethodBeat.i(124187);
+    if (!ah.brt())
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("please call from main process");
+      AppMethodBeat.o(124187);
+      throw localIllegalStateException;
+    }
+    switch (paramInt)
+    {
+    default: 
+      AppMethodBeat.o(124187);
+      return false;
+    case 1: 
+      bool = cZD();
+      AppMethodBeat.o(124187);
+      return bool;
+    }
+    boolean bool = cZE();
+    AppMethodBeat.o(124187);
+    return bool;
+  }
+  
+  public final void cZC()
+  {
+    AppMethodBeat.i(124184);
+    if (this.fPW == null)
+    {
+      this.fPW = new al();
+      this.fPW.ac(new aj.2(this));
+    }
+    AppMethodBeat.o(124184);
+  }
+  
+  public final boolean cZD()
+  {
+    AppMethodBeat.i(124185);
+    if (this.uJL != null)
+    {
+      ab.i("MicroMsg.WebSearch.WebSearchPreloadExport", "openSearchPreload cmdPreloadSwitch %b", new Object[] { this.uJL });
+      bool = this.uJL.booleanValue();
+      AppMethodBeat.o(124185);
+      return bool;
+    }
+    if (aa.Jf(0) < 80007181)
+    {
+      ab.e("MicroMsg.WebSearch.WebSearchPreloadExport", "current search template not support preload");
+      AppMethodBeat.o(124185);
       return false;
     }
-    if (paramString2.equalsIgnoreCase(paramString1.substring(0, paramString2.length())))
+    boolean bool = this.uJJ;
+    AppMethodBeat.o(124185);
+    return bool;
+  }
+  
+  public final boolean cZE()
+  {
+    AppMethodBeat.i(124186);
+    if (this.uJL != null)
     {
-      y.i("MicroMsg.WebSearch.WebSearchPreloadApiLogic", "true url %s,prefix %s", new Object[] { paramString1, paramString2 });
-      return true;
+      ab.i("MicroMsg.WebSearch.WebSearchPreloadExport", "isOpenRecommendPreload cmdPreloadSwitch %b", new Object[] { this.uJL });
+      bool = this.uJL.booleanValue();
+      AppMethodBeat.o(124186);
+      return bool;
     }
-    y.i("MicroMsg.WebSearch.WebSearchPreloadApiLogic", "false %s,prefix %s", new Object[] { paramString1, paramString2 });
-    return false;
+    boolean bool = this.uJK;
+    AppMethodBeat.o(124186);
+    return bool;
+  }
+  
+  public final void dK(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(124182);
+    ab.i("MicroMsg.WebSearch.WebSearchPreloadExport", "preloadWebview 1 %s", new Object[] { ah.getProcessName() });
+    if (ah.dsW())
+    {
+      Jr(paramInt).agp(paramString);
+      AppMethodBeat.o(124182);
+      return;
+    }
+    if (ah.brt()) {
+      g.RO().ac(new aj.1(this, paramInt, paramString));
+    }
+    AppMethodBeat.o(124182);
+  }
+  
+  public final void oh(boolean paramBoolean)
+  {
+    AppMethodBeat.i(124183);
+    this.uJL = Boolean.valueOf(paramBoolean);
+    AppMethodBeat.o(124183);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.aj
  * JD-Core Version:    0.7.0.1
  */

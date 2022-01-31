@@ -1,5 +1,6 @@
 package com.tencent.smtt.sdk;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Set;
 
 public class GeolocationPermissions
@@ -10,10 +11,12 @@ public class GeolocationPermissions
   {
     try
     {
+      AppMethodBeat.i(63903);
       if (a == null) {
         a = new GeolocationPermissions();
       }
       GeolocationPermissions localGeolocationPermissions = a;
+      AppMethodBeat.o(63903);
       return localGeolocationPermissions;
     }
     finally {}
@@ -21,62 +24,80 @@ public class GeolocationPermissions
   
   public static GeolocationPermissions getInstance()
   {
-    return a();
+    AppMethodBeat.i(63902);
+    GeolocationPermissions localGeolocationPermissions = a();
+    AppMethodBeat.o(63902);
+    return localGeolocationPermissions;
   }
   
   public void allow(String paramString)
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(63907);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().g(paramString);
+      localbz.c().g(paramString);
+      AppMethodBeat.o(63907);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().allow(paramString);
+    AppMethodBeat.o(63907);
   }
   
   public void clear(String paramString)
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(63906);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().f(paramString);
+      localbz.c().f(paramString);
+      AppMethodBeat.o(63906);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().clear(paramString);
+    AppMethodBeat.o(63906);
   }
   
   public void clearAll()
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(63908);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().o();
+      localbz.c().o();
+      AppMethodBeat.o(63908);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().clearAll();
+    AppMethodBeat.o(63908);
   }
   
   public void getAllowed(String paramString, ValueCallback<Boolean> paramValueCallback)
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(63905);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().c(paramString, paramValueCallback);
+      localbz.c().c(paramString, paramValueCallback);
+      AppMethodBeat.o(63905);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().getAllowed(paramString, paramValueCallback);
+    AppMethodBeat.o(63905);
   }
   
   public void getOrigins(ValueCallback<Set<String>> paramValueCallback)
   {
-    bv localbv = bv.a();
-    if ((localbv != null) && (localbv.b()))
+    AppMethodBeat.i(63904);
+    bz localbz = bz.a();
+    if ((localbz != null) && (localbz.b()))
     {
-      localbv.c().b(paramValueCallback);
+      localbz.c().b(paramValueCallback);
+      AppMethodBeat.o(63904);
       return;
     }
     android.webkit.GeolocationPermissions.getInstance().getOrigins(paramValueCallback);
+    AppMethodBeat.o(63904);
   }
 }
 

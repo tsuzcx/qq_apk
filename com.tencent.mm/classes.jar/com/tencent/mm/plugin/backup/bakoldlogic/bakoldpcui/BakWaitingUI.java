@@ -1,139 +1,176 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.KeyEvent;
 import android.view.View;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e;
 import com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.e.c;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BakWaitingUI
   extends MMWizardActivity
   implements e.c
 {
-  private boolean hPi;
-  private ah handler = new ah(Looper.getMainLooper());
-  private int uC;
+  private ak handler;
+  private boolean jIK;
+  private int vA;
   
-  final void avN()
+  public BakWaitingUI()
   {
-    if ((6 == this.uC) || (1 == this.uC))
+    AppMethodBeat.i(17988);
+    this.handler = new ak(Looper.getMainLooper());
+    AppMethodBeat.o(17988);
+  }
+  
+  final void aVq()
+  {
+    AppMethodBeat.i(17994);
+    if ((6 == this.vA) || (1 == this.vA))
     {
       Intent localIntent = new Intent(this, BakOperatingUI.class);
-      localIntent.putExtra("cmd", this.uC);
-      MMWizardActivity.C(this, localIntent);
+      localIntent.putExtra("cmd", this.vA);
+      MMWizardActivity.J(this, localIntent);
     }
+    AppMethodBeat.o(17994);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.bak_topc_wait;
+    return 2130968815;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(R.l.bak_chat_to_pc_title);
-    if (this.hPi) {
-      findViewById(R.h.bak_topc_tip).setVisibility(8);
+    AppMethodBeat.i(17990);
+    setMMTitle(2131297432);
+    if (this.jIK) {
+      findViewById(2131821660).setVisibility(8);
     }
     for (;;)
     {
       setBackBtn(new BakWaitingUI.1(this));
+      AppMethodBeat.o(17990);
       return;
-      findViewById(R.h.bak_topc_tip).setVisibility(0);
+      findViewById(2131821660).setVisibility(0);
     }
-  }
-  
-  public final void nQ(int paramInt)
-  {
-    this.uC = paramInt;
-    this.handler.post(new BakWaitingUI.2(this));
-  }
-  
-  public final void nR(final int paramInt)
-  {
-    this.handler.post(new Runnable()
-    {
-      public final void run()
-      {
-        y.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
-        if (paramInt == -1)
-        {
-          y.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
-          Intent localIntent = new Intent();
-          localIntent.putExtra("title", BakWaitingUI.this.getString(R.l.backup_pc_not_support_title));
-          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(R.l.backup_not_support_doc, new Object[] { x.cqJ() }));
-          localIntent.putExtra("showShare", false);
-          localIntent.putExtra("neverGetA8Key", true);
-          d.b(BakWaitingUI.this, "webview", ".ui.tools.WebViewUI", localIntent);
-        }
-      }
-    });
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(17989);
     super.onCreate(paramBundle);
-    if (getIntent().getExtras().getBoolean("WizardRootKillSelf", false)) {
+    if (getIntent().getExtras().getBoolean("WizardRootKillSelf", false))
+    {
+      AppMethodBeat.o(17989);
       return;
     }
-    a.avr().avs().hNY = this;
-    this.uC = a.avr().avs().hOf;
-    this.hPi = getIntent().getBooleanExtra("from_back_finish", false);
-    y.i("MicroMsg.BakWaitingUI", "BakWaitingUI onCreate nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.uC), Boolean.valueOf(this.hPi) });
+    a.aUU().aUV().jHA = this;
+    this.vA = a.aUU().aUV().jHH;
+    this.jIK = getIntent().getBooleanExtra("from_back_finish", false);
+    ab.i("MicroMsg.BakWaitingUI", "BakWaitingUI onCreate nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.vA), Boolean.valueOf(this.jIK) });
     initView();
-    avN();
+    aVq();
+    AppMethodBeat.o(17989);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(17992);
     super.onDestroy();
-    a.avr().avs().hNY = null;
-    y.i("MicroMsg.BakWaitingUI", "BakWaitingUI onDestroy nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.uC), Boolean.valueOf(this.hPi) });
+    a.aUU().aUV().jHA = null;
+    ab.i("MicroMsg.BakWaitingUI", "BakWaitingUI onDestroy nowCmd:%d isFromFinish:%b", new Object[] { Integer.valueOf(this.vA), Boolean.valueOf(this.jIK) });
+    AppMethodBeat.o(17992);
   }
   
   public final void onError(final int paramInt)
   {
+    AppMethodBeat.i(17996);
     this.handler.post(new Runnable()
     {
       public final void run()
       {
-        y.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.i(17987);
+        ab.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
         if (paramInt == -1)
         {
-          y.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
+          ab.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
           localIntent = new Intent();
-          localIntent.putExtra("title", BakWaitingUI.this.getString(R.l.backup_pc_not_support_title));
-          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(R.l.backup_not_support_doc, new Object[] { x.cqJ() }));
+          localIntent.putExtra("title", BakWaitingUI.this.getString(2131297344));
+          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(2131306129, new Object[] { aa.dsG() }));
           localIntent.putExtra("showShare", false);
           localIntent.putExtra("neverGetA8Key", true);
           d.b(BakWaitingUI.this, "webview", ".ui.tools.WebViewUI", localIntent);
+          AppMethodBeat.o(17987);
           return;
         }
         Intent localIntent = new Intent(BakWaitingUI.this, BakConnErrorUI.class);
-        MMWizardActivity.C(BakWaitingUI.this, localIntent);
+        MMWizardActivity.J(BakWaitingUI.this, localIntent);
+        AppMethodBeat.o(17987);
       }
     });
+    AppMethodBeat.o(17996);
+  }
+  
+  public final void onEvent(int paramInt)
+  {
+    AppMethodBeat.i(17991);
+    this.vA = paramInt;
+    this.handler.post(new BakWaitingUI.2(this));
+    AppMethodBeat.o(17991);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(17995);
     if (paramInt == 4)
     {
-      FW(1);
+      Oi(1);
+      AppMethodBeat.o(17995);
       return true;
     }
-    return super.onKeyDown(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(17995);
+    return bool;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final void rE(final int paramInt)
+  {
+    AppMethodBeat.i(17993);
+    this.handler.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(17986);
+        ab.d("MicroMsg.BakWaitingUI", "BakWaitingUI onCloseSocket errType: %d", new Object[] { Integer.valueOf(paramInt) });
+        if (paramInt == -1)
+        {
+          ab.d("MicroMsg.BakWaitingUI", "BakToPcUI jump tips");
+          Intent localIntent = new Intent();
+          localIntent.putExtra("title", BakWaitingUI.this.getString(2131297344));
+          localIntent.putExtra("rawUrl", BakWaitingUI.this.getString(2131306129, new Object[] { aa.dsG() }));
+          localIntent.putExtra("showShare", false);
+          localIntent.putExtra("neverGetA8Key", true);
+          d.b(BakWaitingUI.this, "webview", ".ui.tools.WebViewUI", localIntent);
+        }
+        AppMethodBeat.o(17986);
+      }
+    });
+    AppMethodBeat.o(17993);
   }
 }
 

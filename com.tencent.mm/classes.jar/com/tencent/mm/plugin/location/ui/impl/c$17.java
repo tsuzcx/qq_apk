@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.tools.ActionBarSearchView.a;
 
 final class c$17
@@ -8,11 +9,13 @@ final class c$17
 {
   c$17(c paramc) {}
   
-  public final void beS()
+  public final void bMn()
   {
-    y.d("MicroMsg.MMPoiMapUI", "back pressed");
-    c.a(this.lJp, c.beP(), c.v(this.lJp).lJz, true);
-    c.a(this.lJp, null);
+    AppMethodBeat.i(113613);
+    ab.d("MicroMsg.MMPoiMapUI", "back pressed");
+    c.a(this.ogD, c.bMk(), c.v(this.ogD).lxQ, true);
+    c.a(this.ogD, null);
+    AppMethodBeat.o(113613);
   }
 }
 

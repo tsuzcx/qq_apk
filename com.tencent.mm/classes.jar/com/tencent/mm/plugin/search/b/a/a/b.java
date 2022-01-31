@@ -2,13 +2,16 @@ package com.tencent.mm.plugin.search.b.a.a;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mm.ai.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.f;
 import com.tencent.mm.plugin.fts.a.a.g;
 import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.ui.FTSConvMessageUI;
 import com.tencent.mm.plugin.fts.ui.FTSConvTalkerMessageUI;
+import com.tencent.mm.plugin.fts.ui.a.m;
 import com.tencent.mm.plugin.fts.ui.a.p;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class b
   implements com.tencent.mm.plugin.fts.a.d.a.b
@@ -17,91 +20,100 @@ public final class b
   {
     Object localObject2 = null;
     Object localObject1 = null;
-    com.tencent.mm.plugin.fts.ui.a.m localm = (com.tencent.mm.plugin.fts.ui.a.m)paramVarArgs;
-    if (localm.kDC < 2)
-    {
-      if (f.lc(localm.username))
+    AppMethodBeat.i(24406);
+    m localm = (m)paramVarArgs;
+    if (localm.mZy < 2) {
+      if (f.rX(localm.username))
       {
         paramVarArgs = new Intent().putExtra("Contact_User", localm.username);
-        com.tencent.mm.plugin.search.a.eUR.d(paramVarArgs, paramContext);
-        return true;
+        com.tencent.mm.plugin.search.a.gmO.c(paramVarArgs, paramContext);
       }
-      if (f.eW(localm.username))
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(24406);
+      return true;
+      if (f.lg(localm.username))
       {
         paramVarArgs = new Intent();
         paramVarArgs.putExtra("Contact_User", localm.username);
         paramVarArgs.addFlags(67108864);
         paramVarArgs.putExtra("biz_chat_from_scene", 5);
-        com.tencent.mm.br.d.e(paramContext, ".ui.bizchat.BizChatConversationUI", paramVarArgs);
-        return true;
+        com.tencent.mm.bq.d.f(paramContext, ".ui.bizchat.BizChatConversationUI", paramVarArgs);
       }
-      if (f.ld(localm.username))
+      else
       {
-        paramVarArgs = f.kX(localm.username);
-        if (paramVarArgs == null) {}
-        for (paramVarArgs = (com.tencent.mm.plugin.fts.a.d.a.a)localObject1;; paramVarArgs = paramVarArgs.LC())
+        if (f.rY(localm.username))
         {
-          localObject1 = paramVarArgs;
-          if (paramVarArgs == null) {
-            localObject1 = "";
+          paramVarArgs = f.rS(localm.username);
+          if (paramVarArgs == null) {}
+          for (paramVarArgs = (com.tencent.mm.plugin.fts.a.d.a.a)localObject1;; paramVarArgs = paramVarArgs.aek())
+          {
+            localObject1 = paramVarArgs;
+            if (paramVarArgs == null) {
+              localObject1 = "";
+            }
+            paramVarArgs = new Intent();
+            paramVarArgs.putExtra("rawUrl", (String)localObject1);
+            paramVarArgs.putExtra("useJs", true);
+            paramVarArgs.putExtra("srcUsername", localm.username);
+            paramVarArgs.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
+            paramVarArgs.addFlags(67108864);
+            com.tencent.mm.bq.d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramVarArgs);
+            break;
           }
+        }
+        paramVarArgs = bo.P(localm.mRX.mSy);
+        paramVarArgs = new Intent().putExtra("Chat_User", localm.username).putExtra("finish_direct", true).putExtra("from_global_search", true).putExtra("msg_local_id", localm.hrL.mSZ).putExtra("highlight_keyword_list", paramVarArgs);
+        com.tencent.mm.plugin.search.a.gmO.d(paramVarArgs, paramContext);
+        continue;
+        if (f.lg(localm.username))
+        {
           paramVarArgs = new Intent();
-          paramVarArgs.putExtra("rawUrl", (String)localObject1);
-          paramVarArgs.putExtra("useJs", true);
-          paramVarArgs.putExtra("srcUsername", localm.username);
-          paramVarArgs.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
+          paramVarArgs.putExtra("Contact_User", localm.username);
           paramVarArgs.addFlags(67108864);
-          com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramVarArgs);
-          return true;
+          paramVarArgs.putExtra("biz_chat_from_scene", 5);
+          com.tencent.mm.bq.d.f(paramContext, ".ui.bizchat.BizChatConversationUI", paramVarArgs);
+        }
+        else
+        {
+          if (f.rY(localm.username))
+          {
+            paramVarArgs = f.rS(localm.username);
+            if (paramVarArgs == null) {}
+            for (paramVarArgs = localObject2;; paramVarArgs = paramVarArgs.aek())
+            {
+              localObject1 = paramVarArgs;
+              if (paramVarArgs == null) {
+                localObject1 = "";
+              }
+              paramVarArgs = new Intent();
+              paramVarArgs.putExtra("rawUrl", (String)localObject1);
+              paramVarArgs.putExtra("useJs", true);
+              paramVarArgs.putExtra("srcUsername", localm.username);
+              paramVarArgs.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
+              paramVarArgs.addFlags(67108864);
+              com.tencent.mm.bq.d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramVarArgs);
+              break;
+            }
+          }
+          if ((localm instanceof p))
+          {
+            paramVarArgs = (p)localm;
+            paramContext.startActivity(new Intent(paramContext, FTSConvTalkerMessageUI.class).putExtra("Search_Scene", paramVarArgs.ibk).putExtra("key_talker_query", paramVarArgs.mYP.mRX.mSw).putExtra("key_talker", paramVarArgs.mYP.mRV).putExtra("key_conv", paramVarArgs.username).putExtra("key_query", paramVarArgs.mRX.mSw).putExtra("detail_type", paramVarArgs.showType));
+          }
+          else
+          {
+            paramContext.startActivity(new Intent(paramContext, FTSConvMessageUI.class).putExtra("Search_Scene", localm.ibk).putExtra("key_conv", localm.username).putExtra("key_query", localm.mRX.mSw).putExtra("key_count", localm.mZy));
+          }
         }
       }
-      paramVarArgs = bk.G(localm.kwi.kwI);
-      paramVarArgs = new Intent().putExtra("Chat_User", localm.username).putExtra("finish_direct", true).putExtra("from_global_search", true).putExtra("msg_local_id", localm.fYx.kxk).putExtra("highlight_keyword_list", paramVarArgs);
-      com.tencent.mm.plugin.search.a.eUR.e(paramVarArgs, paramContext);
-      return true;
     }
-    if (f.eW(localm.username))
-    {
-      paramVarArgs = new Intent();
-      paramVarArgs.putExtra("Contact_User", localm.username);
-      paramVarArgs.addFlags(67108864);
-      paramVarArgs.putExtra("biz_chat_from_scene", 5);
-      com.tencent.mm.br.d.e(paramContext, ".ui.bizchat.BizChatConversationUI", paramVarArgs);
-      return true;
-    }
-    if (f.ld(localm.username))
-    {
-      paramVarArgs = f.kX(localm.username);
-      if (paramVarArgs == null) {}
-      for (paramVarArgs = localObject2;; paramVarArgs = paramVarArgs.LC())
-      {
-        localObject1 = paramVarArgs;
-        if (paramVarArgs == null) {
-          localObject1 = "";
-        }
-        paramVarArgs = new Intent();
-        paramVarArgs.putExtra("rawUrl", (String)localObject1);
-        paramVarArgs.putExtra("useJs", true);
-        paramVarArgs.putExtra("srcUsername", localm.username);
-        paramVarArgs.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
-        paramVarArgs.addFlags(67108864);
-        com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramVarArgs);
-        return true;
-      }
-    }
-    if ((localm instanceof p))
-    {
-      paramVarArgs = (p)localm;
-      paramContext.startActivity(new Intent(paramContext, FTSConvTalkerMessageUI.class).putExtra("Search_Scene", paramVarArgs.kxJ).putExtra("key_talker_query", paramVarArgs.kCT.kwi.kwG).putExtra("key_talker", paramVarArgs.kCT.kwg).putExtra("key_conv", paramVarArgs.username).putExtra("key_query", paramVarArgs.kwi.kwG).putExtra("detail_type", paramVarArgs.showType));
-      return true;
-    }
-    paramContext.startActivity(new Intent(paramContext, FTSConvMessageUI.class).putExtra("Search_Scene", localm.kxJ).putExtra("key_conv", localm.username).putExtra("key_query", localm.kwi.kwG).putExtra("key_count", localm.kDC));
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.search.b.a.a.b
  * JD-Core Version:    0.7.0.1
  */

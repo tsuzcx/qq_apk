@@ -18,287 +18,321 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.e;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
-import com.tencent.mm.R.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.g;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.as.a.a.c.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.h.a.pm.b;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.at.a.a.c.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.g.a.qt.b;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.i;
 
 public final class a
   extends i
 {
-  private static final String inc = com.tencent.mm.compatible.util.e.bkH + "card";
-  private boolean fsA;
-  private ProgressBar fsc;
-  private View.OnClickListener fvj = new a.2(this);
-  private String ijW = "";
-  private ImageView ipO;
-  private Button ipP;
-  private View ipf;
-  private ImageView lOR;
+  private static final String knX;
+  private ProgressBar gJE;
+  private boolean gKc;
+  private View.OnClickListener gMO;
+  private View iCk;
+  private String kkW;
+  private ImageView kqW;
+  private Button kqX;
   private Resources mResources;
-  private TextView nCW;
-  private com.tencent.mm.plugin.shake.c.a.e nZK;
-  private View nZO;
-  private TextView nZP;
-  private TextView nZQ;
-  private TextView nZR;
-  private TextView nZS;
-  private View nZT;
-  private View nZU;
-  private View nZV;
-  private TextView nZW;
-  private TextView nZX;
-  private TextView nZY;
-  private View nZZ;
-  private ImageView oaa;
-  public boolean oab = false;
-  private boolean oac = false;
-  private int oad = 0;
-  private pm.b oae;
-  private a.a oaf = a.a.oak;
-  private a.b oag;
-  private com.tencent.mm.sdk.b.c oah = new a.1(this);
+  private ImageView oml;
+  private View pBF;
+  private com.tencent.mm.plugin.shake.c.a.e qNU;
+  private View qNY;
+  private TextView qNZ;
+  private TextView qOa;
+  private TextView qOb;
+  private TextView qOc;
+  private View qOd;
+  private View qOe;
+  private TextView qOf;
+  private TextView qOg;
+  private TextView qOh;
+  private View qOi;
+  private ImageView qOj;
+  public boolean qOk;
+  private boolean qOl;
+  private int qOm;
+  private qt.b qOn;
+  private a.a qOo;
+  private a.b qOp;
+  private com.tencent.mm.sdk.b.c qOq;
+  private TextView qpb;
+  
+  static
+  {
+    AppMethodBeat.i(24569);
+    knX = com.tencent.mm.compatible.util.e.eQz + "card";
+    AppMethodBeat.o(24569);
+  }
   
   private a(Context paramContext)
   {
-    super(paramContext, R.m.mmcarddialog);
-    y.i("MicroMsg.ShakeCardDialog", "init shake card dialog");
+    super(paramContext, 2131493882);
+    AppMethodBeat.i(24553);
+    this.qOk = false;
+    this.qOl = false;
+    this.qOm = 0;
+    this.kkW = "";
+    this.qOo = a.a.qOt;
+    this.qOq = new a.1(this);
+    this.gMO = new a.2(this);
+    ab.i("MicroMsg.ShakeCardDialog", "init shake card dialog");
     this.mResources = paramContext.getResources();
     setCanceledOnTouchOutside(true);
     getWindow().setSoftInputMode(2);
-    this.ipf = View.inflate(paramContext, R.i.shake_card_dialog, null);
-    this.nZO = this.ipf.findViewById(R.h.shake_card_dialog);
-    this.nZP = ((TextView)this.ipf.findViewById(R.h.card_view_title));
-    this.nZQ = ((TextView)this.ipf.findViewById(R.h.card_sub_title));
-    this.nZR = ((TextView)this.ipf.findViewById(R.h.card_desc));
-    this.lOR = ((ImageView)this.ipf.findViewById(R.h.card_close_img));
-    this.ipP = ((Button)this.ipf.findViewById(R.h.card_accept_btn));
-    this.nZS = ((TextView)this.ipf.findViewById(R.h.card_accept_fail_tip));
-    this.fsc = ((ProgressBar)this.ipf.findViewById(R.h.card_progress_bar));
-    this.lOR.setOnClickListener(this.fvj);
-    this.ipP.setOnClickListener(this.fvj);
-    this.nZT = this.ipf.findViewById(R.h.card_base_info_layout);
-    this.nZU = this.ipf.findViewById(R.h.widget_body);
-    this.nZV = this.ipf.findViewById(R.h.card_widget_header);
-    this.ipO = ((ImageView)this.ipf.findViewById(R.h.card_logo));
-    this.nZW = ((TextView)this.ipf.findViewById(R.h.card_title));
-    this.nZX = ((TextView)this.ipf.findViewById(R.h.card_brand_name));
-    this.nZY = ((TextView)this.ipf.findViewById(R.h.card_time));
-    this.nZZ = this.ipf.findViewById(R.h.card_result_layout);
-    this.oaa = ((ImageView)this.ipf.findViewById(R.h.result_icon));
-    this.nCW = ((TextView)this.ipf.findViewById(R.h.result_desc));
-    this.oad = com.tencent.mm.plugin.shake.c.c.a.bAl();
+    this.iCk = View.inflate(paramContext, 2130970708, null);
+    this.qNY = this.iCk.findViewById(2131827685);
+    this.qNZ = ((TextView)this.iCk.findViewById(2131827687));
+    this.qOa = ((TextView)this.iCk.findViewById(2131822396));
+    this.qOb = ((TextView)this.iCk.findViewById(2131827688));
+    this.oml = ((ImageView)this.iCk.findViewById(2131827694));
+    this.kqX = ((Button)this.iCk.findViewById(2131821984));
+    this.qOc = ((TextView)this.iCk.findViewById(2131827693));
+    this.gJE = ((ProgressBar)this.iCk.findViewById(2131827692));
+    this.oml.setOnClickListener(this.gMO);
+    this.kqX.setOnClickListener(this.gMO);
+    this.pBF = this.iCk.findViewById(2131827686);
+    this.qOd = this.iCk.findViewById(2131822056);
+    this.qOe = this.iCk.findViewById(2131827695);
+    this.kqW = ((ImageView)this.iCk.findViewById(2131827696));
+    this.qOf = ((TextView)this.iCk.findViewById(2131822059));
+    this.qOg = ((TextView)this.iCk.findViewById(2131821971));
+    this.qOh = ((TextView)this.iCk.findViewById(2131827699));
+    this.qOi = this.iCk.findViewById(2131827689);
+    this.qOj = ((ImageView)this.iCk.findViewById(2131827690));
+    this.qpb = ((TextView)this.iCk.findViewById(2131827691));
+    this.qOm = com.tencent.mm.plugin.shake.c.c.a.clF();
+    AppMethodBeat.o(24553);
   }
   
   public static a a(Context paramContext, com.tencent.mm.plugin.shake.c.a.e parame, DialogInterface.OnCancelListener paramOnCancelListener, a.b paramb)
   {
-    if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing())) {
+    AppMethodBeat.i(24561);
+    if (((Activity)paramContext).isFinishing())
+    {
+      AppMethodBeat.o(24561);
       return null;
     }
     a locala = new a(paramContext);
     locala.setOnCancelListener(paramOnCancelListener);
     locala.setCancelable(true);
-    locala.nZK = parame;
-    if (locala.nZK == null) {
-      y.e("MicroMsg.ShakeCardDialog", "updateView() mCardItem == null");
+    locala.qNU = parame;
+    if (locala.qNU == null) {
+      ab.e("MicroMsg.ShakeCardDialog", "updateView() mCardItem == null");
     }
     for (;;)
     {
-      locala.oag = paramb;
+      locala.qOp = paramb;
       locala.show();
       h.a(paramContext, locala);
+      AppMethodBeat.o(24561);
       return locala;
-      if (TextUtils.isEmpty(locala.nZK.title)) {
-        locala.nZP.setText(locala.nZK.title);
+      if (TextUtils.isEmpty(locala.qNU.title)) {
+        locala.qNZ.setText(locala.qNU.title);
       }
-      y.i("MicroMsg.ShakeCardDialog", "updateView() action_type is has card");
-      locala.oaf = a.a.oak;
-      locala.bAg();
-      locala.bAi();
-      if (locala.oad == 0)
+      ab.i("MicroMsg.ShakeCardDialog", "updateView() action_type is has card");
+      locala.qOo = a.a.qOt;
+      locala.updateLayout();
+      locala.clA();
+      if (locala.qOm == 0)
       {
-        locala.nZO.setBackgroundResource(R.g.shake_card_dialog_no_activity_bg);
-        locala.nZU.setBackgroundResource(R.g.shake_card_normal_widget_body_bg);
-        locala.nZP.setTextColor(locala.mResources.getColor(R.e.black));
-        locala.nZQ.setTextColor(locala.mResources.getColor(R.e.navbar_text_normal));
-        locala.nZR.setTextColor(locala.mResources.getColor(R.e.navbar_text_normal));
-        locala.nCW.setTextColor(locala.getContext().getResources().getColor(R.e.black));
-        locala.ipP.setBackgroundResource(R.g.btn_solid_green);
-        locala.ipP.setTextColor(locala.getContext().getResources().getColor(R.e.white));
-        locala.nZS.setTextColor(locala.getContext().getResources().getColor(R.e.noactivity_accept_fail_tip_color));
+        locala.qNY.setBackgroundResource(2130840256);
+        locala.qOd.setBackgroundResource(2130840257);
+        locala.qNZ.setTextColor(locala.mResources.getColor(2131689763));
+        locala.qOa.setTextColor(locala.mResources.getColor(2131690309));
+        locala.qOb.setTextColor(locala.mResources.getColor(2131690309));
+        locala.qpb.setTextColor(locala.getContext().getResources().getColor(2131689763));
+        locala.kqX.setBackgroundResource(2130838045);
+        locala.kqX.setTextColor(locala.getContext().getResources().getColor(2131690709));
+        locala.qOc.setTextColor(locala.getContext().getResources().getColor(2131690315));
       }
     }
   }
   
-  private void bAg()
+  private void clA()
   {
-    if (this.oaf == a.a.oam)
-    {
-      this.nZT.setVisibility(8);
-      this.nZZ.setVisibility(0);
-    }
-    while ((this.oaf != a.a.oak) && (this.oaf != a.a.oal) && (this.oaf != a.a.oan)) {
-      return;
-    }
-    this.nZT.setVisibility(0);
-    this.nZZ.setVisibility(8);
-  }
-  
-  private void bAh()
-  {
-    if ((this.oaf == a.a.oak) || (this.oaf == a.a.oan)) {
-      if (TextUtils.isEmpty(this.nZK.nZu)) {
-        this.ipP.setText(R.l.card_add);
-      }
-    }
-    do
-    {
-      return;
-      this.ipP.setText(this.nZK.nZu);
-      return;
-      if (this.oaf == a.a.oal)
-      {
-        this.ipP.setText("");
-        return;
-      }
-    } while (this.oaf != a.a.oam);
-    this.ipP.setText(R.l.shake_check_card_detail);
-  }
-  
-  private void bAi()
-  {
-    int i = getContext().getResources().getDimensionPixelOffset(R.f.shake_card_widget_bg_corner);
+    AppMethodBeat.i(24560);
+    int i = getContext().getResources().getDimensionPixelOffset(2131428666);
     Object localObject1 = new ShapeDrawable(new RoundRectShape(new float[] { i, i, i, i, 0.0F, 0.0F, 0.0F, 0.0F }, null, null));
-    ((ShapeDrawable)localObject1).getPaint().setColor(com.tencent.mm.plugin.shake.c.c.a.yR(this.nZK.color));
-    this.nZV.setBackgroundDrawable((Drawable)localObject1);
-    bAh();
-    if (!TextUtils.isEmpty(this.nZK.nZs)) {
-      this.nZP.setText(this.nZK.nZs);
+    ((ShapeDrawable)localObject1).getPaint().setColor(com.tencent.mm.plugin.shake.c.c.a.IB(this.qNU.color));
+    this.qOe.setBackgroundDrawable((Drawable)localObject1);
+    clz();
+    if (!TextUtils.isEmpty(this.qNU.qNC)) {
+      this.qNZ.setText(this.qNU.qNC);
     }
-    if (!TextUtils.isEmpty(this.nZK.nZw))
+    if (!TextUtils.isEmpty(this.qNU.qNG))
     {
-      this.nZQ.setText(this.nZK.nZw);
-      this.nZQ.setVisibility(0);
+      this.qOa.setText(this.qNU.qNG);
+      this.qOa.setVisibility(0);
     }
-    if (!TextUtils.isEmpty(this.nZK.nZt))
+    if (!TextUtils.isEmpty(this.qNU.qND))
     {
-      this.nZR.setText(this.nZK.nZt);
-      this.nZR.setVisibility(0);
+      this.qOb.setText(this.qNU.qND);
+      this.qOb.setVisibility(0);
     }
     String str;
-    int j;
-    if (!TextUtils.isEmpty(this.nZK.ilp))
+    if (!TextUtils.isEmpty(this.qNU.kmm))
     {
-      i = getContext().getResources().getDimensionPixelSize(R.f.shake_card_logo_height);
-      localObject1 = this.ipO;
-      str = this.nZK.ilp;
-      j = R.k.shake_card_package_defaultlogo;
+      i = getContext().getResources().getDimensionPixelSize(2131428665);
+      localObject1 = this.kqW;
+      str = this.qNU.kmm;
       if ((localObject1 != null) && (!TextUtils.isEmpty(str))) {
-        break label374;
+        break label380;
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(this.nZK.title)) {
-        this.nZW.setText(this.nZK.title);
+      if (!TextUtils.isEmpty(this.qNU.title)) {
+        this.qOf.setText(this.qNU.title);
       }
-      if (!TextUtils.isEmpty(this.nZK.imA)) {
-        this.nZX.setText(this.nZK.imA);
+      if (!TextUtils.isEmpty(this.qNU.knw)) {
+        this.qOg.setText(this.qNU.knw);
       }
-      if (this.nZK.end_time > 0) {
-        this.nZY.setText(getContext().getString(R.l.card_validate_to, new Object[] { com.tencent.mm.plugin.shake.c.c.a.ce(this.nZK.end_time) }));
+      if (this.qNU.kmq > 0) {
+        this.qOh.setText(getContext().getString(2131298082, new Object[] { com.tencent.mm.plugin.shake.c.c.a.ha(this.qNU.kmq) }));
       }
-      if (this.oaf != a.a.oan) {
+      if (this.qOo != a.a.qOw) {
         break;
       }
-      this.nZS.setVisibility(0);
+      this.qOc.setVisibility(0);
+      AppMethodBeat.o(24560);
       return;
-      label374:
+      label380:
       if (!TextUtils.isEmpty(str))
       {
         Object localObject2 = new c.a();
-        ((c.a)localObject2).eri = com.tencent.mm.compatible.util.e.bkH;
-        o.OO();
-        ((c.a)localObject2).erB = null;
-        ((c.a)localObject2).erh = String.format("%s/%s", new Object[] { inc, g.o(str.getBytes()) });
-        ((c.a)localObject2).erf = true;
-        ((c.a)localObject2).erD = true;
-        ((c.a)localObject2).erd = true;
-        ((c.a)localObject2).erm = i;
-        ((c.a)localObject2).erl = i;
-        ((c.a)localObject2).eru = j;
-        localObject2 = ((c.a)localObject2).OV();
-        o.ON().a(str, (ImageView)localObject1, (com.tencent.mm.as.a.a.c)localObject2);
+        ((c.a)localObject2).eNP = com.tencent.mm.compatible.util.e.eQz;
+        o.ahH();
+        ((c.a)localObject2).eOd = null;
+        ((c.a)localObject2).eNO = String.format("%s/%s", new Object[] { knX, g.w(str.getBytes()) });
+        ((c.a)localObject2).eNM = true;
+        ((c.a)localObject2).eOk = true;
+        ((c.a)localObject2).eNK = true;
+        ((c.a)localObject2).eNT = i;
+        ((c.a)localObject2).eNS = i;
+        ((c.a)localObject2).eNY = 2131231974;
+        localObject2 = ((c.a)localObject2).ahY();
+        o.ahG().a(str, (ImageView)localObject1, (com.tencent.mm.at.a.a.c)localObject2);
       }
       else
       {
-        ((ImageView)localObject1).setImageResource(j);
+        ((ImageView)localObject1).setImageResource(2131231974);
       }
     }
-    this.nZS.setVisibility(8);
+    this.qOc.setVisibility(8);
+    AppMethodBeat.o(24560);
+  }
+  
+  private void clz()
+  {
+    AppMethodBeat.i(24559);
+    if ((this.qOo == a.a.qOt) || (this.qOo == a.a.qOw))
+    {
+      if (TextUtils.isEmpty(this.qNU.qNE))
+      {
+        this.kqX.setText(2131297869);
+        AppMethodBeat.o(24559);
+        return;
+      }
+      this.kqX.setText(this.qNU.qNE);
+      AppMethodBeat.o(24559);
+      return;
+    }
+    if (this.qOo == a.a.qOu)
+    {
+      this.kqX.setText("");
+      AppMethodBeat.o(24559);
+      return;
+    }
+    if (this.qOo == a.a.qOv) {
+      this.kqX.setText(2131303571);
+    }
+    AppMethodBeat.o(24559);
+  }
+  
+  private void updateLayout()
+  {
+    AppMethodBeat.i(24558);
+    if (this.qOo == a.a.qOv)
+    {
+      this.pBF.setVisibility(8);
+      this.qOi.setVisibility(0);
+      AppMethodBeat.o(24558);
+      return;
+    }
+    if ((this.qOo == a.a.qOt) || (this.qOo == a.a.qOu) || (this.qOo == a.a.qOw))
+    {
+      this.pBF.setVisibility(0);
+      this.qOi.setVisibility(8);
+    }
+    AppMethodBeat.o(24558);
   }
   
   public final void dismiss()
   {
+    AppMethodBeat.i(24557);
     try
     {
-      if (this.oag != null) {
-        this.oag.bAj();
+      if (this.qOp != null) {
+        this.qOp.clB();
       }
-      if ((this.oaf != a.a.oam) && (!this.oac))
+      if ((this.qOo != a.a.qOv) && (!this.qOl))
       {
-        this.oac = true;
-        y.i("MicroMsg.ShakeCardDialog", "ShakeCardDialog card is not cancel accepte");
-        au.Dk().a(new com.tencent.mm.plugin.shake.c.a.a(this.nZK.iln, this.nZK.bZd), 0);
+        this.qOl = true;
+        ab.i("MicroMsg.ShakeCardDialog", "ShakeCardDialog card is not cancel accepte");
+        aw.Rc().a(new com.tencent.mm.plugin.shake.c.a.a(this.qNU.kml, this.qNU.cHo), 0);
       }
-      com.tencent.mm.sdk.b.a.udP.d(this.oah);
-      y.i("MicroMsg.ShakeCardDialog", "dismiss ShakeCardDialog");
+      com.tencent.mm.sdk.b.a.ymk.d(this.qOq);
+      ab.i("MicroMsg.ShakeCardDialog", "dismiss ShakeCardDialog");
       super.dismiss();
+      AppMethodBeat.o(24557);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.ShakeCardDialog", "dismiss exception, e = " + localException.getMessage());
+      ab.e("MicroMsg.ShakeCardDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(24557);
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(24555);
     super.onCreate(paramBundle);
-    setContentView(this.ipf);
+    setContentView(this.iCk);
+    AppMethodBeat.o(24555);
   }
   
   public final boolean onKeyUp(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(24554);
     if (paramInt == 4)
     {
-      y.i("MicroMsg.ShakeCardDialog", "back key in shake card dialog");
+      ab.i("MicroMsg.ShakeCardDialog", "back key in shake card dialog");
       dismiss();
-      if (this.oag != null) {
-        this.oag.bAj();
+      if (this.qOp != null) {
+        this.qOp.clB();
       }
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(24554);
+    return bool;
   }
   
   public final void setCancelable(boolean paramBoolean)
   {
+    AppMethodBeat.i(24556);
     super.setCancelable(paramBoolean);
-    this.fsA = paramBoolean;
-    setCanceledOnTouchOutside(this.fsA);
+    this.gKc = paramBoolean;
+    setCanceledOnTouchOutside(this.gKc);
+    AppMethodBeat.o(24556);
   }
 }
 

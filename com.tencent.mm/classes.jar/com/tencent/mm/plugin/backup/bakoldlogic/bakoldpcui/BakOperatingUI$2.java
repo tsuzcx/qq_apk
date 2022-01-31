@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcui;
 
 import android.content.Intent;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMWizardActivity;
 
 final class BakOperatingUI$2
@@ -11,14 +12,17 @@ final class BakOperatingUI$2
   
   public final void run()
   {
-    y.i("MicroMsg.BakOperatingUI", "BakOperatingUI onCloseSocket, %d", new Object[] { Integer.valueOf(this.bEf) });
-    if (this.bEf == 15)
+    AppMethodBeat.i(17934);
+    ab.i("MicroMsg.BakOperatingUI", "BakOperatingUI onCloseSocket, %d", new Object[] { Integer.valueOf(this.val$errType) });
+    if (this.val$errType == 15)
     {
-      BakOperatingUI.n(this.hPc);
+      BakOperatingUI.n(this.jIE);
+      AppMethodBeat.o(17934);
       return;
     }
-    Intent localIntent = new Intent(this.hPc, BakConnErrorUI.class);
-    MMWizardActivity.C(this.hPc, localIntent);
+    Intent localIntent = new Intent(this.jIE, BakConnErrorUI.class);
+    MMWizardActivity.J(this.jIE, localIntent);
+    AppMethodBeat.o(17934);
   }
 }
 

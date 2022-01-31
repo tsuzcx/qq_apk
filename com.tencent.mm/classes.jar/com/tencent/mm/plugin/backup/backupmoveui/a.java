@@ -8,10 +8,9 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.model.r;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.backup.b.f.b;
 import com.tencent.mm.plugin.backup.d.b;
 import com.tencent.mm.pluginsdk.ui.a.b;
@@ -22,28 +21,39 @@ import java.util.LinkedList;
 public final class a
   extends BaseAdapter
 {
-  BackupMoveChooseUI hIQ;
-  HashSet<Integer> hIR;
-  boolean hIS = false;
+  BackupMoveChooseUI jCq;
+  HashSet<Integer> jCr;
+  boolean jCs;
   
   public a(BackupMoveChooseUI paramBackupMoveChooseUI)
   {
-    this.hIQ = paramBackupMoveChooseUI;
-    this.hIR = new HashSet();
-    this.hIS = false;
+    AppMethodBeat.i(17319);
+    this.jCs = false;
+    this.jCq = paramBackupMoveChooseUI;
+    this.jCr = new HashSet();
+    this.jCs = false;
+    AppMethodBeat.o(17319);
   }
   
-  private static f.b nz(int paramInt)
+  private static f.b rn(int paramInt)
   {
-    return (f.b)b.atS().atW().atP().get(paramInt);
+    AppMethodBeat.i(17321);
+    f.b localb = (f.b)b.aTr().aTv().aTn().get(paramInt);
+    AppMethodBeat.o(17321);
+    return localb;
   }
   
   public final int getCount()
   {
-    LinkedList localLinkedList = b.atS().atW().atP();
-    if (localLinkedList != null) {
-      return localLinkedList.size();
+    AppMethodBeat.i(17320);
+    LinkedList localLinkedList = b.aTr().aTv().aTn();
+    if (localLinkedList != null)
+    {
+      int i = localLinkedList.size();
+      AppMethodBeat.o(17320);
+      return i;
     }
+    AppMethodBeat.o(17320);
     return 0;
   }
   
@@ -54,44 +64,47 @@ public final class a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(17322);
     f.b localb;
     if (paramView == null)
     {
-      paramView = this.hIQ.getLayoutInflater().inflate(R.i.bak_move_choose_item, paramViewGroup, false);
+      paramView = this.jCq.getLayoutInflater().inflate(2130968808, paramViewGroup, false);
       paramViewGroup = new a.a(this);
-      paramViewGroup.doU = ((ImageView)paramView.findViewById(R.h.avatar_iv));
-      paramViewGroup.eXO = ((TextView)paramView.findViewById(R.h.title_tv));
-      paramViewGroup.eXQ = ((CheckBox)paramView.findViewById(R.h.select_cb));
-      paramViewGroup.hIU = ((RelativeLayout)paramView.findViewById(R.h.select_cb_click_layout));
+      paramViewGroup.egq = ((ImageView)paramView.findViewById(2131821210));
+      paramViewGroup.gpL = ((TextView)paramView.findViewById(2131821212));
+      paramViewGroup.gpN = ((CheckBox)paramView.findViewById(2131821631));
+      paramViewGroup.jCu = ((RelativeLayout)paramView.findViewById(2131821630));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.hIU.setOnClickListener(new a.1(this, paramInt));
-      localb = nz(paramInt);
-      a.b.a(paramViewGroup.doU, localb.hFD);
-      if (!s.fn(localb.hFD)) {
-        break label204;
+      paramViewGroup.jCu.setOnClickListener(new a.1(this, paramInt));
+      localb = rn(paramInt);
+      a.b.c(paramViewGroup.egq, localb.jza);
+      if (!t.lA(localb.jza)) {
+        break label211;
       }
-      paramViewGroup.eXO.setText(j.a(this.hIQ, r.getDisplayName(localb.hFD, localb.hFD), paramViewGroup.eXO.getTextSize()));
+      paramViewGroup.gpL.setText(j.b(this.jCq, s.getDisplayName(localb.jza, localb.jza), paramViewGroup.gpL.getTextSize()));
+      label170:
+      if (!this.jCr.contains(Integer.valueOf(paramInt))) {
+        break label243;
+      }
+      paramViewGroup.gpN.setChecked(true);
     }
     for (;;)
     {
-      if (!this.hIR.contains(Integer.valueOf(paramInt))) {
-        break label236;
-      }
-      paramViewGroup.eXQ.setChecked(true);
+      AppMethodBeat.o(17322);
       return paramView;
       paramViewGroup = (a.a)paramView.getTag();
       break;
-      label204:
-      paramViewGroup.eXO.setText(j.a(this.hIQ, r.gV(localb.hFD), paramViewGroup.eXO.getTextSize()));
+      label211:
+      paramViewGroup.gpL.setText(j.b(this.jCq, s.nE(localb.jza), paramViewGroup.gpL.getTextSize()));
+      break label170;
+      label243:
+      paramViewGroup.gpN.setChecked(false);
     }
-    label236:
-    paramViewGroup.eXQ.setChecked(false);
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.a
  * JD-Core Version:    0.7.0.1
  */

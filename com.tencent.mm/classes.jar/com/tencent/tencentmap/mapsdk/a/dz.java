@@ -1,109 +1,251 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.os.SystemClock;
+import android.graphics.DashPathEffect;
+import com.tencent.mapsdk.raster.model.Circle;
+import com.tencent.mapsdk.raster.model.LatLng;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class dz
+  implements Circle
 {
-  private static volatile boolean a = false;
+  private co a;
   
-  public static void a(ea paramea)
+  public dz(co paramco)
   {
-    boolean bool1 = true;
-    int m = 0;
-    try
-    {
-      bool2 = a;
-      if (bool2) {
-        return;
-      }
-      System.currentTimeMillis();
-      SystemClock.elapsedRealtime();
-      if (paramea == null) {
-        throw new eb("initParam null");
-      }
-    }
-    finally {}
-    Object localObject = paramea.a().getPackageName();
-    String str = hn.a(paramea.a());
-    boolean bool2 = paramea.f();
-    int k = paramea.g();
-    if (paramea.d()) {}
-    for (int i = paramea.e(); i <= 0; i = hn.a(paramea.a(), (String)localObject)) {
-      throw new eb("appid illegal:" + i);
-    }
-    if ((bool2) && (k <= 0)) {
-      throw new eb("testAppid illegal:" + k);
-    }
-    int j = m;
-    if (!paramea.d())
-    {
-      hn.a locala = hn.a(i, paramea.a(), (String)localObject, "com.tencent.halley.common.platform.service.PlatformService");
-      if (locala == null) {
-        throw new eb("need set PlatformService in manifest for halley");
-      }
-      if ((locala.d != null) && (locala.a != null))
-      {
-        if (!locala.d.equals(locala.a)) {
-          em.f = bool1;
-        }
-      }
-      else
-      {
-        if (locala.c) {
-          throw new eb("need set PlatformService exported to false");
-        }
-        if (!locala.b) {
-          throw new eb("need set PlatformService enabled to true");
-        }
-        localObject = hn.a(i, paramea.a(), (String)localObject, "com.tencent.halley.common.platform.service.ActivateService");
-        j = m;
-        if (localObject == null) {
-          break label412;
-        }
-        if (!((hn.a)localObject).c) {
-          throw new eb("need set ActivateService exported to true");
-        }
-        if (((hn.a)localObject).e == null) {
-          throw new eb("need set security_version for ActivateService");
-        }
-        m = ((hn.a)localObject).e.getInt("security_version");
-        j = m;
-        if (m > 0) {
-          break label412;
-        }
-        throw new eb("need set valid security_version for ActivateService");
-      }
-    }
-    for (;;)
-    {
-      label366:
-      em.a(bool2, i, paramea, str, j);
-      eq.a();
-      ey.a.a(paramea.h());
-      hj.d().g();
-      a = true;
-      SystemClock.elapsedRealtime();
-      break;
-      label412:
-      do
-      {
-        break label366;
-        bool1 = false;
-        break;
-      } while (!bool2);
-      i = k;
-    }
+    this.a = paramco;
   }
   
-  public static ed b(ea paramea)
+  public boolean contains(LatLng paramLatLng)
   {
-    if (!a) {
-      a(paramea);
+    AppMethodBeat.i(150221);
+    if (this.a != null)
+    {
+      boolean bool = this.a.a(eh.a(paramLatLng));
+      AppMethodBeat.o(150221);
+      return bool;
     }
-    return eg.a();
+    AppMethodBeat.o(150221);
+    return false;
   }
+  
+  public LatLng getCenter()
+  {
+    AppMethodBeat.i(150206);
+    if (this.a != null)
+    {
+      LatLng localLatLng = eh.a(this.a.d());
+      AppMethodBeat.o(150206);
+      return localLatLng;
+    }
+    AppMethodBeat.o(150206);
+    return null;
+  }
+  
+  public int getFillColor()
+  {
+    AppMethodBeat.i(150214);
+    if (this.a != null)
+    {
+      int i = this.a.h();
+      AppMethodBeat.o(150214);
+      return i;
+    }
+    AppMethodBeat.o(150214);
+    return 0;
+  }
+  
+  public String getId()
+  {
+    AppMethodBeat.i(150204);
+    if (this.a != null)
+    {
+      String str = this.a.c();
+      AppMethodBeat.o(150204);
+      return str;
+    }
+    AppMethodBeat.o(150204);
+    return null;
+  }
+  
+  public int getLevel()
+  {
+    AppMethodBeat.i(150218);
+    if (this.a != null)
+    {
+      int i = this.a.k();
+      AppMethodBeat.o(150218);
+      return i;
+    }
+    AppMethodBeat.o(150218);
+    return 0;
+  }
+  
+  public double getRadius()
+  {
+    AppMethodBeat.i(150208);
+    if (this.a != null)
+    {
+      double d = this.a.e();
+      AppMethodBeat.o(150208);
+      return d;
+    }
+    AppMethodBeat.o(150208);
+    return 0.0D;
+  }
+  
+  public int getStrokeColor()
+  {
+    AppMethodBeat.i(150212);
+    if (this.a != null)
+    {
+      int i = this.a.g();
+      AppMethodBeat.o(150212);
+      return i;
+    }
+    AppMethodBeat.o(150212);
+    return 0;
+  }
+  
+  public boolean getStrokeDash()
+  {
+    return false;
+  }
+  
+  public DashPathEffect getStrokeDashPathEffect()
+  {
+    return null;
+  }
+  
+  public float getStrokeWidth()
+  {
+    AppMethodBeat.i(150210);
+    if (this.a != null)
+    {
+      float f1 = this.a.f();
+      float f2 = w.g();
+      AppMethodBeat.o(150210);
+      return f1 * f2;
+    }
+    AppMethodBeat.o(150210);
+    return 0.0F;
+  }
+  
+  public float getZIndex()
+  {
+    AppMethodBeat.i(150216);
+    if (this.a != null)
+    {
+      float f = (int)this.a.i();
+      AppMethodBeat.o(150216);
+      return f;
+    }
+    AppMethodBeat.o(150216);
+    return 0.0F;
+  }
+  
+  public boolean isVisible()
+  {
+    AppMethodBeat.i(150220);
+    if (this.a != null)
+    {
+      boolean bool = this.a.j();
+      AppMethodBeat.o(150220);
+      return bool;
+    }
+    AppMethodBeat.o(150220);
+    return false;
+  }
+  
+  public void remove()
+  {
+    AppMethodBeat.i(150203);
+    if (this.a != null) {
+      this.a.b();
+    }
+    AppMethodBeat.o(150203);
+  }
+  
+  public void setCenter(LatLng paramLatLng)
+  {
+    AppMethodBeat.i(150205);
+    if (this.a != null) {
+      this.a.b(eh.a(paramLatLng));
+    }
+    AppMethodBeat.o(150205);
+  }
+  
+  public void setFillColor(int paramInt)
+  {
+    AppMethodBeat.i(150213);
+    if (this.a != null) {
+      this.a.b(paramInt);
+    }
+    AppMethodBeat.o(150213);
+  }
+  
+  public void setLevel(int paramInt)
+  {
+    AppMethodBeat.i(150217);
+    if (this.a != null) {
+      this.a.d(paramInt);
+    }
+    AppMethodBeat.o(150217);
+  }
+  
+  public void setRadius(double paramDouble)
+  {
+    AppMethodBeat.i(150207);
+    if (this.a != null) {
+      this.a.a(paramDouble);
+    }
+    AppMethodBeat.o(150207);
+  }
+  
+  public void setStrokeColor(int paramInt)
+  {
+    AppMethodBeat.i(150211);
+    if (this.a != null) {
+      this.a.a(paramInt);
+    }
+    AppMethodBeat.o(150211);
+  }
+  
+  public void setStrokeDash(boolean paramBoolean) {}
+  
+  public void setStrokeWidth(float paramFloat)
+  {
+    AppMethodBeat.i(150209);
+    if (this.a != null)
+    {
+      co localco = this.a;
+      float f = paramFloat;
+      if (paramFloat < 0.0F) {
+        f = 0.0F;
+      }
+      localco.a(f / w.g());
+    }
+    AppMethodBeat.o(150209);
+  }
+  
+  public void setVisible(boolean paramBoolean)
+  {
+    AppMethodBeat.i(150219);
+    if (this.a != null) {
+      this.a.a(paramBoolean);
+    }
+    AppMethodBeat.o(150219);
+  }
+  
+  public void setZIndex(float paramFloat)
+  {
+    AppMethodBeat.i(150215);
+    if (this.a != null) {
+      this.a.c((int)paramFloat);
+    }
+    AppMethodBeat.o(150215);
+  }
+  
+  public void strokeDashPathEffect(DashPathEffect paramDashPathEffect) {}
 }
 
 

@@ -1,20 +1,37 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.ui.MMActivity.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.sdk.platformtools.bj;
+import java.util.Map;
 
 final class ak$1
-  implements MMActivity.a
+  extends bj<String>
 {
-  ak$1(ak paramak, o paramo, int paramInt) {}
+  ak$1(ak paramak, r paramr) {}
   
-  public final void c(int paramInt1, int paramInt2, Intent paramIntent)
+  private String Mc()
   {
-    if (paramInt1 != (this.ggt.hashCode() & 0xFFFF)) {
-      return;
+    AppMethodBeat.i(140097);
+    try
+    {
+      Object localObject = ak.a(this.bAW);
+      if (localObject != null)
+      {
+        localObject = this.hxM.j("ok", (Map)localObject);
+        AppMethodBeat.o(140097);
+        return localObject;
+      }
+      localObject = this.hxM.j("fail", null);
+      AppMethodBeat.o(140097);
+      return localObject;
     }
-    this.gcp.C(this.dIS, this.ggt.h("ok", null));
+    catch (Exception localException)
+    {
+      String str = this.hxM.j(localException.getMessage(), null);
+      AppMethodBeat.o(140097);
+      return str;
+    }
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.record.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class h$2
   implements Runnable
@@ -9,13 +10,15 @@ final class h$2
   
   public final void run()
   {
-    y.d("MicroMsg.RecordMsgBaseAdapter", "refresh adapter");
-    this.ntQ.notifyDataSetChanged();
+    AppMethodBeat.i(24229);
+    ab.d("MicroMsg.RecordMsgBaseAdapter", "refresh adapter");
+    this.pZx.notifyDataSetChanged();
+    AppMethodBeat.o(24229);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.h.2
  * JD-Core Version:    0.7.0.1
  */

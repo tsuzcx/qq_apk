@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.g;
 
 public class TestTimeForSns
@@ -27,16 +28,18 @@ public class TestTimeForSns
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(39842);
     super.dispatchDraw(paramCanvas);
     if (!this.hasDrawed)
     {
       this.hasDrawed = true;
       if (this.listener != null) {
-        this.listener.aXH();
+        this.listener.bEm();
       }
     }
-    g.wJ(10);
-    g.wJ(22);
+    g.Cy(10);
+    g.Cy(22);
+    AppMethodBeat.o(39842);
   }
   
   public boolean hasDrawed()
@@ -51,7 +54,7 @@ public class TestTimeForSns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TestTimeForSns
  * JD-Core Version:    0.7.0.1
  */

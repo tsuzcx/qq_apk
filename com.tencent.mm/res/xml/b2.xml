@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/coi" android:key="mail_receiver_info_name" android:layout="@layout/ab8" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:title="@string/coh" android:key="mail_receiver_info_addr" android:layout="@layout/ab8" />
+    <CheckBoxPreference android:summary="@string/fz" android:title="@string/fy" android:key="allow_by_identity" android:layout="@layout/afi" />
     <PreferenceSmallCategory />
-    <Preference android:title="@string/d6u" android:key="mail_compose_btn" android:layout="@layout/a5v" />
+    <Preference android:title="@string/dyv" android:key="room_transfer_room_ower" android:layout="@layout/afi" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.chatroom.ui.preference.RoomManagerPreference android:title="@string/dwx" android:key="room_manager" android:layout="@layout/aql" />
 </PreferenceScreen>

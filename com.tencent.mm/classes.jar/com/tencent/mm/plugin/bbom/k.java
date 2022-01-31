@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.bbom;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a.c.a;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.p;
-import com.tencent.mm.pluginsdk.model.app.ap;
+import com.tencent.mm.model.q;
+import com.tencent.mm.pluginsdk.model.app.al;
 
 @Deprecated
 public final class k {}

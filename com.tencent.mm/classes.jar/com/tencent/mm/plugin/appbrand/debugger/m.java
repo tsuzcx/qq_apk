@@ -1,12 +1,15 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import com.tencent.mm.protocal.c.cgl;
-
 public final class m
 {
-  public long fRE = 0L;
-  public cgl fSu;
-  public int fSv;
+  public boolean bDm;
+  public String eeu;
+  public boolean hlH = false;
+  public String hlI;
+  public String hlJ;
+  public int hlK;
+  public int hlL;
+  public int hlM;
 }
 
 

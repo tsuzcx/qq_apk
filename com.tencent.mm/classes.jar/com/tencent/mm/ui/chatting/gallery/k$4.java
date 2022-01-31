@@ -1,44 +1,53 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.pluginsdk.ui.tools.f.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.ui.tools.e.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class k$4
-  implements f.a
+  implements e.a
 {
   k$4(k paramk) {}
   
-  public final int cv(int paramInt1, int paramInt2)
+  public final void Es()
   {
-    y.i("MicroMsg.ImageGalleryViewHolder", "dkvideo onplaytime:%d total:%d,%d size:%d cnt:%d user:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.vxz.oHM), Integer.valueOf(paramInt2), Integer.valueOf(this.vxz.vxx), Integer.valueOf(this.vxz.vxy), this.vxz.bRO });
-    au.DS().O(new k.4.2(this, paramInt2, paramInt1));
+    AppMethodBeat.i(32389);
+    al.d(new k.4.1(this));
+    AppMethodBeat.o(32389);
+  }
+  
+  public final int dP(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(32390);
+    ab.i("MicroMsg.ImageGalleryViewHolder", "dkvideo onplaytime:%d total:%d,%d size:%d cnt:%d user:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.zNL.rxA), Integer.valueOf(paramInt2), Integer.valueOf(this.zNL.zNJ), Integer.valueOf(this.zNL.zNK), this.zNL.czp });
+    aw.RO().ac(new k.4.2(this, paramInt2, paramInt1));
+    AppMethodBeat.o(32390);
     return 0;
   }
   
-  public final void cw(int paramInt1, int paramInt2) {}
+  public final void dQ(int paramInt1, int paramInt2) {}
   
-  public final void kA()
+  public final void mG()
   {
-    if (this.vxz.vuf != null) {
-      this.vxz.vuf.vtP.cGB();
+    AppMethodBeat.i(32387);
+    if (this.zNL.zKg != null) {
+      this.zNL.zKg.zJQ.dKH();
     }
+    AppMethodBeat.o(32387);
   }
   
   public final void onError(int paramInt1, int paramInt2)
   {
-    y.w("MicroMsg.ImageGalleryViewHolder", "play video error what : " + paramInt1 + " extra: " + paramInt2);
-    if (this.vxz.vuf != null) {
-      this.vxz.vuf.vtP.fy(paramInt1, paramInt2);
+    AppMethodBeat.i(32388);
+    ab.w("MicroMsg.ImageGalleryViewHolder", "play video error what : " + paramInt1 + " extra: " + paramInt2);
+    if (this.zNL.zKg != null) {
+      this.zNL.zKg.zJQ.hG(paramInt1, paramInt2);
     }
-    h.nFQ.f(12084, new Object[] { Integer.valueOf(this.vxz.vxx), Integer.valueOf(this.vxz.oHM * 1000), Integer.valueOf(0), Integer.valueOf(4), this.vxz.bRO, Integer.valueOf(this.vxz.vxy), this.vxz.fileId, Long.valueOf(this.vxz.createTime) });
-  }
-  
-  public final void ug()
-  {
-    ai.d(new k.4.1(this));
+    h.qsU.e(12084, new Object[] { Integer.valueOf(this.zNL.zNJ), Integer.valueOf(this.zNL.rxA * 1000), Integer.valueOf(0), Integer.valueOf(4), this.zNL.czp, Integer.valueOf(this.zNL.zNK), this.zNL.fileId, Long.valueOf(this.zNL.createTime) });
+    AppMethodBeat.o(32388);
   }
 }
 

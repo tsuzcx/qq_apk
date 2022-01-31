@@ -3,8 +3,9 @@ package com.tencent.mm.plugin.shake.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.database.Cursor;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.plugin.shake.d.a.c;
@@ -22,16 +23,17 @@ final class ShakeTvHistoryListUI$2$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = h.nFQ;
-    Object localObject2 = m.bzW();
+    AppMethodBeat.i(24893);
+    paramDialogInterface = h.qsU;
+    Object localObject2 = m.clp();
     Object localObject1 = new ArrayList();
-    localObject2 = ((o)localObject2).bAA();
+    localObject2 = ((o)localObject2).clT();
     if (localObject2 != null)
     {
       while (((Cursor)localObject2).moveToNext())
       {
         n localn = new n();
-        localn.d((Cursor)localObject2);
+        localn.convertFrom((Cursor)localObject2);
         ((List)localObject1).add(localn);
       }
       ((Cursor)localObject2).close();
@@ -43,12 +45,13 @@ final class ShakeTvHistoryListUI$2$1
       ((StringBuilder)localObject2).append(((n)((Iterator)localObject1).next()).field_username);
       ((StringBuilder)localObject2).append("|");
     }
-    paramDialogInterface.f(12662, new Object[] { Integer.valueOf(2), ((StringBuilder)localObject2).toString() });
-    m.bzW().dXw.delete("shaketvhistory", null, null);
+    paramDialogInterface.e(12662, new Object[] { Integer.valueOf(2), ((StringBuilder)localObject2).toString() });
+    m.clp().db.delete("shaketvhistory", null, null);
     paramDialogInterface = new c(2, null);
-    au.Dk().a(paramDialogInterface, 0);
-    ShakeTvHistoryListUI.a(this.odA.odz).yc();
-    this.odA.odz.enableOptionMenu(false);
+    aw.Rc().a(paramDialogInterface, 0);
+    ShakeTvHistoryListUI.a(this.qRH.qRG).Ku();
+    this.qRH.qRG.enableOptionMenu(false);
+    AppMethodBeat.o(24893);
   }
 }
 

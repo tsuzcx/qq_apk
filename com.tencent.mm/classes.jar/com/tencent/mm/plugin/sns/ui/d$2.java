@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.plugin.sns.model.af;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.ag;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.List;
 
 final class d$2
@@ -11,15 +12,17 @@ final class d$2
   
   public final void run()
   {
-    this.oMp.cF(this.oMq);
-    d locald = this.oMp;
-    boolean bool = this.oMr;
-    af.bDp().post(new d.3(locald, bool));
+    AppMethodBeat.i(38078);
+    this.rEa.dl(this.rEb);
+    d locald = this.rEa;
+    boolean bool = this.rEc;
+    ag.coO().post(new d.3(locald, bool));
+    AppMethodBeat.o(38078);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.d.2
  * JD-Core Version:    0.7.0.1
  */

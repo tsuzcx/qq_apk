@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.p;
+import com.tencent.mm.plugin.appbrand.r;
 
 public final class at
-  extends a<p>
+  extends a<r>
 {
-  public static final int CTRL_INDEX = 430;
-  public static final String NAME = "pageNotFoundCallback";
+  public static final int CTRL_INDEX = 102;
+  public static final String NAME = "makePhoneCall";
 }
 
 

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.backup.f;
 
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
 import com.tencent.mm.modelvideo.q;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
@@ -8,11 +9,11 @@ import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.h.c;
 import com.tencent.mm.plugin.backup.h.d;
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.c.bml;
-import com.tencent.mm.protocal.c.fo;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.bwc;
+import com.tencent.mm.protocal.protobuf.gx;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.vfs.e;
 import java.io.StringWriter;
@@ -25,23 +26,27 @@ import org.xmlpull.v1.XmlSerializer;
 public final class f
   implements l
 {
-  private static String a(fo paramfo, bi parambi)
+  private static String a(gx paramgx, bi parambi)
   {
-    s locals = c.xA(parambi.field_imgPath);
-    if (locals == null) {
+    AppMethodBeat.i(17461);
+    s locals = c.Gt(parambi.field_imgPath);
+    if (locals == null)
+    {
+      AppMethodBeat.o(17461);
       return null;
     }
     if (parambi.getType() == 62) {}
     for (int i = 62;; i = 43)
     {
-      paramfo.hQR = i;
-      if (!bk.bl(parambi.field_content)) {
+      paramgx.jKs = i;
+      if (!bo.isNullOrNil(parambi.field_content)) {
         break;
       }
+      AppMethodBeat.o(17461);
       return null;
     }
-    if (c.fn(parambi.field_talker)) {}
-    for (paramfo = locals.SB();; paramfo = paramfo.svF.tFO)
+    if (c.lA(parambi.field_talker)) {}
+    for (paramgx = locals.alM();; paramgx = paramgx.woP.xJE)
     {
       parambi = new StringWriter();
       try
@@ -50,7 +55,7 @@ public final class f
         localXmlSerializer.setOutput(parambi);
         localXmlSerializer.startTag(null, "msg");
         localXmlSerializer.startTag(null, "videomsg");
-        Map localMap = bn.s(locals.SD(), "msg");
+        Map localMap = br.F(locals.alP(), "msg");
         if (localMap != null)
         {
           localXmlSerializer.attribute(null, "aeskey", (String)localMap.get(".msg.videomsg.$aeskey"));
@@ -59,60 +64,63 @@ public final class f
           localXmlSerializer.attribute(null, "cdnthumburl", (String)localMap.get(".msg.videomsg.$cdnthumburl"));
           localXmlSerializer.attribute(null, "cdnthumblength", (String)localMap.get(".msg.videomsg.$cdnthumblength"));
         }
-        localXmlSerializer.attribute(null, "playlength", locals.eHH);
-        localXmlSerializer.attribute(null, "length", locals.ebK);
+        localXmlSerializer.attribute(null, "playlength", locals.fXx);
+        localXmlSerializer.attribute(null, "length", locals.fsd);
         localXmlSerializer.attribute(null, "type", String.valueOf(i));
-        if (!bk.bl(paramfo)) {
-          localXmlSerializer.attribute(null, "fromusername", paramfo);
+        if (!bo.isNullOrNil(paramgx)) {
+          localXmlSerializer.attribute(null, "fromusername", paramgx);
         }
-        localXmlSerializer.attribute(null, "md5", locals.bZs);
+        localXmlSerializer.attribute(null, "md5", locals.cHH);
         localXmlSerializer.endTag(null, "videomsg");
         localXmlSerializer.endTag(null, "msg");
         localXmlSerializer.endDocument();
         parambi.flush();
         parambi.close();
-        paramfo = parambi.getBuffer().toString();
-        y.d("MicroMsg.BackupItemVideo", "parseContent xml:" + paramfo);
-        return paramfo;
+        paramgx = parambi.getBuffer().toString();
+        ab.d("MicroMsg.BackupItemVideo", "parseContent xml:".concat(String.valueOf(paramgx)));
+        AppMethodBeat.o(17461);
+        return paramgx;
       }
-      catch (Exception paramfo)
+      catch (Exception paramgx)
       {
-        y.e("MicroMsg.BackupItemVideo", "packetVoice xml error: " + paramfo.toString());
+        ab.e("MicroMsg.BackupItemVideo", "packetVoice xml error: " + paramgx.toString());
+        AppMethodBeat.o(17461);
       }
     }
     return null;
   }
   
-  public final int a(fo paramfo, boolean paramBoolean1, bi parambi, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
+  public final int a(gx paramgx, boolean paramBoolean1, bi parambi, String paramString, LinkedList<u> paramLinkedList, HashMap<Long, h.a> paramHashMap, boolean paramBoolean2, long paramLong)
   {
-    d.avi().avj().Sr();
-    paramString = t.nS(parambi.field_imgPath);
-    paramHashMap = c.xA(parambi.field_imgPath);
+    AppMethodBeat.i(17459);
+    d.aUK().aUL().alE();
+    paramString = t.vf(parambi.field_imgPath);
+    paramHashMap = c.Gt(parambi.field_imgPath);
     int j;
     if ((paramHashMap == null) || (paramHashMap.status == 199))
     {
       j = 1;
       paramHashMap = new com.tencent.mm.vfs.b(paramString);
       if ((j == 0) || (!paramHashMap.exists())) {
-        break label334;
+        break label359;
       }
     }
-    label191:
-    label331:
-    label334:
+    label294:
+    label356:
+    label359:
     for (int k = (int)paramHashMap.length();; k = 0)
     {
       int m = 0;
-      d.avi().avj().Sr();
-      paramHashMap = t.nT(parambi.field_imgPath);
+      d.aUK().aUL().alE();
+      paramHashMap = t.vg(parambi.field_imgPath);
       com.tencent.mm.vfs.b localb = new com.tencent.mm.vfs.b(paramHashMap);
       if (localb.exists()) {
         m = (int)localb.length();
       }
       if (paramBoolean1)
       {
-        j = m + k;
-        return j;
+        AppMethodBeat.o(17459);
+        return m + k;
         j = 0;
         break;
       }
@@ -120,113 +128,119 @@ public final class f
       if (m != 0)
       {
         if (parambi.getType() == 62) {
-          i = i.a(new i.a(paramHashMap, paramfo, paramLinkedList, 13, paramBoolean1, "_thumb", paramBoolean2)) + 0;
+          i = i.a(new i.a(paramHashMap, paramgx, paramLinkedList, 13, paramBoolean1, "_thumb", paramBoolean2)) + 0;
         }
       }
       else
       {
         if ((j == 0) || (k == 0)) {
-          break label331;
+          break label356;
         }
         if (parambi.getType() != 62) {
-          break label302;
+          break label294;
         }
-        i = i.a(new i.a(paramString, paramfo, paramLinkedList, 12, paramBoolean1, paramBoolean2, null)) + i;
+        i = i.a(new i.a(paramString, paramgx, paramLinkedList, 12, paramBoolean1, paramBoolean2, null)) + i;
       }
       for (;;)
       {
-        parambi = a(paramfo, parambi);
-        j = i;
-        if (parambi == null) {
+        parambi = a(paramgx, parambi);
+        if (parambi == null)
+        {
+          AppMethodBeat.o(17459);
+          return i;
+          i = i.a(new i.a(paramHashMap, paramgx, paramLinkedList, 11, paramBoolean1, "_thumb", paramBoolean2)) + 0;
           break;
+          i = i.a(new i.a(paramString, paramgx, paramLinkedList, 10, paramBoolean1, paramBoolean2, null)) + i;
+          continue;
         }
-        paramfo.svH = new bml().YI(parambi);
-        return i + parambi.length();
-        i = i.a(new i.a(paramHashMap, paramfo, paramLinkedList, 11, paramBoolean1, "_thumb", paramBoolean2)) + 0;
-        break label191;
-        i = i.a(new i.a(paramString, paramfo, paramLinkedList, 10, paramBoolean1, paramBoolean2, null)) + i;
+        paramgx.woR = new bwc().aoF(parambi);
+        j = parambi.length();
+        AppMethodBeat.o(17459);
+        return i + j;
       }
     }
   }
   
-  public final int a(String paramString, fo paramfo, bi parambi)
+  public final int a(String paramString, gx paramgx, bi parambi)
   {
+    AppMethodBeat.i(17460);
     paramString = new s();
-    paramString.bVI = paramfo.svF.tFO;
+    paramString.cDt = paramgx.woP.xJE;
     paramString.createTime = parambi.field_createTime;
-    paramString.bXr = paramfo.ndp;
-    Object localObject = paramfo.svH.tFO;
-    y.d("MicroMsg.BackupItemVideo", "parseVideoMsgXML content:" + (String)localObject);
-    localObject = bn.s((String)localObject, "msg");
+    paramString.cFn = paramgx.pIG;
+    Object localObject = paramgx.woR.xJE;
+    ab.d("MicroMsg.BackupItemVideo", "parseVideoMsgXML content:".concat(String.valueOf(localObject)));
+    localObject = br.F((String)localObject, "msg");
     if (localObject != null)
     {
       try
       {
-        paramString.ebK = g.be((String)((Map)localObject).get(".msg.videomsg.$length"), 0);
-        paramString.eHH = g.be((String)((Map)localObject).get(".msg.videomsg.$playlength"), 0);
-        paramString.eHA = ((String)((Map)localObject).get(".msg.videomsg.$fromusername"));
-        i = g.be((String)((Map)localObject).get(".msg.videomsg.$type"), 0);
-        y.d("MicroMsg.BackupItemVideo", "video msg exportType :" + i);
+        paramString.fsd = g.bE((String)((Map)localObject).get(".msg.videomsg.$length"), 0);
+        paramString.fXx = g.bE((String)((Map)localObject).get(".msg.videomsg.$playlength"), 0);
+        paramString.fXq = ((String)((Map)localObject).get(".msg.videomsg.$fromusername"));
+        i = g.bE((String)((Map)localObject).get(".msg.videomsg.$type"), 0);
+        ab.d("MicroMsg.BackupItemVideo", "video msg exportType :".concat(String.valueOf(i)));
         if (i != 44) {
-          break label488;
+          break label486;
         }
         i = 1;
-        paramString.eHL = i;
+        paramString.fXB = i;
       }
       catch (Exception localException)
       {
         for (;;)
         {
           int i;
-          label198:
-          label223:
-          y.e("MicroMsg.BackupItemVideo", "parsing voice msg xml failed");
-          y.printErrStackTrace("MicroMsg.BackupItemVideo", localException, "", new Object[0]);
+          label190:
+          label215:
+          ab.e("MicroMsg.BackupItemVideo", "parsing voice msg xml failed");
+          ab.printErrStackTrace("MicroMsg.BackupItemVideo", localException, "", new Object[0]);
         }
       }
-      if ((!g.d(paramfo, 10)) && (!g.d(paramfo, 12))) {
-        break label557;
+      if ((!g.d(paramgx, 10)) && (!g.d(paramgx, 12))) {
+        break label555;
       }
       paramString.status = 199;
-      localObject = t.nR(paramString.SB());
-      parambi.ed((String)localObject);
+      localObject = t.ve(paramString.alM());
+      parambi.kk((String)localObject);
       paramString.fileName = ((String)localObject);
       if (parambi.getType() != 62) {
         parambi.setType(43);
       }
-      parambi.setContent(q.d(paramString.SB(), paramString.eHG, false));
-      paramString.eHI = ((int)c.h(parambi));
-      paramString.eHF = bk.UX();
-      paramString.eHJ = 0;
-      y.d("MicroMsg.BackupItemVideo", "Insert fileName[" + paramString.getFileName() + "] size:" + paramString.ebK + " svrid:" + paramString.bXr + " timelen:" + paramString.eHH + " user:" + paramString.SA() + " human:" + paramString.SB());
-      d.avi().avj().Sr().b(paramString);
-      d.avi().avj().Sr();
-      paramString = t.nT((String)localObject);
+      parambi.setContent(q.d(paramString.alM(), paramString.fXw, false));
+      paramString.fXy = ((int)c.l(parambi));
+      paramString.fXv = bo.aox();
+      paramString.fXz = 0;
+      ab.d("MicroMsg.BackupItemVideo", "Insert fileName[" + paramString.getFileName() + "] size:" + paramString.fsd + " svrid:" + paramString.cFn + " timelen:" + paramString.fXx + " user:" + paramString.getUser() + " human:" + paramString.alM());
+      d.aUK().aUL().alE().b(paramString);
+      d.aUK().aUL().alE();
+      paramString = t.vg((String)localObject);
       if (parambi.getType() != 62) {
-        break label566;
+        break label564;
       }
-      g.b(paramfo, 13, paramString);
+      g.b(paramgx, 13, paramString);
     }
-    for (paramString = g.a(paramfo, 12);; paramString = g.a(paramfo, 10))
+    for (paramString = g.a(paramgx, 12);; paramString = g.a(paramgx, 10))
     {
       if (paramString != null)
       {
-        paramString = g.xp(paramString) + paramString;
-        d.avi().avj().Sr();
-        e.r(paramString, t.nS((String)localObject));
+        paramString = g.Gh(paramString) + paramString;
+        d.aUK().aUL().alE();
+        e.C(paramString, t.vf((String)localObject));
       }
+      AppMethodBeat.o(17460);
       return 0;
-      label488:
+      label486:
       i = 0;
       break;
-      y.e("MicroMsg.BackupItemVideo", "videomsg paseXml failed:%s", new Object[] { paramfo.svH.tFO });
-      parambi.setContent(paramfo.svH.tFO);
-      break label198;
-      label557:
+      ab.e("MicroMsg.BackupItemVideo", "videomsg paseXml failed:%s", new Object[] { paramgx.woR.xJE });
+      parambi.setContent(paramgx.woR.xJE);
+      break label190;
+      label555:
       paramString.status = 111;
-      break label223;
-      label566:
-      g.b(paramfo, 11, paramString);
+      break label215;
+      label564:
+      g.b(paramgx, 11, paramString);
     }
   }
 }

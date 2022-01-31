@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.webview.ui.tools.widget;
 
-import com.tencent.mm.plugin.webview.ui.tools.f.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.webview.ui.tools.k.b;
 import com.tencent.mm.ui.widget.MMWebView;
 
 final class k$1
-  implements f.b
+  implements k.b
 {
   k$1(k paramk) {}
   
-  public final String cdK()
+  public final String aYZ()
   {
-    return this.rCv.dYF.getUrl();
+    AppMethodBeat.i(9921);
+    String str = this.vsH.foJ.getUrl();
+    AppMethodBeat.o(9921);
+    return str;
   }
 }
 

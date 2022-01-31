@@ -1,23 +1,27 @@
 package com.tencent.mm.kernel;
 
-import com.tencent.mm.ah.p;
-import com.tencent.mm.ah.p.a;
-import com.tencent.mm.ck.a.a;
-import com.tencent.mm.h.a.ki;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.ai.p.a;
+import com.tencent.mm.ai.w.b;
+import com.tencent.mm.cm.a.a;
+import com.tencent.mm.g.a.kv;
 import com.tencent.mm.kernel.api.d;
-import com.tencent.mm.model.aj;
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.model.ca;
-import com.tencent.mm.model.ca.a;
+import com.tencent.mm.model.al;
+import com.tencent.mm.model.bk;
+import com.tencent.mm.model.bk.a;
+import com.tencent.mm.model.cc;
+import com.tencent.mm.model.cc.a;
 import com.tencent.mm.network.c;
 import com.tencent.mm.network.h.a;
 import com.tencent.mm.network.n;
 import com.tencent.mm.network.n.a;
-import com.tencent.mm.protocal.w.a;
-import com.tencent.mm.protocal.x.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.y.a;
+import com.tencent.mm.protocal.y.b;
+import com.tencent.mm.protocal.z.a;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.z;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -25,173 +29,214 @@ import java.util.Set;
 
 public final class b
 {
-  public static String dJR = "wechatnetwork";
-  private static aj dJW = null;
-  public final a dJS;
-  public final p dJT;
-  private HashSet<n> dJU = new HashSet();
-  public n dJV = new n.a()
-  {
-    /* Error */
-    public final void et(int paramAnonymousInt)
-    {
-      // Byte code:
-      //   0: new 24	java/util/HashSet
-      //   3: dup
-      //   4: invokespecial 25	java/util/HashSet:<init>	()V
-      //   7: astore_3
-      //   8: aload_0
-      //   9: getfield 14	com/tencent/mm/kernel/b$2:dJX	Lcom/tencent/mm/kernel/b;
-      //   12: invokestatic 29	com/tencent/mm/kernel/b:b	(Lcom/tencent/mm/kernel/b;)Ljava/util/HashSet;
-      //   15: astore_2
-      //   16: aload_2
-      //   17: monitorenter
-      //   18: aload_3
-      //   19: aload_0
-      //   20: getfield 14	com/tencent/mm/kernel/b$2:dJX	Lcom/tencent/mm/kernel/b;
-      //   23: invokestatic 29	com/tencent/mm/kernel/b:b	(Lcom/tencent/mm/kernel/b;)Ljava/util/HashSet;
-      //   26: invokevirtual 33	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
-      //   29: pop
-      //   30: aload_2
-      //   31: monitorexit
-      //   32: aload_3
-      //   33: invokevirtual 37	java/util/HashSet:iterator	()Ljava/util/Iterator;
-      //   36: astore_2
-      //   37: aload_2
-      //   38: invokeinterface 43 1 0
-      //   43: ifeq +54 -> 97
-      //   46: aload_2
-      //   47: invokeinterface 47 1 0
-      //   52: checkcast 49	com/tencent/mm/network/n
-      //   55: iload_1
-      //   56: invokeinterface 51 2 0
-      //   61: goto -24 -> 37
-      //   64: astore_2
-      //   65: ldc 53
-      //   67: aload_2
-      //   68: ldc 55
-      //   70: iconst_0
-      //   71: anewarray 57	java/lang/Object
-      //   74: invokestatic 63	com/tencent/mm/sdk/platformtools/y:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-      //   77: new 65	com/tencent/mm/sdk/platformtools/ah
-      //   80: dup
-      //   81: invokespecial 66	com/tencent/mm/sdk/platformtools/ah:<init>	()V
-      //   84: new 8	com/tencent/mm/kernel/b$2$1
-      //   87: dup
-      //   88: aload_0
-      //   89: aload_2
-      //   90: invokespecial 69	com/tencent/mm/kernel/b$2$1:<init>	(Lcom/tencent/mm/kernel/b$2;Ljava/lang/Exception;)V
-      //   93: invokevirtual 73	com/tencent/mm/sdk/platformtools/ah:post	(Ljava/lang/Runnable;)Z
-      //   96: pop
-      //   97: return
-      //   98: astore_3
-      //   99: aload_2
-      //   100: monitorexit
-      //   101: aload_3
-      //   102: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	103	0	this	2
-      //   0	103	1	paramAnonymousInt	int
-      //   64	36	2	localException	Exception
-      //   7	26	3	localHashSet	HashSet
-      //   98	4	3	localObject2	Object
-      // Exception table:
-      //   from	to	target	type
-      //   0	18	64	java/lang/Exception
-      //   32	37	64	java/lang/Exception
-      //   37	61	64	java/lang/Exception
-      //   101	103	64	java/lang/Exception
-      //   18	32	98	finally
-      //   99	101	98	finally
-    }
-  };
+  public static String eHr = "wechatnetwork";
+  private static al eHw = null;
+  public final a eHs;
+  public final p eHt;
+  private HashSet<n> eHu;
+  public n eHv;
   
   public b(p.a parama, a parama1)
   {
-    this.dJT = p.a(parama);
-    this.dJT.edy = g.DS();
-    com.tencent.mm.ah.w.een = new com.tencent.mm.ah.w.b()
+    AppMethodBeat.i(57933);
+    this.eHu = new HashSet();
+    this.eHv = new n.a()
     {
-      public final p Dl()
+      /* Error */
+      public final void onNetworkChange(int paramAnonymousInt)
       {
-        return b.a(b.this);
+        // Byte code:
+        //   0: ldc 21
+        //   2: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: new 28	java/util/HashSet
+        //   8: dup
+        //   9: invokespecial 29	java/util/HashSet:<init>	()V
+        //   12: astore_3
+        //   13: aload_0
+        //   14: getfield 12	com/tencent/mm/kernel/b$2:eHx	Lcom/tencent/mm/kernel/b;
+        //   17: invokestatic 33	com/tencent/mm/kernel/b:b	(Lcom/tencent/mm/kernel/b;)Ljava/util/HashSet;
+        //   20: astore_2
+        //   21: aload_2
+        //   22: monitorenter
+        //   23: aload_3
+        //   24: aload_0
+        //   25: getfield 12	com/tencent/mm/kernel/b$2:eHx	Lcom/tencent/mm/kernel/b;
+        //   28: invokestatic 33	com/tencent/mm/kernel/b:b	(Lcom/tencent/mm/kernel/b;)Ljava/util/HashSet;
+        //   31: invokevirtual 37	java/util/HashSet:addAll	(Ljava/util/Collection;)Z
+        //   34: pop
+        //   35: aload_2
+        //   36: monitorexit
+        //   37: aload_3
+        //   38: invokevirtual 41	java/util/HashSet:iterator	()Ljava/util/Iterator;
+        //   41: astore_2
+        //   42: aload_2
+        //   43: invokeinterface 47 1 0
+        //   48: ifeq +50 -> 98
+        //   51: aload_2
+        //   52: invokeinterface 51 1 0
+        //   57: checkcast 53	com/tencent/mm/network/n
+        //   60: iload_1
+        //   61: invokeinterface 55 2 0
+        //   66: goto -24 -> 42
+        //   69: astore_2
+        //   70: ldc 57
+        //   72: aload_2
+        //   73: ldc 59
+        //   75: iconst_0
+        //   76: anewarray 61	java/lang/Object
+        //   79: invokestatic 67	com/tencent/mm/sdk/platformtools/ab:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   82: ldc 21
+        //   84: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   87: return
+        //   88: astore_3
+        //   89: aload_2
+        //   90: monitorexit
+        //   91: ldc 21
+        //   93: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   96: aload_3
+        //   97: athrow
+        //   98: ldc 21
+        //   100: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   103: return
+        // Local variable table:
+        //   start	length	slot	name	signature
+        //   0	104	0	this	2
+        //   0	104	1	paramAnonymousInt	int
+        //   69	21	2	localException	Exception
+        //   12	26	3	localHashSet	HashSet
+        //   88	9	3	localObject2	Object
+        // Exception table:
+        //   from	to	target	type
+        //   5	23	69	java/lang/Exception
+        //   37	42	69	java/lang/Exception
+        //   42	66	69	java/lang/Exception
+        //   91	98	69	java/lang/Exception
+        //   23	37	88	finally
+        //   89	91	88	finally
       }
     };
-    this.dJS = parama1;
-  }
-  
-  public static aj Di()
-  {
-    return dJW;
-  }
-  
-  public static void a(aj paramaj)
-  {
-    dJW = paramaj;
-  }
-  
-  public static void b(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
-  {
-    ki localki = new ki();
-    localki.bTr.status = paramInt1;
-    localki.bTr.bTs = paramInt2;
-    localki.bTr.bTt = paramBoolean;
-    localki.bTr.bTu = paramString;
-    com.tencent.mm.sdk.b.a.udP.m(localki);
-  }
-  
-  public final byte[] Dj()
-  {
-    try
+    this.eHt = p.a(parama);
+    this.eHt.ftB = g.RO();
+    com.tencent.mm.ai.w.fuq = new w.b()
     {
-      if ((this.dJT != null) && (this.dJT.edx != null))
+      public final p Rd()
       {
-        if (this.dJT.edx.KR() == null) {
-          return null;
-        }
-        byte[] arrayOfByte = this.dJT.edx.KR().Dj();
-        return arrayOfByte;
+        AppMethodBeat.i(57922);
+        p localp = b.a(b.this);
+        AppMethodBeat.o(57922);
+        return localp;
       }
-    }
-    catch (Exception localException)
-    {
-      y.w("MMKernel.CoreNetwork", "get session key error, %s", new Object[] { localException.getMessage() });
-      y.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { bk.j(localException) });
-    }
-    return null;
+    };
+    this.eHs = parama1;
+    AppMethodBeat.o(57933);
   }
   
-  public final p Dk()
+  public static al Ra()
   {
-    return this.dJT;
+    return eHw;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, boolean paramBoolean, String paramString)
+  {
+    AppMethodBeat.i(57938);
+    kv localkv = new kv();
+    localkv.cAW.status = paramInt1;
+    localkv.cAW.cAX = paramInt2;
+    localkv.cAW.cAY = paramBoolean;
+    localkv.cAW.cAZ = paramString;
+    com.tencent.mm.sdk.b.a.ymk.l(localkv);
+    AppMethodBeat.o(57938);
+  }
+  
+  public static void a(al paramal)
+  {
+    eHw = paramal;
+  }
+  
+  public final void Rb()
+  {
+    AppMethodBeat.i(57936);
+    this.eHt.a(new bk(new bk.a()
+    {
+      public final void a(com.tencent.mm.network.e paramAnonymouse)
+      {
+        AppMethodBeat.i(57924);
+        if ((paramAnonymouse == null) || (paramAnonymouse.adI() == null))
+        {
+          AppMethodBeat.o(57924);
+          return;
+        }
+        paramAnonymouse.adI().reset();
+        AppMethodBeat.o(57924);
+      }
+    }, "reset accinfo"), 0);
+    AppMethodBeat.o(57936);
+  }
+  
+  public final p Rc()
+  {
+    return this.eHt;
   }
   
   public final void a(n paramn)
   {
-    synchronized (this.dJU)
+    AppMethodBeat.i(57934);
+    synchronized (this.eHu)
     {
-      this.dJU.add(paramn);
+      this.eHu.add(paramn);
+      AppMethodBeat.o(57934);
       return;
     }
   }
   
   public final void b(n paramn)
   {
-    synchronized (this.dJU)
+    AppMethodBeat.i(57935);
+    synchronized (this.eHu)
     {
-      this.dJU.remove(paramn);
+      this.eHu.remove(paramn);
+      AppMethodBeat.o(57935);
       return;
     }
   }
   
+  public final byte[] jN(int paramInt)
+  {
+    AppMethodBeat.i(57937);
+    try
+    {
+      if ((this.eHt != null) && (this.eHt.ftA != null))
+      {
+        localObject = this.eHt.ftA.adI();
+        if (localObject != null) {}
+      }
+      else
+      {
+        AppMethodBeat.o(57937);
+        return null;
+      }
+      Object localObject = this.eHt.ftA.adI().jN(paramInt);
+      AppMethodBeat.o(57937);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      ab.w("MMKernel.CoreNetwork", "get session key error, %s", new Object[] { localException.getMessage() });
+      ab.e("MMKernel.CoreNetwork", "exception:%s", new Object[] { bo.l(localException) });
+      AppMethodBeat.o(57937);
+    }
+    return null;
+  }
+  
   public static final class a
-    extends com.tencent.mm.ck.a<d>
+    extends com.tencent.mm.cm.a<d>
     implements d
   {
     public final void b(final com.tencent.mm.network.e parame)
     {
+      AppMethodBeat.i(57932);
       a(new a.a() {});
+      AppMethodBeat.o(57932);
     }
   }
 }

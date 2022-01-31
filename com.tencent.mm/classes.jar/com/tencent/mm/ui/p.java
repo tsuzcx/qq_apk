@@ -1,138 +1,190 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
-import com.tencent.mm.R.l;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.plugin.report.f;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.pluginsdk.permission.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.base.h;
+import android.content.Context;
+import android.database.Cursor;
+import android.os.Looper;
+import android.widget.BaseAdapter;
+import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import java.util.HashMap;
+import java.util.Map;
+import junit.framework.Assert;
 
-public final class p
+public abstract class p<T>
+  extends BaseAdapter
+  implements k.a, n.b
 {
-  boolean fht = true;
-  Runnable uLJ;
+  public Context context;
+  protected int count;
+  private ak mHV = new ak(Looper.getMainLooper());
+  protected T zan;
+  private Cursor zao = null;
+  protected Map<Integer, T> zap = null;
+  protected p.a zaq;
+  private int zar = 0;
+  private int zas = 0;
+  private int zat = 0;
+  private Runnable zau = new p.1(this);
   
-  public final boolean a(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  public p(Context paramContext, T paramT)
   {
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
-    {
-      if (paramArrayOfInt == null) {}
-      for (i = -1;; i = paramArrayOfInt.length)
-      {
-        y.w("MicroMsg.LauncherUI.LauncherUICheckPermissionHelper", "summerper onRequestPermissionsResult, grantResults length is:%d requestCode:%d, permissions:%s, stack:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt), paramArrayOfString, bk.csb() });
-        ai.l(new p.1(this), 500L);
-        return true;
-      }
-    }
-    y.i("MicroMsg.LauncherUI.LauncherUICheckPermissionHelper", "summerper onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 32: 
-    case 64: 
-    case 96: 
-      i = R.l.permission_storage_request_again_msg;
-      if (paramInt == 96)
-      {
-        i = R.l.permission_phone_request_again_msg;
-        if (paramArrayOfInt[0] != 0) {
-          break label298;
-        }
-        if (paramInt != 32) {
-          break label255;
-        }
-        f.nEG.a(462L, 0L, 1L, true);
-        label223:
-        if (this.uLJ != null) {
-          this.uLJ.run();
-        }
-      }
-      for (;;)
-      {
-        return true;
-        if (paramInt != 64) {
-          break;
-        }
-        i = R.l.permission_location_request_again_msg;
-        break;
-        label255:
-        if (paramInt == 96)
-        {
-          f.nEG.a(462L, 1L, 1L, true);
-          q.br(true);
-          break label223;
-        }
-        f.nEG.a(462L, 2L, 1L, true);
-        break label223;
-        label298:
-        h.a(paramActivity, paramActivity.getString(i), paramActivity.getString(R.l.permission_tips_title), paramActivity.getString(R.l.jump_to_settings), paramActivity.getString(R.l.cancel), false, new p.2(this, paramInt, paramActivity), new p.3(this, paramInt, paramActivity));
-      }
-    }
-    int i = R.l.permission_storage_request_again_msg;
-    if (paramInt == 97)
-    {
-      i = R.l.permission_phone_request_again_msg;
-      if (paramArrayOfInt[0] != 0) {
-        break label453;
-      }
-      if (paramInt != 33) {
-        break label413;
-      }
-      f.nEG.a(462L, 9L, 1L, true);
-    }
-    for (;;)
-    {
-      return true;
-      if (paramInt != 70) {
-        break;
-      }
-      i = R.l.permission_location_request_again_msg;
-      break;
-      label413:
-      if (paramInt == 97)
-      {
-        f.nEG.a(462L, 10L, 1L, true);
-      }
-      else
-      {
-        f.nEG.a(462L, 11L, 1L, true);
-        continue;
-        label453:
-        this.fht = false;
-        h.a(paramActivity, paramActivity.getString(i), paramActivity.getString(R.l.permission_tips_title), paramActivity.getString(R.l.jump_to_settings), paramActivity.getString(R.l.cancel), false, new p.4(this, paramInt, paramActivity), new p.5(this, paramInt, paramActivity));
-      }
+    this.zan = paramT;
+    this.context = paramContext;
+    this.count = -1;
+  }
+  
+  private void dCq()
+  {
+    ab.v("MicroMsg.MListAdapter", "ashutest:: on UI, directly call resetCursor Job");
+    bKb();
+    Ku();
+    if (this.zaq != null) {
+      this.zaq.apT();
     }
   }
   
-  public final boolean c(Activity paramActivity, Runnable paramRunnable)
+  public abstract void Ku();
+  
+  protected abstract void Kv();
+  
+  public abstract T a(T paramT, Cursor paramCursor);
+  
+  public void a(int paramInt, n paramn, Object paramObject)
   {
-    boolean bool = a.a(paramActivity, "android.permission.WRITE_EXTERNAL_STORAGE", 32, "", "");
-    y.i("MicroMsg.LauncherUI.LauncherUICheckPermissionHelper", "summerper checkPermission checkStorage[%b]", new Object[] { Boolean.valueOf(bool) });
-    if (!bool)
+    if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      this.uLJ = paramRunnable;
-      return false;
+      ab.d("MicroMsg.MListAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      return;
     }
-    bool = a.a(paramActivity, "android.permission.READ_PHONE_STATE", 96, "", "");
-    y.i("MicroMsg.LauncherUI.LauncherUICheckPermissionHelper", "summerper checkPermission checkPhone[%b]", new Object[] { Boolean.valueOf(bool) });
-    if (!bool)
+    a((String)paramObject, null);
+  }
+  
+  public final void a(p.a parama)
+  {
+    this.zaq = parama;
+  }
+  
+  public void a(String paramString, m paramm)
+  {
+    dCq();
+  }
+  
+  protected int bHs()
+  {
+    return 0;
+  }
+  
+  protected T bHt()
+  {
+    return this.zan;
+  }
+  
+  public void bKb()
+  {
+    if (this.zap != null) {
+      this.zap.clear();
+    }
+    if (this.zao != null) {
+      this.zao.close();
+    }
+    this.count = -1;
+  }
+  
+  public final void dAW()
+  {
+    this.zaq = null;
+  }
+  
+  public int getCount()
+  {
+    if (this.count < 0) {
+      this.count = getCursor().getCount();
+    }
+    return this.count + bHs();
+  }
+  
+  protected final Cursor getCursor()
+  {
+    if ((this.zao == null) || (this.zao.isClosed()))
     {
-      this.uLJ = paramRunnable;
-      return false;
+      Kv();
+      Assert.assertNotNull(this.zao);
     }
-    y.i("MicroMsg.LauncherUI.LauncherUICheckPermissionHelper", "start time check launcherUIOnCreate from begin time ==" + (System.currentTimeMillis() - LauncherUI.uKO));
-    g.fx(LauncherUI.uKO);
-    return true;
+    return this.zao;
+  }
+  
+  public T getItem(int paramInt)
+  {
+    if (xj(paramInt)) {
+      localObject1 = bHt();
+    }
+    Object localObject2;
+    do
+    {
+      return localObject1;
+      if (this.zap == null) {
+        break;
+      }
+      localObject2 = this.zap.get(Integer.valueOf(paramInt));
+      localObject1 = localObject2;
+    } while (localObject2 != null);
+    if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
+      return null;
+    }
+    if (this.zap == null) {
+      return a(this.zan, getCursor());
+    }
+    Object localObject1 = a(null, getCursor());
+    this.zap.put(Integer.valueOf(paramInt), localObject1);
+    return localObject1;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public final int getRealCount()
+  {
+    if (this.count < 0) {
+      this.count = getCursor().getCount();
+    }
+    return this.count;
+  }
+  
+  public final void qp(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      if (this.zap != null)
+      {
+        this.zap.clear();
+        this.zap = null;
+      }
+    }
+    while (this.zap != null) {
+      return;
+    }
+    this.zap = new HashMap();
+  }
+  
+  public final void setCursor(Cursor paramCursor)
+  {
+    this.zao = paramCursor;
+    this.count = -1;
+  }
+  
+  public boolean xj(int paramInt)
+  {
+    return (paramInt >= this.count) && (paramInt < this.count + bHs());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.p
  * JD-Core Version:    0.7.0.1
  */

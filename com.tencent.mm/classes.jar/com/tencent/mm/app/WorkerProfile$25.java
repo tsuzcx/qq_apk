@@ -1,25 +1,51 @@
 package com.tencent.mm.app;
 
-import android.content.Context;
-import com.tencent.mm.booter.notification.a.h;
-import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.pointers.PString;
-import com.tencent.mm.storage.be.b;
-import com.tencent.mm.storage.bi;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.opensdk.utils.ILog;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WorkerProfile$25
-  implements be.b
+  implements ILog
 {
-  WorkerProfile$25(WorkerProfile paramWorkerProfile) {}
-  
-  public final String a(int paramInt1, String paramString1, String paramString2, int paramInt2, Context paramContext)
+  WorkerProfile$25(WorkerProfile paramWorkerProfile)
   {
-    return h.a(paramInt1, paramString1, paramString2, paramInt2, paramContext);
+    AppMethodBeat.i(15517);
+    AppMethodBeat.o(15517);
   }
   
-  public final void a(bi parambi, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean)
+  public final void d(String paramString1, String paramString2)
   {
-    h.b(parambi, paramPString1, paramPString2, paramPInt, paramBoolean);
+    AppMethodBeat.i(138589);
+    ab.d(paramString1, paramString2);
+    AppMethodBeat.o(138589);
+  }
+  
+  public final void e(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(138592);
+    ab.e(paramString1, paramString2);
+    AppMethodBeat.o(138592);
+  }
+  
+  public final void i(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(138590);
+    ab.i(paramString1, paramString2);
+    AppMethodBeat.o(138590);
+  }
+  
+  public final void v(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(138588);
+    ab.v(paramString1, paramString2);
+    AppMethodBeat.o(138588);
+  }
+  
+  public final void w(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(138591);
+    ab.w(paramString1, paramString2);
+    AppMethodBeat.o(138591);
   }
 }
 

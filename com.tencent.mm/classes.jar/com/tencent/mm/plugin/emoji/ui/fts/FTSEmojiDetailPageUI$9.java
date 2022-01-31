@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.emoji.ui.fts;
 
-import com.tencent.mm.h.a.cv;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.cy;
 import com.tencent.mm.sdk.b.c;
 
 final class FTSEmojiDetailPageUI$9
-  extends c<cv>
+  extends c<cy>
 {
   FTSEmojiDetailPageUI$9(FTSEmojiDetailPageUI paramFTSEmojiDetailPageUI)
   {
-    this.udX = cv.class.getName().hashCode();
+    AppMethodBeat.i(53544);
+    this.__eventId = cy.class.getName().hashCode();
+    AppMethodBeat.o(53544);
   }
 }
 

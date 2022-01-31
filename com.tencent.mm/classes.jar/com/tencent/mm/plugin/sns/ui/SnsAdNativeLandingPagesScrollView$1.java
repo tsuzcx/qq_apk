@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SnsAdNativeLandingPagesScrollView$1
   implements Runnable
@@ -9,30 +10,32 @@ final class SnsAdNativeLandingPagesScrollView$1
   
   public final void run()
   {
-    int i = this.oUa.getScrollY();
-    y.w("SnsAdNativeLandingPagesScrollView", "1 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(this.oUa)), Integer.valueOf(i) });
-    if (i != SnsAdNativeLandingPagesScrollView.a(this.oUa))
+    AppMethodBeat.i(38613);
+    int i = this.rLX.getScrollY();
+    ab.w("SnsAdNativeLandingPagesScrollView", "1 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(this.rLX)), Integer.valueOf(i) });
+    if (i != SnsAdNativeLandingPagesScrollView.a(this.rLX))
     {
-      if (SnsAdNativeLandingPagesScrollView.b(this.oUa) != null)
+      if (SnsAdNativeLandingPagesScrollView.b(this.rLX) != null)
       {
-        SnsAdNativeLandingPagesScrollView.b(this.oUa);
-        SnsAdNativeLandingPagesScrollView.c(this.oUa);
+        SnsAdNativeLandingPagesScrollView.b(this.rLX);
+        SnsAdNativeLandingPagesScrollView.c(this.rLX);
       }
-      SnsAdNativeLandingPagesScrollView.a(this.oUa, System.currentTimeMillis());
+      SnsAdNativeLandingPagesScrollView.a(this.rLX, System.currentTimeMillis());
     }
-    if (SnsAdNativeLandingPagesScrollView.a(this.oUa) - i == 0)
+    if (SnsAdNativeLandingPagesScrollView.a(this.rLX) - i == 0)
     {
-      if (SnsAdNativeLandingPagesScrollView.b(this.oUa) != null)
+      if (SnsAdNativeLandingPagesScrollView.b(this.rLX) != null)
       {
-        SnsAdNativeLandingPagesScrollView.b(this.oUa);
-        SnsAdNativeLandingPagesScrollView.a(this.oUa);
-        SnsAdNativeLandingPagesScrollView.c(this.oUa);
+        SnsAdNativeLandingPagesScrollView.b(this.rLX);
+        SnsAdNativeLandingPagesScrollView.a(this.rLX);
+        SnsAdNativeLandingPagesScrollView.c(this.rLX);
       }
-      SnsAdNativeLandingPagesScrollView.a(this.oUa, SnsAdNativeLandingPagesScrollView.a(this.oUa));
+      SnsAdNativeLandingPagesScrollView.a(this.rLX, SnsAdNativeLandingPagesScrollView.a(this.rLX));
     }
-    SnsAdNativeLandingPagesScrollView.b(this.oUa, this.oUa.getScrollY());
-    y.w("SnsAdNativeLandingPagesScrollView", "2 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(this.oUa)), Integer.valueOf(i) });
-    this.oUa.postDelayed(SnsAdNativeLandingPagesScrollView.d(this.oUa), SnsAdNativeLandingPagesScrollView.e(this.oUa));
+    SnsAdNativeLandingPagesScrollView.b(this.rLX, this.rLX.getScrollY());
+    ab.w("SnsAdNativeLandingPagesScrollView", "2 middlePos %d, newPos %d", new Object[] { Integer.valueOf(SnsAdNativeLandingPagesScrollView.a(this.rLX)), Integer.valueOf(i) });
+    this.rLX.postDelayed(SnsAdNativeLandingPagesScrollView.d(this.rLX), SnsAdNativeLandingPagesScrollView.e(this.rLX));
+    AppMethodBeat.o(38613);
   }
 }
 

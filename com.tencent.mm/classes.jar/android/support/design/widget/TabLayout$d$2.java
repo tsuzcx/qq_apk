@@ -10,8 +10,8 @@ final class TabLayout$d$2
   
   public final void onAnimationEnd(Animator paramAnimator)
   {
-    this.kW.kM = this.kX;
-    this.kW.kN = 0.0F;
+    this.lT.lK = this.lU;
+    this.lT.lL = 0.0F;
   }
 }
 

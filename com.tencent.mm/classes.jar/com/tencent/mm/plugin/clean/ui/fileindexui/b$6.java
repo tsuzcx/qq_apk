@@ -2,9 +2,10 @@ package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.as.a.a;
-import com.tencent.mm.as.o;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.at.a.a;
+import com.tencent.mm.at.o;
+import com.tencent.mm.sdk.platformtools.ak;
 
 final class b$6
   implements AbsListView.OnScrollListener
@@ -15,15 +16,18 @@ final class b$6
   
   public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    o.ON().bR(paramInt);
+    AppMethodBeat.i(18751);
+    o.ahG().bX(paramInt);
     if (paramInt != 2)
     {
-      b.a(this.iCF, false);
-      b.g(this.iCF).removeCallbacksAndMessages(null);
-      b.g(this.iCF).sendEmptyMessageDelayed(0, 200L);
+      b.a(this.kHM, false);
+      b.g(this.kHM).removeCallbacksAndMessages(null);
+      b.g(this.kHM).sendEmptyMessageDelayed(0, 200L);
+      AppMethodBeat.o(18751);
       return;
     }
-    b.a(this.iCF, true);
+    b.a(this.kHM, true);
+    AppMethodBeat.o(18751);
   }
 }
 

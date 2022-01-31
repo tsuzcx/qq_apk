@@ -1,83 +1,52 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import com.tencent.mm.plugin.appbrand.r.f;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI;
-import com.tencent.mm.plugin.profile.ui.BizBindWxaInfoUI;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.SystemClock;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.task.AppBrandPreloadProfiler;
+import com.tencent.mm.plugin.appbrand.task.g;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class c
-  implements f
 {
-  public final void a(Context paramContext, String paramString1, String paramString2, List<WxaAttributes.WxaEntryInfo> paramList)
-  {
-    Intent localIntent = new Intent(paramContext, BizBindWxaInfoUI.class);
-    localIntent.putParcelableArrayListExtra("extra_wxa_entry_info_list", new ArrayList(paramList));
-    localIntent.putExtra("extra_username", paramString1);
-    localIntent.putExtra("extra_appid", paramString2);
-    if (!(paramContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    paramContext.startActivity(localIntent);
-  }
+  private static volatile boolean gSv = false;
+  private static volatile boolean gSw = false;
   
-  public final void b(Context paramContext, int paramInt, boolean paramBoolean)
+  public static void a(g paramg, AppBrandPreloadProfiler paramAppBrandPreloadProfiler, boolean paramBoolean)
   {
-    Context localContext;
-    Intent localIntent;
-    if (paramContext == null)
+    AppMethodBeat.i(143059);
+    gSw = true;
+    if ((paramg == null) || (paramg == g.iKU))
     {
-      localContext = ae.getContext();
-      localIntent = new Intent(localContext, AppBrandLauncherUI.class).putExtra("extra_enter_scene", paramInt).putExtra("extra_show_recommend", paramBoolean);
-      if (!(paramContext instanceof Activity)) {
-        break label61;
-      }
-    }
-    label61:
-    for (paramInt = 0;; paramInt = 268435456)
-    {
-      localContext.startActivity(localIntent.addFlags(paramInt));
-      return;
-      localContext = paramContext;
-      break;
-    }
-  }
-  
-  public final void cb(Context paramContext)
-  {
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = ae.getContext();
-    }
-    paramContext = new Intent(localContext, AppBrandLauncherUI.class).putExtra("extra_show_recents_from_task_bar", true).putExtra("extra_get_usage_reason", 9);
-    if ((localContext instanceof Activity)) {}
-    for (int i = 0;; i = 268435456)
-    {
-      localContext.startActivity(paramContext.addFlags(i));
+      ab.i("MicroMsg.AppBrandProcessProfileInit[applaunch]", "dl: AppBrandProcessPreloader said I can not preload [nil] type.");
+      AppMethodBeat.o(143059);
       return;
     }
+    AppBrandPreloadProfiler localAppBrandPreloadProfiler = paramAppBrandPreloadProfiler;
+    if (paramAppBrandPreloadProfiler == null) {
+      localAppBrandPreloadProfiler = new AppBrandPreloadProfiler();
+    }
+    localAppBrandPreloadProfiler.iJX = SystemClock.elapsedRealtime();
+    al.d(new c.1(paramg, paramBoolean, localAppBrandPreloadProfiler));
+    AppMethodBeat.o(143059);
   }
   
-  public final void cc(Context paramContext)
+  public static boolean auv()
   {
-    Context localContext = paramContext;
-    if (paramContext == null) {
-      localContext = ae.getContext();
-    }
-    paramContext = new Intent();
-    paramContext.putExtra("extra_get_usage_reason", 7);
-    AppBrandLauncherFolderUI.l(localContext, paramContext);
+    return gSw;
+  }
+  
+  public static void auw()
+  {
+    AppMethodBeat.i(129195);
+    ab.i("MicroMsg.AppBrandProcessProfileInit[applaunch]", "setSkipMiscPreload %b", new Object[] { Boolean.TRUE });
+    gSv = true;
+    AppMethodBeat.o(129195);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.c
  * JD-Core Version:    0.7.0.1
  */

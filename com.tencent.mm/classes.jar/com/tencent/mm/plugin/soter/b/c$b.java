@@ -1,23 +1,33 @@
 package com.tencent.mm.plugin.soter.b;
 
-import com.tencent.mm.protocal.c.bly;
-import com.tencent.mm.protocal.c.caf;
-import com.tencent.mm.protocal.c.gd;
-import com.tencent.mm.protocal.k;
-import com.tencent.mm.protocal.k.c;
-import com.tencent.mm.protocal.k.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.l;
+import com.tencent.mm.protocal.l.c;
+import com.tencent.mm.protocal.l.e;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.cnf;
 
 public final class c$b
-  extends k.e
-  implements k.c
+  extends l.e
+  implements l.c
 {
-  public caf prJ = new caf();
+  public cnf snL;
   
-  public final int A(byte[] paramArrayOfByte)
+  public c$b()
   {
-    this.prJ = ((caf)new caf().aH(paramArrayOfByte));
-    k.a(this, this.prJ.tFx);
-    return this.prJ.tFx.sze;
+    AppMethodBeat.i(59300);
+    this.snL = new cnf();
+    AppMethodBeat.o(59300);
+  }
+  
+  public final int fromProtoBuf(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(59301);
+    this.snL = ((cnf)new cnf().parseFrom(paramArrayOfByte));
+    l.a(this, this.snL.getBaseResponse());
+    int i = this.snL.getBaseResponse().Ret;
+    AppMethodBeat.o(59301);
+    return i;
   }
   
   public final int getCmdId()
@@ -27,7 +37,7 @@ public final class c$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.c.b
  * JD-Core Version:    0.7.0.1
  */

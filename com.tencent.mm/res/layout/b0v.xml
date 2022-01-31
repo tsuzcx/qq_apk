@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/zm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="onClickNoCheck"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/abk" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@color/a23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <RelativeLayout android:layout_width="217.0dip" android:layout_height="220.0dip">
-            <ImageView android:id="@id/etl" android:background="@drawable/bev" android:layout_width="@dimen/do" android:layout_height="@dimen/do" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/etm" android:background="@drawable/bev" android:layout_width="@dimen/do" android:layout_height="@dimen/do" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/etn" android:background="@drawable/bev" android:layout_width="@dimen/do" android:layout_height="@dimen/do" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
-            <ImageView android:id="@id/ok" android:layout_width="@dimen/do" android:layout_height="@dimen/do" android:layout_marginTop="64.0dip" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="@dimen/lj" android:textColor="#ff4a4a4a" android:id="@id/azl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="{nickname}" android:layout_below="@id/ok" android:layout_centerHorizontal="true" />
-            <TextView android:textSize="@dimen/lj" android:textColor="#ffafafaf" android:id="@id/jv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/flp" android:layout_below="@id/azl" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <View android:background="#ffe0e0e0" android:layout_width="217.0dip" android:layout_height="1.0px" />
-        <ImageButton android:id="@id/eto" android:background="@drawable/a1m" android:layout_width="217.0dip" android:layout_height="44.0dip" android:src="@drawable/beu" android:onClick="onClickCheck" />
-    </LinearLayout>
-</RelativeLayout>
+    <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@android:id/title" android:layout_width="@dimen/i5" android:layout_height="wrap_content" android:singleLine="true" android:layout_marginEnd="@dimen/lb" style="@style/lg" />
+    <RelativeLayout android:id="@id/f1b" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
+        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/f1c" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/f1d" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f1e" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
+        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/f1f" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/f1g" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f1h" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:layout_marginLeft="@dimen/n_" android:layout_marginTop="@dimen/n_" android:layout_marginBottom="@dimen/n_">
+        <com.tencent.mm.plugin.story.ui.view.StoryRoundImageView android:id="@id/f1i" android:layout_width="@dimen/aad" android:layout_height="@dimen/aac" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/f1j" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

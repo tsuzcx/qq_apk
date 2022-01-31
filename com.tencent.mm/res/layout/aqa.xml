@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/mr" android:gravity="center_vertical" android:id="@id/dz5" android:layout_width="fill_parent" android:layout_height="26.0dip" android:layout_marginTop="4.0dip" android:text="@string/eav" android:layout_marginStart="16.0dip" />
-    <com.tencent.mm.view.SmileySubGrid android:id="@id/uw" android:fadingEdgeLength="0.0dip" android:layout_width="300.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a5f" android:listSelector="@drawable/rn" android:cacheColorHint="#00000000" android:fastScrollEnabled="false" android:fadeScrollbars="false" android:fastScrollAlwaysVisible="false" />
-    <View android:id="@id/dz6" android:background="@color/oq" android:layout_width="1.0px" android:layout_height="fill_parent" android:layout_alignTop="@id/uw" android:layout_alignBottom="@id/uw" android:foregroundGravity="center" android:layout_toEndOf="@id/uw" />
-</RelativeLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="16.0dip" android:textColor="@color/h6" android:id="@id/e8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/du6" android:alpha="0.46" />
+    <View android:background="@drawable/a09" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="15.0dip" android:layerType="software" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dtk" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:gravity="right" android:id="@id/e8y" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="@color/rv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dtg" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="14.0dip" android:textColor="@color/rv" android:gravity="right" android:id="@id/e8z" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" wallet:walletTypeFace="e7" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

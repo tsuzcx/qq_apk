@@ -28,67 +28,73 @@ class IContentObserver$Stub$Proxy
     // Byte code:
     //   0: iconst_1
     //   1: istore_3
-    //   2: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   5: astore 4
-    //   7: aload 4
-    //   9: ldc 25
-    //   11: invokevirtual 37	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: iload_1
-    //   15: ifeq +47 -> 62
-    //   18: aload 4
-    //   20: iload_3
-    //   21: invokevirtual 41	android/os/Parcel:writeInt	(I)V
-    //   24: aload_2
-    //   25: ifnull +42 -> 67
-    //   28: aload 4
-    //   30: iconst_1
-    //   31: invokevirtual 41	android/os/Parcel:writeInt	(I)V
-    //   34: aload_2
-    //   35: aload 4
-    //   37: iconst_0
-    //   38: invokevirtual 47	android/net/Uri:writeToParcel	(Landroid/os/Parcel;I)V
-    //   41: aload_0
-    //   42: getfield 18	com/tencent/wcdb/IContentObserver$Stub$Proxy:mRemote	Landroid/os/IBinder;
-    //   45: iconst_1
-    //   46: aload 4
-    //   48: aconst_null
-    //   49: iconst_1
-    //   50: invokeinterface 53 5 0
-    //   55: pop
-    //   56: aload 4
-    //   58: invokevirtual 56	android/os/Parcel:recycle	()V
-    //   61: return
-    //   62: iconst_0
-    //   63: istore_3
-    //   64: goto -46 -> 18
-    //   67: aload 4
-    //   69: iconst_0
-    //   70: invokevirtual 41	android/os/Parcel:writeInt	(I)V
-    //   73: goto -32 -> 41
-    //   76: astore_2
-    //   77: aload 4
-    //   79: invokevirtual 56	android/os/Parcel:recycle	()V
-    //   82: aload_2
-    //   83: athrow
+    //   2: sipush 12173
+    //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 39	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   11: astore 4
+    //   13: aload 4
+    //   15: ldc 25
+    //   17: invokevirtual 43	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+    //   20: iload_1
+    //   21: ifeq +53 -> 74
+    //   24: aload 4
+    //   26: iload_3
+    //   27: invokevirtual 46	android/os/Parcel:writeInt	(I)V
+    //   30: aload_2
+    //   31: ifnull +48 -> 79
+    //   34: aload 4
+    //   36: iconst_1
+    //   37: invokevirtual 46	android/os/Parcel:writeInt	(I)V
+    //   40: aload_2
+    //   41: aload 4
+    //   43: iconst_0
+    //   44: invokevirtual 52	android/net/Uri:writeToParcel	(Landroid/os/Parcel;I)V
+    //   47: aload_0
+    //   48: getfield 18	com/tencent/wcdb/IContentObserver$Stub$Proxy:mRemote	Landroid/os/IBinder;
+    //   51: iconst_1
+    //   52: aload 4
+    //   54: aconst_null
+    //   55: iconst_1
+    //   56: invokeinterface 58 5 0
+    //   61: pop
+    //   62: aload 4
+    //   64: invokevirtual 61	android/os/Parcel:recycle	()V
+    //   67: sipush 12173
+    //   70: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: return
+    //   74: iconst_0
+    //   75: istore_3
+    //   76: goto -52 -> 24
+    //   79: aload 4
+    //   81: iconst_0
+    //   82: invokevirtual 46	android/os/Parcel:writeInt	(I)V
+    //   85: goto -38 -> 47
+    //   88: astore_2
+    //   89: aload 4
+    //   91: invokevirtual 61	android/os/Parcel:recycle	()V
+    //   94: sipush 12173
+    //   97: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   100: aload_2
+    //   101: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	84	0	this	Proxy
-    //   0	84	1	paramBoolean	boolean
-    //   0	84	2	paramUri	android.net.Uri
-    //   1	63	3	i	int
-    //   5	73	4	localParcel	android.os.Parcel
+    //   0	102	0	this	Proxy
+    //   0	102	1	paramBoolean	boolean
+    //   0	102	2	paramUri	android.net.Uri
+    //   1	75	3	i	int
+    //   11	79	4	localParcel	android.os.Parcel
     // Exception table:
     //   from	to	target	type
-    //   7	14	76	finally
-    //   18	24	76	finally
-    //   28	41	76	finally
-    //   41	56	76	finally
-    //   67	73	76	finally
+    //   13	20	88	finally
+    //   24	30	88	finally
+    //   34	47	88	finally
+    //   47	62	88	finally
+    //   79	85	88	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.wcdb.IContentObserver.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

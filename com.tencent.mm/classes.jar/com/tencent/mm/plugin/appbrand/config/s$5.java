@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.appbrand.config;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Pair;
-import com.tencent.mm.ah.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.a.a;
 
 final class s$5
   implements Runnable
@@ -13,26 +14,30 @@ final class s$5
   public final void run()
   {
     int i = 1;
-    Object localObject = this.dol;
+    AppMethodBeat.i(129917);
+    Object localObject = this.efI;
     boolean bool;
-    if ((this.fQP) && (s.sA(this.dol)))
+    if ((this.hjB) && (s.Av(this.efI)))
     {
       bool = true;
       localObject = s.a((String)localObject, bool, new s.5.1(this));
-      if (this.fQQ != null) {
+      if (this.hjC != null) {
         if (((Pair)localObject).second != null) {
-          break label94;
+          break label104;
         }
       }
     }
     for (;;)
     {
-      this.fQQ.e(i, ((Pair)localObject).first);
-      if (this.fQR) {}
-      label94:
+      this.hjC.g(i, ((Pair)localObject).first);
+      if (!this.hjD) {
+        break label141;
+      }
+      label104:
       try
       {
         ((HandlerThread)Looper.myLooper().getThread()).quit();
+        AppMethodBeat.o(129917);
         return;
       }
       catch (Exception localException) {}
@@ -44,6 +49,8 @@ final class s$5
         i = 2;
       }
     }
+    label141:
+    AppMethodBeat.o(129917);
   }
 }
 

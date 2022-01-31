@@ -4,21 +4,21 @@ import android.nfc.Tag;
 
 public abstract class b
 {
-  public Tag mGi;
-  public byte[] mGj = null;
+  protected Tag pgo;
+  public byte[] pgp = null;
   
   public boolean a(Tag paramTag)
   {
-    this.mGi = paramTag;
+    this.pgo = paramTag;
     if (paramTag != null) {
-      this.mGj = paramTag.getId();
+      this.pgp = paramTag.getId();
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.nfc.b.b
  * JD-Core Version:    0.7.0.1
  */

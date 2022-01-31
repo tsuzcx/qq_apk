@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.webview.ui.tools.bag;
 
 public abstract interface a$b
 {
-  public abstract void ceS();
+  public abstract void dfb();
 }
 
 

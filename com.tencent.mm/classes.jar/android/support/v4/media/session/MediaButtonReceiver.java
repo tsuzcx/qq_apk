@@ -59,8 +59,8 @@ public class MediaButtonReceiver
       paramContext = paramContext.getApplicationContext();
       paramIntent = new MediaButtonReceiver.a(paramContext, paramIntent, localPendingResult);
       paramContext = new MediaBrowserCompat(paramContext, localComponentName, paramIntent);
-      paramIntent.Cc = paramContext;
-      paramContext.AC.connect();
+      paramIntent.CK = paramContext;
+      paramContext.Bo.connect();
       return;
     }
     throw new IllegalStateException("Could not find any Service that handles android.intent.action.MEDIA_BUTTON or implements a media browser service.");

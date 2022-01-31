@@ -1,25 +1,28 @@
 package com.tencent.mm.plugin.profile.ui;
 
-import com.tencent.mm.model.bd.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bf.a;
 import com.tencent.mm.ui.base.p;
 
 final class e$3
-  implements bd.a
+  implements bf.a
 {
   e$3(e parame) {}
   
-  public final void xA()
+  public final boolean JS()
   {
-    if (this.mXe.tipDialog != null)
-    {
-      this.mXe.tipDialog.dismiss();
-      this.mXe.tipDialog = null;
-    }
+    return this.pAa.isDeleteCancel;
   }
   
-  public final boolean xz()
+  public final void JT()
   {
-    return this.mXe.isDeleteCancel;
+    AppMethodBeat.i(23503);
+    if (this.pAa.tipDialog != null)
+    {
+      this.pAa.tipDialog.dismiss();
+      this.pAa.tipDialog = null;
+    }
+    AppMethodBeat.o(23503);
   }
 }
 

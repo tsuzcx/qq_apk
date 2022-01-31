@@ -16,6 +16,7 @@ public class h
   public boolean l;
   public boolean m;
   public boolean n;
+  public int o;
 }
 
 

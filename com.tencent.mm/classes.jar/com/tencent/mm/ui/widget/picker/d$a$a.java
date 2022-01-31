@@ -6,10 +6,10 @@ import android.widget.TextView;
 
 final class d$a$a
 {
-  TextView eXO;
-  TextView eXP;
-  CheckBox khV;
-  LinearLayout wnt;
+  LinearLayout AHq;
+  TextView gpL;
+  TextView gpM;
+  CheckBox mCC;
   
   d$a$a(d.a parama) {}
 }

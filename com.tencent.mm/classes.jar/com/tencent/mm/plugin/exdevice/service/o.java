@@ -5,15 +5,15 @@ import android.os.IInterface;
 public abstract interface o
   extends IInterface
 {
-  public abstract long aMe();
+  public abstract long bqr();
   
-  public abstract byte[] aMf();
+  public abstract byte[] bqs();
   
-  public abstract int aMg();
+  public abstract int bqt();
   
-  public abstract int aMh();
+  public abstract int bqu();
   
-  public abstract int aMi();
+  public abstract int bqv();
 }
 
 

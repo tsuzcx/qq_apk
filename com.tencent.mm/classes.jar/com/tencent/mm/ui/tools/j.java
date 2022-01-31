@@ -1,178 +1,135 @@
 package com.tencent.mm.ui.tools;
 
-import android.app.Dialog;
-import android.content.Context;
-import android.content.DialogInterface.OnCancelListener;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.LayoutInflater;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.AnimatorInflater;
+import android.animation.TimeInterpolator;
+import android.annotation.TargetApi;
 import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import android.widget.AbsListView;
-import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.base.k;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.m;
-import com.tencent.mm.ui.base.n.a;
-import com.tencent.mm.ui.base.n.b;
-import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.widget.MMWebView;
-import java.util.Iterator;
-import java.util.List;
+import android.view.ViewPropertyAnimator;
+import android.view.animation.AnimationUtils;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class j
-  implements AdapterView.OnItemClickListener
 {
-  private LayoutInflater Lu;
-  private DialogInterface.OnDismissListener hsn;
-  private Context mContext;
-  public k phG;
-  public n.c phH;
-  public n.d phI;
-  private l phJ;
-  private j.a wdq;
-  public n.a wdr;
-  public n.b wds;
-  
-  public j(Context paramContext)
+  @TargetApi(14)
+  public static final void a(View paramView, long paramLong, float paramFloat, a parama)
   {
-    this.mContext = paramContext;
-    this.Lu = LayoutInflater.from(paramContext);
-    this.phG = new k(paramContext);
-    this.phJ = new l(paramContext);
-  }
-  
-  public final void a(View paramView, int paramInt, long paramLong, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.d paramd)
-  {
-    if (((this.mContext instanceof MMFragmentActivity)) && (((MMFragmentActivity)this.mContext).isSwiping()))
+    AppMethodBeat.i(107654);
+    if ((paramView == null) || (d.fw(14)))
     {
-      y.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenuForAdapterView");
+      AppMethodBeat.o(107654);
       return;
     }
-    this.phJ.clear();
-    AdapterView.AdapterContextMenuInfo localAdapterContextMenuInfo = new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.phJ, paramView, localAdapterContextMenuInfo);
-    paramView = this.phJ.uWD.iterator();
-    while (paramView.hasNext()) {
-      ((m)paramView.next()).uWG = localAdapterContextMenuInfo;
+    Object localObject = (Animator)paramView.getTag(2131820653);
+    if (localObject != null) {
+      ((Animator)localObject).cancel();
     }
-    bJQ();
-    this.phI = paramd;
-  }
-  
-  public final void a(View paramView, final View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.d paramd)
-  {
-    this.phI = paramd;
-    y.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu");
-    if ((paramView instanceof AbsListView))
+    ab.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
+    paramView.animate().cancel();
+    paramView.animate().setListener(null);
+    localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2131034200);
+    if (parama == null)
     {
-      y.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView");
-      ((AbsListView)paramView).setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+      paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject);
+      AppMethodBeat.o(107654);
+      return;
+    }
+    paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject).setListener(new Animator.AnimatorListener()
+    {
+      public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          j.a(j.this).clear();
-          y.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu AbsListView long click");
-          paramAnonymousAdapterView = new AdapterView.AdapterContextMenuInfo(paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
-          paramOnCreateContextMenuListener.onCreateContextMenu(j.a(j.this), paramAnonymousView, paramAnonymousAdapterView);
-          paramAnonymousView = j.a(j.this).uWD.iterator();
-          while (paramAnonymousView.hasNext()) {
-            ((m)paramAnonymousView.next()).uWG = paramAnonymousAdapterView;
-          }
-          j.this.bJQ();
-          return true;
-        }
-      });
+        AppMethodBeat.i(107651);
+        this.AvC.dfe();
+        AppMethodBeat.o(107651);
+      }
+      
+      public final void onAnimationEnd(Animator paramAnonymousAnimator)
+      {
+        AppMethodBeat.i(107650);
+        this.AvC.onAnimationEnd();
+        AppMethodBeat.o(107650);
+      }
+      
+      public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
+      
+      public final void onAnimationStart(Animator paramAnonymousAnimator) {}
+    });
+    AppMethodBeat.o(107654);
+  }
+  
+  @TargetApi(11)
+  public static void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
+  {
+    AppMethodBeat.i(107655);
+    if ((paramView == null) || (d.fw(11)))
+    {
+      AppMethodBeat.o(107655);
       return;
     }
-    if ((paramView instanceof MMWebView))
+    Animator localAnimator = (Animator)paramView.getTag(2131820653);
+    if (localAnimator != null) {
+      localAnimator.cancel();
+    }
+    localAnimator = AnimatorInflater.loadAnimator(paramView.getContext(), 2131099650);
+    localAnimator.setTarget(paramView);
+    if (paramAnimatorListener != null) {
+      localAnimator.addListener(paramAnimatorListener);
+    }
+    localAnimator.start();
+    paramView.setTag(2131820653, localAnimator);
+    AppMethodBeat.o(107655);
+  }
+  
+  @TargetApi(11)
+  public static final void s(View paramView, float paramFloat)
+  {
+    AppMethodBeat.i(107652);
+    if ((paramView == null) || (d.fw(11)))
     {
-      y.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu for webview");
-      paramView.setOnLongClickListener(new j.2(this, paramOnCreateContextMenuListener));
+      AppMethodBeat.o(107652);
       return;
     }
-    y.v("MicroMsg.MMSubMenuHelper", "registerForContextMenu normal view");
-    paramView.setOnLongClickListener(new j.3(this, paramOnCreateContextMenuListener));
+    Animator localAnimator = (Animator)paramView.getTag(2131820653);
+    if (localAnimator != null) {
+      localAnimator.cancel();
+    }
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
+    AppMethodBeat.o(107652);
   }
   
-  public final void a(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.d paramd, DialogInterface.OnDismissListener paramOnDismissListener)
+  @TargetApi(14)
+  public static final void t(View paramView, float paramFloat)
   {
-    if (((this.mContext instanceof MMFragmentActivity)) && (((MMFragmentActivity)this.mContext).isSwiping()))
+    AppMethodBeat.i(107653);
+    if ((paramView == null) || (d.fw(14)))
     {
-      y.w("MicroMsg.MMSubMenuHelper", "is swiping, PASS openContextMenu");
+      AppMethodBeat.o(107653);
       return;
     }
-    this.hsn = paramOnDismissListener;
-    this.phJ.clear();
-    paramOnCreateContextMenuListener.onCreateContextMenu(this.phJ, paramView, null);
-    bJQ();
-    this.phI = paramd;
+    Animator localAnimator = (Animator)paramView.getTag(2131820653);
+    if (localAnimator != null) {
+      localAnimator.cancel();
+    }
+    paramView.animate().cancel();
+    paramView.setTranslationX(paramFloat);
+    paramView.setTranslationY(0.0F);
+    AppMethodBeat.o(107653);
   }
   
-  public final void b(View paramView, View.OnCreateContextMenuListener paramOnCreateContextMenuListener, n.d paramd)
+  public static abstract interface a
   {
-    a(paramView, paramOnCreateContextMenuListener, paramd, null);
-  }
-  
-  public final Dialog bJQ()
-  {
-    if (this.phH != null)
-    {
-      this.phJ.clear();
-      this.phJ = new l(this.mContext);
-      this.phH.a(this.phJ);
-    }
-    if (this.phJ.cAR())
-    {
-      y.w("MicroMsg.MMSubMenuHelper", "show, menu empty");
-      return null;
-    }
-    if (this.wdq == null) {
-      this.wdq = new j.a(this, (byte)0);
-    }
-    this.phG.iqN = this.wdq;
-    this.phG.slt = this;
-    this.phG.setTitle(this.phJ.VF);
-    this.phG.setOnDismissListener(this.hsn);
-    this.phG.show();
-    return this.phG;
-  }
-  
-  public final void d(DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    this.phG.setOnCancelListener(paramOnCancelListener);
-  }
-  
-  public final void dismiss()
-  {
-    if (this.phG.isShowing()) {
-      this.phG.dismiss();
-    }
-  }
-  
-  public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (m)this.phJ.uWD.get(paramInt);
-    if (paramAdapterView.performClick())
-    {
-      y.i("MicroMsg.MMSubMenuHelper", "onItemClick menu item has listener");
-      dismiss();
-      return;
-    }
-    if (this.phI != null) {
-      this.phI.onMMMenuItemSelected(paramAdapterView, paramInt);
-    }
-    dismiss();
+    public abstract void dfe();
+    
+    public abstract void onAnimationEnd();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.tools.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,166 +1,184 @@
 package com.tencent.mm.plugin.wallet_payu.order.ui;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_payu.order.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.protocal.c.bdv;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.blp;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.e;
 
 public class PayUMallOrderDetailUI
   extends WalletBaseUI
 {
-  private TextView gSp;
-  private TextView lLL;
-  private String mKL = "";
-  private TextView nAN;
-  private bdv qNF;
-  private LinearLayout qNG;
-  private LinearLayout qNH;
-  private LinearLayout qNI;
-  private LinearLayout qNJ;
-  private LinearLayout qNK;
-  private LinearLayout qNL;
-  private LinearLayout qNM;
-  private TextView qNN;
-  private TextView qNO;
-  private TextView qNP;
-  private TextView qNQ;
+  private TextView iuP;
+  private TextView ojf;
+  private String plc = "";
+  private TextView qmv;
+  private blp uCM;
+  private LinearLayout uCN;
+  private LinearLayout uCO;
+  private LinearLayout uCP;
+  private LinearLayout uCQ;
+  private LinearLayout uCR;
+  private LinearLayout uCS;
+  private LinearLayout uCT;
+  private TextView uCU;
+  private TextView uCV;
+  private TextView uCW;
+  private TextView uCX;
   
-  private void bXJ()
+  private void cbv()
   {
-    if (this.qNF == null) {
+    AppMethodBeat.i(48427);
+    if (this.uCM == null)
+    {
+      AppMethodBeat.o(48427);
       return;
     }
-    if (!bk.bl(this.qNF.mPI))
+    if (!bo.isNullOrNil(this.uCM.ppY))
     {
-      this.qNG.setVisibility(0);
-      this.qNN.setText(this.qNF.mPI);
-      label43:
-      if (bk.bl(this.qNF.mPS)) {
-        break label291;
-      }
-      this.qNH.setVisibility(0);
-      this.qNO.setText(this.qNF.mPS);
-      label78:
-      if (bk.bl(this.qNF.mPK)) {
+      this.uCN.setVisibility(0);
+      this.uCU.setText(this.uCM.ppY);
+      label53:
+      if (bo.isNullOrNil(this.uCM.pqh)) {
         break label303;
       }
-      this.qNI.setVisibility(0);
-      this.qNP.setText(this.qNF.mPK);
-      label113:
-      if (bk.bl(this.qNF.mPO)) {
+      this.uCO.setVisibility(0);
+      this.uCV.setText(this.uCM.pqh);
+      label88:
+      if (bo.isNullOrNil(this.uCM.pqa)) {
         break label315;
       }
-      this.qNJ.setVisibility(0);
-      this.nAN.setText(e.d(this.qNF.tze / 100.0D, this.qNF.mPO));
-      label163:
-      if (this.qNF.mPL < 0) {
+      this.uCP.setVisibility(0);
+      this.uCW.setText(this.uCM.pqa);
+      label123:
+      if (bo.isNullOrNil(this.uCM.pqd)) {
         break label327;
       }
-      this.qNK.setVisibility(0);
-      this.lLL.setText(e.hP(this.qNF.mPL));
-      label198:
-      if (bk.bl(this.qNF.mPM)) {
+      this.uCQ.setVisibility(0);
+      this.qmv.setText(e.e(this.uCM.xAm / 100.0D, this.uCM.pqd));
+      label173:
+      if (this.uCM.CreateTime < 0) {
         break label339;
       }
-      this.qNL.setVisibility(0);
-      this.gSp.setText(this.qNF.mPM);
+      this.uCR.setVisibility(0);
+      this.ojf.setText(e.kB(this.uCM.CreateTime));
+      label208:
+      if (bo.isNullOrNil(this.uCM.pqb)) {
+        break label351;
+      }
+      this.uCS.setVisibility(0);
+      this.iuP.setText(this.uCM.pqb);
     }
     for (;;)
     {
-      switch (this.qNF.mPQ)
+      switch (this.uCM.pqf)
       {
       case 4: 
       default: 
-        this.qNQ.setText(a.i.wallet_payu_detail_type_reserve);
+        this.uCX.setText(2131305497);
+        AppMethodBeat.o(48427);
         return;
-        this.qNG.setVisibility(8);
-        break label43;
-        label291:
-        this.qNH.setVisibility(8);
-        break label78;
+        this.uCN.setVisibility(8);
+        break label53;
         label303:
-        this.qNI.setVisibility(8);
-        break label113;
+        this.uCO.setVisibility(8);
+        break label88;
         label315:
-        this.qNJ.setVisibility(8);
-        break label163;
+        this.uCP.setVisibility(8);
+        break label123;
         label327:
-        this.qNK.setVisibility(8);
-        break label198;
+        this.uCQ.setVisibility(8);
+        break label173;
         label339:
-        this.qNL.setVisibility(8);
+        this.uCR.setVisibility(8);
+        break label208;
+        label351:
+        this.uCS.setVisibility(8);
       }
     }
-    this.qNQ.setText(a.i.wallet_balance_manager_save);
+    this.uCX.setText(2131304823);
+    AppMethodBeat.o(48427);
     return;
-    this.qNQ.setText(a.i.wallet_index_ui_transfer);
+    this.uCX.setText(2131305126);
+    AppMethodBeat.o(48427);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public int getLayoutId()
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0))
-    {
-      if ((paramm instanceof c))
-      {
-        this.qNF = ((c)paramm).qNE;
-        bXJ();
-      }
-      return true;
-    }
-    return false;
-  }
-  
-  protected final int getLayoutId()
-  {
-    return a.g.payu_mall_order_info_detail;
+    return 2130970406;
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(48426);
     super.onCreate(paramBundle);
-    kh(1520);
-    this.mKL = this.BX.getString("key_trans_id");
-    if (bk.bl(this.mKL))
+    addSceneEndListener(1520);
+    this.plc = getInput().getString("key_trans_id");
+    if (bo.isNullOrNil(this.plc))
     {
-      y.e("MicroMsg.PayUMallOrderDetailUI", "hy: trans id is null");
+      ab.e("MicroMsg.PayUMallOrderDetailUI", "hy: trans id is null");
       finish();
     }
-    a(new c(this.mKL), true, true);
-    this.qNG = ((LinearLayout)findViewById(a.f.detail_transid));
-    this.qNH = ((LinearLayout)findViewById(a.f.detail_appname));
-    this.qNI = ((LinearLayout)findViewById(a.f.detail_goodsname));
-    this.qNJ = ((LinearLayout)findViewById(a.f.detail_moneyspent));
-    this.qNK = ((LinearLayout)findViewById(a.f.detail_time));
-    this.qNL = ((LinearLayout)findViewById(a.f.detail_status));
-    this.qNM = ((LinearLayout)findViewById(a.f.detail_type));
-    this.qNN = ((TextView)findViewById(a.f.detail_transid_tv));
-    this.qNO = ((TextView)findViewById(a.f.detail_appname_tv));
-    this.qNP = ((TextView)findViewById(a.f.detail_goodsname_tv));
-    this.nAN = ((TextView)findViewById(a.f.detail_moneyspent_tv));
-    this.lLL = ((TextView)findViewById(a.f.detail_time_tv));
-    this.gSp = ((TextView)findViewById(a.f.detail_status_tv));
-    this.qNQ = ((TextView)findViewById(a.f.detail_type_tv));
-    bXJ();
+    doSceneProgress(new c(this.plc));
+    this.uCN = ((LinearLayout)findViewById(2131826679));
+    this.uCO = ((LinearLayout)findViewById(2131826681));
+    this.uCP = ((LinearLayout)findViewById(2131826683));
+    this.uCQ = ((LinearLayout)findViewById(2131826685));
+    this.uCR = ((LinearLayout)findViewById(2131826691));
+    this.uCS = ((LinearLayout)findViewById(2131826687));
+    this.uCT = ((LinearLayout)findViewById(2131826689));
+    this.uCU = ((TextView)findViewById(2131826680));
+    this.uCV = ((TextView)findViewById(2131826682));
+    this.uCW = ((TextView)findViewById(2131826684));
+    this.qmv = ((TextView)findViewById(2131826686));
+    this.ojf = ((TextView)findViewById(2131826692));
+    this.iuP = ((TextView)findViewById(2131826688));
+    this.uCX = ((TextView)findViewById(2131826690));
+    cbv();
+    AppMethodBeat.o(48426);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(48429);
     super.onDestroy();
-    ki(1520);
+    removeSceneEndListener(1520);
+    AppMethodBeat.o(48429);
+  }
+  
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(48428);
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
+      if ((paramm instanceof c))
+      {
+        this.uCM = ((c)paramm).uCL;
+        cbv();
+      }
+      AppMethodBeat.o(48428);
+      return true;
+    }
+    AppMethodBeat.o(48428);
+    return false;
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.order.ui.PayUMallOrderDetailUI
  * JD-Core Version:    0.7.0.1
  */

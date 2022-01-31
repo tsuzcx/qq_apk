@@ -1,6 +1,7 @@
 package com.google.android.gms.common;
 
 import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class UserRecoverableException
   extends Exception
@@ -15,12 +16,15 @@ public class UserRecoverableException
   
   public Intent getIntent()
   {
-    return new Intent(this.mIntent);
+    AppMethodBeat.i(89440);
+    Intent localIntent = new Intent(this.mIntent);
+    AppMethodBeat.o(89440);
+    return localIntent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.google.android.gms.common.UserRecoverableException
  * JD-Core Version:    0.7.0.1
  */

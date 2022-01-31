@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.scanner.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
-import com.tencent.mm.h.a.ou;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pw;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ConfirmScanBankCardResultUI$1
   implements View.OnClickListener
@@ -14,25 +15,27 @@ final class ConfirmScanBankCardResultUI$1
   
   public final void onClick(View paramView)
   {
-    if (ConfirmScanBankCardResultUI.a(this.nJt) != null)
+    AppMethodBeat.i(81010);
+    if (ConfirmScanBankCardResultUI.a(this.qwV) != null)
     {
-      paramView = ConfirmScanBankCardResultUI.a(this.nJt).getEditableText().toString();
-      if (!bk.bl(paramView)) {}
+      paramView = ConfirmScanBankCardResultUI.a(this.qwV).getEditableText().toString();
+      if (bo.isNullOrNil(paramView))
+      {
+        AppMethodBeat.o(81010);
+        return;
+      }
+      ConfirmScanBankCardResultUI.b(this.qwV);
+      pw localpw = new pw();
+      localpw.cGr.action = 1;
+      localpw.cGr.cardNum = paramView;
+      a.ymk.l(localpw);
     }
-    else
-    {
-      return;
-    }
-    ou localou = new ou();
-    localou.bYq.action = 1;
-    localou.bYq.cardNum = paramView;
-    a.udP.m(localou);
-    ConfirmScanBankCardResultUI.b(this.nJt);
+    AppMethodBeat.o(81010);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.ConfirmScanBankCardResultUI.1
  * JD-Core Version:    0.7.0.1
  */

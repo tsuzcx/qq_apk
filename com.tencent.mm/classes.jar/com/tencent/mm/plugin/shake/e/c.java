@@ -1,81 +1,93 @@
 package com.tencent.mm.plugin.shake.e;
 
 import android.content.Context;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
 import com.tencent.mm.plugin.shake.d.a.k;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.Map;
 
 public final class c
 {
-  public static c.a MD(String paramString)
+  public static c.a Zl(String paramString)
   {
-    if (paramString == null) {}
-    Map localMap;
-    do
+    AppMethodBeat.i(24953);
+    if (paramString == null)
     {
+      AppMethodBeat.o(24953);
       return null;
-      localMap = bn.s(paramString, "tv");
-    } while (localMap == null);
+    }
+    Map localMap = br.F(paramString, "tv");
+    if (localMap == null)
+    {
+      AppMethodBeat.o(24953);
+      return null;
+    }
     c.a locala = new c.a();
-    locala.field_id = bk.pm((String)localMap.get("" + ".tv.id"));
-    locala.field_topic = bk.pm((String)localMap.get("" + ".tv.topic"));
-    locala.field_title = bk.pm((String)localMap.get("" + ".tv.title"));
-    locala.field_subtitle = bk.pm((String)localMap.get("" + ".tv.subtitle"));
-    locala.field_thumburl = bk.pm((String)localMap.get("" + ".tv.thumburl"));
-    locala.field_shareurl = bk.pm((String)localMap.get("" + ".tv.shareurl"));
-    locala.field_playurl = bk.pm((String)localMap.get("" + ".tv.playurl"));
-    locala.field_playstatid = bk.pm((String)localMap.get("" + ".tv.playurl$statid"));
-    locala.field_source = bk.pm((String)localMap.get("" + ".tv.source"));
-    locala.nPR = a.l(localMap, "" + ".tv");
+    locala.field_id = bo.nullAsNil((String)localMap.get("" + ".tv.id"));
+    locala.field_topic = bo.nullAsNil((String)localMap.get("" + ".tv.topic"));
+    locala.field_title = bo.nullAsNil((String)localMap.get("" + ".tv.title"));
+    locala.field_subtitle = bo.nullAsNil((String)localMap.get("" + ".tv.subtitle"));
+    locala.field_thumburl = bo.nullAsNil((String)localMap.get("" + ".tv.thumburl"));
+    locala.field_shareurl = bo.nullAsNil((String)localMap.get("" + ".tv.shareurl"));
+    locala.field_playurl = bo.nullAsNil((String)localMap.get("" + ".tv.playurl"));
+    locala.field_playstatid = bo.nullAsNil((String)localMap.get("" + ".tv.playurl$statid"));
+    locala.field_source = bo.nullAsNil((String)localMap.get("" + ".tv.source"));
+    locala.qDK = a.l(localMap, "" + ".tv");
     locala.field_xml = paramString;
+    AppMethodBeat.o(24953);
     return locala;
   }
   
   public static String a(Context paramContext, c.a parama)
   {
-    g.a locala = new g.a();
-    locala.title = parama.field_title;
-    if (!bk.bl(parama.field_topic)) {}
-    for (locala.description = parama.field_topic;; locala.description = parama.field_subtitle)
+    AppMethodBeat.i(24955);
+    j.b localb = new j.b();
+    localb.title = parama.field_title;
+    if (!bo.isNullOrNil(parama.field_topic)) {}
+    for (localb.description = parama.field_topic;; localb.description = parama.field_subtitle)
     {
-      locala.type = 20;
-      locala.url = parama.field_shareurl;
-      locala.action = "";
-      if (k.bzS())
+      localb.type = 20;
+      localb.url = parama.field_shareurl;
+      localb.action = "";
+      if (k.cll())
       {
-        locala.appName = paramContext.getString(R.l.scan_type_tv);
-        locala.appId = "wxaf060266bfa9a35c";
+        localb.appName = paramContext.getString(2131302951);
+        localb.appId = "wxaf060266bfa9a35c";
       }
-      locala.thumburl = parama.field_thumburl;
-      locala.dRc = b(parama);
-      return g.a.a(locala, null, null);
+      localb.thumburl = parama.field_thumburl;
+      localb.fhb = b(parama);
+      paramContext = j.b.a(localb, null, null);
+      AppMethodBeat.o(24955);
+      return paramContext;
     }
   }
   
   public static String b(c.a parama)
   {
+    AppMethodBeat.i(24954);
     StringBuilder localStringBuilder = new StringBuilder(256);
     localStringBuilder.append("<tv>");
-    if (!bk.bl(parama.field_id)) {
-      localStringBuilder.append("<id>" + bk.ZP(parama.field_id) + "</id>");
+    if (!bo.isNullOrNil(parama.field_id)) {
+      localStringBuilder.append("<id>" + bo.apT(parama.field_id) + "</id>");
     }
-    localStringBuilder.append("<title>" + bk.ZP(parama.field_title) + "</title>");
-    localStringBuilder.append("<subtitle>" + bk.ZP(parama.field_subtitle) + "</subtitle>");
-    localStringBuilder.append("<topic>" + bk.ZP(parama.field_topic) + "</topic>");
-    localStringBuilder.append("<thumburl>" + bk.ZP(parama.field_thumburl) + "</thumburl>");
-    localStringBuilder.append("<shareurl>" + bk.ZP(parama.field_shareurl) + "</shareurl>");
-    if (!bk.bl(parama.field_playstatid)) {
-      localStringBuilder.append("<playurl statid=\"" + parama.field_playstatid + "\">" + bk.ZP(parama.field_playurl) + "</playurl>");
+    localStringBuilder.append("<title>" + bo.apT(parama.field_title) + "</title>");
+    localStringBuilder.append("<subtitle>" + bo.apT(parama.field_subtitle) + "</subtitle>");
+    localStringBuilder.append("<topic>" + bo.apT(parama.field_topic) + "</topic>");
+    localStringBuilder.append("<thumburl>" + bo.apT(parama.field_thumburl) + "</thumburl>");
+    localStringBuilder.append("<shareurl>" + bo.apT(parama.field_shareurl) + "</shareurl>");
+    if (!bo.isNullOrNil(parama.field_playstatid)) {
+      localStringBuilder.append("<playurl statid=\"" + parama.field_playstatid + "\">" + bo.apT(parama.field_playurl) + "</playurl>");
     }
     for (;;)
     {
-      localStringBuilder.append("<source>" + bk.ZP(parama.field_source) + "</source>");
+      localStringBuilder.append("<source>" + bo.apT(parama.field_source) + "</source>");
       localStringBuilder.append("</tv>");
-      return localStringBuilder.toString();
-      localStringBuilder.append("<playurl>" + bk.ZP(parama.field_playurl) + "</playurl>");
+      parama = localStringBuilder.toString();
+      AppMethodBeat.o(24954);
+      return parama;
+      localStringBuilder.append("<playurl>" + bo.apT(parama.field_playurl) + "</playurl>");
     }
   }
 }

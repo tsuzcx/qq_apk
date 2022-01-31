@@ -5,7 +5,8 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class Response
   extends JceStruct
@@ -19,10 +20,12 @@ public final class Response
   
   static
   {
+    AppMethodBeat.i(76113);
     if (!Response.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
+      AppMethodBeat.o(76113);
       return;
     }
   }
@@ -42,7 +45,8 @@ public final class Response
   
   public final Object clone()
   {
-    Object localObject1 = null;
+    AppMethodBeat.i(76108);
+    localObject1 = null;
     try
     {
       Object localObject2 = super.clone();
@@ -51,34 +55,48 @@ public final class Response
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
       while ($assertionsDisabled) {}
-      throw new AssertionError();
+      localObject1 = new AssertionError();
+      AppMethodBeat.o(76108);
+      throw ((Throwable)localObject1);
     }
+    AppMethodBeat.o(76108);
     return localObject1;
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
   {
+    AppMethodBeat.i(76111);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.display(this.head, "head");
     paramStringBuilder.display(this.body, "body");
+    AppMethodBeat.o(76111);
   }
   
   public final void displaySimple(StringBuilder paramStringBuilder, int paramInt)
   {
+    AppMethodBeat.i(76112);
     paramStringBuilder = new JceDisplayer(paramStringBuilder, paramInt);
     paramStringBuilder.displaySimple(this.head, true);
     paramStringBuilder.displaySimple(this.body, false);
+    AppMethodBeat.o(76112);
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    AppMethodBeat.i(76106);
+    if (paramObject == null)
     {
+      AppMethodBeat.o(76106);
       return false;
-      paramObject = (Response)paramObject;
-    } while ((!JceUtil.equals(this.head, paramObject.head)) || (!JceUtil.equals(this.body, paramObject.body)));
-    return true;
+    }
+    paramObject = (Response)paramObject;
+    if ((JceUtil.equals(this.head, paramObject.head)) && (JceUtil.equals(this.body, paramObject.body)))
+    {
+      AppMethodBeat.o(76106);
+      return true;
+    }
+    AppMethodBeat.o(76106);
+    return false;
   }
   
   public final String fullClassName()
@@ -98,19 +116,24 @@ public final class Response
   
   public final int hashCode()
   {
+    AppMethodBeat.i(76107);
     try
     {
-      throw new Exception("Need define key first!");
+      Exception localException1 = new Exception("Need define key first!");
+      AppMethodBeat.o(76107);
+      throw localException1;
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
-      y.printErrStackTrace("Response", localException, "", new Object[0]);
+      ab.printErrStackTrace("Response", localException2, "", new Object[0]);
+      AppMethodBeat.o(76107);
     }
     return 0;
   }
   
   public final void readFrom(JceInputStream paramJceInputStream)
   {
+    AppMethodBeat.i(76110);
     if (cache_head == null) {
       cache_head = new RspHead();
     }
@@ -122,6 +145,7 @@ public final class Response
       ((byte[])arrayOfByte)[0] = 0;
     }
     this.body = ((byte[])paramJceInputStream.read(cache_body, 1, true));
+    AppMethodBeat.o(76110);
   }
   
   public final void setBody(byte[] paramArrayOfByte)
@@ -136,13 +160,15 @@ public final class Response
   
   public final void writeTo(JceOutputStream paramJceOutputStream)
   {
+    AppMethodBeat.i(76109);
     paramJceOutputStream.write(this.head, 0);
     paramJceOutputStream.write(this.body, 1);
+    AppMethodBeat.o(76109);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.Response
  * JD-Core Version:    0.7.0.1
  */

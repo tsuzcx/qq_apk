@@ -1,13 +1,13 @@
 package com.tencent.mm.modelstat;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 
 final class q$4
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return m.dXp;
+    return m.SQL_CREATE;
   }
 }
 

@@ -5,6 +5,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.o;
 
 final class RegSetInfoUI$18
@@ -14,21 +15,16 @@ final class RegSetInfoUI$18
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (RegSetInfoUI.t(this.fso) != null)
+    AppMethodBeat.i(125526);
+    if (RegSetInfoUI.t(this.gJQ) != null)
     {
-      RegSetInfoUI.t(this.fso).dismiss();
-      RegSetInfoUI.u(this.fso);
+      RegSetInfoUI.t(this.gJQ).dismiss();
+      RegSetInfoUI.u(this.gJQ);
     }
-    RegSetInfoUI.a(this.fso).setText(this.fst[paramInt]);
-    RegSetInfoUI.a(this.fso).postDelayed(new Runnable()
-    {
-      public final void run()
-      {
-        RegSetInfoUI.a(RegSetInfoUI.18.this.fso).clearFocus();
-        RegSetInfoUI.a(RegSetInfoUI.18.this.fso).requestFocus();
-      }
-    }, 50L);
-    RegSetInfoUI.r(this.fso).setText(this.fso.getString(q.j.regsetinfo_tip));
+    RegSetInfoUI.a(this.gJQ).setText(this.gJV[paramInt]);
+    RegSetInfoUI.a(this.gJQ).postDelayed(new RegSetInfoUI.18.1(this), 50L);
+    RegSetInfoUI.r(this.gJQ).setText(this.gJQ.getString(2131302501));
+    AppMethodBeat.o(125526);
   }
 }
 

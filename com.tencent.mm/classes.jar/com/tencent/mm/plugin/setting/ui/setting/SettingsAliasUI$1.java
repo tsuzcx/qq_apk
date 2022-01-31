@@ -4,9 +4,8 @@ import android.content.res.Resources;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.TextView;
-import com.tencent.mm.plugin.setting.a.c;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class SettingsAliasUI$1
   implements TextWatcher
@@ -19,63 +18,65 @@ final class SettingsAliasUI$1
   
   public final void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    SettingsAliasUI localSettingsAliasUI = this.nUa;
+    AppMethodBeat.i(127184);
+    SettingsAliasUI localSettingsAliasUI = this.qIa;
     a locala = new a();
     if ((paramCharSequence.length() < 6) || (paramCharSequence.length() > 20))
     {
-      locala.aox = localSettingsAliasUI.getString(a.i.verify_account_tip);
-      locala.bKg = false;
-      if (!locala.bKg) {
-        break label337;
+      locala.errMsg = localSettingsAliasUI.getString(2131304492);
+      locala.crA = false;
+      if (!locala.crA) {
+        break label339;
       }
-      this.nUa.enableOptionMenu(true);
-      SettingsAliasUI.a(this.nUa).setTextColor(this.nUa.getResources().getColorStateList(a.c.hint_text_color));
+      this.qIa.enableOptionMenu(true);
+      SettingsAliasUI.a(this.qIa).setTextColor(this.qIa.getResources().getColorStateList(2131690168));
     }
     for (;;)
     {
-      SettingsAliasUI.a(this.nUa).setText(locala.aox);
-      SettingsAliasUI.b(this.nUa).setText(this.nUa.getString(a.i.app_account, new Object[] { paramCharSequence }));
+      SettingsAliasUI.a(this.qIa).setText(locala.errMsg);
+      SettingsAliasUI.b(this.qIa).setText(this.qIa.getString(2131296536, new Object[] { paramCharSequence }));
+      AppMethodBeat.o(127184);
       return;
-      if (!bk.m(paramCharSequence.charAt(0)))
+      if (!bo.C(paramCharSequence.charAt(0)))
       {
-        locala.aox = localSettingsAliasUI.getString(a.i.verify_account_err_start);
-        locala.bKg = false;
+        locala.errMsg = localSettingsAliasUI.getString(2131304490);
+        locala.crA = false;
         break;
       }
       paramInt1 = paramCharSequence.length() - 1;
       for (;;)
       {
         if (paramInt1 <= 0) {
-          break label315;
+          break label318;
         }
         char c = paramCharSequence.charAt(paramInt1);
-        if ((!bk.m(c)) && (c != '-') && (c != '_') && (!bk.n(c)))
+        if ((!bo.C(c)) && (c != '-') && (c != '_') && (!bo.D(c)))
         {
           if (Character.isSpace(c))
           {
-            locala.aox = localSettingsAliasUI.getString(a.i.verify_account_err_space);
-            locala.bKg = false;
+            locala.errMsg = localSettingsAliasUI.getString(2131304489);
+            locala.crA = false;
             break;
           }
-          if (bk.l(c))
+          if (bo.B(c))
           {
-            locala.aox = localSettingsAliasUI.getString(a.i.verify_account_err_chinese);
-            locala.bKg = false;
+            locala.errMsg = localSettingsAliasUI.getString(2131304487);
+            locala.crA = false;
             break;
           }
-          locala.aox = localSettingsAliasUI.getString(a.i.verify_account_tip);
-          locala.bKg = false;
+          locala.errMsg = localSettingsAliasUI.getString(2131304492);
+          locala.crA = false;
           break;
         }
         paramInt1 -= 1;
       }
-      label315:
-      locala.aox = localSettingsAliasUI.getString(a.i.modify_username_detail);
-      locala.bKg = true;
+      label318:
+      locala.errMsg = localSettingsAliasUI.getString(2131301618);
+      locala.crA = true;
       break;
-      label337:
-      this.nUa.enableOptionMenu(false);
-      SettingsAliasUI.a(this.nUa).setTextColor(this.nUa.getResources().getColorStateList(a.c.settings_alias_warning));
+      label339:
+      this.qIa.enableOptionMenu(false);
+      SettingsAliasUI.a(this.qIa).setTextColor(this.qIa.getResources().getColorStateList(2131690445));
     }
   }
 }

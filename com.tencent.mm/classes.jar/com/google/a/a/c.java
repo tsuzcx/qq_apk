@@ -2,7 +2,7 @@ package com.google.a.a;
 
 public final class c
 {
-  public static final Object aUH = new Object();
+  public static final Object bgX = new Object();
 }
 
 

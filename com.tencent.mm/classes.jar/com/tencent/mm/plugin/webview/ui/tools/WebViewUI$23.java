@@ -1,50 +1,86 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.os.Bundle;
-import com.tencent.mm.h.a.pj;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.xweb.WebView.b;
 
 final class WebViewUI$23
-  extends c<pj>
+  implements View.OnLongClickListener
 {
-  WebViewUI$23(WebViewUI paramWebViewUI)
-  {
-    this.udX = pj.class.getName().hashCode();
-  }
+  WebViewUI$23(WebViewUI paramWebViewUI) {}
   
-  private boolean cVq()
+  private boolean deO()
   {
-    if (this.rpH.gGn == null)
+    boolean bool2 = true;
+    AppMethodBeat.i(153236);
+    Object localObject = null;
+    try
     {
-      y.e("MicroMsg.WebViewUI", "Cli Event, invoker is null");
-      return false;
+      WebView.b localb = this.vgz.pOd.getHitTestResult();
+      localObject = localb;
     }
-    if ((WebViewUI.A(this.rpH) == null) || (WebViewUI.A(this.rpH).length() == 0))
+    catch (Exception localException1)
     {
-      y.e("MicroMsg.WebViewUI", "Cli Event, tid is null");
+      for (;;)
+      {
+        ab.e("MicroMsg.WebViewUI", "getHitTestResult exp %s", new Object[] { localException1.getMessage() });
+      }
+    }
+    if ((localObject == null) || (bo.isNullOrNil(localObject.mExtra)))
+    {
+      ab.e("MicroMsg.WebViewUI", "hittestresult getExtra is null");
+      AppMethodBeat.o(153236);
       return false;
     }
     try
     {
-      long l = System.currentTimeMillis();
-      y.i("MicroMsg.WebViewUI", "Cli Event, tid = %s, stime = %d, etime = %d", new Object[] { WebViewUI.A(this.rpH), Long.valueOf(WebViewUI.B(this.rpH)), Long.valueOf(l) });
-      Bundle localBundle = new Bundle();
-      localBundle.putString("service_click_tid", new String(WebViewUI.A(this.rpH)));
-      localBundle.putLong("service_click_stime", WebViewUI.B(this.rpH));
-      localBundle.putLong("service_click_etime", l);
-      this.rpH.gGn.r(2836, localBundle);
-      WebViewUI.a(this.rpH, null);
-      return false;
+      bool1 = this.vgz.igU.dM(localObject.mExtra);
+      if (!bool1) {}
     }
-    catch (Exception localException)
+    catch (Exception localException2)
     {
       for (;;)
       {
-        y.e("MicroMsg.WebViewUI", "Cli Event Exception, msg = %s", new Object[] { localException.getMessage() });
+        label137:
+        boolean bool1 = true;
+        ab.w("MicroMsg.WebViewUI", "postBinded, handleEvents, ex = " + localException2.getMessage());
       }
     }
+    try
+    {
+      this.vgz.igU.dO(localObject.mExtra, this.vgz.hashCode());
+      if (bool1) {
+        break label181;
+      }
+      WebViewUI.b(this.vgz, localObject.mExtra);
+      bool1 = bool2;
+    }
+    catch (Exception localException3)
+    {
+      break label148;
+      break label137;
+    }
+    AppMethodBeat.o(153236);
+    return bool1;
+  }
+  
+  public final boolean onLongClick(View paramView)
+  {
+    AppMethodBeat.i(153235);
+    if (this.vgz.getIntent().getBooleanExtra("show_long_click_popup_menu", true))
+    {
+      boolean bool = deO();
+      AppMethodBeat.o(153235);
+      return bool;
+    }
+    AppMethodBeat.o(153235);
+    return true;
   }
 }
 

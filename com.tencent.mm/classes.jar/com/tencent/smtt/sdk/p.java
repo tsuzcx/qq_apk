@@ -1,16 +1,22 @@
 package com.tencent.smtt.sdk;
 
 import android.database.sqlite.SQLiteException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
   implements Thread.UncaughtExceptionHandler
 {
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    if ((paramThrowable instanceof SQLiteException)) {
+    AppMethodBeat.i(64079);
+    if ((paramThrowable instanceof SQLiteException))
+    {
+      AppMethodBeat.o(64079);
       return;
     }
-    throw new RuntimeException(paramThrowable);
+    paramThread = new RuntimeException(paramThrowable);
+    AppMethodBeat.o(64079);
+    throw paramThread;
   }
 }
 

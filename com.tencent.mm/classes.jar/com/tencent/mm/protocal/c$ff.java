@@ -5,12 +5,12 @@ public final class c$ff
 {
   public c$ff()
   {
-    super("openMapNavigateMenu", "openMapNavigateMenu", 184, true);
+    super("openDesignerEmojiViewLocal", "openDesignerEmojiViewLocal", 20000, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ff
  * JD-Core Version:    0.7.0.1
  */

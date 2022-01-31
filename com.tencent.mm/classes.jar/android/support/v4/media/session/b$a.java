@@ -18,7 +18,7 @@ public abstract class b$a
   extends Binder
   implements b
 {
-  public static b c(IBinder paramIBinder)
+  public static b d(IBinder paramIBinder)
   {
     if (paramIBinder == null) {
       return null;
@@ -82,17 +82,17 @@ public abstract class b$a
       }
     case 3: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      a(a.a.b(paramParcel1.readStrongBinder()));
+      a(a.a.c(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       return true;
     case 4: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      b(a.a.b(paramParcel1.readStrongBinder()));
+      b(a.a.c(paramParcel1.readStrongBinder()));
       paramParcel2.writeNoException();
       return true;
     case 5: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      bool1 = cF();
+      bool1 = di();
       paramParcel2.writeNoException();
       paramInt1 = i;
       if (bool1) {
@@ -114,7 +114,7 @@ public abstract class b$a
       return true;
     case 8: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = cG();
+      paramParcel1 = dj();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -132,7 +132,7 @@ public abstract class b$a
       return true;
     case 10: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = cH();
+      paramParcel1 = dk();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -144,17 +144,17 @@ public abstract class b$a
       return true;
     case 11: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      a(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+      b(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     case 12: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      b(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
+      c(paramParcel1.readInt(), paramParcel1.readInt(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     case 27: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = cI();
+      paramParcel1 = dl();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -166,7 +166,7 @@ public abstract class b$a
       return true;
     case 28: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramParcel1 = cJ();
+      paramParcel1 = dm();
       paramParcel2.writeNoException();
       if (paramParcel1 != null)
       {
@@ -214,7 +214,7 @@ public abstract class b$a
       return true;
     case 45: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      bool1 = cK();
+      bool1 = dn();
       paramParcel2.writeNoException();
       paramInt1 = j;
       if (bool1) {
@@ -230,7 +230,7 @@ public abstract class b$a
       return true;
     case 38: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      bool1 = cL();
+      bool1 = jdMethod_do();
       paramParcel2.writeNoException();
       paramInt1 = k;
       if (bool1) {
@@ -240,7 +240,7 @@ public abstract class b$a
       return true;
     case 47: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      paramInt1 = cM();
+      paramInt1 = dp();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -273,7 +273,7 @@ public abstract class b$a
       }
     case 44: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      am(paramParcel1.readInt());
+      ak(paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     case 33: 
@@ -377,12 +377,12 @@ public abstract class b$a
       return true;
     case 20: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      cN();
+      next();
       paramParcel2.writeNoException();
       return true;
     case 21: 
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-      cO();
+      dq();
       paramParcel2.writeNoException();
       return true;
     case 22: 
@@ -454,7 +454,7 @@ public abstract class b$a
       label1512:
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
       label1699:
-      an(paramParcel1.readInt());
+      al(paramParcel1.readInt());
       label1948:
       paramParcel2.writeNoException();
       return true;
@@ -472,7 +472,7 @@ public abstract class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     android.support.v4.media.session.b.a
  * JD-Core Version:    0.7.0.1
  */

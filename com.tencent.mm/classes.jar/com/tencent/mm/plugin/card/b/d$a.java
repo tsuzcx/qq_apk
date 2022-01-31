@@ -4,13 +4,13 @@ import com.tencent.mm.plugin.card.base.b;
 
 public abstract interface d$a
 {
-  public abstract void azU();
+  public abstract void HB(String paramString);
   
-  public abstract void azV();
+  public abstract void bbC();
+  
+  public abstract void bbD();
   
   public abstract void d(b paramb);
-  
-  public abstract void ya(String paramString);
 }
 
 

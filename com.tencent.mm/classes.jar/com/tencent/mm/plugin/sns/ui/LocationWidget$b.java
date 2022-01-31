@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.sns.ui;
 
 final class LocationWidget$b
 {
-  String fTF = "";
+  String hng = "";
   int index;
-  int lJg = 0;
-  long mEL = -1L;
-  long mEM = -1L;
-  long mEN = -1L;
-  int mEO = 0;
+  int ogt = 0;
+  long peO = -1L;
+  long peP = -1L;
+  long peQ = -1L;
+  int peR = 0;
   
   LocationWidget$b(LocationWidget paramLocationWidget) {}
 }

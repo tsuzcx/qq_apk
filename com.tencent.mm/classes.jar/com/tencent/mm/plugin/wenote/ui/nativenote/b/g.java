@@ -2,33 +2,37 @@ package com.tencent.mm.plugin.wenote.ui.nativenote.b;
 
 import android.util.SparseArray;
 import android.view.View;
-import com.tencent.mm.R.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  public static final int rMU = R.i.note_editor_text_item;
-  public static final int rMV = R.i.note_editor_other_item;
-  public static final int rMW = R.i.note_editor_header_item;
-  public SparseArray<Integer> rMX = new SparseArray();
+  public static final int vDA = 2130970369;
+  public static final int vDy = 2130970372;
+  public static final int vDz = 2130970371;
+  public SparseArray<Integer> vDB;
   
   public g()
   {
-    this.rMX.put(1, Integer.valueOf(rMU));
-    this.rMX.put(2, Integer.valueOf(rMV));
-    this.rMX.put(4, Integer.valueOf(rMV));
-    this.rMX.put(3, Integer.valueOf(rMV));
-    this.rMX.put(5, Integer.valueOf(rMV));
-    this.rMX.put(6, Integer.valueOf(rMV));
-    this.rMX.put(0, Integer.valueOf(rMV));
-    this.rMX.put(-1, Integer.valueOf(rMV));
-    this.rMX.put(-3, Integer.valueOf(rMW));
-    this.rMX.put(-2, Integer.valueOf(rMV));
-    this.rMX.put(-4, Integer.valueOf(rMV));
-    this.rMX.put(20, Integer.valueOf(rMV));
+    AppMethodBeat.i(27161);
+    this.vDB = new SparseArray();
+    this.vDB.put(1, Integer.valueOf(vDy));
+    this.vDB.put(2, Integer.valueOf(vDz));
+    this.vDB.put(4, Integer.valueOf(vDz));
+    this.vDB.put(3, Integer.valueOf(vDz));
+    this.vDB.put(5, Integer.valueOf(vDz));
+    this.vDB.put(6, Integer.valueOf(vDz));
+    this.vDB.put(0, Integer.valueOf(vDz));
+    this.vDB.put(-1, Integer.valueOf(vDz));
+    this.vDB.put(-3, Integer.valueOf(vDA));
+    this.vDB.put(-2, Integer.valueOf(vDz));
+    this.vDB.put(-4, Integer.valueOf(vDz));
+    this.vDB.put(20, Integer.valueOf(vDz));
+    AppMethodBeat.o(27161);
   }
   
   public static a a(int paramInt, View paramView, com.tencent.mm.plugin.wenote.model.nativenote.manager.k paramk)
   {
+    AppMethodBeat.i(27162);
     switch (paramInt)
     {
     case 7: 
@@ -45,36 +49,61 @@ public final class g
     case 18: 
     case 19: 
     default: 
+      AppMethodBeat.o(27162);
       return null;
     case 1: 
-      return new l(paramView, paramk);
+      paramView = new l(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case 0: 
-      return new m(paramView, paramk);
+      paramView = new m(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case 2: 
-      return new f(paramView, paramk);
+      paramView = new f(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case 4: 
-      return new o(paramView, paramk);
+      paramView = new o(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case 3: 
-      return new h(paramView, paramk);
+      paramView = new h(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case 5: 
-      return new d(paramView, paramk);
+      paramView = new d(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case 6: 
-      return new n(paramView, paramk);
+      paramView = new n(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case -1: 
-      return new k(paramView, paramk);
+      paramView = new k(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case -3: 
-      return new e(paramView, paramk);
+      paramView = new e(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case -2: 
-      return new b(paramView, paramk);
+      paramView = new b(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     case -4: 
-      return new j(paramView, paramk);
+      paramView = new j(paramView, paramk);
+      AppMethodBeat.o(27162);
+      return paramView;
     }
-    return new c(paramView, paramk);
+    paramView = new c(paramView, paramk);
+    AppMethodBeat.o(27162);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.b.g
  * JD-Core Version:    0.7.0.1
  */

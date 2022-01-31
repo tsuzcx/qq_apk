@@ -1,49 +1,72 @@
 package com.tencent.mm.plugin.appbrand.game.b;
 
-import android.util.Base64;
-import com.tencent.magicbrush.handler.image.a.a;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.fts.a.c;
+import com.tencent.mm.plugin.fts.a.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import java.util.Iterator;
+import java.util.List;
 
-public final class b$b
-  extends a.a
+final class b$b
+  extends com.tencent.mm.plugin.fts.a.a.a
 {
-  private static int tu(String paramString)
+  private int hsD;
+  private List<String> idList;
+  
+  public b$b(b paramb, List paramList)
   {
-    int j = 14;
-    if (paramString == null) {
-      return 0;
-    }
-    if (!paramString.startsWith("data:image/")) {
-      return 0;
-    }
-    int i;
-    if (paramString.startsWith("jpeg", 11)) {
-      i = 15;
-    }
-    while (!paramString.startsWith(";base64,", i))
+    this.idList = paramList;
+  }
+  
+  public final String aAn()
+  {
+    AppMethodBeat.i(130069);
+    String str = String.format("{insertSize: %d}", new Object[] { Integer.valueOf(this.hsD) });
+    AppMethodBeat.o(130069);
+    return str;
+  }
+  
+  public final boolean execute()
+  {
+    AppMethodBeat.i(130068);
+    if (bo.es(this.idList))
     {
-      return 0;
-      i = j;
-      if (!paramString.startsWith("png", 11))
+      AppMethodBeat.o(130068);
+      return false;
+    }
+    this.hsD = this.idList.size();
+    ab.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "inserted MiniGame info id listSize:%d", new Object[] { Integer.valueOf(this.hsD) });
+    this.hsB.hsz.beginTransaction();
+    Iterator localIterator = this.idList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      this.hsB.hsz.b(c.mQF, str);
+      com.tencent.mm.plugin.appbrand.game.b.a.b localb = i.Bv(str);
+      if ((localb != null) && (!bo.isNullOrNil(localb.field_AppName)))
       {
-        i = j;
-        if (!paramString.startsWith("gif", 11)) {
-          return 0;
-        }
+        long l = System.currentTimeMillis();
+        str = bo.nullAsNil(localb.field_RecordId);
+        int i = str.hashCode();
+        this.hsB.hsz.a(458752, 1, i, str, l, localb.field_AppName);
+        this.hsB.hsz.a(458752, 2, i, str, l, d.aR(localb.field_AppName, false));
+        this.hsB.hsz.a(458752, 3, i, str, l, d.aR(localb.field_AppName, true));
+        ab.v("MicroMsg.FTS.FTS5SearchMiniGameLogic", "inserted MiniGame info id = %s, name = %s", new Object[] { str, localb.field_AppName });
+      }
+      else
+      {
+        ab.i("MicroMsg.FTS.FTS5SearchMiniGameLogic", "inserted miniGame info is null. id:%s", new Object[] { str });
       }
     }
-    return i + 8;
+    this.hsB.hsz.commit();
+    AppMethodBeat.o(130068);
+    return true;
   }
   
-  public final boolean bs(String paramString)
+  public final String getName()
   {
-    return tu(paramString) > 0;
-  }
-  
-  public final InputStream bt(String paramString)
-  {
-    return new ByteArrayInputStream(Base64.decode(paramString.substring(tu(paramString)), 2));
+    return "InsertMiniGameTask";
   }
 }
 

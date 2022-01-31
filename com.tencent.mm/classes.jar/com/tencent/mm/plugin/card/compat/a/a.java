@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.card.compat.a;
 
-import com.tencent.mm.ae.g.a;
+import com.tencent.mm.af.j.b;
 
 public abstract interface a
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract int b(g.a parama, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte);
+  public abstract int b(j.b paramb, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte);
 }
 
 

@@ -12,76 +12,76 @@ import android.widget.BaseAdapter;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public abstract class d
   extends BaseAdapter
   implements AbsListView.OnScrollListener, AdapterView.OnItemClickListener
 {
-  String bVk;
   private int count;
-  private AbsListView.OnScrollListener iCE;
-  private e kAO;
-  private SparseArray<a> kAP;
-  long kAQ;
-  d.a kAR;
+  private AbsListView.OnScrollListener kHL;
+  private e mWG;
+  private SparseArray<a> mWH;
+  long mWI;
+  d.a mWJ;
+  String query;
   
   public d(e parame)
   {
-    y.i("MicroMsg.FTS.FTSBaseAdapter", "Create FTSBaseAdapter");
-    this.kAO = parame;
-    this.kAP = new SparseArray();
+    ab.i("MicroMsg.FTS.FTSBaseAdapter", "Create FTSBaseAdapter");
+    this.mWG = parame;
+    this.mWH = new SparseArray();
   }
   
-  private a rA(int paramInt)
+  private a ww(int paramInt)
   {
-    if (this.kAP.indexOfKey(paramInt) >= 0) {
-      return (a)this.kAP.get(paramInt);
-    }
     Object localObject2 = null;
+    if (this.mWH.indexOfKey(paramInt) >= 0) {
+      return (a)this.mWH.get(paramInt);
+    }
     Object localObject1 = localObject2;
     if (paramInt >= 0)
     {
       localObject1 = localObject2;
       if (paramInt < getCount()) {
-        localObject1 = ry(paramInt);
+        localObject1 = wu(paramInt);
       }
     }
     if (localObject1 == null) {
-      return (a)this.kAP.get(0);
+      return (a)this.mWH.get(0);
     }
-    this.kAP.put(paramInt, localObject1);
+    this.mWH.put(paramInt, localObject1);
     return localObject1;
   }
   
-  public final void Ej(String paramString)
+  public final void Pu(String paramString)
   {
     stopSearch();
-    this.kAQ = System.currentTimeMillis();
-    this.bVk = paramString;
-    y.i("MicroMsg.FTS.FTSBaseAdapter", "start search query=%s", new Object[] { paramString });
-    aVV();
+    this.mWI = System.currentTimeMillis();
+    this.query = paramString;
+    ab.i("MicroMsg.FTS.FTSBaseAdapter", "start search query=%s", new Object[] { paramString });
+    bCy();
   }
   
-  protected final void N(int paramInt, boolean paramBoolean)
+  protected final void V(int paramInt, boolean paramBoolean)
   {
-    if (this.kAR != null) {
-      this.kAR.O(paramInt, paramBoolean);
+    if (this.mWJ != null) {
+      this.mWJ.W(paramInt, paramBoolean);
     }
   }
   
   protected abstract boolean a(View paramView, a parama, boolean paramBoolean);
   
-  protected int aVE()
+  protected int bCf()
   {
     return getCount();
   }
   
-  protected abstract void aVV();
+  protected abstract void bCy();
   
   protected void clearCache()
   {
-    this.kAP.clear();
+    this.mWH.clear();
   }
   
   public void finish()
@@ -91,7 +91,7 @@ public abstract class d
   
   public final Context getContext()
   {
-    return this.kAO.getContext();
+    return this.mWG.getContext();
   }
   
   public int getCount()
@@ -106,75 +106,75 @@ public abstract class d
   
   public int getItemViewType(int paramInt)
   {
-    if (rA(paramInt) != null) {
-      return rA(paramInt).ivk;
+    if (ww(paramInt) != null) {
+      return ww(paramInt).kwo;
     }
-    y.e("MicroMsg.FTS.FTSBaseAdapter", "getItemViewType: get data item fail, return unknown Type, count=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
+    ab.e("MicroMsg.FTS.FTSBaseAdapter", "getItemViewType: get data item fail, return unknown Type, count=%d | position = %s", new Object[] { Integer.valueOf(getCount()), Integer.valueOf(paramInt) });
     return -1;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    a locala = rA(paramInt);
+    a locala = ww(paramInt);
     View localView = paramView;
     if (paramView == null) {
-      localView = locala.BD().a(getContext(), paramViewGroup);
+      localView = locala.Pr().a(getContext(), paramViewGroup);
     }
     paramView = (a.a)localView.getTag();
-    if (!locala.kxS)
+    if (!locala.mTG)
     {
       locala.a(getContext(), paramView, new Object[0]);
-      locala.kxS = true;
+      locala.mTG = true;
     }
-    locala.BD().a(getContext(), paramView, locala, new Object[0]);
+    locala.Pr().a(getContext(), paramView, locala, new Object[0]);
     return localView;
   }
   
   public int getViewTypeCount()
   {
-    return 21;
+    return 22;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.kAO.XM();
+    this.mWG.hideVKB();
     if (paramInt >= getCount()) {
       return;
     }
-    paramAdapterView = rA(paramInt);
-    a(paramView, paramAdapterView, paramAdapterView.BD().a(getContext(), paramAdapterView));
-    this.kAO.a(paramAdapterView);
+    paramAdapterView = ww(paramInt);
+    a(paramView, paramAdapterView, paramAdapterView.Pr().a(getContext(), paramAdapterView));
+    this.mWG.a(paramAdapterView);
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.iCE != null) {
-      this.iCE.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.kHL != null) {
+      this.kHL.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.iCE != null) {
-      this.iCE.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.kHL != null) {
+      this.kHL.onScrollStateChanged(paramAbsListView, paramInt);
     }
   }
   
-  protected abstract a ry(int paramInt);
-  
   protected final void setCount(int paramInt)
   {
-    y.i("MicroMsg.FTS.FTSBaseAdapter", "setCount %d", new Object[] { Integer.valueOf(paramInt) });
+    ab.i("MicroMsg.FTS.FTSBaseAdapter", "setCount %d", new Object[] { Integer.valueOf(paramInt) });
     this.count = paramInt;
   }
   
   public void stopSearch()
   {
     this.count = 0;
-    this.bVk = "";
+    this.query = "";
     clearCache();
     notifyDataSetChanged();
   }
+  
+  protected abstract a wu(int paramInt);
 }
 
 

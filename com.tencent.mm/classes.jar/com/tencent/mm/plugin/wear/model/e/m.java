@@ -1,25 +1,26 @@
 package com.tencent.mm.plugin.wear.model.e;
 
 import android.os.Looper;
-import com.tencent.mm.h.a.tz;
-import com.tencent.mm.h.a.ub;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.vv;
+import com.tencent.mm.g.a.vx;
 import com.tencent.mm.m.e;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.s;
+import com.tencent.mm.model.t;
 import com.tencent.mm.plugin.wear.model.j;
 import com.tencent.mm.pluginsdk.f.h;
-import com.tencent.mm.protocal.c.bvv;
-import com.tencent.mm.protocal.c.cjl;
-import com.tencent.mm.protocal.c.ckf;
-import com.tencent.mm.protocal.c.ckg;
-import com.tencent.mm.protocal.c.ckh;
-import com.tencent.mm.protocal.c.cki;
-import com.tencent.mm.protocal.c.ckm;
-import com.tencent.mm.protocal.c.clo;
+import com.tencent.mm.protocal.protobuf.cgo;
+import com.tencent.mm.protocal.protobuf.cwy;
+import com.tencent.mm.protocal.protobuf.cxs;
+import com.tencent.mm.protocal.protobuf.cxt;
+import com.tencent.mm.protocal.protobuf.cxu;
+import com.tencent.mm.protocal.protobuf.cxv;
+import com.tencent.mm.protocal.protobuf.cxz;
+import com.tencent.mm.protocal.protobuf.cze;
 import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.be;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import java.util.List;
 public final class m
   extends a
 {
-  protected final boolean Bh(int paramInt)
+  protected final boolean IT(int paramInt)
   {
     switch (paramInt)
     {
@@ -41,8 +42,9 @@ public final class m
     return true;
   }
   
-  public final List<Integer> bYY()
+  public final List<Integer> cYL()
   {
+    AppMethodBeat.i(26412);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Integer.valueOf(11022));
     localArrayList.add(Integer.valueOf(11023));
@@ -50,98 +52,101 @@ public final class m
     localArrayList.add(Integer.valueOf(11024));
     localArrayList.add(Integer.valueOf(11026));
     localArrayList.add(Integer.valueOf(11029));
+    AppMethodBeat.o(26412);
     return localArrayList;
   }
   
-  protected final byte[] p(int paramInt, byte[] paramArrayOfByte)
+  protected final byte[] q(int paramInt, byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(26413);
     switch (paramInt)
     {
     }
     for (;;)
     {
+      AppMethodBeat.o(26413);
       return null;
-      Object localObject = new cki();
+      Object localObject = new cxv();
       try
       {
-        ((cki)localObject).aH(paramArrayOfByte);
-        com.tencent.mm.plugin.wear.model.a.bYL().qRA.a(new m.a((cki)localObject));
-        com.tencent.mm.plugin.wear.model.a.bYL().qRw.Rg(((cki)localObject).tXp);
-        com.tencent.mm.plugin.wear.model.c.a.ez(2, ((cki)localObject).pyo);
-        com.tencent.mm.plugin.wear.model.c.a.Bf(2);
+        ((cxv)localObject).parseFrom(paramArrayOfByte);
+        com.tencent.mm.plugin.wear.model.a.cYy().uGI.a(new m.a((cxv)localObject));
+        com.tencent.mm.plugin.wear.model.a.cYy().uGE.agd(((cxv)localObject).xlH);
+        com.tencent.mm.plugin.wear.model.c.a.gD(2, ((cxv)localObject).Scene);
+        com.tencent.mm.plugin.wear.model.c.a.IR(2);
         continue;
-        localObject = new ckh();
+        localObject = new cxu();
       }
       catch (IOException paramArrayOfByte)
       {
         try
         {
-          ((ckh)localObject).aH(paramArrayOfByte);
-          com.tencent.mm.plugin.messenger.a.g.bhI().D(((ckh)localObject).tXp, ((ckh)localObject).sRA, s.hW(((ckh)localObject).tXp));
-          au.Hx();
-          c.FB().abx(((ckh)localObject).tXp);
-          com.tencent.mm.plugin.wear.model.c.a.ez(3, ((ckh)localObject).pyo);
-          com.tencent.mm.plugin.wear.model.c.a.Bf(5);
+          ((cxu)localObject).parseFrom(paramArrayOfByte);
+          com.tencent.mm.plugin.messenger.a.g.bPJ().K(((cxu)localObject).xlH, ((cxu)localObject).wxW, t.oF(((cxu)localObject).xlH));
+          aw.aaz();
+          c.YF().arJ(((cxu)localObject).xlH);
+          com.tencent.mm.plugin.wear.model.c.a.gD(3, ((cxu)localObject).Scene);
+          com.tencent.mm.plugin.wear.model.c.a.IR(5);
           continue;
-          localObject = new ckg();
+          localObject = new cxt();
         }
         catch (IOException paramArrayOfByte)
         {
           try
           {
-            ((ckg)localObject).aH(paramArrayOfByte);
-            com.tencent.mm.plugin.messenger.a.g.bhI().D(((ckg)localObject).tXp, ((ckg)localObject).sRA, s.hW(((ckg)localObject).tXp));
-            ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().m(ae.getContext(), ((ckg)localObject).tXp, ((ckg)localObject).sRE);
-            au.Hx();
-            c.FB().abx(((ckg)localObject).tXp);
-            com.tencent.mm.plugin.wear.model.c.a.ez(8, ((ckg)localObject).pyo);
-            com.tencent.mm.plugin.wear.model.c.a.Bf(4);
+            ((cxt)localObject).parseFrom(paramArrayOfByte);
+            com.tencent.mm.plugin.messenger.a.g.bPJ().K(((cxt)localObject).xlH, ((cxt)localObject).wxW, t.oF(((cxt)localObject).xlH));
+            ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().r(ah.getContext(), ((cxt)localObject).xlH, ((cxt)localObject).wQr);
+            aw.aaz();
+            c.YF().arJ(((cxt)localObject).xlH);
+            com.tencent.mm.plugin.wear.model.c.a.gD(8, ((cxt)localObject).Scene);
+            com.tencent.mm.plugin.wear.model.c.a.IR(4);
             continue;
-            localObject = new ckf();
+            localObject = new cxs();
           }
           catch (IOException paramArrayOfByte)
           {
             try
             {
-              ((ckf)localObject).aH(paramArrayOfByte);
-              ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.t(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().m(ae.getContext(), ((ckf)localObject).tXp, ((ckf)localObject).sRE);
-              au.Hx();
-              c.FB().abx(((ckf)localObject).tXp);
-              com.tencent.mm.plugin.wear.model.c.a.ez(7, ((ckf)localObject).pyo);
-              com.tencent.mm.plugin.wear.model.c.a.Bf(3);
+              ((cxs)localObject).parseFrom(paramArrayOfByte);
+              ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.G(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().r(ah.getContext(), ((cxs)localObject).xlH, ((cxs)localObject).wQr);
+              aw.aaz();
+              c.YF().arJ(((cxs)localObject).xlH);
+              com.tencent.mm.plugin.wear.model.c.a.gD(7, ((cxs)localObject).Scene);
+              com.tencent.mm.plugin.wear.model.c.a.IR(3);
               continue;
-              localObject = new ckm();
+              localObject = new cxz();
             }
             catch (IOException paramArrayOfByte)
             {
               try
               {
-                ((ckm)localObject).aH(paramArrayOfByte);
-                com.tencent.mm.plugin.wear.model.a.bYL();
-                paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.bYL().qRu.qRL.qSA;
+                ((cxz)localObject).parseFrom(paramArrayOfByte);
+                com.tencent.mm.plugin.wear.model.a.cYy();
+                paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.cYy().uGC.uGT.uHH;
                 if (paramArrayOfByte == null)
                 {
-                  y.e("MicroMsg.Wear.WearBizLogic", "logicRequest is null");
+                  ab.e("MicroMsg.Wear.WearBizLogic", "logicRequest is null");
                   continue;
                 }
-                y.i("MicroMsg.Wear.WearBizLogic", "receive step count %d | time %s", new Object[] { Integer.valueOf(((ckm)localObject).tXP), h.g("yyyy-MM-dd HH:mm:ss", ((ckm)localObject).tXQ / 1000L) });
-                localclo = new clo();
-                bvv localbvv = new bvv();
-                if (((ckm)localObject).tXP > 0)
+                ab.i("MicroMsg.Wear.WearBizLogic", "receive step count %d | time %s", new Object[] { Integer.valueOf(((cxz)localObject).yff), h.formatTime("yyyy-MM-dd HH:mm:ss", ((cxz)localObject).yfg / 1000L) });
+                localcze = new cze();
+                cgo localcgo = new cgo();
+                if (((cxz)localObject).yff > 0)
                 {
-                  paramInt = ((ckm)localObject).tXP;
-                  localbvv.hQP = paramInt;
-                  localbvv.sSK = ((int)(((ckm)localObject).tXQ / 1000L));
+                  paramInt = ((cxz)localObject).yff;
+                  localcgo.jKr = paramInt;
+                  localcgo.Timestamp = ((int)(((cxz)localObject).yfg / 1000L));
                   Calendar localCalendar = Calendar.getInstance();
-                  localCalendar.setTimeInMillis(((ckm)localObject).tXQ);
-                  localbvv.tMC = localCalendar.get(1);
-                  localbvv.tMD = (localCalendar.get(2) + 1);
-                  localbvv.tME = localCalendar.get(5);
-                  localbvv.tMF = localCalendar.get(11);
-                  localbvv.tMG = localCalendar.get(12);
-                  localbvv.tMH = localCalendar.get(13);
-                  localclo.tYL.add(localbvv);
-                  localObject = new ub();
+                  localCalendar.setTimeInMillis(((cxz)localObject).yfg);
+                  localcgo.xRo = localCalendar.get(1);
+                  localcgo.xRp = (localCalendar.get(2) + 1);
+                  localcgo.xRq = localCalendar.get(5);
+                  localcgo.xRr = localCalendar.get(11);
+                  localcgo.xRs = localCalendar.get(12);
+                  localcgo.xRt = localCalendar.get(13);
+                  localcze.yge.add(localcgo);
+                  localObject = new vx();
                 }
               }
               catch (IOException paramArrayOfByte)
@@ -150,17 +155,19 @@ public final class m
                 {
                   for (;;)
                   {
-                    clo localclo;
-                    ((ub)localObject).cez.data = localclo.toByteArray();
-                    label640:
-                    ((ub)localObject).cez.bHz = 4;
-                    ((ub)localObject).cez.bwK = paramArrayOfByte.tXi;
-                    ((ub)localObject).cez.bJp = "gh_43f2581f6fd6";
-                    com.tencent.mm.sdk.b.a.udP.m((b)localObject);
+                    cze localcze;
+                    ((vx)localObject).cNm.data = localcze.toByteArray();
+                    label650:
+                    ((vx)localObject).cNm.coO = 4;
+                    ((vx)localObject).cNm.bYu = paramArrayOfByte.yeC;
+                    ((vx)localObject).cNm.cqJ = "gh_43f2581f6fd6";
+                    com.tencent.mm.sdk.b.a.ymk.l((b)localObject);
                     break;
                     paramInt = 0;
                     continue;
-                    if ((!com.tencent.mm.plugin.wear.model.a.bYL().qRu.bYQ()) || (com.tencent.mm.m.g.AA().getInt("WearLuckyBlock", 0) != 0)) {
+                    if ((!com.tencent.mm.plugin.wear.model.a.cYy().uGC.cYD()) || (com.tencent.mm.m.g.Nq().getInt("WearLuckyBlock", 0) != 0))
+                    {
+                      AppMethodBeat.o(26413);
                       return null;
                     }
                     long l1 = 0L;
@@ -171,15 +178,15 @@ public final class m
                     }
                     catch (Exception paramArrayOfByte)
                     {
-                      label737:
-                      break label737;
+                      label753:
+                      break label753;
                     }
-                    paramArrayOfByte = new tz();
-                    paramArrayOfByte.cen.action = 1;
-                    paramArrayOfByte.cen.bHR = l1;
-                    com.tencent.mm.sdk.b.a.udP.a(paramArrayOfByte, Looper.getMainLooper());
-                    com.tencent.mm.plugin.wear.model.c.a.ez(11, 0);
-                    com.tencent.mm.plugin.wear.model.c.a.Bf(11);
+                    paramArrayOfByte = new vv();
+                    paramArrayOfByte.cNa.action = 1;
+                    paramArrayOfByte.cNa.cpg = l1;
+                    com.tencent.mm.sdk.b.a.ymk.a(paramArrayOfByte, Looper.getMainLooper());
+                    com.tencent.mm.plugin.wear.model.c.a.gD(11, 0);
+                    com.tencent.mm.plugin.wear.model.c.a.IR(11);
                     break;
                     paramArrayOfByte = paramArrayOfByte;
                     continue;
@@ -193,7 +200,7 @@ public final class m
                 }
                 catch (IOException localIOException)
                 {
-                  break label640;
+                  break label650;
                 }
               }
             }

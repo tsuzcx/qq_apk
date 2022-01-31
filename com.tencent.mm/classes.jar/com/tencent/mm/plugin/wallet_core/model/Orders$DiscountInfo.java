@@ -3,20 +3,30 @@ package com.tencent.mm.plugin.wallet_core.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class Orders$DiscountInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator<DiscountInfo> CREATOR = new Orders.DiscountInfo.1();
-  public String nxN;
-  public double qxz;
+  public static final Parcelable.Creator<DiscountInfo> CREATOR;
+  public String qiO;
+  public double ukh;
+  
+  static
+  {
+    AppMethodBeat.i(46811);
+    CREATOR = new Orders.DiscountInfo.1();
+    AppMethodBeat.o(46811);
+  }
   
   public Orders$DiscountInfo() {}
   
   public Orders$DiscountInfo(Parcel paramParcel)
   {
-    this.qxz = paramParcel.readDouble();
-    this.nxN = paramParcel.readString();
+    AppMethodBeat.i(46809);
+    this.ukh = paramParcel.readDouble();
+    this.qiO = paramParcel.readString();
+    AppMethodBeat.o(46809);
   }
   
   public int describeContents()
@@ -26,8 +36,10 @@ public class Orders$DiscountInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeDouble(this.qxz);
-    paramParcel.writeString(this.nxN);
+    AppMethodBeat.i(46810);
+    paramParcel.writeDouble(this.ukh);
+    paramParcel.writeString(this.qiO);
+    AppMethodBeat.o(46810);
   }
 }
 

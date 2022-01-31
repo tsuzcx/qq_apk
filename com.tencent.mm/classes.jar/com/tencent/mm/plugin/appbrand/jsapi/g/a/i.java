@@ -2,73 +2,107 @@ package com.tencent.mm.plugin.appbrand.jsapi.g.a;
 
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.appbrand.widget.d.c;
-import com.tencent.mm.plugin.appbrand.widget.d.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.e.b;
+import com.tencent.mm.plugin.appbrand.widget.e.d;
 import java.util.LinkedList;
 
 public final class i
 {
-  private static LinkedList<View> gvg = new LinkedList();
-  private static LinkedList<e> gvh = new LinkedList();
-  private static LinkedList<c> gvi = new LinkedList();
+  private static LinkedList<View> hQe;
+  private static LinkedList<d> hQf;
+  private static LinkedList<b> hQg;
   
-  public static boolean a(c paramc)
+  static
   {
-    synchronized (gvi)
+    AppMethodBeat.i(51243);
+    hQe = new LinkedList();
+    hQf = new LinkedList();
+    hQg = new LinkedList();
+    AppMethodBeat.o(51243);
+  }
+  
+  public static boolean a(b paramb)
+  {
+    AppMethodBeat.i(51239);
+    synchronized (hQg)
     {
-      if (gvi.size() > 0) {
+      if (hQg.size() > 0)
+      {
+        AppMethodBeat.o(51239);
         return false;
       }
-      gvi.push(paramc);
+      hQg.push(paramb);
+      AppMethodBeat.o(51239);
       return true;
     }
   }
   
-  public static boolean a(e parame)
+  public static boolean a(d paramd)
   {
-    synchronized (gvh)
+    AppMethodBeat.i(51241);
+    synchronized (hQf)
     {
-      if (gvh.size() > 0) {
+      if (hQf.size() > 0)
+      {
+        AppMethodBeat.o(51241);
         return false;
       }
-      gvh.push(parame);
+      hQf.push(paramd);
+      AppMethodBeat.o(51241);
       return true;
     }
   }
   
-  public static c ajs()
+  public static b aDI()
   {
-    synchronized (gvi)
+    AppMethodBeat.i(51238);
+    synchronized (hQg)
     {
-      if (gvi.size() <= 0) {
+      if (hQg.size() <= 0)
+      {
+        AppMethodBeat.o(51238);
         return null;
       }
-      c localc = (c)gvi.removeFirst();
-      bS(localc);
-      return localc;
+      b localb = (b)hQg.removeFirst();
+      cq(localb);
+      AppMethodBeat.o(51238);
+      return localb;
     }
   }
   
-  public static e ajt()
+  public static d aDJ()
   {
-    synchronized (gvh)
+    AppMethodBeat.i(51240);
+    synchronized (hQf)
     {
-      if (gvh.size() <= 0) {
+      if (hQf.size() <= 0)
+      {
+        AppMethodBeat.o(51240);
         return null;
       }
-      e locale = (e)gvh.removeFirst();
-      bS(locale);
-      return locale;
+      d locald = (d)hQf.removeFirst();
+      cq(locald);
+      AppMethodBeat.o(51240);
+      return locald;
     }
   }
   
-  private static void bS(View paramView)
+  private static void cq(View paramView)
   {
-    if (paramView == null) {}
-    while (!ViewGroup.class.isInstance(paramView.getParent())) {
+    AppMethodBeat.i(51242);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(51242);
+      return;
+    }
+    if (!ViewGroup.class.isInstance(paramView.getParent()))
+    {
+      AppMethodBeat.o(51242);
       return;
     }
     ((ViewGroup)paramView.getParent()).removeView(paramView);
+    AppMethodBeat.o(51242);
   }
 }
 

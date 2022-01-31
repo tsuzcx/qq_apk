@@ -5,6 +5,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.graphics.Paint;
 import android.view.View;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class MMChattingListView$2
   implements ValueAnimator.AnimatorUpdateListener
@@ -13,12 +14,14 @@ final class MMChattingListView$2
   
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.vAy.getGlobalVisibleRect(MMChattingListView.a(this.vAx));
-    MMChattingListView.a(this.vAx).top = this.vAy.getTop();
-    MMChattingListView.a(this.vAx).bottom = this.vAy.getBottom();
+    AppMethodBeat.i(32762);
+    this.zQX.getGlobalVisibleRect(MMChattingListView.a(this.zQW));
+    MMChattingListView.a(this.zQW).top = this.zQX.getTop();
+    MMChattingListView.a(this.zQW).bottom = this.zQX.getBottom();
     float f = ((Float)paramValueAnimator.getAnimatedValue("alpha")).floatValue();
-    MMChattingListView.c(this.vAx).setAlpha((int)(f * 255.0F));
-    MMChattingListView.b(this.vAx).postInvalidate();
+    MMChattingListView.c(this.zQW).setAlpha((int)(f * 255.0F));
+    MMChattingListView.b(this.zQW).postInvalidate();
+    AppMethodBeat.o(32762);
   }
 }
 

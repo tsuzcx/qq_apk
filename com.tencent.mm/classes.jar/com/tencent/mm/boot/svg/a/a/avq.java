@@ -17,7 +17,7 @@ public final class avq
   private final int height = 90;
   private final int width = 90;
   
-  protected final int b(int paramInt, Object... paramVarArgs)
+  public final int a(int paramInt, Object... paramVarArgs)
   {
     switch (paramInt)
     {
@@ -29,12 +29,12 @@ public final class avq
       return 90;
       Canvas localCanvas = (Canvas)paramVarArgs[0];
       paramVarArgs = (Looper)paramVarArgs[1];
-      Object localObject = c.f(paramVarArgs);
-      float[] arrayOfFloat = c.e(paramVarArgs);
-      Paint localPaint1 = c.i(paramVarArgs);
+      Object localObject1 = c.h(paramVarArgs);
+      Object localObject2 = c.g(paramVarArgs);
+      Paint localPaint1 = c.k(paramVarArgs);
       localPaint1.setFlags(385);
       localPaint1.setStyle(Paint.Style.FILL);
-      Paint localPaint2 = c.i(paramVarArgs);
+      Paint localPaint2 = c.k(paramVarArgs);
       localPaint2.setFlags(385);
       localPaint2.setStyle(Paint.Style.STROKE);
       localPaint1.setColor(-16777216);
@@ -43,33 +43,43 @@ public final class avq
       localPaint2.setStrokeJoin(Paint.Join.MITER);
       localPaint2.setStrokeMiter(4.0F);
       localPaint2.setPathEffect(null);
-      localPaint1 = c.a(localPaint2, paramVarArgs);
-      localPaint1.setStrokeWidth(1.0F);
-      localPaint1.setStrokeCap(Paint.Cap.ROUND);
-      localPaint1.setStrokeJoin(Paint.Join.MITER);
-      localPaint1 = c.a(localPaint1, paramVarArgs);
-      localPaint1.setColor(-3618616);
-      localPaint1.setStrokeWidth(3.139535F);
+      c.a(localPaint2, paramVarArgs).setStrokeWidth(1.0F);
       localCanvas.save();
       localPaint1 = c.a(localPaint1, paramVarArgs);
-      arrayOfFloat = c.a(arrayOfFloat, 1.0F, 0.0F, 0.0F, 0.0F, -1.0F, 91.046509F);
-      ((Matrix)localObject).reset();
-      ((Matrix)localObject).setValues(arrayOfFloat);
-      localCanvas.concat((Matrix)localObject);
-      localObject = c.j(paramVarArgs);
-      ((Path)localObject).moveTo(20.930233F, 59.651161F);
-      ((Path)localObject).lineTo(45.0F, 31.39535F);
-      ((Path)localObject).lineTo(69.069771F, 59.651161F);
-      WeChatSVGRenderC2Java.setFillType((Path)localObject, 1);
-      localCanvas.drawPath((Path)localObject, localPaint1);
+      localPaint1.setColor(-27648);
+      localObject2 = c.a((float[])localObject2, 1.0F, 0.0F, 12.0F, 0.0F, 1.0F, 11.0F);
+      ((Matrix)localObject1).reset();
+      ((Matrix)localObject1).setValues((float[])localObject2);
+      localCanvas.concat((Matrix)localObject1);
+      localCanvas.save();
+      localObject1 = c.a(localPaint1, paramVarArgs);
+      localObject2 = c.l(paramVarArgs);
+      ((Path)localObject2).moveTo(26.41996F, 1.7124F);
+      ((Path)localObject2).cubicTo(42.029785F, -1.784037F, 59.069595F, 7.946046F, 64.089539F, 23.090612F);
+      ((Path)localObject2).cubicTo(69.899475F, 38.474934F, 61.969563F, 57.265781F, 46.919731F, 63.879044F);
+      ((Path)localObject2).cubicTo(32.549892F, 71.011772F, 13.600102F, 65.467422F, 5.210196F, 51.841309F);
+      ((Path)localObject2).cubicTo(-2.909714F, 39.703682F, -1.379731F, 22.281437F, 8.690157F, 11.712208F);
+      ((Path)localObject2).cubicTo(13.340105F, 6.617401F, 19.670034F, 3.110974F, 26.41996F, 1.7124F);
+      ((Path)localObject2).lineTo(26.41996F, 1.7124F);
+      ((Path)localObject2).close();
+      ((Path)localObject2).moveTo(12.0F, 32.0F);
+      ((Path)localObject2).lineTo(12.0F, 36.0F);
+      ((Path)localObject2).lineTo(54.0F, 36.0F);
+      ((Path)localObject2).lineTo(54.0F, 32.0F);
+      ((Path)localObject2).lineTo(12.0F, 32.0F);
+      ((Path)localObject2).lineTo(12.0F, 32.0F);
+      ((Path)localObject2).close();
+      WeChatSVGRenderC2Java.setFillType((Path)localObject2, 2);
+      localCanvas.drawPath((Path)localObject2, (Paint)localObject1);
       localCanvas.restore();
-      c.h(paramVarArgs);
+      localCanvas.restore();
+      c.j(paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.boot.svg.a.a.avq
  * JD-Core Version:    0.7.0.1
  */

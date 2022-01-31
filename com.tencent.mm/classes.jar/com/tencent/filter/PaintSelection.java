@@ -1,12 +1,13 @@
 package com.tencent.filter;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class PaintSelection
 {
-  private final long aVf;
-  private boolean aVg;
-  private QImage bfS;
+  private final long blO;
+  private boolean blP;
+  private QImage bwv;
   
   public static native void FormatAlphaBitmap(Bitmap paramBitmap);
   
@@ -50,19 +51,21 @@ public class PaintSelection
   
   protected void finalize()
   {
-    if (this.aVg)
+    AppMethodBeat.i(86386);
+    if (this.blP)
     {
-      nativeDispose(this.aVf);
-      this.bfS.Dispose();
-      this.bfS = null;
-      this.aVg = false;
+      nativeDispose(this.blO);
+      this.bwv.Dispose();
+      this.bwv = null;
+      this.blP = false;
     }
     super.finalize();
+    AppMethodBeat.o(86386);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.filter.PaintSelection
  * JD-Core Version:    0.7.0.1
  */

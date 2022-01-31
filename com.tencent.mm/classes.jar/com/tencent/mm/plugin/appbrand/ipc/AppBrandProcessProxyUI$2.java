@@ -1,29 +1,26 @@
 package com.tencent.mm.plugin.appbrand.ipc;
 
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class AppBrandProcessProxyUI$2
-  extends ResultReceiver
+  implements Runnable
 {
-  AppBrandProcessProxyUI$2(Handler paramHandler, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnClickListener paramOnClickListener3)
-  {
-    super(paramHandler);
-  }
+  AppBrandProcessProxyUI$2(Class paramClass, Context paramContext, Intent paramIntent) {}
   
-  protected final void onReceiveResult(int paramInt, Bundle paramBundle)
+  public final void run()
   {
-    if ((-1 == paramInt) && (this.gec != null)) {
-      this.gec.onClick(null, paramInt);
+    AppMethodBeat.i(73125);
+    if ((AppBrandProcessProxyUI.class != this.hvZ) && ((this.hwa instanceof Activity)))
+    {
+      ((Activity)this.hwa).startActivityForResult(this.hwb, 0);
+      AppMethodBeat.o(73125);
+      return;
     }
-    if ((-2 == paramInt) && (this.ged != null)) {
-      this.ged.onClick(null, paramInt);
-    }
-    if ((-3 == paramInt) && (this.gee != null)) {
-      this.gee.onClick(null, paramInt);
-    }
+    this.hwa.startActivity(this.hwb);
+    AppMethodBeat.o(73125);
   }
 }
 

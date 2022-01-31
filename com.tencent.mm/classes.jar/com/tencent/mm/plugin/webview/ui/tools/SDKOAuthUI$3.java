@@ -1,19 +1,24 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SDKOAuthUI$3
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  SDKOAuthUI$3(SDKOAuthUI paramSDKOAuthUI) {}
+  SDKOAuthUI$3(SDKOAuthUI paramSDKOAuthUI, String paramString, boolean paramBoolean) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new Intent(this.rmk, CreateAvatarUI.class);
-    paramView.putExtra("0", SDKOAuthUI.a(this.rmk));
-    this.rmk.startActivityForResult(paramView, 6);
+    AppMethodBeat.i(7526);
+    if (!SDKOAuthUI.o(this.vbR)) {
+      SDKOAuthUI.b(this.vbR, this.ftO);
+    }
+    if (this.vbT) {
+      this.vbR.finish();
+    }
+    AppMethodBeat.o(7526);
   }
 }
 

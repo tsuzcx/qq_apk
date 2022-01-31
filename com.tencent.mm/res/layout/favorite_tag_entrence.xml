@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.fav.ui.widget.FavTagEntrance android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bk5" android:background="@drawable/b0f" android:paddingTop="@dimen/mq" android:paddingBottom="@dimen/mq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.plugin.fav.ui.widget.FavTagEntrance android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bvh" android:background="@drawable/b7j" android:paddingTop="@dimen/n_" android:paddingBottom="@dimen/n_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/mq" android:src="@raw/tags_icon" />
-    <TextView android:textColor="@color/mr" android:id="@id/bk6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n_" android:src="@raw/tags_icon" />
+    <TextView android:textColor="@color/pb" android:id="@id/bvi" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
 </com.tencent.mm.plugin.fav.ui.widget.FavTagEntrance>

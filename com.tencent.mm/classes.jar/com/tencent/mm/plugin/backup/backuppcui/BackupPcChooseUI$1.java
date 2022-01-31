@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.backup.backuppcui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BackupPcChooseUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class BackupPcChooseUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.hLh.finish();
+    AppMethodBeat.i(17573);
+    this.jEK.finish();
+    AppMethodBeat.o(17573);
     return false;
   }
 }

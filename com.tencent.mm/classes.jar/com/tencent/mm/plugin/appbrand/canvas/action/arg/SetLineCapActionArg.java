@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -9,8 +10,15 @@ import org.json.JSONObject;
 public class SetLineCapActionArg
   extends BaseDrawActionArg
 {
-  public static final Parcelable.Creator<SetLineCapActionArg> CREATOR = new SetLineCapActionArg.1();
-  public String fLU;
+  public static final Parcelable.Creator<SetLineCapActionArg> CREATOR;
+  public String hfe;
+  
+  static
+  {
+    AppMethodBeat.i(103512);
+    CREATOR = new SetLineCapActionArg.1();
+    AppMethodBeat.o(103512);
+  }
   
   public SetLineCapActionArg() {}
   
@@ -26,50 +34,63 @@ public class SetLineCapActionArg
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (this == paramObject) {
-      bool1 = true;
-    }
-    do
+    AppMethodBeat.i(103510);
+    if (this == paramObject)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (!(paramObject instanceof SetLineCapActionArg));
-      bool1 = bool2;
-    } while (!super.equals(paramObject));
+      AppMethodBeat.o(103510);
+      return true;
+    }
+    if (!(paramObject instanceof SetLineCapActionArg))
+    {
+      AppMethodBeat.o(103510);
+      return false;
+    }
+    if (!super.equals(paramObject))
+    {
+      AppMethodBeat.o(103510);
+      return false;
+    }
     paramObject = (SetLineCapActionArg)paramObject;
-    return Objects.equals(this.fLU, paramObject.fLU);
+    boolean bool = Objects.equals(this.hfe, paramObject.hfe);
+    AppMethodBeat.o(103510);
+    return bool;
   }
   
-  public final void f(Parcel paramParcel)
+  public final void h(Parcel paramParcel)
   {
-    super.f(paramParcel);
-    this.fLU = paramParcel.readString();
+    AppMethodBeat.i(103507);
+    super.h(paramParcel);
+    this.hfe = paramParcel.readString();
+    AppMethodBeat.o(103507);
   }
   
   public int hashCode()
   {
-    return Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.fLU });
+    AppMethodBeat.i(103511);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.hfe });
+    AppMethodBeat.o(103511);
+    return i;
   }
   
-  public final void j(JSONObject paramJSONObject)
+  public final void p(JSONObject paramJSONObject)
   {
-    super.j(paramJSONObject);
-    this.fLU = paramJSONObject.optJSONArray("data").optString(0);
+    AppMethodBeat.i(103508);
+    super.p(paramJSONObject);
+    this.hfe = paramJSONObject.optJSONArray("data").optString(0);
+    AppMethodBeat.o(103508);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(103509);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.fLU);
+    paramParcel.writeString(this.hfe);
+    AppMethodBeat.o(103509);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineCapActionArg
  * JD-Core Version:    0.7.0.1
  */

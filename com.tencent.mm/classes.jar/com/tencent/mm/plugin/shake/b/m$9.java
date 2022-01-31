@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.shake.b;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 
 final class m$9
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return g.dXp;
+    return g.SQL_CREATE;
   }
 }
 

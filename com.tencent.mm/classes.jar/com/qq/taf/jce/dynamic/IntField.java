@@ -1,5 +1,7 @@
 package com.qq.taf.jce.dynamic;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public class IntField
   extends NumberField
 {
@@ -18,7 +20,10 @@ public class IntField
   
   public Number getNumber()
   {
-    return Integer.valueOf(this.data);
+    AppMethodBeat.i(117007);
+    int i = this.data;
+    AppMethodBeat.o(117007);
+    return Integer.valueOf(i);
   }
   
   public void set(int paramInt)

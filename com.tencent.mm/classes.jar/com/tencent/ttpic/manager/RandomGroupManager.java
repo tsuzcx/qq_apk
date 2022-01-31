@@ -1,8 +1,9 @@
 package com.tencent.ttpic.manager;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.ttpic.baseutils.BaseUtils;
 import com.tencent.ttpic.model.MemRandomValue;
 import com.tencent.ttpic.util.AlgoUtils;
-import com.tencent.ttpic.util.VideoUtil;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -11,19 +12,30 @@ import java.util.Set;
 
 public enum RandomGroupManager
 {
-  INSTANCE;
-  
   private static final int HAND_RANDOM_INDEX = 0;
-  private Map<Integer, MemRandomValue> mRandomGroupFaceValueMap = new HashMap();
-  private Map<Integer, MemRandomValue> mRandomGroupHandValueMap = new HashMap();
+  private Map<Integer, MemRandomValue> mRandomGroupFaceValueMap;
+  private Map<Integer, MemRandomValue> mRandomGroupHandValueMap;
+  
+  static
+  {
+    AppMethodBeat.i(83450);
+    INSTANCE = new RandomGroupManager("INSTANCE", 0);
+    $VALUES = new RandomGroupManager[] { INSTANCE };
+    AppMethodBeat.o(83450);
+  }
   
   private RandomGroupManager()
   {
+    AppMethodBeat.i(83439);
+    this.mRandomGroupFaceValueMap = new HashMap();
+    this.mRandomGroupHandValueMap = new HashMap();
     clearAll();
+    AppMethodBeat.o(83439);
   }
   
   private void clearFaceRandomGroupStatus()
   {
+    AppMethodBeat.i(83446);
     Iterator localIterator = this.mRandomGroupFaceValueMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -35,10 +47,12 @@ public enum RandomGroupManager
         this.mRandomGroupFaceValueMap.put(Integer.valueOf(i), localMemRandomValue);
       }
     }
+    AppMethodBeat.o(83446);
   }
   
   private void clearFaceRandomGroupStatus(List<Integer> paramList)
   {
+    AppMethodBeat.i(83444);
     Iterator localIterator = this.mRandomGroupFaceValueMap.keySet().iterator();
     while (localIterator.hasNext())
     {
@@ -53,28 +67,36 @@ public enum RandomGroupManager
         }
       }
     }
+    AppMethodBeat.o(83444);
   }
   
   private void clearHandRandomGroupStatus()
   {
+    AppMethodBeat.i(83447);
     MemRandomValue localMemRandomValue = (MemRandomValue)this.mRandomGroupHandValueMap.get(Integer.valueOf(0));
     localMemRandomValue.curValue = -1;
     this.mRandomGroupHandValueMap.put(Integer.valueOf(0), localMemRandomValue);
+    AppMethodBeat.o(83447);
   }
   
   private boolean faceExist(List<Integer> paramList, int paramInt)
   {
+    AppMethodBeat.i(83445);
     paramList = paramList.iterator();
     while (paramList.hasNext()) {
-      if (((Integer)paramList.next()).intValue() == paramInt) {
+      if (((Integer)paramList.next()).intValue() == paramInt)
+      {
+        AppMethodBeat.o(83445);
         return true;
       }
     }
+    AppMethodBeat.o(83445);
     return false;
   }
   
   private void fillEmptyRandomGroupValue(List<Integer> paramList, int paramInt)
   {
+    AppMethodBeat.i(83443);
     Object localObject = paramList.iterator();
     while (((Iterator)localObject).hasNext())
     {
@@ -96,6 +118,7 @@ public enum RandomGroupManager
       this.mRandomGroupFaceValueMap.put(paramList.get(i), localObject);
       i += 1;
     }
+    AppMethodBeat.o(83443);
   }
   
   public static RandomGroupManager getInstance()
@@ -105,31 +128,44 @@ public enum RandomGroupManager
   
   public final void clearAll()
   {
+    AppMethodBeat.i(83449);
     this.mRandomGroupFaceValueMap.clear();
     this.mRandomGroupHandValueMap.put(Integer.valueOf(0), new MemRandomValue());
+    AppMethodBeat.o(83449);
   }
   
   public final void clearCurValue()
   {
+    AppMethodBeat.i(83448);
     clearFaceRandomGroupStatus();
     clearHandRandomGroupStatus();
+    AppMethodBeat.o(83448);
   }
   
   public final int getFaceValue(int paramInt)
   {
-    if (this.mRandomGroupFaceValueMap.containsKey(Integer.valueOf(paramInt))) {
-      return ((MemRandomValue)this.mRandomGroupFaceValueMap.get(Integer.valueOf(paramInt))).curValue;
+    AppMethodBeat.i(83440);
+    if (this.mRandomGroupFaceValueMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      paramInt = ((MemRandomValue)this.mRandomGroupFaceValueMap.get(Integer.valueOf(paramInt))).curValue;
+      AppMethodBeat.o(83440);
+      return paramInt;
     }
+    AppMethodBeat.o(83440);
     return 0;
   }
   
   public final int getHandValue()
   {
-    return ((MemRandomValue)this.mRandomGroupHandValueMap.get(Integer.valueOf(0))).curValue;
+    AppMethodBeat.i(83441);
+    int i = ((MemRandomValue)this.mRandomGroupHandValueMap.get(Integer.valueOf(0))).curValue;
+    AppMethodBeat.o(83441);
+    return i;
   }
   
   public final void updateValue(List<Integer> paramList, boolean paramBoolean, int paramInt)
   {
+    AppMethodBeat.i(83442);
     if (!paramBoolean) {
       clearHandRandomGroupStatus();
     }
@@ -138,33 +174,36 @@ public enum RandomGroupManager
     MemRandomValue localMemRandomValue2 = (MemRandomValue)this.mRandomGroupHandValueMap.get(Integer.valueOf(0));
     MemRandomValue localMemRandomValue1;
     int i;
-    if (!VideoUtil.isEmpty(paramList))
+    if (!BaseUtils.isEmpty(paramList))
     {
       localMemRandomValue1 = (MemRandomValue)this.mRandomGroupFaceValueMap.get(paramList.get(0));
-      if ((localMemRandomValue2 == null) || (localMemRandomValue1 == null) || (((localMemRandomValue2.curValue >= 0) || (!paramBoolean)) && ((localMemRandomValue1.curValue >= 0) || (VideoUtil.isEmpty(paramList))))) {
-        break label207;
+      if ((localMemRandomValue2 == null) || (localMemRandomValue1 == null) || (((localMemRandomValue2.curValue >= 0) || (!paramBoolean)) && ((localMemRandomValue1.curValue >= 0) || (BaseUtils.isEmpty(paramList))))) {
+        break label222;
       }
       if (localMemRandomValue2.curValue >= 0) {
-        break label136;
+        break label146;
       }
       i = localMemRandomValue1.lastValue;
     }
-    label117:
+    label122:
     for (paramInt = AlgoUtils.randValueDiff(i, paramInt);; paramInt = -1)
     {
-      if (paramInt < 0) {}
-      do
+      if (paramInt < 0)
       {
+        AppMethodBeat.o(83442);
         return;
         localMemRandomValue1 = localMemRandomValue2;
         break;
         i = localMemRandomValue2.lastValue;
-        break label117;
-        if (!VideoUtil.isEmpty(paramList)) {
-          this.mRandomGroupFaceValueMap.put(paramList.get(0), new MemRandomValue(paramInt, paramInt));
-        }
-      } while (!paramBoolean);
-      this.mRandomGroupHandValueMap.put(Integer.valueOf(0), new MemRandomValue(paramInt, paramInt));
+        break label122;
+      }
+      if (!BaseUtils.isEmpty(paramList)) {
+        this.mRandomGroupFaceValueMap.put(paramList.get(0), new MemRandomValue(paramInt, paramInt));
+      }
+      if (paramBoolean) {
+        this.mRandomGroupHandValueMap.put(Integer.valueOf(0), new MemRandomValue(paramInt, paramInt));
+      }
+      AppMethodBeat.o(83442);
       return;
     }
   }

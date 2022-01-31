@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.subapp.c;
 
 import android.os.HandlerThread;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.compatible.util.g.a;
-import com.tencent.mm.model.au;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.ap;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -17,47 +18,65 @@ import java.util.Queue;
 public final class j
   implements f
 {
-  private static int bEa = 0;
-  Queue<String> bDS = new LinkedList();
-  Queue<String> bDT = new LinkedList();
-  Map<String, g.a> bDU = new HashMap();
-  private boolean bDV = false;
-  private boolean bDW = false;
-  private boolean bDX = false;
-  int bDY = 0;
-  private long bDZ = 0L;
-  g.a bEc = new g.a();
-  private am bEd = new am(au.DS().mnU.getLooper(), new j.3(this), false);
+  private static int ckO = 0;
+  Queue<String> ckH;
+  Queue<String> ckI;
+  Map<String, g.a> ckJ;
+  private boolean ckK;
+  private boolean ckL;
+  int ckM;
+  private long ckN;
+  g.a ckQ;
+  private ap ckR;
+  private boolean running;
   
   public j()
   {
-    au.Dk().a(329, this);
+    AppMethodBeat.i(25310);
+    this.ckH = new LinkedList();
+    this.ckI = new LinkedList();
+    this.ckJ = new HashMap();
+    this.ckK = false;
+    this.ckL = false;
+    this.running = false;
+    this.ckM = 0;
+    this.ckN = 0L;
+    this.ckQ = new g.a();
+    this.ckR = new ap(aw.RO().oNc.getLooper(), new j.3(this), false);
+    aw.Rc().a(329, this);
+    AppMethodBeat.o(25310);
   }
   
-  private void uB()
+  private void ET()
   {
-    this.bDU.clear();
-    this.bDS.clear();
-    this.bDT.clear();
-    this.bDW = false;
-    this.bDV = false;
-    this.bDX = false;
-    y.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.bEc.zJ());
+    AppMethodBeat.i(25312);
+    this.ckJ.clear();
+    this.ckH.clear();
+    this.ckI.clear();
+    this.ckL = false;
+    this.ckK = false;
+    this.running = false;
+    ab.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.ckQ.Mm());
+    AppMethodBeat.o(25312);
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    au.DS().O(new j.1(this, paramm, paramInt1, paramInt2));
+    AppMethodBeat.i(25311);
+    aw.RO().ac(new j.1(this, paramm, paramInt1, paramInt2));
+    AppMethodBeat.o(25311);
   }
   
   public final void run()
   {
-    au.DS().O(new j.2(this));
+    AppMethodBeat.i(25313);
+    aw.RO().ac(new j.2(this));
+    AppMethodBeat.o(25313);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.c.j
  * JD-Core Version:    0.7.0.1
  */

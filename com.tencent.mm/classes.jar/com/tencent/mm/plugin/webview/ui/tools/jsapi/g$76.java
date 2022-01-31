@@ -1,22 +1,17 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.plugin.webview.model.ag;
-import com.tencent.mm.plugin.webview.model.d.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.sr;
+import com.tencent.mm.sdk.b.c;
 
 final class g$76
-  implements DialogInterface.OnCancelListener
+  extends c<sr>
 {
-  g$76(g paramg, d.b paramb, String paramString1, i parami, String paramString2) {}
-  
-  public final void onCancel(DialogInterface paramDialogInterface)
+  g$76(g paramg)
   {
-    com.tencent.mm.plugin.webview.modeltools.g.ccK().a(this.rAc);
-    com.tencent.mm.plugin.webview.modeltools.g.ccK();
-    ag.rO(this.rec);
-    g.B(this.rzi);
-    g.a(this.rzi, this.rzk, this.gQZ + ":cancel", null);
+    AppMethodBeat.i(154996);
+    this.__eventId = sr.class.getName().hashCode();
+    AppMethodBeat.o(154996);
   }
 }
 

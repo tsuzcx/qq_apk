@@ -2,87 +2,101 @@ package com.tencent.mm.ui.widget.snackbar;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static boolean wpX = false;
+  private static boolean AKA = false;
+  
+  public static boolean Pk()
+  {
+    return AKA;
+  }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, a.b paramb)
   {
+    AppMethodBeat.i(112984);
     paramActivity = new a.a(paramActivity);
-    paramActivity.ljq = paramString1;
-    paramActivity.wpJ = paramString2;
+    paramActivity.nGF = paramString1;
+    paramActivity.AKn = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, null);
+    AppMethodBeat.o(112984);
   }
   
   public static void a(Activity paramActivity, String paramString1, String paramString2, a.b paramb, a.c paramc)
   {
+    AppMethodBeat.i(112986);
     paramActivity = new a.a(paramActivity);
-    paramActivity.ljq = paramString1;
-    paramActivity.wpJ = paramString2;
+    paramActivity.nGF = paramString1;
+    paramActivity.AKn = paramString2;
     a(paramActivity.a(Short.valueOf((short)2500)), paramb, paramc);
+    AppMethodBeat.o(112986);
   }
   
   public static void a(Context paramContext, View paramView, String paramString, a.c paramc)
   {
+    AppMethodBeat.i(112988);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.ljq = paramString;
+    paramContext.nGF = paramString;
     paramContext = paramContext.a(Short.valueOf((short)1500));
     if (paramc != null) {
       paramContext.a(paramc);
     }
-    paramContext.cKv();
+    paramContext.dPA();
+    AppMethodBeat.o(112988);
   }
   
   public static void a(Context paramContext, View paramView, String paramString1, String paramString2)
   {
+    AppMethodBeat.i(112985);
     paramContext = new a.a(paramContext, paramView);
-    paramContext.ljq = paramString1;
-    paramContext.wpJ = paramString2;
+    paramContext.nGF = paramString1;
+    paramContext.AKn = paramString2;
     a(paramContext.a(Short.valueOf((short)2500)), null, null);
+    AppMethodBeat.o(112985);
   }
   
-  public static void a(Fragment paramFragment, String paramString1, String paramString2, a.b paramb, a.c paramc)
+  public static void a(Context paramContext, View paramView, String paramString1, String paramString2, a.b paramb, a.c paramc)
   {
-    paramFragment = new a.a(paramFragment.getContext(), paramFragment.getView());
-    paramFragment.ljq = paramString1;
-    paramFragment.wpJ = paramString2;
-    a(paramFragment.a(Short.valueOf((short)2500)), paramb, paramc);
+    AppMethodBeat.i(139662);
+    paramContext = new a.a(paramContext, paramView);
+    paramContext.nGF = paramString1;
+    paramContext.AKn = paramString2;
+    a(paramContext.a(Short.valueOf((short)2500)), paramb, paramc);
+    AppMethodBeat.o(139662);
   }
   
   private static void a(a.a parama, a.b paramb, a.c paramc)
   {
+    AppMethodBeat.i(112990);
     if (paramb != null) {
-      parama.wpV.wpP = paramb;
+      parama.a(paramb);
     }
     if (paramc != null) {
       parama.a(paramc);
     }
-    parama.cKv();
+    parama.dPA();
+    AppMethodBeat.o(112990);
   }
   
-  public static boolean akH()
+  public static void l(Activity paramActivity, String paramString)
   {
-    return wpX;
-  }
-  
-  public static void h(Activity paramActivity, String paramString)
-  {
+    AppMethodBeat.i(112989);
     paramActivity = new a.a(paramActivity);
-    paramActivity.ljq = paramString;
+    paramActivity.nGF = paramString;
     a(paramActivity.a(Short.valueOf((short)1500)), null, null);
+    AppMethodBeat.o(112989);
   }
   
-  public static void nZ(boolean paramBoolean)
+  public static void rJ(boolean paramBoolean)
   {
-    wpX = paramBoolean;
+    AKA = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.widget.snackbar.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.exdevice.service;
 
 final class y$j
 {
-  long hXu;
-  k jzG;
-  int jzK;
+  long jRn;
+  k lJf;
+  int lJj;
   
   public y$j(long paramLong, int paramInt, k paramk)
   {
-    this.hXu = paramLong;
-    this.jzK = paramInt;
-    this.jzG = paramk;
+    this.jRn = paramLong;
+    this.lJj = paramInt;
+    this.lJf = paramk;
   }
 }
 

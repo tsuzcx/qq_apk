@@ -1,13 +1,14 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.voip.a.a;
 import com.tencent.mm.plugin.voip.b;
-import com.tencent.mm.plugin.voip.model.r;
-import com.tencent.mm.plugin.voip.model.s;
-import com.tencent.mm.protocal.c.cfe;
-import com.tencent.mm.protocal.c.gd;
+import com.tencent.mm.plugin.voip.model.t;
+import com.tencent.mm.plugin.voip.model.u;
+import com.tencent.mm.protocal.protobuf.BaseResponse;
+import com.tencent.mm.protocal.protobuf.csp;
 
 final class e$1
   implements f
@@ -16,14 +17,16 @@ final class e$1
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(4709);
     a.Loge("MicroMsg.Voip.GetRoomInfo", "Voip onSceneEnd type:" + paramm.getType() + " errType:" + paramInt1 + " errCode:" + paramInt2);
     if ((paramInt1 == 0) && (paramInt2 == 0) && (paramm != null))
     {
-      paramString = (cfe)this.pUl.bRC();
-      if ((paramString.tFx.sze == 0) && (!b.bPx().pTq.bRp())) {
-        b.bPx().a(paramString);
+      paramString = (csp)this.tzN.cOt();
+      if ((paramString.BaseResponse.Ret == 0) && (!b.cLC().tyR.cOc())) {
+        b.cLC().b(paramString);
       }
     }
+    AppMethodBeat.o(4709);
   }
 }
 

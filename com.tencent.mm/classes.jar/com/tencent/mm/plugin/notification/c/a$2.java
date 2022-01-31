@@ -1,44 +1,53 @@
 package com.tencent.mm.plugin.notification.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class a$2
   implements com.tencent.mm.plugin.notification.ui.a
 {
   a$2(a parama) {}
   
-  public final void bpy()
+  public final void bYe()
   {
-    y.d("MicroMsg.AbstractSendMsgFailNotification", "onClickResendButton");
-    ai.d(new Runnable()
+    AppMethodBeat.i(23103);
+    ab.d("MicroMsg.AbstractSendMsgFailNotification", "onClickResendButton");
+    al.d(new Runnable()
     {
       public final void run()
       {
-        h.nFQ.f(11425, new Object[] { Integer.valueOf(a.2.this.mIE.getType()), Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0) });
-        a.2.this.mIE.bpv();
-        a.a(a.2.this.mIE);
-        a.2.this.mIE.bpo();
+        AppMethodBeat.i(23101);
+        h.qsU.e(11425, new Object[] { Integer.valueOf(a.2.this.piT.getType()), Integer.valueOf(3), Integer.valueOf(0), Integer.valueOf(0) });
+        a.2.this.piT.bYb();
+        a.a(a.2.this.piT);
+        a.2.this.piT.bXS();
+        AppMethodBeat.o(23101);
       }
     });
+    AppMethodBeat.o(23103);
   }
   
-  public final void bpz()
+  public final void bYf()
   {
-    y.d("MicroMsg.AbstractSendMsgFailNotification", "onClickOmitButton");
-    ai.d(new Runnable()
+    AppMethodBeat.i(23104);
+    ab.d("MicroMsg.AbstractSendMsgFailNotification", "onClickOmitButton");
+    al.d(new Runnable()
     {
       public final void run()
       {
-        h.nFQ.f(11425, new Object[] { Integer.valueOf(a.2.this.mIE.getType()), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0) });
-        a.2.this.mIE.bpv();
-        a.2.this.mIE.bpr();
-        a.b(a.2.this.mIE);
-        a.2.this.mIE.mIv.dismiss();
+        AppMethodBeat.i(23102);
+        h.qsU.e(11425, new Object[] { Integer.valueOf(a.2.this.piT.getType()), Integer.valueOf(2), Integer.valueOf(0), Integer.valueOf(0) });
+        a.2.this.piT.bYb();
+        a.2.this.piT.bXX();
+        a.b(a.2.this.piT);
+        a.2.this.piT.piL.dismiss();
+        AppMethodBeat.o(23102);
       }
     });
+    AppMethodBeat.o(23104);
   }
 }
 

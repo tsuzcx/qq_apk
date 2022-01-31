@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class StartUnbindQQ$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class StartUnbindQQ$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.feJ.finish();
+    AppMethodBeat.i(13761);
+    this.gws.finish();
+    AppMethodBeat.o(13761);
     return true;
   }
 }

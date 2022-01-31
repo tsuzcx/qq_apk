@@ -4,12 +4,20 @@ import android.os.Bundle;
 
 final class FaceDetectPrepareUI$b
 {
-  String aox;
   int errCode;
+  String errMsg;
   int errType;
   Bundle extras;
   
   private FaceDetectPrepareUI$b(FaceDetectPrepareUI paramFaceDetectPrepareUI) {}
+  
+  final void e(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
+  {
+    this.errType = paramInt1;
+    this.errCode = paramInt2;
+    this.errMsg = paramString;
+    this.extras = paramBundle;
+  }
 }
 
 

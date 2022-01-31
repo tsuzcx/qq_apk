@@ -1,23 +1,19 @@
 package com.tencent.mm.ui.bizchat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ai.a.c;
-import com.tencent.mm.ai.a.d;
-import com.tencent.mm.ai.a.j;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.c;
+import com.tencent.mm.aj.a.d;
+import com.tencent.mm.aj.a.j;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.model.r;
 import com.tencent.mm.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.n;
+import com.tencent.mm.ui.tools.q;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,115 +21,114 @@ import java.util.List;
 public class BizChatAtSomeoneUI
   extends MMActivity
 {
-  private static boolean vep = false;
-  private String drl;
-  private String drm;
-  private n drn;
-  private ListView fry;
-  private long idK;
+  private static boolean zsP = false;
+  private String eiT;
+  private String eiU;
+  private q eiV;
+  private ListView gJa;
+  private long jUy;
   private String mTitle;
   private String talker;
-  private BizChatAtSomeoneUI.a ven;
-  private c veo;
+  private BizChatAtSomeoneUI.a zsN;
+  private c zsO;
   
   protected static String a(c paramc, String paramString)
   {
-    if (paramc == null) {
+    AppMethodBeat.i(30043);
+    if (paramc == null)
+    {
+      AppMethodBeat.o(30043);
       return null;
     }
-    return paramc.gV(paramString);
+    paramc = paramc.nE(paramString);
+    AppMethodBeat.o(30043);
+    return paramc;
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.at_someone_ui;
+    return 2130968787;
   }
   
-  protected final void initView()
+  public void initView()
   {
+    AppMethodBeat.i(30038);
     setMMTitle(this.mTitle);
     setBackBtn(new BizChatAtSomeoneUI.1(this));
-    this.drn = new n((byte)0);
-    this.drn.weq = new BizChatAtSomeoneUI.2(this);
-    a(this.drn);
-    this.fry = ((ListView)findViewById(R.h.chatroom_member_lv));
+    this.eiV = new q((byte)0);
+    this.eiV.Axg = new BizChatAtSomeoneUI.2(this);
+    addSearchMenu(true, this.eiV);
+    this.gJa = ((ListView)findViewById(2131821560));
     j localj = new j();
-    c localc = this.veo;
+    c localc = this.zsO;
     String[] arrayOfString = null;
-    if (!ah.bl(this.drm))
+    if (!ah.isNullOrNil(this.eiU))
     {
-      arrayOfString = this.drm.split(";");
-      y.d("MicroMsg.AtSomeoneUI", "chatroom members name=[%s]", new Object[] { Arrays.toString(arrayOfString) });
+      arrayOfString = this.eiU.split(";");
+      ab.d("MicroMsg.AtSomeoneUI", "chatroom members name=[%s]", new Object[] { Arrays.toString(arrayOfString) });
     }
     Object localObject = new LinkedList();
-    if (!ah.bl(this.drl)) {
-      localObject = ah.h(this.drl.split(";"));
+    if (!ah.isNullOrNil(this.eiT)) {
+      localObject = ah.h(this.eiT.split(";"));
     }
-    this.ven = new BizChatAtSomeoneUI.a(this, localj, localc, arrayOfString, (List)localObject);
-    this.fry.setOnItemClickListener(new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        paramAnonymousAdapterView = new Intent();
-        if ((paramAnonymousInt == 0) && (BizChatAtSomeoneUI.vep))
-        {
-          paramAnonymousAdapterView.putExtra("Select_Conv_User", BizChatAtSomeoneUI.this.getString(R.l.at_all, new Object[] { "" }));
-          paramAnonymousAdapterView.putExtra("select_raw_user_name", "notify@all");
-        }
-        for (;;)
-        {
-          BizChatAtSomeoneUI.this.setResult(-1, paramAnonymousAdapterView);
-          BizChatAtSomeoneUI.this.finish();
-          return;
-          paramAnonymousView = (j)BizChatAtSomeoneUI.a(BizChatAtSomeoneUI.this).getItem(paramAnonymousInt);
-          String str = BizChatAtSomeoneUI.a(BizChatAtSomeoneUI.b(BizChatAtSomeoneUI.this), paramAnonymousView.field_userId);
-          paramAnonymousAdapterView.putExtra("select_raw_user_name", paramAnonymousView.field_userId);
-          paramAnonymousAdapterView.putExtra("Select_Conv_User", str);
-        }
-      }
-    });
-    this.fry.setAdapter(this.ven);
-    this.fry.setOnScrollListener(new BizChatAtSomeoneUI.4(this));
+    this.zsN = new BizChatAtSomeoneUI.a(this, localj, localc, arrayOfString, (List)localObject);
+    this.gJa.setOnItemClickListener(new BizChatAtSomeoneUI.3(this));
+    this.gJa.setAdapter(this.zsN);
+    this.gJa.setOnScrollListener(new BizChatAtSomeoneUI.4(this));
+    AppMethodBeat.o(30038);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(30037);
     super.onCreate(paramBundle);
-    this.drl = getIntent().getStringExtra("Block_list");
-    this.drm = getIntent().getStringExtra("Chatroom_member_list");
+    this.eiT = getIntent().getStringExtra("Block_list");
+    this.eiU = getIntent().getStringExtra("Chatroom_member_list");
     this.talker = getIntent().getStringExtra("Chat_User");
     this.mTitle = getIntent().getStringExtra("Add_address_titile");
-    this.idK = getIntent().getLongExtra("key_biz_chat_id", -1L);
-    this.veo = z.MA().aj(this.idK);
-    if (this.veo == null)
+    this.jUy = getIntent().getLongExtra("key_biz_chat_id", -1L);
+    this.zsO = z.afk().aG(this.jUy);
+    if (this.zsO == null)
     {
-      y.w("MicroMsg.AtSomeoneUI", "bizChatInfo is null");
+      ab.w("MicroMsg.AtSomeoneUI", "bizChatInfo is null");
       finish();
+      AppMethodBeat.o(30037);
       return;
     }
-    if ((this.veo != null) && (this.veo.field_ownerUserId.equals(q.Gj()))) {
-      vep = true;
+    if ((this.zsO != null) && (this.zsO.field_ownerUserId.equals(r.Zn()))) {
+      zsP = true;
     }
     initView();
+    AppMethodBeat.o(30037);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    this.ven.bcS();
+    AppMethodBeat.i(30040);
+    this.zsN.bKb();
     super.onDestroy();
+    AppMethodBeat.o(30040);
   }
   
-  protected void onPause()
+  public void onPause()
   {
+    AppMethodBeat.i(30039);
     super.onPause();
-    if (this.drn != null) {
-      this.drn.cJg();
+    if (this.eiV != null) {
+      this.eiV.dNV();
     }
+    AppMethodBeat.o(30039);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.bizchat.BizChatAtSomeoneUI
  * JD-Core Version:    0.7.0.1
  */

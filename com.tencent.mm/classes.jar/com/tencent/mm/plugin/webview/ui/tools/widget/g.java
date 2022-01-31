@@ -5,7 +5,7 @@ import com.tencent.mm.ui.widget.MMWebView;
 
 public abstract interface g
 {
-  public abstract MMWebView cO(Context paramContext);
+  public abstract MMWebView dz(Context paramContext);
 }
 
 

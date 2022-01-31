@@ -4,12 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.h.c.cs;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.plugin.setting.a.c;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.pluginsdk.wallet.f;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bi;
 import java.util.ArrayList;
@@ -26,23 +26,24 @@ final class SettingsChattingUI$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mm.plugin.report.service.h.nFQ.f(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(2), "" });
-    com.tencent.mm.plugin.report.service.h.nFQ.a(324L, 0L, 1L, false);
-    SettingsChattingUI.a(this.nUf, false);
-    paramDialogInterface = this.nUf;
-    Object localObject = this.nUf;
-    this.nUf.getString(a.i.app_tip);
-    SettingsChattingUI.a(paramDialogInterface, com.tencent.mm.ui.base.h.b((Context)localObject, this.nUf.getString(a.i.app_waiting), true, new SettingsChattingUI.2.1(this)));
-    paramDialogInterface = ((j)com.tencent.mm.kernel.g.r(j.class)).bhO().bie();
+    AppMethodBeat.i(127213);
+    com.tencent.mm.plugin.report.service.h.qsU.e(14553, new Object[] { Integer.valueOf(5), Integer.valueOf(2), "" });
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(324L, 0L, 1L, false);
+    SettingsChattingUI.a(this.qIf, false);
+    paramDialogInterface = this.qIf;
+    Object localObject = this.qIf;
+    this.qIf.getString(2131297087);
+    SettingsChattingUI.a(paramDialogInterface, com.tencent.mm.ui.base.h.b((Context)localObject, this.qIf.getString(2131297112), true, new SettingsChattingUI.2.1(this)));
+    paramDialogInterface = ((j)g.E(j.class)).bPQ().bQg();
     if (paramDialogInterface != null)
     {
-      y.i("MicroMsg.WalletConvDelCheckLogic", "checkGetUnProcessorWalletConversation, msgInfoList size: %s", new Object[] { Integer.valueOf(paramDialogInterface.size()) });
+      ab.i("MicroMsg.WalletConvDelCheckLogic", "checkGetUnProcessorWalletConversation, msgInfoList size: %s", new Object[] { Integer.valueOf(paramDialogInterface.size()) });
       localObject = new HashSet();
       paramDialogInterface = paramDialogInterface.iterator();
       while (paramDialogInterface.hasNext())
       {
         bi localbi = (bi)paramDialogInterface.next();
-        if ((!((Set)localObject).contains(localbi.field_talker)) && (((j)com.tencent.mm.kernel.g.r(j.class)).FB().abv(localbi.field_talker) != null) && (e.af(localbi))) {
+        if ((!((Set)localObject).contains(localbi.field_talker)) && (((j)g.E(j.class)).YF().arH(localbi.field_talker) != null) && (f.am(localbi))) {
           ((Set)localObject).add(localbi.field_talker);
         }
       }
@@ -51,17 +52,19 @@ final class SettingsChattingUI$2
     }
     while ((paramDialogInterface != null) && (paramDialogInterface.size() > 0))
     {
-      SettingsChattingUI.a(this.nUf).dismiss();
-      com.tencent.mm.ui.base.h.a(this.nUf, false, this.nUf.getString(a.i.wallet_clearall_conversation_note, new Object[] { Integer.valueOf(paramDialogInterface.size()) }), null, this.nUf.getString(a.i.goto_conversation), this.nUf.getString(a.i.clearall_conversation), new SettingsChattingUI.2.2(this, paramDialogInterface), new SettingsChattingUI.2.3(this), -1, a.c.alert_btn_color_warn);
+      SettingsChattingUI.a(this.qIf).dismiss();
+      com.tencent.mm.ui.base.h.a(this.qIf, false, this.qIf.getString(2131305021, new Object[] { Integer.valueOf(paramDialogInterface.size()) }), null, this.qIf.getString(2131300537), this.qIf.getString(2131298414), new SettingsChattingUI.2.2(this, paramDialogInterface), new SettingsChattingUI.2.3(this), -1, 2131689667);
+      AppMethodBeat.o(127213);
       return;
       paramDialogInterface = null;
     }
-    SettingsChattingUI.b(this.nUf);
+    SettingsChattingUI.b(this.qIf);
+    AppMethodBeat.o(127213);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsChattingUI.2
  * JD-Core Version:    0.7.0.1
  */

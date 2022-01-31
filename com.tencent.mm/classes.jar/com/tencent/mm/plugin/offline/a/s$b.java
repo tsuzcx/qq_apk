@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.offline.a;
 public final class s$b
   extends s.c
 {
-  public String mLC;
-  public String mLD;
-  public String mLE;
+  public String plT;
+  public String plU;
+  public String plV;
   
   public s$b(s params)
   {

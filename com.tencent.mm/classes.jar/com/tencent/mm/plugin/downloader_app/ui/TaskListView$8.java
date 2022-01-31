@@ -1,61 +1,41 @@
 package com.tencent.mm.plugin.downloader_app.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ipcinvoker.l;
-import com.tencent.mm.plugin.downloader.f.a;
-import com.tencent.mm.plugin.downloader.model.c;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.b;
 import com.tencent.mm.plugin.downloader_app.b.h;
-import com.tencent.mm.plugin.downloader_app.b.j;
-import com.tencent.mm.plugin.downloader_app.b.k;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.plugin.downloader_app.b.i;
 import java.util.Iterator;
-import java.util.LinkedList;
 
 final class TaskListView$8
-  implements DialogInterface.OnClickListener
+  implements MRecyclerView.b
 {
   TaskListView$8(TaskListView paramTaskListView) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final boolean O(View paramView, int paramInt)
   {
-    Object localObject1 = this.iUe;
-    paramDialogInterface = new LinkedList();
-    Iterator localIterator = ((TaskListView)localObject1).iTW.iTQ.iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(136298);
+    if (!TaskListView.a(this.ldh))
     {
-      Object localObject2 = (j)localIterator.next();
-      if (((j)localObject2).fmm)
+      AppMethodBeat.o(136298);
+      return false;
+    }
+    if ((((ViewGroup)paramView).getChildAt(0) instanceof TaskItemView))
+    {
+      Object localObject = TaskListView.b(this.ldh).lcP;
+      if (localObject != null)
       {
-        paramDialogInterface.add(localObject2);
-        k.vo(((j)localObject2).appId);
-        localObject2 = c.zH(((j)localObject2).appId);
-        if (localObject2 != null) {
-          com.tencent.mm.plugin.downloader.model.d.aFP().dc(((a)localObject2).field_downloadId);
+        localObject = ((h)localObject).iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((i)((Iterator)localObject).next()).kmz = true;
         }
+        ((TaskItemView)((ViewGroup)paramView).getChildAt(0)).setSelected(true);
+        TaskListView.c(this.ldh);
       }
     }
-    if (paramDialogInterface.size() != 0)
-    {
-      localObject1 = ((TaskListView)localObject1).iTW;
-      if (!bk.dk(paramDialogInterface))
-      {
-        if (paramDialogInterface.size() != 1) {
-          break label167;
-        }
-        paramInt = ((b)localObject1).iTQ.indexOf(paramDialogInterface.get(0));
-        ((b)localObject1).iTQ.remove(paramInt);
-        l.m(new b.2((b)localObject1, paramInt));
-      }
-    }
-    for (;;)
-    {
-      com.tencent.mm.plugin.downloader_app.b.d.eT(false);
-      return;
-      label167:
-      ((b)localObject1).iTQ.removeAll(paramDialogInterface);
-      l.m(new b.3((b)localObject1));
-    }
+    AppMethodBeat.o(136298);
+    return true;
   }
 }
 

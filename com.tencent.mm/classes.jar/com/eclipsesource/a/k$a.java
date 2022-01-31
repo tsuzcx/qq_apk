@@ -1,82 +1,101 @@
 package com.eclipsesource.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Writer;
 
 final class k$a
   extends i
 {
-  private final char[] arZ;
-  private int asa;
+  private final char[] auq;
+  private int aur;
   
   private k$a(Writer paramWriter, char[] paramArrayOfChar)
   {
     super(paramWriter);
-    this.arZ = paramArrayOfChar;
+    this.auq = paramArrayOfChar;
   }
   
-  private boolean kj()
+  private boolean ms()
   {
     int i = 0;
-    if (this.arZ == null) {
+    AppMethodBeat.i(70604);
+    if (this.auq == null)
+    {
+      AppMethodBeat.o(70604);
       return false;
     }
-    this.arY.write(10);
-    while (i < this.asa)
+    this.writer.write(10);
+    while (i < this.aur)
     {
-      this.arY.write(this.arZ);
+      this.writer.write(this.auq);
       i += 1;
     }
+    AppMethodBeat.o(70604);
     return true;
   }
   
-  protected final void kc()
+  protected final void ml()
   {
-    this.asa += 1;
-    this.arY.write(91);
-    kj();
+    AppMethodBeat.i(70597);
+    this.aur += 1;
+    this.writer.write(91);
+    ms();
+    AppMethodBeat.o(70597);
   }
   
-  protected final void kd()
+  protected final void mm()
   {
-    this.asa -= 1;
-    kj();
-    this.arY.write(93);
+    AppMethodBeat.i(70598);
+    this.aur -= 1;
+    ms();
+    this.writer.write(93);
+    AppMethodBeat.o(70598);
   }
   
-  protected final void ke()
+  protected final void mn()
   {
-    this.arY.write(44);
-    if (!kj()) {
-      this.arY.write(32);
+    AppMethodBeat.i(70599);
+    this.writer.write(44);
+    if (!ms()) {
+      this.writer.write(32);
     }
+    AppMethodBeat.o(70599);
   }
   
-  protected final void kf()
+  protected final void mo()
   {
-    this.asa += 1;
-    this.arY.write(123);
-    kj();
+    AppMethodBeat.i(70600);
+    this.aur += 1;
+    this.writer.write(123);
+    ms();
+    AppMethodBeat.o(70600);
   }
   
-  protected final void kg()
+  protected final void mp()
   {
-    this.asa -= 1;
-    kj();
-    this.arY.write(125);
+    AppMethodBeat.i(70601);
+    this.aur -= 1;
+    ms();
+    this.writer.write(125);
+    AppMethodBeat.o(70601);
   }
   
-  protected final void kh()
+  protected final void mq()
   {
-    this.arY.write(58);
-    this.arY.write(32);
+    AppMethodBeat.i(70602);
+    this.writer.write(58);
+    this.writer.write(32);
+    AppMethodBeat.o(70602);
   }
   
-  protected final void ki()
+  protected final void mr()
   {
-    this.arY.write(44);
-    if (!kj()) {
-      this.arY.write(32);
+    AppMethodBeat.i(70603);
+    this.writer.write(44);
+    if (!ms()) {
+      this.writer.write(32);
     }
+    AppMethodBeat.o(70603);
   }
 }
 

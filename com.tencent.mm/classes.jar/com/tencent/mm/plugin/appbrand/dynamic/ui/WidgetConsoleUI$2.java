@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.appbrand.dynamic.ui;
 
 import android.widget.Toast;
-import com.tencent.mm.plugin.appbrand.wxawidget.b.e;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class WidgetConsoleUI$2
   implements Runnable
@@ -12,8 +10,10 @@ final class WidgetConsoleUI$2
   
   public final void run()
   {
-    this.fXs.setMMTitle(String.format("%s%s", new Object[] { this.fXs.getString(b.e.wxa_widget_console), this.fXt }));
-    Toast.makeText(this.fXs.mController.uMN, String.format("%s%s", new Object[] { this.fXs.id, this.fXt }), 1).show();
+    AppMethodBeat.i(11003);
+    this.hqS.setMMTitle(String.format("%s%s", new Object[] { this.hqS.getString(2131306259), this.hqT }));
+    Toast.makeText(this.hqS.getContext(), String.format("%s%s", new Object[] { this.hqS.id, this.hqT }), 1).show();
+    AppMethodBeat.o(11003);
   }
 }
 

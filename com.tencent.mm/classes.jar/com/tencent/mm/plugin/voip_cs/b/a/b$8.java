@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
-import com.tencent.mm.plugin.voip.video.i;
-import com.tencent.mm.plugin.voip_cs.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.voip.video.h;
 
 final class b$8
   implements Runnable
@@ -10,15 +10,17 @@ final class b$8
   
   public final void run()
   {
-    a locala = a.bSW();
-    if (locala.pTJ != null) {
-      locala.pTJ.o(a.d.playend, 0, true);
+    AppMethodBeat.i(135326);
+    a locala = a.cQv();
+    if (locala.tzl != null) {
+      locala.tzl.HA(0);
     }
+    AppMethodBeat.o(135326);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.voip_cs.b.a.b.8
  * JD-Core Version:    0.7.0.1
  */

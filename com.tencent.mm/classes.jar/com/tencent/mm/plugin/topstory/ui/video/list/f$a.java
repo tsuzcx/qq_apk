@@ -1,26 +1,74 @@
 package com.tencent.mm.plugin.topstory.ui.video.list;
 
-import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.c;
 import com.tencent.mm.plugin.topstory.ui.video.r;
-import com.tencent.mm.sdk.platformtools.am;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$a
   implements c
 {
-  private float pGY;
+  private float tks;
   
   f$a(f paramf)
   {
-    this.pGY = com.tencent.mm.cb.a.fk(paramf.getContext());
+    AppMethodBeat.i(2053);
+    this.tks = com.tencent.mm.cb.a.gx(paramf.getContext());
+    AppMethodBeat.o(2053);
   }
   
-  public final int aG(float paramFloat)
+  public final void GC(int paramInt)
   {
-    paramFloat /= this.pGY;
-    int j = this.pHJ.getListVideoUIComponent().bNx().getVideoDurationSec();
+    AppMethodBeat.i(2058);
+    f.g(this.tlr).cKp();
+    f.T(this.tlr).setVisibility(8);
+    this.tlr.seekTo(paramInt);
+    AppMethodBeat.o(2058);
+  }
+  
+  public final void aEX()
+  {
+    AppMethodBeat.i(2054);
+    ab.d("MicroMsg.TopStory.TopStoryListVideoContainer", "onSingleTap");
+    if (f.Q(this.tlr))
+    {
+      if (f.g(this.tlr).Pk())
+      {
+        f.g(this.tlr).setVisibility(8);
+        AppMethodBeat.o(2054);
+        return;
+      }
+      f.g(this.tlr).show();
+      if (this.tlr.getListItemUIComponent() != null)
+      {
+        this.tlr.getListItemUIComponent().cJa();
+        this.tlr.getListItemUIComponent().cIZ();
+      }
+    }
+    AppMethodBeat.o(2054);
+  }
+  
+  public final void aEY()
+  {
+    AppMethodBeat.i(2055);
+    ab.d("MicroMsg.TopStory.TopStoryListVideoContainer", "onDoubleTap");
+    AppMethodBeat.o(2055);
+  }
+  
+  public final void aEZ()
+  {
+    AppMethodBeat.i(2056);
+    f.R(this.tlr).setVisibility(0);
+    f.g(this.tlr).cKo();
+    AppMethodBeat.o(2056);
+  }
+  
+  public final int bj(float paramFloat)
+  {
+    AppMethodBeat.i(2057);
+    paramFloat /= this.tks;
+    int j = this.tlr.getListVideoUIComponent().cJh().getVideoDurationSec();
     int i = getCurrentPosition();
     int k = (int)(paramFloat * j) + i;
     if (k < 0) {
@@ -28,8 +76,9 @@ final class f$a
     }
     for (;;)
     {
-      String str = com.tencent.mm.plugin.websearch.ui.b.ce(j * 1000L);
-      f.J(this.pHJ).setText(com.tencent.mm.plugin.websearch.ui.b.ce(i * 1000L) + "/" + str);
+      String str = com.tencent.mm.plugin.websearch.ui.a.ha(j * 1000L);
+      f.S(this.tlr).setText(com.tencent.mm.plugin.websearch.ui.a.ha(i * 1000L) + "/" + str);
+      AppMethodBeat.o(2057);
       return i;
       i = k;
       if (k > j) {
@@ -38,67 +87,24 @@ final class f$a
     }
   }
   
-  public final void akl()
+  public final boolean cJx()
   {
-    y.d("MicroMsg.TopStory.TopStoryListVideoContainer", "onSingleTap");
-    int i;
-    if (f.H(this.pHJ))
+    AppMethodBeat.i(2059);
+    if (f.U(this.tlr))
     {
-      if (f.f(this.pHJ).getVisibility() != 0) {
-        break label49;
-      }
-      i = 1;
-      if (i == 0) {
-        break label54;
-      }
-      f.f(this.pHJ).setVisibility(8);
+      AppMethodBeat.o(2059);
+      return false;
     }
-    label49:
-    label54:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      g localg = f.f(this.pHJ);
-      localg.setVisibility(0);
-      localg.bOz();
-      if (localg.pHm == null) {
-        localg.pHm = new am(new g.1(localg), false);
-      }
-      localg.pHm.stopTimer();
-      localg.pHm.S(2000L, 2000L);
-    } while (this.pHJ.getListItemUIComponent() == null);
-    this.pHJ.getListItemUIComponent().bNq();
-    this.pHJ.getListItemUIComponent().bNp();
-  }
-  
-  public final void akm()
-  {
-    y.d("MicroMsg.TopStory.TopStoryListVideoContainer", "onDoubleTap");
-  }
-  
-  public final void akn()
-  {
-    f.I(this.pHJ).setVisibility(0);
-    f.f(this.pHJ).ofr.setVisibility(8);
-  }
-  
-  public final boolean bNK()
-  {
-    return !f.L(this.pHJ);
+    AppMethodBeat.o(2059);
+    return true;
   }
   
   public final int getCurrentPosition()
   {
-    return this.pHJ.getListVideoUIComponent().bNx().getCurrPosSec();
-  }
-  
-  public final void zz(int paramInt)
-  {
-    f.f(this.pHJ).bOz();
-    f.K(this.pHJ).setVisibility(8);
-    this.pHJ.seekTo(paramInt);
+    AppMethodBeat.i(2060);
+    int i = this.tlr.getListVideoUIComponent().cJh().getCurrPosSec();
+    AppMethodBeat.o(2060);
+    return i;
   }
 }
 

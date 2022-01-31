@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/uv" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="47.0dip"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dh2" android:layout_width="fill_parent" android:layout_height="1.0px" android:src="#ffeeeeee" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="11.0dip" android:paddingBottom="11.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/lj" android:textColor="@color/fc" android:ellipsize="end" android:id="@id/dh3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" />
-        <TextView android:textSize="@dimen/my" android:textColor="@color/or" android:ellipsize="end" android:gravity="right" android:id="@id/dh4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:maxWidth="200.0dip" android:text="" android:singleLine="true" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+        <include layout="@layout/a7d" />
     </LinearLayout>
-    <ImageView android:id="@id/dh5" android:layout_width="fill_parent" android:layout_height="1.0px" android:src="#ffeeeeee" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginBottom="66.0dip" android:src="@drawable/aj4" />
+    <Button android:textSize="20.0dip" android:id="@id/dln" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:text="@string/em_" style="@style/nq" />
 </LinearLayout>

@@ -1,53 +1,17 @@
 package android.support.v4.view;
 
-import android.os.Build.VERSION;
-import android.support.a.a.a;
-import android.view.ViewGroup;
+import android.content.res.ColorStateList;
+import android.graphics.PorterDuff.Mode;
 
-public final class s
+public abstract interface s
 {
-  static final c Gq = new c();
+  public abstract ColorStateList getSupportBackgroundTintList();
   
-  static
-  {
-    if (Build.VERSION.SDK_INT >= 21)
-    {
-      Gq = new b();
-      return;
-    }
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      Gq = new a();
-      return;
-    }
-  }
+  public abstract PorterDuff.Mode getSupportBackgroundTintMode();
   
-  public static boolean f(ViewGroup paramViewGroup)
-  {
-    return Gq.f(paramViewGroup);
-  }
+  public abstract void setSupportBackgroundTintList(ColorStateList paramColorStateList);
   
-  static class a
-    extends s.c
-  {}
-  
-  static final class b
-    extends s.a
-  {
-    public final boolean f(ViewGroup paramViewGroup)
-    {
-      return paramViewGroup.isTransitionGroup();
-    }
-  }
-  
-  static class c
-  {
-    public boolean f(ViewGroup paramViewGroup)
-    {
-      Boolean localBoolean = (Boolean)paramViewGroup.getTag(a.a.tag_transition_group);
-      return ((localBoolean != null) && (localBoolean.booleanValue())) || (paramViewGroup.getBackground() != null) || (q.ab(paramViewGroup) != null);
-    }
-  }
+  public abstract void setSupportBackgroundTintMode(PorterDuff.Mode paramMode);
 }
 
 

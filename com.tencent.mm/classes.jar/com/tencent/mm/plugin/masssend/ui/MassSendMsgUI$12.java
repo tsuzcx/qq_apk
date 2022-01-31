@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.masssend.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.ah.p;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.masssend.a.f;
 
 final class MassSendMsgUI$12
@@ -13,7 +14,9 @@ final class MassSendMsgUI$12
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    au.Dk().c(this.mbc);
+    AppMethodBeat.i(22846);
+    aw.Rc().a(this.oBE);
+    AppMethodBeat.o(22846);
   }
 }
 

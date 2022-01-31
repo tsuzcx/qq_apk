@@ -4,32 +4,36 @@ import android.content.Context;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.map.a.e;
-import com.tencent.mm.plugin.map.a.f;
-import com.tencent.mm.plugin.p.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.k.d;
 
 public final class g
   extends FrameLayout
 {
-  public boolean lFf = false;
-  private ImageView lFx;
-  public d lFy;
   private Context mContext;
+  private ImageView ocK;
+  public d ocL;
+  public boolean oct;
   
   public g(Context paramContext, d paramd)
   {
     super(paramContext);
-    this.lFy = paramd;
+    AppMethodBeat.i(113471);
+    this.oct = false;
+    this.ocL = paramd;
     this.mContext = paramContext;
-    this.lFx = ((ImageView)View.inflate(this.mContext, a.f.poi_point, this).findViewById(a.e.point_iv));
+    this.ocK = ((ImageView)View.inflate(this.mContext, 2130970427, this).findViewById(2131826757));
+    AppMethodBeat.o(113471);
   }
   
   public final void remove()
   {
-    if (this.lFf) {
-      this.lFy.removeView(this);
+    AppMethodBeat.i(113472);
+    if (this.oct) {
+      this.ocL.removeView(this);
     }
-    this.lFf = false;
+    this.oct = false;
+    AppMethodBeat.o(113472);
   }
 }
 

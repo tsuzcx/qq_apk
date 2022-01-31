@@ -23,7 +23,7 @@ public class TXLivePushConfig
   boolean mEnableHighResolutionCapture = true;
   boolean mEnableNearestIP = true;
   boolean mEnablePureAudioPush = false;
-  boolean mEnableScreenCaptureAutoRotate = true;
+  boolean mEnableScreenCaptureAutoRotate = false;
   boolean mEnableVideoHardEncoderMainProfile = true;
   boolean mEnableZoom = false;
   int mEyeScaleLevel = 0;
@@ -266,7 +266,7 @@ public class TXLivePushConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePushConfig
  * JD-Core Version:    0.7.0.1
  */

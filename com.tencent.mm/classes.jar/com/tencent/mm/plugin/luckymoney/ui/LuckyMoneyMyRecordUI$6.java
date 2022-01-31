@@ -2,8 +2,9 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class LuckyMoneyMyRecordUI$6
@@ -13,17 +14,20 @@ final class LuckyMoneyMyRecordUI$6
   
   public final void onClick(View paramView)
   {
-    if (!bk.bl(this.lVW.lRy))
+    AppMethodBeat.i(42763);
+    if (!bo.isNullOrNil(this.oua.opu))
     {
-      e.l(this.lVW, this.lVW.lRy, true);
+      e.m(this.oua, this.oua.opu, true);
+      AppMethodBeat.o(42763);
       return;
     }
-    y.w("MicroMsg.LuckyMoneyMyRecordUI", "hy: no avatar jump h5");
+    ab.w("MicroMsg.LuckyMoneyMyRecordUI", "hy: no avatar jump h5");
+    AppMethodBeat.o(42763);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyMyRecordUI.6
  * JD-Core Version:    0.7.0.1
  */

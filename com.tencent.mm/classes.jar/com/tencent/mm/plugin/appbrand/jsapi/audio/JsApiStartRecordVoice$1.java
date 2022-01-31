@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.appbrand.jsapi.audio;
 
-import com.tencent.mm.plugin.appbrand.jsapi.e.b;
-import com.tencent.mm.plugin.appbrand.o;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.page.v;
+import com.tencent.mm.plugin.appbrand.r;
 
 final class JsApiStartRecordVoice$1
-  implements e.b
+  implements f.b
 {
-  JsApiStartRecordVoice$1(JsApiStartRecordVoice paramJsApiStartRecordVoice, o paramo) {}
+  JsApiStartRecordVoice$1(JsApiStartRecordVoice paramJsApiStartRecordVoice, r paramr) {}
   
-  public final void qa()
+  public final void onBackground()
   {
-    JsApiStopRecordVoice.e(this.gcp);
-    JsApiStartRecordVoice.a(this.gjv).b(this);
+    AppMethodBeat.i(130784);
+    JsApiStopRecordVoice.m(this.bAW);
+    JsApiStartRecordVoice.a(this.hCO).b(this);
+    AppMethodBeat.o(130784);
   }
 }
 

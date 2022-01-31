@@ -1,12 +1,11 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-public class bv
-  extends bo
+import com.tencent.map.lib.element.j;
+import java.util.List;
+
+public abstract interface bv
 {
-  public bv(int paramInt)
-  {
-    super(paramInt);
-  }
+  public abstract List<j> a();
 }
 
 

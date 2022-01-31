@@ -1,15 +1,19 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import com.tencent.mm.pluginsdk.model.app.am;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class g$57
-  implements am
+  implements Runnable
 {
-  g$57(g paramg, i parami) {}
+  g$57(g paramg) {}
   
-  public final void cW(boolean paramBoolean)
+  public final void run()
   {
-    g.a(this.rzi, this.rzk, "launch_3rdApp:ok", null);
+    AppMethodBeat.i(9117);
+    Toast.makeText(g.j(this.vqm), g.j(this.vqm).getString(2131300364), 0).show();
+    AppMethodBeat.o(9117);
   }
 }
 

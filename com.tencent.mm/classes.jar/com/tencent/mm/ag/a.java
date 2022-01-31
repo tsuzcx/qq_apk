@@ -1,20 +1,12 @@
 package com.tencent.mm.ag;
 
-import android.graphics.Bitmap;
-import com.tencent.mm.a.f;
-
-final class a
+public final class a
 {
-  f<String, Bitmap> eaZ;
-  
-  public a(int paramInt)
-  {
-    this.eaZ = new f(paramInt);
-  }
+  public boolean fqV = true;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ag.a
  * JD-Core Version:    0.7.0.1
  */

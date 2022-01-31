@@ -34,7 +34,7 @@ public abstract class c$a
     if (paramParcel1.readInt() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      k(paramInt1, paramInt2, bool);
+      p(paramInt1, paramInt2, bool);
       paramParcel2.writeNoException();
       return true;
     }
@@ -42,7 +42,7 @@ public abstract class c$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.c.a
  * JD-Core Version:    0.7.0.1
  */

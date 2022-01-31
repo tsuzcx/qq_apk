@@ -1,14 +1,16 @@
 package com.tencent.liteav.basic.b;
 
+import java.io.File;
+
 public abstract interface b
 {
-  public abstract void b(com.tencent.liteav.basic.f.b paramb);
+  public abstract void a();
   
-  public abstract void c(com.tencent.liteav.basic.f.b paramb);
+  public abstract void a(int paramInt);
   
-  public abstract long n();
+  public abstract void a(File paramFile);
   
-  public abstract int o();
+  public abstract void a(File paramFile, Exception paramException);
 }
 
 

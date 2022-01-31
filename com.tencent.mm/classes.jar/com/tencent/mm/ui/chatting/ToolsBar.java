@@ -8,62 +8,67 @@ import android.widget.ImageButton;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mm.R.f;
-import com.tencent.mm.R.g;
-import com.tencent.mm.R.l;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class ToolsBar
   extends LinearLayout
 {
-  private LinearLayout.LayoutParams lcr;
-  private ImageButton vjV;
-  private ImageButton vjY;
-  private ImageButton vnq;
+  private LinearLayout.LayoutParams nAm;
+  private ImageButton zCM;
+  private ImageButton zyX;
+  private ImageButton zzA;
   
   public ToolsBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(31072);
     setOrientation(0);
     setGravity(16);
-    setBackgroundResource(R.g.bottombar_bg);
-    this.lcr = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(R.f.SmallListHeight), 1.0F);
-    this.vjV = new ImageButton(getContext());
-    this.vjV.setImageResource(R.g.chat_more_tran_btn);
-    this.vjV.setScaleType(ImageView.ScaleType.CENTER);
-    this.vjV.setBackgroundResource(0);
-    this.vjV.setContentDescription(paramContext.getString(R.l.chatting_more_share));
-    this.vjY = new ImageButton(getContext());
-    this.vjY.setImageResource(R.g.chat_more_fav_btn);
-    this.vjY.setScaleType(ImageView.ScaleType.CENTER);
-    this.vjY.setBackgroundResource(0);
-    this.vjY.setContentDescription(paramContext.getString(R.l.chatting_more_favorite));
-    this.vnq = new ImageButton(getContext());
-    this.vnq.setImageResource(R.g.chat_more_remind_btn);
-    this.vnq.setScaleType(ImageView.ScaleType.CENTER);
-    this.vnq.setBackgroundResource(0);
-    this.vnq.setContentDescription(paramContext.getString(R.l.chatting_more_favorite));
+    setBackgroundResource(2130838022);
+    this.nAm = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131427853), 1.0F);
+    this.zyX = new ImageButton(getContext());
+    this.zyX.setImageResource(2130838239);
+    this.zyX.setScaleType(ImageView.ScaleType.CENTER);
+    this.zyX.setBackgroundResource(0);
+    this.zyX.setContentDescription(paramContext.getString(2131298261));
+    this.zzA = new ImageButton(getContext());
+    this.zzA.setImageResource(2130838236);
+    this.zzA.setScaleType(ImageView.ScaleType.CENTER);
+    this.zzA.setBackgroundResource(0);
+    this.zzA.setContentDescription(paramContext.getString(2131298260));
+    this.zCM = new ImageButton(getContext());
+    this.zCM.setImageResource(2130838238);
+    this.zCM.setScaleType(ImageView.ScaleType.CENTER);
+    this.zCM.setBackgroundResource(0);
+    this.zCM.setContentDescription(paramContext.getString(2131298260));
     removeAllViews();
-    addView(this.vjV, this.lcr);
-    addView(this.vjY, this.lcr);
-    addView(this.vnq, this.lcr);
+    addView(this.zyX, this.nAm);
+    addView(this.zzA, this.nAm);
+    addView(this.zCM, this.nAm);
+    AppMethodBeat.o(31072);
   }
   
   public final void c(int paramInt, View.OnClickListener paramOnClickListener)
   {
+    AppMethodBeat.i(31073);
     switch (paramInt)
     {
     default: 
-      y.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
+      ab.w("MicroMsg.ToolsBar", "set button listener error button index %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(31073);
       return;
     case 0: 
-      this.vjV.setOnClickListener(paramOnClickListener);
+      this.zyX.setOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(31073);
       return;
     case 1: 
-      this.vjY.setOnClickListener(paramOnClickListener);
+      this.zzA.setOnClickListener(paramOnClickListener);
+      AppMethodBeat.o(31073);
       return;
     }
-    this.vnq.setOnClickListener(paramOnClickListener);
+    this.zCM.setOnClickListener(paramOnClickListener);
+    AppMethodBeat.o(31073);
   }
 }
 

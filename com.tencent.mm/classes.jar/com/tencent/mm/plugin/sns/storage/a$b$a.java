@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.sns.storage;
 
 public final class a$b$a
 {
-  public static int oAy = 101;
-  public String oAA = "";
-  public String oAB = "";
-  public int oAC = 0;
-  public long oAD = 0L;
-  public String oAz = "";
-  public long omN = 0L;
+  public static int rpI = 101;
+  public long rbb = 0L;
+  public String rpJ = "";
+  public String rpK = "";
+  public String rpL = "";
+  public int rpM = 0;
+  public long rpN = 0L;
   
   public a$b$a() {}
   
   public a$b$a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.oAz = paramString1;
-    this.oAA = paramString2;
-    this.oAB = paramString3;
-    this.oAC = paramInt;
+    this.rpJ = paramString1;
+    this.rpK = paramString2;
+    this.rpL = paramString3;
+    this.rpM = paramInt;
   }
 }
 

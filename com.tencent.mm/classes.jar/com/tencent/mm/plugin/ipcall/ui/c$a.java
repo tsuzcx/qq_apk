@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 final class c$a
 {
-  String ltO;
-  String ltP;
+  String nRh;
+  String nRi;
   
   public c$a(c paramc, String paramString1, String paramString2)
   {
-    this.ltP = paramString2;
-    this.ltO = paramString1;
+    this.nRi = paramString2;
+    this.nRh = paramString1;
   }
 }
 

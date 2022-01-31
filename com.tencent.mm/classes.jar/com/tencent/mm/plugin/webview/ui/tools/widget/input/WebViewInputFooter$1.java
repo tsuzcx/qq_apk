@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.webview.ui.tools.widget.input;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
-import com.tencent.mm.R.k;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
 
@@ -14,28 +14,31 @@ final class WebViewInputFooter$1
   
   public final void onClick(View paramView)
   {
-    if (WebViewInputFooter.a(this.rDo) == 0)
+    AppMethodBeat.i(10075);
+    if (WebViewInputFooter.a(this.vtA) == 0)
     {
-      WebViewInputFooter.b(this.rDo).XM();
-      if (!WebViewInputFooter.c(this.rDo)) {
-        WebViewInputFooter.d(this.rDo).requestFocus();
+      WebViewInputFooter.b(this.vtA).hideVKB();
+      if (!WebViewInputFooter.c(this.vtA)) {
+        WebViewInputFooter.d(this.vtA).requestFocus();
       }
-      WebViewInputFooter.e(this.rDo);
-      WebViewInputFooter.f(this.rDo).setImageResource(R.k.textfield_icon_emoji_pressed);
-      WebViewInputFooter.a(this.rDo, 1);
-      WebViewInputFooter.g(this.rDo);
+      WebViewInputFooter.e(this.vtA);
+      WebViewInputFooter.f(this.vtA).setImageResource(2131231506);
+      WebViewInputFooter.a(this.vtA, 1);
+      WebViewInputFooter.g(this.vtA);
+      AppMethodBeat.o(10075);
       return;
     }
-    WebViewInputFooter.g(this.rDo);
-    WebViewInputFooter.d(this.rDo).requestFocus();
-    WebViewInputFooter.b(this.rDo).showVKB();
-    WebViewInputFooter.h(this.rDo);
-    WebViewInputFooter.a(this.rDo, 0);
+    WebViewInputFooter.g(this.vtA);
+    WebViewInputFooter.d(this.vtA).requestFocus();
+    WebViewInputFooter.b(this.vtA).showVKB();
+    WebViewInputFooter.h(this.vtA);
+    WebViewInputFooter.a(this.vtA, 0);
+    AppMethodBeat.o(10075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter.1
  * JD-Core Version:    0.7.0.1
  */

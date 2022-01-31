@@ -5,7 +5,7 @@ public final class c$kt
 {
   public c$kt()
   {
-    super("reportWeAppSearchRealtime", "", 10000, false);
+    super("updateReddotTimeStamps", "", 10000, false);
   }
 }
 

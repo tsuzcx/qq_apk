@@ -1,287 +1,321 @@
 package com.tencent.mm.plugin.facedetectaction.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.facedetect.a.e;
-import com.tencent.mm.plugin.facedetect.a.g;
-import com.tencent.mm.plugin.facedetect.a.i;
-import com.tencent.mm.plugin.facedetect.model.o;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.facedetectaction.b.a.a;
 import com.tencent.mm.plugin.facedetectaction.b.d;
 import com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.facedetectlight.ui.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMTextureView;
+import com.tencent.mm.ui.base.a;
 
-@com.tencent.mm.ui.base.a(3)
+@a(3)
 public class FaceActionUI
   extends MMActivity
 {
-  int bIC;
+  int cpX;
   private long endTime;
-  RelativeLayout jRX;
-  RelativeLayout jRY;
-  RelativeLayout jRZ;
-  ImageView jSa;
-  ImageView jSb;
-  ImageView jSc;
-  private int jVL;
-  private String jVM;
-  private a.a jVP;
-  RelativeLayout jWD;
-  private PreviewFrameLayout jWE;
-  private FaceActionMask jWF;
-  private MMTextureView jWG;
-  ImageView jWH;
-  private TextView jWI;
-  private TextView jWJ;
-  private ImageView jWK;
-  private Button jWL;
-  private Button jWM;
-  private TextView jWN;
-  public boolean jWO = false;
-  com.tencent.mm.plugin.facedetectlight.ui.a jWP;
-  private int jWQ;
-  private int jWR;
-  private String jWS;
-  private int jWT;
+  RelativeLayout mmt;
+  RelativeLayout mmu;
+  RelativeLayout mmv;
+  ImageView mmw;
+  ImageView mmx;
+  ImageView mmy;
+  RelativeLayout mqU;
+  private PreviewFrameLayout mqV;
+  private FaceActionMask mqW;
+  private MMTextureView mqX;
+  ImageView mqY;
+  private TextView mqZ;
+  private int mqd;
+  private String mqe;
+  private a.a mqh;
+  private TextView mra;
+  private ImageView mrb;
+  private Button mrc;
+  private Button mrd;
+  private TextView mre;
+  public boolean mrf = false;
+  b mrg;
+  private int mrh;
+  private int mri;
+  private String mrj;
+  private int mrk;
   private int scene;
   private long startTime;
   
-  private void aOX()
+  private void bvH()
   {
-    this.jVP = new FaceActionUI.1(this);
-    d.jWf.jWl = new FaceActionUI.2(this);
-    d.jWf.bER = this;
-    d.jWf.a(this);
+    AppMethodBeat.i(735);
+    this.mqU = ((RelativeLayout)findViewById(2131823871));
+    this.mqV = ((PreviewFrameLayout)findViewById(2131823872));
+    this.mqX = ((MMTextureView)findViewById(2131823873));
+    this.mqX.setVisibility(4);
+    this.mqW = ((FaceActionMask)findViewById(2131823876));
+    this.mrb = ((ImageView)findViewById(2131823875));
+    this.mrb.post(new FaceActionUI.3(this));
+    this.mqZ = ((TextView)findViewById(2131823877));
+    this.mqZ.post(new FaceActionUI.4(this));
+    this.mra = ((TextView)findViewById(2131823878));
+    this.mra.setOnClickListener(new FaceActionUI.5(this));
+    AppMethodBeat.o(735);
   }
   
-  private void aPy()
+  private void bvI()
   {
-    this.jWD = ((RelativeLayout)findViewById(a.e.face_preview_layout));
-    this.jWE = ((PreviewFrameLayout)findViewById(a.e.face_live_preview_layout));
-    this.jWG = ((MMTextureView)findViewById(a.e.face_live_detection_preview));
-    this.jWG.setVisibility(4);
-    this.jWF = ((FaceActionMask)findViewById(a.e.face_live_preview_mask));
-    this.jWK = ((ImageView)findViewById(a.e.face_action_loading));
-    this.jWK.post(new FaceActionUI.3(this));
-    this.jWI = ((TextView)findViewById(a.e.face_live_tip_tv));
-    this.jWI.post(new FaceActionUI.4(this));
-    this.jWJ = ((TextView)findViewById(a.e.face__back));
-    this.jWJ.setOnClickListener(new FaceActionUI.5(this));
-  }
-  
-  private void aPz()
-  {
-    y.i("MicroMsg.FaceActionUI", "preview");
-    if (this.jWP != null)
+    AppMethodBeat.i(741);
+    ab.i("MicroMsg.FaceActionUI", "preview");
+    if (this.mrg != null)
     {
-      this.jWP.jXl = true;
-      y.i("MicroMsg.FaceActionUI", "mCamera ！= null");
+      this.mrg.mrE = true;
+      ab.i("MicroMsg.FaceActionUI", "mCamera ！= null");
     }
-    this.jWI.setText(a.i.face_preview_tips);
+    this.mqZ.setText(2131299596);
+    AppMethodBeat.o(741);
+  }
+  
+  private void bvb()
+  {
+    AppMethodBeat.i(729);
+    this.mqh = new FaceActionUI.1(this);
+    d.mqx.mqD = new FaceActionUI.2(this);
+    d.mqx.cmc = this;
+    d.mqx.a(this);
+    AppMethodBeat.o(729);
+  }
+  
+  private void c(String paramString, int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(738);
+    paramBundle = d(paramString, paramInt, paramBundle);
+    switch (paramString.hashCode())
+    {
+    default: 
+      label52:
+      paramInt = -1;
+    }
+    for (;;)
+    {
+      switch (paramInt)
+      {
+      default: 
+        setResult(-1, paramBundle);
+        AppMethodBeat.o(738);
+        return;
+        if (!paramString.equals("ok")) {
+          break label52;
+        }
+        paramInt = 0;
+        continue;
+        if (!paramString.equals("fail")) {
+          break label52;
+        }
+        paramInt = 1;
+        continue;
+        if (!paramString.equals("cancel")) {
+          break label52;
+        }
+        paramInt = 2;
+      }
+    }
+    setResult(-1, paramBundle);
+    AppMethodBeat.o(738);
+    return;
+    setResult(1, paramBundle);
+    AppMethodBeat.o(738);
+    return;
+    setResult(0, paramBundle);
+    AppMethodBeat.o(738);
+  }
+  
+  private Intent d(String paramString, int paramInt, Bundle paramBundle)
+  {
+    AppMethodBeat.i(739);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("err_code", paramInt);
+    localBundle.putString("err_msg", paramString);
+    localBundle.putInt("scene", this.scene);
+    localBundle.putInt("countFace", this.mrk);
+    localBundle.putInt("err_type", this.cpX);
+    this.endTime = bo.yB();
+    ab.i("MicroMsg.FaceActionUI", "endTime：" + this.endTime);
+    ab.i("MicroMsg.FaceActionUI", "startTime：" + this.startTime);
+    localBundle.putLong("totalTime", this.endTime - this.startTime);
+    if (paramBundle != null) {
+      localBundle.putAll(paramBundle);
+    }
+    paramString = new Intent();
+    paramString.putExtras(localBundle);
+    AppMethodBeat.o(739);
+    return paramString;
   }
   
   public final void a(String paramString, int paramInt, Bundle paramBundle, Boolean paramBoolean)
   {
-    y.i("MicroMsg.FaceActionUI", "finishWithResult errMsg: %s, errCode: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
-    if (paramBoolean.booleanValue())
+    AppMethodBeat.i(737);
+    ab.i("MicroMsg.FaceActionUI", "finishWithResult errMsg: %s, errCode: %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    if (paramBoolean.booleanValue()) {}
+    for (paramBoolean = "yes";; paramBoolean = "no")
     {
-      paramBoolean = "yes";
       Bundle localBundle = new Bundle();
       localBundle.putString("click_other_verify_btn", paramBoolean);
       if (paramBundle != null) {
         localBundle.putAll(paramBundle);
       }
-      paramBundle = new Bundle();
-      paramBundle.putInt("err_code", paramInt);
-      paramBundle.putString("err_msg", paramString);
-      paramBundle.putInt("scene", this.scene);
-      paramBundle.putInt("countFace", this.jWT);
-      paramBundle.putInt("err_type", this.bIC);
-      this.endTime = bk.UZ();
-      y.i("MicroMsg.FaceActionUI", "endTime：" + this.endTime);
-      y.i("MicroMsg.FaceActionUI", "startTime：" + this.startTime);
-      paramBundle.putLong("totalTime", this.endTime - this.startTime);
-      paramBundle.putAll(localBundle);
-      paramBoolean = new Intent();
-      paramBoolean.putExtras(paramBundle);
-      paramInt = -1;
-      switch (paramString.hashCode())
-      {
-      default: 
-        switch (paramInt)
-        {
-        default: 
-          label256:
-          setResult(-1, paramBoolean);
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      new ah().postDelayed(new FaceActionUI.9(this), 1500L);
+      c(paramString, paramInt, localBundle);
+      new ak().postDelayed(new FaceActionUI.9(this), 1500L);
+      AppMethodBeat.o(737);
       return;
-      paramBoolean = "no";
-      break;
-      if (!paramString.equals("ok")) {
-        break label256;
-      }
-      paramInt = 0;
-      break label256;
-      if (!paramString.equals("fail")) {
-        break label256;
-      }
-      paramInt = 1;
-      break label256;
-      if (!paramString.equals("cancel")) {
-        break label256;
-      }
-      paramInt = 2;
-      break label256;
-      setResult(-1, paramBoolean);
-      continue;
-      setResult(1, paramBoolean);
-      continue;
-      setResult(0, paramBoolean);
     }
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.face_action_layout;
+    return 2130969490;
   }
   
   public void onBackPressed()
   {
-    d.jWf.onBackPressed();
+    AppMethodBeat.i(740);
+    d.mqx.onBackPressed();
+    AppMethodBeat.o(740);
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    y.d("MicroMsg.FaceActionUI", "start VerifyActivity");
+    AppMethodBeat.i(728);
+    ab.d("MicroMsg.FaceActionUI", "start VerifyActivity");
     super.onCreate(paramBundle);
     getWindow().setFlags(1024, 1024);
     getWindow().addFlags(2097280);
     this.scene = getIntent().getIntExtra("scene", 0);
-    this.jWT = 0;
-    this.startTime = bk.UZ();
-    this.bIC = 4;
-    y.d("MicroMsg.FaceActionUI", "initLayout");
-    this.jWH = ((ImageView)findViewById(a.e.background_view));
-    aPy();
-    this.jRX = ((RelativeLayout)findViewById(a.e.face_upload_layout));
-    this.jRY = ((RelativeLayout)findViewById(a.e.face_upload_success_layout));
-    this.jRZ = ((RelativeLayout)findViewById(a.e.face_upload_failed_layout));
-    this.jRX.setVisibility(4);
-    this.jRY.setVisibility(4);
-    this.jRZ.setVisibility(4);
-    this.jSa = ((ImageView)findViewById(a.e.face_detect_upload));
-    this.jSb = ((ImageView)findViewById(a.e.face_detect_scan));
-    this.jSc = ((ImageView)findViewById(a.e.face_detect_upload_success_right));
-    this.jWN = ((TextView)findViewById(a.e.face_detect_upload_failed_tips));
-    this.jWL = ((Button)findViewById(a.e.face_detect_upload_failed_btn1));
-    this.jWM = ((Button)findViewById(a.e.face_detect_upload_failed_btn2));
-    if (!bk.bl(d.jWf.bXB))
+    this.mrk = 0;
+    this.startTime = bo.yB();
+    this.cpX = 4;
+    ab.d("MicroMsg.FaceActionUI", "initLayout");
+    this.mqY = ((ImageView)findViewById(2131823874));
+    bvH();
+    this.mmt = ((RelativeLayout)findViewById(2131823867));
+    this.mmu = ((RelativeLayout)findViewById(2131823863));
+    this.mmv = ((RelativeLayout)findViewById(2131823858));
+    this.mmt.setVisibility(4);
+    this.mmu.setVisibility(4);
+    this.mmv.setVisibility(4);
+    this.mmw = ((ImageView)findViewById(2131823869));
+    this.mmx = ((ImageView)findViewById(2131823868));
+    this.mmy = ((ImageView)findViewById(2131823865));
+    this.mre = ((TextView)findViewById(2131823860));
+    this.mrc = ((Button)findViewById(2131823861));
+    this.mrd = ((Button)findViewById(2131823862));
+    if (!bo.isNullOrNil(d.mqx.cFx))
     {
-      this.jWM.setText(d.jWf.bXB);
-      this.jWM.setOnClickListener(new FaceActionUI.6(this));
+      this.mrd.setText(d.mqx.cFx);
+      this.mrd.setOnClickListener(new FaceActionUI.6(this));
     }
-    while (o.y(this))
+    while (p.S(this))
     {
-      y.i("MicroMsg.FaceActionUI", "carson: checkFacePermissionAnd Request true and do init ");
-      aOX();
+      ab.i("MicroMsg.FaceActionUI", "carson: checkFacePermissionAnd Request true and do init ");
+      bvb();
+      AppMethodBeat.o(728);
       return;
-      this.jWM.setVisibility(8);
+      this.mrd.setVisibility(8);
     }
-    y.i("MicroMsg.FaceActionUI", "carson: no camera permission. request permission");
+    ab.i("MicroMsg.FaceActionUI", "carson: no camera permission. request permission");
+    AppMethodBeat.o(728);
   }
   
   public void onDestroy()
   {
+    AppMethodBeat.i(734);
     super.onDestroy();
-    y.i("MicroMsg.FaceActionUI", "onDestroy");
-    d.jWf.release(true);
+    ab.i("MicroMsg.FaceActionUI", "onDestroy");
+    d.mqx.release(true);
+    AppMethodBeat.o(734);
   }
   
   public void onPause()
   {
-    y.d("MicroMsg.FaceActionUI", "onPause");
+    AppMethodBeat.i(732);
+    ab.d("MicroMsg.FaceActionUI", "onPause");
     super.onPause();
+    AppMethodBeat.o(732);
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    y.i("MicroMsg.FaceActionUI", "carson onRequestPermissionsResult");
-    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0)) {
+    AppMethodBeat.i(742);
+    ab.i("MicroMsg.FaceActionUI", "carson onRequestPermissionsResult");
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
+    {
+      AppMethodBeat.o(742);
       return;
     }
     switch (paramInt)
     {
-    default: 
-      return;
     }
-    String str2 = "";
-    String str3 = "";
-    label61:
+    String str2;
+    String str3;
+    for (;;)
+    {
+      AppMethodBeat.o(742);
+      return;
+      str2 = "";
+      str3 = "";
+      if (paramArrayOfInt.length != 1) {
+        break label273;
+      }
+      if (paramArrayOfInt[0] != 0) {
+        break;
+      }
+      paramInt = 1;
+      label79:
+      if (paramInt == 0) {
+        break label302;
+      }
+      bvb();
+    }
     String str1;
     Object localObject;
-    if (paramArrayOfInt.length == 1)
+    if (paramArrayOfString[0].equals("android.permission.CAMERA"))
     {
-      if (paramArrayOfInt[0] == 0)
-      {
-        paramInt = 1;
-        if (paramInt == 0) {
-          break label296;
-        }
-        aOX();
-        return;
-      }
-      if (paramArrayOfString[0].equals("android.permission.CAMERA"))
-      {
-        str1 = "camera permission not granted";
-        localObject = getString(a.i.permission_camera_request_again_msg);
-      }
+      str1 = "camera permission not granted";
+      localObject = getString(2131302067);
     }
     for (;;)
     {
-      y.i("MicroMsg.FaceActionUI", "carson PermissionsResult:errMsg" + str1);
-      y.i("MicroMsg.FaceActionUI", "carson PermissionsResult:showErrMsg" + (String)localObject);
-      y.i("MicroMsg.FaceActionUI", "checkPermissionFailedAnimation");
-      this.jWN.setText((CharSequence)localObject);
-      this.jWL.setText(a.i.face_severe_error_main_btn);
-      this.jWL.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          y.i("MicroMsg.FaceActionUI", "click finish");
-          FaceActionUI.this.u("fail", 90010, "");
-        }
-      });
-      this.jWD.setVisibility(8);
-      this.jRZ.setVisibility(0);
-      this.jSb.clearAnimation();
-      this.jWH.setVisibility(0);
-      this.jRX.setVisibility(8);
+      ab.i("MicroMsg.FaceActionUI", "carson PermissionsResult:errMsg".concat(String.valueOf(str1)));
+      ab.i("MicroMsg.FaceActionUI", "carson PermissionsResult:showErrMsg".concat(String.valueOf(localObject)));
+      ab.i("MicroMsg.FaceActionUI", "checkPermissionFailedAnimation");
+      this.mre.setText((CharSequence)localObject);
+      this.mrc.setText(2131299603);
+      this.mrc.setOnClickListener(new FaceActionUI.8(this));
+      this.mqU.setVisibility(8);
+      this.mmv.setVisibility(0);
+      this.mmx.clearAnimation();
+      this.mqY.setVisibility(0);
+      this.mmt.setVisibility(8);
       paramInt = 0;
-      break label61;
+      break label79;
       localObject = str3;
       str1 = str2;
       if (paramArrayOfString[0].equals("android.permission.RECORD_AUDIO"))
       {
         str1 = "audio permission not granted";
-        localObject = getString(a.i.permission_microphone_request_again_msg);
+        localObject = getString(2131302075);
         continue;
+        label273:
         localObject = str3;
         str1 = str2;
         if (paramArrayOfInt.length == 2)
@@ -289,20 +323,20 @@ public class FaceActionUI
           if ((paramArrayOfInt[0] == 0) && (paramArrayOfInt[1] == 0))
           {
             paramInt = 1;
-            break label61;
-            label296:
+            break label79;
+            label302:
             break;
           }
           paramArrayOfString = str3;
           if (paramArrayOfInt[0] != 0)
           {
             str2 = "camera permission not granted";
-            paramArrayOfString = getString(a.i.permission_camera_request_again_msg);
+            paramArrayOfString = getString(2131302067);
           }
           if (paramArrayOfInt[1] != 0)
           {
             str2 = "audio permission not granted";
-            paramArrayOfString = getString(a.i.permission_microphone_request_again_msg);
+            paramArrayOfString = getString(2131302075);
           }
           localObject = paramArrayOfString;
           str1 = str2;
@@ -313,7 +347,7 @@ public class FaceActionUI
             if (paramArrayOfInt[1] != 0)
             {
               str1 = "both camera and audio permission not granted";
-              localObject = getString(a.i.permission_camera_request_again_msg);
+              localObject = getString(2131302067);
             }
           }
         }
@@ -323,37 +357,51 @@ public class FaceActionUI
   
   public void onResume()
   {
+    AppMethodBeat.i(731);
     super.onResume();
-    y.d("MicroMsg.FaceActionUI", "onResume");
-    aPz();
+    ab.d("MicroMsg.FaceActionUI", "onResume");
+    bvI();
+    AppMethodBeat.o(731);
   }
   
   public void onStart()
   {
-    y.d("MicroMsg.FaceActionUI", "onStart");
+    AppMethodBeat.i(730);
+    ab.d("MicroMsg.FaceActionUI", "onStart");
     super.onStart();
-    if (this.jWP != null)
+    if (this.mrg != null)
     {
-      this.jWP.a(this.jWG);
-      this.jWP.aPD();
+      this.mrg.a(this.mqX);
+      this.mrg.bvP();
     }
+    AppMethodBeat.o(730);
   }
   
   public void onStop()
   {
-    y.i("MicroMsg.FaceActionUI", "onStop");
+    AppMethodBeat.i(733);
+    ab.i("MicroMsg.FaceActionUI", "onStop");
     super.onStop();
-    if (this.jWP != null) {
-      this.jWP.jRs = false;
+    if (this.mrg != null) {
+      this.mrg.mlO = false;
     }
+    AppMethodBeat.o(733);
   }
   
-  public final void u(String paramString1, int paramInt, String paramString2)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    y.i("MicroMsg.FaceActionUI", "callbackDetectFailed（）");
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  public final void t(String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(736);
+    ab.i("MicroMsg.FaceActionUI", "callbackDetectFailed（）");
     Bundle localBundle = new Bundle();
     localBundle.putString("token", paramString2);
-    a(paramString1, paramInt, localBundle, Boolean.valueOf(this.jWO));
+    a(paramString1, paramInt, localBundle, Boolean.valueOf(this.mrf));
+    AppMethodBeat.o(736);
   }
 }
 

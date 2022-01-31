@@ -2,7 +2,6 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -11,146 +10,139 @@ import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
-import com.tencent.mm.plugin.game.g.a;
-import com.tencent.mm.plugin.game.g.b;
-import com.tencent.mm.plugin.game.g.f;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.LinkedList;
 
 public class GameDropdownView
   extends TextView
   implements View.OnClickListener, PopupWindow.OnDismissListener
 {
-  private b laM;
-  private LinkedList<String> laN;
-  private int laO = 0;
-  private int laP = 0;
-  private GameDropdownView.a laQ = null;
-  private View laR = null;
-  private View.OnClickListener laS = new GameDropdownView.1(this);
   private Context mContext;
+  private GameDropdownView.b nyI;
+  private LinkedList<String> nyJ;
+  private int nyK;
+  private int nyL;
+  private GameDropdownView.a nyM;
+  private View nyN;
+  private View.OnClickListener nyO;
   
   public GameDropdownView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(111916);
+    this.nyK = 0;
+    this.nyL = 0;
+    this.nyM = null;
+    this.nyN = null;
+    this.nyO = new GameDropdownView.1(this);
     this.mContext = paramContext;
-    this.laM = new b(paramContext);
+    this.nyI = new GameDropdownView.b(paramContext);
     setOnClickListener(this);
+    AppMethodBeat.o(111916);
   }
   
   private void setCurrentSelection(int paramInt)
   {
-    if ((this.laM.getContentView() == null) || (!(this.laM.getContentView() instanceof ViewGroup))) {}
-    ViewGroup localViewGroup;
-    do
+    AppMethodBeat.i(111920);
+    if ((this.nyI.getContentView() == null) || (!(this.nyI.getContentView() instanceof ViewGroup)))
     {
+      AppMethodBeat.o(111920);
       return;
-      localViewGroup = (ViewGroup)this.laM.getContentView();
-    } while ((paramInt > this.laP) || (this.laO > this.laP) || (!(localViewGroup.getChildAt(paramInt) instanceof TextView)) || (!(localViewGroup.getChildAt(this.laO) instanceof TextView)));
-    ((TextView)localViewGroup.getChildAt(this.laO)).setTextColor(this.mContext.getResources().getColor(g.b.hint_text_color));
-    ((TextView)localViewGroup.getChildAt(paramInt)).setTextColor(this.mContext.getResources().getColor(g.b.normal_text_color));
-    setText((CharSequence)this.laN.get(paramInt));
-    if ((this.laQ != null) && (this.laO != paramInt)) {
-      this.laQ.si(paramInt);
     }
-    this.laO = paramInt;
+    ViewGroup localViewGroup = (ViewGroup)this.nyI.getContentView();
+    if ((paramInt > this.nyL) || (this.nyK > this.nyL) || (!(localViewGroup.getChildAt(paramInt) instanceof TextView)) || (!(localViewGroup.getChildAt(this.nyK) instanceof TextView)))
+    {
+      AppMethodBeat.o(111920);
+      return;
+    }
+    ((TextView)localViewGroup.getChildAt(this.nyK)).setTextColor(this.mContext.getResources().getColor(2131690168));
+    ((TextView)localViewGroup.getChildAt(paramInt)).setTextColor(this.mContext.getResources().getColor(2131690322));
+    setText((CharSequence)this.nyJ.get(paramInt));
+    if ((this.nyM != null) && (this.nyK != paramInt)) {
+      this.nyM.xh(paramInt);
+    }
+    this.nyK = paramInt;
+    AppMethodBeat.o(111920);
   }
   
   public final void e(LinkedList<String> paramLinkedList, int paramInt)
   {
+    AppMethodBeat.i(111919);
     if (paramLinkedList.size() == 0)
     {
-      y.i("MicroMsg.GameDropdownView", "No menu item");
+      ab.i("MicroMsg.GameDropdownView", "No menu item");
+      AppMethodBeat.o(111919);
       return;
     }
-    this.laN = paramLinkedList;
-    this.laP = (paramLinkedList.size() - 1);
-    if ((paramInt < 0) || (paramInt > this.laP)) {}
+    this.nyJ = paramLinkedList;
+    this.nyL = (paramLinkedList.size() - 1);
+    if ((paramInt < 0) || (paramInt > this.nyL)) {}
     LinearLayout localLinearLayout;
-    for (this.laO = 0;; this.laO = paramInt)
+    for (this.nyK = 0;; this.nyK = paramInt)
     {
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-      localLinearLayout = (LinearLayout)localLayoutInflater.inflate(g.f.game_library_dropdown_container, null);
+      localLinearLayout = (LinearLayout)localLayoutInflater.inflate(2130969773, null);
       paramInt = 0;
       while (paramInt < paramLinkedList.size())
       {
         String str = (String)paramLinkedList.get(paramInt);
-        TextView localTextView = (TextView)localLayoutInflater.inflate(g.f.game_library_dropdown_item, localLinearLayout, false);
+        TextView localTextView = (TextView)localLayoutInflater.inflate(2130969774, localLinearLayout, false);
         localTextView.setText(str);
-        localTextView.setOnClickListener(this.laS);
-        if (paramInt == this.laO)
+        localTextView.setOnClickListener(this.nyO);
+        if (paramInt == this.nyK)
         {
-          localTextView.setTextColor(this.mContext.getResources().getColor(g.b.normal_text_color));
+          localTextView.setTextColor(this.mContext.getResources().getColor(2131690322));
           setText(str);
         }
         localLinearLayout.addView(localTextView);
         paramInt += 1;
       }
     }
-    this.laM.setContentView(localLinearLayout);
+    this.nyI.setContentView(localLinearLayout);
     setVisibility(0);
+    AppMethodBeat.o(111919);
   }
   
   public void onClick(View paramView)
   {
-    if (this.laM.isShowing())
+    AppMethodBeat.i(111918);
+    if (this.nyI.isShowing())
     {
-      this.laM.dismiss();
+      this.nyI.dismiss();
+      AppMethodBeat.o(111918);
       return;
     }
-    if (this.laR == null)
+    if (this.nyN == null)
     {
-      this.laM.showAsDropDown(this);
+      this.nyI.showAsDropDown(this);
+      AppMethodBeat.o(111918);
       return;
     }
-    this.laM.showAsDropDown(this.laR);
+    this.nyI.showAsDropDown(this.nyN);
+    AppMethodBeat.o(111918);
   }
   
   public void onDismiss() {}
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111917);
     super.onFinishInflate();
     setVisibility(8);
+    AppMethodBeat.o(111917);
   }
   
   public void setAnchorView(View paramView)
   {
-    this.laR = paramView;
+    this.nyN = paramView;
   }
   
   public void setOnSelectionChangedListener(GameDropdownView.a parama)
   {
-    this.laQ = parama;
-  }
-  
-  private static final class b
-    extends PopupWindow
-  {
-    public b(Context paramContext)
-    {
-      super();
-      setWindowLayoutMode(-1, -2);
-      setBackgroundDrawable(new BitmapDrawable());
-      setFocusable(true);
-      setOutsideTouchable(true);
-      setTouchInterceptor(new View.OnTouchListener()
-      {
-        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-        {
-          if (paramAnonymousMotionEvent.getAction() == 4)
-          {
-            GameDropdownView.b.this.dismiss();
-            return true;
-          }
-          return false;
-        }
-      });
-      setAnimationStyle(g.a.game_dropdown);
-    }
+    this.nyM = parama;
   }
 }
 

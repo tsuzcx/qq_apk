@@ -4,7 +4,7 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingCheckUnProcessWalletConvUI$4$1
   implements View.OnCreateContextMenuListener
@@ -13,7 +13,9 @@ final class SettingCheckUnProcessWalletConvUI$4$1
   
   public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    paramContextMenu.add(0, 1, 0, R.l.main_delete);
+    AppMethodBeat.i(34613);
+    paramContextMenu.add(0, 1, 0, 2131301410);
+    AppMethodBeat.o(34613);
   }
 }
 

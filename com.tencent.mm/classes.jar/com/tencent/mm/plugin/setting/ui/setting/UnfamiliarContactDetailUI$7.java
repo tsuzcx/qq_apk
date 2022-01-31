@@ -3,11 +3,8 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.setting.a.c;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class UnfamiliarContactDetailUI$7
   implements View.OnClickListener
@@ -16,7 +13,9 @@ final class UnfamiliarContactDetailUI$7
   
   public final void onClick(View paramView)
   {
-    h.a(this.nWX.mController.uMN, true, this.nWX.mController.uMN.getString(a.i.unfamiliar_delete_contact_tip), this.nWX.mController.uMN.getString(a.i.contact_info_delete_contact), this.nWX.mController.uMN.getString(a.i.app_delete), this.nWX.mController.uMN.getString(a.i.app_cancel), new UnfamiliarContactDetailUI.7.1(this), null, a.c.alert_btn_color_warn, 0);
+    AppMethodBeat.i(127641);
+    h.a(this.qLi.getContext(), true, this.qLi.getContext().getString(2131304418), this.qLi.getContext().getString(2131298582), this.qLi.getContext().getString(2131296901), this.qLi.getContext().getString(2131296888), new UnfamiliarContactDetailUI.7.1(this), null, 2131689667, 0);
+    AppMethodBeat.o(127641);
   }
 }
 

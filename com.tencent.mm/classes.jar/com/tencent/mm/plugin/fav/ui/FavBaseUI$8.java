@@ -1,9 +1,10 @@
 package com.tencent.mm.plugin.fav.ui;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.fav.a.aj;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FavBaseUI$8
   implements f
@@ -12,18 +13,21 @@ final class FavBaseUI$8
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.i("MicroMsg.FavoriteBaseUI", "on fav sync end");
-    if (((aj)paramm).jZT)
+    AppMethodBeat.i(73933);
+    ab.i("MicroMsg.FavoriteBaseUI", "on fav sync end");
+    if (((aj)paramm).muq)
     {
-      y.i("MicroMsg.FavoriteBaseUI", "need batch get return");
+      ab.i("MicroMsg.FavoriteBaseUI", "need batch get return");
+      AppMethodBeat.o(73933);
       return;
     }
-    y.i("MicroMsg.FavoriteBaseUI", "dismiss loading dialog");
-    if (FavBaseUI.c(this.kbo)) {
-      FavBaseUI.d(this.kbo);
+    ab.i("MicroMsg.FavoriteBaseUI", "dismiss loading dialog");
+    if (FavBaseUI.c(this.mvK)) {
+      FavBaseUI.d(this.mvK);
     }
-    this.kbo.fU(false);
-    this.kbo.aRc();
+    this.mvK.hy(false);
+    this.mvK.bxq();
+    AppMethodBeat.o(73933);
   }
 }
 

@@ -2,10 +2,13 @@ package com.tencent.mm.plugin.profile.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.model.s;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.model.t;
+import com.tencent.mm.plugin.account.friend.a.a;
+import com.tencent.mm.plugin.profile.b;
+import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h.c;
 
 final class ContactSocialInfoUI$2
@@ -13,49 +16,60 @@ final class ContactSocialInfoUI$2
 {
   ContactSocialInfoUI$2(ContactSocialInfoUI paramContactSocialInfoUI, String[] paramArrayOfString) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(23441);
     switch (paramInt)
     {
-    default: 
-    case 0: 
-    case 1: 
-    case 2: 
-      do
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(23441);
+      return;
+      if ((ContactSocialInfoUI.a(this.pzE) == null) || (ContactSocialInfoUI.a(this.pzE).length() == 0))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return;
-              } while ((ContactSocialInfoUI.a(this.mWI) == null) || (ContactSocialInfoUI.a(this.mWI).length() == 0));
-              paramInt = ContactSocialInfoUI.a(this.mWI).lastIndexOf(' ') + 1;
-            } while (paramInt <= 0);
-            ContactSocialInfoUI.a(this.mWI, ContactSocialInfoUI.a(this.mWI).substring(paramInt));
-            return;
-          } while ((ContactSocialInfoUI.a(this.mWI) == null) || (ContactSocialInfoUI.a(this.mWI).length() == 0));
-          paramInt = ContactSocialInfoUI.a(this.mWI).lastIndexOf(' ');
-          localObject = ContactSocialInfoUI.a(this.mWI).substring(0, paramInt);
-        } while ((localObject == null) || (((String)localObject).length() == 0));
-        s.b(ContactSocialInfoUI.b(this.mWI), ((String)localObject).trim());
-        return;
-      } while ((this.mWJ == null) || (this.mWJ.length <= 2) || (ContactSocialInfoUI.c(this.mWI) == null) || (ContactSocialInfoUI.b(this.mWI) == null));
-      if ((ContactSocialInfoUI.c(this.mWI) != null) && (!bk.bl(ContactSocialInfoUI.c(this.mWI).ebN)))
-      {
-        ContactSocialInfoUI.a(this.mWI, ContactSocialInfoUI.b(this.mWI).field_username, ContactSocialInfoUI.c(this.mWI).ebN);
+        AppMethodBeat.o(23441);
         return;
       }
-      break;
+      paramInt = ContactSocialInfoUI.a(this.pzE).lastIndexOf(' ') + 1;
+      if (paramInt > 0)
+      {
+        ContactSocialInfoUI.a(this.pzE, ContactSocialInfoUI.a(this.pzE).substring(paramInt));
+        AppMethodBeat.o(23441);
+        return;
+        if ((ContactSocialInfoUI.a(this.pzE) == null) || (ContactSocialInfoUI.a(this.pzE).length() == 0))
+        {
+          AppMethodBeat.o(23441);
+          return;
+        }
+        paramInt = ContactSocialInfoUI.a(this.pzE).lastIndexOf(' ');
+        Object localObject = ContactSocialInfoUI.a(this.pzE).substring(0, paramInt);
+        if ((localObject == null) || (((String)localObject).length() == 0))
+        {
+          AppMethodBeat.o(23441);
+          return;
+        }
+        t.b(ContactSocialInfoUI.b(this.pzE), ((String)localObject).trim());
+        AppMethodBeat.o(23441);
+        return;
+        if ((this.hKi == null) || (this.hKi.length <= 2) || (ContactSocialInfoUI.c(this.pzE) == null) || (ContactSocialInfoUI.b(this.pzE) == null))
+        {
+          AppMethodBeat.o(23441);
+          return;
+        }
+        if ((ContactSocialInfoUI.c(this.pzE) != null) && (!bo.isNullOrNil(ContactSocialInfoUI.c(this.pzE).fsf)))
+        {
+          ContactSocialInfoUI.a(this.pzE, ContactSocialInfoUI.b(this.pzE).field_username, ContactSocialInfoUI.c(this.pzE).fsf);
+          AppMethodBeat.o(23441);
+          return;
+        }
+        localObject = new Intent();
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("fromScene", 2);
+        ((Intent)localObject).putExtra("reportArgs", localBundle);
+        b.gmO.j((Intent)localObject, this.pzE);
+      }
     }
-    Object localObject = new Intent();
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("fromScene", 2);
-    ((Intent)localObject).putExtra("reportArgs", localBundle);
-    com.tencent.mm.plugin.profile.a.eUR.k((Intent)localObject, this.mWI);
   }
 }
 

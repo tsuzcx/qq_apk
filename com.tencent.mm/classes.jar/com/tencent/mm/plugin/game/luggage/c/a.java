@@ -1,18 +1,23 @@
 package com.tencent.mm.plugin.game.luggage.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.b.l;
 
 public final class a
   extends l
 {
-  protected final void aYL()
+  public final void bFo()
   {
-    super.aYL();
+    AppMethodBeat.i(135889);
+    super.bFo();
+    AppMethodBeat.o(135889);
   }
   
-  protected final void aYM()
+  public final void bFp()
   {
-    super.aYM();
+    AppMethodBeat.i(135890);
+    super.bFp();
+    AppMethodBeat.o(135890);
   }
 }
 

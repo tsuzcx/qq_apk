@@ -5,12 +5,12 @@ final class c$ha
 {
   c$ha()
   {
-    super("requestWxFaceVerifyInternal", "requestWxFaceVerifyInternal", 273, true);
+    super("privateOpenWeappFunctionalPage", "privateOpenWeappFunctionalPage", 333, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.c.ha
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,71 @@
 package com.tencent.mm.plugin.wear.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.e.i;
-import com.tencent.mm.pluginsdk.o.d.a;
-import com.tencent.mm.protocal.c.cjl;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.pluginsdk.p.c.a;
+import com.tencent.mm.protocal.protobuf.cwy;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
-  implements o.d.a
+  implements p.c.a
 {
-  public final String bYN()
+  public final String cYA()
   {
-    cjl localcjl = a.bYL().qRu.qRL.qSA;
-    if (localcjl != null) {
-      return localcjl.tXl + "\n" + localcjl.tXm + "\n" + localcjl.tXn;
+    AppMethodBeat.i(26286);
+    Object localObject = a.cYy().uGC.uGT.uHH;
+    if (localObject != null)
+    {
+      localObject = ((cwy)localObject).yeF + "\n" + ((cwy)localObject).yeG + "\n" + ((cwy)localObject).yeH;
+      AppMethodBeat.o(26286);
+      return localObject;
     }
+    AppMethodBeat.o(26286);
     return "Not Connect";
   }
   
-  public final void bYO()
+  public final void cYB()
   {
-    a.bYL().qRA.a(new com.tencent.mm.plugin.wear.model.f.a());
+    AppMethodBeat.i(26287);
+    a.cYy().uGI.a(new com.tencent.mm.plugin.wear.model.f.a());
+    AppMethodBeat.o(26287);
   }
   
-  public final boolean bYP()
+  public final boolean cYC()
   {
-    Object localObject = a.bYL().qRu.qRL.qSA;
-    if ((bk.bl(null)) && (bk.bl(null))) {
-      return localObject != null;
+    AppMethodBeat.i(26288);
+    Object localObject = a.cYy().uGC.uGT.uHH;
+    if ((bo.isNullOrNil(null)) && (bo.isNullOrNil(null)))
+    {
+      if (localObject != null)
+      {
+        AppMethodBeat.o(26288);
+        return true;
+      }
+      AppMethodBeat.o(26288);
+      return false;
     }
-    if (bk.bl(null))
+    if (bo.isNullOrNil(null))
     {
       if (localObject != null) {
         throw new NullPointerException();
       }
+      AppMethodBeat.o(26288);
       return false;
     }
-    if (bk.bl(null))
+    if (bo.isNullOrNil(null))
     {
       if (localObject != null)
       {
-        localObject = ((cjl)localObject).tXi;
+        localObject = ((cwy)localObject).yeC;
         throw new NullPointerException();
       }
+      AppMethodBeat.o(26288);
       return false;
     }
     if (localObject != null) {
       throw new NullPointerException();
     }
+    AppMethodBeat.o(26288);
     return false;
   }
 }

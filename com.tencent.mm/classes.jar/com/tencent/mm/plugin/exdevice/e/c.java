@@ -1,51 +1,60 @@
 package com.tencent.mm.plugin.exdevice.e;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class c
   extends com.tencent.mm.bv.a
 {
-  public String jxk;
+  public String lGJ;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(19420);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.jxk != null) {
-        paramVarArgs.d(1, this.jxk);
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.lGJ != null) {
+        paramVarArgs.e(1, this.lGJ);
       }
+      AppMethodBeat.o(19420);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.jxk == null) {
-        break label174;
+      if (this.lGJ == null) {
+        break label220;
       }
     }
-    label174:
-    for (paramInt = d.a.a.b.b.a.e(1, this.jxk) + 0;; paramInt = 0)
+    label220:
+    for (paramInt = e.a.a.b.b.a.f(1, this.lGJ) + 0;; paramInt = 0)
     {
+      AppMethodBeat.o(19420);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        break;
+        AppMethodBeat.o(19420);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         c localc = (c)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(19420);
           return -1;
         }
-        localc.jxk = locala.xpH.readString();
+        localc.lGJ = locala.CLY.readString();
+        AppMethodBeat.o(19420);
         return 0;
       }
+      AppMethodBeat.o(19420);
       return -1;
     }
   }

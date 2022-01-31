@@ -1,6 +1,5 @@
 package com.tencent.tmassistantsdk.openSDK.opensdktomsdk.component;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -14,12 +13,14 @@ import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.base.i;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.ActionButton;
 import com.tencent.tmassistantsdk.util.Res;
 import com.tencent.tmassistantsdk.util.TMLog;
 
 public class PopDialog
-  extends Dialog
+  extends i
 {
   public static final int DIALOG_STYLE_MUL_BTN = 2;
   public static final int DIALOG_STYLE_SINGLE_BTN = 1;
@@ -57,13 +58,16 @@ public class PopDialog
   
   private void initHeaderView()
   {
+    AppMethodBeat.i(75956);
     this.titleView.setPadding(px(30), 0, px(30), 0);
     this.contentLayout.setPadding(px(30), 0, px(30), px(30));
     this.contentView.setPadding(0, px(30), 0, px(30));
+    AppMethodBeat.o(75956);
   }
   
   private void initMulDialog()
   {
+    AppMethodBeat.i(75958);
     this.negativeBtn.setHeight(px(78));
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.negativeBtn.getLayoutParams();
     localMarginLayoutParams.setMargins(0, 0, px(30), 0);
@@ -72,17 +76,21 @@ public class PopDialog
     this.positiveBtn.setTextSize(px(30));
     this.downloadProgressBar.setMinimumHeight(px(78));
     this.downloadText.setHeight(px(78));
+    AppMethodBeat.o(75958);
   }
   
   private void initSingleDialog()
   {
+    AppMethodBeat.i(75957);
     this.positiveLayout.setVisibility(8);
     this.negativeBtn.setHeight(px(78));
     this.negativeBtn.setText(this.mContext.getString(this.rTool.string("white_list_submit")));
+    AppMethodBeat.o(75957);
   }
   
   private int px(int paramInt)
   {
+    AppMethodBeat.i(75970);
     int i = getScreenHeight();
     int j = getScreenWidth();
     TMLog.i("PopDialog", " width = " + j + "  height = " + i);
@@ -92,6 +100,7 @@ public class PopDialog
       float f = paramInt;
       i = (int)((i + 0.0F) * f / 1280.0F);
       TMLog.i("PopDialog", "rtn" + paramInt + ":" + i);
+      AppMethodBeat.o(75970);
       return i;
       i = j;
     }
@@ -99,36 +108,51 @@ public class PopDialog
   
   private void relayoutView()
   {
+    AppMethodBeat.i(75955);
     initHeaderView();
     switch (this.style)
     {
-    default: 
-      return;
-    case 1: 
-      initSingleDialog();
-      return;
     }
-    initMulDialog();
+    for (;;)
+    {
+      AppMethodBeat.o(75955);
+      return;
+      initSingleDialog();
+      AppMethodBeat.o(75955);
+      return;
+      initMulDialog();
+    }
   }
   
   public int getScreenHeight()
   {
-    if (this.mContext != null) {
-      return this.mContext.getResources().getDisplayMetrics().heightPixels;
+    AppMethodBeat.i(75969);
+    if (this.mContext != null)
+    {
+      int i = this.mContext.getResources().getDisplayMetrics().heightPixels;
+      AppMethodBeat.o(75969);
+      return i;
     }
+    AppMethodBeat.o(75969);
     return 0;
   }
   
   public int getScreenWidth()
   {
-    if (this.mContext != null) {
-      return this.mContext.getResources().getDisplayMetrics().widthPixels;
+    AppMethodBeat.i(75968);
+    if (this.mContext != null)
+    {
+      int i = this.mContext.getResources().getDisplayMetrics().widthPixels;
+      AppMethodBeat.o(75968);
+      return i;
     }
+    AppMethodBeat.o(75968);
     return 0;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(75954);
     super.onCreate(paramBundle);
     this.rTool = new Res(this.mContext);
     super.setContentView(this.rTool.layout("com_tencent_tmassistant_sdk_white_list_dlg"));
@@ -143,69 +167,88 @@ public class PopDialog
     this.downloadText = ((TextView)findViewById(this.rTool.id("progress_txt_tv")));
     this.negativeBtn = ((Button)findViewById(this.rTool.id("negtive_btn")));
     relayoutView();
+    AppMethodBeat.o(75954);
   }
   
   public void setContent(String paramString)
   {
+    AppMethodBeat.i(75960);
     if (!TextUtils.isEmpty(paramString)) {
       this.contentView.setText(paramString);
     }
+    AppMethodBeat.o(75960);
   }
   
   public void setNegativeBtnClickListener(View.OnClickListener paramOnClickListener)
   {
+    AppMethodBeat.i(75967);
     if (paramOnClickListener != null) {
       this.negativeBtn.setOnClickListener(paramOnClickListener);
     }
+    AppMethodBeat.o(75967);
   }
   
   public void setNegativeBtnText(String paramString)
   {
+    AppMethodBeat.i(75966);
     if (!TextUtils.isEmpty(paramString)) {
       this.negativeBtn.setText(paramString);
     }
+    AppMethodBeat.o(75966);
   }
   
   public void setPositiveBtnBgResource(int paramInt)
   {
+    AppMethodBeat.i(75964);
     if (paramInt != 0) {
       this.positiveBtn.setBackgroundResource(paramInt);
     }
+    AppMethodBeat.o(75964);
   }
   
   public void setPositiveBtnClickListener(View.OnClickListener paramOnClickListener)
   {
+    AppMethodBeat.i(75962);
     if (paramOnClickListener != null) {
       this.positiveBtn.setOnClickListener(paramOnClickListener);
     }
+    AppMethodBeat.o(75962);
   }
   
   public void setPositiveBtnEnable(boolean paramBoolean)
   {
+    AppMethodBeat.i(75965);
     if (this.positiveBtn != null) {
       this.positiveBtn.setEnabled(paramBoolean);
     }
+    AppMethodBeat.o(75965);
   }
   
   public void setPositiveBtnTag(ActionButton paramActionButton)
   {
+    AppMethodBeat.i(75961);
     if (paramActionButton != null) {
       this.positiveBtn.setTag(paramActionButton);
     }
+    AppMethodBeat.o(75961);
   }
   
   public void setPositiveBtnText(String paramString)
   {
+    AppMethodBeat.i(75963);
     if (!TextUtils.isEmpty(paramString)) {
       this.downloadText.setText(paramString);
     }
+    AppMethodBeat.o(75963);
   }
   
   public void setTitle(String paramString)
   {
+    AppMethodBeat.i(75959);
     if (!TextUtils.isEmpty(paramString)) {
       this.titleView.setText(paramString);
     }
+    AppMethodBeat.o(75959);
   }
 }
 

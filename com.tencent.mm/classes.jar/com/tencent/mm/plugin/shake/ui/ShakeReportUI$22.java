@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.shake.ui;
 
-import com.tencent.mm.pluginsdk.i.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.i.d;
 
 final class ShakeReportUI$22
   implements Runnable
@@ -9,9 +10,11 @@ final class ShakeReportUI$22
   
   public final void run()
   {
-    if (ShakeReportUI.d(this.odm) != null) {
-      ShakeReportUI.d(this.odm).clV();
+    AppMethodBeat.i(24800);
+    if (ShakeReportUI.f(this.qRs) != null) {
+      ShakeReportUI.f(this.qRs).dmK();
     }
+    AppMethodBeat.o(24800);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
-import com.tencent.mm.ah.b;
+import com.tencent.mm.ai.b;
 
 public abstract interface WepkgRunCgi$a
 {
@@ -8,7 +8,7 @@ public abstract interface WepkgRunCgi$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.WepkgRunCgi.a
  * JD-Core Version:    0.7.0.1
  */

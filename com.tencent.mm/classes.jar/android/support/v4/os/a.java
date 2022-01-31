@@ -1,18 +1,16 @@
 package android.support.v4.os;
 
-import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.IInterface;
 
-public final class a
+public abstract interface a
+  extends IInterface
 {
-  @Deprecated
-  public static boolean cS()
-  {
-    return Build.VERSION.SDK_INT >= 27;
-  }
+  public abstract void send(int paramInt, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.os.a
  * JD-Core Version:    0.7.0.1
  */

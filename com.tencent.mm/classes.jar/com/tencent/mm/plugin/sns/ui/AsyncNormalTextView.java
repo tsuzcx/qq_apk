@@ -9,21 +9,21 @@ import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import com.tencent.mm.plugin.sns.ui.c.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.List;
 
 public class AsyncNormalTextView
   extends CollapsibleTextView
 {
-  public String content;
+  private String content;
   private Context context;
-  private a.c oNj;
-  public int oNk = 0;
-  public ax oNl;
-  public au owd;
+  private BaseTimeLineItem.BaseViewHolder rEU;
+  private int rEV = 0;
+  private av rkX;
   
   public AsyncNormalTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -31,54 +31,70 @@ public class AsyncNormalTextView
     this.context = paramContext;
   }
   
-  public final void bHj()
+  public final void a(String paramString, av paramav, int paramInt, aw paramaw)
   {
+    AppMethodBeat.i(38136);
+    this.rEV = paramInt;
+    this.content = paramString;
+    this.rkX = paramav;
+    this.rFU = paramaw;
+    if (bo.isNullOrNil(paramString)) {
+      setVisibility(8);
+    }
+    AppMethodBeat.o(38136);
+  }
+  
+  public final void ctn()
+  {
+    AppMethodBeat.i(38138);
     Object localObject1;
-    if (!bk.bl(this.content))
+    if (!bo.isNullOrNil(this.content))
     {
       System.currentTimeMillis();
       setVisibility(0);
-      if (this.oNk != 1) {
-        break label215;
+      if (this.rEV != 1) {
+        break label236;
       }
       if (this.content.length() <= 100) {
-        break label207;
+        break label228;
       }
       localObject1 = this.content.substring(0, 100) + "...";
       this.content = ((String)localObject1);
-      localObject1 = new SpannableStringBuilder(j.a(this.context, this.content, this.oOf.getTextSize()));
-      a(this.oNk, (CharSequence)localObject1, TextView.BufferType.NORMAL, this.owd.oOk, this.oNl.oOM, this.oNl.pgO, this.owd, this.content, this.oNl.oNn);
+      localObject1 = new SpannableStringBuilder(j.b(this.context, this.content, this.rFO.getTextSize()));
+      a(this.rEV, (CharSequence)localObject1, TextView.BufferType.NORMAL, this.rkX.rFT, this.rFU.rGx, this.rFU.rZv, this.rkX, this.content, this.rFU.rEX);
     }
     for (;;)
     {
-      localObject1 = new ar(this.oNl.pgO, this.oNl.oOM, false, false, 1);
-      this.oOf.setTag(localObject1);
-      if (this.oOg != null) {
-        this.oOg.setTag(localObject1);
+      localObject1 = new as(this.rFU.rZv, this.rFU.rGx, false, false, 1);
+      ((as)localObject1).userName = this.rFU.ikj;
+      this.rFO.setTag(localObject1);
+      if (this.rFP != null) {
+        this.rFP.setTag(localObject1);
       }
-      this.oOh.setTag(this.oNj);
+      this.rFQ.setTag(this.rEU);
+      AppMethodBeat.o(38138);
       return;
-      label207:
+      label228:
       localObject1 = this.content;
       break;
-      label215:
-      if ((this.content.length() < 400) || (this.oNl.oNn))
+      label236:
+      if ((this.content.length() < 400) || (this.rFU.rEX))
       {
         localObject1 = null;
-        if (this.oNl != null) {
-          localObject1 = this.oNl.pgM;
+        if (this.rFU != null) {
+          localObject1 = this.rFU.rZt;
         }
         Object localObject2 = localObject1;
         if (localObject1 == null) {
-          localObject2 = new SpannableStringBuilder(j.a(this.context, this.content, this.oOf.getTextSize()));
+          localObject2 = new SpannableStringBuilder(j.b(this.context, this.content, this.rFO.getTextSize()));
         }
-        if (this.oNl != null) {
-          a(this.oNk, (CharSequence)localObject2, TextView.BufferType.SPANNABLE, this.owd.oOk, this.oNl.oOM, this.oNl.pgO, this.owd, this.content, this.oNl.oNn);
+        if (this.rFU != null) {
+          a(this.rEV, (CharSequence)localObject2, TextView.BufferType.SPANNABLE, this.rkX.rFT, this.rFU.rGx, this.rFU.rZv, this.rkX, this.content, this.rFU.rEX);
         }
       }
       else
       {
-        a(this.oNk, this.content, TextView.BufferType.NORMAL, this.owd.oOk, this.oNl.oOM, this.oNl.pgO, this.owd, this.content, this.oNl.oNn);
+        a(this.rEV, this.content, TextView.BufferType.NORMAL, this.rkX.rFT, this.rFU.rGx, this.rFU.rZv, this.rkX, this.content, this.rFU.rEX);
       }
     }
   }
@@ -91,47 +107,59 @@ public class AsyncNormalTextView
   @TargetApi(14)
   public void onInitializeAccessibilityNodeInfo(AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
+    AppMethodBeat.i(38142);
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
     paramAccessibilityNodeInfo.setText(this.content);
+    AppMethodBeat.o(38142);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(38139);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(38139);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(38140);
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(38140);
   }
   
   public void onPopulateAccessibilityEvent(AccessibilityEvent paramAccessibilityEvent)
   {
+    AppMethodBeat.i(38141);
     super.onPopulateAccessibilityEvent(paramAccessibilityEvent);
     paramAccessibilityEvent.getText().add(this.content);
+    AppMethodBeat.o(38141);
   }
   
   public void setContentWidth(int paramInt)
   {
-    if (this.oOg != null)
+    AppMethodBeat.i(38143);
+    if (this.rFP != null)
     {
-      this.oOf.setSpecialWidth(paramInt);
+      this.rFO.setSpecialWidth(paramInt);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt, -2);
-      this.oOg.setLayoutParams(localLayoutParams);
-      this.oOf.setLayoutParams(localLayoutParams);
-      this.oOh.setLayoutParams(localLayoutParams);
+      this.rFP.setLayoutParams(localLayoutParams);
+      this.rFO.setLayoutParams(localLayoutParams);
+      this.rFQ.setLayoutParams(localLayoutParams);
     }
+    AppMethodBeat.o(38143);
   }
   
-  public void setShow(a.c paramc)
+  public void setShow(BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    this.oNj = paramc;
-    bHj();
+    AppMethodBeat.i(38137);
+    this.rEU = paramBaseViewHolder;
+    ctn();
+    AppMethodBeat.o(38137);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.AsyncNormalTextView
  * JD-Core Version:    0.7.0.1
  */

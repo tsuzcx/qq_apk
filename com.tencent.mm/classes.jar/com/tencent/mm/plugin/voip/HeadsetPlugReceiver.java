@@ -4,55 +4,61 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class HeadsetPlugReceiver
   extends BroadcastReceiver
 {
-  private HeadsetPlugReceiver.a pNf = null;
+  private HeadsetPlugReceiver.a tsZ = null;
   
   public final void a(Context paramContext, HeadsetPlugReceiver.a parama)
   {
-    this.pNf = parama;
+    AppMethodBeat.i(4303);
+    this.tsZ = parama;
     parama = new IntentFilter();
     parama.addAction("android.intent.action.HEADSET_PLUG");
     paramContext.registerReceiver(this, parama);
+    AppMethodBeat.o(4303);
   }
   
-  public final void ek(Context paramContext)
+  public final void fg(Context paramContext)
   {
+    AppMethodBeat.i(4304);
     try
     {
       paramContext.unregisterReceiver(this);
-      this.pNf = null;
+      this.tsZ = null;
+      AppMethodBeat.o(4304);
       return;
     }
     catch (Exception paramContext)
     {
       for (;;)
       {
-        y.e("MicroMsg.HeadsetPlugReceiver", "unregisterReceiver(HeadsetPlugReceiver.this) error:%s", new Object[] { paramContext.getMessage() });
+        ab.e("MicroMsg.HeadsetPlugReceiver", "unregisterReceiver(HeadsetPlugReceiver.this) error:%s", new Object[] { paramContext.getMessage() });
       }
     }
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    y.d("MicroMsg.HeadsetPlugReceiver", "headset onReceive %s  %d", new Object[] { paramIntent.getAction(), Integer.valueOf(paramIntent.getIntExtra("state", 0)) });
-    if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG")))
-    {
-      if (paramIntent.getIntExtra("state", 0) != 0) {
-        break label78;
+    AppMethodBeat.i(4302);
+    ab.d("MicroMsg.HeadsetPlugReceiver", "headset onReceive %s  %d", new Object[] { paramIntent.getAction(), Integer.valueOf(paramIntent.getIntExtra("state", 0)) });
+    if ((paramIntent.getAction() != null) && (paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"))) {
+      if (paramIntent.getIntExtra("state", 0) == 0)
+      {
+        if (this.tsZ != null)
+        {
+          this.tsZ.gj(false);
+          AppMethodBeat.o(4302);
+        }
       }
-      if (this.pNf != null) {
-        this.pNf.eH(false);
+      else if ((paramIntent.getIntExtra("state", 0) == 1) && (this.tsZ != null)) {
+        this.tsZ.gj(true);
       }
     }
-    label78:
-    while ((paramIntent.getIntExtra("state", 0) != 1) || (this.pNf == null)) {
-      return;
-    }
-    this.pNf.eH(true);
+    AppMethodBeat.o(4302);
   }
 }
 

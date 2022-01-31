@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 public abstract interface i$a
 {
-  public abstract void tX(int paramInt);
+  public abstract void zr(int paramInt);
 }
 
 

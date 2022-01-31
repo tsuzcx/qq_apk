@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.clean.ui.newui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
 
 final class CleanChattingDetailUI$3
@@ -12,7 +12,9 @@ final class CleanChattingDetailUI$3
   
   public final void onClick(View paramView)
   {
-    h.a(this.iEb, this.iEb.getString(R.l.confirm_delete_file), "", this.iEb.getString(R.l.delete), this.iEb.getString(R.l.cancel), new CleanChattingDetailUI.3.1(this), new CleanChattingDetailUI.3.2(this));
+    AppMethodBeat.i(18866);
+    h.d(this.kJi, this.kJi.getString(2131298496), "", this.kJi.getString(2131298944), this.kJi.getString(2131297837), new CleanChattingDetailUI.3.1(this), new CleanChattingDetailUI.3.2(this));
+    AppMethodBeat.o(18866);
   }
 }
 

@@ -6,131 +6,155 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.x;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.d;
-import com.tencent.mm.plugin.wxpay.a.h;
-import com.tencent.mm.plugin.wxpay.a.i;
+import com.tencent.mm.plugin.wallet_core.model.g;
+import com.tencent.mm.plugin.wallet_core.ui.view.c;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.wallet_core.ui.e;
 import java.util.HashMap;
 import java.util.List;
 
 final class WalletOfflineCoinPurseUI$30
   implements n.c
 {
-  WalletOfflineCoinPurseUI$30(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI, List paramList, d paramd) {}
+  WalletOfflineCoinPurseUI$30(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI, List paramList, com.tencent.mm.ui.widget.b.d paramd) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
+    AppMethodBeat.i(43540);
     int i = 0;
     Bankcard localBankcard;
     Object localObject1;
-    Object localObject2;
+    Object localObject3;
     Bitmap localBitmap;
-    if (i < this.llc.size())
+    if (i < this.nIy.size())
     {
-      localBankcard = (Bankcard)this.llc.get(i);
-      localObject1 = com.tencent.mm.plugin.offline.c.a.Kv(localBankcard.field_bankcardType);
-      localObject2 = localObject1;
-      if (localBankcard.bUR())
+      localBankcard = (Bankcard)this.nIy.get(i);
+      localObject1 = com.tencent.mm.plugin.offline.c.a.Wx(localBankcard.field_bankcardType);
+      localObject3 = localObject1;
+      if (localBankcard.cTg())
       {
-        localObject2 = localObject1;
-        if (localBankcard.qtH != null) {
-          localObject2 = localBankcard.qtH.mEi;
+        localObject3 = localObject1;
+        if (localBankcard.ufW != null) {
+          localObject3 = localBankcard.ufW.pek;
         }
       }
-      localBitmap = x.a(new com.tencent.mm.plugin.wallet_core.ui.view.c((String)localObject2));
-      x.a(new WalletOfflineCoinPurseUI.30.1(this, (String)localObject2, paraml));
+      localBitmap = x.a(new c((String)localObject3));
+      x.a(new WalletOfflineCoinPurseUI.30.1(this, (String)localObject3, paraml));
       localObject1 = "";
-      if (!bk.bl(localBankcard.field_forbidWord)) {
+      if (!bo.isNullOrNil(localBankcard.field_forbidWord)) {
         localObject1 = localBankcard.field_forbidWord;
       }
-      if ((!bk.bl((String)localObject1)) || (localBankcard.field_support_micropay)) {
-        break label609;
+      if ((!bo.isNullOrNil((String)localObject1)) || (localBankcard.field_support_micropay)) {
+        break label708;
       }
-      if (bk.bl(localBankcard.field_no_micro_word)) {
+      if (bo.isNullOrNil(localBankcard.field_no_micro_word)) {
         localObject1 = "";
       }
     }
-    label156:
-    label182:
-    label596:
-    label603:
-    label609:
+    label161:
+    label187:
+    label576:
+    label708:
     for (;;)
     {
-      SpannableString localSpannableString;
-      Object localObject3;
+      Object localObject2;
+      Object localObject4;
       String str;
-      if (bk.bl(localBankcard.field_forbid_title))
+      if (bo.isNullOrNil(localBankcard.field_forbid_title))
       {
-        localSpannableString = new SpannableString((CharSequence)localObject1);
-        localObject3 = localObject1;
-        if (((!localBankcard.bUQ()) && (!localBankcard.bUR())) || (localBankcard.qty < 0.0D)) {
-          break label533;
+        localObject2 = new SpannableString((CharSequence)localObject1);
+        localObject4 = localObject1;
+        if (((!localBankcard.cTf()) && (!localBankcard.cTg())) || (localBankcard.ufM < 0.0D)) {
+          break label566;
         }
-        str = localBankcard.field_desc + this.mNj.getString(a.i.wallet_balance_left, new Object[] { com.tencent.mm.wallet_core.ui.e.B(localBankcard.qty) });
-        if (!localBankcard.bUU()) {
-          break label543;
-        }
-        localObject1 = com.tencent.mm.svg.a.a.e(this.mNj.getResources(), a.h.honey_pay_bank_logo);
-      }
-      for (;;)
-      {
-        if (localObject1 == null) {
-          WalletOfflineCoinPurseUI.L(this.mNj).put(localObject2, Integer.valueOf(i));
-        }
-        y.i("MicroMsg.WalletOfflineCoinPurseUI", "i %d fee %s %s", new Object[] { Integer.valueOf(i), str, localSpannableString });
-        localObject2 = j.b(this.mNj.mController.uMN, str);
-        if (localObject1 == null)
-        {
-          localObject1 = null;
-          label354:
-          if (!bk.bl((String)localObject3)) {
-            break label596;
-          }
-        }
-        for (boolean bool = false;; bool = true)
-        {
-          paraml.a(i, (CharSequence)localObject2, localSpannableString, (Drawable)localObject1, bool);
-          i += 1;
-          break;
-          localObject1 = localBankcard.field_no_micro_word;
-          break label156;
-          localObject3 = (String)localObject1 + " ";
-          localSpannableString = new SpannableString((String)localObject3 + localBankcard.field_forbid_title);
-          localObject1 = new WalletOfflineCoinPurseUI.30.2(this, this.mNj, localBankcard);
-          int j = ((String)localObject3).length();
-          int k = ((String)localObject3).length() + localBankcard.field_forbid_title.length();
-          localSpannableString.setSpan(new ForegroundColorSpan(this.mNj.getResources().getColor(a.c.wallet_offline_link_color)), j, k, 33);
-          localSpannableString.setSpan(localObject1, j, k, 33);
-          break label182;
-          str = localBankcard.field_desc;
-          break label256;
-          if (localBitmap == null) {
-            break label603;
-          }
-          localObject1 = new BitmapDrawable(com.tencent.mm.sdk.platformtools.c.a(localBitmap, this.mNj.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), this.mNj.getResources().getDimensionPixelOffset(a.d.wallet_offline_bank_logo_width), true, false));
-          break label279;
-          break label354;
-        }
-        return;
+        str = localBankcard.field_desc + this.pny.getString(2131304816, new Object[] { e.F(localBankcard.ufM) });
         localObject1 = null;
+        if (!localBankcard.cTj()) {
+          break label576;
+        }
+        localObject1 = com.tencent.mm.svg.a.a.g(this.pny.getResources(), 2131231407);
+        if (localObject1 == null) {
+          WalletOfflineCoinPurseUI.K(this.pny).put(localObject3, Integer.valueOf(i));
+        }
+        ab.i("MicroMsg.WalletOfflineCoinPurseUI", "i %d fee %s %s", new Object[] { Integer.valueOf(i), str, localObject2 });
+        if (!localBankcard.cTk()) {
+          break label643;
+        }
+        localObject3 = j.b(this.pny.getContext(), str);
+        if (bo.isNullOrNil((String)localObject4))
+        {
+          if (!bo.isNullOrNil(localBankcard.ugk)) {
+            break label624;
+          }
+          localObject2 = "";
+        }
+        label380:
+        if (localObject1 != null) {
+          break label634;
+        }
+        localObject1 = null;
+        if (!bo.isNullOrNil((String)localObject4)) {
+          break label637;
+        }
       }
+      label624:
+      label634:
+      label637:
+      for (boolean bool = false;; bool = true)
+      {
+        paraml.a(i, (CharSequence)localObject3, (CharSequence)localObject2, (Drawable)localObject1, bool);
+        i += 1;
+        break;
+        localObject1 = localBankcard.field_no_micro_word;
+        break label161;
+        localObject4 = (String)localObject1 + " ";
+        localObject2 = new SpannableString((String)localObject4 + localBankcard.field_forbid_title);
+        localObject1 = new WalletOfflineCoinPurseUI.30.2(this, this.pny, localBankcard);
+        int j = ((String)localObject4).length();
+        int k = ((String)localObject4).length() + localBankcard.field_forbid_title.length();
+        ((SpannableString)localObject2).setSpan(new ForegroundColorSpan(this.pny.getResources().getColor(2131690662)), j, k, 33);
+        ((SpannableString)localObject2).setSpan(localObject1, j, k, 33);
+        break label187;
+        str = localBankcard.field_desc;
+        break label260;
+        if (localBitmap == null) {
+          break label285;
+        }
+        localObject1 = new BitmapDrawable(com.tencent.mm.sdk.platformtools.d.a(localBitmap, this.pny.getResources().getDimensionPixelOffset(2131428824), this.pny.getResources().getDimensionPixelOffset(2131428824), true, false));
+        break label285;
+        localObject2 = localBankcard.ugk;
+        break label380;
+        break label388;
+      }
+      localObject3 = j.b(this.pny.getContext(), str);
+      if (localObject1 == null)
+      {
+        localObject1 = null;
+        if (!bo.isNullOrNil((String)localObject4)) {
+          break label696;
+        }
+      }
+      for (bool = false;; bool = true)
+      {
+        paraml.a(i, (CharSequence)localObject3, (CharSequence)localObject2, (Drawable)localObject1, bool);
+        break;
+        break label665;
+      }
+      AppMethodBeat.o(43540);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.30
  * JD-Core Version:    0.7.0.1
  */

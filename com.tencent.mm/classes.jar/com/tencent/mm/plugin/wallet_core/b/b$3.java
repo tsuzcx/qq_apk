@@ -1,15 +1,13 @@
 package com.tencent.mm.plugin.wallet_core.b;
 
 import android.os.Bundle;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.plugin.wallet_core.b.a.a;
-import com.tencent.mm.plugin.wallet_core.c.q;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.h;
-import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.plugin.wallet_core.model.o;
-import com.tencent.mm.plugin.wallet_core.model.p;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.wallet_core.model.am;
+import com.tencent.mm.plugin.wallet_core.model.u;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.c;
 import com.tencent.mm.wallet_core.d.g;
@@ -23,50 +21,68 @@ final class b$3
     super(paramMMActivity, parami);
   }
   
-  public final boolean c(int paramInt1, int paramInt2, String paramString, m paramm)
+  public final CharSequence getTips(int paramInt)
   {
+    AppMethodBeat.i(46473);
+    String str = this.hwZ.getString(2131305684);
+    AppMethodBeat.o(46473);
+    return str;
+  }
+  
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
+  {
+    AppMethodBeat.i(46471);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
       if ((paramm instanceof a))
       {
-        y.i("MicroMsg.BindCardProcess", "verify code success!");
+        ab.i("MicroMsg.BindCardProcess", "verify code success!");
         paramString = (a)paramm;
-        b.f(this.qqt).putString("kreq_token", paramString.token);
+        b.e(this.ubp).putString("kreq_token", paramString.getToken());
+        AppMethodBeat.o(46471);
         return true;
       }
-      if (!(paramm instanceof q)) {
-        break label99;
+      if (!(paramm instanceof com.tencent.mm.plugin.wallet_core.c.t)) {
+        break label114;
       }
-      this.qqt.a(this.wBd);
-      if (((q)paramm).qqu != null) {
-        b.g(this.qqt).putParcelable("key_bindcard_value_result", ((q)paramm).qqu);
+      this.ubp.a(this.AXB);
+      if (((com.tencent.mm.plugin.wallet_core.c.t)paramm).ubq != null) {
+        b.f(this.ubp).putParcelable("key_bindcard_value_result", ((com.tencent.mm.plugin.wallet_core.c.t)paramm).ubq);
       }
     }
-    label99:
-    while (!(paramm instanceof h)) {
+    label114:
+    while (!(paramm instanceof h))
+    {
+      AppMethodBeat.o(46471);
       return false;
     }
+    AppMethodBeat.o(46471);
     return true;
   }
   
-  public final boolean m(Object... paramVarArgs)
+  public final boolean p(Object... paramVarArgs)
   {
-    this.qqt.A(new Object[] { "WalletVerifyCodeUI onNext", paramVarArgs });
-    y.i("MicroMsg.BindCardProcess", "onNext, do bind verify!");
-    paramVarArgs = (p)paramVarArgs[1];
-    if (o.bVs().bVN()) {}
-    for (paramVarArgs.flag = "2"; "realname_verify_process".equals(this.qqt.aTh()); paramVarArgs.flag = "1")
+    AppMethodBeat.i(46472);
+    this.ubp.G(new Object[] { "WalletVerifyCodeUI onNext", paramVarArgs });
+    ab.i("MicroMsg.BindCardProcess", "onNext, do bind verify!");
+    paramVarArgs = (u)paramVarArgs[1];
+    if (com.tencent.mm.plugin.wallet_core.model.t.cTN().cUl())
     {
-      this.wBd.a(new q(paramVarArgs, this.qqt.kke.getInt("entry_scene", -1)), true, 1);
-      return true;
+      paramVarArgs.flag = "2";
+      if (!"realname_verify_process".equals(this.ubp.bzC())) {
+        break label115;
+      }
+      this.AXB.a(new com.tencent.mm.plugin.wallet_core.c.t(paramVarArgs, this.ubp.mEJ.getInt("entry_scene", -1)), true, 1);
     }
-    this.wBd.a(new q(paramVarArgs), true, 1);
-    return true;
-  }
-  
-  public final CharSequence vy(int paramInt)
-  {
-    return this.gfb.getString(a.i.wallet_verify_code_bind_card_hint);
+    for (;;)
+    {
+      AppMethodBeat.o(46472);
+      return true;
+      paramVarArgs.flag = "1";
+      break;
+      label115:
+      this.AXB.a(new com.tencent.mm.plugin.wallet_core.c.t(paramVarArgs), true, 1);
+    }
   }
 }
 

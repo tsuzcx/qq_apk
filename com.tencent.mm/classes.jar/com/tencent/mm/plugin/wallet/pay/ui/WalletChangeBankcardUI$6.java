@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.wallet.pay.ui;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.FavorPayInfo;
-import com.tencent.mm.plugin.wallet_core.ui.g;
-import com.tencent.mm.plugin.wallet_core.ui.o;
-import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import com.tencent.mm.plugin.wallet_core.ui.i;
+import com.tencent.mm.plugin.wallet_core.ui.q;
 
 final class WalletChangeBankcardUI$6
   implements View.OnClickListener
@@ -15,19 +15,21 @@ final class WalletChangeBankcardUI$6
   
   public final void onClick(View paramView)
   {
-    if (this.qmD.qgo != null) {
-      this.qmD.qgo.dismiss();
+    AppMethodBeat.i(45963);
+    if (this.tVU.tVM != null) {
+      this.tVU.tVM.dismiss();
     }
-    this.qmD.ku(false);
-    this.qmD.qmy.e(this.qmD.qgr, true);
-    this.qmD.qmA = ((FavorPayInfo)paramView.getTag());
-    if (this.qmD.qmA != null) {
-      this.qmD.qmA.qvG = "";
+    this.tVU.nx(false);
+    this.tVU.tVO.g(this.tVU.tNG, true);
+    this.tVU.tVQ = ((FavorPayInfo)paramView.getTag());
+    if (this.tVU.tVQ != null) {
+      this.tVU.tVQ.uhY = "";
     }
-    this.qmD.BX.putParcelable("key_favor_pay_info", this.qmD.qmA);
-    this.qmD.aZ();
-    this.qmD.vN(0);
-    this.qmD.qmC = null;
+    this.tVU.getInput().putParcelable("key_favor_pay_info", this.tVU.tVQ);
+    this.tVU.bJ();
+    this.tVU.setContentViewVisibility(0);
+    this.tVU.tVS = null;
+    AppMethodBeat.o(45963);
   }
 }
 

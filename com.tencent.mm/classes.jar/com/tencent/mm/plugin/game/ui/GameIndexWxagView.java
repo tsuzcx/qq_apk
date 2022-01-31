@@ -7,47 +7,59 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.game.report.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.r.d;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.game.d.do;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.game.d.dr;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public class GameIndexWxagView
   extends LinearLayout
   implements View.OnClickListener
 {
-  LayoutInflater Lu;
-  int kQh;
   ViewGroup mContainer;
+  LayoutInflater mInflater;
+  int nok;
   
   public GameIndexWxagView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    AppMethodBeat.i(111989);
     setOrientation(1);
-    this.Lu = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
+    this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
     this.mContainer = this;
+    AppMethodBeat.o(111989);
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof GameIndexWxagView.a))) {}
-    do
+    AppMethodBeat.i(111991);
+    if ((paramView.getTag() == null) || (!(paramView.getTag() instanceof GameIndexWxagView.a)))
     {
+      AppMethodBeat.o(111991);
       return;
-      paramView = (GameIndexWxagView.a)paramView.getTag();
-    } while (paramView.lbZ == null);
+    }
+    paramView = (GameIndexWxagView.a)paramView.getTag();
+    if (paramView.nzU == null)
+    {
+      AppMethodBeat.o(111991);
+      return;
+    }
     AppBrandStatObject localAppBrandStatObject = new AppBrandStatObject();
     localAppBrandStatObject.scene = 1079;
-    ((d)g.r(d.class)).a(getContext(), paramView.lbZ.hPY, paramView.lbZ.euK, paramView.lbZ.kWu, 0, paramView.lbZ.kWt, localAppBrandStatObject);
-    b.a(getContext(), 10, 1025, paramView.kRc, 30, paramView.lbZ.euK, this.kQh, null);
+    ((j)g.E(j.class)).a(getContext(), paramView.nzU.jJA, paramView.nzU.fKw, paramView.nzU.nuw, 0, paramView.nzU.nuv, localAppBrandStatObject);
+    c.a(getContext(), 10, 1025, paramView.npg, 30, paramView.nzU.fKw, this.nok, null);
+    AppMethodBeat.o(111991);
   }
   
   protected void onFinishInflate()
   {
+    AppMethodBeat.i(111990);
     super.onFinishInflate();
-    y.i("MicroMsg.GameIndexWxagView", "initView finished");
+    ab.i("MicroMsg.GameIndexWxagView", "initView finished");
+    AppMethodBeat.o(111990);
   }
 }
 

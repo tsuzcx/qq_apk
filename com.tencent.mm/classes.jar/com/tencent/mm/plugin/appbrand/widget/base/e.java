@@ -2,17 +2,33 @@ package com.tencent.mm.plugin.appbrand.widget.base;
 
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class e
 {
-  public final ViewGroup hpb;
-  public final LinkedList<View> hpd = new LinkedList();
-  public e.a hpe;
+  public final ViewGroup eyt;
+  public final LinkedList<View> jbN;
+  public a jbO;
   
   public e(ViewGroup paramViewGroup)
   {
-    this.hpb = paramViewGroup;
+    AppMethodBeat.i(77400);
+    this.jbN = new LinkedList();
+    this.eyt = paramViewGroup;
+    AppMethodBeat.o(77400);
+  }
+  
+  public static final class a
+  {
+    public final long hLh;
+    public final long hLi;
+    
+    private a(long paramLong1, long paramLong2)
+    {
+      this.hLi = paramLong1;
+      this.hLh = paramLong2;
+    }
   }
 }
 

@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.sns.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SnsNotInterestUI$2
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class SnsNotInterestUI$2
   
   public final void onClick(View paramView)
   {
-    SnsNotInterestUI.a(this.pbd).requestFocus();
-    this.pbd.XM();
+    AppMethodBeat.i(39124);
+    SnsNotInterestUI.a(this.rTQ).requestFocus();
+    this.rTQ.hideVKB();
+    AppMethodBeat.o(39124);
   }
 }
 

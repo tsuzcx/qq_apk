@@ -4,19 +4,19 @@ import com.tencent.mm.storage.bi;
 
 public final class a
 {
-  public bi bFH;
-  public boolean kax;
-  public boolean kay;
-  public a.a kaz;
+  public bi cmQ;
+  public boolean muT;
+  public boolean muU;
+  public a.a muV;
   public String talker;
   
   public a(boolean paramBoolean1, boolean paramBoolean2, String paramString, bi parambi, a.a parama)
   {
-    this.kax = paramBoolean1;
-    this.kay = paramBoolean2;
+    this.muT = paramBoolean1;
+    this.muU = paramBoolean2;
     this.talker = paramString;
-    this.bFH = parambi;
-    this.kaz = parama;
+    this.cmQ = parambi;
+    this.muV = parama;
   }
 }
 

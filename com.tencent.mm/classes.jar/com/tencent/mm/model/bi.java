@@ -1,74 +1,43 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
 
 public final class bi
-  extends m
-  implements k
 {
-  private final a dWZ;
-  private final String dXa;
-  private long dXb;
-  private f dmL;
+  public static a fnc = null;
   
-  public bi(a parama)
+  public static k a(k paramk)
   {
-    this(parama, null);
-  }
-  
-  public bi(a parama, String paramString)
-  {
-    y.i("MicroMsg.NetSceneLocalProxy", "init LocalProxy task:%s [%s] ", new Object[] { paramString, bk.csb() });
-    this.dWZ = parama;
-    this.dXa = paramString;
-  }
-  
-  public final int a(e parame, f paramf)
-  {
-    c(parame);
-    this.dmL = paramf;
-    this.dXb = bk.UZ();
-    g.DS().O(new Runnable()
+    AppMethodBeat.i(58107);
+    if (fnc == null)
     {
-      public final void run()
-      {
-        bi.this.a(0, 0, 0, null, null, null);
-      }
-      
-      public final String toString()
-      {
-        return super.toString() + "|doScene";
-      }
-    });
-    return 0;
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    if (this.dWZ != null)
-    {
-      y.d("MicroMsg.NetSceneLocalProxy", "local proxy [%s] end, cost=%d", new Object[] { this.dXa, Long.valueOf(bk.cp(this.dXb)) });
-      this.dWZ.a(this.edc);
+      AppMethodBeat.o(58107);
+      return paramk;
     }
-    this.dmL.onSceneEnd(0, 0, null, this);
+    paramk = fnc.aaT();
+    AppMethodBeat.o(58107);
+    return paramk;
   }
   
-  public final int getType()
+  public static int aaS()
   {
+    AppMethodBeat.i(58108);
+    if (fnc != null)
+    {
+      int i = fnc.aaS();
+      AppMethodBeat.o(58108);
+      return i;
+    }
+    AppMethodBeat.o(58108);
     return 0;
   }
   
   public static abstract interface a
   {
-    public abstract void a(e parame);
+    public abstract int aaS();
+    
+    public abstract k aaT();
   }
 }
 

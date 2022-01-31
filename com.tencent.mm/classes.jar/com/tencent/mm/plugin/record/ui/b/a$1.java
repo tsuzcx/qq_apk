@@ -6,9 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.plugin.record.ui.RecordMsgImageUI;
-import com.tencent.mm.protocal.c.xv;
+import com.tencent.mm.protocal.protobuf.aca;
 
 final class a$1
   implements View.OnClickListener
@@ -17,16 +18,19 @@ final class a$1
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(24336);
     Object localObject = (com.tencent.mm.plugin.record.ui.a.b)paramView.getTag();
-    switch (((com.tencent.mm.plugin.record.ui.a.b)localObject).aYU)
+    switch (((com.tencent.mm.plugin.record.ui.a.b)localObject).dataType)
     {
-    default: 
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(24336);
       return;
-    case 0: 
-      localIntent = new Intent(paramView.getContext(), RecordMsgImageUI.class);
-      localIntent.putExtra("message_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).bIt);
-      localIntent.putExtra("record_data_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).bNt.kgC);
-      localIntent.putExtra("record_xml", ((com.tencent.mm.plugin.record.ui.a.b)localObject).bWL);
+      Intent localIntent = new Intent(paramView.getContext(), RecordMsgImageUI.class);
+      localIntent.putExtra("message_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).cpO);
+      localIntent.putExtra("record_data_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).cuL.mBq);
+      localIntent.putExtra("record_xml", ((com.tencent.mm.plugin.record.ui.a.b)localObject).cEB);
       if (((paramView.getContext() instanceof Activity)) && (((Activity)paramView.getContext()).getIntent() != null))
       {
         localObject = ((Activity)paramView.getContext()).getIntent().getBundleExtra("_stat_obj");
@@ -35,12 +39,13 @@ final class a$1
         }
       }
       paramView.getContext().startActivity(localIntent);
+      AppMethodBeat.o(24336);
       return;
+      localIntent = new Intent();
+      localIntent.putExtra("key_detail_info_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).mCk.field_localId);
+      localIntent.putExtra("key_detail_data_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).cuL.mBq);
+      com.tencent.mm.plugin.fav.a.b.a(paramView.getContext(), ".ui.FavImgGalleryUI", localIntent, 1);
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("key_detail_info_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).khA.field_localId);
-    localIntent.putExtra("key_detail_data_id", ((com.tencent.mm.plugin.record.ui.a.b)localObject).bNt.kgC);
-    com.tencent.mm.plugin.fav.a.b.b(paramView.getContext(), ".ui.FavImgGalleryUI", localIntent, 1);
   }
 }
 

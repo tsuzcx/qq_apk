@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.h.c.as;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.au;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
@@ -12,48 +13,66 @@ import com.tencent.mm.storage.be;
 class JsApiGetContactMessageCountTask
   extends MainProcessTask
 {
-  public static final Parcelable.Creator<JsApiGetContactMessageCountTask> CREATOR = new JsApiGetContactMessageCountTask.1();
-  public int bFo;
-  public Runnable gfD;
+  public static final Parcelable.Creator<JsApiGetContactMessageCountTask> CREATOR;
+  public int cmy;
+  public Runnable hxp;
   public String username;
+  
+  static
+  {
+    AppMethodBeat.i(131018);
+    CREATOR = new JsApiGetContactMessageCountTask.1();
+    AppMethodBeat.o(131018);
+  }
   
   public JsApiGetContactMessageCountTask() {}
   
   public JsApiGetContactMessageCountTask(Parcel paramParcel)
   {
-    e(paramParcel);
+    AppMethodBeat.i(131013);
+    f(paramParcel);
+    AppMethodBeat.o(131013);
   }
   
-  public final void Zu()
+  public final void ata()
   {
-    ak localak = ((j)g.r(j.class)).FB().abv(this.username);
+    AppMethodBeat.i(131014);
+    ak localak = ((j)g.E(j.class)).YF().arH(this.username);
     if (localak == null)
     {
-      this.bFo = -1;
-      ahI();
+      this.cmy = -1;
+      aBp();
+      AppMethodBeat.o(131014);
       return;
     }
-    this.bFo = localak.field_unReadCount;
-    ahI();
+    this.cmy = localak.field_unReadCount;
+    aBp();
+    AppMethodBeat.o(131014);
   }
   
-  public final void Zv()
+  public final void atb()
   {
-    if (this.gfD != null) {
-      this.gfD.run();
+    AppMethodBeat.i(131015);
+    if (this.hxp != null) {
+      this.hxp.run();
     }
+    AppMethodBeat.o(131015);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
+    AppMethodBeat.i(131016);
     this.username = paramParcel.readString();
-    this.bFo = paramParcel.readInt();
+    this.cmy = paramParcel.readInt();
+    AppMethodBeat.o(131016);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(131017);
     paramParcel.writeString(this.username);
-    paramParcel.writeInt(this.bFo);
+    paramParcel.writeInt(this.cmy);
+    AppMethodBeat.o(131017);
   }
 }
 

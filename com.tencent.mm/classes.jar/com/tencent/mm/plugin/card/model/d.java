@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.card.model;
 
 public final class d
 {
-  public String bZc = "";
-  public String bZd = "";
-  public int bZe = 0;
+  public String cHn = "";
+  public String cHo = "";
+  public int cHp = 0;
   public String color = "";
-  public int ilo = 0;
-  public String imA = "";
-  public int imB = 0;
-  public String imC = "";
-  public String imy = "";
-  public String imz = "";
+  public int iFL = 0;
+  public String knu = "";
+  public String knv = "";
+  public String knw = "";
+  public int knx = 0;
+  public String kny = "";
 }
 
 

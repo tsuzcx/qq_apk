@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.websearch.c.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.i;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -16,39 +17,62 @@ import java.util.concurrent.TimeUnit;
 public final class b
   implements c
 {
-  Map<a, c.a> hLB = new HashMap();
-  Map<a, CountDownLatch> qWa = new ConcurrentHashMap();
-  private l qWb = new b.1(this);
-  private l qWc = new b.2(this);
+  Map<a, c.a> jFd;
+  Map<a, CountDownLatch> uLm;
+  private l uLn;
+  private l uLo;
+  
+  public b()
+  {
+    AppMethodBeat.i(91370);
+    this.uLm = new ConcurrentHashMap();
+    this.jFd = new HashMap();
+    this.uLn = new b.1(this);
+    this.uLo = new b.2(this);
+    AppMethodBeat.o(91370);
+  }
   
   private static boolean a(a parama, l paraml)
   {
-    if (bk.bl(parama.bVk)) {
+    AppMethodBeat.i(91373);
+    if (bo.isNullOrNil(parama.query))
+    {
+      AppMethodBeat.o(91373);
       return false;
     }
     i locali = new i();
-    locali.bVk = parama.bVk;
-    locali.kxa = new int[] { 131072 };
-    locali.kxb = new int[] { 1, 5 };
-    locali.kxc = parama.qVZ;
-    locali.kxe = com.tencent.mm.plugin.fts.a.c.b.kxE;
-    locali.kxd = new HashSet();
-    locali.kxf = paraml;
+    locali.query = parama.query;
+    locali.mSP = new int[] { 131072 };
+    locali.mSQ = new int[] { 1, 5 };
+    locali.mSR = parama.uLl;
+    locali.mST = com.tencent.mm.plugin.fts.a.c.b.mTt;
+    locali.mSS = new HashSet();
+    locali.mSU = paraml;
     locali.scene = 1;
-    ((n)g.t(n.class)).search(2, locali).kwb = parama;
+    ((n)g.G(n.class)).search(2, locali).mRQ = parama;
+    AppMethodBeat.o(91373);
     return true;
   }
   
-  public final a RA(String paramString)
+  public final void a(a parama, c.a parama1)
   {
+    AppMethodBeat.i(91372);
+    this.jFd.put(parama, parama1);
+    a(parama, this.uLo);
+    AppMethodBeat.o(91372);
+  }
+  
+  public final a agB(String paramString)
+  {
+    AppMethodBeat.i(91371);
     e locale = new e(paramString);
-    CountDownLatch localCountDownLatch = (CountDownLatch)this.qWa.get(locale);
+    CountDownLatch localCountDownLatch = (CountDownLatch)this.uLm.get(locale);
     if (localCountDownLatch == null) {
-      if (a(locale, this.qWb))
+      if (a(locale, this.uLn))
       {
-        y.i("FTSMatchContact", "not have a running task ,start new task, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ab.i("FTSMatchContact", "not have a running task ,start new task, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = new CountDownLatch(1);
-        this.qWa.put(locale, paramString);
+        this.uLm.put(locale, paramString);
       }
     }
     for (;;)
@@ -57,33 +81,28 @@ public final class b
       try
       {
         paramString.await(2000L, TimeUnit.MILLISECONDS);
-        this.qWa.remove(locale);
+        this.uLm.remove(locale);
+        AppMethodBeat.o(91371);
         return locale;
-        y.i("FTSMatchContact", "start new task fail, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ab.i("FTSMatchContact", "start new task fail, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = localCountDownLatch;
         continue;
-        y.i("FTSMatchContact", "have a running task ,wait for result, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
+        ab.i("FTSMatchContact", "have a running task ,wait for result, query %s,maxMatch %d", new Object[] { paramString, Integer.valueOf(2147483647) });
         paramString = localCountDownLatch;
       }
       catch (Exception paramString)
       {
         for (;;)
         {
-          y.printErrStackTrace("FTSMatchContact", paramString, "", new Object[0]);
+          ab.printErrStackTrace("FTSMatchContact", paramString, "", new Object[0]);
         }
       }
     }
   }
-  
-  public final void a(a parama, c.a parama1)
-  {
-    this.hLB.put(parama, parama1);
-    a(parama, this.qWc);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.c.a.b
  * JD-Core Version:    0.7.0.1
  */

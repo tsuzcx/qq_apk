@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.appbrand.canvas.action.arg.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionLinearArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionNormalArg;
@@ -9,15 +10,23 @@ import com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionRa
 public final class g
   extends a<BaseDrawActionArg>
 {
-  private static g fMp = new g();
+  private static g hfz;
   
-  public static g adM()
+  static
   {
-    return fMp;
+    AppMethodBeat.i(103644);
+    hfz = new g();
+    AppMethodBeat.o(103644);
   }
   
-  public final <T> T rM(String paramString)
+  public static g aye()
   {
+    return hfz;
+  }
+  
+  public final <T> T zC(String paramString)
+  {
+    AppMethodBeat.i(103643);
     Object localObject = null;
     if ("linear".equalsIgnoreCase(paramString)) {
       localObject = new RealSetFillStyleActionLinearArg();
@@ -25,6 +34,7 @@ public final class g
     for (;;)
     {
       ((BaseDrawActionArg)localObject).method = paramString;
+      AppMethodBeat.o(103643);
       return localObject;
       if ("radial".equalsIgnoreCase(paramString)) {
         localObject = new RealSetFillStyleActionRadialArg();

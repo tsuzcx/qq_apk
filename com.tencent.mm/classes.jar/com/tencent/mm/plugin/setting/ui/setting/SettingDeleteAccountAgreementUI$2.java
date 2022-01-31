@@ -4,6 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingDeleteAccountAgreementUI$2
   implements View.OnClickListener
@@ -12,7 +13,9 @@ final class SettingDeleteAccountAgreementUI$2
   
   public final void onClick(View paramView)
   {
-    this.nSP.setEnabled(this.nSQ.isChecked());
+    AppMethodBeat.i(127062);
+    this.qGK.setEnabled(this.qGL.isChecked());
+    AppMethodBeat.o(127062);
   }
 }
 

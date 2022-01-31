@@ -3,6 +3,7 @@ package com.tencent.mm.ui;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BaseActivity$2
   implements View.OnClickListener
@@ -11,7 +12,9 @@ final class BaseActivity$2
   
   public final void onClick(View paramView)
   {
-    this.irQ.onMenuItemClick(null);
+    AppMethodBeat.i(112446);
+    this.ksX.onMenuItemClick(null);
+    AppMethodBeat.o(112446);
   }
 }
 

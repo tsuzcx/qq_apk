@@ -1,13 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Intent;
 import android.os.Looper;
 import android.os.ResultReceiver;
-import com.tencent.mm.plugin.appbrand.g;
-import com.tencent.mm.plugin.appbrand.jsapi.i;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.e;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.HCEService;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,84 +25,117 @@ public final class d
 {
   public static final int CTRL_INDEX = 352;
   public static final String NAME = "startHCE";
-  private JSONObject bhk;
-  private int bhx = -1;
-  Activity fyk = null;
-  com.tencent.mm.plugin.appbrand.jsapi.c gfZ = null;
-  private Class<?> gxW = null;
-  Class<?> gxX = null;
-  private int gxY;
-  boolean gxZ = false;
-  private ResultReceiver gya = new JsApiNFCStartHCE.5(this, ah.fetchFreeHandler(Looper.getMainLooper()));
-  final Object mLock = new Object();
-  long mStartTime = -1L;
+  ResultReceiver Di;
+  private JSONObject bxK;
+  private int bxX;
+  boolean eRZ;
+  Activity gQx;
+  com.tencent.mm.plugin.appbrand.jsapi.c hAC;
+  private Class<?> hUw;
+  Application.ActivityLifecycleCallbacks hUx;
+  private int hUy;
+  private ResultReceiver hUz;
+  final Object mLock;
+  long mStartTime;
   Timer mTimer;
   
-  public d(Class<?> paramClass1, Class<?> paramClass2)
+  public d(Class<?> paramClass)
   {
-    this.gxW = paramClass1;
-    this.gxX = paramClass2;
-  }
-  
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
-  {
-    y.i("MicroMsg.JsApiNFCStartHCE", "alvinluo appbrand start HCE, data: %s", new Object[] { paramJSONObject.toString() });
-    this.gfZ = paramc;
-    this.bhx = paramInt;
-    this.bhk = paramJSONObject;
-    this.gxZ = false;
-    if ((this.gxW == null) || (this.gxX == null))
+    AppMethodBeat.i(141910);
+    this.hUw = null;
+    this.gQx = null;
+    this.hUx = null;
+    this.hAC = null;
+    this.bxX = -1;
+    this.mStartTime = -1L;
+    this.mLock = new Object();
+    this.eRZ = false;
+    this.hUz = new JsApiNFCStartHCE.6(this, ak.fetchFreeHandler(Looper.getMainLooper()));
+    if (paramClass == null)
     {
-      tT(h("fail: HostApduService or HCETransparentUI is nil", null));
+      this.hUw = HCEService.class;
+      AppMethodBeat.o(141910);
       return;
     }
-    this.gxY = this.bhk.optInt("time_limit", 1500);
+    this.hUw = paramClass;
+    AppMethodBeat.o(141910);
+  }
+  
+  final void BS(String paramString)
+  {
+    AppMethodBeat.i(137879);
+    ab.i("MicroMsg.JsApiNFCStartHCE", "alvinluo startHCE callback result: %s", new Object[] { paramString });
+    if (this.hAC != null) {
+      this.hAC.h(this.bxX, paramString);
+    }
+    if ((this.gQx != null) && (this.hUx != null))
+    {
+      ab.i("MicroMsg.JsApiNFCStartHCE", "alvinluo startHCE callback unregister lifecycle callback");
+      this.gQx.getApplication().unregisterActivityLifecycleCallbacks(this.hUx);
+    }
+    AppMethodBeat.o(137879);
+  }
+  
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c arg1, JSONObject paramJSONObject, int paramInt)
+  {
+    AppMethodBeat.i(137878);
+    ab.i("MicroMsg.JsApiNFCStartHCE", "alvinluo appbrand start HCE, data: %s", new Object[] { paramJSONObject.toString() });
+    this.hAC = ???;
+    this.bxX = paramInt;
+    this.bxK = paramJSONObject;
+    synchronized (this.mLock)
+    {
+      this.eRZ = false;
+      if (this.hUw == null)
+      {
+        BS(j("fail: HostApduService is nil", null));
+        AppMethodBeat.o(137878);
+        return;
+      }
+    }
+    this.hUy = this.bxK.optInt("time_limit", 1500);
     a(new d.1(this));
+    AppMethodBeat.o(137878);
   }
   
   final void onSuccess()
   {
+    AppMethodBeat.i(137880);
     Object localObject = new HashMap();
     ArrayList localArrayList = new ArrayList();
     try
     {
-      JSONArray localJSONArray = this.bhk.getJSONArray("aid_list");
+      JSONArray localJSONArray = this.bxK.getJSONArray("aid_list");
       int j = localJSONArray.length();
-      y.i("MicroMsg.JsApiNFCStartHCE", "alvinluo mData: %s, aidList: %s, length: %d", new Object[] { this.bhk.toString(), localJSONArray.toString(), Integer.valueOf(j) });
+      ab.i("MicroMsg.JsApiNFCStartHCE", "alvinluo mData: %s, aidList: %s, length: %d", new Object[] { this.bxK.toString(), localJSONArray.toString(), Integer.valueOf(j) });
       int i = 0;
       while (i < j)
       {
         localArrayList.add(localJSONArray.get(i).toString());
         i += 1;
       }
-      g.a(this.gfZ.getAppId(), new d.2(this));
+      e.a(this.hAC.getAppId(), new d.3(this));
     }
     catch (Exception localException)
     {
       ((Map)localObject).put("errCode", Integer.valueOf(13003));
-      tT(h("fail: aid_list invalid", (Map)localObject));
-      com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.c.E(this.gfZ.getAppId(), 13003, -1);
+      BS(j("fail: aid_list invalid", (Map)localObject));
+      com.tencent.mm.plugin.appbrand.jsapi.nfc.hce.a.c.Q(this.hAC.getAppId(), 13003, -1);
+      AppMethodBeat.o(137880);
       return;
     }
-    localObject = new Intent(this.fyk, this.gxW);
-    ((Intent)localObject).putExtra("HCE_Result_Receiver", this.gya);
-    ((Intent)localObject).putExtra("key_appid", this.gfZ.getAppId());
-    ((Intent)localObject).putExtra("key_time_limit", this.gxY);
+    localObject = new Intent(this.gQx, this.hUw);
+    ((Intent)localObject).putExtra("HCE_Result_Receiver", this.hUz);
+    ((Intent)localObject).putExtra("key_appid", this.hAC.getAppId());
+    ((Intent)localObject).putExtra("key_time_limit", this.hUy);
     ((Intent)localObject).putStringArrayListExtra("key_aid_list", localException);
-    HCEEventLogic.dq(false);
-    this.fyk.startService((Intent)localObject);
+    HCEEventLogic.ev(false);
+    this.gQx.startService((Intent)localObject);
     this.mStartTime = System.currentTimeMillis();
-    localObject = new d.3(this);
+    localObject = new d.4(this);
     this.mTimer = new Timer();
     this.mTimer.schedule((TimerTask)localObject, 10000L);
-  }
-  
-  final void tT(String paramString)
-  {
-    y.i("MicroMsg.JsApiNFCStartHCE", "alvinluo startHCE callback result: %s", new Object[] { paramString });
-    if (this.gfZ != null) {
-      this.gfZ.C(this.bhx, paramString);
-    }
+    AppMethodBeat.o(137880);
   }
 }
 

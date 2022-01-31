@@ -1,34 +1,43 @@
 package com.tencent.mm.plugin.appbrand.report.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class AdReportCgiHelper
 {
-  static void O(int paramInt, String paramString)
-  {
-    if (g.r(a.class) != null) {
-      ((a)g.r(a.class)).g(paramInt, paramString, (int)bk.UX());
-    }
-  }
-  
   public static void a(int paramInt, String paramString, AdReportCgiHelper.a parama)
   {
-    if (ae.cqV())
+    AppMethodBeat.i(132577);
+    if (ah.brt())
     {
-      O(paramInt, paramString);
-      if (parama != null) {
+      ab(paramInt, paramString);
+      if (parama != null)
+      {
         parama.onDone();
+        AppMethodBeat.o(132577);
       }
-      return;
     }
-    AdReportCgiHelper.AdReportCgiParams localAdReportCgiParams = new AdReportCgiHelper.AdReportCgiParams();
-    AdReportCgiHelper.AdReportCgiParams.a(localAdReportCgiParams, paramInt);
-    AdReportCgiHelper.AdReportCgiParams.a(localAdReportCgiParams, paramString);
-    XIPCInvoker.a("com.tencent.mm", localAdReportCgiParams, AdReportCgiHelper.b.class, new AdReportCgiHelper.1(parama));
+    else
+    {
+      AdReportCgiHelper.AdReportCgiParams localAdReportCgiParams = new AdReportCgiHelper.AdReportCgiParams();
+      AdReportCgiHelper.AdReportCgiParams.a(localAdReportCgiParams, paramInt);
+      AdReportCgiHelper.AdReportCgiParams.a(localAdReportCgiParams, paramString);
+      XIPCInvoker.a("com.tencent.mm", localAdReportCgiParams, AdReportCgiHelper.b.class, new AdReportCgiHelper.1(parama));
+    }
+    AppMethodBeat.o(132577);
+  }
+  
+  static void ab(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(132578);
+    if (g.E(a.class) != null) {
+      ((a)g.E(a.class)).j(paramInt, paramString, (int)bo.aox());
+    }
+    AppMethodBeat.o(132578);
   }
 }
 

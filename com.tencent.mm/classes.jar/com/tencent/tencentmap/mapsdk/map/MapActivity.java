@@ -2,6 +2,7 @@ package com.tencent.tencentmap.mapsdk.map;
 
 import android.app.Activity;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,13 +13,13 @@ public abstract class MapActivity
   private List<MapView> mapViewList = new ArrayList();
   private Bundle mysavedInstanceState;
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.mysavedInstanceState = paramBundle;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     Iterator localIterator = this.mapViewList.iterator();
@@ -32,7 +33,7 @@ public abstract class MapActivity
     this.mapViewList.clear();
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     Iterator localIterator = this.mapViewList.iterator();
@@ -58,7 +59,7 @@ public abstract class MapActivity
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     Iterator localIterator = this.mapViewList.iterator();
@@ -95,6 +96,12 @@ public abstract class MapActivity
         localMapView.onStop();
       }
     }
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
   
   public void setMapView(MapView paramMapView)

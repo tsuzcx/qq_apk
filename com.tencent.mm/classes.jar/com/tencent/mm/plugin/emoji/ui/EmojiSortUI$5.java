@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.emoji.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emoji.a.e;
 import com.tencent.mm.ui.widget.sortlist.DragSortListView.l;
 
@@ -10,7 +11,9 @@ final class EmojiSortUI$5
   
   public final void remove(int paramInt)
   {
-    EmojiSortUI.b(this.jdC).remove(EmojiSortUI.b(this.jdC).getItem(paramInt));
+    AppMethodBeat.i(53412);
+    EmojiSortUI.b(this.lmp).remove(EmojiSortUI.b(this.lmp).getItem(paramInt));
+    AppMethodBeat.o(53412);
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.mm.ah.a.a;
-import com.tencent.mm.protocal.c.hm;
+import com.tencent.mm.ai.a.a;
+import com.tencent.mm.protocal.protobuf.jd;
 import com.tencent.mm.vending.c.a;
 
 final class s$7
-  implements a<Void, a.a<hm>>
+  implements a<Void, a.a<jd>>
 {}
 
 

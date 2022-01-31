@@ -1,69 +1,50 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.e.a;
-import com.tencent.mm.plugin.game.luggage.d;
-import com.tencent.mm.plugin.game.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ax;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONArray;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader.model.o;
+import com.tencent.mm.plugin.downloader_app.b.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class b
-  extends ax<d>
+  extends bh
 {
-  public final void a(Context paramContext, String paramString, aw.a parama)
+  public final void a(Context paramContext, String paramString, bh.a parama)
   {
-    y.i("MicroMsg.JsApiClearGameData", "invokeInMM");
-    paramContext = g.EH(paramString);
-    if (paramContext == null)
+    AppMethodBeat.i(135867);
+    try
     {
-      y.e("MicroMsg.JsApiClearGameData", "data is null");
-      parama.e("null_data", null);
+      paramString = new JSONObject(paramString);
+      o.a(paramContext, a.Y(paramString), new b.1(this, parama));
+      AppMethodBeat.o(135867);
       return;
     }
-    paramString = paramContext.optString("preVerifyAppId");
-    if (bk.bl(paramString))
+    catch (JSONException paramContext)
     {
-      y.i("MicroMsg.JsApiClearGameData", "appId is null");
-      parama.e("appid_null", null);
-      return;
+      parama.c("fail", null);
+      AppMethodBeat.o(135867);
     }
-    JSONArray localJSONArray = paramContext.optJSONArray("keys");
-    boolean bool = paramContext.optBoolean("clearAllData", false);
-    if ((localJSONArray != null) && (localJSONArray.length() > 0))
-    {
-      com.tencent.mm.plugin.webview.b.b.cav().b(paramString, localJSONArray);
-      parama.e(null, null);
-      return;
-    }
-    if (bool)
-    {
-      com.tencent.mm.plugin.webview.b.b.cav().RG(paramString);
-      parama.e(null, null);
-      return;
-    }
-    y.i("MicroMsg.JsApiClearGameData", "keys is null");
-    parama.e("fail", null);
   }
   
-  public final int aGj()
-  {
-    return 1;
-  }
+  public final void b(a.a parama) {}
   
-  public final void b(a<d>.a parama) {}
+  public final int bjL()
+  {
+    return 2;
+  }
   
   public final String name()
   {
-    return "clearGameData";
+    return "addGameDownloadTask";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.game.luggage.b.b
  * JD-Core Version:    0.7.0.1
  */

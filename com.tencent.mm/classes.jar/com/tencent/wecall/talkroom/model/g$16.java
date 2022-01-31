@@ -1,5 +1,6 @@
 package com.tencent.wecall.talkroom.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -10,13 +11,15 @@ final class g$16
   
   public final void run()
   {
-    synchronized (this.xfh.dhm)
+    AppMethodBeat.i(127963);
+    synchronized (this.BBO.callbacks)
     {
-      Iterator localIterator = this.xfh.dhm.iterator();
+      Iterator localIterator = this.BBO.callbacks.iterator();
       if (localIterator.hasNext()) {
-        ((g.a)localIterator.next()).blo();
+        ((g.a)localIterator.next()).bTn();
       }
     }
+    AppMethodBeat.o(127963);
   }
 }
 

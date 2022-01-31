@@ -2,11 +2,10 @@ package com.tencent.mm.plugin.collect.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.collect.b.m;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.collect.model.m;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 
 final class CollectCreateQRCodeUI$5
@@ -16,11 +15,13 @@ final class CollectCreateQRCodeUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!bk.bl(this.iKL.iHx))
+    AppMethodBeat.i(41237);
+    if (!bo.isNullOrNil(this.kRq.kNB))
     {
-      y.i("MicroMsg.CollectCreateQRCodeUI", "goto h5: %s", new Object[] { this.iKL.iHx });
-      e.l(this.iKI.mController.uMN, this.iKL.iHx, true);
+      ab.i("MicroMsg.CollectCreateQRCodeUI", "goto h5: %s", new Object[] { this.kRq.kNB });
+      e.m(this.kRn.getContext(), this.kRq.kNB, true);
     }
+    AppMethodBeat.o(41237);
   }
 }
 

@@ -9,15 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.model.i;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.f;
-import com.tencent.mm.plugin.wxpay.a.g;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.wallet_core.ui.e;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,14 +25,20 @@ public final class MallOrderRecordListUI$a
 {
   protected MallOrderRecordListUI$a(MallOrderRecordListUI paramMallOrderRecordListUI) {}
   
-  private i vL(int paramInt)
+  private i Bk(int paramInt)
   {
-    return (i)this.mQU.mQQ.get(paramInt);
+    AppMethodBeat.i(43857);
+    i locali = (i)this.prh.prd.get(paramInt);
+    AppMethodBeat.o(43857);
+    return locali;
   }
   
   public final int getCount()
   {
-    return this.mQU.mQQ.size();
+    AppMethodBeat.i(43856);
+    int i = this.prh.prd.size();
+    AppMethodBeat.o(43856);
+    return i;
   }
   
   public final long getItemId(int paramInt)
@@ -47,33 +48,34 @@ public final class MallOrderRecordListUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(43858);
     View localView;
     i locali;
     int i;
     Object localObject1;
     if (paramView == null)
     {
-      localView = View.inflate(this.mQU, a.g.mall_order_list_item, null);
-      paramViewGroup = new MallOrderRecordListUI.b(this.mQU, (byte)0);
-      paramViewGroup.mQW = ((TextView)localView.findViewById(a.f.order_list_item_title_tv));
-      paramViewGroup.mQY = ((TextView)localView.findViewById(a.f.order_list_item_time_tv));
-      paramViewGroup.mQX = ((TextView)localView.findViewById(a.f.order_list_item_status_tv));
-      paramViewGroup.mQZ = ((TextView)localView.findViewById(a.f.order_list_item_product_price_tv));
-      paramViewGroup.mRb = localView.findViewById(a.f.order_list_item_month_view);
-      paramViewGroup.mRc = ((TextView)localView.findViewById(a.f.order_list_item_month_view_date));
-      paramViewGroup.mRd = ((TextView)localView.findViewById(a.f.order_list_item_month_view_amount));
-      paramViewGroup.mRa = ((TextView)localView.findViewById(a.f.order_list_item_product_real_pay_tv));
+      localView = View.inflate(this.prh, 2130970103, null);
+      paramViewGroup = new MallOrderRecordListUI.b(this.prh, (byte)0);
+      paramViewGroup.prj = ((TextView)localView.findViewById(2131826007));
+      paramViewGroup.prl = ((TextView)localView.findViewById(2131826009));
+      paramViewGroup.prk = ((TextView)localView.findViewById(2131826008));
+      paramViewGroup.prm = ((TextView)localView.findViewById(2131826011));
+      paramViewGroup.pro = localView.findViewById(2131826004);
+      paramViewGroup.prp = ((TextView)localView.findViewById(2131826005));
+      paramViewGroup.prq = ((TextView)localView.findViewById(2131826006));
+      paramViewGroup.prn = ((TextView)localView.findViewById(2131826010));
       localView.setTag(paramViewGroup);
-      locali = vL(paramInt);
+      locali = Bk(paramInt);
       i = 0;
       if (paramInt != 0) {
-        break label600;
+        break label592;
       }
       i = 1;
-      paramView = vL(0);
+      paramView = Bk(0);
       localObject1 = new GregorianCalendar();
-      ((GregorianCalendar)localObject1).setTimeInMillis(paramView.mPL * 1000L);
-      paramView = MallOrderRecordListUI.dB(((GregorianCalendar)localObject1).get(1), ((GregorianCalendar)localObject1).get(2) + 1);
+      ((GregorianCalendar)localObject1).setTimeInMillis(paramView.CreateTime * 1000L);
+      paramView = MallOrderRecordListUI.fb(((GregorianCalendar)localObject1).get(1), ((GregorianCalendar)localObject1).get(2) + 1);
     }
     for (;;)
     {
@@ -81,65 +83,66 @@ public final class MallOrderRecordListUI$a
       {
         if (i != 0)
         {
-          localObject1 = new SimpleDateFormat(this.mQU.getString(a.i.fmt_year_month, new Object[] { "" })).format(new Date(vL(paramInt).mPL * 1000L));
-          paramViewGroup.mRc.setText((CharSequence)localObject1);
-          if ((!bk.bl(paramView)) && (!bk.bl((String)this.mQU.mQT.get(paramView)))) {
-            paramViewGroup.mRd.setText((CharSequence)this.mQU.mQT.get(paramView));
+          localObject1 = new SimpleDateFormat(this.prh.getString(2131300112, new Object[] { "" })).format(new Date(Bk(paramInt).CreateTime * 1000L));
+          paramViewGroup.prp.setText((CharSequence)localObject1);
+          if ((!bo.isNullOrNil(paramView)) && (!bo.isNullOrNil((String)this.prh.prg.get(paramView)))) {
+            paramViewGroup.prq.setText((CharSequence)this.prh.prg.get(paramView));
           }
-          paramViewGroup.mRb.setVisibility(0);
-          label342:
-          paramViewGroup.mQW.setText(locali.mPK);
-          paramViewGroup.mQX.setText(locali.mPM);
-          i = this.mQU.mController.uMN.getResources().getColor(a.c.mall_order_detail_item_subtitle_color);
+          paramViewGroup.pro.setVisibility(0);
+          label337:
+          paramViewGroup.prj.setText(locali.pqa);
+          paramViewGroup.prk.setText(locali.pqb);
+          i = this.prh.getContext().getResources().getColor(2131690269);
           paramInt = i;
-          if (bk.bl(locali.mPY)) {}
+          if (bo.isNullOrNil(locali.pqn)) {}
         }
         try
         {
-          paramInt = Color.parseColor(locali.mPY);
-          paramViewGroup.mQX.setTextColor(paramInt);
-          paramViewGroup.mQY.setText(this.mQU.vK(locali.mPL));
-          i = this.mQU.mController.uMN.getResources().getColor(a.c.mall_order_detail_item_title_color);
+          paramInt = Color.parseColor(locali.pqn);
+          paramViewGroup.prk.setTextColor(paramInt);
+          paramViewGroup.prl.setText(this.prh.Bj(locali.CreateTime));
+          i = this.prh.getContext().getResources().getColor(2131690271);
           paramInt = i;
-          if (bk.bl(locali.mPZ)) {}
+          if (bo.isNullOrNil(locali.pqo)) {}
         }
         catch (Exception paramView)
         {
           try
           {
-            paramInt = Color.parseColor(locali.mPZ);
-            if (locali.mPJ != locali.mQa)
+            paramInt = Color.parseColor(locali.pqo);
+            if (locali.ppZ != locali.pqp)
             {
-              paramView = e.d(locali.mPJ / 100.0D, locali.mPO);
+              paramView = e.e(locali.ppZ / 100.0D, locali.pqd);
               localObject1 = new SpannableString(paramView);
               ((SpannableString)localObject1).setSpan(new StrikethroughSpan(), 0, paramView.length(), 33);
-              paramViewGroup.mQZ.setText((CharSequence)localObject1);
-              paramViewGroup.mRa.setTextColor(paramInt);
-              paramViewGroup.mRa.setText(e.d(locali.mQa / 100.0D, locali.mPO));
+              paramViewGroup.prm.setText((CharSequence)localObject1);
+              paramViewGroup.prn.setTextColor(paramInt);
+              paramViewGroup.prn.setText(e.e(locali.pqp / 100.0D, locali.pqd));
+              AppMethodBeat.o(43858);
               return localView;
               paramViewGroup = (MallOrderRecordListUI.b)paramView.getTag();
               localView = paramView;
               break;
-              label600:
-              paramView = vL(paramInt);
-              Object localObject2 = vL(paramInt - 1);
-              if ((paramView.mPL <= 0) || (((i)localObject2).mPL <= 0)) {
-                break label829;
+              label592:
+              paramView = Bk(paramInt);
+              Object localObject2 = Bk(paramInt - 1);
+              if ((paramView.CreateTime <= 0) || (((i)localObject2).CreateTime <= 0)) {
+                break label821;
               }
               localObject1 = new GregorianCalendar();
-              ((GregorianCalendar)localObject1).setTimeInMillis(((i)localObject2).mPL * 1000L);
+              ((GregorianCalendar)localObject1).setTimeInMillis(((i)localObject2).CreateTime * 1000L);
               localObject2 = new GregorianCalendar();
-              ((GregorianCalendar)localObject2).setTimeInMillis(paramView.mPL * 1000L);
+              ((GregorianCalendar)localObject2).setTimeInMillis(paramView.CreateTime * 1000L);
               if ((((GregorianCalendar)localObject1).get(1) == ((GregorianCalendar)localObject2).get(1)) && (((GregorianCalendar)localObject1).get(2) == ((GregorianCalendar)localObject2).get(2))) {
-                break label829;
+                break label821;
               }
               i = 1;
-              paramView = MallOrderRecordListUI.dB(((GregorianCalendar)localObject2).get(1), ((GregorianCalendar)localObject2).get(2) + 1);
+              paramView = MallOrderRecordListUI.fb(((GregorianCalendar)localObject2).get(1), ((GregorianCalendar)localObject2).get(2) + 1);
               continue;
-              paramViewGroup.mRb.setVisibility(8);
-              break label342;
+              paramViewGroup.pro.setVisibility(8);
+              break label337;
               paramView = paramView;
-              y.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + bk.pm(locali.mPY));
+              ab.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + bo.nullAsNil(locali.pqn));
               paramInt = i;
             }
           }
@@ -147,12 +150,12 @@ public final class MallOrderRecordListUI$a
           {
             for (;;)
             {
-              y.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + bk.pm(locali.mPZ));
+              ab.w("MicroMsg.WalletOrderListUI", "Parse color exp. colortext=" + bo.nullAsNil(locali.pqo));
               paramInt = i;
               continue;
-              paramViewGroup.mQZ.setText("");
+              paramViewGroup.prm.setText("");
             }
-            label829:
+            label821:
             paramView = null;
           }
         }
@@ -162,7 +165,7 @@ public final class MallOrderRecordListUI$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.MallOrderRecordListUI.a
  * JD-Core Version:    0.7.0.1
  */

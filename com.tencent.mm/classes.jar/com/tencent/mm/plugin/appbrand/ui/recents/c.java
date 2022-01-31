@@ -1,19 +1,22 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
-import a.d.b.g;
+import a.f.b.j;
+import a.l;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.appbrand.app.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.app.g;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
 import com.tencent.mm.plugin.appbrand.appusage.w;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI;
-import com.tencent.mm.plugin.appbrand.y.j;
+import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherFolderUI.a;
+import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
 import java.util.List;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherHeaderRecentsEntrance;", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherListHeaderFolderEntrance;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandUsageStorage;", "activity", "Landroid/app/Activity;", "viewGroup", "Landroid/view/ViewGroup;", "(Landroid/app/Activity;Landroid/view/ViewGroup;)V", "getTitle", "", "onClick", "", "v", "Landroid/view/View;", "queryList", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "shouldShowcaseEnableSwitch", "show", "", "plugin-appbrand-integration_release"})
 public final class c
   extends d<w>
 {
@@ -22,39 +25,41 @@ public final class c
     super(w.class, paramActivity, paramViewGroup);
   }
   
-  protected final List<? extends LocalUsageInfo> apM()
+  protected final List<? extends LocalUsageInfo> aNg()
   {
-    return (List)((w)e.G(w.class)).kB(this.hgQ);
+    AppMethodBeat.i(135130);
+    List localList = (List)((w)g.w(w.class)).nx(this.iSr);
+    AppMethodBeat.o(135130);
+    return localList;
+  }
+  
+  public final void eS(boolean paramBoolean)
+  {
+    AppMethodBeat.i(135129);
+    this.iSt.post((Runnable)new c.a(this, paramBoolean));
+    AppMethodBeat.o(135129);
   }
   
   protected final String getTitle()
   {
-    String str = getActivity().getString(y.j.app_brand_recents_list_header_recent_tag_wording);
-    g.j(str, "activity.getString(com.t…eader_recent_tag_wording)");
+    AppMethodBeat.i(135131);
+    String str = getActivity().getString(2131296818);
+    j.p(str, "activity.getString(com.t…eader_recent_tag_wording)");
+    AppMethodBeat.o(135131);
     return str;
   }
   
   public final void onClick(View paramView)
   {
-    paramView = AppBrandLauncherFolderUI.hcQ;
+    AppMethodBeat.i(135132);
+    paramView = AppBrandLauncherFolderUI.iMD;
     paramView = getActivity();
-    g.j(paramView, "activity");
-    Context localContext = (Context)paramView;
-    paramView = new Intent();
-    paramView.putExtra("extra_get_usage_reason", 3);
-    g.k(localContext, "context");
-    Intent localIntent = new Intent(localContext, AppBrandLauncherFolderUI.class);
-    if (!(localContext instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    Bundle localBundle = paramView.getExtras();
-    paramView = localBundle;
-    if (localBundle == null) {
-      paramView = Bundle.EMPTY;
-    }
-    localIntent.putExtras(paramView);
-    localIntent.putExtra("KEY_MODE", 1);
-    localContext.startActivity(localIntent);
+    j.p(paramView, "activity");
+    paramView = (Context)paramView;
+    Intent localIntent = new Intent();
+    localIntent.putExtra("extra_get_usage_reason", 3);
+    AppBrandLauncherFolderUI.a.n(paramView, localIntent);
+    AppMethodBeat.o(135132);
   }
 }
 

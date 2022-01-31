@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.view.MenuItem;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.masssend.a.a;
 import com.tencent.mm.plugin.masssend.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.ah;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.ui.base.n.d;
@@ -20,67 +20,69 @@ final class MassSendHistoryUI$4
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
+    AppMethodBeat.i(22797);
     Object localObject1;
+    Object localObject2;
     if (paramMenuItem.getItemId() == 1)
     {
-      localObject1 = (a)MassSendHistoryUI.b(this.mbC).getItem(paramMenuItem.getGroupId());
-      if (localObject1 != null) {
-        break label35;
+      localObject1 = (a)MassSendHistoryUI.b(this.oCd).getItem(paramMenuItem.getGroupId());
+      if (localObject1 == null)
+      {
+        AppMethodBeat.o(22797);
+        return;
+      }
+      if (((a)localObject1).bOT().equals(MassSendHistoryUI.b(this.oCd).oBL)) {
+        MassSendHistoryUI.h(this.oCd);
+      }
+      paramMenuItem = com.tencent.mm.plugin.masssend.a.h.bPc();
+      localObject1 = ((a)localObject1).bOT();
+      localObject2 = paramMenuItem.fnw.a("select * from massendinfo ORDER BY createtime DESC  limit 2", null, 0);
+      if (localObject2 != null)
+      {
+        if (((Cursor)localObject2).getCount() != 0) {
+          break label154;
+        }
+        ((Cursor)localObject2).close();
       }
     }
     for (;;)
     {
-      return;
-      label35:
-      if (((a)localObject1).bgV().equals(MassSendHistoryUI.b(this.mbC).mbj)) {
-        MassSendHistoryUI.h(this.mbC);
-      }
-      paramMenuItem = com.tencent.mm.plugin.masssend.a.h.bhd();
-      localObject1 = ((a)localObject1).bgV();
-      Object localObject2 = paramMenuItem.dXo.a("select * from massendinfo ORDER BY createtime DESC  limit 2", null, 0);
-      if (localObject2 != null)
-      {
-        if (((Cursor)localObject2).getCount() != 0) {
-          break label133;
-        }
-        ((Cursor)localObject2).close();
-      }
-      while (paramMenuItem.dXo.delete("massendinfo", "clientid= ?", new String[] { localObject1 }) > 0)
-      {
+      if (paramMenuItem.fnw.delete("massendinfo", "clientid= ?", new String[] { String.valueOf(localObject1) }) > 0) {
         paramMenuItem.doNotify();
-        return;
-        label133:
-        a locala;
-        if (((Cursor)localObject2).getCount() == 1)
-        {
-          ((Cursor)localObject2).moveToFirst();
-          locala = new a();
-          locala.d((Cursor)localObject2);
-          ((Cursor)localObject2).close();
-          localObject2 = new ak();
-          ((ak)localObject2).setUsername("masssendapp");
-          ((ak)localObject2).setContent(ae.getContext().getResources().getString(R.l.contact_info_masssend_tip));
-          ((ak)localObject2).ba(locala.createTime);
-          ((ak)localObject2).fA(0);
-          ((ak)localObject2).fy(0);
-          au.Hx();
-          com.tencent.mm.model.c.FB().a((ak)localObject2, "masssendapp");
-        }
-        else
-        {
-          ((Cursor)localObject2).moveToPosition(1);
-          locala = new a();
-          locala.d((Cursor)localObject2);
-          ((Cursor)localObject2).close();
-          localObject2 = new ak();
-          ((ak)localObject2).setUsername("masssendapp");
-          ((ak)localObject2).setContent(b.a(locala));
-          ((ak)localObject2).ba(locala.createTime);
-          ((ak)localObject2).fA(0);
-          ((ak)localObject2).fy(0);
-          au.Hx();
-          com.tencent.mm.model.c.FB().a((ak)localObject2, "masssendapp");
-        }
+      }
+      AppMethodBeat.o(22797);
+      return;
+      label154:
+      a locala;
+      if (((Cursor)localObject2).getCount() == 1)
+      {
+        ((Cursor)localObject2).moveToFirst();
+        locala = new a();
+        locala.convertFrom((Cursor)localObject2);
+        ((Cursor)localObject2).close();
+        localObject2 = new ak();
+        ((ak)localObject2).setUsername("masssendapp");
+        ((ak)localObject2).setContent(ah.getContext().getResources().getString(2131298661));
+        ((ak)localObject2).fK(locala.createTime);
+        ((ak)localObject2).hL(0);
+        ((ak)localObject2).hJ(0);
+        aw.aaz();
+        com.tencent.mm.model.c.YF().a((ak)localObject2, "masssendapp");
+      }
+      else
+      {
+        ((Cursor)localObject2).moveToPosition(1);
+        locala = new a();
+        locala.convertFrom((Cursor)localObject2);
+        ((Cursor)localObject2).close();
+        localObject2 = new ak();
+        ((ak)localObject2).setUsername("masssendapp");
+        ((ak)localObject2).setContent(b.a(locala));
+        ((ak)localObject2).fK(locala.createTime);
+        ((ak)localObject2).hL(0);
+        ((ak)localObject2).hJ(0);
+        aw.aaz();
+        com.tencent.mm.model.c.YF().a((ak)localObject2, "masssendapp");
       }
     }
   }

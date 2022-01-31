@@ -1,36 +1,37 @@
 package com.tencent.mm.pluginsdk.model;
 
 import android.os.Looper;
-import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.g.b.a;
+import com.tencent.mm.sdk.platformtools.ak;
 import junit.framework.Assert;
 
 public abstract class k<Params, Progress, Result>
 {
-  private boolean bSr = false;
-  ah handler = new ah(Looper.getMainLooper());
+  ak handler = new ak(Looper.getMainLooper());
+  private boolean isStart = false;
   
-  public abstract ah byB();
+  public abstract Result cL();
   
-  public abstract Result cj();
+  public abstract a cjN();
   
   public void onPostExecute(Result paramResult) {}
   
-  public final boolean p(Params... paramVarArgs)
+  public final boolean v(Params... paramVarArgs)
   {
-    if (this.bSr) {
+    if (this.isStart) {
       Assert.assertTrue("MicroMsg.MMAsyncTask Should construct a new Task", false);
     }
-    this.bSr = true;
-    q(paramVarArgs);
-    ah localah = byB();
-    if (localah == null) {
+    this.isStart = true;
+    w(paramVarArgs);
+    a locala = cjN();
+    if (locala == null) {
       return false;
     }
-    localah.post(new k.1(this, paramVarArgs));
+    locala.execute(new k.1(this, paramVarArgs));
     return true;
   }
   
-  public void q(Params... paramVarArgs) {}
+  public void w(Params... paramVarArgs) {}
 }
 
 

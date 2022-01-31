@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.account.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ContactsSyncUI$3
   implements DialogInterface.OnClickListener
@@ -10,8 +11,10 @@ final class ContactsSyncUI$3
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    AppMethodBeat.i(124743);
     paramDialogInterface.dismiss();
-    this.flj.finish();
+    this.gCA.finish();
+    AppMethodBeat.o(124743);
   }
 }
 

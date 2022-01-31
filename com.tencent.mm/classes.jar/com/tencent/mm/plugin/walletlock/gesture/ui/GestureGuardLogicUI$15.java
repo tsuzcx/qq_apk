@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.walletlock.gesture.ui;
 
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GestureGuardLogicUI$15
   implements Animation.AnimationListener
@@ -10,10 +11,12 @@ final class GestureGuardLogicUI$15
   
   public final void onAnimationEnd(Animation paramAnimation)
   {
-    GestureGuardLogicUI.s(this.qPX).setAnimationListener(null);
-    if (this.qQa != null) {
-      this.qQa.onDone();
+    AppMethodBeat.i(51600);
+    GestureGuardLogicUI.s(this.uFf).setAnimationListener(null);
+    if (this.uFi != null) {
+      this.uFi.onDone();
     }
+    AppMethodBeat.o(51600);
   }
   
   public final void onAnimationRepeat(Animation paramAnimation) {}

@@ -1,23 +1,62 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import java.util.LinkedList;
-import org.json.JSONArray;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.database.Cursor;
+import android.net.Uri;
+import com.tencent.luggage.wxa.storage.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ah;
 
-final class t
+public final class t
 {
-  static LinkedList<String> j(JSONArray paramJSONArray)
+  private static final Uri URI;
+  private static final t hkn;
+  
+  static
   {
-    if (paramJSONArray == null) {
+    AppMethodBeat.i(94156);
+    URI = Uri.parse("content://" + a.AUTHORITY + "/WxaAttributesTable");
+    hkn = new t();
+    AppMethodBeat.o(94156);
+  }
+  
+  public static WxaAttributes AF(String paramVarArgs)
+  {
+    AppMethodBeat.i(94154);
+    paramVarArgs = f(String.format("%s=?", new Object[] { "appId" }), new String[] { paramVarArgs });
+    AppMethodBeat.o(94154);
+    return paramVarArgs;
+  }
+  
+  public static t ayI()
+  {
+    return hkn;
+  }
+  
+  public static WxaAttributes f(String paramString, String[] paramArrayOfString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(94155);
+    paramArrayOfString = ah.getContext().getContentResolver().query(URI, null, paramString, paramArrayOfString, null);
+    if (paramArrayOfString == null)
+    {
+      AppMethodBeat.o(94155);
       return null;
     }
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    while (i < paramJSONArray.length())
+    paramString = localObject;
+    if (!paramArrayOfString.isClosed())
     {
-      localLinkedList.add(paramJSONArray.optString(i));
-      i += 1;
+      paramString = localObject;
+      if (paramArrayOfString.moveToFirst())
+      {
+        paramString = new WxaAttributes();
+        paramString.convertFrom(paramArrayOfString);
+      }
     }
-    return localLinkedList;
+    paramArrayOfString.close();
+    AppMethodBeat.o(94155);
+    return paramString;
   }
 }
 

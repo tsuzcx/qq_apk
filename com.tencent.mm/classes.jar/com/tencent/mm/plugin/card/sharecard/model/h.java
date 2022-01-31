@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.card.sharecard.model;
 
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.network.q;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.sharecard.a.a;
 import com.tencent.mm.plugin.card.sharecard.a.a.2;
-import com.tencent.mm.protocal.c.brk;
-import com.tencent.mm.protocal.c.brl;
-import com.tencent.mm.protocal.c.brm;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cbv;
+import com.tencent.mm.protocal.protobuf.cbw;
+import com.tencent.mm.protocal.protobuf.cbx;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
 import java.util.Iterator;
@@ -27,208 +27,188 @@ public final class h
   extends m
   implements com.tencent.mm.network.k
 {
-  private final com.tencent.mm.ah.b dmK;
-  private f dmL;
+  private f callback;
+  private final com.tencent.mm.ai.b rr;
   
   public h()
   {
+    AppMethodBeat.i(88036);
     b.a locala = new b.a();
-    locala.ecH = new brl();
-    locala.ecI = new brm();
+    locala.fsX = new cbw();
+    locala.fsY = new cbx();
     locala.uri = "/cgi-bin/micromsg-bin/sharecardsync";
-    locala.ecG = 906;
-    locala.ecJ = 0;
-    locala.ecK = 0;
-    this.dmK = locala.Kt();
-    ((brl)this.dmK.ecE.ecN).tIi = ((Long)g.DP().Dz().get(ac.a.upg, Long.valueOf(0L))).longValue();
+    locala.funcId = 906;
+    locala.reqCmdId = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.ado();
+    ((cbw)this.rr.fsV.fta).xMw = ((Long)g.RL().Ru().get(ac.a.yzc, Long.valueOf(0L))).longValue();
+    AppMethodBeat.o(88036);
   }
   
-  private static boolean a(brk parambrk)
+  private static boolean b(cbv paramcbv)
   {
-    if (parambrk == null)
+    AppMethodBeat.i(88039);
+    if (paramcbv == null)
     {
-      y.e("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem fail, null cmd");
+      ab.e("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem fail, null cmd");
+      AppMethodBeat.o(88039);
       return false;
     }
-    y.i("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem, item card_id = %s, seq = %d", new Object[] { parambrk.bZc, Long.valueOf(parambrk.tIh) });
+    ab.i("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem, item card_id = %s, seq = %d", new Object[] { paramcbv.cHn, Long.valueOf(paramcbv.xyE) });
     for (;;)
     {
+      Object localObject;
       boolean bool;
       try
       {
-        y.i("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem, card user item, Status = %d", new Object[] { Integer.valueOf(parambrk.ioG) });
-        switch (parambrk.ioG)
+        ab.i("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem, card user item, Status = %d", new Object[] { Integer.valueOf(paramcbv.kpN) });
+        switch (paramcbv.kpN)
         {
         case 0: 
-          y.e("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem, card user item, unknown StateFlag = %d", new Object[] { Integer.valueOf(parambrk.ioG) });
+          ab.e("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem, card user item, unknown StateFlag = %d", new Object[] { Integer.valueOf(paramcbv.kpN) });
+          AppMethodBeat.o(88039);
           return false;
         }
       }
-      catch (Exception parambrk)
+      catch (Exception paramcbv)
       {
-        y.e("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem fail, ex = %s", new Object[] { parambrk.getMessage() });
+        ab.e("MicroMsg.NetSceneShareCardSync", "processShareCardCmdItem fail, ex = %s", new Object[] { paramcbv.getMessage() });
+        AppMethodBeat.o(88039);
         return false;
       }
-      Object localObject1 = am.aAz();
-      if (parambrk == null)
+      am.bck().a(paramcbv);
+      if ((paramcbv.kpN != 0) && (paramcbv.kpN != 5))
       {
-        y.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr push fail, ShareCardSyncItem is null");
-        if ((parambrk.ioG == 0) || (parambrk.ioG == 5)) {
-          break;
-        }
-        localObject1 = (String)g.DP().Dz().get(ac.a.upo, "");
-        bool = ((Boolean)g.DP().Dz().get(ac.a.upp, Boolean.valueOf(false))).booleanValue();
-        if ((bool) && (!bk.bl((String)localObject1)) && (((String)localObject1).equals(parambrk.bZc)))
+        localObject = (String)g.RL().Ru().get(ac.a.yzk, "");
+        bool = ((Boolean)g.RL().Ru().get(ac.a.yzl, Boolean.FALSE)).booleanValue();
+        if ((bool) && (!bo.isNullOrNil((String)localObject)) && (((String)localObject).equals(paramcbv.cHn)))
         {
-          y.i("MicroMsg.NetSceneShareCardSync", "need check is true, do clearRedDotAndWording()");
-          com.tencent.mm.plugin.card.b.k.aAg();
-          break;
+          ab.i("MicroMsg.NetSceneShareCardSync", "need check is true, do clearRedDotAndWording()");
+          com.tencent.mm.plugin.card.b.k.bbS();
         }
       }
       else
       {
-        ??? = am.aAA().yy(parambrk.bZc);
-        Object localObject3 = parambrk.bZc;
-        long l;
-        if (??? == null)
+        AppMethodBeat.o(88039);
+        return true;
+        localObject = am.bck();
+        if (paramcbv == null)
         {
-          l = 0L;
-          y.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr pushShareCardSyncItem, card_id = %s, localSeq = %d, svrSeq = %d", new Object[] { localObject3, Long.valueOf(l), Long.valueOf(parambrk.tIh) });
-          if ((??? != null) && (((ShareCardInfo)???).field_updateSeq == parambrk.tIh)) {
-            y.e("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr push ShareCardSyncItem fail, card.field_updateSeq == item.seq");
-          }
-        }
-        else
-        {
-          l = ((ShareCardInfo)???).field_updateSeq;
+          ab.e("MicroMsg.ShareCardBatchGetCardMgr", "delete item is  null");
           continue;
         }
-        localObject3 = n.b(parambrk);
-        synchronized (((a)localObject1).dMQ)
-        {
-          if (!((a)localObject1).ijT.contains(localObject3)) {}
-        }
-        if (((a)localObject1).ijU.contains(localObject3)) {
-          continue;
-        }
-        ((a)localObject1).ijT.add(localObject3);
-        y.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr pushShareCardSyncItem, insertRet = %b", new Object[] { Boolean.valueOf(am.aAB().b((c)localObject3)) });
-        continue;
-        localObject1 = am.aAz();
-        if (parambrk == null)
-        {
-          y.e("MicroMsg.ShareCardBatchGetCardMgr", "delete item is  null");
-          continue;
-        }
-        ??? = am.aAA().yy(parambrk.bZc);
-        am.aAA().yx(parambrk.bZc);
-        y.i("MicroMsg.ShareCardBatchGetCardMgr", "delete share card for id " + parambrk.bZc);
-        if (??? != null) {
-          com.tencent.mm.plugin.card.sharecard.a.b.a(ae.getContext(), (com.tencent.mm.plugin.card.base.b)???);
+        ShareCardInfo localShareCardInfo = am.bcl().HZ(paramcbv.cHn);
+        am.bcl().HY(paramcbv.cHn);
+        ab.i("MicroMsg.ShareCardBatchGetCardMgr", "delete share card for id " + paramcbv.cHn);
+        if (localShareCardInfo != null) {
+          com.tencent.mm.plugin.card.sharecard.a.b.a(ah.getContext(), localShareCardInfo);
         }
         for (;;)
         {
-          ((a)localObject1).axs();
+          ((a)localObject).onChange();
           break;
-          y.e("MicroMsg.ShareCardBatchGetCardMgr", "info is null");
+          ab.e("MicroMsg.ShareCardBatchGetCardMgr", "info is null");
         }
       }
-      if (bool)
-      {
-        y.i("MicroMsg.NetSceneShareCardSync", "need check is true, but card id is diff!");
-        break;
+      if (bool) {
+        ab.i("MicroMsg.NetSceneShareCardSync", "need check is true, but card id is diff!");
+      } else {
+        ab.i("MicroMsg.NetSceneShareCardSync", "need check is false");
       }
-      y.i("MicroMsg.NetSceneShareCardSync", "need check is false");
-      break;
     }
-    return true;
   }
   
-  public final int a(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.e parame, f paramf)
   {
-    this.dmL = paramf;
-    return a(parame, this.dmK, this);
-  }
-  
-  public final void a(int paramInt1, int paramInt2, int paramInt3, String paramString, q arg5, byte[] paramArrayOfByte)
-  {
-    y.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(906), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if ((paramInt2 != 0) || (paramInt3 != 0))
-    {
-      y.e("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, share card sync fail, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      return;
-    }
-    paramArrayOfByte = (brm)this.dmK.ecF.ecN;
-    if (paramArrayOfByte.dTx == null)
-    {
-      ??? = null;
-      if (??? != null) {
-        break label227;
-      }
-      paramInt1 = 0;
-      label117:
-      y.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, share card cmd list size = %d, continueFlag = %d, req = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramArrayOfByte.tIj), Long.valueOf(paramArrayOfByte.tIh) });
-      if ((??? == null) || (???.size() <= 0)) {
-        break label363;
-      }
-      paramInt1 = 0;
-      ??? = ???.iterator();
-      label184:
-      if (!???.hasNext()) {
-        break label238;
-      }
-      if (a((brk)???.next())) {
-        break label450;
-      }
-      paramInt1 += 1;
-    }
-    label450:
-    for (;;)
-    {
-      break label184;
-      ??? = paramArrayOfByte.dTx;
-      break;
-      label227:
-      paramInt1 = ???.size();
-      break label117;
-      label238:
-      y.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, %d fail share cmds", new Object[] { Integer.valueOf(paramInt1) });
-      am.aAz().azK();
-      for (;;)
-      {
-        g.DP().Dz().c(ac.a.upg, Long.valueOf(paramArrayOfByte.tIh));
-        am.aAz().ioy = paramArrayOfByte.ioy;
-        if (paramArrayOfByte.tIj > 0)
-        {
-          y.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, should continue, continueFlag = %d", new Object[] { Integer.valueOf(paramArrayOfByte.tIj) });
-          ??? = am.aAz();
-          ???.mHandler.post(new a.2(???));
-        }
-        this.dmL.onSceneEnd(paramInt2, paramInt3, paramString, this);
-        return;
-        label363:
-        y.i("MicroMsg.NetSceneShareCardSync", "share cmdList == null or size is 0");
-        a locala = am.aAz();
-        y.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr sharecardsync retryAll, getNow = %b", new Object[] { Boolean.valueOf(true) });
-        synchronized (locala.dMQ)
-        {
-          locala.ijT.addAll(locala.ijU);
-          locala.ijU.clear();
-          locala.azK();
-        }
-      }
-    }
+    AppMethodBeat.i(88037);
+    this.callback = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(88037);
+    return i;
   }
   
   public final int getType()
   {
     return 906;
   }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q arg5, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(88038);
+    ab.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, cmdType = %d, errType = %d, errCode = %d", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
+    {
+      ab.e("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, share card sync fail, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(88038);
+      return;
+    }
+    paramArrayOfByte = (cbx)this.rr.fsW.fta;
+    if (paramArrayOfByte.fjy == null)
+    {
+      ??? = null;
+      if (??? != null) {
+        break label240;
+      }
+      paramInt1 = 0;
+      label130:
+      ab.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, share card cmd list size = %d, continueFlag = %d, req = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramArrayOfByte.xMx), Long.valueOf(paramArrayOfByte.xyE) });
+      if ((??? == null) || (???.size() <= 0)) {
+        break label382;
+      }
+      paramInt1 = 0;
+      ??? = ???.iterator();
+      label197:
+      if (!???.hasNext()) {
+        break label251;
+      }
+      if (b((cbv)???.next())) {
+        break label474;
+      }
+      paramInt1 += 1;
+    }
+    label474:
+    for (;;)
+    {
+      break label197;
+      ??? = paramArrayOfByte.fjy;
+      break;
+      label240:
+      paramInt1 = ???.size();
+      break label130;
+      label251:
+      ab.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, %d fail share cmds", new Object[] { Integer.valueOf(paramInt1) });
+      am.bck().bbq();
+      for (;;)
+      {
+        g.RL().Ru().set(ac.a.yzc, Long.valueOf(paramArrayOfByte.xyE));
+        am.bck().kpF = paramArrayOfByte.kpF;
+        if (paramArrayOfByte.xMx > 0)
+        {
+          ab.i("MicroMsg.NetSceneShareCardSync", "onGYNetEnd, should continue, continueFlag = %d", new Object[] { Integer.valueOf(paramArrayOfByte.xMx) });
+          ??? = am.bck();
+          ???.mHandler.post(new a.2(???));
+        }
+        this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+        AppMethodBeat.o(88038);
+        return;
+        label382:
+        ab.i("MicroMsg.NetSceneShareCardSync", "share cmdList == null or size is 0");
+        a locala = am.bck();
+        ab.i("MicroMsg.ShareCardBatchGetCardMgr", "scsmgr sharecardsync retryAll, getNow = %b", new Object[] { Boolean.TRUE });
+        synchronized (locala.eKs)
+        {
+          locala.pendingList.addAll(locala.kkT);
+          locala.kkT.clear();
+          locala.bbq();
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.websearch.widget.c;
 
 public abstract class a
 {
-  public abstract String caj();
+  public abstract String dae();
   
   public abstract String getName();
 }

@@ -2,12 +2,12 @@ package android.support.design.widget;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.support.v4.view.q;
+import android.support.v4.view.t;
 
 final class b$9
   implements ValueAnimator.AnimatorUpdateListener
 {
-  private int eY = this.fa;
+  private int fX = this.fZ;
   
   b$9(b paramb, int paramInt) {}
   
@@ -15,13 +15,13 @@ final class b$9
   {
     int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
     if (b.access$100()) {
-      q.p(this.eX.eS, i - this.eY);
+      t.q(this.fW.fR, i - this.fX);
     }
     for (;;)
     {
-      this.eY = i;
+      this.fX = i;
       return;
-      this.eX.eS.setTranslationY(i);
+      this.fW.fR.setTranslationY(i);
     }
   }
 }

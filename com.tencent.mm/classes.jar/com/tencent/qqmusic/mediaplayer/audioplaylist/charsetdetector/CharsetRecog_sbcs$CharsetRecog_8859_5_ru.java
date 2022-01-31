@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_sbcs$CharsetRecog_8859_5_ru
   extends CharsetRecog_sbcs.CharsetRecog_8859_5
 {
@@ -12,16 +14,21 @@ class CharsetRecog_sbcs$CharsetRecog_8859_5_ru
   
   public CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104742);
     int i = match(paramCharsetDetector, ngrams, byteMap);
-    if (i == 0) {
+    if (i == 0)
+    {
+      AppMethodBeat.o(104742);
       return null;
     }
-    return new CharsetMatch(paramCharsetDetector, this, i);
+    paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i);
+    AppMethodBeat.o(104742);
+    return paramCharsetDetector;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector.CharsetRecog_sbcs.CharsetRecog_8859_5_ru
  * JD-Core Version:    0.7.0.1
  */

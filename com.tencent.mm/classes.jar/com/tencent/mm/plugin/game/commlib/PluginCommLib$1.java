@@ -1,14 +1,17 @@
 package com.tencent.mm.plugin.game.commlib;
 
-import com.tencent.mm.h.a.jn;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.jw;
 import com.tencent.mm.sdk.b.c;
 
 final class PluginCommLib$1
-  extends c<jn>
+  extends c<jw>
 {
   PluginCommLib$1(PluginCommLib paramPluginCommLib)
   {
-    this.udX = jn.class.getName().hashCode();
+    AppMethodBeat.i(59410);
+    this.__eventId = jw.class.getName().hashCode();
+    AppMethodBeat.o(59410);
   }
 }
 

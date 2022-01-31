@@ -2,10 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.plugin.game.e.b;
-import com.tencent.mm.plugin.game.f.c;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameDownloadGuidanceUI$4
   implements MenuItem.OnMenuItemClickListener
@@ -14,8 +11,10 @@ final class GameDownloadGuidanceUI$4
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    int i = c.an(this.laC.mController.uMN, GameDownloadGuidanceUI.c(this.laC));
-    b.a(this.laC.mController.uMN, 10, 1008, 1, i, this.laC.kQh, null);
+    AppMethodBeat.i(111884);
+    int i = com.tencent.mm.plugin.game.f.c.ax(this.nyy.getContext(), GameDownloadGuidanceUI.c(this.nyy));
+    com.tencent.mm.game.report.c.a(this.nyy.getContext(), 10, 1008, 1, i, this.nyy.nok, null);
+    AppMethodBeat.o(111884);
     return true;
   }
 }

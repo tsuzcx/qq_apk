@@ -1,78 +1,108 @@
 package com.tencent.c.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class g
 {
-  String aYO = null;
-  String btt = null;
-  String btu = "0";
-  long btv = 0L;
+  String bUD = null;
+  String bUE = "0";
+  long bUF = 0L;
+  String bpw = null;
   
-  static g bE(String paramString)
+  static g cH(String paramString)
   {
+    AppMethodBeat.i(125775);
     g localg = new g();
-    if (s.bF(paramString)) {}
+    if (s.cI(paramString)) {}
     try
     {
       paramString = new JSONObject(paramString);
       if (!paramString.isNull("ui")) {
-        localg.aYO = paramString.getString("ui");
+        localg.bpw = paramString.getString("ui");
       }
       if (!paramString.isNull("mc")) {
-        localg.btt = paramString.getString("mc");
+        localg.bUD = paramString.getString("mc");
       }
       if (!paramString.isNull("mid")) {
-        localg.btu = paramString.getString("mid");
+        localg.bUE = paramString.getString("mid");
       }
       if (!paramString.isNull("ts")) {
-        localg.btv = paramString.getLong("ts");
+        localg.bUF = paramString.getLong("ts");
       }
-      return localg;
     }
-    catch (JSONException paramString) {}
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        s.zV();
+      }
+    }
+    AppMethodBeat.o(125775);
     return localg;
   }
   
-  private JSONObject rx()
+  private JSONObject zN()
   {
+    AppMethodBeat.i(125778);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      s.a(localJSONObject, "ui", this.aYO);
-      s.a(localJSONObject, "mc", this.btt);
-      s.a(localJSONObject, "mid", this.btu);
-      localJSONObject.put("ts", this.btv);
+      s.a(localJSONObject, "ui", this.bpw);
+      s.a(localJSONObject, "mc", this.bUD);
+      s.a(localJSONObject, "mid", this.bUE);
+      localJSONObject.put("ts", this.bUF);
+      AppMethodBeat.o(125778);
       return localJSONObject;
     }
-    catch (JSONException localJSONException) {}
-    return localJSONObject;
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        s.zV();
+      }
+    }
   }
   
   final int a(g paramg)
   {
-    if (paramg == null) {}
-    do
+    AppMethodBeat.i(125776);
+    if (paramg == null)
     {
-      do
+      AppMethodBeat.o(125776);
+      return 1;
+    }
+    if ((s.cJ(this.bUE)) && (s.cJ(paramg.bUE)))
+    {
+      if (this.bUE.equals(paramg.bUE))
       {
+        AppMethodBeat.o(125776);
+        return 0;
+      }
+      if (this.bUF >= paramg.bUF)
+      {
+        AppMethodBeat.o(125776);
         return 1;
-        if ((!s.bG(this.btu)) || (!s.bG(paramg.btu))) {
-          break;
-        }
-        if (this.btu.equals(paramg.btu)) {
-          return 0;
-        }
-      } while (this.btv >= paramg.btv);
+      }
+      AppMethodBeat.o(125776);
       return -1;
-    } while (s.bG(this.btu));
+    }
+    if (s.cJ(this.bUE))
+    {
+      AppMethodBeat.o(125776);
+      return 1;
+    }
+    AppMethodBeat.o(125776);
     return -1;
   }
   
   public final String toString()
   {
-    return rx().toString();
+    AppMethodBeat.i(125777);
+    String str = zN().toString();
+    AppMethodBeat.o(125777);
+    return str;
   }
 }
 

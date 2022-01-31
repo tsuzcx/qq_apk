@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.ipcall.ui;
 
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.storage.ac.a;
 import com.tencent.mm.storage.z;
@@ -14,20 +15,22 @@ final class IPCallShareCouponUI$1$1
   
   public final void run()
   {
-    au.Hx();
-    if (((Boolean)c.Dz().get(ac.a.uqm, Boolean.valueOf(false))).booleanValue()) {
-      IPCallShareCouponUI.a(this.lyY.lyX).setVisibility(0);
+    AppMethodBeat.i(22315);
+    aw.aaz();
+    if (((Boolean)c.Ru().get(ac.a.yAm, Boolean.FALSE)).booleanValue()) {
+      IPCallShareCouponUI.a(this.nWk.nWj).setVisibility(0);
     }
     for (;;)
     {
-      au.Hx();
-      String str = (String)c.Dz().get(ac.a.uql, "");
-      IPCallShareCouponUI.b(this.lyY.lyX).setText(str);
-      au.Hx();
-      str = (String)c.Dz().get(ac.a.uqn, "");
-      IPCallShareCouponUI.c(this.lyY.lyX).setText(str);
+      aw.aaz();
+      String str = (String)c.Ru().get(ac.a.yAl, "");
+      IPCallShareCouponUI.b(this.nWk.nWj).setText(str);
+      aw.aaz();
+      str = (String)c.Ru().get(ac.a.yAn, "");
+      IPCallShareCouponUI.c(this.nWk.nWj).setText(str);
+      AppMethodBeat.o(22315);
       return;
-      IPCallShareCouponUI.a(this.lyY.lyX).setVisibility(8);
+      IPCallShareCouponUI.a(this.nWk.nWj).setVisibility(8);
     }
   }
 }

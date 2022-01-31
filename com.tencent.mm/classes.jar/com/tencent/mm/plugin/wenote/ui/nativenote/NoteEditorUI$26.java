@@ -1,9 +1,7 @@
 package com.tencent.mm.plugin.wenote.ui.nativenote;
 
-import com.tencent.mm.R.l;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.s;
 
 final class NoteEditorUI$26
   implements Runnable
@@ -12,12 +10,14 @@ final class NoteEditorUI$26
   
   public final void run()
   {
-    h.b(this.rLT.mController.uMN, this.rLT.getString(R.l.wenote_text_limit_tips), null, true);
+    AppMethodBeat.i(27034);
+    h.b(this.vCx.getContext(), this.vCx.getString(2131305983), null, true);
+    AppMethodBeat.o(27034);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI.26
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.account.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMAutoSwitchEditTextView.a;
 
 final class EmailVerifyUI$1
@@ -7,10 +8,12 @@ final class EmailVerifyUI$1
 {
   EmailVerifyUI$1(EmailVerifyUI paramEmailVerifyUI) {}
   
-  public final void pZ(String paramString)
+  public final void xv(String paramString)
   {
-    this.flz.enableOptionMenu(true);
-    EmailVerifyUI.a(this.flz, paramString);
+    AppMethodBeat.i(124757);
+    this.gCQ.enableOptionMenu(true);
+    EmailVerifyUI.a(this.gCQ, paramString);
+    AppMethodBeat.o(124757);
   }
 }
 

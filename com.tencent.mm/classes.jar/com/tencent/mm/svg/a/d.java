@@ -2,7 +2,7 @@ package com.tencent.mm.svg.a;
 
 public abstract interface d
 {
-  public abstract void load(e.a parama);
+  public abstract void load(e.c paramc);
 }
 
 

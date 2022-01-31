@@ -1,6 +1,7 @@
 package com.tencent.mm.graphics.b;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -13,25 +14,27 @@ public final class d$1
   
   public final void run()
   {
-    synchronized (d.a(this.dDz))
+    AppMethodBeat.i(57086);
+    synchronized (d.a(this.eBa))
     {
-      if (d.b(this.dDz))
+      if (d.b(this.eBa))
       {
-        Iterator localIterator = d.c(this.dDz).values().iterator();
+        Iterator localIterator = d.c(this.eBa).values().iterator();
         if (!localIterator.hasNext()) {
-          break label79;
+          break label89;
         }
-        ((a)localIterator.next()).BK();
+        ((a)localIterator.next()).Pw();
       }
     }
-    y.w("MicroMsg.PerformanceMonitor", "hy: already stopped");
+    ab.w("MicroMsg.PerformanceMonitor", "hy: already stopped");
     cancel();
-    label79:
+    label89:
+    AppMethodBeat.o(57086);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.graphics.b.d.1
  * JD-Core Version:    0.7.0.1
  */

@@ -4,18 +4,18 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import android.widget.LinearLayout.LayoutParams;
+import android.view.ViewGroup.LayoutParams;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.util.Iterator;
 import java.util.List;
 
 public abstract class BasePanelKeybordLayout
   extends KeyboardLinearLayout
 {
-  private int kET = -1;
-  private BasePanelKeybordLayout.a uHr = null;
+  private int vYw = -1;
+  private BasePanelKeybordLayout.a yUC = null;
   
   public BasePanelKeybordLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -27,25 +27,25 @@ public abstract class BasePanelKeybordLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public abstract List<View> getPanelView();
+  protected abstract List<View> getPanelView();
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     int i = View.MeasureSpec.getSize(paramInt1);
     int m = View.MeasureSpec.getSize(paramInt2);
-    y.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
+    ab.d("MicroMsg.BasePanelKeybordLayout", "onMeasure, width: %d, height: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
     if (m >= 0)
     {
-      if (this.kET >= 0) {
+      if (this.vYw >= 0) {
         break label62;
       }
-      this.kET = m;
+      this.vYw = m;
     }
     label62:
     int n;
     label102:
     View localView;
-    LinearLayout.LayoutParams localLayoutParams;
+    ViewGroup.LayoutParams localLayoutParams;
     do
     {
       do
@@ -54,8 +54,8 @@ public abstract class BasePanelKeybordLayout
         {
           super.onMeasure(paramInt1, paramInt2);
           return;
-          n = this.kET - m;
-          this.kET = m;
+          n = this.vYw - m;
+          this.vYw = m;
         } while (n == 0);
         localObject = getPanelView();
       } while (localObject == null);
@@ -64,7 +64,7 @@ public abstract class BasePanelKeybordLayout
         break;
       }
       localView = (View)((Iterator)localObject).next();
-      localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
+      localLayoutParams = localView.getLayoutParams();
     } while (localLayoutParams == null);
     if (localLayoutParams.height < 0) {}
     for (i = 0;; i = localLayoutParams.height - n)
@@ -73,13 +73,13 @@ public abstract class BasePanelKeybordLayout
       if (i < 0) {
         j = 0;
       }
-      int i1 = j.u(ae.getContext(), true);
-      i = j.fy(getContext());
+      int i1 = j.gJ(ah.getContext());
+      i = j.gL(getContext());
       int k = j;
-      if (j.zM() > 0)
+      if (j.Mq() > 0)
       {
         k = j;
-        if (m >= j.zM()) {
+        if (m >= j.Mq()) {
           k = i;
         }
       }
@@ -107,7 +107,7 @@ public abstract class BasePanelKeybordLayout
           j = i;
         }
       }
-      y.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
+      ab.d("MicroMsg.BasePanelKeybordLayout", "oldHeight: %d, offset: %d newHeight: %d, validPanelHeight: %d", new Object[] { Integer.valueOf(localLayoutParams.height), Integer.valueOf(n), Integer.valueOf(j), Integer.valueOf(i) });
       localLayoutParams.height = j;
       localView.setLayoutParams(localLayoutParams);
       break label102;
@@ -117,12 +117,12 @@ public abstract class BasePanelKeybordLayout
   
   public void setOnMeasureListener(BasePanelKeybordLayout.a parama)
   {
-    this.uHr = parama;
+    this.yUC = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.BasePanelKeybordLayout
  * JD-Core Version:    0.7.0.1
  */

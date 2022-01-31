@@ -1,64 +1,79 @@
 package com.tencent.mm.plugin.game;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.a.b;
-import com.tencent.mm.plugin.game.model.r;
-import com.tencent.mm.plugin.game.model.u;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.game.model.b;
+import com.tencent.mm.plugin.game.model.q;
+import com.tencent.mm.plugin.game.model.t;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
-  implements com.tencent.mm.kernel.api.bucket.c, b
+  implements c, com.tencent.mm.plugin.game.api.d
 {
-  private com.tencent.mm.plugin.game.model.c kLM;
-  private u kLN;
-  private r kLO;
+  private b niq;
+  private t nir;
+  private q nis;
   
-  public final com.tencent.mm.plugin.game.model.c aYc()
+  public final b bEP()
   {
-    g.DN().CX();
-    if (this.kLM == null) {
-      this.kLM = new com.tencent.mm.plugin.game.model.c();
+    AppMethodBeat.i(111169);
+    g.RJ().QQ();
+    if (this.niq == null) {
+      this.niq = new b();
     }
-    return this.kLM;
+    b localb = this.niq;
+    AppMethodBeat.o(111169);
+    return localb;
   }
   
-  public final u aYd()
+  public final t bEQ()
   {
-    g.DN().CX();
-    if (this.kLN == null) {
-      this.kLN = new u();
+    AppMethodBeat.i(111170);
+    g.RJ().QQ();
+    if (this.nir == null) {
+      this.nir = new t();
     }
-    return this.kLN;
+    t localt = this.nir;
+    AppMethodBeat.o(111170);
+    return localt;
   }
   
-  public final r aYe()
+  public final q bER()
   {
-    g.DN().CX();
-    if (this.kLO == null) {
-      this.kLO = new r();
+    AppMethodBeat.i(111171);
+    g.RJ().QQ();
+    if (this.nis == null) {
+      this.nis = new q();
     }
-    return this.kLO;
+    q localq = this.nis;
+    AppMethodBeat.o(111171);
+    return localq;
   }
   
   public final void onAccountInitialized(e.c paramc)
   {
-    y.i("MicroMsg.GameService", "GameService onAccountInitialized");
-    this.kLM = new com.tencent.mm.plugin.game.model.c();
-    this.kLN = new u();
-    this.kLO = new r();
+    AppMethodBeat.i(111167);
+    ab.i("MicroMsg.GameService", "GameService onAccountInitialized");
+    this.niq = new b();
+    this.nir = new t();
+    this.nis = new q();
+    AppMethodBeat.o(111167);
   }
   
   public final void onAccountRelease()
   {
-    y.i("MicroMsg.GameService", "GameService onAccountRelease");
-    if (this.kLN != null)
+    AppMethodBeat.i(111168);
+    ab.i("MicroMsg.GameService", "GameService onAccountRelease");
+    if (this.nir != null)
     {
-      u localu = this.kLN;
-      g.Dk().b(1223, localu);
+      t localt = this.nir;
+      g.Rc().b(1223, localt);
     }
+    AppMethodBeat.o(111168);
   }
 }
 

@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ah.w.a;
-import com.tencent.mm.plugin.game.d.z;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.ai.w.a;
+import com.tencent.mm.plugin.game.d.aa;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CreateOrJoinChatroomUI$1
   implements w.a
@@ -14,25 +15,28 @@ final class CreateOrJoinChatroomUI$1
   
   public final int a(int paramInt1, int paramInt2, String paramString, b paramb, m paramm)
   {
-    paramb = (z)paramb.ecF.ecN;
+    AppMethodBeat.i(111702);
+    paramb = (aa)paramb.fsW.fta;
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      y.e("MicroMsg.CreateOrJoinChatroomUI", "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      ab.e("MicroMsg.CreateOrJoinChatroomUI", "CGI return is not OK. (%d, %d)(%s)", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
       if (paramInt1 == 4) {
-        CreateOrJoinChatroomUI.a(this.kWY, paramb.jxl);
+        CreateOrJoinChatroomUI.a(this.nva, paramb.lGK);
       }
       for (;;)
       {
-        CreateOrJoinChatroomUI.a(this.kWY);
-        this.kWY.finish();
+        CreateOrJoinChatroomUI.a(this.nva);
+        this.nva.finish();
+        AppMethodBeat.o(111702);
         return 0;
-        CreateOrJoinChatroomUI.a(this.kWY, -1);
+        CreateOrJoinChatroomUI.a(this.nva, -1);
       }
     }
-    paramString = paramb.kTe;
-    y.i("MicroMsg.CreateOrJoinChatroomUI", "Create Url: %s", new Object[] { paramString });
-    CreateOrJoinChatroomUI.a(this.kWY);
-    CreateOrJoinChatroomUI.a(this.kWY, paramString);
+    paramString = paramb.nre;
+    ab.i("MicroMsg.CreateOrJoinChatroomUI", "Create Url: %s", new Object[] { paramString });
+    CreateOrJoinChatroomUI.a(this.nva);
+    CreateOrJoinChatroomUI.a(this.nva, paramString);
+    AppMethodBeat.o(111702);
     return 0;
   }
 }

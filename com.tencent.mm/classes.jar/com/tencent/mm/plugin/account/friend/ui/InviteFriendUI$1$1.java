@@ -4,6 +4,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.n.a;
 import java.util.HashMap;
 
@@ -14,8 +15,10 @@ final class InviteFriendUI$1$1
   
   public final void a(ImageView paramImageView, MenuItem paramMenuItem)
   {
+    AppMethodBeat.i(108571);
     paramMenuItem = paramMenuItem.getTitle();
-    paramImageView.setImageDrawable(((ResolveInfo)this.fhU.get(paramMenuItem)).loadIcon(this.fhV));
+    paramImageView.setImageDrawable(((ResolveInfo)this.gzB.get(paramMenuItem)).loadIcon(this.gzC));
+    AppMethodBeat.o(108571);
   }
 }
 

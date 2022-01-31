@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.collect.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.aws;
-import com.tencent.mm.ui.widget.a.e.d;
+import com.tencent.mm.protocal.protobuf.bdh;
+import com.tencent.mm.ui.widget.b.e.c;
 
 final class CollectMainUI$6
-  implements e.d
+  implements e.c
 {
   CollectMainUI$6(CollectMainUI paramCollectMainUI) {}
   
-  public final void b(boolean paramBoolean, String paramString)
+  public final void d(boolean paramBoolean, String paramString)
   {
-    if (CollectMainUI.d(this.iLP) != null)
+    AppMethodBeat.i(41257);
+    if (CollectMainUI.d(this.kSz) != null)
     {
-      CollectMainUI.cF(CollectMainUI.d(this.iLP).username, CollectMainUI.d(this.iLP).ttj);
-      h.nFQ.f(15387, new Object[] { Integer.valueOf(3) });
+      CollectMainUI.dE(CollectMainUI.d(this.kSz).username, CollectMainUI.d(this.kSz).iFJ);
+      h.qsU.e(15387, new Object[] { Integer.valueOf(3) });
     }
+    AppMethodBeat.o(41257);
   }
 }
 

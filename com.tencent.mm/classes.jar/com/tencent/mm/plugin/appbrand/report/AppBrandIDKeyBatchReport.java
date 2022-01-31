@@ -1,58 +1,70 @@
 package com.tencent.mm.plugin.appbrand.report;
 
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.b;
-import com.tencent.mm.protocal.c.cmf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.protocal.protobuf.czw;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.j;
 
 public final class AppBrandIDKeyBatchReport
 {
-  private static volatile AppBrandIDKeyBatchReport.IDKeyBatchReportTask gXi;
+  private static volatile AppBrandIDKeyBatchReport.IDKeyBatchReportTask iFl;
   
-  public static void a(cmf paramcmf)
+  public static void a(czw paramczw)
   {
-    if (ae.cqV())
+    AppMethodBeat.i(132535);
+    if (ah.brt())
     {
-      AppBrandIDKeyBatchReport.b.c(paramcmf);
+      AppBrandIDKeyBatchReport.b.c(paramczw);
+      AppMethodBeat.o(132535);
       return;
     }
-    a.b(paramcmf);
+    a.b(paramczw);
+    AppMethodBeat.o(132535);
   }
   
-  public static AppBrandIDKeyBatchReport.IDKeyBatchReportTask anU()
+  public static AppBrandIDKeyBatchReport.IDKeyBatchReportTask aKS()
   {
-    if (gXi == null) {
-      gXi = new AppBrandIDKeyBatchReport.IDKeyBatchReportTask();
+    AppMethodBeat.i(132533);
+    if (iFl == null) {
+      iFl = new AppBrandIDKeyBatchReport.IDKeyBatchReportTask();
     }
-    return gXi;
+    AppBrandIDKeyBatchReport.IDKeyBatchReportTask localIDKeyBatchReportTask = iFl;
+    AppMethodBeat.o(132533);
+    return localIDKeyBatchReportTask;
   }
   
-  static String anV()
+  static String aKT()
   {
-    if (!g.DK()) {
-      throw new b();
+    AppMethodBeat.i(132534);
+    if (!g.RG())
+    {
+      localObject = new b();
+      AppMethodBeat.o(132534);
+      throw ((Throwable)localObject);
     }
-    String str2 = g.DP().cachePath;
-    String str1 = str2;
-    if (!str2.endsWith("/")) {
-      str1 = str2 + "/";
+    String str = g.RL().cachePath;
+    Object localObject = str;
+    if (!str.endsWith("/")) {
+      localObject = str + "/";
     }
-    str1 = str1 + "appbrand/report/";
-    h.Vu(str1);
-    return str1;
+    localObject = (String)localObject + "appbrand/report/";
+    j.akQ((String)localObject);
+    AppMethodBeat.o(132534);
+    return localObject;
   }
   
-  private static final class a
+  static final class a
   {
-    private static final byte[] gXj = new byte[0];
+    private static final byte[] iFm = new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.AppBrandIDKeyBatchReport
  * JD-Core Version:    0.7.0.1
  */

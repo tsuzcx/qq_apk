@@ -1,29 +1,43 @@
 package com.tencent.mm.plugin.qmessage;
 
-import com.tencent.mm.model.ar;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.at;
 import com.tencent.mm.plugin.qmessage.a.g;
 import com.tencent.mm.pluginsdk.b.b;
 import com.tencent.mm.pluginsdk.b.c;
-import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public class Plugin
   implements c
 {
-  private b hYb = new Plugin.1(this);
+  private b jRP;
   
-  public n createApplication()
+  public Plugin()
   {
-    return new a();
+    AppMethodBeat.i(24064);
+    this.jRP = new Plugin.1(this);
+    AppMethodBeat.o(24064);
   }
   
-  public ar createSubCore()
+  public o createApplication()
   {
-    return new g();
+    AppMethodBeat.i(24065);
+    a locala = new a();
+    AppMethodBeat.o(24065);
+    return locala;
+  }
+  
+  public at createSubCore()
+  {
+    AppMethodBeat.i(24066);
+    g localg = new g();
+    AppMethodBeat.o(24066);
+    return localg;
   }
   
   public b getContactWidgetFactory()
   {
-    return this.hYb;
+    return this.jRP;
   }
 }
 

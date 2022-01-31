@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.subapp;
 
 import android.annotation.SuppressLint;
-import com.tencent.mm.cf.h.d;
-import com.tencent.mm.model.am.f;
-import com.tencent.mm.model.ar;
-import com.tencent.mm.pluginsdk.f.f.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.app.j.a;
+import com.tencent.mm.cg.h.d;
+import com.tencent.mm.model.ao.f;
+import com.tencent.mm.model.at;
+import com.tencent.mm.pluginsdk.f.f.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.cc;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,122 +16,139 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public final class a
-  implements ar
+  implements at
 {
-  static cc pum;
-  private Map<String, ar> pun = new HashMap();
-  private a.a puo;
-  private com.tencent.mm.plugin.subapp.d.a pup;
-  private com.tencent.mm.plugin.subapp.d.c puq;
+  static cc sVM;
+  private j.a appForegroundListener;
+  private Map<String, at> sVN;
+  private a.a sVO;
+  private com.tencent.mm.plugin.subapp.d.a sVP;
+  private com.tencent.mm.plugin.subapp.d.c sVQ;
   
   public a()
   {
-    y.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp constructor: " + System.currentTimeMillis());
-    y.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp getSubCoreMap: " + System.currentTimeMillis());
+    AppMethodBeat.i(25171);
+    this.sVN = new HashMap();
+    this.appForegroundListener = new a.1(this);
+    ab.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp constructor: " + System.currentTimeMillis());
+    ab.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp getSubCoreMap: " + System.currentTimeMillis());
     HashMap localHashMap = new HashMap();
-    localHashMap.put(com.tencent.mm.aq.d.class.getName(), new com.tencent.mm.aq.d());
+    localHashMap.put(com.tencent.mm.ar.d.class.getName(), new com.tencent.mm.ar.d());
     localHashMap.put(com.tencent.mm.plugin.subapp.b.c.class.getName(), new com.tencent.mm.plugin.subapp.b.c());
     localHashMap.put(com.tencent.mm.plugin.subapp.a.c.class.getName(), new com.tencent.mm.plugin.subapp.a.c());
     Object localObject = new com.tencent.mm.plugin.subapp.c.d();
-    com.tencent.mm.model.am.a.dVB = (am.f)localObject;
+    com.tencent.mm.model.ao.a.flL = (ao.f)localObject;
     localHashMap.put(com.tencent.mm.plugin.subapp.c.d.class.getName(), localObject);
-    localObject = new com.tencent.mm.plugin.subapp.jdbiz.c();
-    localHashMap.put(com.tencent.mm.plugin.subapp.jdbiz.c.class.getName(), localObject);
-    com.tencent.mm.pluginsdk.f.f.rVL = (f.b)localObject;
-    this.pun = localHashMap;
+    localObject = new com.tencent.mm.plugin.subapp.jdbiz.d();
+    localHashMap.put(com.tencent.mm.plugin.subapp.jdbiz.d.class.getName(), localObject);
+    com.tencent.mm.pluginsdk.f.f.vMG = (f.a)localObject;
+    this.sVN = localHashMap;
+    AppMethodBeat.o(25171);
   }
   
-  public final ar Py(String paramString)
+  public final at adN(String paramString)
   {
-    return (ar)this.pun.get(paramString);
+    AppMethodBeat.i(25177);
+    paramString = (at)this.sVN.get(paramString);
+    AppMethodBeat.o(25177);
+    return paramString;
   }
   
-  public final void b(String paramString, ar paramar)
+  public final void b(String paramString, at paramat)
   {
-    this.pun.put(paramString, paramar);
+    AppMethodBeat.i(25178);
+    this.sVN.put(paramString, paramat);
+    AppMethodBeat.o(25178);
   }
   
-  public final void bh(boolean paramBoolean)
+  public final void clearPluginData(int paramInt)
   {
-    y.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp onAccountPostReset: " + System.currentTimeMillis());
-    Iterator localIterator = this.pun.entrySet().iterator();
+    AppMethodBeat.i(25173);
+    ab.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp clearPluginData: " + System.currentTimeMillis());
+    Iterator localIterator = this.sVN.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((ar)((Map.Entry)localIterator.next()).getValue()).bh(paramBoolean);
+      ((at)((Map.Entry)localIterator.next()).getValue()).clearPluginData(paramInt);
     }
-    if (this.puo == null) {
-      this.puo = new a.a();
-    }
-    if (this.pup == null) {
-      this.pup = new com.tencent.mm.plugin.subapp.d.a();
-    }
-    if (this.puq == null) {
-      this.puq = new com.tencent.mm.plugin.subapp.d.c();
-    }
-    com.tencent.mm.sdk.b.a.udP.c(this.puo);
-    com.tencent.mm.sdk.b.a.udP.c(this.puq);
-    com.tencent.mm.sdk.b.a.udP.c(this.pup);
+    AppMethodBeat.o(25173);
   }
   
-  public final void bi(boolean paramBoolean)
+  @SuppressLint({"UseSparseArrays"})
+  public final HashMap<Integer, h.d> getBaseDBFactories()
   {
-    y.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp onSdcardMount: " + System.currentTimeMillis());
-    Iterator localIterator = this.pun.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((ar)((Map.Entry)localIterator.next()).getValue()).bi(paramBoolean);
+    AppMethodBeat.i(25172);
+    ab.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp getBaseDBFactories: " + System.currentTimeMillis());
+    HashMap localHashMap = new HashMap();
+    Iterator localIterator = this.sVN.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (((at)localEntry.getValue()).getBaseDBFactories() != null) {
+        localHashMap.putAll(((at)localEntry.getValue()).getBaseDBFactories());
+      }
     }
+    AppMethodBeat.o(25172);
+    return localHashMap;
   }
   
-  public final void gf(int paramInt)
+  public final void onAccountPostReset(boolean paramBoolean)
   {
-    y.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp clearPluginData: " + System.currentTimeMillis());
-    Iterator localIterator = this.pun.entrySet().iterator();
+    AppMethodBeat.i(25174);
+    ab.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp onAccountPostReset: " + System.currentTimeMillis());
+    Iterator localIterator = this.sVN.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((ar)((Map.Entry)localIterator.next()).getValue()).gf(paramInt);
+      ((at)((Map.Entry)localIterator.next()).getValue()).onAccountPostReset(paramBoolean);
     }
+    if (this.sVO == null) {
+      this.sVO = new a.a();
+    }
+    if (this.sVP == null) {
+      this.sVP = new com.tencent.mm.plugin.subapp.d.a();
+    }
+    if (this.sVQ == null) {
+      this.sVQ = new com.tencent.mm.plugin.subapp.d.c();
+    }
+    com.tencent.mm.sdk.b.a.ymk.c(this.sVO);
+    com.tencent.mm.sdk.b.a.ymk.c(this.sVQ);
+    com.tencent.mm.sdk.b.a.ymk.c(this.sVP);
+    this.appForegroundListener.alive();
+    AppMethodBeat.o(25174);
   }
   
   public final void onAccountRelease()
   {
-    y.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp onAccountRelease: " + System.currentTimeMillis());
-    Iterator localIterator = this.pun.entrySet().iterator();
+    AppMethodBeat.i(25176);
+    ab.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp onAccountRelease: " + System.currentTimeMillis());
+    this.appForegroundListener.dead();
+    Iterator localIterator = this.sVN.entrySet().iterator();
     while (localIterator.hasNext()) {
-      ((ar)((Map.Entry)localIterator.next()).getValue()).onAccountRelease();
+      ((at)((Map.Entry)localIterator.next()).getValue()).onAccountRelease();
     }
-    if (this.puo != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.puo);
+    if (this.sVO != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.sVO);
     }
-    if (this.pup != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.pup);
+    if (this.sVP != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.sVP);
     }
-    if (this.puq != null) {
-      com.tencent.mm.sdk.b.a.udP.d(this.puq);
+    if (this.sVQ != null) {
+      com.tencent.mm.sdk.b.a.ymk.d(this.sVQ);
     }
+    AppMethodBeat.o(25176);
   }
   
-  @SuppressLint({"UseSparseArrays"})
-  public final HashMap<Integer, h.d> xe()
+  public final void onSdcardMount(boolean paramBoolean)
   {
-    y.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp getBaseDBFactories: " + System.currentTimeMillis());
-    HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.pun.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (((ar)localEntry.getValue()).xe() != null) {
-        localHashMap.putAll(((ar)localEntry.getValue()).xe());
-      }
+    AppMethodBeat.i(25175);
+    ab.i("MicroMsg.SubCoreSubapp", "SubCoreSubapp onSdcardMount: " + System.currentTimeMillis());
+    Iterator localIterator = this.sVN.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((at)((Map.Entry)localIterator.next()).getValue()).onSdcardMount(paramBoolean);
     }
-    return localHashMap;
-  }
-  
-  private static enum a$a
-  {
-    private a$a() {}
+    AppMethodBeat.o(25175);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.a
  * JD-Core Version:    0.7.0.1
  */

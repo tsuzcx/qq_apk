@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.offline.a;
 
-import com.tencent.mm.ah.p;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.p;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class s$1
   implements Runnable
@@ -11,9 +12,11 @@ final class s$1
   
   public final void run()
   {
-    y.v("MicroMsg.WalletOfflineMsgManager", "DO NetSceneOfflineAckMsg");
-    g.DQ();
-    g.DO().dJT.a(new b(this.mLA), 0);
+    AppMethodBeat.i(43421);
+    ab.v("MicroMsg.WalletOfflineMsgManager", "DO NetSceneOfflineAckMsg");
+    g.RM();
+    g.RK().eHt.a(new b(this.plR), 0);
+    AppMethodBeat.o(43421);
   }
 }
 

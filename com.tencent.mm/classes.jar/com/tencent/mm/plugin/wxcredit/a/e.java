@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.wallet_core.tenpay.model.j;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,23 +12,33 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class e
-  extends j
+  extends m
 {
-  public List<l> rQK;
-  public int rQL;
   public String token;
+  public List<l> vHB;
+  public int vHC;
   
   public e(String paramString)
   {
+    AppMethodBeat.i(48661);
     HashMap localHashMap = new HashMap();
     localHashMap.put("bind_serialno", paramString);
-    D(localHashMap);
+    setRequestData(localHashMap);
+    AppMethodBeat.o(48661);
   }
   
-  public final void a(int paramInt, String paramString, JSONObject paramJSONObject)
+  public final int getTenpayCgicmd()
   {
-    y.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
-    if (paramInt != 0) {
+    return 59;
+  }
+  
+  public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(48662);
+    ab.d("Micromsg.NetSceneTenpayCheckPwd", "errCode " + paramInt + " errMsg: " + paramString);
+    if (paramInt != 0)
+    {
+      AppMethodBeat.o(48662);
       return;
     }
     for (;;)
@@ -35,10 +46,10 @@ public final class e
       try
       {
         this.token = paramJSONObject.getString("session_key");
-        this.rQL = paramJSONObject.optInt("answer_times_left", -1);
+        this.vHC = paramJSONObject.optInt("answer_times_left", -1);
         paramString = paramJSONObject.getJSONArray("Array");
         if ((paramString == null) || (paramString.length() <= 0)) {
-          break;
+          break label314;
         }
         paramJSONObject = new HashMap();
         int i = paramString.length();
@@ -48,14 +59,14 @@ public final class e
           JSONObject localJSONObject = paramString.getJSONObject(paramInt);
           l locall = new l();
           locall.id = localJSONObject.getString("qt_id");
-          locall.rRe = localJSONObject.getString("parent_id");
+          locall.vHU = localJSONObject.getString("parent_id");
           locall.type = localJSONObject.getString("qt_type");
           locall.desc = localJSONObject.getString("qt_cont");
-          locall.rRf = localJSONObject.getInt("ans_len");
-          locall.ioU = localJSONObject.getString("wording");
+          locall.vHV = localJSONObject.getInt("ans_len");
+          locall.kqb = localJSONObject.getString("wording");
           locall.level = localJSONObject.getInt("level");
-          if ((paramJSONObject.containsKey(locall.rRe)) && (!"0".equals(locall.rRe))) {
-            ((l)paramJSONObject.get(locall.rRe)).rRg = locall;
+          if ((paramJSONObject.containsKey(locall.vHU)) && (!"0".equals(locall.vHU))) {
+            ((l)paramJSONObject.get(locall.vHU)).vHW = locall;
           } else {
             paramJSONObject.put(locall.id, locall);
           }
@@ -63,19 +74,17 @@ public final class e
       }
       catch (JSONException paramString)
       {
-        y.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+        ab.printErrStackTrace("Micromsg.NetSceneTenpayCheckPwd", paramString, "", new Object[0]);
+        AppMethodBeat.o(48662);
         return;
       }
-      this.rQK = new ArrayList(paramJSONObject.values());
+      this.vHB = new ArrayList(paramJSONObject.values());
       paramJSONObject.clear();
+      label314:
+      AppMethodBeat.o(48662);
       return;
       paramInt += 1;
     }
-  }
-  
-  public final int aEC()
-  {
-    return 59;
   }
 }
 

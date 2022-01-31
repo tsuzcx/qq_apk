@@ -4,13 +4,13 @@ import com.tencent.mm.vending.base.Vending.d;
 
 public abstract class a$a<_Struct>
 {
+  Vending.d ANN;
   boolean b = false;
   boolean c = false;
-  Vending.d wsS;
   
   public a$a(a parama) {}
   
-  public abstract _Struct Vw();
+  protected abstract _Struct aoU();
 }
 
 

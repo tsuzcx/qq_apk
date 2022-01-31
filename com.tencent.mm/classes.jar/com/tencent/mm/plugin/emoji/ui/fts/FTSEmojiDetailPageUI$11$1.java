@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.emoji.ui.fts;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class FTSEmojiDetailPageUI$11$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class FTSEmojiDetailPageUI$11$1
   
   public final void run()
   {
-    FTSEmojiDetailPageUI.d(this.jfR.jfO);
+    AppMethodBeat.i(53548);
+    FTSEmojiDetailPageUI.e(this.loK.loH);
+    AppMethodBeat.o(53548);
   }
 }
 

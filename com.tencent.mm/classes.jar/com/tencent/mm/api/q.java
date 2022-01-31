@@ -1,43 +1,11 @@
 package com.tencent.mm.api;
 
-import android.content.Context;
-import android.graphics.Rect;
+import com.tencent.mm.kernel.b.a;
 
-public abstract class q
+public abstract interface q
+  extends a
 {
-  public static q.b buU;
-  public q.a buT;
-  
-  public abstract void a(m paramm);
-  
-  public void a(q.a parama)
-  {
-    this.buT = parama;
-  }
-  
-  public abstract b ax(Context paramContext);
-  
-  public abstract void onDestroy();
-  
-  public abstract boolean rG();
-  
-  public abstract n rH();
-  
-  public void rI() {}
-  
-  public static final class a$a
-  {
-    public q.c buV;
-    public boolean buW;
-    public boolean buY = true;
-    public Rect buZ;
-    public String path;
-    
-    public final q.a sh()
-    {
-      return new q.a(this.path, this.buV, this.buW, this.buY, this.buZ);
-    }
-  }
+  public abstract m getReceiver();
 }
 
 

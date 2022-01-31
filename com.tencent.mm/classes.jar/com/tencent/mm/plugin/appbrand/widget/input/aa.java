@@ -1,74 +1,36 @@
 package com.tencent.mm.plugin.appbrand.widget.input;
 
-import android.content.Context;
-import android.text.TextWatcher;
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.plugin.appbrand.page.q;
-import com.tencent.mm.plugin.appbrand.widget.input.autofill.b;
+import android.widget.EditText;
+import com.tencent.mm.plugin.appbrand.page.v;
 
-public abstract interface aa
+public abstract interface aa<Input extends EditText,  extends ab>
 {
-  public abstract void A(q paramq);
+  public abstract void a(String paramString, Integer paramInteger);
   
-  public abstract void K(float paramFloat1, float paramFloat2);
+  public abstract int aQA();
   
-  public abstract void a(View.OnFocusChangeListener paramOnFocusChangeListener);
+  public abstract boolean aQB();
   
-  public abstract void a(a parama);
+  public abstract boolean aQv();
   
-  public abstract void a(aa.c paramc);
+  public abstract Input aQw();
   
-  public abstract void addTextChangedListener(TextWatcher paramTextWatcher);
+  public abstract boolean aQz();
   
-  public abstract boolean arT();
-  
-  public abstract boolean arU();
-  
-  public abstract boolean arX();
-  
-  public abstract void asl();
-  
-  public abstract void asm();
-  
-  public abstract void asn();
-  
-  public abstract void b(View.OnFocusChangeListener paramOnFocusChangeListener);
-  
-  public abstract void destroy();
-  
-  public abstract b getAutoFillController();
-  
-  public abstract Context getContext();
+  public abstract boolean dw(int paramInt1, int paramInt2);
   
   public abstract int getInputId();
   
-  public abstract View getInputPanel();
+  public abstract <P extends View,  extends ac> P getInputPanel();
   
-  public abstract char getLastKeyPressed();
+  public abstract boolean n(v paramv);
   
-  public abstract CharSequence getText();
-  
-  public abstract View getView();
-  
-  public abstract int mV(int paramInt);
-  
-  public abstract void setFixed(boolean paramBoolean);
-  
-  public abstract void setInputId(int paramInt);
-  
-  public abstract void setOnKeyUpPostImeListener(aa.b paramb);
-  
-  public abstract void z(q paramq);
-  
-  public static abstract interface a
-  {
-    public abstract void asr();
-  }
+  public abstract void qo(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.aa
  * JD-Core Version:    0.7.0.1
  */

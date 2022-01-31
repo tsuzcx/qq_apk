@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.qrcode;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class ShareToQQUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,8 +11,10 @@ final class ShareToQQUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nRC.XM();
-    this.nRC.finish();
+    AppMethodBeat.i(126916);
+    this.qFA.hideVKB();
+    this.qFA.finish();
+    AppMethodBeat.o(126916);
     return true;
   }
 }

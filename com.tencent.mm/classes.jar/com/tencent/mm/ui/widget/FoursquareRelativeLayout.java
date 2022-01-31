@@ -3,6 +3,7 @@ package com.tencent.mm.ui.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class FoursquareRelativeLayout
   extends RelativeLayout
@@ -19,7 +20,9 @@ public class FoursquareRelativeLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(107848);
     super.onMeasure(paramInt1, paramInt1);
+    AppMethodBeat.o(107848);
   }
 }
 

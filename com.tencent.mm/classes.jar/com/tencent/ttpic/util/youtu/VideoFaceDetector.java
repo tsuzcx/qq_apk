@@ -1,118 +1,104 @@
 package com.tencent.ttpic.util.youtu;
 
-import android.content.Context;
-import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.facedetect.FaceStatus;
-import com.tencent.ttpic.util.VideoCacheUtil;
-import com.tencent.ttpic.util.VideoFileUtil;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.util.g;
-import java.io.File;
-import java.io.InputStream;
+import java.nio.ByteBuffer;
 
 public class VideoFaceDetector
 {
-  private static final String TAG = VideoFaceDetector.class.getSimpleName();
+  private static final String TAG;
   private long mNativeObjPtr;
-  private boolean rpnRet = true;
   
-  private boolean copyModelFiles(String[] paramArrayOfString, String paramString)
+  static
   {
-    int i = 0;
-    while (i < paramArrayOfString.length)
-    {
-      String str = paramArrayOfString[i];
-      if (!VideoFileUtil.copyAssets(VideoGlobalContext.getContext(), "detector/" + str, paramString + File.separator + str)) {
-        this.rpnRet = false;
-      }
-      i += 1;
-    }
-    return true;
+    AppMethodBeat.i(84379);
+    TAG = VideoFaceDetector.class.getSimpleName();
+    AppMethodBeat.o(84379);
   }
   
-  private boolean initModel(String paramString)
+  public static Bitmap getBitmap(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    try
-    {
-      paramString = VideoGlobalContext.getContext().getAssets().open("ufat.bin");
-      paramString.read(new byte[paramString.available()]);
-      paramString.close();
-      return false;
-    }
-    catch (Exception paramString)
-    {
-      return false;
-    }
-    catch (UnsatisfiedLinkError paramString) {}
-    return false;
+    AppMethodBeat.i(84376);
+    Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    localBitmap.copyPixelsFromBuffer(ByteBuffer.wrap(paramArrayOfByte));
+    AppMethodBeat.o(84376);
+    return localBitmap;
   }
   
-  public void destroy() {}
+  private native boolean nativeConstructor();
   
-  public void doFaceDetect(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  private native void nativeDestructor();
   
-  public void doFaceDetectByY(byte[] paramArrayOfByte, int paramInt1, int paramInt2) {}
+  private native void nativeFaceDetect(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  private native void nativeFaceDetect3D(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  private native void nativeFaceDetectByY(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public void destroy()
+  {
+    AppMethodBeat.i(84373);
+    nativeDestructor();
+    AppMethodBeat.o(84373);
+  }
+  
+  public void doFaceDetect(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(84377);
+    nativeFaceDetect(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(84377);
+  }
+  
+  public void doFaceDetectByY(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(84378);
+    nativeFaceDetectByY(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(84378);
+  }
   
   public FaceStatus[] doTrack(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return null;
+    AppMethodBeat.i(84375);
+    paramArrayOfByte = nativeDoTrack(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(84375);
+    return paramArrayOfByte;
   }
   
   public FaceStatus[] doTrack3D(byte[] paramArrayOfByte, int paramInt1, int paramInt2, float paramFloat)
   {
-    return null;
-  }
-  
-  public FaceStatus[] doTrackByY(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    return null;
+    AppMethodBeat.i(84374);
+    paramArrayOfByte = nativeDoTrack3D(paramArrayOfByte, paramInt1, paramInt2, paramFloat);
+    AppMethodBeat.o(84374);
+    return paramArrayOfByte;
   }
   
   public int init()
   {
-    Object localObject = new String[6];
-    localObject[0] = "net_1.rpnmodel";
-    localObject[1] = "net_1_bin.rpnproto";
-    localObject[2] = "net_2.rpnmodel";
-    localObject[3] = "net_2_bin.rpnproto";
-    localObject[4] = "net_3.rpnmodel";
-    localObject[5] = "net_3_bin.rpnproto";
-    String str2 = VideoCacheUtil.getTempDiskCacheDir().toString();
-    this.rpnRet = copyModelFiles((String[])localObject, str2);
-    String str1 = str2;
-    if (!new File(str2).exists())
+    AppMethodBeat.i(84372);
+    int i = YTFaceDetectorBase.getInstance().initFaceTrack();
+    if (i != 0)
     {
-      str1 = VideoGlobalContext.getContext().getCacheDir().toString();
-      this.rpnRet = copyModelFiles((String[])localObject, str1);
+      AppMethodBeat.o(84372);
+      return i;
     }
-    str2 = str1 + File.separator + "ccnf_patches_1_my36n.txt";
-    localObject = str1 + File.separator + "pdm_82_aligned_my36n.txt";
-    String str3 = str1 + File.separator + "pdm.txt";
-    String str4 = str1 + File.separator + "pdm_82.txt";
-    String str5 = str1 + File.separator + "meshBasis.bin";
-    String str6 = str1 + File.separator + "rotBasis.bin";
-    new StringBuilder().append(str1).append(File.separator);
-    int i = 0;
-    boolean bool1 = VideoFileUtil.copyAssets(VideoGlobalContext.getContext(), "ccnf_patches_1_my36n.txt", str2);
-    boolean bool2 = VideoFileUtil.copyAssets(VideoGlobalContext.getContext(), "pdm_82_aligned_my36n.txt", (String)localObject);
-    boolean bool3 = VideoFileUtil.copyAssets(VideoGlobalContext.getContext(), "pdm.txt", str3);
-    boolean bool4 = VideoFileUtil.copyAssets(VideoGlobalContext.getContext(), "pdm_82.txt", str4);
-    boolean bool5 = VideoFileUtil.copyAssets(VideoGlobalContext.getContext(), "meshBasis.bin", str5);
-    boolean bool6 = VideoFileUtil.copyAssets(VideoGlobalContext.getContext(), "rotBasis.bin", str6);
-    if ((!bool1) || (!bool2) || (!bool3) || (!bool4) || (!bool5) || (!bool6) || (!this.rpnRet)) {
-      i = -1000;
-    }
-    if (!initModel(str1 + File.separator))
+    if (!nativeConstructor())
     {
-      i = -1002;
-      g.i("VideoFaceDetector", "nativeInit failed");
+      AppMethodBeat.o(84372);
+      return -1003;
     }
-    return i;
+    AppMethodBeat.o(84372);
+    return 0;
   }
+  
+  public native FaceStatus[] nativeDoTrack(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
+  
+  public native FaceStatus[] nativeDoTrack3D(byte[] paramArrayOfByte, int paramInt1, int paramInt2, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.ttpic.util.youtu.VideoFaceDetector
  * JD-Core Version:    0.7.0.1
  */

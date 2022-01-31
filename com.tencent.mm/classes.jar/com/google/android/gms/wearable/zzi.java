@@ -1,5 +1,6 @@
 package com.google.android.gms.wearable;
 
+@Deprecated
 public abstract interface zzi {}
 
 

@@ -1,25 +1,24 @@
 package com.tencent.mm.plugin.luckymoney.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.plugin.luckymoney.b.x;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.wallet_core.ui.e;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ra;
+import com.tencent.mm.sdk.b.c;
 
 final class LuckyMoneyPrepareUI$19
-  implements View.OnClickListener
+  extends c<ra>
 {
-  LuckyMoneyPrepareUI$19(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI, x paramx) {}
-  
-  public final void onClick(View paramView)
+  LuckyMoneyPrepareUI$19(LuckyMoneyPrepareUI paramLuckyMoneyPrepareUI)
   {
-    e.l(this.lXg.mController.uMN, this.lTJ.lRp, false);
+    AppMethodBeat.i(142071);
+    this.__eventId = ra.class.getName().hashCode();
+    AppMethodBeat.o(142071);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyPrepareUI.19
  * JD-Core Version:    0.7.0.1
  */

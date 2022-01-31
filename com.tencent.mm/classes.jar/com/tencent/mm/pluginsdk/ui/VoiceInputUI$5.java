@@ -2,7 +2,8 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.MMEditText;
 
 final class VoiceInputUI$5
@@ -12,14 +13,17 @@ final class VoiceInputUI$5
   
   public final void afterTextChanged(Editable paramEditable)
   {
-    y.d("VoiceInputUI", "afterTextChanged firstTextChange:%s,textChange:%s", new Object[] { Boolean.valueOf(VoiceInputUI.f(this.sbE)), Boolean.valueOf(VoiceInputUI.g(this.sbE)) });
-    if (VoiceInputUI.f(this.sbE))
+    AppMethodBeat.i(27611);
+    ab.d("VoiceInputUI", "afterTextChanged firstTextChange:%s,textChange:%s", new Object[] { Boolean.valueOf(VoiceInputUI.f(this.vSL)), Boolean.valueOf(VoiceInputUI.g(this.vSL)) });
+    if (VoiceInputUI.f(this.vSL))
     {
-      VoiceInputUI.h(this.sbE);
+      VoiceInputUI.h(this.vSL);
+      AppMethodBeat.o(27611);
       return;
     }
-    VoiceInputUI.d(this.sbE);
-    VoiceInputUI.c(this.sbE).requestLayout();
+    VoiceInputUI.d(this.vSL);
+    VoiceInputUI.c(this.vSL).requestLayout();
+    AppMethodBeat.o(27611);
   }
   
   public final void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}

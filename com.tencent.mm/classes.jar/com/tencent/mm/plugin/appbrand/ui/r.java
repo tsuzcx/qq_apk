@@ -1,20 +1,18 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.app.Activity;
-import com.tencent.luggage.b.b;
-import com.tencent.mm.plugin.appbrand.i;
-import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
+import android.view.View;
 
 public abstract interface r
-  extends b
 {
-  public abstract void a(Activity paramActivity, AppBrandStatObject paramAppBrandStatObject);
+  public abstract void aHA();
   
-  public abstract void a(i parami1, i parami2, Runnable paramRunnable);
+  public abstract void aHB();
   
-  public abstract void b(i parami1, i parami2, Runnable paramRunnable);
+  public abstract void cD(String paramString1, String paramString2);
   
-  public abstract void h(Activity paramActivity);
+  public abstract View getView();
+  
+  public abstract void setProgress(int paramInt);
 }
 
 

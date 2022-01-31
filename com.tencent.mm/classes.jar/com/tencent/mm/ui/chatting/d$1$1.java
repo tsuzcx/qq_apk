@@ -1,5 +1,7 @@
 package com.tencent.mm.ui.chatting;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class d$1$1
   implements Runnable
 {
@@ -7,8 +9,10 @@ final class d$1$1
   
   public final void run()
   {
-    this.vhO.vhN.cCb();
-    this.vhO.vhN.cBW();
+    AppMethodBeat.i(30403);
+    this.zwI.zwH.dFN();
+    this.zwI.zwH.dFI();
+    AppMethodBeat.o(30403);
   }
 }
 

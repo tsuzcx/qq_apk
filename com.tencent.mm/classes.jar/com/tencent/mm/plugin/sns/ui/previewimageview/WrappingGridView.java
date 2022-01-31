@@ -5,6 +5,7 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class WrappingGridView
   extends GridView
@@ -21,10 +22,12 @@ public class WrappingGridView
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(40413);
     if (getLayoutParams().height == -2) {
       paramInt2 = View.MeasureSpec.makeMeasureSpec(536870911, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(40413);
   }
 }
 

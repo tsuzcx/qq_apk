@@ -7,16 +7,16 @@ final class c$4
   
   public final void g(float paramFloat) {}
   
-  public final void y(int paramInt)
+  public final void x(int paramInt)
   {
     if (paramInt == 5) {
-      this.fO.cancel();
+      this.gI.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.c.4
  * JD-Core Version:    0.7.0.1
  */

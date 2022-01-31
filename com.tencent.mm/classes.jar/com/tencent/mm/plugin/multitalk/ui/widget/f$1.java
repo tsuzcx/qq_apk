@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.multitalk.ui.widget;
 
 import android.widget.TextView;
-import com.tencent.mm.plugin.multitalk.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$1
   implements Runnable
@@ -10,7 +10,9 @@ final class f$1
   
   public final void run()
   {
-    f.a(this.mwx).setText(a.g.multitalk_end_wording);
+    AppMethodBeat.i(54200);
+    f.a(this.oWp).setText(2131301659);
+    AppMethodBeat.o(54200);
   }
 }
 

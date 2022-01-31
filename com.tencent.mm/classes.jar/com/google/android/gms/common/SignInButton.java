@@ -6,13 +6,13 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import com.google.android.gms.R.styleable;
+import com.google.android.gms.base.R.styleable;
 import com.google.android.gms.common.api.Scope;
-import com.google.android.gms.common.internal.zzaj;
-import com.google.android.gms.common.internal.zzak;
-import com.google.android.gms.dynamic.zzf.zza;
+import com.google.android.gms.common.internal.SignInButtonCreator;
+import com.google.android.gms.common.internal.SignInButtonImpl;
+import com.google.android.gms.dynamic.RemoteCreator.RemoteCreatorException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.annotation.Annotation;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -29,8 +29,8 @@ public final class SignInButton
   public static final int SIZE_WIDE = 1;
   private int mColor;
   private int mSize;
-  private View zzayF;
-  private View.OnClickListener zzayG = null;
+  private View zzbw;
+  private View.OnClickListener zzbx;
   
   public SignInButton(Context paramContext)
   {
@@ -45,102 +45,111 @@ public final class SignInButton
   public SignInButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    zzb(paramContext, paramAttributeSet);
-    setStyle(this.mSize, this.mColor);
-  }
-  
-  private void zzaO(Context paramContext)
-  {
-    if (this.zzayF != null) {
-      removeView(this.zzayF);
-    }
-    try
-    {
-      this.zzayF = zzaj.zzd(paramContext, this.mSize, this.mColor);
-      addView(this.zzayF);
-      this.zzayF.setEnabled(isEnabled());
-      this.zzayF.setOnClickListener(this);
-      return;
-    }
-    catch (zzf.zza localzza)
-    {
-      for (;;)
-      {
-        this.zzayF = zzc(paramContext, this.mSize, this.mColor);
-      }
-    }
-  }
-  
-  private void zzb(Context paramContext, AttributeSet paramAttributeSet)
-  {
+    AppMethodBeat.i(60463);
+    this.zzbx = null;
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, R.styleable.SignInButton, 0, 0);
     try
     {
-      this.mSize = paramContext.getInt(R.styleable.SignInButton_buttonSize, 0);
-      this.mColor = paramContext.getInt(R.styleable.SignInButton_colorScheme, 2);
+      this.mSize = paramContext.getInt(0, 0);
+      this.mColor = paramContext.getInt(1, 2);
+      paramContext.recycle();
+      setStyle(this.mSize, this.mColor);
+      AppMethodBeat.o(60463);
       return;
     }
     finally
     {
       paramContext.recycle();
+      AppMethodBeat.o(60463);
     }
-  }
-  
-  private static Button zzc(Context paramContext, int paramInt1, int paramInt2)
-  {
-    zzak localzzak = new zzak(paramContext);
-    localzzak.zza(paramContext.getResources(), paramInt1, paramInt2);
-    return localzzak;
   }
   
   public final void onClick(View paramView)
   {
-    if ((this.zzayG != null) && (paramView == this.zzayF)) {
-      this.zzayG.onClick(this);
+    AppMethodBeat.i(60471);
+    if ((this.zzbx != null) && (paramView == this.zzbw)) {
+      this.zzbx.onClick(this);
     }
+    AppMethodBeat.o(60471);
   }
   
   public final void setColorScheme(int paramInt)
   {
+    AppMethodBeat.i(60465);
     setStyle(this.mSize, paramInt);
+    AppMethodBeat.o(60465);
   }
   
   public final void setEnabled(boolean paramBoolean)
   {
+    AppMethodBeat.i(60470);
     super.setEnabled(paramBoolean);
-    this.zzayF.setEnabled(paramBoolean);
+    this.zzbw.setEnabled(paramBoolean);
+    AppMethodBeat.o(60470);
   }
   
   public final void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.zzayG = paramOnClickListener;
-    if (this.zzayF != null) {
-      this.zzayF.setOnClickListener(this);
+    AppMethodBeat.i(60469);
+    this.zzbx = paramOnClickListener;
+    if (this.zzbw != null) {
+      this.zzbw.setOnClickListener(this);
     }
+    AppMethodBeat.o(60469);
   }
   
   @Deprecated
   public final void setScopes(Scope[] paramArrayOfScope)
   {
+    AppMethodBeat.i(60466);
     setStyle(this.mSize, this.mColor);
+    AppMethodBeat.o(60466);
   }
   
   public final void setSize(int paramInt)
   {
+    AppMethodBeat.i(60464);
     setStyle(paramInt, this.mColor);
+    AppMethodBeat.o(60464);
   }
   
   public final void setStyle(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(60467);
     this.mSize = paramInt1;
     this.mColor = paramInt2;
-    zzaO(getContext());
+    Context localContext = getContext();
+    if (this.zzbw != null) {
+      removeView(this.zzbw);
+    }
+    try
+    {
+      this.zzbw = SignInButtonCreator.createView(localContext, this.mSize, this.mColor);
+      addView(this.zzbw);
+      this.zzbw.setEnabled(isEnabled());
+      this.zzbw.setOnClickListener(this);
+      AppMethodBeat.o(60467);
+      return;
+    }
+    catch (RemoteCreator.RemoteCreatorException localRemoteCreatorException)
+    {
+      for (;;)
+      {
+        paramInt1 = this.mSize;
+        paramInt2 = this.mColor;
+        SignInButtonImpl localSignInButtonImpl = new SignInButtonImpl(localContext);
+        localSignInButtonImpl.configure(localContext.getResources(), paramInt1, paramInt2);
+        this.zzbw = localSignInButtonImpl;
+      }
+    }
   }
   
   @Deprecated
   public final void setStyle(int paramInt1, int paramInt2, Scope[] paramArrayOfScope)
   {
+    AppMethodBeat.i(60468);
     setStyle(paramInt1, paramInt2);
+    AppMethodBeat.o(60468);
   }
   
   @Retention(RetentionPolicy.SOURCE)

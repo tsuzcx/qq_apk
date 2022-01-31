@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.music.f.a;
 
 public abstract interface d$a
 {
-  public abstract void cy(int paramInt1, int paramInt2);
+  public abstract void dW(int paramInt1, int paramInt2);
 }
 
 

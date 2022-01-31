@@ -1,40 +1,49 @@
 package com.tencent.mm.t;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class d
   implements b
 {
-  public static a dBl = null;
-  public c dBm = null;
+  public static a euM = null;
+  public c euN = null;
   
   public static void a(a parama)
   {
+    AppMethodBeat.i(128598);
     StringBuilder localStringBuilder = new StringBuilder("XWalkLib SetFileDownloaderProxy:");
     if (parama == null) {}
     for (boolean bool = true;; bool = false)
     {
-      y.i("WXFileDownloaderBridge", bool);
-      dBl = parama;
+      ab.i("WXFileDownloaderBridge", bool);
+      euM = parama;
+      AppMethodBeat.o(128598);
       return;
     }
   }
   
   public final void d(String paramString, int paramInt, boolean paramBoolean)
   {
-    y.i("WXFileDownloaderBridge", "onTaskFailed, url=" + paramString + ", errCode=" + paramInt);
-    this.dBm.onTaskFail(paramString, paramInt, paramBoolean);
-  }
-  
-  public final void e(String paramString, long paramLong1, long paramLong2)
-  {
-    y.i("WXFileDownloaderBridge", "onTaskProgressChanged, url=" + paramString + ", cur_size:" + paramLong1 + ", total_size:" + paramLong2);
+    AppMethodBeat.i(128600);
+    ab.i("WXFileDownloaderBridge", "onTaskFailed, url=" + paramString + ", errCode=" + paramInt);
+    this.euN.onTaskFail(paramString, paramInt, paramBoolean);
+    AppMethodBeat.o(128600);
   }
   
   public final void f(String paramString1, String paramString2, boolean paramBoolean)
   {
-    y.i("WXFileDownloaderBridge", "onTaskFinished url=" + paramString1 + ", save_path=" + paramString2);
-    this.dBm.onTaskSucc(paramString1, paramString2, paramBoolean);
+    AppMethodBeat.i(128599);
+    ab.i("WXFileDownloaderBridge", "onTaskFinished url=" + paramString1 + ", save_path=" + paramString2);
+    this.euN.onTaskSucc(paramString1, paramString2, paramBoolean);
+    AppMethodBeat.o(128599);
+  }
+  
+  public final void l(String paramString, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(128601);
+    ab.i("WXFileDownloaderBridge", "onTaskProgressChanged, url=" + paramString + ", cur_size:" + paramLong1 + ", total_size:" + paramLong2);
+    AppMethodBeat.o(128601);
   }
 }
 

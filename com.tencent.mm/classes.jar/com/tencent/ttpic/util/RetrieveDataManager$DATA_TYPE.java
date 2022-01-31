@@ -1,10 +1,19 @@
 package com.tencent.ttpic.util;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public enum RetrieveDataManager$DATA_TYPE
 {
-  RGBA(0),  YUV(1);
-  
   public int value;
+  
+  static
+  {
+    AppMethodBeat.i(83968);
+    RGBA = new DATA_TYPE("RGBA", 0, 0);
+    YUV = new DATA_TYPE("YUV", 1, 1);
+    $VALUES = new DATA_TYPE[] { RGBA, YUV };
+    AppMethodBeat.o(83968);
+  }
   
   private RetrieveDataManager$DATA_TYPE(int paramInt)
   {

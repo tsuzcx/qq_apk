@@ -1,113 +1,164 @@
 package com.tencent.mm.ui.contact;
 
-import android.content.Context;
-import android.database.Cursor;
-import com.tencent.mm.cf.a.e;
-import com.tencent.mm.cf.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.openim.PluginOpenIM;
-import com.tencent.mm.openim.a.b;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.storage.ad;
-import com.tencent.mm.storage.bd;
+import com.tencent.mm.m.e;
+import com.tencent.mm.plugin.zero.b.a;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class t
-  extends a
 {
-  private HashSet<String> vMQ = new HashSet();
-  private String vMR;
-  OpenIMAddressUI.a vMS;
+  public static final int AdS;
+  public static final int AdT;
+  public static int AdU;
+  public static int AdV;
+  public static final int AdW;
+  public static final int AdX;
+  public static final int AdY;
+  public static final int AdZ;
+  public static final int Aea;
+  public static final int Aeb;
+  public static final int Aec;
   
-  public t(Context paramContext, String paramString1, String paramString2)
+  static
   {
-    super(paramContext, paramString1, null, 2);
-    this.vMR = paramString2;
+    AppMethodBeat.i(114745);
+    AdS = F(new int[] { 256, 16, 1, 2, 4 });
+    AdT = F(new int[] { 16, 1, 2, 4, 64, 16384 });
+    AdU = F(new int[] { 16, 1, 2, 4, 64, 16384, 16777216 });
+    AdV = F(new int[] { 16, 1, 2, 4, 64, 4096, 16777216 });
+    AdW = F(new int[] { AdS, 64, 16384, 4096, 16777216 });
+    AdX = F(new int[] { 16, 2, 16384, 4 });
+    AdY = F(new int[] { AdS, 16384, 64, 4096, 16777216 });
+    AdZ = F(new int[] { AdS, 16384, 64, 131072, 8192, 16777216 });
+    Aea = F(new int[] { 16, 32, 1, 4, 2, 64 });
+    Aeb = F(new int[] { 1, 2, 4, 64, 256, 16384 });
+    Aec = F(new int[] { AdU, 131072 });
+    AppMethodBeat.o(114745);
   }
   
-  protected final int a(com.tencent.mm.storage.f paramf, int paramInt)
+  public static int F(int... paramVarArgs)
   {
-    if (paramf == null) {
-      y.e("OpenIMContactAdapter", "contact is null, position:%d", new Object[] { Integer.valueOf(paramInt) });
-    }
-    while (bk.bl(paramf.field_descWording)) {
-      return -1;
-    }
-    return paramf.field_descWording.hashCode();
-  }
-  
-  public final void a(int paramInt, m paramm, Object paramObject)
-  {
-    if ((paramObject == null) || (!(paramObject instanceof String))) {
-      y.d("OpenIMContactAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramm, paramObject });
-    }
-    do
+    int k = paramVarArgs.length;
+    int j = 0;
+    int m;
+    for (int i = 0; j < k; i = m | i)
     {
-      return;
-      au.Hx();
-    } while (paramm != c.Fw());
-    if (ad.aaU((String)paramObject))
+      m = paramVarArgs[j];
+      j += 1;
+    }
+    return i;
+  }
+  
+  public static HashSet<String> dMg()
+  {
+    AppMethodBeat.i(114740);
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("weixin");
+    AppMethodBeat.o(114740);
+    return localHashSet;
+  }
+  
+  public static HashSet<String> dMh()
+  {
+    AppMethodBeat.i(114742);
+    HashSet localHashSet = new HashSet();
+    localHashSet.add("officialaccounts");
+    localHashSet.add("newsapp");
+    String[] arrayOfString = com.tencent.mm.model.t.fll;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
     {
-      this.vMS.vJl = true;
-      return;
+      localHashSet.add(arrayOfString[i]);
+      i += 1;
     }
-    y.d("OpenIMContactAdapter", "newcursor is not openim ，return");
+    localHashSet.add("weibo");
+    localHashSet.add("qqmail");
+    localHashSet.add("fmessage");
+    localHashSet.add("tmessage");
+    localHashSet.add("floatbottle");
+    localHashSet.add("lbsapp");
+    localHashSet.add("shakeapp");
+    localHashSet.add("medianote");
+    localHashSet.add("qqfriend");
+    localHashSet.add("readerapp");
+    localHashSet.add("newsapp");
+    localHashSet.add("blogapp");
+    localHashSet.add("facebookapp");
+    localHashSet.add("masssendapp");
+    localHashSet.add("meishiapp");
+    localHashSet.add("feedsapp");
+    localHashSet.add("voipapp");
+    localHashSet.add("filehelper");
+    localHashSet.add("officialaccounts");
+    localHashSet.add("helper_entry");
+    localHashSet.add("pc_share");
+    localHashSet.add("cardpackage");
+    localHashSet.add("voicevoipapp");
+    localHashSet.add("voiceinputapp");
+    localHashSet.add("linkedinplugin");
+    localHashSet.add("appbrandcustomerservicemsg");
+    AppMethodBeat.o(114742);
+    return localHashSet;
   }
   
-  protected final void a(com.tencent.mm.storage.f paramf, a.b paramb)
+  public static boolean dMi()
   {
-    paramb = paramf.field_descWordingId;
-    if (this.vMQ.contains(paramb)) {
-      return;
+    AppMethodBeat.i(114744);
+    int i = ((a)g.E(a.class)).Nq().getInt("ShowOpenImInGroup", 0);
+    ab.i("MMSelectContactLogic", "config_val %s ", new Object[] { Integer.valueOf(i) });
+    if (i == 0)
+    {
+      AppMethodBeat.o(114744);
+      return false;
     }
-    this.vMQ.add(paramb);
-    ((b)g.r(b.class)).aK(paramf.field_openImAppid, paramb);
+    AppMethodBeat.o(114744);
+    return true;
   }
   
-  protected final String b(com.tencent.mm.storage.f paramf, int paramInt)
+  public static boolean hI(int paramInt1, int paramInt2)
   {
-    String str = paramf.field_descWording;
-    paramf = str;
-    if (bk.bl(str)) {
-      paramf = "#";
-    }
-    return paramf;
+    return (paramInt1 & paramInt2) > 0;
   }
   
-  protected final Cursor cHk()
+  public static int hJ(int paramInt1, int paramInt2)
   {
-    long l = System.currentTimeMillis();
-    g.DQ();
-    Object localObject2 = ((PluginOpenIM)g.t(PluginOpenIM.class)).getAppIdInfoStg();
-    String str = this.vMR;
-    Object localObject1 = new LinkedList();
-    localObject2 = ((com.tencent.mm.openim.d.d)localObject2).dXo.a("select distinct appid from OpenIMAppIdInfo where acctTypeId=? ", new String[] { str }, 2);
-    if (((Cursor)localObject2).moveToFirst()) {
-      do
+    return (paramInt2 ^ 0xFFFFFFFF) & paramInt1;
+  }
+  
+  public static void i(HashSet<String> paramHashSet)
+  {
+    AppMethodBeat.i(114741);
+    paramHashSet.remove("filehelper");
+    AppMethodBeat.o(114741);
+  }
+  
+  public static void init()
+  {
+    AppMethodBeat.i(114743);
+    if (!dMi())
+    {
+      if (hI(AdU, 16777216)) {
+        AdU &= 0xFEFFFFFF;
+      }
+      if (hI(AdV, 16777216))
       {
-        str = ((Cursor)localObject2).getString(0);
-        if (!bk.bl(str)) {
-          ((List)localObject1).add(str);
-        }
-      } while (((Cursor)localObject2).moveToNext());
+        AdV &= 0xFEFFFFFF;
+        AppMethodBeat.o(114743);
+      }
     }
-    ((Cursor)localObject2).close();
-    au.Hx();
-    localObject2 = c.Fw().a(this.dru, x.fB(ae.getContext()), (List)localObject1);
-    localObject1 = localObject2;
-    if ((localObject2 instanceof com.tencent.mm.cf.a.f)) {
-      localObject1 = new e(new com.tencent.mm.cf.a.d[] { (com.tencent.mm.cf.a.d)com.tencent.mm.cf.d.cwX(), (com.tencent.mm.cf.a.f)localObject2 });
+    else
+    {
+      if (!hI(AdU, 16777216)) {
+        AdU = F(new int[] { AdU, 16777216 });
+      }
+      if (!hI(AdV, 16777216)) {
+        AdV = F(new int[] { AdV, 16777216 });
+      }
     }
-    y.d("OpenIMContactAdapter", "createNewCursor : " + (System.currentTimeMillis() - l));
-    return localObject1;
+    AppMethodBeat.o(114743);
   }
 }
 

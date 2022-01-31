@@ -1,39 +1,45 @@
 package com.tencent.mm.plugin.appbrand.task;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandEmbedUI;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 
 final class a
-  extends i
+  extends j
 {
-  final long hbb;
-  private String hbc;
+  final long iJS;
+  private String iJT;
   
   a(long paramLong)
   {
     super(AppBrandEmbedUI.class, null, null);
-    this.hbb = paramLong;
+    this.iJS = paramLong;
+  }
+  
+  final void EN(String paramString)
+  {
+    AppMethodBeat.i(132778);
+    if (this.iJT.equals(paramString))
+    {
+      this.iLj.clear();
+      this.iLk.clear();
+      this.iLl = g.iKU;
+      AppMethodBeat.o(132778);
+      return;
+    }
+    super.EN(paramString);
+    AppMethodBeat.o(132778);
   }
   
   final void a(String paramString, int paramInt, AppBrandRemoteTaskController paramAppBrandRemoteTaskController)
   {
-    if (this.hch.keySet().isEmpty()) {
-      this.hbc = paramString;
+    AppMethodBeat.i(132777);
+    if (this.iLj.keySet().isEmpty()) {
+      this.iJT = paramString;
     }
     super.a(paramString, paramInt, paramAppBrandRemoteTaskController);
-  }
-  
-  final void wi(String paramString)
-  {
-    if (this.hbc.equals(paramString))
-    {
-      this.hch.clear();
-      this.hci.clear();
-      this.hcj = f.hbW;
-      return;
-    }
-    super.wi(paramString);
+    AppMethodBeat.o(132777);
   }
 }
 

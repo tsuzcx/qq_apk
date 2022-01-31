@@ -1,11 +1,11 @@
 package com.tencent.mm.protocal;
 
-public final class c$aa
+final class c$aa
   extends c.g
 {
-  public c$aa()
+  c$aa()
   {
-    super("chooseInvoiceTitle", "chooseInvoiceTitle", 288, true);
+    super("chooseHaowanMedia", "chooseHaowanMedia", 354, true);
   }
 }
 

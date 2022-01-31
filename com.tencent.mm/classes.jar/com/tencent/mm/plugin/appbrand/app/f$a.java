@@ -1,46 +1,44 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import com.tencent.luggage.j.c.a;
-import com.tencent.mars.xlog.Xlog;
+import a.f.b.j;
+import a.l;
+import android.os.Parcel;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.i;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.service.e;
+import java.util.List;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/app/ServiceForWebViewAnyProcess$BatchSyncWxaAttr;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Landroid/os/Parcel;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
 final class f$a
-  implements c.a
+  implements i<Parcel, IPCVoid>
 {
-  private final Xlog fBO = new Xlog();
-  
-  public final int getLogLevel()
+  private static IPCVoid g(Parcel paramParcel)
   {
-    return this.fBO.getLogLevel();
-  }
-  
-  public final void logD(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    this.fBO.logD(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-  }
-  
-  public final void logE(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    this.fBO.logE(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-  }
-  
-  public final void logI(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    this.fBO.logI(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-  }
-  
-  public final void logV(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    this.fBO.logV(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
-  }
-  
-  public final void logW(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString4)
-  {
-    this.fBO.logW(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramLong1, paramLong2, paramString4);
+    AppMethodBeat.i(134455);
+    if (paramParcel != null) {}
+    try
+    {
+      paramParcel = paramParcel.createStringArrayList();
+      if (paramParcel != null) {
+        ((e)g.E(e.class)).av((List)paramParcel);
+      }
+    }
+    catch (Exception paramParcel)
+    {
+      label35:
+      break label35;
+    }
+    paramParcel = IPCVoid.eER;
+    j.p(paramParcel, "IPCVoid.VOID");
+    AppMethodBeat.o(134455);
+    return paramParcel;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:padding="0.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="0.0dip" style="@style/ma"
+<LinearLayout android:orientation="vertical" android:background="@color/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/e2q" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ListView android:id="@android:id/list" android:layout_height="400.0dip" style="@style/ls" />
-        <TextView android:textColor="@color/or" android:gravity="bottom|center|left" android:id="@id/e2r" android:paddingLeft="@dimen/mg" android:text="@string/ech" style="@style/mr" />
-        <com.tencent.mm.plugin.sns.ui.SnsEditText android:gravity="top" android:id="@id/e2s" android:background="@color/a23" android:padding="@dimen/kl" android:layout_width="fill_parent" android:layout_height="150.0dip" android:maxLines="4" android:minLines="4" android:singleLine="false" android:inputType="textCapSentences|textMultiLine" android:textCursorDrawable="@drawable/da" style="@style/kg" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="start" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="38.0dip" android:layout_marginRight="@dimen/l5">
+            <ImageView android:id="@id/ebh" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:src="@raw/login_app_default_avatar" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/fq" android:layout_gravity="center" android:id="@id/ebi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:maxLines="2" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/fq" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d9h" />
+        </LinearLayout>
+        <TextView android:textSize="22.0dip" android:textColor="@color/h6" android:layout_gravity="start" android:id="@id/ebj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="18.0dip" android:layout_marginRight="@dimen/l5" />
+        <com.tencent.mm.ui.base.MaxListView android:id="@id/ebk" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="4.0dip" android:listSelector="@color/a3x" android:cacheColorHint="#00000000" android:divider="@null" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/l5" android:layout_marginTop="60.0dip" android:layout_marginRight="@dimen/l5" android:layout_marginBottom="@dimen/m1">
+            <Button android:id="@id/ebl" android:text="同意" style="@style/nr" />
+            <Button android:id="@id/ebm" android:layout_marginTop="@dimen/g2" android:text="拒绝" style="@style/nx" />
+        </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

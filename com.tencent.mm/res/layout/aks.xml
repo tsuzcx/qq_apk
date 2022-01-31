@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/p1"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/dj2" style="@style/mn">
-        <LinearLayout style="@style/k5">
-            <EditText android:id="@id/dj3" android:hint="@string/dfd" style="@style/lq" />
-            <View style="@style/n3" />
-            <TextView android:gravity="left" android:text="@string/dfe" style="@style/lr" />
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    <include android:layout_width="fill_parent" android:layout_height="56.0dip" layout="@layout/a0_" />
+    <View android:id="@id/dp1" android:background="#1a000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" />
+</FrameLayout>

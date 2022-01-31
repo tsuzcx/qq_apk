@@ -1,127 +1,144 @@
 package com.tencent.mm.plugin.label.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.label.a.b;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.bd;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
 
 public class ContactLabelMemberListUI
   extends MMActivity
 {
-  private TextView hIY;
-  private ListView lBK;
-  private a lBL;
-  private String lBM;
-  private String lBN;
-  private m.b lBv = new ContactLabelMemberListUI.2(this);
-  private ah mHandler = new ContactLabelMemberListUI.1(this);
+  private TextView jCy;
+  private ak mHandler;
+  private n.b nYH;
+  private ListView nYW;
+  private a nYX;
+  private String nYY;
+  private String nYZ;
   
-  private void bdJ()
+  public ContactLabelMemberListUI()
   {
-    if (this.lBL != null)
+    AppMethodBeat.i(22644);
+    this.mHandler = new ContactLabelMemberListUI.1(this);
+    this.nYH = new ContactLabelMemberListUI.2(this);
+    AppMethodBeat.o(22644);
+  }
+  
+  private void bLd()
+  {
+    AppMethodBeat.i(22650);
+    if (this.nYX != null)
     {
-      this.lBL.lBG = com.tencent.mm.plugin.label.a.a.bdA().Go(this.lBM);
-      this.lBL.a(null, null);
+      this.nYX.nYS = com.tencent.mm.plugin.label.a.a.bKV().RR(this.nYY);
+      this.nYX.a(null, null);
     }
-    this.lBN = com.tencent.mm.plugin.label.a.a.bdA().Gk(this.lBM);
-    if (!bk.bl(this.lBN)) {
-      setMMTitle(this.lBN);
+    this.nYZ = com.tencent.mm.plugin.label.a.a.bKV().RN(this.nYY);
+    if (!bo.isNullOrNil(this.nYZ)) {
+      setMMTitle(this.nYZ);
     }
+    AppMethodBeat.o(22650);
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return R.i.contact_label_member_list_ui;
+    return 2130969262;
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    y.i("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. requestcode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(22649);
+    ab.i("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. requestcode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     switch (paramInt1)
     {
     default: 
-      y.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. unknow requestcode:%d", new Object[] { Integer.valueOf(paramInt1) });
+      ab.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] onActivity result. unknow requestcode:%d", new Object[] { Integer.valueOf(paramInt1) });
+      AppMethodBeat.o(22649);
       return;
     }
     if (paramInt2 == -1)
     {
       finish();
+      AppMethodBeat.o(22649);
       return;
     }
-    bdJ();
+    bLd();
+    AppMethodBeat.o(22649);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(22645);
     super.onCreate(paramBundle);
-    this.lBM = getIntent().getStringExtra("label_id");
-    this.lBN = getIntent().getStringExtra("label_name");
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
+    this.nYY = getIntent().getStringExtra("label_id");
+    this.nYZ = getIntent().getStringExtra("label_name");
+    setBackBtn(new ContactLabelMemberListUI.3(this));
+    addTextOptionMenu(0, getString(2131301005), new ContactLabelMemberListUI.4(this));
+    setMMTitle(this.nYZ);
+    this.nYW = ((ListView)findViewById(2131823174));
+    this.jCy = ((TextView)findViewById(2131821788));
+    if (bo.isNullOrNil(this.nYY))
     {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        ContactLabelMemberListUI.this.finish();
-        return false;
-      }
-    });
-    addTextOptionMenu(0, getString(R.l.label_manager), new ContactLabelMemberListUI.4(this));
-    setMMTitle(this.lBN);
-    this.lBK = ((ListView)findViewById(R.h.contact_label_member_list));
-    this.hIY = ((TextView)findViewById(R.h.empty));
-    if (bk.bl(this.lBM))
-    {
-      y.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] inite view");
+      ab.e("MicroMsg.Label.ContactLabelMemberListUI", "[cpan] inite view");
       finish();
     }
-    this.lBL = new a(this.mController.uMN);
-    this.lBK.setAdapter(this.lBL);
-    this.lBK.setOnItemClickListener(new ContactLabelMemberListUI.5(this));
-    this.lBK.setEmptyView(this.hIY);
+    this.nYX = new a(getContext());
+    this.nYW.setAdapter(this.nYX);
+    this.nYW.setOnItemClickListener(new ContactLabelMemberListUI.5(this));
+    this.nYW.setEmptyView(this.jCy);
+    AppMethodBeat.o(22645);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
-    if (this.lBL != null)
+    AppMethodBeat.i(22648);
+    if (this.nYX != null)
     {
-      this.lBL.bcS();
-      this.lBL.uMi = null;
+      this.nYX.bKb();
+      this.nYX.dAW();
     }
     super.onDestroy();
+    AppMethodBeat.o(22648);
   }
   
-  protected void onPause()
+  public void onPause()
   {
-    au.Hx();
-    c.Fw().b(this.lBv);
+    AppMethodBeat.i(22647);
+    aw.aaz();
+    c.YA().b(this.nYH);
     super.onPause();
+    AppMethodBeat.o(22647);
   }
   
-  protected void onResume()
+  public void onResume()
   {
-    au.Hx();
-    c.Fw().a(this.lBv);
+    AppMethodBeat.i(22646);
+    aw.aaz();
+    c.YA().a(this.nYH);
     super.onResume();
-    bdJ();
+    bLd();
+    AppMethodBeat.o(22646);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.ContactLabelMemberListUI
  * JD-Core Version:    0.7.0.1
  */

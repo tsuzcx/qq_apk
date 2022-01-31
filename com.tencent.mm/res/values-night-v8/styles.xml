@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="j" parent="@style/t5" />
-    <style name="k" parent="@style/t5" />
-    <style name="l" parent="@style/t7" />
-    <style name="m" parent="@style/t8" />
-    <style name="n" parent="@style/t9" />
-    <style name="o" parent="@style/t_" />
-    <style name="p" parent="@style/th" />
+    <style name="j" parent="@style/u9" />
+    <style name="k" parent="@style/u9" />
+    <style name="l" parent="@style/ua" />
+    <style name="m" parent="@style/ub" />
+    <style name="n" parent="@style/uc" />
+    <style name="o" parent="@style/ud" />
+    <style name="p" parent="@style/ul" />
 </resources>

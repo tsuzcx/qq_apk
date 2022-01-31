@@ -5,31 +5,33 @@ import android.content.res.Resources;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
-import com.tencent.mm.R.j;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ae.g.a;
-import com.tencent.mm.ae.k;
-import com.tencent.mm.aj.a.a;
-import com.tencent.mm.compatible.util.o;
-import com.tencent.mm.h.c.cs;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.af.j.b;
+import com.tencent.mm.ak.a.a;
+import com.tencent.mm.g.c.dd;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bf;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.m;
+import com.tencent.mm.model.n;
 import com.tencent.mm.model.r;
 import com.tencent.mm.model.s;
-import com.tencent.mm.modelvoice.n;
+import com.tencent.mm.model.t;
+import com.tencent.mm.modelvideo.q;
+import com.tencent.mm.modelvoice.p;
 import com.tencent.mm.plugin.messenger.a.e;
 import com.tencent.mm.pluginsdk.ui.d.j;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.storage.ak;
 import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.be;
 import com.tencent.mm.storage.bi;
 import com.tencent.mm.storage.bi.a;
@@ -43,25 +45,69 @@ import junit.framework.Assert;
 
 public final class h
 {
-  private static WeakReference<TextPaint> dkx;
-  private static int dky = 0;
-  private static int dkz = 0;
-  public String dkv = "";
-  public String dkw = "";
+  private static WeakReference<TextPaint> ebR;
+  private static int ebS = 0;
+  private static int ebT = 0;
+  public String ebQ = "";
+  public String mDesc = "";
   public String mTitle = "";
+  
+  private static int C(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(16054);
+    while (paramInt < paramString.length())
+    {
+      if (paramString.charAt(paramInt) != '%')
+      {
+        AppMethodBeat.o(16054);
+        return paramInt;
+      }
+      paramInt += 1;
+    }
+    paramInt = paramString.length();
+    AppMethodBeat.o(16054);
+    return paramInt;
+  }
+  
+  private static int IZ()
+  {
+    AppMethodBeat.i(16053);
+    if (ebS > 0)
+    {
+      i = ebS;
+      AppMethodBeat.o(16053);
+      return i;
+    }
+    int i = BackwardSupportUtil.b.b(ah.getContext(), 200.0F);
+    AppMethodBeat.o(16053);
+    return i;
+  }
+  
+  private static CharSequence a(String paramString, TextPaint paramTextPaint)
+  {
+    AppMethodBeat.i(16052);
+    paramString = TextUtils.ellipsize(paramString, paramTextPaint, IZ(), TextUtils.TruncateAt.END);
+    AppMethodBeat.o(16052);
+    return paramString;
+  }
   
   public static String a(int paramInt1, String paramString1, String paramString2, int paramInt2, Context paramContext)
   {
-    return bk.pm(a(null, paramInt1, paramString1, paramString2, paramInt2, paramContext, new PString(), new PString(), new PInt(), false, false));
+    AppMethodBeat.i(16042);
+    paramString1 = bo.nullAsNil(a(null, paramInt1, paramString1, paramString2, paramInt2, paramContext, new PString(), new PString(), new PInt(), false, false));
+    AppMethodBeat.o(16042);
+    return paramString1;
   }
   
   private static String a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3, PString paramPString1, PString paramPString2)
   {
+    int j = 2131300089;
+    AppMethodBeat.i(16044);
     String str3 = "";
     String str2;
     String str1;
     int i;
-    if ((s.hq(paramString1)) || (s.hs(paramString1)))
+    if ((t.nZ(paramString1)) || (t.ob(paramString1)))
     {
       str2 = str3;
       str1 = paramString2;
@@ -77,51 +123,55 @@ public final class h
           if (i < paramString2.length())
           {
             paramString1 = paramString2.substring(0, i);
-            if (!ad.aaR(paramString1))
+            if (!ad.arc(paramString1))
             {
               str2 = str3;
               str1 = paramString2;
-              if (!ad.aaT(paramString1)) {}
+              if (!ad.are(paramString1)) {}
             }
             else
             {
-              str2 = r.gV(paramString1);
+              str2 = s.nE(paramString1);
               paramPString2.value = paramString1;
               str1 = paramString2.substring(i + 1);
             }
           }
         }
       }
-      if (bk.pm(str2).length() > 0) {
-        break label283;
+      if (bo.nullAsNil(str2).length() > 0) {
+        break label316;
       }
       if (paramString3 != null) {
-        break label276;
+        break label309;
       }
     }
     for (;;)
     {
       paramPString1.value = str1;
-      return paramPString1.value;
-      if (!ad.aaR(paramString1))
+      paramContext = paramPString1.value;
+      AppMethodBeat.o(16044);
+      return paramContext;
+      if (!ad.arc(paramString1))
       {
         str2 = str3;
         str1 = paramString2;
-        if (!ad.aaT(paramString1)) {
+        if (!ad.are(paramString1)) {
           break;
         }
       }
-      r.gV(paramString1);
+      s.nE(paramString1);
       paramPString2.value = paramString1;
       if (paramInt == 1)
       {
-        paramContext = new StringBuilder().append(paramContext.getString(R.l.fmt_response_to, new Object[] { "" }));
+        paramContext = new StringBuilder().append(paramContext.getString(2131300089, new Object[] { "" }));
         if (paramString3 == null) {}
         for (;;)
         {
           paramPString1.value = paramString2;
           paramPString2.value = "";
-          return paramPString1.value;
+          paramContext = paramPString1.value;
+          AppMethodBeat.o(16044);
+          return paramContext;
           paramString2 = paramString3;
         }
       }
@@ -130,161 +180,136 @@ public final class h
       {
         paramPString1.value = paramString2;
         paramPString2.value = "";
-        return paramPString1.value;
+        paramContext = paramPString1.value;
+        AppMethodBeat.o(16044);
+        return paramContext;
         paramString2 = paramString3;
       }
-      label276:
+      label309:
       str1 = paramString3;
     }
-    label283:
+    label316:
     paramString1 = new StringBuilder();
     if (paramInt == 1)
     {
-      i = R.l.fmt_response_to;
+      i = 2131300089;
       paramString2 = paramString1.append(paramContext.getString(i));
       if (paramString3 != null) {
-        break label392;
+        break label430;
       }
       paramString1 = str1;
-      label320:
+      label352:
       paramPString1.value = paramString1;
       paramString1 = new StringBuilder();
       if (paramInt != 1) {
-        break label398;
+        break label436;
       }
-      paramInt = R.l.fmt_response_to;
-      label350:
+      paramInt = j;
+      label381:
       paramContext = paramString1.append(paramContext.getString(paramInt, new Object[] { str2 }));
       if (paramString3 != null) {
-        break label405;
+        break label442;
       }
     }
     for (;;)
     {
-      return str1;
-      i = R.l.fmt_send_from;
+      paramContext = str1;
+      AppMethodBeat.o(16044);
+      return paramContext;
+      i = 2131300099;
       break;
-      label392:
+      label430:
       paramString1 = paramString3;
-      break label320;
-      label398:
-      paramInt = R.l.fmt_send_from;
-      break label350;
-      label405:
+      break label352;
+      label436:
+      paramInt = 2131300099;
+      break label381;
+      label442:
       str1 = paramString3;
     }
   }
   
   public static String a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
+    AppMethodBeat.i(16058);
     if (paramBoolean)
     {
-      String str = com.tencent.mm.cd.b.csC().aat(paramString);
+      String str = com.tencent.mm.cd.b.duW().aqC(paramString);
       paramString = str;
       if (paramInt3 > 1) {
-        paramString = paramContext.getResources().getQuantityString(R.j.notification_fmt_multi_msg_and_one_talker_pre, paramInt3, new Object[] { Integer.valueOf(paramInt3) }) + str;
+        paramString = paramContext.getResources().getQuantityString(2131361814, paramInt3, new Object[] { Integer.valueOf(paramInt3) }) + str;
       }
+      AppMethodBeat.o(16058);
       return paramString;
     }
-    return paramContext.getResources().getQuantityString(R.j.notification_fmt_multi_msg_and_talker, paramInt1, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    paramContext = paramContext.getResources().getQuantityString(2131361815, paramInt1, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(16058);
+    return paramContext;
   }
   
   public static String a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
+    AppMethodBeat.i(16038);
     paramContext = a(0, paramString2, paramString1, paramInt, paramContext);
-    return j.WQ(com.tencent.mm.cd.b.csC().aat(paramContext));
+    paramContext = j.amy(com.tencent.mm.cd.b.duW().aqC(paramContext));
+    AppMethodBeat.o(16038);
+    return paramContext;
   }
   
   private static String a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, Context paramContext, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool;
-    label29:
-    int i;
+    AppMethodBeat.i(16043);
     if (paramContext != null)
     {
       bool = true;
       Assert.assertTrue("context is null", bool);
       if ((paramString2 == null) || (paramString2.length() <= 0)) {
-        break label77;
+        break label76;
       }
-      bool = true;
-      Assert.assertTrue("username is null", bool);
-      if (paramBoolean1) {
-        break label144;
-      }
-      if ((!s.hq(paramString2)) || (com.tencent.mm.model.q.GB())) {
-        break label83;
-      }
-      i = 1;
     }
-    for (;;)
+    label76:
+    for (boolean bool = true;; bool = false)
     {
-      if (i == 0) {
-        break label144;
+      Assert.assertTrue("username is null", bool);
+      if ((paramBoolean1) || (!kM(paramString2))) {
+        break label82;
       }
-      return paramContext.getString(R.l.settings_plugins_disable);
+      paramString1 = paramContext.getString(2131303374);
+      AppMethodBeat.o(16043);
+      return paramString1;
       bool = false;
       break;
-      label77:
-      bool = false;
-      break label29;
-      label83:
-      if (s.hs(paramString2))
-      {
-        if ((com.tencent.mm.model.q.Gn() & 0x40) != 0) {}
-        for (i = 1;; i = 0)
-        {
-          if (i != 0) {
-            break label119;
-          }
-          i = 1;
-          break;
-        }
-      }
-      label119:
-      if ((s.hw(paramString2)) && (!com.tencent.mm.model.q.GE())) {
-        i = 1;
-      } else {
-        i = 0;
-      }
     }
-    label144:
-    if (s.hw(paramString2))
+    label82:
+    if (t.of(paramString2))
     {
-      if (paramBoolean1) {
+      if (paramBoolean1)
+      {
+        AppMethodBeat.o(16043);
         return "";
       }
-      paramBoolean1 = com.tencent.mm.model.q.GE();
-      au.Hx();
-      long l = bk.a((Long)c.Dz().get(65793, null), 0L);
-      if (!paramBoolean1) {
-        return paramContext.getString(R.l.settings_plugins_disable);
-      }
-      if (l == 0L) {
-        return paramContext.getString(R.l.fmt_qqsynchelper_brief_new);
-      }
-      if (bk.cn(l) * 1000L > 1209600000L) {
-        return paramContext.getString(R.l.fmt_qqsynchelper_brief_alert, new Object[] { Long.valueOf(bk.cn(l) * 1000L / 86400000L) });
-      }
-      return "";
+      paramString1 = bC(paramContext);
+      AppMethodBeat.o(16043);
+      return paramString1;
     }
     if ((paramString3 != null) && (paramBoolean1)) {
-      paramString3 = eF(paramString3);
+      paramString3 = kK(paramString3);
     }
     for (int k = 1;; k = 0)
     {
       paramPString1.value = paramString3;
+      int i;
       String str1;
       String str2;
-      Object localObject2;
-      if ((paramInt1 == 0) && ((s.fn(paramString2)) || (s.hb(paramString2))))
+      Object localObject3;
+      if ((paramInt1 == 0) && ((t.lA(paramString2)) || (t.nK(paramString2))))
       {
-        i = com.tencent.mm.model.bd.iH(paramString3);
+        i = bf.pq(paramString3);
         if (i > 0)
         {
           str1 = paramString3.substring(0, i).trim();
-          str2 = r.getDisplayName(str1, paramString2);
-          localObject2 = (paramString3 + " ").substring(i + 1);
+          str2 = s.getDisplayName(str1, paramString2);
+          localObject3 = (paramString3 + " ").substring(i + 1);
         }
       }
       for (;;)
@@ -292,7 +317,7 @@ public final class h
         i = 0;
         Object localObject1;
         int j;
-        if ((s.hK(paramString2)) || (s.hT(paramString2)))
+        if ((t.ot(paramString2)) || (t.oC(paramString2)))
         {
           i = paramString3.indexOf(":");
           localObject1 = paramString3;
@@ -336,9 +361,9 @@ public final class h
           case 42: 
           case 66: 
           case 48: 
-            label862:
-            label871:
-            label1018:
+            label742:
+            label751:
+            label1269:
             do
             {
               paramString3 = "";
@@ -346,37 +371,43 @@ public final class h
               i = 0;
               for (;;)
               {
-                if (!s.hr(paramString2)) {
-                  break label6956;
+                if (!t.oa(paramString2)) {
+                  break label7418;
                 }
                 if (1 != paramInt1) {
-                  break label6702;
+                  break label7136;
                 }
-                if (bk.bl(paramString3)) {
-                  break label6667;
+                if (bo.isNullOrNil(paramString3)) {
+                  break label7087;
                 }
                 paramPString1.value = paramString3;
+                AppMethodBeat.o(16043);
                 return paramString3;
-                au.Hx();
-                localObject1 = c.FB().abv(paramString2);
-                if (((localObject1 == null) || (!((ak)localObject1).gV(2097152))) && (!paramBoolean2)) {
-                  break label7527;
+                aw.aaz();
+                localObject1 = c.YF().arH(paramString2);
+                if (((localObject1 == null) || (!((ak)localObject1).ji(2097152))) && (!paramBoolean2)) {
+                  break label7945;
                 }
-                i = 1;
-                j = paramString3.indexOf(":");
-                if (j == -1) {
-                  break label7527;
+                j = 1;
+                i = j;
+                if (paramString3 == null) {
+                  break label7945;
                 }
-                paramPString2.value = paramString3.substring(0, j);
-                paramString3 = paramString3.substring(j + 1);
+                int m = paramString3.indexOf(":");
+                i = j;
+                if (m == -1) {
+                  break label7945;
+                }
+                paramPString2.value = paramString3.substring(0, m);
+                paramString3 = paramString3.substring(m + 1);
                 j = 1;
                 break;
-                localObject2 = paramContext.getString(R.l.app_pic);
+                localObject3 = paramContext.getString(2131297036);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
                   if (str1.length() <= 0) {
-                    break label1054;
+                    break label952;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
@@ -384,25 +415,25 @@ public final class h
                   paramPString1.value = paramString3;
                   localObject1 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label1018;
+                  break label916;
                 }
-                localObject2 = ap.abP(paramString3);
-                localObject1 = ((ap)localObject2).eHA + ": ";
+                localObject3 = ap.arZ(paramString3);
+                localObject1 = ((ap)localObject3).alM() + ": ";
                 if ((paramString1 != null) && (paramString1.length() == 32)) {}
-                for (paramString3 = paramString1;; paramString3 = paramContext.getString(R.l.app_emoji))
+                for (paramString3 = paramString1;; paramString3 = paramContext.getString(2131296915))
                 {
                   paramPString1.value = "";
-                  paramPString2.value = ((ap)localObject2).eHA;
-                  localObject2 = null;
+                  paramPString2.value = ((ap)localObject3).alM();
+                  localObject3 = null;
                   i = 0;
                   paramString1 = (String)localObject1;
-                  localObject1 = localObject2;
+                  localObject1 = localObject3;
                   break;
                 }
-                paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(R.l.app_pic), paramPString1, paramPString2);
+                paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(2131297036), paramPString1, paramPString2);
                 paramString3 = "";
                 localObject1 = null;
                 i = 0;
@@ -412,9 +443,9 @@ public final class h
                 localObject1 = null;
                 i = 0;
                 continue;
-                if ((ad.aaR(paramString2)) || (ad.aaT(paramString2)) || (s.hq(paramString2)) || (s.hs(paramString2)))
+                if ((ad.arc(paramString2)) || (ad.are(paramString2)) || (t.nZ(paramString2)) || (t.ob(paramString2)))
                 {
-                  paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(R.l.app_voice), paramPString1, paramPString2);
+                  paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(2131297105), paramPString1, paramPString2);
                   paramString3 = "";
                   localObject1 = null;
                   i = 0;
@@ -428,29 +459,29 @@ public final class h
                     if (paramString3.length() > 0)
                     {
                       paramString1 = paramString3;
-                      if (!s.hr(paramString2))
+                      if (!t.oa(paramString2))
                       {
-                        if (!s.fn(paramString2)) {
-                          break label1371;
+                        if (!t.lA(paramString2)) {
+                          break label1269;
                         }
-                        paramString3 = new n(paramString3);
-                        paramString1 = paramString3.eHA + ": ";
+                        paramString3 = new p(paramString3);
+                        paramString1 = paramString3.alM() + ": ";
                         paramPString1.value = "%s:";
-                        paramPString2.value = paramString3.eHA;
+                        paramPString2.value = paramString3.alM();
                       }
                     }
                   }
                   for (;;)
                   {
-                    paramString3 = paramContext.getString(R.l.app_voice);
+                    paramString3 = paramContext.getString(2131297105);
                     localObject1 = null;
                     i = 0;
                     break;
                     paramString1 = "";
                   }
-                  if ((ad.aaR(paramString2)) || (ad.aaT(paramString2)) || (s.hq(paramString2)) || (s.hs(paramString2)))
+                  if ((ad.arc(paramString2)) || (ad.are(paramString2)) || (t.nZ(paramString2)) || (t.ob(paramString2)))
                   {
-                    paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(R.l.app_video), paramPString1, paramPString2);
+                    paramString1 = a(paramContext, paramInt1, paramString2, paramString3, paramContext.getString(2131297102), paramPString1, paramPString2);
                     paramString3 = "";
                     localObject1 = null;
                     i = 0;
@@ -464,39 +495,39 @@ public final class h
                       if (paramString3.length() > 0)
                       {
                         paramString1 = paramString3;
-                        if (!s.hr(paramString2))
+                        if (!t.oa(paramString2))
                         {
-                          if (!s.fn(paramString2)) {
-                            break label1537;
+                          if (!t.lA(paramString2)) {
+                            break label1435;
                           }
-                          paramString3 = new com.tencent.mm.modelvideo.q(paramString3);
-                          paramString1 = paramString3.eHA + ": ";
+                          paramString3 = new q(paramString3);
+                          paramString1 = paramString3.alM() + ": ";
                           paramPString1.value = "%s:";
-                          paramPString2.value = paramString3.eHA;
+                          paramPString2.value = paramString3.alM();
                         }
                       }
                     }
                     for (;;)
                     {
-                      paramString3 = paramContext.getString(R.l.app_video);
+                      paramString3 = paramContext.getString(2131297102);
                       localObject1 = null;
                       i = 0;
                       break;
                       paramString1 = "";
                     }
-                    paramString3 = paramContext.getString(R.l.app_voip);
+                    paramString3 = paramContext.getString(2131297108);
                     localObject1 = null;
                     i = 0;
                     paramString1 = "";
                     continue;
-                    paramString3 = paramContext.getString(R.l.app_voice_remind);
+                    paramString3 = paramContext.getString(2131297107);
                     localObject1 = null;
                     i = 0;
                     paramString1 = "";
                     continue;
-                    if (paramString3.equals(bi.uBQ))
+                    if (paramString3.equals(bi.yOc))
                     {
-                      paramString3 = paramContext.getString(R.l.app_voip);
+                      paramString3 = paramContext.getString(2131297108);
                       localObject1 = null;
                       i = 0;
                       paramString1 = "";
@@ -504,53 +535,53 @@ public final class h
                     else
                     {
                       paramString1 = paramString3;
-                      if (!paramString3.equals(bi.uBP)) {
-                        break label862;
+                      if (!paramString3.equals(bi.yOb)) {
+                        break label742;
                       }
-                      paramString3 = paramContext.getString(R.l.app_voip_voice);
+                      paramString3 = paramContext.getString(2131297110);
                       localObject1 = null;
                       i = 0;
                       paramString1 = "";
                       continue;
-                      paramString3 = paramContext.getString(R.l.app_voip);
+                      paramString3 = paramContext.getString(2131297108);
                       localObject1 = null;
                       i = 0;
                       paramString1 = "";
                       continue;
-                      paramString3 = paramContext.getString(R.l.app_voip_voice);
+                      paramString3 = paramContext.getString(2131297110);
                       localObject1 = null;
                       i = 0;
                       paramString1 = "";
                       continue;
                       paramString1 = paramString3;
                       if (paramString3 == null) {
-                        break label862;
+                        break label742;
                       }
                       paramString1 = paramString3;
                       if (paramString3.length() <= 0) {
-                        break label862;
+                        break label742;
                       }
-                      localObject1 = bi.d.acc(paramString3);
+                      localObject1 = bi.d.asm(paramString3);
                       paramString1 = paramString3;
-                      if (((bi.d)localObject1).pyp != null)
+                      if (((bi.d)localObject1).dyt() != null)
                       {
                         paramString1 = paramString3;
-                        if (((bi.d)localObject1).pyp.length() <= 0) {}
+                        if (((bi.d)localObject1).dyt().length() <= 0) {}
                       }
-                      switch (((bi.d)localObject1).scene)
+                      switch (((bi.d)localObject1).getScene())
                       {
                       case 19: 
                       case 20: 
                       case 21: 
                       default: 
-                        paramString1 = paramContext.getString(R.l.fmt_want_to_be_your_friend, new Object[] { ((bi.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(2131300111, new Object[] { ((bi.d)localObject1).getDisplayName() });
                         paramPString1.value = paramString1;
                         paramString3 = "";
                         localObject1 = null;
                         i = 0;
                         break;
                       case 18: 
-                        paramString1 = paramContext.getString(R.l.fmt_say_hello_to_you, new Object[] { ((bi.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(2131300092, new Object[] { ((bi.d)localObject1).getDisplayName() });
                         paramString3 = "";
                         localObject1 = null;
                         i = 0;
@@ -562,13 +593,13 @@ public final class h
                       case 27: 
                       case 28: 
                       case 29: 
-                        paramString1 = paramContext.getString(R.l.fmt_shake_say_hello_to_you, new Object[] { ((bi.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(2131300102, new Object[] { ((bi.d)localObject1).getDisplayName() });
                         paramString3 = "";
                         localObject1 = null;
                         i = 0;
                         break;
                       case 25: 
-                        paramString1 = paramContext.getString(R.l.fmt_bottle_say_hello_to_you, new Object[] { ((bi.d)localObject1).getDisplayName() });
+                        paramString1 = paramContext.getString(2131300024, new Object[] { ((bi.d)localObject1).getDisplayName() });
                         paramPString1.value = paramString1;
                         paramString3 = "";
                         localObject1 = null;
@@ -576,20 +607,20 @@ public final class h
                         continue;
                         paramString1 = paramString3;
                         if (paramString3 == null) {
-                          break label862;
+                          break label742;
                         }
                         paramString1 = paramString3;
                         if (paramString3.length() <= 0) {
-                          break label862;
+                          break label742;
                         }
-                        localObject1 = bi.a.abZ(paramString3);
+                        localObject1 = bi.a.asj(paramString3);
                         paramString1 = paramString3;
-                        if (((bi.a)localObject1).pyp != null)
+                        if (((bi.a)localObject1).dyt() != null)
                         {
                           paramString1 = paramString3;
-                          if (((bi.a)localObject1).pyp.length() > 0)
+                          if (((bi.a)localObject1).dyt().length() > 0)
                           {
-                            paramString1 = paramContext.getString(R.l.fmt_just_reg_micromsg, new Object[] { ((bi.a)localObject1).getDisplayName() });
+                            paramString1 = paramContext.getString(2131300049, new Object[] { ((bi.a)localObject1).getDisplayName() });
                             paramPString1.value = paramString1;
                           }
                         }
@@ -598,24 +629,24 @@ public final class h
                         i = 0;
                         continue;
                         paramString1 = paramString3;
-                        if (bk.pm(paramString3).length() <= 0) {
-                          break label862;
+                        if (bo.nullAsNil(paramString3).length() <= 0) {
+                          break label742;
                         }
-                        au.Hx();
-                        paramString1 = c.Fy().HL(paramString3);
-                        paramString1 = paramContext.getString(R.l.fmt_qqmailhelper_brief, new Object[] { paramString1.eyU, paramString1.title });
+                        aw.aaz();
+                        paramString1 = c.YC().Tw(paramString3);
+                        paramString1 = paramContext.getString(2131300085, new Object[] { paramString1.getSender(), paramString1.getTitle() });
                         paramPString1.value = paramString1;
                         paramString3 = "";
                         localObject1 = null;
                         i = 0;
                         continue;
                         paramString1 = paramString3;
-                        if (bk.pm(paramString3).length() <= 0) {
-                          break label862;
+                        if (bo.nullAsNil(paramString3).length() <= 0) {
+                          break label742;
                         }
-                        if (s.fn(paramString2))
+                        if (t.lA(paramString2))
                         {
-                          localObject1 = com.tencent.mm.model.bd.iI(paramString3);
+                          localObject1 = bf.pu(paramString3);
                           paramString1 = (String)localObject1;
                           if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
                         }
@@ -623,35 +654,35 @@ public final class h
                         {
                           paramString1 = paramString2;
                         }
-                        au.Hx();
-                        localObject2 = c.Fy().HN(paramString3);
-                        au.Hx();
-                        localObject1 = c.Fw().abl(paramString1).Bq();
+                        aw.aaz();
+                        localObject3 = c.YC().Ty(paramString3);
+                        aw.aaz();
+                        localObject1 = c.YA().arw(paramString1).Of();
                         paramString3 = (String)localObject1;
-                        if (s.fn((String)localObject1)) {
-                          paramString3 = m.J(m.gN((String)localObject1));
+                        if (t.lA((String)localObject1)) {
+                          paramString3 = n.Q(n.nw((String)localObject1));
                         }
                         if (paramInt1 == 1)
                         {
-                          localObject1 = paramContext.getString(R.l.fmt_card_from, new Object[] { paramString3, ((bi.a)localObject2).getDisplayName() });
-                          paramPString1.value = paramContext.getString(R.l.fmt_card_from, new Object[] { "%s", ((bi.a)localObject2).getDisplayName() });
+                          localObject1 = paramContext.getString(2131300025, new Object[] { paramString3, ((bi.a)localObject3).getDisplayName() });
+                          paramPString1.value = paramContext.getString(2131300025, new Object[] { "%s", ((bi.a)localObject3).getDisplayName() });
                           paramPString2.value = paramString1;
                           paramString3 = "";
-                          localObject2 = null;
+                          localObject3 = null;
                           i = 0;
                           paramString1 = (String)localObject1;
-                          localObject1 = localObject2;
+                          localObject1 = localObject3;
                         }
                         else
                         {
-                          localObject1 = paramContext.getString(R.l.fmt_card_to, new Object[] { paramString3, ((bi.a)localObject2).getDisplayName() });
-                          paramPString1.value = paramContext.getString(R.l.fmt_card_to, new Object[] { "%s", ((bi.a)localObject2).getDisplayName() });
+                          localObject1 = paramContext.getString(2131300026, new Object[] { paramString3, ((bi.a)localObject3).getDisplayName() });
+                          paramPString1.value = paramContext.getString(2131300026, new Object[] { "%s", ((bi.a)localObject3).getDisplayName() });
                           paramPString2.value = paramString1;
                           paramString3 = "";
-                          localObject2 = null;
+                          localObject3 = null;
                           i = 0;
                           paramString1 = (String)localObject1;
-                          localObject1 = localObject2;
+                          localObject1 = localObject3;
                         }
                         break;
                       }
@@ -660,20 +691,20 @@ public final class h
                 }
               }
               paramString1 = paramString3;
-            } while (bk.pm(paramString3).length() <= 0);
-            label1054:
-            label1371:
-            if (s.fn(paramString2))
+            } while (bo.nullAsNil(paramString3).length() <= 0);
+            label916:
+            label952:
+            if (t.lA(paramString2))
             {
-              i = com.tencent.mm.model.bd.iH(paramString3);
+              i = bf.pq(paramString3);
               if (i != -1)
               {
                 paramString1 = paramString3.substring(0, i).trim();
-                label2404:
-                com.tencent.mm.model.bd.iJ(paramString3);
+                label2300:
+                bf.pv(paramString3);
               }
             }
-            label1537:
+            label1435:
             break;
           }
           for (;;)
@@ -682,26 +713,26 @@ public final class h
             {
               if (paramInt1 == 1)
               {
-                paramString1 = paramContext.getString(R.l.location_conversation);
+                paramString1 = paramContext.getString(2131301088);
                 paramPString1.value = paramString1;
                 paramString3 = "";
                 localObject1 = null;
                 i = 0;
-                break label871;
+                break label751;
               }
-              localObject1 = paramContext.getString(R.l.location_conversation);
-              paramPString1.value = paramContext.getString(R.l.location_conversation);
+              localObject1 = paramContext.getString(2131301088);
+              paramPString1.value = paramContext.getString(2131301088);
               paramPString2.value = paramString1;
               paramString3 = "";
-              localObject2 = null;
+              localObject3 = null;
               i = 0;
               paramString1 = (String)localObject1;
-              localObject1 = localObject2;
-              break label871;
-              paramString1 = g.a.gp(bk.ZQ((String)localObject2));
-              if (paramString1.dQY != 0) {
-                if (paramString1.dQY == 1) {
-                  paramString1 = paramContext.getString(R.l.scan_product_type_conversation_book);
+              localObject1 = localObject3;
+              break label751;
+              paramString1 = j.b.mY(bo.apU((String)localObject3));
+              if (paramString1.fgX != 0) {
+                if (paramString1.fgX == 1) {
+                  paramString1 = paramContext.getString(2131302934);
                 }
               }
               for (;;)
@@ -713,43 +744,43 @@ public final class h
                 i = 0;
                 paramString1 = "";
                 break;
-                if (paramString1.dQY == 2) {
-                  paramString1 = paramContext.getString(R.l.scan_product_type_conversation_movie);
-                } else if (paramString1.dQY == 3) {
-                  paramString1 = paramContext.getString(R.l.scan_product_type_conversation_cd);
+                if (paramString1.fgX == 2) {
+                  paramString1 = paramContext.getString(2131302936);
+                } else if (paramString1.fgX == 3) {
+                  paramString1 = paramContext.getString(2131302935);
                 } else {
-                  paramString1 = paramContext.getString(R.l.scan_product_type_conversation_unknown);
+                  paramString1 = paramContext.getString(2131302937);
                 }
               }
-              localObject1 = bk.ZQ((String)localObject2);
+              localObject1 = bo.apU((String)localObject3);
               paramString3 = "";
               paramString1 = "";
-              localObject1 = g.a.gp((String)localObject1);
+              localObject1 = j.b.mY((String)localObject1);
               if (localObject1 != null)
               {
-                paramPString1.value = (paramContext.getString(R.l.scan_type_conversation_tv) + bk.pm(((g.a)localObject1).title));
+                paramPString1.value = (paramContext.getString(2131302950) + bo.nullAsNil(((j.b)localObject1).title));
                 paramString1 = paramPString1.value;
               }
               paramPString2.value = str1;
               localObject1 = null;
               i = 0;
-              break label871;
-              localObject1 = bk.ZQ((String)localObject2);
+              break label751;
+              localObject1 = bo.apU((String)localObject3);
               paramString3 = "";
               paramString1 = "";
-              localObject1 = g.a.gp((String)localObject1);
+              localObject1 = j.b.mY((String)localObject1);
               if (localObject1 != null)
               {
                 if (paramInt1 != 1) {
-                  break label2791;
+                  break label2687;
                 }
                 i = 1;
-                label2719:
-                switch (((g.a)localObject1).dRE)
+                label2615:
+                switch (((j.b)localObject1).fhD)
                 {
                 case 2: 
                 default: 
-                  paramPString1.value = bk.pm(((g.a)localObject1).title);
+                  paramPString1.value = bo.nullAsNil(((j.b)localObject1).title);
                 }
               }
               for (;;)
@@ -759,115 +790,115 @@ public final class h
                 localObject1 = null;
                 i = 0;
                 break;
-                label2791:
+                label2687:
                 i = 0;
-                break label2719;
+                break label2615;
                 if (i != 0)
                 {
-                  paramPString1.value = paramContext.getString(R.l.appmsg_remittance_digest_payer_wait);
+                  paramPString1.value = paramContext.getString(2131297205);
                 }
                 else
                 {
-                  paramPString1.value = paramContext.getString(R.l.appmsg_remittance_digest_receiver_wait);
+                  paramPString1.value = paramContext.getString(2131297208);
                   continue;
                   if (i != 0)
                   {
-                    paramPString1.value = paramContext.getString(R.l.appmsg_remittance_digest_receiver_collected);
+                    paramPString1.value = paramContext.getString(2131297206);
                   }
                   else
                   {
-                    paramPString1.value = paramContext.getString(R.l.appmsg_remittance_digest_payer_collected);
+                    paramPString1.value = paramContext.getString(2131297203);
                     continue;
                     if (i != 0) {
-                      paramPString1.value = paramContext.getString(R.l.appmsg_remittance_digest_receiver_refused);
+                      paramPString1.value = paramContext.getString(2131297207);
                     } else {
-                      paramPString1.value = paramContext.getString(R.l.appmsg_remittance_digest_payer_refused);
+                      paramPString1.value = paramContext.getString(2131297204);
                     }
                   }
                 }
               }
-              paramString3 = bk.ZQ((String)localObject2);
-              localObject2 = "";
-              paramString1 = "";
-              paramString3 = g.a.gp(paramString3);
-              if (paramString3 != null)
+              paramString1 = bo.apU((String)localObject3);
+              localObject3 = "";
+              paramString3 = "";
+              paramString1 = j.b.mY(paramString1);
+              if (paramString1 != null)
               {
                 if (paramInt1 != 1) {
-                  break label3022;
+                  break label2920;
                 }
                 i = 1;
-                label2938:
+                label2834:
                 if (i == 0) {
-                  break label3028;
+                  break label2926;
                 }
-                paramPString1.value = ("[" + paramString3.dSf + "]" + paramString3.dSc);
+                paramPString1.value = ("[" + paramString1.fie + "]" + paramString1.fib);
               }
               for (;;)
               {
-                paramString1 = paramPString1.value;
-                paramString3 = paramString1;
-                if (s.hK(paramString2)) {
-                  break label7499;
+                paramString3 = paramPString1.value;
+                paramString1 = paramString3;
+                if (t.ot(paramString2)) {
+                  break label7923;
                 }
-                paramString3 = paramString1;
+                paramString1 = paramString3;
                 if (j != 0) {
-                  break label7499;
+                  break label7923;
                 }
                 paramPString2.value = str1;
                 localObject1 = null;
                 i = 0;
-                paramString3 = (String)localObject2;
+                paramString1 = paramString3;
+                paramString3 = (String)localObject3;
                 break;
-                label3022:
+                label2920:
                 i = 0;
-                break label2938;
-                label3028:
-                if (!bk.bl(str2)) {
-                  paramPString1.value = (bk.pm(str2) + ": [" + paramString3.dSf + "]" + paramString3.dSb);
+                break label2834;
+                label2926:
+                if (!bo.isNullOrNil(str2)) {
+                  paramPString1.value = (bo.nullAsNil(str2) + ": [" + paramString1.fie + "]" + paramString1.fia);
                 } else {
-                  paramPString1.value = ("[" + paramString3.dSf + "]" + paramString3.dSb);
+                  paramPString1.value = ("[" + paramString1.fie + "]" + paramString1.fia);
                 }
               }
-              paramString1 = bk.ZQ((String)localObject2);
-              localObject2 = "";
+              localObject1 = bo.apU((String)localObject3);
               paramString3 = "";
-              paramString1 = g.a.gp(paramString1);
-              if (paramString1 == null) {
-                break label7499;
+              paramString1 = "";
+              localObject1 = j.b.mY((String)localObject1);
+              if (localObject1 == null) {
+                break label7923;
               }
-              paramString1 = (com.tencent.mm.ae.b)paramString1.A(com.tencent.mm.ae.b.class);
+              paramString1 = (com.tencent.mm.af.b)((j.b)localObject1).R(com.tencent.mm.af.b.class);
               if (paramInt1 == 1)
               {
                 i = 1;
-                label3170:
+                label3072:
                 if (i == 0) {
-                  break label3230;
+                  break label3129;
                 }
               }
-              label3230:
-              for (paramPString1.value = paramContext.getString(R.l.honey_pay_prefix, new Object[] { paramString1.dQf });; paramPString1.value = paramContext.getString(R.l.honey_pay_prefix, new Object[] { paramString1.dQg }))
+              label3129:
+              for (paramPString1.value = paramContext.getString(2131300699, new Object[] { paramString1.ffN });; paramPString1.value = paramContext.getString(2131300699, new Object[] { paramString1.ffO }))
               {
                 paramString1 = paramPString1.value;
                 paramPString2.value = str1;
                 localObject1 = null;
                 i = 0;
-                paramString3 = (String)localObject2;
                 break;
                 i = 0;
-                break label3170;
+                break label3072;
               }
-              paramString3 = bk.ZQ((String)localObject2);
+              paramString3 = bo.apU((String)localObject3);
               paramString1 = "";
-              paramString3 = g.a.gp(paramString3);
+              paramString3 = j.b.mY(paramString3);
               if (paramString3 != null)
               {
-                paramString1 = (j.a)paramString3.A(j.a.class);
+                paramString1 = (j.a)paramString3.R(j.a.class);
                 if (paramString1.state != 1) {
-                  break label3332;
+                  break label3231;
                 }
               }
-              label3332:
-              for (paramString1 = paramContext.getString(R.l.downloaderapp_download_game_success_tips, new Object[] { paramString1.appName });; paramString1 = paramContext.getString(R.l.downloaderapp_welcome_short))
+              label3231:
+              for (paramString1 = paramContext.getString(2131299033, new Object[] { paramString1.appName });; paramString1 = paramContext.getString(2131299051, new Object[] { paramString1.appName }))
               {
                 paramPString1.value = paramString1;
                 paramString3 = "";
@@ -875,159 +906,200 @@ public final class h
                 i = 0;
                 break;
               }
-              switch (g.a.gp(bk.ZQ((String)localObject2)).dQY)
+              switch (j.b.mY(bo.apU((String)localObject3)).fgX)
               {
               default: 
-                paramString1 = paramContext.getString(R.l.app_product);
-                label3389:
+                paramString1 = paramContext.getString(2131297041);
+                label3301:
                 if (str1.length() <= 0) {
                   break;
                 }
               }
               for (paramString3 = str1 + ": ";; paramString3 = "")
               {
-                if ((!s.hK(paramString2)) && (j == 0)) {
+                if ((!t.ot(paramString2)) && (j == 0)) {
                   paramPString2.value = str1;
                 }
                 paramPString1.value = "";
-                localObject2 = paramString1;
+                localObject3 = paramString1;
                 localObject1 = null;
                 i = 0;
                 paramString1 = paramString3;
-                paramString3 = (String)localObject2;
+                paramString3 = (String)localObject3;
                 break;
-                paramString1 = paramContext.getString(R.l.app_product_card);
-                break label3389;
-                paramString1 = paramContext.getString(R.l.app_product_ticket);
-                break label3389;
+                paramString1 = paramContext.getString(2131297042);
+                break label3301;
+                paramString1 = paramContext.getString(2131297044);
+                break label3301;
               }
-              paramString3 = g.a.gp(bk.ZQ((String)localObject2));
+              paramString3 = j.b.mY(bo.apU((String)localObject3));
               if (paramString3 == null)
               {
-                y.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                ab.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                AppMethodBeat.o(16043);
                 return "";
               }
-              localObject2 = "";
-              localObject1 = paramContext.getString(R.l.card_msg_item_digest);
+              localObject3 = "";
+              localObject1 = paramContext.getString(2131298001);
               if (str1.length() > 0)
               {
                 paramString1 = str1 + ": " + (String)localObject1 + paramString3.title;
-                label3573:
-                if ((!s.hK(paramString2)) && (j == 0)) {
+                label3491:
+                if ((!t.ot(paramString2)) && (j == 0)) {
                   paramPString2.value = str1;
                 }
                 if (str1.length() <= 0) {
-                  break label3670;
+                  break label3588;
                 }
               }
-              label3670:
+              label3588:
               for (paramString3 = "%s: " + (String)localObject1 + paramString3.title;; paramString3 = (String)localObject1 + paramString3.title)
               {
                 paramPString1.value = paramString3;
                 localObject1 = null;
                 i = 0;
-                paramString3 = (String)localObject2;
+                paramString3 = (String)localObject3;
                 break;
                 paramString1 = (String)localObject1 + paramString3.title;
-                break label3573;
+                break label3491;
               }
-              paramString1 = g.a.gp(bk.ZQ((String)localObject2));
+              paramString1 = j.b.mY(bo.apU((String)localObject3));
               if (paramString1 == null)
               {
-                y.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                ab.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                AppMethodBeat.o(16043);
                 return "";
               }
-              localObject2 = "";
-              paramString3 = paramContext.getString(R.l.card_msg_item_digest);
+              localObject3 = "";
+              paramString3 = paramContext.getString(2131298001);
               if (paramInt1 == 1)
               {
-                paramString1 = paramString3 + paramString1.dRS;
+                paramString3 = paramString3 + paramString1.fhR;
                 if (str1.length() > 0) {}
-                for (paramString3 = "%s: " + paramString1;; paramString3 = paramString1)
+                for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
                 {
-                  paramPString1.value = paramString3;
-                  paramString3 = paramString1;
-                  if (s.hK(paramString2)) {
-                    break label7481;
+                  paramPString1.value = paramString1;
+                  paramString1 = paramString3;
+                  if (t.ot(paramString2)) {
+                    break label7923;
                   }
-                  paramString3 = paramString1;
+                  paramString1 = paramString3;
                   if (j != 0) {
-                    break label7481;
+                    break label7923;
                   }
                   paramPString2.value = str1;
                   localObject1 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString1 = paramString3;
+                  paramString3 = (String)localObject3;
                   break;
                 }
               }
-              paramString1 = paramString3 + paramString1.dRR;
+              paramString3 = paramString3 + paramString1.fhQ;
               if (str1.length() > 0) {}
-              for (paramString3 = "%s: " + paramString1;; paramString3 = paramString1)
+              for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
               {
-                paramPString1.value = paramString3;
+                paramPString1.value = paramString1;
                 break;
               }
-              paramString3 = g.a.gp(bk.ZQ((String)localObject2));
+              paramString3 = j.b.mY(bo.apU((String)localObject3));
               if (paramString3 == null)
               {
-                y.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                ab.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                AppMethodBeat.o(16043);
                 return "";
               }
-              localObject2 = "";
+              localObject3 = "";
               if (str1.length() > 0)
               {
                 paramString1 = str1 + ": " + paramString3.title;
-                label3961:
-                if ((!s.hK(paramString2)) && (j == 0)) {
+                label3885:
+                if ((!t.ot(paramString2)) && (j == 0)) {
                   paramPString2.value = str1;
                 }
                 if (str1.length() <= 0) {
-                  break label4035;
+                  break label3959;
                 }
               }
-              label4035:
+              label3959:
               for (paramString3 = "%s: " + paramString3.title;; paramString3 = paramString3.title)
               {
                 paramPString1.value = paramString3;
                 localObject1 = null;
                 i = 0;
-                paramString3 = (String)localObject2;
+                paramString3 = (String)localObject3;
                 break;
                 paramString1 = paramString3.title;
-                break label3961;
+                break label3885;
               }
-              localObject2 = paramContext.getString(R.l.app_app);
+              localObject3 = paramContext.getString(2131296543);
               if (str1.length() > 0)
               {
                 paramString1 = str1 + ": ";
-                label4083:
-                if ((!s.hK(paramString2)) && (j == 0)) {
+                label4007:
+                if ((!t.ot(paramString2)) && (j == 0)) {
                   paramPString2.value = str1;
                 }
                 if (str1.length() <= 0) {
-                  break label4138;
+                  break label4062;
                 }
               }
-              label4138:
+              label4062:
               for (paramString3 = "%s: ";; paramString3 = "")
               {
                 paramPString1.value = paramString3;
                 localObject1 = null;
                 i = 0;
-                paramString3 = (String)localObject2;
+                paramString3 = (String)localObject3;
                 break;
                 paramString1 = "";
-                break label4083;
+                break label4007;
               }
-              paramString1 = bk.ZQ((String)localObject2);
-              g.a locala = g.a.gp(paramString1);
-              if (locala == null)
+              paramString1 = j.b.mY(bo.apU((String)localObject3));
+              if (paramString1 == null)
               {
-                y.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                ab.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                AppMethodBeat.o(16043);
                 return "";
               }
-              switch (locala.type)
+              localObject3 = "";
+              try
+              {
+                paramString1 = URLDecoder.decode(paramString1.content, "UTF-8");
+                paramString3 = paramString1;
+                paramString1 = j.amy(paramString1);
+              }
+              catch (Exception localException)
+              {
+                for (;;)
+                {
+                  paramString1 = paramString3;
+                  ab.printErrStackTrace("MicroMsg.Notification.Wording", localException, "", new Object[0]);
+                  continue;
+                  paramString3 = paramString1;
+                }
+              }
+              if ((!t.ot(paramString2)) && (j == 0)) {
+                paramPString2.value = str1;
+              }
+              if (str1.length() > 0)
+              {
+                paramString3 = "%s: ".concat(String.valueOf(paramString1));
+                paramPString1.value = paramString3;
+                localObject1 = null;
+                i = 0;
+                paramString3 = (String)localObject3;
+                break label751;
+              }
+              paramString1 = bo.apU((String)localObject3);
+              localObject2 = j.b.mY(paramString1);
+              if (localObject2 == null)
+              {
+                ab.e("MicroMsg.Notification.Wording", "decode msg content failed");
+                AppMethodBeat.o(16043);
+                return "";
+              }
+              switch (((j.b)localObject2).type)
               {
               case 9: 
               case 10: 
@@ -1049,441 +1121,497 @@ public final class h
               case 37: 
               case 38: 
               case 39: 
+              case 41: 
+              case 42: 
+              case 43: 
+              case 45: 
               default: 
-                paramString3 = paramContext.getString(R.l.app_app);
-                localObject1 = null;
+                paramString3 = paramContext.getString(2131296543);
+                localObject2 = null;
                 i = 0;
                 paramString1 = "";
                 break;
               case 1: 
-                localObject2 = "";
+                localObject3 = "";
                 if (str1.length() > 0)
                 {
-                  paramString1 = str1 + ": " + locala.title;
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  paramString1 = str1 + ": " + ((j.b)localObject2).title;
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label4491;
+                    break label4579;
                   }
                 }
-                for (paramString3 = "%s: " + locala.title;; paramString3 = locala.title)
+                for (paramString3 = "%s: " + ((j.b)localObject2).title;; paramString3 = ((j.b)localObject2).title)
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
-                  paramString1 = locala.title;
-                  break label4415;
+                  paramString1 = ((j.b)localObject2).title;
+                  break label4503;
                 }
               case 2: 
-                localObject2 = paramContext.getString(R.l.app_pic);
+                localObject3 = paramContext.getString(2131297036);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label4595;
+                    break label4683;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label4540;
+                  break label4628;
                 }
               case 3: 
-                localObject2 = paramContext.getString(R.l.app_music);
+                localObject3 = paramContext.getString(2131297003);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label4700;
+                    break label4788;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = locala.title;
+                  localObject2 = ((j.b)localObject2).title;
                   i = 1;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label4641;
+                  break label4729;
                 }
               case 4: 
-                localObject2 = paramContext.getString(R.l.app_video);
+                localObject3 = paramContext.getString(2131297102);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label4805;
+                    break label4893;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = locala.title;
+                  localObject2 = ((j.b)localObject2).title;
                   i = 1;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label4746;
+                  break label4834;
                 }
               case 6: 
-                localObject2 = paramContext.getString(R.l.app_file);
+                localObject3 = paramContext.getString(2131296962);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label4910;
+                    break label4998;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = locala.title;
+                  localObject2 = ((j.b)localObject2).title;
                   i = 1;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label4851;
+                  break label4939;
                 }
               case 7: 
-                localObject2 = paramContext.getString(R.l.app_app);
+                localObject3 = paramContext.getString(2131296543);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label5011;
+                    break label5099;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label4956;
+                  break label5044;
                 }
               case 5: 
-                localObject2 = paramContext.getString(R.l.app_url);
+                localObject3 = paramContext.getString(2131297097);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0) && (!s.hT(paramString2))) {
+                  if ((!t.ot(paramString2)) && (j == 0) && (!t.oC(paramString2))) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label5123;
+                    break label5211;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = locala.getTitle();
+                  localObject2 = ((j.b)localObject2).getTitle();
                   i = 1;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label5057;
+                  break label5145;
                 }
+              case 46: 
+                paramString3 = paramContext.getString(2131296543);
+                localObject2 = null;
+                i = 0;
+                paramString1 = "";
+                break;
               case 33: 
               case 36: 
-                localObject2 = "";
-                paramString3 = paramContext.getString(R.l.app_brand_default_name_with_brackets);
+                localObject3 = "";
+                paramString3 = paramContext.getString(2131296607);
                 if (str1.length() > 0)
                 {
-                  paramString1 = str1 + ": " + paramString3 + locala.title;
-                  if ((!s.hK(paramString2)) && (j == 0) && (!s.hT(paramString2))) {
+                  paramString1 = str1 + ": " + paramString3 + ((j.b)localObject2).title;
+                  if ((!t.ot(paramString2)) && (j == 0) && (!t.oC(paramString2))) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label5288;
+                    break label5397;
                   }
                 }
-                for (paramString3 = "%s: " + paramString3 + locala.title;; paramString3 = paramString3 + locala.title)
+                for (paramString3 = "%s: " + paramString3 + ((j.b)localObject2).title;; paramString3 = paramString3 + ((j.b)localObject2).title)
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
-                  paramString1 = paramString3 + locala.title;
-                  break label5184;
+                  paramString1 = paramString3 + ((j.b)localObject2).title;
+                  break label5293;
                 }
+              case 44: 
+                if (((j.b)localObject2).cH(false))
+                {
+                  localObject3 = "";
+                  paramString3 = ((j.b)localObject2).q(paramContext, true);
+                  if (!bo.isNullOrNil(paramString3))
+                  {
+                    if (str1.length() > 0)
+                    {
+                      paramString1 = str1 + ": " + paramString3 + ((j.b)localObject2).title;
+                      paramPString2.value = str1;
+                      if (str1.length() <= 0) {
+                        break label5579;
+                      }
+                    }
+                    for (paramString3 = "%s: " + paramString3 + ((j.b)localObject2).title;; paramString3 = paramString3 + ((j.b)localObject2).title)
+                    {
+                      paramPString1.value = paramString3;
+                      localObject2 = null;
+                      i = 0;
+                      paramString3 = (String)localObject3;
+                      break;
+                      paramString1 = paramString3 + ((j.b)localObject2).title;
+                      break label5494;
+                    }
+                  }
+                  paramString3 = paramContext.getString(2131296543);
+                  localObject2 = null;
+                  i = 0;
+                  paramString1 = "";
+                  break;
+                }
+                paramString3 = paramContext.getString(2131296543);
+                localObject2 = null;
+                i = 0;
+                paramString1 = "";
+                break;
               case 8: 
-                paramString3 = paramContext.getString(R.l.app_emoji2);
+                paramString3 = paramContext.getString(2131296916);
                 if (str1.length() > 0) {}
                 for (paramString1 = str1 + ": ";; paramString1 = "")
                 {
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   paramPString1.value = "";
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
                   break;
                 }
               case 15: 
               case 26: 
               case 27: 
-                paramString3 = paramContext.getString(R.l.app_emoji_share);
+                paramString3 = paramContext.getString(2131296917);
                 if (str1.length() > 0) {}
                 for (paramString1 = str1 + ": ";; paramString1 = "")
                 {
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   paramPString1.value = "";
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
                   break;
                 }
               case 25: 
-                paramString3 = paramContext.getString(R.l.app_designer_share);
+                paramString3 = paramContext.getString(2131296903);
                 if (str1.length() > 0) {}
                 for (paramString1 = str1 + ": ";; paramString1 = "")
                 {
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   paramPString1.value = "";
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
                   break;
                 }
               case 17: 
-                localObject2 = "";
+                localObject3 = "";
                 if (str1.length() > 0)
                 {
-                  paramString1 = str1 + ": " + locala.title;
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  paramString1 = str1 + ": " + ((j.b)localObject2).title;
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label5672;
+                    break label6005;
                   }
                 }
-                for (paramString3 = "%s: " + locala.title;; paramString3 = locala.title)
+                for (paramString3 = "%s: " + ((j.b)localObject2).title;; paramString3 = ((j.b)localObject2).title)
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
-                  paramString1 = locala.title;
-                  break label5596;
+                  paramString1 = ((j.b)localObject2).title;
+                  break label5929;
                 }
               case 19: 
-                localObject2 = paramContext.getString(R.l.app_record);
+                localObject3 = paramContext.getString(2131297055);
                 if (str1.length() > 0)
                 {
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label5776;
+                    break label6109;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                   paramString1 = "";
-                  break label5721;
+                  break label6054;
                 }
               case 24: 
                 paramString1 = "";
-                if (!bk.bl(locala.description))
+                if (!bo.isNullOrNil(((j.b)localObject2).description))
                 {
-                  i = locala.description.indexOf("\n");
-                  paramString1 = locala.description;
+                  i = ((j.b)localObject2).description.indexOf("\n");
+                  paramString1 = ((j.b)localObject2).description;
                   if (i > 0) {
                     paramString1 = paramString1.substring(0, i);
                   }
                 }
                 else
                 {
-                  localObject2 = paramContext.getString(R.l.favorite_wenote_msg) + paramString1;
+                  localObject3 = paramContext.getString(2131299859) + paramString1;
                   if (str1.length() <= 0) {
-                    break label5947;
+                    break label6280;
                   }
                   paramString1 = str1 + ": ";
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
                   if (str1.length() <= 0) {
-                    break label5953;
+                    break label6286;
                   }
                 }
                 for (paramString3 = "%s: ";; paramString3 = "")
                 {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
-                  i = locala.description.length();
-                  break label5820;
+                  i = ((j.b)localObject2).description.length();
+                  break label6153;
                   paramString1 = "";
-                  break label5885;
+                  break label6218;
                 }
               case 16: 
-                localObject2 = "";
-                localObject1 = paramContext.getString(R.l.card_msg_item_digest);
-                if (str1.length() > 0) {}
-                for (paramString1 = str1 + ": " + (String)localObject1 + locala.title;; paramString1 = (String)localObject1 + locala.title)
+                localObject3 = "";
+                paramString3 = paramContext.getString(2131298001);
+                if (str1.length() > 0)
                 {
-                  if ((!s.hK(paramString2)) && (j == 0)) {
+                  paramString1 = str1 + ": " + paramString3 + ((j.b)localObject2).title;
+                  if ((!t.ot(paramString2)) && (j == 0)) {
                     paramPString2.value = str1;
                   }
-                  paramString3 = (String)localObject1;
-                  if (str1.length() > 0) {
-                    paramString3 = "%s: " + (String)localObject1;
+                  if (str1.length() <= 0) {
+                    break label6429;
                   }
+                }
+                for (paramString3 = "%s: ".concat(String.valueOf(paramString3));; paramString3 = String.valueOf(paramString3))
+                {
                   paramPString1.value = paramString3;
-                  localObject1 = null;
+                  localObject2 = null;
                   i = 0;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
+                  paramString1 = paramString3 + ((j.b)localObject2).title;
+                  break label6347;
                 }
               case 34: 
-                localObject2 = "";
-                paramString1 = paramContext.getString(R.l.card_msg_item_digest);
+                localObject3 = "";
+                paramString1 = paramContext.getString(2131298001);
                 if (paramInt1 == 1)
                 {
-                  paramString1 = paramString1 + locala.dRS;
+                  paramString3 = paramString1 + ((j.b)localObject2).fhR;
                   if (str1.length() > 0) {}
-                  for (paramString3 = "%s: " + paramString1;; paramString3 = paramString1)
+                  for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
                   {
-                    paramPString1.value = paramString3;
-                    paramString3 = paramString1;
-                    if (s.hK(paramString2)) {
-                      break label7481;
+                    paramPString1.value = paramString1;
+                    paramString1 = paramString3;
+                    if (t.ot(paramString2)) {
+                      break label7923;
                     }
-                    paramString3 = paramString1;
+                    paramString1 = paramString3;
                     if (j != 0) {
-                      break label7481;
+                      break label7923;
                     }
                     paramPString2.value = str1;
-                    localObject1 = null;
+                    localObject2 = null;
                     i = 0;
-                    paramString3 = (String)localObject2;
+                    paramString1 = paramString3;
+                    paramString3 = (String)localObject3;
                     break;
                   }
                 }
-                paramString1 = paramString1 + locala.dRR;
+                paramString3 = paramString1 + ((j.b)localObject2).fhQ;
                 if (str1.length() > 0) {}
-                for (paramString3 = "%s: " + paramString1;; paramString3 = paramString1)
+                for (paramString1 = "%s: ".concat(String.valueOf(paramString3));; paramString1 = String.valueOf(paramString3))
                 {
-                  paramPString1.value = paramString3;
+                  paramPString1.value = paramString1;
                   break;
                 }
               case 40: 
-                label4415:
-                label4595:
-                label4851:
-                label5885:
-                if (k.gv(paramString1).dTA == 19)
+                label4503:
+                label4579:
+                label4729:
+                if (com.tencent.mm.af.o.nd(paramString1).fjG == 19)
                 {
-                  localObject2 = paramContext.getString(R.l.app_record);
-                  localObject1 = null;
+                  localObject3 = paramContext.getString(2131297055);
+                  localObject2 = null;
                   i = 0;
                   paramString1 = paramString3;
-                  paramString3 = (String)localObject2;
+                  paramString3 = (String)localObject3;
                   break;
                 }
-                label4491:
-                label4540:
-                label4700:
-                label4956:
-                label5596:
-                localObject2 = paramContext.getString(R.l.app_app);
-                label4641:
-                label4805:
-                label5721:
-                localObject1 = null;
-                label4746:
-                label4910:
-                label5057:
+                label4628:
+                label4683:
+                label4834:
+                label5099:
+                label5494:
+                localObject3 = paramContext.getString(2131296543);
+                label4788:
+                label4939:
+                label5211:
+                label6005:
+                localObject2 = null;
+                label4893:
+                label5044:
+                label5579:
+                label6109:
                 i = 0;
-                label5011:
-                label5184:
-                label5953:
+                label4998:
+                label5145:
+                label5293:
+                label6218:
+                label6347:
                 paramString1 = paramString3;
-                label5123:
-                label5288:
-                label5820:
-                paramString3 = (String)localObject2;
-                label5672:
-                label5947:
+                label5397:
+                label5929:
+                paramString3 = (String)localObject3;
+                label6054:
                 break;
-                label5776:
+                label6153:
+                label6286:
+                label6429:
                 paramString1 = paramString3;
+                label6280:
                 if (k != 0) {
-                  paramString1 = eG(paramString3);
+                  paramString1 = kL(paramString3);
                 }
-                paramString3 = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.biz.a.a.class)).gt(paramString1);
+                paramString3 = ((com.tencent.mm.plugin.biz.a.a)g.E(com.tencent.mm.plugin.biz.a.a.class)).nc(paramString1);
                 paramString1 = paramString3;
                 if (k != 0) {
-                  paramString1 = eF(paramString3);
+                  paramString1 = kK(paramString3);
                 }
                 paramPString1.value = paramString1;
                 paramString3 = "";
-                localObject1 = null;
+                localObject2 = null;
                 i = 0;
                 break;
-                paramPString1.value = ((com.tencent.mm.plugin.biz.a.a)com.tencent.mm.kernel.g.r(com.tencent.mm.plugin.biz.a.a.class)).gs(paramString3);
+                paramPString1.value = ((com.tencent.mm.plugin.biz.a.a)g.E(com.tencent.mm.plugin.biz.a.a.class)).nb(paramString3);
                 paramString3 = paramPString1.value;
-                y.i("MicroMsg.Notification.Wording", "[parseMsgContentToShow] type:%s suffix:%s", new Object[] { Integer.valueOf(318767153), paramString3 });
-                localObject1 = null;
+                ab.i("MicroMsg.Notification.Wording", "[parseMsgContentToShow] type:%s suffix:%s", new Object[] { Integer.valueOf(318767153), paramString3 });
+                localObject2 = null;
                 i = 0;
                 paramString1 = "";
                 break;
-                paramString1 = com.tencent.mm.aj.a.b(a.a.lC(paramString3));
+                paramString1 = com.tencent.mm.ak.a.b(a.a.sz(paramString3));
                 paramPString1.value = paramString1;
                 paramString3 = "";
-                localObject1 = null;
+                localObject2 = null;
                 i = 0;
                 break;
                 paramString3 = "";
-                localObject1 = g.a.gp((String)localObject2);
+                localObject2 = j.b.mY((String)localObject3);
                 paramString1 = paramString3;
-                if (localObject1 == null) {
-                  break label862;
+                if (localObject2 == null) {
+                  break label742;
                 }
                 paramString1 = paramString3;
                 try
                 {
-                  paramString3 = URLDecoder.decode(((g.a)localObject1).content, "UTF-8");
+                  paramString3 = URLDecoder.decode(((j.b)localObject2).content, "UTF-8");
                   paramString1 = paramString3;
-                  paramString3 = j.WQ(paramString3);
+                  paramString3 = j.amy(paramString3);
                   paramString1 = paramString3;
                 }
                 catch (Exception paramString3)
@@ -1492,7 +1620,7 @@ public final class h
                   {
                     paramPString1.value = paramString1;
                     paramString3 = "";
-                    localObject1 = null;
+                    localObject2 = null;
                     i = 0;
                   }
                   catch (Exception paramString3)
@@ -1507,54 +1635,78 @@ public final class h
                 }
               }
             }
-            y.printErrStackTrace("MicroMsg.Notification.Wording", paramString3, "", new Object[0]);
+            ab.printErrStackTrace("MicroMsg.Notification.Wording", paramString3, "", new Object[0]);
             paramString3 = "";
-            localObject1 = null;
+            Object localObject2 = null;
             i = 0;
-            break label871;
-            paramString1 = ((e)com.tencent.mm.kernel.g.r(e.class)).Hd(paramString3);
+            break label751;
+            paramString1 = ((e)g.E(e.class)).SO(paramString3);
             if (paramString1 != null) {}
-            for (paramString1 = paramString1.toString();; paramString1 = "")
+            for (paramString3 = paramString1.toString();; paramString3 = "")
             {
+              paramString1 = paramString3;
+              if (paramBoolean1)
+              {
+                paramString1 = paramString3;
+                if (t.lA(paramString2))
+                {
+                  paramString1 = paramString3;
+                  if (paramString3.endsWith(paramContext.getString(2131298132)))
+                  {
+                    ab.i("MicroMsg.Notification.Wording", "conv.getDigest() : %s", new Object[] { paramString3 });
+                    paramString1 = paramString3.substring(0, paramString3.length() - paramContext.getString(2131298132).length());
+                  }
+                }
+              }
               paramPString1.value = paramString1;
               paramString3 = "";
-              localObject1 = null;
+              localObject2 = null;
               i = 0;
               break;
             }
-            paramString3 = com.tencent.mm.ae.a.a.gw(paramString3).content;
+            paramString3 = com.tencent.mm.af.a.a.ne(paramString3).content;
             paramString1 = paramString3;
-            if (bk.bl(paramString3)) {
+            if (bo.isNullOrNil(paramString3)) {
               paramString1 = "";
             }
             paramPString1.value = paramString1;
             paramString3 = "";
-            localObject1 = null;
+            localObject2 = null;
             i = 0;
-            break label871;
-            label6667:
+            break label751;
+            paramString1 = paramContext.getString(2131302009);
+            paramPString1.value = paramString1;
+            paramString3 = "";
+            localObject2 = null;
+            i = 0;
+            break label751;
+            label7087:
             paramString1 = paramString1.split("@bottle:");
             if (paramString1.length > 1)
             {
               paramPString1.value = paramString1[1];
-              return paramString1[1];
+              paramString1 = paramString1[1];
+              AppMethodBeat.o(16043);
+              return paramString1;
             }
             paramPString1.value = "";
+            AppMethodBeat.o(16043);
             return null;
-            label6702:
+            label7136:
             paramString2 = null;
             paramPString2 = null;
             paramContext = paramString1.split(":");
             if ((paramContext == null) || (paramContext.length <= 0))
             {
               paramPString1.value = "";
+              AppMethodBeat.o(16043);
               return null;
             }
             paramContext = paramContext[0];
-            if (!bk.bl(paramContext))
+            if (!bo.isNullOrNil(paramContext))
             {
-              au.Hx();
-              paramPInt = c.Fw().abl(paramContext);
+              aw.aaz();
+              paramPInt = c.YA().arw(paramContext);
               paramContext = paramPString2;
               if (paramPInt != null)
               {
@@ -1573,63 +1725,59 @@ public final class h
                 paramString2 = paramPInt.getProvince();
               }
             }
-            if (!bk.bl(paramString3))
+            if (!bo.isNullOrNil(paramString3))
             {
               paramPString1.value = (paramString2 + ": " + paramString3);
-              return paramString2 + ": " + paramString3;
+              paramString1 = paramString2 + ": " + paramString3;
+              AppMethodBeat.o(16043);
+              return paramString1;
             }
             paramString1 = paramString1.split("@bottle:");
             if (paramString1.length > 1)
             {
               paramPString1.value = (paramString2 + ": " + paramString1[1]);
-              return paramString2 + ": " + paramString1[1];
+              paramString1 = paramString2 + ": " + paramString1[1];
+              AppMethodBeat.o(16043);
+              return paramString1;
             }
             paramPString1.value = paramString2;
+            AppMethodBeat.o(16043);
             return paramString2;
-            label6956:
-            if (bk.bl(paramString1)) {
+            label7418:
+            if (bo.isNullOrNil(paramString1)) {
               paramPString1.value = "";
             }
-            if (!bk.bl(str1))
+            if (!bo.isNullOrNil(str1))
             {
               paramString2 = paramString1;
               if (str2 != null)
               {
                 paramString2 = paramString1;
                 if (str2.length() > 0) {
-                  paramString2 = g(paramString1, str1, str2);
+                  paramString2 = i(paramString1, str1, str2);
                 }
               }
-              if (bk.bl(paramPString2.value))
+              if (bo.isNullOrNil(paramPString2.value))
               {
-                paramPString1.value = g(paramPString1.value, str1, "%s");
+                paramPString1.value = i(paramPString1.value, str1, "%s");
                 paramPString2.value = str1;
               }
-              paramString1 = o.ff(paramString2);
-              paramPString1.value = o.ff(paramPString1.value);
+              paramString1 = com.tencent.mm.compatible.util.o.lr(paramString2);
+              paramPString1.value = com.tencent.mm.compatible.util.o.lr(paramPString1.value);
               paramString2 = paramString1 + paramString3;
               paramPString1.value += paramString3;
-              if (paramBoolean1)
-              {
-                if ((paramPString1.value.length() != 32) || ((paramInt2 != 47) && (paramInt2 != 1048625))) {
-                  break label7198;
-                }
-                paramPString1.value = paramString2;
+              if ((paramBoolean1) && (!a(paramInt2, paramPString1, paramString2))) {
+                a(paramInt2, paramPString1, paramPString2, paramPInt);
               }
-              label7198:
-              for (paramInt1 = 1;; paramInt1 = 0)
-              {
-                if (paramInt1 == 0) {
-                  a(paramInt2, paramPString1, paramPString2, paramPInt);
-                }
-                paramString1 = paramString2;
-                if (i != 0) {
-                  paramString1 = paramString2.concat(" " + bk.pm((String)localObject1));
-                }
-                return bk.pm(paramString1);
+              paramString1 = paramString2;
+              if (i != 0) {
+                paramString1 = paramString2.concat(" " + bo.nullAsNil((String)localObject2));
               }
+              paramString1 = bo.nullAsNil(paramString1);
+              AppMethodBeat.o(16043);
+              return paramString1;
             }
-            if ((s.hK(paramString2)) || (j != 0) || (s.hT(paramString2)))
+            if ((t.ot(paramString2)) || (j != 0) || (t.oC(paramString2)))
             {
               paramString2 = paramString1;
               if (paramString3 != null)
@@ -1639,17 +1787,18 @@ public final class h
                   paramString2 = paramString3;
                 }
               }
-              if (bk.bl(paramString2))
+              if (bo.isNullOrNil(paramString2))
               {
                 paramPString1.value = "";
                 paramPString2.value = "";
+                AppMethodBeat.o(16043);
                 return "";
               }
               if (paramInt1 == 0)
               {
-                paramPString1.value = ("%s:" + paramString2);
+                paramPString1.value = "%s:".concat(String.valueOf(paramString2));
                 if (!paramBoolean1) {
-                  break label7399;
+                  break label7833;
                 }
                 a(paramInt2, paramPString1, paramPString2, paramPInt);
                 paramString1 = paramString2;
@@ -1661,21 +1810,25 @@ public final class h
               if (i != 0)
               {
                 paramString2 = paramString1;
-                if (localObject1 != null) {
-                  paramString2 = paramString1.concat(" " + (String)localObject1);
+                if (localObject2 != null) {
+                  paramString2 = paramString1.concat(" ".concat(String.valueOf(localObject2)));
                 }
               }
               paramString1 = paramString2;
               if (k != 0) {
-                paramString1 = eG(paramString2);
+                paramString1 = kL(paramString2);
               }
-              return bk.pm(paramString1);
-              paramPString1.value = (paramContext.getString(R.l.app_me) + ":" + paramString2);
+              paramString1 = bo.nullAsNil(paramString1);
+              AppMethodBeat.o(16043);
+              return paramString1;
+              paramPString1.value = (paramContext.getString(2131296992) + ":" + paramString2);
               break;
-              label7399:
-              return r.gV(paramPString2.value) + ":" + paramString2;
+              label7833:
+              paramString1 = s.nE(paramPString2.value) + ":" + paramString2;
+              AppMethodBeat.o(16043);
+              return paramString1;
               if ((paramString3 == null) || (paramString3.length() <= 0)) {
-                break label7476;
+                break label7918;
               }
               paramPString1.value = paramString3;
               paramString2 = paramString3;
@@ -1686,29 +1839,20 @@ public final class h
                 paramString1 = paramString2;
               }
             }
-            label7476:
-            label7481:
-            localObject2 = "";
-            localObject1 = null;
+            label7918:
+            label7923:
+            paramString3 = "";
+            localObject2 = null;
             i = 0;
-            paramString1 = paramString3;
-            paramString3 = (String)localObject2;
-            break label871;
-            label7499:
-            localObject2 = "";
-            localObject1 = null;
-            i = 0;
-            paramString1 = paramString3;
-            paramString3 = (String)localObject2;
-            break label871;
+            break label751;
             paramString1 = paramString2;
-            break label2404;
+            break label2300;
             paramString1 = paramString2;
           }
-          label7527:
+          label7945:
           j = i;
         }
-        localObject2 = paramString3;
+        localObject3 = paramString3;
         str2 = "";
         str1 = "";
       }
@@ -1717,216 +1861,313 @@ public final class h
   
   private static void a(int paramInt, PString paramPString1, PString paramPString2, PInt paramPInt)
   {
-    int i = 150;
-    if ((paramPString1.value.length() == 32) && ((paramInt == 47) || (paramInt == 1048625))) {
+    AppMethodBeat.i(16051);
+    if ((paramPString1.value.length() == 32) && ((paramInt == 47) || (paramInt == 1048625)))
+    {
+      AppMethodBeat.o(16051);
       return;
     }
-    String str;
-    if (paramPString1.value.length() >= 150)
-    {
-      localObject = paramPString1.value;
-      str = paramPString1.value;
-      paramInt = i;
-      if (paramInt >= str.length()) {
-        break label138;
-      }
-      if (str.charAt(paramInt) != '%') {
-        label79:
-        paramPString1.value = ((String)localObject).substring(0, paramInt);
-      }
+    if (paramPString1.value.length() >= 150) {
+      paramPString1.value = paramPString1.value.substring(0, C(paramPString1.value, 150));
     }
-    else
+    TextPaint localTextPaint = getTextPaint();
+    if ((paramPString1.value.replace("%%", "").contains("%s")) || (localTextPaint == null))
     {
-      if (dkx != null) {
-        break label147;
-      }
-    }
-    label138:
-    label147:
-    for (Object localObject = null;; localObject = (TextPaint)dkx.get())
-    {
-      if ((!paramPString1.value.replace("%%", "").contains("%s")) && (localObject != null)) {
-        break label161;
-      }
       paramPInt.value = 0;
+      AppMethodBeat.o(16051);
       return;
-      paramInt += 1;
-      break;
-      paramInt = str.length();
-      break label79;
     }
     try
     {
-      label161:
       paramPString2 = String.format(paramPString1.value, new Object[] { paramPString2.value });
-      if (dky > 0)
-      {
-        paramInt = dky;
-        paramPString1.value = TextUtils.ellipsize(paramPString2, (TextPaint)localObject, paramInt, TextUtils.TruncateAt.END).toString();
-        paramPInt.value = 1;
-        return;
-      }
+      paramPString1.value = a(paramPString2, localTextPaint).toString();
+      paramPInt.value = 1;
+      AppMethodBeat.o(16051);
+      return;
     }
     catch (Exception paramPString2)
     {
       for (;;)
       {
         paramPString2 = paramPString1.value;
-        continue;
-        paramInt = BackwardSupportUtil.b.b(ae.getContext(), 200.0F);
       }
     }
   }
   
   public static void a(TextPaint paramTextPaint)
   {
-    if ((dkx == null) || (dkx.get() == null)) {
-      dkx = new WeakReference(paramTextPaint);
+    AppMethodBeat.i(16056);
+    if ((ebR == null) || (ebR.get() == null)) {
+      ebR = new WeakReference(paramTextPaint);
     }
+    AppMethodBeat.o(16056);
+  }
+  
+  private static boolean a(int paramInt, PString paramPString, String paramString)
+  {
+    AppMethodBeat.i(16048);
+    if ((paramPString.value.length() == 32) && ((paramInt == 47) || (paramInt == 1048625)))
+    {
+      paramPString.value = paramString;
+      AppMethodBeat.o(16048);
+      return true;
+    }
+    AppMethodBeat.o(16048);
+    return false;
   }
   
   public static String b(ad paramad)
   {
-    Object localObject2 = ae.getContext();
-    Object localObject1;
-    if (paramad == null) {
-      localObject1 = ((Context)localObject2).getString(R.l.bottle_unknowed_city);
-    }
-    do
+    AppMethodBeat.i(16040);
+    Object localObject = ah.getContext();
+    if (paramad == null)
     {
-      do
+      paramad = ((Context)localObject).getString(2131297803);
+      AppMethodBeat.o(16040);
+      return paramad;
+    }
+    if (RegionCodeDecoder.asx(paramad.getCountryCode()))
+    {
+      localObject = paramad.getCity();
+      if (!bo.isNullOrNil((String)localObject))
       {
-        do
-        {
-          return localObject1;
-          if (!RegionCodeDecoder.acl(paramad.getCountryCode())) {
-            break;
-          }
-          localObject2 = paramad.getCity();
-          localObject1 = localObject2;
-        } while (!bk.bl((String)localObject2));
-        localObject2 = r.gX(paramad.getProvince());
-        localObject1 = localObject2;
-      } while (!bk.bl((String)localObject2));
-      RegionCodeDecoder.cvV();
-      return RegionCodeDecoder.getLocName(paramad.getCountryCode());
-      paramad = r.gX(paramad.getProvince());
-      localObject1 = paramad;
-    } while (!bk.bl(paramad));
-    return ((Context)localObject2).getString(R.l.bottle_unknowed_city);
+        AppMethodBeat.o(16040);
+        return localObject;
+      }
+      localObject = s.nG(paramad.getProvince());
+      if (!bo.isNullOrNil((String)localObject))
+      {
+        AppMethodBeat.o(16040);
+        return localObject;
+      }
+      RegionCodeDecoder.dyE();
+      paramad = RegionCodeDecoder.getLocName(paramad.getCountryCode());
+      AppMethodBeat.o(16040);
+      return paramad;
+    }
+    paramad = s.nG(paramad.getProvince());
+    if (!bo.isNullOrNil(paramad))
+    {
+      AppMethodBeat.o(16040);
+      return paramad;
+    }
+    paramad = ((Context)localObject).getString(2131297803);
+    AppMethodBeat.o(16040);
+    return paramad;
   }
   
   public static String b(bi parambi, PString paramPString1, PString paramPString2, PInt paramPInt, boolean paramBoolean)
   {
-    if (parambi.cvm()) {}
-    for (String str = parambi.cvK();; str = parambi.field_content)
+    AppMethodBeat.i(16041);
+    if (parambi.dxQ()) {}
+    for (String str = parambi.dyr();; str = parambi.field_content)
     {
-      str = j.WQ(str);
-      return bk.pm(a(parambi.field_imgPath, parambi.field_isSend, parambi.field_talker, str, parambi.getType(), ae.getContext(), paramPString1, paramPString2, paramPInt, true, paramBoolean));
+      str = j.amy(str);
+      parambi = bo.nullAsNil(a(parambi.field_imgPath, parambi.field_isSend, parambi.field_talker, str, parambi.getType(), ah.getContext(), paramPString1, paramPString2, paramPInt, true, paramBoolean));
+      AppMethodBeat.o(16041);
+      return parambi;
     }
   }
   
-  public static String c(Context paramContext, String paramString, boolean paramBoolean)
+  private static String bC(Context paramContext)
   {
-    paramString = com.tencent.mm.cd.b.csC().aat(paramString);
-    if (paramBoolean) {
-      return paramString;
+    AppMethodBeat.i(16045);
+    boolean bool = r.ZJ();
+    aw.aaz();
+    long l = bo.a((Long)c.Ru().get(65793, null), 0L);
+    if (!bool)
+    {
+      paramContext = paramContext.getString(2131303374);
+      AppMethodBeat.o(16045);
+      return paramContext;
     }
-    return paramContext.getString(R.l.intro_title);
+    if (l == 0L)
+    {
+      paramContext = paramContext.getString(2131300087);
+      AppMethodBeat.o(16045);
+      return paramContext;
+    }
+    if (bo.gz(l) * 1000L > 1209600000L)
+    {
+      paramContext = paramContext.getString(2131300086, new Object[] { Long.valueOf(bo.gz(l) * 1000L / 86400000L) });
+      AppMethodBeat.o(16045);
+      return paramContext;
+    }
+    AppMethodBeat.o(16045);
+    return "";
   }
   
   public static String d(Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return com.tencent.mm.cd.b.csC().aat(paramString);
-    }
-    return paramContext.getString(R.l.notification_sample_ticker);
-  }
-  
-  private static String eF(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString.replaceAll("%", "%%");
-    }
-    return str;
-  }
-  
-  private static String eG(String paramString)
-  {
-    String str = paramString;
-    if (paramString != null) {
-      str = paramString.replaceAll("%%", "%");
-    }
-    return str;
-  }
-  
-  public static String eH(String paramString)
-  {
-    String str;
-    if (paramString == null) {
-      str = "";
-    }
-    do
+    AppMethodBeat.i(16057);
+    paramString = com.tencent.mm.cd.b.duW().aqC(paramString);
+    if (paramBoolean)
     {
-      return str;
-      str = paramString;
-    } while (paramString.length() < 150);
-    return paramString.substring(0, 150) + "...";
+      AppMethodBeat.o(16057);
+      return paramString;
+    }
+    paramContext = paramContext.getString(2131300746);
+    AppMethodBeat.o(16057);
+    return paramContext;
+  }
+  
+  public static String e(Context paramContext, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(16059);
+    if (paramBoolean)
+    {
+      paramContext = com.tencent.mm.cd.b.duW().aqC(paramString);
+      AppMethodBeat.o(16059);
+      return paramContext;
+    }
+    paramContext = paramContext.getString(2131301956);
+    AppMethodBeat.o(16059);
+    return paramContext;
   }
   
   public static String g(Context paramContext, String paramString1, String paramString2)
   {
-    if (s.fn(paramString1))
+    AppMethodBeat.i(16039);
+    if (t.lA(paramString1))
     {
-      paramString2 = com.tencent.mm.model.bd.iI(paramString2);
+      paramString2 = bf.pu(paramString2);
       if (paramString2 != null) {
-        paramString2 = r.gV(paramString2.trim());
+        paramString2 = s.nE(paramString2.trim());
       }
     }
     while (paramString1.contains("@bottle"))
     {
-      return paramContext.getResources().getQuantityString(R.j.notification_fmt_multi_bottle, 1, new Object[] { Integer.valueOf(1) });
-      paramString2 = r.gV(paramString1);
+      paramContext = paramContext.getResources().getQuantityString(2131361813, 1, new Object[] { Integer.valueOf(1) });
+      AppMethodBeat.o(16039);
+      return paramContext;
+      paramString2 = s.nE(paramString1);
       continue;
-      paramString2 = r.gV(paramString1);
+      paramString2 = s.nE(paramString1);
     }
     String str = paramString2;
-    if (bk.bl(paramString2))
+    if (bo.isNullOrNil(paramString2))
     {
       str = paramString2;
-      if (s.fn(paramString1)) {
-        str = paramContext.getString(R.l.chatting_roominfo_noname);
+      if (t.lA(paramString1)) {
+        str = paramContext.getString(2131298302);
       }
     }
-    return com.tencent.mm.cd.b.csC().aat(str);
+    paramContext = com.tencent.mm.cd.b.duW().aqC(str);
+    AppMethodBeat.o(16039);
+    return paramContext;
   }
   
-  private static String g(String paramString1, String paramString2, String paramString3)
+  private static TextPaint getTextPaint()
   {
-    if ((bk.bl(paramString1)) || (bk.bl(paramString2)) || (bk.bl(paramString3))) {}
-    int i;
-    do
+    AppMethodBeat.i(16055);
+    if (ebR == null)
     {
+      AppMethodBeat.o(16055);
+      return null;
+    }
+    TextPaint localTextPaint = (TextPaint)ebR.get();
+    AppMethodBeat.o(16055);
+    return localTextPaint;
+  }
+  
+  private static String i(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(16047);
+    if ((bo.isNullOrNil(paramString1)) || (bo.isNullOrNil(paramString2)) || (bo.isNullOrNil(paramString3)))
+    {
+      AppMethodBeat.o(16047);
       return paramString1;
-      i = paramString1.indexOf(paramString2);
-    } while (i < 0);
-    return paramString1.substring(0, i) + paramString3 + paramString1.substring(i + paramString2.length());
+    }
+    int i = paramString1.indexOf(paramString2);
+    if (i < 0)
+    {
+      AppMethodBeat.o(16047);
+      return paramString1;
+    }
+    paramString1 = paramString1.substring(0, i) + paramString3 + paramString1.substring(i + paramString2.length());
+    AppMethodBeat.o(16047);
+    return paramString1;
   }
   
-  public static void gc(int paramInt)
+  public static void is(int paramInt)
   {
-    dky = paramInt;
+    ebS = paramInt;
   }
   
-  public static void gd(int paramInt)
+  public static void it(int paramInt)
   {
-    dkz = paramInt;
+    ebT = paramInt;
+  }
+  
+  private static String kK(String paramString)
+  {
+    AppMethodBeat.i(16046);
+    if (paramString != null)
+    {
+      paramString = paramString.replaceAll("%", "%%");
+      AppMethodBeat.o(16046);
+      return paramString;
+    }
+    AppMethodBeat.o(16046);
+    return paramString;
+  }
+  
+  private static String kL(String paramString)
+  {
+    AppMethodBeat.i(16049);
+    if (paramString != null)
+    {
+      paramString = paramString.replaceAll("%%", "%");
+      AppMethodBeat.o(16049);
+      return paramString;
+    }
+    AppMethodBeat.o(16049);
+    return paramString;
+  }
+  
+  private static boolean kM(String paramString)
+  {
+    AppMethodBeat.i(153481);
+    if ((t.nZ(paramString)) && (!r.ZG()))
+    {
+      AppMethodBeat.o(153481);
+      return true;
+    }
+    if ((t.ob(paramString)) && (!r.Zz()))
+    {
+      AppMethodBeat.o(153481);
+      return true;
+    }
+    if ((t.of(paramString)) && (!r.ZJ()))
+    {
+      AppMethodBeat.o(153481);
+      return true;
+    }
+    AppMethodBeat.o(153481);
+    return false;
+  }
+  
+  public static String kN(String paramString)
+  {
+    AppMethodBeat.i(16050);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(16050);
+      return "";
+    }
+    if (paramString.length() < 150)
+    {
+      AppMethodBeat.o(16050);
+      return paramString;
+    }
+    paramString = paramString.substring(0, 150) + "...";
+    AppMethodBeat.o(16050);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.booter.notification.a.h
  * JD-Core Version:    0.7.0.1
  */

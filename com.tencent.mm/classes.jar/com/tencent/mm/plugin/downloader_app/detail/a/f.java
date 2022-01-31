@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.downloader_app.detail.a;
 
 import android.content.Context;
-import com.tencent.luggage.e.a.a;
-import com.tencent.mm.game.report.api.b;
-import com.tencent.mm.plugin.downloader.f.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw;
-import com.tencent.mm.plugin.webview.luggage.jsapi.aw.a;
-import com.tencent.mm.sdk.platformtools.y;
-import org.json.JSONException;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.downloader_app.c.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bh.a;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONObject;
 
 public class f
-  extends aw
+  extends bh
 {
-  public final void a(Context paramContext, String paramString, aw.a parama)
+  public final void a(Context paramContext, String paramString, bh.a parama) {}
+  
+  public final void b(a.a parama)
   {
-    y.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
-    long l;
-    try
+    AppMethodBeat.i(136078);
+    Object localObject = parama.byF.bxK;
+    if (localObject == null)
     {
-      paramString = new JSONObject(paramString);
-      l = paramString.optLong("download_id");
-      if (l <= 0L)
-      {
-        y.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = " + l);
-        parama.e("invalid_downloadid", null);
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      y.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.e("fail", null);
+      parama.a("invalid_data", null);
+      AppMethodBeat.o(136078);
       return;
     }
-    paramString = com.tencent.mm.plugin.downloader.model.c.dk(l);
-    if (paramString != null) {
-      b.dCw.a(paramString.field_appId, paramString.field_scene, 10, paramString.field_startSize, paramString.field_downloadedSize - paramString.field_startSize, paramString.field_totalSize, paramString.field_downloadUrl, paramString.field_errCode, paramString.field_downloaderType, paramString.field_channelId, (System.currentTimeMillis() - paramString.field_startTime) / 1000L, paramString.field_startState, paramString.field_downloadId, paramString.field_extInfo);
+    int i = ((JSONObject)localObject).optInt("logId");
+    String str = ((JSONObject)localObject).optString("values");
+    if ((i <= 0) || (bo.isNullOrNil(str)))
+    {
+      parama.a("invalid_data", null);
+      AppMethodBeat.o(136078);
+      return;
     }
-    com.tencent.mm.plugin.downloader_app.b.c.a(paramContext, paramString, new f.1(this, parama));
+    localObject = str;
+    if (i == 16099) {
+      localObject = a.azn() + "," + str;
+    }
+    h.qsU.kvStat(i, (String)localObject);
+    parama.a("", null);
+    AppMethodBeat.o(136078);
   }
   
-  public final int aGj()
+  public final int bjL()
   {
-    return 2;
+    return 0;
   }
-  
-  public final void b(a.a parama) {}
   
   public final String name()
   {
-    return "resumeDownloadTask";
+    return "reportDownloaderAppKvState";
   }
 }
 

@@ -8,26 +8,26 @@ import java.util.List;
 
 public abstract class MediaBrowserCompat$l
 {
-  private final Object Bb;
-  WeakReference<MediaBrowserCompat.k> Bc;
-  final IBinder tZ = new Binder();
+  private final Object BN;
+  WeakReference<MediaBrowserCompat.k> BO;
+  final IBinder va = new Binder();
   
   public MediaBrowserCompat$l()
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.Bb = new b.b(new b());
+      this.BN = new b.b(new b());
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
-      this.Bb = new a.d(new MediaBrowserCompat.l.a(this));
+      this.BN = new a.d(new MediaBrowserCompat.l.a(this));
       return;
     }
-    this.Bb = null;
+    this.BN = null;
   }
   
-  private final class b
+  final class b
     extends MediaBrowserCompat.l.a
     implements b.a
   {

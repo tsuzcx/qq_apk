@@ -13,8 +13,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.system.OsConstants;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.e;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -22,68 +23,82 @@ import java.util.List;
 
 public final class a
 {
-  private static String ulu;
-  private static String ulv;
-  private static File ulw;
-  private static long ulx;
+  private static String yuZ;
+  private static String yva;
+  private static File yvb;
+  private static long yvc;
   @SuppressLint({"HandlerLeak"})
-  private static Handler uly = new Handler(Looper.getMainLooper())
+  private static Handler yvd;
+  
+  static
   {
-    public final void handleMessage(Message paramAnonymousMessage)
+    AppMethodBeat.i(114812);
+    yvd = new Handler(Looper.getMainLooper())
     {
-      paramAnonymousMessage = (a.a)paramAnonymousMessage.obj;
-      if (a.access$000()) {
-        if (a.hw(a.ulx))
-        {
-          if (!a.gc(i.ulG))
-          {
-            i.cte().j(675L, 25L, 1L);
-            paramAnonymousMessage.csR();
-            return;
-          }
-          if (!a.gh(i.ulG)) {
-            i.cte().j(675L, 18L, 1L);
-          }
-          i.cte().j(675L, 17L, 1L);
-          paramAnonymousMessage.csS();
-        }
-      }
-      for (;;)
+      public final void handleMessage(Message paramAnonymousMessage)
       {
-        a.csQ();
-        return;
-        a.c(paramAnonymousMessage);
-        return;
-        if (!a.ciX())
-        {
-          i.cte().j(675L, 15L, 1L);
-          paramAnonymousMessage.csR();
+        AppMethodBeat.i(114794);
+        paramAnonymousMessage = (a.a)paramAnonymousMessage.obj;
+        if (a.access$000()) {
+          if (a.nZ(a.yvc))
+          {
+            if (!a.hv(h.yvl))
+            {
+              h.dvB().l(675L, 25L, 1L);
+              paramAnonymousMessage.dvp();
+              AppMethodBeat.o(114794);
+              return;
+            }
+            if (!a.eE(h.yvl)) {
+              h.dvB().l(675L, 18L, 1L);
+            }
+            h.dvB().l(675L, 17L, 1L);
+            paramAnonymousMessage.dvq();
+          }
         }
-        else if (!a.gc(i.ulG))
+        for (;;)
         {
-          i.cte().j(675L, 26L, 1L);
-          i.cte().j(675L, 15L, 1L);
-          paramAnonymousMessage.csR();
-        }
-        else
-        {
-          i.cte().j(675L, 16L, 1L);
-          paramAnonymousMessage.bCD();
+          a.dvo();
+          AppMethodBeat.o(114794);
+          return;
+          a.c(paramAnonymousMessage);
+          AppMethodBeat.o(114794);
+          return;
+          if (!a.djy())
+          {
+            h.dvB().l(675L, 15L, 1L);
+            paramAnonymousMessage.dvp();
+          }
+          else if (!a.hv(h.yvl))
+          {
+            h.dvB().l(675L, 26L, 1L);
+            h.dvB().l(675L, 15L, 1L);
+            paramAnonymousMessage.dvp();
+          }
+          else
+          {
+            h.dvB().l(675L, 16L, 1L);
+            paramAnonymousMessage.cod();
+          }
         }
       }
-    }
-  };
+    };
+    AppMethodBeat.o(114812);
+  }
   
   public static void a(a parama)
   {
+    AppMethodBeat.i(114803);
     b(parama);
+    AppMethodBeat.o(114803);
   }
   
-  private static void aax(String paramString)
+  private static void aqH(String paramString)
   {
     try
     {
-      String str = csN();
+      AppMethodBeat.i(114800);
+      String str = dvl();
       File localFile = new File(str);
       if (!localFile.exists()) {
         localFile.mkdirs();
@@ -93,7 +108,8 @@ public final class a
         paramString.delete();
       }
       paramString.createNewFile();
-      ulw = paramString;
+      yvb = paramString;
+      AppMethodBeat.o(114800);
       return;
     }
     finally {}
@@ -101,99 +117,117 @@ public final class a
   
   private static void b(a parama)
   {
-    if (ulx == 0L) {
-      ulx = System.currentTimeMillis();
+    AppMethodBeat.i(114804);
+    if (yvc == 0L) {
+      yvc = System.currentTimeMillis();
     }
     Message localMessage = Message.obtain();
     localMessage.what = 0;
     localMessage.obj = parama;
-    uly.sendMessageDelayed(localMessage, 100L);
+    yvd.sendMessageDelayed(localMessage, 100L);
+    AppMethodBeat.o(114804);
   }
   
-  public static String csN()
+  public static String dvl()
   {
-    if (ulu == null) {
-      throw new IllegalStateException("data directory should not be null, give one.");
+    AppMethodBeat.i(114796);
+    if (yuZ == null)
+    {
+      localObject = new IllegalStateException("data directory should not be null, give one.");
+      AppMethodBeat.o(114796);
+      throw ((Throwable)localObject);
     }
-    File localFile = new File(ulu);
-    if ((!localFile.exists()) && (!localFile.mkdirs())) {
-      i.c("WxSplash.DexOpt", "data directory create failed.", new Object[0]);
+    Object localObject = new File(yuZ);
+    if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
+      h.c("WxSplash.DexOpt", "data directory create failed.", new Object[0]);
     }
-    return ulu;
+    localObject = yuZ;
+    AppMethodBeat.o(114796);
+    return localObject;
   }
   
-  private static boolean csO()
+  private static boolean dvm()
   {
-    if (ulw == null) {
-      throw new IllegalStateException("tmp file field should not be null");
+    AppMethodBeat.i(114805);
+    if (yvb == null)
+    {
+      IllegalStateException localIllegalStateException = new IllegalStateException("tmp file field should not be null");
+      AppMethodBeat.o(114805);
+      throw localIllegalStateException;
     }
-    return ulw.exists();
-  }
-  
-  private static boolean csP()
-  {
-    String str = csN();
-    return new File(str + "/DexOpt_Failed").exists();
-  }
-  
-  public static void e(Application paramApplication)
-  {
-    ulu = new File(paramApplication.getFilesDir(), "dexopt_service").getAbsolutePath();
-  }
-  
-  public static boolean gc(Context paramContext)
-  {
-    boolean bool = i.ulJ.aH(paramContext);
-    i.c("WxSplash.DexOpt", "if need dexopt %s", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = yvb.exists();
+    AppMethodBeat.o(114805);
     return bool;
   }
   
-  public static void gd(Context paramContext)
+  private static boolean dvn()
   {
-    if (g.pg) {}
-    for (;;)
+    AppMethodBeat.i(114806);
+    String str = dvl();
+    boolean bool = new File(str + "/DexOpt_Failed").exists();
+    AppMethodBeat.o(114806);
+    return bool;
+  }
+  
+  public static boolean hv(Context paramContext)
+  {
+    AppMethodBeat.i(114797);
+    boolean bool = h.yvo.bf(paramContext);
+    h.c("WxSplash.DexOpt", "if need dexopt %s", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(114797);
+    return bool;
+  }
+  
+  public static void hw(Context paramContext)
+  {
+    AppMethodBeat.i(114798);
+    if (g.qd)
     {
+      AppMethodBeat.o(114798);
       return;
-      i.cte().j(675L, 22L, 1L);
-      try
+    }
+    h.dvB().l(675L, 22L, 1L);
+    try
+    {
+      bool = h.yvo.be(paramContext);
+      h.c("WxSplash.DexOpt", "install multidex result %s", new Object[] { Boolean.valueOf(bool) });
+      if (!bool)
       {
-        bool = i.ulJ.aG(paramContext);
-        i.c("WxSplash.DexOpt", "install multidex result %s", new Object[] { Boolean.valueOf(bool) });
-        if (bool) {
-          continue;
-        }
-        i.c("WxSplash.DexOpt", "install multidex failed, kill self.", new Object[0]);
-        i.csY();
-        return;
+        h.c("WxSplash.DexOpt", "install multidex failed, kill self.", new Object[0]);
+        h.caC();
       }
-      catch (Throwable paramContext)
+      AppMethodBeat.o(114798);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      for (;;)
       {
-        for (;;)
-        {
-          i.a(paramContext, "multidex install failed");
-          boolean bool = false;
-        }
+        h.a(paramContext, "multidex install failed");
+        boolean bool = false;
       }
     }
   }
   
-  public static void ge(Context paramContext)
+  public static void hx(Context paramContext)
   {
-    i.c("WxSplash.DexOpt", "start dex opt service", new Object[0]);
-    String str = bk.am(paramContext, Process.myPid());
+    AppMethodBeat.i(114799);
+    h.c("WxSplash.DexOpt", "start dex opt service", new Object[0]);
+    String str = bo.az(paramContext, Process.myPid());
     str.replace(':', '_');
-    ulv = "DexOpt_Request_" + str;
-    i.cte().j(675L, 14L, 1L);
+    yva = "DexOpt_Request_".concat(String.valueOf(str));
+    h.dvB().l(675L, 14L, 1L);
     try
     {
-      aax(ulv);
+      aqH(yva);
       paramContext.startService(new Intent(paramContext, DexOptService.class));
+      AppMethodBeat.o(114799);
       return;
     }
     catch (Exception localException)
     {
       if (Build.VERSION.SDK_INT > 19) {
-        break label196;
+        break label200;
       }
     }
     if (localException.getClass().getCanonicalName().equals("libcore.io.ErrnoException")) {}
@@ -206,73 +240,81 @@ public final class a
         ((Field)localObject).setAccessible(true);
         if (((Integer)((Field)localObject).get(localException)).intValue() == OsConstants.ENOSPC)
         {
-          localObject = new File(csN());
+          localObject = new File(dvl());
           if (((File)localObject).exists()) {
-            break label205;
+            break label216;
           }
           i = 1;
           if (i == 0) {
-            break label242;
+            break label253;
           }
-          i.ulJ.aI(paramContext);
+          h.yvo.bg(paramContext);
         }
       }
       catch (Exception paramContext)
       {
-        i.c("WxSplash.DexOpt", "%s, %s", new Object[] { paramContext.getMessage() });
+        h.c("WxSplash.DexOpt", "%s, %s", new Object[] { paramContext.getMessage() });
       }
       for (;;)
       {
-        label196:
-        throw new RuntimeException(localException);
-        label205:
+        label200:
+        paramContext = new RuntimeException(localException);
+        AppMethodBeat.o(114799);
+        throw paramContext;
+        label216:
         i = ((File)localObject).listFiles().length;
-        i.c("WxSplash.DexOpt", "check dexopt directory size %s.", new Object[] { Integer.valueOf(i) });
+        h.c("WxSplash.DexOpt", "check dexopt directory size %s.", new Object[] { Integer.valueOf(i) });
         if (i >= 10000) {
-          break label280;
+          break label291;
         }
         i = 1;
         break;
-        label242:
-        i.c("WxSplash.DexOpt", "check dexopt directory size not ok, clean it and throw exception.", new Object[0]);
-        paramContext = new File(csN());
+        label253:
+        h.c("WxSplash.DexOpt", "check dexopt directory size not ok, clean it and throw exception.", new Object[0]);
+        paramContext = new File(dvl());
         if (paramContext.exists()) {
-          e.l(paramContext);
+          e.p(paramContext);
         }
       }
-      label280:
+      label291:
       int i = 0;
     }
   }
   
-  private static boolean gf(Context paramContext)
+  private static boolean hy(Context paramContext)
   {
+    AppMethodBeat.i(114801);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
     if (paramContext != null)
     {
       paramContext = paramContext.getRunningServices(2147483647);
       if (paramContext == null)
       {
-        i.c("WxSplash.DexOpt", "dexopt service may dead, get running services return null.", new Object[0]);
+        h.c("WxSplash.DexOpt", "dexopt service may dead, get running services return null.", new Object[0]);
+        AppMethodBeat.o(114801);
         return false;
       }
       paramContext = paramContext.iterator();
       while (paramContext.hasNext()) {
-        if ("com.tencent.mm.splash.DexOptService".equals(((ActivityManager.RunningServiceInfo)paramContext.next()).service.getClassName())) {
+        if ("com.tencent.mm.splash.DexOptService".equals(((ActivityManager.RunningServiceInfo)paramContext.next()).service.getClassName()))
+        {
+          AppMethodBeat.o(114801);
           return true;
         }
       }
     }
-    i.c("WxSplash.DexOpt", "dexopt service may dead", new Object[0]);
+    h.c("WxSplash.DexOpt", "dexopt service may dead", new Object[0]);
+    AppMethodBeat.o(114801);
     return false;
   }
   
-  public static boolean gg(Context paramContext)
+  public static boolean hz(Context paramContext)
   {
+    AppMethodBeat.i(114802);
     long l1 = 0L;
     long l3 = System.currentTimeMillis();
-    i.c("WxSplash.DexOpt", "block checking dex opt result.", new Object[0]);
-    while (csO())
+    h.c("WxSplash.DexOpt", "block checking dex opt result.", new Object[0]);
+    while (dvm())
     {
       long l2 = l1 + 1L;
       Thread.sleep(100L);
@@ -282,43 +324,55 @@ public final class a
         l1 = 0L;
         if (System.currentTimeMillis() - l3 > 180000L)
         {
-          i.c("WxSplash.DexOpt", "block checking dex opt timeout.", new Object[0]);
-          if (!gc(paramContext))
+          h.c("WxSplash.DexOpt", "block checking dex opt timeout.", new Object[0]);
+          if (!hv(paramContext))
           {
-            i.cte().j(675L, 25L, 1L);
-            i.cte().j(675L, 15L, 1L);
+            h.dvB().l(675L, 25L, 1L);
+            h.dvB().l(675L, 15L, 1L);
+            AppMethodBeat.o(114802);
             return true;
           }
-          if (!gf(paramContext)) {
-            i.cte().j(675L, 18L, 1L);
+          if (!hy(paramContext)) {
+            h.dvB().l(675L, 18L, 1L);
           }
-          i.cte().j(675L, 17L, 1L);
+          h.dvB().l(675L, 17L, 1L);
+          AppMethodBeat.o(114802);
           return false;
         }
       }
     }
-    if (!csP())
+    if (!dvn())
     {
-      i.cte().j(675L, 15L, 1L);
+      h.dvB().l(675L, 15L, 1L);
+      AppMethodBeat.o(114802);
       return true;
     }
-    if (!gc(paramContext))
+    if (!hv(paramContext))
     {
-      i.cte().j(675L, 26L, 1L);
-      i.cte().j(675L, 15L, 1L);
+      h.dvB().l(675L, 26L, 1L);
+      h.dvB().l(675L, 15L, 1L);
+      AppMethodBeat.o(114802);
       return true;
     }
-    i.cte().j(675L, 16L, 1L);
+    h.dvB().l(675L, 16L, 1L);
+    AppMethodBeat.o(114802);
     return false;
+  }
+  
+  public static void i(Application paramApplication)
+  {
+    AppMethodBeat.i(114795);
+    yuZ = new File(paramApplication.getFilesDir(), "dexopt_service").getAbsolutePath();
+    AppMethodBeat.o(114795);
   }
   
   public static abstract interface a
   {
-    public abstract void bCD();
+    public abstract void cod();
     
-    public abstract void csR();
+    public abstract void dvp();
     
-    public abstract void csS();
+    public abstract void dvq();
   }
 }
 

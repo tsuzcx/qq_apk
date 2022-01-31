@@ -1,36 +1,43 @@
 package com.tencent.mm.plugin.voip.model.a;
 
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.a;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.protocal.c.cff;
-import com.tencent.mm.protocal.c.cfg;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.protocal.protobuf.csq;
+import com.tencent.mm.protocal.protobuf.csr;
 
 public final class f
-  extends n<cff, cfg>
+  extends n<csq, csr>
 {
-  String TAG = "MicroMsg.NetSceneVoipHeartBeat";
+  String TAG;
   
   public f(int paramInt1, long paramLong, int paramInt2)
   {
+    AppMethodBeat.i(4714);
+    this.TAG = "MicroMsg.NetSceneVoipHeartBeat";
     Object localObject = new b.a();
-    ((b.a)localObject).ecH = new cff();
-    ((b.a)localObject).ecI = new cfg();
+    ((b.a)localObject).fsX = new csq();
+    ((b.a)localObject).fsY = new csr();
     ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipheartbeat";
-    ((b.a)localObject).ecG = 178;
-    ((b.a)localObject).ecJ = 81;
-    ((b.a)localObject).ecK = 0;
-    this.dmK = ((b.a)localObject).Kt();
-    localObject = (cff)this.dmK.ecE.ecN;
-    ((cff)localObject).sST = paramInt1;
-    ((cff)localObject).sSU = paramLong;
-    ((cff)localObject).tSJ = System.currentTimeMillis();
-    ((cff)localObject).tTQ = paramInt2;
+    ((b.a)localObject).funcId = 178;
+    ((b.a)localObject).reqCmdId = 81;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (csq)this.rr.fsV.fta;
+    ((csq)localObject).wQP = paramInt1;
+    ((csq)localObject).wQQ = paramLong;
+    ((csq)localObject).yab = System.currentTimeMillis();
+    ((csq)localObject).ybh = paramInt2;
+    AppMethodBeat.o(4714);
   }
   
-  public final com.tencent.mm.ah.f bRy()
+  public final com.tencent.mm.ai.f cOp()
   {
-    return new f.1(this);
+    AppMethodBeat.i(4715);
+    f.1 local1 = new f.1(this);
+    AppMethodBeat.o(4715);
+    return local1;
   }
   
   public final int getType()
@@ -40,7 +47,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.f
  * JD-Core Version:    0.7.0.1
  */

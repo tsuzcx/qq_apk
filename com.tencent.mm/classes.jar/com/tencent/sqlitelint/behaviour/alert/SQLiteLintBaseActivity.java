@@ -7,14 +7,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.tencent.sqlitelint.d.b;
-import com.tencent.sqlitelint.d.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class SQLiteLintBaseActivity
   extends Activity
 {
-  private Toolbar wRy;
+  private Toolbar mToolBar;
   
   static
   {
@@ -28,32 +28,50 @@ public abstract class SQLiteLintBaseActivity
   
   protected abstract int getLayoutId();
   
+  protected void onBackBtnClick()
+  {
+    finish();
+  }
+  
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(d.c.activity_sqlitelint_base);
-    paramBundle = (FrameLayout)findViewById(d.b.content);
+    onCreateView();
+  }
+  
+  protected void onCreateView()
+  {
+    setContentView(2130968628);
+    Object localObject = (FrameLayout)findViewById(2131820946);
     LayoutInflater localLayoutInflater = LayoutInflater.from(this);
     int i = getLayoutId();
     assert (i != 0);
-    localLayoutInflater.inflate(i, paramBundle);
-    this.wRy = ((Toolbar)findViewById(d.b.toolbar));
-    this.wRy.setNavigationOnClickListener(new View.OnClickListener()
+    localLayoutInflater.inflate(i, (ViewGroup)localObject);
+    this.mToolBar = ((Toolbar)findViewById(2131821034));
+    this.mToolBar.setNavigationOnClickListener(new View.OnClickListener()
     {
-      public final void onClick(View paramAnonymousView)
+      public void onClick(View paramAnonymousView)
       {
-        SQLiteLintBaseActivity.this.finish();
+        AppMethodBeat.i(94066);
+        SQLiteLintBaseActivity.this.onBackBtnClick();
+        AppMethodBeat.o(94066);
       }
     });
-    paramBundle = this.wRy.getLogo();
-    if (paramBundle != null) {
-      paramBundle.setVisible(false, true);
+    localObject = this.mToolBar.getLogo();
+    if (localObject != null) {
+      ((Drawable)localObject).setVisible(false, true);
     }
   }
   
-  protected final void setTitle(String paramString)
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    this.wRy.setTitle(paramString);
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  protected void setTitle(String paramString)
+  {
+    this.mToolBar.setTitle(paramString);
   }
 }
 

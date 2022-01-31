@@ -5,12 +5,12 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.model.MallTransactionObject;
 import com.tencent.mm.plugin.order.model.a;
 import com.tencent.mm.plugin.order.model.a.a;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceSmallCategory;
 import com.tencent.mm.wallet_core.ui.e;
@@ -22,167 +22,173 @@ public final class b
 {
   public final List<Preference> a(Context paramContext, final com.tencent.mm.ui.base.preference.f paramf, final MallTransactionObject paramMallTransactionObject)
   {
+    AppMethodBeat.i(43897);
     ArrayList localArrayList = new ArrayList();
-    if (paramMallTransactionObject.bBt == 2) {}
+    if (paramMallTransactionObject.cii == 2) {}
     Object localObject1;
     for (int i = 1;; i = 0)
     {
-      if ((!bk.bl(paramMallTransactionObject.mPb)) && (!bk.bl(paramMallTransactionObject.fPM)))
+      if ((!bo.isNullOrNil(paramMallTransactionObject.ppr)) && (!bo.isNullOrNil(paramMallTransactionObject.hiQ)))
       {
         localObject1 = new d(paramContext);
-        ((d)localObject1).iZG = paramMallTransactionObject.fPM;
-        ((d)localObject1).mName = paramMallTransactionObject.mPb;
+        ((d)localObject1).lix = paramMallTransactionObject.hiQ;
+        ((d)localObject1).mName = paramMallTransactionObject.ppr;
         ((d)localObject1).mOnClickListener = new b.1(this, paramMallTransactionObject, paramContext);
         localArrayList.add(localObject1);
         localArrayList.add(new PreferenceSmallCategory(paramContext));
       }
-      y.i("MicroMsg.FetchOrderPrefFactory", "getOrderPrefList() chargeFee is " + paramMallTransactionObject.mPq + " and fetchTotalFee is " + paramMallTransactionObject.mPA);
-      if (TextUtils.isEmpty(paramMallTransactionObject.mPq)) {
+      ab.i("MicroMsg.FetchOrderPrefFactory", "getOrderPrefList() chargeFee is " + paramMallTransactionObject.ppG + " and fetchTotalFee is " + paramMallTransactionObject.ppQ);
+      if (TextUtils.isEmpty(paramMallTransactionObject.ppG)) {
         break;
       }
       localObject1 = new i(paramContext);
-      ((i)localObject1).mRG = e.d(paramMallTransactionObject.mPA, paramMallTransactionObject.mOZ);
-      ((i)localObject1).setTitle(paramContext.getString(a.i.wallet_order_info_amount_outcome));
-      if (!bk.bl(paramMallTransactionObject.mPB)) {
-        ((i)localObject1).KM(paramMallTransactionObject.mPB);
+      ((i)localObject1).prT = e.e(paramMallTransactionObject.ppQ, paramMallTransactionObject.ppp);
+      ((i)localObject1).setTitle(paramContext.getString(2131305322));
+      if (!bo.isNullOrNil(paramMallTransactionObject.ppR)) {
+        ((i)localObject1).WN(paramMallTransactionObject.ppR);
       }
       localArrayList.add(localObject1);
       localObject1 = new h(paramContext);
-      ((h)localObject1).mRD = false;
-      ((h)localObject1).mRE = true;
+      ((h)localObject1).prQ = false;
+      ((h)localObject1).prR = true;
       localArrayList.add(localObject1);
       localObject1 = new f(paramContext);
-      ((f)localObject1).setTitle(a.i.wallet_order_info_fetch_amount);
-      ((f)localObject1).setContent(e.d(paramMallTransactionObject.iHP, paramMallTransactionObject.mOZ));
+      ((f)localObject1).setTitle(2131305339);
+      ((f)localObject1).setContent(e.e(paramMallTransactionObject.kNS, paramMallTransactionObject.ppp));
       localArrayList.add(localObject1);
       localObject1 = new f(paramContext);
-      ((f)localObject1).setTitle(a.i.wallet_order_info_charge_fee);
-      ((f)localObject1).setContent(paramMallTransactionObject.mPq);
+      ((f)localObject1).setTitle(2131305323);
+      ((f)localObject1).setContent(paramMallTransactionObject.ppG);
       localArrayList.add(localObject1);
-      if (!bk.bl(paramMallTransactionObject.desc))
+      if (!bo.isNullOrNil(paramMallTransactionObject.desc))
       {
         if (i == 0) {
-          break label1133;
+          break label1136;
         }
         paramf = new f(paramContext);
-        paramf.setTitle(a.i.wallet_order_info_from);
+        paramf.setTitle(2131305345);
         paramf.setContent(paramMallTransactionObject.desc);
         localArrayList.add(paramf);
       }
-      if (!bk.bl(paramMallTransactionObject.mOO))
+      if (!bo.isNullOrNil(paramMallTransactionObject.ppe))
       {
         paramf = new f(paramContext);
-        paramf.setTitle(a.i.wallet_order_info_merchant_name);
-        paramf.setContent(paramMallTransactionObject.mOO);
+        paramf.setTitle(2131305346);
+        paramf.setContent(paramMallTransactionObject.ppe);
         localArrayList.add(paramf);
       }
-      if (!bk.bl(paramMallTransactionObject.mOT))
+      if (!bo.isNullOrNil(paramMallTransactionObject.ppj))
       {
         paramf = new f(paramContext);
-        paramf.setTitle(a.i.wallet_order_info_status);
-        paramf.setContent(paramMallTransactionObject.mOT);
-        if (!bk.bl(paramMallTransactionObject.mOU)) {
-          paramf.KL(paramMallTransactionObject.mOU);
+        paramf.setTitle(2131305362);
+        paramf.setContent(paramMallTransactionObject.ppj);
+        if (!bo.isNullOrNil(paramMallTransactionObject.ppk)) {
+          paramf.WM(paramMallTransactionObject.ppk);
         }
         localArrayList.add(paramf);
       }
       paramf = new f(paramContext);
-      paramf.setTitle(a.i.wallet_order_info_fetch_deal_time);
-      paramf.setContent(e.hP(paramMallTransactionObject.enw));
+      paramf.setTitle(2131305342);
+      paramf.setContent(e.kB(paramMallTransactionObject.fDT));
       localArrayList.add(paramf);
-      if (paramMallTransactionObject.mPm <= 0) {
-        break label1276;
+      if (paramMallTransactionObject.ppC <= 0) {
+        break label1279;
       }
       paramf = new f(paramContext);
-      paramf.setTitle(a.i.wallet_order_info_fetch_arrive_time);
-      paramf.setContent(e.hP(paramMallTransactionObject.mPm));
+      paramf.setTitle(2131305340);
+      paramf.setContent(e.kB(paramMallTransactionObject.ppC));
       localArrayList.add(paramf);
-      label566:
-      if (!bk.bl(paramMallTransactionObject.mOX))
+      label563:
+      if (!bo.isNullOrNil(paramMallTransactionObject.ppn))
       {
         localObject2 = new f(paramContext);
-        ((f)localObject2).setTitle(a.i.wallet_order_info_fetch_bank);
-        localObject1 = paramMallTransactionObject.mOX;
+        ((f)localObject2).setTitle(2131305341);
+        localObject1 = paramMallTransactionObject.ppn;
         paramf = (com.tencent.mm.ui.base.preference.f)localObject1;
-        if (!bk.bl(paramMallTransactionObject.mOY)) {
-          paramf = (String)localObject1 + "(" + paramMallTransactionObject.mOY + ")";
+        if (!bo.isNullOrNil(paramMallTransactionObject.ppo)) {
+          paramf = (String)localObject1 + "(" + paramMallTransactionObject.ppo + ")";
         }
         ((f)localObject2).setContent(paramf);
         localArrayList.add(localObject2);
       }
-      if (!bk.bl(paramMallTransactionObject.mOW))
+      if (!bo.isNullOrNil(paramMallTransactionObject.ppm))
       {
         paramf = new f(paramContext);
-        paramf.setTitle(a.i.wallet_order_info_fetch_trans_id);
-        paramf.setContent(paramMallTransactionObject.mOW);
+        paramf.setTitle(2131305344);
+        paramf.setContent(paramMallTransactionObject.ppm);
         localArrayList.add(paramf);
       }
-      if ((bk.bl(paramMallTransactionObject.mPj)) && (bk.bl(paramMallTransactionObject.mPa)) && (bk.bl(paramMallTransactionObject.mOD))) {
-        break label1333;
+      if ((bo.isNullOrNil(paramMallTransactionObject.ppz)) && (bo.isNullOrNil(paramMallTransactionObject.ppq)) && (bo.isNullOrNil(paramMallTransactionObject.poT))) {
+        break label1336;
       }
       paramf = new h(paramContext);
-      paramf.mRD = true;
+      paramf.prQ = true;
       localArrayList.add(paramf);
       localArrayList.add(a.a(paramContext, paramMallTransactionObject));
+      label766:
+      AppMethodBeat.o(43897);
       return localArrayList;
     }
     Object localObject2 = new i(paramContext);
-    ((i)localObject2).mRG = e.d(paramMallTransactionObject.iHP, paramMallTransactionObject.mOZ);
+    ((i)localObject2).prT = e.e(paramMallTransactionObject.kNS, paramMallTransactionObject.ppp);
+    label819:
+    boolean bool2;
     if (i != 0)
     {
-      localObject1 = paramContext.getString(a.i.wallet_order_info_amount_income);
-      label820:
+      localObject1 = paramContext.getString(2131305321);
       ((i)localObject2).setTitle((CharSequence)localObject1);
-      if (!bk.bl(paramMallTransactionObject.mOR)) {
-        ((i)localObject2).KM(paramMallTransactionObject.mOR);
+      if (!bo.isNullOrNil(paramMallTransactionObject.pph)) {
+        ((i)localObject2).WN(paramMallTransactionObject.pph);
       }
       localArrayList.add(localObject2);
-      if ((paramMallTransactionObject.iHP == paramMallTransactionObject.mPf) || (paramMallTransactionObject.mPf <= 0.0D)) {
-        break label1364;
+      if ((paramMallTransactionObject.kNS == paramMallTransactionObject.ppv) || (paramMallTransactionObject.ppv <= 0.0D)) {
+        break label1367;
       }
       localObject1 = new h(paramContext);
-      ((h)localObject1).mRD = false;
-      ((h)localObject1).mRE = true;
+      ((h)localObject1).prQ = false;
+      ((h)localObject1).prR = true;
       localArrayList.add(localObject1);
       localObject1 = new f(paramContext);
-      ((f)localObject1).setContent(e.d(paramMallTransactionObject.mPf, paramMallTransactionObject.mOZ));
-      ((f)localObject1).setTitle(a.i.wallet_order_info_orginal_amount);
+      ((f)localObject1).setContent(e.e(paramMallTransactionObject.ppv, paramMallTransactionObject.ppp));
+      ((f)localObject1).setTitle(2131305347);
       localArrayList.add(localObject1);
-      if (!bk.bl(paramMallTransactionObject.mPe))
+      bool2 = true;
+      bool1 = bool2;
+      if (!bo.isNullOrNil(paramMallTransactionObject.ppu))
       {
         localObject1 = new g(paramContext);
-        ((g)localObject1).setTitle(a.i.wallet_order_info_discount);
-        ((g)localObject1).hcp = paramf;
-        localObject2 = paramMallTransactionObject.mPe.split("\n");
+        ((g)localObject1).setTitle(2131305333);
+        ((g)localObject1).iLA = paramf;
+        localObject2 = paramMallTransactionObject.ppu.split("\n");
         if (localObject2.length != 1) {
-          break label1076;
+          break label1079;
         }
-        ((g)localObject1).mRw = localObject2[0];
-        label1015:
+        ((g)localObject1).prJ = localObject2[0];
+        label1018:
         localArrayList.add(localObject1);
       }
     }
-    label1076:
-    label1333:
-    label1364:
-    for (boolean bool = true;; bool = false)
+    label1079:
+    label1336:
+    label1367:
+    for (boolean bool1 = bool2;; bool1 = false)
     {
       localObject1 = new h(paramContext);
-      ((h)localObject1).mRD = bool;
-      ((h)localObject1).mRE = true;
+      ((h)localObject1).prQ = bool1;
+      ((h)localObject1).prR = true;
       localArrayList.add(localObject1);
       break;
-      localObject1 = paramContext.getString(a.i.wallet_order_info_fetch_amount);
-      break label820;
-      ((g)localObject1).mRw = paramContext.getString(a.i.wallet_order_info_discount_summary, new Object[] { Integer.valueOf(localObject2.length), e.d(paramMallTransactionObject.mPf - paramMallTransactionObject.iHP, paramMallTransactionObject.mOZ) });
+      localObject1 = paramContext.getString(2131305339);
+      break label819;
+      ((g)localObject1).prJ = paramContext.getString(2131305335, new Object[] { Integer.valueOf(localObject2.length), e.e(paramMallTransactionObject.ppv - paramMallTransactionObject.kNS, paramMallTransactionObject.ppp) });
       ((g)localObject1).a((String[])localObject2, TextUtils.TruncateAt.MIDDLE);
-      break label1015;
-      label1133:
+      break label1018;
+      label1136:
       localObject1 = new f(paramContext);
-      ((f)localObject1).setTitle(a.i.wallet_order_info_desc);
-      if (!bk.bl(paramMallTransactionObject.mOP))
+      ((f)localObject1).setTitle(2131305331);
+      if (!bo.isNullOrNil(paramMallTransactionObject.ppf))
       {
-        localObject2 = paramContext.getString(a.i.wallet_order_info_check_detail);
+        localObject2 = paramContext.getString(2131305324);
         String str = paramMallTransactionObject.desc + " " + (String)localObject2;
         i = paramMallTransactionObject.desc.length();
         int j = paramMallTransactionObject.desc.length();
@@ -190,9 +196,11 @@ public final class b
         {
           public final void onClick(View paramAnonymousView)
           {
-            paramAnonymousView = paramMallTransactionObject.desc + "\n" + paramMallTransactionObject.mOP;
-            this.mRj.setContent(paramAnonymousView);
+            AppMethodBeat.i(43896);
+            paramAnonymousView = paramMallTransactionObject.desc + "\n" + paramMallTransactionObject.ppf;
+            this.prw.setContent(paramAnonymousView);
             paramf.notifyDataSetChanged();
+            AppMethodBeat.o(43896);
           }
         });
       }
@@ -202,28 +210,28 @@ public final class b
         break;
         ((f)localObject1).setContent(paramMallTransactionObject.desc);
       }
-      label1276:
-      if (paramMallTransactionObject.mPl > 0)
+      label1279:
+      if (paramMallTransactionObject.ppB > 0)
       {
         paramf = new f(paramContext);
-        paramf.setTitle(a.i.wallet_order_info_fetch_pre_time);
-        paramf.setContent(e.hP(paramMallTransactionObject.mPl));
+        paramf.setTitle(2131305343);
+        paramf.setContent(e.kB(paramMallTransactionObject.ppB));
         localArrayList.add(paramf);
-        break label566;
+        break label563;
       }
-      y.e("MicroMsg.FetchOrderPrefFactory", "hy: is fetch but no arrive time or fetch time");
-      break label566;
+      ab.e("MicroMsg.FetchOrderPrefFactory", "hy: is fetch but no arrive time or fetch time");
+      break label563;
       paramContext = new h(paramContext);
-      paramContext.mRD = true;
-      paramContext.hBd = false;
+      paramContext.prQ = true;
+      paramContext.jts = false;
       localArrayList.add(paramContext);
-      return localArrayList;
+      break label766;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

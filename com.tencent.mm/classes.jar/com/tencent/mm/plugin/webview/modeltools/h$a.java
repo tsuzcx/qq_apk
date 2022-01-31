@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.io.File;
 
 final class h$a
@@ -10,18 +11,25 @@ final class h$a
   
   public final void run()
   {
-    if (this.riL.riI == null) {
+    AppMethodBeat.i(7009);
+    if (this.uYl.uYi == null)
+    {
+      AppMethodBeat.o(7009);
       return;
     }
-    File[] arrayOfFile = new File(this.riL.riI).getParentFile().listFiles(new h.a.1(this));
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
+    File[] arrayOfFile = new File(this.uYl.uYi).getParentFile().listFiles(new h.a.1(this));
+    if (arrayOfFile != null)
     {
-      y.i("MicroMsg.ViewCaptureHelper", "deleteFile result: %b", new Object[] { Boolean.valueOf(arrayOfFile[i].delete()) });
-      i += 1;
+      int j = arrayOfFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        ab.i("MicroMsg.ViewCaptureHelper", "deleteFile result: %b", new Object[] { Boolean.valueOf(arrayOfFile[i].delete()) });
+        i += 1;
+      }
     }
-    this.riL.riI = null;
+    this.uYl.uYi = null;
+    AppMethodBeat.o(7009);
   }
 }
 

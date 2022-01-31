@@ -1,75 +1,81 @@
 package com.tencent.mm.plugin.bbom;
 
-import com.tencent.mm.ag.b;
-import com.tencent.mm.h.a.hf;
-import com.tencent.mm.h.a.rp;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.au;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.b;
+import com.tencent.mm.g.a.hj;
+import com.tencent.mm.g.a.tg;
+import com.tencent.mm.model.av;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
+import com.tencent.mm.model.r;
 import com.tencent.mm.modelstat.o;
-import com.tencent.mm.plugin.messenger.foundation.a.a.j;
-import com.tencent.mm.protocal.c.ar;
-import com.tencent.mm.protocal.c.azd;
-import com.tencent.mm.protocal.c.bzo;
-import com.tencent.mm.protocal.i.f;
-import com.tencent.mm.protocal.i.g;
-import com.tencent.mm.protocal.u.b;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.plugin.messenger.foundation.a.a.k;
+import com.tencent.mm.protocal.j.h;
+import com.tencent.mm.protocal.j.i;
+import com.tencent.mm.protocal.protobuf.ar;
+import com.tencent.mm.protocal.protobuf.bgg;
+import com.tencent.mm.protocal.protobuf.cmm;
+import com.tencent.mm.protocal.v.b;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
 
 public final class a
   implements com.tencent.mm.plugin.auth.a.a
 {
-  public final void a(i.f paramf, i.g paramg, boolean paramBoolean)
+  public final void a(j.h paramh, j.i parami, boolean paramBoolean)
   {
-    if ((paramg.spz.tPu & 0x2) != 0)
+    AppMethodBeat.i(18229);
+    if ((parami.wil.xWl & 0x2) != 0)
     {
-      paramf = paramg.spz.tPw;
+      paramh = parami.wil.xWn;
       if (!paramBoolean)
       {
-        au.Hx();
-        c.gf(paramf.stP);
+        aw.aaz();
+        c.clearPluginData(paramh.wmt);
       }
-      paramg = b.jZ(q.Gj());
-      at.dVC.iF(paramg);
-      if (paramf.stM != 0)
+      parami = b.qS(r.Zn());
+      av.flM.po(parami);
+      if (paramh.wmq != 0)
       {
-        au.Hx();
-        c.FE().bX(paramf.stM + "@qqim", 3);
+        aw.aaz();
+        c.YI().cO(paramh.wmq + "@qqim", 3);
       }
-      b.c(paramf.stM, 3);
+      b.d(paramh.wmq, 3);
     }
     for (;;)
     {
-      o.jl(1);
+      o.run(1);
       if (!paramBoolean) {
         break;
       }
-      paramf = new hf();
-      paramf.bPc.bPd = false;
-      com.tencent.mm.sdk.b.a.udP.m(paramf);
-      paramf = new rp();
-      paramf.cbe.cbf = true;
-      com.tencent.mm.sdk.b.a.udP.m(paramf);
+      paramh = new hj();
+      paramh.cwv.cww = false;
+      com.tencent.mm.sdk.b.a.ymk.l(paramh);
+      paramh = new tg();
+      paramh.cJH.cJI = true;
+      com.tencent.mm.sdk.b.a.ymk.l(paramh);
+      AppMethodBeat.o(18229);
       return;
-      y.w("MicroMsg.BigBallAuthHandle", "summerauth updateProfile acctsect not set!");
+      ab.w("MicroMsg.BigBallAuthHandle", "summerauth updateProfile acctsect not set!");
     }
-    au.DS().O(new a.1(this));
+    aw.RO().ac(new a.1(this));
+    AppMethodBeat.o(18229);
   }
   
-  public final void a(u.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
+  public final void a(v.b paramb, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
-    paramString1 = b.jZ(q.Gj());
-    at.dVC.iF(paramString1);
-    b.c(paramInt1, 3);
-    au.Hx();
-    c.FE().bX(paramb.sqm.tvf, 2);
+    AppMethodBeat.i(18230);
+    paramString1 = b.qS(r.Zn());
+    av.flM.po(paramString1);
+    b.d(paramInt1, 3);
+    aw.aaz();
+    c.YI().cO(paramb.wiP.xvq, 2);
     if (paramInt1 != 0)
     {
-      au.Hx();
-      c.FE().bX(paramInt1 + "@qqim", 3);
+      aw.aaz();
+      c.YI().cO(paramInt1 + "@qqim", 3);
     }
+    AppMethodBeat.o(18230);
   }
 }
 

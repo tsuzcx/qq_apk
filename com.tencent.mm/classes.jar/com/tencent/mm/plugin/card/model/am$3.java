@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 
 final class am$3
   implements h.d
 {
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return l.dXp;
+    return l.SQL_CREATE;
   }
 }
 

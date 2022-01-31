@@ -13,51 +13,41 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.R.l;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.ay.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.c.i.a;
-import com.tencent.mm.h.a.bh;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.bi;
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.modelsimple.o;
+import com.tencent.mm.g.a.bj;
+import com.tencent.mm.model.an;
+import com.tencent.mm.model.aw;
+import com.tencent.mm.model.bk;
+import com.tencent.mm.model.bk.a;
+import com.tencent.mm.modelsimple.q;
+import com.tencent.mm.platformtools.ae;
 import com.tencent.mm.pluginsdk.ui.d.j;
-import com.tencent.mm.protocal.c.ajz;
-import com.tencent.mm.protocal.c.aka;
-import com.tencent.mm.protocal.c.all;
-import com.tencent.mm.protocal.c.ayo;
-import com.tencent.mm.protocal.c.bxv;
-import com.tencent.mm.protocal.c.pt;
-import com.tencent.mm.protocal.n;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.x;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.o;
+import com.tencent.mm.protocal.protobuf.aqy;
+import com.tencent.mm.protocal.protobuf.bfl;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.g;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import junit.framework.Assert;
 
 public class Updater
   extends LinearLayout
-  implements com.tencent.mm.ah.f, com.tencent.mm.plugin.w.a
+  implements com.tencent.mm.ai.f, com.tencent.mm.plugin.p.a
 {
-  private boolean bHj;
-  private int ubR;
-  private com.tencent.mm.ui.base.p ucX = null;
-  private boolean ucY = false;
-  private boolean ucZ = false;
-  private boolean uda = false;
-  private com.tencent.mm.ah.f udb;
-  private com.tencent.mm.ah.f udc;
+  private boolean coy;
+  private int ykg;
+  private com.tencent.mm.ui.base.p ylm = null;
+  private boolean yln = false;
+  private boolean ylo = false;
+  private boolean ylp = false;
+  private com.tencent.mm.ai.f ylq;
+  private com.tencent.mm.ai.f ylr;
   
   private Updater(Context paramContext)
   {
@@ -69,169 +59,199 @@ public class Updater
     super(paramContext, paramAttributeSet);
   }
   
-  public static void EW(int paramInt)
+  public static void MX(int paramInt)
   {
-    if (!au.DK()) {
+    AppMethodBeat.i(28949);
+    if (!aw.RG())
+    {
+      AppMethodBeat.o(28949);
       return;
     }
-    y.d("MicroMsg.Updater", "reportUpdateStat : opCode = " + paramInt);
-    au.Hx();
-    com.tencent.mm.model.c.Fv().b(new l(paramInt));
-  }
-  
-  public static Updater c(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
-  {
-    if (paramContext == null) {
-      return null;
-    }
-    if (((paramContext instanceof Activity)) && ((((Activity)paramContext).isFinishing()) || (((Activity)paramContext).getWindow() == null)))
-    {
-      y.e("MicroMsg.Updater", "showWithProgress, context isFinishing");
-      return null;
-    }
-    com.tencent.mm.sdk.platformtools.ae.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bk.UX()).commit();
-    au.getNotification().cancel(34);
-    y.i("MicroMsg.Updater", "showWithProgress");
-    Updater localUpdater = (Updater)View.inflate(paramContext, R.i.updater, null);
-    localUpdater.onStart();
-    paramContext = com.tencent.mm.ui.base.p.a(paramContext, paramContext.getString(R.l.update_getting_updateinfo), true, 0, null);
-    paramContext.setCancelable(true);
-    paramContext.setOnCancelListener(new Updater.1(localUpdater, paramOnCancelListener));
-    try
-    {
-      localUpdater.ucX = paramContext;
-      localUpdater.ucX.show();
-      localUpdater.bHj = true;
-      com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 46L, 1L, true);
-      return localUpdater;
-    }
-    catch (Exception paramContext)
-    {
-      y.e("MicroMsg.Updater", "exception in showWithProgress, ", new Object[] { paramContext.getMessage() });
-      y.printErrStackTrace("MicroMsg.Updater", paramContext, "", new Object[0]);
-    }
-    return null;
+    ab.d("MicroMsg.Updater", "reportUpdateStat : opCode = ".concat(String.valueOf(paramInt)));
+    aw.aaz();
+    com.tencent.mm.model.c.Yz().c(new com.tencent.mm.az.m(paramInt));
+    AppMethodBeat.o(28949);
   }
   
   private void cancel()
   {
-    au.Dk().b(11, this);
+    AppMethodBeat.i(28944);
+    aw.Rc().b(11, this);
+    AppMethodBeat.o(28944);
   }
   
-  public static Updater d(Context paramContext, final DialogInterface.OnCancelListener paramOnCancelListener)
+  public static Updater e(Context paramContext, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    com.tencent.mm.sdk.platformtools.ae.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bk.UX()).commit();
-    au.getNotification().cancel(34);
-    y.i("MicroMsg.Updater", "show update dialog");
-    Updater localUpdater = (Updater)View.inflate(paramContext, R.i.updater, null);
-    localUpdater.onStart();
-    paramContext = com.tencent.mm.ui.base.p.a(paramContext, "", true, 0, null);
-    paramContext.setCancelable(true);
-    paramContext.setOnCancelListener(new DialogInterface.OnCancelListener()
+    AppMethodBeat.i(28938);
+    if (paramContext == null)
     {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-      {
-        au.getNotification().cancel(99);
-        com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 49L, 1L, true);
-        Updater.EW(2);
-        this.udd.onStop();
-        if ((!Updater.a(this.udd)) && (paramOnCancelListener != null)) {
-          paramOnCancelListener.onCancel(paramAnonymousDialogInterface);
-        }
-      }
-    });
-    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 48L, 1L, true);
-    localUpdater.ucX = paramContext;
-    localUpdater.bHj = false;
-    return localUpdater;
-  }
-  
-  public static void dQ(Context paramContext)
-  {
-    paramContext.startActivity(new Intent(paramContext, AppInstallerUI.class));
+      AppMethodBeat.o(28938);
+      return null;
+    }
+    if (((paramContext instanceof Activity)) && ((((Activity)paramContext).isFinishing()) || (((Activity)paramContext).getWindow() == null)))
+    {
+      ab.e("MicroMsg.Updater", "showWithProgress, context isFinishing");
+      AppMethodBeat.o(28938);
+      return null;
+    }
+    ah.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bo.aox()).commit();
+    aw.getNotification().cancel(34);
+    ab.i("MicroMsg.Updater", "showWithProgress");
+    Updater localUpdater = (Updater)View.inflate(paramContext, 2130971050, null);
+    localUpdater.onStart();
+    paramContext = com.tencent.mm.ui.base.p.d(paramContext, paramContext.getString(2131304429));
+    paramContext.setCancelable(true);
+    paramContext.setOnCancelListener(new Updater.1(localUpdater, paramOnCancelListener));
+    try
+    {
+      localUpdater.ylm = paramContext;
+      localUpdater.ylm.show();
+      localUpdater.coy = true;
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 46L, 1L, true);
+      AppMethodBeat.o(28938);
+      return localUpdater;
+    }
+    catch (Exception paramContext)
+    {
+      ab.e("MicroMsg.Updater", "exception in showWithProgress, ", new Object[] { paramContext.getMessage() });
+      ab.printErrStackTrace("MicroMsg.Updater", paramContext, "", new Object[0]);
+      AppMethodBeat.o(28938);
+    }
+    return null;
   }
   
   public static void e(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    Intent localIntent = new Intent(com.tencent.mm.sdk.platformtools.ae.getContext(), UpdaterService.class);
-    localIntent.putExtra("intent_client_version", com.tencent.mm.protocal.d.spa);
+    AppMethodBeat.i(28948);
+    Intent localIntent = new Intent(ah.getContext(), UpdaterService.class);
+    localIntent.putExtra("intent_client_version", com.tencent.mm.protocal.d.whH);
     localIntent.putExtra("intent_update_type", 4);
     localIntent.putExtra("intent_extra_desc", paramString2);
     localIntent.putExtra("intent_extra_md5", paramString1);
     localIntent.putExtra("intent_extra_size", paramInt);
     localIntent.putExtra("intent_extra_download_url", new String[] { paramString3 });
-    localIntent.putExtra("intent_extra_updateMode", com.tencent.mm.sdk.platformtools.e.bvl);
-    localIntent.putExtra("intent_extra_marketUrl", com.tencent.mm.sdk.platformtools.e.uej);
+    localIntent.putExtra("intent_extra_updateMode", g.bWw);
+    localIntent.putExtra("intent_extra_marketUrl", g.ymK);
     localIntent.putExtra("intent_extra_run_in_foreground", true);
     localIntent.putExtra("intent_extra_download_mode", 2);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 45L, 1L, true);
-    com.tencent.mm.sdk.platformtools.ae.getContext().startService(localIntent);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 45L, 1L, true);
+    com.tencent.mm.bq.d.j(localIntent, "sandbox");
+    AppMethodBeat.o(28948);
   }
   
-  public static Updater fn(Context paramContext)
+  public static void eC(Context paramContext)
   {
-    com.tencent.mm.sdk.platformtools.ae.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bk.UX()).commit();
-    au.getNotification().cancel(34);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 50L, 1L, true);
-    y.i("MicroMsg.Updater", "updater silence");
+    AppMethodBeat.i(28941);
+    paramContext.startActivity(new Intent(paramContext, AppInstallerUI.class));
+    AppMethodBeat.o(28941);
+  }
+  
+  public static Updater f(Context paramContext, final DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    AppMethodBeat.i(28939);
+    ah.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bo.aox()).commit();
+    aw.getNotification().cancel(34);
+    ab.i("MicroMsg.Updater", "show update dialog");
+    Updater localUpdater = (Updater)View.inflate(paramContext, 2130971050, null);
+    localUpdater.onStart();
+    paramContext = com.tencent.mm.ui.base.p.d(paramContext, "");
+    paramContext.setCancelable(true);
+    paramContext.setOnCancelListener(new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(28932);
+        aw.getNotification().cancel(99);
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 49L, 1L, true);
+        Updater.MX(2);
+        this.yls.onStop();
+        if ((!Updater.a(this.yls)) && (paramOnCancelListener != null)) {
+          paramOnCancelListener.onCancel(paramAnonymousDialogInterface);
+        }
+        AppMethodBeat.o(28932);
+      }
+    });
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 48L, 1L, true);
+    localUpdater.ylm = paramContext;
+    localUpdater.coy = false;
+    AppMethodBeat.o(28939);
+    return localUpdater;
+  }
+  
+  public static Updater gA(Context paramContext)
+  {
+    AppMethodBeat.i(28940);
+    ah.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bo.aox()).commit();
+    aw.getNotification().cancel(34);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 50L, 1L, true);
+    ab.i("MicroMsg.Updater", "updater silence");
     paramContext = new Updater(paramContext);
     paramContext.onStart();
-    paramContext.ucZ = true;
+    paramContext.ylo = true;
+    AppMethodBeat.o(28940);
     return paramContext;
   }
   
   private String[] getShortIps()
   {
     int i = 0;
-    if ((com.tencent.mm.platformtools.ae.eSy != null) && (com.tencent.mm.platformtools.ae.eSy.length() > 0)) {
-      return new String[] { com.tencent.mm.platformtools.ae.eSy };
+    AppMethodBeat.i(28945);
+    if ((ae.gkt != null) && (ae.gkt.length() > 0))
+    {
+      localObject = ae.gkt;
+      AppMethodBeat.o(28945);
+      return new String[] { localObject };
     }
-    Object localObject = com.tencent.mm.sdk.platformtools.ae.getContext().getSharedPreferences("system_config_prefs", 0).getString("builtin_short_ips", "");
+    Object localObject = ah.getContext().getSharedPreferences("system_config_prefs", 0).getString("builtin_short_ips", "");
     if ((localObject != null) && (((String)localObject).length() > 0)) {}
     String[] arrayOfString;
     for (;;)
     {
-      localObject = n.Xs((String)localObject);
+      localObject = o.ano((String)localObject);
       arrayOfString = new String[((List)localObject).size()];
       while (i < ((List)localObject).size())
       {
-        arrayOfString[i] = ((n)((List)localObject).get(i)).lCF;
+        arrayOfString[i] = ((o)((List)localObject).get(i)).nZR;
         i += 1;
       }
       localObject = "0,112.64.200.240,80|0,180.153.82.27,80|0,117.135.130.177,80";
     }
+    AppMethodBeat.o(28945);
     return arrayOfString;
   }
   
   private void onStart()
   {
-    au.Dk().a(11, this);
-    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 42L, 1L, true);
+    AppMethodBeat.i(28936);
+    aw.Rc().a(11, this);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 42L, 1L, true);
+    AppMethodBeat.o(28936);
   }
   
   public final void a(Intent paramIntent, e parame)
   {
+    AppMethodBeat.i(28943);
     paramIntent.putExtra("intent_short_ips", getShortIps());
-    paramIntent.putExtra("intent_client_version", com.tencent.mm.protocal.d.spa);
+    paramIntent.putExtra("intent_client_version", com.tencent.mm.protocal.d.whH);
     paramIntent.putExtra("intent_update_type", 3);
     int i;
-    if ((parame.lnt != null) && (!parame.lnt.isEmpty()) && (parame.lnt.containsKey(Integer.valueOf(4))))
+    if ((parame.nKM != null) && (!parame.nKM.isEmpty()) && (parame.nKM.containsKey(Integer.valueOf(4))))
     {
       i = 1;
       if (i == 0) {
-        break label352;
+        break label364;
       }
-      localObject1 = parame.lnt;
+      localObject1 = parame.nKM;
       if ((localObject1 != null) && (!((HashMap)localObject1).isEmpty())) {
-        break label204;
+        break label216;
       }
       localObject1 = "";
     }
-    label204:
+    label216:
     Object localObject2;
     LinkedList localLinkedList;
     int j;
-    label253:
+    label265:
     do
     {
       do
@@ -239,15 +259,16 @@ public class Updater
         do
         {
           paramIntent.putExtra("intent_extra_desc", (String)localObject1);
-          paramIntent.putExtra("intent_extra_md5", parame.lnx);
+          paramIntent.putExtra("intent_extra_md5", parame.nKQ);
           paramIntent.putExtra("intent_extra_size", parame.fileSize);
-          paramIntent.putExtra("intent_extra_download_url", new String[] { parame.lnw });
-          paramIntent.putExtra("intent_extra_patchInfo", parame.cpR());
-          paramIntent.putExtra("intent_extra_updateMode", com.tencent.mm.sdk.platformtools.e.bvl);
-          paramIntent.putExtra("intent_extra_marketUrl", com.tencent.mm.sdk.platformtools.e.uej);
+          paramIntent.putExtra("intent_extra_download_url", new String[] { parame.nKP });
+          paramIntent.putExtra("intent_extra_patchInfo", parame.drF());
+          paramIntent.putExtra("intent_extra_updateMode", g.bWw);
+          paramIntent.putExtra("intent_extra_marketUrl", g.ymK);
           paramIntent.putExtra("intent_extra_extinfo", "<extinfo></extinfo>");
           paramIntent.putExtra("intent_extra_tinker_patch", true);
           paramIntent.putExtra("intent_extra_download_mode", 1);
+          AppMethodBeat.o(28943);
           return;
           i = 0;
           break;
@@ -261,285 +282,197 @@ public class Updater
       i = 0;
       localObject1 = localObject2;
     } while (i >= j);
-    Object localObject1 = (ayo)localLinkedList.get(i);
-    if (((ayo)localObject1).lang.equalsIgnoreCase("default")) {}
-    for (localObject1 = new String(Base64.decode(((ayo)localObject1).content, 0));; localObject1 = localObject2)
+    Object localObject1 = (bfl)localLinkedList.get(i);
+    if (((bfl)localObject1).lang.equalsIgnoreCase("default")) {}
+    for (localObject1 = new String(Base64.decode(((bfl)localObject1).content, 0));; localObject1 = localObject2)
     {
       i += 1;
       localObject2 = localObject1;
-      break label253;
-      if (((ayo)localObject1).lang.equalsIgnoreCase(x.cqJ()))
+      break label265;
+      if (((bfl)localObject1).lang.equalsIgnoreCase(aa.dsG()))
       {
-        localObject1 = new String(Base64.decode(((ayo)localObject1).content, 0));
+        localObject1 = new String(Base64.decode(((bfl)localObject1).content, 0));
         break;
-        label352:
+        label364:
         localObject1 = "";
         break;
       }
     }
   }
   
-  public final void am(int paramInt, boolean paramBoolean)
+  public final void aD(int paramInt, boolean paramBoolean)
   {
-    y.i("MicroMsg.Updater", "summerupdate begin update routine, type=" + paramInt);
-    this.ubR = paramInt;
-    this.uda = paramBoolean;
-    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 44L, 1L, true);
+    AppMethodBeat.i(28947);
+    ab.i("MicroMsg.Updater", "summerupdate begin update routine, type=".concat(String.valueOf(paramInt)));
+    this.ykg = paramInt;
+    this.ylp = paramBoolean;
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 44L, 1L, true);
     com.tencent.mm.sandbox.a.a locala = new com.tencent.mm.sandbox.a.a(paramInt);
-    au.Dk().a(locala, 0);
+    aw.Rc().a(locala, 0);
+    AppMethodBeat.o(28947);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, m paramm)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ai.m paramm)
   {
+    AppMethodBeat.i(28942);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 51L, 1L, true);
-      y.i("MicroMsg.Updater", "isShow " + this.bHj);
-      if ((!this.bHj) && (this.ucX != null)) {
-        this.ucX.show();
+      com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 51L, 1L, true);
+      ab.i("MicroMsg.Updater", "isShow " + this.coy);
+      if ((!this.coy) && (this.ylm != null)) {
+        this.ylm.show();
       }
-      this.ucY = true;
-      if (this.ucX != null) {
-        this.ucX.cancel();
+      this.yln = true;
+      if (this.ylm != null) {
+        this.ylm.cancel();
       }
       paramString = (com.tencent.mm.sandbox.a.a)paramm;
-      au.Dk().a(new bi(new bi.a()
+      aw.Rc().a(new bk(new bk.a()
       {
-        public final void a(final com.tencent.mm.network.e paramAnonymouse)
+        public final void a(com.tencent.mm.network.e paramAnonymouse)
         {
+          AppMethodBeat.i(28934);
           if (paramAnonymouse == null)
           {
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 52L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 52L, 1L, true);
             Assert.assertTrue("updater invalid assert", false);
           }
-          au.getNotification().cancel(34);
-          y.i("MicroMsg.Updater", "go to update");
+          aw.getNotification().cancel(34);
+          ab.i("MicroMsg.Updater", "go to update");
           if (!com.tencent.mm.compatible.util.h.getExternalStorageState().equals("mounted"))
           {
-            y.e("MicroMsg.Updater", "no sdcard.");
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 53L, 1L, true);
+            ab.e("MicroMsg.Updater", "no sdcard.");
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 53L, 1L, true);
             Updater.b(Updater.this);
           }
-          int i = paramString.cpB();
-          com.tencent.mm.c.i locali = com.tencent.mm.c.i.cf(paramString.cpD());
-          String str = com.tencent.mm.pluginsdk.f.i.eU(Updater.this.getContext());
+          int i = paramString.drp();
+          com.tencent.mm.c.i locali = com.tencent.mm.c.i.dq(paramString.drr());
+          String str = com.tencent.mm.pluginsdk.f.i.fU(Updater.this.getContext());
           Object localObject = null;
           if (locali != null) {
-            localObject = locali.ce(str);
+            localObject = locali.dp(str);
           }
           if (localObject == null) {}
           for (long l = i;; l = ((i.a)localObject).size + i)
           {
-            if (!com.tencent.mm.compatible.util.f.bs(l))
+            if (!com.tencent.mm.compatible.util.f.gc(l))
             {
-              y.e("MicroMsg.Updater", "no enough space.");
-              com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 54L, 1L, true);
+              ab.e("MicroMsg.Updater", "no enough space.");
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 54L, 1L, true);
               Updater.b(Updater.this);
             }
-            if ((com.tencent.mm.sdk.platformtools.e.bvl & 0x1) != 0)
+            if ((g.bWw & 0x1) != 0)
             {
-              y.i("MicroMsg.Updater", "channel pack, not silence download.");
-              com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 55L, 1L, true);
+              ab.i("MicroMsg.Updater", "channel pack, not silence download.");
+              com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 55L, 1L, true);
               Updater.b(Updater.this);
             }
             if ((Updater.c(Updater.this) != 2) || (Updater.d(Updater.this))) {
               break;
             }
-            localObject = i.cli();
-            if ((com.tencent.mm.sandbox.monitor.c.Iq(paramString.cpC()) == null) || (bk.bl((String)localObject)) || (!((String)localObject).equals(paramString.cpC()))) {
+            localObject = i.dlS();
+            if ((com.tencent.mm.sandbox.monitor.c.Uc(paramString.drq()) == null) || (bo.isNullOrNil((String)localObject)) || (!((String)localObject).equals(paramString.drq()))) {
               break;
             }
-            y.i("MicroMsg.Updater", "we already have this pack %s being to install, just ignore this update request", new Object[] { localObject });
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 56L, 1L, true);
+            ab.i("MicroMsg.Updater", "we already have this pack %s being to install, just ignore this update request", new Object[] { localObject });
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 56L, 1L, true);
+            AppMethodBeat.o(28934);
             return;
           }
-          localObject = paramString.bkq();
-          if ((localObject != null) && (((all)localObject).thx != 0) && (!bk.bl(((all)localObject).thy)))
+          localObject = paramString.bSr();
+          if ((localObject != null) && (((aqy)localObject).xgl != 0) && (!bo.isNullOrNil(((aqy)localObject).xgm)))
           {
-            paramAnonymouse = ((all)localObject).thy;
+            paramAnonymouse = ((aqy)localObject).xgm;
             localObject = new Intent();
             ((Intent)localObject).putExtra("rawUrl", paramAnonymouse);
             ((Intent)localObject).putExtra("showShare", false);
             ((Intent)localObject).putExtra("show_bottom", false);
-            com.tencent.mm.br.d.b(Updater.this.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-            i.cpW();
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 57L, 1L, true);
+            com.tencent.mm.bq.d.b(Updater.this.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+            i.drM();
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 57L, 1L, true);
+            AppMethodBeat.o(28934);
             return;
           }
           if (Updater.e(Updater.this))
           {
-            y.i("MicroMsg.Updater", "summerupdate gonna start UpdaterService checkcontrol");
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 58L, 1L, true);
-            au.Dk().a(725, Updater.a(Updater.this, new com.tencent.mm.ah.f()
-            {
-              public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, m paramAnonymous2m)
-              {
-                au.Dk().b(221, Updater.f(Updater.this));
-                Updater.a(Updater.this, null);
-                if ((paramAnonymous2Int1 == 0) && (paramAnonymous2Int2 == 0))
-                {
-                  paramAnonymous2String = (o)paramAnonymous2m;
-                  String str;
-                  if (((ajz)paramAnonymous2String.dWV.ecE.ecN).hQR == 0)
-                  {
-                    paramAnonymous2String = ((aka)paramAnonymous2String.dWV.ecF.ecN).kVs;
-                    if (!bk.bl(paramAnonymous2String))
-                    {
-                      paramAnonymous2String = bn.s(paramAnonymous2String, "resourcecontrolinfo");
-                      if (paramAnonymous2String != null)
-                      {
-                        paramAnonymous2m = (String)paramAnonymous2String.get(".resourcecontrolinfo.enableupdate");
-                        str = (String)paramAnonymous2String.get(".resourcecontrolinfo.expiredtime");
-                        y.i("MicroMsg.NetSceneGetResourceControlInfo", "summerupdate getDisableUpdateTime values[%s]", new Object[] { paramAnonymous2String });
-                        if (bk.getInt(paramAnonymous2m, 1) != 0) {}
-                      }
-                    }
-                  }
-                  for (long l1 = bk.getLong(str, 0L);; l1 = 0L)
-                  {
-                    long l2 = System.currentTimeMillis() / 1000L;
-                    if (l1 <= l2) {
-                      break;
-                    }
-                    y.i("MicroMsg.Updater", "summerupdate checkcontrol time[%d] > now[%d] control not auto download and ret", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-                    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 0L, 1L, true);
-                    return;
-                  }
-                }
-                y.i("MicroMsg.Updater", "summerupdate gonna start UpdaterService after checkcontrol");
-                com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 59L, 1L, true);
-                paramAnonymous2String = new Intent(Updater.this.getContext(), UpdaterService.class);
-                Updater.a(Updater.this, paramAnonymous2String, paramAnonymouse, Updater.3.this.udf);
-                paramAnonymous2String.putExtra("intent_extra_run_in_foreground", true);
-                paramAnonymous2String.putExtra("intent_extra_download_mode", 2);
-                Updater.this.getContext().startService(paramAnonymous2String);
-              }
-            }));
-            au.Dk().a(new o(), 0);
-            com.tencent.mm.y.c.BS().v(262145, true);
-            com.tencent.mm.pluginsdk.model.app.a.ckK();
+            ab.i("MicroMsg.Updater", "summerupdate gonna start UpdaterService checkcontrol");
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 58L, 1L, true);
+            aw.Rc().a(725, Updater.a(Updater.this, new Updater.3.1(this, paramAnonymouse)));
+            aw.Rc().a(new q(), 0);
+            com.tencent.mm.x.c.PJ().x(262145, true);
+            com.tencent.mm.pluginsdk.model.app.a.dls();
+            AppMethodBeat.o(28934);
             return;
           }
-          y.i("MicroMsg.Updater", "gonna start AppUpdaterUI");
+          ab.i("MicroMsg.Updater", "gonna start AppUpdaterUI");
           localObject = new Intent(Updater.this.getContext(), AppUpdaterUI.class);
           Updater.a(Updater.this, (Intent)localObject, paramAnonymouse, paramString);
-          y.i("MicroMsg.Updater", "current updateType : %s", new Object[] { Integer.valueOf(Updater.c(Updater.this)) });
+          ab.i("MicroMsg.Updater", "current updateType : %s", new Object[] { Integer.valueOf(Updater.c(Updater.this)) });
           if (Updater.c(Updater.this) == 1)
           {
             ((Intent)localObject).putExtra("intent_extra_download_mode", 0);
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 60L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 60L, 1L, true);
           }
           for (;;)
           {
             Updater.this.getContext().startActivity((Intent)localObject);
             break;
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 61L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 61L, 1L, true);
             ((Intent)localObject).putExtra("intent_extra_download_mode", 1);
           }
         }
       }), 0);
       onStop();
+      AppMethodBeat.o(28942);
       return;
     }
-    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 62L, 1L, true);
-    if (this.ucX != null)
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 62L, 1L, true);
+    if (this.ylm != null)
     {
-      paramString = this.ucX;
-      if (paramString.hox != null) {
-        paramString.hox.setVisibility(8);
+      paramString = this.ylm;
+      if (paramString.jba != null) {
+        paramString.jba.setVisibility(8);
       }
-      paramString = (TextView)this.ucX.findViewById(R.h.mm_progress_dialog_msg);
+      paramString = (TextView)this.ylm.findViewById(2131821848);
       if ((paramInt1 != 4) || (paramInt2 != -18)) {
-        break label244;
+        break label262;
       }
-      paramm = new bh();
-      com.tencent.mm.sdk.b.a.udP.m(paramm);
-      paramm = au.Dk();
-      paramString = new com.tencent.mm.ah.f()
-      {
-        public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, m paramAnonymousm)
-        {
-          au.Dk().b(922, Updater.g(Updater.this));
-          Updater.a(Updater.this, null);
-          if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
-          {
-            paramAnonymousm = ((pt)((b)paramAnonymousm.edi).ecF.ecN).sNB;
-            paramAnonymousString = new e(paramAnonymousm);
-            if ((paramAnonymousm != null) && (paramAnonymousm.tNO == 3))
-            {
-              paramAnonymousm = new Intent(Updater.this.getContext(), AppUpdaterUI.class);
-              if (e.Ft(paramAnonymousString.clientVersion)) {
-                if (bk.bl(paramAnonymousString.lnD))
-                {
-                  paramAnonymousString = "http://support.weixin.qq.com/cgi-bin/mmsupport-bin/readtemplate?t=page/android_exp__index";
-                  paramAnonymousm = new Intent("android.intent.action.VIEW");
-                  paramAnonymousm.setClassName(Updater.this.getContext().getPackageName(), Updater.this.getContext().getPackageName() + ".plugin.webview.ui.tools.WebViewUI");
-                  paramAnonymousm.putExtra("rawUrl", paramAnonymousString);
-                  paramAnonymousm.putExtra("useJs", true);
-                  paramAnonymousm.putExtra("vertical_scroll", true);
-                  paramAnonymousm.setFlags(872415232);
-                  Updater.this.getContext().startActivity(paramAnonymousm);
-                  label222:
-                  if (Updater.h(Updater.this) != null) {
-                    Updater.h(Updater.this).cancel();
-                  }
-                  Updater.this.onStop();
-                }
-              }
-            }
-          }
-          do
-          {
-            do
-            {
-              return;
-              paramAnonymousString = paramAnonymousString.lnD;
-              break;
-              Updater.this.a(paramAnonymousm, paramAnonymousString);
-              Updater.this.getContext().startActivity(paramAnonymousm);
-              break label222;
-              if (Updater.h(Updater.this).findViewById(R.h.mm_progress_dialog_icon) != null) {
-                Updater.h(Updater.this).findViewById(R.h.mm_progress_dialog_icon).setVisibility(8);
-              }
-            } while (paramString == null);
-            com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 63L, 1L, true);
-            paramString.setText(R.l.update_noupdate);
-            return;
-            if (Updater.h(Updater.this).findViewById(R.h.mm_progress_dialog_icon) != null) {
-              Updater.h(Updater.this).findViewById(R.h.mm_progress_dialog_icon).setVisibility(8);
-            }
-          } while (paramString == null);
-          com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 63L, 1L, true);
-          paramString.setText(R.l.update_noupdate);
-        }
-      };
-      this.udc = paramString;
-      paramm.a(922, paramString);
+      paramm = new bj();
+      com.tencent.mm.sdk.b.a.ymk.l(paramm);
+      paramm = aw.Rc();
+      paramString = new Updater.4(this, paramString);
+      this.ylr = paramString;
+      paramm.a(3899, paramString);
     }
     for (;;)
     {
-      i.cqa();
+      i.drQ();
       cancel();
+      AppMethodBeat.o(28942);
       return;
-      label244:
+      label262:
       if (paramString != null)
       {
-        com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 64L, 1L, true);
-        paramString.setText(R.l.update_err_getinfo);
-        j.h(paramString, 1);
+        com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 64L, 1L, true);
+        paramString.setText(2131304424);
+        j.k(paramString, 1);
       }
     }
   }
   
   public final void onStop()
   {
-    com.tencent.mm.plugin.report.service.h.nFQ.a(405L, 43L, 1L, true);
+    AppMethodBeat.i(28937);
+    com.tencent.mm.plugin.report.service.h.qsU.idkeyStat(405L, 43L, 1L, true);
     cancel();
+    AppMethodBeat.o(28937);
   }
   
   public final void update(int paramInt)
   {
-    am(paramInt, false);
+    AppMethodBeat.i(28946);
+    aD(paramInt, false);
+    AppMethodBeat.o(28946);
   }
 }
 

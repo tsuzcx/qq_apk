@@ -1,54 +1,55 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
-import android.graphics.Bitmap;
-import android.view.View;
-import com.tencent.mm.model.au;
-import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.emoji.model.EmojiLogic;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.vfs.b;
-import com.tencent.mm.vfs.e;
-import com.tencent.mm.vfs.j;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.a.d;
+import com.tencent.mm.aj.a.e;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.at.o;
+import com.tencent.mm.pluginsdk.model.app.f;
+import com.tencent.mm.pluginsdk.ui.applet.q.a;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.base.h;
 
 final class g$113
-  implements com.tencent.mm.as.a.c.i
+  implements q.a
 {
-  g$113(g paramg, String paramString1, String paramString2, String paramString3, i parami) {}
+  g$113(g paramg, String paramString1, long paramLong, f paramf, String paramString2, String paramString3, i parami) {}
   
-  public final void a(String paramString, View paramView, Bitmap paramBitmap, Object... paramVarArgs)
+  public final void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    y.i("MicroMsg.MsgHandler", "imageLoaderListener onImageLoadComplete %s", new Object[] { paramString });
-    if ((paramBitmap != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
+    AppMethodBeat.i(155033);
+    if (paramBoolean)
     {
-      if ((paramVarArgs[0] != null) && ((paramVarArgs[0] instanceof String)))
+      if (bo.isNullOrNil(this.fEW))
       {
-        if (paramString.equals(this.rdp))
+        com.tencent.mm.aj.a.c localc = z.afk().aG(this.vqD);
+        synchronized (e.fxC)
         {
-          paramString = new b(paramVarArgs[0].toString());
-          if (paramString.exists())
-          {
-            paramView = e.aeY(j.n(paramString.mUri));
-            au.Hx();
-            paramBitmap = EmojiLogic.J(c.FL(), "", paramView);
-            e.r(j.n(paramString.cLr()), paramBitmap);
-            g.a(this.rzi, paramView, this.eoz, this.rAA);
-            return;
+          String str = e.aaQ();
+          e.d(localc);
+          g.a(this.vqm, this.jMp, this.val$appId, this.bZZ, this.fEW, null, null, paramString, null);
+          e.ss(str);
+          this.vqm.a(this.uZa, "sendEnterpriseChat:ok", null);
+          if (g.j(this.vqm) != null) {
+            h.bO(g.j(this.vqm), g.j(this.vqm).getResources().getString(2131297076));
           }
-          g.a(this.rzi, this.rzk, "addToEmoticon:fail", null);
+          AppMethodBeat.o(155033);
           return;
         }
-        g.a(this.rzi, this.rzk, "addToEmoticon:fail", null);
-        return;
       }
-      g.a(this.rzi, this.rzk, "addToEmoticon:fail", null);
+      o.ahB().a(this.fEW, new g.113.1(this, paramString));
+      AppMethodBeat.o(155033);
       return;
     }
-    g.a(this.rzi, this.rzk, "addToEmoticon:fail", null);
+    this.vqm.a(this.uZa, "sendEnterpriseChat:cancel", null);
+    AppMethodBeat.o(155033);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.jsapi.g.113
  * JD-Core Version:    0.7.0.1
  */

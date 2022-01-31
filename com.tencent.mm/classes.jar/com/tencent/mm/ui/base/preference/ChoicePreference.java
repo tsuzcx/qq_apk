@@ -8,22 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import com.tencent.mm.ac.a.g;
-import com.tencent.mm.ac.a.h;
-import com.tencent.mm.ac.a.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ad.a.a;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 public final class ChoicePreference
   extends Preference
 {
-  private int mTD = -1;
+  private int pvJ;
   String value;
-  private final HashMap<CharSequence, b> values = new HashMap();
-  private RadioGroup vbZ;
-  private CharSequence[] vca;
-  private CharSequence[] vcb;
-  public Preference.a vcc;
+  private final HashMap<CharSequence, b> values;
+  private RadioGroup zqA;
+  private CharSequence[] zqB;
+  private CharSequence[] zqC;
+  public Preference.a zqD;
   
   public ChoicePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,105 +32,118 @@ public final class ChoicePreference
   public ChoicePreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.m.ChoicePreference, paramInt, 0);
-    this.vca = paramContext.getTextArray(a.m.ChoicePreference_entries);
-    this.vcb = paramContext.getTextArray(a.m.ChoicePreference_entryValues);
+    AppMethodBeat.i(107146);
+    this.values = new HashMap();
+    this.pvJ = -1;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ChoicePreference, paramInt, 0);
+    this.zqB = paramContext.getTextArray(0);
+    this.zqC = paramContext.getTextArray(1);
     paramContext.recycle();
-    cBs();
+    dEH();
+    AppMethodBeat.o(107146);
   }
   
-  private void cBs()
+  private void dEH()
   {
     int i = 0;
-    if (this.vca == null) {
-      this.vca = new CharSequence[0];
+    AppMethodBeat.i(107148);
+    if (this.zqB == null) {
+      this.zqB = new CharSequence[0];
     }
-    if (this.vcb == null) {
-      this.vcb = new CharSequence[0];
+    if (this.zqC == null) {
+      this.zqC = new CharSequence[0];
     }
-    if (this.vca.length == this.vcb.length) {}
+    if (this.zqB.length == this.zqC.length) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("entries count different", bool);
       this.values.clear();
-      while (i < this.vcb.length)
+      while (i < this.zqC.length)
       {
-        b localb = new b(this.vca[i], 1048576 + i);
-        this.values.put(this.vcb[i], localb);
+        b localb = new b(this.zqB[i], 1048576 + i);
+        this.values.put(this.zqC[i], localb);
         i += 1;
       }
     }
+    AppMethodBeat.o(107148);
   }
   
   public final void a(Preference.a parama)
   {
-    this.vcc = parama;
+    this.zqD = parama;
   }
   
   protected final void onBindView(View paramView)
   {
+    AppMethodBeat.i(107149);
     super.onBindView(paramView);
-    if (this.vbZ != null) {
-      this.vbZ.check(this.mTD);
+    if (this.zqA != null) {
+      this.zqA.check(this.pvJ);
     }
+    AppMethodBeat.o(107149);
   }
   
   protected final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(107147);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    Object localObject = (ViewGroup)paramViewGroup.findViewById(a.g.content);
+    Object localObject = (ViewGroup)paramViewGroup.findViewById(2131820946);
     ((ViewGroup)localObject).removeAllViews();
-    localLayoutInflater.inflate(a.h.mm_preference_content_choice, (ViewGroup)localObject);
-    this.vbZ = ((RadioGroup)paramViewGroup.findViewById(a.g.group));
+    localLayoutInflater.inflate(2130970198, (ViewGroup)localObject);
+    this.zqA = ((RadioGroup)paramViewGroup.findViewById(2131826210));
     int i = 0;
-    if (i < this.vcb.length)
+    if (i < this.zqC.length)
     {
-      localObject = this.vcb[i];
+      localObject = this.zqC[i];
       localObject = (b)this.values.get(localObject);
       RadioButton localRadioButton;
       if (localObject != null)
       {
         if (i != 0) {
-          break label138;
+          break label139;
         }
-        localRadioButton = (RadioButton)localLayoutInflater.inflate(a.h.mm_choice_btn_left, null);
+        localRadioButton = (RadioButton)localLayoutInflater.inflate(2130970155, null);
         ((b)localObject).a(localRadioButton);
-        this.vbZ.addView(localRadioButton);
+        this.zqA.addView(localRadioButton);
       }
       for (;;)
       {
         i += 1;
         break;
-        label138:
-        if (i == this.vcb.length - 1)
+        label139:
+        if (i == this.zqC.length - 1)
         {
-          localRadioButton = (RadioButton)localLayoutInflater.inflate(a.h.mm_choice_btn_right, null);
+          localRadioButton = (RadioButton)localLayoutInflater.inflate(2130970157, null);
           ((b)localObject).a(localRadioButton);
-          this.vbZ.addView(localRadioButton);
+          this.zqA.addView(localRadioButton);
         }
         else
         {
-          localRadioButton = (RadioButton)localLayoutInflater.inflate(a.h.mm_choice_btn_middle, null);
+          localRadioButton = (RadioButton)localLayoutInflater.inflate(2130970156, null);
           ((b)localObject).a(localRadioButton);
-          this.vbZ.addView(localRadioButton);
+          this.zqA.addView(localRadioButton);
         }
       }
     }
-    this.vbZ.setOnCheckedChangeListener(new ChoicePreference.1(this));
+    this.zqA.setOnCheckedChangeListener(new ChoicePreference.1(this));
+    AppMethodBeat.o(107147);
     return paramViewGroup;
   }
   
   public final void setValue(String paramString)
   {
+    AppMethodBeat.i(107150);
     this.value = paramString;
     paramString = (b)this.values.get(paramString);
     if (paramString == null)
     {
-      this.mTD = -1;
+      this.pvJ = -1;
+      AppMethodBeat.o(107150);
       return;
     }
-    this.mTD = paramString.id;
+    this.pvJ = paramString.id;
+    AppMethodBeat.o(107150);
   }
 }
 

@@ -1,11 +1,14 @@
 package com.tencent.mm.plugin.appbrand.media.record;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.i;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.appbrand.media.record.record_imp.RecordParam;
 import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.bs;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,109 +17,134 @@ import java.util.Map;
 
 public final class c
 {
-  private static Map<String, com.tencent.mm.sdk.b.c> gNw = new HashMap();
-  private static ArrayList<String> gNx = new ArrayList();
-  private static boolean gNy = false;
+  private static Map<String, com.tencent.mm.sdk.b.c> ipp;
+  private static ArrayList<String> ipq;
+  private static boolean ipr;
   
-  public static void ame()
+  static
   {
-    if (gNy)
+    AppMethodBeat.i(105595);
+    ipp = new HashMap();
+    ipq = new ArrayList();
+    ipr = false;
+    AppMethodBeat.o(105595);
+  }
+  
+  public static void DB(String paramString)
+  {
+    AppMethodBeat.i(105592);
+    if (!ipp.containsKey(paramString))
     {
-      y.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
+      ab.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
+      AppMethodBeat.o(105592);
       return;
     }
-    com.tencent.mm.sdk.f.e.post(new c.1(), "record_update_device_info");
+    ab.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
+    ipq.remove(paramString);
+    paramString = (com.tencent.mm.sdk.b.c)ipp.remove(paramString);
+    if (paramString != null) {
+      a.ymk.d(paramString);
+    }
+    AppMethodBeat.o(105592);
+  }
+  
+  public static void aHL()
+  {
+    AppMethodBeat.i(105593);
+    if (ipr)
+    {
+      ab.i("MicroMsg.Record.AppBrandRecordClientService", "update device info done!");
+      AppMethodBeat.o(105593);
+      return;
+    }
+    d.post(new c.1(), "record_update_device_info");
+    AppMethodBeat.o(105593);
   }
   
   public static void b(String paramString, com.tencent.mm.sdk.b.c paramc)
   {
-    if (gNw.containsKey(paramString))
+    AppMethodBeat.i(105591);
+    if (ipp.containsKey(paramString))
     {
-      y.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
+      ab.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s has add listener", new Object[] { paramString });
+      AppMethodBeat.o(105591);
       return;
     }
     if (paramc == null)
     {
-      y.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
+      ab.e("MicroMsg.Record.AppBrandRecordClientService", "listener is null");
+      AppMethodBeat.o(105591);
       return;
     }
-    y.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
-    gNw.put(paramString, paramc);
-    if (!gNx.contains(paramString)) {
-      gNx.add(paramString);
+    ab.i("MicroMsg.Record.AppBrandRecordClientService", "addRecordListener,appId:%s", new Object[] { paramString });
+    ipp.put(paramString, paramc);
+    if (!ipq.contains(paramString)) {
+      ipq.add(paramString);
     }
-    a.udP.b(paramc);
+    a.ymk.b(paramc);
+    AppMethodBeat.o(105591);
   }
   
   public static void onCreate() {}
   
   public static void onDestroy()
   {
-    y.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
-    Object localObject1 = gNx.iterator();
+    AppMethodBeat.i(105590);
+    ab.i("MicroMsg.Record.AppBrandRecordClientService", "onDestroy");
+    Object localObject1 = ipq.iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (com.tencent.mm.sdk.b.c)gNw.remove(localObject2);
+      localObject2 = (com.tencent.mm.sdk.b.c)ipp.remove(localObject2);
       if (localObject2 != null) {
-        a.udP.d((com.tencent.mm.sdk.b.c)localObject2);
+        a.ymk.d((com.tencent.mm.sdk.b.c)localObject2);
       }
     }
-    gNw.clear();
-    gNx.clear();
-    localObject1 = g.amm();
-    y.i("MicroMsg.Record.AudioRecordMgr", "destroy");
-    if ((((g)localObject1).gNK == g.a.gOa) || (((g)localObject1).gNK == g.a.gOb) || (((g)localObject1).gNK == g.a.gOe)) {
-      ((g)localObject1).uh();
+    ipp.clear();
+    ipq.clear();
+    localObject1 = g.aHT();
+    ab.i("MicroMsg.Record.AudioRecordMgr", "destroy");
+    if ((((g)localObject1).ipx == g.a.ipL) || (((g)localObject1).ipx == g.a.ipM) || (((g)localObject1).ipx == g.a.ipP)) {
+      ((g)localObject1).Et();
     }
-    if (((g)localObject1).gNR)
+    if (((g)localObject1).ipD)
     {
-      if ((((g)localObject1).gNJ != null) && (((g)localObject1).gNJ.gOK != null))
+      if ((((g)localObject1).ipw != null) && (((g)localObject1).ipw.iqt != null))
       {
-        ((g)localObject1).gNJ.gOK.a(null);
-        ((g)localObject1).gNJ.gOK.aml();
+        ((g)localObject1).ipw.iqt.a(null);
+        ((g)localObject1).ipw.iqt.aHS();
       }
-      ((g)localObject1).gNR = false;
+      ((g)localObject1).ipD = false;
     }
+    AppMethodBeat.o(105590);
   }
   
-  public static void ve(String paramString)
-  {
-    if (!gNw.containsKey(paramString)) {
-      y.e("MicroMsg.Record.AppBrandRecordClientService", "appId:%s not exist the appId for listener", new Object[] { paramString });
-    }
-    do
-    {
-      return;
-      y.i("MicroMsg.Record.AppBrandRecordClientService", "removeRecordListener,appId:%s", new Object[] { paramString });
-      gNx.remove(paramString);
-      paramString = (com.tencent.mm.sdk.b.c)gNw.remove(paramString);
-    } while (paramString == null);
-    a.udP.d(paramString);
-  }
-  
-  private static final class a
+  static final class a
     implements i<IPCVoid, IPCString>
   {
-    private static IPCString amf()
+    private static IPCString aHM()
     {
+      AppMethodBeat.i(105588);
       try
       {
-        y.i("MicroMsg.Record.AppBrandRecordClientService", "ipc updateDeviceInfo");
-        IPCString localIPCString = new IPCString(com.tencent.mm.kernel.g.DP().DA().cwa());
-        return localIPCString;
+        ab.i("MicroMsg.Record.AppBrandRecordClientService", "ipc updateDeviceInfo");
+        IPCString localIPCString1 = new IPCString(com.tencent.mm.kernel.g.RL().Rv().dyM());
+        AppMethodBeat.o(105588);
+        return localIPCString1;
       }
       catch (Exception localException)
       {
-        y.printErrStackTrace("MicroMsg.Record.AppBrandRecordClientService", localException, "ipc updateDeviceInfo task", new Object[0]);
+        ab.printErrStackTrace("MicroMsg.Record.AppBrandRecordClientService", localException, "ipc updateDeviceInfo task", new Object[0]);
+        IPCString localIPCString2 = new IPCString("");
+        AppMethodBeat.o(105588);
+        return localIPCString2;
       }
-      return new IPCString("");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.c
  * JD-Core Version:    0.7.0.1
  */

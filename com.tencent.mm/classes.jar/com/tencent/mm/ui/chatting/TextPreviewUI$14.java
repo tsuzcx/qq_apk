@@ -2,6 +2,7 @@ package com.tencent.mm.ui.chatting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class TextPreviewUI$14
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class TextPreviewUI$14
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.vnn.finish();
+    AppMethodBeat.i(31058);
+    this.zCJ.finish();
+    AppMethodBeat.o(31058);
     return true;
   }
 }

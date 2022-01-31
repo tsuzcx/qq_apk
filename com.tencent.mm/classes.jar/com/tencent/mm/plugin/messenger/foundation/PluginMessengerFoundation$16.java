@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.storage.br;
 
 final class PluginMessengerFoundation$16
@@ -8,14 +8,14 @@ final class PluginMessengerFoundation$16
 {
   PluginMessengerFoundation$16(PluginMessengerFoundation paramPluginMessengerFoundation) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return br.dXp;
+    return br.SQL_CREATE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.PluginMessengerFoundation.16
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,20 @@
 package com.tencent.mm.plugin.traceroute.b;
 
-import com.tencent.mm.sdk.f.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.g.a.e;
+import com.tencent.mm.sdk.g.d;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeoutException;
 
 public final class b
 {
-  public static List<Object> B(String[] paramArrayOfString)
+  public static List<Object> J(String[] paramArrayOfString)
   {
+    AppMethodBeat.i(25988);
     String str = " ";
     int i = 0;
     while (i < 4)
@@ -18,55 +23,78 @@ public final class b
       str = str + (String)localObject + " ";
       i += 1;
     }
-    y.i("MicroMsg.MMTraceRoute", str);
+    ab.i("MicroMsg.MMTraceRoute", str);
     Object localObject = new ArrayList();
     paramArrayOfString = new b.a(paramArrayOfString, (List)localObject);
-    e.a(paramArrayOfString, "MMTraceRouteCMDExecutor_watcher");
+    d.g(paramArrayOfString, "MMTraceRouteCMDExecutor_watcher");
     try
     {
-      e.ac(paramArrayOfString);
-      y.i("MicroMsg.MMTraceRoute", "watcher thread stopped" + str);
+      d.ysm.al(paramArrayOfString);
+      ab.i("MicroMsg.MMTraceRoute", "watcher thread stopped".concat(String.valueOf(str)));
+      label104:
+      AppMethodBeat.o(25988);
       return localObject;
     }
-    catch (InterruptedException localInterruptedException)
+    catch (TimeoutException paramArrayOfString)
     {
-      e.Y(paramArrayOfString);
-      y.i("MicroMsg.MMTraceRoute", "interrupt thread" + str);
+      break label104;
     }
-    return localObject;
-  }
-  
-  public static String PR(String paramString)
-  {
-    y.i("MicroMsg.MMTraceRoute", "output string: " + paramString);
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    int i;
-    int j;
-    do
+    catch (ExecutionException paramArrayOfString)
     {
-      do
-      {
-        return null;
-        i = paramString.indexOf("time=");
-      } while (i < 0);
-      i += 5;
-      j = paramString.indexOf(" ", i);
-    } while (j < 0);
-    return paramString.substring(i, j);
+      break label104;
+    }
+    catch (InterruptedException paramArrayOfString)
+    {
+      break label104;
+    }
   }
   
-  public static int PS(String paramString)
+  public static String aeu(String paramString)
   {
+    AppMethodBeat.i(25986);
+    ab.i("MicroMsg.MMTraceRoute", "output string: ".concat(String.valueOf(paramString)));
+    if ((paramString == null) || (paramString.length() == 0))
+    {
+      AppMethodBeat.o(25986);
+      return null;
+    }
+    int i = paramString.indexOf("time=");
+    if (i < 0)
+    {
+      AppMethodBeat.o(25986);
+      return null;
+    }
+    i += 5;
+    int j = paramString.indexOf(" ", i);
+    if (j < 0)
+    {
+      AppMethodBeat.o(25986);
+      return null;
+    }
+    paramString = paramString.substring(i, j);
+    AppMethodBeat.o(25986);
+    return paramString;
+  }
+  
+  public static int aev(String paramString)
+  {
+    AppMethodBeat.i(25987);
     int i = paramString.indexOf("ttl=");
-    if (i < 0) {}
-    int j;
-    do
+    if (i < 0)
     {
+      AppMethodBeat.o(25987);
       return -1;
-      i += 4;
-      j = paramString.indexOf(" ", i);
-    } while (j < 0);
-    return bk.getInt(paramString.substring(i, j), 0);
+    }
+    i += 4;
+    int j = paramString.indexOf(" ", i);
+    if (j < 0)
+    {
+      AppMethodBeat.o(25987);
+      return -1;
+    }
+    i = bo.getInt(paramString.substring(i, j), 0);
+    AppMethodBeat.o(25987);
+    return i;
   }
 }
 

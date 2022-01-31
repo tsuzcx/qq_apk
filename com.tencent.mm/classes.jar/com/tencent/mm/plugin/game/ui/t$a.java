@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.game.ui;
 
 public final class t$a
 {
-  public String lfJ;
-  public String lfK;
   public String message;
+  public String nDE;
+  public String nDF;
   public String url;
 }
 

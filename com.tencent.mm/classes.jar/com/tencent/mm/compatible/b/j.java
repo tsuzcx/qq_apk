@@ -1,53 +1,62 @@
 package com.tencent.mm.compatible.b;
 
-import android.content.Context;
-import android.media.MediaPlayer;
-import android.net.Uri;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.IOException;
+import android.annotation.TargetApi;
+import android.media.AudioRecord;
+import android.media.audiofx.NoiseSuppressor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class j
-  extends MediaPlayer
+  implements h.a
 {
-  public j()
+  private NoiseSuppressor emx;
+  
+  @TargetApi(16)
+  public j(AudioRecord paramAudioRecord)
   {
-    f.gw(hashCode());
+    AppMethodBeat.i(92896);
+    this.emx = null;
+    boolean bool = NoiseSuppressor.isAvailable();
+    ab.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
+    if (bool) {
+      this.emx = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
+    }
+    AppMethodBeat.o(92896);
   }
   
-  public static j d(Context paramContext, Uri paramUri)
+  @TargetApi(16)
+  public final boolean KB()
   {
+    AppMethodBeat.i(92898);
+    if (this.emx != null) {}
     try
     {
-      j localj = new j();
-      localj.setDataSource(paramContext, paramUri);
-      localj.prepare();
-      return localj;
+      int i = this.emx.setEnabled(true);
+      if (i == 0)
+      {
+        AppMethodBeat.o(92898);
+        return true;
+      }
+      ab.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed ".concat(String.valueOf(i)));
     }
-    catch (IOException paramContext)
-    {
-      y.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
-      return null;
-    }
-    catch (IllegalArgumentException paramContext)
+    catch (Exception localException)
     {
       for (;;)
       {
-        y.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
+        ab.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
       }
     }
-    catch (SecurityException paramContext)
-    {
-      for (;;)
-      {
-        y.d("MicroMsg.MediaPlayerWrapper", "create failed:", new Object[] { paramContext });
-      }
-    }
+    AppMethodBeat.o(92898);
+    return false;
   }
   
-  public final void release()
+  @TargetApi(16)
+  public final boolean isAvailable()
   {
-    super.release();
-    f.gx(hashCode());
+    AppMethodBeat.i(92897);
+    boolean bool = NoiseSuppressor.isAvailable();
+    AppMethodBeat.o(92897);
+    return bool;
   }
 }
 

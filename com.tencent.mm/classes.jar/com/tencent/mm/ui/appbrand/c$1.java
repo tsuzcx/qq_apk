@@ -2,6 +2,7 @@ package com.tencent.mm.ui.appbrand;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.o;
 
 final class c$1
@@ -11,10 +12,12 @@ final class c$1
   
   public final void onClick(View paramView)
   {
-    if (this.uRT.uRR != null) {
-      this.uRT.uRR.cAm();
+    AppMethodBeat.i(29958);
+    if (this.zgu.zgs != null) {
+      this.zgu.zgs.dDw();
     }
-    this.uRT.sgx.dismiss();
+    this.zgu.vYP.dismiss();
+    AppMethodBeat.o(29958);
   }
 }
 

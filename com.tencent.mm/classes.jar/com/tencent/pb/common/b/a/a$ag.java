@@ -7,97 +7,97 @@ import com.google.a.a.g;
 public final class a$ag
   extends e
 {
+  public a.at BdI = null;
+  public a.av[] BeZ = a.av.dTR();
+  public a.as Ben = null;
+  public a.av[] Bet = a.av.dTR();
+  public a.o[] Bfa = a.o.dTL();
+  public a.aw[] Bfb = a.aw.dTS();
+  public int Bfc = 0;
+  public int[] Bfd = g.bgZ;
   public String groupId = "";
-  public int pRI = 0;
-  public long pRJ = 0L;
-  public a.as wGM = null;
-  public a.av[] wGS = a.av.cOf();
-  public a.at wGh = null;
-  public a.o[] wHA = a.o.cNZ();
-  public a.aw[] wHB = a.aw.cOg();
-  public int wHC = 0;
-  public int[] wHD = g.aUJ;
-  public a.av[] wHz = a.av.cOf();
+  public int twP = 0;
+  public long twQ = 0L;
   
   public a$ag()
   {
-    this.aUI = -1;
+    this.bgY = -1;
   }
   
   public final void a(b paramb)
   {
     int j = 0;
     if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+      paramb.e(1, this.groupId);
     }
-    if (this.pRI != 0) {
-      paramb.aL(2, this.pRI);
+    if (this.twP != 0) {
+      paramb.bj(2, this.twP);
     }
-    if (this.pRJ != 0L) {
-      paramb.i(3, this.pRJ);
+    if (this.twQ != 0L) {
+      paramb.n(3, this.twQ);
     }
     int i;
     Object localObject;
-    if ((this.wHA != null) && (this.wHA.length > 0))
+    if ((this.Bfa != null) && (this.Bfa.length > 0))
     {
       i = 0;
-      while (i < this.wHA.length)
+      while (i < this.Bfa.length)
       {
-        localObject = this.wHA[i];
+        localObject = this.Bfa[i];
         if (localObject != null) {
           paramb.a(4, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.wGM != null) {
-      paramb.a(5, this.wGM);
+    if (this.Ben != null) {
+      paramb.a(5, this.Ben);
     }
-    if (this.wHC != 0) {
-      paramb.aL(6, this.wHC);
+    if (this.Bfc != 0) {
+      paramb.bj(6, this.Bfc);
     }
-    if ((this.wHD != null) && (this.wHD.length > 0))
+    if ((this.Bfd != null) && (this.Bfd.length > 0))
     {
       i = 0;
-      while (i < this.wHD.length)
+      while (i < this.Bfd.length)
       {
-        paramb.aL(7, this.wHD[i]);
+        paramb.bj(7, this.Bfd[i]);
         i += 1;
       }
     }
-    if ((this.wHz != null) && (this.wHz.length > 0))
+    if ((this.BeZ != null) && (this.BeZ.length > 0))
     {
       i = 0;
-      while (i < this.wHz.length)
+      while (i < this.BeZ.length)
       {
-        localObject = this.wHz[i];
+        localObject = this.BeZ[i];
         if (localObject != null) {
           paramb.a(200, (e)localObject);
         }
         i += 1;
       }
     }
-    if ((this.wHB != null) && (this.wHB.length > 0))
+    if ((this.Bfb != null) && (this.Bfb.length > 0))
     {
       i = 0;
-      while (i < this.wHB.length)
+      while (i < this.Bfb.length)
       {
-        localObject = this.wHB[i];
+        localObject = this.Bfb[i];
         if (localObject != null) {
           paramb.a(201, (e)localObject);
         }
         i += 1;
       }
     }
-    if (this.wGh != null) {
-      paramb.a(202, this.wGh);
+    if (this.BdI != null) {
+      paramb.a(202, this.BdI);
     }
-    if ((this.wGS != null) && (this.wGS.length > 0))
+    if ((this.Bet != null) && (this.Bet.length > 0))
     {
       i = j;
-      while (i < this.wGS.length)
+      while (i < this.Bet.length)
       {
-        localObject = this.wGS[i];
+        localObject = this.Bet[i];
         if (localObject != null) {
           paramb.a(203, (e)localObject);
         }
@@ -107,33 +107,33 @@ public final class a$ag
     super.a(paramb);
   }
   
-  protected final int oQ()
+  public final int sz()
   {
     int m = 0;
-    int j = super.oQ();
+    int j = super.sz();
     int i = j;
     if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
+      i = j + b.f(1, this.groupId);
     }
     j = i;
-    if (this.pRI != 0) {
-      j = i + b.aN(2, this.pRI);
+    if (this.twP != 0) {
+      j = i + b.bl(2, this.twP);
     }
     i = j;
-    if (this.pRJ != 0L) {
-      i = j + b.k(3, this.pRJ);
+    if (this.twQ != 0L) {
+      i = j + b.p(3, this.twQ);
     }
     j = i;
     Object localObject;
-    if (this.wHA != null)
+    if (this.Bfa != null)
     {
       j = i;
-      if (this.wHA.length > 0)
+      if (this.Bfa.length > 0)
       {
         j = 0;
-        while (j < this.wHA.length)
+        while (j < this.Bfa.length)
         {
-          localObject = this.wHA[j];
+          localObject = this.Bfa[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(4, (e)localObject);
@@ -145,39 +145,39 @@ public final class a$ag
       }
     }
     i = j;
-    if (this.wGM != null) {
-      i = j + b.b(5, this.wGM);
+    if (this.Ben != null) {
+      i = j + b.b(5, this.Ben);
     }
     j = i;
-    if (this.wHC != 0) {
-      j = i + b.aN(6, this.wHC);
+    if (this.Bfc != 0) {
+      j = i + b.bl(6, this.Bfc);
     }
     i = j;
-    if (this.wHD != null)
+    if (this.Bfd != null)
     {
       i = j;
-      if (this.wHD.length > 0)
+      if (this.Bfd.length > 0)
       {
         i = 0;
         k = 0;
-        while (i < this.wHD.length)
+        while (i < this.Bfd.length)
         {
-          k += b.dO(this.wHD[i]);
+          k += b.eU(this.Bfd[i]);
           i += 1;
         }
-        i = j + k + this.wHD.length * 1;
+        i = j + k + this.Bfd.length * 1;
       }
     }
     j = i;
-    if (this.wHz != null)
+    if (this.BeZ != null)
     {
       j = i;
-      if (this.wHz.length > 0)
+      if (this.BeZ.length > 0)
       {
         j = 0;
-        while (j < this.wHz.length)
+        while (j < this.BeZ.length)
         {
-          localObject = this.wHz[j];
+          localObject = this.BeZ[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(200, (e)localObject);
@@ -189,17 +189,17 @@ public final class a$ag
       }
     }
     int k = j;
-    if (this.wHB != null)
+    if (this.Bfb != null)
     {
       k = j;
-      if (this.wHB.length > 0)
+      if (this.Bfb.length > 0)
       {
         k = 0;
         i = j;
         j = k;
-        while (j < this.wHB.length)
+        while (j < this.Bfb.length)
         {
-          localObject = this.wHB[j];
+          localObject = this.Bfb[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(201, (e)localObject);
@@ -211,23 +211,23 @@ public final class a$ag
       }
     }
     i = k;
-    if (this.wGh != null) {
-      i = k + b.b(202, this.wGh);
+    if (this.BdI != null) {
+      i = k + b.b(202, this.BdI);
     }
     k = i;
-    if (this.wGS != null)
+    if (this.Bet != null)
     {
       k = i;
-      if (this.wGS.length > 0)
+      if (this.Bet.length > 0)
       {
         j = m;
         for (;;)
         {
           k = i;
-          if (j >= this.wGS.length) {
+          if (j >= this.Bet.length) {
             break;
           }
-          localObject = this.wGS[j];
+          localObject = this.Bet[j];
           k = i;
           if (localObject != null) {
             k = i + b.b(203, (e)localObject);
@@ -242,7 +242,7 @@ public final class a$ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.ag
  * JD-Core Version:    0.7.0.1
  */

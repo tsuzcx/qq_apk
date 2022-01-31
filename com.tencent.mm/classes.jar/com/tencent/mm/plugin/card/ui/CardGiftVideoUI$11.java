@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.card.ui;
 
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CardGiftVideoUI$11
   implements Runnable
@@ -11,20 +12,23 @@ final class CardGiftVideoUI$11
   
   public final void run()
   {
-    y.i("MicroMsg.CardGiftVideoUI", "%d switch video model isVideoPlay %b", new Object[] { Integer.valueOf(this.iuJ.hashCode()), Boolean.valueOf(this.iuL) });
-    if (this.iuL)
+    AppMethodBeat.i(88459);
+    ab.i("MicroMsg.CardGiftVideoUI", "%d switch video model isVideoPlay %b", new Object[] { Integer.valueOf(this.kvN.hashCode()), Boolean.valueOf(this.kvP) });
+    if (this.kvP)
     {
-      ((View)CardGiftVideoUI.e(this.iuJ)).setVisibility(0);
-      CardGiftVideoUI.f(this.iuJ).setVisibility(8);
+      ((View)CardGiftVideoUI.e(this.kvN)).setVisibility(0);
+      CardGiftVideoUI.f(this.kvN).setVisibility(8);
+      AppMethodBeat.o(88459);
       return;
     }
-    ((View)CardGiftVideoUI.e(this.iuJ)).setVisibility(8);
-    CardGiftVideoUI.f(this.iuJ).setVisibility(0);
+    ((View)CardGiftVideoUI.e(this.kvN)).setVisibility(8);
+    CardGiftVideoUI.f(this.kvN).setVisibility(0);
+    AppMethodBeat.o(88459);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardGiftVideoUI.11
  * JD-Core Version:    0.7.0.1
  */

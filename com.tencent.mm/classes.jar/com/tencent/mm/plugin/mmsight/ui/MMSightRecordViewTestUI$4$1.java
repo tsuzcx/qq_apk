@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.mmsight.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.api.MMSightRecordView;
 
 final class MMSightRecordViewTestUI$4$1
@@ -9,7 +10,9 @@ final class MMSightRecordViewTestUI$4$1
   
   public final void run()
   {
-    MMSightRecordViewTestUI.a(this.mpa.moY).a(new MMSightRecordViewTestUI.4.1.1(this));
+    AppMethodBeat.i(55121);
+    MMSightRecordViewTestUI.a(this.oOm.oOk).a(new MMSightRecordViewTestUI.4.1.1(this));
+    AppMethodBeat.o(55121);
   }
 }
 

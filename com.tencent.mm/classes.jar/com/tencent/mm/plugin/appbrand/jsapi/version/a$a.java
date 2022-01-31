@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.jsapi.version;
 
-import com.tencent.mm.plugin.appbrand.jsapi.l;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 
 public final class a$a
-  extends l
+  extends p
 {
   private static final int CTRL_INDEX = -2;
   private static final String NAME = "onUpdateStatusChange";

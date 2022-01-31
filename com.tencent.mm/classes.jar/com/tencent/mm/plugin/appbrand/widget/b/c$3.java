@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.appbrand.widget.b;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class c$3
   implements DialogInterface.OnCancelListener
@@ -11,8 +12,10 @@ final class c$3
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
-    y.i("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
-    this.hsr.e(3, null);
+    AppMethodBeat.i(102351);
+    ab.i("MicroMsg.AppBrandAuthorizeDialog", "stev dialog onCancel");
+    this.jjb.b(3, null);
+    AppMethodBeat.o(102351);
   }
 }
 

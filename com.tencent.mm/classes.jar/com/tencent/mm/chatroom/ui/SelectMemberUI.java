@@ -1,16 +1,18 @@
 package com.tencent.mm.chatroom.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.af;
+import com.tencent.mm.model.ag;
 import com.tencent.mm.plugin.chatroom.a.c;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.al;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.u;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMEditText;
@@ -20,122 +22,148 @@ import java.util.List;
 public class SelectMemberUI
   extends MMActivity
 {
-  private ListView Nn;
-  protected u dnL;
-  protected String dpj;
-  private View drT;
-  private View drU;
-  private SelectMemberScrollBar drV;
-  protected SelectMemberUI.b drW;
-  protected int drX;
-  protected HashSet<String> drY;
-  private boolean drZ;
-  private MMEditText drp;
-  private boolean dsa;
+  protected u efi;
+  protected String egF;
+  private MMEditText eiX;
+  private View ejB;
+  private View ejC;
+  private SelectMemberScrollBar ejD;
+  protected SelectMemberUI.b ejE;
+  protected int ejF;
+  protected HashSet<String> ejG;
+  private boolean ejH;
+  private boolean ejI;
+  private ListView mListView;
   protected String mTitle;
   
   protected static String a(u paramu, String paramString)
   {
-    if (paramu == null) {
+    AppMethodBeat.i(104435);
+    if (paramu == null)
+    {
+      AppMethodBeat.o(104435);
       return null;
     }
-    return paramu.gV(paramString);
+    paramu = paramu.nE(paramString);
+    AppMethodBeat.o(104435);
+    return paramu;
+  }
+  
+  public boolean Kf()
+  {
+    return false;
+  }
+  
+  protected void Kj()
+  {
+    AppMethodBeat.i(104430);
+    this.egF = getIntent().getStringExtra("RoomInfo_Id");
+    ab.i("MicroMsg.SelectMemberUI", "[getIntentParams] roomId:%s", new Object[] { this.egF });
+    this.efi = ((c)g.E(c.class)).YJ().oV(this.egF);
+    this.ejF = getIntent().getIntExtra("from_scene", 0);
+    this.mTitle = getIntent().getStringExtra("title");
+    this.ejH = getIntent().getBooleanExtra("is_show_owner", true);
+    this.ejI = getIntent().getBooleanExtra("is_mulit_select_mode", false);
+    this.ejG = new HashSet();
+    AppMethodBeat.o(104430);
+  }
+  
+  public boolean Kk()
+  {
+    return this.ejI;
+  }
+  
+  protected HashSet<String> Kl()
+  {
+    AppMethodBeat.i(104433);
+    HashSet localHashSet = new HashSet();
+    AppMethodBeat.o(104433);
+    return localHashSet;
+  }
+  
+  protected HashSet<String> Kn()
+  {
+    AppMethodBeat.i(104432);
+    HashSet localHashSet = new HashSet();
+    AppMethodBeat.o(104432);
+    return localHashSet;
+  }
+  
+  protected boolean Ko()
+  {
+    return true;
+  }
+  
+  protected BaseAdapter Kp()
+  {
+    return this.ejE;
+  }
+  
+  protected List<String> Kq()
+  {
+    AppMethodBeat.i(104434);
+    List localList = this.efi.afx();
+    AppMethodBeat.o(104434);
+    return localList;
+  }
+  
+  public final u Ks()
+  {
+    return this.efi;
   }
   
   protected void a(View paramView, int paramInt, long paramLong) {}
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.f.select_member_ui;
+    return 2130970657;
   }
   
-  protected void initView()
+  public void initView()
   {
-    setMMTitle(bk.pm(this.mTitle));
-    this.Nn = ((ListView)findViewById(a.e.member_list));
-    this.drT = findViewById(a.e.select_member_ui_hint_ll);
-    this.drU = findViewById(a.e.select_member_ui_loading);
-    this.drW = new SelectMemberUI.b(this, this, this.dnL, this.dpj, this.dnL.field_roomowner);
-    this.Nn.setAdapter(xX());
-    this.drV = ((SelectMemberScrollBar)findViewById(a.e.member_scrollbar));
-    this.drV.setOnScrollBarTouchListener(new SelectMemberUI.1(this));
-    if (xW()) {
-      this.drV.setVisibility(0);
+    AppMethodBeat.i(104431);
+    setMMTitle(bo.nullAsNil(this.mTitle));
+    this.mListView = ((ListView)findViewById(2131827538));
+    this.ejB = findViewById(2131827539);
+    this.ejC = findViewById(2131827549);
+    this.ejE = new SelectMemberUI.b(this, this, this.efi, this.egF, this.efi.field_roomowner);
+    this.mListView.setAdapter(Kp());
+    this.ejD = ((SelectMemberScrollBar)findViewById(2131827548));
+    this.ejD.setOnScrollBarTouchListener(new SelectMemberUI.1(this));
+    if (Ko()) {
+      this.ejD.setVisibility(0);
     }
     for (;;)
     {
-      this.drp = ((MMEditText)findViewById(a.e.select_member_et));
-      this.drp.addTextChangedListener(new SelectMemberUI.2(this));
-      SelectMemberUI.b localb = this.drW;
-      localb.dsb.drU.setVisibility(0);
-      g.DS().O(new SelectMemberUI.b.1(localb));
+      this.eiX = ((MMEditText)findViewById(2131827547));
+      this.eiX.addTextChangedListener(new SelectMemberUI.2(this));
+      SelectMemberUI.b localb = this.ejE;
+      localb.ejJ.ejC.setVisibility(0);
+      g.RO().ac(new SelectMemberUI.b.1(localb));
       setBackBtn(new SelectMemberUI.3(this));
+      AppMethodBeat.o(104431);
       return;
-      this.drV.setVisibility(8);
+      this.ejD.setVisibility(8);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(104429);
     super.onCreate(paramBundle);
-    y.i("MicroMsg.SelectMemberUI", "[onCreate]");
-    xR();
+    ab.i("MicroMsg.SelectMemberUI", "[onCreate]");
+    Kj();
     initView();
+    AppMethodBeat.o(104429);
   }
   
-  protected void u(int paramInt, boolean paramBoolean) {}
-  
-  public boolean xN()
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    return false;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
   }
   
-  protected void xR()
-  {
-    this.dpj = getIntent().getStringExtra("RoomInfo_Id");
-    y.i("MicroMsg.SelectMemberUI", "[getIntentParams] roomId:%s", new Object[] { this.dpj });
-    this.dnL = ((c)g.r(c.class)).FF().io(this.dpj);
-    this.drX = getIntent().getIntExtra("from_scene", 0);
-    this.mTitle = getIntent().getStringExtra("title");
-    this.drZ = getIntent().getBooleanExtra("is_show_owner", true);
-    this.dsa = getIntent().getBooleanExtra("is_mulit_select_mode", false);
-    this.drY = new HashSet();
-  }
-  
-  public boolean xS()
-  {
-    return this.dsa;
-  }
-  
-  protected HashSet<String> xT()
-  {
-    return new HashSet();
-  }
-  
-  protected HashSet<String> xV()
-  {
-    return new HashSet();
-  }
-  
-  protected boolean xW()
-  {
-    return true;
-  }
-  
-  protected BaseAdapter xX()
-  {
-    return this.drW;
-  }
-  
-  protected List<String> xY()
-  {
-    return this.dnL.MN();
-  }
-  
-  public final u ya()
-  {
-    return this.dnL;
-  }
+  protected void v(int paramInt, boolean paramBoolean) {}
 }
 
 

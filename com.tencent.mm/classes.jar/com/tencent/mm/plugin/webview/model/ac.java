@@ -1,85 +1,63 @@
 package com.tencent.mm.plugin.webview.model;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mm.model.gdpr.a;
-import com.tencent.mm.model.gdpr.c;
-import com.tencent.mm.plugin.webview.stub.d;
-import com.tencent.mm.plugin.webview.ui.tools.widget.n.a;
-import com.tencent.mm.protocal.c.azs;
-import com.tencent.mm.protocal.c.bna;
-import com.tencent.mm.sdk.platformtools.y;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.a;
+import com.tencent.mm.ai.b.b;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.q;
+import com.tencent.mm.protocal.protobuf.bwz;
+import com.tencent.mm.protocal.protobuf.bxa;
 
 public final class ac
+  extends m
+  implements k
 {
-  private static String[] rfA;
-  private static boolean rfB = false;
+  private f eGj;
+  public final b rr;
   
-  private static LinkedList<bna> U(ArrayList<byte[]> paramArrayList)
+  public ac(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    LinkedList localLinkedList = new LinkedList();
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return localLinkedList;
-    }
-    int i = 0;
-    while (i < paramArrayList.size()) {
-      try
-      {
-        azs localazs = new azs();
-        localazs.aH((byte[])paramArrayList.get(i));
-        bna localbna = new bna();
-        localbna.tGf = localazs.tvP;
-        localbna.kRN = localazs.desc;
-        localbna.sEi = localazs.scope;
-        localbna.gkl = localazs.gkl;
-        localLinkedList.add(localbna);
-        i += 1;
-      }
-      catch (IOException paramArrayList)
-      {
-        y.w("MicroMsg.OauthAuthorizeLogic", "bytesListToBytesListScopeInfoList: i:%d, exp:%s", new Object[] { Integer.valueOf(i), paramArrayList.getLocalizedMessage() });
-        localLinkedList.clear();
-        return localLinkedList;
-      }
-    }
-    return localLinkedList;
+    AppMethodBeat.i(6643);
+    Object localObject = new b.a();
+    ((b.a)localObject).fsX = new bwz();
+    ((b.a)localObject).fsY = new bxa();
+    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize";
+    ((b.a)localObject).funcId = 1388;
+    ((b.a)localObject).reqCmdId = 0;
+    ((b.a)localObject).respCmdId = 0;
+    this.rr = ((b.a)localObject).ado();
+    localObject = (bwz)this.rr.fsV.fta;
+    ((bwz)localObject).cwc = paramString1;
+    ((bwz)localObject).scope = paramString2;
+    ((bwz)localObject).state = paramString3;
+    ((bwz)localObject).xKb = paramString4;
+    ((bwz)localObject).xKc = paramString5;
+    AppMethodBeat.o(6643);
   }
   
-  private static ArrayList<byte[]> at(LinkedList<azs> paramLinkedList)
+  public final int doScene(e parame, f paramf)
   {
-    ArrayList localArrayList = new ArrayList();
-    if ((paramLinkedList == null) || (paramLinkedList.isEmpty())) {
-      return localArrayList;
-    }
-    int i = 0;
-    while (i < paramLinkedList.size()) {
-      try
-      {
-        localArrayList.add(((azs)paramLinkedList.get(i)).toByteArray());
-        i += 1;
-      }
-      catch (IOException paramLinkedList)
-      {
-        y.w("MicroMsg.OauthAuthorizeLogic", "oauthScopeInfoListToBytesList index:%d, exp:%s ", new Object[] { Integer.valueOf(i), paramLinkedList.getLocalizedMessage() });
-        localArrayList.clear();
-        return localArrayList;
-      }
-    }
-    return localArrayList;
+    AppMethodBeat.i(6645);
+    this.eGj = paramf;
+    int i = dispatch(parame, this.rr, this);
+    AppMethodBeat.o(6645);
+    return i;
   }
   
-  public static abstract interface b
+  public final int getType()
   {
-    public abstract void add(int paramInt);
-    
-    public abstract boolean cbR();
-    
-    public abstract void remove(int paramInt);
+    return 1388;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(6644);
+    this.eGj.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(6644);
   }
 }
 

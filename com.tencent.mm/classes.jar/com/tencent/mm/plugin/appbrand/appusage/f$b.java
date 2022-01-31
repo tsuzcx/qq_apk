@@ -1,25 +1,34 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import a.d.b.g;
+import a.f.b.j;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageExport$ReorderCallback;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionModifyQueue$OnModifiedCallback;", "()V", "onInsert", "", "info", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "onMoved", "prev", "next", "onRemoved", "onReorderEnd", "plugin-appbrand-integration_release"})
 public class f$b
   implements c.b
 {
-  public void acN() {}
+  public void awT() {}
   
   public void b(LocalUsageInfo paramLocalUsageInfo)
   {
-    g.k(paramLocalUsageInfo, "info");
+    AppMethodBeat.i(134509);
+    j.q(paramLocalUsageInfo, "info");
+    AppMethodBeat.o(134509);
   }
   
   public final void c(LocalUsageInfo paramLocalUsageInfo)
   {
-    g.k(paramLocalUsageInfo, "info");
+    AppMethodBeat.i(134510);
+    j.q(paramLocalUsageInfo, "info");
+    AppMethodBeat.o(134510);
   }
   
   public void d(LocalUsageInfo paramLocalUsageInfo)
   {
-    g.k(paramLocalUsageInfo, "info");
+    AppMethodBeat.i(134511);
+    j.q(paramLocalUsageInfo, "info");
+    AppMethodBeat.o(134511);
   }
 }
 

@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.protocal.c.byf;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.ckw;
 
 final class TopStoryBaseVideoUI$2
   implements View.OnClickListener
@@ -11,13 +12,15 @@ final class TopStoryBaseVideoUI$2
   
   public final void onClick(View paramView)
   {
-    paramView = this.pFv;
-    if (!paramView.pDB.dnJ) {}
+    AppMethodBeat.i(1718);
+    paramView = this.tiT;
+    if (!paramView.tfp.efg) {}
     for (boolean bool = true;; bool = false)
     {
-      paramView.jL(bool);
-      paramView.bNq();
-      paramView.bNp();
+      paramView.mC(bool);
+      paramView.cJa();
+      paramView.cIZ();
+      AppMethodBeat.o(1718);
       return;
     }
   }

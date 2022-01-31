@@ -4,8 +4,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -16,16 +17,19 @@ final class CardListSelectedUI$3
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
+    int i = 0;
+    AppMethodBeat.i(88557);
     if (paramView.getAlpha() != 1.0F)
     {
-      y.d("MicroMsg.CardListSelectedUI", "item view is gray, cannot click, do nothing return！");
+      ab.d("MicroMsg.CardListSelectedUI", "item view is gray, cannot click, do nothing return！");
+      AppMethodBeat.o(88557);
       return;
     }
     boolean bool;
-    if (this.ivL.ivx)
+    if (this.kwP.kwB)
     {
-      bool = ((Boolean)this.ivL.ivy.get(Integer.valueOf(paramInt))).booleanValue();
-      paramAdapterView = this.ivL.ivy;
+      bool = ((Boolean)this.kwP.kwC.get(Integer.valueOf(paramInt))).booleanValue();
+      paramAdapterView = this.kwP.kwC;
       if (!bool)
       {
         bool = true;
@@ -34,19 +38,19 @@ final class CardListSelectedUI$3
     }
     for (;;)
     {
-      CardListSelectedUI.c(this.ivL).notifyDataSetChanged();
-      CardListSelectedUI.d(this.ivL);
+      CardListSelectedUI.c(this.kwP).notifyDataSetChanged();
+      CardListSelectedUI.d(this.kwP);
+      AppMethodBeat.o(88557);
       return;
       bool = false;
       break;
-      int i = 0;
-      while (i < this.ivL.dBw.size())
+      while (i < this.kwP.eyN.size())
       {
-        this.ivL.ivy.put(Integer.valueOf(i), Boolean.valueOf(false));
+        this.kwP.kwC.put(Integer.valueOf(i), Boolean.FALSE);
         i += 1;
       }
-      this.ivL.ivy.put(Integer.valueOf(paramInt), Boolean.valueOf(true));
-      CardListSelectedUI.a(this.ivL, (a)this.ivL.dBw.get(paramInt));
+      this.kwP.kwC.put(Integer.valueOf(paramInt), Boolean.TRUE);
+      CardListSelectedUI.a(this.kwP, (a)this.kwP.eyN.get(paramInt));
     }
   }
 }

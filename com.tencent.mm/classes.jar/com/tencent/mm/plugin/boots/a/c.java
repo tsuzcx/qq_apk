@@ -5,11 +5,11 @@ import java.util.List;
 public abstract interface c
   extends com.tencent.mm.kernel.c.a
 {
-  public abstract List<a> awD();
+  public abstract List<a> aWg();
   
-  public abstract void cr(int paramInt1, int paramInt2);
+  public abstract void dH(int paramInt1, int paramInt2);
   
-  public abstract void oc(int paramInt);
+  public abstract void rQ(int paramInt);
 }
 
 

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.ipcall.ui;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager.e;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,137 +14,148 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.base.MMDotView;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class i
   extends AlertDialog
-  implements ViewPager.e
+  implements ViewPager.OnPageChangeListener
 {
-  private CharSequence BM;
-  private TextView NI;
-  private MMDotView hxP;
-  private View ipf;
-  private i.b lza;
-  private IPCallShareViewPager lzb;
-  private View.OnClickListener lzc;
-  private LinkedList<Integer> lzd;
+  private CharSequence Cv;
+  private TextView Nx;
+  private View iCk;
+  private MMDotView jpZ;
   private Context mContext;
-  
-  public final void Q(int paramInt) {}
-  
-  public final void R(int paramInt)
-  {
-    if (this.lza.getCount() <= 1)
-    {
-      this.hxP.setVisibility(4);
-      return;
-    }
-    this.hxP.setVisibility(0);
-    this.hxP.setDotCount(this.lza.getCount());
-    this.hxP.setSelectedDot(paramInt);
-  }
-  
-  public final void a(int paramInt1, float paramFloat, int paramInt2) {}
+  private i.b nWm;
+  private IPCallShareViewPager nWn;
+  private View.OnClickListener nWo;
+  private LinkedList<Integer> nWp;
   
   public final void dismiss()
   {
+    AppMethodBeat.i(22356);
     try
     {
       super.dismiss();
+      AppMethodBeat.o(22356);
       return;
     }
     catch (Exception localException)
     {
-      y.e("MicroMsg.IPCallShareDialog", "dismiss exception, e = " + localException.getMessage());
+      ab.e("MicroMsg.IPCallShareDialog", "dismiss exception, e = " + localException.getMessage());
+      AppMethodBeat.o(22356);
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(22353);
     super.onCreate(paramBundle);
     getWindow().getAttributes().width = getWindow().getWindowManager().getDefaultDisplay().getWidth();
     getWindow().setGravity(80);
     getWindow().getDecorView().setPadding(0, 0, 0, 0);
-    setContentView(this.ipf);
+    setContentView(this.iCk);
+    AppMethodBeat.o(22353);
+  }
+  
+  public final void onPageScrollStateChanged(int paramInt) {}
+  
+  public final void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public final void onPageSelected(int paramInt)
+  {
+    AppMethodBeat.i(22354);
+    if (this.nWm.getCount() <= 1)
+    {
+      this.jpZ.setVisibility(4);
+      AppMethodBeat.o(22354);
+      return;
+    }
+    this.jpZ.setVisibility(0);
+    this.jpZ.setDotCount(this.nWm.getCount());
+    this.jpZ.setSelectedDot(paramInt);
+    AppMethodBeat.o(22354);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
     if (paramCharSequence != null)
     {
-      this.BM = paramCharSequence;
+      this.Cv = paramCharSequence;
       return;
     }
-    this.BM = null;
+    this.Cv = null;
   }
   
   public final void show()
   {
-    if ((this.lzd == null) || (this.lzd.size() == 0)) {
+    AppMethodBeat.i(22355);
+    if ((this.nWp == null) || (this.nWp.size() == 0))
+    {
+      AppMethodBeat.o(22355);
       return;
     }
-    this.lzb.setOnPageChangeListener(this);
+    this.nWn.setOnPageChangeListener(this);
     i.b localb = new i.b(this);
-    localb.lze = this.lzc;
-    localb.lzj = this.lzd;
+    localb.nWq = this.nWo;
+    localb.nWv = this.nWp;
     int i;
-    if (localb.lzj.size() > 0)
+    if (localb.nWv.size() > 0)
     {
-      localb.mCount = ((localb.lzj.size() - 1) / 9 + 1);
+      localb.mCount = ((localb.nWv.size() - 1) / 9 + 1);
       i = 0;
     }
     for (;;)
     {
       if (i >= localb.mCount) {
-        break label247;
+        break label257;
       }
-      View localView = ((LayoutInflater)localb.lzl.mContext.getSystemService("layout_inflater")).inflate(R.i.ipcall_share_grid_view, null);
-      GridView localGridView = (GridView)localView.findViewById(R.h.ipcall_share_list);
+      View localView = ((LayoutInflater)localb.nWx.mContext.getSystemService("layout_inflater")).inflate(2130969948, null);
+      GridView localGridView = (GridView)localView.findViewById(2131825326);
       ArrayList localArrayList = new ArrayList();
       int j = i * 9;
       for (;;)
       {
-        if ((j < localb.lzj.size()) && (j < i * 9 + 9))
+        if ((j < localb.nWv.size()) && (j < i * 9 + 9))
         {
-          localArrayList.add(localb.lzj.get(j));
+          localArrayList.add(localb.nWv.get(j));
           j += 1;
           continue;
           localb.mCount = 0;
           break;
         }
       }
-      i.a locala = new i.a(localb.lzl.getContext());
-      locala.lze = localb.lze;
-      locala.kZk = localArrayList;
+      i.a locala = new i.a(localb.nWx.getContext());
+      locala.nWq = localb.nWq;
+      locala.nxh = localArrayList;
       localGridView.setAdapter(locala);
-      localb.lzk.add(localView);
+      localb.nWw.add(localView);
       i += 1;
     }
-    label247:
-    this.lza = localb;
-    this.lzb.setAdapter(this.lza);
-    this.NI.setText(this.BM);
+    label257:
+    this.nWm = localb;
+    this.nWn.setAdapter(this.nWm);
+    this.Nx.setText(this.Cv);
     super.show();
+    AppMethodBeat.o(22355);
   }
   
   public final class a$a
   {
     int id;
-    RelativeLayout lzg;
-    TextView lzh;
-    ImageView lzi;
+    RelativeLayout nWs;
+    TextView nWt;
+    ImageView nWu;
     
     public a$a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.i
  * JD-Core Version:    0.7.0.1
  */

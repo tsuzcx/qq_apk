@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.product.ui;
 
 public abstract interface g$a
 {
-  public abstract void bsl();
+  public abstract void cbr();
 }
 
 

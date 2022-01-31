@@ -8,149 +8,158 @@ import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.b.f;
 import com.tencent.mm.plugin.appbrand.widget.AppBrandNearbyShowcaseView;
-import com.tencent.mm.plugin.appbrand.y.d;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.plugin.appbrand.y.h;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.ui.widget.ThreeDotsLoadingView;
 import java.util.List;
 
 public final class h
   implements View.OnClickListener
 {
-  h.c hiA = h.c.hiH;
-  final h.d hiB = new h.d((byte)0);
-  private final int hiC;
-  private final int hiD = 200;
-  private final h.a hiE;
-  b hiz;
+  h.b iUf;
+  h.c iUg;
+  final h.d iUh;
+  private final int iUi;
+  private final int iUj;
+  private final h.a iUk;
   
-  public h(ViewGroup paramViewGroup, int paramInt)
+  public h(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(133439);
+    this.iUg = h.c.iUn;
+    this.iUh = new h.d((byte)0);
+    this.iUj = 200;
     Context localContext = paramViewGroup.getContext();
-    this.hiE = new h.a(this, localContext, (byte)0);
-    paramViewGroup = LayoutInflater.from(localContext).inflate(y.h.app_brand_recents_list_header_v2, paramViewGroup, false);
-    this.hiB.aie = paramViewGroup;
-    this.hiB.hiM = ((TextView)paramViewGroup.findViewById(y.g.title));
-    this.hiB.hiN = paramViewGroup.findViewById(y.g.nearby_showcase_container);
-    this.hiB.hiP = ((TextView)paramViewGroup.findViewById(y.g.notice_text));
-    this.hiB.hiO = ((AppBrandNearbyShowcaseView)paramViewGroup.findViewById(y.g.nearby_icon_showcase));
-    this.hiB.him = ((ThreeDotsLoadingView)paramViewGroup.findViewById(y.g.nearby_loading_view));
-    this.hiB.hiQ = ((ImageView)paramViewGroup.findViewById(y.g.nearby_refresh_view));
-    this.hiB.aie.setOnClickListener(this);
-    this.hiB.hiM.setText(paramInt);
-    paramViewGroup = this.hiB.hiO;
+    this.iUk = new h.a(this, localContext, (byte)0);
+    paramViewGroup = LayoutInflater.from(localContext).inflate(2130968719, paramViewGroup, false);
+    this.iUh.aku = paramViewGroup;
+    this.iUh.iUs = ((TextView)paramViewGroup.findViewById(2131820680));
+    this.iUh.iUt = paramViewGroup.findViewById(2131821350);
+    this.iUh.iUv = ((TextView)paramViewGroup.findViewById(2131821352));
+    this.iUh.iUu = ((AppBrandNearbyShowcaseView)paramViewGroup.findViewById(2131821351));
+    this.iUh.iTR = ((ThreeDotsLoadingView)paramViewGroup.findViewById(2131821355));
+    this.iUh.iUw = ((ImageView)paramViewGroup.findViewById(2131821356));
+    this.iUh.iUx = ((ImageView)paramViewGroup.findViewById(2131821353));
+    this.iUh.aku.setOnClickListener(this);
+    this.iUh.iUs.setText(2131296714);
+    paramViewGroup = this.iUh.iUu;
     if (paramViewGroup != null)
     {
       paramViewGroup.setIconLayerCount(4);
-      paramViewGroup.setIconSize(this.hiE.hgL + this.hiE.hgN * 2);
-      paramViewGroup.setIconGap(this.hiE.hgM);
+      paramViewGroup.setIconSize(this.iUk.eln + this.iUk.elp * 2);
+      paramViewGroup.setIconGap(this.iUk.elo);
     }
-    this.hiC = com.tencent.mm.cb.a.i(localContext, y.d.grey_text_color);
+    this.iUi = com.tencent.mm.cb.a.m(localContext, 2131690156);
+    AppMethodBeat.o(133439);
   }
   
-  static void bY(View paramView)
+  static void cB(View paramView)
   {
+    AppMethodBeat.i(133444);
     if (paramView.getVisibility() != 0)
     {
       paramView.setAlpha(0.0F);
       paramView.setVisibility(0);
     }
     paramView.animate().setDuration(200L).alpha(1.0F).withEndAction(null).start();
+    AppMethodBeat.o(133444);
   }
   
   protected final void a(List<String> paramList, String paramString, Integer paramInteger)
   {
-    y.i("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "AppBrandLauncherRecentsListHeaderBase.loadingSuccess");
-    this.hiA = h.c.hiJ;
-    this.hiB.him.cKc();
-    bX(this.hiB.him);
+    AppMethodBeat.i(133441);
+    ab.i("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "AppBrandLauncherRecentsListHeaderBase.loadingSuccess");
+    this.iUg = h.c.iUp;
+    this.iUh.iTR.dOW();
+    cx(this.iUh.iTR);
     if ((paramList == null) || (paramList.size() == 0))
     {
-      y.e("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "AppBrandLauncherRecentsListHeaderBase.showLoadingSuccess empty iconUrl list");
+      ab.e("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "AppBrandLauncherRecentsListHeaderBase.showLoadingSuccess empty iconUrl list");
+      AppMethodBeat.o(133441);
       return;
     }
     if (paramList == null)
     {
-      y.e("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "prepareIconList without icon urls");
-      label67:
+      ab.e("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "prepareIconList without icon urls");
       if (paramInteger != null) {
-        break label331;
+        break label346;
       }
     }
-    label331:
-    for (int i = this.hiC;; i = paramInteger.intValue())
+    label346:
+    for (int i = this.iUi;; i = paramInteger.intValue())
     {
-      if (this.hiB.hiP != null)
+      if (this.iUh.iUv != null)
       {
-        this.hiB.hiP.setText(paramString);
-        this.hiB.hiP.setTextColor(i);
+        this.iUh.iUv.setText(paramString);
+        this.iUh.iUv.setTextColor(i);
       }
-      if (this.hiB.hiN == null) {
-        break;
+      if (this.iUh.iUt != null)
+      {
+        cB(this.iUh.iUt);
+        if (this.iUh.iUu != null) {
+          this.iUh.iUu.aOx();
+        }
+        if (this.iUh.iUv != null)
+        {
+          this.iUh.iUv.setAlpha(0.0F);
+          this.iUh.iUv.animate().alpha(1.0F).setDuration(500L).start();
+        }
       }
-      bY(this.hiB.hiN);
-      if (this.hiB.hiO != null) {
-        this.hiB.hiO.aqT();
-      }
-      if (this.hiB.hiP == null) {
-        break;
-      }
-      this.hiB.hiP.setAlpha(0.0F);
-      this.hiB.hiP.animate().alpha(1.0F).setDuration(500L).start();
+      AppMethodBeat.o(133441);
       return;
-      this.hiB.hiO.setIconLayerCount(Math.min(paramList.size(), 4));
-      this.hiB.hiO.dK(false);
-      Object localObject = this.hiE;
-      if (((h.a)localObject).hiG == null) {
-        ((h.a)localObject).hiG = new com.tencent.mm.plugin.appbrand.ui.widget.a(((h.a)localObject).hgL, ((h.a)localObject).hgN);
+      this.iUh.iUu.setIconLayerCount(Math.min(paramList.size(), 4));
+      this.iUh.iUu.fa(false);
+      Object localObject = this.iUk;
+      if (((h.a)localObject).iUm == null) {
+        ((h.a)localObject).iUm = new com.tencent.mm.plugin.appbrand.ui.widget.a(((h.a)localObject).eln, ((h.a)localObject).elp);
       }
-      localObject = ((h.a)localObject).hiG;
+      localObject = ((h.a)localObject).iUm;
       i = 0;
-      while (i < this.hiB.hiO.getChildCount())
+      while (i < this.iUh.iUu.getChildCount())
       {
-        b.JD().a(this.hiB.hiO.mB(i), (String)paramList.get(i), com.tencent.mm.modelappbrand.a.a.JC(), (b.f)localObject);
+        b.acD().a(this.iUh.iUu.pU(i), (String)paramList.get(i), com.tencent.mm.modelappbrand.a.a.acC(), (b.f)localObject);
         i += 1;
       }
-      break label67;
+      break;
     }
   }
   
-  protected final void apT()
+  final void cx(View paramView)
   {
-    y.i("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "AppBrandLauncherRecentsListHeaderBase.loading");
-    this.hiA = h.c.hiI;
-    bX(this.hiB.hiN);
-    bX(this.hiB.hiQ);
-    bY(this.hiB.him);
-    this.hiB.him.cKb();
-  }
-  
-  final void bX(View paramView)
-  {
+    AppMethodBeat.i(133443);
     if (paramView.getVisibility() == 0) {
       paramView.animate().setDuration(200L).alpha(0.0F).withEndAction(new h.1(this, paramView)).start();
     }
+    AppMethodBeat.o(133443);
   }
   
   public final void onClick(View paramView)
   {
-    if (this.hiz != null) {
-      this.hiz.a(this.hiA, paramView);
+    AppMethodBeat.i(133442);
+    if (this.iUf != null) {
+      this.iUf.a(this.iUg, paramView);
     }
+    AppMethodBeat.o(133442);
   }
   
-  static abstract interface b
+  protected final void showLoading()
   {
-    public abstract void a(h.c paramc, View paramView);
+    AppMethodBeat.i(133440);
+    ab.i("MicroMsg.AppBrandLauncherRecentsListHeaderBase", "AppBrandLauncherRecentsListHeaderBase.loading");
+    this.iUg = h.c.iUo;
+    cx(this.iUh.iUt);
+    cx(this.iUh.iUw);
+    cB(this.iUh.iTR);
+    this.iUh.iTR.dOV();
+    AppMethodBeat.o(133440);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.h
  * JD-Core Version:    0.7.0.1
  */

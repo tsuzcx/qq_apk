@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.plugin.game.d.do;
+import com.tencent.mm.plugin.game.d.dr;
 
 final class GameIndexWxagView$a
 {
-  public int kRc;
-  public do lbZ;
+  public int npg;
+  public dr nzU;
   
-  public GameIndexWxagView$a(int paramInt, do paramdo)
+  public GameIndexWxagView$a(int paramInt, dr paramdr)
   {
-    this.kRc = paramInt;
-    this.lbZ = paramdo;
+    this.npg = paramInt;
+    this.nzU = paramdr;
   }
 }
 

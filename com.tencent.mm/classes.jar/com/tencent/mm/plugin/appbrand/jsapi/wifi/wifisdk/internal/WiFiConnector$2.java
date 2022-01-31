@@ -9,7 +9,8 @@ import android.net.NetworkInfo.DetailedState;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.text.TextUtils;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 public final class WiFiConnector$2
   extends BroadcastReceiver
@@ -18,46 +19,59 @@ public final class WiFiConnector$2
   
   public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    for (;;)
+    AppMethodBeat.i(94388);
+    if (paramIntent == null)
     {
+      AppMethodBeat.o(94388);
       return;
-      paramContext = paramIntent.getAction();
-      if (TextUtils.isEmpty(paramContext)) {
-        continue;
-      }
-      if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext))
+    }
+    paramContext = paramIntent.getAction();
+    if (TextUtils.isEmpty(paramContext))
+    {
+      AppMethodBeat.o(94388);
+      return;
+    }
+    if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramContext))
+    {
+      paramContext = this.ihW.ihS.getActiveNetworkInfo();
+      paramIntent = c.getConnectionInfo();
+      if ((paramContext != null) && (paramIntent != null) && (paramContext.getType() == 1) && (paramContext.getDetailedState() == NetworkInfo.DetailedState.CONNECTED) && (paramIntent.getNetworkId() == this.ihW.ihR.networkId))
       {
-        paramContext = this.gHn.gHk.getActiveNetworkInfo();
-        paramIntent = c.getConnectionInfo();
-        if ((paramContext == null) || (paramIntent == null) || (paramContext.getType() != 1) || (paramContext.getDetailedState() != NetworkInfo.DetailedState.CONNECTED) || (paramIntent.getNetworkId() != this.gHn.gHj.networkId)) {
-          continue;
-        }
-        this.gHn.g(true, "");
-        y.i("MicroMsg.wifi_event", "CONNECTIVITY_ACTION CONNECTED.");
-        return;
+        this.ihW.k(true, "");
+        ab.i("MicroMsg.wifi_event", "CONNECTIVITY_ACTION CONNECTED.");
       }
-      if (!"android.net.wifi.supplicant.STATE_CHANGE".equals(paramContext)) {
-        continue;
-      }
-      try
+      AppMethodBeat.o(94388);
+      return;
+    }
+    if ("android.net.wifi.supplicant.STATE_CHANGE".equals(paramContext)) {}
+    try
+    {
+      i = paramIntent.getIntExtra("supplicantError", -1);
+      if (i == 1)
       {
-        i = paramIntent.getIntExtra("supplicantError", -1);
-        if (i != 1) {
-          continue;
-        }
-        y.e("MicroMsg.WiFiConnector", "ERROR_AUTHENTICATING");
-        y.i("MicroMsg.wifi_event", "ERROR_AUTHENTICATING FAIL.");
-        this.gHn.g(false, "password error");
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
+        ab.e("MicroMsg.WiFiConnector", "ERROR_AUTHENTICATING");
+        ab.i("MicroMsg.wifi_event", "ERROR_AUTHENTICATING FAIL.");
+        paramIntent = this.ihW;
+        if (this.ihW.ihV)
         {
-          y.e("MicroMsg.WiFiConnector", paramContext.getMessage());
-          int i = -1;
+          paramContext = "wifi config may be expired";
+          paramIntent.k(false, paramContext);
         }
+      }
+      else
+      {
+        AppMethodBeat.o(94388);
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        ab.e("MicroMsg.WiFiConnector", paramContext.getMessage());
+        int i = -1;
+        continue;
+        paramContext = "password error";
       }
     }
   }

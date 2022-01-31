@@ -8,18 +8,18 @@ import com.tencent.mm.plugin.sight.decode.a.a;
 
 final class b$e
 {
-  View eML;
-  TextView gSy;
-  ImageView kiB;
-  ImageView nWs;
-  View ogO;
-  a ogP;
-  View ogQ;
-  j ogR;
+  View gcq;
+  TextView ivt;
+  ImageView mDg;
+  ImageView qKC;
+  View qVd;
+  a qVe;
+  View qVf;
+  j qVg;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.draft.ui.b.e
  * JD-Core Version:    0.7.0.1
  */

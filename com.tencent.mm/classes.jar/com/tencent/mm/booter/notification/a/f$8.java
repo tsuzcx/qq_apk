@@ -2,7 +2,8 @@ package com.tencent.mm.booter.notification.a;
 
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class f$8
   implements MediaPlayer.OnErrorListener
@@ -11,15 +12,17 @@ final class f$8
   
   public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.Notification.Tool.Sound", "play sound error, player: %s", new Object[] { this.dkb.djY });
+    AppMethodBeat.i(16031);
+    ab.i("MicroMsg.Notification.Tool.Sound", "play sound error, player: %s", new Object[] { this.ebw.ebt });
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
-    if (this.dkb.djY != null)
+    if (this.ebw.ebt != null)
     {
-      this.dkb.djY.release();
-      y.i("MicroMsg.Notification.Tool.Sound", "play sound real error, player: %s,playerIsInit:%s", new Object[] { this.dkb.djY, Boolean.valueOf(this.dkb.djX) });
+      this.ebw.ebt.release();
+      ab.i("MicroMsg.Notification.Tool.Sound", "play sound real error, player: %s,playerIsInit:%s", new Object[] { this.ebw.ebt, Boolean.valueOf(this.ebw.ebs) });
     }
+    AppMethodBeat.o(16031);
     return false;
   }
 }

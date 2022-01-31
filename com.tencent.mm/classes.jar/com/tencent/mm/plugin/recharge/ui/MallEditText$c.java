@@ -4,8 +4,8 @@ import android.widget.TextView;
 
 final class MallEditText$c
 {
-  TextView fdt;
-  TextView nqt;
+  TextView gve;
+  TextView pVH;
   
   private MallEditText$c(MallEditText paramMallEditText) {}
 }

@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.account.ui;
 
+import android.widget.ScrollView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class RegByMobileRegAIOUI$16
-  implements s.a
+  implements Runnable
 {
-  RegByMobileRegAIOUI$16(RegByMobileRegAIOUI paramRegByMobileRegAIOUI) {}
+  RegByMobileRegAIOUI$16(RegByMobileRegAIOUI paramRegByMobileRegAIOUI, int paramInt) {}
   
-  public final void Yf()
+  public final void run()
   {
-    RegByMobileRegAIOUI.v(this.fqF);
-  }
-  
-  public final void qe(String paramString)
-  {
-    paramString = paramString.trim();
-    RegByMobileRegAIOUI.e(this.fqF, paramString);
+    AppMethodBeat.i(152597);
+    RegByMobileRegAIOUI.z(this.gIh).smoothScrollBy(0, this.val$height);
+    AppMethodBeat.o(152597);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByMobileRegAIOUI.16
  * JD-Core Version:    0.7.0.1
  */

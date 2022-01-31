@@ -1,67 +1,63 @@
 package com.tencent.matrix.iocanary.b;
 
-import com.tencent.matrix.c.c.a;
-import java.lang.reflect.Field;
+import com.tencent.matrix.e.c.a;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public final class a
 {
-  private static volatile Object boy;
-  public volatile boolean bow;
-  private final c.a boz;
+  private static volatile Object bNG;
+  public volatile boolean bNF;
+  private final c.a bNH;
   
   public a(c.a parama)
   {
-    this.boz = parama;
+    this.bNH = parama;
   }
   
-  public static boolean rd()
+  public static boolean yZ()
   {
     try
     {
       Object localObject = Class.forName("dalvik.system.CloseGuard");
-      Field localField = ((Class)localObject).getDeclaredField("REPORTER");
-      localField.setAccessible(true);
-      localField.set(null, boy);
-      localObject = ((Class)localObject).getDeclaredField("ENABLED");
-      ((Field)localObject).setAccessible(true);
-      ((Field)localObject).set(null, Boolean.valueOf(false));
-      localField.setAccessible(false);
+      Method localMethod = ((Class)localObject).getDeclaredMethod("setReporter", new Class[] { Class.forName("dalvik.system.CloseGuard$Reporter") });
+      localObject = ((Class)localObject).getDeclaredMethod("setEnabled", new Class[] { Boolean.TYPE });
+      localMethod.invoke(null, new Object[] { bNG });
+      ((Method)localObject).invoke(null, new Object[] { Boolean.FALSE });
       c.setEnabled(false);
       return true;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.matrix.d.b.e("Matrix.CloseGuardHooker", "tryHook exp=%s", new Object[] { localThrowable });
+      com.tencent.matrix.g.c.e("Matrix.CloseGuardHooker", "tryHook exp=%s", new Object[] { localThrowable });
     }
     return false;
   }
   
-  public final boolean rc()
+  public final boolean yY()
   {
     try
     {
-      Object localObject = Class.forName("dalvik.system.CloseGuard");
+      Object localObject2 = Class.forName("dalvik.system.CloseGuard");
       Class localClass = Class.forName("dalvik.system.CloseGuard$Reporter");
-      Field localField = ((Class)localObject).getDeclaredField("REPORTER");
-      localObject = ((Class)localObject).getDeclaredField("ENABLED");
-      localField.setAccessible(true);
-      ((Field)localObject).setAccessible(true);
-      boy = localField.get(null);
-      ((Field)localObject).set(null, Boolean.valueOf(true));
+      Object localObject1 = ((Class)localObject2).getDeclaredMethod("getReporter", new Class[0]);
+      Method localMethod = ((Class)localObject2).getDeclaredMethod("setReporter", new Class[] { localClass });
+      localObject2 = ((Class)localObject2).getDeclaredMethod("setEnabled", new Class[] { Boolean.TYPE });
+      bNG = ((Method)localObject1).invoke(null, new Object[0]);
+      ((Method)localObject2).invoke(null, new Object[] { Boolean.TRUE });
       c.setEnabled(true);
-      localObject = localClass.getClassLoader();
-      if (localObject == null) {
+      localObject1 = localClass.getClassLoader();
+      if (localObject1 == null) {
         return false;
       }
-      b localb = new b(this.boz, boy);
-      localField.set(null, Proxy.newProxyInstance((ClassLoader)localObject, new Class[] { localClass }, localb));
-      localField.setAccessible(false);
+      localObject2 = new b(this.bNH, bNG);
+      localMethod.invoke(null, new Object[] { Proxy.newProxyInstance((ClassLoader)localObject1, new Class[] { localClass }, (InvocationHandler)localObject2) });
       return true;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.matrix.d.b.e("Matrix.CloseGuardHooker", "tryHook exp=%s", new Object[] { localThrowable });
+      com.tencent.matrix.g.c.e("Matrix.CloseGuardHooker", "tryHook exp=%s", new Object[] { localThrowable });
     }
     return false;
   }

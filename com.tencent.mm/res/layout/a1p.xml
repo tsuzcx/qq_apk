@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/q1"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedModuleTitle android:paddingLeft="@dimen/jd" android:paddingTop="@dimen/jd" android:paddingRight="@dimen/jd" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/jj" android:textStyle="bold" android:textColor="@color/nx" android:id="@id/bx1" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </com.tencent.mm.plugin.game.ui.GameFeedModuleTitle>
-</FrameLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/l0">
+        <ImageView android:id="@id/bz6" android:src="@drawable/ag9" style="@style/jd" />
+        <TextView android:text="正在获取Wi-Fi信息..." style="@style/k0" />
+    </LinearLayout>
+</LinearLayout>

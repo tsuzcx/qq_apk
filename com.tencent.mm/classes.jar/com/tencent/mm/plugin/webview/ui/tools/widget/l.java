@@ -2,14 +2,15 @@ package com.tencent.mm.plugin.webview.ui.tools.widget;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
 
 public final class l
   extends k
 {
-  d rCy = null;
-  private m rCz = null;
+  d vsK = null;
+  private m vsL = null;
   
   public l(MMWebView paramMMWebView, boolean paramBoolean, d paramd)
   {
@@ -19,39 +20,52 @@ public final class l
   public l(MMWebView paramMMWebView, boolean paramBoolean, d paramd, Bundle paramBundle)
   {
     super(paramMMWebView, paramBoolean, paramBundle);
-    this.rCy = paramd;
+    this.vsK = paramd;
   }
   
   protected final void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
+    AppMethodBeat.i(10024);
     super.a(paramWebView, paramString, paramBitmap);
-    if ((this.rCy instanceof e)) {
-      ((e)this.rCy).IQ();
+    if ((this.vsK instanceof e)) {
+      ((e)this.vsK).abN();
     }
+    AppMethodBeat.o(10024);
   }
   
-  protected final m all()
+  protected final m aGm()
   {
-    if (this.rCz == null) {
-      this.rCz = new l.1(this);
+    AppMethodBeat.i(10023);
+    if (this.vsL == null) {
+      this.vsL = new l.1(this);
     }
-    return this.rCz;
+    m localm = this.vsL;
+    AppMethodBeat.o(10023);
+    return localm;
   }
   
   protected final void e(WebView paramWebView, String paramString)
   {
+    AppMethodBeat.i(10025);
     super.e(paramWebView, paramString);
-    if ((this.rCy instanceof e)) {
-      ((e)this.rCy).a((MMWebView)paramWebView);
+    if ((this.vsK instanceof e)) {
+      ((e)this.vsK).a((MMWebView)paramWebView);
     }
+    AppMethodBeat.o(10025);
   }
   
-  protected final boolean jh(String paramString)
+  protected final boolean pV(String paramString)
   {
-    if ((this.rCy != null) && ((this.rCy instanceof e))) {
-      return ((e)this.rCy).jh(paramString);
+    AppMethodBeat.i(10026);
+    if ((this.vsK != null) && ((this.vsK instanceof e)))
+    {
+      bool = ((e)this.vsK).pV(paramString);
+      AppMethodBeat.o(10026);
+      return bool;
     }
-    return super.jh(paramString);
+    boolean bool = super.pV(paramString);
+    AppMethodBeat.o(10026);
+    return bool;
   }
 }
 

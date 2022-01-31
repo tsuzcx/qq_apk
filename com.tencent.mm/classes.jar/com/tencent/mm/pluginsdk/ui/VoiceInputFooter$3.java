@@ -2,6 +2,7 @@ package com.tencent.mm.pluginsdk.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class VoiceInputFooter$3
   implements View.OnClickListener
@@ -10,7 +11,9 @@ final class VoiceInputFooter$3
   
   public final void onClick(View paramView)
   {
-    VoiceInputFooter.c(this.sbe);
+    AppMethodBeat.i(27555);
+    VoiceInputFooter.c(this.vSl);
+    AppMethodBeat.o(27555);
   }
 }
 

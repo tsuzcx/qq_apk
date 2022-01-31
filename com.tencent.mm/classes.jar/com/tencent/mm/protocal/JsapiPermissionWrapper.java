@@ -4,7 +4,8 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -12,211 +13,278 @@ import java.util.Set;
 public class JsapiPermissionWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator<JsapiPermissionWrapper> CREATOR = new JsapiPermissionWrapper.1();
-  public static final JsapiPermissionWrapper spm = new JsapiPermissionWrapper(1);
-  public static final JsapiPermissionWrapper spn = new JsapiPermissionWrapper(2);
-  public static final JsapiPermissionWrapper spo = new JsapiPermissionWrapper(3);
-  public static final JsapiPermissionWrapper spp = new JsapiPermissionWrapper(4);
-  public byte[] spq = null;
-  private int spr = 0;
-  private Set<Integer> sps;
-  private Set<Integer> spt;
+  public static final Parcelable.Creator<JsapiPermissionWrapper> CREATOR;
+  public static final JsapiPermissionWrapper wib;
+  public static final JsapiPermissionWrapper wic;
+  public static final JsapiPermissionWrapper wid;
+  public static final JsapiPermissionWrapper wie;
+  public byte[] wif;
+  public int wig;
+  private Set<Integer> wih;
+  private Set<Integer> wii;
+  
+  static
+  {
+    AppMethodBeat.i(79994);
+    wib = new JsapiPermissionWrapper(1);
+    wic = new JsapiPermissionWrapper(2);
+    wid = new JsapiPermissionWrapper(3);
+    wie = new JsapiPermissionWrapper(4);
+    CREATOR = new JsapiPermissionWrapper.1();
+    AppMethodBeat.o(79994);
+  }
   
   public JsapiPermissionWrapper()
   {
-    this.spq = null;
+    this.wif = null;
+    this.wig = 0;
+    this.wif = null;
   }
   
   public JsapiPermissionWrapper(int paramInt)
   {
-    this.spr = paramInt;
-    this.spq = new byte[0];
+    AppMethodBeat.i(79979);
+    this.wif = null;
+    this.wig = 0;
+    this.wig = paramInt;
+    this.wif = new byte[0];
+    AppMethodBeat.o(79979);
   }
   
   private JsapiPermissionWrapper(Parcel paramParcel)
   {
-    this.spq = paramParcel.createByteArray();
-    this.spr = paramParcel.readInt();
-    t(paramParcel.createIntArray());
-    u(paramParcel.createIntArray());
+    AppMethodBeat.i(79985);
+    this.wif = null;
+    this.wig = 0;
+    this.wif = paramParcel.createByteArray();
+    this.wig = paramParcel.readInt();
+    D(paramParcel.createIntArray());
+    E(paramParcel.createIntArray());
+    AppMethodBeat.o(79985);
   }
   
   public JsapiPermissionWrapper(byte[] paramArrayOfByte)
   {
+    AppMethodBeat.i(79978);
+    this.wif = null;
+    this.wig = 0;
     if (paramArrayOfByte == null)
     {
-      this.spq = null;
+      this.wif = null;
+      AppMethodBeat.o(79978);
       return;
     }
-    this.spq = paramArrayOfByte;
+    this.wif = paramArrayOfByte;
+    AppMethodBeat.o(79978);
   }
   
-  public static boolean cpa()
+  private void D(int[] paramArrayOfInt)
   {
-    return true;
-  }
-  
-  private int[] cpb()
-  {
-    if (this.sps != null)
-    {
-      int[] arrayOfInt = new int[this.sps.size()];
-      Iterator localIterator = this.sps.iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        if (localInteger == null) {}
-        for (int j = 0;; j = localInteger.intValue())
-        {
-          arrayOfInt[i] = j;
-          i += 1;
-          break;
-        }
-      }
-      return arrayOfInt;
-    }
-    return new int[0];
-  }
-  
-  private int[] cpc()
-  {
-    if (this.spt != null)
-    {
-      int[] arrayOfInt = new int[this.spt.size()];
-      Iterator localIterator = this.spt.iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        Integer localInteger = (Integer)localIterator.next();
-        if (localInteger == null) {}
-        for (int j = 0;; j = localInteger.intValue())
-        {
-          arrayOfInt[i] = j;
-          i += 1;
-          break;
-        }
-      }
-      return arrayOfInt;
-    }
-    return new int[0];
-  }
-  
-  private void t(int[] paramArrayOfInt)
-  {
-    if (this.sps == null) {
-      this.sps = new HashSet();
+    AppMethodBeat.i(79989);
+    if (this.wih == null) {
+      this.wih = new HashSet();
     }
     while ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
     {
       int i = 0;
       while (i < paramArrayOfInt.length)
       {
-        this.sps.add(Integer.valueOf(paramArrayOfInt[i]));
+        this.wih.add(Integer.valueOf(paramArrayOfInt[i]));
         i += 1;
       }
-      this.sps.clear();
+      this.wih.clear();
     }
+    AppMethodBeat.o(79989);
   }
   
-  private void u(int[] paramArrayOfInt)
+  private void E(int[] paramArrayOfInt)
   {
-    if (this.spt == null) {
-      this.spt = new HashSet();
+    AppMethodBeat.i(79992);
+    if (this.wii == null) {
+      this.wii = new HashSet();
     }
     while ((paramArrayOfInt != null) && (paramArrayOfInt.length > 0))
     {
       int i = 0;
       while (i < paramArrayOfInt.length)
       {
-        this.spt.add(Integer.valueOf(paramArrayOfInt[i]));
+        this.wii.add(Integer.valueOf(paramArrayOfInt[i]));
         i += 1;
       }
-      this.spt.clear();
+      this.wii.clear();
     }
+    AppMethodBeat.o(79992);
   }
   
-  public final int ED(int paramInt)
+  private boolean MC(int paramInt)
   {
-    int i;
-    if ((this.spt != null) && (this.spt.contains(Integer.valueOf(paramInt))))
+    AppMethodBeat.i(79990);
+    if ((this.wih != null) && (this.wih.contains(Integer.valueOf(paramInt))))
     {
-      i = 1;
-      if (i == 0) {
-        break label36;
-      }
+      AppMethodBeat.o(79990);
+      return true;
     }
-    label36:
-    label112:
-    do
+    AppMethodBeat.o(79990);
+    return false;
+  }
+  
+  private boolean MD(int paramInt)
+  {
+    AppMethodBeat.i(79993);
+    if ((this.wii != null) && (this.wii.contains(Integer.valueOf(paramInt))))
     {
-      do
+      AppMethodBeat.o(79993);
+      return true;
+    }
+    AppMethodBeat.o(79993);
+    return false;
+  }
+  
+  public final int MB(int paramInt)
+  {
+    AppMethodBeat.i(79980);
+    if (MD(paramInt))
+    {
+      AppMethodBeat.o(79980);
+      return 1;
+    }
+    if (MC(paramInt))
+    {
+      AppMethodBeat.o(79980);
+      return 0;
+    }
+    if (this.wig == 1)
+    {
+      if ((paramInt == 34) || (paramInt == 75))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return 1;
-              i = 0;
-              break;
-              if ((this.sps != null) && (this.sps.contains(Integer.valueOf(paramInt)))) {}
-              for (i = 1; i != 0; i = 0) {
-                return 0;
-              }
-              if (this.spr != 1) {
-                break label112;
-              }
-            } while ((paramInt != 34) && (paramInt != 75));
-            y.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
-            return 0;
-            if (this.spr != 2) {
-              break label128;
-            }
-          } while (paramInt == -3);
-          return 0;
-          if (this.spr != 3) {
-            break label174;
-          }
-        } while ((paramInt != 34) && (paramInt != 75) && (paramInt != 23));
-        y.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
+        ab.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(79980);
         return 0;
-        if (this.spr != 4) {
-          break label214;
-        }
-      } while ((paramInt != 34) && (paramInt != 75));
-      y.i("MicroMsg.JsapiPermissionWrapper", "hy: on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
-      return 0;
-    } while ((paramInt == -2) || (paramInt == -3));
-    label128:
-    label174:
-    label214:
-    if ((this.spq == null) || (paramInt < 0) || (paramInt >= this.spq.length)) {
+      }
+      AppMethodBeat.o(79980);
+      return 1;
+    }
+    if (this.wig == 2)
+    {
+      if (paramInt == -3)
+      {
+        AppMethodBeat.o(79980);
+        return 1;
+      }
+      AppMethodBeat.o(79980);
       return 0;
     }
-    return this.spq[paramInt];
+    if (this.wig == 3)
+    {
+      if ((paramInt == 34) || (paramInt == 75) || (paramInt == 23))
+      {
+        ab.i("MicroMsg.JsapiPermissionWrapper", "on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(79980);
+        return 0;
+      }
+      AppMethodBeat.o(79980);
+      return 1;
+    }
+    if (this.wig == 4)
+    {
+      if ((paramInt == 34) || (paramInt == 75))
+      {
+        ab.i("MicroMsg.JsapiPermissionWrapper", "hy: on reserved bytes control : %d", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(79980);
+        return 0;
+      }
+      AppMethodBeat.o(79980);
+      return 1;
+    }
+    if ((paramInt == -2) || (paramInt == -3))
+    {
+      AppMethodBeat.o(79980);
+      return 1;
+    }
+    if ((this.wif == null) || (paramInt < 0) || (paramInt >= this.wif.length))
+    {
+      AppMethodBeat.o(79980);
+      return 0;
+    }
+    paramInt = this.wif[paramInt];
+    AppMethodBeat.o(79980);
+    return paramInt;
   }
   
   public final void a(int paramInt, byte paramByte)
   {
     int i = 0;
-    if ((this.spq == null) || (paramInt < 0) || (paramInt >= this.spq.length))
+    AppMethodBeat.i(79981);
+    if ((this.wif == null) || (paramInt < 0) || (paramInt >= this.wif.length))
     {
-      if (this.spq == null) {}
+      if (this.wif == null) {}
       for (;;)
       {
-        y.e("MicroMsg.JsapiPermissionWrapper", "setPermission pos out of range, %s, %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        ab.e("MicroMsg.JsapiPermissionWrapper", "setPermission pos out of range, %s, %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        AppMethodBeat.o(79981);
         return;
-        i = this.spq.length;
+        i = this.wif.length;
       }
     }
-    this.spq[paramInt] = paramByte;
+    this.wif[paramInt] = paramByte;
+    AppMethodBeat.o(79981);
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  public final int[] dqA()
+  {
+    AppMethodBeat.i(79988);
+    if (this.wih != null)
+    {
+      int[] arrayOfInt = new int[this.wih.size()];
+      Iterator localIterator = this.wih.iterator();
+      int i = 0;
+      if (localIterator.hasNext())
+      {
+        Integer localInteger = (Integer)localIterator.next();
+        if (localInteger == null) {}
+        for (int j = 0;; j = localInteger.intValue())
+        {
+          arrayOfInt[i] = j;
+          i += 1;
+          break;
+        }
+      }
+      AppMethodBeat.o(79988);
+      return arrayOfInt;
+    }
+    AppMethodBeat.o(79988);
+    return new int[0];
+  }
+  
+  public final int[] dqB()
+  {
+    AppMethodBeat.i(79991);
+    if (this.wii != null)
+    {
+      int[] arrayOfInt = new int[this.wii.size()];
+      Iterator localIterator = this.wii.iterator();
+      int i = 0;
+      if (localIterator.hasNext())
+      {
+        Integer localInteger = (Integer)localIterator.next();
+        if (localInteger == null) {}
+        for (int j = 0;; j = localInteger.intValue())
+        {
+          arrayOfInt[i] = j;
+          i += 1;
+          break;
+        }
+      }
+      AppMethodBeat.o(79991);
+      return arrayOfInt;
+    }
+    AppMethodBeat.o(79991);
+    return new int[0];
   }
   
   public boolean equals(Object paramObject)
@@ -226,17 +294,17 @@ public class JsapiPermissionWrapper
     {
       return false;
       paramObject = (JsapiPermissionWrapper)paramObject;
-      if (this.spq == paramObject.spq) {
+      if (this.wif == paramObject.wif) {
         return true;
       }
-    } while ((this.spq == null) || (paramObject.spq == null) || (this.spq.length != paramObject.spq.length));
+    } while ((this.wif == null) || (paramObject.wif == null) || (this.wif.length != paramObject.wif.length));
     int i = 0;
     for (;;)
     {
-      if (i >= this.spq.length) {
+      if (i >= this.wif.length) {
         break label87;
       }
-      if (this.spq[i] != paramObject.spq[i]) {
+      if (this.wif[i] != paramObject.wif[i]) {
         break;
       }
       i += 1;
@@ -247,33 +315,37 @@ public class JsapiPermissionWrapper
   
   public final void fromBundle(Bundle paramBundle)
   {
-    this.spq = paramBundle.getByteArray("jsapi_perm_wrapper_bytes");
-    this.spr = paramBundle.getInt("jsapi_perm_wrapper_hardcodePermission");
-    t(paramBundle.getIntArray("jsapi_perm_wrapper_blacklist"));
-    u(paramBundle.getIntArray("jsapi_perm_wrapper_whitelist"));
+    AppMethodBeat.i(79987);
+    this.wif = paramBundle.getByteArray("jsapi_perm_wrapper_bytes");
+    this.wig = paramBundle.getInt("jsapi_perm_wrapper_hardcodePermission");
+    D(paramBundle.getIntArray("jsapi_perm_wrapper_blacklist"));
+    E(paramBundle.getIntArray("jsapi_perm_wrapper_whitelist"));
+    AppMethodBeat.o(79987);
   }
   
-  public final boolean hi(int paramInt)
+  public final boolean jy(int paramInt)
   {
-    return ED(paramInt) == 1;
-  }
-  
-  public final void toBundle(Bundle paramBundle)
-  {
-    paramBundle.putByteArray("jsapi_perm_wrapper_bytes", this.spq);
-    paramBundle.putInt("jsapi_perm_wrapper_hardcodePermission", this.spr);
-    paramBundle.putIntArray("jsapi_perm_wrapper_blacklist", cpb());
-    paramBundle.putIntArray("jsapi_perm_wrapper_whitelist", cpc());
+    AppMethodBeat.i(79982);
+    if (MB(paramInt) == 1)
+    {
+      AppMethodBeat.o(79982);
+      return true;
+    }
+    AppMethodBeat.o(79982);
+    return false;
   }
   
   public String toString()
   {
-    if (this.spq == null) {
+    AppMethodBeat.i(79983);
+    if (this.wif == null)
+    {
+      AppMethodBeat.o(79983);
       return "null";
     }
     long l = System.currentTimeMillis();
     Object localObject = new StringBuilder(180);
-    byte[] arrayOfByte = this.spq;
+    byte[] arrayOfByte = this.wif;
     int j = arrayOfByte.length;
     int i = 0;
     while (i < j)
@@ -282,16 +354,19 @@ public class JsapiPermissionWrapper
       i += 1;
     }
     localObject = ((StringBuilder)localObject).toString();
-    y.d("MicroMsg.JsapiPermissionWrapper", "toString cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    ab.d("MicroMsg.JsapiPermissionWrapper", "toString cost %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(79983);
     return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeByteArray(this.spq);
-    paramParcel.writeInt(this.spr);
-    paramParcel.writeIntArray(cpb());
-    paramParcel.writeIntArray(cpc());
+    AppMethodBeat.i(79984);
+    paramParcel.writeByteArray(this.wif);
+    paramParcel.writeInt(this.wig);
+    paramParcel.writeIntArray(dqA());
+    paramParcel.writeIntArray(dqB());
+    AppMethodBeat.o(79984);
   }
 }
 

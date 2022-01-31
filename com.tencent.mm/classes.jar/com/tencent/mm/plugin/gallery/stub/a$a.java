@@ -44,17 +44,17 @@ public abstract class a$a
       return true;
     case 1: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-      aq(paramParcel1.readInt(), paramParcel1.readString());
+      aK(paramParcel1.readInt(), paramParcel1.readString());
       paramParcel2.writeNoException();
       return true;
     case 2: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-      aXH();
+      bEm();
       paramParcel2.writeNoException();
       return true;
     case 3: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-      paramInt1 = Aj();
+      paramInt1 = MY();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
@@ -67,7 +67,7 @@ public abstract class a$a
         bool1 = true;
         paramInt1 = paramParcel1.readInt();
         if (paramParcel1.readInt() == 0) {
-          break label252;
+          break label236;
         }
       }
       for (boolean bool2 = true;; bool2 = false)
@@ -80,22 +80,23 @@ public abstract class a$a
       }
     case 5: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-      paramInt1 = Ah();
+      paramInt1 = MW();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 6: 
       paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-      paramInt1 = Ag();
+      paramInt1 = MV();
       paramParcel2.writeNoException();
       paramParcel2.writeInt(paramInt1);
       return true;
     case 7: 
+      label236:
       paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
       if (paramParcel1.readInt() != 0) {}
       for (bool1 = true;; bool1 = false)
       {
-        bool1 = gp(bool1);
+        bool1 = hT(bool1);
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool1) {
@@ -104,22 +105,9 @@ public abstract class a$a
         paramParcel2.writeInt(paramInt1);
         return true;
       }
-    case 8: 
-      paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-      paramInt1 = Es(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 9: 
-      label252:
-      paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-      paramInt1 = aXI();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
     }
     paramParcel1.enforceInterface("com.tencent.mm.plugin.gallery.stub.Gallery_AIDL");
-    paramInt1 = rQ(paramParcel1.readInt());
+    paramInt1 = PD(paramParcel1.readString());
     paramParcel2.writeNoException();
     paramParcel2.writeInt(paramInt1);
     return true;
@@ -127,7 +115,7 @@ public abstract class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.stub.a.a
  * JD-Core Version:    0.7.0.1
  */

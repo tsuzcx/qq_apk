@@ -1,169 +1,165 @@
 package com.tencent.tencentmap.mapsdk.a;
 
-import android.content.Context;
-import java.util.HashMap;
-import java.util.Map;
+import android.graphics.Typeface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.a.ka;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public final class di
+public class di
 {
-  private static di a = null;
-  private String b = "";
-  private String c = "";
-  private String d = "";
-  private String e = "";
-  private String f = "";
-  private String g = "";
+  private final List<cz> a;
+  private float b;
+  private int c;
+  private int d;
+  private int e;
+  private boolean f;
+  private boolean g;
+  private String h;
+  private int i;
+  private Typeface j;
+  private int k;
+  private int l;
+  private int m;
+  private int n;
   
-  private di(Context paramContext)
+  public di()
   {
-    if (paramContext == null) {
-      cy.d(" DetailUserInfo context == null? pls check!", new Object[0]);
-    }
-    cy.b(" start to create DetailUserInfo", new Object[0]);
-    long l = System.currentTimeMillis();
-    e.a(paramContext);
-    this.b = e.b(paramContext);
-    cy.b(" imei:" + this.b, new Object[0]);
-    if (!"".equals(this.b)) {}
-    try
+    AppMethodBeat.i(150101);
+    this.h = "";
+    this.i = -16777216;
+    this.j = Typeface.DEFAULT;
+    this.k = 2147483647;
+    this.l = 1;
+    this.m = -1;
+    this.n = dg.c;
+    this.b = 1.0F;
+    this.c = -16777216;
+    this.d = ka.l;
+    this.e = 0;
+    this.f = true;
+    this.g = false;
+    this.a = new ArrayList();
+    AppMethodBeat.o(150101);
+  }
+  
+  public di a(float paramFloat)
+  {
+    if (paramFloat < 0.0F)
     {
-      if ("".equals(a.b(paramContext, "IMEI_DENGTA", ""))) {
-        a.a(paramContext, "IMEI_DENGTA", this.b);
-      }
-      label157:
-      this.e = e.d(paramContext);
-      this.f = a.b(paramContext, "QIMEI_DENGTA", "");
-      StringBuilder localStringBuilder;
-      if ("".equals(this.f))
+      this.b = 1.0F;
+      return this;
+    }
+    this.b = paramFloat;
+    return this;
+  }
+  
+  public di a(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public di a(boolean paramBoolean)
+  {
+    this.f = paramBoolean;
+    return this;
+  }
+  
+  public List<cz> a()
+  {
+    return this.a;
+  }
+  
+  public void a(Iterable<cz> paramIterable)
+  {
+    AppMethodBeat.i(150102);
+    if (this.a == null)
+    {
+      AppMethodBeat.o(150102);
+      return;
+    }
+    this.a.clear();
+    if (paramIterable == null)
+    {
+      AppMethodBeat.o(150102);
+      return;
+    }
+    b(paramIterable);
+    AppMethodBeat.o(150102);
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public di b(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
+  }
+  
+  public di b(Iterable<cz> paramIterable)
+  {
+    AppMethodBeat.i(150103);
+    if (paramIterable != null)
+    {
+      paramIterable = paramIterable.iterator();
+      while (paramIterable.hasNext())
       {
-        if (this.b.equals(""))
-        {
-          str = this.e;
-          this.f = str;
-        }
-      }
-      else
-      {
-        if (df.a == null) {
-          df.a = new HashMap();
-        }
-        df.a.put("A3", this.f);
-        this.c = e.e(paramContext);
-        if ("".equals(this.c))
-        {
-          localStringBuilder = new StringBuilder();
-          str = e.e("/sys/class/net/eth0/address");
-          if ((!str.trim().equals("")) && (str.length() >= 17)) {
-            break label458;
-          }
-        }
-      }
-      label458:
-      for (String str = "";; str = str.toLowerCase().substring(0, 17))
-      {
-        this.c = str;
-        this.d = e.c(paramContext);
-        new StringBuilder().append(e.d());
-        new StringBuilder().append(e.e()).append("m");
-        this.g = e.f();
-        cy.b(" detail create cost: %d  values:\n %s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), toString() });
-        return;
-        str = this.b;
-        break;
+        cz localcz = (cz)paramIterable.next();
+        this.a.add(localcz);
       }
     }
-    catch (Exception localException)
-    {
-      break label157;
-    }
+    AppMethodBeat.o(150103);
+    return this;
   }
   
-  public static di a(Context paramContext)
+  public int c()
   {
-    try
-    {
-      if (a == null) {
-        a = new di(paramContext);
-      }
-      paramContext = a;
-      return paramContext;
-    }
-    finally {}
+    return this.c;
   }
   
-  public final String a()
+  public di c(int paramInt)
   {
-    try
-    {
-      String str = this.b;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.e = paramInt;
+    return this;
   }
   
-  public final String b()
+  public int d()
   {
-    try
-    {
-      String str = this.c;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.d;
   }
   
-  public final String c()
+  public di d(int paramInt)
   {
-    try
-    {
-      String str = this.d;
-      return str;
+    if ((paramInt < dg.a) || (paramInt > dg.c)) {
+      return this;
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.n = paramInt;
+    return this;
   }
   
-  public final String d()
+  public float e()
   {
-    try
-    {
-      String str = this.e;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.e;
   }
   
-  public final String e()
+  public boolean f()
   {
-    try
-    {
-      String str = this.f;
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.f;
   }
   
-  public final String f()
+  public String g()
   {
-    return this.g;
+    return this.h;
+  }
+  
+  public int h()
+  {
+    return this.n;
   }
 }
 

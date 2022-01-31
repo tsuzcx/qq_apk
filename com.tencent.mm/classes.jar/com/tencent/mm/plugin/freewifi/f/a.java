@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.freewifi.f;
 
 public final class a
 {
-  public String bHJ;
-  public int kqa;
-  public int kqb;
-  public String kqc;
-  public String kqd;
-  public long kqe;
-  public String kqf;
-  public String kqg;
-  public int kqh;
-  public String kqi;
-  public String kqj;
-  public int kqk;
-  public long kql;
-  public long kqm;
-  public int kqn;
-  public int kqo;
-  public int kqp;
-  public String kqq;
-  public String kqr;
-  public String kqs;
-  public int kqt;
+  public String coY;
+  public int mLM;
+  public int mLN;
+  public String mLO;
+  public String mLP;
+  public long mLQ;
+  public String mLR;
+  public String mLS;
+  public int mLT;
+  public String mLU;
+  public String mLV;
+  public int mLW;
+  public long mLX;
+  public long mLY;
+  public int mLZ;
+  public int mMa;
+  public int mMb;
+  public String mMc;
+  public String mMd;
+  public String mMe;
+  public int mMf;
 }
 
 

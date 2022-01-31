@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.setting.ui.setting;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class SettingsPersonalInfoUI$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,14 +11,16 @@ final class SettingsPersonalInfoUI$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.nVl.XM();
-    this.nVl.finish();
+    AppMethodBeat.i(127365);
+    this.qJr.hideVKB();
+    this.qJr.finish();
+    AppMethodBeat.o(127365);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SettingsPersonalInfoUI.1
  * JD-Core Version:    0.7.0.1
  */

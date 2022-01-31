@@ -1,40 +1,45 @@
 package com.tencent.mm.plugin.setting.ui.setting;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
-import com.tencent.mm.ah.b;
-import com.tencent.mm.ah.b.c;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
-import com.tencent.mm.br.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.ai.b.c;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.bq.d;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.q;
-import com.tencent.mm.plugin.setting.a.d;
-import com.tencent.mm.plugin.setting.a.f;
-import com.tencent.mm.plugin.setting.a.g;
-import com.tencent.mm.plugin.setting.a.i;
-import com.tencent.mm.protocal.c.alh;
-import com.tencent.mm.protocal.c.bzc;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.model.r;
+import com.tencent.mm.pluginsdk.ui.a.b;
+import com.tencent.mm.protocal.protobuf.aqu;
+import com.tencent.mm.protocal.protobuf.clv;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.storage.ad;
+import com.tencent.mm.storage.bd;
 import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.e.g;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.contact.t;
+import com.tencent.mm.ui.e.i;
+import com.tencent.mm.ui.q.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,98 +48,121 @@ public class SettingsTrustFriendUI
   extends MMActivity
   implements f
 {
-  private static int nWo = 5;
-  private com.tencent.mm.ui.base.p jLo;
-  private GridView kHX;
-  private TextView leV;
-  private boolean nUz;
-  private List<String> nWl;
-  private SettingsTrustFriendUI.a nWm;
-  private View nWn;
+  private static int qKy = 5;
+  private View jGC;
+  private com.tencent.mm.ui.base.p mfs;
+  private TextView nCQ;
+  private GridView nei;
+  private boolean qIE;
+  private List<String> qKw;
+  private a qKx;
   
-  private void bzs()
+  private void ckC()
   {
-    String str = (String)g.DP().Dz().get(352277, null);
+    AppMethodBeat.i(127554);
+    String str = (String)g.RL().Ru().get(352277, null);
     ArrayList localArrayList = new ArrayList();
-    if (!bk.bl(str)) {
-      localArrayList = bk.G(str.split(","));
+    if (!bo.isNullOrNil(str)) {
+      localArrayList = bo.P(str.split(","));
     }
     for (;;)
     {
-      if ((this.nWl.size() == localArrayList.size()) && (this.nWl.containsAll(localArrayList)))
+      if ((this.qKw.size() == localArrayList.size()) && (this.qKw.containsAll(localArrayList)))
       {
         finish();
+        AppMethodBeat.o(127554);
         return;
       }
-      h.a(this, getString(a.i.save_label_msg), getString(a.i.app_tip), getString(a.i.app_save), getString(a.i.app_not_save), true, new SettingsTrustFriendUI.3(this), new SettingsTrustFriendUI.4(this));
+      h.a(this, getString(2131302870), getString(2131297087), getString(2131297063), getString(2131297015), true, new SettingsTrustFriendUI.3(this), new SettingsTrustFriendUI.4(this));
+      AppMethodBeat.o(127554);
       return;
     }
   }
   
-  protected final int getLayoutId()
+  public int getLayoutId()
   {
-    return a.g.settings_trust_friend;
+    return 2130970705;
   }
   
-  protected final void initView()
+  public void initView()
   {
-    setMMTitle(a.i.settings_trust_friend);
-    this.kHX = ((GridView)findViewById(a.f.trust_friend_grid));
-    this.nWm = new SettingsTrustFriendUI.a(this, (byte)0);
-    int i = getResources().getDimensionPixelSize(a.d.NormalAvatarWrapSize);
-    this.kHX.setColumnWidth(i);
-    this.kHX.setNumColumns(-1);
-    this.kHX.setStretchMode(1);
-    this.kHX.setHorizontalSpacing(getResources().getDimensionPixelSize(a.d.grid_item_left_right_padding) * 2);
-    this.kHX.setVerticalSpacing(getResources().getDimensionPixelSize(a.d.grid_item_top_bottom_padding));
-    this.kHX.setAdapter(this.nWm);
-    ((ViewGroup)this.kHX.getParent()).setOnClickListener(new View.OnClickListener()
+    AppMethodBeat.i(127551);
+    setMMTitle(2131303484);
+    this.nei = ((GridView)findViewById(2131827671));
+    this.qKx = new a((byte)0);
+    int i = getResources().getDimensionPixelSize(2131427802);
+    this.nei.setColumnWidth(i);
+    this.nei.setNumColumns(-1);
+    this.nei.setStretchMode(1);
+    this.nei.setHorizontalSpacing(getResources().getDimensionPixelSize(2131428449) * 2);
+    this.nei.setVerticalSpacing(getResources().getDimensionPixelSize(2131428450));
+    this.nei.setAdapter(this.qKx);
+    ((ViewGroup)this.nei.getParent()).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
+        AppMethodBeat.i(127537);
         if (SettingsTrustFriendUI.b(SettingsTrustFriendUI.this))
         {
           SettingsTrustFriendUI.a(SettingsTrustFriendUI.this, false);
           SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).notifyDataSetChanged();
         }
+        AppMethodBeat.o(127537);
       }
     });
-    this.kHX.setOnTouchListener(new SettingsTrustFriendUI.7(this));
-    this.kHX.setHorizontalScrollBarEnabled(false);
-    this.kHX.setVerticalScrollBarEnabled(false);
-    this.kHX.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.nei.setOnTouchListener(new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(127538);
+        if ((SettingsTrustFriendUI.b(SettingsTrustFriendUI.this)) && (paramAnonymousMotionEvent.getAction() == 1) && (SettingsTrustFriendUI.d(SettingsTrustFriendUI.this).pointToPosition((int)paramAnonymousMotionEvent.getX(), (int)paramAnonymousMotionEvent.getY()) == -1))
+        {
+          SettingsTrustFriendUI.a(SettingsTrustFriendUI.this, false);
+          SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).notifyDataSetChanged();
+          AppMethodBeat.o(127538);
+          return true;
+        }
+        AppMethodBeat.o(127538);
+        return false;
+      }
+    });
+    this.nei.setHorizontalScrollBarEnabled(false);
+    this.nei.setVerticalScrollBarEnabled(false);
+    this.nei.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
+        AppMethodBeat.i(127539);
         if (SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).getItemViewType(paramAnonymousInt) == 1)
         {
           paramAnonymousAdapterView = new Intent();
           paramAnonymousAdapterView.putExtra("list_type", 12);
-          paramAnonymousAdapterView.putExtra("titile", SettingsTrustFriendUI.this.getString(a.i.address_title_select_contact));
+          paramAnonymousAdapterView.putExtra("titile", SettingsTrustFriendUI.this.getString(2131296502));
           paramAnonymousAdapterView.putExtra("scene", 2);
-          paramAnonymousAdapterView.putExtra("max_limit_num", SettingsTrustFriendUI.su());
+          paramAnonymousAdapterView.putExtra("max_limit_num", SettingsTrustFriendUI.AL());
           paramAnonymousAdapterView.putExtra("stay_in_wechat", true);
-          paramAnonymousAdapterView.putExtra("already_select_contact", bk.c(SettingsTrustFriendUI.e(SettingsTrustFriendUI.this), ","));
-          paramAnonymousAdapterView.putExtra("block_contact", q.Gj());
-          paramAnonymousAdapterView.putExtra("list_attr", com.tencent.mm.ui.contact.s.fB(com.tencent.mm.ui.contact.s.vMx, 256));
-          paramAnonymousAdapterView.putExtra("too_many_member_tip_string", SettingsTrustFriendUI.this.getString(a.i.settings_trust_friend_max_limit_tip, new Object[] { Integer.valueOf(SettingsTrustFriendUI.su()) }));
-          d.c(SettingsTrustFriendUI.this, ".ui.contact.SelectContactUI", paramAnonymousAdapterView, 1);
-        }
-        do
-        {
+          paramAnonymousAdapterView.putExtra("already_select_contact", bo.d(SettingsTrustFriendUI.e(SettingsTrustFriendUI.this), ","));
+          paramAnonymousAdapterView.putExtra("block_contact", r.Zn());
+          paramAnonymousAdapterView.putExtra("list_attr", t.hJ(t.hJ(t.AdZ, 256), 16777216));
+          paramAnonymousAdapterView.putExtra("without_openim", true);
+          paramAnonymousAdapterView.putExtra("too_many_member_tip_string", SettingsTrustFriendUI.this.getString(2131303486, new Object[] { Integer.valueOf(SettingsTrustFriendUI.AL()) }));
+          d.b(SettingsTrustFriendUI.this, ".ui.contact.SelectContactUI", paramAnonymousAdapterView, 1);
+          AppMethodBeat.o(127539);
           return;
-          if (SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).getItemViewType(paramAnonymousInt) != 2) {
-            break;
+        }
+        if (SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).getItemViewType(paramAnonymousInt) == 2) {
+          if (!SettingsTrustFriendUI.b(SettingsTrustFriendUI.this)) {
+            SettingsTrustFriendUI.a(SettingsTrustFriendUI.this, true);
           }
-        } while (SettingsTrustFriendUI.b(SettingsTrustFriendUI.this));
-        SettingsTrustFriendUI.a(SettingsTrustFriendUI.this, true);
+        }
         for (;;)
         {
           SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).notifyDataSetChanged();
-          return;
-          if ((SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).getItemViewType(paramAnonymousInt) != 0) || (!SettingsTrustFriendUI.b(SettingsTrustFriendUI.this))) {
-            break;
-          }
+          do
+          {
+            AppMethodBeat.o(127539);
+            return;
+          } while ((SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).getItemViewType(paramAnonymousInt) != 0) || (!SettingsTrustFriendUI.b(SettingsTrustFriendUI.this)));
           SettingsTrustFriendUI.e(SettingsTrustFriendUI.this).remove(SettingsTrustFriendUI.c(SettingsTrustFriendUI.this).getItem(paramAnonymousInt));
           if (SettingsTrustFriendUI.e(SettingsTrustFriendUI.this).size() == 0) {
             SettingsTrustFriendUI.a(SettingsTrustFriendUI.this, false);
@@ -142,107 +170,111 @@ public class SettingsTrustFriendUI
         }
       }
     });
-    this.leV = ((TextView)findViewById(a.f.trust_friend_desc));
-    String str = getIntent().getStringExtra(e.g.uHU);
-    if (!bk.bl(str)) {
-      this.leV.setText(str);
+    this.nCQ = ((TextView)findViewById(2131827669));
+    String str = getIntent().getStringExtra(e.i.yVh);
+    if (!bo.isNullOrNil(str)) {
+      this.nCQ.setText(str);
     }
     for (;;)
     {
-      this.nWn = findViewById(a.f.trust_friend_warn_banner);
-      this.nWn.setVisibility(8);
-      ((TextView)this.nWn.findViewById(a.f.warn_tip)).setText(getString(a.i.settings_trust_friend_min_limit_tip, new Object[] { Integer.valueOf(3) }));
-      this.nWn.findViewById(a.f.close_icon).setOnClickListener(new SettingsTrustFriendUI.9(this));
-      findViewById(a.f.trust_friend_link).setOnClickListener(new SettingsTrustFriendUI.10(this));
-      setBackBtn(new MenuItem.OnMenuItemClickListener()
-      {
-        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-        {
-          SettingsTrustFriendUI.g(SettingsTrustFriendUI.this);
-          return true;
-        }
-      });
-      a(1, getString(a.i.app_finish), new SettingsTrustFriendUI.12(this), s.b.uNx);
+      this.jGC = findViewById(2131827667);
+      this.jGC.setVisibility(8);
+      ((TextView)this.jGC.findViewById(2131827668)).setText(getString(2131303487, new Object[] { Integer.valueOf(3) }));
+      this.jGC.findViewById(2131822762).setOnClickListener(new SettingsTrustFriendUI.9(this));
+      findViewById(2131827670).setOnClickListener(new SettingsTrustFriendUI.10(this));
+      setBackBtn(new SettingsTrustFriendUI.11(this));
+      addTextOptionMenu(1, getString(2131296964), new SettingsTrustFriendUI.12(this), null, q.b.zby);
       showOptionMenu(true);
+      AppMethodBeat.o(127551);
       return;
-      this.leV.setText(getResources().getString(a.i.settings_trust_friend_tip, new Object[] { Integer.valueOf(3) }));
+      this.nCQ.setText(getResources().getString(2131303488, new Object[] { Integer.valueOf(3) }));
     }
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
+    AppMethodBeat.i(127552);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     if ((paramInt1 == 1) && (paramInt2 == -1))
     {
       paramIntent = paramIntent.getStringExtra("Select_Contact");
-      if (!bk.bl(paramIntent))
+      if (!bo.isNullOrNil(paramIntent))
       {
-        this.nWl.clear();
-        this.nWl.addAll(bk.G(paramIntent.split(",")));
-        this.nWm.notifyDataSetChanged();
+        this.qKw.clear();
+        this.qKw.addAll(bo.P(paramIntent.split(",")));
+        this.qKx.notifyDataSetChanged();
       }
     }
+    AppMethodBeat.o(127552);
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    AppMethodBeat.i(127548);
     super.onCreate(paramBundle);
-    paramBundle = (String)g.DP().Dz().get(352277, null);
-    if (!bk.bl(paramBundle)) {
-      this.nWl = bk.G(paramBundle.split(","));
+    paramBundle = (String)g.RL().Ru().get(352277, null);
+    if (!bo.isNullOrNil(paramBundle)) {
+      this.qKw = bo.P(paramBundle.split(","));
     }
-    if (this.nWl == null) {
-      this.nWl = new ArrayList();
+    if (this.qKw == null) {
+      this.qKw = new ArrayList();
     }
-    this.mController.contentView.post(new SettingsTrustFriendUI.1(this));
+    getContentView().post(new SettingsTrustFriendUI.1(this));
     initView();
+    AppMethodBeat.o(127548);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
+    AppMethodBeat.i(127555);
     if (paramInt == 4)
     {
-      bzs();
+      ckC();
+      AppMethodBeat.o(127555);
       return true;
     }
-    return super.onKeyUp(paramInt, paramKeyEvent);
+    boolean bool = super.onKeyUp(paramInt, paramKeyEvent);
+    AppMethodBeat.o(127555);
+    return bool;
   }
   
   public void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
-    y.d("MicroMsg.SettingsTrustFriendUI", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (this.jLo != null) {
-      this.jLo.dismiss();
+    AppMethodBeat.i(127553);
+    ab.d("MicroMsg.SettingsTrustFriendUI", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (this.mfs != null) {
+      this.mfs.dismiss();
     }
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+    if ((paramInt1 == 0) && (paramInt2 == 0))
+    {
       if (paramm.getType() == 869)
       {
-        paramString = (alh)((b)paramm.edi).ecF.ecN;
-        nWo = paramString.thm;
-        paramString = paramString.svU;
-        if (paramString.size() == this.nWl.size()) {
+        paramString = (aqu)((b)paramm.getReqResp()).fsW.fta;
+        qKy = paramString.xga;
+        paramString = paramString.wph;
+        if (paramString.size() == this.qKw.size()) {
           if (paramString.size() == 0) {
             paramInt1 = 0;
           }
         }
         while (paramInt1 != 0)
         {
-          this.nWl.clear();
+          this.qKw.clear();
           paramString = paramString.iterator();
           for (;;)
           {
             if (paramString.hasNext())
             {
-              paramm = (bzc)paramString.next();
-              this.nWl.add(paramm.hPY);
+              paramm = (clv)paramString.next();
+              this.qKw.add(paramm.jJA);
               continue;
               paramm = paramString.iterator();
               for (;;)
               {
                 if (paramm.hasNext())
                 {
-                  localbzc = (bzc)paramm.next();
-                  if (!this.nWl.contains(localbzc.hPY))
+                  clv localclv = (clv)paramm.next();
+                  if (!this.qKw.contains(localclv.jJA))
                   {
                     paramInt1 = 1;
                     break;
@@ -253,49 +285,182 @@ public class SettingsTrustFriendUI
               break;
             }
           }
-          this.nWm.notifyDataSetChanged();
+          this.qKx.notifyDataSetChanged();
         }
-        if ((this.nWl.size() > 0) && (this.nWl.size() < 3)) {
-          this.nWn.setVisibility(0);
+        if ((this.qKw.size() > 0) && (this.qKw.size() < 3)) {
+          this.jGC.setVisibility(0);
         }
-        g.DP().Dz().o(352277, bk.c(this.nWl, ","));
+        g.RL().Ru().set(352277, bo.d(this.qKw, ","));
+        AppMethodBeat.o(127553);
+        return;
+      }
+      if (paramm.getType() == 583)
+      {
+        g.RL().Ru().set(352277, bo.d(this.qKw, ","));
+        finish();
+        AppMethodBeat.o(127553);
       }
     }
-    while (bk.bl(paramString))
+    else if (!bo.isNullOrNil(paramString))
     {
-      bzc localbzc;
-      do
-      {
-        return;
-      } while (paramm.getType() != 583);
-      g.DP().Dz().o(352277, bk.c(this.nWl, ","));
-      finish();
-      return;
+      h.bO(this, paramString);
     }
-    h.bC(this, paramString);
+    AppMethodBeat.o(127553);
   }
   
   public void onStart()
   {
+    AppMethodBeat.i(127549);
     super.onStart();
-    g.Dk().a(869, this);
-    g.Dk().a(583, this);
+    g.Rc().a(869, this);
+    g.Rc().a(583, this);
+    AppMethodBeat.o(127549);
   }
   
-  protected void onStop()
+  public void onStop()
   {
+    AppMethodBeat.i(127550);
     super.onStop();
-    g.Dk().b(869, this);
-    g.Dk().b(583, this);
+    g.Rc().b(869, this);
+    g.Rc().b(583, this);
+    AppMethodBeat.o(127550);
   }
   
-  private final class a$a
+  public void onWindowFocusChanged(boolean paramBoolean)
   {
-    TextView hPg;
-    ImageView nOd;
-    ImageView nWs;
+    super.onWindowFocusChanged(paramBoolean);
+    AppMethodBeat.at(this, paramBoolean);
+  }
+  
+  final class a
+    extends BaseAdapter
+  {
+    private a() {}
     
-    private a$a() {}
+    public final int getCount()
+    {
+      AppMethodBeat.i(127544);
+      int i = SettingsTrustFriendUI.e(SettingsTrustFriendUI.this).size();
+      if (SettingsTrustFriendUI.b(SettingsTrustFriendUI.this)) {}
+      for (;;)
+      {
+        AppMethodBeat.o(127544);
+        return i;
+        if (i == 0) {
+          i = 1;
+        } else if ((i > 0) && (i < SettingsTrustFriendUI.AL())) {
+          i += 2;
+        } else if (i >= SettingsTrustFriendUI.AL()) {
+          i += 1;
+        } else {
+          i = 0;
+        }
+      }
+    }
+    
+    public final Object getItem(int paramInt)
+    {
+      AppMethodBeat.i(127545);
+      if (getItemViewType(paramInt) == 0)
+      {
+        Object localObject = SettingsTrustFriendUI.e(SettingsTrustFriendUI.this).get(paramInt);
+        AppMethodBeat.o(127545);
+        return localObject;
+      }
+      AppMethodBeat.o(127545);
+      return null;
+    }
+    
+    public final long getItemId(int paramInt)
+    {
+      return paramInt;
+    }
+    
+    public final int getItemViewType(int paramInt)
+    {
+      AppMethodBeat.i(127546);
+      int i = SettingsTrustFriendUI.e(SettingsTrustFriendUI.this).size();
+      if ((SettingsTrustFriendUI.b(SettingsTrustFriendUI.this)) || (paramInt < i))
+      {
+        AppMethodBeat.o(127546);
+        return 0;
+      }
+      if (i == 0)
+      {
+        AppMethodBeat.o(127546);
+        return 1;
+      }
+      if (i >= SettingsTrustFriendUI.AL())
+      {
+        AppMethodBeat.o(127546);
+        return 2;
+      }
+      if (paramInt == i)
+      {
+        AppMethodBeat.o(127546);
+        return 1;
+      }
+      if (paramInt == i + 1)
+      {
+        AppMethodBeat.o(127546);
+        return 2;
+      }
+      AppMethodBeat.o(127546);
+      return -1;
+    }
+    
+    public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+    {
+      AppMethodBeat.i(127547);
+      if (paramView == null)
+      {
+        paramView = SettingsTrustFriendUI.this.getLayoutInflater().inflate(2130970706, null);
+        Object localObject1 = (ImageView)paramView.findViewById(2131827672);
+        Object localObject2 = (ImageView)paramView.findViewById(2131827673);
+        TextView localTextView = (TextView)paramView.findViewById(2131827674);
+        paramViewGroup = new SettingsTrustFriendUI.a.a(this, (byte)0);
+        paramViewGroup.qBN = ((ImageView)localObject1);
+        paramViewGroup.qKC = ((ImageView)localObject2);
+        paramViewGroup.jII = localTextView;
+        paramView.setTag(paramViewGroup);
+        if (getItemViewType(paramInt) != 0) {
+          break label230;
+        }
+        localObject1 = (String)SettingsTrustFriendUI.e(SettingsTrustFriendUI.this).get(paramInt);
+        localObject2 = ((com.tencent.mm.plugin.messenger.foundation.a.j)g.E(com.tencent.mm.plugin.messenger.foundation.a.j.class)).YA().arw((String)localObject1);
+        paramViewGroup.qBN.setScaleType(ImageView.ScaleType.FIT_XY);
+        a.b.c(paramViewGroup.qBN, (String)localObject1);
+        paramViewGroup.jII.setText(com.tencent.mm.pluginsdk.ui.d.j.b(SettingsTrustFriendUI.this, ((ad)localObject2).Of(), paramViewGroup.jII.getTextSize()));
+        if (!SettingsTrustFriendUI.b(SettingsTrustFriendUI.this)) {
+          break label218;
+        }
+        paramViewGroup.qKC.setVisibility(0);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(127547);
+        return paramView;
+        paramViewGroup = (SettingsTrustFriendUI.a.a)paramView.getTag();
+        break;
+        label218:
+        paramViewGroup.qKC.setVisibility(8);
+        continue;
+        label230:
+        paramViewGroup.jII.setVisibility(4);
+        paramViewGroup.qKC.setVisibility(8);
+        paramViewGroup.qBN.setScaleType(ImageView.ScaleType.FIT_XY);
+        if (getItemViewType(paramInt) == 1) {
+          paramViewGroup.qBN.setImageResource(2130837890);
+        } else if (getItemViewType(paramInt) == 2) {
+          paramViewGroup.qBN.setImageResource(2130837891);
+        }
+      }
+    }
+    
+    public final int getViewTypeCount()
+    {
+      return 3;
+    }
   }
 }
 

@@ -1,24 +1,22 @@
 package com.tencent.mm.plugin.webview.luggage.d;
 
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class a$1
-  implements View.OnSystemUiVisibilityChangeListener
+  implements Runnable
 {
-  a$1(Window paramWindow, boolean paramBoolean) {}
+  a$1(a parama, String paramString) {}
   
-  public final void onSystemUiVisibilityChange(int paramInt)
+  public final void run()
   {
-    if ((paramInt & 0x4) == 0) {
-      this.heE.getDecorView().setSystemUiVisibility(a.b(this.heE, this.rfc));
-    }
+    AppMethodBeat.i(6507);
+    a.a(this.uUY, this.byz);
+    AppMethodBeat.o(6507);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.d.a.1
  * JD-Core Version:    0.7.0.1
  */

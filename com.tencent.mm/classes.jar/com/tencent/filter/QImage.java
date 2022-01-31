@@ -1,6 +1,7 @@
 package com.tencent.filter;
 
 import android.graphics.Bitmap;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class QImage
 {
@@ -20,7 +21,9 @@ public class QImage
   
   public QImage(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(86424);
     CreateImage(paramInt1, paramInt2, 4);
+    AppMethodBeat.o(86424);
   }
   
   public static native QImage BindBitmap(Bitmap paramBitmap);

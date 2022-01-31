@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.webview.luggage.b;
 
 import android.content.Context;
-import com.tencent.luggage.e.n;
-import com.tencent.mm.R.k;
-import com.tencent.mm.R.l;
+import com.tencent.luggage.d.n;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.luggage.e;
+import com.tencent.mm.plugin.webview.luggage.permission.c;
 import com.tencent.mm.ui.base.l;
-import org.json.JSONObject;
 
 public final class k
   extends a
@@ -18,26 +18,20 @@ public final class k
   
   public final void a(Context paramContext, e parame)
   {
-    parame.caX().RS("shareTimeline");
-    parame.biT.a(new com.tencent.luggage.e.c()
-    {
-      public final String name()
-      {
-        return "menu:share:timeline";
-      }
-      
-      public final JSONObject pV()
-      {
-        return null;
-      }
-    });
+    AppMethodBeat.i(6445);
+    parame.dbb().agX("shareTimeline");
+    parame.bzs.a(new k.1(this));
+    h.qsU.cT(982, 10);
+    AppMethodBeat.o(6445);
   }
   
   public final void a(Context paramContext, e parame, l paraml)
   {
-    if (parame.BX(23)) {
-      paraml.a(2, paramContext.getString(R.l.readerapp_alert_share_to_timeline), R.k.bottomsheet_icon_moment);
+    AppMethodBeat.i(6444);
+    if (parame.wZ(23)) {
+      paraml.a(2, paramContext.getString(2131302283), 2131231024);
     }
+    AppMethodBeat.o(6444);
   }
 }
 

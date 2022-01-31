@@ -3,10 +3,11 @@ package com.tencent.mm.model.d;
 import android.content.Context;
 import android.content.pm.IPackageStatsObserver;
 import android.content.pm.PackageManager;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 import java.io.File;
 import java.lang.reflect.Method;
 
@@ -17,19 +18,22 @@ public final class b$1
   
   public final void run()
   {
+    AppMethodBeat.i(16391);
     File localFile = new File(b.access$000() + "MMSQL.trace");
     if (!localFile.exists())
     {
-      y.w("MicroMsg.SQLTraceManager", "SqlTrace file is not  exists");
+      ab.w("MicroMsg.SQLTraceManager", "SqlTrace file is not  exists");
+      AppMethodBeat.o(16391);
       return;
     }
-    if (!g.DN().Dc())
+    if (!g.RJ().QU())
     {
-      y.w("MicroMsg.SQLTraceManager", "acc not ready ");
+      ab.w("MicroMsg.SQLTraceManager", "acc not ready ");
+      AppMethodBeat.o(16391);
       return;
     }
     long l1 = System.currentTimeMillis();
-    long l2 = b.bp(ae.getContext());
+    long l2 = b.bT(ah.getContext());
     boolean bool2 = false;
     boolean bool1;
     if (l2 > l1) {
@@ -38,61 +42,63 @@ public final class b$1
     for (;;)
     {
       l1 = localFile.length();
-      y.i("MicroMsg.SQLTraceManager", "check need upload ,file size is %d,time out  %b", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool1) });
-      if ((!bool1) || (l1 <= b.c(this.dZD))) {
-        break;
-      }
-      Object localObject = this.dZD;
-      Context localContext = ae.getContext();
-      String str = ae.getContext().getPackageName();
-      try
+      ab.i("MicroMsg.SQLTraceManager", "check need upload ,file size is %d,time out  %b", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool1) });
+      if ((bool1) && (l1 > b.c(this.fpI)))
       {
-        PackageManager.class.getMethod("getPackageSizeInfo", new Class[] { String.class, IPackageStatsObserver.class }).invoke(localContext.getPackageManager(), new Object[] { str, new b.2((b)localObject) });
-        if ((b.d(this.dZD)[1] != 0L) || (b.e(this.dZD) > 1L))
+        Object localObject = this.fpI;
+        Context localContext = ah.getContext();
+        String str = ah.getContext().getPackageName();
+        try
         {
-          y.i("MicroMsg.SQLTraceManager", "start file upload ,file length is %d ", new Object[] { Long.valueOf(localFile.length()) });
-          if (localFile.length() > b.f(this.dZD))
+          PackageManager.class.getMethod("getPackageSizeInfo", new Class[] { String.class, IPackageStatsObserver.class }).invoke(localContext.getPackageManager(), new Object[] { str, new b.2((b)localObject) });
+          if ((b.d(this.fpI)[1] != 0L) || (b.e(this.fpI) > 1L))
           {
-            y.e("MicroMsg.SQLTraceManager", "log file invaild format");
-            y.i("MicroMsg.SQLTraceManager", "set last Upload Time %d ", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-            b.a(this.dZD, localFile);
-            b.g(this.dZD);
-            b.h(this.dZD);
-            b.c(ae.getContext(), System.currentTimeMillis());
-            return;
-            if (l1 - l2 > 86400000L)
+            ab.i("MicroMsg.SQLTraceManager", "start file upload ,file length is %d ", new Object[] { Long.valueOf(localFile.length()) });
+            if (localFile.length() > b.f(this.fpI))
             {
+              ab.e("MicroMsg.SQLTraceManager", "log file invaild format");
+              ab.i("MicroMsg.SQLTraceManager", "set last Upload Time %d ", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+              b.a(this.fpI, localFile);
+              b.g(this.fpI);
+              b.h(this.fpI);
+              b.c(ah.getContext(), System.currentTimeMillis());
+              AppMethodBeat.o(16391);
+              return;
+              if (l1 - l2 > 86400000L)
+              {
+                bool1 = true;
+                continue;
+              }
+              bool1 = bool2;
+              if (l1 - l2 <= b.a(this.fpI)) {
+                continue;
+              }
+              bool1 = bool2;
+              if (!b.b(this.fpI)) {
+                continue;
+              }
               bool1 = true;
-              continue;
             }
-            bool1 = bool2;
-            if (l1 - l2 <= b.a(this.dZD)) {
-              continue;
-            }
-            bool1 = bool2;
-            if (!b.b(this.dZD)) {
-              continue;
-            }
-            bool1 = true;
           }
         }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        catch (Exception localException)
         {
-          ((b)localObject).bwO[0] = -1L;
-          ((b)localObject).bwO[1] = -1L;
-          ((b)localObject).bwO[2] = -1L;
-          continue;
-          localObject = b.jp(b.access$000() + "MMSQL.trace");
-          y.i("MicroMsg.SQLTraceManager", "read content success");
-          this.dZD.jo((String)localObject);
+          for (;;)
+          {
+            ((b)localObject).bYy[0] = -1L;
+            ((b)localObject).bYy[1] = -1L;
+            ((b)localObject).bYy[2] = -1L;
+            continue;
+            localObject = b.qd(b.access$000() + "MMSQL.trace");
+            ab.i("MicroMsg.SQLTraceManager", "read content success");
+            this.fpI.qc((String)localObject);
+          }
+          ab.i("MicroMsg.SQLTraceManager", "wait for get packageStats");
+          b.i(this.fpI);
         }
-        y.i("MicroMsg.SQLTraceManager", "wait for get packageStats");
-        b.i(this.dZD);
       }
     }
+    AppMethodBeat.o(16391);
   }
 }
 

@@ -1,49 +1,60 @@
 package com.tencent.mm.plugin.qqmail.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.storage.z;
 import java.io.IOException;
 
 public final class i
 {
-  public k ndq;
+  public k pIH;
   
   public i(String paramString)
   {
-    this.ndq = new k(paramString, 10);
+    AppMethodBeat.i(67928);
+    this.pIH = new k(paramString, 10);
+    AppMethodBeat.o(67928);
   }
   
-  public static String ci(String paramString, int paramInt)
+  public static String db(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      return g.DP().Dz().get(9, null);
+    AppMethodBeat.i(67930);
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    for (paramString = g.RL().Ru().get(9, null);; paramString = paramString + "_" + paramInt)
+    {
+      AppMethodBeat.o(67930);
+      return paramString;
     }
-    return paramString + "_" + paramInt;
   }
   
-  public final j ch(String paramString, int paramInt)
+  public final j da(String paramString, int paramInt)
   {
-    paramString = k.readFromFile(this.ndq.ndA + ci(paramString, paramInt));
-    if ((paramString == null) || (paramString.length == 0)) {
+    AppMethodBeat.i(67929);
+    paramString = k.readFromFile(this.pIH.pIR + db(paramString, paramInt));
+    if ((paramString == null) || (paramString.length == 0))
+    {
+      AppMethodBeat.o(67929);
       return null;
     }
     try
     {
-      paramString = (j)new j().aH(paramString);
+      paramString = (j)new j().parseFrom(paramString);
+      AppMethodBeat.o(67929);
       return paramString;
     }
     catch (IOException paramString)
     {
-      y.printErrStackTrace("MicroMsg.DraftBoxMgr", paramString, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.DraftBoxMgr", paramString, "", new Object[0]);
+      AppMethodBeat.o(67929);
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.i
  * JD-Core Version:    0.7.0.1
  */

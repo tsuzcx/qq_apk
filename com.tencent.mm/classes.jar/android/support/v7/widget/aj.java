@@ -5,38 +5,38 @@ import android.view.View;
 
 public abstract class aj
 {
-  protected final RecyclerView.i afm;
-  int afn = -2147483648;
-  final Rect hc = new Rect();
+  protected final RecyclerView.i ahB;
+  int ahC = -2147483648;
+  final Rect hV = new Rect();
   
   private aj(RecyclerView.i parami)
   {
-    this.afm = parami;
+    this.ahB = parami;
   }
   
-  public static aj a(RecyclerView.i parami)
+  public static aj d(RecyclerView.i parami)
   {
     return new aj.1(parami);
   }
   
-  public static aj b(RecyclerView.i parami)
+  public static aj e(RecyclerView.i parami)
   {
     return new aj.2(parami);
   }
   
-  public abstract int aX(View paramView);
+  public abstract void bN(int paramInt);
   
-  public abstract int aY(View paramView);
+  public abstract int bh(View paramView);
   
-  public abstract int aZ(View paramView);
+  public abstract int bi(View paramView);
   
-  public abstract void bI(int paramInt);
+  public abstract int bj(View paramView);
   
-  public abstract int ba(View paramView);
+  public abstract int bk(View paramView);
   
-  public abstract int bb(View paramView);
+  public abstract int bl(View paramView);
   
-  public abstract int bc(View paramView);
+  public abstract int bm(View paramView);
   
   public abstract int getEnd();
   
@@ -44,30 +44,30 @@ public abstract class aj
   
   public final RecyclerView.i getLayoutManager()
   {
-    return this.afm;
+    return this.ahB;
   }
   
   public abstract int getMode();
   
-  public final int hg()
+  public final int iH()
   {
-    if (-2147483648 == this.afn) {
+    if (-2147483648 == this.ahC) {
       return 0;
     }
-    return hj() - this.afn;
+    return iK() - this.ahC;
   }
   
-  public abstract int hh();
+  public abstract int iI();
   
-  public abstract int hi();
+  public abstract int iJ();
   
-  public abstract int hj();
+  public abstract int iK();
   
-  public abstract int hk();
+  public abstract int iL();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.aj
  * JD-Core Version:    0.7.0.1
  */

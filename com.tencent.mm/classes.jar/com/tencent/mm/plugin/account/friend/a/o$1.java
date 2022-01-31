@@ -1,34 +1,35 @@
 package com.tencent.mm.plugin.account.friend.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.e.n;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class o$1
-  extends m
+  extends n
 {
   o$1(o paramo) {}
   
-  protected final boolean WH()
+  public final boolean aqj()
   {
-    boolean bool = true;
-    if ((o.a(this.ffX) == null) || (o.a(this.ffX).csp())) {
-      if (o.a(this.ffX) != null) {
-        break label59;
+    AppMethodBeat.i(108387);
+    if ((o.a(this.gxF) == null) || (o.a(this.gxF).dun()))
+    {
+      if (o.a(this.gxF) == null) {}
+      for (Object localObject = "null";; localObject = Boolean.valueOf(o.a(this.gxF).dun()))
+      {
+        ab.w("MicroMsg.GoogleContact.GoogleFriendUI", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+        AppMethodBeat.o(108387);
+        return false;
       }
     }
-    label59:
-    for (Object localObject = "null";; localObject = Boolean.valueOf(o.a(this.ffX).csp()))
-    {
-      y.w("MicroMsg.GoogleContact.GoogleFriendUI", "shouldProcessEvent db is close :%s", new Object[] { localObject });
-      bool = false;
-      return bool;
-    }
+    AppMethodBeat.o(108387);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.o.1
  * JD-Core Version:    0.7.0.1
  */

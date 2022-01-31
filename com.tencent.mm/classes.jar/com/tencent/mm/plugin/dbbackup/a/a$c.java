@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.dbbackup.a;
 
-import android.database.Cursor;
-import com.tencent.wcdb.database.SQLiteStatement;
+import java.util.Collection;
 
-abstract interface a$c
+public abstract interface a$c
 {
-  public abstract boolean a(Cursor paramCursor, SQLiteStatement paramSQLiteStatement);
+  public abstract Collection<byte[]> biN();
+  
+  public abstract Collection<byte[]> biO();
 }
 
 

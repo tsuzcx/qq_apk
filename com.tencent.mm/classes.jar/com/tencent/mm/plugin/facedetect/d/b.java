@@ -10,17 +10,19 @@ public abstract interface b
   
   public abstract boolean a(FaceCharacteristicsResult paramFaceCharacteristicsResult);
   
-  public abstract boolean aOJ();
-  
-  public abstract boolean aOK();
-  
-  public abstract void aOL();
-  
-  public abstract b.b aOM();
-  
-  public abstract b.a aON();
-  
   public abstract boolean b(FaceCharacteristicsResult paramFaceCharacteristicsResult);
+  
+  public abstract boolean buN();
+  
+  public abstract boolean buO();
+  
+  public abstract void buP();
+  
+  public abstract b.b buQ();
+  
+  public abstract b.a buR();
+  
+  public abstract void setBusinessTip(String paramString);
 }
 
 

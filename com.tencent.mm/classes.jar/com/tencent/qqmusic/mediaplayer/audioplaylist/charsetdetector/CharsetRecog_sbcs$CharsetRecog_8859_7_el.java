@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.audioplaylist.charsetdetector;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class CharsetRecog_sbcs$CharsetRecog_8859_7_el
   extends CharsetRecog_sbcs.CharsetRecog_8859_7
 {
@@ -12,6 +14,7 @@ class CharsetRecog_sbcs$CharsetRecog_8859_7_el
   
   public CharsetMatch match(CharsetDetector paramCharsetDetector)
   {
+    AppMethodBeat.i(104744);
     if (paramCharsetDetector.fC1Bytes) {}
     int i;
     for (String str = "windows-1253";; str = "ISO-8859-7")
@@ -20,9 +23,12 @@ class CharsetRecog_sbcs$CharsetRecog_8859_7_el
       if (i != 0) {
         break;
       }
+      AppMethodBeat.o(104744);
       return null;
     }
-    return new CharsetMatch(paramCharsetDetector, this, i, str, "el");
+    paramCharsetDetector = new CharsetMatch(paramCharsetDetector, this, i, str, "el");
+    AppMethodBeat.o(104744);
+    return paramCharsetDetector;
   }
 }
 

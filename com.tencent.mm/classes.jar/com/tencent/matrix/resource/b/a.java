@@ -4,24 +4,23 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static final long boS = TimeUnit.MINUTES.toMillis(1L);
-  public static final a boW = new a(boS, 3, true);
-  public final long boT;
-  public final int boU;
-  public final boolean boV;
+  public static final long bOW = TimeUnit.MINUTES.toMillis(1L);
+  public final com.tencent.mrs.b.a bMc;
+  public final boolean bOX;
+  public final boolean bOY;
   
-  private a(long paramLong, int paramInt, boolean paramBoolean)
+  private a(com.tencent.mrs.b.a parama, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.boT = paramLong;
-    this.boU = paramInt;
-    this.boV = paramBoolean;
+    this.bMc = parama;
+    this.bOX = paramBoolean1;
+    this.bOY = paramBoolean2;
   }
   
   public static final class a
   {
-    public long boT = a.rg();
-    public int boU = 3;
-    public boolean boV = true;
+    public com.tencent.mrs.b.a bNO;
+    public boolean bOX = false;
+    public boolean bOY = false;
   }
 }
 

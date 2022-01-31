@@ -1,235 +1,256 @@
 package com.tencent.mm.plugin.hp.d;
 
 import android.util.Base64;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 
 public final class c
 {
-  public static boolean Ft(String paramString)
+  public static boolean QR(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!bk.bl(paramString))
-    {
-      bool1 = bool2;
-      if (paramString.length() != 10) {}
-    }
-    try
-    {
-      int i = Integer.decode(paramString).intValue();
-      bool1 = bool2;
-      if ((i & 0xFF) >= 0)
+    AppMethodBeat.i(90683);
+    if ((!bo.isNullOrNil(paramString)) && (paramString.length() == 10)) {
+      try
       {
-        bool1 = bool2;
-        if ((i & 0xFF) <= 31) {
-          bool1 = true;
+        int i = Integer.decode(paramString).intValue();
+        if (((i & 0xFF) >= 0) && ((i & 0xFF) <= 31))
+        {
+          AppMethodBeat.o(90683);
+          return true;
         }
+        AppMethodBeat.o(90683);
+        return false;
       }
-      return bool1;
+      catch (Exception paramString)
+      {
+        ab.printErrStackTrace("Tinker.TinkerUtils", paramString, "checkAplhVersion failed.", new Object[0]);
+      }
     }
-    catch (Exception paramString)
-    {
-      y.printErrStackTrace("Tinker.TinkerUtils", paramString, "checkAplhVersion failed.", new Object[0]);
-    }
+    AppMethodBeat.o(90683);
     return false;
   }
   
-  public static String Fu(String paramString)
+  public static String QS(String paramString)
   {
-    if (!bk.bl(paramString)) {
-      return new String(Base64.decode(paramString, 0));
+    AppMethodBeat.i(90684);
+    if (!bo.isNullOrNil(paramString))
+    {
+      paramString = new String(Base64.decode(paramString, 0));
+      AppMethodBeat.o(90684);
+      return paramString;
     }
+    AppMethodBeat.o(90684);
     return "";
   }
   
   /* Error */
-  public static java.util.Properties K(java.io.File paramFile)
+  public static java.util.Properties S(java.io.File paramFile)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 64	java/io/File:isFile	()Z
-    //   4: ifeq +12 -> 16
-    //   7: aload_0
-    //   8: invokevirtual 67	java/io/File:length	()J
-    //   11: lconst_0
-    //   12: lcmp
-    //   13: ifne +5 -> 18
-    //   16: aconst_null
-    //   17: areturn
-    //   18: new 69	java/util/zip/ZipFile
-    //   21: dup
-    //   22: aload_0
-    //   23: invokespecial 72	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
-    //   26: astore_1
-    //   27: aload_1
-    //   28: ldc 74
-    //   30: invokevirtual 78	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
-    //   33: astore_0
-    //   34: aload_0
-    //   35: ifnonnull +9 -> 44
-    //   38: aload_1
-    //   39: invokestatic 84	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   42: aconst_null
-    //   43: areturn
-    //   44: aload_1
-    //   45: aload_0
-    //   46: invokevirtual 88	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   49: astore_0
-    //   50: new 90	java/util/Properties
-    //   53: dup
-    //   54: invokespecial 93	java/util/Properties:<init>	()V
-    //   57: astore_2
-    //   58: aload_2
-    //   59: aload_0
-    //   60: invokevirtual 97	java/util/Properties:load	(Ljava/io/InputStream;)V
-    //   63: aload_0
-    //   64: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:S	(Ljava/lang/Object;)V
-    //   67: aload_1
-    //   68: invokestatic 84	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   71: aload_2
-    //   72: areturn
-    //   73: astore_2
-    //   74: aconst_null
-    //   75: astore_0
-    //   76: aload_0
-    //   77: invokestatic 101	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:S	(Ljava/lang/Object;)V
-    //   80: aload_2
-    //   81: athrow
-    //   82: astore_2
-    //   83: aload_1
-    //   84: astore_0
-    //   85: aload_2
-    //   86: astore_1
-    //   87: new 103	java/lang/StringBuilder
-    //   90: dup
-    //   91: ldc 105
-    //   93: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   96: aload_1
-    //   97: invokevirtual 112	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   100: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   103: pop
-    //   104: aload_0
-    //   105: invokestatic 84	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   108: aconst_null
-    //   109: areturn
-    //   110: astore_0
-    //   111: aconst_null
-    //   112: astore_1
-    //   113: aload_1
-    //   114: invokestatic 84	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
-    //   117: aload_0
-    //   118: athrow
-    //   119: astore_0
-    //   120: goto -7 -> 113
-    //   123: astore_1
-    //   124: aload_0
-    //   125: astore_2
-    //   126: aload_1
-    //   127: astore_0
-    //   128: aload_2
-    //   129: astore_1
-    //   130: goto -17 -> 113
-    //   133: astore_1
-    //   134: aconst_null
-    //   135: astore_0
-    //   136: goto -49 -> 87
-    //   139: astore_2
-    //   140: goto -64 -> 76
+    //   0: ldc 70
+    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: invokevirtual 76	java/io/File:isFile	()Z
+    //   9: ifeq +12 -> 21
+    //   12: aload_0
+    //   13: invokevirtual 79	java/io/File:length	()J
+    //   16: lconst_0
+    //   17: lcmp
+    //   18: ifne +10 -> 28
+    //   21: ldc 70
+    //   23: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: aconst_null
+    //   27: areturn
+    //   28: new 81	java/util/zip/ZipFile
+    //   31: dup
+    //   32: aload_0
+    //   33: invokespecial 84	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   36: astore_1
+    //   37: aload_1
+    //   38: ldc 86
+    //   40: invokevirtual 90	java/util/zip/ZipFile:getEntry	(Ljava/lang/String;)Ljava/util/zip/ZipEntry;
+    //   43: astore_0
+    //   44: aload_0
+    //   45: ifnonnull +14 -> 59
+    //   48: aload_1
+    //   49: invokestatic 96	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
+    //   52: ldc 70
+    //   54: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   57: aconst_null
+    //   58: areturn
+    //   59: aload_1
+    //   60: aload_0
+    //   61: invokevirtual 100	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   64: astore_0
+    //   65: new 102	java/util/Properties
+    //   68: dup
+    //   69: invokespecial 105	java/util/Properties:<init>	()V
+    //   72: astore_2
+    //   73: aload_2
+    //   74: aload_0
+    //   75: invokevirtual 109	java/util/Properties:load	(Ljava/io/InputStream;)V
+    //   78: aload_0
+    //   79: invokestatic 113	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:V	(Ljava/lang/Object;)V
+    //   82: aload_1
+    //   83: invokestatic 96	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
+    //   86: ldc 70
+    //   88: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: aload_2
+    //   92: areturn
+    //   93: astore_2
+    //   94: aconst_null
+    //   95: astore_0
+    //   96: aload_0
+    //   97: invokestatic 113	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:V	(Ljava/lang/Object;)V
+    //   100: ldc 70
+    //   102: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   105: aload_2
+    //   106: athrow
+    //   107: astore_2
+    //   108: aload_1
+    //   109: astore_0
+    //   110: aload_2
+    //   111: astore_1
+    //   112: new 115	java/lang/StringBuilder
+    //   115: dup
+    //   116: ldc 117
+    //   118: invokespecial 120	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   121: aload_1
+    //   122: invokevirtual 124	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   125: invokevirtual 128	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: pop
+    //   129: aload_0
+    //   130: invokestatic 96	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
+    //   133: ldc 70
+    //   135: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: aconst_null
+    //   139: areturn
+    //   140: astore_0
+    //   141: aconst_null
+    //   142: astore_1
+    //   143: aload_1
+    //   144: invokestatic 96	com/tencent/tinker/loader/shareutil/SharePatchFileUtil:a	(Ljava/util/zip/ZipFile;)V
+    //   147: ldc 70
+    //   149: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   152: aload_0
+    //   153: athrow
+    //   154: astore_0
+    //   155: goto -12 -> 143
+    //   158: astore_1
+    //   159: aload_0
+    //   160: astore_2
+    //   161: aload_1
+    //   162: astore_0
+    //   163: aload_2
+    //   164: astore_1
+    //   165: goto -22 -> 143
+    //   168: astore_1
+    //   169: aconst_null
+    //   170: astore_0
+    //   171: goto -59 -> 112
+    //   174: astore_2
+    //   175: goto -79 -> 96
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	143	0	paramFile	java.io.File
-    //   26	88	1	localObject1	Object
-    //   123	4	1	localObject2	Object
-    //   129	1	1	localObject3	Object
-    //   133	1	1	localIOException1	java.io.IOException
-    //   57	15	2	localProperties	java.util.Properties
-    //   73	8	2	localObject4	Object
-    //   82	4	2	localIOException2	java.io.IOException
-    //   125	4	2	localFile	java.io.File
-    //   139	1	2	localObject5	Object
+    //   0	178	0	paramFile	java.io.File
+    //   36	108	1	localObject1	Object
+    //   158	4	1	localObject2	Object
+    //   164	1	1	localObject3	Object
+    //   168	1	1	localIOException1	java.io.IOException
+    //   72	20	2	localProperties	java.util.Properties
+    //   93	13	2	localObject4	Object
+    //   107	4	2	localIOException2	java.io.IOException
+    //   160	4	2	localFile	java.io.File
+    //   174	1	2	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   44	50	73	finally
-    //   27	34	82	java/io/IOException
-    //   63	67	82	java/io/IOException
-    //   76	82	82	java/io/IOException
-    //   18	27	110	finally
-    //   27	34	119	finally
-    //   63	67	119	finally
-    //   76	82	119	finally
-    //   87	104	123	finally
-    //   18	27	133	java/io/IOException
-    //   50	63	139	finally
+    //   59	65	93	finally
+    //   37	44	107	java/io/IOException
+    //   78	82	107	java/io/IOException
+    //   96	107	107	java/io/IOException
+    //   28	37	140	finally
+    //   37	44	154	finally
+    //   78	82	154	finally
+    //   96	107	154	finally
+    //   112	129	158	finally
+    //   28	37	168	java/io/IOException
+    //   65	78	174	finally
   }
   
   /* Error */
   @java.lang.Deprecated
-  public static boolean bbr()
+  public static boolean bIw()
   {
     // Byte code:
-    //   0: new 120	android/os/StatFs
-    //   3: dup
-    //   4: invokestatic 126	android/os/Environment:getDataDirectory	()Ljava/io/File;
-    //   7: invokevirtual 129	java/io/File:getPath	()Ljava/lang/String;
-    //   10: invokespecial 130	android/os/StatFs:<init>	(Ljava/lang/String;)V
-    //   13: astore 5
-    //   15: aload 5
-    //   17: invokevirtual 133	android/os/StatFs:getAvailableBlocks	()I
-    //   20: i2l
-    //   21: lstore_1
-    //   22: aload 5
-    //   24: invokevirtual 136	android/os/StatFs:getBlockSize	()I
-    //   27: istore_0
-    //   28: lload_1
-    //   29: iload_0
-    //   30: i2l
-    //   31: lmul
-    //   32: lstore_1
-    //   33: aload 5
-    //   35: invokevirtual 139	android/os/StatFs:getBlockCount	()I
-    //   38: i2l
-    //   39: lstore_3
-    //   40: aload 5
-    //   42: invokevirtual 136	android/os/StatFs:getBlockSize	()I
-    //   45: istore_0
-    //   46: iload_0
-    //   47: i2l
-    //   48: lload_3
-    //   49: lmul
-    //   50: lstore_3
-    //   51: lload_3
-    //   52: lconst_0
-    //   53: lcmp
-    //   54: ifeq +22 -> 76
-    //   57: lload_1
-    //   58: ldc2_w 140
-    //   61: lcmp
-    //   62: ifle +14 -> 76
-    //   65: iconst_1
-    //   66: ireturn
-    //   67: astore 5
-    //   69: lconst_0
-    //   70: lstore_1
-    //   71: lconst_0
-    //   72: lstore_3
-    //   73: goto -22 -> 51
-    //   76: iconst_0
-    //   77: ireturn
-    //   78: astore 5
-    //   80: goto -9 -> 71
+    //   0: ldc 131
+    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 133	android/os/StatFs
+    //   8: dup
+    //   9: invokestatic 139	android/os/Environment:getDataDirectory	()Ljava/io/File;
+    //   12: invokevirtual 142	java/io/File:getPath	()Ljava/lang/String;
+    //   15: invokespecial 143	android/os/StatFs:<init>	(Ljava/lang/String;)V
+    //   18: astore 5
+    //   20: aload 5
+    //   22: invokevirtual 146	android/os/StatFs:getAvailableBlocks	()I
+    //   25: i2l
+    //   26: lstore_1
+    //   27: aload 5
+    //   29: invokevirtual 149	android/os/StatFs:getBlockSize	()I
+    //   32: istore_0
+    //   33: lload_1
+    //   34: iload_0
+    //   35: i2l
+    //   36: lmul
+    //   37: lstore_1
+    //   38: aload 5
+    //   40: invokevirtual 152	android/os/StatFs:getBlockCount	()I
+    //   43: i2l
+    //   44: lstore_3
+    //   45: aload 5
+    //   47: invokevirtual 149	android/os/StatFs:getBlockSize	()I
+    //   50: istore_0
+    //   51: iload_0
+    //   52: i2l
+    //   53: lload_3
+    //   54: lmul
+    //   55: lstore_3
+    //   56: lload_3
+    //   57: lconst_0
+    //   58: lcmp
+    //   59: ifeq +27 -> 86
+    //   62: lload_1
+    //   63: ldc2_w 153
+    //   66: lcmp
+    //   67: ifle +19 -> 86
+    //   70: ldc 131
+    //   72: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   75: iconst_1
+    //   76: ireturn
+    //   77: astore 5
+    //   79: lconst_0
+    //   80: lstore_1
+    //   81: lconst_0
+    //   82: lstore_3
+    //   83: goto -27 -> 56
+    //   86: ldc 131
+    //   88: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: iconst_0
+    //   92: ireturn
+    //   93: astore 5
+    //   95: goto -14 -> 81
     // Local variable table:
     //   start	length	slot	name	signature
-    //   27	20	0	i	int
-    //   21	50	1	l1	long
-    //   39	34	3	l2	long
-    //   13	28	5	localStatFs	android.os.StatFs
-    //   67	1	5	localException1	Exception
-    //   78	1	5	localException2	Exception
+    //   32	20	0	i	int
+    //   26	55	1	l1	long
+    //   44	39	3	l2	long
+    //   18	28	5	localStatFs	android.os.StatFs
+    //   77	1	5	localException1	Exception
+    //   93	1	5	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   0	28	67	java/lang/Exception
-    //   33	46	78	java/lang/Exception
+    //   5	33	77	java/lang/Exception
+    //   38	51	93	java/lang/Exception
   }
 }
 

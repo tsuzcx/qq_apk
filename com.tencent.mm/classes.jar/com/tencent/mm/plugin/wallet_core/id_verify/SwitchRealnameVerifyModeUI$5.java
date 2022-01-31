@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.wallet_core.id_verify;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.c;
 
@@ -13,10 +14,12 @@ final class SwitchRealnameVerifyModeUI$5
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.qrS.kke;
+    AppMethodBeat.i(46594);
+    paramDialogInterface = this.ucT.mEJ;
     paramDialogInterface.putInt("real_name_verify_mode", 3);
     paramDialogInterface.putString("verify_card_flag", "1");
-    a.j(this.qrR, paramDialogInterface);
+    a.j(this.ucS, paramDialogInterface);
+    AppMethodBeat.o(46594);
   }
 }
 

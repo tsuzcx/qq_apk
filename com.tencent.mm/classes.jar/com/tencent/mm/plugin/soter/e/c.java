@@ -6,7 +6,7 @@ import com.tencent.mm.vending.g.b;
 public final class c
   implements a<Boolean, com.tencent.mm.vending.j.c<Boolean, Boolean>>
 {
-  private b eVG = null;
+  private b gnD = null;
 }
 
 

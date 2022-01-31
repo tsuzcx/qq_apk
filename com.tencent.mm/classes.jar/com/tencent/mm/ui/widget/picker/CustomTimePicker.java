@@ -8,127 +8,165 @@ import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
 import android.widget.NumberPicker;
 import android.widget.TimePicker;
-import com.tencent.mm.ci.a.e;
-import com.tencent.mm.ci.a.j;
-import com.tencent.mm.ui.aj;
-import com.tencent.mm.ui.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ae;
+import com.tencent.mm.ui.ak;
 
 public class CustomTimePicker
   extends TimePicker
 {
-  public int gAa = -1;
-  public int gzX = -1;
-  public int gzY = -1;
-  public int gzZ = -1;
-  public NumberPicker hAo;
-  private NumberPicker hAp;
+  public int hWY;
+  public int hWZ;
+  public int hXa;
+  public int hXb;
+  public NumberPicker jsD;
+  private NumberPicker jsE;
   
   public CustomTimePicker(Context paramContext, AttributeSet paramAttributeSet)
   {
-    super(new ContextThemeWrapper(paramContext, a.j.Widget_Picker), paramAttributeSet);
+    super(new ContextThemeWrapper(paramContext, 2131493844), paramAttributeSet);
+    AppMethodBeat.i(112798);
+    this.hWY = -1;
+    this.hWZ = -1;
+    this.hXa = -1;
+    this.hXb = -1;
     initView();
+    AppMethodBeat.o(112798);
   }
   
   public CustomTimePicker(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(112799);
+    this.hWY = -1;
+    this.hWZ = -1;
+    this.hXa = -1;
+    this.hXb = -1;
     initView();
+    AppMethodBeat.o(112799);
   }
   
-  private void initView()
+  private NumberPicker FS(String paramString)
   {
-    setIs24HourView(Boolean.valueOf(true));
-    this.hAo = xf("mHourSpinner");
-    this.hAp = xf("mMinuteSpinner");
-    e.c(this.hAo);
-    e.c(this.hAp);
-    Drawable localDrawable = getResources().getDrawable(a.e.picker_divider);
-    e.a(this.hAo, localDrawable);
-    e.a(this.hAp, localDrawable);
-    if (this.hAo != null) {
-      this.hAo.setOnValueChangedListener(new CustomTimePicker.1(this));
-    }
-    if ((this.hAp != null) && (Build.VERSION.SDK_INT >= 21)) {
-      this.hAp.setOnValueChangedListener(new CustomTimePicker.2(this));
-    }
-    e.e(this.hAo);
-    e.e(this.hAp);
-  }
-  
-  private NumberPicker xf(String paramString)
-  {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return xh(paramString);
-    }
-    return xg(paramString);
-  }
-  
-  private NumberPicker xg(String paramString)
-  {
-    try
+    AppMethodBeat.i(112803);
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      paramString = (NumberPicker)new aj(this, paramString).get();
+      paramString = FU(paramString);
+      AppMethodBeat.o(112803);
       return paramString;
     }
-    catch (Exception paramString) {}
+    paramString = FT(paramString);
+    AppMethodBeat.o(112803);
+    return paramString;
+  }
+  
+  private NumberPicker FT(String paramString)
+  {
+    AppMethodBeat.i(112804);
+    try
+    {
+      paramString = (NumberPicker)new ae(this, paramString).get();
+      AppMethodBeat.o(112804);
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(112804);
+    }
     return null;
   }
   
-  private NumberPicker xh(String paramString)
+  private NumberPicker FU(String paramString)
   {
+    AppMethodBeat.i(112805);
     try
     {
-      Object localObject = new aj(this, "mDelegate").get();
+      Object localObject = new ae(this, "mDelegate").get();
       if (localObject != null)
       {
-        paramString = (NumberPicker)new aj(localObject, paramString).get();
+        paramString = (NumberPicker)new ae(localObject, paramString).get();
+        AppMethodBeat.o(112805);
         return paramString;
       }
     }
     catch (NoSuchFieldException paramString)
     {
-      ao.a(paramString, "super_getNumberPickerApi21 NoSuchFieldException", new Object[0]);
+      ak.printErrStackTrace("CustomTimePicker", paramString, "super_getNumberPickerApi21 NoSuchFieldException", new Object[0]);
+      AppMethodBeat.o(112805);
       return null;
     }
     catch (IllegalAccessException paramString)
     {
       for (;;)
       {
-        ao.a(paramString, "super_getNumberPickerApi21 IllegalAccessException", new Object[0]);
+        ak.printErrStackTrace("CustomTimePicker", paramString, "super_getNumberPickerApi21 IllegalAccessException", new Object[0]);
       }
     }
   }
   
-  public final void asR()
+  private void dPn()
   {
-    if ((f.ne(this.gzX)) && (f.nd(this.gzY)) && (this.hAo != null) && (this.hAp != null))
-    {
-      if (this.hAo.getValue() != this.gzX) {
-        break label109;
-      }
-      this.hAp.setMinValue(this.gzY);
+    AppMethodBeat.i(112806);
+    Drawable localDrawable = getResources().getDrawable(2130839945);
+    e.a(this.jsD, localDrawable);
+    e.a(this.jsE, localDrawable);
+    AppMethodBeat.o(112806);
+  }
+  
+  private void initView()
+  {
+    AppMethodBeat.i(112800);
+    setIs24HourView(Boolean.TRUE);
+    this.jsD = FS("mHourSpinner");
+    this.jsE = FS("mMinuteSpinner");
+    e.c(this.jsD);
+    e.c(this.jsE);
+    dPn();
+    if (this.jsD != null) {
+      this.jsD.setOnValueChangedListener(new CustomTimePicker.1(this));
     }
-    for (;;)
+    if ((this.jsE != null) && (Build.VERSION.SDK_INT >= 21)) {
+      this.jsE.setOnValueChangedListener(new CustomTimePicker.2(this));
+    }
+    e.e(this.jsD);
+    e.e(this.jsE);
+    AppMethodBeat.o(112800);
+  }
+  
+  public final void aRT()
+  {
+    AppMethodBeat.i(112801);
+    if ((f.qL(this.hWY)) && (f.qK(this.hWZ)) && (this.jsD != null) && (this.jsE != null))
     {
-      if ((f.ne(this.gzZ)) && (this.hAo != null) && (this.hAp != null))
+      if (this.jsD.getValue() != this.hWY) {
+        break label119;
+      }
+      this.jsE.setMinValue(this.hWZ);
+    }
+    while ((f.qL(this.hXa)) && (this.jsD != null) && (this.jsE != null)) {
+      if (this.jsD.getValue() == this.hXa)
       {
-        if (this.hAo.getValue() != this.gzZ) {
-          break;
-        }
-        this.hAp.setMaxValue(this.gAa);
+        this.jsE.setMaxValue(this.hXb);
+        AppMethodBeat.o(112801);
+        return;
+        label119:
+        this.jsE.setMinValue(0);
       }
-      return;
-      label109:
-      this.hAp.setMinValue(0);
+      else
+      {
+        this.jsE.setMaxValue(59);
+      }
     }
-    this.hAp.setMaxValue(59);
+    AppMethodBeat.o(112801);
   }
   
   protected void onAttachedToWindow()
   {
+    AppMethodBeat.i(112802);
     super.onAttachedToWindow();
-    e.d(this.hAo);
-    e.d(this.hAp);
+    e.d(this.jsD);
+    e.d(this.jsE);
+    AppMethodBeat.o(112802);
   }
 }
 

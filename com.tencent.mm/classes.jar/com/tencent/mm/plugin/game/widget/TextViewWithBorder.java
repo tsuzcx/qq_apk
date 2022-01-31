@@ -8,7 +8,7 @@ import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
-import com.tencent.mm.plugin.game.g.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TextViewWithBorder
   extends AppCompatTextView
@@ -20,11 +20,13 @@ public class TextViewWithBorder
   
   protected void onDraw(Canvas paramCanvas)
   {
+    AppMethodBeat.i(112417);
     Paint localPaint = new Paint();
     localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setColor(getResources().getColor(g.b.game_title_hint));
+    localPaint.setColor(getResources().getColor(2131690109));
     paramCanvas.drawRoundRect(new RectF(2.0F, 2.0F, getWidth() - 2, getHeight() - 2), 5.0F, 5.0F, localPaint);
     super.onDraw(paramCanvas);
+    AppMethodBeat.o(112417);
   }
 }
 

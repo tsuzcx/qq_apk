@@ -2,6 +2,7 @@ package com.tencent.mm.ui.base;
 
 import android.app.Dialog;
 import android.widget.LinearLayout;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class h$14$1
   implements Runnable
@@ -10,10 +11,12 @@ final class h$14$1
   
   public final void run()
   {
-    ((Dialog)this.uUf.nTq.getTag()).dismiss();
-    if (this.uUf.uUd != null) {
-      this.uUf.uUd.wv(this.uUe);
+    AppMethodBeat.i(106417);
+    ((Dialog)this.ziG.qHq.getTag()).dismiss();
+    if (this.ziG.ziE != null) {
+      this.ziG.ziE.Ch(this.ziF);
     }
+    AppMethodBeat.o(106417);
   }
 }
 

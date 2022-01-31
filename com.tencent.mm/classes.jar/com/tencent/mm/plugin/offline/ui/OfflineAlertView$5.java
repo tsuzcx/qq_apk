@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.offline.ui;
 
-import com.tencent.mm.ui.u;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.t;
 
 final class OfflineAlertView$5
-  extends u
+  extends t
 {
   OfflineAlertView$5(OfflineAlertView paramOfflineAlertView, Runnable paramRunnable) {}
   
-  public final void aEI()
+  public final void bhX()
   {
-    this.mLX.run();
+    AppMethodBeat.i(43447);
+    this.pmn.run();
+    AppMethodBeat.o(43447);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.OfflineAlertView.5
  * JD-Core Version:    0.7.0.1
  */

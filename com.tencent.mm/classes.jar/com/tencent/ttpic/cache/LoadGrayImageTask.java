@@ -2,6 +2,7 @@ package com.tencent.ttpic.cache;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.util.FaceOffUtil;
 import com.tencent.ttpic.util.FaceOffUtil.FEATURE_TYPE;
 import java.util.Map;
@@ -22,18 +23,27 @@ public class LoadGrayImageTask
   
   protected Boolean doInBackground(Void... paramVarArgs)
   {
-    if (isCancelled()) {
-      return Boolean.valueOf(false);
+    AppMethodBeat.i(81791);
+    if (isCancelled())
+    {
+      paramVarArgs = Boolean.FALSE;
+      AppMethodBeat.o(81791);
+      return paramVarArgs;
     }
-    if (this.mGrayCache == null) {
-      return Boolean.valueOf(false);
+    if (this.mGrayCache == null)
+    {
+      paramVarArgs = Boolean.FALSE;
+      AppMethodBeat.o(81791);
+      return paramVarArgs;
     }
     if (!this.mGrayCache.containsKey(this.featureType))
     {
       paramVarArgs = FaceOffUtil.getGrayBitmap(this.featureType);
       this.mGrayCache.put(this.featureType, paramVarArgs);
     }
-    return Boolean.valueOf(true);
+    paramVarArgs = Boolean.TRUE;
+    AppMethodBeat.o(81791);
+    return paramVarArgs;
   }
 }
 

@@ -1,13 +1,18 @@
 package com.tencent.mm.vending.j;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
   extends j
 {
-  public static k z(Object... paramVarArgs)
+  public static k F(Object... paramVarArgs)
   {
+    AppMethodBeat.i(126101);
     k localk = new k();
     localk.a = paramVarArgs;
-    return (k)localk;
+    paramVarArgs = (k)localk;
+    AppMethodBeat.o(126101);
+    return paramVarArgs;
   }
 }
 

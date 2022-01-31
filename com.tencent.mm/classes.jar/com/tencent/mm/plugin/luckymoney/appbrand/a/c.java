@@ -1,21 +1,24 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
-import com.tencent.mm.protocal.c.bib;
-import com.tencent.mm.protocal.c.bic;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.bqr;
+import com.tencent.mm.protocal.protobuf.bqs;
 
 public final class c
-  extends a<bib, bic>
+  extends a<bqr, bqs>
 {
   public c(String paramString1, String paramString2, int paramInt)
   {
-    bib localbib = new bib();
-    localbib.bOL = paramString1;
-    localbib.txv = paramString2;
-    localbib.offset = paramInt;
-    this.lKT = localbib;
+    AppMethodBeat.i(41987);
+    bqr localbqr = new bqr();
+    localbqr.cwc = paramString1;
+    localbqr.xxB = paramString2;
+    localbqr.offset = paramInt;
+    this.oin = localbqr;
+    AppMethodBeat.o(41987);
   }
   
-  protected final int HH()
+  protected final int getFuncId()
   {
     return 2949;
   }

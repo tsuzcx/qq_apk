@@ -1,32 +1,80 @@
 package com.tencent.mm.sdk.platformtools;
 
-import java.util.HashSet;
-import java.util.Set;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public final class ag
 {
-  private static Set<String> ufn = new HashSet();
+  protected static char[] bUg;
+  protected static ThreadLocal<MessageDigest> cic;
   
-  public static boolean Zm(String paramString)
+  static
   {
-    if (Zo(paramString))
+    AppMethodBeat.i(52057);
+    bUg = new char[] { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
+    cic = new ThreadLocal()
     {
-      y.d("MicroMsg.MMEntryLock", "locked-" + paramString);
-      return false;
+      private static MessageDigest zK()
+      {
+        AppMethodBeat.i(52051);
+        try
+        {
+          MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+          AppMethodBeat.o(52051);
+          return localMessageDigest;
+        }
+        catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
+        {
+          RuntimeException localRuntimeException = new RuntimeException("Initialize MD5 failed.", localNoSuchAlgorithmException);
+          AppMethodBeat.o(52051);
+          throw localRuntimeException;
+        }
+      }
+    };
+    AppMethodBeat.o(52057);
+  }
+  
+  private static String U(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(52055);
+    StringBuffer localStringBuffer = new StringBuffer(paramInt * 2);
+    int i = 0;
+    while (i < paramInt + 0)
+    {
+      a(paramArrayOfByte[i], localStringBuffer);
+      i += 1;
     }
-    y.d("MicroMsg.MMEntryLock", "lock-" + paramString);
-    return ufn.add(paramString);
+    paramArrayOfByte = localStringBuffer.toString();
+    AppMethodBeat.o(52055);
+    return paramArrayOfByte;
   }
   
-  public static void Zn(String paramString)
+  private static void a(byte paramByte, StringBuffer paramStringBuffer)
   {
-    ufn.remove(paramString);
-    y.d("MicroMsg.MMEntryLock", "unlock-" + paramString);
+    AppMethodBeat.i(52056);
+    char c1 = bUg[((paramByte & 0xF0) >> 4)];
+    char c2 = bUg[(paramByte & 0xF)];
+    paramStringBuffer.append(c1);
+    paramStringBuffer.append(c2);
+    AppMethodBeat.o(52056);
   }
   
-  public static boolean Zo(String paramString)
+  public static String cE(String paramString)
   {
-    return ufn.contains(paramString);
+    AppMethodBeat.i(52053);
+    paramString = v(paramString.getBytes());
+    AppMethodBeat.o(52053);
+    return paramString;
+  }
+  
+  public static String v(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(52054);
+    paramArrayOfByte = ((MessageDigest)cic.get()).digest(paramArrayOfByte);
+    paramArrayOfByte = U(paramArrayOfByte, paramArrayOfByte.length);
+    AppMethodBeat.o(52054);
+    return paramArrayOfByte;
   }
 }
 

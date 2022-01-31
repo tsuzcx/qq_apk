@@ -1,45 +1,37 @@
 package com.tencent.mm.plugin.emojicapture.ui.capture;
 
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.widget.TextView;
-import com.tencent.mm.plugin.emojicapture.c.a.a;
+import a.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.media.widget.camerarecordview.a.a;
 import com.tencent.mm.plugin.emojicapture.model.c;
 import com.tencent.mm.plugin.emojicapture.model.c.a;
-import com.tencent.mm.plugin.mmsight.ui.MMSightCircularProgressBar.a;
-import com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton;
-import com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.bo;
 
+@l(eaO={1, 1, 13}, eaP={""}, eaQ={"com/tencent/mm/plugin/emojicapture/ui/capture/CaptureContainer$getEncodeConfig$1", "Lcom/tencent/mm/media/widget/camerarecordview/data/IEncodeConfig;", "getFilePath", "", "getRecordType", "", "getThumbPath", "plugin-emojicapture_release"})
 public final class CaptureContainer$b
-  implements MMSightRecordButton.b
+  implements a
 {
-  public final void aKO()
+  public final int Xh()
   {
-    y.i(CaptureContainer.a(this.jpm), "onLongPressFinish");
-    CaptureContainer.a(this.jpm, this.jpm.getPresenter().uh());
+    return 2;
   }
   
-  public final void aKP()
+  public final String Xi()
   {
-    MMSightRecordButton localMMSightRecordButton = CaptureContainer.b(this.jpm);
-    c.a locala = c.jko;
-    localMMSightRecordButton.a(c.aKc() * 1000, (MMSightCircularProgressBar.a)new CaptureContainer.b.a(this));
-    this.jpm.getPresenter().startRecord();
-    CaptureContainer.c(this.jpm).setEnabled(false);
-    CaptureContainer.c(this.jpm).animate().alpha(0.0F).start();
-    CaptureContainer.d(this.jpm).setEnabled(false);
-    CaptureContainer.d(this.jpm).animate().alpha(0.0F).start();
-    CaptureContainer.e(this.jpm).animate().alpha(0.0F).start();
-    CaptureContainer.f(this.jpm).setVisibility(8);
+    AppMethodBeat.i(2964);
+    Object localObject = c.ltu;
+    localObject = c.a.bnR() + "temp_thumb" + bo.aoy();
+    AppMethodBeat.o(2964);
+    return localObject;
   }
   
-  public final void aKQ()
+  public final String getFilePath()
   {
-    y.i(CaptureContainer.a(this.jpm), "onPressDown");
-    int[] arrayOfInt = new int[2];
-    CaptureContainer.b(this.jpm).getLocationOnScreen(arrayOfInt);
-    this.jpm.getPresenter().qg(arrayOfInt[1]);
+    AppMethodBeat.i(2963);
+    Object localObject = c.ltu;
+    localObject = c.a.bnR() + "video_" + bo.aoy();
+    AppMethodBeat.o(2963);
+    return localObject;
   }
 }
 

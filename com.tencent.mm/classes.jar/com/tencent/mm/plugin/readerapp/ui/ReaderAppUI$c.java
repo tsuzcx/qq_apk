@@ -6,11 +6,8 @@ import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.model.bk;
-import com.tencent.mm.plugin.readerapp.a.b;
-import com.tencent.mm.plugin.readerapp.a.c;
-import com.tencent.mm.plugin.readerapp.a.d;
-import com.tencent.mm.plugin.readerapp.a.e;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.bm;
 import com.tencent.mm.plugin.readerapp.c.g;
 import com.tencent.mm.pluginsdk.f.h;
 import com.tencent.mm.pluginsdk.ui.e;
@@ -21,101 +18,117 @@ final class ReaderAppUI$c
   extends a<String>
 {
   private Context context;
-  private int dsw;
-  private int ieK;
-  private int iwi;
-  private int noX;
+  private int eke;
+  private int jVy;
+  private int kxm;
+  private int pUl;
   
   public ReaderAppUI$c(ReaderAppUI paramReaderAppUI, Context paramContext, String paramString)
   {
     super(paramContext, paramString);
+    AppMethodBeat.i(76839);
     this.context = paramContext;
-    this.iwi = 3;
-    this.dsw = this.iwi;
-    this.noX = paramContext.getResources().getDimensionPixelSize(a.b.BasicPaddingSize);
-    this.ieK = paramContext.getResources().getDimensionPixelSize(a.b.SmallPadding);
+    this.kxm = 3;
+    this.eke = this.kxm;
+    this.pUl = paramContext.getResources().getDimensionPixelSize(2131427496);
+    this.jVy = paramContext.getResources().getDimensionPixelSize(2131427854);
+    AppMethodBeat.o(76839);
   }
   
-  public final boolean aCc()
+  public final void Ku()
   {
-    return this.iwi >= this.dsw;
+    AppMethodBeat.i(76842);
+    this.eke = g.cfl().kH(ReaderAppUI.a(this.pUg));
+    setCursor(g.cfl().ct(this.kxm, ReaderAppUI.a(this.pUg)));
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(76842);
   }
   
-  public final int aCd()
+  public final void Kv()
   {
-    if (aCc()) {
+    AppMethodBeat.i(76840);
+    Ku();
+    AppMethodBeat.o(76840);
+  }
+  
+  public final boolean bem()
+  {
+    return this.kxm >= this.eke;
+  }
+  
+  public final int ben()
+  {
+    AppMethodBeat.i(76841);
+    if (bem())
+    {
+      AppMethodBeat.o(76841);
       return 0;
     }
-    this.iwi += 3;
-    if (this.iwi <= this.dsw) {
+    this.kxm += 3;
+    if (this.kxm <= this.eke)
+    {
+      AppMethodBeat.o(76841);
       return 3;
     }
-    this.iwi = this.dsw;
-    return this.dsw % 3;
+    this.kxm = this.eke;
+    int i = this.eke;
+    AppMethodBeat.o(76841);
+    return i % 3;
   }
   
   public final int getShowCount()
   {
-    return this.iwi;
+    return this.kxm;
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(76843);
     if (paramView == null)
     {
       paramViewGroup = new ReaderAppUI.c.a(this);
-      paramView = View.inflate(this.context, a.e.reader_app_root_item, null);
-      paramViewGroup.nph = ((ReaderItemListView)paramView.findViewById(a.d.reader_root_item_list));
-      paramViewGroup.kZl = ((TextView)paramView.findViewById(a.d.reader_app_item_time_tv));
+      paramView = View.inflate(this.context, 2130970509, null);
+      paramViewGroup.pUv = ((ReaderItemListView)paramView.findViewById(2131827036));
+      paramViewGroup.nxi = ((TextView)paramView.findViewById(2131827031));
       paramView.setTag(paramViewGroup);
       getItem(paramInt);
-      paramViewGroup.kZl.setText(h.c(this.context, 0L, false));
-      ReaderItemListView localReaderItemListView = paramViewGroup.nph;
+      paramViewGroup.nxi.setText(h.c(this.context, 0L, false));
+      ReaderItemListView localReaderItemListView = paramViewGroup.pUv;
       String str = (String)getItem(paramInt);
-      View.OnCreateContextMenuListener localOnCreateContextMenuListener = ReaderAppUI.a(this.noS, false);
-      n.d locald = ReaderAppUI.g(this.noS);
+      View.OnCreateContextMenuListener localOnCreateContextMenuListener = ReaderAppUI.a(this.pUg, false);
+      n.d locald = ReaderAppUI.g(this.pUg);
       localReaderItemListView.position = paramInt;
-      localReaderItemListView.npl = localOnCreateContextMenuListener;
-      localReaderItemListView.ifj = locald;
-      localReaderItemListView.npj = g.buZ().J(str, localReaderItemListView.type);
-      localReaderItemListView.npk.notifyDataSetChanged();
-      if (ReaderAppUI.h(this.noS) != null)
+      localReaderItemListView.pUz = localOnCreateContextMenuListener;
+      localReaderItemListView.jWw = locald;
+      localReaderItemListView.pUx = g.cfl().R(str, localReaderItemListView.type);
+      localReaderItemListView.pUy.notifyDataSetChanged();
+      if (ReaderAppUI.h(this.pUg) != null)
       {
-        paramViewGroup.kZl.setTextColor(ReaderAppUI.h(this.noS).rZj);
-        if (!ReaderAppUI.h(this.noS).rZk) {
-          break label282;
+        paramViewGroup.nxi.setTextColor(ReaderAppUI.h(this.pUg).vQa);
+        if (!ReaderAppUI.h(this.pUg).vQb) {
+          break label288;
         }
-        paramViewGroup.kZl.setShadowLayer(2.0F, 1.2F, 1.2F, ReaderAppUI.h(this.noS).rZl);
+        paramViewGroup.nxi.setShadowLayer(2.0F, 1.2F, 1.2F, ReaderAppUI.h(this.pUg).vQc);
+        label225:
+        if (!ReaderAppUI.h(this.pUg).vQd) {
+          break label302;
+        }
+        paramViewGroup.nxi.setBackgroundResource(2130838245);
+        paramViewGroup.nxi.setPadding(this.jVy, this.pUl, this.jVy, this.pUl);
       }
     }
     for (;;)
     {
-      if (!ReaderAppUI.h(this.noS).rZm) {
-        break label296;
-      }
-      paramViewGroup.kZl.setBackgroundResource(a.c.chat_tips_bg);
-      paramViewGroup.kZl.setPadding(this.ieK, this.noX, this.ieK, this.noX);
+      AppMethodBeat.o(76843);
       return paramView;
       paramViewGroup = (ReaderAppUI.c.a)paramView.getTag();
       break;
-      label282:
-      paramViewGroup.kZl.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      label288:
+      paramViewGroup.nxi.setShadowLayer(0.0F, 0.0F, 0.0F, 0);
+      break label225;
+      label302:
+      paramViewGroup.nxi.setBackgroundColor(0);
     }
-    label296:
-    paramViewGroup.kZl.setBackgroundColor(0);
-    return paramView;
-  }
-  
-  public final void yc()
-  {
-    this.dsw = g.buZ().hU(ReaderAppUI.a(this.noS));
-    setCursor(g.buZ().bj(this.iwi, ReaderAppUI.a(this.noS)));
-    super.notifyDataSetChanged();
-  }
-  
-  protected final void yd()
-  {
-    yc();
   }
 }
 

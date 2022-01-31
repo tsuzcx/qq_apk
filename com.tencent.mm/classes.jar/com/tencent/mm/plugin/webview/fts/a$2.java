@@ -1,11 +1,12 @@
 package com.tencent.mm.plugin.webview.fts;
 
-import com.tencent.mm.h.a.qj;
-import com.tencent.mm.h.a.qj.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.rt;
+import com.tencent.mm.g.a.rt.a;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.g;
 import com.tencent.mm.plugin.webview.ui.tools.jsapi.h;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,19 +15,22 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 final class a$2
-  extends c<qj>
+  extends c<rt>
 {
   a$2(a parama)
   {
-    this.udX = qj.class.getName().hashCode();
+    AppMethodBeat.i(5664);
+    this.__eventId = rt.class.getName().hashCode();
+    AppMethodBeat.o(5664);
   }
   
-  private boolean a(qj paramqj)
+  private boolean a(rt paramrt)
   {
-    if (((paramqj instanceof qj)) && (paramqj.bZJ.bHz == 2))
+    AppMethodBeat.i(5665);
+    if (((paramrt instanceof rt)) && (paramrt.cIb.coO == 2))
     {
-      y.i("MicroMsg.FTS.FTSWebViewImageLogic", "Download callback %s", new Object[] { paramqj.bZJ.bUi });
-      if (!this.qYQ.qYK.containsKey(paramqj.bZJ.bUi)) {}
+      ab.i("MicroMsg.WebSearch.FTSWebViewImageLogic", "Download callback %s", new Object[] { paramrt.cIb.cBO });
+      if (!this.uOw.uOq.containsKey(paramrt.cIb.cBO)) {}
     }
     for (;;)
     {
@@ -35,16 +39,16 @@ final class a$2
       String str1;
       String str2;
       JSONObject localJSONObject;
-      synchronized (this.qYQ.qYK)
+      synchronized (this.uOw.uOq)
       {
-        i = ((Integer)this.qYQ.qYN.get(paramqj.bZJ.bUi)).intValue();
-        Object localObject = (HashSet)this.qYQ.qYK.get(paramqj.bZJ.bUi);
+        i = ((Integer)this.uOw.uOt.get(paramrt.cIb.cBO)).intValue();
+        Object localObject = (HashSet)this.uOw.uOq.get(paramrt.cIb.cBO);
         localJSONArray = new JSONArray();
         localObject = ((HashSet)localObject).iterator();
         if (((Iterator)localObject).hasNext())
         {
           str1 = (String)((Iterator)localObject).next();
-          str2 = "weixin://fts/sns?path=" + paramqj.bZJ.path;
+          str2 = "weixin://fts/sns?path=" + paramrt.cIb.path;
           localJSONObject = new JSONObject();
         }
       }
@@ -52,19 +56,21 @@ final class a$2
       {
         localJSONObject.put("id", str1);
         localJSONObject.put("src", str2);
-        label206:
+        label212:
         localJSONArray.put(localJSONObject);
         continue;
-        paramqj = finally;
-        throw paramqj;
-        h.Db(i).aZ(0, localJSONArray.toString());
-        this.qYQ.qYK.remove(paramqj.bZJ.bUi);
-        this.qYQ.qYN.remove(paramqj.bZJ.bUi);
+        paramrt = finally;
+        AppMethodBeat.o(5665);
+        throw paramrt;
+        h.KW(i).bG(0, localJSONArray.toString());
+        this.uOw.uOq.remove(paramrt.cIb.cBO);
+        this.uOw.uOt.remove(paramrt.cIb.cBO);
+        AppMethodBeat.o(5665);
         return false;
       }
       catch (JSONException localJSONException)
       {
-        break label206;
+        break label212;
       }
     }
   }

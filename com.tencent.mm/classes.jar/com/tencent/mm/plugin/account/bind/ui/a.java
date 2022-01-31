@@ -11,24 +11,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.mm.ag.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ah.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.account.bind.a.d;
-import com.tencent.mm.plugin.account.bind.a.f;
-import com.tencent.mm.plugin.account.bind.a.h;
-import com.tencent.mm.plugin.account.bind.a.i;
 import com.tencent.mm.plugin.account.friend.a.n;
 import com.tencent.mm.plugin.account.friend.a.o;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.ui.p;
 
 public final class a
-  extends r<n>
+  extends p<n>
 {
-  private String fay;
-  a.a fdr;
+  private String gsq;
+  a.a gvc;
   private Context mContext;
   private String mFilter;
   private LayoutInflater mLayoutInflater;
@@ -36,16 +32,34 @@ public final class a
   public a(Context paramContext, String paramString)
   {
     super(paramContext, new n());
-    this.fay = paramString;
+    AppMethodBeat.i(13644);
+    this.gsq = paramString;
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(this.mContext);
+    AppMethodBeat.o(13644);
+  }
+  
+  public final void Ku()
+  {
+    AppMethodBeat.i(13646);
+    setCursor(((o)((com.tencent.mm.plugin.account.a.a.a)g.G(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage()).bl(this.mFilter, this.gsq));
+    super.notifyDataSetChanged();
+    AppMethodBeat.o(13646);
+  }
+  
+  public final void Kv()
+  {
+    AppMethodBeat.i(13645);
+    Ku();
+    AppMethodBeat.o(13645);
   }
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(13648);
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = this.mLayoutInflater.inflate(a.f.gcontact_friend_list_item, null);
+      paramView = this.mLayoutInflater.inflate(2130969837, null);
       paramViewGroup = new a.b(this, paramView);
       paramView.setTag(paramViewGroup);
     }
@@ -56,24 +70,26 @@ public final class a
       if (localn != null) {
         break;
       }
+      AppMethodBeat.o(13648);
       return paramView;
       paramViewGroup = (a.b)paramView.getTag();
     }
     paramViewGroup.position = paramInt;
-    paramViewGroup.fds = localn.field_googlegmail;
+    paramViewGroup.gvd = localn.field_googlegmail;
     switch (localn.field_status)
     {
     default: 
       if (TextUtils.isEmpty(localn.field_googlename))
       {
-        paramViewGroup.fdt.setText(bk.aab(localn.field_googlegmail));
+        paramViewGroup.gve.setText(bo.aqf(localn.field_googlegmail));
         switch (localn.field_status)
         {
         default: 
           switch (localn.field_googlecgistatus)
           {
           default: 
-            paramViewGroup.fdu.setText(localn.field_googlegmail);
+            paramViewGroup.gvf.setText(localn.field_googlegmail);
+            AppMethodBeat.o(13648);
             return paramView;
           }
           break;
@@ -82,77 +98,77 @@ public final class a
       break;
     case 0: 
     case 2: 
-      label138:
-      label168:
-      label200:
+      label150:
+      label180:
+      label212:
       if (localn.field_small_url == null) {}
       break;
     }
-    for (Bitmap localBitmap = b.a(localn.field_username, false, -1);; localBitmap = null)
+    for (Bitmap localBitmap = b.b(localn.field_username, false, -1);; localBitmap = null)
     {
       if (localBitmap == null)
       {
-        paramViewGroup.dpY.setImageDrawable(com.tencent.mm.cb.a.g(this.mContext, a.h.default_avatar));
+        paramViewGroup.ehv.setImageDrawable(com.tencent.mm.cb.a.k(this.mContext, 2131231207));
         break;
       }
-      paramViewGroup.dpY.setImageBitmap(localBitmap);
+      paramViewGroup.ehv.setImageBitmap(localBitmap);
       break;
-      localBitmap = b.jR(localn.field_googleid);
+      localBitmap = b.qK(localn.field_googleid);
       if (localBitmap == null)
       {
-        paramViewGroup.dpY.setImageDrawable(com.tencent.mm.cb.a.g(this.mContext, a.h.default_avatar));
+        paramViewGroup.ehv.setImageDrawable(com.tencent.mm.cb.a.k(this.mContext, 2131231207));
         break;
       }
-      paramViewGroup.dpY.setImageBitmap(localBitmap);
+      paramViewGroup.ehv.setImageBitmap(localBitmap);
       break;
-      paramViewGroup.fdt.setText(localn.field_googlename);
-      break label138;
-      paramViewGroup.fdv.setClickable(true);
-      paramViewGroup.fdv.setBackgroundResource(a.d.btn_solid_green);
-      paramViewGroup.eXu.setText(a.i.gcontact_add);
-      paramViewGroup.eXu.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.account.bind.a.b.white));
-      break label168;
-      paramViewGroup.fdv.setClickable(true);
-      paramViewGroup.fdv.setBackgroundResource(a.d.btn_solid_grey);
-      paramViewGroup.eXu.setText(a.i.gcontact_invite);
-      paramViewGroup.eXu.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.account.bind.a.b.lightgrey));
-      break label168;
-      paramViewGroup.fdv.setClickable(false);
-      paramViewGroup.fdv.setBackgroundDrawable(null);
-      paramViewGroup.eXu.setText(a.i.gcontact_added);
-      paramViewGroup.eXu.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.account.bind.a.b.lightgrey));
-      break label168;
-      paramViewGroup.eXu.setVisibility(4);
-      paramViewGroup.fdw.setVisibility(0);
-      break label200;
-      paramViewGroup.fdv.setClickable(false);
-      paramViewGroup.fdv.setBackgroundDrawable(null);
-      paramViewGroup.eXu.setVisibility(0);
-      paramViewGroup.fdw.setVisibility(8);
-      paramViewGroup.eXu.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.account.bind.a.b.lightgrey));
+      paramViewGroup.gve.setText(localn.field_googlename);
+      break label150;
+      paramViewGroup.gvg.setClickable(true);
+      paramViewGroup.gvg.setBackgroundResource(2130838045);
+      paramViewGroup.gpr.setText(2131300479);
+      paramViewGroup.gpr.setTextColor(this.mContext.getResources().getColor(2131690709));
+      break label180;
+      paramViewGroup.gvg.setClickable(true);
+      paramViewGroup.gvg.setBackgroundResource(2130838047);
+      paramViewGroup.gpr.setText(2131300487);
+      paramViewGroup.gpr.setTextColor(this.mContext.getResources().getColor(2131690211));
+      break label180;
+      paramViewGroup.gvg.setClickable(false);
+      paramViewGroup.gvg.setBackgroundDrawable(null);
+      paramViewGroup.gpr.setText(2131300481);
+      paramViewGroup.gpr.setTextColor(this.mContext.getResources().getColor(2131690211));
+      break label180;
+      paramViewGroup.gpr.setVisibility(4);
+      paramViewGroup.gvh.setVisibility(0);
+      break label212;
+      paramViewGroup.gvg.setClickable(false);
+      paramViewGroup.gvg.setBackgroundDrawable(null);
+      paramViewGroup.gpr.setVisibility(0);
+      paramViewGroup.gvh.setVisibility(8);
+      paramViewGroup.gpr.setTextColor(this.mContext.getResources().getColor(2131690211));
       switch (localn.field_status)
       {
       default: 
         break;
       case 0: 
-        paramViewGroup.eXu.setText(a.i.gcontact_add_done);
+        paramViewGroup.gpr.setText(2131300480);
         break;
       case 1: 
-        paramViewGroup.eXu.setText(a.i.gcontact_invite_done);
+        paramViewGroup.gpr.setText(2131300488);
         break;
-        paramViewGroup.eXu.setVisibility(0);
-        paramViewGroup.fdw.setVisibility(8);
+        paramViewGroup.gpr.setVisibility(0);
+        paramViewGroup.gvh.setVisibility(8);
         switch (localn.field_status)
         {
         default: 
           break;
         case 0: 
-          paramViewGroup.eXu.setText(a.i.gcontact_add);
-          paramViewGroup.eXu.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.account.bind.a.b.white));
+          paramViewGroup.gpr.setText(2131300479);
+          paramViewGroup.gpr.setTextColor(this.mContext.getResources().getColor(2131690709));
           break;
         case 1: 
-          paramViewGroup.eXu.setText(a.i.gcontact_invite);
-          paramViewGroup.eXu.setTextColor(this.mContext.getResources().getColor(com.tencent.mm.plugin.account.bind.a.b.lightgrey));
+          paramViewGroup.gpr.setText(2131300487);
+          paramViewGroup.gpr.setTextColor(this.mContext.getResources().getColor(2131690211));
           break;
         }
         break;
@@ -160,47 +176,18 @@ public final class a
     }
   }
   
-  public final void pA(String paramString)
+  public final void wQ(String paramString)
   {
-    this.mFilter = bk.pl(paramString);
-    bcS();
-    yc();
-  }
-  
-  public final void yc()
-  {
-    o localo = (o)((com.tencent.mm.plugin.account.a.a.a)g.t(com.tencent.mm.plugin.account.a.a.a.class)).getGoogleFriendStorage();
-    String str1 = this.mFilter;
-    String str2 = this.fay;
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (!TextUtils.isEmpty(str1))
-    {
-      localStringBuilder.append(" WHERE ( ");
-      localStringBuilder.append("GoogleFriend.googlegmail!='" + str2 + "' AND ");
-      localStringBuilder.append("GoogleFriend.googlename LIKE '%" + str1 + "%' OR ");
-      localStringBuilder.append("GoogleFriend.googlenamepy LIKE '%" + str1 + "%' OR ");
-      localStringBuilder.append("GoogleFriend.googlegmail LIKE '%" + str1 + "%' OR ");
-      localStringBuilder.append("GoogleFriend.nickname LIKE '%" + str1 + "%' ) ");
-    }
-    for (;;)
-    {
-      localStringBuilder.append(" GROUP BY googleid,contecttype");
-      localStringBuilder.append(" ORDER BY status , googlenamepy ASC , usernamepy ASC");
-      setCursor(localo.dXw.rawQuery("SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend  " + localStringBuilder.toString(), null));
-      super.notifyDataSetChanged();
-      return;
-      localStringBuilder.append(" WHERE ( GoogleFriend.googlegmail!='" + str2 + "' )");
-    }
-  }
-  
-  protected final void yd()
-  {
-    yc();
+    AppMethodBeat.i(13647);
+    this.mFilter = bo.wC(paramString);
+    bKb();
+    Ku();
+    AppMethodBeat.o(13647);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.a
  * JD-Core Version:    0.7.0.1
  */

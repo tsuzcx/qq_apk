@@ -5,26 +5,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
-import com.tencent.mm.plugin.wxpay.a.c;
-import com.tencent.mm.plugin.wxpay.a.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.ArrayList;
 
 final class WalletOfflineCoinPurseUI$a
   extends BaseAdapter
 {
-  ArrayList<String> hka = new ArrayList();
-  ArrayList<Boolean> mNH = new ArrayList();
+  ArrayList<String> iVH;
+  ArrayList<Boolean> pnW;
   
-  public WalletOfflineCoinPurseUI$a(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI) {}
+  public WalletOfflineCoinPurseUI$a(WalletOfflineCoinPurseUI paramWalletOfflineCoinPurseUI)
+  {
+    AppMethodBeat.i(43556);
+    this.iVH = new ArrayList();
+    this.pnW = new ArrayList();
+    AppMethodBeat.o(43556);
+  }
   
   public final int getCount()
   {
-    return this.hka.size();
+    AppMethodBeat.i(43557);
+    int i = this.iVH.size();
+    AppMethodBeat.o(43557);
+    return i;
   }
   
   public final Object getItem(int paramInt)
   {
-    return this.hka.get(paramInt);
+    AppMethodBeat.i(43558);
+    Object localObject = this.iVH.get(paramInt);
+    AppMethodBeat.o(43558);
+    return localObject;
   }
   
   public final long getItemId(int paramInt)
@@ -34,31 +45,41 @@ final class WalletOfflineCoinPurseUI$a
   
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramView = (CheckedTextView)View.inflate(this.mNj, a.g.wallet_list_dialog_item_singlechoice, null);
-    paramView.setText((String)this.hka.get(paramInt));
-    if (WalletOfflineCoinPurseUI.bqF() == paramInt) {
-      paramView.setChecked(true);
-    }
-    while (isEnabled(paramInt))
+    AppMethodBeat.i(43560);
+    paramView = (CheckedTextView)View.inflate(this.pny, 2130971195, null);
+    paramView.setText((String)this.iVH.get(paramInt));
+    if (WalletOfflineCoinPurseUI.bZs() == paramInt)
     {
-      paramView.setTextColor(this.mNj.getResources().getColor(a.c.normal_text_color));
+      paramView.setChecked(true);
+      if (!isEnabled(paramInt)) {
+        break label90;
+      }
+      paramView.setTextColor(this.pny.getResources().getColor(2131690322));
       paramView.setEnabled(true);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(43560);
       return paramView;
       paramView.setChecked(false);
+      break;
+      label90:
+      paramView.setTextColor(this.pny.getResources().getColor(2131690168));
+      paramView.setEnabled(false);
     }
-    paramView.setTextColor(this.mNj.getResources().getColor(a.c.hint_text_color));
-    paramView.setEnabled(false);
-    return paramView;
   }
   
   public final boolean isEnabled(int paramInt)
   {
-    return ((Boolean)this.mNH.get(paramInt)).booleanValue();
+    AppMethodBeat.i(43559);
+    boolean bool = ((Boolean)this.pnW.get(paramInt)).booleanValue();
+    AppMethodBeat.o(43559);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.WalletOfflineCoinPurseUI.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,8 @@
 package com.tencent.toybrick.b;
 
 import android.support.v7.widget.RecyclerView.c;
-import com.tencent.mm.ui.ao;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 import com.tencent.toybrick.c.f;
 import com.tencent.toybrick.c.g;
 import com.tencent.toybrick.e.c;
@@ -12,14 +13,16 @@ final class b$a
 {
   private b$a(b paramb) {}
   
-  public final void al(int paramInt1, int paramInt2)
+  public final void ar(int paramInt1, int paramInt2)
   {
-    super.al(paramInt1, paramInt2);
-    ao.s("[onItemRangeChanged] positionStart:%d, itemCount:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    g localg = this.xas.Kq(paramInt1);
-    if ((localg != null) && (localg.xbb != null)) {
-      c.execute(new c.d(c.xbF, localg, localg.xbb, new b.a.1(this)));
+    AppMethodBeat.i(113181);
+    super.ar(paramInt1, paramInt2);
+    ak.d("NotifyObserver", "[onItemRangeChanged] positionStart:%d, itemCount:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    g localg = this.BwY.Tk(paramInt1);
+    if ((localg != null) && (localg.BxH != null)) {
+      c.execute(new c.d(c.Byl, localg, localg.BxH, new b.a.1(this)));
     }
+    AppMethodBeat.o(113181);
   }
 }
 

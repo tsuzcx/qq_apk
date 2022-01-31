@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.card.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.b.k;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.g;
@@ -10,25 +11,29 @@ final class CardNewMsgUI$7
 {
   CardNewMsgUI$7(CardNewMsgUI paramCardNewMsgUI, int paramInt) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
+    AppMethodBeat.i(88598);
     switch (paramInt)
     {
     }
-    g localg;
-    do
+    for (;;)
     {
+      AppMethodBeat.o(88598);
       return;
-      localg = (g)CardNewMsgUI.a(this.iwh).getItem(this.ffJ);
-    } while (localg == null);
-    am.aAw().yf(localg.field_msg_id);
-    CardNewMsgUI.g(this.iwh);
-    CardNewMsgUI.a(this.iwh).a(null, null);
+      g localg = (g)CardNewMsgUI.a(this.kxl).getItem(this.gxr);
+      if (localg != null)
+      {
+        am.bch().HG(localg.field_msg_id);
+        CardNewMsgUI.g(this.kxl);
+        CardNewMsgUI.a(this.kxl).a(null, null);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardNewMsgUI.7
  * JD-Core Version:    0.7.0.1
  */

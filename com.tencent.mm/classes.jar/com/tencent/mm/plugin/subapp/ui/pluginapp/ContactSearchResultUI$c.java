@@ -6,11 +6,11 @@ import android.widget.TextView;
 
 final class ContactSearchResultUI$c
 {
-  public ImageView doU;
-  public TextView drB;
-  public View icm;
-  public TextView icn;
-  View icq;
+  public ImageView egq;
+  public TextView ejj;
+  public View jTc;
+  public TextView jTd;
+  View jTg;
   public String username;
 }
 

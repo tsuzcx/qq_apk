@@ -1,79 +1,101 @@
 package com.tencent.mm.plugin.backup.i;
 
-import d.a.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import e.a.a.b;
 
 public final class ad
   extends com.tencent.mm.bv.a
 {
-  public String hQV;
-  public int hQW;
-  public int hQY;
-  public int hQZ;
-  public int hRb;
+  public int jKA;
+  public int jKC;
+  public String jKw;
+  public int jKx;
+  public int jKz;
   
-  protected final int a(int paramInt, Object... paramVarArgs)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
+    AppMethodBeat.i(18079);
     if (paramInt == 0)
     {
-      paramVarArgs = (d.a.a.c.a)paramVarArgs[0];
-      if (this.hQV == null) {
-        throw new b("Not all required fields were included: DataID");
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.jKw == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: DataID");
+        AppMethodBeat.o(18079);
+        throw paramVarArgs;
       }
-      if (this.hQV != null) {
-        paramVarArgs.d(1, this.hQV);
+      if (this.jKw != null) {
+        paramVarArgs.e(1, this.jKw);
       }
-      paramVarArgs.gB(2, this.hQW);
-      paramVarArgs.gB(3, this.hQY);
-      paramVarArgs.gB(4, this.hQZ);
-      paramVarArgs.gB(5, this.hRb);
+      paramVarArgs.aO(2, this.jKx);
+      paramVarArgs.aO(3, this.jKz);
+      paramVarArgs.aO(4, this.jKA);
+      paramVarArgs.aO(5, this.jKC);
+      AppMethodBeat.o(18079);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hQV == null) {
-        break label354;
+      if (this.jKw == null) {
+        break label457;
       }
     }
-    label354:
-    for (paramInt = d.a.a.b.b.a.e(1, this.hQV) + 0;; paramInt = 0)
+    label457:
+    for (paramInt = e.a.a.b.b.a.f(1, this.jKw) + 0;; paramInt = 0)
     {
-      return paramInt + d.a.a.a.gy(2, this.hQW) + d.a.a.a.gy(3, this.hQY) + d.a.a.a.gy(4, this.hQZ) + d.a.a.a.gy(5, this.hRb);
+      int i = e.a.a.b.b.a.bl(2, this.jKx);
+      int j = e.a.a.b.b.a.bl(3, this.jKz);
+      int k = e.a.a.b.b.a.bl(4, this.jKA);
+      int m = e.a.a.b.b.a.bl(5, this.jKC);
+      AppMethodBeat.o(18079);
+      return paramInt + i + j + k + m;
       if (paramInt == 2)
       {
-        paramVarArgs = new d.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bv.a.a(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.a(paramVarArgs)) {
-          if (!super.a(paramVarArgs, this, paramInt)) {
-            paramVarArgs.cUt();
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
           }
         }
-        if (this.hQV != null) {
-          break;
+        if (this.jKw == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: DataID");
+          AppMethodBeat.o(18079);
+          throw paramVarArgs;
         }
-        throw new b("Not all required fields were included: DataID");
+        AppMethodBeat.o(18079);
+        return 0;
       }
       if (paramInt == 3)
       {
-        d.a.a.a.a locala = (d.a.a.a.a)paramVarArgs[0];
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
         ad localad = (ad)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
+          AppMethodBeat.o(18079);
           return -1;
         case 1: 
-          localad.hQV = locala.xpH.readString();
+          localad.jKw = locala.CLY.readString();
+          AppMethodBeat.o(18079);
           return 0;
         case 2: 
-          localad.hQW = locala.xpH.oD();
+          localad.jKx = locala.CLY.sl();
+          AppMethodBeat.o(18079);
           return 0;
         case 3: 
-          localad.hQY = locala.xpH.oD();
+          localad.jKz = locala.CLY.sl();
+          AppMethodBeat.o(18079);
           return 0;
         case 4: 
-          localad.hQZ = locala.xpH.oD();
+          localad.jKA = locala.CLY.sl();
+          AppMethodBeat.o(18079);
           return 0;
         }
-        localad.hRb = locala.xpH.oD();
+        localad.jKC = locala.CLY.sl();
+        AppMethodBeat.o(18079);
         return 0;
       }
+      AppMethodBeat.o(18079);
       return -1;
     }
   }

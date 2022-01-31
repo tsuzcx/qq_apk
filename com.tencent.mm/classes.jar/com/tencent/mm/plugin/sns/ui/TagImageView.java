@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.sns.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.QFadeImageView;
 
 public class TagImageView
@@ -19,14 +20,18 @@ public class TagImageView
     return this.position;
   }
   
-  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
+    AppMethodBeat.i(39841);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    AppMethodBeat.o(39841);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
+    AppMethodBeat.i(39840);
     super.onMeasure(paramInt1, paramInt2);
+    AppMethodBeat.o(39840);
   }
   
   public void setPosition(int paramInt)

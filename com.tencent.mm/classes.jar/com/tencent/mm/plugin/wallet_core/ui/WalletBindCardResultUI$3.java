@@ -2,7 +2,8 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class WalletBindCardResultUI$3
   implements View.OnClickListener
@@ -11,8 +12,10 @@ final class WalletBindCardResultUI$3
   
   public final void onClick(View paramView)
   {
-    y.i("MicroMsg.WalletBindCardResultUI", "click activity button");
-    WalletBindCardResultUI.b(this.qBf);
+    AppMethodBeat.i(47188);
+    ab.i("MicroMsg.WalletBindCardResultUI", "click activity button");
+    WalletBindCardResultUI.b(this.unQ);
+    AppMethodBeat.o(47188);
   }
 }
 

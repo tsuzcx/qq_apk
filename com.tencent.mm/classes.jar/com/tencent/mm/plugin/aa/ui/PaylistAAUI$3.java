@@ -1,9 +1,8 @@
 package com.tencent.mm.plugin.aa.ui;
 
-import android.app.Dialog;
 import android.widget.Toast;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 import com.tencent.mm.vending.g.d.a;
 
 final class PaylistAAUI$3
@@ -11,18 +10,19 @@ final class PaylistAAUI$3
 {
   PaylistAAUI$3(PaylistAAUI paramPaylistAAUI) {}
   
-  public final void aE(Object paramObject)
+  public final void aX(Object paramObject)
   {
-    y.i("MicroMsg.PaylistAAUI", "close pay list failed: %s", new Object[] { paramObject });
-    if (PaylistAAUI.d(this.eZM) != null) {
-      PaylistAAUI.d(this.eZM).dismiss();
-    }
+    AppMethodBeat.i(40867);
+    ab.i("MicroMsg.PaylistAAUI", "close pay list failed: %s", new Object[] { paramObject });
+    this.grF.hideLoading();
     if ((paramObject instanceof String))
     {
-      Toast.makeText(this.eZM, paramObject.toString(), 1).show();
+      Toast.makeText(this.grF, paramObject.toString(), 1).show();
+      AppMethodBeat.o(40867);
       return;
     }
-    Toast.makeText(this.eZM, a.i.close_paylist_failed, 1).show();
+    Toast.makeText(this.grF, 2131298418, 1).show();
+    AppMethodBeat.o(40867);
   }
 }
 

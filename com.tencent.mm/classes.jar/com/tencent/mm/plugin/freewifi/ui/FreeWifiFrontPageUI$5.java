@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.plugin.freewifi.m;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiFrontPageUI$5
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
   FreeWifiFrontPageUI$5(FreeWifiFrontPageUI paramFreeWifiFrontPageUI) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void onClick(View paramView)
   {
-    m.dl(this.krP);
+    AppMethodBeat.i(20963);
+    FreeWifiFrontPageUI.b(this.mND);
+    AppMethodBeat.o(20963);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiFrontPageUI.5
  * JD-Core Version:    0.7.0.1
  */

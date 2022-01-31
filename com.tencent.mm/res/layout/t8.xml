@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView android:id="@id/b_5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2ViewPager android:id="@id/b_6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
-</LinearLayout>
+<android.support.design.internal.NavigationMenuView android:id="@id/bbi" android:paddingBottom="@dimen/z_" android:scrollbars="vertical" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.game.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class GameCenterUI5$1
   implements MenuItem.OnMenuItemClickListener
@@ -10,7 +11,9 @@ final class GameCenterUI5$1
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.kYC.finish();
+    AppMethodBeat.i(111787);
+    this.nwz.finish();
+    AppMethodBeat.o(111787);
     return true;
   }
 }

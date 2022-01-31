@@ -1,5 +1,7 @@
 package com.tencent.qqmusic.mediaplayer.seektable.mp3;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 class Mp3DecodeBase
 {
   static boolean hasId3v2(byte[] paramArrayOfByte, int paramInt)
@@ -53,7 +55,10 @@ class Mp3DecodeBase
   
   static int readByte(byte[] paramArrayOfByte, int paramInt)
   {
-    return readByte(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.i(128497);
+    paramInt = readByte(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.o(128497);
+    return paramInt;
   }
   
   static int readByte(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -66,7 +71,10 @@ class Mp3DecodeBase
   
   static int readInt(byte[] paramArrayOfByte, int paramInt)
   {
-    return readInt(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.i(128493);
+    paramInt = readInt(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.o(128493);
+    return paramInt;
   }
   
   static int readInt(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -79,7 +87,10 @@ class Mp3DecodeBase
   
   static long readLong(byte[] paramArrayOfByte, int paramInt)
   {
-    return readLong(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.i(128494);
+    long l = readLong(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.o(128494);
+    return l;
   }
   
   static long readLong(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -92,7 +103,10 @@ class Mp3DecodeBase
   
   static int readShort(byte[] paramArrayOfByte, int paramInt)
   {
-    return readShort(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.i(128496);
+    paramInt = readShort(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.o(128496);
+    return paramInt;
   }
   
   static int readShort(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -105,7 +119,10 @@ class Mp3DecodeBase
   
   static int readUnsignedInt24(byte[] paramArrayOfByte, int paramInt)
   {
-    return readUnsignedInt24(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.i(128495);
+    paramInt = readUnsignedInt24(paramArrayOfByte, 0, paramInt);
+    AppMethodBeat.o(128495);
+    return paramInt;
   }
   
   static int readUnsignedInt24(byte[] paramArrayOfByte, int paramInt1, int paramInt2)

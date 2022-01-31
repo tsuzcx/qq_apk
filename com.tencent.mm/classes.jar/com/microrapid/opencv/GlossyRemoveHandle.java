@@ -3,11 +3,21 @@ package com.microrapid.opencv;
 import android.graphics.Bitmap;
 import com.tencent.filter.MRect;
 import com.tencent.filter.QImage;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GlossyRemoveHandle
 {
-  private final long aVf = nativeHighLightRemoval();
-  private boolean aVg = false;
+  private final long blO;
+  private boolean blP;
+  
+  public GlossyRemoveHandle()
+  {
+    AppMethodBeat.i(86259);
+    this.blP = false;
+    this.blO = nativeHighLightRemoval();
+    this.blP = true;
+    AppMethodBeat.o(86259);
+  }
   
   private static native void nativeDispose(long paramLong);
   

@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.account.bind.ui;
 
-import com.tencent.mm.plugin.account.bind.a.i;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.l;
 import com.tencent.mm.ui.base.n.c;
 
@@ -9,15 +9,17 @@ final class BindMContactIntroUI$23$1
 {
   BindMContactIntroUI$23$1(BindMContactIntroUI.23 param23) {}
   
-  public final void a(l paraml)
+  public final void onCreateMMMenu(l paraml)
   {
-    paraml.setHeaderTitle(a.i.bind_mcontact_list_menu_title);
-    if ((this.fbJ.fbI & 0x2) != 0) {
-      paraml.fq(0, a.i.bind_mcontact_unbind_mobile_text);
+    AppMethodBeat.i(13431);
+    paraml.setHeaderTitle(2131297585);
+    if ((this.gtA.gtz & 0x2) != 0) {
+      paraml.hx(0, 2131297604);
     }
-    if ((this.fbJ.fbI & 0x1) != 0) {
-      paraml.fq(1, a.i.bind_mcontact_change_privacy);
+    if ((this.gtA.gtz & 0x1) != 0) {
+      paraml.hx(1, 2131297564);
     }
+    AppMethodBeat.o(13431);
   }
 }
 

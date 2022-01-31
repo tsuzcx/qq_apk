@@ -1,59 +1,68 @@
 package com.tencent.mm.plugin.sns.h;
 
-import com.tencent.mm.modelsns.b;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.Iterator;
-import java.util.Vector;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract class h
+public final class h
+  extends com.tencent.mm.bv.a
 {
-  private Vector<b> ozQ = new Vector();
+  public String qNI;
+  public int state;
   
-  public final b b(b paramb)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    this.ozQ.add(paramb);
-    return paramb;
-  }
-  
-  public final b bD(Object paramObject)
-  {
-    if (paramObject == null) {
-      return null;
-    }
-    try
+    AppMethodBeat.i(36831);
+    if (paramInt == 0)
     {
-      Iterator localIterator = this.ozQ.iterator();
-      while (localIterator.hasNext())
+      paramVarArgs = (e.a.a.c.a)paramVarArgs[0];
+      if (this.qNI != null) {
+        paramVarArgs.e(1, this.qNI);
+      }
+      paramVarArgs.aO(2, this.state);
+      AppMethodBeat.o(36831);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.qNI == null) {
+        break label258;
+      }
+    }
+    label258:
+    for (paramInt = e.a.a.b.b.a.f(1, this.qNI) + 0;; paramInt = 0)
+    {
+      int i = e.a.a.b.b.a.bl(2, this.state);
+      AppMethodBeat.o(36831);
+      return paramInt + i;
+      if (paramInt == 2)
       {
-        b localb = (b)localIterator.next();
-        if (paramObject.equals(localb.eAI))
-        {
-          this.ozQ.remove(localb);
-          return localb;
+        paramVarArgs = new e.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bv.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.eqQ();
+          }
         }
+        AppMethodBeat.o(36831);
+        return 0;
       }
-    }
-    catch (Exception localException)
-    {
-      y.e("MicroMsg.Ss_log_base_helper", "report by key " + localException.getMessage() + " " + paramObject);
-    }
-    return null;
-  }
-  
-  public final boolean c(b paramb)
-  {
-    Iterator localIterator = this.ozQ.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.eAK == paramb.eAK) {
-        this.ozQ.remove(localb);
+      if (paramInt == 3)
+      {
+        e.a.a.a.a locala = (e.a.a.a.a)paramVarArgs[0];
+        h localh = (h)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(36831);
+          return -1;
+        case 1: 
+          localh.qNI = locala.CLY.readString();
+          AppMethodBeat.o(36831);
+          return 0;
+        }
+        localh.state = locala.CLY.sl();
+        AppMethodBeat.o(36831);
+        return 0;
       }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      this.ozQ.add(paramb);
-      return bool;
+      AppMethodBeat.o(36831);
+      return -1;
     }
   }
 }

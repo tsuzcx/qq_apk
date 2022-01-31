@@ -1,6 +1,7 @@
 package com.tencent.mm.opensdk.modelmsg;
 
 import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 
 public class ShowMessageFromWX$Resp
@@ -10,7 +11,9 @@ public class ShowMessageFromWX$Resp
   
   public ShowMessageFromWX$Resp(Bundle paramBundle)
   {
+    AppMethodBeat.i(128257);
     fromBundle(paramBundle);
+    AppMethodBeat.o(128257);
   }
   
   public boolean checkArgs()

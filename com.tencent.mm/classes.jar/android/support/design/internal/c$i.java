@@ -1,6 +1,5 @@
 package android.support.design.internal;
 
-import android.support.design.a.h;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,7 +8,7 @@ final class c$i
 {
   public c$i(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup)
   {
-    super(paramLayoutInflater.inflate(a.h.design_navigation_item_subheader, paramViewGroup, false));
+    super(paramLayoutInflater.inflate(2130969314, paramViewGroup, false));
   }
 }
 

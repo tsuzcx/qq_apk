@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class b$1
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class b$1
   
   public final void run()
   {
-    this.iCF.notifyDataSetChanged();
+    AppMethodBeat.i(18746);
+    this.kHM.notifyDataSetChanged();
+    AppMethodBeat.o(18746);
   }
 }
 

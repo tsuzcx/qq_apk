@@ -3,33 +3,33 @@ package android.support.transition;
 import android.view.ViewGroup;
 
 final class ChangeBounds$10
-  extends ae
+  extends ad
 {
-  boolean pP = false;
+  boolean qM = false;
   
   ChangeBounds$10(ChangeBounds paramChangeBounds, ViewGroup paramViewGroup) {}
   
   public final void a(Transition paramTransition)
   {
-    if (!this.pP) {
-      ao.c(this.pQ, false);
+    if (!this.qM) {
+      an.c(this.qN, false);
     }
     paramTransition.b(this);
   }
   
-  public final void bq()
+  public final void ce()
   {
-    ao.c(this.pQ, false);
+    an.c(this.qN, false);
   }
   
-  public final void br()
+  public final void cf()
   {
-    ao.c(this.pQ, true);
+    an.c(this.qN, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.transition.ChangeBounds.10
  * JD-Core Version:    0.7.0.1
  */

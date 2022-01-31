@@ -1,17 +1,19 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FreeWifiFrontPageUI$2
-  implements MenuItem.OnMenuItemClickListener
+  implements DialogInterface.OnClickListener
 {
   FreeWifiFrontPageUI$2(FreeWifiFrontPageUI paramFreeWifiFrontPageUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FreeWifiFrontPageUI.a(this.krP);
-    return true;
+    AppMethodBeat.i(20960);
+    this.mND.finish();
+    AppMethodBeat.o(20960);
   }
 }
 

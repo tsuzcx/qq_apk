@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.qqmail.ui;
 
-import com.tencent.mm.plugin.qqmail.b.j;
-import com.tencent.mm.sdk.platformtools.am.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ap.a;
 import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.base.s;
+import com.tencent.mm.ui.base.t;
 
 final class ComposeUI$12
-  implements am.a
+  implements ap.a
 {
   ComposeUI$12(ComposeUI paramComposeUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if ((this.ngJ.ngm) && (ComposeUI.a(this.ngJ, false)) && (ComposeUI.a(this.ngJ) == 5))
+    AppMethodBeat.i(68184);
+    if ((this.pLX.pLA) && (ComposeUI.a(this.pLX, false)) && (ComposeUI.a(this.pLX) == 5))
     {
-      ComposeUI.b(this.ngJ);
-      if (ComposeUI.c(this.ngJ) != null) {
-        ComposeUI.c(this.ngJ).dismiss();
+      ComposeUI.b(this.pLX);
+      if (ComposeUI.c(this.pLX) != null) {
+        ComposeUI.c(this.pLX).dismiss();
       }
-      ComposeUI.a(this.ngJ, s.a(this.ngJ, this.ngJ.getString(b.j.plugin_qqmail_composeui_auto_save), 2000L));
+      ComposeUI.a(this.pLX, t.a(this.pLX, this.pLX.getString(2131302124), 2000L));
     }
+    AppMethodBeat.o(68184);
     return true;
   }
 }

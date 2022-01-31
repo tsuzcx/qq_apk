@@ -3,9 +3,10 @@ package com.tencent.mm.plugin.sight.decode.ui;
 import android.graphics.SurfaceTexture;
 import android.view.Surface;
 import android.view.TextureView.SurfaceTextureListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.sight.decode.a.b;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class SightPlayTextureView$1
   implements TextureView.SurfaceTextureListener
@@ -14,30 +15,36 @@ final class SightPlayTextureView$1
   
   public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.SightPlayTextureView", "on surface texture available, width %d height %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(24973);
+    ab.i("MicroMsg.SightPlayTextureView", "on surface texture available, width %d height %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     SightPlayTextureView.a locala = new SightPlayTextureView.a((byte)0);
-    locala.ofR = SightPlayTextureView.e(this.ofQ);
-    o.g(locala, 0L);
-    SightPlayTextureView.a(this.ofQ, new Surface(paramSurfaceTexture));
-    SightPlayTextureView.d(this.ofQ).e(SightPlayTextureView.e(this.ofQ));
-    this.ofQ.cBe();
+    locala.qUg = SightPlayTextureView.e(this.qUf);
+    o.j(locala, 0L);
+    SightPlayTextureView.a(this.qUf, new Surface(paramSurfaceTexture));
+    SightPlayTextureView.d(this.qUf).g(SightPlayTextureView.e(this.qUf));
+    this.qUf.dEs();
+    AppMethodBeat.o(24973);
   }
   
   public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
   {
-    y.i("MicroMsg.SightPlayTextureView", "on surface texture destroyed");
-    SightPlayTextureView.d(this.ofQ).e(null);
-    SightPlayTextureView.d(this.ofQ).clear();
+    AppMethodBeat.i(24972);
+    ab.i("MicroMsg.SightPlayTextureView", "on surface texture destroyed");
+    SightPlayTextureView.d(this.qUf).g(null);
+    SightPlayTextureView.d(this.qUf).clear();
     paramSurfaceTexture = new SightPlayTextureView.a((byte)0);
-    paramSurfaceTexture.ofR = SightPlayTextureView.e(this.ofQ);
-    o.g(paramSurfaceTexture, 0L);
-    SightPlayTextureView.a(this.ofQ, null);
+    paramSurfaceTexture.qUg = SightPlayTextureView.e(this.qUf);
+    o.j(paramSurfaceTexture, 0L);
+    SightPlayTextureView.a(this.qUf, null);
+    AppMethodBeat.o(24972);
     return false;
   }
   
   public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    y.i("MicroMsg.SightPlayTextureView", "on surface texture size changed, width " + paramInt1 + " height " + paramInt2);
+    AppMethodBeat.i(24971);
+    ab.i("MicroMsg.SightPlayTextureView", "on surface texture size changed, width " + paramInt1 + " height " + paramInt2);
+    AppMethodBeat.o(24971);
   }
   
   public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}

@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.qmessage;
 
-import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.n;
+import com.tencent.mm.pluginsdk.o;
 
 public final class a
-  implements n
+  implements o
 {
-  public static m eUR;
-  public static l ncr;
-  
-  public final void a(l paraml)
-  {
-    ncr = paraml;
-  }
+  public static n gmO;
+  public static m pHJ;
   
   public final void a(m paramm)
   {
-    eUR = paramm;
+    pHJ = paramm;
+  }
+  
+  public final void a(n paramn)
+  {
+    gmO = paramn;
   }
 }
 

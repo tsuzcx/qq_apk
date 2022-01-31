@@ -1,32 +1,35 @@
 package com.tencent.mm.plugin.webview.ui.tools;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.pluginsdk.permission.a;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.h.c;
-import com.tencent.mm.ui.s;
 
 final class OpenFileChooserUI$1
   implements h.c
 {
   OpenFileChooserUI$1(OpenFileChooserUI paramOpenFileChooserUI) {}
   
-  public final void gl(int paramInt)
+  public final void iA(int paramInt)
   {
-    boolean bool = a.a(this.rlE.mController.uMN, "android.permission.CAMERA", 16, "", "");
-    y.i("MicroMsg.OpenFileChooserUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bk.csb(), this.rlE.mController.uMN });
-    if (!bool) {
+    AppMethodBeat.i(7442);
+    boolean bool = b.a(this.vbg.getContext(), "android.permission.CAMERA", 16, "", "");
+    ab.i("MicroMsg.OpenFileChooserUI", "summerper checkPermission checkCamera[%b], stack[%s], activity[%s]", new Object[] { Boolean.valueOf(bool), bo.dtY(), this.vbg.getContext() });
+    if (!bool)
+    {
+      AppMethodBeat.o(7442);
       return;
     }
-    l.c(this.rlE.mController.uMN, e.dzD, "microMsg." + System.currentTimeMillis() + ".jpg", 2);
+    n.c(this.vbg.getContext(), e.esr, "microMsg." + System.currentTimeMillis() + ".jpg", 2);
+    AppMethodBeat.o(7442);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.OpenFileChooserUI.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,6 +5,7 @@ import com.eclipsesource.v8.Releasable;
 import com.eclipsesource.v8.V8;
 import com.eclipsesource.v8.V8Array;
 import com.eclipsesource.v8.V8Object;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
@@ -16,7 +17,7 @@ import java.util.List;
 public class V8DebugServer
 {
   private static final String DEBUG_BREAK_HANDLER = "__j2v8_debug_handler";
-  public static String DEBUG_OBJECT_NAME = "__j2v8_Debug";
+  public static String DEBUG_OBJECT_NAME;
   private static final String HEADER_EMBEDDING_HOST = "Embedding-Host: ";
   private static final String HEADER_PROTOCOL_VERSION = "Protocol-Version: ";
   private static final String HEADER_TYPE = "Type: ";
@@ -25,11 +26,11 @@ public class V8DebugServer
   private static final String MAKE_BREAK_EVENT = "__j2v8_MakeBreakEvent";
   private static final String MAKE_COMPILE_EVENT = "__j2v8_MakeCompileEvent";
   private static final int PROTOCOL_BUFFER_SIZE = 4096;
-  private static final Charset PROTOCOL_CHARSET = Charset.forName("UTF-8");
-  private static final byte[] PROTOCOL_CONTENT_LENGTH_BYTES = "Content-Length:".getBytes(PROTOCOL_CHARSET);
+  private static final Charset PROTOCOL_CHARSET;
+  private static final byte[] PROTOCOL_CONTENT_LENGTH_BYTES;
   private static final String PROTOCOL_CONTENT_LENGTH_HEADER = "Content-Length:";
   private static final String PROTOCOL_EOL = "\r\n";
-  private static final byte[] PROTOCOL_EOL_BYTES = "\r\n".getBytes(PROTOCOL_CHARSET);
+  private static final byte[] PROTOCOL_EOL_BYTES;
   private static final String PROTOCOL_VERSION = "1";
   private static final String SET_LISTENER = "setListener";
   private static final String V8_DEBUG_OBJECT = "Debug";
@@ -45,124 +46,150 @@ public class V8DebugServer
   private boolean traceCommunication;
   private boolean waitForConnection;
   
+  static
+  {
+    AppMethodBeat.i(74946);
+    DEBUG_OBJECT_NAME = "__j2v8_Debug";
+    PROTOCOL_CHARSET = Charset.forName("UTF-8");
+    PROTOCOL_EOL_BYTES = "\r\n".getBytes(PROTOCOL_CHARSET);
+    PROTOCOL_CONTENT_LENGTH_BYTES = "Content-Length:".getBytes(PROTOCOL_CHARSET);
+    AppMethodBeat.o(74946);
+  }
+  
   /* Error */
   public V8DebugServer(V8 paramV8, int paramInt, boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokespecial 114	java/lang/Object:<init>	()V
-    //   4: aload_0
-    //   5: new 4	java/lang/Object
-    //   8: dup
-    //   9: invokespecial 114	java/lang/Object:<init>	()V
-    //   12: putfield 116	com/eclipsesource/v8/debug/V8DebugServer:clientLock	Ljava/lang/Object;
-    //   15: aload_0
-    //   16: iconst_0
-    //   17: putfield 118	com/eclipsesource/v8/debug/V8DebugServer:traceCommunication	Z
+    //   1: invokespecial 122	java/lang/Object:<init>	()V
+    //   4: ldc 123
+    //   6: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: aload_0
+    //   10: new 4	java/lang/Object
+    //   13: dup
+    //   14: invokespecial 122	java/lang/Object:<init>	()V
+    //   17: putfield 125	com/eclipsesource/v8/debug/V8DebugServer:clientLock	Ljava/lang/Object;
     //   20: aload_0
-    //   21: new 120	java/util/LinkedList
-    //   24: dup
-    //   25: invokespecial 121	java/util/LinkedList:<init>	()V
-    //   28: putfield 123	com/eclipsesource/v8/debug/V8DebugServer:requests	Ljava/util/List;
-    //   31: aload_0
-    //   32: aload_1
-    //   33: putfield 125	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
+    //   21: iconst_0
+    //   22: putfield 127	com/eclipsesource/v8/debug/V8DebugServer:traceCommunication	Z
+    //   25: aload_0
+    //   26: new 129	java/util/LinkedList
+    //   29: dup
+    //   30: invokespecial 130	java/util/LinkedList:<init>	()V
+    //   33: putfield 132	com/eclipsesource/v8/debug/V8DebugServer:requests	Ljava/util/List;
     //   36: aload_0
-    //   37: iload_3
-    //   38: putfield 127	com/eclipsesource/v8/debug/V8DebugServer:waitForConnection	Z
-    //   41: aload_1
-    //   42: getstatic 87	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   45: invokevirtual 133	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   48: astore 4
-    //   50: aload 4
-    //   52: ifnonnull +12 -> 64
-    //   55: getstatic 139	java/lang/System:err	Ljava/io/PrintStream;
-    //   58: ldc 141
-    //   60: invokevirtual 147	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   63: return
-    //   64: aload_0
-    //   65: aload 4
-    //   67: ldc 60
-    //   69: invokevirtual 150	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   72: putfield 152	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   37: aload_1
+    //   38: putfield 134	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
+    //   41: aload_0
+    //   42: iload_3
+    //   43: putfield 136	com/eclipsesource/v8/debug/V8DebugServer:waitForConnection	Z
+    //   46: aload_1
+    //   47: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   50: invokevirtual 142	com/eclipsesource/v8/V8:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   53: astore 4
+    //   55: aload 4
+    //   57: ifnonnull +17 -> 74
+    //   60: getstatic 148	java/lang/System:err	Ljava/io/PrintStream;
+    //   63: ldc 150
+    //   65: invokevirtual 156	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   68: ldc 123
+    //   70: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: return
+    //   74: aload_0
     //   75: aload 4
-    //   77: invokevirtual 155	com/eclipsesource/v8/V8Object:release	()V
-    //   80: aload_1
-    //   81: new 157	java/lang/StringBuilder
-    //   84: dup
-    //   85: ldc 159
-    //   87: invokespecial 161	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   90: getstatic 87	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   93: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   96: ldc 167
-    //   98: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: getstatic 87	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   104: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: ldc 169
-    //   109: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: getstatic 87	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   115: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: ldc 171
-    //   120: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: getstatic 87	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   126: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: ldc 173
-    //   131: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: getstatic 87	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
-    //   137: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: ldc 175
-    //   142: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokevirtual 182	com/eclipsesource/v8/V8:executeVoidScript	(Ljava/lang/String;)V
-    //   151: aload_0
-    //   152: new 184	java/net/ServerSocket
-    //   155: dup
-    //   156: iload_2
-    //   157: invokespecial 187	java/net/ServerSocket:<init>	(I)V
-    //   160: putfield 189	com/eclipsesource/v8/debug/V8DebugServer:server	Ljava/net/ServerSocket;
-    //   163: return
-    //   164: astore_1
-    //   165: aload_0
-    //   166: aload_1
-    //   167: invokevirtual 193	com/eclipsesource/v8/debug/V8DebugServer:logError	(Ljava/lang/Throwable;)V
-    //   170: return
-    //   171: astore_1
-    //   172: aload 4
-    //   174: invokevirtual 155	com/eclipsesource/v8/V8Object:release	()V
-    //   177: aload_1
-    //   178: athrow
+    //   77: ldc 58
+    //   79: invokevirtual 159	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   82: putfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   85: aload 4
+    //   87: invokevirtual 164	com/eclipsesource/v8/V8Object:release	()V
+    //   90: aload_1
+    //   91: new 166	java/lang/StringBuilder
+    //   94: dup
+    //   95: ldc 168
+    //   97: invokespecial 170	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   100: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   103: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: ldc 176
+    //   108: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   114: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   117: ldc 178
+    //   119: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   125: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: ldc 180
+    //   130: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   136: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: ldc 182
+    //   141: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: getstatic 92	com/eclipsesource/v8/debug/V8DebugServer:DEBUG_OBJECT_NAME	Ljava/lang/String;
+    //   147: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: ldc 184
+    //   152: invokevirtual 174	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: invokevirtual 188	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   158: invokevirtual 191	com/eclipsesource/v8/V8:executeVoidScript	(Ljava/lang/String;)V
+    //   161: aload_0
+    //   162: new 193	java/net/ServerSocket
+    //   165: dup
+    //   166: iload_2
+    //   167: invokespecial 195	java/net/ServerSocket:<init>	(I)V
+    //   170: putfield 197	com/eclipsesource/v8/debug/V8DebugServer:server	Ljava/net/ServerSocket;
+    //   173: ldc 123
+    //   175: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   178: return
+    //   179: astore_1
+    //   180: aload 4
+    //   182: invokevirtual 164	com/eclipsesource/v8/V8Object:release	()V
+    //   185: ldc 123
+    //   187: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   190: aload_1
+    //   191: athrow
+    //   192: astore_1
+    //   193: aload_0
+    //   194: aload_1
+    //   195: invokevirtual 201	com/eclipsesource/v8/debug/V8DebugServer:logError	(Ljava/lang/Throwable;)V
+    //   198: ldc 123
+    //   200: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   203: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	179	0	this	V8DebugServer
-    //   0	179	1	paramV8	V8
-    //   0	179	2	paramInt	int
-    //   0	179	3	paramBoolean	boolean
-    //   48	125	4	localV8Object	V8Object
+    //   0	204	0	this	V8DebugServer
+    //   0	204	1	paramV8	V8
+    //   0	204	2	paramInt	int
+    //   0	204	3	paramBoolean	boolean
+    //   53	128	4	localV8Object	V8Object
     // Exception table:
     //   from	to	target	type
-    //   151	163	164	java/lang/Exception
-    //   64	75	171	finally
+    //   74	85	179	finally
+    //   161	173	192	java/lang/Exception
   }
   
   public static void configureV8ForDebugging()
   {
+    AppMethodBeat.i(74929);
     try
     {
       V8.setFlags("-expose-debug-as=" + DEBUG_OBJECT_NAME);
+      AppMethodBeat.o(74929);
       return;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(74929);
+    }
   }
   
   private void enterBreakLoop(V8Object paramV8Object1, V8Object paramV8Object2)
   {
+    AppMethodBeat.i(74940);
     V8Array localV8Array1;
     try
     {
       localV8Array1 = new V8Array(this.runtime);
       int i;
       V8Array localV8Array2;
-      label157:
+      label156:
       boolean bool;
       localV8Array2.release();
     }
@@ -176,7 +203,7 @@ public class V8DebugServer
         i = paramV8Object1.getInteger("break_id");
         localV8Array1 = paramV8Object2.getArray("break_points_hit_");
         localV8Array2 = new V8Array(this.runtime);
-        this.stoppedStateDcp.release();
+        this.stoppedStateDcp = null;
       }
       finally
       {
@@ -191,7 +218,7 @@ public class V8DebugServer
         {
           paramV8Object2 = paramV8Object1.executeStringFunction("toJSONProtocol", null);
           if (this.traceCommunication) {
-            System.out.println("Sending event (Break):\n" + paramV8Object2);
+            System.out.println("Sending event (Break):\n".concat(String.valueOf(paramV8Object2)));
           }
           sendJson(paramV8Object2);
           localV8Array2.release();
@@ -202,11 +229,11 @@ public class V8DebugServer
           for (;;)
           {
             if (!isConnected()) {
-              break label242;
+              break label259;
             }
             bool = this.stoppedStateDcp.executeBooleanFunction("isRunning", null);
             if (bool) {
-              break label242;
+              break label259;
             }
             try
             {
@@ -214,41 +241,44 @@ public class V8DebugServer
             }
             catch (InterruptedException paramV8Object1) {}
           }
-          break label157;
+          break label156;
           paramV8Object1 = finally;
           localV8Array1.release();
+          AppMethodBeat.o(74940);
           throw paramV8Object1;
         }
         finally
         {
-          break label222;
+          break label233;
         }
         paramV8Object1 = finally;
+        this.stoppedStateDcp.release();
       }
-      this.stoppedStateDcp = null;
+      AppMethodBeat.o(74940);
     }
-    label222:
+    label233:
     localV8Array1.release();
     if (paramV8Object1 != null) {
       paramV8Object1.release();
     }
+    AppMethodBeat.o(74940);
     throw paramV8Object2;
-    label242:
+    label259:
     this.stoppedStateDcp.release();
     this.stoppedStateDcp = null;
+    AppMethodBeat.o(74940);
   }
   
   private boolean isConnected()
   {
-    for (;;)
+    AppMethodBeat.i(74936);
+    synchronized (this.clientLock)
     {
-      synchronized (this.clientLock)
+      if ((this.server != null) && (this.client != null) && (this.client.isConnected()))
       {
-        if ((this.server != null) && (this.client != null) && (this.client.isConnected()))
-        {
-          bool = true;
-          return bool;
-        }
+        bool = true;
+        AppMethodBeat.o(74936);
+        return bool;
       }
       boolean bool = false;
     }
@@ -256,6 +286,7 @@ public class V8DebugServer
   
   private void processRequest(String paramString)
   {
+    AppMethodBeat.i(74938);
     if (this.traceCommunication) {
       System.out.println("Got message: \n" + paramString.substring(0, Math.min(paramString.length(), 1000)));
     }
@@ -279,6 +310,7 @@ public class V8DebugServer
         System.out.println("Returning response: \n" + ((String)localObject).substring(0, Math.min(((String)localObject).length(), 1000)));
       }
       sendJson((String)localObject);
+      AppMethodBeat.o(74938);
       return;
     }
   }
@@ -286,59 +318,68 @@ public class V8DebugServer
   private void sendCompileEvent(V8Object paramV8Object)
   {
     V8Object localV8Object1 = null;
-    if (!isConnected()) {}
-    for (;;)
+    AppMethodBeat.i(74941);
+    if (!isConnected())
     {
+      AppMethodBeat.o(74941);
       return;
-      int i = paramV8Object.getInteger("type_");
-      V8Object localV8Object2 = paramV8Object.getObject("script_");
-      V8Array localV8Array = new V8Array(this.runtime);
-      paramV8Object = localV8Object1;
-      try
-      {
-        localV8Array.push(localV8Object2);
-        paramV8Object = localV8Object1;
-        localV8Array.push(i);
-        paramV8Object = localV8Object1;
-        localV8Object1 = this.debugObject.executeObjectFunction("__j2v8_MakeCompileEvent", localV8Array);
-        paramV8Object = localV8Object1;
-        String str = localV8Object1.executeStringFunction("toJSONProtocol", null);
-        paramV8Object = localV8Object1;
-        if (this.traceCommunication)
-        {
-          paramV8Object = localV8Object1;
-          System.out.println("Sending event (CompileEvent):\n" + str.substring(0, Math.min(str.length(), 1000)));
-        }
-        paramV8Object = localV8Object1;
-        if (str.length() > 0)
-        {
-          paramV8Object = localV8Object1;
-          sendJson(str);
-        }
-        return;
-      }
-      finally
-      {
-        localV8Array.release();
-        localV8Object2.release();
-        if (paramV8Object != null) {
-          paramV8Object.release();
-        }
-      }
     }
+    int i = paramV8Object.getInteger("type_");
+    V8Object localV8Object2 = paramV8Object.getObject("script_");
+    V8Array localV8Array = new V8Array(this.runtime);
+    paramV8Object = localV8Object1;
+    try
+    {
+      localV8Array.push(localV8Object2);
+      paramV8Object = localV8Object1;
+      localV8Array.push(i);
+      paramV8Object = localV8Object1;
+      localV8Object1 = this.debugObject.executeObjectFunction("__j2v8_MakeCompileEvent", localV8Array);
+      paramV8Object = localV8Object1;
+      String str = localV8Object1.executeStringFunction("toJSONProtocol", null);
+      paramV8Object = localV8Object1;
+      if (this.traceCommunication)
+      {
+        paramV8Object = localV8Object1;
+        System.out.println("Sending event (CompileEvent):\n" + str.substring(0, Math.min(str.length(), 1000)));
+      }
+      paramV8Object = localV8Object1;
+      if (str.length() > 0)
+      {
+        paramV8Object = localV8Object1;
+        sendJson(str);
+      }
+      return;
+    }
+    finally
+    {
+      localV8Array.release();
+      localV8Object2.release();
+      if (paramV8Object != null) {
+        paramV8Object.release();
+      }
+      AppMethodBeat.o(74941);
+    }
+    AppMethodBeat.o(74941);
   }
   
   private void sendJson(String paramString)
   {
+    AppMethodBeat.i(74934);
     sendMessage("", paramString.replace("\\/", "/"));
+    AppMethodBeat.o(74934);
   }
   
   private void sendMessage(String paramString1, String paramString2)
   {
+    AppMethodBeat.i(74935);
     synchronized (this.clientLock)
     {
-      if (!isConnected()) {
-        throw new IOException("There is no connected client.");
+      if (!isConnected())
+      {
+        paramString1 = new IOException("There is no connected client.");
+        AppMethodBeat.o(74935);
+        throw paramString1;
       }
     }
     paramString2 = paramString2.getBytes(PROTOCOL_CHARSET);
@@ -352,116 +393,131 @@ public class V8DebugServer
     if (paramString2.length > 0) {
       this.client.getOutputStream().write(paramString2);
     }
+    AppMethodBeat.o(74935);
   }
   
   /* Error */
   private void setupEventHandler()
   {
     // Byte code:
-    //   0: new 10	com/eclipsesource/v8/debug/V8DebugServer$EventHandler
-    //   3: dup
-    //   4: aload_0
-    //   5: aconst_null
-    //   6: invokespecial 405	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:<init>	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/debug/V8DebugServer$1;)V
-    //   9: astore_1
+    //   0: ldc_w 430
+    //   3: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: new 8	com/eclipsesource/v8/debug/V8DebugServer$EventHandler
+    //   9: dup
     //   10: aload_0
-    //   11: getfield 152	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
-    //   14: aload_1
-    //   15: ldc 15
-    //   17: invokevirtual 409	com/eclipsesource/v8/V8Object:registerJavaMethod	(Lcom/eclipsesource/v8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   20: pop
-    //   21: aload_0
-    //   22: getfield 152	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
-    //   25: ldc 15
-    //   27: invokevirtual 150	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
-    //   30: checkcast 411	com/eclipsesource/v8/V8Function
-    //   33: astore_1
-    //   34: new 249	com/eclipsesource/v8/V8Array
-    //   37: dup
-    //   38: aload_0
-    //   39: getfield 125	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
-    //   42: invokespecial 252	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
-    //   45: aload_1
-    //   46: invokevirtual 283	com/eclipsesource/v8/V8Array:push	(Lcom/eclipsesource/v8/V8Value;)Lcom/eclipsesource/v8/V8Array;
-    //   49: astore_2
-    //   50: aload_0
-    //   51: getfield 152	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
-    //   54: ldc 57
-    //   56: aload_2
-    //   57: invokevirtual 337	com/eclipsesource/v8/V8Object:executeFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Ljava/lang/Object;
-    //   60: pop
-    //   61: aload_1
-    //   62: ifnull +14 -> 76
-    //   65: aload_1
-    //   66: invokevirtual 414	com/eclipsesource/v8/V8Function:isReleased	()Z
-    //   69: ifne +7 -> 76
-    //   72: aload_1
-    //   73: invokevirtual 415	com/eclipsesource/v8/V8Function:release	()V
-    //   76: aload_2
-    //   77: ifnull +14 -> 91
-    //   80: aload_2
-    //   81: invokevirtual 416	com/eclipsesource/v8/V8Array:isReleased	()Z
-    //   84: ifne +7 -> 91
-    //   87: aload_2
-    //   88: invokevirtual 265	com/eclipsesource/v8/V8Array:release	()V
-    //   91: return
-    //   92: astore_1
-    //   93: aconst_null
-    //   94: astore_2
-    //   95: aconst_null
-    //   96: astore_3
-    //   97: aload_3
-    //   98: ifnull +14 -> 112
-    //   101: aload_3
-    //   102: invokevirtual 414	com/eclipsesource/v8/V8Function:isReleased	()Z
-    //   105: ifne +7 -> 112
-    //   108: aload_3
-    //   109: invokevirtual 415	com/eclipsesource/v8/V8Function:release	()V
-    //   112: aload_2
-    //   113: ifnull +14 -> 127
-    //   116: aload_2
-    //   117: invokevirtual 416	com/eclipsesource/v8/V8Array:isReleased	()Z
-    //   120: ifne +7 -> 127
-    //   123: aload_2
-    //   124: invokevirtual 265	com/eclipsesource/v8/V8Array:release	()V
-    //   127: aload_1
-    //   128: athrow
-    //   129: astore 4
-    //   131: aconst_null
-    //   132: astore_2
-    //   133: aload_1
-    //   134: astore_3
-    //   135: aload 4
-    //   137: astore_1
-    //   138: goto -41 -> 97
-    //   141: astore 4
-    //   143: aload_1
-    //   144: astore_3
-    //   145: aload 4
-    //   147: astore_1
-    //   148: goto -51 -> 97
+    //   11: aconst_null
+    //   12: invokespecial 433	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:<init>	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/debug/V8DebugServer$1;)V
+    //   15: astore_1
+    //   16: aload_0
+    //   17: getfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   20: aload_1
+    //   21: ldc 13
+    //   23: invokevirtual 437	com/eclipsesource/v8/V8Object:registerJavaMethod	(Lcom/eclipsesource/v8/JavaVoidCallback;Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   26: pop
+    //   27: aload_0
+    //   28: getfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   31: ldc 13
+    //   33: invokevirtual 159	com/eclipsesource/v8/V8Object:getObject	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Object;
+    //   36: checkcast 439	com/eclipsesource/v8/V8Function
+    //   39: astore_1
+    //   40: new 263	com/eclipsesource/v8/V8Array
+    //   43: dup
+    //   44: aload_0
+    //   45: getfield 134	com/eclipsesource/v8/debug/V8DebugServer:runtime	Lcom/eclipsesource/v8/V8;
+    //   48: invokespecial 266	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
+    //   51: aload_1
+    //   52: invokevirtual 297	com/eclipsesource/v8/V8Array:push	(Lcom/eclipsesource/v8/V8Value;)Lcom/eclipsesource/v8/V8Array;
+    //   55: astore_2
+    //   56: aload_0
+    //   57: getfield 161	com/eclipsesource/v8/debug/V8DebugServer:debugObject	Lcom/eclipsesource/v8/V8Object;
+    //   60: ldc 55
+    //   62: aload_2
+    //   63: invokevirtual 361	com/eclipsesource/v8/V8Object:executeFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Ljava/lang/Object;
+    //   66: pop
+    //   67: aload_1
+    //   68: ifnull +14 -> 82
+    //   71: aload_1
+    //   72: invokevirtual 442	com/eclipsesource/v8/V8Function:isReleased	()Z
+    //   75: ifne +7 -> 82
+    //   78: aload_1
+    //   79: invokevirtual 443	com/eclipsesource/v8/V8Function:release	()V
+    //   82: aload_2
+    //   83: ifnull +64 -> 147
+    //   86: aload_2
+    //   87: invokevirtual 444	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   90: ifne +57 -> 147
+    //   93: aload_2
+    //   94: invokevirtual 279	com/eclipsesource/v8/V8Array:release	()V
+    //   97: ldc_w 430
+    //   100: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   103: return
+    //   104: astore_1
+    //   105: aconst_null
+    //   106: astore_2
+    //   107: aconst_null
+    //   108: astore_3
+    //   109: aload_3
+    //   110: ifnull +14 -> 124
+    //   113: aload_3
+    //   114: invokevirtual 442	com/eclipsesource/v8/V8Function:isReleased	()Z
+    //   117: ifne +7 -> 124
+    //   120: aload_3
+    //   121: invokevirtual 443	com/eclipsesource/v8/V8Function:release	()V
+    //   124: aload_2
+    //   125: ifnull +14 -> 139
+    //   128: aload_2
+    //   129: invokevirtual 444	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   132: ifne +7 -> 139
+    //   135: aload_2
+    //   136: invokevirtual 279	com/eclipsesource/v8/V8Array:release	()V
+    //   139: ldc_w 430
+    //   142: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: aload_1
+    //   146: athrow
+    //   147: ldc_w 430
+    //   150: invokestatic 115	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   153: return
+    //   154: astore 4
+    //   156: aconst_null
+    //   157: astore_2
+    //   158: aload_1
+    //   159: astore_3
+    //   160: aload 4
+    //   162: astore_1
+    //   163: goto -54 -> 109
+    //   166: astore 4
+    //   168: aload_1
+    //   169: astore_3
+    //   170: aload 4
+    //   172: astore_1
+    //   173: goto -64 -> 109
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	151	0	this	V8DebugServer
-    //   9	64	1	localObject1	Object
-    //   92	42	1	localObject2	Object
-    //   137	11	1	localObject3	Object
-    //   49	84	2	localV8Array	V8Array
-    //   96	49	3	localObject4	Object
-    //   129	7	4	localObject5	Object
-    //   141	5	4	localObject6	Object
+    //   0	176	0	this	V8DebugServer
+    //   15	64	1	localObject1	Object
+    //   104	55	1	localObject2	Object
+    //   162	11	1	localObject3	Object
+    //   55	103	2	localV8Array	V8Array
+    //   108	62	3	localObject4	Object
+    //   154	7	4	localObject5	Object
+    //   166	5	4	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   21	34	92	finally
-    //   34	50	129	finally
-    //   50	61	141	finally
+    //   27	40	104	finally
+    //   40	56	154	finally
+    //   56	67	166	finally
   }
   
   public int getPort()
   {
-    if ((this.server != null) && (this.server.isBound())) {
-      return this.server.getLocalPort();
+    AppMethodBeat.i(74931);
+    if ((this.server != null) && (this.server.isBound()))
+    {
+      int i = this.server.getLocalPort();
+      AppMethodBeat.o(74931);
+      return i;
     }
+    AppMethodBeat.o(74931);
     return -1;
   }
   
@@ -469,11 +525,14 @@ public class V8DebugServer
   
   public void processRequests(long paramLong)
   {
-    if (this.server == null) {
+    AppMethodBeat.i(74937);
+    if (this.server == null)
+    {
+      AppMethodBeat.o(74937);
       return;
     }
     long l = System.currentTimeMillis();
-    label111:
+    label129:
     do
     {
       do
@@ -488,7 +547,7 @@ public class V8DebugServer
             int j = arrayOfString.length;
             i = 0;
             if (i >= j) {
-              break label111;
+              break label129;
             }
             ??? = arrayOfString[i];
           }
@@ -498,6 +557,7 @@ public class V8DebugServer
             i += 1;
             continue;
             localObject = finally;
+            AppMethodBeat.o(74937);
             throw localObject;
           }
           catch (Exception localException)
@@ -512,10 +572,8 @@ public class V8DebugServer
       if (paramLong > 0L) {
         Thread.sleep(10L);
       }
-      if (paramLong <= 0L) {
-        break;
-      }
-    } while (l + paramLong > System.currentTimeMillis());
+    } while ((paramLong > 0L) && (l + paramLong > System.currentTimeMillis()));
+    AppMethodBeat.o(74937);
   }
   
   public void setTraceCommunication(boolean paramBoolean)
@@ -525,43 +583,52 @@ public class V8DebugServer
   
   public void start()
   {
-    if (this.server == null) {}
-    boolean bool;
-    do
+    AppMethodBeat.i(74932);
+    if (this.server == null)
     {
+      AppMethodBeat.o(74932);
       return;
-      bool = this.waitForConnection;
-      ??? = new Thread(new V8DebugServer.ClientLoop(this, null), "J2V8 Debugger Server");
-      ((Thread)???).setDaemon(true);
-      ((Thread)???).start();
-      setupEventHandler();
-      this.runningStateDcp = this.runtime.executeObjectScript("(function() {return new " + DEBUG_OBJECT_NAME + ".DebugCommandProcessor(null, true)})()");
-    } while (!bool);
-    synchronized (this.clientLock)
+    }
+    boolean bool = this.waitForConnection;
+    ??? = new Thread(new V8DebugServer.ClientLoop(this, null), "J2V8 Debugger Server");
+    ((Thread)???).setDaemon(true);
+    ((Thread)???).start();
+    setupEventHandler();
+    this.runningStateDcp = this.runtime.executeObjectScript("(function() {return new " + DEBUG_OBJECT_NAME + ".DebugCommandProcessor(null, true)})()");
+    if (bool)
     {
-      for (;;)
+      synchronized (this.clientLock)
       {
-        bool = this.waitForConnection;
-        if (!bool) {
-          break;
-        }
-        try
+        for (;;)
         {
-          this.clientLock.wait();
+          bool = this.waitForConnection;
+          if (!bool) {
+            break;
+          }
+          try
+          {
+            this.clientLock.wait();
+          }
+          catch (InterruptedException localInterruptedException2) {}
         }
-        catch (InterruptedException localInterruptedException2) {}
       }
       try
       {
         processRequests(100L);
+        AppMethodBeat.o(74932);
         return;
       }
       catch (InterruptedException localInterruptedException1) {}
+      localObject2 = finally;
+      AppMethodBeat.o(74932);
+      throw localObject2;
     }
+    AppMethodBeat.o(74932);
   }
   
   public void stop()
   {
+    AppMethodBeat.i(74933);
     for (;;)
     {
       try
@@ -595,224 +662,236 @@ public class V8DebugServer
           this.stoppedStateDcp.release();
           this.stoppedStateDcp = null;
         }
+        AppMethodBeat.o(74933);
         return;
       }
     }
   }
   
-  private class EventHandler
+  class EventHandler
     implements JavaVoidCallback
   {
     private EventHandler() {}
     
     private void safeRelease(Releasable paramReleasable)
     {
+      AppMethodBeat.i(74928);
       if (paramReleasable != null) {
         paramReleasable.release();
       }
+      AppMethodBeat.o(74928);
     }
     
     /* Error */
     public void invoke(V8Object paramV8Object, V8Array paramV8Array)
     {
       // Byte code:
-      //   0: aload_2
-      //   1: ifnull +10 -> 11
-      //   4: aload_2
-      //   5: invokevirtual 39	com/eclipsesource/v8/V8Array:isUndefined	()Z
-      //   8: ifeq +4 -> 12
-      //   11: return
-      //   12: aload_2
-      //   13: iconst_0
-      //   14: invokevirtual 43	com/eclipsesource/v8/V8Array:getInteger	(I)I
-      //   17: istore_3
-      //   18: aload_2
-      //   19: iconst_1
-      //   20: invokevirtual 47	com/eclipsesource/v8/V8Array:getObject	(I)Lcom/eclipsesource/v8/V8Object;
-      //   23: astore 5
-      //   25: aload_2
-      //   26: iconst_2
-      //   27: invokevirtual 47	com/eclipsesource/v8/V8Array:getObject	(I)Lcom/eclipsesource/v8/V8Object;
-      //   30: astore_2
-      //   31: aload_2
-      //   32: astore 6
-      //   34: aload 5
-      //   36: astore 7
-      //   38: aload_0
-      //   39: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
-      //   42: invokestatic 51	com/eclipsesource/v8/debug/V8DebugServer:access$200	(Lcom/eclipsesource/v8/debug/V8DebugServer;)Z
-      //   45: ifeq +84 -> 129
-      //   48: ldc 53
-      //   50: astore_1
-      //   51: iload_3
-      //   52: tableswitch	default:+295 -> 347, 1:+110->162, 2:+298->350, 3:+304->356, 4:+310->362, 5:+316->368, 6:+322->374, 7:+328->380, 8:+116->168
-      //   101: astore 6
-      //   103: aload 5
-      //   105: astore 7
-      //   107: getstatic 59	java/lang/System:out	Ljava/io/PrintStream;
-      //   110: new 61	java/lang/StringBuilder
-      //   113: dup
-      //   114: ldc 63
-      //   116: invokespecial 66	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   119: aload_1
-      //   120: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   123: invokevirtual 74	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   126: invokevirtual 79	java/io/PrintStream:println	(Ljava/lang/String;)V
-      //   129: aload_2
-      //   130: astore 6
-      //   132: aload 5
-      //   134: astore 7
-      //   136: aload_0
-      //   137: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
-      //   140: invokestatic 82	com/eclipsesource/v8/debug/V8DebugServer:access$300	(Lcom/eclipsesource/v8/debug/V8DebugServer;)Z
-      //   143: istore 4
-      //   145: iload 4
-      //   147: ifne +27 -> 174
-      //   150: aload_0
-      //   151: aload 5
-      //   153: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   156: aload_0
-      //   157: aload_2
-      //   158: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   161: return
-      //   162: ldc 86
-      //   164: astore_1
-      //   165: goto -65 -> 100
-      //   168: ldc 88
+      //   0: ldc 44
+      //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   5: aload_2
+      //   6: ifnull +10 -> 16
+      //   9: aload_2
+      //   10: invokevirtual 50	com/eclipsesource/v8/V8Array:isUndefined	()Z
+      //   13: ifeq +9 -> 22
+      //   16: ldc 44
+      //   18: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   21: return
+      //   22: aload_2
+      //   23: iconst_0
+      //   24: invokevirtual 54	com/eclipsesource/v8/V8Array:getInteger	(I)I
+      //   27: istore_3
+      //   28: aload_2
+      //   29: iconst_1
+      //   30: invokevirtual 58	com/eclipsesource/v8/V8Array:getObject	(I)Lcom/eclipsesource/v8/V8Object;
+      //   33: astore 5
+      //   35: aload_2
+      //   36: iconst_2
+      //   37: invokevirtual 58	com/eclipsesource/v8/V8Array:getObject	(I)Lcom/eclipsesource/v8/V8Object;
+      //   40: astore_2
+      //   41: aload_2
+      //   42: astore 6
+      //   44: aload 5
+      //   46: astore 7
+      //   48: aload_0
+      //   49: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
+      //   52: invokestatic 62	com/eclipsesource/v8/debug/V8DebugServer:access$200	(Lcom/eclipsesource/v8/debug/V8DebugServer;)Z
+      //   55: ifeq +75 -> 130
+      //   58: ldc 64
+      //   60: astore_1
+      //   61: iload_3
+      //   62: tableswitch	default:+308 -> 370, 1:+106->168, 2:+311->373, 3:+317->379, 4:+323->385, 5:+329->391, 6:+335->397, 7:+341->403, 8:+112->174
+      //   109: astore 6
+      //   111: aload 5
+      //   113: astore 7
+      //   115: getstatic 70	java/lang/System:out	Ljava/io/PrintStream;
+      //   118: ldc 72
+      //   120: aload_1
+      //   121: invokestatic 78	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   124: invokevirtual 82	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   127: invokevirtual 88	java/io/PrintStream:println	(Ljava/lang/String;)V
+      //   130: aload_2
+      //   131: astore 6
+      //   133: aload 5
+      //   135: astore 7
+      //   137: aload_0
+      //   138: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
+      //   141: invokestatic 91	com/eclipsesource/v8/debug/V8DebugServer:access$300	(Lcom/eclipsesource/v8/debug/V8DebugServer;)Z
+      //   144: istore 4
+      //   146: iload 4
+      //   148: ifne +32 -> 180
+      //   151: aload_0
+      //   152: aload 5
+      //   154: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+      //   157: aload_0
+      //   158: aload_2
+      //   159: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+      //   162: ldc 44
+      //   164: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   167: return
+      //   168: ldc 95
       //   170: astore_1
-      //   171: goto -71 -> 100
-      //   174: iload_3
-      //   175: tableswitch	default:+37 -> 212, 1:+49->224, 2:+37->212, 3:+37->212, 4:+37->212, 5:+103->278, 6:+103->278
-      //   213: aload 5
-      //   215: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   218: aload_0
-      //   219: aload_2
-      //   220: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   223: return
-      //   224: aload_2
-      //   225: astore 6
-      //   227: aload 5
-      //   229: astore 7
-      //   231: aload_0
-      //   232: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
-      //   235: aload 5
+      //   171: goto -63 -> 108
+      //   174: ldc 97
+      //   176: astore_1
+      //   177: goto -69 -> 108
+      //   180: iload_3
+      //   181: tableswitch	default:+39 -> 220, 1:+56->237, 2:+39->220, 3:+39->220, 4:+39->220, 5:+115->296, 6:+115->296
+      //   221: aload 5
+      //   223: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+      //   226: aload_0
+      //   227: aload_2
+      //   228: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+      //   231: ldc 44
+      //   233: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   236: return
       //   237: aload_2
-      //   238: invokestatic 92	com/eclipsesource/v8/debug/V8DebugServer:access$400	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/V8Object;Lcom/eclipsesource/v8/V8Object;)V
-      //   241: goto -29 -> 212
-      //   244: astore 6
-      //   246: aload_2
-      //   247: astore_1
-      //   248: aload 6
-      //   250: astore_2
-      //   251: aload_1
-      //   252: astore 6
-      //   254: aload 5
-      //   256: astore 7
-      //   258: aload_0
-      //   259: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
-      //   262: aload_2
-      //   263: invokevirtual 96	com/eclipsesource/v8/debug/V8DebugServer:logError	(Ljava/lang/Throwable;)V
-      //   266: aload_0
+      //   238: astore 6
+      //   240: aload 5
+      //   242: astore 7
+      //   244: aload_0
+      //   245: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
+      //   248: aload 5
+      //   250: aload_2
+      //   251: invokestatic 101	com/eclipsesource/v8/debug/V8DebugServer:access$400	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/V8Object;Lcom/eclipsesource/v8/V8Object;)V
+      //   254: goto -34 -> 220
+      //   257: astore 6
+      //   259: aload_2
+      //   260: astore_1
+      //   261: aload 6
+      //   263: astore_2
+      //   264: aload_1
+      //   265: astore 6
       //   267: aload 5
-      //   269: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   272: aload_0
-      //   273: aload_1
-      //   274: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   277: return
-      //   278: aload_2
-      //   279: astore 6
-      //   281: aload 5
-      //   283: astore 7
+      //   269: astore 7
+      //   271: aload_0
+      //   272: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
+      //   275: aload_2
+      //   276: invokevirtual 105	com/eclipsesource/v8/debug/V8DebugServer:logError	(Ljava/lang/Throwable;)V
+      //   279: aload_0
+      //   280: aload 5
+      //   282: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
       //   285: aload_0
-      //   286: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
-      //   289: aload_2
-      //   290: invokestatic 100	com/eclipsesource/v8/debug/V8DebugServer:access$500	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/V8Object;)V
-      //   293: goto -81 -> 212
-      //   296: astore_1
-      //   297: aload 7
-      //   299: astore 5
-      //   301: aload_0
-      //   302: aload 5
-      //   304: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   307: aload_0
-      //   308: aload 6
-      //   310: invokespecial 84	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
-      //   313: aload_1
-      //   314: athrow
-      //   315: astore_1
-      //   316: aconst_null
-      //   317: astore 6
-      //   319: aconst_null
-      //   320: astore 5
-      //   322: goto -21 -> 301
-      //   325: astore_1
-      //   326: aconst_null
-      //   327: astore 6
-      //   329: goto -28 -> 301
-      //   332: astore_2
-      //   333: aconst_null
-      //   334: astore_1
-      //   335: aconst_null
-      //   336: astore 5
-      //   338: goto -87 -> 251
-      //   341: astore_2
+      //   286: aload_1
+      //   287: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+      //   290: ldc 44
+      //   292: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   295: return
+      //   296: aload_2
+      //   297: astore 6
+      //   299: aload 5
+      //   301: astore 7
+      //   303: aload_0
+      //   304: getfield 15	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:this$0	Lcom/eclipsesource/v8/debug/V8DebugServer;
+      //   307: aload_2
+      //   308: invokestatic 109	com/eclipsesource/v8/debug/V8DebugServer:access$500	(Lcom/eclipsesource/v8/debug/V8DebugServer;Lcom/eclipsesource/v8/V8Object;)V
+      //   311: goto -91 -> 220
+      //   314: astore_1
+      //   315: aload 7
+      //   317: astore 5
+      //   319: aload_0
+      //   320: aload 5
+      //   322: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+      //   325: aload_0
+      //   326: aload 6
+      //   328: invokespecial 93	com/eclipsesource/v8/debug/V8DebugServer$EventHandler:safeRelease	(Lcom/eclipsesource/v8/Releasable;)V
+      //   331: ldc 44
+      //   333: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   336: aload_1
+      //   337: athrow
+      //   338: astore_1
+      //   339: aconst_null
+      //   340: astore 6
       //   342: aconst_null
-      //   343: astore_1
-      //   344: goto -93 -> 251
-      //   347: goto -247 -> 100
-      //   350: ldc 102
-      //   352: astore_1
-      //   353: goto -253 -> 100
-      //   356: ldc 104
-      //   358: astore_1
-      //   359: goto -259 -> 100
-      //   362: ldc 106
-      //   364: astore_1
-      //   365: goto -265 -> 100
-      //   368: ldc 108
-      //   370: astore_1
-      //   371: goto -271 -> 100
-      //   374: ldc 110
-      //   376: astore_1
-      //   377: goto -277 -> 100
-      //   380: ldc 112
-      //   382: astore_1
-      //   383: goto -283 -> 100
+      //   343: astore 5
+      //   345: goto -26 -> 319
+      //   348: astore_1
+      //   349: aconst_null
+      //   350: astore 6
+      //   352: goto -33 -> 319
+      //   355: astore_2
+      //   356: aconst_null
+      //   357: astore_1
+      //   358: aconst_null
+      //   359: astore 5
+      //   361: goto -97 -> 264
+      //   364: astore_2
+      //   365: aconst_null
+      //   366: astore_1
+      //   367: goto -103 -> 264
+      //   370: goto -262 -> 108
+      //   373: ldc 111
+      //   375: astore_1
+      //   376: goto -268 -> 108
+      //   379: ldc 113
+      //   381: astore_1
+      //   382: goto -274 -> 108
+      //   385: ldc 115
+      //   387: astore_1
+      //   388: goto -280 -> 108
+      //   391: ldc 117
+      //   393: astore_1
+      //   394: goto -286 -> 108
+      //   397: ldc 119
+      //   399: astore_1
+      //   400: goto -292 -> 108
+      //   403: ldc 121
+      //   405: astore_1
+      //   406: goto -298 -> 108
       // Local variable table:
       //   start	length	slot	name	signature
-      //   0	386	0	this	EventHandler
-      //   0	386	1	paramV8Object	V8Object
-      //   0	386	2	paramV8Array	V8Array
-      //   17	158	3	i	int
-      //   143	3	4	bool	boolean
-      //   23	314	5	localObject1	Object
-      //   32	194	6	localV8Array	V8Array
-      //   244	5	6	localException	Exception
-      //   252	76	6	localObject2	Object
-      //   36	262	7	localObject3	Object
+      //   0	409	0	this	EventHandler
+      //   0	409	1	paramV8Object	V8Object
+      //   0	409	2	paramV8Array	V8Array
+      //   27	154	3	i	int
+      //   144	3	4	bool	boolean
+      //   33	327	5	localObject1	Object
+      //   42	197	6	localV8Array	V8Array
+      //   257	5	6	localException	Exception
+      //   265	86	6	localObject2	Object
+      //   46	270	7	localObject3	Object
       // Exception table:
       //   from	to	target	type
-      //   38	48	244	java/lang/Exception
-      //   107	129	244	java/lang/Exception
-      //   136	145	244	java/lang/Exception
-      //   231	241	244	java/lang/Exception
-      //   285	293	244	java/lang/Exception
-      //   38	48	296	finally
-      //   107	129	296	finally
-      //   136	145	296	finally
-      //   231	241	296	finally
-      //   258	266	296	finally
-      //   285	293	296	finally
-      //   12	25	315	finally
-      //   25	31	325	finally
-      //   12	25	332	java/lang/Exception
-      //   25	31	341	java/lang/Exception
+      //   48	58	257	java/lang/Exception
+      //   115	130	257	java/lang/Exception
+      //   137	146	257	java/lang/Exception
+      //   244	254	257	java/lang/Exception
+      //   303	311	257	java/lang/Exception
+      //   48	58	314	finally
+      //   115	130	314	finally
+      //   137	146	314	finally
+      //   244	254	314	finally
+      //   271	279	314	finally
+      //   303	311	314	finally
+      //   22	35	338	finally
+      //   35	41	348	finally
+      //   22	35	355	java/lang/Exception
+      //   35	41	364	java/lang/Exception
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.v8.debug.V8DebugServer
  * JD-Core Version:    0.7.0.1
  */

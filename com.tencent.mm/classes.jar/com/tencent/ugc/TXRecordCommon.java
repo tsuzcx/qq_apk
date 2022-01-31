@@ -47,6 +47,7 @@ public class TXRecordCommon
   public static final int VIDEO_QUALITY_MEDIUM = 1;
   public static final int VIDEO_RENDER_MODE_ADJUST_RESOLUTION = 1;
   public static final int VIDEO_RENDER_MODE_FULL_FILL_SCREEN = 0;
+  public static final int VIDEO_RESOLUTION_1080_1920 = 3;
   public static final int VIDEO_RESOLUTION_360_640 = 0;
   public static final int VIDEO_RESOLUTION_540_960 = 1;
   public static final int VIDEO_RESOLUTION_720_1280 = 2;
@@ -69,10 +70,18 @@ public class TXRecordCommon
   public static final int VIDOE_VOICECHANGER_TYPE_7 = 7;
   public static final int VIDOE_VOICECHANGER_TYPE_8 = 8;
   public static final int VIDOE_VOICECHANGER_TYPE_9 = 9;
+  
+  public static final class TXRecordResult
+  {
+    public String coverPath;
+    public String descMsg;
+    public int retCode;
+    public String videoPath;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.ugc.TXRecordCommon
  * JD-Core Version:    0.7.0.1
  */

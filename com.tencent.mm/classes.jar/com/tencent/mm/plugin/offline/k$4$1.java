@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.offline;
 
 import android.text.TextUtils;
-import com.tencent.mm.ah.e.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.e.a;
 import com.tencent.mm.plugin.offline.a.s;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.protocal.c.cd;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.bn;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
+import com.tencent.mm.sdk.platformtools.br;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -19,53 +20,80 @@ final class k$4$1
   
   public final void run()
   {
-    s locals = k.bpY();
-    String str2 = this.fEp;
-    long l = this.dUx.dBs.ndp;
-    y.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is :" + l);
-    y.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg content is :" + str2);
+    AppMethodBeat.i(43356);
+    s locals = k.bYG();
+    String str2 = this.gWF;
+    long l = this.fkG.eyJ.pIG;
+    ab.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is :".concat(String.valueOf(l)));
+    ab.i("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg content is :".concat(String.valueOf(str2)));
+    label160:
+    String str1;
+    Map localMap;
     if (!TextUtils.isEmpty(str2))
     {
-      if (locals.fr(l)) {
-        y.e("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is exist in list:" + l);
+      if ((locals.piV == null) || (locals.piV.size() == 0)) {
+        ab.e("MicroMsg.WalletOfflineMsgManager", "mMsgIdList is null or size == 0");
       }
-    }
-    else {
-      return;
-    }
-    String str1 = null;
-    Map localMap = bn.s(str2, "sysmsg");
-    if (localMap != null) {
+      for (;;)
+      {
+        i = 0;
+        if (i == 0) {
+          break;
+        }
+        ab.e("MicroMsg.WalletOfflineMsgManager", "onReceiveMsg msg id is exist in list:".concat(String.valueOf(l)));
+        AppMethodBeat.o(43356);
+        return;
+        i = 0;
+        for (;;)
+        {
+          if (i >= locals.piV.size()) {
+            break label160;
+          }
+          if (((Long)locals.piV.get(i)).longValue() == l)
+          {
+            i = 1;
+            break;
+          }
+          i += 1;
+        }
+      }
+      str1 = null;
+      localMap = br.F(str2, "sysmsg");
+      if (localMap == null) {
+        break label384;
+      }
       str1 = (String)localMap.get(".sysmsg.paymsg.ack_key");
     }
-    for (int i = bk.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);; i = -1)
+    label384:
+    for (int i = bo.getInt((String)localMap.get(".sysmsg.paymsg.PayMsgType"), -1);; i = -1)
     {
-      if (a.bri())
+      if (a.bZX())
       {
-        y.i("MicroMsg.WalletOfflineMsgManager", "pos is enabled. PayMsgType is %d", new Object[] { Integer.valueOf(i) });
+        ab.i("MicroMsg.WalletOfflineMsgManager", "pos is enabled. PayMsgType is %d", new Object[] { Integer.valueOf(i) });
         if ((i == 7) || (i == 10))
         {
-          locals.Kk(str2);
-          locals.Kl(str2);
+          locals.Wj(str2);
+          locals.Wk(str2);
         }
       }
       for (;;)
       {
-        if (locals.mIG.size() > 10) {
-          locals.mIG.remove(locals.mIG.size() - 1);
+        if (locals.piV.size() > 10) {
+          locals.piV.remove(locals.piV.size() - 1);
         }
-        locals.mIG.add(0, Long.valueOf(l));
+        locals.piV.add(0, Long.valueOf(l));
+        AppMethodBeat.o(43356);
         return;
-        if (g.em(str1, str2))
+        if (g.fH(str1, str2))
         {
-          y.i("MicroMsg.WalletOfflineMsgManager", "process msg from push");
-          h.nFQ.a(135L, 70L, 1L, true);
-          locals.Kk(str2);
-          locals.Kl(str2);
+          ab.i("MicroMsg.WalletOfflineMsgManager", "process msg from push");
+          h.qsU.idkeyStat(135L, 70L, 1L, true);
+          locals.Wj(str2);
+          locals.Wk(str2);
           continue;
-          g.em(str1, str2);
-          locals.Kk(str2);
-          locals.Kl(str2);
+          g.fH(str1, str2);
+          locals.Wj(str2);
+          locals.Wk(str2);
         }
       }
     }
@@ -73,7 +101,7 @@ final class k$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.k.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ final class SearchView$4
   
   public final void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.ajT.aju != null) {
-      this.ajT.aju.onFocusChange(this.ajT, paramBoolean);
+    if (this.amj.alK != null) {
+      this.amj.alK.onFocusChange(this.amj, paramBoolean);
     }
   }
 }

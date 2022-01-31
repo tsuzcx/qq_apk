@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.exdevice.service;
 
 public abstract class c$a
 {
-  public int bKF;
+  public int crZ;
   
   public c$a(int paramInt)
   {
-    this.bKF = paramInt;
+    this.crZ = paramInt;
   }
   
   public abstract void onServiceConnected();

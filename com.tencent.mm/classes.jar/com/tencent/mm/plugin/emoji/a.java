@@ -2,28 +2,54 @@ package com.tencent.mm.plugin.emoji;
 
 import android.content.Context;
 import android.text.SpannableString;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cd.f;
 import com.tencent.mm.cd.f.a;
 import com.tencent.mm.cd.g;
 import com.tencent.mm.pluginsdk.ui.d.j;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class a
   implements com.tencent.mm.plugin.emoji.b.a
 {
+  public final boolean E(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(62303);
+    boolean bool = g.dvk().E(paramCharSequence);
+    AppMethodBeat.o(62303);
+    return bool;
+  }
+  
+  public final boolean F(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(62304);
+    boolean bool = g.dvk().F(paramCharSequence);
+    AppMethodBeat.o(62304);
+    return bool;
+  }
+  
   public final SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
-    return j.a(paramContext, paramCharSequence, paramFloat);
+    AppMethodBeat.i(62300);
+    paramContext = g.dvk().b(paramCharSequence, paramFloat);
+    AppMethodBeat.o(62300);
+    return paramContext;
   }
   
-  public final SpannableString a(CharSequence paramCharSequence, float paramFloat)
+  public final SpannableString b(Context paramContext, CharSequence paramCharSequence, float paramFloat)
   {
-    return g.csM().a(paramCharSequence, paramFloat);
+    AppMethodBeat.i(62301);
+    paramContext = j.b(paramContext, paramCharSequence, paramFloat);
+    AppMethodBeat.o(62301);
+    return paramContext;
   }
   
-  public final String cG(String paramString1, String paramString2)
+  public final String dH(String paramString1, String paramString2)
   {
-    g.csM();
-    f localf = f.csI();
+    AppMethodBeat.i(62302);
+    g.dvk();
+    f localf = f.dvf();
+    ah.getContext();
     int i = 0;
     int j = paramString1.length();
     StringBuilder localStringBuilder = new StringBuilder(j);
@@ -32,7 +58,7 @@ public final class a
       char c = paramString1.charAt(i);
       if ((c == '/') || (c == '['))
       {
-        f.a locala = localf.aau(paramString1.substring(i));
+        f.a locala = localf.aqE(paramString1.substring(i));
         if (locala != null)
         {
           localStringBuilder.append(paramString2);
@@ -43,17 +69,9 @@ public final class a
       localStringBuilder.append(c);
       i += 1;
     }
-    return localStringBuilder.toString();
-  }
-  
-  public final boolean v(CharSequence paramCharSequence)
-  {
-    return g.csM().v(paramCharSequence);
-  }
-  
-  public final boolean w(CharSequence paramCharSequence)
-  {
-    return g.csM().w(paramCharSequence);
+    paramString1 = localStringBuilder.toString();
+    AppMethodBeat.o(62302);
+    return paramString1;
   }
 }
 

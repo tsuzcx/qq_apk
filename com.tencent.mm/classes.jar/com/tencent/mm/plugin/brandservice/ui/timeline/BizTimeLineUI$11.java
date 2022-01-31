@@ -1,30 +1,19 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline;
 
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import com.tencent.mm.as.o;
-import com.tencent.mm.kernel.g;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.storage.r.a;
+import com.tencent.mm.storage.r.c;
 
 final class BizTimeLineUI$11
-  implements AbsListView.OnScrollListener
+  implements r.c
 {
   BizTimeLineUI$11(BizTimeLineUI paramBizTimeLineUI) {}
   
-  public final void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public final void a(Object paramObject, r.a parama)
   {
-    BizTimeLineUI.a(this.ihl, paramInt1, paramInt2);
-    BizTimeLineUI.eo(paramInt1);
-  }
-  
-  public final void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    o.ON().bR(paramInt);
-    if (paramInt == 2)
-    {
-      ((com.tencent.mm.plugin.brandservice.a.a)g.r(com.tencent.mm.plugin.brandservice.a.a.class)).es(false);
-      return;
-    }
-    ((com.tencent.mm.plugin.brandservice.a.a)g.r(com.tencent.mm.plugin.brandservice.a.a.class)).es(true);
+    AppMethodBeat.i(14194);
+    this.jXh.aWP();
+    AppMethodBeat.o(14194);
   }
 }
 

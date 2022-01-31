@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.traceroute.b;
 
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,22 +16,23 @@ public final class a$j
   
   public final void run()
   {
-    this.pII.jM(false);
+    AppMethodBeat.i(25978);
+    this.tmW.mD(false);
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    long l1 = bk.UY();
+    long l1 = bo.aoy();
     Object localObject1 = new java.sql.Date(l1);
-    y.i("MicroMsg.MMTraceRoute", "mmtraceroute start time " + localSimpleDateFormat.format((java.util.Date)localObject1));
-    localObject1 = this.pII.pIC.entrySet().iterator();
+    ab.i("MicroMsg.MMTraceRoute", "mmtraceroute start time " + localSimpleDateFormat.format((java.util.Date)localObject1));
+    localObject1 = this.tmW.tmQ.entrySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
-      a.i locali = new a.i(this.pII, (String)((Map.Entry)localObject2).getKey());
-      if (a.pIy != null) {
-        a.pIy.execute(locali);
+      a.i locali = new a.i(this.tmW, (String)((Map.Entry)localObject2).getKey());
+      if (a.tmM != null) {
+        a.tmM.execute(locali);
       }
-      localObject2 = new a.a(this.pII, (String)((Map.Entry)localObject2).getKey(), (Set)((Map.Entry)localObject2).getValue());
-      if (a.pIy != null) {
-        a.pIy.execute((Runnable)localObject2);
+      localObject2 = new a.a(this.tmW, (String)((Map.Entry)localObject2).getKey(), (Set)((Map.Entry)localObject2).getValue());
+      if (a.tmM != null) {
+        a.tmM.execute((Runnable)localObject2);
       }
     }
     try
@@ -38,34 +40,35 @@ public final class a$j
       do
       {
         Thread.sleep(500L);
-        if ((this.pII.bOK()) || (a.pIy.getActiveCount() <= 0)) {
+        if ((this.tmW.cKF()) || (a.tmM.getActiveCount() <= 0)) {
           break;
         }
-        y.d("MicroMsg.MMTraceRoute", "task count: " + String.valueOf(a.pIy.getActiveCount()));
-        l2 = bk.UY();
+        ab.d("MicroMsg.MMTraceRoute", "task count: " + String.valueOf(a.tmM.getActiveCount()));
+        l2 = bo.aoy();
       } while (l2 - l1 < 120000L);
-      y.i("MicroMsg.MMTraceRoute", "traceroute timeout: " + (l2 - l1) / 1000L);
-      this.pII.jM(true);
-      this.pII.stop();
-      if (this.pII.pID != null) {
-        this.pII.pID.bOO();
+      ab.i("MicroMsg.MMTraceRoute", "traceroute timeout: " + (l2 - l1) / 1000L);
+      this.tmW.mD(true);
+      this.tmW.stop();
+      if (this.tmW.tmR != null) {
+        this.tmW.tmR.cKK();
       }
+      AppMethodBeat.o(25978);
       return;
     }
     catch (Exception localException)
     {
-      do
+      for (;;)
       {
-        for (;;)
-        {
-          y.e("MicroMsg.MMTraceRoute", "wait for command end err: " + localException.getMessage());
-          y.printErrStackTrace("MicroMsg.MMTraceRoute", localException, "", new Object[0]);
-        }
-        long l2 = bk.UY();
-        y.i("MicroMsg.MMTraceRoute", "mmtraceroute end time " + localSimpleDateFormat.format(new java.util.Date(l2)));
-        y.i("MicroMsg.MMTraceRoute", "mmtraceroute total time " + (l2 - l1) / 1000L);
-      } while ((this.pII.pIE == null) || (this.pII.bOK()));
-      this.pII.pIE.Yw();
+        ab.e("MicroMsg.MMTraceRoute", "wait for command end err: " + localException.getMessage());
+        ab.printErrStackTrace("MicroMsg.MMTraceRoute", localException, "", new Object[0]);
+      }
+      long l2 = bo.aoy();
+      ab.i("MicroMsg.MMTraceRoute", "mmtraceroute end time " + localSimpleDateFormat.format(new java.util.Date(l2)));
+      ab.i("MicroMsg.MMTraceRoute", "mmtraceroute total time " + (l2 - l1) / 1000L);
+      if ((this.tmW.tmS != null) && (!this.tmW.cKF())) {
+        this.tmW.tmS.asg();
+      }
+      AppMethodBeat.o(25978);
     }
   }
 }

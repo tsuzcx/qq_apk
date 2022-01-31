@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.ext.voicecontrol;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.a.a.a;
 
 final class ExtControlProviderVoiceControl$6
@@ -9,7 +10,9 @@ final class ExtControlProviderVoiceControl$6
   
   public final void run()
   {
-    ExtControlProviderVoiceControl.c(this.jLC, this.dol);
+    AppMethodBeat.i(20446);
+    ExtControlProviderVoiceControl.c(this.mfG, this.efI);
+    AppMethodBeat.o(20446);
   }
 }
 

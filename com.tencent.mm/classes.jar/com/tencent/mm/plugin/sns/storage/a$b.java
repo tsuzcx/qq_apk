@@ -1,8 +1,9 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.x;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.ah;
+import com.tencent.mm.sdk.platformtools.bo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -11,13 +12,22 @@ import java.util.Map;
 
 public final class a$b
 {
-  private List<a.b.a> oAw = new ArrayList();
-  public Map<String, List<a.b.a>> oAx = new HashMap();
+  private List<a.b.a> rpG;
+  public Map<String, List<a.b.a>> rpH;
   
-  public a$b() {}
+  public a$b()
+  {
+    AppMethodBeat.i(36895);
+    this.rpG = new ArrayList();
+    this.rpH = new HashMap();
+    AppMethodBeat.o(36895);
+  }
   
   public a$b(Map<String, String> paramMap, String paramString)
   {
+    AppMethodBeat.i(36896);
+    this.rpG = new ArrayList();
+    this.rpH = new HashMap();
     String str = paramString + ".dislikeInfo.ReasonList";
     int i = 0;
     paramString = str + ".Reason";
@@ -28,40 +38,44 @@ public final class a$b
     {
       if (paramMap.get(paramString + ".ReasonId") != null)
       {
-        this.oAw.add(new a.b.a(bk.aM((String)paramMap.get(paramString + ".Wording.zh"), ""), bk.aM((String)paramMap.get(paramString + ".Wording.tw"), ""), bk.aM((String)paramMap.get(paramString + ".Wording.en"), ""), bk.ZR((String)paramMap.get(paramString + ".ReasonId"))));
+        this.rpG.add(new a.b.a(bo.bf((String)paramMap.get(paramString + ".Wording.zh"), ""), bo.bf((String)paramMap.get(paramString + ".Wording.tw"), ""), bo.bf((String)paramMap.get(paramString + ".Wording.en"), ""), bo.apV((String)paramMap.get(paramString + ".ReasonId"))));
         i += 1;
         break;
       }
+      AppMethodBeat.o(36896);
       return;
     }
   }
   
-  public final List<a.b.a> bED()
+  public final List<a.b.a> cqj()
   {
-    String str = x.fB(ae.getContext());
-    if ((!"zh_CN".equals(str)) && (!"zh_TW".equals(str)) && (!"zh_HK".equals(str))) {
-      str = "en";
+    AppMethodBeat.i(36894);
+    Object localObject = aa.gP(ah.getContext());
+    if ((!"zh_CN".equals(localObject)) && (!"zh_TW".equals(localObject)) && (!"zh_HK".equals(localObject))) {
+      localObject = "en";
     }
     for (;;)
     {
-      if (!this.oAx.containsKey(str))
+      if (!this.rpH.containsKey(localObject))
       {
         ArrayList localArrayList = new ArrayList();
-        Iterator localIterator = this.oAw.iterator();
+        Iterator localIterator = this.rpG.iterator();
         while (localIterator.hasNext())
         {
           a.b.a locala = (a.b.a)localIterator.next();
-          if (("zh_CN".equals(str)) && (!bk.bl(locala.oAz))) {
+          if (("zh_CN".equals(localObject)) && (!bo.isNullOrNil(locala.rpJ))) {
             localArrayList.add(locala);
-          } else if ((("zh_TW".equals(str)) || ("zh_HK".equals(str))) && (!bk.bl(locala.oAA))) {
+          } else if ((("zh_TW".equals(localObject)) || ("zh_HK".equals(localObject))) && (!bo.isNullOrNil(locala.rpK))) {
             localArrayList.add(locala);
-          } else if (("en".equals(str)) && (!bk.bl(locala.oAB))) {
+          } else if (("en".equals(localObject)) && (!bo.isNullOrNil(locala.rpL))) {
             localArrayList.add(locala);
           }
         }
-        this.oAx.put(str, localArrayList);
+        this.rpH.put(localObject, localArrayList);
       }
-      return (List)this.oAx.get(str);
+      localObject = (List)this.rpH.get(localObject);
+      AppMethodBeat.o(36894);
+      return localObject;
     }
   }
 }

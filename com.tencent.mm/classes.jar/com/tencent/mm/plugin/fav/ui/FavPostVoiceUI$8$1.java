@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fav.ui;
 
 import android.app.Activity;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavPostVoiceUI$8$1
   implements Runnable
@@ -9,9 +10,11 @@ final class FavPostVoiceUI$8$1
   
   public final void run()
   {
-    this.kcq.kcp.setResult(0);
-    this.kcq.kcp.finish();
-    this.kcq.kcp.overridePendingTransition(0, 0);
+    AppMethodBeat.i(74048);
+    this.mxb.mxa.setResult(0);
+    this.mxb.mxa.finish();
+    this.mxb.mxa.overridePendingTransition(0, 0);
+    AppMethodBeat.o(74048);
   }
 }
 

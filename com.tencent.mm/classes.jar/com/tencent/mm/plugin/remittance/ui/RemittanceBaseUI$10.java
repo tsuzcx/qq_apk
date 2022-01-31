@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.remittance.ui;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.remittance.model.v;
-import com.tencent.mm.plugin.report.service.h;
 
 final class RemittanceBaseUI$10
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
   RemittanceBaseUI$10(RemittanceBaseUI paramRemittanceBaseUI, v paramv) {}
   
-  public final void onClick(View paramView)
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.nAH.a(this.nAI.bOT, this.nAH.djD, this.nAH.nAo, this.nAI);
-    if (this.nAH.fzn == 1)
+    AppMethodBeat.i(44834);
+    if (!RemittanceBaseUI.a(this.qmk, this.qml))
     {
-      h.nFQ.f(12689, new Object[] { Integer.valueOf(12), Integer.valueOf(1) });
-      return;
+      RemittanceBaseUI.i(this.qmk);
+      this.qmk.a(this.qml.cwk, this.qmk.eaX, this.qmk.qlK, this.qml);
     }
-    h.nFQ.f(12689, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
+    AppMethodBeat.o(44834);
   }
 }
 

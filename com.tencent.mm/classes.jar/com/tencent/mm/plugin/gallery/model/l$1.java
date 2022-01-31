@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.gallery.model;
 
-import java.util.ArrayList;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 final class l$1
   implements Runnable
@@ -10,22 +11,27 @@ final class l$1
   
   public final void run()
   {
-    ArrayList localArrayList = this.kHq.kHo.aXv();
-    l locall = this.kHq;
-    g.a[] arrayOfa = new g.a[locall.kHm.size()];
-    locall.kHm.toArray(arrayOfa);
+    AppMethodBeat.i(21318);
+    LinkedList localLinkedList = this.ndA.ndy.bDJ();
+    l locall = this.ndA;
+    i.a[] arrayOfa = new i.a[locall.ndv.size()];
+    locall.ndv.toArray(arrayOfa);
     int j = arrayOfa.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfa[i].z(localArrayList);
+      arrayOfa[i].V(localLinkedList);
       i += 1;
     }
+    AppMethodBeat.o(21318);
   }
   
   public final String toString()
   {
-    return super.toString() + "|queryAlbums";
+    AppMethodBeat.i(21319);
+    String str = super.toString() + "|queryAlbums";
+    AppMethodBeat.o(21319);
+    return str;
   }
 }
 

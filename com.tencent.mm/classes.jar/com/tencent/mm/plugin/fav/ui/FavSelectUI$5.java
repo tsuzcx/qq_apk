@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.fav.ui;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class FavSelectUI$5
   implements View.OnClickListener
@@ -11,10 +12,12 @@ final class FavSelectUI$5
   
   public final void onClick(View paramView)
   {
+    AppMethodBeat.i(74107);
     int i = ((Integer)paramView.getTag()).intValue();
     paramView = new Intent();
     paramView.putExtra("key_preset_search_type", i);
-    FavSelectUI.a(this.kdd, paramView);
+    FavSelectUI.a(this.mxN, paramView);
+    AppMethodBeat.o(74107);
   }
 }
 

@@ -2,6 +2,7 @@ package com.samsung.android.sdk.look.airbutton;
 
 import android.view.View;
 import com.samsung.android.airbutton.AirButtonImpl.OnItemSelectedListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 class SlookAirButton$1
   implements AirButtonImpl.OnItemSelectedListener
@@ -10,7 +11,9 @@ class SlookAirButton$1
   
   public void onItemSelected(View paramView, int paramInt, Object paramObject)
   {
+    AppMethodBeat.i(117271);
     SlookAirButton.access$000(this.this$0).onItemSelected(paramView, paramInt, paramObject);
+    AppMethodBeat.o(117271);
   }
 }
 

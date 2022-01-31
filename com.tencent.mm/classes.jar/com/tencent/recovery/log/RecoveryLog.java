@@ -5,18 +5,18 @@ import java.util.List;
 
 public class RecoveryLog
 {
-  private static RecoveryLogImpl exg = new RecoveryCacheLog();
+  private static RecoveryLogImpl fMW = new RecoveryCacheLog();
   
   public static void a(RecoveryLogImpl paramRecoveryLogImpl)
   {
-    if ((exg instanceof RecoveryCacheLog))
+    if ((fMW instanceof RecoveryCacheLog))
     {
-      RecoveryCacheLog localRecoveryCacheLog = (RecoveryCacheLog)exg;
-      int j = localRecoveryCacheLog.wKN.size();
+      RecoveryCacheLog localRecoveryCacheLog = (RecoveryCacheLog)fMW;
+      int j = localRecoveryCacheLog.Bio.size();
       int i = 0;
       if (i < j)
       {
-        RecoveryCacheLog.LogItem localLogItem = (RecoveryCacheLog.LogItem)localRecoveryCacheLog.wKN.get(i);
+        RecoveryCacheLog.LogItem localLogItem = (RecoveryCacheLog.LogItem)localRecoveryCacheLog.Bio.get(i);
         switch (localLogItem.level)
         {
         }
@@ -24,56 +24,56 @@ public class RecoveryLog
         {
           i += 1;
           break;
-          paramRecoveryLogImpl.v(localLogItem.tag, localLogItem.wKO, localLogItem.wKP);
+          paramRecoveryLogImpl.v(localLogItem.tag, localLogItem.ifI, localLogItem.Bip);
           continue;
-          paramRecoveryLogImpl.d(localLogItem.tag, localLogItem.wKO, localLogItem.wKP);
+          paramRecoveryLogImpl.d(localLogItem.tag, localLogItem.ifI, localLogItem.Bip);
           continue;
-          paramRecoveryLogImpl.i(localLogItem.tag, localLogItem.wKO, localLogItem.wKP);
+          paramRecoveryLogImpl.i(localLogItem.tag, localLogItem.ifI, localLogItem.Bip);
           continue;
-          paramRecoveryLogImpl.w(localLogItem.tag, localLogItem.wKO, localLogItem.wKP);
+          paramRecoveryLogImpl.w(localLogItem.tag, localLogItem.ifI, localLogItem.Bip);
           continue;
-          if (localLogItem.wKQ != null) {
-            paramRecoveryLogImpl.printErrStackTrace(localLogItem.tag, localLogItem.wKQ, localLogItem.wKO, localLogItem.wKP);
+          if (localLogItem.Biq != null) {
+            paramRecoveryLogImpl.printErrStackTrace(localLogItem.tag, localLogItem.Biq, localLogItem.ifI, localLogItem.Bip);
           } else {
-            paramRecoveryLogImpl.e(localLogItem.tag, localLogItem.wKO, localLogItem.wKP);
+            paramRecoveryLogImpl.e(localLogItem.tag, localLogItem.ifI, localLogItem.Bip);
           }
         }
       }
-      localRecoveryCacheLog.wKN = new ArrayList();
+      localRecoveryCacheLog.Bio = new ArrayList();
     }
-    exg = paramRecoveryLogImpl;
+    fMW = paramRecoveryLogImpl;
   }
   
-  public static void cOA()
+  public static void dUp()
   {
-    if ((exg instanceof RecoveryFileLog)) {
-      ((RecoveryFileLog)exg).bQ("", true);
+    if ((fMW instanceof RecoveryFileLog)) {
+      ((RecoveryFileLog)fMW).ct("", true);
     }
   }
   
-  public static RecoveryLogImpl cOB()
+  public static RecoveryLogImpl dUq()
   {
-    return exg;
+    return fMW;
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (exg != null) {
-      exg.e(paramString1, paramString2, paramVarArgs);
+    if (fMW != null) {
+      fMW.e(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (exg != null) {
-      exg.i(paramString1, paramString2, paramVarArgs);
+    if (fMW != null) {
+      fMW.i(paramString1, paramString2, paramVarArgs);
     }
   }
   
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
-    if (exg != null) {
-      exg.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (fMW != null) {
+      fMW.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
   }
   

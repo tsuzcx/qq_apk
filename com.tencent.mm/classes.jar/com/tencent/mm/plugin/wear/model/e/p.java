@@ -1,17 +1,18 @@
 package com.tencent.mm.plugin.wear.model.e;
 
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.m;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.f;
+import com.tencent.mm.ai.m;
+import com.tencent.mm.audio.b.g.a;
+import com.tencent.mm.audio.e.d;
 import com.tencent.mm.bv.b;
-import com.tencent.mm.f.b.g.a;
-import com.tencent.mm.f.c.d;
-import com.tencent.mm.model.au;
+import com.tencent.mm.model.aw;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.j;
-import com.tencent.mm.protocal.c.ckn;
-import com.tencent.mm.protocal.c.cko;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.protocal.protobuf.cya;
+import com.tencent.mm.protocal.protobuf.cyb;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ac;
 import com.tencent.qqpinyin.voicerecoapi.c.a;
 import java.util.LinkedList;
@@ -19,138 +20,163 @@ import java.util.LinkedList;
 public final class p
   implements f
 {
-  public static final String qSD = ac.dOP + "tmp_wearvoicetotext.spx";
-  public boolean ceg = false;
-  public LinkedList<Integer> fSX = new LinkedList();
-  public com.tencent.mm.plugin.wear.model.d.c qSE;
-  public com.tencent.qqpinyin.voicerecoapi.c qSF;
-  public d qSG;
-  private int qSH = 0;
-  public int qSI;
-  public int qSJ;
+  public static final String uHK;
+  public boolean cMU;
+  public LinkedList<Integer> hmy;
+  public com.tencent.mm.plugin.wear.model.d.c uHL;
+  public com.tencent.qqpinyin.voicerecoapi.c uHM;
+  public d uHN;
+  private int uHO;
+  public int uHP;
+  public int uHQ;
   
-  public final void a(int paramInt, ckn paramckn)
+  static
   {
-    if (paramckn.sxO == null)
+    AppMethodBeat.i(26425);
+    uHK = ac.eQv + "tmp_wearvoicetotext.spx";
+    AppMethodBeat.o(26425);
+  }
+  
+  public p()
+  {
+    AppMethodBeat.i(26421);
+    this.cMU = false;
+    this.uHO = 0;
+    this.hmy = new LinkedList();
+    AppMethodBeat.o(26421);
+  }
+  
+  public final void a(int paramInt, cya paramcya)
+  {
+    AppMethodBeat.i(26424);
+    if (paramcya.wrr == null)
     {
-      y.i("MicroMsg.Wear.VoiceToTextServer", "voice data is null");
+      ab.i("MicroMsg.Wear.VoiceToTextServer", "voice data is null");
+      AppMethodBeat.o(26424);
       return;
     }
-    Object localObject = paramckn.sxO.toByteArray();
-    this.qSH += this.qSG.a(new g.a((byte[])localObject, paramckn.sRd), 0, false);
-    y.i("MicroMsg.Wear.VoiceToTextServer", "write bytes: %d", new Object[] { Integer.valueOf(this.qSH) });
-    short[] arrayOfShort = new short[paramckn.sRd / 2];
+    Object localObject = paramcya.wrr.toByteArray();
+    this.uHO += this.uHN.a(new g.a((byte[])localObject, paramcya.wyT), 0, false);
+    ab.i("MicroMsg.Wear.VoiceToTextServer", "write bytes: %d", new Object[] { Integer.valueOf(this.uHO) });
+    short[] arrayOfShort = new short[paramcya.wyT / 2];
     int i = 0;
-    while (i < paramckn.sRd / 2)
+    while (i < paramcya.wyT / 2)
     {
       arrayOfShort[i] = ((short)(localObject[(i * 2)] & 0xFF | localObject[(i * 2 + 1)] << 8));
       i += 1;
     }
     localObject = new c.a();
-    this.qSF.a(arrayOfShort, paramckn.sRd / 2, (c.a)localObject);
-    y.i("MicroMsg.Wear.VoiceToTextServer", "state.vad_flag: " + ((c.a)localObject).wKn);
-    if (((c.a)localObject).wKn == 2) {
-      this.qSJ = 1;
+    this.uHM.a(arrayOfShort, paramcya.wyT / 2, (c.a)localObject);
+    ab.i("MicroMsg.Wear.VoiceToTextServer", "state.vad_flag: " + ((c.a)localObject).BhO);
+    if (((c.a)localObject).BhO == 2) {
+      this.uHQ = 1;
     }
     for (;;)
     {
-      if (this.qSJ != 0)
+      if (this.uHQ != 0)
       {
-        if (this.qSJ < 0)
+        if (this.uHQ < 0)
         {
-          if (this.fSX.size() > 10) {
-            this.fSX.removeLast();
+          if (this.hmy.size() > 10) {
+            this.hmy.removeLast();
           }
-          this.fSX.addFirst(Integer.valueOf(paramInt));
+          this.hmy.addFirst(Integer.valueOf(paramInt));
         }
-        if (this.qSJ == 1)
+        if (this.uHQ == 1)
         {
-          paramckn = new cko();
-          paramckn.tXp = this.qSE.talker;
-          paramckn.sRA = "";
-          paramckn.ssy = this.qSJ;
-          paramckn.tXT = true;
-          a.bYL().qRA.a(new p.a(this, this.qSE.igH, paramckn));
-          this.qSJ = 0;
+          paramcya = new cyb();
+          paramcya.xlH = this.uHL.talker;
+          paramcya.wxW = "";
+          paramcya.wld = this.uHQ;
+          paramcya.yfj = true;
+          a.cYy().uGI.a(new p.a(this, this.uHL.cnU, paramcya));
+          this.uHQ = 0;
         }
       }
-      if ((this.ceg) || (this.qSH <= 3300)) {
-        break;
+      if ((!this.cMU) && (this.uHO > 3300))
+      {
+        this.cMU = true;
+        aw.Rc().a(this.uHL, 0);
       }
-      this.ceg = true;
-      au.Dk().a(this.qSE, 0);
+      AppMethodBeat.o(26424);
       return;
-      if (((c.a)localObject).wKn == 3) {
-        this.qSJ = 2;
+      if (((c.a)localObject).BhO == 3) {
+        this.uHQ = 2;
       }
     }
   }
   
   public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, m paramm)
   {
+    AppMethodBeat.i(26423);
     if ((paramm instanceof com.tencent.mm.plugin.wear.model.d.c))
     {
       paramString = (com.tencent.mm.plugin.wear.model.d.c)paramm;
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        break label93;
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        aw.Rc().b(349, this);
+        paramm = new cyb();
+        paramm.xlH = paramString.talker;
+        paramm.wxW = "";
+        paramm.wld = -1;
+        paramm.yfj = false;
+        a.cYy().uGI.a(new p.a(this, paramString.cnU, paramm));
+        AppMethodBeat.o(26423);
+        return;
       }
-      au.Dk().b(349, this);
-      paramm = new cko();
-      paramm.tXp = paramString.talker;
-      paramm.sRA = "";
-      paramm.ssy = -1;
-      paramm.tXT = false;
-      a.bYL().qRA.a(new p.a(this, paramString.igH, paramm));
+      if (paramString.uHB)
+      {
+        aw.Rc().b(349, this);
+        paramm = new cyb();
+        paramm.xlH = paramString.talker;
+        if (bo.isNullOrNil(paramString.uHA)) {
+          break label219;
+        }
+        ab.i("MicroMsg.Wear.VoiceToTextServer", "receive text: %s", new Object[] { paramString.uHA });
+        paramm.wxW = paramString.uHA;
+        paramm.wld = 0;
+      }
     }
-    label93:
-    while (!paramString.qSu) {
-      return;
-    }
-    au.Dk().b(349, this);
-    paramm = new cko();
-    paramm.tXp = paramString.talker;
-    if (!bk.bl(paramString.qSt))
+    for (paramm.yfj = true;; paramm.yfj = false)
     {
-      y.i("MicroMsg.Wear.VoiceToTextServer", "receive text: %s", new Object[] { paramString.qSt });
-      paramm.sRA = paramString.qSt;
-      paramm.ssy = 0;
-    }
-    for (paramm.tXT = true;; paramm.tXT = false)
-    {
-      a.bYL().qRA.a(new p.a(this, paramString.igH, paramm));
+      a.cYy().uGI.a(new p.a(this, paramString.cnU, paramm));
+      AppMethodBeat.o(26423);
       return;
-      paramm.sRA = "";
-      paramm.ssy = -1;
+      label219:
+      paramm.wxW = "";
+      paramm.wld = -1;
     }
   }
   
   public final void reset()
   {
-    y.i("MicroMsg.Wear.VoiceToTextServer", "reset: sessionId=%s", new Object[] { Integer.valueOf(this.qSI) });
-    if (this.qSG != null)
+    AppMethodBeat.i(26422);
+    ab.i("MicroMsg.Wear.VoiceToTextServer", "reset: sessionId=%s", new Object[] { Integer.valueOf(this.uHP) });
+    if (this.uHN != null)
     {
-      this.qSG.uE();
-      this.qSG = null;
-      y.i("MicroMsg.Wear.VoiceToTextServer", "reset speexWriter");
+      this.uHN.Fb();
+      this.uHN = null;
+      ab.i("MicroMsg.Wear.VoiceToTextServer", "reset speexWriter");
     }
-    if (this.qSF != null)
+    if (this.uHM != null)
     {
-      this.qSF.stop();
-      this.qSF = null;
-      y.i("MicroMsg.Wear.VoiceToTextServer", "reset voiceDetectAPI");
+      this.uHM.stop();
+      this.uHM = null;
+      ab.i("MicroMsg.Wear.VoiceToTextServer", "reset voiceDetectAPI");
     }
-    if (this.qSE != null)
+    if (this.uHL != null)
     {
-      this.qSE.eJS = true;
-      au.Dk().b(349, this);
-      au.Dk().c(this.qSE);
-      this.qSE = null;
+      this.uHL.fZu = true;
+      aw.Rc().b(349, this);
+      aw.Rc().a(this.uHL);
+      this.uHL = null;
     }
-    this.qSJ = 0;
-    this.ceg = false;
-    this.qSH = 0;
-    this.qSI = -1;
-    this.fSX.clear();
+    this.uHQ = 0;
+    this.cMU = false;
+    this.uHO = 0;
+    this.uHP = -1;
+    this.hmy.clear();
+    AppMethodBeat.o(26422);
   }
 }
 

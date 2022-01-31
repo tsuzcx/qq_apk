@@ -6,16 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mm.R.h;
-import com.tencent.mm.R.i;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class ZoneSelectOtherCountryPreference
   extends Preference
 {
+  ZoneSelectOtherCountryPreference.a Ayw;
   String text;
-  ZoneSelectOtherCountryPreference.a wfG;
   
   public ZoneSelectOtherCountryPreference(Context paramContext)
   {
@@ -30,26 +29,32 @@ public class ZoneSelectOtherCountryPreference
   public ZoneSelectOtherCountryPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutResource(R.i.mm_preference);
+    AppMethodBeat.i(35020);
+    setLayoutResource(2130970179);
+    AppMethodBeat.o(35020);
   }
   
-  protected final void onBindView(View paramView)
+  public final void onBindView(View paramView)
   {
+    AppMethodBeat.i(35022);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(R.h.zonename);
-    if (!bk.bl(this.text)) {
+    TextView localTextView = (TextView)paramView.findViewById(2131826226);
+    if (!bo.isNullOrNil(this.text)) {
       localTextView.setText(this.text);
     }
     paramView.setOnClickListener(new ZoneSelectOtherCountryPreference.1(this));
+    AppMethodBeat.o(35022);
   }
   
-  protected final View onCreateView(ViewGroup paramViewGroup)
+  public final View onCreateView(ViewGroup paramViewGroup)
   {
+    AppMethodBeat.i(35021);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(R.h.content);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131820946);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(R.i.mm_preference_content_zone, localViewGroup);
+    localLayoutInflater.inflate(2130970222, localViewGroup);
+    AppMethodBeat.o(35021);
     return paramViewGroup;
   }
 }

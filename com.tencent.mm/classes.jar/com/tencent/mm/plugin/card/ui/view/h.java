@@ -2,73 +2,88 @@ package com.tencent.mm.plugin.card.ui.view;
 
 import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mm.plugin.card.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.plugin.card.d.m;
-import com.tencent.mm.protocal.c.mg;
-import com.tencent.mm.protocal.c.ra;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.protocal.protobuf.oj;
+import com.tencent.mm.protocal.protobuf.pg;
+import com.tencent.mm.protocal.protobuf.uo;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class h
   implements ab
 {
-  protected MMActivity hxN;
-  protected g ixX;
+  protected MMActivity jpX;
+  protected g kBe;
   
   public h(g paramg, MMActivity paramMMActivity)
   {
-    this.ixX = paramg;
-    this.hxN = paramMMActivity;
+    this.kBe = paramg;
+    this.jpX = paramMMActivity;
   }
   
-  public abstract boolean aCV();
+  public abstract boolean bfr();
   
-  public abstract boolean aCW();
+  public abstract boolean bfs();
   
-  public void c(ViewGroup paramViewGroup, b paramb)
+  public void c(ViewGroup paramViewGroup, final b paramb)
   {
     Object localObject1;
     Object localObject2;
-    if (aCV())
+    if (bfr())
     {
-      localObject1 = (TextView)paramViewGroup.findViewById(a.d.code_text);
-      localObject2 = this.ixX.code;
-      if ((!paramb.azs()) && ((bk.bl((String)localObject2)) || (((String)localObject2).length() > 40))) {
-        break label304;
+      localObject1 = (TextView)paramViewGroup.findViewById(2131822013);
+      localObject2 = this.kBe.code;
+      if ((!paramb.baY()) && ((bo.isNullOrNil((String)localObject2)) || (((String)localObject2).length() > 40))) {
+        break label299;
       }
-      ((TextView)localObject1).setText(m.yZ((String)localObject2));
-      if (paramb.azn())
+      ((TextView)localObject1).setText(m.II((String)localObject2));
+      if (paramb.baT())
       {
         ((TextView)localObject1).setVisibility(0);
-        ((TextView)localObject1).setOnLongClickListener(new h.1(this, paramb));
-        this.ixX.d(c.iyY);
+        ((TextView)localObject1).setOnLongClickListener(new View.OnLongClickListener()
+        {
+          public final boolean onLongClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(88745);
+            if (paramAnonymousView.getId() == 2131822013)
+            {
+              com.tencent.mm.plugin.card.d.p.xJ(paramb.bbe().code);
+              com.tencent.mm.ui.base.h.bO(h.this.jpX, com.tencent.mm.a.p.getString(2131296896));
+            }
+            AppMethodBeat.o(88745);
+            return false;
+          }
+        });
+        this.kBe.d(c.kCf);
       }
     }
-    else if (aCW())
+    else if (bfs())
     {
-      localObject1 = (RelativeLayout)paramViewGroup.findViewById(a.d.code_jump_layout);
-      if ((paramb == null) || (paramb.azx() == null) || (paramb.azx().sIU == null) || (bk.bl(paramb.azx().sIU.title))) {
-        break label326;
+      localObject1 = (LinearLayout)paramViewGroup.findViewById(2131822025);
+      if ((paramb == null) || (paramb.bbd() == null) || (paramb.bbd().wGD == null) || (bo.isNullOrNil(paramb.bbd().wGD.title))) {
+        break label321;
       }
-      paramViewGroup.findViewById(a.d.code_divider_line).setVisibility(8);
-      ((RelativeLayout)localObject1).setVisibility(0);
-      localObject2 = paramb.azx().sIU;
-      TextView localTextView = (TextView)paramViewGroup.findViewById(a.d.code_jump_title);
-      localTextView.setText(((ra)localObject2).title);
-      String str = paramb.azx().color;
-      if (!bk.bl(str)) {
-        localTextView.setTextColor(l.yR(str));
+      paramViewGroup.findViewById(2131822024).setVisibility(8);
+      ((LinearLayout)localObject1).setVisibility(0);
+      localObject2 = paramb.bbd().wGD;
+      TextView localTextView = (TextView)paramViewGroup.findViewById(2131822026);
+      localTextView.setText(((uo)localObject2).title);
+      String str = paramb.bbd().color;
+      if (!bo.isNullOrNil(str)) {
+        localTextView.setTextColor(l.IB(str));
       }
-      paramViewGroup = (TextView)paramViewGroup.findViewById(a.d.code_jump_second_title);
-      localObject2 = ((ra)localObject2).ilr;
+      paramViewGroup = (TextView)paramViewGroup.findViewById(2131822027);
+      localObject2 = ((uo)localObject2).kmo;
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        break label313;
+        break label308;
       }
       if (paramViewGroup != null)
       {
@@ -78,20 +93,20 @@ public abstract class h
     }
     for (;;)
     {
-      ((RelativeLayout)localObject1).setOnClickListener(new h.2(this, paramb));
+      ((LinearLayout)localObject1).setOnClickListener(new h.2(this, paramb));
       return;
       ((TextView)localObject1).setVisibility(8);
       break;
-      label304:
+      label299:
       ((TextView)localObject1).setVisibility(8);
       break;
-      label313:
+      label308:
       if (paramViewGroup != null) {
         paramViewGroup.setVisibility(8);
       }
     }
-    label326:
-    ((RelativeLayout)localObject1).setVisibility(8);
+    label321:
+    ((LinearLayout)localObject1).setVisibility(8);
   }
   
   public boolean g(b paramb)
@@ -99,7 +114,7 @@ public abstract class h
     return true;
   }
   
-  public void k(ViewGroup paramViewGroup) {}
+  public void l(ViewGroup paramViewGroup) {}
 }
 
 

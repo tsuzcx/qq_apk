@@ -1,180 +1,152 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.os.Looper;
-import android.widget.BaseAdapter;
-import com.tencent.mm.sdk.e.j.a;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.m.b;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.y;
-import java.util.HashMap;
-import java.util.Map;
-import junit.framework.Assert;
+import android.support.v7.app.ActionBar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.b.b;
+import com.tencent.mm.ui.b.b.a;
 
-public abstract class r<T>
-  extends BaseAdapter
-  implements j.a, m.b
+public final class r
+  extends q
+  implements b.a
 {
-  public Context context;
-  public int count;
-  private ah ntK = new ah(Looper.getMainLooper());
-  private Cursor uEq = null;
-  public T uMg;
-  public Map<Integer, T> uMh = null;
-  public r.a uMi;
-  private int uMj = 0;
-  private int uMk = 0;
-  private int uMl = 0;
-  private Runnable uMm = new r.1(this);
+  private ActionBar mActionBar;
+  public MMFragment zbQ = null;
+  public b zbR;
   
-  public r(Context paramContext, T paramT)
+  public final boolean c(Menu paramMenu)
   {
-    this.uMg = paramT;
-    this.context = paramContext;
-    this.count = -1;
-  }
-  
-  private void czf()
-  {
-    y.v("MicroMsg.MListAdapter", "ashutest:: on UI, directly call resetCursor Job");
-    bcS();
-    yc();
-    if (this.uMi != null) {
-      this.uMi.Wp();
+    AppMethodBeat.i(142742);
+    if (this.zbQ != null) {
+      this.zbQ.onPrepareOptionsMenu(paramMenu);
     }
+    AppMethodBeat.o(142742);
+    return true;
   }
   
-  public abstract T a(T paramT, Cursor paramCursor);
-  
-  public void a(int paramInt, m paramm, Object paramObject)
+  public final boolean d(Menu paramMenu)
   {
-    if ((paramObject == null) || (!(paramObject instanceof String)))
+    AppMethodBeat.i(142743);
+    this.zbQ.onCreateOptionsMenu(paramMenu, this.zbR.getMenuInflater());
+    AppMethodBeat.o(142743);
+    return true;
+  }
+  
+  protected final void dealContentView(View paramView)
+  {
+    AppMethodBeat.i(142734);
+    if (this.zbQ != null) {
+      this.zbQ.dealContentView(paramView);
+    }
+    AppMethodBeat.o(142734);
+  }
+  
+  public final boolean e(MenuItem paramMenuItem)
+  {
+    AppMethodBeat.i(142744);
+    boolean bool = super.onOptionsItemSelected(paramMenuItem);
+    AppMethodBeat.o(142744);
+    return bool;
+  }
+  
+  protected final boolean fromFullScreenActivity()
+  {
+    return false;
+  }
+  
+  protected final String getClassName()
+  {
+    AppMethodBeat.i(142739);
+    String str = this.zbQ.getClass().getName();
+    AppMethodBeat.o(142739);
+    return str;
+  }
+  
+  protected final String getIdentString()
+  {
+    AppMethodBeat.i(142735);
+    if (this.zbQ != null)
     {
-      y.d("MicroMsg.MListAdapter", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramm, paramObject });
-      return;
+      String str = this.zbQ.getIdentityString();
+      AppMethodBeat.o(142735);
+      return str;
     }
-    a((String)paramObject, null);
+    AppMethodBeat.o(142735);
+    return null;
   }
   
-  public void a(String paramString, l paraml)
+  protected final int getLayoutId()
   {
-    czf();
-  }
-  
-  public int bam()
-  {
-    return 0;
-  }
-  
-  public T ban()
-  {
-    return this.uMg;
-  }
-  
-  public void bcS()
-  {
-    if (this.uMh != null) {
-      this.uMh.clear();
-    }
-    if (this.uEq != null) {
-      this.uEq.close();
-    }
-    this.count = -1;
-  }
-  
-  public int getCount()
-  {
-    if (this.count < 0) {
-      this.count = getCursor().getCount();
-    }
-    return this.count + bam();
-  }
-  
-  public final Cursor getCursor()
-  {
-    if ((this.uEq == null) || (this.uEq.isClosed()))
+    AppMethodBeat.i(142733);
+    if (this.zbQ != null)
     {
-      yd();
-      Assert.assertNotNull(this.uEq);
+      int i = this.zbQ.getLayoutId();
+      AppMethodBeat.o(142733);
+      return i;
     }
-    return this.uEq;
+    AppMethodBeat.o(142733);
+    return -1;
   }
   
-  public T getItem(int paramInt)
+  protected final View getLayoutView()
   {
-    if (sk(paramInt)) {
-      localObject1 = ban();
-    }
-    Object localObject2;
-    do
+    AppMethodBeat.i(142736);
+    if (this.zbQ != null)
     {
-      return localObject1;
-      if (this.uMh == null) {
-        break;
-      }
-      localObject2 = this.uMh.get(Integer.valueOf(paramInt));
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    if ((paramInt < 0) || (!getCursor().moveToPosition(paramInt))) {
-      return null;
+      View localView = this.zbQ.getLayoutView();
+      AppMethodBeat.o(142736);
+      return localView;
     }
-    if (this.uMh == null) {
-      return a(this.uMg, getCursor());
+    AppMethodBeat.o(142736);
+    return null;
+  }
+  
+  public final ActionBar getSupportActionBar()
+  {
+    AppMethodBeat.i(142740);
+    if (this.mActionBar == null) {
+      this.mActionBar = this.zbR.dDu();
     }
-    Object localObject1 = a(null, getCursor());
-    this.uMh.put(Integer.valueOf(paramInt), localObject1);
-    return localObject1;
+    ActionBar localActionBar = this.mActionBar;
+    AppMethodBeat.o(142740);
+    return localActionBar;
   }
   
-  public long getItemId(int paramInt)
+  public final boolean interceptSupportInvalidateOptionsMenu()
   {
-    return 0L;
+    return true;
   }
   
-  public final int getRealCount()
+  protected final void onCreateBeforeSetContentView()
   {
-    if (this.count < 0) {
-      this.count = getCursor().getCount();
+    AppMethodBeat.i(142738);
+    if (this.zbQ != null) {
+      this.zbQ.onCreateBeforeSetContentView();
     }
-    return this.count;
+    AppMethodBeat.o(142738);
   }
   
-  public final void mR(boolean paramBoolean)
+  public final void onKeyboardStateChanged()
   {
-    if (!paramBoolean) {
-      if (this.uMh != null)
-      {
-        this.uMh.clear();
-        this.uMh = null;
-      }
+    AppMethodBeat.i(142737);
+    if (this.zbQ != null) {
+      this.zbQ.onKeyboardStateChanged();
     }
-    while (this.uMh != null) {
-      return;
-    }
-    this.uMh = new HashMap();
+    AppMethodBeat.o(142737);
   }
   
-  public final void setCursor(Cursor paramCursor)
+  public final void supportInvalidateOptionsMenu()
   {
-    this.uEq = paramCursor;
-    this.count = -1;
+    AppMethodBeat.i(142741);
+    this.zbR.supportInvalidateOptionsMenu();
+    AppMethodBeat.o(142741);
   }
-  
-  public boolean sk(int paramInt)
-  {
-    return (paramInt >= this.count) && (paramInt < this.count + bam());
-  }
-  
-  public abstract void yc();
-  
-  public abstract void yd();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.r
  * JD-Core Version:    0.7.0.1
  */

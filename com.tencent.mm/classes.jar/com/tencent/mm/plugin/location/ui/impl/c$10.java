@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.location.ui.impl;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.MMLoadMoreListView.a;
 
 final class c$10
@@ -7,9 +8,11 @@ final class c$10
 {
   c$10(c paramc) {}
   
-  public final void yb()
+  public final void Kt()
   {
-    c.f(this.lJp);
+    AppMethodBeat.i(113605);
+    c.f(this.ogD);
+    AppMethodBeat.o(113605);
   }
 }
 

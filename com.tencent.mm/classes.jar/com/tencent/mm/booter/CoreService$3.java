@@ -1,6 +1,8 @@
 package com.tencent.mm.booter;
 
-import com.tencent.mm.network.aa;
+import android.os.Build.VERSION;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class CoreService$3
   implements Runnable
@@ -9,18 +11,16 @@ final class CoreService$3
   
   public final void run()
   {
-    com.tencent.mm.sdk.platformtools.y.i("MicroMsg.CoreService", "NetNotifyAdapter NeedNotifyGCM after init");
-    aa.Uw().onPush(2147480001, new byte[0]);
-  }
-  
-  public final String toString()
-  {
-    return "NotifyGCM";
+    AppMethodBeat.i(57727);
+    if (Build.VERSION.SDK_INT > 23) {
+      ab.i("MicroMsg.CoreService", "KeepAliveService.scheduleKeepAliveJob() flag:%s", new Object[] { Boolean.valueOf(KeepAliveService.Ij()) });
+    }
+    AppMethodBeat.o(57727);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.booter.CoreService.3
  * JD-Core Version:    0.7.0.1
  */

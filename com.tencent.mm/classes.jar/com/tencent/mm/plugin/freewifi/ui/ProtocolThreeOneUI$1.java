@@ -1,29 +1,32 @@
 package com.tencent.mm.plugin.freewifi.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
-import com.tencent.mm.sdk.platformtools.am.a;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ap.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class ProtocolThreeOneUI$1
-  implements am.a
+  implements ap.a
 {
   ProtocolThreeOneUI$1(ProtocolThreeOneUI paramProtocolThreeOneUI) {}
   
-  public final boolean tC()
+  public final boolean onTimerExpired()
   {
-    if (!bk.bl(this.kti.ssid))
+    AppMethodBeat.i(21121);
+    if (!bo.isNullOrNil(this.mOW.ssid))
     {
-      ProtocolThreeOneUI.a(this.kti, this.kti.aUO());
-      if (ProtocolThreeOneUI.a(this.kti) != 2)
+      ProtocolThreeOneUI.a(this.mOW, this.mOW.bBm());
+      if (ProtocolThreeOneUI.a(this.mOW) != 2)
       {
-        ProtocolThreeOneUI.b(this.kti);
-        y.i("MicroMsg.FreeWifi.Protocol31UI", "sessionKey=%s, step=%d, method=Protocol31UI.connectTimeoutHandler, desc=wifi connecttimeout. state=%s", new Object[] { m.B(this.kti.getIntent()), Integer.valueOf(m.C(this.kti.getIntent())), d.rr(ProtocolThreeOneUI.a(this.kti)) });
-        d.a(this.kti.ssid, 3, this.kti.getIntent());
-        ProtocolThreeOneUI.a(this.kti, 31, "AUTH_TIMEOUT");
+        ProtocolThreeOneUI.b(this.mOW);
+        ab.i("MicroMsg.FreeWifi.Protocol31UI", "sessionKey=%s, step=%d, method=Protocol31UI.connectTimeoutHandler, desc=wifi connecttimeout. state=%s", new Object[] { m.U(this.mOW.getIntent()), Integer.valueOf(m.V(this.mOW.getIntent())), d.wl(ProtocolThreeOneUI.a(this.mOW)) });
+        d.a(this.mOW.ssid, 3, this.mOW.getIntent());
+        ProtocolThreeOneUI.a(this.mOW, 31, "AUTH_TIMEOUT");
       }
     }
+    AppMethodBeat.o(21121);
     return false;
   }
 }

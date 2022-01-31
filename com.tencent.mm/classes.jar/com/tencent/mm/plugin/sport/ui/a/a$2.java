@@ -3,9 +3,11 @@ package com.tencent.mm.plugin.sport.ui.a;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.sport.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.f;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.sport.a.b;
 
 final class a$2
   implements DialogInterface.OnClickListener
@@ -14,10 +16,13 @@ final class a$2
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = f.kX(this.pul.dnp.field_username);
-    ((com.tencent.mm.pluginsdk.g)com.tencent.mm.kernel.g.r(com.tencent.mm.pluginsdk.g.class)).a(paramDialogInterface, (Activity)this.pul.context, this.pul.dnp);
-    this.pul.awY();
-    ((b)com.tencent.mm.kernel.g.r(b.class)).bLc();
+    AppMethodBeat.i(25146);
+    paramDialogInterface = f.rS(this.sqB.contact.field_username);
+    ((com.tencent.mm.pluginsdk.h)g.E(com.tencent.mm.pluginsdk.h.class)).a(paramDialogInterface, (Activity)this.sqB.context, this.sqB.contact);
+    this.sqB.bkc();
+    ((b)g.E(b.class)).cyy();
+    com.tencent.mm.plugin.sport.model.h.lL(false);
+    AppMethodBeat.o(25146);
   }
 }
 

@@ -1,21 +1,24 @@
 package com.tencent.xweb.x5;
 
 import android.webkit.WebChromeClient.CustomViewCallback;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
 
 public final class g$c
   implements WebChromeClient.CustomViewCallback
 {
-  IX5WebChromeClient.CustomViewCallback xkt;
+  IX5WebChromeClient.CustomViewCallback BHY;
   
   g$c(IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    this.xkt = paramCustomViewCallback;
+    this.BHY = paramCustomViewCallback;
   }
   
   public final void onCustomViewHidden()
   {
-    this.xkt.onCustomViewHidden();
+    AppMethodBeat.i(84825);
+    this.BHY.onCustomViewHidden();
+    AppMethodBeat.o(84825);
   }
 }
 

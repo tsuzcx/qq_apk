@@ -4,19 +4,23 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import com.tencent.mm.ci.a.c;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.toybrick.c.g;
 import java.util.LinkedList;
 
 public final class a$a
 {
-  public LinkedList<g> xbo = new LinkedList();
-  public boolean xbp = true;
-  public Drawable xbq;
+  public LinkedList<g> BxU;
+  public boolean BxV;
+  public Drawable BxW;
   
   public a$a(a parama, Context paramContext)
   {
-    this.xbq = new ColorDrawable(paramContext.getResources().getColor(a.c.list_devider_color));
+    AppMethodBeat.i(113224);
+    this.BxU = new LinkedList();
+    this.BxV = true;
+    this.BxW = new ColorDrawable(paramContext.getResources().getColor(2131690217));
+    AppMethodBeat.o(113224);
   }
 }
 

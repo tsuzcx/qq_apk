@@ -18,7 +18,7 @@ public final class g
     return localStringBuilder.toString();
   }
   
-  public static String afu(String paramString)
+  public static String aws(String paramString)
   {
     String str = paramString;
     if (isEmpty(paramString)) {
@@ -32,7 +32,7 @@ public final class g
     return (paramString1 == paramString2) || ((paramString1 != null) && (paramString2 != null) && (paramString1.equals(paramString2)));
   }
   
-  public static boolean gK(String paramString1, String paramString2)
+  public static boolean iN(String paramString1, String paramString2)
   {
     if (paramString1 == null) {
       return paramString2 == null;
@@ -43,6 +43,11 @@ public final class g
   public static boolean isEmpty(String paramString)
   {
     return (paramString == null) || (paramString.length() == 0);
+  }
+  
+  public static boolean isNullOrEmpty(String paramString)
+  {
+    return (paramString == null) || ("".equals(paramString.trim()));
   }
 }
 

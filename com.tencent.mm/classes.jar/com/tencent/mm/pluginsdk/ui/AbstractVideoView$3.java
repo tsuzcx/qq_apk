@@ -1,5 +1,7 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class AbstractVideoView$3
   implements Runnable
 {
@@ -7,10 +9,12 @@ final class AbstractVideoView$3
   
   public final void run()
   {
-    this.rYV.rYL = true;
-    this.rYV.nD(this.rYW);
-    this.rYV.y(this.rYW, true);
-    this.rYV.rYL = false;
+    AppMethodBeat.i(117936);
+    this.vPL.vPA = true;
+    this.vPL.rl(this.vPM);
+    this.vPL.d(this.vPM, true);
+    this.vPL.vPA = false;
+    AppMethodBeat.o(117936);
   }
 }
 

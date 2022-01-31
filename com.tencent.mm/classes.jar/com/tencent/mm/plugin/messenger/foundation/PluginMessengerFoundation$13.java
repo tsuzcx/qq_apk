@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.messenger.foundation;
 
-import com.tencent.mm.cf.h.d;
+import com.tencent.mm.cg.h.d;
 import com.tencent.mm.storage.aj;
 
 final class PluginMessengerFoundation$13
@@ -8,9 +8,9 @@ final class PluginMessengerFoundation$13
 {
   PluginMessengerFoundation$13(PluginMessengerFoundation paramPluginMessengerFoundation) {}
   
-  public final String[] rK()
+  public final String[] getSQLs()
   {
-    return aj.dXp;
+    return aj.SQL_CREATE;
   }
 }
 

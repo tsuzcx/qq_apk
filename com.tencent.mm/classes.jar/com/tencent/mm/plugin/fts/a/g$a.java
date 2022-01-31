@@ -3,22 +3,22 @@ package com.tencent.mm.plugin.fts.a;
 public final class g$a
 {
   int bottom;
-  int up;
+  int mRM;
   
   public g$a(int paramInt1, int paramInt2)
   {
     this.bottom = paramInt1;
-    this.up = paramInt2;
+    this.mRM = paramInt2;
   }
   
-  public final boolean j(char paramChar)
+  public final boolean ws(int paramInt)
   {
-    return (paramChar >= this.bottom) && (paramChar <= this.up);
+    return (paramInt >= this.bottom) && (paramInt <= this.mRM);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.g.a
  * JD-Core Version:    0.7.0.1
  */

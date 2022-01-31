@@ -1,5 +1,7 @@
 package com.tencent.mm.c;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class k
   implements Cloneable
 {
@@ -17,10 +19,12 @@ public final class k
   
   private k(byte[] paramArrayOfByte, byte paramByte)
   {
+    AppMethodBeat.i(125705);
     this.value = (paramArrayOfByte[3] << 24 & 0xFF000000);
     this.value += (paramArrayOfByte[2] << 16 & 0xFF0000);
     this.value += (paramArrayOfByte[1] << 8 & 0xFF00);
     this.value += (paramArrayOfByte[0] & 0xFF);
+    AppMethodBeat.o(125705);
   }
   
   public final boolean equals(Object paramObject)
@@ -44,7 +48,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.c.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.youtu.ytagreflectlivecheck.worker;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.TimerTask;
 
 class TimerWorker$1
@@ -9,12 +10,14 @@ class TimerWorker$1
   
   public void run()
   {
+    AppMethodBeat.i(123201);
     TimerWorker.access$000(this.this$0);
+    AppMethodBeat.o(123201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.worker.TimerWorker.1
  * JD-Core Version:    0.7.0.1
  */

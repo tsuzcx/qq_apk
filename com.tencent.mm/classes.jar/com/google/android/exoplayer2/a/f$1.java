@@ -2,6 +2,7 @@ package com.google.android.exoplayer2.a;
 
 import android.media.AudioTrack;
 import android.os.ConditionVariable;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class f$1
   extends Thread
@@ -10,21 +11,23 @@ final class f$1
   
   public final void run()
   {
+    AppMethodBeat.i(94660);
     try
     {
-      this.axm.flush();
-      this.axm.release();
+      this.azC.flush();
+      this.azC.release();
       return;
     }
     finally
     {
-      f.a(this.axn).open();
+      f.a(this.azD).open();
+      AppMethodBeat.o(94660);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.a.f.1
  * JD-Core Version:    0.7.0.1
  */

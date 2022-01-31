@@ -1,13 +1,29 @@
 package com.tencent.mm.ui.conversation;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
+
 final class l$2
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  l$2(l paraml) {}
+  l$2(SharedPreferences paramSharedPreferences, Context paramContext) {}
   
-  public final void run()
+  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    l.a(this.vTN, 0);
+    AppMethodBeat.i(34580);
+    this.AlL.edit().putInt("show_rating_flag", 2).commit();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    l.dNa();
+    l.iu(this.val$context);
+    ab.d("MicroMsg.MainUI.RatingDialogHelper", "[oneliang]show feedback dialog.");
+    AppMethodBeat.o(34580);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.account.bind.ui;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import com.tencent.mm.plugin.account.bind.a.h;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class BindMobileStatusUI$2
   implements View.OnClickListener
@@ -13,31 +13,33 @@ final class BindMobileStatusUI$2
   public final void onClick(View paramView)
   {
     boolean bool2 = true;
-    paramView = this.fcx;
-    if (!BindMobileStatusUI.b(this.fcx).booleanValue())
+    AppMethodBeat.i(13496);
+    paramView = this.guh;
+    if (!BindMobileStatusUI.b(this.guh).booleanValue())
     {
       bool1 = true;
       BindMobileStatusUI.a(paramView, Boolean.valueOf(bool1));
-      if (!BindMobileStatusUI.b(this.fcx).booleanValue()) {
-        break label94;
+      if (!BindMobileStatusUI.b(this.guh).booleanValue()) {
+        break label105;
       }
-      BindMobileStatusUI.c(this.fcx).setImageResource(a.h.checkbox_selected);
-      label57:
-      paramView = this.fcx;
-      if (BindMobileStatusUI.b(this.fcx).booleanValue()) {
-        break label110;
+      BindMobileStatusUI.c(this.guh).setImageResource(2131231137);
+      label62:
+      paramView = this.guh;
+      if (BindMobileStatusUI.b(this.guh).booleanValue()) {
+        break label120;
       }
     }
-    label94:
-    label110:
+    label105:
+    label120:
     for (boolean bool1 = bool2;; bool1 = false)
     {
       BindMobileStatusUI.a(paramView, bool1, 512, 8);
+      AppMethodBeat.o(13496);
       return;
       bool1 = false;
       break;
-      BindMobileStatusUI.c(this.fcx).setImageResource(a.h.checkbox_unselected);
-      break label57;
+      BindMobileStatusUI.c(this.guh).setImageResource(2131231142);
+      break label62;
     }
   }
 }

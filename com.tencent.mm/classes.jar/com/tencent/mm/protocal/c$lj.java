@@ -5,7 +5,7 @@ public final class c$lj
 {
   public c$lj()
   {
-    super("menu:share:QZone", "", 134, false);
+    super("videoProxyInit", "videoProxyInit", 156, false);
   }
 }
 

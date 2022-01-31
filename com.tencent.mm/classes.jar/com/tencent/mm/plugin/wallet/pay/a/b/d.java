@@ -8,19 +8,19 @@ public final class d
     super(paramString, paramInt1, paramInt2);
   }
   
-  public final int HH()
+  public final int getFuncId()
   {
-    return 2976;
+    return 2820;
   }
   
   public final String getUri()
   {
-    return "/cgi-bin/mmpay-bin/tenpay/sns_cancelpay";
+    return "/cgi-bin/mmpay-bin/seb_ff_cancelpay";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.b.d
  * JD-Core Version:    0.7.0.1
  */

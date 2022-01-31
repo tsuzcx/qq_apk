@@ -1,45 +1,51 @@
 package com.tencent.mm.app.plugin.b;
 
-import com.tencent.mm.h.a.fl;
-import com.tencent.mm.modelvoice.k;
-import com.tencent.mm.sdk.platformtools.am;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.fo;
+import com.tencent.mm.modelvoice.m;
+import com.tencent.mm.sdk.platformtools.ap;
 
 public final class a$f
-  extends com.tencent.mm.sdk.b.c<fl>
+  extends com.tencent.mm.sdk.b.c<fo>
 {
-  k byP;
-  am byQ;
-  boolean byR;
-  boolean byS;
-  boolean byT;
-  fl byU;
-  Runnable byV;
-  String fileName = "";
+  m caR;
+  ap caS;
+  boolean caT;
+  boolean caU;
+  boolean caV;
+  fo caW;
+  Runnable caX;
+  String fileName;
   
   public a$f()
   {
-    this.udX = fl.class.getName().hashCode();
+    AppMethodBeat.i(15742);
+    this.fileName = "";
+    this.__eventId = fo.class.getName().hashCode();
+    AppMethodBeat.o(15742);
   }
   
   final void stopRecord()
   {
-    if (this.byP != null)
+    AppMethodBeat.i(15743);
+    if (this.caR != null)
     {
-      this.byS = this.byP.uh();
-      if (this.byV != null)
+      this.caU = this.caR.Et();
+      if (this.caX != null)
       {
-        if (this.byU != null)
+        if (this.caW != null)
         {
-          this.byU.bMk.bMl = this.byP.bCc.bCU;
-          this.byU = null;
+          this.caW.ctF.ctG = this.caR.ciR.cjI;
+          this.caW = null;
         }
-        if (this.byT) {
-          this.byV.run();
+        if (this.caV) {
+          this.caX.run();
         }
-        this.byV = null;
+        this.caX = null;
       }
-      this.byR = true;
+      this.caT = true;
     }
+    AppMethodBeat.o(15743);
   }
 }
 

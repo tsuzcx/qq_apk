@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.d;
 
 public abstract interface d
 {
-  public abstract boolean bwg();
+  public abstract boolean getHasRetried();
 }
 
 

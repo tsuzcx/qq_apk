@@ -1,19 +1,30 @@
 package com.tencent.mm.ui.widget.textview;
 
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ak;
 
 final class a$3
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
   a$3(a parama) {}
   
-  public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public final void onClick(View paramView)
   {
-    this.wsy.wsq = ((int)paramMotionEvent.getX());
-    this.wsy.wsr = ((int)paramMotionEvent.getY());
-    return false;
+    AppMethodBeat.i(138208);
+    ak.d("SelectableTextHelper", "onClick", new Object[0]);
+    if (this.ANs.lPx != null) {
+      this.ANs.lPx.onClick(paramView);
+    }
+    this.ANs.ANj = true;
+    this.ANs.ANk = true;
+    this.ANs.dPP();
+    this.ANs.dPQ();
+    if (this.ANs.AMU != null) {
+      this.ANs.AMU.dismiss();
+    }
+    AppMethodBeat.o(138208);
   }
 }
 

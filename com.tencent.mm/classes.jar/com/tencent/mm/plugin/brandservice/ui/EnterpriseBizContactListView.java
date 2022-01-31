@@ -5,24 +5,19 @@ import android.database.Cursor;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import com.tencent.mm.ai.f;
-import com.tencent.mm.ai.m.a;
-import com.tencent.mm.ai.z;
-import com.tencent.mm.h.c.ao;
-import com.tencent.mm.plugin.brandservice.b.d;
-import com.tencent.mm.plugin.brandservice.b.e;
-import com.tencent.mm.plugin.brandservice.b.h;
-import com.tencent.mm.protocal.c.jt;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.e;
+import com.tencent.mm.aj.m.a;
+import com.tencent.mm.aj.z;
+import com.tencent.mm.g.c.aq;
+import com.tencent.mm.protocal.protobuf.me;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 import com.tencent.mm.ui.base.VerticalScrollBar;
 import com.tencent.mm.ui.base.sortview.BaseSortView;
 import com.tencent.mm.ui.base.sortview.c.a;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -31,14 +26,14 @@ import java.util.List;
 public class EnterpriseBizContactListView
   extends BaseSortView
 {
-  private ListView fry;
-  private String ido;
-  private boolean idu;
-  private int idv = -1;
-  private EnterpriseBizContactListView.b idw;
-  private EnterpriseBizContactListView.a idx;
-  private int idy = 0;
-  private int idz = 0;
+  private ListView gJa;
+  private String jUc;
+  private boolean jUi;
+  private int jUj = -1;
+  private EnterpriseBizContactListView.b jUk;
+  private EnterpriseBizContactListView.a jUl;
+  private int jUm = 0;
+  private int jUn = 0;
   
   public EnterpriseBizContactListView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,41 +42,42 @@ public class EnterpriseBizContactListView
   
   private List<com.tencent.mm.ui.base.sortview.d> getSortEntityList()
   {
+    AppMethodBeat.i(13969);
     ArrayList localArrayList = new ArrayList();
-    z.My();
-    Cursor localCursor = com.tencent.mm.ai.e.C(this.ido, this.idu);
+    z.afi();
+    Cursor localCursor = e.G(this.jUc, this.jUi);
     while (localCursor.moveToNext())
     {
-      jt localjt = new jt();
+      me localme = new me();
       Object localObject;
       if (localCursor != null)
       {
         localObject = new ad();
-        ((ad)localObject).d(localCursor);
-        com.tencent.mm.ai.d locald = new com.tencent.mm.ai.d();
-        locald.d(localCursor);
-        localjt.userName = ((ao)localObject).field_username;
-        localjt.dnp = ((ad)localObject);
-        localjt.mVy = locald;
+        ((ad)localObject).convertFrom(localCursor);
+        com.tencent.mm.aj.d locald = new com.tencent.mm.aj.d();
+        locald.convertFrom(localCursor);
+        localme.userName = ((aq)localObject).field_username;
+        localme.contact = ((ad)localObject);
+        localme.pyd = locald;
       }
-      if (localjt.dnp != null)
+      if (localme.contact != null)
       {
         localObject = new com.tencent.mm.ui.base.sortview.d();
-        ((com.tencent.mm.ui.base.sortview.d)localObject).data = localjt;
-        if (localjt.mVy.LA()) {
-          ((com.tencent.mm.ui.base.sortview.d)localObject).vem = "!1";
+        ((com.tencent.mm.ui.base.sortview.d)localObject).data = localme;
+        if (localme.pyd.aei()) {
+          ((com.tencent.mm.ui.base.sortview.d)localObject).zsM = "!1";
         }
         for (;;)
         {
           localArrayList.add(localObject);
           break;
-          if (localjt.dnp.Bl())
+          if (localme.contact.Oa())
           {
-            ((com.tencent.mm.ui.base.sortview.d)localObject).vem = "!2";
+            ((com.tencent.mm.ui.base.sortview.d)localObject).zsM = "!2";
           }
           else
           {
-            int j = localjt.dnp.AE();
+            int j = localme.contact.Nu();
             int i = j;
             if (j >= 97)
             {
@@ -91,155 +87,162 @@ public class EnterpriseBizContactListView
               }
             }
             if ((i >= 65) && (i <= 90)) {
-              ((com.tencent.mm.ui.base.sortview.d)localObject).vem = ((char)i);
+              ((com.tencent.mm.ui.base.sortview.d)localObject).zsM = ((char)i);
             } else {
-              ((com.tencent.mm.ui.base.sortview.d)localObject).vem = "#";
+              ((com.tencent.mm.ui.base.sortview.d)localObject).zsM = "#";
             }
           }
         }
       }
     }
     localCursor.close();
-    this.idv = localArrayList.size();
+    this.jUj = localArrayList.size();
     Collections.sort(localArrayList, new d((byte)0));
+    AppMethodBeat.o(13969);
     return localArrayList;
   }
   
   public static void release()
   {
-    z.MI().Ms();
+    AppMethodBeat.i(13970);
+    z.afs().afc();
+    AppMethodBeat.o(13970);
   }
   
   public final boolean a(String paramString, com.tencent.mm.ui.base.sortview.d paramd)
   {
-    if ((!bk.bl(paramString)) && (paramd != null))
+    AppMethodBeat.i(13971);
+    if ((!bo.isNullOrNil(paramString)) && (paramd != null))
     {
-      Object localObject = (jt)paramd.data;
-      if (localObject == null) {
+      Object localObject = (me)paramd.data;
+      if (localObject == null)
+      {
+        AppMethodBeat.o(13971);
         return false;
       }
-      paramd = ((jt)localObject).dnp.Bq();
-      String str = ((jt)localObject).dnp.vn();
-      localObject = ((jt)localObject).dnp.vo();
+      paramd = ((me)localObject).contact.Of();
+      String str = ((me)localObject).contact.Ht();
+      localObject = ((me)localObject).contact.Hu();
       paramString = paramString.toUpperCase();
-      if (((!bk.bl(paramd)) && (paramd.toUpperCase().indexOf(paramString) != -1)) || ((!bk.bl(str)) && (str.toUpperCase().indexOf(paramString) != -1)) || ((!bk.bl((String)localObject)) && (((String)localObject).toUpperCase().startsWith(paramString)))) {
+      if (((!bo.isNullOrNil(paramd)) && (paramd.toUpperCase().indexOf(paramString) != -1)) || ((!bo.isNullOrNil(str)) && (str.toUpperCase().indexOf(paramString) != -1)) || ((!bo.isNullOrNil((String)localObject)) && (((String)localObject).toUpperCase().startsWith(paramString))))
+      {
+        AppMethodBeat.o(13971);
         return true;
       }
     }
+    AppMethodBeat.o(13971);
     return false;
   }
   
-  public final void axD()
+  public final void aWB()
   {
+    AppMethodBeat.i(13968);
     setOnItemClickListener(new EnterpriseBizContactListView.1(this));
     if (getMode() == 0) {
-      setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
-      {
-        public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          if (EnterpriseBizContactListView.a(EnterpriseBizContactListView.this) == null) {
-            EnterpriseBizContactListView.a(EnterpriseBizContactListView.this, new EnterpriseBizContactListView.a(EnterpriseBizContactListView.this));
-          }
-          EnterpriseBizContactListView.a locala = EnterpriseBizContactListView.a(EnterpriseBizContactListView.this);
-          int i = EnterpriseBizContactListView.b(EnterpriseBizContactListView.this);
-          int j = EnterpriseBizContactListView.c(EnterpriseBizContactListView.this);
-          if (locala.idC == null)
-          {
-            localObject = (EnterpriseBizContactListView)locala.idD.get();
-            if (localObject == null) {
-              return false;
-            }
-            locala.idC = new com.tencent.mm.ui.widget.e(((EnterpriseBizContactListView)localObject).getContext());
-          }
-          Object localObject = paramAnonymousView.getTag();
-          if ((localObject == null) || (!(localObject instanceof EnterpriseBizContactListView.c))) {
-            return false;
-          }
-          locala.idB = ((EnterpriseBizContactListView.c)localObject).username;
-          if ((bk.bl(locala.idB)) || (f.eW(locala.idB))) {
-            return false;
-          }
-          locala.idC.wof = paramAnonymousView;
-          locala.idC.a(paramAnonymousAdapterView, paramAnonymousInt, paramAnonymousLong, new EnterpriseBizContactListView.a.1(locala, paramAnonymousInt), new EnterpriseBizContactListView.a.2(locala), i, j);
-          return true;
-        }
-      });
+      setOnItemLongClickListener(new EnterpriseBizContactListView.2(this));
     }
+    AppMethodBeat.o(13968);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    AppMethodBeat.i(13967);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.idy = ((int)paramMotionEvent.getRawX());
-      this.idz = ((int)paramMotionEvent.getRawY());
+      this.jUm = ((int)paramMotionEvent.getRawX());
+      this.jUn = ((int)paramMotionEvent.getRawY());
     }
-    return super.dispatchTouchEvent(paramMotionEvent);
+    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(13967);
+    return bool;
   }
   
   public int getContactCount()
   {
-    return this.idv;
+    return this.jUj;
   }
   
   public c.a getItemViewCreator()
   {
-    return new EnterpriseBizContactListView.3(this);
+    AppMethodBeat.i(13976);
+    EnterpriseBizContactListView.3 local3 = new EnterpriseBizContactListView.3(this);
+    AppMethodBeat.o(13976);
+    return local3;
   }
   
   public ListView getListView()
   {
-    this.fry = ((ListView)findViewById(b.d.listview));
-    return this.fry;
+    AppMethodBeat.i(13974);
+    this.gJa = ((ListView)findViewById(2131821736));
+    ListView localListView = this.gJa;
+    AppMethodBeat.o(13974);
+    return localListView;
   }
   
   public View getNoResultView()
   {
-    TextView localTextView = (TextView)findViewById(b.d.no_result);
-    localTextView.setText(b.h.enterprise_no_sub_biz);
+    AppMethodBeat.i(13975);
+    TextView localTextView = (TextView)findViewById(2131821961);
+    localTextView.setText(2131299317);
+    AppMethodBeat.o(13975);
     return localTextView;
   }
   
   public VerticalScrollBar getScrollBar()
   {
-    return (VerticalScrollBar)findViewById(b.d.sidrbar);
+    AppMethodBeat.i(13973);
+    VerticalScrollBar localVerticalScrollBar = (VerticalScrollBar)findViewById(2131821737);
+    AppMethodBeat.o(13973);
+    return localVerticalScrollBar;
   }
   
   public final View inflate()
   {
-    return View.inflate(getContext(), b.e.enterprise_biz_list_view_sort, this);
+    AppMethodBeat.i(13972);
+    View localView = View.inflate(getContext(), 2130969431, this);
+    AppMethodBeat.o(13972);
+    return localView;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.idw != null) {
-      this.idw.axC();
+    AppMethodBeat.i(13977);
+    if (this.jUk != null) {
+      this.jUk.aWA();
     }
-    return super.onInterceptTouchEvent(paramMotionEvent);
+    if (super.onInterceptTouchEvent(paramMotionEvent))
+    {
+      AppMethodBeat.o(13977);
+      return true;
+    }
+    AppMethodBeat.o(13977);
+    return false;
   }
   
   public final void refresh()
   {
-    dM(getSortEntityList());
+    AppMethodBeat.i(13966);
+    dI(getSortEntityList());
     super.refresh();
+    AppMethodBeat.o(13966);
   }
   
   public void setExcludeBizChat(boolean paramBoolean)
   {
-    this.idu = paramBoolean;
+    this.jUi = paramBoolean;
   }
   
   public void setFatherBizName(String paramString)
   {
-    this.ido = paramString;
+    this.jUc = paramString;
   }
   
   public void setOnTouchListener(EnterpriseBizContactListView.b paramb)
   {
-    this.idw = paramb;
+    this.jUk = paramb;
   }
   
-  private final class d
+  final class d
     implements Comparator<com.tencent.mm.ui.base.sortview.d>
   {
     private d() {}

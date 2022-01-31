@@ -1,14 +1,17 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import com.tencent.mm.h.a.gp;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.gt;
 import com.tencent.mm.sdk.b.c;
 
 final class ImageGalleryGridUI$4
-  extends c<gp>
+  extends c<gt>
 {
   ImageGalleryGridUI$4(ImageGalleryGridUI paramImageGalleryGridUI)
   {
-    this.udX = gp.class.getName().hashCode();
+    AppMethodBeat.i(32037);
+    this.__eventId = gt.class.getName().hashCode();
+    AppMethodBeat.o(32037);
   }
 }
 

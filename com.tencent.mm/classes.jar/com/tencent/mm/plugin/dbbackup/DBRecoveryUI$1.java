@@ -3,6 +3,7 @@ package com.tencent.mm.plugin.dbbackup;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.view.View;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class DBRecoveryUI$1
   implements DialogInterface.OnClickListener
@@ -11,13 +12,16 @@ final class DBRecoveryUI$1
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (DBRecoveryUI.a(this.iMK) != 0)
+    AppMethodBeat.i(18943);
+    if (DBRecoveryUI.a(this.kTI) != 0)
     {
-      DBRecoveryUI.b(this.iMK).setVisibility(0);
-      DBRecoveryUI.c(this.iMK).setVisibility(8);
+      DBRecoveryUI.b(this.kTI).setVisibility(0);
+      DBRecoveryUI.c(this.kTI).setVisibility(8);
+      AppMethodBeat.o(18943);
       return;
     }
-    d.aFz();
+    d.biS();
+    AppMethodBeat.o(18943);
   }
 }
 

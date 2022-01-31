@@ -1,10 +1,12 @@
 package com.tencent.ttpic.cache;
 
 import android.graphics.Bitmap;
+import android.opengl.ETC1Util.ETC1Texture;
 import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.ttpic.model.StickerItem;
 import com.tencent.ttpic.thread.VideoThreadPool;
-import com.tencent.ttpic.util.VideoFileUtil;
+import com.tencent.ttpic.util.VideoFilterUtil;
 import com.tencent.ttpic.util.VideoMaterialUtil;
 import com.tencent.ttpic.util.VideoMaterialUtil.ITEM_SOURCE_TYPE;
 import java.io.File;
@@ -20,7 +22,7 @@ public class LoadStickerItemManager
   implements LoadItemManager
 {
   private static final int CAPACITY = 5;
-  public static final Comparator<String> mPngComperator = new LoadStickerItemManager.1();
+  public static final Comparator<String> mPngComperator;
   private String dataPath;
   private StickerItem item;
   private LoadItemManager.LOAD_TYPE loadType;
@@ -29,8 +31,16 @@ public class LoadStickerItemManager
   private PreLoader mPreLoader;
   private int sampleSize;
   
+  static
+  {
+    AppMethodBeat.i(81818);
+    mPngComperator = new LoadStickerItemManager.1();
+    AppMethodBeat.o(81818);
+  }
+  
   public LoadStickerItemManager(Map<String, Bitmap> paramMap, String paramString, StickerItem paramStickerItem, LoadItemManager.LOAD_TYPE paramLOAD_TYPE, int paramInt)
   {
+    AppMethodBeat.i(81812);
     this.dataPath = paramString;
     this.item = paramStickerItem;
     this.mCache = paramMap;
@@ -38,49 +48,71 @@ public class LoadStickerItemManager
     if (paramStickerItem.markMode != 0)
     {
       this.loadType = LoadItemManager.LOAD_TYPE.LOAD_ALL;
+      AppMethodBeat.o(81812);
       return;
     }
     this.loadType = paramLOAD_TYPE;
+    AppMethodBeat.o(81812);
   }
   
   public void clear()
   {
+    AppMethodBeat.i(81816);
     if (this.mImageTask != null) {
       this.mImageTask.cancel(true);
     }
     if (this.mPreLoader != null) {
       this.mPreLoader.clear();
     }
+    AppMethodBeat.o(81816);
+  }
+  
+  public ETC1Util.ETC1Texture loadETCAlphaTexture(int paramInt)
+  {
+    return null;
+  }
+  
+  public ETC1Util.ETC1Texture loadETCRGBTexture(int paramInt)
+  {
+    return null;
   }
   
   public Bitmap loadImage(int paramInt)
   {
+    AppMethodBeat.i(81814);
     if (this.mPreLoader != null) {
       this.mPreLoader.updateIndex(paramInt);
     }
-    String str = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + paramInt + ".png";
-    return (Bitmap)this.mCache.get(str);
+    Object localObject = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + this.item.id + "_" + paramInt + ".png";
+    localObject = (Bitmap)this.mCache.get(localObject);
+    AppMethodBeat.o(81814);
+    return localObject;
   }
   
   public Bitmap loadImage(String paramString)
   {
+    AppMethodBeat.i(81815);
     paramString = VideoMaterialUtil.getMaterialId(this.dataPath) + File.separator + paramString;
-    return (Bitmap)this.mCache.get(paramString);
+    paramString = (Bitmap)this.mCache.get(paramString);
+    AppMethodBeat.o(81815);
+    return paramString;
   }
   
   public void prepareImages()
   {
-    if (this.loadType == LoadItemManager.LOAD_TYPE.LOAD_ALL) {
+    AppMethodBeat.i(81813);
+    if (this.loadType == LoadItemManager.LOAD_TYPE.LOAD_ALL)
+    {
       if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
       {
-        localHashSet = new HashSet();
-        localArrayList = new ArrayList(this.item.frames);
+        HashSet localHashSet = new HashSet();
+        ArrayList localArrayList = new ArrayList(this.item.frames);
         if (this.item.markMode != 0)
         {
           i = 0;
           while (i <= 10)
           {
-            j = 0;
+            int j = 0;
             while (j < this.item.frames)
             {
               localArrayList.add(this.item.id + "_" + j + "_" + i + ".png");
@@ -95,8 +127,8 @@ public class LoadStickerItemManager
             i += 1;
           }
         }
-        localHashSet.addAll(VideoFileUtil.getAllPngFileNames(this.dataPath + File.separator + this.item.subFolder));
-        i = 0;
+        localHashSet.addAll(VideoFilterUtil.getAllPngFileNames(this.dataPath + File.separator + this.item.subFolder));
+        int i = 0;
         while (i < this.item.frames)
         {
           localHashSet.add(this.item.id + "_" + i + ".png");
@@ -106,25 +138,24 @@ public class LoadStickerItemManager
         Collections.sort(localArrayList, mPngComperator);
         this.mImageTask = new LoadImageTask(this.mCache, localArrayList, this.dataPath + File.separator + this.item.subFolder, VideoMaterialUtil.getMaterialId(this.dataPath), this.sampleSize);
         this.mImageTask.executeOnExecutor(VideoThreadPool.getInstance().getDualThreadExecutor(), new Void[0]);
+        AppMethodBeat.o(81813);
       }
     }
-    while (this.item.sourceType != VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
+    else if (this.item.sourceType == VideoMaterialUtil.ITEM_SOURCE_TYPE.IMAGE)
     {
-      HashSet localHashSet;
-      ArrayList localArrayList;
-      int i;
-      int j;
-      return;
+      this.mPreLoader = new ImagePreLoader(this.mCache, this.dataPath, this.item, 5);
+      this.mPreLoader.prepare();
     }
-    this.mPreLoader = new ImagePreLoader(this.mCache, this.dataPath, this.item, 5);
-    this.mPreLoader.prepare();
+    AppMethodBeat.o(81813);
   }
   
   public void reset()
   {
+    AppMethodBeat.i(81817);
     if (this.mPreLoader != null) {
       this.mPreLoader.reset();
     }
+    AppMethodBeat.o(81817);
   }
 }
 

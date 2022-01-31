@@ -3,7 +3,8 @@ package com.tencent.mm.plugin.brandservice.ui;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class BrandServiceIndexUI$3
   implements MenuItem.OnMenuItemClickListener
@@ -12,11 +13,13 @@ final class BrandServiceIndexUI$3
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    y.v("MicroMsg.BrandService.BrandServiceIndexUI", "search btn was clicked.");
-    paramMenuItem = new Intent(this.idj, BrandServiceLocalSearchUI.class);
-    paramMenuItem.putExtra("is_return_result", BrandServiceIndexUI.a(this.idj));
+    AppMethodBeat.i(13916);
+    ab.v("MicroMsg.BrandService.BrandServiceIndexUI", "search btn was clicked.");
+    paramMenuItem = new Intent(this.jTX, BrandServiceLocalSearchUI.class);
+    paramMenuItem.putExtra("is_return_result", BrandServiceIndexUI.a(this.jTX));
     paramMenuItem.addFlags(67108864);
-    this.idj.startActivityForResult(paramMenuItem, 1);
+    this.jTX.startActivityForResult(paramMenuItem, 1);
+    AppMethodBeat.o(13916);
     return true;
   }
 }

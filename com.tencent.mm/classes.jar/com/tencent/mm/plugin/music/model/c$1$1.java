@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.music.model;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.music.model.e.a;
 
 final class c$1$1
@@ -9,7 +10,9 @@ final class c$1$1
   
   public final void run()
   {
-    this.mzw.mzu.mzr.a(this.mzv, this.jwz);
+    AppMethodBeat.i(104876);
+    this.oZC.oZA.oZx.a(this.oZB, this.lFY);
+    AppMethodBeat.o(104876);
   }
 }
 

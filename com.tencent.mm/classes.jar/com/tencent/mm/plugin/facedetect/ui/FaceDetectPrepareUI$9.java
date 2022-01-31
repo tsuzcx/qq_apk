@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.facedetect.ui;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.facedetect.c.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
 
 final class FaceDetectPrepareUI$9
   implements Runnable
@@ -10,14 +11,17 @@ final class FaceDetectPrepareUI$9
   
   public final void run()
   {
+    AppMethodBeat.i(412);
     try
     {
-      FaceDetectPrepareUI.b(this.jRg).Cn(this.eIv);
+      FaceDetectPrepareUI.b(this.mlC).No(this.cbL);
+      AppMethodBeat.o(412);
       return;
     }
     catch (Exception localException)
     {
-      y.printErrStackTrace("MicroMsg.FaceDetectPrepareUI", localException, "", new Object[0]);
+      ab.printErrStackTrace("MicroMsg.FaceDetectPrepareUI", localException, "", new Object[0]);
+      AppMethodBeat.o(412);
     }
   }
 }

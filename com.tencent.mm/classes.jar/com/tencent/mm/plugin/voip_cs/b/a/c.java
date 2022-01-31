@@ -1,74 +1,100 @@
 package com.tencent.mm.plugin.voip_cs.b.a;
 
-import com.tencent.mm.compatible.b.f;
-import com.tencent.mm.compatible.e.q;
-import com.tencent.mm.f.b.c.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.b.c.a;
+import com.tencent.mm.compatible.b.g;
+import com.tencent.mm.compatible.e.ac;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.ah;
 
 public final class c
 {
-  private c.a iED = new c.1(this);
-  public com.tencent.mm.f.b.c iEq = new com.tencent.mm.f.b.c(v2protocal.VOICE_SAMPLERATE, 1, 1);
-  private com.tencent.mm.plugin.voip.model.a mtt = new c.2(this);
-  public com.tencent.mm.plugin.voip.model.b pQB;
+  public com.tencent.mm.audio.b.c kJB;
+  private c.a kJP;
+  private com.tencent.mm.plugin.voip.model.b oTe;
+  public com.tencent.mm.plugin.voip.model.c tvF;
   
   public c()
   {
-    this.iEq.ey(20);
-    this.iEq.aY(true);
-    this.iEq.up();
-    this.iEq.t(1, false);
-    this.iEq.aX(true);
-    this.iEq.bCP = this.iED;
-    this.pQB = new com.tencent.mm.plugin.voip.model.b();
-    this.pQB.z(v2protocal.VOICE_SAMPLERATE, 1, 20, 0);
-    this.pQB.t(ae.getContext(), false);
-    this.pQB.pNy = this.mtt;
+    AppMethodBeat.i(135363);
+    this.kJP = new c.1(this);
+    this.oTe = new c.2(this);
+    this.kJB = new com.tencent.mm.audio.b.c(v2protocal.VOICE_SAMPLERATE, 1, 1);
+    this.kJB.gA(20);
+    this.kJB.bA(true);
+    this.kJB.EB();
+    this.kJB.t(1, false);
+    this.kJB.bz(true);
+    this.kJB.cjD = this.kJP;
+    this.tvF = new com.tencent.mm.plugin.voip.model.c();
+    this.tvF.F(v2protocal.VOICE_SAMPLERATE, 1, 20, 0);
+    this.tvF.x(ah.getContext(), false);
+    this.tvF.ttu = this.oTe;
+    AppMethodBeat.o(135363);
   }
   
-  private boolean jQ(boolean paramBoolean)
+  private boolean mJ(boolean paramBoolean)
   {
-    if (this.pQB != null) {
-      return this.pQB.jQ(paramBoolean);
+    AppMethodBeat.i(135364);
+    if (this.tvF != null)
+    {
+      paramBoolean = this.tvF.mJ(paramBoolean);
+      AppMethodBeat.o(135364);
+      return paramBoolean;
     }
+    AppMethodBeat.o(135364);
     return false;
   }
   
-  public final void kj(boolean paramBoolean)
+  public final int cLL()
   {
-    y.b("MicroMsg.cs.VoipCsAudioManager", "enableSpeaker: " + paramBoolean, new Object[0]);
-    y.d("MicroMsg.cs.VoipCsAudioManager", "MMCore.getAudioManager() " + f.yi().yr());
-    if (f.yi().yn()) {
+    AppMethodBeat.i(135366);
+    if (this.tvF != null)
+    {
+      int i = this.tvF.cLL();
+      AppMethodBeat.o(135366);
+      return i;
+    }
+    AppMethodBeat.o(135366);
+    return 0;
+  }
+  
+  public final void mR(boolean paramBoolean)
+  {
+    AppMethodBeat.i(135365);
+    ab.a("MicroMsg.cs.VoipCsAudioManager", "enableSpeaker: ".concat(String.valueOf(paramBoolean)), new Object[0]);
+    ab.d("MicroMsg.cs.VoipCsAudioManager", "MMCore.getAudioManager() " + g.KC().KL());
+    if (g.KC().KH()) {
       paramBoolean = false;
     }
-    if (q.dye.duN)
+    if (ac.erv.emD)
     {
-      q.dye.dump();
-      if (q.dye.duO > 0) {
-        jQ(paramBoolean);
+      ac.erv.dump();
+      if (ac.erv.emE > 0) {
+        mJ(paramBoolean);
       }
     }
-    if ((q.dye.dvq >= 0) || (q.dye.dvr >= 0)) {
-      jQ(paramBoolean);
+    if ((ac.erv.enh >= 0) || (ac.erv.eni >= 0)) {
+      mJ(paramBoolean);
     }
     com.tencent.mm.plugin.voip_cs.b.b.a locala;
-    if (this.pQB != null)
+    if (this.tvF != null)
     {
-      i = this.pQB.bPH();
-      f.yi().b(paramBoolean, i, false);
-      locala = com.tencent.mm.plugin.voip_cs.b.c.bSO();
+      i = this.tvF.cLL();
+      g.KC().b(paramBoolean, i, false);
+      locala = com.tencent.mm.plugin.voip_cs.b.c.cQm();
       if (!paramBoolean) {
-        break label186;
+        break label182;
       }
     }
-    label186:
-    for (int i = locala.qeL.um(401);; i = locala.qeL.um(402))
+    label182:
+    for (int i = locala.tLy.setAppCmd(401);; i = locala.tLy.setAppCmd(402))
     {
       if (i < 0) {
-        com.tencent.mm.plugin.voip.a.a.Logd("MicroMsg.VoipCSEngine", "voipContext trySwitchSpeakerPhone ret:" + i);
+        com.tencent.mm.plugin.voip.a.a.Logd("MicroMsg.VoipCSEngine", "voipContext trySwitchSpeakerPhone ret:".concat(String.valueOf(i)));
       }
+      AppMethodBeat.o(135365);
       return;
     }
   }

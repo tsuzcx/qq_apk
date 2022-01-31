@@ -5,6 +5,7 @@ import com.google.android.gms.common.api.Releasable;
 import com.google.android.gms.common.api.Result;
 import java.io.InputStream;
 
+@Deprecated
 public abstract interface DataApi$GetFdForAssetResult
   extends Releasable, Result
 {

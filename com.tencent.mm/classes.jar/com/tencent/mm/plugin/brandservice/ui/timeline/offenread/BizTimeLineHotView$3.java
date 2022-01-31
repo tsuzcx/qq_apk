@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 final class BizTimeLineHotView$3
   implements Runnable
 {
@@ -7,7 +9,9 @@ final class BizTimeLineHotView$3
   
   public final void run()
   {
-    BizTimeLineHotView.c(this.ihA);
+    AppMethodBeat.i(14309);
+    BizTimeLineHotView.c(this.jZn);
+    AppMethodBeat.o(14309);
   }
 }
 

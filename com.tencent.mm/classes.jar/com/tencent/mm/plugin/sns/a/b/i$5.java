@@ -1,5 +1,7 @@
 package com.tencent.mm.plugin.sns.a.b;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class i$5
   implements Runnable
 {
@@ -7,12 +9,14 @@ public final class i$5
   
   public final void run()
   {
-    i.d(this.olO);
+    AppMethodBeat.i(35754);
+    i.d(this.raa);
+    AppMethodBeat.o(35754);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.a.b.i.5
  * JD-Core Version:    0.7.0.1
  */

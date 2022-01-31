@@ -1,7 +1,8 @@
 package com.tencent.mm.plugin.game.ui;
 
-import com.tencent.mm.plugin.game.model.aa;
-import com.tencent.mm.sdk.platformtools.ai;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.game.model.z;
+import com.tencent.mm.sdk.platformtools.al;
 
 final class GameDetailUI2$12
   implements Runnable
@@ -10,13 +11,17 @@ final class GameDetailUI2$12
   
   public final void run()
   {
-    ai.d(new Runnable()
+    AppMethodBeat.i(111852);
+    al.d(new Runnable()
     {
       public final void run()
       {
-        GameDetailUI2.a(GameDetailUI2.12.this.laq, this.lau);
+        AppMethodBeat.i(111851);
+        GameDetailUI2.a(GameDetailUI2.12.this.nyn, this.nyq);
+        AppMethodBeat.o(111851);
       }
     });
+    AppMethodBeat.o(111852);
   }
 }
 

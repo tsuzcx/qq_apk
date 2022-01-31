@@ -1,38 +1,34 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.j.a;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.ui.widget.snackbar.a.b;
 
 final class SnsAdNativeLandingPagesUI$9
-  implements j.a
+  implements a.b
 {
-  SnsAdNativeLandingPagesUI$9(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI, View paramView) {}
+  SnsAdNativeLandingPagesUI$9(SnsAdNativeLandingPagesUI paramSnsAdNativeLandingPagesUI) {}
   
-  private void bIr()
+  public final void aVA()
   {
-    if ((this.oUW != null) && (this.oUW.getParent() != null)) {
-      ((ViewGroup)this.oUW.getParent()).removeView(this.oUW);
+    AppMethodBeat.i(154489);
+    try
+    {
+      AdLandingPagesProxy.getInstance().favEditTag();
+      AppMethodBeat.o(154489);
+      return;
     }
-    SnsAdNativeLandingPagesUI.M(this.oUU);
-  }
-  
-  public final void bFq()
-  {
-    y.i("MicroMsg.SnsAdNativeLandingPagesUI", "onDismiss");
-    bIr();
-  }
-  
-  public final void bFr()
-  {
-    y.i("MicroMsg.SnsAdNativeLandingPagesUI", "onCancel");
-    bIr();
+    catch (Exception localException)
+    {
+      ab.e("MicroMsg.SnsAdNativeLandingPagesUI", "favorite edittag fail, ex = " + localException.getMessage());
+      AppMethodBeat.o(154489);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdNativeLandingPagesUI.9
  * JD-Core Version:    0.7.0.1
  */

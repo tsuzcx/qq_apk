@@ -1,53 +1,14 @@
 package com.google.android.gms.wearable.internal;
 
-import android.os.IBinder;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.google.android.gms.common.internal.safeparcel.zzb;
-import com.google.android.gms.common.internal.safeparcel.zzb.zza;
-import com.google.android.gms.common.internal.safeparcel.zzc;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.internal.PendingResultUtil.ResultConverter;
 
-public class zzcl
-  implements Parcelable.Creator<zzck>
+final class zzcl
+  implements PendingResultUtil.ResultConverter
 {
-  static void zza(zzck paramzzck, Parcel paramParcel, int paramInt)
-  {
-    paramInt = zzc.zzaZ(paramParcel);
-    zzc.zzc(paramParcel, 1, paramzzck.zzaiI);
-    zzc.zza(paramParcel, 2, paramzzck.zzAg(), false);
-    zzc.zzJ(paramParcel, paramInt);
-  }
+  static final PendingResultUtil.ResultConverter zzbx;
   
-  public zzck zzls(Parcel paramParcel)
-  {
-    int j = zzb.zzaY(paramParcel);
-    int i = 0;
-    IBinder localIBinder = null;
-    while (paramParcel.dataPosition() < j)
-    {
-      int k = zzb.zzaX(paramParcel);
-      switch (zzb.zzdc(k))
-      {
-      default: 
-        zzb.zzb(paramParcel, k);
-        break;
-      case 1: 
-        i = zzb.zzg(paramParcel, k);
-        break;
-      case 2: 
-        localIBinder = zzb.zzr(paramParcel, k);
-      }
-    }
-    if (paramParcel.dataPosition() != j) {
-      throw new zzb.zza(37 + "Overread allowed size end=" + j, paramParcel);
-    }
-    return new zzck(i, localIBinder);
-  }
-  
-  public zzck[] zzpU(int paramInt)
-  {
-    return new zzck[paramInt];
-  }
+  public final Object convert(Result arg1) {}
 }
 
 

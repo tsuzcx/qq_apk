@@ -1,49 +1,54 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
-import com.tencent.mm.h.a.ou;
-import com.tencent.mm.h.a.ou.a;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.pw;
+import com.tencent.mm.g.a.pw.a;
 import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.bk;
-import com.tencent.mm.sdk.platformtools.y;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.bo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class e$2
-  extends c<ou>
+  extends c<pw>
 {
   e$2(e parame)
   {
-    this.udX = ou.class.getName().hashCode();
+    AppMethodBeat.i(6934);
+    this.__eventId = pw.class.getName().hashCode();
+    AppMethodBeat.o(6934);
   }
   
-  private boolean a(ou paramou)
+  private boolean callback(pw parampw)
   {
-    if (((paramou instanceof ou)) && ("bank".equals(this.ric.rhX)))
+    AppMethodBeat.i(6935);
+    if (((parampw instanceof pw)) && ("bank".equals(this.uXB.uXx)))
     {
-      if (paramou.bYq.action != 0) {
-        break label55;
+      if (parampw.cGr.action != 0) {
+        break label67;
       }
-      e.a(this.ric, this.ric.rhX);
+      e.a(this.uXB, this.uXB.uXx);
     }
     for (;;)
     {
-      e.a(this.ric);
+      e.a(this.uXB);
+      AppMethodBeat.o(6935);
       return false;
-      label55:
-      if (paramou.bYq.action == 1) {
-        if (bk.bl(paramou.bYq.cardNum)) {
-          e.b(this.ric, this.ric.rhX);
+      label67:
+      if (parampw.cGr.action == 1) {
+        if (bo.isNullOrNil(parampw.cGr.cardNum)) {
+          e.b(this.uXB, this.uXB.uXx);
         } else {
           try
           {
             JSONObject localJSONObject = new JSONObject();
-            localJSONObject.put("bankcard_number", paramou.bYq.cardNum);
-            e.a(this.ric, this.ric.rhX, localJSONObject, null);
+            localJSONObject.put("bankcard_number", parampw.cGr.cardNum);
+            e.a(this.uXB, this.uXB.uXx, localJSONObject, null);
           }
-          catch (JSONException paramou)
+          catch (JSONException parampw)
           {
-            y.e("MicroMsg.LicenceScanner", "type = bankcard, add cardNum into json, exp = %s ", new Object[] { paramou });
-            e.b(this.ric, this.ric.rhX);
+            ab.e("MicroMsg.LicenceScanner", "type = bankcard, add cardNum into json, exp = %s ", new Object[] { parampw });
+            e.b(this.uXB, this.uXB.uXx);
           }
         }
       }
@@ -52,7 +57,7 @@ final class e$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.modeltools.e.2
  * JD-Core Version:    0.7.0.1
  */

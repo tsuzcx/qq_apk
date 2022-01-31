@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.record.ui;
 
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
-import com.tencent.mm.ui.widget.a.d;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.widget.b.d;
 
 final class FavRecordDetailUI$2
   implements MenuItem.OnMenuItemClickListener
@@ -13,10 +12,12 @@ final class FavRecordDetailUI$2
   
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    paramMenuItem = new d(this.ntD.mController.uMN, 1, false);
-    paramMenuItem.phH = new FavRecordDetailUI.2.1(this);
-    paramMenuItem.phI = new FavRecordDetailUI.2.2(this);
-    paramMenuItem.cfU();
+    AppMethodBeat.i(24207);
+    paramMenuItem = new d(this.pZl.getContext(), 1, false);
+    paramMenuItem.sao = new FavRecordDetailUI.2.1(this);
+    paramMenuItem.sap = new FavRecordDetailUI.2.2(this);
+    paramMenuItem.crd();
+    AppMethodBeat.o(24207);
     return true;
   }
 }

@@ -9,12 +9,10 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
-import com.tencent.mm.plugin.wxpay.a.i;
-import com.tencent.mm.pluginsdk.ui.tools.l;
-import com.tencent.mm.sdk.platformtools.c;
-import com.tencent.mm.sdk.platformtools.y;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.s;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.pluginsdk.ui.tools.n;
+import com.tencent.mm.sdk.platformtools.ab;
+import com.tencent.mm.sdk.platformtools.d;
 
 final class QrRewardMainUI$8
   implements Runnable
@@ -23,29 +21,32 @@ final class QrRewardMainUI$8
   
   public final void run()
   {
-    y.d("MicroMsg.QrRewardMainUI", "height: %d, width: %d", new Object[] { Integer.valueOf(this.iJl.getHeight()), Integer.valueOf(this.iJl.getWidth()) });
-    Bitmap localBitmap = Bitmap.createBitmap(QrRewardMainUI.r(this.iJi).getWidth(), QrRewardMainUI.r(this.iJi).getHeight(), Bitmap.Config.ARGB_8888);
+    AppMethodBeat.i(41091);
+    ab.d("MicroMsg.QrRewardMainUI", "height: %d, width: %d", new Object[] { Integer.valueOf(this.kPQ.getHeight()), Integer.valueOf(this.kPQ.getWidth()) });
+    Bitmap localBitmap = Bitmap.createBitmap(QrRewardMainUI.s(this.kPN).getWidth(), QrRewardMainUI.s(this.kPN).getHeight(), Bitmap.Config.ARGB_8888);
     Object localObject = new Canvas(localBitmap);
-    QrRewardMainUI.r(this.iJi).draw((Canvas)localObject);
-    this.iJm.setImageBitmap(localBitmap);
-    localBitmap = Bitmap.createBitmap(this.iJl.getWidth(), this.iJl.getHeight(), Bitmap.Config.ARGB_8888);
+    QrRewardMainUI.s(this.kPN).draw((Canvas)localObject);
+    this.kPR.setImageBitmap(localBitmap);
+    localBitmap = Bitmap.createBitmap(this.kPQ.getWidth(), this.kPQ.getHeight(), Bitmap.Config.ARGB_8888);
     localObject = new Canvas(localBitmap);
-    this.iJl.draw((Canvas)localObject);
+    this.kPQ.draw((Canvas)localObject);
     try
     {
-      localObject = l.qt() + "mm_reward_qrcode_" + System.currentTimeMillis() + ".png";
-      c.a(localBitmap, 100, Bitmap.CompressFormat.PNG, (String)localObject, false);
-      Toast.makeText(this.iJi.mController.uMN, this.iJi.getString(a.i.cropimage_saved, new Object[] { localObject }), 1).show();
-      l.a((String)localObject, this.iJi.mController.uMN);
-      QrRewardMainUI.s(this.iJi).setVisibility(8);
+      localObject = n.aok() + "mm_reward_qrcode_" + System.currentTimeMillis() + ".png";
+      d.a(localBitmap, 100, Bitmap.CompressFormat.PNG, (String)localObject, false);
+      Toast.makeText(this.kPN.getContext(), this.kPN.getString(2131298889, new Object[] { localObject }), 1).show();
+      n.a((String)localObject, this.kPN.getContext());
+      QrRewardMainUI.t(this.kPN).setVisibility(8);
+      ab.i("MicroMsg.QrRewardMainUI", "bitmap recycle %s", new Object[] { localBitmap.toString() });
       localBitmap.recycle();
+      AppMethodBeat.o(41091);
       return;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        y.w("MicroMsg.QrRewardMainUI", "save fixed amount qrcode failed!" + localException.getMessage());
+        ab.w("MicroMsg.QrRewardMainUI", "save fixed amount qrcode failed!" + localException.getMessage());
       }
     }
   }

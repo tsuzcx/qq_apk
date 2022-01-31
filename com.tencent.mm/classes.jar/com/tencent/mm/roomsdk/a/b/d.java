@@ -5,8 +5,8 @@ import com.tencent.mm.storage.bi;
 public abstract class d
   implements a<d>
 {
-  public int dne;
-  public bi ubq;
+  public int eeF;
+  public bi yjG;
 }
 
 

@@ -1,21 +1,29 @@
 package com.tencent.mm.plugin.wallet.balance.ui.lqt;
 
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import com.tencent.mm.ui.widget.a.d;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.so;
+import com.tencent.mm.protocal.protobuf.bdf;
+import com.tencent.mm.protocal.protobuf.bpw;
+import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.sdk.platformtools.bo;
 
 final class WalletLqtDetailUI$4
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnClickListener
 {
   WalletLqtDetailUI$4(WalletLqtDetailUI paramWalletLqtDetailUI) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onClick(View paramView)
   {
-    paramMenuItem = new d(this.qil, 1, false);
-    paramMenuItem.phH = new WalletLqtDetailUI.4.1(this);
-    paramMenuItem.phI = new WalletLqtDetailUI.4.2(this);
-    paramMenuItem.cfU();
-    return false;
+    AppMethodBeat.i(45525);
+    paramView = new so();
+    paramView.cIQ.userName = WalletLqtDetailUI.e(this.tPQ).xDV.username;
+    paramView.cIQ.cIS = bo.bf(WalletLqtDetailUI.e(this.tPQ).xDV.path, "");
+    paramView.cIQ.scene = 1061;
+    paramView.cIQ.cIT = 0;
+    a.ymk.l(paramView);
+    AppMethodBeat.o(45525);
   }
 }
 

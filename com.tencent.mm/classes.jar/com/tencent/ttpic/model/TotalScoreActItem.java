@@ -1,6 +1,7 @@
 package com.tencent.ttpic.model;
 
 import com.tencent.filter.BaseFilter;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TotalScoreActItem
   extends SingleScoreActItem
@@ -12,12 +13,18 @@ public class TotalScoreActItem
   
   protected int getScore(CanvasItem paramCanvasItem)
   {
-    return this.captureActItem.getTotalScore();
+    AppMethodBeat.i(83551);
+    int i = this.captureActItem.getTotalScore();
+    AppMethodBeat.o(83551);
+    return i;
   }
   
   protected int[] getScoreTexture(CanvasItem paramCanvasItem)
   {
-    return this.captureActItem.getTotalScoreTexture();
+    AppMethodBeat.i(83552);
+    paramCanvasItem = this.captureActItem.getTotalScoreTexture();
+    AppMethodBeat.o(83552);
+    return paramCanvasItem;
   }
 }
 

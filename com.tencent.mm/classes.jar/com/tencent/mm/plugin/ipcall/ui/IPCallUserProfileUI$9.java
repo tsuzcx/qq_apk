@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mm.R.l;
-import com.tencent.mm.model.q;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.model.r;
 import com.tencent.mm.plugin.ipcall.a.e.e;
 import com.tencent.mm.plugin.report.service.h;
-import com.tencent.mm.sdk.platformtools.bk;
+import com.tencent.mm.sdk.platformtools.bo;
 import com.tencent.mm.storage.ad;
 
 final class IPCallUserProfileUI$9
@@ -18,23 +18,27 @@ final class IPCallUserProfileUI$9
   
   public final void onClick(View paramView)
   {
-    IPCallUserProfileUI.d(this.lzF).start();
-    IPCallUserProfileUI.d(this.lzF).lrY = 1L;
-    IPCallUserProfileUI.d(this.lzF).lrZ = 5L;
-    IPCallUserProfileUI.d(this.lzF).finish();
-    h.nFQ.f(12766, new Object[] { Integer.valueOf(3) });
-    if (!bk.bl(IPCallUserProfileUI.e(this.lzF)))
+    AppMethodBeat.i(22381);
+    IPCallUserProfileUI.d(this.nWR).start();
+    IPCallUserProfileUI.d(this.nWR).nPu = 1L;
+    IPCallUserProfileUI.d(this.nWR).nPv = 5L;
+    IPCallUserProfileUI.d(this.nWR).finish();
+    h.qsU.e(12766, new Object[] { Integer.valueOf(3) });
+    if (!bo.isNullOrNil(IPCallUserProfileUI.e(this.nWR)))
     {
-      paramView = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + IPCallUserProfileUI.FT(IPCallUserProfileUI.e(this.lzF))));
-      paramView.putExtra("sms_body", this.lzF.getString(R.l.ip_call_invite_wechat_friend_sms, new Object[] { q.GQ().Bp() }));
-      this.lzF.startActivity(paramView);
-    }
-    while (bk.bl(IPCallUserProfileUI.f(this.lzF))) {
+      paramView = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + IPCallUserProfileUI.Rv(IPCallUserProfileUI.e(this.nWR))));
+      paramView.putExtra("sms_body", this.nWR.getString(2131300852, new Object[] { r.ZS().Oe() }));
+      this.nWR.startActivity(paramView);
+      AppMethodBeat.o(22381);
       return;
     }
-    paramView = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + IPCallUserProfileUI.f(this.lzF)));
-    paramView.putExtra("sms_body", this.lzF.getString(R.l.ip_call_invite_wechat_friend_sms, new Object[] { q.GQ().Bp() }));
-    this.lzF.startActivity(paramView);
+    if (!bo.isNullOrNil(IPCallUserProfileUI.f(this.nWR)))
+    {
+      paramView = new Intent("android.intent.action.SENDTO", Uri.parse("smsto:" + IPCallUserProfileUI.f(this.nWR)));
+      paramView.putExtra("sms_body", this.nWR.getString(2131300852, new Object[] { r.ZS().Oe() }));
+      this.nWR.startActivity(paramView);
+    }
+    AppMethodBeat.o(22381);
   }
 }
 

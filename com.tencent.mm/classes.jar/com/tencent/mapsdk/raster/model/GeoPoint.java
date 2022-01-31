@@ -3,45 +3,54 @@ package com.tencent.mapsdk.raster.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class GeoPoint
   implements Parcelable
 {
-  public static final Parcelable.Creator<GeoPoint> CREATOR = new Parcelable.Creator()
+  public static final Parcelable.Creator<GeoPoint> CREATOR;
+  private int e6Lat;
+  private int e6Lon;
+  
+  static
   {
-    public final GeoPoint createFromParcel(Parcel paramAnonymousParcel)
-    {
-      return new GeoPoint(paramAnonymousParcel, null);
-    }
-    
-    public final GeoPoint[] newArray(int paramAnonymousInt)
-    {
-      return new GeoPoint[paramAnonymousInt];
-    }
-  };
-  private int e6Lat = 0;
-  private int e6Lon = 0;
+    AppMethodBeat.i(101185);
+    CREATOR = new GeoPoint.1();
+    AppMethodBeat.o(101185);
+  }
   
   public GeoPoint(int paramInt1, int paramInt2)
   {
+    this.e6Lat = 0;
+    this.e6Lon = 0;
     this.e6Lat = paramInt1;
     this.e6Lon = paramInt2;
   }
   
   private GeoPoint(Parcel paramParcel)
   {
+    AppMethodBeat.i(101182);
+    this.e6Lat = 0;
+    this.e6Lon = 0;
     this.e6Lat = paramParcel.readInt();
     this.e6Lon = paramParcel.readInt();
+    AppMethodBeat.o(101182);
   }
   
   public static LatLng g2l(GeoPoint paramGeoPoint)
   {
-    return new LatLng(paramGeoPoint.getLatitudeE6() * 1.0D / 1000000.0D, paramGeoPoint.getLongitudeE6() * 1.0D / 1000000.0D);
+    AppMethodBeat.i(101184);
+    paramGeoPoint = new LatLng(paramGeoPoint.getLatitudeE6() * 1.0D / 1000000.0D, paramGeoPoint.getLongitudeE6() * 1.0D / 1000000.0D);
+    AppMethodBeat.o(101184);
+    return paramGeoPoint;
   }
   
   public GeoPoint Copy()
   {
-    return new GeoPoint(this.e6Lat, this.e6Lon);
+    AppMethodBeat.i(101181);
+    GeoPoint localGeoPoint = new GeoPoint(this.e6Lat, this.e6Lon);
+    AppMethodBeat.o(101181);
+    return localGeoPoint;
   }
   
   public int describeContents()
@@ -51,16 +60,25 @@ public class GeoPoint
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    AppMethodBeat.i(101179);
+    if (paramObject == null)
     {
-      do
-      {
-        return false;
-      } while (paramObject.getClass() != getClass());
-      paramObject = (GeoPoint)paramObject;
-    } while ((this.e6Lat != paramObject.e6Lat) || (this.e6Lon != paramObject.e6Lon));
-    return true;
+      AppMethodBeat.o(101179);
+      return false;
+    }
+    if (paramObject.getClass() != getClass())
+    {
+      AppMethodBeat.o(101179);
+      return false;
+    }
+    paramObject = (GeoPoint)paramObject;
+    if ((this.e6Lat == paramObject.e6Lat) && (this.e6Lon == paramObject.e6Lon))
+    {
+      AppMethodBeat.o(101179);
+      return true;
+    }
+    AppMethodBeat.o(101179);
+    return false;
   }
   
   public int getLatitudeE6()
@@ -90,18 +108,23 @@ public class GeoPoint
   
   public String toString()
   {
-    return this.e6Lat + "," + this.e6Lon;
+    AppMethodBeat.i(101180);
+    String str = this.e6Lat + "," + this.e6Lon;
+    AppMethodBeat.o(101180);
+    return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    AppMethodBeat.i(101183);
     paramParcel.writeInt(this.e6Lat);
     paramParcel.writeInt(this.e6Lon);
+    AppMethodBeat.o(101183);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.GeoPoint
  * JD-Core Version:    0.7.0.1
  */
